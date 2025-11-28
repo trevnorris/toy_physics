@@ -1,0 +1,14 @@
+--- 1. Geometric Setup ---
+Laplacian Check (should be 0): 0
+--- 2. Solving for Dipole Strength Astrength ---
+Dipole Strength Asol: a^4/3
+--- 3. Integrating Bulk Kinetic Energy ---
+Total Bulk Kinetic Energy Tbulk: (a^4*Pi^2*rho*V^2)/12
+--- 4. Extracting Kappa ---
+Effective Bulk Mass mEff: (a^4*Pi^2*rho)/6
+Reference Cavitation Mass (3D): (4*a^3*Pi*rho)/3
+====================================
+RESULTING KAPPA_PV: (a*Pi)/8
+====================================
+(Check: Kappa relative to 4D displaced mass): 1/3
+

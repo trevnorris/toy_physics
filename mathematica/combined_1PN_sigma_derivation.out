@@ -1,0 +1,52 @@
+D0: Setup complete. Assumptions: μ>0, cs>0, 0≤e<1, etc.
+D1: Lagrangian defined with sigma(r) and Φ_eff(r).
+D1: Expanded Lagrangian:
+    (m*(μ*(r*rdot^2*β + r^3*thetadot^2*β + μ) + cs^2*r*(r*rdot^2 + r^3*thetadot^2 + 2*μ)))/(2*cs^2*r^2)
+D2: Radial momentum pr = ∂L/∂rdot:
+    m*rdot*(1 + (β*μ)/(cs^2*r))
+D2: Angular momentum pθ = ∂L/∂thetadot:
+    (m*r*thetadot*(cs^2*r + β*μ))/cs^2
+D2: thetadot(ℓ,r,rdot) to 1PN order (exact expression before expansion):
+    (cs^2*ℓ)/(cs^2*m*r^2 + m*r*β*μ)
+D2: thetadot expanded in 1/cs^2:
+    (ℓ*(cs^2*r - β*μ))/(cs^2*m*r^3)
+D2: Newtonian limit thetadot = ℓ/(m r^2)? True
+D3: Full radial E-L equation (eqrFull == 0):
+    (m*(2*μ^2 + μ*r[t]*(2*cs^2 - β*Derivative[1][r][t]^2) - 2*cs^2*r[t]^4*Derivative[1][θ][t]^2 + 2*β*μ*r[t]^2*Derivative[2][r][t] + r[t]^3*(-(β*μ*Derivative[1][θ][t]^2) + 2*cs^2*Derivative[2][r][t])))/(2*cs^2*r[t]^3)
+D3: Radial EOM (time domain) = 0:
+    (m*(2*μ^2 + μ*r[t]*(2*cs^2 - β*Derivative[1][r][t]^2) - 2*cs^2*r[t]^4*Derivative[1][θ][t]^2 + 2*β*μ*r[t]^2*Derivative[2][r][t] + r[t]^3*(-(β*μ*Derivative[1][θ][t]^2) + 2*cs^2*Derivative[2][r][t])))/(2*cs^2*r[t]^3) == 0
+D3: Radial EOM truncated at O(1/cs^2):
+    β*μ*Derivative[1][r][t]^2 + r[t]^2*((β*μ + 2*cs^2*r[t])*Derivative[1][θ][t]^2 - 2*cs^2*Derivative[2][r][t]) == (2*μ*(μ + cs^2*r[t] + β*r[t]^2*Derivative[2][r][t]))/r[t]
+D3b: Radial EOM expression eqPNExpr (eqPNExpr == 0):
+    β*μ*Derivative[1][r][t]^2 + r[t]^2*((β*μ + 2*cs^2*r[t])*Derivative[1][θ][t]^2 - 2*cs^2*Derivative[2][r][t]) - (2*μ*(μ + cs^2*r[t] + β*r[t]^2*Derivative[2][r][t]))/r[t]
+D4: U_eff,1PN (expanded to O(1/cs^2)):
+    (μ*(-(ℓ^2*β) + m^2*r*μ) + cs^2*r*(ℓ^2 + 2*m^2*r*μ))/(2*cs^2*m*r^3)
+D4: Circular condition dU_eff/dr|_(r0)=0:
+    (μ*(3*ℓ^2*β - 2*m^2*r0*μ) - 2*cs^2*r0*(ℓ^2 + m^2*r0*μ))/(2*cs^2*m*r0^4)
+D4: ℓ^2 at circular orbit (to O(1/cs^2)):
+    {ℓ^2 -> (-2*m^2*r0*μ*(cs^2*r0 + μ))/(2*cs^2*r0 - 3*β*μ)}
+D4b: κ^2 (expanded to O(1/cs^2)):
+    (μ*(-2*r0 + (5*β*μ)/cs^2))/(2*r0^4)
+D4b: κ^2 Newtonian limit: -(μ/r0^3)
+D4c: Ω^2 Newtonian limit: Ω2Series
+D4: κ^2 == Ω^2 in Newtonian limit? μ + r0^3*Ω2Series == 0
+D4c: Ω^2 (expanded to O(1/cs^2)):
+    (μ*(-2*cs^2*r0 + (-2 + β)*μ))/(2*cs^2*r0^4)
+D4c: Δφ(r0) to O(1/cs^2):
+    (Pi*(μ + 2*β*μ))/(cs^2*r0)
+D4c: C(β) such that Δφ ≈ C(β) π μ/(cs^2 r0):
+    1 + 2*β
+D4c: C0 (β-independent, scalar-only): 1
+D4c: Cβ (coefficient multiplying β):  2
+D4c: Does scalar-only piece give the 1/6 factor (C0=1)? True
+D5: β needed to match GR factor 6 (small-e limit): β = 5/2
+D6: Analytic Δφ with numeric params: 0.00471238898038469 radians
+=============================================================
+CHECK SUMMARY
+=============================================================
+  D2: Newtonian limit of thetadot:                     True
+  D4: Scalar-only limit reproduces 1/6 piece:          True
+=============================================================
+All passes? True
+=============================================================
+

@@ -1,0 +1,23 @@
+=================================================
+   4D HYPER-CYLINDER (TUBE) INERTIA TEST       
+=================================================
+
+--- 1. Setup ---
+Laplacian Check (should be 0): 0
+
+--- 2. Boundary Condition ---
+Dipole Strength Asol (Standard 3D Sphere): a^3/2
+
+--- 3. Integrating Bulk Kinetic Energy ---
+Total Kinetic Energy (Infinite Cylinder Approx): (a^3*L*Pi*rho*V^2)/3
+
+--- 4. Extracting Kappa ---
+Effective Bulk Mass mEff: (2*a^3*L*Pi*rho)/3
+Reference Displaced Mass (Tube): (4*a^3*L*Pi*rho)/3
+====================================
+RESULTING KAPPA (Tube): 1/2
+====================================
+
+--- Interpretation ---
+RESULT: 1/2. The tube behaves like a stack of spheres.
+

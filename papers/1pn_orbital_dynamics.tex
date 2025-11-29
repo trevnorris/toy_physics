@@ -1170,17 +1170,30 @@ In this section we summarize the numerical evidence that the toy model behaves a
 
 The full toy model can be implemented on a cubic Cartesian grid with periodic or effectively large-domain boundary conditions. We discretize a domain of side length $L$ into $N^3$ cells, with typical resolutions $N = 128$--$256$, and represent the scalar potentials $\PhiP$ and $\PhiL$ on the grid. The mass density $\rho(\mathbf{x},t)$ is obtained by depositing a collection of point-like defects onto the grid using a cloud-in-cell (trilinear) assignment scheme, which suppresses the ``staircase gravity'' artefacts associated with nearest-grid-point deposition.
 
-At each time step, the Poisson equation
+At each time step, we evolve the total scalar potential
+\begin{equation}
+  \Phi(\mathbf{x},t) = \PhiP(\mathbf{x},t) + \PhiL(\mathbf{x},t)
+\end{equation}
+according to the wave equation
+\begin{equation}
+  \frac{\partial^2 \Phi}{\partial t^2}(\mathbf{x},t)
+  = \cS^2 \bigl[\nabla^2 \Phi(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t)\bigr].
+\end{equation}
+Simultaneously, we recompute the instantaneous Poisson sector by solving
 \begin{equation}
   \nabla^2 \PhiP(\mathbf{x},t)
   = 4\pi G\,\rho(\mathbf{x},t),
 \end{equation}
-is solved in Fourier space using a fast Fourier transform (FFT) solver. Note that the FFT method implicitly enforces flux neutrality by setting the $\mathbf{k}=\mathbf{0}$ mode of the potential to zero, which corresponds to subtracting the mean background density; this is consistent with the flux--neutral frame requirement discussed in Section~\ref{sec:flux_neutrality}. The lag equation
+in Fourier space using a fast Fourier transform (FFT) with the same
+flux-neutralizing background treatment discussed in
+Section~\ref{sec:flux_neutrality}. For analysis, we then define the lag
+potential in post-processing as the residual
 \begin{equation}
-  \frac{\partial^2 \PhiL}{\partial t^2}(\mathbf{x},t)
-  = \cS^2 \bigl[\nabla^2 \PhiL(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t)\bigr],
+  \PhiL(\mathbf{x},t) \equiv \Phi(\mathbf{x},t) - \PhiP(\mathbf{x},t).
 \end{equation}
-is integrated forward in time using a second-order finite-difference scheme with a Courant-limited time step. Test defects move under the gradient of the total potential,
+The wave equation for $\Phi$ is integrated forward in time using a
+second-order finite-difference scheme with a Courant-limited time step.
+Test defects move under the gradient of the total potential,
 \begin{equation}
   \mathbf{a}(\mathbf{x},t) = -\bm{\nabla}\Phi(\mathbf{x},t)
   = -\bm{\nabla}\PhiP(\mathbf{x},t) - \bm{\nabla}\PhiL(\mathbf{x},t),
@@ -1189,7 +1202,7 @@ with positions and velocities updated by a symplectic integrator.
 
 To test the Static Limit Theorem numerically, we initialize a single static sink defect by depositing a smooth, compact density profile centered at the origin, and we hold the density fixed in time. We then evolve the lag equation from generic initial data for $\PhiL$ (e.g.\ random small-amplitude noise or a superposition of low-$k$ modes) while recomputing $\PhiP$ at each step.
 
-In all such runs, the lag potential is observed to radiate away its initial content and relax toward a configuration in which the difference
+In all such runs, the residual lag field is observed to radiate away its initial content and relax toward a configuration in which the difference
 \begin{equation}
   \Delta \Phi(\mathbf{x},t)
   \equiv \Phi(\mathbf{x},t) - \PhiP(\mathbf{x})

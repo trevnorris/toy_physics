@@ -66,3 +66,21 @@ solution = Solve[thetaTotal == thetaGR, polyN];
 
 Print["\nREQUIRED EQUATION OF STATE (polyN):"]
 Print[solution]
+
+(*"
+Output:
+
+Refractive Index n(r):
+1 + (mu*(-1 + polyN))/(2*c0^2*r)
+Refraction Coefficient (alpha):
+(-1 + polyN)/2
+
+-------------------------------------------------
+RESULTS
+-------------------------------------------------
+Total Scalar Bending: (mu*(1 + polyN))/(b*c0^2)
+Target GR Bending:    (4*mu)/(b*c0^2)
+
+REQUIRED EQUATION OF STATE (polyN):
+{{polyN -> 3}}
+"*)

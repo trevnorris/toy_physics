@@ -38,3 +38,19 @@ Print[PhiLagCorrected];
 (* Notice the leading order term is now Order(1/cs), not Order(1) *)
 Print["\n--- Leading order of Corrected PhiL ---"];
 Print["Does it vanish in static limit (cs->infinity)? ", Limit[PhiLagCorrected, cs -> Infinity] == 0];
+
+(*"
+Output:
+
+--- Expansion of the True Retarded Potential (PhiTotal) ---
+-(mu/R) - (mu*nDotV)/(cs*R) - (mu*nDotV^2)/(cs^2*R)
+
+--- PhiTotal in Current Text (Static Limit Check) ---
+Static Limit (should be -mu/R): (-2*mu)/R
+
+--- Corrected PhiL (Lag Potential) ---
+-((mu*nDotV)/(cs*R)) - (mu*nDotV^2)/(cs^2*R)
+
+--- Leading order of Corrected PhiL ---
+Does it vanish in static limit (cs->infinity)? True
+"*)

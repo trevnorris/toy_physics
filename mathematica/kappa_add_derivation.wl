@@ -359,3 +359,129 @@ Print["Conclusion: The model reproduces GR 1PN precession using only"];
 Print["standard 3D hydrodynamic effects (Density + Added Mass)."];
 Print[""];
 Print["============================================================="];
+
+(*"
+Output:
+
+=============================================================
+DERIVATION OF kappa_add: ADDED MASS OF A MOVING SINK
+=============================================================
+
+SECTION 1: Stationary Sink Flow
+-------------------------------------------------------------
+1.1: Sink potential: phi_sink(r) = -1/4*Q/(Pi*r)
+1.2: Radial velocity: v_r(r) = -d phi/dr = -1/4*Q/(Pi*r^2)
+1.3: Flux through sphere: v_r * 4 Pi R^2 = -Q
+     (This equals Q as required for sink strength Q)
+
+SECTION 2: Moving Sink Perturbation
+-------------------------------------------------------------
+2.1: For finite-size throat (radius a) moving at velocity V:
+2.2: Dipole potential: phi_dipole = (a^3*V*Cos[th])/(2*r^2)
+2.3: Dipole velocity components:
+     v_r^dipole = (a^3*V*Cos[th])/r^3
+     v_th^dipole = (a^3*V*Sin[th])/(2*r^3)
+
+SECTION 3: Kinetic Energy of Combined Flow
+-------------------------------------------------------------
+3.1: |v_total|^2 = (v_sink + v_dip,r)^2 + v_dip,th^2
+3.2: Expanding...
+3.3: |v|^2 expanded:
+     Q^2/(16*Pi^2*r^4) - (a^3*Q*V*Cos[th])/(2*Pi*r^5) + (a^6*V^2*(5 + 3*Cos[2*th]))/(8*r^6)
+
+3.4: Coefficient of V^0: Q^2/(16*Pi^2*r^4)
+3.5: Coefficient of V^1: -1/2*(a^3*Q*Cos[th])/(Pi*r^5)
+3.6: Coefficient of V^2: (a^6*(5 + 3*Cos[2*th]))/(8*r^6)
+
+SECTION 4: Volume Integration for Kinetic Energy
+-------------------------------------------------------------
+4.1: T = (1/2) rho0 * 2 Pi integral_a^inf integral_0^Pi |v|^2 r^2 sin(th) dth dr
+
+4.2: integral (V^0 term) sin(th) dth = Q^2/(8*Pi^2*r^4)
+4.3: integral (V^1 term) sin(th) dth = 0
+     (Cross term vanishes by symmetry!)
+4.4: integral (V^2 term) sin(th) dth = a^6/r^6
+
+4.5: Radial integral for V^2 term:
+     integral_a^inf (th-integrated V^2 term) * r^2 dr = a^3/3
+
+SECTION 5: Added Mass Extraction
+-------------------------------------------------------------
+5.1: T_add = (1/2) rho0 * 2 Pi * (integral integral) * V^2 = (a^3*Pi*rho0*V^2)/3
+5.2: From T_add = (1/2) m_add V^2, extract m_add:
+     m_add = (2*a^3*Pi*rho0)/3
+
+5.3: Displaced fluid mass: m_displaced = rho0 * (4/3) Pi a^3 = (4*a^3*Pi*rho0)/3
+5.4: Ratio m_add / m_displaced = 1/2
+
+SECTION 6: Express kappa_add in Terms of Cavitation Mass
+-------------------------------------------------------------
+6.1: From cavitation: m = rho0 V_cav = rho0 * (4/3) Pi a^3 = m_displaced
+
+6.2: kappa_add = m_add / m = m_add / m_displaced = 1/2
+
+6.3: kappa_add = 1/2? True
+
+SECTION 7: Physical Interpretation
+-------------------------------------------------------------
+7.1: The added mass m_add = (1/2) m arises because:
+     - When throat moves at velocity V, it drags surrounding fluid
+     - The dipole flow pattern |v_dipole|^2 ~ V^2 a^6/r^6
+     - Integrating this from r=a to infinity gives finite kinetic energy
+     - This energy is T_add = (1/2) * (1/2) m * V^2
+
+7.2: The factor 1/2 is the CLASSICAL result for a sphere in
+     potential flow. Our derivation confirms this holds for
+     a throat/sink geometry as well.
+
+7.3: Importantly, the CROSS TERM (V^1) vanishes by symmetry:
+     integral cos(th) sin(th) dth = 0
+     This means sink flow and dipole flow don't interfere
+     in the total kinetic energy.
+
+SECTION 8: Verification via Kelvin's Surface Integral
+-------------------------------------------------------------
+8.1: Kelvin formula: T = -(1/2) rho0 integral_S phi (d phi/dr) dS
+     (Note: minus sign from Green's identity for exterior flow)
+
+8.2: At r = a: d phi_dipole/dr = -(V*Cos[th])
+8.3: At r = a: phi_dipole = (a*V*Cos[th])/2
+8.4: Integrand: phi (d phi/dr) r^2 sin(th) = -1/2*(a^3*V^2*Cos[th]^2*Sin[th])
+8.5: integral_0^Pi dth = -1/3*(a^3*V^2)
+8.6: Full surface integral (times 2 Pi): (-2*a^3*Pi*V^2)/3
+8.7: T_add = -(1/2) rho0 * (surface integral) = (a^3*Pi*rho0*V^2)/3
+8.8: From T = (1/2) m_add V^2: m_add = (2*a^3*Pi*rho0)/3
+8.9: kappa_add from Kelvin = 1/2
+8.10: Matches volume integral? True
+
+=============================================================
+SUMMARY: kappa_add DERIVATION
+=============================================================
+
+DERIVED (not assumed):
+  1. Velocity field of moving sink = static sink + dipole
+  2. |v|^2 expanded to O(V^2), cross term vanishes by symmetry
+  3. Volume integral of V^2 term: T_add = (1/2) m_add V^2
+  4. Result: m_add = (2/3) Pi a^3 rho0 = (1/2) m_displaced
+  5. Since m = m_displaced (cavitation): kappa_add = 1/2
+
+VERIFIED by two independent methods:
+  - Volume integral of kinetic energy
+  - Kelvin's surface integral formula
+
+  +----------------------------------+
+  |  kappa_add = 1/2  (DERIVED)     |
+  +----------------------------------+
+
+=============================================================
+CONTEXT: UPDATED beta = 1.5 DECOMPOSITION
+=============================================================
+
+Using the RIGOROUS scalar potential expansion, the scalar sector
+contributes 50% (3/6) of the required GR precession.
+
+Therefore, we require beta = 1.5 (down from 2.5).
+  sigma(r) = beta * mu / (cs^2 * r)
+
+Updated decomposition: beta = kappa_rho + kappa_add + kappa_PV
+"*)

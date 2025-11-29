@@ -4,7 +4,7 @@ Lightweight research sandbox for a toy superfluid model that reproduces Newtonia
 
 ## Repository Layout
 - `papers/` – Source and PDF for *Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model* (`1pn_orbital_dynamics.tex`, `1pn_orbital_dynamics.pdf`).
-- `mathematica/` – Mathematica notebooks/scripts that carry out the derivations in the paper; `.out` files capture saved outputs for reference.
+- `mathematica/` – Mathematica notebooks/scripts that carry out the derivations in the paper.
 - `scripts/` – Small Python proofs-of-concept (Shapiro delay partitioning, ray-bending tests).
 - `superfluid_lib/` – WIP physics engine (scalar Poisson + wave solvers, particle dynamics, 1PN orbit integrator); uses CuPy if available, otherwise NumPy.
 - `experiments/` – Python experiments that exercise the engine (radial force law fit, Mercury perihelion calibration/precession).

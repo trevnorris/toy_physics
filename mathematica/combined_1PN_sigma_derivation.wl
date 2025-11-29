@@ -206,3 +206,26 @@ Print["Scalar contribution (C0): ", C0, "/6 of GR"];
 Print["Inertia contribution (C_beta): ", Cβ];
 Print["Required Beta (β): ", βSol];
 Print["============================================================="];
+
+(*"
+Output:
+
+D0: Setup complete. Assumptions: μ>0, cs>0, 0≤e<1, etc.
+D1: Lagrangian defined with RIGOROUS scalar potential (coeff 3/2).
+D1: Expanded Lagrangian:
+    (m*(cs^2*r*(r*rdot^2 + r^3*thetadot^2 + 2*μ) + μ*(r*rdot^2*β + r^3*thetadot^2*β + 3*μ)))/(2*cs^2*r^2)
+D4c: Δφ(r0) to O(1/cs^2):
+    (Pi*(3 + 2*β)*μ)/(cs^2*r0)
+D4c: C(β) such that Δφ ≈ C(β) π μ/(cs^2 r0):
+    3 + 2*β
+D4c: C0 (β-independent, scalar-only): 3
+D4c: Cβ (coefficient multiplying β):  2
+
+=============================================================
+FINAL RESULT
+=============================================================
+Scalar contribution (C0): 3/6 of GR
+Inertia contribution (C_beta): 2
+Required Beta (β): 3/2
+=============================================================
+"*)

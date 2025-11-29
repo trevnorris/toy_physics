@@ -58,3 +58,22 @@ Print["  -----------------------------"];
 Print["  Remains for κ_PV = ", kappaPV];
 Print["\nCONCLUSION: No exotic 4D geometry required. PV work is zero."];
 Print["============================================================="];
+
+(*"
+Output:
+
+C0: Testing consistency of β = 3/2
+C1: σ(r) = 1 at r = ConditionalExpression[(3*μ)/(2*cs^2), Element[m, Reals] && Element[Q, Reals] && Element[r0, Reals] && Element[rThroat, Reals] && Element[κg, Reals] && Element[ξ, Reals] && Element[ρ0, Reals]]
+C1: r_breakdown = 3/4 × r_Schwarzschild
+
+=============================================================
+C10: DECOMPOSITION OF β = 1.5
+=============================================================
+  κ_ρ (Density)    = 1
+  κ_add (Added Mass) = 1/2
+  -----------------------------
+  Remains for κ_PV = 0
+
+CONCLUSION: No exotic 4D geometry required. PV work is zero.
+=============================================================
+"*)

@@ -304,3 +304,73 @@ Print["  This script is honest: it does not claim to re-derive the"];
 Print["  Green's function, but it mechanically checks everything from"];
 Print["  the LW factor onward."];
 Print["============================================================="];
+
+(*"
+STAGE A: Wave PDE → Retarded potential (structural assumptions)
+---------------------------------------------------------------
+  Expansion of 1/(1 - n·v/cs) up to O((n·v/cs)^3):
+    1 + ndotv/cs + ndotv^2/cs^2 + ndotv^3/cs^3
+  Series check (matches 1 + (n·v)/cs + (n·v)^2/cs^2 + (n·v)^3/cs^3): True
+
+STAGE B: Near-zone expansion → Effective 1/r³ correction
+---------------------------------------------------------------
+B1: 1/(1 - v cosθ / cs) expanded in v:
+    1 + (v*Cos[th])/cs + (v^2*Cos[th]^2)/cs^2 + (v^3*Cos[th]^3)/cs^3 + (v^4*Cos[th]^4)/cs^4
+
+B2: Orbit averages:
+    <cos θ>   = 0
+    <cos^2 θ> = 1/2
+    <cos^3 θ> = 0
+    <cos^4 θ> = 3/8
+    Averages match expected values? True
+
+B3: Orbit-averaged retarded factor <1/(1 - v cosθ/cs)>:
+    1 + v^2/(2*cs^2) + (3*v^4)/(8*cs^4)
+    Series in powers of v (after averaging):
+    1 + v^2/(2*cs^2) + (3*v^4)/(8*cs^4)
+    Leading correction v^2/(2 cs^2) confirmed? True
+
+B4: Circular orbit potential correction δΦ_circ(r):
+    δΦ_circ(r) = -1/2*(G^2*M^2)/(cs^2*r^2)
+
+B5: Effective potential (near-zone, leading order):
+    Φ_eff(r) = -1/2*(G^2*M^2)/(cs^2*r^2) - (G*M)/r
+
+B6: Force from Φ_eff:
+    F(r) = -((G*M*(G*M + cs^2*r))/(cs^2*r^3))
+    Newtonian piece: F_N(r) = -((G*M)/r^2)
+    Correction piece: F_corr(r) = -((G^2*M^2)/(cs^2*r^3))
+    Power of r in correction term: -3
+    Is correction ∝ 1/r^3 ? True
+
+B7: Precession Δφ(a,e) from δU = -ε/(2 r^2):
+    ε = G^2 M^2 / cs^2
+    Δφ(a,e) = (G*M*Pi)/(a*cs^2 - a*cs^2*e^2)
+    Δφ × a = -((G*M*Pi)/(cs^2*(-1 + e^2)))
+    Independent of a? (Δφ ∝ 1/a) True
+
+STAGE C: Comparison to GR 1PN (test-mass precession)
+---------------------------------------------------------------
+C1: GR 1PN precession (input):
+    Δφ_GR(a,e) = (6*G*M*Pi)/(a*c^2*(1 - e^2))
+
+C2: Precession ratio Δφ_SF / Δφ_GR = c^2/(6*cs^2)
+    Matches c^2/(6 cs^2)? True
+
+C3: cs choices satisfying Δφ_SF = Δφ_GR: {{cs -> -(c/Sqrt[6])}, {cs -> c/Sqrt[6]}}
+
+C4: With cs = c/Sqrt[3], δF_SF = δF_GR ? False
+
+C5: Precession ratio Δφ_SF / Δφ_GR = c^2/(6*cs^2)
+    With cs = c/Sqrt[3], ratio = 1/2
+    (Shows the scalar model has correct structure but not full GR coeff.)
+
+=============================================================
+CHECK SUMMARY
+=============================================================
+  Stage A: series expansion check of Liénard–Wiechert factor:   True
+  Stage B: orbit averages, 1/r^3 force, Δφ ∝ 1/a:               True
+  Stage C: GR precession comparison (ratio c^2/(6 cs^2)):       True
+
+  ALL PROGRAMMATIC CHECKS: PASSED ✓
+"*)

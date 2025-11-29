@@ -123,3 +123,50 @@ If[NewBeta == 1.5,
     Print["WARNING. Unexpected Beta result."]
 ];
 Print["This justifies the use of beta=1.5 in the other scripts."];
+
+(*"
+Output:
+
+=============================================================
+STEP 1: Iterative Solution of Retarded Time
+=============================================================
+Retarded Distance (R_ret) expansion:
+r - eps*r*vr + eps^2*((ar*r^2)/2 + r*vr^2)
+
+=============================================================
+STEP 3: Analysis of Terms
+=============================================================
+0th Order (Newtonian):
+-(mu/r)
+
+1st Order (1/cs):
+(-2*mu*vr)/r
+(Note: proportional to time derivative of log(r), so no secular effect)
+
+2nd Order (1/cs^2) Raw:
+(3*ar*mu)/2 - (2*mu*vr^2)/r
+
+=============================================================
+STEP 4: Circular Orbit Limit (vr -> 0, ar -> -mu/r^2)
+=============================================================
+Rigorous Scalar Correction (Circular):
+(-3*mu^2)/(2*r^2)
+
+Coefficient of (mu^2/r^2): -3/2
+
+Comparison to Naive Approximation (-1/2):
+Ratio (Rigorous / Naive) = 3
+
+=============================================================
+STEP 5: Implication for Beta
+=============================================================
+Scalar Sector Contribution: 3/6 (50% of GR)
+Required Inertia Contribution: 50%
+
+CALCULATED REQUIRED BETA:
+3/2
+
+VERDICT:
+SUCCESS. Beta = 1.5 is confirmed by the rigorous expansion.
+This justifies the use of beta=1.5 in the other scripts.
+"*)

@@ -311,10 +311,11 @@ In the near-zone, weak-field regime of interest here, the governing equations fo
   \label{eq:poisson_phiP}
   \\
   \frac{\partial^2 \PhiL}{\partial t^2}(\mathbf{x},t)
-  &= \cS^2 \bigl[ \nabla^2 \PhiL(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t) \bigr],
+  &= \cS^2 \nabla^2 \PhiL(\mathbf{x},t)
+   - \frac{\partial^2 \PhiP}{\partial t^2}(\mathbf{x},t),
   \label{eq:wave_phiL}
 \end{align}
-where $\rho(\mathbf{x},t)$ is the mass density defined in Eq.~\eqref{eq:rho_def}. The Poisson equation~\eqref{eq:poisson_phiP} is elliptic and determines $\PhiP$ instantaneously from $\rho$ on each time slice. The wave equation~\eqref{eq:wave_phiL} is hyperbolic and ensures that changes in the mass distribution propagate at finite speed $\cS$. The specific form of Eq.~\eqref{eq:wave_phiL} is chosen so that in the strict static limit, $\partial_t \rho = 0$ and $\partial_t \PhiL \to 0$, the lag potential relaxes to a solution of the same Poisson equation as $\PhiP$; appropriate boundary conditions then drive $\PhiL$ to zero and leave only the Newtonian Poisson sector. This property underlies the Static Limit Theorem discussed in Section~\ref{sec:static_0PN}.
+where $\rho(\mathbf{x},t)$ is the mass density defined in Eq.~\eqref{eq:rho_def}. The Poisson equation~\eqref{eq:poisson_phiP} is elliptic and determines $\PhiP$ instantaneously from $\rho$ on each time slice. The wave equation~\eqref{eq:wave_phiL} is hyperbolic and ensures that changes in the mass distribution propagate at finite speed $\cS$ via the lag sector. The source term $-\partial_t^2 \PhiP$ reflects the fact that $\PhiL$ responds only to the \emph{time-dependent} part of the constraint potential. In the strict static limit, $\partial_t \rho = 0$ and hence $\partial_t \PhiP = 0$, so the right-hand side of Eq.~\eqref{eq:wave_phiL} vanishes and $\PhiL$ relaxes toward a solution of the homogeneous wave equation. Appropriate boundary conditions then drive $\PhiL$ to zero and leave only the Newtonian Poisson sector. This property underlies the Static Limit Theorem discussed in Section~\ref{sec:static_0PN}.
 
 Away from the static limit, the retarded solution of Eq.~\eqref{eq:wave_phiL} produces the scalar Liénard--Wiechert--like potential used in Section~\ref{sec:scalar_lag} to derive the $1/r^3$ correction and the associated perihelion precession. In all cases, test bodies feel only the gradient of the \emph{total} scalar potential,
 \begin{equation}
@@ -339,7 +340,8 @@ Consider the coupled field equations
   \label{eq:poisson_phiP_static_section}
   \\
   \frac{\partial^2 \PhiL}{\partial t^2}(\mathbf{x},t)
-  &= \cS^2 \bigl[ \nabla^2 \PhiL(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t) \bigr],
+  &= \cS^2 \nabla^2 \PhiL(\mathbf{x},t)
+   - \frac{\partial^2 \PhiP}{\partial t^2}(\mathbf{x},t),
   \label{eq:wave_phiL_static_section}
 \end{align}
 as in Section~\ref{sec:model_fields}. We assume that the mass density is strictly time-independent,
@@ -353,19 +355,23 @@ and that the system is allowed to relax for long times so that $\PhiL$ approache
   \frac{\partial^2 \PhiL}{\partial t^2} \to 0
   \quad \text{as} \quad t \to \infty.
 \end{equation}
-In this late-time regime, Eq.~\eqref{eq:wave_phiL_static_section} reduces to the elliptic equation
+In this late-time regime, Eq.~\eqref{eq:wave_phiL_static_section} implies
 \begin{equation}
-  \nabla^2 \PhiL(\mathbf{x})
-  = 4\pi G\,\rho(\mathbf{x}),
-  \label{eq:phiL_poisson}
+  \nabla^2 \PhiL(\mathbf{x}) = 0,
 \end{equation}
-with no remaining explicit time dependence.
+so the lag potential satisfies the homogeneous Laplace equation.
 
-Comparing Eq.~\eqref{eq:phiL_poisson} with Eq.~\eqref{eq:poisson_phiP_static_section}, we see that both $\PhiP$ and the stationary $\PhiL$ solve the same Poisson equation with the same source. Their difference therefore satisfies the homogeneous Laplace equation,
+The Poisson equation~\eqref{eq:poisson_phiP_static_section} fixes $\PhiP(\mathbf{x})$ (up to an additive constant) from the mass distribution. The total scalar potential
 \begin{equation}
-  \nabla^2 \bigl(\PhiL - \PhiP\bigr) = 0.
+  \Phi(\mathbf{x}) \equiv \PhiP(\mathbf{x}) + \PhiL(\mathbf{x})
 \end{equation}
-Imposing that both potentials vanish at spatial infinity,\footnote{More generally, one can impose any common boundary condition on $\PhiP$ and $\PhiL$ at a large but finite radius and then take the limit as the boundary is pushed to infinity.} the only regular solution of this homogeneous equation is a constant. Any constant offset in the total potential is physically irrelevant, since only gradients of $\Phi$ enter the acceleration. We are therefore free to choose this constant to be zero, which yields
+then obeys
+\begin{equation}
+  \nabla^2 \Phi(\mathbf{x}) = 4\pi G\,\rho(\mathbf{x}),
+\end{equation}
+so $\Phi$ reproduces the Newtonian Poisson solution.
+
+The difference $\PhiL$ solves the homogeneous Laplace equation with boundary condition $\PhiL \to 0$ at spatial infinity.\footnote{More generally, one can impose any common boundary condition on $\PhiP$ and $\PhiL$ at a large but finite radius and then take the limit as the boundary is pushed to infinity.} The only regular solution of this homogeneous equation is a constant. Any constant offset in the total potential is physically irrelevant, since only gradients of $\Phi$ enter the acceleration. We are therefore free to choose this constant to be zero, which yields
 \begin{equation}
   \PhiL(\mathbf{x}) \to 0,
   \qquad
@@ -464,17 +470,17 @@ In the previous section we established that for strictly static sources the lag 
 \subsection{Retarded scalar potential for a moving source}
 \label{sec:retarded_scalar}
 
-We begin from the wave equation for the lag sector,
+We begin from the wave equation for the total scalar potential,
 \begin{equation}
-  \frac{\partial^2 \PhiL}{\partial t^2}(\mathbf{x},t)
-  = \cS^2 \bigl[ \nabla^2 \PhiL(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t) \bigr],
+  \frac{\partial^2 \Phi}{\partial t^2}(\mathbf{x},t)
+  = \cS^2 \bigl[ \nabla^2 \Phi(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t) \bigr],
   \label{eq:phiL_wave_again}
 \end{equation}
 which can be written in the more familiar form
 \begin{equation}
   \biggl(
     \nabla^2 - \frac{1}{\cS^2}\frac{\partial^2}{\partial t^2}
-  \biggr)\PhiL(\mathbf{x},t)
+  \biggr)\Phi(\mathbf{x},t)
   = 4\pi G\,\rho(\mathbf{x},t),
   \label{eq:phiL_wave_box}
 \end{equation}
@@ -501,15 +507,15 @@ For a single point-like defect of mass $M$ moving on a trajectory $\mathbf{x}_s(
   \rho(\mathbf{x},t)
   = M\,\delta^{(3)}\!\bigl(\mathbf{x}-\mathbf{x}_s(t)\bigr),
 \end{equation}
-and the time integral in Eq.~\eqref{eq:phiL_green} can be evaluated explicitly using the $\delta$-function. After standard manipulations (see Appendix~\ref{app:retarded} for details), one obtains a scalar analogue of the Liénard--Wiechert potential,
+and the time integral in Eq.~\eqref{eq:phiL_green} can be evaluated explicitly using the $\delta$-function. After standard manipulations (see Appendix~\ref{app:retarded} for details), one obtains a scalar analogue of the Liénard--Wiechert potential for the total scalar field,
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{\mu}{R\bigl(1 - \mathbf{n}\cdot\mathbf{v}/\cS\bigr)},
   \label{eq:phiL_LW}
 \end{equation}
 where $R = |\mathbf{x} - \mathbf{x}_s(t_{\mathrm{ret}})|$ is the spatial separation at the retarded time $t_{\mathrm{ret}} = t - R/\cS$, and $\mathbf{n}$ is the corresponding direction unit vector. Here $\mathbf{v} = \dot{\mathbf{x}}_s(t_{\mathrm{ret}})$ denotes the velocity of the source. While the Liénard--Wiechert form is derived for motion through the medium, the uniform--drift invariance discussed in Section~\ref{sec:udi} ensures that for a flux--neutral system, the conservative dynamics depend only on relative velocities. We are therefore free to perform the calculation in the barycentric frame of the local system, where $\mathbf{v}$ corresponds to the orbital velocity, effectively ignoring any bulk flow of the galaxy through the superfluid background.
 
-The overall minus sign in Eq.~\eqref{eq:phiL_LW} is chosen so that in the static limit, $\mathbf{v}\to 0$, the lag potential reduces to the same $-\mu/R$ form as the Poisson sector, consistent with the Static Limit Theorem.
+The overall minus sign in Eq.~\eqref{eq:phiL_LW} is chosen so that in the static limit $\mathbf{v}\to 0$, the total potential reduces to the same $-\mu/R$ form as the Poisson sector, consistent with the Static Limit Theorem.
 
 The total potential experienced by a test body is
 \begin{equation}
@@ -517,6 +523,9 @@ The total potential experienced by a test body is
   = \PhiP(\mathbf{x},t) + \PhiL(\mathbf{x},t),
 \end{equation}
 where $\PhiP$ is determined instantaneously from the Poisson equation~\eqref{eq:poisson_phiP_static_section}. In the near-zone regime of interest, $R$ is small compared to the characteristic wavelength associated with the source motion, and we may treat the difference between $R$ and the instantaneous separation $r = |\mathbf{x}-\mathbf{x}_s(t)|$ perturbatively in $v/\cS$.
+
+In this decomposition, $\Phi(\mathbf{x},t)$ is the retarded solution of Eq.~\eqref{eq:phiL_wave_box}, while the lag potential is defined as the difference
+$\PhiL \equiv \Phi - \PhiP$, consistent with the discussion in Section~\ref{sec:model_fields}.
 
 \subsection{Expansion to $\mathcal{O}(v^2/\cS^2)$}
 \label{sec:expansion_v2}
@@ -561,16 +570,16 @@ with $\alpha$ a pure number. A careful derivation, outlined in Appendix~\ref{app
 \end{equation}
 for the class of nearly Keplerian orbits considered here.
 
-If we ignore the variation of the retarded distance $R_{\mathrm{ret}}$ in the prefactor, Eq.~\eqref{eq:avg_den} with $\alpha = 1/2$ would suggest an orbit-averaged lag potential of the form
+If we ignore the variation of the retarded distance $R_{\mathrm{ret}}$ in the prefactor, Eq.~\eqref{eq:avg_den} with $\alpha = 1/2$ would suggest an orbit-averaged retarded potential of the form
 \begin{equation}
-  \bigl\langle \PhiL(r) \bigr\rangle_{\text{den}}
+  \bigl\langle \Phi(r) \bigr\rangle_{\text{den}}
   \simeq -\frac{\mu}{r}
          \left(1 + \frac{v^2}{2\cS^2}\right)
   + \mathcal{O}\!\left(\frac{v^3}{\cS^3}\right).
 \end{equation}
 However, a full Taylor expansion of the retarded time $t_{\mathrm{ret}} = t - R(t_{\mathrm{ret}})/\cS$, including both the $1/R_{\mathrm{ret}}$ prefactor and the Doppler denominator, shows that the $\mathcal{O}(v/\cS)$ term is a total time derivative and that the net $\mathcal{O}(v^2/\cS^2)$ correction to the central potential for nearly circular orbits is
 \begin{equation}
-  \bigl\langle \PhiL(r) \bigr\rangle
+  \bigl\langle \Phi(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
          \left(1 + \frac{3}{2}\frac{v^2}{\cS^2}\right)
   + \mathcal{O}\!\left(\frac{v^3}{\cS^3}\right).
@@ -582,14 +591,23 @@ To translate this into a correction expressed purely in terms of $r$, we use the
 \end{equation}
 valid up to 0PN accuracy. Substituting this into Eq.~\eqref{eq:phiL_avg}, we obtain
 \begin{equation}
-  \bigl\langle \PhiL(r) \bigr\rangle
+  \bigl\langle \Phi(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
          - \frac{3\mu^2}{2 \cS^2 r^2},
   \label{eq:phiL_eff}
 \end{equation}
 where we have dropped terms of higher PN order.
 
-The Poisson sector $\PhiP$ contributes the static Newtonian potential $-\mu/r$ (Section~\ref{sec:point_sink_static}). Adding the lag contribution, the \emph{effective} central potential that controls the conservative orbital dynamics to order $v^2/\cS^2$ is therefore
+Since the instantaneous Poisson potential is $\PhiP(r) = -\mu/r$, the corresponding orbit-averaged lag contribution is obtained by subtraction,
+\begin{equation}
+  \bigl\langle \PhiL(r) \bigr\rangle
+  \equiv \bigl\langle \Phi(r) \bigr\rangle - \PhiP(r)
+  \simeq - \frac{3\mu^2}{2 \cS^2 r^2},
+  \label{eq:phiL_lag_avg}
+\end{equation}
+up to the same post-Newtonian order.
+
+Since $\PhiP(r) = -\mu/r$, Eq.~\eqref{eq:phiL_eff} can be decomposed into an instantaneous piece and a lag correction as in Eq.~\eqref{eq:phiL_lag_avg}. The \emph{effective} central potential that controls the conservative orbital dynamics to order $v^2/\cS^2$ is therefore
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
   = \PhiP(r) + \bigl\langle \PhiL(r) \bigr\rangle
@@ -1364,17 +1382,17 @@ In this appendix we provide additional details on the derivation of the retarded
 \subsection{Green's function solution of the scalar wave equation}
 \label{app:retarded_greens}
 
-The lag sector $\PhiL$ of the toy model obeys the inhomogeneous scalar wave equation
+The total scalar potential $\Phi$ of the toy model obeys the inhomogeneous scalar wave equation
 \begin{equation}
   \biggl(
     \nabla^2 - \frac{1}{\cS^2}\frac{\partial^2}{\partial t^2}
-  \biggr)\PhiL(\mathbf{x},t)
+  \biggr)\Phi(\mathbf{x},t)
   = 4\pi G\,\rho(\mathbf{x},t),
-  \label{eq:phiL_wave_box_app}
+  \label{eq:phi_wave_box_app}
 \end{equation}
-where $\cS$ is the propagation speed of the scalar mode and $\rho(\mathbf{x},t)$ is the mass density. Equation~\eqref{eq:phiL_wave_box_app} is the standard scalar wave equation with a source.
+where $\cS$ is the propagation speed of the scalar mode and $\rho(\mathbf{x},t)$ is the mass density. Equation~\eqref{eq:phi_wave_box_app} is the standard scalar wave equation with a source.
 
-The retarded Green's function $G_{\mathrm{ret}}$ for Eq.~\eqref{eq:phiL_wave_box_app} in three spatial dimensions is
+The retarded Green's function $G_{\mathrm{ret}}$ for Eq.~\eqref{eq:phi_wave_box_app} in three spatial dimensions is
 \begin{equation}
   G_{\mathrm{ret}}(\mathbf{x}-\mathbf{x}', t-t')
   = -\frac{1}{4\pi}
@@ -1389,14 +1407,16 @@ which satisfies
   \biggr) G_{\mathrm{ret}}(\mathbf{x}-\mathbf{x}', t-t')
   = \delta^{(3)}(\mathbf{x}-\mathbf{x}')\,\delta(t-t').
 \end{equation}
-The unique solution of Eq.~\eqref{eq:phiL_wave_box_app} that vanishes for $t \to -\infty$ is the retarded solution
+The unique solution of Eq.~\eqref{eq:phi_wave_box_app} that vanishes for $t \to -\infty$ is the retarded solution
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = G \int \dd^3 x'\,\dd t'\,
     G_{\mathrm{ret}}(\mathbf{x}-\mathbf{x}', t-t')\,
     \rho(\mathbf{x}',t').
-  \label{eq:phiL_green_app}
+  \label{eq:phi_green_app}
 \end{equation}
+
+In the main text we decompose this retarded solution into an instantaneous Poisson piece and a lag piece via $\Phi = \PhiP + \PhiL$, so that $\PhiL$ captures the finite-speed corrections relative to the Newtonian potential.
 
 \subsection{Moving point source and Liénard--Wiechert form}
 \label{app:retarded_LW}
@@ -1406,19 +1426,19 @@ Consider a single point-like defect of mass $M$ moving along a worldline $\mathb
   \rho(\mathbf{x},t)
   = M\,\delta^{(3)}\!\bigl(\mathbf{x}-\mathbf{x}_s(t)\bigr).
 \end{equation}
-Inserting this into Eq.~\eqref{eq:phiL_green_app} gives
+Inserting this into Eq.~\eqref{eq:phi_green_app} gives
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = G M \int \dd t'\,
     G_{\mathrm{ret}}\bigl(\mathbf{x}-\mathbf{x}_s(t'), t-t'\bigr).
 \end{equation}
 Using Eq.~\eqref{eq:greens_ret}, this becomes
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{G M}{4\pi} \int \dd t'\,
     \frac{\delta\bigl(t-t' - R(t')/\cS\bigr)}
          {R(t')},
-  \label{eq:phiL_point_pre}
+  \label{eq:phi_point_pre}
 \end{equation}
 where
 \begin{equation}
@@ -1426,7 +1446,7 @@ where
 \end{equation}
 is the distance between the field point $\mathbf{x}$ and the source position at time $t'$.
 
-The $\delta$-function in Eq.~\eqref{eq:phiL_point_pre} enforces the retarded-time condition
+The $\delta$-function in Eq.~\eqref{eq:phi_point_pre} enforces the retarded-time condition
 \begin{equation}
   t - t' - \frac{R(t')}{\cS} = 0.
 \end{equation}
@@ -1437,11 +1457,11 @@ Let $t_{\mathrm{ret}}$ denote the unique solution of this equation satisfying $t
 \end{equation}
 where the $t_i$ are the roots of $f(t')$, we can perform the $t'$ integral to obtain
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{G M}{4\pi}\,
     \frac{1}{R(t_{\mathrm{ret}})}\,
     \frac{1}{\left|1 - \dot{R}(t_{\mathrm{ret}})/\cS\right|}.
-  \label{eq:phiL_intermediate}
+  \label{eq:phi_intermediate}
 \end{equation}
 
 To express $\dot{R}$ in a more familiar form, note that
@@ -1467,24 +1487,24 @@ Here $\mathbf{n}$ is the unit vector from the source (at the retarded time) to t
   \dot{R}(t_{\mathrm{ret}})
   = -\mathbf{n}\cdot\mathbf{v}.
 \end{equation}
-Substituting this into Eq.~\eqref{eq:phiL_intermediate}, and taking the propagation speed $\cS$ to exceed any source speed (so that the denominator is positive and we may drop the absolute value), we obtain
+Substituting this into Eq.~\eqref{eq:phi_intermediate}, and taking the propagation speed $\cS$ to exceed any source speed (so that the denominator is positive and we may drop the absolute value), we obtain
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{G M}{4\pi}\,
     \frac{1}{R(t_{\mathrm{ret}})\bigl(1 + \mathbf{n}\cdot\mathbf{v}/\cS\bigr)}.
 \end{equation}
 Redefining the overall normalization to absorb the factor of $4\pi$ (which can be compensated by the choice of sign convention for $\Phi$ and $G$ in the field equations), and introducing the gravitational parameter $\mu \equiv GM$, we write
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{\mu}{R\bigl(1 - \mathbf{n}\cdot\mathbf{v}/\cS\bigr)},
-  \label{eq:phiL_LW_app}
+  \label{eq:phi_LW_app}
 \end{equation}
-which is the scalar Liénard--Wiechert form quoted in Eq.~\eqref{eq:phiL_LW}. The sign convention is chosen such that in the static limit $\mathbf{v}\to 0$, the lag potential reduces to the same $-\mu/R$ form as the Poisson sector, consistent with the Static Limit Theorem when appropriate boundary conditions drive $\PhiL \to 0$ at late times.
+which is the scalar Liénard--Wiechert form quoted in Eq.~\eqref{eq:phiL_LW}. The sign convention is chosen such that in the static limit $\mathbf{v}\to 0$, the total potential reduces to the same $-\mu/R$ form as the Poisson sector, consistent with the Static Limit Theorem when appropriate boundary conditions drive $\PhiL \to 0$ at late times.
 
 \subsection{Post-Newtonian expansion to $\mathcal{O}(v^2/\cS^2)$}
 \label{app:retarded_PN}
 
-To obtain the effective central potential used in Section~\ref{sec:scalar_lag}, we now expand the scalar Liénard--Wiechert potential~\eqref{eq:phiL_LW_app} in the slow-motion regime
+To obtain the effective central potential used in Section~\ref{sec:scalar_lag}, we now expand the scalar Liénard--Wiechert potential~\eqref{eq:phi_LW_app} in the slow-motion regime
 \begin{equation}
   \frac{v}{\cS} \ll 1.
 \end{equation}
@@ -1499,7 +1519,7 @@ In this regime we may write
   \frac{1}{R}
   = \frac{1}{r} + \mathcal{O}\!\left(\frac{v}{\cS}\right),
 \end{equation}
-and focus on expanding the kinematic factor in the denominator of Eq.~\eqref{eq:phiL_LW_app},
+and focus on expanding the kinematic factor in the denominator of Eq.~\eqref{eq:phi_LW_app},
 \begin{equation}
   \frac{1}{1 - \mathbf{n}\cdot\mathbf{v}/\cS}
   = 1 + \frac{\mathbf{n}\cdot\mathbf{v}}{\cS}
@@ -1509,23 +1529,23 @@ and focus on expanding the kinematic factor in the denominator of Eq.~\eqref{eq:
 \end{equation}
 To the order of interest, we may thus write
 \begin{equation}
-  \PhiL(\mathbf{x},t)
+  \Phi(\mathbf{x},t)
   = -\frac{\mu}{r}
     \left[
       1 + \frac{\mathbf{n}\cdot\mathbf{v}}{\cS}
         + \frac{\bigl(\mathbf{n}\cdot\mathbf{v}\bigr)^2}{\cS^2}
     \right]
   + \mathcal{O}\!\left(\frac{v^3}{\cS^3}\right),
-  \label{eq:phiL_expanded_app}
+  \label{eq:phi_expanded_app}
 \end{equation}
 where $\mathbf{n}$ and $\mathbf{v}$ are evaluated at the retarded time, but their difference from the instantaneous values is subleading in $v/\cS$ and can be neglected at the order we keep.
 
-The first term in brackets reproduces the static $-\mu/r$ potential; the second and third terms represent velocity-dependent corrections. Over a full orbital period, the term linear in $\mathbf{n}\cdot\mathbf{v}$ averages to zero for bound orbits in a central potential, while the quadratic term yields a nonzero positive correction proportional to $v^2/\cS^2$. It is this quadratic term that generates the $1/r^2$ correction in the effective potential and the $1/r^3$ correction in the force.
+The first term in brackets reproduces the static $-\mu/r$ potential; the second and third terms represent velocity-dependent corrections. Subtracting the instantaneous Poisson piece therefore isolates the lag potential $\PhiL = \Phi - \PhiP$ as a purely time-dependent correction. Over a full orbital period, the term linear in $\mathbf{n}\cdot\mathbf{v}$ averages to zero for bound orbits in a central potential, while the quadratic term yields a nonzero positive correction proportional to $v^2/\cS^2$. It is this quadratic term that generates the $1/r^2$ correction in the effective potential and the $1/r^3$ correction in the force.
 
 \subsection{Orbit-averaging and the factor $\alpha = 1/2$}
 \label{app:retarded_orbit_average}
 
-To make the averaging procedure explicit, consider the situation in which the source of the potential moves on a nearly circular orbit of radius $b$ around a barycenter, while the test body is located at a fixed distance $r \gg b$ from the barycenter. In this frame, the vector $\mathbf{n}$ in Eq.~\eqref{eq:phiL_expanded_app} points along the line from the source to the test body, and the source velocity $\mathbf{v}$ is tangential to the circular orbit. As the source moves, the angle $\theta$ between $\mathbf{n}$ and $\mathbf{v}$ varies uniformly between $0$ and $2\pi$ over an orbital period.
+To make the averaging procedure explicit, consider the situation in which the source of the potential moves on a nearly circular orbit of radius $b$ around a barycenter, while the test body is located at a fixed distance $r \gg b$ from the barycenter. In this frame, the vector $\mathbf{n}$ in Eq.~\eqref{eq:phi_expanded_app} points along the line from the source to the test body, and the source velocity $\mathbf{v}$ is tangential to the circular orbit. As the source moves, the angle $\theta$ between $\mathbf{n}$ and $\mathbf{v}$ varies uniformly between $0$ and $2\pi$ over an orbital period.
 
 In this configuration we have
 \begin{equation}
@@ -1537,7 +1557,7 @@ with $v = |\mathbf{v}|$ approximately constant for a nearly circular orbit. The 
   = \frac{1}{2\pi}\int_0^{2\pi}\cos\theta\,\dd\theta
   = 0,
 \end{equation}
-so the linear term in Eq.~\eqref{eq:phiL_expanded_app} averages away. The orbital average of $\cos^2\theta$ is
+so the linear term in Eq.~\eqref{eq:phi_expanded_app} averages away. The orbital average of $\cos^2\theta$ is
 \begin{equation}
   \langle \cos^2\theta \rangle
   = \frac{1}{2\pi}\int_0^{2\pi}\cos^2\theta\,\dd\theta
@@ -1557,7 +1577,7 @@ Defining the orbit-averaged lag potential by
   \bigl\langle \PhiL(r) \bigr\rangle
   \equiv \frac{1}{T}\int_0^{T} \PhiL\bigl(\mathbf{x}(t),t\bigr)\,\dd t,
 \end{equation}
-where $T$ is the orbital period of the source around the barycenter, and using Eq.~\eqref{eq:phiL_expanded_app} together with the averages above, we obtain a denominator-only estimate
+where $T$ is the orbital period of the source around the barycenter, and using Eq.~\eqref{eq:phi_expanded_app} together with the averages above, we obtain a denominator-only estimate
 \begin{equation}
   \bigl\langle \PhiL(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
@@ -1946,22 +1966,22 @@ for nonzero wavenumbers $\mathbf{k}$. The potential in Fourier space is thus
 \end{equation}
 with $\tilde{\Phi}_{\mathrm{P}}(\mathbf{0},t)$ set by the choice of gauge (we take it to be zero). The inverse FFT then yields $\PhiP(\mathbf{x},t)$ on the grid. The Laplacian is implemented using the standard discrete Fourier symbol corresponding to the second-order central-difference stencil.
 
-The lag field $\PhiL(\mathbf{x},t)$ obeys the scalar wave equation
+The total scalar field $\Phi(\mathbf{x},t)$ obeys the scalar wave equation
 \begin{equation}
-  \frac{\partial^2 \PhiL}{\partial t^2}(\mathbf{x},t)
-  = \cS^2 \bigl[\nabla^2 \PhiL(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t)\bigr],
+  \frac{\partial^2 \Phi}{\partial t^2}(\mathbf{x},t)
+  = \cS^2 \bigl[\nabla^2 \Phi(\mathbf{x},t) - 4\pi G\,\rho(\mathbf{x},t)\bigr],
 \end{equation}
 which we write schematically as
 \begin{equation}
-  \frac{\partial^2 \PhiL}{\partial t^2}
-  = \cS^2 \nabla^2 \PhiL - S(\mathbf{x},t),
+  \frac{\partial^2 \Phi}{\partial t^2}
+  = \cS^2 \nabla^2 \Phi - S(\mathbf{x},t),
 \end{equation}
-with $S(\mathbf{x},t) = 4\pi G \cS^2 \rho(\mathbf{x},t)$. This equation is integrated using a second-order leapfrog or staggered-in-time scheme:
+with $S(\mathbf{x},t) = 4\pi G \cS^2 \rho(\mathbf{x},t)$. In post-processing we subtract the instantaneous Poisson component to define $\PhiL = \Phi - \PhiP$ when comparing to the 0PN and 1PN effective forces. This equation is integrated using a second-order leapfrog or staggered-in-time scheme:
 \begin{align}
-  \PhiL^{n+1}
-  &= 2\PhiL^n - \PhiL^{n-1}
+  \Phi^{n+1}
+  &= 2\Phi^n - \Phi^{n-1}
    + (\Delta t)^2 \left[
-       \cS^2 \nabla^2 \PhiL^n - S^n
+       \cS^2 \nabla^2 \Phi^n - S^n
      \right],
 \end{align}
 where superscripts $n$ denote time levels and $\nabla^2$ is discretized with second-order central differences in each spatial direction. The time step $\Delta t$ is chosen to satisfy a Courant–Friedrichs–Lewy (CFL) condition of the form
@@ -1998,7 +2018,7 @@ The trajectories of test defects (and, in fully dynamical runs, of massive defec
     \mathbf{x}_i^{n+1}
     = \mathbf{x}_i^n + \Delta t\,\mathbf{v}_i^{n+1/2}.
   \end{equation}
-  \item \emph{Kick:} Deposit the particles, recompute $\PhiP$ and $\PhiL$ on the grid, interpolate the new acceleration to the particle position, and update the velocity by another half time step,
+  \item \emph{Kick:} Deposit the particles, recompute $\PhiP$ and evolve $\Phi$ on the grid (defining $\PhiL = \Phi - \PhiP$), interpolate the new acceleration to the particle position, and update the velocity by another half time step,
   \begin{equation}
     \mathbf{v}_i^{n+1}
     = \mathbf{v}_i^{n+1/2}

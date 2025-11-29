@@ -3,8 +3,8 @@ import numpy as np
 
 class OnePNOrbitIntegrator:
     """
-    Fast 2-body orbit integrator using the scalar 1/6 toy 1PN force law:
-        a(r) = -[ μ/r^2 + μ^2/(c_s^2 r^3) ] r_hat
+    Fast 2-body orbit integrator using the scalar 1/2 toy 1PN force law:
+        a(r) = -[ μ/r^2 + 3 μ^2/(c_s^2 r^3) ] r_hat
     """
 
     def __init__(self, mu, c_s):
@@ -23,7 +23,7 @@ class OnePNOrbitIntegrator:
         r_safe = np.maximum(r, eps)
         r_hat = r_vec / r_safe[:, None]
 
-        a_mag = -(self.mu / r_safe**2 + (self.mu**2) / (self.c_s**2 * r_safe**3))
+        a_mag = -(self.mu / r_safe**2 + 3 * (self.mu**2) / (self.c_s**2 * r_safe**3))
         return a_mag[:, None] * r_hat
 
     def step_leapfrog(self, pos, vel, dt):

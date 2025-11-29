@@ -10,7 +10,7 @@ Lightweight research sandbox for a toy superfluid model that reproduces Newtonia
 - `experiments/` – Python experiments that exercise the engine (radial force law fit, Mercury perihelion calibration/precession).
 
 ## Paper Snapshot
-The paper constructs a superfluid defect toy model with two scalar potentials: an instantaneous Poisson sector and a finite-speed lag sector. The lag sector adds an attractive \(1/r^3\) correction that yields one sixth of the GR 1PN precession; introducing a mild position-dependent inertia with \(\beta = 5/2\) recovers the full GR 1PN perihelion shift when \(c_s = c\) and \(\mu = GM\). See `papers/1pn_orbital_dynamics.pdf` for full context.
+The paper constructs a superfluid defect toy model with two scalar potentials: an instantaneous Poisson sector and a finite-speed lag sector. The lag sector adds an attractive \(1/r^3\) correction that yields one half of the GR 1PN precession; introducing a mild position-dependent inertia with \(\beta = 3/2\) (decomposed as \(\kappa_\rho = 1\), \(\kappa_{\mathrm{add}} = 1/2\), \(\kappa_{\mathrm{PV}} = 0\)) recovers the full GR 1PN perihelion shift when \(c_s = c\) and \(\mu = GM\). See `papers/1pn_orbital_dynamics.pdf` for full context.
 
 ## Python Environment
 - Core deps: `numpy`, `scipy`, `matplotlib`.

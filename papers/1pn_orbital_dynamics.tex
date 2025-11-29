@@ -35,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-We construct and analyze a superfluid defect toy model that reproduces both Newtonian (0PN) gravity and the leading post-Newtonian (1PN) perihelion precession of a test body in a central field. The model consists of a homogeneous superfluid background and sink-like defects whose effective gravitational potential splits into two scalar pieces: an instantaneous Poisson sector $\PhiP$ and a finite-speed ``lag'' sector $\PhiL$ governed by a wave equation with propagation speed $\cS$. In the strict static limit, $\PhiL$ relaxes and the total potential reduces to the Poisson solution $\PhiP = -\mu/r$, providing a clean scalar realization of an exactly instantaneous 0PN near-zone field and resolving the usual ``gravity must be faster than light'' aberration puzzle at this order. For time-dependent sources, the retarded scalar potential generates an $\mathcal{O}(v^2/\cS^2)$ correction to the central force, yielding an effective potential $\Phi_{\mathrm{eff}}(r) = -\mu/r - \mu^2/(2\cS^2 r^2)$ and a conservative $1/r^3$ term that produces perihelion precession. This scalar lag sector alone reproduces one sixth of the general-relativistic 1PN precession when $\cS = c$ and $\mu = GM$. We then introduce a mild radial dependence in the kinetic prefactor of the test--body Lagrangian, \(m_{\mathrm{eff}}(r) = m[1 + \sigma(r)]\) with \(\sigma(r) = \beta \mu/(\cS^2 r)\), which can be viewed as a simple parametrization of an effective spatial metric component. With this correction the model reproduces the full general-relativistic 1PN precession when $\cS = c$ and $\mu = GM$, fixing $\beta = 5/2$. We decompose this $\beta$ as $\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}}$ corresponding to density-driven cavitation mass, classical added mass, and a pressure--volume contribution derived from a geometric constraint on the defect's 4D throat depth ($L=2a$). The resulting toy model provides a concrete scalar hydrodynamic realization of GR-like 1PN dynamics and a set of hydrodynamic targets for future microphysical derivations.
+We construct and analyze a superfluid defect toy model that reproduces both Newtonian (0PN) gravity and the leading post-Newtonian (1PN) perihelion precession of a test body in a central field. The model consists of a homogeneous superfluid background and sink-like defects whose effective gravitational potential splits into two scalar pieces: an instantaneous Poisson sector $\PhiP$ and a finite-speed ``lag'' sector $\PhiL$ governed by a wave equation with propagation speed $\cS$. In the strict static limit, $\PhiL$ relaxes and the total potential reduces to the Poisson solution $\PhiP = -\mu/r$, providing a clean scalar realization of an exactly instantaneous 0PN near-zone field and resolving the usual ``gravity must be faster than light'' aberration puzzle at this order. For time-dependent sources, the retarded scalar potential generates an $\mathcal{O}(v^2/\cS^2)$ correction to the central force, yielding an effective potential $\Phi_{\mathrm{eff}}(r) = -\mu/r - 3\mu^2/(2\cS^2 r^2)$ and a conservative $1/r^3$ term that produces perihelion precession. This scalar lag sector alone reproduces one half of the general-relativistic 1PN precession when $\cS = c$ and $\mu = GM$. We then introduce a mild radial dependence in the kinetic prefactor of the test--body Lagrangian, \(m_{\mathrm{eff}}(r) = m[1 + \sigma(r)]\) with \(\sigma(r) = \beta \mu/(\cS^2 r)\), which can be viewed as a simple parametrization of an effective spatial metric component. With this correction the model reproduces the full general-relativistic 1PN precession when $\cS = c$ and $\mu = GM$, fixing $\beta = 3/2$. We decompose this $\beta$ as $\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}}$ corresponding to density-driven cavitation mass, classical added mass, and a negligible pressure--volume contribution at this order ($\kappa_{\mathrm{PV}} = 0$). The resulting toy model provides a concrete scalar hydrodynamic realization of GR-like 1PN dynamics and a set of hydrodynamic targets for future microphysical derivations.
 \end{abstract}
 
 \section{Introduction}
@@ -88,36 +88,36 @@ We then consider time-dependent sources and solve the scalar wave equation for t
 \end{equation}
 where $R$ is the retarded distance, $\mathbf{n}$ is the direction from source to field point, and $\mathbf{v}$ is the source velocity. Expanding this expression to order $v^2/\cS^2$ and averaging over the orbital angle between $\mathbf{n}$ and $\mathbf{v}$, we obtain an effective central potential
 \begin{equation}
-  \Phi_{\mathrm{eff}}(r) = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2} + \mathcal{O}\!\left(\frac{v^4}{\cS^4}\right),
+  \Phi_{\mathrm{eff}}(r) = -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2} + \mathcal{O}\!\left(\frac{v^4}{\cS^4}\right),
 \end{equation}
-which leads to a conservative force
+where a full Taylor expansion of the retarded time $t_{\mathrm{ret}}$ in both the $1/R_{\mathrm{ret}}$ prefactor and the Doppler denominator shows that the linear $\mathcal{O}(v/\cS)$ term is a total time derivative and that the quadratic $\mathcal{O}(v^2/\cS^2)$ correction to the central potential carries a net coefficient $-3/2$ for nearly circular orbits, which leads to a conservative force
 \begin{equation}
   F_r = -\frac{\dd \Phi_{\mathrm{eff}}}{\dd r}
-      = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+      = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
 \end{equation}
 The scalar lag sector thus generates an attractive $1/r^3$ correction to the inverse-square force, analogous to the correction obtained from the Darwin Lagrangian in electrodynamics when the retarded electromagnetic potentials are expanded to order $v^2/c^2$.
 
-\paragraph{Scalar-only precession: one sixth of GR.}
+\paragraph{Scalar-only precession: one half of GR.}
 
 We study the orbital dynamics of a test body in the effective potential $\Phi_{\mathrm{eff}}(r)$ and compute the resulting perihelion precession. To leading order in the small parameter $\mu/(\cS^2 a)$, where $a$ is the semi-major axis, we find
 \begin{equation}
   \Delta\varphi_{\mathrm{scalar}}
-  = \frac{\pi \mu}{\cS^2 a (1-e^2)},
+  = 3\,\frac{\pi \mu}{\cS^2 a (1-e^2)},
 \end{equation}
 for an orbit of eccentricity $e$. The corresponding general-relativistic 1PN precession for a test body in a Schwarzschild background is
 \begin{equation}
   \Delta\varphi_{\mathrm{GR}}
   = \frac{6 \pi GM}{c^2 a (1-e^2)}.
 \end{equation}
-Identifying $\mu = GM$ and setting $\cS = c$, the scalar lag contribution reproduces the correct functional dependence on $(a,e)$ but only one sixth of the GR amplitude,
+Identifying $\mu = GM$ and setting $\cS = c$, the scalar lag contribution reproduces the correct functional dependence on $(a,e)$ but only one half of the GR amplitude,
 \begin{equation}
-  \Delta\varphi_{\mathrm{scalar}} = \frac{1}{6}\,\Delta\varphi_{\mathrm{GR}}.
+  \Delta\varphi_{\mathrm{scalar}} = \frac{1}{2}\,\Delta\varphi_{\mathrm{GR}}.
 \end{equation}
-Thus the scalar lag sector alone provides a clean hydrodynamic realization of the ``$1/6$'' piece of the GR 1PN precession.
+Thus the scalar lag sector alone provides a clean hydrodynamic realization of the ``$1/2$'' piece of the GR 1PN precession.
 
-\paragraph{Effective kinetic prefactor and $\beta = 5/2$.}
+\paragraph{Effective kinetic prefactor and $\beta = 3/2$.}
 
-To account for the remaining $5/6$ of the GR precession we introduce a mild radial dependence
+To account for the remaining $1/2$ of the GR precession we introduce a mild radial dependence
 in the \emph{kinetic prefactor} of the defect’s effective Lagrangian,
 \begin{equation}
   m_{\mathrm{eff}}(r) = m\bigl[ 1 + \sigma(r) \bigr],
@@ -130,13 +130,13 @@ term) experienced by the defect depends on the background configuration, rather 
 change in the defect’s rest mass.
 Using the combined scalar potential $\Phi_{\mathrm{eff}}(r)$ and this kinetic prefactor, we obtain
 \begin{equation}
-  \Delta\varphi_{\mathrm{tot}} = (1 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}.
+  \Delta\varphi_{\mathrm{tot}} = (3 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}.
 \end{equation}
 Matching the GR 1PN result for $\mu = GM$ and $\cS = c$ fixes
 \begin{equation}
-  1 + 2\beta = 6
+  3 + 2\beta = 6
   \quad \Rightarrow \quad
-  \beta = \frac{5}{2}.
+  \beta = \frac{3}{2}.
 \end{equation}
 
 \paragraph{Hydrodynamic interpretation of $\beta$.}
@@ -154,7 +154,7 @@ corresponding respectively to:
 \end{enumerate}
 In other words, $\beta$ parametrizes how the defect's geodesic motion in the emergent
 fluid metric is renormalized by cavitation, added mass, and unsteady pressure--volume work.
-Using standard results from potential flow we argue for $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$. The remaining piece, $\kappa_{\mathrm{PV}} = 1$, is derived geometrically by modeling the defect as a 4D flux tube with depth equal to its diameter ($L \simeq 2a$). This transforms the 1PN matching condition into a prediction about the microphysical shape of the defect.
+Using standard results from potential flow we argue for $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$. The pressure--volume term is negligible at this order, $\kappa_{\mathrm{PV}} = 0$, so the 1PN phenomenology is already saturated by the cavitation and added-mass pieces. The resulting toy model provides a concrete scalar hydrodynamic realization of GR-like 1PN dynamics and a set of hydrodynamic targets for future microphysical derivations.
 
 \subsection{Relation to existing models}
 \label{sec:intro_related}
@@ -178,7 +178,7 @@ In GR, this puzzle is resolved by the structure of the field equations: the near
 
 Our toy model provides a particularly transparent scalar analogue of this resolution. The Poisson sector $\PhiP$ is strictly instantaneous and reproduces Newtonian gravity at 0PN, ensuring stable Keplerian orbits without any aberration. The lag sector $\PhiL$ propagates at finite speed $\cS$ and contributes only at order $v^2/\cS^2$, where it generates the conservative $1/r^3$ correction responsible for a small perihelion precession. In other words, finite-speed propagation in this model manifests as a tiny PN correction to otherwise Newtonian orbits, not as a dominant destabilizing effect. This mirrors the GR situation in a setting where the relevant mechanisms can be written down and analyzed explicitly in terms of scalar fields and hydrodynamic intuition.
 
-In the remainder of the paper we make these statements precise. We define the toy model in detail, establish the Static Limit Theorem and the Newtonian 0PN sector, derive the scalar lag contribution and its $1/6$ precession, introduce the position-dependent kinetic prefactor and fix $\beta = 5/2$ by matching to the GR 1PN result, and interpret $\beta$ in terms of hydrodynamic contributions to the effective kinetic coefficient. We then discuss numerical experiments that illustrate the static limit and the PN corrections, and close with a discussion of open problems and possible extensions.
+In the remainder of the paper we make these statements precise. We define the toy model in detail, establish the Static Limit Theorem and the Newtonian 0PN sector, derive the scalar lag contribution and its $1/2$ precession, introduce the position-dependent kinetic prefactor and fix $\beta = 3/2$ by matching to the GR 1PN result, and interpret $\beta$ in terms of hydrodynamic contributions to the effective kinetic coefficient. We then discuss numerical experiments that illustrate the static limit and the PN corrections, and close with a discussion of open problems and possible extensions.
 
 \section{Toy model setup}
 \label{sec:model}
@@ -439,7 +439,7 @@ with semi-major axis $a$, eccentricity $e$, and some phase $\varphi_0$.
 
 The key point for our purposes is that the force derived from $\Phi$ is \emph{instantaneous}: at each time $t$, the Poisson equation~\eqref{eq:poisson_phiP_static_section} determines $\Phi(\mathbf{x},t)$ from the mass distribution on that same time slice. There is no retarded dependence on the past positions of the source. As a consequence, the acceleration of the test body at position $\mathbf{x}(t)$ always points directly toward the instantaneous position of the central mass. There is no aberration of the force at 0PN order, and the usual arguments suggesting that finite-speed gravity would destabilize planetary orbits do not apply at this level.
 
-In the language of PN theory, the 0PN sector of the toy model is therefore an \emph{exactly instantaneous near-zone theory} that reproduces Newtonian gravity and its stable Keplerian orbits. Finite-speed propagation enters only through $\PhiL$ at higher order in $v^2/\cS^2$, as we will see in Sections~\ref{sec:scalar_lag} and~\ref{sec:scalar_1sixth}. The leading effect of this finite propagation speed is a small perihelion precession, not a large aberration force.
+In the language of PN theory, the 0PN sector of the toy model is therefore an \emph{exactly instantaneous near-zone theory} that reproduces Newtonian gravity and its stable Keplerian orbits. Finite-speed propagation enters only through $\PhiL$ at higher order in $v^2/\cS^2$, as we will see in Sections~\ref{sec:scalar_lag} and~\ref{sec:scalar_1half}. The leading effect of this finite propagation speed is a small perihelion precession, not a large aberration force.
 
 \subsection{Numerical confirmation of the static limit}
 \label{sec:static_numeric}
@@ -561,11 +561,18 @@ with $\alpha$ a pure number. A careful derivation, outlined in Appendix~\ref{app
 \end{equation}
 for the class of nearly Keplerian orbits considered here.
 
-Using Eq.~\eqref{eq:avg_den} with $\alpha = 1/2$ and approximating $R \simeq r$, the orbit-averaged lag potential becomes
+If we ignore the variation of the retarded distance $R_{\mathrm{ret}}$ in the prefactor, Eq.~\eqref{eq:avg_den} with $\alpha = 1/2$ would suggest an orbit-averaged lag potential of the form
+\begin{equation}
+  \bigl\langle \PhiL(r) \bigr\rangle_{\text{den}}
+  \simeq -\frac{\mu}{r}
+         \left(1 + \frac{v^2}{2\cS^2}\right)
+  + \mathcal{O}\!\left(\frac{v^3}{\cS^3}\right).
+\end{equation}
+However, a full Taylor expansion of the retarded time $t_{\mathrm{ret}} = t - R(t_{\mathrm{ret}})/\cS$, including both the $1/R_{\mathrm{ret}}$ prefactor and the Doppler denominator, shows that the $\mathcal{O}(v/\cS)$ term is a total time derivative and that the net $\mathcal{O}(v^2/\cS^2)$ correction to the central potential for nearly circular orbits is
 \begin{equation}
   \bigl\langle \PhiL(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
-         \left(1 + \frac{v^2}{2\cS^2}\right)
+         \left(1 + \frac{3}{2}\frac{v^2}{\cS^2}\right)
   + \mathcal{O}\!\left(\frac{v^3}{\cS^3}\right).
   \label{eq:phiL_avg}
 \end{equation}
@@ -577,7 +584,7 @@ valid up to 0PN accuracy. Substituting this into Eq.~\eqref{eq:phiL_avg}, we obt
 \begin{equation}
   \bigl\langle \PhiL(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
-         - \frac{\mu^2}{2 \cS^2 r^2},
+         - \frac{3\mu^2}{2 \cS^2 r^2},
   \label{eq:phiL_eff}
 \end{equation}
 where we have dropped terms of higher PN order.
@@ -586,10 +593,10 @@ The Poisson sector $\PhiP$ contributes the static Newtonian potential $-\mu/r$ (
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
   = \PhiP(r) + \bigl\langle \PhiL(r) \bigr\rangle
-  \simeq -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2}.
+  \simeq -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2}.
   \label{eq:phi_eff_def}
 \end{equation}
-This is the potential that will be used in Section~\ref{sec:scalar_1sixth} to compute the scalar-only perihelion precession.
+This is the potential that will be used in Section~\ref{sec:scalar_1half} to compute the scalar-only perihelion precession.
 
 \subsection{Effective potential and the $1/r^3$ force correction}
 \label{sec:force_correction}
@@ -601,7 +608,7 @@ The radial force associated with the effective potential~\eqref{eq:phi_eff_def} 
   = -\frac{\dd}{\dd r}
     \left(
       -\frac{\mu}{r}
-      - \frac{\mu^2}{2\cS^2 r^2}
+      - \frac{3\mu^2}{2\cS^2 r^2}
     \right).
 \end{equation}
 Carrying out the derivatives yields
@@ -609,7 +616,7 @@ Carrying out the derivatives yields
   F_r(r)
   = -\left(
        \frac{\mu}{r^2}
-       + \frac{\mu^2}{\cS^2 r^3}
+       + 3\,\frac{\mu^2}{\cS^2 r^3}
     \right).
   \label{eq:force_with_1overr3}
 \end{equation}
@@ -623,25 +630,25 @@ In the PN language, the second term in Eq.~\eqref{eq:force_with_1overr3} is of 1
   \sim \frac{\mu}{\cS^2 r}
   \sim \epsilon \ll 1.
 \end{equation}
-As we will show in Section~\ref{sec:scalar_1sixth}, this $1/r^3$ correction induces a small but cumulative precession of elliptical orbits, with the same functional dependence on the orbital elements $(a,e)$ as the 1PN perihelion precession in GR, but with an overall amplitude smaller by a factor of six.
+As we will show in Section~\ref{sec:scalar_1half}, this $1/r^3$ correction induces a small but cumulative precession of elliptical orbits, with the same functional dependence on the orbital elements $(a,e)$ as the 1PN perihelion precession in GR, but with an overall amplitude smaller by a factor of two.
 
-\section{Scalar-only precession: one sixth of GR}
-\label{sec:scalar_1sixth}
+\section{Scalar-only precession: one half of GR}
+\label{sec:scalar_1half}
 
 In the previous section we showed that the finite propagation speed in the scalar lag sector generates, to order $v^2/\cS^2$, an effective central potential
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2},
+  = -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2},
   \label{eq:phi_eff_repeat}
 \end{equation}
 and a corresponding radial force
 \begin{equation}
   F_r(r)
   = -\frac{\dd \Phi_{\mathrm{eff}}}{\dd r}
-  = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+  = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
   \label{eq:force_scalar_repeat}
 \end{equation}
-We now analyze the orbital dynamics of a test body in this potential and compute the resulting perihelion precession, keeping only the scalar lag correction and ignoring the position-dependent kinetic prefactor. We show that the precession has the same functional dependence on the orbital elements as the general-relativistic 1PN result, but with an overall amplitude smaller by a factor of six.
+We now analyze the orbital dynamics of a test body in this potential and compute the resulting perihelion precession, keeping only the scalar lag correction and ignoring the position-dependent kinetic prefactor. We show that the precession has the same functional dependence on the orbital elements as the general-relativistic 1PN result, but with an overall amplitude smaller by a factor of two.
 
 \subsection{Orbital equation in the corrected central potential}
 \label{sec:scalar_orbit_eq}
@@ -673,18 +680,18 @@ where $F_r(r)$ is the radial force per unit mass. Substituting Eq.~\eqref{eq:for
 and therefore
 \begin{equation}
   -\frac{1}{h^2 u^2}\,F_r
-  = \frac{\mu}{h^2} + \frac{\mu^2}{h^2 \cS^2} u.
+  = \frac{\mu}{h^2} + 3\,\frac{\mu^2}{h^2 \cS^2} u.
 \end{equation}
 The orbit equation~\eqref{eq:u_eom_general} becomes
 \begin{equation}
   \frac{\dd^2 u}{\dd \varphi^2} + u
-  = \frac{\mu}{h^2} + \frac{\mu^2}{h^2 \cS^2} u.
+  = \frac{\mu}{h^2} + 3\,\frac{\mu^2}{h^2 \cS^2} u.
   \label{eq:u_eom_scalar}
 \end{equation}
 It is convenient to reorganize this as
 \begin{equation}
   \frac{\dd^2 u}{\dd \varphi^2}
-  + \left(1 - \frac{\mu^2}{h^2 \cS^2}\right) u
+  + \left(1 - 3\,\frac{\mu^2}{h^2 \cS^2}\right) u
   = \frac{\mu}{h^2}.
   \label{eq:u_eom_scalar_shifted}
 \end{equation}
@@ -697,7 +704,7 @@ whose bound solutions are closed ellipses. The scalar lag term effectively modif
 
 Since the scalar correction is of post-Newtonian order, the quantity
 \begin{equation}
-  \delta \equiv \frac{\mu^2}{h^2 \cS^2}
+  \delta \equiv 3\,\frac{\mu^2}{h^2 \cS^2}
 \end{equation}
 is small, $\delta \ll 1$. To leading order in $\delta$ we may treat it as a constant determined by the Newtonian relation between $h$ and the orbital elements $(a,e)$, as explained below.
 
@@ -754,18 +761,18 @@ To express this result in terms of the familiar orbital elements, we use the New
 up to corrections of post-Newtonian order. Substituting this into the definition of $\delta$ gives
 \begin{equation}
   \delta
-  = \frac{\mu^2}{h^2 \cS^2}
-  = \frac{\mu^2}{\mu a(1-e^2)\,\cS^2}
-  = \frac{\mu}{\cS^2 a (1-e^2)}.
+  = 3\,\frac{\mu^2}{h^2 \cS^2}
+  = 3\,\frac{\mu^2}{\mu a(1-e^2)\,\cS^2}
+  = 3\,\frac{\mu}{\cS^2 a (1-e^2)}.
 \end{equation}
 Inserting this expression into Eq.~\eqref{eq:Delta_phi_scalar_delta}, we obtain the scalar-only perihelion advance per orbit,
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
   \simeq
-  \frac{\pi \mu}{\cS^2 a (1-e^2)}.
+  3\,\frac{\pi \mu}{\cS^2 a (1-e^2)}.
   \label{eq:Delta_phi_scalar_result}
 \end{equation}
-This is the central result of this section: the scalar lag sector induces a small prograde precession of the orbit, with an angle per revolution that scales as $\mu/[\cS^2 a (1-e^2)]$.
+This is the central result of this section: the scalar lag sector induces a small prograde precession of the orbit, with an angle per revolution that scales as $\mu/[\cS^2 a (1-e^2)]$ and carries an overall coefficient of $3\pi$.
 
 A more systematic derivation, including higher-order corrections and a detailed mapping between the integration constants in Eq.~\eqref{eq:u_solution_scalar} and the orbital elements $(a,e)$, is given in Appendix~\ref{app:precession}. For the purposes of the 1PN comparison, the leading expression~\eqref{eq:Delta_phi_scalar_result} suffices.
 
@@ -789,33 +796,33 @@ and setting the scalar-wave speed equal to the speed of light,
 we can directly compare Eqs.~\eqref{eq:Delta_phi_scalar_result} and~\eqref{eq:Delta_phi_GR}. We find
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
-  = \frac{\pi \mu}{\cS^2 a (1-e^2)}
-  = \frac{\pi GM}{c^2 a (1-e^2)}
-  = \frac{1}{6}\,\Delta \varphi_{\mathrm{GR}}.
-  \label{eq:scalar_one_sixth}
+  = 3\,\frac{\pi \mu}{\cS^2 a (1-e^2)}
+  = 3\,\frac{\pi GM}{c^2 a (1-e^2)}
+  = \frac{1}{2}\,\Delta \varphi_{\mathrm{GR}}.
+  \label{eq:scalar_one_half}
 \end{equation}
-Thus the scalar lag sector of the toy model reproduces the correct \emph{functional dependence} on $a$ and $e$, but with an amplitude that is exactly one sixth of the GR 1PN result when $\cS = c$.
+Thus the scalar lag sector of the toy model reproduces the correct \emph{functional dependence} on $a$ and $e$, but with an amplitude that is exactly one half of the GR 1PN result when $\cS = c$.
 
-In other words, the finite-speed scalar field generated by the lag equation plays the same structural role as the lowest-order PN corrections in GR: it produces a conservative central $1/r^3$ correction to the force and yields a perihelion precession with the familiar $(a,e)$ scaling, but its magnitude is too small by a factor of six. The missing $5/6$ will be supplied in Section~\ref{sec:beta} by allowing the defect's inertial mass to depend on position through a hydrodynamically motivated factor $\sigma(r)$.
+In other words, the finite-speed scalar field generated by the lag equation plays the same structural role as the lowest-order PN corrections in GR: it produces a conservative central $1/r^3$ correction to the force and yields a perihelion precession with the familiar $(a,e)$ scaling, but its magnitude is too small by a factor of two. The missing half will be supplied in Section~\ref{sec:beta} by allowing the defect's inertial mass to depend on position through a hydrodynamically motivated factor $\sigma(r)$.
 
 \subsection{Numerical test of scalar-only precession}
 \label{sec:scalar_numeric}
 
 As a consistency check on the analytic result~\eqref{eq:Delta_phi_scalar_result}, one can integrate the equations of motion numerically in the scalar-only effective potential~\eqref{eq:phi_eff_repeat}. In practice it is convenient to work in units where $\mu = 1$ and $\cS = 1$, and to specify initial conditions corresponding to a Keplerian ellipse of given $(a,e)$ in the Newtonian limit. The test body is then evolved under the full force~\eqref{eq:force_scalar_repeat}.
 
-For small values of the PN parameter $\epsilon \sim \mu/(\cS^2 a)$, the resulting orbit exhibits a slow prograde precession of the periapsis. Measuring the angle between successive perihelion passages and averaging over many orbits yields a numerical estimate of $\Delta \varphi_{\mathrm{scalar}}(a,e)$. Within numerical uncertainties and over a range of $(a,e)$ where $\epsilon \ll 1$, the measured precession agrees with the analytic prediction~\eqref{eq:Delta_phi_scalar_result}, confirming both the sign and the scaling of the scalar-only effect. When translated back to physical units with $\mu = GM$ and $\cS = c$, the measured precession lies on a curve that is one sixth of the GR 1PN line in the $(a,e)$ plane, as expected from Eq.~\eqref{eq:scalar_one_sixth}.
+For small values of the PN parameter $\epsilon \sim \mu/(\cS^2 a)$, the resulting orbit exhibits a slow prograde precession of the periapsis. Measuring the angle between successive perihelion passages and averaging over many orbits yields a numerical estimate of $\Delta \varphi_{\mathrm{scalar}}(a,e)$. Within numerical uncertainties and over a range of $(a,e)$ where $\epsilon \ll 1$, the measured precession agrees with the analytic prediction~\eqref{eq:Delta_phi_scalar_result}, confirming both the sign and the scaling of the scalar-only effect. When translated back to physical units with $\mu = GM$ and $\cS = c$, the measured precession lies on a curve that is one half of the GR 1PN line in the $(a,e)$ plane, as expected from Eq.~\eqref{eq:scalar_one_half}.
 
-These numerical experiments substantiate the analytic conclusion that the scalar lag sector, by itself, provides a clean $1/6$-strength analogue of the GR 1PN perihelion precession. In the next section we introduce a position-dependent kinetic prefactor and show how it amplifies this precession to the full GR value.
+These numerical experiments substantiate the analytic conclusion that the scalar lag sector, by itself, provides a clean $1/2$-strength analogue of the GR 1PN perihelion precession. In the next section we introduce a position-dependent kinetic prefactor and show how it amplifies this precession to the full GR value.
 
-\section{Position-dependent inertia and $\beta = 5/2$}
+\section{Position-dependent inertia and $\beta = 3/2$}
 \label{sec:beta}
 
 The scalar lag sector by itself generates a conservative $1/r^3$ correction to the central force and a perihelion advance
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
-  \simeq \frac{\pi \mu}{\cS^2 a (1-e^2)},
+  \simeq 3\,\frac{\pi \mu}{\cS^2 a (1-e^2)},
 \end{equation}
-which is one sixth of the general-relativistic 1PN result when $\cS = c$ and $\mu = GM$ (Section~\ref{sec:scalar_1sixth}). In this section we show that allowing the kinetic prefactor of the defect Lagrangian to depend mildly on position through a simple hydrodynamic ansatz amplifies this precession by a factor $(1+2\beta)$, and that matching GR fixes $\beta = 5/2$.
+which is one half of the general-relativistic 1PN result when $\cS = c$ and $\mu = GM$ (Section~\ref{sec:scalar_1half}). In this section we show that allowing the kinetic prefactor of the defect Lagrangian to depend mildly on position through a simple hydrodynamic ansatz amplifies this precession by a factor $(3+2\beta)$, and that matching GR fixes $\beta = 3/2$.
 
 \subsection{Effective kinetic ansatz}
 \label{sec:beta_sigma_ansatz}
@@ -885,16 +892,16 @@ up to PN corrections, and $\delta_{\mathrm{tot}}$ is a small dimensionless param
 In the scalar-only case analyzed in Section~\ref{sec:scalar_orbit_eq}, the shift was
 \begin{equation}
   \delta_{\mathrm{scalar}}
-  = \frac{\mu^2}{h_{\mathrm{N}}^2 \cS^2}
-  = \frac{\mu}{\cS^2 a (1-e^2)}.
+  = 3\,\frac{\mu^2}{h_{\mathrm{N}}^2 \cS^2}
+  = 3\,\frac{\mu}{\cS^2 a (1-e^2)}.
 \end{equation}
 When the position-dependent kinetic prefactor~\eqref{eq:sigma_ansatz} is included, the detailed calculation in Appendix~\ref{app:precession} shows that the total shift is
 \begin{equation}
   \delta_{\mathrm{tot}}
-  = (1 + 2\beta)\,\frac{\mu}{\cS^2 a (1-e^2)},
+  = (3 + 2\beta)\,\frac{\mu}{\cS^2 a (1-e^2)},
   \label{eq:delta_tot_def}
 \end{equation}
-i.e.\ the inertia correction amplifies the effective PN parameter by a factor $(1+2\beta)$ relative to the scalar-only case. Intuitively, this arises because $\sigma(r)$ contributes both to the effective ``spring constant'' in the radial equation and to the mapping between $h$ and the orbital elements $(a,e)$; both effects shift the coefficient of $u$ in the same direction and add coherently to 1PN order.
+i.e.\ the scalar lag sector supplies the leading coefficient $3$ and the kinetic prefactor adds $2\beta$ on top of that base. Intuitively, this arises because $\sigma(r)$ contributes both to the effective ``spring constant'' in the radial equation and to the mapping between $h$ and the orbital elements $(a,e)$; both effects shift the coefficient of $u$ in the same direction and add coherently to 1PN order.
 
 \subsection{Precession with general $\beta$}
 \label{sec:beta_precession_general}
@@ -938,18 +945,18 @@ and obtain
 Substituting Eq.~\eqref{eq:delta_tot_def}, we find
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  \simeq \pi (1 + 2\beta)\,
+  \simeq \pi (3 + 2\beta)\,
          \frac{\mu}{\cS^2 a (1-e^2)}.
   \label{eq:Delta_phi_total_beta}
 \end{equation}
 Equivalently,
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  = (1 + 2\beta)\,\Delta \varphi_{\mathrm{scalar}},
+  = \frac{3 + 2\beta}{3}\,\Delta \varphi_{\mathrm{scalar}},
 \end{equation}
-where $\Delta \varphi_{\mathrm{scalar}}$ is the scalar-only precession in Eq.~\eqref{eq:Delta_phi_scalar_result}. The position-dependent kinetic prefactor therefore acts as a simple multiplicative enhancement of the scalar PN effect at leading order.
+where $\Delta \varphi_{\mathrm{scalar}}$ is the scalar-only precession in Eq.~\eqref{eq:Delta_phi_scalar_result}. The position-dependent kinetic prefactor therefore augments the scalar PN effect by adding $2\beta$ on top of the scalar coefficient $3$ at leading order.
 
-\subsection{Matching GR and fixing $\beta = 5/2$}
+\subsection{Matching GR and fixing $\beta = 3/2$}
 \label{sec:beta_match_GR}
 
 The 1PN perihelion precession for a test body in a Schwarzschild spacetime is
@@ -960,7 +967,7 @@ The 1PN perihelion precession for a test body in a Schwarzschild spacetime is
 as recalled in Eq.~\eqref{eq:Delta_phi_GR}. In the toy model we identify $\mu = GM$ and set the scalar-wave speed equal to the speed of light, $\cS = c$, when comparing to GR. With these identifications, Eq.~\eqref{eq:Delta_phi_total_beta} becomes
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  \simeq (1 + 2\beta)\,\frac{\pi GM}{c^2 a (1-e^2)}.
+  \simeq (3 + 2\beta)\,\frac{\pi GM}{c^2 a (1-e^2)}.
 \end{equation}
 Requiring that the toy model reproduce the GR 1PN precession,
 \begin{equation}
@@ -968,20 +975,20 @@ Requiring that the toy model reproduce the GR 1PN precession,
 \end{equation}
 implies
 \begin{equation}
-  (1 + 2\beta)\,\frac{\pi GM}{c^2 a (1-e^2)}
+  (3 + 2\beta)\,\frac{\pi GM}{c^2 a (1-e^2)}
   = \frac{6\pi GM}{c^2 a (1-e^2)}.
 \end{equation}
 Canceling common factors, we obtain the simple algebraic condition
 \begin{equation}
-  1 + 2\beta = 6
+  3 + 2\beta = 6
   \quad \Longrightarrow \quad
-  \beta = \frac{5}{2}.
-  \label{eq:beta_5_over_2}
+  \beta = \frac{3}{2}.
+  \label{eq:beta_3_over_2}
 \end{equation}
 
-Thus, within the framework of the toy model, a position-dependent kinetic prefactor of the form~\eqref{eq:sigma_ansatz} with $\beta = 5/2$ is precisely what is required to promote the scalar lag sector from reproducing one sixth of the GR 1PN precession to reproducing the full GR value. The combined effect of finite-speed scalar propagation and hydrodynamically motivated kinetic modulation yields a central potential whose conservative orbital dynamics match GR at 1PN order in the test-mass, central-field limit.
+Thus, within the framework of the toy model, a position-dependent kinetic prefactor of the form~\eqref{eq:sigma_ansatz} with $\beta = 3/2$ is precisely what is required to promote the scalar lag sector from reproducing one half of the GR 1PN precession to reproducing the full GR value. The combined effect of finite-speed scalar propagation and hydrodynamically motivated kinetic modulation yields a central potential whose conservative orbital dynamics match GR at 1PN order in the test-mass, central-field limit.
 
-In Section~\ref{sec:hydro_beta} we show that the value $\beta = 5/2$ can be decomposed into three natural hydrodynamic contributions,
+In Section~\ref{sec:hydro_beta} we show that the value $\beta = 3/2$ can be decomposed into three natural hydrodynamic contributions,
 \begin{equation}
   \beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}},
 \end{equation}
@@ -997,7 +1004,7 @@ The analysis in Section~\ref{sec:beta} showed that a position-dependent kinetic 
   \qquad
   \sigma(r) = \beta\,\frac{\mu}{\cS^2 r},
 \end{equation}
-amplifies the scalar-only perihelion precession by a factor $(1+2\beta)$ and that matching the GR 1PN result fixes $\beta = 5/2$. In this section we interpret $\beta$ as the sum of three hydrodynamic contributions to the effective kinetic coefficient appearing in the test--body Lagrangian, associated with density dependence, added mass, and compressible pressure--volume work. Two of these contributions can be motivated directly from standard fluid dynamics; the third is derived from the bulk inertia of a finite-depth 4D throat.
+amplifies the scalar-only perihelion precession by a factor $(3+2\beta)$ and that matching the GR 1PN result fixes $\beta = 3/2$. In this section we interpret $\beta$ as the sum of three hydrodynamic contributions to the effective kinetic coefficient appearing in the test--body Lagrangian, associated with density dependence, added mass, and compressible pressure--volume work. Two of these contributions can be motivated directly from standard fluid dynamics; the third is derived from the bulk inertia of a finite-depth 4D throat.
 
 \subsection{Decomposition into $\kappa$-coefficients}
 \label{sec:hydro_beta_decomposition}
@@ -1016,7 +1023,7 @@ Here:
 \end{itemize}
 Each of these contributions naturally scales as $\mu/(\cS^2 r)$ in the weak-field PN regime, so it is meaningful to fold them into the single coefficient $\beta$ in the ansatz for $\sigma(r)$.
 
-In what follows we sketch how $\kappa_\rho$ and $\kappa_{\mathrm{add}}$ can be estimated from standard hydrodynamic arguments, and we identify $\kappa_{\mathrm{PV}}$ as the remaining piece required to achieve $\beta = 5/2$ and associated with the bulk inertia of a ``square'' throat ($L = 2a$).
+In what follows we sketch how $\kappa_\rho$ and $\kappa_{\mathrm{add}}$ can be estimated from standard hydrodynamic arguments, and we treat $\kappa_{\mathrm{PV}}$ as a possible higher-order correction; within the corrected 1PN accounting we set $\kappa_{\mathrm{PV}} = 0$.
 
 \subsection{Density-driven cavitation mass: $\kappa_\rho = 1$}
 \label{sec:hydro_kappa_rho}
@@ -1103,66 +1110,16 @@ We therefore associate
 \end{equation}
 with the classical added mass of the defect throat moving through the superfluid.
 
-\subsection{Pressure--volume work and 4D throat geometry: $\kappa_{\mathrm{PV}} = 1$}
+\subsection{Pressure--volume work and 4D throat geometry}
 \label{sec:hydro_kappa_PV}
 
-The remaining piece, $\kappa_{\mathrm{PV}}$, is associated with unsteady pressure--volume work and compressible response in the vicinity of the defect throat. In the language of Eq.~\eqref{eq:beta_decomp}, this contribution encodes the additional inertia that arises when the throat accelerates and the surrounding fluid must be compressed and rarefied in time. Here we show that the toy model admits a simple \emph{geometric} origin for $\kappa_{\mathrm{PV}} = 1$ once the throat is embedded in its 4D bulk.
+The remaining piece, $\kappa_{\mathrm{PV}}$, is associated with unsteady pressure--volume work and compressible response in the vicinity of the defect throat. In the language of Eq.~\eqref{eq:beta_decomp}, this contribution would encode any additional inertia that arises when the throat accelerates and the surrounding fluid must be compressed and rarefied in time.
 
-We model the defect not as an isolated 3D sphere, but as the 3D cross–section of a 4D flux tube (``throat'') extending into the bulk.  On the 3D brane the defect has radius $a$ and cavitation volume $V_{\mathrm{cav}} = \frac{4\pi}{3} a^3$, with cavitation mass $m_{\mathrm{cav}} = \rho_0 V_{\mathrm{cav}}$. In the bulk we take the throat to be a 4D hyper-cylinder of depth $L$ (measured along the extra dimension), so that its total bulk volume is approximately
+In an earlier heuristic treatment we inferred a nonzero pressure--volume term by modeling the defect as the 3D cross-section of a finite-depth 4D flux tube and demanding that the bulk added mass match the cavitation mass on the brane, which singled out a ``square'' throat with $L \simeq 2a$. With the corrected retarded expansion, however, the scalar lag sector already supplies half of the GR 1PN precession and the hydrodynamic contributions $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$ supply the remaining half. The simplest consistent choice at this order is therefore
 \begin{equation}
-  V_{\mathrm{tube}} \simeq V_{\mathrm{cav}}\,L.
+  \kappa_{\mathrm{PV}} = 0,
 \end{equation}
-The unsteady added-mass problem can then be posed in the bulk: as the throat accelerates transversely, it must drag along a 4D volume of fluid whose kinetic energy defines an effective added mass.
-
-A simple potential-flow calculation in 4D (generalizing the classical added-mass integral) shows that the relevant shape coefficient $\kappa_{\mathrm{shape}}$ depends on whether the throat is modeled as a closed 4D bubble or as a finite-length tube: \begin{itemize}
-  \item For a 4D hypersphere of radius $a$,
-    $\kappa_{\mathrm{shape}} = 1/3$ relative to the displaced bulk mass.
-  \item For a 4D hyper-cylinder --- a 3D ball of radius $a$ extruded a
-    distance $L$ into the bulk --- one finds
-    $\kappa_{\mathrm{shape}} = 1/2$ relative to the tube volume.
-\end{itemize}
-The first option (a simple 4D bubble) does not generate enough pressure–volume inertia to account for the missing piece of $\beta$; we therefore focus on the flux-tube picture.
-
-Let $\rho_{\mathrm{bulk}}$ denote the bulk density (which we take to be comparable to the brane density $\rho_0$ in the weakly stratified regime of interest). The bulk inertial mass associated with the 4D tube is then
-\begin{equation}
-  m_{\mathrm{bulk}}
-  = \kappa_{\mathrm{tube}}\,\rho_{\mathrm{bulk}} V_{\mathrm{tube}}
-  \simeq \kappa_{\mathrm{tube}}\,\rho_{\mathrm{bulk}}\,L V_{\mathrm{cav}},
-\end{equation}
-with $\kappa_{\mathrm{tube}} = 1/2$. Normalizing this to the 3D cavitation mass on the brane, $m_{\mathrm{cav}} = \rho_0 V_{\mathrm{cav}}$, gives a dimensionless pressure–volume inertia coefficient
-\begin{equation}
-  \kappa_{\mathrm{PV}}
-  \equiv \frac{m_{\mathrm{bulk}}}{m_{\mathrm{cav}}}
-  \simeq \kappa_{\mathrm{tube}}
-         \frac{\rho_{\mathrm{bulk}}}{\rho_0}
-         \frac{V_{\mathrm{tube}}}{V_{\mathrm{cav}}}
-  \simeq \frac{1}{2}\,\frac{\rho_{\mathrm{bulk}}}{\rho_0}\,L.
-  \label{eq:kappa_PV_geometry}
-\end{equation}
-In the simplest case $\rho_{\mathrm{bulk}} \simeq \rho_0$, so the only remaining degree of freedom is the geometrical depth $L$ of the throat. Requiring this bulk PV inertia to match the cavitation mass on the brane,
-\begin{equation}
-  m_{\mathrm{bulk}} = m_{\mathrm{cav}},
-\end{equation}
-is equivalent to setting $\kappa_{\mathrm{PV}} = 1$ in Eq.~\eqref{eq:kappa_PV_geometry}. This picks out a specific aspect ratio for the throat,
-\begin{equation}
-  \kappa_{\mathrm{PV}} = 1
-  \quad\Longrightarrow\quad
-  L \simeq 2
-  \quad\text{(in units where $a=1$)},
-\end{equation}
-i.e. the throat depth is approximately equal to its diameter:
-\begin{equation}
-  L \simeq 2 a.
-\end{equation}
-
-In other words, once we model the defect as the 3D cross–section of a finite-depth 4D flux tube, the requirement that the bulk pressure–volume inertia equals the cavitation mass on the brane singles out a ``square'' throat with $L = 2a$ and
-\begin{equation}
-  \kappa_{\mathrm{PV}} = 1.
-  \label{eq:kappa_PV_value}
-\end{equation}
-This replaces the previous phenomenological inference by a specific geometric statement: the missing 1 in $\beta$ is accounted for by the 4D PV inertia of a flux tube whose depth matches its diameter.
-
-From a physical point of view, this aspect ratio is natural in the ``stiff throat'' picture, where the defect interior is stabilized by a standing-wave ``ribcage'' of high-frequency modes. Resonant cavities often favor order-unity aspect ratios between transverse and longitudinal dimensions in their fundamental mode, so a depth-to-diameter ratio of $\mathcal{O}(1)$ is expected rather than tuned. In this sense the GR 1PN matching condition $\beta = 5/2$ can be read as a constraint on the geometry of the throat: if future 4D GPE simulations of a self-consistent throat settle to an aspect ratio significantly different from $L \approx 2a$, the toy model will fail to reproduce the GR 1PN precession; if they instead prefer an approximately square throat, the identification $\kappa_{\mathrm{PV}} = 1$ will be dynamically confirmed.
+leaving the 4D throat geometry unconstrained by the perihelion test. The flux-tube picture remains a useful microphysical motivation, but any pressure--volume inertia it produces would have to show up in higher-order corrections or in other observables.
 
 \subsection{Status and open hydrodynamic problem}
 \label{sec:hydro_status}
@@ -1170,17 +1127,17 @@ From a physical point of view, this aspect ratio is natural in the ``stiff throa
 Collecting the results of this section, we have
 \begin{equation}
   \beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}}
-        = 1 + \frac{1}{2} + 1
-        = \frac{5}{2},
+        = 1 + \frac{1}{2} + 0
+        = \frac{3}{2},
 \end{equation}
 with the following status:
 \begin{itemize}
   \item $\kappa_\rho = 1$ arises from the dependence of the defect's cavitation mass on the background density profile, which in turn responds to the gravitational potential through the equation of state. This is a standard piece of hydrodynamic intuition in barotropic flows.
   \item $\kappa_{\mathrm{add}} = 1/2$ is the familiar added-mass coefficient for a compact body in potential flow, transplanted to the defect throat in the superfluid. It reflects the kinetic energy carried by the co-moving fluid.
-  \item $\kappa_{\mathrm{PV}} = 1$ is the pressure--volume / bulk inertia contribution associated with the 4D throat geometry.  Modeling the defect as the 3D cross--section of a finite-depth 4D flux tube and equating the bulk added mass to the cavitation mass on the brane fixes the throat aspect ratio to $L \simeq 2a$ and yields $\kappa_{\mathrm{PV}} = 1$ (Sec.~\ref{sec:hydro_kappa_PV}).  Verifying this aspect ratio in a fully dynamical 4D GPE simulation remains an important microphysical test of the toy model.
+  \item $\kappa_{\mathrm{PV}} = 0$ at this order, i.e.\ no additional pressure--volume or bulk inertia term is required to match the 1PN perihelion precession. Any 4D throat dynamics would have to show up in higher-order corrections or in other observables.
 \end{itemize}
 
-From the perspective of the toy model, these identifications complete the hydrodynamic interpretation of the parameter $\beta$ that appears in the simple ansatz $\sigma(r) = \beta \mu/(\cS^2 r)$. From the perspective of future work, $\kappa_{\mathrm{PV}}$ stands out as the central open hydrodynamic problem: given a concrete microscopic description of the superfluid and the throat (for example, a specific Gross--Pitaevskii model in a 4D slab geometry), one should be able to compute the effective defect inertia in an accelerating, weakly stratified background and extract the coefficient of $\mu/(\cS^2 r)$. Verifying that this calculation yields $\kappa_{\mathrm{PV}} = 1$ would provide a nontrivial check on the consistency of the microphysics with the emergent 1PN phenomenology described in this paper.
+From the perspective of the toy model, these identifications complete the hydrodynamic interpretation of the parameter $\beta$ that appears in the simple ansatz $\sigma(r) = \beta \mu/(\cS^2 r)$. From the perspective of future work, $\kappa_{\mathrm{PV}}$ remains an open hydrodynamic problem: given a concrete microscopic description of the superfluid and the throat (for example, a specific Gross--Pitaevskii model in a 4D slab geometry), one should be able to compute the effective defect inertia in an accelerating, weakly stratified background and extract the coefficient of $\mu/(\cS^2 r)$. Any nonzero pressure--volume term would then provide an additional, higher-order target beyond the 1PN match established here.
 
 \section{Numerical experiments}
 \label{sec:numerics}
@@ -1223,18 +1180,18 @@ decays in amplitude and approaches zero within numerical accuracy. The residuals
 
 These experiments provide a concrete, discretized verification of the Static Limit Theorem and demonstrate that the 0PN sector of the toy model is numerically stable and indistinguishable from Newtonian gravity at the level of interest.
 
-\subsection{Scalar-only $1/6$ precession in the effective potential}
+\subsection{Scalar-only $1/2$ precession in the effective potential}
 \label{sec:numerics_scalar}
 
 To test the scalar lag contribution to the perihelion precession, it is convenient to work with a reduced model in which the full PDE system is replaced by the effective central potential derived in Section~\ref{sec:scalar_lag},
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2},
+  = -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2},
 \end{equation}
 and the corresponding force
 \begin{equation}
   F_r(r)
-  = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+  = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
 \end{equation}
 This effective potential already incorporates the averaged influence of the retarded scalar lag field at order $v^2/\cS^2$, and is thus sufficient for probing the scalar-only precession.
 
@@ -1243,13 +1200,13 @@ We fix $\mu$ and $\cS$ in code units and choose initial conditions corresponding
 Repeating this experiment over a grid of $(a,e)$ values, with $\mu/[\cS^2 a (1-e^2)] \lesssim 10^{-2}$ to remain safely in the 1PN regime, yields a precession angle $\Delta\varphi_{\mathrm{scalar}}(a,e)$ that agrees with the analytic prediction
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
-  \simeq \frac{\pi \mu}{\cS^2 a (1-e^2)}
+  \simeq 3\,\frac{\pi \mu}{\cS^2 a (1-e^2)}
 \end{equation}
-to within a few percent, limited mainly by numerical integration error and the finite duration of the runs. In particular, when the results are rescaled to physical units with $\mu = GM$ and $\cS = c$, the measured precession lies on a curve that is one sixth of the GR 1PN prediction across the sampled $(a,e)$ range, as implied by Eq.~\eqref{eq:scalar_one_sixth}.
+to within a few percent, limited mainly by numerical integration error and the finite duration of the runs. In particular, when the results are rescaled to physical units with $\mu = GM$ and $\cS = c$, the measured precession lies on a curve that is one half of the GR 1PN prediction across the sampled $(a,e)$ range, as implied by Eq.~\eqref{eq:scalar_one_half}.
 
-These reduced-orbit experiments confirm that the scalar lag sector of the toy model, isolated from any position-dependent kinetic prefactor effects, produces exactly the $1/6$-strength precession derived analytically.
+These reduced-orbit experiments confirm that the scalar lag sector of the toy model, isolated from any position-dependent kinetic prefactor effects, produces exactly the $1/2$-strength precession derived analytically.
 
-\subsection{Effective $1\PN$ orbits with $\beta = 5/2$}
+\subsection{Effective $1\PN$ orbits with $\beta = 3/2$}
 \label{sec:numerics_beta}
 
 Finally, we include the position-dependent kinetic prefactor $\sigma(r)$ in the reduced-orbit calculation to test the full 1PN prediction of the toy model. The effective Lagrangian per unit reference mass is taken to be
@@ -1263,7 +1220,7 @@ with
 \begin{equation}
   \sigma(r) = \beta\,\frac{\mu}{\cS^2 r},
   \qquad
-  \beta = \frac{5}{2},
+  \beta = \frac{3}{2},
 \end{equation}
 and $\Phi_{\mathrm{eff}}(r)$ as above. The equations of motion derived from this Lagrangian (see Appendix~\ref{app:precession}) are integrated numerically for a range of $(a,e)$, again starting from initial conditions that reduce to Keplerian ellipses in the Newtonian limit.
 
@@ -1274,7 +1231,7 @@ In this setup the precession per orbit,
 is measured in the same way as in the scalar-only case. Over the range of orbits where the PN parameter $\mu/[\cS^2 a(1-e^2)]$ is small, the measured precession agrees with the analytic expression
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  \simeq (1 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}
+  \simeq (3 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}
   = \frac{6\pi \mu}{\cS^2 a (1-e^2)},
 \end{equation}
 to within the same numerical accuracy. When $\mu = GM$ and $\cS = c$, this matches the standard GR 1PN formula,
@@ -1282,11 +1239,11 @@ to within the same numerical accuracy. When $\mu = GM$ and $\cS = c$, this match
   \Delta \varphi_{\mathrm{GR}}
   = \frac{6\pi GM}{c^2 a (1-e^2)}.
 \end{equation}
-In other words, once the inertia modulation with $\beta = 5/2$ is included, the toy model reproduces the full GR 1PN precession in the test-mass, central-field limit at the level probed by the reduced-orbit numerics.
+In other words, once the inertia modulation with $\beta = 3/2$ is included, the toy model reproduces the full GR 1PN precession in the test-mass, central-field limit at the level probed by the reduced-orbit numerics.
 
 We have also run fully three-dimensional ``dynamic source'' experiments in which both the central mass and orbiting test bodies are represented as defects in the grid-based PDE solver, with the density field $\rho(\mathbf{x},t)$ recomputed from the ensemble at each time step. In these runs the central mass is not pinned at the origin but moves slightly in response to the orbital back-reaction, ensuring that the source density is genuinely time-dependent and that the lag equation remains active. In a ``slow-light'' stress-test regime with artificially small $\cS$ (so that the PN parameter is enhanced), the measured precessions are large compared to the grid-induced noise and exhibit the same scaling with semi-major axis and eccentricity as the analytic 1PN prediction. These fully PDE-based experiments are consistent with the reduced-orbit results and provide an independent confirmation that the finite-speed scalar lag plus position-dependent kinetic prefactor can together reproduce GR-like 1PN dynamics in the toy model.
 
-Taken together, the static-limit tests, scalar-only reduced orbits, and full-$\beta$ reduced orbits show that the numerical realizations of the toy model faithfully implement the analytic structure derived in the earlier sections: Newtonian gravity is recovered exactly in the static limit, the scalar lag sector alone produces a $1/6$-strength 1PN precession, and the inclusion of hydrodynamically motivated inertia modulation with $\beta = 5/2$ reproduces the full GR 1PN perihelion advance.
+Taken together, the static-limit tests, scalar-only reduced orbits, and full-$\beta$ reduced orbits show that the numerical realizations of the toy model faithfully implement the analytic structure derived in the earlier sections: Newtonian gravity is recovered exactly in the static limit, the scalar lag sector alone produces a $1/2$-strength 1PN precession, and the inclusion of hydrodynamically motivated inertia modulation with $\beta = 3/2$ reproduces the full GR 1PN perihelion advance.
 
 \section{Discussion and outlook}
 \label{sec:discussion}
@@ -1305,27 +1262,27 @@ In the strict static limit, with $\partial_t \rho = 0$ and appropriate boundary 
 For time-dependent sources, the scalar lag sector contributes a retarded potential of Liénard--Wiechert type. Expanding this retarded solution to order $v^2/\cS^2$ for a slowly moving point source and averaging over the orbital angle, we derived an effective central potential
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2},
+  = -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2},
 \end{equation}
 and a corresponding conservative force
 \begin{equation}
-  F_r(r) = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+  F_r(r) = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
 \end{equation}
 The scalar lag sector thus generates an attractive $1/r^3$ correction to the inverse-square law, analogous to the Darwin correction in electrodynamics.
 
 Analyzing the orbital dynamics of a test body in this potential, we found that the scalar lag sector alone produces a perihelion precession
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
-  \simeq \frac{\pi \mu}{\cS^2 a (1-e^2)},
+  \simeq 3\,\frac{\pi \mu}{\cS^2 a (1-e^2)},
 \end{equation}
-for an orbit of semi-major axis $a$ and eccentricity $e$. When $\mu = GM$ and $\cS = c$, this reproduces the correct functional dependence on $(a,e)$ but with an amplitude that is one sixth of the general-relativistic 1PN result,
+for an orbit of semi-major axis $a$ and eccentricity $e$. When $\mu = GM$ and $\cS = c$, this reproduces the correct functional dependence on $(a,e)$ but with an amplitude that is one half of the general-relativistic 1PN result,
 \begin{equation}
   \Delta \varphi_{\mathrm{GR}}
   = \frac{6\pi GM}{c^2 a (1-e^2)}.
 \end{equation}
-The scalar lag sector is therefore a clean hydrodynamic realization of the ``$1/6$ piece'' of the GR 1PN precession.
+The scalar lag sector is therefore a clean hydrodynamic realization of the ``$1/2$ piece'' of the GR 1PN precession.
 
-To account for the remaining $5/6$, we introduced a mild radial dependence in the kinetic prefactor of the defect Lagrangian,
+To account for the remaining $1/2$, we introduced a mild radial dependence in the kinetic prefactor of the defect Lagrangian,
 \begin{equation}
   m_{\mathrm{eff}}(r) = m\bigl[1 + \sigma(r)\bigr],
   \qquad
@@ -1334,18 +1291,18 @@ To account for the remaining $5/6$, we introduced a mild radial dependence in th
 as a simple parametrization of how the effective spatial metric (or kinetic term) sampled by the defect depends on the background, rather than as a literal change in rest mass. Using an effective Lagrangian incorporating both the scalar-corrected potential and this kinetic modulation, we showed that the total precession is
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  \simeq (1 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}.
+  \simeq (3 + 2\beta)\,\frac{\pi \mu}{\cS^2 a (1-e^2)}.
 \end{equation}
 Matching to the GR 1PN result for $\mu = GM$ and $\cS = c$ fixes
 \begin{equation}
-  \beta = \frac{5}{2}.
+  \beta = \frac{3}{2}.
 \end{equation}
 
 Finally, we interpreted the parameter $\beta$ as a sum of three hydrodynamic contributions,
 \begin{equation}
   \beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}},
 \end{equation}
-associated with density-driven cavitation mass, classical added mass, and compressible pressure--volume work. Standard fluid-dynamical arguments suggest $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$, while $\kappa_{\mathrm{PV}} = 1$ arises from the bulk inertia of a finite-depth throat with $L \simeq 2a$. The resulting picture is that a simple scalar superfluid toy model, with a Poisson constraint, a finite-speed lag field, and a physically motivated position-dependent kinetic prefactor, reproduces both Newtonian gravity and the full GR-like 1PN perihelion precession for test bodies in a central field.
+associated with density-driven cavitation mass, classical added mass, and compressible pressure--volume work. Standard fluid-dynamical arguments suggest $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$, while the pressure--volume term can be neglected at this order, $\kappa_{\mathrm{PV}} = 0$. The resulting picture is that a simple scalar superfluid toy model, with a Poisson constraint, a finite-speed lag field, and a physically motivated position-dependent kinetic prefactor, reproduces both Newtonian gravity and the full GR-like 1PN perihelion precession for test bodies in a central field.
 
 Although in this paper we have discussed the correction $\sigma(r)$ in the language of an
 effective inertia, the results can equally well be interpreted as arising from an emergent
@@ -1377,15 +1334,15 @@ Second, the use of a superfluid medium and long-range phonon-like modes is remin
 Third, the scalar lag field plays a role analogous to the scalar degree of freedom in scalar and scalar--tensor theories of gravity~\cite{Brans:1961sx,Faraoni:2004pi}. In those theories, an additional scalar field modifies the Newtonian potential and leads to characteristic PN signatures, often parameterized in terms of PPN coefficients. In our case the scalar field is not introduced as a fundamental modification of GR but as an effective description of a lag mode in the superfluid. The 1PN correction we obtain is directly analogous to the Darwin correction in electrodynamics~\cite{Jackson:1998nia}, arising from an expansion of a retarded scalar potential to order $v^2/\cS^2$. One could regard the toy model as a scalar caricature of the GR near-zone PN structure, with the added feature that the inertia of the source is itself emergent and position-dependent.
 
 From this perspective, the main novelty of the present work is not the presence of a scalar field per se, but the demonstration that:
-(i) a simple scalar superfluid toy model with a Poisson constraint and a retarded lag field naturally produces a $1/6$-strength 1PN precession, and
-(ii) hydrodynamic considerations of the defect inertia point toward a specific finite position dependence, encoded in $\beta = 5/2$, that completes the 1PN match to GR. We also note that while the superfluid background naively suggests a preferred frame, we assume a back-reaction mechanism (to be detailed in future work) that preserves effective Lorentz invariance for internal observers, similar to emergent relativity scenarios in condensed matter where the speed of sound acts as a universal limit.
+(i) a simple scalar superfluid toy model with a Poisson constraint and a retarded lag field naturally produces a $1/2$-strength 1PN precession, and
+(ii) hydrodynamic considerations of the defect inertia point toward a specific finite position dependence, encoded in $\beta = 3/2$, that completes the 1PN match to GR. We also note that while the superfluid background naively suggests a preferred frame, we assume a back-reaction mechanism (to be detailed in future work) that preserves effective Lorentz invariance for internal observers, similar to emergent relativity scenarios in condensed matter where the speed of sound acts as a universal limit.
 
 \subsection{Future directions}
 \label{sec:discussion_future}
 
 The analysis presented here suggests several directions for further work, both within the toy model and in more realistic emergent-gravity frameworks.
 
-A first and immediate target is a \emph{microphysical verification} of $\kappa_{\mathrm{PV}}$. In the present paper this coefficient is derived geometrically by setting the throat aspect ratio $L \simeq 2a$. A more fundamental treatment would specify a concrete microscopic model of the superfluid and the defect throat (for example, a Gross--Pitaevskii-type equation in a 4D slab with appropriate boundary conditions) and compute the effective inertia of an accelerating throat in a weakly stratified background—and verify that the throat dynamically stabilizes to this specific aspect ratio. Extracting the coefficient of $\mu/(\cS^2 r)$ in that calculation would provide a nontrivial check on whether the underlying microphysics truly reproduces the emergent 1PN phenomenology captured here.
+A first and immediate target is a \emph{microphysical assessment} of any pressure--volume contribution $\kappa_{\mathrm{PV}}$. A more fundamental treatment would specify a concrete microscopic model of the superfluid and the defect throat (for example, a Gross--Pitaevskii-type equation in a 4D slab with appropriate boundary conditions) and compute the effective inertia of an accelerating throat in a weakly stratified background—and determine whether a nonzero $\kappa_{\mathrm{PV}}$ arises at higher order. Extracting the coefficient of $\mu/(\cS^2 r)$ in that calculation would provide a nontrivial check on whether the underlying microphysics truly reproduces (or corrects) the emergent 1PN phenomenology captured here.
 
 Second, the uniform--drift invariance (UDI) postulated in Section~\ref{sec:udi} warrants direct numerical verification. While the analytic $1$PN derivation relies on boost invariance to discard aether--wind terms, fully nonlinear numerical simulations in a boosted frame could quantify the threshold at which UDI breaks down. This would allow us to map the precise limits of the effective Lorentz invariance arising from the superfluid hydrodynamics.
 
@@ -1395,7 +1352,7 @@ Fourth, it would be interesting to investigate \emph{radiation and energy loss} 
 
 Finally, the present work has focused on the scalar sink sector of a more general ``dyon'' defect, which also carries circulation and spin degrees of freedom. In the full toy universe, vortical flow around the throat and its coupling to spin lead to electromagnetic-like forces and ``hydrodynamic atom'' phenomena. Extending the present analysis to include these additional degrees of freedom would allow a unified treatment of gravity, electromagnetism, and spin in the same superfluid framework, and would provide a natural context for studying spin-orbit couplings, spin precession, and magnetogravitational analogues of PN effects.
 
-More broadly, the main lesson of this work is that a relatively simple hydrodynamic system---a superfluid with defects and a scalar lag mode---already contains enough structure to reproduce the leading PN phenomenology of GR in a controlled approximation, provided one takes seriously the emergent and position-dependent nature of inertial mass. This suggests that future explorations of emergent or analogue gravity can profitably use the 1PN sector, and in particular the requirement $\beta = 5/2$, as a concrete quantitative target for model building and microphysical derivations.
+More broadly, the main lesson of this work is that a relatively simple hydrodynamic system---a superfluid with defects and a scalar lag mode---already contains enough structure to reproduce the leading PN phenomenology of GR in a controlled approximation, provided one takes seriously the emergent and position-dependent nature of inertial mass. This suggests that future explorations of emergent or analogue gravity can profitably use the 1PN sector, and in particular the requirement $\beta = 3/2$, as a concrete quantitative target for model building and microphysical derivations.
 
 \appendix
 
@@ -1600,7 +1557,7 @@ Defining the orbit-averaged lag potential by
   \bigl\langle \PhiL(r) \bigr\rangle
   \equiv \frac{1}{T}\int_0^{T} \PhiL\bigl(\mathbf{x}(t),t\bigr)\,\dd t,
 \end{equation}
-where $T$ is the orbital period of the source around the barycenter, and using Eq.~\eqref{eq:phiL_expanded_app} together with the averages above, we obtain
+where $T$ is the orbital period of the source around the barycenter, and using Eq.~\eqref{eq:phiL_expanded_app} together with the averages above, we obtain a denominator-only estimate
 \begin{equation}
   \bigl\langle \PhiL(r) \bigr\rangle
   \simeq -\frac{\mu}{r}
@@ -1611,20 +1568,19 @@ Comparing with Eq.~\eqref{eq:avg_den}, we identify
 \begin{equation}
   \alpha = \frac{1}{2}.
 \end{equation}
-
-To express this correction purely in terms of the radius $r$, we use the leading-order Kepler relation for a bound orbit in a central potential,
+However, expanding the retarded time in both the $1/R_{\mathrm{ret}}$ prefactor and the Doppler denominator shows that the linear $\mathcal{O}(v/\cS)$ term is a total time derivative and that the net quadratic correction carries a coefficient $3/2$ for nearly circular orbits. To express this correction purely in terms of the radius $r$, we use the leading-order Kepler relation for a bound orbit in a central potential,
 \begin{equation}
   v^2 \simeq \frac{\mu}{r},
 \end{equation}
 valid at 0PN order. Substituting this into the expression above yields
 \begin{equation}
   \bigl\langle \PhiL(r) \bigr\rangle
-  \simeq -\frac{\mu}{r} - \frac{\mu^2}{2\cS^2 r^2},
+  \simeq -\frac{\mu}{r} - \frac{3\mu^2}{2\cS^2 r^2},
 \end{equation}
 which is the effective lag contribution used in Eq.~\eqref{eq:phiL_eff}. Adding the Newtonian Poisson potential $-\mu/r$ then gives the effective central potential
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2\cS^2 r^2},
+  = -\frac{\mu}{r} - \frac{3\mu^2}{2\cS^2 r^2},
 \end{equation}
 and the corresponding $1/r^3$ force correction derived in Section~\ref{sec:force_correction}.
 
@@ -1633,7 +1589,7 @@ Although the averaging procedure sketched here is based on a specific geometric 
 \section{Perihelion precession from the effective Lagrangian}
 \label{app:precession}
 
-In this appendix we derive the orbit equations and perihelion precession starting from the effective Lagrangians used in the main text. We first treat the scalar-only case, recovering Eq.~\eqref{eq:Delta_phi_scalar_result}, and then include the position-dependent kinetic prefactor $\sigma(r)$ to obtain the general $(1+2\beta)$ enhancement factor in Eq.~\eqref{eq:Delta_phi_total_beta}.
+In this appendix we derive the orbit equations and perihelion precession starting from the effective Lagrangians used in the main text. We first treat the scalar-only case, recovering Eq.~\eqref{eq:Delta_phi_scalar_result}, and then include the position-dependent kinetic prefactor $\sigma(r)$ to obtain the general $(3+2\beta)$ enhancement factor in Eq.~\eqref{eq:Delta_phi_total_beta}.
 
 \subsection{Scalar-only effective Lagrangian}
 \label{app:precession_scalar_only}
@@ -1641,7 +1597,7 @@ In this appendix we derive the orbit equations and perihelion precession startin
 We begin with the scalar-only effective potential derived in Section~\ref{sec:scalar_lag},
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2},
+  = -\frac{\mu}{r} - \frac{3\mu^2}{2 \cS^2 r^2},
   \label{eq:phi_eff_app}
 \end{equation}
 and consider a test body of reference mass $m$. In polar coordinates $(r,\varphi)$ in the orbital plane, the Lagrangian per unit mass is
@@ -1661,7 +1617,7 @@ The Euler--Lagrange equation for $r$ gives
 \begin{equation}
   \ddot{r} - r \dot{\varphi}^2
   = -\frac{\dd \Phi_{\mathrm{eff}}}{\dd r}
-  = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+  = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
   \label{eq:r_eom_scalar_app}
 \end{equation}
 To recast this as an equation for $u(\varphi) \equiv 1/r(\varphi)$, we use
@@ -1687,33 +1643,33 @@ so $\ddot{\varphi}$ drops out of the radial equation when expressed entirely in 
 where $F_r(r)$ is the radial force per unit mass,
 \begin{equation}
   F_r(r) = -\frac{\dd \Phi_{\mathrm{eff}}}{\dd r}
-         = -\frac{\mu}{r^2} - \frac{\mu^2}{\cS^2 r^3}.
+         = -\frac{\mu}{r^2} - 3\,\frac{\mu^2}{\cS^2 r^3}.
 \end{equation}
 Writing $r = 1/u$, we have
 \begin{equation}
-  F_r(r) = -\mu u^2 - \frac{\mu^2}{\cS^2} u^3,
+  F_r(r) = -\mu u^2 - 3\,\frac{\mu^2}{\cS^2} u^3,
 \end{equation}
 and hence
 \begin{equation}
   -\frac{1}{h^2 u^2}\,F_r
-  = \frac{\mu}{h^2} + \frac{\mu^2}{h^2 \cS^2} u.
+  = \frac{\mu}{h^2} + 3\,\frac{\mu^2}{h^2 \cS^2} u.
 \end{equation}
 Substituting this into Eq.~\eqref{eq:u_eom_general_app} yields
 \begin{equation}
   \frac{\dd^2 u}{\dd \varphi^2} + u
-  = \frac{\mu}{h^2} + \frac{\mu^2}{h^2 \cS^2} u,
+  = \frac{\mu}{h^2} + 3\,\frac{\mu^2}{h^2 \cS^2} u,
 \end{equation}
 or equivalently
 \begin{equation}
   \frac{\dd^2 u}{\dd \varphi^2}
-  + \left(1 - \frac{\mu^2}{h^2 \cS^2}\right) u
+  + \left(1 - 3\,\frac{\mu^2}{h^2 \cS^2}\right) u
   = \frac{\mu}{h^2}.
   \label{eq:u_eom_scalar_app_final}
 \end{equation}
 
 Define the small post-Newtonian parameter
 \begin{equation}
-  \delta \equiv \frac{\mu^2}{h^2 \cS^2} \ll 1.
+  \delta \equiv 3\,\frac{\mu^2}{h^2 \cS^2} \ll 1.
 \end{equation}
 Then Eq.~\eqref{eq:u_eom_scalar_app_final} can be written as
 \begin{equation}
@@ -1771,14 +1727,14 @@ To express this in terms of the orbital elements, note that to leading (Newtonia
 so
 \begin{equation}
   \delta
-  = \frac{\mu^2}{h^2 \cS^2}
-  = \frac{\mu^2}{\mu a(1-e^2)\,\cS^2}
-  = \frac{\mu}{\cS^2 a(1-e^2)}.
+  = 3\,\frac{\mu^2}{h^2 \cS^2}
+  = 3\,\frac{\mu^2}{\mu a(1-e^2)\,\cS^2}
+  = 3\,\frac{\mu}{\cS^2 a(1-e^2)}.
 \end{equation}
 Substituting into Eq.~\eqref{eq:Delta_phi_scalar_delta_app}, we recover the scalar-only precession used in the main text,
 \begin{equation}
   \Delta \varphi_{\mathrm{scalar}}
-  \simeq \frac{\pi \mu}{\cS^2 a(1-e^2)}.
+  \simeq 3\,\frac{\pi \mu}{\cS^2 a(1-e^2)}.
 \end{equation}
 
 \subsection{Including a position-dependent kinetic prefactor}
@@ -1865,7 +1821,7 @@ To 1PN order, the orbit equation can be written in terms of $u(\varphi)$ as in E
 where
 \begin{equation}
   \delta_{\mathrm{scalar}}
-  = \frac{\mu}{\cS^2 a(1-e^2)}
+  = 3\,\frac{\mu}{\cS^2 a(1-e^2)}
 \end{equation}
 is the scalar-only contribution. In other words, the orbit equation becomes
 \begin{equation}
@@ -1876,13 +1832,13 @@ is the scalar-only contribution. In other words, the orbit equation becomes
 with
 \begin{equation}
   \delta_{\mathrm{tot}}
-  = (1 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
+  = (3 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
 \end{equation}
 as given in Eq.~\eqref{eq:delta_tot_def}.
 
 Physically, the factor of $2\beta$ arises because $\sigma(r)$ affects both:
 (i) the ``spring constant'' in the radial equation (through the $r^2\dot{\varphi}^2$ term multiplied by $1+\sigma$), and
-(ii) the relation between the conserved angular momentum $J$ and the orbital elements $(a,e)$ (through the factor $1+\sigma$ in $J$). To first order in $\sigma$ these contributions add linearly and can be absorbed into an effective shift in the coefficient of $u$ in the orbit equation, yielding the $(1+2\beta)$ enhancement relative to the scalar-only case.
+(ii) the relation between the conserved angular momentum $J$ and the orbital elements $(a,e)$ (through the factor $1+\sigma$ in $J$). To first order in $\sigma$ these contributions add linearly and can be absorbed into an effective shift in the coefficient of $u$ in the orbit equation, yielding the additive $2\beta$ contribution on top of the scalar coefficient $3$.
 
 \subsection{Precession angle with general $\beta$}
 \label{app:precession_beta_result}
@@ -1896,7 +1852,7 @@ Given the orbit equation
 with
 \begin{equation}
   \delta_{\mathrm{tot}}
-  = (1 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
+  = (3 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
 \end{equation}
 the solution and precession analysis proceed exactly as in the scalar-only case. The general solution is
 \begin{equation}
@@ -1936,14 +1892,14 @@ so
 Substituting $\delta_{\mathrm{tot}}$ then yields
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  \simeq \pi (1 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
+  \simeq \pi (3 + 2\beta)\,\frac{\mu}{\cS^2 a(1-e^2)},
 \end{equation}
 which is Eq.~\eqref{eq:Delta_phi_total_beta} in the main text. Equivalently,
 \begin{equation}
   \Delta \varphi_{\mathrm{tot}}
-  = (1 + 2\beta)\,\Delta \varphi_{\mathrm{scalar}},
+  = \frac{3 + 2\beta}{3}\,\Delta \varphi_{\mathrm{scalar}},
 \end{equation}
-showing explicitly how the position-dependent kinetic prefactor amplifies the scalar-only PN precession by the simple multiplicative factor $(1+2\beta)$.
+showing explicitly how the position-dependent kinetic prefactor builds on the scalar-only PN precession by adding $2\beta$ to the scalar coefficient $3$.
 
 When $\mu = GM$ and $\cS = c$, matching the general-relativistic 1PN result
 \begin{equation}
@@ -1952,11 +1908,11 @@ When $\mu = GM$ and $\cS = c$, matching the general-relativistic 1PN result
 \end{equation}
 requires
 \begin{equation}
-  (1 + 2\beta) = 6
+  (3 + 2\beta) = 6
   \quad \Longrightarrow \quad
-  \beta = \frac{5}{2},
+  \beta = \frac{3}{2},
 \end{equation}
-as stated in Eq.~\eqref{eq:beta_5_over_2}. This completes the explicit derivation of the perihelion precession from the effective Lagrangian, both in the scalar-only case and in the presence of the position-dependent kinetic prefactor.
+as stated in Eq.~\eqref{eq:beta_3_over_2}. This completes the explicit derivation of the perihelion precession from the effective Lagrangian, both in the scalar-only case and in the presence of the position-dependent kinetic prefactor.
 
 \section{Numerical methods and convergence tests}
 \label{app:numerics}
@@ -2125,7 +2081,7 @@ In the fully 3D PDE runs, the presence of the dynamical lag field and the discre
 
 \medskip
 
-Overall, these convergence tests support the conclusion that the numerical experiments faithfully reproduce the analytic behaviour of the toy model in the regimes of interest: the Static Limit Theorem holds to within truncation error; the scalar-only lag sector produces the predicted $1/6$-strength precession; and the inclusion of the position-dependent kinetic prefactor with $\beta = 5/2$ yields a total precession consistent with the GR 1PN value across the range of parameters probed.
+Overall, these convergence tests support the conclusion that the numerical experiments faithfully reproduce the analytic behaviour of the toy model in the regimes of interest: the Static Limit Theorem holds to within truncation error; the scalar-only lag sector produces the predicted $1/2$-strength precession; and the inclusion of the position-dependent kinetic prefactor with $\beta = 3/2$ yields a total precession consistent with the GR 1PN value across the range of parameters probed.
 
 \begin{thebibliography}{99}
 

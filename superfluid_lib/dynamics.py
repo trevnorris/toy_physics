@@ -48,7 +48,7 @@ class ForceAccumulator:
         beta : float
             Dimensionless coefficient for position-dependent inertia σ.
             beta = 0.0  -> no inertia correction (pure scalar sector).
-            beta = 2.5  -> full 1PN toy model matching GR precession.
+            beta = 1.5  -> full 1PN toy model matching GR precession.
         enable_beta_inertia : bool
             If True, apply the β-based inertia correction to particle
             accelerations using the toy model Lagrangian.

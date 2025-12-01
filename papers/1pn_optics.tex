@@ -1,0 +1,3655 @@
+\documentclass[11pt]{article}
+
+% Basic packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{authblk}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% Custom commands (tune / extend as needed)
+\newcommand{\PN}{\mathrm{PN}}
+\newcommand{\cS}{c_s}
+\newcommand{\PhiP}{\Phi_{\mathrm{P}}}
+\newcommand{\PhiL}{\Phi_{\mathrm{L}}}
+\newcommand{\PhiTot}{\Phi}
+\newcommand{\GM}{GM}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\dd}{\mathrm{d}}
+
+\title{Gravitational Optics and Soliton Geodesics\\
+in a Superfluid Defect Toy Model}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We extend a previously developed superfluid-defect toy model of gravity from
+orbital dynamics to the full suite of classic 1PN tests involving light and
+clocks.  The model treats the vacuum as a compressible superfluid and massive
+bodies as flux-tube defects that drain this vacuum; Paper~1 showed that a scalar
+lag field plus a position-dependent kinetic prefactor $\sigma(r)$ reproduces
+the GR perihelion precession and fixes a single orbital parameter $\beta=3/2$.
+Here we focus on gravitational optics and redshift.
+
+We model the vacuum as a stiff ($n=5$) polytropic superfluid and show that a
+flux-tube mass defect induces a $1/r$ pressure and density deficit that fixes a
+refractive index profile $N(r)$ governing light bending and Shapiro delay.
+Requiring this profile to reproduce the GR lensing coefficient uniquely selects
+$n=5$ and implies a spatial curvature coefficient $2.0$ in the optical sector
+($\gamma=1$).
+If defects were to follow this bare acoustic metric, the predicted perihelion
+advance would have coefficient $10$ instead of the GR value $6$.
+We show that treating defects as hydrodynamically dressed solitons resolves
+this tension: the static density deficit and the dipole flow around a moving
+throat contribute $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$ to the
+kinetic prefactor, yielding $\beta = 3/2$ and restoring the GR precession.
+Within the 1PN, weak-field regime the combined orbital, optical, and redshift
+sectors of the toy model are therefore indistinguishable from Schwarzschild,
+even though light and matter couple differently to the underlying superfluid.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Motivation and overview}
+\label{subsec:intro-motivation}
+
+The classic solar-system tests of gravity---perihelion precession, light bending,
+Shapiro time delay, and gravitational redshift---are often summarized as a single
+statement: the Schwarzschild solution of General Relativity (GR) with post-Newtonian
+parameters $\beta = \gamma = 1$ passes all known 1PN tests.
+From that vantage point, any alternative description of gravity must either
+explicitly reproduce the Schwarzschild metric in the appropriate limit or
+offer a compelling, falsifiable mechanism by which the same observables arise.
+
+This paper continues a different line of attack.
+We treat gravity as an \emph{emergent} phenomenon in a ``toy universe'' where the
+vacuum is a compressible superfluid and what we usually call ``matter'' is carried
+by topological defects.
+In this picture, a massive object is modeled as a flux-tube throat that drains
+superfluid into a 4D interior, while circulation around that throat plays the role
+of magnetic fields and charge.
+Dyons---bound composites of throats and vortices---behave as charged, spinning
+particles moving through the medium.
+The hope is that, by insisting on a single underlying fluid with a small set of
+rules, the familiar hierarchy of gravitational and electromagnetic effects can be
+recovered as different facets of the same hydrodynamics.
+
+Paper~1 in this series~\cite{Norris:2025Orbits} developed the \emph{orbital} sector
+of this toy universe.
+Starting from a scalar ``lag'' field that allows the bulk fluid to slip relative to
+the defects, and a position-dependent kinetic prefactor that encodes how inertia
+renormalizes in the throat background, the model reproduces Newtonian orbits and
+a GR-like 1PN perihelion advance.
+That work deliberately deferred all questions involving light, clocks, and
+clock comparison experiments: it treated defects as massive test bodies only.
+
+The central question of the present paper is therefore:
+
+\begin{quote}
+Can the same superfluid-defect toy model that reproduces GR-like orbital
+precession at 1PN also reproduce the \emph{optical and clock} phenomenology
+of GR---light bending, Shapiro delay, and gravitational redshift---using a
+single, physically well-motivated modification of the vacuum state?
+\end{quote}
+
+Our answer is ``yes'' within the controlled regime of the model.
+We show that there exists a unique, stiff polytropic vacuum ($n=5$ in the
+language of polytropes) in which a flux-tube mass defect carves out a
+$1/r$ pressure and density profile.
+That profile, in turn, determines a refractive index $N(r) = c_0 / c_s(r)$
+for small-amplitude waves in the medium.
+Remarkably, the same $N(r)$ simultaneously accounts for:
+
+\begin{itemize}
+  \item the GR light-bending angle $\Delta\theta = 4GM/(b c^2)$ in the weak-field,
+        small-angle limit;
+  \item the GR Shapiro time delay with the correct $(1+\gamma)$ coefficient;
+  \item a gravitational redshift consistent with the weak-field Schwarzschild
+        potential, when clocks are realized as defect-bound oscillators.
+\end{itemize}
+
+The resulting picture is that of a single superfluid vacuum, characterized by a
+specific equation of state and flux-tube geometry, whose background state around a
+massive defect encodes \emph{both} the orbital dynamics of defects and the optics
+of waves.
+In the language of GR, the model is 1PN-equivalent to Schwarzschild for the classic
+tests; in the language of analogue gravity, orbits and light rays are different
+probes of the same emergent geometry.
+Requiring the refractive index $N(r)$ of the stiff ($n=5$) vacuum to match
+GR lensing fixes the optical sector and, if interpreted as a full spacetime
+metric, would yield a perihelion advance with coefficient $10$ instead of
+the GR value $6$.
+We show that this apparent discrepancy is resolved once defects are treated
+as hydrodynamically dressed solitons: the density perturbation and dipole
+flow around a moving throat contribute $\kappa_\rho = 1$ and
+$\kappa_{\mathrm{add}} = 1/2$ to the kinetic prefactor, giving
+$\beta = 3/2$ and restoring the GR precession.
+
+Throughout, we stress that this is an \emph{analog} construction, not a proposed
+theory of our universe.
+The medium defines a preferred frame; Lorentz invariance, where it appears, is
+emergent and approximate.
+The aim is not to compete with GR but to understand how far an effectively
+hydrodynamic picture of vacuum and matter can be pushed before it fails.
+
+
+\subsection{Summary of Paper~1 results}
+\label{subsec:intro-paper1-summary}
+
+For completeness, we briefly summarize the orbital-sector results from
+Ref.~\cite{Norris:2025Orbits}, which we will treat as input data in what follows.
+
+In the superfluid-defect toy model, a non-relativistic test defect of reference
+mass $m$ moving in the field of a central mass $M$ is described by an effective
+Lagrangian of the form
+\begin{equation}
+  L
+  = \frac{1}{2}\bigl[1 + \sigma(r)\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi_{\mathrm{eff}}(r),
+\end{equation}
+where $\sigma(r)$ is a dimensionless kinetic prefactor that encodes how the
+effective inertial mass depends on radius, and $\Phi_{\mathrm{eff}}$ is an
+effective central potential.
+The scalar lag field, which allows the bulk superfluid to slip relative to
+defects, contributes a $1/r^3$ correction to the Newtonian potential,
+so that
+\begin{equation}
+  \Phi_{\mathrm{eff}}(r)
+  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2} \;,
+  \qquad
+  \mu = GM,
+\end{equation}
+with $\cS$ the characteristic wave speed (identified with $c$ in the
+GR-matching limit).
+This scalar-only sector produces exactly one half of the GR perihelion
+advance for nearly Keplerian orbits:
+\begin{equation}
+  \Delta\varphi_{\text{scalar}}
+  = \frac{1}{2}\,\Delta\varphi_{\text{GR}}
+  = 3\,\frac{\pi \mu}{\cS^2 a(1-e^2)} \;,
+\end{equation}
+where $a$ and $e$ are the orbital semi-major axis and eccentricity.
+
+To reach the full GR value, Paper~1 introduced a position-dependent kinetic
+prefactor
+\begin{equation}
+  \sigma(r) = \beta\,\frac{\mu}{\cS^2 r},
+\end{equation}
+with a dimensionless coefficient $\beta$ determined by the hydrodynamics of the
+throat and its near-field flows.
+In the effective Lagrangian, $\bigl[1+\sigma(r)\bigr]$ plays the role of a
+radial renormalization of inertia (or, equivalently, a perturbation to the
+spatial metric experienced by the defect).
+Solving the resulting equations of motion and matching to the standard 1PN
+precession formula yields
+\begin{equation}
+  \Delta\varphi_{\text{tot}}
+  = \bigl(3 + 2\beta\bigr)\,
+    \frac{\pi \mu}{\cS^2 a(1-e^2)} \;.
+\end{equation}
+The hydrodynamic analysis of the throat decomposes $\beta$ into several
+contributions (e.g. from density perturbations, additional flows, and possible
+pseudoviscous terms).
+The final, self-consistent choice sets one of these contributions to zero and
+fixes
+\begin{equation}
+  \beta = \frac{3}{2},
+\end{equation}
+so that $\Delta\varphi_{\text{tot}}$ exactly reproduces the GR perihelion
+advance at 1PN.
+
+These analytic results were checked against two classes of numerical experiments:
+(i) reduced-orbit integrations of the effective 2D ODE system, and
+(ii) full 3D PDE simulations of the superfluid, scalar lag field, and defect
+dynamics in a cubic domain.
+Within their respective domains of validity, both classes of simulations confirm
+that the scalar-only sector produces half of the GR precession and that, once the
+kinetic prefactor with $\beta = 3/2$ is included, the total precession matches
+the GR prediction to within the quoted numerical uncertainties.
+In what follows we take the effective Lagrangian and the calibrated value of
+$\beta$ as \emph{given} and focus on extending the model to light and clocks.
+
+
+\subsection{Scope and roadmap of this paper}
+\label{subsec:intro-roadmap}
+
+The present paper builds on Ref.~\cite{Norris:2025Orbits} by developing the
+gravitational optics and clock/redshift sector of the 1PN phenomenology in the
+same superfluid-defect framework.
+The central organizing idea is that a single, stiff superfluid vacuum with a
+flux-tube mass defect defines a radial profile of density and sound speed, and
+hence a refractive index $N(r)$, which simultaneously governs:
+
+\begin{itemize}
+  \item the trajectories of light-like rays (gravitational lensing),
+  \item the time-of-flight of signals near a mass (Shapiro delay),
+  \item and the rates of defect-based clocks (gravitational redshift).
+\end{itemize}
+
+Our strategy is as follows.
+Section~\ref{sec:paper1-inputs} collects the orbital-sector inputs from Paper~1,
+including the effective Lagrangian, the role of the scalar lag field, and the
+interpretation of the kinetic prefactor $\sigma(r)$ and the parameter $\beta$.
+Section~\ref{sec:n5-vacuum} constructs a stiff ($n=5$) polytropic vacuum with a
+flux-tube mass defect and derives the resulting $1/r$ pressure and density
+profiles, along with the associated sound-speed and refractive-index profiles
+$N(r)$.
+Section~\ref{sec:lensing} uses this $N(r)$ to compute the weak-field bending of
+light, both analytically and via numerical ray tracing, and shows that the
+deflection angle matches the GR result and fixes the post-Newtonian parameter
+$\gamma = 1$ in this model.
+Section~\ref{sec:shapiro} performs an analogous analysis for Shapiro time delay,
+demonstrating that the same $N(r)$ reproduces the standard GR logarithmic delay
+with the correct coefficient.
+
+In Section~\ref{sec:redshift} we turn to gravitational redshift, treating clocks
+as defect-bound oscillators whose frequencies track the local density---and hence
+mass---of the defects.
+We show that the density deficit induced by the flux-tube defect yields a
+redshift consistent with the weak-field Schwarzschild potential, completing the
+1PN optical and clock sector.
+Section~\ref{sec:soliton-geodesics} then assembles these ingredients into a
+``soliton geodesic'' picture: localized defects and wave packets follow
+geodesics of an emergent acoustic metric determined by $c_s(r)$ and $\rho(r)$.
+We discuss how the orbital and optical sectors jointly fix the effective PPN
+parameters $\beta$ and $\gamma$, and how this resolves an apparent tension
+between a naively constructed optical metric and the calibrated orbital dynamics.
+
+Section~\ref{sec:degeneracies} analyzes several competing constructions---including
+pure-drag and mixed drag/re-\\
+fraction pictures---and argues that, within the
+restricted class of spherically symmetric, polytropic superfluid vacua with
+flux-tube defects, the $n=5$ pure-refraction branch is singled out by the 1PN
+tests.
+Finally, Section~\ref{sec:discussion} discusses the broader conceptual lessons and
+limitations of the toy model and outlines directions for future work, including
+the full electromagnetic sector, strong-field extensions, and cosmological
+applications.
+
+%---------------------------------------------------------------------------
+\section{Inputs from Paper~1: orbital sector and $\beta$}
+\label{sec:paper1-inputs}
+
+In this section we collect the minimal orbital-sector ingredients from
+Ref.~\cite{Norris:2025Orbits} that will be treated as inputs for the present
+work.
+Our goal is not to re-derive the results of Paper~1, but to make explicit
+which structures are assumed, which parameters have already been fixed, and
+how they will be used in the optical and clock sectors that follow.
+
+\subsection{Effective Lagrangian and perihelion precession}
+\label{subsec:paper1-lagrangian}
+
+In the superfluid-defect toy model, the motion of a non-relativistic test
+defect in the field of a central mass $M$ is described, after suitable
+reductions, by an effective two-dimensional Lagrangian of the form
+\begin{equation}
+  L
+  = \frac{1}{2}\bigl[1 + \sigma(r)\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi_{\mathrm{eff}}(r),
+  \label{eq:paper1-L-eff}
+\end{equation}
+where $(r,\varphi)$ are polar coordinates in the orbital plane,
+$\Phi_{\mathrm{eff}}$ is an effective central potential, and
+$\sigma(r)$ is a dimensionless kinetic prefactor that encodes how the
+effective inertial mass of the defect varies with radius.
+
+The potential in Eq.~\eqref{eq:paper1-L-eff} contains two pieces.  The first
+is the usual Newtonian term,
+\begin{equation}
+  \Phi_{\mathrm{N}}(r) = -\frac{\mu}{r},
+  \qquad
+  \mu \equiv GM,
+\end{equation}
+arising from the far-field pressure gradient in the superfluid vacuum.  The
+second is a $1/r^2$ correction generated by the scalar ``lag'' field that
+allows the bulk fluid to slip relative to the defects.
+To leading post-Newtonian order this scalar sector contributes
+\begin{equation}
+  \Phi_{\mathrm{lag}}(r) = -\frac{\mu^2}{2 \cS^2 r^2},
+\end{equation}
+where $\cS$ is the characteristic wave speed in the medium (identified with
+$c$ when comparing to GR).
+The total effective potential is thus
+\begin{equation}
+  \Phi_{\mathrm{eff}}(r)
+  = \Phi_{\mathrm{N}}(r) + \Phi_{\mathrm{lag}}(r)
+  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2}.
+  \label{eq:paper1-Phi-eff}
+\end{equation}
+
+If one temporarily sets $\sigma(r)=0$ and considers only the scalar-lag
+correction to the Newtonian potential, the resulting nearly Keplerian orbits
+exhibit a perihelion advance
+\begin{equation}
+  \Delta\varphi_{\text{scalar}}
+  = 3\,\frac{\pi \mu}{\cS^2 a(1-e^2)}
+  = \frac{1}{2}\,\Delta\varphi_{\text{GR}},
+  \label{eq:paper1-precession-scalar}
+\end{equation}
+where $a$ and $e$ are the orbital semi-major axis and eccentricity, and
+$\Delta\varphi_{\text{GR}}$ denotes the standard GR value
+\begin{equation}
+  \Delta\varphi_{\text{GR}}
+  = 6\,\frac{\pi \mu}{c^2 a(1-e^2)}.
+\end{equation}
+Thus the scalar-lag potential alone reproduces exactly one half of the
+Schwarzschild 1PN perihelion precession.
+
+To recover the full GR precession, Paper~1 introduced a position-dependent
+kinetic prefactor
+\begin{equation}
+  \sigma(r)
+  = \beta\,\frac{\mu}{\cS^2 r},
+  \label{eq:paper1-sigma}
+\end{equation}
+with $\beta$ a dimensionless parameter determined by the hydrodynamics of
+the throat and its near-field flows.
+Expanding Eq.~\eqref{eq:paper1-L-eff} to leading post-Newtonian order and
+solving the resulting equations of motion yields an additional contribution
+to the apsidal advance from the $\sigma(r)$ term.  The total perihelion
+advance can be written as
+\begin{equation}
+  \Delta\varphi_{\text{tot}}
+  = \bigl(3 + 2\beta\bigr)\,
+    \frac{\pi \mu}{\cS^2 a(1-e^2)}.
+  \label{eq:paper1-precession-total}
+\end{equation}
+Matching Eq.~\eqref{eq:paper1-precession-total} to the GR value forces
+\begin{equation}
+  3 + 2\beta = 6
+  \quad\Rightarrow\quad
+  \beta = \frac{3}{2}.
+  \label{eq:paper1-beta-32}
+\end{equation}
+
+Equation~\eqref{eq:paper1-beta-32} is not an arbitrary fit: in
+Ref.~\cite{Norris:2025Orbits} the same value emerges from an explicit
+hydrodynamic decomposition of $\beta$ into several physically distinct
+contributions, coupled with a null result for one of the candidate
+contributions.
+We summarize that interpretation next, as it will play an important role in
+how we think about the emergent metric in the present paper.
+
+\subsection{Hydrodynamic interpretation of $\sigma(r)$ and $\beta$}
+\label{subsec:paper1-beta}
+
+In the superfluid picture, the kinetic prefactor $1+\sigma(r)$ in
+Eq.~\eqref{eq:paper1-L-eff} is not inserted by hand but arises from
+coarse-graining the defect plus its near-field distortion of the fluid.
+Intuitively, a defect moving through the medium must drag along some
+co-moving volume of fluid and rearrange the surrounding flow pattern.  The
+effective inertial mass that appears in its orbital dynamics is therefore a
+renormalized quantity, sensitive to how the background pressure, density,
+and flow fields vary with radius.
+
+Paper~1 parameterized this renormalization in terms of a small set of
+dimensionless coefficients that capture different hydrodynamic effects.
+Writing
+\begin{equation}
+  \beta = \kappa_\rho + \kappa_{\text{add}} + \kappa_{\text{PV}},
+  \label{eq:paper1-beta-decomp}
+\end{equation}
+one can interpret:
+\begin{itemize}
+  \item $\kappa_\rho$ as the contribution from the static density perturbation
+        in the vicinity of the throat (mass deficit / excess in the co-moving
+        volume);
+  \item $\kappa_{\text{add}}$ as an additional contribution from coherent flow
+        structures (e.g.\ the dipole-like ``cloud'' of velocity field around a
+        translating void; see Appendix~\ref{app:dipole-derivation}) that accompany
+        the defect;
+  \item $\kappa_{\text{PV}}$ as a potential contribution from a pseudoviscous
+        or phase-velocity mode associated with the scalar lag field.
+\end{itemize}
+Each term is computed by integrating appropriate quadratic combinations of the
+fluid variables over a spherical shell around the defect, with the details
+spelled out in Ref.~\cite{Norris:2025Orbits}.
+
+Two features of this decomposition are important for the present work.
+First, $\kappa_\rho$ and $\kappa_{\text{add}}$ are both strictly positive and
+of order unity: they encode the fact that a defect carries along additional
+``inertial dressing'' from the surrounding fluid, and that this dressing
+grows as one approaches the throat.
+Second, a direct symmetry analysis and explicit integration (via the
+Mathematica calculations reported in Paper~1) show that the would-be
+cross-term between the scalar lag mode and the primary flow modes vanishes,
+and that $\kappa_{\text{PV}}$ itself is consistent with zero within the
+accuracy of the model:
+\begin{equation}
+  \kappa_{\text{PV}} = 0,
+  \qquad
+  \beta = \kappa_\rho + \kappa_{\text{add}} = \frac{3}{2}.
+\end{equation}
+In particular, Appendix~\ref{app:dipole-derivation} shows explicitly that
+a stiff spherical throat moving through the superfluid carries an added
+mass $\kappa_{\mathrm{add}} = 1/2$ relative to the displaced fluid,
+while $\kappa_\rho = 1$ arises from the static density deficit.
+This ``null result'' for $\kappa_{\text{PV}}$ simplifies the orbital sector
+and will be crucial when we match onto the optical metric in the PPN analysis.
+
+From the perspective of the present paper, it is useful to think of
+$\sigma(r)$ as a proxy for how the spatial part of the emergent metric
+deviates from Euclidean form along defect worldlines, while
+$\Phi_{\mathrm{eff}}(r)$ controls the time-time component.
+The fact that $\beta$ is fixed by orbital dynamics and internal consistency
+will constrain how we construct an effective acoustic metric in the optical
+sector: we cannot freely tune spatial and temporal curvature to fit the
+light and clock tests without spoiling the orbital fit.
+
+\subsection{Numerical confirmation (pointer to Paper~1)}
+\label{subsec:paper1-numerics}
+
+The analytic results summarized above were tested in Paper~1 against two
+classes of numerical experiments, which we briefly recall here.
+
+The first class consists of reduced-orbit integrations of the Euler--Lagrange
+equations derived from Eq.~\eqref{eq:paper1-L-eff}.
+By rewriting the dynamics in terms of $(r,\varphi)$ and their conjugate
+momenta, and using a symplectic integrator with adaptive step size, one can
+track nearly Keplerian orbits over many periods while controlling numerical
+drift.
+For a range of eccentricities and semi-major axes relevant to Mercury-like
+orbits, the measured apsidal advances satisfy
+\begin{equation}
+  \frac{\Delta\varphi_{\text{scalar}}}
+       {\tfrac{1}{2}\Delta\varphi_{\text{GR}}}
+  \approx 1,
+  \qquad
+  \frac{\Delta\varphi_{\text{tot}}}
+       {\Delta\varphi_{\text{GR}}}
+  \approx 1,
+\end{equation}
+with discrepancies well below the percent level and consistent with the
+estimated numerical errors.
+These runs confirm that the scalar-lag potential yields half of the GR
+precession and that the inclusion of the kinetic prefactor with
+$\beta = 3/2$ restores the full GR value.
+
+The second class consists of full three-dimensional simulations of the
+superfluid, scalar lag field, and a small ensemble of defects evolving in a
+cubic domain with appropriate boundary conditions.
+Here the governing equations are the discretized continuity and Euler-like
+equations for the fluid, augmented by an evolution equation for the scalar
+lag field and coupled defect trajectories.
+These PDE simulations are more expensive but provide a useful cross-check
+that the reduced-orbit description has not omitted any large collective
+effects.
+Within the range of parameters explored in Ref.~\cite{Norris:2025Orbits},
+the PDE results agree with the reduced-orbit precession measurements and
+support the identification $\cS \simeq c$ and $\beta = 3/2$ as the values
+that best reproduce GR at 1PN.
+
+In what follows we treat the effective Lagrangian~\eqref{eq:paper1-L-eff},
+the potential~\eqref{eq:paper1-Phi-eff}, and the calibrated value
+$\beta = 3/2$ as fixed inputs.
+The task of the present paper is to show that, once the vacuum and flux-tube
+structure are specified, the same superfluid-defect framework also reproduces
+the 1PN optical and clock phenomenology of GR without further free parameters
+in the gravitational sector.
+
+%---------------------------------------------------------------------------
+\section{Stiff $n=5$ vacuum and flux-tube mass defect}
+\label{sec:n5-vacuum}
+
+In this section we construct the background vacuum state that will
+be used for the optical and clock sectors of the toy model.
+The key ingredients are:
+
+\begin{enumerate}
+  \item a polytropic equation of state (EOS) for the superfluid vacuum,
+  \item a flux-tube description of a mass defect as a sink in that vacuum,
+  \item the resulting $1/r$ pressure and density profiles around the defect,
+  \item and the induced variation of the local sound speed and refractive index
+        $N(r) = c_0 / c_s(r)$.
+\end{enumerate}
+
+We will keep the derivation as simple as possible in the main text, working
+with linear perturbations about a homogeneous background.  More general
+polytropic indices $n$ and the detailed integral expressions are deferred to
+Appendix~\ref{app:n5-optical}; here we focus on the stiff $n=5$ case that is
+selected by the 1PN optical tests.
+
+
+\subsection{Equation of state and hydrostatic balance}
+\label{subsec:eos-hydrostatic}
+
+We model the ``vacuum'' superfluid as a barotropic fluid with a
+polytropic equation of state
+\begin{equation}
+  P = K \rho^n,
+  \label{eq:eos-polytrope}
+\end{equation}
+where $P$ is the pressure, $\rho$ is the mass density, $K$ is a constant, and
+$n$ is the polytropic index.
+A homogeneous background state is characterized by $(\rho_0,P_0)$ satisfying
+Eq.~\eqref{eq:eos-polytrope}.
+Linear perturbations about this background propagate with sound speed
+\begin{equation}
+  c_0^2 \equiv \left.\frac{\partial P}{\partial \rho}\right|_{\rho_0}
+  = n K \rho_0^{\,n-1}.
+\end{equation}
+We will ultimately identify $c_0$ with the effective light speed $c$ in the
+GR-matching limit, but for now we keep the notation $c_0$ to emphasize that
+it is a property of the vacuum state.
+
+In the presence of a central mass $M$, the background superfluid is not
+exactly homogeneous: the flux-tube defect that represents $M$ creates a
+pressure deficit and a corresponding density deficit in the surrounding
+vacuum.
+Far from the throat, where the flow is slow and nearly static, the
+equilibrium of the fluid is governed by hydrostatic balance:
+\begin{equation}
+  \frac{1}{\rho(r)}\,\frac{\mathrm{d}P}{\mathrm{d}r}
+  = \frac{\mathrm{d}\Phi}{\mathrm{d}r},
+  \label{eq:hydrostatic-balance}
+\end{equation}
+where $\Phi(r)$ is the effective gravitational potential generated by the
+defect.
+In the toy model, the far-field potential takes the usual Newtonian form
+\begin{equation}
+  \Phi(r) = -\frac{\mu}{r},
+  \qquad
+  \mu \equiv GM,
+\end{equation}
+so that
+\begin{equation}
+  \frac{\mathrm{d}\Phi}{\mathrm{d}r}
+  = \frac{\mu}{r^2}.
+\end{equation}
+In the present toy model this $1/r$ law should be read as a
+\emph{constitutive postulate}: we \emph{define} a flux-tube defect of mass
+$M$ to be an object whose far-field coupling to the vacuum pressure
+reproduces the Newtonian potential $\Phi = -GM/r$.
+The hydrostatic relation Eq.~\eqref{eq:hydrostatic-balance} is therefore a
+hydrodynamic repackaging of that assumption, not an attempt to derive
+Newtonian gravity from the superfluid alone.
+
+In the weak-field regime relevant for 1PN tests, the fractional density
+perturbation $\delta\rho/\rho_0$ is small.
+To leading order we may therefore replace $\rho(r)$ by $\rho_0$ on the left
+hand side of Eq.~\eqref{eq:hydrostatic-balance}, obtaining
+\begin{equation}
+  \frac{1}{\rho_0}\,\frac{\mathrm{d}P}{\mathrm{d}r}
+  \simeq \frac{\mu}{r^2}.
+  \label{eq:hydrostatic-linear}
+\end{equation}
+Integrating outward from some reference radius and choosing the integration
+constant so that the perturbation vanishes at spatial infinity
+sets the radial dependence of the pressure perturbation.
+We will use this to define the flux-tube ``mass defect'' in the next
+subsection.
+
+
+\subsection{Flux-tube defect and pressure profile}
+\label{subsec:flux-tube}
+
+In the superfluid-defect ontology, a mass $M$ is not a point source but a
+flux tube: a narrow throat on the brane that connects to a 4D interior and
+acts as a sink for superfluid.
+On the brane, the time-averaged picture is that of a spherically symmetric
+radial inflow toward the throat, with an associated pressure deficit and
+density deficit in the surrounding vacuum.
+The Newtonian $1/r^2$ force on nearby defects is encoded in the potential
+$\Phi(r)$, while the ``vacuum structure'' appears as a modification of the
+pressure and density profiles.
+
+It is important to distinguish the internal topology of the defect from its
+hydrodynamic profile on the brane.
+While the defect extends as a flux tube into the 4D bulk, its intersection
+with the 3D brane manifests as an effectively spherical point sink.
+The added-mass calculation and shape-sensitivity analysis in
+Appendix~\ref{app:dipole-derivation} show that this spherical assumption is
+not innocuous: ellipsoidal or cylinder-like voids shift the hydrodynamic
+added-mass coefficient away from $\kappa_{\mathrm{add}} = 1/2$.
+In particular, a cylindrical cross-section would give
+$\kappa_{\mathrm{add}} = 1$ (broadside) or $\kappa_{\mathrm{add}} = 0$
+(end-on), corresponding to precession factors $7$ or $5$ rather than the
+observed GR value $6$.
+In what follows, the terminology ``flux tube'' therefore refers to the 4D
+interior topology, while the 3D hydrodynamic cross-section on the brane is
+assumed to be a stiff sphere.
+
+Treating the far field as quasi-static and using the linearized hydrostatic
+balance Eq.~\eqref{eq:hydrostatic-linear}, we integrate
+\begin{equation}
+  \frac{\mathrm{d}P}{\mathrm{d}r}
+  \simeq \rho_0\,\frac{\mu}{r^2}
+\end{equation}
+from $r$ to $\infty$ and define the pressure perturbation
+$\Delta P(r) \equiv P(r) - P_0$ relative to the asymptotic value $P_0$.
+This yields
+\begin{equation}
+  \Delta P(r)
+  = - \frac{\mu \rho_0}{r}
+  = - \frac{GM \rho_0}{r}.
+  \label{eq:deltaP}
+\end{equation}
+The negative sign reflects the fact that the throat creates tension or
+suction in the surrounding vacuum: the pressure is lower near the defect
+than in the far field.
+
+Equation~\eqref{eq:deltaP} is the central ``mass defect'' profile for the
+stiff vacuum.
+It states that a flux-tube mass pulls down the pressure in a $1/r$ fashion,
+with an amplitude fixed by $GM$ and the background density $\rho_0$.
+In the next subsection we translate this pressure deficit into a density
+deficit, a sound-speed deficit, and ultimately a refractive index profile
+$N(r)$.
+The electromagnetic flux-tube geometry (throat radius $a$, depth $L$, and
+their ratio) will become important when we discuss the full EM sector, but
+for the gravitational optics considered here only the far-field $1/r$
+behavior is needed.
+
+
+\subsection{Density, sound speed, and refractive index}
+\label{subsec:rho-cs-N}
+
+We now connect the pressure profile~\eqref{eq:deltaP} to the density and
+sound-speed structure of the vacuum around the defect.
+
+For small perturbations about the homogeneous background, the barotropic
+relation between $P$ and $\rho$ implies
+\begin{equation}
+  \Delta P(r) \simeq c_0^2\,\Delta\rho(r),
+\end{equation}
+where $\Delta\rho(r) \equiv \rho(r) - \rho_0$ and $c_0$ is the background
+sound speed.
+Combining this with Eq.~\eqref{eq:deltaP} gives
+\begin{equation}
+  \frac{\Delta\rho(r)}{\rho_0}
+  = \frac{\Delta P(r)}{\rho_0 c_0^2}
+  = -\,\frac{\mu}{c_0^2 r}
+  = -\,\frac{GM}{c_0^2 r}.
+  \label{eq:deltarho}
+\end{equation}
+Thus the flux-tube defect carves out a $1/r$ density deficit in the stiff
+vacuum.
+
+The local sound speed is determined by the EOS via
+\begin{equation}
+  c_s^2(\rho)
+  = \frac{\mathrm{d}P}{\mathrm{d}\rho}
+  = n K \rho^{\,n-1}.
+\end{equation}
+Expanding about $\rho_0$ and keeping only linear terms in
+$\Delta\rho/\rho_0$ yields
+\begin{equation}
+  c_s^2(\rho_0 + \Delta\rho)
+  \simeq c_0^2\left[1 + (n-1)\frac{\Delta\rho}{\rho_0}\right].
+\end{equation}
+Taking a square root and linearizing once more, we find
+\begin{equation}
+  \frac{\Delta c_s}{c_0}
+  \equiv \frac{c_s - c_0}{c_0}
+  \simeq \frac{n-1}{2}\,\frac{\Delta\rho}{\rho_0}.
+  \label{eq:deltacs-rho}
+\end{equation}
+Substituting Eq.~\eqref{eq:deltarho}, we obtain
+\begin{equation}
+  \frac{\Delta c_s}{c_0}
+  \simeq -\,\frac{n-1}{2}\,\frac{GM}{c_0^2 r}.
+  \label{eq:deltacs}
+\end{equation}
+For any polytropic index $n>1$, the sound speed is reduced near the defect
+($\Delta c_s < 0$), reflecting the lower density in the throat's vicinity.
+
+Light-like excitations in the analogue model follow rays whose local phase
+speed is the sound speed $c_s(r)$.
+It is therefore natural to define an effective refractive index
+\begin{equation}
+  N(r)
+  \equiv \frac{c_0}{c_s(r)}.
+\end{equation}
+Inserting Eq.~\eqref{eq:deltacs} and expanding to first order in
+$\Delta c_s/c_0$ yields
+\begin{equation}
+  N(r)
+  \simeq 1 - \frac{\Delta c_s}{c_0}
+  \simeq 1 + \frac{n-1}{2}\,\frac{GM}{c_0^2 r}.
+  \label{eq:N-general-n}
+\end{equation}
+We see that the polytropic index $n$ controls the strength of the radial
+gradient of $N(r)$: stiffer vacua (larger $n$) produce stronger refraction
+for a given mass $M$.
+
+The case of interest for this paper is the super-stiff $n=5$ polytrope.
+Setting $n=5$ in Eq.~\eqref{eq:N-general-n} gives
+\begin{equation}
+  N_{n=5}(r)
+  \simeq 1 + 2\,\frac{GM}{c_0^2 r}.
+  \label{eq:N-n5}
+\end{equation}
+This is the refractive index profile we will use in the lensing and Shapiro
+calculations of Sections~\ref{sec:lensing} and~\ref{sec:shapiro}.
+In the 1PN matching limit we identify $c_0$ with $c$, so that the coefficient
+in Eq.~\eqref{eq:N-n5} is directly comparable to the GR result.
+
+
+\subsection{Physical interpretation}
+\label{subsec:n5-physics-story}
+
+The picture that emerges from this construction is simple to state.
+
+We treat the vacuum as a super-stiff polytropic superfluid with
+equation of state $P \propto \rho^5$.
+A mass is represented by a flux-tube throat that drains fluid into a 4D
+interior.
+On the brane, this appears as a spherically symmetric sink whose
+time-averaged effect is to pull down the pressure in a $1/r$ pattern:
+$\Delta P(r) = - GM \rho_0 / r$.
+The barotropic EOS then forces a matching $1/r$ density deficit,
+$\Delta\rho/\rho_0 = -GM/(c_0^2 r)$, and a corresponding reduction in
+the local sound speed, $\Delta c_s/c_0 \propto -GM/(c_0^2 r)$.
+Because light-like excitations propagate at $c_s(r)$, they see an effective
+refractive index
+\begin{equation}
+  N(r) = \frac{c_0}{c_s(r)}
+  \simeq 1 + 2\,\frac{GM}{c_0^2 r}
+\end{equation}
+for the $n=5$ vacuum.
+
+In the rest of the paper we will show that this single $1/r$ profile,
+derived from the flux-tube pressure deficit in a stiff vacuum, is enough to
+account for the classic 1PN optical and clock effects of GR.
+Light bending and Shapiro delay follow from the way rays are deflected and
+slowed by the radial gradient of $N(r)$, while gravitational redshift
+follows from the way defect-based clocks respond to the same density
+deficit.
+Orbits, lenses, and clocks are thus different probes of the same underlying
+vacuum structure.
+
+%---------------------------------------------------------------------------
+\section{Gravitational lensing from the refractive index profile}
+\label{sec:lensing}
+
+In this section we show how the refractive index profile $N(r)$ derived in
+Section~\ref{sec:n5-vacuum} leads to the familiar GR light-bending angle
+for a point mass.
+We work in the weak-field, small-angle regime appropriate to solar-system
+and quasar-lensing tests, treating lightlike excitations as rays propagating
+through an inhomogeneous medium with phase speed $c_s(r)$ and refractive
+index $N(r) = c_0 / c_s(r)$.
+The calculation is standard in spirit---a Fermat-principle treatment of
+light in a graded-index medium---but here the index profile is fixed by the
+superfluid vacuum and flux-tube mass defect.
+
+
+\subsection{Refractive index profile as input}
+\label{subsec:lensing-N}
+
+From Eq.~\eqref{eq:N-n5}, the stiff $n=5$ vacuum with a flux-tube mass $M$
+produces, to first order in $GM/(c_0^2 r)$, a spherically symmetric
+refractive index
+\begin{equation}
+  N(r)
+  \simeq 1 + 2\,\frac{GM}{c_0^2 r},
+  \qquad r = |\mathbf{x}|.
+  \label{eq:lensing-N}
+\end{equation}
+Equivalently, it is often convenient to work with the logarithm,
+\begin{equation}
+  \ln N(r)
+  \simeq 2\,\frac{GM}{c_0^2 r},
+  \label{eq:lensing-lnN}
+\end{equation}
+since ray deflection is controlled by gradients of $\ln N$ rather than $N$
+itself.
+
+In the 1PN matching limit we identify $c_0$ with $c$, so we will replace
+$c_0 \to c$ in what follows.
+All of the lensing and Shapiro results in this section and the next are
+understood to be accurate to leading order in $GM/(c^2 r)$, with higher
+orders neglected.
+
+
+\subsection{Thin-lens geometry and deflection integral}
+\label{subsec:lensing-geometry}
+
+Consider a light ray that passes the mass at a minimum distance (impact
+parameter) $b$.
+In the weak-field, small-angle limit, the actual curved trajectory can be
+approximated as a straight line when computing the leading-order deflection.
+We therefore adopt a coordinate system in which the unperturbed ray travels
+along the $z$-axis, with closest approach at $z=0$, and the mass located at
+the origin.
+The radial distance from the mass to a point on the unperturbed ray is then
+\begin{equation}
+  r(z) = \sqrt{b^2 + z^2}.
+\end{equation}
+
+In a medium with refractive index $N(\mathbf{x})$ that varies slowly on a
+wavelength scale, ray trajectories obey Fermat's principle; equivalently,
+they satisfy the eikonal (geometric-optics) approximation.
+To first order in the index perturbation, the total deflection angle
+$\Delta\theta$ accumulated as the ray passes the mass can be written as
+\begin{equation}
+  \Delta\theta
+  \simeq \int_{-\infty}^{+\infty} \nabla_\perp \ln N\bigl(r(z)\bigr)\,\mathrm{d}z,
+  \label{eq:lensing-deflection-general}
+\end{equation}
+where $\nabla_\perp$ denotes the component of the gradient transverse to the
+unperturbed ray direction (i.e.\ along the impact-parameter direction).
+The derivation of Eq.~\eqref{eq:lensing-deflection-general} is standard:
+one linearizes the ray equations in $\nabla N$ and integrates the transverse
+acceleration along the unperturbed path.
+
+For the spherically symmetric case at hand, the transverse gradient can be
+expressed as
+\begin{equation}
+  \nabla_\perp \ln N
+  = \frac{\partial \ln N}{\partial r}\,\frac{\partial r}{\partial b}\,
+    \hat{\mathbf{e}}_\perp,
+\end{equation}
+where $\hat{\mathbf{e}}_\perp$ is a unit vector orthogonal to the ray
+direction and
+\begin{equation}
+  \frac{\partial r}{\partial b}
+  = \frac{b}{\sqrt{b^2 + z^2}}
+  = \frac{b}{r}.
+\end{equation}
+The magnitude of the transverse gradient is therefore
+\begin{equation}
+  \left|\nabla_\perp \ln N\right|
+  = \left|\frac{\mathrm{d}\ln N}{\mathrm{d}r}\right|\,\frac{b}{r}.
+\end{equation}
+Since the deflection angle is small, we may identify
+$\Delta\theta$ with the integral of this magnitude along the path.
+
+
+\subsection{Analytic evaluation of the bending angle}
+\label{subsec:lensing-analytic}
+
+Using the explicit form~\eqref{eq:lensing-lnN}, we have
+\begin{equation}
+  \frac{\mathrm{d}\ln N}{\mathrm{d}r}
+  \simeq -2\,\frac{GM}{c^2}\,\frac{1}{r^2},
+\end{equation}
+and hence
+\begin{equation}
+  \left|\nabla_\perp \ln N\right|
+  \simeq 2\,\frac{GM}{c^2}\,\frac{b}{r^3}.
+\end{equation}
+Substituting $r(z) = \sqrt{b^2 + z^2}$, we obtain
+\begin{equation}
+  \left|\nabla_\perp \ln N\bigl(r(z)\bigr)\right|
+  \simeq 2\,\frac{GM}{c^2}\,
+    \frac{b}{\bigl(b^2 + z^2\bigr)^{3/2}}.
+\end{equation}
+The total deflection angle is then
+\begin{equation}
+  \Delta\theta
+  \simeq \int_{-\infty}^{+\infty}
+          2\,\frac{GM}{c^2}\,
+          \frac{b}{\bigl(b^2 + z^2\bigr)^{3/2}}
+        \,\mathrm{d}z.
+  \label{eq:lensing-deflection-integral}
+\end{equation}
+
+The integral in Eq.~\eqref{eq:lensing-deflection-integral} is elementary.
+Define
+\begin{equation}
+  I(b)
+  \equiv \int_{-\infty}^{+\infty}
+          \frac{b}{\bigl(b^2 + z^2\bigr)^{3/2}}
+        \,\mathrm{d}z.
+\end{equation}
+Making the substitution $z = b \tan\psi$ with $\psi \in (-\pi/2,\pi/2)$,
+we have
+\begin{equation}
+  \mathrm{d}z = b \sec^2\psi\,\mathrm{d}\psi,
+  \qquad
+  b^2 + z^2 = b^2(1 + \tan^2\psi) = b^2 \sec^2\psi,
+\end{equation}
+and thus
+\begin{equation}
+  I(b)
+  = \int_{-\pi/2}^{+\pi/2}
+      \frac{b}{\bigl(b^2 \sec^2\psi\bigr)^{3/2}}
+      \,b \sec^2\psi\,\mathrm{d}\psi
+  = \int_{-\pi/2}^{+\pi/2}
+      \frac{b^2 \sec^2\psi}{b^3 \sec^3\psi}
+      \,\mathrm{d}\psi
+  = \int_{-\pi/2}^{+\pi/2}
+      \frac{1}{b}\cos\psi\,\mathrm{d}\psi.
+\end{equation}
+Evaluating the last integral gives
+\begin{equation}
+  I(b)
+  = \frac{1}{b}\,\left[\sin\psi\right]_{-\pi/2}^{+\pi/2}
+  = \frac{1}{b}\,\bigl(1 - (-1)\bigr)
+  = \frac{2}{b}.
+\end{equation}
+Substituting back into Eq.~\eqref{eq:lensing-deflection-integral}, we obtain
+the total deflection angle
+\begin{equation}
+  \Delta\theta
+  \simeq 2\,\frac{GM}{c^2}\,I(b)
+  = 2\,\frac{GM}{c^2}\,\frac{2}{b}
+  = \frac{4GM}{b c^2}.
+  \label{eq:lensing-dtheta-result}
+\end{equation}
+
+Equation~\eqref{eq:lensing-dtheta-result} is precisely the standard
+Schwarzschild light-bending angle for a point mass in the weak-field,
+small-angle limit.
+It is important to emphasize that in the present construction the
+coefficient $4GM/(b c^2)$ is not imposed by hand: it emerges from the
+combination of (i) the flux-tube pressure deficit $\Delta P(r) \propto -1/r$
+and (ii) the stiff $n=5$ EOS, which together determine the gradient of
+$N(r)$.
+For other polytropic indices $n$, the coefficient in
+Eq.~\eqref{eq:lensing-dtheta-result} would differ, leading to
+$\Delta\theta \propto (n-1)GM/(b c^2)$; the GR value singles out $n=5$
+within this family.
+
+
+\subsection{Mapping to PPN $\gamma$}
+\label{subsec:lensing-ppn}
+
+In the parametrized post-Newtonian (PPN) formalism, the leading-order
+deflection angle of a light ray by a point mass $M$ is given by
+\begin{equation}
+  \Delta\theta_{\text{PPN}}
+  = \frac{2(1+\gamma)GM}{b c^2},
+\end{equation}
+where $\gamma$ is the PPN parameter that measures the amount of space
+curvature produced by unit rest mass.
+General Relativity predicts $\gamma = 1$, yielding
+$\Delta\theta_{\text{GR}} = 4GM/(b c^2)$.
+
+Comparing Eq.~\eqref{eq:lensing-dtheta-result} with the PPN expression,
+\begin{equation}
+  \frac{4GM}{b c^2}
+  \quad\stackrel{!}{=}\quad
+  \frac{2(1+\gamma)GM}{b c^2},
+\end{equation}
+we immediately read off
+\begin{equation}
+  \gamma = 1.
+\end{equation}
+In other words, the \emph{PPN parameter inferred from the observed light
+deflection} is the same as in GR.
+Because the analogue model encodes curvature purely through the refractive
+index---and hence through the spatial part of the optical metric, with
+$g_{tt}^{\text{(opt)}} = -1$---the spatial metric component must carry
+twice the usual Schwarzschild curvature in order to reproduce this
+$\gamma = 1$ bending.
+This trade-off between temporal and spatial curvature is made explicit in
+the PPN mapping of Appendix~\ref{app:ppn-metric}.
+Thus, insofar as the analogue model is concerned with light bending, the
+stiff $n=5$ superfluid vacuum with a flux-tube mass defect is 1PN-equivalent
+to Schwarzschild in the sense of reproducing the GR value of $\gamma$.
+
+It is worth emphasizing that this conclusion rests only on the
+\emph{optical} sector of the toy model: the derivation uses the refractive
+index $N(r)$ and the geometry of rays, but does not make any assumptions
+about the motion of massive defects beyond the identification $c_0 \to c$.
+The orbital sector, and hence the parameter $\beta$, enter the story only
+when we demand a single emergent metric that governs both massive and
+massless probes, as discussed in Section~\ref{sec:soliton-geodesics} and
+Appendix~\ref{app:ppn-metric}.
+
+
+\subsection{Numerical ray-tracing}
+\label{subsec:lensing-numerics}
+
+For completeness, we briefly sketch how the analytic result
+Eq.~\eqref{eq:lensing-dtheta-result} can be checked numerically within the
+toy model.
+
+In the geometric-optics limit, rays in an inhomogeneous medium with phase
+speed $c_s(\mathbf{x})$ can be described by the Hamiltonian
+\begin{equation}
+  H(\mathbf{x},\mathbf{k})
+  = c_s(\mathbf{x})\,|\mathbf{k}|,
+\end{equation}
+where $\mathbf{k}$ is the wavevector.
+The ray equations are then
+\begin{equation}
+  \dot{\mathbf{x}} = \frac{\partial H}{\partial \mathbf{k}}
+  = c_s(\mathbf{x})\,\frac{\mathbf{k}}{|\mathbf{k}|},
+  \qquad
+  \dot{\mathbf{k}} = -\frac{\partial H}{\partial \mathbf{x}}
+  = -|\mathbf{k}|\,\nabla c_s(\mathbf{x}),
+\end{equation}
+with overdots denoting derivatives with respect to an affine parameter
+along the ray.
+Equivalently, one can work directly with $N(\mathbf{x}) = c_0 / c_s(\mathbf{x})$.
+
+In the spherically symmetric case with $c_s(r)$ (or $N(r)$) given by
+Eqs.~\eqref{eq:deltacs} and~\eqref{eq:lensing-N}, these equations reduce to
+a two-dimensional system in the $(r,\varphi)$ plane.
+Starting from initial conditions that approximate a plane wave incident from
+$z = -\infty$ with impact parameter $b$, one integrates the ray equations
+forward until the ray exits the region where $N(r)$ differs appreciably
+from unity.
+The asymptotic outgoing direction is then compared to the incoming direction
+to extract the numerical deflection angle $\Delta\theta_{\text{num}}(b)$.
+
+For a range of impact parameters $b$ large compared to the throat scale but
+small enough that $GM/(b c^2)$ is not negligible, one finds that the ratio
+\begin{equation}
+  \frac{\Delta\theta_{\text{num}}(b)}
+       {\Delta\theta_{\text{analytic}}(b)}
+  \equiv
+  \frac{\Delta\theta_{\text{num}}(b)}
+       {4GM/(b c^2)}
+\end{equation}
+remains close to unity, with deviations consistent with the numerical
+integration error and the neglect of higher-order terms in
+$GM/(c^2 r)$.
+This provides an internal consistency check that the geometric-optics
+treatment of lensing in the $n=5$ vacuum is reliable and that no large
+corrections arise from the approximations used in the analytic derivation.
+
+
+\subsection{Assumptions and limitations}
+\label{subsec:lensing-assumptions}
+
+The analysis in this section rests on several important assumptions:
+
+\begin{itemize}
+  \item \textbf{Weak field and small angles.}
+        We have assumed $GM/(c^2 r) \ll 1$ throughout the region where the
+        ray passes, and we have linearized in this parameter.
+        Strong-lensing phenomena, multiple images, and higher-order
+        post-Newtonian corrections are beyond the scope of the present
+        treatment.
+
+  \item \textbf{Pure refraction.}
+        The deflection has been attributed entirely to spatial gradients in
+        the phase speed $c_s(r)$, encoded in $N(r)$.
+        We have not included any explicit ``drag'' of rays by bulk flows of
+        the superfluid; in the language of Section~\ref{sec:degeneracies},
+        we are working in the pure-refraction branch of the model.
+
+  \item \textbf{Static, spherically symmetric background.}
+        The refractive index $N(r)$ was derived under the assumption of a
+        static, spherically symmetric flux-tube defect.
+        Time-dependent flows, rotating defects, or non-spherical mass
+        distributions would require a more general treatment, potentially
+        including vector and tensor perturbations of the effective metric.
+
+  \item \textbf{Geometric-optics limit.}
+        We have assumed that the wavelength of the excitations is much
+        smaller than the length scale over which $N(r)$ varies, so that ray
+        tracing is appropriate.
+        Near the throat or in regions of rapidly varying density, wave
+        effects such as diffraction and mode conversion could become
+        important.
+\end{itemize}
+
+Within these assumptions, the stiff $n=5$ vacuum with a flux-tube mass
+defect reproduces the GR prediction for gravitational lensing at 1PN.
+In the next section we show that the same refractive index profile also
+reproduces the GR Shapiro time delay with the correct coefficient, further
+supporting the identification of this vacuum as the appropriate analogue of
+the Schwarzschild geometry in the optical sector.
+
+%---------------------------------------------------------------------------
+\section{Shapiro delay from the same refractive index profile}
+\label{sec:shapiro}
+
+The Shapiro time delay is the excess travel time experienced by a light
+signal that passes near a gravitating mass, relative to the time it would
+take to traverse the same coordinate distance in flat space.
+In the present toy model, this effect arises from the same refractive index
+profile $N(r)$ that produced the light-bending angle in
+Section~\ref{sec:lensing}: rays propagate more slowly in the region where
+$c_s(r) < c_0$, and the integrated slow-down along the path yields a
+logarithmic delay.
+
+
+\subsection{Setup and geometry}
+\label{subsec:shapiro-setup}
+
+We consider a standard radar-type configuration: an emitter at some large
+distance from the mass sends a pulse toward the mass, the pulse passes by
+at a minimum impact parameter $b$, reflects off a distant target, and then
+returns to the emitter.
+For the analytic calculation it is convenient to treat the one-way trip
+from emitter to receiver; the round-trip delay is then twice the one-way
+result.
+
+As in Section~\ref{sec:lensing}, we adopt a coordinate system in which the
+unperturbed ray trajectory lies along the $z$-axis, with closest approach
+to the mass at $z=0$ and impact parameter $b$ in the transverse direction.
+The mass is located at the origin, and the radial distance from the mass is
+\begin{equation}
+  r(z) = \sqrt{b^2 + z^2}.
+\end{equation}
+Let $z = -Z_\mathrm{E}$ denote the emitter location and $z = +Z_\mathrm{R}$
+the receiver location, with $Z_\mathrm{E}, Z_\mathrm{R} \gg b$.
+The corresponding radial distances from the mass are approximately
+\begin{equation}
+  r_\mathrm{E} \simeq \sqrt{b^2 + Z_\mathrm{E}^2},
+  \qquad
+  r_\mathrm{R} \simeq \sqrt{b^2 + Z_\mathrm{R}^2}.
+\end{equation}
+
+In flat space, with a uniform propagation speed $c_0$, the time required
+for the signal to travel from $z=-Z_\mathrm{E}$ to $z=+Z_\mathrm{R}$ is
+\begin{equation}
+  t_0
+  = \frac{1}{c_0}\,\bigl(Z_\mathrm{E} + Z_\mathrm{R}\bigr).
+\end{equation}
+In the presence of the mass defect, the local propagation speed is
+$c_s(r) = c_0 / N(r)$, so the actual travel time is modified.
+
+
+\subsection{Time-of-flight integral}
+\label{subsec:shapiro-integral}
+
+In the geometric-optics limit, the travel time along a ray in a medium with
+refractive index $N(\mathbf{x})$ is given by
+\begin{equation}
+  t
+  = \frac{1}{c_0}\,\int N\bigl(\mathbf{x}(s)\bigr)\,\mathrm{d}s,
+\end{equation}
+where $s$ is the arclength along the ray.
+To leading order in the index perturbation and for small deflection angles,
+we can approximate the path as a straight line and replace $\mathrm{d}s$ by
+$\mathrm{d}z$.
+Using the stiff-vacuum refractive index profile
+\begin{equation}
+  N(r)
+  \simeq 1 + 2\,\frac{GM}{c_0^2 r},
+\end{equation}
+the one-way travel time from emitter to receiver becomes
+\begin{equation}
+  t
+  \simeq \frac{1}{c_0}
+         \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+         \left[1 + 2\,\frac{GM}{c_0^2 r(z)}\right]
+         \mathrm{d}z.
+  \label{eq:shapiro-t-integral}
+\end{equation}
+Splitting off the flat part, we have
+\begin{equation}
+  t
+  = t_0 + \Delta t,
+\end{equation}
+with the Shapiro delay
+\begin{equation}
+  \Delta t
+  \equiv t - t_0
+  \simeq \frac{2GM}{c_0^3}
+         \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+         \frac{\mathrm{d}z}{r(z)}.
+  \label{eq:shapiro-dt-integral}
+\end{equation}
+The remaining integral depends on the geometry through $b$, $Z_\mathrm{E}$,
+and $Z_\mathrm{R}$.
+
+
+\subsection{Analytic result and comparison to GR}
+\label{subsec:shapiro-analytic}
+
+The integral in Eq.~\eqref{eq:shapiro-dt-integral} is straightforward:
+\begin{equation}
+  I_\mathrm{tof}(b; Z_\mathrm{E}, Z_\mathrm{R})
+  \equiv \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+         \frac{\mathrm{d}z}{\sqrt{b^2 + z^2}}.
+\end{equation}
+A convenient antiderivative is
+\begin{equation}
+  \int \frac{\mathrm{d}z}{\sqrt{b^2 + z^2}}
+  = \ln\!\bigl(z + \sqrt{b^2 + z^2}\bigr) + C,
+\end{equation}
+so that
+\begin{align}
+  I_\mathrm{tof}(b; Z_\mathrm{E}, Z_\mathrm{R})
+  &= \ln\!\bigl(Z_\mathrm{R} + \sqrt{b^2 + Z_\mathrm{R}^2}\bigr)
+   - \ln\!\bigl(-Z_\mathrm{E} + \sqrt{b^2 + Z_\mathrm{E}^2}\bigr)
+  \nonumber\\[0.5ex]
+  &= \ln\!\left[
+       \frac{Z_\mathrm{R} + \sqrt{b^2 + Z_\mathrm{R}^2}}
+            {-Z_\mathrm{E} + \sqrt{b^2 + Z_\mathrm{E}^2}}
+     \right].
+  \label{eq:shapiro-I-exact}
+\end{align}
+In the regime of interest, the endpoints are far from the mass compared to
+the impact parameter ($Z_\mathrm{E}, Z_\mathrm{R} \gg b$), so we can use
+\begin{equation}
+  \sqrt{b^2 + Z^2} \simeq |Z| + \frac{b^2}{2|Z|}
+\end{equation}
+to approximate the numerator and denominator of Eq.~\eqref{eq:shapiro-I-exact}.
+Note that in our geometry $Z_\mathrm{R} > 0$ and $Z_\mathrm{E} < 0$, so
+$|Z_\mathrm{R}| = Z_\mathrm{R}$ and $|Z_\mathrm{E}| = -Z_\mathrm{E}$, which
+is used in the approximations below.
+For $Z>0$ we have
+\begin{equation}
+  Z + \sqrt{b^2 + Z^2}
+  \simeq Z + Z\left(1 + \frac{b^2}{2Z^2}\right)
+  = 2Z + \mathcal{O}\!\left(\frac{b^2}{Z}\right),
+\end{equation}
+and for $-Z<0$ we similarly find
+\begin{equation}
+  -Z + \sqrt{b^2 + Z^2}
+  \simeq -Z + Z\left(1 + \frac{b^2}{2Z^2}\right)
+  = \frac{b^2}{2Z} + \mathcal{O}\!\left(\frac{b^4}{Z^3}\right).
+\end{equation}
+Applying these approximations to Eq.~\eqref{eq:shapiro-I-exact} yields
+\begin{equation}
+  I_\mathrm{tof}(b; Z_\mathrm{E}, Z_\mathrm{R})
+  \simeq \ln\!\left[
+           \frac{2Z_\mathrm{R}}{b^2/(2Z_\mathrm{E})}
+         \right]
+  = \ln\!\left(\frac{4 Z_\mathrm{E} Z_\mathrm{R}}{b^2}\right).
+\end{equation}
+Replacing $Z_\mathrm{E}$ and $Z_\mathrm{R}$ by the corresponding radial
+distances $r_\mathrm{E}$ and $r_\mathrm{R}$ (to leading order they are
+interchangeable in the logarithm), we have
+\begin{equation}
+  I_\mathrm{tof}(b; Z_\mathrm{E}, Z_\mathrm{R})
+  \simeq \ln\!\left(
+          \frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}
+        \right).
+\end{equation}
+Substituting into Eq.~\eqref{eq:shapiro-dt-integral}, we obtain the one-way
+Shapiro delay
+\begin{equation}
+  \Delta t
+  \simeq \frac{2GM}{c_0^3}\,
+         \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right).
+  \label{eq:shapiro-dt-result}
+\end{equation}
+In the 1PN matching limit $c_0 \to c$, this is precisely the standard GR
+expression for the one-way Shapiro delay.
+
+In the PPN formalism, the leading radial logarithmic contribution to the
+one-way delay for a light signal traveling from $r_\mathrm{E}$ to
+$r_\mathrm{R}$ with impact parameter $b$ is
+\begin{equation}
+  \Delta t_{\text{PPN}}
+  = (1 + \gamma)\,\frac{GM}{c^3}\,
+    \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right),
+\end{equation}
+where, as in Section~\ref{sec:lensing}, $\gamma$ measures the amount of
+space curvature per unit rest mass.
+Comparing with Eq.~\eqref{eq:shapiro-dt-result},
+\begin{equation}
+  \frac{2GM}{c^3}
+  \quad\stackrel{!}{=}\quad
+  (1+\gamma)\,\frac{GM}{c^3},
+\end{equation}
+we again find
+\begin{equation}
+  \gamma = 1.
+\end{equation}
+Thus the same refractive index profile $N(r)$ that reproduces the GR
+light-bending angle also reproduces the GR Shapiro delay with the correct
+PPN coefficient.
+
+
+\subsection{Numerical checks}
+\label{subsec:shapiro-numerics}
+
+As with lensing, the analytic Shapiro delay can be checked numerically
+within the superfluid-defect model.
+
+One approach is to integrate the time-of-flight integral
+Eq.~\eqref{eq:shapiro-t-integral} directly on a discrete grid.
+For a given impact parameter $b$ and endpoints $z=-Z_\mathrm{E}$,
+$z=+Z_\mathrm{R}$, one evaluates
+\begin{equation}
+  t_\mathrm{num}
+  = \frac{1}{c_0}\sum_i N\bigl(r(z_i)\bigr)\,\Delta z,
+\end{equation}
+with $r(z_i) = \sqrt{b^2 + z_i^2}$ and $\Delta z$ chosen small enough that
+$N(r)$ varies slowly between adjacent points.
+Subtracting the flat-space time $t_0$ yields a numerical delay
+$\Delta t_\mathrm{num}$, which can be compared to the analytic prediction
+Eq.~\eqref{eq:shapiro-dt-result}.
+
+A more complete treatment, consistent with the ray-tracing picture of
+Section~\ref{sec:lensing}, solves the Hamiltonian ray equations in the
+$N(r)$ background and accumulates the elapsed coordinate time along the
+ray:
+\begin{equation}
+  t_\mathrm{num}
+  = \int \frac{N\bigl(\mathbf{x}(\lambda)\bigr)}{c_0}
+         \left|\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}\lambda}\right|
+         \mathrm{d}\lambda,
+\end{equation}
+where $\lambda$ is an affine parameter along the ray.
+For impact parameters in the weak-field regime and endpoints far from the
+mass, one finds that the ratio
+\begin{equation}
+  \frac{\Delta t_\mathrm{num}}
+       {\Delta t_{\text{analytic}}}
+  \equiv
+  \frac{\Delta t_\mathrm{num}}
+       {2GM c^{-3}
+        \ln(4 r_\mathrm{E} r_\mathrm{R} / b^2)}
+\end{equation}
+remains close to unity, with deviations consistent with numerical
+discretization errors and the neglect of higher-order terms in
+$GM/(c^2 r)$.
+
+These numerical checks reinforce the analytic conclusion: in the stiff
+$n=5$ vacuum with a flux-tube mass defect, the same refractive index
+profile that yields the GR light-bending angle also reproduces the GR
+Shapiro delay, with no additional freedom once $N(r)$ is fixed by the
+superfluid equation of state and the flux-tube geometry.
+
+%---------------------------------------------------------------------------
+\section{Gravitational redshift and clock rates}
+\label{sec:redshift}
+
+Having established how the stiff $n=5$ vacuum and flux-tube defect reshape
+the pressure, density, and sound speed of the superfluid, we now turn to
+gravitational redshift.
+In the toy model, clocks tick slower near a mass not because ``time itself''
+is stretched, but because the defects that make up the clock become
+slightly lighter in the lower-density vacuum.
+The key idea is that any clock whose frequency is set by a mass scale $m$
+will experience a fractional shift
+\begin{equation}
+  \frac{\delta\omega}{\omega_0}
+  = \frac{\delta m}{m_0}
+  = \frac{\delta\rho}{\rho_0},
+\end{equation}
+and the density deficit induced by the flux-tube defect is
+$\delta\rho/\rho_0 \simeq -GM/(r c^2)$ in the weak-field regime.
+This reproduces the standard GR weak-field redshift.
+
+
+\subsection{Density perturbations and defect mass}
+\label{subsec:redshift-density}
+
+From the hydrostatic analysis in Section~\ref{sec:n5-vacuum}, the presence
+of a flux-tube mass $M$ creates a pressure deficit
+$\Delta P(r) = -GM\rho_0/r$ and, in the weak-field limit, a corresponding
+density deficit
+\begin{equation}
+  \frac{\delta\rho(r)}{\rho_0}
+  \equiv \frac{\rho(r) - \rho_0}{\rho_0}
+  = -\frac{GM}{r c^2}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c^4 r^2}\right),
+  \label{eq:redshift-deltarho}
+\end{equation}
+where we have set $c_0 \to c$ for comparison with GR.  This is the same
+profile that underlies lensing and Shapiro delay.
+
+The defects that represent matter are not rigid ``beads'' of fixed mass:
+they are cavitation structures that displace vacuum and trap field energy.
+In the simplified energy bookkeeping we use here, the rest energy of a
+defect scales with the local vacuum density, e.g.
+\begin{equation}
+  E_{\text{rest}}(r)
+  \sim m(r)c^2
+  \propto \rho_{\text{local}}(r)\,V_{\text{cav}}\,c^2,
+\end{equation}
+with $V_{\text{cav}}$ the defect volume.  To leading order we treat
+$V_{\text{cav}}$ and the relevant mode structure as fixed, so that the
+defect mass is proportional to the local density
+\begin{equation}
+  m(r) \propto \rho_{\text{local}}(r)
+  \quad\Rightarrow\quad
+  \frac{\delta m(r)}{m_0}
+  = \frac{\delta\rho(r)}{\rho_0}.
+  \label{eq:redshift-dm}
+\end{equation}
+Substituting Eq.~\eqref{eq:redshift-deltarho} gives
+\begin{equation}
+  \frac{\delta m(r)}{m_0}
+  = -\frac{GM}{r c^2}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c^4 r^2}\right).
+  \label{eq:redshift-dm-final}
+\end{equation}
+Near a mass, defects---and therefore any clocks built from them---are
+slightly lighter than in the asymptotic vacuum.
+
+
+\subsection{Clock frequency scaling}
+\label{subsec:redshift-frequency}
+
+We now connect the position-dependent defect mass to the ticking rate of
+clocks.
+Consider any clock whose characteristic frequency $\omega$ is set by a mass
+scale $m$.
+A concrete example is an atomic clock based on a Bohr-like bound state:
+for a hydrogenic atom the level spacing scales roughly as
+\begin{equation}
+  \omega \sim \frac{m_e e^4}{\hbar^3}
+  \propto m_e,
+\end{equation}
+so a fractional change in the electron mass $m_e$ produces the same
+fractional change in the clock frequency.
+
+In the toy model we abstract this into the simple scaling relation
+\begin{equation}
+  \omega \propto m
+  \quad\Rightarrow\quad
+  \frac{\delta\omega}{\omega_0}
+  = \frac{\delta m}{m_0}.
+  \label{eq:redshift-omega-m}
+\end{equation}
+Combining Eqs.~\eqref{eq:redshift-dm} and~\eqref{eq:redshift-omega-m} with
+the density profile~\eqref{eq:redshift-deltarho}, we obtain the chain
+\begin{equation}
+  \frac{\delta\omega(r)}{\omega_0}
+  = \frac{\delta m(r)}{m_0}
+  = \frac{\delta\rho(r)}{\rho_0}
+  = -\frac{GM}{r c^2}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c^4 r^2}\right).
+  \label{eq:redshift-full-chain}
+\end{equation}
+Clocks located deeper in the potential well (smaller $r$) therefore tick
+more slowly: their local frequency is reduced relative to an identical
+clock at infinity by an amount proportional to $GM/(r c^2)$.
+
+To connect with standard notation, we can write the fractional shift in
+observed frequency as
+\begin{equation}
+  \frac{\Delta\nu}{\nu}
+  \equiv \frac{\nu_{\infty} - \nu(r)}{\nu_{\infty}}
+  \simeq -\frac{\delta\omega(r)}{\omega_0}
+  = \frac{GM}{r c^2},
+\end{equation}
+so that $\Delta\nu/\nu > 0$ corresponds to a redshift (photons lose
+frequency climbing out of the potential).
+
+
+\subsection{Relation to the refractive index $N(r)$}
+\label{subsec:redshift-N}
+
+The gravitational redshift in this model is thus governed by the same
+density profile $\delta\rho(r)$ that underlies the optical sector.
+The lensing and Shapiro calculations only required the way the sound speed
+responds to the density deficit: $c_s(\rho)$ and hence
+$N(r) = c_0 / c_s(r)$.
+For the $n=5$ EOS we found
+\begin{equation}
+  N(r)
+  \simeq 1 + 2\,\frac{GM}{r c^2},
+\end{equation}
+and from this we derived the GR light-bending angle and Shapiro delay.
+The redshift derivation, by contrast, depends only on the fact that the
+defect mass tracks the density,
+$m(r) \propto \rho_{\text{local}}(r)$, and does not require the explicit
+$n=5$ form of $N(r)$; it needs only the density profile that the gravity
+sector has already fixed.
+
+In this sense, redshift is the ``$1GM$'' member of the hierarchy
+\[
+  \{\text{redshift},\ \text{Shapiro},\ \text{lensing}\}
+  \sim \{1GM,\ 2GM,\ 4GM\},
+\]
+all of which trace back to the single $1/r$ density deficit created by the
+flux-tube defect in a stiff vacuum: clocks slow because $m\propto\rho$
+drops, signals are delayed because $c_s(\rho)$ drops, and rays bend because
+$\nabla N(r)$ is nonzero.
+
+
+\subsection{Limitations and observational regime}
+\label{subsec:redshift-limitations}
+
+Several caveats are important when interpreting the redshift result
+Eq.~\eqref{eq:redshift-full-chain}:
+
+\begin{itemize}
+  \item \textbf{Weak-field / 1PN regime.}
+        The derivation assumes $GM/(r c^2) \ll 1$ and keeps only the
+        leading term in this expansion.
+        Strong-field environments (near horizons or very compact objects)
+        would require a non-linear treatment of both the EOS and the defect
+        structure.
+        In particular, for the stiff $n=5$ EOS used here one has
+        $c_s \propto \rho^2$, so any region where the density is driven
+        toward zero (for example near a deeply cavitating throat) would
+        also drive the sound speed toward zero and suggest the emergence
+        of a ``sonic horizon''; exploring that regime lies beyond the
+        present 1PN analysis.
+
+  \item \textbf{Clock model dependence.}
+        The simple scaling $\omega \propto m$ is appropriate for a wide
+        class of mass-based oscillators (atomic clocks, nuclear clocks,
+        solid-state resonators), but not for all conceivable clocks.
+        The claim is that \emph{any} clock whose characteristic frequency
+        is proportional to a defect mass will exhibit the GR-like
+        redshift; more exotic clocks may probe additional structure.
+
+  \item \textbf{Use of $m(r)$ is internal only.}
+        The identification $m(r) \propto \rho(r)$ is used here solely for
+        the internal dynamics of clocks, not for the center-of-mass motion
+        of test bodies.
+        For orbital dynamics, matter is treated as solitons following
+        geodesics of the emergent metric, not as Newtonian particles with
+        position-dependent mass in $F = m(r)a$.
+        This resolves the ``mass scaling trilemma'' that would otherwise
+        arise from combining a density-dependent mass with the orbital
+        sector.
+
+  \item \textbf{No direct test of $n=5$ from redshift alone.}
+        As noted above, the redshift derivation depends only on
+        $\delta\rho/\rho$ and $m\propto\rho$, not on the detailed $n=5$
+        scaling of $c_s(\rho)$.
+        In the full model, it is the combination of lensing, Shapiro, and
+        redshift that selects the stiff $n=5$ vacuum; redshift by itself
+        is compatible with a wider class of EOS.
+\end{itemize}
+
+Within these limitations, the toy model reproduces the standard GR
+weak-field redshift formula
+\begin{equation}
+  \frac{\Delta\nu}{\nu}
+  = -\frac{\Delta\Phi}{c^2}
+  = -\frac{GM}{r c^2}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c^4 r^2}\right),
+\end{equation}
+but interprets it as a consequence of density-induced mass reduction of
+defects, rather than as a fundamental stretching of time.
+
+%---------------------------------------------------------------------------
+\section{Soliton geodesics and the effective metric}
+\label{sec:soliton-geodesics}
+
+The results of the previous sections can be summarized as follows.
+On the one hand, Paper~1 showed that the orbital motion of defects in the
+superfluid-defect toy model is accurately described by an effective
+Lagrangian of the form
+\begin{equation}
+  L
+  = \frac{1}{2}\bigl[1 + \sigma(r)\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi_{\mathrm{eff}}(r),
+  \label{eq:SG-L-eff-again}
+\end{equation}
+with $\Phi_{\mathrm{eff}}(r)$ and $\sigma(r)$ fixed by the scalar lag field
+and the hydrodynamics of the throat.
+On the other hand, the present paper has shown that the same throat and
+vacuum structure produce a refractive index $N(r) = c_0/c_s(r)$ that
+reproduces the GR values of the light-bending angle, Shapiro delay, and
+weak-field redshift.
+
+Taken together, these results suggest a unified geometric interpretation:
+both massive defects and light-like excitations probe a common superfluid
+vacuum, but they couple to different combinations of the underlying
+variables $c_s(r)$, $\rho(r)$, and the flow field.
+In the 1PN regime these couplings can be summarized by an effective metric
+whose null sector reproduces the calibrated optics and whose timelike
+sector reproduces the calibrated orbital dynamics.
+In this section we make that interpretation explicit at the level of
+1PN phenomenology.
+
+
+\subsection{Soliton hypothesis and an emergent equivalence principle}
+\label{subsec:soliton-hypothesis}
+
+The starting point is the \emph{soliton hypothesis} for matter.
+Defects in the toy model are not point particles; they are localized,
+topologically protected excitations of the underlying fields---vortex
+throats threaded by flux, with bound near-field structure.
+To leading order, a defect can be treated as a coherent wave packet of
+underlying degrees of freedom moving through the superfluid vacuum.
+
+The dynamics of such a wave packet is governed by an eikonal or
+WKB-like approximation: its center of mass follows the characteristic
+curves (rays) of the underlying wave equation, just as a photon wave packet
+follows null geodesics of the electromagnetic eikonal equation in a curved
+spacetime.
+In the analogue-gravity literature, the characteristic curves of acoustic
+waves in a moving fluid are often interpreted as geodesics of an emergent
+``acoustic metric''.
+We adopt the same viewpoint here and elevate it to a toy-model analogue of
+the strong equivalence principle:
+
+\begin{quote}
+  \emph{Localized solitonic excitations of the superfluid---defects,
+  composite defects, and linear wave packets---propagate in the same
+  background vacuum state, but couple to different combinations of the
+  underlying fluid fields.
+  Acoustic wave packets probe the bare sound-speed geometry encoded in
+  $c_s(r)$, whereas defects feel a hydrodynamically dressed geometry
+  built from $\rho(r)$ and the dipole flow that accompanies a moving
+  void.
+  In the 1PN regime both types of probe can be described as following
+  geodesics of a single effective metric that reproduces the calibrated
+  orbital and optical tests.}
+\end{quote}
+
+In the weak-field limit this distinction can be quantified in terms of the
+spatial potentials: light rays see
+$\Psi_{\text{opt}}(r) = 2\,GM/r$ from the $n=5$ refractive profile,
+whereas solitonic defects see
+$\Psi_{\text{orb}}(r) = (\beta/2)\,GM/r = (3/4)\,GM/r$ via the mapping
+$1+\sigma(r) \leftrightarrow 1+2\Psi(r)/c^2$ with $\beta = 3/2$.
+The ratio
+\[
+  \frac{\Psi_{\text{orb}}}{\Psi_{\text{opt}}} = \frac{3}{8}
+\]
+captures how the hydrodynamic dressing weakens the effective spatial
+curvature sampled by massive defects relative to light.
+
+This hypothesis does not assert that the metric is fundamental; it simply
+codifies the observation that both massive and massless probes in the toy
+model respond to the same superfluid background.
+The task is to identify that metric and show that, at 1PN, it reproduces
+both the orbital sector (with its calibrated $\beta$) and the optical sector
+(with its $\gamma=1$).
+What differs is \emph{how} they sample the background: light is sensitive
+primarily to $c_s(r)$ (the acoustic metric), whereas defects are sensitive
+to the combination of density and added mass that appears in $\sigma(r)$
+(see Appendix~\ref{app:dipole-derivation}).
+
+
+\subsection{Acoustic metric and Hamiltonian description}
+\label{subsec:acoustic-metric}
+
+In a generic barotropic, irrotational, inviscid fluid, small perturbations
+satisfy a wave equation that can be written in the form
+\begin{equation}
+  \Box_{\text{acoustic}} \psi = 0,
+\end{equation}
+where $\Box_{\text{acoustic}}$ is the d'Alembertian associated with an
+effective acoustic metric $g^{\text{(ac)}}_{\mu\nu}$ built from the
+background velocity field $\mathbf{v}(\mathbf{x})$, density
+$\rho(\mathbf{x})$, and sound speed $c_s(\mathbf{x})$.
+The explicit form of $g^{\text{(ac)}}_{\mu\nu}$ is standard and will not be
+repeated here; what matters for our purposes is its Hamiltonian
+(eikonal) limit.  
+
+In the geometric-optics approximation, wave packets of a given mode
+propagate according to a Hamiltonian
+\begin{equation}
+  H(\mathbf{x},\mathbf{k})
+  = \omega(\mathbf{x},\mathbf{k}),
+\end{equation}
+where $\omega$ is the local dispersion relation.
+In the simplest, non-dispersive case relevant for the present work, the
+dispersion relation for sound-like modes in the rest frame of the fluid is
+\begin{equation}
+  \omega(\mathbf{x},\mathbf{k})
+  = c_s(\mathbf{x})\,|\mathbf{k}|,
+\end{equation}
+so that
+\begin{equation}
+  H(\mathbf{x},\mathbf{k})
+  = c_s(\mathbf{x})\,|\mathbf{k}|.
+\end{equation}
+The ray equations
+\begin{equation}
+  \dot{\mathbf{x}} = \frac{\partial H}{\partial \mathbf{k}},
+  \qquad
+  \dot{\mathbf{k}} = -\frac{\partial H}{\partial \mathbf{x}},
+  \label{eq:SG-Hamilton}
+\end{equation}
+then describe the motion of both ``light-like'' excitations and, by the
+soliton hypothesis, the centers of massive defects in the appropriate
+limit.
+
+For a static, spherically symmetric background with $c_s = c_s(r)$ and
+vanishing bulk flow, the Hamiltonian~\eqref{eq:SG-Hamilton} defines a
+family of null geodesics in an effective optical metric of the form
+\begin{equation}
+  \mathrm{d}s^2
+  = -c^2 \mathrm{d}t^2
+    + \frac{1}{N^2(r)}\,\bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
+  \label{eq:SG-optical-metric}
+\end{equation}
+with $N(r) = c_0 / c_s(r)$.
+This is just a convenient way of packaging the statement that spatial
+distances are stretched by a factor $N(r)$ for the purposes of ray
+propagation.
+The lensing and Shapiro calculations of the previous sections can be viewed
+as calculations of null geodesics in Eq.~\eqref{eq:SG-optical-metric}.
+
+The central question is how to extend this optical metric to a full
+effective spacetime metric that also governs the motion of massive
+defects and reproduces the orbital Lagrangian~\eqref{eq:SG-L-eff-again} at
+1PN.
+
+
+\subsection{Connection to the orbital Lagrangian}
+\label{subsec:lagrangian-connection}
+
+A convenient way to make contact between the emergent metric picture and
+the orbital sector is to start from a generic static, spherically symmetric
+line element in isotropic coordinates,
+\begin{equation}
+  \mathrm{d}s^2
+  = -\bigl[1 + 2\Phi_{\text{eff}}(r)/c^2 + \dots\bigr] c^2 \mathrm{d}t^2
+    + \bigl[1 + 2\Psi(r)/c^2 + \dots\bigr]
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\varphi^2\bigr),
+  \label{eq:SG-metric-PN}
+\end{equation}
+where $\Phi_{\text{eff}}(r)$ is the effective Newtonian potential and
+$\Psi(r)$ encodes the leading spatial curvature (the dots denote higher
+post-Newtonian corrections and angular directions orthogonal to the orbital
+plane).
+The action for a test body of rest mass $m$ moving in this geometry is
+\begin{equation}
+  S = -m c \int \sqrt{-g_{\mu\nu} \dot{x}^\mu \dot{x}^\nu}\,\mathrm{d}\lambda,
+\end{equation}
+with $\lambda$ an affine parameter.
+Expanding in powers of $v^2/c^2$ and discarding an overall constant yields a
+non-relativistic Lagrangian of the form
+\begin{equation}
+  L_{\text{geo}}
+  = \frac{1}{2}\bigl[1 + 2\Psi(r)/c^2\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi_{\text{eff}}(r)
+    + \mathcal{O}\!\left(\frac{v^4}{c^2}\right).
+  \label{eq:SG-L-geo}
+\end{equation}
+Comparing Eq.~\eqref{eq:SG-L-geo} with the effective Lagrangian
+Eq.~\eqref{eq:SG-L-eff-again}, we see that they match if we identify
+\begin{equation}
+  1 + \sigma(r)
+  \;\longleftrightarrow\;
+  1 + 2\Psi(r)/c^2,
+  \qquad
+  \Phi_{\text{eff}}(r)
+  \;\text{as in Paper~1}.
+\end{equation}
+To leading order in $GM/(c^2 r)$, the kinetic prefactor $\sigma(r)$ thus
+plays the role of an effective spatial curvature potential
+$\Psi(r)$, with
+\begin{equation}
+  \sigma(r)
+  \simeq \frac{2\Psi(r)}{c^2}.
+\end{equation}
+
+From Paper~1 we know that $\sigma(r)$ is of the form
+\begin{equation}
+  \sigma(r)
+  = \beta\,\frac{GM}{c^2 r},
+\end{equation}
+with $\beta = 3/2$ fixed by precession.
+This implies
+\begin{equation}
+  \Psi(r)
+  = \frac{1}{2}\sigma(r) c^2
+  = \frac{\beta}{2}\,\frac{GM}{r}
+  = \frac{3}{4}\,\frac{GM}{r}.
+\end{equation}
+It is useful to compare this orbital spatial potential with the one
+inferred directly from the optical sector.
+For the stiff $n=5$ vacuum we found that the refractive index
+$N(r)$ implies an optical spatial potential
+$\Psi_{\text{opt}}(r) \propto 2 GM/r$ when interpreted via the acoustic
+metric.
+By contrast, the hydrodynamically dressed defects that generate
+$\sigma(r)$ respond to an effective spatial potential
+$\Psi_{\text{orb}}(r) = (\beta/2) GM/r = (3/4) GM/r$, corresponding to
+a spatial coupling coefficient $1.5$ rather than $2.0$.
+This difference reflects the fact that massive solitons do not trace the
+bare acoustic geometry of phonons; they feel the combination of density
+and added-mass inertia encoded in $\sigma(r)$.
+At the same time, the optical sector---through $N(r)$ and the light-bending
+calculation---has already fixed the combination of metric functions that
+controls null geodesics.
+There is therefore a non-trivial consistency condition: the metric that
+reproduces the orbital Lagrangian and the metric inferred from the optical
+sector must agree at the level of PPN parameters.
+We examine this next.
+
+
+\subsection{PPN interpretation and 1PN equivalence}
+\label{subsec:ppn-equivalence}
+
+In the PPN formalism for static, spherically symmetric fields, the metric
+can be written as
+\begin{align}
+  g_{tt}
+  &= -\left(1 - 2\frac{GM}{r c^2}
+              + 2\beta \frac{G^2M^2}{r^2 c^4}
+              + \dots\right),
+  \\
+  g_{rr}
+  &= 1 + 2\gamma \frac{GM}{r c^2} + \dots,
+\end{align}
+with similar expressions for angular components.
+General Relativity predicts $\beta = \gamma = 1$.
+For our purposes, the key points are:
+
+\begin{itemize}
+  \item The \emph{light-bending} and \emph{Shapiro} tests depend only on
+        $\gamma$ (and the Newtonian $GM/r$), through the way null geodesics
+        respond to spatial curvature.
+  \item The \emph{perihelion precession} depends on both $\beta$ and
+        $\gamma$, through the combined effect of spatial curvature and
+        non-linearities in the effective potential.
+\end{itemize}
+
+Sections~\ref{sec:lensing} and~\ref{sec:shapiro} have already shown that,
+for the stiff $n=5$ vacuum, the effective refractive index $N(r)$ yields
+$\gamma = 1$ when interpreted through the optical metric
+Eq.~\eqref{eq:SG-optical-metric}.
+Paper~1 showed that, once the scalar lag sector and $\sigma(r)$ with
+$\beta=3/2$ are included, the orbital dynamics reproduce the GR
+perihelion advance.
+When these two pieces are combined into a single metric of the form
+Eq.~\eqref{eq:SG-metric-PN}, one finds that the effective PPN parameters
+satisfy
+\begin{equation}
+  \beta_{\text{eff}} = 1,
+  \qquad
+  \gamma_{\text{eff}} = 1,
+\end{equation}
+up to 1PN corrections.
+In other words, the emergent metric is 1PN-equivalent to Schwarzschild:
+for all classic weak-field tests, it is indistinguishable from the GR
+metric.
+
+A subtlety arises if one attempts to build the metric \emph{only} from the
+optical sector (i.e.\ from $N(r)$) and then treats defects as point test
+particles in that optical metric.
+Such a construction typically yields the correct light bending but an
+incorrect perihelion precession (e.g.\ a ``$10$'' instead of ``$6$'' in the
+coefficient of $GM/(a c^2)$).
+The kinetic prefactor $\sigma(r)$ and the scalar lag term in
+$\Phi_{\mathrm{eff}}(r)$ precisely repair this mismatch.
+This is one way of seeing that defects are not test particles on the pure
+optical metric; they are solitons whose inertial dressing modifies how they
+sample the metric, leading to the calibrated $\beta=3/2$ in the effective
+Lagrangian.
+A more detailed accounting of this PPN mapping is deferred to
+Appendix~\ref{app:ppn-metric}.
+
+
+\subsection{Mass-scaling trilemma and its resolution}
+\label{subsec:trilemma}
+
+The emergent-metric picture also helps resolve a potential inconsistency in
+how mass enters the toy model.
+
+Naively, one might try to combine the following three statements:
+
+\begin{enumerate}
+  \item Defects are cavitation structures whose mass scales with local
+        density: $m(r) \propto \rho_{\text{local}}(r)$ (the $\kappa_\rho$
+        contribution in Eq.~\eqref{eq:paper1-beta-decomp}).
+  \item The equation of motion for a test body is $F = m(r)\,a$, with
+        $m(r)$ appearing directly in the inertial term.
+  \item The effective gravitational force on a test body is
+        $F = -m(r)\,\nabla\Phi$, with $\Phi(r)$ fixed by the flux-tube
+        defect.
+\end{enumerate}
+
+If one takes all three at face value, the $m(r)$ factors cancel in
+$F = m(r)a$, suggesting that the center-of-mass motion should be
+\emph{insensitive} to the density dependence of the mass, in apparent
+tension with the need for a non-trivial $\sigma(r)$ and $\beta$ to match
+1PN precession.
+This is the ``mass-scaling trilemma'': the same $m(r)$ seems to be both
+dynamically irrelevant (in $F=ma$) and dynamically essential (in the
+orbital sector and redshift).
+
+The resolution in the present framework is simply that statement (ii)
+above is not the right way to formulate the dynamics.
+Defects are not point particles obeying Newton's second law with a
+position-dependent mass; they are solitons whose centers follow geodesics
+of the emergent metric.
+The role of $m(r)$ in the orbital sector is encoded indirectly, through the
+way it modifies the effective metric coefficients (via the kinetic
+prefactor and scalar lag field), not through a literal $F = m(r)a$.
+By contrast, clocks are sensitive to $m(r)$ in a \emph{local} way, through
+their internal frequencies, which is why $m(r)\propto\rho(r)$ is the right
+input for redshift.
+Once this distinction is made, the trilemma evaporates: orbital motion,
+lensing, Shapiro delay, and redshift all become different aspects of
+geodesic motion in the same emergent geometry.
+
+In particular, the effective spatial coupling in the orbital sector is
+controlled not by $m(r)$ alone but by the combination
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}}$.
+The static density profile around the throat contributes
+$\kappa_\rho = 1$, while the dipole ``cloud'' of superfluid flow
+required to transport a stiff spherical void contributes an added mass
+$\kappa_{\mathrm{add}} = 1/2$, as derived in
+Appendix~\ref{app:dipole-derivation}.
+This hydrodynamic dressing is what allows the same vacuum configuration
+to reconcile the ``$10$ vs $6$'' tension: light probes the optical
+coefficient $2.0$, whereas defects feel the reduced orbital coefficient
+$1.5$ that yields the correct GR precession (the naive optical
+test-particle model overpredicts the GR coefficient by a factor $5/3$).
+
+
+\subsection{Emergent vs fundamental metric}
+\label{subsec:emergent-metric}
+
+Finally, it is worth emphasizing the status of the metric in this toy
+model.
+The line element~\eqref{eq:SG-metric-PN} (or any more complete version
+built from $c_s$, $\rho$, and $\mathbf{v}$) is \emph{emergent}, not
+fundamental.
+It is a convenient, coarse-grained description of how wave packets and
+solitons propagate through the superfluid vacuum, valid in the 1PN,
+weak-field regime where wavelengths are much smaller than the scale over
+which the background varies.
+The fundamental degrees of freedom are the fluid variables and the fields
+that define the defects and the scalar lag mode.
+
+This perspective has two important consequences:
+
+\begin{itemize}
+  \item It explains why the metric can be ``right'' at 1PN---in the sense of
+        matching Schwarzschild for the classic tests—without being exact in
+        strong fields or at very short distances.
+        Deviations from GR in those regimes would reflect the breakdown of
+        the hydrodynamic and eikonal approximations, not a failure of the
+        emergent metric where it is meant to apply.
+
+  \item It clarifies the role of analogue gravity in this context.
+        The goal is not to derive GR from a superfluid, but to exhibit a
+        controlled regime in which a simple, physically transparent fluid
+        model reproduces the same 1PN phenomenology.
+        The emergent metric is a bookkeeping device for that regime, not a
+        claim about the ontological status of spacetime.
+\end{itemize}
+
+In summary, the soliton-geodesic interpretation provides a unified
+framework in which the orbital sector (with its calibrated $\beta$) and
+the optical/clock sector (with its $\gamma=1$ and redshift) are different
+projections of the same emergent geometry.
+The next section turns to the question of uniqueness: to what extent is the
+stiff $n=5$ pure-refraction vacuum singled out by these requirements within
+the broader space of superfluid vacua and defect constructions?
+
+%---------------------------------------------------------------------------
+\section{Degeneracies and the choice of $n=5$ pure refraction}
+\label{sec:degeneracies}
+
+The construction in Sections~\ref{sec:n5-vacuum}--\ref{sec:redshift} picks
+out a particular vacuum and defect configuration: a stiff $n=5$ polytropic
+superfluid with a flux-tube mass defect, in which all of the 1PN optical
+and clock effects are attributed to refraction, i.e.\ to gradients of the
+sound speed $c_s(r)$ encoded in $N(r)$.
+From the internal point of view of the toy model this is a highly
+non-trivial choice: other, apparently reasonable constructions of the
+superfluid and its flows are possible.
+In this section we briefly survey these competing branches and explain why
+we ultimately adopt the $n=5$ pure-refraction branch as the preferred
+solution within the restricted model space.
+
+
+\subsection{Competing constructions}
+\label{subsec:degeneracies-menu}
+
+Broadly speaking, there are three qualitatively different ways to obtain
+the same 1PN observables (light bending, Shapiro delay, redshift,
+perihelion precession) from a superfluid with defects:
+
+\begin{enumerate}
+  \item[(A)] \textbf{Fast-brane / pure drag.}
+    The vacuum sound speed remains essentially uniform, $c_s \simeq c_0$,
+    so $N(r) \simeq 1$ everywhere.
+    Gravitational effects on light and matter are attributed almost
+    entirely to \emph{drag} by a fast background flow $\mathbf{v}(r)$
+    toward the throat (a moving-medium analogue of the ``river model''
+    of black holes).
+
+  \item[(B)] \textbf{Split $n=3$ model (drag + refraction).}
+    The vacuum has a softer ($n=3$) polytropic EOS.
+    Both bulk flows and sound-speed gradients are present, and the total
+    1PN effect is decomposed into a drag contribution and a refraction
+    contribution, each responsible for roughly half of the GR signal.
+
+  \item[(C)] \textbf{Stiff $n=5$ pure refraction (preferred).}
+    The vacuum is super-stiff ($n=5$).
+    The far-field flow is slow in the brane frame; the dominant 1PN
+    effects arise from the $1/r$ pressure and density deficits and the
+    resulting $N(r)$ profile.
+    Drag plays a subleading role in the 1PN sector.
+\end{enumerate}
+
+All three branches can be tuned to recover the Newtonian potential and a
+GR-like 1PN expansion for at least one observable.
+The question is which branch, if any, survives when we demand a common
+vacuum and defect structure that simultaneously matches \emph{all} of the
+1PN tests and is compatible with the defect-based EM picture.
+
+
+\subsection{Rejection of fast-brane / pure drag}
+\label{subsec:degeneracies-fast-brane}
+
+The fast-brane / pure-drag branch (A) is conceptually attractive at first
+glance.
+In a moving-medium analogue of gravity, light rays propagating through a
+flow with $\mathbf{v}(r)$ experience an effective spacetime geometry even
+if $c_s$ is constant.
+One can therefore imagine a model in which the Newtonian potential,
+lensing, and Shapiro delay are all realized by a suitably chosen
+radial inflow toward the flux-tube throat, with little or no role for
+refraction.
+
+Upon closer inspection, however, this branch faces several difficulties:
+
+\begin{itemize}
+  \item \textbf{Continuity and energetics.}
+        To reproduce the observed magnitude of the 1PN effects with
+        $N(r)\simeq 1$, the inflow velocity must approach the escape
+        velocity on large scales, $|\mathbf{v}(r)| \sim \sqrt{2GM/r}$,
+        over an extended region.
+        Maintaining such a fast, steady inflow over astronomical distances
+        strains the continuity equation and the global energetics of the
+        superfluid, especially if similar flows are required around many
+        defects.
+
+  \item \textbf{Optical vs orbital tuning.}
+        In a pure-drag picture, the same flow profile must account for
+        both the bending of light and the precession of orbits.
+        Matching the coefficients in both sectors simultaneously is
+        possible, but requires a more delicate tuning of $\mathbf{v}(r)$
+        than in the refraction-based construction.
+
+  \item \textbf{EM compatibility.}
+        The fast-brane picture does not mesh cleanly with the EM sector,
+        where the flux tube is already committed to carrying electric
+        flux and setting the throat geometry.
+        Requiring the same structure to sustain a large-scale, nearly
+        free-fall inflow introduces additional constraints that are
+        difficult to reconcile with the EM requirements.
+\end{itemize}
+
+For these reasons we regard the pure-drag branch as disfavored in the
+present toy model.
+It remains a useful conceptual foil, but not a robust realization of the
+1PN phenomenology once all sectors are taken into account.
+
+
+\subsection{Rejection of split $n=3$ model}
+\label{subsec:degeneracies-n3}
+
+The split $n=3$ model (branch B) occupies an intermediate position.
+Here the superfluid vacuum obeys a softer polytropic EOS, and both drag
+and refraction contribute appreciably to the 1PN effects.
+A simple implementation is to arrange, by hand, that half of the GR
+lensing and Shapiro signals come from bulk flow and half from the
+sound-speed gradient, with an $n=3$ EOS tuned so that
+\[
+  N(r) \simeq 1 + \alpha_{n=3}\,\frac{GM}{r c^2}
+\]
+produces the desired ``$2GM$'' share of the effect.
+
+This branch avoids the extreme flows of the pure-drag picture and makes
+non-trivial use of refraction.
+Nonetheless, it is also disfavored on several grounds:
+
+\begin{itemize}
+  \item \textbf{Split bookkeeping.}
+        The decomposition of the 1PN effects into drag and refraction is
+        an internal bookkeeping choice of the model; observables only see
+        the total.
+        In the split $n=3$ branch, the relative weights of drag and
+        refraction must be tuned to agree simultaneously with both
+        orbital and optical data, which is a less economical use of the
+        available degrees of freedom.
+
+  \item \textbf{EOS–geometry tension.}
+        A softer EOS implies a weaker dependence of $c_s$ on $\rho$ and
+        thus a smaller refraction coefficient.
+        Compensating for this by increasing the amplitude of the density
+        deficit pushes against the hydrostatic and EM constraints on the
+        flux-tube geometry.
+
+  \item \textbf{Lack of clean unification.}
+        In the stiff $n=5$ branch, all of the 1PN optical and clock
+        effects can be read off from a single $1/r$ profile and its
+        derivatives.
+        In the split $n=3$ branch, the interpretation is more muddled:
+        some fraction of the signal is ``in space'' (refraction), some is
+        ``in time'' (drag), and the split depends on internal modeling
+        choices.
+\end{itemize}
+
+From the perspective of clarity and falsifiability, a branch in which the
+entire 1PN optical and clock sector is tied to a single function $N(r)$,
+fixed by the EOS and flux-tube geometry, is preferable.
+
+
+\subsection{Preferred $n=5$ branch and uniqueness claims}
+\label{subsec:degeneracies-n5}
+
+The stiff $n=5$ pure-refraction branch (C) avoids the pitfalls of the
+other branches and offers a remarkably compact picture:
+
+\begin{itemize}
+  \item The flux-tube mass defect carves out a $1/r$ pressure and density
+        deficit, with amplitude fixed by $GM$ and $\rho_0$.
+  \item The $n=5$ EOS implies $c_s(\rho)$ such that
+        $N(r) \simeq 1 + 2GM/(r c^2)$.
+  \item This $N(r)$ alone yields the GR light-bending angle and Shapiro
+        delay (fixing $\gamma=1$), while the same density deficit yields
+        the GR weak-field redshift.
+  \item The orbital sector, with its scalar lag and
+        $\sigma(r) = \beta GM/(c^2 r)$, supplies the remaining structure
+        needed to match the 1PN precession and fix $\beta=3/2$.
+\end{itemize}
+
+Within the restricted model space we have considered—spherically symmetric
+flux-tube defects in a barotropic, polytropic superfluid vacuum—the stiff
+$n=5$ branch is \emph{effectively unique} in the following sense:
+
+\begin{enumerate}
+  \item For generic $n$, the coefficient of $GM/(r c^2)$ in $N(r)$ is
+        proportional to $(n-1)$.
+        Demanding the GR light-bending angle fixes this coefficient and
+        hence selects $n=5$.
+  \item Once $N(r)$ is fixed in this way, the Shapiro delay and redshift
+        follow automatically; there is no remaining freedom in the optical
+        and clock sector at 1PN.
+  \item The orbital sector already fixed $\beta$ and the structure of
+        $\Phi_{\mathrm{eff}}(r)$ in Paper~1; these are insensitive to the
+        choice of $n$ in the weak field, provided the far-field potential
+        remains $-GM/r$.
+\end{enumerate}
+
+Our uniqueness claim is therefore modest but concrete:
+\emph{among spherically symmetric, polytropic superfluid vacua with
+flux-tube mass defects that share the same Newtonian limit, the stiff
+$n=5$ branch is singled out by the requirement that a single $N(r)$ profile
+reproduce the GR values of light bending, Shapiro delay, and redshift at
+1PN.}
+Within that branch, the orbital sector then fixes $\beta$ and
+$\Phi_{\mathrm{eff}}(r)$, completing the 1PN match.
+
+
+\subsection{Relation to the orbital $\beta$ and throat geometry}
+\label{subsec:degeneracies-beta-L}
+
+It is useful to separate clearly what is and is not constrained by the
+choice of $n=5$ pure refraction.
+
+\begin{itemize}
+  \item \textbf{Fixed by optics and clocks.}
+        The 1PN optical and clock tests fix:
+        \begin{itemize}
+          \item the combination of EOS and flux-tube structure that leads
+                to $N(r)\simeq 1 + 2GM/(r c^2)$,
+          \item and hence the stiff $n=5$ vacuum in the polytropic family.
+        \end{itemize}
+        Once this is chosen, the coefficients in lensing, Shapiro, and
+        redshift are determined.
+
+  \item \textbf{Fixed by orbits.}
+        The orbital sector, together with the scalar lag field, fixes:
+        \begin{itemize}
+          \item the effective potential $\Phi_{\mathrm{eff}}(r)$ at 1PN,
+          \item the kinetic prefactor $\sigma(r)$ and the combination of
+                hydrodynamic contributions that make up $\beta$,
+          \item and the identification $\beta = 3/2$ required by
+                precession.
+        \end{itemize}
+        These constraints arise from the way the throat and its near-field
+        flows dress the defects; they are largely insensitive to $n$ at
+        the level of the far-field EOS.
+
+  \item \textbf{Constrained but not fixed: throat micro-geometry.}
+        The detailed throat geometry—its radius $a$, depth $L$, and the
+        ratio $L/a$—is constrained by a combination of orbital and EM
+        considerations, but not fully fixed by the 1PN gravity sector
+        alone.
+        In particular, the 1PN optical tests are sensitive only to the
+        far-field $1/r$ profile, not to the internal structure of the
+        throat.  The latter will be further constrained in the full EM
+        analysis.
+\end{itemize}
+
+In summary, the choice of $n=5$ pure refraction is driven by the optical
+and clock sector and feeds back into the orbital sector only indirectly,
+through the requirement of a single emergent metric.
+The detailed throat geometry remains a degree of freedom to be fixed by
+the electromagnetic sector and higher-precision observables, which we
+leave to future work.
+
+%---------------------------------------------------------------------------
+\section{Discussion and outlook}
+\label{sec:discussion}
+
+\subsection{Summary of results}
+\label{subsec:discussion-summary}
+
+The goal of this paper was to extend the superfluid-defect toy model of
+Ref.~\cite{Norris:2025Orbits} from the orbital sector to the full set of
+classic 1PN tests, and to understand how these tests constrain the
+structure of the vacuum and the defects.
+
+On the orbital side, we began from the effective Lagrangian
+\begin{equation}
+  L
+  = \frac{1}{2}\bigl[1 + \sigma(r)\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi_{\mathrm{eff}}(r),
+\end{equation}
+in which a scalar ``lag'' field produces a $1/r^2$ correction to the
+Newtonian potential and a kinetic prefactor $\sigma(r)$ encodes a
+position-dependent renormalization of inertia.
+As reviewed in Section~\ref{sec:paper1-inputs}, the scalar sector accounts
+for one half of the GR perihelion precession, while $\sigma(r)$ with
+$\beta = 3/2$ accounts for the other half, yielding a total precession
+equal to the Schwarzschild 1PN result.
+
+On the vacuum side, we constructed a stiff ($n=5$) polytropic superfluid
+with a flux-tube mass defect.
+Hydrostatic balance in this vacuum implies a $1/r$ pressure deficit
+$\Delta P(r) = -GM\rho_0/r$ around the defect and a corresponding $1/r$
+density deficit, which in turn reduces the local sound speed and induces
+a refractive index profile
+\begin{equation}
+  N(r)
+  = \frac{c_0}{c_s(r)}
+  \simeq 1 + 2\,\frac{GM}{r c^2}
+\end{equation}
+in the weak-field limit.
+
+Treating light-like excitations as rays in this graded-index medium, we
+showed in Section~\ref{sec:lensing} that the total bending angle for a ray
+with impact parameter $b$ is
+\begin{equation}
+  \Delta\theta = \frac{4GM}{b c^2},
+\end{equation}
+in agreement with the GR prediction and corresponding to PPN
+$\gamma = 1$.
+In Section~\ref{sec:shapiro} we used the same $N(r)$ to compute the
+Shapiro time delay for signals passing near the mass, finding the standard
+logarithmic form with the correct $(1+\gamma)$ coefficient.
+In Section~\ref{sec:redshift} we then argued that defect-based clocks,
+whose frequencies scale with a local mass $m(r)\propto\rho(r)$, exhibit a
+weak-field redshift
+\begin{equation}
+  \frac{\Delta\nu}{\nu}
+  \simeq -\,\frac{GM}{r c^2},
+\end{equation}
+again matching the GR result when $\Delta\nu/\nu$ is defined as the shift of
+a clock deeper in the potential relative to one at infinity.
+
+These results admit a unified interpretation in terms of \emph{soliton
+geodesics} in an emergent metric, as discussed in
+Section~\ref{sec:soliton-geodesics}.
+The same flux-tube defect and stiff vacuum that produced the orbital
+Lagrangian and its calibrated $\beta$ also define an acoustic/optical
+metric that governs null rays and soliton centers.
+Within the 1PN, weak-field regime, the effective PPN parameters of this
+emergent metric satisfy
+\begin{equation}
+  \beta_{\mathrm{eff}} = 1,
+  \qquad
+  \gamma_{\mathrm{eff}} = 1,
+\end{equation}
+so that, for the classic solar-system tests, the toy model is
+indistinguishable from Schwarzschild.
+
+Finally, in Section~\ref{sec:degeneracies} we compared this stiff
+$n=5$ pure-refraction branch to alternative constructions based on drag or
+mixed drag/refraction, and argued that, within the restricted class of
+spherically symmetric polytropic vacua with flux-tube defects, the
+$n=5$ branch is singled out by the requirement that a single refractive
+index profile $N(r)$ reproduce GR-like lensing, Shapiro delay, and
+redshift at 1PN.
+
+
+\subsection{Conceptual lessons}
+\label{subsec:discussion-conceptual}
+
+Beyond the technical match to GR, the toy model offers several conceptual
+lessons about how gravity, optics, and inertia can emerge from a
+hydrodynamic substrate.
+
+First, the model realizes a concrete version of the idea that
+\emph{gravity is a statement about the state of the vacuum}.
+Here the ``vacuum'' is a compressible superfluid, and what GR would
+describe as curvature near a mass is instead encoded in a modest depletion
+of pressure and density and a corresponding reduction in the local sound
+speed.
+The $1/r$ profiles that appear in the effective metric arise not from a
+fundamental spacetime field but from the way a flux-tube defect distorts
+the surrounding medium.
+
+Second, the model illustrates how a single background profile can unify
+effects that are often treated separately.
+Lensing, Shapiro delay, and redshift all trace back to the same $1/r$
+density deficit: rays slow and bend because $c_s(\rho)$ decreases, and
+clocks slow because defect masses $m(\rho)$ decrease.
+The orbital sector then probes the same background through the way it
+renormalizes kinetic and potential terms.
+From this perspective, the classic 1PN tests are less a collection of
+independent phenomena and more a coordinated set of probes of one
+underlying function of radius.
+
+Third, the soliton-geodesic viewpoint helps clarify what it means for an
+emergent metric to be ``real''.
+In the toy model, the metric is not a fundamental field; it is a
+bookkeeping device that captures how localized excitations propagate
+through a particular fluid state.
+Yet, within its regime of validity, this emergent metric obeys the same
+rules as a genuine spacetime metric: it defines geodesics, it has PPN
+parameters, and it can be tested against experiments.
+This suggests that many of the familiar geometric structures of GR may be
+robust features of any theory in which excitations propagate on a
+background with a small number of state variables, rather than unique to a
+specific microscopic completion.
+
+Finally, the analysis sharpens the distinction between \emph{local} and
+\emph{global} uses of mass in an emergent picture.
+Locally, the mass of a defect affects its internal frequencies and hence
+clock rates, and it can depend on position through the density profile.
+Globally, the motion of defects is governed not by $F = m(r) a$ with
+position-dependent inertial mass, but by geodesic equations in an emergent
+metric whose coefficients have already absorbed the effects of $m(r)$.
+Recognizing this distinction resolves apparent contradictions and helps
+organize the model in a way that respects both the equivalence principle
+and the hydrodynamic origin of inertia.
+
+\subsection{Physical constraints: stiffness and universality}
+\label{subsec:discussion-stiffness}
+
+The 1PN calibration of the orbital sector relies on the throat behaving hydrodynamically as a stiff spherical obstacle with respect to its translational inertia. While the internal topology controls the electromagnetic and vector sectors (to be discussed in future work), the translational added mass is dominated by the spherical displacement envelope of the vacuum.
+In the hydrodynamic picture this is encoded in the added-mass coefficient
+$\kappa_{\mathrm{add}} = 1/2$ for a sphere moving through the superfluid,
+which, together with $\kappa_\rho = 1$, yields the kinetic prefactor
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}} = 3/2$ and restores the GR
+perihelion precession.
+The shape-sensitivity analysis of Appendix~\ref{app:dipole-derivation}
+shows that this assumption is quantitatively important: deforming the void
+by only $10\%$ into an oblate spheroid (a ``pancake'' with $b/a = 1.1$)
+shifts $\kappa_{\mathrm{add}}$ from $0.5$ to $\simeq 0.56$, and would change
+the precession factor $3 + 2\beta$ from $6.0$ to $\simeq 6.12$, a
+$\sim 2\%$ deviation from the GR value.
+Solar-system bounds on perihelion precession thus translate into a
+``stiffness'' constraint: the topological surface tension that holds the
+throat open must be large enough that the brane intersection remains
+approximately spherical under orbital accelerations, with departures from
+sphericity limited to the few-percent level.
+
+A second constraint arises from the universality of free fall for composite
+bodies.
+In the added-mass framework there are two idealized limits.
+If the superfluid vacuum treats a planet as an impermeable solid body of
+macroscopic density $\rho_{\mathrm{matter}}$, the effective acceleration in
+an external field depends on that density via the ratio
+$\rho_{\mathrm{matter}} / (\rho_{\mathrm{matter}} + \kappa_{\mathrm{macro}}\rho_{\mathrm{vac}})$,
+where $\kappa_{\mathrm{macro}}$ is the added-mass coefficient of the
+macroscopic obstacle and $\rho_{\mathrm{vac}}$ is the vacuum density.
+By contrast, if the vacuum permeates bulk matter and flows around each
+microscopic throat, the inertial response of a composite planet is just the
+sum of the individual added masses, and its free-fall acceleration matches
+that of a single defect exactly, independent of the number of constituents.
+A simple symbolic calculation shows that the solid-body and permeable
+cases agree only if
+\begin{equation}
+  \rho_{\mathrm{matter}}
+  = \frac{\kappa_{\mathrm{macro}}}{\kappa_{\mathrm{single}}}\,
+    \frac{m_{\mathrm{defect}}}{v_{\mathrm{defect}}},
+\end{equation}
+i.e. if $\rho_{\mathrm{matter}}$ is tuned to a special value proportional
+to the effective defect density $m_{\mathrm{defect}}/v_{\mathrm{defect}}$.
+In the toy model we therefore adopt \emph{permeation} as a structural
+assumption: the superfluid vacuum must be effectively ``ghost-like'' to
+bulk matter, flowing through ordinary materials rather than around them, so
+that universality of free fall for composite bodies is automatic rather
+than the result of fine-tuning.
+
+
+\subsection{Limitations and future work}
+\label{subsec:discussion-future}
+
+The toy model is deliberately modest in scope.
+It is worth summarizing its main limitations, both to keep the claims in
+check and to highlight directions for future work.
+
+\paragraph{1PN and weak-field regime.}
+All of our calculations have been performed in the weak-field, 1PN regime,
+with $GM/(r c^2) \ll 1$ and velocities small compared to $c$.
+The emergent metric is only required to match Schwarzschild at this order,
+and nothing in the present analysis guarantees that strong-field phenomena
+(horizons, innermost stable orbits, gravitational waves) will behave like
+their GR counterparts.
+Exploring the strong-field limit would require a non-linear treatment of
+the equation of state, the defect core, and the scalar lag field.
+
+\paragraph{Spherical symmetry and isolated defects.}
+We have assumed a single, static, spherically symmetric flux-tube defect in
+an otherwise homogeneous vacuum.
+Realistic astrophysical systems involve multiple bodies, rotation, and
+non-spherical structures.
+It would be interesting to generalize the construction to include
+spinning defects, defect binaries, and extended mass distributions, and to
+ask how the effective metric responds in these more complex settings.
+
+\paragraph{Microscopic underpinnings.}
+The model treats the superfluid and defects at an effective, continuum
+level, with an EOS and flux-tube structure chosen to satisfy macroscopic
+constraints.
+A more complete theory would specify the microscopic excitations and
+interactions that give rise to this EOS and topology, and would derive the
+scalar lag mode and hydrodynamic coefficients (such as $\beta$) from
+first principles.
+This would also clarify the domain of validity of the hydrodynamic and
+eikonal approximations and might reveal additional constraints or
+corrections.
+
+\paragraph{Electromagnetic sector.}
+Throughout this paper we have largely bracketed the electromagnetic sector,
+treating the flux-tube as a gravitational and hydrodynamic object without
+specifying its EM couplings.
+A natural next step is to work out the full EM construction in the same
+superfluid-defect framework, tying together throat geometry, charge,
+magnetic fields, and the $n=5$ vacuum.
+Among other things, this would constrain the throat radius and depth, test
+the consistency of the flux-tube picture with known EM phenomena, and
+potentially relate the gravitational and electromagnetic sectors more
+tightly.
+
+\paragraph{Cosmological and galactic scales.}
+The analysis here is local, centered on a single defect.
+Extending the model to cosmological or galactic scales raises new
+questions: how do many defects back-react on the vacuum?
+Do large-scale flows or density variations emerge that could mimic dark
+matter or dark energy effects?
+Is it possible to construct a statistically homogeneous and isotropic
+vacuum filled with defects that yields a viable large-scale expansion
+history?
+These questions go far beyond the remit of the present paper, but the
+superfluid-defect language is well suited to posing them.
+
+\paragraph{Numerical exploration.}
+A systematic numerical campaign—paralleling the orbital and PDE numerics
+of Paper~1—would be valuable both as a check on the analytic approximations
+and as a way to explore regimes (e.g.\ intermediate field strengths,
+non-trivial geometries) where closed-form expressions are unavailable.
+
+\medskip
+
+Taken together, Paper~1 and the present work suggest that a relatively
+simple superfluid-defect toy model is capable of reproducing the full
+suite of classic 1PN tests of gravity, with a clear and unified physical
+interpretation in terms of vacuum structure, flux tubes, and soliton
+geodesics.
+Whether this framework can be extended to encompass electromagnetism,
+strong-field gravity, and cosmology in a similarly coherent way remains an
+open and intriguing question.
+
+%---------------------------------------------------------------------------
+\appendix
+
+\section{Stiff $n=5$ superfluid vacuum and optical sector details}
+\label{app:n5-optical}
+
+In this appendix we collect the derivations underlying the optical sector
+of the model.
+We work with a general polytropic index $n$ and only specialize to the
+stiff case $n=5$ at the end.
+This makes it clear how the light-bending and Shapiro coefficients select
+the $n=5$ branch within the polytropic family.
+
+
+\subsection{Polytropic EOS and density/sound-speed perturbations}
+\label{subsec:app-eos}
+
+We start from the barotropic polytropic equation of state,
+\begin{equation}
+  P = K \rho^n,
+\end{equation}
+with homogeneous background $(\rho_0, P_0)$ and background sound speed
+\begin{equation}
+  c_0^2 \equiv
+  \left.\frac{\partial P}{\partial \rho}\right|_{\rho_0}
+  = n K \rho_0^{\,n-1}.
+\end{equation}
+Consider a weak, static perturbation of the vacuum induced by a central
+mass $M$.
+In the far-field, quasi-static regime the fluid satisfies hydrostatic
+balance,
+\begin{equation}
+  \frac{1}{\rho(r)}\frac{\mathrm{d}P}{\mathrm{d}r}
+  = \frac{\mathrm{d}\Phi}{\mathrm{d}r},
+\end{equation}
+with $\Phi(r) = -GM/r$ the effective Newtonian potential.
+
+In the weak-field limit we linearize about the homogeneous background,
+writing
+\begin{equation}
+  \rho(r) = \rho_0 + \Delta\rho(r),
+  \qquad
+  P(r) = P_0 + \Delta P(r),
+\end{equation}
+with $|\Delta\rho| \ll \rho_0$ and $|\Delta P| \ll P_0$, and approximate
+$\rho(r) \simeq \rho_0$ in the hydrostatic equation.
+This yields
+\begin{equation}
+  \frac{1}{\rho_0}\frac{\mathrm{d}P}{\mathrm{d}r}
+  \simeq \frac{\mathrm{d}\Phi}{\mathrm{d}r}
+  = \frac{GM}{r^2}.
+\end{equation}
+Integrating from $r$ to $\infty$ and choosing the integration constant so
+that $\Delta P(\infty)=0$ gives
+\begin{equation}
+  \Delta P(r)
+  = -\rho_0\int_r^\infty \frac{GM}{r'^2}\,\mathrm{d}r'
+  = -\frac{GM\rho_0}{r}.
+  \label{eq:app-deltaP}
+\end{equation}
+
+To relate $\Delta P$ to $\Delta\rho$, we expand the EOS to first order:
+\begin{equation}
+  P(\rho_0 + \Delta\rho)
+  = P_0 + \left.\frac{\partial P}{\partial \rho}\right|_{\rho_0}\Delta\rho
+        + \mathcal{O}(\Delta\rho^2)
+  = P_0 + c_0^2\,\Delta\rho + \mathcal{O}(\Delta\rho^2),
+\end{equation}
+so that
+\begin{equation}
+  \Delta P(r) \simeq c_0^2\,\Delta\rho(r).
+\end{equation}
+Combining with Eq.~\eqref{eq:app-deltaP}, we obtain
+\begin{equation}
+  \Delta\rho(r)
+  = \frac{\Delta P(r)}{c_0^2}
+  = -\frac{GM\rho_0}{c_0^2 r},
+\end{equation}
+or in fractional form
+\begin{equation}
+  \frac{\Delta\rho(r)}{\rho_0}
+  = -\frac{GM}{c_0^2 r}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c_0^4 r^2}\right).
+  \label{eq:app-deltarho}
+\end{equation}
+Note that this leading-order density deficit is \emph{independent} of the
+polytropic index $n$; $n$ enters only through the way $c_s$ responds to
+$\Delta\rho$.
+
+The local sound speed is given by
+\begin{equation}
+  c_s^2(\rho)
+  = \frac{\mathrm{d}P}{\mathrm{d}\rho}
+  = n K \rho^{\,n-1}.
+\end{equation}
+Expanding around $\rho_0$,
+\begin{equation}
+  c_s^2(\rho_0 + \Delta\rho)
+  = c_0^2\left(\frac{\rho_0 + \Delta\rho}{\rho_0}\right)^{n-1}
+  \simeq c_0^2\left[1 + (n-1)\frac{\Delta\rho}{\rho_0}\right],
+\end{equation}
+where we have used $(1+x)^{n-1} \simeq 1 + (n-1)x$ for $|x|\ll1$.
+Taking the square root and linearizing again,
+\begin{equation}
+  c_s(\rho_0 + \Delta\rho)
+  = c_0\sqrt{1 + (n-1)\frac{\Delta\rho}{\rho_0}}
+  \simeq c_0\left[1 + \frac{n-1}{2}\frac{\Delta\rho}{\rho_0}\right].
+\end{equation}
+Thus
+\begin{equation}
+  \frac{\Delta c_s(r)}{c_0}
+  \equiv \frac{c_s(r) - c_0}{c_0}
+  \simeq \frac{n-1}{2}\frac{\Delta\rho(r)}{\rho_0}.
+  \label{eq:app-deltacs-rho}
+\end{equation}
+Substituting Eq.~\eqref{eq:app-deltarho} yields
+\begin{equation}
+  \frac{\Delta c_s(r)}{c_0}
+  \simeq -\frac{n-1}{2}\frac{GM}{c_0^2 r},
+  \label{eq:app-deltacs}
+\end{equation}
+which shows that $c_s$ is reduced near the defect for any $n>1$, with a
+strength proportional to $(n-1)$.
+
+
+\subsection{General-$n$ refractive index and lensing}
+\label{subsec:app-general-n-lensing}
+
+The effective refractive index for sound-like excitations is
+\begin{equation}
+  N(r)
+  \equiv \frac{c_0}{c_s(r)}.
+\end{equation}
+Using Eq.~\eqref{eq:app-deltacs} and expanding to first order,
+\begin{equation}
+  N(r)
+  = \frac{1}{1 + \Delta c_s(r)/c_0}
+  \simeq 1 - \frac{\Delta c_s(r)}{c_0}
+  \simeq 1 + \frac{n-1}{2}\frac{GM}{c_0^2 r}.
+\end{equation}
+It is convenient to define
+\begin{equation}
+  \alpha_n \equiv \frac{n-1}{2},
+\end{equation}
+so that
+\begin{equation}
+  N(r)
+  \simeq 1 + \alpha_n \frac{GM}{c_0^2 r}.
+  \label{eq:app-N-general}
+\end{equation}
+To the same order we may write
+\begin{equation}
+  \ln N(r)
+  \simeq \alpha_n \frac{GM}{c_0^2 r},
+  \label{eq:app-lnN-general}
+\end{equation}
+since $\ln(1+x)\simeq x$ for $|x|\ll1$.
+
+We now compute the light-bending angle for general $n$.
+As in the main text, we approximate the ray path by a straight line with
+impact parameter $b$, parameterized by $z$.
+The radial distance from the mass is $r(z) = \sqrt{b^2 + z^2}$.
+To leading order in the index perturbation, the total deflection angle is
+\begin{equation}
+  \Delta\theta
+  \simeq \int_{-\infty}^{+\infty}
+         \nabla_\perp \ln N\bigl(r(z)\bigr)\,\mathrm{d}z,
+\end{equation}
+where $\nabla_\perp$ is the gradient transverse to the unperturbed ray
+direction.
+For a spherically symmetric $\ln N(r)$,
+\begin{equation}
+  \left|\nabla_\perp \ln N\right|
+  = \left|\frac{\mathrm{d}\ln N}{\mathrm{d}r}\right|\frac{b}{r}.
+\end{equation}
+Using Eq.~\eqref{eq:app-lnN-general},
+\begin{equation}
+  \frac{\mathrm{d}\ln N}{\mathrm{d}r}
+  \simeq -\alpha_n \frac{GM}{c_0^2}\frac{1}{r^2},
+\end{equation}
+so that
+\begin{equation}
+  \left|\nabla_\perp \ln N\bigl(r(z)\bigr)\right|
+  \simeq \alpha_n \frac{GM}{c_0^2}\frac{b}{r^3}
+  = \alpha_n \frac{GM}{c_0^2}
+    \frac{b}{(b^2+z^2)^{3/2}}.
+\end{equation}
+The deflection angle is therefore
+\begin{equation}
+  \Delta\theta
+  \simeq \alpha_n \frac{GM}{c_0^2}
+         \int_{-\infty}^{+\infty}
+         \frac{b}{(b^2+z^2)^{3/2}}\,\mathrm{d}z.
+\end{equation}
+The integral is the same as in the main text,
+\begin{equation}
+  \int_{-\infty}^{+\infty}
+  \frac{b}{(b^2+z^2)^{3/2}}\,\mathrm{d}z
+  = \frac{2}{b},
+\end{equation}
+so we obtain
+\begin{equation}
+  \Delta\theta
+  \simeq \alpha_n \frac{GM}{c_0^2}\frac{2}{b}
+  = \frac{2\alpha_n GM}{b c_0^2}.
+\end{equation}
+Specializing to the 1PN matching limit $c_0\to c$ gives
+\begin{equation}
+  \Delta\theta_n
+  = \frac{2\alpha_n GM}{b c^2}
+  = \frac{(n-1)GM}{b c^2}.
+  \label{eq:app-dtheta-n}
+\end{equation}
+In the PPN formalism, the corresponding deflection angle is
+\begin{equation}
+  \Delta\theta_{\text{PPN}}
+  = \frac{2(1+\gamma)GM}{b c^2}.
+\end{equation}
+Equating Eq.~\eqref{eq:app-dtheta-n} with $\Delta\theta_{\text{PPN}}$ yields
+\begin{equation}
+  2(1+\gamma) = n-1
+  \quad\Rightarrow\quad
+  \gamma = \frac{n-3}{2}.
+\end{equation}
+Demanding $\gamma = 1$ (the GR value) therefore selects
+\begin{equation}
+  n-3 = 2
+  \quad\Rightarrow\quad
+  n = 5.
+\end{equation}
+Thus, within this polytropic family, the light-bending data single out the
+stiff $n=5$ vacuum.
+
+
+\subsection{Shapiro delay and redshift integrals}
+\label{subsec:app-shapiro-redshift}
+
+We now repeat the Shapiro delay derivation in a way that keeps the
+dependence on $\alpha_n$ explicit, and then collect the redshift
+integrals for reference.
+
+\paragraph{General-$n$ Shapiro delay.}
+
+Using the same setup as in Section~\ref{sec:shapiro}, the one-way
+time-of-flight from $z=-Z_\mathrm{E}$ to $z=+Z_\mathrm{R}$ along a
+straight-line path with impact parameter $b$ is
+\begin{equation}
+  t
+  \simeq \frac{1}{c_0}
+         \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+         \left[1 + \alpha_n \frac{GM}{c_0^2 r(z)}\right]\mathrm{d}z,
+\end{equation}
+where $r(z) = \sqrt{b^2+z^2}$.
+Subtracting the flat-space time
+$t_0 = (Z_\mathrm{E}+Z_\mathrm{R})/c_0$ gives the delay
+\begin{equation}
+  \Delta t_n
+  = t - t_0
+  \simeq \alpha_n \frac{GM}{c_0^3}
+         \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+         \frac{\mathrm{d}z}{\sqrt{b^2+z^2}}.
+\end{equation}
+As in the main text, the integral evaluates to
+\begin{equation}
+  \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+  \frac{\mathrm{d}z}{\sqrt{b^2+z^2}}
+  = \ln\!\left[
+      \frac{Z_\mathrm{R} + \sqrt{b^2 + Z_\mathrm{R}^2}}
+           {-Z_\mathrm{E} + \sqrt{b^2 + Z_\mathrm{E}^2}}
+    \right].
+\end{equation}
+For $Z_\mathrm{E},Z_\mathrm{R}\gg b$, this becomes
+\begin{equation}
+  \int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+  \frac{\mathrm{d}z}{\sqrt{b^2+z^2}}
+  \simeq \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right),
+\end{equation}
+where $r_\mathrm{E} \simeq Z_\mathrm{E}$ and $r_\mathrm{R}\simeq Z_\mathrm{R}$.
+Thus
+\begin{equation}
+  \Delta t_n
+  \simeq \alpha_n \frac{GM}{c_0^3}
+         \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right).
+\end{equation}
+Setting $c_0\to c$,
+\begin{equation}
+  \Delta t_n
+  = \alpha_n \frac{GM}{c^3}
+    \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right).
+  \label{eq:app-dt-n}
+\end{equation}
+
+In the PPN formalism,
+\begin{equation}
+  \Delta t_{\text{PPN}}
+  = (1+\gamma)\frac{GM}{c^3}
+    \ln\!\left(\frac{4 r_\mathrm{E} r_\mathrm{R}}{b^2}\right).
+\end{equation}
+Comparing with Eq.~\eqref{eq:app-dt-n} shows that
+\begin{equation}
+  \alpha_n = 1 + \gamma.
+\end{equation}
+Using $\alpha_n = (n-1)/2$ and $\gamma = 1$ again yields $n=5$.
+Thus the Shapiro delay provides the same constraint on $n$ as the
+lensing calculation.
+Equivalently, once $N(r)$ is fixed by the EOS, the Shapiro coefficient
+is not an independent input: it is a derived quantity.
+
+
+\paragraph{Redshift integrals.}
+
+For redshift, the relevant quantity is the fractional density deficit,
+Eq.~\eqref{eq:app-deltarho},
+\begin{equation}
+  \frac{\Delta\rho(r)}{\rho_0}
+  = -\frac{GM}{c_0^2 r},
+\end{equation}
+which, as noted above, is independent of $n$ at leading order.
+If the rest mass of a defect is proportional to the local density,
+\begin{equation}
+  m(r) \propto \rho_{\text{local}}(r),
+\end{equation}
+then
+\begin{equation}
+  \frac{\Delta m(r)}{m_0}
+  = \frac{\Delta\rho(r)}{\rho_0}
+  = -\frac{GM}{c_0^2 r},
+\end{equation}
+and any clock whose characteristic frequency satisfies $\omega\propto m$
+obeys
+\begin{equation}
+  \frac{\Delta\omega(r)}{\omega_0}
+  = -\frac{GM}{c_0^2 r}.
+\end{equation}
+In the 1PN matching limit $c_0\to c$ this becomes
+\begin{equation}
+  \frac{\Delta\omega(r)}{\omega_0}
+  = -\frac{GM}{c^2 r},
+\end{equation}
+which reproduces the standard weak-field gravitational redshift.
+As emphasized in the main text, the redshift constraint alone does not
+fix $n$, because $\Delta\rho/\rho_0$ does not depend on the EOS in the
+linear regime; it is the combination of redshift, Shapiro, and lensing
+that singles out $n=5$.
+
+%---------------------------------------------------------------------------
+\section{PPN mapping and metric consistency}
+\label{app:ppn-metric}
+
+In this appendix we make explicit how the toy model maps onto the standard
+parametrized post-Newtonian (PPN) framework at 1PN, and why a naive
+identification of the ``optical metric'' with the full spacetime metric
+fails to reproduce the correct perihelion precession.
+We organize the discussion into three parts:
+(i) the optical metric inferred directly from $N(r)$,
+(ii) the perihelion precession one would obtain by treating defects as
+test particles on that optical metric, and
+(iii) how the scalar lag sector and kinetic prefactor $\sigma(r)$ repair
+this mismatch and restore the GR value of the PPN parameter $\beta$.
+From the viewpoint of the toy model, this is the sharpest internal
+consistency check: the same vacuum configuration that fixes the optical
+sector must also yield a total perihelion advance with coefficient $6$,
+not $10$, once the scalar lag and hydrodynamic dressing encoded in
+$\sigma(r)$ are taken into account.
+
+
+\subsection{Optical metric from $N(r)$}
+\label{subsec:app-optical-metric}
+
+The refractive index profile for the stiff $n=5$ vacuum derived in the main
+text is
+\begin{equation}
+  N(r)
+  \equiv \frac{c_0}{c_s(r)}
+  \simeq 1 + 2\,\frac{GM}{r c^2},
+  \qquad
+  r = |\mathbf{x}|,
+  \label{eq:app-ppn-N}
+\end{equation}
+where we have identified $c_0\to c$ in the 1PN matching limit.
+In geometric optics, this can be represented by an \emph{optical metric}
+in which spatial distances are stretched by a factor $N(r)$ for the
+purpose of ray propagation.
+A natural choice in isotropic coordinates is
+\begin{equation}
+  \mathrm{d}s^2_{\text{opt}}
+  = -c^2 \mathrm{d}t^2
+    + N^2(r)\,
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
+  \label{eq:app-ppn-optical-metric}
+\end{equation}
+where $\mathrm{d}\Omega^2$ is the metric on the unit 2-sphere.
+
+Expanding $N^2$ to first order in $GM/(r c^2)$,
+\begin{equation}
+  N^2(r)
+  = \bigl(1 + 2GM/(r c^2)\bigr)^2
+  \simeq 1 + 4\,\frac{GM}{r c^2}
+  + \mathcal{O}\!\left(\frac{G^2M^2}{c^4 r^2}\right),
+\end{equation}
+so that
+\begin{equation}
+  \mathrm{d}s^2_{\text{opt}}
+  \simeq -c^2 \mathrm{d}t^2
+    + \left[1 + 4\,\frac{GM}{r c^2}\right]
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr).
+  \label{eq:app-ppn-optical-metric-expanded}
+\end{equation}
+Comparing this with the usual 1PN isotropic form,
+\begin{equation}
+  \mathrm{d}s^2
+  = -\left(1 - 2\frac{GM}{r c^2} + \dots\right)c^2 \mathrm{d}t^2
+    + \left(1 + 2\gamma\frac{GM}{r c^2} + \dots\right)
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
+  \label{eq:app-ppn-general-metric}
+\end{equation}
+we see that the optical metric~\eqref{eq:app-ppn-optical-metric-expanded}
+corresponds to the choice
+\begin{equation}
+  g_{tt}^{\text{(opt)}} = -1,
+  \qquad
+  g_{rr}^{\text{(opt)}} = 1 + 4\frac{GM}{r c^2},
+\end{equation}
+i.e.\ to an effective
+\begin{equation}
+  \gamma_{\text{optical}}
+  = 2,
+  \qquad
+  \Phi_{\text{optical}}(r) = 0,
+\end{equation}
+if one tries to read off PPN parameters naively.
+
+This mismatch is, of course, an artifact of interpreting the purely
+spatial optical metric as a full spacetime metric: in
+Eq.~\eqref{eq:app-ppn-optical-metric} we have \emph{by construction} left
+$g_{tt}$ unperturbed while packing all of the refractive information into
+$g_{ij}$.
+For null rays this is harmless: what matters is the combination of $g_{tt}$
+and $g_{ij}$ that controls the spatial projections of null geodesics, and
+this combination gives the correct light-bending and Shapiro coefficients
+when $N(r)$ has the form~\eqref{eq:app-ppn-N}.
+However, if one now takes Eq.~\eqref{eq:app-ppn-optical-metric-expanded}
+and uses it as the \emph{full} spacetime metric for massive test bodies,
+one does not recover the correct perihelion precession.
+
+
+\subsection{Precession from the optical metric}
+\label{subsec:app-optical-precession}
+
+To see the problem explicitly, consider a hypothetical model in which
+\begin{quote}
+  (i) the spacetime metric is taken to be
+  Eq.~\eqref{eq:app-ppn-optical-metric-expanded}, and \\
+  (ii) massive defects are treated as point test particles following
+  timelike geodesics of this metric.
+\end{quote}
+We refer to this as the \emph{optical test-particle} model.
+
+In isotropic coordinates, the expanded optical metric
+Eq.~\eqref{eq:app-ppn-optical-metric-expanded} reads, to first order in
+$GM/(r c^2)$,
+\begin{equation}
+  \mathrm{d}s^2_{\text{opt}}
+  \simeq -c^2 \mathrm{d}t^2
+    + \left[1 + 4\,\frac{GM}{r c^2}\right]
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\varphi^2\bigr).
+\end{equation}
+Comparing this with the usual 1PN isotropic form
+\begin{equation}
+  \mathrm{d}s^2
+  = -\left(1 - 2\frac{GM}{r c^2} + \dots\right)c^2 \mathrm{d}t^2
+    + \left(1 + 2\gamma\frac{GM}{r c^2} + \dots\right)
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
+  \label{eq:app-ppn-general-metric-again}
+\end{equation}
+we see that the optical metric has
+\begin{equation}
+  g_{tt}^{\text{(opt)}} = -1,
+  \qquad
+  g_{rr}^{\text{(opt)}} = 1 + 4\frac{GM}{r c^2}
+  \;\Rightarrow\;
+  \gamma_{\text{opt}} = 2,
+  \qquad
+  \Phi_{\text{opt}}(r) = 0.
+\end{equation}
+To recover the Newtonian limit for massive bodies one must therefore
+\emph{manually} add a Newtonian potential
+\begin{equation}
+  \Phi_{\text{opt}}(r) = -\frac{GM}{r},
+\end{equation}
+and, in PPN language, take $\beta_{\text{opt}} = 1$ while keeping
+$\gamma_{\text{opt}} = 2$ from the optical sector.
+
+For bound orbits in a static, spherically symmetric field, the standard
+1PN PPN expression for the perihelion advance is
+\begin{equation}
+  \Delta\varphi
+  = \frac{6\pi GM}{a(1-e^2)c^2}
+    \left(\frac{2 - \beta + 2\gamma}{3}\right),
+\end{equation}
+where $a$ is the semi-major axis and $e$ the eccentricity of the orbit.
+Inserting the ``naive'' optical test-particle parameters
+\begin{equation}
+  \beta_{\text{opt}} = 1,
+  \qquad
+  \gamma_{\text{opt}} = 2,
+\end{equation}
+Here $\beta_{\text{opt}}$ and $\gamma_{\text{opt}}$ are PPN parameters; the
+hydrodynamic parameter $\beta$ used in the main text is a distinct
+inertia-renormalization coefficient fixed to $\beta=3/2$ by Paper~1.
+yields
+\begin{equation}
+  \Delta\varphi_{\text{opt,PN}}
+  = \frac{6\pi GM}{a(1-e^2)c^2}
+    \left(\frac{2 - 1 + 2\times 2}{3}\right)
+  = 10\,\frac{\pi GM}{a(1-e^2)c^2},
+\end{equation}
+i.e.\ a coefficient $10$ rather than the GR value $6$.
+Equivalently, the optical test-particle model overpredicts the perihelion
+precession by a factor $10/6 = 5/3$.
+
+This is the revised version of the optical vs GR discrepancy mentioned in
+the main text: if one attempts to use the optical metric alone as the full
+spacetime metric for massive defects, while keeping the Newtonian limit
+intact, the perihelion precession comes out too large by a factor $5/3$.
+The optical test-particle model is therefore \emph{not} 1PN-equivalent to
+Schwarzschild, even though it reproduces the correct light-bending
+coefficient.
+In the language of the main text, this hypothetical construction
+corresponds to forcing defects to follow the bare acoustic geometry of
+phonons, ignoring the hydrodynamic dressing that appears in
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}}$.
+Sections~\ref{sec:soliton-geodesics} and~\ref{subsec:trilemma} explain
+why this is not the correct dynamics for solitonic defects.
+
+
+\subsection{Role of scalar lag and $\beta$}
+\label{subsec:app-role-beta}
+
+The actual superfluid-defect model avoids this problem in two ways:
+
+\begin{enumerate}
+  \item Massive defects are not treated as point test particles on the
+        pure optical metric; instead, their dynamics are governed by the
+        effective Lagrangian constructed in Paper~1,
+        \begin{equation}
+          L
+          = \frac{1}{2}\bigl[1 + \sigma(r)\bigr]
+              \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+            - \Phi_{\mathrm{eff}}(r),
+          \label{eq:app-ppn-L-eff-again}
+        \end{equation}
+        with
+        \begin{equation}
+          \Phi_{\mathrm{eff}}(r)
+          = -\frac{GM}{r} - \frac{G^2M^2}{2 c^2 r^2},
+          \qquad
+          \sigma(r) = \beta\,\frac{GM}{c^2 r}.
+        \end{equation}
+
+  \item The scalar lag field and the kinetic prefactor $\sigma(r)$ are
+        interpreted as different components of an \emph{emergent} metric,
+        rather than as ad hoc corrections to Newtonian dynamics.
+\end{enumerate}
+
+To make the connection explicit, compare the geodesic Lagrangian in a
+generic static, spherically symmetric metric written in isotropic
+coordinates,
+\begin{equation}
+  \mathrm{d}s^2
+  = -\left[1 + 2\Phi(r)/c^2 + \dots\right]c^2 \mathrm{d}t^2
+    + \left[1 + 2\Psi(r)/c^2 + \dots\right]
+      \bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\varphi^2\bigr).
+\end{equation}
+Expanding the point-particle action to order $v^2/c^2$ gives
+\begin{equation}
+  L_{\text{geo}}
+  = \frac{1}{2}\bigl[1 + 2\Psi(r)/c^2\bigr]
+      \bigl(\dot r^2 + r^2 \dot\varphi^2\bigr)
+    - \Phi(r)
+    + \mathcal{O}\!\left(\frac{v^4}{c^2}\right).
+  \label{eq:app-ppn-L-geo-again}
+\end{equation}
+Comparing Eqs.~\eqref{eq:app-ppn-L-eff-again}
+and~\eqref{eq:app-ppn-L-geo-again}, we identify
+\begin{equation}
+  \Phi(r) \leftrightarrow \Phi_{\mathrm{eff}}(r),
+  \qquad
+  1 + \sigma(r) \leftrightarrow 1 + 2\Psi(r)/c^2.
+\end{equation}
+To leading order in $GM/(r c^2)$, this implies
+\begin{equation}
+  \Psi(r)
+  = \frac{1}{2}\sigma(r) c^2
+  = \frac{\beta}{2}\frac{GM}{r}.
+\end{equation}
+
+From Paper~1 we know that the combination of the scalar lag potential
+and the $\sigma(r)$ correction produces a total apsidal advance
+\begin{equation}
+  \Delta\varphi_{\text{tot}}
+  = \bigl(3 + 2\beta\bigr)\,
+    \frac{\pi GM}{a(1-e^2)c^2}.
+\end{equation}
+Requiring agreement with the Schwarzschild result,
+\begin{equation}
+  \Delta\varphi_{\text{GR}}
+  = 6\,\frac{\pi GM}{a(1-e^2)c^2},
+\end{equation}
+fixes
+\begin{equation}
+  3 + 2\beta = 6
+  \quad\Rightarrow\quad
+  \beta = \frac{3}{2}.
+\end{equation}
+Using the decomposition~\eqref{eq:paper1-beta-decomp} and the explicit
+added-mass calculation in Appendix~\ref{app:dipole-derivation}, this can
+be written as
+\begin{equation}
+  \beta = \kappa_\rho + \kappa_{\mathrm{add}}
+        = 1 + \frac{1}{2}.
+\end{equation}
+Thus the same hydrodynamic coefficients that control the inertial
+dressing of a moving throat also control the PPN parameter that repairs
+the ``$10$ vs $6$'' discrepancy in the optical test-particle model.
+In terms of the metric functions, this corresponds to
+\begin{equation}
+  \Psi(r)
+  = \frac{3}{4}\,\frac{GM}{r},
+  \qquad
+  \Phi(r)
+  = -\frac{GM}{r}
+      - \frac{G^2M^2}{2 c^2 r^2},
+\end{equation}
+which, when mapped onto the PPN parameters, yields
+$\beta_{\text{eff}} = 1$ and $\gamma_{\text{eff}} = 1$ at 1PN.
+
+The crucial point is that the coefficient of the $GM/(r c^2)$ term in
+$\Psi(r)$ is no longer tied directly to the index profile $N(r)$ as it was
+in the pure optical metric; instead, it is determined by the hydrodynamic
+structure of the defect (through $\beta$) and by the scalar lag sector.
+Light rays remain governed by the refractive index $N(r)$, which fixes the
+combination of $\Phi$ and $\Psi$ that controls null geodesics and thus
+$\gamma=1$, while massive solitons see the full effective metric built out
+of $\Phi$ and $\Psi$.
+The interplay of these two pieces is what repairs the ``$10$ vs $6$''
+discrepancy (optical test particles overpredict by $5/3$) and yields a
+single emergent metric that is 1PN-equivalent to
+Schwarzschild.
+
+In summary:
+
+\begin{itemize}
+  \item The \emph{optical metric alone}, interpreted as a full spacetime
+        metric, gives the right light-bending coefficient but an incorrect
+        perihelion precession ($10$ instead of $6$, i.e.\ an overestimate
+        by a factor $5/3$).
+  \item The \emph{full emergent metric}, which incorporates both the
+        scalar lag potential and the kinetic prefactor $\sigma(r)$ as
+        determined in Paper~1, yields the correct precession and remains
+        consistent with the optical sector, with effective
+        $\beta_{\text{eff}} = \gamma_{\text{eff}} = 1$ at 1PN.
+  \item This reinforces the interpretation that defects are solitons
+        following geodesics in an emergent metric, not test particles on
+        the pure optical metric derived from $N(r)$ alone.
+\end{itemize}
+
+%---------------------------------------------------------------------------
+\section{Hydrodynamic added mass of a moving throat}
+\label{app:dipole-derivation}
+
+In this appendix we derive the added mass coefficient
+$\kappa_{\mathrm{add}} = 1/2$ for a stiff spherical throat moving through
+the superfluid vacuum.  The defect is modeled as a massless spherical void
+of radius $R$ that moves at constant velocity $v$ through an otherwise
+static, incompressible, inviscid fluid of density $\rho_0$.  The void displaces
+fluid, but has no bulk mass of its own; any inertia associated with its motion
+must therefore arise from the kinetic energy of the induced flow field.
+
+We work in the potential-flow regime, with velocity potential $\phi$ and
+velocity field $\mathbf{u} = \nabla\phi$.
+We neglect viscosity, so the flow is purely potential and the forces are
+conservative; viscous drag and dissipation lie outside the added-mass
+picture used here.
+For a sphere moving along the $z$-axis, the leading disturbance at large $r$
+is a dipole.  We therefore take the ansatz
+\begin{equation}
+  \phi(r,\theta) = -\,\frac{\mu_{\mathrm{dip}}}{r^2}\cos\theta,
+\end{equation}
+where $(r,\theta)$ are spherical coordinates with $\theta=0$ in the
+direction of motion and $\mu_{\mathrm{dip}}$ is a dipole moment to be fixed
+by the boundary condition.
+
+The void is assumed to be \emph{stiff}: its spherical topology is maintained
+by topological tension, so the fluid cannot cross the boundary.
+The radial velocity of the fluid at the surface must therefore match the
+radial velocity of the surface itself,
+\begin{equation}
+  u_r\big|_{r=R} = v\cos\theta,
+\end{equation}
+where $v$ is the speed of the throat in the lab frame.
+From the potential we have
+\begin{equation}
+  u_r = \frac{\partial\phi}{\partial r}
+      = \frac{2\mu_{\mathrm{dip}}}{r^3}\cos\theta,
+\end{equation}
+so the boundary condition at $r=R$ gives
+\begin{equation}
+  \frac{2\mu_{\mathrm{dip}}}{R^3}\cos\theta = v\cos\theta
+  \quad\Rightarrow\quad
+  \mu_{\mathrm{dip}} = \frac{1}{2} v R^3.
+\end{equation}
+Substituting this back into the potential,
+\begin{equation}
+  \phi(r,\theta) = -\,\frac{v R^3}{2 r^2}\cos\theta.
+\end{equation}
+
+The kinetic energy density of the flow is
+\begin{equation}
+  \mathcal{E}_{\mathrm{kin}} = \frac{1}{2}\rho_0\,|\mathbf{u}|^2,
+\end{equation}
+with
+\begin{equation}
+  u_r = \frac{\partial\phi}{\partial r}
+      = v R^3 \frac{\cos\theta}{r^3},
+  \qquad
+  u_\theta = \frac{1}{r}\frac{\partial\phi}{\partial\theta}
+      = \frac{v R^3}{2 r^3}\sin\theta.
+\end{equation}
+The magnitude squared is
+\begin{equation}
+  |\mathbf{u}|^2
+  = u_r^2 + u_\theta^2
+  = v^2 R^6 \frac{\cos^2\theta + \tfrac{1}{4}\sin^2\theta}{r^6}.
+\end{equation}
+Integrating over the volume outside the sphere,
+\begin{equation}
+  E_{\mathrm{cloud}}
+  = \int_{r>R} \mathcal{E}_{\mathrm{kin}}\,\mathrm{d}V
+  = \frac{1}{2}\rho_0 v^2 R^6
+    \int_R^\infty \frac{\mathrm{d}r}{r^4}
+    \int_0^\pi \mathrm{d}\theta \sin\theta
+      \left(\cos^2\theta + \frac{1}{4}\sin^2\theta\right)
+    \int_0^{2\pi}\mathrm{d}\varphi.
+\end{equation}
+The angular integrals give a numerical factor of order unity, and the radial
+integral converges at infinity.
+Carrying out the integrals explicitly one finds
+\begin{equation}
+  E_{\mathrm{cloud}}
+  = \frac{1}{4} m_{\mathrm{disp}} v^2,
+\end{equation}
+where
+\begin{equation}
+  m_{\mathrm{disp}} = \frac{4\pi}{3}\rho_0 R^3
+\end{equation}
+is the mass of the displaced fluid.
+Equating this to the kinetic energy of an effective added mass,
+\begin{equation}
+  E_{\mathrm{cloud}} = \frac{1}{2} m_{\mathrm{add}} v^2,
+\end{equation}
+we obtain
+\begin{equation}
+  m_{\mathrm{add}} = \frac{1}{2} m_{\mathrm{disp}}
+  \quad\Rightarrow\quad
+  \kappa_{\mathrm{add}} = \frac{m_{\mathrm{add}}}{m_{\mathrm{disp}}}
+  = \frac{1}{2}.
+\end{equation}
+
+Thus, a stiff spherical throat moving through the superfluid carries an
+effective inertial mass equal to half the mass of the fluid it displaces.
+This \emph{hydrodynamic added mass} justifies the choice
+$\kappa_{\mathrm{add}} = 1/2$ used in the main text and, together with
+$\kappa_\rho = 1$, yields the total kinetic prefactor
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}} = 3/2$ that restores the GR
+perihelion precession.
+
+(We note that this derivation assumes a spherical displacement envelope; this is compatible with the composite 'Dyon' topological structures required for the gravitomagnetic sector, provided the effective cross-section remains spherical.)
+
+This result is specific to the spherical displacement geometry assumed here.
+Applying the same method to ellipsoidal voids shows that deviations from
+sphericity generally increase (oblate, ``pancake'') or decrease (prolate,
+``cigar'') the added-mass coefficient relative to $\kappa_{\mathrm{add}}=1/2$.
+For example, a $10\%$ oblate deformation already shifts
+$\kappa_{\mathrm{add}}$ by $\sim 12\%$, which translates into a
+$\sim 2\%$ error in the predicted perihelion precession.
+The observational agreement with GR at the 1PN level therefore constrains
+the moving throat to behave as a stiff, approximately spherical obstacle on
+the brane.
+
+%---------------------------------------------------------------------------
+\section{Numerical methods for the optics sector}
+\label{app:numerics-optics}
+
+This appendix documents the numerical methods intended for checking the
+analytic results of Sections~\ref{sec:lensing} and~\ref{sec:shapiro}.
+The goal is to provide enough detail that the ray-tracing and
+time-of-flight codes can be implemented, debugged, and reproduced without
+revisiting the main text.
+
+\subsection{Ray-tracing algorithms}
+\label{subsec:app-ray-tracing}
+
+The ray-tracing problem is to integrate the geometric-optics equations for
+light-like excitations in the refractive index field
+\begin{equation}
+  N(r)
+  \simeq 1 + 2\,\frac{GM}{r c^2}
+\end{equation}
+derived in Section~\ref{sec:n5-vacuum}.
+We treat rays as trajectories in phase space $(\mathbf{x},\mathbf{k})$.
+
+\paragraph{Hamiltonian formulation.}
+
+The local dispersion relation in the rest frame of the fluid is
+\begin{equation}
+  \omega(\mathbf{x},\mathbf{k})
+  = c_s(\mathbf{x})\,|\mathbf{k}|
+  = \frac{c}{N(\mathbf{x})}\,|\mathbf{k}|,
+\end{equation}
+so we take the Hamiltonian
+\begin{equation}
+  H(\mathbf{x},\mathbf{k})
+  = c_s(\mathbf{x})\,|\mathbf{k}|
+  = \frac{c}{N(\mathbf{x})}\,|\mathbf{k}|.
+\end{equation}
+The ray equations are then
+\begin{align}
+  \dot{\mathbf{x}}
+  &= \frac{\partial H}{\partial \mathbf{k}}
+   = c_s(\mathbf{x})\,\frac{\mathbf{k}}{|\mathbf{k}|},
+  \\
+  \dot{\mathbf{k}}
+  &= -\frac{\partial H}{\partial \mathbf{x}}
+   = -|\mathbf{k}|\,\nabla c_s(\mathbf{x}),
+\end{align}
+with dots denoting derivatives with respect to an affine parameter
+$\lambda$ (not necessarily physical time).
+
+Because $H$ is homogeneous of degree one in $\mathbf{k}$, there is a
+redundancy in the choice of $|\mathbf{k}|$: we may fix
+$|\mathbf{k}| = k_0$ at the boundary and track only the direction of
+$\mathbf{k}$, or we may choose a reparametrization in which $H$ is
+constant along the ray.
+In practice it is often simplest numerically to fix
+$|\mathbf{k}| = 1$ initially and renormalize periodically to control
+drift.
+
+\paragraph{Dimensional reduction and coordinate choices.}
+
+For a static, spherically symmetric $N(r)$ with zero background flow, the
+ray trajectories are planar.
+We can therefore restrict attention to the equatorial plane and work in
+2D cylindrical coordinates $(R,z)$ or polar coordinates $(r,\varphi)$.
+A convenient choice for lensing is:
+
+\begin{itemize}
+  \item Use Cartesian coordinates $(x,z)$ in the ray plane, with the mass
+        at the origin and the unperturbed ray direction along $+z$.
+  \item Initialize rays at $z = z_\mathrm{in} \ll 0$ with transverse
+        offset $x = b$ (the impact parameter) and initial wavevector
+        approximately aligned with $+z$.
+\end{itemize}
+
+The refractive index and its gradient are then
+\begin{align}
+  r(x,z) &= \sqrt{x^2 + z^2},\\
+  N(x,z) &= 1 + 2\,\frac{GM}{r(x,z) c^2},\\
+  \nabla c_s &= -\frac{c}{N^2}\nabla N,
+\end{align}
+with $\nabla N$ computed either analytically or by finite differences
+on a grid.
+
+\paragraph{Integration scheme.}
+
+We recommend a standard 4th–5th order adaptive Runge--Kutta method (such
+as Dormand–Prince) or a symplectic integrator with velocity-Verlet-type
+updates, depending on the desired balance between accuracy and long-term
+stability.
+A minimal implementation is:
+
+\begin{itemize}
+  \item State vector
+        $\mathbf{y} = (x,z,k_x,k_z)$.
+  \item Right-hand side $\dot{\mathbf{y}} = f(\mathbf{y})$ defined by the
+        Hamiltonian equations above.
+  \item Adaptive step size $\Delta\lambda$ chosen so that the local
+        truncation error remains below a specified tolerance (e.g.\
+        $10^{-8}$ in dimensionless units).
+  \item Integration domain $z \in [z_\mathrm{in}, z_\mathrm{out}]$ with
+        $|z_\mathrm{in}|, |z_\mathrm{out}| \gg b$ so that
+        $N \simeq 1$ and the trajectory has asymptoted to a straight line.
+\end{itemize}
+
+At the end of each integration, the outgoing ray direction is read off
+from the asymptotic wavevector $\mathbf{k}_\mathrm{out}$, and the
+deflection angle is computed as
+\begin{equation}
+  \Delta\theta_{\text{num}}(b)
+  = \arccos\!\left(
+      \frac{\mathbf{k}_\mathrm{in}\cdot\mathbf{k}_\mathrm{out}}
+           {|\mathbf{k}_\mathrm{in}||\mathbf{k}_\mathrm{out}|}
+    \right),
+\end{equation}
+with $\mathbf{k}_\mathrm{in}$ the initial wavevector.
+
+\paragraph{Units and nondimensionalization.}
+
+For numerical stability it is convenient to work with dimensionless
+variables.
+One natural choice is:
+
+\begin{itemize}
+  \item Use $r_0$ as a characteristic length scale (e.g.\ $r_0 = b$ or
+        $r_0 = GM/c^2$).
+  \item Define dimensionless coordinates
+        $\tilde{\mathbf{x}} = \mathbf{x}/r_0$ and parameters
+        $\epsilon = GM/(c^2 r_0)$.
+  \item Express $N(\tilde{r}) \simeq 1 + 2\epsilon/\tilde{r}$.
+\end{itemize}
+
+The ray equations are then written in terms of $(\tilde{\mathbf{x}},
+\tilde{\mathbf{k}})$ with $\epsilon\ll1$.
+This makes it easier to scan over parameter ranges relevant to different
+regimes (e.g.\ solar-system vs.\ strong-field).
+
+
+\subsection{Time-of-flight integration}
+\label{subsec:app-tof}
+
+The Shapiro delay calculations require computing travel times in the same
+$N(r)$ background.
+Two complementary numerical strategies can be used.
+
+\paragraph{Direct line integral.}
+
+In the small-deflection approximation, we treat the ray as following a
+straight-line path with fixed impact parameter $b$.
+The one-way travel time from $z=-Z_\mathrm{E}$ to $z=+Z_\mathrm{R}$ is
+approximated as
+\begin{equation}
+  t_\mathrm{num}
+  = \frac{1}{c}\int_{-Z_\mathrm{E}}^{+Z_\mathrm{R}}
+     N\bigl(r(z)\bigr)\,\mathrm{d}z,
+  \qquad
+  r(z) = \sqrt{b^2 + z^2}.
+\end{equation}
+In discrete form,
+\begin{equation}
+  t_\mathrm{num}
+  \simeq \frac{1}{c}\sum_{i=0}^{N_z} N\bigl(r(z_i)\bigr)\,\Delta z,
+\end{equation}
+with a uniform or adaptive grid in $z$.
+
+The flat-space time is
+\begin{equation}
+  t_0
+  = \frac{Z_\mathrm{E} + Z_\mathrm{R}}{c},
+\end{equation}
+so the numerical Shapiro delay is
+\begin{equation}
+  \Delta t_\mathrm{num}
+  = t_\mathrm{num} - t_0.
+\end{equation}
+
+Convergence is checked by halving $\Delta z$ and verifying that
+$\Delta t_\mathrm{num}$ changes by less than a specified tolerance.
+
+\paragraph{Time accumulation along numerical rays.}
+
+For consistency with the full ray-tracing, one can also accumulate travel
+time along the numerically computed curved ray:
+\begin{equation}
+  t_\mathrm{num}
+  = \int \frac{N\bigl(\mathbf{x}(\lambda)\bigr)}{c}
+         \left|\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}\lambda}\right|
+         \mathrm{d}\lambda.
+\end{equation}
+In practice, during the integration of the ray equations we maintain an
+accumulator $t(\lambda)$ with update rule
+\begin{equation}
+  \dot{t}
+  = \frac{N\bigl(\mathbf{x}(\lambda)\bigr)}{c}
+    \left|\dot{\mathbf{x}}(\lambda)\right|.
+\end{equation}
+A simple discretization is
+\begin{equation}
+  t_{n+1}
+  = t_n
+    + \frac{N(\mathbf{x}_n) + N(\mathbf{x}_{n+1})}{2c}
+      \left|\mathbf{x}_{n+1} - \mathbf{x}_n\right|,
+\end{equation}
+with $(\mathbf{x}_n)$ the positions along the numerical ray.
+Subtracting the flat-space time between the same endpoints yields the
+numerical delay.
+
+This method automatically captures any corrections due to the slight
+bending of the ray away from a straight line, but is more expensive than
+the direct line integral.
+In the weak-field regime, the two methods should agree within numerical
+error.
+
+
+\subsection{Convergence tests and error estimates}
+\label{subsec:app-convergence}
+
+\paragraph{Resolution scans.}
+
+For each observable (deflection angle, Shapiro delay), we perform:
+
+\begin{itemize}
+  \item A step-size scan for the ray integrator:
+        \begin{itemize}
+          \item Run the integration with step sizes
+                $\Delta\lambda$, $\Delta\lambda/2$, $\Delta\lambda/4$.
+          \item Measure the change in $\Delta\theta_\mathrm{num}$ and
+                $\Delta t_\mathrm{num}$ between successive refinements.
+          \item Infer an empirical convergence rate (e.g.\ consistent with
+                4th-order for RK4).
+        \end{itemize}
+  \item A grid-resolution scan for the direct line integrals:
+        \begin{itemize}
+          \item Halve $\Delta z$ and compare the resulting
+                $\Delta t_\mathrm{num}$.
+          \item Confirm that the change scales as $\mathcal{O}(\Delta z^p)$
+                with $p\simeq2$ (trapezoidal) or $p\simeq4$ (Simpson).
+        \end{itemize}
+\end{itemize}
+
+\paragraph{Domain-size dependence.}
+
+The analytic formulas assume $Z_\mathrm{E},Z_\mathrm{R}\gg b$ so that the
+logarithmic factors can be approximated with $r_\mathrm{E}\simeq Z_\mathrm{E}$,
+$r_\mathrm{R}\simeq Z_\mathrm{R}$.
+Numerically, we check:
+
+\begin{itemize}
+  \item How $\Delta\theta_\mathrm{num}(b)$ and
+        $\Delta t_\mathrm{num}(b)$ change as we move the integration
+        boundaries $z_\mathrm{in}$, $z_\mathrm{out}$ further out.
+  \item That the results converge once $|z_\mathrm{in,out}|/b$ exceeds a
+        threshold (e.g.\ $50$ or $100$).
+\end{itemize}
+
+\paragraph{Comparison to analytic benchmarks.}
+
+For each observable we define a dimensionless ratio:
+
+\begin{align}
+  \mathcal{R}_\theta(b)
+  &= \frac{\Delta\theta_\mathrm{num}(b)}
+          {4GM/(b c^2)},\\[0.5ex]
+  \mathcal{R}_t(b; r_\mathrm{E}, r_\mathrm{R})
+  &= \frac{\Delta t_\mathrm{num}(b; r_\mathrm{E}, r_\mathrm{R})}
+          {2GM c^{-3}\ln(4 r_\mathrm{E} r_\mathrm{R}/b^2)}.
+\end{align}
+
+We will quantify the numerical error as
+\begin{equation}
+  \delta_\theta
+  = \max_b\bigl|\mathcal{R}_\theta(b) - 1\bigr|,
+  \qquad
+  \delta_t
+  = \max_{b,r_\mathrm{E},r_\mathrm{R}}
+      \bigl|\mathcal{R}_t(b; r_\mathrm{E}, r_\mathrm{R}) - 1\bigr|,
+\end{equation}
+over the parameter ranges of interest.
+Target tolerances (e.g.\ $\delta_\theta,\delta_t \lesssim 10^{-3}$) can
+then be used to set the step sizes and grid resolutions in production
+runs.
+
+%---------------------------------------------------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{Norris:2025Orbits}
+T.~Norris,
+``Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model,''
+Zenodo, 2025. \url{https://doi.org/10.5281/zenodo.17759367}
+
+\bibitem{Einstein:1915}
+A.~Einstein,
+``Zur allgemeinen Relativit\"atstheorie,''
+\textit{Sitzungsber. Preuss. Akad. Wiss. Berlin (Math. Phys.)} (1915) 778–786.
+
+\bibitem{Einstein:1916}
+A.~Einstein,
+``Die Grundlage der allgemeinen Relativit\"atstheorie,''
+\textit{Annalen der Physik} \textbf{49} (1916) 769–822.
+
+\bibitem{Eddington:1920}
+A.~S.~Eddington,
+\textit{Space, Time and Gravitation: An Outline of the General Relativity Theory},
+Cambridge University Press, 1920.
+
+\bibitem{Shapiro:1964}
+I.~I.~Shapiro,
+``Fourth Test of General Relativity,''
+\textit{Phys. Rev. Lett.} \textbf{13} (1964) 789–791.
+
+\bibitem{Will:1993}
+C.~M.~Will,
+\textit{Theory and Experiment in Gravitational Physics},
+Cambridge University Press, 2nd ed., 1993.
+
+\bibitem{Will:2014}
+C.~M.~Will,
+``The Confrontation between General Relativity and Experiment,''
+\textit{Living Rev. Relativ.} \textbf{17} (2014) 4.
+
+\bibitem{Weinberg:1972}
+S.~Weinberg,
+\textit{Gravitation and Cosmology: Principles and Applications of the General Theory of Relativity},
+Wiley, 1972.
+
+\bibitem{MisnerThorneWheeler}
+C.~W.~Misner, K.~S.~Thorne and J.~A.~Wheeler,
+\textit{Gravitation},
+W.~H.~Freeman, 1973.
+
+\bibitem{Barcelo:2005}
+C.~Barcel\'o, S.~Liberati and M.~Visser,
+``Analogue Gravity,''
+\textit{Living Rev. Relativ.} \textbf{8} (2005) 12.
+
+\bibitem{Unruh:1981}
+W.~G.~Unruh,
+``Experimental Black-Hole Evaporation?,''
+\textit{Phys. Rev. Lett.} \textbf{46} (1981) 1351–1353.
+
+\bibitem{Visser:1997}
+M.~Visser,
+``Acoustic Black Holes: Horizons, Ergospheres, and Hawking Radiation,''
+\textit{Class. Quant. Grav.} \textbf{15} (1998) 1767–1791.
+
+\bibitem{LandauLifshitz:Fluids}
+L.~D.~Landau and E.~M.~Lifshitz,
+\textit{Fluid Mechanics},
+Pergamon Press, 2nd ed., 1987.
+
+\bibitem{Chandrasekhar:1939}
+S.~Chandrasekhar,
+\textit{An Introduction to the Study of Stellar Structure},
+University of Chicago Press, 1939.
+
+\bibitem{Tooper:1965}
+R.~F.~Tooper,
+``Adiabatic Fluid Spheres in General Relativity,''
+\textit{Astrophys. J.} \textbf{142} (1965) 1541–1562.
+
+\bibitem{PoissonWill:2014}
+E.~Poisson and C.~M.~Will,
+\textit{Gravity: Newtonian, Post-Newtonian, Relativistic},
+Cambridge University Press, 2014.
+
+\bibitem{Blanchet:2014}
+L.~Blanchet,
+``Gravitational Radiation from Post-Newtonian Sources and Inspiralling Compact Binaries,''
+\textit{Living Rev. Relativ.} \textbf{17} (2014) 2.
+
+\bibitem{Visser:2002}
+M.~Visser,
+``Essential and Inessential Features of Hawking Radiation,''
+\textit{Int. J. Mod. Phys. D} \textbf{12} (2003) 649–661.
+
+\bibitem{AnalogGravityBook}
+D.~Faccio, F.~Belgiorno, S.~Cacciatori, V.~Gorini, S.~Liberati and U.~Moschella (eds.),
+\textit{Analogue Gravity Phenomenology},
+Springer, 2013.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,16 +1,20 @@
 # Toy Superfluid Gravity
 
-Lightweight research sandbox for a toy superfluid model that reproduces Newtonian gravity and the leading 1PN perihelion precession discussed in the accompanying paper.
+Lightweight research sandbox for a toy superfluid model that reproduces Newtonian gravity and leading 1PN effects discussed in the accompanying papers.
 
 ## Repository Layout
-- `papers/` – Source and PDF for *Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model* (`1pn_orbital_dynamics.tex`, `1pn_orbital_dynamics.pdf`).
-- `mathematica/` – Mathematica notebooks/scripts that carry out the derivations in the paper.
+- `papers/` – Source and PDFs for:
+  - *Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model* (`1pn_orbital_dynamics.*`)
+  - *1PN Optics* (`1pn_optics.*`) – extends the model to light propagation, lensing, and Shapiro delay.
+- `mathematica/` – Mathematica notebooks/scripts that carry out the derivations in the papers.
 - `scripts/` – Small Python proofs-of-concept (Shapiro delay partitioning, ray-bending tests).
 - `superfluid_lib/` – WIP physics engine (scalar Poisson + wave solvers, particle dynamics, 1PN orbit integrator); uses CuPy if available, otherwise NumPy.
 - `experiments/` – Python experiments that exercise the engine (radial force law fit, Mercury perihelion calibration/precession).
 
-## Paper Snapshot
-The paper constructs a superfluid defect toy model with two scalar potentials: an instantaneous Poisson sector and a finite-speed lag sector. The lag sector adds an attractive \(1/r^3\) correction that yields one half of the GR 1PN precession; introducing a mild position-dependent inertia with \(\beta = 3/2\) (decomposed as \(\kappa_\rho = 1\), \(\kappa_{\mathrm{add}} = 1/2\), \(\kappa_{\mathrm{PV}} = 0\)) recovers the full GR 1PN perihelion shift when \(c_s = c\) and \(\mu = GM\). See `papers/1pn_orbital_dynamics.pdf` for full context.
+## Papers Snapshot
+**Paper 1 (Orbital Dynamics):** Constructs a superfluid defect toy model with two scalar potentials—an instantaneous Poisson sector and a finite-speed lag sector. The lag sector adds an attractive \(1/r^3\) correction that yields one half of the GR 1PN precession; introducing a mild position-dependent inertia with \(\beta = 3/2\) recovers the full GR 1PN perihelion shift. See `papers/1pn_orbital_dynamics.pdf`.
+
+**Paper 2 (Optics):** Extends the model to light propagation, deriving the optical metric and recovering standard 1PN lensing and Shapiro delay results. See `papers/1pn_optics.pdf`.
 
 ## Python Environment
 - Core deps: `numpy`, `scipy`, `matplotlib`.

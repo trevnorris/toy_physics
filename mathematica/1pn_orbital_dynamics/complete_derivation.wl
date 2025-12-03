@@ -1,4 +1,5 @@
 (* Complete derivation: PDE → Retarded Potential → 1PN → GR Matching *)
+(* Note: this should not be relied on, this uses the naive approach. *)
 
 ClearAll["Global`*"];
 

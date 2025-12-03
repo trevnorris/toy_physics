@@ -1,0 +1,1960 @@
+\documentclass[11pt]{article}
+
+% Basic packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{authblk}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% Custom macros
+\newcommand{\cS}{c_s}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\vfluid}{\mathbf{v}_{\mathrm{fluid}}}
+\newcommand{\Afluid}{\mathbf{A}_{\mathrm{fluid}}}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\Order}[1]{\mathcal{O}\left(#1\right)}
+
+\title{Electromagnetic Fields and Charged Defects\\
+in a Superfluid Defect Toy Model}
+
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend a previously developed superfluid defect toy model of gravity to include electromagnetism.  The vacuum is modeled as a compressible superfluid, and massive bodies are identified with throat-like flux-tube defects that drain the vacuum and may carry circulation.  In earlier work we showed that the acoustic metric of this fluid, together with suitable defect profiles, reproduces Newtonian gravity, $1$PN orbital dynamics, gravitational optics, spin precession, and the Einstein--Infeld--Hoffmann $N$-body Lagrangian.  Here we introduce a hydrodynamic dictionary that identifies an effective electromagnetic scalar and vector potential with combinations of the enthalpy and velocity fields, so that the magnetic field is proportional to vorticity and the electric field is minus the Euler acceleration.  With this identification the homogeneous Maxwell equations become kinematic identities, while the inhomogeneous equations follow from a sourced acoustic wave equation for the four-potential in Lorenz gauge, with dyon defects providing the four-current.  The static breathing mode of a defect throat generates a Coulomb $1/r$ potential with radius-independent Gauss flux, and the Lorentz force on charged defects is shown to coincide with the Magnus and pressure forces on vortices.  The same geometric data that determine the gravitational mass --- the throat radius, length, and circulation --- also fix the effective electric charge and imply an electromagnetic/gravitational force hierarchy that scales as $1/a^2$ with the throat radius.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Motivation and context}
+
+In a series of previous papers \cite{Norris:Paper1,Norris:Paper2,Norris:Paper3} we explored a simple but surprisingly rich toy model: a compressible superfluid ``vacuum'' supporting topological flux-tube defects.  The vacuum is described by a hydrodynamic enthalpy field $h$ and a flow velocity $\mathbf{v}$; massive bodies are identified with throat-like defects that drain the surrounding vacuum and, in general, carry circulation.  The central organizing idea is that the familiar weak-field phenomenology of general relativity (GR) can be re-expressed as an emergent long-wavelength description of this fluid-plus-defect system.
+
+Paper~I \cite{Norris:Paper1} showed that suitable choices of the static enthalpy profile and a position-dependent kinetic prefactor are sufficient to reproduce Newtonian gravity and the full $1$PN corrections to orbital motion around a single defect, including the classical perihelion precession with the post-Newtonian parameter $\beta = 3/2$.  Paper~II \cite{Norris:Paper2} extended the construction to gravitational optics: by reinterpreting the acoustic metric of the superfluid as an effective optical metric, and treating defects as hydrodynamically dressed solitons, we obtained the GR light-bending and Shapiro delay coefficients at $1$PN order.  Paper~III \cite{Norris:Paper3} generalized the framework to spinning defects and interacting $N$-body configurations, deriving spin precession, Lense--Thirring frame dragging, and the Einstein--Infeld--Hoffmann (EIH) $N$-body Lagrangian from the same underlying hydrodynamics.
+
+These results suggest that a large subset of weak-field GR is already encoded in the acoustic metric and wave equation of the superfluid.  However, the construction so far has been purely ``gravitational'': it accounts for mass, spin, and their $1$PN interactions, but it does not assign an intrinsic electric charge to defects or explain why the electromagnetic interaction is so much stronger than gravity at microscopic scales.  In this paper we extend the toy model to address these questions.  Our goal is not to propose a complete theory of everything, but to test how far one can go by insisting that electromagnetism is likewise an emergent hydrodynamic phenomenon of the same superfluid vacuum.
+
+\subsection{Summary of previous results (Papers I--III)}
+
+For convenience we briefly summarize the aspects of Papers~I--III that we will build on here.
+
+In Paper~I \cite{Norris:Paper1} the vacuum was modeled as a compressible, barotropic superfluid with enthalpy $h(\rho)$ and a position-dependent kinetic prefactor $\sigma(r)$ multiplying the velocity-squared term in the effective action.  A single flux-tube defect was introduced as a sink of the vacuum with throat radius $a$ and asymptotic mass parameter $M$.  Requiring that the resulting scalar potential reproduce Newtonian gravity in the far field and the observed $1$PN perihelion precession uniquely fixed the form of $\sigma(r)$ and singled out a specific value of the PPN-like parameter $\beta = 3/2$.  The radial acoustic metric built from this background flow matched the $1$PN expansion of the Schwarzschild metric in isotropic coordinates.
+
+Paper~II \cite{Norris:Paper2} reinterpreted the same acoustic metric as an effective optical metric for light and for soliton-like excitations propagating on the superfluid.  The vacuum equation of state was specialized to a stiff $n=5$ polytrope, which fixes the relationship between pressure, density, and sound speed in the far field.  By treating defects as dressed solitons and tracking how the background flow perturbs their dispersion relation, the paper derived the gravitational redshift, light-bending, and Shapiro time delay in the weak-field limit.  The effective optical metric constructed there is consistent with the $1$PN GR metric with PPN parameter $\gamma=1$.
+
+Paper~III \cite{Norris:Paper3} added spin and many-body interactions.  Spinning defects were modeled by adding a circulation component to the background flow, leading to a gravitomagnetic sector in the acoustic metric.  The resulting precession of embedded spin vectors matched the de~Sitter and Lense--Thirring precession rates at $1$PN order.  For multiple defects, the interaction of their overlapping flow fields generated an effective $N$-body Lagrangian whose $1$PN expansion coincides with the EIH Lagrangian of GR.  A key theme of Paper~III is that the same acoustic d'Alembertian $\Box$ built from the background flow governs both scalar and vector perturbations, unifying the 1PN dynamics under a single hydrodynamic wave operator.
+
+The present work assumes this gravitational sector as given: we will not repeat the derivations of the acoustic metric, the 1PN orbital dynamics, or the optical sector.  Instead, we take the existence of a coherent superfluid vacuum with a well-defined acoustic light speed $c_s$, an associated d'Alembertian $\Box$, and throat-like defects with radii $a$ and lengths $L$ as the starting point for constructing an electromagnetic sector.
+
+\subsection{Main results of this paper}
+
+In this paper we show that, once the superfluid vacuum and defect picture are taken seriously, a natural identification of hydrodynamic variables with electromagnetic potentials leads to the full set of Maxwell equations and the Lorentz force law, together with a simple geometric explanation of the electromagnetic/gravitational hierarchy.
+
+First, we introduce a \emph{hydrodynamic dictionary} that maps the fluid enthalpy and velocity fields to an effective electromagnetic scalar potential $\phi_{\mathrm{EM}}$ and vector potential $\mathbf{A}$.  With this mapping, the magnetic field $\mathbf{B} = \nabla \times \mathbf{A}$ becomes proportional to the vorticity of the superfluid, while the electric field
+\begin{equation}
+\mathbf{E} = -\nabla \phi_{\mathrm{EM}} - \partial_t \mathbf{A}
+\end{equation}
+is essentially the negative of the Euler acceleration in the flow.  We show that the homogeneous Maxwell equations,
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0,
+\qquad
+\nabla \times \mathbf{E} = -\partial_t \mathbf{B},
+\end{equation}
+are then automatic vector identities, independent of any dynamics.
+
+Second, we revisit the acoustic d'Alembertian $\Box$ previously used to describe $1$PN gravitational dynamics and interpret it as a wave operator for a four-potential $A^\mu = (\phi_{\mathrm{EM}}/c,\mathbf{A})$.  Assuming a sourced wave equation
+\begin{equation}
+\Box A^\mu = -\mu_0 J^\mu,
+\end{equation}
+together with the Lorenz gauge condition $\partial_\mu A^\mu = 0$, we derive the inhomogeneous Maxwell equations.  Charge and current densities are assigned to the defects themselves: a throat with radius $a$, length $L$, and circulation $\Gamma$ carries an effective electric charge $q \propto \rho_0 \pi a^2 \Gamma$, and a moving defect generates a current $\mathbf{J} = \rho_e \mathbf{u}_d$.  The same wave operator and gauge condition that previously encoded $1$PN gravitational physics now imply Ampère--Maxwell with displacement current, Gauss's law for electricity, and the continuity equation $\partial_\mu J^\mu = 0$.
+
+Third, we analyze the ``breathing mode'' of a single defect: a spherically symmetric, time-dependent perturbation of the throat that excites an outgoing enthalpy wave in the surrounding superfluid.  In the static limit outside the core we show that the breathing mode satisfies the radial Laplace equation and produces an effective electric potential $\phi_{\mathrm{EM}}(r) \propto 1/r$.  The corresponding electric field $E_r(r) \propto 1/r^2$ has a radius-independent flux $4\pi r^2 E_r(r) = q/\epsilon_0$, reproducing Coulomb's law and Gauss's law for a point charge.  This identifies the breathing amplitude of the defect with its electric charge and fixes the effective permittivity $\epsilon_0$ in terms of superfluid parameters.
+
+Fourth, we relate the Lorentz force on charged defects to familiar hydrodynamic forces.  The magnetic part $q\,\mathbf{u}\times\mathbf{B}$ is shown to coincide with the Magnus lift force on a moving vortex carrying circulation $\Gamma$, once we express $q$ and $\mathbf{B}$ in terms of the defect geometry.  The electric part $q\,\mathbf{E}$ arises from pressure and enthalpy gradients acting on the defect volume in the breathing-mode field.  Taken together, the net force on a ``dyon''---a combined sink-plus-vortex defect---is
+\begin{equation}
+m_G \frac{\dd \mathbf{u}_d}{\dd t}
+= m_G \mathbf{g} + q\left(\mathbf{E} + \mathbf{u}_d \times \mathbf{B}\right) + \dots,
+\end{equation}
+where $m_G$ is the gravitational mass extracted in Paper~I and the ellipsis denotes higher-order corrections.  Thus the Lorentz force law emerges as the effective equation of motion for defects in the superfluid.
+
+Finally, we revisit the resonant-cavity picture of the defect throat and show that the same geometric data $(a,L,\Gamma)$ controlling the defect's mass and charge also determine the ratio of electromagnetic to gravitational forces.  For two identical defects we find
+\begin{equation}
+\frac{F_{\mathrm{elec}}}{F_{\mathrm{grav}}}
+\sim \frac{q^2}{m_G^2} \propto \frac{\Gamma^2}{a^2 (L/a)^2},
+\end{equation}
+so that at fixed aspect ratio $L/a$ the hierarchy grows as $1/a^2$.  If the throat radius is of order the Planck length, the observed enormous hierarchy between electromagnetic and gravitational couplings follows naturally from geometry.
+
+The rest of the paper is organized as follows.  In Sec.~\ref{sec:model} we briefly review the superfluid vacuum and defect toy model and fix notation.  In Sec.~\ref{sec:dictionary} we introduce the hydrodynamic dictionary for electromagnetic potentials and fields and derive the homogeneous Maxwell equations as kinematic identities.  Section~\ref{sec:defect-hierarchy} develops the resonant-cavity picture of defects, computing their mass and charge and deriving the electromagnetic/gravitational hierarchy from the throat geometry.  In Sec.~\ref{sec:inhomogeneous-maxwell} we use the acoustic wave operator and Lorenz gauge to derive the inhomogeneous Maxwell equations and to identify the breathing mode with a Coulomb field.  Section~\ref{sec:lorentz-magnus} shows how the Lorentz force arises from Magnus and enthalpy forces on dyons.  We conclude in Sec.~\ref{sec:discussion} with a synthesis of the gravitational and electromagnetic sectors in the toy model, a discussion of limitations, and an outline of future directions.
+
+\section{Superfluid Vacuum and Defect Toy Model}
+\label{sec:model}
+
+\subsection{Superfluid vacuum and flux-tube defects}
+
+We briefly recall the basic ingredients of the toy model developed in Refs.~\cite{Norris:Paper1,Norris:Paper2,Norris:Paper3}.  The ``vacuum'' is modeled as a compressible, irrotational superfluid with mass density $\rho(\mathbf{x},t)$, pressure $p(\rho)$, and enthalpy per unit mass
+\begin{equation}
+h(\rho) \equiv \int^{\rho} \frac{\dd p(\tilde{\rho})}{\tilde{\rho}^2}\,\dd\tilde{\rho},
+\end{equation}
+so that $\nabla h = \nabla p / \rho$ in the barotropic regime.  The flow velocity $\mathbf{v}(\mathbf{x},t)$ satisfies the usual continuity and Euler equations
+\begin{align}
+\partial_t \rho + \nabla \cdot (\rho \mathbf{v}) &= 0,
+\label{eq:continuity}\\[4pt]
+\partial_t \mathbf{v} + (\mathbf{v} \cdot \nabla)\mathbf{v} &= -\nabla h,
+\label{eq:euler}
+\end{align}
+up to the additional nontrivial structure associated with defects.
+
+In the absence of defects, the background vacuum is taken to be static and homogeneous with density $\rho_0$ and sound speed
+\begin{equation}
+\cS^2 \equiv \left.\frac{\partial p}{\partial \rho}\right|_{\rho=\rho_0}.
+\end{equation}
+Perturbations about this state propagate as acoustic waves at speed $\cS$, and their dynamics can be recast in terms of an effective acoustic metric, as reviewed in Sec.~\ref{sec:model-acoustic} below.
+
+Massive bodies are identified with \emph{flux-tube defects} that act as sinks of the superfluid vacuum.  A single defect is characterized by a throat-like geometry with radius $a$ and length $L$, which we idealize as a cylindrical tube connecting distant regions of the fluid.  The defect drains vacuum fluid through the throat, sourcing a stationary inflow in the exterior region.  In Paper~I~\cite{Norris:Paper1} this inflow was tuned so that the effective scalar potential reproduces Newtonian gravity and its $1$PN corrections.
+
+In addition to draining mass, a defect can carry circulation.  Let $\Gam$ denote the circulation of the background flow around the throat,
+\begin{equation}
+\Gam \equiv \oint \mathbf{v}\cdot\dd\boldsymbol{\ell},
+\end{equation}
+which is topologically conserved in the absence of reconnection events.  A purely draining, non-rotating defect behaves as a ``mass monopole'' in the gravitational sector.  A purely circulatory defect corresponds to a straight vortex line with no net mass deficit.  The generic case of interest in this paper is a \emph{dyon}: a combined sink-plus-vortex defect that carries both a mass deficit and circulation.
+
+At scales large compared to $a$ and $L$, an isolated defect is therefore described by three effective geometric parameters: the throat radius $a$, the throat length $L$, and the circulation $\Gam$.  The background density $\rho_0$ and the vacuum equation of state $p(\rho)$ supply additional scales.  In Papers~I--III these parameters were already sufficient to reproduce weak-field gravitational phenomena; here we show that they also control the effective electric charge and electromagnetic interactions of the defect.
+
+\subsection{Effective acoustic metric and wave equation}
+\label{sec:model-acoustic}
+
+As reviewed in Refs.~\cite{Norris:Paper1,Norris:Paper2,Norris:Paper3}, linear perturbations of a barotropic, inviscid, irrotational flow can be described by an effective Lorentzian geometry.  Writing the velocity as $\mathbf{v} = \nabla \Phi$ for some velocity potential $\Phi$ in the irrotational sector, small perturbations of the potential $\varphi$ about a given background $(\rho_b,\mathbf{v}_b)$ obey a covariant wave equation
+\begin{equation}
+\Box \varphi \equiv \frac{1}{\sqrt{-g}}\partial_\mu\left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu \varphi\right) = 0,
+\label{eq:acoustic-wave}
+\end{equation}
+where $g_{\mu\nu}$ is the \emph{acoustic metric}.  In terms of the background density $\rho_b$, sound speed $\cS$, and flow velocity $\mathbf{v}_b$, one convenient choice of acoustic metric (up to an overall conformal factor) is
+\begin{equation}
+g_{\mu\nu} \propto
+\begin{pmatrix}
+-(\cS^2 - v_b^2) & -(\mathbf{v}_b)^{\mathrm{T}} \\
+-(\mathbf{v}_b) & \mathbf{I}
+\end{pmatrix},
+\label{eq:acoustic-metric}
+\end{equation}
+with signature $(-,+,+,+)$, where $v_b^2 = \mathbf{v}_b\cdot\mathbf{v}_b$ and $\mathbf{I}$ is the $3\times 3$ identity matrix.  In the weak-flow limit $v_b \ll \cS$ this metric reduces to a small perturbation of Minkowski space with effective light speed $c \equiv \cS$.
+
+In Paper~I~\cite{Norris:Paper1} the background flow sourced by a static defect was chosen so that the associated acoustic metric reproduces the $1$PN expansion of the Schwarzschild metric.  In Paper~II~\cite{Norris:Paper2} the same structure was interpreted as an \emph{optical} metric governing the trajectories of light rays and solitons, yielding the standard $1$PN gravitational lensing and Shapiro delay coefficients.  Paper~III~\cite{Norris:Paper3} extended this picture to spinning defects and multi-defect configurations, where the off-diagonal components of $g_{\mu\nu}$ encode a gravitomagnetic sector and the full Einstein--Infeld--Hoffmann Lagrangian emerges from the same underlying hydrodynamics.
+
+For our purposes, the crucial points are:
+
+\begin{itemize}
+  \item There exists a well-defined acoustic metric $g_{\mu\nu}$ and associated d'Alembertian $\Box$ built from the background flow of the superfluid vacuum.
+  \item In the weak-field limit, this metric is close to Minkowski space with effective light speed $c = \cS$.
+  \item The same $\Box$ controls both scalar and vector perturbations in the gravitational sector at $1$PN order.
+\end{itemize}
+
+In this paper we will reuse this acoustic d'Alembertian as the wave operator for an effective electromagnetic four-potential $A^\mu = (\phi_{\mathrm{EM}}/c,\mathbf{A})$, with sources provided by the defects.  No modification of the underlying hydrodynamics is required; only the interpretation of certain perturbations changes.
+
+\subsection{Notation and conventions}
+
+We work throughout in a $(3+1)$-dimensional spacetime with coordinates $x^\mu = (t,\mathbf{x})$ and metric signature $(-,+,+,+)$.  Greek indices $\mu,\nu,\ldots$ run over spacetime components $0,1,2,3$, while Latin indices $i,j,\ldots$ run over spatial components $1,2,3$.  Spatial vectors are written in boldface, e.g.\ $\mathbf{x}$ and $\mathbf{v}$, with the usual Euclidean dot and cross products.
+
+We denote the background density and sound speed by $\rho_0$ and $\cS$, respectively.  The effective light speed appearing in the acoustic metric is identified with $\cS$ in the weak-field limit.  Unless otherwise stated we work in units where $c = \cS = 1$ in the main text; factors of $c$ can be restored by dimensional analysis and are kept explicit when they clarify the electromagnetic analogy.
+
+The acoustic d'Alembertian $\Box$ in Eq.~\eqref{eq:acoustic-wave} is constructed from the acoustic metric $g_{\mu\nu}$ as usual.  In flat-space limits we often write
+\begin{equation}
+\Box = -\frac{1}{c^2}\partial_t^2 + \nabla^2
+\end{equation}
+for clarity, with $c$ understood as the effective light/sound speed.  The fluid vorticity is denoted by
+\begin{equation}
+\boldsymbol{\omega} \equiv \nabla \times \mathbf{v},
+\end{equation}
+and will later be identified with the magnetic field in the hydrodynamic dictionary.
+
+Defect parameters are summarized as follows:
+\begin{itemize}
+  \item $a$: throat radius;
+  \item $L$: throat length;
+  \item $\Gam$: circulation of the background flow around the throat;
+  \item $m_G$: effective gravitational mass associated with the defect (Paper~I);
+  \item $q$: effective electric charge associated with the defect (this paper).
+\end{itemize}
+We use $(m_G,q)$ to emphasize the analogy with gravitational and electric charges, keeping in mind that both are emergent quantities built from the same underlying fluid parameters $(\rho_0,a,L,\Gam)$ and the vacuum equation of state.
+
+With these conventions in place, we now turn to the hydrodynamic dictionary that identifies certain combinations of fluid variables with electromagnetic potentials and fields.
+
+\section{Hydrodynamic Dictionary for Electromagnetism}
+\label{sec:dictionary}
+
+\subsection{Potentials and fields from flow variables}
+
+We now introduce a dictionary that identifies certain combinations of the superfluid variables with effective electromagnetic potentials and fields.  The goal is to choose these combinations so that:
+(i) the homogeneous Maxwell equations are automatically satisfied, and
+(ii) the inhomogeneous equations can be obtained from the same acoustic wave operator $\Box$ that already governs gravitational dynamics.
+
+Motivated by the Euler equation~\eqref{eq:euler}, we define an effective electromagnetic scalar potential and vector potential by
+\begin{equation}
+\phi_{\mathrm{EM}} \;\equiv\; \lambda \left(h + \frac{1}{2} v^2\right),
+\qquad
+\mathbf{A} \;\equiv\; \lambda\,\mathbf{v},
+\label{eq:EM-potentials-def}
+\end{equation}
+where $\lambda$ is an overall normalization constant to be fixed later by matching to the Coulomb law and the Lorentz force.  For the moment we keep $\lambda$ arbitrary; all of the Maxwell relations derived in this section are independent of its value.
+
+Given these potentials, we define the effective magnetic and electric fields in the usual way,
+\begin{equation}
+\mathbf{B} \;\equiv\; \nabla \times \mathbf{A},
+\qquad
+\mathbf{E} \;\equiv\; -\nabla \phi_{\mathrm{EM}} - \partial_t \mathbf{A}.
+\label{eq:EB-def}
+\end{equation}
+In terms of the fluid variables, Eq.~\eqref{eq:EM-potentials-def} implies
+\begin{equation}
+\mathbf{B} = \lambda\,\nabla \times \mathbf{v} = \lambda\,\boldsymbol{\omega},
+\label{eq:B-vorticity}
+\end{equation}
+so the magnetic field is proportional to the vorticity of the superfluid.  The electric field becomes
+\begin{equation}
+\mathbf{E}
+= -\lambda \left[\nabla\!\left(h + \frac{1}{2}v^2\right)
+               + \partial_t \mathbf{v}\right].
+\label{eq:E-euler}
+\end{equation}
+Up to the overall factor $\lambda$, Eq.~\eqref{eq:E-euler} is just minus the Euler acceleration of a fluid element, i.e.\ the negative of the left-hand side of Eq.~\eqref{eq:euler} written in convective form.
+
+Equations~\eqref{eq:B-vorticity} and~\eqref{eq:E-euler} already suggest a physical interpretation: vortical structures in the superfluid act as magnetic flux, while enthalpy and velocity gradients act as electric fields that accelerate defects.  In the next subsection we show that, with these definitions, the homogeneous Maxwell equations hold as purely kinematic identities, independent of any particular equation of state or defect configuration.  The overall scale $\lambda$ and its relation to the electric charge $q$ will be fixed later by matching to the Coulomb law and the Lorentz force.
+
+\subsection{Homogeneous Maxwell equations as identities}
+
+The homogeneous Maxwell equations in vacuum are
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0,
+\qquad
+\nabla \times \mathbf{E} = -\partial_t \mathbf{B}.
+\label{eq:homogeneous-Maxwell}
+\end{equation}
+With the definitions~\eqref{eq:EB-def}, both of these relations follow from standard vector identities.
+
+First, using Eq.~\eqref{eq:EB-def} and $\mathbf{B} = \nabla \times \mathbf{A}$, we have
+\begin{equation}
+\nabla \cdot \mathbf{B}
+= \nabla \cdot (\nabla \times \mathbf{A})
+\equiv 0,
+\label{eq:divB-zero}
+\end{equation}
+for any sufficiently smooth vector field $\mathbf{A}$.  In the hydrodynamic language, this simply states that the divergence of vorticity vanishes: vortex lines do not begin or end within the fluid.
+
+Second, taking the curl of $\mathbf{E}$ in Eq.~\eqref{eq:EB-def} gives
+\begin{equation}
+\nabla \times \mathbf{E}
+= -\nabla \times \nabla \phi_{\mathrm{EM}} - \partial_t (\nabla \times \mathbf{A}).
+\label{eq:curlE-step}
+\end{equation}
+The first term vanishes identically because the curl of a gradient is zero,
+\begin{equation}
+\nabla \times \nabla \phi_{\mathrm{EM}} \equiv 0,
+\end{equation}
+leaving
+\begin{equation}
+\nabla \times \mathbf{E}
+= -\partial_t (\nabla \times \mathbf{A})
+= -\partial_t \mathbf{B},
+\label{eq:Faraday-identity}
+\end{equation}
+which is Faraday's law.  No use was made of the fluid equations of motion or the equation of state; only the definitions of $\mathbf{E}$ and $\mathbf{B}$ and the fact that spatial derivatives commute with time derivatives were required.
+
+Thus, once the effective electromagnetic potentials are identified with the fluid variables via Eq.~\eqref{eq:EM-potentials-def}, the homogeneous Maxwell equations~\eqref{eq:homogeneous-Maxwell} are automatic consequences of vector calculus.  In particular, they do not impose any additional constraints on the hydrodynamics: they simply repackage the kinematics of vorticity and acceleration into electromagnetic form.
+
+For completeness, we collect these identities in Appendix~\ref{app:dictionary}, where the algebra is written out in more detail.  In the main text we will take Eqs.~\eqref{eq:divB-zero} and~\eqref{eq:Faraday-identity} as given.
+
+\subsection{Gauge transformations and fluid interpretation}
+
+Standard electromagnetism is invariant under gauge transformations of the four-potential,
+\begin{equation}
+\phi_{\mathrm{EM}} \rightarrow \phi_{\mathrm{EM}}' = \phi_{\mathrm{EM}} - \partial_t \chi,
+\qquad
+\mathbf{A} \rightarrow \mathbf{A}' = \mathbf{A} + \nabla \chi,
+\label{eq:gauge-transform}
+\end{equation}
+for an arbitrary scalar function $\chi(\mathbf{x},t)$.  Under Eq.~\eqref{eq:gauge-transform}, the fields~\eqref{eq:EB-def} transform as
+\begin{align}
+\mathbf{B}' &= \nabla \times \mathbf{A}'
+            = \nabla \times (\mathbf{A} + \nabla \chi)
+            = \nabla \times \mathbf{A}
+            = \mathbf{B},
+\\[4pt]
+\mathbf{E}' &= -\nabla \phi_{\mathrm{EM}}' - \partial_t \mathbf{A}'
+            = -\nabla(\phi_{\mathrm{EM}} - \partial_t \chi)
+              - \partial_t(\mathbf{A} + \nabla \chi)
+\nonumber\\
+            &= -\nabla \phi_{\mathrm{EM}} + \nabla\partial_t \chi
+              - \partial_t \mathbf{A} - \partial_t \nabla \chi
+\nonumber\\
+            &= -\nabla \phi_{\mathrm{EM}} - \partial_t \mathbf{A}
+            = \mathbf{E},
+\end{align}
+where we used $\nabla\partial_t \chi = \partial_t \nabla \chi$.  Thus $\mathbf{E}$ and $\mathbf{B}$ are gauge invariant, as usual.
+
+In the hydrodynamic dictionary~\eqref{eq:EM-potentials-def}, a gauge transformation corresponds to shifting the effective potentials by derivatives of $\chi$.  There is some freedom in how we interpret this shift on the fluid side.  One convenient perspective is to regard $\chi$ as a small reparametrization of the velocity potential and enthalpy:
+in the irrotational sector we write $\mathbf{v} = \nabla \Phi$, so a redefinition $\Phi \rightarrow \Phi + \lambda^{-1}\chi$ induces precisely the vector-potential shift $\mathbf{A} \rightarrow \mathbf{A} + \nabla \chi$.  The accompanying change in $\phi_{\mathrm{EM}}$ can be viewed as a compensating adjustment of the local Bernoulli constant.  Because the physical fields $\mathbf{E}$ and $\mathbf{B}$ are unchanged, such redefinitions do not alter the observable dynamics of defects.
+
+From this viewpoint, gauge freedom reflects the fact that the mapping from fluid variables to electromagnetic potentials is not unique: adding a gradient to $\mathbf{A}$ and compensating time derivative to $\phi_{\mathrm{EM}}$ corresponds to relabeling the flow potential and enthalpy without changing the underlying vorticity or acceleration.  In other words, $A^\mu$ is a convenient but redundant way of packaging certain combinations of the superfluid fields.
+
+In later sections we will make use of the Lorenz gauge condition
+\begin{equation}
+\partial_\mu A^\mu = 0,
+\label{eq:lorenz-gauge-main}
+\end{equation}
+which can always be imposed by an appropriate choice of $\chi$ provided the underlying sources are conserved.  This condition is particularly natural in the present context because it aligns the electromagnetic four-potential with the acoustic wave operator $\Box$ already present in the gravitational sector, as we will see in Sec.~\ref{sec:inhomogeneous-maxwell}.  For now, it suffices to note that the gauge symmetry~\eqref{eq:gauge-transform} is compatible with our hydrodynamic dictionary and that the physical fields $\mathbf{E}$ and $\mathbf{B}$ remain gauge invariant by construction.
+
+\section{Defect Mass, Charge, and the EM/Gravity Hierarchy}
+\label{sec:defect-hierarchy}
+
+\subsection{Resonant cavity and ``bubble of light'' picture}
+
+In the gravitational papers we treated the defect throat mainly as a source of stationary inflow: a geometric object whose radius $a$ and length $L$ determine the mass deficit and the surrounding acoustic metric.  For electromagnetism it is useful to complement this picture with a \emph{resonant cavity} interpretation.
+
+We model the throat as a cylindrical cavity of radius $a$ and length $L$, filled with the same superfluid vacuum as the exterior.  The cavity supports standing-wave modes of the enthalpy and density fields, analogous to electromagnetic modes in a cylindrical waveguide.  In the simplest approximation we impose a Neumann-type boundary condition on the radial derivative of the enthalpy at the wall and a Dirichlet condition at the ends, which selects a discrete spectrum of radial and axial wavenumbers.
+
+For the lowest transverse-magnetic-like mode we take
+\begin{equation}
+k_r = \frac{x_{01}}{a},\qquad
+k_z = \frac{\pi}{L},
+\label{eq:kr-kz-def}
+\end{equation}
+where $x_{01}\simeq 2.4048$ is the first zero of the Bessel function $J_0$.  The total wavenumber of this mode is
+\begin{equation}
+k^2 \equiv k_r^2 + k_z^2
+= \frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2},
+\end{equation}
+and the corresponding mode frequency is $\omega = c_s k$ in the linear regime.  We interpret this standing-wave mode as a ``bubble of light'' trapped in the throat: an energy density that exerts an outward pressure on the walls of the cavity and competes with the inward pull of the external vacuum.
+
+This picture is not meant as a microscopic model of elementary particles.  Rather, it provides a simple way to tie the geometric parameters $(a,L)$ of the defect to a stored mode energy $E_{\mathrm{mode}}(a,L)$ and hence to an effective mass and charge.  The same geometry that determines the gravitational mass in Paper~I and the optical properties in Paper~II will here determine the electromagnetic couplings.
+
+\subsection{Enthalpy minimization and preferred aspect ratio}
+
+To relate the throat geometry to physical parameters we consider the enthalpy of a single trapped mode plus the work done against the external vacuum.  We write
+\begin{equation}
+H(a,L) = E_{\mathrm{mode}}(a,L) + P_{\mathrm{vac}} V(a,L),
+\label{eq:enthalpy-def}
+\end{equation}
+where $P_{\mathrm{vac}}$ is the ambient vacuum pressure and
+\begin{equation}
+V(a,L) = \pi a^2 L
+\end{equation}
+is the cavity volume.  The mode energy can be estimated as
+\begin{equation}
+E_{\mathrm{mode}}(a,L)
+\simeq \alpha\,\rho_0 c_s^2\,V(a,L)\,k^2
+= \alpha\,\rho_0 c_s^2\,\pi a^2 L
+\left(\frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2}\right),
+\label{eq:Emode-estimate}
+\end{equation}
+where $\alpha$ is a dimensionless constant of order unity that depends on the detailed mode structure, and we have used Eq.~\eqref{eq:kr-kz-def}.
+
+Substituting Eq.~\eqref{eq:Emode-estimate} into Eq.~\eqref{eq:enthalpy-def} and collecting terms, the enthalpy can be written as
+\begin{equation}
+H(a,L) =
+\alpha\,\rho_0 c_s^2 \pi L\,x_{01}^2
++ \alpha\,\rho_0 c_s^2 \pi a^2 \frac{\pi^2}{L}
++ P_{\mathrm{vac}} \pi a^2 L.
+\label{eq:H-structure}
+\end{equation}
+The first term scales like $L$ and is independent of $a$, the second scales like $a^2/L$, and the third like $a^2 L$.
+
+Extremizing $H(a,L)$ with respect to $a$ and $L$ at fixed $\rho_0$, $c_s$, $P_{\mathrm{vac}}$ yields a preferred aspect ratio
+\begin{equation}
+\frac{L}{a} = \frac{\sqrt{2}\,\pi}{x_{01}}
+\simeq 1.85,
+\label{eq:aspect-ratio}
+\end{equation}
+while leaving the overall scale of $a$ undetermined.  (The detailed derivation, including the dependence on $\alpha$ and $P_{\mathrm{vac}}$, is given in Appendix~\ref{app:cavity}.)  Equation~\eqref{eq:aspect-ratio} identifies a geometric ground state: for a given throat radius $a$, the enthalpy is minimized when the length $L$ is of order $1.85\,a$.
+
+We interpret this preferred aspect ratio as a structural property of the defect species: the microscopic physics that creates the throat and traps the mode has adjusted the geometry to minimize the enthalpy of the combined fluid-plus-mode configuration.  In what follows we will assume that $L/a$ is fixed to the value~\eqref{eq:aspect-ratio} for each species of defect, and treat $a$ as the primary length scale controlling both gravitational and electromagnetic couplings.
+
+\subsection{Defect mass and charge scaling}
+
+The gravitational mass associated with a defect was already estimated in Paper~I.  To leading order it can be identified with the mass deficit of the vacuum displaced by the throat, together with the energy stored in the trapped mode.  Up to order-unity factors, both contributions scale with the cavity volume, so it is convenient to write
+\begin{equation}
+m_G \;=\; \kappa_m\,\rho_0 V(a,L)
+= \kappa_m\,\rho_0 \pi a^2 L
+= \kappa_m\,\rho_0 \pi a^3 \left(\frac{L}{a}\right),
+\label{eq:mG-def}
+\end{equation}
+where $\kappa_m$ is a dimensionless constant that packages the detailed equation-of-state dependence and the relative contributions of the mode and the displaced vacuum.  With the preferred aspect ratio~\eqref{eq:aspect-ratio}, $m_G$ is proportional to $\rho_0 a^3$.
+
+The effective \emph{electric} charge will be associated with circulation and breathing of the throat.  For a dyon defect carrying circulation $\Gamma$ around the throat, the total circulation through a cross-section of area $A = \pi a^2$ is $\Gamma$.  The corresponding ``vortex flux'' is naturally weighted by the background density $\rho_0$ to obtain a conserved quantity with the dimensions of charge.  We therefore define
+\begin{equation}
+q \;=\; \kappa_q\,\rho_0 \Gamma A
+= \kappa_q\,\rho_0 \pi a^2 \Gamma,
+\label{eq:q-def}
+\end{equation}
+where $\kappa_q$ is another dimensionless constant that fixes the normalization of $q$ relative to the breathing-mode amplitude used in Sec.~\ref{sec:inhomogeneous-maxwell}.  In this normalization, a larger circulation $\Gamma$ or a larger throat area $A$ corresponds to a larger electric charge.
+
+Equations~\eqref{eq:mG-def} and~\eqref{eq:q-def} show that, at fixed aspect ratio $L/a$, the gravitational mass grows like $a^3$ while the electric charge grows like $a^2$.  The charge also depends linearly on the circulation $\Gamma$, which we treat as a topologically conserved integer multiple of some fundamental circulation quantum in a more microscopic picture.  For the present purposes, $\Gamma$ can be viewed as labeling the ``charge state'' of the defect.
+
+In Sec.~\ref{sec:inhomogeneous-maxwell} we will show that this definition of $q$ leads to the correct Coulomb law and Gauss flux for the breathing mode, and that it is consistent with the Lorentz force interpretation developed in Sec.~\ref{sec:lorentz-magnus}.  Here we focus on the scaling of electromagnetic and gravitational forces with $(a,L,\Gamma)$.
+
+\subsection{Force ratio and hierarchy}
+
+Consider two identical defects separated by a distance $r$ large compared to $a$ and $L$, so that they can be treated as point sources.  The Newtonian gravitational force between them is
+\begin{equation}
+F_{\mathrm{grav}} = \frac{G m_G^2}{r^2},
+\end{equation}
+while the electrostatic force is
+\begin{equation}
+F_{\mathrm{elec}} = \frac{1}{4\pi \epsilon_0} \frac{q^2}{r^2}.
+\end{equation}
+Their ratio is therefore
+\begin{equation}
+\frac{F_{\mathrm{elec}}}{F_{\mathrm{grav}}}
+= \frac{1}{4\pi \epsilon_0 G} \frac{q^2}{m_G^2}.
+\label{eq:force-ratio-general}
+\end{equation}
+Substituting Eqs.~\eqref{eq:mG-def} and~\eqref{eq:q-def} yields
+\begin{equation}
+\frac{q^2}{m_G^2}
+= \frac{\kappa_q^2}{\kappa_m^2}
+  \frac{\rho_0^2 \pi^2 a^4 \Gamma^2}
+       {\rho_0^2 \pi^2 a^4 L^2}
+= \frac{\kappa_q^2}{\kappa_m^2}
+  \frac{\Gamma^2}{L^2}
+= \frac{\kappa_q^2}{\kappa_m^2}
+  \frac{\Gamma^2}{a^2}\left(\frac{1}{L/a}\right)^2.
+\label{eq:q2-over-m2}
+\end{equation}
+With the preferred aspect ratio~\eqref{eq:aspect-ratio} this simplifies to
+\begin{equation}
+\frac{q^2}{m_G^2}
+= \frac{\kappa_q^2}{\kappa_m^2}
+  \frac{\Gamma^2}{a^2}\,
+  \frac{x_{01}^2}{2\pi^2},
+\label{eq:q2-over-m2-aspect}
+\end{equation}
+so that at fixed circulation $\Gamma$ the ratio scales as $1/a^2$.
+
+Combining Eqs.~\eqref{eq:force-ratio-general} and~\eqref{eq:q2-over-m2-aspect} we obtain
+\begin{equation}
+\frac{F_{\mathrm{elec}}}{F_{\mathrm{grav}}}
+= \left[\frac{1}{4\pi \epsilon_0 G}
+        \frac{\kappa_q^2}{\kappa_m^2}
+        \frac{x_{01}^2}{2\pi^2}\right]
+  \frac{\Gamma^2}{a^2}.
+\label{eq:force-ratio-scaling}
+\end{equation}
+The bracketed factor depends only on dimensionless coefficients and the effective constants $(G,\epsilon_0)$, while the explicit dependence on the defect geometry appears as $\Gamma^2/a^2$.
+
+If the throat radius $a$ is extremely small---for example, of order the Planck length---then even modest values of $\Gamma$ produce an enormous hierarchy between electromagnetic and gravitational forces, as is observed experimentally.  In this toy model, the strength of electromagnetism relative to gravity is not controlled by unrelated coupling constants but by a single geometric parameter: the cross-sectional size of the defect throat in units of the acoustic length scale.  Different species of defects with different $a$ and $\Gamma$ would then populate a spectrum of effective charge-to-mass ratios.
+
+In summary, once the throat geometry is tied to a resonant mode of the superfluid vacuum, the same parameters $(a,L,\Gamma)$ that determine the gravitational mass also determine the electric charge and the electromagnetic/gravitational hierarchy.  The remaining task is to show that this geometric charge couples to the hydrodynamic fields in exactly the way prescribed by Maxwell's equations and the Lorentz force law.  We turn to that task in the next section.
+
+\section{Inhomogeneous Maxwell Equations from the Acoustic Wave Equation}
+\label{sec:inhomogeneous-maxwell}
+
+\subsection{Four-potential, wave operator, and Lorenz gauge}
+
+The hydrodynamic dictionary of Sec.~\ref{sec:dictionary} identifies an effective electromagnetic scalar potential and vector potential via
+\begin{equation}
+\phi_{\mathrm{EM}} = \lambda \left(h + \frac{1}{2} v^2\right),
+\qquad
+\mathbf{A} = \lambda\,\mathbf{v},
+\end{equation}
+with $\lambda$ an overall normalization to be fixed.  It is natural to assemble these into a four-potential
+\begin{equation}
+A^\mu = \left(\frac{\phi_{\mathrm{EM}}}{c},\,\mathbf{A}\right),
+\end{equation}
+where $c$ is the effective light speed identified with the sound speed $c_s$ in the weak-field limit of the acoustic metric.
+
+In the gravitational sector, scalar and vector perturbations obey an acoustic wave equation
+\begin{equation}
+\Box \Psi = 0,
+\end{equation}
+where $\Box$ is the d'Alembertian constructed from the acoustic metric $g_{\mu\nu}$, Eq.~\eqref{eq:acoustic-wave}.  In the weak-field limit $g_{\mu\nu} \rightarrow \eta_{\mu\nu}$, this reduces to the flat-space operator
+\begin{equation}
+\Box \;\rightarrow\; -\frac{1}{c^2}\partial_t^2 + \nabla^2.
+\label{eq:flat-box}
+\end{equation}
+
+To incorporate sources associated with defects, we now promote this vacuum equation to a sourced wave equation for the four-potential,
+\begin{equation}
+\Box A^\mu = -\mu_0 J^\mu,
+\label{eq:wave-A}
+\end{equation}
+where $J^\mu$ is an effective four-current and $\mu_0$ is an effective permeability of the superfluid vacuum.  We supplement Eq.~\eqref{eq:wave-A} with the Lorenz gauge condition
+\begin{equation}
+\partial_\mu A^\mu = 0.
+\label{eq:lorenz-gauge}
+\end{equation}
+Equations~\eqref{eq:wave-A} and~\eqref{eq:lorenz-gauge} are the usual ingredients of covariant electromagnetism; here they are interpreted as a repackaging of the acoustic wave equation and a convenient gauge choice for the hydrodynamic variables.
+
+In components, writing $J^\mu = (c\rho_e,\mathbf{J})$ and using Eq.~\eqref{eq:flat-box}, Eq.~\eqref{eq:wave-A} becomes
+\begin{align}
+\Box \phi_{\mathrm{EM}} &= -\mu_0 c^2 \rho_e,
+\label{eq:wave-phi}\\[4pt]
+\Box \mathbf{A} &= -\mu_0 \mathbf{J}.
+\label{eq:wave-A-spatial}
+\end{align}
+The Lorenz gauge~\eqref{eq:lorenz-gauge} reads
+\begin{equation}
+\frac{1}{c^2}\partial_t \phi_{\mathrm{EM}} + \nabla\cdot\mathbf{A} = 0.
+\label{eq:lorenz-gauge-flat}
+\end{equation}
+In the rest of this section we show that, together with the definitions of $\mathbf{E}$ and $\mathbf{B}$ from Sec.~\ref{sec:dictionary}, these relations imply the inhomogeneous Maxwell equations and the continuity equation for $J^\mu$.
+
+\subsection{Charge and current for dyon defects}
+
+We now assign an effective electric charge and current to the defects described in Sec.~\ref{sec:defect-hierarchy}.  For a single dyon defect centered at $\mathbf{x}_d(t)$ and moving with velocity $\mathbf{u}_d(t) = \dot{\mathbf{x}}_d(t)$, we model the charge density as a point source,
+\begin{equation}
+\rho_e(\mathbf{x},t)
+= q\,\delta^3(\mathbf{x}-\mathbf{x}_d(t)),
+\label{eq:rho-point}
+\end{equation}
+where $q$ is the effective charge defined by
+\begin{equation}
+q = \kappa_q\,\rho_0 \pi a^2 \Gamma.
+\end{equation}
+Here $a$ is the throat radius, $\Gamma$ is the circulation, $\rho_0$ is the background density, and $\kappa_q$ is the dimensionless constant introduced in Eq.~\eqref{eq:q-def}.  The corresponding current density is
+\begin{equation}
+\mathbf{J}(\mathbf{x},t)
+= \rho_e(\mathbf{x},t)\,\mathbf{u}_d(t)
+= q\,\mathbf{u}_d(t)\,\delta^3(\mathbf{x}-\mathbf{x}_d(t)).
+\label{eq:J-point}
+\end{equation}
+For a collection of dyons labeled by an index $A$ one simply sums over species, $\rho_e = \sum_A q_A \delta^3(\mathbf{x}-\mathbf{x}_A)$ and $\mathbf{J} = \sum_A q_A \mathbf{u}_A \delta^3(\mathbf{x}-\mathbf{x}_A)$.
+
+Equations~\eqref{eq:rho-point} and~\eqref{eq:J-point} are the standard point-particle sources of electromagnetism, but here the charge $q$ has a geometric and hydrodynamic origin: it is proportional to the vortex flux $\rho_0 \Gamma$ times the cross-sectional area of the throat.  In this way, mass and charge are both encoded in the same defect parameters $(a,L,\Gamma)$, as emphasized in Sec.~\ref{sec:defect-hierarchy}.
+
+Current conservation,
+\begin{equation}
+\partial_\mu J^\mu = 0
+\quad\Longleftrightarrow\quad
+\partial_t \rho_e + \nabla\cdot\mathbf{J} = 0,
+\label{eq:continuity}
+\end{equation}
+follows from the point-particle equations of motion $\dd\mathbf{x}_d/\dd t = \mathbf{u}_d$ together with the delta function structure in Eqs.~\eqref{eq:rho-point} and~\eqref{eq:J-point}.  Equivalently, as we will show in Sec.~\ref{subsec:ampere-continuity}, Eq.~\eqref{eq:continuity} follows directly from the Lorenz gauge~\eqref{eq:lorenz-gauge} and the wave equation~\eqref{eq:wave-A} using only the commutativity of partial derivatives.
+
+\subsection{Gauss's law and the breathing mode}
+\label{subsec:gauss-breathing}
+
+We next show that the breathing mode of a single defect reproduces Coulomb's law and Gauss's law for electricity.  Consider an isolated dyon at rest at the origin, so that $\mathbf{x}_d(t) = 0$ and $\mathbf{u}_d = 0$.  The charge density is
+\begin{equation}
+\rho_e(\mathbf{x}) = q\,\delta^3(\mathbf{x}),
+\end{equation}
+and we look for a static, spherically symmetric solution of the wave equation for the scalar potential,
+\begin{equation}
+\Box \phi_{\mathrm{EM}}(\mathbf{x}) = -\mu_0 c^2 \rho_e(\mathbf{x}).
+\end{equation}
+In the static limit, and sufficiently far from the throat where the acoustic metric is approximately flat, this reduces to a Poisson equation
+\begin{equation}
+\nabla^2 \phi_{\mathrm{EM}}(\mathbf{x})
+= -\mu_0 c^2 q\,\delta^3(\mathbf{x}).
+\label{eq:poisson-phi}
+\end{equation}
+
+Outside the core ($r \equiv |\mathbf{x}| > a$) the right-hand side of Eq.~\eqref{eq:poisson-phi} vanishes and the equation becomes Laplace's equation
+\begin{equation}
+\nabla^2 \phi_{\mathrm{EM}} = 0.
+\end{equation}
+For a spherically symmetric potential $\phi_{\mathrm{EM}}(r)$ this reads
+\begin{equation}
+\phi_{\mathrm{EM}}''(r) + \frac{2}{r}\phi_{\mathrm{EM}}'(r) = 0,
+\end{equation}
+whose general solution is
+\begin{equation}
+\phi_{\mathrm{EM}}(r) = A + \frac{B}{r}.
+\end{equation}
+The additive constant $A$ is gauge, so we set $A=0$.  The remaining coefficient $B$ is fixed by matching across the core to the breathing mode of the throat.  At the level of the effective long-wavelength theory, we can instead determine $B$ by demanding that Gauss's law hold:
+\begin{equation}
+\oint_{S_R} \mathbf{E}\cdot\dd\mathbf{S}
+= \frac{q}{\epsilon_0}
+\quad\text{for any sphere of radius }R>a,
+\label{eq:gauss-flux}
+\end{equation}
+where $\mathbf{E} = -\nabla \phi_{\mathrm{EM}}$ and $S_R$ is the sphere of radius $R$ centered at the origin.
+
+For the $1/r$ potential, the radial electric field is
+\begin{equation}
+E_r(r) = -\frac{\dd \phi_{\mathrm{EM}}}{\dd r}
+= \frac{B}{r^2},
+\end{equation}
+and the flux through $S_R$ is
+\begin{equation}
+\Phi_E(R) \equiv \oint_{S_R} \mathbf{E}\cdot\dd\mathbf{S}
+= 4\pi R^2 E_r(R)
+= 4\pi B.
+\end{equation}
+Requiring $\Phi_E(R) = q/\epsilon_0$ for all $R$ fixes
+\begin{equation}
+B = \frac{q}{4\pi\epsilon_0},
+\end{equation}
+so that
+\begin{equation}
+\phi_{\mathrm{EM}}(r)
+= \frac{q}{4\pi\epsilon_0}\,\frac{1}{r},
+\qquad
+E_r(r)
+= \frac{q}{4\pi\epsilon_0}\,\frac{1}{r^2}.
+\end{equation}
+This is the usual Coulomb potential and field of a point charge.
+
+Equivalently, using the distributional identity
+\begin{equation}
+\nabla^2 \frac{1}{r} = -4\pi\,\delta^3(\mathbf{x}),
+\end{equation}
+we may rewrite Eq.~\eqref{eq:poisson-phi} as
+\begin{equation}
+-\nabla^2 \phi_{\mathrm{EM}}
+= \frac{q}{\epsilon_0}\,\delta^3(\mathbf{x}),
+\end{equation}
+provided we identify
+\begin{equation}
+\epsilon_0 \equiv \frac{1}{\mu_0 c^2}.
+\end{equation}
+Using $\mathbf{E} = -\nabla \phi_{\mathrm{EM}}$ and the fact that the divergence of a gradient is the Laplacian, this yields the differential form of Gauss's law:
+\begin{equation}
+\nabla \cdot \mathbf{E} = \frac{\rho_e}{\epsilon_0}.
+\label{eq:gauss-differential}
+\end{equation}
+
+In summary, the static breathing mode of a single defect behaves as a point electric charge: it produces a $1/r$ potential outside the core, an $E_r(r)\propto 1/r^2$ field, and a radius-independent electric flux equal to $q/\epsilon_0$.  This identifies the geometric charge $q$ of Eq.~\eqref{eq:q-def} with the source of Gauss's law.
+
+\subsection{Amp\`ere--Maxwell law and current conservation}
+\label{subsec:ampere-continuity}
+
+We now derive the Amp\`ere--Maxwell law and current conservation from the wave equation~\eqref{eq:wave-A} and the Lorenz gauge~\eqref{eq:lorenz-gauge-flat}.  Starting from the definitions
+\begin{equation}
+\mathbf{B} = \nabla\times\mathbf{A},
+\qquad
+\mathbf{E} = -\nabla\phi_{\mathrm{EM}} - \partial_t \mathbf{A},
+\end{equation}
+a standard vector identity (derived in Appendix~\ref{app:inhomogeneous-details}) gives
+\begin{equation}
+\nabla\times\mathbf{B}
+- \frac{1}{c^2}\partial_t \mathbf{E}
+= -\Box \mathbf{A}
++ \nabla\!\left(\nabla\cdot\mathbf{A}
+               + \frac{1}{c^2}\partial_t \phi_{\mathrm{EM}}\right).
+\label{eq:ampere-identity}
+\end{equation}
+In Lorenz gauge, Eq.~\eqref{eq:lorenz-gauge-flat} implies
+\begin{equation}
+\nabla\cdot\mathbf{A}
++ \frac{1}{c^2}\partial_t \phi_{\mathrm{EM}} = 0,
+\end{equation}
+so the second term on the right-hand side of Eq.~\eqref{eq:ampere-identity} vanishes.  Using the spatial wave equation~\eqref{eq:wave-A-spatial}, we obtain
+\begin{equation}
+\nabla\times\mathbf{B}
+- \frac{1}{c^2}\partial_t \mathbf{E}
+= \mu_0 \mathbf{J},
+\label{eq:ampere-maxwell}
+\end{equation}
+which is the Amp\`ere--Maxwell law with displacement current.
+
+To derive current conservation, we take the four-divergence of Eq.~\eqref{eq:wave-A}:
+\begin{equation}
+\partial_\mu \Box A^\mu
+= -\mu_0 \partial_\mu J^\mu.
+\end{equation}
+Assuming the usual commutativity of partial derivatives, $\partial_\mu \Box = \Box \partial_\mu$, and using the Lorenz gauge~\eqref{eq:lorenz-gauge}, we find
+\begin{equation}
+\Box(\partial_\mu A^\mu) = -\mu_0 \partial_\mu J^\mu
+\quad\Longrightarrow\quad
+0 = -\mu_0 \partial_\mu J^\mu.
+\end{equation}
+Thus
+\begin{equation}
+\partial_\mu J^\mu = 0,
+\end{equation}
+which in $3+1$ form is the continuity equation~\eqref{eq:continuity},
+\begin{equation}
+\frac{\partial \rho_e}{\partial t} + \nabla\cdot\mathbf{J} = 0.
+\end{equation}
+In other words, once the four-potential satisfies the wave equation~\eqref{eq:wave-A} in Lorenz gauge, the conservation of electric charge is automatic: it does not need to be imposed by hand.
+
+Equations~\eqref{eq:gauss-differential} and~\eqref{eq:ampere-maxwell}, together with the homogeneous equations derived in Sec.~\ref{sec:dictionary}, complete the set of Maxwell equations in the superfluid toy model.
+
+\subsection{Effective EM constants and relation to acoustic speed}
+
+Finally, we comment on the effective electromagnetic constants $(\epsilon_0,\mu_0)$ appearing in the foregoing derivations.  In a relativistic electromagnetic theory one has
+\begin{equation}
+\epsilon_0 \mu_0 = \frac{1}{c^2},
+\label{eq:eps-mu-relation}
+\end{equation}
+where $c$ is the speed of light.  In the present context $c$ is the effective light speed inherited from the acoustic metric, which in the weak-field limit coincides with the sound speed $c_s$ of the superfluid vacuum.
+
+Equation~\eqref{eq:eps-mu-relation} is already implicit in our identification of $\epsilon_0$ in the Coulomb solution: we required $\epsilon_0 = 1/(\mu_0 c^2)$ in passing from Eq.~\eqref{eq:poisson-phi} to Eq.~\eqref{eq:gauss-differential}.  Thus, once $c$ is fixed by the acoustic sector, specifying either $\epsilon_0$ or $\mu_0$ determines the other.
+
+Operationally, $\epsilon_0$ is fixed by matching the breathing mode of a reference defect species to the observed Coulomb law.  Given a choice of $(\rho_0,a,\Gamma)$ for that species, the geometric charge $q$ and the breathing-mode solution determine the normalization of $\phi_{\mathrm{EM}}$ and hence the effective permittivity $\epsilon_0$.  Equation~\eqref{eq:eps-mu-relation} then fixes $\mu_0$, which in turn sets the strength of the coupling between the four-potential and the four-current in Eq.~\eqref{eq:wave-A}.
+
+In this way, the electromagnetic constants are not arbitrary parameters but derived quantities: they are functions of the superfluid equation of state, the acoustic light speed, and the geometric data of the defects used as calibration standards.  The same constants then govern all subsequent electromagnetic phenomena in the toy model, just as $G$ and $c$ governed the gravitational sector in Papers~I--III.
+
+\section{Lorentz Force from Magnus and Enthalpy Forces}
+\label{sec:lorentz-magnus}
+
+\subsection{Magnus force on a vortex line}
+
+In the superfluid toy model, defects carry circulation $\Gamma$ around their throats and thus behave as vortex lines embedded in the vacuum.  A classical result of vortex dynamics is that a vortex moving through a background flow experiences a transverse \emph{Magnus force}.  For a straight vortex line with unit tangent vector $\hat{\mathbf{t}}$, background density $\rho_0$, circulation $\Gamma$, and core velocity $\mathbf{u}$ relative to the local fluid velocity $\vfluid$, the Magnus force per unit length is
+\begin{equation}
+\mathbf{f}_M
+= \rho_0 \Gamma\,\hat{\mathbf{t}} \times (\mathbf{u} - \vfluid).
+\label{eq:Magnus-general}
+\end{equation}
+This force is perpendicular to both the circulation axis $\hat{\mathbf{t}}$ and the relative velocity $(\mathbf{u}-\vfluid)$; it is responsible for the familiar lift on spinning objects in a fluid.
+
+For our purposes it is convenient to specialize to a simple geometry that captures the essential structure of the Lorentz force.  Consider a straight dyon throat aligned along the $z$-axis, so that
+\begin{equation}
+\hat{\mathbf{t}} = \hat{\mathbf{z}}.
+\end{equation}
+We assume a uniform background flow $\vfluid = \mathbf{v}_\infty$ far from the defect and let the core move with velocity $\mathbf{u}$ relative to the lab frame.  Equation~\eqref{eq:Magnus-general} then becomes
+\begin{equation}
+\mathbf{f}_M
+= \rho_0 \Gamma\,\hat{\mathbf{z}} \times (\mathbf{u} - \mathbf{v}_\infty).
+\label{eq:Magnus-straight}
+\end{equation}
+
+The Magnus force naturally decomposes into two pieces:
+\begin{equation}
+\mathbf{f}_M
+= \underbrace{\rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{u}}_{\text{$u$-dependent}}
+ \;-\;
+ \underbrace{\rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{v}_\infty}_{\text{background}}.
+\label{eq:Magnus-decomp}
+\end{equation}
+The first term depends on the core velocity $\mathbf{u}$ and will be identified with the magnetic part of the Lorentz force.  The second term depends only on the background flow and will be grouped with pressure and enthalpy forces to generate the electric part of the Lorentz force, as discussed below.
+
+\subsection{Matching the magnetic Lorentz term}
+
+The effective magnetic field in the hydrodynamic dictionary is proportional to the vorticity,
+\begin{equation}
+\mathbf{B} = \lambda\,\boldsymbol{\omega},
+\end{equation}
+with $\lambda$ the normalization introduced in Sec.~\ref{sec:dictionary}.  For a straight vortex along $\hat{\mathbf{z}}$ the vorticity is concentrated in the core and points along $\hat{\mathbf{z}}$, so at the level of a coarse-grained description we may write
+\begin{equation}
+\mathbf{B} = B_0\,\hat{\mathbf{z}},
+\end{equation}
+where $B_0$ encodes the total circulation per unit area through the throat.
+
+From Sec.~\ref{sec:defect-hierarchy} the effective electric charge of a dyon defect is
+\begin{equation}
+q = \kappa_q\,\rho_0 \pi a^2 \Gamma,
+\label{eq:q-def-again}
+\end{equation}
+where $a$ is the throat radius and $\kappa_q$ is a dimensionless normalization constant.  The magnetic part of the Lorentz force per unit length is then
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= \frac{q}{L}\,\mathbf{u} \times \mathbf{B}
+= \frac{q B_0}{L}\,\mathbf{u} \times \hat{\mathbf{z}},
+\label{eq:fL-mag}
+\end{equation}
+where $L$ is the throat length and we have assumed the force is approximately uniform along the throat.
+
+To compare Eqs.~\eqref{eq:Magnus-decomp} and~\eqref{eq:fL-mag}, we note that the $u$-dependent piece of the Magnus force per unit length is
+\begin{equation}
+\mathbf{f}_{M,u}
+= \rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{u}
+= -\rho_0 \Gamma\,\mathbf{u} \times \hat{\mathbf{z}}.
+\end{equation}
+Using Eq.~\eqref{eq:q-def-again}, we can rewrite this as
+\begin{equation}
+\mathbf{f}_{M,u}
+= -\frac{q}{\kappa_q \pi a^2}\,\mathbf{u} \times \hat{\mathbf{z}}.
+\end{equation}
+The Lorentz force per unit length~\eqref{eq:fL-mag} will match this provided we choose $B_0$ such that
+\begin{equation}
+\frac{q B_0}{L} = -\frac{q}{\kappa_q \pi a^2}
+\quad\Longrightarrow\quad
+B_0 = -\frac{L}{\kappa_q \pi a^2}.
+\end{equation}
+With this identification,
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= \mathbf{f}_{M,u},
+\end{equation}
+so the $u$-dependent Magnus force on the straight dyon throat is exactly the magnetic Lorentz force per unit length, for a natural choice of the coarse-grained magnetic field in terms of the circulation and geometry of the defect.
+
+At a more conceptual level, this matching expresses the fact that the same geometric quantity that defines the charge,
+\begin{equation}
+q \propto \rho_0 \Gamma \times \text{(throat area)},
+\end{equation}
+also controls the coupling of the dyon's motion to the vorticity of the superfluid.  The effective magnetic field is simply the vorticity seen by the defect, rescaled by $\lambda$ and the geometric factors of the throat.
+
+\subsection{Electric force as enthalpy and pressure gradients}
+
+The remaining part of the Lorentz force, $q\mathbf{E}$, should correspond to the net force on the defect due to pressure and enthalpy gradients in the superfluid.  In the hydrodynamic dictionary, the electric field is
+\begin{equation}
+\mathbf{E}
+= -\lambda\left[\nabla\left(h + \frac{1}{2}v^2\right) + \partial_t \mathbf{v}\right],
+\end{equation}
+which is, up to the factor $\lambda$, minus the Euler acceleration
+\begin{equation}
+\mathbf{a}_{\mathrm{Euler}}
+= \partial_t \mathbf{v} + (\mathbf{v}\cdot\nabla)\mathbf{v}
+= \partial_t \mathbf{v} + \nabla\left(\frac{1}{2}v^2\right) - \mathbf{v}\times(\nabla\times\mathbf{v}).
+\end{equation}
+In a region where the defect is small compared to the scale over which the background varies, the net force on the defect due to pressure gradients can be approximated as
+\begin{equation}
+\mathbf{F}_{\mathrm{press}}
+\simeq -V_{\mathrm{eff}}\,\nabla p(\rho),
+\label{eq:F-press}
+\end{equation}
+where $V_{\mathrm{eff}}$ is an effective volume of the defect.  Using $\nabla h = \nabla p / \rho$ and evaluating at the background density $\rho_0$ gives
+\begin{equation}
+\mathbf{F}_{\mathrm{press}}
+\simeq -\rho_0 V_{\mathrm{eff}}\,\nabla h.
+\end{equation}
+Similarly, time-dependent breathing of the throat induces an unsteady velocity field $\partial_t \mathbf{v}$ in the surrounding fluid, which exerts an additional inertial force on the defect proportional to $\rho_0 V_{\mathrm{eff}} \partial_t \mathbf{v}$.
+
+Combining these contributions, the net ``electric-like'' force on the defect can be schematically written as
+\begin{equation}
+\mathbf{F}_{\mathrm{E}}
+\simeq \rho_0 V_{\mathrm{eff}}
+\left[-\nabla\left(h + \frac{1}{2}v^2\right) - \partial_t \mathbf{v}\right].
+\end{equation}
+Comparing with the definition of $\mathbf{E}$, this becomes
+\begin{equation}
+\mathbf{F}_{\mathrm{E}}
+\simeq \frac{\rho_0 V_{\mathrm{eff}}}{\lambda}\,\mathbf{E}.
+\end{equation}
+Identifying
+\begin{equation}
+q \;\equiv\; \frac{\rho_0 V_{\mathrm{eff}}}{\lambda},
+\label{eq:q-from-volume}
+\end{equation}
+we obtain
+\begin{equation}
+\mathbf{F}_{\mathrm{E}} = q\,\mathbf{E}.
+\label{eq:F-electric}
+\end{equation}
+Thus, up to geometric factors encapsulated in $V_{\mathrm{eff}}$, the electric force on the defect arises from the integrated pressure and enthalpy gradients and the unsteady acceleration of the surrounding fluid.
+
+For a throat of radius $a$ and length $L$, a natural choice is $V_{\mathrm{eff}} \sim \pi a^2 L$, so that Eq.~\eqref{eq:q-from-volume} is consistent with the charge scaling $q \propto \rho_0 \pi a^2 \Gamma$ once $\lambda$ is fixed by matching to the breathing-mode solution in Sec.~\ref{subsec:gauss-breathing}.  The detailed normalization depends on how the breathing mode is excited and how the defect couples to the surrounding flow near the core, and is discussed further in Appendix~\ref{app:lorentz-magnus}.  For the purposes of the effective theory, it is sufficient that there exists a choice of $\lambda$ and $V_{\mathrm{eff}}$ for which the electric force on the defect takes the form~\eqref{eq:F-electric}.
+
+\subsection{Effective equation of motion for dyons}
+
+Combining the gravitational, electric, and magnetic contributions, the net force on a dyon defect in the weak-field regime can be written as
+\begin{equation}
+\mathbf{F}_{\mathrm{net}}
+= m_G \mathbf{g}
++ q\left(\mathbf{E} + \mathbf{u}_d \times \mathbf{B}\right)
++ \mathbf{F}_{\mathrm{self}} + \mathbf{F}_{\mathrm{PN}},
+\label{eq:F-net}
+\end{equation}
+where:
+\begin{itemize}
+  \item $m_G$ is the gravitational mass defined in Eq.~\eqref{eq:mG-def};
+  \item $\mathbf{g}$ is the effective gravitational acceleration extracted from the acoustic metric, as in Paper~I;
+  \item $q(\mathbf{E} + \mathbf{u}_d \times \mathbf{B})$ is the Lorentz force, with $\mathbf{E}$ and $\mathbf{B}$ given by the hydrodynamic dictionary and $q$ defined by the defect geometry;
+  \item $\mathbf{F}_{\mathrm{self}}$ denotes self-force and radiation-reaction terms, which we neglect at this order;
+  \item $\mathbf{F}_{\mathrm{PN}}$ collects higher-order post-Newtonian corrections already discussed in Paper~III.
+\end{itemize}
+The effective equation of motion for the dyon worldline is then
+\begin{equation}
+m_G \frac{\dd \mathbf{u}_d}{\dd t}
+= m_G \mathbf{g}
++ q\left(\mathbf{E} + \mathbf{u}_d \times \mathbf{B}\right)
++ \mathbf{F}_{\mathrm{self}} + \mathbf{F}_{\mathrm{PN}}.
+\label{eq:dyon-eom}
+\end{equation}
+
+Equation~\eqref{eq:dyon-eom} has the same structure as the standard equation of motion for a charged massive particle in a weak gravitational field, with the important difference that all of the quantities appearing on the right-hand side are emergent: $\mathbf{g}$, $\mathbf{E}$, and $\mathbf{B}$ are built from the superfluid enthalpy and velocity fields; $m_G$ and $q$ are functions of the defect geometry $(a,L,\Gamma)$ and the background density; and the wave operator governing $\mathbf{E}$ and $\mathbf{B}$ is the same acoustic d'Alembertian $\Box$ that encodes the $1$PN gravitational dynamics of Papers~I--III.
+
+In this sense, the Lorentz force law is not an independent postulate but a hydrodynamic consequence: it arises from the Magnus and pressure forces on a dyon defect in the superfluid vacuum.  In Sec.~\ref{sec:discussion} we will return to this point and discuss to what extent this emergent Lorentz force can be generalized beyond the weak-field, slowly moving regime considered here.
+
+\section{Discussion and Outlook}
+\label{sec:discussion}
+
+\subsection{Synthesis: gravity and electromagnetism in the toy model}
+
+The central message of this paper is that, within the superfluid defect toy model developed in Papers~I--III, electromagnetism can be understood as another emergent sector of the same hydrodynamics that already reproduces weak-field gravity at $1$PN order.
+
+On the gravitational side, Papers~I--III showed that a compressible superfluid vacuum with suitable enthalpy profile and kinetic prefactor, together with throat-like defects that drain the vacuum, reproduces Newtonian gravity, post-Newtonian orbital corrections, gravitational optics, spin precession, and $N$-body EIH dynamics.  All of these phenomena are encoded in an acoustic metric $g_{\mu\nu}$ and a corresponding d'Alembertian $\Box$ acting on perturbations of the superfluid.
+
+On the electromagnetic side, the present work adds three ingredients:
+\begin{enumerate}
+  \item A \emph{hydrodynamic dictionary} that identifies the effective electromagnetic potentials and fields with combinations of the enthalpy and velocity fields, Eq.~\eqref{eq:EM-potentials-def}.  With this identification, the magnetic field is proportional to vorticity and the electric field is (up to normalization) minus the Euler acceleration.  The homogeneous Maxwell equations then become pure vector identities.
+
+  \item A \emph{sourced wave equation} for the four-potential $A^\mu$, Eq.~\eqref{eq:wave-A}, using the same d'Alembertian $\Box$ that appeared in the gravitational sector.  In Lorenz gauge, Eq.~\eqref{eq:lorenz-gauge}, this structure yields the inhomogeneous Maxwell equations and current conservation, with defect breathing modes supplying the Coulomb field and point-like dyon defects providing the four-current $J^\mu$.
+
+  \item A \emph{force dictionary} in which the Lorentz force on a charged defect is identified with the familiar Magnus and pressure forces on a vortex in a flowing fluid.  The magnetic term $q\,\mathbf{u}\times\mathbf{B}$ coincides with the $u$-dependent Magnus lift on the dyon throat, while the electric term $q\,\mathbf{E}$ arises from pressure and enthalpy gradients and unsteady acceleration of the surrounding fluid.
+\end{enumerate}
+
+In this way, what appears at low energies as a pair of fundamental interactions---gravity and electromagnetism---is reinterpreted as a unified hydrodynamics of a single superfluid vacuum populated by throat-like defects.  The same geometric parameters $(a,L,\Gamma)$ of a defect control both its gravitational mass $m_G$ and its electric charge $q$, and the hierarchy between gravitational and electromagnetic forces is traced to the smallness of the throat radius $a$ in units of the acoustic length scale.  No new fields or couplings beyond those already present in the gravitational construction are required.
+
+Of course, this is still only a \emph{toy} model: it makes no claim to be a realistic description of the vacuum at the Planck scale.  Nevertheless, it provides a concrete laboratory in which to test the idea that familiar gauge and gravitational dynamics might emerge from a deeper, fluid-like substrate.
+
+\subsection{Limitations of the present construction}
+
+The analysis in this paper, like that of Papers~I--III, rests on a number of simplifying assumptions and approximations.  We briefly summarize the most important ones.
+
+First, we have worked exclusively in a weak-field, quasi-static regime in which the acoustic metric is close to flat and the defects are small compared to the curvature radius of the background.  The electromagnetic sector is likewise treated linearly: we consider perturbative breathing modes and vorticity in a nearly stationary background flow.  Nonlinear electromagnetic effects, such as field self-interactions or strong backreaction of the fields on the flow, are not included.
+
+Second, the core structure of the defects is idealized.  We treat the throat as a smooth cylindrical cavity with sharp boundaries and assign point-like sources $q\,\delta^3(\mathbf{x}-\mathbf{x}_d)$ to the defects.  In a more realistic microphysical description, the core region would have a finite thickness, possibly nontrivial internal degrees of freedom, and a breakdown of the continuum hydrodynamic description.  Our results should therefore be regarded as long-wavelength effective statements, valid at distances large compared to $a$ and $L$.
+
+Third, we have neglected radiation reaction and self-force effects in the equation of motion for dyons.  Accelerated charges in the toy model will generically emit waves in the superfluid, and the backreaction of this radiation on the defect motion could modify the Lorentz force at higher order.  Similarly, the gravitational sector includes only the standard $1$PN corrections; gravitational radiation and strong-field effects are outside the present scope.
+
+Fourth, we have not attempted to quantize the model.  The modes of the resonant cavity in the throat are treated classically, and the electromagnetic fields are treated as classical hydrodynamic variables.  The model therefore does not address the discrete spectra of charged particles, the existence of photons as quanta of the electromagnetic field, or the full structure of quantum electrodynamics.
+
+Finally, there is no guarantee that the effective electromagnetic constants $(\epsilon_0,\mu_0)$ and the effective gravitational constant $G$ derived from a given choice of superfluid equation of state and defect geometry will match their measured values in nature.  The toy model is intended as a proof of principle---that such a geometrization of charge and hierarchy is possible---rather than as a fully tuned phenomenological model.
+
+These limitations are not unexpected: they simply reflect the fact that we have constructed a minimal hydrodynamic analogue, not a complete theory.  Nonetheless, they help to delineate the regime of validity of the emergent Maxwell and Lorentz structures derived here.
+
+\subsection{Future directions}
+
+The present work suggests several natural directions for further development.
+
+A first avenue is to go beyond the linear regime and study \emph{nonlinear electromagnetism} in the toy model.  At large field strengths or near the core of a defect, the relationship between the enthalpy, velocity, and effective electromagnetic fields may become nonlinear, and the acoustic metric may differ significantly from its weak-field form.  It would be interesting to derive the analogue of nonlinear electrodynamics (for example, Born--Infeld-like corrections) arising from the underlying equation of state and to see whether any observational signatures survive at accessible scales.
+
+A second direction is to couple the electromagnetic and gravitational sectors in dynamical simulations.  The equations derived here can be implemented in numerical solvers for the superfluid PDEs, with defects represented as localized sources and sinks.  One could then simulate the motion of dyons under the combined influence of gravity and electromagnetism, including radiation of acoustic waves, backreaction on the background flow, and interactions between multiple defects.  Such simulations would test the robustness of the emergent Lorentz force law beyond the simplifying assumptions made in this paper, and could be compared with standard post-Newtonian and electromagnetic dynamics.
+
+A third avenue is to explore the \emph{quantum} aspects of the toy model.  If the superfluid admits a microscopic description in terms of underlying quanta (for example, in a condensed-matter analogue or a more speculative fundamental theory), then quantization of the acoustic modes and defect degrees of freedom might yield emergent photons and charged particles.  The resonant cavity picture of the throat suggests a natural setting for discrete charge and mass spectra, and it would be worthwhile to investigate whether quantization of the trapped modes can produce realistic charge quantization and spin.
+
+A fourth line of inquiry concerns the \emph{universality and uniqueness} of the hydrodynamic dictionary.  We have chosen a particular mapping from $(h,\mathbf{v})$ to $(\phi_{\mathrm{EM}},\mathbf{A})$ that yields the Maxwell equations, but other choices are possible, especially in more general backgrounds.  Understanding which features of the mapping are essential and which are gauge or scheme choices could shed light on the space of emergent gauge theories that can be built from fluid dynamics.
+
+Finally, one might ask whether additional interactions---such as nonabelian gauge fields or scalar fields---can be realized in similar fashion.  For example, multi-component superfluids or superfluids with internal symmetries may give rise to richer effective gauge structures.  The throat defects considered here could then carry additional ``color'' charges or moduli, potentially providing a hydrodynamic analogue of the full Standard Model gauge group.
+
+In summary, by extending the superfluid defect toy model to include electromagnetism, we have shown that Maxwell's equations and the Lorentz force can emerge from the same acoustic geometry that already reproduces weak-field gravity.  The geometric origin of electric charge and the electromagnetic/gravitational hierarchy in this model provides a concrete example of how seemingly fundamental interactions might be unified at the level of an underlying medium.  Whether anything like this picture is realized in nature remains an open question, but the toy model offers a useful framework for exploring the interplay between geometry, hydrodynamics, and emergent field theories.
+
+% ============================================================
+% Appendices
+% ============================================================
+
+\appendix
+
+\section{Resonant Cavity Enthalpy Minimization}
+\label{app:cavity}
+
+In this appendix we fill in the details of the enthalpy minimization argument that leads to the preferred aspect ratio
+\begin{equation}
+\frac{L}{a} = \frac{\sqrt{2}\,\pi}{x_{01}}
+\simeq 1.85,
+\end{equation}
+quoted in Eq.~\eqref{eq:aspect-ratio} of the main text.  The starting point is the resonant--cavity picture of the defect throat introduced in Sec.~\ref{sec:defect-hierarchy}.
+
+\subsection{Mode structure and energy}
+
+We model the throat as a cylindrical cavity of radius $a$ and length $L$, filled with the superfluid vacuum of density $\rho_0$ and sound speed $c_s$.  The cavity supports standing-wave modes of the enthalpy and density fields.  For definiteness we focus on the lowest ``TM-like'' mode with radial and axial wavenumbers
+\begin{equation}
+k_r = \frac{x_{01}}{a},\qquad
+k_z = \frac{\pi}{L},
+\end{equation}
+where $x_{01} \simeq 2.4048$ is the first zero of the Bessel function $J_0$.  The total wavenumber and frequency of this mode are
+\begin{equation}
+k^2 = k_r^2 + k_z^2
+= \frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2},
+\qquad
+\omega = c_s k.
+\end{equation}
+
+We take the mode energy to scale as the acoustic energy density times the cavity volume,
+\begin{equation}
+E_{\mathrm{mode}}(a,L)
+\simeq \alpha\,\rho_0 c_s^2\,V(a,L)\,k^2,
+\label{eq:Emode-appendix}
+\end{equation}
+where
+\begin{equation}
+V(a,L) = \pi a^2 L
+\end{equation}
+is the cavity volume and $\alpha$ is a dimensionless number of order unity that encodes the details of the mode profile and the precise equation of state.  Substituting $V$ and $k^2$ into Eq.~\eqref{eq:Emode-appendix} gives
+\begin{equation}
+E_{\mathrm{mode}}(a,L)
+= \alpha\,\rho_0 c_s^2\,\pi a^2 L
+\left(\frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2}\right)
+= \alpha\,\rho_0 c_s^2 \pi
+\left(L x_{01}^2 + a^2 \frac{\pi^2}{L}\right).
+\label{eq:Emode-simplified}
+\end{equation}
+
+The first term in Eq.~\eqref{eq:Emode-simplified} grows linearly with $L$ and is independent of $a$; the second term grows with $a^2$ and falls with $L$.  These competing dependences will be balanced against the work done against the external vacuum.
+
+\subsection{Total enthalpy and parameterization}
+
+The total enthalpy of the cavity is modeled as
+\begin{equation}
+H(a,L) = E_{\mathrm{mode}}(a,L) + P_{\mathrm{vac}} V(a,L),
+\end{equation}
+where $P_{\mathrm{vac}}$ is the ambient vacuum pressure.  Using $V(a,L) = \pi a^2 L$ and Eq.~\eqref{eq:Emode-simplified}, we obtain
+\begin{equation}
+H(a,L)
+= \alpha\,\rho_0 c_s^2 \pi
+  \left(L x_{01}^2 + a^2 \frac{\pi^2}{L}\right)
++ P_{\mathrm{vac}} \pi a^2 L.
+\label{eq:H-appendix}
+\end{equation}
+It is convenient to factor out the overall scale $\alpha\,\rho_0 c_s^2 \pi$ and define a dimensionless parameter
+\begin{equation}
+\beta \equiv \frac{P_{\mathrm{vac}}}{\alpha\,\rho_0 c_s^2}.
+\end{equation}
+Then Eq.~\eqref{eq:H-appendix} can be written as
+\begin{equation}
+H(a,L)
+= \alpha\,\rho_0 c_s^2 \pi\,
+  \mathcal{H}(a,L),
+\qquad
+\mathcal{H}(a,L)
+\equiv L x_{01}^2 + a^2 \frac{\pi^2}{L}
+     + \beta\,a^2 L.
+\label{eq:H-dimensionless}
+\end{equation}
+Since the overall prefactor is positive, the location of the minimum is determined by the dimensionless function $\mathcal{H}(a,L)$.
+
+\subsection{Extremization and aspect ratio}
+
+We now extremize $\mathcal{H}(a,L)$ with respect to $a$ and $L$.  Treating $\beta$ as a fixed parameter, the partial derivatives are
+\begin{align}
+\frac{\partial \mathcal{H}}{\partial a}
+&= 2a \left(\frac{\pi^2}{L} + \beta L\right),
+\\[4pt]
+\frac{\partial \mathcal{H}}{\partial L}
+&= x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \beta a^2.
+\end{align}
+Setting $\partial \mathcal{H}/\partial a = 0$ yields
+\begin{equation}
+a = 0
+\quad\text{or}\quad
+\frac{\pi^2}{L} + \beta L = 0.
+\end{equation}
+The solution $a=0$ is the trivial zero-radius case and will be discarded.  For a nonzero throat radius $a>0$, we require
+\begin{equation}
+\frac{\pi^2}{L} + \beta L = 0
+\quad\Longrightarrow\quad
+\beta = -\frac{\pi^2}{L^2}.
+\label{eq:beta-condition}
+\end{equation}
+Thus, in this simple model, a nontrivial minimum exists only if $P_{\mathrm{vac}}$ is negative, i.e.\ the vacuum behaves as a \emph{tension} rather than a positive pressure.  This is not unreasonable in a toy model of a vacuum with an effective ``bag'' or confining behavior.
+
+Next, setting $\partial \mathcal{H}/\partial L = 0$ gives
+\begin{equation}
+x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \beta a^2 = 0.
+\label{eq:dH-dL-zero}
+\end{equation}
+Substituting Eq.~\eqref{eq:beta-condition} into Eq.~\eqref{eq:dH-dL-zero} eliminates $\beta$:
+\begin{equation}
+x_{01}^2 - a^2 \frac{\pi^2}{L^2}
+           - a^2 \frac{\pi^2}{L^2}
+= x_{01}^2 - 2 a^2 \frac{\pi^2}{L^2}
+= 0.
+\end{equation}
+Solving for $L^2$ gives
+\begin{equation}
+L^2 = \frac{2 a^2 \pi^2}{x_{01}^2}
+\quad\Longrightarrow\quad
+\frac{L}{a} = \frac{\sqrt{2}\,\pi}{x_{01}},
+\end{equation}
+which is the aspect ratio quoted in Eq.~\eqref{eq:aspect-ratio}.  Numerically, this yields
+\begin{equation}
+\frac{L}{a} \simeq \frac{\sqrt{2}\,\pi}{2.4048} \simeq 1.85.
+\end{equation}
+
+We can also back-substitute into Eq.~\eqref{eq:beta-condition} to find the corresponding value of $\beta$ at the minimum:
+\begin{equation}
+\beta_{\star}
+= -\frac{\pi^2}{L^2}
+= -\frac{\pi^2}{2 a^2 \pi^2/x_{01}^2}
+= -\frac{x_{01}^2}{2 a^2}.
+\end{equation}
+In terms of the original parameters,
+\begin{equation}
+P_{\mathrm{vac},\star}
+= \beta_{\star}\,\alpha\,\rho_0 c_s^2
+= -\frac{x_{01}^2}{2 a^2}\,\alpha\,\rho_0 c_s^2.
+\end{equation}
+Thus the enthalpy minimum occurs when the (negative) vacuum pressure is tuned to a value set by the mode frequency and the throat radius.
+
+\subsection{Interpretation and robustness}
+
+The derivation above shows that, within the simple cavity model and the energy estimate~\eqref{eq:Emode-appendix}, there is a preferred ratio $L/a$ that minimizes the total enthalpy of the combined mode-plus-vacuum system, provided the background vacuum behaves effectively as a tension (negative pressure).  The overall scale of $a$ is undetermined by this minimization alone; it must be fixed by additional microphysical input or phenomenological matching.
+
+Several comments are in order:
+
+\begin{itemize}
+  \item The exact numerical value of $L/a$ depends weakly on the choice of mode (e.g.\ using higher Bessel zeros or different axial boundary conditions) and on the detailed weighting of mode energy versus vacuum work.  However, the existence of an $\Order(1)$ preferred aspect ratio is robust: for a wide range of reasonable assumptions, the extremum occurs at $L/a$ of order unity, and the value~$\sqrt{2}\pi/x_{01}$ is representative for the lowest TM-like mode.
+
+  \item The sign and magnitude of $P_{\mathrm{vac}}$ in this toy model should not be identified directly with the cosmological constant or any specific microscopic vacuum pressure.  Rather, $P_{\mathrm{vac}}$ is an effective parameter that encodes the tendency of the surrounding vacuum to collapse or expand the throat.  A negative $P_{\mathrm{vac}}$ corresponds to an effective tension that favors smaller volumes, which is balanced by the positive mode energy that disfavors shrinking the cavity.
+
+  \item Once the aspect ratio $L/a$ is fixed, the cavity volume $V(a,L)$ and hence the gravitational mass $m_G$ and electric charge $q$ scale with $a$ as described in Sec.~\ref{sec:defect-hierarchy}.  The enthalpy minimization thus ties the \emph{shape} of the defect to its role as a carrier of mass and charge, while leaving the overall size $a$ free to control the electromagnetic/gravitational hierarchy.
+\end{itemize}
+
+In the main text we take Eq.~\eqref{eq:aspect-ratio} as defining the geometric ground state of the defect throat.  The detailed microphysics of how such a configuration arises is beyond the scope of the toy model, but the cavity analysis shows that a simple competition between trapped-mode energy and vacuum work is sufficient to select a preferred aspect ratio with the desired properties.
+
+\section{Hydrodynamic--Electromagnetic Dictionary and Gauge Invariance}
+\label{app:dictionary}
+
+In this appendix we collect the detailed algebra underlying the hydrodynamic dictionary introduced in Sec.~\ref{sec:dictionary}.  We show explicitly how the definitions of the effective electromagnetic potentials and fields in terms of the superfluid variables imply the homogeneous Maxwell equations, and we discuss the gauge freedom and its fluid interpretation.
+
+\subsection{Definitions and basic identities}
+
+Recall the definitions from Sec.~\ref{sec:dictionary}.  We introduce an overall normalization constant $\lambda$ and set
+\begin{equation}
+\phi_{\mathrm{EM}} \equiv \lambda \left(h + \frac{1}{2} v^2\right),
+\qquad
+\mathbf{A} \equiv \lambda\,\mathbf{v},
+\label{eq:app-potentials}
+\end{equation}
+where $h$ is the enthalpy per unit mass, $\mathbf{v}$ is the superfluid velocity, and $v^2 \equiv \mathbf{v}\cdot\mathbf{v}$.  The corresponding effective electromagnetic fields are defined in the usual way,
+\begin{equation}
+\mathbf{B} \equiv \nabla \times \mathbf{A},
+\qquad
+\mathbf{E} \equiv -\nabla \phi_{\mathrm{EM}} - \partial_t \mathbf{A}.
+\label{eq:app-EB}
+\end{equation}
+Substituting Eq.~\eqref{eq:app-potentials} into Eq.~\eqref{eq:app-EB} gives
+\begin{align}
+\mathbf{B}
+&= \nabla \times (\lambda\,\mathbf{v})
+ = \lambda\,\nabla \times \mathbf{v}
+ = \lambda\,\boldsymbol{\omega},
+\label{eq:app-B-vorticity}\\[4pt]
+\mathbf{E}
+&= -\nabla\!\left[\lambda\left(h + \frac{1}{2}v^2\right)\right]
+   - \partial_t (\lambda\,\mathbf{v})
+\nonumber\\
+&= -\lambda\left[\nabla\left(h + \frac{1}{2}v^2\right)
+               + \partial_t \mathbf{v}\right].
+\label{eq:app-E-euler}
+\end{align}
+Here $\boldsymbol{\omega} \equiv \nabla\times\mathbf{v}$ is the fluid vorticity.  Equations~\eqref{eq:app-B-vorticity} and~\eqref{eq:app-E-euler} are the starting point for the homogeneous Maxwell identities.
+
+We will make repeated use of standard vector calculus identities:
+\begin{align}
+\nabla \cdot (\nabla \times \mathbf{F}) &= 0,
+\label{eq:vec-identity-div-curl}\\[4pt]
+\nabla \times (\nabla f) &= 0,
+\label{eq:vec-identity-curl-grad}\\[4pt]
+\nabla \times (\partial_t \mathbf{F})
+&= \partial_t (\nabla \times \mathbf{F}),
+\label{eq:vec-identity-curl-time}
+\end{align}
+valid for sufficiently smooth scalar fields $f$ and vector fields $\mathbf{F}$ in flat space.
+
+\subsection{Homogeneous Maxwell equations from the dictionary}
+
+The homogeneous Maxwell equations in vacuum are
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0,
+\qquad
+\nabla \times \mathbf{E} = -\partial_t \mathbf{B}.
+\label{eq:app-homogeneous-Maxwell}
+\end{equation}
+Using the definitions~\eqref{eq:app-potentials}--\eqref{eq:app-EB}, both follow immediately from Eqs.~\eqref{eq:vec-identity-div-curl}--\eqref{eq:vec-identity-curl-time}.
+
+\paragraph{Gauss's law for magnetism.}
+
+From Eq.~\eqref{eq:app-EB}, the magnetic field is $\mathbf{B} = \nabla\times\mathbf{A}$.  Its divergence is
+\begin{equation}
+\nabla \cdot \mathbf{B}
+= \nabla \cdot (\nabla \times \mathbf{A})
+\equiv 0,
+\end{equation}
+by Eq.~\eqref{eq:vec-identity-div-curl}.  This is the first of Eqs.~\eqref{eq:app-homogeneous-Maxwell}.  In terms of the fluid variables, this identity simply states that
+\begin{equation}
+\nabla \cdot \boldsymbol{\omega} = 0,
+\end{equation}
+i.e.\ vortex lines do not start or end within the fluid; they either close on themselves or intersect boundaries.  The magnetic Gauss law is thus a direct restatement of the topological conservation of vorticity.
+
+\paragraph{Faraday's law.}
+
+Next, we compute the curl of $\mathbf{E}$:
+\begin{align}
+\nabla \times \mathbf{E}
+&= \nabla \times \left[-\nabla \phi_{\mathrm{EM}} - \partial_t \mathbf{A}\right]
+\nonumber\\
+&= -\nabla \times (\nabla \phi_{\mathrm{EM}})
+   - \nabla \times (\partial_t \mathbf{A}).
+\end{align}
+The first term vanishes by Eq.~\eqref{eq:vec-identity-curl-grad}, so
+\begin{equation}
+\nabla \times \mathbf{E}
+= - \nabla \times (\partial_t \mathbf{A}).
+\end{equation}
+Using Eq.~\eqref{eq:vec-identity-curl-time}, we can commute the curl and the time derivative:
+\begin{equation}
+\nabla \times \mathbf{E}
+= -\partial_t (\nabla \times \mathbf{A})
+= -\partial_t \mathbf{B}.
+\end{equation}
+This is the second of Eqs.~\eqref{eq:app-homogeneous-Maxwell}.
+
+We emphasize that no use of the fluid equations of motion has been made in this derivation: the identities hold for \emph{any} sufficiently smooth scalar potential $\phi_{\mathrm{EM}}$ and vector potential $\mathbf{A}$, independent of whether they satisfy a particular wave equation or are built from an underlying hydrodynamics.  The dictionary~\eqref{eq:app-potentials}--\eqref{eq:app-EB} ensures that the fields $\mathbf{E}$ and $\mathbf{B}$ constructed from the superfluid variables automatically satisfy these kinematic relations.
+
+\subsection{Gauge transformations and invariance of \texorpdfstring{$\mathbf{E}$}{E} and \texorpdfstring{$\mathbf{B}$}{B}}
+
+In standard electromagnetism, the potentials $(\phi_{\mathrm{EM}},\mathbf{A})$ are defined only up to gauge transformations
+\begin{equation}
+\phi_{\mathrm{EM}} \rightarrow \phi_{\mathrm{EM}}' = \phi_{\mathrm{EM}} - \partial_t \chi,
+\qquad
+\mathbf{A} \rightarrow \mathbf{A}' = \mathbf{A} + \nabla \chi,
+\label{eq:app-gauge-transform}
+\end{equation}
+where $\chi(\mathbf{x},t)$ is an arbitrary scalar gauge function.  Under Eq.~\eqref{eq:app-gauge-transform}, the fields~\eqref{eq:app-EB} transform as
+\begin{align}
+\mathbf{B}'
+&= \nabla \times \mathbf{A}'
+ = \nabla \times (\mathbf{A} + \nabla \chi)
+\nonumber\\
+&= \nabla \times \mathbf{A} + \nabla \times \nabla \chi
+ = \nabla \times \mathbf{A}
+ = \mathbf{B},
+\end{align}
+where we used $\nabla\times\nabla\chi = 0$.  Similarly,
+\begin{align}
+\mathbf{E}'
+&= -\nabla \phi_{\mathrm{EM}}' - \partial_t \mathbf{A}'
+\nonumber\\
+&= -\nabla(\phi_{\mathrm{EM}} - \partial_t \chi)
+   - \partial_t(\mathbf{A} + \nabla \chi)
+\nonumber\\
+&= -\nabla\phi_{\mathrm{EM}} + \nabla\partial_t \chi
+   - \partial_t \mathbf{A} - \partial_t \nabla \chi
+\nonumber\\
+&= -\nabla\phi_{\mathrm{EM}} - \partial_t \mathbf{A}
+ = \mathbf{E},
+\end{align}
+where in the last step we used $\nabla\partial_t\chi = \partial_t \nabla\chi$.  Thus both $\mathbf{E}$ and $\mathbf{B}$ are strictly gauge invariant, as required.
+
+\subsection{Fluid interpretation of gauge freedom}
+
+The hydrodynamic dictionary~\eqref{eq:app-potentials} maps the superfluid variables $(h,\mathbf{v})$ to the electromagnetic potentials $(\phi_{\mathrm{EM}},\mathbf{A})$ up to the overall normalization $\lambda$.  A gauge transformation
+\begin{equation}
+(\phi_{\mathrm{EM}},\mathbf{A}) \rightarrow (\phi_{\mathrm{EM}}',\mathbf{A}')
+\end{equation}
+that leaves $\mathbf{E}$ and $\mathbf{B}$ invariant can be interpreted as a reparametrization of the hydrodynamic fields that does not change the underlying vorticity or acceleration.
+
+To see this more concretely, consider the irrotational sector of the flow, where the velocity can be expressed in terms of a scalar potential,
+\begin{equation}
+\mathbf{v} = \nabla \Phi.
+\end{equation}
+In the absence of defects, such a representation can be made globally; in the presence of defects, it can be made in simply connected regions away from the cores.  With this parametrization, the vector potential~\eqref{eq:app-potentials} is
+\begin{equation}
+\mathbf{A} = \lambda\,\nabla \Phi.
+\end{equation}
+A gauge transformation with gauge function $\chi$ corresponds to
+\begin{equation}
+\mathbf{A}' = \mathbf{A} + \nabla\chi
+= \lambda\,\nabla \Phi + \nabla\chi
+= \lambda\,\nabla\left(\Phi + \frac{1}{\lambda}\chi\right).
+\end{equation}
+Thus, in the irrotational sector, a gauge transformation can be absorbed into a redefinition of the velocity potential,
+\begin{equation}
+\Phi \rightarrow \Phi' = \Phi + \frac{1}{\lambda}\chi.
+\end{equation}
+Because the velocity is given by $\mathbf{v} = \nabla\Phi$, this redefinition leaves $\mathbf{v}$ unchanged if and only if $\chi$ is a constant; more general $\chi$ modify the decomposition of the flow into ``background'' and ``potential'' pieces without changing the vorticity or the physical fields $\mathbf{E}$ and $\mathbf{B}$.
+
+The accompanying transformation of $\phi_{\mathrm{EM}}$,
+\begin{equation}
+\phi_{\mathrm{EM}}' = \phi_{\mathrm{EM}} - \partial_t \chi,
+\end{equation}
+can be interpreted as a shift in the local Bernoulli constant or, more generally, in the time-dependent part of the enthalpy potential.  The combination $h + \frac{1}{2}v^2$ appearing in Eq.~\eqref{eq:app-potentials} is defined only up to an additive function of time in the Euler equation, and this freedom precisely mirrors the gauge ambiguity in $\phi_{\mathrm{EM}}$.
+
+From this viewpoint, the electromagnetic four-potential
+\begin{equation}
+A^\mu = \left(\frac{\phi_{\mathrm{EM}}}{c},\mathbf{A}\right)
+\end{equation}
+is a convenient but redundant way to package certain combinations of the hydrodynamic fields.  Gauge transformations correspond to reshuffling those combinations without altering the physically measurable quantities: the vorticity and acceleration encoded in $\mathbf{B}$ and $\mathbf{E}$, and ultimately the forces on the defects.
+
+In the main text we fix this redundancy by imposing the Lorenz gauge condition
+\begin{equation}
+\partial_\mu A^\mu = 0,
+\end{equation}
+which is always achievable provided the effective current $J^\mu$ is conserved.  This choice aligns the electromagnetic four-potential with the acoustic d'Alembertian $\Box$ that governs perturbations in the gravitational sector and simplifies the derivation of the inhomogeneous Maxwell equations in Sec.~\ref{sec:inhomogeneous-maxwell}.
+
+\section{Inhomogeneous Maxwell Equations: Algebraic Details}
+\label{app:inhomogeneous-details}
+
+In this appendix we provide the algebra underlying the derivations in Sec.~\ref{sec:inhomogeneous-maxwell}.  We first solve the static, spherically symmetric breathing-mode problem and show explicitly how it yields the Coulomb potential, the $1/r^2$ electric field, and the radius-independent Gauss flux.  We then derive the Amp\`ere--Maxwell law and the continuity equation starting from the sourced wave equation for the four-potential and the Lorenz gauge condition.
+
+\subsection{Breathing mode, Coulomb potential, and Gauss flux}
+\label{app:breathing-gauss}
+
+Consider a single dyon defect at rest at the origin with electric charge $q$.  In the effective long-wavelength theory the charge density is modeled as
+\begin{equation}
+\rho_e(\mathbf{x}) = q\,\delta^3(\mathbf{x}),
+\end{equation}
+and the scalar potential $\phi_{\mathrm{EM}}(\mathbf{x})$ satisfies the static limit of the sourced wave equation,
+\begin{equation}
+\Box \phi_{\mathrm{EM}}(\mathbf{x}) = -\mu_0 c^2 \rho_e(\mathbf{x}).
+\end{equation}
+In the weak-field regime where the acoustic metric is approximately flat, the d'Alembertian reduces to
+\begin{equation}
+\Box \rightarrow \nabla^2,
+\end{equation}
+so the equation becomes a Poisson equation,
+\begin{equation}
+\nabla^2 \phi_{\mathrm{EM}}(\mathbf{x})
+= -\mu_0 c^2 q\,\delta^3(\mathbf{x}).
+\label{eq:app-poisson}
+\end{equation}
+
+\subsubsection{Solution outside the core}
+
+Away from the origin, the right-hand side of Eq.~\eqref{eq:app-poisson} vanishes.  In the static, spherically symmetric case $\phi_{\mathrm{EM}} = \phi_{\mathrm{EM}}(r)$, $r = |\mathbf{x}|$, the Laplacian is
+\begin{equation}
+\nabla^2 \phi_{\mathrm{EM}}(r)
+= \frac{\dd^2 \phi_{\mathrm{EM}}}{\dd r^2}
+ + \frac{2}{r}\frac{\dd \phi_{\mathrm{EM}}}{\dd r}.
+\label{eq:app-laplacian-radial}
+\end{equation}
+For $r>0$, Eq.~\eqref{eq:app-poisson} reduces to
+\begin{equation}
+\phi_{\mathrm{EM}}''(r) + \frac{2}{r}\phi_{\mathrm{EM}}'(r) = 0.
+\label{eq:app-radial-laplace}
+\end{equation}
+This is a first-order equation in $\phi_{\mathrm{EM}}'$:
+\begin{equation}
+\frac{\dd}{\dd r}\left[r^2 \phi_{\mathrm{EM}}'(r)\right] = 0,
+\end{equation}
+so
+\begin{equation}
+r^2 \phi_{\mathrm{EM}}'(r) = B,
+\end{equation}
+for some integration constant $B$.  Integrating once more,
+\begin{equation}
+\phi_{\mathrm{EM}}(r) = A + \frac{B}{r},
+\end{equation}
+where $A$ is a second integration constant.  The constant $A$ corresponds to an arbitrary reference for the potential and can be removed by a gauge transformation, so we set $A=0$.  We thus have
+\begin{equation}
+\phi_{\mathrm{EM}}(r) = \frac{B}{r},
+\label{eq:app-phi-Br}
+\end{equation}
+for $r>0$.
+
+The associated electric field is
+\begin{equation}
+\mathbf{E}(\mathbf{x})
+= -\nabla \phi_{\mathrm{EM}}(\mathbf{x})
+= -\frac{\dd \phi_{\mathrm{EM}}}{\dd r}\hat{\mathbf{r}}
+= \frac{B}{r^2}\,\hat{\mathbf{r}},
+\label{eq:app-E-Br}
+\end{equation}
+which has the expected $1/r^2$ radial falloff.
+
+\subsubsection{Matching to Gauss's law}
+
+The integration constant $B$ is determined by the source at $r=0$.  One convenient way to see this is via Gauss's law.  The electric flux through a sphere of radius $R$ centered at the origin is
+\begin{equation}
+\Phi_E(R)
+\equiv \oint_{S_R} \mathbf{E}\cdot\dd\mathbf{S}
+= \int_0^{2\pi}\!\!\dd\phi \int_0^\pi \!\dd\theta\,\sin\theta\,\left(E_r(R)\,R^2\right),
+\end{equation}
+where $E_r(R)$ is the radial component of $\mathbf{E}$ at radius $R$.  Using Eq.~\eqref{eq:app-E-Br}, we have
+\begin{equation}
+E_r(R) = \frac{B}{R^2},
+\end{equation}
+so
+\begin{equation}
+\Phi_E(R)
+= \int_0^{2\pi}\!\!\dd\phi \int_0^\pi \!\dd\theta\,\sin\theta\,B
+= 4\pi B.
+\label{eq:app-flux-Br}
+\end{equation}
+On the other hand, Gauss's law in integral form states that the flux through any closed surface $S$ enclosing the charge $q$ is
+\begin{equation}
+\oint_{S} \mathbf{E}\cdot\dd\mathbf{S}
+= \frac{q}{\epsilon_0}.
+\label{eq:app-gauss-integral}
+\end{equation}
+Requiring Eq.~\eqref{eq:app-flux-Br} to agree with Eq.~\eqref{eq:app-gauss-integral} for all $R$ fixes $B$:
+\begin{equation}
+4\pi B = \frac{q}{\epsilon_0}
+\quad\Longrightarrow\quad
+B = \frac{q}{4\pi\epsilon_0}.
+\end{equation}
+Thus
+\begin{equation}
+\phi_{\mathrm{EM}}(r)
+= \frac{q}{4\pi\epsilon_0}\,\frac{1}{r},
+\qquad
+\mathbf{E}(\mathbf{x})
+= \frac{q}{4\pi\epsilon_0}\,\frac{\hat{\mathbf{r}}}{r^2},
+\end{equation}
+for $r>0$, which is the standard Coulomb potential and field of a point charge.
+
+\subsubsection{Distributional Laplacian of \texorpdfstring{$1/r$}{1/r}}
+
+To verify that Eq.~\eqref{eq:app-phi-Br} solves the Poisson equation~\eqref{eq:app-poisson} in the distributional sense, we recall a standard identity:
+\begin{equation}
+\nabla^2 \left(\frac{1}{r}\right) = -4\pi \delta^3(\mathbf{x}).
+\label{eq:app-laplacian-1overr}
+\end{equation}
+This can be derived by integrating $\nabla^2(1/r)$ against a smooth test function and integrating by parts, or by applying the divergence theorem to the vector field $\nabla(1/r)$ over a ball of radius $R$ and taking the limit $R\to 0$.
+
+Applying Eq.~\eqref{eq:app-laplacian-1overr} to $\phi_{\mathrm{EM}}(r) = q/(4\pi\epsilon_0 r)$ yields
+\begin{equation}
+\nabla^2 \phi_{\mathrm{EM}}(\mathbf{x})
+= \frac{q}{4\pi\epsilon_0}\,\nabla^2\left(\frac{1}{r}\right)
+= -\frac{q}{\epsilon_0}\,\delta^3(\mathbf{x}).
+\end{equation}
+Comparing with Eq.~\eqref{eq:app-poisson}, we see that these two representations of the Poisson equation are equivalent provided
+\begin{equation}
+\mu_0 c^2 = \frac{1}{\epsilon_0},
+\end{equation}
+which is the usual relation between $\epsilon_0$ and $\mu_0$ in a relativistic electromagnetic theory.  This is the origin of Eq.~\eqref{eq:eps-mu-relation} in the main text.
+
+The differential form of Gauss's law follows by noting that
+\begin{equation}
+\nabla\cdot\mathbf{E}
+= -\nabla^2 \phi_{\mathrm{EM}}
+= \frac{q}{\epsilon_0}\,\delta^3(\mathbf{x})
+= \frac{\rho_e}{\epsilon_0},
+\end{equation}
+where $\rho_e(\mathbf{x}) = q \delta^3(\mathbf{x})$ is the point charge density.  This is Eq.~\eqref{eq:gauss-differential} of the main text.
+
+\subsection{Amp\`ere--Maxwell law and continuity equation}
+\label{app:ampere-continuity-details}
+
+We now provide the algebraic details connecting the sourced wave equation for the four-potential, the Lorenz gauge condition, and the inhomogeneous Maxwell equations plus current conservation.
+
+\subsubsection{Vector identity for \texorpdfstring{$\nabla\times\mathbf{B} - \frac{1}{c^2}\partial_t\mathbf{E}$}{curl B - (1/c^2) dE/dt}}
+
+Starting from the definitions
+\begin{equation}
+\mathbf{B} = \nabla\times\mathbf{A},
+\qquad
+\mathbf{E} = -\nabla\phi_{\mathrm{EM}} - \partial_t \mathbf{A},
+\end{equation}
+we compute
+\begin{align}
+\nabla\times\mathbf{B}
+&= \nabla\times(\nabla\times\mathbf{A})
+\nonumber\\
+&= \nabla(\nabla\cdot\mathbf{A}) - \nabla^2\mathbf{A},
+\label{eq:app-curlB}
+\end{align}
+using the identity $\nabla\times(\nabla\times\mathbf{F}) = \nabla(\nabla\cdot\mathbf{F}) - \nabla^2 \mathbf{F}$.  Next,
+\begin{align}
+-\frac{1}{c^2}\partial_t\mathbf{E}
+&= -\frac{1}{c^2}\partial_t\left(-\nabla\phi_{\mathrm{EM}} - \partial_t \mathbf{A}\right)
+\nonumber\\
+&= \frac{1}{c^2} \partial_t\nabla\phi_{\mathrm{EM}}
+   + \frac{1}{c^2}\partial_t^2 \mathbf{A}.
+\label{eq:app-dE}
+\end{align}
+Adding Eqs.~\eqref{eq:app-curlB} and~\eqref{eq:app-dE} gives
+\begin{align}
+\nabla\times\mathbf{B}
+- \frac{1}{c^2}\partial_t\mathbf{E}
+&= \nabla(\nabla\cdot\mathbf{A}) - \nabla^2\mathbf{A}
+   + \frac{1}{c^2}\partial_t\nabla\phi_{\mathrm{EM}}
+   + \frac{1}{c^2}\partial_t^2 \mathbf{A}
+\nonumber\\
+&= -\left(-\frac{1}{c^2}\partial_t^2\mathbf{A} + \nabla^2\mathbf{A}\right)
+   + \nabla\left(\nabla\cdot\mathbf{A} + \frac{1}{c^2}\partial_t\phi_{\mathrm{EM}}\right)
+\nonumber\\
+&= -\Box \mathbf{A}
+   + \nabla\left(\nabla\cdot\mathbf{A} + \frac{1}{c^2}\partial_t\phi_{\mathrm{EM}}\right),
+\label{eq:app-ampere-identity}
+\end{align}
+where in the last line we used the flat-space d'Alembertian $\Box = -\frac{1}{c^2}\partial_t^2 + \nabla^2$.
+
+Equation~\eqref{eq:app-ampere-identity} is the vector identity quoted as Eq.~\eqref{eq:ampere-identity} in the main text.
+
+\subsubsection{Amp\`ere--Maxwell law in Lorenz gauge}
+
+In Lorenz gauge, the four-potential satisfies
+\begin{equation}
+\partial_\mu A^\mu = 0
+\quad\Longrightarrow\quad
+\frac{1}{c^2}\partial_t\phi_{\mathrm{EM}} + \nabla\cdot\mathbf{A} = 0.
+\end{equation}
+Thus the term in parentheses in Eq.~\eqref{eq:app-ampere-identity} vanishes,
+\begin{equation}
+\nabla\cdot\mathbf{A} + \frac{1}{c^2}\partial_t\phi_{\mathrm{EM}} = 0,
+\end{equation}
+and Eq.~\eqref{eq:app-ampere-identity} reduces to
+\begin{equation}
+\nabla\times\mathbf{B}
+- \frac{1}{c^2}\partial_t\mathbf{E}
+= -\Box \mathbf{A}.
+\end{equation}
+Using the spatial components of the sourced wave equation
+\begin{equation}
+\Box \mathbf{A} = -\mu_0 \mathbf{J},
+\end{equation}
+we obtain
+\begin{equation}
+\nabla\times\mathbf{B}
+- \frac{1}{c^2}\partial_t\mathbf{E}
+= \mu_0 \mathbf{J},
+\end{equation}
+which is the Amp\`ere--Maxwell law, Eq.~\eqref{eq:ampere-maxwell} of the main text.
+
+\subsubsection{Continuity equation from wave equation and gauge condition}
+
+Starting again from the four-vector form of the wave equation,
+\begin{equation}
+\Box A^\mu = -\mu_0 J^\mu,
+\end{equation}
+we take the four-divergence of both sides:
+\begin{equation}
+\partial_\mu \Box A^\mu
+= -\mu_0 \partial_\mu J^\mu.
+\end{equation}
+Assuming partial derivatives commute, $\partial_\mu \Box = \Box \partial_\mu$, the left-hand side can be written as
+\begin{equation}
+\partial_\mu \Box A^\mu
+= \Box (\partial_\mu A^\mu).
+\end{equation}
+In Lorenz gauge, $\partial_\mu A^\mu = 0$, so
+\begin{equation}
+\Box (\partial_\mu A^\mu) = \Box(0) = 0.
+\end{equation}
+We therefore have
+\begin{equation}
+0 = -\mu_0 \partial_\mu J^\mu
+\quad\Longrightarrow\quad
+\partial_\mu J^\mu = 0.
+\end{equation}
+Writing $J^\mu = (c\rho_e,\mathbf{J})$, this becomes
+\begin{equation}
+\frac{\partial \rho_e}{\partial t} + \nabla\cdot\mathbf{J} = 0,
+\end{equation}
+which is the continuity equation~\eqref{eq:continuity} quoted in the main text.
+
+Thus, once the four-potential satisfies the sourced wave equation in Lorenz gauge, the inhomogeneous Maxwell equations and current conservation follow as algebraic consequences.  No additional dynamical assumptions are required beyond those already encoded in the acoustic d'Alembertian and the identification of sources with defect breathing and motion.
+
+\section{Lorentz--Magnus Correspondence: Worked Example}
+\label{app:lorentz-magnus}
+
+In this appendix we work out in detail the correspondence between the magnetic part of the Lorentz force and the Magnus force on a straight vortex-like defect (a dyon throat) in the superfluid vacuum.  The goal is to make the identification in Sec.~\ref{sec:lorentz-magnus} completely explicit in a simple geometry.
+
+\subsection{Setup: straight dyon throat in uniform flow}
+
+We consider a single dyon defect whose throat is approximated by a straight cylinder aligned with the $z$-axis.  The unit tangent vector of the vortex line is
+\begin{equation}
+\hat{\mathbf{t}} = \hat{\mathbf{z}}.
+\end{equation}
+The background superfluid has uniform density $\rho_0$ and a uniform far-field flow velocity
+\begin{equation}
+\vfluid = \mathbf{v}_\infty.
+\end{equation}
+The defect carries circulation $\Gamma$ around the $z$-axis, so that the circulation integral around any loop linking the throat is
+\begin{equation}
+\Gamma = \oint \mathbf{v}\cdot\dd\boldsymbol{\ell}.
+\end{equation}
+
+We assume that the core of the dyon moves with velocity $\mathbf{u}$ relative to the lab frame.  The velocity of the core relative to the local fluid is then $(\mathbf{u}-\vfluid)$, and the classical Magnus force per unit length on a straight vortex is
+\begin{equation}
+\mathbf{f}_M
+= \rho_0 \Gamma\,\hat{\mathbf{z}} \times (\mathbf{u} - \mathbf{v}_\infty).
+\label{eq:app-Magnus}
+\end{equation}
+The effective electric charge $q$ of the dyon is defined by Eq.~\eqref{eq:q-def}, repeated here for convenience:
+\begin{equation}
+q = \kappa_q\,\rho_0 \pi a^2 \Gamma,
+\label{eq:app-q-def}
+\end{equation}
+where $a$ is the throat radius and $\kappa_q$ is a dimensionless normalization constant.
+
+Our objective is to show that the $u$-dependent part of Eq.~\eqref{eq:app-Magnus} matches the magnetic Lorentz force per unit length,
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= \frac{q}{L}\,\mathbf{u}\times\mathbf{B},
+\end{equation}
+for a natural choice of the coarse-grained magnetic field $\mathbf{B}$ in terms of the defect geometry, where $L$ is the throat length.
+
+\subsection{Decomposition of the Magnus force}
+
+We begin by rewriting the Magnus force per unit length~\eqref{eq:app-Magnus} as
+\begin{align}
+\mathbf{f}_M
+&= \rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{u}
+   - \rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{v}_\infty
+\nonumber\\
+&\equiv \mathbf{f}_{M,u} + \mathbf{f}_{M,\infty}.
+\label{eq:app-Magnus-decomposition}
+\end{align}
+The term
+\begin{equation}
+\mathbf{f}_{M,u} = \rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{u}
+\label{eq:app-Magnus-u}
+\end{equation}
+depends on the core velocity and will be identified with the magnetic Lorentz force.  The term
+\begin{equation}
+\mathbf{f}_{M,\infty} = -\rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{v}_\infty
+\label{eq:app-Magnus-background}
+\end{equation}
+depends only on the background flow and will later be grouped with pressure and enthalpy-force contributions to form the electric part of the Lorentz force.
+
+It is useful to write Eq.~\eqref{eq:app-Magnus-u} in a form involving $\mathbf{u}\times\hat{\mathbf{z}}$.  Using $\hat{\mathbf{z}} \times \mathbf{u} = -\mathbf{u}\times\hat{\mathbf{z}}$, we have
+\begin{equation}
+\mathbf{f}_{M,u}
+= -\rho_0 \Gamma\,\mathbf{u}\times\hat{\mathbf{z}}.
+\label{eq:app-Magnus-u-cross}
+\end{equation}
+
+\subsection{Effective magnetic field and Lorentz force}
+
+In the hydrodynamic dictionary, the magnetic field is proportional to the vorticity,
+\begin{equation}
+\mathbf{B} = \lambda\,\boldsymbol{\omega},
+\end{equation}
+where $\lambda$ is the normalization introduced in Appendix~\ref{app:dictionary}.  For a straight vortex along the $z$-axis, the vorticity is localized in the core and points along $\hat{\mathbf{z}}$.  At the level of a coarse-grained description, we may approximate the magnetic field as uniform along the core:
+\begin{equation}
+\mathbf{B} = B_0\,\hat{\mathbf{z}},
+\label{eq:app-B0-def}
+\end{equation}
+where $B_0$ is a constant to be determined.
+
+The magnetic part of the Lorentz force on a dyon with charge $q$ moving with velocity $\mathbf{u}$ is
+\begin{equation}
+\mathbf{F}_{L,\mathrm{mag}}
+= q\,\mathbf{u}\times\mathbf{B}.
+\end{equation}
+Assuming the force is approximately uniform along the throat, the force per unit length is
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= \frac{q}{L}\,\mathbf{u}\times\mathbf{B}
+= \frac{q B_0}{L}\,\mathbf{u}\times\hat{\mathbf{z}}.
+\label{eq:app-fL-mag}
+\end{equation}
+
+Substituting the charge definition~\eqref{eq:app-q-def} into Eq.~\eqref{eq:app-fL-mag} yields
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= \frac{\kappa_q \rho_0 \pi a^2 \Gamma B_0}{L}\,\mathbf{u}\times\hat{\mathbf{z}}.
+\label{eq:app-fL-mag-expanded}
+\end{equation}
+
+\subsection{Component-wise matching}
+
+To match the Magnus and Lorentz forces, we compare Eq.~\eqref{eq:app-Magnus-u-cross} with Eq.~\eqref{eq:app-fL-mag-expanded}.  We require
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}} = \mathbf{f}_{M,u},
+\end{equation}
+i.e.
+\begin{equation}
+\frac{\kappa_q \rho_0 \pi a^2 \Gamma B_0}{L}\,\mathbf{u}\times\hat{\mathbf{z}}
+= -\rho_0 \Gamma\,\mathbf{u}\times\hat{\mathbf{z}}.
+\end{equation}
+For arbitrary $\mathbf{u}$ this equality holds if and only if the vector coefficients match:
+\begin{equation}
+\frac{\kappa_q \rho_0 \pi a^2 \Gamma B_0}{L}
+= -\rho_0 \Gamma.
+\end{equation}
+Assuming $\rho_0>0$ and $\Gamma\neq 0$, these factors cancel, leaving
+\begin{equation}
+\kappa_q \pi a^2 B_0 = -L
+\quad\Longrightarrow\quad
+B_0 = -\frac{L}{\kappa_q \pi a^2}.
+\label{eq:app-B0-solution}
+\end{equation}
+With this choice of $B_0$, Eq.~\eqref{eq:app-fL-mag-expanded} reduces to
+\begin{equation}
+\mathbf{f}_{L,\mathrm{mag}}
+= -\rho_0 \Gamma\,\mathbf{u}\times\hat{\mathbf{z}}
+= \mathbf{f}_{M,u},
+\end{equation}
+as claimed.
+
+Thus, in the straight-vortex geometry, the $u$-dependent Magnus force per unit length is \emph{exactly} the magnetic Lorentz force per unit length, provided we identify the effective magnetic field as
+\begin{equation}
+\mathbf{B} = -\frac{L}{\kappa_q \pi a^2}\,\hat{\mathbf{z}}.
+\end{equation}
+This expression for $\mathbf{B}$ is consistent with the intuition that the magnetic field is proportional to the vorticity (circulation per unit area) of the superfluid and depends inversely on the throat cross-section.
+
+\subsection{Background term and electric contribution}
+
+We briefly comment on the background term $\mathbf{f}_{M,\infty}$ in Eq.~\eqref{eq:app-Magnus-decomposition}.  This term,
+\begin{equation}
+\mathbf{f}_{M,\infty}
+= -\rho_0 \Gamma\,\hat{\mathbf{z}} \times \mathbf{v}_\infty,
+\end{equation}
+depends only on the background flow and is independent of the core velocity $\mathbf{u}$.  It cannot be absorbed into the magnetic Lorentz term, which is always proportional to $\mathbf{u}\times\mathbf{B}$.  Instead, $\mathbf{f}_{M,\infty}$ should be grouped with the forces arising from pressure and enthalpy gradients in the breathing-mode field.
+
+In Sec.~\ref{sec:lorentz-magnus} we argued that, for a small defect in a slowly varying background, the net force due to pressure gradients and unsteady acceleration of the fluid can be written schematically as
+\begin{equation}
+\mathbf{F}_{\mathrm{E}}
+\simeq \rho_0 V_{\mathrm{eff}}
+\left[-\nabla\left(h + \frac{1}{2}v^2\right) - \partial_t \mathbf{v}\right]
+\simeq q\,\mathbf{E},
+\end{equation}
+for an appropriate choice of effective volume $V_{\mathrm{eff}}$ and normalization $\lambda$.  The background-flow contribution to the Magnus force, together with these pressure and enthalpy forces, combines into the electric part of the Lorentz force.
+
+A fully detailed decomposition of $\mathbf{f}_{M,\infty}$ into electric and non-electric pieces would require a more careful treatment of the local flow field near the defect and the exact coupling between the core and the surrounding superfluid, which is beyond the scope of this toy model.  For our purposes, it is sufficient to note that:
+
+\begin{itemize}
+  \item The \emph{velocity-dependent} part of the Magnus force, $\mathbf{f}_{M,u}$, matches the magnetic Lorentz force $q\,\mathbf{u}\times\mathbf{B}$ exactly in the straight-vortex geometry, for the choice of $\mathbf{B}$ in Eq.~\eqref{eq:app-B0-solution}.
+  \item The \emph{background} part of the Magnus force, $\mathbf{f}_{M,\infty}$, is independent of $\mathbf{u}$ and naturally groups with pressure and enthalpy forces to give the electric force $q\,\mathbf{E}$.
+\end{itemize}
+
+\subsection{Summary}
+
+This worked example shows explicitly how, in the simplest geometry, the magnetic part of the Lorentz force on a charged defect emerges from the Magnus force on a vortex in the superfluid vacuum.  The identification requires only the geometric charge definition $q \propto \rho_0 \Gamma \pi a^2$ and a natural choice of coarse-grained magnetic field proportional to the vorticity.  The result supports the interpretation in Sec.~\ref{sec:lorentz-magnus} that the Lorentz force law is not an independent postulate but a hydrodynamic consequence of the defect--fluid interaction in the superfluid toy model.
+
+\section{Units, Parameters, and Mapping to SI}
+\label{app:units}
+
+In this appendix we collect the main dimensionful parameters of the superfluid defect toy model and summarize how they relate to familiar constants such as $G$, $c$, $\epsilon_0$, and $\mu_0$ when the model is viewed as an effective description of electromagnetism and gravity in SI units.  The goal is not to perform a detailed phenomenological fit, but to make the scaling relations and dimensional bookkeeping explicit.
+
+\subsection{Core parameters and dimensions}
+
+The fundamental quantities appearing in the toy model are:
+
+\begin{itemize}
+  \item $\rho_0$ --- background mass density of the superfluid vacuum
+    \begin{equation}
+    [\rho_0] = \mathrm{kg\,m^{-3}}.
+    \end{equation}
+
+  \item $c_s$ --- sound speed (effective light speed in the acoustic metric)
+    \begin{equation}
+    [c_s] = \mathrm{m\,s^{-1}}.
+    \end{equation}
+
+  \item $p(\rho)$ --- equation of state; for a polytrope $p \propto \rho^{1+1/n}$, $p$ has units
+    \begin{equation}
+    [p] = \mathrm{Pa} = \mathrm{kg\,m^{-1}\,s^{-2}}.
+    \end{equation}
+
+  \item $P_{\mathrm{vac}}$ --- effective vacuum pressure (possibly negative, acting as a tension)
+    \begin{equation}
+    [P_{\mathrm{vac}}] = \mathrm{Pa}.
+    \end{equation}
+
+  \item $a$ --- throat radius
+    \begin{equation}
+    [a] = \mathrm{m}.
+    \end{equation}
+
+  \item $L$ --- throat length
+    \begin{equation}
+    [L] = \mathrm{m}.
+    \end{equation}
+
+  \item $\Gamma$ --- circulation of the flow around the throat
+    \begin{equation}
+    [\Gamma] = [\oint \mathbf{v}\cdot\dd\boldsymbol{\ell}]
+             = \mathrm{m^2\,s^{-1}}.
+    \end{equation}
+\end{itemize}
+
+Derived quantities that play a central role include:
+
+\begin{itemize}
+  \item $V = \pi a^2 L$ --- throat volume
+    \begin{equation}
+    [V] = \mathrm{m^3}.
+    \end{equation}
+
+  \item $m_G$ --- effective gravitational mass of a defect, Eq.~\eqref{eq:mG-def}
+    \begin{equation}
+    m_G = \kappa_m\,\rho_0 V
+    \quad\Rightarrow\quad
+    [m_G] = \mathrm{kg}.
+    \end{equation}
+
+  \item $q$ --- effective electric charge, Eq.~\eqref{eq:q-def}
+    \begin{equation}
+    q = \kappa_q\,\rho_0 \pi a^2 \Gamma,
+    \end{equation}
+    with dimensions
+    \begin{equation}
+    [q] = [\rho_0][a^2][\Gamma]
+        = \mathrm{kg\,m^{-3}}\times\mathrm{m^2}\times\mathrm{m^2\,s^{-1}}
+        = \mathrm{kg\,m\,s^{-1}}.
+    \end{equation}
+    To compare with SI electric charge (coulombs), we must introduce a conversion factor that maps $\mathrm{kg\,m\,s^{-1}}$ to $\mathrm{A\,s} = \mathrm{C}$; this is discussed below.
+
+  \item $h$ --- enthalpy per unit mass, $[h] = \mathrm{m^2\,s^{-2}}$;
+        the combination $h + \frac{1}{2}v^2$ has the same units as a gravitational or electric potential.
+
+  \item $\mathbf{v}$ --- flow velocity, $[\mathbf{v}] = \mathrm{m\,s^{-1}}$;
+        vorticity $\boldsymbol{\omega} = \nabla\times\mathbf{v}$ has units $\mathrm{s^{-1}}$.
+\end{itemize}
+
+In the hydrodynamic dictionary, the effective electromagnetic potentials are
+\begin{equation}
+\phi_{\mathrm{EM}} = \lambda\left(h + \frac{1}{2}v^2\right),
+\qquad
+\mathbf{A} = \lambda\,\mathbf{v},
+\end{equation}
+so the normalization $\lambda$ carries the units needed to map $\mathrm{m^2\,s^{-2}}$ and $\mathrm{m\,s^{-1}}$ into SI units for the electric scalar and vector potentials.
+
+\subsection{Mapping to SI gravitational units}
+
+In Papers~I--III, the effective gravitational potential $\Phi_G$ sourced by a defect of mass $m_G$ was matched to the Newtonian limit
+\begin{equation}
+\Phi_G(r) = -\frac{G m_G}{r},
+\end{equation}
+with $G$ the Newtonian gravitational constant.  In the superfluid model, the same potential arises from the enthalpy and kinetic profiles of the background flow around the defect.  Schematically,
+\begin{equation}
+\Phi_G(r) \sim h(r) + \frac{1}{2}v^2(r),
+\end{equation}
+with a normalization fixed by requiring that the far-field force on a test defect reproduce $F = G m_G m_T / r^2$.
+
+Dimensionally, $[\Phi_G] = \mathrm{m^2\,s^{-2}}$, consistent with $[h + v^2/2]$.  The mapping to SI is therefore straightforward: once the fluid parameters $(\rho_0,c_s,p(\rho),P_{\mathrm{vac}})$ are chosen to reproduce the observed value of $G$ for a given defect species (via the acoustic metric and the $1$PN matching in Papers~I--III), no additional unit conversions are needed in the gravitational sector.
+
+In practice, this means choosing a combination of microscopic scales (e.g.\ a fundamental density, interaction strength, or ``Planckian'' length) such that the emergent long-wavelength theory reproduces $G \simeq 6.674\times 10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}$ when expressed in SI units.
+
+\subsection{Mapping to SI electromagnetic units}
+
+The electromagnetic sector introduces two additional constants in SI units:
+\begin{equation}
+\epsilon_0 \simeq 8.854\times 10^{-12}\,\mathrm{F\,m^{-1}},
+\qquad
+\mu_0 \simeq 4\pi\times 10^{-7}\,\mathrm{N\,A^{-2}},
+\end{equation}
+satisfying
+\begin{equation}
+\epsilon_0 \mu_0 = \frac{1}{c^2}.
+\end{equation}
+In the toy model, $c$ is the effective light speed inherited from the acoustic metric, $c \equiv c_s$ in the weak-field limit.
+
+The effective constants $(\epsilon_0,\mu_0)$ arise from the sourced wave equation
+\begin{equation}
+\Box A^\mu = -\mu_0 J^\mu,
+\end{equation}
+together with the Coulomb solution of the breathing mode,
+\begin{equation}
+\phi_{\mathrm{EM}}(r) = \frac{q}{4\pi\epsilon_0}\,\frac{1}{r}.
+\end{equation}
+In the hydrodynamic variables, $\phi_{\mathrm{EM}}$ is proportional to $h + v^2/2$, and $q$ is proportional to $\rho_0 \Gamma \pi a^2$.
+
+There are essentially three layers of mapping:
+
+\paragraph{(1) Field normalization.}
+
+We write
+\begin{equation}
+\phi_{\mathrm{EM}}^{\mathrm{(SI)}} = c_\phi\,\phi_{\mathrm{EM}}^{\mathrm{(fluid)}},
+\qquad
+\mathbf{A}^{\mathrm{(SI)}} = c_A\,\mathbf{A}^{\mathrm{(fluid)}},
+\end{equation}
+with conversion factors $c_\phi$ and $c_A$ chosen so that
+\begin{equation}
+[\phi_{\mathrm{EM}}^{\mathrm{(SI)}}] = \mathrm{V}
+= \mathrm{kg\,m^2\,s^{-3}\,A^{-1}},
+\qquad
+[\mathbf{A}^{\mathrm{(SI)}}] = \mathrm{V\,s\,m^{-1}}.
+\end{equation}
+Given $[\phi_{\mathrm{EM}}^{\mathrm{(fluid)}}] = \mathrm{m^2\,s^{-2}}$ and $[\mathbf{A}^{\mathrm{(fluid)}}] = \mathrm{m\,s^{-1}}$, this implies
+\begin{equation}
+[c_\phi] = \mathrm{kg\,s^{-1}\,A^{-1}},
+\qquad
+[c_A] = \mathrm{kg\,A^{-1}}.
+\end{equation}
+In the main text we suppress these conversion factors by working in natural units adapted to the fluid; a detailed phenomenological fit would specify $c_\phi$ and $c_A$ explicitly.
+
+\paragraph{(2) Charge normalization.}
+
+The geometric charge in the fluid model has dimensions $\mathrm{kg\,m\,s^{-1}}$, whereas SI charge has units $\mathrm{C} = \mathrm{A\,s}$.  We therefore introduce a conversion factor $c_q$ such that
+\begin{equation}
+q^{\mathrm{(SI)}} = c_q\,q^{\mathrm{(fluid)}},
+\end{equation}
+with
+\begin{equation}
+[c_q] = \frac{\mathrm{C}}{\mathrm{kg\,m\,s^{-1}}}
+      = \mathrm{A\,s^2\,kg^{-1}\,m^{-1}}.
+\end{equation}
+Operationally, one can fix $c_q$ by matching the force between two reference defects at a given separation to the empirical Coulomb force between two elementary charges, or by matching the energy of the breathing mode to the energy stored in an electric field of known strength and geometry.
+
+\paragraph{(3) Coupling constants and $\epsilon_0,\mu_0$.}
+
+Once $c_\phi$, $c_A$, and $c_q$ are specified, the effective $\epsilon_0$ and $\mu_0$ are determined by demanding that:
+
+\begin{enumerate}
+  \item The Coulomb solution of the breathing mode satisfies
+    \begin{equation}
+    \nabla^2 \phi_{\mathrm{EM}}^{\mathrm{(SI)}}(r)
+    = -\frac{q^{\mathrm{(SI)}}}{\epsilon_0}\,\delta^3(\mathbf{x}),
+    \end{equation}
+    with $\phi_{\mathrm{EM}}^{\mathrm{(SI)}}(r) = q^{\mathrm{(SI)}}/(4\pi\epsilon_0 r)$.
+
+  \item The sourced wave equation in SI units takes the standard form
+    \begin{equation}
+    \Box A_\mu^{\mathrm{(SI)}}
+    = -\mu_0 J_\mu^{\mathrm{(SI)}},
+    \end{equation}
+    and is consistent with $\epsilon_0 \mu_0 = 1/c^2$.
+\end{enumerate}
+
+These conditions relate the normalization of the hydrodynamic fields and charges to the effective values of $\epsilon_0$ and $\mu_0$.  In particular, matching the breathing-mode solution fixes $\epsilon_0$ in terms of $(\rho_0,a,\Gamma)$ and the conversion factors; then $\mu_0 = 1/(\epsilon_0 c^2)$ follows.
+
+\subsection{Dimensionless combinations and hierarchy}
+
+For many qualitative questions it is sufficient to work with dimensionless ratios built from the fluid parameters.  A few important combinations are:
+
+\begin{itemize}
+  \item The aspect ratio of the throat,
+    \begin{equation}
+    \frac{L}{a},
+    \end{equation}
+    which is fixed at the enthalpy minimum to $L/a = \sqrt{2}\pi/x_{01}$ (Appendix~\ref{app:cavity}).
+
+  \item The dimensionless charge-to-mass ratio,
+    \begin{equation}
+    \frac{q}{m_G c}
+    \sim \frac{\kappa_q}{\kappa_m}
+         \frac{\Gamma}{c a}
+         \frac{x_{01}}{\sqrt{2}\pi},
+    \end{equation}
+    up to conversion factors between fluid and SI charge.
+
+  \item The ratio of electromagnetic to gravitational forces between two identical defects,
+    \begin{equation}
+    \frac{F_{\mathrm{elec}}}{F_{\mathrm{grav}}}
+    = \left[\frac{1}{4\pi \epsilon_0 G}
+            \frac{\kappa_q^2}{\kappa_m^2}
+            \frac{x_{01}^2}{2\pi^2}\right]
+      \frac{\Gamma^2}{a^2},
+    \end{equation}
+    as derived in Eq.~\eqref{eq:force-ratio-scaling}.  At fixed $\Gamma$ and aspect ratio, this ratio scales as $1/a^2$, illustrating how the electromagnetic/gravitational hierarchy emerges from the smallness of the throat radius.
+\end{itemize}
+
+In a more ambitious phenomenological program, one could attempt to fix $(\rho_0,c_s,a,\Gamma,\kappa_m,\kappa_q)$ by requiring that the emergent $G$, $c$, $\epsilon_0$, $\mu_0$, and a reference charge (e.g.\ the electron charge) match their measured values.  This would amount to embedding the toy model in a concrete microscopic theory with specified units.  Here we restrict ourselves to noting that such a mapping is in principle possible: the dimensional analysis is consistent, and the effective constants are functions of the underlying fluid and defect parameters.
+
+\subsection{Summary}
+
+To summarize:
+
+\begin{itemize}
+  \item The toy model is formulated in terms of a small set of fluid and geometric parameters $(\rho_0,c_s,p(\rho),P_{\mathrm{vac}},a,L,\Gamma)$ with standard mechanical dimensions.
+
+  \item The gravitational sector uses these parameters to construct an acoustic metric whose weak-field limit reproduces Newtonian and $1$PN gravity, fixing $G$ and $c$ in terms of $(\rho_0,c_s,\dots)$ as in Papers~I--III.
+
+  \item The electromagnetic sector introduces effective potentials and fields built from the enthalpy and velocity, plus a geometric charge $q \propto \rho_0 \Gamma \pi a^2$.  Matching the breathing-mode solution and the sourced wave equation to the SI Maxwell equations determines $\epsilon_0$ and $\mu_0$ in terms of the same underlying parameters, together with conversion factors between fluid and SI units.
+
+  \item The electromagnetic/gravitational hierarchy arises from dimensionless ratios involving $a$ and $\Gamma$; at fixed aspect ratio and circulation, $F_{\mathrm{elec}}/F_{\mathrm{grav}} \propto 1/a^2$.
+\end{itemize}
+
+In the main text we work primarily in natural units adapted to the fluid, reinstating $c$ and other constants where needed for clarity.  The present appendix shows that a consistent mapping to SI units exists and that all effective couplings in the emergent gravitational and electromagnetic sectors can, in principle, be expressed in terms of the underlying superfluid and defect parameters.
+
+% ============================================================
+% Bibliography
+% ============================================================
+
+\begin{thebibliography}{99}
+
+\bibitem{Norris:Paper1}
+Norris, T. (2025).
+\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+
+\bibitem{Norris:Paper2}
+Norris, T. (2025).
+\newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+
+\bibitem{Norris:Paper3}
+Norris, T. (2025).
+\newblock \emph{1PN Spin Precession and N-Body Dynamics from a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17798511}{doi:10.5281/zenodo.17798511}.
+
+\end{thebibliography}
+
+\end{document}

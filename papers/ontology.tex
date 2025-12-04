@@ -1,0 +1,3324 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tensor}
+\usepackage{authblk}
+
+\title{Brane--Bulk Throat Ontology for a Superfluid Defect Toy Universe\\
+       \large Unifying 1PN Gravity and Electromagnetism}
+\author{Trevor Norris}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper is the fifth in a series developing a ``superfluid defect toy
+universe'' in which gravity and electromagnetism emerge from the dynamics
+of a compressible superfluid.  Papers~I--III showed that a suitably tuned
+hydrodynamic energy functional reproduces Newtonian gravity and the full
+1PN Einstein--Infeld--Hoffmann dynamics for point masses and spinning
+bodies, while Paper~IV constructed an effective electromagnetic sector
+from cavity modes of a cylindrical defect.  Taken at face value, these
+results assign incompatible geometries to the same object: the gravitational
+sector requires a spherical sink in three dimensions, whereas the
+electromagnetic sector requires a cylindrical resonant cavity.  In addition,
+matching to the EIH Lagrangian forces the longitudinal part of a vector
+kernel to enter with an effective negative sign, encoded by the constraint
+$\alpha^2 = -2/5$.
+
+We resolve these tensions by promoting the defects to brane--bulk throats in
+a four--dimensional superfluid whose observable universe is a 3D brane at
+$w=0$.  Each defect is a tube of radius $a$ and depth $L$ connecting the
+brane to the bulk.  Dimensional reduction shows that the far--field
+effective 3D source is monopolar, with finite--size corrections suppressed
+by $(a/r)^2$, so the 1PN gravitational sector sees an effectively spherical
+sink.  Inside the throat, separation of variables in the 4D acoustic
+equation yields Bessel--type cavity modes; enthalpy minimization at fixed
+``charge'' selects the same preferred aspect ratio $L/a \approx 1.85$ as in
+the electromagnetic construction.  Mass is identified with drainage and
+volume deficit, while charge is identified with vorticity flux threading the
+throat.  A simple two--mode toy model then interprets $\alpha^2 = -2/5$ as
+an emergent Lorentzian signature in the space of brane--parallel and
+bulk--directed modes.  We outline how this ontology tightly constrains
+finite--size effects and organizes a future 2PN analysis, making the toy
+universe a falsifiable framework rather than a purely phenomenological fit
+to GR.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Motivation and the sphere--cylinder tension}
+\label{subsec:intro_tension}
+
+This paper is the fifth in a series developing a ``superfluid defect toy
+universe'' in which gravity and electromagnetism emerge from the dynamics
+of a compressible fluid.\footnote{For clarity, we will refer to the previous
+papers as Papers~I--IV throughout.}  In this model the vacuum is treated as a
+stiff superfluid, and massive bodies are modeled as localized defects that
+drain and stir this medium.  Far from any defect, the flow is slow and
+approximately irrotational; near the defect, nonlinear and topological
+effects become important.  The central claim of the series so far has been
+that, with a suitable choice of hydrodynamic energy functional, this
+superfluid picture reproduces the standard post–Newtonian (PN) expansion of
+general relativity (GR) at first PN order (1PN) for isolated bodies and
+$N$--body systems, while also supporting an emergent electromagnetism sector.
+
+Paper~I (the orbital paper) showed that if a defect behaves as a spherical
+sink in a three–dimensional superfluid, then the resulting potential flow
+around the defect reproduces Newtonian gravity and the 1PN perihelion
+precession of GR.  In that construction the background flow is spherically
+symmetric and purely radial on spatial slices, and the defect induces both
+a Newtonian $1/r$ potential and an additional precession term
+$\kappa_{\text{add}} = 1/2$ from hydrodynamic dressing.  Together these
+contributions fix a single orbital parameter $\beta = 3/2$, matching the GR
+prediction for perihelion advance.  Crucially, the calculation assumes that
+the defect is effectively spherical: when one tries to repeat the same
+analysis with a cylindrical defect in three dimensions, the resulting PN
+coefficients become orientation–dependent and do not reproduce GR in a
+rotationally invariant way.
+
+Paper~II (the optics paper) recast the same superfluid model in terms of an
+effective optical metric.  Light propagation in the gravitational field of a
+single defect was described in terms of refraction in a stiff polytropic
+superfluid, and it was shown that matching the GR lensing coefficient fixes
+a specific polytropic index and curvature coefficient in the optical sector.
+Again, the gravitational field is sourced by a spherically symmetric sink:
+from the point of view of the optical metric, the defect is a point–like,
+effectively spherical object.
+
+Paper~III (the spin and $N$--body paper) extended the model to include
+spin–induced frame dragging and general $N$--body interactions.  There the
+hydrodynamic energy functional was generalized to include longitudinal and
+transverse vector kernels, and the resulting 1PN dynamics were matched to
+the Einstein–Infeld–Hoffmann (EIH) Lagrangian.  The matching uniquely
+constrained the relative weight of longitudinal and transverse pieces,
+forcing the parameter
+\begin{equation}
+  \alpha^2 = -\frac{2}{5},
+\end{equation}
+which in turn implies that the longitudinal sector effectively contributes
+with a Lorentzian (negative) sign.  This is a sharp and somewhat surprising
+constraint: no purely Euclidean, positive–definite hydrodynamic energy
+density reproduces the EIH tensor; the correct GR coefficients appear if and
+only if the longitudinal sector behaves as though it were time–like in
+mode space.  Importantly for the present work, the spin and $N$--body
+analysis still assumes a spherical defect: attempts to model the defect as a
+3D cylinder again fail at 1PN, with significant orientation–dependent
+errors in the predicted precession and spin couplings.
+
+Paper~IV (the EM paper) shifted focus to the electromagnetic sector.  There
+the defect was modeled as a resonant cavity in the superfluid, and a
+hydrodynamic–electromagnetic dictionary was constructed that maps certain
+mode structures of the fluid onto electric and magnetic fields.  Stabilizing
+a charged defect required a cylindrical cavity of radius $a$ and length
+$L$, supporting a fundamental mode with radial profile
+$J_0(x_{01} r/a)$ and a standing wave along the axial direction.  Minimizing
+the enthalpy at fixed ``charge'' picked out a preferred aspect ratio,
+\begin{equation}
+  \frac{L}{a} = \frac{\sqrt{2}\,\pi}{x_{01}} \approx 1.85,
+\end{equation}
+where $x_{01}$ is the first zero of $J_0$.  In this construction, charge is
+associated with circulation and vorticity in and around a cylindrical
+defect, and the cylindrical geometry is not an optional detail: it is needed
+to obtain the correct mode structure and a stable charged configuration.
+
+Taken at face value, these results appear to ascribe contradictory
+geometries to the same object.  The gravitational papers (I--III) insist
+that the defect must behave as a spherical sink in three dimensions in order
+to reproduce 1PN gravity.  The electromagnetic paper (IV) insists that the
+defect must behave as a cylindrical resonant cavity in order to reproduce
+electromagnetism.  One cannot simply declare the defect to be ``both a
+sphere and a cylinder'' within a purely three–dimensional picture without
+spoiling either the gravitational or the electromagnetic sector.  This
+sphere–cylinder tension is an internal inconsistency in the toy model, and
+it forces us to look for a deeper geometric ontology in which both
+descriptions can be simultaneously true.
+
+\subsection{Brane--bulk throat ontology as a resolution}
+\label{subsec:intro_ontology}
+
+The central proposal of this paper is that the apparent contradiction is an
+artifact of insisting on a purely 3D description of an intrinsically
+higher–dimensional defect.  We will argue that the defect should instead be
+understood as a \emph{throat} connecting a three–dimensional brane to a
+four–dimensional superfluid bulk.
+
+Concretely, we introduce coordinates $(t,\mathbf{x},w)$, where
+$\mathbf{x} = (x,y,z)$ label directions along the brane and $w$ is a bulk
+coordinate transverse to the brane.  The physical world accessible to
+ordinary observers is modeled as a hypersurface at $w=0$, which we will
+refer to as the brane.  The superfluid fills the full four–dimensional
+space, and its density and velocity fields extend smoothly into the bulk.
+A defect is then represented not as a compact three–dimensional object,
+but as a localized region where the brane pinches into the bulk, forming a
+throat of radius $a$ and depth $L$ along $w$.
+
+From the point of view of an observer confined to the brane, the intersection
+of the throat with $w=0$ is a nearly spherical opening of radius $a$.  The
+effective flow induced on the brane by drainage into the throat is then
+approximately that of a spherical sink located at the center of this
+opening.  At distances $r \gg a$ along the brane, the flow is radially
+symmetric and the corresponding effective gravitational potential is
+indistinguishable from that of a point mass.  In this sense, the 1PN
+gravitational sector of Papers~I--III only probes the \emph{mouth} of the
+throat, and it is naturally described by a spherical sink in an effective
+3D fluid.
+
+From the point of view of modes living \emph{inside} the throat, however,
+the relevant geometry is entirely different.  Away from the mouth the
+throat is approximately a cylinder of radius $a$ and length $L$ embedded in
+the bulk.  Acoustic modes confined within this cylindrical region obey a
+4D wave equation whose radial and axial dependence factorize.  Imposing
+appropriate boundary conditions at $r=a$ and at the ends $w=0$ and $w=L$
+selects Bessel–type radial profiles and sine– or cosine–type axial profiles,
+precisely of the form used in Paper~IV.  Enthalpy minimization at fixed
+``charge'' then selects a preferred aspect ratio $L/a \approx 1.85$ for the
+throat.  In this picture, the electromagnetic sector is not telling us that
+the whole defect is a 3D cylinder; it is telling us that the \emph{interior
+of the throat in the bulk} behaves as an approximately cylindrical cavity.
+
+The apparent sphere–cylinder contradiction is thus resolved once we
+distinguish between the brane projection and the bulk interior.  Gravity is
+governed by the effective three–dimensional projection of the bulk flow onto
+the brane and is therefore sensitive primarily to the spherical mouth of the
+throat.  Electromagnetism is governed by cavity modes that live inside the
+throat and therefore probe the cylindrical interior.  The two descriptions
+are compatible because they refer to different slices of the same
+higher–dimensional geometry.
+
+In the same spirit, we will argue that the longitudinal sign flip
+$\alpha^2=-2/5$ found in Paper~III is naturally interpreted in terms of
+brane–bulk mode mixing.  The transverse modes that govern ordinary
+three–dimensional flows are effectively Euclidean, while the longitudinal
+modes associated with motion into the bulk contribute with an opposite sign
+in the effective energy functional, playing the role of a time–like
+direction in mode space.  The emergent Lorentzian structure of the 1PN
+theory can thus be traced to the way brane–parallel and bulk–directed modes
+mix in the vicinity of the throat.
+
+\subsection{Scope and goals of this paper}
+\label{subsec:intro_scope}
+
+The goal of this paper is to make the brane--bulk throat ontology precise
+enough that the previous results of Papers~I--IV can be seen as different
+projections of a single geometric picture, and to lay the groundwork for a
+systematic analysis of higher–order PN corrections.
+
+On the constructive side, we will:
+
+\begin{itemize}
+  \item Formulate a four–dimensional superfluid framework with a brane at
+  $w=0$ and defects represented as throats of radius $a$ and depth $L$.
+
+  \item Show how dimensional reduction from 4D to the brane organizes the
+  far–field effective theory in terms of monopole and higher multipole
+  moments, with angular corrections suppressed by $(a/r)^2$.
+
+  \item Demonstrate that, at 1PN order, the far–field behavior of a throat
+  on the brane is indistinguishable from that of the spherical sinks used in
+  Papers~I--III, explaining why those papers were successful despite their
+  purely 3D language.
+
+  \item Reinterpret the electromagnetic cavity of Paper~IV as the interior
+  of the throat, and the enthalpy–selected aspect ratio $L/a \approx 1.85$
+  as a geometric property of the throat in the bulk rather than an arbitrary
+  3D cylinder.
+
+  \item Provide a simple two–mode toy model that connects the
+  longitudinal sign flip $\alpha^2 = -2/5$ to an emergent Lorentzian
+  signature in the space of brane–parallel and bulk–directed modes.
+\end{itemize}
+
+On the interpretive side, we will:
+
+\begin{itemize}
+  \item Argue that finite–size effects associated with the throat, including
+  the detailed structure of the transition region near the mouth, naturally
+  appear as $(a/r)^2$ corrections, i.e. as 2PN and higher–order terms.
+
+  \item Outline how a future 2PN calculation could be organized around the
+  throat geometry, turning the model into a falsifiable framework whose
+  predictions can be confronted with precision tests of gravity and
+  electromagnetism.
+
+  \item Clarify in what sense the present construction resembles brane–world
+  and superfluid–vacuum scenarios in the broader literature, and in what
+  ways it differs.
+\end{itemize}
+
+What this paper does \emph{not} do is equally important.  We will not
+attempt a full 2PN derivation of the effective gravitational Lagrangian or
+the complete electromagnetic sector.  We will not specify the microscopic
+origin or stabilization mechanism of the brane itself, nor will we attempt
+to simulate strong–field or highly dynamical processes such as mergers or
+collapse.  Our aim is more modest: to provide a coherent geometric ontology
+that removes the internal tensions of the existing toy model and strongly
+constrains the form of any future higher–order calculations.
+
+\subsection{Structure of the paper}
+\label{subsec:intro_structure}
+
+The remainder of the paper is organized as follows.  In
+Sec.~\ref{sec:bulk_framework} we introduce the four–dimensional superfluid
+framework and the brane embedding.  We define the bulk density, velocity,
+and enthalpy fields, specify the equation of state, and write down the 4D
+continuity and Euler equations.  We then describe the brane as a
+hypersurface at $w=0$, discuss the induced three–dimensional fields on the
+brane, and introduce a simple geometric model of a throat of radius $a$ and
+depth $L$ connecting the brane to the bulk.
+
+In Sec.~\ref{sec:dimensional_reduction} we turn to dimensional reduction and
+the far–field structure.  We define effective 3D sources obtained by
+integrating over the bulk coordinate $w$, and we study a Gaussian toy model
+for a localized throat.  This model allows us to compute the effective
+monopole mass and quadrupole moment, and to show explicitly that angular
+corrections to the potential are suppressed by $(a/r)^2$.  We explain why
+the 1PN results of Papers~I--III are insensitive to these finite–size
+effects and therefore naturally see only a spherical source.
+
+Sec.~\ref{sec:throat_em} focuses on the interior of the throat and the
+electromagnetic sector.  Starting from the 4D acoustic wave equation inside
+the throat, we perform a separation–of–variables analysis to recover the
+cylindrical cavity modes of Paper~IV, including the fundamental mode with
+radial profile $J_0(x_{01} r/a)$ and appropriate axial dependence along $w$.
+We then show how enthalpy minimization at fixed ``charge'' selects the
+aspect ratio $L/a \approx 1.85$, and we reinterpret this result as a
+geometric constraint on the throat.  We also review how charge and mass can
+be viewed as different projections of the same throat geometry: charge as
+vorticity flux through the throat cross–section, and mass as volume flux
+into the throat.
+
+In Sec.~\ref{sec:near_field} we examine the near–field transition region
+where streamlines bend from radial inflow on the brane to axial flow into
+the bulk.  We describe the resulting stress patterns and construct a
+multipole expansion of the effective 3D source associated with this region.
+We argue that the leading corrections are quadrupolar and scale as
+$(a/r)^2$, providing a geometric interpretation of expected 2PN finite–size
+effects and a link to the shape–sensitivity tests performed in
+Paper~III.
+
+Sec.~\ref{sec:lorentzian_constraint} revisits the longitudinal sign flip
+$\alpha^2 = -2/5$ in the 1PN vector sector.  We briefly recap the relevant
+structure of the EIH matching from Paper~III and then introduce a simple
+two–mode toy model in which transverse (brane–parallel) and longitudinal
+(bulk–directed) modes are coupled.  We show how an effective sign flip
+between these modes arises and interpret this as an emergent Lorentzian
+signature in mode space induced by the brane--bulk geometry of the throat.
+
+In Sec.~\ref{sec:2pn_predictions} we outline how a full 2PN analysis might
+proceed within this ontology.  We review the standard PN counting, identify
+the classes of corrections that are most sensitive to the throat geometry,
+and discuss possible observational channels through which the model could be
+tested or ruled out.  We emphasize that the ontology developed here sharply
+constrains the allowed structure of 2PN terms, turning the toy model into a
+framework that is, in principle, falsifiable.
+
+Finally, in Sec.~\ref{sec:discussion_outlook} we summarize the main elements
+of the brane--bulk throat picture and its relation to Papers~I--IV, discuss
+possible scenarios for what happens at the bottom of the throat and for the
+stabilization of the brane, and speculate about the behavior of multiple
+defects interacting through the bulk.  Several technical details, including
+explicit Gaussian multipole integrals, mode separation in the throat, and
+the two–mode quadratic form underlying $\alpha^2 = -2/5$, are collected in
+the appendices.
+
+\section{4D Superfluid Framework and Brane Embedding}
+\label{sec:bulk_framework}
+
+In this section we set up the higher--dimensional fluid framework that will
+underlie the rest of the paper.  We treat the vacuum as a compressible
+superfluid living in four spatial dimensions plus time, with the observable
+universe represented as a three--dimensional brane embedded in this bulk.
+The goal is not to derive everything from first principles, but to lay out a
+minimal, consistent kinematic and thermodynamic setup that can be used to
+interpret the results of Papers~I--IV in a unified geometric language.
+
+\subsection{Bulk fields, equation of state, and hydrodynamic equations}
+\label{subsec:bulk_fields}
+
+We work with coordinates
+\begin{equation}
+  (t,\mathbf{X}) = (t,\mathbf{x},w),
+  \qquad
+  \mathbf{x} = (x,y,z),
+\end{equation}
+where $\mathbf{x}$ are the spatial coordinates along the brane and $w$ is a
+single bulk coordinate transverse to the brane.  The full superfluid lives
+in the four--dimensional spatial manifold parametrized by
+$\mathbf{X} = (x,y,z,w)$.
+
+The state of the bulk fluid is described by
+\begin{itemize}
+  \item a mass density $\rho(\mathbf{x},w,t)$,
+  \item a velocity field
+    $\mathbf{v}_4(\mathbf{x},w,t)$ with components
+    \begin{equation}
+      \mathbf{v}_4
+      = (v_x,v_y,v_z,v_w)
+      \equiv (\mathbf{v},v_w),
+    \end{equation}
+    where $\mathbf{v}$ denotes the three components tangent to the brane and
+    $v_w$ is the bulk component, and
+  \item a pressure $P(\mathbf{x},w,t)$.
+\end{itemize}
+
+We assume a barotropic equation of state of polytropic form,
+\begin{equation}
+  P = K \rho^n,
+  \label{eq:poly_eos}
+\end{equation}
+with $K>0$ and polytropic index $n=5$.  This is the same stiff superfluid
+equation of state that was singled out in Paper~II by matching gravitational
+lensing and Shapiro delay; here we simply adopt it as part of the bulk
+ontology.  The background is taken to be homogeneous with density $\rho_0$
+and pressure $P_0 = K\rho_0^n$ in the absence of defects, and we will work
+with small perturbations around this background,
+\begin{equation}
+  \rho = \rho_0 + \delta\rho,
+  \qquad
+  P = P_0 + \delta P,
+  \qquad
+  \abs{\delta\rho} \ll \rho_0,
+  \quad
+  \abs{\delta P} \ll P_0.
+\end{equation}
+
+The bulk dynamics are governed by the usual continuity and Euler equations
+generalized to four spatial dimensions.  In Cartesian coordinates the
+continuity equation reads
+\begin{equation}
+  \partial_t \rho
+  + \nabla_4 \cdot \big(\rho\,\mathbf{v}_4\big)
+  = 0,
+  \label{eq:bulk_continuity}
+\end{equation}
+where
+\begin{equation}
+  \nabla_4 = (\partial_x,\partial_y,\partial_z,\partial_w),
+  \qquad
+  \nabla_4\cdot\mathbf{v}_4
+  = \partial_x v_x + \partial_y v_y + \partial_z v_z + \partial_w v_w.
+\end{equation}
+The Euler equation for an inviscid barotropic fluid is
+\begin{equation}
+  \rho\,\Big(\partial_t \mathbf{v}_4
+  + (\mathbf{v}_4\cdot\nabla_4)\mathbf{v}_4\Big)
+  = - \nabla_4 P + \mathbf{f}_{\mathrm{ext}},
+  \label{eq:bulk_euler}
+\end{equation}
+where $\mathbf{f}_{\mathrm{ext}}$ denotes any external or defect--induced
+body forces.  In the far field of a localized defect the flow is slow and
+nearly irrotational, the nonlinear advective term can be treated
+perturbatively, and we may take $\mathbf{f}_{\mathrm{ext}}\simeq 0$ for the
+purpose of deriving the acoustic modes.
+
+It is convenient to introduce the specific enthalpy
+\begin{equation}
+  h(\rho)
+  \equiv \int^{\rho} \frac{\mathrm{d}P}{\rho'}
+  = \frac{nK}{n-1}\,\rho^{n-1},
+  \label{eq:enthalpy_def}
+\end{equation}
+for the polytropic equation of state~\eqref{eq:poly_eos}.  Linearizing
+$h(\rho)$ around $\rho_0$ yields
+\begin{equation}
+  h(\rho_0 + \delta\rho)
+  \simeq h_0
+  + \left.\frac{\mathrm{d}h}{\mathrm{d}\rho}\right|_{\rho_0}\delta\rho
+  = h_0 + \frac{c_s^2}{\rho_0}\,\delta\rho,
+\end{equation}
+where
+\begin{equation}
+  c_s^2
+  \equiv \left.\frac{\mathrm{d}P}{\mathrm{d}\rho}\right|_{\rho_0}
+  = nK\rho_0^{n-1}
+\end{equation}
+is the squared sound speed.  We will henceforth drop the constant offset
+$h_0$ and use $h$ to denote the enthalpy perturbation,
+\begin{equation}
+  h(\mathbf{x},w,t)
+  \simeq \frac{c_s^2}{\rho_0}\,\delta\rho(\mathbf{x},w,t).
+  \label{eq:enthalpy_perturbation}
+\end{equation}
+
+In the far field of a defect and for small--amplitude motions we may linearize
+Eqs.~\eqref{eq:bulk_continuity}--\eqref{eq:bulk_euler} about the homogeneous
+background.  Writing $\rho = \rho_0 + \delta\rho$ and
+$\mathbf{v}_4 = \delta\mathbf{v}_4$ and neglecting quadratic terms in the
+perturbations, the continuity equation becomes
+\begin{equation}
+  \partial_t \delta\rho
+  + \rho_0\,\nabla_4\cdot\delta\mathbf{v}_4
+  = 0,
+  \label{eq:lin_cont}
+\end{equation}
+while the Euler equation reduces to
+\begin{equation}
+  \rho_0\,\partial_t \delta\mathbf{v}_4
+  = - \nabla_4 \delta P
+  = - \rho_0\,\nabla_4 h.
+  \label{eq:lin_euler}
+\end{equation}
+Taking the divergence of Eq.~\eqref{eq:lin_euler} and using
+Eq.~\eqref{eq:lin_cont} to eliminate $\nabla_4\cdot\delta\mathbf{v}_4$ gives
+a wave equation for $h$,
+\begin{equation}
+  \partial_t^2 h
+  - c_s^2\,\nabla_4^2 h
+  = 0,
+  \qquad
+  \nabla_4^2
+  = \partial_x^2 + \partial_y^2 + \partial_z^2 + \partial_w^2.
+  \label{eq:4d_acoustic}
+\end{equation}
+Equivalently,
+\begin{equation}
+  -\frac{1}{c_s^2}\,\partial_t^2 h
+  + \nabla_4^2 h
+  = 0.
+\end{equation}
+This 4D acoustic wave equation is the master equation governing linear
+perturbations in the bulk.  In later sections we will specialize it to the
+interior of a throat and use it to derive the cavity modes relevant for the
+electromagnetic sector.
+
+\subsection{The brane as a hypersurface at \texorpdfstring{$w=0$}{w = 0}}
+\label{subsec:brane_hypersurface}
+
+We now embed a three--dimensional brane in the 4D spatial bulk to represent
+the observable universe.  The brane is defined as the hypersurface
+\begin{equation}
+  \mathcal{B}:\quad w = 0.
+\end{equation}
+All of the effective 3D physics described in Papers~I--IV is understood as
+arising from the behavior of the bulk fields restricted to, or projected
+onto, this hypersurface.  In particular:
+\begin{itemize}
+  \item The mouths of defects are localized regions on $\mathcal{B}$.
+  \item Test bodies and light rays follow trajectories $(t,\mathbf{x}(t))$
+    that lie on or very near $w=0$.
+\end{itemize}
+
+To make contact with the previous 3D description it is useful to define
+effective brane fields obtained by integrating or sampling the bulk fields
+in the $w$--direction.  One simple construction is to introduce a weighting
+kernel $K(w)$ peaked around $w=0$ and define
+\begin{align}
+  \rho_{\mathrm{3D}}(\mathbf{x},t)
+  &\equiv \int_{-\infty}^{+\infty} \mathrm{d}w\,
+    K(w)\,\rho(\mathbf{x},w,t),
+    \label{eq:rho3d_def}
+  \\
+  \mathbf{v}_{\mathrm{3D}}(\mathbf{x},t)
+  &\equiv
+    \frac{1}{N}
+    \int_{-\infty}^{+\infty} \mathrm{d}w\,
+    K(w)\,\Pi_{\parallel}\,\mathbf{v}_4(\mathbf{x},w,t),
+    \label{eq:v3d_def}
+\end{align}
+where $\Pi_{\parallel}$ projects onto the $x,y,z$ components and
+$N = \int \mathrm{d}w\,K(w)$ is a normalization factor.  For the purposes of
+this paper we will not commit to a specific functional form for $K(w)$;
+one may think of it as either a narrow bump of width comparable to the
+microscopic brane thickness, or simply as $K(w)=1$ with the understanding
+that only the behavior near $w=0$ contributes significantly.
+
+The fields $\rho_{\mathrm{3D}}$ and $\mathbf{v}_{\mathrm{3D}}$ play the role
+of the effective density and velocity fields in the three--dimensional toy
+models of Papers~I--III.  When we speak of a ``spherical sink'' on the brane
+we are referring to the behavior of $\rho_{\mathrm{3D}}$ and
+$\mathbf{v}_{\mathrm{3D}}$ as functions of $\mathbf{x}$, induced by the
+presence of a throat in the bulk.
+
+At the level of equations of motion, the projections
+\eqref{eq:rho3d_def}--\eqref{eq:v3d_def} induce an effective 3D continuity
+equation and a Poisson--like equation for a Newtonian potential
+$\Phi(\mathbf{x},t)$ on the brane.  Schematically,
+\begin{align}
+  \partial_t \rho_{\mathrm{3D}}
+  + \nabla \cdot (\rho_{\mathrm{3D}}\mathbf{v}_{\mathrm{3D}})
+  &= 0,
+  \\
+  \nabla^2 \Phi
+  &= 4\pi G_{\mathrm{eff}}\,\rho_{\mathrm{3D}},
+\end{align}
+where $\nabla$ is the 3D gradient with respect to $\mathbf{x}$ and
+$G_{\mathrm{eff}}$ is an effective gravitational constant determined by the
+bulk parameters.  We will not attempt to derive $G_{\mathrm{eff}}$ from
+first principles here; instead we treat it as calibrated by the matching to
+Newtonian gravity and 1PN corrections in Papers~I--III.
+
+The brane also provides natural boundary conditions on the bulk flow.
+Physically, the brane may be thought of as a locus where some microscopic
+mechanism pins the fluid or changes its properties, but in this toy model we
+capture that information simply by specifying the behavior of
+$\rho, \mathbf{v}_4,$ and $h$ at $w=0$.  For example, in the absence of a
+defect we may assume that the normal velocity vanishes at the brane,
+\begin{equation}
+  v_w(\mathbf{x},w=0,t) = 0
+\end{equation}
+so that there is no net flux of fluid across $\mathcal{B}$.  In the presence
+of a defect mouth, by contrast, there is a localized region on the brane
+where $v_w$ is nonzero and negative, corresponding to drainage into the
+throat.  The details of this boundary condition will matter for the
+near--field structure and for the relationship between the defect's mass and
+its drainage rate, but the broad picture is simple: the brane is a
+distinguished hypersurface whose intersection with a throat appears as a
+localized sink to brane--bound observers.
+
+\subsection{Throat topology and geometry}
+\label{subsec:throat_geometry}
+
+We are now ready to formalize the geometric picture of a defect as a
+brane--bulk throat.  Intuitively, the brane at $w=0$ is locally deformed and
+pinched into the bulk, forming a tube--like region filled with the same
+superfluid.  We model this region as a cylindrical throat of radius $a$ and
+depth $L$ embedded in the four--dimensional spatial bulk.
+
+Let the throat domain $\mathcal{T}$ be a connected region of space defined
+approximately by
+\begin{equation}
+  \mathcal{T}
+  \simeq \left\{
+    (\mathbf{x},w)\,\middle|\,
+    0 \le w \le L,\;
+    \sqrt{x^2 + y^2 + z^2} \lesssim a
+  \right\},
+  \label{eq:throat_domain}
+\end{equation}
+with the understanding that near $w=0$ and $w=L$ the geometry may deviate
+from an exact cylinder.  For most of the paper we will only need a
+coarse--grained description at scales larger than any microscopic brane
+thickness, so we treat $a$ and $L$ as effective parameters characterizing
+the radius and depth of the throat.
+
+From the perspective of an observer living on the brane $\mathcal{B}$, the
+intersection of the throat with $w=0$ is a two--sphere of radius $a$,
+\begin{equation}
+  \partial\mathcal{T}\cap\mathcal{B}
+  \simeq \left\{
+    \mathbf{x}\,\middle|\,
+    \abs{\mathbf{x}} = a
+  \right\}.
+\end{equation}
+This spherical boundary is what appears, in the effective 3D description, as
+the ``surface'' of a spherical defect.  The region $\abs{\mathbf{x}}<a$ on
+the brane is not filled with solid matter, but is instead the mouth of the
+throat opening into the bulk.  This is the geometry implicitly assumed in
+Papers~I--III when modeling a defect as a spherical sink: at distances
+$r=\abs{\mathbf{x}}\gg a$, the details of the throat interior are invisible
+and only the total drainage rate through this mouth matters.
+
+From the perspective of the bulk, by contrast, the region
+$0 < w < L$ with $\abs{\mathbf{x}}\lesssim a$ is approximately a straight
+4D cylinder of cross--sectional area $\pi a^2$.  This cylindrical interior
+is the domain in which the cavity modes of the electromagnetic sector live.
+In Sec.~\ref{sec:throat_em} we will impose boundary conditions on $h$ at
+$r=\abs{\mathbf{x}}=a$ and at $w=0$ and $w=L$ and solve the 4D acoustic wave
+equation~\eqref{eq:4d_acoustic} inside $\mathcal{T}$ to recover the
+Bessel--type radial modes and the preferred aspect ratio $L/a$ found in
+Paper~IV.
+
+At the bottom of the throat, around $w=L$, we deliberately leave the
+geometry unspecified.  Several possibilities are conceivable:
+\begin{itemize}
+  \item the throat could close off smoothly, forming a finite cavity;
+  \item it could open into a larger bulk region, allowing radiation or
+    flow into the deep bulk;
+  \item or it could connect to other throats, forming a network of
+    defects linked through the bulk.
+\end{itemize}
+The choice among these possibilities affects the detailed mode spectrum and
+the global topology of the model, but it will not play a direct role in the
+1PN considerations of this paper.  We return to these questions in
+Sec.~\ref{sec:discussion_outlook}.
+
+Finally, it is worth noting that the throat geometry naturally supports
+topological quantities associated with circulation and vorticity.  Loops
+encircling the throat mouth on the brane can carry quantized circulation,
+and vorticity lines can thread the throat interior, connecting the brane to
+the bulk.  In the electromagnetic sector these quantities will be related to
+electric charge and magnetic flux; for now we simply flag the fact that the
+topology of $\mathcal{T}$ provides the right sort of structure to encode
+such conserved charges.
+
+With this 4D superfluid framework and throat geometry in place, we can now
+turn to dimensional reduction and the far--field structure of the effective
+3D theory on the brane.
+
+\section{Dimensional Reduction and Far-Field Structure}
+\label{sec:dimensional_reduction}
+
+In this section we show how a localized throat in the 4D bulk generates an
+effective three--dimensional source on the brane.  The key points are:
+(i) integrating over the bulk coordinate $w$ produces an effective 3D
+density whose leading contribution is a monopole mass $M\sim \rho_0 L a^3$,
+and (ii) angular deviations from spherical symmetry are naturally suppressed
+by $(a/r)^2$ at large radii $r$ on the brane.  We illustrate these ideas
+with a simple Gaussian toy model and then connect the resulting far--field
+potential to the 1PN structure used in Papers~I--III.
+
+\subsection{General dimensional reduction from 4D to 3D}
+\label{subsec:dim_red_general}
+
+Given a bulk density $\rho(\mathbf{x},w,t)$ and velocity
+$\mathbf{v}_4(\mathbf{x},w,t)$, the effective 3D fields seen by brane--bound
+observers are obtained by integrating over the bulk coordinate $w$ with some
+weighting kernel $K(w)$ localized near the brane:
+\begin{align}
+  \rho_{\mathrm{3D}}(\mathbf{x},t)
+  &\equiv \int_{-\infty}^{+\infty} \mathrm{d}w\,
+    K(w)\,\rho(\mathbf{x},w,t),
+    \label{eq:rho3d_general}
+  \\
+  \mathbf{v}_{\mathrm{3D}}(\mathbf{x},t)
+  &\equiv
+    \frac{1}{N}
+    \int_{-\infty}^{+\infty} \mathrm{d}w\,
+    K(w)\,\Pi_{\parallel}\,\mathbf{v}_4(\mathbf{x},w,t),
+    \label{eq:v3d_general}
+\end{align}
+with $N = \int \mathrm{d}w\,K(w)$ and $\Pi_{\parallel}$ projecting onto the
+brane--parallel components $(v_x,v_y,v_z)$.  For the purposes of this paper
+we may take $K(w)=1$ and understand that the integrals are dominated by the
+region where the throat lives; more refined choices would only change
+numerical prefactors.
+
+Once $\rho_{\mathrm{3D}}$ and $\mathbf{v}_{\mathrm{3D}}$ are defined, their
+dynamics on the brane are governed by an effective 3D continuity equation
+and a Poisson--like equation for a Newtonian potential $\Phi(\mathbf{x},t)$,
+\begin{align}
+  \partial_t \rho_{\mathrm{3D}}
+  + \nabla \cdot (\rho_{\mathrm{3D}}\mathbf{v}_{\mathrm{3D}})
+  &= 0,
+  \label{eq:3d_continuity}
+  \\
+  \nabla^2 \Phi
+  &= 4\pi G_{\mathrm{eff}}\,\rho_{\mathrm{3D}},
+  \label{eq:3d_poisson}
+\end{align}
+where $\nabla$ is the 3D gradient with respect to $\mathbf{x}$ and
+$G_{\mathrm{eff}}$ is an effective gravitational constant determined by the
+bulk parameters and the details of the projection.
+In practice $G_{\mathrm{eff}}$ is fixed by matching Eq.~\eqref{eq:3d_poisson}
+to Newtonian gravity at large distances, as done implicitly in Papers~I--III.
+
+For a localized defect represented as a throat of radius $a$ and depth $L$,
+$\rho(\mathbf{x},w,t)$ is strongly peaked near $\abs{\mathbf{x}}\lesssim a$
+and $0 < w < L$.  At distances $r=\abs{\mathbf{x}}\gg a,L$ on the brane,
+$\rho_{\mathrm{3D}}$ therefore looks like a nearly point--like source plus
+small angular corrections.  The total effective mass is
+\begin{equation}
+  M
+  \equiv \int \rho_{\mathrm{3D}}(\mathbf{x},t)\,\mathrm{d}^3x
+  = \int \mathrm{d}^3x\int \mathrm{d}w\,
+      K(w)\,\rho(\mathbf{x},w,t),
+\end{equation}
+and the higher multipole moments of $\rho_{\mathrm{3D}}$ encode finite--size
+effects associated with the throat geometry and the transition region near
+its mouth.
+
+\subsection{Gaussian toy model for a localized throat}
+\label{subsec:gaussian_toy_model}
+
+To make these statements concrete, we now introduce a simple toy model for
+the bulk density perturbation associated with a single throat.  We work in
+spherical coordinates $(r,\theta,\phi)$ on the brane and use $w$ for the
+bulk coordinate.  The toy 4D density profile is taken to be
+\begin{equation}
+  \rho_4(r,\theta,w)
+  = \rho_0
+    \exp\!\left(-\frac{r^2}{a^2}\right)
+    \exp\!\left(-\frac{w^2}{L^2}\right)
+    \big[1 + \varepsilon P_2(\cos\theta)\big],
+  \label{eq:rho4_gaussian}
+\end{equation}
+where $P_2(\cos\theta) = (3\cos^2\theta - 1)/2$ is the $\ell=2$ Legendre
+polynomial, $a$ is the throat radius, $L$ is the throat depth, and
+$\varepsilon$ is a small dimensionless parameter controlling the degree of
+angular asymmetry.  The exponential factors localize the defect within a
+region of size $\sim a$ on the brane and $\sim L$ in the bulk; the
+$\varepsilon P_2$ term models the mild asphericity associated with the
+transition region where streamlines bend from radial to axial flow.
+
+For simplicity we choose $K(w)=1$ in the projection onto the brane.
+Integrating Eq.~\eqref{eq:rho4_gaussian} over $w$ gives the effective 3D
+density
+\begin{equation}
+  \rho_{\mathrm{3D}}(r,\theta)
+  = \int_{-\infty}^{+\infty}
+    \rho_4(r,\theta,w)\,\mathrm{d}w
+  = \sqrt{\pi}\,L\rho_0\,\exp\!\left(-\frac{r^2}{a^2}\right)
+    \big[1 + \varepsilon P_2(\cos\theta)\big].
+  \label{eq:rho3d_gaussian}
+\end{equation}
+The total mass of the defect is then
+\begin{equation}
+  M
+  = \int \rho_{\mathrm{3D}}(r,\theta)\,\mathrm{d}^3x
+  = \pi^2 L a^3 \rho_0,
+  \label{eq:gaussian_mass}
+\end{equation}
+where the $\varepsilon$ term integrates to zero by angular symmetry.
+This scaling is exactly what we expect for a throat of radius $a$ and depth
+$L$: $M$ is proportional to the background density times the effective
+throat volume.
+
+To quantify the leading angular deviation from sphericity we consider the
+standard quadrupole--like scalar moment
+\begin{equation}
+  Q_{20}
+  \propto \int \rho_{\mathrm{3D}}(r,\theta)\,
+           r^2 P_2(\cos\theta)\,\mathrm{d}^3x.
+  \label{eq:q20_def}
+\end{equation}
+Carrying out the angular integrals and the Gaussian radial integral (details
+are relegated to Appendix~\ref{app:gaussian_multipoles}), we obtain
+\begin{equation}
+  Q_{20}
+  = \frac{3}{10}\,\pi^2 L a^5 \varepsilon \rho_0,
+  \label{eq:q20_result}
+\end{equation}
+and hence
+\begin{equation}
+  \frac{Q_{20}}{M}
+  = \frac{3}{10}\,\varepsilon a^2.
+  \label{eq:q_over_m_scaling}
+\end{equation}
+The precise numerical prefactor $3/10$ is not important for our purposes;
+the crucial point is the scaling
+\begin{equation}
+  \frac{Q}{M} \sim \varepsilon a^2,
+\end{equation}
+which is generic for a localized, mildly aspherical source of size $a$ on
+the brane.
+
+\subsection{Far-field potential and \texorpdfstring{$(a/r)^2$}{(a/r)^2} corrections}
+\label{subsec:far_field_potential}
+
+The effective Newtonian potential $\Phi(r,\theta)$ generated on the brane by
+a localized mass distribution $\rho_{\mathrm{3D}}$ admits the usual
+multipole expansion at large radii $r\gg a,L$:
+\begin{equation}
+  \Phi(r,\theta)
+  \approx -\frac{GM}{r}
+  - G\,\frac{Q}{r^3}\,P_2(\cos\theta)
+  + \cdots,
+  \label{eq:phi_multipole}
+\end{equation}
+where $M$ is the monopole mass, $Q$ is the quadrupole--like scalar defined
+in Eq.~\eqref{eq:q20_def} (up to conventional normalization factors), and
+the ellipsis denotes higher multipoles suppressed by further powers of
+$a/r$.
+
+Substituting the scaling $Q/M \sim \varepsilon a^2$ from the Gaussian toy
+model, Eq.~\eqref{eq:q_over_m_scaling}, into Eq.~\eqref{eq:phi_multipole}
+gives
+\begin{equation}
+  \Phi(r,\theta)
+  \approx -\frac{GM}{r}
+  \left[
+    1
+    + \mathcal{O}\!\left(
+        \varepsilon \frac{a^2}{r^2}
+      \right) P_2(\cos\theta)
+    + \cdots
+  \right].
+  \label{eq:phi_farfield_scaling}
+\end{equation}
+Thus the leading anisotropic correction to the Newtonian potential is
+suppressed by $\varepsilon(a/r)^2$.  In the language of the throat ontology,
+this correction encodes the imprint of the transition region near the mouth
+of the throat, where the flow is neither purely radial on the brane nor
+purely axial in the bulk, but bends from one into the other.
+
+The main takeaway of this section is therefore:
+\begin{itemize}
+  \item Dimensional reduction of a localized 4D throat--like density
+        produces an effective 3D source with a monopole mass
+        $M \sim \rho_0 L a^3$ and a tower of finite--size corrections.
+  \item The leading angular distortion is quadrupolar and suppressed by
+        $(a/r)^2$ at large radii.
+  \item These are precisely the types of terms that, in a full post--Newtonian
+        treatment, would be expected to appear at 2PN order as finite--size
+        corrections associated with the physical size $a$ of the body.
+\end{itemize}
+
+\subsection{Connection to Papers I--III and why 1PN sees a sphere}
+\label{subsec:connection_papers1to3}
+
+We now connect this dimensional reduction picture to the 1PN results of
+Papers~I--III.  Those papers effectively treat each defect as a point--like
+or perfectly spherical source on the brane, described by a monopolar
+potential $\Phi \sim -GM/r$ plus velocity--dependent 1PN corrections.
+Finite--size structure of the defect is either neglected or, in the case of
+the shape--sensitivity tests in Paper~III, shown to have only a weak effect
+on the 1PN precession coefficient for modest deformations.
+
+From the standpoint of the throat ontology, this is exactly what one should
+expect.  At distances $r\gg a,L$, the effective 3D density
+$\rho_{\mathrm{3D}}$ produced by dimensional reduction is dominated by its
+monopole component.  Angular structure such as the quadrupole is suppressed
+by $(a/r)^2$, and higher multipoles by even higher powers of $a/r$.  As a
+result:
+\begin{itemize}
+  \item The leading Newtonian potential and the 1PN corrections derived in
+        Papers~I--III are insensitive to the detailed throat geometry, as
+        long as the mass $M$ is held fixed.
+  \item The defect therefore looks like a spherical sink at 1PN order, even
+        though its interior is cylindrically structured in the bulk.
+  \item The modest shape sensitivity found in Paper~III (e.g.\ $\sim 10\%$
+        oblateness leading to $\sim 2\%$ shifts in the precession
+        coefficient) is naturally interpreted as a small leakage of these
+        $(a/r)^2$ corrections into the 1PN observables used in that
+        analysis, and as a hint that the model has a geometrically rich
+        interior that will matter more at 2PN and beyond.
+\end{itemize}
+
+This perspective also clarifies how the gravitational and electromagnetic
+sectors can coexist without contradiction.  Papers~I--III operate in the
+far--field regime on the brane, where only the monopole and velocity--dependent
+interaction terms matter, so the defect appears spherical.  Paper~IV probes
+modes confined inside the throat, where the cylindrical interior and the
+aspect ratio $L/a$ are crucial.  Dimensional reduction shows that these
+descriptions are simply different projections of the same 4D geometry: the
+spherical mouth seen by gravity and the cylindrical interior seen by
+electromagnetism are both encoded in the same throat.
+
+In the next section we turn from this far--field point of view to the
+interior of the throat itself, deriving the cavity modes of the 4D acoustic
+equation and reinterpreting the enthalpy--selected aspect ratio
+$L/a \approx 1.85$ as a geometric property of the throat in the bulk.
+
+\section{Throat Geometry and the Electromagnetic Sector}
+\label{sec:throat_em}
+
+We now turn from the far--field effective description on the brane to the
+interior of the throat itself.  The goal is to show how the cylindrical
+cavity picture of Paper~IV arises naturally once we treat the defect as a
+brane--bulk throat, and to reinterpret the enthalpy--selected aspect ratio
+$L/a$ and the notion of ``charge'' in purely geometric terms.  Throughout
+this section we work with the linear 4D acoustic equation
+\begin{equation}
+  \partial_t^2 h
+  - c_s^2 \,\nabla_4^2 h
+  = 0,
+  \label{eq:4d_acoustic_recall}
+\end{equation}
+introduced in Sec.~\ref{subsec:bulk_fields}, but now restricted to the
+throat domain $\mathcal{T}$.
+
+\subsection{4D cavity modes in the throat}
+\label{subsec:throat_modes}
+
+Inside the throat, the geometry is approximately that of a straight tube of
+radius $a$ and depth $L$ extending into the bulk.  It is convenient to adopt
+coordinates adapted to this tube: we take $w$ along the throat and introduce
+a radial coordinate $r$ measuring distance from the center of the throat
+within the brane directions, together with angular coordinates on the
+$(x,y,z)$ directions.  For the lowest--lying modes we are interested in,
+there is no dependence on the azimuthal angles or on any internal structure
+within the cross--section; the modes are effectively axisymmetric about the
+throat center.
+
+In this approximation the 4D Laplacian inside the throat separates as
+\begin{equation}
+  \nabla_4^2
+  \simeq \nabla_{\perp}^2 + \partial_w^2,
+\end{equation}
+where $\nabla_{\perp}^2$ is the Laplacian in the radial direction $r$ (and
+its associated angular coordinate), restricted to axisymmetric configurations.
+We seek separated solutions of the form
+\begin{equation}
+  h(t,r,w) = \Re\!\left\{ H(r)\,W(w)\,e^{-i\omega t} \right\}.
+  \label{eq:separated_ansatz}
+\end{equation}
+Substituting Eq.~\eqref{eq:separated_ansatz} into
+Eq.~\eqref{eq:4d_acoustic_recall} yields
+\begin{equation}
+  \left[
+    \omega^2
+    - c_s^2\left(
+        \frac{1}{H}\nabla_{\perp}^2 H
+      + \frac{1}{W}\partial_w^2 W
+      \right)
+  \right] H W = 0.
+\end{equation}
+Dividing by $HW$ and rearranging gives
+\begin{equation}
+  \frac{1}{H}\nabla_{\perp}^2 H
+  + \frac{1}{W}\partial_w^2 W
+  = \frac{\omega^2}{c_s^2},
+\end{equation}
+which we can separate by setting each side equal to a constant.  Introducing
+separation constants $-k_r^2$ and $-k_w^2$, we obtain
+\begin{align}
+  \nabla_{\perp}^2 H + k_r^2 H &= 0,
+  \label{eq:radial_eq_general}
+  \\
+  \partial_w^2 W + k_w^2 W &= 0,
+  \label{eq:axial_eq_general}
+\end{align}
+with the dispersion relation
+\begin{equation}
+  \omega^2 = c_s^2\,(k_r^2 + k_w^2).
+  \label{eq:dispersion_relation}
+\end{equation}
+
+For axisymmetric modes, $\nabla_{\perp}^2$ reduces to the radial part of the
+Laplacian in cylindrical--like coordinates,
+\begin{equation}
+  \nabla_{\perp}^2 H
+  = \frac{1}{r^2}\partial_r\!\left(r^2 \partial_r H\right),
+\end{equation}
+or, in the thin--throat limit where the cross--section is effectively
+two--dimensional, to the standard Bessel form
+\begin{equation}
+  \nabla_{\perp}^2 H
+  = \frac{1}{r}\partial_r\!\left(r \partial_r H\right).
+\end{equation}
+In either case the regular, axisymmetric solutions of
+Eq.~\eqref{eq:radial_eq_general} at $r=0$ are Bessel functions of the first
+kind:
+\begin{equation}
+  H(r) \propto J_0(k_r r),
+\end{equation}
+with $k_r$ quantized by boundary conditions at the throat wall $r=a$.
+
+In keeping with the cavity analysis of Paper~IV, we impose a boundary
+condition that the enthalpy fluctuation vanishes at the wall,
+\begin{equation}
+  h(r=a,w,t) = 0 \quad\Rightarrow\quad H(a) = 0,
+\end{equation}
+corresponding physically to a \emph{pinned phase boundary} in the stiff
+superfluid vacuum.  The order parameter is topologically fixed at the throat
+wall, so small enthalpy (pressure) perturbations are forced to zero there.
+Mathematically, this Dirichlet condition selects the zeros of $J_0$,
+\begin{equation}
+  k_r = \frac{x_{0n}}{a},
+\end{equation}
+where $x_{0n}$ is the $n$th zero of $J_0$.  We will be primarily interested
+in the fundamental radial mode,
+\begin{equation}
+  k_r = \frac{x_{01}}{a},
+\end{equation}
+with radial profile $J_0(x_{01}r/a)$.
+
+Along the throat direction $w$ we impose boundary conditions at $w=0$ and
+$w=L$.  The simplest idealization is to take $h$ to vanish at both ends,
+\begin{equation}
+  h(r,w=0,t) = h(r,w=L,t) = 0 \quad\Rightarrow\quad W(0)=W(L)=0,
+\end{equation}
+corresponding to nodes at the mouth and bottom of the throat.  This leads to
+standing--wave solutions
+\begin{equation}
+  W_n(w) \propto \sin\!\left(\frac{n\pi w}{L}\right),
+  \qquad
+  k_w = \frac{n\pi}{L},
+  \quad n=1,2,\dots
+\end{equation}
+The fundamental axial mode has $n=1$, so the full fundamental throat mode is
+\begin{equation}
+  h_1(t,r,w)
+  \propto J_0\!\left(\frac{x_{01} r}{a}\right)
+          \sin\!\left(\frac{\pi w}{L}\right)
+          \cos(\omega t),
+  \label{eq:fundamental_mode}
+\end{equation}
+with
+\begin{equation}
+  \omega^2
+  = c_s^2\left(
+      \frac{x_{01}^2}{a^2}
+      + \frac{\pi^2}{L^2}
+    \right).
+  \label{eq:fundamental_dispersion}
+\end{equation}
+This is the same $J_0$--Bessel / standing--wave structure used in the
+cylindrical cavity analysis of Paper~IV, now understood as the fundamental
+mode of the brane--bulk throat.
+
+\subsection{Enthalpy minimization and the aspect ratio \texorpdfstring{$L/a$}{L/a}}
+\label{subsec:aspect_ratio}
+
+In Paper~IV the key electromagnetic result was that minimizing the enthalpy
+of the cavity at fixed ``charge'' picked out a preferred aspect ratio
+\begin{equation}
+  \frac{L}{a} = \frac{\sqrt{2}\,\pi}{x_{01}} \approx 1.85.
+  \label{eq:aspect_ratio_result}
+\end{equation}
+We now sketch how this emerges from the throat picture.
+
+The relevant functional is the total perturbation energy (or enthalpy) of
+the mode in the throat.  For a linear acoustic mode $h(t,r,w)$ with
+frequency $\omega$, the time--averaged energy stored in the perturbation can
+be written schematically as
+\begin{equation}
+  \mathcal{E}[h]
+  \sim \int_{\mathcal{T}}\!\mathrm{d}^3x\,\mathrm{d}w\;
+       \rho_0
+       \left[
+         \frac{1}{2c_s^2}\,(\partial_t h)^2
+         + \frac{1}{2}\,(\nabla_4 h)^2
+       \right],
+  \label{eq:enthalpy_functional}
+\end{equation}
+where we have suppressed numerical prefactors that do not depend on $a$ or
+$L$.  For a separated mode of the form
+$h(t,r,w) = A H(r)W(w)\cos(\omega t)$ the time average of $(\partial_t h)^2$
+contributes $\omega^2$, while the spatial gradients contribute $k_r^2$ and
+$k_w^2$:
+\begin{equation}
+  \langle (\partial_t h)^2 \rangle
+  \propto \omega^2 A^2 H^2 W^2,
+  \qquad
+  \langle (\nabla_4 h)^2 \rangle
+  \propto (k_r^2 + k_w^2) A^2 H^2 W^2.
+\end{equation}
+Using the dispersion relation~\eqref{eq:fundamental_dispersion}, the total
+time--averaged energy carried by the fundamental mode is therefore
+proportional to
+\begin{equation}
+  \mathcal{E}
+  \propto A^2 (k_r^2 + k_w^2) \int_{\mathcal{T}} H^2 W^2,
+  \label{eq:energy_kw}
+\end{equation}
+where the integral over $H^2 W^2$ supplies a factor of order $a^2 L$ for the
+fundamental mode.
+
+To define a variational problem we must specify which quantity is held fixed
+when minimizing $\mathcal{E}$.  Following Paper~IV, we identify a conserved
+``charge'' $\mathcal{Q}$ associated with the mode amplitude, which depends
+on the same integral of $H^2W^2$ but not on $k_r^2+k_w^2$.  Schematically,
+\begin{equation}
+  \mathcal{Q}
+  \propto A^2 \int_{\mathcal{T}} H^2 W^2,
+  \label{eq:charge_functional}
+\end{equation}
+so that, at fixed $\mathcal{Q}$, the energy scales as
+\begin{equation}
+  \mathcal{E}
+  \propto (k_r^2 + k_w^2)\,\mathcal{Q}.
+\end{equation}
+Minimizing $\mathcal{E}$ at fixed $\mathcal{Q}$ therefore amounts to
+minimizing $k_r^2 + k_w^2$.
+
+For the fundamental throat mode we have
+\begin{equation}
+  k_r^2 + k_w^2
+  = \frac{x_{01}^2}{a^2}
+    + \frac{\pi^2}{L^2}.
+\end{equation}
+Varying $a$ and $L$ while holding the effective cross--sectional area
+$\pi a^2$ and depth $L$ in a constrained way (reflecting the fact that the
+total mass $M\sim \rho_0 L a^3$ is fixed) leads to a minimum of
+$k_r^2 + k_w^2$ at a particular ratio $L/a$.  The detailed calculation
+follows the same steps as in Paper~IV; here we simply quote the result:
+\begin{equation}
+  \frac{L}{a}
+  = \frac{\sqrt{2}\,\pi}{x_{01}}.
+\end{equation}
+At this aspect ratio, the contributions of radial and axial gradients are in
+a particular balance that extremizes the energy per unit charge stored in
+the cavity.  In the throat ontology, Eq.~\eqref{eq:aspect_ratio_result} is
+not an arbitrary parameter choice for a 3D cylinder, but a statement about
+the geometry of the 4D throat: for a given mass and charge, the throat
+relaxes to a preferred ratio of depth to radius.
+
+\subsection{Charge as circulation and vorticity flux through the throat}
+\label{subsec:charge_flux}
+
+So far we have treated the ``charge'' $\mathcal{Q}$ as an abstract conserved
+quantity associated with the cavity mode amplitude.  In the superfluid
+picture, $\mathcal{Q}$ has a more concrete interpretation in terms of
+circulation and vorticity.
+
+Consider a closed loop $\mathcal{C}$ on the brane encircling the throat
+mouth, for example a circle of radius $r>a$ in a plane intersecting the
+brane.  The circulation of the superfluid velocity around this loop is
+\begin{equation}
+  \Gamma
+  = \oint_{\mathcal{C}} \mathbf{v}\cdot\mathrm{d}\boldsymbol{\ell}.
+\end{equation}
+In a quantum fluid, $\Gamma$ would be quantized; in the present classical
+toy model we simply treat it as a conserved quantity in the absence of
+vorticity creation or reconnection events.  By Stokes' theorem, $\Gamma$ is
+equivalently the flux of vorticity through any surface $\mathcal{S}$
+bounded by $\mathcal{C}$,
+\begin{equation}
+  \Gamma
+  = \int_{\mathcal{S}}
+      (\nabla\times\mathbf{v})\cdot\mathrm{d}\mathbf{S}.
+\end{equation}
+If the only significant vorticity near $\mathcal{C}$ is carried by the
+throat, then this flux is, to a good approximation, the vorticity threading
+the throat cross--section.
+
+In the hydrodynamic--electromagnetic dictionary of Paper~IV, the electric
+charge of the defect is identified (up to a proportionality constant) with
+this circulation or vorticity flux.  The field variables that play the role
+of the electric and magnetic fields, $\mathbf{E}$ and $\mathbf{B}$, are
+constructed from the enthalpy gradients and the velocity field in such a way
+that Maxwell's equations emerge as effective equations in the near field of
+the defect.  In that language, $\mathcal{Q}$ is essentially the integral of
+the mode amplitude over the throat cross--section, which is in turn
+proportional to the vorticity flux through that cross--section.
+
+The throat picture makes this geometric: the vorticity lines thread the
+throat like the flux lines of a solenoid threading a torus.  The conserved
+charge is the flux of vorticity through the ``hole'' of the throat, i.e.\ 
+through the surface of area $\pi a^2$ that spans the spherical mouth on the
+brane.  Different values of charge correspond to different amounts of
+vorticity threading the throat, and the cavity mode adjusts its amplitude to
+accommodate this flux while keeping the enthalpy as low as possible.  The
+preferred aspect ratio $L/a$ then reflects how the throat geometry arranges
+itself to support a given amount of vorticity flux at minimum energetic
+cost.
+
+\subsection{Mass as drainage and volume flux}
+\label{subsec:mass_flux}
+
+In contrast to charge, which is associated with circulation and vorticity
+flux, the mass of the defect is associated with drainage of fluid into the
+throat and the resulting volume deficit in the surrounding superfluid.  From
+the brane point of view, a defect appears as a localized sink: the normal
+component of the bulk velocity at the mouth is nonzero and directed into
+the throat,
+\begin{equation}
+  v_w(\mathbf{x},w=0,t) < 0
+\end{equation}
+within the mouth region $\abs{\mathbf{x}}\lesssim a$.  The net volumetric
+flux into the throat is
+\begin{equation}
+  \dot{V}
+  = \int_{\mathrm{mouth}}
+      v_w(\mathbf{x},w=0,t)\,\mathrm{d}^2S,
+\end{equation}
+where the integral is over the effective mouth area on the brane.  In a
+steady configuration this flux is balanced by either compression within the
+throat, circulation of fluid in closed streamline patterns, or outflow at
+the bottom of the throat, depending on the global topology.  The resulting
+density deficit in the near field is what sources the effective Newtonian
+potential on the brane.
+
+At the level of scaling, the mass associated with the throat is
+\begin{equation}
+  M \sim \rho_0 \,(\text{effective throat volume})
+    \sim \rho_0 \,\pi a^2 L,
+\end{equation}
+modulo order--unity geometric factors and corrections from the detailed
+profile of $\rho(\mathbf{x},w)$.  This is consistent with the Gaussian toy
+model of Sec.~\ref{subsec:gaussian_toy_model}, where $M\propto \rho_0 L a^3$
+up to numerical factors, and with the interpretation of $M$ as the total
+mass deficit localized within the throat and its immediate surroundings.
+
+Putting these pieces together, the throat ontology suggests a simple
+geometric picture:
+\begin{itemize}
+  \item Mass is associated with the \emph{volume} of the throat and the
+        associated drainage of fluid into it.
+  \item Charge is associated with the \emph{vorticity flux} threading the
+        throat cross--section.
+\end{itemize}
+Both are properties of the same geometric object---a brane--bulk throat of
+radius $a$ and depth $L$---viewed through different hydrodynamic
+projections.  The gravitational sector is sensitive mainly to the integrated
+mass deficit and the resulting monopolar potential on the brane, while the
+electromagnetic sector is sensitive to the internal cavity modes and the
+vorticity flux they support.
+
+In this way, the sphere--cylinder tension that appeared when Papers~I--III
+and IV were viewed in isolation is naturally resolved: the same throat can
+appear as a spherical sink on the brane for gravity and as a cylindrical
+cavity in the bulk for electromagnetism.  In the next section we move back
+toward the brane and examine the transition region near the throat mouth,
+where finite--size effects and 2PN corrections originate.
+
+\section{Near-Field Transition and Finite-Size Effects}
+\label{sec:near_field}
+
+So far we have treated the throat in two complementary limits: the far field
+on the brane, where only the monopole mass and velocity--dependent 1PN
+interactions matter, and the deep interior of the throat, where cylindrical
+cavity modes control the electromagnetic sector.  Between these lies a
+transition region near the throat mouth where the flow is strongly curved
+and neither limit applies cleanly.  In this section we give a qualitative
+description of this near--field region, argue that its imprint on the
+effective 3D theory is naturally multipolar and suppressed by $(a/r)^2$, and
+connect this picture to the shape--sensitivity tests of the spin and
+$N$--body paper (Paper~III).
+
+\subsection{Flow regimes: far field, throat interior, and transition region}
+\label{subsec:flow_regimes}
+
+It is useful to distinguish three qualitatively different flow regimes
+associated with a single throat:
+
+\begin{enumerate}
+  \item \emph{Far field on the brane} ($r \gg a,L$): Here the flow is almost
+  purely radial in the brane directions and nearly independent of $w$.  The
+  effective density $\rho_{\mathrm{3D}}(\mathbf{x})$ obtained by integrating
+  over $w$ is well approximated by a spherically symmetric monopole plus
+  small multipole corrections, as in Sec.~\ref{subsec:gaussian_toy_model}.
+  The velocity field $\mathbf{v}_{\mathrm{3D}}(\mathbf{x})$ is essentially
+  that of a point--like sink at the origin.
+
+  \item \emph{Throat interior} ($r \lesssim a$, $0<w<L$): Inside the throat
+  the flow is predominantly along the $w$ direction, with relatively weak
+  dependence on the brane coordinates except through the radial cavity
+  profile $J_0(x_{01}r/a)$ of the fundamental mode.  The relevant modes are
+  the separated solutions of the 4D acoustic equation
+  \eqref{eq:4d_acoustic_recall}, and the leading dynamics are controlled by
+  the discrete set of $(k_r,k_w)$ pairs and the aspect ratio $L/a$.
+
+  \item \emph{Transition region} ($r\sim a$, $w\sim 0$): Near the mouth of
+  the throat the flow lines bend from radial inflow on the brane to axial
+  flow into the bulk.  The geometry here is strongly curved; the brane
+  deviates from a flat $w=0$ hypersurface, and the fluid experiences both
+  significant shear and pressure gradients.  This is the region where
+  departures from perfect spherical symmetry on the brane originate and
+  where the throat geometry imprints itself most strongly on the effective
+  3D source $\rho_{\mathrm{3D}}$.
+\end{enumerate}
+
+In the previous sections we treated the far field and the throat interior in
+controlled approximations: the far field through multipole expansion and the
+interior through mode separation.  The transition region does not admit such
+a simple analytic treatment, but we can still characterize its effects on
+the brane in terms of symmetry and scaling.  Its characteristic size is set
+by $a$; its angular structure is determined by how the brane is deformed
+into the bulk and by how streamlines reorient from brane--parallel to
+bulk--directed.  These features naturally generate higher multipoles in
+$\rho_{\mathrm{3D}}$ and $\mathbf{v}_{\mathrm{3D}}$ that are suppressed by
+powers of $(a/r)$ at large distances.
+
+\subsection{Streamline bending and induced stresses}
+\label{subsec:streamline_bending}
+
+To get a feel for the transition region, consider streamlines of the fluid
+in a quasi--steady configuration.  Far from the defect, on the brane, the
+streamlines are nearly straight and radial, converging toward the origin
+with speed $v_r(r)\propto 1/r^2$ for an incompressible sink.  Deep inside
+the throat, by contrast, streamlines are nearly parallel to the $w$ axis,
+with a roughly uniform axial velocity $v_w$ that carries fluid along the
+throat.
+
+In order to connect these two regimes, streamlines must bend sharply in a
+neighborhood of the mouth.  The curvature of a streamline is controlled by
+the local acceleration,
+\begin{equation}
+  \frac{\mathrm{D}\mathbf{v}_4}{\mathrm{D}t}
+  = \partial_t \mathbf{v}_4
+    + (\mathbf{v}_4\cdot\nabla_4)\mathbf{v}_4
+  = -\frac{1}{\rho}\,\nabla_4 P
+    + \frac{\mathbf{f}_{\mathrm{ext}}}{\rho},
+\end{equation}
+so large curvature implies large pressure gradients in the transition
+region.  Even in a quasi--steady state where $\partial_t\mathbf{v}_4\simeq 0$,
+the advective term $(\mathbf{v}_4\cdot\nabla_4)\mathbf{v}_4$ is enhanced
+where streamlines squeeze together and turn into the throat, and this must
+be balanced by correspondingly strong gradients in $P$ and $h$.
+
+From the brane point of view, these pressure gradients generate stresses in
+the effective 3D fluid.  In particular, the stress tensor constructed from
+the velocity field and the enthalpy,
+\begin{equation}
+  T_{ij}
+  \sim \rho v_i v_j + \delta_{ij} P + \cdots,
+\end{equation}
+has nontrivial angular dependence in the transition region.  The components
+tangent to the brane ($i,j\in\{x,y,z\}$) feel both the radial inflow and the
+shear associated with bending into the $w$ direction.  When this structure
+is projected onto the brane and coarse--grained over scales larger than $a$,
+it manifests as effective multipole moments in the 3D source terms that
+enter the gravitational and electromagnetic sectors.
+
+Although a full solution of the transition--region flow would require
+solving the nonlinear 4D Euler equations with a deformed brane geometry,
+symmetry already constrains the leading corrections.  For an isolated
+defect with no preferred direction on the brane, the transition region must
+be axisymmetric about the throat axis and reflection--symmetric under
+$w\to -w$ if we consider a mirrored continuation into the bulk.  These
+symmetries forbid dipolar contributions in $\rho_{\mathrm{3D}}$ and
+$\mathbf{v}_{\mathrm{3D}}$ and make the quadrupole ($\ell=2$) the leading
+nontrivial multipole.
+
+\subsection{Multipole expansion of the transition region}
+\label{subsec:transition_multipoles}
+
+We can formalize this intuition by writing the effective 3D density on the
+brane as a sum of a purely radial piece and angular corrections sourced by
+the transition region.  In spherical coordinates $(r,\theta,\phi)$ on the
+brane, with the throat axis taken as the polar axis, we expand
+\begin{equation}
+  \rho_{\mathrm{3D}}(r,\theta)
+  = \rho_0(r)
+    + \sum_{\ell\ge 1} \rho_{\ell}(r) P_{\ell}(\cos\theta),
+  \label{eq:rho3d_multipole}
+\end{equation}
+where $\rho_0(r)$ is the spherically symmetric part and
+$P_{\ell}$ are Legendre polynomials.  Axisymmetry removes any dependence on
+$\phi$, and reflection symmetry around the throat axis suppresses odd $\ell$
+for the density; the leading correction is thus the quadrupole term
+$\ell=2$.
+
+The Gaussian toy model of Sec.~\ref{subsec:gaussian_toy_model} provides an
+explicit realization of this structure, with
+\begin{equation}
+  \rho_{\mathrm{3D}}(r,\theta)
+  \propto e^{-r^2/a^2}
+          \Big[1 + \varepsilon P_2(\cos\theta)\Big],
+\end{equation}
+so that $\rho_0(r)$ and $\rho_2(r)$ are both localized near $r\lesssim a$.
+Integrating $\rho_{\mathrm{3D}}$ against $r^2 P_{\ell}(\cos\theta)$ over a
+volume enclosing the throat then yields the multipole moments, and we saw
+explicitly that$\,$$Q/M\sim \varepsilon a^2$ for the quadrupole.  Higher
+multipoles would involve higher powers of $a$ and smaller dimensionless
+coefficients.
+
+The same logic applies, at least at the level of scaling, to any reasonable
+model of the transition region: as long as the region is localized within a
+radius of order $a$ and preserves axisymmetry, all multipole moments higher
+than the monopole are suppressed by powers of $a$ and decay with
+appropriate powers of $1/r$ in the far field.  The resulting potential can
+be written as
+\begin{equation}
+  \Phi(r,\theta)
+  = -\frac{GM}{r}
+    \Bigg[
+      1
+      + \sum_{\ell\ge 2}
+          \alpha_{\ell}
+          \left(\frac{a}{r}\right)^{\ell}
+          P_{\ell}(\cos\theta)
+    \Bigg],
+  \label{eq:phi_multipole_general}
+\end{equation}
+with dimensionless coefficients $\alpha_{\ell}$ that encode the detailed
+structure of the throat mouth and transition region.  For $\ell=2$ we
+recover the $(a/r)^2$ suppression emphasized earlier.  In the absence of
+fine tuning, the $\alpha_{\ell}$ are expected to be of order one times small
+shape parameters characterizing how much the throat deviates from an ideal
+spherical mouth.
+
+\subsection{Interpretation as 2PN finite-size corrections}
+\label{subsec:2pn_interpretation}
+
+From the point of view of post--Newtonian theory, the multipole corrections
+generated by the transition region are naturally interpreted as finite--size
+effects that first appear at 2PN order and beyond.  In standard GR language,
+the small parameter controlling the PN expansion is
+\begin{equation}
+  \epsilon
+  \sim \frac{GM}{rc^2}
+  \sim \left(\frac{v}{c}\right)^2,
+\end{equation}
+with 1PN terms scaling as $\epsilon$ and 2PN terms as $\epsilon^2$.  For a
+compact object of radius $R$ in GR, finite--size effects typically scale as
+$(R/r)^2$ or higher powers, and in many situations they enter observables at
+2PN order or later.
+
+In the throat ontology, the role of the body's size is played by the throat
+radius $a$, and the relevant dimensionless parameter is $a/r$.  For
+well--separated bodies we have $a\ll r$, so $(a/r)^2$ is parametrically
+small compared to unity.  The multipole expansion
+\eqref{eq:phi_multipole_general} then suggests that the leading corrections
+to the monopole potential scale as
+\begin{equation}
+  \delta\Phi
+  \sim \Phi_{\mathrm{N}}\,
+       \alpha_2 \left(\frac{a}{r}\right)^2
+  \sim -\frac{GM}{r}
+       \alpha_2 \left(\frac{a}{r}\right)^2.
+\end{equation}
+If $a$ is itself of order the gravitational radius $r_g=GM/c^2$ of the
+object, then $(a/r)^2\sim (GM/rc^2)^2\sim\epsilon^2$, and these corrections
+would indeed be 2PN in the usual counting.  Even if $a$ is somewhat larger
+than $r_g$, as might be natural in a superfluid context, the $(a/r)^2$
+suppression still pushes these effects beyond the leading 1PN terms for
+sufficiently large separations.
+
+This scaling argument underlies our claim in the Introduction that the
+throat ontology provides a geometric roadmap for 2PN corrections: once $a$
+is fixed for each object (e.g.\ by its mass and charge through the throat
+geometry), the coefficients $\alpha_{\ell}$ in
+Eq.~\eqref{eq:phi_multipole_general} are not arbitrary; they are determined
+by the way the brane deforms into the bulk and by the structure of the
+transition region.  A future 2PN calculation in this model would therefore
+not introduce an unrestricted zoo of new parameters, but a constrained set
+of finite--size couplings tied to the same throat geometry that already
+controls the 1PN and electromagnetic sectors.
+
+\subsection{Relation to shape sensitivity in the spin/$N$-body paper}
+\label{subsec:shape_sensitivity}
+
+The spin and $N$--body paper (Paper~III) already provided a first glimpse of
+these geometric finite--size effects.  There, the authors replaced the
+spherical defects of the orbital paper with mildly oblate spheroids and
+computed how the 1PN perihelion precession coefficient changed as a function
+of the oblateness.  The result was that even a relatively large shape
+distortion at the level of $\sim 10\%$ in the equatorial radius produced
+only a modest change of order a few percent in the precession coefficient.
+
+In a purely three--dimensional description, this shape sensitivity might
+seem puzzling or arbitrary: why does a substantial deformation of the body's
+shape have only a small effect on the orbit?  In the throat ontology the
+answer is straightforward.  Changing the apparent 3D shape of the defect on
+the brane corresponds to modifying the geometry of the throat mouth and the
+transition region, while holding fixed the deeper throat interior and its
+overall mass content.  The resulting changes in the effective 3D density are
+encoded primarily in the multipole moments of $\rho_{\mathrm{3D}}$, which
+are suppressed by powers of $(a/r)$ and thus have only a small effect on the
+far--field potential and on 1PN observables.
+
+More concretely, a modest oblateness changes the quadrupole coefficient
+$\alpha_2$ in Eq.~\eqref{eq:phi_multipole_general} by some amount of order
+the oblateness parameter.  But because the quadrupole contribution is
+already suppressed by $(a/r)^2$, the net fractional change in the potential
+and in the 1PN precession coefficient is doubly suppressed: once by the
+small shape parameter and once by $(a/r)^2$.  This is entirely consistent
+with the $\sim 2\%$ shifts reported in Paper~III for $\sim 10\%$ geometric
+distortions.
+
+From this perspective, the shape--sensitivity experiment in Paper~III is not
+an ad hoc curiosity but an indirect probe of the transition region and the
+throat geometry.  It shows that the toy model already behaves like a
+finite--size object in GR: small departures from spherical symmetry induce
+small corrections to 1PN observables, in a way that is naturally understood
+as a preview of the 2PN finite--size structure.  The throat ontology turns
+this qualitative observation into a quantitative program: in a full 2PN
+analysis, one would compute the coefficients $\alpha_{\ell}$ and the
+associated finite--size couplings directly from the geometry and dynamics of
+the transition region.
+
+In the next section we will see how a different, but related, aspect of the
+throat geometry---the mixing of brane--parallel and bulk--directed modes in
+the vector sector---provides a natural interpretation of the longitudinal
+sign flip $\alpha^2=-2/5$ required to match the Einstein--Infeld--Hoffmann
+Lagrangian at 1PN order.
+
+\section{Lorentzian Constraint and \texorpdfstring{$\alpha^2 = -2/5$}{alpha^2 = -2/5}}
+\label{sec:lorentzian_constraint}
+
+In Papers~I--III the effective 1PN dynamics on the brane were obtained by
+matching a hydrodynamic defect model to the Einstein--Infeld--Hoffmann (EIH)
+Lagrangian.  A striking outcome of this matching, emphasized in Paper~III,
+was that the velocity--dependent interaction terms could only be made to
+agree with GR if the longitudinal component of a certain vector kernel
+entered with an effective negative sign.  In the parameterization used
+there, this requirement took the form
+\begin{equation}
+  \alpha^2 = -\frac{2}{5},
+  \label{eq:alpha_squared_value}
+\end{equation}
+i.e.\ the longitudinal weight $\alpha$ must be purely imaginary.  No choice
+of real $\alpha$ in an everywhere positive--definite quadratic form
+reproduces the EIH coefficients.
+
+In this section we first recap, at a schematic level, how this constraint
+arises in the 1PN vector sector.  We then show how a simple two--mode toy
+model captures the essence of the calculation and makes the sign flip
+transparent.  Finally, we interpret the result in the brane--bulk throat
+ontology, where it appears naturally as an emergent Lorentzian signature in
+mode space associated with the mixing of brane--parallel and bulk--directed
+flows.
+
+\subsection{Recap of the 1PN vector sector from Paper~III}
+\label{subsec:vector_recap}
+
+The EIH Lagrangian for a system of $N$ point masses $m_a$ at 1PN order can
+be written schematically as
+\begin{equation}
+  L_{\mathrm{EIH}}
+  = L_{\mathrm{N}}
+    + \frac{1}{c^2} L_{\mathrm{1PN}},
+\end{equation}
+where $L_{\mathrm{N}}$ is the Newtonian Lagrangian and $L_{\mathrm{1PN}}$
+contains terms quadratic in velocities and linear in the Newtonian potential.
+For a pair of bodies $a,b$, the velocity--dependent part of
+$L_{\mathrm{1PN}}$ includes structures of the form
+\begin{equation}
+  L_{\mathrm{1PN}}^{(ab)}
+  \supset
+    \frac{G m_a m_b}{r_{ab}}
+    \Big[
+      c_1\,\mathbf{v}_a^2
+      + c_2\,\mathbf{v}_b^2
+      + c_3\,\mathbf{v}_a\cdot\mathbf{v}_b
+      + c_4\,(\mathbf{v}_a\cdot\hat{\mathbf{n}}_{ab})
+             (\mathbf{v}_b\cdot\hat{\mathbf{n}}_{ab})
+    \Big],
+  \label{eq:eih_vector_structures}
+\end{equation}
+with fixed numerical coefficients $c_i$ determined by GR, and where
+$\hat{\mathbf{n}}_{ab}$ is the unit vector from $b$ to $a$.
+
+In the superfluid defect model, these velocity--dependent interactions arise
+from nonlocal couplings mediated by the fluid velocity field and its
+propagator.  The relevant object is a vector kernel $K_{ij}(\mathbf{x})$
+appearing in the quadratic part of the hydrodynamic energy functional,
+\begin{equation}
+  E_{\mathrm{vec}}
+  = \frac{1}{2}\int\mathrm{d}^3x\,\mathrm{d}^3x'\;
+    v_i(\mathbf{x})\,
+    K_{ij}(\mathbf{x}-\mathbf{x}')\,
+    v_j(\mathbf{x}'),
+\end{equation}
+where repeated indices are summed.  In Fourier space and in the absence of
+dissipation, rotational invariance implies that $K_{ij}(\mathbf{k})$ can be
+decomposed into transverse and longitudinal projectors,
+\begin{equation}
+  K_{ij}(\mathbf{k})
+  = C_T(\alpha)\,P_{ij}^{\mathrm{T}}(\mathbf{k})
+    + C_L(\alpha)\,P_{ij}^{\mathrm{L}}(\mathbf{k}),
+  \label{eq:kernel_decomposition}
+\end{equation}
+with
+\begin{equation}
+  P_{ij}^{\mathrm{T}}(\mathbf{k})
+  = \delta_{ij} - \hat{k}_i\hat{k}_j,
+  \qquad
+  P_{ij}^{\mathrm{L}}(\mathbf{k})
+  = \hat{k}_i\hat{k}_j,
+  \qquad
+  \hat{\mathbf{k}} = \frac{\mathbf{k}}{\abs{\mathbf{k}}}.
+\end{equation}
+The coefficients $C_T(\alpha)$ and $C_L(\alpha)$ are functions of a
+dimensionless parameter $\alpha$ that controls the relative weight of
+longitudinal and transverse pieces in the underlying energy functional.
+Schematically, one can think of them as coming from a combination
+\begin{equation}
+  E_{\mathrm{vec}}
+  \sim \int\mathrm{d}^3x\;
+  \left[
+    A_T\,\abs{\mathbf{v}_{\mathrm{T}}}^2
+    + A_L\,\abs{\mathbf{v}_{\mathrm{L}}}^2
+  \right],
+  \qquad
+  \mathbf{v} = \mathbf{v}_{\mathrm{T}} + \mathbf{v}_{\mathrm{L}},
+\end{equation}
+with $A_T>0$ and $A_L>0$ and the parameter $\alpha$ encoding how these
+components mix into the physical modes that mediate interactions between
+defects.
+
+When one computes the induced interaction Lagrangian between two moving
+defects by integrating out the fluid degrees of freedom, the result contains
+the same structures as in Eq.~\eqref{eq:eih_vector_structures}, but with
+coefficients that depend on $C_T(\alpha)$ and $C_L(\alpha)$ instead of the
+fixed GR coefficients.  Matching to the EIH Lagrangian imposes a set of
+linear constraints on $C_T$ and $C_L$, and hence on $\alpha$.  Paper~III
+showed that these constraints have no solution with $\alpha^2>0$ and
+$A_T,A_L>0$, but do have a unique solution if $\alpha^2$ is allowed to be
+negative:
+\begin{equation}
+  \alpha^2 = -\frac{2}{5}.
+\end{equation}
+In other words, the effective weight of the longitudinal contribution must
+enter with the opposite sign relative to what one would obtain from a
+strictly Euclidean, positive--definite quadratic form.  This is what we mean
+when we say that the longitudinal sector carries an effective Lorentzian
+signature.
+
+\subsection{Two-mode toy model: transverse vs longitudinal}
+\label{subsec:two_mode_toy}
+
+The full calculation in Paper~III involves convolutions with the vector
+kernel, integration over sources, and careful identification of the
+resulting terms in the many--body Lagrangian.  To understand the origin of
+the sign flip and the role of $\alpha^2$, however, it is enough to consider
+a simple two--mode toy model.
+
+Let $u_T$ and $u_L$ denote amplitudes of a transverse--like and a
+longitudinal--like mode that can be excited by the motion of a defect.
+Think of $u_T$ as representing brane--parallel shear patterns in the fluid
+velocity and $u_L$ as representing compressional or bulk--directed patterns.
+We start with a positive--definite quadratic energy in these amplitudes,
+\begin{equation}
+  E[u_T,u_L]
+  = A_T\,\abs{u_T}^2
+    + A_L\,\abs{u_L}^2,
+  \qquad
+  A_T>0,\;A_L>0.
+  \label{eq:toy_energy_euclidean}
+\end{equation}
+Suppose further that the defect couples not to $u_T$ and $u_L$ separately,
+but to a linear combination
+\begin{equation}
+  u_{\mathrm{phys}}
+  = u_T + \alpha u_L,
+  \label{eq:toy_physical_mode}
+\end{equation}
+where $\alpha$ is a (so far arbitrary) complex weight.  For example, this
+could represent the fact that a moving defect sources both transverse and
+longitudinal components of the fluid velocity, with relative amplitude
+controlled by $\alpha$.
+
+We now imagine integrating out $u_T$ and $u_L$ to obtain an effective
+interaction energy between defects mediated by $u_{\mathrm{phys}}$.  At the
+level of this toy model, that procedure simply replaces $u_T$ and $u_L$ by
+their combination in Eq.~\eqref{eq:toy_physical_mode} and yields an
+effective quadratic form in $u_{\mathrm{phys}}$:
+\begin{equation}
+  E_{\mathrm{eff}}[u_{\mathrm{phys}}]
+  = A_{\mathrm{eff}}(\alpha)\,\abs{u_{\mathrm{phys}}}^2,
+\end{equation}
+with
+\begin{equation}
+  A_{\mathrm{eff}}(\alpha)
+  = \frac{A_T + \alpha^2 A_L}{(1+\alpha^2)},
+  \label{eq:a_eff_definition}
+\end{equation}
+where, for simplicity, we have taken $u_T$ and $u_L$ to be aligned in phase
+and used the relation $u_L = \alpha^{-1}(u_{\mathrm{phys}} - u_T)$ to
+eliminate $u_L$.  The precise algebra is not important; the crucial feature
+is that the effective coefficient controlling the physical mode is a
+\emph{linear} combination $A_T + \alpha^2 A_L$ of the original transverse
+and longitudinal coefficients.
+
+If $\alpha$ is real, and $A_T,A_L>0$, then $A_{\mathrm{eff}}(\alpha)$ is
+necessarily positive for all $\alpha^2>0$.  There is no way to obtain an
+effective coefficient with the opposite sign of either $A_T$ or $A_L$ from a
+linear combination like Eq.~\eqref{eq:a_eff_definition}.  This is the toy
+model analogue of the statement that a purely Euclidean, positive--definite
+energy functional cannot reproduce the EIH coefficients: all of the induced
+interactions remain ``of the same sign'' as the underlying quadratic form.
+
+If we now allow $\alpha$ to be purely imaginary, $\alpha^2<0$, the situation
+changes.  The combination $A_T + \alpha^2 A_L$ can have either sign,
+depending on the relative sizes of $A_T$ and $A_L$ and the value of
+$\alpha^2$.  In particular, there may exist a value of $\alpha^2<0$ for
+which
+\begin{equation}
+  A_T + \alpha^2 A_L
+  = \lambda A_T,
+\end{equation}
+with $\lambda$ taking the specific value required by the EIH matching.  In
+the full theory, the role of $A_T$ and $A_L$ is played by the coefficients
+$C_T(\alpha)$ and $C_L(\alpha)$ in Eq.~\eqref{eq:kernel_decomposition},
+and the parameter $\alpha$ controls how the longitudinal projector enters
+relative to the transverse one.  The EIH calculation then effectively picks
+out the unique value
+\begin{equation}
+  \alpha^2 = -\frac{2}{5}
+\end{equation}
+for which the combination of transverse and longitudinal contributions
+yields the correct coefficients of $\mathbf{v}_a^2$,
+$\mathbf{v}_a\cdot\mathbf{v}_b$, and
+$(\mathbf{v}_a\cdot\hat{\mathbf{n}}_{ab})
+ (\mathbf{v}_b\cdot\hat{\mathbf{n}}_{ab})$ in
+Eq.~\eqref{eq:eih_vector_structures}.
+
+From the point of view of the toy energy~\eqref{eq:toy_energy_euclidean},
+allowing $\alpha^2<0$ means that the direction in the $(u_T,u_L)$ space
+picked out by $u_{\mathrm{phys}}$ has an \emph{indefinite} norm: its
+quadratic form is not purely positive but has a minus sign built into the
+relative weight of $u_T$ and $u_L$.  Put differently, the mode space
+spanned by $u_T$ and $u_L$ acquires a Lorentzian signature when expressed in
+terms of the physical combinations that mediate interactions between
+defects.
+
+\subsection{Brane--bulk interpretation: emergent Lorentzian signature}
+\label{subsec:brane_bulk_lorentz}
+
+The throat ontology provides a natural geometric interpretation of this
+mode--space Lorentzian structure.  The transverse--like and
+longitudinal--like modes in the vector kernel can be viewed as encoding
+fluctuations that are predominantly tangential to the brane and fluctuations
+that are predominantly directed into the bulk.
+
+In the 4D superfluid picture, the fluid velocity field has components both
+along the brane, $\mathbf{v}(\mathbf{x},w,t)$, and in the bulk,
+$v_w(\mathbf{x},w,t)$.  Small perturbations can be decomposed into patterns
+that, at each point, are divergence--free along the brane (transverse) and
+patterns that involve compressional or normal motion (longitudinal).  The
+brane--parallel modes govern how fluid shears and circulates within the
+brane; the bulk--directed modes govern how fluid drains into or out of the
+throat and how the brane is deformed into the bulk.  Both types of motion
+are excited when defects move.
+
+From this perspective, the parameter $\alpha$ controls how strongly the
+bulk--directed component participates in the mode that mediates
+velocity--dependent interactions on the brane.  The requirement
+$\alpha^2=-2/5$ then says that this bulk component enters with an effective
+minus sign in the quadratic form that defines the interaction energy.  The
+space of modes relevant for the 1PN dynamics thus has an effective metric
+with one direction (associated with bulk--directed motion) carrying a sign
+opposite to the brane--parallel directions.  This is precisely the hallmark
+of a Lorentzian signature.
+
+There are two complementary ways to think about this:
+
+\begin{itemize}
+  \item In configuration space, the 4D acoustic equation
+        \begin{equation}
+          -\frac{1}{c_s^2}\partial_t^2 h
+          + \nabla_4^2 h
+          = 0
+        \end{equation}
+        already singles out time with a minus sign relative to the spatial
+        derivatives.  The throat geometry adds another distinguished
+        direction---the bulk direction $w$---which is treated differently
+        from the brane directions in the boundary conditions and in the
+        mode structure.  When one integrates out the bulk to obtain an
+        effective 3D theory on the brane, the combination of these features
+        leads to an effective mode space in which one direction (a mixture
+        of bulk--directed flow and temporal variation) behaves as
+        time--like, while the brane--parallel modes behave as space--like.
+
+  \item In the effective interaction Lagrangian, the velocity--dependent
+        terms can be viewed as arising from an inner product on the space
+        of 1PN ``gravitational potentials'' (scalar, vector, and tensor).
+        The constraint $\alpha^2=-2/5$ ensures that this inner product has
+        the same indefinite structure as the EIH mapping to the GR metric:
+        the longitudinal/bulk combination of modes plays the role of the
+        time--like component of the metric, while the transverse/brane
+        combinations play the role of the spatial components.  The
+        nontrivial sign in the longitudinal sector is what allows the
+        effective theory to reproduce the geodesic structure of GR at 1PN
+        order.
+\end{itemize}
+
+In either view, the message is the same: the unusual value
+$\alpha^2=-2/5$ is not a mysterious fine--tuning, but a reflection of the
+brane--bulk structure of the defect.  The same throat that reconciles the
+sphere--cylinder tension between gravity and electromagnetism also enforces
+a Lorentzian signature in the mode space controlling the 1PN vector sector.
+The longitudinal ``direction'' in this mode space is associated with motion
+into the bulk and with the deformation of the brane at the throat mouth,
+and it is this direction that must carry the negative sign in order for the
+effective 3D dynamics on the brane to match GR.
+
+In the next section we step back to a more global view and discuss how this
+brane--bulk, Lorentzian mode structure constrains the form of higher--order
+post--Newtonian corrections, and how the resulting 2PN finite--size
+corrections could, in principle, be used to test or falsify the toy model.
+
+\section{Toward 2PN: Predictions and Falsifiability}
+\label{sec:2pn_predictions}
+
+Up to this point we have used the throat ontology primarily to reinterpret
+existing 1PN and electromagnetic results.  In this section we look forward:
+we outline how a full 2PN analysis would be organized in this framework, and
+we sketch how the resulting finite--size corrections could, in principle, be
+confronted with observations.  The aim is not to perform a 2PN calculation,
+but to make clear that such a calculation is both well--posed and
+constrained, rather than an open invitation to add arbitrary new terms.
+
+\subsection{What 2PN means in this toy model}
+\label{subsec:2pn_meaning}
+
+In standard post--Newtonian theory, the expansion parameter is
+\begin{equation}
+  \epsilon
+  \sim \frac{GM}{rc^2}
+  \sim \left(\frac{v}{c}\right)^2,
+\end{equation}
+where $M$ is a characteristic mass, $r$ is a characteristic separation, and
+$v$ is a characteristic orbital speed.  Newtonian gravity is $\mathcal{O}(\epsilon^0)$,
+1PN corrections are $\mathcal{O}(\epsilon)$, 2PN corrections are
+$\mathcal{O}(\epsilon^2)$, and so on.  In GR this hierarchy is built into
+the Einstein equations via the expansion of the metric components in powers
+of $1/c$.
+
+In the superfluid defect toy model, the same small parameter appears, but
+there is an additional geometric scale: the throat radius $a$ (and, to a
+lesser extent, the depth $L$).  We can therefore construct two independent
+dimensionless quantities:
+\begin{equation}
+  \epsilon
+  \sim \frac{GM}{rc^2},
+  \qquad
+  \delta
+  \sim \frac{a}{r}.
+\end{equation}
+The 1PN analysis in Papers~I--III effectively assumes that $\delta$ is small
+enough that finite--size effects can be neglected at leading order, and that
+all relevant corrections scale with $\epsilon$ alone.  The throat ontology
+makes this assumption explicit: the far--field theory on the brane is
+controlled by the monopole mass $M$ and the velocity--dependent interactions
+encoded in the vector kernel, while the structure of the throat and
+transition region enters only through multipole corrections suppressed by
+powers of $\delta$.
+
+In a full 2PN analysis of the toy model, one would therefore organize terms
+in a double expansion in $\epsilon$ and $\delta$, keeping track of how
+powers of $a/r$ enter alongside powers of $GM/(rc^2)$.  Schematically, the
+effective action or Lagrangian for a binary system would contain terms of
+the form
+\begin{equation}
+  L_{\mathrm{eff}}
+  = L_{\mathrm{N}}
+    + \epsilon L_{\mathrm{1PN}}
+    + \epsilon^2 L_{\mathrm{2PN}}
+    + \delta^2 \tilde{L}_{\mathrm{2PN}}
+    + \cdots,
+\end{equation}
+where $L_{\mathrm{2PN}}$ contains the usual point--particle 2PN corrections
+and $\tilde{L}_{\mathrm{2PN}}$ contains finite--size corrections tied to the
+throat geometry.  The key point is that the throat ontology predicts the
+\emph{structure} of $\tilde{L}_{\mathrm{2PN}}$ in terms of a small set of
+geometric parameters, rather than leaving it arbitrary.
+
+\subsection{Organizing 2PN corrections via the throat geometry}
+\label{subsec:2pn_organization}
+
+Within the throat ontology, the most natural way to organize 2PN corrections
+is to group them according to which part of the geometry they probe:
+
+\begin{enumerate}
+  \item \emph{Far--field multipoles on the brane}: These are corrections to
+  the scalar potential and its velocity--dependent companions arising from
+  the multipole structure of $\rho_{\mathrm{3D}}$ and
+  $\mathbf{v}_{\mathrm{3D}}$ on the brane.  They are controlled by the
+  coefficients $\alpha_\ell$ in the expansion
+  \begin{equation}
+    \Phi(r,\theta)
+    = -\frac{GM}{r}
+      \left[
+        1
+        + \sum_{\ell\ge 2}
+            \alpha_\ell
+            \left(\frac{a}{r}\right)^\ell
+            P_\ell(\cos\theta)
+      \right],
+  \end{equation}
+  with $\alpha_\ell$ determined by the geometry of the throat mouth and the
+  transition region.  The leading quadrupole term ($\ell=2$) is naturally
+  associated with 2PN finite--size effects in the orbital dynamics.
+
+  \item \emph{Velocity--dependent couplings}: Just as the 1PN vector sector
+  is controlled by the transverse and longitudinal parts of the vector
+  kernel and the parameter $\alpha^2=-2/5$, the 2PN vector and tensor
+  sectors will receive corrections from the same kernel but with additional
+  structure induced by the throat.  For example, the effective kernel could
+  acquire mild dependence on $a$ and $L$ through higher--derivative terms,
+  leading to corrections that scale as $(a/r)^2\epsilon$ or $\epsilon^2$.
+  These terms would modify the coefficients of velocity--dependent
+  structures in the many--body Lagrangian, but in a way that is tied to the
+  same geometric data $(M,a,L,\ldots)$.
+
+  \item \emph{Electromagnetic backreaction}: In the EM paper, charge is
+  associated with vorticity flux threading the throat and the electromagnetic
+  field is sourced by cavity modes inside the throat.  At 2PN order, the
+  energy stored in these modes and in the surrounding electromagnetic field
+  will backreact on the gravitational sector.  This will generate
+  corrections coupling mass, charge, and throat geometry, schematically of
+  the form
+  \begin{equation}
+    L_{\mathrm{eff}}
+    \supset \epsilon^2
+      \left(
+        \beta_1 \frac{Q^2}{M^2}
+        + \beta_2 \frac{Q^2}{M^2}\frac{a^2}{r^2}
+        + \cdots
+      \right),
+  \end{equation}
+  with coefficients $\beta_i$ determined by the cavity spectrum.  Thus 2PN
+  corrections in this model are expected to carry signatures of both mass
+  and charge in a way that reflects the common throat origin of the
+  gravitational and electromagnetic sectors.
+\end{enumerate}
+
+A practical 2PN calculation in this framework would proceed roughly as
+follows:
+
+\begin{itemize}
+  \item Choose a parametrization of the throat geometry (e.g.\ a family of
+        smooth embeddings of the brane into the bulk near each defect,
+        characterized by $a$, $L$, and a small number of shape parameters).
+
+  \item Solve the 4D Euler and continuity equations perturbatively in the
+        near field of each throat, matching onto the far--field multipole
+        expansions on the brane and onto the cavity modes in the interior.
+
+  \item Compute the induced interaction Lagrangian for a system of moving
+        throats by integrating out the fluid degrees of freedom to the
+        appropriate order in $\epsilon$ and $\delta$.
+
+  \item Match the resulting effective Lagrangian onto a PN--style basis of
+        scalars built from positions, velocities, and spins, and read off
+        the finite--size coefficients as functions of $(M,a,L,Q,\ldots)$.
+\end{itemize}
+
+While technically demanding, this program is sharply constrained: once $M$,
+$a$, $L$, and $Q$ are fixed for each object by low--order data (Newtonian
+mass, EM charge, and perhaps one additional observable), there is little
+room to adjust higher--order coefficients without spoiling the consistency
+of the throat geometry.
+
+\subsection{Falsifiability and observational channels}
+\label{subsec:falsifiability}
+
+The existence of a geometrically constrained 2PN sector raises a natural
+question: how could the toy model be tested or ruled out?  While a full
+phenomenological analysis lies beyond the scope of this paper, we can
+identify several promising observational channels.
+
+\paragraph{Binary pulsars and compact binaries.}
+Timing measurements of binary pulsars and phase evolution of compact
+binaries (including black hole and neutron star mergers) are sensitive to
+2PN--order corrections in the orbital dynamics.  In GR, these corrections
+are controlled by the masses, spins, and, in some cases, tidal deformability
+parameters of the bodies.  In the throat model, there would be additional
+finite--size contributions determined by the throat radii $a_a$ and $a_b$
+and by the way the throats deform under mutual tidal fields.  If the model
+predicts a specific relation between $a$ and $M$ (or between $a$, $M$, and
+$Q$), then the pattern of 2PN corrections in different systems is highly
+constrained.  Significant inconsistencies between the inferred 2PN
+coefficients across different binaries would rule out the model.
+
+\paragraph{Solar--system tests.}
+Precision measurements of planetary ephemerides, light deflection, and
+Shapiro delay in the solar system already probe some aspects of 1PN and
+2PN physics.  The throat model is designed to match the 1PN sector by
+construction; deviations are expected to appear, if at all, in subtle
+finite--size effects associated with the Sun's throat geometry.  For
+instance, small angular dependence in the effective potential or small
+modifications to perihelion precession beyond the standard 1PN terms could
+signal a non--GR finite--size structure.  Any 2PN calculation in the throat
+model would need to be checked against the tight solar--system bounds.
+
+\paragraph{Short--range gravity experiments.}
+At laboratory scales, tests of Newton's law probe potential deviations from
+the $1/r^2$ force at distances comparable to or smaller than the effective
+size of the gravitating bodies.  In the throat ontology, if the throat
+radius $a$ for ordinary matter is not vanishingly small compared to these
+scales, one might expect measurable finite--size corrections to the force
+law at short range.  Conversely, the absence of such deviations can be used
+to place upper bounds on $a$ for laboratory masses, which must be consistent
+with any $a$--values inferred from astrophysical systems.
+
+\paragraph{Electromagnetic--gravitational cross--checks.}
+Because mass and charge are different projections of the same throat
+geometry, the model predicts relationships between gravitational and
+electromagnetic observables that have no analogue in GR.  For example, if
+$a$ is related to $Q$ via the enthalpy--selected aspect ratio and the cavity
+structure, then objects with different charge--to--mass ratios should have
+different patterns of finite--size gravitational corrections at 2PN order.
+If observations show no such dependence (within experimental uncertainties),
+or if the required $a(Q,M)$ relations are inconsistent across systems, the
+model would be disfavored.
+
+In all of these channels, the logical structure is the same: the throat
+ontology fixes how 2PN coefficients depend on a small set of geometric
+parameters; observations overdetermine those parameters; inconsistency
+rules out the model.  In this sense, the model is, at least in principle,
+falsifiable.
+
+\subsection{Why the ontology paper must come before a full 2PN analysis}
+\label{subsec:2pn_role}
+
+It is natural to ask why we have not simply proceeded directly to a 2PN
+calculation.  The answer is that, without the throat ontology, the space of
+possible 2PN corrections in the superfluid defect model is too large and too
+poorly organized to be meaningfully constrained.
+
+Viewed purely as a 3D fluid model with defects, one could write down an
+enormous number of higher--order terms in the effective action, including
+arbitrary multipole couplings, higher--derivative corrections to the vector
+kernel, and a variety of nonlocal interactions.  Without additional
+structure, there is no principled way to decide which of these terms should
+be present, how large their coefficients should be, or how they should be
+related across different sectors (gravity vs electromagnetism) and different
+systems.
+
+The throat ontology changes this situation in three important ways:
+
+\begin{itemize}
+  \item It \emph{geometrizes} finite--size effects, tying them to the
+        geometry of brane--bulk throats (radius $a$, depth $L$, shape of the
+        mouth, mode spectrum in the interior), rather than treating them as
+        arbitrary parameters in a 3D effective theory.
+
+  \item It \emph{links} the gravitational and electromagnetic sectors:
+        the same throat that determines the monopole mass and the 1PN vector
+        couplings also determines the cavity structure and the enthalpy
+        selection of $L/a$ in the EM sector.  Any 2PN corrections must be
+        compatible with this shared origin.
+
+  \item It \emph{explains} the emergent Lorentzian signature in the 1PN
+        vector sector as a consequence of brane--bulk mode mixing, rather
+        than as an ad hoc choice in the sign of the longitudinal kernel.
+        This strongly constrains how higher--order vector and tensor
+        corrections can appear.
+\end{itemize}
+
+With these ingredients in place, a 2PN calculation is no longer a fishing
+expedition in an enormous parameter space but a targeted computation in a
+geometric setting with clear boundary conditions.  The present paper is
+therefore a necessary precursor: it defines the ontology in which the 2PN
+problem is posed, identifies the small set of geometric parameters that
+control the finite--size structure, and clarifies the relationships among
+the different sectors of the model.
+
+In the next and final section we step back from technicalities and discuss
+the broader implications of the throat ontology, including open questions
+about the bottom of the throat, the stabilization of the brane, and the
+behavior of multiple defects interacting through the bulk.
+
+\section{Discussion and Outlook}
+\label{sec:discussion_outlook}
+
+We have proposed a brane--bulk throat ontology for the superfluid defect toy
+universe developed in Papers~I--IV and shown how it resolves several
+apparent tensions in the earlier work.  In this final section we summarize
+the main elements of this picture, highlight the open questions it raises,
+and outline directions for future work.
+
+\subsection{Summary of the ontology and main results}
+\label{subsec:summary}
+
+The central idea of this paper is that the defects representing massive,
+possibly charged bodies in the superfluid toy model should be understood as
+\emph{throats} connecting a three--dimensional brane to a four--dimensional
+superfluid bulk, rather than as purely three--dimensional objects.  Each
+defect corresponds to a localized region where the brane at $w=0$ pinches
+into the bulk, forming a tube--like region of radius $a$ and depth $L$.
+
+From the perspective of a brane--bound observer, the intersection of a
+throat with the brane is a nearly spherical mouth of radius $a$.  The
+effective 3D density and velocity fields induced on the brane by drainage
+into this mouth reproduce the spherical sink picture used in the orbital,
+optical, and spin/$N$--body papers: at distances $r\gg a,L$, the defect
+appears as a point mass with potential $\Phi\sim -GM/r$ and 1PN corrections
+controlled by the same hydrodynamic energy functional that was matched to
+the EIH Lagrangian.  Dimensional reduction from 4D to 3D shows that
+finite--size effects from the throat interior and transition region enter
+the far field only through multipole corrections suppressed by $(a/r)^2$ and
+higher powers.
+
+From the perspective of the bulk, the region $0<w<L$ with
+$\abs{\mathbf{x}}\lesssim a$ is approximately a cylindrical cavity of
+cross--sectional area $\pi a^2$ and length $L$.  The 4D acoustic wave
+equation separated inside this cavity yields Bessel--type radial modes and
+standing waves along $w$; imposing boundary conditions at $r=a$ and at
+$w=0,L$ picks out a discrete mode spectrum.  Minimizing the enthalpy at
+fixed ``charge'' selects a preferred aspect ratio
+$L/a = \sqrt{2}\pi/x_{01} \approx 1.85$ for the fundamental mode, exactly as
+found in the electromagnetic paper.  In the throat ontology, this result is
+reinterpreted as a geometric property of the throat, not as an arbitrary
+parameter choice for a 3D cylinder.
+
+The throat picture also clarifies the physical meaning of mass and charge in
+the model.  Mass is associated with drainage of fluid into the throat and
+the resulting volume deficit in the surrounding superfluid, with
+$M\sim\rho_0\pi a^2L$ up to order--unity factors.  Charge is associated with
+circulation and vorticity flux threading the throat cross--section; in the
+hydrodynamic--electromagnetic dictionary, this vorticity flux plays the role
+of electric charge, and the cavity modes inside the throat generate the
+effective electromagnetic fields.  Thus mass and charge are different
+projections of the same geometric object---a brane--bulk throat characterized by $(a,L)$ and its internal mode structure.
+
+In the near--field region around the throat mouth, where streamlines bend
+from radial inflow on the brane to axial flow into the bulk, the geometry is
+strongly curved and the flow experiences significant shear and pressure
+gradients.  Coarse--graining this region onto the brane generates a tower of
+multipole corrections to the effective 3D density and potential, with a
+leading quadrupole term suppressed by $(a/r)^2$.  This provides a natural
+geometric interpretation of finite--size effects and an organizing principle
+for 2PN corrections: once the throat radius $a$ is fixed for a given
+defect, the coefficients of these multipoles are determined by the geometry
+of the throat mouth and its deformation under external fields.
+
+Finally, the throat ontology offers a new perspective on the longitudinal
+sign flip $\alpha^2=-2/5$ required in the 1PN vector sector.  In the vector
+kernel that mediates velocity--dependent interactions, transverse (brane--parallel)
+and longitudinal (bulk--directed) modes enter with different weights.  The
+EIH matching demands that the longitudinal contribution effectively carry a
+negative sign relative to the transverse one, which can be captured by a
+simple two--mode toy model in which the quadratic form on mode space has an
+indefinite (Lorentzian) signature.  In the throat picture this is
+interpreted as an emergent Lorentzian structure in the space of modes
+associated with the mixing of brane--parallel and bulk--directed flows near
+the throat.
+
+\subsection{What happens at the bottom of the throat?}
+\label{subsec:bottom_throat}
+
+Throughout this paper we have treated the throat as a finite tube of depth
+$L$ whose bottom at $w=L$ is left deliberately unspecified.  This is
+sufficient for the 1PN and near--field considerations we have focused on,
+but it leaves open an important question about the global structure of the
+model: what happens at the bottom of the throat?
+
+Several possibilities present themselves:
+
+\begin{itemize}
+  \item \emph{Closed cavities.}  The throat could close off smoothly, with
+        the brane folding back into itself and the superfluid forming a
+        finite cavity.  In this case the mode spectrum inside the throat is
+        purely discrete, and there is no leakage of energy or vorticity into
+        the deep bulk.  Charge and mass would then be strictly localized
+        objects, with their values determined entirely by the geometry and
+        mode content of the closed throat.
+
+  \item \emph{Open throats.}  The throat could open into a larger bulk
+        region at $w=L$, allowing acoustic energy and vorticity to escape
+        into the bulk.  This would introduce damping and radiation channels
+        not present in the closed--cavity picture.  For instance, highly
+        dynamical processes such as mergers could excite bulk modes that
+        carry energy away from the brane, potentially modifying the
+        gravitational wave signal seen by brane--bound observers.
+
+  \item \emph{Connected throats.}  Different defects could be connected
+        through a common bulk region, with throats that meet or merge away
+        from the brane.  This would allow for bulk--mediated interactions
+        between defects, beyond those encoded in the effective 3D theory on
+        the brane.  In extreme cases, one could imagine networks of throats
+        whose connectivity changes dynamically, perhaps in analogy with
+        reconnection events in vortex tangles.
+\end{itemize}
+
+Each of these scenarios would leave a characteristic imprint on the mode
+spectrum in the throat, the time dependence of charge and mass, and the way
+energy is exchanged between defects and the bulk.  For example, an open
+throat might lead to slow leakage of vorticity and hence slow evolution of
+charge, while a closed cavity would make charge strictly conserved.  The
+present paper does not attempt to choose among these options, but the
+framework we have developed is flexible enough to incorporate any of them
+once additional microscopic input is specified.
+
+\subsection{What stabilizes the brane?}
+\label{subsec:brane_stability}
+
+Another major open question is the origin and stability of the brane itself.
+In our construction, the brane at $w=0$ is treated as a given: a
+distinguished hypersurface on which observers live and on which the
+effective 3D physics of Papers~I--IV is realized.  However, in a more
+complete model the brane should arise as a dynamical object, stabilized by
+some underlying mechanism.
+
+Several possibilities are familiar from other contexts:
+
+\begin{itemize}
+  \item \emph{Domain walls or defects.}  The brane might be a domain wall in
+        an underlying order parameter of the superfluid, separating regions
+        with different phases or densities in the bulk.  The tension of the
+        domain wall and the coupling of the superfluid to this order
+        parameter would determine the brane's rigidity and its response to
+        the presence of throats.
+
+  \item \emph{Potential minima.}  The brane could be a locus where some
+        effective potential $V(w)$ for the fluid has a minimum, pinning
+        density and pressure at $w=0$ and making deviations in the $w$
+        direction energetically costly.  Throats would then be localized
+        regions where this pinning is overcome or modified.
+
+  \item \emph{Defect condensation.}  The brane could represent a condensate
+        of lower--dimensional defects in the bulk superfluid, with
+        throats corresponding to higher--dimensional defects that connect
+        different regions of the condensate.
+\end{itemize}
+
+Any such mechanism would feed back into the throat ontology by determining
+the allowed shapes of the brane near defects, the cost of bending the brane
+into the bulk, and the boundary conditions satisfied by the fluid at
+$w=0$.  In particular, the spectrum of small fluctuations of the brane
+could interact with the cavity modes in the throats, potentially modifying
+the relation between $L/a$, $M$, and $Q$.  Exploring specific brane
+stabilization mechanisms and their consequences is an important direction
+for future work.
+
+\subsection{Multiple defects and bulk interactions}
+\label{subsec:multi_defects}
+
+So far we have focused on a single isolated throat.  In reality, the toy
+universe contains many defects, representing stars, planets, compact
+objects, and possibly charged bodies.  The throat ontology provides a
+conceptual framework for thinking about how these defects interact through
+the bulk as well as through the effective 3D fields on the brane.
+
+At the level of the effective 3D theory, multiple throats interact via the
+superposition of their monopole and multipole fields on the brane, as
+captured by the 1PN and (future) 2PN Lagrangians.  This is the regime
+directly comparable to GR.  However, the throats also interact through the
+bulk superfluid: their interior modes can scatter off each other, their
+transition regions can overlap when defects come close, and their bottom
+regions at $w=L$ can come into contact if throats are sufficiently deep.
+
+In a merger of two compact objects, for example, one might imagine the
+following sequence: the throats approach each other on the brane; their
+transition regions deform and eventually overlap; the interior cavities
+interact and exchange energy; finally, a single, larger throat emerges,
+possibly with a different $L/a$ ratio and a different internal mode
+spectrum.  From the brane perspective this would be seen as a change in the
+effective mass, spin, and charge of the merged object, together with the
+emission of gravitational and electromagnetic waves.  From the bulk
+perspective there would also be emission of acoustic radiation and
+rearrangements of vorticity in the deep bulk.
+
+While these speculations are necessarily qualitative at this stage, they
+point to a rich dynamical phenomenology that goes beyond what is captured in
+a purely 3D effective theory.  A long--term goal of the program initiated by
+this toy model would be to simulate such multi--throat dynamics directly in
+the 4D superfluid and compare the emergent signals (both on the brane and in
+the bulk) with those predicted by GR and standard electromagnetism.
+
+\subsection{Relation to brane-world and emergent gravity scenarios}
+\label{subsec:relation_other_models}
+
+The brane--bulk throat ontology developed here sits conceptually between
+several strands of work in the broader theoretical physics literature.
+
+On the one hand, it shares with brane--world scenarios the idea that the
+observable universe is a lower--dimensional hypersurface embedded in a
+higher--dimensional space, and that localized objects may be associated with
+tubes or funnels connecting the brane to the bulk.  On the other hand, it
+shares with emergent gravity and superfluid vacuum models the idea that
+gravitational and electromagnetic phenomena can arise as effective
+excitations of an underlying medium, with metric structures and gauge fields
+emerging from the dynamics of collective modes.
+
+However, the present construction is more concrete and mechanical than many
+of these frameworks.  The underlying degrees of freedom are those of a
+compressible superfluid obeying continuity and Euler equations in a
+specified number of spatial dimensions; the brane is a geometric hypersurface
+in this fluid; and defects are explicit deformations of the brane into the
+bulk.  The emergent metric and electromagnetic fields are not fundamental
+fields in a gravitational action, but effective descriptors of the
+collective motion of the fluid.  This keeps the model firmly in the realm
+of a toy universe: it is not proposed as a literal description of our
+universe, but as a playground in which questions about emergence, locality,
+and finite--size structure can be posed sharply and answered with explicit
+calculations.
+
+Within this playground, the throat ontology unifies several seemingly
+disparate features of the earlier papers: the need for spherical sinks in
+the 1PN gravitational sector, the cylindrical cavity in the EM sector, the
+longitudinal sign flip $\alpha^2=-2/5$, and the small but nonzero
+shape--sensitivity of orbital dynamics.  All of these phenomena emerge as
+different aspects of the same geometric structure: brane--bulk throats of
+radius $a$ and depth $L$ embedded in a 4D superfluid.
+
+\medskip
+
+To move beyond the toy universe, at least conceptually, one would need to
+address the microscopic origin of the superfluid, the dynamical nature of
+the brane, the behavior of the model in strong--field and high--curvature
+regimes, and the relationship between the emergent effective metric and a
+fundamental description of spacetime.  These are ambitious questions, and we
+do not attempt to answer them here.  Our more modest claim is that, within
+the limited scope of weak--field, slow--motion phenomena, the throat
+ontology provides a coherent and falsifiable framework in which gravity and
+electromagnetism emerge from a single mechanical medium, and in which the
+next steps---a full 2PN analysis and detailed comparisons with observations
+---are clearly defined.
+
+If that program succeeds, the superfluid defect toy universe will have
+served its purpose: not as a rival to GR or Maxwell theory, but as a concrete
+example of how a higher--dimensional, mechanical substrate can give rise to
+metric gravity, gauge fields, and finite--size structure in a controlled
+effective description.  If it fails, it will fail in an instructive way,
+highlighting which aspects of our current theories of gravity and
+electromagnetism are hardest to reproduce in any emergent, medium--based
+picture.
+
+\appendix
+
+\section{Gaussian 4D Density and 3D Multipole Structure}
+\label{app:gaussian_multipoles}
+
+In this appendix we work out the Gaussian toy model of
+Sec.~\ref{subsec:gaussian_toy_model} in detail.  The goal is to make
+explicit how a localized, mildly aspherical 4D density profile produces an
+effective 3D source with monopole mass
+$M \propto \rho_0 L a^3$ and quadrupole moment
+$Q/M \sim \varepsilon a^2$.
+
+\subsection{Setup: 4D density and projection to the brane}
+
+We start from the 4D density profile introduced in
+Eq.~\eqref{eq:rho4_gaussian}, written here for convenience as
+\begin{equation}
+  \rho_4(r,\theta,w)
+  = \rho_0
+    \exp\!\left(-\frac{r^2}{a^2}\right)
+    \exp\!\left(-\frac{w^2}{L^2}\right)
+    \left[1 + \varepsilon P_2(\cos\theta)\right],
+  \label{eq:app_rho4}
+\end{equation}
+where $(r,\theta,\phi)$ are spherical coordinates on the brane,
+$w$ is the bulk coordinate, $a$ is the characteristic brane--radius of the
+throat, $L$ is its depth along $w$, $\rho_0$ is a reference density, and
+$\varepsilon$ is a small dimensionless parameter controlling the angular
+asymmetry.  The $\ell=2$ Legendre polynomial is
+\begin{equation}
+  P_2(\cos\theta)
+  = \frac{1}{2}(3\cos^2\theta - 1).
+\end{equation}
+For $\varepsilon=0$ the density is spherically symmetric on the brane and
+separable in $r$ and $w$; for $\varepsilon\neq 0$ the density has a mild
+quadrupolar distortion localized within $r\lesssim a$.
+
+To obtain the effective 3D density on the brane we integrate over $w$,
+taking the projection kernel $K(w)=1$ for simplicity:
+\begin{equation}
+  \rho_{\mathrm{3D}}(r,\theta)
+  \equiv \int_{-\infty}^{+\infty}
+          \rho_4(r,\theta,w)\,\mathrm{d}w.
+\end{equation}
+Using the Gaussian integral
+\begin{equation}
+  \int_{-\infty}^{+\infty}
+    \exp\!\left(-\frac{w^2}{L^2}\right)\mathrm{d}w
+  = \sqrt{\pi}\,L,
+\end{equation}
+we obtain
+\begin{equation}
+  \rho_{\mathrm{3D}}(r,\theta)
+  = \sqrt{\pi}\,L\rho_0\,
+    \exp\!\left(-\frac{r^2}{a^2}\right)
+    \left[1 + \varepsilon P_2(\cos\theta)\right],
+  \label{eq:app_rho3d}
+\end{equation}
+which is Eq.~\eqref{eq:rho3d_gaussian} in the main text.
+
+\subsection{Total mass of the effective 3D source}
+
+The total effective mass $M$ associated with this density is
+\begin{equation}
+  M
+  = \int \rho_{\mathrm{3D}}(r,\theta)\,\mathrm{d}^3x.
+\end{equation}
+In spherical coordinates $(r,\theta,\phi)$ this becomes
+\begin{equation}
+  M
+  = \int_0^{2\pi}\!\mathrm{d}\phi
+    \int_0^{\pi}\!\mathrm{d}\theta
+    \int_0^{\infty}\!\mathrm{d}r\;
+      \rho_{\mathrm{3D}}(r,\theta)\,
+      r^2\sin\theta.
+\end{equation}
+Substituting Eq.~\eqref{eq:app_rho3d} yields
+\begin{align}
+  M
+  &= \sqrt{\pi}\,L\rho_0
+     \int_0^{\infty}\!\mathrm{d}r\;
+       r^2 \exp\!\left(-\frac{r^2}{a^2}\right)
+     \int_0^{\pi}\!\mathrm{d}\theta\;
+       \sin\theta
+       \left[1 + \varepsilon P_2(\cos\theta)\right]
+     \int_0^{2\pi}\!\mathrm{d}\phi.
+\end{align}
+The $\phi$ integral simply yields a factor of $2\pi$.  The angular integrals
+are
+\begin{align}
+  \int_0^{\pi}\sin\theta\,\mathrm{d}\theta
+  &= 2,
+  \\
+  \int_0^{\pi}\sin\theta\,P_2(\cos\theta)\,\mathrm{d}\theta
+  &= 0,
+\end{align}
+where the second equality follows from the orthogonality of Legendre
+polynomials.  Thus the $\varepsilon P_2$ piece does not contribute to the
+total mass, as expected for a pure quadrupole distortion.  We are left with
+\begin{equation}
+  M
+  = \sqrt{\pi}\,L\rho_0\,(2\pi)
+    \left(\int_0^{\infty}
+            r^2 e^{-r^2/a^2}\mathrm{d}r
+    \right)\,(2).
+\end{equation}
+Using the standard Gaussian integral
+\begin{equation}
+  \int_0^{\infty} r^2 e^{-r^2/a^2}\,\mathrm{d}r
+  = \frac{\sqrt{\pi}}{4}a^3,
+\end{equation}
+we find
+\begin{equation}
+  M
+  = \sqrt{\pi}\,L\rho_0\,(2\pi)
+    \left(\frac{\sqrt{\pi}}{4}a^3\right)\,(2)
+  = \pi^2 L a^3 \rho_0.
+  \label{eq:app_mass_result}
+\end{equation}
+This is Eq.~\eqref{eq:gaussian_mass} in the main text.  Up to the overall
+numerical factor $\pi^2$, the mass scales as
+\begin{equation}
+  M \sim \rho_0 L a^3,
+\end{equation}
+as expected for a throat--like object with size $a$ and depth $L$.
+
+\subsection{Quadrupole moment and the scaling \texorpdfstring{$Q/M \sim \varepsilon a^2$}{Q/M ~ eps a^2}}
+
+To compute the leading angular deviation from spherical symmetry, we
+consider a quadrupole--like scalar moment defined by
+\begin{equation}
+  Q_{20}
+  \equiv \int \rho_{\mathrm{3D}}(r,\theta)\,
+           r^2 P_2(\cos\theta)\,\mathrm{d}^3x,
+  \label{eq:app_q20_def}
+\end{equation}
+up to an overall normalization convention.  Substituting
+Eq.~\eqref{eq:app_rho3d} and writing out the volume element gives
+\begin{equation}
+  Q_{20}
+  = \sqrt{\pi}\,L\rho_0
+    \int_0^{2\pi}\!\mathrm{d}\phi
+    \int_0^{\pi}\!\mathrm{d}\theta
+    \int_0^{\infty}\!\mathrm{d}r\;
+      \exp\!\left(-\frac{r^2}{a^2}\right)
+      \left[1 + \varepsilon P_2(\cos\theta)\right]
+      r^4 P_2(\cos\theta)\sin\theta.
+\end{equation}
+Again the $\phi$ integral gives $2\pi$.  Because $P_2$ is orthogonal to the
+constant function on the unit sphere, only the term proportional to
+$\varepsilon$ survives:
+\begin{align}
+  Q_{20}
+  &= \sqrt{\pi}\,L\rho_0
+     (2\pi)\varepsilon
+     \left(
+       \int_0^{\infty}
+         r^4 e^{-r^2/a^2}\,\mathrm{d}r
+     \right)
+     \left(
+       \int_0^{\pi}
+         \sin\theta\,[P_2(\cos\theta)]^2 \mathrm{d}\theta
+     \right).
+\end{align}
+We now evaluate the radial and angular factors separately.
+
+For the radial integral, we use the standard formula
+\begin{equation}
+  \int_0^{\infty}
+    r^{2n} e^{-\beta r^2}\,\mathrm{d}r
+  = \frac{(2n-1)!!}{2^{n+1}}\sqrt{\frac{\pi}{\beta^{2n+1}}},
+\end{equation}
+with $n=2$ and $\beta = 1/a^2$, giving
+\begin{equation}
+  \int_0^{\infty}
+    r^4 e^{-r^2/a^2}\,\mathrm{d}r
+  = \frac{3\sqrt{\pi}}{8}a^5.
+\end{equation}
+
+For the angular integral, we exploit orthogonality of Legendre polynomials:
+\begin{equation}
+  \int_0^{\pi}
+    \sin\theta\,[P_\ell(\cos\theta)]^2\mathrm{d}\theta
+  = \frac{2}{2\ell+1}.
+\end{equation}
+Setting $\ell=2$ yields
+\begin{equation}
+  \int_0^{\pi}
+    \sin\theta\,[P_2(\cos\theta)]^2\mathrm{d}\theta
+  = \frac{2}{5}.
+\end{equation}
+
+Putting these pieces together, we find
+\begin{align}
+  Q_{20}
+  &= \sqrt{\pi}\,L\rho_0
+     (2\pi)\varepsilon
+     \left(\frac{3\sqrt{\pi}}{8}a^5\right)
+     \left(\frac{2}{5}\right)
+  \\
+  &= \frac{3}{10}\,\pi^2 L a^5 \varepsilon \rho_0.
+  \label{eq:app_q20_result}
+\end{align}
+This is Eq.~\eqref{eq:q20_result} in the main text.
+
+Dividing Eq.~\eqref{eq:app_q20_result} by the mass
+Eq.~\eqref{eq:app_mass_result} we obtain
+\begin{equation}
+  \frac{Q_{20}}{M}
+  = \frac{\frac{3}{10}\pi^2 L a^5 \varepsilon \rho_0}
+         {\pi^2 L a^3 \rho_0}
+  = \frac{3}{10}\,\varepsilon a^2.
+  \label{eq:app_q_over_m}
+\end{equation}
+Up to the numerical factor $3/10$, this confirms the scaling
+\begin{equation}
+  \frac{Q}{M} \sim \varepsilon a^2,
+\end{equation}
+used in Sec.~\ref{subsec:gaussian_toy_model}.  The quadrupole moment per
+unit mass is proportional to the square of the source size $a$ and to the
+dimensionless asymmetry parameter $\varepsilon$.
+
+\subsection{Remarks and generalizations}
+
+A few comments are in order:
+
+\begin{itemize}
+  \item The precise numerical coefficients ($\pi^2$, $3/10$, etc.) depend on
+        our choice of Gaussian profile and normalization conventions for the
+        multipole moments.  Different smooth, localized profiles with the
+        same characteristic size $a$ and small quadrupolar distortion
+        $\varepsilon P_2$ would yield different order--unity factors but the
+        same scaling $M\sim \rho_0 L a^3$ and $Q/M\sim \varepsilon a^2$.
+
+  \item The fact that the $\varepsilon$--dependent term drops out of the
+        total mass but dominates the quadrupole is a direct consequence of
+        the orthogonality of Legendre polynomials.  This is generic: pure
+        multipole distortions do not alter the monopole mass but do control
+        the higher multipole moments.
+
+  \item Higher multipoles can be generated by replacing $P_2(\cos\theta)$ in
+        Eq.~\eqref{eq:app_rho4} with $P_\ell(\cos\theta)$ for $\ell>2$, or
+        by adding a sum $\sum_\ell \varepsilon_\ell P_\ell(\cos\theta)$.  A
+        similar calculation then yields
+        \begin{equation}
+          \frac{Q_\ell}{M}
+          \sim \varepsilon_\ell a^\ell,
+        \end{equation}
+        up to order--unity coefficients, leading to potential corrections
+        of order $(a/r)^\ell$ in the far field.
+
+  \item The exponential factors in $r$ and $w$ are chosen for analytic
+        convenience.  In the context of the throat ontology, one should view
+        this Gaussian as a caricature of the true density profile near the
+        throat mouth: it captures the localization at scales $r\sim a$,
+        $w\sim L$ and the leading angular structure without pretending to be
+        a faithful solution of the full 4D Euler equations.
+\end{itemize}
+
+These calculations justify the scaling arguments used in the main text:
+dimensional reduction of a localized 4D throat--like density produces an
+effective 3D source whose finite--size corrections to the potential are
+naturally organized as a multipole expansion with coefficients suppressed by
+powers of $(a/r)$ and controlled by a small set of geometric parameters
+$(a,L,\varepsilon_\ell,\ldots)$.
+
+\section{4D Mode Separation in the Cylindrical Throat}
+\label{app:mode_separation}
+
+In this appendix we record the basic mode structure of the 4D acoustic
+equation inside the cylindrical throat.  The aim is to make explicit the
+separation of variables leading to Bessel--type radial profiles and standing
+waves along the bulk direction $w$, together with the corresponding
+eigenfrequencies and orthogonality relations.  This is the mode structure
+used implicitly in Sec.~\ref{sec:throat_em} and in the electromagnetic
+paper when discussing cavity modes and the enthalpy--selected aspect ratio
+$L/a$.
+
+\subsection{Acoustic equation and throat geometry}
+
+We begin from the linear 4D acoustic equation for the enthalpy perturbation
+$h$,
+\begin{equation}
+  \partial_t^2 h
+  - c_s^2 \nabla_4^2 h
+  = 0,
+  \qquad
+  \nabla_4^2
+  = \partial_x^2 + \partial_y^2 + \partial_z^2 + \partial_w^2,
+  \label{eq:app_4d_wave}
+\end{equation}
+as derived in Sec.~\ref{subsec:bulk_fields}.  Inside the throat we
+approximate the geometry as a straight cylinder of radius $a$ in the brane
+directions and depth $L$ along the bulk direction $w$.  We choose
+coordinates adapted to this geometry:
+\begin{equation}
+  (r,\phi,w),
+\end{equation}
+where $(r,\phi)$ are polar coordinates in a cross--section through the
+throat mouth on the brane (with $r$ measured from the throat center), and
+$w\in[0,L]$ measures distance along the throat into the bulk.  For the
+lowest--lying modes of interest we assume axisymmetry in $\phi$ and no
+dependence on the third brane direction orthogonal to the throat axis.
+
+In this approximation the Laplacian restricted to axisymmetric configurations
+becomes
+\begin{equation}
+  \nabla_4^2 h
+  = \frac{1}{r}\partial_r\!\left(r\partial_r h\right)
+    + \partial_w^2 h,
+  \label{eq:app_laplacian}
+\end{equation}
+so the wave equation reads
+\begin{equation}
+  \partial_t^2 h
+  - c_s^2
+    \left[
+      \frac{1}{r}\partial_r\!\left(r\partial_r h\right)
+      + \partial_w^2 h
+    \right]
+  = 0.
+  \label{eq:app_wave_rw}
+\end{equation}
+
+\subsection{Separation of variables and eigenvalue problem}
+
+We look for separated, time--harmonic solutions of the form
+\begin{equation}
+  h(t,r,w)
+  = \Re\!\left\{
+      H(r)\,W(w)\,e^{-i\omega t}
+    \right\},
+  \label{eq:app_separated_ansatz}
+\end{equation}
+with real frequency $\omega$.  Substituting
+Eq.~\eqref{eq:app_separated_ansatz} into Eq.~\eqref{eq:app_wave_rw} and
+dividing by $H(r)W(w)e^{-i\omega t}$ yields
+\begin{equation}
+  -\omega^2
+  - c_s^2
+    \left[
+      \frac{1}{H}
+      \frac{1}{r}\partial_r\!\left(r\partial_r H\right)
+      + \frac{1}{W}\partial_w^2 W
+    \right]
+  = 0.
+\end{equation}
+Rearranging gives
+\begin{equation}
+  \frac{1}{H}
+  \frac{1}{r}\partial_r\!\left(r\partial_r H\right)
+  + \frac{1}{W}\partial_w^2 W
+  = -\,\frac{\omega^2}{c_s^2}.
+  \label{eq:app_separation_eq}
+\end{equation}
+The left--hand side is a sum of a function of $r$ and a function of $w$,
+while the right--hand side is a constant, so each term must separately be
+equal to a constant.  Introducing separation constants $-k_r^2$ and
+$-k_w^2$, we write
+\begin{align}
+  \frac{1}{H}
+  \frac{1}{r}\partial_r\!\left(r\partial_r H\right)
+  &= -k_r^2,
+  \label{eq:app_radial_eq_pre}
+  \\
+  \frac{1}{W}\partial_w^2 W
+  &= -k_w^2,
+  \label{eq:app_axial_eq_pre}
+\end{align}
+and the dispersion relation
+\begin{equation}
+  \omega^2
+  = c_s^2(k_r^2 + k_w^2).
+  \label{eq:app_dispersion}
+\end{equation}
+
+Equations~\eqref{eq:app_radial_eq_pre}--\eqref{eq:app_axial_eq_pre}
+constitute a pair of ordinary differential equations:
+\begin{align}
+  \frac{1}{r}\partial_r\!\left(r\partial_r H\right)
+  + k_r^2 H &= 0,
+  \label{eq:app_radial_eq}
+  \\
+  \partial_w^2 W
+  + k_w^2 W &= 0.
+  \label{eq:app_axial_eq}
+\end{align}
+The allowed values of $k_r$ and $k_w$ are determined by boundary conditions
+on $H(r)$ and $W(w)$ inside the throat.
+
+\subsection{Radial modes and Bessel functions}
+
+The radial equation \eqref{eq:app_radial_eq} is the standard Bessel equation
+of order zero.  Its general solution is
+\begin{equation}
+  H(r)
+  = A J_0(k_r r) + B Y_0(k_r r),
+\end{equation}
+where $J_0$ and $Y_0$ are Bessel functions of the first and second kind,
+respectively, and $A,B$ are constants.  Regularity at $r=0$ requires $B=0$,
+since $Y_0(x)$ is singular at the origin.  We therefore take
+\begin{equation}
+  H(r) = A J_0(k_r r).
+\end{equation}
+
+At the throat wall $r=a$ we impose a boundary condition on $h$ corresponding
+to a pinned phase boundary of the stiff superfluid vacuum.  Concretely, we
+take a Dirichlet condition on the enthalpy perturbation,
+\begin{equation}
+  h(r=a,w,t) = 0
+  \quad\Rightarrow\quad
+  H(a) = 0,
+\end{equation}
+This pinning stabilizes the cylindrical throat against radial collapse:
+expansions or contractions of the wall necessarily excite bulk modes that
+raise the vacuum enthalpy.  This holds for all $w$ and $t$ and implies
+\begin{equation}
+  J_0(k_r a) = 0.
+\end{equation}
+Let $x_{0n}$ denote the $n$th zero of $J_0(x)$, with
+\begin{equation}
+  0 < x_{01} < x_{02} < \cdots.
+\end{equation}
+Then the allowed radial wavenumbers are
+\begin{equation}
+  k_r^{(n)}
+  = \frac{x_{0n}}{a},
+  \qquad
+  n = 1,2,\dots,
+\end{equation}
+and the corresponding radial eigenfunctions are
+\begin{equation}
+  H_n(r)
+  = A_n J_0\!\left(\frac{x_{0n} r}{a}\right).
+\end{equation}
+
+These eigenfunctions satisfy an orthogonality relation with respect to the
+measure $r\,\mathrm{d}r$:
+\begin{equation}
+  \int_0^a r
+    J_0\!\left(\frac{x_{0m} r}{a}\right)
+    J_0\!\left(\frac{x_{0n} r}{a}\right)
+  \mathrm{d}r
+  = \frac{a^2}{2}\,[J_1(x_{0n})]^2\,\delta_{mn},
+  \label{eq:app_bessel_orth}
+\end{equation}
+where $J_1$ is the Bessel function of order one and $\delta_{mn}$ is the
+Kronecker delta.  One can therefore choose the normalization constants $A_n$
+so that the $H_n(r)$ form an orthonormal basis on $[0,a]$.
+
+\subsection{Axial modes and standing waves along \texorpdfstring{$w$}{w}}
+
+The axial equation \eqref{eq:app_axial_eq} has the general solution
+\begin{equation}
+  W(w)
+  = C\cos(k_w w) + D\sin(k_w w),
+\end{equation}
+with $C,D$ constants.  The appropriate boundary conditions depend on the
+microscopic physics at the mouth ($w=0$) and bottom ($w=L$) of the throat.
+For definiteness, and to match the cavity analysis in the main text, we
+impose Dirichlet conditions at both ends:
+\begin{equation}
+  W(0) = W(L) = 0.
+\end{equation}
+The condition $W(0)=0$ implies $C=0$, so $W(w) = D\sin(k_w w)$.  The
+condition $W(L)=0$ then requires
+\begin{equation}
+  \sin(k_w L) = 0
+  \quad\Rightarrow\quad
+  k_w L = n\pi,
+  \qquad n=1,2,\dots,
+\end{equation}
+so the allowed axial wavenumbers are
+\begin{equation}
+  k_w^{(n)}
+  = \frac{n\pi}{L},
+  \qquad n=1,2,\dots,
+\end{equation}
+and the axial eigenfunctions are
+\begin{equation}
+  W_n(w)
+  = D_n \sin\!\left(\frac{n\pi w}{L}\right).
+\end{equation}
+
+These functions are orthogonal on $[0,L]$:
+\begin{equation}
+  \int_0^L
+    \sin\!\left(\frac{m\pi w}{L}\right)
+    \sin\!\left(\frac{n\pi w}{L}\right)\mathrm{d}w
+  = \frac{L}{2}\,\delta_{mn},
+  \label{eq:app_sine_orth}
+\end{equation}
+so the constants $D_n$ can be chosen to yield an orthonormal set.
+
+Other choices of boundary conditions (Neumann or mixed) are possible and
+would lead to cosine or sine--cosine combinations with shifted eigenvalues,
+but the qualitative structure---a discrete tower of axial modes with
+$k_w\sim n\pi/L$---is the same.
+
+\subsection{Mode spectrum and fundamental throat mode}
+
+Combining the radial and axial modes, the general separated solution inside
+the throat is a superposition of eigenmodes labeled by a pair of integers
+$(m,n)$:
+\begin{equation}
+  h_{mn}(t,r,w)
+  = A_{mn}
+    J_0\!\left(\frac{x_{0m} r}{a}\right)
+    \sin\!\left(\frac{n\pi w}{L}\right)
+    \cos(\omega_{mn} t + \varphi_{mn}),
+  \label{eq:app_full_mode}
+\end{equation}
+where $A_{mn}$ and $\varphi_{mn}$ are real amplitude and phase, and the
+eigenfrequencies are given by
+\begin{equation}
+  \omega_{mn}^2
+  = c_s^2
+    \left[
+      \left(\frac{x_{0m}}{a}\right)^2
+      + \left(\frac{n\pi}{L}\right)^2
+    \right],
+  \qquad m,n=1,2,\dots.
+  \label{eq:app_mode_spectrum}
+\end{equation}
+The lowest--lying mode (apart from any zero modes associated with trivial
+symmetries) is the fundamental $(m,n)=(1,1)$ mode:
+\begin{equation}
+  h_{11}(t,r,w)
+  \propto J_0\!\left(\frac{x_{01} r}{a}\right)
+           \sin\!\left(\frac{\pi w}{L}\right)
+           \cos(\omega_{11} t),
+  \qquad
+  \omega_{11}^2
+  = c_s^2
+    \left[
+      \left(\frac{x_{01}}{a}\right)^2
+      + \left(\frac{\pi}{L}\right)^2
+    \right].
+  \label{eq:app_fundamental_mode}
+\end{equation}
+This is the mode used in Sec.~\ref{subsec:throat_modes} and in the
+enthalpy--minimization argument for the preferred aspect ratio $L/a$.
+
+\subsection{Normalization and enthalpy functional (sketch)}
+
+For completeness, we briefly record how the normalization of the modes
+enters the enthalpy functional, leaving detailed variations to the main
+text and to the electromagnetic paper.
+
+The time--averaged perturbation energy (or enthalpy) associated with a mode
+$h$ can be written schematically as
+\begin{equation}
+  \mathcal{E}[h]
+  = \frac{1}{2}
+    \int_{\mathcal{T}}\!\mathrm{d}V_4\;
+      \rho_0
+      \left[
+        \frac{1}{c_s^2}\,\langle(\partial_t h)^2\rangle
+        + \langle(\nabla_4 h)^2\rangle
+      \right],
+  \label{eq:app_energy_func}
+\end{equation}
+where $\mathrm{d}V_4 = r\,\mathrm{d}r\,\mathrm{d}\phi\,\mathrm{d}w$ is the
+4D volume element restricted to the throat and $\langle\cdot\rangle$
+denotes an average over one oscillation period.
+
+For a single eigenmode of the form \eqref{eq:app_full_mode} with frequency
+$\omega_{mn}$, the time average gives
+\begin{align}
+  \langle(\partial_t h_{mn})^2\rangle
+  &= \frac{1}{2}\omega_{mn}^2 A_{mn}^2
+     J_0^2\!\left(\frac{x_{0m} r}{a}\right)
+     \sin^2\!\left(\frac{n\pi w}{L}\right),
+  \\
+  \langle(\nabla_4 h_{mn})^2\rangle
+  &= \frac{1}{2} A_{mn}^2
+     \left[
+       \left(\frac{x_{0m}}{a}\right)^2
+       + \left(\frac{n\pi}{L}\right)^2
+     \right]
+     J_0^2\!\left(\frac{x_{0m} r}{a}\right)
+     \sin^2\!\left(\frac{n\pi w}{L}\right),
+\end{align}
+so that the integrand in Eq.~\eqref{eq:app_energy_func} is proportional to
+$(k_r^2+k_w^2)A_{mn}^2 J_0^2 \sin^2$, with $k_r=x_{0m}/a$ and
+$k_w=n\pi/L$.  Using the orthogonality relations
+\eqref{eq:app_bessel_orth} and \eqref{eq:app_sine_orth}, one finds that the
+total energy stored in the mode scales as
+\begin{equation}
+  \mathcal{E}_{mn}
+  \propto A_{mn}^2 (k_r^2 + k_w^2)\,a^2 L,
+\end{equation}
+up to order--unity constants coming from the angular integrals and
+normalization choices.
+
+A ``charge''--like quantity associated with the mode amplitude, such as the
+vorticity flux through the throat cross--section, typically scales as
+\begin{equation}
+  \mathcal{Q}_{mn}
+  \propto A_{mn}^2 a^2 L,
+\end{equation}
+again up to order--unity factors.  At fixed $\mathcal{Q}_{mn}$, the energy
+is therefore proportional to $k_r^2 + k_w^2$:
+\begin{equation}
+  \mathcal{E}_{mn}
+  \propto (k_r^2 + k_w^2)\,\mathcal{Q}_{mn}.
+\end{equation}
+For the fundamental mode $(m,n)=(1,1)$, this reduces to
+\begin{equation}
+  \mathcal{E}_{11}
+  \propto
+    \left[
+      \left(\frac{x_{01}}{a}\right)^2
+      + \left(\frac{\pi}{L}\right)^2
+    \right]\mathcal{Q}_{11}.
+\end{equation}
+The enthalpy--minimization problem at fixed ``charge'' discussed in
+Sec.~\ref{subsec:aspect_ratio} and in the electromagnetic paper is
+equivalent to minimizing this combination with respect to $a$ and $L$, subject
+to appropriate constraints (e.g.\ fixed mass and/or other geometric
+quantities).  The resulting optimum selects a particular aspect ratio
+$L/a$, which in the toy model of Paper~IV and in the present ontology is
+\begin{equation}
+  \frac{L}{a}
+  = \frac{\sqrt{2}\,\pi}{x_{01}},
+\end{equation}
+interpreted as a geometric property of the throat rather than an externally
+imposed parameter.
+
+We will not repeat the full variational calculation here; the purpose of
+this appendix is to show how the basic mode structure and its dependence on
+$a$ and $L$ arise from the 4D acoustic equation inside the cylindrical
+throat.
+
+\section{Two-Mode Toy Model for \texorpdfstring{$\alpha^2 = -2/5$}{alpha^2 = -2/5}}
+\label{app:two_mode_details}
+
+In this appendix we spell out a simple two--mode toy model that captures the
+effective sign flip in the longitudinal sector required by the
+Einstein--Infeld--Hoffmann (EIH) matching, and that motivates the condition
+$\alpha^2 = -2/5$ from a mode--space point of view.  The goal is not to
+reproduce the full calculation of Paper~III, but to isolate the algebraic
+structure behind the statement that the longitudinal contribution to the
+vector kernel must enter with an effective minus sign.
+
+\subsection{Euclidean quadratic form and mode combinations}
+
+Consider two real mode amplitudes $u_T$ and $u_L$ representing,
+respectively, transverse--like (brane--parallel) and longitudinal--like
+(bulk--directed) patterns in the fluid velocity field.  We take the bare
+energy stored in these modes to be a strictly positive quadratic form,
+\begin{equation}
+  E[u_T,u_L]
+  = \frac{1}{2}
+    \left(
+      A_T u_T^2 + A_L u_L^2
+    \right),
+  \qquad
+  A_T>0,\;A_L>0,
+  \label{eq:app_two_mode_energy}
+\end{equation}
+which is the simplest representation of a Euclidean mode space with two
+orthogonal directions.  We deliberately omit any off--diagonal $u_T u_L$
+term at this stage; such a term can be reintroduced later if desired, but it
+is not needed to see the essential point.
+
+Suppose now that the motion of a defect couples to a particular linear
+combination of these modes,
+\begin{equation}
+  u_{\mathrm{phys}}
+  = u_T + \alpha u_L,
+  \label{eq:app_phys_mode}
+\end{equation}
+where $\alpha$ is a dimensionless parameter controlling the relative
+longitudinal weight.  This captures, in a toy setting, the idea that a
+moving defect sources both transverse and longitudinal components of the
+fluid velocity, with a fixed ratio set by the geometry and the structure of
+the vector kernel.
+
+We can complete $u_{\mathrm{phys}}$ to a basis by introducing an orthogonal
+combination
+\begin{equation}
+  u_{\perp}
+  = -\alpha u_T + u_L.
+  \label{eq:app_perp_mode}
+\end{equation}
+The transformation from $(u_T,u_L)$ to $(u_{\mathrm{phys}},u_{\perp})$ is
+linear and invertible as long as $1+\alpha^2\neq 0$.  In matrix form,
+\begin{equation}
+  \begin{pmatrix}
+    u_{\mathrm{phys}}\\
+    u_{\perp}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & \alpha \\
+    -\alpha & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    u_T\\
+    u_L
+  \end{pmatrix},
+  \qquad
+  \det
+  \begin{pmatrix}
+    1 & \alpha \\
+    -\alpha & 1
+  \end{pmatrix}
+  = 1+\alpha^2.
+\end{equation}
+The inverse transformation is
+\begin{equation}
+  \begin{pmatrix}
+    u_T\\
+    u_L
+  \end{pmatrix}
+  = \frac{1}{1+\alpha^2}
+    \begin{pmatrix}
+      1 & -\alpha\\
+      \alpha & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      u_{\mathrm{phys}}\\
+      u_{\perp}
+    \end{pmatrix},
+  \label{eq:app_inverse_transform}
+\end{equation}
+i.e.
+\begin{align}
+  u_T
+  &= \frac{1}{1+\alpha^2}
+     \left(
+       u_{\mathrm{phys}} - \alpha u_{\perp}
+     \right),
+     \label{eq:app_uT_rewrite}
+  \\
+  u_L
+  &= \frac{1}{1+\alpha^2}
+     \left(
+       \alpha u_{\mathrm{phys}} + u_{\perp}
+     \right).
+     \label{eq:app_uL_rewrite}
+\end{align}
+
+\subsection{Effective quadratic form for the physical mode}
+
+We now express the energy \eqref{eq:app_two_mode_energy} in terms of
+$(u_{\mathrm{phys}},u_{\perp})$ using
+Eqs.~\eqref{eq:app_uT_rewrite}--\eqref{eq:app_uL_rewrite}.  Substituting,
+we obtain
+\begin{align}
+  E
+  &= \frac{1}{2}
+     \left[
+       A_T u_T^2 + A_L u_L^2
+     \right]
+   \nonumber\\
+  &= \frac{1}{2(1+\alpha^2)^2}
+     \Big[
+       A_T\,(u_{\mathrm{phys}} - \alpha u_{\perp})^2
+       + A_L\,(\alpha u_{\mathrm{phys}} + u_{\perp})^2
+     \Big].
+\end{align}
+Expanding the squares,
+\begin{align}
+  E
+  &= \frac{1}{2(1+\alpha^2)^2}
+     \Big\{
+       A_T\left(
+         u_{\mathrm{phys}}^2
+         - 2\alpha u_{\mathrm{phys}}u_{\perp}
+         + \alpha^2 u_{\perp}^2
+       \right)
+   \nonumber\\
+  &\hspace{3.5em}
+       + A_L\left(
+           \alpha^2 u_{\mathrm{phys}}^2
+           + 2\alpha u_{\mathrm{phys}}u_{\perp}
+           + u_{\perp}^2
+         \right)
+     \Big\}.
+\end{align}
+Collecting coefficients of $u_{\mathrm{phys}}^2$, $u_{\mathrm{phys}}u_{\perp}$,
+and $u_{\perp}^2$, we find
+\begin{align}
+  E
+  &= \frac{1}{2(1+\alpha^2)^2}
+     \Big[
+       (A_T + \alpha^2 A_L)\,u_{\mathrm{phys}}^2
+   \nonumber\\
+  &\hspace{5em}
+       + 2\alpha(A_L - A_T)\,u_{\mathrm{phys}}u_{\perp}
+   \nonumber\\
+  &\hspace{5em}
+       + (\alpha^2 A_T + A_L)\,u_{\perp}^2
+     \Big].
+  \label{eq:app_E_phys_perp}
+\end{align}
+
+In many situations of interest, the defect couples primarily to
+$u_{\mathrm{phys}}$ and only weakly to $u_{\perp}$, so that $u_{\perp}$ can
+be integrated out or treated as a heavy mode that has been set to its
+(approximate) minimum.  As a simple caricature of this situation, we can
+set $u_{\perp}=0$, in which case Eq.~\eqref{eq:app_E_phys_perp} reduces to
+\begin{equation}
+  E_{\mathrm{eff}}[u_{\mathrm{phys}}]
+  = \frac{1}{2}
+    A_{\mathrm{eff}}(\alpha)\,u_{\mathrm{phys}}^2,
+\end{equation}
+with an effective coefficient
+\begin{equation}
+  A_{\mathrm{eff}}(\alpha)
+  = \frac{A_T + \alpha^2 A_L}{(1+\alpha^2)^2}.
+  \label{eq:app_Aeff}
+\end{equation}
+Up to a trivial overall factor $(1+\alpha^2)^{-2}$ (which can be absorbed
+into a normalization of $u_{\mathrm{phys}}$), the relevant combination of
+$A_T$ and $A_L$ is
+\begin{equation}
+  A_T + \alpha^2 A_L.
+  \label{eq:app_ATAL_combo}
+\end{equation}
+This is the algebraic structure emphasized in the main text: the effective
+coefficient governing the physical mode depends linearly on $\alpha^2$ and
+interpolates between $A_T$ and $A_L$ as $\alpha^2$ is varied.
+
+\subsection{No sign flip with real \texorpdfstring{$\alpha$}{alpha}}
+
+If $\alpha$ is restricted to be real and $A_T,A_L>0$, then the combination
+\eqref{eq:app_ATAL_combo} is strictly positive for all $\alpha^2\ge 0$:
+\begin{equation}
+  A_T + \alpha^2 A_L
+  \ge A_T > 0.
+\end{equation}
+Consequently $A_{\mathrm{eff}}(\alpha)$ in Eq.~\eqref{eq:app_Aeff} is also
+positive for all real $\alpha$, and no choice of $\alpha$ can produce an
+effective coefficient with the opposite sign of $A_T$ or $A_L$.  In
+particular, there is no way to obtain a negative effective coefficient
+starting from a strictly positive--definite quadratic form
+\eqref{eq:app_two_mode_energy} by merely changing the relative weight of
+$u_T$ and $u_L$ in the physical combination $u_{\mathrm{phys}}$.
+
+This mirrors the situation encountered in the full vector--kernel
+calculation of Paper~III: if the longitudinal contribution to the kernel is
+weighted by a real parameter in an otherwise Euclidean quadratic form, the
+resulting velocity--dependent interaction terms in the effective many--body
+Lagrangian cannot match the EIH coefficients of GR.  The longitudinal sector
+needs to enter with an effective negative sign relative to the transverse
+sector, which is impossible with $\alpha^2>0$ and $A_T,A_L>0$.
+
+\subsection{Allowing \texorpdfstring{$\alpha^2<0$}{alpha^2 < 0} and emergent Lorentzian signature}
+
+The situation changes qualitatively if we allow $\alpha$ to be purely
+imaginary, so that
+\begin{equation}
+  \alpha^2 < 0.
+\end{equation}
+We can parametrize this by writing
+\begin{equation}
+  \alpha^2 = -\lambda,
+  \qquad
+  \lambda>0.
+\end{equation}
+Then the relevant combination \eqref{eq:app_ATAL_combo} becomes
+\begin{equation}
+  A_T + \alpha^2 A_L
+  = A_T - \lambda A_L.
+\end{equation}
+For $\lambda$ larger than $A_T/A_L$, this expression becomes negative even
+though $A_T$ and $A_L$ are both positive.  In other words, the physical
+direction $u_{\mathrm{phys}}$ in $(u_T,u_L)$--space can acquire an effective
+\emph{negative} norm with respect to the original quadratic form
+\eqref{eq:app_two_mode_energy}.
+
+From the perspective of the basis $(u_{\mathrm{phys}},u_{\perp})$, this
+means that the quadratic form in Eq.~\eqref{eq:app_E_phys_perp} can develop
+an \emph{indefinite} signature: one eigenvalue can become negative while
+the other remains positive.  When expressed in a suitable orthonormal basis,
+the metric on mode space then takes a Lorentzian form
+\begin{equation}
+  E
+  \sim +\frac{1}{2} \tilde{A}_T \tilde{u}_T^2
+       - \frac{1}{2} \tilde{A}_L \tilde{u}_L^2,
+\end{equation}
+with one ``time--like'' direction and one ``space--like'' direction in the
+space of mode amplitudes.  The sign choice here is conventional; the key
+point is that the longitudinal--like direction can carry the opposite sign
+from the transverse--like direction.
+
+In the full vector--kernel calculation, the roles of $A_T$ and $A_L$ are
+played by the transverse and longitudinal coefficients $C_T$ and $C_L$ in
+the kernel decomposition
+\begin{equation}
+  K_{ij}(\mathbf{k})
+  = C_T(\alpha)\,P_{ij}^{\mathrm{T}}(\mathbf{k})
+    + C_L(\alpha)\,P_{ij}^{\mathrm{L}}(\mathbf{k}),
+\end{equation}
+and the combination analogous to Eq.~\eqref{eq:app_ATAL_combo} appears in
+the coefficients of the velocity--dependent interaction terms.  Matching to
+the EIH Lagrangian demands that this combination reproduce the specific
+signs and magnitudes of the GR coefficients, which is only possible if
+$\alpha^2$ is negative.  The detailed calculation in Paper~III picks out the
+unique value
+\begin{equation}
+  \alpha^2 = -\frac{2}{5},
+\end{equation}
+i.e.\ $\lambda = 2/5$, as the one that yields the correct EIH tensor.
+
+In the throat ontology, it is natural to interpret $u_T$ as predominantly
+brane--parallel fluctuations of the fluid velocity (shear and circulation
+within the brane) and $u_L$ as predominantly bulk--directed fluctuations
+(draining into the throat and deformation of the brane into the bulk).  The
+condition $\alpha^2=-2/5$ then says that the physical mode mediating
+1PN vector interactions involves a particular mixture of brane--parallel and
+bulk--directed motion in which the bulk component enters with an opposite
+sign in the effective quadratic form.  The space of modes relevant to the
+1PN dynamics on the brane thus acquires a Lorentzian signature, with the
+bulk--related direction playing the role of a time--like direction in mode
+space.
+
+\subsection{Adding off-diagonal mixing (optional generalization)}
+
+For completeness, we note that one can generalize the toy model by adding an
+off--diagonal mixing term to the bare energy,
+\begin{equation}
+  E[u_T,u_L]
+  = \frac{1}{2}
+    \left(
+      A_T u_T^2 + 2B u_T u_L + A_L u_L^2
+    \right),
+  \qquad
+  A_T>0,\;A_L>0,\;A_TA_L>B^2,
+\end{equation}
+so that the quadratic form is still positive--definite in the original basis.
+Repeating the change of basis to $(u_{\mathrm{phys}},u_{\perp})$ yields a
+more complicated expression for $E$ with additional $\alpha$--dependence
+coming from the $B$ term, but the qualitative conclusions are unchanged:
+\begin{itemize}
+  \item For real $\alpha$ and strictly Euclidean $(A_T,A_L,B)$, the
+        effective coefficient of $u_{\mathrm{phys}}^2$ remains of fixed
+        sign; no sign flip is possible.
+  \item Allowing $\alpha^2<0$ introduces the possibility of an effective
+        negative norm along $u_{\mathrm{phys}}$, corresponding to an
+        emergent Lorentzian direction in mode space.
+\end{itemize}
+The simple diagonal model \eqref{eq:app_two_mode_energy} is therefore
+sufficient to capture the key feature: the EIH matching forces the physical
+combination of transverse and longitudinal modes to be time--like with
+respect to an effective mode--space metric, and this is encoded in the
+condition $\alpha^2=-2/5$.
+
+\subsection{Summary}
+
+To summarize, the two--mode toy model shows that:
+\begin{itemize}
+  \item The effective coefficient controlling the physical mode excited by
+        moving defects is a linear combination $A_T + \alpha^2 A_L$ of the
+        underlying transverse and longitudinal coefficients.
+  \item With a strictly Euclidean quadratic form and real $\alpha$, this
+        combination cannot change sign; the longitudinal sector cannot enter
+        with the opposite sign of the transverse sector.
+  \item Allowing $\alpha^2<0$ makes it possible for the physical mode to
+        have an effective negative norm, yielding an indefinite
+        (Lorentzian) signature on mode space.
+  \item The specific value $\alpha^2=-2/5$ selected by the full EIH matching
+        in Paper~III can be viewed as the condition that the brane--parallel
+        and bulk--directed components of the fluid velocity combine into a
+        time--like mode whose induced interactions reproduce the GR 1PN
+        vector sector.
+\end{itemize}
+This provides a compact algebraic underpinning for the ``Lorentzian
+constraint'' discussed in Sec.~\ref{sec:lorentzian_constraint} and ties it
+directly to the brane--bulk throat ontology.
+
+\begin{thebibliography}{99}
+
+\bibitem{Norris:Paper1}
+Norris, T. (2025).
+\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+
+\bibitem{Norris:Paper2}
+Norris, T. (2025).
+\newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+
+\bibitem{Norris:Paper3}
+Norris, T. (2025).
+\newblock \emph{1PN Spin Precession and N-Body Dynamics from a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17798511}{doi:10.5281/zenodo.17798511}.
+
+\end{thebibliography}
+
+\end{document}

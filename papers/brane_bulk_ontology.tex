@@ -1179,15 +1179,20 @@ preferred aspect ratio $L/a$ then reflects how the throat geometry arranges
 itself to support a given amount of vorticity flux at minimum energetic
 cost.
 
-\subsection{Mass as drainage and volume flux}
+\subsection{Mass as density starvation and volume flux}
 \label{subsec:mass_flux}
 
 In contrast to charge, which is associated with circulation and vorticity
-flux, the mass of the defect is associated with drainage of fluid into the
-throat and the resulting volume deficit in the surrounding superfluid.  From
-the brane point of view, a defect appears as a localized sink: the normal
-component of the bulk velocity at the mouth is nonzero and directed into
-the throat,
+flux, the mass of the defect is associated with a \emph{scalar} density
+depletion anchored on the throat.  The drainage of fluid into the throat
+provides the kinematic mechanism that establishes the throat and fixes a
+boundary condition at its mouth, but the long--range Newtonian field on the
+brane is sourced by the resulting hydrostatic density ``starvation'' field,
+not by the short--range kinetic energy of the inflow itself.
+
+From the brane point of view, a defect appears as a localized sink: the
+normal component of the bulk velocity at the mouth is nonzero and directed
+into the throat,
 \begin{equation}
   v_w(\mathbf{x},w=0,t) < 0
 \end{equation}
@@ -1199,13 +1204,25 @@ flux into the throat is
       v_w(\mathbf{x},w=0,t)\,\mathrm{d}^2S,
 \end{equation}
 where the integral is over the effective mouth area on the brane.  In a
-steady configuration this flux is balanced by either compression within the
-throat, circulation of fluid in closed streamline patterns, or outflow at
-the bottom of the throat, depending on the global topology.  The resulting
-density deficit in the near field is what sources the effective Newtonian
-potential on the brane.
+steady configuration this flux is balanced by compression within the throat,
+recirculation along closed streamlines, or outflow at the far end of the
+throat, depending on the global topology.
 
-At the level of scaling, the mass associated with the throat is
+If the mass were sourced purely by the kinetic energy associated with this
+flow, the induced density deficit would be strongly localized near the
+mouth and would fall off too rapidly with radius to reproduce a Newtonian
+$1/r$ potential; this is precisely what is seen in explicit lensing
+calculations when one takes $\rho\propto v^2$ as the source.  In the toy
+model, the superfluid vacuum instead responds to the throat as a stiff,
+self--gravitating medium: the drainage and geometry at the mouth impose a
+boundary condition on the scalar enthalpy and density fields, and the vacuum
+relaxes into a hydrostatic configuration with a long--range density
+depletion $\delta\rho(r)$ extending far from the throat.  It is this scalar
+density--starvation profile, rather than the local kinetic energy of the
+inflow, that sources the effective Newtonian potential on the brane.
+
+At the level of scaling, the throat geometry still sets the core mass
+scale,
 \begin{equation}
   M \sim \rho_0 \,(\text{effective throat volume})
     \sim \rho_0 \,\pi a^2 L,
@@ -1213,30 +1230,39 @@ At the level of scaling, the mass associated with the throat is
 modulo order--unity geometric factors and corrections from the detailed
 profile of $\rho(\mathbf{x},w)$.  This is consistent with the Gaussian toy
 model of Sec.~\ref{subsec:gaussian_toy_model}, where $M\propto \rho_0 L a^3$
-up to numerical factors, and with the interpretation of $M$ as the total
-mass deficit localized within the throat and its immediate surroundings.
+up to numerical factors.  In the hybrid scalar--vector picture developed in
+the companion Paper~VI, this core contribution is supplemented by an
+extended scalar depletion halo falling roughly as $1/r$, so that the total
+Newtonian mass includes both the localized throat deficit and the global
+hydrostatic response of the vacuum.
 
 Putting these pieces together, the throat ontology suggests a simple
 geometric picture:
 \begin{itemize}
-  \item Mass is associated with the \emph{volume} of the throat and the
-        associated drainage of fluid into it.
+  \item Mass is associated with the \emph{density starvation field}
+        anchored on the throat: drainage and throat geometry fix a boundary
+        condition, and the stiff superfluid vacuum responds with a
+        long--range scalar depletion profile whose core scale is set by the
+        effective throat volume.
   \item Charge is associated with the \emph{vorticity flux} threading the
-        throat cross--section.
+        throat cross--section, which controls the internal cavity modes and
+        the effective electromagnetic fields on the brane.
 \end{itemize}
 Both are properties of the same geometric object---a brane--bulk throat of
 radius $a$ and depth $L$---viewed through different hydrodynamic
 projections.  The gravitational sector is sensitive mainly to the integrated
-mass deficit and the resulting monopolar potential on the brane, while the
-electromagnetic sector is sensitive to the internal cavity modes and the
+density deficit and the resulting monopolar potential on the brane, while
+the electromagnetic sector is sensitive to the internal cavity modes and the
 vorticity flux they support.
 
 In this way, the sphere--cylinder tension that appeared when Papers~I--III
 and IV were viewed in isolation is naturally resolved: the same throat can
-appear as a spherical sink on the brane for gravity and as a cylindrical
-cavity in the bulk for electromagnetism.  In the next section we move back
-toward the brane and examine the transition region near the throat mouth,
-where finite--size effects and 2PN corrections originate.
+appear as a spherical sink on the brane for gravity, supported by a scalar
+density--starvation halo, and as a cylindrical cavity in the bulk for
+electromagnetism, with its own preferred aspect ratio and cavity spectrum.
+In the next section we move back toward the brane and examine the transition
+region near the throat mouth, where finite--size effects and 2PN corrections
+originate.
 
 \section{Near-Field Transition and Finite-Size Effects}
 \label{sec:near_field}
@@ -2086,7 +2112,11 @@ into this mouth reproduce the spherical sink picture used in the orbital,
 optical, and spin/$N$--body papers: at distances $r\gg a,L$, the defect
 appears as a point mass with potential $\Phi\sim -GM/r$ and 1PN corrections
 controlled by the same hydrodynamic energy functional that was matched to
-the EIH Lagrangian.  Dimensional reduction from 4D to 3D shows that
+the EIH Lagrangian.  In the hybrid scalar--vector description, the Newtonian
+$1/r$ potential is sourced by a scalar density--starvation field on the
+brane, while the 1PN corrections are governed by the vector sector encoded
+in the Lorentzian energy functional.  Dimensional reduction from 4D to 3D
+shows that
 finite--size effects from the throat interior and transition region enter
 the far field only through multipole corrections suppressed by $(a/r)^2$ and
 higher powers.
@@ -2104,14 +2134,20 @@ reinterpreted as a geometric property of the throat, not as an arbitrary
 parameter choice for a 3D cylinder.
 
 The throat picture also clarifies the physical meaning of mass and charge in
-the model.  Mass is associated with drainage of fluid into the throat and
-the resulting volume deficit in the surrounding superfluid, with
-$M\sim\rho_0\pi a^2L$ up to order--unity factors.  Charge is associated with
+the model.  Mass is associated with the scalar density--starvation field
+anchored on the throat: drainage into the throat and the throat geometry fix
+a boundary condition for the enthalpy and density fields, and the stiff
+superfluid vacuum responds with a long--range depletion halo.  The core
+scale of the Newtonian mass is still set by the effective throat volume,
+with $M\sim\rho_0\pi a^2L$ up to order--unity factors, but the full
+gravitational mass measured on the brane includes both this localized core
+and the extended scalar depletion profile.  Charge is associated with
 circulation and vorticity flux threading the throat cross--section; in the
 hydrodynamic--electromagnetic dictionary, this vorticity flux plays the role
 of electric charge, and the cavity modes inside the throat generate the
 effective electromagnetic fields.  Thus mass and charge are different
-projections of the same geometric object---a brane--bulk throat characterized by $(a,L)$ and its internal mode structure.
+projections of the same geometric object---a brane--bulk throat characterized
+by $(a,L)$ and its internal mode structure.
 
 In the near--field region around the throat mouth, where streamlines bend
 from radial inflow on the brane to axial flow into the bulk, the geometry is

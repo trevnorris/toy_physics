@@ -1,4 +1,4 @@
-(* β = 1.5 Consistency Check Against Superfluid Ontology *)
+(* β = 3.0 Consistency Check Against Superfluid Ontology *)
 
 (* ================================================================== *)
 (* C0: Setup                                                          *)
@@ -12,7 +12,7 @@ $Assumptions = {
   Element[{μ, cs, m, ρ0, Q, κg, r, r0, rThroat, ξ}, Reals]
 };
 
-βVal = 3/2; (* UPDATED from 5/2 *)
+βVal = 3;   (* Updated after static-source scalar pivot *)
 
 Print["C0: Testing consistency of β = ", βVal];
 
@@ -34,14 +34,14 @@ ratioToRs = Simplify[rBreakdown/rSchwarzschild];
 Print["C1: r_breakdown = ", ratioToRs, " × r_Schwarzschild"];
 
 (* ================================================================== *)
-(* C10: Hydrodynamic origin of β - decomposition                      *)
+(* C2: Hydrodynamic origin of β - decomposition                      *)
 (* ================================================================== *)
 
 Print["\n============================================================="];
-Print["C10: DECOMPOSITION OF β = 1.5"];
+Print["C2: DECOMPOSITION OF β = 3.0"];
 Print["============================================================="];
 
-(* β = 1.5 must come from: 
+(* β = 3.0 must come from: 
    1. Direct density coupling: κ_ρ
    2. Added mass from flow: κ_add  
    3. Pressure-volume work: κ_PV *)
@@ -56,24 +56,26 @@ kappaPV = βVal - kappaRho - kappaAdd;
 
 Print["  -----------------------------"];
 Print["  Remains for κ_PV = ", kappaPV];
-Print["\nCONCLUSION: No exotic 4D geometry required. PV work is zero."];
+Print["\nCONCLUSION: A nonzero κ_PV is required (≈ 1.5)."];
+Print["This points to significant internal pressure–volume inertia."];
 Print["============================================================="];
 
 (*"
 Output:
 
-C0: Testing consistency of β = 3/2
-C1: σ(r) = 1 at r = ConditionalExpression[(3*μ)/(2*cs^2), Element[m, Reals] && Element[Q, Reals] && Element[r0, Reals] && Element[rThroat, Reals] && Element[κg, Reals] && Element[ξ, Reals] && Element[ρ0, Reals]]
-C1: r_breakdown = 3/4 × r_Schwarzschild
+C0: Testing consistency of β = 3
+C1: σ(r) = 1 at r = ConditionalExpression[(3*μ)/cs^2, Element[m, Reals] && Element[Q, Reals] && Element[r0, Reals] && Element[rThroat, Reals] && Element[κg, Reals] && Element[ξ, Reals] && Element[ρ0, Reals]]
+C1: r_breakdown = 3/2 × r_Schwarzschild
 
 =============================================================
-C10: DECOMPOSITION OF β = 1.5
+C2: DECOMPOSITION OF β = 3.0
 =============================================================
   κ_ρ (Density)    = 1
   κ_add (Added Mass) = 1/2
   -----------------------------
-  Remains for κ_PV = 0
+  Remains for κ_PV = 3/2
 
-CONCLUSION: No exotic 4D geometry required. PV work is zero.
+CONCLUSION: A nonzero κ_PV is required (≈ 1.5).
+This points to significant internal pressure–volume inertia.
 =============================================================
 "*)

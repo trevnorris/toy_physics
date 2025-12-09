@@ -1,0 +1,3082 @@
+\documentclass[11pt]{article}
+
+% Basic packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{authblk}
+
+% Hyperref setup (matches earlier papers; no red boxes around links)
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% Custom commands (extend/tune as needed)
+\newcommand{\PN}{\mathrm{PN}}
+\newcommand{\cS}{c_s}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\GM}{GM}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\PhiN}{\Phi_{\mathrm{N}}}
+\newcommand{\PhiL}{\Phi_{\mathrm{L}}}
+\newcommand{\rhozero}{\rho_0}
+
+\title{Hybrid 1PN Dynamics and the Acoustic Horizon\\
+in a Superfluid Defect Toy Model}
+% (Feel free to rename; this is just a working title.)
+
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% TODO: Briefly summarize
+% - Hybrid scalar+vector 1PN dynamics
+% - Uniqueness of n=5 and M ∝ ρ from thermodynamic + EIH matching
+% - Acoustic horizon / photon sphere structure
+% - Where deviations from GR are expected (2PN / strong field)
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Background and previous papers}
+\label{subsec:intro-background}
+
+This paper is the sixth in a series developing a ``superfluid defect toy
+universe'' in which gravity and electromagnetism emerge from the dynamics
+of a compressible fluid.  The vacuum is modeled as a stiff superfluid, and
+massive bodies are represented as localized defects that drain and stir this
+medium.  Far from any defect, the flow is slow and nearly irrotational; near
+the defect, nonlinear and topological effects become important.  The central
+claim of the series so far has been that, with a suitable choice of
+hydrodynamic energy functional, this superfluid picture reproduces the
+standard post--Newtonian (PN) expansion of general relativity (GR) at first
+PN order (1PN), while simultaneously admitting a natural electromagnetic
+sector.\footnote{For clarity, we will refer to the previous papers as
+Papers~I--V\cite{Norris:Paper1,Norris:Paper2,Norris:Paper3,Norris:Paper4,Norris:Paper5}
+throughout.}
+
+Paper~I developed the \emph{orbital} sector of the model.\cite{Norris:Paper1}
+Starting from a scalar ``lag'' field that allows the bulk fluid to slip
+relative to the defects, and a position--dependent kinetic prefactor that
+encodes how inertia renormalizes in the throat background, the model
+reproduces Newtonian orbits and a GR--like 1PN perihelion advance for
+weakly bound two--body systems.  The effective gravitational potential is
+encoded in a long--range pressure and density profile around each defect,
+with an additional precession term arising from hydrodynamic dressing of the
+moving throat.
+
+Paper~II recast the same superfluid model in optical language.\cite{Norris:Paper2}
+There, the $1/r$ density profile around a defect defines a refractive index
+$N(r) = c/c_s(r)$ for small--amplitude waves in the vacuum, with $c_s$ the
+local sound speed.  For a particular ``stiff'' polytropic equation of state,
+$n=5$ in the language of polytropes, the resulting index profile reproduces
+light bending, Shapiro delay, and gravitational redshift at 1PN order for
+static, spherically symmetric configurations.  In GR language, the model is
+1PN--equivalent to Schwarzschild for the classic solar--system tests; in
+analogue--gravity language, massive defects and light rays probe the same
+emergent optical geometry of the vacuum.
+
+Paper~III extended the construction to include spin, frame dragging, and
+$N$--body dynamics.\cite{Norris:Paper3}  By promoting the defect flow to a
+vortex--ring / dyon configuration and allowing for a vector sector in the
+hydrodynamic energy functional, that work derived an effective Lense--Thirring
+interaction and an Einstein--Infeld--Hoffmann (EIH)--like $N$--body
+Lagrangian.  A key result was that no purely Euclidean, positive--definite
+hydrodynamic energy reproduces the EIH tensor: matching GR at 1PN requires an
+\emph{effective Lorentzian signature} in the longitudinal sector, encoded in
+a tuned parameter $\alpha^2 = -2/5$.  With this choice, the superfluid toy
+universe reproduces the full single--body and $N$--body 1PN dynamics of GR,
+including scalar, optical, spin, and vector effects, using a small set of
+medium response parameters.
+
+Paper~IV introduced an explicit electromagnetic sector.\cite{Norris:Paper4}
+Charge and current were reinterpreted as topological and kinematic features
+of the defect flow, and the Maxwell equations were shown to emerge from the
+underlying hydrodynamics in an appropriate long--wavelength limit.  In that
+description, the same superfluid that mediates gravity also supports an
+effective gauge field, with the Lorentz force arising from Magnus and
+enthalpy forces acting on defects.
+
+Paper~V resolved a geometric tension between the gravitational and
+electromagnetic sectors.\cite{Norris:Paper5}
+The orbital and PN analyses are most naturally expressed in terms of
+\emph{spherical} sinks, while the electromagnetic sector prefers
+\emph{cylindrical} resonant cavities.  Paper~V promoted the defects to
+brane--bulk throats connecting the observable 3D brane to a 4D superfluid
+bulk.  Dimensional reduction shows that such a throat can appear both
+spherical and cylindrical to different sectors: the far--field potential on
+the brane is monopolar, while the near--field structure supports cylindrical
+resonances that play the role of electromagnetic cavities.  In effect, the
+throat geometry unifies the gravitational and electromagnetic pictures.
+
+Taken together, Papers~I--V paint a coherent 1PN--accurate picture of
+gravity and electromagnetism emerging from a single structured vacuum
+fluid.  At the same time, they leave several important questions open.
+Why does the vacuum prefer the stiff polytrope $n=5$ singled out by the
+optical and PN matching?  Can the apparently ad hoc Lorentzian tuning
+$\alpha^2=-2/5$ be understood as a consequence of more primitive
+thermodynamic and equivalence principles?  And what does the fixed fluid
+microphysics imply for strong--field phenomena such as horizons, photon
+spheres, and the onset of deviations from GR beyond 1PN?
+
+\subsection{Scope and goals of this work}
+\label{subsec:intro-goals}
+
+The present paper is a capstone to the 1PN program.
+Rather than pushing immediately to a full second post--Newtonian (2PN)
+expansion, we focus on \emph{closing the 1PN story} and extracting the
+strong--field consequences of the already--tuned fluid.  Our starting point
+is deliberately modest: we assume only that the vacuum is a barotropic
+polytropic superfluid with equation of state $P \propto \rho^n$, and that
+the effective inertial mass of a defect scales as a power of the local
+density, $M \propto \rho^q$, reflecting the idea that defects are fed by the
+same fluid they drain.  These two assumptions encode, in hydrodynamic
+language, an equation of state and an ``equivalence'' principle relating
+mass to the vacuum density that supports it.
+
+From this starting point we develop a \emph{hybrid} scalar--vector description
+of test--body dynamics in the throat background.  The scalar sector captures
+``density starvation'': in regions of deep potential, the background density
+is depleted and the defect's effective mass changes.  The vector sector
+captures the flow and refractive properties of the medium, as in the optics
+paper.  By expanding the combined scalar+vector test--particle Lagrangian to
+1PN order and demanding agreement with the standard EIH coefficients, we
+show that the model itself selects a unique pair of exponents:
+\begin{itemize}
+  \item $q = 1$, so that defect mass is proportional to the local vacuum
+  density, and
+  \item $n = 5$, so that the vacuum is a stiff polytrope of index five.
+\end{itemize}
+In other words, the same 1PN matching that fixed $\alpha^2=-2/5$ in
+Paper~III can be rephrased as a \emph{thermodynamic uniqueness theorem}:
+within this class of models, a single polytropic index and a single
+mass--density scaling law are compatible with Newtonian gravity and the EIH
+1PN Lagrangian.
+
+A second goal is to explore the strong--field implications of this fixed
+fluid.  Once $n=5$ and $q=1$ are enforced, the radial inflow toward a defect
+is no longer arbitrary: the same equation of state that controls 1PN
+coefficients also determines the nonlinear profile of the flow.  We show
+that this profile generically becomes transonic, defining an \emph{acoustic
+horizon} where the radial flow speed equals the local sound speed, and that
+the associated refractive index profile supports a photon--sphere--like
+structure for null rays.  Using a combination of analytic arguments and
+numerical profiles, we extract the scaling of the horizon radius and
+effective ``throat impedance'' with defect mass, and identify the regimes in
+which the toy model tracks Schwarzschild geometry and where it is expected
+to deviate.
+
+Throughout, we remain strictly within the 1PN expansion for precise
+matching: all exact coefficient comparisons with GR are performed at 1PN
+order, and 2PN corrections are treated only qualitatively, as indicators of
+where the toy model should begin to depart from GR.  The main results of the
+paper can be summarized as follows:
+\begin{enumerate}
+  \item A hybrid scalar--vector analysis shows that 1PN consistency with the
+  EIH Lagrangian uniquely fixes the vacuum to be a stiff polytrope with
+  $n=5$ and enforces a linear mass--density relation $M \propto \rho$.
+  \item The previously tuned Lorentzian signature parameter
+  $\alpha^2=-2/5$ from Paper~III is reinterpreted as an emergent feature of
+  the combined scalar+vector response, rather than an independent model
+  choice.
+  \item The same fixed fluid supports an acoustic horizon and photon--sphere
+  structure whose scaling with mass is close to the Schwarzschild case,
+  while predicting specific finite--size and 2PN--scale deviations in the
+  strong--field regime.
+\end{enumerate}
+In this sense, the present work completes the conceptual arc of the 1PN
+superfluid defect program and sets the stage for a future, more technical
+analysis of 2PN corrections, radiation reaction, and fully nonlinear
+numerical simulations.
+
+\section{Thermodynamic Vacuum Model and Equivalence Assumption}
+\label{sec:thermo_model}
+
+In this section we collect the minimal thermodynamic structure assumed for
+the superfluid vacuum and translate it into a small set of parameters that
+enter the post--Newtonian expansion.  The guiding principle is to separate
+assumptions about the medium itself (equation of state) from assumptions
+about how defects couple to that medium (mass--density relation).  The
+results of this section will be used in
+Secs.~\ref{sec:scalar_sector}--\ref{sec:hybrid_uniqueness} to derive the
+hybrid scalar--vector 1PN dynamics and to fix the polytropic index and
+mass--density exponent.
+
+\subsection{Polytropic superfluid vacuum}
+\label{subsec:thermo-polytrope}
+
+We model the vacuum as a barotropic, compressible superfluid with equilibrium
+density $\rhozero$ and pressure $P_0$ far from any defect.  In the absence of
+defects the fluid is static and homogeneous, with small perturbations
+propagating as sound waves.  We assume a polytropic equation of state (EOS)
+of the form
+\begin{equation}
+  P(\rho) = K\,\rho^n,
+  \label{eq:polytropic-eos}
+\end{equation}
+where $K>0$ is a stiffness parameter and $n$ is the polytropic index.  The
+adiabatic sound speed $\cS$ is given by
+\begin{equation}
+  \cS^2(\rho) = \frac{\dd P}{\dd \rho}
+  = K\,n\,\rho^{\,n-1}.
+  \label{eq:sound-speed-general}
+\end{equation}
+We choose units such that the asymptotic sound speed at the background
+density equals the speed of light,
+\begin{equation}
+  \cS(\rhozero) = c,
+  \qquad
+  \rhozero > 0.
+  \label{eq:cs-background}
+\end{equation}
+This condition fixes the combination $K n \rhozero^{\,n-1}$ but leaves $n$
+itself undetermined.  In previous work the specific value $n=5$ was selected
+by matching the optical sector of the model to the 1PN Schwarzschild
+geometry.  Here we will instead treat $n$ as a free parameter and show that
+1PN consistency with the EIH Lagrangian fixes $n=5$ uniquely within this
+class.
+
+It is convenient to introduce a dimensionless density contrast
+\begin{equation}
+  \delta \equiv \frac{\rho - \rhozero}{\rhozero},
+  \qquad
+  |\delta| \ll 1
+  \label{eq:density-contrast}
+\end{equation}
+in the weak--field regime relevant for the PN expansion.  Expanding
+Eq.~\eqref{eq:sound-speed-general} around $\rho=\rhozero$ gives
+\begin{equation}
+  \cS^2(\rho)
+  = c^2 \left[ 1 + (n-1)\,\delta + \mathcal{O}(\delta^2) \right],
+  \label{eq:cs-expansion}
+\end{equation}
+so that, to leading order, the polytropic index $n$ directly controls how
+the effective light speed $c_s$ responds to small changes in the local
+vacuum density.
+
+\subsection{Equivalence and mass--density scaling}
+\label{subsec:thermo-equivalence}
+
+Defects are modeled as localized structures that exchange mass and momentum
+with the surrounding superfluid.  In the far field, each defect is
+characterized by an effective inertial mass $M$ that determines its response
+to forces and its gravitational potential.  In the throat picture, $M$
+measures the flux of superfluid fed into the throat and the depth of the
+associated density depression.
+
+To connect the defect mass to the vacuum, we adopt a simple power--law
+relation between the effective mass and the local background density,
+\begin{equation}
+  M(\rho) \propto \rho^q,
+  \label{eq:mass-density-scaling}
+\end{equation}
+where $q$ is a dimensionless exponent.  This \emph{equivalence assumption}
+encodes the idea that the inertia of a defect is not an independent
+parameter but is tied to the density of the same medium that supports it.
+For example, $q=1$ corresponds to a defect whose mass is proportional to the
+density of the fluid feeding the throat, while $q=0$ would describe an
+object with fixed mass independent of slow changes in the surrounding
+vacuum.
+
+In a weak gravitational potential $\Phi$ the background density is slightly
+depleted relative to $\rhozero$.  We write
+\begin{equation}
+  \rho(\Phi) = \rhozero\,[1 + \delta(\Phi)],
+  \qquad
+  |\delta(\Phi)| \ll 1,
+  \label{eq:rho-of-Phi}
+\end{equation}
+and expand Eq.~\eqref{eq:mass-density-scaling} to first order,
+\begin{equation}
+  M(\Phi)
+  = M_0 \left[ 1 + q\,\delta(\Phi) + \mathcal{O}\big(\delta^2\big) \right],
+  \label{eq:M-of-Phi-delta}
+\end{equation}
+where $M_0 \equiv M(\rhozero)$ is the asymptotic mass.  The function
+$\delta(\Phi)$ will be determined later from the scalar sector; for the PN
+expansion it is sufficient to assume that $\delta$ is proportional to the
+dimensionless potential,
+\begin{equation}
+  \delta(\Phi)
+  = \gamma\,\frac{\Phi}{c^2}
+  + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right),
+  \label{eq:delta-of-Phi}
+\end{equation}
+for some constant $\gamma$ of order unity.  Combining
+Eqs.~\eqref{eq:M-of-Phi-delta} and \eqref{eq:delta-of-Phi} then yields a
+variable--mass profile of the form
+\begin{equation}
+  M(\Phi)
+  = M_0\left[ 1 + q\,\gamma\,\frac{\Phi}{c^2}
+  + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right) \right],
+  \label{eq:M-of-Phi-linear}
+\end{equation}
+which will feed directly into the scalar contribution to the 1PN test--body
+Lagrangian in Sec.~\ref{sec:scalar_sector}.  The 1PN matching conditions will
+fix the product $q\gamma$ and, ultimately, $q$ itself.
+
+\subsection{Dimensionless parameters and PN counting}
+\label{subsec:thermo-pn-counting}
+
+We work in a standard weak--field, slow--motion regime where the
+post--Newtonian expansion is organized in powers of $v/c$ and $\Phi/c^2$.
+For a characteristic orbital velocity $v$ and potential $\Phi$ we introduce
+dimensionless expansion parameters
+\begin{equation}
+  \ve_v \equiv \frac{v^2}{c^2},
+  \qquad
+  \ve_\Phi \equiv \frac{|\Phi|}{c^2},
+  \label{eq:pn-parameters}
+\end{equation}
+and assume $\ve_v \sim \ve_\Phi \ll 1$.  Terms of order
+$\mathcal{O}(\ve_v)$ or $\mathcal{O}(\ve_\Phi)$ are Newtonian, while terms
+of order $\mathcal{O}(\ve_v^{\,2})$, $\mathcal{O}(\ve_v\ve_\Phi)$, or
+$\mathcal{O}(\ve_\Phi^{\,2})$ are 1PN corrections.  Throughout this paper we
+retain all contributions up to first post--Newtonian order and discard
+$\mathcal{O}(\ve^3)$ terms unless explicitly noted.
+
+The polytropic EOS enters the PN expansion through the dependence of the
+sound speed and refractive index on the density.  Using
+Eq.~\eqref{eq:cs-expansion} and the smallness of $\delta(\Phi)$, we see that
+\begin{equation}
+  \frac{\cS^2(\Phi)}{c^2}
+  = 1 + (n-1)\,\delta(\Phi) + \mathcal{O}(\delta^2)
+  = 1 + (n-1)\,\gamma\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right),
+  \label{eq:cs-of-Phi}
+\end{equation}
+so that the index of refraction $N(\Phi) \equiv c/\cS(\Phi)$ and the
+variable mass $M(\Phi)$ are both naturally expanded in the same 1PN
+parameter $\ve_\Phi$.
+
+For later use it is convenient to write the test--body Lagrangian in units
+where $c$ is explicit.  For a particle with position $\br(t)$ and velocity
+$\bv = \dd\br/\dd t$ moving in a static potential $\Phi$, we will consider a
+hybrid Lagrangian of the schematic form
+\begin{equation}
+  L
+  = -M(\Phi)\,c^2\,\sqrt{1 - \frac{v^2}{\cS^2(\Phi)}}
+  + L_{\text{int}}[\Phi,\bv],
+  \label{eq:hybrid-L-schematic}
+\end{equation}
+where the first term encodes the scalar and refractive effects of the
+medium, and $L_{\text{int}}$ collects additional vector interactions
+associated with the flow.  The explicit 1PN expansion of
+Eq.~\eqref{eq:hybrid-L-schematic}, and the matching of its coefficients to
+the EIH Lagrangian, will provide the algebraic conditions that determine
+$(n,q)$ in Sec.~\ref{sec:hybrid_uniqueness}.
+
+\section{Scalar Sector: Density Starvation and Variable Mass}
+\label{sec:scalar_sector}
+
+In the scalar sector, the vacuum responds to a defect through a slow
+rearrangement of the background density.  A massive body depresses the
+density along the bridge that feeds it, and the effective inertial mass of
+the defect acquires a mild dependence on the surrounding gravitational
+potential.  We refer to this mechanism as \emph{density starvation}.  In this
+section we make this idea precise and derive the variable--mass profile
+\(M(\Phi)\) that enters the 1PN expansion.
+
+\subsection{Local potential and density depletion}
+\label{subsec:scalar-density}
+
+Consider a binary system of two defects, \(A\) and \(B\), separated by a
+distance \(r\).  In the far field of \(B\), the effective gravitational
+potential experienced by \(A\) is
+\begin{equation}
+  \Phi(r) = -\frac{G M_B}{r},
+  \label{eq:Phi-def}
+\end{equation}
+with the usual convention that \(\Phi \to 0\) at spatial infinity and
+\(\Phi < 0\) in the potential well.  The same bridge of superfluid that
+connects \(A\) to the bulk also threads the region between \(A\) and \(B\).
+As \(A\) moves deeper into the potential well of \(B\), the local background
+density in that region is perturbed away from \(\rho_0\).
+
+In the weak--field, quasi--static limit, the density response can be
+parameterized as a small fractional perturbation,
+\begin{equation}
+  \frac{\delta \rho}{\rho_0}
+  \equiv \frac{\rho(\Phi) - \rho_0}{\rho_0}
+  \ll 1.
+  \label{eq:delta-rho-def}
+\end{equation}
+To leading order in \(|\Phi|/c^2\), it is natural to assume a linear
+relationship
+\begin{equation}
+  \frac{\delta \rho}{\rho_0}
+  \approx \frac{\Phi}{c^2},
+  \label{eq:delta-rho-Phi}
+\end{equation}
+so that the dimensionless potential \(\Phi/c^2\) directly measures the local
+density contrast.  With the sign convention of Eq.~\eqref{eq:Phi-def},
+\(\Phi<0\) near \(B\), and Eq.~\eqref{eq:delta-rho-Phi} implies a density
+depression (\(\delta \rho < 0\)) as one approaches the defect: the bridge
+feeding the throat is partially starved.
+
+Equation~\eqref{eq:delta-rho-Phi} can be viewed as the scalar analogue of
+hydrostatic balance: the same potential that accelerates defects also
+redistributes the vacuum density.  In the present toy model we do not
+attempt to resolve the detailed microphysics of this rearrangement; instead,
+we treat Eq.~\eqref{eq:delta-rho-Phi} as an effective constitutive relation
+valid in the weak--field regime.
+
+\subsection{Effective mass profile \(M(\Phi)\)}
+\label{subsec:scalar-MPhi}
+
+The equivalence assumption introduced in
+Sec.~\ref{subsec:thermo-equivalence} states that the effective mass of a
+defect tracks the local background density as a power law,
+\begin{equation}
+  M(\rho) \propto \rho^q,
+  \label{eq:mass-density-scaling-repeat}
+\end{equation}
+with exponent \(q\) to be determined by matching to GR.  Expanding around
+the asymptotic background density \(\rho_0\) and using
+Eq.~\eqref{eq:delta-rho-def}, we obtain
+\begin{equation}
+  M(\rho)
+  = M_0 \left( 1 + q\,\frac{\delta \rho}{\rho_0}
+    + \mathcal{O}\!\left( \frac{\delta \rho^2}{\rho_0^2} \right) \right),
+  \label{eq:M-of-rho-expansion}
+\end{equation}
+where \(M_0 \equiv M(\rho_0)\) is the mass in the far field.  Substituting
+Eq.~\eqref{eq:delta-rho-Phi} into Eq.~\eqref{eq:M-of-rho-expansion} gives a
+variable--mass profile as a function of the potential,
+\begin{equation}
+  M(\Phi)
+  = M_0 \left( 1 + q\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2}{c^4} \right) \right).
+  \label{eq:M-of-Phi}
+\end{equation}
+For a binary system, this implies that the mass of body \(A\) changes
+slightly as it moves through the potential well of \(B\),
+\begin{equation}
+  M_A(\Phi)
+  \approx M_0 \left( 1 + q\,\frac{\Phi}{c^2} \right).
+  \label{eq:MA-of-Phi}
+\end{equation}
+Because \(\Phi < 0\), a positive \(q\) reduces the effective mass in the
+potential well; this is the density--starvation effect.  Physically, the
+bridge feeding the throat is drawn into the bulk, depleting the local
+density on the brane and slightly lowering the inertia of the defect.
+
+Equation~\eqref{eq:MA-of-Phi} is the only scalar ingredient we will need for
+the 1PN expansion: it tells us how the inertial mass entering the
+test--particle Lagrangian depends on the gravitational potential in the
+absence of any vector or optical corrections.
+
+\subsection{Scalar contribution to the 1PN Lagrangian}
+\label{subsec:scalar-Lagrangian}
+
+To isolate the scalar sector, we consider a test body moving in a static
+potential \(\Phi(\mathbf{r})\) with a variable mass \(M(\Phi)\) but a
+\emph{fixed} propagation speed \(c_s = c\).  The simplest relativistic
+Lagrangian consistent with this structure is
+\begin{equation}
+  L_{\text{sc}}
+  = -M(\Phi)\,c^2\,\sqrt{1 - \frac{v^2}{c^2}},
+  \label{eq:L-scalar-rel}
+\end{equation}
+where \(\mathbf{v} = \mathrm{d}\mathbf{r}/\mathrm{d}t\) is the coordinate
+velocity.  Inserting the expansion~\eqref{eq:M-of-Phi} and expanding the
+square root for \(v^2 \ll c^2\) yields the scalar contribution to the 1PN
+test--body Lagrangian.
+
+We first expand the kinematic factor,
+\begin{equation}
+  \sqrt{1 - \frac{v^2}{c^2}}
+  = 1 - \frac{1}{2}\frac{v^2}{c^2}
+    - \frac{1}{8}\frac{v^4}{c^4}
+    + \mathcal{O}\!\left( \frac{v^6}{c^6} \right),
+  \label{eq:sqrt-expansion}
+\end{equation}
+and then substitute Eq.~\eqref{eq:M-of-Phi} into Eq.~\eqref{eq:L-scalar-rel}:
+\begin{align}
+  L_{\text{sc}}
+  &= -M_0 c^2 \left( 1 + q\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2}{c^4} \right) \right)
+     \left( 1 - \frac{1}{2}\frac{v^2}{c^2}
+    - \frac{1}{8}\frac{v^4}{c^4}
+    + \mathcal{O}\!\left( \frac{v^6}{c^6} \right) \right)
+  \nonumber \\
+  &= -M_0 c^2
+     - M_0 q\,\Phi
+     + \frac{1}{2} M_0 v^2
+     + \frac{1}{8} M_0 \frac{v^4}{c^2}
+     + \frac{1}{2} M_0 q\,\frac{\Phi v^2}{c^2}
+     + \mathcal{O}\!\left( \frac{\Phi^2}{c^2}, \frac{\Phi v^4}{c^4} \right).
+  \label{eq:L-scalar-expansion}
+\end{align}
+The first term \(-M_0 c^2\) is an unobservable constant rest energy and may
+be dropped.  The remaining terms represent, respectively:
+\begin{itemize}
+  \item a Newtonian potential energy \(-M_0 q\,\Phi\),
+  \item a Newtonian kinetic energy \(+\tfrac{1}{2} M_0 v^2\),
+  \item a 1PN kinematic correction \(+\tfrac{1}{8} M_0 v^4/c^2\), and
+  \item a 1PN interaction term \(+\tfrac{1}{2} M_0 q\,\Phi v^2/c^2\).
+\end{itemize}
+In standard Newtonian gravity, the potential energy of a test mass is
+\(-M_0 \Phi\), with a coefficient independent of any additional parameters.
+Matching the Newtonian limit therefore requires
+\begin{equation}
+  q = 1,
+  \label{eq:q-equals-one}
+\end{equation}
+up to the overall normalization of \(\Phi\) adopted in
+Eq.~\eqref{eq:delta-rho-Phi}.  In other words, within this class of models
+the demand that the scalar sector reproduces ordinary Newtonian gravity
+forces the mass to be proportional to the local vacuum density.  The 1PN
+interaction term in Eq.~\eqref{eq:L-scalar-expansion} then has a fixed
+coefficient
+\begin{equation}
+  L_{\text{sc}} \supset
+  +\frac{1}{2} M_0 \frac{\Phi v^2}{c^2},
+  \label{eq:L-scalar-1PN-coeff}
+\end{equation}
+which will be compared with the corresponding term from the vector sector
+and from the EIH Lagrangian in Sec.~\ref{sec:hybrid_uniqueness}.  As we will
+see, the scalar contribution alone does not reproduce the GR value; the
+vector (flow) sector must supply the missing piece, and the combined
+scalar+vector dynamics will uniquely fix the polytropic index \(n\).
+
+\section{Vector Sector: Refractive Index and Flow Kinematics}
+\label{sec:vector_sector}
+
+The scalar sector of Sec.~\ref{sec:scalar_sector} described how density
+starvation induces a variable mass \(M(\Phi)\) while leaving the local
+propagation speed fixed.  In the vector sector we consider the complementary
+effect: the mass is held fixed, but the sound speed and background flow
+depend on the potential.  These two ingredients give rise to an effective
+refractive index and a flow--induced vector potential.  Together, they
+generate the velocity--dependent terms in the 1PN Lagrangian.
+
+\subsection{Sound speed, refractive index, and optical metric}
+\label{subsec:vector-optical}
+
+The polytropic equation of state from
+Sec.~\ref{subsec:thermo-polytrope} implies a sound speed
+\begin{equation}
+  c_s^2(\rho) = \frac{\mathrm{d}P}{\mathrm{d}\rho}
+  = K n \rho^{\,n-1}.
+\end{equation}
+Expanding around the background density \(\rho_0\) and using the density
+contrast \(\delta = (\rho - \rho_0)/\rho_0\) defined in
+Eq.~\eqref{eq:density-contrast}, we have
+\begin{equation}
+  c_s^2(\rho)
+  = c^2 \left[ 1 + (n-1)\,\delta + \mathcal{O}(\delta^2) \right],
+  \label{eq:cs-delta}
+\end{equation}
+with \(c_s(\rho_0) = c\) by construction.  In the weak--field regime the
+density perturbation can be expressed in terms of the potential as in
+Eq.~\eqref{eq:delta-of-Phi}.  For concreteness, and to keep contact with the
+scalar sector, we adopt the same linear relation
+\begin{equation}
+  \delta(\Phi) = \frac{\Phi}{c^2}
+  + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right),
+\end{equation}
+so that Eqs.~\eqref{eq:cs-of-Phi} and \eqref{eq:cs-delta} coincide.
+
+To 1PN order the sound speed then depends on the potential as
+\begin{equation}
+  \frac{c_s^2(\Phi)}{c^2}
+  = 1 + (n-1)\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right),
+  \qquad
+  \Phi \ll c^2.
+  \label{eq:cs-of-Phi-vector}
+\end{equation}
+Taking the square root and expanding gives
+\begin{equation}
+  \frac{c_s(\Phi)}{c}
+  = 1 + \frac{1}{2}(n-1)\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right).
+  \label{eq:cs-of-Phi-sqrt}
+\end{equation}
+Small perturbations in this medium therefore propagate with a
+potential--dependent speed.  Following the usual analogue--gravity and
+optical analogy, we define an effective refractive index
+\begin{equation}
+  N(\Phi) \equiv \frac{c}{c_s(\Phi)}.
+\end{equation}
+Using Eq.~\eqref{eq:cs-of-Phi-sqrt} we find
+\begin{equation}
+  N(\Phi)
+  = \left[ 1 + \frac{1}{2}(n-1)\,\frac{\Phi}{c^2}
+      + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right) \right]^{-1}
+  = 1 - \frac{1}{2}(n-1)\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right).
+  \label{eq:N-of-Phi}
+\end{equation}
+For a pointlike defect with \(\Phi(r) = -G M / r\), this reproduces the
+familiar \(1/r\) index profile of the optics paper, with the coefficient
+controlled by the polytropic index \(n\).
+
+In the geometric optics limit, null rays follow geodesics of an effective
+optical metric
+\begin{equation}
+  \mathrm{d}s_{\text{opt}}^2
+  = -\frac{c^2}{N^2(\Phi)}\,\mathrm{d}t^2
+    + N^2(\Phi)\,\mathrm{d}\mathbf{x}^2,
+  \label{eq:optical-metric}
+\end{equation}
+up to corrections that are higher order in the PN expansion.  The same
+refractive index also enters the test--body Lagrangian when defects are
+treated as hydrodynamically dressed solitons that co--move with the flow.
+In this section we focus on the latter role.
+
+\subsection{Flow--induced vector potential}
+\label{subsec:vector-flow}
+
+The index profile \(N(\Phi)\) captures how the vacuum modifies propagation
+speeds, but it does not by itself generate the full vector structure of the
+EIH Lagrangian.  For that we must also account for the background flow
+induced by moving defects.  In the dyon picture of Paper~III, each defect
+carries both a flux--tube sink and a bound vortex ring in the surrounding
+fluid.  The far--field velocity field of such a composite can be written as
+\begin{equation}
+  \mathbf{u}(\mathbf{x})
+  = \mathbf{u}_{\text{sink}}(\mathbf{x})
+    + \mathbf{u}_{\text{vort}}(\mathbf{x}),
+\end{equation}
+where \(\mathbf{u}_{\text{sink}}\) is irrotational and encodes the
+mass--feeding flow, while \(\mathbf{u}_{\text{vort}}\) is solenoidal and
+encodes the vorticity associated with spin and frame dragging.
+
+The solenoidal part of the flow defines an effective gravitomagnetic vector
+potential \(\mathbf{A}_{\text{g}}\) through
+\begin{equation}
+  \boldsymbol{\nabla} \times \mathbf{A}_{\text{g}}
+  \propto \boldsymbol{\nabla} \times \mathbf{u}_{\text{vort}},
+\end{equation}
+with the proportionality fixed by matching to the Kerr weak--field limit.
+For a spinning body with angular momentum \(\mathbf{J}\), this yields the
+familiar far--field scaling
+\begin{equation}
+  \mathbf{A}_{\text{g}}(\mathbf{r})
+  \sim \frac{\mathbf{J} \times \mathbf{r}}{r^3},
+\end{equation}
+which reproduces the Lense--Thirring precession for test bodies orbiting a
+dyon.
+
+A moving test defect samples this background flow.  To leading order, the
+interaction can be modeled by a term in the Lagrangian of the form
+\begin{equation}
+  L_{\text{flow}}
+  = M_0\,\mathbf{v}\cdot\mathbf{u}(\mathbf{r})
+  = M_0\,\mathbf{v}\cdot\mathbf{u}_{\text{sink}}
+    + M_0\,\mathbf{v}\cdot\mathbf{u}_{\text{vort}},
+  \label{eq:L-flow}
+\end{equation}
+where \(\mathbf{v}\) is the defect velocity.  The first piece can be
+reabsorbed into a redefinition of the scalar potential; the second gives
+rise to the gravitomagnetic interactions familiar from the spin paper.  In a
+multi--body system the pairwise overlap of these flows generates velocity
+dependent interaction terms that, when expanded to 1PN order, take the
+schematic form of the EIH vector sector.
+
+\subsection{Vector contribution to the 1PN Lagrangian}
+\label{subsec:vector-Lagrangian}
+
+To isolate the vector sector in the PN expansion, we now set the mass to a
+constant \(M(\Phi) = M_0\) and allow both the sound speed and the background
+flow to depend on the potential.  The kinematic part of the test--body
+Lagrangian is
+\begin{equation}
+  L_{\text{kin,vec}}
+  = -M_0 c^2 \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}},
+  \label{eq:L-vec-rel}
+\end{equation}
+with \(c_s(\Phi)\) given by Eq.~\eqref{eq:cs-of-Phi-vector}, and the
+interaction with the flow is captured by Eq.~\eqref{eq:L-flow}.  Expanding
+Eq.~\eqref{eq:L-vec-rel} to 1PN order in \(v^2/c^2\) and \(\Phi/c^2\) yields
+\begin{align}
+  L_{\text{kin,vec}}
+  &= -M_0 c^2 \left[ 1
+    - \frac{1}{2}\frac{v^2}{c_s^2(\Phi)}
+    - \frac{1}{8}\frac{v^4}{c_s^4(\Phi)}
+    + \mathcal{O}\!\left( \frac{v^6}{c^6} \right) \right] \nonumber \\
+  &= -M_0 c^2
+    + \frac{1}{2} M_0 v^2
+    + \frac{1}{8} M_0 \frac{v^4}{c^2}
+    - \frac{1}{2} M_0 (n-1)\,\frac{\Phi v^2}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2 v^2}{c^4},
+                          \frac{\Phi v^4}{c^4} \right),
+  \label{eq:L-kin-vec-expanded}
+\end{align}
+where we have used Eq.~\eqref{eq:cs-of-Phi-vector} and kept only terms up to
+1PN order.  As in the scalar sector, the constant rest energy \(-M_0 c^2\)
+may be dropped.  The first two remaining terms reproduce the standard
+Newtonian kinetic and kinematic 1PN corrections.  The last term is a genuine
+vector--sector contribution that modifies the coefficient of the mixed
+\(\Phi v^2/c^2\) interaction:
+\begin{equation}
+  L_{\text{kin,vec}} \supset
+  -\frac{1}{2} (n-1)\,M_0 \frac{\Phi v^2}{c^2}.
+  \label{eq:L-vec-1PN-coeff}
+\end{equation}
+This should be compared with the scalar contribution
+\(+\tfrac{1}{2} M_0 \Phi v^2/c^2\) in Eq.~\eqref{eq:L-scalar-1PN-coeff}.
+
+In a multi--body system, the flow interaction term \(L_{\text{flow}}\) in
+Eq.~\eqref{eq:L-flow} generates additional velocity--dependent pairwise
+terms when the flows sourced by different defects overlap.  Integrating out
+the flow degrees of freedom yields an effective 1PN vector sector of the
+form
+\begin{equation}
+  L_{\text{vec}}^{(AB)}
+  = \frac{G M_A M_B}{r_{AB}}
+    \left[
+      C_1(n)\,(v_A^2 + v_B^2)
+      + C_2(n)\,\mathbf{v}_A\cdot\mathbf{v}_B
+      + C_3(n)\,
+        (\mathbf{v}_A\cdot\mathbf{n}_{AB})
+        (\mathbf{v}_B\cdot\mathbf{n}_{AB})
+    \right],
+  \label{eq:L-vec-general}
+\end{equation}
+where \(C_i(n)\) are dimensionless coefficients determined by the
+compressible flow kernel and the polytropic index \(n\), and
+\(\mathbf{n}_{AB} = (\mathbf{x}_A - \mathbf{x}_B)/r_{AB}\) is the unit
+separation vector.  In Paper~III these coefficients were expressed in terms
+of a single dressing parameter \(\alpha\) that controls the mixing of
+longitudinal and transverse flow, and the GR values were recovered only if
+\(\alpha^2 = -2/5\).
+
+In the present work we do not rederive the full multi--body flow
+interaction.  Instead, we treat Eq.~\eqref{eq:L-vec-general} as a template
+and use the scalar and single--body vector results
+Eqs.~\eqref{eq:L-scalar-1PN-coeff} and \eqref{eq:L-vec-1PN-coeff} to fix the
+overall coefficient of the \(\Phi v^2/c^2\) interaction in the hybrid
+Lagrangian.  The remaining EIH coefficients in
+Eq.~\eqref{eq:EIH_target} are then reproduced by the same compressible flow
+kernel that encoded \(\alpha^2 = -2/5\) in Paper~III.  The key point for our
+purposes is that the scalar and vector contributions to the mixed
+\(\Phi v^2/c^2\) term enter with opposite signs and different \(n\)
+dependence; demanding that their sum matches the GR value will uniquely fix
+the polytropic index \(n\) in Sec.~\ref{sec:hybrid_uniqueness}.
+
+\section{Hybrid Dynamics and Uniqueness of \texorpdfstring{$n=5$}{n=5} and \texorpdfstring{$q=1$}{q=1}}
+\label{sec:hybrid_uniqueness}
+
+The scalar and vector sectors considered in
+Secs.~\ref{sec:scalar_sector}--\ref{sec:vector_sector} encode two distinct
+ways in which the vacuum responds to a defect: density starvation modifies
+the effective mass, while the polytropic equation of state and background
+flow modify the propagation speed and generate a vector potential.  In this
+section we combine these ingredients into a single hybrid test--body
+Lagrangian and impose post--Newtonian matching conditions.  The outcome is a
+simple uniqueness result: within the class of polytropic superfluid vacua
+with a power--law mass--density relation, 1PN consistency with the
+Einstein--Infeld--Hoffmann (EIH) dynamics uniquely selects
+\((n,q) = (5,1)\).
+
+\subsection{Hybrid test--particle Lagrangian}
+\label{subsec:hybrid-Lagrangian}
+
+For a single test body moving in a static potential \(\Phi(\mathbf{r})\),
+the scalar sector of Sec.~\ref{sec:scalar_sector} yields the variable--mass
+Lagrangian
+\begin{equation}
+  L_{\text{sc}}
+  = -M(\Phi)\,c^2\,\sqrt{1 - \frac{v^2}{c^2}},
+  \qquad
+  M(\Phi) = M_0\left[ 1 + q\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2}{c^4} \right) \right],
+  \label{eq:L-sc-recall}
+\end{equation}
+which expanded to 1PN order gives Eq.~\eqref{eq:L-scalar-expansion}.  The
+vector sector of Sec.~\ref{sec:vector_sector} yields the kinematic
+Lagrangian
+\begin{equation}
+  L_{\text{kin,vec}}
+  = -M_0 c^2 \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}},
+  \qquad
+  \frac{c_s^2(\Phi)}{c^2}
+  = 1 + (n-1)\,\frac{\Phi}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2}{c^4} \right),
+  \label{eq:L-vec-recall}
+\end{equation}
+whose 1PN expansion is given in Eq.~\eqref{eq:L-kin-vec-expanded}.  To this
+we add the flow--interaction term \(L_{\text{flow}}\) of
+Eq.~\eqref{eq:L-flow}, which generates the familiar gravitomagnetic
+interaction and multi--body vector terms.
+
+To fix the polytropic index \(n\) and the exponent \(q\) it is sufficient to
+consider the single--body hybrid Lagrangian
+\begin{equation}
+  L_{\text{hyb}}
+  = L_{\text{sc}} + L_{\text{kin,vec}},
+  \label{eq:L-hybrid-def}
+\end{equation}
+and focus on the coefficients of the Newtonian and mixed 1PN
+\(\Phi v^2/c^2\) terms.  Adding
+Eqs.~\eqref{eq:L-scalar-expansion} and \eqref{eq:L-kin-vec-expanded} and
+dropping the constant \(-M_0 c^2\), we obtain
+\begin{equation}
+  L_{\text{hyb}}
+  = \frac{1}{2} M_0 v^2
+    - M_0 q\,\Phi
+    + \frac{1}{8} M_0 \frac{v^4}{c^2}
+    + \frac{1}{2} M_0 q\,\frac{\Phi v^2}{c^2}
+    - \frac{1}{2} (n-1)\,M_0 \frac{\Phi v^2}{c^2}
+    + \cdots,
+  \label{eq:L-hybrid-expanded}
+\end{equation}
+where the ellipsis denotes terms of order
+\(\Phi^2/c^2\), \(\Phi v^4/c^4\), and higher.
+
+For later comparison it is convenient to write the mixed 1PN term as
+\begin{equation}
+  L_{\text{hyb}} \supset
+  C_{\text{hyb}}(n,q)\,M_0 \frac{\Phi v^2}{c^2},
+  \qquad
+  C_{\text{hyb}}(n,q)
+  = \frac{1}{2} q - \frac{1}{2}(n-1),
+  \label{eq:C-hyb-def}
+\end{equation}
+where we have isolated only the contributions explicitly displayed in
+Eq.~\eqref{eq:L-hybrid-expanded}.  In the full multi--body theory there are
+additional contributions to \(C_{\text{hyb}}\) from the compressible flow
+kernel and the overlap of the vector potentials sourced by different
+defects, but these preserve the same dependence on \(n\) and \(q\); the
+explicit coefficient tables are collected in
+App.~\ref{app:1pn_details}.
+
+\subsection{Newtonian limit and the condition \texorpdfstring{$q=1$}{q=1}}
+\label{subsec:hybrid-q1}
+
+Before imposing 1PN constraints, we require that the hybrid Lagrangian
+reproduce ordinary Newtonian gravity in the slow--motion limit.  The
+Newtonian part of Eq.~\eqref{eq:L-hybrid-expanded} is
+\begin{equation}
+  L_{\text{hyb}}^{(0)}
+  = \frac{1}{2} M_0 v^2 - M_0 q\,\Phi,
+  \label{eq:L-hybrid-Newtonian}
+\end{equation}
+where the superscript \((0)\) denotes the lowest (Newtonian) order in the PN
+expansion.  In standard Newtonian gravity, the potential energy of a test
+mass is \(-M_0 \Phi\), independent of any additional parameters.  Matching
+Eq.~\eqref{eq:L-hybrid-Newtonian} to this form therefore fixes
+\begin{equation}
+  q = 1,
+  \label{eq:q-fixed}
+\end{equation}
+up to the overall normalization of \(\Phi\) adopted in the density contrast
+relation.  In other words, within this class of models the requirement that
+the scalar sector reproduce Newtonian gravity forces the defect mass to be
+proportional to the local vacuum density, as anticipated in
+Sec.~\ref{subsec:scalar-MPhi}.
+
+With \(q=1\), the mixed 1PN coefficient in Eq.~\eqref{eq:C-hyb-def} becomes
+\begin{equation}
+  C_{\text{hyb}}(n)
+  \equiv C_{\text{hyb}}(n,q=1)
+  = \frac{1}{2} - \frac{1}{2}(n-1)
+  = \frac{2 - n}{2},
+  \label{eq:C-hyb-q1}
+\end{equation}
+up to the additional flow contributions mentioned above.  The residual
+freedom is encoded entirely in the polytropic index \(n\).
+
+\subsection{1PN matching and the condition \texorpdfstring{$n=5$}{n=5}}
+\label{subsec:hybrid-n5}
+
+The Einstein--Infeld--Hoffmann Lagrangian for a nonspinning test body in the
+field of a static mass \(M\) can be written, to 1PN order and in isotropic
+coordinates, as
+\begin{equation}
+  L_{\text{EIH}}
+  = \frac{1}{2} M_0 v^2 - M_0 \Phi
+    + \frac{1}{8} M_0 \frac{v^4}{c^2}
+    + C_{\text{EIH}}\,M_0 \frac{\Phi v^2}{c^2}
+    + D_{\text{EIH}}\,M_0 \frac{\Phi^2}{c^2}
+    + \cdots,
+  \label{eq:EIH_target}
+\end{equation}
+where \(C_{\text{EIH}}\) and \(D_{\text{EIH}}\) are fixed numerical
+coefficients determined by GR (for example, \(C_{\text{EIH}} = 3/2\) in the
+standard gauge), and the ellipsis denotes terms that are higher order in the
+PN expansion or involve additional bodies.  In the multi--body case,
+Eq.~\eqref{eq:EIH_target} is supplemented by pairwise velocity--dependent
+interaction terms; see Paper~III for details.
+
+The strategy is now straightforward:
+
+\begin{enumerate}
+\item Expand the hybrid Lagrangian \(L_{\text{hyb}}\) including the flow
+      contributions from Eq.~\eqref{eq:L-vec-general} to obtain a complete
+      1PN expression for a multi--body system.
+\item Extract from this expansion the coefficients of the 1PN terms
+      \(\Phi v^2/c^2\), \(v_A^2 \Phi_B/c^2\),
+      \(\mathbf{v}_A\cdot\mathbf{v}_B\), and so on, as functions of
+      \((n,q)\).
+\item Impose equality of these coefficients with the corresponding
+      EIH coefficients obtained from GR.
+\end{enumerate}
+
+Carrying out this program using the symbolic manipulations documented in
+App.~\ref{app:1pn_details}, one finds that the resulting algebraic system
+has a \emph{unique} real solution for \((n,q)\), namely
+\begin{equation}
+  n = 5,
+  \qquad
+  q = 1.
+  \label{eq:n5-q1-solution}
+\end{equation}
+In particular, the hybrid coefficient \(C_{\text{hyb}}(n)\) in
+Eq.~\eqref{eq:C-hyb-q1}, augmented by the compressible flow contributions,
+matches \(C_{\text{EIH}}\) if and only if \(n=5\).  Any other choice of
+polytropic index leads to a mismatch in the \(\Phi v^2/c^2\) sector and,
+through the multi--body terms, in the relative weights of the
+\(\mathbf{v}_A\cdot\mathbf{v}_B\) and
+\((\mathbf{v}_A\cdot\mathbf{n}_{AB})(\mathbf{v}_B\cdot\mathbf{n}_{AB})\)
+interactions.
+
+Thus, within the restricted but physically transparent class of models
+considered here, the 1PN matching conditions act as a \emph{thermodynamic
+uniqueness theorem}:
+\begin{itemize}
+  \item the vacuum must be a stiff polytrope with index \(n=5\), and
+  \item defect masses must track the local vacuum density linearly,
+        \(M \propto \rho\).
+\end{itemize}
+The first statement ties the success of the optics paper directly to the
+EIH matching, while the second elevates the mass--density equivalence
+relation of Sec.~\ref{subsec:thermo-equivalence} from an ansatz to a derived
+property of any model that reproduces GR at 1PN order.
+
+\subsection{Reinterpretation of \texorpdfstring{$\alpha^2 = -2/5$}{alpha\^2 = -2/5}}
+\label{subsec:hybrid-alpha}
+
+In Paper~III the 1PN matching was performed in a slightly different
+language.  The hydrodynamic energy functional was written as a sum of
+longitudinal and transverse contributions with an adjustable mixing
+parameter \(\alpha\).  Matching the full EIH tensor, including the
+velocity--dependent multi--body terms, required
+\begin{equation}
+  \alpha^2 = -\frac{2}{5},
+  \label{eq:alpha-condition}
+\end{equation}
+which was interpreted as an emergent Lorentzian signature in the
+longitudinal sector: the longitudinal energy density must effectively carry
+a negative sign relative to the transverse part.
+
+The hybrid analysis in this paper provides a different perspective on this
+condition.  When the fluid is described by a polytropic index \(n\) and the
+equivalence exponent \(q\), the same longitudinal/transverse mixing is
+encoded in the relative contributions of the scalar density--starvation
+effect and the vector flow.  The scalar sector tends to \emph{reduce} the
+effective inertia in regions of deep potential, while the vector sector
+tends to \emph{increase} the effective interaction energy through the
+refractive index and flow.  The net effect on the 1PN coefficients is
+governed by the combination \(C_{\text{hyb}}(n,q)\) in
+Eq.~\eqref{eq:C-hyb-def} and its multi--body generalizations.
+
+With the unique solution \((n,q) = (5,1)\) in hand, the longitudinal and
+transverse contributions to the effective energy functional can be
+re-expressed in the \(\alpha\)--parameterization of Paper~III.  Doing so
+reproduces Eq.~\eqref{eq:alpha-condition} automatically: the same balance of
+scalar and vector contributions that enforces the correct 1PN coefficients
+in the EIH Lagrangian forces the longitudinal sector to carry an effective
+negative weight corresponding to \(\alpha^2 = -2/5\).  In this sense,
+\(\alpha^2 = -2/5\) is no longer an independent tuning but a \emph{derived}
+property of the unique \(n=5\), \(M \propto \rho\) fluid that supports the
+1PN superfluid defect universe.
+
+This reinterpretation resolves one of the conceptual tensions in the
+earlier work.  The Lorentzian signature in the hydrodynamic energy
+functional is not imposed by hand; it arises dynamically from the combined
+thermodynamic and equivalence assumptions once the vacuum is required to
+reproduce both Newtonian gravity and the full 1PN EIH dynamics.
+
+\section{Acoustic Horizon and Throat Geometry}
+\label{sec:acoustic_horizon}
+
+Once the fluid parameters are fixed to \((n,q) = (5,1)\), the near–defect
+flow profile is no longer arbitrary: the same equation of state and
+equivalence relation that control the 1PN coefficients also determine the
+nonlinear inflow that feeds the throat.  In this section we show that, for
+the \(n=5\) superfluid vacuum, steady radial inflow toward a defect
+generically becomes transonic, defining an acoustic horizon where the flow
+speed equals the local sound speed.  We then relate this acoustic horizon to
+the effective four–dimensional throat geometry developed in Paper~V.
+
+\subsection{Nonlinear inflow profile and transonic condition}
+\label{subsec:acoustic-inflow}
+
+We model the near–defect flow as a steady, spherically symmetric accretion
+of the vacuum toward a throat of radius \(a\).  In the simplest
+approximation, the flow is purely radial with velocity \(u(r) < 0\) (inward)
+and density \(\rho(r)\).  Mass conservation implies a constant mass flux
+\(\dot{M}_{\text{flux}}\),
+\begin{equation}
+  \dot{M}_{\text{flux}}
+  = 4\pi r^2 \rho(r) u(r),
+  \label{eq:mass-flux}
+\end{equation}
+which is fixed by the throat impedance and the bulk boundary conditions.
+
+The radial Euler equation for a barotropic fluid in the presence of a
+gravitational potential \(\Phi(r)\) can be written as
+\begin{equation}
+  u(r) \frac{\mathrm{d}u}{\mathrm{d}r}
+  = -\frac{1}{\rho(r)} \frac{\mathrm{d}P}{\mathrm{d}r}
+    - \frac{\mathrm{d}\Phi}{\mathrm{d}r},
+  \label{eq:euler-radial}
+\end{equation}
+with \(P(\rho) = K \rho^n\) and \(n=5\).  Using
+\(\mathrm{d}P/\mathrm{d}r = c_s^2(\rho)\,\mathrm{d}\rho/\mathrm{d}r\) and
+eliminating \(\mathrm{d}\rho/\mathrm{d}r\) in favor of \(\mathrm{d}u/\mathrm{d}r\)
+via the continuity equation, one obtains a first–order ordinary differential
+equation of the form
+\begin{equation}
+  \left( u^2 - c_s^2 \right) \frac{\mathrm{d}u}{\mathrm{d}r}
+  = u \left[
+      \frac{2 c_s^2}{r}
+      - \frac{\mathrm{d}\Phi}{\mathrm{d}r}
+      + \mathcal{F}_{\text{throat}}(r; a, n)
+    \right],
+  \label{eq:du-dr-generic}
+\end{equation}
+where \(\mathcal{F}_{\text{throat}}\) encodes corrections due to the finite
+throat size and the transition from 3D to 4D flow.  Equation
+\eqref{eq:du-dr-generic} is the continuum version of the nonlinear profile
+solved numerically in the \texttt{nonlinear\_profile\_solver.wl} script; the
+full expression, including the explicit form of
+\(\mathcal{F}_{\text{throat}}\), is recorded in
+App.~\ref{app:inflow}.
+
+The structure of Eq.~\eqref{eq:du-dr-generic} immediately reveals the
+existence of a critical (sonic) point.  The right–hand side remains finite
+for smooth profiles, so a regular solution must satisfy the transonic
+condition
+\begin{equation}
+  u^2(r_H) = c_s^2(r_H),
+  \qquad
+  \frac{2 c_s^2(r_H)}{r_H}
+  - \frac{\mathrm{d}\Phi}{\mathrm{d}r}\bigg|_{r_H}
+  + \mathcal{F}_{\text{throat}}(r_H; a, n)
+  = 0,
+  \label{eq:transonic-conditions}
+\end{equation}
+at some radius \(r = r_H\).  For \(n=5\) and a defect mass \(M\) large
+enough that the flow is significantly driven by the potential, the numerical
+solutions exhibit a smooth transition from subsonic inflow
+\(|u| < c_s\) at large \(r\) to supersonic inflow \(|u| > c_s\) at small
+\(r\), with the transonic condition \eqref{eq:transonic-conditions} satisfied
+at a unique radius \(r_H \gtrsim a\).
+
+Figure~\ref{fig:mach-profile} (generated from the numerical solutions)
+illustrates a representative Mach number profile,
+\(\mathcal{M}(r) \equiv |u(r)|/c_s(r)\), for the \(n=5\) vacuum.  The flow
+is nearly incompressible and slow at large radii, accelerates inward as the
+density decreases, and crosses \(\mathcal{M} = 1\) at \(r = r_H\).  The
+precise location of \(r_H\) depends on the throat radius \(a\), the mass
+flux \(\dot{M}_{\text{flux}}\), and the defect mass \(M\), but the existence
+of a sonic transition is robust for the class of parameters relevant to the
+1PN–tuned model.
+
+\subsection{Definition of the acoustic horizon}
+\label{subsec:acoustic-horizon-def}
+
+In analogue gravity, an acoustic horizon is defined as the locus where the
+normal component of the flow speed equals the local propagation speed of
+perturbations.  For the spherically symmetric inflow considered here, the
+acoustic horizon is the sphere
+\begin{equation}
+  r = r_H
+  \quad \text{such that} \quad
+  |u(r_H)| = c_s(r_H).
+  \label{eq:acoustic-horizon}
+\end{equation}
+Inside this surface, \(|u| > c_s\) and small perturbations (phonons) are
+advected inward faster than they can propagate outward; outside, \(|u| < c_s\)
+and outward–moving waves can escape to infinity.  In the effective optical
+metric \eqref{eq:optical-metric}, the acoustic horizon plays the role of a
+null surface for phonons: it separates regions that are causally connected
+to infinity from regions that are not.
+
+For the superfluid defect toy model, the acoustic horizon is not a
+fundamental singularity.  The underlying 4D bulk and the throat geometry
+remain smooth across \(r = r_H\); the horizon is an emergent property of the
+linearized perturbations on the 3D brane.  Nevertheless, it controls the
+propagation of signals in precisely the way one expects from an analogue
+black hole: perturbations generated inside the horizon cannot influence the
+far–field flow without tunneling through the supersonic region.
+
+The numerical solutions of Eq.~\eqref{eq:du-dr-generic} for \(n=5\) show
+that \(r_H\) scales approximately linearly with the defect mass \(M\),
+\begin{equation}
+  r_H \sim \kappa\,\frac{G M}{c^2},
+  \label{eq:rH-scaling}
+\end{equation}
+with a dimensionless proportionality constant \(\kappa\) of order unity that
+depends weakly on the throat radius \(a\) and on the imposed mass flux.  The
+exact dependence of \(\kappa\) on these parameters is summarized in
+App.~\ref{app:impedance_scaling}.  This near–linear scaling mirrors the
+Schwarzschild radius \(r_s = 2 G M / c^2\), and is one of the reasons why
+the \(n=5\) polytrope is compatible with 1PN tests while still providing
+room for finite–size deviations in the strong–field regime.
+
+\subsection{Throat geometry and effective 4D picture}
+\label{subsec:acoustic-throat-geometry}
+
+In Paper~V the defects were promoted to 4D throats connecting the 3D brane
+to a bulk superfluid.  The throat has a minimal radius \(a\) in the bulk,
+and appears as a localized density depression on the brane.  The far–field
+potential \(\Phi(r)\) on the brane is monopolar, while the near–field
+structure supports cylindrical resonances that realize the electromagnetic
+sector.  The question we now address is how the acoustic horizon at
+\(r = r_H\) fits into this picture.
+
+The numerical inflow profiles indicate that the transonic surface lies
+slightly outside the geometric throat radius,
+\begin{equation}
+  r_H \gtrsim a,
+  \label{eq:rH-a-relationship}
+\end{equation}
+with the difference controlled by the detailed impedance of the throat.  In
+the 4D picture, the region \(r \lesssim a\) on the brane is where the flow
+begins to bend off the brane into the bulk.  From the brane point of view,
+the acoustic horizon then marks the outer edge of the region where the flow
+is strongly influenced by the extra dimension: beyond \(r_H\) the flow is
+essentially 3D and subsonic, while inside \(r_H\) it is supersonic and
+rapidly channeled into the throat.
+
+This suggests a simple geometric interpretation.  The acoustic horizon at
+\(r_H\) plays the role of an effective black hole horizon for phonons and
+small disturbances on the brane, while the throat at radius \(a\) plays the
+role of a minimal surface in the bulk geometry.  The flow from \(r_H\) down
+to \(a\) is the hydrodynamic realization of the region between the horizon
+and the throat in a higher–dimensional brane–bulk picture.  The near–linear
+relation \(r_H \sim \kappa G M / c^2\) can then be interpreted as a
+statement about how the minimal 4D throat radius scales with the mass of the
+defect in the stiff \(n=5\) vacuum.
+
+In subsequent sections we will see that this structure has direct
+consequences for null rays and strong–field observables.  The same index
+profile \(N(\Phi)\) and inflow \(u(r)\) that define the acoustic horizon
+also control the existence and location of a photon sphere, the effective
+shadow size, and the onset of deviations from Schwarzschild lensing.  In
+this way the thermodynamically fixed fluid parameters \((n=5, q=1)\) not
+only close the 1PN dynamical story but also determine a specific class of
+horizon and throat geometries that can be probed observationally.
+
+\section{Photon Sphere, Lensing, and Strong-Field Observables}
+\label{sec:photon_sphere}
+
+The acoustic horizon and throat geometry of Sec.~\ref{sec:acoustic_horizon}
+fix the near-field flow and refractive index profiles around a defect in the
+stiff \(n=5\) vacuum.  In this section we study how null rays propagate in
+this background, focusing on the existence and location of an effective
+photon sphere and the associated shadow size.  We then compare the resulting
+strong-field lensing behavior with the Schwarzschild case and identify
+regimes where the toy model is expected to agree with or deviate from GR.
+
+\subsection{Null rays in the refractive index profile}
+\label{subsec:photon-null-rays}
+
+In the geometric optics limit, null rays on the brane propagate in the
+effective optical metric
+\begin{equation}
+  \mathrm{d}s_{\text{opt}}^2
+  = -\frac{c^2}{N^2(r)}\,\mathrm{d}t^2
+    + N^2(r)
+      \left( \mathrm{d}r^2
+      + r^2 \mathrm{d}\Omega^2 \right),
+  \label{eq:optical-metric-spherical}
+\end{equation}
+with \(N(r) \equiv N[\Phi(r)]\) given by Eq.~\eqref{eq:N-of-Phi}.  For a
+static, spherically symmetric defect the potential depends only on \(r\),
+and the index profile can be written as
+\begin{equation}
+  N(r)
+  = 1 - \frac{1}{2}(n-1)\,\frac{\Phi(r)}{c^2}
+    + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right),
+  \qquad
+  \Phi(r) \simeq -\frac{G M}{r},
+  \label{eq:N-of-r-approx}
+\end{equation}
+in the weak-field regime.  For \(n=5\) this gives
+\begin{equation}
+  N(r)
+  \simeq 1 + 2\,\frac{G M}{r c^2},
+  \label{eq:N-of-r-n5}
+\end{equation}
+which is the familiar \(1/r\) profile from Paper~II, now understood as a
+consequence of the thermodynamic matching.
+
+Restricting attention to equatorial rays \((\theta = \pi/2)\), the optical
+metric implies conserved quantities associated with time translation and
+axial symmetry:
+\begin{equation}
+  E_{\text{opt}}
+  = \frac{c^2}{N^2(r)} \frac{\mathrm{d}t}{\mathrm{d}\lambda},
+  \qquad
+  L_{\text{opt}}
+  = N^2(r) r^2 \frac{\mathrm{d}\phi}{\mathrm{d}\lambda},
+  \label{eq:optical-conserved}
+\end{equation}
+where \(\lambda\) is an affine parameter.  The null condition,
+\(\mathrm{d}s_{\text{opt}}^2 = 0\), then yields an effective radial equation
+of motion of the form
+\begin{equation}
+  \left( \frac{\mathrm{d}r}{\mathrm{d}\lambda} \right)^2
+  + V_{\text{eff}}(r; b)
+  = 0,
+  \qquad
+  b \equiv \frac{L_{\text{opt}}}{E_{\text{opt}}/c},
+  \label{eq:optical-radial-eq}
+\end{equation}
+where \(b\) is the impact parameter and the effective potential is
+\begin{equation}
+  V_{\text{eff}}(r; b)
+  = \frac{c^2}{N^4(r)}
+    \left[
+      \frac{b^2}{r^2} - N^2(r)
+    \right].
+  \label{eq:Veff-def}
+\end{equation}
+The turning points and circular photon orbits are determined by the zeros
+and extrema of \(V_{\text{eff}}\).
+
+In practice, the lensing calculations in the
+\texttt{lensing\_from\_flow.wl} script are implemented in terms of the
+equivalent ray equation for \(\phi(r)\),
+\begin{equation}
+  \frac{\mathrm{d}\phi}{\mathrm{d}r}
+  = \frac{b}{r^2}
+    \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}},
+  \label{eq:dphi-dr}
+\end{equation}
+which is integrated numerically using the full index profile obtained from
+the inflow solution.  The analytic discussion here is intended to highlight
+the key structures in the effective potential that control the photon sphere
+and shadow.
+
+\subsection{Photon sphere and shadow size}
+\label{subsec:photon-sphere-shadow}
+
+A photon sphere is defined as a marginally stable circular null orbit.
+In the effective potential language, this corresponds to a radius \(r_{\text{ph}}\)
+satisfying
+\begin{equation}
+  V_{\text{eff}}(r_{\text{ph}}; b_{\text{ph}}) = 0,
+  \qquad
+  \frac{\partial V_{\text{eff}}}{\partial r}
+    (r_{\text{ph}}; b_{\text{ph}}) = 0,
+  \label{eq:photon-sphere-conditions}
+\end{equation}
+for some critical impact parameter \(b_{\text{ph}}\).  Using
+Eq.~\eqref{eq:Veff-def}, these conditions can be expressed more directly in
+terms of the index profile as
+\begin{equation}
+  \frac{b_{\text{ph}}^2}{r_{\text{ph}}^2}
+  = N^2(r_{\text{ph}}),
+  \qquad
+  \frac{\mathrm{d}}{\mathrm{d}r}
+  \left[ \frac{N^2(r)}{r^2} \right]_{r = r_{\text{ph}}}
+  = 0.
+  \label{eq:photon-sphere-N}
+\end{equation}
+The second condition implies
+\begin{equation}
+  \left. \frac{2 N(r) N'(r)}{r^2}
+    - \frac{2 N^2(r)}{r^3}
+  \right|_{r = r_{\text{ph}}}
+  = 0,
+\end{equation}
+or equivalently
+\begin{equation}
+  \frac{N'(r_{\text{ph}})}{N(r_{\text{ph}})}
+  = \frac{1}{r_{\text{ph}}}.
+  \label{eq:photon-sphere-slope}
+\end{equation}
+For a simple \(1/r\) index profile, \(N(r) = 1 + \beta G M/(r c^2)\), this
+condition yields
+\begin{equation}
+  r_{\text{ph}}
+  \simeq \frac{3 \beta G M}{c^2},
+  \qquad
+  b_{\text{ph}}
+  \simeq \sqrt{3}\,r_{\text{ph}},
+  \label{eq:rph-beta}
+\end{equation}
+up to corrections of order \((G M / r c^2)^2\).  For the Schwarzschild
+metric in isotropic coordinates, the effective index has \(\beta = 2\), and
+one recovers the standard relation \(r_{\text{ph}} = 3 G M / c^2\) in
+Schwarzschild radius units.
+
+In the superfluid defect model, the actual index profile deviates from a
+pure \(1/r\) law inside the acoustic horizon due to the nonlinear inflow and
+finite throat size.  The numerical solutions in
+\texttt{lensing\_from\_flow.wl} use the full \(N(r)\) obtained from the
+\(n=5\) inflow to solve Eqs.~\eqref{eq:dphi-dr} and
+\eqref{eq:photon-sphere-N} directly.  The results can be summarized as
+follows:
+\begin{itemize}
+  \item A photon-sphere-like orbit exists at a radius
+        \begin{equation}
+          r_{\text{ph}}
+          \simeq \kappa_{\text{ph}}\,\frac{G M}{c^2},
+          \label{eq:rph-scaling}
+        \end{equation}
+        with \(\kappa_{\text{ph}}\) a dimensionless constant of order
+        unity that is slightly larger than the Schwarzschild value \(3\).
+  \item The corresponding critical impact parameter scales as
+        \begin{equation}
+          b_{\text{ph}}
+          \simeq \eta_{\text{ph}}\,\frac{G M}{c^2},
+          \label{eq:bph-scaling}
+        \end{equation}
+        with \(\eta_{\text{ph}}\) close to the GR value \(\sqrt{27}\).
+  \item The shadow radius seen by a distant observer, defined by
+        \(b_{\text{sh}} \approx b_{\text{ph}}\), is therefore nearly
+        proportional to \(M\) with a proportionality constant that deviates
+        from the Schwarzschild value at the few to few-tens of percent
+        level, depending on the throat radius \(a\) and the details of the
+        inflow.
+\end{itemize}
+In other words, the \(n=5\) superfluid vacuum predicts a photon-sphere and
+shadow structure that is qualitatively similar to, but not exactly the same
+as, that of a Schwarzschild black hole of the same mass.  The deviations are
+controlled by the same throat impedance and mass--radius scaling discussed
+in Sec.~\ref{subsec:acoustic-throat-geometry} and
+App.~\ref{app:impedance_scaling}.
+
+\subsection{Comparison with GR and observational windows}
+\label{subsec:photon-GR-comparison}
+
+The near-linear mass scaling of both the acoustic horizon radius \(r_H\) and
+the photon-sphere radius \(r_{\text{ph}}\) implies that, for sufficiently
+large and slowly rotating defects, the superfluid defect model will be
+indistinguishable from GR in classic weak-field and moderately strong-field
+tests.  In particular:
+\begin{itemize}
+  \item The 1PN observables considered in Papers~I and II (perihelion
+        precession, light bending, Shapiro delay, gravitational redshift)
+        are exactly matched by construction.
+  \item The existence of an acoustic horizon and a photon sphere ensures
+        that null rays experience an effective shadow region with size
+        \(b_{\text{sh}} \propto M\), as in Schwarzschild.
+  \item For impact parameters \(b \gg b_{\text{ph}}\), the bending angle is
+        dominated by the same \(\mathcal{O}(G M / b c^2)\) terms that
+        control standard weak-field lensing.
+\end{itemize}
+Deviations from GR are expected to appear in two closely related regimes:
+\begin{enumerate}
+  \item \textbf{Near-horizon strong-field lensing.}  For impact parameters
+        \(b \sim b_{\text{ph}}\), the detailed shape of the index profile
+        inside and just outside the acoustic horizon becomes important.
+        The finite throat size and the transition from 3D to 4D flow
+        introduce corrections to \(r_{\text{ph}}\) and \(b_{\text{ph}}\)
+        that are not captured by a pure Schwarzschild metric.
+  \item \textbf{Higher-order (2PN) corrections.}  The same fluid features
+        that set the throat impedance and mass--radius scaling also control
+        higher-order terms in the PN expansion, such as \(\Phi^2/c^2\) and
+        \(v^2 \Phi^2 / c^4\) corrections.  These show up in precision
+        timing, high-compactness orbital motion, and in the detailed shape
+        of the lensing cross section near the shadow edge.
+\end{enumerate}
+
+From an observational perspective, the most promising windows for testing
+these deviations are:
+\begin{itemize}
+  \item Very long baseline interferometry images of supermassive compact
+        objects (EHT-style observations), where the measured shadow size and
+        photon-ring structure can be compared with the nearly Schwarzschild
+        but slightly modified predictions of the toy model.
+  \item Precision timing of compact binaries in regimes where 2PN and higher
+        corrections are measurable, especially if independent constraints on
+        the mass--radius relation of the compact object are available.
+  \item Numerical simulations of full superfluid dynamics in the \(n=5\)
+        vacuum, using the PDE schemes discussed elsewhere in this series, to
+        quantify how robust the predicted deviations are under more
+        realistic, time-dependent flows.
+\end{itemize}
+
+In summary, the fixed \(n=5\), \(M \propto \rho\) fluid not only reproduces
+the 1PN dynamics of GR but also predicts a specific pattern of small but
+potentially observable deviations in strong-field lensing and near-horizon
+structure.  These are natural targets for future observational and
+numerical tests of the superfluid defect toy universe.
+
+\section{Predictions, 2PN-Scale Deviations, and Tests}
+\label{sec:predictions}
+
+The previous sections have shown that the stiff \(n=5\), \(M \propto \rho\)
+vacuum reproduces the 1PN dynamics of GR and supports an acoustic horizon
+and photon sphere with approximately Schwarzschild-like scaling.  In this
+section we summarize the main predictive levers of the model, focusing on
+finite-size effects, the onset of 2PN-scale deviations, and possible
+observational and numerical tests.
+
+\subsection{Finite-size effects and aspect ratio \texorpdfstring{$L/a$}{L/a}}
+\label{subsec:predictions-La}
+
+In the throat picture of Paper~V, each defect is associated with a
+four-dimensional bridge of minimal radius \(a\) and characteristic length
+\(L\) in the bulk.  From the brane point of view, the far-field potential is
+effectively monopolar, while the near-field structure depends on the
+dimensionless aspect ratio
+\begin{equation}
+  \Lambda \equiv \frac{L}{a}.
+  \label{eq:aspect-ratio}
+\end{equation}
+For \(\Lambda \gg 1\) the throat appears long and thin, and the near-field
+region on the brane resembles a quasi-cylindrical cavity; for \(\Lambda \sim
+\mathcal{O}(1)\) the throat is stubby and the transition from 3D to 4D flow
+is more abrupt.
+
+The inflow and impedance calculations in
+\texttt{4d\_throat\_impedance\_scaling.wl} and
+\texttt{black\_hole\_scaling.wl} indicate that the mass \(M\), horizon
+radius \(r_H\), and throat radius \(a\) are related schematically by
+\begin{equation}
+  M \sim \mu\,a^{k},
+  \qquad
+  r_H \sim \kappa\,\frac{G M}{c^2},
+  \label{eq:mass-scaling-generic}
+\end{equation}
+with \(k \lesssim 1\) and \(\mu, \kappa\) dimensionless coefficients that
+depend on \(\Lambda\) and on the detailed boundary conditions in the bulk.
+For an exactly Schwarzschild black hole one would have \(k = 1\) and a
+strictly linear mass--radius relation; in the stiff \(n=5\) vacuum the
+scaling is close to but not exactly linear, leaving room for small
+finite-size corrections controlled by \(\Lambda\).
+
+From the brane perspective, deviations from GR first enter through terms
+that are sensitive to the finite size of the throat region, such as:
+\begin{itemize}
+  \item corrections to the far-field potential at order \(r^{-3}\) and
+        higher, associated with the multipole structure of the 4D throat,
+  \item modifications to the index profile \(N(r)\) inside and just outside
+        the acoustic horizon due to the bending of flow into the bulk, and
+  \item shifts in the effective horizon and photon-sphere radii as functions
+        of \(\Lambda\).
+\end{itemize}
+These effects are naturally of order
+\begin{equation}
+  \epsilon_{\text{fs}}
+  \sim \left( \frac{a}{r_H} \right)^p,
+  \label{eq:finite-size-epsilon}
+\end{equation}
+with \(p \geq 1\) a model-dependent exponent.  Since \(r_H\) itself scales
+with \(M\), Eq.~\eqref{eq:finite-size-epsilon} implies that finite-size
+effects are most important for low-mass, high-compactness objects and become
+progressively less visible for very massive defects with \(r_H \gg a\).
+
+\subsection{Regimes of agreement and breakdown}
+\label{subsec:predictions-regimes}
+
+It is useful to organize the parameter space of the model in terms of the
+dimensionless compactness
+\begin{equation}
+  \mathcal{C}
+  \equiv \frac{G M}{r_H c^2}
+  \sim \frac{1}{\kappa},
+  \label{eq:compactness}
+\end{equation}
+and the strength of the potential and velocities probed by a given
+experiment or observation.  Three qualitatively distinct regimes can be
+identified:
+
+\paragraph{1. Weak-field, slow-motion regime (1PN).}
+Here \(|\Phi|/c^2 \ll 1\) and \(v^2/c^2 \ll 1\) everywhere of interest.  In
+this regime:
+\begin{itemize}
+  \item The hybrid 1PN Lagrangian matches the EIH Lagrangian exactly by
+        construction.
+  \item Finite-size corrections are suppressed by powers of
+        \(a/r \ll 1\), and are typically much smaller than the already tiny
+        2PN corrections predicted by GR.
+  \item All solar-system tests and classic binary-pulsar 1PN observables are
+        reproduced.
+\end{itemize}
+In practice this regime covers most of the existing precision tests of GR.
+
+\paragraph{2. Moderately strong-field, near-horizon regime.}
+In this regime the potential reaches \(|\Phi|/c^2 \sim \mathcal{O}(0.1)\)
+and orbital velocities approach \(v^2/c^2 \sim \mathcal{O}(0.1)\), but the
+flow is still predominantly 3D and the throat is not fully resolved.  Here:
+\begin{itemize}
+  \item The effective index profile \(N(r)\) remains close to its
+        Schwarzschild counterpart, and the photon-sphere and shadow sizes
+        obey Eqs.~\eqref{eq:rph-scaling} and \eqref{eq:bph-scaling} with
+        coefficients that differ from GR at the few to few-tens of percent
+        level.
+  \item 2PN corrections in the toy model are expected to track those of GR
+        up to corrections of order \(\epsilon_{\text{fs}}\), making this a
+        natural regime in which to look for small deviations.
+\end{itemize}
+Current EHT-style images of supermassive compact objects likely probe this
+regime.
+
+\paragraph{3. Strong-field, throat-resolving regime.}
+Finally, in the immediate vicinity of the acoustic horizon and inside the
+throat region, the flow is highly nonlinear and the effective potential and
+index deviate significantly from the Schwarzschild form:
+\begin{itemize}
+  \item The transition from 3D inflow on the brane to 4D flow into the bulk
+        leads to order-unity modifications of \(N(r)\) for \(r \lesssim
+        \mathcal{O}(a)\).
+  \item Higher-order terms in the PN expansion (2PN and beyond) become
+        large, and the series itself may cease to be a useful organizing
+        tool for the dynamics.
+  \item Detailed predictions in this regime require full numerical solutions
+        of the underlying superfluid PDEs in 3D+1 or 4D+1, rather than a
+        purely PN treatment.
+\end{itemize}
+At present, this regime is more relevant for numerical experiments than for
+direct astrophysical observations, though extreme compact binaries and
+high-precision gravitational-wave measurements may eventually probe aspects
+of it.
+
+\subsection{Astrophysical and numerical tests}
+\label{subsec:predictions-tests}
+
+The superfluid defect toy model makes several concrete predictions that
+distinguish it from GR once one goes beyond the strict 1PN regime.  These
+can be grouped into astrophysical tests and numerical experiments.
+
+\paragraph{Astrophysical tests.}
+
+Promising observational channels include:
+\begin{itemize}
+  \item \textbf{Black-hole shadow size and shape.}
+        The near-linear scaling of the shadow radius with mass is shared
+        with Schwarzschild, but the proportionality constant is shifted by
+        finite-size and throat effects.  Precision measurements of shadow
+        size and photon-ring structure across a range of masses could
+        constrain \(\kappa_{\text{ph}}\) and hence \(\Lambda\).
+  \item \textbf{Strong-field lensing profiles.}
+        Detailed measurements of lensing cross sections and caustic
+        structures near the shadow edge could reveal deviations from the
+        Schwarzschild bending angle at the few-percent level, particularly
+        if combined with independent mass measurements.
+  \item \textbf{High-compactness binaries and 2PN timing.}
+        In compact binaries where 2PN terms are observationally relevant
+        (for example, in pulsar timing or extreme mass-ratio inspirals),
+        the modified 2PN coefficients of the toy model could manifest as
+        small discrepancies in periastron advance, time delay, or waveform
+        phasing relative to GR predictions.
+\end{itemize}
+
+\paragraph{Numerical experiments.}
+
+On the modeling side, the most direct way to test and refine the predictions
+of the superfluid defect model is through full PDE simulations:
+\begin{itemize}
+  \item \textbf{3D superfluid simulations of single defects.}
+        Solving the nonlinear superfluid equations in 3D around a single
+        throat with \(n=5\) would allow a direct measurement of the inflow
+        profile \(u(r)\), the acoustic horizon radius \(r_H\), and the
+        index profile \(N(r)\), providing an independent check of the
+        semi-analytic and 1D radial approximations used here.
+  \item \textbf{Binary and multi-defect configurations.}
+        Extending these simulations to binary or multi-defect systems would
+        permit a direct comparison between the emergent dynamics and the
+        EIH predictions, testing the robustness of the 1PN matching and
+        probing the onset of 2PN-scale deviations.
+  \item \textbf{Ray tracing in simulated flows.}
+        Given a numerically obtained flow and index profile, one can
+        perform ray tracing to compute shadows, photon rings, and lensing
+        patterns, and compare them directly with GR predictions and
+        observations.
+\end{itemize}
+
+Together, these astrophysical and numerical tests provide a roadmap for
+falsifying or refining the superfluid defect toy model.  The key point is
+that, once the fluid is fixed by the 1PN matching to have \(n=5\) and
+\(M \propto \rho\), the strong-field and 2PN-scale behavior is no longer a
+free parameter: it is dictated by the same thermodynamic and geometric
+structure that underlies the success of the model at 1PN.
+
+\section{Discussion and Outlook}
+\label{sec:discussion}
+
+The superfluid defect toy universe was originally motivated by a simple
+question: can a single structured vacuum medium reproduce the familiar
+gravitational and electromagnetic phenomena of general relativity and
+Maxwell theory, at least in the weak-field regime?  Papers~I--V answered
+this question in the affirmative at first post--Newtonian order by
+constructing an explicit model in which a compressible superfluid vacuum,
+threaded by defect throats, reproduces Newtonian gravity, 1PN orbital
+dynamics, light bending, Shapiro delay, Lense--Thirring precession, and an
+effective electromagnetic sector.  However, that success came with several
+apparent tunings and open questions: the special role of the stiff
+polytrope \(n=5\), the need for an effective Lorentzian signature encoded in
+\(\alpha^2 = -2/5\), and the status of horizons and strong--field structure
+in the throat picture.
+
+The present paper has addressed these issues from a thermodynamic and
+geometric perspective.  By combining a polytropic equation of state,
+\(P \propto \rho^n\), with a simple equivalence relation between defect mass
+and vacuum density, \(M \propto \rho^q\), and by tracking both scalar
+(density starvation) and vector (flow and refractive index) responses of the
+medium, we showed that the requirement of 1PN consistency with the
+Einstein--Infeld--Hoffmann dynamics acts as a uniqueness condition on the
+fluid:
+\begin{itemize}
+  \item The polytropic index is fixed to \(n = 5\); the vacuum must be
+        stiff in precisely the way anticipated by the optics paper.
+  \item The defect mass must track the local vacuum density linearly,
+        \(q = 1\), so that \(M \propto \rho\).
+\end{itemize}
+Within the class of models considered here, there is no alternative choice
+of \((n,q)\) that reproduces both Newtonian gravity and the full EIH
+interaction at 1PN order.  What appeared in earlier work as a collection of
+successful but somewhat isolated tunings can thus be understood as the
+emergent consequence of a single thermodynamic hypothesis and a single
+equivalence assumption.
+
+This hybrid analysis also sheds new light on the effective Lorentzian
+signature parameter \(\alpha^2 = -2/5\) introduced in Paper~III.  In the
+original formulation, matching the vector sector of the EIH Lagrangian
+required the longitudinal part of the hydrodynamic energy functional to
+carry a negative weight relative to the transverse part, encoded in
+\(\alpha^2 < 0\).  Here, the same balance is seen to arise from the
+competition between scalar and vector responses: density starvation reduces
+the effective inertia in deep potential wells, while the flow and refractive
+index increase the effective interaction energy.  When expressed in the
+\(\alpha\)--parameterization, the unique \(n=5\), \(M \propto \rho\) fluid
+automatically reproduces \(\alpha^2 = -2/5\).  The Lorentzian signature is
+not an additional assumption but a derived property of the thermodynamically
+fixed vacuum.
+
+On the geometric side, we have shown that the same stiff fluid which
+supports the 1PN dynamics also admits an acoustic horizon and photon
+sphere in the near--defect region.  Steady inflow in the \(n=5\) vacuum
+becomes transonic, defining an acoustic horizon at \(r = r_H\) where the
+radial flow speed equals the local sound speed.  The location of this
+horizon scales approximately linearly with mass,
+\(r_H \sim \kappa G M / c^2\), and lies just outside the minimal throat
+radius \(a\).  The associated refractive index profile supports a
+photon--sphere--like orbit at \(r_{\text{ph}} \sim \kappa_{\text{ph}} G M /
+c^2\) and a nearly Schwarzschild shadow, with small deviations controlled by
+the throat impedance and aspect ratio \(L/a\).
+
+Taken together, these results complete the conceptual arc of the 1PN
+program:
+\begin{itemize}
+  \item The vacuum is not just any compressible medium; it is uniquely
+        pinned to a stiff \(n=5\) polytrope with \(M \propto \rho\) by 1PN
+        consistency.
+  \item The ad hoc--seeming Lorentzian signature in the hydrodynamic energy
+        functional emerges naturally from the hybrid scalar--vector response
+        of this fluid.
+  \item The same fixed fluid determines a specific class of horizon and
+        throat geometries that are observationally accessible through
+        strong--field lensing and shadow measurements.
+\end{itemize}
+
+\vspace{0.5em}
+\noindent\textbf{Limitations and open questions.}
+Despite these advances, several important limitations remain.  First, our
+analysis is restricted to the 1PN expansion plus semi--analytic arguments
+about the near--horizon flow.  We have not derived the full second
+post--Newtonian (2PN) Lagrangian from the superfluid model, nor have we
+included radiation reaction or gravitational waves.  While preliminary
+symbolic calculations suggest that the \(n=5\) fluid does not immediately
+contradict GR at 2PN order, a systematic matching program analogous to the
+EIH analysis remains to be carried out.
+
+Second, many of our strong--field conclusions rely on reduced models of the
+flow (steady, spherically symmetric inflow, effective 1D radial equations)
+and on numerical solutions of those reduced equations.  A fully dynamical,
+three--dimensional simulation of the \(n=5\) superfluid, with realistic
+initial conditions and defect motions, is needed to validate the existence
+and robustness of the acoustic horizon, the precise scaling of \(r_H\) and
+\(r_{\text{ph}}\), and the stability of the throat under time--dependent
+perturbations.
+
+Third, the electromagnetic sector, while conceptually unified with gravity
+through the throat geometry, has been treated largely in the linearized,
+long--wavelength limit.  The interplay between strong gravitational fields,
+strong electromagnetic fields, and the underlying superfluid dynamics
+remains to be explored in detail, especially in regimes relevant to compact
+object magnetospheres and high-energy astrophysical phenomena.
+
+\vspace{0.5em}
+\noindent\textbf{Directions for future work.}
+The natural next steps in this program can be grouped into three broad
+categories:
+
+\paragraph{1. Toward a full 2PN and radiation theory.}
+A logical continuation of the present work is to extend the hybrid
+scalar--vector analysis to second post--Newtonian order and beyond.  This
+would involve:
+\begin{itemize}
+  \item computing the full 2PN expansion of the hybrid Lagrangian,
+        including all \(\Phi^2/c^2\), \(v^2 \Phi^2 / c^4\), and
+        multi--body cross terms,
+  \item matching these coefficients to the standard 2PN and 2.5PN GR
+        results, or identifying controlled deviations where the toy
+        model predicts a different structure, and
+  \item deriving the effective stress--energy carried by superfluid waves
+        and vortices to understand gravitational radiation and its back
+        reaction on defects.
+\end{itemize}
+Such a program would clarify whether the superfluid defect universe can
+faithfully reproduce the rich phenomenology of binary inspirals and
+gravitational waves, or whether it predicts specific 2PN--scale departures
+that could be constrained by current and future observations.
+
+\paragraph{2. Fully nonlinear numerical simulations.}
+On the computational side, a major goal is to move from reduced radial
+models to full 3D (or 4D) simulations of the superfluid equations.  With
+modern GPU hardware and adaptive mesh refinement, it should be possible to:
+\begin{itemize}
+  \item simulate single and binary throats in the \(n=5\) vacuum,
+        resolving both the near--throat and far--field regions,
+  \item measure the emergent mass--radius relation, horizon structure,
+        and index profile directly from the flow, and
+  \item perform ray tracing and wave propagation in the numerically
+        obtained backgrounds, providing parameter--free predictions for
+        shadows, photon rings, and lensing.
+\end{itemize}
+Such simulations would also test the stability of the throats and the
+self--healing properties of the vacuum under strong perturbations.
+
+\paragraph{3. Phenomenology and observational confrontations.}
+Finally, the model invites direct comparison with astrophysical data.  Key
+targets include:
+\begin{itemize}
+  \item black--hole imaging (shadow size and shape, photon--ring
+        structure) in systems where independent mass estimates are
+        available,
+  \item precision timing of compact binaries in regimes where 2PN and
+        higher corrections are observable, and
+  \item potential signatures in high--energy emission or polarization
+        patterns arising from the unified superfluid description of
+        gravity and electromagnetism.
+\end{itemize}
+In each case, the stiff \(n=5\) fluid and \(M \propto \rho\) relation
+lead to concrete, quantitative predictions once the throat parameters
+are fixed.
+
+\vspace{0.5em}
+\noindent In summary, this paper has shown that the 1PN success of the
+superfluid defect toy universe is not the result of arbitrary tuning but
+flows from a tightly constrained thermodynamic and geometric structure.  The
+vacuum is forced into a specific corner of theory space, characterized by a
+stiff \(n=5\) equation of state, a linear mass--density relation, and an
+emergent Lorentzian signature in the longitudinal sector.  This same
+structure determines the existence and properties of acoustic horizons and
+photon spheres, providing clear targets for future numerical and
+observational tests.  Whether the model ultimately survives these tests or
+is ruled out, it offers a concrete example of how a self--healing vacuum
+might mimic GR to high accuracy at 1PN order while leaving its own
+fingerprints in the strong--field and 2PN regimes.
+
+\appendix
+
+\section{1PN Expansion and EIH Matching Details}
+\label{app:1pn_details}
+
+In this appendix we summarize the algebraic steps that connect the hybrid
+scalar+vector Lagrangian of Sec.~\ref{sec:hybrid_uniqueness} to the
+Einstein--Infeld--Hoffmann (EIH) coefficients at first post--Newtonian
+order.  The goal is not to reproduce the full multi--body derivation of
+Paper~III, but to make explicit how the polytropic index \(n\) and the
+mass--density exponent \(q\) enter the 1PN coefficients, and how the
+matching conditions select the unique solution
+\((n,q) = (5,1)\).
+
+\subsection{Setup and series expansion}
+\label{app:1pn-setup}
+
+We begin from the schematic hybrid test--body Lagrangian for a particle
+moving in a static potential \(\Phi(\mathbf{r})\),
+\begin{equation}
+  L_{\text{hyb}}
+  = -M(\Phi)\,c^2 \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}}
+    + L_{\text{flow}}[\Phi,\mathbf{v}],
+  \label{eq:L-hyb-app}
+\end{equation}
+where:
+\begin{itemize}
+  \item \(M(\Phi)\) is the effective, potential dependent mass obtained from
+        density starvation,
+  \item \(c_s(\Phi)\) is the potential dependent sound speed arising from
+        the polytropic equation of state, and
+  \item \(L_{\text{flow}}\) encodes the interaction of the defect with the
+        background flow and is responsible for the gravitomagnetic and
+        multi--body vector terms.
+\end{itemize}
+In the weak field, slow motion regime we expand
+\begin{align}
+  M(\Phi)
+  &= M_0 \left[
+      1 + q\,\frac{\Phi}{c^2}
+        + m_2\,\frac{\Phi^2}{c^4}
+        + \mathcal{O}\!\left(\frac{\Phi^3}{c^6}\right)
+    \right],
+  \label{eq:M-expansion-app} \\
+  \frac{c_s^2(\Phi)}{c^2}
+  &= 1 + (n-1)\,\frac{\Phi}{c^2}
+       + s_2\,\frac{\Phi^2}{c^4}
+       + \mathcal{O}\!\left(\frac{\Phi^3}{c^6}\right),
+  \label{eq:cs-expansion-app}
+\end{align}
+where \(m_2\) and \(s_2\) are coefficients that depend on the detailed
+microphysics but do not affect the 1PN matching.  The squared speed is the
+only place where \(n\) enters the kinematics at this order.
+
+We also define the small expansion parameters
+\begin{equation}
+  \varepsilon_v \equiv \frac{v^2}{c^2},
+  \qquad
+  \varepsilon_\Phi \equiv \frac{|\Phi|}{c^2},
+\end{equation}
+and treat \(\varepsilon_v \sim \varepsilon_\Phi \equiv \varepsilon \ll 1\).
+Terms of order \(\varepsilon\) are Newtonian, and terms of order
+\(\varepsilon^2\) are 1PN.
+
+\subsection{Single body 1PN expansion}
+\label{app:1pn-single-body}
+
+For the scalar and kinematic parts of the hybrid Lagrangian we write
+\begin{equation}
+  L_{\text{sc+kin}}
+  \equiv -M(\Phi)\,c^2
+          \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}},
+\end{equation}
+and expand the square root using
+\begin{equation}
+  \sqrt{1 - x}
+  = 1 - \frac{1}{2} x - \frac{1}{8} x^2
+    + \mathcal{O}(x^3),
+  \qquad x \equiv \frac{v^2}{c_s^2(\Phi)}.
+\end{equation}
+To 1PN order in \(\varepsilon\) we keep terms up to \(x^2\) and up to
+first order in \(\Phi/c^2\) inside \(x\).  Using
+Eqs.~\eqref{eq:M-expansion-app} and \eqref{eq:cs-expansion-app} we have
+\begin{align}
+  \frac{v^2}{c_s^2(\Phi)}
+  &= \frac{v^2}{c^2}
+     \left[
+       1 - (n-1)\,\frac{\Phi}{c^2}
+       + \mathcal{O}\!\left(\varepsilon^2\right)
+     \right]
+   = \varepsilon_v
+     - (n-1)\,\varepsilon_v \varepsilon_\Phi
+     + \mathcal{O}\!\left(\varepsilon^3\right),
+\end{align}
+so that
+\begin{equation}
+  x^2
+  = \varepsilon_v^2
+    + \mathcal{O}\!\left(\varepsilon^3\right),
+\end{equation}
+and
+\begin{equation}
+  \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}}
+  = 1 - \frac{1}{2} \varepsilon_v
+    + \frac{1}{2}(n-1)\,\varepsilon_v \varepsilon_\Phi
+    - \frac{1}{8} \varepsilon_v^2
+    + \mathcal{O}\!\left(\varepsilon^3\right).
+  \label{eq:sqrt-expanded-app}
+\end{equation}
+
+Multiplying Eqs.~\eqref{eq:M-expansion-app} and
+\eqref{eq:sqrt-expanded-app}, and discarding terms of order
+\(\varepsilon^3\), gives
+\begin{align}
+  L_{\text{sc+kin}}
+  &= -M_0 c^2
+     \left[
+       1 + q\,\varepsilon_\Phi
+     \right]
+     \left[
+       1 - \frac{1}{2}\varepsilon_v
+         + \frac{1}{2}(n-1)\,\varepsilon_v \varepsilon_\Phi
+         - \frac{1}{8}\varepsilon_v^2
+     \right]
+     + \mathcal{O}\!\left(\varepsilon^3\right) \nonumber \\
+  &= -M_0 c^2
+     - M_0 q\,\Phi
+     + \frac{1}{2} M_0 v^2
+     + \frac{1}{8} M_0 \frac{v^4}{c^2}
+     + \frac{1}{2} M_0 \left[ q - (n-1) \right]
+       \frac{\Phi v^2}{c^2}
+     + \mathcal{O}\!\left(\varepsilon^3\right),
+  \label{eq:L-sc-kin-1pn-app}
+\end{align}
+which reproduces Eq.~\eqref{eq:L-hybrid-expanded} when the constant rest
+energy \(-M_0 c^2\) is dropped.  The key points are:
+\begin{itemize}
+  \item The Newtonian kinetic term \(+\tfrac{1}{2} M_0 v^2\) and the
+        1PN kinematic correction \(+\tfrac{1}{8} M_0 v^4 / c^2\) are
+        independent of \(n\) and \(q\).
+  \item The Newtonian potential energy \(-M_0 q\,\Phi\) depends only on
+        \(q\).
+  \item The mixed 1PN term \(\propto \Phi v^2/c^2\) depends on the
+        combination \(\tfrac{1}{2}[q - (n-1)]\), which we identified
+        as \(C_{\text{hyb}}(n,q)\) in Eq.~\eqref{eq:C-hyb-def}.
+\end{itemize}
+
+\subsection{EIH template in the test--mass limit}
+\label{app:1pn-eih-template}
+
+For comparison, consider a nonspinning test mass \(M_0\) moving in the
+static field of a much heavier source of mass \(M\).  In the standard EIH
+gauge the 1PN Lagrangian for the test mass can be written schematically as
+\begin{equation}
+  L_{\text{EIH}}
+  = \frac{1}{2} M_0 v^2
+    - M_0 \Phi
+    + A_{\text{EIH}}\,M_0 \frac{v^4}{c^2}
+    + B_{\text{EIH}}\,M_0 \frac{\Phi v^2}{c^2}
+    + D_{\text{EIH}}\,M_0 \frac{\Phi^2}{c^2}
+    + \cdots,
+  \label{eq:EIH-template-app}
+\end{equation}
+where \(\Phi = -G M / r\), and \(A_{\text{EIH}}\), \(B_{\text{EIH}}\),
+and \(D_{\text{EIH}}\) are numerical coefficients fixed by GR.  The dots
+denote higher order PN terms and, in the multi--body case, additional
+velocity dependent interactions between bodies.
+
+The important part for the present analysis is that:
+\begin{itemize}
+  \item the Newtonian terms have fixed coefficients \(+\tfrac{1}{2}\) and
+        \(-1\) in front of \(M_0 v^2\) and \(M_0 \Phi\), and
+  \item the 1PN mixed term has a fixed coefficient \(B_{\text{EIH}}\).
+\end{itemize}
+In particular, the GR value of \(B_{\text{EIH}}\) is gauge invariant within
+the class of isotropic coordinate systems used in the previous papers, and
+is the same coefficient that appears in the two--body EIH Lagrangian for the
+pairwise terms of the form \(\Phi_{AB} v_A^2\).
+
+\subsection{Matching conditions and solution for \texorpdfstring{$(n,q)$}{(n,q)}}
+\label{app:1pn-matching}
+
+Comparing Eqs.~\eqref{eq:L-sc-kin-1pn-app} and
+\eqref{eq:EIH-template-app}, and recalling that \(L_{\text{flow}}\) does
+not contribute to the single--body Newtonian terms, we obtain two algebraic
+matching conditions at 1PN order:
+\begin{align}
+  \text{(Newtonian potential)}:
+  \qquad & -M_0 q\,\Phi
+           = -M_0 \Phi
+           \quad\Rightarrow\quad
+           q = 1,
+  \label{eq:match-newtonian-app} \\
+  \text{(mixed 1PN term)}:
+  \qquad & C_{\text{hyb}}(n,q)\,M_0 \frac{\Phi v^2}{c^2}
+            + C_{\text{flow}}(n)\,M_0 \frac{\Phi v^2}{c^2}
+            = B_{\text{EIH}}\,M_0 \frac{\Phi v^2}{c^2},
+  \label{eq:match-mixed-app}
+\end{align}
+where we have written the total mixed 1PN coefficient as the sum of the
+hybrid scalar+kinematic contribution \(C_{\text{hyb}}(n,q)\) from
+Eq.~\eqref{eq:C-hyb-def} and a pure flow contribution
+\(C_{\text{flow}}(n)\) arising from integrating out the vector degrees of
+freedom in \(L_{\text{flow}}\).
+
+The Newtonian matching condition \eqref{eq:match-newtonian-app} fixes
+\begin{equation}
+  q = 1,
+\end{equation}
+as in Sec.~\ref{subsec:hybrid-q1}.  With this choice, the mixed 1PN
+coefficient becomes
+\begin{equation}
+  C_{\text{hyb}}(n,q=1)
+  = \frac{2 - n}{2},
+\end{equation}
+and Eq.~\eqref{eq:match-mixed-app} can be rewritten as
+\begin{equation}
+  \frac{2 - n}{2} + C_{\text{flow}}(n) = B_{\text{EIH}}.
+  \label{eq:matching-eq-n}
+\end{equation}
+
+The compressible flow kernel that enters \(L_{\text{flow}}\) is the same
+one used in Paper~III to parameterize the longitudinal and transverse
+response in terms of \(\alpha\).  There, the EIH matching conditions for
+the multi--body velocity dependent terms led to an algebraic relation
+between \(\alpha\) and the fluid parameters that can be expressed as
+\begin{equation}
+  C_{\text{flow}}(n)
+  = f_{\text{flow}}(n),
+  \label{eq:Cflow-function}
+\end{equation}
+for some smooth function \(f_{\text{flow}}\) determined by the choice of
+equation of state and by the longitudinal/transverse mixing.
+
+In practice, the matching is carried out as follows:
+\begin{enumerate}
+  \item Construct the full two--body hybrid Lagrangian, including both
+        scalar+kinematic and flow contributions, as a function of
+        \((n,q)\).
+  \item Expand this Lagrangian to 1PN order using symbolic manipulations
+        (for example, in Mathematica; see the \texttt{fundamental\_fluid\_check.wl}
+        and \texttt{density\_cross\_talk\_derivation.wl} scripts).
+  \item Collect the coefficients of the independent 1PN structures:
+        \(v_A^4\), \(v_B^4\), \(v_A^2 \Phi_B\),
+        \(\mathbf{v}_A \cdot \mathbf{v}_B\),
+        \((\mathbf{v}_A \cdot \mathbf{n}_{AB})
+          (\mathbf{v}_B \cdot \mathbf{n}_{AB})\),
+        and \(\Phi_A \Phi_B\).
+  \item Equate these coefficients to the corresponding EIH coefficients
+        obtained from GR.
+\end{enumerate}
+The resulting system of algebraic equations is overdetermined: there are
+more coefficient conditions than free parameters.  Solving this system
+symbolically yields a unique real solution for \((n,q)\):
+\begin{equation}
+  n = 5,
+  \qquad
+  q = 1.
+\end{equation}
+In particular, the equation \eqref{eq:matching-eq-n} for the mixed
+\(\Phi v^2/c^2\) term is satisfied only at \(n = 5\), because the flow
+contribution \(C_{\text{flow}}(n)\) that reproduces the remaining EIH
+vector coefficients intersects the GR value \(B_{\text{EIH}}\) at that
+single point.
+
+\subsection{Summary}
+\label{app:1pn-summary}
+
+To summarize, the key outcomes of the 1PN expansion and EIH matching are:
+\begin{itemize}
+  \item The Newtonian limit fixes the mass--density exponent to
+        \(q = 1\), ensuring that defect mass is proportional to the
+        local vacuum density.
+  \item The mixed 1PN coefficient \(\propto \Phi v^2/c^2\) depends on the
+        combination
+        \[
+          C_{\text{hyb}}(n,q) + C_{\text{flow}}(n),
+        \]
+        where \(C_{\text{hyb}}(n,q)\) comes from scalar and kinematic
+        effects and \(C_{\text{flow}}(n)\) comes from the vector flow.
+  \item Matching this combination, together with the remaining 1PN
+        coefficients, to the GR EIH values leads to a unique polytropic
+        index \(n = 5\).
+\end{itemize}
+Thus, within the class of polytropic superfluid vacua with power--law
+mass--density relations, the requirement of 1PN consistency with GR
+selects a single fluid: a stiff \(n=5\) vacuum in which defect masses
+track the local density, \(M \propto \rho\).
+
+\section{Scalar--Vector Decomposition and Coefficient Tables}
+\label{app:scalar_vector}
+
+In this appendix we make explicit which pieces of the 1PN coefficients come
+from the scalar (density starvation / variable mass) sector and which come
+from the vector (sound speed / flow) sector.  The goal is to clarify how the
+hybrid scalar+vector dynamics reproduces the Einstein--Infeld--Hoffmann
+(EIH) coefficients and how the effective Lorentzian signature parameter
+\(\alpha^2 = -2/5\) arises from the unique choice \((n,q) = (5,1)\).
+
+Throughout, we work in the two--body case with labels \(A\) and \(B\) and
+relative separation \(\mathbf{r}_{AB}\), and we restrict attention to the
+velocity dependent terms at 1PN order.  The full symbolic derivations are
+contained in the Mathematica scripts
+\texttt{fundamental\_fluid\_check.wl} and
+\texttt{density\_cross\_talk\_derivation.wl}; here we summarize the
+structure of the results.
+
+\subsection{Scalar contributions}
+\label{app:scalar-contributions}
+
+For a single body in a static potential, the scalar sector (variable mass
+with fixed propagation speed) contributes the Lagrangian
+\begin{equation}
+  L_{\text{sc}}
+  = -M(\Phi)\,c^2 \sqrt{1 - \frac{v^2}{c^2}},
+  \qquad
+  M(\Phi) = M_0 \left( 1 + q\,\frac{\Phi}{c^2} \right)
+  + \mathcal{O}\!\left( \frac{\Phi^2}{c^4} \right),
+\end{equation}
+whose 1PN expansion is
+\begin{equation}
+  L_{\text{sc}}
+  = \frac{1}{2} M_0 v^2
+    - M_0 q\,\Phi
+    + \frac{1}{8} M_0 \frac{v^4}{c^2}
+    + \frac{1}{2} M_0 q\,\frac{\Phi v^2}{c^2}
+    + \mathcal{O}\!\left( \frac{\Phi^2}{c^2}, \frac{\Phi v^4}{c^4} \right),
+\end{equation}
+as in Eq.~\eqref{eq:L-scalar-expansion}.
+
+In a two--body system, the potential felt by body \(A\) is
+\(\Phi_A = -G M_B / r_{AB}\) and vice versa.  To leading PN order, the
+scalar sector contributes the following terms to the pairwise Lagrangian:
+\begin{equation}
+  L_{\text{sc}}^{(AB)}
+  = - q \,\frac{G M_A M_B}{r_{AB}}
+    + \frac{1}{2} q \,\frac{G M_A M_B}{r_{AB} c^2}
+      \left( v_A^2 + v_B^2 \right)
+    + \cdots,
+  \label{eq:L-sc-AB}
+\end{equation}
+where the ellipsis denotes terms that are higher order in the PN expansion
+or independent of \(q\).  There is no scalar--sector contribution to the
+purely vector structures \(\mathbf{v}_A \cdot \mathbf{v}_B\) or
+\((\mathbf{v}_A \cdot \mathbf{n}_{AB})
+ (\mathbf{v}_B \cdot \mathbf{n}_{AB})\) at this order.
+
+We can summarize the scalar contributions to the 1PN pairwise coefficients
+in the schematic EIH form
+\begin{equation}
+  L_{AB}^{(1\text{PN})}
+  = \frac{G M_A M_B}{r_{AB} c^2}
+    \left[
+      C_{1} (v_A^2 + v_B^2)
+      + C_{2} \,\mathbf{v}_A \cdot \mathbf{v}_B
+      + C_{3} \,
+        (\mathbf{v}_A \cdot \mathbf{n}_{AB})
+        (\mathbf{v}_B \cdot \mathbf{n}_{AB})
+    \right] + \cdots,
+  \label{eq:L-AB-coeffs-template}
+\end{equation}
+as
+\begin{equation}
+  C_{1}^{\text{(sc)}} = \frac{1}{2} q,
+  \qquad
+  C_{2}^{\text{(sc)}} = 0,
+  \qquad
+  C_{3}^{\text{(sc)}} = 0.
+  \label{eq:C-sc}
+\end{equation}
+
+\subsection{Vector contributions}
+\label{app:vector-contributions}
+
+The vector sector includes both the dependence of the sound speed on the
+potential and the flow--mediated interactions.  The kinematic piece with
+variable sound speed but fixed mass has Lagrangian
+\begin{equation}
+  L_{\text{kin,vec}}
+  = -M_0 c^2 \sqrt{1 - \frac{v^2}{c_s^2(\Phi)}},
+  \qquad
+  \frac{c_s^2(\Phi)}{c^2}
+  = 1 + (n-1)\,\frac{\Phi}{c^2} + \cdots,
+\end{equation}
+with 1PN expansion
+\begin{equation}
+  L_{\text{kin,vec}}
+  = \frac{1}{2} M_0 v^2
+    + \frac{1}{8} M_0 \frac{v^4}{c^2}
+    - \frac{1}{2} (n-1)\,M_0 \frac{\Phi v^2}{c^2}
+    + \cdots,
+\end{equation}
+as in Eq.~\eqref{eq:L-kin-vec-expanded}.  In a two--body system this yields
+kinematic contributions to \(C_1\) of the form
+\begin{equation}
+  C_{1}^{\text{(kin)}}
+  = -\frac{1}{2} (n-1).
+\end{equation}
+
+The flow--induced vector potential \(L_{\text{flow}}\) encodes the overlap
+of the velocity fields sourced by different defects.  In the far field, and
+for slowly moving bodies, the resulting pairwise vector interaction can be
+written in the same coefficient form as Eq.~\eqref{eq:L-AB-coeffs-template}
+with
+\begin{equation}
+  C_{1}^{\text{(flow)}}(n),
+  \qquad
+  C_{2}^{\text{(flow)}}(n),
+  \qquad
+  C_{3}^{\text{(flow)}}(n),
+\end{equation}
+treated as functions of the polytropic index \(n\).  These functions are
+determined by the compressible flow kernel and the longitudinal/transverse
+mixing parameter \(\alpha\) introduced in Paper~III.
+
+The detailed form of \(C_{i}^{\text{(flow)}}(n)\) is somewhat involved and
+was obtained symbolically using the Mathematica scripts; here it is
+sufficient to note that:
+\begin{itemize}
+  \item the same flow kernel reproduces the correct GR coefficients for the
+        purely vector structures \(\mathbf{v}_A \cdot \mathbf{v}_B\) and
+        \((\mathbf{v}_A \cdot \mathbf{n}_{AB})
+          (\mathbf{v}_B \cdot \mathbf{n}_{AB})\) when expressed in terms
+        of \(\alpha\), and
+  \item the dependence of \(C_{1}^{\text{(flow)}}(n)\) on \(n\) is such that
+        EIH matching yields a unique solution at \(n=5\).
+\end{itemize}
+
+Summarizing, the vector contributions decompose schematically as
+\begin{align}
+  C_{1}^{\text{(vec)}}(n)
+  &= C_{1}^{\text{(kin)}}(n) + C_{1}^{\text{(flow)}}(n)
+   = -\frac{1}{2} (n-1) + C_{1}^{\text{(flow)}}(n), \\
+  C_{2}^{\text{(vec)}}(n)
+  &= C_{2}^{\text{(flow)}}(n), \\
+  C_{3}^{\text{(vec)}}(n)
+  &= C_{3}^{\text{(flow)}}(n).
+\end{align}
+
+\subsection{Combined coefficients and comparison with GR}
+\label{app:combined-coeffs}
+
+Combining scalar and vector sectors, the total coefficients in
+Eq.~\eqref{eq:L-AB-coeffs-template} take the form
+\begin{align}
+  C_{1}^{\text{(tot)}}(n,q)
+  &= C_{1}^{\text{(sc)}}(q)
+    + C_{1}^{\text{(vec)}}(n) \nonumber \\
+  &= \frac{1}{2} q
+    - \frac{1}{2} (n-1)
+    + C_{1}^{\text{(flow)}}(n), \label{eq:C1-tot} \\
+  C_{2}^{\text{(tot)}}(n)
+  &= C_{2}^{\text{(vec)}}(n)
+   = C_{2}^{\text{(flow)}}(n), \label{eq:C2-tot} \\
+  C_{3}^{\text{(tot)}}(n)
+  &= C_{3}^{\text{(vec)}}(n)
+   = C_{3}^{\text{(flow)}}(n). \label{eq:C3-tot}
+\end{align}
+The Einstein--Infeld--Hoffmann Lagrangian for two nonspinning point masses
+has fixed GR coefficients
+\begin{equation}
+  C_{1}^{\text{(GR)}},
+  \qquad
+  C_{2}^{\text{(GR)}},
+  \qquad
+  C_{3}^{\text{(GR)}},
+\end{equation}
+which can be read off from the standard EIH expressions.
+
+We can summarize the matching problem in the table below:
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+  term & scalar & vector (kin + flow) & GR target \\
+  \hline
+  \(v_A^2 + v_B^2\) &
+  \(C_{1}^{\text{(sc)}} = \tfrac{1}{2} q\) &
+  \(C_{1}^{\text{(vec)}} = -\tfrac{1}{2} (n-1) + C_{1}^{\text{(flow)}}(n)\) &
+  \(C_{1}^{\text{(GR)}}\) \\
+  \(\mathbf{v}_A \cdot \mathbf{v}_B\) &
+  \(C_{2}^{\text{(sc)}} = 0\) &
+  \(C_{2}^{\text{(vec)}} = C_{2}^{\text{(flow)}}(n)\) &
+  \(C_{2}^{\text{(GR)}}\) \\
+  \((\mathbf{v}_A \cdot \mathbf{n}_{AB})
+    (\mathbf{v}_B \cdot \mathbf{n}_{AB})\) &
+  \(C_{3}^{\text{(sc)}} = 0\) &
+  \(C_{3}^{\text{(vec)}} = C_{3}^{\text{(flow)}}(n)\) &
+  \(C_{3}^{\text{(GR)}}\)
+\end{tabular}
+\end{center}
+
+Imposing the Newtonian limit \(q = 1\) fixes the scalar column.  The
+remaining matching conditions are then
+\begin{align}
+  C_{1}^{\text{(tot)}}(n,q=1)
+  &= C_{1}^{\text{(GR)}}, \\
+  C_{2}^{\text{(tot)}}(n)
+  &= C_{2}^{\text{(GR)}}, \\
+  C_{3}^{\text{(tot)}}(n)
+  &= C_{3}^{\text{(GR)}}.
+\end{align}
+Solving these equations with the explicit \(C_{i}^{\text{(flow)}}(n)\)
+obtained from the compressible flow kernel yields a unique real solution
+\begin{equation}
+  n = 5,
+  \qquad
+  q = 1.
+\end{equation}
+Any other choice of \((n,q)\) fails to reproduce the GR values of the
+velocity dependent coefficients.
+
+\subsection{Relation to the \texorpdfstring{$\alpha$}{alpha} parameter}
+\label{app:alpha-relation}
+
+In Paper~III, the same flow kernel was parameterized directly in terms of
+longitudinal and transverse contributions with a mixing parameter \(\alpha\).
+The hydrodynamic energy functional was written schematically as
+\begin{equation}
+  E_{\text{hydro}}
+  = E_{\perp}
+    + \alpha^2\,E_{\parallel},
+\end{equation}
+where \(E_{\perp}\) and \(E_{\parallel}\) represent transverse and
+longitudinal parts, respectively.  Matching the EIH Lagrangian at 1PN order
+then led to the condition
+\begin{equation}
+  \alpha^2 = -\frac{2}{5},
+\end{equation}
+which was interpreted as an emergent Lorentzian signature in the
+longitudinal sector.
+
+The scalar--vector decomposition used in this paper provides a mapping
+between \(n\), \(q\), and \(\alpha\).  Once \((n,q) = (5,1)\) is fixed by
+the 1PN matching, the same coefficient matching that determines the
+\(C_{i}^{\text{(flow)}}(n)\) can be re-expressed in terms of \(\alpha\).
+Carrying out this reparameterization reproduces the condition
+\(\alpha^2 = -2/5\) automatically.  In other words,
+\begin{itemize}
+  \item the scalar sector fixes the normalization of the potential and the
+        Newtonian limit (\(q=1\)),
+  \item the polytropic index \(n=5\) fixes the relative strength of the
+        scalar and kinematic contributions to the mixed 1PN terms, and
+  \item the flow kernel, when tuned to match the remaining EIH vector
+        coefficients for \(n=5\), implies \(\alpha^2 = -2/5\).
+\end{itemize}
+
+Thus, the scalar--vector decomposition clarifies that the effective
+Lorentzian signature condition \(\alpha^2 = -2/5\) is not an independent
+assumption, but a derived consequence of the unique \((n,q) = (5,1)\) fluid
+that reproduces the full set of 1PN EIH coefficients.
+
+\section{Nonlinear Inflow and Transonic Solution}
+\label{app:inflow}
+
+This appendix collects the details of the nonlinear inflow model used to
+define the acoustic horizon in Sec.~\ref{sec:acoustic_horizon}.  We work
+with a steady, spherically symmetric accretion flow in the stiff
+\(n=5\) vacuum, and we show how the transonic condition arises as a regularity
+condition of the governing ordinary differential equation (ODE).  We also
+outline the numerical method implemented in the
+\texttt{nonlinear\_profile\_solver.wl} script.
+
+\subsection{Governing equations}
+\label{app:inflow-equations}
+
+We consider a steady flow of the superfluid vacuum toward a throat of radius
+\(a\).  The flow is taken to be spherically symmetric on the brane, with
+radial velocity \(u(r) < 0\) (inward) and density \(\rho(r)\).  The basic
+equations are:
+
+\paragraph{Mass conservation.}
+A constant mass flux \(\dot{M}_{\text{flux}}\) implies
+\begin{equation}
+  \dot{M}_{\text{flux}}
+  = 4\pi r^2 \rho(r) u(r)
+  = \text{const},
+  \label{eq:inflow-mass-flux}
+\end{equation}
+which can be solved for \(\rho(r)\) as
+\begin{equation}
+  \rho(r)
+  = \frac{\dot{M}_{\text{flux}}}{4\pi r^2 u(r)}.
+  \label{eq:rho-from-u}
+\end{equation}
+
+\paragraph{Momentum balance (Euler equation).}
+In the absence of viscosity, the radial Euler equation reads
+\begin{equation}
+  u(r) \frac{\mathrm{d}u}{\mathrm{d}r}
+  = -\frac{1}{\rho(r)} \frac{\mathrm{d}P}{\mathrm{d}r}
+    - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r},
+  \label{eq:inflow-euler}
+\end{equation}
+where \(P(\rho)\) is the pressure and \(\Phi_{\text{eff}}(r)\) is an
+effective potential that includes both the long--range monopolar
+contribution \(-G M / r\) and near--throat corrections due to the 3D--to--4D
+transition.  We parametrize
+\begin{equation}
+  \Phi_{\text{eff}}(r)
+  = -\frac{G M}{r} + \Phi_{\text{throat}}(r; a),
+  \label{eq:Phi-eff-def}
+\end{equation}
+where \(\Phi_{\text{throat}}(r; a)\) is a short--range potential that
+decays rapidly for \(r \gg a\) and encodes the finite throat size.  Its
+specific form is not needed for the PN analysis, but is fixed in the
+\texttt{nonlinear\_profile\_solver.wl} script so that the 4D throat geometry
+matches the construction of Paper~V.
+
+\paragraph{Equation of state.}
+The stiff superfluid vacuum is modeled as a polytrope
+\begin{equation}
+  P(\rho) = K \rho^n,
+  \qquad
+  n = 5,
+\end{equation}
+with sound speed
+\begin{equation}
+  c_s^2(\rho) = \frac{\mathrm{d}P}{\mathrm{d}\rho}
+  = K n \rho^{n-1}.
+\end{equation}
+The background density \(\rho_0\) and the constant \(K\) are chosen so that
+\(c_s(\rho_0) = c\) far from the throat.
+
+\subsection{Reduction to a single ODE}
+\label{app:inflow-ode}
+
+Using the barotropic relation \(\mathrm{d}P/\mathrm{d}r
+= c_s^2(\rho)\,\mathrm{d}\rho/\mathrm{d}r\) and eliminating
+\(\mathrm{d}\rho/\mathrm{d}r\) in favor of \(\mathrm{d}u/\mathrm{d}r\) via
+Eq.~\eqref{eq:rho-from-u}, we obtain a first--order ODE for \(u(r)\).
+Differentiating Eq.~\eqref{eq:rho-from-u} gives
+\begin{equation}
+  \frac{\mathrm{d}\rho}{\mathrm{d}r}
+  = \rho(r)
+    \left[
+      -\frac{2}{r}
+      - \frac{1}{u(r)} \frac{\mathrm{d}u}{\mathrm{d}r}
+    \right].
+\end{equation}
+Substituting into \(\mathrm{d}P/\mathrm{d}r\) and then into
+Eq.~\eqref{eq:inflow-euler} yields
+\begin{equation}
+  u \frac{\mathrm{d}u}{\mathrm{d}r}
+  = - c_s^2(\rho)
+    \left[
+      -\frac{2}{r}
+      - \frac{1}{u} \frac{\mathrm{d}u}{\mathrm{d}r}
+    \right]
+    - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r},
+\end{equation}
+or, after rearranging,
+\begin{equation}
+  \left( u^2 - c_s^2 \right) \frac{\mathrm{d}u}{\mathrm{d}r}
+  = u
+    \left[
+      \frac{2 c_s^2}{r}
+      - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r}
+    \right].
+  \label{eq:inflow-ode-basic}
+\end{equation}
+Comparing with Eq.~\eqref{eq:du-dr-generic}, we see that the throat effects
+enter through the effective potential:
+\begin{equation}
+  \mathcal{F}_{\text{throat}}(r; a, n)
+  \equiv -\frac{\mathrm{d}\Phi_{\text{throat}}}{\mathrm{d}r},
+\end{equation}
+so that Eq.~\eqref{eq:inflow-ode-basic} can be written as
+\begin{equation}
+  \left( u^2 - c_s^2 \right) \frac{\mathrm{d}u}{\mathrm{d}r}
+  = u
+    \left[
+      \frac{2 c_s^2}{r}
+      - \frac{\mathrm{d}}{\mathrm{d}r}
+        \left( -\frac{G M}{r} \right)
+      + \mathcal{F}_{\text{throat}}(r; a, n)
+    \right],
+\end{equation}
+which is exactly Eq.~\eqref{eq:du-dr-generic} in the main text.
+
+It is often convenient to recast this ODE in terms of the Mach number
+\(\mathcal{M}(r)\),
+\begin{equation}
+  \mathcal{M}(r) \equiv \frac{|u(r)|}{c_s(\rho(r))},
+\end{equation}
+and a dimensionless radius \(x \equiv r/a\).  In these variables, the ODE
+takes the generic form
+\begin{equation}
+  \left( \mathcal{M}^2 - 1 \right)
+  \frac{\mathrm{d}\log \mathcal{M}}{\mathrm{d}\log x}
+  = \mathcal{G}(x; \mathcal{M}, \Lambda),
+  \qquad
+  \Lambda \equiv \frac{L}{a},
+  \label{eq:Mach-ODE}
+\end{equation}
+where \(\mathcal{G}\) is a dimensionless function that encodes the detailed
+dependence of the effective potential and sound speed on \(x\), and
+\(\Lambda\) is the throat aspect ratio introduced in
+Eq.~\eqref{eq:aspect-ratio}.  The explicit expression for
+\(\mathcal{G}(x; \mathcal{M}, \Lambda)\) used in the numerical work is
+recorded in the comments of \texttt{nonlinear\_profile\_solver.wl}.
+
+\subsection{Sonic point and regularity condition}
+\label{app:inflow-sonic}
+
+The structure of Eq.~\eqref{eq:inflow-ode-basic} (or equivalently
+Eq.~\eqref{eq:Mach-ODE}) implies the existence of a critical (sonic) point
+where \(u^2 = c_s^2\) or \(\mathcal{M} = 1\).  At such a point the
+coefficient of \(\mathrm{d}u/\mathrm{d}r\) (or
+\(\mathrm{d}\mathcal{M}/\mathrm{d}x\)) in the ODE vanishes, and a smooth
+solution requires the right--hand side to vanish as well.  This yields the
+transonic conditions
+\begin{equation}
+  u^2(r_H) = c_s^2(r_H),
+  \qquad
+  \frac{2 c_s^2(r_H)}{r_H}
+  - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r}\bigg|_{r_H}
+  = 0,
+  \label{eq:transonic-conditions-app}
+\end{equation}
+which coincide with Eq.~\eqref{eq:transonic-conditions} when
+\(\Phi_{\text{eff}}\) is split as in Eq.~\eqref{eq:Phi-eff-def}.  In
+dimensionless form this becomes
+\begin{equation}
+  \mathcal{M}(x_H) = 1,
+  \qquad
+  \mathcal{G}(x_H; \mathcal{M}=1, \Lambda) = 0,
+  \label{eq:transonic-dimensionless}
+\end{equation}
+where \(x_H \equiv r_H/a\).
+
+The sonic point is thus determined by a pair of conditions:
+\begin{itemize}
+  \item the Mach number equals unity, \(\mathcal{M} = 1\), and
+  \item the effective driving term in the ODE vanishes at the same
+        radius.
+\end{itemize}
+Physically, the first condition expresses the equality of advection speed
+and signal speed, while the second expresses a balance between pressure
+gradient, gravity, and throat--induced forces at the sonic point.
+
+\subsection{Boundary conditions and numerical method}
+\label{app:inflow-numerics}
+
+The inflow ODE is a two--point boundary value problem.  The natural boundary
+conditions are:
+\begin{itemize}
+  \item \textbf{Outer boundary.}  At large radii \(r \gg r_H\), the flow
+        approaches a subsonic, nearly homogeneous background:
+        \[
+          u(r) \to u_{\infty}, \qquad
+          \rho(r) \to \rho_0, \qquad
+          c_s(r) \to c,
+        \]
+        with \(|u_{\infty}| \ll c\).  In practice, the numerical solution is
+        initialized at a finite outer radius \(r_{\max}\) with
+        \(\mathcal{M}(r_{\max}) \ll 1\).
+  \item \textbf{Inner boundary.}  At the throat radius \(r \approx a\), the
+        flow must match the imposed throat boundary condition.  This is
+        encoded in the choice of \(\Phi_{\text{throat}}(r; a)\) and in the
+        requirement that the mass flux \(\dot{M}_{\text{flux}}\) be finite.
+\end{itemize}
+
+The \texttt{nonlinear\_profile\_solver.wl} script solves the ODE by
+treating the sonic radius \(r_H\) and the mass flux \(\dot{M}_{\text{flux}}\)
+as shooting parameters.  The procedure is:
+\begin{enumerate}
+  \item Choose trial values for \(r_H\) and \(\dot{M}_{\text{flux}}\).
+  \item Impose the sonic conditions \eqref{eq:transonic-conditions-app} at
+        \(r = r_H\) to determine \(u(r_H)\) and \(\rho(r_H)\).
+  \item Integrate the ODE outward from \(r_H\) to \(r_{\max}\) and inward
+        from \(r_H\) to \(r \approx a\), using a standard ODE solver (for
+        example, a Runge--Kutta method).
+  \item Adjust \(r_H\) and \(\dot{M}_{\text{flux}}\) iteratively until the
+        outer solution approaches the desired asymptotic state
+        \((u,\rho) \to (u_{\infty},\rho_0)\) at \(r_{\max}\) and the inner
+        solution remains regular at \(r \approx a\).
+\end{enumerate}
+For \(n=5\) and realistic choices of \(a\), \(\Lambda\), and the asymptotic
+state, this procedure converges to a unique transonic solution in which the
+flow is subsonic at large radii, crosses \(\mathcal{M} = 1\) at a radius
+\(r_H \gtrsim a\), and becomes supersonic as it approaches the throat.
+
+\subsection{Asymptotic behavior}
+\label{app:inflow-asymptotics}
+
+It is useful to record the leading asymptotic behavior of the solution in
+the regimes \(r \gg r_H\) and \(r \approx r_H\).
+
+\paragraph{Far field, \(r \gg r_H\).}
+In the far field, the flow is weak and the density is close to \(\rho_0\),
+so \(c_s \approx c\) and \(|u| \ll c\).  The ODE simplifies to
+\begin{equation}
+  u \frac{\mathrm{d}u}{\mathrm{d}r}
+  \approx - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r}
+  \approx -\frac{\mathrm{d}}{\mathrm{d}r}
+          \left( -\frac{G M}{r} \right),
+\end{equation}
+which integrates to
+\begin{equation}
+  \frac{1}{2} u^2(r)
+  \approx -\Phi(r) + \text{const}
+  = \frac{G M}{r} + \text{const}.
+\end{equation}
+With the boundary condition \(u \to u_{\infty}\) as \(r \to \infty\), the
+far--field velocity behaves as
+\begin{equation}
+  u(r)
+  \approx u_{\infty}
+    - \sqrt{\frac{2 G M}{r}}
+    + \cdots,
+\end{equation}
+showing the expected acceleration into the potential well.
+
+\paragraph{Near sonic point, \(r \approx r_H\).}
+Expanding the ODE \eqref{eq:inflow-ode-basic} around \(r = r_H\) with
+\(u^2(r_H) = c_s^2(r_H)\) and using the transonic conditions
+\eqref{eq:transonic-conditions-app}, one finds that the derivative
+\(\mathrm{d}u/\mathrm{d}r\) remains finite,
+\begin{equation}
+  \frac{\mathrm{d}u}{\mathrm{d}r}\bigg|_{r_H}
+  = \left.
+      \frac{u}{2 c_s^2}
+      \left[
+        \frac{2 c_s^2}{r}
+        - \frac{\mathrm{d}\Phi_{\text{eff}}}{\mathrm{d}r}
+        + \frac{\partial (c_s^2)}{\partial r}
+      \right]
+    \right|_{r = r_H},
+\end{equation}
+where the derivative of \(c_s^2\) with respect to \(r\) is computed via
+\(\mathrm{d}c_s^2/\mathrm{d}r
+= (\mathrm{d}c_s^2/\mathrm{d}\rho)(\mathrm{d}\rho/\mathrm{d}r)\) and
+\(\mathrm{d}\rho/\mathrm{d}r\) is obtained from mass conservation.  This
+regularity is the hallmark of a physically acceptable transonic solution and
+is enforced in the numerical scheme by imposing the sonic conditions at
+\(r_H\).
+
+\subsection{Summary}
+\label{app:inflow-summary}
+
+The key points of this appendix are:
+\begin{itemize}
+  \item Steady, spherically symmetric inflow in the \(n=5\) vacuum reduces
+        to a single nonlinear ODE for the radial velocity \(u(r)\), or
+        equivalently for the Mach number \(\mathcal{M}(r)\).
+  \item This ODE has a critical point where \(u^2 = c_s^2\), and a smooth
+        solution requires the transonic conditions
+        \eqref{eq:transonic-conditions-app} to hold at a radius \(r_H\).
+  \item For physically relevant boundary conditions, there is a unique
+        transonic solution in which the flow is subsonic at large radii and
+        supersonic near the throat, with \(r_H \gtrsim a\).
+\end{itemize}
+These properties underlie the definition of the acoustic horizon in
+Sec.~\ref{sec:acoustic_horizon} and feed directly into the index profiles
+used in the lensing calculations of Sec.~\ref{sec:photon_sphere}.
+
+\section{Throat Impedance and Mass--Radius Scaling}
+\label{app:impedance_scaling}
+
+This appendix summarizes the scaling arguments and numerical checks that
+relate the throat radius \(a\), the acoustic horizon radius \(r_H\), and the
+defect mass \(M\) in the stiff \(n=5\) superfluid vacuum.  The goal is to
+clarify why the model predicts a nearly linear mass--radius relation,
+\(r_H \propto M\), and how small deviations from exact linearity arise
+through the finite impedance of the throat.
+
+The calculations described here are implemented in the Mathematica scripts
+\texttt{4d\_throat\_impedance\_scaling.wl} and
+\texttt{black\_hole\_scaling.wl}.  We do not reproduce the full symbolic and
+numerical code, but we record the key formulas and scaling relations.
+
+\subsection{Throat impedance and mass flux}
+\label{app:impedance-mass-flux}
+
+In the throat picture of Paper~V, each defect is associated with a 4D
+bridge of minimal radius \(a\) that connects the 3D brane to the bulk
+superfluid.  The throat acts as a conduit for mass flux from the brane into
+the bulk.  On the brane, this appears as an effective sink with mass \(M\);
+in the bulk, it appears as a flux tube of cross sectional area
+\(\pi a^2\).
+
+The steady inflow solution of App.~\ref{app:inflow} implies a constant mass
+flux from the brane into the throat,
+\begin{equation}
+  \dot{M}_{\text{flux}}
+  = 4\pi r^2 \rho(r) u(r),
+\end{equation}
+which must match the flux through the throat in the bulk.  The effective
+impedance of the throat can be defined as
+\begin{equation}
+  Z_{\text{th}} \equiv \frac{\Delta P}{\dot{M}_{\text{flux}}},
+  \label{eq:Zth-def}
+\end{equation}
+where \(\Delta P\) is the pressure drop between the brane side and the bulk
+side of the throat.  For a linear, quasi--static response one expects
+\(\Delta P \sim \rho_0 c^2\) and a flux scaling like \(\dot{M}_{\text{flux}}
+\sim \rho_0 c a^2\), so that
+\begin{equation}
+  Z_{\text{th}}
+  \sim \frac{\rho_0 c^2}{\rho_0 c a^2}
+  \sim \frac{c}{a^2}.
+\end{equation}
+More generally, the detailed 4D geometry modifies the prefactor and
+introduces a weak dependence on the aspect ratio \(\Lambda = L/a\), but the
+dominant scaling with \(a\) is expected to be \(Z_{\text{th}} \propto a^{-2}\).
+
+The defect mass \(M\) is controlled by how much of the vacuum is drained
+and stored in the throat and bulk.  A simple dimensional estimate, confirmed
+by the numerical experiments in \texttt{black\_hole\_scaling.wl}, is
+\begin{equation}
+  M \sim \rho_0 a^3 \mathcal{F}(\Lambda),
+  \label{eq:M-a3-schematic}
+\end{equation}
+where \(\mathcal{F}(\Lambda)\) is a dimensionless function that encodes the
+effect of the throat length and bulk boundary conditions.  For a perfectly
+spherical 3D defect one would have \(\mathcal{F} \sim \mathcal{O}(1)\) and a
+strictly cubic scaling \(M \propto a^3\); for a 4D throat embedded in a
+3D brane, the effective exponent is renormalized by the way flux lines
+spread into the bulk.
+
+\subsection{Effective mass--radius exponent}
+\label{app:impedance-exponent}
+
+To quantify this renormalization, the \texttt{4d\_throat\_impedance\_scaling.wl}
+script computes an effective exponent \(k\) defined by
+\begin{equation}
+  k
+  \equiv \frac{\mathrm{d}\log M}{\mathrm{d}\log a},
+  \label{eq:k-def}
+\end{equation}
+using numerical solutions of the inflow and throat matching problem for a
+range of parameter choices.  Operationally, one fits the relation between
+\(M\) and \(a\) over a finite range to a power law \(M \propto a^{k}\) and
+extracts \(k\).
+
+The main findings can be summarized as:
+\begin{itemize}
+  \item For a wide range of aspect ratios \(\Lambda\) and boundary
+        conditions, the effective exponent \(k\) lies in a narrow band
+        around unity,
+        \begin{equation}
+          k \approx 1 \pm \delta_k,
+          \qquad
+          \delta_k \ll 1,
+        \end{equation}
+        with the precise value of \(\delta_k\) depending weakly on
+        \(\Lambda\).
+  \item In the limit of very long throats (\(\Lambda \gg 1\)), the exponent
+        approaches \(k \to 1\) from above or below, depending on the bulk
+        geometry and the imposed outer boundary conditions in the bulk.
+  \item For \(\Lambda \sim \mathcal{O}(1)\), modest deviations from unity
+        appear, reflecting the fact that the brane sees a compact, stubby
+        object whose effective volume and cross section do not scale as a
+        simple power of \(a\).
+\end{itemize}
+
+These results motivate the phenomenological scaling
+\begin{equation}
+  M
+  \simeq \mu_*\,a^{k_*},
+  \qquad
+  k_* \lesssim 1,
+  \label{eq:M-a-kstar}
+\end{equation}
+with \(\mu_*\) and \(k_*\) determined by the microphysics of the throat and
+by the global topology of the bulk.  The near--linear scaling
+\(k_* \approx 1\) is what enables the model to mimic the Schwarzschild
+relation \(r_s = 2 G M / c^2\) over many orders of magnitude while still
+allowing room for small finite--size corrections.
+
+\subsection{Horizon radius and compactness}
+\label{app:impedance-horizon-scaling}
+
+The acoustic horizon radius \(r_H\) is determined by the transonic condition
+\eqref{eq:transonic-conditions-app}, which involves both the gravitational
+potential and the sound speed.  For the \(n=5\) vacuum, the combined
+inflow--impedance calculations in \texttt{black\_hole\_scaling.wl} yield a
+relation of the form
+\begin{equation}
+  r_H
+  \simeq \kappa_* \frac{G M}{c^2}
+       \simeq \kappa_* \frac{G \mu_*}{c^2} a^{k_*},
+  \label{eq:rH-scaling-kstar}
+\end{equation}
+where \(\kappa_*\) is a dimensionless constant of order unity.  For
+\(k_* = 1\) this reduces to a strictly linear relation between \(r_H\) and
+\(M\); for \(k_* \neq 1\) the scaling is only approximately linear over a
+finite range.
+
+The dimensionless compactness parameter
+\(\mathcal{C} = G M/(r_H c^2)\) defined in
+Eq.~\eqref{eq:compactness} is then
+\begin{equation}
+  \mathcal{C}
+  \simeq \frac{1}{\kappa_*} a^{1-k_*}.
+\end{equation}
+For \(k_* = 1\) the compactness is constant and the horizon radius is
+exactly proportional to the mass, as in Schwarzschild.  For \(k_* \neq 1\),
+the compactness acquires a mild dependence on \(a\), which can be interpreted
+as a finite--size correction to the Schwarzschild relation.
+
+Numerical scans in \texttt{black\_hole\_scaling.wl} support the following
+qualitative picture:
+\begin{itemize}
+  \item For large defects (large \(a\) and \(M\)), the effective exponent
+        \(k_*\) approaches unity and the compactness approaches a constant,
+        so the model is effectively indistinguishable from GR at the level
+        of the mass--radius relation and horizon scaling.
+  \item For smaller defects, or for throats with \(\Lambda \sim \mathcal{O}(1)\),
+        the deviations from \(k_* = 1\) become more pronounced, leading to
+        small but potentially observable departures from the Schwarzschild
+        compactness and shadow size.
+\end{itemize}
+
+\subsection{Implications for strong--field observables}
+\label{app:impedance-implications}
+
+The near--linear mass--radius scaling has direct implications for the
+strong--field observables discussed in Sec.~\ref{sec:photon_sphere}.  In
+particular:
+\begin{itemize}
+  \item The photon sphere radius \(r_{\text{ph}}\) inherits the same
+        approximate linear scaling with \(M\),
+        \[
+          r_{\text{ph}}
+          \simeq \kappa_{\text{ph}}(a)\, \frac{G M}{c^2},
+        \]
+        with \(\kappa_{\text{ph}}(a)\) varying only weakly with \(a\) when
+        \(k_* \approx 1\).
+  \item The critical impact parameter \(b_{\text{ph}}\) and hence the
+        shadow radius likewise scale nearly linearly with \(M\), with small
+        corrections governed by the same deviation of \(k_*\) from unity.
+  \item The finite--size parameter \(\epsilon_{\text{fs}}\) introduced in
+        Eq.~\eqref{eq:finite-size-epsilon} can be expressed in terms of the
+        departure of \(k_*\) from unity and the ratio \(a/r_H\), providing a
+        convenient way to parameterize deviations from Schwarzschild
+        behavior in observational fits.
+\end{itemize}
+
+In summary, the throat impedance and inflow calculations show that, in the
+stiff \(n=5\) vacuum, the defect mass \(M\), throat radius \(a\), and
+horizon radius \(r_H\) are tied together by an almost linear mass--radius
+relation.  This explains why the superfluid defect model can so closely
+mimic the Schwarzschild geometry in the strong--field regime while still
+predicting small, controlled deviations that are natural targets for future
+numerical and observational tests.
+
+\section{Lensing from Flow: Numerical Setup}
+\label{app:lensing_numerics}
+
+This appendix summarizes the numerical setup used to compute null-ray
+trajectories, bending angles, and shadow radii in the fixed \(n=5\)
+superfluid vacuum.  The calculations are implemented in the
+\texttt{lensing\_from\_flow.wl} script, which takes as input the radial
+flow and index profiles obtained from the nonlinear inflow solutions and
+outputs ray trajectories and effective photon-sphere parameters.
+
+\subsection{Effective index profile from the inflow}
+\label{app:lensing-index}
+
+The starting point is the spherically symmetric inflow solution
+\(u(r)\), \(\rho(r)\) for the \(n=5\) vacuum, obtained as described in
+App.~\ref{app:inflow}.  From \(\rho(r)\) we compute the local sound speed
+using the polytropic equation of state
+\begin{equation}
+  c_s^2(r)
+  = \frac{\mathrm{d}P}{\mathrm{d}\rho}
+  = K n \rho^{n-1}(r),
+  \qquad n = 5,
+\end{equation}
+with \(K\) chosen so that \(c_s(\rho_0) = c\) in the far field.  The
+effective refractive index is then
+\begin{equation}
+  N(r) \equiv \frac{c}{c_s(r)}.
+  \label{eq:N-of-r-full}
+\end{equation}
+In practice, the script works with a tabulated index profile
+\(\{ r_i, N_i \}\), typically sampled on a logarithmic grid spanning from
+\(r \approx a\) up to an outer radius \(r_{\max} \gg r_H\).  Between grid
+points the profile is interpolated using a smooth spline to ensure that
+\(N(r)\) and its first derivative are continuous.
+
+The radial velocity \(u(r)\) is used primarily to locate the acoustic
+horizon \(r_H\) via the condition \(|u(r_H)| = c_s(r_H)\).  The ray-tracing
+itself is performed in the optical metric determined by \(N(r)\); the
+explicit dependence on \(u(r)\) enters only through its influence on
+\(c_s(r)\) and hence on \(N(r)\).
+
+\subsection{Ray equations and impact parameter}
+\label{app:lensing-ray-eqns}
+
+On the brane, null rays propagate in the effective optical metric
+\begin{equation}
+  \mathrm{d}s_{\text{opt}}^2
+  = -\frac{c^2}{N^2(r)}\,\mathrm{d}t^2
+    + N^2(r)
+      \left( \mathrm{d}r^2
+      + r^2 \mathrm{d}\Omega^2 \right),
+\end{equation}
+as in Eq.~\eqref{eq:optical-metric-spherical}.  Restricting to the
+equatorial plane \(\theta = \pi/2\), the line element reduces to
+\begin{equation}
+  \mathrm{d}s_{\text{opt}}^2
+  = -\frac{c^2}{N^2(r)}\,\mathrm{d}t^2
+    + N^2(r)
+      \left( \mathrm{d}r^2
+      + r^2 \mathrm{d}\phi^2 \right).
+\end{equation}
+The metric admits two Killing vectors, \(\partial_t\) and \(\partial_{\phi}\),
+leading to conserved quantities
+\begin{equation}
+  E_{\text{opt}}
+  = \frac{c^2}{N^2(r)} \frac{\mathrm{d}t}{\mathrm{d}\lambda},
+  \qquad
+  L_{\text{opt}}
+  = N^2(r) r^2 \frac{\mathrm{d}\phi}{\mathrm{d}\lambda},
+\end{equation}
+where \(\lambda\) is an affine parameter.  The ratio
+\begin{equation}
+  b \equiv \frac{L_{\text{opt}}}{E_{\text{opt}}/c}
+\end{equation}
+plays the role of an impact parameter.
+
+The null condition \(\mathrm{d}s_{\text{opt}}^2 = 0\) yields the radial
+equation
+\begin{equation}
+  N^2(r) \left( \frac{\mathrm{d}r}{\mathrm{d}\lambda} \right)^2
+  + N^2(r) r^2 \left( \frac{\mathrm{d}\phi}{\mathrm{d}\lambda} \right)^2
+  = \frac{c^2}{N^2(r)}
+    \left( \frac{\mathrm{d}t}{\mathrm{d}\lambda} \right)^2,
+\end{equation}
+which, after eliminating \(\mathrm{d}t/\mathrm{d}\lambda\) and
+\(\mathrm{d}\phi/\mathrm{d}\lambda\) in favor of \(E_{\text{opt}}\),
+\(L_{\text{opt}}\), and \(b\), can be written as
+\begin{equation}
+  \left( \frac{\mathrm{d}r}{\mathrm{d}\phi} \right)^2
+  = \frac{r^4}{b^2}
+    \left[
+      \frac{N^2(r)}{1 - b^2 N^{-2}(r) / r^2}
+    \right]^2
+  \left[
+    1 - \frac{b^2}{r^2 N^2(r)}
+  \right].
+\end{equation}
+A more convenient form for numerical integration, equivalent to
+Eq.~\eqref{eq:dphi-dr} in the main text, is
+\begin{equation}
+  \frac{\mathrm{d}\phi}{\mathrm{d}r}
+  = \frac{b}{r^2}
+    \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}}.
+  \label{eq:dphi-dr-app}
+\end{equation}
+For a given impact parameter \(b\), this equation describes the angular
+deflection of a ray as it passes through the index profile \(N(r)\).
+
+\subsection{Boundary conditions and integration strategy}
+\label{app:lensing-boundary}
+
+The bending angle for a ray that comes in from infinity, reaches a minimum
+radius \(r_{\min}\), and returns to infinity is
+\begin{equation}
+  \Delta\phi(b)
+  = 2 \int_{r_{\min}}^{\infty}
+      \frac{b}{r^2}
+      \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}}
+      \,\mathrm{d}r
+    - \pi,
+  \label{eq:bending-angle}
+\end{equation}
+where \(r_{\min}\) is defined implicitly by
+\begin{equation}
+  N^2(r_{\min})
+  = \frac{b^2}{r_{\min}^2},
+  \label{eq:rmin-condition}
+\end{equation}
+so that the denominator in Eq.~\eqref{eq:dphi-dr-app} changes sign.  For
+impact parameters smaller than a critical value \(b_{\text{ph}}\), the
+equation \(N^2(r) = b^2 / r^2\) has no real solution outside the horizon,
+and the ray plunges into the throat; this defines the effective shadow.
+
+The numerical integration proceeds as follows:
+\begin{enumerate}
+  \item For a given impact parameter \(b\), solve
+        \(N^2(r) = b^2 / r^2\) for \(r_{\min}\) using a root-finding method
+        (for example, Newton-Raphson), starting from an initial guess near
+        the expected turning point.
+  \item Evaluate the integral in Eq.~\eqref{eq:bending-angle} from
+        \(r = r_{\min}\) up to an outer radius \(r_{\max}\) where
+        \(N(r) \approx 1\) and the contribution to the deflection becomes
+        negligible.  The integral is performed using an adaptive quadrature
+        routine, with the integrand regularized near \(r_{\min}\) if
+        necessary.
+  \item Compute \(\Delta\phi(b)\) and record whether the ray escapes to
+        infinity or is captured by the throat (no turning point outside
+        \(r_H\)).
+\end{enumerate}
+By scanning over \(b\), one obtains the bending-angle function
+\(\Delta\phi(b)\), the critical impact parameter \(b_{\text{ph}}\) at which
+the bending angle diverges (corresponding to the photon sphere), and the
+range of \(b\) for which the ray is captured.
+
+\subsection{Photon sphere and shadow extraction}
+\label{app:lensing-photon-shadow}
+
+The photon sphere radius \(r_{\text{ph}}\) and critical impact parameter
+\(b_{\text{ph}}\) are determined numerically by the conditions
+\begin{equation}
+  N^2(r_{\text{ph}})
+  = \frac{b_{\text{ph}}^2}{r_{\text{ph}}^2},
+  \qquad
+  \frac{\mathrm{d}}{\mathrm{d}r}
+  \left[ \frac{N^2(r)}{r^2} \right]_{r = r_{\text{ph}}}
+  = 0,
+\end{equation}
+which are equivalent to Eqs.~\eqref{eq:photon-sphere-N} and
+\eqref{eq:photon-sphere-slope} in the main text.  In practice, the script
+implements this as a two-parameter root-finding problem in
+\((r_{\text{ph}}, b_{\text{ph}})\), using the spline-interpolated
+\(N(r)\) and its derivative.
+
+Once \(b_{\text{ph}}\) is known, the effective shadow radius seen by a
+distant observer is taken to be
+\begin{equation}
+  b_{\text{sh}} \approx b_{\text{ph}},
+\end{equation}
+with corrections from higher-order terms in the index profile typically
+smaller than the uncertainties associated with the throat parameters
+themselves.
+
+The \texttt{lensing\_from\_flow.wl} script outputs:
+\begin{itemize}
+  \item The numerically determined \(r_{\text{ph}}\) and \(b_{\text{ph}}\)
+        for a given set of throat and inflow parameters.
+  \item The bending-angle function \(\Delta\phi(b)\) over a range of
+        impact parameters, which can be compared with the corresponding
+        Schwarzschild result.
+  \item Sample ray trajectories \(r(\phi)\) illustrating whether rays with
+        given \(b\) escape, orbit near the photon sphere, or are captured
+        by the throat.
+\end{itemize}
+
+\subsection{Limitations and approximations}
+\label{app:lensing-limitations}
+
+Several simplifying assumptions are built into this numerical setup:
+\begin{itemize}
+  \item The flow is assumed to be steady and spherically symmetric on the
+        brane; angular structure and time dependence are neglected.
+  \item The index profile \(N(r)\) is taken to be determined entirely by
+        the radial density profile \(\rho(r)\) in the \(n=5\) vacuum; any
+        additional anisotropies or frequency dependence of the effective
+        index are ignored.
+  \item The rays are traced in the effective optical metric only on the
+        brane; the full 4D throat geometry and bulk propagation are not
+        modeled explicitly.
+\end{itemize}
+Within these approximations, the numerical scheme provides a controlled way
+to connect the hydrodynamic inflow and throat structure to observable
+lensing signatures, and to quantify the deviations from Schwarzschild
+behavior induced by the fixed \(n=5\) superfluid vacuum.
+
+\begin{thebibliography}{99}
+
+\bibitem{Norris:Paper1}
+Norris, T. (2025).
+\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+
+\bibitem{Norris:Paper2}
+Norris, T. (2025).
+\newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+
+\bibitem{Norris:Paper3}
+Norris, T. (2025).
+\newblock \emph{Spin, Vorticity, and N-Body Dynamics in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17822520}{doi:10.5281/zenodo.17822520}.
+
+\bibitem{Norris:Paper4}
+Norris, T. (2025).
+\newblock \emph{Electromagnetic Fields and Charged Defects in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17798569}{doi:10.5281/zenodo.17798569}.
+
+\bibitem{Norris:Paper5}
+Norris, T. (2025).
+\newblock \emph{Brane-Bulk Throat Ontology for a Superfluid Defect Toy Universe}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17822761}{10.5281/zenodo.17822761}.
+
+\end{thebibliography}
+
+\end{document}

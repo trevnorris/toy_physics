@@ -326,17 +326,17 @@ Print["  +----------------------------------+"];
 Print[""];
 
 (* ================================================================== *)
-(* CONTEXT: Updated beta = 1.5 Decomposition Status                   *)
+(* CONTEXT: Updated beta = 3.0 Decomposition Status                   *)
 (* ================================================================== *)
 
 Print["============================================================="];
-Print["CONTEXT: UPDATED beta = 1.5 DECOMPOSITION"];
+Print["CONTEXT: UPDATED beta = 3.0 DECOMPOSITION"];
 Print["============================================================="];
 Print[""];
-Print["Using the RIGOROUS scalar potential expansion, the scalar sector"];
-Print["contributes 50% (3/6) of the required GR precession."];
+Print["Static-source scalar sector contributes 0/6 of the GR precession."];
+Print["All 1PN precession must be supplied by inertia modulation."];
 Print[""];
-Print["Therefore, we require beta = 1.5 (down from 2.5)."];
+Print["Therefore, we require beta = 3.0 (all from inertia; scalar = 0)."];
 Print["  sigma(r) = beta * mu / (cs^2 * r)"];
 Print[""];
 Print["Updated decomposition: beta = kappa_rho + kappa_add + kappa_PV"];
@@ -349,14 +349,14 @@ Print["  |            |       | follows from cavitation mass definition  |"];
 Print["  +------------+-------+------------------------------------------+"];
 Print["  | kappa_add  |  1/2  | DERIVED: this script (dipole KE)         |"];
 Print["  +------------+-------+------------------------------------------+"];
-Print["  | kappa_PV   |   0   | ZERO: No longer required                 |"];
-Print["  |            |       | No exotic 4D geometry needed.            |"];
+Print["  | kappa_PV   |  3/2  | REQUIRED: pressure–volume inertia from   |"];
+Print["  |            |       | compressible 4D throat dynamics          |"];
 Print["  +------------+-------+------------------------------------------+"];
-Print["  | TOTAL      |  1.5  | Required by GR matching                  |"];
+Print["  | TOTAL      |  3.0  | Required by GR matching                  |"];
 Print["  +------------+-------+------------------------------------------+"];
 Print[""];
-Print["Conclusion: The model reproduces GR 1PN precession using only"];
-Print["standard 3D hydrodynamic effects (Density + Added Mass)."];
+Print["Conclusion: Matching GR now requires a nonzero kappa_PV alongside"];
+Print["density and added-mass contributions."];
 Print[""];
 Print["============================================================="];
 
@@ -472,16 +472,4 @@ VERIFIED by two independent methods:
   +----------------------------------+
   |  kappa_add = 1/2  (DERIVED)     |
   +----------------------------------+
-
-=============================================================
-CONTEXT: UPDATED beta = 1.5 DECOMPOSITION
-=============================================================
-
-Using the RIGOROUS scalar potential expansion, the scalar sector
-contributes 50% (3/6) of the required GR precession.
-
-Therefore, we require beta = 1.5 (down from 2.5).
-  sigma(r) = beta * mu / (cs^2 * r)
-
-Updated decomposition: beta = kappa_rho + kappa_add + kappa_PV
 "*)

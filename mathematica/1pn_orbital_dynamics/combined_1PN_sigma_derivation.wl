@@ -23,9 +23,8 @@ Print["D0: Setup complete. Assumptions: μ>0, cs>0, 0≤e<1, etc."];
 (* Spatial inertia factor sigma(r) = β μ / (cs^2 r) *)
 σ[r_] := β μ/(cs^2 r);
 
-(* RIGOROUS SCALAR POTENTIAL *)
-(* The naive expansion gave -1/2. The rigorous expansion gives -3/2. *)
-Φeff[r_] := -μ/r - (3 * μ^2)/(2 * cs^2 * r^2);
+(* Static-source scalar potential is exactly Newtonian *)
+Φeff[r_] := -μ/r;
 
 (* Velocity squared in polar coordinates *)
 Clear[v2];
@@ -35,7 +34,7 @@ v2[r_, rdot_, thetadot_] := rdot^2 + r^2 thetadot^2;
 Lagrangian[r_, rdot_, thetadot_] :=
   1/2 m (1 + σ[r]) v2[r, rdot, thetadot] - m Φeff[r];
 
-Print["D1: Lagrangian defined with RIGOROUS scalar potential (coeff 3/2)."];
+Print["D1: Lagrangian defined with static-source (Newtonian) scalar potential."];
 
 Lexpanded = Simplify[Lagrangian[r, rdot, thetadot]];
 Print["D1: Expanded Lagrangian:"];
@@ -211,21 +210,21 @@ Print["============================================================="];
 Output:
 
 D0: Setup complete. Assumptions: μ>0, cs>0, 0≤e<1, etc.
-D1: Lagrangian defined with RIGOROUS scalar potential (coeff 3/2).
+D1: Lagrangian defined with static-source (Newtonian) scalar potential.
 D1: Expanded Lagrangian:
-    (m*(cs^2*r*(r*rdot^2 + r^3*thetadot^2 + 2*μ) + μ*(r*rdot^2*β + r^3*thetadot^2*β + 3*μ)))/(2*cs^2*r^2)
+    (m*μ)/r + (m*(rdot^2 + r^2*thetadot^2)*(1 + (β*μ)/(cs^2*r)))/2
 D4c: Δφ(r0) to O(1/cs^2):
-    (Pi*(3 + 2*β)*μ)/(cs^2*r0)
+    (2*Pi*β*μ)/(cs^2*r0)
 D4c: C(β) such that Δφ ≈ C(β) π μ/(cs^2 r0):
-    3 + 2*β
-D4c: C0 (β-independent, scalar-only): 3
+    2*β
+D4c: C0 (β-independent, scalar-only): 0
 D4c: Cβ (coefficient multiplying β):  2
 
 =============================================================
 FINAL RESULT
 =============================================================
-Scalar contribution (C0): 3/6 of GR
+Scalar contribution (C0): 0/6 of GR
 Inertia contribution (C_beta): 2
-Required Beta (β): 3/2
+Required Beta (β): 3
 =============================================================
 "*)

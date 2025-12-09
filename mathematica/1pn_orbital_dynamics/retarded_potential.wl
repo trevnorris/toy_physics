@@ -10,6 +10,12 @@ PhiRetarded = -mu / (R * (1 - nDotV / cs));
 (* This represents the 0PN Newtonian constraint *)
 PhiPoisson = -mu / R;
 
+(* In the central-field test-mass limit, the source is static:
+   nDotV -> 0, so PhiRetarded == PhiPoisson exactly. *)
+PhiStatic = Simplify[PhiRetarded /. nDotV -> 0];
+Print["Static-source check: PhiStatic = ", PhiStatic];
+Print["(Should match PhiPoisson = ", PhiPoisson, ")"];
+
 (* 3. Series Expansion of the Retarded Potential *)
 (* We assume v is small compared to cs *)
 PhiRetardedExpanded = Series[PhiRetarded, {cs, Infinity, 2}];
@@ -42,6 +48,8 @@ Print["Does it vanish in static limit (cs->infinity)? ", Limit[PhiLagCorrected, 
 (*"
 Output:
 
+Static-source check: PhiStatic = -(mu/R)
+(Should match PhiPoisson = -(mu/R))
 --- Expansion of the True Retarded Potential (PhiTotal) ---
 -(mu/R) - (mu*nDotV)/(cs*R) - (mu*nDotV^2)/(cs^2*R)
 

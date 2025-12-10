@@ -111,7 +111,7 @@ Print["\n--- PART 5: PSI RATIOS ---"]
 (* Psi is defined via: g_rr = 1 + 2*Psi/c^2
 
    Psi_opt comes from Optical Metric (gamma = 2)
-   Psi_orb comes from Orbital beta (beta = 3/2)
+   Psi_orb comes from Orbital beta (beta = 3)
 *)
 
 (* Optical Psi *)
@@ -121,12 +121,12 @@ Print["\n--- PART 5: PSI RATIOS ---"]
 psiOpticalCoeff = 2;
 
 (* Orbital Psi *)
-(* From Paper I: Sigma = 3/2 * epsilon *)
+(* From Paper I: Sigma = 3 * epsilon (beta = 3) *)
 (* 1 + Sigma = 1 + 2 * Psi / c^2 *)
-(* Psi = 1/2 * Sigma * c^2 = 1/2 * (3/2) * GM/r = 3/4 * GM/r *)
-psiOrbitalCoeff = 3/4;
+(* Psi = 1/2 * Sigma * c^2 = 1/2 * 3 * GM/r = 3/2 * GM/r *)
+psiOrbitalCoeff = 3/2;
 
-ratio = psiOrbitalCoeff / psiOpticalCoeff;
+ratio = psiOrbitalCoeff / psiOpticalCoeff;  (* = 3/4 *)
 
 Print["Psi_Optical Coefficient: ", psiOpticalCoeff]
 Print["Psi_Orbital Coefficient: ", psiOrbitalCoeff]
@@ -151,7 +151,6 @@ Total Precession Coefficient (Factor * 6): 10
 
 --- PART 5: PSI RATIOS ---
 Psi_Optical Coefficient: 2
-Psi_Orbital Coefficient: 3/4
-Ratio (Orbital / Optical): 3/8
+Psi_Orbital Coefficient: 3/2
+Ratio (Orbital / Optical): 3/4
 "*)
-

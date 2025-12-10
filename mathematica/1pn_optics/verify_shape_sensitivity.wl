@@ -67,13 +67,20 @@ Do[
   {i, Length[ratios]}
 ];
 
+(* Hydrodynamic decomposition from Paper I *)
+kappaRho = 1.0;
+kappaPV  = 1.5;                 (* pressure–volume contribution *)
+
 (* Check Precession Deviation for 10% deformation *)
-kappaSphere   = 0.5;
+kappaSphere   = 0.5;            (* added mass for a sphere *)
 kappaDeformed = kappaEllipsoid[1.1]; (* 10% oblate *)
-betaSphere    = 1 + kappaSphere;     (* beta = 1.5 *)
-betaDeformed  = 1 + kappaDeformed;
-precessionFactorSphere   = 3 + 2 betaSphere;   (* = 6.0 *)
-precessionFactorDeformed = 3 + 2 betaDeformed;
+
+betaSphere   = kappaRho + kappaSphere + kappaPV;      (* beta = 3.0 *)
+betaDeformed = kappaRho + kappaDeformed + kappaPV;
+
+(* Scalar sector now gives zero 1PN precession; total comes from 2*beta *)
+precessionFactorSphere   = 2 * betaSphere;            (* = 6.0 *)
+precessionFactorDeformed = 2 * betaDeformed;
 
 Print[""];
 Print["--- SENSITIVITY RESULT ---"];
@@ -97,17 +104,17 @@ Print["--- 2. FLUX TUBE LIMIT (CYLINDER ANALYSIS) ---"];
 kappaCylBroad = 1.0;
 kappaCylEnd   = 0.0;
 
-betaBroad = 1 + kappaCylBroad;
-betaEnd   = 1 + kappaCylEnd;
+betaBroad = kappaRho + kappaCylBroad + kappaPV;
+betaEnd   = kappaRho + kappaCylEnd   + kappaPV;
 
-precessionBroad = 3 + 2 betaBroad; (* = 7 *)
-precessionEnd   = 3 + 2 betaEnd;   (* = 5 *)
+precessionBroad = 2 * betaBroad;    (* = 7 *)
+precessionEnd   = 2 * betaEnd;      (* = 5 *)
 
 Print["If the defect behaves like a Cylinder segment in 3D:"];
-Print["Broadside Motion (kappa = 1.0) -> beta = 2.0 -> Precession Factor = ",
-  precessionBroad, " (Target 6)"];
-Print["End-on Motion    (kappa = 0.0) -> beta = 1.0 -> Precession Factor = ",
-  precessionEnd, " (Target 6)"];
+Print["Broadside Motion (kappa = 1.0) -> beta = ", betaBroad,
+  " -> Precession Factor = ", precessionBroad, " (Target 6)"];
+Print["End-on Motion    (kappa = 0.0) -> beta = ", betaEnd,
+  " -> Precession Factor = ", precessionEnd, " (Target 6)"];
 Print["Conclusion: A cylindrical hydrodynamic profile cannot match the 1PN precession;"];
 Print["the defect must be effectively spherical on the brane."];
 
@@ -258,8 +265,8 @@ Percent Error in Precession: 2.0080028174803624%
 
 --- 2. FLUX TUBE LIMIT (CYLINDER ANALYSIS) ---
 If the defect behaves like a Cylinder segment in 3D:
-Broadside Motion (kappa = 1.0) -> beta = 2.0 -> Precession Factor = 7. (Target 6)
-End-on Motion    (kappa = 0.0) -> beta = 1.0 -> Precession Factor = 5. (Target 6)
+Broadside Motion (kappa = 1.0) -> beta = 3.5 -> Precession Factor = 7. (Target 6)
+End-on Motion    (kappa = 0.0) -> beta = 2.5 -> Precession Factor = 5. (Target 6)
 Conclusion: A cylindrical hydrodynamic profile cannot match the 1PN precession;
 the defect must be effectively spherical on the brane.
 

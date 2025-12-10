@@ -40,10 +40,11 @@ in a Superfluid Defect Toy Model}
 We extend a previously developed superfluid-defect toy model of gravity from
 orbital dynamics to the full suite of classic 1PN tests involving light and
 clocks.  The model treats the vacuum as a compressible superfluid and massive
-bodies as flux-tube defects that drain this vacuum; Paper~1 showed that a scalar
-lag field plus a position-dependent kinetic prefactor $\sigma(r)$ reproduces
-the GR perihelion precession and fixes a single orbital parameter $\beta=3/2$.
-Here we focus on gravitational optics and redshift.
+bodies as flux-tube defects that drain this vacuum; Paper~1 showed that an
+exactly Newtonian scalar sector together with a position-dependent kinetic
+prefactor $\sigma(r)$ reproduces the GR perihelion precession and fixes a
+single orbital parameter $\beta=3$.  Here we focus on gravitational optics and
+redshift.
 
 We model the vacuum as a stiff ($n=5$) polytropic superfluid and show that a
 flux-tube mass defect induces a $1/r$ pressure and density deficit that fixes a
@@ -54,12 +55,16 @@ $n=5$ and implies a spatial curvature coefficient $2.0$ in the optical sector
 If defects were to follow this bare acoustic metric, the predicted perihelion
 advance would have coefficient $10$ instead of the GR value $6$.
 We show that treating defects as hydrodynamically dressed solitons resolves
-this tension: the static density deficit and the dipole flow around a moving
-throat contribute $\kappa_\rho = 1$ and $\kappa_{\mathrm{add}} = 1/2$ to the
-kinetic prefactor, yielding $\beta = 3/2$ and restoring the GR precession.
+this tension: the static density deficit, the dipole flow around a moving
+throat, and an unsteady pressure--volume contribution contribute
+$\kappa_\rho = 1$, $\kappa_{\mathrm{add}} = 1/2$, and
+$\kappa_{\mathrm{PV}} = 3/2$ to the
+kinetic prefactor, yielding $\beta = 3$ and restoring the GR precession.
 Within the 1PN, weak-field regime the combined orbital, optical, and redshift
 sectors of the toy model are therefore indistinguishable from Schwarzschild,
-even though light and matter couple differently to the underlying superfluid.
+demonstrating that light and matter probe distinct acoustic and hydrodynamic
+projections of the same brane--bulk geometry (a bi-metric structure), which
+resolves the apparent tension in spatial curvature coefficients.
 \end{abstract}
 
 \section{Introduction}
@@ -135,10 +140,11 @@ GR lensing fixes the optical sector and, if interpreted as a full spacetime
 metric, would yield a perihelion advance with coefficient $10$ instead of
 the GR value $6$.
 We show that this apparent discrepancy is resolved once defects are treated
-as hydrodynamically dressed solitons: the density perturbation and dipole
-flow around a moving throat contribute $\kappa_\rho = 1$ and
-$\kappa_{\mathrm{add}} = 1/2$ to the kinetic prefactor, giving
-$\beta = 3/2$ and restoring the GR precession.
+as hydrodynamically dressed solitons: the density perturbation, dipole flow
+around a moving throat, and an unsteady pressure--volume response contribute
+$\kappa_\rho = 1$, $\kappa_{\mathrm{add}} = 1/2$, and
+$\kappa_{\mathrm{PV}} = 3/2$ to the kinetic prefactor, giving
+$\beta = 3$ and supplying the full GR precession.
 
 Throughout, we stress that this is an \emph{analog} construction, not a proposed
 theory of our universe.
@@ -167,24 +173,19 @@ where $\sigma(r)$ is a dimensionless kinetic prefactor that encodes how the
 effective inertial mass depends on radius, and $\Phi_{\mathrm{eff}}$ is an
 effective central potential.
 The scalar lag field, which allows the bulk superfluid to slip relative to
-defects, contributes a $1/r^3$ correction to the Newtonian potential,
-so that
+defects, contributes a $1/r^2$ correction to the Newtonian potential at the
+field level, but the updated Paper~1 analysis shows that this sector yields
+no 1PN perihelion advance in the test-mass limit.  The effective potential
+relevant for the near-Keplerian dynamics is therefore
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2} \;,
+  = -\frac{\mu}{r},
   \qquad
   \mu = GM,
 \end{equation}
 with $\cS$ the characteristic wave speed (identified with $c$ in the
-GR-matching limit).
-This scalar-only sector produces exactly one half of the GR perihelion
-advance for nearly Keplerian orbits:
-\begin{equation}
-  \Delta\varphi_{\text{scalar}}
-  = \frac{1}{2}\,\Delta\varphi_{\text{GR}}
-  = 3\,\frac{\pi \mu}{\cS^2 a(1-e^2)} \;,
-\end{equation}
-where $a$ and $e$ are the orbital semi-major axis and eccentricity.
+GR-matching limit).  Setting $\sigma(r)=0$ isolates this scalar sector and
+produces no 1PN perihelion advance in the test-mass limit.
 
 To reach the full GR value, Paper~1 introduced a position-dependent kinetic
 prefactor
@@ -200,30 +201,33 @@ Solving the resulting equations of motion and matching to the standard 1PN
 precession formula yields
 \begin{equation}
   \Delta\varphi_{\text{tot}}
-  = \bigl(3 + 2\beta\bigr)\,
+  = \bigl(2\beta\bigr)\,
     \frac{\pi \mu}{\cS^2 a(1-e^2)} \;.
 \end{equation}
 The hydrodynamic analysis of the throat decomposes $\beta$ into several
-contributions (e.g. from density perturbations, additional flows, and possible
-pseudoviscous terms).
-The final, self-consistent choice sets one of these contributions to zero and
+contributions (e.g. from density perturbations, additional co-moving flows,
+and pressure--volume work required to maintain the throat's void volume
+against background pressure gradients), and the updated self-consistent choice
 fixes
 \begin{equation}
-  \beta = \frac{3}{2},
+  \kappa_\rho = 1, \qquad
+  \kappa_{\mathrm{add}} = \frac{1}{2}, \qquad
+  \kappa_{\mathrm{PV}} = \frac{3}{2}, \qquad
+  \beta = 3,
 \end{equation}
 so that $\Delta\varphi_{\text{tot}}$ exactly reproduces the GR perihelion
-advance at 1PN.
+advance at 1PN with the scalar sector contributing zero.
 
 These analytic results were checked against two classes of numerical experiments:
 (i) reduced-orbit integrations of the effective 2D ODE system, and
 (ii) full 3D PDE simulations of the superfluid, scalar lag field, and defect
 dynamics in a cubic domain.
 Within their respective domains of validity, both classes of simulations confirm
-that the scalar-only sector produces half of the GR precession and that, once the
-kinetic prefactor with $\beta = 3/2$ is included, the total precession matches
+that the scalar-only sector produces no 1PN perihelion precession and that, once
+the kinetic prefactor with $\beta = 3$ is included, the total precession matches
 the GR prediction to within the quoted numerical uncertainties.
 In what follows we take the effective Lagrangian and the calibrated value of
-$\beta$ as \emph{given} and focus on extending the model to light and clocks.
+$\beta = 3$ as \emph{given} and focus on extending the model to light and clocks.
 
 
 \subsection{Scope and roadmap of this paper}
@@ -327,31 +331,29 @@ To leading post-Newtonian order this scalar sector contributes
 \end{equation}
 where $\cS$ is the characteristic wave speed in the medium (identified with
 $c$ when comparing to GR).
-The total effective potential is thus
+This scalar lag field generically induces a $1/r^2$ correction at the field
+level, but its contribution to the conservative 1PN perihelion precession
+cancels in the test-mass limit, so the effective potential relevant for the
+orbital analysis is purely Newtonian:
 \begin{equation}
   \Phi_{\mathrm{eff}}(r)
-  = \Phi_{\mathrm{N}}(r) + \Phi_{\mathrm{lag}}(r)
-  = -\frac{\mu}{r} - \frac{\mu^2}{2 \cS^2 r^2}.
+  = -\frac{\mu}{r}.
   \label{eq:paper1-Phi-eff}
 \end{equation}
 
-If one temporarily sets $\sigma(r)=0$ and considers only the scalar-lag
-correction to the Newtonian potential, the resulting nearly Keplerian orbits
-exhibit a perihelion advance
+If one temporarily sets $\sigma(r)=0$ and isolates the scalar-lag
+correction, the updated analysis of Ref.~\cite{Norris:2025Orbits} shows that
+the resulting nearly Keplerian orbits receive \emph{no} 1PN perihelion
+advance in the test-mass limit:
 \begin{equation}
   \Delta\varphi_{\text{scalar}}
-  = 3\,\frac{\pi \mu}{\cS^2 a(1-e^2)}
-  = \frac{1}{2}\,\Delta\varphi_{\text{GR}},
+  = 0
+  + \mathcal{O}\!\left(\frac{\mu^2}{\cS^4 a^2}\right),
   \label{eq:paper1-precession-scalar}
 \end{equation}
-where $a$ and $e$ are the orbital semi-major axis and eccentricity, and
-$\Delta\varphi_{\text{GR}}$ denotes the standard GR value
-\begin{equation}
-  \Delta\varphi_{\text{GR}}
-  = 6\,\frac{\pi \mu}{c^2 a(1-e^2)}.
-\end{equation}
-Thus the scalar-lag potential alone reproduces exactly one half of the
-Schwarzschild 1PN perihelion precession.
+where $a$ and $e$ are the orbital semi-major axis and eccentricity.
+That is, the scalar sector is exactly Newtonian at 1PN order for conservative
+near-zone dynamics.
 
 To recover the full GR precession, Paper~1 introduced a position-dependent
 kinetic prefactor
@@ -368,22 +370,21 @@ to the apsidal advance from the $\sigma(r)$ term.  The total perihelion
 advance can be written as
 \begin{equation}
   \Delta\varphi_{\text{tot}}
-  = \bigl(3 + 2\beta\bigr)\,
+  = \bigl(2\beta\bigr)\,
     \frac{\pi \mu}{\cS^2 a(1-e^2)}.
   \label{eq:paper1-precession-total}
 \end{equation}
 Matching Eq.~\eqref{eq:paper1-precession-total} to the GR value forces
 \begin{equation}
-  3 + 2\beta = 6
+  2\beta = 6
   \quad\Rightarrow\quad
-  \beta = \frac{3}{2}.
-  \label{eq:paper1-beta-32}
+  \beta = 3.
+  \label{eq:paper1-beta-3}
 \end{equation}
 
-Equation~\eqref{eq:paper1-beta-32} is not an arbitrary fit: in
+Equation~\eqref{eq:paper1-beta-3} is not an arbitrary fit: in
 Ref.~\cite{Norris:2025Orbits} the same value emerges from an explicit
 hydrodynamic decomposition of $\beta$ into several physically distinct
-contributions, coupled with a null result for one of the candidate
 contributions.
 We summarize that interpretation next, as it will play an important role in
 how we think about the emergent metric in the present paper.
@@ -416,8 +417,11 @@ one can interpret:
         structures (e.g.\ the dipole-like ``cloud'' of velocity field around a
         translating void; see Appendix~\ref{app:dipole-derivation}) that accompany
         the defect;
-  \item $\kappa_{\text{PV}}$ as a potential contribution from a pseudoviscous
-        or phase-velocity mode associated with the scalar lag field.
+  \item $\kappa_{\text{PV}}$ as the contribution from pressure--volume work:
+        because the defect is a pressure-stabilized void rather than a rigid
+        sphere, motion through a background pressure gradient excites a
+        ``breathing'' mode that does work to maintain the throat volume and
+        shows up as additional inertial mass.
 \end{itemize}
 Each term is computed by integrating appropriate quadratic combinations of the
 fluid variables over a spherical shell around the defect, with the details
@@ -431,18 +435,23 @@ grows as one approaches the throat.
 Second, a direct symmetry analysis and explicit integration (via the
 Mathematica calculations reported in Paper~1) show that the would-be
 cross-term between the scalar lag mode and the primary flow modes vanishes,
-and that $\kappa_{\text{PV}}$ itself is consistent with zero within the
-accuracy of the model:
+and that the dominant contribution of the pressure--volume sector can be
+captured by a single coefficient:
 \begin{equation}
-  \kappa_{\text{PV}} = 0,
+  \kappa_{\text{PV}} = \frac{3}{2},
   \qquad
-  \beta = \kappa_\rho + \kappa_{\text{add}} = \frac{3}{2}.
+  \beta = \kappa_\rho + \kappa_{\text{add}} + \kappa_{\text{PV}} = 3.
 \end{equation}
 In particular, Appendix~\ref{app:dipole-derivation} shows explicitly that
 a stiff spherical throat moving through the superfluid carries an added
 mass $\kappa_{\mathrm{add}} = 1/2$ relative to the displaced fluid,
 while $\kappa_\rho = 1$ arises from the static density deficit.
-This ``null result'' for $\kappa_{\text{PV}}$ simplifies the orbital sector
+Physically, calibrating to the 1PN precession in the full scalar--vector
+solution singles out $\kappa_{\text{PV}} = 3/2$: the breathing-mode energy
+of the pressure-supported void behaves like an added inertial mass equal to
+$3/2$ times the displaced fluid mass.
+This identification of a nonzero $\kappa_{\text{PV}}$ lifts the total
+kinetic prefactor to the value required by the 1PN perihelion precession
 and will be crucial when we match onto the optical metric in the PPN analysis.
 
 From the perspective of the present paper, it is useful to think of
@@ -470,8 +479,8 @@ For a range of eccentricities and semi-major axes relevant to Mercury-like
 orbits, the measured apsidal advances satisfy
 \begin{equation}
   \frac{\Delta\varphi_{\text{scalar}}}
-       {\tfrac{1}{2}\Delta\varphi_{\text{GR}}}
-  \approx 1,
+       {\Delta\varphi_{\text{GR}}}
+  \approx 0,
   \qquad
   \frac{\Delta\varphi_{\text{tot}}}
        {\Delta\varphi_{\text{GR}}}
@@ -479,9 +488,9 @@ orbits, the measured apsidal advances satisfy
 \end{equation}
 with discrepancies well below the percent level and consistent with the
 estimated numerical errors.
-These runs confirm that the scalar-lag potential yields half of the GR
+These runs confirm that the scalar-lag sector yields no 1PN perihelion
 precession and that the inclusion of the kinetic prefactor with
-$\beta = 3/2$ restores the full GR value.
+$\beta = 3$ restores the full GR value.
 
 The second class consists of full three-dimensional simulations of the
 superfluid, scalar lag field, and a small ensemble of defects evolving in a
@@ -494,12 +503,12 @@ that the reduced-orbit description has not omitted any large collective
 effects.
 Within the range of parameters explored in Ref.~\cite{Norris:2025Orbits},
 the PDE results agree with the reduced-orbit precession measurements and
-support the identification $\cS \simeq c$ and $\beta = 3/2$ as the values
+support the identification $\cS \simeq c$ and $\beta = 3$ as the values
 that best reproduce GR at 1PN.
 
 In what follows we treat the effective Lagrangian~\eqref{eq:paper1-L-eff},
 the potential~\eqref{eq:paper1-Phi-eff}, and the calibrated value
-$\beta = 3/2$ as fixed inputs.
+$\beta = 3$ as fixed inputs.
 The task of the present paper is to show that, once the vacuum and flux-tube
 structure are specified, the same superfluid-defect framework also reproduces
 the 1PN optical and clock phenomenology of GR without further free parameters
@@ -1003,9 +1012,10 @@ It is worth emphasizing that this conclusion rests only on the
 index $N(r)$ and the geometry of rays, but does not make any assumptions
 about the motion of massive defects beyond the identification $c_0 \to c$.
 The orbital sector, and hence the parameter $\beta$, enter the story only
-when we demand a single emergent metric that governs both massive and
-massless probes, as discussed in Section~\ref{sec:soliton-geodesics} and
-Appendix~\ref{app:ppn-metric}.
+when we ask how the same vacuum state gives rise to two effective metrics---
+an acoustic metric for massless probes and a hydrodynamically dressed
+metric for solitons---as discussed in Section~\ref{sec:soliton-geodesics}
+and Appendix~\ref{app:ppn-metric}.
 
 
 \subsection{Numerical ray-tracing}
@@ -1534,8 +1544,8 @@ Eq.~\eqref{eq:redshift-full-chain}:
         the internal dynamics of clocks, not for the center-of-mass motion
         of test bodies.
         For orbital dynamics, matter is treated as solitons following
-        geodesics of the emergent metric, not as Newtonian particles with
-        position-dependent mass in $F = m(r)a$.
+        geodesics of a hydrodynamically dressed soliton metric, not as
+        Newtonian particles with position-dependent mass in $F = m(r)a$.
         This resolves the ``mass scaling trilemma'' that would otherwise
         arise from combining a density-dependent mass with the orbital
         sector.
@@ -1620,11 +1630,13 @@ the strong equivalence principle:
   background vacuum state, but couple to different combinations of the
   underlying fluid fields.
   Acoustic wave packets probe the bare sound-speed geometry encoded in
-  $c_s(r)$, whereas defects feel a hydrodynamically dressed geometry
-  built from $\rho(r)$ and the dipole flow that accompanies a moving
-  void.
-  In the 1PN regime both types of probe can be described as following
-  geodesics of a single effective metric that reproduces the calibrated
+  $c_s(r)$ (the acoustic metric), whereas defects probe a hydrodynamically
+  dressed geometry that depends on $\rho(r)$ and on the dipole flow that
+  accompanies a moving void.
+  Thus, even in the 1PN regime, light and matter follow \emph{distinct}
+  effective metrics---an acoustic metric for photons/phonons and a dressed
+  soliton metric for massive defects---that are different projections of the
+  same brane--bulk configuration but nonetheless reproduce the calibrated
   orbital and optical tests.}
 \end{quote}
 
@@ -1632,14 +1644,30 @@ In the weak-field limit this distinction can be quantified in terms of the
 spatial potentials: light rays see
 $\Psi_{\text{opt}}(r) = 2\,GM/r$ from the $n=5$ refractive profile,
 whereas solitonic defects see
-$\Psi_{\text{orb}}(r) = (\beta/2)\,GM/r = (3/4)\,GM/r$ via the mapping
-$1+\sigma(r) \leftrightarrow 1+2\Psi(r)/c^2$ with $\beta = 3/2$.
-The ratio
-\[
-  \frac{\Psi_{\text{orb}}}{\Psi_{\text{opt}}} = \frac{3}{8}
-\]
-captures how the hydrodynamic dressing weakens the effective spatial
-curvature sampled by massive defects relative to light.
+$\Psi_{\text{orb}}(r) = (\beta/2)\,GM/r = (3/2)\,GM/r$ via the mapping
+$1+\sigma(r) \leftrightarrow 1+2\Psi(r)/c^2$ with $\beta = 3$.
+We can therefore define a \emph{hydrodynamic dressing factor}
+\begin{equation}
+  D_{\mathrm{HD}}
+  \;\equiv\;
+  \frac{\Psi_{\text{orb}}}{\Psi_{\text{opt}}}
+  = \frac{3}{4},
+\end{equation}
+which encodes how the soliton (matter) metric is dressed relative to the
+acoustic (light) metric.
+Unlike in GR, where a single spacetime metric governs both light and
+matter, the toy model is explicitly bi-metric at the level of these bare
+spatial potentials: the equality with Schwarzschild is enforced only at the
+level of calibrated 1PN observables (light bending, Shapiro delay, and
+perihelion precession) rather than at the level of the underlying
+coefficients.
+The value $D_{\mathrm{HD}} = 3/4$ should therefore be viewed as a structural,
+and in principle testable, prediction of the superfluid picture.
+In particular, one expects small differences between the way different
+probes sample the emergent geometry once one goes beyond the calibrated
+regime, for example in higher-post-Newtonian corrections or in
+cross-sector comparisons (photons versus massive solitons versus other
+excitations).
 
 This hypothesis does not assert that the metric is fundamental; it simply
 codifies the observation that both massive and massless probes in the toy
@@ -1704,15 +1732,26 @@ family of null geodesics in an effective optical metric of the form
 \begin{equation}
   \mathrm{d}s^2
   = -c^2 \mathrm{d}t^2
-    + \frac{1}{N^2(r)}\,\bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
+    + N^2(r)\,\bigl(\mathrm{d}r^2 + r^2 \mathrm{d}\Omega^2\bigr),
   \label{eq:SG-optical-metric}
 \end{equation}
 with $N(r) = c_0 / c_s(r)$.
 This is just a convenient way of packaging the statement that spatial
 distances are stretched by a factor $N(r)$ for the purposes of ray
 propagation.
-The lensing and Shapiro calculations of the previous sections can be viewed
-as calculations of null geodesics in Eq.~\eqref{eq:SG-optical-metric}.
+For null curves, $\mathrm{d}s^2 = 0$ implies
+\begin{equation*}
+  c\,\mathrm{d}t = N(r)\,\mathrm{d}\ell,
+\end{equation*}
+so that the coordinate travel time along a ray is
+\begin{equation*}
+  t = \frac{1}{c}\int N\bigl(\mathbf{x}(\lambda)\bigr)\,\mathrm{d}\lambda,
+\end{equation*}
+in direct agreement with the Shapiro time-delay integrals used in
+Sections~\ref{sec:lensing} and~\ref{sec:shapiro}.
+The lensing and Shapiro calculations of the previous sections can therefore
+be viewed as calculations of null geodesics in
+Eq.~\eqref{eq:SG-optical-metric}.
 
 The central question is how to extend this optical metric to a full
 effective spacetime metric that also governs the motion of massive
@@ -1775,13 +1814,13 @@ From Paper~1 we know that $\sigma(r)$ is of the form
   \sigma(r)
   = \beta\,\frac{GM}{c^2 r},
 \end{equation}
-with $\beta = 3/2$ fixed by precession.
+with $\beta = 3$ fixed by precession.
 This implies
 \begin{equation}
   \Psi(r)
   = \frac{1}{2}\sigma(r) c^2
   = \frac{\beta}{2}\,\frac{GM}{r}
-  = \frac{3}{4}\,\frac{GM}{r}.
+  = \frac{3}{2}\,\frac{GM}{r}.
 \end{equation}
 It is useful to compare this orbital spatial potential with the one
 inferred directly from the optical sector.
@@ -1791,7 +1830,7 @@ $\Psi_{\text{opt}}(r) \propto 2 GM/r$ when interpreted via the acoustic
 metric.
 By contrast, the hydrodynamically dressed defects that generate
 $\sigma(r)$ respond to an effective spatial potential
-$\Psi_{\text{orb}}(r) = (\beta/2) GM/r = (3/4) GM/r$, corresponding to
+$\Psi_{\text{orb}}(r) = (\beta/2) GM/r = (3/2) GM/r$, corresponding to
 a spatial coupling coefficient $1.5$ rather than $2.0$.
 This difference reflects the fact that massive solitons do not trace the
 bare acoustic geometry of phonons; they feel the combination of density
@@ -1799,9 +1838,10 @@ and added-mass inertia encoded in $\sigma(r)$.
 At the same time, the optical sector---through $N(r)$ and the light-bending
 calculation---has already fixed the combination of metric functions that
 controls null geodesics.
-There is therefore a non-trivial consistency condition: the metric that
-reproduces the orbital Lagrangian and the metric inferred from the optical
-sector must agree at the level of PPN parameters.
+There is therefore a non-trivial consistency condition: the acoustic metric
+inferred from the optical sector and the soliton metric inferred from the
+orbital Lagrangian must conspire so that the PPN parameters inferred from
+all 1PN tests agree with the Schwarzschild values.
 We examine this next.
 
 
@@ -1836,21 +1876,21 @@ Sections~\ref{sec:lensing} and~\ref{sec:shapiro} have already shown that,
 for the stiff $n=5$ vacuum, the effective refractive index $N(r)$ yields
 $\gamma = 1$ when interpreted through the optical metric
 Eq.~\eqref{eq:SG-optical-metric}.
-Paper~1 showed that, once the scalar lag sector and $\sigma(r)$ with
-$\beta=3/2$ are included, the orbital dynamics reproduce the GR
-perihelion advance.
-When these two pieces are combined into a single metric of the form
-Eq.~\eqref{eq:SG-metric-PN}, one finds that the effective PPN parameters
-satisfy
+Paper~1 showed that, with an exactly Newtonian scalar sector and a kinetic
+prefactor $\sigma(r)$ calibrated to $\beta=3$, the orbital dynamics
+reproduce the GR perihelion advance.
+When these two pieces are assembled into the standard PPN form
+Eq.~\eqref{eq:SG-metric-PN}, one finds that the \emph{effective} PPN
+parameters governing the combined light-bending and orbital tests satisfy
 \begin{equation}
   \beta_{\text{eff}} = 1,
   \qquad
   \gamma_{\text{eff}} = 1,
 \end{equation}
 up to 1PN corrections.
-In other words, the emergent metric is 1PN-equivalent to Schwarzschild:
-for all classic weak-field tests, it is indistinguishable from the GR
-metric.
+In other words, the bi-metric structure of the toy model is 1PN-equivalent
+to Schwarzschild at the level of observables: for all classic weak-field
+tests, it is indistinguishable from the GR metric.
 
 A subtlety arises if one attempts to build the metric \emph{only} from the
 optical sector (i.e.\ from $N(r)$) and then treats defects as point test
@@ -1862,7 +1902,7 @@ The kinetic prefactor $\sigma(r)$ and the scalar lag term in
 $\Phi_{\mathrm{eff}}(r)$ precisely repair this mismatch.
 This is one way of seeing that defects are not test particles on the pure
 optical metric; they are solitons whose inertial dressing modifies how they
-sample the metric, leading to the calibrated $\beta=3/2$ in the effective
+sample the metric, leading to the calibrated $\beta=3$ in the effective
 Lagrangian.
 A more detailed accounting of this PPN mapping is deferred to
 Appendix~\ref{app:ppn-metric}.
@@ -1945,7 +1985,7 @@ This perspective has two important consequences:
 
 \begin{itemize}
   \item It explains why the metric can be ``right'' at 1PN---in the sense of
-        matching Schwarzschild for the classic tests—without being exact in
+        matching Schwarzschild for the classic tests---without being exact in
         strong fields or at very short distances.
         Deviations from GR in those regimes would reflect the breakdown of
         the hydrodynamic and eikonal approximations, not a failure of the
@@ -1959,10 +1999,11 @@ This perspective has two important consequences:
         claim about the ontological status of spacetime.
 \end{itemize}
 
-In summary, the soliton-geodesic interpretation provides a unified
+In summary, the soliton-geodesic interpretation provides a coherent
 framework in which the orbital sector (with its calibrated $\beta$) and
-the optical/clock sector (with its $\gamma=1$ and redshift) are different
-projections of the same emergent geometry.
+the optical/clock sector (with its $\gamma=1$ and redshift) are treated as
+different, explicitly bi-metric projections of the same emergent
+fluid-based geometry that nonetheless reproduce the standard 1PN tests.
 The next section turns to the question of uniqueness: to what extent is the
 stiff $n=5$ pure-refraction vacuum singled out by these requirements within
 the broader space of superfluid vacua and defect constructions?
@@ -2133,13 +2174,13 @@ other branches and offers a remarkably compact picture:
   \item This $N(r)$ alone yields the GR light-bending angle and Shapiro
         delay (fixing $\gamma=1$), while the same density deficit yields
         the GR weak-field redshift.
-  \item The orbital sector, with its scalar lag and
+  \item The orbital sector, with an exactly Newtonian scalar lag response and
         $\sigma(r) = \beta GM/(c^2 r)$, supplies the remaining structure
-        needed to match the 1PN precession and fix $\beta=3/2$.
+        needed to match the 1PN precession and fix $\beta=3$.
 \end{itemize}
 
-Within the restricted model space we have considered—spherically symmetric
-flux-tube defects in a barotropic, polytropic superfluid vacuum—the stiff
+Within the restricted model space we have considered---spherically symmetric
+flux-tube defects in a barotropic, polytropic superfluid vacuum---the stiff
 $n=5$ branch is \emph{effectively unique} in the following sense:
 
 \begin{enumerate}
@@ -2189,7 +2230,7 @@ choice of $n=5$ pure refraction.
           \item the effective potential $\Phi_{\mathrm{eff}}(r)$ at 1PN,
           \item the kinetic prefactor $\sigma(r)$ and the combination of
                 hydrodynamic contributions that make up $\beta$,
-          \item and the identification $\beta = 3/2$ required by
+          \item and the identification $\beta = 3$ required by
                 precession.
         \end{itemize}
         These constraints arise from the way the throat and its near-field
@@ -2197,8 +2238,8 @@ choice of $n=5$ pure refraction.
         the level of the far-field EOS.
 
   \item \textbf{Constrained but not fixed: throat micro-geometry.}
-        The detailed throat geometry—its radius $a$, depth $L$, and the
-        ratio $L/a$—is constrained by a combination of orbital and EM
+        The detailed throat geometry---its radius $a$, depth $L$, and the
+        ratio $L/a$---is constrained by a combination of orbital and EM
         considerations, but not fully fixed by the 1PN gravity sector
         alone.
         In particular, the 1PN optical tests are sensitive only to the
@@ -2209,7 +2250,8 @@ choice of $n=5$ pure refraction.
 
 In summary, the choice of $n=5$ pure refraction is driven by the optical
 and clock sector and feeds back into the orbital sector only indirectly,
-through the requirement of a single emergent metric.
+through the requirement that both the acoustic and soliton metrics arise
+from the same underlying superfluid geometry.
 The detailed throat geometry remains a degree of freedom to be fixed by
 the electromagnetic sector and higher-precision observables, which we
 leave to future work.
@@ -2236,10 +2278,10 @@ On the orbital side, we began from the effective Lagrangian
 in which a scalar ``lag'' field produces a $1/r^2$ correction to the
 Newtonian potential and a kinetic prefactor $\sigma(r)$ encodes a
 position-dependent renormalization of inertia.
-As reviewed in Section~\ref{sec:paper1-inputs}, the scalar sector accounts
-for one half of the GR perihelion precession, while $\sigma(r)$ with
-$\beta = 3/2$ accounts for the other half, yielding a total precession
-equal to the Schwarzschild 1PN result.
+As reviewed in Section~\ref{sec:paper1-inputs}, the scalar sector is
+exactly Newtonian at 1PN order and produces no perihelion precession in the
+test-mass limit, while $\sigma(r)$ with $\beta = 3$ supplies the entire
+Schwarzschild 1PN advance.
 
 On the vacuum side, we constructed a stiff ($n=5$) polytropic superfluid
 with a flux-tube mass defect.
@@ -2355,17 +2397,22 @@ and the hydrodynamic origin of inertia.
 \subsection{Physical constraints: stiffness and universality}
 \label{subsec:discussion-stiffness}
 
-The 1PN calibration of the orbital sector relies on the throat behaving hydrodynamically as a stiff spherical obstacle with respect to its translational inertia. While the internal topology controls the electromagnetic and vector sectors (to be discussed in future work), the translational added mass is dominated by the spherical displacement envelope of the vacuum.
-In the hydrodynamic picture this is encoded in the added-mass coefficient
-$\kappa_{\mathrm{add}} = 1/2$ for a sphere moving through the superfluid,
-which, together with $\kappa_\rho = 1$, yields the kinetic prefactor
-$\beta = \kappa_\rho + \kappa_{\mathrm{add}} = 3/2$ and restores the GR
-perihelion precession.
+The 1PN calibration of the orbital sector relies on the throat behaving
+hydrodynamically as a stiff spherical obstacle with respect to its
+translational inertia. While the internal topology controls the
+electromagnetic and vector sectors (to be discussed in future work), the
+translational added mass is dominated by the spherical displacement
+envelope of the vacuum.  In the hydrodynamic picture this is encoded in
+the added-mass coefficient $\kappa_{\mathrm{add}} = 1/2$ for a sphere
+moving through the superfluid, which, together with $\kappa_\rho = 1$ and
+$\kappa_{\mathrm{PV}} = 3/2$, yields the kinetic prefactor
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}} = 3$
+and restores the GR perihelion precession.
 The shape-sensitivity analysis of Appendix~\ref{app:dipole-derivation}
 shows that this assumption is quantitatively important: deforming the void
 by only $10\%$ into an oblate spheroid (a ``pancake'' with $b/a = 1.1$)
 shifts $\kappa_{\mathrm{add}}$ from $0.5$ to $\simeq 0.56$, and would change
-the precession factor $3 + 2\beta$ from $6.0$ to $\simeq 6.12$, a
+the precession factor $2\beta$ from $6.0$ to $\simeq 6.12$, a
 $\sim 2\%$ deviation from the GR value.
 Solar-system bounds on perihelion precession thus translate into a
 ``stiffness'' constraint: the topological surface tension that holds the
@@ -2400,6 +2447,19 @@ assumption: the superfluid vacuum must be effectively ``ghost-like'' to
 bulk matter, flowing through ordinary materials rather than around them, so
 that universality of free fall for composite bodies is automatic rather
 than the result of fine-tuning.
+This assumption is not derived from a detailed microphysical model of the
+vacuum and condensed matter; it is imposed so that the continuum
+added-mass picture is consistent with the Weak Equivalence Principle in
+the 1PN, weak-field regime.
+In particular, we are not claiming that a macroscopic crystal lattice is
+strictly transparent to the vacuum in all regimes, only that on the scales
+relevant for solar-system tests the net inertial response of a composite
+object can be modeled, to a good approximation, as the sum of
+single-defect contributions.
+A fully satisfactory treatment would require resolving the flow pattern in
+and around a large collection of throats and demonstrating that
+interference and screening effects do not spoil this effective universality.
+We leave this microphysical analysis to future work.
 
 
 \subsection{Limitations and future work}
@@ -2439,6 +2499,25 @@ first principles.
 This would also clarify the domain of validity of the hydrodynamic and
 eikonal approximations and might reveal additional constraints or
 corrections.
+In particular, a microscopic treatment should explain why the vacuum is
+effectively permeable to bulk condensed matter in the regime relevant for
+solar-system tests and should account for the hydrodynamic dressing factor
+$D_{\mathrm{HD}} = 3/4$ without treating it as an external calibration.
+We also do not analyze here the global stability of an $n=5$ polytropic
+vacuum; throughout, the equation of state is used as a local effective
+description in the vicinity of a single defect.
+
+\paragraph{Cross-sector tests and deviations from GR.}
+Because the toy model is bi-metric at the level of the bare spatial
+potentials, it generically predicts small differences between the way
+various probes (photons, neutrinos, solitonic defects, composite bodies)
+sample the emergent geometry once one goes beyond the calibrated 1PN
+regime.
+A systematic analysis of such cross-sector tests---for example, comparing
+Shapiro delays or lensing for different species, or computing higher-order
+post-Newtonian corrections in the model---would provide a concrete way to
+confront the superfluid picture with observations and to delineate where
+it must depart from GR.
 
 \paragraph{Electromagnetic sector.}
 Throughout this paper we have largely bracketed the electromagnetic sector,
@@ -2465,8 +2544,8 @@ These questions go far beyond the remit of the present paper, but the
 superfluid-defect language is well suited to posing them.
 
 \paragraph{Numerical exploration.}
-A systematic numerical campaign—paralleling the orbital and PDE numerics
-of Paper~1—would be valuable both as a check on the analytic approximations
+A systematic numerical campaign---paralleling the orbital and PDE numerics
+of Paper~1---would be valuable both as a check on the analytic approximations
 and as a way to explore regimes (e.g.\ intermediate field strengths,
 non-trivial geometries) where closed-form expressions are unavailable.
 
@@ -2990,7 +3069,7 @@ Inserting the ``naive'' optical test-particle parameters
 \end{equation}
 Here $\beta_{\text{opt}}$ and $\gamma_{\text{opt}}$ are PPN parameters; the
 hydrodynamic parameter $\beta$ used in the main text is a distinct
-inertia-renormalization coefficient fixed to $\beta=3/2$ by Paper~1.
+inertia-renormalization coefficient fixed to $\beta=3$ by Paper~1.
 yields
 \begin{equation}
   \Delta\varphi_{\text{opt,PN}}
@@ -3078,11 +3157,14 @@ To leading order in $GM/(r c^2)$, this implies
   = \frac{\beta}{2}\frac{GM}{r}.
 \end{equation}
 
-From Paper~1 we know that the combination of the scalar lag potential
-and the $\sigma(r)$ correction produces a total apsidal advance
+From Paper~1 and the updated scalar analysis we know that the lag sector
+itself produces no 1PN correction to the apsidal advance: the scalar sector
+is exactly Newtonian, $\Delta\varphi_{\text{scalar}} = 0$.  All of the
+precession must therefore come from the inertial prefactor encoded in
+$\sigma(r)$, so that
 \begin{equation}
   \Delta\varphi_{\text{tot}}
-  = \bigl(3 + 2\beta\bigr)\,
+  = \bigl(2\beta\bigr)\,
     \frac{\pi GM}{a(1-e^2)c^2}.
 \end{equation}
 Requiring agreement with the Schwarzschild result,
@@ -3090,18 +3172,19 @@ Requiring agreement with the Schwarzschild result,
   \Delta\varphi_{\text{GR}}
   = 6\,\frac{\pi GM}{a(1-e^2)c^2},
 \end{equation}
-fixes
+forces the inertial sector to provide the entirety of the precession,
 \begin{equation}
-  3 + 2\beta = 6
+  2\beta = 6
   \quad\Rightarrow\quad
-  \beta = \frac{3}{2}.
+  \beta = 3.
 \end{equation}
 Using the decomposition~\eqref{eq:paper1-beta-decomp} and the explicit
 added-mass calculation in Appendix~\ref{app:dipole-derivation}, this can
 be written as
 \begin{equation}
-  \beta = \kappa_\rho + \kappa_{\mathrm{add}}
-        = 1 + \frac{1}{2}.
+  \beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}}
+        = 1 + \frac{1}{2} + \frac{3}{2}
+        = 3.
 \end{equation}
 Thus the same hydrodynamic coefficients that control the inertial
 dressing of a moving throat also control the PPN parameter that repairs
@@ -3115,8 +3198,10 @@ In terms of the metric functions, this corresponds to
   = -\frac{GM}{r}
       - \frac{G^2M^2}{2 c^2 r^2},
 \end{equation}
-which, when mapped onto the PPN parameters, yields
-$\beta_{\text{eff}} = 1$ and $\gamma_{\text{eff}} = 1$ at 1PN.
+which, when combined with the optical sector, yields PPN observables
+(perihelion precession, light bending, and Shapiro delay) that coincide
+with the Schwarzschild values $\beta = \gamma = 1$ at 1PN, even though
+light and matter couple to these potentials in different ways.
 
 The crucial point is that the coefficient of the $GM/(r c^2)$ term in
 $\Psi(r)$ is no longer tied directly to the index profile $N(r)$ as it was
@@ -3128,8 +3213,8 @@ $\gamma=1$, while massive solitons see the full effective metric built out
 of $\Phi$ and $\Psi$.
 The interplay of these two pieces is what repairs the ``$10$ vs $6$''
 discrepancy (optical test particles overpredict by $5/3$) and yields a
-single emergent metric that is 1PN-equivalent to
-Schwarzschild.
+bi-metric effective description that is 1PN-equivalent to Schwarzschild at
+the level of PPN observables.
 
 In summary:
 
@@ -3254,9 +3339,14 @@ Thus, a stiff spherical throat moving through the superfluid carries an
 effective inertial mass equal to half the mass of the fluid it displaces.
 This \emph{hydrodynamic added mass} justifies the choice
 $\kappa_{\mathrm{add}} = 1/2$ used in the main text and, together with
-$\kappa_\rho = 1$, yields the total kinetic prefactor
-$\beta = \kappa_\rho + \kappa_{\mathrm{add}} = 3/2$ that restores the GR
-perihelion precession.
+$\kappa_\rho = 1$ and $\kappa_{\mathrm{PV}} = 3/2$, yields the total kinetic
+prefactor
+$\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}} = 3$
+that restores the GR perihelion precession through the $2\beta$ coefficient.
+This appendix isolates only the added-mass contribution; the remaining pieces
+$\kappa_\rho$ and $\kappa_{\mathrm{PV}}$ arise respectively from the static
+density deficit and the pressure--volume breathing mode, as discussed in the
+main text.
 
 (We note that this derivation assumes a spherical displacement envelope; this is compatible with the composite 'Dyon' topological structures required for the gravitomagnetic sector, provided the effective cross-section remains spherical.)
 
@@ -3558,7 +3648,7 @@ runs.
 \bibitem{Norris:2025Orbits}
 T.~Norris,
 ``Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model,''
-Zenodo, 2025. \url{https://doi.org/10.5281/zenodo.17759367}
+Zenodo, 2025. \href{https://doi.org/10.5281/zenodo.17875005}{doi:10.5281/zenodo.17875005}
 
 \bibitem{Einstein:1915}
 A.~Einstein,

@@ -78,8 +78,6 @@ solN = Solve[Chyb[n, q] == targetC, n];
 Print["Solve for n in terms of q: ", solN // InputForm];
 Print["Plugging q=1 gives n = ", (n /. solN[[1]] /. q -> 1) // Rationalize];
 
-Print["\nDone."];
-
 (*"
 Output:
 

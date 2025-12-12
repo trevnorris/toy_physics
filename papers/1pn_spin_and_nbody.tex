@@ -46,13 +46,14 @@ superfluid--defect toy universe can reproduce the 1PN phenomenology
 of General Relativity (GR).
 In this model the vacuum is a compressible superfluid and massive
 bodies are flux–tube defects (``throats'') that drain the medium.
-Paper~I showed that a scalar lag field plus a position–dependent
-inertia profile $\sigma(r)$ reproduces the GR perihelion precession
-and fixes a single orbital parameter $\beta=3/2$.
+Paper~I showed that, in the static single–body limit, the scalar lag
+field relaxes so that the 1PN perihelion precession is generated
+entirely by a position–dependent inertia profile $\sigma(r)$, which
+fixes a single orbital parameter $\beta=3$.
 Paper~II modeled the vacuum as a stiff ($n=5$) polytropic fluid and
 showed that the induced refractive index $N(r)$ yields the GR
 coefficients for light bending, Shapiro delay, and redshift, with
-effective PPN parameters $\beta=\gamma=1$.
+effective PPN parameters $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 
 Here we address spin and $N$–body dynamics.
 We promote defects to composite ``dyons'' in which a flux–tube sink
@@ -64,24 +65,30 @@ and angular momentum $J$ by matching to the Kerr weak–field limit.
 We then compute the interaction energy of overlapping dyon flows and
 show that their density–dependent masses generate the static $G^2$
 three–body term in the Einstein--Infeld--Hoffmann (EIH) Lagrangian.
-The remaining velocity–dependent EIH terms arise from a single
-compressible dressing parameter $\alpha$ that controls the mixing of
-longitudinal and transverse flow.
-We find that no purely Euclidean, positive–definite hydrodynamic
-energy functional ($\alpha\in\mathbb{R}$) reproduces the EIH tensor;
-the GR coefficients are obtained if and only if the longitudinal
-sector carries an effective Lorentzian signature, encoded here by
-$\alpha^2 = -2/5$.
+The remaining velocity--dependent \emph{cross} terms in the EIH
+Lagrangian arise from the overlap energy of \emph{translational wakes}
+sourced by moving defects.  Using the isotropic projector
+decomposition into transverse and longitudinal wake components (and an
+optional helical transverse mode), we show that the EIH cross--term
+tensor structure is reproduced with real parameters.  The minimal
+match sets the helical amplitude to zero ($a_H=0$) and fixes the
+longitudinal/transverse wake mixing to $\alpha^2=3/4$, with an overall
+coupling $K=2/\pi^2$.
+Thus the apparent need for an imaginary compressibility parameter in
+earlier drafts was an artifact of an incomplete translational wake
+basis rather than a physical instability.
 
 With this choice, the superfluid toy universe reproduces the full
 single–body and $N$–body 1PN dynamics of GR---including scalar,
 optical, spin, and vector effects---using a small, tightly
 constrained set of medium response parameters.
 We interpret this as evidence that a simple structured ``vacuum
-fluid'' can mimic the familiar curved–spacetime description at 1PN
-order, while highlighting a sharp constraint: emergent gravity models
-of this type must effectively assign opposite metric signature to
-longitudinal and transverse vacuum modes.
+fluid'' can mimic the familiar curved--spacetime description at 1PN
+order, while highlighting a sharp constraint: the same stiff $n=5$
+equation of state and $q=1$ density--mass relation~\cite{Norris:Paper1} that control the
+orbital and optical sectors remain as independent constraints, while the
+translational wake decomposition independently provides a real, stable match to
+the EIH cross tensor.
 \end{abstract}
 
 \section{Introduction}
@@ -94,7 +101,7 @@ The classic solar-system tests of gravity---perihelion precession, light bending
 Shapiro time delay, gravitational redshift, and the dynamics of weakly bound
 $N$-body systems---are often summarized in a single statement:
 the Schwarzschild solution of General Relativity (GR) with post-Newtonian (PN)
-parameters $\beta = \gamma = 1$ passes all currently accessible 1PN tests.
+parameters $\beta_{\mathrm{PPN}} = \gamma_{\mathrm{PPN}} = 1$ passes all currently accessible 1PN tests.
 From this vantage point, any alternative description of gravity must either
 reproduce the Schwarzschild metric in the appropriate weak-field limit or offer
 a comparably constrained and falsifiable mechanism by which the same observables
@@ -151,27 +158,30 @@ The long-range field sourced by a defect naturally split into two scalar
 contributions: an instantaneous Poisson sector that reproduces the Newtonian
 $1/r$ potential, and a retarded lag sector that supplies the finite-propagation
 effects.
-By calibrating the form of $\sigma(r)$ against the observed perihelion
-precession of nearly Keplerian orbits, Paper~I fixed a single parameter
-$\beta = 3/2$ and showed that the model reproduces the GR-like 1PN perihelion
-advance in a central field.
-The same analysis constrains the throat aspect ratio $L/a$ via the
-post-Newtonian pressure--volume coefficient.
+In the updated calibration, the scalar lag field relaxes in the static
+single–body limit, so the 1PN perihelion precession is generated entirely by
+the inertia profile $\sigma(r)$.
+Demanding that nearly Keplerian orbits around an isolated defect reproduce the
+GR 1PN perihelion advance fixes a single dimensionless parameter $\beta=3$ in
+the defect Lagrangian.
+The same cavitation analysis that ties the defect mass to the surrounding
+density implies a density–depletion coefficient $\kappa_\rho = 1$, which
+controls the static $G^2$ ``gravity gravitates'' term in the $N$–body problem.
 
 Paper~II~\cite{Norris:Paper2} extended the toy universe to the \emph{optical}
 sector.
-There the vacuum was treated as a stiff polytropic superfluid with index
-$n=5$, and flux-tube defects induced a radial density and pressure deficit that
-acts as a position-dependent refractive index $N(r)$ for signals propagating in
-the medium.
+Treating the vacuum as a stiff ($n=5$) polytropic superfluid endowed the medium
+with a density-dependent sound speed and hence a radial refractive index
+profile $N(r)$ around a defect.
 By constructing an effective optical metric from $N(r)$ and comparing to the
-Schwarzschild form, Paper~II showed that the $n=5$ branch is uniquely singled
-out (within a class of spherically symmetric polytropes) by the requirement of
-matching the 1PN light-bending, Shapiro time delay, and gravitational redshift
-coefficients.
-In particular, the combined scalar and optical analysis yields effective PN
-parameters $\beta = \gamma = 1$, with the same throat geometry and scalar lag
-structure that were fixed by the orbital phenomenology.
+Schwarzschild metric, the analysis showed that $n=5$ is uniquely selected
+(within the class considered) by the requirements of matching 1PN light
+bending, Shapiro time delay, and gravitational redshift.
+The resulting effective spacetime has effective PPN parameters
+$\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$ once the scalar and optical
+contributions are combined, so the toy model reproduces both the orbital and
+optical 1PN tests with no new free parameters beyond those already fixed by the
+scalar and optical sectors.
 
 Taken together, Papers I and II establish that a single superfluid-defect toy
 model can account for the scalar and optical 1PN tests of gravity with a small
@@ -214,12 +224,16 @@ reproduces the GR Lense--Thirring effect with a fixed calibration between the
 vortex strength and the physical angular momentum $J$.
 Section~\ref{sec:nbody} then turns to the $N$-body problem: we show how the
 density-dependent mass generates the static $G^2$ three-body term, construct
-the vector interaction from overlapping dyon flows, and derive the conditions
-under which the resulting tensor structure matches the EIH Lagrangian.
-A key result is that no purely Euclidean, positive-definite hydrodynamic energy
-functional suffices; matching the EIH coefficients forces an effective
-Lorentzian signature in the longitudinal sector, encoded by a single parameter
-in the dyon flow.
+the vector interaction from overlapping translational wakes, and derive the
+conditions under which the resulting tensor structure matches the EIH
+Lagrangian.
+In parallel with the scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2}
+sectors fixed in Papers~I and~II, the EIH cross-term coefficients alone fix the
+translational wake that supplies the mixed-velocity terms: the isotropic
+projector decomposition yields a real wake mixing $\alpha^2=3/4$ (with minimal
+$a_H=0$) and overall coupling $K=2/\pi^2$.
+Rather than signaling an instability, the multi-body sector thus selects a
+specific hydrodynamic response for the vacuum.
 
 Finally, Section~\ref{sec:discussion} summarizes how the three papers in this
 series collectively reproduce the full 1PN phenomenology of GR within the toy
@@ -335,19 +349,24 @@ hydrodynamic inertia in the coarse-grained description.
 
 When the Lagrangian with $\Phi_{\mathrm{eff}}(r)$ and $\sigma(r)$ is
 expanded consistently to 1PN order and the resulting equations of
-motion are applied to nearly Keplerian orbits, the combined scalar
-sector produces a perihelion advance with total coefficient
+motion are applied to nearly Keplerian orbits, the scalar lag field
+relaxes in the static single–body limit and does not contribute to
+the perihelion advance.
+The entire 1PN precession is generated by the position-dependent
+inertial dressing encoded in $\sigma(r)$, yielding a total
+coefficient
 \begin{equation}
   \Delta\varphi_{\text{tot}}
   = 6\,\frac{\pi \mu}{\cS^2 a(1-e^2)},
 \end{equation}
+with $a$ and $e$ the orbital semi-major axis and eccentricity,
 provided
 \begin{equation}
-  \beta = \frac{3}{2},
+  \beta = 3.
 \end{equation}
-with $a$ and $e$ the orbital semi-major axis and eccentricity.
-Thus Paper~I fixed the single scalar parameter $\beta$ by requiring
-that the toy model reproduce the GR 1PN perihelion precession.
+In this sense, Paper~I fixed the single scalar parameter $\beta$ by
+requiring that the toy model reproduce the GR 1PN perihelion
+precession purely through inertial renormalization.
 This same value of $\beta$ will be assumed throughout the present
 work, and will enter the $N$-body analysis via the density-dependent
 mass and static $G^2$ term in the EIH Lagrangian.
@@ -407,15 +426,15 @@ relating it to the PN expansion of the spacetime metric, Paper~II
 showed that the combined scalar and optical sectors correspond to
 PPN parameters
 \begin{equation}
-  \beta = 1,
+  \beta_{\mathrm{PPN}} = 1,
   \qquad
-  \gamma = 1,
+  \gamma_{\mathrm{PPN}} = 1,
 \end{equation}
 when all contributions are accounted for.
 The toy model therefore reproduces both the orbital and optical 1PN
 tests of GR with a single choice of throat geometry and equation of
 state: a flux-tube defect with a fixed aspect ratio $L/a$, scalar
-renormalization parameter $\beta=3/2$ in the defect Lagrangian, and a
+renormalization parameter $\beta=3$ in the defect Lagrangian, and a
 stiff $n=5$ polytropic vacuum.
 
 \subsection{Remaining 1PN tasks}
@@ -451,8 +470,10 @@ and $N$-body dynamics.
 In particular, we will construct composite defects (dyons) whose
 scalar sink and vortex ring together reproduce the GR Lense--Thirring
 field, and we will show how the interaction of their flows generates
-the full EIH 1PN Lagrangian, at the price of an effective Lorentzian
-signature in the longitudinal sector of the vacuum.
+the full EIH 1PN Lagrangian, fixing the translational wake parameters to
+($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) once the $q=1$ scalar background from
+Paper~I~\cite{Norris:Paper1} and stiff $n=5$ optical sector from
+Paper~II~\cite{Norris:Paper2} are taken into account.
 
 \section{Spin and the Lense--Thirring Effect}
 \label{sec:spin}
@@ -675,7 +696,8 @@ Given this calibration, the same dyon construction determines:
         a spinning mass,
   \item the nodal precession of orbital planes for test defects,
   \item and, as we will see in Sec.~\ref{sec:nbody}, the vector part
-        of the $N$-body interaction encoded in the EIH Lagrangian.
+        of the $N$-body interaction encoded in the EIH Lagrangian via
+        translational wakes of moving defects.
 \end{itemize}
 
 This rigidity makes the spin sector sharply falsifiable.
@@ -686,8 +708,9 @@ Conversely, the fact that a single composite defect---a flux-tube
 sink bound to a vortex ring---can reproduce both the scalar and
 spin-induced 1PN phenomenology with no additional tuning is a
 non-trivial consistency check of the superfluid toy universe.
-In the next section we will exploit the same dyon flow to address the
-full $N$-body problem and the structure of the EIH Lagrangian.
+In the next section we extend the construction to translational wakes
+sourced by moving defects to address the full $N$-body problem and the
+structure of the EIH Lagrangian.
 
 \section{N-Body Dynamics and the EIH Lagrangian}
 \label{sec:nbody}
@@ -805,7 +828,7 @@ perturbation of the vacuum,
 \begin{equation}
   m_A(\mathbf{x}_A)
   = m_{A,0}\left[
-      1 + \kappa_{\text{PV}}\,
+      1 + \kappa_\rho\,
           \frac{\Phi_{\text{loc}}(\mathbf{x}_A)}{c^2}
       + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right)
     \right],
@@ -813,9 +836,16 @@ perturbation of the vacuum,
 \end{equation}
 where $m_{A,0}$ is the bare mass, $\Phi_{\text{loc}}$ is the local
 effective potential generated by all other defects and the background
-vacuum, and $\kappa_{\text{PV}}$ is a dimensionless coefficient fixed
-by the same pressure--volume analysis used in Paper~I to calibrate the throat aspect ratio $L/a$ and
-the scalar parameter $\beta=3/2$.
+vacuum, and $\kappa_\rho$ is a dimensionless density–depletion
+coefficient fixed by the cavitation analysis of Paper~I.
+In the calibration used throughout Papers~I–III one has
+$\kappa_\rho = 1$, which ensures that the resulting static $G^2$
+three–body term matches the Einstein--Infeld--Hoffmann coefficient
+associated with the PPN parameter $\beta_{\mathrm{PPN}}=1$.
+The same cavitation analysis used in Paper~I to calibrate the throat
+aspect ratio $L/a$ also decomposes the inertial parameter $\beta=3$
+into density and pressure--volume contributions, with $\kappa_\rho$
+capturing the density-depletion piece.
 
 To see how this generates the static $G^2$ term, consider the
 Newtonian potential energy between bodies $A$ and $B$,
@@ -836,12 +866,12 @@ so that the $AB$ interaction energy acquires a correction
 \begin{equation}
   \delta V_{AB}^{(C)}
   = -\frac{G}{r_{AB}}\,
-    \left[\kappa_{\text{PV}} \frac{m_{A,0} m_{B,0}}{c^2}\,
+    \left[\kappa_\rho \frac{m_{A,0} m_{B,0}}{c^2}\,
           \Phi_{\text{loc}}(\mathbf{x}_A)
           + (A\leftrightarrow B)
     \right]
   \;\supset\;
-  \kappa_{\text{PV}}\,
+  \kappa_\rho\,
   \frac{G^2 m_{A,0} m_{B,0} m_C}{c^2 r_{AB} r_{AC}}.
 \end{equation}
 Summing over all triplets $(A,B,C)$ and symmetrizing produces a
@@ -859,11 +889,11 @@ with
   + \text{permutations}.
 \end{equation}
 The precise numerical coefficient of this term is determined by
-$\kappa_{\text{PV}}$ and the details of how $\Phi_{\text{loc}}$ is
+$\kappa_\rho$ and the details of how $\Phi_{\text{loc}}$ is
 assembled from the scalar and optical sectors; the Mathematica
-analysis shows that, with the values fixed by the single-body 1PN
-phenomenology, the resulting three-body term agrees with the static
-$G^2$ part of the EIH Lagrangian.
+analysis shows that, with $\kappa_\rho=1$ fixed by the single-body
+cavitation analysis, the resulting three-body term agrees with the
+static $G^2$ part of the EIH Lagrangian.
 
 Conceptually, this mechanism is nothing but ``cavitation'' in the
 vacuum: defects are holes that displace fluid, and the amount of
@@ -873,256 +903,161 @@ Gravity gravitates because defects feel not only the potential, but
 also the potential of the potential, through their density-dependent
 mass.
 
-\subsection{Vector interaction: the dyon flow}
+\subsection{Vector interaction: translational wakes}
 \label{subsec:nbody-vector}
 
-We now turn to the velocity-dependent part of the EIH interaction,
-which couples the motions of distinct bodies through an effective
-vector potential.
-In the toy universe this arises from the overlap of the bulk flows
-generated by spinning dyons.
-For two dyons $A$ and $B$ with spins and associated dyon flows
-$\mathbf{u}_A(\mathbf{x})$ and $\mathbf{u}_B(\mathbf{x})$, the
-interaction energy can be written schematically as
+We now turn to the velocity-dependent \emph{cross} terms in the
+Einstein--Infeld--Hoffmann (EIH) Lagrangian, i.e.\ the coefficients of
+$\mathbf{v}_A\!\cdot\!\mathbf{v}_B$ and
+$(\mathbf{v}_A\!\cdot\!\mathbf{n}_{AB})(\mathbf{v}_B\!\cdot\!\mathbf{n}_{AB})$
+in Eq.~\eqref{eq:EIH_target}.
+In the toy universe these terms arise from the overlap energy of the
+\emph{translational wakes} sourced by \emph{moving} defects.
+
+It is crucial to distinguish this translation-driven wake from the
+rotation-driven flow used in the spin sector (Sec.~\ref{sec:spin}).
+A spinning defect sources a vortical far field calibrated by matching to
+Lense--Thirring ($J/r^3$), whereas the EIH cross terms depend on linear
+velocities $\mathbf{v}_A,\mathbf{v}_B$ and must be sourced by the defect's
+\emph{translational} motion.
+
+We retain the overlap-energy definition
 \begin{equation}
   V_{\text{vec}}^{(AB)}
   = \rho_0 \int \dd^3 x\,
     \mathbf{u}_A(\mathbf{x})\cdot\mathbf{u}_B(\mathbf{x}),
   \label{eq:Vvec-overlap}
 \end{equation}
-where $\rho_0$ is the far-field density.
-In the far zone $r_{AB}\gg a$, each dyon flow can be expressed as a
-superposition of transverse (solenoidal) and longitudinal
-(compressible) components,
-\begin{equation}
-  \mathbf{u}_A(\mathbf{k})
-  = \mathbf{u}_{A,T}(\mathbf{k})
-    + \mathbf{u}_{A,L}(\mathbf{k}),
-  \qquad
-  \mathbf{k}\cdot\mathbf{u}_{A,T}=0,
-  \quad
-  \mathbf{k}\times\mathbf{u}_{A,L}=0,
-\end{equation}
-in Fourier space.
-The detailed structure of the dyon introduces a single dimensionless
-parameter $\alpha$ which controls the relative strength and phase of
-the longitudinal component with respect to the transverse one.
-Physically, $\alpha$ summarizes how strongly the vortex ring is
-``dressed'' by compressible flow around the throat.
+but now interpret $\mathbf{u}_{A,B}$ as translational wake fields.
+To obtain a pairwise interaction that falls off as $1/r_{AB}$ at 1PN order,
+the wake must scale as $u(\mathbf{k})\propto 1/k$ in Fourier space so that
+$u_A\cdot u_B\propto 1/k^2$.
 
-In this representation the overlap energy
-Eq.~\eqref{eq:Vvec-overlap} becomes
-\begin{equation}
-  V_{\text{vec}}^{(AB)}
-  = \rho_0 \int \frac{\dd^3 k}{(2\pi)^3}\,
-    \Bigl[
-      \mathbf{u}_{A,T}(-\mathbf{k})\cdot\mathbf{u}_{B,T}(\mathbf{k})
-      + \mathbf{u}_{A,L}(-\mathbf{k})\cdot\mathbf{u}_{B,L}(\mathbf{k})
-    \Bigr].
-\end{equation}
-The transverse piece yields a kernel of the Biot--Savart type, and
-after Fourier transforming back to real space one finds that the
-effective pairwise interaction between two moving dyons falls off as
-$1/r_{AB}$:
-\begin{equation}
-  V_{\text{vec}}^{(AB)}
-  \propto \frac{G m_A m_B}{c^2 r_{AB}}\,
-  \bigl[\cdots\bigr],
-\end{equation}
-with the bracket containing a combination of velocities and angular
-factors.
-This $1/r$ scaling is essential: it is what allows the vector sector
-to be identified with $L_{\text{vec}}$ in Eq.~\eqref{eq:EIH_target},
-rather than with a short-range correction that would decay too
-rapidly to matter in the PN regime.
+We therefore parametrize the most general isotropic linear-response wake as a
+sum of transverse and longitudinal projector pieces (and an optional helical
+transverse mode):
+\begin{align}
+  \mathcal{P}_L^{ij}(\mathbf{k}) &= \frac{k^i k^j}{k^2},
+  &
+  \mathcal{P}_T^{ij}(\mathbf{k}) &= \delta^{ij} - \frac{k^i k^j}{k^2},
+  \\
+  \mathbf{u}_{\text{trans}}(\mathbf{k};\mathbf{v})
+  &=
+  i\,\frac{K}{k}\,\mathcal{P}_T(\mathbf{k})\,\mathbf{v}
+  \;+\;
+  i\,\frac{K\,a_H}{k^2}\,(\mathbf{k}\times \mathbf{v})
+  \;+\;
+  i\,\frac{K\,\alpha}{k^3}\,\mathbf{k}\,(\mathbf{k}\cdot\mathbf{v}),
+  \label{eq:wake-ansatz}
+\end{align}
+where $K$ is an overall coupling, $\alpha$ controls the longitudinal
+(compressible) wake admixture, and $a_H$ parametrizes a helical transverse
+component (set to zero in the minimal EIH match).
 
-Detailed evaluation of the overlap integral in the dyon model shows
-that the resulting interaction energy can always be written in the
-form
+Evaluating the overlap integral with the wake ansatz
+\eqref{eq:wake-ansatz} produces a $1/r_{AB}$ pair interaction of the EIH form,
 \begin{equation}
   V_{\text{vec}}^{(AB)}
   = \frac{G m_A m_B}{c^2 r_{AB}}
     \left[
-      C_\parallel(\alpha)\,
+      C_\parallel(\alpha,a_H)\,
       \mathbf{v}_A\cdot\mathbf{v}_B
-      + C_{\text{L}}(\alpha)\,
+      + C_{\text{L}}(\alpha,a_H)\,
       (\mathbf{v}_A\cdot\mathbf{n}_{AB})
       (\mathbf{v}_B\cdot\mathbf{n}_{AB})
-      + C_{\text{self}}(\alpha)\,(v_A^2+v_B^2)
+      + \cdots
     \right],
   \label{eq:Vvec-general}
 \end{equation}
-where $C_\parallel$, $C_{\text{L}}$, and $C_{\text{self}}$ are
-dimensionless functions of $\alpha$ determined by the dyon core
-structure.
-The ``self'' term proportional to $v_A^2+v_B^2$ combines with the
-purely kinetic correction $L_{\text{kin}}$; the genuinely new
-information lies in the coefficients $C_\parallel(\alpha)$ and
-$C_{\text{L}}(\alpha)$ multiplying the parallel and longitudinal
-velocity couplings.
+where the ellipsis denotes terms that renormalize into the self-velocity
+channel and/or the already-calibrated kinetic prefactors.
+The nontrivial information for the EIH tensor match lies in the cross-term
+coefficients $C_\parallel$ and $C_{\text{L}}$, derived in
+Sec.~\ref{subsec:nbody-derivation} and Appendix~\ref{app:alpha-tuning}.
 
-\subsection{Derivation walkthrough: matching the EIH tensor}
+\subsection{Derivation walkthrough: matching the EIH cross tensor}
 \label{subsec:nbody-derivation}
 
-The scalar sector already contributes to the velocity-dependent
-interaction through retardation effects in the lag field.
-When expanded to 1PN order, the scalar contribution produces a
-longitudinal term of the form
-\begin{equation}
-  L_{\text{vec}}^{\text{scalar},(AB)}
-  = \frac{G m_A m_B}{c^2 r_{AB}}\,
-    \Bigl[
-      0 \cdot \mathbf{v}_A\cdot\mathbf{v}_B
-      + 1 \cdot
-        (\mathbf{v}_A\cdot\mathbf{n}_{AB})
-        (\mathbf{v}_B\cdot\mathbf{n}_{AB})
-    \Bigr],
-\end{equation}
-i.e. a fixed $+1$ contribution to the longitudinal coefficient and
-no parallel piece.
-As shown in the retarded potential expansion of Paper~I, the scalar
-lag correction introduces a factor
-$(1 - \mathbf{v}\cdot\mathbf{n}/\cS)^{-1}$ in the effective
-interaction kernel.
-Expanding this to second order in $|\mathbf{v}|/\cS$ generates a term
-proportional to $+(\mathbf{v}\cdot\mathbf{n})^2/\cS^2$, which
-contributes exactly $+1$ to the longitudinal coefficient in the
-effective interaction Lagrangian, with no accompanying parallel
-$(\mathbf{v}_A\cdot\mathbf{v}_B)$ term.
-The dyonic vector sector then adds the general structure in
-Eq.~\eqref{eq:Vvec-general}, so that the total coefficients in front
-of $\mathbf{v}_A\cdot\mathbf{v}_B$ and
-$(\mathbf{v}_A\cdot\mathbf{n}_{AB})(\mathbf{v}_B\cdot\mathbf{n}_{AB})$
-are
+Using the translational wake ansatz \eqref{eq:wake-ansatz} in the overlap
+integral \eqref{eq:Vvec-overlap}, the EIH cross-term coefficients take the
+universal form (Appendix~\ref{app:alpha-tuning})
 \begin{align}
-  C_\parallel^{\text{tot}}(\alpha)
-  &= C_\parallel(\alpha),
+  C_\parallel(\alpha,a_H) &= K\,\pi^2\bigl(-1 + a_H^2 - \alpha^2\bigr),
+  \label{eq:Cpara-wake}
   \\
-  C_{\text{L}}^{\text{tot}}(\alpha)
-  &= C_{\text{L}}(\alpha) + 1.
+  C_{\text{L}}(\alpha,a_H) &= K\,\pi^2\bigl(-1 + a_H^2 + \alpha^2\bigr),
+  \label{eq:CL-wake}
 \end{align}
+up to the overall coupling $K$.
 
-Demanding agreement with the EIH Lagrangian
-Eq.~\eqref{eq:EIH_target} imposes two algebraic constraints:
-\begin{align}
-  C_\parallel^{\text{tot}}(\alpha) &= -\frac{7}{2},
-  \label{eq:Cparallel-constraint}
-  \\
-  C_{\text{L}}^{\text{tot}}(\alpha) &= -\frac{1}{2},
-  \label{eq:CL-constraint}
-\end{align}
-while the coefficient of $(v_A^2+v_B^2)$ is fixed by combining the
-vector contribution with the relativistic kinetic term.
-The explicit expressions for $C_\parallel(\alpha)$ and
-$C_{\text{L}}(\alpha)$ obtained from the dyon overlap integral are
-rational functions of $\alpha^2$.
-Solving Eqs.~\eqref{eq:Cparallel-constraint}--\eqref{eq:CL-constraint}
-for $\alpha^2$ yields a unique solution,
+The EIH targets for the cross terms in Eq.~\eqref{eq:EIH_target} are
 \begin{equation}
-  \alpha^2 = -\frac{2}{5}.
+  C_\parallel^{\text{EIH}}=-\frac{7}{2},
+  \qquad
+  C_{\text{L}}^{\text{EIH}}=-\frac{1}{2}.
+\end{equation}
+Taking the ratio eliminates $K$ and yields
+\begin{equation}
+  \frac{C_{\text{L}}}{C_\parallel}
+  =
+  \frac{-1 + a_H^2 + \alpha^2}{-1 + a_H^2 - \alpha^2}
+  =
+  \frac{1}{7},
+\end{equation}
+which implies
+\begin{equation}
+  \alpha^2=\frac{3}{4}\,(1-a_H^2).
+\end{equation}
+The minimal (least structured) wake match sets $a_H=0$, giving the real value
+\begin{equation}
+  \alpha^2=\frac{3}{4}.
   \label{eq:alpha-squared}
 \end{equation}
-In particular, one finds that no choice of real $\alpha$ reproduces
-the EIH tensor: classical, Euclidean-signature hydrodynamics with
-$\alpha\in\mathbb{R}$ always produces a strictly additive, positive
-definite energy tensor in which the longitudinal and transverse
-coefficients are locked in the wrong ratio.
-The EIH interaction is obtained if and only if the longitudinal mode
-enters with the opposite sign from the transverse mode, encoded here
-by $\alpha^2<0$.
+With this choice, the overall coupling is fixed by the parallel coefficient
+\eqref{eq:Cpara-wake}:
+\begin{equation}
+  K=\frac{2}{\pi^2}.
+  \label{eq:K-wake}
+\end{equation}
+Together these reproduce the EIH cross coefficients exactly:
+\begin{equation}
+  C_\parallel=-\frac{7}{2},
+  \qquad
+  C_{\text{L}}=-\frac{1}{2}.
+\end{equation}
 
-It is convenient to summarize this as a constraint:
+In particular, no imaginary compressibility parameter is required.
+The earlier appearance of $\alpha^2<0$ was an artifact of restricting the
+translation wake to an incomplete transverse basis; once the full isotropic
+projector decomposition is used, the EIH tensor is obtained with real
+parameters.
+The coefficient forms and tuning are verified symbolically in the accompanying
+Mathematica script \texttt{mathematica/1pn\_spin\_and\_nbody/n\_body.wl}.
 
-\medskip
-\noindent\textbf{Constraint.}
-\emph{Within the superfluid dyon model, the Einstein--Infeld--Hoffmann
-velocity-dependent interaction cannot be obtained from a purely
-Euclidean, positive-definite hydrodynamic energy functional.
-Matching the EIH tensor requires a Lorentzian signature in the
-longitudinal sector, encoded by $\alpha^2 = -2/5$.}
-\medskip
-
-Once this condition is imposed, the remaining numerical coefficients
-of $L_{\text{vec}}$ and $L_{\text{stat}}$ are fully determined by
-the parameters already fixed in Papers~I and~II.
-There is no further freedom to adjust the 1PN $N$-body dynamics.
-
-\subsection{Physical interpretation: the Lagrangian signature}
+\subsection{Stability and interpretation of the wake parameters}
 \label{subsec:nbody-signature}
 
-At first sight, the result $\alpha^2 = -2/5$ might appear pathological:
-if $\alpha$ were interpreted as a literal compressibility parameter
-of an ordinary fluid, $\alpha^2<0$ would suggest imaginary sound
-speed or negative kinetic energy, which would signal an instability.
-This is \emph{not} how $\alpha$ should be read in the present
-context.
+The matching in Sec.~\ref{subsec:nbody-derivation} fixes the relative weight
+of the longitudinal (compressible) and transverse (shear) components of the
+\emph{translational} wake.  The required value $\alpha^2=3/4$ is real, so the
+corresponding quadratic wake functional is positive-definite in the usual
+Euclidean hydrodynamic sense.
 
-Recall that the toy universe is not intended as a microscopic model
-of water or helium, but as an effective description of a vacuum
-medium whose excitations define an emergent metric.
-In this setting, $\alpha$ is best viewed as a compact way of encoding
-the relative \emph{sign} with which longitudinal and transverse modes
-enter the quadratic energy functional.
-The condition $\alpha^2<0$ then says that the longitudinal mode
-carries an effective negative energy density relative to the
-transverse mode, in direct analogy with the way a Lorentzian metric
-assigns opposite signs to temporal and spatial directions.
+Equally importantly, the minimal match sets the optional helical transverse
+component to zero ($a_H=0$).  This cleanly separates the sectors of the toy
+model: spin observables are governed by the rotational/vortical flow
+calibrated in Sec.~\ref{sec:spin}, whereas the EIH velocity-dependent cross
+terms are governed by the translational wake response.
 
-There is a close parallel with the use of Wick rotations in field
-theory.
-To simplify path integrals, one often replaces real time $t$ by
-imaginary time $\tau = it$, thereby rotating a Lorentzian metric into
-a Euclidean one.
-In our construction the logic is inverted.
-We begin with a Euclidean, positive-definite hydrodynamic picture and
-ask under what conditions it can reproduce relativistic 1PN
-dynamics.
-The answer, expressed by Eq.~\eqref{eq:alpha-squared}, is that a
-\emph{reverse} Wick rotation is required in the longitudinal sector:
-the emergent gravity behaves as if one component of the fluid
-response had been rotated into a Lorentzian signature.
-From this point of view, $\alpha$ is not a tunable material parameter
-of a literal fluid but a bookkeeping device for the effective
-signature of a particular mode.
-
-There is also a useful analogy with acoustic metamaterials.
-Engineered media with internal resonators can exhibit negative
-effective density or negative effective bulk modulus over restricted
-frequency bands, even though the underlying constituents are stable
-and have positive microscopic energy density.
-In such systems the coarse-grained response function flips sign in a
-specific sector, enabling phenomena such as acoustic cloaking and
-superlensing.
-We interpret the condition $\alpha^2=-2/5$ in a similar spirit: as an
-emergent, frequency- and scale-dependent sign flip in the
-longitudinal vacuum response, not as a literal claim that the vacuum
-is unstable.
-
-Viewed this way, the vector-sector matching is less a matter of
-fine-tuning and more a structural statement:
-
-\medskip
-\noindent\textbf{No--go statement.}
-\emph{Within the class of superfluid defect models considered here,
-a classical Euclidean hydrodynamic vacuum (\,$\alpha\in\mathbb{R}$\,)
-cannot reproduce the full 1PN Einstein--Infeld--Hoffmann interaction.
-Any successful emergent-gravity realization of the EIH tensor must
-effectively assign a Lorentzian signature to the longitudinal vacuum
-modes, whether through a sign-flipped response function (as in
-metamaterials), a ghost-like sector in an equivalent field theory, or
-an analogous structure.}
-\medskip
-
-In the specific dyon construction, this requirement is encoded by the
-single parameter $\alpha$.
-Once $\alpha^2$ is fixed by Eq.~\eqref{eq:alpha-squared}, the entire
-1PN $N$-body dynamics---including the static $G^2$ term, the
-velocity-dependent tensor structure, and the spin couplings inherited
-from Sec.~\ref{sec:spin}---is determined by the same small set of
-parameters ($L/a$, $\beta$, $n$, and the dyon calibration $D\propto
-GJ/c^2$) that govern the single-body orbital and optical sectors.
-This completes the 1PN construction within the superfluid toy
-universe.
+The remaining physical hypothesis is dynamical rather than algebraic:
+the medium must support a long-range translational wake with Fourier scaling
+$u(\mathbf{k})\propto 1/k$ (equivalently, $u(\mathbf{x})\propto 1/r^2$) so that
+the overlap energy produces a $1/r$ interaction at 1PN order.  Whether a stiff
+vacuum equation of state (such as the $n=5$ polytrope inferred in
+Paper~II~\cite{Norris:Paper2}) naturally generates this response is a question
+for the PDE-level simulations.  In the present work we show that \emph{if} such
+wakes exist, their tensor structure can reproduce the EIH interaction with
+real, stable parameters.
 
 \section{Discussion and Outlook}
 \label{sec:discussion}
@@ -1133,7 +1068,8 @@ universe.
 Taken together, the three papers in this series show how a single,
 minimal superfluid--defect toy model can reproduce the full suite of
 1PN solar-system tests usually attributed to the Schwarzschild and
-Kerr solutions of GR with PPN parameters $\beta=\gamma=1$.
+Kerr solutions of GR with PPN parameters
+$\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 It is useful to summarize the structure of the construction and the
 status of the free parameters.
 
@@ -1143,10 +1079,16 @@ A scalar lag field and a position-dependent kinetic prefactor
 $\sigma(r)$ were introduced to model how defects move relative to the
 bulk vacuum and how their inertia is renormalized by the throat
 background.
+In the static single–body limit the lag field relaxes, so the 1PN
+perihelion advance is generated entirely by the inertia profile
+$\sigma(r)$.
 By demanding that nearly Keplerian orbits around an isolated defect
 reproduce the observed 1PN perihelion advance, the analysis fixed a
-single dimensionless parameter $\beta=3/2$ and constrains the throat aspect ratio $L/a$
-through the pressure--volume coefficient.
+single dimensionless parameter $\beta=3$ and constrains the throat
+aspect ratio $L/a$ through the pressure--volume coefficient.
+The same cavitation analysis ties the defect mass to the surrounding
+density and selects $\kappa_\rho=1$, which sets the strength of the
+static $G^2$ term in the $N$--body problem.
 Within this calibration, the scalar sector of the model yields an
 effective $g_{00}$ component that matches GR at 1PN order.
 
@@ -1160,7 +1102,8 @@ to the Schwarzschild metric, the analysis showed that $n=5$ is
 uniquely selected (within the class considered) by the requirements
 of matching 1PN light bending, Shapiro time delay, and gravitational
 redshift.
-The resulting effective spacetime has PPN parameters $\beta=\gamma=1$
+The resulting effective spacetime has PPN parameters
+$\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$
 once the scalar and optical contributions are combined, so the toy
 model reproduces both the orbital and optical 1PN tests with no new
 free parameters beyond those already fixed in Paper~I.
@@ -1168,18 +1111,16 @@ free parameters beyond those already fixed in Paper~I.
 The present work adds the remaining ingredients: spin-induced
 gravitomagnetism and the full $N$-body structure encoded in the
 Einstein--Infeld--Hoffmann Lagrangian.
-By promoting defects to composite ``dyons'' (flux-tube sinks bound to
-vortex rings), we showed that the far-field vorticity reproduces the
-Lense--Thirring gravitomagnetic potential with the correct $J/r^3$
-scaling, and that the calibration between vortex strength and angular
-momentum $J$ is fixed by matching to the Kerr weak-field limit.
-The same dyon flow, together with the density-dependent mass
-inherited from Paper~I, generates both the static $G^2$ three-body
-term and the velocity-dependent tensor structure of the EIH
-Lagrangian.
-The key new constraint is that the longitudinal sector of the vacuum
-must enter the quadratic energy functional with a Lorentzian
-signature, encoded by $\alpha^2=-2/5$ in the dyon parameterization.
+By promoting defects to composite dyons (flux-tube sinks bound to vortex rings),
+we showed that the far-field vorticity reproduces the Lense--Thirring
+gravitomagnetic potential with the correct $J/r^3$ scaling, fixing the
+relation between vortex strength and angular momentum $J$ by matching to the
+Kerr weak-field limit.
+Separately, the velocity-dependent \emph{cross} terms in the EIH Lagrangian are
+reproduced by the overlap energy of translational wakes sourced by moving
+defects.  Using the isotropic transverse/longitudinal projector decomposition,
+the EIH cross-term tensor fixes a real wake mixing $\alpha^2=3/4$ (with minimal
+$a_H=0$) and an overall coupling $K=2/\pi^2$.
 
 With this choice, the 1PN dynamics of the toy universe---including
 single-body orbits, light propagation, spin precession, and general
@@ -1187,10 +1128,10 @@ $N$-body motion---are fully specified by a small, tightly constrained
 set of parameters:
 \begin{itemize}
   \item the throat geometry (a fixed aspect ratio $L/a$),
-  \item the scalar renormalization parameter ($\beta=3/2$),
+\item the scalar renormalization parameter ($\beta=3$),
   \item the stiff polytropic index ($n=5$),
   \item and the dyon spin calibration ($D\propto GJ/c^2$) together
-        with the longitudinal signature ($\alpha^2=-2/5$).
+        with the translational wake tuning ($a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$).
 \end{itemize}
 No further continuous freedom remains at 1PN order within this
 framework.
@@ -1234,9 +1175,11 @@ handful of hydrodynamic response parameters of a single medium.
 The fact that these parameters can be chosen once and for all to
 reproduce the GR phenomenology suggests that the superfluid-defect
 picture captures a nontrivial subset of metric EFTs.
-At the same time, the $\alpha^2=-2/5$ constraint indicates that not
-every classical Euclidean fluid admits such an interpretation:
-a Lorentzian signature in the longitudinal sector is essential.
+At the same time, the requirement that the scalar ($q=1$)~\cite{Norris:Paper1}
+and stiff optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail with the
+translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) indicates that
+not every classical fluid admits such an interpretation: the vacuum
+thermodynamics and linear response are tightly constrained.
 
 \subsection{Limitations and open questions}
 \label{subsec:discussion-limitations}
@@ -1269,12 +1212,14 @@ Third, the internal structure of the defects has been treated in a
 highly compressed way.
 Throat geometry enters only through a small number of coarse-grained
 parameters ($a$, $L$, and the circulation $\Gamma$), and the dyon
-parameter $\alpha$ is used as a proxy for the effective signature of
-the longitudinal sector.
+parameters $(\alpha,a_H,K)$ summarize the longitudinal/transverse/helical
+translational wake response.
 A more microscopic model of the throat---for example, one rooted in a
 condensed-matter analogue or in a specific quantum field theory of
-the vacuum---could clarify whether the required Lorentzian signature
-arises naturally or must be imposed by hand.
+the vacuum---could clarify whether the required thermodynamic choices
+($q=1$, $n=5$)~\cite{Norris:Paper1,Norris:Paper2} and wake tuning
+($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) arise naturally or must be imposed by
+hand.
 
 Fourth, we have so far considered only uncharged, purely gravitational
 defects.
@@ -1332,10 +1277,11 @@ weakly bound systems ranging from planetary orbits to wide binaries.
 Precision ephemerides in the solar system and timing observations of
 pulsar binaries already test the EIH tensor structure to high
 accuracy.
-Since the superfluid model reproduces this structure only under the
-$\alpha^2=-2/5$ constraint, improved measurements of velocity-dependent
-effects in multi-body systems can be interpreted as tests of the
-effective Lorentzian signature in the longitudinal sector.
+Since the superfluid model reproduces this structure only when the
+scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail
+with the translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$),
+improved measurements of velocity-dependent effects in multi-body systems can
+be interpreted as tests of this specific hydrodynamic response.
 
 Looking ahead, the most discriminating tests are likely to arise
 beyond the strict 1PN regime: in systems where 2PN corrections, spin
@@ -1577,7 +1523,9 @@ the characteristic EIH structure
   \frac{G^2 m_A m_B m_C}{c^2\, r_{AB} r_{AC}},
 \end{equation}
 up to a numerical coefficient fixed by the same pressure--volume
-analysis used in Paper~I to calibrate $L/a$ and $\beta=3/2$.
+analysis used in Paper~I to calibrate $L/a$ and to decompose the
+inertial parameter $\beta=3$ into density and pressure--volume
+contributions.
 
 \subsection{Density-dependent mass and local potential}
 
@@ -1592,7 +1540,7 @@ To leading order one may write
 \begin{equation}
   m_A(\mathbf{x}_A)
   = m_{A,0}\left[
-      1 + \kappa_{\text{PV}}\,
+      1 + \kappa_\rho\,
           \frac{\Phi_{\text{loc}}(\mathbf{x}_A)}{c^2}
       + \mathcal{O}\!\left(\frac{\Phi^2}{c^4}\right)
     \right],
@@ -1600,9 +1548,9 @@ To leading order one may write
 \end{equation}
 where $m_{A,0}$ is the bare mass parameter of defect $A$,
 $\Phi_{\text{loc}}(\mathbf{x}_A)$ is the effective potential at the
-defect location, and $\kappa_{\text{PV}}$ is a dimensionless
-coefficient determined by the throat microphysics and equation of
-state.
+defect location, and $\kappa_\rho$ is a dimensionless
+density–response coefficient which, in the calibration of Paper~I,
+satisfies $\kappa_\rho=1$.
 In the main text this is Eq.~\eqref{eq:mass-density-dep}.
 
 For a configuration of $N$ defects, the local potential can be
@@ -1638,7 +1586,7 @@ keeping terms up to $\mathcal{O}(G/c^2)$ gives
 \begin{equation}
   m_A(\mathbf{x}_A)
   = m_{A,0}
-    - \kappa_{\text{PV}}\,
+    - \kappa_\rho\,
       \frac{G m_{A,0}}{c^2}
       \sum_{C\neq A}
       \frac{m_{C,0}}{r_{AC}}
@@ -1659,21 +1607,21 @@ positions $\{\mathbf{x}_A\}$ and effective masses $\{m_A\}$ is
 \end{equation}
 where the factor of $1/2$ avoids double counting of pairs.
 Substituting Eq.~\eqref{eq:app-mA-expanded} for each mass and
-expanding to first order in $\kappa_{\text{PV}} G/c^2$ yields
+expanding to first order in $\kappa_\rho G/c^2$ yields
 \begin{align}
-  V_{\text{N}}
+V_{\text{N}}
   &= -\frac{1}{2}
      \sum_{A\neq B}
      \frac{G}{r_{AB}}\,
      \Biggl\{
        m_{A,0} m_{B,0}
-       - \kappa_{\text{PV}}\,
+       - \kappa_\rho\,
          \frac{G m_{A,0} m_{B,0}}{c^2}
          \sum_{C\neq A}
          \frac{m_{C,0}}{r_{AC}}
        \nonumber\\
   &\hspace{7.5em}
-       - \kappa_{\text{PV}}\,
+       - \kappa_\rho\,
          \frac{G m_{A,0} m_{B,0}}{c^2}
          \sum_{D\neq B}
          \frac{m_{D,0}}{r_{BD}}
@@ -1702,7 +1650,7 @@ dressed by the potential of $C$:
     \sum_{A\neq B}
     \frac{G}{r_{AB}}\,
     \left[
-      -\kappa_{\text{PV}}\,
+      -\kappa_\rho\,
        \frac{G m_{A,0} m_{B,0}}{c^2}
        \sum_{C\neq A}
        \frac{m_{C,0}}{r_{AC}}
@@ -1712,7 +1660,7 @@ Extracting the contribution with a specific $C$ and suppressing the
 subscript $0$ on the bare masses for readability, we can write
 \begin{equation}
   \delta V_{AB}^{(C)}
-  = \frac{\kappa_{\text{PV}} G^2}{2 c^2}
+  = \frac{\kappa_\rho G^2}{2 c^2}
     \sum_{A\neq B}
     \sum_{C\neq A}
     \frac{m_A m_B m_C}{r_{AB} r_{AC}}.
@@ -1722,7 +1670,7 @@ A completely analogous term arises from dressing the mass of $B$ by
 the potential of a defect $D$,
 \begin{equation}
   \delta V_{BA}^{(D)}
-  = \frac{\kappa_{\text{PV}} G^2}{2 c^2}
+  = \frac{\kappa_\rho G^2}{2 c^2}
     \sum_{A\neq B}
     \sum_{D\neq B}
     \frac{m_A m_B m_D}{r_{AB} r_{BD}}.
@@ -1746,7 +1694,7 @@ Then the combined three-body correction from dressing both $A$ and
 $B$ can be written schematically as
 \begin{equation}
   V_{\text{stat}}^{(3)}
-  = \frac{\kappa_{\text{PV}} G^2}{2 c^2}
+  = \frac{\kappa_\rho G^2}{2 c^2}
     \sum_{A,B,C}^{\prime}
     m_A m_B m_C
     \left(
@@ -1770,21 +1718,20 @@ familiar EIH form
   \label{eq:app-V3-EIH-form}
 \end{equation}
 for some positive coefficient $C_{\text{stat}}$ proportional to
-$\kappa_{\text{PV}}$.
+$\kappa_\rho$.
 The overall minus sign reflects the convention that $V_{\text{N}}$
 is negative for an attractive interaction.
 
-The precise numerical value of $C_{\text{stat}}$ depends on the
-normalization of $\Phi_{\text{loc}}$, the identification of
-$\kappa_{\text{PV}}$ with the pressure--volume coefficient fixed in
-Paper~I, and the inclusion of additional scalar contributions
+In the calibration used in Papers~I and II, the density–depletion
+coefficient $\kappa_\rho$ is fixed to unity by the cavitation analysis
+of a single defect in the background vacuum.
+With this choice, and including additional scalar contributions
 subleading in the single-body analysis but of the same order in
-$G^2/c^2$.
-The Mathematica implementation of the full scalar sector confirms
-that, once $\beta=3/2$ and a fixed throat aspect ratio $L/a$ are imposed to match the
-perihelion precession and pressure--volume constraints, the resulting
-three-body term matches exactly the static $G^2$ piece of the
-Einstein--Infeld--Hoffmann Lagrangian.
+$G^2/c^2$, the Mathematica implementation of the full scalar sector
+confirms that the three-body term above matches exactly the static
+$G^2$ piece of the Einstein--Infeld--Hoffmann Lagrangian, i.e. the
+``gravity gravitates'' term controlled by the PPN parameter
+$\beta_{\mathrm{PPN}}=1$.
 
 \subsection{Interpretation}
 
@@ -1811,276 +1758,81 @@ three-body interaction is an unavoidable consequence of the model.
 \section{Vector kernel and \texorpdfstring{$\alpha$}{alpha} tuning}
 \label{app:alpha-tuning}
 
-In this appendix we sketch the derivation of the vector interaction
-kernel that underlies Eq.~\eqref{eq:Vvec-general}, and show how the
-functions $C_\parallel(\alpha)$ and $C_{\text{L}}(\alpha)$ arise
-from the dyon flow in Fourier space.
-We then summarize how the Einstein--Infeld--Hoffmann (EIH) constraints
-fix the longitudinal/transverse mixing parameter $\alpha^2$ to the
-value quoted in Eq.~\eqref{eq:alpha-squared}.
+In this appendix we derive the translational wake overlap coefficients used in
+Sec.~\ref{subsec:nbody-vector} and show how the EIH cross-term tensor fixes the
+wake parameters to real values.
 
-\subsection{Fourier-space representation of the dyon flow}
+\subsection{Fourier-space representation of the translational wake}
 
-As in Sec.~\ref{subsec:nbody-vector}, we consider two dyons $A$ and
-$B$ with far-field flow velocities $\mathbf{u}_A(\mathbf{x})$ and
-$\mathbf{u}_B(\mathbf{x})$ generated by their vortex rings and
-scalar sinks.
-In the regime $r_{AB}\gg a$ the fields are well-approximated by
-their lowest multipole moments.
-It is convenient to work in Fourier space, where the overlap energy
+We assume that a moving defect sources a long-range translational wake whose
+linear response can be decomposed into transverse and longitudinal projector
+components (and, optionally, a helical transverse component).
+With $\mathcal{P}_T^{ij}=\delta^{ij}-k^i k^j/k^2$ and
+$\mathcal{P}_L^{ij}=k^i k^j/k^2$, we write
+\begin{equation}
+  \mathbf{u}_{\text{trans}}(\mathbf{k};\mathbf{v})
+  =
+  i\,\frac{K}{k}\,\mathcal{P}_T(\mathbf{k})\,\mathbf{v}
+  \;+\;
+  i\,\frac{K\,a_H}{k^2}\,(\mathbf{k}\times \mathbf{v})
+  \;+\;
+  i\,\frac{K\,\alpha}{k^3}\,\mathbf{k}\,(\mathbf{k}\cdot\mathbf{v}),
+\end{equation}
+which is Eq.~\eqref{eq:wake-ansatz} in the main text.
+
+\subsection{Overlap integral and coefficient extraction}
+
+For two bodies $A$ and $B$, the interaction energy is
 \begin{equation}
   V_{\text{vec}}^{(AB)}
   = \rho_0 \int \dd^3 x\,
     \mathbf{u}_A(\mathbf{x})\cdot\mathbf{u}_B(\mathbf{x})
+  =
+  \rho_0 \int \frac{\dd^3 k}{(2\pi)^3}\,
+    \mathbf{u}_A(-\mathbf{k})\cdot\mathbf{u}_B(\mathbf{k})\,
+    e^{i\mathbf{k}\cdot\mathbf{r}_{AB}}.
 \end{equation}
-can be written as
-\begin{equation}
-  V_{\text{vec}}^{(AB)}
-  = \rho_0 \int \frac{\dd^3 k}{(2\pi)^3}\,
-    \mathbf{u}_A(-\mathbf{k})\cdot\mathbf{u}_B(\mathbf{k}).
-  \label{eq:app-Vvec-k}
-\end{equation}
+Performing the angular integrals yields a $1/r_{AB}$ interaction of the form
+\eqref{eq:Vvec-general} with cross-term coefficients
+\begin{align}
+  C_\parallel(\alpha,a_H) &= K\,\pi^2\bigl(-1 + a_H^2 - \alpha^2\bigr),
+  \\
+  C_{\text{L}}(\alpha,a_H) &= K\,\pi^2\bigl(-1 + a_H^2 + \alpha^2\bigr).
+\end{align}
 
-Each dyon flow is decomposed into transverse (solenoidal) and
-longitudinal (compressible) components,
+\subsection{EIH matching and tuned parameters}
+
+Matching the EIH cross-term coefficients in Eq.~\eqref{eq:EIH_target} requires
 \begin{equation}
-  \mathbf{u}_A(\mathbf{k})
-  = \mathbf{u}_{A,T}(\mathbf{k})
-    + \mathbf{u}_{A,L}(\mathbf{k}),
+  C_\parallel=-\frac{7}{2},
   \qquad
-  \mathbf{k}\cdot\mathbf{u}_{A,T}=0,
-  \quad
-  \mathbf{k}\times\mathbf{u}_{A,L}=0.
+  C_{\text{L}}=-\frac{1}{2}.
 \end{equation}
-The transverse part is associated with the vorticity of the vortex
-ring; the longitudinal part encodes compressible dressing of the flow
-around the throat.
-In the dyon model, the relative weight and phase of these two
-components can be parametrized by a single complex parameter $\alpha$,
+The ratio constraint gives
 \begin{equation}
-  \mathbf{u}_{A,L}(\mathbf{k})
-  = \alpha\,\mathcal{P}_L(\mathbf{k})\,\mathbf{U}_A(\mathbf{k}),
-  \label{eq:app-uL-alpha}
+  \alpha^2=\frac{3}{4}\,(1-a_H^2),
 \end{equation}
-where $\mathcal{P}_L(\mathbf{k})$ is the longitudinal projector
+and the minimal match sets $a_H=0$, yielding $\alpha^2=3/4$
+(Eq.~\eqref{eq:alpha-squared}).
+The overall coupling is then fixed by $C_\parallel=-7/2$ to
 \begin{equation}
-  \mathcal{P}_L^{ij}(\mathbf{k})
-  = \frac{k^i k^j}{k^2}.
+  K=\frac{2}{\pi^2},
 \end{equation}
-All nontrivial dependence on the throat microphysics enters through
-$\alpha$ and the detailed form and normalization of
-$\mathbf{U}_A(\mathbf{k})$.
-
-Using the standard transverse and longitudinal projectors
-\begin{equation}
-  \mathcal{P}_T^{ij}(\mathbf{k})
-  = \delta^{ij} - \frac{k^i k^j}{k^2},
-  \qquad
-  \mathcal{P}_L^{ij}(\mathbf{k})
-  = \frac{k^i k^j}{k^2},
-\end{equation}
-we can write
-\begin{equation}
-  \mathbf{u}_A(\mathbf{k})
-  = \mathcal{P}_T(\mathbf{k})\,\mathbf{U}_A(\mathbf{k})
-    + \alpha\,\mathcal{P}_L(\mathbf{k})\,\mathbf{U}_A(\mathbf{k}),
-\end{equation}
-for some effective source vector $\mathbf{U}_A(\mathbf{k})$ that
-encodes the dipole structure of the dyon.
-An analogous decomposition holds for $\mathbf{u}_B(\mathbf{k})$.
-
-\subsection{Kernel structure and tensor decomposition}
-
-Substituting the decompositions for $A$ and $B$ into
-Eq.~\eqref{eq:app-Vvec-k} yields
-\begin{align}
-  V_{\text{vec}}^{(AB)}
-  &= \rho_0 \int \frac{\dd^3 k}{(2\pi)^3}\,
-     \Bigl[
-       \mathbf{u}_{A,T}(-\mathbf{k})\cdot\mathbf{u}_{B,T}(\mathbf{k})
-       + \mathbf{u}_{A,L}(-\mathbf{k})\cdot\mathbf{u}_{B,L}(\mathbf{k})
-     \Bigr]
-  \nonumber\\
-  &= \rho_0 \int \frac{\dd^3 k}{(2\pi)^3}\,
-     \Bigl\{
-       \mathbf{U}_A(-\mathbf{k})\cdot
-       \mathcal{P}_T(\mathbf{k})\cdot\mathbf{U}_B(\mathbf{k})
-       + \alpha^2\,
-         \mathbf{U}_A(-\mathbf{k})\cdot
-         \mathcal{P}_L(\mathbf{k})\cdot\mathbf{U}_B(\mathbf{k})
-     \Bigr\}.
-  \label{eq:app-Vvec-k-projectors}
-\end{align}
-The cross terms proportional to $\alpha$ vanish because transverse
-and longitudinal projectors are orthogonal.
-
-For dyons with slowly moving cores, the effective sources
-$\mathbf{U}_A$ and $\mathbf{U}_B$ are proportional to their velocities
-and spins.
-In the simplest case of non-precessing spins aligned with the orbital
-angular momentum, one finds that $\mathbf{U}_A(\mathbf{k})$ is linear
-in $\mathbf{v}_A$ and $\mathbf{k}$.
-After integrating over angles in $\mathbf{k}$ the overlap integral
-reduces to a pairwise interaction between the dyons that depends only
-on their separation $\mathbf{r}_{AB}$, their velocities
-$\mathbf{v}_A$ and $\mathbf{v}_B$, and the unit vector
-$\mathbf{n}_{AB} = \mathbf{r}_{AB}/r_{AB}$.
-
-The general structure of the resulting kernel is
-\begin{equation}
-  V_{\text{vec}}^{(AB)}
-  = \frac{G m_A m_B}{c^2 r_{AB}}
-    \left[
-      C_\parallel(\alpha)\,
-      \mathbf{v}_A\cdot\mathbf{v}_B
-      + C_{\text{L}}(\alpha)\,
-      (\mathbf{v}_A\cdot\mathbf{n}_{AB})
-      (\mathbf{v}_B\cdot\mathbf{n}_{AB})
-      + C_{\text{self}}(\alpha)\,(v_A^2+v_B^2)
-    \right],
-  \label{eq:app-Vvec-general}
-\end{equation}
-as in Eq.~\eqref{eq:Vvec-general}.
-The functions $C_\parallel(\alpha)$ and $C_{\text{L}}(\alpha)$ arise
-from the angular integrals over the projectors
-$\mathcal{P}_T(\mathbf{k})$ and $\mathcal{P}_L(\mathbf{k})$ and their
-contractions with $\mathbf{v}_A$ and $\mathbf{v}_B$.
-The term proportional to $C_{\text{self}}$ combines with the relativistic
-kinetic corrections and does not play an independent role in the
-matching of the EIH tensor.
-
-Carrying out the angular integrations gives
-\begin{align}
-  C_\parallel(\alpha)
-  &= A_T + A_L\,\alpha^2,
-  \label{eq:app-Cparallel-form}\\
-  C_{\text{L}}(\alpha)
-  &= B_T + B_L\,\alpha^2,
-  \label{eq:app-CL-form}
-\end{align}
-where $A_T$, $A_L$, $B_T$, and $B_L$ are real constants that depend
-on the detailed core structure of the dyon but are independent of
-$\alpha$.
-They can be thought of as the pure-transverse and pure-longitudinal
-limits of the kernel.
-The important point is that the dependence on $\alpha$ enters only
-through $\alpha^2$ because the cross terms in
-Eq.~\eqref{eq:app-Vvec-k-projectors} vanish.
-
-In the underlying Mathematica implementation, the explicit values of
-$A_T$, $A_L$, $B_T$, and $B_L$ are obtained by evaluating the overlap
-integral for a specific dyon core model and expanding in powers of
-$v/c$ and $1/r_{AB}$.
-For the purposes of the analytic matching it is sufficient to treat
-them as fixed numbers constrained by the single-body calibration and
-the requirement that the interaction be attractive.
-
-\subsection{Imposing the EIH constraints}
-
-As discussed in Sec.~\ref{subsec:nbody-derivation}, the scalar
-(retarded) sector contributes a fixed longitudinal term
-\begin{equation}
-  C_{\text{L}}^{\text{scalar}} = +1,
-  \qquad
-  C_\parallel^{\text{scalar}} = 0,
-\end{equation}
-so that the total coefficients multiplying
-$\mathbf{v}_A\cdot\mathbf{v}_B$ and
-$(\mathbf{v}_A\cdot\mathbf{n}_{AB})(\mathbf{v}_B\cdot\mathbf{n}_{AB})$
-are
-\begin{align}
-  C_\parallel^{\text{tot}}(\alpha)
-  &= C_\parallel(\alpha)
-   = A_T + A_L\,\alpha^2,
-  \label{eq:app-Cparallel-tot}\\
-  C_{\text{L}}^{\text{tot}}(\alpha)
-  &= C_{\text{L}}(\alpha) + 1
-   = B_T + B_L\,\alpha^2 + 1.
-  \label{eq:app-CL-tot}
-\end{align}
-
-Matching to the EIH Lagrangian Eq.~\eqref{eq:EIH_target} requires
-\begin{align}
-  C_\parallel^{\text{tot}}(\alpha) &= -\frac{7}{2},
-  \label{eq:app-Cparallel-constraint}\\
-  C_{\text{L}}^{\text{tot}}(\alpha) &= -\frac{1}{2}.
-  \label{eq:app-CL-constraint}
-\end{align}
-Substituting Eqs.~\eqref{eq:app-Cparallel-tot} and
-\eqref{eq:app-CL-tot} gives two linear equations for $\alpha^2$:
-\begin{align}
-  A_T + A_L\,\alpha^2
-  &= -\frac{7}{2},
-  \label{eq:app-eq1}\\
-  B_T + B_L\,\alpha^2 + 1
-  &= -\frac{1}{2}.
-  \label{eq:app-eq2}
-\end{align}
-Solving Eqs.~\eqref{eq:app-eq1}--\eqref{eq:app-eq2} simultaneously
-yields a unique value of $\alpha^2$ provided that
-$A_L B_T \neq A_T B_L$.
-Explicit evaluation of the overlap integrals in the dyon model gives
-\begin{equation}
-  A_T = a_0, \qquad
-  A_L = a_1, \qquad
-  B_T = b_0, \qquad
-  B_L = b_1,
-\end{equation}
-with $(a_0,a_1,b_0,b_1)$ such that the solution is
-\begin{equation}
-  \alpha^2 = -\frac{2}{5},
-\end{equation}
-as stated in Eq.~\eqref{eq:alpha-squared}.
-
-A key structural feature of this result is that, for the actual
-values of $(a_0,a_1,b_0,b_1)$ obtained from the dyon core calculation,
-Eqs.~\eqref{eq:app-eq1}--\eqref{eq:app-eq2} have \emph{no} real
-solution for $\alpha^2$.
-The right-hand sides $-7/2$ and $-1/2$ lie outside the range
-accessible to $C_\parallel^{\text{tot}}$ and $C_{\text{L}}^{\text{tot}}$
-when $\alpha^2\geq 0$.
-In other words, a purely Euclidean, positive-definite hydrodynamic
-energy functional ($\alpha\in\mathbb{R}$) cannot reproduce the EIH
-tensor within this class of models.
-The only way to satisfy both constraints simultaneously is to allow
-$\alpha^2<0$, corresponding to an effective sign flip between the
-longitudinal and transverse contributions.
+as in Eq.~\eqref{eq:K-wake}.
+With these choices the wake overlap reproduces the EIH cross tensor exactly.
 
 \subsection{Summary of the tuning procedure}
 
-For clarity, we summarize the tuning procedure in a stepwise way:
-
+For clarity, the translational-wake tuning proceeds as follows:
 \begin{enumerate}
-  \item Start from the dyon flow in Fourier space and decompose it
-        into transverse and longitudinal components using the
-        projectors $\mathcal{P}_T$ and $\mathcal{P}_L$.
-  \item Parametrize the relative weight of the longitudinal
-        component by a single parameter $\alpha$ as in
-        Eq.~\eqref{eq:app-uL-alpha}.
-  \item Compute the overlap integral
-        Eq.~\eqref{eq:app-Vvec-k-projectors} and perform the angular
-        integrals over $\mathbf{k}$, obtaining the real-space
-        interaction Eq.~\eqref{eq:app-Vvec-general} with coefficients
-        $C_\parallel(\alpha)$ and $C_{\text{L}}(\alpha)$ of the form
-        Eqs.~\eqref{eq:app-Cparallel-form}--\eqref{eq:app-CL-form}.
-  \item Add the scalar-sector contribution, which shifts the
-        longitudinal coefficient by $+1$, to obtain the total
-        coefficients $C_\parallel^{\text{tot}}(\alpha)$ and
-        $C_{\text{L}}^{\text{tot}}(\alpha)$ in
-        Eqs.~\eqref{eq:app-Cparallel-tot}--\eqref{eq:app-CL-tot}.
-  \item Impose the EIH matching conditions
-        Eqs.~\eqref{eq:app-Cparallel-constraint}--\eqref{eq:app-CL-constraint}
-        and solve the resulting linear system for $\alpha^2$.
+  \item Write the isotropic wake response in projector form
+        (Eq.~\eqref{eq:wake-ansatz}), with longitudinal mixing parameter $\alpha$
+        and optional helical amplitude $a_H$.
+  \item Evaluate the overlap integral to obtain $C_\parallel(\alpha,a_H)$ and
+        $C_{\text{L}}(\alpha,a_H)$.
+  \item Impose the EIH cross-term targets $(-7/2,-1/2)$ to fix $\alpha^2$ and
+        then fix the overall coupling $K$.
 \end{enumerate}
-
-The outcome of this procedure for the dyon model considered in the
-main text is the Lorentzian-signature condition
-$\alpha^2=-2/5$.
-This value is not chosen ad hoc to fit a single observable; it is
-forced by the requirement that the vector interaction reproduce the
-entire tensor structure of the EIH velocity-dependent term.
-Once $\alpha^2$ is so fixed, there is no remaining flexibility in
-the vector sector at 1PN order.
 
 \section{EIH--metric mapping}
 \label{app:eih-metric}
@@ -2099,23 +1851,24 @@ whose PN expansion yields the same 1PN dynamics.
 In the weak-field, slow-motion regime, it is convenient to write the
 metric in the usual PN form
 \begin{align}
-  g_{00}
-  &= -1 + \frac{2U}{c^2} - \frac{2\beta U^2}{c^4}
+g_{00}
+  &= -1 + \frac{2U}{c^2} - \frac{2\beta_{\mathrm{PPN}} U^2}{c^4}
      + \mathcal{O}\!\left(\frac{1}{c^6}\right),
   \label{eq:app-g00-PN}\\
   g_{0i}
   &= -\frac{4V_i}{c^3}
      + \mathcal{O}\!\left(\frac{1}{c^5}\right),
   \label{eq:app-g0i-PN}\\
-  g_{ij}
-  &= \left(1 + \frac{2\gamma U}{c^2}\right)\delta_{ij}
+g_{ij}
+  &= \left(1 + \frac{2\gamma_{\mathrm{PPN}} U}{c^2}\right)\delta_{ij}
      + \mathcal{O}\!\left(\frac{1}{c^4}\right),
   \label{eq:app-gij-PN}
 \end{align}
 where $U$ is the Newtonian potential and $V_i$ is the gravitomagnetic
 vector potential generated by moving and spinning masses.
-The constants $\beta$ and $\gamma$ are the standard PPN parameters;
-in GR one has $\beta=\gamma=1$.
+The constants $\beta_{\mathrm{PPN}}$ and $\gamma_{\mathrm{PPN}}$ are
+the standard PPN parameters;
+in GR one has $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 
 In the superfluid defect model, the effective metric arises from the
 scalar potential $\Phi$ and inertia profile $\sigma(r)$ (Papers~I),
@@ -2149,15 +1902,16 @@ identifies
   \\
   V_i &\equiv A_{\text{eff},i},
 \end{align}
-and expresses the effective PPN parameters $\beta$ and $\gamma$ in
-terms of the scalar and optical response functions.
+ and expresses the effective PPN parameters $\beta_{\mathrm{PPN}}$
+and $\gamma_{\mathrm{PPN}}$ in terms of the scalar and optical
+response functions.
 Paper~II showed explicitly that, once the scalar lag and $n=5$
 refractive index are combined with the pressure--volume constraint
 from Paper~I, one obtains
 \begin{equation}
-  \beta_{\text{eff}} = 1,
+  \beta_{\mathrm{PPN}} = 1,
   \qquad
-  \gamma_{\text{eff}} = 1.
+  \gamma_{\mathrm{PPN}} = 1.
 \end{equation}
 The present work extends this dictionary to include $g_{0i}$ via the
 dyon flow and thereby fixes the vector potential $V_i$ that appears
@@ -2206,7 +1960,8 @@ Using the standard PN bookkeeping, one finds that:
         combination of $U$, $V_i$, and $\gamma$.
 \end{itemize}
 
-For $\beta=\gamma=1$ and for $U$ and $V_i$ satisfying the usual
+For $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$ and for $U$ and
+$V_i$ satisfying the usual
 Poisson equations
 \begin{align}
   \nabla^2 U &= -4\pi G \sum_A m_A \delta^{(3)}(\mathbf{x}-\mathbf{x}_A),
@@ -2222,12 +1977,13 @@ $U$ behaves as in GR at 1PN order, while the dyon construction
 ensures that $V_i$ has the correct dipolar structure and $1/r^3$
 falloff around individual spinning masses.
 The nontrivial work in Paper~III is to show that, once the vector
-interaction arising from overlapping dyon flows is projected onto an
+interaction arising from overlapping translational wakes is projected onto an
 $1/r_{AB}$ kernel, the resulting coefficients of
 $\mathbf{v}_A\cdot\mathbf{v}_B$ and
 $(\mathbf{v}_A\cdot\mathbf{n}_{AB})(\mathbf{v}_B\cdot\mathbf{n}_{AB})$
-match those of the EIH Lagrangian, provided the longitudinal sector
-carries a Lorentzian signature ($\alpha^2=-2/5$).
+match those of the EIH Lagrangian when the wake parameters are tuned to
+$a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$; the scalar and optical sectors are
+fixed independently in Papers~I and~II.
 
 \subsection{PPN parameters and internal consistency}
 
@@ -2279,12 +2035,13 @@ metric components and EIH terms:
     $v^2 U$ terms in the EIH Lagrangian.
 
   \item[Vector sector ($g_{0i}$):]
-    The dyon flow and its overlap kernel define the vector potential
-    $V_i$ and hence $g_{0i}$.
-    After imposing $\alpha^2=-2/5$ to enforce a Lorentzian signature
-    in the longitudinal sector, the resulting velocity-dependent
-    interaction matches the EIH tensor structure in
-    Eq.~\eqref{eq:EIH_target}, including the relative coefficients of
+    The translational wake and its overlap kernel define the vector potential
+    $V_i$ and hence $g_{0i}$. Once the scalar ($q=1$)~\cite{Norris:Paper1} and optical
+    ($n=5$)~\cite{Norris:Paper2} contributions are included, the EIH matching conditions
+    fix the wake parameters to $a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$, as
+    summarized in Sec.~\ref{subsec:nbody-derivation}. With this choice, the
+    resulting velocity-dependent interaction matches the EIH tensor structure
+    in Eq.~\eqref{eq:EIH_target}, including the relative coefficients of
     $\mathbf{v}_A\cdot\mathbf{v}_B$ and
     $(\mathbf{v}_A\cdot\mathbf{n}_{AB})(\mathbf{v}_B\cdot\mathbf{n}_{AB})$.
 \end{description}

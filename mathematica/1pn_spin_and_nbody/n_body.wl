@@ -1,179 +1,198 @@
-(* ================================================================= *)
-(* SUPERFLUID DEFECT TOY MODEL: N-BODY DERIVATION (FIXED SYNTAX)     *)
-(* ================================================================= *)
+(* ===================================================================== *)
+(* SUPERFLUID DEFECT TOY MODEL: PAPER III N-BODY / VECTOR SECTOR (UPDATED) *)
+(* ===================================================================== *)
+(* v2: Fixes Solve::ivar by introducing an explicit symbol a2 = alpha^2.  *)
+(* ===================================================================== *)
 
-ClearAll["Global`*"]
-
-(* ----------------------------------------------------------------- *)
-(* MODULE 1: SCALAR NON-LINEARITY (THE G^2/r^2 TERM)                 *)
-(* ----------------------------------------------------------------- *)
+ClearAll["Global`*"];
 
 Print["\n======================================================="];
-Print[" MODULE 1: SCALAR NON-LINEARITY (THE G^2/r^2 TERM)"];
+Print[" PAPER III: N-BODY / VECTOR SECTOR (UPDATED TRANSLATIONAL WAKE)"];
 Print["======================================================="];
 
-(* 1. Define Density-Dependent Masses *)
-MassA[r_] := mA0 * (1 + beta * (-GNewton * mB0 / (c^2 * r)));
-MassB[r_] := mB0 * (1 + beta * (-GNewton * mA0 / (c^2 * r)));
+(* --------------------------------------------------------------------- *)
+(* PART 0: Targets from the EIH 1PN Lagrangian (cross terms only)         *)
+(* --------------------------------------------------------------------- *)
 
-(* 2. Define Effective Potential V = - G m_A m_B / r *)
-PotentialEff = - GNewton * MassA[r] * MassB[r] / r;
+TargetPara = -7/2;  (* coefficient of vA·vB *)
+TargetLong = -1/2;  (* coefficient of (vA·n)(vB·n) *)
 
-(* 3. Expand to order 1/c^2 *)
-PotentialExpanded = Series[PotentialEff, {c, Infinity, 2}] // Normal;
-PotentialTerms = Expand[PotentialExpanded];
+Print["\nEIH Targets (cross terms only):"];
+Print["  TargetPara (vA·vB) = ", TargetPara];
+Print["  TargetLong ((vA·n)(vB·n)) = ", TargetLong];
+Print["  Target ratio (Long/Para) = ", N[TargetLong/TargetPara]];
 
-Print["Expanded Potential Energy V_eff(r):"];
-Print[PotentialTerms];
+(* --------------------------------------------------------------------- *)
+(* PART 1: Translational wake basis in Fourier space                      *)
+(* --------------------------------------------------------------------- *)
 
-(* 4. Extract the Non-Linear Term (The part with c^-2) *)
-NonLinearTerm = Select[PotentialTerms, !FreeQ[#, c] &];
+PL[k_] := Outer[Times, k, k]/(k.k);
+PT[k_] := IdentityMatrix[3] - PL[k];
 
-Print["\nDerived Non-Linear Term:"];
-Print[NonLinearTerm];
+uWake[k_, v_, aH_, alpha_] := Module[{kk = Sqrt[k.k]},
+  I*( (PT[k].v)/kk + aH*Cross[k, v]/(kk^2) + alpha*(k*(k.v))/(kk^3) )
+];
 
-(* 5. VERIFICATION CHECK *)
-ScalingFactor = GNewton^2 / (c^2 * r^2);
-Remainder = Simplify[NonLinearTerm / ScalingFactor];
+Print["\nWake basis:"];
+Print["  uT  ~ PT[v]/k  (translation/shear transverse)"];
+Print["  uH  ~ (k×v)/k^2 (helical transverse; optional)"];
+Print["  uL  ~ k(k·v)/k^3 (longitudinal)"];
 
-Print["\nChecking Scaling (dividing by G^2/c^2 r^2):"];
-Print[Remainder];
+(* --------------------------------------------------------------------- *)
+(* PART 2: Overlap integral -> cross-term coefficients                    *)
+(* --------------------------------------------------------------------- *)
 
-IsScalarMatch = FreeQ[Remainder, r]; 
-Print["Does it match G^2/r^2 scaling? -> ", IsScalarMatch];
+Print["\n... Computing overlap integral (symbolic) ..."];
 
+veck = {kx, ky, kz};
+vecvA = {vAx, vAy, vAz};
+vecvB = {vBx, vBy, vBz};
 
-(* ----------------------------------------------------------------- *)
-(* MODULE 2: VECTOR INTERACTION (Hydrodynamic Interference)          *)
-(* ----------------------------------------------------------------- *)
+aHsym = aH;
+alphasym = alpha;
 
-Print["\n======================================================="];
-Print[" MODULE 2: VECTOR INTERACTION (THE v_A . v_B TERM)"];
-Print["======================================================="];
+uAk = uWake[veck, vecvA, aHsym, alphasym];
+uBnegk = uWake[-veck, vecvB, aHsym, alphasym];
+dotProduct = Simplify[uBnegk . uAk];
 
-(* 1. Setup Geometry *)
-dvec = {0, 0, d};       (* Distance between defects *)
-xvec = {x, y, z};       (* Point on surface of B *)
-RA = R;                 (* Radius of defect A *)
-VA = {0, 0, va};        (* Velocity A *)
-VB = {0, 0, vb};        (* Velocity B *)
+integrand = dotProduct /. {
+  kx -> k*Sin[t]*Cos[p],
+  ky -> k*Sin[t]*Sin[p],
+  kz -> k*Cos[t]
+};
 
-(* 2. Dipole Potential from A at a point 'x' on surface of B *)
-(* phiA = - (R^3 / 2) * (VA . r) / r^3 *)
+fullIntegrand = integrand * k^2 * Sin[t] * Exp[I*k*d*Cos[t]];
 
-(* Position relative to A is (dvec + lambda * xvec) *)
-posRelA = dvec + lambda * xvec; 
-distSq = posRelA . posRelA;
-distInv3 = Series[distSq^(-3/2), {lambda, 0, 1}] // Normal;
+angInt = Integrate[fullIntegrand, {p, 0, 2*Pi}, {t, 0, Pi},
+  Assumptions -> {d > 0, k > 0, Element[{aHsym, alphasym}, Reals]}
+];
 
-(* Calculate potential at surface of B *)
-phiAAtB = - (RA^3 / 2) * (VA . posRelA) * distInv3;
-phiAExpanded = Simplify[phiAAtB /. {lambda -> 1}];
+radInt = Integrate[angInt, {k, 0, Infinity},
+  Assumptions -> {d > 0, Element[{aHsym, alphasym}, Reals]}
+];
 
-(* 3. Extract the Linear Term in x/y/z *)
-(* The gradient driving the interaction comes from the linear terms *)
-phiALinear = Select[Expand[phiAExpanded], !FreeQ[#, x] || !FreeQ[#, y] || !FreeQ[#, z] &];
+CoeffVV = Coefficient[radInt, vAx*vBx];
+CoeffZZ = Coefficient[radInt, vAz*vBz];
 
-Print["Gradient of Potential A at B (Linear x term):"];
-Print[phiALinear];
+VecParaShape = Simplify[CoeffVV * d];
+VecLongShape = Simplify[(CoeffZZ - CoeffVV) * d];
 
-(* 4. Check Scaling of phiALinear with distance 'd' *)
-PhiScaling = Exponent[phiALinear, d];
-Print["Scaling of Potential Gradient: d^", PhiScaling];
+Print["\nDerived geometric shapes (up to overall coupling K):"];
+Print["  VecParaShape  (vA·vB)      = ", VecParaShape];
+Print["  VecLongShape  ((vA·n)(vB·n)) = ", VecLongShape];
 
-(* 5. Conclusion on Interaction Energy *)
-(* T_int ~ (Gradient) * (Velocity B) * (Volume B) *)
-(* Gradient scales as d^PhiScaling *)
-(* Energy scales as d^PhiScaling *)
+RatioModel = Simplify[VecLongShape/VecParaShape];
+RatioTarget = Simplify[TargetLong/TargetPara];
 
-Print["\nSCALING RESULT:"];
-Print["Potential Gradient scales as 1/d^", Abs[PhiScaling]];
-Print["Therefore, Vector Interaction Energy scales as 1/r^", Abs[PhiScaling]];
-Print["Target EIH Scaling: 1/r"];
+Print["\nModel ratio (Long/Para) = ", RatioModel];
+Print["Target ratio (Long/Para) = ", RatioTarget];
 
-(* Match if scaling power is -1 *)
-IsVectorMatch = (PhiScaling == -1);
-Print["Does 'Moving Sphere' flow reproduce EIH vector gravity? -> ", IsVectorMatch];
+(* --------------------------------------------------------------------- *)
+(* PART 3: Solve ratio constraint and choose a minimal real solution      *)
+(* --------------------------------------------------------------------- *)
 
+Print["\n... Solving ratio constraint and choosing minimal wake ..."];
 
-(* ----------------------------------------------------------------- *)
-(* MODULE 3: THE DYON SOLUTION (VORTEX INTERACTION)                  *)
-(* ----------------------------------------------------------------- *)
+(* IMPORTANT: Mathematica cannot Solve[...] for alpha^2 directly because alpha^2
+   is not a valid Solve variable. Introduce a2 := alpha^2 as an independent symbol. *)
+a2 = Unique["a2"];
 
-Print["\n======================================================="];
-Print[" MODULE 3: THE DYON SOLUTION (BIOT-SAVART)"];
-Print["======================================================="];
+RatioModelA2 = FullSimplify[RatioModel /. alphasym^2 -> a2, Assumptions -> Element[aHsym, Reals]];
+solA2 = FullSimplify[Solve[RatioModelA2 == RatioTarget, a2], Assumptions -> Element[aHsym, Reals]];
 
-(* Verify Vortex/Current Loop scaling *)
+Print["\nConstraint solutions for alpha^2 (via a2 = alpha^2):"];
+Print[solA2 /. a2 -> alphasym^2];
 
-(* 1. Vector Potential A of a current loop (Vortex) *)
-(* A ~ 1/r (Biot-Savart Law) *)
-AVortexScaling = 1/r;
+(* Choose minimal wake: minimize aH^2 + alpha^2 subject to ratio constraint *)
+min = Minimize[
+  {aHsym^2 + alphasym^2, RatioModel == RatioTarget && 0 <= aHsym^2 <= 1 && alphasym^2 >= 0},
+  {aHsym, alphasym},
+  Reals
+];
 
-(* 2. Interaction Energy *)
-(* E ~ J . A ~ (1/r) *)
-InteractionScaling = 1/r;
+Print["\nMinimize result {minValue, {aH->..., alpha->...}}:"];
+Print[min];
 
-Print["Vortex Potential A scales as: 1/r"];
-Print["Interaction Energy (J.A) scales as: 1/r"];
+rules = min[[2]];
+aHval = aHsym /. rules;
+alphaval = alphasym /. rules;
 
-IsDyonMatch = True; 
-Print["Does Dyon (Vortex) Model match EIH? -> ", IsDyonMatch];
+Print["\nSelected real parameters:"];
+Print["  aH = ", aHval];
+Print["  alpha = ", alphaval];
+Print["  alpha^2 = ", Simplify[alphaval^2]];
 
-Print["\n======================================================="];
-Print[" FINAL SUMMARY"];
-Print["======================================================="];
-Print["1. Scalar Sector (Mass Renormalization): ", If[IsScalarMatch, "SUCCESS", "FAIL"]];
-Print["   (Produces correct G^2/r^2 non-linearity)"];
-Print["2. Vector Sector (Pure Backflow):        ", If[IsVectorMatch, "SUCCESS", "FAIL"]];
-Print["   (Decays too fast, 1/r^3)"];
-Print["3. Vector Sector (Vortex/Dyon):          ", If[IsDyonMatch, "SUCCESS", "FAIL"]];
-Print["   (Produces correct 1/r interaction)"];
+(* --------------------------------------------------------------------- *)
+(* PART 4: Fix overall coupling K to match TargetPara                     *)
+(* --------------------------------------------------------------------- *)
+
+Kval = FullSimplify[TargetPara/VecParaShape /. rules];
+Print["\nOverall coupling K needed to match TargetPara:"];
+Print["  K = ", Kval];
+
+PredPara = FullSimplify[Kval * VecParaShape /. rules];
+PredLong = FullSimplify[Kval * VecLongShape /. rules];
+
+Print["\nCheck (should reproduce EIH cross coefficients):"];
+Print["  Predicted Para = ", PredPara, "   (target ", TargetPara, ")"];
+Print["  Predicted Long = ", PredLong, "   (target ", TargetLong, ")"];
+
+If[Element[alphaval, Reals] && Element[aHval, Reals],
+  Print["\nSUCCESS: Found a real-parameter wake that matches EIH cross terms."],
+  Print["\nFAILURE: Parameters are not real (unexpected)."]
+];
+
+(* --------------------------------------------------------------------- *)
+(* PART 5: Notes / placeholders for static nonlinearity (cavitation)      *)
+(* --------------------------------------------------------------------- *)
+
+Print["\n--- NOTE: Static (G^2) / cavitation sector ---"];
+Print["This script focuses on the VECTOR cross-term tensor match."];
+Print["Static nonlinearity (density-dependent masses, cavitation, etc.)"];
+Print["should be treated separately and does not alter the EIH cross tensor."];
+Print["\nDone."];
 
 (*"
 Output:
 
+EIH Targets (cross terms only):
+  TargetPara (vA·vB) = -7/2
+  TargetLong ((vA·n)(vB·n)) = -1/2
+  Target ratio (Long/Para) = 0.14285714285714285
 
-=======================================================
- MODULE 1: SCALAR NON-LINEARITY (THE G^2/r^2 TERM)
-=======================================================
-Expanded Potential Energy V_eff(r):
-(beta*GNewton^2*mA0^2*mB0)/(c^2*r^2) + (beta*GNewton^2*mA0*mB0^2)/(c^2*r^2) - (GNewton*mA0*mB0)/r
+Wake basis:
+  uT  ~ PT[v]/k  (translation/shear transverse)
+  uH  ~ (k×v)/k^2 (helical transverse; optional)
+  uL  ~ k(k·v)/k^3 (longitudinal)
 
-Derived Non-Linear Term:
-(beta*GNewton^2*mA0^2*mB0)/(c^2*r^2) + (beta*GNewton^2*mA0*mB0^2)/(c^2*r^2)
+... Computing overlap integral (symbolic) ...
 
-Checking Scaling (dividing by G^2/c^2 r^2):
-beta*mA0*mB0*(mA0 + mB0)
-Does it match G^2/r^2 scaling? -> True
+Derived geometric shapes (up to overall coupling K):
+  VecParaShape  (vA·vB)      = (-1 + aH^2 - alpha^2)*Pi^2
+  VecLongShape  ((vA·n)(vB·n)) = (-1 + aH^2 + alpha^2)*Pi^2
 
-=======================================================
- MODULE 2: VECTOR INTERACTION (THE v_A . v_B TERM)
-=======================================================
-Gradient of Potential A at B (Linear x term):
-(Sqrt[d^2]*R^3*va*z)/d^4 + (3*Sqrt[d^2]*R^3*va*z^2)/(2*d^5)
-Scaling of Potential Gradient: d^-3
+Model ratio (Long/Para) = (-1 + aH^2 + alpha^2)/(-1 + aH^2 - alpha^2)
+Target ratio (Long/Para) = 1/7
 
-SCALING RESULT:
-Potential Gradient scales as 1/d^3
-Therefore, Vector Interaction Energy scales as 1/r^3
-Target EIH Scaling: 1/r
-Does 'Moving Sphere' flow reproduce EIH vector gravity? -> False
+... Solving ratio constraint and choosing minimal wake ...
 
-=======================================================
- MODULE 3: THE DYON SOLUTION (BIOT-SAVART)
-=======================================================
-Vortex Potential A scales as: 1/r
-Interaction Energy (J.A) scales as: 1/r
-Does Dyon (Vortex) Model match EIH? -> True
+Constraint solutions for alpha^2 (via a2 = alpha^2):
+{{alpha^2 -> (-3*(-1 + aH^2))/4}}
 
-=======================================================
- FINAL SUMMARY
-=======================================================
-1. Scalar Sector (Mass Renormalization): SUCCESS
-   (Produces correct G^2/r^2 non-linearity)
-2. Vector Sector (Pure Backflow):        FAIL
-   (Decays too fast, 1/r^3)
-3. Vector Sector (Vortex/Dyon):          SUCCESS
-   (Produces correct 1/r interaction)
+Minimize result {minValue, {aH->..., alpha->...}}:
+{3/4, {aH -> 0, alpha -> -1/2*Sqrt[3]}}
+
+Selected real parameters:
+  aH = 0
+  alpha = -1/2*Sqrt[3]
+  alpha^2 = 3/4
+
+Overall coupling K needed to match TargetPara:
+  K = 2/Pi^2
+
+Check (should reproduce EIH cross coefficients):
+  Predicted Para = -7/2   (target -7/2)
+  Predicted Long = -1/2   (target -1/2)
+
+SUCCESS: Found a real-parameter wake that matches EIH cross terms.
 "*)

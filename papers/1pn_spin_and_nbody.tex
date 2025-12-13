@@ -41,54 +41,17 @@ in a Superfluid Defect Toy Model}
 \maketitle
 
 \begin{abstract}
-We complete a three–paper program that tests how far a minimal
-superfluid--defect toy universe can reproduce the 1PN phenomenology
-of General Relativity (GR).
-In this model the vacuum is a compressible superfluid and massive
-bodies are flux–tube defects (``throats'') that drain the medium.
-Paper~I showed that, in the static single–body limit, the scalar lag
-field relaxes so that the 1PN perihelion precession is generated
-entirely by a position–dependent inertia profile $\sigma(r)$, which
-fixes a single orbital parameter $\beta=3$.
-Paper~II modeled the vacuum as a stiff ($n=5$) polytropic fluid and
-showed that the induced refractive index $N(r)$ yields the GR
-coefficients for light bending, Shapiro delay, and redshift, with
-effective PPN parameters $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
+We extend our superfluid--defect toy universe to spin and full $N$--body dynamics at 1PN order.
+The vacuum is a compressible superfluid and massive bodies are flux--tube ``throat'' defects that exchange mass/flux with the medium (effective sinks in the 3D description).
+Earlier papers fixed the orbital sector ($\beta=3$)~\cite{Norris:2025Orbits} and selected a stiff $n=5$ equation of state from optical 1PN observables~\cite{Norris:Paper2}.
 
-Here we address spin and $N$–body dynamics.
-We promote defects to composite ``dyons'' in which a flux–tube sink
-is bound to a vortex ring in the surrounding superfluid.
-The far–field vorticity of a dyon defines a gravitomagnetic vector
-potential with the correct $J/r^3$ scaling to reproduce the
-Lense--Thirring effect, fixing the relation between vortex strength
-and angular momentum $J$ by matching to the Kerr weak–field limit.
-We then compute the interaction energy of overlapping dyon flows and
-show that their density–dependent masses generate the static $G^2$
-three–body term in the Einstein--Infeld--Hoffmann (EIH) Lagrangian.
-The remaining velocity--dependent \emph{cross} terms in the EIH
-Lagrangian arise from the overlap energy of \emph{translational wakes}
-sourced by moving defects.  Using the isotropic projector
-decomposition into transverse and longitudinal wake components (and an
-optional helical transverse mode), we show that the EIH cross--term
-tensor structure is reproduced with real parameters.  The minimal
-match sets the helical amplitude to zero ($a_H=0$) and fixes the
-longitudinal/transverse wake mixing to $\alpha^2=3/4$, with an overall
-coupling $K=2/\pi^2$.
-Thus the apparent need for an imaginary compressibility parameter in
-earlier drafts was an artifact of an incomplete translational wake
-basis rather than a physical instability.
-
-With this choice, the superfluid toy universe reproduces the full
-single–body and $N$–body 1PN dynamics of GR---including scalar,
-optical, spin, and vector effects---using a small, tightly
-constrained set of medium response parameters.
-We interpret this as evidence that a simple structured ``vacuum
-fluid'' can mimic the familiar curved--spacetime description at 1PN
-order, while highlighting a sharp constraint: the same stiff $n=5$
-equation of state and $q=1$ density--mass relation~\cite{Norris:Paper1} that control the
-orbital and optical sectors remain as independent constraints, while the
-translational wake decomposition independently provides a real, stable match to
-the EIH cross tensor.
+Here we promote defects to composite ``dyons'' (sink + vortex ring).
+Their far--field circulation defines a gravitomagnetic vector potential with the correct $J/r^3$ scaling, reproducing the Lense--Thirring effect and fixing the vortex--spin calibration by matching the Kerr weak--field limit.
+In the $N$--body problem, density--dependent masses reproduce the static $G^2$ three--body term of the Einstein--Infeld--Hoffmann (EIH) Lagrangian.
+The remaining velocity--dependent EIH cross terms arise from overlap energy of translational wakes.
+Using an isotropic projector decomposition into longitudinal and transverse solenoidal (vortical) components (with an optional helical mode), we match the full EIH cross--term tensor with real parameters: $a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$.
+The positive value $\alpha^2=3/4$ makes the quadratic wake functional positive--definite, showing that earlier imaginary couplings were artifacts of an incomplete wake basis.
+Subject to the dynamical requirement that moving sink defects generate a long--range wake $u\propto 1/r^2$ (equivalently $u(\mathbf{k})\propto 1/k$), the model reproduces GR's 1PN scalar, optical, spin, and vector dynamics while remaining consistent with the calibrated orbital sector and optical tests.
 \end{abstract}
 
 \section{Introduction}
@@ -102,6 +65,13 @@ Shapiro time delay, gravitational redshift, and the dynamics of weakly bound
 $N$-body systems---are often summarized in a single statement:
 the Schwarzschild solution of General Relativity (GR) with post-Newtonian (PN)
 parameters $\beta_{\mathrm{PPN}} = \gamma_{\mathrm{PPN}} = 1$ passes all currently accessible 1PN tests.
+Throughout this series we use $\beta_{\mathrm{PPN}}$ and $\gamma_{\mathrm{PPN}}$
+as shorthand for the values inferred from the standard 1PN observables.
+For optical tests we denote the optically inferred value by $\gamma_{\mathrm{obs}}$
+and identify $\gamma_{\mathrm{PPN}}\equiv\gamma_{\mathrm{obs}}$.
+In the toy model this observational equivalence does not require a single
+underlying bare metric: light and matter couple to distinct acoustic and
+hydrodynamic projections that are calibrated to agree at 1PN.
 From this vantage point, any alternative description of gravity must either
 reproduce the Schwarzschild metric in the appropriate weak-field limit or offer
 a comparably constrained and falsifiable mechanism by which the same observables
@@ -146,7 +116,7 @@ match.
 \subsection{Summary of Papers I and II}
 \label{subsec:intro-summary-papers12}
 
-Paper~I in this series~\cite{Norris:Paper1} developed the \emph{orbital} sector
+Paper~I in this series~\cite{Norris:2025Orbits} developed the \emph{orbital} sector
 of the toy universe.
 The vacuum was modeled as a compressible superfluid, and massive bodies as
 flux-tube ``throats'' of radius $a$ and depth $L$ that drain the surrounding
@@ -177,11 +147,14 @@ By constructing an effective optical metric from $N(r)$ and comparing to the
 Schwarzschild metric, the analysis showed that $n=5$ is uniquely selected
 (within the class considered) by the requirements of matching 1PN light
 bending, Shapiro time delay, and gravitational redshift.
-The resulting effective spacetime has effective PPN parameters
-$\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$ once the scalar and optical
-contributions are combined, so the toy model reproduces both the orbital and
-optical 1PN tests with no new free parameters beyond those already fixed by the
-scalar and optical sectors.
+As emphasized in Paper~II, this agreement is enforced at the level of
+calibrated 1PN observables (light bending, Shapiro delay, redshift, and
+perihelion precession), while the underlying acoustic (light) and
+hydrodynamic (matter) projections can differ (bi-metric structure).
+Once the scalar and optical contributions are combined and calibrated, the
+inferred PPN parameters satisfy $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$,
+so the toy model reproduces both the orbital and optical 1PN tests with no new
+free parameters beyond those already fixed by the scalar and optical sectors.
 
 Taken together, Papers I and II establish that a single superfluid-defect toy
 model can account for the scalar and optical 1PN tests of gravity with a small
@@ -207,11 +180,13 @@ Reproducing these ingredients is a stringent test of any emergent-gravity model.
 In the superfluid language, both effects are naturally associated with
 \emph{flow}.
 We model spinning defects as \emph{dyons}: composite objects in which a
-flux-tube sink (mass) is bound to a vortex ring (spin) in the surrounding
+flux-tube sink (mass) is bound to a localized vortical core (spin) in the surrounding
 superfluid.
-The far-field vorticity of such a configuration produces a gravitomagnetic
-vector potential with the correct $1/r^3$ radial dependence to match the
-Lense--Thirring precession.
+The far-zone flow is taken to have a dipole-like (vector-potential) structure
+$\mathbf{v}\propto (\mathbf{J}\times\hat{\mathbf{r}})/r^2$ (so Cartesian components scale as
+$1/r^2$); through the metric dictionary it
+reproduces the weak-field Kerr gravitomagnetic potential and the observable
+Lense--Thirring precession $\bm{\Omega}_{\text{LT}}\propto 1/r^3$.
 At the same time, the overlapping velocity fields of multiple dyons give rise
 to an effective vector interaction that scales as $1/r$ and can, in principle,
 be matched to the EIH velocity-dependent terms.
@@ -227,7 +202,7 @@ density-dependent mass generates the static $G^2$ three-body term, construct
 the vector interaction from overlapping translational wakes, and derive the
 conditions under which the resulting tensor structure matches the EIH
 Lagrangian.
-In parallel with the scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2}
+In parallel with the scalar ($q=1$)~\cite{Norris:2025Orbits} and optical ($n=5$)~\cite{Norris:Paper2}
 sectors fixed in Papers~I and~II, the EIH cross-term coefficients alone fix the
 translational wake that supplies the mixed-velocity terms: the isotropic
 projector decomposition yields a real wake mixing $\alpha^2=3/4$ (with minimal
@@ -235,8 +210,8 @@ $a_H=0$) and overall coupling $K=2/\pi^2$.
 Rather than signaling an instability, the multi-body sector thus selects a
 specific hydrodynamic response for the vacuum.
 
-Finally, Section~\ref{sec:discussion} summarizes how the three papers in this
-series collectively reproduce the full 1PN phenomenology of GR within the toy
+Finally, Section~\ref{sec:discussion} summarizes how Papers~I and~II together
+with the present work reproduce the full 1PN phenomenology of GR within the toy
 superfluid universe, discusses the limitations of this construction, and
 outlines directions for extending the model to higher PN orders, radiative
 effects, and the electromagnetic sector.
@@ -472,7 +447,7 @@ scalar sink and vortex ring together reproduce the GR Lense--Thirring
 field, and we will show how the interaction of their flows generates
 the full EIH 1PN Lagrangian, fixing the translational wake parameters to
 ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) once the $q=1$ scalar background from
-Paper~I~\cite{Norris:Paper1} and stiff $n=5$ optical sector from
+Paper~I~\cite{Norris:2025Orbits} and stiff $n=5$ optical sector from
 Paper~II~\cite{Norris:Paper2} are taken into account.
 
 \section{Spin and the Lense--Thirring Effect}
@@ -549,8 +524,9 @@ and in the far field the velocity field takes the form of a dipole:
   \qquad r \gg R.
   \label{eq:backflow}
 \end{equation}
-This has the desired $1/r^3$ radial scaling and the right
-$\bm{\Omega}\times\mathbf{r}$ structure to mimic the GR
+This has the desired dipolar structure $\propto \bm{\Omega}\times\mathbf{r}/r^3$
+(Cartesian components $\propto 1/r^2$) and the right
+$\bm{\Omega}\times\mathbf{r}$ angular dependence to mimic the GR
 gravitomagnetic vector potential locally.
 However, when used as the building block for an $N$-body interaction
 it behaves too much like a rigid rotation of the bulk: the overlap
@@ -572,23 +548,29 @@ bound together on the same throat.
 The scalar sink is exactly the one used in Papers~I and~II: it
 removes fluid from the bulk and sources the effective potential
 $\Phi(r)$.
-The new ingredient is a circular vortex ring of radius $a$ that
-encircles the throat and carries circulation $\Gamma$.
-Far from the core, at radii $r \gg a$, the flow generated by the
-vortex ring is indistinguishable from that of a pointlike \emph{vortex
-dipole} aligned with the ring axis.
+The new ingredient is a localized vortical core that carries the
+defect's spin and sources a long-range azimuthal flow.
+In this paper we take the far-zone behavior of that flow as a
+phenomenological requirement imposed by matching the weak-field Kerr
+gravitomagnetic potential (equivalently the Lense--Thirring observable);
+the microscopic/topological origin of such a defect is deferred.
 In spherical coordinates $(r,\theta,\phi)$ with the $z$–axis chosen
-along the angular momentum $\mathbf{J}$, the leading-order azimuthal
-velocity takes the form
+along the angular momentum $\mathbf{J}$, we define the far-zone
+\emph{physical} azimuthal speed by
 \begin{equation}
   v_\phi(r,\theta)
-  = \frac{D}{r^3}\,\sin\theta
-  + \mathcal{O}\!\left(\frac{a^2}{r^5}\right),
+  = \frac{D}{r^2}\,\sin\theta,
+  \qquad (r\gg a),
   \label{eq:vphi-dyon}
 \end{equation}
-where $D$ is a dipole strength proportional to $\Gamma a^2$.
-The corresponding vorticity is localized near the throat and decays
-rapidly at large radii.
+where $D$ is an effective spin-flow strength fixed by matching the Kerr
+weak-field gravitomagnetic potential.
+In these coordinates one should also distinguish physical and covariant
+azimuthal components: $v_{\phi}^{\text{(cov)}} = r\sin\theta\,
+v_{\phi}^{\text{(phys)}}$, so $v_\phi^{\text{(phys)}}\propto 1/r^2$
+implies $v_{\phi}^{\text{(cov)}}\propto 1/r$, consistent with the Kerr
+weak-field scaling $g_{0\phi}\propto \sin^2\theta/r$ and hence
+$\Omega\propto 1/r^3$.
 
 To connect this flow to gravitomagnetism we use the same acoustic
 metric dictionary as in the scalar and optical sectors.
@@ -629,7 +611,7 @@ of the form
 \end{equation}
 for some dimensionless constant $\alpha_D$.
 Matching this to the GR expression fixes the relation between the
-vortex dipole strength $D$ and the physical angular momentum
+dyon spin-flow strength $D$ and the physical angular momentum
 $\mathbf{J}$:
 \begin{equation}
   D = \frac{4G}{c^2}\,J,
@@ -686,7 +668,7 @@ the strength of the gravitomagnetic coupling.
 From the standpoint of the toy model, the spin sector introduces no
 new continuous parameters beyond the physical angular momentum
 $\mathbf{J}$ of each defect.
-The mapping between $J$ and the vortex dipole strength $D$ in
+The mapping between $J$ and the dyon spin-flow strength $D$ in
 Eq.~\eqref{eq:D-calibration} is fixed by the requirement that the
 far-field gravitomagnetic potential match the Kerr limit of GR.
 Given this calibration, the same dyon construction determines:
@@ -838,7 +820,7 @@ where $m_{A,0}$ is the bare mass, $\Phi_{\text{loc}}$ is the local
 effective potential generated by all other defects and the background
 vacuum, and $\kappa_\rho$ is a dimensionless density–depletion
 coefficient fixed by the cavitation analysis of Paper~I.
-In the calibration used throughout Papers~I–III one has
+In the calibration used throughout Papers~I and~II and the present work one has
 $\kappa_\rho = 1$, which ensures that the resulting static $G^2$
 three–body term matches the Einstein--Infeld--Hoffmann coefficient
 associated with the PPN parameter $\beta_{\mathrm{PPN}}=1$.
@@ -1038,8 +1020,8 @@ Mathematica script \texttt{mathematica/1pn\_spin\_and\_nbody/n\_body.wl}.
 \label{subsec:nbody-signature}
 
 The matching in Sec.~\ref{subsec:nbody-derivation} fixes the relative weight
-of the longitudinal (compressible) and transverse (shear) components of the
-\emph{translational} wake.  The required value $\alpha^2=3/4$ is real, so the
+of the longitudinal (compressible) and transverse (solenoidal/vortical) components of the
+\emph{translational} wake.\footnote{Here ``transverse'' is meant in the Fourier--projector sense, $\mathbf{k}\cdot\mathbf{u}_T=0$: a solenoidal (vortical) wake component sourced by defect circulation, not an elastic shear modulus.}  The required value $\alpha^2=3/4$ is real, so the
 corresponding quadratic wake functional is positive-definite in the usual
 Euclidean hydrodynamic sense.
 
@@ -1052,8 +1034,14 @@ terms are governed by the translational wake response.
 The remaining physical hypothesis is dynamical rather than algebraic:
 the medium must support a long-range translational wake with Fourier scaling
 $u(\mathbf{k})\propto 1/k$ (equivalently, $u(\mathbf{x})\propto 1/r^2$) so that
-the overlap energy produces a $1/r$ interaction at 1PN order.  Whether a stiff
-vacuum equation of state (such as the $n=5$ polytrope inferred in
+the overlap energy produces a $1/r$ interaction at 1PN order.
+Unlike the $1/r^3$ dipolar disturbance produced by a translating impermeable rigid
+inclusion in potential flow (schematically $\delta\mathbf{v}\sim a^3\mathbf{U}/r^3$), this
+$1/r^2$ scaling is consistent with a defect that continuously exchanges mass/flux
+with the vacuum---an effective sink, i.e.\ a monopole-type far-field flow in the effective 3D description.
+In the throat picture, this corresponds to exchange with a bulk reservoir rather
+than literal mass nonconservation in a closed fluid.
+Whether a stiff vacuum equation of state (such as the $n=5$ polytrope inferred in
 Paper~II~\cite{Norris:Paper2}) naturally generates this response is a question
 for the PDE-level simulations.  In the present work we show that \emph{if} such
 wakes exist, their tensor structure can reproduce the EIH interaction with
@@ -1073,7 +1061,7 @@ $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 It is useful to summarize the structure of the construction and the
 status of the free parameters.
 
-In Paper~I~\cite{Norris:Paper1}, the focus was on orbital dynamics in
+In Paper~I~\cite{Norris:2025Orbits}, the focus was on orbital dynamics in
 the static, spherically symmetric sector.
 A scalar lag field and a position-dependent kinetic prefactor
 $\sigma(r)$ were introduced to model how defects move relative to the
@@ -1175,7 +1163,7 @@ handful of hydrodynamic response parameters of a single medium.
 The fact that these parameters can be chosen once and for all to
 reproduce the GR phenomenology suggests that the superfluid-defect
 picture captures a nontrivial subset of metric EFTs.
-At the same time, the requirement that the scalar ($q=1$)~\cite{Norris:Paper1}
+At the same time, the requirement that the scalar ($q=1$)~\cite{Norris:2025Orbits}
 and stiff optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail with the
 translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) indicates that
 not every classical fluid admits such an interpretation: the vacuum
@@ -1217,9 +1205,10 @@ translational wake response.
 A more microscopic model of the throat---for example, one rooted in a
 condensed-matter analogue or in a specific quantum field theory of
 the vacuum---could clarify whether the required thermodynamic choices
-($q=1$, $n=5$)~\cite{Norris:Paper1,Norris:Paper2} and wake tuning
+($q=1$, $n=5$)~\cite{Norris:2025Orbits,Norris:Paper2} and wake tuning
 ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) arise naturally or must be imposed by
 hand.
+Future work will investigate whether these specific values---especially $n=5$ and $\alpha^2=3/4$---arise from throat boundary conditions in a higher-dimensional (brane--bulk) construction, with defect mass and spin expressed as flux integrals of the underlying geometry.
 
 Fourth, we have so far considered only uncharged, purely gravitational
 defects.
@@ -1278,7 +1267,7 @@ Precision ephemerides in the solar system and timing observations of
 pulsar binaries already test the EIH tensor structure to high
 accuracy.
 Since the superfluid model reproduces this structure only when the
-scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail
+scalar ($q=1$)~\cite{Norris:2025Orbits} and optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail
 with the translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$),
 improved measurements of velocity-dependent effects in multi-body systems can
 be interpreted as tests of this specific hydrodynamic response.
@@ -1297,216 +1286,68 @@ of curved spacetime.
 
 \appendix
 
-\section{Vortex ring / dyon flow details}
+\section{Dyon far-field flow and gravitomagnetic calibration}
 \label{app:dyon-flow}
 
-In this appendix we collect the basic formulas for the flow generated
-by a circular vortex ring and show how its far-field behavior reduces
-to the dipolar form used in Sec.~\ref{sec:spin}.  We then spell out
-the mapping between the vortex strength and the physical angular
-momentum $J$ of a dyon, leading to the calibration quoted in
-Eq.~\eqref{eq:D-calibration}.
+This appendix records only an effective far-field definition and calibration of
+the dyon spin flow used in Sec.~\ref{sec:spin}.
+In this paper we define the dyon's far-zone behavior by matching to the GR
+weak-field Kerr/Lense--Thirring sector; the microscopic or topological origin
+of such a defect is deferred.
 
-\subsection{Circular vortex ring and far-field expansion}
+\subsection{GR target}
 
-Consider a circular vortex ring of radius $a$ lying in the
-$x$--$y$ plane and centered at the origin, with circulation $\Gamma$
-and symmetry axis along the $z$–direction.
-The vorticity is confined to the ring core and is tangent to the
-ring; outside the core the flow is incompressible and irrotational,
+The weak-field Kerr gravitomagnetic potential can be written as
 \begin{equation}
-  \bm{\nabla}\cdot\mathbf{v} = 0,
-  \qquad
-  \bm{\nabla}\times\mathbf{v} = \mathbf{0}
-  \quad\text{for } r \gg a.
+  g_{0i}^{\rm (GR)}
+  = -\frac{2G}{c^3}\,
+    \epsilon_{ijk}\,\frac{J^j x^k}{r^3},
+  \label{eq:app-g0i-GR}
 \end{equation}
-In this regime the velocity field $\mathbf{v}(\mathbf{x})$ can be
-expressed in terms of a vector potential $\mathbf{A}$,
-\begin{equation}
-  \mathbf{v} = \bm{\nabla}\times\mathbf{A},
-\end{equation}
-where $\mathbf{A}$ obeys a Poisson equation sourced by the vorticity
-on the ring.
-The structure is identical to the magnetostatic field of a circular
-current loop, with $\mathbf{v}$ playing the role of the magnetic
-field and the vorticity replacing the current density.
+which implies the familiar spherical-component scaling
+$g_{0\phi}\propto \sin^2\theta/r$ and hence
+$\bm{\Omega}_{\text{LT}}\propto 1/r^3$.
 
-At distances large compared to the ring radius, $r\equiv|\mathbf{x}|
-\gg a$, the vortex ring can be replaced by its leading multipole
-moment, a pointlike \emph{vortex dipole}.
-In spherical coordinates $(r,\theta,\phi)$ with the $z$–axis along
-the ring axis, the dominant contribution to the flow is purely
-azimuthal and takes the form
-\begin{equation}
-  v_\phi(r,\theta)
-  = \frac{D}{r^3}\,\sin\theta
-  + \mathcal{O}\!\left(\frac{a^2}{r^5}\right),
-  \label{eq:vphi-app}
-\end{equation}
-where $D$ is a dipole strength proportional to $\Gamma a^2$.
-More explicitly, the multipole expansion of the Biot--Savart integral
-for a circular loop yields
-\begin{equation}
-  D = \frac{\Gamma a^2}{2},
-  \label{eq:D-Gamma-a}
-\end{equation}
-up to a convention-dependent numerical factor that can be absorbed
-into the overall normalization of the flow.
+\subsection{Acoustic mapping + required flow}
 
-The corresponding streamlines are the familiar ``smoke ring''
-pattern: near the ring the flow circulates around the core, while in
-the far field the motion is dominated by a dipolar swirl around the
-axis.
-In particular, the angular dependence in Eq.~\eqref{eq:vphi-app}
-matches the structure $\bm{\Omega}\times\mathbf{r}$ expected for a
-rigid rotation pattern at large distances, but with an amplitude that
-falls as $1/r^3$ rather than remaining constant.
-
-\subsection{Effective angular velocity and vorticity}
-
-For later use it is convenient to define an effective angular
-velocity $\bm{\omega}_{\text{eff}}(\mathbf{r})$ associated with the
-vortex dipole.
-At fixed polar angle $\theta$, the tangential speed at radius $r$ is
-$v_\phi(r,\theta)$, so the local angular velocity around the $z$–axis
-is
-\begin{equation}
-  \omega_{\text{eff}}(r,\theta)
-  \equiv \frac{v_\phi(r,\theta)}{r\sin\theta}
-  = \frac{D}{r^4}
-  + \mathcal{O}\!\left(\frac{a^2}{r^6}\right).
-\end{equation}
-This quantity characterizes the swirl of the fluid around the axis;
-it decays as $1/r^4$ and should be distinguished from the
-gravitomagnetic precession rate, which depends on the curl of the
-vector potential rather than directly on the flow.
-
-The vorticity $\bm{\omega} = \bm{\nabla}\times\mathbf{v}$ is
-concentrated near the ring core and decays rapidly away from it.
-In the far zone $r\gg a$ the vorticity is negligible and the flow is
-effectively irrotational, consistent with the multipole expansion
-picture.
-
-\subsection{Acoustic vector potential and gravitomagnetic mapping}
-
-To connect the dyon flow to the effective metric, we use the same
-acoustic dictionary as in the main text.
-At leading order in the flow speed, the off--diagonal part of the
-effective line element can be written as
+As in the main text, we take the off-diagonal metric term to be sourced by an
+effective vector potential $\mathbf{A}_{\text{eff}}$ proportional to the bulk
+flow $\mathbf{v}$,
 \begin{equation}
   \dd s^2
-  \supset -\frac{4}{c^3}\,\mathbf{A}_{\text{eff}}\cdot\dd\mathbf{x}\,\dd t,
+  \supset - \frac{4}{c^3}\,\mathbf{A}_{\text{eff}}\cdot\dd\mathbf{x}\,\dd t,
+  \qquad
+  \mathbf{A}_{\text{eff}}(\mathbf{r})=\kappa\,\rho_0\,\mathbf{v}(\mathbf{r}),
 \end{equation}
-with
-\begin{equation}
-  \mathbf{A}_{\text{eff}}(\mathbf{r})
-  = \kappa\,\rho_0\,\mathbf{v}(\mathbf{r}),
-  \label{eq:Aeff-def}
-\end{equation}
-where $\rho_0$ is the far-field density and $\kappa$ is a
-dimensionless constant determined by the underlying microphysics.
-Inserting the dipole flow of Eq.~\eqref{eq:vphi-app} into
-Eq.~\eqref{eq:Aeff-def} yields an effective vector potential of the
-form
-\begin{equation}
-  \mathbf{A}_{\text{eff}}(\mathbf{r})
-  = \frac{\tilde{D}}{r^2}\,\sin\theta\,\hat{\bm{\phi}}
-  + \mathcal{O}\!\left(\frac{a^2}{r^4}\right),
-\end{equation}
-with $\tilde{D} = \kappa\rho_0 D$.
+with $\rho_0$ the far-field density and $\kappa$ a constant fixed by the
+hydrodynamic dictionary used throughout the paper.
 
-It is often more transparent to express $\mathbf{A}_{\text{eff}}$ in
-a form directly analogous to the vector potential of a magnetic
-dipole.
-Writing $\mathbf{J}$ for the physical angular momentum of the dyon
-and choosing the $z$–axis along $\mathbf{J}$, one can show that the
-far-field potential can be written as
+The phenomenological far-zone azimuthal flow used for the dyon is
 \begin{equation}
-  \mathbf{A}_{\text{eff}}(\mathbf{r})
-  = \frac{\lambda}{r^3}\,\mathbf{J}\times\mathbf{r}
-  + \mathcal{O}\!\left(\frac{a^2}{r^5}\right),
-  \label{eq:Aeff-J-cross-r}
+  v_\phi(r,\theta)=\frac{D}{r^2}\sin\theta,
 \end{equation}
-for some constant $\lambda$ proportional to $D$.
+where $v_\phi$ is the \emph{physical} azimuthal speed and $D$ is an effective
+spin-flow strength.
+In spherical coordinates the corresponding covariant component carries an
+additional factor,
+\begin{equation}
+  v_{\phi}^{\text{(cov)}} = r\sin\theta\, v_{\phi}^{\text{(phys)}},
+\end{equation}
+so $v_\phi^{\text{(phys)}}\propto 1/r^2$ implies
+$v_{\phi}^{\text{(cov)}}\propto 1/r$, consistent with the Kerr scaling
+$g_{0\phi}\propto \sin^2\theta/r$.
 
-The corresponding contribution to the effective metric is
-\begin{equation}
-  g_{0i}^{\text{(dyon)}}
-  = -\frac{2}{c^3}\,A_{\text{eff},i}
-  = -\frac{2\lambda}{c^3}\,
-    \epsilon_{ijk}\,\frac{J^j x^k}{r^3},
-\end{equation}
-which can be compared directly to the GR gravitomagnetic potential
-for a slowly spinning mass,
-\begin{equation}
-  g_{0i}^{\text{(GR)}}
-  = -\frac{2G}{c^3}\,
-    \epsilon_{ijk}\,\frac{J^j x^k}{r^3}
-  + \mathcal{O}(J^2).
-\end{equation}
-Matching these two expressions fixes the constant $\lambda$,
-\begin{equation}
-  \lambda = G,
-\end{equation}
-and hence relates the dipole strength $D$ and the physical angular
-momentum $J$.
+\subsection{Calibration}
 
-Using Eq.~\eqref{eq:Aeff-def} and Eq.~\eqref{eq:Aeff-J-cross-r}, we
-can write
+With the above dictionary, matching the dyon-induced $g_{0i}$ to the GR target
+\eqref{eq:app-g0i-GR} fixes the same spin calibration used in the main text,
 \begin{equation}
-  \kappa\rho_0 D
-  = \lambda\,J
-  = GJ,
+  D=\frac{4G}{c^2}J,
 \end{equation}
-so that
-\begin{equation}
-  D
-  = \frac{GJ}{\kappa\rho_0}.
-\end{equation}
-In the main text we absorb the microscopic factors $\kappa$ and
-$\rho_0$ into the definition of $D$ and choose conventions such that
-\begin{equation}
-  D = \frac{4GJ}{c^2},
-\end{equation}
-which is Eq.~\eqref{eq:D-calibration}.
-With this calibration, the dyon flow reproduces the weak-field Kerr
-gravitomagnetic potential and the associated Lense--Thirring
-precession observables.
-
-\subsection{Gyroscope and orbital plane precession}
-
-For completeness, we briefly summarize how the calibrated dyon flow
-reproduces the standard Lense--Thirring precession.
-Given $g_{0i}$ in the form
-\begin{equation}
-  g_{0i}
-  = -\frac{2G}{c^3}\,
-    \epsilon_{ijk}\,\frac{J^j x^k}{r^3},
-\end{equation}
-the gravitomagnetic precession vector for a gyroscope at position
-$\mathbf{r}$ is
-\begin{equation}
-  \bm{\Omega}_{\text{LT}}(\mathbf{r})
-  = \frac{G}{c^2 r^3}
-    \left[3(\mathbf{J}\cdot\hat{\mathbf{r}})\,\hat{\mathbf{r}}
-          - \mathbf{J}\right],
-\end{equation}
-and the gyroscope spin $\mathbf{S}$ obeys
-\begin{equation}
-  \frac{\dd\mathbf{S}}{\dd t}
-  = \bm{\Omega}_{\text{LT}}\times\mathbf{S}.
-\end{equation}
-Likewise, the nodal precession rate of a nearly circular orbit of
-radius $r$ around a central spinning dyon with spin $J$ aligned with
-the $z$–axis is
-\begin{equation}
-  \dot{\Omega}_{\text{node}}
-  = \frac{2GJ}{c^2 r^3},
-\end{equation}
-in agreement with the GR Lense--Thirring prediction.
-These results follow directly from the calibrated form of
-$g_{0i}^{\text{(dyon)}}$ and provide the observational content of the
-dyon construction in the spin sector.
+so the dyon spin-flow strength is not a new free parameter once the physical
+spin $J$ is specified.
+This appendix therefore serves only to state the effective far-field definition
+and calibration; deeper microscopic explanations are left to future work.
 
 \section{Static non-linearity derivation}
 \label{app:static-derivation}
@@ -1840,11 +1681,13 @@ For clarity, the translational-wake tuning proceeds as follows:
 In this appendix we briefly summarize how the effective metric of the
 superfluid toy universe maps onto the Einstein--Infeld--Hoffmann
 (EIH) Lagrangian, and how the parameter choices made across
-Papers~I--III ensure consistency with the standard post-Newtonian
+Papers~I and~II and the present work ensure consistency with the standard post-Newtonian
 (PN) expansion of GR.
 The goal is not to reproduce the full EIH derivation, but to show how
-the scalar, optical, and vector sectors combine into a single metric
-whose PN expansion yields the same 1PN dynamics.
+the scalar, optical, and vector sectors combine into a consistent set of
+effective 1PN metric data (an effective PN metric for the calibrated dynamics),
+even though the underlying acoustic (optical) and hydrodynamic (matter)
+projections need not coincide (bi-metric structure).
 
 \subsection{Metric ansatz and PN expansion}
 
@@ -1873,7 +1716,7 @@ in GR one has $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 In the superfluid defect model, the effective metric arises from the
 scalar potential $\Phi$ and inertia profile $\sigma(r)$ (Papers~I),
 the refractive index $N(r)$ of the $n=5$ vacuum (Paper~II), and the
-dyon flow $\mathbf{v}(\mathbf{x})$ (Paper~III).
+dyon flow $\mathbf{v}(\mathbf{x})$ (this paper).
 Schematically, the mapping can be written as
 \begin{align}
   g_{00}
@@ -1913,6 +1756,8 @@ from Paper~I, one obtains
   \qquad
   \gamma_{\mathrm{PPN}} = 1.
 \end{equation}
+(Here $\gamma_{\mathrm{PPN}}$ denotes the value inferred from optical
+observables after applying the dressing relation.)
 The present work extends this dictionary to include $g_{0i}$ via the
 dyon flow and thereby fixes the vector potential $V_i$ that appears
 in the EIH Lagrangian.
@@ -1974,9 +1819,10 @@ in Eq.~\eqref{eq:EIH_target}.
 
 In the superfluid model, the scalar and optical sectors ensure that
 $U$ behaves as in GR at 1PN order, while the dyon construction
-ensures that $V_i$ has the correct dipolar structure and $1/r^3$
-falloff around individual spinning masses.
-The nontrivial work in Paper~III is to show that, once the vector
+ensures that $V_i$ has the dipolar structure
+$V_i\propto \epsilon_{ijk}J^j x^k/r^3$ (Cartesian components $\propto 1/r^2$) around
+individual spinning masses.
+The nontrivial work in this paper is to show that, once the vector
 interaction arising from overlapping translational wakes is projected onto an
 $1/r_{AB}$ kernel, the resulting coefficients of
 $\mathbf{v}_A\cdot\mathbf{v}_B$ and
@@ -1999,14 +1845,16 @@ consistency of the emergent metric across different sectors:
         bending, Shapiro delay, and redshift, which depend on the
         combination of $g_{00}$ and $g_{ij}$ through the optical
         metric constructed from $N(r)$.
-  \item Paper~III effectively fixes the vector-sector PPN parameter
+  \item This paper effectively fixes the vector-sector PPN parameter
         (the analogue of $\alpha_1$ in some PPN conventions) by
         matching the EIH velocity-dependent tensor structure, which
         depends on $g_{0i}$ and its relation to the flow.
 \end{itemize}
 
 In all three cases the matching conditions are applied to the
-\emph{same} underlying metric, parameterized by a handful of
+\emph{same} underlying medium response, whose acoustic (optical) and hydrodynamic
+(matter) projections can be packaged into consistent effective 1PN
+metric data once calibrated, parameterized by a handful of
 hydrodynamic response coefficients: the throat geometry ($L/a$), the
 scalar renormalization parameter ($\beta$ in the defect Lagrangian),
 the polytropic index ($n$), and the longitudinal/transverse mixing in
@@ -2030,13 +1878,14 @@ metric components and EIH terms:
 
   \item[Optical sector ($g_{ij}$):]
     The $n=5$ refractive index profile $N(r)$ yields an effective
-    spatial metric with $\gamma_{\text{eff}}=1$, reproducing the 1PN
-    light-bending and Shapiro-delay coefficients and entering the
-    $v^2 U$ terms in the EIH Lagrangian.
+    spatial metric with $\gamma_{\text{eff}}=1$ inferred from the optical
+    metric/observables, reproducing the 1PN light-bending and
+    Shapiro-delay coefficients and entering the $v^2 U$ terms in the
+    EIH Lagrangian.
 
   \item[Vector sector ($g_{0i}$):]
     The translational wake and its overlap kernel define the vector potential
-    $V_i$ and hence $g_{0i}$. Once the scalar ($q=1$)~\cite{Norris:Paper1} and optical
+    $V_i$ and hence $g_{0i}$. Once the scalar ($q=1$)~\cite{Norris:2025Orbits} and optical
     ($n=5$)~\cite{Norris:Paper2} contributions are included, the EIH matching conditions
     fix the wake parameters to $a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$, as
     summarized in Sec.~\ref{subsec:nbody-derivation}. With this choice, the
@@ -2055,17 +1904,17 @@ approximations considered in this series.
 
 \begin{thebibliography}{99}
 
-\bibitem{Norris:Paper1}
+\bibitem{Norris:2025Orbits}
 Norris, T. (2025).
-\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
+\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+\newblock \href{https://doi.org/10.5281/zenodo.17875005}{doi:10.5281/zenodo.17875005}.
 
 \bibitem{Norris:Paper2}
 Norris, T. (2025).
 \newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+\newblock \href{https://doi.org/10.5281/zenodo.17918131}{doi:10.5281/zenodo.17918131}.
 
 \end{thebibliography}
 

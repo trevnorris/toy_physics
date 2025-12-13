@@ -41,54 +41,17 @@ in a Superfluid Defect Toy Model}
 \maketitle
 
 \begin{abstract}
-We complete a three–paper program that tests how far a minimal
-superfluid--defect toy universe can reproduce the 1PN phenomenology
-of General Relativity (GR).
-In this model the vacuum is a compressible superfluid and massive
-bodies are flux–tube defects (``throats'') that drain the medium.
-Paper~I showed that, in the static single–body limit, the scalar lag
-field relaxes so that the 1PN perihelion precession is generated
-entirely by a position–dependent inertia profile $\sigma(r)$, which
-fixes a single orbital parameter $\beta=3$.
-Paper~II modeled the vacuum as a stiff ($n=5$) polytropic fluid and
-showed that the induced refractive index $N(r)$ yields the GR
-coefficients for light bending, Shapiro delay, and redshift, with
-effective PPN parameters $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
+We extend our superfluid--defect toy universe to spin and full $N$--body dynamics at 1PN order.
+The vacuum is a compressible superfluid and massive bodies are flux--tube ``throat'' defects that exchange mass/flux with the medium (effective sinks in the 3D description).
+Earlier papers fixed the orbital sector ($\beta=3$)~\cite{Norris:2025Orbits} and selected a stiff $n=5$ equation of state from optical 1PN observables~\cite{Norris:Paper2}.
 
-Here we address spin and $N$–body dynamics.
-We promote defects to composite ``dyons'' in which a flux–tube sink
-is bound to a vortex ring in the surrounding superfluid.
-The far–field vorticity of a dyon defines a gravitomagnetic vector
-potential with the correct $J/r^3$ scaling to reproduce the
-Lense--Thirring effect, fixing the relation between vortex strength
-and angular momentum $J$ by matching to the Kerr weak–field limit.
-We then compute the interaction energy of overlapping dyon flows and
-show that their density–dependent masses generate the static $G^2$
-three–body term in the Einstein--Infeld--Hoffmann (EIH) Lagrangian.
-The remaining velocity--dependent \emph{cross} terms in the EIH
-Lagrangian arise from the overlap energy of \emph{translational wakes}
-sourced by moving defects.  Using the isotropic projector
-decomposition into transverse and longitudinal wake components (and an
-optional helical transverse mode), we show that the EIH cross--term
-tensor structure is reproduced with real parameters.  The minimal
-match sets the helical amplitude to zero ($a_H=0$) and fixes the
-longitudinal/transverse wake mixing to $\alpha^2=3/4$, with an overall
-coupling $K=2/\pi^2$.
-Thus the apparent need for an imaginary compressibility parameter in
-earlier drafts was an artifact of an incomplete translational wake
-basis rather than a physical instability.
-
-With this choice, the superfluid toy universe reproduces the full
-single–body and $N$–body 1PN dynamics of GR---including scalar,
-optical, spin, and vector effects---using a small, tightly
-constrained set of medium response parameters.
-We interpret this as evidence that a simple structured ``vacuum
-fluid'' can mimic the familiar curved--spacetime description at 1PN
-order, while highlighting a sharp constraint: the same stiff $n=5$
-equation of state and $q=1$ density--mass relation~\cite{Norris:Paper1} that control the
-orbital and optical sectors remain as independent constraints, while the
-translational wake decomposition independently provides a real, stable match to
-the EIH cross tensor.
+Here we promote defects to composite ``dyons'' (sink + vortex ring).
+Their far--field circulation defines a gravitomagnetic vector potential with the correct $J/r^3$ scaling, reproducing the Lense--Thirring effect and fixing the vortex--spin calibration by matching the Kerr weak--field limit.
+In the $N$--body problem, density--dependent masses reproduce the static $G^2$ three--body term of the Einstein--Infeld--Hoffmann (EIH) Lagrangian.
+The remaining velocity--dependent EIH cross terms arise from overlap energy of translational wakes.
+Using an isotropic projector decomposition into longitudinal and transverse solenoidal (vortical) components (with an optional helical mode), we match the full EIH cross--term tensor with real parameters: $a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$.
+The positive value $\alpha^2=3/4$ makes the quadratic wake functional positive--definite, showing that earlier imaginary couplings were artifacts of an incomplete wake basis.
+Subject to the dynamical requirement that moving sink defects generate a long--range wake $u\propto 1/r^2$ (equivalently $u(\mathbf{k})\propto 1/k$), the model reproduces GR's 1PN scalar, optical, spin, and vector dynamics while remaining consistent with the calibrated orbital sector and optical tests.
 \end{abstract}
 
 \section{Introduction}
@@ -102,6 +65,13 @@ Shapiro time delay, gravitational redshift, and the dynamics of weakly bound
 $N$-body systems---are often summarized in a single statement:
 the Schwarzschild solution of General Relativity (GR) with post-Newtonian (PN)
 parameters $\beta_{\mathrm{PPN}} = \gamma_{\mathrm{PPN}} = 1$ passes all currently accessible 1PN tests.
+Throughout this series we use $\beta_{\mathrm{PPN}}$ and $\gamma_{\mathrm{PPN}}$
+as shorthand for the values inferred from the standard 1PN observables.
+For optical tests we denote the optically inferred value by $\gamma_{\mathrm{obs}}$
+and identify $\gamma_{\mathrm{PPN}}\equiv\gamma_{\mathrm{obs}}$.
+In the toy model this observational equivalence does not require a single
+underlying bare metric: light and matter couple to distinct acoustic and
+hydrodynamic projections that are calibrated to agree at 1PN.
 From this vantage point, any alternative description of gravity must either
 reproduce the Schwarzschild metric in the appropriate weak-field limit or offer
 a comparably constrained and falsifiable mechanism by which the same observables
@@ -146,7 +116,7 @@ match.
 \subsection{Summary of Papers I and II}
 \label{subsec:intro-summary-papers12}
 
-Paper~I in this series~\cite{Norris:Paper1} developed the \emph{orbital} sector
+Paper~I in this series~\cite{Norris:2025Orbits} developed the \emph{orbital} sector
 of the toy universe.
 The vacuum was modeled as a compressible superfluid, and massive bodies as
 flux-tube ``throats'' of radius $a$ and depth $L$ that drain the surrounding
@@ -177,11 +147,14 @@ By constructing an effective optical metric from $N(r)$ and comparing to the
 Schwarzschild metric, the analysis showed that $n=5$ is uniquely selected
 (within the class considered) by the requirements of matching 1PN light
 bending, Shapiro time delay, and gravitational redshift.
-The resulting effective spacetime has effective PPN parameters
-$\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$ once the scalar and optical
-contributions are combined, so the toy model reproduces both the orbital and
-optical 1PN tests with no new free parameters beyond those already fixed by the
-scalar and optical sectors.
+As emphasized in Paper~II, this agreement is enforced at the level of
+calibrated 1PN observables (light bending, Shapiro delay, redshift, and
+perihelion precession), while the underlying acoustic (light) and
+hydrodynamic (matter) projections can differ (bi-metric structure).
+Once the scalar and optical contributions are combined and calibrated, the
+inferred PPN parameters satisfy $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$,
+so the toy model reproduces both the orbital and optical 1PN tests with no new
+free parameters beyond those already fixed by the scalar and optical sectors.
 
 Taken together, Papers I and II establish that a single superfluid-defect toy
 model can account for the scalar and optical 1PN tests of gravity with a small
@@ -227,7 +200,7 @@ density-dependent mass generates the static $G^2$ three-body term, construct
 the vector interaction from overlapping translational wakes, and derive the
 conditions under which the resulting tensor structure matches the EIH
 Lagrangian.
-In parallel with the scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2}
+In parallel with the scalar ($q=1$)~\cite{Norris:2025Orbits} and optical ($n=5$)~\cite{Norris:Paper2}
 sectors fixed in Papers~I and~II, the EIH cross-term coefficients alone fix the
 translational wake that supplies the mixed-velocity terms: the isotropic
 projector decomposition yields a real wake mixing $\alpha^2=3/4$ (with minimal
@@ -472,7 +445,7 @@ scalar sink and vortex ring together reproduce the GR Lense--Thirring
 field, and we will show how the interaction of their flows generates
 the full EIH 1PN Lagrangian, fixing the translational wake parameters to
 ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) once the $q=1$ scalar background from
-Paper~I~\cite{Norris:Paper1} and stiff $n=5$ optical sector from
+Paper~I~\cite{Norris:2025Orbits} and stiff $n=5$ optical sector from
 Paper~II~\cite{Norris:Paper2} are taken into account.
 
 \section{Spin and the Lense--Thirring Effect}
@@ -1038,8 +1011,8 @@ Mathematica script \texttt{mathematica/1pn\_spin\_and\_nbody/n\_body.wl}.
 \label{subsec:nbody-signature}
 
 The matching in Sec.~\ref{subsec:nbody-derivation} fixes the relative weight
-of the longitudinal (compressible) and transverse (shear) components of the
-\emph{translational} wake.  The required value $\alpha^2=3/4$ is real, so the
+of the longitudinal (compressible) and transverse (solenoidal/vortical) components of the
+\emph{translational} wake.\footnote{Here ``transverse'' is meant in the Fourier--projector sense, $\mathbf{k}\cdot\mathbf{u}_T=0$: a solenoidal (vortical) wake component sourced by defect circulation, not an elastic shear modulus.}  The required value $\alpha^2=3/4$ is real, so the
 corresponding quadratic wake functional is positive-definite in the usual
 Euclidean hydrodynamic sense.
 
@@ -1052,8 +1025,13 @@ terms are governed by the translational wake response.
 The remaining physical hypothesis is dynamical rather than algebraic:
 the medium must support a long-range translational wake with Fourier scaling
 $u(\mathbf{k})\propto 1/k$ (equivalently, $u(\mathbf{x})\propto 1/r^2$) so that
-the overlap energy produces a $1/r$ interaction at 1PN order.  Whether a stiff
-vacuum equation of state (such as the $n=5$ polytrope inferred in
+the overlap energy produces a $1/r$ interaction at 1PN order.
+Unlike the $1/r^3$ dipolar backflow of an impermeable rigid inclusion, this
+$1/r^2$ scaling is consistent with a defect that continuously exchanges mass/flux
+with the vacuum---an effective sink, i.e.\ a monopole-type far-field flow in the effective 3D description.
+In the throat picture, this corresponds to exchange with a bulk reservoir rather
+than literal mass nonconservation in a closed fluid.
+Whether a stiff vacuum equation of state (such as the $n=5$ polytrope inferred in
 Paper~II~\cite{Norris:Paper2}) naturally generates this response is a question
 for the PDE-level simulations.  In the present work we show that \emph{if} such
 wakes exist, their tensor structure can reproduce the EIH interaction with
@@ -1073,7 +1051,7 @@ $\beta_{\mathrm{PPN}}=\gamma_{\mathrm{PPN}}=1$.
 It is useful to summarize the structure of the construction and the
 status of the free parameters.
 
-In Paper~I~\cite{Norris:Paper1}, the focus was on orbital dynamics in
+In Paper~I~\cite{Norris:2025Orbits}, the focus was on orbital dynamics in
 the static, spherically symmetric sector.
 A scalar lag field and a position-dependent kinetic prefactor
 $\sigma(r)$ were introduced to model how defects move relative to the
@@ -1175,7 +1153,7 @@ handful of hydrodynamic response parameters of a single medium.
 The fact that these parameters can be chosen once and for all to
 reproduce the GR phenomenology suggests that the superfluid-defect
 picture captures a nontrivial subset of metric EFTs.
-At the same time, the requirement that the scalar ($q=1$)~\cite{Norris:Paper1}
+At the same time, the requirement that the scalar ($q=1$)~\cite{Norris:2025Orbits}
 and stiff optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail with the
 translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) indicates that
 not every classical fluid admits such an interpretation: the vacuum
@@ -1217,9 +1195,10 @@ translational wake response.
 A more microscopic model of the throat---for example, one rooted in a
 condensed-matter analogue or in a specific quantum field theory of
 the vacuum---could clarify whether the required thermodynamic choices
-($q=1$, $n=5$)~\cite{Norris:Paper1,Norris:Paper2} and wake tuning
+($q=1$, $n=5$)~\cite{Norris:2025Orbits,Norris:Paper2} and wake tuning
 ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$) arise naturally or must be imposed by
 hand.
+Future work will investigate whether these specific values---especially $n=5$ and $\alpha^2=3/4$---arise from throat boundary conditions in a higher-dimensional (brane--bulk) construction, with defect mass and spin expressed as flux integrals of the underlying geometry.
 
 Fourth, we have so far considered only uncharged, purely gravitational
 defects.
@@ -1278,7 +1257,7 @@ Precision ephemerides in the solar system and timing observations of
 pulsar binaries already test the EIH tensor structure to high
 accuracy.
 Since the superfluid model reproduces this structure only when the
-scalar ($q=1$)~\cite{Norris:Paper1} and optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail
+scalar ($q=1$)~\cite{Norris:2025Orbits} and optical ($n=5$)~\cite{Norris:Paper2} sectors dovetail
 with the translational wake tuning ($a_H=0$, $\alpha^2=3/4$, $K=2/\pi^2$),
 improved measurements of velocity-dependent effects in multi-body systems can
 be interpreted as tests of this specific hydrodynamic response.
@@ -1843,8 +1822,10 @@ superfluid toy universe maps onto the Einstein--Infeld--Hoffmann
 Papers~I--III ensure consistency with the standard post-Newtonian
 (PN) expansion of GR.
 The goal is not to reproduce the full EIH derivation, but to show how
-the scalar, optical, and vector sectors combine into a single metric
-whose PN expansion yields the same 1PN dynamics.
+the scalar, optical, and vector sectors combine into a consistent set of
+effective 1PN metric data (an effective PN metric for the calibrated dynamics),
+even though the underlying acoustic (optical) and hydrodynamic (matter)
+projections need not coincide (bi-metric structure).
 
 \subsection{Metric ansatz and PN expansion}
 
@@ -1913,6 +1894,8 @@ from Paper~I, one obtains
   \qquad
   \gamma_{\mathrm{PPN}} = 1.
 \end{equation}
+(Here $\gamma_{\mathrm{PPN}}$ denotes the value inferred from optical
+observables after applying the dressing relation.)
 The present work extends this dictionary to include $g_{0i}$ via the
 dyon flow and thereby fixes the vector potential $V_i$ that appears
 in the EIH Lagrangian.
@@ -2006,7 +1989,9 @@ consistency of the emergent metric across different sectors:
 \end{itemize}
 
 In all three cases the matching conditions are applied to the
-\emph{same} underlying metric, parameterized by a handful of
+\emph{same} underlying medium response, whose acoustic (optical) and hydrodynamic
+(matter) projections can be packaged into consistent effective 1PN
+metric data once calibrated, parameterized by a handful of
 hydrodynamic response coefficients: the throat geometry ($L/a$), the
 scalar renormalization parameter ($\beta$ in the defect Lagrangian),
 the polytropic index ($n$), and the longitudinal/transverse mixing in
@@ -2030,13 +2015,14 @@ metric components and EIH terms:
 
   \item[Optical sector ($g_{ij}$):]
     The $n=5$ refractive index profile $N(r)$ yields an effective
-    spatial metric with $\gamma_{\text{eff}}=1$, reproducing the 1PN
-    light-bending and Shapiro-delay coefficients and entering the
-    $v^2 U$ terms in the EIH Lagrangian.
+    spatial metric with $\gamma_{\text{eff}}=1$ inferred from the optical
+    metric/observables, reproducing the 1PN light-bending and
+    Shapiro-delay coefficients and entering the $v^2 U$ terms in the
+    EIH Lagrangian.
 
   \item[Vector sector ($g_{0i}$):]
     The translational wake and its overlap kernel define the vector potential
-    $V_i$ and hence $g_{0i}$. Once the scalar ($q=1$)~\cite{Norris:Paper1} and optical
+    $V_i$ and hence $g_{0i}$. Once the scalar ($q=1$)~\cite{Norris:2025Orbits} and optical
     ($n=5$)~\cite{Norris:Paper2} contributions are included, the EIH matching conditions
     fix the wake parameters to $a_H=0$, $\alpha^2=3/4$, and $K=2/\pi^2$, as
     summarized in Sec.~\ref{subsec:nbody-derivation}. With this choice, the
@@ -2055,17 +2041,17 @@ approximations considered in this series.
 
 \begin{thebibliography}{99}
 
-\bibitem{Norris:Paper1}
+\bibitem{Norris:2025Orbits}
 Norris, T. (2025).
-\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
+\newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+\newblock \href{https://doi.org/10.5281/zenodo.17875005}{doi:10.5281/zenodo.17875005}.
 
 \bibitem{Norris:Paper2}
 Norris, T. (2025).
 \newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+\newblock \href{https://doi.org/10.5281/zenodo.17918131}{doi:10.5281/zenodo.17918131}.
 
 \end{thebibliography}
 

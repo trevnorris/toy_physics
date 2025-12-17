@@ -24,6 +24,10 @@
 \newcommand{\vfluid}{\mathbf{v}_{\mathrm{fluid}}}
 \newcommand{\Afluid}{\mathbf{A}_{\mathrm{fluid}}}
 \newcommand{\Gam}{\Gamma}
+% Cavity-sector notation (avoid clashes with orbital $\beta$ and Paper~III wake $\alpha$)
+\newcommand{\acav}{\alpha_{\mathrm{cav}}}
+\newcommand{\bvac}{\beta_{\mathrm{vac}}}
+
 \newcommand{\Order}[1]{\mathcal{O}\left(#1\right)}
 
 \title{Electromagnetic Fields and Charged Defects\\
@@ -36,7 +40,7 @@ in a Superfluid Defect Toy Model}
 \maketitle
 
 \begin{abstract}
-We extend a previously developed superfluid defect toy model of gravity to include electromagnetism.  The vacuum is modeled as a compressible superfluid, and massive bodies are identified with throat-like flux-tube defects that drain the vacuum and may carry circulation.  In earlier work we showed that the acoustic metric of this fluid, together with suitable defect profiles, reproduces Newtonian gravity, $1$PN orbital dynamics, gravitational optics, spin precession, and the Einstein--Infeld--Hoffmann $N$-body Lagrangian.  Here we introduce a hydrodynamic dictionary that identifies an effective electromagnetic scalar and vector potential with combinations of the enthalpy and velocity fields, so that the magnetic field is proportional to vorticity and the electric field is minus the Euler acceleration.  With this identification the homogeneous Maxwell equations become kinematic identities, while the inhomogeneous equations follow from a sourced acoustic wave equation for the four-potential in Lorenz gauge, with dyon defects providing the four-current.  The static breathing mode of a defect throat generates a Coulomb $1/r$ potential with radius-independent Gauss flux, and the Lorentz force on charged defects is shown to coincide with the Magnus and pressure forces on vortices.  The same geometric data that determine the gravitational mass --- the throat radius, length, and circulation --- also fix the effective electric charge and imply an electromagnetic/gravitational force hierarchy that scales as $1/a^2$ with the throat radius.
+We extend a previously developed superfluid defect toy model of gravity to include electromagnetism.  The vacuum is modeled as a compressible superfluid, and massive bodies are identified with throat-like flux-tube defects that drain the vacuum and may carry circulation.  In earlier work we showed that the acoustic metric of this fluid, together with suitable defect profiles, reproduces Newtonian gravity, $1$PN orbital dynamics, gravitational optics, spin precession, and the Einstein--Infeld--Hoffmann $N$-body Lagrangian.  Here we introduce a hydrodynamic dictionary that identifies an effective electromagnetic scalar and vector potential with combinations of the enthalpy and velocity fields, so that the magnetic field is proportional to vorticity (confined to defect cores in the present irrotational-bulk limit) and the electric field is minus the Euler acceleration.  With this identification the homogeneous Maxwell equations become kinematic identities, while the inhomogeneous equations follow from a sourced acoustic wave equation for the four-potential in Lorenz gauge, with dyon defects providing the four-current.  The static breathing mode of a defect throat generates a Coulomb $1/r$ potential with radius-independent Gauss flux, and the Lorentz force on charged defects is shown to coincide with the Magnus and pressure forces on vortices.  The same geometric data that determine the gravitational mass --- the throat radius, length, and circulation --- also fix the effective electric charge and imply an electromagnetic/gravitational force hierarchy that scales as $1/a^2$ with the throat radius.
 \end{abstract}
 
 \section{Introduction}
@@ -44,9 +48,9 @@ We extend a previously developed superfluid defect toy model of gravity to inclu
 
 \subsection{Motivation and context}
 
-In a series of previous papers \cite{Norris:Paper1,Norris:Paper2,Norris:Paper3} we explored a simple but surprisingly rich toy model: a compressible superfluid ``vacuum'' supporting topological flux-tube defects.  The vacuum is described by a hydrodynamic enthalpy field $h$ and a flow velocity $\mathbf{v}$; massive bodies are identified with throat-like defects that drain the surrounding vacuum and, in general, carry circulation.  The central organizing idea is that the familiar weak-field phenomenology of general relativity (GR) can be re-expressed as an emergent long-wavelength description of this fluid-plus-defect system.
+In a series of previous papers \cite{Norris:2025Orbits,Norris:Paper2,Norris:Paper3} we explored a simple but surprisingly rich toy model: a compressible superfluid ``vacuum'' supporting topological flux-tube defects.  The vacuum is described by a hydrodynamic enthalpy field $h$ and a flow velocity $\mathbf{v}$; massive bodies are identified with throat-like defects that drain the surrounding vacuum and, in general, carry circulation.  The central organizing idea is that the familiar weak-field phenomenology of general relativity (GR) can be re-expressed as an emergent long-wavelength description of this fluid-plus-defect system.
 
-Paper~I \cite{Norris:Paper1} showed that suitable choices of the static enthalpy profile and a position-dependent kinetic prefactor are sufficient to reproduce Newtonian gravity and the full $1$PN corrections to orbital motion around a single defect, including the classical perihelion precession with the post-Newtonian parameter $\beta = 3/2$.  Paper~II \cite{Norris:Paper2} extended the construction to gravitational optics: by reinterpreting the acoustic metric of the superfluid as an effective optical metric, and treating defects as hydrodynamically dressed solitons, we obtained the GR light-bending and Shapiro delay coefficients at $1$PN order.  Paper~III \cite{Norris:Paper3} generalized the framework to spinning defects and interacting $N$-body configurations, deriving spin precession, Lense--Thirring frame dragging, and the Einstein--Infeld--Hoffmann (EIH) $N$-body Lagrangian from the same underlying hydrodynamics.
+Paper~I \cite{Norris:2025Orbits} showed that suitable choices of the static enthalpy profile and a position-dependent kinetic prefactor are sufficient to reproduce Newtonian gravity and the full $1$PN corrections to orbital motion around a single defect, including the classical perihelion precession with a calibrated $1$PN orbital coefficient $\beta = 3$.  Paper~II \cite{Norris:Paper2} extended the construction to gravitational optics: by reinterpreting the acoustic metric of the superfluid as an effective optical metric, and treating defects as hydrodynamically dressed solitons, we obtained the GR light-bending and Shapiro delay coefficients at $1$PN order.  Paper~III \cite{Norris:Paper3} generalized the framework to spinning defects and interacting $N$-body configurations, deriving spin precession, Lense--Thirring frame dragging, and the Einstein--Infeld--Hoffmann (EIH) $N$-body Lagrangian from the same underlying hydrodynamics.
 
 These results suggest that a large subset of weak-field GR is already encoded in the acoustic metric and wave equation of the superfluid.  However, the construction so far has been purely ``gravitational'': it accounts for mass, spin, and their $1$PN interactions, but it does not assign an intrinsic electric charge to defects or explain why the electromagnetic interaction is so much stronger than gravity at microscopic scales.  In this paper we extend the toy model to address these questions.  Our goal is not to propose a complete theory of everything, but to test how far one can go by insisting that electromagnetism is likewise an emergent hydrodynamic phenomenon of the same superfluid vacuum.
 
@@ -54,9 +58,9 @@ These results suggest that a large subset of weak-field GR is already encoded in
 
 For convenience we briefly summarize the aspects of Papers~I--III that we will build on here.
 
-In Paper~I \cite{Norris:Paper1} the vacuum was modeled as a compressible, barotropic superfluid with enthalpy $h(\rho)$ and a position-dependent kinetic prefactor $\sigma(r)$ multiplying the velocity-squared term in the effective action.  A single flux-tube defect was introduced as a sink of the vacuum with throat radius $a$ and asymptotic mass parameter $M$.  Requiring that the resulting scalar potential reproduce Newtonian gravity in the far field and the observed $1$PN perihelion precession uniquely fixed the form of $\sigma(r)$ and singled out a specific value of the PPN-like parameter $\beta = 3/2$.  The radial acoustic metric built from this background flow matched the $1$PN expansion of the Schwarzschild metric in isotropic coordinates.
+In Paper~I \cite{Norris:2025Orbits} the vacuum was modeled as a compressible, barotropic superfluid with enthalpy $h(\rho)$ and a position-dependent kinetic prefactor $\sigma(r)$ multiplying the velocity-squared term in the effective action.  A single flux-tube defect was introduced as a sink of the vacuum with throat radius $a$ and asymptotic mass parameter $M$.  The scalar sector was shown to reduce to Newtonian gravity in the static limit (outside the core), while the full $1$PN perihelion advance is recovered by a kinetic dressing $\sigma(r)=\beta\,GM/(c_s^2 r)$ with the calibrated coefficient $\beta=3$ (decomposable as $\beta=\kappa_\rho+\kappa_{\mathrm{add}}+\kappa_{\mathrm{PV}}=1+\tfrac12+\tfrac32$).
 
-Paper~II \cite{Norris:Paper2} reinterpreted the same acoustic metric as an effective optical metric for light and for soliton-like excitations propagating on the superfluid.  The vacuum equation of state was specialized to a stiff $n=5$ polytrope, which fixes the relationship between pressure, density, and sound speed in the far field.  By treating defects as dressed solitons and tracking how the background flow perturbs their dispersion relation, the paper derived the gravitational redshift, light-bending, and Shapiro time delay in the weak-field limit.  The effective optical metric constructed there is consistent with the $1$PN GR metric with PPN parameter $\gamma=1$.
+Paper~II \cite{Norris:Paper2} reinterpreted the same acoustic metric as an effective optical metric for light and for soliton-like excitations propagating on the superfluid.  The vacuum equation of state was specialized to a stiff $n=5$ polytrope, which fixes the relationship between pressure, density, and sound speed in the far field.  By treating defects as dressed solitons and tracking how the background flow perturbs their dispersion relation, the paper derived the gravitational redshift, light-bending, and Shapiro time delay in the weak-field limit.  Requiring the observed GR light-bending coefficient uniquely selected the stiff polytrope $n=5$ and implies the standard inferred value $\gamma_{\mathrm{obs}}=1$ from optical observables.  Comparing the orbital and optical sectors further yields a hydrodynamic dressing factor $D_{\mathrm{HD}}=\Psi_{\mathrm{orb}}/\Psi_{\mathrm{opt}}=3/4$, reflecting an explicitly bi-metric bare-potential structure beneath the calibrated $1$PN agreement.
 
 Paper~III \cite{Norris:Paper3} added spin and many-body interactions.  Spinning defects were modeled by adding a circulation component to the background flow, leading to a gravitomagnetic sector in the acoustic metric.  The resulting precession of embedded spin vectors matched the de~Sitter and Lense--Thirring precession rates at $1$PN order.  For multiple defects, the interaction of their overlapping flow fields generated an effective $N$-body Lagrangian whose $1$PN expansion coincides with the EIH Lagrangian of GR.  A key theme of Paper~III is that the same acoustic d'Alembertian $\Box$ built from the background flow governs both scalar and vector perturbations, unifying the 1PN dynamics under a single hydrodynamic wave operator.
 
@@ -107,14 +111,14 @@ The rest of the paper is organized as follows.  In Sec.~\ref{sec:model} we brief
 
 \subsection{Superfluid vacuum and flux-tube defects}
 
-We briefly recall the basic ingredients of the toy model developed in Refs.~\cite{Norris:Paper1,Norris:Paper2,Norris:Paper3}.  The ``vacuum'' is modeled as a compressible, irrotational superfluid with mass density $\rho(\mathbf{x},t)$, pressure $p(\rho)$, and enthalpy per unit mass
+We briefly recall the basic ingredients of the toy model developed in Refs.~\cite{Norris:2025Orbits,Norris:Paper2,Norris:Paper3}.  The ``vacuum'' is modeled as a compressible, irrotational superfluid with mass density $\rho(\mathbf{x},t)$, pressure $p(\rho)$, and enthalpy per unit mass
 \begin{equation}
 h(\rho) \equiv \int^{\rho} \frac{\dd p(\tilde{\rho})}{\tilde{\rho}^2}\,\dd\tilde{\rho},
 \end{equation}
 so that $\nabla h = \nabla p / \rho$ in the barotropic regime.  The flow velocity $\mathbf{v}(\mathbf{x},t)$ satisfies the usual continuity and Euler equations
 \begin{align}
 \partial_t \rho + \nabla \cdot (\rho \mathbf{v}) &= 0,
-\label{eq:continuity}\\[4pt]
+\label{eq:fluid-continuity}\\[4pt]
 \partial_t \mathbf{v} + (\mathbf{v} \cdot \nabla)\mathbf{v} &= -\nabla h,
 \label{eq:euler}
 \end{align}
@@ -126,7 +130,7 @@ In the absence of defects, the background vacuum is taken to be static and homog
 \end{equation}
 Perturbations about this state propagate as acoustic waves at speed $\cS$, and their dynamics can be recast in terms of an effective acoustic metric, as reviewed in Sec.~\ref{sec:model-acoustic} below.
 
-Massive bodies are identified with \emph{flux-tube defects} that act as sinks of the superfluid vacuum.  A single defect is characterized by a throat-like geometry with radius $a$ and length $L$, which we idealize as a cylindrical tube connecting distant regions of the fluid.  The defect drains vacuum fluid through the throat, sourcing a stationary inflow in the exterior region.  In Paper~I~\cite{Norris:Paper1} this inflow was tuned so that the effective scalar potential reproduces Newtonian gravity and its $1$PN corrections.
+Massive bodies are identified with \emph{flux-tube defects} that act as sinks of the superfluid vacuum.  A single defect is characterized by a throat-like geometry with radius $a$ and length $L$, which we idealize as a cylindrical tube connecting distant regions of the fluid.  The defect drains vacuum fluid through the throat, sourcing a stationary inflow in the exterior region.  In Paper~I~\cite{Norris:2025Orbits} this inflow was tuned so that the effective scalar potential reproduces Newtonian gravity and its $1$PN corrections.
 
 In addition to draining mass, a defect can carry circulation.  Let $\Gam$ denote the circulation of the background flow around the throat,
 \begin{equation}
@@ -139,7 +143,7 @@ At scales large compared to $a$ and $L$, an isolated defect is therefore describ
 \subsection{Effective acoustic metric and wave equation}
 \label{sec:model-acoustic}
 
-As reviewed in Refs.~\cite{Norris:Paper1,Norris:Paper2,Norris:Paper3}, linear perturbations of a barotropic, inviscid, irrotational flow can be described by an effective Lorentzian geometry.  Writing the velocity as $\mathbf{v} = \nabla \Phi$ for some velocity potential $\Phi$ in the irrotational sector, small perturbations of the potential $\varphi$ about a given background $(\rho_b,\mathbf{v}_b)$ obey a covariant wave equation
+As reviewed in Refs.~\cite{Norris:2025Orbits,Norris:Paper2,Norris:Paper3}, linear perturbations of a barotropic, inviscid, irrotational flow can be described by an effective Lorentzian geometry.  Writing the velocity as $\mathbf{v} = \nabla \Phi$ for some velocity potential $\Phi$ in the irrotational sector, small perturbations of the potential $\varphi$ about a given background $(\rho_b,\mathbf{v}_b)$ obey a covariant wave equation
 \begin{equation}
 \Box \varphi \equiv \frac{1}{\sqrt{-g}}\partial_\mu\left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu \varphi\right) = 0,
 \label{eq:acoustic-wave}
@@ -155,7 +159,7 @@ g_{\mu\nu} \propto
 \end{equation}
 with signature $(-,+,+,+)$, where $v_b^2 = \mathbf{v}_b\cdot\mathbf{v}_b$ and $\mathbf{I}$ is the $3\times 3$ identity matrix.  In the weak-flow limit $v_b \ll \cS$ this metric reduces to a small perturbation of Minkowski space with effective light speed $c \equiv \cS$.
 
-In Paper~I~\cite{Norris:Paper1} the background flow sourced by a static defect was chosen so that the associated acoustic metric reproduces the $1$PN expansion of the Schwarzschild metric.  In Paper~II~\cite{Norris:Paper2} the same structure was interpreted as an \emph{optical} metric governing the trajectories of light rays and solitons, yielding the standard $1$PN gravitational lensing and Shapiro delay coefficients.  Paper~III~\cite{Norris:Paper3} extended this picture to spinning defects and multi-defect configurations, where the off-diagonal components of $g_{\mu\nu}$ encode a gravitomagnetic sector and the full Einstein--Infeld--Hoffmann Lagrangian emerges from the same underlying hydrodynamics.
+In Paper~I~\cite{Norris:2025Orbits} the static scalar sector was shown to reduce to the Newtonian Poisson equation outside the core, while the full $1$PN orbital phenomenology was reproduced by a position-dependent kinetic dressing $\sigma(r)=\beta\,GM/(c_s^2 r)$ with the calibrated coefficient $\beta=3$.  In Paper~II~\cite{Norris:Paper2} the same superfluid background was reinterpreted as an \emph{optical} (acoustic) metric for light, and matching the GR lensing coefficient uniquely fixed the equation of state to a stiff $n=5$ polytrope (yielding $\gamma_{\mathrm{obs}}=1$ from optical observables).  Paper~III~\cite{Norris:Paper3} extended the construction to spinning and interacting defects, matching the de~Sitter/Lense--Thirring sector and the full Einstein--Infeld--Hoffmann $N$-body Lagrangian from the same underlying hydrodynamics (including density-dependent mass scaling with $\kappa_\rho=1$ and a stable wake basis with $\alpha^2=3/4$).
 
 For our purposes, the crucial points are:
 
@@ -357,18 +361,18 @@ V(a,L) = \pi a^2 L
 is the cavity volume.  The mode energy can be estimated as
 \begin{equation}
 E_{\mathrm{mode}}(a,L)
-\simeq \alpha\,\rho_0 c_s^2\,V(a,L)\,k^2
-= \alpha\,\rho_0 c_s^2\,\pi a^2 L
+\simeq \acav\,\rho_0 c_s^2\,V(a,L)\,k^2
+= \acav\,\rho_0 c_s^2\,\pi a^2 L
 \left(\frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2}\right),
 \label{eq:Emode-estimate}
 \end{equation}
-where $\alpha$ is a dimensionless constant of order unity that depends on the detailed mode structure, and we have used Eq.~\eqref{eq:kr-kz-def}.
+where $\acav$ is a dimensionless constant of order unity that depends on the detailed mode structure, and we have used Eq.~\eqref{eq:kr-kz-def}.
 
 Substituting Eq.~\eqref{eq:Emode-estimate} into Eq.~\eqref{eq:enthalpy-def} and collecting terms, the enthalpy can be written as
 \begin{equation}
 H(a,L) =
-\alpha\,\rho_0 c_s^2 \pi L\,x_{01}^2
-+ \alpha\,\rho_0 c_s^2 \pi a^2 \frac{\pi^2}{L}
+\acav\,\rho_0 c_s^2 \pi L\,x_{01}^2
++ \acav\,\rho_0 c_s^2 \pi a^2 \frac{\pi^2}{L}
 + P_{\mathrm{vac}} \pi a^2 L.
 \label{eq:H-structure}
 \end{equation}
@@ -380,7 +384,7 @@ Extremizing $H(a,L)$ with respect to $a$ and $L$ at fixed $\rho_0$, $c_s$, $P_{\
 \simeq 1.85,
 \label{eq:aspect-ratio}
 \end{equation}
-while leaving the overall scale of $a$ undetermined.  (The detailed derivation, including the dependence on $\alpha$ and $P_{\mathrm{vac}}$, is given in Appendix~\ref{app:cavity}.)  Equation~\eqref{eq:aspect-ratio} identifies a geometric ground state: for a given throat radius $a$, the enthalpy is minimized when the length $L$ is of order $1.85\,a$.
+while leaving the overall scale of $a$ undetermined.  (The detailed derivation, including the dependence on $\acav$ and $P_{\mathrm{vac}}$, is given in Appendix~\ref{app:cavity}.)  Equation~\eqref{eq:aspect-ratio} identifies a geometric ground state: for a given throat radius $a$, the enthalpy is minimized when the length $L$ is of order $1.85\,a$.
 
 We interpret this preferred aspect ratio as a structural property of the defect species: the microscopic physics that creates the throat and traps the mode has adjusted the geometry to minimize the enthalpy of the combined fluid-plus-mode configuration.  In what follows we will assume that $L/a$ is fixed to the value~\eqref{eq:aspect-ratio} for each species of defect, and treat $a$ as the primary length scale controlling both gravitational and electromagnetic couplings.
 
@@ -879,7 +883,7 @@ In this sense, the Lorentz force law is not an independent postulate but a hydro
 
 The central message of this paper is that, within the superfluid defect toy model developed in Papers~I--III, electromagnetism can be understood as another emergent sector of the same hydrodynamics that already reproduces weak-field gravity at $1$PN order.
 
-On the gravitational side, Papers~I--III showed that a compressible superfluid vacuum with suitable enthalpy profile and kinetic prefactor, together with throat-like defects that drain the vacuum, reproduces Newtonian gravity, post-Newtonian orbital corrections, gravitational optics, spin precession, and $N$-body EIH dynamics.  All of these phenomena are encoded in an acoustic metric $g_{\mu\nu}$ and a corresponding d'Alembertian $\Box$ acting on perturbations of the superfluid.
+On the gravitational side, Papers~I--III showed that a compressible superfluid vacuum with suitable enthalpy profile and kinetic prefactor, together with throat-like defects that drain the vacuum, reproduces Newtonian gravity, post-Newtonian orbital corrections, gravitational optics, spin precession, and $N$-body EIH dynamics.  In the updated interpretation of Papers~II--III, this agreement is enforced at the level of calibrated $1$PN observables, while the optical and orbital sectors correspond to distinct projections of the same underlying hydrodynamics (a bi-metric bare-potential structure) governed by the same wave operator $\Box$.
 
 On the electromagnetic side, the present work adds three ingredients:
 \begin{enumerate}
@@ -902,6 +906,8 @@ First, we have worked exclusively in a weak-field, quasi-static regime in which 
 
 Second, the core structure of the defects is idealized.  We treat the throat as a smooth cylindrical cavity with sharp boundaries and assign point-like sources $q\,\delta^3(\mathbf{x}-\mathbf{x}_d)$ to the defects.  In a more realistic microphysical description, the core region would have a finite thickness, possibly nontrivial internal degrees of freedom, and a breakdown of the continuum hydrodynamic description.  Our results should therefore be regarded as long-wavelength effective statements, valid at distances large compared to $a$ and $L$.
 
+Crucially, the assumption of a strictly irrotational superfluid vacuum ($\nabla \times \mathbf{v} = 0$) implies that the effective magnetic field $\mathbf{B}$ vanishes identically in the bulk fluid outside of defect cores.  While this successfully isolates the scalar gravitational sector, it limits the current electromagnetic analysis to electrostatics and contact forces (such as the Magnus effect experienced by a defect moving through a local flow).  The model as presented here does not yet support long-range magnetostatic interactions (the Biot--Savart law) or transverse electromagnetic waves in the vacuum, as these require non-zero vorticity or shear degrees of freedom that are absent in a simple irrotational bulk \cite{Norris:Paper3,Norris:Paper2}.
+
 Third, we have neglected radiation reaction and self-force effects in the equation of motion for dyons.  Accelerated charges in the toy model will generically emit waves in the superfluid, and the backreaction of this radiation on the defect motion could modify the Lorentz force at higher order.  Similarly, the gravitational sector includes only the standard $1$PN corrections; gravitational radiation and strong-field effects are outside the present scope.
 
 Fourth, we have not attempted to quantize the model.  The modes of the resonant cavity in the throat are treated classically, and the electromagnetic fields are treated as classical hydrodynamic variables.  The model therefore does not address the discrete spectra of charged particles, the existence of photons as quanta of the electromagnetic field, or the full structure of quantum electrodynamics.
@@ -921,6 +927,8 @@ A second direction is to couple the electromagnetic and gravitational sectors in
 A third avenue is to explore the \emph{quantum} aspects of the toy model.  If the superfluid admits a microscopic description in terms of underlying quanta (for example, in a condensed-matter analogue or a more speculative fundamental theory), then quantization of the acoustic modes and defect degrees of freedom might yield emergent photons and charged particles.  The resonant cavity picture of the throat suggests a natural setting for discrete charge and mass spectra, and it would be worthwhile to investigate whether quantization of the trapped modes can produce realistic charge quantization and spin.
 
 A fourth line of inquiry concerns the \emph{universality and uniqueness} of the hydrodynamic dictionary.  We have chosen a particular mapping from $(h,\mathbf{v})$ to $(\phi_{\mathrm{EM}},\mathbf{A})$ that yields the Maxwell equations, but other choices are possible, especially in more general backgrounds.  Understanding which features of the mapping are essential and which are gauge or scheme choices could shed light on the space of emergent gauge theories that can be built from fluid dynamics.
+
+To recover long-range magnetic interactions and transverse wave modes, the next step is to relax the strict bulk irrotationality assumption in a controlled way. One concrete possibility is a brane–bulk topology, in which the vacuum is modeled as an irrotational bulk superfluid (retaining the calibrated scalar/gravitational sector) that contains a codimension-one hypersurface on which vorticity and shear degrees of freedom are allowed. In such a setup, currents confined to the hypersurface can source circulation that is not purely contact/core-local, opening the door to a Biot–Savart–type far-zone magnetic interaction and to propagating transverse excitations. We leave a detailed construction and consistency checks of this extension to future work (developed next in this series).
 
 Finally, one might ask whether additional interactions---such as nonabelian gauge fields or scalar fields---can be realized in similar fashion.  For example, multi-component superfluids or superfluids with internal symmetries may give rise to richer effective gauge structures.  The throat defects considered here could then carry additional ``color'' charges or moduli, potentially providing a hydrodynamic analogue of the full Standard Model gauge group.
 
@@ -960,19 +968,19 @@ k^2 = k_r^2 + k_z^2
 We take the mode energy to scale as the acoustic energy density times the cavity volume,
 \begin{equation}
 E_{\mathrm{mode}}(a,L)
-\simeq \alpha\,\rho_0 c_s^2\,V(a,L)\,k^2,
+\simeq \acav\,\rho_0 c_s^2\,V(a,L)\,k^2,
 \label{eq:Emode-appendix}
 \end{equation}
 where
 \begin{equation}
 V(a,L) = \pi a^2 L
 \end{equation}
-is the cavity volume and $\alpha$ is a dimensionless number of order unity that encodes the details of the mode profile and the precise equation of state.  Substituting $V$ and $k^2$ into Eq.~\eqref{eq:Emode-appendix} gives
+is the cavity volume and $\acav$ is a dimensionless number of order unity that encodes the details of the mode profile and the precise equation of state.  Substituting $V$ and $k^2$ into Eq.~\eqref{eq:Emode-appendix} gives
 \begin{equation}
 E_{\mathrm{mode}}(a,L)
-= \alpha\,\rho_0 c_s^2\,\pi a^2 L
+= \acav\,\rho_0 c_s^2\,\pi a^2 L
 \left(\frac{x_{01}^2}{a^2} + \frac{\pi^2}{L^2}\right)
-= \alpha\,\rho_0 c_s^2 \pi
+= \acav\,\rho_0 c_s^2 \pi
 \left(L x_{01}^2 + a^2 \frac{\pi^2}{L}\right).
 \label{eq:Emode-simplified}
 \end{equation}
@@ -988,59 +996,59 @@ H(a,L) = E_{\mathrm{mode}}(a,L) + P_{\mathrm{vac}} V(a,L),
 where $P_{\mathrm{vac}}$ is the ambient vacuum pressure.  Using $V(a,L) = \pi a^2 L$ and Eq.~\eqref{eq:Emode-simplified}, we obtain
 \begin{equation}
 H(a,L)
-= \alpha\,\rho_0 c_s^2 \pi
+= \acav\,\rho_0 c_s^2 \pi
   \left(L x_{01}^2 + a^2 \frac{\pi^2}{L}\right)
 + P_{\mathrm{vac}} \pi a^2 L.
 \label{eq:H-appendix}
 \end{equation}
-It is convenient to factor out the overall scale $\alpha\,\rho_0 c_s^2 \pi$ and define a dimensionless parameter
+It is convenient to factor out the overall scale $\acav\,\rho_0 c_s^2 \pi$ and define a dimensionless parameter
 \begin{equation}
-\beta \equiv \frac{P_{\mathrm{vac}}}{\alpha\,\rho_0 c_s^2}.
+\bvac \equiv \frac{P_{\mathrm{vac}}}{\acav\,\rho_0 c_s^2}.
 \end{equation}
 Then Eq.~\eqref{eq:H-appendix} can be written as
 \begin{equation}
 H(a,L)
-= \alpha\,\rho_0 c_s^2 \pi\,
+= \acav\,\rho_0 c_s^2 \pi\,
   \mathcal{H}(a,L),
 \qquad
 \mathcal{H}(a,L)
 \equiv L x_{01}^2 + a^2 \frac{\pi^2}{L}
-     + \beta\,a^2 L.
+     + \bvac\,a^2 L.
 \label{eq:H-dimensionless}
 \end{equation}
 Since the overall prefactor is positive, the location of the minimum is determined by the dimensionless function $\mathcal{H}(a,L)$.
 
 \subsection{Extremization and aspect ratio}
 
-We now extremize $\mathcal{H}(a,L)$ with respect to $a$ and $L$.  Treating $\beta$ as a fixed parameter, the partial derivatives are
+We now extremize $\mathcal{H}(a,L)$ with respect to $a$ and $L$.  Treating $\bvac$ as a fixed parameter, the partial derivatives are
 \begin{align}
 \frac{\partial \mathcal{H}}{\partial a}
-&= 2a \left(\frac{\pi^2}{L} + \beta L\right),
+&= 2a \left(\frac{\pi^2}{L} + \bvac L\right),
 \\[4pt]
 \frac{\partial \mathcal{H}}{\partial L}
-&= x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \beta a^2.
+&= x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \bvac a^2.
 \end{align}
 Setting $\partial \mathcal{H}/\partial a = 0$ yields
 \begin{equation}
 a = 0
 \quad\text{or}\quad
-\frac{\pi^2}{L} + \beta L = 0.
+\frac{\pi^2}{L} + \bvac L = 0.
 \end{equation}
 The solution $a=0$ is the trivial zero-radius case and will be discarded.  For a nonzero throat radius $a>0$, we require
 \begin{equation}
-\frac{\pi^2}{L} + \beta L = 0
+\frac{\pi^2}{L} + \bvac L = 0
 \quad\Longrightarrow\quad
-\beta = -\frac{\pi^2}{L^2}.
-\label{eq:beta-condition}
+\bvac = -\frac{\pi^2}{L^2}.
+\label{eq:bvac-condition}
 \end{equation}
 Thus, in this simple model, a nontrivial minimum exists only if $P_{\mathrm{vac}}$ is negative, i.e.\ the vacuum behaves as a \emph{tension} rather than a positive pressure.  This is not unreasonable in a toy model of a vacuum with an effective ``bag'' or confining behavior.
 
 Next, setting $\partial \mathcal{H}/\partial L = 0$ gives
 \begin{equation}
-x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \beta a^2 = 0.
+x_{01}^2 - a^2 \frac{\pi^2}{L^2} + \bvac a^2 = 0.
 \label{eq:dH-dL-zero}
 \end{equation}
-Substituting Eq.~\eqref{eq:beta-condition} into Eq.~\eqref{eq:dH-dL-zero} eliminates $\beta$:
+Substituting Eq.~\eqref{eq:bvac-condition} into Eq.~\eqref{eq:dH-dL-zero} eliminates $\bvac$:
 \begin{equation}
 x_{01}^2 - a^2 \frac{\pi^2}{L^2}
            - a^2 \frac{\pi^2}{L^2}
@@ -1058,9 +1066,9 @@ which is the aspect ratio quoted in Eq.~\eqref{eq:aspect-ratio}.  Numerically, t
 \frac{L}{a} \simeq \frac{\sqrt{2}\,\pi}{2.4048} \simeq 1.85.
 \end{equation}
 
-We can also back-substitute into Eq.~\eqref{eq:beta-condition} to find the corresponding value of $\beta$ at the minimum:
+We can also back-substitute into Eq.~\eqref{eq:bvac-condition} to find the corresponding value of $\bvac$ at the minimum:
 \begin{equation}
-\beta_{\star}
+\mathbf{b}_{\mathrm{vac}\star}
 = -\frac{\pi^2}{L^2}
 = -\frac{\pi^2}{2 a^2 \pi^2/x_{01}^2}
 = -\frac{x_{01}^2}{2 a^2}.
@@ -1068,8 +1076,8 @@ We can also back-substitute into Eq.~\eqref{eq:beta-condition} to find the corre
 In terms of the original parameters,
 \begin{equation}
 P_{\mathrm{vac},\star}
-= \beta_{\star}\,\alpha\,\rho_0 c_s^2
-= -\frac{x_{01}^2}{2 a^2}\,\alpha\,\rho_0 c_s^2.
+= \mathbf{b}_{\mathrm{vac}\star},\acav\,\rho_0 c_s^2
+= -\frac{x_{01}^2}{2 a^2}\,\acav\,\rho_0 c_s^2.
 \end{equation}
 Thus the enthalpy minimum occurs when the (negative) vacuum pressure is tuned to a value set by the mode frequency and the throat radius.
 
@@ -1922,7 +1930,7 @@ To summarize:
 \begin{itemize}
   \item The toy model is formulated in terms of a small set of fluid and geometric parameters $(\rho_0,c_s,p(\rho),P_{\mathrm{vac}},a,L,\Gamma)$ with standard mechanical dimensions.
 
-  \item The gravitational sector uses these parameters to construct an acoustic metric whose weak-field limit reproduces Newtonian and $1$PN gravity, fixing $G$ and $c$ in terms of $(\rho_0,c_s,\dots)$ as in Papers~I--III.
+  \item The gravitational sector uses these parameters to reproduce Newtonian gravity in the static limit and to match GR's calibrated $1$PN orbital/optical observables, fixing $G$ and $c$ in terms of $(\rho_0,c_s,\dots)$ as in Papers~I--III.
 
   \item The electromagnetic sector introduces effective potentials and fields built from the enthalpy and velocity, plus a geometric charge $q \propto \rho_0 \Gamma \pi a^2$.  Matching the breathing-mode solution and the sourced wave equation to the SI Maxwell equations determines $\epsilon_0$ and $\mu_0$ in terms of the same underlying parameters, together with conversion factors between fluid and SI units.
 
@@ -1937,21 +1945,21 @@ In the main text we work primarily in natural units adapted to the fluid, reinst
 
 \begin{thebibliography}{99}
 
-\bibitem{Norris:Paper1}
+\bibitem{Norris:2025Orbits}
 Norris, T. (2025).
 \newblock \emph{Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model}.
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17759367}{doi:10.5281/zenodo.17759367}.
+\newblock \href{https://doi.org/10.5281/zenodo.17875005}{doi:10.5281/zenodo.17875005}.
 
 \bibitem{Norris:Paper2}
 Norris, T. (2025).
 \newblock \emph{Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model}.
 \newblock Zenodo.
-\newblock \href{https://doi.org/10.5281/zenodo.17794911}{doi:10.5281/zenodo.17794911}.
+\newblock \href{https://doi.org/10.5281/zenodo.17918131}{doi:10.5281/zenodo.17918131}.
 
 \bibitem{Norris:Paper3}
 Norris, T. (2025).
-\newblock \emph{1PN Spin Precession and N-Body Dynamics from a Superfluid Defect Toy Model}.
+\newblock \emph{Spin, Vorticity, and N-Body Dynamics in a Superfluid Defect Toy Model}.
 \newblock Zenodo.
 \newblock \href{https://doi.org/10.5281/zenodo.17798511}{doi:10.5281/zenodo.17798511}.
 

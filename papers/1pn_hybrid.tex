@@ -41,11 +41,23 @@ in a Superfluid Defect Toy Model}
 \maketitle
 
 \begin{abstract}
-% TODO: Briefly summarize
-% - Hybrid scalar+vector 1PN dynamics
-% - Uniqueness of n=5 and M ∝ ρ from thermodynamic + EIH matching
-% - Acoustic horizon / photon sphere structure
-% - Where deviations from GR are expected (2PN / strong field)
+This paper synthesizes the scalar (orbital) and vector/optical sectors of the
+superfluid--defect toy universe into a single hybrid first post--Newtonian (1PN)
+description.  We assume only a barotropic polytropic vacuum equation of state
+\(P \propto \rho^n\) and an equivalence scaling for defects \(M \propto \rho^q\),
+then derive the resulting 1PN test--body and two--body dynamics when both
+density--starvation (variable inertia) and compressible flow (index and vector
+potential) responses are retained.  Imposing agreement with the
+Einstein--Infeld--Hoffmann (EIH) coefficients selects a unique fluid within
+this class: a stiff polytrope with \(n=5\) and linear mass--density tracking
+\(q=1\), consistent with the calibrated wake--mixing ratio
+\(\alpha^2 = 3/4\) of Paper~III.  With the microphysics fixed, we examine
+strong--field structure on the brane, including transonic inflow and an
+acoustic horizon, and we derive photon--sphere and lensing diagnostics that
+deviate from Schwarzschild only through finite throat size and impedance
+effects.  The leading strong--field corrections are controlled by the throat
+aspect ratio \(\Lambda \equiv L/a\) (fiducially \(\Lambda \simeq 1.85\) from
+Paper~V), providing concrete targets for future simulations and observations.
 \end{abstract}
 
 \section{Introduction}
@@ -91,24 +103,25 @@ emergent optical geometry of the vacuum.
 
 Paper~III extended the construction to include spin, frame dragging, and
 $N$--body dynamics.\cite{Norris:Paper3}  By promoting the defect flow to a
-vortex--ring / dyon configuration and allowing for a vector sector in the
-hydrodynamic energy functional, that work derived an effective Lense--Thirring
-interaction and an Einstein--Infeld--Hoffmann (EIH)--like $N$--body
-Lagrangian.  A key result was that no purely Euclidean, positive--definite
-hydrodynamic energy reproduces the EIH tensor: matching GR at 1PN requires an
-\emph{effective Lorentzian signature} in the longitudinal sector, encoded in
-a tuned parameter $\alpha^2 = -2/5$.  With this choice, the superfluid toy
-universe reproduces the full single--body and $N$--body 1PN dynamics of GR,
-including scalar, optical, spin, and vector effects, using a small set of
-medium response parameters.
+vortex--ring / dyon configuration and by completing the wake basis into
+longitudinal and transverse components, that work derived an effective
+Lense--Thirring interaction and an Einstein--Infeld--Hoffmann (EIH)--like
+$N$--body Lagrangian.  In the updated formulation, the quadratic wake functional
+is positive--definite and the EIH matching fixes a \emph{wake--mixing ratio}
+\(\alpha^2 = 3/4\), understood as the calibrated ratio of longitudinal to
+transverse wake power.  With this value, the superfluid toy universe reproduces
+the full single--body and $N$--body 1PN dynamics of GR, including scalar,
+optical, spin, and vector effects, using a small set of medium response
+parameters.
 
 Paper~IV introduced an explicit electromagnetic sector.\cite{Norris:Paper4}
 Charge and current were reinterpreted as topological and kinematic features
-of the defect flow, and the Maxwell equations were shown to emerge from the
-underlying hydrodynamics in an appropriate long--wavelength limit.  In that
-description, the same superfluid that mediates gravity also supports an
-effective gauge field, with the Lorentz force arising from Magnus and
-enthalpy forces acting on defects.
+of the defect flow---with charge controlled by an integer circulation
+\(\Gamma\in\mathbb{Z}\) and \(Q\propto\Gamma\)---and the Maxwell equations
+were shown to emerge from the underlying hydrodynamics in an appropriate
+long--wavelength limit.  In that description, the same superfluid that
+mediates gravity also supports an effective gauge field, with the Lorentz
+force arising from Magnus and enthalpy forces acting on defects.
 
 Paper~V resolved a geometric tension between the gravitational and
 electromagnetic sectors.\cite{Norris:Paper5}
@@ -122,15 +135,55 @@ the brane is monopolar, while the near--field structure supports cylindrical
 resonances that play the role of electromagnetic cavities.  In effect, the
 throat geometry unifies the gravitational and electromagnetic pictures.
 
+A stability analysis of a realistic ``rounded funnel'' throat geometry finds a preferred
+aspect ratio \(\Lambda_\star \equiv L/a \simeq 1.85\), which we will use as a fiducial
+value when estimating finite--size effects.
+
 Taken together, Papers~I--V paint a coherent 1PN--accurate picture of
 gravity and electromagnetism emerging from a single structured vacuum
 fluid.  At the same time, they leave several important questions open.
 Why does the vacuum prefer the stiff polytrope $n=5$ singled out by the
-optical and PN matching?  Can the apparently ad hoc Lorentzian tuning
-$\alpha^2=-2/5$ be understood as a consequence of more primitive
-thermodynamic and equivalence principles?  And what does the fixed fluid
+optical and PN matching?  How does the calibrated wake--mixing ratio
+$\alpha^2=3/4$ required by the 1PN $N$--body (EIH) sector arise once the
+wake basis is completed, and how is that ratio encoded in a more primitive
+thermodynamic/equivalence description of the vacuum?  And what does the fixed fluid
 microphysics imply for strong--field phenomena such as horizons, photon
 spheres, and the onset of deviations from GR beyond 1PN?
+
+\subsection{Calibrated parameters inherited from Papers~I--V}
+\label{subsec:intro-params}
+
+For clarity, we collect here the dimensionless parameters that have already
+been fixed elsewhere in the series and that will be treated as calibrated
+inputs in the present work.  The parameters \(\beta\), \(\kappa_{\rho}\),
+\(\kappa_{\rm PV}\), and \(\kappa_{\rm add}\) summarize the orbital-sector
+inertia dressing of Paper~I, closing as \(\beta=\kappa_{\rho}+\kappa_{\rm PV}+\kappa_{\rm add}=3\).
+Paper~II fixes the stiff polytropic index \(n=5\) from the optical sector, and
+Paper~III fixes the wake--mixing ratio \(\alpha^2=3/4\) required for the 1PN
+vector/EIH coefficients.  Paper~V supplies a preferred throat aspect ratio
+\(\Lambda_\star=L/a\simeq 1.85\) for a realistic rounded-funnel geometry, while
+Paper~IV identifies electric charge as an integer circulation \(\Gamma\in\mathbb{Z}\) with \(Q\propto\Gamma\).
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Parameter & Value & Source & Role in the model \\
+\hline
+\(\beta\) & \(3\) & Paper~I & total scalar inertia renormalization (perihelion) \\
+\(\kappa_{\rho}\) & \(1\) & Paper~I & density depletion (Newtonian component) \\
+\(\kappa_{\rm PV}\) & \(3/2\) & Paper~I & pressure--volume work (cavity energy) \\
+\(\kappa_{\rm add}\) & \(1/2\) & Paper~I & added mass (dragged-fluid inertia) \\
+\(n\) & \(5\) & Paper~II & stiff polytrope (optical matching) \\
+\(\alpha^2\) & \(3/4\) & Paper~III & wake mixing (EIH vector sector) \\
+\(\Lambda_\star=L/a\) & \(\simeq 1.85\) & Paper~V & preferred throat geometry \\
+\(\Gamma\) & \(\in\mathbb{Z}\) & Paper~IV & circulation/charge control, \(Q\propto\Gamma\) \\
+\hline
+\end{tabular}
+\end{center}
+
+To avoid notational collision with the orbital parameter \(\beta\), we will
+denote the coefficient of a leading \(1/r\) optical index profile by
+\(\beta_{\rm idx}\) in Sec.~\ref{sec:photon_sphere}.
 
 \subsection{Scope and goals of this work}
 \label{subsec:intro-goals}
@@ -160,11 +213,11 @@ show that the model itself selects a unique pair of exponents:
   density, and
   \item $n = 5$, so that the vacuum is a stiff polytrope of index five.
 \end{itemize}
-In other words, the same 1PN matching that fixed $\alpha^2=-2/5$ in
-Paper~III can be rephrased as a \emph{thermodynamic uniqueness theorem}:
-within this class of models, a single polytropic index and a single
-mass--density scaling law are compatible with Newtonian gravity and the EIH
-1PN Lagrangian.
+In other words, the 1PN matching conditions can be rephrased as a
+\emph{thermodynamic uniqueness theorem}: within this class of models, a
+single polytropic index and a single mass--density scaling law are
+compatible with Newtonian gravity and the EIH 1PN Lagrangian, with the
+wake sector fixed by the calibrated Paper~III value \(\alpha^2=3/4\).
 
 A second goal is to explore the strong--field implications of this fixed
 fluid.  Once $n=5$ and $q=1$ are enforced, the radial inflow toward a defect
@@ -188,10 +241,9 @@ paper can be summarized as follows:
   \item A hybrid scalar--vector analysis shows that 1PN consistency with the
   EIH Lagrangian uniquely fixes the vacuum to be a stiff polytrope with
   $n=5$ and enforces a linear mass--density relation $M \propto \rho$.
-  \item The previously tuned Lorentzian signature parameter
-  $\alpha^2=-2/5$ from Paper~III is reinterpreted as an emergent feature of
-  the combined scalar+vector response, rather than an independent model
-  choice.
+  \item The vector/wake sector is taken as calibrated from Paper~III, with a
+  positive--definite wake functional and wake--mixing ratio \(\alpha^2=3/4\)
+  required by the EIH $N$--body coefficients.
   \item The same fixed fluid supports an acoustic horizon and photon--sphere
   structure whose scaling with mass is close to the Schwarzschild case,
   while predicting specific finite--size and 2PN--scale deviations in the
@@ -755,7 +807,7 @@ compressible flow kernel and the polytropic index \(n\), and
 separation vector.  In Paper~III these coefficients were expressed in terms
 of a single dressing parameter \(\alpha\) that controls the mixing of
 longitudinal and transverse flow, and the GR values were recovered only if
-\(\alpha^2 = -2/5\).
+\(\alpha^2 = 3/4\).
 
 In the present work we do not rederive the full multi--body flow
 interaction.  Instead, we treat Eq.~\eqref{eq:L-vec-general} as a template
@@ -764,7 +816,7 @@ Eqs.~\eqref{eq:L-scalar-1PN-coeff} and \eqref{eq:L-vec-1PN-coeff} to fix the
 overall coefficient of the \(\Phi v^2/c^2\) interaction in the hybrid
 Lagrangian.  The remaining EIH coefficients in
 Eq.~\eqref{eq:EIH_target} are then reproduced by the same compressible flow
-kernel that encoded \(\alpha^2 = -2/5\) in Paper~III.  The key point for our
+kernel that encoded \(\alpha^2 = 3/4\) in Paper~III.  The key point for our
 purposes is that the scalar and vector contributions to the mixed
 \(\Phi v^2/c^2\) term enter with opposite signs and different \(n\)
 dependence; demanding that their sum matches the GR value will uniquely fix
@@ -960,49 +1012,33 @@ EIH matching, while the second elevates the mass--density equivalence
 relation of Sec.~\ref{subsec:thermo-equivalence} from an ansatz to a derived
 property of any model that reproduces GR at 1PN order.
 
-\subsection{Reinterpretation of \texorpdfstring{$\alpha^2 = -2/5$}{alpha\^2 = -2/5}}
+\subsection{Wake mixing and the \texorpdfstring{$\alpha^2$}{alpha^2} parameter}
 \label{subsec:hybrid-alpha}
 
-In Paper~III the 1PN matching was performed in a slightly different
-language.  The hydrodynamic energy functional was written as a sum of
-longitudinal and transverse contributions with an adjustable mixing
-parameter \(\alpha\).  Matching the full EIH tensor, including the
-velocity--dependent multi--body terms, required
+Paper~III parameterized the long--range wake interactions in terms of a
+longitudinal/transverse decomposition, with a single dimensionless parameter
+\(\alpha\) encoding the relative weight of the two components.  In the updated
+formulation (with a complete wake basis), the quadratic wake functional is
+positive--definite and the EIH matching fixes a definite wake balance that we
+summarize by the calibrated ratio
 \begin{equation}
-  \alpha^2 = -\frac{2}{5},
+  \alpha^2 = \frac{3}{4}.
   \label{eq:alpha-condition}
 \end{equation}
-which was interpreted as an emergent Lorentzian signature in the
-longitudinal sector: the longitudinal energy density must effectively carry
-a negative sign relative to the transverse part.
+This \(\alpha^2\) is best understood as a bookkeeping device: it records the
+ratio of longitudinal to transverse wake power required to reproduce the full
+set of 1PN $N$--body (EIH) coefficients in the vector sector.
 
-The hybrid analysis in this paper provides a different perspective on this
-condition.  When the fluid is described by a polytropic index \(n\) and the
-equivalence exponent \(q\), the same longitudinal/transverse mixing is
-encoded in the relative contributions of the scalar density--starvation
-effect and the vector flow.  The scalar sector tends to \emph{reduce} the
-effective inertia in regions of deep potential, while the vector sector
-tends to \emph{increase} the effective interaction energy through the
-refractive index and flow.  The net effect on the 1PN coefficients is
-governed by the combination \(C_{\text{hyb}}(n,q)\) in
-Eq.~\eqref{eq:C-hyb-def} and its multi--body generalizations.
-
-With the unique solution \((n,q) = (5,1)\) in hand, the longitudinal and
-transverse contributions to the effective energy functional can be
-re-expressed in the \(\alpha\)--parameterization of Paper~III.  Doing so
-reproduces Eq.~\eqref{eq:alpha-condition} automatically: the same balance of
-scalar and vector contributions that enforces the correct 1PN coefficients
-in the EIH Lagrangian forces the longitudinal sector to carry an effective
-negative weight corresponding to \(\alpha^2 = -2/5\).  In this sense,
-\(\alpha^2 = -2/5\) is no longer an independent tuning but a \emph{derived}
-property of the unique \(n=5\), \(M \propto \rho\) fluid that supports the
-1PN superfluid defect universe.
-
-This reinterpretation resolves one of the conceptual tensions in the
-earlier work.  The Lorentzian signature in the hydrodynamic energy
-functional is not imposed by hand; it arises dynamically from the combined
-thermodynamic and equivalence assumptions once the vacuum is required to
-reproduce both Newtonian gravity and the full 1PN EIH dynamics.
+In the present paper we do not rederive the wake kernel.  Instead, we take
+Eq.~\eqref{eq:alpha-condition} as an input from Paper~III and focus on what can
+be learned from combining it with the thermodynamic and equivalence structure
+that controls the scalar and optical sectors.  The hybrid scalar+vector
+description makes transparent which 1PN coefficients are fixed by the
+equivalence scaling (\(q=1\)), which are fixed by the barotropic microphysics
+(\(n=5\)), and which reside in the genuinely vector/wake sector parameterized
+by \(\alpha^2\).  In this sense, the ``mystery parameter'' of the vector sector
+is no longer tied to any negative--signature interpretation: the completed wake
+basis allows \(\alpha^2>0\) while maintaining agreement with the EIH tensor.
 
 \section{Acoustic Horizon and Throat Geometry}
 \label{sec:acoustic_horizon}
@@ -1307,18 +1343,18 @@ or equivalently
   = \frac{1}{r_{\text{ph}}}.
   \label{eq:photon-sphere-slope}
 \end{equation}
-For a simple \(1/r\) index profile, \(N(r) = 1 + \beta G M/(r c^2)\), this
+For a simple \(1/r\) index profile, \(N(r) = 1 + \beta_{\rm idx} G M/(r c^2)\), this
 condition yields
 \begin{equation}
   r_{\text{ph}}
-  \simeq \frac{3 \beta G M}{c^2},
+  \simeq \frac{3 \beta_{\rm idx} G M}{c^2},
   \qquad
   b_{\text{ph}}
   \simeq \sqrt{3}\,r_{\text{ph}},
   \label{eq:rph-beta}
 \end{equation}
 up to corrections of order \((G M / r c^2)^2\).  For the Schwarzschild
-metric in isotropic coordinates, the effective index has \(\beta = 2\), and
+metric in isotropic coordinates, the effective index has \(\beta_{\rm idx} = 2\), and
 one recovers the standard relation \(r_{\text{ph}} = 3 G M / c^2\) in
 Schwarzschild radius units.
 
@@ -1438,6 +1474,9 @@ dimensionless aspect ratio
   \Lambda \equiv \frac{L}{a}.
   \label{eq:aspect-ratio}
 \end{equation}
+Paper~V's stability analysis for a rounded-funnel throat geometry yields a preferred
+value \(\Lambda_\star \simeq 1.85\), suggesting that astrophysical defects in the stable
+regime should typically have \(\Lambda=\mathcal{O}(1)\) rather than \(\Lambda\gg 1\).
 For \(\Lambda \gg 1\) the throat appears long and thin, and the near-field
 region on the brane resembles a quasi-cylindrical cavity; for \(\Lambda \sim
 \mathcal{O}(1)\) the throat is stubby and the transition from 3D to 4D flow
@@ -1620,9 +1659,9 @@ threaded by defect throats, reproduces Newtonian gravity, 1PN orbital
 dynamics, light bending, Shapiro delay, Lense--Thirring precession, and an
 effective electromagnetic sector.  However, that success came with several
 apparent tunings and open questions: the special role of the stiff
-polytrope \(n=5\), the need for an effective Lorentzian signature encoded in
-\(\alpha^2 = -2/5\), and the status of horizons and strong--field structure
-in the throat picture.
+polytrope \(n=5\), the calibrated wake--mixing ratio \(\alpha^2=3/4\) required
+by the 1PN $N$--body (EIH) vector sector, and the status of horizons and
+strong--field structure in the throat picture.
 
 The present paper has addressed these issues from a thermodynamic and
 geometric perspective.  By combining a polytropic equation of state,
@@ -1645,19 +1684,13 @@ successful but somewhat isolated tunings can thus be understood as the
 emergent consequence of a single thermodynamic hypothesis and a single
 equivalence assumption.
 
-This hybrid analysis also sheds new light on the effective Lorentzian
-signature parameter \(\alpha^2 = -2/5\) introduced in Paper~III.  In the
-original formulation, matching the vector sector of the EIH Lagrangian
-required the longitudinal part of the hydrodynamic energy functional to
-carry a negative weight relative to the transverse part, encoded in
-\(\alpha^2 < 0\).  Here, the same balance is seen to arise from the
-competition between scalar and vector responses: density starvation reduces
-the effective inertia in deep potential wells, while the flow and refractive
-index increase the effective interaction energy.  When expressed in the
-\(\alpha\)--parameterization, the unique \(n=5\), \(M \propto \rho\) fluid
-automatically reproduces \(\alpha^2 = -2/5\).  The Lorentzian signature is
-not an additional assumption but a derived property of the thermodynamically
-fixed vacuum.
+This hybrid analysis also clarifies how the wake sector interfaces with the
+thermodynamic and optical sectors.  In the updated Paper~III formulation, the
+completed wake basis yields a positive--definite quadratic wake functional,
+and EIH matching fixes the wake--mixing ratio \(\alpha^2=3/4\).  In the
+present paper we treat this \(\alpha^2\) as a calibrated input and focus on
+what can be learned by combining it with the thermodynamic/equivalence
+structure that fixes \((n,q)\).
 
 On the geometric side, we have shown that the same stiff fluid which
 supports the 1PN dynamics also admits an acoustic horizon and photon
@@ -1677,9 +1710,9 @@ program:
   \item The vacuum is not just any compressible medium; it is uniquely
         pinned to a stiff \(n=5\) polytrope with \(M \propto \rho\) by 1PN
         consistency.
-  \item The ad hoc--seeming Lorentzian signature in the hydrodynamic energy
-        functional emerges naturally from the hybrid scalar--vector response
-        of this fluid.
+  \item The wake/vector sector is consistent with a positive--definite wake
+        functional and a calibrated wake--mixing ratio \(\alpha^2=3/4\)
+        inherited from Paper~III.
   \item The same fixed fluid determines a specific class of horizon and
         throat geometries that are observationally accessible through
         strong--field lensing and shadow measurements.
@@ -1775,8 +1808,8 @@ are fixed.
 superfluid defect toy universe is not the result of arbitrary tuning but
 flows from a tightly constrained thermodynamic and geometric structure.  The
 vacuum is forced into a specific corner of theory space, characterized by a
-stiff \(n=5\) equation of state, a linear mass--density relation, and an
-emergent Lorentzian signature in the longitudinal sector.  This same
+stiff \(n=5\) equation of state, a linear mass--density relation, and a
+calibrated wake--mixing ratio \(\alpha^2=3/4\) in the vector sector.  This same
 structure determines the existence and properties of acoustic horizons and
 photon spheres, providing clear targets for future numerical and
 observational tests.  Whether the model ultimately survives these tests or
@@ -2080,8 +2113,9 @@ In this appendix we make explicit which pieces of the 1PN coefficients come
 from the scalar (density starvation / variable mass) sector and which come
 from the vector (sound speed / flow) sector.  The goal is to clarify how the
 hybrid scalar+vector dynamics reproduces the Einstein--Infeld--Hoffmann
-(EIH) coefficients and how the effective Lorentzian signature parameter
-\(\alpha^2 = -2/5\) arises from the unique choice \((n,q) = (5,1)\).
+(EIH) coefficients, and how the genuinely wake--mediated vector pieces may be
+packaged into the calibrated wake--mixing ratio \(\alpha^2=3/4\) inherited
+from Paper~III.
 
 Throughout, we work in the two--body case with labels \(A\) and \(B\) and
 relative separation \(\mathbf{r}_{AB}\), and we restrict attention to the
@@ -2298,42 +2332,30 @@ velocity dependent coefficients.
 \subsection{Relation to the \texorpdfstring{$\alpha$}{alpha} parameter}
 \label{app:alpha-relation}
 
-In Paper~III, the same flow kernel was parameterized directly in terms of
-longitudinal and transverse contributions with a mixing parameter \(\alpha\).
-The hydrodynamic energy functional was written schematically as
+Paper~III expressed the long--range multi--body wake interaction in terms of a
+longitudinal/transverse decomposition with a single mixing parameter \(\alpha\).
+In that language the wake energy may be written schematically as
 \begin{equation}
   E_{\text{hydro}}
-  = E_{\perp}
-    + \alpha^2\,E_{\parallel},
+  = E_{\perp} + \alpha^2\,E_{\parallel},
 \end{equation}
-where \(E_{\perp}\) and \(E_{\parallel}\) represent transverse and
-longitudinal parts, respectively.  Matching the EIH Lagrangian at 1PN order
-then led to the condition
+where \(E_{\perp}\) and \(E_{\parallel}\) denote transverse and longitudinal
+contributions constructed from the completed wake basis.  The updated EIH
+matching fixes a positive wake balance,
 \begin{equation}
-  \alpha^2 = -\frac{2}{5},
+  \alpha^2 = \frac{3}{4},
 \end{equation}
-which was interpreted as an emergent Lorentzian signature in the
-longitudinal sector.
+which may be interpreted as the calibrated ratio of longitudinal to transverse
+wake power required for the 1PN vector sector.
 
-The scalar--vector decomposition used in this paper provides a mapping
-between \(n\), \(q\), and \(\alpha\).  Once \((n,q) = (5,1)\) is fixed by
-the 1PN matching, the same coefficient matching that determines the
-\(C_{i}^{\text{(flow)}}(n)\) can be re-expressed in terms of \(\alpha\).
-Carrying out this reparameterization reproduces the condition
-\(\alpha^2 = -2/5\) automatically.  In other words,
-\begin{itemize}
-  \item the scalar sector fixes the normalization of the potential and the
-        Newtonian limit (\(q=1\)),
-  \item the polytropic index \(n=5\) fixes the relative strength of the
-        scalar and kinematic contributions to the mixed 1PN terms, and
-  \item the flow kernel, when tuned to match the remaining EIH vector
-        coefficients for \(n=5\), implies \(\alpha^2 = -2/5\).
-\end{itemize}
-
-Thus, the scalar--vector decomposition clarifies that the effective
-Lorentzian signature condition \(\alpha^2 = -2/5\) is not an independent
-assumption, but a derived consequence of the unique \((n,q) = (5,1)\) fluid
-that reproduces the full set of 1PN EIH coefficients.
+The scalar--vector decomposition used in the present paper does not attempt to
+rederive this wake kernel.  Instead, it clarifies how the thermodynamic inputs
+\((n,q)\) determine the \emph{scalar} and \emph{index/kinematic} pieces of the 1PN
+coefficients, while the genuinely wake--mediated vector pieces can be packaged
+into the single parameter \(\alpha^2\).  The unique solution \((n,q)=(5,1)\) thus
+should be read as a statement about the vacuum microphysics consistent with
+both the optical sector and the EIH matching, with \(\alpha^2=3/4\) supplied as
+an inherited calibration from Paper~III.
 
 \section{Nonlinear Inflow and Transonic Solution}
 \label{app:inflow}

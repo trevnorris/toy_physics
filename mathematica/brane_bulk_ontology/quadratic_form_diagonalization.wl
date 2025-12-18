@@ -7,13 +7,13 @@ ClearAll["Global`*"]
 (* We use AT and AL instead of A_T, A_L to avoid underscores *)
 assumePositive = {AT > 0, AL > 0};
 
-alpha2 = -2/5;       (* Rational number *)
+alpha2 = 3/4;       (* Rational number *)
 alpha = Sqrt[alpha2]; (* This will automatically handle the Imaginary unit I *)
 
 (* 2. Basis Vector *)
 (* Python: u = [u_T, alpha * u_T] *)
 (* Mathematica uses Lists {} to represent vectors *)
-uT = Symbol["uT"]; 
+uT = Symbol["uT"];
 uVector = {uT, alpha * uT};
 
 (* 3. Euclidean kernel M *)
@@ -46,9 +46,9 @@ Output:
 
 --- Energy E(uT) ---
 Unsimplified:
-TraditionalForm[(-2*AL*uT^2)/5 + AT*uT^2]
+TraditionalForm[(3*AL*uT^2)/4 + AT*uT^2]
 Simplified:
-TraditionalForm[(-2*AL*uT^2)/5 + AT*uT^2]
+TraditionalForm[((3*AL + 4*AT)*uT^2)/4]
 
 --- Eigenvalues of M ---
 TraditionalForm[{AL, AT}]

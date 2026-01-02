@@ -4,11 +4,28 @@
 (* ---------------------------------------------------------------------- *)
 ClearAll["Global`*"]
 
+(* --- Common polytrope normalization (Paper VI convention) --- *)
+n = 5;
+
+(* Choose units: background density rho0 and background wave speed c0 *)
+rho0 = 1.0;
+c0 = 1.0;
+
+(* EOS: P = K rho^n with K chosen so cs(rho0)=c0 *)
+K = c0^2/(n * rho0^(n - 1));
+
+Pressure[rho_] := K * rho^n;
+cs2[rho_] := D[Pressure[rho], rho];          (* = n K rho^(n-1) *)
+cs[rho_] := Sqrt[cs2[rho]];
+
+(* Enthalpy: h = ∫ dP/rho = (n K/(n-1)) rho^(n-1) (up to additive constant) *)
+Enthalpy[rho_] := (n*K/(n-1)) * rho^(n - 1);
+
 (* 1. Parameters *)
-n = 5;                  (* Stiff Superfluid *)
 rH = 1.0;               (* Horizon Radius *)
 rhoH = 1.0;             (* Density at Horizon *)
-csH = rhoH^((n-1)/2);   (* Speed of Sound at Horizon *)
+csH = cs[rhoH];         (* Speed of Sound at Horizon *)
+vH = csH;               (* Sonic at the horizon *)
 
 (* 2. Define Physics Functions *)
 (* 3D Brane Continuity: rho = C1 / (v * r^2) *)
@@ -16,8 +33,7 @@ C1Val = rhoH * csH * rH^2;
 rhoExpr[v_, r_] := C1Val / (v * r^2);
 
 (* Bernoulli: Enthalpy + v^2/2 = Constant *)
-Enthalpy[rho_] := (n/(n-1)) * rho^(n-1); 
-C2Val = Enthalpy[rhoH] + csH^2/2;
+C2Val = Enthalpy[rhoH] + vH^2/2;
 BernoulliErr[v_, r_] := (Enthalpy[rhoExpr[v, r]] + v^2/2) - C2Val;
 
 (* 3. Solve with Continuation and Constraints *)
@@ -26,7 +42,7 @@ BernoulliErr[v_, r_] := (Enthalpy[rhoExpr[v, r]] + v^2/2) - C2Val;
 
 rValues = Range[1.0, 10.0, 0.1];
 vResults = {};
-lastV = csH; (* Start at the horizon velocity *)
+lastV = vH; (* Start at the horizon velocity *)
 
 Do[
    (* Find root bounded between 0 and 1.2 (slightly above sonic is allowed near r=1) *)
@@ -40,12 +56,12 @@ Do[
 
 (* 4. Compute Derived Quantities *)
 machResults = Table[
-   Module[{v, rho, cs},
+   Module[{v, rho, csVal},
      v = vResults[[i]];
      r = rValues[[i]];
      rho = rhoExpr[v, r];
-     cs = rho^((n-1)/2);
-     v / cs
+     csVal = cs[rho];
+     v / csVal
    ], 
    {i, 1, Length[rValues]}
 ];

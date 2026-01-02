@@ -5,18 +5,35 @@
 (* ---------------------------------------------------------------------- *)
 ClearAll["Global`*"]
 
+(* --- Common polytrope normalization (Paper VI convention) --- *)
+n = 5;
+
+(* Choose units: background density rho0 and background wave speed c0 *)
+rho0 = 1.0;
+c0 = 1.0;
+
+(* EOS: P = K rho^n with K chosen so cs(rho0)=c0 *)
+K = c0^2/(n * rho0^(n - 1));
+
+Pressure[rho_] := K * rho^n;
+cs2[rho_] := D[Pressure[rho], rho];          (* = n K rho^(n-1) *)
+cs[rho_] := Sqrt[cs2[rho]];
+
+(* Enthalpy: h = ∫ dP/rho = (n K/(n-1)) rho^(n-1) (up to additive constant) *)
+Enthalpy[rho_] := (n*K/(n-1)) * rho^(n - 1);
+
 Print["======================================================="];
 Print["   Paper VI: Hybrid Lensing Verification"];
 Print["======================================================="];
 
 (* 1. Setup the Hybrid Flow (Scalar+Vector) *)
-n = 5;                  (* Stiff Superfluid *)
 rH = 1.0;               (* Horizon Radius *)
 rhoH = 1.0;             (* Density at Horizon *)
-csH = rhoH^((n-1)/2);   (* Speed of Sound at Horizon *)
+csH = cs[rhoH];         (* Speed of Sound at Horizon *)
+vH = csH;               (* Sonic at the horizon *)
 
 (* FIX 1: Continuity uses r^2 for 3D flux conservation *)
-C1Val = rhoH * csH * rH^2; 
+C1Val = rhoH * vH * rH^2; 
 
 (* FIX 2: Define the Gravitational Potential (Scalar Sector) *)
 (* We set GM such that the potential is relevant. *)
@@ -25,44 +42,50 @@ GM = 0.5;
 Phi[r_] := -GM / r;
 
 (* Bernoulli Constant at Horizon: Enthalpy + Kinetic + Potential *)
-(* h = n/(n-1) * rho^(n-1) *)
-C2Val = (n/(n-1))*rhoH^(n-1) + csH^2/2 + Phi[rH]; 
+C2Val = Enthalpy[rhoH] + vH^2/2 + Phi[rH]; 
 
-(* Solve Velocity v[r] numerically with Hybrid Bernoulli Eq *)
-(* Eq: h(rho) + v^2/2 + Phi(r) = Const *)
-(* Substitute rho = C1 / (v * r^2) *)
-solV[radius_] := Module[{vSol},
-   (* We look for the subsonic branch (small v) in the far field *)
-   (* Use Quiet to suppress precision warnings during root finding *)
-   vSol = v /. Quiet[FindRoot[
-      ((n/(n-1)) * (C1Val/(v * radius^2))^(n-1) + v^2/2 + Phi[radius]) - C2Val == 0,
-      {v, 0.001} (* Initial guess: very low velocity far away *)
-   ]];
-   vSol
-];
+(* --- build a stable subsonic branch v(r) by continuation --- *)
+rMax = 1000.0;
+dr1 = 0.05;     (* fine near horizon *)
+dr2 = 0.5;      (* coarser far out *)
+rGrid = Join[Range[rH, 20.0, dr1], Range[20.0 + dr2, rMax, dr2]];
 
-(* 2. Define Refractive Index N(r) *)
-(* FIX 3: Density uses r^2 consistency *)
-rho[r_] := C1Val / (solV[r] * r^2);
+vList = {};
+lastV = vH;   (* start sonic at horizon *)
 
-(* Refractive Index N(r) ~ 1/c_s(r) *)
-(* Normalized so N -> 1 at Infinity (r = 100.0 is approx infinity) *)
-RefractiveIndex[r_] := (rho[100.0]^((n-1)/2)) / (rho[r]^((n-1)/2));
+Do[
+  sol = Quiet@FindRoot[
+    Enthalpy[C1Val/(v*r^2)] + v^2/2 + Phi[r] - C2Val == 0,
+    {v, lastV, 10^-6, 2.0}
+  ];
+  lastV = v /. sol;
+  AppendTo[vList, lastV];
+, {r, rGrid}];
+
+vInterp = Interpolation[Transpose[{rGrid, vList}], InterpolationOrder -> 3];
+
+rhoOfR[r_] := C1Val/(vInterp[r]*r^2);
+csOfR[r_] := cs[rhoOfR[r]];
+
+(* Paper VI / optics convention: N = c/c_s; here c0 is background c *)
+NOfR[r_] := c0/csOfR[r];
+
+(* normalize N -> 1 at large r *)
+Ninf = NOfR[rMax];
+Nnorm[r_] := NOfR[r]/Ninf;
+
+NInterp = Interpolation[Table[{r, Nnorm[r]}, {r, rGrid}], InterpolationOrder -> 3];
+dNdr[r_] := NInterp'[r];
 
 (* 3. Lensing Integral *)
 (* Deflection Theta = 2 * Integral [ (b/r) * (dN/dr) / sqrt((N*r)^2 - b^2) ] dr *)
 
 DeflectionAngle[b_] := Module[{Integrand, r0, rMax},
-   (* Derivative dN/dr calculated numerically for stability *)
-   dNdr[rad_] := (RefractiveIndex[rad + 0.001] - RefractiveIndex[rad]) / 0.001;
-   
    (* Integrand Definition *)
-   Integrand[r_] := (b / r) * dNdr[r] / Sqrt[(RefractiveIndex[r]*r)^2 - b^2];
+   Integrand[r_] := (b / r) * dNdr[r] / Sqrt[(NInterp[r]*r)^2 - b^2];
 
    (* Find Turning Point r0 where denominator is zero: N(r0)*r0 = b *)
-   (* Approx r0 ~ b for weak lensing *)
-   r0 = b; 
-   (* Refine r0 slightly if needed, but for b >> rH, r0=b is safe start *)
+   r0 = r /. Quiet@FindRoot[NInterp[r]*r - b == 0, {r, b, rH + 10^-3, b}];
    
    (* Integrate from turning point to Infinity (approx 1000.0) *)
    rMax = 1000.0;

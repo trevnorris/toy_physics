@@ -10,11 +10,12 @@ $Assumptions = {n > 1, a > 0, gamma > 0, rho > 0, M > 0};
 
 (* 1. Define Physics Models *)
 (* Equation of State: P ~ rho^n *)
-Pressure[rho_] := rho^n;
+K = 1/n;                 (* same normalization: cs(rho=1)=1 *)
+Pressure[rho_] := K*rho^n;
 
 (* Speed of Sound (Light Speed): c_s^2 ~ dP/drho *)
 (* For P ~ rho^n, cs ~ rho^((n-1)/2) *)
-SoundSpeed[rho_] := rho^((n - 1)/2);
+SoundSpeed[rho_] := Sqrt[D[Pressure[rho], rho]];
 
 (* 2. Define The Forces on the Throat (The "Tear") *)
 (* The throat radius 'a' adjusts until Opening Force = Closing Force *)

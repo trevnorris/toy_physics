@@ -9,7 +9,8 @@ Lightweight research sandbox for a toy superfluid model that reproduces Newtonia
   - *Paper 3: Spin, Vorticity, and N-Body Dynamics* (`1pn_spin_and_nbody.*`) – spin precession, Lense–Thirring, and the EIH N-body Lagrangian.
   - *Paper 4: Electromagnetic Fields and Charged Defects* (`em_fields.*`) – emergent electromagnetism from the superfluid vacuum.
   - *Paper 5: Brane–Bulk Throat Ontology* (`brane_bulk_ontology.*`) – resolves the sphere–cylinder geometric tension via 4D bulk construction.
-- `mathematica/` – Mathematica notebooks/scripts organized by paper (`1pn_orbital_dynamics/`, `1pn_optics/`, `1pn_spin_and_nbody/`, `em_fields/`, `brane_bulk_ontology/`, `2pn/`).
+  - *Paper 6: 1PN Hybrid* (`1pn_hybrid.*`) – unifies scalar, vector, and optical sectors into a single 1PN model.
+- `mathematica/` – Mathematica notebooks/scripts organized by paper (`1pn_orbital_dynamics/`, `1pn_optics/`, `1pn_spin_and_nbody/`, `em_fields/`, `brane_bulk_ontology/`, `1pn_hybrid/`, `2pn/`).
 - `scripts/` – Small Python proofs-of-concept (Shapiro delay partitioning, ray-bending tests).
 - `superfluid_lib/` – WIP physics engine (scalar Poisson + wave solvers, particle dynamics, 1PN orbit integrator); uses CuPy if available, otherwise NumPy.
 - `experiments/` – Python experiments that exercise the engine (radial force law fit, Mercury perihelion calibration/precession).
@@ -24,6 +25,8 @@ Lightweight research sandbox for a toy superfluid model that reproduces Newtonia
 **Paper 4 (Electromagnetism):** Introduces a hydrodynamic dictionary mapping enthalpy and velocity fields to EM potentials—magnetic field becomes vorticity, electric field becomes minus the Euler acceleration. The breathing mode of a defect throat generates a Coulomb \(1/r\) potential, and the Lorentz force emerges from Magnus and pressure forces on vortices. Explains the EM/gravitational hierarchy as scaling with \(1/a^2\) (throat radius). See `papers/em_fields.pdf`.
 
 **Paper 5 (Brane–Bulk Ontology):** Resolves the geometric tension between spherical (gravity) and cylindrical (EM) defect requirements by promoting defects to brane–bulk throats connecting the 3D brane to a 4D superfluid bulk. Dimensional reduction recovers the spherical monopolar far-field for 1PN gravity, while internal 4D acoustic modes retain cylindrical Bessel profiles for EM. Enthalpy minimization at fixed charge selects the preferred aspect ratio \(L/a \approx 1.85\). See `papers/brane_bulk_ontology.pdf`.
+
+**Paper 6 (1PN Hybrid):** Synthesizes the scalar (orbital) and vector/optical sectors into a single hybrid 1PN description using a barotropic polytrope and defect mass scaling. Matching EIH coefficients fixes a stiff polytrope with \(n=5\) and \(q=1\), consistent with the Paper III wake-mixing ratio. Explores strong-field brane structure (transonic inflow, acoustic horizon) and predicts photon-sphere/lensing corrections controlled by the throat aspect ratio \(\Lambda \equiv L/a\). See `papers/1pn_hybrid.pdf`.
 
 ## Python Environment
 - Core deps: `numpy`, `scipy`, `matplotlib`.
@@ -54,6 +57,7 @@ Files in `mathematica/` mirror the analytic steps in the papers, organized by su
 - `1pn_spin_and_nbody/` – Gravitomagnetic sector, EIH Lagrangian matching, alpha constraint derivation.
 - `em_fields/` – Hydrodynamic-EM dictionary, breathing mode, Lorentz force from Magnus/pressure.
 - `brane_bulk_ontology/` – Brane-bulk mode resonance, dimensional reduction, quadratic form diagonalization.
+- `1pn_hybrid/` – Hybrid 1PN derivations.
 - `2pn/` – Work-in-progress 2PN extensions.
 
 The `.wl` files are runnable scripts; each file's output is stored as a final comment block within the file itself, so you can inspect results without re-running.
@@ -63,4 +67,4 @@ The `.wl` files are runnable scripts; each file's output is stored as a final co
 - `shapiro_delay.py` – Shapiro delay partitioning into refraction and flow contributions.
 
 ## Status / Next Steps
-The paper series now covers 1PN orbital dynamics, optics, spin/N-body, electromagnetism, and brane–bulk ontology (Papers 1–5). Current work focuses on 2PN extensions (see `mathematica/2pn/`). The PDE/ODE engine in `superfluid_lib/` is still under active development (e.g., 4D grid support, tighter coupling between scalar sectors, better interpolation). Experiments currently focus on validation of the toy 1PN model.
+The paper series now covers 1PN orbital dynamics, optics, spin/N-body, electromagnetism, brane–bulk ontology, and hybrid 1PN results (Papers 1–6). Current work focuses on 2PN extensions (see `mathematica/2pn/`). The PDE/ODE engine in `superfluid_lib/` is still under active development (e.g., 4D grid support, tighter coupling between scalar sectors, better interpolation). Experiments currently focus on validation of the toy 1PN model.

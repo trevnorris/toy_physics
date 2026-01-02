@@ -3,6 +3,9 @@
 
 ClearAll["Global`*"]
 
+rho0 = 1;
+DeltaP = 1;
+
 (* 1. Define Geometries *)
 (* Brane (3D): Surface Area of sphere at radius r *)
 AreaBrane[r_] := 4 * Pi * r^2;
@@ -29,9 +32,12 @@ EqBernoulli = DeltaP == (1/2) * rho0 * (vThroat[a, M]^2 - 0);
 
 (* 4. Solve for Mass Flux M as a function of a *)
 (* We assume DeltaP and rho0 are constants independent of geometry *)
-sol = Solve[EqBernoulli, M];
+sol = Solve[EqBernoulli, M, Reals];
 
-MassScaling = Simplify[M /. sol[[2]]]; (* Take positive solution *)
+MassScaling = Simplify[
+  First@Select[M /. sol, # > 0 &],
+  {a > 0, rho0 > 0, DeltaP > 0}
+]; (* Take positive solution *)
 
 Print["--- Scaling Result ---"];
 Print["Mass Flux M scales as: "];
@@ -52,11 +58,5 @@ Print["Or M ~ a^4 (assuming L ~ a)"];
 (*"
 Output:
 
---- Scaling Result ---
-Mass Flux M scales as:
-(4*Sqrt[2]*a^3*Sqrt[DeltaP]*Pi*Sqrt[rho0])/3
-Scaling Power of a: 3
-
-Naive Volume Mass Scaling (M ~ a^3 * L): a^3 (assuming L const)
-Or M ~ a^4 (assuming L ~ a)
+TBD
 "*)

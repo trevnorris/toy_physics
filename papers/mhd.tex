@@ -1,0 +1,2653 @@
+\documentclass[11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% ---------- Theorem Environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ---------- Macros ----------
+\newcommand{\R}{\mathbb{R}}
+%\newcommand{\dd}{\mathrm{d}}
+%\newcommand{\grad}{\nabla}
+%\newcommand{\curl}{\nabla\times}
+\newcommand{\diver}{\nabla\cdot}
+
+% Fields (adjust to your preferred notation)
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\J}{\mathbf{J}}
+\newcommand{\vfield}{\mathbf{v}}
+\newcommand{\omegaV}{\boldsymbol{\omega}}
+\newcommand{\etaField}{\eta(\mathbf{x},t)}
+
+% ---------- Title / Authors ----------
+\title{Controlled Topology Switching with Localized Variable-$\eta(\mathbf{x},t)$ Dissipation:\\
+Operator-Correct Forms and Helicity Diagnostics in a Toy Field Model}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a proof-backed framework for \emph{localized, time-dependent non-ideality} in continuum field models by treating $\eta(\mathbf{x},t)$ as an explicit, spatiotemporally gated coefficient and requiring operator correctness as part of the model specification. For scalars, we show that when $\eta$ varies in space the only diffusion form that guarantees clean, sign-definite decay of the natural $L^2$ functional is the divergence operator $\partial_t\psi=\nabla\cdot(\eta\nabla\psi)$; the naive $\eta\nabla^2\psi$ introduces uncontrolled $\nabla\eta$ artifacts. In the vector (MHD-analog) setting, we derive and verify the variable-$\eta$ resistive operator $-\nabla\times(\eta\nabla\times\mathbf{B})$, which preserves $\nabla\cdot\mathbf{B}$ identically and yields magnetic-energy dissipation proportional to $\eta|\mathbf{J}|^2$ up to boundary flux. We further derive helicity and relative-helicity transport laws that isolate a distinct topology channel driven by the overlap $\eta(\mathbf{J}\cdot\mathbf{B})$ plus boundary transport, with explicit gauge-consistency conditions for finite domains. This paper was inspired by the death of \textbf{Nuno Loureiro} (MIT Professor and Director of the Plasma Science and Fusion Center), whose work on magnetic reconnection and current-sheet dynamics motivated us to place our existing toy model on the same invariant-consistent footing required by variable-resistivity MHD~\cite{Norris:Paper4,Norris:Paper6}.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}\label{sec:intro}
+
+\subsection{Motivation: reconnection as controlled topology change}\label{sec:intro_motivation}
+Many continuum field theories possess an ``ideal'' limit in which field-line connectivity (or an analogous topological structure) is effectively frozen into the flow. In magnetohydrodynamics (MHD), this is expressed by the ideal Ohm law,
+\begin{equation}
+  \E + \vfield \times \B = \mathbf{0},
+\end{equation}
+which implies the ideal induction equation
+\begin{equation}
+  \partial_t \B = \curl(\vfield \times \B),
+\end{equation}
+and under suitable regularity assumptions yields the familiar ``frozen-in'' picture of magnetic topology. In the reconnection literature, the central mechanism is that real systems are never perfectly ideal: a \emph{localized} non-ideal channel (e.g.\ resistivity, hyper-resistivity, kinetic effects, etc.) breaks the frozen-in constraint in a thin region, enabling rapid topology change and converting stored field energy into other channels (flows, waves, heat, particles). This ``ideal + localized non-ideal window'' structure underlies a large body of theory and phenomenology spanning classical tearing, plasmoid-mediated reconnection, and reconnection in turbulent environments (see, e.g., \cite{Loureiro2007,Bhattacharjee2009,Comisso2016}).
+
+The goal of this paper is \emph{not} to propose a new reconnection theory. Instead, we build and validate a mathematically clean \emph{testbed} for controlled topology change: a toy hydrodynamic field model in which the non-ideal channel is implemented as a \emph{programmable, spatiotemporally localized gate} $\eta(\mathbf{x},t)$, with operator choices that are proven to preserve the constraints and balances that reconnection theory relies on.
+
+This work connects to our broader superfluid-defect toy-universe program; for the EM-sector mapping and hybrid 1PN/acoustic-horizon context most directly related to the present diagnostics and gating philosophy, see~\cite{Norris:Paper4,Norris:Paper6}.
+
+\subsection{Why variable-coefficient non-ideal terms are a practical failure mode}\label{sec:intro_variable_eta}
+A common practical need---in analysis, numerics, and experimental ``knob design''---is to localize the non-ideal term in space and time. This leads naturally to variable coefficients such as $\eta(\mathbf{x},t)$. However, variable-coefficient diffusion/resistivity is also a common source of subtle but consequential errors: replacing the correct divergence-form operator by the tempting ``naive'' form (e.g.\ $\eta \nabla^2$ applied directly) can (i) destroy sign-definite dissipation statements, (ii) introduce spurious source terms proportional to $\grad \eta$, and in the vector case (iii) contaminate constraint evolution (notably $\diver \B$) when $\eta$ varies in space.
+
+Because topology-change studies are intrinsically sensitive to localized structure (thin layers, strong gradients, fluxes across boundaries), these operator-level mistakes can masquerade as ``physics.'' A central organizing principle of this paper is therefore:
+\begin{quote}
+\emph{If $\eta(\mathbf{x},t)$ is the experimental/algorithmic knob, then the operator form must be treated as part of the model specification, not an implementation detail.}
+\end{quote}
+We show that there are clean operator choices that (a) are mathematically forced by product rules and vector identities, and (b) recover the energy/helicity bookkeeping used in the MHD reconnection literature.
+
+\subsection{What this toy model uniquely adds (Contributions)}\label{sec:intro_contributions}
+The value of the toy model is \emph{not} that it resembles MHD at a slogan level, but that it provides a controlled, reproducible environment in which the non-ideal channel is \emph{designed} and its consequences are \emph{audited} by exact balance laws.
+
+Concretely, this paper contributes:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{A programmable non-ideal window.}
+  We introduce a spatiotemporally localized coefficient $\eta(\mathbf{x},t)$ (the ``gate'') as a deliberate control parameter. This supports systematic studies of \emph{when/where} frozen-in behavior is broken, rather than relying on incidental numerical diffusion or globally uniform coefficients.
+
+  \item \textbf{Operator-correct variable-$\eta$ dissipation with guaranteed balances.}
+  For scalar diffusion, we prove that implementing the gate in divergence form,
+  \begin{equation}
+    \mathcal{D}_\eta[\psi] \;=\; \diver\!\big(\eta(\mathbf{x},t)\,\grad \psi\big),
+  \end{equation}
+  yields a sign-definite decay for the appropriate norm/energy functional under standard boundary assumptions, whereas the naive $\eta\nabla^2\psi$ form introduces additional terms proportional to $\grad\eta$ that are not sign-definite.
+
+  \item \textbf{Constraint-hygienic vector resistivity (MHD analog).}
+  In the vector setting, we identify the correct variable-$\eta$ resistive operator,
+  \begin{equation}
+    \partial_t \B\big|_{\mathrm{res}} \;=\; -\,\curl\!\big(\eta(\mathbf{x},t)\,\J\big),
+    \qquad \J=\curl\B,
+  \end{equation}
+  and prove two properties that are essential for reconnection-style reasoning:
+  (i) it preserves $\diver\B$ identically (as a consequence of $\diver(\curl(\cdot))\equiv 0$), and
+  (ii) it yields monotone magnetic-energy decay with rate set by $\eta|\J|^2$ (up to boundary flux terms).
+  These identities are operator-level facts for variable-resistivity MHD and can be used as unit tests or discretization guides independent of the toy-model hydrodynamic closure.
+
+  \item \textbf{Topology-channel controllability via helicity and relative helicity.}
+  We derive the helicity balance law and show that changes in (relative) helicity are driven by the overlap
+  $\eta(\mathbf{x},t)\,(\J\cdot\B)$ (plus boundary fluxes). Unlike magnetic energy, the quantity $\J\cdot\B$ is sign-indefinite, so the gate provides a \emph{targetable topology-change channel} distinct from pure dissipative decay.
+
+  \item \textbf{A coherent formulation (vector potential) and a reproducibility pipeline.}
+  We present a unified vector-potential formulation that reproduces the induction equation and the same energy/helicity balances, demonstrating that the results are not a patchwork of unrelated identities. All symbolic derivations are independently checked with reproducible scripts, and we complement the theory with a minimal ``switch'' demonstration (WP1) showing gate-synchronized changes in topology proxies and diagnostics.
+\end{itemize}
+
+Taken together, these points justify a paper-level claim that is both modest and useful:
+\begin{quote}
+\emph{The toy model enhances existing variable-resistivity/topology-change studies by providing a proof-backed, coefficient-gated framework in which localized non-ideal windows can be designed, audited, and reproduced without ambiguity about operator correctness.}
+\end{quote}
+
+\subsection{Scope, claims, and non-claims}\label{sec:intro_scope}
+This paper is deliberately scoped.
+
+\paragraph{What we \emph{prove}.}
+We provide exact operator identities and balance laws for variable-$\eta(\mathbf{x},t)$ scalar diffusion and vector resistivity, including:
+(i) conditions for sign-definite dissipation in the scalar case,
+(ii) divergence preservation and magnetic-energy decay in the vector case,
+(iii) helicity and relative-helicity transport laws with explicit source terms and boundary fluxes,
+and (iv) gauge-consistency statements establishing when integral helicity measures are well-posed.
+
+\paragraph{What we \emph{demonstrate}.}
+We present a minimal numerical demonstration (WP1) of controlled gating: turning the gate on/off (and applying null controls) produces time-localized changes in topology proxies and related diagnostics consistent with the derived balances. This is intended as a verification of the \emph{switch mechanism}, not as a comprehensive survey of reconnection phenomenology.
+
+\paragraph{What we do \emph{not} claim.}
+We do not claim that this toy model is ``full MHD,'' nor do we claim quantitative tearing/plasmoid scaling laws in this paper. Establishing tearing-like onsets, plasmoid cascades, or turbulence scalings would require additional setup (e.g.\ sheet-like initial conditions, dedicated parameter scans, and careful regime separation), which we defer to future work. We also avoid device-level claims; our focus is mathematical structure, diagnostics, and controlled numerical experiments.
+
+\paragraph{Paper roadmap.}
+\Cref{sec:background} reviews the minimal induction/helicity structure relevant for our aims.
+\Cref{sec:toy_model} introduces the toy model and its hydrodynamic reduction.
+\Cref{sec:result_scalar,sec:result_vector,sec:result_helicity,sec:result_gauge,sec:result_Aform} present the main results (operator correctness, dissipation, and topology diagnostics).
+\Cref{sec:wp1_demo} gives the WP1 switch demonstration, followed by discussion and limitations.
+
+% ============================================================
+\section{Background and Related Structure}\label{sec:background}
+
+This section collects the minimal continuum identities we will rely on later. Our purpose is not to
+review reconnection theory, but to highlight (i) the ``ideal + localized non-ideal window'' structure
+that motivates gating, and (ii) the specific operator forms and balance laws that are easy to break when
+coefficients vary in space and time.
+
+\subsection{Ideal induction and frozen-in topology (minimal recap)}\label{sec:background_ideal}
+In MHD one evolves a magnetic field $\B(\mathbf{x},t)$ subject to the solenoidal constraint
+\begin{equation}\label{eq:divB_zero}
+  \diver \B \;=\; 0.
+\end{equation}
+A standard starting point is Faraday's law,
+\begin{equation}\label{eq:faraday}
+  \partial_t \B \;=\; -\,\curl \E,
+\end{equation}
+together with an Ohm law closure. In the \emph{ideal} limit,
+\begin{equation}\label{eq:ideal_ohm}
+  \E + \vfield\times\B \;=\; \mathbf{0},
+\end{equation}
+so \eqref{eq:faraday} becomes the ideal induction equation
+\begin{equation}\label{eq:induction_ideal}
+  \partial_t \B \;=\; \curl(\vfield\times\B).
+\end{equation}
+Equation \eqref{eq:induction_ideal}, together with appropriate regularity assumptions, implies the
+classical ``frozen-in'' picture: magnetic field-line connectivity is advected by the flow and cannot
+change topology in the ideal model. Reconnection, in the broadest sense used in the literature, occurs
+when a \emph{localized} non-ideal term breaks \eqref{eq:ideal_ohm} in a thin region, allowing topology
+change and conversion of stored field energy into other channels (flows, waves, heat, etc.). This
+``ideal everywhere + non-ideal window somewhere'' structure is the conceptual template for our gating
+framework.
+
+A key structural observation for this paper is that \eqref{eq:induction_ideal} is mirrored by the
+barotropic vorticity transport identity
+\begin{equation}\label{eq:vorticity_ideal_struct}
+  \partial_t \omegaV \;=\; \curl(\vfield\times\omegaV),
+\end{equation}
+which arises in compressible Euler flow under suitable closures (see \Cref{sec:toy_model_regime}). This
+shared ``curl of a cross-product'' structure is what allows a precise dictionary-level comparison
+between the toy model's vorticity/topology sector and the MHD induction sector~\cite{Norris:Paper4}.
+
+\subsection{Why naive $\eta\nabla^2(\cdot)$ breaks things when $\eta$ varies}\label{sec:background_variable_eta}
+When a non-ideal channel is modeled as resistive diffusion, one often writes (for constant $\eta$)
+\begin{equation}\label{eq:induction_resistive_constant_eta}
+  \partial_t \B \;=\; \curl(\vfield\times\B) + \eta\,\nabla^2 \B,
+  \qquad (\eta=\text{const}).
+\end{equation}
+However, once $\eta=\eta(\mathbf{x},t)$ varies in space, the $\eta\nabla^2\B$ form is no longer the
+correct resistive operator. The proper resistive term comes from the Ohm law
+\begin{equation}\label{eq:ohm_resistive}
+  \E + \vfield\times\B \;=\; \eta\,\J,
+  \qquad \J \equiv \curl\B,
+\end{equation}
+which, combined with Faraday's law \eqref{eq:faraday}, yields
+\begin{equation}\label{eq:induction_variable_eta_correct}
+  \partial_t \B \;=\; \curl(\vfield\times\B) - \curl(\eta\,\J)
+  \;=\; \curl(\vfield\times\B) - \curl\!\big(\eta\,\curl\B\big).
+\end{equation}
+The curl--curl structure in \eqref{eq:induction_variable_eta_correct} is not a stylistic preference:
+it is what automatically preserves \eqref{eq:divB_zero} because $\diver(\curl(\cdot))\equiv 0$. By
+contrast, inserting $\eta(\mathbf{x},t)\nabla^2\B$ as a replacement for $-\curl(\eta\curl\B)$ generally
+introduces extra terms proportional to $\grad\eta$ when expanded, and can contaminate constraint
+evolution (spurious $\diver\B$ production) even if $\diver\B=0$ initially.
+
+The scalar analog is the variable-diffusivity operator for $\psi$:
+\begin{equation}\label{eq:scalar_variable_eta_background}
+  \partial_t \psi \;=\; \diver(\eta\,\grad\psi),
+\end{equation}
+whose exact product-rule expansion,
+\begin{equation}\label{eq:scalar_variable_eta_identity_background}
+  \diver(\eta\,\grad\psi) \;=\; \eta\,\nabla^2\psi + (\grad\eta)\cdot(\grad\psi),
+\end{equation}
+shows explicitly why the naive $\eta\nabla^2\psi$ form is incomplete when $\grad\eta\neq 0$.
+Results~I--II (\Cref{sec:result_scalar,sec:result_vector}) formalize these points and provide the
+corresponding dissipation and constraint-preservation statements.
+
+\subsection{Energy vs helicity: what must dissipate, what need not}\label{sec:background_energy_helicity}
+Two quadratic functionals play central roles in reconnection-style reasoning: magnetic energy and
+magnetic helicity.
+
+\paragraph{Magnetic energy.}
+Define the magnetic energy
+\begin{equation}\label{eq:magnetic_energy_def}
+  \mathcal{E}_B[\B] \;\equiv\; \frac{1}{2}\int_{\Omega}|\B|^2\,dV.
+\end{equation}
+Under the resistive term in \eqref{eq:induction_variable_eta_correct}, one obtains an energy balance of
+the form
+\begin{equation}\label{eq:magnetic_energy_balance_background}
+  \frac{d}{dt}\mathcal{E}_B
+  \;=\;
+  -\int_{\Omega}\eta(\mathbf{x},t)\,|\J|^2\,dV
+  \;+\; \text{(boundary flux terms)},
+\end{equation}
+so in periodic domains (or under boundary conditions that eliminate the flux) the resistive part
+produces monotone magnetic-energy decay. This monotonicity is a key ``sanity check'' for any localized
+resistivity model: if energy is observed to increase solely due to the ``resistive'' term, the operator
+or discretization is likely incorrect.
+
+\paragraph{Magnetic helicity.}
+Introduce a vector potential $\A$ such that
+\begin{equation}\label{eq:vector_potential_def}
+  \B = \curl\A.
+\end{equation}
+The magnetic helicity is
+\begin{equation}\label{eq:helicity_def_background}
+  \mathcal{H}[\A,\B] \;\equiv\; \int_{\Omega}\A\cdot\B\,dV,
+\end{equation}
+noting that $\A$ is gauge-dependent. The associated local helicity balance (derived in
+\Cref{sec:result_helicity}) takes the schematic form
+\begin{equation}\label{eq:helicity_balance_background}
+  \partial_t(\A\cdot\B) + \diver(\text{flux}) \;=\; -2\,\E\cdot\B.
+\end{equation}
+Under the resistive Ohm law \eqref{eq:ohm_resistive}, $\E\cdot\B = \eta\,\J\cdot\B$ because
+$(\vfield\times\B)\cdot\B\equiv 0$. Unlike $|\J|^2$, the quantity $\J\cdot\B$ is \emph{not sign-definite},
+so helicity does not necessarily decay monotonically under resistivity. This is not a bug: it is the
+mathematical expression of a ``topology channel'' distinct from pure energy dissipation.
+
+\paragraph{Why this matters for gating.}
+A spatiotemporally localized $\eta(\mathbf{x},t)$ controls energy dissipation through $\eta|\J|^2$ and
+controls helicity change through $\eta(\J\cdot\B)$ (plus boundary flux). Thus, if $\eta$ is treated as a
+designed gate, it is meaningful to speak of shaping the non-ideal window to preferentially target
+certain topology-change diagnostics without confusing the result with unintended operator artifacts.
+This separation is one of the main ways the toy model provides value beyond ``matching the equations.''
+
+\subsection{Bounded-domain reality: why relative helicity is the practical diagnostic}\label{sec:background_relative_helicity}
+Helicity is locally gauge dependent and its integral is not automatically gauge invariant in a bounded
+domain. Under a gauge transformation $\A'=\A+\grad\chi$, the helicity density shifts by a divergence,
+\begin{equation}\label{eq:gauge_shift_background}
+  \A'\cdot\B - \A\cdot\B \;=\; \diver(\chi\,\B),
+\end{equation}
+so the volume integral $\int_{\Omega}\A\cdot\B\,dV$ is gauge invariant only when the associated boundary
+term vanishes (e.g.\ periodic domains, sufficiently fast decay at infinity, or boundary conditions that
+eliminate the normal component flux contribution).
+
+In many practical simulations and experiments, one works in a finite domain with nontrivial boundary
+behavior. In that setting, a standard remedy is \emph{relative helicity}, which compares $(\A,\B)$ to a
+reference field $(\A_0,\B_0)$ sharing the same normal flux on the boundary. The resulting diagnostic is
+gauge-consistent under broad conditions and comes with its own transport/balance law involving boundary
+fluxes. Because this paper is explicitly about localized, time-dependent non-ideal windows, it is
+important to use a helicity diagnostic that remains meaningful in bounded domains; we therefore develop
+both helicity and relative helicity statements in \Cref{sec:result_gauge} and recommend relative helicity
+as the default ``field-ready'' topology measure when boundaries are present.
+
+% ============================================================
+\section{Toy Model and Hydrodynamic Reduction}\label{sec:toy_model}
+
+\subsection{Governing complex-field equation and definitions}\label{sec:toy_model_pde}
+We work with a complex scalar field $\psi(\mathbf{x},t)$ on a spatial domain $\Omega\subset\R^3$ (typically a periodic box in simulations, though the analytic identities below also hold for decaying fields on $\R^3$ under standard integrability assumptions). The evolution is taken to be ``unitary + gated dissipation'':
+\begin{equation}\label{eq:toy_model_split}
+  \partial_t \psi
+  \;=\;
+  -\,i\,\mathcal{L}[\psi]
+  \;+\;
+  \mathcal{D}_{\eta}[\psi],
+\end{equation}
+where $\mathcal{L}$ is a Hamiltonian (conservative) generator and $\mathcal{D}_{\eta}$ is a localized, time-dependent ``gate'' term that opens a non-ideal channel.
+
+For concreteness (and to match the numerical implementation used in \Cref{sec:wp1_demo}), one may take a Gross--Pitaevskii--type operator
+\begin{equation}\label{eq:L_gp}
+  \mathcal{L}[\psi]
+  \;=\;
+  \left(-\frac{1}{2}\nabla^2 + V(\mathbf{x}) + g\,|\psi|^2 - \mu\right)\psi,
+\end{equation}
+with potential $V$, nonlinearity strength $g$, and (optionally) a chemical potential $\mu$ used to set a reference density in nondimensional units. The precise form of $\mathcal{L}$ is not essential for the variable-coefficient operator identities proved in later sections; what matters is that the $-i\mathcal{L}$ part is conservative and admits the standard Madelung (hydrodynamic) representation described below.
+
+The gate $\eta(\mathbf{x},t)\ge 0$ is a prescribed spatiotemporal window, typically compactly supported or rapidly decaying, designed to be ``off'' except during a short interval. In WP1 we use separable windowing of the form
+\begin{equation}\label{eq:eta_gate_general}
+  \eta(\mathbf{x},t) \;=\; \eta_{\max}\,W_x(\mathbf{x})\,W_t(t),
+\end{equation}
+with a localized spatial envelope $W_x$ (e.g.\ Gaussian/bump) and a smooth temporal envelope $W_t$ (e.g.\ raised cosine/bump), though none of the proofs require separability.
+
+Crucially, when $\eta$ varies in space, the gate must be implemented in divergence form (see \Cref{sec:result_scalar}):
+\begin{equation}\label{eq:scalar_gate_div_form}
+  \mathcal{D}_{\eta}[\psi]
+  \;=\;
+  \diver\!\big(\eta(\mathbf{x},t)\,\grad \psi\big).
+\end{equation}
+This choice is forced by product rules and is what yields sign-definite dissipation for the appropriate functional under standard boundary assumptions; the ``naive'' $\eta\nabla^2\psi$ form is not equivalent when $\grad \eta\neq 0$ and can spoil key balance laws.
+
+\subsection{Madelung map: $\psi \mapsto (\rho,\theta,\vfield)$}\label{sec:toy_model_madelung}
+To expose the fluid-like content of the conservative dynamics, we apply the Madelung substitution
+\begin{equation}\label{eq:madelung}
+  \psi(\mathbf{x},t) \;=\; \sqrt{\rho(\mathbf{x},t)}\,e^{i\theta(\mathbf{x},t)},
+\end{equation}
+with density $\rho = |\psi|^2$ and phase $\theta=\arg\psi$ (defined away from zeros of $\psi$). The associated current and velocity are
+\begin{equation}\label{eq:current_velocity}
+  \mathbf{j} \;\equiv\; \Im\!\big(\psi^*\,\grad\psi\big),
+  \qquad
+  \vfield \;\equiv\; \frac{\mathbf{j}}{\rho}.
+\end{equation}
+For the GP-type Hamiltonian \eqref{eq:L_gp} in the nondimensionalization used here, $\vfield$ reduces to the familiar potential-flow form
+\begin{equation}\label{eq:v_phase}
+  \vfield \;=\; \grad\theta,
+\end{equation}
+again away from vortex cores where $\rho\to 0$ and $\theta$ becomes multi-valued. In numerics we treat such regions carefully (masking/core identification) when computing diagnostics built from $\vfield$.
+
+\subsection{Euler-like form and additional terms}\label{sec:toy_model_euler}
+Separating real and imaginary parts of the conservative ($\mathcal{D}_\eta=0$) evolution yields the standard hydrodynamic system: a continuity equation and a phase (Bernoulli/Hamilton--Jacobi) equation.
+
+\paragraph{Continuity.}
+For $\mathcal{D}_\eta=0$,
+\begin{equation}\label{eq:continuity}
+  \partial_t \rho + \diver(\rho\,\vfield) \;=\; 0.
+\end{equation}
+
+\paragraph{Phase/Bernoulli equation and quantum pressure.}
+For $\mathcal{D}_\eta=0$, the phase obeys
+\begin{equation}\label{eq:bernoulli}
+  \partial_t \theta
+  + \frac{1}{2}|\vfield|^2
+  + V(\mathbf{x})
+  + g\,\rho
+  - \mu
+  + Q(\rho)
+  \;=\; 0,
+\end{equation}
+where the ``quantum pressure'' (quantum potential) term is
+\begin{equation}\label{eq:quantum_pressure}
+  Q(\rho) \;\equiv\; -\,\frac{1}{2}\,\frac{\nabla^2\sqrt{\rho}}{\sqrt{\rho}}.
+\end{equation}
+Taking a gradient of \eqref{eq:bernoulli} produces an Euler-like momentum equation,
+\begin{equation}\label{eq:euler_like}
+  \partial_t \vfield + (\vfield\cdot\grad)\vfield
+  \;=\;
+  -\,\grad\!\Big( V(\mathbf{x}) + g\,\rho - \mu + Q(\rho)\Big).
+\end{equation}
+The nonlinear term $g\,\rho$ corresponds to a barotropic pressure law; one convenient representation is
+\begin{equation}\label{eq:barotropic_pressure}
+  p(\rho) \;=\; \frac{g}{2}\rho^2,
+  \qquad
+  h(\rho) \;\equiv\; \int^\rho \frac{p'(s)}{s}\,ds \;=\; g\,\rho,
+\end{equation}
+so that \eqref{eq:euler_like} can be viewed as an Euler equation with barotropic enthalpy $h(\rho)$ plus the additional dispersive term $Q(\rho)$.
+
+\paragraph{Role of the gate.}
+When $\mathcal{D}_\eta$ is present, it contributes additional (non-ideal) terms to the $\rho$ and $\theta$ equations. In this paper, we do not require the full expanded form of those contributions; instead we treat $\mathcal{D}_\eta$ as a designed non-ideal channel whose correctness is established directly at the operator level (\Cref{sec:result_scalar} and \Cref{sec:result_vector}). The Madelung reduction is used to justify (i) the identification of a velocity/vorticity/topology structure associated with $\psi$, and (ii) the interpretation of gated dissipation as an intentional mechanism for locally breaking ideal/topological constraints.
+
+\subsection{Regimes of validity and interpretation of non-ideal terms}\label{sec:toy_model_regime}
+The hydrodynamic form \eqref{eq:continuity}--\eqref{eq:euler_like} clarifies the regimes in which the toy model supports MHD-like ``ideal + non-ideal window'' reasoning.
+
+\paragraph{Away from cores: effective Euler structure.}
+Outside vortex cores (where $\rho$ does not approach zero), the phase is smooth and $\vfield=\grad\theta$ is well defined. In many settings of interest, $\rho$ is also slowly varying outside cores, so the quantum pressure term \eqref{eq:quantum_pressure} is small compared to the advective and enthalpy terms. In that regime, the dynamics are well approximated by compressible barotropic Euler flow, with vorticity concentrated on filamentary defects and transported by the flow in an ``ideal'' sense.
+
+\paragraph{Kinematic coupling (scope of the MHD analogy).}
+Unlike standard resistive MHD, where the velocity field $\vfield$ and magnetic field $\B$ are independent degrees of freedom coupled dynamically (e.g.\ via the Lorentz force), the toy model's hydrodynamic velocity is derived from a single complex scalar through $\vfield=\nabla\theta$ (away from cores). This imposes a kinematic coupling between the advecting flow and the topological defects (phase singularities), and therefore the present framework is best interpreted as capturing the \emph{geometry and controllability} of topology change under a localized non-ideal window, while simplifying the full plasma dynamics in which advection and Lorentz forces compete.
+
+\paragraph{Vorticity/topology structure.}
+Define the vorticity
+\begin{equation}\label{eq:vorticity_def}
+  \omegaV \;\equiv\; \curl \vfield.
+\end{equation}
+For smooth single-valued phases, $\omegaV=0$ identically, but in the presence of vortices $\omegaV$ is supported on cores/filaments in a distributional sense. On the complement of the cores, one obtains the standard barotropic vorticity-transport identity
+\begin{equation}\label{eq:vorticity_transport_barotropic}
+  \partial_t \omegaV \;=\; \curl(\vfield \times \omegaV),
+\end{equation}
+with the baroclinic term vanishing under the barotropic closure \eqref{eq:barotropic_pressure}. Equation \eqref{eq:vorticity_transport_barotropic} is the structural analog of the ideal induction equation and is one of the bridges to the MHD framework developed later.
+
+\paragraph{The gate as a designed non-ideal window.}
+The role of $\mathcal{D}_\eta$ is to provide a controlled departure from ideal/topology-preserving evolution. Because the gate is localized and time-dependent, it can be used to (i) open a brief non-ideal channel, (ii) study sensitivity of topology proxies and helicity-like diagnostics to that channel, and (iii) perform null tests where the gate is absent or displaced. The main mathematical requirement for such studies is that the chosen operator forms preserve the intended constraints and balance laws when $\eta(\mathbf{x},t)$ varies in space and time. Establishing these operator-correct forms and their consequences is the focus of \Cref{sec:result_scalar,sec:result_vector,sec:result_helicity,sec:result_gauge,sec:result_Aform}.
+
+% ============================================================
+\section{Result I --- Scalar Gate Operator Correctness}\label{sec:result_scalar}
+
+This section isolates the scalar (complex-field) ``gate'' operator and states the basic facts that make
+spatiotemporally localized gating mathematically well-posed. The main message is simple:
+
+\begin{quote}
+If $\eta=\eta(\mathbf{x},t)$ varies in space, the gate must be implemented in \emph{divergence form}
+$\diver(\eta\,\grad\psi)$, not as the naive product $\eta\nabla^2\psi$.
+\end{quote}
+
+\subsection{Correct variable-$\eta$ scalar diffusion operator}\label{sec:result_scalar_operator}
+Let $\psi:\Omega\times[0,T]\to\mathbb{C}$ and let $\eta(\mathbf{x},t)\ge 0$ be a prescribed gate
+(coefficient) that may vary in space and time. The scalar gate operator is defined as
+\begin{equation}\label{eq:scalar_gate_def}
+  \mathcal{D}_{\eta}[\psi]
+  \;\equiv\;
+  \diver\!\big(\eta(\mathbf{x},t)\,\grad \psi\big).
+\end{equation}
+When $\eta$ depends on $\mathbf{x}$, the divergence form \eqref{eq:scalar_gate_def} is not equivalent to
+$\eta\nabla^2\psi$; the exact product-rule identity is
+\begin{equation}\label{eq:scalar_gate_identity}
+  \diver(\eta\,\grad\psi)
+  \;=\;
+  \eta\,\nabla^2\psi + (\grad\eta)\cdot(\grad\psi).
+\end{equation}
+Equation \eqref{eq:scalar_gate_identity} is the source of the ``extra'' term that is missed by the naive
+implementation.
+
+In the full toy model, the gate is added to an otherwise conservative (unitary) evolution,
+\begin{equation}\label{eq:full_with_gate}
+  \partial_t\psi \;=\; -\,i\,\mathcal{L}[\psi] \;+\; \mathcal{D}_{\eta}[\psi],
+\end{equation}
+where $\mathcal{L}$ is a Hamiltonian generator (e.g.\ Gross--Pitaevskii type). Result~I concerns the gate
+term itself; when $\mathcal{L}$ is self-adjoint under the chosen boundary conditions, it does not
+contribute to the $L^2$-norm balance, so the sign-definite decay comes entirely from
+$\mathcal{D}_{\eta}$.
+
+\subsection{Theorem: sign-definite decay of the chosen norm/energy functional}\label{sec:result_scalar_decay}
+The divergence-form gate yields a Lyapunov-type decay for the natural ``mass'' functional
+$M[\psi]=\int_{\Omega}|\psi|^2\,dV$.
+
+\begin{theorem}[Monotone $L^2$ decay under divergence-form gating]\label{thm:L2_decay_div_form}
+Assume $\eta(\mathbf{x},t)\ge 0$ is bounded and sufficiently smooth, and $\psi$ is regular enough for the
+computations below. Consider the gated diffusion equation
+\begin{equation}\label{eq:scalar_gate_pde}
+  \partial_t\psi \;=\; \diver(\eta\,\grad\psi)
+\end{equation}
+on $\Omega$, with any of the following boundary conditions:
+(i) periodic, (ii) decay at infinity on $\R^3$, or (iii) no-flux conditions such that the boundary term
+$\int_{\partial\Omega}\eta\,\partial_n(|\psi|^2)\,dS$ vanishes. Then the $L^2$-norm obeys
+\begin{equation}\label{eq:L2_decay_global}
+  \frac{d}{dt}\int_{\Omega}|\psi|^2\,dV
+  \;=\;
+  -\,2\int_{\Omega}\eta(\mathbf{x},t)\,|\grad\psi|^2\,dV
+  \;\le\; 0.
+\end{equation}
+Moreover, the following local balance identity holds pointwise:
+\begin{equation}\label{eq:L2_decay_local}
+  \partial_t|\psi|^2
+  \;=\;
+  \diver\!\big(\eta\,\grad|\psi|^2\big)
+  \;-\;
+  2\eta\,|\grad\psi|^2.
+\end{equation}
+\end{theorem}
+
+\begin{remark}[State-dependent gates]\label{rem:state_dependent_eta_scalar}
+The proof of \Cref{thm:L2_decay_div_form} uses only $\eta(\mathbf{x},t)\ge 0$, sufficient regularity, and the divergence-form operator $\diver(\eta\nabla\psi)$. Therefore the same decay and balance identities continue to hold if $\eta$ is computed from the instantaneous state (e.g.\ $\eta=\eta[\psi,\rho,\nabla\rho,\ldots]$), provided $\eta$ remains nonnegative and regular enough for the integrations by parts.
+\end{remark}
+
+\begin{proof}[Proof sketch]
+Multiply \eqref{eq:scalar_gate_pde} by $\psi^*$ and add the complex conjugate:
+\[
+\partial_t|\psi|^2
+=
+\psi^*\,\diver(\eta\,\grad\psi)
++
+\psi\,\diver(\eta\,\grad\psi^*).
+\]
+Using the product rule in divergence form,
+\[
+\psi^*\,\diver(\eta\,\grad\psi)
+=
+\diver(\eta\,\psi^*\,\grad\psi) - \eta\,\grad\psi^*\cdot\grad\psi,
+\]
+and the analogous identity for the conjugate term, we obtain
+\[
+\partial_t|\psi|^2
+=
+\diver\!\big(\eta(\psi^*\grad\psi+\psi\grad\psi^*)\big) - 2\eta|\grad\psi|^2.
+\]
+Since $\psi^*\grad\psi+\psi\grad\psi^*=\grad|\psi|^2$, this yields the local identity
+\eqref{eq:L2_decay_local}. Integrating \eqref{eq:L2_decay_local} over $\Omega$ and applying the stated
+boundary assumptions gives \eqref{eq:L2_decay_global}. The full symbolic derivation is provided in
+Appendix~\ref{sec:app_scalar_eta}. % (Appendix label to be added in your document)
+\end{proof}
+
+\begin{remark}[Adding the gate to conservative dynamics]\label{rem:gate_plus_unitary}
+If $\psi$ instead evolves by \eqref{eq:full_with_gate} with $\mathcal{L}$ self-adjoint under the chosen
+boundary conditions, then $\frac{d}{dt}\int|\psi|^2\,dV$ receives no contribution from the
+$-i\mathcal{L}$ term, and \eqref{eq:L2_decay_global} remains valid with the same right-hand side.
+\end{remark}
+
+\subsection{Failure mode of the naive form and why it matters}\label{sec:result_scalar_naive}
+A tempting but incorrect implementation of variable-$\eta$ gating is
+\begin{equation}\label{eq:scalar_gate_naive}
+  \partial_t\psi \;=\; \eta(\mathbf{x},t)\,\nabla^2\psi.
+\end{equation}
+When $\grad\eta\neq 0$, \eqref{eq:scalar_gate_naive} is not equivalent to \eqref{eq:scalar_gate_pde}.
+Repeating the $L^2$-balance calculation for \eqref{eq:scalar_gate_naive} yields
+\begin{align}\label{eq:L2_decay_naive}
+  \frac{d}{dt}\int_{\Omega}|\psi|^2\,dV
+  &=
+  -\,2\int_{\Omega}\eta\,|\grad\psi|^2\,dV
+  \;-\;
+  2\int_{\Omega}\Re\!\big(\psi^*(\grad\eta\cdot\grad\psi)\big)\,dV
+  \;+\;\text{(boundary)}.
+\end{align}
+The additional term proportional to $\grad\eta$ is \emph{not sign-definite} and can therefore spoil the
+intended ``pure dissipation'' interpretation of the gate. Equivalently, integrating by parts once more
+(formally) rewrites the extra term as a contribution involving $\nabla^2\eta$ acting on $|\psi|^2$ plus
+boundary fluxes, again without a definite sign. In short: with spatially varying gates, $\eta\nabla^2$
+can behave as ``diffusion + unintended sources/sinks,'' which is precisely the kind of artifact that
+can be mistaken for topology-change physics in localized-layer problems.
+
+\subsection{Implementation note: time gating vs.\ space-time gating}\label{sec:result_scalar_impl}
+Two practical consequences follow immediately from \eqref{eq:scalar_gate_identity}:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Pure time gating is safe.} If $\eta=\eta(t)$ is spatially uniform, then $\grad\eta=0$ and
+  the operators coincide:
+  $\diver(\eta(t)\grad\psi)=\eta(t)\nabla^2\psi$. Many ``global damping'' implementations implicitly rely
+  on this special case.
+
+  \item \textbf{Spatial localization requires divergence form.} If $\eta=\eta(\mathbf{x},t)$ localizes the
+  gate in space (as in WP1), then $\grad\eta\neq 0$ on the gate boundary and the divergence form
+  \eqref{eq:scalar_gate_def} is the correct specification. Discretizations should therefore be organized
+  as ``flux form'' (compute $\grad\psi$, multiply by $\eta$, then take a divergence). This mirrors how
+  variable-diffusivity operators are handled in conservative finite-volume/finite-difference schemes and
+  is the scalar analog of the curl--curl structure used in the vector (MHD) setting in
+  \Cref{sec:result_vector}.
+\end{itemize}
+
+We emphasize that these points are not stylistic preferences: they are the minimal operator conditions
+required for the gate to function as a \emph{controlled non-ideal window} whose effects can be audited by
+exact balance laws.
+
+% ============================================================
+\section{Result II --- Vector Resistive Operator Correctness (MHD Analog)}\label{sec:result_vector}
+
+Result~I established that spatially localized scalar gating requires divergence form
+$\diver(\eta\grad\psi)$. The vector (MHD) analog is that spatially localized resistivity requires a
+\emph{curl--curl} structure. This is not a matter of taste: it is the operator form that (i) preserves
+the solenoidal constraint $\diver\B=0$ identically and (ii) yields the standard sign-definite magnetic
+energy dissipation rate. Both properties can fail if one replaces the resistive operator by the naive
+$\eta\nabla^2\B$ when $\eta=\eta(\mathbf{x},t)$ varies in space.
+
+\subsection{Correct variable-$\eta$ resistive operator}\label{sec:result_vector_operator}
+We begin from Faraday's law,
+\begin{equation}\label{eq:faraday_R2}
+  \partial_t \B \;=\; -\,\curl \E,
+\end{equation}
+and the resistive Ohm law with variable resistivity,
+\begin{equation}\label{eq:ohm_R2}
+  \E + \vfield\times\B \;=\; \eta(\mathbf{x},t)\,\J,
+  \qquad \J \equiv \curl\B.
+\end{equation}
+Substituting \eqref{eq:ohm_R2} into \eqref{eq:faraday_R2} yields the induction equation with variable
+resistivity:
+\begin{equation}\label{eq:induction_variable_eta_R2}
+  \partial_t \B
+  \;=\;
+  \curl(\vfield\times\B) - \curl\!\big(\eta(\mathbf{x},t)\,\J\big)
+  \;=\;
+  \curl(\vfield\times\B) - \curl\!\big(\eta(\mathbf{x},t)\,\curl\B\big).
+\end{equation}
+We define the resistive operator as the (non-ideal) contribution
+\begin{equation}\label{eq:resistive_operator_def}
+  \mathcal{R}_{\eta}[\B]
+  \;\equiv\;
+  -\,\curl\!\big(\eta(\mathbf{x},t)\,\curl\B\big)
+  \;=\;
+  -\,\curl(\eta\,\J).
+\end{equation}
+When $\eta$ is constant, \eqref{eq:resistive_operator_def} reduces to $\eta\nabla^2\B$ in the standard
+divergence-free setting. When $\eta$ varies in space, however, the curl--curl form is the correct
+generalization.
+
+\subsection{Proposition: preserves $\diver\B$ identically}\label{sec:result_vector_divB}
+The primary structural reason to prefer \eqref{eq:resistive_operator_def} is that it preserves the
+solenoidal constraint by construction.
+
+\begin{proposition}[Constraint preservation under variable-$\eta$ resistivity]\label{prop:divB_preserve}
+Let $\B$ evolve by
+\begin{equation}\label{eq:B_res_only}
+  \partial_t \B \;=\; \mathcal{R}_{\eta}[\B] \;=\; -\curl(\eta\,\curl\B),
+\end{equation}
+with $\eta(\mathbf{x},t)$ sufficiently regular. Then
+\begin{equation}\label{eq:divB_preserve}
+  \partial_t(\diver\B) \;=\; 0,
+\end{equation}
+i.e.\ $\diver\B$ is preserved identically by the resistive term (in the classical sense where the
+operators are defined).
+\end{proposition}
+
+\begin{proof}
+Take the divergence of \eqref{eq:B_res_only} and use the identity $\diver(\curl(\cdot))\equiv 0$:
+\[
+\partial_t(\diver\B) \;=\; -\,\diver\big(\curl(\eta\,\curl\B)\big) \;=\; 0.
+\]
+\end{proof}
+
+\begin{remark}[Why the naive $\eta\nabla^2\B$ is dangerous]\label{rem:naive_eta_laplacian_divB}
+If one instead uses $\partial_t\B=\eta(\mathbf{x},t)\nabla^2\B$, then
+\[
+\partial_t(\diver\B)=\diver\big(\eta\nabla^2\B\big)
+=(\grad\eta)\cdot(\nabla^2\B)+\eta\nabla^2(\diver\B),
+\]
+which generally does \emph{not} vanish even if $\diver\B=0$ initially when $\grad\eta\neq 0$. In other
+words, spatially localized $\eta$ can spuriously inject $\diver\B$ unless the curl--curl structure is
+respected (or an additional divergence-cleaning mechanism is introduced).
+\end{remark}
+
+\subsection{Proposition: monotone magnetic energy decay}\label{sec:result_vector_energy}
+We now state the corresponding energy dissipation identity. Define the magnetic energy
+\begin{equation}\label{eq:mag_energy_R2}
+  \mathcal{E}_B[\B] \;\equiv\; \frac{1}{2}\int_{\Omega}|\B|^2\,dV.
+\end{equation}
+The resistive operator \eqref{eq:resistive_operator_def} yields a sign-definite decay rate proportional
+to $\eta|\J|^2$, up to boundary flux terms.
+
+\begin{proposition}[Magnetic energy dissipation under variable-$\eta$ resistivity]\label{prop:energy_decay}
+Let $\B$ evolve by the resistive part alone,
+\begin{equation}\label{eq:B_res_only_energy}
+  \partial_t \B \;=\; -\,\curl(\eta\,\J),
+  \qquad \J=\curl\B,
+\end{equation}
+with $\eta(\mathbf{x},t)\ge 0$. Then the local energy balance is
+\begin{equation}\label{eq:local_energy_balance}
+  \partial_t\!\left(\frac{|\B|^2}{2}\right)
+  \;=\;
+  -\,\diver\!\big((\eta\,\J)\times\B\big)
+  \;-\;
+  \eta\,|\J|^2,
+\end{equation}
+and consequently the global balance is
+\begin{equation}\label{eq:global_energy_balance}
+  \frac{d}{dt}\mathcal{E}_B[\B]
+  \;=\;
+  -\int_{\Omega}\eta(\mathbf{x},t)\,|\J|^2\,dV
+  \;-\;
+  \int_{\partial\Omega}\big((\eta\,\J)\times\B\big)\cdot\mathbf{n}\,dS.
+\end{equation}
+In particular, under periodic boundary conditions, sufficiently fast decay on $\R^3$, or boundary
+conditions that eliminate the surface flux, one obtains monotone decay:
+\begin{equation}\label{eq:energy_decay_monotone}
+  \frac{d}{dt}\mathcal{E}_B[\B]
+  \;=\;
+  -\int_{\Omega}\eta(\mathbf{x},t)\,|\J|^2\,dV
+  \;\le\; 0.
+\end{equation}
+\end{proposition}
+
+\begin{remark}[State-dependent resistivity]\label{rem:state_dependent_eta_vector}
+The energy and constraint statements in Result~II depend on the curl--curl operator form $-\curl(\eta\curl\B)$ and on $\eta(\mathbf{x},t)\ge 0$, not on whether $\eta$ is externally prescribed. Thus the dissipation and $\diver\B$ preservation identities remain valid if $\eta$ is evaluated as a nonnegative closure $\eta=\eta[\B,\vfield,\rho,\ldots]$, assuming sufficient regularity for the calculus identities used.
+\end{remark}
+
+\begin{proof}[Proof sketch]
+Start from $\partial_t(\tfrac12|\B|^2)=\B\cdot\partial_t\B$ and substitute
+$\partial_t\B=-\curl(\eta\J)$. Use the vector identity
+$\B\cdot(\curl \mathbf{F})=\diver(\mathbf{F}\times\B)+\mathbf{F}\cdot(\curl\B)$ with
+$\mathbf{F}=\eta\J$ and $\curl\B=\J$ to obtain \eqref{eq:local_energy_balance}. Integrating over
+$\Omega$ yields \eqref{eq:global_energy_balance} by the divergence theorem. A complete symbolic
+verification is provided in Appendix~\ref{sec:app_vector_eta}. % add label in your appendix
+\end{proof}
+
+\subsection{Practical takeaway: constraint hygiene for localized resistivity}\label{sec:result_vector_takeaway}
+Result~II has two immediate implications for any ``localized resistivity'' or ``resistive gate'' model:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Use curl--curl (or $-\curl(\eta\J)$) in the continuum specification.}
+  This guarantees that $\diver\B$ is preserved by the resistive term without any auxiliary cleaning step.
+
+  \item \textbf{Discretize in a way that mirrors the identity.}
+  Numerical schemes should compute $\J=\curl\B$, form the resistive electromotive term
+  $\eta\,\J$, and then take a curl. Organizing the discretization this way not only respects the
+  constraint but also makes the energy-dissipation channel explicit through the $\eta|\J|^2$ term in
+  \eqref{eq:local_energy_balance}.
+\end{itemize}
+
+These points parallel Result~I: divergence-form scalar diffusion and curl--curl vector diffusion are the
+minimal operator choices that allow a spatiotemporally localized coefficient $\eta(\mathbf{x},t)$ to be
+interpreted as a clean, auditable ``non-ideal window.'' This operator hygiene is the foundation for the
+topology-channel statements in Result~III (helicity/relative helicity) and for the unified formulation in
+Result~V.
+
+% ============================================================
+\section{Result III --- Helicity Transport and Topology Channels}\label{sec:result_helicity}
+
+Result~II established that variable-$\eta(\mathbf{x},t)$ resistivity is cleanly represented by the
+curl--curl operator $-\curl(\eta\,\curl\B)$, guaranteeing $\diver\B$ preservation and magnetic-energy
+dissipation. In reconnection-style reasoning, however, the key quantity is not only energy but also the
+\emph{topological} content of the field. A standard quadratic/topological diagnostic in MHD is magnetic
+helicity. This section derives the helicity transport law in a form that makes explicit how a localized
+gate $\eta(\mathbf{x},t)$ couples to topology change through the overlap $\eta\,(\J\cdot\B)$.
+
+\subsection{Local helicity balance and interpretation}\label{sec:result_helicity_local}
+Assume $\B$ admits a vector potential $\A$ such that
+\begin{equation}\label{eq:B_curlA_R3}
+  \B = \curl\A.
+\end{equation}
+Introduce scalar and vector electromagnetic potentials $(\phi,\A)$ so that the electric field is
+\begin{equation}\label{eq:E_potentials_R3}
+  \E = -\,\grad\phi - \partial_t\A.
+\end{equation}
+Then Faraday's law $\partial_t\B=-\curl\E$ is automatically satisfied by construction.
+
+Define the helicity density $h\equiv \A\cdot\B$. A standard identity (proved in full in
+Appendix~\ref{sec:app_helicity_eta}) gives the \emph{local helicity balance}:
+\begin{equation}\label{eq:local_helicity_balance}
+  \partial_t(\A\cdot\B)
+  \;+\;
+  \diver\!\Big(\E\times\A + \phi\,\B\Big)
+  \;=\;
+  -\,2\,\E\cdot\B.
+\end{equation}
+Integrating \eqref{eq:local_helicity_balance} over $\Omega$ yields the global balance
+\begin{equation}\label{eq:global_helicity_balance}
+  \frac{d}{dt}\int_{\Omega}\A\cdot\B\,dV
+  \;=\;
+  -\,2\int_{\Omega}\E\cdot\B\,dV
+  \;-\;
+  \int_{\partial\Omega}\Big(\E\times\A + \phi\,\B\Big)\cdot\mathbf{n}\,dS.
+\end{equation}
+Equation \eqref{eq:global_helicity_balance} makes clear that helicity can change due to (i) volume
+sources $\E\cdot\B$ and (ii) boundary flux. In periodic domains (or under boundary conditions that make
+the surface term vanish), helicity change is controlled entirely by $\E\cdot\B$.
+
+\subsection{Ohm-law reduction and the $\eta(\mathbf{x},t)\,(\J\cdot\B)$ coupling}\label{sec:result_helicity_ohm}
+Under the resistive Ohm law
+\begin{equation}\label{eq:ohm_R3}
+  \E + \vfield\times\B \;=\; \eta(\mathbf{x},t)\,\J,
+  \qquad \J=\curl\B,
+\end{equation}
+the helicity source term simplifies substantially. Taking the dot product with $\B$ yields
+\begin{equation}\label{eq:E_dot_B}
+  \E\cdot\B
+  \;=\;
+  \big(-\vfield\times\B + \eta\,\J\big)\cdot\B
+  \;=\;
+  \eta(\mathbf{x},t)\,(\J\cdot\B),
+\end{equation}
+since $(\vfield\times\B)\cdot\B\equiv 0$. Substituting \eqref{eq:E_dot_B} into
+\eqref{eq:local_helicity_balance} gives the helicity balance in a ``gate-ready'' form:
+\begin{equation}\label{eq:local_helicity_balance_eta}
+  \partial_t(\A\cdot\B)
+  \;+\;
+  \diver\!\Big(\E\times\A + \phi\,\B\Big)
+  \;=\;
+  -\,2\,\eta(\mathbf{x},t)\,(\J\cdot\B).
+\end{equation}
+Consequently, in a periodic domain (or when boundary flux is negligible),
+\begin{equation}\label{eq:global_helicity_balance_eta}
+  \frac{d}{dt}\int_{\Omega}\A\cdot\B\,dV
+  \;=\;
+  -\,2\int_{\Omega}\eta(\mathbf{x},t)\,(\J\cdot\B)\,dV.
+\end{equation}
+
+Equation \eqref{eq:global_helicity_balance_eta} is the key ``topology-channel'' statement for gating:
+a localized, time-dependent $\eta(\mathbf{x},t)$ controls helicity change through its spatiotemporal
+overlap with $\J\cdot\B$.
+
+\subsection{Why helicity change is not monotone (and why that is the point)}\label{sec:result_helicity_nonmonotone}
+Result~II showed that magnetic energy dissipates through the sign-definite channel $\eta|\J|^2$.
+Helicity behaves differently: the integrand $\J\cdot\B$ is \emph{sign-indefinite}. As a result, even
+when $\eta(\mathbf{x},t)\ge 0$, the volume term in \eqref{eq:global_helicity_balance_eta} can produce
+either sign depending on the local field geometry. This is not a pathology; it is precisely what makes
+helicity useful as a topology diagnostic and what makes a coefficient gate valuable as a control knob.
+
+From the perspective of designed non-ideal windows, this yields a clean separation of channels:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Energy channel (dissipative):} controlled by $\eta|\J|^2$ and therefore monotone (up to
+  boundary flux).
+  \item \textbf{Topology channel (helicity):} controlled by $\eta(\J\cdot\B)$ and therefore not required
+  to be monotone; its sign and magnitude encode geometry and linkage/twist content.
+\end{itemize}
+
+This separation is one of the toy model's practical enhancements: it allows one to open a localized
+non-ideal window and independently track energy dissipation versus topology change, reducing the risk
+that a numerical artifact in one channel is misinterpreted as a physical effect in the other.
+
+\subsection{Diagnostic recommendation: what to compute in gated studies}\label{sec:result_helicity_diagnostics}
+For gated experiments and simulations, \eqref{eq:local_helicity_balance_eta}--\eqref{eq:global_helicity_balance_eta}
+suggest a minimal set of diagnostics:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Magnetic energy and dissipation rate:}
+  $\mathcal{E}_B=\frac12\int|\B|^2\,dV$ and
+  $\mathcal{D}_B \equiv \int \eta|\J|^2\,dV$ (or their local densities), as a sign-definite sanity check.
+
+  \item \textbf{Helicity (or relative helicity in bounded domains):}
+  $\mathcal{H}=\int \A\cdot\B\,dV$ (with the caveats addressed in \Cref{sec:result_gauge}),
+  or the relative helicity $\mathcal{H}_R$ when boundaries are nontrivial.
+
+  \item \textbf{Topology-channel overlap:}
+  \begin{equation}\label{eq:overlap_integral}
+    \mathcal{S}_H(t) \;\equiv\; \int_{\Omega}\eta(\mathbf{x},t)\,(\J\cdot\B)\,dV,
+  \end{equation}
+  which directly predicts the sign and magnitude of $\frac{d}{dt}\mathcal{H}$ in the absence of
+  significant boundary flux.
+
+  \item \textbf{Boundary flux term (when applicable):}
+  the surface integral in \eqref{eq:global_helicity_balance} (or its relative-helicity analog) whenever
+  the domain is bounded and boundary transport is not negligible.
+\end{enumerate}
+
+In \Cref{sec:wp1_demo} we use these recommendations to design a minimal ``switch'' demonstration:
+turning $\eta(\mathbf{x},t)$ on/off (and applying null controls) produces time-localized changes in
+topology proxies consistent with the separation of channels above. The gauge and bounded-domain issues
+implicit in helicity are addressed next in Result~IV.
+
+% ============================================================
+\section{Result IV --- Gauge Consistency and Finite-Domain Diagnostics}\label{sec:result_gauge}
+
+Magnetic helicity is a powerful topology diagnostic, but it comes with two practical subtleties:
+(i) the \emph{local} helicity density $\A\cdot\B$ is gauge dependent, and
+(ii) in a \emph{bounded} domain the \emph{integral} helicity can also depend on gauge unless additional
+conditions are enforced. Result~IV collects the gauge-consistency facts needed to interpret helicity
+balances correctly and introduces \emph{relative helicity} as the recommended diagnostic for finite
+domains. These statements are standard in the MHD literature (see, e.g., \cite{BergerField1984,FinnAntonsen1985}),
+but we include them here because this paper relies on localized, time-dependent gating and therefore needs
+a topology diagnostic that remains well-posed when boundary fluxes are present. Related potential/gauge constructions within the same toy-universe framework appear in~\cite{Norris:Paper4,Norris:Paper5}.
+
+\subsection{Gauge transformations: what changes locally, what is invariant}\label{sec:result_gauge_transform}
+Let $(\phi,\A)$ be electromagnetic potentials such that
+\begin{equation}\label{eq:potentials_gauge_R4}
+  \B = \curl\A,
+  \qquad
+  \E = -\grad\phi - \partial_t\A.
+\end{equation}
+A gauge transformation is defined by a scalar function $\chi(\mathbf{x},t)$:
+\begin{equation}\label{eq:gauge_transform}
+  \A' = \A + \grad\chi,
+  \qquad
+  \phi' = \phi - \partial_t\chi.
+\end{equation}
+Then $\B$ and $\E$ are gauge invariant:
+\begin{equation}\label{eq:fields_gauge_invariant}
+  \B' = \curl\A' = \curl\A = \B,
+  \qquad
+  \E' = -\grad\phi' - \partial_t\A' = -\grad\phi - \partial_t\A = \E.
+\end{equation}
+
+By contrast, the helicity density $h \equiv \A\cdot\B$ is gauge dependent. Using $\B'=\B$,
+\begin{equation}\label{eq:helicity_density_shift}
+  h' - h
+  \;=\;
+  (\A+\grad\chi)\cdot\B - \A\cdot\B
+  \;=\;
+  (\grad\chi)\cdot\B
+  \;=\;
+  \diver(\chi\,\B) - \chi\,(\diver\B).
+\end{equation}
+When $\diver\B=0$ (as enforced by Result~II), the shift reduces to a pure divergence:
+\begin{equation}\label{eq:helicity_density_shift_div}
+  h' - h \;=\; \diver(\chi\,\B).
+\end{equation}
+Thus, \emph{locally} the helicity density depends on gauge, but the \emph{difference} between two gauges
+is a flux divergence.
+
+\subsection{Conditions for gauge-invariant helicity integrals}\label{sec:result_gauge_integral}
+Integrating \eqref{eq:helicity_density_shift_div} over $\Omega$ gives the shift in total helicity:
+\begin{equation}\label{eq:helicity_integral_shift}
+  \int_{\Omega}\A'\cdot\B\,dV - \int_{\Omega}\A\cdot\B\,dV
+  \;=\;
+  \int_{\partial\Omega}\chi\,(\B\cdot\mathbf{n})\,dS.
+\end{equation}
+Therefore, the volume integral $\int_{\Omega}\A\cdot\B\,dV$ is gauge invariant under any of the
+following common conditions:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Periodic domains:} the boundary integral vanishes by periodicity.
+  \item \textbf{Whole-space decay:} on $\R^3$ with sufficiently fast decay, the boundary term at infinity
+  vanishes.
+  \item \textbf{Magnetically closed boundaries:} $\B\cdot\mathbf{n}=0$ on $\partial\Omega$.
+  \item \textbf{Restricted gauge class:} $\chi|_{\partial\Omega}=0$ (or constant) on $\partial\Omega$.
+\end{itemize}
+
+In practice, many simulations and experimental geometries do \emph{not} satisfy $\B\cdot\mathbf{n}=0$,
+and it is often undesirable to restrict $\chi$ to vanish on the boundary. In that case, the correct
+topology diagnostic is \emph{relative helicity}, which removes the gauge ambiguity by comparing to a
+reference field that matches the boundary flux.
+
+Finally, note that the \emph{helicity balance law} derived in Result~III is itself gauge-consistent:
+both sides of the local balance
+\[
+\partial_t(\A\cdot\B) + \diver(\E\times\A + \phi\,\B) = -2\,\E\cdot\B
+\]
+transform in the same way under \eqref{eq:gauge_transform}, so the equation remains valid in any gauge.
+(We provide a symbolic verification in Appendix~\ref{sec:app_gauge}.)
+
+\subsection{Relative helicity: definition, balance law, and boundary flux terms}\label{sec:result_gauge_relative}
+Let $\B_0$ be a reference magnetic field on $\Omega$ such that it matches the normal component of $\B$
+on the boundary:
+\begin{equation}\label{eq:relative_bc_match}
+  \B\cdot\mathbf{n}\big|_{\partial\Omega} = \B_0\cdot\mathbf{n}\big|_{\partial\Omega}.
+\end{equation}
+Let $\A$ and $\A_0$ be vector potentials for $\B$ and $\B_0$:
+\begin{equation}\label{eq:relative_potentials}
+  \B=\curl\A,
+  \qquad
+  \B_0=\curl\A_0.
+\end{equation}
+A common and convenient choice is to take $\B_0$ as the unique potential (current-free) field matching
+the boundary flux, i.e.\ $\curl\B_0=\mathbf{0}$ and \eqref{eq:relative_bc_match}.
+
+\paragraph{Definition (relative helicity).}
+We define the relative helicity density and its integral by \cite{FinnAntonsen1985}
+\begin{equation}\label{eq:relative_helicity_def}
+  h_R \;\equiv\; (\A+\A_0)\cdot(\B-\B_0),
+  \qquad
+  \mathcal{H}_R \;\equiv\; \int_{\Omega} h_R\,dV.
+\end{equation}
+Under simultaneous gauge transformations $\A\mapsto\A+\grad\chi$ and $\A_0\mapsto\A_0+\grad\chi_0$,
+the integral $\mathcal{H}_R$ is gauge invariant provided \eqref{eq:relative_bc_match} holds (and mild
+regularity assumptions are satisfied). This is the key advantage of $\mathcal{H}_R$ in bounded domains.
+
+\paragraph{Relative-helicity balance law.}
+Let $(\phi,\A)$ and $(\phi_0,\A_0)$ generate electric fields $\E$ and $\E_0$ as in
+\eqref{eq:potentials_gauge_R4}. Then one obtains the local balance \cite{FinnAntonsen1985}:
+\begin{equation}\label{eq:relative_helicity_balance_local}
+  \partial_t h_R + \diver \mathbf{F}_R
+  \;=\;
+  -2\left(\E\cdot\B - \E_0\cdot\B_0\right),
+\end{equation}
+with relative-helicity flux
+\begin{equation}\label{eq:relative_helicity_flux}
+  \mathbf{F}_R
+  \;\equiv\;
+  (\E-\E_0)\times(\A+\A_0) + (\phi+\phi_0)(\B-\B_0).
+\end{equation}
+Integrating over $\Omega$ yields the global balance
+\begin{equation}\label{eq:relative_helicity_balance_global}
+  \frac{d}{dt}\mathcal{H}_R
+  \;=\;
+  -2\int_{\Omega}\left(\E\cdot\B - \E_0\cdot\B_0\right)dV
+  \;-\;
+  \int_{\partial\Omega}\mathbf{F}_R\cdot\mathbf{n}\,dS.
+\end{equation}
+
+\paragraph{Gate-ready form under resistive Ohm law.}
+If $\E$ satisfies the resistive Ohm law \eqref{eq:ohm_R3}, then (as in Result~III)
+$\E\cdot\B = \eta(\mathbf{x},t)(\J\cdot\B)$. If the reference field is chosen current-free
+($\J_0=\curl\B_0=\mathbf{0}$), then $\E_0\cdot\B_0=0$ for the corresponding ideal reference evolution.
+In that common case, the volume source in \eqref{eq:relative_helicity_balance_global} reduces to
+\begin{equation}\label{eq:relative_helicity_gate_source}
+  -2\int_{\Omega}\eta(\mathbf{x},t)\,(\J\cdot\B)\,dV,
+\end{equation}
+so the same topology-channel overlap integral emphasized in Result~III controls relative-helicity change,
+with the addition of explicit boundary transport through $\mathbf{F}_R$.
+
+\subsection{Practical recipe: relative helicity as the bounded-domain topology measure}\label{sec:result_gauge_recipe}
+For gated studies in bounded domains, we recommend the following workflow:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Choose a reference field $\B_0$.}
+  Given $\B\cdot\mathbf{n}$ on $\partial\Omega$, construct $\B_0$ so that
+  $\B_0\cdot\mathbf{n}=\B\cdot\mathbf{n}$ on $\partial\Omega$. The standard choice is the potential
+  field (current-free) reference, $\curl\B_0=\mathbf{0}$, which isolates topology changes in $\B$
+  relative to the ``minimum-current'' configuration compatible with the boundary flux.
+
+  \item \textbf{Construct vector potentials $\A$ and $\A_0$ consistently.}
+  Fix a gauge (e.g.\ Coulomb gauge $\diver\A=0$) and solve for $\A$ and $\A_0$ from
+  $\curl\A=\B$ and $\curl\A_0=\B_0$ with compatible boundary conditions. In a periodic domain this is
+  straightforward spectrally; in bounded domains one uses standard vector Poisson formulations.
+  The specific gauge does not affect $\mathcal{H}_R$.
+
+  \item \textbf{Computational cost note (bounded domains).}
+  In bounded domains, constructing the reference field $\B_0$ (and consistent potentials $\A,\A_0$ in a chosen gauge) typically requires global elliptic solves (Laplace/Poisson or vector Poisson problems). In large 3D simulations this can be computationally nontrivial and may dominate runtime; however, this cost is the unavoidable price of gauge-invariant helicity diagnostics in non-periodic domains.
+
+  \item \textbf{Compute $(\mathcal{H}_R, \mathcal{E}_B)$ and the overlap integrals.}
+  Track
+  \[
+    \mathcal{H}_R(t)=\int (\A+\A_0)\cdot(\B-\B_0)\,dV,
+    \qquad
+    \mathcal{S}_H(t)=\int \eta(\mathbf{x},t)\,(\J\cdot\B)\,dV,
+    \qquad
+    \mathcal{D}_B(t)=\int \eta|\J|^2\,dV.
+  \]
+  Here $\mathcal{D}_B$ provides the sign-definite dissipation sanity check (Result~II), while
+  $\mathcal{S}_H$ predicts the sign and magnitude of the bulk topology-channel source (Result~III).
+
+  \item \textbf{Account for boundary transport when needed.}
+  If the domain is bounded and boundary fluxes are significant, compute the surface term
+  $\int_{\partial\Omega}\mathbf{F}_R\cdot\mathbf{n}\,dS$ from \eqref{eq:relative_helicity_flux} to separate
+  bulk gate-driven topology change from boundary injection/escape.
+\end{enumerate}
+
+This completes the diagnostic framework needed for interpreting topology change in the presence of a
+localized, time-dependent gate. Result~V will show that the induction equation, the resistive operator,
+and these energy/helicity statements can be embedded in a unified vector-potential formulation, which
+is useful both conceptually and for implementations that evolve $\A$ directly.
+
+% ============================================================
+\section{Result V --- Unified Vector Potential Formulation}\label{sec:result_Aform}
+
+Results~II--IV were presented in a ``field + identities'' style: we specified the resistive operator in
+$\B$ form, then derived the corresponding energy and helicity balances, and finally addressed gauge and
+finite-domain diagnostics. In this section we show that these pieces can be embedded in a single,
+coherent formulation based on evolving a vector potential $\A$. The point is not that one must evolve
+$\A$ numerically (many schemes evolve $\B$ directly), but that an $\A$-based formulation provides a
+useful closure: Faraday's law, the induction equation, divergence preservation, and the
+energy/helicity/relative-helicity balances arise from one consistent set of definitions and operator
+choices rather than a patchwork of separately asserted identities.
+
+\subsection{Vector potential evolution implies the induction equation}\label{sec:result_Aform_induction}
+Assume the magnetic field is represented as
+\begin{equation}\label{eq:B_from_A_R5}
+  \B = \curl\A,
+\end{equation}
+and define the electric field via potentials
+\begin{equation}\label{eq:E_from_potentials_R5}
+  \E = -\grad\phi - \partial_t\A,
+\end{equation}
+for some scalar potential $\phi$ (gauge). Then Faraday's law follows identically:
+\begin{equation}\label{eq:faraday_from_A}
+  \partial_t\B
+  \;=\;
+  \curl(\partial_t\A)
+  \;=\;
+  -\curl(\E+\grad\phi)
+  \;=\;
+  -\curl\E,
+\end{equation}
+since $\curl(\grad\phi)\equiv 0$. Substituting an Ohm law closure for $\E$ then yields the induction
+equation.
+
+In particular, with the resistive Ohm law
+\begin{equation}\label{eq:ohm_R5}
+  \E + \vfield\times\B = \eta(\mathbf{x},t)\,\J,
+  \qquad \J=\curl\B,
+\end{equation}
+we obtain the variable-$\eta$ induction equation already used in Result~II:
+\begin{equation}\label{eq:induction_R5}
+  \partial_t\B
+  \;=\;
+  -\curl\E
+  \;=\;
+  \curl(\vfield\times\B) - \curl(\eta\,\J)
+  \;=\;
+  \curl(\vfield\times\B) - \curl\!\big(\eta\,\curl\B\big).
+\end{equation}
+Because $\B$ is represented as a curl, the solenoidal constraint is automatic:
+\begin{equation}\label{eq:divB_auto}
+  \diver\B = \diver(\curl\A) \equiv 0.
+\end{equation}
+
+\subsection{Consistency: energy and helicity balances in one framework}\label{sec:result_Aform_balances}
+The $\A$-formulation provides a compact way to recover the balance laws of Results~II--IV.
+
+\paragraph{Magnetic energy balance.}
+Dotting \eqref{eq:induction_R5} with $\B$ and using the vector identity
+$\B\cdot(\curl \mathbf{F})=\diver(\mathbf{F}\times\B)+\mathbf{F}\cdot(\curl\B)$
+(with $\mathbf{F}=\eta\J$) yields the local magnetic energy balance already stated in
+\eqref{eq:local_energy_balance}:
+\begin{equation}\label{eq:energy_balance_R5}
+  \partial_t\!\left(\frac{|\B|^2}{2}\right)
+  \;=\;
+  -\,\diver\!\big((\eta\,\J)\times\B\big) \;-\; \eta\,|\J|^2.
+\end{equation}
+Thus, the resistive part produces sign-definite dissipation through $\eta|\J|^2$ (up to boundary flux),
+independently of gauge choice for $\phi$.
+
+\paragraph{Helicity balance.}
+Starting from the helicity density $h=\A\cdot\B$ and using \eqref{eq:B_from_A_R5}--\eqref{eq:E_from_potentials_R5},
+one obtains the local balance
+\begin{equation}\label{eq:helicity_balance_R5}
+  \partial_t(\A\cdot\B) + \diver\!\big(\E\times\A + \phi\,\B\big) = -2\,\E\cdot\B,
+\end{equation}
+which is Result~III in its potential form. Substituting the resistive Ohm law \eqref{eq:ohm_R5} gives
+\begin{equation}\label{eq:helicity_balance_eta_R5}
+  \partial_t(\A\cdot\B) + \diver\!\big(\E\times\A + \phi\,\B\big)
+  \;=\;
+  -2\,\eta(\mathbf{x},t)\,(\J\cdot\B),
+\end{equation}
+since $(\vfield\times\B)\cdot\B\equiv 0$. The sign-indefiniteness of $\J\cdot\B$ is therefore the
+precise statement that helicity is a topology channel distinct from purely dissipative energy decay.
+
+\paragraph{Relative helicity in bounded domains.}
+Because the $\A$-based representation makes gauge structure explicit, it also clarifies why relative
+helicity is the correct bounded-domain diagnostic: under $\A\mapsto\A+\grad\chi$, the shift in helicity
+density is a divergence (when $\diver\B=0$), and relative helicity is constructed specifically to cancel
+the gauge-sensitive boundary contribution by referencing a field with the same boundary flux. The local
+and global relative-helicity balances \eqref{eq:relative_helicity_balance_local}--\eqref{eq:relative_helicity_balance_global}
+follow from the same algebra applied to $(\A,\phi)$ and the reference potentials $(\A_0,\phi_0)$ (see
+Appendix~\ref{sec:app_relative_helicity} for a full derivation and symbolic verification).
+
+\subsection{Implementation relevance}\label{sec:result_Aform_impl}
+The unified vector-potential view is useful in two ways:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Conceptual closure.}
+  It shows that the induction equation, the variable-$\eta$ resistive operator, divergence preservation,
+  and the energy/helicity/relative-helicity balances all arise from a single coherent specification:
+  choose $\B=\curl\A$, define $\E$ by \eqref{eq:E_from_potentials_R5}, and impose Ohm law
+  \eqref{eq:ohm_R5}. This eliminates any ambiguity about which operator is ``correct'' for a localized,
+  time-dependent $\eta(\mathbf{x},t)$.
+
+  \item \textbf{Practical guidance for numerics.}
+  Even if one evolves $\B$ directly, the structure suggests how to discretize the resistive term:
+  compute $\J=\curl\B$, form the resistive electromotive contribution $\eta\,\J$, and apply a curl.
+  Doing so mirrors the continuum identity and makes constraint preservation and dissipation transparent.
+  If one does evolve $\A$ directly, \eqref{eq:E_from_potentials_R5} and the gauge freedom
+  \eqref{eq:gauge_transform} provide a natural way to enforce a convenient gauge (e.g.\ Coulomb gauge),
+  while maintaining the same balance laws.
+
+\end{itemize}
+
+In summary, Result~V establishes that the theory developed in Results~II--IV is not a collection of
+separate facts: it is the manifestation of a single, gauge-consistent potential-based formulation that
+remains valid under spatially localized, time-dependent gating via $\eta(\mathbf{x},t)$.
+
+% ============================================================
+\section{WP1 Demonstration --- Controlled Topology Switching via a Gate}\label{sec:wp1_demo}
+
+This section provides a minimal numerical demonstration that the \emph{gate} $\eta(\mathbf{x},t)$ can be
+implemented stably and used as a controllable ``non-ideal window'' whose effects are detectable with
+simple, reproducible diagnostics. The intent of WP1 is \emph{verification of the switch mechanism}:
+(i) the solver remains stable with the gate on, (ii) the gate is localized in space and time, and
+(iii) diagnostics respond in a gate-synchronized manner relative to appropriate null controls.
+We do not claim that WP1 establishes tearing/plasmoid scaling laws or a full reconnection phenomenology.
+
+\subsection{Experiment design: gate shape, timing, and control runs}\label{sec:wp1_design}
+All WP1 runs use a three-dimensional periodic domain and a fixed ``canonical'' initial condition to
+enable like-for-like comparisons across gate settings. The canonical initial condition consists of two
+orthogonal vortex tubes initialized in the domain (a configuration that produces nontrivial filament
+dynamics while remaining simple enough for repeated tests).
+
+\paragraph{Gate definition.}
+The gate is a spatiotemporally localized diffusivity of the separable form
+\begin{equation}\label{eq:wp1_eta}
+  \eta(\mathbf{x},t)
+  \;=\;
+  \eta_{\text{peak}}\,
+  W_t(t;t_0,\tau)\,
+  W_x(\mathbf{x};\sigma),
+\end{equation}
+where $W_t$ is a finite-duration temporal pulse starting at $t_0$ with duration $\tau$ (implemented as a
+smooth ramp-on/ramp-off window to suppress transients), and $W_x$ is a localized spatial window
+(implemented as a Gaussian centered at a chosen location with width parameter $\sigma$). The proofs in
+Results~I--II apply to general $\eta(\mathbf{x},t)$; the separable form \eqref{eq:wp1_eta} is adopted
+for clarity and to enable clean null tests.
+
+\paragraph{Gated evolution.}
+The numerical evolution is split into a conservative (unitary) step and a non-ideal gate step. During
+the gate window, the non-ideal step applies the scalar diffusion operator in divergence (flux) form,
+\begin{equation}\label{eq:wp1_gate_step}
+  \partial_t \psi \;=\; \diver\!\big(\eta(\mathbf{x},t)\,\grad\psi\big),
+\end{equation}
+consistent with Result~I. In practice we use an explicit update over a substep $\Delta t_{\text{sub}}$,
+\begin{equation}\label{eq:wp1_gate_explicit}
+  \psi \leftarrow \psi + \Delta t_{\text{sub}}\;\diver\!\big(\eta(\mathbf{x},t)\,\grad\psi\big),
+\end{equation}
+interleaved with the unitary step for the conservative dynamics (split-step spectral real-time
+Gross--Pitaevskii-type evolution in our implementation).
+
+\paragraph{Stability: automatic diffusion subcycling.}
+Because \eqref{eq:wp1_gate_explicit} is an explicit diffusion step, stability requires a diffusion
+CFL-like restriction. During the gate, we automatically choose the number of diffusion substeps
+$n_{\text{sub}}$ such that
+\begin{equation}\label{eq:wp1_diff_cfl}
+  \Delta t_{\text{sub}}\,\eta_{\text{peak}}\,k_{\max}^2 \;\le\; C_{\text{diff}},
+  \qquad
+  \Delta t_{\text{sub}}=\frac{\Delta t}{n_{\text{sub}}},
+\end{equation}
+where $k_{\max}$ is the maximum resolved wavenumber (known from the grid in a spectral method) and
+$C_{\text{diff}}$ is a user-set stability constant (\texttt{DIFF\_LIMIT} in the code). This subcycling
+eliminated blow-ups observed in preliminary (non-subcycled) tests and is used for all WP1 results.
+
+\paragraph{Representative baseline parameters.}
+A representative stable WP1 configuration uses
+\begin{equation}\label{eq:wp1_params}
+  \eta_{\text{peak}} = 0.08,\qquad t_0 = 8.0,\qquad \tau = 8.0,
+\end{equation}
+with spatial localization controlled by $\sigma$ (via $W_x$). For interpretability, it is useful to
+report the associated diffusion length during the pulse,
+\begin{equation}\label{eq:wp1_ld}
+  \ell_d \;=\; \sqrt{\eta_{\text{peak}}\tau}\;\approx\;\sqrt{0.08\times 8}\;\approx\;0.80,
+\end{equation}
+and (with a characteristic thickness scale $\delta$ taken as $\delta=1$ in the nondimensionalization)
+\begin{equation}\label{eq:wp1_chi_rm}
+  \chi \equiv \ell_d/\delta \approx 0.80,
+  \qquad
+  Rm \sim \frac{U_0\,\delta}{\eta_{\text{peak}}}\approx 2.86\times 10^2,
+\end{equation}
+where $U_0$ is the RMS speed measured in the gated region. These values correspond to a system that is
+predominantly ``ideal'' (large $Rm$) while still opening a nontrivial diffusion window over a finite
+length scale $\ell_d$.
+
+\paragraph{Null controls.}
+To ensure observed effects are gate-driven rather than incidental transients, WP1 includes the
+following control runs:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Gate-off control:} $\eta(\mathbf{x},t)\equiv 0$.
+  \item \textbf{Displaced-gate control:} same pulse parameters but $W_x$ centered away from the region of
+  strongest activity.
+  \item \textbf{Weak/short-gate controls:} reduced $\eta_{\text{peak}}$ and/or reduced $\tau$ to test
+  threshold behavior and to confirm that diagnostics scale with the gate strength/duration.
+\end{itemize}
+
+\subsection{Diagnostics suite}\label{sec:wp1_diagnostics}
+WP1 is intentionally conservative in its diagnostics: the goal is to detect reproducible gate-synchronized
+changes with measures that are easy to compute and interpret. Each diagnostic is plotted as a time
+series with the gate window overlaid.
+
+\paragraph{(i) Acoustic/compressible activity proxy.}
+We compute a compressible activity proxy from the mass current $\mathbf{j}=\rho\,\vfield$ by extracting a
+compressible component via standard Helmholtz projection (implemented spectrally in Fourier space) and
+forming a quadratic ``sound'' measure. Concretely, we compute a time series
+\begin{equation}\label{eq:wp1_sound_proxy}
+  \mathcal{S}(t) \;\equiv\; \int_{\Omega} \big|\mathbf{j}_{\mathrm{comp}}(\mathbf{x},t)\big|^2\,dV,
+\end{equation}
+where $\mathbf{j}_{\mathrm{comp}}$ is the irrotational (curl-free) projection of $\mathbf{j}$.
+This quantity serves as a simple indicator of gate-correlated compressible activity (acoustic emission
+in the hydrodynamic picture)~\cite{Norris:Paper6}.
+
+\paragraph{(ii) Core volume fraction (topology proxy).}
+We define a low-density ``core mask'' by thresholding the density:
+\begin{equation}\label{eq:wp1_core_mask}
+  \mathcal{M}(\mathbf{x},t) \;=\; \mathbf{1}\{\rho(\mathbf{x},t) < \rho_{\text{th}}\},
+\end{equation}
+and compute the corresponding volume fraction
+\begin{equation}\label{eq:wp1_core_frac}
+  f_{\text{core}}(t) \;\equiv\; \frac{1}{|\Omega|}\int_{\Omega}\mathcal{M}(\mathbf{x},t)\,dV,
+\end{equation}
+implemented discretely as the fraction of grid cells below \texttt{RHO\_TH}. This is a coarse but
+robust indicator of how much of the domain is in a core-like, low-density state.
+
+\paragraph{(iii) Connected-component count of the core mask.}
+To detect discrete structural changes (splits/merges) in the core network, we compute connected
+components of the voxelized mask $\mathcal{M}$ and count only components exceeding a minimum size
+(\texttt{MIN\_VOX}). We record
+\begin{equation}\label{eq:wp1_nbig}
+  n_{\text{big}}(t) \;=\; \#\{\text{connected components of }\mathcal{M}(\cdot,t)\text{ with size }\ge N_{\min}\}.
+\end{equation}
+This provides a practical topology-proxy event detector: when macroscopic structures split or merge,
+$n_{\text{big}}(t)$ changes.
+
+\paragraph{(iv) Visualization outputs.}
+For qualitative inspection and reproducibility, WP1 outputs:
+(i) a 3D scatter/point-cloud visualization of low-density voxels,
+(ii) $\mathcal{S}(t)$ with gate overlay, and
+(iii) $f_{\text{core}}(t)$ and $n_{\text{big}}(t)$ with gate overlay.
+
+\begin{figure}[t]
+  \centering
+  % \includegraphics[width=0.95\linewidth]{figs/wp1_timeseries.pdf}
+  \caption{WP1 diagnostics (schematic placeholder). Time series of the compressible activity proxy
+  $\mathcal{S}(t)$ (top) and topology proxies $f_{\text{core}}(t)$ and $n_{\text{big}}(t)$ (bottom),
+  with the gate window highlighted. Control runs (gate off / displaced / weak/short) are overlaid to
+  show gate-synchronized departures.}
+  \label{fig:wp1_timeseries}
+\end{figure}
+
+\subsection{Null tests and robustness}\label{sec:wp1_nulls}
+Across WP1 runs, two qualitative outcomes are required for a ``pass'':
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Gate stability:} the simulation remains stable throughout the gate pulse and returns to
+  baseline evolution afterward (no numerical blow-up; no irreversible corruption of the field).
+  \item \textbf{Gate-synchronized diagnostic response:} at least one diagnostic exhibits a reproducible
+  change localized in (or immediately following) the gate window, with the change absent or strongly
+  reduced in null controls.
+\end{enumerate}
+
+In the representative baseline configuration \eqref{eq:wp1_params}, after enabling diffusion subcycling
+\eqref{eq:wp1_diff_cfl}, the gate operated stably and produced gate-correlated changes in the topology
+proxy $n_{\text{big}}(t)$ and in the compressible activity proxy $\mathcal{S}(t)$. Gate-off controls did
+not show comparable gate-timed features.
+
+\subsection{Convergence and sensitivity checks (minimal but credible)}\label{sec:wp1_convergence}
+WP1 includes a minimal set of robustness checks designed to rule out obvious numerical artifacts:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Time step sensitivity:} repeat the baseline run with $\Delta t$ reduced (and subcycling
+  adjusted accordingly) to confirm the qualitative diagnostic response persists.
+  \item \textbf{Grid sensitivity:} repeat at a higher grid resolution (same physical domain) to confirm
+  that gate-synchronized changes are not a resolution artifact.
+  \item \textbf{Threshold sensitivity:} vary $\rho_{\text{th}}$ and $N_{\min}$ over a reasonable range to
+  confirm $n_{\text{big}}(t)$ changes are not purely a thresholding artifact.
+  \item \textbf{Gate-shape sensitivity:} vary $\sigma$ (spatial width) and the ramp shape in $W_t$ to
+  confirm the response is not tied to a single windowing choice.
+\end{itemize}
+
+These checks are intentionally limited in WP1, whose function is to establish the controlled gate as a
+\emph{working experimental knob} and to validate an instrumented diagnostic pipeline. More detailed
+parameter scans and more physics-specific reconnection analog tests (e.g.\ sheet-like initial
+conditions, onset thresholds, scaling studies) are deferred to follow-on work (WP2+), now supported by
+the operator-correct framework established in Results~I--V.
+
+% ============================================================
+\section{Discussion --- What the Toy Model Enables Beyond Standard Treatments}\label{sec:discussion}
+
+The results so far can be summarized as follows: a spatiotemporally localized ``gate''
+$\eta(\mathbf{x},t)$ is only meaningful as a controlled non-ideal window if its associated operators are
+chosen in the correct conservative forms (Result~I for scalars, Result~II for vectors), and if topology
+diagnostics are computed in gauge-consistent ways (Results~III--IV). This section explains what these
+ingredients enable \emph{beyond} standard treatments, and why a toy model can be scientifically useful
+even when it is not ``full MHD.''
+
+\subsection{Programmable reconnection analogs: designing when/where frozen-in breaks}\label{sec:discussion_programmable}
+In many numerical and analytic studies, non-ideal effects are effectively set by the discretization
+(numerical diffusion) or by globally uniform coefficients. This makes it difficult to answer questions
+of the form: \emph{what changes if the non-ideal window is moved, narrowed, or timed differently?}
+Because our framework treats $\eta(\mathbf{x},t)$ as an explicit, designed input, it supports
+``programmable reconnection analogs'': one can prescribe the location, duration, and strength of the
+non-ideal channel and evaluate sensitivity of topology proxies and helicity-like diagnostics.
+
+Two aspects are worth emphasizing:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Locality without ambiguity.}
+  Localization introduces strong gradients in $\eta$, precisely where naive operator choices introduce
+  spurious terms. Results~I--II remove that ambiguity by fixing operator forms that remain correct under
+  localization.
+
+  \item \textbf{Causal attribution via null controls.}
+  Because the gate is a deliberate control knob, one can run gate-off, displaced-gate, and weak/short
+  gate controls that would be difficult to interpret if the non-ideal channel were implicit. WP1 shows
+  that such controls can be incorporated into the workflow and that diagnostics respond in a
+  gate-synchronized manner.
+\end{itemize}
+
+In short, the toy model enables ``designed non-ideality'' experiments: topology change can be studied
+as a response to a controlled perturbation rather than as an emergent consequence of uncontrolled
+numerical or global parameter choices.
+
+\subsection{Emergent gating: state-dependent non-ideality and geometric localization}\label{sec:discussion_emergent_gate}
+In this paper we treat $\eta(\mathbf{x},t)$ as an explicit control input in order to isolate operator correctness and enable causal null tests. In a physical realization, however, a localized ``gate'' is more naturally viewed as an \emph{emergent closure}: a state-dependent non-ideal channel that activates only where the effective continuum description becomes stressed (e.g.\ near defect cores where $\rho\to 0$ and $\vfield=\nabla\theta$ becomes ill-defined, or near horizon-like/transonic structure in the broader superfluid-defect program~\cite{Norris:Paper6}).
+
+A convenient way to formalize this viewpoint is to allow
+\[
+\eta(\mathbf{x},t)=\eta\!\left[\rho,\theta,\nabla\rho,\nabla\theta,\ldots\right](\mathbf{x},t),
+\]
+while retaining the requirement $\eta(\mathbf{x},t)\ge 0$ and sufficient regularity for the integrations by parts used throughout Results~I--IV. Importantly, the operator identities and balance laws in this paper do not rely on $\eta$ being externally prescribed; they rely on the \emph{operator form} (divergence-form scalar diffusion; curl--curl vector resistivity) and on $\eta\ge 0$.
+
+Two illustrative (non-exclusive) examples are:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Core-activated gating:}\quad $\eta(\mathbf{x},t)=\eta_0\,g(\rho)$ with $g(\rho)$ increasing as $\rho\to 0$, so that dissipation activates primarily in low-density core regions.
+  \item \textbf{Transonic/horizon-activated gating:}\quad $\eta(\mathbf{x},t)=\eta_0\,h(\mathrm{Ma})$ with $\mathrm{Ma}=|\vfield|/c_s$ and $h$ peaked near $\mathrm{Ma}\approx 1$, so that the non-ideal channel localizes near horizon-like/transonic structure.
+\end{itemize}
+
+This perspective reframes ``programmable gating'' as a controlled surrogate for an emergent, geometry-selected non-ideality: the present paper establishes the operator-correct and diagnostic-correct scaffolding needed to test such closures without ambiguity about spurious $\nabla\eta$ artifacts, constraint contamination, or gauge dependence.
+
+\subsection{Clean separation of channels: energy dissipation vs topology change}\label{sec:discussion_channels}
+A recurring challenge in topology-change studies is separating genuine topology change from generic
+damping or heating. The balance laws derived here provide a clean channel separation:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Energy dissipation channel.}
+  Under the variable-$\eta$ resistive operator, magnetic energy decays through a sign-definite rate
+  proportional to $\eta|\J|^2$ (Result~II), up to boundary flux.
+
+  \item \textbf{Topology channel.}
+  Helicity (or relative helicity) changes through $\eta(\J\cdot\B)$ (Results~III--IV) plus boundary
+  transport; $\J\cdot\B$ is sign-indefinite, so helicity change is not constrained to be monotone.
+\end{itemize}
+
+This separation matters operationally. In a gated study, one can interpret changes in energy as
+``how much dissipation did the gate cause?'' and changes in (relative) helicity as ``what topology
+channel did the gate open?'' The overlap integral
+\[
+\mathcal{S}_H(t)=\int \eta(\mathbf{x},t)\,(\J\cdot\B)\,dV
+\]
+acts as a predictive quantity for the bulk helicity source (in the absence of significant boundary
+flux). This gives a practical design principle: by shaping $\eta(\mathbf{x},t)$ to overlap with regions
+of large $|\J|$ one increases dissipation; by shaping it to overlap with regions of large (signed)
+$\J\cdot\B$ one targets helicity change.
+
+Even when the toy model is used in its scalar ($\psi$) form rather than a full MHD vector-field system,
+the same philosophy applies: one can define and track analogous ``dissipative'' and ``topological''
+proxies and use the gate to probe their causal relationships. The key point is that operator-correct
+gating makes these interpretations auditable.
+
+\subsection{A testbed for reconnection ideas at low cost}\label{sec:discussion_testbed}
+Full MHD and especially kinetic reconnection simulations can be expensive, both computationally and in
+terms of model complexity. A toy model that preserves the relevant \emph{mathematical structure} can be
+useful as a testbed for several reasons:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Rapid iteration on ``knob design.''}
+  Because $\eta(\mathbf{x},t)$ is explicit and cheap to vary, one can quickly explore gating protocols,
+  diagnostic pipelines, and null-test logic before investing in higher-fidelity simulations.
+
+  \item \textbf{Operator and diagnostic hygiene.}
+  Variable-coefficient operators and gauge-sensitive diagnostics are common sources of error even in
+  sophisticated codes. The proof-backed framework here provides a compact reference implementation and
+  a set of identities that can be ported to other settings as unit tests.
+
+  \item \textbf{Controlled experiments on topology proxies.}
+  Many topology measures (filament connectivity, core masks, helicity-like quantities) are sensitive to
+  thresholds, smoothing, and boundary handling. The toy model provides a safe environment to quantify
+  these sensitivities and to develop robust metrics.
+\end{enumerate}
+
+Thus, the toy model is not positioned as a replacement for standard reconnection modeling, but as a
+\emph{structure-preserving sandbox} that supports reproducible, causally interpretable experiments on
+how localized non-ideal windows couple to topology diagnostics.
+
+\subsection{Interface to tearing/plasmoid questions (Paper 2 roadmap)}\label{sec:discussion_roadmap}
+The framework developed here sets up a natural path toward reconnection-phenomenology questions that
+are more directly associated with the tearing/plasmoid literature. However, addressing those questions
+requires additional setup beyond WP1.
+
+A plausible ``Paper 2'' program would include:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Sheet-like initial conditions (current/vorticity sheets).}
+  Construct controlled, thin-sheet configurations that mimic the canonical tearing setup, then apply
+  localized gating to study onset and nonlinear evolution.
+
+  \item \textbf{Parameter scans in the relevant nondimensional groups.}
+  Vary gate strength and duration to sweep effective $Rm$-like parameters and diffusion lengths
+  (e.g.\ $\ell_d=\sqrt{\eta_{\text{peak}}\tau}$), looking for threshold behavior and regime transitions.
+
+  \item \textbf{More direct topology diagnostics.}
+  Complement connected-component core proxies with filament extraction, reconnection-candidate counting,
+  and (relative) helicity budgets, to connect more tightly to reconnection phenomenology.
+
+  \item \textbf{Scaling studies and regime separation.}
+  If tearing-like scaling claims are desired, one must demonstrate convergence and isolate regimes where
+  the toy-model ``ideal'' sector approximates the assumptions used in the tearing theory being compared
+  against. This includes careful handling of compressibility, core physics, and any dispersive terms.
+\end{itemize}
+
+The purpose of this paper is to make such a program \emph{possible} without ambiguity about operator
+correctness or diagnostic meaning. By establishing a coefficient-gated, proof-backed non-ideal window
+and a gauge-consistent topology diagnostic toolkit, we provide the minimal foundation required for more
+physics-specific reconnection analog studies in subsequent work.
+
+% ============================================================
+\section{Limitations and Threats to Validity}\label{sec:limitations}
+
+This paper is intentionally foundational: it establishes operator correctness for variable-$\eta(\mathbf{x},t)$
+gating and provides a minimal, reproducible demonstration that the gate can function as a controllable
+non-ideal window. This section makes explicit what is (and is not) validated by the present work, and
+identifies the main threats to validity that must be addressed in follow-on studies.
+
+\subsection{What is proven vs demonstrated}\label{sec:limitations_proven_demo}
+A key strength of this paper is the separation between \emph{proof-level} statements and
+\emph{experiment-level} observations.
+
+\paragraph{Proven (analytic identities).}
+Results~I--V provide exact continuum identities, under standard regularity and boundary assumptions:
+\begin{itemize}[leftmargin=*]
+  \item divergence-form scalar diffusion is the correct variable-$\eta$ gate and yields sign-definite
+  decay of the natural $L^2$-type functional (Result~I);
+  \item curl--curl vector resistivity preserves $\diver\B$ identically and yields sign-definite magnetic
+  energy dissipation (Result~II);
+  \item helicity and relative helicity obey transport laws with volume sources controlled by
+  $\eta(\J\cdot\B)$ (Results~III--IV);
+  \item the preceding statements cohere within a gauge-consistent vector-potential formulation (Result~V).
+\end{itemize}
+These are operator-level results: they do not depend on a specific numerical method beyond the
+assumptions needed for the underlying calculus identities.
+
+\paragraph{Demonstrated (numerical behavior).}
+WP1 demonstrates that (i) a localized gate can be implemented stably with diffusion subcycling,
+(ii) diagnostics can be instrumented and overlaid with the gate window, and (iii) diagnostic responses
+appear in a gate-synchronized manner relative to null controls. WP1 is a \emph{verification} of the
+switch mechanism and the analysis pipeline; it is not a comprehensive test of reconnection
+phenomenology.
+
+\paragraph{Threat.}
+A common misinterpretation is to treat the WP1 demonstration as evidence of a specific reconnection
+mechanism or scaling regime. This paper does not support such claims. Any physics-specific inference must
+be built on additional setups, scans, and convergence tests beyond those included here.
+
+\subsection{Regime limits of the hydrodynamic reduction}\label{sec:limitations_madelung}
+The Madelung map provides a fluid-like interpretation of the conservative part of the toy model, but
+its utility has regime limits.
+
+\paragraph{Core regions and phase singularities.}
+The phase $\theta$ becomes multi-valued and the velocity $\vfield=\grad\theta$ becomes ill-defined
+(where $\rho\to 0$) at vortex cores. Many identities (vorticity transport, helicity-like constructions)
+are therefore best interpreted \emph{away from cores}, or in a weak/distributional sense. In practice,
+diagnostics based on $\vfield$ or $\omegaV$ should be computed with core masking and/or smoothing; this
+introduces methodological choices that can affect quantitative values.
+
+\paragraph{Independent degrees of freedom vs.\ scalar-phase closure.}
+Because $\vfield=\nabla\theta$ (away from cores), the toy model does not provide independent evolution equations for $\vfield$ and $\B$ as in full MHD; this is a deliberate simplification. As a result, claims in this paper are restricted to operator correctness, constraint preservation, and auditable balance laws for localized gating, rather than quantitative reconnection phenomenology in which independent flow dynamics and Lorentz forces determine the current-sheet evolution.
+
+\paragraph{Quantum pressure and dispersive effects.}
+The hydrodynamic momentum equation includes the quantum pressure term
+$Q(\rho)=-\frac12(\nabla^2\sqrt{\rho})/\sqrt{\rho}$. In regimes where density gradients are large, this
+term is not negligible and the dynamics can differ substantially from classical compressible Euler
+flow. Any claim of ``Euler-like'' or ``MHD-like'' behavior must therefore specify a regime in which
+quantum pressure is subdominant (or must treat it explicitly as an additional non-ideal/dispersive
+effect). This paper does not attempt to establish such regime separation quantitatively; it uses the
+Madelung reduction primarily to justify the existence of a velocity/vorticity/topology sector and to
+motivate the structural analogy.
+
+\paragraph{Compressibility and barotropic closure.}
+The vorticity transport identity $\partial_t\omegaV=\curl(\vfield\times\omegaV)$ holds cleanly under
+barotropic closures (or in incompressible limits). In compressible settings with more general
+thermodynamic structure, baroclinic terms can arise. Our toy model uses a barotropic nonlinearity (in
+the GP-type form), but compressible effects remain present and can influence topology proxies and wave
+emissions. This is an additional reason this paper avoids strong claims about classical reconnection
+regimes.
+
+\subsection{Boundary-condition dependence and relative helicity caveats}\label{sec:limitations_boundaries}
+Several key statements depend on boundary conditions.
+
+\paragraph{Dissipation balances include flux terms.}
+The monotone decay statements for scalar norms and magnetic energy hold \emph{globally} only when the
+associated boundary flux terms vanish (periodic domains, fast decay, or appropriate wall conditions).
+In bounded domains with nontrivial boundary flux, one must explicitly account for those flux terms to
+avoid misattribution (e.g.\ apparent ``energy increase'' due to injection through the boundary rather
+than operator error).
+
+\paragraph{Helicity diagnostics require care in bounded domains.}
+Helicity integrals can be gauge dependent unless boundary conditions enforce invariance. Relative
+helicity resolves this, but it introduces practical requirements:
+(i) construction of a reference field $\B_0$ matching boundary flux,
+(ii) construction of compatible potentials $\A,\A_0$ (often via solving auxiliary Poisson problems),
+and (iii) separation of bulk gate-driven effects from boundary transport via the relative-helicity flux.
+This paper provides the correct formulas and workflow, but does not claim that all such computations have
+been exhaustively validated in every boundary setting.
+
+\paragraph{Threat.}
+If relative helicity is computed with inconsistent boundary data, incompatible gauges, or inaccurate
+reference-field construction, the diagnostic can become noisy or misleading. Any future study using
+relative helicity as a primary topology metric should include verification tests (e.g.\ gauge-change
+invariance, convergence with respect to auxiliary-solve tolerances).
+
+\subsection{What would be required for tearing-like scaling claims}\label{sec:limitations_scaling}
+The connection to tearing/plasmoid theory is methodological in this paper: we align operator forms and
+balance laws with the structure used in reconnection theory and demonstrate a controlled non-ideal
+window. To claim tearing-like scalings or plasmoid-mediated regimes, one would need substantially more:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Canonical sheet-like initial conditions.}
+  Tearing theory presumes thin current sheets with appropriate equilibrium profiles and boundary
+  conditions. Vortex-tube initial conditions (WP1) are not a substitute for this canonical setup.
+
+  \item \textbf{Systematic parameter scans with regime control.}
+  Scaling claims require scanning nondimensional groups (effective $S$ or $Rm$, aspect ratios,
+  diffusion lengths) and demonstrating consistent trends across resolution and timestep refinement.
+
+  \item \textbf{Direct reconnection diagnostics.}
+  Connected-component counts of density cores are useful as a coarse topology proxy, but tearing/plasmoid
+  studies typically require diagnostics such as reconnection rates, flux transfer, sheet thickness
+  evolution, plasmoid counts, and spectral measures. These can be developed within the present framework,
+  but are beyond this paper.
+
+  \item \textbf{Convergence and error budgets.}
+  Any observed ``threshold'' or ``onset'' must be shown robust to changes in grid resolution, timestep,
+  gate discretization, and thresholding choices used in topology proxies.
+\end{itemize}
+
+\paragraph{Bottom line.}
+This paper establishes a proof-backed, operator-correct gating framework and a minimal verification demo.
+It does not establish reconnection scaling laws. The main validity threats are therefore not in the
+algebra, but in over-interpreting a foundational switch demonstration as physics-specific evidence.
+By making the scope and assumptions explicit, we aim to provide a firm and reproducible base for more
+ambitious reconnection analog studies in subsequent work.
+
+% ============================================================
+\section{Conclusions}\label{sec:conclusions}
+
+We have developed a proof-backed framework for \emph{coefficient-gated} non-ideal windows, motivated by
+the ``ideal + localized non-ideal layer'' structure that underlies reconnection-style topology change.
+The central contribution is not a new reconnection mechanism, but a mathematically clean way to
+\emph{design} and \emph{audit} localized dissipation/topology channels when the controlling coefficient
+$\eta(\mathbf{x},t)$ varies in space and time.
+
+Our main results are:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Scalar gate correctness (Result~I).}
+  For a complex-field toy model with spatiotemporally localized gating, the correct variable-$\eta$
+  diffusion operator is the divergence-form $\diver(\eta\,\grad\psi)$. This choice yields a sign-definite
+  decay law for the natural $L^2$-type functional under standard boundary assumptions, whereas the naive
+  $\eta\nabla^2\psi$ form introduces additional $\grad\eta$ terms that are not sign-definite and can
+  masquerade as physics.
+
+  \item \textbf{Vector resistive correctness (Result~II).}
+  In the MHD analog, the correct variable-$\eta$ resistive operator is the curl--curl form
+  $-\curl(\eta\,\curl\B)$ (equivalently $-\curl(\eta\,\J)$). This operator preserves $\diver\B$
+  identically and yields the standard sign-definite magnetic-energy dissipation rate proportional to
+  $\eta|\J|^2$ (up to boundary flux terms).
+
+  \item \textbf{Topology channel via helicity (Results~III--IV).}
+  Helicity and relative helicity satisfy transport laws in which bulk topology change is controlled by
+  the overlap $\eta(\mathbf{x},t)\,(\J\cdot\B)$ (plus boundary fluxes). Because $\J\cdot\B$ is
+  sign-indefinite, helicity need not decay monotonically, providing a distinct ``topology channel''
+  separate from energy dissipation. We also made explicit the gauge conditions under which helicity
+  integrals are meaningful and recommended relative helicity as the default bounded-domain diagnostic.
+
+  \item \textbf{Unified potential-based formulation (Result~V).}
+  The induction equation, divergence preservation, and energy/helicity balances arise coherently from a
+  single vector-potential specification. This demonstrates that the framework is not a patchwork of
+  unrelated identities and provides practical guidance for implementations and discretizations.
+
+  \item \textbf{Minimal switch verification (WP1).}
+  We implemented a localized gate in a toy complex-field solver and demonstrated stable operation with
+  diffusion subcycling. Simple diagnostics (compressible activity and topology proxies) respond in a
+  gate-synchronized manner relative to null controls, validating the gate as a controllable non-ideal
+  window and establishing a reproducible analysis pipeline.
+\end{itemize}
+
+Taken together, these results justify a modest but useful conclusion: \emph{the toy model enhances
+standard variable-resistivity/topology-change studies by providing a programmable, operator-correct
+non-ideal window whose effects can be audited by exact balance laws and interpreted with gauge-consistent
+topology diagnostics.} This establishes a clean foundation for subsequent work aimed at more
+physics-specific reconnection analogs (e.g.\ current-sheet/tearing-like setups, plasmoid-regime scans,
+and systematic scaling studies), now supported by a framework that removes common sources of ambiguity
+when coefficients vary in space and time.
+
+% ============================================================
+% -------------------- Appendices --------------------
+\appendix
+
+\section{Full Madelung Derivation (Symbolic)}\label{sec:app_madelung}
+
+This appendix records the Madelung (hydrodynamic) reduction used in \Cref{sec:toy_model}. The algebra is
+verified symbolically by the accompanying Mathematica script
+\texttt{madelung\_derivation.wl}, which (i) splits the transformed equation into real/imaginary parts,
+(ii) checks agreement with canonical forms, and (iii) prints the final equations in both $\theta$- and
+$\vfield$-representations.
+
+\subsection{Starting point: Gross--Pitaevskii equation}
+We begin from the standard dimensional Gross--Pitaevskii equation (GPE) with external potential $V$ and
+cubic interaction strength $g$:
+\begin{equation}\label{eq:app_gpe}
+  i\hbar\,\partial_t\psi
+  \;=\;
+  -\frac{\hbar^2}{2m}\,\nabla^2\psi
+  \;+\;
+  V(\mathbf{x},t)\,\psi
+  \;+\;
+  g\,|\psi|^2\,\psi,
+\end{equation}
+where $\psi(\mathbf{x},t)\in\mathbb{C}$ and $m>0$, $\hbar>0$.
+
+\subsection{Madelung substitution and useful identities}
+Assume $\rho(\mathbf{x},t)=|\psi|^2>0$ (i.e.\ away from zeros/vortex cores), and write
+\begin{equation}\label{eq:app_madelung_ansatz}
+  \psi(\mathbf{x},t) = \sqrt{\rho(\mathbf{x},t)}\,e^{i\theta(\mathbf{x},t)}.
+\end{equation}
+Then
+\begin{align}
+  \partial_t\psi
+  &= e^{i\theta}\left(\frac{1}{2}\rho^{-1/2}\,\partial_t\rho + i\sqrt{\rho}\,\partial_t\theta\right),\\
+  \nabla\psi
+  &= e^{i\theta}\left(\nabla\sqrt{\rho} + i\sqrt{\rho}\,\nabla\theta\right),
+\end{align}
+and a convenient compact form for the Laplacian ratio is
+\begin{equation}\label{eq:app_laplacian_ratio}
+  \frac{\nabla^2\psi}{\psi}
+  \;=\;
+  \frac{\nabla^2\sqrt{\rho}}{\sqrt{\rho}}
+  - |\nabla\theta|^2
+  + i\left(2\,\frac{\nabla\sqrt{\rho}}{\sqrt{\rho}}\cdot\nabla\theta + \nabla^2\theta\right).
+\end{equation}
+Divide \eqref{eq:app_gpe} by $\psi$ and substitute \eqref{eq:app_madelung_ansatz}--\eqref{eq:app_laplacian_ratio}.
+Writing $|\psi|^2=\rho$, the resulting complex equation is separated into real and imaginary parts.
+
+\subsection{Imaginary part: continuity equation}
+From the imaginary part one obtains
+\begin{equation}\label{eq:app_cont_theta}
+  \partial_t\rho
+  + \frac{\hbar}{m}\,\nabla\cdot\!\big(\rho\,\nabla\theta\big)
+  \;=\; 0.
+\end{equation}
+Define the hydrodynamic velocity field
+\begin{equation}\label{eq:app_velocity_def}
+  \vfield \;\equiv\; \frac{\hbar}{m}\,\nabla\theta,
+\end{equation}
+so \eqref{eq:app_cont_theta} becomes the standard compressible continuity equation
+\begin{equation}\label{eq:app_cont_v}
+  \partial_t\rho + \nabla\cdot(\rho\,\vfield) \;=\; 0.
+\end{equation}
+
+\subsection{Real part: phase/Bernoulli equation and quantum pressure}
+From the real part one obtains
+\begin{equation}\label{eq:app_phase_theta}
+  \hbar\,\partial_t\theta
+  + \frac{\hbar^2}{2m}\,|\nabla\theta|^2
+  + V(\mathbf{x},t)
+  + g\,\rho
+  + Q(\rho)
+  \;=\; 0,
+\end{equation}
+where the quantum potential (quantum pressure) term is
+\begin{equation}\label{eq:app_quantum_potential}
+  Q(\rho)
+  \;\equiv\;
+  -\frac{\hbar^2}{2m}\,\frac{\nabla^2\sqrt{\rho}}{\sqrt{\rho}}.
+\end{equation}
+Using \eqref{eq:app_velocity_def}, note that $|\nabla\theta|^2=(m^2/\hbar^2)|\vfield|^2$, so
+\eqref{eq:app_phase_theta} can be written as
+\begin{equation}\label{eq:app_phase_v}
+  \hbar\,\partial_t\theta
+  + \frac{m}{2}\,|\vfield|^2
+  + V(\mathbf{x},t)
+  + g\,\rho
+  + Q(\rho)
+  \;=\; 0.
+\end{equation}
+
+\subsection{Momentum form and relation to compressible Euler}
+Taking the gradient of \eqref{eq:app_phase_v} and using $\vfield=(\hbar/m)\nabla\theta$ gives the
+compact potential-flow momentum form:
+\begin{equation}\label{eq:app_momentum_compact}
+  \partial_t\vfield + \nabla\!\left(\frac{|\vfield|^2}{2}\right)
+  \;=\;
+  -\frac{1}{m}\,\nabla\!\Big(V(\mathbf{x},t) + g\,\rho + Q(\rho)\Big).
+\end{equation}
+A standard identity relates $\nabla(|\vfield|^2/2)$ to the convective form:
+\begin{equation}\label{eq:app_identity_convective}
+  \nabla\!\left(\frac{|\vfield|^2}{2}\right)
+  \;=\;
+  (\vfield\cdot\nabla)\vfield \;+\; \vfield\times(\nabla\times\vfield).
+\end{equation}
+Away from singular cores (or in regions where $\nabla\times\vfield$ is negligible), the momentum
+equation takes the familiar Euler-like form
+\begin{equation}\label{eq:app_euler_like}
+  \partial_t\vfield + (\vfield\cdot\nabla)\vfield
+  \;=\;
+  -\frac{1}{m}\,\nabla V
+  -\frac{g}{m}\,\nabla\rho
+  -\frac{1}{m}\,\nabla Q(\rho)
+  \;-\;
+  \vfield\times(\nabla\times\vfield).
+\end{equation}
+The interaction term admits a barotropic-pressure representation. Defining
+\begin{equation}\label{eq:app_pressure_barotropic}
+  p(\rho) \;\equiv\; \frac{g}{2}\rho^2,
+\end{equation}
+one has $(1/\rho)\nabla p = g\,\nabla\rho$, so the $g\,\rho$ term in \eqref{eq:app_phase_theta} plays the
+role of a barotropic enthalpy.
+
+\subsection{Vorticity transport identity and barotropic reduction}
+For a generic compressible Euler system
+\begin{equation}\label{eq:app_generic_euler}
+  \partial_t\vfield + (\vfield\cdot\nabla)\vfield
+  = -\frac{1}{\rho}\nabla p - \nabla\Phi,
+\end{equation}
+define vorticity $\omegaV \equiv \nabla\times\vfield$. A standard vector-calculus identity gives
+\begin{equation}\label{eq:app_vorticity_general}
+  \partial_t\omegaV
+  \;=\;
+  \nabla\times(\vfield\times\omegaV)
+  \;+\;
+  \nabla\!\left(\frac{1}{\rho}\right)\times\nabla p.
+\end{equation}
+If the pressure is barotropic, $p=p(\rho)$, then $\nabla p \parallel \nabla\rho$ and the baroclinic term
+vanishes:
+\begin{equation}\label{eq:app_vorticity_barotropic}
+  \partial_t\omegaV \;=\; \nabla\times(\vfield\times\omegaV).
+\end{equation}
+Equation \eqref{eq:app_vorticity_barotropic} is structurally analogous to the ideal induction equation
+$\partial_t\B=\nabla\times(\vfield\times\B)$ and is the basis for the ``induction-like'' topology
+language used in the main text.
+
+\subsection{Notes on validity and singular cores}
+The Madelung substitution is exact wherever $\rho>0$. In vortex-core regions where $\rho\to 0$, the
+phase becomes multi-valued and $\vfield=(\hbar/m)\nabla\theta$ is not classically defined; vorticity is
+then supported in a distributional sense on filamentary cores. In the paper we therefore interpret the
+hydrodynamic equations and vorticity identities as holding on the complement of cores and use masking or
+regularization when computing diagnostics that depend on $\vfield$ or $\omegaV$.
+
+\subsection{Symbolic verification}
+The script \texttt{madelung\_derivation.wl} performs the following checks symbolically:
+(i) forms the GPE residual divided by $\psi$,
+(ii) splits into real and imaginary parts,
+(iii) simplifies under the assumptions $\rho>0$ and real-valued $(\rho,\theta,V)$,
+(iv) confirms agreement with the canonical continuity equation \eqref{eq:app_cont_theta} and phase
+equation \eqref{eq:app_phase_theta}, and
+(v) prints the compact momentum form \eqref{eq:app_momentum_compact} and the vorticity identities
+\eqref{eq:app_vorticity_general}--\eqref{eq:app_vorticity_barotropic}.
+
+\section{Scalar Variable-$\eta$ Operator Identities and Dissipation Proof}\label{sec:app_scalar_eta}
+
+This appendix supplies the full algebra behind Result~I. All identities are symbolically verified by
+the accompanying Mathematica script \texttt{variable\_eta\_gate.wl}, which expands product rules,
+derives both local and global balances, and contrasts the divergence-form operator with the naive
+$\eta\nabla^2$ form.
+
+\subsection{Operator identity for variable diffusivity}
+Let $\eta(\mathbf{x},t)$ be a scalar coefficient and $\psi(\mathbf{x},t)$ be a (complex) scalar field.
+The correct variable-diffusivity diffusion operator is
+\begin{equation}\label{eq:app_scalar_div_form}
+  \mathcal{D}_{\eta}[\psi] \;\equiv\; \diver\!\big(\eta\,\grad\psi\big).
+\end{equation}
+Expanding in components (Einstein summation convention) gives
+\[
+\diver(\eta\,\grad\psi)
+= \partial_i(\eta\,\partial_i\psi)
+= (\partial_i\eta)(\partial_i\psi) + \eta\,\partial_i\partial_i\psi,
+\]
+hence the exact identity
+\begin{equation}\label{eq:app_scalar_identity}
+  \diver(\eta\,\grad\psi)
+  \;=\;
+  \eta\,\nabla^2\psi + (\grad\eta)\cdot(\grad\psi).
+\end{equation}
+When $\grad\eta\neq 0$, the naive $\eta\nabla^2\psi$ form is missing the second term in
+\eqref{eq:app_scalar_identity} and is therefore not equivalent to the divergence-form operator.
+
+\subsection{Local $|\psi|^2$ balance for divergence-form gating}
+Consider the pure gate evolution
+\begin{equation}\label{eq:app_scalar_gate_pde}
+  \partial_t\psi \;=\; \diver(\eta\,\grad\psi),
+\end{equation}
+with $\psi$ sufficiently smooth and $\eta\ge 0$. Define $u\equiv|\psi|^2=\psi^*\psi$. Then
+\[
+\partial_t u = \psi^*\partial_t\psi + \psi\,\partial_t\psi^*.
+\]
+Substituting \eqref{eq:app_scalar_gate_pde} and using the conjugate equation gives
+\begin{equation}\label{eq:app_scalar_u_start}
+  \partial_t|\psi|^2
+  \;=\;
+  \psi^*\,\diver(\eta\,\grad\psi)
+  \;+\;
+  \psi\,\diver(\eta\,\grad\psi^*).
+\end{equation}
+Apply the divergence product rule in each term:
+\begin{align}
+  \psi^*\,\diver(\eta\,\grad\psi)
+  &= \diver\!\big(\eta\,\psi^*\,\grad\psi\big) - \eta\,\grad\psi^*\cdot\grad\psi,\\
+  \psi\,\diver(\eta\,\grad\psi^*)
+  &= \diver\!\big(\eta\,\psi\,\grad\psi^*\big) - \eta\,\grad\psi\cdot\grad\psi^*.
+\end{align}
+Adding yields
+\begin{equation}\label{eq:app_scalar_local_balance_mid}
+  \partial_t|\psi|^2
+  \;=\;
+  \diver\!\big(\eta(\psi^*\grad\psi+\psi\grad\psi^*)\big)
+  \;-\;
+  2\eta\,|\grad\psi|^2.
+\end{equation}
+Since $\psi^*\grad\psi+\psi\grad\psi^*=\grad(\psi^*\psi)=\grad|\psi|^2$, we obtain the local identity
+\begin{equation}\label{eq:app_scalar_local_balance}
+  \partial_t|\psi|^2
+  \;=\;
+  \diver\!\big(\eta\,\grad|\psi|^2\big)
+  \;-\;
+  2\eta\,|\grad\psi|^2.
+\end{equation}
+
+\subsection{Global $L^2$ decay and boundary assumptions}
+Integrate \eqref{eq:app_scalar_local_balance} over $\Omega$ and apply the divergence theorem:
+\begin{equation}\label{eq:app_scalar_global_balance}
+  \frac{d}{dt}\int_{\Omega}|\psi|^2\,dV
+  \;=\;
+  \int_{\partial\Omega}\eta\,\partial_n(|\psi|^2)\,dS
+  \;-\;
+  2\int_{\Omega}\eta\,|\grad\psi|^2\,dV.
+\end{equation}
+Under any of the following standard assumptions, the boundary flux vanishes and the decay is monotone:
+(i) periodic $\Omega$, (ii) $\Omega=\R^3$ with sufficient decay, or (iii) boundary conditions imposing
+$\partial_n(|\psi|^2)=0$ or otherwise ensuring $\int_{\partial\Omega}\eta\,\partial_n(|\psi|^2)\,dS=0$.
+Then
+\begin{equation}\label{eq:app_scalar_monotone_decay}
+  \frac{d}{dt}\int_{\Omega}|\psi|^2\,dV
+  \;=\;
+  -2\int_{\Omega}\eta(\mathbf{x},t)\,|\grad\psi|^2\,dV
+  \;\le\; 0.
+\end{equation}
+
+\subsection{Contrast with the naive $\eta\nabla^2\psi$ form}
+Now consider the naive evolution
+\begin{equation}\label{eq:app_scalar_naive_pde}
+  \partial_t\psi \;=\; \eta(\mathbf{x},t)\,\nabla^2\psi.
+\end{equation}
+Proceeding as before,
+\[
+\partial_t|\psi|^2
+=
+\eta\,\psi^*\,\nabla^2\psi + \eta\,\psi\,\nabla^2\psi^*.
+\]
+Using $\psi^*\nabla^2\psi=\diver(\psi^*\grad\psi)-\grad\psi^*\cdot\grad\psi$ and the conjugate identity,
+we obtain
+\begin{equation}\label{eq:app_scalar_naive_local}
+  \partial_t|\psi|^2
+  \;=\;
+  \eta\,\diver(\grad|\psi|^2)
+  -2\eta\,|\grad\psi|^2
+  + (\grad\eta)\cdot\grad|\psi|^2.
+\end{equation}
+Equivalently, rewriting the first and third terms as a single divergence plus a remainder yields
+\begin{equation}\label{eq:app_scalar_naive_local_alt}
+  \partial_t|\psi|^2
+  \;=\;
+  \diver\!\big(\eta\,\grad|\psi|^2\big)
+  -2\eta\,|\grad\psi|^2
+  \;+\; \underbrace{\big[(\grad\eta)\cdot\grad|\psi|^2\big] - \diver\!\big((\grad\eta)\,|\psi|^2\big)}_{\text{non-sign-definite in general}}.
+\end{equation}
+At the global level, integrating by parts (formally) yields the balance quoted in the main text:
+\begin{equation}\label{eq:app_scalar_naive_global}
+  \frac{d}{dt}\int_{\Omega}|\psi|^2\,dV
+  \;=\;
+  -2\int_{\Omega}\eta\,|\grad\psi|^2\,dV
+  -2\int_{\Omega}\Re\!\big(\psi^*(\grad\eta\cdot\grad\psi)\big)\,dV
+  \;+\; \text{(boundary)}.
+\end{equation}
+The additional volume term proportional to $\grad\eta$ is not sign-definite and can therefore spoil the
+intended interpretation of the gate as a purely dissipative mechanism.
+
+\subsection{Notes on discretization}
+The continuum identities above suggest a conservative ``flux-form'' discretization:
+compute $\mathbf{q}=\eta\,\grad\psi$ and then apply a discrete divergence to obtain
+$\diver(\mathbf{q})$. In finite-volume and conservative finite-difference schemes, this is the
+standard approach to variable-diffusivity operators. In spectral implementations, an analogous approach
+is to compute $\grad\psi$ in Fourier space, multiply by $\eta(\mathbf{x},t)$ in physical space, and then
+transform back to take a divergence. In either case, respecting the divergence-form structure is what
+ensures discrete analogs of \eqref{eq:app_scalar_local_balance} and \eqref{eq:app_scalar_monotone_decay}
+(up to discretization error and boundary handling).
+
+\section{Vector Variable-$\eta$ Resistive Operator: Identities, $\diver\B$, and Energy Decay}\label{sec:app_vector_eta}
+
+This appendix supplies the algebra behind Result~II. All identities are symbolically verified by the
+Mathematica script \texttt{variable\_eta\_mhd\_operator\_identities.wl}, including (i) expansions of the
+curl--curl resistive operator with variable $\eta(\mathbf{x},t)$, (ii) divergence preservation, and
+(iii) the local/global magnetic energy balance.
+
+\subsection{Resistive operator and component expansion}
+Let $\B(\mathbf{x},t)$ be a vector field and let $\eta(\mathbf{x},t)$ be a scalar resistivity.
+Define the current $\J\equiv\curl\B$ and the variable-$\eta$ resistive operator
+\begin{equation}\label{eq:app_res_op_def}
+  \mathcal{R}_{\eta}[\B] \;\equiv\; -\curl(\eta\,\J) \;=\; -\curl\!\big(\eta\,\curl\B\big).
+\end{equation}
+Using the vector identity $\curl(f\mathbf{F})=\grad f\times\mathbf{F}+f\,\curl\mathbf{F}$, we obtain
+\begin{equation}\label{eq:app_curl_product}
+  \curl(\eta\,\J) \;=\; (\grad\eta)\times\J + \eta\,\curl\J.
+\end{equation}
+Therefore,
+\begin{equation}\label{eq:app_res_op_expand_1}
+  \mathcal{R}_{\eta}[\B]
+  \;=\;
+  -(\grad\eta)\times(\curl\B) \;-\; \eta\,\curl(\curl\B).
+\end{equation}
+Using $\curl(\curl\B)=\grad(\diver\B)-\nabla^2\B$, we obtain the alternative expansion
+\begin{equation}\label{eq:app_res_op_expand_2}
+  \mathcal{R}_{\eta}[\B]
+  \;=\;
+  \eta\,\nabla^2\B \;-\; \eta\,\grad(\diver\B) \;-\; (\grad\eta)\times(\curl\B).
+\end{equation}
+Equation \eqref{eq:app_res_op_expand_2} makes explicit the additional $\grad\eta$ coupling that is
+absent in the naive $\eta\nabla^2\B$ form. It also shows why the naive form is not equivalent to the
+correct resistive operator unless $\grad\eta=0$ (or unless $\curl\B$ vanishes in the support of
+$\grad\eta$, which is not the case for localized resistivity layers).
+
+\subsection{Divergence preservation}
+The solenoidal constraint $\diver\B=0$ is preserved by the resistive operator by construction. Indeed,
+\begin{equation}\label{eq:app_divB_preserve}
+  \partial_t(\diver\B)
+  \;=\;
+  \diver\big(\mathcal{R}_{\eta}[\B]\big)
+  \;=\;
+  -\diver\big(\curl(\eta\,\curl\B)\big)
+  \;=\; 0,
+\end{equation}
+since $\diver(\curl(\cdot))\equiv 0$ identically.
+
+\paragraph{Contrast with naive $\eta\nabla^2\B$.}
+If one instead sets $\partial_t\B=\eta(\mathbf{x},t)\nabla^2\B$, then
+\[
+\partial_t(\diver\B)=\diver(\eta\nabla^2\B)
+=(\grad\eta)\cdot(\nabla^2\B)+\eta\nabla^2(\diver\B),
+\]
+which generally does not vanish when $\grad\eta\neq 0$, even if $\diver\B=0$ initially. This is the
+precise sense in which the naive form can spuriously inject $\diver\B$ in localized-resistivity
+problems.
+
+\subsection{Local and global magnetic energy balance}
+Define magnetic energy density $e_B=\tfrac12|\B|^2$ and total energy
+\begin{equation}\label{eq:app_EB_def}
+  \mathcal{E}_B[\B] \;\equiv\; \frac{1}{2}\int_{\Omega}|\B|^2\,dV.
+\end{equation}
+Consider the resistive evolution
+\begin{equation}\label{eq:app_B_res}
+  \partial_t\B \;=\; -\curl(\eta\,\J),
+  \qquad \J=\curl\B.
+\end{equation}
+Then
+\begin{equation}\label{eq:app_energy_start}
+  \partial_t e_B = \B\cdot\partial_t\B = -\,\B\cdot\curl(\eta\,\J).
+\end{equation}
+Use the identity
+\begin{equation}\label{eq:app_B_dot_curl_id}
+  \B\cdot(\curl\mathbf{F})
+  \;=\;
+  \diver(\mathbf{F}\times\B) + \mathbf{F}\cdot(\curl\B),
+\end{equation}
+with $\mathbf{F}=\eta\,\J$ and $\curl\B=\J$, to obtain
+\begin{align}
+  -\,\B\cdot\curl(\eta\,\J)
+  &=
+  -\,\diver\!\big((\eta\,\J)\times\B\big) - (\eta\,\J)\cdot\J \\
+  &=
+  -\,\diver\!\big((\eta\,\J)\times\B\big) - \eta\,|\J|^2.
+\end{align}
+Thus the local energy balance is
+\begin{equation}\label{eq:app_local_energy}
+  \partial_t\!\left(\frac{|\B|^2}{2}\right)
+  \;=\;
+  -\,\diver\!\big((\eta\,\J)\times\B\big)
+  \;-\;
+  \eta\,|\J|^2.
+\end{equation}
+Integrating \eqref{eq:app_local_energy} over $\Omega$ yields the global balance
+\begin{equation}\label{eq:app_global_energy}
+  \frac{d}{dt}\mathcal{E}_B[\B]
+  \;=\;
+  -\int_{\Omega}\eta(\mathbf{x},t)\,|\J|^2\,dV
+  \;-\;
+  \int_{\partial\Omega}\big((\eta\,\J)\times\B\big)\cdot\mathbf{n}\,dS.
+\end{equation}
+Under periodic boundary conditions, sufficient decay on $\R^3$, or boundary conditions eliminating the
+surface flux, one obtains monotone decay:
+\begin{equation}\label{eq:app_monotone_energy}
+  \frac{d}{dt}\mathcal{E}_B[\B]
+  \;=\;
+  -\int_{\Omega}\eta(\mathbf{x},t)\,|\J|^2\,dV
+  \;\le\; 0.
+\end{equation}
+
+\subsection{Notes on the ``$\eta\nabla^2\B$'' shorthand}
+In the constant-$\eta$ and divergence-free setting, one often writes the resistive term as
+$\eta\nabla^2\B$ because
+\[
+-\curl(\eta\,\curl\B)
+=-\eta\,\curl(\curl\B)
+=\eta\nabla^2\B-\eta\,\grad(\diver\B),
+\]
+so for $\eta=\text{const}$ and $\diver\B=0$ they coincide. Appendix~\ref{sec:app_vector_eta} makes clear
+why this shorthand is unsafe when $\eta$ varies in space: the expansion \eqref{eq:app_res_op_expand_2}
+contains an additional $(\grad\eta)\times(\curl\B)$ term and the curl--curl structure is the only form
+that preserves $\diver\B$ identically without auxiliary cleaning.
+
+\section{Helicity Balance with Variable $\eta(\mathbf{x},t)$}\label{sec:app_helicity_eta}
+
+This appendix provides the full derivation of the helicity transport law used in Result~III, and shows
+how a variable, localized resistivity $\eta(\mathbf{x},t)$ enters only through the $\E\cdot\B$ source
+term once an Ohm law closure is specified. All steps are symbolically verified by the Mathematica script
+\texttt{magnetic\_helicity\_variable\_eta.wl}.
+
+\subsection{Setup: potentials and definitions}
+Let $\A(\mathbf{x},t)$ be a vector potential for the magnetic field,
+\begin{equation}\label{eq:app_helicity_B}
+  \B \;=\; \curl\A,
+\end{equation}
+and define the electric field in terms of potentials $(\phi,\A)$ by
+\begin{equation}\label{eq:app_helicity_E}
+  \E \;=\; -\,\grad\phi \;-\; \partial_t\A.
+\end{equation}
+These definitions imply Faraday's law identically:
+\[
+\partial_t\B=\curl(\partial_t\A)=-\curl(\E+\grad\phi)=-\curl\E.
+\]
+
+Define the helicity density
+\begin{equation}\label{eq:app_helicity_density}
+  h \;\equiv\; \A\cdot\B.
+\end{equation}
+
+\subsection{Core identity: local helicity balance}
+We derive a local conservation law for $h$ with a flux and a source.
+
+Start from
+\begin{equation}\label{eq:app_helicity_dt_start}
+  \partial_t(\A\cdot\B) \;=\; (\partial_t\A)\cdot\B + \A\cdot(\partial_t\B).
+\end{equation}
+Substitute $\partial_t\A = -\E - \grad\phi$ from \eqref{eq:app_helicity_E} and
+$\partial_t\B=-\curl\E$ from Faraday's law:
+\begin{equation}\label{eq:app_helicity_dt_sub}
+  \partial_t(\A\cdot\B)
+  \;=\;
+  (-\E-\grad\phi)\cdot\B \;-\; \A\cdot(\curl\E).
+\end{equation}
+Handle the last term using the vector identity
+\begin{equation}\label{eq:app_helicity_A_curlE_id}
+  \A\cdot(\curl\E) \;=\; \E\cdot(\curl\A) \;-\; \diver(\A\times\E).
+\end{equation}
+Since $\curl\A=\B$, this gives
+\[
+-\A\cdot(\curl\E) \;=\; -\E\cdot\B \;+\; \diver(\A\times\E).
+\]
+Also note $(\grad\phi)\cdot\B = \diver(\phi\B) - \phi(\diver\B)$. Combining these into
+\eqref{eq:app_helicity_dt_sub} yields
+\begin{align}
+  \partial_t(\A\cdot\B)
+  &=
+  -\E\cdot\B - (\grad\phi)\cdot\B -\E\cdot\B + \diver(\A\times\E) \\
+  &=
+  -2\,\E\cdot\B \;-\; \diver(\phi\B) \;+\; \phi(\diver\B) \;+\; \diver(\A\times\E).
+\end{align}
+Rearranging the divergence terms and using $\A\times\E=-(\E\times\A)$ gives the local balance
+\begin{equation}\label{eq:app_helicity_local}
+  \partial_t(\A\cdot\B)
+  \;+\;
+  \diver\!\Big(\E\times\A + \phi\,\B\Big)
+  \;=\;
+  -2\,\E\cdot\B
+  \;+\;
+  \phi\,(\diver\B).
+\end{equation}
+In the solenoidal setting $\diver\B=0$ (guaranteed structurally by Result~II when using the curl--curl
+operator, or identically if $\B=\curl\A$ in a simply connected domain), this reduces to the standard
+form quoted in the main text:
+\begin{equation}\label{eq:app_helicity_local_divfree}
+  \partial_t(\A\cdot\B)
+  \;+\;
+  \diver\!\Big(\E\times\A + \phi\,\B\Big)
+  \;=\;
+  -2\,\E\cdot\B.
+\end{equation}
+
+\subsection{Global helicity balance and boundary flux}
+Integrate \eqref{eq:app_helicity_local_divfree} over $\Omega$ and apply the divergence theorem:
+\begin{equation}\label{eq:app_helicity_global}
+  \frac{d}{dt}\int_{\Omega}\A\cdot\B\,dV
+  \;=\;
+  -2\int_{\Omega}\E\cdot\B\,dV
+  \;-\;
+  \int_{\partial\Omega}\Big(\E\times\A + \phi\,\B\Big)\cdot\mathbf{n}\,dS.
+\end{equation}
+Thus, helicity changes via a volume source $\E\cdot\B$ and (in bounded domains) an explicit boundary
+flux. In periodic domains, or when the surface term is negligible/zero, the change is governed entirely
+by the volume source.
+
+\subsection{Gate-ready form under resistive Ohm law with variable $\eta(\mathbf{x},t)$}
+Now impose the resistive Ohm law
+\begin{equation}\label{eq:app_helicity_ohm}
+  \E + \vfield\times\B \;=\; \eta(\mathbf{x},t)\,\J,
+  \qquad \J=\curl\B.
+\end{equation}
+Taking the dot product with $\B$ yields
+\begin{equation}\label{eq:app_helicity_EdotB}
+  \E\cdot\B
+  \;=\;
+  \big(-\vfield\times\B + \eta\,\J\big)\cdot\B
+  \;=\;
+  \eta(\mathbf{x},t)\,(\J\cdot\B),
+\end{equation}
+since $(\vfield\times\B)\cdot\B\equiv 0$. Substituting \eqref{eq:app_helicity_EdotB} into the local
+balance \eqref{eq:app_helicity_local_divfree} gives the ``variable-$\eta$ gate'' helicity law:
+\begin{equation}\label{eq:app_helicity_local_eta}
+  \partial_t(\A\cdot\B)
+  \;+\;
+  \diver\!\Big(\E\times\A + \phi\,\B\Big)
+  \;=\;
+  -2\,\eta(\mathbf{x},t)\,(\J\cdot\B).
+\end{equation}
+Correspondingly, the global balance becomes
+\begin{equation}\label{eq:app_helicity_global_eta}
+  \frac{d}{dt}\int_{\Omega}\A\cdot\B\,dV
+  \;=\;
+  -2\int_{\Omega}\eta(\mathbf{x},t)\,(\J\cdot\B)\,dV
+  \;-\;
+  \int_{\partial\Omega}\Big(\E\times\A + \phi\,\B\Big)\cdot\mathbf{n}\,dS.
+\end{equation}
+
+\subsection{Interpretation}
+Equation \eqref{eq:app_helicity_local_eta} makes explicit how a localized, time-dependent gate
+$\eta(\mathbf{x},t)$ couples to topology change: it weights the signed ``topology density'' $\J\cdot\B$
+in the volume source. Because $\J\cdot\B$ is sign-indefinite, helicity need not decay monotonically,
+unlike magnetic energy (Appendix~\ref{sec:app_vector_eta}). This channel separation is one of the key
+reasons coefficient-gating is valuable as a controlled experimental/algorithmic knob.
+
+\section{Gauge Consistency Proofs}\label{sec:app_gauge}
+
+This appendix collects the gauge-transformation identities used in Result~IV and verifies that the
+local helicity balance law is gauge-consistent. The symbolic checks are performed in the Mathematica
+script \texttt{gauge\_and\_relative\_helicity.wl}, which confirms that (i) $\B$ and $\E$ are gauge
+invariant under the standard potential transformation, (ii) the helicity density shifts by a
+divergence when $\diver\B=0$, and (iii) both sides of the local helicity balance transform identically
+(i.e.\ the residual is identically zero).
+
+\subsection{Gauge transformations of potentials and fields}
+Start from potentials $(\phi,\A)$ generating fields
+\begin{equation}\label{eq:app_gauge_fields}
+  \B=\curl\A,
+  \qquad
+  \E=-\grad\phi-\partial_t\A.
+\end{equation}
+For any sufficiently smooth scalar function $\chi(\mathbf{x},t)$ define the gauge transformation
+\begin{equation}\label{eq:app_gauge_transform}
+  \A'=\A+\grad\chi,
+  \qquad
+  \phi'=\phi-\partial_t\chi.
+\end{equation}
+Then
+\begin{align}
+  \B' &= \curl\A' = \curl(\A+\grad\chi)=\curl\A+\curl(\grad\chi)=\B,\\
+  \E' &= -\grad\phi' - \partial_t\A'
+      = -\grad(\phi-\partial_t\chi) - \partial_t(\A+\grad\chi)
+      = -\grad\phi - \partial_t\A = \E,
+\end{align}
+since $\curl(\grad\chi)\equiv 0$ and $\partial_t(\grad\chi)=\grad(\partial_t\chi)$.
+
+\subsection{Gauge shift of helicity density and the integral condition}
+Define helicity density $h\equiv\A\cdot\B$. Using $\B'=\B$,
+\begin{equation}\label{eq:app_gauge_h_shift_start}
+  h' - h
+  = \A'\cdot\B' - \A\cdot\B
+  = (\A+\grad\chi)\cdot\B - \A\cdot\B
+  = (\grad\chi)\cdot\B.
+\end{equation}
+Use the product rule
+\[
+(\grad\chi)\cdot\B = \diver(\chi\,\B) - \chi\,(\diver\B),
+\]
+to obtain
+\begin{equation}\label{eq:app_gauge_h_shift}
+  h' - h = \diver(\chi\,\B) - \chi\,(\diver\B).
+\end{equation}
+In the solenoidal case $\diver\B=0$, this reduces to a pure divergence:
+\begin{equation}\label{eq:app_gauge_h_shift_divfree}
+  h' - h = \diver(\chi\,\B).
+\end{equation}
+Integrating \eqref{eq:app_gauge_h_shift_divfree} over $\Omega$ yields
+\begin{equation}\label{eq:app_gauge_H_shift}
+  \int_{\Omega}\A'\cdot\B\,dV - \int_{\Omega}\A\cdot\B\,dV
+  = \int_{\partial\Omega}\chi\,(\B\cdot\mathbf{n})\,dS.
+\end{equation}
+Hence $\int_{\Omega}\A\cdot\B\,dV$ is gauge invariant whenever the right-hand side vanishes (periodic
+domains, decay at infinity, magnetically closed boundaries $\B\cdot\mathbf{n}=0$, or restricted gauge
+classes with $\chi|_{\partial\Omega}=0$ or constant).
+
+\subsection{Gauge consistency of the local helicity balance}
+The local helicity balance (in the solenoidal setting) is
+\begin{equation}\label{eq:app_gauge_helicity_balance}
+  \partial_t(\A\cdot\B) + \diver\!\big(\E\times\A + \phi\,\B\big) = -2\,\E\cdot\B.
+\end{equation}
+We show that \eqref{eq:app_gauge_helicity_balance} is form-invariant under
+\eqref{eq:app_gauge_transform}. Since $\E$ and $\B$ are invariant, the right-hand side is invariant:
+\[
+-2\,\E'\cdot\B' = -2\,\E\cdot\B.
+\]
+The left-hand side changes by a divergence in a way that cancels identically.
+
+First note that
+\begin{equation}\label{eq:app_gauge_dt_h}
+  \partial_t(\A'\cdot\B) - \partial_t(\A\cdot\B)
+  = \partial_t\big((\grad\chi)\cdot\B\big)
+  = \partial_t\big(\diver(\chi\,\B) - \chi\,\diver\B\big).
+\end{equation}
+In the solenoidal setting, this reduces to
+\begin{equation}\label{eq:app_gauge_dt_h_divfree}
+  \partial_t(\A'\cdot\B) - \partial_t(\A\cdot\B)
+  = \partial_t\diver(\chi\,\B) = \diver\!\big((\partial_t\chi)\,\B\big),
+\end{equation}
+since $\partial_t$ and $\diver$ commute for smooth fields and $\B$ is held fixed in the product rule.
+
+Next, examine the flux term:
+\begin{align}
+  \E\times\A' + \phi'\B
+  &= \E\times(\A+\grad\chi) + (\phi-\partial_t\chi)\B \\
+  &= (\E\times\A + \phi\B) \;+\; \E\times\grad\chi \;-\; (\partial_t\chi)\B.
+\end{align}
+Taking the divergence and subtracting the original flux divergence gives
+\begin{equation}\label{eq:app_gauge_flux_shift}
+  \diver(\E\times\A' + \phi'\B) - \diver(\E\times\A + \phi\B)
+  = \diver(\E\times\grad\chi) - \diver\!\big((\partial_t\chi)\B\big).
+\end{equation}
+Therefore, combining \eqref{eq:app_gauge_dt_h_divfree} and \eqref{eq:app_gauge_flux_shift}, the total
+change in the left-hand side of \eqref{eq:app_gauge_helicity_balance} is
+\begin{align}
+  &\Big[\partial_t(\A'\cdot\B) + \diver(\E\times\A' + \phi'\B)\Big]
+  - \Big[\partial_t(\A\cdot\B) + \diver(\E\times\A + \phi\B)\Big] \\
+  &\qquad = \diver\!\big((\partial_t\chi)\B\big) + \diver(\E\times\grad\chi) - \diver\!\big((\partial_t\chi)\B\big)
+  \;=\; \diver(\E\times\grad\chi).
+\end{align}
+Finally, use the identity $\diver(\E\times\grad\chi)=\grad\chi\cdot(\curl\E)-\E\cdot(\curl\grad\chi)$ and
+$\curl\grad\chi\equiv 0$, yielding
+\begin{equation}\label{eq:app_gauge_E_cross_grad}
+  \diver(\E\times\grad\chi) = \grad\chi\cdot(\curl\E).
+\end{equation}
+But Faraday's law gives $\curl\E=-\partial_t\B$. In the potential representation with $\B=\curl\A$ (or
+in the resistive induction equation with $\diver\B=0$ preserved), this term is exactly the residual
+required for invariance of \eqref{eq:app_gauge_helicity_balance}. The Mathematica script verifies that
+the full transformed equation has zero residual under the assumptions used in the main text.
+
+\subsection{Summary}
+Gauge transformations leave $\E$ and $\B$ invariant, shift helicity density by a divergence (for
+$\diver\B=0$), and preserve the form of the local helicity balance law. The only remaining practical
+issue is that in bounded domains the integral helicity can be gauge dependent unless boundary
+conditions eliminate the boundary term \eqref{eq:app_gauge_H_shift}. This motivates the use of relative
+helicity, derived in Appendix~\ref{sec:app_relative_helicity}.
+
+\section{Relative Helicity: Derivation and Balance Law}\label{sec:app_relative_helicity}
+
+This appendix records the relative-helicity definitions and derives the local/global balance law quoted
+in Result~IV. The derivation follows the standard approach of \cite{FinnAntonsen1985} and is
+symbolically verified by the Mathematica scripts \texttt{relative\_helicity\_balance.wl} and
+\texttt{gauge\_and\_relative\_helicity.wl}. We emphasize the ``gate-ready'' form of the volume source
+term under a resistive Ohm law with spatially varying $\eta(\mathbf{x},t)$.
+
+\subsection{Reference field and boundary matching}
+Let $\Omega$ be a bounded domain with outward unit normal $\mathbf{n}$. Let $\B(\mathbf{x},t)$ be a
+magnetic field and let $\B_0(\mathbf{x},t)$ be a reference field chosen so that their normal fluxes
+match on the boundary:
+\begin{equation}\label{eq:app_rel_bc_match}
+  \B\cdot\mathbf{n}\big|_{\partial\Omega} \;=\; \B_0\cdot\mathbf{n}\big|_{\partial\Omega}.
+\end{equation}
+Let $\A$ and $\A_0$ be vector potentials for $\B$ and $\B_0$:
+\begin{equation}\label{eq:app_rel_potentials}
+  \B=\curl\A,
+  \qquad
+  \B_0=\curl\A_0.
+\end{equation}
+A common choice is to take $\B_0$ to be the unique potential (current-free) field compatible with the
+boundary flux, i.e.\ $\curl\B_0=\mathbf{0}$ and \eqref{eq:app_rel_bc_match}; this choice isolates the
+``excess'' topology of $\B$ relative to a minimum-current configuration.
+
+\subsection{Definition and gauge invariance}
+Define the relative helicity density and integral \cite{FinnAntonsen1985}:
+\begin{equation}\label{eq:app_rel_def}
+  h_R \;\equiv\; (\A+\A_0)\cdot(\B-\B_0),
+  \qquad
+  \mathcal{H}_R \;\equiv\; \int_{\Omega} h_R\,dV.
+\end{equation}
+Under independent gauge transformations
+\[
+\A\mapsto\A+\grad\chi,\qquad \A_0\mapsto\A_0+\grad\chi_0,
+\]
+one can show (see \cite{FinnAntonsen1985} and the symbolic verification in the scripts above) that the
+volume integral $\mathcal{H}_R$ is gauge invariant provided the boundary flux-matching condition
+\eqref{eq:app_rel_bc_match} holds and standard regularity assumptions apply. Intuitively, the boundary
+term that makes $\int\A\cdot\B\,dV$ gauge sensitive is canceled by the corresponding term for the
+reference field when the normal components agree on $\partial\Omega$.
+
+\subsection{Potentials, electric fields, and the relative-helicity flux}
+Let $(\phi,\A)$ and $(\phi_0,\A_0)$ generate electric fields $\E$ and $\E_0$:
+\begin{equation}\label{eq:app_rel_E}
+  \E = -\grad\phi - \partial_t\A,
+  \qquad
+  \E_0 = -\grad\phi_0 - \partial_t\A_0.
+\end{equation}
+Define the relative-helicity flux
+\begin{equation}\label{eq:app_rel_flux}
+  \mathbf{F}_R
+  \;\equiv\;
+  (\E-\E_0)\times(\A+\A_0) + (\phi+\phi_0)(\B-\B_0).
+\end{equation}
+
+\subsection{Local balance law}
+We derive the local balance
+\begin{equation}\label{eq:app_rel_local_target}
+  \partial_t h_R + \diver\mathbf{F}_R
+  \;=\;
+  -2\left(\E\cdot\B - \E_0\cdot\B_0\right).
+\end{equation}
+
+Start from the definition $h_R=(\A+\A_0)\cdot(\B-\B_0)$ and take a time derivative:
+\begin{align}\label{eq:app_rel_dt_start}
+  \partial_t h_R
+  &=
+  (\partial_t\A+\partial_t\A_0)\cdot(\B-\B_0)
+  + (\A+\A_0)\cdot(\partial_t\B-\partial_t\B_0).
+\end{align}
+Using \eqref{eq:app_rel_E}, rewrite $\partial_t\A=-\E-\grad\phi$ and $\partial_t\A_0=-\E_0-\grad\phi_0$.
+Also use Faraday's law for each field: $\partial_t\B=-\curl\E$ and $\partial_t\B_0=-\curl\E_0$.
+Substitute into \eqref{eq:app_rel_dt_start}:
+\begin{align}
+  \partial_t h_R
+  &=
+  \big(-\E-\E_0-\grad\phi-\grad\phi_0\big)\cdot(\B-\B_0)
+  - (\A+\A_0)\cdot\curl(\E-\E_0).
+\end{align}
+Apply the identity (for any $\mathbf{P},\mathbf{Q}$)
+\[
+\mathbf{P}\cdot\curl\mathbf{Q}
+=
+\mathbf{Q}\cdot\curl\mathbf{P} - \diver(\mathbf{P}\times\mathbf{Q}),
+\]
+with $\mathbf{P}=\A+\A_0$ and $\mathbf{Q}=\E-\E_0$:
+\begin{equation}\label{eq:app_rel_AcurlE_id}
+  (\A+\A_0)\cdot\curl(\E-\E_0)
+  =
+  (\E-\E_0)\cdot\curl(\A+\A_0) - \diver\big((\A+\A_0)\times(\E-\E_0)\big).
+\end{equation}
+Since $\curl(\A+\A_0)=\B+\B_0$, we have
+\[
+(\E-\E_0)\cdot\curl(\A+\A_0) = (\E-\E_0)\cdot(\B+\B_0)=\E\cdot\B+\E\cdot\B_0-\E_0\cdot\B-\E_0\cdot\B_0.
+\]
+Therefore,
+\begin{align}
+  -(\A+\A_0)\cdot\curl(\E-\E_0)
+  &=
+  -(\E-\E_0)\cdot(\B+\B_0) \;+\; \diver\big((\A+\A_0)\times(\E-\E_0)\big).
+\end{align}
+Now assemble terms. Group the $\E$ and $\E_0$ dot-products:
+\begin{align}
+  \partial_t h_R
+  &=
+  -(\E+\E_0)\cdot(\B-\B_0)
+  -(\grad\phi+\grad\phi_0)\cdot(\B-\B_0)
+  -(\E-\E_0)\cdot(\B+\B_0)
+  + \diver\big((\A+\A_0)\times(\E-\E_0)\big) \\
+  &=
+  -2(\E\cdot\B - \E_0\cdot\B_0)
+  \;-\;
+  (\grad\phi+\grad\phi_0)\cdot(\B-\B_0)
+  \;+\;
+  \diver\big((\A+\A_0)\times(\E-\E_0)\big),
+\end{align}
+since the cross terms $\E\cdot\B_0$ and $\E_0\cdot\B$ cancel.
+
+Handle the remaining gradient term using
+\[
+(\grad\phi+\grad\phi_0)\cdot(\B-\B_0) = \diver\big((\phi+\phi_0)(\B-\B_0)\big) - (\phi+\phi_0)\diver(\B-\B_0).
+\]
+Assuming $\diver\B=\diver\B_0=0$, the last term vanishes, and we obtain
+\begin{align}
+  \partial_t h_R
+  &=
+  -2(\E\cdot\B - \E_0\cdot\B_0)
+  \;-\;
+  \diver\big((\phi+\phi_0)(\B-\B_0)\big)
+  \;+\;
+  \diver\big((\A+\A_0)\times(\E-\E_0)\big).
+\end{align}
+Finally note $(\A+\A_0)\times(\E-\E_0)=-(\E-\E_0)\times(\A+\A_0)$, so
+\[
+\diver\big((\A+\A_0)\times(\E-\E_0)\big) = -\diver\big((\E-\E_0)\times(\A+\A_0)\big),
+\]
+and hence
+\[
+\partial_t h_R + \diver\!\Big((\E-\E_0)\times(\A+\A_0) + (\phi+\phi_0)(\B-\B_0)\Big)
+=
+-2(\E\cdot\B - \E_0\cdot\B_0),
+\]
+which is exactly \eqref{eq:app_rel_local_target} with the flux \eqref{eq:app_rel_flux}.
+
+\subsection{Global balance and boundary flux}
+Integrating \eqref{eq:app_rel_local_target} over $\Omega$ gives
+\begin{equation}\label{eq:app_rel_global}
+  \frac{d}{dt}\mathcal{H}_R
+  \;=\;
+  -2\int_{\Omega}\big(\E\cdot\B - \E_0\cdot\B_0\big)\,dV
+  \;-\;
+  \int_{\partial\Omega}\mathbf{F}_R\cdot\mathbf{n}\,dS.
+\end{equation}
+This separates relative-helicity change into a bulk source and an explicit boundary transport term,
+which is essential for interpreting bounded-domain simulations/experiments.
+
+\subsection{Gate-ready form under resistive Ohm law}
+If the physical field satisfies the resistive Ohm law
+\begin{equation}\label{eq:app_rel_ohm}
+  \E + \vfield\times\B = \eta(\mathbf{x},t)\,\J,
+  \qquad \J=\curl\B,
+\end{equation}
+then, as in Appendix~\ref{sec:app_helicity_eta},
+\begin{equation}\label{eq:app_rel_EdotB}
+  \E\cdot\B = \eta(\mathbf{x},t)\,(\J\cdot\B).
+\end{equation}
+If the reference field is chosen current-free ($\J_0=\curl\B_0=\mathbf{0}$) and evolved ideally so that
+$\E_0\cdot\B_0=0$, then the bulk source in \eqref{eq:app_rel_global} reduces to
+\begin{equation}\label{eq:app_rel_source_gate}
+  -2\int_{\Omega}\eta(\mathbf{x},t)\,(\J\cdot\B)\,dV,
+\end{equation}
+with boundary transport handled explicitly by the $\mathbf{F}_R$ flux. This is the ``field-ready'' form
+used in Result~IV: relative helicity provides a bounded-domain topology measure whose bulk evolution is
+driven by the same overlap integral emphasized in Result~III, augmented by boundary flux accounting.
+
+\subsection{Practical note: choice of $\B_0$ and computation of $(\A,\A_0)$}
+In practice, computing $\mathcal{H}_R$ requires constructing a reference field $\B_0$ satisfying
+\eqref{eq:app_rel_bc_match} and solving for $\A$ and $\A_0$ in a consistent gauge. In periodic domains,
+a spectral Coulomb-gauge construction is straightforward. In bounded domains, one typically solves
+vector Poisson problems with compatible boundary conditions. The relative-helicity framework is robust
+to gauge choice; the main practical requirement is consistency in the auxiliary solves and verification
+(e.g.\ check invariance under gauge perturbations and convergence with respect to solver tolerances).
+
+\section{Vector Potential Formulation Checks}\label{sec:app_vector_potential}
+
+This appendix records the symbolic consistency checks behind Result~V. The accompanying Mathematica
+script \texttt{vector\_potential\_formulation.wl} verifies that: (i) evolving $\A$ with
+$\E=-\grad\phi-\partial_t\A$ reproduces Faraday's law and the induction equation; (ii) the variable-$\eta$
+resistive operator appears in the correct curl--curl form; and (iii) the magnetic-energy and helicity
+balances derived in Results~II--III follow from the same formulation (up to boundary flux terms).
+
+\subsection{Definitions and identities}
+Assume
+\begin{equation}\label{eq:app_A_defs}
+  \B = \curl\A,
+  \qquad
+  \E = -\grad\phi - \partial_t\A.
+\end{equation}
+Then
+\begin{equation}\label{eq:app_A_faraday}
+  \partial_t\B
+  = \curl(\partial_t\A)
+  = -\curl(\E+\grad\phi)
+  = -\curl\E,
+\end{equation}
+since $\curl(\grad\phi)\equiv 0$.
+
+\subsection{Induction equation from Ohm law}
+Impose the resistive Ohm law with variable resistivity:
+\begin{equation}\label{eq:app_A_ohm}
+  \E + \vfield\times\B = \eta(\mathbf{x},t)\,\J,
+  \qquad \J \equiv \curl\B.
+\end{equation}
+Substitute \eqref{eq:app_A_ohm} into \eqref{eq:app_A_faraday}:
+\begin{align}\label{eq:app_A_induction}
+  \partial_t\B
+  &= -\curl\E
+   = -\curl\big(-\vfield\times\B + \eta\,\J\big)
+   = \curl(\vfield\times\B) - \curl(\eta\,\J) \\
+  &= \curl(\vfield\times\B) - \curl\!\big(\eta\,\curl\B\big).
+\end{align}
+Thus the resistive term is precisely the curl--curl operator required for variable $\eta$, matching
+Result~II.
+
+\subsection{Automatic divergence-free constraint}
+Because $\B$ is represented as a curl, it satisfies
+\begin{equation}\label{eq:app_A_divB}
+  \diver\B = \diver(\curl\A) \equiv 0
+\end{equation}
+identically (in simply connected domains and in the classical sense where derivatives are defined).
+This is consistent with the divergence-preservation statement in Result~II.
+
+\subsection{Magnetic energy balance (resistive part)}
+Consider the resistive contribution to the induction equation:
+\begin{equation}\label{eq:app_A_res_part}
+  \partial_t\B\big|_{\mathrm{res}} = -\curl(\eta\,\J),
+  \qquad \J=\curl\B.
+\end{equation}
+Define $e_B=\tfrac12|\B|^2$. Then
+\[
+\partial_t e_B = \B\cdot\partial_t\B\big|_{\mathrm{res}} = -\B\cdot\curl(\eta\,\J).
+\]
+Use the identity $\B\cdot(\curl\mathbf{F})=\diver(\mathbf{F}\times\B)+\mathbf{F}\cdot(\curl\B)$ with
+$\mathbf{F}=\eta\J$ and $\curl\B=\J$ to obtain the local balance
+\begin{equation}\label{eq:app_A_energy_local}
+  \partial_t\!\left(\frac{|\B|^2}{2}\right)
+  = -\diver\!\big((\eta\,\J)\times\B\big) - \eta\,|\J|^2,
+\end{equation}
+and hence the global balance
+\begin{equation}\label{eq:app_A_energy_global}
+  \frac{d}{dt}\left(\frac12\int_{\Omega}|\B|^2\,dV\right)
+  = -\int_{\Omega}\eta\,|\J|^2\,dV
+    -\int_{\partial\Omega}\big((\eta\,\J)\times\B\big)\cdot\mathbf{n}\,dS.
+\end{equation}
+Under boundary conditions eliminating the surface flux, this yields monotone energy decay.
+
+\subsection{Helicity balance (potential formulation)}
+Define helicity density $h=\A\cdot\B$. Starting from
+\[
+\partial_t(\A\cdot\B) = (\partial_t\A)\cdot\B + \A\cdot(\partial_t\B),
+\]
+substitute $\partial_t\A=-\E-\grad\phi$ and $\partial_t\B=-\curl\E$ to obtain the local balance
+\begin{equation}\label{eq:app_A_helicity_local}
+  \partial_t(\A\cdot\B) + \diver\!\big(\E\times\A + \phi\,\B\big) = -2\,\E\cdot\B,
+\end{equation}
+assuming $\diver\B=0$. Under the resistive Ohm law \eqref{eq:app_A_ohm}, $(\vfield\times\B)\cdot\B=0$
+implies
+\begin{equation}\label{eq:app_A_EdotB}
+  \E\cdot\B = \eta(\mathbf{x},t)\,(\J\cdot\B),
+\end{equation}
+and therefore
+\begin{equation}\label{eq:app_A_helicity_local_eta}
+  \partial_t(\A\cdot\B) + \diver\!\big(\E\times\A + \phi\,\B\big) = -2\,\eta(\mathbf{x},t)\,(\J\cdot\B).
+\end{equation}
+
+\subsection{Summary of what the scripts check}
+The script \texttt{vector\_potential\_formulation.wl} performs the following symbolic verifications:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Faraday identity:} $\partial_t(\curl\A) = -\curl(-\grad\phi-\partial_t\A)$.
+  \item \textbf{Induction closure:} substituting the Ohm law into Faraday reproduces
+  $\partial_t\B=\curl(\vfield\times\B)-\curl(\eta\,\J)$.
+  \item \textbf{Resistive operator structure:} $-\curl(\eta\,\J)$ expands to
+  $\eta\nabla^2\B-\eta\grad(\diver\B)-(\grad\eta)\times(\curl\B)$.
+  \item \textbf{Energy balance:} resistive part yields local decay $-\eta|\J|^2$ plus flux.
+  \item \textbf{Helicity balance:} potential-based derivation yields $-2\E\cdot\B$ source, and under
+  Ohm law reduces to $-2\eta(\J\cdot\B)$.
+\end{itemize}
+
+These checks confirm that Results~II--IV are mutually consistent within a single potential-based
+specification, and that the variable-$\eta$ gate enters in a way that preserves the intended constraint
+and balance structure.
+
+% ============================================================
+% -------------------- Bibliography --------------------
+\begin{thebibliography}{99}
+
+\bibitem{Norris:Paper4}
+Norris, T. (2025).
+\newblock \emph{Electromagnetic Fields and Charged Defects in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17967962}{doi:10.5281/zenodo.17967962}.
+
+\bibitem{Norris:Paper5}
+Norris, T. (2025).
+\newblock \emph{Brane-Bulk Throat Ontology for a Superfluid Defect Toy Universe}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.17972681}{doi:10.5281/zenodo.17972681}.
+
+\bibitem{Norris:Paper6}
+Norris, T. (2026).
+\newblock \emph{Hybrid 1PN Dynamics and the Acoustic Horizon in a Superfluid Defect Toy Model}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.18135865}{doi:10.5281/zenodo.18135865}.
+
+\bibitem{Loureiro2007}
+N.~F.~Loureiro, A.~A.~Schekochihin, and S.~C.~Cowley,
+``Instability of current sheets and formation of plasmoid chains,''
+\emph{Physics of Plasmas} \textbf{14}, 100703 (2007).
+doi:10.1063/1.2783986
+
+\bibitem{Bhattacharjee2009}
+A.~Bhattacharjee, Y.-M.~Huang, H.~Yang, and B.~Rogers,
+``Fast reconnection in high-Lundquist-number plasmas due to the plasmoid instability,''
+\emph{Physics of Plasmas} \textbf{16}, 112102 (2009).
+doi:10.1063/1.3264103
+
+\bibitem{Comisso2016}
+L.~Comisso, M.~Lingam, Y.-M.~Huang, and A.~Bhattacharjee,
+``General theory of the plasmoid instability,''
+\emph{Physics of Plasmas} \textbf{23}, 100702 (2016).
+doi:10.1063/1.4964481
+
+\bibitem{BergerField1984}
+M.~A.~Berger and G.~B.~Field,
+``The topological properties of magnetic helicity,''
+\emph{Journal of Fluid Mechanics} \textbf{147}, 133--148 (1984).
+doi:10.1017/S0022112084002019
+
+\bibitem{FinnAntonsen1985}
+J.~M.~Finn and T.~M.~Antonsen, Jr.,
+``Magnetic helicity: what is it and what is it good for?''
+\emph{Comments on Plasma Physics and Controlled Fusion} \textbf{9}(3), 111--126 (1985).
+
+\end{thebibliography}
+
+\end{document}

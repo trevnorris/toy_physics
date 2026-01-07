@@ -1,0 +1,100 @@
+
+% ============================================================================
+% paper7_operational_defs.tex  (Paper 7 Hard-Mode 4D)
+% ----------------------------------------------------------------------------
+% Drop-in LaTeX block that mirrors the executable definitions in definitions.wl.
+% (This is intended for the "Operational Definitions" subsection of Paper 7.)
+% ============================================================================
+
+\subsection{Operational Definitions (Frozen)}
+\label{sec:opdefs}
+
+\paragraph{Brane projection.}
+We define a brane-weighted projection along the transverse coordinate $w$ using
+\begin{equation}
+W(w) = |\chi_0(w)|^2,\qquad
+\chi_0(w)=\left(\frac{1}{\pi\ell_w^2}\right)^{1/4}\exp\!\left(-\frac{w^2}{2\ell_w^2}\right),\qquad
+\ell_w=\sqrt{\frac{\hbar}{m\Omega_{\rm out}}}.
+\end{equation}
+For numerics we truncate the projection window to $|w|\le W_{\rm proj}$ and renormalize the weight using
+\begin{equation}
+{\cal N}_W=\int_{-W_{\rm proj}}^{W_{\rm proj}} W(w)\,dw,\qquad
+\widetilde W(w)=\frac{W(w)}{{\cal N}_W}\quad (|w|\le W_{\rm proj}),
+\end{equation}
+with tail mass (projection error budget) $1-{\cal N}_W$.
+The brane-projected density and (optionally) current are
+\begin{equation}
+\rho_{\rm brane}(x,y,z,t)=\int_{-W_{\rm proj}}^{W_{\rm proj}} \widetilde W(w)\,|\psi(x,y,z,w,t)|^2\,dw,\qquad
+\mathbf J_{\rm brane}(x,y,z,t)=\int_{-W_{\rm proj}}^{W_{\rm proj}} \widetilde W(w)\,\mathbf J(x,y,z,w,t)\,dw.
+\end{equation}
+We use the linearized enthalpy perturbation as the \emph{effort} variable:
+\begin{equation}
+u \equiv \delta h(\rho_{\rm brane}) \approx 5K\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
+\end{equation}
+
+\paragraph{Measurement region and ports.}
+The baseline measurement region is the brane 2-sphere
+\begin{equation}
+\Gamma := \{R_3=r_{\rm port},\, w=0\},
+\end{equation}
+parameterized by $(\theta,\phi)$ with area element $d\mu=r_{\rm port}^2\sin\theta\,d\theta\,d\phi$ and outward normal $\hat n=\hat R_3$ in the brane 3-space at $w=0$.
+Numerical evaluation uses Gauss--Legendre quadrature in $\theta$ and uniform quadrature in $\phi$ with fixed $(n_\theta,n_\phi)$ as specified in \texttt{definitions.wl}.
+We choose spherical-harmonic port functions
+\begin{equation}
+P_{\ell m}(\theta,\phi)=Y_{\ell m}(\theta,\phi),\qquad \ell\le \ell_{\max}\quad (\ell_{\max}=2\text{ in baseline runs}).
+\end{equation}
+Port amplitudes are defined by
+\begin{equation}
+u_i(t)=\int_{\Gamma} \overline{P_i(\mathbf s)}\,u(\mathbf s,t)\,d\mu,\qquad
+j_i(t)=\int_{\Gamma} \overline{P_i(\mathbf s)}\,j(\mathbf s,t)\,d\mu.
+\end{equation}
+
+\paragraph{Primary flux observable (leakage).}
+We monitor leakage into the bulk using the $w$-component of the 4D probability current,
+\begin{equation}
+J_w=\frac{\hbar}{2im}\left(\psi^*\partial_w\psi-\psi\,\partial_w\psi^*\right).
+\end{equation}
+We define \emph{outward-oriented} cap fluxes for the slab $|w|<W_{\rm cut}$ by using the outward normals
+$\hat n_w=+\hat w$ at $w=+W_{\rm cut}$ and $\hat n_w=-\hat w$ at $w=-W_{\rm cut}$:
+\begin{align}
+j^{\rm out}_{+}(t) &= \int_{R_3<R_{\rm measure}} J_w(x,y,z,w=+W_{\rm cut},t)\,d^3x,\\
+j^{\rm out}_{-}(t) &= \int_{R_3<R_{\rm measure}} \big[-J_w(x,y,z,w=-W_{\rm cut},t)\big]\,d^3x,\\
+j_{\rm leak}(t) &= j^{\rm out}_{+}(t)+j^{\rm out}_{-}(t).
+\end{align}
+
+\paragraph{Drive protocol (baseline).}
+We define the input as a localized potential modulation centered on the brane measurement sphere $\Gamma=\{R_3=r_{\rm port},\,w=0\}$:
+\begin{equation}
+V_{\rm conf}(\mathbf X;a,L)\ \to\ V_{\rm conf}(\mathbf X;a,L)\ +\ \epsilon\cos(\omega t)\,f(\mathbf X)\,Y_{\ell m}(\theta(\mathbf X),\phi(\mathbf X)),
+\end{equation}
+with $\mathbf X=(x,y,z,w)$, $R_3=\sqrt{x^2+y^2+z^2}$, and Gaussian envelope
+\begin{equation}
+f(\mathbf X)=\exp\!\left(-\frac{w^2}{w_{\rm drive}^2}\right)\exp\!\left(-\frac{(R_3-r_{\rm port})^2}{r_{\rm drive}^2}\right).
+\end{equation}
+The angular map used for the port function is
+\begin{equation}
+\theta(\mathbf X)=\arccos\!\left(\frac{z}{\sqrt{x^2+y^2+z^2+\varepsilon_{\rm ang}^2}}\right),\qquad
+\phi(\mathbf X)=\operatorname{atan2}(y,x),
+\end{equation}
+matching the executable definitions in \texttt{definitions.wl}.
+
+\paragraph{Effective response operator (operational extraction).}
+In the frequency domain we define the effective operator $Z^{\rm eff}(\omega)$ via
+\begin{equation}
+\mathbf j(\omega)=Z^{\rm eff}(\omega)\,\mathbf u(\omega).
+\end{equation}
+For each driven port $k$ we run a single-tone drive at frequency $\omega$ and record the port time series
+$\{u_i(t),j_i(t)\}$, where $j(\mathbf s,t)=\mathbf J_{\rm brane}\cdot\hat n$ on $\Gamma$.
+We discard the first $N_d$ drive periods and analyze a steady window spanning $N_m$ periods.
+Complex amplitudes are extracted using a lock-in estimator
+\begin{equation}
+\widehat s(\omega)=\frac{1}{T}\int_{t_0}^{t_0+T} s(t)\,e^{-i\omega t}\,dt,\qquad T=N_m\frac{2\pi}{\omega},
+\end{equation}
+applied to each component $s=u_i$ and $s=j_i$.
+(For a pure cosine $A\cos\omega t$ this convention returns $\widehat s=A/2$; the factor cancels in the ratio defining $Z^{\rm eff}$.)
+Assembling the driven runs into matrices $U(\omega)$ and $J(\omega)$ (columns correspond to driven ports),
+\begin{equation}
+J(\omega)=Z^{\rm eff}(\omega)\,U(\omega),
+\end{equation}
+we recover $Z^{\rm eff}$ via a fixed solve policy (direct solve when well-conditioned, otherwise pseudoinverse / ridge regularization),
+matching \texttt{EstimateZeffRobust} in \texttt{definitions.wl}.

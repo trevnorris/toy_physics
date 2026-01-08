@@ -1,0 +1,278 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{authblk}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\title{Hydraulic Cosmology in a Superfluid Defect Universe:\\
+Geometric Dark Matter, Isobaric Expansion, and the Big Injection}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper, the sixth in the ``superfluid defect toy universe'' series, extends the brane--bulk throat ontology to cosmological scales. We propose that the observable universe is a codimension-1 brane embedded in a superfluid bulk of finite thickness $H$ and that much of the apparent ``dark sector'' phenomenology is a consequence of this finite geometry and open-system hydraulics.
+First, gravitational flux confinement within a finite bulk slab modifies the long-range scalar Green's function, forcing a transition from Newtonian $1/r^2$ gravity to an effective $1/r$ law once $r\gtrsim H$, mechanically reproducing flat rotation curves without invoking additional gravitating mass.
+Second, we show that the persistence of the $1/r$ regime is controlled by a Neumann zero mode and is therefore sensitive to boundary leakiness; leaky (Robin) boundaries predict a finite ``flat window'' followed by eventual screening.
+Third, using the optical mapping developed in Paper~II, the same slab force law implies a distinctive lensing signature: the bending angle transitions from $\Delta\theta\simeq 4GM/(b c^2)$ at small impact parameter to a slab-regime plateau $\Delta\theta\to 2\pi GM/(Hc^2)=2\pi v_\infty^2/c^2$ at large $b$, providing a falsifiable link between rotation curves and lensing.
+Finally, we model Dark Energy not as a cosmological constant, but as hydraulic replenishment: the bulk fluid is continuously injected via high-dimensional sources, driving an approximately isobaric expansion of the brane volume while maintaining constant vacuum density (and thus a constant speed of light). We reinterpret the Big Bang as a ``Big Injection'' event---a supersonic filling of the brane cavity---where primordial matter arises from turbulent cavitation, and matter--antimatter asymmetry results from a global pressure ``tilt'' in the bulk.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Previous papers in this series have successfully reproduced post-Newtonian gravity (Papers I--III) and electromagnetism (Paper IV) by modeling the vacuum as a stiff superfluid and matter as ``throats'' connecting a 3D brane to a 4D bulk (Paper V).
+However, these models were local, treating the bulk as an effectively infinite reservoir.
+
+In this work, we zoom out to the cosmological scale. We confront the ``dark sector'' problems---Dark Matter, Dark Energy, and Inflation---and argue that they are not distinct phenomena, but coupled symptoms of the global hydrodynamics of the bulk fluid. By imposing two simple geometric constraints---(1) the bulk has a finite thickness $H$, and (2) the fluid system is open and being replenished---we construct a closed--loop ``Hydraulic Cosmology'' that explains large-scale structure and cosmic expansion as mechanical consequences of the throat ontology.
+
+\section{Geometric Dark Matter: The Slab Vacuum}
+\label{sec:slab_vacuum}
+
+Standard cosmology requires a halo of invisible ``Dark Matter'' to explain why the orbital velocities of stars in galaxies remain constant at large distances, rather than decaying as $1/\sqrt{r}$ as predicted by Kepler's laws. Here, we derive this effect from the geometry of the bulk.
+
+\subsection{Flux Confinement and the Dimension Drop}
+Consider a gravitational throat of mass $M$ (drainage rate $\dot{V}$) embedded in a bulk of finite thickness $H$. The gravitational force is mediated by the pressure gradient (flux) of the fluid flowing into the throat.
+Conservation of mass requires the flux $\mathbf{J}$ through a closed surface $\mathcal{S}$ to be constant:
+\begin{equation}
+  \oint_{\mathcal{S}} \mathbf{J} \cdot d\mathbf{A} = \dot{V} \propto M.
+\end{equation}
+
+\textbf{Near Field ($r \ll H$):}
+Close to the defect, the bulk boundaries are negligible. The flow spreads spherically in 3 dimensions. The surface area of the sphere scales as $A \sim 4\pi r^2$.
+\begin{equation}
+  J(r) \propto \frac{M}{4\pi r^2} \implies F_{\text{grav}} \propto \frac{1}{r^2}.
+\end{equation}
+This recovers the standard Newtonian regime.
+
+\textbf{Far Field ($r \gg H$):}
+At distances larger than the bulk thickness, the flow lines hit the ``floor'' and ``ceiling'' of the bulk slab ($w = \pm H$) and are constrained to spread cylindrically. The effective surface area now scales as the rim of a cylinder, $A \sim 2\pi r H$.
+\begin{equation}
+  J(r) \propto \frac{M}{2\pi r H} \implies F_{\text{grav}} \propto \frac{1}{r}.
+\end{equation}
+
+\subsection{Rotation curves from the slab force law}
+The centripetal force equation for a circular orbit on the brane is
+\begin{equation}
+  \frac{v^2(r)}{r} = F(r),
+\end{equation}
+where $F(r)$ is the inward radial acceleration generated by a brane-localized source of mass $M$.
+
+In the Neumann slab vacuum, the brane-plane force admits a rapidly convergent KK/mode representation,
+\begin{equation}
+  F_{\rm slab}(r)
+  = \frac{GM}{H}\left[\frac{1}{r}
+    +2\sum_{m=1}^{\infty} k_m\,K_1(k_m r)\right],
+  \qquad
+  k_m=\frac{m\pi}{H},
+  \label{eq:Fslab-mode}
+\end{equation}
+where $K_1$ is the modified Bessel function of the second kind. The $m=0$ (zero) mode produces the $1/r$ term, while the $m\ge 1$ modes decay as $\exp(-k_m r)$ and ensure the correct near-field normalization.
+
+Equation~\eqref{eq:Fslab-mode} has two controlled asymptotic limits:
+\begin{align}
+  F(r) &\sim \frac{GM}{r^2},
+  && r\ll H,
+  \label{eq:F-near}\\
+  F(r) &\sim \frac{GM}{H\,r},
+  && r\gg H.
+  \label{eq:F-far}
+\end{align}
+Consequently,
+\begin{align}
+  v(r) &\sim \sqrt{\frac{GM}{r}},
+  && r\ll H,
+  \\
+  v^2(r) &\to \frac{GM}{H}\equiv v_\infty^2,
+  && r\gg H.
+  \label{eq:vflat}
+\end{align}
+The rotation curve therefore transitions from Keplerian falloff to a flat asymptote without invoking additional gravitating mass. In this interpretation, the parameter $H$ sets the geometric crossover scale; numerically (Appendix~\ref{app:slab-validation}) the ``knee'' occurs at $r_{\rm knee}\simeq 1.05\,H$ under a slope-based definition.
+
+\subsection{Boundary sensitivity and leaky slabs}
+\label{subsec:leaky}
+
+The dimensional crossover \eqref{eq:F-far} is the imprint of a \emph{zero mode} of the slab boundary-value problem. This makes the prediction both sharp and falsifiable: if the bulk boundaries are imperfect or effectively absent, the zero mode is removed or lifted and the far field changes qualitatively.
+
+\paragraph{Zero-mode argument.}
+For Neumann walls, the transverse spectrum includes $k_0=0$, producing a 2D (logarithmic) Green's function on the brane and hence $F\propto 1/r$. For Dirichlet confinement, the spectrum begins at $k_1\sim \pi/H$ and the brane potential becomes Yukawa-like at large $r$, leading to exponentially suppressed forces.
+
+\paragraph{Model A: partial reflection (weighted images).}
+A fast, intuitive way to parameterize leakiness is to damp the image stack by a reflection coefficient $0<w\le 1$:
+\begin{equation}
+  F_w(r)\ \propto\ \sum_{n=-\infty}^{\infty} w^{|n|}
+  \frac{r}{\bigl(r^2+(2nH)^2\bigr)^{3/2}}.
+  \label{eq:weighted-images}
+\end{equation}
+The Neumann slab is recovered at $w=1$. For $w<1$ the effective number of contributing images is finite, so one typically finds Newtonian behavior at small $r$, an intermediate approximate $1/r$ window, and a departure from strict flattening at very large $r$.
+
+\paragraph{Model B: lifted zero mode (Robin screening length).}
+A more spectral parameterization is to impose a Robin condition at the walls,
+\begin{equation}
+  \partial_z \Phi + \alpha\,\Phi = 0\quad\text{at}\quad z=\pm H,
+\end{equation}
+which yields an even-mode quantization condition
+\begin{equation}
+  \tan(kH)=\frac{\alpha}{k}.
+  \label{eq:robin-quant}
+\end{equation}
+For small $\alpha$, the lowest eigenvalue scales as $k_0\simeq \sqrt{\alpha/H}$, so the would-be zero mode becomes ``massive'' and the brane Green's function crosses over from $\ln r$ to $K_0(k_0 r)$. The corresponding far-field force behaves as
+\begin{equation}
+  F_0(r)\ \propto\ k_0 K_1(k_0 r)\ \sim\ \sqrt{\frac{\pi k_0}{2r}}\,e^{-k_0 r}.
+  \label{eq:screened-zero}
+\end{equation}
+Thus, a leaky slab predicts a finite ``flat'' window up to $r\lesssim k_0^{-1}$ and eventual screening beyond that scale.
+
+\subsection{Optical predictions of the slab regime}
+\label{subsec:lensing-slab}
+
+Paper~II showed that weak-field lensing can be computed from the refractive-index profile $N(r)$ of the vacuum, with deflection controlled by $\nabla_\perp\ln N$. In the same weak-field limit, the optical identification is
+\begin{equation}
+  \ln N(r)\ \simeq\ -\frac{2\Phi(r)}{c^2},
+\end{equation}
+so only gradients of the potential enter.
+
+Let $b$ be the impact parameter and $r(z)=\sqrt{b^2+z^2}$ along the unperturbed ray. Writing the inward acceleration magnitude as $F(r)= -\mathrm{d}\Phi/\mathrm{d}r$, the bending angle can be expressed directly in terms of the slab force:
+\begin{equation}
+  \Delta\theta(b)
+  \simeq \frac{2}{c^2}\int_{-\infty}^{+\infty} F\!\bigl(r(z)\bigr)\,\frac{b}{r(z)}\,\mathrm{d}z.
+  \label{eq:lensing-from-F}
+\end{equation}
+A numerically stable form follows from $z=b\tan u$ ($u\in(-\pi/2,\pi/2)$), giving
+\begin{equation}
+  \Delta\theta(b)
+  = \frac{2b}{c^2}\int_{-\pi/2}^{+\pi/2} F\!\bigl(b\sec u\bigr)\,\sec u\,\mathrm{d}u.
+  \label{eq:lensing-stable}
+\end{equation}
+
+\paragraph{Asymptotes.}
+In the Newtonian regime $F\simeq GM/r^2$, Eq.~\eqref{eq:lensing-from-F} reproduces the usual $1/b$ bending,
+\begin{equation}
+  \Delta\theta(b)\ \to\ \frac{4GM}{b c^2}, \qquad b\ll H.
+\end{equation}
+In the deep slab regime $F\simeq GM/(Hr)$, Eq.~\eqref{eq:lensing-from-F} yields
+\begin{equation}
+  \boxed{\ \Delta\theta(b)\ \to\ \frac{2\pi GM}{Hc^2}
+  \equiv \frac{2\pi v_\infty^2}{c^2}\ ,\qquad b\gg H\ }.
+  \label{eq:lensing-plateau}
+\end{equation}
+That is, the bending angle \emph{saturates} to a constant in the same regime where rotation curves flatten. In the leaky (Robin) case, the plateau persists only up to $b\lesssim k_0^{-1}$ and then decays as the screened zero mode \eqref{eq:screened-zero} turns on.
+
+
+\section{Hydraulic Dark Energy: The Source-Sink Universe}
+\label{sec:dark_energy}
+
+In the standard model, Dark Energy is treated as a mysterious negative pressure or cosmological constant $\Lambda$. In the throat ontology, it emerges from the thermodynamics of an open system.
+
+\subsection{The Isobaric Expansion Hypothesis}
+We model the universe as a dynamic hydraulic system governed by Sources (Replenishment) and Sinks (Matter).
+\begin{itemize}
+    \item \textbf{Sinks (Gravity):} Every particle is a throat draining fluid from the bulk.
+    \item \textbf{Sources (Dark Energy):} The bulk is replenished by injection from higher-dimensional defects (``White Holes'' or voids).
+\end{itemize}
+If the injection rate exceeds the drainage rate ($Q_{\text{in}} > Q_{\text{out}}$), the volume of the bulk must increase.
+We postulate that the vacuum maintains an \emph{optimal phase density} $\rho_0$ (an equation of state property). Therefore, unlike a pressure cooker where density rises, the universe behaves like an inflating balloon: excess fluid creates \emph{new space} (volume expansion) while maintaining constant pressure and density.
+
+\subsection{Stability of the Speed of Light}
+In a superfluid, the speed of light $c$ corresponds to the speed of sound $c_s$, determined by the stiffness of the medium:
+\begin{equation}
+  c_s^2 = \frac{\partial P}{\partial \rho} \propto \rho^{n-1}.
+\end{equation}
+Because the expansion is isobaric ($\rho \approx \text{const}$), the speed of light remains constant over cosmic time, consistent with the stability of the fine-structure constant $\alpha$.
+
+\subsection{Superluminal Recession}
+The recession velocity of galaxies is the \emph{flow velocity} of the bulk fluid advection, not the \emph{wave signal velocity} ($c_s$). In fluid dynamics, flow velocity is unbound by the sound speed. The injection of fluid between galaxies pushes them apart at rates that can exceed $c$, resolving the horizon problem without violating local relativity.
+
+\section{The Big Injection: Origin and Asymmetry}
+\label{sec:origin}
+
+\subsection{From Singularity to Nozzle}
+We propose replacing the Big Bang singularity (infinite density) with a ``Big Injection'' event (zero volume).
+At $t=0$, a 4D nozzle opened, injecting superfluid into the brane interface.
+\begin{itemize}
+    \item \textbf{Inflation:} The initial filling phase was a supersonic shockwave, expanding the brane cavity rapidly until the internal pressure equilibrated with the bulk tension.
+    \item \textbf{Matter Creation via Cavitation:} The injection was highly turbulent. The shear forces at the nozzle interface shredded the fluid, creating a ``foam'' of quantized vortices. These primordial vortices stabilized into the throats (particles) we observe today.
+    \item \textbf{CMB as Acoustic Ringing:} The Cosmic Microwave Background is not the afterglow of thermal radiation, but the acoustic ``ringing'' or phonon echo of the initial injection shock ringing through the medium.
+\end{itemize}
+
+\subsection{Matter-Antimatter Asymmetry via Bulk Tilt}
+Standard cosmology struggles to explain why Matter dominates Antimatter. In the throat ontology, this corresponds to the orientation of the vortices (sinks vs. sources, or ``down'' vs. ``up'' throats).
+If the bulk fluid possesses a global pressure gradient (a ``tilt'' in the 4th dimension), CP symmetry is broken geometrically.
+\begin{itemize}
+    \item \textbf{Downhill Defects (Matter):} Forming a throat that drains ``down'' the pressure gradient is energetically favorable.
+    \item \textbf{Uphill Defects (Antimatter):} Forming a throat that pushes ``up'' against the gradient requires higher activation energy.
+\end{itemize}
+Consequently, the turbulent injection preferentially condensed into ``down'' throats (Matter), leaving the universe with a fundamental asymmetry.
+
+\section{Observational Predictions}
+\label{sec:predictions}
+
+This ontology leads to distinct falsifiable predictions:
+\begin{enumerate}
+    \item \textbf{Flat rotation curves from confinement:} galaxies exhibit a geometric crossover at $r\sim H$ from $F\propto 1/r^2$ to $F\propto 1/r$, with a flat asymptotic speed $v_\infty^2=GM/H$.
+    \item \textbf{A lensing--rotation link:} in the same regime, the bending angle saturates to $\Delta\theta\to 2\pi v_\infty^2/c^2$ (Eq.~\eqref{eq:lensing-plateau}). Measuring both $v_\infty$ and the large-$b$ lensing profile of the same system tests the slab mechanism directly.
+    \item \textbf{Boundary leakiness leaves a fingerprint:} if the bulk is not well confined, rotation curves should be only approximately flat over a finite radial window and lensing should show a plateau that terminates (or softens) beyond a screening scale $k_0^{-1}$.
+    \item \textbf{Cosmic voids as sources:} we identify cosmic voids not as empty regions, but as active ``Source'' regions where fluid injection occurs. Matter is pushed away from these centers by the radial outflow.
+    \item \textbf{Early structure growth:} because the effective far-field force is stronger than Newtonian ($1/r$ rather than $1/r^2$), collapse and aggregation on large scales are accelerated relative to $\Lambda$CDM expectations.
+\end{enumerate}
+
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The superfluid defect toy model offers a purely mechanical resolution to the major crises of modern cosmology. By treating the universe as a hydraulic engine---powered by injection, regulated by flux conservation in a finite slab, and structured by turbulence---we recover Dark Matter, Dark Energy, and Asymmetry as emergent hydrodynamic phenomena. The universe is not a collection of abstract fields, but a living fluid system flowing from a Beginning (Injection) to a destiny defined by its flow.
+
+
+
+\appendix
+
+\section{Slab Green's function and numerical validation}
+\label{app:slab-validation}
+
+For completeness, the Neumann slab boundary-value problem admits two equivalent constructions on the brane ($z=0$).
+
+\paragraph{Images.}
+An infinite stack of image sources at $z_n=2nH$ gives
+\begin{equation}
+  \Phi_{\rm img}(r)\ \propto\ \sum_{n=-\infty}^{\infty}\frac{1}{\sqrt{r^2+(2nH)^2}},
+  \qquad
+  F_{\rm img}(r)\ \propto\ \sum_{n=-\infty}^{\infty}\frac{r}{\bigl(r^2+(2nH)^2\bigr)^{3/2}}.
+\end{equation}
+
+\paragraph{Modes.}
+A KK/mode expansion with $k_m=m\pi/H$ yields the rapidly convergent force series in Eq.~\eqref{eq:Fslab-mode}.
+
+The companion Mathematica validation script computes the same force by both methods, includes an analytic tail correction for truncated image sums, and verifies the two normalization diagnostics
+\begin{equation}
+  r^2 F(r)\to GM\quad(r\ll H),
+  \qquad
+  HrF(r)\to GM\quad(r\gg H),
+\end{equation}
+along with convergence tables and a slope-based knee estimate. These checks ensure that the $1/(Hr)$ far-field scaling is not an artifact of truncation or fitting.
+
+\begin{thebibliography}{9}
+
+\bibitem{paper2}
+T.~Norris, \emph{Optics in a 1PN superfluid defect toy model}, Paper~II (project manuscript).
+
+\bibitem{paper5}
+T.~Norris, \emph{Brane--bulk throat ontology}, Paper~V (project manuscript).
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,2388 @@
+\documentclass[11pt]{article}
+
+% Basic packages (match series)
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{authblk}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% Series macros (keep consistent with Papers I--VI)
+\newcommand{\PN}{\mathrm{PN}}
+\newcommand{\cS}{c_s}
+\newcommand{\PhiP}{\Phi_{\mathrm{P}}}
+\newcommand{\PhiL}{\Phi_{\mathrm{L}}}
+\newcommand{\PhiTot}{\Phi}
+\newcommand{\GM}{GM}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\dd}{\mathrm{d}}
+
+\title{Cosmological Sector from a Superfluid Defect Toy Model:\\
+Finite-Slab Confinement, Flat Rotation Curves, and Optical Signatures}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% TODO (1 paragraph):
+% - What is the finite-slab mechanism?
+% - What is proven: crossover 1/r^2 -> 1/(Hr), v_infty^2 = GM/H
+% - What is added beyond dynamics: boundary sensitivity + lensing plateau
+% - What is falsifiable: leakiness truncates plateau/flat window
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Galaxy rotation curves and gravitational lensing are often interpreted as evidence that the
+Newtonian/GR potential inferred from luminous matter is missing a large, extended component.
+Standard explanations posit a nonluminous matter halo, while modified-gravity approaches seek an
+infrared change in the effective force law.
+In this paper we show that, within the brane--bulk superfluid defect toy model developed in the
+preceding papers of this series, an infrared modification can arise \emph{geometrically} from a
+finite transverse bulk extent, without introducing any additional ``dark'' source term.
+
+The mechanism is the following.  Consider the scalar potential $\Phi$ sourced by a localized
+mass/defect confined to the brane (taken as $z=0$), but assume the bulk is \emph{finite} in one
+transverse direction, with walls at $z=\pm H$.
+Imposing a no-flux (Neumann) boundary condition at the walls,
+\begin{equation}
+  \partial_z \Phi\big|_{z=\pm H}=0,
+\end{equation}
+changes the global Green's function while leaving the local near-source behavior unchanged.
+Physically, field lines can spread spherically only up to radii comparable to the slab half-thickness
+$H$; beyond that scale the dominant long-range behavior is controlled by the transverse zero mode,
+which is effectively two-dimensional.
+
+A central result of this work is that the brane-plane radial acceleration $F(r)$ transitions between
+two controlled asymptotic regimes:
+\begin{equation}
+  F(r)\sim \frac{GM}{r^2}\quad (r\ll H),
+  \qquad\qquad
+  F(r)\sim \frac{GM}{H\,r}\quad (r\gg H).
+  \label{eq:intro_force_asymptotes}
+\end{equation}
+The far-field $1/r$ scaling is the hallmark of dimensional reduction: the Neumann slab admits a true
+transverse zero mode, so the long-range potential is logarithmic up to an additive constant (only
+potential differences and gradients enter observables).
+For circular motion in the brane plane,
+\begin{equation}
+  \frac{v^2(r)}{r}=F(r),
+\end{equation}
+Eq.~\eqref{eq:intro_force_asymptotes} implies a crossover from Keplerian decay $v(r)\propto r^{-1/2}$
+to a flat asymptote
+\begin{equation}
+  v_\infty^2=\frac{GM}{H}.
+  \label{eq:intro_vinf}
+\end{equation}
+Importantly, this flattening is a strict consequence of the slab Green's function; it is not a
+phenomenological interpolation.
+
+To make the claim numerically robust, we compute the same slab force in two mathematically distinct
+representations: (i) a method-of-images construction (an infinite stack of mirror sources at
+$z_n=2nH$) and (ii) a Neumann mode/Kaluza--Klein expansion, in which the force is a rapidly convergent
+Bessel-$K$ series dominated at large $r$ by the zero mode.
+Agreement between these two calculations, together with explicit near- and far-field normalization
+checks, provides a nontrivial verification that the observed crossover is not a truncation artifact.
+We also quantify the transition scale by a log-slope ``knee'' diagnostic, finding that the crossover
+occurs at $r\sim H$ with an $\mathcal{O}(1)$ coefficient.
+
+A second objective is to connect the slab regime to the optical sector developed earlier in the
+series.  Using the same weak-field refractive-index mapping adopted in the optics paper, the bending
+angle for an impact parameter $b$ can be written directly in terms of the brane acceleration profile:
+\begin{equation}
+  \Delta\theta(b)\simeq \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  F\!\left(\sqrt{b^2+z^2}\right)\,\frac{b}{\sqrt{b^2+z^2}}\,dz.
+  \label{eq:intro_deflection_general}
+\end{equation}
+This makes the slab mechanism sharply testable.
+In the Newtonian regime ($b\ll H$) one recovers the usual $\Delta\theta\propto 1/b$ scaling, while in
+the deep slab regime ($b\gg H$) the $F\propto 1/r$ law implies a \emph{constant} deflection plateau,
+\begin{equation}
+  \Delta\theta(b)\to \Delta\theta_\infty=\frac{2\pi GM}{Hc^2}
+  =\frac{2\pi v_\infty^2}{c^2},
+  \qquad (b\gg H),
+  \label{eq:intro_deflection_plateau}
+\end{equation}
+independent of impact parameter.
+Equations \eqref{eq:intro_vinf} and \eqref{eq:intro_deflection_plateau} therefore provide a clean
+lensing--rotation consistency relation that is specific to slab confinement.
+
+Finally, we address robustness.
+The $1/r$ force law is not generic: it relies on the existence of the Neumann zero mode.
+If the walls are ``leaky'' (or effectively Dirichlet/absorbing), the zero mode is removed or lifted
+to a small but nonzero transverse wavenumber, producing only a finite intermediate $1/r$ window
+followed by eventual screening.
+We present two practical parameterizations of leakage---a damped image stack and a Robin-boundary
+mode spectrum---and show how both rotation-curve flattening and the lensing plateau degrade as
+confinement weakens.
+
+\paragraph{Organization.}
+Section~\ref{sec:slab_bvp} formulates the slab boundary-value problem and presents the two equivalent
+Green's-function representations (images and modes).
+Section~\ref{sec:asymptotics_rotation} derives the asymptotic force laws and the implied rotation
+curve behavior, including a quantitative definition of the transition (``knee'') scale.
+Section~\ref{sec:leaky} studies boundary sensitivity and introduces leaky/Robin generalizations.
+Section~\ref{sec:lensing} develops the optical predictions, emphasizing the deep-slab deflection
+plateau and the lensing--rotation consistency relation.
+Appendix~\ref{app:numerics} documents the numerical validation strategy (convergence studies and
+cross-checks) used to support the main results.
+
+\section{Inputs from Papers I--VI: dictionary and optical mapping}
+\label{sec:inputs}
+
+This paper is designed to be read as part of the 1PN series, but the slab-confinement mechanism
+we study here is largely a statement about the \emph{Green's function} of the scalar (Newtonian)
+sector and its optical consequences.  For self-containment we summarize, without re-derivation,
+the minimal inputs we will reuse from Papers I--VI.
+
+\subsection{Notation and dictionary}
+We work with a brane located at $z=0$ embedded in a bulk with one transverse coordinate $z$.
+In this paper the bulk is taken to be a finite slab,
+\begin{equation}
+  z \in [-H,H],
+\end{equation}
+with boundary conditions imposed at $z=\pm H$.
+The in-brane radial coordinate is $r = \sqrt{x^2+y^2}$.
+
+\paragraph{Line-of-sight coordinate in lensing.}
+To avoid confusion with the bulk coordinate $z$, we denote the coordinate along an (approximately)
+unperturbed light ray by $s$ in all deflection integrals (Paper II used $z$ for this role).
+Thus, for impact parameter $b$,
+\begin{equation}
+  R(s) = \sqrt{b^2+s^2}
+\end{equation}
+will denote the 3D distance from the lens to a point on the fiducial straight path.
+
+\paragraph{Mass parameter.}
+Following the earlier papers, a localized defect/sink on the brane sources a Newtonian potential
+with strength $\mu$.  When comparing to standard gravity we identify
+\begin{equation}
+  \mu \equiv GM,
+\end{equation}
+with $M$ the effective gravitational mass of the source.
+We keep $\mu$ in intermediate equations for compactness and set $\mu=GM$ in the final GR-matching
+expressions.
+
+\paragraph{Wave/signal speed.}
+The characteristic propagation speed in the superfluid vacuum is denoted $\cS$ (sound speed).
+In the 1PN matching limit used throughout Papers I--VI, one sets $\cS=c$ when comparing to GR
+orbital and optical observables.  We will follow the same convention here and explicitly retain
+$c$ only in the optical formulas where it organizes the weak-field expansion.
+
+\subsection{Scalar sector input: Poisson and lag potentials}
+The scalar field sourced by brane defects is written as a sum
+\begin{equation}
+  \PhiTot = \PhiP + \PhiL,
+\end{equation}
+where $\PhiP$ is an instantaneous Poisson sector and $\PhiL$ is a finite-speed lag/retarded sector.
+The series defines the strict Newtonian (0PN) limit as the regime in which the source is
+time-independent and the lag sector can be neglected, so that $\PhiTot \to \PhiP$ and
+\begin{equation}
+  \nabla^2 \PhiP = 4\pi G\,\rho.
+  \label{eq:inputs_poisson}
+\end{equation}
+For a point-like defect of strength $\mu$ located on the brane this yields
+\begin{equation}
+  \PhiP(r) = -\frac{\mu}{r}.
+  \label{eq:inputs_point_potential}
+\end{equation}
+
+The present paper remains in this static/adiabatic regime: we are not using $\PhiL$ to generate the
+infrared modification.  Instead, we keep the \emph{same} Poisson constraint
+\eqref{eq:inputs_poisson} but change the global solution by changing the domain and boundary
+conditions in the transverse direction.  Concretely, we will solve the Poisson/Laplace problem in a
+finite slab $z\in[-H,H]$ with the source confined to $z=0$.  The near-source behavior remains
+locally Newtonian, but the far field is controlled by the slab Green's function and its transverse
+modes.
+
+\paragraph{Force convention on the brane.}
+For spherically (or cylindrically in-brane) symmetric configurations we define the \emph{inward}
+radial acceleration magnitude on the brane by
+\begin{equation}
+  F(r) \equiv -\partial_r \Phi(r)\ge 0,
+\end{equation}
+so that circular orbits obey
+\begin{equation}
+  \frac{v^2(r)}{r} = F(r).
+\end{equation}
+In the Newtonian point-mass case \eqref{eq:inputs_point_potential}, $F(r)=\mu/r^2$.
+
+\subsection{Optical mapping input (Paper II): refractive index and deflection}
+Paper II treats lightlike excitations in the weak-field regime as rays propagating through an
+inhomogeneous medium with refractive index
+\begin{equation}
+  N(\mathbf{x}) = \frac{c_0}{c_s(\mathbf{x})},
+\end{equation}
+where $c_s(\mathbf{x})$ is the local phase speed and $c_0$ is the asymptotic value.
+In the 1PN matching limit one identifies $c_0\to c$, and lensing is computed to leading order in
+$GM/(c^2 r)$.
+
+For a point mass in the stiff-vacuum configuration used in Paper II, the result can be written as
+\begin{equation}
+  N(r) \simeq 1 + 2\,\frac{GM}{c^2 r},
+  \qquad
+  \ln N(r) \simeq 2\,\frac{GM}{c^2 r}.
+  \label{eq:inputs_lnN_point}
+\end{equation}
+Since the Newtonian potential is $\Phi=-GM/r$, Eq.~\eqref{eq:inputs_lnN_point} is equivalently the
+compact mapping
+\begin{equation}
+  \ln N(r) \simeq -\frac{2\Phi(r)}{c^2},
+  \label{eq:inputs_lnN_general}
+\end{equation}
+valid to leading order in the weak-field expansion.
+Only gradients of $\ln N$ enter ray deflection, so any additive constant in $\Phi$ (including the
+gauge ambiguity of a logarithmic potential) has no optical effect at this order.
+
+\paragraph{Deflection integral.}
+In the thin-lens, small-angle approximation, the total bending angle accumulated by a ray with
+impact parameter $b$ is (Paper II)
+\begin{equation}
+  \Delta\theta(b)
+  \simeq \int_{-\infty}^{+\infty} \nabla_\perp \ln N\bigl(R(s)\bigr)\,\dd s,
+  \label{eq:inputs_deflection_general}
+\end{equation}
+where $\nabla_\perp$ is the gradient transverse to the unperturbed ray direction.
+For spherical symmetry,
+\begin{equation}
+  \left|\nabla_\perp \ln N\right|
+  = \left|\frac{\dd \ln N}{\dd R}\right|\,\frac{b}{R}.
+\end{equation}
+Using \eqref{eq:inputs_lnN_general} and the force convention above, $\dd \Phi/\dd R = -F(R)$, this
+can be rewritten in a form that will be central in the slab regime:
+\begin{equation}
+  \Delta\theta(b)
+  \simeq \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  F\!\left(R(s)\right)\,\frac{b}{R(s)}\,\dd s,
+  \qquad R(s)=\sqrt{b^2+s^2}.
+  \label{eq:inputs_deflection_forceform}
+\end{equation}
+Equation~\eqref{eq:inputs_deflection_forceform} shows that, once the brane-plane acceleration law
+$F(r)$ is determined (by any mechanism), its lensing consequences follow immediately with no
+additional model freedom at leading order.
+
+\paragraph{What we will and will not use from the earlier papers.}
+The remainder of this work uses only:
+(i) the static Poisson sector \eqref{eq:inputs_poisson} and the definition of the brane-plane force
+$F(r)$, and
+(ii) the optical mapping \eqref{eq:inputs_lnN_general}--\eqref{eq:inputs_deflection_forceform}.
+We do not require the detailed 1PN kinetic-prefactor construction used to match perihelion
+precession, nor the electromagnetic/vorticity sector.
+The novelty here is that the same scalar Poisson constraint, when solved in a finite slab geometry,
+induces an infrared crossover in $F(r)$ and a corresponding, sharply testable modification of the
+lensing profile.
+
+\section{Finite-slab scalar sector: geometry and boundary conditions}
+\label{sec:slab_bvp}
+
+This section defines the scalar boundary-value problem whose Green's function produces the infrared
+crossover studied in the remainder of the paper.
+We remain in the static (Poisson) sector summarized in
+Section~\ref{sec:inputs} and modify only the global domain and boundary conditions in the transverse
+direction.
+
+\subsection{Slab geometry and Poisson problem}
+\label{sec:slab_geometry}
+
+We model the bulk as a finite slab in one transverse coordinate $z$,
+\begin{equation}
+  \mathcal{D} \;=\; \left\{ (x,y,z)\in\mathbb{R}^3 \,:\, z\in[-H,H] \right\},
+\end{equation}
+with the brane identified with the midplane $z=0$.
+In the brane plane we use polar coordinates $(r,\varphi)$ with
+\begin{equation}
+  r=\sqrt{x^2+y^2}.
+\end{equation}
+All observables discussed here are brane-plane quantities evaluated at $z=0$.
+
+\paragraph{Source localization on the brane.}
+A localized defect/mass distribution on the brane is represented by a surface density
+$\Sigma(x,y)$ (or $\Sigma(r)$ in axisymmetry) with support near the origin.
+In the bulk Poisson sector, this corresponds to a 3D density
+\begin{equation}
+  \rho(x,y,z) = \Sigma(x,y)\,\delta(z).
+\end{equation}
+The static scalar potential $\Phi(r,z)$ then satisfies the Poisson equation in the slab,
+\begin{equation}
+  \nabla^2 \Phi(r,z) \;=\; 4\pi G\,\Sigma(r)\,\delta(z),
+  \qquad (r,z)\in \mathbb{R}^2\times[-H,H],
+  \label{eq:slab_poisson}
+\end{equation}
+where $\nabla^2=\partial_x^2+\partial_y^2+\partial_z^2$ is the ordinary Euclidean Laplacian.
+
+\paragraph{Point-source normalization.}
+For a point-like source of strength $\mu\equiv GM$ at $(r,z)=(0,0)$,
+\begin{equation}
+  \Sigma(r)=M\,\delta^{(2)}(\mathbf{r}) \quad \Longrightarrow \quad
+  \nabla^2 \Phi = 4\pi \mu\,\delta^{(2)}(\mathbf{r})\,\delta(z).
+\end{equation}
+The normalization is chosen so that in the infinite-bulk limit $H\to\infty$ the solution reduces to
+the standard Newtonian form,
+\begin{equation}
+  \Phi(\mathbf{x}) \to -\frac{\mu}{R},\qquad R=\sqrt{r^2+z^2}.
+\end{equation}
+
+\paragraph{Brane-plane force.}
+The inward brane-plane acceleration magnitude is, by definition,
+\begin{equation}
+  F(r)\equiv -\partial_r \Phi(r,0)\ge 0,
+  \label{eq:slab_force_def}
+\end{equation}
+and circular orbits satisfy $v^2(r)/r = F(r)$.
+
+\subsection{Boundary conditions: sealed (Neumann) baseline and leaky generalizations}
+\label{sec:slab_bc}
+
+The only ingredient responsible for the infrared modification in this paper is the boundary
+condition imposed at the slab walls $z=\pm H$.
+In the ontology developed in \texttt{brane\_bulk\_ontology.tex}, the Poisson-sector scalar is an
+effective potential for an irrotational bulk flow; a natural ``sealed'' condition is therefore a
+no-flux wall, implemented as a Neumann boundary condition:
+\begin{equation}
+  \partial_z \Phi(r,z)\big|_{z=\pm H} = 0.
+  \label{eq:bc_neumann}
+\end{equation}
+This is the baseline case we validate numerically and use for the main predictions.
+
+To parameterize departures from perfect confinement we will also consider a one-parameter Robin
+family,
+\begin{equation}
+  \partial_z \Phi(r,z)\big|_{z=\pm H} + \alpha\,\Phi(r,\pm H)=0,
+  \label{eq:bc_robin}
+\end{equation}
+with $\alpha\ge 0$.
+The limits of interest are:
+\begin{equation}
+  \alpha=0 \;\Rightarrow\; \text{Neumann (sealed)},\qquad
+  \alpha\to\infty \;\Rightarrow\; \text{Dirichlet-like (strongly leaky/absorbing)}.
+\end{equation}
+We emphasize that \eqref{eq:bc_robin} is not introduced as a fit function; it is a controlled way to
+track how the transverse mode spectrum changes as confinement weakens, and thereby how the infrared
+force law changes.
+
+\subsection{Why Neumann produces a $1/r$ far field: the zero-mode mechanism}
+\label{sec:zero_mode_mechanism}
+
+The qualitative reason the Neumann slab yields a $1/r$ force law on the brane is the existence of a
+true transverse \emph{zero mode}.
+To see this, consider separation of variables away from the source plane ($z\neq 0$), where
+$\Phi$ is harmonic:
+\begin{equation}
+  \nabla^2 \Phi = 0 \qquad (z\neq 0).
+\end{equation}
+Writing a mode expansion
+\begin{equation}
+  \Phi(r,z) = \sum_{m=0}^\infty \phi_m(r)\,f_m(z),
+  \label{eq:mode_ansatz}
+\end{equation}
+the transverse eigenfunctions satisfy
+\begin{equation}
+  -f_m''(z) = k_m^2\,f_m(z),
+  \qquad z\in[-H,H],
+  \label{eq:transverse_eigenproblem}
+\end{equation}
+with the chosen boundary condition at $z=\pm H$.
+
+\paragraph{Neumann case.}
+For \eqref{eq:bc_neumann}, the eigenproblem admits the constant function
+\begin{equation}
+  f_0(z) = \text{const},\qquad k_0=0,
+\end{equation}
+as an allowed mode.  This is the key: the long-distance behavior is then dominated by $m=0$ because
+all higher modes have $k_m>0$ and are Yukawa/Bessel suppressed in the brane plane.
+In the Green's-function language developed in the next section, the $k_0=0$ contribution produces a
+logarithmic brane-plane potential at large $r$,
+\begin{equation}
+  \Phi(r,0) \sim -\frac{\mu}{H}\,\ln r \quad (r\gg H),
+\end{equation}
+and therefore a $1/r$ force,
+\begin{equation}
+  F(r)\equiv-\partial_r\Phi(r,0)\sim \frac{\mu}{H\,r}\quad (r\gg H).
+\end{equation}
+The additive constant ambiguity in $\ln r$ is physically irrelevant because observables depend on
+gradients (forces) and on $\nabla_\perp \ln N$ in the optical sector.
+
+\paragraph{Leaky case.}
+For Robin boundaries \eqref{eq:bc_robin} with $\alpha>0$, the constant mode is no longer an exact
+eigenfunction.  Equivalently, the Neumann zero mode is lifted to a small but nonzero transverse
+wavenumber $k_0(\alpha)>0$.
+As a result, the would-be logarithmic far field is eventually replaced by a screened behavior beyond
+a length scale $\sim 1/k_0$.
+This provides a clean robustness/falsifiability lever: persistent $1/r$ forces and plateau lensing
+require sufficiently strong confinement, while imperfect confinement predicts an intermediate
+``slab-like'' regime followed by suppression at the largest radii.
+
+The remainder of the paper makes this mechanism quantitative by constructing the slab Green's
+function in two equivalent representations (images and modes) and by explicitly tracking how the
+infrared behavior changes as the boundary condition is deformed away from Neumann.
+
+\section{Green's functions in the slab: images and KK/modes}
+\label{sec:greens}
+
+The infrared crossover derived in this paper is, at bottom, a statement about the Green's function of
+the Laplacian in a finite slab with specified boundary conditions.  In the sealed (Neumann) case, the
+same Green's function admits two complementary and numerically useful representations:
+(i) a method-of-images construction and (ii) a transverse eigenmode (KK) expansion.  We present both,
+because (a) each is convenient in a different regime and (b) their agreement provides a powerful
+internal consistency check.
+
+Throughout this section we treat a point source at $(r,z)=(0,0)$ with strength $\mu\equiv GM$.
+Extended sources can be obtained by superposition once the point-source Green's function is known.
+
+\subsection{Neumann Green's function as a boundary-value problem}
+Let $G_N(\mathbf{r},z)$ denote the Neumann Green's function in the slab, defined by
+\begin{align}
+  \nabla^2 G_N(\mathbf{r},z) &= 4\pi\,\delta^{(2)}(\mathbf{r})\,\delta(z),
+  \label{eq:GN_def}\\
+  \partial_z G_N(\mathbf{r},z)\big|_{z=\pm H} &= 0,
+  \label{eq:GN_neumannBC}
+\end{align}
+together with decay at $|\mathbf{r}|\to\infty$ in the sense appropriate for a slab (the potential
+itself is defined only up to an additive constant, but gradients are finite and unique).
+The physical potential is
+\begin{equation}
+  \Phi(\mathbf{r},z) = -\mu\,G_N(\mathbf{r},z),
+\end{equation}
+and the brane-plane force is computed from $F(r)=-\partial_r\Phi(r,0)$.
+
+\subsection{Image-charge construction (sealed Neumann walls)}
+\label{sec:images}
+
+Neumann conditions at $z=\pm H$ are enforced by an even reflection of the source across each wall,
+which is equivalent to a periodic array of identical sources with period $2H$ in the transverse
+direction.  Concretely,
+\begin{equation}
+  G_N(r,z) \;=\; \sum_{n=-\infty}^{+\infty}\frac{1}{\sqrt{r^2+(z-2nH)^2}}
+  \;+\; \text{(constant)}.
+  \label{eq:GN_images}
+\end{equation}
+The additive constant reflects the fact that the slab potential is only defined up to a gauge shift;
+it cancels in all observables we use (forces and deflections), and in practice we work directly with
+gradients to avoid handling the constant explicitly.
+
+On the brane ($z=0$), differentiating \eqref{eq:GN_images} gives a rapidly convergent and manifestly
+positive expression for the inward radial acceleration magnitude:
+\begin{equation}
+  F_{\rm img}(r)
+  \;=\; \mu\,\sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}.
+  \label{eq:F_images}
+\end{equation}
+The $n=0$ term is the usual Newtonian $1/r^2$ force, and the additional images produce the infrared
+modification.  For numerical evaluation, \eqref{eq:F_images} is naturally truncated at $|n|\le n_{\max}$
+with an analytic tail estimate (Appendix~\ref{app:numerics}); the tail is particularly important when
+$r\gg H$, where many images contribute comparably to produce the $1/(Hr)$ scaling.
+
+\subsection{Mode / KK expansion}
+\label{sec:modes}
+
+An alternative representation is obtained by expanding in transverse eigenmodes of the Neumann
+Sturm--Liouville problem on $[-H,H]$:
+\begin{equation}
+  f_m(z)=\cos(k_m z),\qquad k_m=\frac{m\pi}{H},\qquad m=0,1,2,\dots
+  \label{eq:neumann_modes}
+\end{equation}
+where $m=0$ is the constant (zero) mode.
+Writing the Green's function as a cosine series in $z$ and performing the 2D Fourier/Hankel
+inversion in the brane plane yields the standard Yukawa/Bessel kernel $K_0$ for each $m\ge 1$.
+On the brane ($z=0$), one convenient form for the potential is
+\begin{equation}
+  \Phi(r,0)
+  \;=\; -\mu\left[
+    -\frac{1}{H}\ln\!\left(\frac{r}{r_0}\right)
+    + \frac{2}{H}\sum_{m=1}^{\infty}
+      K_0\!\left(\frac{m\pi r}{H}\right)
+  \right],
+  \label{eq:Phi_modes}
+\end{equation}
+where $r_0$ is an arbitrary reference scale absorbing the additive constant (gauge choice).
+Only $\partial_r\Phi$ will be used, so $r_0$ never enters final observables.
+
+Differentiating \eqref{eq:Phi_modes} gives the mode-sum force law
+\begin{equation}
+  F_{\rm mod}(r)
+  \;=\; -\partial_r\Phi(r,0)
+  \;=\; \mu\left[
+    \frac{1}{H\,r}
+    + \frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+      m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right].
+  \label{eq:F_modes}
+\end{equation}
+This representation makes the infrared physics transparent:
+because $K_1(x)$ decays exponentially for large $x$, the sum is negligible for $r\gg H$ and the zero
+mode gives the dominant far field,
+\begin{equation}
+  F(r)\;\xrightarrow{\,r\gg H\,}\; \frac{\mu}{H\,r}.
+\end{equation}
+Conversely, for $r\ll H$ many KK modes contribute and \eqref{eq:F_modes} reconstructs the local
+Newtonian $1/r^2$ behavior.  Numerically, \eqref{eq:F_modes} converges extremely rapidly in the
+far field (only a few $m$ are needed once $r\gtrsim H$), while \eqref{eq:F_images} can be preferable
+very near the source where the $n=0$ term dominates.
+
+\subsection{Equivalence and practical use}
+\label{sec:equivalence}
+
+Equations \eqref{eq:F_images} and \eqref{eq:F_modes} are two representations of the \emph{same}
+Neumann slab Green's function; their equality can be understood as a Poisson-summation relation
+connecting the periodic image stack to the discrete transverse spectrum.  In particular, one may
+differentiate the corresponding identity for $G_N$ to obtain the brane-plane force identity
+\begin{equation}
+  \sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}
+  \;=\;
+  \frac{1}{H\,r}
+  + \frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+  m\,K_1\!\left(\frac{m\pi r}{H}\right),
+  \label{eq:images_modes_identity}
+\end{equation}
+which is precisely $F_{\rm img}(r)/\mu = F_{\rm mod}(r)/\mu$.
+
+In the numerical validation section we exploit this equivalence as a stringent cross-check:
+for a given $(H,\mu)$ and a wide range of $r$, the truncated image and truncated mode computations
+agree to high precision once convergence controls (tail estimates and $m_{\max}$) are applied.
+This ensures that the observed crossover from $F\sim \mu/r^2$ to $F\sim \mu/(Hr)$ is a property of
+the slab Green's function itself rather than an artifact of truncation or representation choice.
+
+\section{Force law and rotation curves from slab confinement}
+\label{sec:asymptotics_rotation}
+
+In this section we extract the dynamical consequences of the Neumann slab Green's function presented
+in Section~\ref{sec:greens}.  The key object is the brane-plane inward acceleration magnitude
+\begin{equation}
+  F(r)\equiv -\partial_r\Phi(r,0)\ge 0,
+\end{equation}
+computed either from the image representation \eqref{eq:F_images} or the KK/mode representation
+\eqref{eq:F_modes}.  We first establish the near- and far-field asymptotes (including their
+normalizations) for a point source, then translate them into rotation-curve predictions, and finally
+state the corresponding scaling for extended axisymmetric sources.
+
+\subsection{Point mass: near-field and far-field asymptotes}
+\label{sec:point_asymptotes}
+
+For a point source of strength $\mu\equiv GM$ at $(r,z)=(0,0)$, the Neumann slab force can be written
+in either of the equivalent forms:
+\begin{align}
+  F_{\rm img}(r)
+  &= \mu\sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}},
+  \label{eq:dyn_F_images}\\[4pt]
+  F_{\rm mod}(r)
+  &= \mu\left[
+    \frac{1}{H\,r}
+    + \frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+      m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right].
+  \label{eq:dyn_F_modes}
+\end{align}
+We denote the common value by $F(r)$.
+
+\paragraph{Near field: $r\ll H$ (locally Newtonian).}
+In the image form \eqref{eq:dyn_F_images}, the $n=0$ term is exactly Newtonian:
+\begin{equation}
+  F_{n=0}(r)=\frac{\mu}{r^2}.
+\end{equation}
+All other images satisfy $|2nH|\gg r$ and contribute a regular series in $r/H$.  Expanding the
+$n\neq 0$ terms for $r\ll H$ gives
+\begin{equation}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}
+  = \frac{r}{(2|n|H)^3}\left[1+\mathcal{O}\!\left(\frac{r^2}{n^2H^2}\right)\right],
+\end{equation}
+so that
+\begin{equation}
+  F(r)
+  = \frac{\mu}{r^2}
+    + \mu\left[\frac{\zeta(3)}{4}\,\frac{r}{H^3}
+    + \mathcal{O}\!\left(\frac{r^3}{H^5}\right)\right],
+  \qquad (r\ll H).
+  \label{eq:dyn_nearfield_expansion}
+\end{equation}
+The leading correction is suppressed relative to $\mu/r^2$ by
+$\sim (\zeta(3)/4)\,(r/H)^3$, so the force is locally indistinguishable from the usual $1/r^2$ law
+well inside the slab thickness.  In particular,
+\begin{equation}
+  \lim_{r/H\to 0} r^2 F(r) = \mu,
+\end{equation}
+which fixes the near-field normalization unambiguously.
+
+\paragraph{Far field: $r\gg H$ (slab regime).}
+In the mode form \eqref{eq:dyn_F_modes}, the $m\ge 1$ contributions are exponentially suppressed for
+$r\gg H$ because $K_1(x)\sim \sqrt{\pi/(2x)}\,e^{-x}$ as $x\to\infty$.  Therefore
+\begin{equation}
+  F(r)
+  = \frac{\mu}{H\,r}\left[1+\mathcal{O}\!\left(e^{-\pi r/H}\right)\right],
+  \qquad (r\gg H),
+  \label{eq:dyn_farfield}
+\end{equation}
+so that
+\begin{equation}
+  \lim_{r/H\to\infty} H\,r\,F(r) = \mu.
+\end{equation}
+This establishes both the $1/r$ scaling and its normalization: the far-field force is
+\begin{equation}
+  F(r)\simeq \frac{GM}{H\,r},
+\end{equation}
+equivalently $\Phi(r,0)\simeq -(GM/H)\ln r$ up to an additive constant.
+
+\paragraph{Crossover scale.}
+The transition between \eqref{eq:dyn_nearfield_expansion} and \eqref{eq:dyn_farfield} occurs at
+$r=\mathcal{O}(H)$, as expected from dimensional considerations: for $r\lesssim H$ field lines can
+spread quasi-spherically, whereas for $r\gtrsim H$ the transverse direction is effectively saturated
+and the dynamics are controlled by the Neumann zero mode.  In Section~\ref{sec:numerics} we quantify
+this crossover with a log-slope knee diagnostic.
+
+\subsection{Rotation curve consequence}
+\label{sec:rotation_curves}
+
+For circular motion in the brane plane,
+\begin{equation}
+  \frac{v^2(r)}{r} = F(r).
+  \label{eq:dyn_circular_orbit}
+\end{equation}
+In the Newtonian regime $r\ll H$, Eqs.~\eqref{eq:dyn_nearfield_expansion} and
+\eqref{eq:dyn_circular_orbit} give
+\begin{equation}
+  v^2(r) \simeq \frac{\mu}{r}
+  \qquad (r\ll H),
+\end{equation}
+i.e.\ Keplerian decline $v(r)\propto r^{-1/2}$.
+
+In the slab regime $r\gg H$, combining \eqref{eq:dyn_farfield} with \eqref{eq:dyn_circular_orbit}
+gives a flat asymptote:
+\begin{equation}
+  v^2(r) \;\xrightarrow{\,r\gg H\,}\; v_\infty^2
+  \equiv \frac{\mu}{H} = \frac{GM}{H}.
+  \label{eq:dyn_vinf}
+\end{equation}
+Thus, in the sealed Neumann slab, asymptotically flat rotation curves are a direct consequence of
+the slab Green's function and require no additional halo component.  The single geometric scale $H$
+sets the plateau velocity for a given source strength $GM$.
+
+\subsection{Extended sources and enclosed mass in the slab regime}
+\label{sec:extended_sources}
+
+Because the Poisson sector is linear, the slab potential for an extended brane source can be written
+as a 2D convolution of the surface density with the slab Green's function restricted to the brane:
+\begin{equation}
+  \Phi(\mathbf{r},0) = -G\int \dd^2\mathbf{r}'\,
+  \Sigma(\mathbf{r}')\,G_N\!\left(|\mathbf{r}-\mathbf{r}'|,0\right).
+\end{equation}
+In the deep slab regime (distances large compared with $H$), the Green's function reduces to the
+effective 2D logarithmic form associated with the Neumann zero mode,
+\begin{equation}
+  G_N(\rho,0)\;\simeq\; -\frac{1}{H}\ln\!\left(\frac{\rho}{r_0}\right),
+  \qquad (\rho\gg H),
+\end{equation}
+and therefore the brane-plane dynamics become approximately those of a two-dimensional potential
+theory with effective coupling $G/H$.
+
+For an axisymmetric surface density $\Sigma=\Sigma(r)$, define the enclosed mass
+\begin{equation}
+  M_{\rm enc}(r) \equiv 2\pi \int_0^{r} \Sigma(\rho)\,\rho\,\dd\rho.
+\end{equation}
+In the slab regime, the corresponding radial acceleration is approximately
+\begin{equation}
+  F(r)\;\simeq\; \frac{G\,M_{\rm enc}(r)}{H\,r},
+  \qquad \text{(axisymmetric, slab regime)},
+  \label{eq:dyn_extended_slab}
+\end{equation}
+so that
+\begin{equation}
+  v^2(r)\;\simeq\;\frac{G\,M_{\rm enc}(r)}{H}.
+  \label{eq:dyn_extended_v2}
+\end{equation}
+If the mass distribution is effectively compact on the scale of the radii of interest (so that
+$M_{\rm enc}(r)\to M_{\rm tot}$), \eqref{eq:dyn_extended_slab} reduces to the point-mass far field
+\eqref{eq:dyn_farfield}.  If instead $M_{\rm enc}(r)$ continues to grow with $r$ over some range, then
+$v^2(r)$ will track that growth while remaining insensitive to $r$ itself, a distinctive
+``mass-tracking'' behavior of the slab regime.
+
+Equation~\eqref{eq:dyn_extended_slab} should be understood as the leading large-$r/H$ behavior of the
+Neumann slab Green's function for axisymmetric sources; corrections appear near the transition scale
+$r\sim H$ and near sharp edges of the mass distribution.  These corrections can be computed by
+numerical convolution with either representation of the Green's function (images or modes), but the
+leading slab scaling \eqref{eq:dyn_extended_slab} is sufficient for the analytic predictions and the
+lensing connection developed later.
+
+Finally, we emphasize that the persistence of \eqref{eq:dyn_farfield}--\eqref{eq:dyn_extended_slab}
+is contingent on the Neumann zero mode.  In Section~\ref{sec:leaky} we show how imperfect confinement
+(removal or lifting of the zero mode) truncates the $1/r$ force regime and therefore limits the range
+over which \eqref{eq:dyn_vinf} and \eqref{eq:dyn_extended_v2} apply.
+
+\section{Numerical validation and convergence tests}
+\label{sec:numerics}
+
+The slab mechanism is an infrared modification produced by a global boundary-value problem, so a
+numerical demonstration must establish more than a visually suggestive log--log plot.  In this
+section we document three nontrivial validations:
+
+\begin{enumerate}
+  \item \textbf{Normalization checks} in both asymptotic regimes ($r\ll H$ and $r\gg H$),
+  \item \textbf{Convergence control} under truncation of the image stack and of the KK/mode sum,
+  \item \textbf{Representation cross-check}: images and modes agree to numerical precision over a wide
+        dynamic range.
+\end{enumerate}
+
+All results reported below are produced by the accompanying Mathematica validation script
+(\texttt{dark\_matter\_slab\_test\_revised.wl}) using a point source on the brane and the Neumann slab
+formulas \eqref{eq:dyn_F_images}--\eqref{eq:dyn_F_modes}.
+Unless stated otherwise, we use $H=10$ and $\mu=GM=1$.
+
+\subsection{Critical normalization checks}
+\label{sec:numerics_norm}
+
+The point-mass slab force has two sharp normalization limits:
+\begin{equation}
+  r^2 F(r)\to \mu \quad (r\ll H),
+  \qquad
+  Hr\,F(r)\to \mu \quad (r\gg H).
+  \label{eq:numerics_norm_targets}
+\end{equation}
+These limits are stringent because they test both the scaling and the overall coefficient.
+
+Using both the image representation and the mode representation, we evaluate the normalized products
+at representative near- and far-field radii.  With $H=10$ and $\mu=1$ we obtain:
+\begin{align}
+  r=0.5\ (r\ll H): \quad & r^2 F_{\rm img}(r)=1.000037534,\qquad r^2 F_{\rm mod}(r)=1.000037534,\\
+  r=1000\ (r\gg H): \quad & HrF_{\rm img}(r)=1.000000000,\qquad HrF_{\rm mod}(r)=1.000000000,
+\end{align}
+confirming the expected asymptotes \eqref{eq:dyn_nearfield_expansion} and \eqref{eq:dyn_farfield} with
+the correct normalization.
+
+\subsection{Convergence study: truncation control}
+\label{sec:numerics_convergence}
+
+Both numerical representations involve truncation.  In the image method
+\eqref{eq:dyn_F_images}, we sum images over $|n|\le n_{\max}$ and add a controlled tail estimate for
+$|n|>n_{\max}$; in the mode method \eqref{eq:dyn_F_modes}, we truncate the KK series at
+$m\le m_{\max}$.
+To quantify convergence we compare truncated results to a high-accuracy reference computed with a
+larger cutoff (and, in the image case, an explicit analytic tail).
+
+\paragraph{Image representation.}
+Define $F_{\rm img}^{(n_{\max})}(r)$ as the truncated image sum with tail correction and let
+$F_{\rm ref}(r)$ be a stricter reference (larger cutoff and tighter tail tolerance).  We report the
+relative error
+\begin{equation}
+  \varepsilon_{\rm img}(r;n_{\max}) \equiv
+  \left|\frac{F_{\rm img}^{(n_{\max})}(r)-F_{\rm ref}(r)}{F_{\rm ref}(r)}\right|.
+\end{equation}
+Representative values (full table in Appendix~\ref{app:numerics}) show rapid improvement with
+$n_{\max}$, with large-$r$ cases requiring more images as expected:
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline
+$r$ & $n_{\max}=200$ & $500$ & $1000$ & $2000$ & $5000$ \\
+\hline
+$1$     & $1.9\times 10^{-14}$ & $4.4\times 10^{-16}$ & $\sim 0$ & $\sim 0$ & $\sim 0$ \\
+$100$   & $1.9\times 10^{-9}$  & $5.0\times 10^{-11}$ & $3.1\times 10^{-12}$ & $1.9\times 10^{-13}$ & $5.4\times 10^{-15}$ \\
+$1000$  & $1.7\times 10^{-7}$  & $4.9\times 10^{-9}$  & $3.1\times 10^{-10}$ & $1.9\times 10^{-11}$ & $5.0\times 10^{-13}$ \\
+\hline
+\end{tabular}
+\end{center}
+The pattern matches the physics: deep in the slab regime ($r\gg H$), many images contribute
+coherently to build the $1/(Hr)$ law, so the raw image sum requires a larger cutoff; the tail
+estimate restores accuracy efficiently.
+
+\paragraph{Mode representation.}
+Define $F_{\rm mod}^{(m_{\max})}(r)$ as the truncated KK sum and measure
+\begin{equation}
+  \varepsilon_{\rm mod}(r;m_{\max}) \equiv
+  \left|\frac{F_{\rm mod}^{(m_{\max})}(r)-F_{\rm mod}^{(m_{\rm ref})}(r)}{F_{\rm mod}^{(m_{\rm ref})}(r)}\right|,
+\end{equation}
+with a strict reference cutoff $m_{\rm ref}$.
+Because $K_1(x)$ decays exponentially for large $x$, convergence is typically extremely fast once
+$r\gtrsim H$.  In our runs, $m_{\max}\simeq 100$ already yields relative errors consistent with
+machine precision for essentially all $r\ge 1$; even $m_{\max}=50$ is sufficient over most of the
+range (see Appendix~\ref{app:numerics} for the full table).
+
+These convergence tests support a practical division of labor: images are conceptually transparent
+and efficient very near the source, while KK/modes are highly efficient in the far field where only
+the zero mode and a few low-$m$ corrections matter.
+
+\subsection{Cross-check: images vs modes}
+\label{sec:numerics_crosscheck}
+
+The most stringent validation is agreement between the two independent representations when each is
+evaluated at its converged cutoff.  For a representative selection of radii, we compare
+$F_{\rm img}(r)$ and $F_{\rm mod}(r)$ and report the relative difference
+\begin{equation}
+  \delta(r)\equiv
+  \left|\frac{F_{\rm mod}(r)-F_{\rm img}(r)}{F_{\rm img}(r)}\right|.
+\end{equation}
+With $H=10$ and $\mu=1$, we find:
+\begin{center}
+\begin{tabular}{c|ccc}
+\hline
+$r$ & $F_{\rm img}(r)$ & $F_{\rm mod}(r)$ & $\delta(r)$ \\
+\hline
+$1$    & $1.0002995450516297$ & $1.0002995450516299$ & $2.2\times 10^{-16}$ \\
+$10$   & $0.012261662448154562$ & $0.012261662448154548$ & $1.1\times 10^{-15}$ \\
+$100$  & $1.000000000000329\times 10^{-3}$ & $1.000000000000323\times 10^{-3}$ & $6.1\times 10^{-15}$ \\
+$1000$ & $1.0000000000004988\times 10^{-4}$ & $1.0000000000000000\times 10^{-4}$ & $5.0\times 10^{-13}$ \\
+\hline
+\end{tabular}
+\end{center}
+Agreement at the $10^{-15}$--$10^{-13}$ level over three decades in radius indicates that the
+observed crossover is not a representation artifact.  The slightly larger relative discrepancy at
+$r=1000$ is consistent with the image method being intrinsically more demanding in the deep slab
+regime unless a very large $n_{\max}$ (plus tail) is used.
+
+\subsection{Knee (transition) scale estimate}
+\label{sec:numerics_knee}
+
+To quantify the crossover radius without relying on visual inspection of plots, we use a log-slope
+diagnostic.  Define
+\begin{equation}
+  \gamma(r)\equiv \frac{\dd \ln F}{\dd \ln r}.
+\end{equation}
+In the Newtonian regime, $\gamma\to -2$; in the slab regime, $\gamma\to -1$.
+We define the ``knee'' radius $r_{\rm knee}$ as the location where $\gamma(r_{\rm knee})=-3/2$.
+For the representative run with $H=10$, the script finds
+\begin{equation}
+  r_{\rm knee}\simeq 10.50,
+\end{equation}
+consistent with the expectation that the transition occurs at $r=\mathcal{O}(H)$ with an order-unity
+coefficient.
+
+\paragraph{Summary.}
+The combined evidence---asymptotic normalization, controlled convergence, and images--modes
+agreement---supports treating the slab crossover
+\begin{equation}
+  F(r)\sim \frac{\mu}{r^2}\ (r\ll H)
+  \quad\longrightarrow\quad
+  F(r)\sim \frac{\mu}{H\,r}\ (r\gg H)
+\end{equation}
+as a robust consequence of the Neumann slab Green's function, suitable for use in the prediction
+sections that follow.
+
+\section{Boundary sensitivity: leaky slab models}
+\label{sec:leaky}
+
+The Neumann slab result is a \emph{conditional} geometric statement:
+a persistent far-field $F(r)\sim \mu/(Hr)$ requires a transverse zero mode.
+In the toy ontology, this corresponds to a bulk that is effectively ``sealed'' to the Poisson-sector
+flow (no normal flux through $z=\pm H$).  If the boundary is imperfect, the infrared behavior is
+modified in a controlled and testable way.
+
+The goal of this section is not to introduce new free functions, but to provide two simple,
+implementable parameterizations of ``leakiness'' and to classify the resulting phenomenology.
+Both models reduce to the Neumann slab in an appropriate limit and both produce a clear,
+falsifiable prediction: \emph{the slab-like $1/r$ regime (and its lensing plateau) becomes an
+intermediate window rather than an asymptote.}
+
+\subsection{What is being tested: the fate of the zero mode}
+\label{sec:leaky_zeromode}
+
+Section~\ref{sec:zero_mode_mechanism} showed that Neumann confinement admits a true transverse
+zero mode ($k_0=0$).  In the KK representation \eqref{eq:dyn_F_modes}, this is the origin of the
+explicit $1/(Hr)$ term.  Any departure from perfect confinement does one of two things:
+
+\begin{itemize}
+\item \textbf{Reduces the coherence of the image stack} (``partial reflection''): the effective
+      number of images contributing to the far field becomes finite.  One expects an intermediate
+      slab-like window followed by a return toward a more Newtonian-like falloff at the largest
+      radii.
+\item \textbf{Lifts the zero mode} (``absorptive/leaky walls''): the would-be $k_0=0$ mode becomes a
+      small but nonzero $k_0>0$, leading to eventual \emph{screening} at $r\gtrsim 1/k_0$.
+\end{itemize}
+
+We now implement these two possibilities as Model~A and Model~B.
+
+\subsection{Model A: weighted images (partial reflection)}
+\label{sec:leaky_weighted_images}
+
+A fast and intuitive way to model imperfect confinement is to modify the Neumann image stack by an
+amplitude factor that decays with image index:
+\begin{equation}
+  F_{w}(r)
+  \;=\;
+  \mu \sum_{n=-\infty}^{+\infty} w^{|n|}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}},
+  \qquad 0<w\le 1.
+  \label{eq:leaky_weighted_images_force}
+\end{equation}
+Here $w$ acts as a \emph{reflectivity} parameter:
+\begin{equation}
+  w=1 \Rightarrow \text{perfect Neumann slab (sealed)},
+  \qquad
+  w<1 \Rightarrow \text{partial leakage (finite effective image depth)}.
+\end{equation}
+Because the weights decay geometrically, the dominant contribution comes from
+$|n|\lesssim n_{\rm eff}$ with
+\begin{equation}
+  n_{\rm eff}\sim \frac{1}{1-w},
+  \label{eq:leaky_neff}
+\end{equation}
+so that the slab-like behavior is expected only over radii for which a large fraction of these
+images contribute coherently.
+
+\paragraph{Qualitative regimes.}
+Model~A naturally produces three regimes:
+
+\begin{enumerate}
+\item \textbf{Near field} ($r\ll H$): the $n=0$ term dominates and
+\begin{equation}
+  F_w(r) = \frac{\mu}{r^2}\left[1+\mathcal{O}\!\left(\frac{r^3}{H^3}\right)\right].
+\end{equation}
+
+\item \textbf{Intermediate slab window} ($H\ll r\ll 2n_{\rm eff}H$): many weighted images contribute.
+The force approaches a slab-like $1/r$ behavior over a finite dynamic range:
+\begin{equation}
+  F_w(r)\approx \frac{\mu}{H\,r}\times \mathcal{A}(w),
+\end{equation}
+where $\mathcal{A}(w)$ is an order-unity amplitude that approaches $1$ as $w\to 1$.
+
+\item \textbf{Ultra-far field} ($r\gg 2n_{\rm eff}H$): the effective image depth is finite and the
+sum behaves increasingly like a finite collection of sources, so the force trends back toward a
+more Newtonian-like falloff (up to an overall renormalization of $\mu$).
+\end{enumerate}
+
+\paragraph{Diagnostics.}
+To characterize the ``flat window'' we use the log-slope
+\begin{equation}
+  \gamma(r) \equiv \frac{\dd\ln F}{\dd\ln r},
+\end{equation}
+and define a slab-like interval by the condition $|\gamma(r)+1|<\epsilon$ for a fixed tolerance
+(e.g.\ $\epsilon=0.1$).  The window length grows rapidly as $w\to 1$ through the scaling
+\eqref{eq:leaky_neff}.  This makes $w$ directly interpretable as a confinement diagnostic rather than
+a mere fit parameter.
+
+\paragraph{Rotation curves.}
+Within the slab-like window, circular speeds satisfy
+\begin{equation}
+  v^2(r)\simeq rF_w(r)\approx \frac{\mu}{H}\,\mathcal{A}(w),
+\end{equation}
+so rotation curves are approximately flat.  Outside the window, the curve either declines or
+transitions toward a different asymptotic depending on $w$.
+
+\subsection{Model B: Robin boundary condition and lifted zero mode}
+\label{sec:leaky_robin}
+
+A more formal description of leakage is to replace the Neumann wall with a Robin condition
+\eqref{eq:bc_robin},
+\begin{equation}
+  \partial_z \Phi + \alpha \Phi = 0 \qquad \text{at } z=\pm H,
+\end{equation}
+with $\alpha>0$ encoding absorption/leakiness.
+
+\paragraph{Eigenvalue condition.}
+For even modes (appropriate for a brane source at $z=0$), the transverse eigenfunctions are of the
+form $f(z)=\cos(k z)$, and the Robin condition yields the root condition
+\begin{equation}
+  -k\sin(kH)+\alpha\cos(kH)=0
+  \quad\Longleftrightarrow\quad
+  \tan(kH)=\frac{\alpha}{k}.
+  \label{eq:robin_root_condition}
+\end{equation}
+For $\alpha=0$, Eq.~\eqref{eq:robin_root_condition} admits $k_0=0$ (the Neumann zero mode).
+For $\alpha>0$, the lowest root becomes small but nonzero ($k_0>0$), i.e.\ the zero mode is lifted.
+
+\paragraph{Effective screened far field.}
+In the KK representation, the $k_0=0$ term that produced the logarithmic potential is replaced by a
+screened two-dimensional kernel.  The leading far-field contribution takes the form
+\begin{equation}
+  \Phi_0(r,0)\propto -\frac{\mu}{H}\,K_0(k_0 r),
+  \qquad
+  F_0(r)\propto \frac{\mu}{H}\,k_0 K_1(k_0 r),
+  \label{eq:robin_screened_force}
+\end{equation}
+so that for $k_0 r\gg 1$,
+\begin{equation}
+  F_0(r) \sim \frac{\mu}{H}\sqrt{\frac{\pi k_0}{2r}}\,e^{-k_0 r}.
+  \label{eq:robin_screened_asymptote}
+\end{equation}
+Thus, the model predicts a slab-like regime only for $r\lesssim k_0^{-1}$, followed by exponential
+suppression at the largest radii.
+
+\paragraph{Small-leakage scaling.}
+For weak leakage ($\alpha H\ll 1$), the smallest root of \eqref{eq:robin_root_condition} is small and
+a useful scaling estimate is
+\begin{equation}
+  k_0 \sim \sqrt{\frac{\alpha}{H}},
+  \label{eq:k0_scaling}
+\end{equation}
+so the screening length grows as $\ell_{\rm scr}\sim 1/k_0\sim \sqrt{H/\alpha}$.
+
+\paragraph{Rotation curves.}
+Within the intermediate range $H\ll r\ll \ell_{\rm scr}$, the force is approximately $F\sim \mu/(Hr)$
+and rotation curves are quasi-flat.  For $r\gtrsim \ell_{\rm scr}$, the force becomes too small to
+support a constant-speed asymptote, and $v(r)$ declines.
+
+\subsection{Robustness taxonomy and falsifiable predictions}
+\label{sec:leaky_taxonomy}
+
+The two leaky models lead to a common qualitative conclusion: the Neumann slab asymptote is
+\emph{diagnostic} of confinement.
+
+\begin{itemize}
+\item \textbf{Sealed (Neumann):} persistent $F\sim \mu/(Hr)$ at $r\gg H$, implying
+      $v_\infty^2=\mu/H$ and (Section~\ref{sec:lensing}) a true large-$b$ lensing plateau.
+
+\item \textbf{Partially reflecting (weighted images):} an intermediate slab-like window exists for
+      $H\ll r\ll 2n_{\rm eff}H$, with its extent controlled by $w$ (or equivalently $n_{\rm eff}$).
+      Beyond this window the force trends away from $1/r$.
+
+\item \textbf{Absorbing/leaky (Robin, lifted zero mode):} the slab-like window ends at a screening
+      scale $\ell_{\rm scr}\sim 1/k_0$, beyond which $F(r)$ is exponentially suppressed.
+\end{itemize}
+
+In both cases, the key observable is the \emph{extent} of the slab-like window in dynamics and optics.
+In Section~\ref{sec:lensing} we show that the same confinement physics controlling the flattening of
+rotation curves also controls the onset and persistence of the lensing plateau.  Joint rotation+%
+lensing measurements therefore constrain not only the geometric scale $H$ but also (in the leaky
+extensions) the leakage parameters $w$ or $k_0$ that quantify how ``sealed'' the bulk is.
+
+\section{Optical predictions: lensing from the slab force}
+\label{sec:lensing}
+
+A central advantage of the slab mechanism is that it modifies the brane-plane acceleration law
+$F(r)$ in a way that propagates directly into the optical sector with essentially no additional model
+freedom at leading order.
+This section derives the bending angle $\Delta\theta(b)$ as a functional of $F(r)$, extracts the
+asymptotic lensing scalings in the Newtonian and slab regimes, and identifies a sharp signature of
+slab confinement: a \emph{large-impact-parameter deflection plateau}.
+We then summarize how imperfect confinement (Section~\ref{sec:leaky}) truncates this plateau.
+
+\subsection{Deflection written directly in terms of $F(r)$}
+\label{sec:lensing_force_form}
+
+From the optical mapping summarized in Section~\ref{sec:inputs}, the weak-field refractive index
+obeys
+\begin{equation}
+  \ln N \simeq -\frac{2\Phi}{c^2},
+\end{equation}
+and the small-angle deflection for a ray with impact parameter $b$ is
+\begin{equation}
+  \Delta\theta(b)\simeq \int_{-\infty}^{+\infty}\nabla_\perp \ln N\bigl(R(s)\bigr)\,\dd s,
+  \qquad R(s)=\sqrt{b^2+s^2}.
+\end{equation}
+For spherical symmetry, $\nabla_\perp \ln N = (\dd \ln N/\dd R)\,(b/R)$.
+Using $\dd\Phi/\dd R=-F(R)$ (our convention that $F\ge 0$ is the inward acceleration magnitude),
+we obtain the key identity:
+\begin{equation}
+  \boxed{
+  \Delta\theta(b)
+  \;\simeq\;
+  \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  F\!\left(R(s)\right)\,\frac{b}{R(s)}\,\dd s
+  }
+  \label{eq:lensing_force_identity}
+\end{equation}
+This formula is particularly well-suited to the present paper because $F(r)$ is the quantity already
+validated by the slab Green's function computations.  Note also that any additive constant in $\Phi$
+(including the gauge ambiguity of a logarithmic far-field potential) drops out of
+\eqref{eq:lensing_force_identity}; only gradients matter.
+
+\paragraph{Numerically stable finite-range form.}
+For direct computation, it is convenient to map the infinite line-of-sight integral to a finite
+interval using $s=b\tan u$, for which $u\in(-\pi/2,\pi/2)$ and $R=b\sec u$.  Then
+\begin{equation}
+  \dd s = b\,\sec^2 u\,\dd u,
+  \qquad
+  \frac{b}{R} = \cos u,
+\end{equation}
+and \eqref{eq:lensing_force_identity} becomes
+\begin{equation}
+  \boxed{
+  \Delta\theta(b)
+  \;=\;
+  \frac{2b}{c^2}\int_{-\pi/2}^{+\pi/2} F\!\left(b\sec u\right)\,\sec u\,\dd u
+  }
+  \label{eq:lensing_uform}
+\end{equation}
+The integrand in \eqref{eq:lensing_uform} is smooth for all $u\in(-\pi/2,\pi/2)$ for any physically
+regularized force law, and the finite limits make the computation robust and fast.
+
+\subsection{Asymptotes: $1/b$ bending to a constant plateau}
+\label{sec:lensing_asymptotes}
+
+We now evaluate \eqref{eq:lensing_force_identity} in the two asymptotic regimes established in
+Section~\ref{sec:asymptotics_rotation} for the sealed Neumann slab.
+
+\paragraph{Near field: $b\ll H$ (Newtonian bending).}
+When the ray probes only radii $R\ll H$ along its trajectory, the force is locally Newtonian:
+$F(R)\simeq \mu/R^2$.
+Then
+\begin{align}
+  \Delta\theta(b)
+  &\simeq \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  \frac{\mu}{R^2}\,\frac{b}{R}\,\dd s
+  = \frac{2\mu}{c^2}\int_{-\infty}^{+\infty}
+  \frac{b}{(b^2+s^2)^{3/2}}\,\dd s
+  = \frac{4\mu}{b\,c^2},
+\end{align}
+i.e.
+\begin{equation}
+  \Delta\theta(b)\;\xrightarrow{\,b\ll H\,}\; \frac{4GM}{b\,c^2}.
+  \label{eq:lensing_newtonian}
+\end{equation}
+This reproduces the standard $1/b$ bending scaling in the regime where the slab is irrelevant.
+
+\paragraph{Deep slab: $b\gg H$ (deflection plateau).}
+In the slab regime, the brane-plane force obeys
+\begin{equation}
+  F(R)\simeq \frac{\mu}{H\,R},
+  \qquad (R\gg H).
+\end{equation}
+Substituting into \eqref{eq:lensing_force_identity} yields
+\begin{align}
+  \Delta\theta(b)
+  &\simeq \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  \frac{\mu}{H\,R}\,\frac{b}{R}\,\dd s
+  = \frac{2\mu}{Hc^2}\int_{-\infty}^{+\infty}
+  \frac{b}{b^2+s^2}\,\dd s
+  = \frac{2\mu}{Hc^2}\,\pi.
+\end{align}
+Therefore the bending angle tends to a constant independent of $b$:
+\begin{equation}
+  \boxed{
+  \Delta\theta(b)\;\xrightarrow{\,b\gg H\,}\;
+  \Delta\theta_\infty
+  \equiv \frac{2\pi\,\mu}{Hc^2}
+  = \frac{2\pi GM}{Hc^2}
+  }
+  \label{eq:lensing_plateau}
+\end{equation}
+Combining \eqref{eq:lensing_plateau} with the flat rotation curve asymptote
+$v_\infty^2=\mu/H$ from Section~\ref{sec:asymptotics_rotation} gives an especially compact
+consistency relation:
+\begin{equation}
+  \boxed{
+  \Delta\theta_\infty = \frac{2\pi\,v_\infty^2}{c^2}
+  }
+  \label{eq:lensing_rotation_relation}
+\end{equation}
+This is a sharp signature of slab confinement: in the same regime where $v(r)$ is asymptotically
+flat, lensing bends toward an impact-parameter independent plateau.
+
+\paragraph{Slope diagnostic.}
+Defining the log-slope
+\begin{equation}
+  \beta(b)\equiv \frac{\dd\ln \Delta\theta}{\dd\ln b},
+\end{equation}
+Eqs.~\eqref{eq:lensing_newtonian} and \eqref{eq:lensing_plateau} imply a transition
+\begin{equation}
+  \beta(b)\to -1 \quad (b\ll H),
+  \qquad
+  \beta(b)\to 0 \quad (b\gg H).
+\end{equation}
+Thus, in addition to $\Delta\theta(b)$ itself, the slope $\beta(b)$ provides a clean and
+scale-localized diagnostic of the crossover.
+
+\subsection{Leakiness dependence of the lensing plateau}
+\label{sec:lensing_leaky}
+
+Section~\ref{sec:leaky} showed that imperfect confinement alters the fate of the Neumann zero mode.
+Because the deflection \eqref{eq:lensing_force_identity} is a line-of-sight average of $F(R)$, the
+same confinement physics controlling the rotation-curve flattening controls the onset and
+persistence of the lensing plateau.
+
+\paragraph{Model A (weighted images): plateau becomes a finite window.}
+For the weighted-image force $F_w(r)$ in \eqref{eq:leaky_weighted_images_force}, the force can
+approximate $F\propto 1/r$ only over a finite radial interval whose extent grows as $w\to 1$.
+Consequently, $\Delta\theta(b)$ exhibits an \emph{approximate} plateau only for impact parameters
+$b$ that predominantly sample this window.  As $b$ increases beyond the window, the deflection
+departs from \eqref{eq:lensing_plateau} and begins to decrease.
+
+\paragraph{Model B (Robin / lifted zero mode): plateau ends at a screening scale.}
+For Robin leakage, the far field is controlled by a lifted lowest mode with $k_0>0$, producing a
+screened contribution of the form \eqref{eq:robin_screened_force}.  In this case a slab-like window
+(and an approximately constant $\Delta\theta$) exists only for
+\begin{equation}
+  H \ll b \ll \ell_{\rm scr}\equiv k_0^{-1},
+\end{equation}
+while for $b\gtrsim \ell_{\rm scr}$ the bending is suppressed in concert with the exponential decay
+of the force.  Thus, measuring the \emph{extent} of any observed plateau provides a direct constraint
+on confinement quality (via $w$ or $k_0$), while the plateau height constrains $H$ (or equivalently
+$v_\infty$ through \eqref{eq:lensing_rotation_relation}).
+
+\paragraph{Practical computational program.}
+Given any converged numerical representation of $F(r)$ (images, modes, or leaky variants),
+Eq.~\eqref{eq:lensing_uform} can be evaluated efficiently for a set of $b$ values to generate:
+(i) $\Delta\theta(b)$ and its approach to the plateau,
+(ii) the slope $\beta(b)$ as a crossover diagnostic, and
+(iii) direct comparisons between sealed and leaky boundaries.
+These curves are the primary falsifiable optical predictions of the slab-confinement mechanism.
+
+\section{Cosmological embedding and interpretation}
+\label{sec:cosmo}
+
+The preceding sections established a controlled dynamical and optical statement:
+solving the static scalar (Poisson) sector in a finite slab with Neumann walls produces an infrared
+crossover on the brane from $F\propto r^{-2}$ to $F\propto (Hr)^{-1}$, implying flat rotation curves
+and a large-$b$ lensing plateau.  This section addresses how the geometric parameter $H$ should be
+interpreted in the wider ontology, what can be inferred from observations, and how the same picture
+can be embedded into a cosmological-scale narrative without mixing assumptions into the core slab
+result.
+
+\subsection{Interpreting $H$ as a control parameter}
+\label{sec:cosmo_H}
+
+In this paper $H$ is defined operationally: it is the half-thickness of the region in the transverse
+bulk direction that is dynamically accessible to the Poisson-sector scalar field sourced by brane
+defects.  Equivalently, $H$ is the transverse confinement scale that sets both
+(i) the \emph{knee} radius of the force-law crossover and
+(ii) the normalization of the slab-regime coupling $G/H$.
+
+Two distinct interpretations are possible (and observationally distinguishable):
+
+\paragraph{(i) Global thickness: $H$ is approximately universal.}
+If the brane resides in a bulk cavity of roughly fixed thickness, then $H$ is a global parameter of
+the vacuum.
+In this case, for sufficiently isolated/compact sources, the deep-slab asymptotes become
+\begin{equation}
+  v_\infty^2=\frac{GM}{H},
+  \qquad
+  \Delta\theta_\infty=\frac{2\pi GM}{Hc^2},
+\end{equation}
+so $H$ can be inferred directly from any system for which $M$ is independently known.
+A universal $H$ would then be a strong global signature of the slab mechanism.
+
+\paragraph{(ii) Effective thickness: $H$ varies with environment or scale.}
+Alternatively, $H$ may be an \emph{effective} confinement scale that depends on location, epoch, or
+the local configuration of the brane--bulk system (e.g.\ variations in bulk pressure, brane tension,
+or the density of active throats).
+In this case, the slab predictions remain valid \emph{locally} with $H\to H_{\rm eff}$ for a given
+system, but one should not expect the same $H$ to fit all galaxies/clusters.
+This scenario still yields a falsifiable signature: the crossover radius extracted from kinematics
+and the onset/extent of any lensing plateau should be consistent with a \emph{single} inferred
+$H_{\rm eff}$ (or, in leaky extensions, with a pair $(H_{\rm eff},\ell_{\rm scr})$).
+
+\paragraph{Crossover diagnostics.}
+Operationally, $H$ (or $H_{\rm eff}$) can be inferred by any of:
+(i) the slope-based knee $r_{\rm knee}\sim \mathcal{O}(H)$,
+(ii) the rotation-curve plateau speed via $H=GM/v_\infty^2$, or
+(iii) the lensing plateau height via $H=2\pi GM/(c^2\Delta\theta_\infty)$,
+provided the relevant asymptotic regimes are reached.
+Section~\ref{sec:leaky} emphasizes that imperfect confinement converts true asymptotes into finite
+windows, so in practice one infers not only $H$ but also the \emph{persistence} of the slab regime.
+
+\subsection{Joint inference from rotation curves and lensing}
+\label{sec:cosmo_joint}
+
+The optical identity \eqref{eq:lensing_force_identity} ties lensing directly to the same force law
+that determines orbital dynamics.  In the sealed slab, the deep-regime predictions combine into the
+parameter-free relation
+\begin{equation}
+  \Delta\theta_\infty = \frac{2\pi v_\infty^2}{c^2},
+  \label{eq:cosmo_consistency}
+\end{equation}
+independent of $M$ and $H$ separately.  Equation~\eqref{eq:cosmo_consistency} is therefore the
+cleanest ``mechanism test'' available in this framework: it checks whether the \emph{same} slab
+regime supports both flattening and plateau lensing.
+
+More generally, a joint analysis proceeds as follows:
+
+\begin{enumerate}
+\item \textbf{Kinematics:} fit $F(r)$ (or $v(r)$) to extract $r_{\rm knee}$ and an apparent plateau
+      $v_\infty$ (or a finite quasi-flat window in leaky cases).
+
+\item \textbf{Optics:} compute or measure $\Delta\theta(b)$ at large impact parameters, extract an
+      apparent plateau $\Delta\theta_\infty$ (or a finite window/turnover).
+
+\item \textbf{Consistency:} test \eqref{eq:cosmo_consistency} and check whether the inferred onset
+      scales are compatible with a single $H_{\rm eff}$ (and, if leaky, with a single screening
+      scale $\ell_{\rm scr}$).
+\end{enumerate}
+
+\paragraph{Leaky signature.}
+In the leaky models of Section~\ref{sec:leaky}, the key observational handle is not only the plateau
+height but its \emph{extent}.  For example, a Robin/lifted-zero-mode boundary predicts a plateau
+only for $H\ll b\ll \ell_{\rm scr}$, followed by decay for $b\gtrsim \ell_{\rm scr}$.  In this way,
+optics can constrain the confinement quality (via $k_0\simeq \ell_{\rm scr}^{-1}$ or an effective
+reflectivity parameter) in a manner complementary to rotation curves.
+
+\paragraph{Comment on scaling relations.}
+The slab mechanism fixes the infrared functional form of the force, but the mapping between $M$ and
+observables depends on how $H$ behaves across systems.
+If $H$ is universal, then $v_\infty^2\propto M$ for isolated compact sources; if instead $H$ varies
+systematically with environment, mass, or epoch, different scalings can emerge.  In either case,
+the lensing--rotation consistency \eqref{eq:cosmo_consistency} remains the most direct test of the
+slab regime itself, because it does not require independent mass calibration.
+
+\subsection{Hydraulic Dark Energy as an optional module}
+\label{sec:cosmo_de}
+
+The slab confinement mechanism is a statement about the static scalar sector and does not, by itself,
+fix the global expansion history.  However, the broader ``hydraulic cosmology'' interpretation of the
+toy ontology suggests a natural way to discuss cosmic acceleration without introducing a fundamental
+cosmological constant: treat the brane--bulk system as an \emph{open} hydraulic system with sinks
+(throats) and sources (bulk injection).
+
+At the level of phenomenological bookkeeping, let $V(t)$ denote the effective bulk volume associated
+with the brane region under consideration and $\rho_0$ the preferred vacuum density of the stiff
+superfluid.  If injection exceeds drainage, mass conservation implies
+\begin{equation}
+  \frac{\dd}{\dd t}\bigl(\rho_0 V\bigr) = \dot{Q}_{\rm in}-\dot{Q}_{\rm out}.
+\end{equation}
+If the vacuum remains approximately isodense/isobaric ($\rho_0\simeq \mathrm{const}$), then excess
+injection manifests primarily as an increase in volume:
+\begin{equation}
+  \frac{\dot{V}}{V} \simeq \frac{\dot{Q}_{\rm in}-\dot{Q}_{\rm out}}{\rho_0 V},
+\end{equation}
+which can be interpreted as a macroscopic expansion rate of the brane-embedded domain.
+In this picture, the constancy of the signal speed $c$ is tied to the constancy of the medium
+properties (stiffness and density) rather than to a fundamental de Sitter vacuum.
+
+We emphasize that this ``hydraulic dark energy'' module is conceptually separable from the slab dark
+matter mechanism:
+Sections~\ref{sec:greens}--\ref{sec:lensing} rely only on the static Poisson sector in a finite slab,
+and the predictions \eqref{eq:dyn_vinf}, \eqref{eq:lensing_plateau}, and
+\eqref{eq:cosmo_consistency} remain valid irrespective of the detailed expansion model.
+A complete cosmological embedding would require specifying the source term(s) responsible for
+$\dot{Q}_{\rm in}$, the equation of state maintaining $\rho_0$, and the coupling between injection,
+bulk geometry, and the effective confinement scales $(H,\ell_{\rm scr})$.
+Those model-building ingredients are deferred to future work; here we focus on the slab regime as a
+minimal, falsifiable geometric mechanism for the apparent dark matter phenomenology.
+
+\section{Predictions, constraints, and tests}
+\label{sec:tests}
+
+The slab confinement mechanism makes a small number of sharp, falsifiable statements.
+Some are qualitative (the existence of a crossover), while others are quantitative and parameter
+free once the system is in the deep slab regime.
+This section collects the predictions in a form suitable for comparison with data and for guiding
+future numerical/phenomenological work.
+
+\subsection{Prediction box: sealed (Neumann) slab}
+\label{sec:tests_prediction_box}
+
+Assume the Poisson-sector scalar obeys Neumann confinement at $z=\pm H$ and that the system reaches
+the deep slab regime at radii $r\gg H$ (and impact parameters $b\gg H$ for lensing).  Then:
+
+\begin{enumerate}
+\item \textbf{Force-law crossover at a geometric scale.}
+The brane-plane acceleration transitions from Newtonian to slab scaling:
+\begin{equation}
+  F(r)\sim \frac{GM}{r^2}\quad (r\ll H),
+  \qquad
+  F(r)\sim \frac{GM}{H\,r}\quad (r\gg H),
+\end{equation}
+with a crossover (``knee'') radius $r_{\rm knee}=\mathcal{O}(H)$ identifiable by the log-slope
+$\gamma(r)=\dd\ln F/\dd\ln r$ passing through $-3/2$.
+
+\item \textbf{Flat rotation curves with normalization fixed by $H$.}
+For circular motion,
+\begin{equation}
+  v^2(r)=rF(r)\;\to\; v_\infty^2=\frac{GM}{H}\qquad (r\gg H).
+  \label{eq:tests_vinf}
+\end{equation}
+
+\item \textbf{Lensing plateau at large impact parameter.}
+Using the optical mapping of Paper II, the bending angle becomes
+\begin{equation}
+  \Delta\theta(b)\to \Delta\theta_\infty = \frac{2\pi GM}{Hc^2},
+  \qquad (b\gg H),
+  \label{eq:tests_plateau}
+\end{equation}
+i.e.\ $\Delta\theta(b)$ saturates to an impact-parameter independent constant in the deep slab regime.
+
+\item \textbf{Parameter-free lensing--rotation consistency.}
+Combining \eqref{eq:tests_vinf} and \eqref{eq:tests_plateau} yields
+\begin{equation}
+  \boxed{\ \Delta\theta_\infty = \frac{2\pi v_\infty^2}{c^2}\ },
+  \label{eq:tests_consistency}
+\end{equation}
+which is independent of $M$ and $H$ separately.  This is the cleanest direct test of the slab regime.
+
+\item \textbf{Slope transitions as localized diagnostics.}
+Define log-slopes
+\begin{equation}
+  \gamma(r)\equiv \frac{\dd\ln F}{\dd\ln r},
+  \qquad
+  \beta(b)\equiv \frac{\dd\ln \Delta\theta}{\dd\ln b}.
+\end{equation}
+Then
+\begin{equation}
+  \gamma:\ -2\to -1 \quad \text{across } r\sim H,
+  \qquad
+  \beta:\ -1\to 0 \quad \text{across } b\sim H,
+\end{equation}
+providing two independent, scale-localized crossover measurements.
+\end{enumerate}
+
+\subsection{Leakiness tests: when the slab regime is only a finite window}
+\label{sec:tests_leaky}
+
+If the bulk is not perfectly sealed, the Neumann zero mode is weakened or lifted.
+Both leaky parameterizations in Section~\ref{sec:leaky} predict that the slab-like $1/r$ behavior is
+not an asymptote but an intermediate window.
+This is not a loophole; it is an additional set of falsifiable tests.
+
+\paragraph{Model A (weighted images).}
+With a reflectivity parameter $0<w<1$, the force is approximately slab-like only over a range
+\begin{equation}
+  H \ll r \ll r_{\max}(w)\sim 2n_{\rm eff}H \sim \frac{2H}{1-w},
+\end{equation}
+after which $F(r)$ departs from $1/r$.
+Accordingly, rotation curves and lensing exhibit quasi-flat and quasi-plateau behavior only over a
+finite dynamic range.  Measuring the extent of that range constrains $w$.
+
+\paragraph{Model B (Robin / lifted zero mode).}
+With a screening scale $\ell_{\rm scr}=k_0^{-1}$, slab-like behavior holds for
+\begin{equation}
+  H \ll r \ll \ell_{\rm scr},\qquad H \ll b \ll \ell_{\rm scr},
+\end{equation}
+and both the rotation-curve plateau and the lensing plateau are truncated for radii/impact
+parameters beyond $\ell_{\rm scr}$.  Thus, joint dynamics+optics constrains both $H$ and
+$\ell_{\rm scr}$ (equivalently $k_0$ or the Robin parameter $\alpha$).
+
+\subsection{Constraints and practical inference strategy}
+\label{sec:tests_inference}
+
+A minimal data-analysis workflow suggested by the model is:
+
+\begin{enumerate}
+\item \textbf{Crossover scale from slopes.}
+From kinematic data infer $r_{\rm knee}$ via $\gamma(r_{\rm knee})\approx -3/2$ and estimate
+$H\sim r_{\rm knee}$ up to an order-unity calibration (which can be fixed by forward modeling with
+the exact Green's function).
+
+\item \textbf{Plateau normalization from dynamics and optics.}
+If a clear kinematic plateau exists, infer $H$ from $H=GM/v_\infty^2$ (requiring an independent mass
+estimate), or infer $H$ from $H=2\pi GM/(c^2\Delta\theta_\infty)$ if a lensing plateau exists.
+
+\item \textbf{Mechanism test independent of mass calibration.}
+If both a kinematic plateau and a lensing plateau are observed for the same system, test the
+parameter-free relation \eqref{eq:tests_consistency} directly.
+
+\item \textbf{Leakiness constraints from plateau extent.}
+If plateaus are only approximate and terminate, extract the termination scale to constrain
+$r_{\max}(w)$ (Model A) or $\ell_{\rm scr}$ (Model B).  A mismatch between the extent inferred from
+dynamics and from optics would falsify the simplest leaky models.
+\end{enumerate}
+
+\subsection{What would falsify the slab confinement mechanism?}
+\label{sec:tests_falsify}
+
+The mechanism makes clear failure modes:
+
+\begin{itemize}
+\item \textbf{No consistent crossover scale:} if $\gamma(r)$ does not exhibit a robust transition
+      from $-2$ toward $-1$ at any radius (after accounting for baryonic mass distribution and
+      finite-size effects), the slab regime is not realized.
+
+\item \textbf{Dynamics--optics inconsistency:} if systems with flat rotation curves show no tendency
+      toward plateau lensing at large $b$, or if the observed plateaus violate
+      \eqref{eq:tests_consistency} well beyond systematic uncertainties, the slab confinement picture
+      (as implemented here) is disfavored.
+
+\item \textbf{Incompatible plateau extents:} in leaky scenarios, if the radial extent of quasi-flat
+      rotation and quasi-plateau lensing cannot be reconciled with a single confinement/leakiness
+      scale, the simplest boundary-sensitivity models are ruled out.
+
+\item \textbf{Strong-field contradictions:} if the inferred $H$ would force significant deviations
+      from the already-validated near-field 1PN results of the earlier papers on scales where those
+      results have been tested (e.g.\ Solar System), then $H$ cannot be a universal constant and must
+      be an effective/environmental scale (or the slab mechanism is not applicable).
+\end{itemize}
+
+Taken together, these tests emphasize the intended status of the slab mechanism: it is a minimal,
+geometric modification of the Poisson sector with a small number of parameters $(H)$ (or $(H,w)$ /
+$(H,\ell_{\rm scr})$ in leaky extensions) and with sharply distinguishable optical signatures.
+
+\section{Discussion and outlook}
+\label{sec:discussion}
+
+This paper isolates a simple but consequential geometric mechanism in the superfluid defect toy
+model: solving the static scalar (Poisson) sector in a finite transverse slab with Neumann walls
+modifies the global Green's function and induces an infrared crossover in the brane-plane force law.
+The key results can be summarized compactly:
+
+\begin{itemize}
+\item \textbf{Dynamics:} a point source produces a crossover
+\(
+F(r)\sim GM/r^2
+\)
+for $r\ll H$ to
+\(
+F(r)\sim GM/(Hr)
+\)
+for $r\gg H$, implying a flat rotation-curve asymptote
+\(
+v_\infty^2=GM/H.
+\)
+
+\item \textbf{Optics:} using the same weak-field refractive-index mapping as in the optics paper of
+the series, the slab regime predicts a large-impact-parameter bending plateau
+\(
+\Delta\theta_\infty = 2\pi GM/(Hc^2)
+\),
+and therefore a parameter-free lensing--rotation relation
+\(
+\Delta\theta_\infty=2\pi v_\infty^2/c^2.
+\)
+
+\item \textbf{Robustness/falsifiability:} the $1/r$ force law arises from the Neumann transverse
+zero mode.  If confinement is imperfect, the zero mode is weakened or lifted, producing only a
+finite intermediate $1/r$ window followed by eventual suppression.  This turns the boundary
+condition from a hidden assumption into an observable diagnostic.
+\end{itemize}
+
+\subsection{What is proven here versus what is assumed}
+The strongest part of the paper is the slab Green's function statement itself.
+The force crossover and its normalization do not rely on phenomenological interpolation; they follow
+from a well-posed boundary-value problem and are verified numerically in two independent
+representations (images and KK/modes) with explicit convergence control.
+Accordingly, the result should be viewed as a \emph{theorem about the scalar sector in a confined
+geometry}, not as an empirical fitting ansatz.
+
+At the same time, the cosmological interpretation of the slab thickness $H$ is necessarily an
+assumption until the full brane--bulk dynamics that sets $H$ is specified.
+This paper therefore treats $H$ operationally as the scale controlling the crossover and the plateau
+normalizations, and it uses boundary-sensitivity models to parameterize imperfect confinement.
+The resulting predictions remain falsifiable independent of whether $H$ is universal or
+environment-dependent.
+
+\subsection{Relation to other mechanisms in the toy model}
+The slab mechanism modifies the infrared behavior without invoking additional nonbaryonic sources.
+It should be distinguished from other routes to flattening that exist in the broader toy ontology,
+notably velocity-dependent additive terms (the ``wake'' toy equation tested in the validation
+script).  Those alternatives can also produce flat curves but generally differ in their optical
+signatures, because lensing in the present framework is tied to the scalar potential gradients.
+The lensing plateau derived here is therefore not a generic consequence of any flat rotation curve;
+it is specific to a $F\propto 1/r$ slab regime and thus provides a meaningful discriminator.
+
+\subsection{Immediate next steps}
+The present paper was scoped to establish (i) the confined-geometry Green's function effect,
+(ii) its numerical robustness, and (iii) its leading optical consequences.
+The most direct extensions are:
+
+\paragraph{(1) Complete the leaky-slab numerics and publish the diagnostic curves.}
+Section~\ref{sec:leaky} provides two practical leakiness parameterizations.
+The next concrete step is to generate a small set of ``robustness figures'':
+log-slope $\gamma(r)$ curves for several $w$ or $k_0$, and the corresponding $\Delta\theta(b)$ curves
+showing how the lensing plateau becomes a finite window.
+This will convert the qualitative taxonomy into a quantitative constraint program.
+
+\paragraph{(2) Extended sources and realistic baryonic profiles.}
+While the point-source result cleanly isolates the mechanism, observations involve extended disks
+and bulges.  Because the theory is linear in the Poisson sector, the extension is straightforward:
+convolution of the surface density with the slab Green's function (or, in practice, numerical
+integration using the mode representation).
+A next paper (or an appendix expansion) should show how common baryonic profiles map into predicted
+$F(r)$ and $\Delta\theta(b)$ curves, and how the knee scale compares to the observed onset of
+flattening.
+
+\paragraph{(3) Consistency across scales: galaxies to clusters.}
+If $H$ is universal, the model makes strong across-system predictions; if $H$ is effective and
+environment-dependent, one should articulate the physical control parameter(s) that set it
+(e.g.\ epoch, ambient bulk pressure, brane curvature, throat density).
+Either way, combining rotation and lensing across multiple mass scales will be the fastest route to
+testing whether the slab regime is realized and whether leakage is required.
+
+\paragraph{(4) Post-Newtonian and strong-field compatibility.}
+The earlier 1PN papers in the series were designed to reproduce standard weak-field GR phenomenology
+locally.  A key theoretical constraint is that the slab modification must not spoil those successes
+on scales where they have already been validated.
+This suggests that if $H$ is universal it must be sufficiently large to be irrelevant on Solar
+System scales, or else the slab regime must be suppressed/absent locally (e.g.\ via effective
+leakiness).
+A systematic matching analysis between the confined Poisson sector and the established 1PN mapping
+is therefore a natural follow-up.
+
+\subsection{Broader outlook}
+The main conceptual message is that apparent ``dark'' phenomenology can emerge from boundary
+conditions and dimensional reduction rather than from new matter sources or ad hoc modifications of
+the force law.
+In the toy model, the confinement scale $H$ plays the role of a geometric parameter controlling the
+infrared effective dimensionality of the scalar sector.
+Because the optical sector couples to the same potential through $\ln N\simeq -2\Phi/c^2$, the model
+predicts a tight link between rotation-curve flattening and large-impact-parameter lensing.
+Whether nature realizes such a slab regime is an empirical question, but the predictions derived
+here are sufficiently sharp that they can be ruled in or out with targeted joint dynamics+optics
+comparisons.
+
+Finally, the boundary sensitivity emphasized here should be viewed as a feature rather than a
+liability: it provides a concrete handle on how ``sealed'' the bulk must be, and it suggests a path
+toward interpreting deviations from idealized behavior (finite flat windows, truncated plateaus) as
+measurements of confinement quality rather than as failures of the underlying mechanism.
+
+\appendix
+
+\section{Far-field normalization from a continuum approximation}
+\label{app:farfield}
+
+This appendix gives a short analytic derivation of the \emph{normalization} of the slab-regime force,
+\begin{equation}
+  F(r)\;\xrightarrow{\,r\gg H\,}\;\frac{\mu}{H\,r},
+  \qquad \mu\equiv GM,
+\end{equation}
+directly from the image-charge representation.  The argument is a continuum approximation that
+becomes accurate when many images contribute coherently, i.e.\ when the in-brane radius satisfies
+$r\gg H$.  It is the simplest way to see why the coefficient is precisely $1/H$ rather than an
+unspecified order-unity factor.
+
+\subsection{Starting point: the Neumann image-stack force}
+On the brane ($z=0$) the Neumann image construction gives
+\begin{equation}
+  F_{\rm img}(r)
+  \;=\;
+  \mu \sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}.
+  \label{eq:app_farfield_Fimg}
+\end{equation}
+Define the smooth even kernel
+\begin{equation}
+  f(z)\equiv \frac{r}{(r^2+z^2)^{3/2}},
+\end{equation}
+so that \eqref{eq:app_farfield_Fimg} is
+\begin{equation}
+  F_{\rm img}(r) = \mu \sum_{n=-\infty}^{+\infty} f(2nH).
+  \label{eq:app_farfield_sum}
+\end{equation}
+
+\subsection{Continuum approximation for $r\gg H$}
+When $r\gg H$, the relevant values of $|z|$ that contribute substantially to $f(z)$ are of order
+$|z|\lesssim r$.  Over that range the image spacing $2H$ is small compared to the scale on which
+$f$ varies.  One may therefore approximate the discrete sum by a Riemann sum:
+\begin{equation}
+  \sum_{n=-\infty}^{+\infty} f(2nH)
+  \;\approx\;
+  \frac{1}{2H}\int_{-\infty}^{+\infty} f(z)\,\dd z
+  \qquad (r\gg H).
+  \label{eq:app_farfield_riemann}
+\end{equation}
+Substituting $f(z)$ and evaluating the integral gives
+\begin{align}
+  \int_{-\infty}^{+\infty} \frac{r}{(r^2+z^2)^{3/2}}\,\dd z
+  &= \left[ \frac{z}{r\sqrt{r^2+z^2}} \right]_{-\infty}^{+\infty}
+   = \frac{1}{r}-\left(-\frac{1}{r}\right)
+   = \frac{2}{r}.
+  \label{eq:app_farfield_integral}
+\end{align}
+Combining \eqref{eq:app_farfield_sum}--\eqref{eq:app_farfield_integral} yields the far-field force
+with the correct coefficient:
+\begin{equation}
+  F_{\rm img}(r)
+  \;\approx\;
+  \mu \left(\frac{1}{2H}\right)\left(\frac{2}{r}\right)
+  \;=\;
+  \frac{\mu}{H\,r},
+  \qquad (r\gg H).
+  \label{eq:app_farfield_result}
+\end{equation}
+Equivalently,
+\begin{equation}
+  \boxed{\ Hr\,F(r)\to \mu \quad (r/H\to\infty)\ }.
+\end{equation}
+This is precisely the far-field normalization verified numerically in the main text.
+
+\subsection{Corresponding potential: logarithm plus a gauge constant}
+A similar continuum argument explains why the \emph{potential} in the slab regime is logarithmic
+(up to an additive constant).
+The brane-plane potential from the Neumann image stack can be written as
+\begin{equation}
+  \Phi(r,0) = -\mu \sum_{n=-\infty}^{+\infty}\frac{1}{\sqrt{r^2+(2nH)^2}} \;+\; \text{(constant)}.
+  \label{eq:app_farfield_Phi_images}
+\end{equation}
+Replacing the sum by an integral as in \eqref{eq:app_farfield_riemann} gives
+\begin{align}
+  \sum_{n=-\infty}^{+\infty}\frac{1}{\sqrt{r^2+(2nH)^2}}
+  &\approx \frac{1}{2H}\int_{-\infty}^{+\infty}\frac{\dd z}{\sqrt{r^2+z^2}}
+   = \frac{1}{2H}\left[ 2\,\mathrm{asinh}\!\left(\frac{z}{r}\right)\right]_{-\infty}^{+\infty}.
+\end{align}
+The integral diverges logarithmically at the endpoints; this reflects the familiar fact that the
+2D Green's function is defined only up to an additive constant.
+Introducing a symmetric cutoff $|z|\le L$,
+\begin{equation}
+  \frac{1}{2H}\int_{-L}^{+L}\frac{\dd z}{\sqrt{r^2+z^2}}
+  = \frac{1}{H}\,\mathrm{asinh}\!\left(\frac{L}{r}\right)
+  = \frac{1}{H}\left[\ln\!\left(\frac{2L}{r}\right) + \mathcal{O}\!\left(\frac{r^2}{L^2}\right)\right].
+\end{equation}
+Absorbing the $L$-dependent piece into the arbitrary constant in \eqref{eq:app_farfield_Phi_images}
+yields the slab-regime form
+\begin{equation}
+  \Phi(r,0)\;\simeq\; -\frac{\mu}{H}\,\ln r \;+\; \text{(constant)}.
+  \label{eq:app_farfield_logPhi}
+\end{equation}
+Differentiating \eqref{eq:app_farfield_logPhi} recovers \eqref{eq:app_farfield_result}.
+
+\subsection{Corrections and relation to the KK/mode form}
+The continuum approximation captures the leading $m=0$ (zero-mode) contribution exactly.
+A more precise statement is obtained by Poisson summation, which converts the discrete image stack
+into the KK/mode expansion used in the main text:
+\begin{equation}
+  \sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}
+  =
+  \frac{1}{H\,r}
+  + \frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+  m\,K_1\!\left(\frac{m\pi r}{H}\right).
+\end{equation}
+Since $K_1(x)$ decays exponentially for large $x$, the corrections to $1/(Hr)$ are
+$\mathcal{O}(e^{-\pi r/H})$, consistent with the numerical behavior and with the interpretation
+that the far field is controlled by the Neumann zero mode.
+
+\section{Mode expansion details and zero-mode dominance}
+\label{app:modes}
+
+This appendix derives the KK/mode representation used in the main text and makes explicit why the
+Neumann slab exhibits a $1/r$ far-field force on the brane.
+The calculation is standard separation-of-variables for the Laplacian on a finite interval in $z$
+combined with the 2D Green's functions in the brane plane.
+
+\subsection{Neumann transverse eigenfunctions and normalization}
+
+Let the slab domain be $z\in[-H,H]$ with Neumann walls.  The transverse eigenproblem is
+\begin{equation}
+  -f_m''(z)=k_m^2 f_m(z),\qquad \partial_z f_m(\pm H)=0,
+\end{equation}
+with orthonormality
+\begin{equation}
+  \int_{-H}^{H} f_m(z) f_n(z)\,\dd z = \delta_{mn}.
+\end{equation}
+A convenient orthonormal basis is
+\begin{align}
+  f_0(z) &= \frac{1}{\sqrt{2H}}, \qquad &&k_0=0,\\
+  f_m(z) &= \frac{1}{\sqrt{H}}\cos\!\left(\frac{m\pi z}{H}\right), \qquad &&k_m=\frac{m\pi}{H},\quad m\ge 1.
+\end{align}
+For a brane source at $z=0$, only even modes appear; indeed $f_m(0)=1/\sqrt{H}$ for $m\ge 1$ and
+$f_0(0)=1/\sqrt{2H}$.
+
+The completeness relation yields an explicit series for the brane-localized delta function:
+\begin{equation}
+  \delta(z) = \sum_{m=0}^{\infty} f_m(0)\,f_m(z)
+  = \frac{1}{2H} + \frac{1}{H}\sum_{m=1}^{\infty}\cos\!\left(\frac{m\pi z}{H}\right).
+  \label{eq:app_delta_expansion}
+\end{equation}
+
+\subsection{Mode reduction of the slab Green's function}
+
+Let $G_N(r,z)$ be the Neumann Green's function defined by
+\begin{equation}
+  \nabla^2 G_N(r,z) = 4\pi\,\delta^{(2)}(\mathbf{r})\,\delta(z),
+  \qquad \partial_z G_N|_{z=\pm H}=0,
+\end{equation}
+where $r=\sqrt{x^2+y^2}$ is the brane-plane radius.
+Expand
+\begin{equation}
+  G_N(r,z) = \sum_{m=0}^{\infty} g_m(r)\,f_m(z).
+  \label{eq:app_G_expansion}
+\end{equation}
+Multiply by $f_n(z)$ and integrate over $z\in[-H,H]$. Using orthonormality and the eigenvalue
+equation for $f_n$ gives the radial mode equations
+\begin{equation}
+  \left(\nabla_\perp^2 - k_n^2\right) g_n(r)
+  = 4\pi\,\delta^{(2)}(\mathbf{r})\,f_n(0),
+  \label{eq:app_radial_mode_eq}
+\end{equation}
+where $\nabla_\perp^2=\partial_x^2+\partial_y^2$ is the 2D Laplacian in the brane plane.
+
+\subsection{2D Green's functions and explicit solutions}
+
+We use the standard distributional identities in two dimensions:
+\begin{align}
+  \nabla_\perp^2 \ln r &= 2\pi\,\delta^{(2)}(\mathbf{r}),
+  \label{eq:app_2d_log_identity}\\
+  \left(\nabla_\perp^2 - k^2\right)K_0(k r) &= -2\pi\,\delta^{(2)}(\mathbf{r}),
+  \qquad (k>0),
+  \label{eq:app_2d_K0_identity}
+\end{align}
+where $K_\nu$ are modified Bessel functions of the second kind.
+
+\paragraph{Zero mode ($m=0$).}
+For $n=0$, $k_0=0$ and $f_0(0)=1/\sqrt{2H}$.  Equation \eqref{eq:app_radial_mode_eq} becomes
+\begin{equation}
+  \nabla_\perp^2 g_0(r) = \frac{4\pi}{\sqrt{2H}}\,\delta^{(2)}(\mathbf{r}).
+\end{equation}
+Using \eqref{eq:app_2d_log_identity}, one may take
+\begin{equation}
+  g_0(r) = \sqrt{\frac{2}{H}}\;\ln\!\left(\frac{r}{r_0}\right),
+\end{equation}
+where $r_0$ is an arbitrary reference scale reflecting the additive constant ambiguity of the 2D
+Green's function.
+
+\paragraph{Massive modes ($m\ge 1$).}
+For $n=m\ge 1$, $k_m=m\pi/H$ and $f_m(0)=1/\sqrt{H}$.  Then \eqref{eq:app_radial_mode_eq} reads
+\begin{equation}
+  \left(\nabla_\perp^2 - k_m^2\right)g_m(r)=\frac{4\pi}{\sqrt{H}}\,\delta^{(2)}(\mathbf{r}).
+\end{equation}
+Using \eqref{eq:app_2d_K0_identity}, a convenient choice is
+\begin{equation}
+  g_m(r) = -\frac{2}{\sqrt{H}}\;K_0(k_m r),
+  \qquad k_m=\frac{m\pi}{H}.
+\end{equation}
+
+\subsection{Green's function and potential on the brane}
+
+Substituting the solutions into \eqref{eq:app_G_expansion} yields
+\begin{equation}
+  G_N(r,z)
+  =
+  \frac{1}{H}\ln\!\left(\frac{r}{r_0}\right)
+  -\frac{2}{H}\sum_{m=1}^{\infty}
+  K_0\!\left(\frac{m\pi r}{H}\right)\cos\!\left(\frac{m\pi z}{H}\right).
+  \label{eq:app_G_closed}
+\end{equation}
+On the brane ($z=0$), $\cos(m\pi z/H)=1$, so
+\begin{equation}
+  G_N(r,0)
+  =
+  \frac{1}{H}\ln\!\left(\frac{r}{r_0}\right)
+  -\frac{2}{H}\sum_{m=1}^{\infty}
+  K_0\!\left(\frac{m\pi r}{H}\right).
+  \label{eq:app_G_brane}
+\end{equation}
+
+The physical potential for a point source of strength $\mu\equiv GM$ is
+\begin{equation}
+  \Phi(r,z)=-\mu\,G_N(r,z),
+\end{equation}
+so on the brane
+\begin{equation}
+  \Phi(r,0)
+  =
+  -\mu\left[
+    \frac{1}{H}\ln\!\left(\frac{r}{r_0}\right)
+    -\frac{2}{H}\sum_{m=1}^{\infty}
+    K_0\!\left(\frac{m\pi r}{H}\right)
+  \right],
+\end{equation}
+which is equivalent (up to an additive constant absorbed into $r_0$) to the form quoted in the main
+text.
+
+Differentiating and using $\frac{\dd}{\dd x}K_0(x)=-K_1(x)$ gives the brane-plane inward acceleration
+magnitude:
+\begin{equation}
+  F(r)\equiv -\partial_r\Phi(r,0)
+  =
+  \mu\left[
+    \frac{1}{H\,r}
+    +\frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+    m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right].
+  \label{eq:app_F_modes}
+\end{equation}
+
+\subsection{Zero-mode dominance and exponential approach to the slab regime}
+
+Equation \eqref{eq:app_F_modes} makes the slab physics explicit:
+the Neumann zero mode contributes the term $1/(H r)$, while all higher KK modes are exponentially
+suppressed in the far field because
+\begin{equation}
+  K_1(x) \sim \sqrt{\frac{\pi}{2x}}\,e^{-x}\left[1+\mathcal{O}\!\left(\frac{1}{x}\right)\right]
+  \qquad (x\to\infty).
+\end{equation}
+Keeping only the leading $m=1$ correction for $r\gg H$ yields the useful estimate
+\begin{equation}
+  F(r)
+  =
+  \frac{\mu}{H\,r}\left[
+    1
+    + \mathcal{O}\!\left(\sqrt{\frac{r}{H}}\,e^{-\pi r/H}\right)
+  \right],
+  \label{eq:app_zero_mode_correction}
+\end{equation}
+so the approach to the slab asymptote is controlled by the first massive transverse gap
+$\Delta k = \pi/H$.
+
+\subsection{Near-field reconstruction of $1/r^2$}
+
+For $r\ll H$, many KK modes contribute, and \eqref{eq:app_F_modes} reconstructs the local 3D Newtonian
+behavior $F(r)\sim \mu/r^2$.
+A compact way to see this is to use the exact identity relating the mode sum to the image stack
+(derived via Poisson summation in the main text):
+\begin{equation}
+  \frac{1}{H\,r}
+  +\frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+  m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  =
+  \sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}.
+  \label{eq:app_identity_repeat}
+\end{equation}
+When $r\ll H$, the $n=0$ image term dominates the right-hand side and gives $\mu/r^2$, with the
+remaining images producing corrections suppressed by $(r/H)^3$ (as shown in
+Section~\ref{sec:asymptotics_rotation}).  Thus, the KK representation inherits the correct near-field
+normalization automatically while making the far-field zero-mode dominance manifest.
+
+\section{Numerical methods and convergence parameters}
+\label{app:numerics}
+
+This appendix documents the numerical procedures used to evaluate the Neumann slab force law, to
+control truncation errors in both representations (images and KK/modes), and to produce the
+validation tables reported in Section~\ref{sec:numerics}.
+All computations were performed in Mathematica using the accompanying script
+\texttt{dark\_matter\_slab\_test\_revised.wl}.
+
+\subsection{Core quantities and parameter conventions}
+
+We evaluate the inward brane-plane acceleration magnitude for a point source of strength
+$\mu\equiv GM$ in a slab of half-thickness $H$.
+The two equivalent representations implemented are:
+
+\paragraph{Image representation (Neumann walls).}
+\begin{equation}
+  F_{\rm img}(r)
+  = \mu\sum_{n=-\infty}^{+\infty}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}.
+  \label{eq:app_num_Fimg}
+\end{equation}
+
+\paragraph{Mode/KK representation (Neumann spectrum).}
+\begin{equation}
+  F_{\rm mod}(r)
+  = \mu\left[
+    \frac{1}{H\,r}
+    +\frac{2\pi}{H^2}\sum_{m=1}^{\infty}
+    m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right].
+  \label{eq:app_num_Fmod}
+\end{equation}
+
+Unless otherwise stated, the representative validation run uses
+\begin{equation}
+  H=10,\qquad \mu=1,
+\end{equation}
+and samples $r$ on a log-spaced grid over the interval $r\in[10^{-1},\,3\times 10^2]$, with additional
+spot checks in the deep slab regime ($r\gg H$) to verify asymptotic normalization.
+
+\subsection{Truncation and evaluation: images}
+
+In practice we truncate the symmetric image sum at $|n|\le n_{\max}$:
+\begin{equation}
+  F_{\rm img}^{(n_{\max})}(r)
+  = \mu\sum_{n=-n_{\max}}^{n_{\max}}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}
+  \;+\;\mu\,T_{\rm img}(r;n_{\max}),
+  \label{eq:app_num_img_trunc}
+\end{equation}
+where $T_{\rm img}$ is an analytic tail correction approximating the contribution from $|n|>n_{\max}$.
+
+\paragraph{Tail estimate.}
+For large $|n|$, the summand admits an asymptotic expansion in powers of $(r/(2nH))^2$:
+\begin{equation}
+  \frac{r}{\left(r^2+(2nH)^2\right)^{3/2}}
+  =
+  \frac{r}{(2|n|H)^3}
+  \left[
+    1-\frac{3}{2}\left(\frac{r}{2|n|H}\right)^2
+    +\mathcal{O}\!\left(\frac{r^4}{n^4H^4}\right)
+  \right].
+\end{equation}
+Retaining the leading term yields the simple tail model
+\begin{equation}
+  T_{\rm img}(r;n_{\max})
+  \approx 2\sum_{n=n_{\max}+1}^{\infty}\frac{r}{(2nH)^3}
+  = \frac{r}{4H^3}\sum_{n=n_{\max}+1}^{\infty}\frac{1}{n^3}.
+  \label{eq:app_num_img_tail}
+\end{equation}
+In the code, this tail is evaluated either via a direct high-precision numerical remainder
+($\zeta(3)-H_{n_{\max}}^{(3)}$) or via its large-$n_{\max}$ approximation
+$\sum_{n>n_{\max}}n^{-3}\sim 1/(2n_{\max}^2)$, depending on the requested speed/precision.
+Higher-order terms in \eqref{eq:app_num_img_tail} can be included straightforwardly when extremely
+large $r/H$ is probed and very tight relative error is desired.
+
+\paragraph{Why tails matter most for $r\gg H$.}
+In the deep slab regime, many images contribute coherently to build the $1/(Hr)$ asymptote, so the
+raw truncated sum (without a tail) converges slowly as a function of $n_{\max}$.
+The tail term in \eqref{eq:app_num_img_trunc} restores rapid convergence by capturing the net
+contribution of the distant images analytically.
+
+\subsection{Truncation and evaluation: modes}
+
+We truncate the KK sum at $m\le m_{\max}$:
+\begin{equation}
+  F_{\rm mod}^{(m_{\max})}(r)
+  = \mu\left[
+    \frac{1}{H\,r}
+    +\frac{2\pi}{H^2}\sum_{m=1}^{m_{\max}}
+    m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right].
+  \label{eq:app_num_mod_trunc}
+\end{equation}
+
+\paragraph{Exponential convergence for $r\gtrsim H$.}
+Because $K_1(x)\sim \sqrt{\pi/(2x)}\,e^{-x}$ for large $x$, the truncation error for fixed $r$ is
+dominated by the first omitted term and is approximately bounded by a geometric tail.
+In practice this means:
+\begin{itemize}
+  \item for $r\gtrsim H$, only modest $m_{\max}$ is required (the zero mode plus a few corrections),
+  \item for $r\ll H$, many modes contribute and $m_{\max}$ must be increased to reconstruct the local
+        $1/r^2$ behavior to high precision.
+\end{itemize}
+This complementarity is one reason we keep both representations: the mode sum is extremely efficient
+in the far field, while the image sum is conceptually transparent and efficient very near the source.
+
+\subsection{Reference solutions and error metrics}
+
+To produce convergence tables, we define ``reference'' forces against which truncated results are
+compared:
+
+\paragraph{Image reference.}
+The image reference $F_{\rm ref,img}(r)$ is computed using a large cutoff $n_{\rm ref}$ and a
+correspondingly tight tail evaluation.  The reported image truncation error is
+\begin{equation}
+  \varepsilon_{\rm img}(r;n_{\max})
+  = \left|\frac{F_{\rm img}^{(n_{\max})}(r)-F_{\rm ref,img}(r)}{F_{\rm ref,img}(r)}\right|.
+\end{equation}
+
+\paragraph{Mode reference.}
+The mode reference $F_{\rm ref,mod}(r)$ is computed with a large cutoff $m_{\rm ref}$ (and, when
+needed, elevated working precision).  The reported mode truncation error is
+\begin{equation}
+  \varepsilon_{\rm mod}(r;m_{\max})
+  = \left|\frac{F_{\rm mod}^{(m_{\max})}(r)-F_{\rm ref,mod}(r)}{F_{\rm ref,mod}(r)}\right|.
+\end{equation}
+
+\paragraph{Cross-check between representations.}
+For each $r$ we also compute the representation disagreement
+\begin{equation}
+  \delta(r)
+  = \left|\frac{F_{\rm mod}^{(m_{\max})}(r)-F_{\rm img}^{(n_{\max})}(r)}{F_{\rm img}^{(n_{\max})}(r)}\right|,
+\end{equation}
+using cutoffs chosen so that $\varepsilon_{\rm img}$ and $\varepsilon_{\rm mod}$ are each well below
+the target tolerance (typically at or below numerical roundoff for the range of $r$ shown).
+
+\subsection{Precision settings and numerical stability}
+
+The computations are designed to be stable without excessive runtime:
+\begin{itemize}
+  \item For moderate $r/H$ the default machine-precision evaluation is sufficient, particularly for
+        the mode sum.
+  \item For deep slab checks at very large $r/H$ (e.g.\ verifying $HrF\to\mu$ at $r\sim 10^3$--$10^4$),
+        we increase \texttt{WorkingPrecision} and use the mode sum as the primary evaluator, with the
+        image sum serving as a cross-check using large $n_{\max}$ plus tail.
+  \item All reported normalization checks use converged settings so that the displayed deviation from
+        unity reflects physics (finite $r/H$) rather than truncation.
+\end{itemize}
+
+\subsection{Knee (crossover) estimation procedure}
+
+To locate the transition scale without relying on plots, we compute the log-slope
+\begin{equation}
+  \gamma(r)=\frac{\dd\ln F}{\dd\ln r},
+\end{equation}
+using a symmetric finite difference on a log-spaced grid:
+\begin{equation}
+  \gamma(r_i)\approx
+  \frac{\ln F(r_{i+1})-\ln F(r_{i-1})}{\ln r_{i+1}-\ln r_{i-1}}.
+\end{equation}
+We define the knee radius $r_{\rm knee}$ as the point where $\gamma$ crosses $-3/2$, obtained by
+linear interpolation between the nearest grid points.
+This definition is robust because $\gamma$ varies monotonically from $-2$ (Newtonian) to $-1$ (slab)
+for the sealed Neumann case.
+
+\subsection{Reproducibility notes}
+
+The validation script is organized so that:
+(i) $H$, $\mu$, $n_{\max}$, $m_{\max}$, and the sampled $r$-grid are set once at the top;
+(ii) the same $r$ values are used for images, modes, and all error tables; and
+(iii) the far-field and near-field normalization checks are printed explicitly in the form
+$r^2F(r)\to\mu$ and $HrF(r)\to\mu$.
+This makes it straightforward to repeat the convergence study for different $H$ values, to extend the
+range of $r/H$, or to switch the boundary model (Section~\ref{sec:leaky}) while keeping the same
+validation scaffolding.
+
+\section{Lensing integral: stable forms and numerical checks}
+\label{app:lensing}
+
+This appendix collects numerically stable representations of the weak-field deflection integral used
+in Section~\ref{sec:lensing}, and lists the analytic and internal-consistency checks we use to
+validate the implementation.
+
+\subsection{Starting point: deflection as a functional of the brane force}
+
+Using the optical mapping summarized in Section~\ref{sec:inputs}, the deflection angle for a ray
+with impact parameter $b$ can be written directly in terms of the inward acceleration magnitude
+$F(R)$:
+\begin{equation}
+  \Delta\theta(b)
+  \;\simeq\;
+  \frac{2}{c^2}\int_{-\infty}^{+\infty}
+  F\!\left(R(s)\right)\,\frac{b}{R(s)}\,\dd s,
+  \qquad
+  R(s)=\sqrt{b^2+s^2}.
+  \label{eq:app_lens_base}
+\end{equation}
+All formulas below are equivalent rewritings of \eqref{eq:app_lens_base}.  The goal is to avoid
+large cancellations and to keep the integrand smooth and bounded.
+
+\subsection{Two stable coordinate transforms}
+
+\paragraph{Form A (finite interval): $s=b\tan u$.}
+Let $s=b\tan u$ so that $u\in(-\pi/2,\pi/2)$ and $R=b\sec u$.  Since $\dd s=b\sec^2u\,\dd u$ and
+$b/R=\cos u$, Eq.~\eqref{eq:app_lens_base} becomes
+\begin{equation}
+  \Delta\theta(b)
+  \;=\;
+  \frac{2b}{c^2}\int_{-\pi/2}^{+\pi/2} F\!\left(b\sec u\right)\,\sec u\,\dd u.
+  \label{eq:app_lens_u}
+\end{equation}
+Although $\sec u$ diverges at the endpoints, the \emph{full} integrand remains finite for all force
+laws relevant here (Newtonian $F\sim 1/R^2$ and slab $F\sim 1/R$), so \eqref{eq:app_lens_u} is
+numerically well behaved with standard adaptive quadrature.
+
+\paragraph{Form B (no endpoint singularities): $s=b\sinh t$.}
+An even smoother alternative is $s=b\sinh t$, for which $t\in(-\infty,\infty)$ and
+$R=b\cosh t$.  Then $\dd s=b\cosh t\,\dd t$ and $b/R=1/\cosh t$, so the product $(b/R)\,\dd s=b\,\dd t$
+and \eqref{eq:app_lens_base} reduces to the remarkably simple form
+\begin{equation}
+  \boxed{
+  \Delta\theta(b)
+  \;=\;
+  \frac{2b}{c^2}\int_{-\infty}^{+\infty} F\!\left(b\cosh t\right)\,\dd t
+  }
+  \label{eq:app_lens_t}
+\end{equation}
+or, using evenness,
+\begin{equation}
+  \Delta\theta(b)
+  \;=\;
+  \frac{4b}{c^2}\int_{0}^{\infty} F\!\left(b\cosh t\right)\,\dd t.
+  \label{eq:app_lens_t_even}
+\end{equation}
+This transform avoids divergent prefactors entirely; the integrand is smooth and decays rapidly in
+$t$ for any force that falls at least as $1/R$.
+
+In practice, we use \eqref{eq:app_lens_t} (or \eqref{eq:app_lens_t_even}) for production runs and
+retain \eqref{eq:app_lens_u} as a cross-check.
+
+\subsection{Analytic benchmarks (sanity checks)}
+
+The lensing formulas admit two closed-form benchmarks that are also the asymptotes quoted in the
+main text.
+
+\paragraph{Newtonian benchmark ($F(R)=\mu/R^2$).}
+Substituting $F(b\cosh t)=\mu/(b^2\cosh^2 t)$ into \eqref{eq:app_lens_t} gives
+\begin{equation}
+  \Delta\theta(b)
+  =
+  \frac{2b}{c^2}\int_{-\infty}^{+\infty}\frac{\mu}{b^2\cosh^2 t}\,\dd t
+  =
+  \frac{2\mu}{b\,c^2}\int_{-\infty}^{+\infty}\mathrm{sech}^2 t\,\dd t
+  =
+  \frac{4\mu}{b\,c^2},
+\end{equation}
+using $\int_{-\infty}^{\infty}\mathrm{sech}^2 t\,\dd t=2$.
+
+\paragraph{Slab benchmark ($F(R)=\mu/(H R)$).}
+Substituting $F(b\cosh t)=\mu/(H b\cosh t)$ into \eqref{eq:app_lens_t} yields
+\begin{equation}
+  \Delta\theta(b)
+  =
+  \frac{2b}{c^2}\int_{-\infty}^{+\infty}\frac{\mu}{H b\cosh t}\,\dd t
+  =
+  \frac{2\mu}{Hc^2}\int_{-\infty}^{+\infty}\mathrm{sech}\, t\,\dd t
+  =
+  \frac{2\pi\mu}{Hc^2},
+\end{equation}
+using $\int_{-\infty}^{\infty}\mathrm{sech}\,t\,\dd t=\pi$.
+
+These two cases are used as first-pass unit tests: we implement $F(R)$ directly as $\mu/R^2$ and
+$\mu/(HR)$ and verify that the numerical quadrature reproduces $4\mu/(b c^2)$ and $2\pi\mu/(Hc^2)$
+over several decades in $b$.
+
+\subsection{Numerical checks for the Neumann slab force}
+
+For the physical slab force, we use either the converged KK/mode evaluator,
+\begin{equation}
+  F_{\rm mod}(r)
+  = \mu\left[
+    \frac{1}{H\,r}
+    +\frac{2\pi}{H^2}\sum_{m=1}^{m_{\max}} m\,K_1\!\left(\frac{m\pi r}{H}\right)
+  \right],
+\end{equation}
+or the converged image evaluator with tail correction (Appendix~\ref{app:numerics}).
+
+We then perform three checks:
+
+\paragraph{(1) Asymptotic recovery.}
+Define the ratios
+\begin{equation}
+  \mathcal{R}_{\rm N}(b)\equiv \frac{\Delta\theta(b)}{4\mu/(b c^2)},
+  \qquad
+  \mathcal{R}_{\rm S}(b)\equiv \frac{\Delta\theta(b)}{2\pi\mu/(Hc^2)}.
+\end{equation}
+For a sealed Neumann slab, we should have $\mathcal{R}_{\rm N}(b)\to 1$ for $b\ll H$ and
+$\mathcal{R}_{\rm S}(b)\to 1$ for $b\gg H$.  In practice we verify these limits over a wide dynamic
+range with the same $(H,\mu)$ used in the force validation.
+
+\paragraph{(2) Transform invariance.}
+Compute $\Delta\theta(b)$ using both representations \eqref{eq:app_lens_u} and \eqref{eq:app_lens_t}
+and verify agreement to the requested tolerance.  Because the transforms have different numerical
+pathologies (bounded interval with endpoint structure versus unbounded interval with rapid decay),
+agreement is a strong indicator that the evaluation is stable.
+
+\paragraph{(3) Internal consistency with dynamics (plateau relation).}
+In the deep slab regime, the model predicts
+\begin{equation}
+  \Delta\theta_\infty = \frac{2\pi v_\infty^2}{c^2},
+\end{equation}
+with $v_\infty^2=\mu/H$ extracted independently from the far-field force normalization (Section~\ref{sec:numerics}).
+Numerically, we therefore compute $v_\infty^2$ from $rF(r)$ at large $r$ and compare
+$2\pi v_\infty^2/c^2$ to the large-$b$ limit of $\Delta\theta(b)$.  This check is valuable because it
+compares two independent integrals of the same underlying Green's function.
+
+\subsection{Practical integration settings}
+
+The following considerations make the evaluation reliable and reproducible:
+
+\begin{itemize}
+\item \textbf{Avoid $b=0$.}  For a true point mass, $F(R)$ diverges at $R=0$ and the thin-ray
+      approximation is not meaningful at $b=0$.  All production runs use $b>0$.
+
+\item \textbf{Prefer the $t$-transform for production.}
+      Equation~\eqref{eq:app_lens_t} has no endpoint singularities and the integrand decays rapidly.
+      One may truncate $t\in[-T,T]$ with $T$ chosen so that $b\cosh T$ lies well into the regime where
+      $F(r)$ is already in its asymptotic form.
+
+\item \textbf{Working precision.}
+      When probing extreme ratios $b/H\gg 1$ or requiring tight relative errors on $\Delta\theta$,
+      it is generally more efficient to compute $F(r)$ via the KK/mode representation (fast
+      convergence in the far field) and to raise \texttt{WorkingPrecision} modestly for the
+      quadrature.
+
+\item \textbf{Consistency of cutoffs.}
+      If $F(r)$ is evaluated from a truncated series, the $m_{\max}$ (or $n_{\max}$) choice should be
+      made so that the force is converged at all radii $r=b\cosh t$ (or $r=b\sec u$) sampled by the
+      integral.  This is automatic if the mode sum is used for $r\gtrsim H$ and the image method is
+      reserved for near-field validation.
+\end{itemize}
+
+These checks and settings ensure that the lensing curves reported in the main text are properties of
+the slab Green's function rather than artifacts of quadrature or truncation.
+
+\section{Alternative flattening mechanism: wake term comparison}
+\label{app:wake}
+
+This appendix records a distinct flattening mechanism that arose in the toy-model exploration and was
+validated numerically alongside the slab calculation.  It is \emph{not} part of the slab Green's
+function result, but it is useful to keep on the record because it clarifies what aspects of the
+phenomenology are specific to geometric confinement and which are not.
+
+\subsection{Definition of the wake toy model (circular-orbit closure)}
+
+The wake model is introduced at the level of the circular-orbit balance law by adding a
+velocity-dependent term to the radial acceleration:
+\begin{equation}
+  \frac{v^2}{r}
+  =
+  \frac{\mu}{r^2}
+  + C\,\frac{v}{r},
+  \qquad \mu\equiv GM,
+  \label{eq:wake_balance}
+\end{equation}
+where $C$ is a constant coupling with units of velocity.  Rearranging gives a quadratic equation
+for the circular speed:
+\begin{equation}
+  v^2 - C v - \frac{\mu}{r}=0.
+  \label{eq:wake_quadratic}
+\end{equation}
+The physical (positive) root is
+\begin{equation}
+  v(r)=\frac{1}{2}\left(C+\sqrt{C^2+\frac{4\mu}{r}}\right).
+  \label{eq:wake_solution}
+\end{equation}
+
+\paragraph{Asymptotes.}
+From \eqref{eq:wake_solution} one obtains:
+\begin{align}
+  r\to 0:\quad
+  &v(r)=\sqrt{\frac{\mu}{r}}+\frac{C}{2}+\mathcal{O}\!\left(\sqrt{\frac{r}{\mu}}\,C^2\right),\\[4pt]
+  r\to \infty:\quad
+  &v(r)=C+\frac{\mu}{C\,r}+\mathcal{O}\!\left(\frac{1}{r^2}\right).
+  \label{eq:wake_asymptotes}
+\end{align}
+Thus the model produces asymptotically flat rotation curves with
+\begin{equation}
+  v_\infty = C.
+\end{equation}
+The accompanying script verified this limit numerically (e.g.\ $v(r=10^8)\approx C$ for the tested
+parameters).
+
+\subsection{Conceptual distinction from slab confinement}
+
+Although both the slab mechanism and the wake toy model can yield $v(r)\to\text{const}$, they differ
+in three essential ways:
+
+\paragraph{(1) Geometric versus dynamical origin.}
+The slab flattening arises from a modified \emph{scalar Green's function} in a finite domain with
+Neumann confinement; the far-field $F\propto 1/(Hr)$ law is a property of the boundary-value problem.
+By contrast, the wake term in \eqref{eq:wake_balance} is \emph{explicitly velocity dependent} and is
+not captured by a static scalar potential alone.
+
+\paragraph{(2) Parameter interpretation and scaling.}
+In the sealed slab,
+\begin{equation}
+  v_\infty^2=\frac{\mu}{H},
+\end{equation}
+so the plateau speed depends on the source strength $\mu$ and the geometric scale $H$.
+In the wake toy model,
+\begin{equation}
+  v_\infty=C,
+\end{equation}
+independent of $\mu$ for sufficiently large $r$.
+Accordingly, the two mechanisms imply different cross-system scalings unless $H$ (in the slab case)
+or $C$ (in the wake case) is itself allowed to vary in a correlated way across environments.
+
+\paragraph{(3) Crossover scale.}
+In the wake model, a characteristic transition radius can be estimated by comparing the Newtonian
+term to the wake term:
+\begin{equation}
+  \frac{\mu}{r^2}\sim C\frac{v}{r}.
+\end{equation}
+Using $v\sim C$ in the outer region gives
+\begin{equation}
+  r_{\rm tr}\sim \frac{\mu}{C^2},
+\end{equation}
+whereas in the slab case the transition is controlled geometrically by $r\sim H$.
+This difference is observationally relevant: the slab knee is tied to a single spatial scale $H$,
+while the wake knee scales with the source strength through $\mu/C^2$.
+
+\subsection{Optical implications and why this appendix matters}
+
+The main paper emphasized that slab confinement predicts a distinctive optical signature:
+a large-impact-parameter deflection plateau
+\begin{equation}
+  \Delta\theta(b)\to \Delta\theta_\infty=\frac{2\pi \mu}{Hc^2},
+\end{equation}
+and therefore the parameter-free relation
+\begin{equation}
+  \Delta\theta_\infty=\frac{2\pi v_\infty^2}{c^2}.
+\end{equation}
+This is specific to a force law that truly behaves as $F(R)\propto 1/R$ in the regime relevant to the
+lensing integral, and to the fact that in the optical sector of the series the deflection is tied to
+the scalar potential via $\ln N\simeq -2\Phi/c^2$.
+
+In contrast, the wake term in \eqref{eq:wake_balance} is not, as written, derivable from a static
+scalar potential and therefore does not automatically inherit the slab lensing plateau prediction.
+If the wake represents an effective ``lift'' force arising from a vector (gravitomagnetic-like)
+sector, then its influence on photons requires a separate derivation from the \emph{full} emergent
+metric (including any vector components) rather than from the scalar optical mapping alone.
+Until that coupling is specified, the safe conclusion is:
+
+\begin{quote}
+Flat rotation curves by themselves do not uniquely identify slab confinement; the slab mechanism is
+distinguished by its \emph{optical} prediction (the deflection plateau and the relation to
+$v_\infty$).
+\end{quote}
+
+\subsection{Recommended paper positioning}
+
+Because the wake toy model has a different theoretical status and (potentially) different optical
+couplings, it should be presented separately from the slab Green's function claim.  Keeping it in an
+appendix serves two purposes:
+(i) it documents an alternative route to flattening that the toy model may support in other sectors,
+and
+(ii) it sharpens the interpretive point of the main paper: the slab mechanism earns credibility not
+merely by producing flat curves, but by producing a \emph{linked} dynamics+optics signature that can
+be tested (and falsified) in joint rotation+lensing analyses.
+
+
+\end{document}

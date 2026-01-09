@@ -7,7 +7,7 @@ Publish-grade perihelion-precession benchmark harness for the toy 1PN / superflu
 Outputs (out_dir):
 - summary.json      (all run metadata + results)
 - sweep.csv         (one row per configuration)
-- perihelion_angles.csv  (for the single-run case; omitted during sweeps)
+- omega_angles.csv  (for the single-run case; omitted during sweeps)
 - trace.csv         (optional, --save_trace)
 
 Modes:
@@ -84,6 +84,91 @@ def initial_state_at_perihelion(mu: float, a: float, e: float):
 
 
 # -------------------------
+# Kepler universal-variable drift
+# -------------------------
+def stumpff_C(xp, z):
+    # stable C(z)
+    eps = 1e-8
+    z = xp.asarray(z)
+    C = 0.5 - z / 24.0 + z * z / 720.0 - z * z * z / 40320.0
+    C = xp.where(z > eps, (1.0 - xp.cos(xp.sqrt(z))) / z, C)
+    C = xp.where(z < -eps, (xp.cosh(xp.sqrt(-z)) - 1.0) / (-z), C)
+    return C
+
+
+def stumpff_S(xp, z):
+    # stable S(z)
+    eps = 1e-8
+    z = xp.asarray(z)
+    S = 1.0 / 6.0 - z / 120.0 + z * z / 5040.0 - z * z * z / 362880.0
+    S = xp.where(
+        z > eps,
+        (xp.sqrt(z) - xp.sin(xp.sqrt(z))) / (xp.sqrt(z) ** 3),
+        S,
+    )
+    S = xp.where(
+        z < -eps,
+        (xp.sinh(xp.sqrt(-z)) - xp.sqrt(-z)) / (xp.sqrt(-z) ** 3),
+        S,
+    )
+    return S
+
+
+def kepler_drift_universal(xp, r0, v0, dt, mu, iters=8):
+    """
+    Propagate (r0,v0) forward by dt under pure Kepler (two-body) dynamics.
+    r0, v0: shape (M,3)
+    Returns r1, v1 with same shape.
+    """
+    r0n = xp.sqrt(xp.sum(r0 * r0, axis=1))
+    v02 = xp.sum(v0 * v0, axis=1)
+    vr0 = xp.sum(r0 * v0, axis=1) / r0n
+
+    alpha = 2.0 / r0n - v02 / mu  # 1/a
+
+    # initial guess for chi
+    sqrt_mu = xp.sqrt(mu)
+    chi = sqrt_mu * xp.abs(alpha) * dt
+    # handle near-parabolic
+    chi = xp.where(xp.abs(alpha) < 1e-12, sqrt_mu * dt / r0n, chi)
+
+    for _ in range(iters):
+        z = alpha * chi * chi
+        C = stumpff_C(xp, z)
+        S = stumpff_S(xp, z)
+
+        F = (
+            (r0n * vr0 / sqrt_mu) * chi * chi * C
+            + (1.0 - alpha * r0n) * chi**3 * S
+            + r0n * chi
+            - sqrt_mu * dt
+        )
+        dF = (
+            (r0n * vr0 / sqrt_mu) * chi * (1.0 - z * S)
+            + (1.0 - alpha * r0n) * chi * chi * C
+            + r0n
+        )
+
+        chi = chi - F / dF
+
+    z = alpha * chi * chi
+    C = stumpff_C(xp, z)
+    S = stumpff_S(xp, z)
+
+    f = 1.0 - (chi * chi / r0n) * C
+    g = dt - (chi**3 / sqrt_mu) * S
+
+    r1 = f[:, None] * r0 + g[:, None] * v0
+    r1n = xp.sqrt(xp.sum(r1 * r1, axis=1))
+
+    fdot = (sqrt_mu / (r1n * r0n)) * (z * S - 1.0) * chi
+    gdot = 1.0 - (chi * chi / r1n) * C
+
+    v1 = fdot[:, None] * r0 + gdot[:, None] * v0
+    return r1, v1
+
+
+# -------------------------
 # Acceleration models
 # -------------------------
 def accel_newton(xp, pos, vel, mu: float):
@@ -121,8 +206,8 @@ def accel_beta_analytic(xp, pos, vel, mu: float, cs: float, beta: float):
 
     g = (-mu / (r_safe**2))[:, None] * r_hat
 
-    sigma = (beta * mu) / (cs**2 * r_safe)
-    grad_sigma = (-(beta * mu) / (cs**2 * r_safe**2))[:, None] * r_hat
+    sigma = -(beta * mu)/(cs**2*r)
+    grad_sigma = (+(beta*mu)/(cs**2*r**2)) * r_hat
 
     v2 = xp.sum(vel * vel, axis=1)
     vdot_gs = xp.sum(vel * grad_sigma, axis=1)
@@ -291,12 +376,6 @@ def integrate_and_measure(
             return accel_beta_from_grid(xp, pos_, vel_, cs, beta, phi_grid, grad_phi_grids, boxL)
         raise ValueError(f"Unknown mode: {mode}")
 
-    # perihelion detection buffers
-    max_peri = n_orbits + 10
-    peri_angles = xp.full((max_peri,), xp.nan, dtype=xp.float64)
-    peri_times = xp.full((max_peri,), xp.nan, dtype=xp.float64)
-    peri_count = 0
-
     trace = []
 
     def maybe_trace(step, t, pos_, vel_):
@@ -314,33 +393,58 @@ def integrate_and_measure(
             "r": float(np.linalg.norm(p)),
         })
 
-    # init radii buffers
-    r_curr = float(np.linalg.norm(np.asarray(pos.get() if device_is_gpu else pos)[0]))
-    r_prev = r_curr
-    r_prevprev = r_curr
-
-    # integrate: kick-drift-kick using v_half for v-dependent forces
+    # integrate: kick-drift-kick with exact Kepler drift
     t = 0.0
+
+    # Measure periapsis direction via eccentricity vector angle ω = atan2(e_y, e_x)
+    # Sample ω at a sparse cadence, unwrap + regress on CPU once at the end.
+    sample_stride = max(1, steps_per_orbit // 200)
+    n_samples = n_steps // sample_stride + 1
+    omega_samples = xp.empty((n_samples,), dtype=xp.float64)
+    t_samples = xp.empty((n_samples,), dtype=xp.float64)
+    sample_count = 0
+
     start_time = time.time()
     log_interval = max(1, n_steps // 100)  # log ~20 times during run
     for step in range(n_steps):
-        a0 = accel(pos, vel)
-        vel_half = vel + 0.5 * dt * a0
-        pos_new = pos + dt * vel_half
-        a1 = accel(pos_new, vel_half)
-        vel_new = vel_half + 0.5 * dt * a1
+        # total accel (depends on mode)
+        a_tot = accel(pos, vel)
 
-        # perihelion detect at previous point (pos)
-        r_new = xp.sqrt(xp.sum(pos_new * pos_new, axis=1))[0]
-        r_new_f = float(r_new.get() if device_is_gpu else r_new)
+        # Newtonian accel
+        a_newt = accel_newton(xp, pos, vel, mu)
 
-        if (r_prev < r_prevprev) and (r_prev < r_new_f) and (step > 2):
-            ang = xp.arctan2(pos[0, 1], pos[0, 0])
-            peri_angles[peri_count] = ang
-            peri_times[peri_count] = t
-            peri_count += 1
-            if peri_count >= max_peri:
-                break
+        # perturbation accel (what we want to attribute to the toy model)
+        a_pert = a_tot - a_newt
+
+        # KICK (half step)
+        vel = vel + 0.5 * dt * a_pert
+
+        # DRIFT (exact Kepler step)
+        pos, vel = kepler_drift_universal(xp, pos, vel, dt, mu)
+
+        # KICK (half step) using updated state
+        a_tot = accel(pos, vel)
+        a_newt = accel_newton(xp, pos, vel, mu)
+        a_pert = a_tot - a_newt
+        vel = vel + 0.5 * dt * a_pert
+
+        t += dt
+
+        # sparse series capture for diagnostics (kept small)
+        if step % sample_stride == 0:
+            # Compute eccentricity vector e = (v x h)/mu - r_hat
+            r_vec = pos[0]
+            v_vec = vel[0]
+            rnorm = xp.sqrt(xp.sum(r_vec * r_vec))
+            rhat = r_vec / rnorm
+
+            h = xp.cross(r_vec, v_vec)
+            e_vec = xp.cross(v_vec, h) / mu - rhat
+
+            omega = xp.arctan2(e_vec[1], e_vec[0])  # raw in (-pi, pi]
+            t_samples[sample_count] = t
+            omega_samples[sample_count] = omega
+            sample_count += 1
 
         maybe_trace(step, t, pos, vel)
 
@@ -359,22 +463,19 @@ def integrate_and_measure(
                 eta_str = f"{eta_sec:.0f} sec"
             print(f"  step {step:>8}/{n_steps} ({100*frac_done:5.1f}%) | elapsed {elapsed_str} | ETA {eta_str}")
 
-        r_prevprev, r_prev = r_prev, r_new_f
-        pos, vel = pos_new, vel_new
-        t += dt
+    omega_samples_np = np.asarray(omega_samples.get() if device_is_gpu else omega_samples)[:sample_count]
+    t_samples_np = np.asarray(t_samples.get() if device_is_gpu else t_samples)[:sample_count]
 
-    # fetch perihelia arrays
-    peri_angles_np = np.asarray(peri_angles.get() if device_is_gpu else peri_angles)[:peri_count]
-    peri_times_np = np.asarray(peri_times.get() if device_is_gpu else peri_times)[:peri_count]
-
-    if peri_count >= 2:
-        unwrapped = np.unwrap(peri_angles_np)
-        diffs = np.diff(unwrapped)
-        mean_adv = float(np.mean(diffs))
-        std_adv = float(np.std(diffs))
+    if sample_count >= 2:
+        omega_u = np.unwrap(omega_samples_np)
+        t0 = t_samples_np - t_samples_np.mean()
+        w0 = omega_u - omega_u.mean()
+        den = float(np.sum(t0 * t0))
+        slope = float(np.sum(t0 * w0) / den) if den > 0 else float("nan")
     else:
-        mean_adv = float("nan")
-        std_adv = float("nan")
+        slope = float("nan")
+
+    mean_adv = slope * T  # rad/orbit
 
     arcsec_per_orbit = mean_adv * ARCSEC_PER_RAD
     arcsec_per_century_mercury = arcsec_per_orbit * ORBITS_PER_CENTURY_MERCURY
@@ -385,13 +486,12 @@ def integrate_and_measure(
         "steps_per_orbit": steps_per_orbit,
         "dt": dt,
         "sim_period": T,
-        "perihelia_found": int(peri_count),
+        "perihelia_found": None,
         "mean_advance_rad_per_orbit": mean_adv,
-        "std_advance_rad_per_orbit": std_adv,
         "mean_advance_arcsec_per_orbit": arcsec_per_orbit,
         "mean_advance_arcsec_per_century_mercury": arcsec_per_century_mercury,
     }
-    return results, peri_times_np, peri_angles_np, trace
+    return results, t_samples_np, omega_samples_np, trace
 
 
 def write_csv(path: str, rows: List[Dict[str, Any]]):
@@ -485,7 +585,7 @@ def main():
                     }
 
                 t0 = time.time()
-                results, peri_t, peri_ang, trace = integrate_and_measure(
+                results, omega_t, omega_ang, trace = integrate_and_measure(
                     xp=xp,
                     mode=args.mode,
                     params=params,
@@ -509,7 +609,7 @@ def main():
 
                 # keep artifacts only if single configuration
                 if len(steps_list) == len(cs_list) == len(beta_list) == 1:
-                    artifacts_single = (peri_t, peri_ang, trace)
+                    artifacts_single = (omega_t, omega_ang, trace)
 
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -519,16 +619,16 @@ def main():
     write_csv(os.path.join(args.out_dir, "sweep.csv"), all_runs)
 
     if artifacts_single is not None:
-        peri_t, peri_ang, trace = artifacts_single
+        omega_t, omega_ang, trace = artifacts_single
         rows = []
-        for k in range(len(peri_t)):
+        for k in range(len(omega_t)):
             rows.append({
                 "k": k,
-                "t": float(peri_t[k]),
-                "angle_rad": float(peri_ang[k]),
-                "angle_deg": float(peri_ang[k] * 180.0 / math.pi),
+                "t": float(omega_t[k]),
+                "angle_rad": float(omega_ang[k]),
+                "angle_deg": float(omega_ang[k] * 180.0 / math.pi),
             })
-        write_csv(os.path.join(args.out_dir, "perihelion_angles.csv"), rows)
+        write_csv(os.path.join(args.out_dir, "omega_angles.csv"), rows)
 
         if args.save_trace and trace:
             write_csv(os.path.join(args.out_dir, "trace.csv"), trace)
@@ -536,4 +636,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

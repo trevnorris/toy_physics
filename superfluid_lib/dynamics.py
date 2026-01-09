@@ -5,7 +5,10 @@ try:
 except ImportError:
     import numpy as cp
 
-from .core import HAS_GPU
+try:
+    from .core import HAS_GPU
+except ImportError:
+    from core import HAS_GPU
 
 class DyonEnsemble:
     """

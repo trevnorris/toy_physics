@@ -1,0 +1,130 @@
+Paper 7 (Hard‑Mode 4D) — Math Solidification Status (v3)
+=========================================================
+
+This note summarizes what is *paper‑solid* in the master derivation harness,
+what the recent Mathematica warnings mean (Div::sclr / Integrate::idiv),
+and the concrete next steps to finish the math so you can start drafting Paper 7.
+
+0) Files / provenance
+--------------------
+- Harness (paper‑polished): 4d_master_derivations_paperpolish_v5.wl
+  (v5 is a tiny patch on v4; see changelog below)
+- Frozen spec + definitions:
+  4d_master_sheet_handoff.md, 4d_master_sheet.md
+- Derivation logic + “why”:
+  4d_derivation_guide.md
+
+1) Confirmed “paper‑solid” equation stack
+-----------------------------------------
+A) Matter sector (GNLS + stiff EOS)
+- Full matter Lagrangian density printed compactly:
+    L_psi = (iħ/2)(ψ̄ D_t ψ − ψ D_t ψ̄)
+           − (ħ^2/2m) D_i ψ̄ D_i ψ
+           − V_conf ρ − (K/4) ρ^5,
+  with ρ = ψ̄ψ.
+- Euler–Lagrange yields GNLS:
+    iħ D_t ψ = [−(ħ^2/2m) D_i D_i + V_conf + (5K/4) ρ^4] ψ.
+
+B) Madelung / hydrodynamic form
+- Q printed canonically: Q = −(ħ^2/2m) (∇_4^2 √ρ)/√ρ.
+- Euler‑like equation printed in compact index form with E and B defined from A.
+- Vorticity identity: Ω_{ij} = −(q/m) B_{ij}.
+
+C) EM sector (localized Maxwell + gauge fixing + jellium)
+- L_EM printed invariantly:
+    L_EM = − Z(w)/(4μ0) F_{MN}F^{MN} − (1/(2ξμ0))(∂·A)^2 + A·J,
+  with J^0 = q(ρ − ρ0).
+- Maxwell EOM printed once:
+    ∂_M(Z F^{MN}) + (1/ξ) ∂^N(∂·A) = μ0 J^N.
+
+D) EM localization reduction (Step 4)
+- Normalization Zint = ∫ Z(w) dw (Gaussian).
+- Controlled zero‑mode assumptions A_w=0, ∂_w A_μ≈0, divA=0.
+- Resulting effective 3+1D Maxwell coupling:
+    ∂_μ F^{μν} = μ0eff J_eff^ν,
+    μ0eff = μ0 / Zint,
+    J_eff^ν = ∫ J^ν dw.
+- Action‑level derivation also included via
+    F_{MN}F^{MN} = F_{μν}F^{μν} + 2 F_{wμ}F^{wμ},
+  and F_{wμ}=0 under the zero‑mode ansatz.
+
+E) Projection / leakage identity
+- Weighted projection with ∫W=1.
+- Projected continuity with explicit boundary terms + ∫W'(w) J_w.
+- Fast‑decay simplification shown.
+
+F) Geometry force ledger
+- HF identities printed: F_a = −∂_a H_tot, F_L = −∂_L H_tot.
+- Matter contribution printed unambiguously: F_a^(ψ) = −∫ ρ ∂_a V_conf d^4X, etc.
+- Dynamic wall law printed.
+
+2) What the Mathematica warnings mean (and why they are not physics errors)
+---------------------------------------------------------------------------
+You reported warnings like:
+  Div::sclr: The scalar expression vT does not have a divergence.
+  Div::sclr: The scalar expression J_brane does not have a divergence.
+  Integrate::idiv: Integral of ... does not converge ...
+
+These are *export/evaluation artifacts*, not model problems.
+
+Cause: the previous ExportPaperTeX helper stripped HoldForm before TeX conversion.
+That accidentally lets Mathematica *evaluate* symbolic objects that were intended to
+stay formal, e.g.
+- Div[vT,{x,y,z}] where vT is a symbolic transverse vector placeholder,
+- Integrate[J^N, dw] where J is unspecified,
+- ∫ ρ ∂_a V_conf d^4X where ρ is symbolic and Mathematica tries to integrate only ∂_a V_conf.
+
+Result: Mathematica tries (and often fails) to prove convergence or to interpret
+vT/J_brane as scalars.
+
+Fix (in v5): ExportPaperTeX now keeps everything held during TeX conversion
+(SetAttributes[ExportPaperTeX, HoldAll] and never removes HoldForm).
+This removes those warnings and preserves the intended expressions.
+
+3) What remains to finish before writing Paper 7
+------------------------------------------------
+This is now mostly about *choosing what to claim* and *documenting regimes*.
+
+(A) Conservative paper claim (recommended first draft)
+- Present the full bulk 4D variational model (GNLS + localized Maxwell + geometry ledger).
+- Treat brane quantities as projected observables.
+- Present Poisson/Maxwell‑like equations as *controlled reductions / regime hooks*
+  (explicit assumptions, explicit correction terms).
+
+(B) Roadmap for the stronger claim (explicit 3+1D effective theory)
+To upgrade the paper from “reduction hooks” to an honest reduced 3+1D theory, you need:
+1) A *frozen w‑mode truncation* (e.g. ψ ≈ ψ0 χ0 + ε ψ1 χ1) plus an explicit small parameter.
+2) The effective 3D GNLS for ψ0 including overlap constants (C10 etc) *and* the leading
+   correction terms from ψ1 (mode‑mixing, leakage, stress corrections).
+3) A KK/Sturm‑Liouville treatment of the localized Maxwell sector:
+   - show the normalizable zero mode and its coupling,
+   - show the massive modes and estimate their Yukawa‑suppressed corrections on the brane.
+4) A projected brane momentum equation including the “Reynolds stress” correction:
+     R_ij = P_W[ρ v_i v_j] − ρ_brane v_i^brane v_j^brane,
+   plus projected pressure/enthalpy and (optionally) projected quantum term.
+5) A reduced geometry ledger consistent with the reduced energies.
+
+(C) Leakage: when it is zero, and when it turns on
+- The appendix currently shows S_leak=0 for the symmetric HO weight W0 and the minimal
+  two‑mode truncation (a useful sanity gate).
+- To make leakage a controlled “extra sector,” add one explicit symmetry‑breaking knob
+  and re‑compute S_leak to leading order:
+  examples: shifted trap center w→w−w0, include χ2, include A_w, or allow ∂_w A_μ.
+
+(D) Final paper assets
+- Freeze symbol dictionary + conventions in one place.
+- Once (A)–(C) are frozen, fill in the LaTeX skeleton.
+
+4) Small but important new appendix hook (v5)
+--------------------------------------------
+v5 adds a symmetry‑breaking leakage example: if the projection weight is shifted
+off-center W(w)=W0(w-w0), then the weighted leakage source turns on at O(w0)
+even for the minimal 2‑mode ansatz. This makes the “leakage is a sector, not a
+bug” claim concrete.
+
+5) Changelog (v4 → v5)
+-----------------------
+- Pure tooling fix: ExportPaperTeX is now HoldAll and does not remove HoldForm.
+ - Appendix: added a parity‑breaking (shifted‑weight) leakage demo (optional).
+  (No math changes; only prevents accidental evaluation during TeX export.)
+

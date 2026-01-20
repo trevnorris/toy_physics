@@ -1,0 +1,1939 @@
+\documentclass[11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{physics} % optional; remove if you prefer explicit notation
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% ---------- Hyperref ----------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ---------- Macros / Notation ----------
+\newcommand{\ii}{\mathrm{i}}
+%\newcommand{\dd}{\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\X}{\mathbf{X}}     % bulk spatial (x,y,z,w)
+\newcommand{\x}{\mathbf{x}}     % brane spatial (x,y,z)
+\newcommand{\gradfour}{\nabla_4}
+\newcommand{\gradthree}{\nabla_3}
+\newcommand{\lapfour}{\nabla_4^2}
+\newcommand{\lapthree}{\nabla_3^2}
+
+\newcommand{\psiField}{\psi}
+\newcommand{\rhoField}{\rho}
+\newcommand{\AField}{A}
+\newcommand{\FField}{F}
+\newcommand{\ZField}{Z}
+
+% Choose ONE convention and stick to it:
+% Option N: rho = number density, j = number current
+\newcommand{\jnum}{j}
+\newcommand{\Jch}{J_{\mathrm{ch}}}
+\newcommand{\Jext}{J_{\mathrm{ext}}}
+\newcommand{\Jpsi}{J_{\psi}}
+
+% Velocity potential: use varphi to avoid confusion with EM potential
+\newcommand{\vpot}{\varphi}
+
+% ---------- Theorem-like (optional) ----------
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+\title{4D Model --- Action, Projections, and Controlled Brane Limits}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present an action-based framework on four spatial dimensions (4D space $\mathbf{X}=(x,y,z,w)$ plus time) in which three-dimensional (brane) observables are defined operationally by projection rather than by imposing boundary matching conditions. The model consists of a minimally coupled complex order parameter $\psi(\mathbf{X},t)$ (a gauged nonlinear Schr\"odinger sector with a frozen stiff polytropic equation of state), a localized Maxwell sector whose kinetic term is weighted by a confinement profile $Z(w)$, and a dynamic two-parameter geometry closure in which the localized tube/throat is represented by an effective radius $a(t)$ and length $L(t)$ (optionally supplemented by a stiff ratio penalty enforcing $L\simeq \alpha a$ when desired). We fix electromagnetic source bookkeeping so that the covariant-derivative matter coupling generates a unique dynamical current $J_\psi^M$, while any explicit source term in the electromagnetic Lagrangian represents external/background contributions $J_{\rm ext}^M$ only.
+
+From the action we derive the exact Euler--Lagrange equations, conserved current, and a vorticity--gauge identity. Using a normalized projection weight $W(w)$ we define brane density and flux observables and obtain an exact projected continuity equation with an explicit leakage term $S_{\rm leak}$ encoding exchange through the extra coordinate. Applying a Helmholtz decomposition to the brane velocity yields an exact longitudinal identity in which the 3D Laplacian acts on a brane velocity potential. In a controlled regime (quasi-static, longitudinal dominance, and small correction terms), this identity reduces to a Poisson equation on the brane, and the associated inverse-square scaling follows from the Green's function of the 3D Laplacian rather than being postulated. We also give a controlled electromagnetic localization reduction: under a brane-dominant zero-mode ansatz for the gauge field, integrating over $w$ yields an effective brane Maxwell theory with renormalized coupling $\mu_0^{\rm eff}=\mu_0/\!\int Z(w)\dd w$. Together these results provide a referee-clean bridge from fully four-dimensional dynamics to emergent three-dimensional operators and limits, with exact identities, controlled reductions, and regime claims separated explicitly.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+This paper develops a four-spatial-dimensional (4D) field-theory framework for a localized ``throat'' (a confined tube-like defect) coupled to brane-observable physics. Throughout, ``4D'' refers to four spatial coordinates $(x,y,z,w)$; the full spacetime is therefore $(4+1)$-dimensional. By this we mean that the brane is \emph{not} imposed as a boundary with matching conditions; instead, brane observables are defined operationally by a \emph{projection/measurement} functional applied to the full 4D dynamics. This choice forces a clean separation between (i) exact identities that follow from the declared action and definitions, (ii) controlled reductions obtained under explicitly stated ans\"atze, and (iii) regime statements that are only valid when additional approximations hold.
+
+The core dynamical fields are a complex order parameter $\psi(\mathbf{X},t)$ on 4D space $\mathbf{X}=(x,y,z,w)$, minimally coupled to a gauge potential $A_M$, together with a localized Maxwell sector whose kinetic term is weighted by a confinement profile $Z(w)$. The matter self-interaction is fixed by a stiff polytropic equation of state (EOS), which we treat as a frozen model choice. In addition to the fields, the throat geometry is promoted to \emph{two dynamical degrees of freedom} (DOFs): an effective transverse radius $a(t)$ and axial length $L(t)$. These DOFs enter the confinement geometry (and therefore the field Hamiltonians) and are driven by variational forces sourced by the fields. Physically, the geometry is expected to be dynamical because changes in density, inflow, and near-$c_s$ motion alter stresses and stored energy, leading to breathing/ringing behavior rather than a strictly quasi-static configuration.
+
+\paragraph{Why projection replaces boundary matching.}
+In many brane-inspired constructions, one prescribes boundary conditions or Dirichlet-to-Neumann-type maps on a hypersurface and then studies the induced dynamics. Here we take the opposite stance: the \emph{fundamental} evolution is 4D and variationally defined, while ``brane physics'' is what an observer obtains by projecting the 4D fields onto a chosen brane-localized weight $W(w)$. This approach has an immediate and unavoidable consequence: projection generically does \emph{not} commute with nonlinear dynamics. As a result, projected (brane) continuity and momentum sectors acquire \emph{leakage} and \emph{stress correction} terms that must be written explicitly. This paper treats those terms as first-class objects rather than artifacts to be ignored.
+
+\paragraph{EM bookkeeping and the single-source rule.}
+A second organizing principle is strict source bookkeeping in the electromagnetic sector. Since the matter action uses covariant derivatives, varying the matter Lagrangian produces a dynamical matter current $J_\psi^M$ automatically. Therefore any explicit $A_M J^M$ term in the electromagnetic Lagrangian must represent \emph{external/background} sources only (jellium neutrality, imposed drives), denoted $J_{\rm ext}^M$. With this convention, Maxwell's equation is written in the referee-safe form
+\begin{equation}
+\partial_M\!\left(Z(w)F^{MN}\right)+\frac{1}{\xi}\,\partial^N(\partial\!\cdot\!A)
+=\mu_0\left(J_\psi^N+J_{\rm ext}^N\right),
+\end{equation}
+which avoids double counting and cleanly separates dynamical and prescribed contributions.
+
+\paragraph{Geometry closure (two-DOF dynamic tube).}
+To close the model at the level of a paper-ready framework (without committing to microscopic wall physics), we adopt a minimal mechanical model for the geometry DOFs with effective inertias and damping, optionally augmented by a stiff ratio-penalty term that encodes the empirical observation that stable configurations prefer a relation between length and radius (set $\kappa=0$ to omit this term):
+\begin{equation}
+E_{\rm ratio}(a,L)=\frac{\kappa}{2}\big(L-\alpha a\big)^2,
+\qquad
+M_a\ddot a+\Gamma_a\dot a=-\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+M_L\ddot L+\Gamma_L\dot L=-\frac{\partial H_{\rm tot}}{\partial L}.
+\end{equation}
+In this formulation, field forces enter through energy derivatives (e.g.\ $\!-\partial_a H_\psi=-\int \rho\,\partial_a V_{\rm conf}\,\dd^4X$), and quasi-static behavior is recovered as a controlled limit (e.g.\ large damping or vanishing inertia). Here we use the dynamic baseline; quasi-static is treated explicitly as a limit rather than an implicit assumption.
+
+\paragraph{Main results and contributions.}
+The paper's contributions are primarily structural and bookkeeping-driven: we present a unified action-based model and extract the exact identities and controlled limits needed to connect it to brane-observable statements.
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Unified variational model (exact).}
+We specify a gauged 4D GNLS matter sector with stiff EOS, a localized Maxwell sector weighted by $Z(w)$, and two dynamical geometry DOFs $(a(t),L(t))$ entering the confinement geometry and energy ledger.
+\item \textbf{Exact Euler--Lagrange equations and conservation structure.}
+From the action we obtain the matter equation of motion, the associated conserved current/continuity identity in 4D, and Maxwell's equations with unambiguous source bookkeeping $J_\psi+J_{\rm ext}$.
+\item \textbf{Projection-defined brane observables and leakage identity (exact).}
+Given a normalized brane weight $W(w)$, we define $\rho_{\rm brane}$ and projected fluxes and derive the projected continuity equation with an explicit leakage source term $S_{\rm leak}$ (including boundary and $W'(w)$ contributions).
+\item \textbf{Longitudinal identity and the ``Poisson hook'' (exact identity + regime).}
+Applying a Helmholtz decomposition to the brane velocity yields an exact longitudinal identity for the velocity potential (denoted $\varphi$ to avoid confusion with electrostatic potential). A Poisson-like form emerges only under clearly stated regime assumptions (quasi-static, longitudinal dominance, small correction terms).
+\item \textbf{Controlled EM localization reduction (controlled).}
+Under a brane-dominant zero-mode ansatz for the gauge field (e.g.\ $A_w=0$, $\partial_w A_\mu=0$) we integrate out $w$ to obtain an effective brane Maxwell theory with renormalized coupling $\mu_0^{\rm eff}=\mu_0/Z_{\rm int}$ where $Z_{\rm int}=\int Z(w)\,\dd w$.
+\end{enumerate}
+
+\paragraph{What is not claimed.}
+We emphasize that (i) projection does not magically produce a closed 3D perfect-fluid theory; leakage and stress corrections are intrinsic to this definition, (ii) the Poisson interpretation is \emph{not} an exact law but a regime statement derived from an exact identity, and (iii) the geometry closure is a minimal effective model designed to make energy exchange and force accounting explicit, not a microscopic derivation of wall dynamics.
+
+\paragraph{Paper organization.}
+Section~\ref{sec:conventions} fixes coordinates, index sets, and operators. Section~\ref{sec:action} states the action, EOS choice, EM source bookkeeping, and geometry closure. Section~\ref{sec:eom} derives the exact Euler--Lagrange equations and hydrodynamic (Madelung) form. Section~\ref{sec:projection} defines projected brane observables and derives the leakage identity. Section~\ref{sec:poisson} presents the exact longitudinal identity and the regime conditions for a Poisson-like limit. Section~\ref{sec:emreduction} gives the controlled EM localization reduction. Section~\ref{sec:geometry} collects the geometry force/energy ledger and interprets the dynamic tube model. Appendices provide Mathematica-harness verification summaries, momentum-projection details, and a compact claim taxonomy.
+
+
+% ============================================================
+\section{Geometry and Fields: Coordinates, Indices, Conventions}
+\label{sec:conventions}
+
+This section fixes the geometric setting, index conventions, operators, and the field content used throughout the paper. The goal is to prevent symbol drift and to make explicit the distinction between (i) bulk 4D dynamics and (ii) brane-observable quantities obtained by projection.
+
+\subsection{Coordinates and index sets}
+\label{sec:coords}
+
+We work on a $(4+1)$-dimensional spacetime with coordinates
+\begin{equation}
+x^M = (t, x, y, z, w),
+\end{equation}
+where $t$ is time and $(x,y,z,w)$ are spatial coordinates. We will often separate the spatial coordinates into
+\begin{equation}
+\mathbf{X} \equiv (x,y,z,w)\in\mathbb{R}^4,
+\qquad
+\mathbf{x} \equiv (x,y,z)\in\mathbb{R}^3,
+\end{equation}
+where $\mathbf{x}$ denotes the brane (3D) coordinates and $w$ is the extra spatial coordinate.
+
+We use the following index conventions:
+\begin{itemize}[leftmargin=2.0em]
+\item Spacetime indices: $M,N,\ldots \in \{0,1,2,3,4\}$ with $0\equiv t$ and $4\equiv w$.
+\item Bulk spatial indices: $i,j,\ldots \in \{x,y,z,w\}$ (equivalently $\{1,2,3,4\}$) for 4D space.
+\item Brane spatial indices: $a,b,\ldots \in \{x,y,z\}$ (equivalently $\{1,2,3\}$) for 3D space.
+\end{itemize}
+
+When convenient, we write spacetime components as $A_M=(A_0,A_i)$ and explicitly separate brane and extra-direction pieces as
+\begin{equation}
+A_i = (A_a, A_w).
+\end{equation}
+
+\subsection{Metric and differential operators}
+\label{sec:operators}
+
+We use a flat $(4+1)$ Minkowski metric with signature
+\begin{equation}
+\eta_{MN}=\mathrm{diag}(-1,+1,+1,+1,+1),
+\end{equation}
+used to raise and lower indices in the Maxwell sector and for index bookkeeping.
+
+\noindent\textbf{Nonrelativistic matter sector.} Although we use the $(4+1)$ Minkowski metric for index bookkeeping in the Maxwell sector, the matter field $\psi$ is treated as a nonrelativistic order parameter (GNLS/Schrodinger type, first order in time). We therefore do not assume full $5$D Lorentz invariance of the combined system; ``covariant'' below refers to \emph{gauge covariance} under $A_M\mapsto A_M+\partial_M\Lambda$.
+
+Partial derivatives are denoted $\partial_M \equiv \partial/\partial x^M$. We will also use
+\begin{equation}
+\partial_t \equiv \frac{\partial}{\partial t},
+\qquad
+\partial_i \equiv \frac{\partial}{\partial X^i},
+\qquad
+\partial_a \equiv \frac{\partial}{\partial x^a}.
+\end{equation}
+
+The bulk (4D spatial) gradient and Laplacian are
+\begin{equation}
+\nabla_4 \equiv (\partial_x,\partial_y,\partial_z,\partial_w),
+\qquad
+\nabla_4^2 \equiv \partial_x^2+\partial_y^2+\partial_z^2+\partial_w^2,
+\end{equation}
+while the brane (3D spatial) operators are
+\begin{equation}
+\nabla_3 \equiv (\partial_x,\partial_y,\partial_z),
+\qquad
+\nabla_3^2 \equiv \partial_x^2+\partial_y^2+\partial_z^2.
+\end{equation}
+
+Integration measures are written as
+\begin{equation}
+\int \dd^4X \equiv \int_{\mathbb{R}^4} \dd x\,\dd y\,\dd z\,\dd w,
+\qquad
+\int \dd^3x \equiv \int_{\mathbb{R}^3} \dd x\,\dd y\,\dd z.
+\end{equation}
+Unless otherwise stated, boundary terms at $|w|\to\infty$ are assumed to vanish under the chosen confinement/projection weights (this will be stated explicitly when used).
+
+\subsection{Fields and derived quantities}
+\label{sec:fields}
+
+\paragraph{Matter field.}
+The fundamental matter degree of freedom is a complex scalar (order parameter)
+\begin{equation}
+\psi(\mathbf{X},t)\in\mathbb{C}.
+\end{equation}
+We define the density
+\begin{equation}
+\rho(\mathbf{X},t) \equiv |\psi(\mathbf{X},t)|^2 = \psi^*\psi.
+\end{equation}
+Throughout the paper we treat $\rho$ as the \emph{number density} associated with $\psi$; a mass density may be introduced as $\rho_m \equiv m\rho$ when needed.
+
+\paragraph{Gauge field.}
+Electromagnetic-type interactions are described by a gauge potential
+\begin{equation}
+A_M(x)\,,
+\end{equation}
+with field strength tensor
+\begin{equation}
+F_{MN}\equiv \partial_M A_N-\partial_N A_M.
+\end{equation}
+We will also use the Lorenz-type contraction
+\begin{equation}
+\partial\!\cdot\!A \equiv \partial_M A^M.
+\end{equation}
+The localization profile multiplying the Maxwell kinetic term is a prescribed function of the extra coordinate,
+\begin{equation}
+Z(w)>0,
+\end{equation}
+typically chosen to be peaked near $w=0$ and decaying for $|w|\to\infty$.
+
+\paragraph{Minimal coupling and covariant derivatives.}
+The matter field couples minimally to $A_M$ via
+\begin{equation}
+D_t \psi \equiv \partial_t \psi + \frac{\ii q}{\hbar}A_0\psi,
+\qquad
+D_i \psi \equiv \partial_i \psi - \frac{\ii q}{\hbar}A_i\psi,
+\end{equation}
+with complex conjugate relations
+\begin{equation}
+D_t \psi^* \equiv \partial_t \psi^* - \frac{\ii q}{\hbar}A_0\psi^*,
+\qquad
+D_i \psi^* \equiv \partial_i \psi^* + \frac{\ii q}{\hbar}A_i\psi^*.
+\end{equation}
+
+\paragraph{Currents and velocity.}
+The conserved \emph{number current} associated with the matter sector takes the standard covariant-derivative form
+\begin{equation}
+j^i(\mathbf{X},t) \equiv \frac{\hbar}{m}\,\operatorname{Im}\!\left(\psi^* D_i\psi\right).
+\end{equation}
+The corresponding charge current is
+\begin{equation}
+J_{\psi}^i \equiv q\,j^i,
+\end{equation}
+and with the variational convention $J_\psi^M\equiv -\,\delta S_\psi/\delta A_M$ the time component is $J_\psi^0=q\,\rho$, so that $J_\psi^M=(q\rho, q\,j^i)$ in these nonrelativistic conventions. When we introduce a hydrodynamic velocity field, it will be through the relation
+\begin{equation}
+j^i = \rho\,v^i,
+\qquad\text{so that}\qquad
+v^i = \frac{j^i}{\rho}
+\quad (\rho>0),
+\end{equation}
+which is consistent with the Madelung representation used later.
+
+\paragraph{Confinement and geometry degrees of freedom.}
+The localized tube/throat is represented by a confinement potential
+\begin{equation}
+V_{\rm conf}(\mathbf{X};a,L),
+\end{equation}
+whose shape depends on two geometric parameters:
+\begin{equation}
+a(t)\ \text{(effective radius)},\qquad
+L(t)\ \text{(effective length)}.
+\end{equation}
+In this paper, $(a,L)$ are treated as dynamical degrees of freedom that exchange energy with the fields. Their mechanical closure (effective inertia and damping, and (optionally) a ratio penalty) is specified in Section~\ref{sec:action} and analyzed in Section~\ref{sec:geometry}.
+
+\subsection{Brane observables: projection versus reduction}
+\label{sec:braneobs}
+
+A key distinction in this framework is between (i) \emph{projection/measurement} used to define brane observables and (ii) \emph{dimensional reduction} (integrating out $w$) used to define effective couplings in controlled limits.
+
+\paragraph{Projection (brane observables).}
+Given a fixed brane weight $W(w)$ normalized by
+\begin{equation}
+\int_{-\infty}^{\infty} W(w)\,\dd w = 1,
+\end{equation}
+we define projected (brane) density and brane fluxes by weighted averages:
+\begin{equation}
+\rho_{\rm brane}(\mathbf{x},t)\equiv \int_{-\infty}^{\infty} W(w)\,\rho(\mathbf{x},w,t)\,\dd w,
+\qquad
+\mathbf{j}_{\rm brane}(\mathbf{x},t)\equiv \int_{-\infty}^{\infty} W(w)\,\mathbf{j}_{xyz}(\mathbf{x},w,t)\,\dd w,
+\end{equation}
+where $\mathbf{j}_{xyz}$ denotes the $(x,y,z)$ components of the bulk current. Because $W$ is normalized, $\rho_{\rm brane}$ has the same physical units as the bulk density $\rho$.
+\noindent\emph{Unit/interpretation note.} If one instead wants a bona fide 3D number density per brane volume, one may define $\widetilde\rho_{\rm brane}(\mathbf x,t)\equiv\int_{-\infty}^{\infty}\rho(\mathbf x,w,t)\,\dd w$ (equivalently, use an unnormalized kernel). We keep the normalized-weight convention because it corresponds to a localized measurement/average across $w$ and makes the leakage bookkeeping in Section~\ref{sec:projection} dimensionally transparent.
+
+\paragraph{Reduction (integrating out $w$).}
+Separately, when deriving effective brane theories from the bulk equations under a stated ansatz (e.g.\ a zero-mode gauge field), we will integrate over $w$ to obtain renormalized couplings such as
+\begin{equation}
+Z_{\rm int} \equiv \int_{-\infty}^{\infty} Z(w)\,\dd w,
+\end{equation}
+leading to effective parameters (e.g.\ $\mu_0^{\rm eff}$) in the reduced brane equations. We emphasize that projection and reduction are distinct operations and are used for different purposes in the paper.
+
+\subsection{Notation summary}
+\label{sec:notation-summary}
+
+For quick reference, Table~\ref{tab:notation} summarizes the most frequently used symbols and conventions.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$x^M=(t,x,y,z,w)$ & bulk spacetime coordinates \\
+$\mathbf{X}=(x,y,z,w)$, $\mathbf{x}=(x,y,z)$ & bulk spatial / brane spatial coordinates \\
+$M,N$; $i,j$; $a,b$ & spacetime / bulk spatial / brane spatial indices \\
+$\psi(\mathbf{X},t)$, $\rho=|\psi|^2$ & matter field and density (number density) \\
+$A_M$, $F_{MN}$ & gauge potential and field strength \\
+$Z(w)$ & EM localization profile \\
+$V_{\rm conf}(\mathbf{X};a,L)$ & confinement potential with geometry parameters \\
+$a(t)$, $L(t)$ & dynamical geometry DOFs (radius, length) \\
+$\nabla_4$, $\nabla_4^2$ & bulk (4D spatial) gradient and Laplacian \\
+$\nabla_3$, $\nabla_3^2$ & brane (3D spatial) gradient and Laplacian \\
+$D_t, D_i$ & covariant derivatives for minimal coupling \\
+$j^i$ & number current ($j^i=\frac{\hbar}{m}\operatorname{Im}(\psi^*D_i\psi)$) \\
+$J_\psi^i=q\,j^i$ & matter charge current (spatial components) \\
+$W(w)$, $\rho_{\rm brane}$ & projection weight and brane-projected density \\
+\bottomrule
+\end{tabular}
+\caption{Notation and conventions used throughout the paper.}
+\label{tab:notation}
+\end{table}
+
+% ============================================================
+\section{Model Specification and Action}
+\label{sec:action}
+
+This section specifies the full model used in the paper: the matter sector (a gauged 4D nonlinear Schr\"odinger field with a frozen stiff equation of state), the localized Maxwell sector with unambiguous source bookkeeping, and the effective mechanical closure for the two geometric degrees of freedom (DOFs) $(a(t),L(t))$. All subsequent identities and equations of motion are derived from (or are explicitly framed as controlled limits of) this specification.
+
+\subsection{Matter sector: gauged 4D GNLS with confinement}
+\label{sec:action-matter}
+
+The fundamental matter field is a complex scalar $\psi(\mathbf{X},t)$ on bulk 4D space $\mathbf{X}=(x,y,z,w)$, minimally coupled to a gauge potential $A_M$ via the covariant derivatives (Section~\ref{sec:fields})
+\begin{equation}
+D_t \psi = \partial_t \psi + \frac{\ii q}{\hbar}A_0\psi,
+\qquad
+D_i \psi = \partial_i \psi - \frac{\ii q}{\hbar}A_i\psi.
+\end{equation}
+The density is $\rho \equiv |\psi|^2$. The matter Lagrangian density is
+\begin{equation}
+\boxed{
+\mathcal L_\psi
+=
+\frac{\ii\hbar}{2}\left(\psi^*D_t\psi-\psi\,D_t\psi^*\right)
+-\frac{\hbar^2}{2m}\,(D_i\psi)^*(D_i\psi)
+- V_{\rm conf}(\mathbf{X};a,L)\,\rho
+- U(\rho)
+}
+\label{eq:Lpsi}
+\end{equation}
+where repeated bulk spatial indices $i\in\{x,y,z,w\}$ are summed, $V_{\rm conf}$ is a confining potential that defines the localized tube/throat region, and $U(\rho)$ is the internal energy density associated with the chosen EOS (Section~\ref{sec:eos}). The geometric DOFs $(a,L)$ enter the matter sector through $V_{\rm conf}(\mathbf{X};a,L)$ and, optionally, through any explicitly geometry-dependent coefficients (we treat the EOS parameters as frozen constants in Paper~7).
+
+The matter action is
+\begin{equation}
+S_\psi = \int \dd t \int \dd^4X\ \mathcal L_\psi.
+\end{equation}
+Varying $S_\psi$ with respect to $\psi^*$ yields the gauged 4D GNLS equation of motion given in Section~\ref{sec:eom}.
+
+\subsection{Equation of state (frozen stiff polytrope)}
+\label{sec:eos}
+
+Here we use a frozen ``stiff'' polytropic equation of state
+\begin{equation}
+P(\rho)=K\rho^5,
+\end{equation}
+implemented in the variational model through the internal energy density
+\begin{equation}
+U(\rho)=\frac{K}{4}\rho^5.
+\label{eq:Uofrho}
+\end{equation}
+This implies the enthalpy-like potential appearing in the GNLS/Madelung form is
+\begin{equation}
+h(\rho)\equiv \frac{\dd U}{\dd \rho}=\frac{5K}{4}\rho^4,
+\end{equation}
+and the adiabatic sound-speed relation (with $\rho$ interpreted as number density) is
+\begin{equation}
+c_s^2(\rho)=\frac{1}{m}\frac{\dd P}{\dd \rho}=\frac{5K}{m}\rho^4.
+\end{equation}
+If one works in units with $m=1$ (or equivalently interprets $\rho$ as a mass density rather than number density), this reduces to $c_s^2=\dd P/\dd\rho=5K\rho^4$.
+All results in the paper hold for this frozen EOS choice; changing the EOS changes only the specific functional form of $U(\rho)$ and $h(\rho)$, not the structural identities derived from projection and localization.
+
+\subsection{Electromagnetic sector: localized Maxwell + gauge fixing + external sources}
+\label{sec:action-em}
+
+The gauge field $A_M$ is endowed with an independent field theory sector. To model brane-dominant electromagnetism while retaining a bulk 4D description near the localized region, the Maxwell kinetic term is multiplied by a prescribed localization profile $Z(w)$ (Section~\ref{sec:fields}). We also include a covariant gauge-fixing term with parameter $\xi$.
+
+\paragraph{Single-source bookkeeping (fixed convention).}
+Because the matter sector uses covariant derivatives, variation of $\mathcal L_\psi$ with respect to $A_M$ produces the \emph{dynamical matter current} $J_\psi^M$ automatically. Therefore any explicit $A_M J^M$ term in the electromagnetic Lagrangian must represent \emph{external/background sources only} (jellium neutrality, imposed drives), which we denote $J_{\rm ext}^M$. The total source in Maxwell's equations is then
+\begin{equation}
+J_{\rm tot}^M = J_\psi^M + J_{\rm ext}^M.
+\end{equation}
+
+With this convention, the electromagnetic Lagrangian density is
+\begin{equation}
+\boxed{
+\mathcal L_{\rm EM}
+=
+-\frac{Z(w)}{4\mu_0} F_{MN}F^{MN}
+-\frac{1}{2\xi\mu_0}\,(\partial\!\cdot\!A)^2
++ A_M J_{\rm ext}^M
+}
+\label{eq:LEM}
+\end{equation}
+where $F_{MN}=\partial_M A_N-\partial_N A_M$ and $\partial\!\cdot\!A\equiv \partial_M A^M$.
+\noindent\emph{Coupling note.} We use the symbol $\mu_0$ for the bulk EM coupling parameter by analogy with standard Maxwell notation; in this toy-model setting it should be read as a fixed coupling constant with whatever dimensions are implied by the chosen normalization, not necessarily the SI vacuum permeability.
+
+The electromagnetic action is
+\begin{equation}
+S_{\rm EM}=\int \dd t \int \dd^4X\ \mathcal L_{\rm EM}.
+\end{equation}
+Variation with respect to $A_N$ yields the localized Maxwell equation (Section~\ref{sec:eom}),
+\begin{equation}
+\partial_M\!\left(Z(w)F^{MN}\right)+\frac{1}{\xi}\partial^N(\partial\!\cdot\!A)=\mu_0\left(J_\psi^N+J_{\rm ext}^N\right),
+\end{equation}
+with $J_\psi^N$ determined by the matter sector and $J_{\rm ext}^N$ prescribed as part of the model.
+
+\paragraph{Background/jellium neutrality.}
+When neutrality is desired, it is implemented as an external/background time-component $J_{\rm ext}^0$ (a prescribed charge density), and must be distinguished from the dynamical matter density $\rho=|\psi|^2$. A common baseline choice is a uniform neutralizing background,
+\begin{equation}
+J_{\rm ext}^0=-q\,\rho_0,\qquad J_{\rm ext}^i=0,
+\end{equation}
+for a fixed reference density $\rho_0$, so that the total charge density is $J_{\rm tot}^0=q(\rho-\rho_0)$. More general neutralizing profiles or imposed drives can be encoded in $J_{\rm ext}^M$ and must be stated explicitly when used.
+
+\subsection{Geometry sector: two dynamical DOFs (optional ratio penalty)}
+\label{sec:action-geom}
+
+The localized tube/throat geometry is modeled by two effective, time-dependent parameters:
+\begin{equation}
+a(t)\ \ \text{(effective radius)}, \qquad
+L(t)\ \ \text{(effective length)}.
+\end{equation}
+These parameters enter the field sectors through the confinement potential $V_{\rm conf}(\mathbf{X};a,L)$ and, if desired, through geometry-dependent coefficients. Here the baseline assumption is that the geometry is \emph{dynamical}: it exchanges energy with the fields, and its evolution is driven by the field energy derivatives (variational forces) plus phenomenological damping that permits relaxation/ringing.
+
+\paragraph{Optional ratio penalty.}
+To optionally encode the empirical observation that stable localized configurations prefer a relation between length and radius, we add a stiff ratio-penalty energy (set $\kappa=0$ to disable):
+\begin{equation}
+E_{\rm ratio}(a,L)=\frac{\kappa}{2}\big(L-\alpha a\big)^2,
+\label{eq:Eratio}
+\end{equation}
+so that $L\simeq \alpha a$ in steady configurations but the system can deviate during excitations.
+
+\paragraph{Effective mechanical Lagrangian.}
+We close the geometry sector with an effective mechanical model
+\begin{equation}
+\boxed{
+\mathcal L_{\rm geom}
+=
+\frac{1}{2}M_a \dot a^2
++
+\frac{1}{2}M_L \dot L^2
+-
+E_{\rm geom}(a,L)
+-
+E_{\rm ratio}(a,L)
+}
+\label{eq:Lgeom}
+\end{equation}
+where $M_a,M_L$ are effective inertias, $E_{\rm geom}(a,L)$ collects geometry energy terms not already accounted for in the field Hamiltonians (a minimal choice is given in Section~\ref{sec:geometry}), and $E_{\rm ratio}$ is the optional ratio penalty above (set $\kappa=0$ to omit). The associated geometry action is
+\begin{equation}
+S_{\rm geom}=\int \dd t\ \mathcal L_{\rm geom}.
+\end{equation}
+
+\paragraph{Energy ledger and forces.}
+Let $H_\psi[\psi; a,L]$ and $H_{\rm EM}[A;a,L]$ denote the Hamiltonians associated with the matter and EM sectors (including the confinement dependence through $V_{\rm conf}$ and any explicit geometry dependence). Define the total conservative energy
+\begin{equation}
+H_{\rm tot} = H_\psi[\psi;a,L] + H_{\rm EM}[A;a,L] + E_{\rm geom}(a,L) + E_{\rm ratio}(a,L).
+\label{eq:Htot}
+\end{equation}
+The geometry forces are defined by energy derivatives
+\begin{equation}
+F_a \equiv -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+F_L \equiv -\frac{\partial H_{\rm tot}}{\partial L}.
+\label{eq:FaFL}
+\end{equation}
+In particular, the matter contribution takes the Hellmann--Feynman form
+\begin{equation}
+-\frac{\partial H_\psi}{\partial a}
+=
+-\int \dd^4X\ \rho(\mathbf{X},t)\,\partial_a V_{\rm conf}(\mathbf{X};a,L),
+\qquad
+-\frac{\partial H_\psi}{\partial L}
+=
+-\int \dd^4X\ \rho(\mathbf{X},t)\,\partial_L V_{\rm conf}(\mathbf{X};a,L),
+\label{eq:matter-forces}
+\end{equation}
+with analogous contributions from any geometry-dependent terms in the EM sector and $E_{\rm geom}$.
+
+\paragraph{Damped evolution laws (baseline).}
+To permit relaxation and ringing, we supplement the conservative geometry equations with linear damping,
+\begin{equation}
+\boxed{
+M_a \ddot a + \Gamma_a \dot a = -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+M_L \ddot L + \Gamma_L \dot L = -\frac{\partial H_{\rm tot}}{\partial L}.
+}
+\label{eq:geom-eom}
+\end{equation}
+These equations define the baseline dynamic geometry closure used in Paper~7. A quasi-static limit is recovered as a controlled reduction (e.g.\ $M_a,M_L\to 0$ or $\Gamma_a,\Gamma_L$ large), but the default interpretation is fully dynamical energy exchange between fields and geometry.
+
+\subsection{Total action (summary)}
+\label{sec:action-total}
+
+Collecting the sectors, the total action is
+\begin{equation}
+S = S_\psi + S_{\rm EM} + S_{\rm geom},
+\end{equation}
+with Lagrangian densities \eqref{eq:Lpsi} and \eqref{eq:LEM} and geometry Lagrangian \eqref{eq:Lgeom}. The exact Euler--Lagrange equations derived from $S$ are presented in Section~\ref{sec:eom}, and subsequent sections develop projection-defined brane observables and controlled reduction limits (Poisson-hook regime, EM localization reduction) consistent with this specification.
+
+% ============================================================
+\section{Euler--Lagrange Equations (Exact)}
+\label{sec:eom}
+
+This section records the exact equations of motion implied by the action specified in Section~\ref{sec:action}. No projection, reduction, or regime assumptions are used here. We first state the matter equation (gauged 4D GNLS), then the associated conserved current and continuity identity, then the localized Maxwell equations with explicit source bookkeeping, and finally the hydrodynamic (Madelung) rewriting that yields an Euler-like form and the vorticity--gauge identity.
+
+\subsection{Matter equation of motion (gauged 4D GNLS)}
+\label{sec:eom-matter}
+
+Varying the matter action $S_\psi=\int\dd t\int\dd^4X\,\mathcal L_\psi$ with respect to $\psi^*$ yields
+\begin{equation}
+\boxed{
+\ii\hbar D_t\psi
+=
+\left[
+-\frac{\hbar^2}{2m}\,D_iD_i
++
+V_{\rm conf}(\mathbf{X};a,L)
++
+h(\rho)
+\right]\psi,
+}
+\label{eq:gnls}
+\end{equation}
+where $i\in\{x,y,z,w\}$ is summed, $\rho=|\psi|^2$, and $h(\rho)=\dd U/\dd\rho$ is determined by the frozen EOS. For the stiff polytrope used in Paper~7,
+\begin{equation}
+h(\rho)=\frac{5K}{4}\rho^4.
+\end{equation}
+Equation~\eqref{eq:gnls} is the fundamental bulk evolution law for the matter sector.
+
+\subsection{Conserved current and continuity identity}
+\label{sec:eom-continuity}
+
+The global $U(1)$ phase invariance of the matter sector implies a conserved number current. In the present minimal-coupling conventions this current is
+\begin{equation}
+\boxed{
+j^i(\mathbf{X},t)
+\equiv
+\frac{\hbar}{m}\,\operatorname{Im}\!\left(\psi^* D_i\psi\right),
+}
+\label{eq:number-current}
+\end{equation}
+and the corresponding charge current is $J_\psi^i=q\,j^i$ (spatial components). The exact continuity identity is
+\begin{equation}
+\boxed{
+\partial_t \rho + \partial_i j^i = 0,
+}
+\label{eq:bulk-continuity}
+\end{equation}
+with $i\in\{x,y,z,w\}$. Where $\rho>0$, it is convenient to define the bulk velocity field by
+\begin{equation}
+j^i = \rho\,v^i,
+\qquad
+v^i=\frac{j^i}{\rho}.
+\label{eq:bulk-velocity}
+\end{equation}
+In Section~\ref{sec:eom-madelung} we rewrite the matter dynamics in terms of $(\rho,v^i)$.
+
+\subsection{Localized Maxwell equations with source bookkeeping}
+\label{sec:eom-maxwell}
+
+Varying the electromagnetic action $S_{\rm EM}=\int\dd t\int\dd^4X\,\mathcal L_{\rm EM}$ with respect to $A_N$ yields the localized Maxwell equation
+\begin{equation}
+\boxed{
+\partial_M\!\left(Z(w)F^{MN}\right)
++
+\frac{1}{\xi}\,\partial^N(\partial\!\cdot\!A)
+=
+\mu_0\left(J_\psi^N+J_{\rm ext}^N\right).
+}
+\label{eq:maxwell-localized}
+\end{equation}
+Here $F_{MN}=\partial_MA_N-\partial_NA_M$, $\partial\!\cdot\!A=\partial_MA^M$, and $Z(w)$ is the fixed localization profile. The source term is written as the sum of:
+\begin{itemize}[leftmargin=2.0em]
+\item $J_\psi^N$, the \emph{dynamical matter current} obtained by varying the matter Lagrangian with respect to $A_N$ (equivalently, the current consistent with the covariant-derivative coupling), and
+\item $J_{\rm ext}^N$, an \emph{external/background} current encoding jellium neutrality and/or imposed drives.
+\end{itemize}
+This decomposition is a frozen bookkeeping choice of the model (Section~\ref{sec:action-em}) and is used throughout to avoid double counting.
+
+For later use, it is convenient to define the electric- and magnetic-type field components in the bulk as
+\begin{equation}
+E_i \equiv -\partial_t A_i - \partial_i A_0,
+\qquad
+B_{ij} \equiv \partial_i A_j - \partial_j A_i = F_{ij},
+\label{eq:EiBij}
+\end{equation}
+with $i,j\in\{x,y,z,w\}$.
+
+\subsection{Madelung variables and Euler-like form}
+\label{sec:eom-madelung}
+
+A useful exact rewriting of the matter sector is obtained by the Madelung substitution
+\begin{equation}
+\psi(\mathbf{X},t)=\sqrt{\rho(\mathbf{X},t)}\,e^{\ii\theta(\mathbf{X},t)}.
+\label{eq:madelung}
+\end{equation}
+In terms of $\theta$ and $A_i$, the bulk velocity defined in \eqref{eq:bulk-velocity} can be written as
+\begin{equation}
+\boxed{
+v_i
+=
+\frac{\hbar}{m}\left(\partial_i\theta-\frac{q}{\hbar}A_i\right),
+}
+\label{eq:vi-phase}
+\end{equation}
+which is gauge invariant under $\theta\mapsto\theta+\frac{q}{\hbar}\chi$ and $A_M\mapsto A_M+\partial_M\chi$.
+
+The dispersive (``quantum pressure'') contribution is compactly expressed in terms of the quantum potential
+\begin{equation}
+\boxed{
+Q(\rho)
+\equiv
+-\frac{\hbar^2}{2m}\,\frac{\nabla_4^2\sqrt{\rho}}{\sqrt{\rho}}
+=
+-\frac{\hbar^2}{2m}\,\frac{\partial_i\partial_i\sqrt{\rho}}{\sqrt{\rho}}.
+}
+\label{eq:quantum-potential}
+\end{equation}
+Using \eqref{eq:gnls} and separating real and imaginary parts yields:
+\begin{itemize}[leftmargin=2.0em]
+\item the continuity equation \eqref{eq:bulk-continuity}, and
+\item an Euler-like equation for $v_i$ in bulk 4D space.
+\end{itemize}
+In compact index form, the Euler-like equation can be written as
+\begin{equation}
+\boxed{
+m\left(\partial_t + v_j\partial_j\right)v_i
+=
+q\left(E_i + v_j B_{ij}\right)
+-
+\partial_i\!\left(
+V_{\rm conf}(\mathbf{X};a,L)
++
+h(\rho)
++
+Q(\rho)
+\right),
+}
+\label{eq:euler-like}
+\end{equation}
+where $i,j\in\{x,y,z,w\}$ are summed and $h(\rho)$ is the EOS enthalpy potential (Section~\ref{sec:eos}). Equation~\eqref{eq:euler-like} is an exact identity equivalent to the GNLS dynamics, expressed in hydrodynamic variables.
+
+\subsection{Vorticity--gauge identity}
+\label{sec:eom-vorticity}
+
+Define the bulk vorticity 2-form (antisymmetric tensor)
+\begin{equation}
+\Omega_{ij}\equiv \partial_i v_j - \partial_j v_i.
+\label{eq:vorticity-def}
+\end{equation}
+From \eqref{eq:vi-phase} it follows immediately (as an exact identity) that
+\begin{equation}
+\boxed{
+\Omega_{ij}
+=
+-\frac{q}{m}\,B_{ij}
+=
+-\frac{q}{m}\,F_{ij}.
+}
+\label{eq:vorticity-gauge}
+\end{equation}
+Thus, away from phase singularities, rotational structure in the bulk velocity is tied directly to the gauge field. This identity is useful both conceptually (it clarifies how transverse/vortical motion is represented) and technically (it constrains admissible decompositions in projected brane dynamics considered later).
+
+% ============================================================
+\section{Brane Observables via Projection}
+\label{sec:projection}
+
+This section defines what we mean by ``brane observables'' in this framework and derives the key projected (brane) continuity identity. The underlying bulk evolution is four-dimensional in space ($\mathbf{X}=(x,y,z,w)$), while brane observables are defined operationally by a fixed projection weight $W(w)$ localized near $w=0$. The resulting projected equations are \emph{exact identities} given the definitions; they are not assumed evolution laws. A central point is that projection does not generally commute with nonlinear dynamics, so leakage and stress-correction terms are intrinsic features of the projected (brane) description.
+
+\subsection{Projection weight and brane fields}
+\label{sec:projection-defs}
+
+Let $W(w)$ be a fixed, nonnegative brane weight localized near $w=0$ and normalized by
+\begin{equation}
+\int_{-\infty}^{\infty} W(w)\,\dd w = 1.
+\label{eq:Wnorm}
+\end{equation}
+(For concreteness, $W$ may be chosen as the squared ground-state profile of a far-field harmonic confinement in the $w$ direction, though the derivations below require only sufficient decay and differentiability.)
+
+Given any bulk scalar field $f(\mathbf{x},w,t)$, we define its brane-projected observable as the weighted average
+\begin{equation}
+\langle f\rangle_W(\mathbf{x},t)\;\equiv\;\int_{-\infty}^{\infty} W(w)\,f(\mathbf{x},w,t)\,\dd w.
+\label{eq:Wavg}
+\end{equation}
+In particular, for the bulk density $\rho(\mathbf{X},t)=|\psi(\mathbf{X},t)|^2$ and bulk number current $j^i(\mathbf{X},t)$, we define the brane density and brane flux (brane current) as
+\begin{equation}
+\boxed{
+\rho_{\rm brane}(\mathbf{x},t)
+\equiv
+\int_{-\infty}^{\infty} W(w)\,\rho(\mathbf{x},w,t)\,\dd w,
+}
+\label{eq:rhobrane}
+\end{equation}
+\begin{equation}
+\boxed{
+\mathbf{j}_{\rm brane}(\mathbf{x},t)
+\equiv
+\int_{-\infty}^{\infty} W(w)\,\mathbf{j}_{xyz}(\mathbf{x},w,t)\,\dd w,
+}
+\label{eq:jbrane}
+\end{equation}
+where $\mathbf{j}_{xyz}=(j^x,j^y,j^z)$ denotes the brane-direction components of the bulk current.
+Because $W$ is normalized, $\rho_{\rm brane}$ has the same units as the bulk density $\rho$; it is a measurement-weighted average across the extra coordinate.
+
+Where $\rho_{\rm brane}>0$ we define the brane velocity as
+\begin{equation}
+\boxed{
+\mathbf{v}_{\rm brane}(\mathbf{x},t)\equiv
+\frac{\mathbf{j}_{\rm brane}(\mathbf{x},t)}{\rho_{\rm brane}(\mathbf{x},t)}.
+}
+\label{eq:vbrane}
+\end{equation}
+This definition is purely kinematic. Subsequent sections will analyze what equations $\mathbf{v}_{\rm brane}$ satisfies under projection and what additional correction terms appear.
+
+\subsection{Projected continuity and leakage identity (exact)}
+\label{sec:projection-continuity}
+
+We begin from the exact bulk continuity identity (Section~\ref{sec:eom-continuity})
+\begin{equation}
+\partial_t \rho + \partial_i j^i = 0,
+\qquad i\in\{x,y,z,w\}.
+\label{eq:bulk-continuity-again}
+\end{equation}
+Split the divergence into brane and extra-direction parts:
+\begin{equation}
+\partial_i j^i = \nabla_3\cdot \mathbf{j}_{xyz} + \partial_w j^w.
+\end{equation}
+Multiply \eqref{eq:bulk-continuity-again} by $W(w)$ and integrate over $w$. Using the definitions
+\eqref{eq:rhobrane}--\eqref{eq:jbrane} gives
+\begin{equation}
+\partial_t \rho_{\rm brane} + \nabla_3\cdot \mathbf{j}_{\rm brane}
++ \int_{-\infty}^{\infty} W(w)\,\partial_w j^w\,\dd w = 0.
+\label{eq:proj-step}
+\end{equation}
+The remaining term is converted by integration by parts:
+\begin{equation}
+\int_{-\infty}^{\infty} W\,\partial_w j^w\,\dd w
+=
+\left[W(w)\,j^w\right]_{-\infty}^{+\infty}
+-
+\int_{-\infty}^{\infty} W'(w)\,j^w\,\dd w.
+\label{eq:Wparts}
+\end{equation}
+Substituting \eqref{eq:Wparts} into \eqref{eq:proj-step} yields the projected continuity identity
+\begin{equation}
+\boxed{
+\partial_t \rho_{\rm brane} + \nabla_3\cdot \mathbf{j}_{\rm brane}
+=
+S_{\rm leak},
+}
+\label{eq:proj-continuity}
+\end{equation}
+where the leakage source is defined exactly as
+\begin{equation}
+\boxed{
+S_{\rm leak}(\mathbf{x},t)
+\equiv
+-\left[W(w)\,j^w(\mathbf{x},w,t)\right]_{-\infty}^{+\infty}
++
+\int_{-\infty}^{\infty} W'(w)\,j^w(\mathbf{x},w,t)\,\dd w.
+}
+\label{eq:Sleak-general}
+\end{equation}
+Equations \eqref{eq:proj-continuity}--\eqref{eq:Sleak-general} are \emph{exact} consequences of (i) the bulk continuity identity and (ii) the definition of projection.
+
+\paragraph{Fast-decay simplification (common case).}
+If the confinement/projection choices ensure
+\begin{equation}
+W(w)\,j^w(\mathbf{x},w,t)\to 0\quad\text{as }|w|\to\infty,
+\label{eq:boundary-vanish}
+\end{equation}
+then the boundary term vanishes and the leakage reduces to
+\begin{equation}
+\boxed{
+S_{\rm leak}(\mathbf{x},t)=\int_{-\infty}^{\infty} W'(w)\,j^w(\mathbf{x},w,t)\,\dd w.
+}
+\label{eq:Sleak-simplified}
+\end{equation}
+We will state explicitly when \eqref{eq:boundary-vanish} is assumed.
+
+\paragraph{Interpretation.}
+The source $S_{\rm leak}$ measures net exchange between the brane-projected density and the extra-dimensional flux $j^w$. Even if the bulk density is strictly conserved, the projected (brane) density generally is not: the projection can ``lose'' or ``gain'' density through flow along $w$, weighted by how the measurement kernel $W(w)$ varies in $w$.
+
+\subsection{Projected momentum sector (overview and non-commutation)}
+\label{sec:projection-momentum}
+
+The projected continuity identity above already illustrates the central structural fact: projection is not a harmless relabeling of variables; it introduces additional source/correction terms that encode the influence of the extra coordinate. The same phenomenon becomes more pronounced in the momentum sector.
+
+At the bulk level, the Madelung rewriting yields an Euler-like equation for the velocity $v_i$ in 4D space (Section~\ref{sec:eom-madelung}). A naive attempt to ``project'' that equation into a closed 3D Euler equation for $\mathbf{v}_{\rm brane}$ fails because nonlinear products do not commute with projection. Concretely,
+\begin{equation}
+\langle \rho\,v_a\rangle_W \neq \langle \rho\rangle_W \,\langle v_a\rangle_W
+\qquad\text{and}\qquad
+\left\langle \rho\,v_a v_b\right\rangle_W \neq
+\langle \rho\rangle_W\,\langle v_a\rangle_W\,\langle v_b\rangle_W
+\end{equation}
+in general. The differences define Reynolds-/stress-like correction terms and momentum leakage terms sourced by the $w$-flux and by $w$-dependence of the weight.
+
+In this paper we treat these terms as intrinsic components of the brane-observable description:
+\begin{itemize}[leftmargin=2.0em]
+\item \textbf{Momentum leakage:} terms sourced by the $w$-directed momentum flux, analogous to $S_{\rm leak}$ in continuity.
+\item \textbf{Stress corrections:} terms arising from the non-commutation of projection with nonlinear products, representable as a projected stress tensor (Reynolds-type closure).
+\end{itemize}
+The full derivation and explicit form of these correction terms (in a compact appendix-ready representation) are given in Appendix~\ref{app:momentum}. The main text will only require the continuity/leakage identity \eqref{eq:proj-continuity} and the kinematic definition \eqref{eq:vbrane} when developing the longitudinal identity and Poisson-regime analysis in Section~\ref{sec:poisson}.
+
+% ============================================================
+\section{Longitudinal Identity and the Poisson Hook}
+\label{sec:poisson}
+
+This section derives an exact longitudinal identity on the brane from the projected continuity equation and a Helmholtz decomposition of the brane velocity. The resulting identity has the form of a Poisson-type operator acting on a scalar potential. A Poisson \emph{equation} (in the usual Newtonian sense) and the associated inverse-square behavior arise only in a controlled regime, which we state explicitly.
+
+\subsection{Brane velocity and Helmholtz decomposition}
+\label{sec:poisson-helmholtz}
+
+Recall the projected (brane) density and flux from Section~\ref{sec:projection}:
+\begin{equation}
+\rho_{\rm brane}(\mathbf{x},t)=\int W(w)\rho(\mathbf{x},w,t)\,\dd w,
+\qquad
+\mathbf{j}_{\rm brane}(\mathbf{x},t)=\int W(w)\mathbf{j}_{xyz}(\mathbf{x},w,t)\,\dd w,
+\end{equation}
+and define the brane velocity (where $\rho_{\rm brane}>0$) by
+\begin{equation}
+\mathbf{v}_{\rm brane}(\mathbf{x},t) \equiv \frac{\mathbf{j}_{\rm brane}(\mathbf{x},t)}{\rho_{\rm brane}(\mathbf{x},t)}.
+\label{eq:vbrane-again}
+\end{equation}
+
+On $\mathbb{R}^3$ (or on a sufficiently large domain with appropriate boundary conditions), any sufficiently regular vector field admits a Helmholtz decomposition. We therefore write
+\begin{equation}
+\boxed{
+\mathbf{v}_{\rm brane}(\mathbf{x},t) = \nabla_3 \varphi(\mathbf{x},t) + \mathbf{v}_T(\mathbf{x},t),
+\qquad
+\nabla_3\cdot \mathbf{v}_T = 0,
+}
+\label{eq:helmholtz}
+\end{equation}
+where $\varphi$ is the brane \emph{velocity potential} (notation frozen to avoid confusion with the electrostatic potential) and $\mathbf{v}_T$ is the divergence-free (transverse) component.
+\paragraph{Reconstruction.} Given $\mathbf v_{\rm brane}$ at fixed $t$, one may compute $\varphi$ by solving the Poisson problem $\nabla_3^2\varphi=\nabla_3\cdot\mathbf v_{\rm brane}$ with boundary conditions appropriate to the domain; then $\mathbf v_T$ is obtained algebraically as $\mathbf v_T=\mathbf v_{\rm brane}-\nabla_3\varphi$.
+
+\subsection{Exact longitudinal identity from projected continuity}
+\label{sec:poisson-exact}
+
+The projected continuity identity (Section~\ref{sec:projection-continuity}) is
+\begin{equation}
+\partial_t \rho_{\rm brane} + \nabla_3\cdot \mathbf{j}_{\rm brane} = S_{\rm leak}.
+\label{eq:proj-cont-again}
+\end{equation}
+Using $\mathbf{j}_{\rm brane}=\rho_{\rm brane}\mathbf{v}_{\rm brane}$ and the product rule,
+\begin{equation}
+\nabla_3\cdot(\rho_{\rm brane}\mathbf{v}_{\rm brane})
+=
+\mathbf{v}_{\rm brane}\cdot\nabla_3\rho_{\rm brane}
++
+\rho_{\rm brane}\,\nabla_3\cdot\mathbf{v}_{\rm brane}.
+\end{equation}
+Substitute the Helmholtz decomposition \eqref{eq:helmholtz}. Since $\nabla_3\cdot\mathbf{v}_T=0$,
+\begin{equation}
+\nabla_3\cdot\mathbf{v}_{\rm brane}=\nabla_3\cdot(\nabla_3\varphi+\mathbf{v}_T)=\nabla_3^2\varphi.
+\end{equation}
+Therefore,
+\begin{equation}
+\nabla_3\cdot(\rho_{\rm brane}\mathbf{v}_{\rm brane})
+=
+(\nabla_3\varphi+\mathbf{v}_T)\cdot\nabla_3\rho_{\rm brane}
++
+\rho_{\rm brane}\,\nabla_3^2\varphi.
+\end{equation}
+Insert this into \eqref{eq:proj-cont-again} and rearrange to obtain the exact longitudinal identity:
+\begin{equation}
+\boxed{
+\rho_{\rm brane}\,\nabla_3^2\varphi
+=
+S_{\rm leak}
+-
+\partial_t \rho_{\rm brane}
+-
+\nabla_3\rho_{\rm brane}\cdot(\nabla_3\varphi+\mathbf{v}_T).
+}
+\label{eq:longitudinal-identity}
+\end{equation}
+Equation~\eqref{eq:longitudinal-identity} is an \emph{exact identity} given the definitions of projection and Helmholtz decomposition. It is not an additional postulate.
+
+\subsection{Poisson regime: controlled approximations}
+\label{sec:poisson-regime}
+
+The identity \eqref{eq:longitudinal-identity} has the structure of a Poisson-type operator acting on the scalar potential $\varphi$. A standard Poisson \emph{equation} emerges when the right-hand side simplifies under a controlled regime. We state the regime assumptions explicitly.
+
+\paragraph{Regime assumptions.}
+We consider a brane region and time window in which:
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Quasi-static density:} $\partial_t\rho_{\rm brane}$ is small compared to the dominant source terms.
+\item \textbf{Slow density gradients or weak advection correction:} the term $\nabla_3\rho_{\rm brane}\cdot(\nabla_3\varphi+\mathbf{v}_T)$ is small (e.g.\ $\rho_{\rm brane}$ approximately constant in the region of interest, or the advective correction is parametrically suppressed).
+\item \textbf{Longitudinal dominance (optional but common):} $\mathbf{v}_T$ is small or slowly varying so that the effective dynamics is captured primarily by $\nabla_3\varphi$.
+\end{enumerate}
+Under these conditions, \eqref{eq:longitudinal-identity} reduces approximately to
+\begin{equation}
+\rho_{\rm brane}\,\nabla_3^2\varphi \;\approx\; S_{\rm eff}(\mathbf{x},t),
+\qquad
+S_{\rm eff}\equiv S_{\rm leak}\ \text{(plus any retained slow terms)}.
+\label{eq:poisson-approx-general}
+\end{equation}
+If $\rho_{\rm brane}\approx \rho_0$ is approximately constant over the region of interest, we obtain a conventional Poisson form:
+\begin{equation}
+\boxed{
+\nabla_3^2\varphi \;\approx\; \frac{1}{\rho_0}\,S_{\rm eff}(\mathbf{x},t).
+}
+\label{eq:poisson-approx}
+\end{equation}
+In this regime, the scalar potential $\varphi$ is governed by the 3D Laplacian, and brane inverse-square behavior follows from the Green's function of $\nabla_3^2$.
+
+\paragraph{Solvability and boundary conditions.}
+On an infinite domain one typically fixes the additive constant in $\varphi$ by requiring $\varphi\to 0$ as $r\to\infty$. On a periodic domain, $\nabla_3^2\varphi=f$ is solvable only if the spatial mean of $f$ vanishes; numerically this corresponds to subtracting the mean of $S_{\rm eff}/\rho_0$ (or adding a uniform compensating term) before solving for $\varphi$.
+
+\subsection{Inverse-square behavior from the Poisson regime}
+\label{sec:poisson-invsq}
+
+We now make explicit how the Poisson regime implies inverse-square scaling of the longitudinal (gradient) component of the brane velocity. Consider a localized effective source on the brane, modeled schematically as
+\begin{equation}
+S_{\rm eff}(\mathbf{x}) \approx \mathcal{S}\,\delta^{(3)}(\mathbf{x}),
+\end{equation}
+in a region where $\rho_{\rm brane}\approx\rho_0$ and the Poisson approximation \eqref{eq:poisson-approx} holds. Then \eqref{eq:poisson-approx} becomes
+\begin{equation}
+\nabla_3^2\varphi \approx \frac{\mathcal{S}}{\rho_0}\,\delta^{(3)}(\mathbf{x}).
+\end{equation}
+In $\mathbb{R}^3$, the Green's function of the Laplacian implies the solution scales as
+\begin{equation}
+\varphi(\mathbf{x}) \sim -\frac{\mathcal{S}}{4\pi\rho_0}\,\frac{1}{r},
+\qquad
+r\equiv |\mathbf{x}|.
+\label{eq:phi-1overr}
+\end{equation}
+In the longitudinal-dominant regime one has $\mathbf{v}_{\rm brane}\approx\nabla_3\varphi$. Therefore \eqref{eq:phi-1overr} implies the inverse-square scaling
+\begin{equation}
+\boxed{
+\mathbf{v}_L(\mathbf{x})\equiv\nabla_3\varphi(\mathbf{x})
+\;\sim\; \frac{\mathcal{S}}{4\pi\rho_0}\,\frac{1}{r^2}\,\hat{\mathbf{r}},
+}
+\label{eq:invsq}
+\end{equation}
+with the direction set by the sign of $\mathcal{S}$ (sources point outward; sinks point inward). Thus the inverse-square scaling arises as a direct consequence of the \emph{3D} Poisson regime on the brane. Importantly, this scaling is not postulated: it follows from the emergence of the 3D Laplacian operator in \eqref{eq:poisson-approx}.
+
+\paragraph{Claim boundary.}
+Equation~\eqref{eq:longitudinal-identity} is exact. The field whose scaling is derived is the longitudinal brane velocity $\mathbf{v}_L=\nabla_3\varphi$ (equivalently, the gradient of the velocity potential). Any further identification of $\mathbf{v}_L$ with a Newtonian gravitational acceleration acting on test bodies is an additional constitutive step beyond the kinematic derivation given here. The Poisson equation \eqref{eq:poisson-approx} and the inverse-square scaling \eqref{eq:invsq} are regime statements that hold when the explicit correction terms in \eqref{eq:longitudinal-identity} are parametrically small and when the effective source can be treated as localized compared to the observation scale. In later work (and in numerical demonstrations), one can quantify the size of the neglected terms and the degree to which $\rho_{\rm brane}$ may be treated as approximately constant.
+
+% ============================================================
+\section{Controlled EM Localization Reduction to an Effective Brane Maxwell Theory}
+\label{sec:emreduction}
+
+This section presents a controlled reduction in which the localized bulk Maxwell system yields an effective brane Maxwell theory with a renormalized coupling. The reduction is \emph{not} a projection/measurement operation (Section~\ref{sec:braneobs}); instead it is obtained by integrating the bulk field equation over the extra coordinate $w$ under an explicit brane-dominant (zero-mode) ansatz. We state the assumptions clearly and track how the localization profile $Z(w)$ enters the effective coupling.
+
+\subsection{Reduction assumptions and zero-mode ansatz}
+\label{sec:emreduction-ansatz}
+
+We begin from the exact localized Maxwell equation (Section~\ref{sec:eom-maxwell})
+\begin{equation}
+\partial_M\!\left(Z(w)F^{MN}\right)
++\frac{1}{\xi}\,\partial^N(\partial\!\cdot\!A)
+=
+\mu_0\left(J_\psi^N+J_{\rm ext}^N\right),
+\label{eq:maxwell-localized-again}
+\end{equation}
+where $M,N\in\{0,1,2,3,4\}$ and $w\equiv x^4$.
+
+The reduction targets a brane-effective electromagnetic sector in which the gauge field has negligible $w$-dependence over the localized region. We therefore impose the following \emph{zero-mode} assumptions:
+\begin{equation}
+\boxed{
+A_w = 0,
+\qquad
+\partial_w A_\mu = 0
+\quad (\mu\in\{0,1,2,3\}),
+}
+\label{eq:zero-mode}
+\end{equation}
+together with a brane-compatible gauge choice. For definiteness we take the Lorenz-type condition
+\begin{equation}
+\partial\!\cdot\!A = 0
+\label{eq:lorenz-gauge}
+\end{equation}
+during the reduction; more general $\xi$ and gauge conditions can be handled but do not change the key normalization result. Under \eqref{eq:zero-mode}, the only nonzero field-strength components are $F_{\mu\nu}$, and they are independent of $w$:
+\begin{equation}
+F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu,
+\qquad
+\partial_w F_{\mu\nu}=0.
+\end{equation}
+
+\paragraph{Consistency of the $N=w$ component.} Under the zero-mode assumptions $A_w=0$ and $\partial_w A_\mu=0$ together with the Lorenz condition $\partial\!\cdot\!A=0$, the $N=w$ component of \eqref{eq:maxwell-localized-again} reduces to
+\begin{equation}
+0=\mu_0\left(J_\psi^w+J_{\rm ext}^w\right).
+\end{equation}
+Thus the pure zero-mode sector is consistent only when the total $w$-directed current is negligible; sources with substantial $J^w$ necessarily excite $A_w$ and/or $w$-dependent modes.
+In particular, for a single charged species one has $J_\psi^w=q\,j^w$, so configurations with appreciable $w$-directed matter flux generally violate the pure zero-mode ansatz unless the net $w$-directed \emph{charge} current is suppressed (e.g.\ $q=0$, multi-species neutral flow, or cancellation by a prescribed $J_{\rm ext}^w$).
+
+
+\paragraph{Localization normalization.}
+Define the localization integral
+\begin{equation}
+\boxed{
+Z_{\rm int} \equiv \int_{-\infty}^{\infty} Z(w)\,\dd w,
+}
+\label{eq:Zint}
+\end{equation}
+assumed finite and positive (true for the localized profiles used in this paper).
+
+\noindent\emph{Example and units.} For a Gaussian profile $Z(w)=\exp(-w^2/\lambda_{\rm conf}^2)$ one has $Z_{\rm int}=\lambda_{\rm conf}\sqrt{\pi}$. If $Z$ is dimensionless then $Z_{\rm int}$ carries units of length; accordingly $\mu_0$ in the bulk action should be interpreted as the $(4+1)$-dimensional parameter, while $\mu_0^{\rm eff}$ is the induced $(3+1)$-dimensional coupling.
+
+\subsection{Integrating the bulk equation and the effective coupling}
+\label{sec:emreduction-integrate}
+
+Consider the $\nu$-component ($N=\nu$ with $\nu\in\{0,1,2,3\}$) of \eqref{eq:maxwell-localized-again}. Under the gauge condition \eqref{eq:lorenz-gauge}, the gauge-fixing term drops, and we have
+\begin{equation}
+\partial_M\!\left(Z(w)F^{M\nu}\right)
+=
+\mu_0\left(J_\psi^\nu+J_{\rm ext}^\nu\right).
+\label{eq:maxwell-nu}
+\end{equation}
+Split the derivative into brane spacetime and $w$ parts:
+\begin{equation}
+\partial_M(ZF^{M\nu})
+=
+\partial_\mu(ZF^{\mu\nu})
++
+\partial_w(ZF^{w\nu}).
+\end{equation}
+Under the zero-mode ansatz \eqref{eq:zero-mode}, $F^{w\nu}=0$ and thus $\partial_w(ZF^{w\nu})=0$. Moreover, since $F^{\mu\nu}$ is $w$-independent,
+\begin{equation}
+\partial_\mu\!\left(Z(w)F^{\mu\nu}\right)
+=
+Z(w)\,\partial_\mu F^{\mu\nu}.
+\end{equation}
+Therefore \eqref{eq:maxwell-nu} becomes
+\begin{equation}
+Z(w)\,\partial_\mu F^{\mu\nu}
+=
+\mu_0\left(J_\psi^\nu+J_{\rm ext}^\nu\right).
+\label{eq:Zpoised}
+\end{equation}
+
+Now integrate \eqref{eq:Zpoised} over $w$ from $-\infty$ to $+\infty$. The left-hand side yields $Z_{\rm int}\,\partial_\mu F^{\mu\nu}$. Define the $w$-integrated effective source
+\begin{equation}
+\boxed{
+J_{\rm eff}^\nu(\mathbf{x},t)
+\equiv
+\int_{-\infty}^{\infty}\left(J_\psi^\nu(\mathbf{x},w,t)+J_{\rm ext}^\nu(\mathbf{x},w,t)\right)\dd w.
+}
+\label{eq:Jeff}
+\end{equation}
+We obtain the brane-effective Maxwell equation
+\begin{equation}
+Z_{\rm int}\,\partial_\mu F^{\mu\nu}
+=
+\mu_0\,J_{\rm eff}^\nu.
+\end{equation}
+Equivalently,
+\begin{equation}
+\boxed{
+\partial_\mu F^{\mu\nu}
+=
+\mu_0^{\rm eff}\,J_{\rm eff}^\nu,
+\qquad
+\mu_0^{\rm eff}\equiv \frac{\mu_0}{Z_{\rm int}}.
+}
+\label{eq:brane-maxwell}
+\end{equation}
+
+\paragraph{Interpretation.}
+The localization profile $Z(w)$ does not alter the brane Maxwell operator under the zero-mode ansatz; instead it renormalizes the coupling through the single scalar factor $Z_{\rm int}$. In this sense, the reduction yields a standard 3+1 Maxwell theory on the brane with an effective permeability $\mu_0^{\rm eff}$ determined entirely by the $w$-localization normalization.
+
+\paragraph{Consistency with source profiles.} Equation~\eqref{eq:Zpoised} is a pointwise bulk equation in $w$. A strictly $w$-independent field strength $F^{\mu\nu}(\mathbf x,t)$ can satisfy it for all $w$ only if the total source has the matching profile
+\begin{equation}
+J_\psi^\nu(\mathbf x,w,t)+J_{\rm ext}^\nu(\mathbf x,w,t)=\frac{Z(w)}{Z_{\rm int}}\,J_{\rm eff}^\nu(\mathbf x,t).
+\label{eq:source_profile_matching}
+\end{equation}
+More generally, sources with other $w$-dependence excite higher $w$-modes of $A_\mu$, and \eqref{eq:brane-maxwell} should be read as the leading equation obtained by projecting onto the zero mode. In simulations, one can enforce \eqref{eq:source_profile_matching} by choosing brane-localized sources proportional to $Z(w)$, and treat any residual mismatch as a controlled correction.
+
+
+\subsection{Effective action viewpoint}
+\label{sec:emreduction-action}
+
+The same result can be seen at the level of the action under the zero-mode assumptions. Substituting $\partial_w A_\mu=0$ and $A_w=0$ into the bulk Maxwell term in $S_{\rm EM}$ gives
+\begin{equation}
+\int \dd t\int \dd^4X\ \left(-\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}\right)
+\;\longrightarrow\;
+\left(\int_{-\infty}^{\infty} Z(w)\,\dd w\right)
+\int \dd t\int \dd^3x\ \left(-\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}\right).
+\end{equation}
+In this subsection we work in Lorenz gauge ($\partial\!\cdot\!A=0$), so the gauge-fixing term vanishes and does not affect the normalization. Absorbing $Z_{\rm int}$ into $\mu_0$ yields \eqref{eq:brane-maxwell}. This provides a compact interpretation of the reduction as ``integrating out'' $w$ in the localized Maxwell action under a brane-dominant ansatz.
+
+\subsection{Electrostatic brane limit (useful hook)}
+\label{sec:emreduction-electrostatic}
+
+In a brane electrostatic regime (time-independent fields, negligible magnetic components, and a scalar potential $\Phi_{\rm EM}$ defined by $\mathbf{E}=-\nabla_3\Phi_{\rm EM}$), the $\nu=0$ component of \eqref{eq:brane-maxwell} reduces to a Poisson equation for $\Phi_{\rm EM}$:
+\begin{equation}
+\boxed{
+\nabla_3^2 \Phi_{\rm EM} = -\,\mu_0^{\rm eff}\,J_{\rm eff}^0,
+}
+\label{eq:electrostatic-poisson}
+\end{equation}
+where $J_{\rm eff}^0$ is the effective (integrated) charge density source defined in \eqref{eq:Jeff}. This electrostatic limit is not required for the main argument of the paper, but it provides an additional consistency check: both the gravitational ``Poisson hook'' (Section~\ref{sec:poisson}) and the reduced electrostatic sector produce Poisson operators on the brane, arising from distinct controlled limits of the 4D bulk model.
+
+\paragraph{Claim boundary.}
+The bulk Maxwell equation \eqref{eq:maxwell-localized-again} is exact given the action. The reduction to \eqref{eq:brane-maxwell} is controlled by the explicit zero-mode assumptions \eqref{eq:zero-mode} (and the simplifying gauge choice \eqref{eq:lorenz-gauge} for presentation). Deviations from the zero-mode ansatz introduce additional $w$-dependent corrections and can be treated systematically as higher-mode contributions.
+
+% ============================================================
+\section{Geometry Forces and Consistency Ledger}
+\label{sec:geometry}
+
+This section collects the geometry closure introduced in Section~\ref{sec:action-geom} and makes explicit how the fields source forces on the geometry degrees of freedom (DOFs) $(a(t),L(t))$. The key point is that, because $(a,L)$ enter the field sectors through geometry-dependent coefficients (primarily the confinement potential $V_{\rm conf}(\mathbf{X};a,L)$, and optionally through other geometry-dependent terms), changes in field energy induce variational forces on $(a,L)$. This produces an unambiguous energy/force ledger, and provides a consistent route to either dynamic geometry (baseline) or a controlled quasi-static limit.
+
+\subsection{Total conservative energy and the force ledger identity}
+\label{sec:geometry-ledger}
+
+Let $H_\psi[\psi;a,L]$ denote the matter Hamiltonian associated with $\mathcal L_\psi$, and let $H_{\rm EM}[A;a,L]$ denote the electromagnetic Hamiltonian associated with $\mathcal L_{\rm EM}$ (including any explicit dependence on $(a,L)$ through $V_{\rm conf}$-dependent sources or geometry-dependent coefficients, if present). The geometry sector contributes additional potential energies $E_{\rm geom}(a,L)$ and $E_{\rm ratio}(a,L)$, where
+\begin{equation}
+E_{\rm ratio}(a,L)=\frac{\kappa}{2}\big(L-\alpha a\big)^2.
+\end{equation}
+We define the total conservative energy
+\begin{equation}
+\boxed{
+H_{\rm tot} \equiv H_\psi[\psi;a,L] + H_{\rm EM}[A;a,L] + E_{\rm geom}(a,L) + E_{\rm ratio}(a,L).
+}
+\label{eq:Htot-geometry}
+\end{equation}
+
+\paragraph{Ledger identity.}
+Given the definition \eqref{eq:Htot-geometry}, the generalized forces on the geometry DOFs are defined by energy derivatives:
+\begin{equation}
+\boxed{
+F_a \equiv -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+F_L \equiv -\frac{\partial H_{\rm tot}}{\partial L}.
+}
+\label{eq:ledger-forces}
+\end{equation}
+This is the non-negotiable bookkeeping identity: it is simply the definition of generalized forces for parameters entering the Hamiltonian.
+
+\subsection{Field contributions to geometry forces}
+\label{sec:geometry-fieldforces}
+
+The forces \eqref{eq:ledger-forces} split naturally into matter, EM, and purely geometric contributions:
+\begin{equation}
+F_a = F_a^{(\psi)} + F_a^{({\rm EM})} + F_a^{({\rm geom})} + F_a^{({\rm ratio})},
+\qquad
+F_L = F_L^{(\psi)} + F_L^{({\rm EM})} + F_L^{({\rm geom})} + F_L^{({\rm ratio})}.
+\end{equation}
+
+\paragraph{Matter contribution (Hellmann--Feynman form).}
+In Paper~7 the primary geometry dependence of the matter sector enters through the confinement potential $V_{\rm conf}(\mathbf{X};a,L)$. The matter Hamiltonian has the generic structure
+\begin{equation}
+H_\psi = \int \dd^4X\ \left[
+\frac{\hbar^2}{2m}(D_i\psi)^*(D_i\psi)
++ V_{\rm conf}(\mathbf{X};a,L)\,\rho
++ U(\rho)
+\right],
+\end{equation}
+so differentiating with respect to $a$ and $L$ yields the clean field-force expressions
+\begin{equation}
+\boxed{
+F_a^{(\psi)} = -\frac{\partial H_\psi}{\partial a}
+=
+-\int \dd^4X\ \rho(\mathbf{X},t)\,\partial_a V_{\rm conf}(\mathbf{X};a,L),
+}
+\label{eq:Fa-matter}
+\end{equation}
+\begin{equation}
+\boxed{
+F_L^{(\psi)} = -\frac{\partial H_\psi}{\partial L}
+=
+-\int \dd^4X\ \rho(\mathbf{X},t)\,\partial_L V_{\rm conf}(\mathbf{X};a,L).
+}
+\label{eq:FL-matter}
+\end{equation}
+Equations \eqref{eq:Fa-matter}--\eqref{eq:FL-matter} are the basic ``force from confinement'' terms: they state that the field density pushes on geometry by loading regions where the confinement gradients are nonzero.
+
+\paragraph{Electromagnetic contribution.}
+If the electromagnetic sector depends on $(a,L)$ only through the fields $A_M$ (with a fixed $Z(w)$ and no explicit geometry-dependent coefficients), then $H_{\rm EM}$ does not contribute an explicit parametric derivative. However, if the model introduces geometry dependence in EM localization, effective material response, or external-source profiles (e.g.\ if $Z$ or prescribed $J_{\rm ext}$ are allowed to depend on geometry parameters), then the EM contribution is
+\begin{equation}
+F_a^{({\rm EM})}=-\frac{\partial H_{\rm EM}}{\partial a},
+\qquad
+F_L^{({\rm EM})}=-\frac{\partial H_{\rm EM}}{\partial L},
+\end{equation}
+with the derivatives taken holding the instantaneous fields fixed. Here we treat $Z(w)$ as fixed and geometry-independent; any additional $(a,L)$ dependence in the EM sector can be added consistently as an extension.
+
+\paragraph{Optional ratio penalty and pure geometry contributions.}
+The ratio penalty \eqref{eq:Eratio} yields explicit forces (vanishing when $\kappa=0$)
+\begin{equation}
+\boxed{
+F_a^{({\rm ratio})} = -\frac{\partial E_{\rm ratio}}{\partial a}
+=
++\kappa\alpha\,(L-\alpha a),
+\qquad
+F_L^{({\rm ratio})} = -\frac{\partial E_{\rm ratio}}{\partial L}
+=
+-\kappa\,(L-\alpha a).
+}
+\label{eq:ratio-forces}
+\end{equation}
+The remaining purely geometric force components are
+\begin{equation}
+F_a^{({\rm geom})}=-\frac{\partial E_{\rm geom}}{\partial a},
+\qquad
+F_L^{({\rm geom})}=-\frac{\partial E_{\rm geom}}{\partial L}.
+\end{equation}
+
+\subsection{Minimal geometry energy model (baseline choice)}
+\label{sec:geometry-Egeom}
+
+To close the geometry energetics at the level of an effective model, we adopt a minimal tube-inspired energy functional
+\begin{equation}
+\boxed{
+E_{\rm geom}(a,L)=P_{\rm vac}\,V(a,L)+\sigma\,A(a,L),
+}
+\label{eq:Egeom}
+\end{equation}
+where $P_{\rm vac}$ is an effective volume-pressure coefficient, $\sigma$ is an effective surface tension, and
+\begin{equation}
+V(a,L)=\frac{4\pi}{3}a^3\,L,
+\qquad
+A(a,L)=4\pi a^2\,L + 2\cdot \frac{4\pi}{3}a^3.
+\label{eq:VAdefs}
+\end{equation}
+
+\noindent\emph{Geometric note.} These are the natural 4D spatial \emph{tube} measures for the product geometry $B^3(a)\times[0,L]$: a corridor of length $L$ in the $w$ direction with a 3-ball cross-section of radius $a$ in the brane directions. The boundary ``area'' $A$ is the 3D hyperarea of $ \partial(B^3\times I)$, consisting of the side $S^2(a)\times[0,L]$ plus two endcaps $B^3(a)$.
+
+Here $V$ represents an effective tube volume and $A$ an effective surface area including two end-caps. This choice is not intended as a microscopic wall theory; it provides a compact, differentiable energetic closure that supports breathing/ringing and yields explicit restoring forces.
+
+Differentiating \eqref{eq:Egeom} gives
+\begin{equation}
+\frac{\partial E_{\rm geom}}{\partial a}
+=
+P_{\rm vac}\,\frac{\partial V}{\partial a}
++
+\sigma\,\frac{\partial A}{\partial a},
+\qquad
+\frac{\partial E_{\rm geom}}{\partial L}
+=
+P_{\rm vac}\,\frac{\partial V}{\partial L}
++
+\sigma\,\frac{\partial A}{\partial L},
+\end{equation}
+with
+\begin{equation}
+\frac{\partial V}{\partial a}=4\pi a^2 L,
+\qquad
+\frac{\partial V}{\partial L}=\frac{4\pi}{3}a^3,
+\qquad
+\frac{\partial A}{\partial a}=8\pi a L + 8\pi a^2,
+\qquad
+\frac{\partial A}{\partial L}=4\pi a^2.
+\end{equation}
+These expressions can be inserted directly into the geometry equations of motion below.
+
+\subsection{Dynamic geometry equations and controlled quasi-static limits}
+\label{sec:geometry-dynamics}
+
+The geometry closure adopted in Paper~7 treats $(a,L)$ as dynamical DOFs with effective inertias and damping (Section~\ref{sec:action-geom}). Using the force definitions \eqref{eq:ledger-forces}, the baseline evolution laws are
+\begin{equation}
+\boxed{
+M_a \ddot a + \Gamma_a \dot a = -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+M_L \ddot L + \Gamma_L \dot L = -\frac{\partial H_{\rm tot}}{\partial L}.
+}
+\label{eq:geom-eom-again}
+\end{equation}
+Substituting the decomposition of $H_{\rm tot}$ gives the explicit ledger-consistent form
+\begin{align}
+M_a \ddot a + \Gamma_a \dot a
+&=
+F_a^{(\psi)} + F_a^{({\rm EM})} + F_a^{({\rm geom})} + F_a^{({\rm ratio})},
+\\
+M_L \ddot L + \Gamma_L \dot L
+&=
+F_L^{(\psi)} + F_L^{({\rm EM})} + F_L^{({\rm geom})} + F_L^{({\rm ratio})},
+\end{align}
+with the matter and ratio terms given explicitly by \eqref{eq:Fa-matter}, \eqref{eq:FL-matter}, and \eqref{eq:ratio-forces}.
+
+\paragraph{Quasi-static reductions.}
+A quasi-static geometry approximation is not assumed in the baseline model; instead it appears as a controlled limit of \eqref{eq:geom-eom-again}. Two common limits are:
+\begin{itemize}[leftmargin=2.0em]
+\item \textbf{Overdamped limit:} when $\Gamma_a,\Gamma_L$ are large compared to inertial timescales, one may neglect $\ddot a,\ddot L$ and obtain first-order relaxation:
+\begin{equation}
+\Gamma_a \dot a \approx -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+\Gamma_L \dot L \approx -\frac{\partial H_{\rm tot}}{\partial L}.
+\end{equation}
+\item \textbf{Instantaneous minimization:} in the limit of very fast relaxation (or formally $\Gamma\to\infty$ with slow forcing), the geometry tracks local energy minima:
+\begin{equation}
+\frac{\partial H_{\rm tot}}{\partial a}\approx 0,
+\qquad
+\frac{\partial H_{\rm tot}}{\partial L}\approx 0,
+\end{equation}
+with $\kappa$ controlling the ratio penalty stiffness when used (set $\kappa=0$ to omit the penalty).
+\end{itemize}
+These limits provide a bridge to earlier quasi-static treatments while keeping the baseline paper internally consistent with the dynamic geometry motivation.
+
+\subsection{Interpretation: energy exchange and stability}
+\label{sec:geometry-interpretation}
+
+The ledger formulation clarifies how energy is exchanged between fields and geometry. Field configurations that increase confinement loading in regions where $\partial_{a,L}V_{\rm conf}$ is large produce forces that either expand or contract the effective tube. If $\kappa>0$, the ratio penalty introduces a preferred manifold $L\approx \alpha a$ with stiffness $\kappa$, allowing departures during excitation while restoring the geometry toward the stable relation. Damping $(\Gamma_a,\Gamma_L)$ provides a controlled mechanism for relaxation and ringing, consistent with the physical expectation that the localized structure can oscillate and shed energy rather than remaining perfectly elastic.
+
+In later numerical work, one can monitor each force contribution in the right-hand side of \eqref{eq:geom-eom-again} to diagnose which sector (matter loading, ratio penalty, or geometry energy) dominates a given dynamical regime.
+
+% ============================================================
+\section{Discussion, Limitations, and How to Use the Framework}
+\label{sec:discussion}
+
+This paper is primarily a \emph{framework} result: it provides an action-based 4D model, exact identities for projection-defined brane observables, and controlled reductions that connect the 4D dynamics to familiar 3D operators (notably Poisson on the brane). The value of the framework is that it makes explicit (i) what is exact, (ii) what is a controlled reduction under stated assumptions, and (iii) what is a regime statement that must be justified a posteriori (analytically or numerically).
+
+\subsection{Claim taxonomy: exact vs controlled vs regime}
+\label{sec:discussion-claims}
+
+A recurring source of confusion in brane-inspired modeling is unmarked movement between definitions, reductions, and approximations. Here we keep those categories separate.
+
+\paragraph{Exact statements (from the declared model).}
+The following hold exactly given the action and definitions:
+\begin{itemize}[leftmargin=2.0em]
+\item The bulk matter equation of motion is the gauged 4D GNLS \eqref{eq:gnls} with EOS term $h(\rho)$ fixed by the chosen $U(\rho)$.
+\item The bulk continuity identity \eqref{eq:bulk-continuity} holds with the conserved current \eqref{eq:number-current}.
+\item The localized Maxwell equation \eqref{eq:maxwell-localized} holds with the frozen source bookkeeping $J_{\rm tot}=J_\psi+J_{\rm ext}$.
+\item The Madelung rewriting yields the exact Euler-like form \eqref{eq:euler-like} and vorticity--gauge identity \eqref{eq:vorticity-gauge}.
+\item For any normalized projection weight $W(w)$, the projected continuity/leakage identity \eqref{eq:proj-continuity}--\eqref{eq:Sleak-general} is exact.
+\item The geometry force ledger definition \eqref{eq:ledger-forces} and the matter force contributions \eqref{eq:Fa-matter}--\eqref{eq:FL-matter} are exact given the chosen $V_{\rm conf}(\mathbf{X};a,L)$.
+\end{itemize}
+
+\paragraph{Controlled reductions (assumption-marked).}
+The following are reductions that hold under explicit ans\"atze:
+\begin{itemize}[leftmargin=2.0em]
+\item The effective brane Maxwell theory \eqref{eq:brane-maxwell} holds under the zero-mode assumptions \eqref{eq:zero-mode} (and the chosen gauge for presentation), yielding $\mu_0^{\rm eff}=\mu_0/Z_{\rm int}$.
+\item Quasi-static geometry behavior is a controlled limit of the dynamic geometry laws \eqref{eq:geom-eom-again} (e.g.\ overdamped or instantaneous minimization limits).
+\end{itemize}
+
+\paragraph{Regime statements (must be validated).}
+The following require additional smallness/scale assumptions:
+\begin{itemize}[leftmargin=2.0em]
+\item The Poisson \emph{equation} \eqref{eq:poisson-approx} is a regime reduction of the exact longitudinal identity \eqref{eq:longitudinal-identity}; it requires quasi-static/longitudinal dominance and suppression of explicit correction terms.
+\item The inverse-square scaling derived from Poisson (Section~\ref{sec:poisson-invsq}) holds when the effective source is localized relative to the observation scale and the Poisson regime applies.
+\end{itemize}
+
+\subsection{What the framework explains cleanly}
+\label{sec:discussion-explains}
+
+\paragraph{Why Poisson appears without assuming Newton.}
+A central objective of this paper is to show how a Poisson operator arises \emph{structurally} from brane observables. The key result is the exact longitudinal identity \eqref{eq:longitudinal-identity}, which places a 3D Laplacian on the brane velocity potential $\varphi$ once the brane velocity is decomposed into longitudinal and transverse parts. The inverse-square scaling then follows from the Green's function of the 3D Laplacian, rather than being postulated as a force law.
+
+\paragraph{Why leakage is not optional.}
+Projected (brane) density is an observable derived from the full 4D system. Even when the bulk density is strictly conserved, the brane-projected density can change due to $w$-directed flux. This is encoded by the exact leakage source $S_{\rm leak}$. Any brane-only model that attempts to ignore leakage is therefore not equivalent to the underlying 4D framework unless it can justify $S_{\rm leak}\approx 0$ as a controlled approximation.
+
+\paragraph{How geometry couples consistently.}
+Treating $(a,L)$ as dynamical DOFs provides a bookkeeping-consistent mechanism for energy exchange between fields and confinement geometry. If the optional ratio penalty is used, it encodes a preferred stability manifold $L\approx \alpha a$ while allowing departures under excitation, which is important if one later extends beyond simple single-throat configurations.
+
+\subsection{Limitations and open modeling choices}
+\label{sec:discussion-limitations}
+
+The framework is intentionally explicit about what it does \emph{not} fix.
+
+\paragraph{Choice of confinement potential $V_{\rm conf}(\mathbf{X};a,L)$.}
+The derivations assume only that $V_{\rm conf}$ is differentiable in $(a,L)$ and sufficiently confining in $w$ to justify decay assumptions where invoked. Different functional families for $V_{\rm conf}$ will produce different detailed force laws and stability behavior, while preserving the structural identities (continuity, projection/leakage, longitudinal identity).
+
+\paragraph{Choice of projection weight $W(w)$.}
+The brane observables depend on the measurement kernel $W(w)$. While the projected identities hold for any normalized $W$, the magnitude and interpretation of leakage terms depend on $W'(w)$ and on the behavior of $j^w$. In applications, one should treat $W$ as part of the operational definition of the brane observer/measurement.
+
+\paragraph{Higher modes in EM reduction.}
+The effective brane Maxwell theory is derived under the zero-mode ansatz \eqref{eq:zero-mode}. Departures from the ansatz introduce higher-mode corrections (nonzero $A_w$, $\partial_w A_\mu\neq 0$) that can be treated systematically but are not included in the simplest reduced brane equation.
+
+\paragraph{Quantifying the Poisson regime.}
+The Poisson reduction is a regime statement. A complete demonstration requires quantifying the neglected terms in \eqref{eq:longitudinal-identity} (time variation, transverse components, density-gradient correction, and leakage structure) in the scenarios of interest. This can be done analytically in simplified settings or numerically in full simulations.
+
+\paragraph{Effective mechanical parameters.}
+The geometry closure introduces effective inertias $M_a,M_L$ and damping $\Gamma_a,\Gamma_L$ (and, if the optional ratio penalty is used, a ratio stiffness $\kappa$). These parameters are not derived microscopically here; they are placeholders for coarse-grained wall dynamics. The framework remains consistent for any positive choices, but stability/oscillation timescales depend on their values.
+
+\subsection{How to use the framework in practice}
+\label{sec:discussion-howto}
+
+We outline a practical workflow for applying the model to a concrete question (e.g.\ recovering Newtonian scaling on the brane, or studying EM behavior near the localized region).
+
+\paragraph{Step 1: Fix the model inputs.}
+Choose:
+\begin{itemize}[leftmargin=2.0em]
+\item a confinement family $V_{\rm conf}(\mathbf{X};a,L)$ and an EM localization profile $Z(w)$,
+\item a brane projection weight $W(w)$ (measurement definition),
+\item external/background sources $J_{\rm ext}^M$ consistent with the single-source bookkeeping,
+\item geometry parameters $(M_a,M_L,\Gamma_a,\Gamma_L,\kappa,\alpha)$ and a baseline $E_{\rm geom}(a,L)$.
+\end{itemize}
+
+\paragraph{Step 2: Solve or analyze the bulk EOMs.}
+Evolve the coupled system \eqref{eq:gnls} and \eqref{eq:maxwell-localized} together with the geometry laws \eqref{eq:geom-eom-again}, or analyze them in an appropriate limit (e.g.\ weak EM, overdamped geometry).
+
+\paragraph{Step 3: Construct brane observables.}
+Compute $\rho_{\rm brane}$ and $\mathbf{j}_{\rm brane}$ by projection. Evaluate the leakage term $S_{\rm leak}$ using \eqref{eq:Sleak-general} (or \eqref{eq:Sleak-simplified} when justified).
+
+\paragraph{Step 4: Diagnose the Poisson regime.}
+Compute the correction terms in \eqref{eq:longitudinal-identity}:
+\begin{equation}
+\mathcal{C} \equiv
+\partial_t\rho_{\rm brane}
++
+\nabla_3\rho_{\rm brane}\cdot(\nabla_3\varphi+\mathbf{v}_T),
+\end{equation}
+and compare their magnitude to $S_{\rm leak}$ (or to whatever source dominates the right-hand side). When $\mathcal{C}$ is small and $\rho_{\rm brane}\approx\rho_0$ is slowly varying, the Poisson approximation \eqref{eq:poisson-approx} is justified, and inverse-square behavior follows at scales larger than the source region.
+
+\paragraph{Step 5: Use controlled reductions when appropriate.}
+When the EM field is brane-dominant and higher modes are negligible, use the effective brane Maxwell equation \eqref{eq:brane-maxwell} with $\mu_0^{\rm eff}=\mu_0/Z_{\rm int}$ as a simplified description. When geometry is overdamped, use the quasi-static limits of Section~\ref{sec:geometry-dynamics}.
+
+\subsection{Outlook}
+\label{sec:discussion-outlook}
+
+The framework presented here is designed to be extended. Natural next steps include:
+\begin{itemize}[leftmargin=2.0em]
+\item explicit numerical demonstrations that quantify the Poisson regime and measure the size of leakage/correction terms,
+\item systematic inclusion of higher EM modes beyond the zero-mode ansatz,
+\item richer geometry closures (additional DOFs, nonlinear damping, coupling to additional internal wall modes),
+\item multi-throat and composite configurations in which the ratio penalty becomes a dynamical stability principle rather than a single-configuration heuristic.
+\end{itemize}
+In each case, the utility of the present paper is that the bookkeeping is fixed: exact identities remain exact, controlled reductions are marked, and regime assumptions are transparent and testable.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented a unified, action-based four-dimensional framework that cleanly separates bulk dynamics from brane-observable physics defined by projection. The model consists of (i) a gauged 4D nonlinear Schr\"odinger matter sector with a frozen stiff equation of state and an explicit confinement potential $V_{\rm conf}(\mathbf{X};a,L)$, (ii) a localized Maxwell sector with an explicit localization profile $Z(w)$ and referee-safe source bookkeeping that distinguishes the dynamical matter current $J_\psi$ from external/background sources $J_{\rm ext}$, and (iii) a minimal but consistent geometry closure in which the throat geometry is represented by two dynamical degrees of freedom, the effective radius $a(t)$ and length $L(t)$, optionally supplemented by a stiff ratio penalty $E_{\rm ratio}$ enforcing $L\simeq \alpha a$.
+
+A central result of the paper is that projection-defined brane observables satisfy exact identities that do not require imposing boundary matching conditions. In particular, from bulk conservation and the definition of the projection kernel $W(w)$ we derive an exact projected continuity equation with an explicit leakage source $S_{\rm leak}$ that encodes exchange through the extra coordinate. Applying a Helmholtz decomposition to the brane velocity then yields an exact longitudinal identity in which the 3D Laplacian acts on a brane velocity potential $\varphi$. In a controlled regime (quasi-static, longitudinal-dominant, weak correction terms, and slowly varying $\rho_{\rm brane}$), this identity reduces to a standard Poisson equation on the brane. The inverse-square scaling follows directly from the Green's function of the 3D Laplacian, providing a clean structural route to $1/r^2$ behavior without postulating Newton's law as an input.
+
+We also presented a controlled electromagnetic reduction: under a brane-dominant zero-mode ansatz for the gauge field, integrating the localized bulk Maxwell equation over the extra coordinate yields an effective brane Maxwell theory with renormalized coupling $\mu_0^{\rm eff}=\mu_0/Z_{\rm int}$ where $Z_{\rm int}=\int Z(w)\,\dd w$. Together, the Poisson regime and the EM localization reduction illustrate the intended use of the framework: familiar 3D operators and effective laws appear as limits of the underlying 4D model, with assumptions made explicit.
+
+Finally, we emphasized what the paper does and does not claim. The exact projection identities imply that leakage and stress corrections are intrinsic to brane-observable dynamics and must be handled rather than ignored. The Poisson equation and inverse-square behavior are regime statements whose validity can be quantified by evaluating the explicit correction terms in the longitudinal identity. The geometry closure is an effective mechanical model designed to make energy exchange and forces explicit, not a microscopic derivation of wall physics.
+
+The framework is therefore ready to be used as a consistent foundation for targeted analyses and numerical demonstrations: one can specify $(V_{\rm conf},W,Z,J_{\rm ext})$, evolve the coupled bulk--geometry system, and directly test when and how accurately brane Poisson behavior emerges, as well as how geometry dynamics modulates the effective brane laws. This provides a concrete bridge between earlier 3D phenomenology and a fully 4D, variationally consistent description.
+
+% ============================================================
+\appendix
+
+\section{Mathematica Verification Harness Outputs}
+\label{app:wl}
+
+This appendix summarizes the role and content of the Mathematica verification harnesses used to check the paper’s equation stack. The harnesses are designed to (i) reduce algebraic ambiguity in the variational derivations, (ii) ensure consistent sign/normalization conventions across sectors, and (iii) provide a reproducible “paper-form” equation printout that matches the main text.
+
+\paragraph{Scope of this appendix.}
+We do \emph{not} include the full Mathematica source code in the paper. Instead, we (a) state what each harness verifies, (b) list the key identities/equations the harness prints in final paper form, and (c) describe how to reproduce the output exactly. The complete scripts are included in the project files:
+\begin{itemize}[leftmargin=2.0em]
+\item \texttt{4d\_master\_derivations.wl} (full equation-stack harness; final printed output appears at the end of the script execution),
+\item \texttt{brane\_momentum\_appendix\_min.wl} (minimal momentum-projection appendix harness; final printed output appears at the end).
+\end{itemize}
+
+\subsection{Reproducibility: how to run the harnesses}
+\label{app:wl-repro}
+
+From a shell with Mathematica available, run:
+\begin{verbatim}
+math -script 4d_master_derivations.wl
+math -script brane_momentum_appendix_min.wl
+\end{verbatim}
+The harnesses print a compact “paper-form” output block near the end of execution. In the repository versions used for this paper, the final printed output blocks are also copied into the final comment section of each file for convenience.
+
+\subsection{What \texttt{4d\_master\_derivations.wl} verifies}
+\label{app:wl-master}
+
+The master harness verifies internal consistency of the complete model specification in Sections~\ref{sec:action}--\ref{sec:eom}. Concretely, it performs symbolic checks and prints the final forms used in the paper for:
+
+\paragraph{(i) Matter sector: Lagrangian and EOM.}
+The harness prints the full matter Lagrangian density (including the symplectic time term, kinetic term, confinement loading, and EOS self-interaction) and verifies that the Euler--Lagrange variation with respect to $\psi^*$ yields the stated gauged 4D GNLS equation \eqref{eq:gnls}. This includes confirming the EOS mapping $U(\rho)\mapsto h(\rho)=\dd U/\dd\rho$ for the frozen stiff polytrope in Section~\ref{sec:eos}.
+
+\paragraph{(ii) Current/continuity identity.}
+Using the covariant-derivative structure, the harness prints the conserved number current in paper form and verifies the exact bulk continuity identity \eqref{eq:bulk-continuity}.
+
+\paragraph{(iii) Madelung/Euler-like rewriting.}
+The harness verifies the Madelung dictionary used in Section~\ref{sec:eom-madelung}, including the compact quantum potential form \eqref{eq:quantum-potential}, and prints the Euler-like equation \eqref{eq:euler-like} (in compact index form) together with the vorticity--gauge identity \eqref{eq:vorticity-gauge}.
+
+\paragraph{(iv) EM sector in compact invariant form.}
+The harness prints the localized Maxwell Lagrangian density and the resulting Maxwell equation in compact invariant form consistent with Section~\ref{sec:action-em} and Section~\ref{sec:eom-maxwell}. Importantly, it enforces the frozen bookkeeping convention that explicit source terms in the EM Lagrangian correspond to external/background sources $J_{\rm ext}$, while the matter current $J_\psi$ arises from the covariant derivative coupling.
+
+\paragraph{(v) Projection/leakage identity.}
+The harness prints the projected continuity identity \eqref{eq:proj-continuity} and the leakage source term $S_{\rm leak}$ in the boundary+kernel-derivative form \eqref{eq:Sleak-general}, including the commonly used simplification \eqref{eq:Sleak-simplified} under the stated fast-decay assumption.
+
+\subsection{What \texttt{brane\_momentum\_appendix\_min.wl} verifies}
+\label{app:wl-momentum}
+
+The momentum appendix harness verifies the structure described qualitatively in Section~\ref{sec:projection-momentum} and in detail in Appendix~\ref{app:momentum}. Its purpose is to make explicit (and algebraically check) the terms that appear when projecting bulk momentum dynamics to brane observables.
+
+\paragraph{(i) Momentum leakage terms.}
+The harness identifies the $w$-flux contributions that appear when projecting momentum balance, analogous to the leakage term $S_{\rm leak}$ in projected continuity. These terms originate from the $w$-directed momentum flux and/or from integration-by-parts manipulations involving the projection kernel $W(w)$.
+
+\paragraph{(ii) Stress/non-commutation corrections.}
+The harness prints the explicit difference between projected nonlinear products and products of projected fields, e.g.
+\[
+\langle \rho v_a v_b\rangle_W - \langle \rho\rangle_W \langle v_a\rangle_W\langle v_b\rangle_W,
+\]
+which may be organized into a Reynolds-/stress-like correction tensor. This is the precise algebraic statement behind “projection does not commute with nonlinear dynamics.”
+
+\subsection{Interpretation: what the harnesses guarantee (and what they do not)}
+\label{app:wl-interpret}
+
+The harnesses guarantee that the symbolic manipulations used in the paper are internally consistent with the declared action and definitions: signs, factors of $\hbar$, $m$, $q$, index contractions, and the placement of derivative operators are checked against the printed final forms. They do \emph{not} guarantee that any particular regime approximation (e.g.\ the Poisson regime of Section~\ref{sec:poisson-regime}) is valid for a given physical scenario; such regime validity must be established separately by estimating or numerically measuring the size of the correction terms explicitly retained in the exact identities (e.g.\ \eqref{eq:longitudinal-identity}).
+
+\section{Brane Momentum Projection Details}
+\label{app:momentum}
+
+This appendix records the structural form of the projected (brane) momentum balance and makes explicit the two unavoidable features introduced by projection:
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Momentum leakage:} boundary/kernel terms sourced by $w$-directed momentum flux, analogous to the leakage term $S_{\rm leak}$ in projected continuity.
+\item \textbf{Stress/non-commutation corrections:} terms arising because projection does not commute with nonlinear products (e.g.\ $\langle \rho v_a v_b\rangle_W \neq \langle\rho\rangle_W \langle v_a\rangle_W \langle v_b\rangle_W$ in general).
+\end{enumerate}
+The purpose of this appendix is not to produce a closed 3D Euler system, but to state precisely what the projected momentum equation contains, so that any brane-only closure is clearly marked as an approximation.
+
+\subsection{Definitions and projection identities}
+\label{app:momentum-defs}
+
+Let $W(w)$ be the normalized projection weight \eqref{eq:Wnorm} and define weighted averages
+\begin{equation}
+\langle f\rangle_W(\mathbf{x},t)\equiv \int_{-\infty}^{\infty}W(w)\,f(\mathbf{x},w,t)\,\dd w.
+\end{equation}
+Recall
+\begin{equation}
+\rho_{\rm brane}=\langle \rho\rangle_W,
+\qquad
+j_{{\rm brane},a}=\langle j_a\rangle_W,
+\qquad
+v_{{\rm brane},a} = \frac{j_{{\rm brane},a}}{\rho_{\rm brane}}
+\quad (\rho_{\rm brane}>0),
+\end{equation}
+where $a\in\{x,y,z\}$ indexes brane directions.
+
+For the bulk dynamics, it is convenient to introduce the bulk velocity field $v_i$ defined by $j_i=\rho v_i$ (Section~\ref{sec:eom-continuity}, \eqref{eq:bulk-velocity}). The exact bulk Euler-like equation \eqref{eq:euler-like} can be written as
+\begin{equation}
+m(\partial_t+v_j\partial_j)v_i
+=
+q(E_i+v_j B_{ij})
+-\partial_i\Pi,
+\qquad
+\Pi \equiv V_{\rm conf}+h(\rho)+Q(\rho),
+\label{eq:bulk-euler-Pi}
+\end{equation}
+where $i,j\in\{x,y,z,w\}$ and $Q$ is the quantum potential.
+
+\subsection{Bulk momentum balance form}
+\label{app:momentum-bulkbalance}
+
+To project momentum, it is useful to cast \eqref{eq:bulk-euler-Pi} into a conservative (flux) form. Multiply \eqref{eq:bulk-euler-Pi} by $\rho$ and use continuity to reorganize the convective term. A standard identity gives
+\begin{equation}
+\rho(\partial_t+v_j\partial_j)v_a
+=
+\partial_t(\rho v_a) + \partial_j(\rho v_a v_j),
+\end{equation}
+so the brane-component ($i=a$) of the bulk Euler-like equation implies the exact bulk momentum balance
+\begin{equation}
+\boxed{
+\partial_t(\rho v_a) + \partial_j(\rho v_a v_j)
+=
+\frac{q}{m}\rho\,(E_a+v_j B_{aj})
+-\frac{1}{m}\rho\,\partial_a\Pi,
+}
+\label{eq:bulk-momentum-balance}
+\end{equation}
+where $j\in\{x,y,z,w\}$ and $a\in\{x,y,z\}$.
+
+\paragraph{Decomposition of the flux divergence.}
+Split the index $j$ into brane and $w$ parts:
+\begin{equation}
+\partial_j(\rho v_a v_j)
+=
+\partial_b(\rho v_a v_b) + \partial_w(\rho v_a v_w),
+\qquad b\in\{x,y,z\}.
+\label{eq:flux-split}
+\end{equation}
+This split makes it transparent which terms become brane divergences and which become leakage-type terms after projection.
+
+\subsection{Projected brane momentum balance: exact identity}
+\label{app:momentum-projected}
+
+Multiply \eqref{eq:bulk-momentum-balance} by $W(w)$ and integrate over $w$. Define the projected brane momentum density
+\begin{equation}
+p_{{\rm brane},a}(\mathbf{x},t)\equiv \langle \rho v_a\rangle_W = \int W(w)\,\rho(\mathbf{x},w,t)\,v_a(\mathbf{x},w,t)\,\dd w.
+\label{eq:pbrane-def}
+\end{equation}
+Using \eqref{eq:flux-split} and integrating by parts in $w$ yields the exact projected momentum identity
+\begin{equation}
+\boxed{
+\partial_t p_{{\rm brane},a}
++
+\partial_b \left\langle \rho v_a v_b \right\rangle_W
+=
+\mathcal{S}^{({\rm mom})}_a
++
+\mathcal{L}^{({\rm mom})}_a,
+}
+\label{eq:proj-momentum-raw}
+\end{equation}
+where:
+\begin{itemize}[leftmargin=2.0em]
+\item $\mathcal{S}^{({\rm mom})}_a$ is the \emph{projected source/force} from the right-hand side of \eqref{eq:bulk-momentum-balance},
+\item $\mathcal{L}^{({\rm mom})}_a$ is the \emph{momentum leakage} induced by $w$-flux.
+\end{itemize}
+
+\paragraph{Projected force/source term.}
+Project the force density terms directly:
+\begin{equation}
+\boxed{
+\mathcal{S}^{({\rm mom})}_a
+\equiv
+\left\langle
+\frac{q}{m}\rho\,(E_a+v_j B_{aj})
+-\frac{1}{m}\rho\,\partial_a\Pi
+\right\rangle_W.
+}
+\label{eq:proj-mom-source}
+\end{equation}
+This contains: (i) the projected Lorentz-type force density, (ii) the projected confinement/EOS/quantum-potential gradient term.
+
+\paragraph{Momentum leakage term.}
+The $w$-flux term projects as
+\begin{equation}
+\int W\,\partial_w(\rho v_a v_w)\,\dd w
+=
+\left[ W\,\rho v_a v_w \right]_{-\infty}^{+\infty}
+-
+\int W'(w)\,\rho v_a v_w\,\dd w.
+\end{equation}
+Therefore the momentum leakage is
+\begin{equation}
+\boxed{
+\mathcal{L}^{({\rm mom})}_a
+\equiv
+-\left[ W(w)\,\rho v_a v_w \right]_{-\infty}^{+\infty}
++
+\int_{-\infty}^{\infty} W'(w)\,\rho v_a v_w\,\dd w.
+}
+\label{eq:proj-mom-leak}
+\end{equation}
+Under the same fast-decay assumption used for continuity (i.e.\ $W\,\rho v_a v_w\to 0$ as $|w|\to\infty$), the boundary term vanishes and
+\begin{equation}
+\mathcal{L}^{({\rm mom})}_a
+=
+\int W'(w)\,\rho v_a v_w\,\dd w.
+\end{equation}
+
+Equation~\eqref{eq:proj-momentum-raw} is an exact identity: it follows from the bulk momentum balance and the definition of projection.
+
+\subsection{Stress/non-commutation corrections and a brane-level form}
+\label{app:momentum-stress}
+
+To express \eqref{eq:proj-momentum-raw} in terms of the brane velocity $\mathbf{v}_{\rm brane}$, introduce the decomposition
+\begin{equation}
+\left\langle \rho v_a v_b \right\rangle_W
+=
+\rho_{\rm brane}\,v_{{\rm brane},a}\,v_{{\rm brane},b}
++
+\tau_{ab},
+\label{eq:stress-decomp}
+\end{equation}
+where the \emph{projection-induced stress correction} $\tau_{ab}$ is defined by
+\begin{equation}
+\boxed{
+\tau_{ab}
+\equiv
+\left\langle \rho v_a v_b \right\rangle_W
+-
+\rho_{\rm brane}\,v_{{\rm brane},a}\,v_{{\rm brane},b}.
+}
+\label{eq:tau-def}
+\end{equation}
+This tensor is the precise measure of non-commutation between projection and nonlinear products; it vanishes only in special cases (e.g.\ when the $w$-dependence of $v_a$ is negligible within the support of $W$).
+
+Using \eqref{eq:stress-decomp}, the projected momentum identity \eqref{eq:proj-momentum-raw} becomes
+\begin{equation}
+\boxed{
+\partial_t(\rho_{\rm brane} v_{{\rm brane},a})
++
+\partial_b\!\left(\rho_{\rm brane} v_{{\rm brane},a} v_{{\rm brane},b}\right)
+=
+\mathcal{S}^{({\rm mom})}_a
++
+\mathcal{L}^{({\rm mom})}_a
+-
+\partial_b\tau_{ab}.
+}
+\label{eq:proj-momentum-braneform}
+\end{equation}
+Equation~\eqref{eq:proj-momentum-braneform} is still exact: it is simply \eqref{eq:proj-momentum-raw} rewritten using the definition \eqref{eq:tau-def}. It makes transparent that any attempt to interpret the brane-projected dynamics as a closed 3D Euler system requires modeling or bounding $\tau_{ab}$ and $\mathcal{L}^{({\rm mom})}_a$.
+
+\paragraph{Connection to Reynolds stress.}
+If one defines an average brane velocity within the projection kernel, $\tau_{ab}$ plays the role of a Reynolds-type stress (but generated by extra-dimensional structure rather than statistical turbulence). In numerical work, $\tau_{ab}$ can be measured directly from bulk fields and used to quantify the accuracy of any brane-only approximation.
+
+\subsection{Practical regimes and simplifications}
+\label{app:momentum-regimes}
+
+Although \eqref{eq:proj-momentum-braneform} is exact, the paper uses it mainly to clarify what must be small for simplified brane dynamics.
+
+\paragraph{Thin-support (brane-dominant) regime.}
+If the $w$-dependence of brane-parallel velocity is weak within the support of $W$, i.e.\ $v_a(\mathbf{x},w,t)\approx v_a(\mathbf{x},0,t)$ for $w$ where $W(w)$ is appreciable, then $\tau_{ab}$ is small and
+\begin{equation}
+\left\langle \rho v_a v_b \right\rangle_W \approx \rho_{\rm brane} v_{{\rm brane},a} v_{{\rm brane},b}.
+\end{equation}
+This is the precise sense in which projection approaches a closed brane Euler form.
+
+\paragraph{Small $w$-flux regime.}
+If $v_w$ is small in the support of $W$ (or if $\rho v_a v_w$ is small), then the leakage term $\mathcal{L}^{({\rm mom})}_a$ is suppressed. This is the momentum-sector analog of $S_{\rm leak}\approx 0$ in continuity.
+
+\paragraph{Claim boundary.}
+The identities in this appendix are exact. Any reduction to a closed brane momentum equation requires additional assumptions that suppress $\tau_{ab}$ and $\mathcal{L}^{({\rm mom})}_a$; those assumptions must be stated explicitly if used.
+
+\section{Gauge Choices and Source Bookkeeping}
+\label{app:gauge}
+
+This appendix collects the gauge conventions and the electromagnetic source bookkeeping used throughout the paper. The goal is to make unambiguous (i) what is a choice of gauge or gauge-fixing parameter, and (ii) what is a dynamical matter source versus an externally prescribed/background source. These clarifications prevent the most common failure mode in coupled matter--Maxwell presentations: accidental double counting of the same physical current.
+
+\subsection{Gauge transformations and invariants}
+\label{app:gauge-transform}
+
+The gauge potential $A_M$ enters the matter sector through covariant derivatives and the EM sector through the field strength
+\begin{equation}
+F_{MN} \equiv \partial_M A_N - \partial_N A_M.
+\end{equation}
+The theory is invariant under the gauge transformation
+\begin{equation}
+A_M \mapsto A_M + \partial_M \chi,
+\qquad
+\psi \mapsto e^{\ii q \chi/\hbar}\,\psi,
+\label{eq:gauge-transform}
+\end{equation}
+for any sufficiently regular scalar function $\chi(x)$. Under \eqref{eq:gauge-transform}, the covariant derivatives transform covariantly, $D_M\psi \mapsto e^{\ii q \chi/\hbar} D_M\psi$, and the field strength is invariant: $F_{MN}\mapsto F_{MN}$.
+
+\subsection{Gauge fixing and the parameter \texorpdfstring{$\xi$}{xi}}
+\label{app:gauge-fixing}
+
+To write Maxwell's equations in an explicitly elliptic/hyperbolic operator form (and to avoid gauge singularities in certain analyses), we include a covariant gauge-fixing term in the EM Lagrangian:
+\begin{equation}
+\mathcal L_{\rm EM}
+=
+-\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}
+-\frac{1}{2\xi\mu_0}\,(\partial\!\cdot\!A)^2
++ A_M J_{\rm ext}^M.
+\end{equation}
+The gauge-fixing parameter $\xi$ selects a member of the covariant $R_\xi$ family. The Lorenz gauge condition
+\begin{equation}
+\partial\!\cdot\!A = 0
+\label{eq:lorenz-gauge-app}
+\end{equation}
+is a convenient presentation choice; it may be imposed as a gauge condition, or treated as the $\xi\to 0$ limit of the gauge-fixed dynamics (depending on the analysis). In the main text we keep $\xi$ explicit in the exact bulk equation \eqref{eq:maxwell-localized} and set $\partial\!\cdot\!A=0$ only when presenting the controlled EM reduction in Section~\ref{sec:emreduction}.
+
+\subsection{Single-source bookkeeping: \texorpdfstring{$J_\psi$}{Jpsi} versus \texorpdfstring{$J_{\rm ext}$}{Jext}}
+\label{app:source-bookkeeping}
+
+\paragraph{The key rule (frozen).}
+The matter Lagrangian uses covariant derivatives. Therefore varying the matter action with respect to $A_M$ produces a \emph{dynamical matter current} $J_\psi^M$ automatically. Any explicit source term $A_M J^M$ added to the EM Lagrangian must therefore represent \emph{external/background sources only}, denoted $J_{\rm ext}^M$. The total source in Maxwell's equations is
+\begin{equation}
+J_{\rm tot}^M = J_\psi^M + J_{\rm ext}^M.
+\end{equation}
+This bookkeeping convention is used everywhere in the paper.
+
+\paragraph{Matter current from the action.}
+Define the matter current by the standard variational relation
+\begin{equation}
+\boxed{
+J_\psi^M \equiv -\,\frac{1}{\sqrt{-g}}\frac{\delta S_\psi}{\delta A_M}
+\quad \text{(flat space: } \sqrt{-g}=1\text{)}.
+}
+\label{eq:Jpsi-variational}
+\end{equation}
+In the present flat-space conventions, the spatial components are consistent with the number current $j^i$ from Section~\ref{sec:eom-continuity}:
+\begin{equation}
+J_\psi^i = q\,j^i
+=
+q\,\frac{\hbar}{m}\,\operatorname{Im}\!\left(\psi^*D_i\psi\right),
+\qquad i\in\{x,y,z,w\}.
+\label{eq:Jpsi-spatial}
+\end{equation}
+With the covariant-derivative convention used in \eqref{eq:Lpsi}, the time component is
+\begin{equation}
+J_\psi^0 = q\,\rho = q|\psi|^2.
+\label{eq:Jpsi-time}
+\end{equation}
+Thus $(J_\psi^0,J_\psi^i)=(q\rho, q\,j^i)$ in the nonrelativistic interpretation adopted here; neutrality is implemented by choosing a background $J_{\rm ext}^0$.
+
+\paragraph{External/background sources.}
+The external/background current $J_{\rm ext}^M$ is prescribed as part of the model specification. It may include:
+\begin{itemize}[leftmargin=2.0em]
+\item \textbf{Jellium/background neutrality:} a static background charge density (time component) chosen to neutralize a reference or mean matter charge density;
+\item \textbf{Imposed drives:} prescribed current injections used to excite or probe the system.
+\end{itemize}
+Crucially, $J_{\rm ext}^M$ must not duplicate the matter source already contained in $J_\psi^M$. When neutrality is desired, it should be implemented as a \emph{background} time-component $J_{\rm ext}^0$ rather than by altering the definition of $\rho$.
+
+\subsection{Maxwell equation with explicit bookkeeping}
+\label{app:maxwell-bookkeeping}
+
+With the above conventions, variation of the total action in $A_N$ yields
+\begin{equation}
+\boxed{
+\partial_M\!\left(Z(w)F^{MN}\right)
++\frac{1}{\xi}\,\partial^N(\partial\!\cdot\!A)
+=\mu_0\left(J_\psi^N+J_{\rm ext}^N\right).
+}
+\end{equation}
+This is the form quoted in the main text. It transparently separates dynamical sources (from the matter field) and externally specified sources (from model choice).
+
+\subsection{Common gauge-specialized forms (for reference)}
+\label{app:gauge-special}
+
+For convenience, we record a few standard specializations:
+
+\paragraph{Lorenz gauge.}
+Imposing $\partial\!\cdot\!A=0$ reduces the bulk Maxwell equation to
+\begin{equation}
+\partial_M\!\left(Z(w)F^{MN}\right)=\mu_0\left(J_\psi^N+J_{\rm ext}^N\right).
+\end{equation}
+
+\paragraph{Brane-dominant zero mode.}
+Under the controlled reduction ansatz $A_w=0$ and $\partial_w A_\mu=0$ (Section~\ref{sec:emreduction}), integrating over $w$ yields the effective brane Maxwell theory
+\begin{equation}
+\partial_\mu F^{\mu\nu}=\mu_0^{\rm eff}J_{\rm eff}^\nu,
+\qquad
+\mu_0^{\rm eff}=\frac{\mu_0}{\int Z(w)\,\dd w}.
+\end{equation}
+
+\paragraph{Electrostatic brane limit.}
+In an electrostatic brane regime with $\mathbf{E}=-\nabla_3\Phi_{\rm EM}$, the reduced equation becomes the brane Poisson equation
+\begin{equation}
+\nabla_3^2\Phi_{\rm EM} = -\,\mu_0^{\rm eff}\,J_{\rm eff}^0,
+\end{equation}
+as recorded in Section~\ref{sec:emreduction-electrostatic}.
+
+\subsection{Practical checklist for avoiding source errors}
+\label{app:gauge-checklist}
+
+When assembling simulations or analytic limits from the paper equations, the following checklist avoids the common bookkeeping trap:
+\begin{enumerate}[leftmargin=2.2em]
+\item If the matter sector uses covariant derivatives, then $J_\psi$ is \emph{already included} in Maxwell by variation of $S_\psi$.
+\item Any explicit $A_M J^M$ term in $\mathcal L_{\rm EM}$ must be labeled $J_{\rm ext}$ and must be external/background only.
+\item Jellium neutrality should be implemented via $J_{\rm ext}^0$ (a background charge density), not by redefining $\rho$ or adding a second copy of the matter current.
+\item State explicitly whether the reduction sections assume Lorenz gauge ($\partial\!\cdot\!A=0$) or keep $\xi$ finite.
+\end{enumerate}
+
+\section{Claim Taxonomy: Exact vs Controlled vs Regime}
+\label{app:claims}
+
+This appendix provides a compact classification of the main statements in the paper into three categories:
+\begin{enumerate}[leftmargin=2.2em]
+\item \textbf{Exact:} identities or equations that follow directly from the declared action and definitions, with no approximation.
+\item \textbf{Controlled reductions:} statements that follow from the exact equations after imposing explicit additional assumptions (ans\"atze, limits) that can in principle be relaxed systematically.
+\item \textbf{Regime statements:} approximate statements that require smallness/scale assumptions whose validity must be established for any particular application (analytically or numerically).
+\end{enumerate}
+This taxonomy is intended to keep the paper referee-proof and to make clear which results are structural and which require validation.
+
+\subsection{Exact statements (no approximations)}
+\label{app:claims-exact}
+
+The following statements are exact given the model specification of Sections~\ref{sec:conventions}--\ref{sec:action}:
+
+\paragraph{EOM from the action.}
+\begin{itemize}[leftmargin=2.0em]
+\item Matter equation of motion: the gauged 4D GNLS \eqref{eq:gnls} derived from $\mathcal L_\psi$ \eqref{eq:Lpsi}.
+\item Localized Maxwell equation with gauge fixing: \eqref{eq:maxwell-localized} derived from $\mathcal L_{\rm EM}$ \eqref{eq:LEM}.
+\item Geometry force definitions and (baseline) dynamical closure: generalized forces $F_a,F_L$ defined by \eqref{eq:ledger-forces} and evolution laws \eqref{eq:geom-eom-again} derived from the effective geometry sector.
+\end{itemize}
+
+\paragraph{Conservation and hydrodynamic identities.}
+\begin{itemize}[leftmargin=2.0em]
+\item Conserved number current: \eqref{eq:number-current}.
+\item Bulk continuity identity: \eqref{eq:bulk-continuity}.
+\item Madelung velocity relation: \eqref{eq:vi-phase}.
+\item Quantum potential definition: \eqref{eq:quantum-potential}.
+\item Euler-like bulk equation: \eqref{eq:euler-like}.
+\item Vorticity--gauge identity: \eqref{eq:vorticity-gauge}.
+\end{itemize}
+
+\paragraph{Projection-defined brane identities.}
+\begin{itemize}[leftmargin=2.0em]
+\item Brane observables defined by projection: \eqref{eq:rhobrane}--\eqref{eq:jbrane}.
+\item Projected continuity with leakage: \eqref{eq:proj-continuity} with exact leakage definition \eqref{eq:Sleak-general}.
+\item Helmholtz decomposition as a mathematical identity on $\mathbb{R}^3$: \eqref{eq:helmholtz}.
+\item Exact longitudinal identity: \eqref{eq:longitudinal-identity}.
+\end{itemize}
+
+\paragraph{Geometry ledger identities.}
+\begin{itemize}[leftmargin=2.0em]
+\item Force ledger definition: $F_{a,L}=-\partial_{a,L}H_{\rm tot}$, \eqref{eq:ledger-forces}.
+\item Matter force contribution: \eqref{eq:Fa-matter}--\eqref{eq:FL-matter}.
+\item Ratio-penalty forces (for $\kappa>0$): \eqref{eq:ratio-forces}.
+\end{itemize}
+
+\subsection{Controlled reductions (explicit assumptions/limits)}
+\label{app:claims-controlled}
+
+The following statements are controlled reductions in the sense that they follow from the exact equations after imposing explicit additional assumptions:
+
+\paragraph{EM localization reduction to a brane Maxwell theory.}
+Assumptions: zero-mode ansatz \eqref{eq:zero-mode} (and, for presentation, Lorenz gauge \eqref{eq:lorenz-gauge} during the reduction). Result: effective brane Maxwell equation \eqref{eq:brane-maxwell} with renormalized coupling $\mu_0^{\rm eff}=\mu_0/Z_{\rm int}$.
+
+\paragraph{Electrostatic brane limit of the reduced EM sector.}
+Assumptions: time-independence and negligible magnetic components, yielding a scalar potential $\Phi_{\rm EM}$ with $\mathbf{E}=-\nabla_3\Phi_{\rm EM}$. Result: Poisson equation \eqref{eq:electrostatic-poisson} for $\Phi_{\rm EM}$.
+
+\paragraph{Quasi-static geometry limits.}
+Assumptions: overdamped ($\Gamma$ large) or fast-relaxation/inertial suppression limits applied to \eqref{eq:geom-eom-again}. Result: first-order relaxation laws or instantaneous minimization conditions (Section~\ref{sec:geometry-dynamics}).
+
+\paragraph{Boundary-term suppression in leakage formulas.}
+Assumption: fast decay such that $Wj^w\to 0$ and (for momentum) $W\rho v_a v_w\to 0$ as $|w|\to\infty$. Result: simplified leakage forms \eqref{eq:Sleak-simplified} and its momentum analog.
+
+\subsection{Regime statements (approximate; require validation)}
+\label{app:claims-regime}
+
+The following statements are approximate and require additional smallness/scale assumptions whose validity must be checked for any given application.
+
+\paragraph{Poisson equation as a regime reduction of the longitudinal identity.}
+Starting from the exact identity \eqref{eq:longitudinal-identity}, the Poisson approximation \eqref{eq:poisson-approx} requires:
+\begin{itemize}[leftmargin=2.0em]
+\item quasi-static density on the brane: $\partial_t\rho_{\rm brane}$ small,
+\item small density-gradient/advection correction: $\nabla_3\rho_{\rm brane}\cdot(\nabla_3\varphi+\mathbf{v}_T)$ small,
+\item (often) longitudinal dominance: $\mathbf{v}_T$ small or slowly varying,
+\item and (typically) slowly varying $\rho_{\rm brane}$ so that $\rho_{\rm brane}\approx\rho_0$ can be treated as approximately constant.
+\end{itemize}
+Under these conditions, $\nabla_3^2\varphi \approx (1/\rho_0)\,S_{\rm eff}$ with an effective source.
+
+\paragraph{Inverse-square scaling from Poisson.}
+The $1/r$ potential and $1/r^2$ field scaling derived in Section~\ref{sec:poisson-invsq} require, in addition to the Poisson regime, that:
+\begin{itemize}[leftmargin=2.0em]
+\item the effective source is localized compared to the observation scale,
+\item the domain and boundary conditions are such that the Laplacian Green's function behaves as in $\mathbb{R}^3$ (or corrections are controlled).
+\end{itemize}
+
+\paragraph{Neglect of projection-induced stresses and momentum leakage.}
+Any brane-only momentum closure that neglects $\tau_{ab}$ or $\mathcal{L}^{({\rm mom})}_a$ (Appendix~\ref{app:momentum}) is a regime statement requiring those terms to be small in the relevant configuration (e.g.\ thin-support regime and small $w$-flux regime).
+
+\subsection{One-line summary (referee-facing)}
+\label{app:claims-summary}
+
+\begin{quote}\small
+\textbf{Summary.} The bulk EOMs, conserved currents, projection/leakage identities, and the longitudinal identity are \emph{exact}. The EM brane theory is a \emph{controlled reduction} under a zero-mode ansatz. Poisson and inverse-square behavior are \emph{regime statements} obtained when the explicit correction terms in the exact longitudinal identity are parametrically small.
+\end{quote}
+
+\end{document}

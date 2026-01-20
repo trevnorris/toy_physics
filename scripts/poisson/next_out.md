@@ -1,0 +1,410 @@
+============================================================================================
+0) Frozen n=5 EOS anchor
+--------------------------------------------------------------------------------------------
+[1] P{\left(\rho \right)} = K \rho^{5}
+
+[2] c^{2}_{s}{\left(\rho \right)} = 5 K \rho^{4}
+
+[3] h{\left(\rho \right)} = \frac{5 K \rho^{4}}{4}
+
+[4] U{\left(\rho \right)} = \frac{K \rho^{5}}{4}
+
+[5] \rho\,h'(\rho) = 5 K \rho^{4}
+
+============================================================================================
+
+
+============================================================================================
+1) Canonical 4D GNLS form (compact; PDE we intend to simulate)
+--------------------------------------------------------------------------------------------
+i \bar{\h} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} = - \frac{\bar{\h}^{2} \left(\frac{\partial^{2}}{\partial w^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)}\right)}{2 m} + \left(\frac{5 K \bar\psi^{4}{\left(t,x,y,z,w \right)} \psi^{4}{\left(t,x,y,z,w \right)}}{4} + V_{\rm conf}{\left(x,y,z,w,a,L \right)}\right) \psi{\left(t,x,y,z,w \right)}
+============================================================================================
+
+
+============================================================================================
+2) Canonical 4D current components (Jx,Jy,Jz,Jw)
+--------------------------------------------------------------------------------------------
+[1] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[2] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[3] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[4] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+============================================================================================
+
+
+============================================================================================
+3) 4D continuity identity: rho_t + div_4 J = 0
+--------------------------------------------------------------------------------------------
+- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial w^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial w^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} + \bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} + \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \bar\psi{\left(t,x,y,z,w \right)} = 0
+============================================================================================
+
+
+============================================================================================
+4) Brane projection weight: W(w)\ (unnormalized)
+--------------------------------------------------------------------------------------------
+W_{t} = W{\left(w \right)}
+============================================================================================
+
+
+============================================================================================
+5) Brane-projected density rho_brane = ∫ Wt rho dw
+--------------------------------------------------------------------------------------------
+\int\limits_{- W_{\rm proj}}^{W_{\rm proj}} W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}\, dw
+============================================================================================
+
+
+============================================================================================
+6) Brane-projected current components (integrated in w)
+--------------------------------------------------------------------------------------------
+[1] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[2] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[3] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+7) Exact projected continuity: (rho_brane)_t + div_3(J_brane) = S_rho_brane
+--------------------------------------------------------------------------------------------
+\int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} + W{\left(w \right)} \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \bar\psi{\left(t,x,y,z,w \right)}\right)\, dw = - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{2 m} + \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{2 m} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{2 m}\right)\, dw
+============================================================================================
+
+
+============================================================================================
+8) Exact brane source term S_rho_brane (purely from J_w)
+--------------------------------------------------------------------------------------------
+- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{2 m} + \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{2 m} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{2 m}\right)\, dw
+============================================================================================
+
+
+============================================================================================
+8h) Helmholtz (brane): choose φ3 so that v_L = ∇φ3 and ∇²φ3 = ∇·v
+--------------------------------------------------------------------------------------------
+\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)} = - \frac{J^{\rm brane}_x{\left(t,x,y,z \right)} \frac{\partial}{\partial x} \rho_{\rm brane}{\left(t,x,y,z \right)} + J^{\rm brane}_y{\left(t,x,y,z \right)} \frac{\partial}{\partial y} \rho_{\rm brane}{\left(t,x,y,z \right)} + J^{\rm brane}_z{\left(t,x,y,z \right)} \frac{\partial}{\partial z} \rho_{\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}^{2}{\left(t,x,y,z \right)}} + \frac{\frac{\partial}{\partial x} J^{\rm brane}_x{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} J^{\rm brane}_y{\left(t,x,y,z \right)} + \frac{\partial}{\partial z} J^{\rm brane}_z{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}}
+============================================================================================
+
+
+============================================================================================
+8i) Helmholtz (brane): in Coulomb gauge (∇·A=0), curl(v)=ω implies ∇²A = -ω
+--------------------------------------------------------------------------------------------
+[1] \frac{\partial^{2}}{\partial x^{2}} A_{x}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} A_{x}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} A_{x}{\left(t,x,y,z \right)} = \frac{- J^{\rm brane}_y{\left(t,x,y,z \right)} \frac{\partial}{\partial z} \rho_{\rm brane}{\left(t,x,y,z \right)} + J^{\rm brane}_z{\left(t,x,y,z \right)} \frac{\partial}{\partial y} \rho_{\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}^{2}{\left(t,x,y,z \right)}} - \frac{- \frac{\partial}{\partial z} J^{\rm brane}_y{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} J^{\rm brane}_z{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}}
+
+[2] \frac{\partial^{2}}{\partial x^{2}} A_{y}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} A_{y}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} A_{y}{\left(t,x,y,z \right)} = \frac{J^{\rm brane}_x{\left(t,x,y,z \right)} \frac{\partial}{\partial z} \rho_{\rm brane}{\left(t,x,y,z \right)} - J^{\rm brane}_z{\left(t,x,y,z \right)} \frac{\partial}{\partial x} \rho_{\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}^{2}{\left(t,x,y,z \right)}} - \frac{\frac{\partial}{\partial z} J^{\rm brane}_x{\left(t,x,y,z \right)} - \frac{\partial}{\partial x} J^{\rm brane}_z{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}}
+
+[3] \frac{\partial^{2}}{\partial x^{2}} A_{z}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} A_{z}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} A_{z}{\left(t,x,y,z \right)} = \frac{- J^{\rm brane}_x{\left(t,x,y,z \right)} \frac{\partial}{\partial y} \rho_{\rm brane}{\left(t,x,y,z \right)} + J^{\rm brane}_y{\left(t,x,y,z \right)} \frac{\partial}{\partial x} \rho_{\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}^{2}{\left(t,x,y,z \right)}} - \frac{- \frac{\partial}{\partial y} J^{\rm brane}_x{\left(t,x,y,z \right)} + \frac{\partial}{\partial x} J^{\rm brane}_y{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}}
+
+[4] \frac{\partial}{\partial x} A_{x}{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} A_{y}{\left(t,x,y,z \right)} + \frac{\partial}{\partial z} A_{z}{\left(t,x,y,z \right)} = 0
+
+============================================================================================
+
+
+============================================================================================
+8j-dyn) Abstract curl(momentum balance): ∂t(∇×J) + ∇×(∇·Π) = ∇×S_J
+--------------------------------------------------------------------------------------------
+[1] - \frac{\partial^{2}}{\partial z^{2}} \Pi_{yz}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \Pi_{zy}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial z\partial t} J^{\rm brane}_y{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y\partial t} J^{\rm brane}_z{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial z\partial x} \Pi_{yx}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial z\partial y} \Pi_{yy}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y\partial x} \Pi_{zx}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z\partial y} \Pi_{zz}{\left(t,x,y,z \right)} = - \frac{\partial}{\partial z} S^{J}_y{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} S^{J}_z{\left(t,x,y,z \right)}
+
+[2] \frac{\partial^{2}}{\partial z^{2}} \Pi_{xz}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial x^{2}} \Pi_{zx}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z\partial t} J^{\rm brane}_x{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial x\partial t} J^{\rm brane}_z{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z\partial x} \Pi_{xx}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z\partial y} \Pi_{xy}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial y\partial x} \Pi_{zy}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial z\partial x} \Pi_{zz}{\left(t,x,y,z \right)} = \frac{\partial}{\partial z} S^{J}_x{\left(t,x,y,z \right)} - \frac{\partial}{\partial x} S^{J}_z{\left(t,x,y,z \right)}
+
+[3] - \frac{\partial^{2}}{\partial y^{2}} \Pi_{xy}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial x^{2}} \Pi_{yx}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial y\partial t} J^{\rm brane}_x{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial x\partial t} J^{\rm brane}_y{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial y\partial x} \Pi_{xx}{\left(t,x,y,z \right)} - \frac{\partial^{2}}{\partial z\partial y} \Pi_{xz}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y\partial x} \Pi_{yy}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z\partial x} \Pi_{yz}{\left(t,x,y,z \right)} = - \frac{\partial}{\partial y} S^{J}_x{\left(t,x,y,z \right)} + \frac{\partial}{\partial x} S^{J}_y{\left(t,x,y,z \right)}
+
+============================================================================================
+
+
+============================================================================================
+8k-dyn) Identity: ∇×J = ρ ω + (∇ρ×v)  (checked algebraically)
+--------------------------------------------------------------------------------------------
+[1] \text{True}
+
+[2] \text{True}
+
+[3] \text{True}
+
+============================================================================================
+
+
+============================================================================================
+8h0) Brane shorthand fields (definitions)
+--------------------------------------------------------------------------------------------
+[1] \rho_{\rm brane}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}\, dw
+
+[2] J_{x,\rm brane}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[3] J_{y,\rm brane}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[4] J_{z,\rm brane}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+8h1) Brane momentum-flux tensor Π_{ij} definitions (kept compact)
+--------------------------------------------------------------------------------------------
+[1] \Pi_{xx}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right)^{2} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[2] \Pi_{xy}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[3] \Pi_{xz}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[4] \Pi_{yy}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right)^{2} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[5] \Pi_{yz}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[6] \Pi_{zz}{\left(t,x,y,z \right)} = \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right)^{2} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+8h2) Brane momentum source terms S_{J_i} from w-flux (bulk exchange)
+--------------------------------------------------------------------------------------------
+[1] - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[2] - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[3] - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+8i) Brane-projected momentum balance (3D components; compact flux form)
+--------------------------------------------------------------------------------------------
+[1] \frac{\partial}{\partial t} J_{x,\rm brane}{\left(t,x,y,z \right)} + \frac{\partial}{\partial x} \Pi_{xx}{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} \Pi_{xy}{\left(t,x,y,z \right)} + \frac{\partial}{\partial z} \Pi_{xz}{\left(t,x,y,z \right)} = - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} - \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \frac{\left(5 K \bar\psi^{4}{\left(t,x,y,z,w \right)} \psi^{3}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} + 5 K \bar\psi^{3}{\left(t,x,y,z,w \right)} \psi^{4}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial x} Q{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial x} V_{\rm conf}{\left(x,y,z,w,a,L \right)}\right) W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}{m}\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[2] \frac{\partial}{\partial t} J_{y,\rm brane}{\left(t,x,y,z \right)} + \frac{\partial}{\partial x} \Pi_{xy}{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} \Pi_{yy}{\left(t,x,y,z \right)} + \frac{\partial}{\partial z} \Pi_{yz}{\left(t,x,y,z \right)} = - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} - \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \frac{\left(5 K \bar\psi^{4}{\left(t,x,y,z,w \right)} \psi^{3}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} + 5 K \bar\psi^{3}{\left(t,x,y,z,w \right)} \psi^{4}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial y} Q{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial y} V_{\rm conf}{\left(x,y,z,w,a,L \right)}\right) W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}{m}\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+[3] \frac{\partial}{\partial t} J_{z,\rm brane}{\left(t,x,y,z \right)} + \frac{\partial}{\partial x} \Pi_{xz}{\left(t,x,y,z \right)} + \frac{\partial}{\partial y} \Pi_{yz}{\left(t,x,y,z \right)} + \frac{\partial}{\partial z} \Pi_{zz}{\left(t,x,y,z \right)} = - \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,- W_{\rm proj} \right)} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \psi{\left(t,x,y,z,- W_{\rm proj} \right)}} + \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \psi{\left(t,x,y,z,W_{\rm proj} \right)}} - \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \frac{\left(5 K \bar\psi^{4}{\left(t,x,y,z,w \right)} \psi^{3}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} + 5 K \bar\psi^{3}{\left(t,x,y,z,w \right)} \psi^{4}{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial z} Q{\left(t,x,y,z,w \right)} + \frac{\partial}{\partial z} V_{\rm conf}{\left(x,y,z,w,a,L \right)}\right) W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}{m}\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{\bar{\h}^{2} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{4 m^{2} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+8j) Extra stress sector from w-projection: R_{ij} ≡ Π_{ij} - ρ_brane v_i v_j
+--------------------------------------------------------------------------------------------
+[1] R_{xx}{\left(t,x,y,z \right)} = - \frac{J_{x,\rm brane}^{2}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{xx}{\left(t,x,y,z \right)}
+
+[2] R_{xy}{\left(t,x,y,z \right)} = - \frac{J_{x,\rm brane}{\left(t,x,y,z \right)} J_{y,\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{xy}{\left(t,x,y,z \right)}
+
+[3] R_{xz}{\left(t,x,y,z \right)} = - \frac{J_{x,\rm brane}{\left(t,x,y,z \right)} J_{z,\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{xz}{\left(t,x,y,z \right)}
+
+[4] R_{yy}{\left(t,x,y,z \right)} = - \frac{J_{y,\rm brane}^{2}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{yy}{\left(t,x,y,z \right)}
+
+[5] R_{yz}{\left(t,x,y,z \right)} = - \frac{J_{y,\rm brane}{\left(t,x,y,z \right)} J_{z,\rm brane}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{yz}{\left(t,x,y,z \right)}
+
+[6] R_{zz}{\left(t,x,y,z \right)} = - \frac{J_{z,\rm brane}^{2}{\left(t,x,y,z \right)}}{\rho_{\rm brane}{\left(t,x,y,z \right)}} + \Pi_{zz}{\left(t,x,y,z \right)}
+
+============================================================================================
+
+
+============================================================================================
+8j-note) If v_i(t,x,y,z,w) is effectively w-independent (or a single separable mode), then Π_{ij}=ρ_brane v_i v_j and R_{ij}→0; otherwise R_{ij} encodes extra brane physics.
+--------------------------------------------------------------------------------------------
+ 
+============================================================================================
+
+
+============================================================================================
+9) Linearized brane acoustic relations (assumptions stated; do not force Poisson)
+--------------------------------------------------------------------------------------------
+[1] h'(\rho_{0)} = 5 K \rho_{0}^{3}
+
+[2] c_{s,0}^2 = 5 K \rho_{0}^{4}
+
+[3] \rho_{0 h'(\rho 0)} = 5 K \rho_{0}^{4}
+
+[4] \rho_{0} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right) + \frac{\partial}{\partial t} \delta\rho_{\rm brane}{\left(t,x,y,z \right)} = S_{\rm brane}{\left(t,x,y,z \right)}
+
+[5] u{\left(t,x,y,z \right)} = 5 K \rho_{0}^{3} \delta\rho_{\rm brane}{\left(t,x,y,z \right)}
+
+[6] \frac{\partial}{\partial t} \phi_{3}{\left(t,x,y,z \right)} + \frac{u{\left(t,x,y,z \right)}}{m} = 0
+
+============================================================================================
+
+
+============================================================================================
+10) Forced wave equation for brane velocity potential φ3
+--------------------------------------------------------------------------------------------
+- \frac{5 K \rho_{0}^{4} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right)}{m} + \frac{\partial^{2}}{\partial t^{2}} \phi_{3}{\left(t,x,y,z \right)} = - \frac{5 K \rho_{0}^{3} S_{\rm brane}{\left(t,x,y,z \right)}}{m}
+============================================================================================
+
+
+============================================================================================
+11) Static-limit candidate (if φ_tt is negligible): ρ0 ∇^2 φ3 = S_brane
+--------------------------------------------------------------------------------------------
+\rho_{0} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right) = S_{\rm brane}{\left(t,x,y,z \right)}
+============================================================================================
+
+
+============================================================================================
+18) Frozen geometry energy E_geom(a,L)=Pvac V + σ A (cylindrical approx)
+--------------------------------------------------------------------------------------------
+\frac{4 \pi a^{2} \left(L P_{\rm vac} a + \sigma \left(3 L + 2 a\right)\right)}{3}
+============================================================================================
+
+
+============================================================================================
+19) Geometry derivatives (for force ledger regression checks): ∂aE, ∂LE
+--------------------------------------------------------------------------------------------
+[1] 4 \pi a \left(L P_{\rm vac} a + 2 \sigma \left(L + a\right)\right)
+
+[2] \frac{4 \pi a^{2} \left(P_{\rm vac} a + 3 \sigma\right)}{3}
+
+============================================================================================
+
+
+============================================================================================
+0) Frozen n=5 EOS anchor
+--------------------------------------------------------------------------------------------
+[1] P{\left(\rho \right)} = K \rho^{5}
+
+[2] c^{2}_{s}{\left(\rho \right)} = 5 K \rho^{4}
+
+[3] h{\left(\rho \right)} = \frac{5 K \rho^{4}}{4}
+
+[4] U{\left(\rho \right)} = \frac{K \rho^{5}}{4}
+
+[5] \rho\,h'(\rho) = 5 K \rho^{4}
+
+============================================================================================
+
+
+============================================================================================
+1) Canonical 4D GNLS form (compact; PDE we intend to simulate)
+--------------------------------------------------------------------------------------------
+i \bar{\h} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} = - \frac{\bar{\h}^{2} \left(\frac{\partial^{2}}{\partial w^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} + \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)}\right)}{2 m} + \left(\frac{5 K \bar\psi^{4}{\left(t,x,y,z,w \right)} \psi^{4}{\left(t,x,y,z,w \right)}}{4} + V_{\rm conf}{\left(x,y,z,w,a,L \right)}\right) \psi{\left(t,x,y,z,w \right)}
+============================================================================================
+
+
+============================================================================================
+2) Canonical 4D current components (Jx,Jy,Jz,Jw)
+--------------------------------------------------------------------------------------------
+[1] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[2] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[3] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+[4] - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m}
+
+============================================================================================
+
+
+============================================================================================
+3) 4D continuity identity: rho_t + div_4 J = 0
+--------------------------------------------------------------------------------------------
+- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial w^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial w^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right)}{2 m} + \bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} + \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \bar\psi{\left(t,x,y,z,w \right)} = 0
+============================================================================================
+
+
+============================================================================================
+4) Brane projection weight: W(w)\ (unnormalized)
+--------------------------------------------------------------------------------------------
+W_{t} = W{\left(w \right)}
+============================================================================================
+
+
+============================================================================================
+5) Brane-projected density rho_brane = ∫ Wt rho dw
+--------------------------------------------------------------------------------------------
+\int\limits_{- W_{\rm proj}}^{W_{\rm proj}} W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \psi{\left(t,x,y,z,w \right)}\, dw
+============================================================================================
+
+
+============================================================================================
+6) Brane-projected current components (integrated in w)
+--------------------------------------------------------------------------------------------
+[1] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial x} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[2] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial y} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+[3] \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial z} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw
+
+============================================================================================
+
+
+============================================================================================
+7) Exact projected continuity: (rho_brane)_t + div_3(J_brane) = S_rho_brane
+--------------------------------------------------------------------------------------------
+\int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial x^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial y^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial^{2}}{\partial z^{2}} \bar\psi{\left(t,x,y,z,w \right)}\right) W{\left(w \right)}}{2 m}\right)\, dw + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(W{\left(w \right)} \bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \psi{\left(t,x,y,z,w \right)} + W{\left(w \right)} \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial t} \bar\psi{\left(t,x,y,z,w \right)}\right)\, dw = - \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{2 m} + \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{2 m} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{2 m}\right)\, dw
+============================================================================================
+
+
+============================================================================================
+8) Exact brane source term S_rho_brane (purely from J_w)
+--------------------------------------------------------------------------------------------
+- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }} - \psi{\left(t,x,y,z,- W_{\rm proj} \right)} \left. \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)} \right|_{\substack{ w=- W_{\rm proj} }}\right) W{\left(- W_{\rm proj} \right)}}{2 m} + \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \psi{\left(t,x,y,z,W_{\rm proj} \right)} - \psi{\left(t,x,y,z,W_{\rm proj} \right)} \frac{\partial}{\partial W_{\rm proj}} \bar\psi{\left(t,x,y,z,W_{\rm proj} \right)}\right) W{\left(W_{\rm proj} \right)}}{2 m} + \int\limits_{- W_{\rm proj}}^{W_{\rm proj}} \left(- \frac{i \bar{\h} \left(\bar\psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \psi{\left(t,x,y,z,w \right)} - \psi{\left(t,x,y,z,w \right)} \frac{\partial}{\partial w} \bar\psi{\left(t,x,y,z,w \right)}\right) \frac{d}{d w} W{\left(w \right)}}{2 m}\right)\, dw
+============================================================================================
+
+
+============================================================================================
+8g) Separable-mode check: v_brane reduces to 3D velocity (Cw cancels)
+--------------------------------------------------------------------------------------------
+[1] \frac{i \bar{\h} \left(\Psi_{3}{\left(t,x,y,z \right)} \frac{\partial}{\partial x} \overline{\Psi_3}{\left(t,x,y,z \right)} - \overline{\Psi_3}{\left(t,x,y,z \right)} \frac{\partial}{\partial x} \Psi_{3}{\left(t,x,y,z \right)}\right)}{2 m \Psi_{3}{\left(t,x,y,z \right)} \overline{\Psi_3}{\left(t,x,y,z \right)}}
+
+[2] \frac{i \bar{\h} \left(\Psi_{3}{\left(t,x,y,z \right)} \frac{\partial}{\partial y} \overline{\Psi_3}{\left(t,x,y,z \right)} - \overline{\Psi_3}{\left(t,x,y,z \right)} \frac{\partial}{\partial y} \Psi_{3}{\left(t,x,y,z \right)}\right)}{2 m \Psi_{3}{\left(t,x,y,z \right)} \overline{\Psi_3}{\left(t,x,y,z \right)}}
+
+[3] \frac{i \bar{\h} \left(\Psi_{3}{\left(t,x,y,z \right)} \frac{\partial}{\partial z} \overline{\Psi_3}{\left(t,x,y,z \right)} - \overline{\Psi_3}{\left(t,x,y,z \right)} \frac{\partial}{\partial z} \Psi_{3}{\left(t,x,y,z \right)}\right)}{2 m \Psi_{3}{\left(t,x,y,z \right)} \overline{\Psi_3}{\left(t,x,y,z \right)}}
+
+============================================================================================
+
+
+============================================================================================
+8g-note) If --no_gauge and θ3 is single-valued, then curl(v_brane)=0 in this separable regime.
+--------------------------------------------------------------------------------------------
+ 
+============================================================================================
+
+
+============================================================================================
+9) Linearized brane acoustic relations (assumptions stated; do not force Poisson)
+--------------------------------------------------------------------------------------------
+[1] h'(\rho_{0)} = 5 K \rho_{0}^{3}
+
+[2] c_{s,0}^2 = 5 K \rho_{0}^{4}
+
+[3] \rho_{0 h'(\rho 0)} = 5 K \rho_{0}^{4}
+
+[4] \rho_{0} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right) + \frac{\partial}{\partial t} \delta\rho_{\rm brane}{\left(t,x,y,z \right)} = S_{\rm brane}{\left(t,x,y,z \right)}
+
+[5] u{\left(t,x,y,z \right)} = 5 K \rho_{0}^{3} \delta\rho_{\rm brane}{\left(t,x,y,z \right)}
+
+[6] \frac{\partial}{\partial t} \phi_{3}{\left(t,x,y,z \right)} + \frac{u{\left(t,x,y,z \right)}}{m} = 0
+
+============================================================================================
+
+
+============================================================================================
+10) Forced wave equation for brane velocity potential φ3
+--------------------------------------------------------------------------------------------
+- \frac{5 K \rho_{0}^{4} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right)}{m} + \frac{\partial^{2}}{\partial t^{2}} \phi_{3}{\left(t,x,y,z \right)} = - \frac{5 K \rho_{0}^{3} S_{\rm brane}{\left(t,x,y,z \right)}}{m}
+============================================================================================
+
+
+============================================================================================
+11) Static-limit candidate (if φ_tt is negligible): ρ0 ∇^2 φ3 = S_brane
+--------------------------------------------------------------------------------------------
+\rho_{0} \left(\frac{\partial^{2}}{\partial x^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial y^{2}} \phi_{3}{\left(t,x,y,z \right)} + \frac{\partial^{2}}{\partial z^{2}} \phi_{3}{\left(t,x,y,z \right)}\right) = S_{\rm brane}{\left(t,x,y,z \right)}
+============================================================================================
+
+
+============================================================================================
+18) Frozen geometry energy E_geom(a,L)=Pvac V + σ A (cylindrical approx)
+--------------------------------------------------------------------------------------------
+\frac{4 \pi a^{2} \left(L P_{\rm vac} a + \sigma \left(3 L + 2 a\right)\right)}{3}
+============================================================================================
+
+
+============================================================================================
+19) Geometry derivatives (for force ledger regression checks): ∂aE, ∂LE
+--------------------------------------------------------------------------------------------
+[1] 4 \pi a \left(L P_{\rm vac} a + 2 \sigma \left(L + a\right)\right)
+
+[2] \frac{4 \pi a^{2} \left(P_{\rm vac} a + 3 \sigma\right)}{3}
+
+============================================================================================
+

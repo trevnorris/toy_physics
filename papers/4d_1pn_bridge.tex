@@ -14,6 +14,11 @@
 \usepackage{hyperref}
 \usepackage[nameinlink,noabbrev]{cleveref}
 
+\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+
 % Optional: uncomment if you want appendix titles in TOC
 % \usepackage[toc,page]{appendix}
 
@@ -52,6 +57,16 @@
 \newcommand{\coefvFour}{\tfrac{3}{8}} % coefficient of v^4/c^4 in gamma expansion
 
 % -----------------------------
+% Hyperref
+% -----------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% -----------------------------
 % Theorem environments (if needed)
 % -----------------------------
 \newtheorem{claim}{Claim}
@@ -68,7 +83,7 @@
 \maketitle
 
 \begin{abstract}
-This paper is a derivation supplement to Paper~VII’s unified $4$D throat model, written to make explicit which coefficients used earlier in the series are fixed by the $4$D structure (and which must remain symbolic pending additional closure). We show that a defect uniform in the extra coordinate behaves as a throat with hypercylindrical topology, for which the exterior potential--flow problem yields the classical added-mass coefficient $\kappa_{\mathrm{add}}=\tfrac12$ (whereas a $4$D bubble would instead give $\tfrac13$), providing a sharp topology discriminator. We then show that matching the weak-field refractive coefficient uniquely selects the stiff polytropic exponent $n=5$. In the $1$PN interaction sector, EIH matching produces a one-parameter family of couplings, which collapses uniquely to $\alpha^2=\tfrac34$ and $K=2/\pi^2$ once the $n=5$ thermodynamic relation is imposed. Treating rest mass as wave-supported energy reproduces the special-relativistic expansion $E=\gamma E_0$, including the universal $v^4$ coefficient $3/8$. We also summarize a controlled reduction to brane-effective equations, making leakage/source terms explicit, and we outline the additional response modeling required to determine the remaining undetermined coefficients.
+This paper is a derivation supplement to the unified $4$D throat model of Ref.~\cite{norris2026_4d_model}, written to make explicit which coefficients used earlier in the series are fixed by the $4$D structure (and which must remain symbolic pending additional closure). We show that a defect uniform in the extra coordinate behaves as a throat with hypercylindrical topology, for which the exterior potential--flow problem yields the classical added-mass coefficient $\kappa_{\mathrm{add}}=\tfrac12$ (whereas a $4$D bubble would instead give $\tfrac13$), providing a sharp topology discriminator. We then show that matching the weak-field refractive coefficient uniquely selects the stiff polytropic exponent $n=5$. In the $1$PN interaction sector, EIH matching produces a one-parameter family of couplings, which collapses uniquely to $\alpha^2=\tfrac34$ and $K=2/\pi^2$ once the $n=5$ thermodynamic relation is imposed. Treating rest mass as wave-supported energy reproduces the special-relativistic expansion $E=\gamma E_0$, including the universal $v^4$ coefficient $3/8$. We also summarize a controlled reduction to brane-effective equations, making leakage/source terms explicit, and we outline the additional response modeling required to determine the remaining undetermined coefficients.
 \end{abstract}
 
 % ======================================================================
@@ -85,7 +100,7 @@ the Einstein--Infeld--Hoffmann (EIH) form of the $1$PN $N$-body dynamics and ass
 tests. While that approach is useful for organizing phenomenology, it can leave the impression
 that key constants are merely ``chosen'' rather than derived.
 
-Paper~VII introduced a single, variationally well-posed generating model in $4$D space (three
+Ref.~\cite{norris2026_4d_model} introduced a single, variationally well-posed generating model in $4$D space (three
 brane coordinates plus a bulk coordinate $w$) in which the defect is a brane--bulk throat: a
 spherical ``mouth'' on the brane connected to an approximately $w$-uniform bulk corridor. In that
 framework, brane observables are \emph{not} imposed by matching boundary conditions at a stitched
@@ -93,7 +108,7 @@ interface; instead, they are defined by a fixed projection of bulk fields onto a
 $w=0$.
 
 The purpose of this companion paper is to make the bridge explicit: we re-derive the key constants
-that appear throughout Papers~I--VI using the Paper~VII $4$D model, under clearly stated
+that appear throughout Papers~I--VI using the unified $4$D model of Ref.~\cite{norris2026_4d_model}, under clearly stated
 assumptions, and we record which coefficients are truly fixed and which are genuine response
 parameters that should remain symbolic until additional microphysics (or an explicit response
 closure) is specified.
@@ -101,21 +116,24 @@ closure) is specified.
 \subsection{What this paper derives}
 
 We focus on the subset of constants that (i) enter the weak-field and $1$PN bookkeeping used in
-the earlier papers and (ii) can be obtained from the Paper~VII framework without introducing new,
+the earlier papers and (ii) can be obtained from the framework of Ref.~\cite{norris2026_4d_model} without introducing new,
 tunable ingredients. The main results are:
 \begin{align}
-\kappa_{\rm add} &= \frac12
-\quad\text{(added-mass coefficient for a $w$-uniform throat; a $4$D ``bubble'' would give $\tfrac13$)},\\
-n &= 5
-\quad\text{(stiff polytropic index required by the weak-field refraction coefficient)},\\
-\alpha^2 &= \frac34,
-\qquad
-K_{\rm vec} = \frac{2}{\pi^2}
-\quad\text{(wake-mixing and overall vector-sector coupling fixed by EIH matching and thermodynamics)},\\
+\kappa_{\rm add} &= \frac12,\\
+n &= 5,\\
+\alpha^2 &= \frac34,\qquad K_{\rm vec} = \frac{2}{\pi^2},\\
 E(v) &= E_0\,\gamma(v)
-= E_0\left(1+\frac{v^2}{2c^2}+\frac{3v^4}{8c^4}+\cdots\right)
-\quad\text{(universal kinematic $v^4$ coefficient for trapped-wave ``rest energy'').}
+= E_0\left(1+\frac{v^2}{2c^2}+\frac{3v^4}{8c^4}+\cdots\right).
 \end{align}
+
+\noindent where:
+\begin{itemize}
+\item $\kappa_{\rm add}$ is the added-mass coefficient for a $w$-uniform throat; a $4$D ``bubble'' would give $\tfrac13$.
+\item $n$ is the stiff polytropic index required by the weak-field refraction coefficient.
+\item $\alpha^2$ and $K_{\rm vec}$ are fixed by EIH matching and thermodynamics.
+\item $E(v)$ yields the universal kinematic $v^4$ coefficient for trapped-wave ``rest energy''.
+\end{itemize}
+
 In the vector sector we distinguish the dimensionless wake/overlap coupling $K_{\rm vec}$ from the
 equation-of-state constant $K_{\rm EOS}$ in $P(\rho)=K_{\rm EOS}\rho^n$ to avoid notational
 overload.
@@ -126,14 +144,14 @@ Not every coefficient appearing in earlier effective descriptions should be pres
 ``derived number.'' Some parameters encode genuine internal response physics of the throat---for
 example, how the internal geometry $(a,L)$ and stored field energy reorganize under slow external
 forcing. Such coefficients are, by construction, functionals of the full internal state and of
-the chosen response regime (adiabatic vs.\ dynamical, driven vs.\ isolated, etc.). Where Paper~VII
+the chosen response regime (adiabatic vs.\ dynamical, driven vs.\ isolated, etc.). Where Ref.~\cite{norris2026_4d_model}
 does not yet supply a unique closure for that response problem, we keep the corresponding
 coefficients symbolic and state precisely what additional assumptions would be needed to compute
 them.
 
 \subsection{Preferred-frame concerns and operational Lorentz symmetry}
 
-The Paper~VII framework is a field theory in an underlying medium, so it admits a distinguished
+The framework of Ref.~\cite{norris2026_4d_model} is a field theory in an underlying medium, so it admits a distinguished
 background rest frame at the microscopic level. Nevertheless, the earlier papers relied heavily
 on relativistic kinematics in the effective, brane-facing description. In this paper we take a
 conservative stance:
@@ -150,21 +168,21 @@ conservative stance:
 
 \subsection{Organization}
 
-Section~\ref{sec:paper7-dictionary} summarizes the minimal dictionary from Paper~VII that is needed
-for the derivations. Sections~\ref{sec:added-mass}--\ref{sec:sr-kinematics} derive the constants
-listed above, each with its assumptions and cross-checks. Section~\ref{sec:open-parameters}
+Section~\ref{sec:recap_4d_model} summarizes the minimal dictionary from Ref.~\cite{norris2026_4d_model} that is needed
+for the derivations. Sections~\ref{sec:added_mass}--\ref{sec:sr_wave_mass} derive the constants
+listed above, each with its assumptions and cross-checks. Section~\ref{sec:undetermined}
 collects the remaining symbolic response coefficients and explains what additional closure would
-be required to fix them. We conclude in Section~\ref{sec:conclusion} with a consolidated parameter
+be required to fix them. We conclude in Section~\ref{sec:conclusions} with a consolidated parameter
 ledger to be used in future work.
 
 % ======================================================================
 \section{Executive summary of results}
 \label{sec:exec-summary}
 
-This paper is a follow-up to Paper~VII. Paper~VII introduced a unified \(4\!+\!1\)D field-theoretic model (matter, optional gauge sector, and geometry) and emphasized an operational definition of \emph{brane-observed} quantities via projection. The purpose of the present work is narrower: we provide full, paper-grade derivations of the key \emph{effective} constants that were previously introduced phenomenologically in Papers~I--VI and are needed as fixed inputs for future strong-field and multi-body developments.
+This paper is a follow-up to Ref.~\cite{norris2026_4d_model}. That work introduced a unified \(4\!+\!1\)D field-theoretic model (matter, optional gauge sector, and geometry) and emphasized an operational definition of \emph{brane-observed} quantities via projection. The purpose of the present work is narrower: we provide full, paper-grade derivations of the key \emph{effective} constants that were previously introduced phenomenologically in Papers~I--VI and are needed as fixed inputs for future strong-field and multi-body developments.
 
 \paragraph{Notation warning (two different ``\(K\)''s in the series).}
-Earlier 1PN/vector-sector papers use \(K\) to denote an overall \emph{vector-sector coupling} (wake/flow-response normalization), while Paper~VII uses \(K\) as the \emph{polytropic EOS coefficient} in \(P(\rho)=K\rho^n\). To avoid collision in this follow-up paper we write:
+Earlier 1PN/vector-sector papers use \(K\) to denote an overall \emph{vector-sector coupling} (wake/flow-response normalization), while Ref.~\cite{norris2026_4d_model} uses \(K\) as the \emph{polytropic EOS coefficient} in \(P(\rho)=K\rho^n\). To avoid collision in this follow-up paper we write:
 \[
 P(\rho)=K_{\rm EOS}\rho^n,
 \qquad
@@ -177,31 +195,55 @@ Table~\ref{tab:carry-forward} lists the main derived values. The logic is delibe
 
 \begin{table}[t]
   \centering
-  \caption{Carry-forward values derived in this paper. All remaining knobs are left symbolic and explicitly exposed (Sec.~\ref{sec:open-knobs}).}
+  \caption{Carry-forward values derived in this paper. Response quantities remain protocol-dependent in general, but Sec.~\ref{sec:undetermined:kappaPV} provides one explicit adiabatic closure that fixes \(\kappa_{\rm PV}\).}
   \label{tab:carry-forward}
-  \begin{tabular}{@{}lll@{}}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{\linewidth}{@{}L L l@{}}
     \toprule
     Quantity & Result & Derived in \\
     \midrule
     Added-mass coefficient for a \(w\)-uniform throat (\(S^2\times\mathbb R\)) &
-    \(\kappa_{\rm add}=\tfrac{1}{2}\) & Sec.~\ref{sec:added-mass} \\
+    \(\kappa_{\rm add}=\tfrac{1}{2}\) &
+    Sec.~\ref{sec:added_mass} \\
+
+    Adiabatic PV/breathing response (conditional; 1-DOF adiabatic closure) &
+    \(\kappa_{\rm PV}=\tfrac{3}{2}\); \(E_w:E_f:E_{\rm PV}=11:2:5\) &
+    Sec.~\ref{sec:undetermined:kappaPV} \\
+
     Added-mass coefficient for a counterfactual \(4\)D bubble (\(B^4\)) &
-    \(\kappa_{\rm add}^{(B^4)}=\tfrac{1}{3}\) & Sec.~\ref{sec:added-mass} \\
+    \(\kappa_{\rm add}^{(B^4)}=\tfrac{1}{3}\) &
+    Sec.~\ref{sec:added_mass} \\
+
     Weak-field optical index coefficient \(\Rightarrow\) stiffness exponent &
-    \(N(r)\simeq 1+2\,\dfrac{GM}{rc^2}\ \Rightarrow\ n=5\) & Sec.~\ref{sec:optical-stiffness} \\
+    \(\begin{aligned}[t]
+      N(r) &\simeq 1+2\,\frac{GM}{rc^2}\\
+           &\Rightarrow\ n=5
+    \end{aligned}\) &
+    Sec.~\ref{sec:optics_eos} \\
+
     Wake-mixing (EIH vector-sector) parameter &
-    \(\alpha^2=\tfrac{3}{4}\) & Sec.~\ref{sec:eih-vector} \\
+    \(\alpha^2=\tfrac{3}{4}\) &
+    Sec.~\ref{sec:1pn-interaction-alpha-K} \\
+
     Vector-sector normalization &
-    \(K_{\rm vec}=\dfrac{2}{\pi^2}\) & Sec.~\ref{sec:eih-vector} \\
+    \(K_{\rm vec}=\frac{2}{\pi^2}\) &
+    Sec.~\ref{sec:1pn-interaction-alpha-K} \\
+
     Special-relativistic \(v^4\) coefficient (wave-supported defect) &
-    \(E(v)=E_0\gamma\ \Rightarrow\ \tfrac{3}{8}\,\dfrac{E_0}{c^2}\dfrac{v^4}{c^2}\) & Sec.~\ref{sec:sr-kinematics} \\
+    \(\begin{aligned}[t]
+      E(v) &= E_0\gamma\\
+           &\Rightarrow\ \tfrac{3}{8}\,\frac{E_0}{c^2}\frac{v^4}{c^2}
+    \end{aligned}\) &
+    Sec.~\ref{sec:sr_wave_mass} \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{table}
 
 \paragraph{Topology discriminator (added mass).}
 The added-mass coefficient is fixed by the exterior potential-flow problem and therefore becomes a clean discriminator between candidate defect topologies.
-Under the Paper~VII assumption that the defect is approximately uniform along the extra dimension \(w\) (a throat with topology \(S^2\times\mathbb R\)), the exterior problem reduces to the familiar \(3\)D cross-section result, giving \(\kappa_{\rm add}=1/2\).
+Under the assumption in Ref.~\cite{norris2026_4d_model} that the defect is approximately uniform along the extra dimension \(w\) (a throat with topology \(S^2\times\mathbb R\)), the exterior problem reduces to the familiar \(3\)D cross-section result, giving \(\kappa_{\rm add}=1/2\).
 A \(4\)D bubble/hypersphere would instead give \(\kappa_{\rm add}=1/3\), which provides a sharp falsifiable ``geometry veto'' at the level of inertial bookkeeping.
 
 \paragraph{Optics \(\Rightarrow\) stiffness (\(n=5\)).}
@@ -250,7 +292,7 @@ Beyond the numerical constants in Table~\ref{tab:carry-forward}, the paper also 
 
 \begin{enumerate}
   \item \textbf{Exact projected continuity with an explicit leakage source.}
-  Defining brane observables by a fixed weight \(W(w)\) (Paper~VII),
+  Defining brane observables by a fixed weight \(W(w)\) (Ref.~\cite{norris2026_4d_model}),
   \[
   \rho_{\rm brane}=\int W(w)\rho\,dw,
   \qquad
@@ -275,7 +317,7 @@ Beyond the numerical constants in Table~\ref{tab:carry-forward}, the paper also 
   The paper therefore treats Poisson behavior as a measurable regime property (with explicit correction channels), not as a fundamental postulate.
 
   \item \textbf{EM sector placement.}
-  When a true gauge sector is included (Paper~VII), minimal coupling ties bulk vorticity to gauge field strength,
+  When a true gauge sector is included (Ref.~\cite{norris2026_4d_model}), minimal coupling ties bulk vorticity to gauge field strength,
   \(\Omega_{ij}=-(q/m)B_{ij}\),
   and the brane-observed fields are defined by projection of \(F_{MN}\). This cleanly separates (i) a kinematic ``EM-from-flow'' dictionary from (ii) a dynamical Maxwell sector, and it makes explicit what additional assumptions are required for standard \(3\!+\!1\)D scaling on the brane.
 \end{enumerate}
@@ -283,26 +325,26 @@ Beyond the numerical constants in Table~\ref{tab:carry-forward}, the paper also 
 \subsection{What is intentionally left symbolic in this paper}
 \label{sec:open-knobs}
 
-This paper is conservative about closure: any coefficient that depends on detailed internal response of the defect (or on choices not fixed in Paper~VII) is kept symbolic.
+This paper is conservative about closure: any coefficient that depends on detailed internal response of the defect (or on choices not fixed in Ref.~\cite{norris2026_4d_model}) is kept symbolic.
 In particular:
 \begin{itemize}
-  \item the pressure--volume response coefficient \(\kappa_{\rm PV}\) (and any related ``breathing'' response parameters) is \emph{not} assumed; it remains a symbolic input until a specific internal response model is chosen and analyzed;
+  \item the pressure--volume response coefficient \(\kappa_{\rm PV}\) is a genuine \emph{response} datum in general (and can be frequency-dependent), but in Sec.~\ref{sec:undetermined:kappaPV} we provide one explicit adiabatic internal-closure scenario under which \(\kappa_{\rm PV}\) is no longer free and evaluates to \(\kappa_{\rm PV}=3/2\); other response protocols remain open;
   \item model parameters associated with confinement and localization profiles, geometry response laws, and any reservoir/drive implementations remain symbolic and are recorded as such;
   \item preferred-frame constraints beyond the kinematic \(\gamma\)-factor mechanism are deferred to future work where interaction-level Lorentz covariance can be tested explicitly.
 \end{itemize}
 
 \paragraph{Reading guide.}
-Sec.~\ref{sec:added-mass} derives \(\kappa_{\rm add}\) and the topology discriminator.
-Sec.~\ref{sec:optical-stiffness} derives \(n=5\) from the weak-field optical coefficient.
-Sec.~\ref{sec:eih-vector} derives \(\alpha^2\) and \(K_{\rm vec}\), including the family-to-unique-point collapse.
-Sec.~\ref{sec:sr-kinematics} derives the universal \(v^4\) coefficient.
-Sec.~\ref{sec:reduction-structure} records the exact projection/leakage identities and the controlled Poisson/sector limits used as infrastructure for later papers.
+Sec.~\ref{sec:added_mass} derives \(\kappa_{\rm add}\) and the topology discriminator.
+Sec.~\ref{sec:optics_eos} derives \(n=5\) from the weak-field optical coefficient.
+Sec.~\ref{sec:1pn-interaction-alpha-K} derives \(\alpha^2\) and \(K_{\rm vec}\), including the family-to-unique-point collapse.
+Sec.~\ref{sec:sr_wave_mass} derives the universal \(v^4\) coefficient.
+Sec.~\ref{sec:brane_reduction} records the exact projection/leakage identities and the controlled Poisson/sector limits used as infrastructure for later papers.
 
 % ======================================================================
-\section{Recap of the unified 4D model from Paper VII}
+\section{Recap of the unified 4D model}
 \label{sec:recap_4d_model}
 
-This paper is a derivation-focused follow-up to Paper VII. We therefore begin by restating the
+This paper is a derivation-focused follow-up to Ref.~\cite{norris2026_4d_model}. We therefore begin by restating the
 minimal set of definitions needed to make the downstream coefficient derivations unambiguous.
 All model parameters that are not fixed by symmetry/consistency are kept symbolic.
 
@@ -337,7 +379,7 @@ Define the bulk density
 \begin{equation}
 \rho(\mathbf{X},t) := |\psi(\mathbf{X},t)|^2.
 \end{equation}
-Paper VII fixes a stiff polytropic closure
+Ref.~\cite{norris2026_4d_model} fixes a stiff polytropic closure
 \begin{equation}
 \boxed{
 P(\rho)=K\rho^{5},
@@ -432,7 +474,7 @@ q\big(E_i+v_j B_{ij}\big)
 \end{equation}
 where $E_i:=-\partial_tA_i-\partial_iA_0$ and $B_{ij}:=\partial_iA_j-\partial_jA_i$.
 
-A key identity used repeatedly in Paper VII is that minimal coupling ties vorticity to gauge curvature:
+A key identity used repeatedly in Ref.~\cite{norris2026_4d_model} is that minimal coupling ties vorticity to gauge curvature:
 \begin{equation}
 \boxed{
 \Omega_{ij}:=\partial_i v_j-\partial_j v_i
@@ -450,7 +492,7 @@ Define the field strength
 \begin{equation}
 F_{MN}:=\partial_M A_N-\partial_N A_M.
 \end{equation}
-Paper VII uses a localized Maxwell sector with a positive profile $Z(w)$ concentrated near the brane:
+Ref.~\cite{norris2026_4d_model} uses a localized Maxwell sector with a positive profile $Z(w)$ concentrated near the brane:
 \begin{equation}
 \mathcal{L}_{\mathrm{EM}}
 =
@@ -515,14 +557,16 @@ where $H_{\mathrm{drive/diss}}$ encodes any explicitly nonconservative protocol 
 Because geometry enters through $V_{\mathrm{conf}}$, the matter contribution to the generalized forces is fixed by a Hellmann--Feynman identity:
 \begin{equation}
 \boxed{
-F_a^{(\psi)}(t)=-\frac{\partial H_\psi}{\partial a}
-= -\int d^4X\,\rho(\mathbf{X},t)\,\partial_a V_{\mathrm{conf}}(\mathbf{X};a,L),
-\qquad
-F_L^{(\psi)}(t)=-\frac{\partial H_\psi}{\partial L}
+\begin{aligned}
+F_a^{(\psi)}(t) &= -\frac{\partial H_\psi}{\partial a}
+= -\int d^4X\,\rho(\mathbf{X},t)\,\partial_a V_{\mathrm{conf}}(\mathbf{X};a,L),\\
+F_L^{(\psi)}(t) &= -\frac{\partial H_\psi}{\partial L}
 = -\int d^4X\,\rho(\mathbf{X},t)\,\partial_L V_{\mathrm{conf}}(\mathbf{X};a,L).
+\end{aligned}
 }
 \label{eq:recap_force_ledger}
 \end{equation}
+
 Geometry dynamics may be closed either statically ($F_a=F_L=0$) or dynamically via a breathing-mode closure
 \begin{equation}
 M_a\ddot a + C_a\dot a = -\partial_a H_{\mathrm{tot}},
@@ -597,7 +641,7 @@ the brane can exhibit additional effective physics (e.g.\ transverse structure) 
 
 \paragraph{What this recap is (and is not).}
 Equations \eqref{eq:recap_gnls}--\eqref{eq:recap_extra_stress} are definitions and identity-level consequences
-of the unified 4D variational model from Paper VII. This follow-up paper uses these ingredients as the starting point
+of the unified 4D variational model of Ref.~\cite{norris2026_4d_model}. This follow-up paper uses these ingredients as the starting point
 for deriving the key phenomenological coefficients used elsewhere in the series, while keeping any remaining undetermined
 ``knobs'' symbolic.
 
@@ -912,7 +956,7 @@ one finds
 \frac{(n-1)GM}{b c^2}.
 \label{eq:deflection_general_n}
 \end{equation}
-Therefore $\Delta\theta=4GM/(bc^2)$ selects $\alpha_n=2$, i.e. $n=5$. :contentReference[oaicite:7]{index=7}
+Therefore $\Delta\theta=4GM/(bc^2)$ selects $\alpha_n=2$, i.e. $n=5$.
 
 \paragraph{Shapiro time delay.}
 Similarly, the excess coordinate travel time along a nearly straight path may be written (to leading order) as
@@ -923,11 +967,11 @@ Similarly, the excess coordinate travel time along a nearly straight path may be
 \ln\!\left(\frac{4r_{\rm E}r_{\rm R}}{b^2}\right),
 \label{eq:shapiro_general_n}
 \end{equation}
-so Shapiro delay fixes the \emph{same} $\alpha_n$ as bending in this ``pure refraction'' construction. :contentReference[oaicite:8]{index=8}
+so Shapiro delay fixes the \emph{same} $\alpha_n$ as bending in this ``pure refraction'' construction.
 
 \subsection{Embedding into the unified 4D model (why the GNLS nonlinearity is fixed)}
 
-Paper~VII adopts the $n=5$ stiffness in the bulk superfluid sector; in the GNLS formulation this corresponds to the enthalpy ladder
+Ref.~\cite{norris2026_4d_model} adopts the $n=5$ stiffness in the bulk superfluid sector; in the GNLS formulation this corresponds to the enthalpy ladder
 \begin{equation}
 P(\rho)=K\rho^5,\qquad
 c_s^2(\rho)=5K\rho^4,\qquad
@@ -964,7 +1008,7 @@ This sector introduces three \emph{a priori} dimensionless constants:
 \textbf{Notation warning:} the $K$ in this section is \emph{not} the EOS constant in $P=K_{\rm EOS}\rho^n$.
 To avoid collision we write the EOS constant as $K_{\rm EOS}$ whenever both appear.
 
-Our goal is to show that once the stiff EOS exponent is fixed (Sec.~\ref{sec:optics-n}),
+Our goal is to show that once the stiff EOS exponent is fixed (Sec.~\ref{sec:optics_eos}),
 the interaction sector is no longer tunable: the EIH cross-tensor match determines
 $\alpha^2$ and $K$ (and collapses the apparent $a_H$ freedom).
 
@@ -1014,7 +1058,7 @@ normalization (the overall $K\pi^2$) and the longitudinal/helical mixing into a 
 that multiply the EIH tensor structures in \eqref{eq:Lvec_template}.
 
 \paragraph{Connection to the unified 4D model.}
-In Paper VII language, the content of \eqref{eq:CL_Cpar_forms} is that the bilinear part of the
+In the conventions of Ref.~\cite{norris2026_4d_model}, the content of \eqref{eq:CL_Cpar_forms} is that the bilinear part of the
 interaction functional is fixed once one specifies (i) the brane projection/measurement convention
 and (ii) a basis decomposition of the brane-projected response into longitudinal and transverse sectors.
 The remaining question is whether the parameters $(\alpha,a_H,K)$ are genuine free knobs or are fixed by
@@ -1065,7 +1109,7 @@ At this stage, $a_H$ is a \emph{candidate} knob: distinct wake bases can reprodu
 \subsection{Thermodynamic closure fixes \texorpdfstring{$\alpha^2$}{alpha^2} from the EOS exponent}
 \label{sec:1pn-interaction-thermo}
 
-We now use the same microphysics already fixed in Sec.~\ref{sec:optics-n}:
+We now use the same microphysics already fixed in Sec.~\ref{sec:optics_eos}:
 a barotropic polytrope $P(\rho)=K_{\rm EOS}\rho^n$ with $n=5$.
 
 \paragraph{Action-level identity (4D GNLS $\leftrightarrow$ barotropic fluid).}
@@ -1083,7 +1127,7 @@ For a polytrope $P(\rho)=K_{\rm EOS}\rho^n$, the unique compatible internal ener
   \frac{U}{P}=\frac{1}{n-1}.
   \label{eq:U_over_P}
 \end{equation}
-(For $n=5$, this reduces to the identities already used in Paper VII:
+(For $n=5$, this reduces to the identities already used in Ref.~\cite{norris2026_4d_model}:
 $U=\tfrac{K_{\rm EOS}}{4}\rho^5$, $h=\tfrac{5K_{\rm EOS}}{4}\rho^4$.)
 
 \paragraph{Definition of $\alpha^2$ as an ``available wake fraction''.}
@@ -1151,7 +1195,7 @@ response/loss parameters in a non-adiabatic throat model) remain symbolic and ar
 \section{Special relativity from wave-supported mass}
 \label{sec:sr_wave_mass}
 
-In Papers I--VI, the special-relativistic kinetic expansion was used as an external calibration target for the point-particle sector. In this follow-up we show that the required structure arises directly from a single physical premise already built into the Paper~VII picture: \emph{a localized defect behaves inertially because it is supported by a trapped wave mode}. Once the defect's rest energy is wave energy with a relativistic (massless) dispersion relation, the full $\gamma(v)$ structure---and in particular the universal $v^4$ coefficient---follows without additional model-specific tuning.
+In Papers I--VI, the special-relativistic kinetic expansion was used as an external calibration target for the point-particle sector. In this follow-up we show that the required structure arises directly from a single physical premise already built into the model of Ref.~\cite{norris2026_4d_model}: \emph{a localized defect behaves inertially because it is supported by a trapped wave mode}. Once the defect's rest energy is wave energy with a relativistic (massless) dispersion relation, the full $\gamma(v)$ structure---and in particular the universal $v^4$ coefficient---follows without additional model-specific tuning.
 
 \subsection{Rest energy as trapped-mode energy}
 
@@ -1292,7 +1336,7 @@ re-enter in the full 4D model.
 \subsection{Emergent Lorentz structure of the signal sector (controlled regime)}
 \label{sec:preferred_frame_wave_sector}
 
-The brane reduction developed in Paper VII yields an exact projected continuity
+The brane reduction developed in Ref.~\cite{norris2026_4d_model} yields an exact projected continuity
 identity with explicit leakage sources, and an exact longitudinal identity after
 Helmholtz decomposition of the brane velocity field. In a regime where
 (i) leakage and projection-stress corrections are small, (ii) the longitudinal
@@ -1498,7 +1542,7 @@ experiments of interest.
 \section{Controlled reduction to brane-effective equations}
 \label{sec:brane_reduction}
 
-Paper~VII defines a single unified field theory in $(3+1)+1$ dimensions.
+Ref.~\cite{norris2026_4d_model} defines a single unified field theory in $(3+1)+1$ dimensions.
 This paper does not introduce a separate ``brane PDE'' by fiat. Instead, a
 three-dimensional observer's physics is obtained by an explicit measurement map
 that (i) projects bulk fields near $w=0$ and (ii) records fluxes on a chosen
@@ -1615,7 +1659,7 @@ to a Poisson-like limit below.
 \label{sec:brane_momentum}
 
 To obtain a brane-effective momentum equation, start from the bulk Euler-like
-equation (Madelung form) in Paper~VII and rewrite it in flux form for the bulk
+equation (Madelung form) in Ref.~\cite{norris2026_4d_model} and rewrite it in flux form for the bulk
 current components.  Projecting the $(x,y,z)$ components yields a structural
 balance of the form
 \begin{align}
@@ -1657,7 +1701,7 @@ with $h(\rho)=\frac{5K}{4}\rho^4$ and $Q(\rho)=-\frac{\hbar^2}{2m}
 
 If the gauge sector is active, $F^{\rm em}_i$ denotes the projected Lorentz-type
 force density (the explicit component form is fixed by the minimal coupling
-conventions of Paper~VII); if the gauge sector is not active, set
+conventions of Ref.~\cite{norris2026_4d_model}); if the gauge sector is not active, set
 $F^{\rm em}_i\equiv 0$.  In either case, \eqref{eq:brane_momentum_flux} is exact
 at the level of a projected identity: no closure has yet been imposed.
 
@@ -1865,8 +1909,8 @@ Accordingly, we separate model ingredients into two classes:
 
 \begin{enumerate}
   \item \textbf{Derived invariants (handled in previous sections).}
-  These are the coefficients fixed without additional closure assumptions and are summarized in
-  Table~\ref{tab:exec_results}.
+  These are the coefficients fixed without additional response-protocol closure assumptions and are summarized in
+  Table~\ref{tab:carry-forward} (with the conditional adiabatic \(\kappa_{\rm PV}\) entry explicitly marked as such).
   \item \textbf{Response coefficients (kept symbolic here).}
   These encode internal compliance, relaxation, and open-system exchange. They are well-defined in
   the unified 4D model, but they require an explicit response protocol (or an explicit reduction
@@ -1979,12 +2023,139 @@ Substituting back yields an effective energy shift
   +\cdots.
   \label{eq:Heff_adiabatic}
 \end{equation}
-The response coefficient $\kappa_{\rm PV}$ is then identified by matching the $\epsilon$-dependence of
-$H_{\rm eff}$ (and its velocity-coupled extension when the defect is moving) to the orbital-sector 1PN
-effective Lagrangian used in earlier papers. Until that matching is performed under an explicitly
-declared choice of $\epsilon$ and constraint, $\kappa_{\rm PV}$ must remain symbolic.
+The response coefficient \(\kappa_{\rm PV}\) is then identified by matching the \(\epsilon\)-dependence of
+\(H_{\rm eff}\) (and its velocity-coupled extension when the defect is moving) to the orbital-sector 1PN
+effective Lagrangian used in earlier papers. In general this requires a declared choice of \(\epsilon\) and
+constraint and therefore \(\kappa_{\rm PV}\) is protocol-dependent. However, one can make concrete progress
+by adopting an explicit internal response protocol and carrying out the elimination analytically. We now
+record one such adiabatic closure scenario which yields \(\kappa_{\rm PV}=3/2\) under the already-fixed
+stiff EOS (\(n=5\)) and the standard inertial ledger \(\kappa_\rho=1,\ \kappa_{\rm add}=1/2\).
+
+\subsubsection{One-DOF adiabatic throat closure for \texorpdfstring{$\kappa_{\rm PV}$}{kappaPV}}
+\label{sec:kappaPV:adiabatic1dof}
+
+\paragraph{Declared protocol and control variable.}
+We take the external environment variable to be the \emph{ambient background medium density} \(\rho\) at the
+defect location. In the weak-field regime this density is slowly modulated by the brane potential via
+\(\delta\rho/\rho_0 \simeq \Phi/c_0^2\) (Sec.~\ref{sec:optics_eos}). We work in the adiabatic regime:
+for each slowly varying \(\rho\), the internal geometry relaxes to the instantaneous minimum of an effective
+rest-energy functional.
+
+\paragraph{Reduced geometry.}
+To obtain an analytic closure, we restrict to one geometric DOF \(a\) and set \(L=\Lambda a\) with fixed
+\(\Lambda\) (aspect ratio treated as an externally selected constant). This reduces the compliance problem
+to \(a(\rho)\).
+
+\paragraph{Reduced energy functional.}
+Neglecting any \(\rho\)-independent ``dead-weight'' geometric terms for the 1PN response extraction, we take
+\begin{equation}
+F(a,\rho)=E_w+E_f+E_{\rm PV},
+\label{eq:kappaPV_closure_F}
+\end{equation}
+
+If an additional \(\rho\)-independent stabilizer contributes comparably to \(F\), it dilutes
+\(d\ln F/d\ln\rho\) and shifts (or can eliminate) the \(\kappa_{\rm PV}=3/2\) solution; the present closure
+therefore assumes such terms are subdominant in the weak-field operating regime.
+
+With sector scalings
+\begin{align}
+E_w(a,\rho) &= \frac{\mathcal{C}_w\,c_s(\rho)}{a},
+\label{eq:kappaPV_closure_Ew}\\
+E_f(a,\rho) &= \frac{\mathcal{C}_f}{\rho\,a^2},
+\label{eq:kappaPV_closure_Ef}\\
+E_{\rm PV}(a,\rho) &= \mathcal{C}_{\rm PV}\,P(\rho)\,V(a)
+= \mathcal{C}_{\rm PV}\,K_{\rm EOS}\rho^n\left(\pi\Lambda a^3\right),
+\label{eq:kappaPV_closure_Epv}
+\end{align}
+where \(P(\rho)\) is the ambient bulk pressure. For a polytrope \(P(\rho)=K_{\rm EOS}\rho^n\), the sound
+speed satisfies \(c_s^2=dP/d\rho=nK_{\rm EOS}\rho^{n-1}\), so \(c_s(\rho)\propto\rho^{(n-1)/2}\).
+
+\paragraph{Equilibrium implies a virial identity.}
+Adiabatic equilibrium is \(\partial_a F=0\). Using the \(a\)-powers
+(\(E_w\sim a^{-1}\), \(E_f\sim a^{-2}\), \(E_{\rm PV}\sim a^{3}\)) gives
+\begin{equation}
+E_w+2E_f = 3E_{\rm PV}.
+\label{eq:kappaPV_closure_virial}
+\end{equation}
+Define \(x\equiv E_f/E_w\). Then \(E_{\rm PV}/E_w=(1+2x)/3\) and
+\begin{equation}
+F = E_w\,\frac{4+5x}{3}.
+\label{eq:kappaPV_closure_F_in_x}
+\end{equation}
+
+\paragraph{Extracting the density-response slope (envelope theorem).}
+Because \(a\) minimizes \(F\) at fixed \(\rho\), the equilibrium derivative obeys the envelope-theorem form
+\(dF_{\rm eq}/d\rho = (\partial F/\partial\rho)_{a=a_*(\rho)}\). Therefore
+\begin{equation}
+\frac{d\ln F}{d\ln\rho}
+=
+\frac{\left(\frac{n-1}{2}\right)E_w + (-1)E_f + nE_{\rm PV}}{F}.
+\label{eq:kappaPV_closure_dlnF_general}
+\end{equation}
+Eliminating \(E_{\rm PV}\) using \eqref{eq:kappaPV_closure_virial} yields
+\begin{equation}
+\frac{d\ln F}{d\ln\rho}
+=
+\frac{\frac{5n-3}{2} + (2n-3)x}{4+5x}.
+\label{eq:kappaPV_closure_dlnF_in_x_general_n}
+\end{equation}
+In particular, for the stiff EOS selected by optics (\(n=5\)),
+\begin{equation}
+\frac{d\ln F}{d\ln\rho}
+=
+\frac{11+7x}{4+5x}.
+\label{eq:kappaPV_closure_dlnF_in_x_n5}
+\end{equation}
+
+\paragraph{Closure for \texorpdfstring{$\kappa_{\rm PV}$}{kappaPV} and the internal energy partition.}
+In the orbital-sector ledger, the total density-driven rest-energy response corresponds to
+\(\kappa_\rho+\kappa_{\rm PV}\). Using the estimator
+\(\kappa_{\rm PV} = (d\ln F/d\ln\rho)-\kappa_\rho\) with \(\kappa_\rho=1\), the target value
+\(\kappa_{\rm PV}=3/2\) is equivalent to
+\begin{equation}
+\frac{d\ln F}{d\ln\rho} = \kappa_\rho+\kappa_{\rm PV} = \frac{5}{2}.
+\label{eq:kappaPV_closure_target_slope}
+\end{equation}
+Applying \eqref{eq:kappaPV_closure_dlnF_in_x_n5} gives a unique solution
+\begin{equation}
+\frac{11+7x}{4+5x}=\frac{5}{2}
+\quad\Rightarrow\quad
+x=\frac{2}{11}.
+\label{eq:kappaPV_closure_x_solution}
+\end{equation}
+Combining with \eqref{eq:kappaPV_closure_virial} yields the universal internal partition
+\begin{equation}
+E_w:E_f:E_{\rm PV} = 11:2:5,
+\qquad
+(f_w,f_f,f_{\rm PV})=\left(\frac{11}{18},\frac{2}{18},\frac{5}{18}\right).
+\label{eq:kappaPV_closure_partition}
+\end{equation}
+Thus this adiabatic closure produces \(\kappa_{\rm PV}=3/2\) and therefore
+\(\beta_{\rm 1PN}=\kappa_\rho+\kappa_{\rm add}+\kappa_{\rm PV}=3\) with \(\kappa_{\rm add}=1/2\).
+
+\paragraph{Predicted ``breathing'' slope.}
+Differentiating the equilibrium condition with respect to \(\rho\) gives the predicted compressibility of the
+throat scale:
+\begin{equation}
+\frac{d\ln a}{d\ln\rho}
+=
+-\,\frac{-\frac{n-1}{2} + 2x + n(1+2x)}{4+10x}.
+\label{eq:kappaPV_closure_dlnA_general_n}
+\end{equation}
+For \(n=5\) and \(x=2/11\),
+\begin{equation}
+\frac{d\ln a}{d\ln\rho} = -\frac{57}{64}\approx -0.890625.
+\label{eq:kappaPV_closure_dlnA_n5}
+\end{equation}
+
+\paragraph{Scale degeneracy and what remains to be calibrated.}
+The dimensionless closure above fixes only the partition \(x\) and therefore \(\kappa_{\rm PV}\); it does not
+fix the absolute scale \(a(\rho_0)\) because overall coefficients \(\mathcal{C}_w,\mathcal{C}_f,\mathcal{C}_{\rm PV}\) and \(\Lambda\) enter
+only as multiplicative constants in \(F\). Fixing those requires a separate normalization choice (e.g.\ what
+precisely is meant by ``PV energy'' vs.\ enthalpy), which can be handled in the global calibration ledger.
 
 \paragraph{Dynamic response and frequency dependence.}
+The adiabatic closure above should be understood as an explicit \(\omega\to0\) adiabatic limit of the more general response problem.
 If the geometry response is not adiabatic, one instead solves \eqref{eq:dynamic_wall_law} (linearized
 about equilibrium) to obtain a frequency-dependent compliance $\delta q^a(\omega)/\epsilon(\omega)$.
 In that case one should treat $\kappa_{\rm PV}$ as the low-frequency limit of a response function,
@@ -2053,7 +2224,8 @@ We therefore keep the following quantities symbolic throughout:
 \begin{itemize}
   \item \textbf{Scale/units parameters:} $m,\hbar$ and any global normalization used to map the dimensionless 4D solve to physical units.
   \item \textbf{Gauge/EM parameters:} $q$, $\mu_0$, localization thickness $\lambda_{\rm conf}$, and gauge-fixing parameters (where applicable).
-  \item \textbf{Geometry-energy parameters:} $P_{\rm vac}$, $\sigma$ (and any higher-order geometric terms if included).
+  \item \textbf{Geometry-energy parameters:} $P_{\rm vac}$ (ambient bulk pressure), $\sigma$ (and any higher-order geometric terms if included).
+  \item \textbf{Adiabatic closure normalizations:} the dimensionless aspect ratio \(\Lambda\) and overall coefficients \(\mathcal{C}_w,\mathcal{C}_f,\mathcal{C}_{\rm PV}\) in the reduced closure functional (Sec.~\ref{sec:kappaPV:adiabatic1dof}), which set the absolute scale \(a(\rho_0)\) but not the dimensionless partition.
   \item \textbf{Reservoir/dissipation parameters:} any chemical-potential coupling strength, sponge/PML parameters, and drive amplitudes/frequencies.
   \item \textbf{Microphysics calibration factors:} any dimensionless geometric correction factors carried forward in the mapping from defect geometry
         to effective mass/charge in the brane theory.
@@ -2083,6 +2255,7 @@ into derived predictions \emph{within the same unified 4D model}:
   \item \textbf{Match to the brane-effective 1PN description.}
   Insert the resulting $H_{\rm eff}(\epsilon)$ (and its motion-corrected extension) into the brane-effective point-particle Lagrangian
   and read off $\kappa_{\rm PV}$ and any higher multipole/tidal response coefficients.
+  (An explicit execution of this step in a reduced adiabatic one-DOF closure is given in Sec.~\ref{sec:kappaPV:adiabatic1dof}.)
 
   \item \textbf{Extract $Z^{\rm eff}(\omega)$ and test locality.}
   Freeze $\Gamma$, $\{P_i\}$, $(u,j)$ conventions and drive protocols, compute $Z^{\rm eff}(\omega)$, and check whether
@@ -2102,10 +2275,10 @@ then repeated with gauge/localization enabled, and finally repeated in the wave-
 \section{Conclusions}
 \label{sec:conclusions}
 
-This follow-up paper has one purpose: to connect the unified 4D field model of Paper~VII to the concrete, paper-facing coefficients that were previously introduced as phenomenological inputs in the earlier parts of the series. The outcome is a short list of parameters that are no longer adjustable, together with a clear map of which quantities \emph{must} remain symbolic until additional dynamical closure (or additional controlled reductions) are supplied.
+This follow-up paper has one purpose: to connect the unified 4D field model of Ref.~\cite{norris2026_4d_model} to the concrete, paper-facing coefficients that were previously introduced as phenomenological inputs in the earlier parts of the series. The outcome is a short list of parameters that are no longer adjustable, together with a clear map of which quantities \emph{must} remain symbolic until additional dynamical closure (or additional controlled reductions) are supplied.
 
 \subsection*{What is fixed (and why this matters)}
-Within the assumptions stated explicitly in the preceding sections, four key results emerge as non-tunable:
+Within the assumptions stated explicitly in the preceding sections, five key results emerge as fixed (with the \(\kappa_{\rm PV}\) item conditional on the declared adiabatic protocol):
 
 \begin{itemize}
   \item \textbf{A topology/geometry discriminator for inertial coupling:}
@@ -2141,6 +2314,12 @@ Within the assumptions stated explicitly in the preceding sections, four key res
     E(v)=E_0\big(1+\tfrac12 v^2/c^2+\tfrac{3}{8}v^4/c^4+\cdots\big)
   \),
   so the \(v^4\) coefficient \(3/8\) requires no additional microphysical input.
+
+  \item \textbf{A concrete closure of the perihelion ``PV gap'' (under a declared protocol):}
+  adopting the adiabatic internal response closure in Sec.~\ref{sec:kappaPV:adiabatic1dof} yields
+  \(\kappa_{\rm PV}=3/2\), closing \(\beta_{\rm 1PN}=3\) when combined with \(\kappa_\rho=1\) and the derived
+  throat added mass \(\kappa_{\rm add}=1/2\). The same closure predicts a universal internal partition
+  \(E_w:E_f:E_{\rm PV}=11:2:5\) and a breathing slope \(d\ln a/d\ln\rho=-57/64\).
 \end{itemize}
 
 Taken together, these results support a strong organizing claim: a substantial part of the earlier phenomenology is not a collection of independent knobs, but a set of linked consequences of (i) the defect topology, (ii) optical/weak-field consistency, and (iii) the thermodynamic structure implied by the stiff EOS.
@@ -2150,8 +2329,8 @@ Not every quantity introduced in earlier work can be derived from the unified 4D
 
 Accordingly:
 \begin{itemize}
-  \item All such response coefficients are left symbolic in this paper.
-  \item We have identified the minimal additional ingredients needed to compute them (explicit stabilizing energy functional, response regime, linearized response matrix, and matching to the reduced effective point-particle description), and we have separated these requirements from the already-derived geometric and thermodynamic constants.
+  \item Response coefficients remain protocol-dependent in general. Apart from the explicit adiabatic closure of \(\kappa_{\rm PV}\) given in Sec.~\ref{sec:kappaPV:adiabatic1dof}, they are left symbolic in this paper.
+  \item We have identified the minimal additional ingredients needed to compute the remaining response data (explicit stabilizing energy functional, response regime, linearized response matrix, and matching to the reduced effective point-particle description), and we have separated these requirements from the already-derived geometric and thermodynamic constants.
 \end{itemize}
 
 This division is not merely rhetorical. It is the line between statements that can be made purely from kinematics/topology/thermodynamics, and statements that genuinely depend on dynamical throat microphysics.
@@ -2182,7 +2361,7 @@ The results above are sufficient to begin the next stage of the program with a c
 With these pieces in place, subsequent papers can address multi-defect interactions and genuinely predictive dynamics in the same ``no hidden tuning'' spirit as the constants derived here.
 
 \subsection*{Closing perspective}
-Paper~VII established the unified 4D dynamical arena. The present follow-up isolates the cross-paper constants that are fixed by that arena and draws a bright line around those that require additional closure. This is the correct foundation for future work: it makes clear which results are geometric and thermodynamic necessities, and which are dynamical predictions to be extracted next from the same underlying model.
+Ref.~\cite{norris2026_4d_model} established the unified 4D dynamical arena. The present follow-up isolates the cross-paper constants that are fixed by that arena and draws a bright line around those that require additional closure. This is the correct foundation for future work: it makes clear which results are geometric and thermodynamic necessities, and which are dynamical predictions to be extracted next from the same underlying model.
 
 % ======================================================================
 % Appendices
@@ -2749,7 +2928,7 @@ Let $J_i$ denote the bulk mass current components.  Define the brane momentum fl
 tensor (for $i,j\in\{x,y,z\}$)
 \begin{align}
 \Pi_{ij}^{\rm brane} \equiv \mathcal{P}_W\!\left[\frac{J_iJ_j}{\rho}\right].
-\label{eq:Pi_def}
+\label{eq:app_Pi_def}
 \end{align}
 A corresponding brane momentum balance takes the schematic conservative form
 \begin{align}
@@ -2771,7 +2950,7 @@ Defining the brane velocity $\mathbf{v}_{\rm brane}\equiv \mathbf{J}_{\rm brane}
 one may isolate the ``extra stress'' (unresolved $w$-structure) as
 \begin{align}
 R_{ij} \equiv \Pi_{ij}^{\rm brane} - \rho_{\rm brane} v^{\rm brane}_i v^{\rm brane}_j.
-\label{eq:Rij_def}
+\label{eq:app_Rij_def}
 \end{align}
 If the bulk flow is effectively $w$-separable (single $w$-mode), then $\Pi_{ij}^{\rm brane}\approx
 \rho_{\rm brane} v^{\rm brane}_i v^{\rm brane}_j$ and $R_{ij}\approx 0$; otherwise $R_{ij}$ is a
@@ -2794,7 +2973,7 @@ Eliminating $\delta\rho_{\rm brane}$ gives a forced wave equation for $\phi_3$,
 \partial_t^2 \phi_3 - \frac{c_{s,0}^2}{m}\,\nabla_3^2 \phi_3
 = -\frac{c_{s,0}^2}{m\rho_0}\,S_{\rho,\rm brane},
 \qquad c_{s,0}^2=5K\rho_0^4,
-\label{eq:forced_wave_phi}
+\label{eq:app_forced_wave_phi}
 \end{align}
 whose quasi-static limit is the Poisson-type candidate
 \begin{align}
@@ -2822,7 +3001,7 @@ We define a weighted brane projection of any bulk field $f(\mathbf{x},w,t)$ by
 \mathcal{P}_W[f](\mathbf{x},t)
 \;\equiv\;
 \int_{-W_{\rm proj}}^{W_{\rm proj}} W(w)\, f(\mathbf{x},w,t)\,dw,
-\label{eq:PW_def}
+\label{eq:app_PW_def}
 \end{equation}
 where $W(w)\ge 0$ is a chosen weight (e.g. a ground-state weight), and
 $W_{\rm proj}$ is a finite projection half-width.
@@ -2999,7 +3178,7 @@ R_{ij}
 \;\equiv\;
 \Pi^{\rm brane}_{ij} - \rho_{\rm brane}\, v_{i,{\rm brane}} v_{j,{\rm brane}}.
 }
-\label{eq:Rij_def}
+\label{eq:app_Rij_def_alt}
 \end{equation}
 By construction, $R_{ij}\equiv 0$ in a strict separable/single-mode regime where
 $v_i(\mathbf{x},w,t)$ is effectively $w$-independent over the support of $W$.
@@ -3111,8 +3290,8 @@ In the main text we use $\kappa_{\rm add}$ as the geometric inertia contribution
 entering the 1PN bookkeeping.  This appendix shows (i) why a $w$-uniform throat
 has $\kappa_{\rm add}=1/2$ and (ii) why a counterfactual 4D bubble gives
 $\kappa_{\rm add}=1/3$, thus acting as a topology/geometry discriminator.
-(For the model’s ambient/geometry notation and the meaning of the extra coordinate $w$,
-see the unified 4D setup summarized in Paper VII.):contentReference[oaicite:0]{index=0}
+(For the model's ambient/geometry notation and the meaning of the extra coordinate $w$,
+see Ref.~\cite{norris2026_4d_model}.)
 
 \subsection{General $d$-dimensional reference result: translating $d$-ball}
 \label{app:added_mass:d_ball}
@@ -3199,7 +3378,7 @@ m_{\rm add}(B^d)
 \label{app:added_mass:throat}
 We now apply the preceding ideas to the throat geometry used in this series:
 a corridor uniform along the extra coordinate $w$ with a spherical cross-section
-of radius $a$ (topology $S^2\times I_w$; in the idealized limit $I_w=\mathbb R$).:contentReference[oaicite:1]{index=1}
+of radius $a$ (topology $S^2\times I_w$; in the idealized limit $I_w=\mathbb R$).
 
 \paragraph{Exterior flow model.}
 Consider a throat segment of finite $w$-extent $L$ that translates with velocity
@@ -3246,7 +3425,7 @@ V_3(a)=\frac{4\pi}{3}a^3,
 \end{align}
 (Equivalently: $T_{\rm flow}=\tfrac{1}{4}\rho_0 V_3 U^2$.)  This is the standard
 ``added mass = half the displaced mass'' statement used in the earlier papers’
-hydrodynamic interpretation of the 1PN parameter.:contentReference[oaicite:2]{index=2}
+hydrodynamic interpretation of the 1PN parameter.
 
 \paragraph{Lift to the $w$-uniform throat.}
 For the $w$-uniform throat segment of length $L$, the induced field is replicated
@@ -3278,7 +3457,7 @@ with displaced 4D volume $V_{\rm disp}^{\rm throat}=V_3(a)\,L$ and
 \end{align}
 Crucially, the coefficient is independent of $L$ (the $w$-extent cancels in the
 ratio), so it is a \emph{pure geometry/topology} statement of the uniform-throat
-limit.:contentReference[oaicite:3]{index=3}
+limit.
 
 \subsection{Counterfactual geometry: a 4D bubble $B^4(a)$}
 \label{app:added_mass:bubble}
@@ -3301,7 +3480,7 @@ m_{\rm add}(B^4)
 V_4(a)=\frac{\pi^2}{2}a^4.
 \end{align}
 This difference between $1/2$ (uniform throat) and $1/3$ (4D bubble) is the
-``topology discriminator'' emphasized in the main text.:contentReference[oaicite:4]{index=4}
+``topology discriminator'' emphasized in the main text.
 
 \subsection{Assumptions and expected corrections}
 The computation above is intentionally an \emph{exterior-flow} idealization.
@@ -3320,7 +3499,7 @@ of vorticity, $w$-nonuniform structure, boundary-condition leakage, etc.), but t
 dimensionless coefficient $\kappa_{\rm add}$ remains a robust indicator of whether
 the exterior problem is effectively 3D (throat uniform in $w$) or genuinely 4D
 (compact bubble), which is the only claim needed for the argument in the body of
-the paper.:contentReference[oaicite:5]{index=5}
+the paper.
 
 % ============================================================
 \section{Details of the EIH matching algebra}
@@ -3813,5 +3992,15 @@ so the coefficient of the $v^4$ correction is universally $3/8$, independent of
 the detailed confinement scale that sets $E_0$.
 
 % ======================================================================
+
+\begin{thebibliography}{1}
+
+\bibitem{norris2026_4d_model}
+T.~Norris (2026).
+\newblock \emph{4D Model - Action, Projections, and Controlled Brane Limits}.
+\newblock Zenodo.
+\newblock \href{https://doi.org/10.5281/zenodo.18309732}{https://doi.org/10.5281/zenodo.18309732}.
+
+\end{thebibliography}
 
 \end{document}

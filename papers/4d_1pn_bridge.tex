@@ -1,0 +1,3817 @@
+\documentclass[11pt]{article}
+
+% -----------------------------
+% Packages
+% -----------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% Optional: uncomment if you want appendix titles in TOC
+% \usepackage[toc,page]{appendix}
+
+% -----------------------------
+% Macros / notation
+% -----------------------------
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\ee}{\mathrm e}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+\newcommand{\X}{\mathbf X}
+\newcommand{\x}{\mathbf x}
+
+\newcommand{\grad}{\nabla}
+\newcommand{\gradFour}{\nabla_{4}}
+\newcommand{\lap}{\nabla^2}
+\newcommand{\lapFour}{\nabla_{4}^2}
+
+\newcommand{\psiField}{\psi}
+\newcommand{\rhoField}{\rho}
+\newcommand{\thetaField}{\theta}
+
+\newcommand{\kadd}{\kappa_{\mathrm{add}}}
+\newcommand{\kPV}{\kappa_{\mathrm{PV}}}
+\newcommand{\alphaSq}{\alpha^2}
+
+% Derived “headline” values (keep these as macros so they are easy to change)
+\newcommand{\kaddThroat}{\tfrac12}     % throat topology
+\newcommand{\kaddBubble}{\tfrac13}     % counterfactual 4D bubble
+\newcommand{\nEOS}{5}                 % derived EOS exponent
+\newcommand{\alphaSqGR}{\tfrac34}     % derived wake/interaction parameter
+\newcommand{\Kdimless}{\tfrac{2}{\pi^2}} % derived in the paper’s chosen normalization
+\newcommand{\coefvFour}{\tfrac{3}{8}} % coefficient of v^4/c^4 in gamma expansion
+
+% -----------------------------
+% Theorem environments (if needed)
+% -----------------------------
+\newtheorem{claim}{Claim}
+\newtheorem{remark}{Remark}
+
+% -----------------------------
+% Title metadata
+% -----------------------------
+\title{Deriving Key Post-Newtonian Coefficients from the Unified 4D Hydrodynamic Model}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper is a derivation supplement to Paper~VII’s unified $4$D throat model, written to make explicit which coefficients used earlier in the series are fixed by the $4$D structure (and which must remain symbolic pending additional closure). We show that a defect uniform in the extra coordinate behaves as a throat with hypercylindrical topology, for which the exterior potential--flow problem yields the classical added-mass coefficient $\kappa_{\mathrm{add}}=\tfrac12$ (whereas a $4$D bubble would instead give $\tfrac13$), providing a sharp topology discriminator. We then show that matching the weak-field refractive coefficient uniquely selects the stiff polytropic exponent $n=5$. In the $1$PN interaction sector, EIH matching produces a one-parameter family of couplings, which collapses uniquely to $\alpha^2=\tfrac34$ and $K=2/\pi^2$ once the $n=5$ thermodynamic relation is imposed. Treating rest mass as wave-supported energy reproduces the special-relativistic expansion $E=\gamma E_0$, including the universal $v^4$ coefficient $3/8$. We also summarize a controlled reduction to brane-effective equations, making leakage/source terms explicit, and we outline the additional response modeling required to determine the remaining undetermined coefficients.
+\end{abstract}
+
+% ======================================================================
+\section{Introduction and scope}
+\label{sec:intro}
+
+\subsection{Motivation: eliminating ``knobs'' by deriving them from the 4D model}
+
+The first six papers in this series developed an effective, brane-facing description of defect
+dynamics (Newtonian limit, post-Newtonian corrections, optics, spin, and many-body interactions).
+A recurring theme was that several numerical coefficients---introduced operationally in effective
+$3$D Lagrangians and response ans\"atze---were fixed by internal consistency and by matching to
+the Einstein--Infeld--Hoffmann (EIH) form of the $1$PN $N$-body dynamics and associated weak-field
+tests. While that approach is useful for organizing phenomenology, it can leave the impression
+that key constants are merely ``chosen'' rather than derived.
+
+Paper~VII introduced a single, variationally well-posed generating model in $4$D space (three
+brane coordinates plus a bulk coordinate $w$) in which the defect is a brane--bulk throat: a
+spherical ``mouth'' on the brane connected to an approximately $w$-uniform bulk corridor. In that
+framework, brane observables are \emph{not} imposed by matching boundary conditions at a stitched
+interface; instead, they are defined by a fixed projection of bulk fields onto a neighborhood of
+$w=0$.
+
+The purpose of this companion paper is to make the bridge explicit: we re-derive the key constants
+that appear throughout Papers~I--VI using the Paper~VII $4$D model, under clearly stated
+assumptions, and we record which coefficients are truly fixed and which are genuine response
+parameters that should remain symbolic until additional microphysics (or an explicit response
+closure) is specified.
+
+\subsection{What this paper derives}
+
+We focus on the subset of constants that (i) enter the weak-field and $1$PN bookkeeping used in
+the earlier papers and (ii) can be obtained from the Paper~VII framework without introducing new,
+tunable ingredients. The main results are:
+\begin{align}
+\kappa_{\rm add} &= \frac12
+\quad\text{(added-mass coefficient for a $w$-uniform throat; a $4$D ``bubble'' would give $\tfrac13$)},\\
+n &= 5
+\quad\text{(stiff polytropic index required by the weak-field refraction coefficient)},\\
+\alpha^2 &= \frac34,
+\qquad
+K_{\rm vec} = \frac{2}{\pi^2}
+\quad\text{(wake-mixing and overall vector-sector coupling fixed by EIH matching and thermodynamics)},\\
+E(v) &= E_0\,\gamma(v)
+= E_0\left(1+\frac{v^2}{2c^2}+\frac{3v^4}{8c^4}+\cdots\right)
+\quad\text{(universal kinematic $v^4$ coefficient for trapped-wave ``rest energy'').}
+\end{align}
+In the vector sector we distinguish the dimensionless wake/overlap coupling $K_{\rm vec}$ from the
+equation-of-state constant $K_{\rm EOS}$ in $P(\rho)=K_{\rm EOS}\rho^n$ to avoid notational
+overload.
+
+\subsection{What remains symbolic (and why)}
+
+Not every coefficient appearing in earlier effective descriptions should be presented as a
+``derived number.'' Some parameters encode genuine internal response physics of the throat---for
+example, how the internal geometry $(a,L)$ and stored field energy reorganize under slow external
+forcing. Such coefficients are, by construction, functionals of the full internal state and of
+the chosen response regime (adiabatic vs.\ dynamical, driven vs.\ isolated, etc.). Where Paper~VII
+does not yet supply a unique closure for that response problem, we keep the corresponding
+coefficients symbolic and state precisely what additional assumptions would be needed to compute
+them.
+
+\subsection{Preferred-frame concerns and operational Lorentz symmetry}
+
+The Paper~VII framework is a field theory in an underlying medium, so it admits a distinguished
+background rest frame at the microscopic level. Nevertheless, the earlier papers relied heavily
+on relativistic kinematics in the effective, brane-facing description. In this paper we take a
+conservative stance:
+\begin{itemize}
+  \item We show that if the defect's rest energy is a trapped wave mode, then boosting the mode
+  produces the standard Lorentz factor $\gamma(v)$ and therefore the universal $3/8$ coefficient
+  in the $v^4$ correction. This is a necessary ingredient for emergent special-relativistic
+  behavior of matter.
+  \item We do \emph{not} claim, on the basis of this kinematic result alone, that all preferred-frame
+  effects are absent. Establishing that the \emph{full} effective dynamics (including signal
+  propagation and interactions) are Lorentz invariant requires additional work at the level of the
+  reduced brane theory, and it provides a sharp set of consistency checks for future extensions.
+\end{itemize}
+
+\subsection{Organization}
+
+Section~\ref{sec:paper7-dictionary} summarizes the minimal dictionary from Paper~VII that is needed
+for the derivations. Sections~\ref{sec:added-mass}--\ref{sec:sr-kinematics} derive the constants
+listed above, each with its assumptions and cross-checks. Section~\ref{sec:open-parameters}
+collects the remaining symbolic response coefficients and explains what additional closure would
+be required to fix them. We conclude in Section~\ref{sec:conclusion} with a consolidated parameter
+ledger to be used in future work.
+
+% ======================================================================
+\section{Executive summary of results}
+\label{sec:exec-summary}
+
+This paper is a follow-up to Paper~VII. Paper~VII introduced a unified \(4\!+\!1\)D field-theoretic model (matter, optional gauge sector, and geometry) and emphasized an operational definition of \emph{brane-observed} quantities via projection. The purpose of the present work is narrower: we provide full, paper-grade derivations of the key \emph{effective} constants that were previously introduced phenomenologically in Papers~I--VI and are needed as fixed inputs for future strong-field and multi-body developments.
+
+\paragraph{Notation warning (two different ``\(K\)''s in the series).}
+Earlier 1PN/vector-sector papers use \(K\) to denote an overall \emph{vector-sector coupling} (wake/flow-response normalization), while Paper~VII uses \(K\) as the \emph{polytropic EOS coefficient} in \(P(\rho)=K\rho^n\). To avoid collision in this follow-up paper we write:
+\[
+P(\rho)=K_{\rm EOS}\rho^n,
+\qquad
+K_{\rm vec}\ \text{for the vector-sector coupling.}
+\]
+(Only \(n\) is fixed by the optical matching; \(K_{\rm EOS}\) remains a dimensional model parameter to be set by units/conventions.)
+
+\subsection{Derived carry-forward values (non-tunable within the stated assumptions)}
+Table~\ref{tab:carry-forward} lists the main derived values. The logic is deliberately ``triangulated'': each value is fixed either by topology/geometry (added mass), by a weak-field optical coefficient (stiffness), by an EIH cross-tensor match together with the thermodynamic identity implied by the EOS (vector sector), or by a purely kinematic wave argument (special-relativistic expansion).
+
+\begin{table}[t]
+  \centering
+  \caption{Carry-forward values derived in this paper. All remaining knobs are left symbolic and explicitly exposed (Sec.~\ref{sec:open-knobs}).}
+  \label{tab:carry-forward}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Quantity & Result & Derived in \\
+    \midrule
+    Added-mass coefficient for a \(w\)-uniform throat (\(S^2\times\mathbb R\)) &
+    \(\kappa_{\rm add}=\tfrac{1}{2}\) & Sec.~\ref{sec:added-mass} \\
+    Added-mass coefficient for a counterfactual \(4\)D bubble (\(B^4\)) &
+    \(\kappa_{\rm add}^{(B^4)}=\tfrac{1}{3}\) & Sec.~\ref{sec:added-mass} \\
+    Weak-field optical index coefficient \(\Rightarrow\) stiffness exponent &
+    \(N(r)\simeq 1+2\,\dfrac{GM}{rc^2}\ \Rightarrow\ n=5\) & Sec.~\ref{sec:optical-stiffness} \\
+    Wake-mixing (EIH vector-sector) parameter &
+    \(\alpha^2=\tfrac{3}{4}\) & Sec.~\ref{sec:eih-vector} \\
+    Vector-sector normalization &
+    \(K_{\rm vec}=\dfrac{2}{\pi^2}\) & Sec.~\ref{sec:eih-vector} \\
+    Special-relativistic \(v^4\) coefficient (wave-supported defect) &
+    \(E(v)=E_0\gamma\ \Rightarrow\ \tfrac{3}{8}\,\dfrac{E_0}{c^2}\dfrac{v^4}{c^2}\) & Sec.~\ref{sec:sr-kinematics} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Topology discriminator (added mass).}
+The added-mass coefficient is fixed by the exterior potential-flow problem and therefore becomes a clean discriminator between candidate defect topologies.
+Under the Paper~VII assumption that the defect is approximately uniform along the extra dimension \(w\) (a throat with topology \(S^2\times\mathbb R\)), the exterior problem reduces to the familiar \(3\)D cross-section result, giving \(\kappa_{\rm add}=1/2\).
+A \(4\)D bubble/hypersphere would instead give \(\kappa_{\rm add}=1/3\), which provides a sharp falsifiable ``geometry veto'' at the level of inertial bookkeeping.
+
+\paragraph{Optics \(\Rightarrow\) stiffness (\(n=5\)).}
+Assuming a barotropic EOS \(P=K_{\rm EOS}\rho^n\) and identifying the brane-observed wave speed with \(c_s(\rho)=\sqrt{dP/d\rho}\), the weak-field refractive index expands as
+\[
+N(r)\equiv \frac{c}{c_s(r)}
+\simeq 1 + \frac{n-1}{2}\frac{GM}{rc^2} + \mathcal{O}\!\left(\frac{1}{r^2}\right).
+\]
+Matching the GR coefficient \(2GM/(rc^2)\) fixes \(n=5\). This is the core ``stiffness is not a choice'' result: once the optical coefficient is demanded, the exponent is fixed.
+
+\paragraph{Vector/EIH sector: one-parameter family \(\to\) unique point.}
+The EIH cross-tensor match constrains the wake-basis coefficients and produces (prior to thermodynamic input) a one-parameter family in a helical/transverse admixture parameter \(a_H^2\):
+\[
+\alpha^2(a_H^2)=\frac{3}{4}(1-a_H^2),
+\qquad
+K_{\rm vec}(a_H^2)=\frac{2}{\pi^2(1-a_H^2)},
+\qquad
+0\le a_H^2<1,
+\]
+together with invariants such as
+\[
+K_{\rm vec}(1-a_H^2)=\frac{2}{\pi^2},
+\qquad
+K_{\rm vec}\alpha^2=\frac{3}{2\pi^2}.
+\]
+The EOS result \(n=5\) independently fixes the thermodynamic partitioning relation used in the vector-sector bookkeeping, which collapses the family to the unique point
+\[
+a_H^2=0,\qquad \alpha^2=\frac{3}{4},\qquad K_{\rm vec}=\frac{2}{\pi^2}.
+\]
+This is the main ``no hidden knobs'' closure story in the 1PN/vector sector.
+
+\paragraph{Special relativity (preferred-frame hiding at the kinematic level).}
+For a wave-supported defect whose rest energy is a trapped mode energy \(E_0=\hbar\omega_0\), the boost kinematics imply
+\[
+E(v)=\gamma E_0,
+\qquad
+\gamma = \left(1-\frac{v^2}{c^2}\right)^{-1/2}
+=1+\frac{v^2}{2c^2}+\frac{3v^4}{8c^4}+\cdots.
+\]
+Thus the \(\tfrac{3}{8}\) coefficient in the \(v^4\) term is universal and does not depend on throat microphysics beyond the assumption that ``rest mass'' is wave energy.
+Operationally, if clocks and rulers are built from the same class of bound wave modes, they inherit the same \(\gamma\)-factors; this supplies a concrete \emph{mechanism} by which an underlying medium frame can be kinematically hidden in measurement protocols.
+(Full dynamical preferred-frame constraints are deferred; see Sec.~\ref{sec:open-knobs}.)
+
+\subsection{Structural results (exact identities and controlled limits)}
+Beyond the numerical constants in Table~\ref{tab:carry-forward}, the paper also records several exact identities and ``regime bridges'' that are repeatedly used in later developments:
+
+\begin{enumerate}
+  \item \textbf{Exact projected continuity with an explicit leakage source.}
+  Defining brane observables by a fixed weight \(W(w)\) (Paper~VII),
+  \[
+  \rho_{\rm brane}=\int W(w)\rho\,dw,
+  \qquad
+  \mathbf{J}_{\rm brane}=\int W(w)\mathbf{J}_{xyz}\,dw,
+  \]
+  projecting the exact \(4\)D continuity equation yields the exact open-system identity
+  \[
+  \partial_t\rho_{\rm brane}+\nabla\cdot\mathbf{J}_{\rm brane}=S_\rho,
+  \]
+  where \(S_\rho\) is determined solely by the \(w\)-flux \(J_w\) (boundary terms and weight-gradient coupling). This identity is the correct, non-handwavy mathematical location of ``refill/leak'' physics in the unified model.
+
+  \item \textbf{Brane momentum balance and the unavoidable extra-stress sector.}
+  Projection does not commute with nonlinear products; consequently the brane momentum equation contains an emergent stress (Reynolds-type) correction
+  \(R_{ij}\equiv \Pi_{ij}-\rho_{\rm brane}v_i v_j\)
+  which vanishes only in separable/single-mode limits. This is the clean bookkeeping channel for transverse structure and for deviations from a closed \(3\)D perfect-fluid picture.
+
+  \item \textbf{Poisson as a static-limit diagnostic, not an axiom.}
+  In the quasi-static, longitudinal-dominant regime (explicitly stated), the longitudinal potential \(\phi\) defined by \(v_L=\nabla\phi\) satisfies a forced wave equation whose static limit is Poisson-type:
+  \[
+  \rho_0\nabla^2\phi \approx S_\rho.
+  \]
+  The paper therefore treats Poisson behavior as a measurable regime property (with explicit correction channels), not as a fundamental postulate.
+
+  \item \textbf{EM sector placement.}
+  When a true gauge sector is included (Paper~VII), minimal coupling ties bulk vorticity to gauge field strength,
+  \(\Omega_{ij}=-(q/m)B_{ij}\),
+  and the brane-observed fields are defined by projection of \(F_{MN}\). This cleanly separates (i) a kinematic ``EM-from-flow'' dictionary from (ii) a dynamical Maxwell sector, and it makes explicit what additional assumptions are required for standard \(3\!+\!1\)D scaling on the brane.
+\end{enumerate}
+
+\subsection{What is intentionally left symbolic in this paper}
+\label{sec:open-knobs}
+
+This paper is conservative about closure: any coefficient that depends on detailed internal response of the defect (or on choices not fixed in Paper~VII) is kept symbolic.
+In particular:
+\begin{itemize}
+  \item the pressure--volume response coefficient \(\kappa_{\rm PV}\) (and any related ``breathing'' response parameters) is \emph{not} assumed; it remains a symbolic input until a specific internal response model is chosen and analyzed;
+  \item model parameters associated with confinement and localization profiles, geometry response laws, and any reservoir/drive implementations remain symbolic and are recorded as such;
+  \item preferred-frame constraints beyond the kinematic \(\gamma\)-factor mechanism are deferred to future work where interaction-level Lorentz covariance can be tested explicitly.
+\end{itemize}
+
+\paragraph{Reading guide.}
+Sec.~\ref{sec:added-mass} derives \(\kappa_{\rm add}\) and the topology discriminator.
+Sec.~\ref{sec:optical-stiffness} derives \(n=5\) from the weak-field optical coefficient.
+Sec.~\ref{sec:eih-vector} derives \(\alpha^2\) and \(K_{\rm vec}\), including the family-to-unique-point collapse.
+Sec.~\ref{sec:sr-kinematics} derives the universal \(v^4\) coefficient.
+Sec.~\ref{sec:reduction-structure} records the exact projection/leakage identities and the controlled Poisson/sector limits used as infrastructure for later papers.
+
+% ======================================================================
+\section{Recap of the unified 4D model from Paper VII}
+\label{sec:recap_4d_model}
+
+This paper is a derivation-focused follow-up to Paper VII. We therefore begin by restating the
+minimal set of definitions needed to make the downstream coefficient derivations unambiguous.
+All model parameters that are not fixed by symmetry/consistency are kept symbolic.
+
+\subsection{Arena, indices, and dynamical variables}
+\label{sec:recap_arena}
+
+We work on a $(4+1)$-dimensional spacetime with coordinates
+\begin{equation}
+X^M = (t, x, y, z, w),\qquad \mathbf{X}=(x,y,z,w)\in\mathbb{R}^4,
+\end{equation}
+and define the bulk spatial gradient and Laplacian
+\begin{equation}
+\nabla_4 := (\partial_x,\partial_y,\partial_z,\partial_w),\qquad
+\nabla_4^2 := \partial_x^2+\partial_y^2+\partial_z^2+\partial_w^2.
+\end{equation}
+Spatial indices are $i,j\in\{x,y,z,w\}$, and spacetime indices are $M,N\in\{0,x,y,z,w\}$ with $0\equiv t$.
+
+The unified bulk state consists of:
+\begin{equation}
+\boxed{
+\big(\psi(\mathbf{X},t),\; A_M(\mathbf{X},t),\; a(t),\; L(t)\big),
+}
+\end{equation}
+where $\psi$ is a complex order parameter, $A_M$ is a genuine $(4+1)$D gauge field,
+and $(a,L)$ are reduced geometric degrees of freedom describing an effective throat radius and length.
+
+\subsection{Matter sector: gauged 4D GNLS with fixed stiff equation of state}
+\label{sec:recap_matter}
+
+\paragraph{Density and equation of state.}
+Define the bulk density
+\begin{equation}
+\rho(\mathbf{X},t) := |\psi(\mathbf{X},t)|^2.
+\end{equation}
+Paper VII fixes a stiff polytropic closure
+\begin{equation}
+\boxed{
+P(\rho)=K\rho^{5},
+}
+\label{eq:recap_eos}
+\end{equation}
+implemented variationally via the internal energy density
+\begin{equation}
+U(\rho)=\frac{K}{4}\rho^{5},
+\qquad
+h(\rho):=\frac{dU}{d\rho}=\frac{5K}{4}\rho^{4},
+\label{eq:recap_thermo_ladder}
+\end{equation}
+and the associated sound-speed relation
+\begin{equation}
+c_s^2(\rho)=\frac{1}{m}\frac{dP}{d\rho}=\frac{5K}{m}\rho^{4}.
+\label{eq:recap_cs2}
+\end{equation}
+
+\paragraph{Minimal coupling.}
+Introduce the gauge-covariant derivatives
+\begin{equation}
+D_t := \partial_t + \frac{i q}{\hbar}A_0,
+\qquad
+D_i := \partial_i - \frac{i q}{\hbar}A_i,\quad i\in\{x,y,z,w\}.
+\label{eq:recap_cov_derivs}
+\end{equation}
+
+\paragraph{Bulk equation of motion.}
+The (gauged) generalized nonlinear Schr\"odinger equation (GNLS) is
+\begin{equation}
+\boxed{
+i\hbar\,D_t\psi
+=
+\left[
+-\frac{\hbar^2}{2m}D_iD_i
++V_{\mathrm{conf}}(\mathbf{X};a,L)
++h(\rho)
+\right]\psi,
+}
+\label{eq:recap_gnls}
+\end{equation}
+where the confinement potential $V_{\mathrm{conf}}$ encodes the brane/throat geometry and depends smoothly on $(a,L)$.
+
+\paragraph{Current and exact continuity identity.}
+The matter number current is
+\begin{equation}
+\boxed{
+j^i(\mathbf{X},t)
+:=
+\frac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^*D_i\psi\right),
+}
+\label{eq:recap_number_current}
+\end{equation}
+and the exact bulk continuity identity is
+\begin{equation}
+\boxed{
+\partial_t\rho + \partial_i j^i = 0,
+}
+\label{eq:recap_bulk_continuity}
+\end{equation}
+with $i$ summed over $\{x,y,z,w\}$. Where $\rho>0$, define the bulk velocity via $j^i=\rho v^i$.
+
+\subsection{Madelung (hydrodynamic) form and the vorticity--gauge identity}
+\label{sec:recap_madelung}
+
+Write
+\begin{equation}
+\psi=\sqrt{\rho}\,e^{i\theta}.
+\end{equation}
+The gauge-invariant superfluid velocity is
+\begin{equation}
+\boxed{
+v_i = \frac{\hbar}{m}\partial_i\theta - \frac{q}{m}A_i.
+}
+\label{eq:recap_velocity}
+\end{equation}
+Define the quantum-pressure potential
+\begin{equation}
+Q(\rho) := -\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt{\rho}}{\sqrt{\rho}}.
+\label{eq:recap_quantum_pressure}
+\end{equation}
+Then the GNLS implies an Euler-like momentum equation of the structural form
+\begin{equation}
+\boxed{
+m(\partial_t+v_j\partial_j)v_i
+=
+q\big(E_i+v_j B_{ij}\big)
+-\partial_i\!\big(V_{\mathrm{conf}}+h(\rho)+Q(\rho)\big),
+}
+\label{eq:recap_euler_like}
+\end{equation}
+where $E_i:=-\partial_tA_i-\partial_iA_0$ and $B_{ij}:=\partial_iA_j-\partial_jA_i$.
+
+A key identity used repeatedly in Paper VII is that minimal coupling ties vorticity to gauge curvature:
+\begin{equation}
+\boxed{
+\Omega_{ij}:=\partial_i v_j-\partial_j v_i
+=
+-\frac{q}{m}B_{ij}.
+}
+\label{eq:recap_vorticity_identity}
+\end{equation}
+Thus, away from singular phase defects, ``bulk vorticity'' is not an independent fluid degree of freedom once the gauge sector is present.
+
+\subsection{Gauge sector: localized $(4+1)$D Maxwell with neutrality bookkeeping}
+\label{sec:recap_em}
+
+Define the field strength
+\begin{equation}
+F_{MN}:=\partial_M A_N-\partial_N A_M.
+\end{equation}
+Paper VII uses a localized Maxwell sector with a positive profile $Z(w)$ concentrated near the brane:
+\begin{equation}
+\mathcal{L}_{\mathrm{EM}}
+=
+-\frac{1}{4\mu_0}Z(w)\,F_{MN}F^{MN}
+\;-\;\frac{1}{2\xi\mu_0}\big(\partial_M A^M\big)^2,
+\label{eq:recap_em_lagrangian}
+\end{equation}
+where $\xi$ is a gauge-fixing parameter (kept symbolic here).
+
+The corresponding field equation is
+\begin{equation}
+\boxed{
+\partial_M\!\left(Z(w)F^{MN}\right)+\frac{1}{\xi}\partial^N(\partial\cdot A)
+=
+\mu_0\,J_{\mathrm{ch}}^{\,N}
++\mu_0\,J_{\mathrm{ext}}^{\,N}.
+}
+\label{eq:recap_maxwell_localized}
+\end{equation}
+The matter-sourced charge current is defined from the GNLS current by
+\begin{equation}
+J_{\mathrm{ch}}^{\,i} = q\,j^i,
+\end{equation}
+and the charge density is rendered neutral by a background subtraction (``jellium''):
+\begin{equation}
+\boxed{
+J_{\mathrm{ch}}^{\,0}(\mathbf{X},t)
+=
+q\big(|\psi(\mathbf{X},t)|^2-\rho_0\big),
+}
+\label{eq:recap_jellium}
+\end{equation}
+with $\rho_0$ the far-field background density.
+External sources $J_{\mathrm{ext}}^{\,N}$ are reserved for controlled driving/benchmark tests.
+
+\subsection{Geometry encoded as a smooth confinement potential and generalized forces}
+\label{sec:recap_geometry}
+
+The brane/throat geometry is encoded by a smooth potential
+\begin{equation}
+V_{\mathrm{conf}}(\mathbf{X};a,L),
+\end{equation}
+chosen so that (i) far from the defect there is strong confinement toward the brane neighborhood, and
+(ii) inside the throat corridor the confinement is relaxed in a controllable way.
+The only requirement for the derivations in this paper is that $V_{\mathrm{conf}}$ be differentiable in $(a,L)$.
+
+The throat carries an additional ``geometry energy'' $E_{\mathrm{geom}}(a,L)$ (kept symbolic here),
+and the total energy functional takes the schematic form
+\begin{equation}
+H_{\mathrm{tot}}
+=
+H_{\psi}[\psi;a,L]
++
+H_{\mathrm{EM}}[A;a,L]
++
+E_{\mathrm{geom}}(a,L)
++\;H_{\mathrm{drive/diss}},
+\label{eq:recap_total_energy}
+\end{equation}
+where $H_{\mathrm{drive/diss}}$ encodes any explicitly nonconservative protocol choices (if present).
+
+Because geometry enters through $V_{\mathrm{conf}}$, the matter contribution to the generalized forces is fixed by a Hellmann--Feynman identity:
+\begin{equation}
+\boxed{
+F_a^{(\psi)}(t)=-\frac{\partial H_\psi}{\partial a}
+= -\int d^4X\,\rho(\mathbf{X},t)\,\partial_a V_{\mathrm{conf}}(\mathbf{X};a,L),
+\qquad
+F_L^{(\psi)}(t)=-\frac{\partial H_\psi}{\partial L}
+= -\int d^4X\,\rho(\mathbf{X},t)\,\partial_L V_{\mathrm{conf}}(\mathbf{X};a,L).
+}
+\label{eq:recap_force_ledger}
+\end{equation}
+Geometry dynamics may be closed either statically ($F_a=F_L=0$) or dynamically via a breathing-mode closure
+\begin{equation}
+M_a\ddot a + C_a\dot a = -\partial_a H_{\mathrm{tot}},
+\qquad
+M_L\ddot L + C_L\dot L = -\partial_L H_{\mathrm{tot}},
+\label{eq:recap_breathing_closure}
+\end{equation}
+with $(M_a,C_a,M_L,C_L)$ left symbolic.
+
+\subsection{Brane observables via projection and the exact leakage identity}
+\label{sec:recap_projection}
+
+A brane observer only accesses $(x,y,z)$ data. Brane observables are therefore defined operationally by a fixed
+weight $W(w)\ge 0$ localized near $w=0$ and normalized by $\int_{-\infty}^{\infty}W(w)\,dw=1$.
+
+For any bulk scalar $f(\mathbf{X},t)$, define the projection
+\begin{equation}
+\mathcal{P}_W[f](x,y,z,t) := \int_{-\infty}^{\infty} W(w)\,f(x,y,z,w,t)\,dw.
+\end{equation}
+In particular, define
+\begin{equation}
+\boxed{
+\rho_{\mathrm{brane}} := \mathcal{P}_W[\rho],
+\qquad
+\mathbf{J}_{\mathrm{brane}} := \mathcal{P}_W[(j^x,j^y,j^z)].
+}
+\label{eq:recap_brane_defs}
+\end{equation}
+
+Projecting the exact bulk continuity identity \eqref{eq:recap_bulk_continuity} yields an exact \emph{open-system} brane continuity equation:
+\begin{equation}
+\boxed{
+\partial_t\rho_{\mathrm{brane}} + \nabla_3\cdot \mathbf{J}_{\mathrm{brane}}
+=
+S_{\rho,\mathrm{brane}},
+}
+\label{eq:recap_brane_continuity}
+\end{equation}
+where the source term is determined entirely by the $w$-current $j^w$:
+\begin{equation}
+\boxed{
+S_{\rho,\mathrm{brane}}
+=
+-\Big[W(w)\,j^w\Big]_{w=-\infty}^{w=+\infty}
++\int_{-\infty}^{\infty} W'(w)\,j^w\,dw.
+}
+\label{eq:recap_leakage_source}
+\end{equation}
+Thus, the brane sector is exactly conservative only in regimes where $j^w$ is negligible on the support of $W$.
+In general, brane dynamics include leakage/exchange with the bulk as an intrinsic, measurable sector.
+
+\subsection{Projected momentum balance and the ``extra stress'' sector (structural)}
+\label{sec:recap_brane_momentum}
+
+Because projection does not commute with nonlinear products, the projected momentum equation generally contains
+additional terms that vanish only in single-mode / $w$-uniform limits.
+
+A convenient structural definition introduces the projected momentum-flux tensor
+\begin{equation}
+\Pi_{ij}(x,y,z,t) := \mathcal{P}_W\!\left[\frac{j_i j_j}{\rho}\right],\qquad i,j\in\{x,y,z\},
+\end{equation}
+and the brane velocity $\mathbf{v}_{\mathrm{brane}}:=\mathbf{J}_{\mathrm{brane}}/\rho_{\mathrm{brane}}$ where defined.
+Then the ``extra stress'' tensor is
+\begin{equation}
+\boxed{
+R_{ij} := \Pi_{ij} - \rho_{\mathrm{brane}}\,v_{\mathrm{brane},i}\,v_{\mathrm{brane},j}.
+}
+\label{eq:recap_extra_stress}
+\end{equation}
+This $R_{ij}$ (together with the leakage sources) provides a mathematically clean channel by which
+the brane can exhibit additional effective physics (e.g.\ transverse structure) even when the bulk is simple.
+
+\paragraph{What this recap is (and is not).}
+Equations \eqref{eq:recap_gnls}--\eqref{eq:recap_extra_stress} are definitions and identity-level consequences
+of the unified 4D variational model from Paper VII. This follow-up paper uses these ingredients as the starting point
+for deriving the key phenomenological coefficients used elsewhere in the series, while keeping any remaining undetermined
+``knobs'' symbolic.
+
+
+% ======================================================================
+\section{Geometry: added-mass coefficient as a topology discriminator}
+\label{sec:added_mass}
+
+\subsection{Definition and regime of validity}
+
+When a localized defect moves through an inviscid medium, its inertia includes not only the energy stored in the defect itself, but also the kinetic energy stored in the \emph{exterior} flow that must accompany the motion.  In potential-flow language this is the \emph{added mass}.
+
+We define the added-mass coefficient \(\kappa_{\rm add}\) by
+\begin{equation}
+  M_{\rm add} \;\equiv\; \kappa_{\rm add}\,M_{\rm disp},
+  \qquad
+  M_{\rm disp} \;\equiv\; \rho_0\,V_{\rm exc},
+\end{equation}
+where \(M_{\rm disp}\) is the displaced background mass, \(\rho_0\) is the far-field density of the medium, and \(V_{\rm exc}\) is the excluded volume of the defect (the volume from which the exterior flow is excluded by the no-penetration condition).
+
+This section uses the standard \emph{quasi-static, low-Mach, irrotational exterior} regime:
+\begin{equation}
+  \nabla\cdot \mathbf v = 0, \qquad \nabla\times \mathbf v = 0
+  \quad\Rightarrow\quad \mathbf v = \nabla\phi,\ \ \nabla^2\phi=0
+  \quad \text{outside the defect.}
+\end{equation}
+Corrections from compressibility, radiative degrees of freedom, or bulk--brane exchange (if present) enter as additional sectors and are not absorbed into \(\kappa_{\rm add}\).
+
+\subsection{Added mass of a \(d\)-dimensional sphere}
+
+Consider a rigid \(d\)-dimensional sphere (a \(d\)-ball) of radius \(a\) translating at speed \(U\) through an otherwise quiescent medium that is incompressible and irrotational in the exterior.  In the instantaneous rest frame of the body, the far-field flow is uniform with velocity \(U\hat{\mathbf e}_1\).
+
+Write the velocity potential as a background uniform-flow term plus a decaying disturbance:
+\begin{equation}
+  \phi(\mathbf x) = U\,x_1 + \phi'(\mathbf x),
+  \qquad
+  \nabla^2 \phi' = 0,\quad \phi'(\mathbf x)\to 0\ (r\to\infty).
+\end{equation}
+The no-penetration boundary condition on the surface \(r=a\) is
+\begin{equation}
+  \partial_n \phi \big|_{r=a} = 0
+  \quad\Longrightarrow\quad
+  \partial_n \phi' \big|_{r=a} = -U\,(\hat{\mathbf e}_1\cdot \hat{\mathbf n})
+  = -U\cos\theta,
+\end{equation}
+where \(\hat{\mathbf n}=\hat{\mathbf r}\) points from the sphere into the fluid and \(\theta\) is the polar angle relative to \(\hat{\mathbf e}_1\).
+
+For the dipole (\(\ell=1\)) sector in \(d\) spatial dimensions, the decaying harmonic solution has the form
+\begin{equation}
+  \phi'(\mathbf x) = C\,U\,\cos\theta\,r^{-(d-1)}.
+\end{equation}
+Imposing \(\partial_r \phi'(a) = -U\cos\theta\) fixes
+\begin{equation}
+  \phi'(\mathbf x) =
+  \frac{U\,a^d}{d-1}\,\frac{\cos\theta}{r^{d-1}}.
+\end{equation}
+
+The exterior kinetic energy associated with the \emph{disturbance} is
+\begin{equation}
+  T_{\rm ext} = \frac{\rho_0}{2}\int_{r>a} |\nabla\phi'|^2\,d^d x.
+\end{equation}
+Using \(\nabla^2\phi'=0\) and integration by parts over the exterior domain,
+\begin{equation}
+  \int_{r>a} |\nabla\phi'|^2\,d^d x
+  = -\oint_{r=a} \phi'\,\partial_n \phi'\,dS,
+\end{equation}
+and substituting \(\partial_n\phi'|_{a}=-U\cos\theta\) gives
+\begin{equation}
+  T_{\rm ext}
+  = \frac{\rho_0}{2}\oint_{r=a} \phi'\,(U\cos\theta)\,dS
+  = \frac{\rho_0}{2}\,\frac{a}{d-1}\,U^2 \oint_{r=a} \cos^2\theta\,dS.
+\end{equation}
+By rotational symmetry on \(S^{d-1}\), \(\langle \cos^2\theta\rangle = 1/d\), hence
+\begin{equation}
+  \oint_{r=a} \cos^2\theta\,dS
+  = \frac{1}{d}\,S_{d-1}\,a^{d-1},
+  \qquad
+  S_{d-1}=\frac{2\pi^{d/2}}{\Gamma(d/2)}
+  \ \ (\text{area of the unit }(d-1)\text{-sphere}).
+\end{equation}
+Therefore
+\begin{equation}
+  T_{\rm ext}
+  = \frac{\rho_0}{2}\,\frac{S_{d-1}a^d}{d(d-1)}\,U^2
+  = \frac{1}{2}\left(\frac{\rho_0 V_d(a)}{d-1}\right)U^2,
+  \qquad
+  V_d(a)=\frac{S_{d-1}a^d}{d}.
+\end{equation}
+Identifying \(T_{\rm ext}=\tfrac{1}{2}M_{\rm add}U^2\) yields the compact result
+\begin{equation}
+  \boxed{
+  M_{\rm add} = \frac{\rho_0 V_d(a)}{d-1}
+  \qquad\Rightarrow\qquad
+  \kappa_{\rm add}(d)=\frac{1}{d-1}.
+  }
+\end{equation}
+
+Two special cases that will matter below are:
+\begin{equation}
+  \kappa_{\rm add}(3)=\frac12,\qquad
+  \kappa_{\rm add}(4)=\frac13.
+\end{equation}
+
+\subsection{Application: \(w\)-uniform throat versus 4D bubble}
+
+\paragraph{Throat topology \(\boldsymbol{(S^2\times \mathbb R)}\): \(\kappa_{\rm add}=1/2\).}
+
+In the unified 4D picture, the defect of interest is a corridor extended along the extra coordinate \(w\), i.e.\ a hyper-cylinder with cross-section \(S^2\) in \((x,y,z)\) and approximate \(w\)-extent \(L\).  In the idealized limit where the corridor is uniform in \(w\), the exterior-flow potential can be chosen \(w\)-independent:
+\begin{equation}
+  \phi(x,y,z,w)\equiv \phi_3(x,y,z),
+  \qquad
+  \nabla_4^2\phi = (\nabla_3^2 + \partial_w^2)\phi
+  = \nabla_3^2\phi_3 = 0.
+\end{equation}
+Thus the added-mass problem reduces to the standard 3D sphere result \emph{slice-by-slice}, and the total kinetic energy is simply extensive in \(L\). With the geometric tube volume convention
+\begin{equation}
+  V_{\rm throat}(a,L) = \left(\frac{4\pi}{3}a^3\right)L,
+\end{equation}
+one finds
+\begin{equation}
+  \boxed{
+  M_{\rm add}^{\rm(throat)}
+  = \frac12\,\rho_0\,V_{\rm throat}(a,L)
+  \qquad\Rightarrow\qquad
+  \kappa_{\rm add}^{\rm(throat)}=\frac12.
+  }
+\end{equation}
+Importantly, \(\kappa_{\rm add}^{\rm(throat)}\) is \emph{independent} of the EOS, gauge sector, or any internal-support mechanism; it is fixed by the exterior-flow geometry once the defect is \(w\)-uniform.
+
+\paragraph{Counterfactual 4D bubble \(\boldsymbol{(B^4)}\): \(\kappa_{\rm add}=1/3\).}
+
+If the defect were instead a genuinely 4D bubble (a 4-ball) of radius \(a\), then the exterior flow explores all four spatial dimensions. The general result above immediately gives
+\begin{equation}
+  \boxed{
+  M_{\rm add}^{\rm(bubble)}
+  = \frac13\,\rho_0\,V_4(a),
+  \qquad
+  V_4(a)=\frac{\pi^2}{2}a^4,
+  \qquad
+  \kappa_{\rm add}^{\rm(bubble)}=\frac13.
+  }
+\end{equation}
+
+\subsection{Why this is a useful discriminator}
+
+The added-mass coefficient is a purely geometric number in the exterior potential-flow regime:
+\begin{equation}
+  \kappa_{\rm add}=\frac{1}{d_{\rm eff}-1},
+\end{equation}
+where \(d_{\rm eff}\) is the number of spatial directions in which the exterior flow must rearrange.
+A \(w\)-uniform throat has \(d_{\rm eff}=3\) for motion tangent to the brane, while a 4D bubble has \(d_{\rm eff}=4\).
+Hence \(\kappa_{\rm add}\) cleanly distinguishes two otherwise similar candidate topologies:
+\begin{equation}
+  \kappa_{\rm add}=
+  \begin{cases}
+    \tfrac12, & \text{\(w\)-uniform throat } (S^2\times\mathbb R),\\[4pt]
+    \tfrac13, & \text{4D bubble } (B^4).
+  \end{cases}
+\end{equation}
+
+In later sections we will treat other contributions to the effective inertia (e.g.\ compressional work, internal support response) as separate sectors with their own coefficients; by contrast, \(\kappa_{\rm add}\) is fixed once the defect topology and exterior-flow regime are specified.
+
+% ======================================================================
+\section{Optics: the refractive coefficient fixes the EOS exponent}
+\label{sec:optics_eos}
+
+This section shows that the equation-of-state \emph{exponent} in the bulk/barotropic closure is not a free phenomenological choice if the model is required to reproduce the weak-field optical tests (light bending and Shapiro delay). In particular, the coefficient of the leading $1/r$ term in the effective refractive index $N(r)$ fixes the polytropic index to
+\begin{equation}
+n=5,
+\end{equation}
+which is exactly the stiff polytrope used in the unified 4D model summarized in Sec.~\ref{sec:recap_4d_model}. 
+
+\subsection{Acoustic optics dictionary: $N=c_0/c_s$}
+
+In the optical sector of the series, light propagation on the brane is modeled (in the eikonal/high-frequency limit) as wavepackets moving through a medium with spatially varying characteristic wave speed $c_s(\mathbf{x})$. The corresponding refractive index is defined by
+\begin{equation}
+N(\mathbf{x}) \;\equiv\; \frac{c_0}{c_s(\mathbf{x})},
+\label{eq:def_N}
+\end{equation}
+where $c_0$ is the asymptotic (far-field) propagation speed, i.e. $c_s\to c_0$ as $r\to\infty$. 
+
+For a barotropic/polytropic closure
+\begin{equation}
+P(\rho)=K\rho^n,
+\label{eq:poly_eos}
+\end{equation}
+the local sound speed is
+\begin{equation}
+c_s^2(\rho)=\frac{dP}{d\rho}=nK\rho^{n-1}.
+\label{eq:cs2_poly}
+\end{equation}
+We define the background density $\rho_0$ by $c_s(\rho_0)=c_0$, equivalently
+\begin{equation}
+c_0^2 = nK\rho_0^{\,n-1},
+\label{eq:c0_def}
+\end{equation}
+so that $K$ is not fixed by optical tests alone (it is absorbed into the background normalization once $c_0$ and $\rho_0$ are chosen). 
+
+Now introduce the weak-field fractional density contrast
+\begin{equation}
+\delta \;\equiv\; \frac{\rho-\rho_0}{\rho_0},\qquad |\delta|\ll 1.
+\end{equation}
+Expanding \eqref{eq:cs2_poly} about $\rho_0$ gives the standard linear response
+\begin{equation}
+\frac{\Delta c_s}{c_0}
+\simeq
+\frac{n-1}{2}\,\frac{\Delta\rho}{\rho_0}
+=
+\frac{n-1}{2}\,\delta,
+\label{eq:dcs_linear}
+\end{equation}
+and therefore, from \eqref{eq:def_N},
+\begin{equation}
+N(\delta)
+=
+\frac{c_0}{c_s(\rho_0(1+\delta))}
+\simeq
+1-\frac{\Delta c_s}{c_0}
+\simeq
+1-\frac{n-1}{2}\,\delta
++\mathcal{O}(\delta^2).
+\label{eq:N_delta_general}
+\end{equation}
+This identifies the single optical ``stiffness coefficient''
+\begin{equation}
+\alpha_n \;\equiv\; \frac{n-1}{2},
+\label{eq:alpha_n_def}
+\end{equation}
+as the parameter controlling the leading $1/r$ optical effects. 
+
+\subsection{Weak-field density profile around a defect: $\delta\simeq \Phi/c_0^2$}
+
+To connect \eqref{eq:N_delta_general} to a radial index profile $N(r)$, we use the weak-field static balance employed throughout the series: the background density is slightly perturbed by an effective scalar potential $\Phi(r)$ sourced by a central object. In the linear regime (far outside the throat/defect core), the steady barotropic balance yields
+\begin{equation}
+\frac{1}{\rho(r)}\,\frac{dP}{dr} \;=\; \frac{d\Phi}{dr},
+\label{eq:hydrostatic_balance}
+\end{equation}
+so that a $1/r$ potential produces a $1/r$ density perturbation. Specializing to a point-source form
+\begin{equation}
+\Phi(r) = -\frac{GM}{r},
+\label{eq:Phi_point}
+\end{equation}
+and linearizing about $\rho\simeq\rho_0$ gives
+\begin{equation}
+\Delta P(r) \equiv P(r)-P_0
+\;\simeq\;
+\rho_0\,\Phi(r)
+\;=\;
+-\rho_0\,\frac{GM}{r}.
+\label{eq:deltaP_from_phi}
+\end{equation}
+Using $c_0^2=(\partial P/\partial\rho)_{\rho_0}$ then yields
+\begin{equation}
+\frac{\Delta\rho(r)}{\rho_0}
+\simeq
+\frac{\Delta P(r)}{\rho_0\,c_0^2}
+=
+\frac{\Phi(r)}{c_0^2}
+=
+-\frac{GM}{c_0^2\,r}.
+\label{eq:deltarho_from_phi}
+\end{equation}
+In particular, because $\Phi<0$, the density is reduced near the source and therefore $c_s$ is reduced, so $N>1$ as required for ``slower'' propagation near the mass. 
+
+\subsection{The $1/r$ coefficient and the unique stiffness selection $n=5$}
+
+Substituting \eqref{eq:deltarho_from_phi} into \eqref{eq:N_delta_general} gives the universal weak-field index profile for a polytrope:
+\begin{equation}
+N(r)
+\simeq
+1-\frac{n-1}{2}\,\frac{\Phi(r)}{c_0^2}
+=
+1+\frac{n-1}{2}\,\frac{GM}{c_0^2\,r}
+=
+1+\alpha_n\,\frac{GM}{c_0^2\,r}.
+\label{eq:N_r_general_n}
+\end{equation}
+Thus \emph{all} weak-field optical observables derived from refraction depend only on the single dimensionless coefficient $\alpha_n=(n-1)/2$. 
+
+The optical tests in the series (light bending and Shapiro delay) require the GR-matching coefficient
+\begin{equation}
+N_{\rm GR}(r)\;\simeq\; 1+2\,\frac{GM}{c^2\,r}
+\qquad (r\gg r_H),
+\label{eq:N_GR_target}
+\end{equation}
+where in the final comparison one identifies the asymptotic propagation speed with the measured light speed, $c_0\leftrightarrow c$. Comparing \eqref{eq:N_r_general_n} and \eqref{eq:N_GR_target} immediately enforces
+\begin{equation}
+\alpha_n = 2
+\quad\Longleftrightarrow\quad
+\frac{n-1}{2}=2
+\quad\Longleftrightarrow\quad
+\boxed{\,n=5\,}.
+\label{eq:n_equals_5}
+\end{equation}
+This is the promised ``stiffness is not tunable'' result: the exponent in the EOS is selected by the required $1/r$ refractive coefficient. 
+
+\subsection{Consistency check: lensing and Shapiro share the same coefficient}
+
+Once \eqref{eq:N_r_general_n} is established, the two classical weak-field optical tests depend on the same $\alpha_n$.
+
+\paragraph{Light bending.}
+Using the standard geometric-optics deflection integral for a nearly straight path with impact parameter $b$,
+\begin{equation}
+\Delta\theta \simeq \int_{-\infty}^{+\infty} \nabla_\perp \ln N(r(z))\,dz,
+\end{equation}
+one finds
+\begin{equation}
+\Delta\theta_n
+=
+\frac{2\alpha_n GM}{b c^2}
+=
+\frac{(n-1)GM}{b c^2}.
+\label{eq:deflection_general_n}
+\end{equation}
+Therefore $\Delta\theta=4GM/(bc^2)$ selects $\alpha_n=2$, i.e. $n=5$. :contentReference[oaicite:7]{index=7}
+
+\paragraph{Shapiro time delay.}
+Similarly, the excess coordinate travel time along a nearly straight path may be written (to leading order) as
+\begin{equation}
+\Delta t_n
+=
+\alpha_n\,\frac{GM}{c^3}\,
+\ln\!\left(\frac{4r_{\rm E}r_{\rm R}}{b^2}\right),
+\label{eq:shapiro_general_n}
+\end{equation}
+so Shapiro delay fixes the \emph{same} $\alpha_n$ as bending in this ``pure refraction'' construction. :contentReference[oaicite:8]{index=8}
+
+\subsection{Embedding into the unified 4D model (why the GNLS nonlinearity is fixed)}
+
+Paper~VII adopts the $n=5$ stiffness in the bulk superfluid sector; in the GNLS formulation this corresponds to the enthalpy ladder
+\begin{equation}
+P(\rho)=K\rho^5,\qquad
+c_s^2(\rho)=5K\rho^4,\qquad
+h(\rho)=\frac{5K}{4}\rho^4,
+\label{eq:n5_ladder}
+\end{equation}
+and therefore to the specific nonlinear term $h(|\psi|^2)\propto |\psi|^8$ in the 4D field equation. The derivation above explains why this structure is forced by optical matching, while leaving the remaining amplitude scale(s) (e.g. $K$ after choosing $c_0$ and $\rho_0$) to be fixed by other sectors. 
+
+\paragraph{Remark (scope).}
+The result $n=5$ is an \emph{optical-sector} constraint: it applies to how wave propagation on the brane responds to weak background density variations. As emphasized elsewhere in the series, the resulting ``optical metric'' should not be naively promoted to the complete effective metric for massive-body orbital dynamics; matter dynamics involves additional dressing/inertia mechanisms beyond the refraction map used for null trajectories. 
+
+% ======================================================================
+\section{1PN interaction sector: derivation of \texorpdfstring{$\alpha^2$}{alpha^2} and \texorpdfstring{$K$}{K}}
+\label{sec:1pn-interaction-alpha-K}
+
+\subsection{What is being fixed in this section}
+\label{sec:1pn-interaction-goal}
+
+Beyond the Newtonian scalar potential, the 1PN $N$-body dynamics contain
+\emph{velocity-dependent} pair couplings.  In the GR/EIH effective Lagrangian,
+these appear as the well-known cross terms built from
+$\mathbf v_A\cdot \mathbf v_B$ and $(\mathbf v_A\cdot \hat{\mathbf n}_{AB})(\mathbf v_B\cdot \hat{\mathbf n}_{AB})$.
+In the toy model, the same tensor structures arise from the overlap energy of
+the far-field wake/flow patterns sourced by moving defects.
+
+This sector introduces three \emph{a priori} dimensionless constants:
+\begin{itemize}
+  \item $\alpha$ (wake mixing): controls the longitudinal/compressible admixture in the wake basis;
+  \item $a_H$ (helical transverse admixture): a potential additional transverse basis component;
+  \item $K$ (overall normalization): the dimensionless coupling/normalization inherited from the wake basis
+        and the definition of the effective interaction functional.
+\end{itemize}
+\noindent
+\textbf{Notation warning:} the $K$ in this section is \emph{not} the EOS constant in $P=K_{\rm EOS}\rho^n$.
+To avoid collision we write the EOS constant as $K_{\rm EOS}$ whenever both appear.
+
+Our goal is to show that once the stiff EOS exponent is fixed (Sec.~\ref{sec:optics-n}),
+the interaction sector is no longer tunable: the EIH cross-tensor match determines
+$\alpha^2$ and $K$ (and collapses the apparent $a_H$ freedom).
+
+\subsection{1PN vector-interaction template and the EIH ``target'' coefficients}
+\label{sec:1pn-interaction-template}
+
+For two defects $A,B$ with separation
+\begin{equation}
+  \mathbf r_{AB}\equiv \mathbf x_A-\mathbf x_B,\qquad
+  r_{AB}\equiv |\mathbf r_{AB}|,\qquad
+  \hat{\mathbf n}_{AB}\equiv \frac{\mathbf r_{AB}}{r_{AB}},
+\end{equation}
+the toy model writes the velocity-dependent \emph{pair} interaction in the standard EIH-inspired form
+\begin{equation}
+  L_{\rm vec}^{(AB)}
+  =\frac{G m_A m_B}{c^2 r_{AB}}
+  \Big[
+    C_\parallel\,\mathbf v_A\cdot\mathbf v_B
+    + C_L\,(\mathbf v_A\cdot \hat{\mathbf n}_{AB})(\mathbf v_B\cdot \hat{\mathbf n}_{AB})
+    + \cdots
+  \Big],
+  \label{eq:Lvec_template}
+\end{equation}
+where the ellipsis denotes additional structures not needed to fix $(\alpha^2,K)$.
+
+The GR/EIH expansion fixes the numerical values of the \emph{cross-tensor} coefficients to
+\begin{equation}
+  C_\parallel^{\rm(EIH)}=-\frac{7}{2},\qquad
+  C_L^{\rm(EIH)}=-\frac{1}{2}.
+  \label{eq:EIH_target_cross}
+\end{equation}
+In this section we use \eqref{eq:EIH_target_cross} as the target ``data'' that the toy model must reproduce.
+
+\subsection{Wake basis and closed-form coefficients \texorpdfstring{$C_\parallel(\alpha,a_H)$}{C||(alpha,aH)} and \texorpdfstring{$C_L(\alpha,a_H)$}{CL(alpha,aH)}}
+\label{sec:1pn-interaction-coeffs}
+
+In the toy model, a moving defect sources a far-field wake that is expanded in a completed basis.
+At the level needed for the EIH cross terms, the bookkeeping reduces to two numbers:
+\begin{equation}
+  C_\parallel(\alpha,a_H)=K\pi^2\Big(-1+a_H^2-\alpha^2\Big),
+  \qquad
+  C_L(\alpha,a_H)=K\pi^2\Big(-1+a_H^2+\alpha^2\Big).
+  \label{eq:CL_Cpar_forms}
+\end{equation}
+Equation \eqref{eq:CL_Cpar_forms} is the crucial closed-form result: it packages the wake-basis
+normalization (the overall $K\pi^2$) and the longitudinal/helical mixing into a pair of scalars
+that multiply the EIH tensor structures in \eqref{eq:Lvec_template}.
+
+\paragraph{Connection to the unified 4D model.}
+In Paper VII language, the content of \eqref{eq:CL_Cpar_forms} is that the bilinear part of the
+interaction functional is fixed once one specifies (i) the brane projection/measurement convention
+and (ii) a basis decomposition of the brane-projected response into longitudinal and transverse sectors.
+The remaining question is whether the parameters $(\alpha,a_H,K)$ are genuine free knobs or are fixed by
+the same microphysics that already fixed the EOS exponent.
+
+\subsection{EIH matching yields a one-parameter family}
+\label{sec:1pn-interaction-family}
+
+Imposing \eqref{eq:EIH_target_cross} on \eqref{eq:CL_Cpar_forms} gives two equations in three unknowns.
+It is convenient to take sum and difference:
+\begin{align}
+  C_L-C_\parallel &= 2K\pi^2\,\alpha^2,
+  \label{eq:diff_CL_Cpar}\\
+  C_L+C_\parallel &= 2K\pi^2\,(-1+a_H^2).
+  \label{eq:sum_CL_Cpar}
+\end{align}
+Using the EIH targets \eqref{eq:EIH_target_cross}:
+\begin{align}
+  (-\tfrac12)-(-\tfrac72) &= 3 = 2K\pi^2\,\alpha^2
+  \quad\Rightarrow\quad
+  K\alpha^2=\frac{3}{2\pi^2},
+  \label{eq:invariant1}\\
+  (-\tfrac12)+(-\tfrac72) &= -4 = 2K\pi^2\,(-1+a_H^2)
+  \quad\Rightarrow\quad
+  K(1-a_H^2)=\frac{2}{\pi^2}.
+  \label{eq:invariant2}
+\end{align}
+Equations \eqref{eq:invariant1}--\eqref{eq:invariant2} exhibit the EIH-matching structure clearly:
+\emph{EIH matching alone} fixes two invariants and leaves a one-parameter family.
+Solving for $(\alpha^2,K)$ in terms of $a_H^2$ gives
+\begin{equation}
+  \alpha^2(a_H^2)=\frac{3}{4}(1-a_H^2),
+  \qquad
+  K(a_H^2)=\frac{2}{\pi^2(1-a_H^2)},
+  \qquad
+  0\le a_H^2<1,
+  \label{eq:family_alphaK}
+\end{equation}
+with two useful invariant products (equivalent to \eqref{eq:invariant1}--\eqref{eq:invariant2}):
+\begin{equation}
+  K(1-a_H^2)=\frac{2}{\pi^2},
+  \qquad
+  K\alpha^2=\frac{3}{2\pi^2}.
+  \label{eq:family_invariants}
+\end{equation}
+At this stage, $a_H$ is a \emph{candidate} knob: distinct wake bases can reproduce the same EIH cross-tensor data.
+
+\subsection{Thermodynamic closure fixes \texorpdfstring{$\alpha^2$}{alpha^2} from the EOS exponent}
+\label{sec:1pn-interaction-thermo}
+
+We now use the same microphysics already fixed in Sec.~\ref{sec:optics-n}:
+a barotropic polytrope $P(\rho)=K_{\rm EOS}\rho^n$ with $n=5$.
+
+\paragraph{Action-level identity (4D GNLS $\leftrightarrow$ barotropic fluid).}
+In the unified model, the fluid sector is defined by an internal energy density $U(\rho)$ such that
+\begin{equation}
+  h(\rho)=\frac{dU}{d\rho},\qquad
+  P(\rho)=\rho\,h(\rho)-U(\rho).
+  \label{eq:thermo_identities}
+\end{equation}
+For a polytrope $P(\rho)=K_{\rm EOS}\rho^n$, the unique compatible internal energy density is
+\begin{equation}
+  U(\rho)=\frac{K_{\rm EOS}}{n-1}\rho^n,
+  \qquad
+  \Rightarrow\qquad
+  \frac{U}{P}=\frac{1}{n-1}.
+  \label{eq:U_over_P}
+\end{equation}
+(For $n=5$, this reduces to the identities already used in Paper VII:
+$U=\tfrac{K_{\rm EOS}}{4}\rho^5$, $h=\tfrac{5K_{\rm EOS}}{4}\rho^4$.)
+
+\paragraph{Definition of $\alpha^2$ as an ``available wake fraction''.}
+The wake-overlap interaction \eqref{eq:Lvec_template} is controlled by the portion of the defect's
+motion-induced energy that appears in the \emph{long-range} wake sector.
+By definition, $\alpha^2$ encodes the fraction of the relevant motion-induced budget that remains
+in the interaction-carrying wake channel rather than being sequestered as internal compression energy.
+
+Using \eqref{eq:U_over_P}, the simplest thermodynamic closure consistent with that definition is
+\begin{equation}
+  \alpha^2_{\rm thermo}
+  = 1-\frac{U}{P}
+  =1-\frac{1}{n-1}.
+  \label{eq:alpha_thermo_general}
+\end{equation}
+With the stiffness already fixed by optics ($n=5$), this becomes
+\begin{equation}
+  \alpha^2_{\rm thermo}=1-\frac{1}{4}=\frac{3}{4}.
+  \label{eq:alpha_value}
+\end{equation}
+
+\subsection{Collapse of the EIH family and the unique values of \texorpdfstring{$K$}{K} and \texorpdfstring{$\alpha^2$}{alpha^2}}
+\label{sec:1pn-interaction-collapse}
+
+Combining the thermodynamic prediction \eqref{eq:alpha_value} with the EIH family \eqref{eq:family_alphaK} gives
+\begin{equation}
+  \frac{3}{4}=\alpha^2=\frac{3}{4}(1-a_H^2)\quad\Rightarrow\quad a_H^2=0.
+  \label{eq:aH_zero}
+\end{equation}
+Substituting back into \eqref{eq:family_alphaK} yields the unique point
+\begin{equation}
+  \boxed{
+  \alpha^2=\frac{3}{4},\qquad
+  a_H=0,\qquad
+  K=\frac{2}{\pi^2}.
+  }
+  \label{eq:alphaK_final}
+\end{equation}
+As a direct check, inserting \eqref{eq:alphaK_final} into \eqref{eq:CL_Cpar_forms} reproduces the EIH targets:
+\begin{equation}
+  C_\parallel
+  =\frac{2}{\pi^2}\pi^2\Big(-1-\frac{3}{4}\Big)
+  =-\frac{7}{2},
+  \qquad
+  C_L
+  =\frac{2}{\pi^2}\pi^2\Big(-1+\frac{3}{4}\Big)
+  =-\frac{1}{2}.
+\end{equation}
+
+\paragraph{Interpretation.}
+EIH matching \emph{by itself} admits a one-parameter family because one may trade a helical admixture ($a_H^2$)
+against a rescaling of the overlap normalization ($K$) while preserving the two invariants
+\eqref{eq:family_invariants}.  However, once the stiff EOS exponent is fixed by optics, the thermodynamic closure
+\eqref{eq:alpha_thermo_general} removes that freedom and forces the minimal translational wake basis $a_H=0$.
+In this sense, the interaction sector inherits its numerical constants from the same microphysics that fixed $n=5$.
+
+\subsection{Status and what remains symbolic}
+\label{sec:1pn-interaction-status}
+
+The constants in \eqref{eq:alphaK_final} are fixed.  Other model choices that do \emph{not} enter the EIH cross-tensor
+match at this order (e.g.\ finite-size structure, throat impedance in the strong-field regime, higher multipoles, and
+response/loss parameters in a non-adiabatic throat model) remain symbolic and are deferred to later sections.
+
+% ======================================================================
+\section{Special relativity from wave-supported mass}
+\label{sec:sr_wave_mass}
+
+In Papers I--VI, the special-relativistic kinetic expansion was used as an external calibration target for the point-particle sector. In this follow-up we show that the required structure arises directly from a single physical premise already built into the Paper~VII picture: \emph{a localized defect behaves inertially because it is supported by a trapped wave mode}. Once the defect's rest energy is wave energy with a relativistic (massless) dispersion relation, the full $\gamma(v)$ structure---and in particular the universal $v^4$ coefficient---follows without additional model-specific tuning.
+
+\subsection{Rest energy as trapped-mode energy}
+
+We idealize the defect as admitting at least one stable transverse standing mode with characteristic transverse wavenumber $k_\perp$ (set by the throat geometry and boundary/confinement physics). Denote the characteristic propagation speed of this mode by $c$.\footnote{In the broader model, $c$ is the limiting wave speed relevant to operational rulers/clocks (the same constant that appears in the 1PN bookkeeping). The derivations below require only that the trapped mode has an isotropic linear dispersion at the scales of interest.}
+
+For a massless dispersion,
+\begin{equation}
+\omega = c\,|\mathbf k| ,
+\end{equation}
+a purely transverse standing mode in the defect rest frame has
+\begin{equation}
+|\mathbf k| = k_\perp, \qquad \omega_0 = c\,k_\perp,
+\end{equation}
+so the defect's rest energy is identified with the mode energy,
+\begin{equation}
+E_0 \equiv \hbar \omega_0 = \hbar c k_\perp,
+\qquad
+m_0 \equiv \frac{E_0}{c^2}.
+\label{eq:E0_m0_def}
+\end{equation}
+The microphysical relation between $k_\perp$ and geometric parameters (e.g.\ $k_\perp\simeq \pi/a$ for a lowest transverse mode in a simple cavity) is not needed for the relativistic coefficients derived below; only the existence of a stable trapped mode matters.
+
+\subsection{Boosted trapped mode and the $\gamma$ energy factor}
+
+Consider uniform motion of the defect at speed $v$ along (say) the $x$-direction. For the trapped wave pattern to be carried along with the moving defect (no secular slippage), its \emph{group velocity} along $x$ must match the defect velocity:
+\begin{equation}
+v \;=\; v_g \;=\; \frac{\partial \omega}{\partial k_x}.
+\label{eq:vg_condition}
+\end{equation}
+With $\omega = c\sqrt{k_\perp^2 + k_x^2}$, this gives
+\begin{equation}
+v
+= c\,\frac{k_x}{\sqrt{k_\perp^2+k_x^2}}
+\qquad \Longrightarrow \qquad
+k_x^2 = \frac{v^2}{c^2-v^2}\,k_\perp^2
+= \gamma^2\frac{v^2}{c^2}\,k_\perp^2,
+\label{eq:kx_solution}
+\end{equation}
+where $\gamma \equiv (1-v^2/c^2)^{-1/2}$. Substituting~\eqref{eq:kx_solution} back into the dispersion relation yields
+\begin{equation}
+\omega(v) = c\sqrt{k_\perp^2+k_x^2}
+= c\,\gamma\,k_\perp
+= \gamma\,\omega_0,
+\end{equation}
+and therefore the total energy of the moving defect is
+\begin{equation}
+E(v) = \hbar\omega(v) = \gamma\,\hbar\omega_0 = \gamma E_0.
+\label{eq:E_gamma_E0}
+\end{equation}
+
+\subsection{Universal low-velocity expansion and the $3/8$ coefficient}
+
+Expanding~\eqref{eq:E_gamma_E0} for $v\ll c$,
+\begin{align}
+\gamma(v)
+&= 1 + \frac{1}{2}\frac{v^2}{c^2} + \frac{3}{8}\frac{v^4}{c^4} + \mathcal O\!\left(\frac{v^6}{c^6}\right),
+\\[4pt]
+E(v)
+&= E_0
++ \frac{1}{2}\left(\frac{E_0}{c^2}\right)v^2
++ \frac{3}{8}\left(\frac{E_0}{c^2}\right)\frac{v^4}{c^2}
++ \mathcal O\!\left(\frac{v^6}{c^4}\right)
+\nonumber\\
+&= m_0c^2 + \frac{1}{2}m_0 v^2 + \frac{3}{8}m_0\frac{v^4}{c^2}
++ \mathcal O\!\left(\frac{v^6}{c^4}\right).
+\label{eq:E_series}
+\end{align}
+Thus the $v^4$ coefficient required by special relativity is not an independent parameter: it is the universal Taylor coefficient of $\gamma$ and therefore follows immediately from wave-supported mass once~\eqref{eq:vg_condition} holds.
+
+\subsection{Momentum and the invariant energy--momentum relation}
+
+The same construction gives the standard relativistic momentum. Using $p_x=\hbar k_x$ and~\eqref{eq:kx_solution}, together with~\eqref{eq:E0_m0_def},
+\begin{equation}
+p_x = \hbar k_x
+= \hbar\gamma\frac{v}{c}k_\perp
+= \gamma\frac{v}{c^2}\,(\hbar c k_\perp)
+= \gamma m_0 v.
+\label{eq:p_gamma_m0v}
+\end{equation}
+Equations~\eqref{eq:E_gamma_E0} and~\eqref{eq:p_gamma_m0v} imply
+\begin{equation}
+E^2 - p^2c^2 = E_0^2 = m_0^2c^4,
+\end{equation}
+i.e.\ the defect's effective kinematics are exactly those of a special-relativistic particle with rest mass $m_0$.
+
+\subsection{Operational Lorentz symmetry and the preferred-frame question}
+
+The derivation above is compatible with (and naturally suggests) a Lorentz--ether style interpretation: the underlying medium provides a distinguished rest frame, yet \emph{wave-built} matter exhibits the standard Lorentz factors in its energy, momentum, and internal timing.
+
+A simple way to see the time-dilation factor in this same wave picture is to evaluate the phase evolution along the defect worldline. For a dominant plane-wave component,
+\begin{equation}
+\varphi(x,t) = k_x x - \omega t + \varphi_\perp,
+\end{equation}
+and along the trajectory $x=vt$ the phase advances at the rate
+\begin{equation}
+\frac{d\varphi}{dt} = k_x v - \omega
+= -\big(\omega - v k_x\big).
+\end{equation}
+Using $\omega=\gamma\omega_0$ and $k_x=\gamma(v/c^2)\omega_0$ from above gives
+\begin{equation}
+\omega_{\rm clock}(v) \;\equiv\; \omega - v k_x
+= \gamma\omega_0\left(1-\frac{v^2}{c^2}\right)
+= \frac{\omega_0}{\gamma},
+\label{eq:time_dilation_from_phase}
+\end{equation}
+so an internal oscillation used as a ``clock'' ticks slower by precisely the factor $\gamma$ when expressed in the background frame's coordinate time.
+
+Likewise, for any material pattern defined by a fixed phase condition in the defect rest frame (e.g.\ node-to-node separations in a bound wave pattern), the coordinate mapping that preserves wave phase implies the usual contraction of equal-time spatial separations by $1/\gamma$ along the direction of motion. In this operational sense, if rulers and clocks are made of the same trapped-wave physics as the defects themselves, they distort by exactly the Lorentz factors and can mask the presence of a background rest frame in standard kinematic tests.
+
+\paragraph{Scope.}
+This section establishes the special-relativistic \emph{kinematic} structure ($E=\gamma E_0$, $p=\gamma m_0 v$ and the universal $3/8$ coefficient) under the assumptions stated. It does \emph{not} by itself prove the absence of all preferred-frame observables: any departure from isotropic linear dispersion, any additional couplings to background flow, or any defect-specific dissipative/leakage channels could in principle generate small Lorentz-violating signatures. In the present paper we therefore treat ``preferred-frame'' sensitivity as a separate (future) phenomenology problem: the leading-order SR structure follows from the trapped-wave premise, while any preferred-frame effects must arise from explicitly identifiable corrections to that premise rather than from the inertial mechanism itself.
+
+% ============================================================
+\section{Preferred-frame considerations and operational Lorentz symmetry}
+\label{sec:preferred_frame}
+
+A hydrodynamic vacuum model generically introduces a \emph{background rest frame}:
+the frame in which the far-field medium is homogeneous and has vanishing bulk
+transport velocity. It is therefore essential to separate two logically distinct
+questions:
+
+\begin{enumerate}
+\item \textbf{Ontology:} does the microscopic theory select a preferred frame?
+\item \textbf{Operational physics:} do brane observers built from the theory's
+      own bound states necessarily detect that preferred frame?
+\end{enumerate}
+
+In this section we argue that, even if the underlying medium has a preferred
+rest frame (ontology), \emph{Lorentz symmetry can still be an operational symmetry}
+for brane experiments in a controlled regime. The key mechanism is that
+\emph{matter is wave-supported}: clocks and rulers are themselves standing-wave
+configurations. As a result, their time- and length-calibration co-transforms
+with velocity in such a way that uniform drift relative to the background is
+masked at leading order, in the same sense as Lorentz--FitzGerald contraction in
+a wave/ether theory. We also state precisely where preferred-frame effects can
+re-enter in the full 4D model.
+
+\subsection{Emergent Lorentz structure of the signal sector (controlled regime)}
+\label{sec:preferred_frame_wave_sector}
+
+The brane reduction developed in Paper VII yields an exact projected continuity
+identity with explicit leakage sources, and an exact longitudinal identity after
+Helmholtz decomposition of the brane velocity field. In a regime where
+(i) leakage and projection-stress corrections are small, (ii) the longitudinal
+sector dominates, and (iii) fluctuations are weak about a homogeneous background,
+the brane longitudinal potential obeys a sourced wave equation whose \emph{free}
+part is the standard d'Alembert operator.
+
+Concretely, write a brane velocity potential $\varphi$ for the longitudinal part
+of the brane velocity, $\mathbf v_L = \nabla \varphi$. Linearizing about a
+homogeneous brane background $\rho_{\rm brane}=\rho_0+\delta\rho$ and retaining
+only the longitudinal/quasi-acoustic sector gives (schematically)
+\begin{equation}
+\delta\rho_t + \rho_0 \nabla^2 \varphi = S_{\rm brane},
+\qquad
+\varphi_t + \frac{1}{m}\,\delta h = 0,
+\qquad
+\delta h = h'(\rho_0)\,\delta\rho,
+\label{eq:lin_brane_acoustics_pref_frame}
+\end{equation}
+so that
+\begin{equation}
+\varphi_{tt} - c^2 \nabla^2 \varphi
+= -\frac{c^2}{\rho_0}\,S_{\rm brane},
+\qquad
+c^2 \;\equiv\; \frac{\rho_0\,h'(\rho_0)}{m}
+\;=\; \frac{1}{m}\left.\frac{dP}{d\rho}\right|_{\rho_0}.
+\label{eq:brane_wave_equation_pref_frame}
+\end{equation}
+(For the stiff EOS used throughout this series, $P=K\rho^5$, one has
+$c^2 = (5K\rho_0^4)/m$, but we keep $c$ symbolic as the characteristic signal
+speed of the regime.)
+
+In the \emph{free} limit $S_{\rm brane}\to 0$, Eq.~\eqref{eq:brane_wave_equation_pref_frame}
+is invariant under Lorentz transformations with invariant speed $c$.
+This does \emph{not} mean the full 4D system is exactly Lorentz invariant:
+it means that the \emph{long-wavelength signal sector} available to brane observers
+has an emergent Lorentz symmetry in a controlled approximation. All preferred-frame
+effects must therefore enter through deviations from the controlled regime
+(e.g.\ leakage, dispersion, anisotropy, dissipation), which we enumerate below.
+
+\subsection{Wave-supported clocks: time dilation from the same kinematics that gives $E=\gamma E_0$}
+\label{sec:preferred_frame_time_dilation}
+
+The special-relativistic energy scaling derived in the preceding section can be
+re-used to establish \emph{time dilation} in an operational sense.
+
+Consider a trapped massless mode supporting a localized object, with a linear
+dispersion relation in the background rest frame,
+\begin{equation}
+\omega = c\,|\mathbf k|, \qquad E=\hbar\omega.
+\label{eq:linear_dispersion_pref_frame}
+\end{equation}
+Let the object's rest configuration be characterized by a transverse wavenumber
+$k_\perp$ and rest frequency $\omega_0=c\,k_\perp$, so $E_0=\hbar\omega_0$.
+For a steadily translating object at speed $v$ along $x$, the supporting wave must
+acquire a longitudinal component $k_\parallel$ such that its group velocity matches $v$.
+For the linear dispersion \eqref{eq:linear_dispersion_pref_frame},
+\begin{equation}
+v = \frac{\partial \omega}{\partial k_\parallel}
+= c\,\frac{k_\parallel}{\sqrt{k_\parallel^2+k_\perp^2}}
+\quad\Longrightarrow\quad
+k_\parallel = \gamma\beta\,k_\perp,
+\qquad
+\beta\equiv \frac{v}{c},
+\qquad
+\gamma \equiv \frac{1}{\sqrt{1-\beta^2}}.
+\label{eq:k_parallel_condition_pref_frame}
+\end{equation}
+Then the lab-frame frequency (hence energy) becomes
+\begin{equation}
+\omega = c\sqrt{k_\perp^2+k_\parallel^2} = \gamma\,c\,k_\perp = \gamma\omega_0,
+\qquad
+E(v)=\hbar\omega = \gamma E_0,
+\label{eq:E_gamma_pref_frame}
+\end{equation}
+which is the same kinematic structure used to obtain the $v^4$ coefficient in the
+series expansion.
+
+However, a physical \emph{clock rate} is associated not to $\omega$ at fixed spatial
+position, but to the phase evolution \emph{along the object's worldline}.
+For a plane-wave phase $\Phi = k_\parallel x - \omega t$ evaluated along $x=vt$,
+\begin{equation}
+\frac{d\Phi}{dt} = k_\parallel v - \omega
+= \gamma\beta^2\omega_0 - \gamma\omega_0
+= -\frac{\omega_0}{\gamma}.
+\label{eq:phase_rate_worldline_pref_frame}
+\end{equation}
+Thus the intrinsic oscillation rate of the bound wave pattern \emph{as carried by the moving
+object} is reduced by $\gamma$, i.e.\ the object provides a time-dilated clock.
+This resolves the apparent tension between $E=\gamma E_0$ (a lab-frame frequency)
+and ``moving clocks run slow'' (a worldline/proper-time statement): the two statements
+refer to different derivatives of the same phase function.
+
+\subsection{Wave-supported rods and the Lorentz--FitzGerald mechanism}
+\label{sec:preferred_frame_length_contraction}
+
+To understand why a preferred background flow can be hidden from internal experiments,
+one must also account for \emph{length calibration}. The minimal operational model is a
+``wave rod'' or ``light clock'' whose stable length is tied to a standing-wave condition.
+
+Consider a cavity/rod of rest length $\ell_0$ aligned with the direction of motion, whose
+internal support/communication mode propagates at speed $c$ in the background rest frame.
+If the rod moves at speed $v$ through the background, the forward and backward transit times
+in the background frame are
+\begin{equation}
+t_+ = \frac{\ell}{c-v},
+\qquad
+t_- = \frac{\ell}{c+v},
+\qquad
+t_{\parallel} \equiv t_+ + t_- = \frac{2\ell\,c}{c^2-v^2}
+= \frac{2\ell}{c}\,\gamma^2,
+\label{eq:roundtrip_parallel_pref_frame}
+\end{equation}
+where $\ell$ is the rod length \emph{as measured in the background frame}.
+For the same physical clock at rest, the corresponding round-trip time is
+$t_0 = 2\ell_0/c$.
+
+If the internal wave pattern provides a physical clock tick tied to the rod's own
+worldline time, then consistency with the time dilation found above requires that a
+given intrinsic tick corresponds to a background-frame time longer by $\gamma$:
+\begin{equation}
+t_{\parallel} = \gamma\,t_0.
+\label{eq:time_dilation_condition_pref_frame}
+\end{equation}
+Combining \eqref{eq:roundtrip_parallel_pref_frame} and \eqref{eq:time_dilation_condition_pref_frame}
+forces
+\begin{equation}
+\frac{2\ell}{c}\,\gamma^2 = \gamma\,\frac{2\ell_0}{c}
+\quad\Longrightarrow\quad
+\ell = \frac{\ell_0}{\gamma}.
+\label{eq:length_contraction_pref_frame}
+\end{equation}
+Equation \eqref{eq:length_contraction_pref_frame} is precisely Lorentz--FitzGerald contraction,
+now arising as a \emph{self-consistency condition} for wave-supported clocks/rods:
+a moving wave-bound structure must contract in the direction of motion if its internal
+clock rate is time-dilated by $\gamma$.
+
+\paragraph{Michelson--Morley null as an internal consistency check.}
+With $\ell_\parallel=\ell_0/\gamma$ and $\ell_\perp=\ell_0$ for a perpendicular arm,
+the background-frame round-trip times satisfy
+\begin{equation}
+t_{\parallel}=\frac{2\ell_\parallel}{c}\gamma^2=\frac{2\ell_0}{c}\gamma,
+\qquad
+t_{\perp}=\frac{2\ell_\perp}{c}\gamma=\frac{2\ell_0}{c}\gamma,
+\label{eq:MM_null_pref_frame}
+\end{equation}
+so an interferometer built from such wave rods (and using the same wave sector to compare phases)
+cannot detect uniform drift relative to the background at leading order. This is the operational
+sense in which ``the preferred frame is hidden'' once matter is itself a wave pattern and the
+signal sector is approximately Lorentz invariant.
+
+\subsection{Where preferred-frame effects can re-enter in the full 4D theory}
+\label{sec:preferred_frame_violations}
+
+The argument above is deliberately \emph{conditional}. It identifies a coherent route by which
+a theory with an ontological background medium can nonetheless exhibit operational Lorentz
+symmetry for brane observers. In the present framework, preferred-frame signatures can re-enter
+through any mechanism that violates one of the controlled assumptions:
+
+\begin{enumerate}
+\item \textbf{Dispersion beyond the linear wave regime.}
+The 4D GNLS Madelung form includes a quantum-pressure sector and other correction terms.
+These generically produce scale-dependent dispersion, so the effective ``light cone'' is not
+universal across frequencies. Operational Lorentz symmetry is then expected only in the
+long-wavelength limit where the dispersion is approximately linear.
+
+\item \textbf{Open-system brane physics (leakage).}
+Brane observables satisfy an exact projected continuity equation with an explicit leakage
+source $S_{\rm leak}$, built from $w$-flux and weight-gradient terms. If $S_{\rm leak}$ is not
+negligible in the regime of an experiment, the brane behaves as an open system and the
+effective 3D dynamics need not respect Lorentz symmetry.
+
+\item \textbf{Projection-induced stresses and non-commutation with nonlinearities.}
+Even when bulk dynamics are simple, projection generally produces additional brane stress
+sectors (Reynolds-like corrections) because $\mathcal P_W[\rho v_iv_j]\neq
+\rho_{\rm brane}v^{\rm brane}_i v^{\rm brane}_j$ in multi-mode $w$ structure.
+These sectors can source transverse dynamics and introduce preferred-frame sensitivity.
+
+\item \textbf{Non-universality across sectors.}
+If different operational subsystems (longitudinal acoustic modes, transverse/gauge modes,
+geometry breathing modes) propagate with different characteristic speeds, then different
+``clocks'' would disagree about the invariant speed. This would manifest as explicit Lorentz
+violation in composite experiments unless parameters are tuned to enforce universality.
+
+\item \textbf{Dissipation, drive, and reservoir coupling.}
+Any explicit damping, driving, or chemical-potential reservoir coupling selects a time direction
+and can select a preferred rest frame in practice. Operational Lorentz symmetry is therefore a
+property of the conservative, weakly perturbed regime, not of the driven steady state in general.
+\end{enumerate}
+
+\paragraph{Status and scope.}
+We therefore adopt the following conservative stance for the remainder of this paper:
+\emph{the existence of an ontological preferred frame in the background medium is not, by itself,
+a fatal conflict with relativistic phenomenology}, provided (i) the signal sector is approximately
+Lorentz invariant with speed $c$ in the relevant regime, and (ii) matter is wave-supported so that
+rods and clocks co-transform according to \eqref{eq:phase_rate_worldline_pref_frame} and
+\eqref{eq:length_contraction_pref_frame}. Quantifying residual preferred-frame parameters in the
+full 4D model is a separate, well-posed calculation: it requires specifying which correction channels
+(dispersion, leakage, stress, sector non-universality) dominate in the regimes corresponding to the
+experiments of interest.
+
+% ======================================================================
+\section{Controlled reduction to brane-effective equations}
+\label{sec:brane_reduction}
+
+Paper~VII defines a single unified field theory in $(3+1)+1$ dimensions.
+This paper does not introduce a separate ``brane PDE'' by fiat. Instead, a
+three-dimensional observer's physics is obtained by an explicit measurement map
+that (i) projects bulk fields near $w=0$ and (ii) records fluxes on a chosen
+measurement surface.  The goal of this section is to make that reduction
+\emph{controlled}: every term that obstructs a closed $3$D description is written
+explicitly (and can later be tested to be small in a regime, rather than set to
+zero by assumption).
+
+\subsection{Brane observables as a projection map}
+\label{sec:brane_projection}
+
+Let $\mathbf{X}=(x,y,z,w)$ and let the brane be the operational neighborhood of
+$w=0$.  We define a weighted projection onto the brane by a nonnegative weight
+$W(w)$ concentrated near $w=0$.  In numerics one typically uses a finite window
+$|w|\le W_{\rm proj}$ and renormalizes:
+\begin{align}
+\mathcal{N}_W &\equiv \int_{-W_{\rm proj}}^{W_{\rm proj}} W(w)\,dw, &
+\widetilde W(w) &\equiv \frac{W(w)}{\mathcal{N}_W}\quad (|w|\le W_{\rm proj}).
+\end{align}
+The corresponding projection operator is
+\begin{align}
+\mathcal{P}_W[f](x,y,z,t) \;\equiv\; \int_{-W_{\rm proj}}^{W_{\rm proj}} \widetilde W(w)\,
+f(x,y,z,w,t)\,dw.
+\end{align}
+
+The brane density and brane current are defined by
+\begin{align}
+\rho_{\rm brane} &\equiv \mathcal{P}_W[\rho], \qquad \rho \equiv |\psi|^2,\\
+\mathbf{J}_{\rm brane} &\equiv \mathcal{P}_W[\mathbf{J}_{xyz}],
+\qquad
+\mathbf{J} \equiv \frac{\hbar}{2im}\Big(\psi^\ast \nabla_4 \psi-\psi \nabla_4 \psi^\ast\Big),
+\end{align}
+where $\mathbf{J}_{xyz}$ denotes the $(x,y,z)$ components of the bulk current and
+$\nabla_4$ is the full four-dimensional spatial gradient.
+
+Whenever $\rho_{\rm brane}$ is nonzero, the brane-observed velocity is defined
+kinematically by
+\begin{align}
+\mathbf{v}_{\rm brane} \;\equiv\; \frac{\mathbf{J}_{\rm brane}}{\rho_{\rm brane}}.
+\end{align}
+
+\paragraph{Effort/flux variables and ports.}
+To connect to the earlier ``operator/impedance'' viewpoint without introducing
+a stitched interface, we define (for small perturbations about a background
+$\rho_{\rm brane,0}$) the canonical effort variable as the enthalpy perturbation
+\begin{align}
+u \;\equiv\; \delta h(\rho_{\rm brane})
+\;\approx\; h'(\rho_{\rm brane,0})\,\delta\rho_{\rm brane}.
+\end{align}
+For the stiff $n=5$ equation of state (already fixed above),
+$h(\rho)=\frac{5K}{4}\rho^4$ so $h'(\rho)=5K\rho^3$ and therefore
+\begin{align}
+u \;\approx\; 5K\,\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
+\end{align}
+
+We choose a measurement surface $\Gamma$ on the brane and a finite port basis
+$\{P_i\}$ on $\Gamma$ (e.g.\ spherical harmonics on a brane 2-sphere).  The port
+amplitudes are
+\begin{align}
+u_i(t) &= \int_{\Gamma}\overline{P_i(\mathbf{s})}\,u(\mathbf{s},t)\,d\mu,\\
+j_i(t) &= \int_{\Gamma}\overline{P_i(\mathbf{s})}\,j(\mathbf{s},t)\,d\mu,
+\qquad j(\mathbf{s},t)\equiv \mathbf{J}_{\rm brane}(\mathbf{s},t)\cdot \hat{\mathbf{n}}.
+\end{align}
+In addition to the ``mouth'' flux on $\Gamma$, we will also track a bulk
+exchange flux through $w=\pm W_{\rm cut}$ using the $w$-current component
+\begin{align}
+J_w \equiv \frac{\hbar}{2im}\Big(\psi^\ast \partial_w \psi-\psi\,\partial_w \psi^\ast\Big),
+\end{align}
+integrated over a chosen 3D region in $(x,y,z)$.  (Which flux is operationally
+relevant depends on the protocol; the theory permits multi-output diagnostics.)
+
+\subsection{Exact projected continuity and the leakage source term}
+\label{sec:brane_continuity}
+
+The bulk continuity equation holds identically:
+\begin{align}
+\partial_t \rho + \nabla_4\cdot \mathbf{J} = 0.
+\end{align}
+Projecting with $\mathcal{P}_W$ yields an \emph{exact} brane continuity law of
+the open-system form
+\begin{align}
+\boxed{
+\partial_t \rho_{\rm brane} + \nabla_3\cdot \mathbf{J}_{\rm brane} = S_\rho,
+}
+\label{eq:brane_continuity_open}
+\end{align}
+where $\nabla_3$ acts only in $(x,y,z)$ and the source term $S_\rho$ depends
+\emph{only} on the $w$-flux:
+\begin{align}
+S_\rho \;=\;
+-\Big[\widetilde W(w)\,J_w\Big]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
+\;+\;
+\int_{-W_{\rm proj}}^{W_{\rm proj}} \big(\partial_w \widetilde W(w)\big)\,J_w\,dw.
+\label{eq:brane_leakage_source}
+\end{align}
+Thus, the only mechanism by which a projected $3$D observer fails to see exact
+mass conservation is exchange with the bulk through $J_w$ (either through the
+finite-window boundary flux, or through overlap with the weight gradient).
+
+A useful exact identity follows by combining \eqref{eq:brane_continuity_open}
+with $\mathbf{v}_{\rm brane}=\mathbf{J}_{\rm brane}/\rho_{\rm brane}$.  Writing
+all fields as brane fields,
+\begin{align}
+\nabla_3\cdot \mathbf{v}_{\rm brane}
+=
+\frac{S_\rho-\partial_t \rho_{\rm brane}}{\rho_{\rm brane}}
+-\frac{\mathbf{J}_{\rm brane}\cdot \nabla_3 \rho_{\rm brane}}{\rho_{\rm brane}^2}.
+\label{eq:div_v_exact}
+\end{align}
+Equation \eqref{eq:div_v_exact} is purely kinematic and will be the entry point
+to a Poisson-like limit below.
+
+\subsection{Projected momentum balance and the unresolved stress sector}
+\label{sec:brane_momentum}
+
+To obtain a brane-effective momentum equation, start from the bulk Euler-like
+equation (Madelung form) in Paper~VII and rewrite it in flux form for the bulk
+current components.  Projecting the $(x,y,z)$ components yields a structural
+balance of the form
+\begin{align}
+\boxed{
+\partial_t J^{\rm brane}_i + \partial_j \Pi_{ij} = F^{\rm pot}_i + F^{\rm em}_i + S_{J_i},
+\qquad i,j\in\{x,y,z\},
+}
+\label{eq:brane_momentum_flux}
+\end{align}
+where the (projected) momentum-flux tensor is
+\begin{align}
+\Pi_{ij}
+\;\equiv\;
+\int_{-W_{\rm proj}}^{W_{\rm proj}} \widetilde W(w)\,\frac{J_iJ_j}{\rho}\,dw,
+\label{eq:Pi_def}
+\end{align}
+and the bulk-exchange source terms are again controlled by $w$-flux:
+\begin{align}
+S_{J_i}
+\;=\;
+-\Big[\widetilde W(w)\,\frac{J_iJ_w}{\rho}\Big]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
+\;+\;
+\int_{-W_{\rm proj}}^{W_{\rm proj}} \big(\partial_w \widetilde W(w)\big)\,\frac{J_iJ_w}{\rho}\,dw.
+\label{eq:brane_momentum_leak}
+\end{align}
+The ``potential-force'' term packages the stiff enthalpy, confinement, and
+quantum-pressure contributions:
+\begin{align}
+F^{\rm pot}_i
+\;\equiv\;
+-\int_{-W_{\rm proj}}^{W_{\rm proj}}
+\widetilde W(w)\,\frac{\rho}{m}\,\partial_i\mu_{\rm eff}\,dw,
+\qquad
+\mu_{\rm eff}\equiv V_{\rm conf}+h(\rho)+Q(\rho),
+\label{eq:Fpot_def}
+\end{align}
+with $h(\rho)=\frac{5K}{4}\rho^4$ and $Q(\rho)=-\frac{\hbar^2}{2m}
+\frac{\nabla_4^2\sqrt{\rho}}{\sqrt{\rho}}$.
+
+If the gauge sector is active, $F^{\rm em}_i$ denotes the projected Lorentz-type
+force density (the explicit component form is fixed by the minimal coupling
+conventions of Paper~VII); if the gauge sector is not active, set
+$F^{\rm em}_i\equiv 0$.  In either case, \eqref{eq:brane_momentum_flux} is exact
+at the level of a projected identity: no closure has yet been imposed.
+
+\paragraph{Reynolds-type stress from unresolved $w$-structure.}
+Define the brane velocity $\mathbf{v}_{\rm brane}$ and decompose
+$\Pi_{ij}$ into a ``resolved'' part plus an unresolved stress:
+\begin{align}
+\Pi_{ij} = \rho_{\rm brane}\,v^{\rm brane}_i v^{\rm brane}_j + R_{ij},
+\qquad
+R_{ij}\equiv \Pi_{ij}-\rho_{\rm brane}\,v^{\rm brane}_i v^{\rm brane}_j.
+\label{eq:Rij_def}
+\end{align}
+By construction, $R_{ij}$ vanishes when the bulk flow is effectively
+$w$-independent (or strictly separable) within the support of $\widetilde W$,
+and it measures the degree to which the brane does \emph{not} admit a closed
+single-fluid description.
+
+It is often useful to rewrite the momentum balance in acceleration form.  Using
+$\mathbf{J}_{\rm brane}=\rho_{\rm brane}\mathbf{v}_{\rm brane}$ and the open
+continuity \eqref{eq:brane_continuity_open}, one obtains the abstract identity
+\begin{align}
+\boxed{
+\rho_{\rm brane}\big(\partial_t + \mathbf{v}_{\rm brane}\cdot\nabla_3\big)\mathbf{v}_{\rm brane}
+=
+\mathbf{F}_{\rm tot}
+-\nabla_3\cdot \mathbf{R}
+-\mathbf{v}_{\rm brane}\,S_\rho,
+}
+\label{eq:brane_euler_open}
+\end{align}
+where $\mathbf{F}_{\rm tot}$ denotes the sum of projected force densities (from
+$\mu_{\rm eff}$ and, when present, gauge forces) and $(\nabla_3\cdot \mathbf{R})_i
+\equiv \partial_j R_{ij}$.
+
+Equations \eqref{eq:brane_continuity_open} and \eqref{eq:brane_euler_open} are
+the cleanest statement of what must be controlled to obtain a closed 3D limit:
+one needs a regime where $S_\rho$ and $R_{ij}$ are negligible (or admit a
+consistent closure), and where the relevant forces reduce to a brane-local form.
+
+\subsection{Minimal $w$-mode truncation and the ``closure hierarchy''}
+\label{sec:w_mode_truncation}
+
+The projection formalism yields exact identities, but practical reduction to a
+closed brane theory requires a controlled approximation for the $w$-structure.
+A minimal nontrivial truncation is a two-mode Galerkin expansion in the
+far-field $w$-confinement eigenbasis:
+\begin{align}
+\psi(x,y,z,w,t) \;\approx\;
+\psi_0(x,y,z,t)\,\chi_0(w) + \varepsilon\,\psi_1(x,y,z,t)\,\chi_1(w),
+\label{eq:two_mode_ansatz}
+\end{align}
+where $\chi_0$ is the ground state, $\chi_1$ is the first excited state, and
+$\varepsilon$ is a small bookkeeping parameter (the excited-mode amplitude).
+
+\paragraph{Separable/single-mode limit.}
+If $\varepsilon=0$ and $\psi$ is strictly separable, then
+\begin{align}
+\rho_{\rm brane} &= C_w\,|\psi_0|^2,\\
+\mathbf{J}_{\rm brane} &= C_w\,\mathbf{J}^{(3)}[\psi_0],\\
+\mathbf{v}_{\rm brane} &= \frac{\mathbf{J}^{(3)}[\psi_0]}{|\psi_0|^2},
+\end{align}
+where $C_w\equiv\int \widetilde W(w)\,|\chi_0(w)|^2\,dw$ and
+$\mathbf{J}^{(3)}[\psi_0]$ is the usual $3$D current formed from $\psi_0$.
+In this regime $J_w\simeq 0$ in the support of $\widetilde W$, hence $S_\rho\simeq 0$,
+and the unresolved stress $R_{ij}$ vanishes identically.  Thus the brane
+reduces to an effectively closed $3$D fluid system.
+
+\paragraph{First corrections.}
+When $\varepsilon\neq 0$, both $S_\rho$ and $R_{ij}$ generically become nonzero
+through interference and mixing between $\chi_0$ and $\chi_1$, producing (i) a
+nontrivial $w$-current $J_w$ and (ii) projected quadratic products that do not
+factorize.  The reduction is then controlled by overlap integrals of the form
+\begin{align}
+M_{nm} \equiv \int \widetilde W(w)\,\chi_n^\ast(w)\chi_m(w)\,dw,
+\qquad
+L_{nm} \equiv \int \big(\partial_w \widetilde W(w)\big)\,\chi_n^\ast(w)\chi_m(w)\,dw,
+\end{align}
+and by the corresponding projected equations obtained from
+$\langle\chi_0|\text{(bulk PDE)}\rangle$ and $\langle\chi_1|\text{(bulk PDE)}\rangle$.
+We do not impose a particular closure here; instead, we treat
+$S_\rho$ and $R_{ij}$ as explicit diagnostic sectors to be tested (or modeled)
+in any claimed brane-effective regime.
+
+\subsection{Longitudinal/quasi-static limit and a Poisson candidate}
+\label{sec:poisson_candidate}
+
+A scalar Poisson-like equation is not assumed in the unified theory; it can
+only arise as a regime statement.  The correct scalar object is the
+\emph{longitudinal velocity potential} associated with the brane velocity.
+
+Let $\mathbf{v}_{\rm brane}$ admit a Helmholtz decomposition on the brane:
+\begin{align}
+\mathbf{v}_{\rm brane} = \nabla_3 \phi_3 + \mathbf{v}_T,
+\qquad
+\nabla_3\cdot \mathbf{v}_T = 0.
+\label{eq:helmholtz}
+\end{align}
+By definition, $\phi_3$ satisfies
+\begin{align}
+\nabla_3^2 \phi_3 = \nabla_3\cdot \mathbf{v}_{\rm brane}.
+\label{eq:phi_poisson_def}
+\end{align}
+Using the exact identity \eqref{eq:div_v_exact} yields an exact, fully
+nonlinear expression for the source of $\phi_3$.
+
+A simple Poisson \emph{candidate} emerges under the standard linearized
+low-Mach/quasi-static assumptions:
+\begin{itemize}
+\item $\rho_{\rm brane}=\rho_0+\delta\rho$ with $|\delta\rho|\ll \rho_0$,
+\item products such as $\mathbf{J}_{\rm brane}\cdot\nabla_3\rho_{\rm brane}$ are
+      higher order,
+\item $\partial_t \delta\rho$ is negligible over the timescale of interest.
+\end{itemize}
+Then \eqref{eq:div_v_exact} reduces to
+\begin{align}
+\nabla_3\cdot \mathbf{v}_{\rm brane} \;\approx\; \frac{S_\rho}{\rho_0},
+\qquad\Rightarrow\qquad
+\rho_0\,\nabla_3^2 \phi_3 \;\approx\; S_\rho.
+\label{eq:poisson_candidate}
+\end{align}
+
+The same conclusion follows from the linearized acoustic relations in the stiff
+fluid.  Define $u\equiv\delta h(\rho_{\rm brane})$ and note that
+$h'(\rho_0)=5K\rho_0^3$ and $c_{s,0}^2\equiv (dP/d\rho)|_{\rho_0}=5K\rho_0^4$.
+In the longitudinal, small-amplitude regime one has
+\begin{align}
+\partial_t \delta\rho + \rho_0 \nabla_3^2 \phi_3 &= S_\rho,\\
+u = h'(\rho_0)\,\delta\rho, \qquad
+m\,\partial_t \phi_3 + u &= 0,
+\end{align}
+which combine into a forced wave equation
+\begin{align}
+\partial_t^2 \phi_3 - \frac{c_{s,0}^2}{m}\nabla_3^2 \phi_3
+= -\frac{c_{s,0}^2}{m\rho_0}\,S_\rho.
+\label{eq:forced_wave_phi}
+\end{align}
+The quasi-static limit $\partial_t^2\phi_3\simeq 0$ recovers
+\eqref{eq:poisson_candidate}.
+
+We emphasize: in the unified model, \eqref{eq:poisson_candidate} is a
+\emph{diagnostic limit} for $\phi_3$ (the longitudinal velocity potential), and
+it is spoiled when leakage is not small, when the unresolved stress $R_{ij}$ is
+important, when transverse/vorticity dynamics are active, or when quantum
+pressure is not negligible.
+
+\subsection{Gauge localization and a brane-effective Maxwell sector}
+\label{sec:em_reduction}
+
+When the gauge sector is included in the unified model, the bulk Maxwell action
+contains a localization prefactor $Z(w)$:
+\begin{align}
+S_{\rm EM} = -\frac{1}{4\mu_0}\int d^4x\,dw\; Z(w)\,F_{MN}F^{MN}.
+\label{eq:em_action_localized}
+\end{align}
+A controlled brane-effective Maxwell theory arises when the gauge field admits a
+dominant brane-localized zero mode.  A minimal ansatz is
+\begin{align}
+A_\mu(x,y,z,w,t)\approx a_\mu(x,y,z,t)\,f(w), \qquad A_w\approx 0,
+\label{eq:gauge_zero_mode}
+\end{align}
+with $f(w)$ localized near $w=0$.  If $F_{\mu\nu}(x,w,t)\approx f(w)\,f_{\mu\nu}(x,t)$
+and $F_{\mu w}$ is negligible in the regime of interest, then integrating
+\eqref{eq:em_action_localized} over $w$ yields an effective $3{+}1$ action
+\begin{align}
+S_{\rm EM}^{\rm eff} \approx -\frac{Z_{\rm int}}{4\mu_0}\int d^4x\;
+f_{\mu\nu}f^{\mu\nu},
+\qquad
+Z_{\rm int}\equiv\int dw\;Z(w)\,|f(w)|^2,
+\end{align}
+so the effective coupling is rescaled according to
+\begin{align}
+\mu_{0,{\rm eff}} = \frac{\mu_0}{Z_{\rm int}}.
+\label{eq:mu_eff}
+\end{align}
+The precise value of $Z_{\rm int}$ (and whether $F_{\mu w}$ contributions can be
+neglected) is a regime question to be checked rather than assumed; the unified
+theory provides the correct variational starting point in any case.
+
+Finally, brane-observed electromagnetic fields are defined operationally by
+projection:
+\begin{align}
+E^{\rm brane}_i \equiv \mathcal{P}_W[F_{0i}],\qquad
+B^{\rm brane}_i \equiv \frac{1}{2}\epsilon_{ijk}\,\mathcal{P}_W[F_{jk}],
+\qquad i,j,k\in\{x,y,z\},
+\end{align}
+and can be compared directly against the vorticity/transverse sectors of the
+brane momentum balance when establishing a Maxwell-like regime.
+
+% ======================================================================
+% ============================================================
+\section{Undetermined response coefficients and future derivations}
+\label{sec:undetermined}
+
+\subsection{Scope and philosophy: derived invariants vs.\ response data}
+\label{sec:undetermined:philosophy}
+
+This paper derived a set of dimensionless coefficients that are fixed by (i) exterior geometry/topology,
+(ii) the stiff equation of state required by optical matching, and (iii) the 1PN interaction structure.
+However, not every quantity that appears in earlier effective (brane) descriptions is fixed by those
+three inputs alone. In particular, any coefficient that encodes how the defect \emph{responds}---by
+``breathing'' or exchanging flux with the bulk---depends on internal dynamics and on how the brane
+observer is operationally defined.
+
+Accordingly, we separate model ingredients into two classes:
+
+\begin{enumerate}
+  \item \textbf{Derived invariants (handled in previous sections).}
+  These are the coefficients fixed without additional closure assumptions and are summarized in
+  Table~\ref{tab:exec_results}.
+  \item \textbf{Response coefficients (kept symbolic here).}
+  These encode internal compliance, relaxation, and open-system exchange. They are well-defined in
+  the unified 4D model, but they require an explicit response protocol (or an explicit reduction
+  regime) to compute. This section defines them and records the minimal derivation program.
+\end{enumerate}
+
+\subsection{Breathing/volume-work response and the coefficient \texorpdfstring{$\kappa_{\rm PV}$}{kappaPV}}
+\label{sec:undetermined:kappaPV}
+
+In the orbital-sector bookkeeping used earlier in the series, the 1PN precession parameter can be
+organized as a sum of inertial contributions, schematically
+\begin{equation}
+  \beta_{\rm 1PN}
+  \;=\;
+  \kappa_{\rho} \;+\; \kappa_{\rm add} \;+\; \kappa_{\rm PV}\,,
+  \label{eq:beta_decomp}
+\end{equation}
+where $\kappa_{\rho}$ captures the rest-mass normalization, $\kappa_{\rm add}$ is the (exterior-flow)
+added-mass coefficient derived in Sec.~\ref{sec:added_mass}, and $\kappa_{\rm PV}$ parameterizes
+additional inertia associated with internal work when the defect geometry responds to an external
+environment (e.g.\ a background potential/density gradient).
+
+\paragraph{Why $\kappa_{\rm PV}$ is not fixed by exterior geometry alone.}
+Unlike $\kappa_{\rm add}$, which is determined by an exterior potential-flow problem with fixed
+geometry, $\kappa_{\rm PV}$ depends on how the defect's internal state shifts when the environment
+changes. In the unified 4D model the defect has reduced geometry degrees of freedom
+\begin{equation}
+  q^a(t)\equiv (a(t),L(t))\,,
+\end{equation}
+and its total energy functional (for a declared field-content scenario) takes the generic form
+\begin{equation}
+  H_{\rm tot}[\psi,A;\,q^a;\,\Xi]
+  \;=\;
+  H_{\rm fluid}[\psi;\,q^a]
+  \;+\;
+  H_{\rm wave}[A;\,q^a]
+  \;+\;
+  E_{\rm geom}(q^a)
+  \;+\;
+  H_{\rm aux}[\psi,A;\,\Xi]\,,
+  \label{eq:Htot_generic}
+\end{equation}
+where $\Xi$ denotes external control parameters (e.g.\ background density/enthalpy, imposed drive,
+reservoir couplings, etc.). The key point is that $\kappa_{\rm PV}$ depends on how $q^a$ responds to $\Xi$.
+
+\paragraph{Energy-derived closure and forces.}
+The model supplies an unambiguous definition of generalized forces:
+\begin{equation}
+  F_a(t)\equiv -\frac{\partial H_{\rm tot}}{\partial q^a}\,.
+  \label{eq:Fa_def}
+\end{equation}
+The baseline equilibrium closure is
+\begin{equation}
+  \frac{\partial H_{\rm tot}}{\partial q^a}=0
+  \qquad (q^a=a,L)\,,
+  \label{eq:equilibrium_closure}
+\end{equation}
+and an optional dynamic closure (useful for stability and finite-rate response) is
+\begin{equation}
+  M_{ab}\,\ddot q^b + C_{ab}\,\dot q^b
+  \;=\;
+  -\frac{\partial H_{\rm tot}}{\partial q^a}\,,
+  \label{eq:dynamic_wall_law}
+\end{equation}
+with symmetric $M_{ab}$ and $C_{ab}$ kept symbolic.
+
+\paragraph{A generic linear-response formula (adiabatic elimination).}
+To isolate the \emph{response} contribution, introduce a small external perturbation parameter
+$\epsilon$ that encodes the environmental change relevant to the orbital sector. For example, one may
+take $\epsilon\propto \Phi/c^2$ where $\Phi$ is the slowly varying brane potential evaluated at the
+defect center, or equivalently a slow variation in background enthalpy/density.
+
+Expand about an equilibrium $(q_0^a,\psi_0,A_0)$ at $\epsilon=0$. The geometry-only part of the expansion
+can be organized as
+\begin{equation}
+  H_{\rm tot}(q,\epsilon)
+  \;=\;
+  H_0
+  \;+\;
+  H_{\epsilon}\,\epsilon
+  \;+\;
+  \frac12 H_{\epsilon\epsilon}\,\epsilon^2
+  \;+\;
+  \frac12\,K_{ab}\,\delta q^a\delta q^b
+  \;+\;
+  f_a\,\delta q^a\,\epsilon
+  \;+\;\cdots,
+  \label{eq:H_expand}
+\end{equation}
+where $\delta q^a=q^a-q_0^a$, the stiffness matrix is
+\begin{equation}
+  K_{ab}\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial q^b}\right|_0,
+\end{equation}
+and the mixed coupling vector is
+\begin{equation}
+  f_a\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial \epsilon}\right|_0.
+\end{equation}
+In the adiabatic regime (geometry relaxes quickly compared to orbital timescales), the equilibrium
+shift satisfies
+\begin{equation}
+  \delta q^a_{\rm ad} = -(K^{-1})^{ab}\,f_b\,\epsilon + \mathcal O(\epsilon^2)\,.
+  \label{eq:dq_adiabatic}
+\end{equation}
+Substituting back yields an effective energy shift
+\begin{equation}
+  H_{\rm eff}(\epsilon)
+  \;=\;
+  H_0 + H_{\epsilon}\epsilon
+  +\frac12\left(H_{\epsilon\epsilon}-f_a(K^{-1})^{ab}f_b\right)\epsilon^2
+  +\cdots.
+  \label{eq:Heff_adiabatic}
+\end{equation}
+The response coefficient $\kappa_{\rm PV}$ is then identified by matching the $\epsilon$-dependence of
+$H_{\rm eff}$ (and its velocity-coupled extension when the defect is moving) to the orbital-sector 1PN
+effective Lagrangian used in earlier papers. Until that matching is performed under an explicitly
+declared choice of $\epsilon$ and constraint, $\kappa_{\rm PV}$ must remain symbolic.
+
+\paragraph{Dynamic response and frequency dependence.}
+If the geometry response is not adiabatic, one instead solves \eqref{eq:dynamic_wall_law} (linearized
+about equilibrium) to obtain a frequency-dependent compliance $\delta q^a(\omega)/\epsilon(\omega)$.
+In that case one should treat $\kappa_{\rm PV}$ as the low-frequency limit of a response function,
+\begin{equation}
+  \kappa_{\rm PV} \;\to\; \kappa_{\rm PV}(\omega),
+  \qquad
+  \kappa_{\rm PV}\equiv \lim_{\omega\to 0}\kappa_{\rm PV}(\omega),
+\end{equation}
+and explicitly state the regime in which the orbital dynamics probe the $\omega\to 0$ limit.
+
+\subsection{Open-system exchange and the effective mouth operator}
+\label{sec:undetermined:Zeff}
+
+Even at fixed geometry, the brane-observed defect is generically an \emph{open system} because the brane
+observables are defined by projection from a 4D continuity law. The exact projected continuity equation
+has the structure
+\begin{equation}
+  \partial_t\rho_{\rm brane} + \nabla\cdot \mathbf J_{\rm brane} = S_{\rho,{\rm brane}},
+  \label{eq:brane_cont_open}
+\end{equation}
+where $S_{\rho,{\rm brane}}$ is sourced entirely by bulk current components along the extra dimension
+(and by the projection weight). This means that ``leakage'' is not an add-on assumption; it is the
+mathematical channel by which brane conservation can fail.
+
+To characterize defect--brane coupling without imposing boundary conditions at a mouth, one introduces an
+\emph{operational} response operator defined by a drive/measure protocol in a near-mouth region. Let
+$u(\mathbf s,t)$ be an effort variable (chosen in this work as an enthalpy perturbation),
+let $j(\mathbf s,t)$ be the conjugate measured flux (choice declared explicitly), and let $\{P_i\}$ be a
+finite set of port basis functions on a measurement region $\Gamma$. Define port amplitudes
+\begin{equation}
+  u_i(t)=\int_{\Gamma}\overline{P_i(\mathbf s)}\,u(\mathbf s,t)\,d\mu,
+  \qquad
+  j_i(t)=\int_{\Gamma}\overline{P_i(\mathbf s)}\,j(\mathbf s,t)\,d\mu,
+  \label{eq:ports_def}
+\end{equation}
+and in frequency space define the effective response operator by
+\begin{equation}
+  j_i(\omega) = \sum_j Z^{\rm eff}_{ij}(\omega)\,u_j(\omega).
+  \label{eq:Zeff_def}
+\end{equation}
+Two distinct flux outputs are typically relevant:
+(i) a brane-side normal ``mouth flux'' through $\Gamma$, and
+(ii) a bulk-exchange ``leakage flux'' defined by integrating $J_w$ through monitor surfaces at $w=\pm W_{\rm cut}$.
+If both are physically active, the appropriate description is multi-output.
+
+\paragraph{Low-frequency locality gate.}
+A necessary condition for a local-in-time effective description is that $Z^{\rm eff}_{ij}(\omega)$ admit a
+controlled low-$\omega$ expansion away from resonances, e.g.
+\begin{equation}
+  Z^{\rm eff}_{ij}(\omega) \sim Z^{(0)}_{ij} + i\omega Z^{(1)}_{ij} + \omega^2 Z^{(2)}_{ij} + \cdots,
+  \label{eq:Zeff_expansion}
+\end{equation}
+with coefficients that are stable under changes in numerical damping, monitoring surfaces, and port definitions.
+If instead $Z^{\rm eff}(\omega)$ is dominated by sharp resonances in the band relevant to orbital dynamics,
+then any local brane-effective closure fails and must be replaced by an explicitly nonlocal (memory) model.
+
+\subsection{Parameter calibration and remaining symbolic constants}
+\label{sec:undetermined:calibration}
+
+Several parameters in the unified 4D action control scales, localization thickness, and numerical/auxiliary
+implementation choices. The dimensionless invariants derived earlier do not require fixing these, but
+future predictive work (including quantitative stability and strong-field simulations) must either calibrate
+them or constrain them by consistency.
+
+We therefore keep the following quantities symbolic throughout:
+\begin{itemize}
+  \item \textbf{Scale/units parameters:} $m,\hbar$ and any global normalization used to map the dimensionless 4D solve to physical units.
+  \item \textbf{Gauge/EM parameters:} $q$, $\mu_0$, localization thickness $\lambda_{\rm conf}$, and gauge-fixing parameters (where applicable).
+  \item \textbf{Geometry-energy parameters:} $P_{\rm vac}$, $\sigma$ (and any higher-order geometric terms if included).
+  \item \textbf{Reservoir/dissipation parameters:} any chemical-potential coupling strength, sponge/PML parameters, and drive amplitudes/frequencies.
+  \item \textbf{Microphysics calibration factors:} any dimensionless geometric correction factors carried forward in the mapping from defect geometry
+        to effective mass/charge in the brane theory.
+\end{itemize}
+
+\subsection{Minimal future-work derivation program}
+\label{sec:undetermined:program}
+
+For concreteness, we record a minimal sequence of steps that would turn the symbolic response quantities
+into derived predictions \emph{within the same unified 4D model}:
+
+\begin{enumerate}
+  \item \textbf{Fix the perturbation variable $\epsilon$.}
+  Declare precisely how the external environment enters the 4D model for the regime of interest:
+  as a background enthalpy shift, a slow modulation of confinement parameters, or a coupling through brane observables.
+
+  \item \textbf{Compute equilibria and stiffness.}
+  For the chosen scenario and constraint (e.g.\ fixed $N$ or fixed effective mass),
+  solve the stationary field equations at a grid of $(a,L)$ and locate equilibrium points by \eqref{eq:equilibrium_closure}.
+  Evaluate the stiffness matrix $K_{ab}$ and the mixed couplings $f_a$ appearing in \eqref{eq:H_expand}.
+
+  \item \textbf{Choose response regime and extract compliance.}
+  Either:
+  (i) adopt the adiabatic elimination \eqref{eq:dq_adiabatic}, or
+  (ii) solve the driven linearized dynamics from \eqref{eq:dynamic_wall_law} to obtain frequency-dependent compliance.
+
+  \item \textbf{Match to the brane-effective 1PN description.}
+  Insert the resulting $H_{\rm eff}(\epsilon)$ (and its motion-corrected extension) into the brane-effective point-particle Lagrangian
+  and read off $\kappa_{\rm PV}$ and any higher multipole/tidal response coefficients.
+
+  \item \textbf{Extract $Z^{\rm eff}(\omega)$ and test locality.}
+  Freeze $\Gamma$, $\{P_i\}$, $(u,j)$ conventions and drive protocols, compute $Z^{\rm eff}(\omega)$, and check whether
+  a low-$\omega$ expansion \eqref{eq:Zeff_expansion} is stable. If it is not, record the resulting nonlocal closure explicitly.
+
+  \item \textbf{Consistency and invariance tests.}
+  Verify that extracted response quantities are insensitive (to the claimed order) to:
+  monitoring surface placement, projection-window choices, and numerical damping parameters; and that they do not introduce
+  spurious anisotropies beyond those already analyzed in Sec.~\ref{sec:preferred_frame}.
+\end{enumerate}
+
+This program is intentionally modular: it can be executed first in the no-gauge limit (fluid sector only),
+then repeated with gauge/localization enabled, and finally repeated in the wave-supported scenarios.
+% ============================================================
+
+% ======================================================================
+\section{Conclusions}
+\label{sec:conclusions}
+
+This follow-up paper has one purpose: to connect the unified 4D field model of Paper~VII to the concrete, paper-facing coefficients that were previously introduced as phenomenological inputs in the earlier parts of the series. The outcome is a short list of parameters that are no longer adjustable, together with a clear map of which quantities \emph{must} remain symbolic until additional dynamical closure (or additional controlled reductions) are supplied.
+
+\subsection*{What is fixed (and why this matters)}
+Within the assumptions stated explicitly in the preceding sections, four key results emerge as non-tunable:
+
+\begin{itemize}
+  \item \textbf{A topology/geometry discriminator for inertial coupling:}
+  the added-mass coefficient takes the classical value
+  \(
+    \kappa_{\rm add}=\tfrac12
+  \)
+  for a throat uniform along the extra dimension (a hyper-cylindrical topology),
+  while a counterfactual compact 4D ``bubble'' produces
+  \(
+    \kappa_{\rm add}=\tfrac13
+  \).
+  This is not a fit parameter; it is a geometric statement about the exterior potential-flow problem.
+
+  \item \textbf{Optical consistency fixes the equation-of-state exponent:}
+  matching the required weak-field refractive coefficient selects the stiff polytrope
+  \(
+    P(\rho)=K\rho^5
+  \),
+  i.e.\ \(n=5\), rather than leaving the stiffness as a free modeling choice.
+
+  \item \textbf{The 1PN interaction sector collapses to a unique point:}
+  the EIH/1PN matching admits a one-parameter family at the purely kinematic level, but the thermodynamic relation implied by the stiff EOS collapses that family to a single consistent choice,
+  yielding
+  \(
+    \alpha^2=\tfrac34
+  \)
+  and fixing the corresponding normalization constant \(K\) in the (dimensionless) convention used for the cross-paper matching.
+
+  \item \textbf{The special-relativistic $v^4$ coefficient is universal:}
+  once ``rest mass'' is identified with wave energy trapped by the defect, the boost-energy relation enforces the standard expansion
+  \(
+    E(v)=E_0\big(1+\tfrac12 v^2/c^2+\tfrac{3}{8}v^4/c^4+\cdots\big)
+  \),
+  so the \(v^4\) coefficient \(3/8\) requires no additional microphysical input.
+\end{itemize}
+
+Taken together, these results support a strong organizing claim: a substantial part of the earlier phenomenology is not a collection of independent knobs, but a set of linked consequences of (i) the defect topology, (ii) optical/weak-field consistency, and (iii) the thermodynamic structure implied by the stiff EOS.
+
+\subsection*{What is \emph{not} fixed (and how to proceed honestly)}
+Not every quantity introduced in earlier work can be derived from the unified 4D equations without further closure. In particular, any coefficient that represents a \emph{response} of the internal throat configuration to external conditions (e.g.\ ``breathing'' under gradients, time-dependent forcing, or multi-body environments) cannot be declared ``derived'' until the response problem is posed and solved within a specified regime.
+
+Accordingly:
+\begin{itemize}
+  \item All such response coefficients are left symbolic in this paper.
+  \item We have identified the minimal additional ingredients needed to compute them (explicit stabilizing energy functional, response regime, linearized response matrix, and matching to the reduced effective point-particle description), and we have separated these requirements from the already-derived geometric and thermodynamic constants.
+\end{itemize}
+
+This division is not merely rhetorical. It is the line between statements that can be made purely from kinematics/topology/thermodynamics, and statements that genuinely depend on dynamical throat microphysics.
+
+\subsection*{Lorentz symmetry, preferred frame, and operational observables}
+A unified medium description naturally raises a ``preferred frame'' concern. The resolution advanced here is operational: the quantities that function as clocks and rulers in the effective 3D description are themselves built from wave-supported structures. If all operational measurement standards are composed of the same excitations whose dynamics define the effective signal speed, then the observable kinematics can realize Lorentz symmetry even when the underlying description is written in a distinguished bulk frame.
+
+In this paper we have \emph{not} assumed Lorentz symmetry; rather, we have shown where it enters and what must be checked: the universality of wave dispersion at low amplitude, the internal consistency of boost-energy relations for wave-supported defects, and the reduction from the 4D equations to 3D operational observables. A complete treatment remains a target for future work, but the present results already constrain what any ``preferred-frame'' signal could look like (it must appear through higher-order corrections, imperfect localization/leakage channels, or explicit symmetry-breaking in the drive/reservoir sector).
+
+\subsection*{Immediate next steps enabled by this paper}
+The results above are sufficient to begin the next stage of the program with a cleaner accounting of what is already fixed and what remains to be derived. The most direct next deliverables are:
+
+\begin{enumerate}
+  \item \textbf{Action-level brane reduction for the gauge sector:}
+  carry out the \(w\)-integration under a controlled ansatz to obtain the effective 3+1 Maxwell form and identify the effective coupling constants.
+
+  \item \textbf{Minimal two-mode \(w\)-truncation:}
+  project the 4D matter equation onto the lowest transverse modes to obtain a closed leading brane equation plus explicit, parameterized leakage/mixing terms.
+
+  \item \textbf{Controlled ``Poisson-sector'' statement:}
+  present the longitudinal/quasi-static reduction as a regime claim with explicit correction channels (leakage, stress terms from projection, quantum-pressure contributions, and transverse/gauge sectors), not as a forced identity.
+
+  \item \textbf{Response-coefficient program:}
+  specify the stabilizing internal energy and compute linear response of the geometry degrees of freedom, yielding symbolic expressions that can later be evaluated once a particular stabilization mechanism is committed.
+\end{enumerate}
+
+\noindent
+With these pieces in place, subsequent papers can address multi-defect interactions and genuinely predictive dynamics in the same ``no hidden tuning'' spirit as the constants derived here.
+
+\subsection*{Closing perspective}
+Paper~VII established the unified 4D dynamical arena. The present follow-up isolates the cross-paper constants that are fixed by that arena and draws a bright line around those that require additional closure. This is the correct foundation for future work: it makes clear which results are geometric and thermodynamic necessities, and which are dynamical predictions to be extracted next from the same underlying model.
+
+% ======================================================================
+% Appendices
+% ======================================================================
+\appendix
+
+% -------------------------------------------------------------------------
+% Appendix: Notation and conventions
+% (Place after \appendix in the main manuscript.)
+% -------------------------------------------------------------------------
+\section{Notation and conventions}
+\label{app:notation}
+
+\subsection{Coordinates, indices, and basic operators}
+
+\paragraph{Bulk (4D space + time).}
+We work on a flat bulk with coordinates
+\begin{equation}
+  (t,\mathbf X) \equiv (t,x,y,z,w),\qquad \mathbf X\in\mathbb R^4.
+\end{equation}
+We denote the ordinary 3D brane coordinates by
+\begin{equation}
+  \mathbf x \equiv (x,y,z),\qquad \mathbf x\in\mathbb R^3.
+\end{equation}
+
+\paragraph{Indices.}
+Unless otherwise stated, repeated indices are summed (Einstein convention).
+\begin{itemize}
+  \item Bulk spacetime indices: $M,N,\ldots \in \{0,x,y,z,w\}$ with $0\equiv t$.
+  \item Bulk spatial indices: $i,j,\ldots \in \{x,y,z,w\}$.
+  \item Brane spacetime indices: $\mu,\nu,\ldots \in \{0,x,y,z\}$.
+  \item Brane spatial indices: $a,b,\ldots \in \{x,y,z\}$.
+\end{itemize}
+
+\paragraph{Metric and sign conventions (gauge sector).}
+When writing the bulk Maxwell sector in index form we use the mostly-plus flat metric
+\begin{equation}
+  \eta_{MN} = \mathrm{diag}(-1,+1,+1,+1,+1),
+\end{equation}
+and raise/lower indices with $\eta_{MN}$.
+
+\paragraph{Differential operators.}
+Bulk spatial gradient and Laplacian:
+\begin{equation}
+  \nabla_4 \equiv (\partial_x,\partial_y,\partial_z,\partial_w),
+  \qquad
+  \nabla_4^2 \equiv \partial_x^2+\partial_y^2+\partial_z^2+\partial_w^2.
+\end{equation}
+Brane (3D) operators:
+\begin{equation}
+  \nabla \equiv \nabla_3 \equiv (\partial_x,\partial_y,\partial_z),
+  \qquad
+  \nabla^2 \equiv \partial_x^2+\partial_y^2+\partial_z^2.
+\end{equation}
+
+\paragraph{Radial coordinates.}
+We use
+\begin{equation}
+  r \equiv |\mathbf x| = \sqrt{x^2+y^2+z^2},
+  \qquad
+  R \equiv |\mathbf X| = \sqrt{x^2+y^2+z^2+w^2},
+\end{equation}
+when spherical symmetry in $\mathbf x$ or $\mathbf X$ is invoked.
+
+\paragraph{Complex conjugation and real/imaginary parts.}
+An overbar denotes complex conjugation, e.g.\ $\bar\psi$.
+We use $\Re(\cdot)$ and $\Im(\cdot)$ for real and imaginary parts.
+
+\subsection{Fields, densities, and parameters}
+
+\paragraph{Matter field.}
+The bulk matter field is a complex order parameter
+\begin{equation}
+  \psi(\mathbf X,t)\in\mathbb C,
+  \qquad
+  \rho(\mathbf X,t)\equiv |\psi(\mathbf X,t)|^2.
+\end{equation}
+The Madelung representation is
+\begin{equation}
+  \psi = \sqrt{\rho}\,e^{i\theta},
+\end{equation}
+defining a phase $\theta(\mathbf X,t)$.
+
+\paragraph{Geometry degrees of freedom.}
+The throat geometry is parameterized by reduced collective coordinates
+\begin{equation}
+  a(t)>0 \quad\text{(radius)},\qquad L(t)>0 \quad\text{(length)},
+\end{equation}
+which enter the bulk dynamics through the confinement potential $V_{\rm conf}(\mathbf X;a,L)$
+and a separate geometry energy functional $E_{\rm geom}(a,L)$.
+
+\paragraph{Constants and ``knobs.''}
+We keep the following as symbolic parameters unless explicitly fixed:
+\begin{equation}
+  m,\ \hbar,\ q,\ K,\ \mu_0,\ \lambda_{\rm conf},\ \omega_w,\ \sigma,\ P_{\rm vac},
+  \ \text{etc.}
+\end{equation}
+We keep the speed of light $c$ explicit whenever relativistic comparisons are made.
+
+\subsection{Equation of state and thermodynamic ladder}
+
+We use a barotropic closure with density $\rho=|\psi|^2$ and pressure
+\begin{equation}
+  P(\rho)=K\rho^5.
+\end{equation}
+Associated thermodynamic functions used in the hydrodynamic form are
+\begin{equation}
+  U(\rho)=\frac{K}{4}\rho^5,\qquad
+  h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K}{4}\rho^4,\qquad
+  c_s^2(\rho)\equiv \frac{dP}{d\rho}=5K\rho^4.
+\end{equation}
+A brane ``effort'' variable (used in port definitions) is the enthalpy perturbation
+\begin{equation}
+  u \equiv \delta h(\rho_{\rm brane})
+  \approx h'(\rho_{\rm brane,0})\,\delta\rho_{\rm brane}
+  = 5K\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
+\end{equation}
+
+\subsection{Gauge sector: potentials, field strength, and minimal coupling}
+
+\paragraph{Gauge field and field strength.}
+The bulk gauge potential is $A_M(\mathbf X,t)$ with field strength
+\begin{equation}
+  F_{MN} \equiv \partial_M A_N - \partial_N A_M.
+\end{equation}
+Electric-like and magnetic-like components are defined by
+\begin{equation}
+  E_i \equiv -\partial_t A_i - \partial_i A_0,
+  \qquad
+  B_{ij} \equiv \partial_i A_j - \partial_j A_i \quad (i,j\in\{x,y,z,w\}).
+\end{equation}
+On the brane, the usual 3D magnetic pseudovector is obtained from $B_{ab}$ in the standard way.
+
+\paragraph{Minimal coupling.}
+The gauge-covariant derivatives acting on $\psi$ are
+\begin{equation}
+  D_t \equiv \partial_t + \frac{i q}{\hbar}A_0,
+  \qquad
+  D_i \equiv \partial_i - \frac{i q}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
+\end{equation}
+
+\paragraph{Gauge-localized Maxwell sector.}
+When a localization profile is used, it appears as a kinetic prefactor $Z(w)$ in the Maxwell Lagrangian,
+\begin{equation}
+  \mathcal L_{\rm EM} = -\frac{1}{4\mu_0}\,Z(w)\,F_{MN}F^{MN}.
+\end{equation}
+
+\paragraph{Neutrality convention (background subtraction).}
+When charge density is required, we use a neutralizing background of the form
+\begin{equation}
+  J^0(\mathbf X,t)=q\big(|\psi(\mathbf X,t)|^2-\rho_0\big),
+\end{equation}
+with $\rho_0$ a reference background density.
+
+\subsection{Currents, velocities, and the hydrodynamic dictionary}
+
+\paragraph{Bulk mass/number current.}
+We use the gauge-covariant mass/number current
+\begin{equation}
+  J^i_{\rm mass}(\mathbf X,t) \equiv \frac{\hbar}{m}\,\Im\!\big(\bar\psi\,D^i\psi\big),
+  \qquad i\in\{x,y,z,w\}.
+\end{equation}
+(When the gauge sector is absent, $D_i\to \partial_i$.)
+
+\paragraph{Continuity equation.}
+The bulk density obeys
+\begin{equation}
+  \partial_t \rho + \partial_i(\rho v^i)=0,
+\end{equation}
+with velocity components defined below.
+
+\paragraph{Gauge-covariant superfluid velocity.}
+In Madelung variables, the bulk velocity is
+\begin{equation}
+  v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{q}{\hbar}A_i\right).
+\end{equation}
+
+\paragraph{Quantum pressure potential.}
+The quantum pressure term is written using
+\begin{equation}
+  Q(\rho)\equiv -\frac{\hbar^2}{2m}\,\frac{\nabla_4^2\sqrt{\rho}}{\sqrt{\rho}}.
+\end{equation}
+
+\paragraph{Notation for scalar potentials (to avoid overload).}
+Throughout, $\psi$ denotes the \emph{complex} matter field. Any \emph{real} scalar velocity potential used
+for a longitudinal (irrotational) decomposition on the brane is denoted $\varphi$ (or $\phi_3$),
+so that $\mathbf v_L = \nabla \varphi$. The EM scalar potential is $A_0$.
+
+\subsection{Brane projection and brane observables}
+
+\paragraph{Brane and projection weight.}
+The brane is operationally the neighborhood of $w=0$. Brane observables are defined by a weighted projection
+\begin{equation}
+  \mathcal P_W[f](\mathbf x,t) \equiv \int_{-\infty}^{\infty} W(w)\,f(\mathbf x,w,t)\,dw,
+\end{equation}
+with a nonnegative weight $W(w)$ concentrated near $w=0$ (often taken as a ground-state weight
+$W=|\chi_0(w)|^2$). In computations one may use a finite window $|w|\le W_{\rm proj}$ and (optionally) renormalize
+$W$ over that window.
+
+\paragraph{Projected density and current.}
+The projected (brane-observed) density and current are
+\begin{equation}
+  \rho_{\rm brane}(\mathbf x,t) \equiv \mathcal P_W[\rho](\mathbf x,t),
+  \qquad
+  \mathbf J_{\rm brane}(\mathbf x,t) \equiv \mathcal P_W[\mathbf J_{xyz}](\mathbf x,t),
+\end{equation}
+where $\mathbf J_{xyz}$ denotes the $(x,y,z)$ components of the bulk current.
+
+\paragraph{Brane velocity.}
+When $\rho_{\rm brane}>0$, the brane velocity is defined kinematically as
+\begin{equation}
+  \mathbf v_{\rm brane} \equiv \frac{\mathbf J_{\rm brane}}{\rho_{\rm brane}}.
+\end{equation}
+
+\paragraph{Leakage current.}
+We denote the bulk flow along $w$ by the $w$-current
+\begin{equation}
+  J_w(\mathbf X,t) \equiv \frac{\hbar}{2im}\Big(\bar\psi\,\partial_w\psi-\psi\,\partial_w\bar\psi\Big)
+\end{equation}
+(or its gauge-covariant analogue when needed). Integrated $J_w$ fluxes through $w=\pm W_{\rm cut}$ surfaces
+are used as diagnostics of bulk--brane exchange.
+
+\subsection{Ports and spherical harmonic bookkeeping}
+
+\paragraph{Measurement surface.}
+A brane measurement surface is a 2-sphere
+\begin{equation}
+  \Gamma:\quad r=r_{\rm port},\quad w=0,
+\end{equation}
+with outward normal $\hat n=\hat r$ and area element $d\mu=r_{\rm port}^2\sin\theta\,d\theta\,d\phi$.
+
+\paragraph{Modal basis on the port.}
+We expand port data in spherical harmonics $Y_{\ell m}(\theta,\phi)$ and write $P_{\ell m}=Y_{\ell m}$.
+Given an effort field $u(\mathbf s,t)$ and a normal flux $j(\mathbf s,t)$ on $\Gamma$, the modal amplitudes are
+\begin{equation}
+  u_{\ell m}(t)=\int_\Gamma \overline{Y_{\ell m}(\mathbf s)}\,u(\mathbf s,t)\,d\mu,
+  \qquad
+  j_{\ell m}(t)=\int_\Gamma \overline{Y_{\ell m}(\mathbf s)}\,j(\mathbf s,t)\,d\mu,
+\end{equation}
+with $j(\mathbf s,t)\equiv \mathbf J_{\rm brane}(\mathbf s,t)\cdot \hat n$.
+
+\subsection{Perturbation and expansion notation}
+
+We use $\delta$ for small fractional perturbations (e.g.\ $\rho=\rho_0(1+\delta)$) and
+$\mathcal O(\delta^2)$ for higher-order remainders.
+For post-Newtonian expansions we treat $v/c$ and $|\Phi|/c^2$ as small parameters and keep terms to the
+order stated in the text.
+
+\subsection{Averaging and reference subtraction}
+
+Angle brackets $\langle\cdot\rangle$ denote a spatial average over the relevant domain (e.g.\ a periodic box),
+or an average over a specified region when stated.
+When fitting power-law falloffs of potentials, we explicitly allow additive constants and use a reference-subtracted
+quantity (e.g.\ $\Delta\varphi=\varphi-\varphi_{\rm ref}$), consistent with the fact that potentials are defined
+only up to an additive constant.
+
+% --------------------------------------------------------------------
+\section{Full variational derivations}
+\label{app:variational}
+% --------------------------------------------------------------------
+% This appendix records the action-level (variational) derivations for the
+% unified 4D matter+gauge+geometry system used throughout the paper.
+% Open-system elements (drive, damping, reservoirs, absorbing layers) are
+% appended phenomenologically and are not obtained from the conservative action.
+
+\subsection{Fields, coordinates, and index conventions}
+We work on bulk coordinates
+\begin{align}
+X^M \equiv (t,x,y,z,w), \qquad \mathbf{X}\equiv(x,y,z,w),
+\end{align}
+with spatial indices $i,j\in\{x,y,z,w\}$ and spacetime indices $M,N\in\{0,x,y,z,w\}$
+(where $0\equiv t$).  The bulk gradient and Laplacian are
+\begin{align}
+\nabla_4 \equiv (\partial_x,\partial_y,\partial_z,\partial_w),\qquad
+\nabla_4^2 \equiv \partial_x^2+\partial_y^2+\partial_z^2+\partial_w^2.
+\end{align}
+The matter field is a complex order parameter $\psi(\mathbf{X},t)\in\mathbb{C}$ with
+\begin{align}
+\rho(\mathbf{X},t) \equiv |\psi|^2.
+\end{align}
+The gauge field is a bulk $(4{+}1)$-dimensional potential $A_M(\mathbf{X},t)$ with
+field strength $F_{MN}=\partial_M A_N-\partial_N A_M$.
+
+\subsection{Conservative action: matter, gauge, and geometry}
+We take the total conservative action in the form
+\begin{align}
+S \;=\; \int dt \,\Bigg[
+\int d^4X\,\Big(\mathcal{L}_\psi+\mathcal{L}_{\rm EM}\Big)\;-\;E_{\rm geom}(a,L)
+\;+\;\mathcal{L}_{a,L}^{\rm kin}
+\Bigg],
+\label{eq:total_action}
+\end{align}
+where $a(t)$ and $L(t)$ are reduced geometry degrees of freedom (DOFs) that enter
+\emph{only} through the confinement potential $V_{\rm conf}(\mathbf{X};a,L)$ and
+through $E_{\rm geom}(a,L)$, and where $\mathcal{L}_{a,L}^{\rm kin}$ is a minimal
+kinetic term for the DOFs:
+\begin{align}
+\mathcal{L}_{a,L}^{\rm kin} = \frac{1}{2}M_a \dot a^2 + \frac{1}{2}M_L \dot L^2.
+\label{eq:geom_kinetic}
+\end{align}
+Damping terms (e.g.\ $C_a\dot a$, $C_L\dot L$) are introduced later as Rayleigh
+dissipation and are \emph{not} part of the conservative action.
+
+\subsection{Matter sector: gauged GNLS and stiff equation of state}
+\subsubsection{Gauge-covariant derivatives}
+Minimal coupling is implemented by
+\begin{align}
+D_t \equiv \partial_t + \frac{i q}{\hbar}A_0, \qquad
+D_i \equiv \partial_i - \frac{i q}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
+\label{eq:cov_derivs}
+\end{align}
+
+\subsubsection{Matter Lagrangian density}
+A convenient Hermitian matter Lagrangian density is
+\begin{align}
+\mathcal{L}_\psi
+=
+\frac{i\hbar}{2}\Big(\psi^\ast D_t\psi - (D_t\psi)^\ast\psi\Big)
+-\frac{\hbar^2}{2m}\,(D_i\psi)^\ast (D_i\psi)
+- V_{\rm conf}(\mathbf{X};a,L)\,|\psi|^2
+- U(|\psi|^2),
+\label{eq:Lpsi}
+\end{align}
+where $U(\rho)$ is an internal-energy density that encodes the equation of state.
+For the stiff polytrope used in this work,
+\begin{align}
+P(\rho) = K\rho^5,
+\qquad
+U(\rho)=\frac{K}{4}\rho^5,
+\qquad
+h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K}{4}\rho^4,
+\label{eq:stiff_thermo_ladder}
+\end{align}
+and one checks the standard barotropic identity
+\begin{align}
+P(\rho)=\rho\,h(\rho)-U(\rho)=K\rho^5,
+\qquad
+c_s^2(\rho)=\frac{dP}{d\rho}=5K\rho^4.
+\end{align}
+
+\subsubsection{Variation with respect to $\psi^\ast$: the bulk GNLS equation}
+Varying $S$ with respect to $\psi^\ast$ and integrating by parts in the spatial
+term gives
+\begin{align}
+0=\frac{\delta S}{\delta \psi^\ast}
+\;\;\Longrightarrow\;\;
+i\hbar D_t\psi
+=
+\left[
+-\frac{\hbar^2}{2m}D_iD_i
++V_{\rm conf}(\mathbf{X};a,L)
++h(\rho)
+\right]\psi,
+\label{eq:gnls_gauged}
+\end{align}
+with $h(\rho)$ as in \eqref{eq:stiff_thermo_ladder}.  In the ungauged limit
+($A_M\to 0$), $D_t\to\partial_t$ and $D_i\to\partial_i$.
+
+\subsubsection{Noether current and exact continuity}
+Under a global phase transformation $\psi\mapsto e^{i\epsilon}\psi$, the action is
+invariant, yielding the conserved mass/number current
+\begin{align}
+J^i_{\rm mass}
+=\frac{\hbar}{m}\Im\!\big(\psi^\ast D^i\psi\big)
+=\frac{\hbar}{2im}\Big(\psi^\ast D^i\psi - (D^i\psi)^\ast\psi\Big),
+\label{eq:current_def}
+\end{align}
+and the exact continuity equation
+\begin{align}
+\partial_t\rho+\partial_i J^i_{\rm mass}=0,
+\qquad \rho=|\psi|^2.
+\label{eq:continuity_4d}
+\end{align}
+The corresponding charge current is $J^i_{\rm ch}=q\,J^i_{\rm mass}$.  In the main
+text we also employ a neutralizing background (``jellium'') when defining the
+charge density for Maxwell sourcing; this is a modeling choice and does not alter
+the variational derivation above.
+
+\subsection{Gauge sector: localized Maxwell equation from variation}
+\subsubsection{Localized Maxwell Lagrangian}
+We take a gauge-invariant Maxwell sector with a localization prefactor $Z(w)$:
+\begin{align}
+\mathcal{L}_{\rm EM}
+=
+-\frac{1}{4\mu_0}\,Z(w)\,F_{MN}F^{MN}
+-\frac{1}{2\xi\mu_0}\,(\partial_M A^M)^2
++ A_N J^N_{\rm ext},
+\label{eq:LEM}
+\end{align}
+where $\xi$ is a gauge-fixing parameter (Lorenz family), and $J^N_{\rm ext}$ is an
+optional external drive current (set to zero in conservative tests).  The factor
+$Z(w)$ is kept symbolic here; in implementations it may be chosen as a smooth,
+strongly localized profile.
+
+\subsubsection{Variation with respect to $A_N$: Maxwell with localization}
+Varying $S$ with respect to $A_N$ gives
+\begin{align}
+\partial_M\!\Big(Z(w)F^{MN}\Big)
++\frac{1}{\xi}\,\partial^N(\partial\cdot A)
+=
+\mu_0\Big(J^N_{\rm ch}+J^N_{\rm ext}\Big),
+\label{eq:maxwell_localized}
+\end{align}
+where $J^N_{\rm ch}$ is the matter source induced by minimal coupling, with
+spatial part $J^i_{\rm ch}=q\,J^i_{\rm mass}$ and (model-dependent) charge density
+$J^0_{\rm ch}$.  The localization is entirely captured by the single replacement
+$F^{MN}\mapsto Z(w)F^{MN}$ in the divergence.
+
+\subsection{Geometry DOFs and the force ledger}
+\subsubsection{Energy functionals}
+From \eqref{eq:Lpsi} one reads off the conservative matter Hamiltonian functional
+\begin{align}
+H_\psi[\psi;a,L]
+=
+\int d^4X\,
+\left[
+\frac{\hbar^2}{2m}(D_i\psi)^\ast(D_i\psi)
++V_{\rm conf}(\mathbf{X};a,L)\,|\psi|^2
++U(|\psi|^2)
+\right].
+\label{eq:Hpsi}
+\end{align}
+Similarly, $H_{\rm EM}[A]$ is the standard field energy corresponding to
+\eqref{eq:LEM} (with the $Z(w)$ prefactor), and $E_{\rm geom}(a,L)$ is the chosen
+geometric energy (kept symbolic in this appendix).  We define
+\begin{align}
+H_{\rm tot} \equiv H_\psi + H_{\rm EM} + E_{\rm geom}.
+\end{align}
+
+\subsubsection{Generalized forces from $\partial_{a,L}H_{\rm tot}$}
+Because geometry enters the matter sector only through $V_{\rm conf}(\mathbf{X};a,L)$,
+the matter contribution to the generalized forces is a Hellmann--Feynman identity:
+\begin{align}
+F_a^{(\psi)} \equiv -\frac{\partial H_\psi}{\partial a}
+=
+-\int d^4X\;\rho(\mathbf{X},t)\,\frac{\partial V_{\rm conf}}{\partial a}(\mathbf{X};a,L),
+\label{eq:Fa_HF}
+\\
+F_L^{(\psi)} \equiv -\frac{\partial H_\psi}{\partial L}
+=
+-\int d^4X\;\rho(\mathbf{X},t)\,\frac{\partial V_{\rm conf}}{\partial L}(\mathbf{X};a,L).
+\label{eq:FL_HF}
+\end{align}
+The full generalized forces are
+\begin{align}
+F_a = -\frac{\partial H_{\rm tot}}{\partial a},
+\qquad
+F_L = -\frac{\partial H_{\rm tot}}{\partial L}.
+\label{eq:geom_forces}
+\end{align}
+
+\subsubsection{Conservative wall dynamics from variation}
+Varying $S$ with respect to $a$ and $L$ (using \eqref{eq:geom_kinetic}) gives
+\begin{align}
+M_a \ddot a = F_a,
+\qquad
+M_L \ddot L = F_L.
+\label{eq:geom_ode_conservative}
+\end{align}
+In the main text we append dissipation and drive as needed:
+\begin{align}
+M_a \ddot a + C_a \dot a = F_a + (\text{drive}),
+\qquad
+M_L \ddot L + C_L \dot L = F_L + (\text{drive}),
+\label{eq:geom_ode_damped}
+\end{align}
+but \eqref{eq:geom_ode_damped} is no longer purely variational due to the damping.
+
+\subsection{Madelung transform and hydrodynamic form}
+Define the Madelung variables
+\begin{align}
+\psi=\sqrt{\rho}\,e^{i\theta}.
+\end{align}
+The gauge-invariant superfluid velocity is
+\begin{align}
+v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{q}{\hbar}A_i\right).
+\label{eq:vel_def}
+\end{align}
+Using \eqref{eq:continuity_4d} yields the exact $4$D continuity equation in
+hydrodynamic form:
+\begin{align}
+\partial_t\rho+\partial_i(\rho v_i)=0.
+\label{eq:continuity_hydro}
+\end{align}
+The real part of \eqref{eq:gnls_gauged} yields a Hamilton--Jacobi/Bernoulli relation
+\begin{align}
+\hbar\,\partial_t\theta + qA_0 + \frac{m}{2}v_iv_i + V_{\rm conf} + h(\rho) + Q(\rho)=0,
+\label{eq:HJ}
+\end{align}
+where the quantum potential is
+\begin{align}
+Q(\rho)\equiv -\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt{\rho}}{\sqrt{\rho}}.
+\label{eq:Q_def}
+\end{align}
+Taking $\partial_i$ of \eqref{eq:HJ} and using standard identities gives the Euler-like
+equation
+\begin{align}
+m(\partial_t+v_j\partial_j)v_i
+=
+q\Big(E_i+v_j B_{ij}\Big)
+-\partial_i\Big(V_{\rm conf}+h(\rho)+Q(\rho)\Big),
+\label{eq:euler_bulk}
+\end{align}
+with
+\begin{align}
+E_i = -\partial_t A_i-\partial_iA_0,
+\qquad
+B_{ij}=\partial_iA_j-\partial_jA_i.
+\end{align}
+A useful immediate corollary of \eqref{eq:vel_def} is the vorticity--field-strength
+identity
+\begin{align}
+\Omega_{ij}\equiv \partial_i v_j-\partial_j v_i = -\frac{q}{m}B_{ij}.
+\label{eq:vorticity_identity}
+\end{align}
+In particular, in the ungauged limit $A_i\to 0$ one has $\Omega_{ij}=0$ wherever $\theta$
+is single-valued.
+
+\subsection{Projected brane identities (derived from bulk conservation laws)}
+This subsection is not a new dynamical postulate: it is an algebraic consequence of
+\eqref{eq:continuity_4d} and the chosen projection map.
+
+\subsubsection{Projection operator}
+Define a weighted projection onto brane observables by
+\begin{align}
+\mathcal{P}_W[f](x,y,z,t) \equiv \int_{-W_{\rm proj}}^{W_{\rm proj}} W(w)\,f(x,y,z,w,t)\,dw,
+\qquad W(w)\ge 0,
+\label{eq:PW_def}
+\end{align}
+where $W(w)$ is a fixed weight (e.g.\ ground-state weighting) and $W_{\rm proj}$ is a
+finite projection window.
+
+Define
+\begin{align}
+\rho_{\rm brane} \equiv \mathcal{P}_W[\rho],
+\qquad
+\mathbf{J}_{\rm brane}\equiv \mathcal{P}_W[\mathbf{J}_{xyz}],
+\qquad
+J_{w}\equiv J^w_{\rm mass}.
+\label{eq:brane_defs}
+\end{align}
+
+\subsubsection{Projected continuity and leakage source term}
+Multiply the bulk continuity equation \eqref{eq:continuity_4d} by $W(w)$ and integrate
+over $w\in[-W_{\rm proj},W_{\rm proj}]$:
+\begin{align}
+\partial_t\rho_{\rm brane} + \nabla_3\cdot\mathbf{J}_{\rm brane} = S_{\rho,\rm brane},
+\label{eq:brane_continuity}
+\end{align}
+where $\nabla_3=(\partial_x,\partial_y,\partial_z)$ and the brane source term is the
+exact identity
+\begin{align}
+S_{\rho,\rm brane}
+=
+-\Big[ W(w)\,J_{w}\Big]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
++\int_{-W_{\rm proj}}^{W_{\rm proj}} W'(w)\,J_{w}\,dw.
+\label{eq:leakage_source}
+\end{align}
+Thus, departures from $3$D conservation on the brane arise entirely from bulk flux in
+the $w$-direction and from weight-gradient coupling.
+
+\subsubsection{Projected momentum flux form and the extra-stress sector}
+Let $J_i$ denote the bulk mass current components.  Define the brane momentum flux
+tensor (for $i,j\in\{x,y,z\}$)
+\begin{align}
+\Pi_{ij}^{\rm brane} \equiv \mathcal{P}_W\!\left[\frac{J_iJ_j}{\rho}\right].
+\label{eq:Pi_def}
+\end{align}
+A corresponding brane momentum balance takes the schematic conservative form
+\begin{align}
+\partial_t J_i^{\rm brane} + \partial_j \Pi_{ij}^{\rm brane}
+= F^{\rm brane}_i + S^{\rm brane}_{J_i},
+\label{eq:brane_momentum_balance}
+\end{align}
+where $F^{\rm brane}_i$ denotes projected body forces (from confinement/enthalpy/quantum
+pressure, and from Lorentz forces when gauged), while $S^{\rm brane}_{J_i}$ is the exact
+open-system exchange sourced by $w$-flux of momentum:
+\begin{align}
+S^{\rm brane}_{J_i}
+=
+-\Bigg[W(w)\,\frac{J_iJ_w}{\rho}\Bigg]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
++\int_{-W_{\rm proj}}^{W_{\rm proj}} W'(w)\,\frac{J_iJ_w}{\rho}\,dw.
+\label{eq:momentum_exchange}
+\end{align}
+Defining the brane velocity $\mathbf{v}_{\rm brane}\equiv \mathbf{J}_{\rm brane}/\rho_{\rm brane}$,
+one may isolate the ``extra stress'' (unresolved $w$-structure) as
+\begin{align}
+R_{ij} \equiv \Pi_{ij}^{\rm brane} - \rho_{\rm brane} v^{\rm brane}_i v^{\rm brane}_j.
+\label{eq:Rij_def}
+\end{align}
+If the bulk flow is effectively $w$-separable (single $w$-mode), then $\Pi_{ij}^{\rm brane}\approx
+\rho_{\rm brane} v^{\rm brane}_i v^{\rm brane}_j$ and $R_{ij}\approx 0$; otherwise $R_{ij}$ is a
+controlled diagnostic of extra brane physics induced by projection.
+
+\subsection{Linearized longitudinal reduction (corollary)}
+For completeness, we record the standard linearized bridge used in the controlled
+reductions.  Around a uniform brane state $(\rho_{\rm brane},\mathbf{v}_{\rm brane})\approx (\rho_0,\mathbf{0})$,
+assume the brane flow is predominantly longitudinal $\mathbf{v}_{\rm brane}\approx \nabla \phi_3$ and define
+the effort variable $u\equiv \delta h(\rho_{\rm brane})\approx h'(\rho_0)\,\delta\rho_{\rm brane}$ with
+$h'(\rho_0)=5K\rho_0^3$.  Then a minimal acoustic closure yields
+\begin{align}
+\partial_t \delta\rho_{\rm brane} + \rho_0 \nabla_3^2 \phi_3 &= S_{\rho,\rm brane},
+\\
+\partial_t \phi_3 + \frac{1}{m}u &= 0,
+\qquad u = h'(\rho_0)\,\delta\rho_{\rm brane}.
+\end{align}
+Eliminating $\delta\rho_{\rm brane}$ gives a forced wave equation for $\phi_3$,
+\begin{align}
+\partial_t^2 \phi_3 - \frac{c_{s,0}^2}{m}\,\nabla_3^2 \phi_3
+= -\frac{c_{s,0}^2}{m\rho_0}\,S_{\rho,\rm brane},
+\qquad c_{s,0}^2=5K\rho_0^4,
+\label{eq:forced_wave_phi}
+\end{align}
+whose quasi-static limit is the Poisson-type candidate
+\begin{align}
+\rho_0 \nabla_3^2 \phi_3 \approx S_{\rho,\rm brane}.
+\label{eq:poisson_candidate_static}
+\end{align}
+Equation \eqref{eq:poisson_candidate_static} is therefore a \emph{regime statement}:
+it is not imposed as a fundamental law, but arises when the longitudinal sector is
+dominant and time dependence is slow on the relevant scales.
+
+\section{Projection identities and leakage source terms}
+\label{app:projection_leakage}
+
+This appendix collects exact identities that follow from projecting a
+$4$D conserved field onto brane observables. The results require no
+quasi-static assumption and do not assume that the brane is closed: in general,
+projection produces an \emph{open-system} brane theory with explicit source terms.
+
+\subsection{Projection operator and conventions}
+\label{app:projection_operator}
+
+Let $\mathbf{X}=(\mathbf{x},w)$ with $\mathbf{x}\in\mathbb{R}^3$.
+We define a weighted brane projection of any bulk field $f(\mathbf{x},w,t)$ by
+\begin{equation}
+\mathcal{P}_W[f](\mathbf{x},t)
+\;\equiv\;
+\int_{-W_{\rm proj}}^{W_{\rm proj}} W(w)\, f(\mathbf{x},w,t)\,dw,
+\label{eq:PW_def}
+\end{equation}
+where $W(w)\ge 0$ is a chosen weight (e.g. a ground-state weight), and
+$W_{\rm proj}$ is a finite projection half-width.
+
+\paragraph{Normalization (optional).}
+If desired, define $\mathcal{N}_W\equiv \int_{-W_{\rm proj}}^{W_{\rm proj}}W(w)\,dw$ and
+$\widetilde W(w)=W(w)/\mathcal{N}_W$.
+All identities below remain valid with $W\to \widetilde W$ (both sides scale together).
+
+\subsection{Exact projected continuity and leakage source}
+\label{app:projected_continuity}
+
+Assume the bulk has an exact continuity equation
+\begin{equation}
+\partial_t\rho(\mathbf{x},w,t) + \nabla_4\cdot \mathbf{J}(\mathbf{x},w,t)=0,
+\qquad
+\nabla_4=(\nabla_3,\partial_w),
+\label{eq:bulk_continuity}
+\end{equation}
+with $\mathbf{J}=(\mathbf{J}_3,J_w)$ and $\nabla_3=(\partial_x,\partial_y,\partial_z)$.
+
+Define brane observables
+\begin{equation}
+\rho_{\rm brane}(\mathbf{x},t)\equiv \mathcal{P}_W[\rho],
+\qquad
+\mathbf{J}_{\rm brane}(\mathbf{x},t)\equiv \mathcal{P}_W[\mathbf{J}_3].
+\label{eq:brane_rho_J_def}
+\end{equation}
+Multiplying \eqref{eq:bulk_continuity} by $W(w)$ and integrating over
+$w\in[-W_{\rm proj},W_{\rm proj}]$ gives the \emph{exact} projected continuity law
+\begin{equation}
+\boxed{
+\partial_t\rho_{\rm brane} + \nabla_3\cdot \mathbf{J}_{\rm brane}
+=
+S_{\rho,{\rm brane}}.
+}
+\label{eq:proj_cont_exact}
+\end{equation}
+The source term $S_{\rho,{\rm brane}}$ is \emph{purely} the contribution of $w$-transport,
+and splits cleanly into a boundary-flux term and a weight-gradient term:
+\begin{align}
+\boxed{
+S_{\rho,{\rm brane}}
+=
+-\Big[ W(w)\,J_w(\mathbf{x},w,t)\Big]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
++
+\int_{-W_{\rm proj}}^{W_{\rm proj}} \big(\partial_w W(w)\big)\,J_w(\mathbf{x},w,t)\,dw.
+}
+\label{eq:Srho_exact}
+\end{align}
+
+\paragraph{Interpretation.}
+Equation \eqref{eq:proj_cont_exact} shows that brane density is conserved
+\emph{only if} $S_{\rho,{\rm brane}}=0$. This occurs, for example, if
+(i) $J_w\simeq 0$ on the support of $W$ (effective localization/closure),
+and (ii) $WJ_w$ vanishes at the projection boundary (or $W_{\rm proj}\to\infty$
+with sufficient decay).
+
+\subsection{Kinematic identities for brane velocity, divergence, and vorticity}
+\label{app:brane_kinematics}
+
+Define the brane-observed velocity (when $\rho_{\rm brane}>0$) by
+\begin{equation}
+\mathbf{v}_{\rm brane}\equiv \frac{\mathbf{J}_{\rm brane}}{\rho_{\rm brane}}.
+\label{eq:vbrane_def}
+\end{equation}
+Then the following are \emph{identities} (no dynamics assumed):
+\begin{align}
+\nabla_3\cdot \mathbf{v}_{\rm brane}
+&=
+\frac{\nabla_3\cdot \mathbf{J}_{\rm brane}}{\rho_{\rm brane}}
+-
+\frac{\mathbf{J}_{\rm brane}\cdot \nabla_3\rho_{\rm brane}}{\rho_{\rm brane}^2}
+\label{eq:divv_kinematic_1}
+\\[3pt]
+&=
+\frac{S_{\rho,{\rm brane}}-\partial_t\rho_{\rm brane}}{\rho_{\rm brane}}
+-
+\frac{\mathbf{J}_{\rm brane}\cdot \nabla_3\rho_{\rm brane}}{\rho_{\rm brane}^2},
+\label{eq:divv_kinematic_2}
+\end{align}
+where \eqref{eq:divv_kinematic_2} uses \eqref{eq:proj_cont_exact}.
+
+Similarly, the brane vorticity $\boldsymbol{\omega}_{\rm brane}\equiv \nabla_3\times \mathbf{v}_{\rm brane}$
+obeys the exact identity
+\begin{equation}
+\boldsymbol{\omega}_{\rm brane}
+=
+\frac{\nabla_3\times \mathbf{J}_{\rm brane}}{\rho_{\rm brane}}
+-
+\frac{\nabla_3\rho_{\rm brane}\times \mathbf{J}_{\rm brane}}{\rho_{\rm brane}^2}.
+\label{eq:curlv_kinematic}
+\end{equation}
+
+\subsection{Projected momentum balance and momentum-leakage sources}
+\label{app:projected_momentum}
+
+To display the \emph{structure} of momentum leakage without committing to a particular
+stress decomposition, write the bulk momentum balance for the (3D) current components
+$J_i$ ($i\in\{x,y,z\}$) abstractly in flux form:
+\begin{equation}
+\partial_t J_i + \partial_j \Pi_{ij} + \partial_w \Pi_{iw}
+=
+F_i,
+\qquad (i,j\in\{x,y,z\}),
+\label{eq:bulk_momentum_flux_form}
+\end{equation}
+where:
+\begin{itemize}
+\item $\Pi_{ij}$ is the bulk flux of $i$-momentum through the $x^j$ direction,
+\item $\Pi_{iw}$ is the bulk flux of $i$-momentum through the $w$ direction,
+\item $F_i$ collects all bulk force densities (e.g.\ confinement/enthalpy/quantum forces,
+and, if present, Lorentz-type forces).
+\end{itemize}
+
+Projecting \eqref{eq:bulk_momentum_flux_form} with $\mathcal{P}_W$ yields the exact brane momentum balance
+\begin{equation}
+\boxed{
+\partial_t J_{i,{\rm brane}} + \partial_j \Pi^{\rm brane}_{ij}
+=
+F_{i,{\rm brane}} + S_{J_i,{\rm brane}},
+}
+\label{eq:brane_momentum_exact}
+\end{equation}
+with definitions
+\begin{equation}
+J_{i,{\rm brane}}\equiv \mathcal{P}_W[J_i],
+\qquad
+\Pi^{\rm brane}_{ij}\equiv \mathcal{P}_W[\Pi_{ij}],
+\qquad
+F_{i,{\rm brane}}\equiv \mathcal{P}_W[F_i].
+\label{eq:brane_momentum_defs}
+\end{equation}
+The momentum-leakage source is again a boundary-plus-weight-gradient term:
+\begin{equation}
+\boxed{
+S_{J_i,{\rm brane}}
+=
+-\Big[ W(w)\,\Pi_{iw}(\mathbf{x},w,t)\Big]_{w=-W_{\rm proj}}^{w=+W_{\rm proj}}
++
+\int_{-W_{\rm proj}}^{W_{\rm proj}} \big(\partial_w W(w)\big)\,\Pi_{iw}(\mathbf{x},w,t)\,dw.
+}
+\label{eq:SJ_exact_general}
+\end{equation}
+
+\paragraph{A convenient convective specialization (optional).}
+In the Madelung/Euler interpretation, one often has a convective contribution
+$\Pi_{iw}\supset \rho\,v_i v_w$, which can be written purely in current variables as
+\begin{equation}
+\Pi_{iw}^{\rm(conv)}=\rho\,v_i v_w=\frac{J_i J_w}{\rho}.
+\label{eq:Pi_iw_convective}
+\end{equation}
+If one chooses to separate forces (enthalpy, confinement, quantum terms) into $F_i$
+rather than into $\Pi_{ij}$, then \eqref{eq:Pi_iw_convective} is a minimal explicit
+representative of the $w$-transport contribution to \eqref{eq:SJ_exact_general}.
+Any additional $w$-transport pieces in $\Pi_{iw}$ can be kept symbolic and simply
+carried in \eqref{eq:SJ_exact_general}.
+
+\subsection{Extra brane stress from projection non-commutativity}
+\label{app:extra_stress}
+
+Even if the bulk admits a single-fluid description, brane projection does not
+generally commute with nonlinear products. Define
+\begin{equation}
+\Pi^{\rm brane}_{ij} = \mathcal{P}_W[\Pi_{ij}],
+\qquad
+v_{i,{\rm brane}}=\frac{J_{i,{\rm brane}}}{\rho_{\rm brane}},
+\label{eq:Pi_brane_and_v}
+\end{equation}
+and introduce the \emph{projection-induced extra stress} (Reynolds-type stress)
+\begin{equation}
+\boxed{
+R_{ij}
+\;\equiv\;
+\Pi^{\rm brane}_{ij} - \rho_{\rm brane}\, v_{i,{\rm brane}} v_{j,{\rm brane}}.
+}
+\label{eq:Rij_def}
+\end{equation}
+By construction, $R_{ij}\equiv 0$ in a strict separable/single-mode regime where
+$v_i(\mathbf{x},w,t)$ is effectively $w$-independent over the support of $W$.
+In general, $R_{ij}$ captures unresolved multi-mode $w$-structure and is a
+clean place for ``extra sector'' effects to enter the brane dynamics.
+
+\subsection{Acceleration form and the open-system correction $-\mathbf{v}\,S_\rho$}
+\label{app:euler_form_open_system}
+
+Equations \eqref{eq:proj_cont_exact} and \eqref{eq:brane_momentum_exact} can be rearranged
+into an exact acceleration-form brane equation. Write \eqref{eq:brane_momentum_exact} as
+\begin{equation}
+\partial_t(\rho_{\rm brane}\mathbf{v}_{\rm brane}) + \nabla_3\cdot(\rho_{\rm brane}\mathbf{v}_{\rm brane}\mathbf{v}_{\rm brane})
+=
+\mathbf{F}_{\rm brane} - \nabla_3\cdot \mathbf{R} + \mathbf{S}_{\mathbf{J}},
+\label{eq:momentum_with_R}
+\end{equation}
+where $\mathbf{R}$ is the tensor with components $R_{ij}$, and $\mathbf{S}_{\mathbf{J}}$ has components $S_{J_i,{\rm brane}}$.
+
+Using the open-system continuity \eqref{eq:proj_cont_exact} to eliminate $\partial_t\rho_{\rm brane}$
+yields the exact Euler/acceleration form
+\begin{equation}
+\boxed{
+\rho_{\rm brane}\,(\partial_t+\mathbf{v}_{\rm brane}\cdot\nabla_3)\mathbf{v}_{\rm brane}
+=
+\mathbf{F}_{\rm brane}
+-\nabla_3\cdot \mathbf{R}
+-\mathbf{v}_{\rm brane}\,S_{\rho,{\rm brane}}
++\mathbf{S}_{\mathbf{J}}.
+}
+\label{eq:brane_euler_open_system}
+\end{equation}
+The term $-\mathbf{v}_{\rm brane}\,S_{\rho,{\rm brane}}$ is the characteristic correction
+in an open system: when mass is injected/removed from the brane, momentum balance differs
+from the closed-system form even if $\mathbf{R}=0$.
+
+\subsection{Operational leakage monitors}
+\label{app:leakage_monitors}
+
+For diagnostics, it is often useful to monitor $w$-flux through one or more
+cut surfaces $w=\pm W_{\rm cut}$ (not necessarily equal to $W_{\rm proj}$).
+Define the bulk $w$-current $J_w(\mathbf{x},w,t)$ and the integrated outward leakage
+\begin{equation}
+j_{\rm leak}(t)
+=
+\int_{\Omega_{\mathbf{x}}}
+\left.\,J_w(\mathbf{x},w,t)\,\right|_{w=+W_{\rm cut}}\,d^3x
+\;+\;
+\int_{\Omega_{\mathbf{x}}}
+\left.\,(-J_w(\mathbf{x},w,t))\,\right|_{w=-W_{\rm cut}}\,d^3x,
+\label{eq:j_leak_def}
+\end{equation}
+where $\Omega_{\mathbf{x}}$ is the brane spatial domain used for monitoring.
+This quantity (together with $S_{\rho,{\rm brane}}$) provides an operational measure of
+bulk--brane exchange.
+
+\subsection{Leakage-free and single-mode limits (for intuition)}
+\label{app:leakage_free_limits}
+
+Two limits are particularly useful for interpretation:
+\begin{enumerate}
+\item \textbf{Effectively closed brane:} if $J_w\simeq 0$ within the support of $W$
+and boundary terms vanish, then $S_{\rho,{\rm brane}}\simeq 0$ and
+$S_{J_i,{\rm brane}}\simeq 0$, yielding a closed brane continuity and momentum system.
+\item \textbf{Single-mode/separable regime:} if $\psi(\mathbf{x},w,t)\approx \psi_0(\mathbf{x},t)\chi(w)$
+with $w$-independent $\mathbf{x}$-phase gradient over the support of $W$, then the factor
+$\int W|\chi|^2dw$ cancels out of $\mathbf{v}_{\rm brane}=\mathbf{J}_{\rm brane}/\rho_{\rm brane}$,
+and one typically finds $R_{ij}\approx 0$ (no projection-induced extra stress).
+\end{enumerate}
+Deviations from these limits quantify (rather than assume away) the size of the leakage
+and extra-stress sectors.
+
+% ============================================================
+\section{Details of the added-mass computations}
+\label{app:added_mass}
+% ============================================================
+
+\subsection{Added mass in ideal potential flow: definition and strategy}
+We work in the standard idealization of an inviscid, incompressible, irrotational
+ambient medium in the far field, so that the exterior velocity field admits a
+potential,
+\begin{align}
+\mathbf v = \nabla \phi,
+\qquad
+\nabla \cdot \mathbf v = 0
+\quad\Longrightarrow\quad
+\nabla^2 \phi = 0
+\qquad
+(\text{in the exterior domain}).
+\end{align}
+The \emph{added mass} is defined by equating the kinetic energy of the induced
+exterior flow to a quadratic form in the body velocity.  For a rigid translation
+with constant velocity $\mathbf U$,
+\begin{align}
+T_{\rm flow}
+\equiv
+\frac{\rho_0}{2}\int_{\mathcal D_{\rm ext}} |\mathbf v|^2\,dV
+=
+\frac{1}{2}\,m_{\rm add}\,|\mathbf U|^2,
+\qquad
+m_{\rm add}\ge 0.
+\end{align}
+It is convenient to express $m_{\rm add}$ in terms of the displaced ambient mass
+$\rho_0 V_{\rm disp}$ and a dimensionless coefficient $\kappa_{\rm add}$:
+\begin{align}
+m_{\rm add} \equiv \kappa_{\rm add}\,\rho_0\,V_{\rm disp}.
+\end{align}
+In the main text we use $\kappa_{\rm add}$ as the geometric inertia contribution
+entering the 1PN bookkeeping.  This appendix shows (i) why a $w$-uniform throat
+has $\kappa_{\rm add}=1/2$ and (ii) why a counterfactual 4D bubble gives
+$\kappa_{\rm add}=1/3$, thus acting as a topology/geometry discriminator.
+(For the model’s ambient/geometry notation and the meaning of the extra coordinate $w$,
+see the unified 4D setup summarized in Paper VII.):contentReference[oaicite:0]{index=0}
+
+\subsection{General $d$-dimensional reference result: translating $d$-ball}
+\label{app:added_mass:d_ball}
+This subsection is a compact derivation of the closed-form coefficient for a
+translating $d$-dimensional ball (a hypersphere) in $\mathbb R^d$.
+The result will be used immediately for the 4D ``bubble'' counterfactual.
+
+Let $d\ge 3$ be the number of spatial dimensions, let $r=|\mathbf x|$, and let the
+body be a $d$-ball $B^d(a)$ of radius $a$, translating with constant velocity
+$\mathbf U$ through otherwise quiescent fluid.  The exterior potential solves
+\begin{align}
+\nabla_d^2 \phi = 0 \quad (r>a),
+\qquad
+\phi\to 0\ \text{as}\ r\to\infty,
+\qquad
+\partial_n \phi \big|_{r=a} = \mathbf U\cdot \hat{\mathbf n}.
+\end{align}
+By symmetry, the relevant harmonic is the $\ell=1$ mode.  Writing
+$\mathbf U\cdot \hat{\mathbf n} = U\cos\theta$ with $\cos\theta = \hat{\mathbf U}\cdot \hat{\mathbf x}$,
+a standard separated ansatz for the decaying $\ell=1$ exterior solution is
+\begin{align}
+\phi(r,\theta) = C\,U\,\frac{\cos\theta}{r^{d-1}}.
+\end{align}
+Imposing the no-penetration condition at $r=a$,
+\begin{align}
+\partial_r \phi(r,\theta)
+=
+-(d-1)\,C\,U\,\frac{\cos\theta}{r^{d}}
+\ \Longrightarrow\
+\partial_r \phi\big|_{r=a} = U\cos\theta
+\ \Longrightarrow\
+C = -\frac{a^{d}}{d-1}.
+\end{align}
+Hence the translating-$d$-ball potential can be written compactly as
+\begin{align}
+\boxed{
+\phi_{B^d}(r,\theta)
+=
+-\frac{a^{d}}{d-1}\,U\,\frac{\cos\theta}{r^{d-1}}
+}
+\qquad
+(r\ge a).
+\end{align}
+
+To compute the kinetic energy, use Green’s identity (with a decaying $\phi$ so
+the far-field surface term vanishes):
+\begin{align}
+\int_{\mathcal D_{\rm ext}} |\nabla \phi|^2\,dV
+=
+\oint_{r=a} \phi\,\partial_n \phi\,dS.
+\end{align}
+On $r=a$ we have $\partial_n\phi=\partial_r\phi=U\cos\theta$ and
+\begin{align}
+\phi(a,\theta) = -\frac{a}{d-1}\,U\cos\theta.
+\end{align}
+Up to the conventional outward-normal sign for the \emph{exterior} domain, the
+energy is therefore proportional to $\int \cos^2\theta\,dS$.  By isotropy on the
+unit $(d-1)$-sphere, the average of $\cos^2\theta$ is $1/d$, so
+\begin{align}
+\int_{S^{d-1}(a)} \cos^2\theta\,dS = \frac{1}{d}\,S_{d-1}\,a^{d-1},
+\end{align}
+where $S_{d-1}$ is the surface area of the unit $(d-1)$-sphere.  Using
+$V_d a^d = (S_{d-1}a^{d-1})\,(a/d)$ (i.e. $S_{d-1}=dV_d$ for the unit sphere),
+one finds
+\begin{align}
+T_{\rm flow}
+=
+\frac{\rho_0}{2}\int |\nabla\phi|^2\,dV
+=
+\frac{1}{2}\left(\frac{\rho_0 V_d a^d}{d-1}\right)U^2.
+\end{align}
+Thus
+\begin{align}
+\boxed{
+m_{\rm add}(B^d)
+=
+\frac{1}{d-1}\,\rho_0\,V_{\rm disp}(B^d),
+\qquad
+\kappa_{\rm add}(B^d)=\frac{1}{d-1}.
+}
+\end{align}
+
+\subsection{Uniform throat $S^2\times I_w$: reduction to the 3D sphere problem}
+\label{app:added_mass:throat}
+We now apply the preceding ideas to the throat geometry used in this series:
+a corridor uniform along the extra coordinate $w$ with a spherical cross-section
+of radius $a$ (topology $S^2\times I_w$; in the idealized limit $I_w=\mathbb R$).:contentReference[oaicite:1]{index=1}
+
+\paragraph{Exterior flow model.}
+Consider a throat segment of finite $w$-extent $L$ that translates with velocity
+$\mathbf U$ \emph{transverse} to $w$ (i.e. $\mathbf U\perp \hat{\mathbf w}$).
+In the exterior far field we assume the induced flow is potential and (to leading
+order in the $w$-uniform idealization) independent of $w$:
+\begin{align}
+\partial_w \phi = 0,
+\qquad
+v_w=0.
+\end{align}
+Then the 4D Laplace equation reduces to a 3D Laplace equation in the brane
+coordinates:
+\begin{align}
+\nabla_4^2 \phi
+=
+(\nabla_3^2 + \partial_w^2)\phi
+=
+\nabla_3^2 \phi
+=
+0.
+\end{align}
+Thus each $w$-slice sees the \emph{same} exterior potential-flow problem as a
+3D sphere of radius $a$ translating in an otherwise quiescent fluid.
+
+\paragraph{3D reference potential and energy.}
+Specializing the $d$-ball formula of \S\ref{app:added_mass:d_ball} to $d=3$ gives
+\begin{align}
+\phi_{B^3}(r,\theta)
+=
+-\frac{a^{3}}{2}\,U\,\frac{\cos\theta}{r^{2}},
+\qquad
+(r\ge a).
+\end{align}
+The corresponding added mass for a 3D sphere is the classical result
+\begin{align}
+m_{\rm add}(B^3)
+=
+\frac{1}{2}\,\rho_0\,V_3(a),
+\qquad
+V_3(a)=\frac{4\pi}{3}a^3,
+\qquad
+\kappa_{\rm add}(B^3)=\frac{1}{2}.
+\end{align}
+(Equivalently: $T_{\rm flow}=\tfrac{1}{4}\rho_0 V_3 U^2$.)  This is the standard
+``added mass = half the displaced mass'' statement used in the earlier papers’
+hydrodynamic interpretation of the 1PN parameter.:contentReference[oaicite:2]{index=2}
+
+\paragraph{Lift to the $w$-uniform throat.}
+For the $w$-uniform throat segment of length $L$, the induced field is replicated
+across $w$, so the total kinetic energy is simply the 3D energy times $L$:
+\begin{align}
+T_{\rm flow}^{\rm throat}
+=
+\frac{\rho_0}{2}\int_{-L/2}^{L/2}\!\!dw
+\int_{\mathbb R^3\setminus B^3(a)}
+|\nabla_3\phi_{B^3}|^2\,d^3x
+=
+L\,T_{\rm flow}^{(3D)}.
+\end{align}
+Therefore the added mass of the throat segment is
+\begin{align}
+m_{\rm add}^{\rm throat}
+=
+L\,m_{\rm add}(B^3)
+=
+\frac{1}{2}\,\rho_0\,\Big(V_3(a)\,L\Big)
+=
+\kappa_{\rm add}^{\rm throat}\,\rho_0\,V_{\rm disp}^{\rm throat},
+\end{align}
+with displaced 4D volume $V_{\rm disp}^{\rm throat}=V_3(a)\,L$ and
+\begin{align}
+\boxed{
+\kappa_{\rm add}^{\rm throat}=\frac{1}{2}.
+}
+\end{align}
+Crucially, the coefficient is independent of $L$ (the $w$-extent cancels in the
+ratio), so it is a \emph{pure geometry/topology} statement of the uniform-throat
+limit.:contentReference[oaicite:3]{index=3}
+
+\subsection{Counterfactual geometry: a 4D bubble $B^4(a)$}
+\label{app:added_mass:bubble}
+If, counterfactually, the defect were a compact 4D bubble (a 4-ball) rather than
+a $w$-uniform corridor, then the relevant exterior potential is genuinely 4D and
+the added-mass coefficient changes.
+
+Using \S\ref{app:added_mass:d_ball} with $d=4$,
+\begin{align}
+\boxed{
+\kappa_{\rm add}(B^4)=\frac{1}{3}.
+}
+\end{align}
+Equivalently,
+\begin{align}
+m_{\rm add}(B^4)
+=
+\frac{1}{3}\,\rho_0\,V_4(a),
+\qquad
+V_4(a)=\frac{\pi^2}{2}a^4.
+\end{align}
+This difference between $1/2$ (uniform throat) and $1/3$ (4D bubble) is the
+``topology discriminator'' emphasized in the main text.:contentReference[oaicite:4]{index=4}
+
+\subsection{Assumptions and expected corrections}
+The computation above is intentionally an \emph{exterior-flow} idealization.
+It becomes exact in the limit where:
+
+\begin{enumerate}
+\item the far field is low-Mach and effectively incompressible,
+\item the exterior flow is irrotational (no vorticity shed to infinity),
+\item the defect is sufficiently smooth that a no-penetration condition is valid,
+\item the throat is approximately uniform in $w$ over the region that dominates the
+      exterior kinetic energy (so that $\partial_w\phi\approx 0$ in that domain).
+\end{enumerate}
+
+Departures from these conditions generate corrections (compressibility, radiation
+of vorticity, $w$-nonuniform structure, boundary-condition leakage, etc.), but the
+dimensionless coefficient $\kappa_{\rm add}$ remains a robust indicator of whether
+the exterior problem is effectively 3D (throat uniform in $w$) or genuinely 4D
+(compact bubble), which is the only claim needed for the argument in the body of
+the paper.:contentReference[oaicite:5]{index=5}
+
+% ============================================================
+\section{Details of the EIH matching algebra}
+\label{app:eih-matching-algebra}
+% ============================================================
+
+\subsection{EIH cross-velocity tensor structure (what is being matched)}
+Consider two bodies (defects) labeled \(A,B\) with positions \(\mathbf{x}_A,\mathbf{x}_B\),
+velocities \(\mathbf{v}_A,\mathbf{v}_B\), separation
+\(
+r_{AB}=|\mathbf{x}_A-\mathbf{x}_B|
+\),
+and unit separation vector
+\(
+\mathbf{n}_{AB}=(\mathbf{x}_A-\mathbf{x}_B)/r_{AB}.
+\)
+
+In the standard 1PN Einstein--Infeld--Hoffmann (EIH) two-body Lagrangian,
+the \emph{velocity cross-tensor} part can be written in the schematic form
+\begin{equation}
+L_{\mathrm{EIH}}^{(AB)} \supset
+\frac{G m_A m_B}{c^2 r_{AB}}
+\Big[
+C_\parallel^{\mathrm{(EIH)}}\,(\mathbf{v}_A\!\cdot\!\mathbf{v}_B)
++
+C_L^{\mathrm{(EIH)}}\,(\mathbf{v}_A\!\cdot\!\mathbf{n}_{AB})(\mathbf{v}_B\!\cdot\!\mathbf{n}_{AB})
+\Big],
+\label{eq:eih-cross-template}
+\end{equation}
+where we have factored out the universal prefactor \(G m_A m_B/(c^2 r_{AB})\)
+and defined the two dimensionless cross coefficients \(C_\parallel\) and \(C_L\).
+
+With the normalization convention used throughout this paper, the EIH targets are
+\begin{equation}
+C_\parallel^{\mathrm{(EIH)}}=-\frac{7}{2},
+\qquad
+C_L^{\mathrm{(EIH)}}=-\frac{1}{2}.
+\label{eq:eih-targets}
+\end{equation}
+(Other 1PN terms exist, including ``self'' \(v_A^2\), \(v_B^2\) pieces and static nonlinear
+terms; here we isolate only the cross-velocity tensor structure, since it is the part
+that fixes the wake-mixing parameters.)
+
+\subsection{Wake ansatz and the overlap-energy reduction}
+The vector sector in this model is obtained from the overlap energy of the
+velocity/wake fields sourced by moving defects. In Fourier space we decompose
+responses into transverse and longitudinal parts using the standard projectors
+\begin{equation}
+\mathcal{P}_L^{ij}(\mathbf{k}) = \frac{k^i k^j}{k^2},
+\qquad
+\mathcal{P}_T^{ij}(\mathbf{k}) = \delta^{ij} - \frac{k^i k^j}{k^2},
+\qquad k = |\mathbf{k}|.
+\label{eq:helmholtz-projectors}
+\end{equation}
+A convenient closed wake ansatz for the translational response of a moving defect is
+\begin{equation}
+\mathbf{u}(\mathbf{k};\mathbf{v}) =
+i\,\frac{K}{k}\,\mathcal{P}_T(\mathbf{k})\,\mathbf{v}
+\;+\;
+i\,\frac{K a_H}{k^2}\,(\mathbf{k}\times\mathbf{v})
+\;+\;
+i\,\frac{K\alpha}{k^3}\,\mathbf{k}\,(\mathbf{k}\cdot\mathbf{v}),
+\label{eq:wake-ansatz-k}
+\end{equation}
+where:
+\begin{itemize}
+\item \(K\) is an overall (dimensionless) coupling amplitude for the induced wake,
+\item \(\alpha\) weights the longitudinal (compressible) component,
+\item \(a_H\) weights a helical/transverse-rotational component.
+\end{itemize}
+Because the EIH cross-tensor match is parity-even, the final coefficients depend only on
+\(a_H^2\) (the sign of \(a_H\) does not enter at this order).
+
+The pair interaction energy is taken as the overlap integral
+\begin{equation}
+V_{\mathrm{vec}}^{(AB)}
+=
+\rho_0\int_{\mathbb{R}^3} d^3x\;
+\mathbf{u}_A(\mathbf{x})\cdot \mathbf{u}_B(\mathbf{x}),
+\label{eq:overlap-energy-x}
+\end{equation}
+or equivalently in Fourier variables
+\begin{equation}
+V_{\mathrm{vec}}^{(AB)}
+=
+\rho_0\int \frac{d^3k}{(2\pi)^3}\;
+\mathbf{u}_A(\mathbf{k})\cdot \mathbf{u}_B(-\mathbf{k})\;
+e^{i\mathbf{k}\cdot(\mathbf{x}_A-\mathbf{x}_B)}.
+\label{eq:overlap-energy-k}
+\end{equation}
+Evaluating the angular integrals (using isotropy) and the standard kernel
+\(\int d^3k\,e^{i\mathbf{k}\cdot\mathbf{r}}/k^2 \propto 1/r\),
+the overlap energy reduces to the EIH-like form
+\begin{equation}
+V_{\mathrm{vec}}^{(AB)}
+=
+\frac{G m_A m_B}{c^2 r_{AB}}
+\Big[
+C_\parallel(\alpha,a_H)\,(\mathbf{v}_A\!\cdot\!\mathbf{v}_B)
++
+C_L(\alpha,a_H)\,(\mathbf{v}_A\!\cdot\!\mathbf{n}_{AB})(\mathbf{v}_B\!\cdot\!\mathbf{n}_{AB})
++\cdots
+\Big],
+\label{eq:Vvec-template}
+\end{equation}
+with closed-form coefficients
+\begin{equation}
+C_\parallel(\alpha,a_H)=K\pi^2\bigl(-1+a_H^2-\alpha^2\bigr),
+\qquad
+C_L(\alpha,a_H)=K\pi^2\bigl(-1+a_H^2+\alpha^2\bigr).
+\label{eq:Cpar-CL-closed}
+\end{equation}
+
+\subsection{Solving the EIH constraints}
+Imposing the EIH targets \eqref{eq:eih-targets} on \eqref{eq:Cpar-CL-closed} gives the system
+\begin{align}
+K\pi^2\bigl(-1+a_H^2-\alpha^2\bigr) &= -\frac{7}{2},
+\label{eq:match-eq1}\\
+K\pi^2\bigl(-1+a_H^2+\alpha^2\bigr) &= -\frac{1}{2}.
+\label{eq:match-eq2}
+\end{align}
+Define the shorthand
+\begin{equation}
+X \equiv -1+a_H^2.
+\label{eq:def-X}
+\end{equation}
+Then \eqref{eq:match-eq1}--\eqref{eq:match-eq2} become
+\begin{align}
+K\pi^2(X-\alpha^2) &= -\frac{7}{2},
+\\
+K\pi^2(X+\alpha^2) &= -\frac{1}{2}.
+\end{align}
+Add the two equations:
+\begin{equation}
+2K\pi^2 X = -4
+\quad\Longrightarrow\quad
+K\pi^2 X = -2.
+\label{eq:sum-eq}
+\end{equation}
+Subtract the first from the second:
+\begin{equation}
+2K\pi^2 \alpha^2 = 3
+\quad\Longrightarrow\quad
+K\pi^2\alpha^2=\frac{3}{2}.
+\label{eq:diff-eq}
+\end{equation}
+Solving \eqref{eq:sum-eq}--\eqref{eq:diff-eq} yields the one-parameter family
+\begin{equation}
+\boxed{
+\alpha^2(a_H^2)=\frac{3}{4}\,(1-a_H^2),
+\qquad
+K(a_H^2)=\frac{2}{\pi^2(1-a_H^2)}.
+}
+\label{eq:family-solution}
+\end{equation}
+Two convenient invariants (often useful for cross-checks) are
+\begin{equation}
+\boxed{
+K(1-a_H^2)=\frac{2}{\pi^2},
+\qquad
+K\alpha^2=\frac{3}{2\pi^2}.
+}
+\label{eq:family-invariants}
+\end{equation}
+
+\paragraph{Physical domain.}
+If \(K\) is required positive and \(\alpha^2\ge 0\), then \eqref{eq:family-solution}
+implies
+\begin{equation}
+0\le a_H^2 < 1.
+\label{eq:aH-domain}
+\end{equation}
+(If a different sign convention for \(K\) is adopted elsewhere, the same algebra still
+goes through with the corresponding sign flips.)
+
+\subsection{Minimal parity-even solution (optional specialization)}
+A commonly used minimal choice is to set the helical parameter to zero,
+\begin{equation}
+a_H = 0,
+\end{equation}
+which collapses \eqref{eq:family-solution} to the unique values
+\begin{equation}
+\boxed{
+\alpha^2=\frac{3}{4},
+\qquad
+K=\frac{2}{\pi^2}.
+}
+\label{eq:minimal-solution}
+\end{equation}
+
+\paragraph{Remark (link to independent constraints).}
+If \(\alpha^2\) is fixed independently by a separate argument elsewhere in the paper,
+then \eqref{eq:family-solution} can be read in reverse as a constraint on \(a_H^2\).
+For example, if \(\alpha^2=3/4\) is obtained from an independent thermodynamic relation,
+then \eqref{eq:family-solution} forces \(a_H^2=0\) and recovers \eqref{eq:minimal-solution}.
+
+% ======================================================================
+\section{Standing-wave derivations for time dilation and length contraction}
+\label{app:standing_wave_SR}
+
+This appendix makes explicit the standing-wave arguments that underlie the
+special-relativistic kinematics used in the main text: time dilation, length
+contraction, and the associated $v^4$ kinetic correction. The purpose here is
+not to assume Lorentz symmetry as a postulate, but to show how it can arise
+\emph{operationally} when material clocks and rulers are themselves built from
+localized wave patterns supported by a massless mode of speed $c$.
+
+\subsection{Kinematic setup and a minimal wave model}
+\label{app:standing_wave_setup}
+
+We consider a localized object whose rest energy is the energy of a trapped
+(mode-locked) excitation with (approximately) linear dispersion
+\begin{equation}
+\omega = c\,|\mathbf k| ,
+\label{eq:app_dispersion}
+\end{equation}
+where $c$ is the characteristic propagation speed of the supporting mode
+(the same $c$ that appears in the relativistic bookkeeping in the main text).
+We work with two inertial descriptions:
+
+\begin{itemize}
+  \item a comoving frame $(t',x',y',z')$ in which the object is at rest, and
+  \item a lab frame $(t,x,y,z)$ in which the object moves at constant velocity
+    $v$ along the $+x$ direction.
+\end{itemize}
+
+Define the usual dimensionless parameters
+\begin{equation}
+\beta \equiv \frac{v}{c},
+\qquad
+\gamma \equiv \frac{1}{\sqrt{1-\beta^2}}.
+\label{eq:app_beta_gamma}
+\end{equation}
+
+The wave field can be represented locally by a phase
+\begin{equation}
+\phi(t,\mathbf x) = \omega t - \mathbf k\cdot \mathbf x,
+\label{eq:app_phase_def}
+\end{equation}
+so that ``ticks'' of a wave-based clock correspond to fixed increments
+$\Delta\phi = 2\pi N$ along the worldline of the object (or of some internal
+marker point).
+
+The standing-wave picture used in the main text can be expressed in the
+following minimal way:
+
+\begin{itemize}
+\item In the \emph{rest frame}, a trapped support mode has a characteristic
+frequency $\omega_0$ and an associated wavevector scale set by confinement.
+For concreteness, one may take $\omega_0 = c\,k_\perp$ with $k_\perp$ fixed by a
+transverse confinement length (e.g.\ $k_\perp\sim \pi/a$), but the derivations
+below only require that $\omega_0$ is a well-defined proper frequency of the
+internal mode.
+\item In the \emph{lab frame}, motion forces the trapped pattern to have a
+nonzero longitudinal wavevector component $k_x$ so that the internal wave
+pattern remains bound to the moving object (equivalently: the relevant group
+velocity matches the object's velocity).
+\end{itemize}
+
+The key technical point is that there are two distinct frequencies one can
+associate with the same trapped mode:
+
+\begin{enumerate}
+\item The lab-frame temporal frequency $\omega$ that appears in the energy
+$E=\hbar\omega$ (this increases with $\gamma$).
+\item The rate of phase advance \emph{along the object's worldline}
+(which sets the object's proper ``tick rate'' and decreases by $1/\gamma$).
+\end{enumerate}
+
+Both statements can be simultaneously true, and they are reconciled by a simple
+Doppler-cancellation identity shown next.
+
+\subsection{Time dilation from phase evolution along the worldline}
+\label{app:standing_wave_time_dilation}
+
+Assume the object moves rigidly with constant velocity $v$ along $x$ in the lab.
+A representative material marker point on the object follows the worldline
+\begin{equation}
+x(t)=v t,\qquad y(t)=\text{const},\qquad z(t)=\text{const}.
+\label{eq:app_worldline}
+\end{equation}
+Along this worldline, the phase \eqref{eq:app_phase_def} evolves as
+\begin{equation}
+\phi(t) = \omega t - k_x x(t) - k_y y - k_z z
+= \big(\omega - k_x v\big)\,t \;+\; \text{const}.
+\label{eq:app_phase_along_worldline}
+\end{equation}
+Therefore, the \emph{clock rate} (phase advance per unit lab time) is
+\begin{equation}
+\frac{d\phi}{dt} = \omega - k_x v.
+\label{eq:app_phase_rate_dt}
+\end{equation}
+
+Now impose the kinematic constraint used in the main text: the trapped mode is
+massless with dispersion \eqref{eq:app_dispersion}, and its wavevector acquires
+a longitudinal component such that the pattern is comoving with the object.
+A clean way to express this is to start from a purely transverse rest-frame
+wavevector (no longitudinal component in the comoving frame). Concretely, take
+in the comoving frame
+\begin{equation}
+k_x' = 0,\qquad \omega_0 = c\,k_\perp,\qquad k_y' = k_\perp,
+\label{eq:app_rest_frame_transverse_mode}
+\end{equation}
+with $k_\perp$ fixed by the confinement.
+
+In the lab frame, the corresponding lab-frame temporal frequency and induced
+longitudinal wavevector component are
+\begin{equation}
+\omega = \gamma\,\omega_0,
+\qquad
+k_x = \gamma\,\frac{v}{c^2}\,\omega_0
+= \gamma\,\beta\,\frac{\omega_0}{c},
+\label{eq:app_boosted_components}
+\end{equation}
+while the transverse component is unchanged ($k_y=k_\perp$) for a boost along
+$x$.
+
+Substituting \eqref{eq:app_boosted_components} into \eqref{eq:app_phase_rate_dt}
+gives the Doppler-cancellation:
+\begin{align}
+\frac{d\phi}{dt}
+&= \omega - k_x v
+= \gamma\omega_0 - \gamma\frac{v}{c^2}\omega_0\,v
+= \gamma\omega_0\left(1-\frac{v^2}{c^2}\right)
+\nonumber\\
+&= \gamma\omega_0(1-\beta^2)
+= \gamma\omega_0\left(\frac{1}{\gamma^2}\right)
+= \frac{\omega_0}{\gamma}.
+\label{eq:app_time_dilation_rate}
+\end{align}
+
+Thus, if the clock ``ticks'' when $\phi$ advances by a fixed amount
+$\Delta\phi$ (e.g.\ $2\pi$), then
+\begin{equation}
+\Delta\phi = \omega_0\,\Delta t' = \frac{\omega_0}{\gamma}\,\Delta t
+\quad\Rightarrow\quad
+\boxed{\;\Delta t = \gamma\,\Delta t'\;}
+\label{eq:app_time_dilation}
+\end{equation}
+which is the standard special-relativistic time dilation.
+
+\paragraph{Relation to the energy result.}
+From \eqref{eq:app_boosted_components}, the lab-frame energy of the trapped mode
+is
+\begin{equation}
+E(v)=\hbar\omega = \gamma\,\hbar\omega_0 \equiv \gamma E_0,
+\label{eq:app_energy_gamma}
+\end{equation}
+while the \emph{clock rate along the worldline} is reduced by $1/\gamma$,
+\eqref{eq:app_time_dilation_rate}. In short:
+\begin{equation}
+\text{energy scales as }\gamma,
+\qquad
+\text{tick rate scales as }1/\gamma.
+\label{eq:app_energy_vs_tick}
+\end{equation}
+These are complementary, not contradictory: they correspond to different
+contractions of the same phase function, evaluated either as a temporal
+frequency in the lab, or as a phase rate along the moving worldline.
+
+\subsection{Length contraction from moving resonators}
+\label{app:standing_wave_length_contraction}
+
+To obtain an operational \emph{length} standard from the same physics, consider
+a ``ruler element'' realized as a standing-wave resonator of rest length $L_0$
+aligned with the direction of motion ($x'$ axis). The simplest operational
+definition is: $L_0$ is the endpoint separation that supports an integer number
+of half-wavelengths in the comoving frame (a standard cavity condition).
+
+\subsubsection{Derivation via round-trip resonance plus time dilation}
+
+In the comoving frame, the fundamental round-trip time of a wave of speed $c$
+in a cavity of length $L_0$ is
+\begin{equation}
+T_0 = \frac{2L_0}{c}
+\label{eq:app_roundtrip_rest}
+\end{equation}
+(up to an integer mode factor that cancels below).
+
+In the lab frame, if the cavity has length $L$ (as measured by simultaneous lab
+events), then the forward and backward traversal times are
+\begin{equation}
+T_{\rightarrow}=\frac{L}{c-v},
+\qquad
+T_{\leftarrow}=\frac{L}{c+v},
+\qquad
+T \equiv T_{\rightarrow}+T_{\leftarrow}
+= \frac{2Lc}{c^2-v^2}
+= \frac{2L}{c}\,\gamma^2.
+\label{eq:app_roundtrip_lab}
+\end{equation}
+
+But the cavity is a material object built from wave-based degrees of freedom,
+so the time between its internal ``round-trip ticks'' must obey the time
+dilation already derived:
+\begin{equation}
+T = \gamma\,T_0 = \gamma\,\frac{2L_0}{c}.
+\label{eq:app_roundtrip_time_dilation}
+\end{equation}
+
+Equating \eqref{eq:app_roundtrip_lab} and \eqref{eq:app_roundtrip_time_dilation}
+yields
+\begin{equation}
+\frac{2L}{c}\gamma^2 = \gamma\,\frac{2L_0}{c}
+\quad\Rightarrow\quad
+\boxed{\;L = \frac{L_0}{\gamma}\;}
+\label{eq:app_length_contraction}
+\end{equation}
+which is the standard Lorentz--FitzGerald length contraction.
+
+\subsubsection{Equivalent phase-condition viewpoint}
+
+One may also state the same result as a phase-locking condition: if endpoints
+are defined by fixed phase markers (nodes, antinodes, or other locked features),
+then the spatial separation measured at a common lab time must adjust so that
+those phase markers remain consistent with the comoving standing-wave
+quantization. The round-trip derivation above is simply the most transparent
+operational form of that statement.
+
+\subsection{Operational Lorentz symmetry and preferred-frame remarks}
+\label{app:standing_wave_preferred_frame}
+
+The unified model is formulated with a distinguished background structure
+(e.g.\ an ambient medium, or a bulk/brane environment), so at the microscopic
+level one may worry about a ``preferred frame.'' The standing-wave derivations
+above show the limited but important sense in which such a preferred frame can
+become \emph{operationally invisible} to local experiments:
+
+\begin{itemize}
+\item If material clocks are internal wave patterns, their tick rates in the lab
+are slowed by $\gamma$ relative to their proper tick rates
+\eqref{eq:app_time_dilation}.
+\item If material rulers are wave-supported resonators, their lengths in the
+lab contract by $1/\gamma$ along the direction of motion
+\eqref{eq:app_length_contraction}.
+\end{itemize}
+
+Consequently, interferometric ``drift'' tests of the Michelson--Morley type
+built from such wave-based rods and clocks have their leading-order drift
+signal canceled in the usual way. For example, for an interferometer with equal
+proper arm lengths $L_0$:
+
+\begin{itemize}
+\item the transverse arm round-trip time in the lab is
+$T_\perp = 2L_0/(c\sqrt{1-\beta^2}) = 2\gamma L_0/c$,
+\item while the longitudinal arm, using $L=L_0/\gamma$, has
+$T_\parallel = (L/(c-v))+(L/(c+v)) = 2\gamma L_0/c$.
+\end{itemize}
+
+Thus $T_\perp=T_\parallel$ at this order, and no fringe shift is predicted from
+uniform motion alone.
+
+\paragraph{Scope and limitations.}
+The cancellation above is not a metaphysical claim that no preferred-frame
+effects can exist in the full theory. It is a concrete statement about the
+\emph{regime} where:
+\begin{enumerate}
+\item the relevant support excitations are effectively massless with
+$\omega=c|\mathbf k|$ (or sufficiently close to this over the mode bandwidth),
+\item the trapped pattern remains phase-locked (adiabatic, low-loss motion),
+\item additional open-system channels (e.g.\ leakage, drag, dispersion, or
+anisotropic confinement response) are small enough not to dominate the clock and
+ruler behavior.
+\end{enumerate}
+When these conditions fail, residual preferred-frame signatures can arise, and
+they should be parameterized by the same symbolic response coefficients and
+closure functions that remain unfixed elsewhere in this work.
+
+\subsection{The universal $v^4$ coefficient revisited}
+\label{app:standing_wave_v4}
+
+For completeness, we record the standard expansion of $\gamma$:
+\begin{equation}
+\gamma
+= \frac{1}{\sqrt{1-\beta^2}}
+= 1 + \frac{1}{2}\beta^2 + \frac{3}{8}\beta^4 + \mathcal O(\beta^6).
+\label{eq:app_gamma_series}
+\end{equation}
+If the object's rest energy is $E_0$ (identified with the trapped mode energy at
+rest), then \eqref{eq:app_energy_gamma} gives
+\begin{equation}
+E(v)
+= \gamma E_0
+= E_0 + \frac{1}{2}\left(\frac{E_0}{c^2}\right)v^2
++ \frac{3}{8}\left(\frac{E_0}{c^2}\right)\frac{v^4}{c^2}
++ \mathcal O\!\left(\frac{v^6}{c^6}\right),
+\label{eq:app_energy_series}
+\end{equation}
+so the coefficient of the $v^4$ correction is universally $3/8$, independent of
+the detailed confinement scale that sets $E_0$.
+
+% ======================================================================
+
+\end{document}

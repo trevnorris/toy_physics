@@ -1,0 +1,1649 @@
+\documentclass[11pt]{article}
+
+% ============================================================
+% Paper VIII: Maxwell from 4D (localized 5D Maxwell sector)
+% Skeleton LaTeX (to be filled section-by-section)
+% ============================================================
+
+% -----------------------------
+% Packages
+% -----------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% Optional utilities (uncomment if desired)
+% \usepackage{physics}      % \dv, \pdv, \qty, etc.
+% \usepackage{bm}           % bold math
+% \usepackage{enumitem}     % compact lists
+
+% -----------------------------
+% Hyperref
+% -----------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% -----------------------------
+% Macros / notation
+% -----------------------------
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\ee}{\mathrm e}
+
+\newcommand{\R}{\mathbb R}
+
+% Coordinates / vectors
+\newcommand{\X}{\mathbf X}   % bulk spatial (x,y,z,w)
+\newcommand{\x}{\mathbf x}   % brane spatial (x,y,z)
+
+% Fields
+\newcommand{\A}{A}
+\newcommand{\F}{F}
+\newcommand{\J}{J}
+\newcommand{\Z}{Z}
+
+% Profile parameter (Gaussian localization width)
+\newcommand{\lam}{\lambda}      % confinement width
+\newcommand{\Zint}{Z_{\rm int}} % \int Z(w) dw
+
+% Effective coupling
+\newcommand{\muo}{\mu_0}
+\newcommand{\mueff}{\mu_0^{\rm eff}}
+
+% Gauge-fixing parameter
+\newcommand{\xigf}{\xi}
+
+% Theorem environments (optional)
+\newtheorem{claim}{Claim}
+\newtheorem{remark}{Remark}
+
+% -----------------------------
+% Title metadata
+% -----------------------------
+\title{Maxwell from the Unified 4D Model:\\
+Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We derive brane-effective electromagnetism from a localized \(4+1\) Maxwell sector
+embedded in the unified toy model. The gauge field is a bulk potential \(A_M\)
+with kinetic term \(-Z(w)F_{MN}F^{MN}/(4\mu_0)\), where the transverse profile
+\(Z(w)\) localizes gauge dynamics near the brane at \(w=0\). Varying the action
+yields the localized Maxwell equations
+\(\partial_M(ZF^{MN})+\xi^{-1}\partial^N(\partial\!\cdot\!A)=\mu_0J^N\), the
+Bianchi identities, and an exact divergence consistency identity linking the
+gauge condition to current conservation. For brane-localized conserved sources,
+axial gauge, and a brane-dominant zero mode, integrating over \(w\) reduces the
+theory to standard \(3+1\) Maxwell with an effective coupling
+\(\mu_0^{\mathrm{eff}}=\mu_0/Z_{\mathrm{int}}\), where
+\(Z_{\mathrm{int}}=\int_{-\infty}^{\infty}Z(w)\,dw\). For a Gaussian profile
+\(Z(w)=e^{-w^2/\lambda^2}\), \(\mu_0^{\mathrm{eff}}=\mu_0/(\lambda\sqrt{\pi})\) and
+the transverse Sturm--Liouville problem yields a discrete KK tower with masses
+\(m_n^2=2n/\lambda^2\) and a brane parity selection rule. The resulting static
+brane potential is Coulomb plus Yukawa-suppressed corrections with a fixed
+coefficient pattern; the leading deviation scales as
+\(\tfrac12 e^{-2r/\lambda}\). For time-dependent sources, the brane-to-brane
+response depends only on the Lorentz scalar \(k^2\) (with the retarded
+prescription), ensuring brane Lorentz covariance; massive modes add causal tail
+terms inside the light cone. Finally, a minimally coupled brane matter model
+yields a conserved Noether current and an off-shell identity that supplies the
+Maxwell source consistency condition. All principal identities and reductions are
+backed by a compact Wolfram Language referee suite.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+In the unified toy model developed across the preceding papers, the vacuum is
+treated as a dynamical medium with a brane/bulk decomposition, and matter-like
+excitations are associated with localized defect structures. Paper~VII introduced
+a unified \(4+1\) (``5D'') formulation that cleanly separates \emph{exact} bulk
+field equations from \emph{controlled} brane-effective reductions. The present
+paper isolates and completes the electromagnetic sector of that framework: we
+show that standard \(3+1\) Maxwell theory on the brane arises as a controlled
+long-distance/low-frequency limit of a localized \(4+1\) Maxwell action, and we
+quantify the leading, falsifiable deviations when transverse excitations are
+relevant.
+
+Earlier in the series, electromagnetism was developed through an ``EM-from-flow''
+dictionary: with appropriate variable identifications, the homogeneous Maxwell
+equations can be realized as kinematic identities and the Lorentz-force structure
+can be motivated from a gauged phase-gradient (Madelung) description of matter.
+While that viewpoint is useful for building intuition and for organizing
+brane-observed fields, it leaves open a question that referees naturally insist
+upon: \emph{where do the inhomogeneous Maxwell equations and the correct
+propagator structure come from, without postulating them?} The purpose of this
+paper is to supply that missing dynamical step within the unified \(4+1\) model.
+
+The key ingredient is a genuine \(4+1\) gauge potential \(A_M\) with a localized
+Maxwell kinetic term,
+\[
+-\frac{Z(w)}{4\mu_0}F_{MN}F^{MN},
+\]
+where the nonnegative profile \(Z(w)\) confines the gauge dynamics near the brane
+at \(w=0\). For concreteness (and analytic control) we adopt a Gaussian profile
+\(Z(w)=\exp(-w^2/\lambda^2)\), but the logical structure applies to any profile
+with finite integral \(Z_{\rm int}=\int Z(w)\,dw\). We show:
+
+\begin{itemize}
+\item \textbf{Bulk dynamics (exact):} Varying the localized action yields the
+localized \(4+1\) Maxwell equations
+\(\partial_M(ZF^{MN})+(1/\xi)\partial^N(\partial\!\cdot\!A)=\mu_0 J^N\), together
+with exact Bianchi identities and a divergence consistency identity linking the
+gauge condition to current conservation.
+
+\item \textbf{Brane Maxwell limit (controlled):} For brane-localized sources,
+axial gauge, and a brane-dominant zero mode, integrating over the transverse
+direction produces standard \(3+1\) Maxwell theory with an effective coupling
+\[
+\mu_0^{\rm eff}=\frac{\mu_0}{Z_{\rm int}}
+\quad\Rightarrow\quad
+\mu_0^{\rm eff}=\frac{\mu_0}{\lambda\sqrt{\pi}}
+\ \ \text{for Gaussian } Z.
+\]
+The same integrated equation makes explicit the correction terms that appear when
+\(w\)-dependence (KK excitations) is not negligible.
+
+\item \textbf{KK corrections (derived, quantitative):} For Gaussian localization,
+the transverse Sturm--Liouville problem can be solved in closed form. The
+resulting discrete KK tower yields Yukawa-suppressed corrections to Coulomb's law
+with a fixed coefficient pattern; the leading correction scales as
+\(\tfrac12 e^{-2r/\lambda}\) relative to the Coulomb term.
+
+\item \textbf{Moving sources (covariant, causal):} The effective brane response is
+a function of the brane Lorentz scalar \(k^2\) (with the standard retarded
+prescription), implying brane Lorentz covariance for moving sources. Mode-by-mode
+retarded Green functions make the causal structure explicit: massive modes add
+tail-type response inside the light cone, while remaining fully causal.
+
+\item \textbf{Source consistency (derived, not assumed):} A minimally coupled
+brane matter model has a \(U(1)\) phase symmetry whose Noether current provides a
+conserved source. This directly supplies the conservation condition required by
+the Maxwell divergence identity, closing the logical loop between gauge symmetry,
+matter dynamics, and Maxwell consistency.
+\end{itemize}
+
+\paragraph{Exact vs controlled vs regime statements.}
+To keep the logical status of each step unambiguous, we adopt the following
+taxonomy throughout:
+(i) \emph{exact} statements are identities or Euler--Lagrange equations obtained
+directly from the localized action (e.g.\ Bianchi identities, the divergence
+identity);
+(ii) \emph{controlled} statements require explicit reduction assumptions (e.g.\
+axial gauge plus a brane-dominant zero mode); and
+(iii) \emph{regime} statements interpret the controlled limit in terms of
+observable scales (e.g.\ \(r\gg\lambda\), \(\omega\ll 2/\lambda\)) and summarize
+the size of corrections.
+
+\paragraph{Reproducibility and referee suite.}
+All core equalities and identities in this paper are accompanied by a surgical
+Wolfram Language verification suite that checks (a) the Euler--Lagrange equations
+component-by-component, (b) the Bianchi identities, (c) the divergence
+consistency identity, (d) the controlled brane reduction and the effective
+coupling \(\mu_0^{\rm eff}\), (e) the Gaussian KK spectrum and brane couplings,
+(f) the \(k^2\)-only dependence of the effective brane propagator, and (g) the
+matter Noether current and off-shell identity. A concise summary of these scripts
+and what each establishes is provided in \cref{app:wl_suite}.
+
+\paragraph{Roadmap.}
+\Cref{sec:conventions_action} fixes conventions and defines the localized action.
+\Cref{sec:eom_identities} derives the bulk Euler--Lagrange equations and the
+consistency identities. \Cref{sec:gauge_lorentz} records the gauge-variation
+structure and brane Lorentz covariance. \Cref{sec:brane_reduction} presents the
+controlled brane reduction and derives \(\mu_0^{\rm eff}\).
+\Cref{sec:kk_coulomb} solves the Gaussian KK problem and derives the Coulomb plus
+Yukawa corrections. \Cref{sec:moving_sources} extends the discussion to moving
+sources and retarded structure. \Cref{sec:matter_current} derives matter current
+conservation and links it to Maxwell consistency. Finally,
+\Cref{sec:discussion} summarizes the validity regime, leading deviations, and
+falsifiable tests.
+
+% ============================================================
+\section{Conventions and localized 5D Maxwell action}
+\label{sec:conventions_action}
+
+This paper isolates the gauge-field sector of the unified model in a standard
+\(4+1\) (``5D'') spacetime notation. Concretely, we work with one time coordinate,
+three brane spatial coordinates, and one transverse bulk coordinate \(w\). This is
+the same localization sector used inside the full unified paper, but here we treat
+it as a self-contained dynamical system whose controlled brane limit reproduces
+ordinary \(3+1\) Maxwell theory (with computable corrections).
+
+\subsection{Coordinates, indices, and metric}
+\label{sec:coords_metric}
+
+We use bulk coordinates
+\begin{equation}
+  x^M = (t,x,y,z,w),
+  \qquad
+  M,N,\ldots \in \{0,1,2,3,4\},
+\end{equation}
+with the brane identified as the hypersurface \(w=0\). Greek indices
+\(\mu,\nu,\ldots \in \{0,1,2,3\}\) refer to brane spacetime coordinates
+\(x^\mu=(t,x,y,z)\), and Latin indices \(a,b,\ldots\in\{1,2,3\}\) refer to the
+brane spatial coordinates \((x,y,z)\).
+
+We take a flat bulk metric with ``mostly plus'' signature,
+\begin{equation}
+  \eta_{MN}=\mathrm{diag}(-1,1,1,1,1),
+  \qquad
+  \eta^{MN}=(\eta_{MN})^{-1}.
+\end{equation}
+Indices are raised/lowered with \(\eta_{MN}\) and \(\eta^{MN}\).
+Derivatives are \(\partial_M\equiv \partial/\partial x^M\), and we define the
+\(4+1\) d'Alembertian
+\begin{equation}
+  \Box \equiv \eta^{MN}\partial_M\partial_N
+  = -\partial_t^2 + \nabla^2 + \partial_w^2,
+\end{equation}
+where \(\nabla\) is the ordinary gradient in the brane spatial directions
+\((x,y,z)\). Throughout, we work in units where the brane light-cone speed is
+unity; factors of \(c\) can be restored by \(t\mapsto ct\) in the metric and
+\(\partial_t\mapsto c^{-1}\partial_t\).
+
+\subsection{Profile and normalization}
+\label{sec:profile}
+
+The hallmark of the localization mechanism is a nonnegative profile \(\Z(w)\)
+multiplying the Maxwell kinetic term. In this paper we adopt a Gaussian profile,
+\begin{equation}
+  \Z(w) = \exp\!\left(-\frac{w^2}{\lam^2}\right),
+  \label{eq:Z_gaussian}
+\end{equation}
+with confinement width \(\lam>0\). Its integral,
+\begin{equation}
+  \Zint \equiv \int_{-\infty}^{\infty}\Z(w)\,\dd w
+  = \lam\sqrt{\pi},
+  \label{eq:Zint}
+\end{equation}
+is finite, which is the key condition ensuring a normalizable zero mode and an
+effective \(3+1\) gauge coupling on the brane.
+
+All integrations by parts in \(w\) are taken with the standard assumption that the
+relevant boundary terms vanish as \(|w|\to\infty\). For Gaussian \(\Z(w)\), it is
+sufficient that \(\Z(w)\F^{wN}\) and \(\Z(w)\A_M\partial_w(\cdots)\) decay rapidly
+enough; this holds for the localized configurations considered below and is
+explicitly verified in the symbolic checks by working with smooth test fields and
+then taking controlled limits.
+
+\subsection{Fields, field strength, and gauge fixing}
+\label{sec:fields}
+
+The bulk gauge potential is a one-form (covector field) \(\A_M(x)\). Its field
+strength is
+\begin{equation}
+  \F_{MN} \equiv \partial_M \A_N - \partial_N \A_M,
+  \qquad
+  \F^{MN} \equiv \eta^{MP}\eta^{NQ}\F_{PQ}.
+  \label{eq:F_def}
+\end{equation}
+We also use the covariant divergence
+\begin{equation}
+  \partial\!\cdot\!\A \equiv \partial_M \A^M,
+  \qquad
+  \A^M \equiv \eta^{MN}\A_N.
+\end{equation}
+
+To make the kinetic operator invertible and to streamline the consistency checks,
+we include a covariant gauge-fixing term with parameter \(\xigf\). This is a
+standard device: \(\xigf\) labels a family of equivalent descriptions, and all
+gauge-invariant observables are \(\xigf\)-independent provided the source current
+is conserved. We keep \(\xigf\) arbitrary until we specialize to Lorenz gauge
+\((\partial\!\cdot\!\A=0)\) when convenient.
+
+\subsection{Action and source bookkeeping}
+\label{sec:action}
+
+The localized Maxwell sector is defined by the action
+\begin{equation}
+  S_{\rm EM}[\A;\Z]
+  = \int \dd t\,\dd^3x\,\dd w\;
+  \left[
+    -\frac{\Z(w)}{4\muo}\,\F_{MN}\F^{MN}
+    -\frac{1}{2\xigf\muo}\,(\partial\!\cdot\!\A)^2
+    - \A_M \J^M
+  \right].
+  \label{eq:action_em}
+\end{equation}
+The source \(\J^M(x)\) is taken to be a contravariant current (a vector field),
+and the interaction is fixed to the sign convention
+\(\mathcal L_{\rm int}=-\A_M\J^M\). This particular bookkeeping choice is
+important: it ensures that under a gauge variation \(\delta \A_M=\partial_M\chi\),
+the interaction term varies as
+\(\delta\mathcal L_{\rm int}=-\partial_M(\chi \J^M)+\chi\,\partial_M\J^M\),
+making explicit the equivalence between gauge invariance of the source coupling
+and current conservation (up to boundary terms). We emphasize this convention here
+because it was historically the dominant source of component/sign mismatches in
+symbolic implementations.
+
+When embedded into the unified model, \(\J^M\) may be decomposed into a dynamical
+matter current and any externally prescribed current,
+\begin{equation}
+  \J^M = \J_\psi^M + \J_{\rm ext}^M,
+\end{equation}
+with the understanding that one must avoid double-counting: the matter sector
+contributes \(\J_\psi^M\) via minimal coupling, while \(\J_{\rm ext}^M\) is used
+only to represent additional imposed sources. In the present paper we keep the
+notation \(\J^M\) generic and return to the matter current (including its Noether
+origin and conservation identity) in \cref{sec:matter_current}.
+
+Finally, we note a transformation-type convention that will matter later:
+\(\A_\mu\) transforms as a covector under brane Lorentz transformations, while
+\(\J^\mu\) transforms as a vector. With these choices, the scalar contraction
+\(\A_\mu \J^\mu\) and the invariant \(\F_{\mu\nu}\F^{\mu\nu}\) are manifestly
+brane-Lorentz invariant in the localized limit, as verified in the accompanying
+symbolic suite.
+
+% ============================================================
+\section{Euler--Lagrange equations and consistency identities}
+\label{sec:eom_identities}
+
+This section records the exact field equations and identities implied by the
+localized Maxwell action \cref{eq:action_em}. The accompanying Wolfram Language
+referee suite verifies these results both in compact index form and
+component-by-component for \(N\in\{t,x,y,z,w\}\), including the sign conventions
+and transformation types stated in \cref{sec:conventions_action}.
+
+\subsection{Field equations from variation}
+\label{sec:eom}
+
+Varying \(\A_N\) in \cref{eq:action_em} gives the Euler--Lagrange equations.
+Using
+\begin{equation}
+  \delta \F_{MN}=\partial_M(\delta\A_N)-\partial_N(\delta\A_M),
+\end{equation}
+the variation of the kinetic term can be written as
+\begin{equation}
+  \delta\!\left(-\frac{\Z}{4\muo}\F_{MN}\F^{MN}\right)
+  = -\frac{\Z}{2\muo}\F^{MN}\delta\F_{MN}
+  = -\frac{\Z}{\muo}\F^{MN}\partial_M(\delta\A_N),
+\end{equation}
+where antisymmetry of \(\F^{MN}\) was used in the last step. Integrating by parts
+(and dropping boundary terms, justified in \cref{sec:profile}) gives
+\begin{equation}
+  \delta S_{\rm kin}
+  = \int \dd^5x\;\frac{1}{\muo}\,\partial_M\!\big(\Z\,\F^{MN}\big)\,\delta\A_N.
+\end{equation}
+Similarly, the gauge-fixing variation is
+\begin{equation}
+  \delta\!\left(-\frac{1}{2\xigf\muo}(\partial\!\cdot\!\A)^2\right)
+  = -\frac{1}{\xigf\muo}(\partial\!\cdot\!\A)\,\partial_M(\delta\A^M)
+  \;\;\Rightarrow\;\;
+  \delta S_{\rm gf}
+  = \int \dd^5x\;\frac{1}{\xigf\muo}\,\partial^N(\partial\!\cdot\!\A)\,\delta\A_N,
+\end{equation}
+where we used \(\delta\A^M=\eta^{MN}\delta\A_N\) and integrated by parts.
+Finally, the source term varies as
+\begin{equation}
+  \delta(-\A_M\J^M) = -\J^N\,\delta\A_N.
+\end{equation}
+Requiring \(\delta S_{\rm EM}=0\) for arbitrary \(\delta\A_N\) yields the localized
+\(4+1\) Maxwell equations,
+\begin{equation}
+  \partial_M\!\left(\Z(w)\F^{MN}\right)
+  + \frac{1}{\xigf}\,\partial^N(\partial\!\cdot\!\A)
+  = \muo\,\J^N.
+  \label{eq:5d_maxwell_eom_full}
+\end{equation}
+We will refer to the left-hand side as the Maxwell operator,
+\begin{equation}
+  \mathcal{M}^N[\A] \equiv
+  \partial_M\!\left(\Z\F^{MN}\right)
+  + \frac{1}{\xigf}\,\partial^N(\partial\!\cdot\!\A),
+  \qquad
+  \mathcal{M}^N[\A]=\muo\,\J^N.
+\end{equation}
+
+\subsection{Bianchi identities (homogeneous Maxwell)}
+\label{sec:bianchi}
+
+The definition \cref{eq:F_def} implies the Bianchi identities,
+\begin{equation}
+  \partial_{[L}\F_{MN]} = 0,
+  \label{eq:bianchi}
+\end{equation}
+or explicitly,
+\begin{equation}
+  \partial_L\F_{MN} + \partial_M\F_{NL} + \partial_N\F_{LM} = 0.
+\end{equation}
+These are exact, off-shell identities (they hold for any smooth \(\A_M\)),
+and constitute the homogeneous Maxwell equations upon projection to brane
+observables in the controlled reduction discussed later.
+
+\subsection{Divergence identity and current conservation}
+\label{sec:div_identity}
+
+Taking \(\partial_N\) of \cref{eq:5d_maxwell_eom_full} yields a consistency
+identity that ties the gauge condition to current conservation. The key point is
+that the double divergence of the antisymmetric tensor \(\Z\F^{MN}\) vanishes:
+\begin{equation}
+  \partial_N\partial_M(\Z\F^{MN})
+  = -\partial_M\partial_N(\Z\F^{MN})
+  \;\;\Rightarrow\;\;
+  \partial_N\partial_M(\Z\F^{MN}) = 0,
+  \label{eq:double_div_zero}
+\end{equation}
+where we relabeled dummy indices \(M\leftrightarrow N\) and used commutativity of
+partial derivatives in flat space. Therefore,
+\begin{equation}
+  \partial_N\big(\mathcal{M}^N[\A]-\muo\,\J^N\big)
+  =
+  \frac{1}{\xigf}\,\partial_N\partial^N(\partial\!\cdot\!\A)
+  - \muo\,\partial_N\J^N
+  =
+  \frac{1}{\xigf}\,\Box(\partial\!\cdot\!\A)
+  - \muo\,\partial_N\J^N.
+  \label{eq:div_identity_full}
+\end{equation}
+In particular, in Lorenz gauge \(\partial\!\cdot\!\A=0\) the Maxwell equations
+enforce \(4+1\) current conservation,
+\begin{equation}
+  \partial_N\J^N = 0.
+  \label{eq:current_conservation}
+\end{equation}
+Conversely, for a conserved source \(\partial_N\J^N=0\), the gauge-fixing term
+\(\propto(\partial\!\cdot\!\A)^2\) can be viewed as selecting a representative
+within the gauge orbit without affecting gauge-invariant observables. This
+identity is the precise statement of ``Maxwell consistency'' in the localized
+\(4+1\) setting and will later be matched to the independently derived matter
+Noether conservation law in \cref{sec:matter_current}.
+
+% ============================================================
+\section{Gauge structure and brane Lorentz covariance}
+\label{sec:gauge_lorentz}
+
+The localized Maxwell sector has the usual gauge structure in the bulk, modified
+only by the presence of a gauge-fixing term (included here for operator
+invertibility and for clean symbolic verification). In addition, because the
+localization profile \(\Z(w)\) depends only on the transverse coordinate \(w\),
+the theory preserves exact \(3+1\) Lorentz symmetry along the brane directions.
+This section records the key structural facts that will be used later in the
+brane reduction and propagator discussion.
+
+\subsection{Gauge variation and boundary terms}
+\label{sec:gauge_variation}
+
+Consider an infinitesimal gauge transformation generated by a scalar function
+\(\chi(x)\),
+\begin{equation}
+  \delta_\chi \A_M = \partial_M \chi.
+  \label{eq:gauge_var_A}
+\end{equation}
+The field strength is gauge invariant,
+\begin{equation}
+  \delta_\chi \F_{MN}
+  = \partial_M\partial_N\chi - \partial_N\partial_M\chi
+  = 0,
+\end{equation}
+so the localized kinetic term \(-\Z\,\F^2/(4\muo)\) is unchanged. The source
+interaction varies as
+\begin{equation}
+  \delta_\chi \mathcal{L}_{\rm int}
+  = -(\delta_\chi \A_M)\J^M
+  = -(\partial_M\chi)\J^M
+  = -\partial_M(\chi\J^M) + \chi\,\partial_M\J^M.
+  \label{eq:gauge_var_int}
+\end{equation}
+Thus, up to a total derivative, gauge invariance of the source coupling is
+equivalent to current conservation. In particular, if \(\partial_M\J^M=0\) and
+boundary terms can be dropped, then \(\delta_\chi S_{\rm int}=0\).
+
+The gauge-fixing term explicitly breaks gauge invariance in the standard way.
+Using \(\partial\!\cdot\!\A=\partial_M\A^M\), we have
+\begin{equation}
+  \delta_\chi(\partial\!\cdot\!\A)
+  = \partial_M\delta_\chi \A^M
+  = \partial_M\partial^M\chi
+  = \Box \chi,
+  \label{eq:divA_shift}
+\end{equation}
+so \((\partial\!\cdot\!\A)^2\) is not invariant. This is expected: the
+gauge-fixing term is introduced only to render the kinetic operator invertible,
+and physical (gauge-invariant) observables are independent of the choice of
+\(\xigf\) when the source is conserved. In our referee suite we keep the
+gauge-fixing term because it makes the operator comparison and divergence
+identity checks unambiguous.
+
+\subsection{Transformation types: covector vs vector}
+\label{sec:covector_vector}
+
+A recurring source of confusion in component-based checks is the difference
+between how the gauge potential \(\A_\mu\) and the current \(\J^\mu\) transform
+under Lorentz transformations. In the present conventions:
+
+\begin{itemize}
+\item The potential \(\A_\mu\) is a \emph{covector} (one-form) on the brane.
+\item The current \(\J^\mu\) is a \emph{vector} on the brane.
+\end{itemize}
+
+Let \(\Lambda^\mu{}_\nu\) be a \(3+1\) Lorentz transformation acting on brane
+coordinates \(x'^\mu=\Lambda^\mu{}_\nu x^\nu\). Then the fields transform as
+\begin{equation}
+  \A'_\mu(x') = (\Lambda^{-1})^\nu{}_\mu \,\A_\nu(x),
+  \qquad
+  \J'^\mu(x') = \Lambda^\mu{}_\nu\,\J^\nu(x).
+  \label{eq:lorentz_transform_types}
+\end{equation}
+With these assignments, the contraction \(\A_\mu \J^\mu\) is a scalar:
+\begin{equation}
+  \A'_\mu(x')\J'^\mu(x')
+  =
+  (\Lambda^{-1})^\nu{}_\mu \A_\nu(x)\,
+  \Lambda^\mu{}_\rho \J^\rho(x)
+  =
+  \delta^\nu{}_\rho\,\A_\nu(x)\J^\rho(x)
+  =
+  \A_\mu(x)\J^\mu(x).
+\end{equation}
+Likewise, the brane components \(\F_{\mu\nu}\) transform as a rank-2 tensor and
+the invariant \(\F_{\mu\nu}\F^{\mu\nu}\) is unchanged. These transformation-type
+assignments are implemented explicitly in the symbolic referee suite and are the
+reason invariance checks succeed without introducing spurious sign or index
+mismatches.
+
+\subsection{Effective brane propagator depends only on \(k^2\)}
+\label{sec:prop_k2}
+
+Because \(\Z(w)\) depends only on the transverse coordinate \(w\), the localized
+theory is exactly invariant under the \(3+1\) Poincar\'e group acting along the
+brane. In particular, after Fourier transforming in the brane coordinates,
+\(\partial_\mu \to \ii k_\mu\), the brane momentum enters only through the scalar
+\begin{equation}
+  k^2 \equiv \eta^{\mu\nu}k_\mu k_\nu = -\omega^2 + \mathbf{k}^2,
+\end{equation}
+which is invariant under brane Lorentz transformations. The KK decomposition
+associated with the Sturm--Liouville problem in \(w\) (worked out explicitly for
+Gaussian \(\Z\) in \cref{sec:kk_coulomb}) yields an effective brane-to-brane
+propagator of the schematic form
+\begin{equation}
+  D_{\rm eff}(k^2)
+  = \sum_{n\ge 0}\frac{c_n}{k^2 - m_n^2 + \ii\epsilon},
+  \label{eq:Deff_schematic}
+\end{equation}
+where \(m_n\) are the KK masses and \(c_n\) are the brane couplings determined by
+the mode profiles at \(w=0\). Since the right-hand side depends on the brane
+four-momentum only through \(k^2\), it is manifestly brane-Lorentz covariant.
+This has two important consequences:
+
+\begin{enumerate}
+\item \emph{Static limit:} \(D_{\rm eff}\) reproduces a Coulomb potential from the
+massless mode plus Yukawa-suppressed corrections from massive KK modes (quantified
+in \cref{sec:yukawa}).
+
+\item \emph{Moving sources:} each KK mode propagates as a covariant massless or
+massive wave equation in \(3+1\), so retarded solutions for moving charges retain
+the correct Lorentz structure mode-by-mode; summing the tower preserves this
+covariance.
+\end{enumerate}
+
+In later sections we will use \cref{eq:Deff_schematic} both as a compact
+organizing principle and as a bridge between the exact 5D action and the
+controlled 3+1 effective description.
+
+% ============================================================
+\section{Controlled brane reduction and \texorpdfstring{$\mu_{0,\mathrm{eff}}$}{mu0,eff}}
+\label{sec:brane_reduction}
+
+The \(4+1\) equations \cref{eq:5d_maxwell_eom_full} describe a gauge field living
+in the bulk with a kinetic term localized near the brane by the profile \(\Z(w)\).
+In this section we explain (i) how axial gauge cleanly removes \(\A_w\) while
+preserving an ordinary \(3+1\) residual gauge freedom, (ii) how brane-localized
+sources are implemented, and (iii) how the integrated equations reduce to
+standard \(3+1\) Maxwell with an effective coupling
+\(\mueff=\muo/\Zint\). The accompanying referee suite verifies each step
+symbolically, including the consistency of the \(N=w\) component under the
+reduction assumptions.
+
+\subsection{Axial gauge reachability and residual \(3+1\) freedom}
+\label{sec:axial_gauge}
+
+Start from a general configuration \(\A_M(x^\mu,w)\). Under a gauge transformation
+\(\delta\A_M=\partial_M\chi\), the transverse component transforms as
+\(\A_w\mapsto \A_w+\partial_w\chi\). Provided \(\A_w\) is sufficiently regular in
+\(w\), we may reach axial gauge \(\A_w=0\) by choosing
+\begin{equation}
+  \chi_{\rm Ax}(x^\mu,w)
+  \equiv -\int_{0}^{w}\A_w(x^\mu,w')\,\dd w',
+  \label{eq:chi_axial}
+\end{equation}
+so that \(\partial_w\chi_{\rm Ax}=-\A_w\). In axial gauge the residual gauge
+freedom is characterized by gauge parameters satisfying \(\partial_w\chi=0\), i.e.
+\begin{equation}
+  \chi(x^\mu,w)=\chi_b(x^\mu),
+\end{equation}
+which is precisely the usual \(3+1\) gauge freedom on the brane.
+
+With \(\A_w=0\), the full divergence simplifies to
+\begin{equation}
+  \partial\!\cdot\!\A
+  = \partial_M \A^M
+  = \partial_\mu \A^\mu + \partial_w \A^w
+  = \partial_\mu \A^\mu,
+\end{equation}
+so the gauge-fixing term reduces to the familiar Lorenz family in \(3+1\) once we
+restrict to configurations whose brane components are \(w\)-independent (the
+zero-mode limit discussed below).
+
+\subsection{Brane-localized sources}
+\label{sec:brane_sources}
+
+To model a conserved source confined to the brane, we take
+\begin{equation}
+  \J^\mu(x^\nu,w) = \J_b^\mu(x^\nu)\,\delta(w),
+  \qquad
+  \J^w(x^\nu,w)=0,
+  \label{eq:brane_current_delta}
+\end{equation}
+where \(\J_b^\mu\) is a \(3+1\) current on the brane. The condition \(\J^w=0\) is
+both physically natural (no net charge current leaves the brane) and required by
+consistency of the \(N=w\) Maxwell equation under the axial/zero-mode reduction
+(see below). Current conservation \(\partial_M\J^M=0\) then reduces to the usual
+brane condition \(\partial_\mu \J_b^\mu=0\).
+
+For later convenience we also define the \(w\)-integrated current
+\begin{equation}
+  \J_{\rm eff}^\mu(x) \equiv \int_{-\infty}^{\infty}\J^\mu(x,w)\,\dd w,
+\end{equation}
+so that \cref{eq:brane_current_delta} implies \(\J_{\rm eff}^\mu=\J_b^\mu\).
+
+\subsection{Integrated EOM and effective coupling}
+\label{sec:mu_eff}
+
+Write the \(\nu\)-components of the Maxwell equation \cref{eq:5d_maxwell_eom_full}
+as
+\begin{equation}
+  \partial_M\!\left(\Z \F^{M\nu}\right)
+  + \frac{1}{\xigf}\,\partial^\nu(\partial\!\cdot\!\A)
+  = \muo\,\J^\nu,
+  \qquad \nu\in\{0,1,2,3\}.
+  \label{eq:eom_nu}
+\end{equation}
+Integrating over \(w\) gives the exact identity
+\begin{equation}
+  \partial_\mu \!\left(\int \Z\,\F^{\mu\nu}\,\dd w\right)
+  + \underbrace{\int \partial_w\!\left(\Z\,\F^{w\nu}\right)\dd w}_{\displaystyle [\,\Z\,\F^{w\nu}\,]_{-\infty}^{+\infty}}
+  + \frac{1}{\xigf}\,\partial^\nu\!\left(\int (\partial\!\cdot\!\A)\,\dd w\right)
+  = \muo\,\J_{\rm eff}^\nu(x),
+  \label{eq:integrated_exact}
+\end{equation}
+where we used \(\Z=\Z(w)\) and commuted \(\partial_\mu\) past the \(w\)-integral.
+For localized field configurations the boundary term
+\([\,\Z\,\F^{w\nu}\,]_{-\infty}^{+\infty}\) vanishes. It is then natural to define
+a weighted brane field strength by
+\begin{equation}
+  \bar{\F}^{\mu\nu}(x) \equiv \frac{1}{\Zint}\int_{-\infty}^{\infty}\Z(w)\,\F^{\mu\nu}(x,w)\,\dd w,
+  \label{eq:Fbar_def}
+\end{equation}
+so that \cref{eq:integrated_exact} becomes
+\begin{equation}
+  \partial_\mu \bar{\F}^{\mu\nu}
+  + \frac{1}{\xigf\,\Zint}\,\partial^\nu\!\left(\int (\partial\!\cdot\!\A)\,\dd w\right)
+  = \frac{\muo}{\Zint}\,\J_{\rm eff}^\nu.
+  \label{eq:brane_maxwell_exact_weighted}
+\end{equation}
+Equation \cref{eq:brane_maxwell_exact_weighted} is an \emph{exact} integrated
+brane equation, but it is not yet standard Maxwell because \(\bar{\F}^{\mu\nu}\)
+is a weighted bulk average and the gauge-fixing term retains an explicit
+\(w\)-integral.
+
+To obtain the familiar \(3+1\) Maxwell form we now take a controlled zero-mode
+limit: in axial gauge \(\A_w=0\), assume the brane components are \(w\)-independent
+over the localization region,
+\begin{equation}
+  \A_\mu(x,w) \simeq a_\mu(x),
+  \qquad
+  \partial_w \A_\mu \simeq 0,
+  \label{eq:zero_mode_ansatz}
+\end{equation}
+so that \(\F^{w\nu}=-\partial^w\A^\nu\simeq 0\) and
+\(\F^{\mu\nu}(x,w)\simeq f^{\mu\nu}(x)\), where
+\begin{equation}
+  f_{\mu\nu}(x)\equiv \partial_\mu a_\nu-\partial_\nu a_\mu.
+\end{equation}
+Then \cref{eq:Fbar_def} gives \(\bar{\F}^{\mu\nu}\simeq f^{\mu\nu}\), and in axial
+gauge \(\partial\!\cdot\!\A=\partial_\mu a^\mu\) is independent of \(w\), so
+\(\int (\partial\!\cdot\!\A)\dd w \simeq \Zint\,(\partial_\mu a^\mu)\). Under these
+assumptions, \cref{eq:brane_maxwell_exact_weighted} reduces to
+\begin{equation}
+  \partial_\mu f^{\mu\nu}
+  + \frac{1}{\xigf}\,\partial^\nu(\partial_\mu a^\mu)
+  = \mueff\,\J_{\rm eff}^\nu,
+  \qquad
+  \mueff \equiv \frac{\muo}{\Zint}.
+  \label{eq:brane_maxwell_gf}
+\end{equation}
+For a brane-localized current \cref{eq:brane_current_delta}, \(\J_{\rm eff}^\nu=\J_b^\nu\),
+and using \cref{eq:Zint} we obtain the effective coupling
+\begin{equation}
+  \mueff = \frac{\muo}{\lam\sqrt{\pi}}.
+  \label{eq:mu0_eff}
+\end{equation}
+In Lorenz gauge on the brane, \(\partial_\mu a^\mu=0\), \cref{eq:brane_maxwell_gf}
+becomes the standard inhomogeneous Maxwell equation
+\(\partial_\mu f^{\mu\nu}=\mueff\,\J_b^\nu\).
+
+\paragraph{Consistency of the \(w\)-component.}
+The transverse component of \cref{eq:5d_maxwell_eom_full} reads
+\begin{equation}
+  \partial_M\!\left(\Z \F^{Mw}\right)
+  + \frac{1}{\xigf}\,\partial^w(\partial\!\cdot\!\A)
+  = \muo\,\J^w.
+  \label{eq:eom_w}
+\end{equation}
+In axial gauge \(\A_w=0\) with the zero-mode ansatz \cref{eq:zero_mode_ansatz},
+we have \(\F^{\mu w}=-\partial^w\A^\mu\simeq 0\) and \(\partial^w(\partial\!\cdot\!\A)\simeq 0\),
+so \cref{eq:eom_w} reduces to \(\J^w\simeq 0\). Thus the controlled brane limit is
+internally consistent precisely when there is no net transverse current, matching
+the source model \cref{eq:brane_current_delta}.
+
+\paragraph{Correction terms and regime of validity.}
+Equation \cref{eq:brane_maxwell_exact_weighted} makes clear what is being assumed
+in the reduction. Deviations from standard \(3+1\) Maxwell arise when:
+(i) \(\A_\mu\) has significant \(w\)-dependence (excited KK modes), so that
+\(\bar{\F}^{\mu\nu}\neq f^{\mu\nu}\);
+(ii) \(\F^{w\nu}\) does not decay rapidly enough to drop the boundary term in
+\cref{eq:integrated_exact}; or (iii) \(\J^w\neq 0\).
+For Gaussian localization, the KK tower and its brane couplings can be computed
+explicitly, yielding Yukawa-suppressed corrections to Coulomb and to radiation
+propagation; we quantify these effects in \cref{sec:kk_coulomb} and discuss their
+interpretation for moving sources in \cref{sec:moving_sources}.
+
+% ============================================================
+\section{Gaussian KK tower and corrections to Coulomb}
+\label{sec:kk_coulomb}
+
+For a finite localization integral \(\Zint\), the localized Maxwell sector admits a
+normalizable zero mode that reproduces ordinary \(3+1\) Maxwell on the brane, plus
+a discrete tower of massive excitations (KK modes) whose exchange produces
+Yukawa-suppressed corrections. For the Gaussian profile \(\Z(w)=e^{-w^2/\lam^2}\)
+these structures can be worked out in closed form. In this section we summarize:
+(i) the Sturm--Liouville eigenproblem in the transverse coordinate \(w\), (ii) the
+resulting spectrum and mode normalization, (iii) the brane couplings and parity
+selection rule, and (iv) the resulting static potential (Coulomb plus Yukawa
+corrections). These results are verified in the accompanying Wolfram Language
+suite.
+
+\subsection{Sturm--Liouville problem and spectrum}
+\label{sec:kk_spectrum}
+
+Work in axial gauge \(\A_w=0\) and, for definiteness, in Lorenz gauge for the brane
+components. In the source-free region, the brane components of
+\cref{eq:5d_maxwell_eom_full} separate into a brane wave operator and a transverse
+operator acting on the \(w\)-profile. This motivates a mode expansion
+\begin{equation}
+  \A_\mu(x,w) = \sum_{n\ge 0} a^{(n)}_\mu(x)\,f_n(w),
+  \label{eq:kk_expansion}
+\end{equation}
+where the \(f_n(w)\) are eigenfunctions of the transverse Sturm--Liouville
+operator associated with the weighted Maxwell kinetic term:
+\begin{equation}
+  -\frac{\dd}{\dd w}\!\left(\Z(w)\,\frac{\dd f_n}{\dd w}\right)
+  = m_n^2\,\Z(w)\,f_n(w).
+  \label{eq:sl_problem}
+\end{equation}
+The weight is \(\Z(w)\), and normalizability is with respect to the inner product
+\(\langle f,g\rangle\equiv \int_{-\infty}^{\infty}\Z(w) f(w)g(w)\,\dd w\).
+
+For the Gaussian \(\Z(w)=\exp(-w^2/\lam^2)\), writing \(y\equiv w/\lam\) turns
+\cref{eq:sl_problem} into
+\begin{equation}
+  \frac{\dd^2 f_n}{\dd y^2} - 2y\,\frac{\dd f_n}{\dd y} + (m_n^2\lam^2)\,f_n = 0,
+\end{equation}
+which is the Hermite differential equation. A complete set of polynomial
+solutions is given by the physicists' Hermite polynomials,
+\begin{equation}
+  f_n(w) = H_n\!\left(\frac{w}{\lam}\right),
+  \qquad
+  m_n^2 = \frac{2n}{\lam^2},
+  \qquad n=0,1,2,\ldots
+  \label{eq:hermite_spectrum}
+\end{equation}
+with \(n=0\) the massless mode. The massive modes correspond to \(3+1\) Proca-type
+propagating degrees of freedom on the brane, with masses \(m_n\).
+
+\subsection{Mode normalization and brane couplings}
+\label{sec:kk_couplings}
+
+The natural norm induced by the action is
+\begin{equation}
+  \|f_n\|^2 \equiv \int_{-\infty}^{\infty}\Z(w)\,f_n(w)^2\,\dd w.
+\end{equation}
+For Gaussian \(\Z\) and Hermite \(f_n\), the norm is the standard Hermite orthogonality
+integral,
+\begin{equation}
+  \|f_n\|^2
+  = \int_{-\infty}^{\infty}\exp\!\left(-\frac{w^2}{\lam^2}\right)
+    H_n\!\left(\frac{w}{\lam}\right)^2 \dd w
+  = \lam\sqrt{\pi}\,2^n\,n!.
+  \label{eq:hermite_norm}
+\end{equation}
+
+A brane-localized current \(\J^\mu(x,w)=\J_b^\mu(x)\delta(w)\) excites each mode in
+proportion to its value at the brane. A convenient ``brane coupling weight'' is
+\begin{equation}
+  c_n \equiv \frac{f_n(0)^2}{\|f_n\|^2},
+  \label{eq:cn_def}
+\end{equation}
+which will appear directly in the effective brane-to-brane propagator and in the
+static potential.
+
+For Hermite polynomials, \(H_n(0)=0\) for odd \(n\). Thus,
+\begin{equation}
+  c_{2m+1}=0,
+  \qquad m=0,1,2,\ldots
+  \label{eq:odd_vanish}
+\end{equation}
+which is a simple parity selection rule: the profile \(\Z(w)\) is even in \(w\),
+the brane sits at the symmetry point \(w=0\), and odd transverse modes do not
+couple to brane sources.
+
+For even \(n=2m\), the closed-form value \(H_{2m}(0)=(-1)^m(2m)!/m!\) gives
+\begin{equation}
+  c_{2m}
+  = \frac{H_{2m}(0)^2}{\lam\sqrt{\pi}\,2^{2m}(2m)!}
+  = \frac{1}{\lam\sqrt{\pi}}\,
+    \frac{1}{4^m}\binom{2m}{m}.
+  \label{eq:cn_even_closed}
+\end{equation}
+In particular, the zero-mode coupling is
+\begin{equation}
+  c_0 = \frac{1}{\lam\sqrt{\pi}} = \frac{1}{\Zint},
+\end{equation}
+which reproduces \(\mueff=\muo/\Zint\) from \cref{eq:mu0_eff}.
+
+\subsection{Coulomb law and Yukawa corrections}
+\label{sec:yukawa}
+
+The KK expansion \cref{eq:kk_expansion} implies that brane momenta enter through
+the Lorentz scalar \(k^2\), and the brane-to-brane propagator takes the form
+\begin{equation}
+  D_{\rm eff}(k^2)
+  = \sum_{n\ge 0}\frac{c_n}{k^2 - m_n^2 + \ii\epsilon},
+  \qquad
+  m_n^2=\frac{2n}{\lam^2}.
+  \label{eq:Deff_explicit}
+\end{equation}
+In the static limit (\(\omega=0\)), each contributing mode produces the standard
+three-dimensional Green's function for \(\nabla^2-m_n^2\), yielding a Yukawa
+potential for \(m_n>0\). For a point charge \(q\) on the brane, modeled by
+\(\J_b^0=q\,\delta^{(3)}(\mathbf x)\), the scalar potential on the brane is
+\begin{equation}
+  A_0(r)
+  = \frac{\muo q}{4\pi r}\sum_{n\ge 0} c_n\,e^{-m_n r},
+  \qquad r\equiv|\mathbf x|.
+  \label{eq:A0_KK_sum}
+\end{equation}
+Separating the zero mode and using \(\mueff=\muo c_0\), we can write
+\begin{equation}
+  A_0(r)
+  = \frac{\mueff q}{4\pi r}
+    \left[
+      1 + \sum_{m\ge 1}\frac{c_{2m}}{c_0}\,e^{-m_{2m} r}
+    \right],
+  \qquad
+  m_{2m}=\frac{2\sqrt{m}}{\lam},
+  \label{eq:A0_mu_eff_form}
+\end{equation}
+with the coefficient ratios
+\begin{equation}
+  \frac{c_{2m}}{c_0}
+  = \frac{1}{4^m}\binom{2m}{m}
+  = 1,\;\frac12,\;\frac{3}{8},\;\frac{5}{16},\;\ldots \quad (m=0,1,2,3,\ldots).
+  \label{eq:ratio_cn}
+\end{equation}
+Therefore the leading deviation from Coulomb at large \(r\) is
+\begin{equation}
+  A_0(r)
+  = \frac{\mueff q}{4\pi r}\left[1+\frac12\,e^{-2r/\lam}
+    + \mathcal{O}\!\left(e^{-2\sqrt{2}\,r/\lam}\right)\right].
+  \label{eq:leading_yukawa}
+\end{equation}
+The corresponding radial electric field is \(E_r(r)=-\partial_r A_0(r)\), so the
+zero mode gives the usual \(1/r^2\) falloff and the KK corrections are exponentially
+suppressed for \(r\gg\lam\).
+
+\paragraph{Interpretation.}
+The confinement width \(\lam\) sets the crossover scale: for brane separations
+\(r\gg \lam\), the zero mode dominates and the theory is experimentally
+indistinguishable from Maxwell to extremely high accuracy; for \(r\sim\lam\), the
+tower becomes relevant and predicts specific, computable departures from the pure
+Coulomb law. In \cref{sec:moving_sources} we extend this discussion from static
+sources to moving charges, where each KK mode propagates with its own covariant
+retarded Green's function and the full response remains brane-Lorentz covariant.
+
+% ============================================================
+\section{Moving sources and retarded structure}
+\label{sec:moving_sources}
+
+The preceding section established that the localized Maxwell sector reduces, for a
+brane-localized source, to a massless \(3+1\) mode plus a discrete tower of massive
+KK excitations with computable couplings. Here we explain how this structure
+extends from static sources to fully time-dependent (moving) sources, and why the
+resulting brane response is causal and brane-Lorentz covariant. The key point is
+that each KK mode obeys a standard covariant wave equation in \(3+1\) with a
+retarded Green's function that depends only on Lorentz invariants; summing the
+tower preserves that structure.
+
+\paragraph{Mode-by-mode brane equations.}
+In axial gauge with a brane-localized conserved current
+\(\J^\mu(x,w)=\J_b^\mu(x)\delta(w)\), the KK decomposition
+\(\A_\mu(x,w)=\sum_n a^{(n)}_\mu(x)f_n(w)\) together with the orthogonality of the
+\(f_n\) under the \(\Z(w)\)-weighted inner product yields a decoupled set of
+\(3+1\) equations for the mode amplitudes \(a^{(n)}_\mu(x)\). For conserved brane
+sources (so that longitudinal pieces can be gauged away in the usual way), each
+mode obeys a covariant Klein--Gordon-type operator with mass \(m_n\),
+\begin{equation}
+  \left(\square_4 + m_n^2\right)a^{(n)}_\mu(x)
+  = \muo\,c_n\,\J_{b\,\mu}(x),
+  \qquad
+  \square_4 \equiv \partial_t^2-\nabla^2,
+  \label{eq:mode_wave_eq}
+\end{equation}
+where the masses \(m_n^2=2n/\lam^2\) and couplings \(c_n\) were given in
+\cref{eq:hermite_spectrum,eq:cn_def,eq:cn_even_closed}. The zero mode \(n=0\) is
+massless and reproduces standard Maxwell propagation on the brane (with effective
+coupling \(\mueff=\muo c_0\)), while the massive modes propagate as covariant
+massive vector excitations.
+
+\paragraph{Retarded Green functions.}
+Let \(G^{(m)}_{\rm ret}(x-x')\) be the retarded Green function for the scalar
+operator \(\square_4+m^2\),
+\begin{equation}
+  (\square_4+m^2)\,G^{(m)}_{\rm ret}(x-x')=\delta^{(4)}(x-x'),
+  \qquad
+  G^{(m)}_{\rm ret}(x-x')=0\ \ \text{for}\ t<t'.
+  \label{eq:Green_def}
+\end{equation}
+Then the retarded solution of \cref{eq:mode_wave_eq} is
+\begin{equation}
+  a^{(n)}_\mu(x)
+  = \muo\,c_n \int \dd^4x'\; G^{(m_n)}_{\rm ret}(x-x')\,\J_{b\,\mu}(x').
+  \label{eq:mode_retarded_solution}
+\end{equation}
+Equivalently, in Fourier space the retarded prescription gives
+\begin{equation}
+  G^{(m)}_{\rm ret}(x)
+  = \int\frac{\dd^4k}{(2\pi)^4}\,
+    \frac{\ee^{-\ii k\cdot x}}{k^2+m^2+\ii\epsilon\,k^0},
+  \qquad
+  k^2\equiv \eta^{\mu\nu}k_\mu k_\nu=-\omega^2+\mathbf{k}^2,
+  \label{eq:Green_retarded_fourier}
+\end{equation}
+where the \(\ii\epsilon k^0\) term encodes the retarded boundary condition (and is
+invariant under proper orthochronous brane Lorentz transformations). The effective
+brane kernel is therefore a KK-weighted sum,
+\begin{equation}
+  G^{\rm eff}_{\rm ret}(x)
+  \equiv \sum_{n\ge 0} c_n\,G^{(m_n)}_{\rm ret}(x),
+  \qquad
+  a_\mu(x)=\muo\int \dd^4x'\;G^{\rm eff}_{\rm ret}(x-x')\,\J_{b\,\mu}(x'),
+  \label{eq:Geff_def}
+\end{equation}
+and, in momentum space,
+\begin{equation}
+  D^{\rm eff}_{\rm ret}(k)
+  = \sum_{n\ge 0}\frac{c_n}{k^2+m_n^2+\ii\epsilon\,k^0}.
+  \label{eq:Deff_retarded}
+\end{equation}
+This makes transparent the structural statement checked in the symbolic suite:
+the brane-to-brane response depends on brane momenta only through the Lorentz
+scalar \(k^2\) (together with the standard retarded prescription), so there is no
+preferred-frame artifact in the brane dynamics.
+
+\paragraph{Explicit causal support and ``tails.''}
+In \(3+1\), the massless retarded Green function is supported on the light cone,
+\begin{equation}
+  G^{(0)}_{\rm ret}(t,r)
+  = \theta(t)\,\frac{\delta(t-r)}{4\pi r},
+  \qquad r\equiv|\mathbf{x}|,
+\end{equation}
+while the massive retarded Green function has support on and \emph{inside} the
+light cone (a ``tail''):
+\begin{equation}
+  G^{(m)}_{\rm ret}(t,r)
+  = \theta(t)\left[
+      \frac{\delta(t-r)}{4\pi r}
+      - \theta(t-r)\,\frac{m}{4\pi}\,
+        \frac{J_1\!\left(m\sqrt{t^2-r^2}\right)}{\sqrt{t^2-r^2}}
+    \right],
+  \label{eq:KG_retarded}
+\end{equation}
+where \(J_1\) is the Bessel function of the first kind. The wavefront remains
+lightlike (the \(\delta(t-r)\) term), while massive modes contribute additional
+causal response inside the forward light cone. Consequently, the full KK-summed
+response \cref{eq:Geff_def} is manifestly causal.
+
+\paragraph{Moving point charges.}
+For a point charge \(q\) moving on a brane worldline \(z^\mu(\tau)\) with
+four-velocity \(u^\mu=\dd z^\mu/\dd\tau\), the conserved current can be written as
+\begin{equation}
+  \J_b^\mu(x) = q\int \dd\tau\;u^\mu(\tau)\,\delta^{(4)}\!\big(x-z(\tau)\big).
+  \label{eq:worldline_current}
+\end{equation}
+Substituting \cref{eq:worldline_current} into \cref{eq:mode_retarded_solution} and
+summing modes gives
+\begin{equation}
+  a_\mu(x)
+  = \muo q \sum_{n\ge 0} c_n \int \dd\tau\;
+    u_\mu(\tau)\,G^{(m_n)}_{\rm ret}\!\big(x-z(\tau)\big).
+  \label{eq:worldline_potential}
+\end{equation}
+The \(n=0\) term reproduces the usual retarded Maxwell potential (the
+Liénard--Wiechert structure), while the \(n\ge 1\) modes add Yukawa-suppressed and
+tail-type corrections governed by the KK masses and brane couplings. In the
+far-field regime \(r\gg \lam\), these corrections are exponentially small, in
+accordance with \cref{eq:leading_yukawa}.
+
+\paragraph{Brane Lorentz covariance.}
+Two complementary viewpoints make the covariance manifest:
+
+\begin{enumerate}
+\item \emph{Momentum-space:} the response kernel \cref{eq:Deff_retarded} depends on
+brane momenta only through \(k^2\) (a Lorentz scalar), and the retarded
+prescription is preserved under proper orthochronous boosts. Thus the resulting
+fields transform correctly for all time-dependent sources.
+
+\item \emph{Position-space:} the Green functions \cref{eq:KG_retarded} depend on
+separations only through \(r\), \(t\), and the invariant interval
+\(t^2-r^2\), together with causal step functions. Each KK mode therefore yields a
+brane-covariant retarded solution, and the KK sum preserves that property.
+\end{enumerate}
+
+This completes the ``no preferred-frame'' argument for moving sources: once the
+EM sector is localized by \(\Z(w)\) without breaking brane Poincar\'e symmetry, the
+brane-effective dynamics are fully Lorentz covariant, with calculable deviations
+from pure Maxwell behavior controlled by the KK tower.
+
+% ============================================================
+\section{Matter current conservation and Maxwell consistency}
+\label{sec:matter_current}
+
+The localized Maxwell equations \cref{eq:5d_maxwell_eom_full} require a conserved
+source in order to be compatible with the gauge condition and the divergence
+identity \cref{eq:div_identity_full}. In a complete theory one should not impose
+source conservation by hand: it must follow from the matter dynamics and its
+symmetries. In this section we show that a minimal brane matter model with
+\(U(1)\) phase symmetry produces a conserved Noether current (on shell), and that
+this current is precisely the object that can be used as the brane source for the
+localized Maxwell sector. This closes the logical loop:
+\[
+\text{(matter symmetry)} \ \Rightarrow\ \partial_\mu j^\mu=0
+\ \Rightarrow\ \partial_M J^M=0
+\ \Rightarrow\ \text{Maxwell consistency}.
+\]
+
+\subsection{Minimal brane matter model and Noether current}
+\label{sec:noether_current}
+
+We consider a minimal brane field \(\psi(t,\mathbf x)\) with a standard
+Schr\"odinger/Gross--Pitaevskii-type Lagrangian density and minimal gauge
+coupling. A representative form (sufficient for the current-conservation identity
+checked in the referee suite) is
+\begin{equation}
+  \mathcal L_\psi
+  =
+  \frac{\ii\hbar}{2}\!\left(\psi^* D_t\psi - \psi (D_t\psi)^*\right)
+  -\frac{\hbar^2}{2m}\,(D_i\psi)^*(D_i\psi)
+  -U(|\psi|^2),
+  \label{eq:L_matter}
+\end{equation}
+where \(U\) is an arbitrary real function of \(|\psi|^2\) and the covariant
+derivatives are
+\begin{equation}
+  D_t \equiv \partial_t + \frac{\ii q}{\hbar}A_0,
+  \qquad
+  D_i \equiv \partial_i + \frac{\ii q}{\hbar}A_i,
+  \label{eq:covariant_derivatives}
+\end{equation}
+with charge parameter \(q\). (Any equivalent sign convention for \(D_\mu\) is
+acceptable provided it is used consistently with the gauge transformation rules;
+the referee suite implements a fixed choice and checks the resulting current.)
+
+The matter sector is invariant under the local \(U(1)\) transformation
+\begin{equation}
+  \psi \mapsto \exp\!\left(-\frac{\ii q}{\hbar}\chi\right)\psi,
+  \qquad
+  A_\mu \mapsto A_\mu + \partial_\mu \chi,
+  \label{eq:matter_gauge_transform}
+\end{equation}
+which ensures that \(D_\mu\psi\) transforms covariantly and \(\mathcal L_\psi\)
+is gauge invariant (up to total derivatives associated with the time-derivative
+term). In particular, restricting \(\chi\) to a constant recovers a global phase
+symmetry, and Noether's theorem yields a conserved current.
+
+A convenient way to extract the current (and the approach used in the symbolic
+suite) is to probe a \emph{local} phase variation
+\(\psi\to e^{\ii \epsilon(x)}\psi\), \(\psi^*\to e^{-\ii \epsilon(x)}\psi^*\)
+and expand to first order in \(\epsilon\). One finds a current \(j^\mu\) on the
+brane with time component
+\begin{equation}
+  j^0 = |\psi|^2,
+  \label{eq:j0}
+\end{equation}
+and spatial components
+\begin{equation}
+  j^i
+  = \frac{\hbar}{2mi}\Big(\psi^* D^i\psi - (D^i\psi)^*\psi\Big)
+  = \frac{\hbar}{m}\,\mathrm{Im}\!\left(\psi^* D^i\psi\right),
+  \label{eq:ji_covariant}
+\end{equation}
+which is manifestly gauge covariant. The corresponding \emph{charge current} is
+\begin{equation}
+  J_\psi^\mu \equiv q\,j^\mu.
+  \label{eq:charge_current_def}
+\end{equation}
+In the full coupled theory, this is the dynamical source that appears in the
+Maxwell equations obtained by varying with respect to \(A_\mu\), consistent with
+the interaction bookkeeping \(\mathcal L_{\rm int}=-A_\mu J^\mu\).
+
+\subsection{Off-shell identity and linkage to Maxwell divergence}
+\label{sec:off_shell_identity}
+
+The local phase-probe method yields not only the explicit form of the Noether
+current but also an \emph{off-shell} identity (Noether identity) relating its
+divergence to the matter Euler--Lagrange expressions. Denote the brane
+Euler--Lagrange operators by
+\begin{equation}
+  \mathrm{EL}_{\psi} \equiv \frac{\partial\mathcal L_\psi}{\partial \psi}
+  -\partial_\mu\!\left(\frac{\partial\mathcal L_\psi}{\partial(\partial_\mu\psi)}\right),
+  \qquad
+  \mathrm{EL}_{\psi^*} \equiv \frac{\partial\mathcal L_\psi}{\partial \psi^*}
+  -\partial_\mu\!\left(\frac{\partial\mathcal L_\psi}{\partial(\partial_\mu\psi^*)}\right).
+\end{equation}
+Then the phase symmetry implies the identity
+\begin{equation}
+  \partial_\mu j^\mu
+  + \frac{\ii}{\hbar}\Big(\psi^*\mathrm{EL}_{\psi^*}-\psi\,\mathrm{EL}_{\psi}\Big)
+  = 0.
+  \label{eq:noether_identity}
+\end{equation}
+On shell, \(\mathrm{EL}_\psi=\mathrm{EL}_{\psi^*}=0\), this reduces to the usual
+continuity equation
+\begin{equation}
+  \partial_\mu j^\mu = 0,
+  \qquad\text{equivalently}\qquad
+  \partial_\mu J_\psi^\mu = 0.
+  \label{eq:brane_current_conservation}
+\end{equation}
+The referee suite verifies \cref{eq:noether_identity} explicitly for the minimal
+matter model used there (including the corrected sign convention in the identity
+residual).
+
+To embed the matter source into the localized \(4+1\) Maxwell sector, we use the
+brane-localized current model
+\begin{equation}
+  \J^\mu(x,w) = J_\psi^\mu(x)\,\delta(w),
+  \qquad
+  \J^w(x,w)=0,
+  \label{eq:J_bulk_from_brane}
+\end{equation}
+as in \cref{sec:brane_sources}. Since \(\delta(w)\) depends only on \(w\), the
+bulk divergence reduces distributionally to
+\begin{equation}
+  \partial_M \J^M
+  = \partial_\mu\!\big(J_\psi^\mu\delta(w)\big)
+    + \partial_w(0)
+  = \delta(w)\,\partial_\mu J_\psi^\mu.
+\end{equation}
+Therefore, the on-shell brane conservation law \cref{eq:brane_current_conservation}
+implies bulk conservation \(\partial_M\J^M=0\). This is exactly the condition
+required by Maxwell consistency: inserting \(\partial_M\J^M=0\) into the
+divergence identity \cref{eq:div_identity_full} shows that in Lorenz gauge
+\((\partial\!\cdot\!\A=0)\) the bulk equations are mutually compatible and the
+gauge-fixed operator closes without contradiction.
+
+In summary, the same symmetry (phase invariance) that makes the matter sector
+well-posed also supplies the conserved source required by the localized Maxwell
+sector. In the controlled brane limit, this guarantees that the effective \(3+1\)
+Maxwell equations are sourced by a current that is conserved by construction,
+rather than by assumption.
+
+% ============================================================
+\section{Discussion: validity regime, deviations, and falsifiable tests}
+\label{sec:discussion}
+
+The localized \(4+1\) Maxwell sector yields ordinary \(3+1\) electromagnetism on
+the brane only in a controlled regime. Outside that regime, the theory makes
+specific, quantitative predictions: Yukawa-suppressed corrections to Coulomb, a
+discrete set of massive response channels with threshold behavior in frequency,
+and (for time-dependent sources) causal ``tail'' terms inside the light cone.
+Because the correction structure is fixed by the localization profile \(\Z(w)\),
+these deviations are falsifiable rather than tunable.
+
+\subsection{When the \(3+1\) Maxwell limit holds}
+The exact integrated brane equation \cref{eq:brane_maxwell_exact_weighted} shows
+that the reduction to standard Maxwell is controlled by (i) the dominance of a
+\(w\)-independent zero mode in the field configuration and (ii) the absence of
+transverse current. A sufficient set of conditions for the Maxwell regime is:
+
+\begin{enumerate}
+\item \textbf{Zero-mode dominance:} the brane components are approximately
+\(w\)-independent within the support of \(\Z(w)\),
+\(\A_\mu(x,w)\simeq a_\mu(x)\) and \(\partial_w \A_\mu\simeq 0\), as in
+\cref{eq:zero_mode_ansatz}. Equivalently, the typical brane length/time scales
+are long compared to the confinement width:
+\begin{equation}
+  r \gg \lam,
+  \qquad
+  \omega \ll \frac{2}{\lam},
+\end{equation}
+so that KK excitations are either not sourced efficiently or remain evanescent.
+
+\item \textbf{No transverse source flux:} \(\J^w=0\), so the \(N=w\) Maxwell
+equation \cref{eq:eom_w} is consistent with axial gauge and the zero-mode limit.
+
+\item \textbf{Localized boundary behavior:} \(\Z(w)\F^{w\nu}\) decays sufficiently
+fast as \(|w|\to\infty\) so that the boundary term in \cref{eq:integrated_exact}
+vanishes (automatic for the localized configurations considered here).
+
+\item \textbf{Conserved brane current:} \(\partial_\mu \J_b^\mu=0\), which follows
+from the matter dynamics via the Noether identity \cref{eq:noether_identity}.
+\end{enumerate}
+
+Under these conditions the theory reduces to the familiar gauge-fixed \(3+1\)
+equations \cref{eq:brane_maxwell_gf} with effective coupling
+\(\mueff=\muo/\Zint\), and all gauge-invariant brane observables coincide with
+Maxwell to high accuracy.
+
+\subsection{Leading deviation structure}
+The Gaussian profile fixes the KK spectrum and brane couplings, yielding a rigid
+deviation pattern rather than an arbitrary modification. For static sources the
+brane potential takes the KK-summed form \cref{eq:A0_KK_sum}; separating the zero
+mode gives the leading correction \cref{eq:leading_yukawa},
+\begin{equation}
+  A_0(r)=\frac{\mueff q}{4\pi r}
+  \left[1+\frac12\,\ee^{-2r/\lam}
+  +\mathcal O\!\left(\ee^{-2\sqrt2\,r/\lam}\right)\right].
+\end{equation}
+Two points are worth emphasizing:
+
+\begin{itemize}
+\item The \emph{range} of the leading deviation is fixed by the first brane-coupled
+mass \(m_2=2/\lam\) (odd modes do not couple; \cref{eq:odd_vanish}).
+
+\item The \emph{amplitude} of the leading Yukawa term is also fixed (here \(1/2\))
+by the Gaussian mode structure (\cref{eq:ratio_cn}). In this sense the Gaussian
+localization makes a parameter-light, falsifiable prediction: once \(\lam\) is
+chosen, the leading correction is determined.
+\end{itemize}
+
+For time-dependent sources, each KK mode obeys a covariant massive wave equation
+\cref{eq:mode_wave_eq} with retarded solution \cref{eq:mode_retarded_solution}.
+Below the first brane-coupled threshold \(\omega<m_2\), massive modes contribute
+only near-field/evanescent corrections and the response is extremely close to
+Maxwell at distances \(r\gg\lam\). Above threshold, \(\omega>m_2\), additional
+propagating channels open with dispersion
+\begin{equation}
+  \omega^2 = k^2 + m_n^2,
+\end{equation}
+and group velocity \(v_g = k/\omega < 1\). This predicts frequency-dependent
+response (and, in principle, additional polarization content) controlled by the
+discrete tower \(m_n^2=2n/\lam^2\) and couplings \(c_n\).
+
+\subsection{Falsifiable tests and observational handles}
+The localization sector can be tested in several complementary ways. The
+discussion below is organized by which assumption in the controlled reduction is
+being probed.
+
+\paragraph{(i) Precision tests of Coulomb's law (static).}
+The cleanest signature is a Yukawa departure with \emph{fixed coefficient pattern}
+set by \(\Z(w)\). For Gaussian localization the leading correction has coefficient
+\(1/2\) and range \(\lam/2\) in the exponent (\cref{eq:leading_yukawa}). Any
+experimental bound on Yukawa deviations from \(1/r\) behavior can be translated
+directly into a bound on \(\lam\). Conversely, a detected deviation would overconstrain
+the model because higher-mode coefficients are not free: the subleading terms are
+predicted to follow \cref{eq:ratio_cn} with masses \(\{2\sqrt{m}/\lam\}_{m\ge1}\).
+
+\paragraph{(ii) Threshold behavior and dispersion (time-dependent).}
+For driven sources at frequency \(\omega\), the theory predicts a qualitative
+change in response when \(\omega\) crosses the first coupled KK mass \(m_2=2/\lam\).
+Below threshold, KK contributions are evanescent; above threshold they propagate
+with subluminal group velocity. If \(\lam\) were large enough to place \(m_2\) in
+an accessible band, this would appear as a sharp onset of dispersive components or
+additional attenuation channels. If no such effect is seen up to some frequency,
+one obtains a lower bound on \(m_2\), hence an upper bound on \(\lam\).
+
+\paragraph{(iii) Retarded ``tail'' structure (time-domain).}
+Massive modes produce causal tails inside the forward light cone
+(\cref{eq:KG_retarded}), implying that a sharp electromagnetic pulse sourced on
+the brane can generate a small, model-predicted after-response beyond the
+light-cone wavefront. Detecting (or constraining) such tails provides a direct
+probe of massive KK content distinct from static-force measurements.
+
+\paragraph{(iv) Charge conservation and possible leakage signatures.}
+The controlled reduction requires \(\J^w=0\) and yields bulk conservation
+\(\partial_M\J^M=0\) when the brane matter equations enforce
+\(\partial_\mu \J_b^\mu=0\) (\cref{eq:brane_current_conservation}). Any empirical
+signature of apparent charge nonconservation on the brane (or of systematic
+violations of the Maxwell divergence identity) would falsify the source model
+\cref{eq:brane_current_delta} and force the inclusion of transverse current or
+additional degrees of freedom. Conversely, the framework offers a precise place
+to parametrize such effects: \(\J^w\neq 0\) is not ``forbidden,'' but it moves one
+outside the Maxwell regime and predicts accompanying modifications in the \(N=w\)
+equation \cref{eq:eom_w}.
+
+\paragraph{(v) Profile-shape tests beyond the Gaussian.}
+While this paper adopts a Gaussian \(\Z(w)\) for analytic control, the general
+framework depends on \(\Z(w)\) only through the Sturm--Liouville problem
+\cref{eq:sl_problem} and the resulting tower \(\{m_n,c_n\}\). Different profiles
+produce different discrete spectra and coupling patterns. Thus, experimental
+constraints can be interpreted either as bounds on \(\lam\) \emph{within} the
+Gaussian class, or more broadly as constraints on the admissible profile shapes
+that yield the observed near-perfect Maxwell behavior on the brane.
+
+\subsection{Relation to the unified model and next derivations}
+Within the broader unified program, the localized Maxwell sector plays two roles:
+(i) it supplies a genuine gauge dynamics on the brane (including radiation and
+Lorentz-force coupling), and (ii) it provides a controlled place to quantify
+deviations (KK tails, Yukawa corrections) that can be linked to the transverse
+structure of the unified geometry. A natural next step is to derive or constrain
+\(\Z(w)\) and \(\lam\) from the throat/defect microphysics rather than treating
+them as phenomenological response data. The referee suite provided with this
+paper is designed to make that future step modular: any proposed \(\Z(w)\) can be
+dropped into the same symbolic pipeline to produce the corresponding
+\(\mueff\), KK spectrum, and brane deviation pattern.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We isolated the gauge-field sector of the unified \(4+1\) framework and showed
+that ordinary \(3+1\) Maxwell theory on the brane emerges as a controlled,
+script-verified limit of a localized \(5\)D Maxwell action. The core ingredients
+are: (i) a transverse localization profile \(\Z(w)\) multiplying the Maxwell
+kinetic term, (ii) standard gauge structure (with an explicit gauge-fixing term
+used here to make operator inversion and consistency checks transparent), and
+(iii) a brane-localized conserved source.
+
+Starting from the localized action \cref{eq:action_em}, variation with respect to
+\(\A_N\) yields the bulk Euler--Lagrange equations
+\cref{eq:5d_maxwell_eom_full}. The same framework implies the homogeneous Maxwell
+equations via the Bianchi identities \cref{eq:bianchi}, and it enforces a precise
+divergence consistency identity \cref{eq:div_identity_full} relating the gauge
+condition to current conservation. We also made explicit the gauge-variation
+structure of the source coupling \cref{eq:gauge_var_int} and the correct
+transformation-type assignments (covector \(\A_\mu\), vector \(\J^\mu\)) required
+for clean brane Lorentz-covariance checks.
+
+Under axial gauge and a brane-dominant zero-mode ansatz, integrating the bulk
+equations over \(w\) reduces the dynamics to standard \(3+1\) Maxwell theory with
+a renormalized coupling
+\begin{equation}
+  \mueff = \frac{\muo}{\Zint},
+  \qquad
+  \Zint=\int_{-\infty}^{\infty}\Z(w)\,\dd w.
+\end{equation}
+For the Gaussian profile \(\Z(w)=\exp(-w^2/\lam^2)\), \(\Zint=\lam\sqrt{\pi}\) and
+\(\mueff=\muo/(\lam\sqrt{\pi})\). Beyond this Maxwell regime, the same
+localization mechanism predicts a discrete KK tower governed by the
+Sturm--Liouville problem \cref{eq:sl_problem}. For Gaussian \(\Z\), the spectrum
+is \(m_n^2=2n/\lam^2\) with an even-mode coupling selection rule
+(\(c_{2m+1}=0\)), yielding a Coulomb potential plus Yukawa-suppressed corrections
+whose leading term has fixed coefficient \(1/2\) and range set by \(\lam\)
+(\cref{eq:leading_yukawa}). For time-dependent sources, each KK mode propagates
+with a covariant retarded Green function, so the full brane response remains
+causal and brane-Lorentz covariant, with calculable dispersive/tail corrections
+(\cref{sec:moving_sources}).
+
+Finally, we closed the consistency loop on the source side. A minimal brane
+matter model with \(U(1)\) phase symmetry yields a Noether current \(j^\mu\) with
+\(j^0=|\psi|^2\) and gauge-covariant spatial components \cref{eq:ji_covariant},
+together with the off-shell identity \cref{eq:noether_identity} implying
+\(\partial_\mu j^\mu=0\) on shell. Embedding the associated charge current as a
+brane-localized bulk source \(\J^\mu=J_\psi^\mu\delta(w)\), \(\J^w=0\) ensures
+\(\partial_M\J^M=0\), precisely the condition required by the Maxwell divergence
+identity and by gauge consistency.
+
+In summary, the localized Maxwell sector provides a complete, falsifiable
+mechanism for obtaining brane electromagnetism from the unified \(4+1\) model:
+standard Maxwell dynamics emerge at long distances and low frequencies, while
+well-structured deviations (Yukawa corrections, discrete thresholds, and causal
+tails) appear when transverse excitations are relevant. The accompanying symbolic
+referee suite was designed to make these claims reproducible and to enable direct
+future substitutions of alternative localization profiles \(\Z(w)\) derived from
+the underlying defect/throat microphysics.
+
+% ============================================================
+\appendix
+
+% ============================================================
+\section{Referee verification suite summary (Wolfram Language)}
+\label{app:wl_suite}
+
+This paper is accompanied by a compact Wolfram Language (WL) verification suite
+that checks the principal identities and reductions used in the main text. The
+suite is designed to be referee-friendly: each script prints the exact symbolic
+Lagrangian it varies (when applicable), converts \texttt{EulerEquations} output to
+expressions before comparison (to avoid \texttt{Equal[\dots]} mismatches), and
+tests all nontrivial identities by simplifying the \emph{residual} to zero under
+the declared conventions. In particular, the suite locks in the sign conventions
+and transformation types used throughout the paper: metric
+\(\eta_{MN}=\mathrm{diag}(-1,1,1,1,1)\), field strength
+\(\F_{MN}=\partial_M\A_N-\partial_N\A_M\), source coupling
+\(\mathcal L_{\rm int}=-\A_M\J^M\) with \(\J^M\) contravariant and \(\A_M\)
+covariant, and Gaussian localization \(\Z(w)=\exp(-w^2/\lam^2)\).
+
+\paragraph{(A) \texttt{maxwell\_from\_4d.wl}: action variation, EOM, Bianchi, divergence identity, brane reduction.}
+This is the core referee harness. It defines the localized Maxwell action with
+Gaussian \(\Z(w)\), includes the Lorenz-type gauge-fixing term, and varies with
+respect to \(\A_N\). It verifies:
+(i) the full \(4+1\) Euler--Lagrange equations match
+\(\partial_M(\Z\F^{MN})+(1/\xigf)\partial^N(\partial\!\cdot\!\A)=\muo\J^N\) for all
+components \(N\in\{t,x,y,z,w\}\) (residuals simplify to \(0\));
+(ii) the Bianchi identities \(\partial_{[L}\F_{MN]}=0\) hold identically for all
+index triples (residuals simplify to \(0\));
+(iii) the divergence consistency identity
+\(\partial_N(\mathrm{EOM}^N)=\xigf^{-1}\Box(\partial\!\cdot\!\A)-\muo\,\partial_N\J^N\)
+holds exactly (residual \(0\));
+and (iv) under a controlled brane/zero-mode reduction (\(\A_w=0\),
+\(\partial_w\A_\mu=0\)), the integrated equations reproduce standard \(3+1\)
+Maxwell with \(\mueff=\muo/\Zint=\muo/(\lam\sqrt{\pi})\).
+
+\paragraph{(B) \texttt{maxwell\_symmetry\_checks.wl}: gauge variation and brane Lorentz invariance.}
+This script checks the symmetry structure emphasized in
+\cref{sec:gauge_lorentz}. It verifies the gauge variation of the interaction term,
+\(\delta\mathcal L_{\rm int}=-\partial_M(\chi\J^M)+\chi\,\partial_M\J^M\), and the
+shift \(\delta(\partial\!\cdot\!\A)=\Box\chi\) implied by \(\delta \A_M=\partial_M\chi\).
+It also verifies brane Lorentz invariance by implementing the correct
+transformation types: \(\A_\mu\) as a covector and \(\J^\mu\) as a vector. With
+this bookkeeping, it confirms invariance of \(\F_{\mu\nu}\F^{\mu\nu}\) and
+\(\A_\mu\J^\mu\) under representative boosts (residuals simplify to \(0\)).
+
+\paragraph{(C) \texttt{maxwell\_kk\_coulomb\_propagator.wl}: Gaussian KK spectrum, couplings, Coulomb+Yukawa, and \(D_{\rm eff}(k^2)\).}
+This script establishes the transverse Sturm--Liouville eigenproblem
+\(-\frac{\dd}{\dd w}(\Z f')=m^2\Z f\) for Gaussian \(\Z\) and verifies the Hermite
+solutions \(f_n(w)=H_n(w/\lam)\) with spectrum \(m_n^2=2n/\lam^2\). It validates the
+mode norms \(\|f_n\|^2=\lam\sqrt{\pi}\,2^n n!\) by integer spot-checks and then
+uses the closed form to compute brane couplings
+\(c_n=f_n(0)^2/\|f_n\|^2\), confirming the parity selection rule \(c_{2m+1}=0\) and
+the even-mode formula \(\frac{c_{2m}}{c_0}=\frac{1}{4^m}\binom{2m}{m}\). It then
+derives the Coulomb zero-mode potential and the KK Yukawa corrections on the
+brane, including the leading correction coefficient \(1/2\) and mass \(2/\lam\).
+Finally, it checks that truncated Euclidean (and Minkowski) effective propagators
+depend only on the brane Lorentz scalar \(k^2\).
+
+\paragraph{(D) \texttt{maxwell\_axial\_gauge\_brane\_sources.wl}: axial gauge reachability, residual \(3+1\) gauge, \(\delta(w)\) sources, and integrated EOM.}
+This script demonstrates explicit axial gauge reachability via the parameter
+\(\chi_{\rm Ax}(w)=-\int_0^w \A_w\,\dd w'\), and shows that the residual gauge
+freedom is \(w\)-independent (standard \(3+1\) gauge parameter). It implements a
+brane-localized current \(\J^\mu=\J_b^\mu(x)\delta(w)\), \(\J^w=0\), and verifies:
+(i) the \(N=w\) Maxwell equation is consistent with axial gauge and the zero-mode
+ansatz; and (ii) integrating the \(N=\nu\) equations over \(w\) yields precisely
+the \(3+1\) Maxwell form with \(\mueff=\muo/\Zint\).
+
+\paragraph{(E) \texttt{maxwell\_moving\_charges\_propagator.wl}: covariant response for time-dependent sources.}
+This script provides a complementary momentum-space verification of the statements
+in \cref{sec:moving_sources}. It demonstrates explicitly that \(k^2\) is brane
+boost invariant and that the KK-truncated effective propagator depends only on
+\(k^2\), and it supplies the corresponding Minkowski \(\ii\epsilon\) prescriptions
+for retarded structure mode-by-mode. In the static limit, it reproduces the
+Coulomb+Yukawa structure; more generally it supports the statement that moving
+sources do not introduce preferred-frame artifacts in the brane response.
+
+\paragraph{(F) \texttt{matter\_current\_conservation.wl}: Noether current and off-shell identity.}
+This script derives the brane matter Noether current by probing a local phase
+variation \(\epsilon(t,x,y,z)\) in a minimally coupled matter Lagrangian of the
+form summarized in \cref{eq:L_matter}. It verifies:
+(i) constant phase transformations leave \(\mathcal L_\psi\) invariant;
+(ii) the extracted current satisfies \(j^0=|\psi|^2\) and the expected
+gauge-covariant spatial form; and (iii) the off-shell Noether identity
+\(\partial_\mu j^\mu + \frac{\ii}{\hbar}(\psi^*\mathrm{EL}_{\psi^*}-\psi\,\mathrm{EL}_\psi)=0\)
+holds exactly (residual simplifies to \(0\)) with the fixed sign convention used
+in this paper. This provides an independent derivation of the conservation law
+required by the Maxwell divergence identity.
+
+\paragraph{Reproducibility note.}
+All scripts are intended to be run in a standard WL kernel (e.g.\ via
+\texttt{math -script <file.wl>}). Each prints pass/fail messages and (where
+appropriate) the residual expressions before simplification. The suite is
+structured so that replacing the profile \(\Z(w)\) by an alternative localization
+ansatz requires changes in only one place, after which the same EOM, identity,
+KK-spectral, and reduction checks can be re-run verbatim.
+% ============================================================
+
+% ============================================================
+\section{Sign conventions and common pitfalls}
+\label{app:conventions_pitfalls}
+
+This appendix records the sign, index, and transformation conventions used in the
+paper and highlights the few implementation pitfalls that historically cause
+spurious discrepancies (especially in component-based symbolic checks). The goal
+is to make it easy for readers and referees to reproduce results without
+re-deriving the bookkeeping.
+
+\subsection{Frozen conventions used throughout}
+
+\paragraph{Coordinates and metric.}
+We use bulk coordinates \(x^M=(t,x,y,z,w)\) with
+\(\eta_{MN}=\mathrm{diag}(-1,1,1,1,1)\). The bulk d'Alembertian is
+\(\Box=\eta^{MN}\partial_M\partial_N=-\partial_t^2+\nabla^2+\partial_w^2\).
+Brane indices are \(\mu,\nu\in\{0,1,2,3\}\) and spatial brane indices
+\(i,j\in\{1,2,3\}\).
+
+\paragraph{Field strength.}
+The field strength is defined by
+\begin{equation}
+  \F_{MN}=\partial_M\A_N-\partial_N\A_M,
+  \qquad
+  \F^{MN}=\eta^{MP}\eta^{NQ}\F_{PQ}.
+\end{equation}
+With these definitions, the Bianchi identities
+\(\partial_{[L}\F_{MN]}=0\) hold identically.
+
+\paragraph{Localization profile.}
+The localization function \(\Z(w)\) multiplies the Maxwell kinetic term. In the
+main text we take the Gaussian
+\(\Z(w)=\exp(-w^2/\lam^2)\), with finite integral
+\(\Zint=\int\Z\,\dd w=\lam\sqrt{\pi}\).
+
+\paragraph{Source coupling sign and index placement.}
+The interaction term is fixed to
+\begin{equation}
+  \mathcal L_{\rm int} = -\A_M \J^M,
+\end{equation}
+where \(\J^M\) is treated as \emph{contravariant} (a vector field), and \(\A_M\)
+is \emph{covariant} (a one-form). With this convention, a gauge transformation
+\(\delta \A_M=\partial_M\chi\) yields
+\begin{equation}
+  \delta \mathcal L_{\rm int}
+  = -(\partial_M\chi)\J^M
+  = -\partial_M(\chi\J^M)+\chi\,\partial_M\J^M,
+\end{equation}
+so gauge invariance of the coupling (up to boundary terms) is equivalent to
+\(\partial_M\J^M=0\).
+
+\paragraph{Gauge fixing.}
+We include a Lorenz-type gauge-fixing term
+\(-(\partial\!\cdot\!\A)^2/(2\xigf\muo)\) with
+\(\partial\!\cdot\!\A\equiv\partial_M\A^M\). This term explicitly breaks gauge
+invariance, as expected, but renders the operator invertible and makes the
+divergence identity and component checks unambiguous.
+
+\subsection{Lorentz transformations: covector vs vector}
+
+A persistent source of apparent ``Lorentz non-invariance'' in component checks is
+using the wrong transformation type for \(\A_\mu\). In this paper:
+
+\begin{itemize}
+\item \(\A_\mu\) transforms as a \emph{covector} (one-form):
+\(\A'_\mu(x')=(\Lambda^{-1})^\nu{}_\mu\,\A_\nu(x)\).
+\item \(\J^\mu\) transforms as a \emph{vector}:
+\(\J'^\mu(x')=\Lambda^\mu{}_\nu\,\J^\nu(x)\).
+\end{itemize}
+
+With these assignments, \(\A_\mu\J^\mu\) is a Lorentz scalar and
+\(\F_{\mu\nu}\F^{\mu\nu}\) is invariant. Treating \(\A_\mu\) as a vector instead
+will generally produce spurious sign/index mismatches in invariance checks.
+
+\subsection{Brane reduction: what must vanish, and why}
+
+The controlled brane Maxwell limit relies on two closely related assumptions:
+
+\begin{enumerate}
+\item \textbf{Axial gauge and zero-mode dominance:} \(\A_w=0\) and
+\(\partial_w\A_\mu\simeq 0\) over the localization region so that
+\(\F^{w\nu}=-\partial^w\A^\nu\simeq 0\).
+\item \textbf{No transverse source flux:} \(\J^w=0\), consistent with the reduced
+\(N=w\) equation \cref{eq:eom_w}.
+\end{enumerate}
+
+If \(\J^w\neq 0\) or if significant \(w\)-dependence is present, the brane theory
+departs from pure Maxwell in a way controlled by the KK tower, as discussed in
+\cref{sec:discussion}.
+
+\subsection{Implementation pitfalls in symbolic workflows (WL)}
+
+The accompanying WL suite is structured to avoid several common pitfalls that can
+make correct physics look incorrect:
+
+\paragraph{(i) \texttt{EulerEquations} returns \texttt{Equal[\dots]}.}
+In WL, \texttt{EulerEquations} often returns equations as \texttt{lhs == rhs}.
+When checking equality against a target expression, it is safer to convert to a
+single expression via \(\texttt{lhs - rhs}\) before simplifying. Directly
+simplifying a difference of \texttt{Equal} objects can yield misleading
+nonzero residuals.
+
+\paragraph{(ii) Protected iterators and malformed replacement rules.}
+Using symbolic iterators in \texttt{Table} (e.g.\ \(\{a,b,c\}\) as if they were
+numeric ranges) can trigger protected-symbol errors. Likewise, constructing
+replacement rule lists indirectly (e.g.\ via nested \texttt{Join/Table} patterns)
+can silently produce malformed rule sets. The suite avoids these issues by using
+explicit index lists and clean, flat replacement-rule lists.
+
+\paragraph{(iii) Symmetry checks require correct index raising/lowering.}
+Sign mismatches often arise from mixing covariant and contravariant components
+without explicitly applying \(\eta_{MN}\) or \(\eta^{MN}\). The suite always
+computes \(\A^M=\eta^{MN}\A_N\) and \(\F^{MN}=\eta^{MP}\eta^{NQ}\F_{PQ}\) before
+forming divergences or contractions.
+
+\paragraph{(iv) Noether identity sign convention.}
+The off-shell Noether identity used in \cref{eq:noether_identity} has a definite
+relative sign between \(\partial_\mu j^\mu\) and the Euler--Lagrange combination
+\((\psi^*\mathrm{EL}_{\psi^*}-\psi\,\mathrm{EL}_\psi)\). Using the opposite sign
+will produce an apparent ``failure'' even if the extracted current is correct.
+The suite implements the identity in the form written in the main text.
+
+\paragraph{(v) KK norms for symbolic mode number.}
+Direct symbolic integration of Hermite norms for generic \(n\) can return
+\texttt{Indeterminate} in WL. The suite validates the closed form by spot-checking
+integer \(n\) and then uses the validated closed-form expression for general
+statements about \(c_n\) and the Yukawa tower.
+% ============================================================
+
+\end{document}

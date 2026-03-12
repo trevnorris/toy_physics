@@ -814,16 +814,20 @@ D_A^{(s)} \equiv \partial_A - \frac{\ii q_s}{\hbar}A_A,
 \paragraph{Matter action (nonrelativistic, gauge-covariant).}
 A minimal multi-species matter action consistent with the unified model style is
 \begin{equation}
+\begin{split}
 S_{\rm matt}[\{\psi_s\},A]
-=
+&=
 \sum_{s=1}^S
 \int \dd t\,\dd^3x\,\dd w\;
-\left[
-\frac{\ii\hbar}{2}\Big(\psi_s^\ast D_t^{(s)}\psi_s - \psi_s (D_t^{(s)}\psi_s)^\ast\Big)
+\Biggl[
+\frac{\ii\hbar}{2}\Bigl(\psi_s^\ast D_t^{(s)}\psi_s - \psi_s (D_t^{(s)}\psi_s)^\ast\Bigr)
+\\
+&\qquad
 -\frac{\hbar^2}{2m_s}(D_A^{(s)}\psi_s)^\ast(D_A^{(s)}\psi_s)
 - V_{{\rm conf},s}(\x,w)\,|\psi_s|^2
 - U_s(|\psi_s|^2)
-\right],
+\Biggr],
+\end{split}
 \label{eq:matter_action}
 \end{equation}
 where \(V_{{\rm conf},s}\) is an optional confinement/geometry potential and
@@ -1321,11 +1325,13 @@ This section establishes that standard \(3+1\) Maxwell theory and classical MHD 
 as \emph{controlled limits} of the full \(4+1\) bulk plasma--EM system
 (Section~\ref{sec:full_system}). The reductions proceed in three stages:
 \begin{equation}
-\text{(bulk localized Maxwell + bulk plasma)}\;
-\Longrightarrow\;
-\text{(effective brane Maxwell + brane two-fluid)}\;
-\Longrightarrow\;
-\text{(single-fluid MHD)}.
+\begin{aligned}
+&\text{(bulk localized Maxwell + bulk plasma)}
+\\
+&\Longrightarrow \text{(effective brane Maxwell + brane two-fluid)}
+\\
+&\Longrightarrow \text{(single-fluid MHD)}.
+\end{aligned}
 \end{equation}
 The purpose of these reductions is twofold:
 (i) to show that MHD is recoverable and therefore is not contradicted by the parent
@@ -4986,26 +4992,5 @@ physically grounded mechanism for apparent non-ideality on the brane: magnetic e
 into transverse and geometry reservoirs (Appendix~\ref{app:proj_energy_helicity}) rather than being represented
 solely by an \emph{ad hoc} resistivity. This is precisely the kind of channel needed to model reconnection-like
 phenomena while keeping the bulk dynamics conservative and diagnosable.
-
-% ============================================================
-% Bibliography (single-file friendly)
-% ============================================================
-\begin{thebibliography}{99}
-
-% TODO: Replace placeholders with your actual bib entries.
-% \bibitem{...} Author, Title, Journal (Year).
-% Include standard MHD references and any prior papers in your series.
-
-\bibitem{ref_mhd_textbook}
-% Example placeholder:
-Author(s), \emph{Magnetohydrodynamics}, Publisher (Year).
-
-\bibitem{ref_vlasov_maxwell}
-Author(s), \emph{Vlasov--Maxwell theory / numerical methods}, Journal (Year).
-
-\bibitem{ref_series_unified4d}
-Author(s), \emph{Unified 4D model papers}, (Year).
-
-\end{thebibliography}
 
 \end{document}

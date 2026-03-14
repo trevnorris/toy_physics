@@ -1,0 +1,378 @@
+\documentclass[11pt]{article}
+
+% -----------------------------
+% Packages
+% -----------------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% -----------------------------
+% Macros
+% -----------------------------
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\X}{\mathbf X}
+\newcommand{\x}{\mathbf x}
+\newcommand{\grad}{\nabla}
+\newcommand{\gradFour}{\nabla_{4}}
+\newcommand{\gradThree}{\nabla_{3}}
+\newcommand{\lapFour}{\nabla_{4}^{2}}
+\newcommand{\lapThree}{\nabla_{3}^{2}}
+\newcommand{\Proj}[1]{\overline{#1}}
+\newcommand{\kadd}{\kappa_{\mathrm{add}}}
+\newcommand{\kPV}{\kappa_{\mathrm{PV}}}
+\newcommand{\betaPN}{\beta_{\mathrm{1PN}}}
+\newcommand{\Seff}{Z^{\mathrm{eff}}}
+
+% -----------------------------
+% Theorem environments
+% -----------------------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{goal}{Goal Theorem}
+\newtheorem{hypothesis}{Hypothesis}
+
+% -----------------------------
+% Title
+% -----------------------------
+\title{Toward a First-Principles 1PN Theorem for the Unified 4D Toy Model\\
+A PDE Theorem Program and Dependency Ladder}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The recent 4D papers in this series establish a unified bulk model, an operational brane projection, exact open-system identities for brane observables, and a controlled derivation of the full conservative 1PN two-body sector under explicit small-body, wake, and adiabatic-response closures. The natural next question is whether those closures can be eliminated and replaced by a theorem of the raw 4D evolution itself. This note writes that program down in PDE language. We formulate the strongest realistic theorem target, distinguish the current PDE-ODE model from a future all-field completion, state the scale hierarchy required for a first-principles result, and organize the proof into a dependency ladder: existence and orbital stability of a localized defect manifold; modulation equations for well-separated slow defects; a moving-defect linear-response theorem for the wake tensor; a low-frequency internal-response theorem for the effective compliance operator; quantitative control of leakage and projected stress terms; and the final assembly of the full 1PN or Einstein--Infeld--Hoffmann effective dynamics. The purpose of the note is not to claim that the theorem is already proved, but to convert the informal research roadmap into a paper-grade statement of targets, hypotheses, and intermediate lemmas. The program is also designed to be falsifiable: if the exact 4D system produces memory, dissipation, or resonant corrections at 1PN order, that outcome should appear as a theorem as well, rather than being hidden inside a closure ansatz.
+\end{abstract}
+
+\section{Introduction and scope}
+\label{sec:intro}
+
+The current 4D paper sequence has reached an important threshold. On the one hand, the model is no longer a purely phenomenological brane theory: it now has an explicit action, exact Euler--Lagrange equations, exact projected balance laws, a controlled brane reduction, a derived Newtonian channel, and a controlled derivation of the full conservative 1PN point-particle sector. On the other hand, the final 1PN paper is still honest about where closure enters: the particle limit is obtained using a coherent-defect/small-body reduction, the cross-velocity sector is imported from a wake reconstruction module rather than from the resolvent of the moving 4D defect, and the internal pressure-volume response is fixed by an explicit adiabatic protocol rather than by a theorem of the exact driven internal dynamics.
+
+This note writes down the next stage as a theorem program rather than another effective derivation. The question is not whether one can ever prove anything with ``no assumptions''; every PDE theorem has hypotheses. The real target is sharper: can one eliminate the \emph{extra phenomenological closures} and derive the effective 1PN dynamics directly from a fully specified 4D model, using only the usual analytic hypotheses on well-posedness, regularity, spectral stability, scale separation, and nonresonance? We argue that the answer is yes in principle, but that the required work is best thought of as a modulation/solitary-defect/long-time asymptotics program for the exact 4D bulk system.
+
+\subsection{What this note does and does not claim}
+
+This note is a roadmap paper. It does \emph{not} claim a new proof of the theorem targets below. Instead it does four narrower things.
+\begin{enumerate}[leftmargin=1.5em]
+  \item It states the strongest theorem target that would count as ``from the raw 4D system'' in a mathematically meaningful sense.
+  \item It separates two theorem levels that should not be conflated: a theorem for the current explicit PDE-ODE model with effective geometry variables $(a,L)$, and a theorem for a future all-field completion in which those variables are replaced by microscopic wall/shape fields.
+  \item It decomposes the full result into a dependency ladder of intermediate theorems that look like standard nonlinear PDE tasks rather than physics prose.
+  \item It records in advance what would also count as a successful mathematical outcome if the model does \emph{not} reduce exactly to conservative EIH dynamics---namely, an effective system of the form ``EIH plus memory, leakage, or dissipation terms'' with quantified coefficients and error bounds.
+\end{enumerate}
+
+\subsection{Why a theorem program is the right next paper}
+
+The earlier derivation papers were designed to identify which coefficients are fixed by the 4D structure and which remain response-dependent. That organization is exactly what a later proof needs. The exact projected identities already isolate the potential obstructions: leakage into the extra coordinate $w$, unresolved projected stresses, moving-defect wake response, and protocol-dependent internal compliance. The theorem program therefore does not begin from a vague aspiration; it begins from a nearly complete ledger of the places where closure still enters and replaces each such closure by a specific proof target.
+
+\section{The exact model and the theorem target}
+\label{sec:model}
+
+\subsection{Minimal bulk/brane dictionary}
+
+The parent model lives on a $(4+1)$-dimensional spacetime with coordinates
+\begin{equation}
+  x^{M}=(t,x,y,z,w)\equiv (t,\x,w),
+  \qquad
+  \X=(x,y,z,w)\in\R^{4},
+  \qquad
+  \x=(x,y,z)\in\R^{3}.
+\end{equation}
+The current paper series uses a nonrelativistic matter sector and a localized electromagnetic sector. At the action level the matter/gauge part may be written schematically as
+\begin{align}
+S_{\rm bulk}[\psi,A;a,L]
+&=
+\int \dd t\,\dd^{3}x\,\dd w\,
+\Bigg[
+\frac{\ii\hbar}{2}\big(\psi^{\ast}D_{t}\psi-\psi D_{t}\psi^{\ast}\big)
+-\frac{\hbar^{2}}{2m}(D_{i}\psi)^{\ast}(D_{i}\psi)
+- V_{\rm conf}(\X;a,L)|\psi|^{2}
+- U(|\psi|^{2})
+\nonumber\\
+&\hspace{8em}
+-\frac{Z(w)}{4\mu_{0}}F_{MN}F^{MN}
+-\frac{1}{2\xi\mu_{0}}(\partial\cdot A)^{2}
++ A_{M}J^{M}_{\rm ext}
+\Bigg],
+\label{eq:schematic_action}
+\end{align}
+with $i\in\{x,y,z,w\}$, gauge-covariant derivatives
+\begin{equation}
+D_{t}=\partial_{t}+\frac{\ii q}{\hbar}A_{0},
+\qquad
+D_{i}=\partial_{i}-\frac{\ii q}{\hbar}A_{i},
+\end{equation}
+and a stiff polytropic matter nonlinearity $U(\rho)$ whose exponent has already been fixed in the earlier derivation work.
+
+The present model series also includes effective geometry variables $(a(t),L(t))$ entering the confinement and geometry energy. For the theorem program it is essential to separate two cases.
+\begin{description}[leftmargin=1.75em,style=nextline]
+  \item[Level A: current explicit model.] The theorem is proved for the declared PDE-ODE system consisting of $(\psi,A_{M})$ coupled to the finite-dimensional geometry sector $(a,L)$.
+  \item[Level B: full all-field completion.] The effective variables $(a,L)$ are replaced by microscopic wall/shape fields, producing a genuine all-field PDE system. The theorem is then a theorem of the raw 4D PDE with no leftover finite-dimensional closure sector.
+\end{description}
+The note below is written so that every theorem target makes sense at Level A and can then be upgraded to Level B once the geometry completion is specified.
+
+\subsection{Operational brane observables and exact open-system identities}
+
+Brane observables are defined by a projection kernel $W(w)$ rather than by boundary conditions. For any bulk quantity $Q(t,\x,w)$,
+\begin{equation}
+  \Proj{Q}(t,\x)=\int_{-\infty}^{\infty}W(w)
+  Q(t,\x,w)\,\dd w,
+  \qquad
+  W(w)\ge 0,
+  \qquad
+  \int_{-\infty}^{\infty}W(w)\,\dd w=1.
+\end{equation}
+If the bulk matter current is $j^{i}=\rho v^{i}$ with $i\in\{x,y,z,w\}$, the projected density obeys the exact identity
+\begin{equation}
+  \partial_{t}\Proj{\rho} + \partial_{a}\Proj{j^{a}} = S_{\rm leak},
+  \qquad a\in\{x,y,z\},
+\end{equation}
+where $S_{\rm leak}$ depends on $W'(w)$ and the transverse flux $j^{w}$. Likewise, the projected longitudinal velocity potential obeys an exact identity whose quasi-static leading term contains a $3$D Poisson operator. In the existing papers these identities are the structural origin of the Newtonian channel and the place where open-system corrections first enter.
+
+The theorem program must therefore treat leakage and unresolved projected stress not as nuisances but as named error terms with explicit estimates. This will matter both for the Newtonian limit and for the 1PN closure.
+
+\subsection{A realistic theorem target}
+
+The strongest sensible theorem target is not ``no assumptions,'' but rather the following kind of statement.
+
+\begin{goal}[schematic first-principles 1PN theorem]
+Fix a fully specified 4D model of the form \eqref{eq:schematic_action} (Level A or Level B). Assume the existence of a spectrally stable family of localized defects, parameterized by center, phase, velocity, and finitely many internal coordinates. For well-prepared initial data consisting of $N$ well-separated slow defects plus small radiation, and for a scale hierarchy in which the orbital motion is slow compared to internal defect frequencies and radiation remains perturbative, the exact 4D evolution stays close to a modulated multi-defect manifold on the relevant orbital timescale. The defect centers obey an effective finite-dimensional dynamics whose conservative part is the Einstein--Infeld--Hoffmann 1PN system with coefficients fixed by the exact 4D model, up to a provable higher-order remainder in the declared post-Newtonian counting. If the exact response operator fails the necessary locality or nonresonance hypotheses, then the theorem yields instead an effective system of the form
+\begin{equation}
+  \text{EIH} + \text{explicit memory/leakage/dissipation corrections} + \text{higher-order remainder}.
+\end{equation}
+\end{goal}
+
+The point of stating the theorem this way is that it already contains the correct failure mode. If the exact 4D system is slightly nonconservative at the projected 1PN level, the theorem should reveal that fact rather than suppress it inside a closure ansatz.
+
+\section{Scale hierarchy and theorem hypotheses}
+\label{sec:scales}
+
+To turn the theorem target into a proof program, one needs a hierarchy of small parameters and explicit hypotheses. The current derivation papers suggest three conceptually distinct small parameters.
+\begin{align}
+  \eta &:= \frac{\ell_{\ast}}{d_{\min}},
+  &&\text{defect core size / minimal inter-defect separation},
+  \\
+  \eps &:= \frac{v_{\rm orb}}{c_{\rm eff}},
+  &&\text{post-Newtonian velocity parameter},
+  \\
+  \sigma &:= \frac{\omega_{\rm orb}}{\omega_{\rm int}},
+  &&\text{orbital / internal-frequency ratio}.
+\end{align}
+Here $\ell_{\ast}$ is a characteristic defect size, $d_{\min}$ the smallest pairwise separation in the time interval of interest, $c_{\rm eff}$ the relevant wave speed of the bulk model, and $\omega_{\rm int}$ the gap to the lowest dangerous internal resonance. The intended regime is
+\begin{equation}
+  \eta \ll 1,
+  \qquad
+  \eps \ll 1,
+  \qquad
+  \sigma \ll 1,
+\end{equation}
+with some compatibility relation among them depending on the precise normalization of the defect family and the PN bookkeeping. One should keep the parameters separate in the proof until the final assembly stage.
+
+\begin{hypothesis}[well-posed microscopic dynamics]
+The exact Level A or Level B model is globally or sufficiently long-time well posed in a regularity class stable under the perturbative regime under consideration; gauge fixing yields a closed evolution; and the conserved or almost-conserved quantities needed for orbital stability are finite and differentiable on that class.
+\end{hypothesis}
+
+\begin{hypothesis}[localized defect manifold]
+There exists a smooth finite-codimension manifold of single-defect solutions
+\begin{equation}
+  \mathcal M_{1}=\Big\{ U_{\lambda,\theta,\xi,v} :
+  \lambda\in\Lambda,\ \theta\in\mathbb S^{1},\ \xi\in\R^{3},\ v\in\R^{3},\ |v|\ll c_{\rm eff}\Big\},
+\end{equation}
+where $U$ collects all microscopic fields (and, at Level A, the geometry variables), $\lambda$ denotes internal labels, and the tangent directions corresponding to translation, phase, and slow velocity are the only neutral modes relevant in the theorem regime.
+\end{hypothesis}
+
+\begin{hypothesis}[spectral stability and nonresonance]
+The linearized operator about a static defect has no unstable spectrum, has a spectral gap separating neutral modes from the continuous spectrum and dangerous internal modes, and obeys resolvent/semigroup bounds strong enough to control radiation and moving-defect response. In the low-frequency window relevant to orbital motion, no internal or bulk mode crosses zero in a way that destroys locality of the effective response.
+\end{hypothesis}
+
+\begin{hypothesis}[well-prepared multi-defect data]
+Initial data may be decomposed into a sum of $N$ defects with pairwise separation at least $d_{\min}\gg \ell_{\ast}$, velocities of size $O(\eps)$, small radiation remainder in an energy norm, and orthogonality conditions fixing the modulation parameters uniquely.
+\end{hypothesis}
+
+\begin{remark}
+The last two hypotheses are exactly where the present closure-based derivation papers leave off. The current program has good symbolic evidence for the target coefficients, but no theorem yet that the exact moving-defect linearization or the exact internal-response operator actually satisfies these hypotheses.
+\end{remark}
+
+\section{The theorem ladder}
+\label{sec:ladder}
+
+The full 1PN result should be broken into intermediate theorems whose inputs and outputs are explicit. In this section each item is stated as a paper-grade target, not as an established theorem.
+
+\subsection{Single-defect existence and orbital stability}
+
+\begin{goal}[single-defect existence and orbital stability]
+For the exact Level A or Level B model, prove existence of a branch of localized static defects and, after including the neutral symmetry directions, orbital stability of that branch under small perturbations. More precisely, show that for data sufficiently close to a given defect, the solution remains close for long times to the orbit of the defect manifold modulo translation, phase, and any explicitly retained internal coordinates.
+\end{goal}
+
+This theorem replaces the informal ``coherent defect'' picture by an actual nonlinear object. Without it there is no rigorous particle limit, because the object whose center is supposed to obey Newtonian or 1PN motion has not yet been proved to persist.
+
+\paragraph{Expected proof ingredients.}
+Variational construction of the static profile; coercivity of the second variation modulo symmetries; a Grillakis--Shatah--Strauss type argument if applicable; or, if the localized Maxwell sector and geometry variables complicate the Hamiltonian structure, an adapted constrained-energy method for the mixed matter/gauge system.
+
+\subsection{Modulation equations and the Newtonian law}
+
+\begin{goal}[two-defect modulation law and Newtonian limit]
+For two well-separated defects, derive modulation equations for the defect centers and neutral coordinates directly from the exact 4D conservation laws and orthogonality conditions. Show that the leading center-of-mass dynamics reduces to the Newtonian inverse-square interaction already identified at the projected level, with an error controlled by explicit powers of $\eta$, $\eps$, and the radiation norm.
+\end{goal}
+
+This theorem is the rigorous replacement for the current small-body/worldtube reduction. It should not begin from a point-particle ansatz; rather, the point-particle equation should appear as the leading term in the modulation equations for the exact defect family.
+
+A useful intermediate statement here is a theorem controlling the projected Poisson channel.
+\begin{goal}[projected Poisson law with controlled leakage]
+In the slow, weakly radiating regime generated by well-separated defects, prove that the exact projected longitudinal identity reduces to a 3D Poisson equation with a source equal to the defect mass density plus a remainder bounded by leakage, transverse velocity, and profile-deformation norms. Quantify the regime in which those remainders are of strictly higher order than the Newtonian force.
+\end{goal}
+
+\subsection{Moving-defect linear response and the wake tensor}
+
+\begin{goal}[moving-defect wake theorem]
+Linearize the exact 4D evolution about a slowly translating defect and prove that the induced far field admits an asymptotic expansion whose bilinear overlap generates the velocity-dependent cross-interaction tensor. In the isotropic parity-even branch, show that the leading tensor decomposes into longitudinal and transverse projectors with coefficients determined by the resolvent of the linearized operator. Determine whether the parity-even helical channel vanishes and whether the resulting tensor reproduces the EIH cross-coefficients previously recovered from the wake reconstruction module.
+\end{goal}
+
+This is the rigorous substitute for importing an isotropic wake basis. The theorem should produce the coefficients currently denoted by the longitudinal fraction, the vector-sector normalization, and any helical amplitude directly from the exact linearized operator around the moving defect. The key point is not merely to recover the correct tensor structure, but to tie that structure to actual spectral data of the 4D PDE.
+
+\paragraph{Why this step is hard.}
+Unlike the Newtonian channel, which is already visible in the projected continuity structure, the wake coefficients depend on the detailed moving-defect resolvent. This is the first place where dispersive estimates, threshold analysis, and possible embedded resonances are likely to matter in an essential way.
+
+\subsection{Internal response, effective compliance, and the low-frequency operator}
+
+\begin{goal}[low-frequency internal-response theorem]
+Consider the exact defect subjected to a small external drive at frequency $\omega$ through the same operational port variables used in the current response analysis. Prove that the exact effective operator $\Seff(\omega)$ exists in a neighborhood of $\omega=0$ and admits an expansion
+\begin{equation}
+  \Seff(\omega)=Z_{0}+\ii\omega Z_{1}+\omega^{2} Z_{2}+\cdots
+\end{equation}
+under a nonresonance hypothesis. Derive the static or adiabatic compliance tensor from $Z_{0}$, identify the induced conservative pressure-volume contribution to the defect inertia, and compute the exact coefficient that replaces the current adiabatic closure for $\kPV$.
+\end{goal}
+
+This theorem should be viewed as the rigorous form of the present compliance-language program. The current papers already define the operational extraction of $\Seff(\omega)$, but the coefficient $\kPV$ is still determined by an explicit protocol closure rather than by the exact driven dynamics. A theorem would replace that protocol closure by a small-frequency limit of the true response operator.
+
+\begin{remark}
+The theorem may fail in an informative way. If $\Seff(\omega)$ has a nearby pole, branch singularity, or nonlocal memory kernel at orbital frequencies, the correct effective dynamics will not be purely adiabatic. In that case the theorem should produce a nonlocal or weakly dissipative correction rather than a static $\kPV$.
+\end{remark}
+
+\subsection{Leakage and projected unresolved stress}
+
+\begin{goal}[open-system correction control]
+For well-prepared multi-defect data in the theorem regime, bound the leakage source $S_{\rm leak}$ and the unresolved projected stress terms in the brane equations by explicit higher-order quantities. Alternatively, if any of these terms survive at 1PN order, derive their contribution to the effective worldline dynamics and state the modified finite-dimensional equations explicitly.
+\end{goal}
+
+This is not an optional bookkeeping theorem. The projection formalism is one of the strongest structural features of the model, but it also means the theorem cannot simply assert a closed brane dynamics without proving that closure or quantifying its failure.
+
+\subsection{Assembly of the full 1PN theorem}
+
+\begin{goal}[full conservative 1PN theorem or modified 1PN theorem]
+Combine the single-defect stability theorem, the Newtonian modulation theorem, the moving-wake theorem, the low-frequency internal-response theorem, and the leakage/stress control theorem to obtain the effective defect-center equations through first post-Newtonian order. In the nonresonant conservative regime, show that the resulting finite-dimensional dynamics is the EIH system with coefficients fixed by the exact 4D model. In the general case, derive the modified 1PN equations containing the leading memory, leakage, or dissipation terms inherited from the exact 4D dynamics.
+\end{goal}
+
+This is the theorem that would replace the current closure-based full 1PN derivation.
+
+\section{A sharpened statement of the final theorem target}
+\label{sec:mainstatement}
+
+Once the intermediate theorems above are in place, the final theorem should look roughly like the following.
+
+\begin{theorem}[target form of the 1PN modulation theorem]
+Consider a fully specified 4D model of the current series, either at Level A (PDE-ODE) or Level B (all-field PDE), and suppose the hypotheses of \cref{sec:scales} hold together with the conclusions of the theorem ladder in \cref{sec:ladder}. Then for initial data consisting of $N$ well-separated defects with velocities of size $O(\eps)$ and sufficiently small radiation remainder, there exist modulation parameters
+\begin{equation}
+  \{\xi_{a}(t),v_{a}(t),\theta_{a}(t),\lambda_{a}(t)\}_{a=1}^{N}
+\end{equation}
+and a radiation field $r(t)$ such that:
+\begin{enumerate}[leftmargin=1.5em]
+  \item The exact microscopic solution may be decomposed as a modulated multi-defect configuration plus $r(t)$, with $r(t)$ controlled in a norm strong enough to justify the asymptotic expansion over the orbital timescale of interest.
+  \item The defect centers satisfy
+  \begin{equation}
+    \ddot\xi_{a}=\mathcal F^{\rm Newt}_{a}(\xi)+\mathcal F^{\rm 1PN}_{a}(\xi,v)+\mathcal R_{a},
+  \end{equation}
+  where $\mathcal F^{\rm Newt}_{a}$ is the leading Newtonian inverse-square interaction, $\mathcal F^{\rm 1PN}_{a}$ is either the conservative EIH correction or the EIH correction plus explicit memory/leakage/dissipative terms, and the remainder $\mathcal R_{a}$ is higher order in the declared hierarchy.
+  \item The projected brane observables generated by the exact bulk solution satisfy the corresponding effective brane equations up to the same order, with leakage and unresolved stress terms either absorbed into the higher-order remainder or appearing explicitly in the modified 1PN dynamics.
+\end{enumerate}
+\end{theorem}
+
+The theorem is written this way because it is robust to what the exact model actually does. If the true low-frequency response is conservative and local, one recovers EIH. If not, one still gets a theorem of the exact 4D model, just with a more complicated effective system.
+
+\section{A dependency table for the proof program}
+\label{sec:table}
+
+\begin{table}[t]
+  \centering
+  \caption{Dependency ladder for a first-principles 1PN theorem.}
+  \label{tab:dependencies}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabularx}{\linewidth}{@{}l L L L@{}}
+    \toprule
+    Step & Input & Output & Role in final theorem \\
+    \midrule
+    Single-defect existence/stability & Exact 4D model; constrained energy; spectral analysis & Stable defect manifold $\mathcal M_{1}$ & Provides the object whose center may be modulated \\
+    Newtonian modulation law & $\mathcal M_{1}$; orthogonality conditions; conservation laws & Worldline dynamics with inverse-square leading force & Replaces the current coherent-defect particle ansatz \\
+    Moving-wake theorem & Linearization about translating defect; resolvent bounds & Exact cross-velocity tensor and far-field wake coefficients & Replaces imported wake basis and fixes the bilinear cross sector \\
+    Low-frequency response theorem & Driven defect problem; operational port variables; nonresonance & Expansion of $\Seff(\omega)$ and exact conservative compliance coefficient & Replaces adiabatic $\kPV$ closure \\
+    Leakage/stress control & Projection identities; decay estimates; radiation bounds & Quantified open-system remainder or explicit correction terms & Justifies closed brane reduction or states its failure quantitatively \\
+    Final assembly & All prior steps & EIH 1PN theorem or modified 1PN theorem & Produces the effective worldline dynamics from the exact 4D model \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{What counts as success, and what counts as falsification}
+\label{sec:success}
+
+A useful theorem program should be falsifiable. In the present context there are at least three distinct mathematically respectable outcomes.
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Best-case outcome:} the theorem proves a conservative EIH 1PN limit for the exact 4D model in a clean nonresonant regime.
+  \item \textbf{Intermediate outcome:} the theorem proves a modified 1PN limit with explicit memory, leakage, or weakly dissipative corrections whose size and tensor structure are derived rather than guessed.
+  \item \textbf{Negative but informative outcome:} one of the key hypotheses fails---for example, no spectrally stable defect manifold exists, or a threshold resonance destroys locality at orbital frequencies. That would show that the exact model does not support the conservative 1PN picture without further microscopic modification.
+\end{enumerate}
+
+All three outcomes would be scientifically valuable. The second and third outcomes are especially important because the open-system structure of the projected theory already warns us that exact closure is not automatic.
+
+\section{Practical order of attack}
+\label{sec:order}
+
+The proof program should be executed in the same order as the theorem ladder rather than by aiming directly at the full 1PN theorem. A sensible sequence is:
+\begin{enumerate}[leftmargin=1.5em]
+  \item prove existence and orbital stability of a single defect;
+  \item derive the two-defect Newtonian modulation law from the exact 4D evolution;
+  \item analyze the linearized moving-defect resolvent and derive the wake tensor;
+  \item solve the low-frequency driven internal-response problem and determine whether the exact response is local/adiabatic or genuinely nonlocal;
+  \item combine the preceding results with quantitative leakage/stress estimates to obtain the full 1PN theorem.
+\end{enumerate}
+
+At the current stage of the series, the first two steps look most immediately accessible. The symbolic structure of the existing 4D papers strongly suggests that the Newtonian theorem is within reach once the defect manifold is under control. The moving-wake theorem and the low-frequency response theorem are probably the technically hardest parts, because they depend on the fine spectral structure of the exact linearized operator.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The current 4D papers have already done the conceptual work needed to formulate a serious PDE theorem program. The exact model is explicit, the projected identities isolate the genuine closure obstructions, and the closure-based 1PN derivation provides a clear target for what the exact theorem should reproduce or modify. The next stage is therefore not another round of coefficient matching; it is a solitary-defect and modulation theory for the full 4D system.
+
+The correct theorem target is not ``no assumptions,'' but ``no extra phenomenological closures beyond a fully specified microscopic model and the standard analytic hypotheses of nonlinear PDE.'' Written that way, the program looks viable. Its best outcome is a first-principles derivation of the EIH/1PN sector from the exact 4D bulk dynamics. Its equally important alternative outcome is a theorem showing precisely where and how the exact model departs from conservative EIH behavior through leakage, memory, or resonant response. Either result would be a substantial advance over the present closure-based derivation and would clarify the real content of the 4D toy model.
+
+\end{document}

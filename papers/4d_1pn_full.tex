@@ -13,6 +13,8 @@
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{makecell}
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage[nameinlink,noabbrev]{cleveref}
@@ -87,24 +89,7 @@ from the Unified 4D Toy Model}
 \maketitle
 
 \begin{abstract}
-% TODO: tighten after the main text is written.
-We present a paper skeleton for deriving the full first post-Newtonian (1PN)
-point-particle sector from the unified 4D toy model under explicit claim classes.
-The narrative is organized so that each step is labeled as an exact identity,
-controlled reduction, protocol-dependent closure, or full coefficient match.
-The intended derivation chain is:
-(i) the action-based 4D bulk/branes-observer framework and its exact projection identities,
-(ii) the quasi-static Poisson hook on the brane,
-(iii) a coherent-defect / small-body worldtube reduction to Newtonian particle motion,
-(iv) scalar and optical dressing that fixes the self-sector coefficient,
-(v) topology and internal-response closures that fix added-mass and breathing-response terms,
-(vi) a constructive wake derivation of the EIH cross-velocity tensor,
-and finally
-(vii) assembly of the complete two-body 1PN Lagrangian and the standard perihelion result.
-The paper makes explicit what is fixed within the stated closures
-(\(q=1\), \(n=5\), \(\kadd=1/2\), \(\alphaSq=3/4\), \(a_H=0\), \(\Kvec=2/\pi^2\),
-\(\kPV=3/2\), \(\betaPN=3\)) and what remains symbolic pending a more complete
-moving-throat derivation.
+We present a controlled derivation of the full conservative two-body first post-Newtonian (1PN) sector from the four-spatial-dimensional brane--bulk toy model. Starting from the exact bulk action, projection map, and open-system balance laws, we identify a quasi-static near-zone Poisson hook on the brane and use a coherent-defect / small-body worldtube reduction to obtain the Newtonian point-particle limit. We then derive the 1PN ledger sector by sector. Newtonian matching fixes the scalar mass-dressing exponent \(q=1\), weak-field optical consistency fixes the polytropic exponent \(n=5\), and wave-supported rest energy yields the universal free-particle \(v^4\) coefficient. Local mass scaling plus pair counting generate the static \(G^2/r^2\) term, while exterior potential-flow topology fixes the added-mass coefficient \(\kappa_{\rm add}=1/2\) for a \(w\)-uniform throat. In the parity-even velocity-dependent cross sector, a constructive isotropic Fourier-space wake basis, together with the thermodynamic closure implied by \(n=5\), selects \(\alpha^2=3/4\), \(a_H=0\), and \(K_{\rm vec}=2/\pi^2\), reproducing the Einstein--Infeld--Hoffmann coefficients \(C_\parallel=-7/2\) and \(C_L=-1/2\). Under an explicit adiabatic one-degree-of-freedom breathing closure we further obtain \(\kappa_{\rm PV}=3/2\), so that \(\beta_{1\rm PN}=\kappa_\rho+\kappa_{\rm add}+\kappa_{\rm PV}=3\). The assembled reduced two-body Lagrangian is then algebraically identical to the standard conservative EIH form, and the test-mass limit reproduces the standard perihelion shift. The result is a full conservative 1PN derivation within a clearly stated closure hierarchy, with remaining freedom confined to generalized internal response, finite-size structure, and beyond-1PN open-system effects.
 \end{abstract}
 
 % ============================================================
@@ -163,10 +148,10 @@ These non-claims are not weaknesses to be hidden. They are part of the correct i
 
 To keep the argument referee-safe, we will label derivation steps by claim class throughout.
 \begin{description}[leftmargin=1.8em,style=nextline]
-  \item[\Exact] identities that follow directly from the declared action, definitions, symmetry bookkeeping, or algebraic pair counting.
-  \item[\Controlled reduction] steps that require an explicit regime assumption, such as quasi-staticity, small-body scaling, smooth external fields across the defect, harmonic far-field response, or low-frequency truncation.
-  \item[\Protocol closure] coefficients that depend on a declared internal-response model rather than on kinematics alone. In the present paper the central example is the adiabatic one-degree-of-freedom closure used to compute \(\kPV\).
-  \item[\Full assembly] the final exact algebraic equality between the derived reduced Lagrangian and the standard 1PN/EIH target once all previously derived ingredients are inserted.
+  \item[\textbf{Exact}] identities that follow directly from the declared action, definitions, symmetry bookkeeping, or algebraic pair counting.
+  \item[\textbf{Controlled reduction}] steps that require an explicit regime assumption, such as quasi-staticity, small-body scaling, smooth external fields across the defect, harmonic far-field response, or low-frequency truncation.
+  \item[\textbf{Protocol closure}] coefficients that depend on a declared internal-response model rather than on kinematics alone. In the present paper the central example is the adiabatic one-degree-of-freedom closure used to compute \(\kPV\).
+  \item[\textbf{Full assembly}] the final exact algebraic equality between the derived reduced Lagrangian and the standard 1PN/EIH target once all previously derived ingredients are inserted.
 \end{description}
 
 This taxonomy is not cosmetic. It is the mechanism by which we separate exact 4D statements from the additional assumptions needed to turn them into a brane-facing point-particle theory.
@@ -280,10 +265,16 @@ Most rows in Table~\ref{tab:headline-results} are \Controlled statements: they r
 \paragraph{What is fixed and what remains symbolic.}
 Within the scope of this paper, the quantities
 \[
-q=1,\qquad n=5,\qquad \kadd=\frac12,\qquad
-\alphaSq=\frac34,\qquad a_H=0,\qquad \Kvec=\frac{2}{\pi^2},
-\qquad \kPV=\frac32\ \text{(for the adiabatic closure)},\qquad
-\betaPN=3
+\begin{aligned}
+q &= 1, \qquad
+n = 5, \qquad
+\kadd = \frac12, \qquad
+\alphaSq = \frac34, \\
+a_H &= 0, \qquad
+\Kvec = \frac{2}{\pi^2}, \qquad
+\kPV = \frac32 \text{ (for the adiabatic closure)}, \qquad
+\betaPN = 3
+\end{aligned}
 \]
 should be regarded as derived carry-forward values rather than knobs. What remains symbolic is equally important: the absolute EOS scale \(\KEOS\), localization-profile data, higher-order open-system response data, and any non-adiabatic generalization of \(\kPV\). The paper therefore claims a full \(1\)PN derivation within a stated closure hierarchy, not an assumption-free theorem of the fully solved moving-throat bulk dynamics.
 
@@ -2227,19 +2218,15 @@ self terms belong elsewhere; the cross terms belong here.
 \paragraph{Summary of the wake route.}
 The cross sector therefore closes through the chain
 \begin{equation}
+\begin{aligned}
 \text{isotropic wake basis}
-\;\longrightarrow\;
-\eqref{eq:wake-C-parallel-long}
-\;\longrightarrow\;
-\text{EIH family } \eqref{eq:wake-family}
-\;\longrightarrow\;
-\alpha^2=1-\frac{1}{n-1}
-\;\longrightarrow\;
-n=5
-\;\longrightarrow\;
-\left(\alpha^2,a_H,K_{\rm vec}\right)
-=
-\left(\frac34,0,\frac{2}{\pi^2}\right),
+&\;\longrightarrow\; \eqref{eq:wake-C-parallel-long} \\
+&\;\longrightarrow\; \text{EIH family } \eqref{eq:wake-family} \\
+&\;\longrightarrow\; \alpha^2 = 1 - \frac{1}{n-1} \\
+&\;\longrightarrow\; n = 5 \\
+&\;\longrightarrow\; (\alpha^2, a_H, K_{\rm vec})
+   = \left(\frac34, 0, \frac{2}{\pi^2}\right)
+\end{aligned}
 \label{eq:wake-route-summary}
 \end{equation}
 and finally
@@ -3058,15 +3045,8 @@ forms remain symbolic and belong to a more general open-system treatment.
 
 \paragraph{Beyond-\(1\)PN and dissipative sectors.}
 The present paper is restricted to the conservative near-zone \(1\)PN problem. The
-following sectors are therefore left unresolved:
-\begin{equation}
-\text{radiation reaction},\quad
-\text{dissipative leakage},\quad
-\text{spin couplings},\quad
-\text{higher-PN terms},\quad
-\text{strong-field corrections}.
-\label{eq:symbolic-beyond-1pn}
-\end{equation}
+following sectors are therefore left unresolved: radiation reaction, dissipative leakage,
+spin couplings, higher-PN terms, and strong-field corrections.
 Likewise, the wake derivation fixes only the minimal real \emph{parity-even conservative}
 point; odd-parity or dissipative wake sectors are not claimed to vanish in full generality.
 
@@ -3166,11 +3146,11 @@ summarized in \cref{tab:verification}.
   \label{tab:verification}
   \small
   \renewcommand{\arraystretch}{1.15}
-  \begin{tabularx}{\linewidth}{@{}L L L@{}}
+  \begin{tabularx}{\linewidth}{@{}p{0.24\linewidth} X X@{}}
     \toprule
     Script & Role in the derivation & Reported summary \\
     \midrule
-    \texttt{4d\_gravity\_1pn\_master\_harness.wl}
+    \makecell[l]{\texttt{4d\_gravity\_1pn\_master\_harness}\\\texttt{.wl}}
     &
     Consolidated gravity-side referee harness: projection normalization, leakage split,
     exact longitudinal identity, Poisson-hook reduction, Newtonian coupling \(q=1\),
@@ -3182,7 +3162,7 @@ summarized in \cref{tab:verification}.
     and overall pass.
     \\[4pt]
 
-    \texttt{vector\_wake\_rebuild.wl}
+    \makecell[l]{\texttt{vector\_wake\_rebuild}\\\texttt{.wl}}
     &
     Self-contained constructive wake module for the parity-even velocity-dependent cross
     tensor. Derives the overlap shapes, solves the EIH ratio constraint, selects a real
@@ -3193,7 +3173,7 @@ summarized in \cref{tab:verification}.
     \(C_\parallel=-7/2\) and \(C_L=-1/2\).
     \\[4pt]
 
-    \texttt{4d\_full\_1pn\_derivation\_with\_vectorwake.wl}
+    \makecell[l]{\texttt{4d\_full\_1pn\_derivation}\\\texttt{\_with\_vectorwake.wl}}
     &
     End-to-end \(1\)PN assembly script. Imports the wake module, implements the coherent
     defect / small-body worldtube reduction, checks the scalar/self sector, static
@@ -3369,10 +3349,6 @@ blocks, so the reader can see which equalities are exact and which are condition
 The constructive wake sector is verified in its own file and then imported into the full
 assembly script. This modular structure matters because it separates the genuinely bilinear
 cross tensor from the scalar/self bookkeeping and makes double counting easier to rule out.
-
-For readability, the main text reports only the verification ledger and the all-pass
-summaries. A fuller PASS/FAIL transcript can be placed in
-Appendix~\ref{app:verification} or in a separate repository note accompanying the paper.
 
 \paragraph{Bottom line.}
 The purpose of the referee suite is not to ask the reader to trust a computation instead of
@@ -3743,15 +3719,8 @@ P(\rho)=\KEOS \rho^n.
 \label{eq:notation-eos}
 \end{equation}
 A recurring source of confusion in earlier drafts was the use of the symbol \(K\) for two
-unrelated quantities. In the present paper we reserve:
-\begin{equation}
-\KEOS
-\quad \text{for the equation-of-state normalization},
-\qquad
-\Kvec
-\quad \text{for the dimensionless wake/vector normalization}.
-\label{eq:notation-two-Ks}
-\end{equation}
+unrelated quantities. In the present paper, \(\KEOS\) denotes the equation-of-state
+normalization, while \(\Kvec\) denotes the dimensionless wake/vector normalization.
 These objects should never be identified with one another.
 
 The wake-sector coefficients are written as
@@ -6122,5 +6091,15 @@ declared, but the explicit results
 \(\kPV=3/2\), \(x=2/11\), \(E_w:E_f:E_{\rm PV}=11:2:5\), and
 \(d\ln a/d\ln\rho=-57/64\) belong specifically to the one-DOF adiabatic throat protocol
 adopted in this paper.}
+
+\begin{thebibliography}{9}
+
+\bibitem{norris2026_4d_model}
+Norris, T. (2026).
+\textit{4D Model - Action, Projections, and Controlled Brane Limits}.
+Zenodo.
+\url{https://doi.org/10.5281/zenodo.18309732}
+
+\end{thebibliography}
 
 \end{document}

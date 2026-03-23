@@ -7,6 +7,8 @@ section[title_String] := Module[{},
   Print[StringRepeat["=", 78]];
 ];
 
+pass[name_String, cond_] := Print[If[TrueQ[cond], "PASS: ", "FAIL: "], name];
+
 (* ---------------------------------------------------------------------- *)
 (* 2PN Family-1 soft-wall surface-inertia completion                      *)
 (* ---------------------------------------------------------------------- *)
@@ -262,3 +264,51 @@ Print["   unchanged, and the one-pole Pade reduction stays at ~10^-4 relative er
 Print[""];
 Print["4) The next natural tightening is to add the endcap soft-wall layer, or tie the"];
 Print["   same wall profile directly to the earlier tangential traction/support law."];
+
+section["5) Verification"];
+
+target109280 = N[109/280, 30];
+
+pass[
+  "Sharp-wall baseline residues sum to 109/280",
+  Abs[N[Total[baseResidues] - target109280, 30]] < 10^-12
+];
+
+pass[
+  "Sharp-wall baseline one-pole Pade error stays below 1e-3",
+  baseErr < 10^-3
+];
+
+Do[
+  pass[
+    "Surface-inertia case p=" <> ToString[case["p"]] <> " keeps positive residues",
+    Min[case["residues"]] > 0
+  ];
+  pass[
+    "Surface-inertia case p=" <> ToString[case["p"]] <> " preserves the static 109/280 closure",
+    Abs[N[Total[case["residues"]] - target109280, 30]] < 10^-12
+  ];
+  pass[
+    "Surface-inertia case p=" <> ToString[case["p"]] <> " keeps one-pole Pade error below 1e-3",
+    case["maxErr"] < 10^-3
+  ];
+  pass[
+    "Surface-inertia case p=" <> ToString[case["p"]] <> " shifts both physical poles upward",
+    Min[case["omegaRatios"]] > 1
+  ];
+,
+  {case, cases}
+];
+
+Family1SurfaceInertiaResults = <|
+  "RMassSeries" -> RMassSeries,
+  "MaaSeries" -> MaaSeries,
+  "BaseValues" -> baseVals,
+  "BaseResidues" -> baseResidues,
+  "BaseLamEff" -> baseLamEff,
+  "BaseError" -> baseErr,
+  "PoleShiftCoefficients" -> coeffs,
+  "RepresentativeCases" -> cases
+|>;
+
+Print["Key exported symbol: Family1SurfaceInertiaResults."];

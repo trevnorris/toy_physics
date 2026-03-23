@@ -3,6 +3,7 @@
 ClearAll["Global`*"];
 
 section[s_] := Print["\n=== ", s, " ==="];
+pass[name_String, cond_] := Print[If[TrueQ[cond], "PASS: ", "FAIL: "], name];
 
 (* Support-channel data from the passed Robin-wall step *)
 supportData = {
@@ -123,3 +124,40 @@ Print[""];
 Print["This exactly reproduces the passed support impedances for the l=1,2 channels."];
 Print[""];
 Print["Note: the previously reported z^8 correction in the isotropic 4D-ball unit-test series does not affect this static operator reconstruction, which uses the exact support-channel data rather than the old truncated z^8 quotient."];
+
+section["Verification"];
+
+pass[
+  "Generalized Robin solve reproduces all passed support impedances exactly",
+  And @@ (TrueQ[FullSimplify[#["Residual"] == 0]] & /@ verifyRows)
+];
+
+pass[
+  "Generalized Robin base profile matches zBase(mu) = 17/56 - 5 mu^2/56",
+  TrueQ[FullSimplify[zBase == 17/56 - 5 mu^2/56]]
+];
+
+pass[
+  "Generalized Robin curvature profile matches the carried-forward Family-1 polynomial",
+  TrueQ[FullSimplify[zCurv == 593/672 - (1553/672) mu^2 + (7/8) mu^4]]
+];
+
+pass[
+  "Axisymmetric source profile equals 10 - (63/2) zBase(mu)",
+  TrueQ[FullSimplify[sourceP2 == 10 - (63/2) zBase]]
+];
+
+Family1GeneralizedRobinResults = <|
+  "SupportData" -> supportData,
+  "Solution" -> sol,
+  "VerifyRows" -> verifyRows,
+  "zBase" -> zBase,
+  "zCurv" -> zCurv,
+  "BaseFit" -> baseFit,
+  "CurvFit" -> curvFit,
+  "FlareFit" -> flareFit,
+  "SourceProfile" -> sourceP2,
+  "SourceFit" -> sourceFit
+|>;
+
+Print["Key exported symbol: Family1GeneralizedRobinResults."];

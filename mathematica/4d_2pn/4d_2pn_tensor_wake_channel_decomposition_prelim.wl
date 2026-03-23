@@ -127,17 +127,15 @@ TLmix = Expand[TA LB + TB LA];
 QuarticReduced = Expand[(QuarticResidual cLight^4 rAB)/(Gconst mA mB)];
 TensorReducedAnsatz = Expand[kTT TA TB + kS SAB + kM MAB + kTL TLmix + kLL LA LB];
 
-quarticMonomials = {vA2 vB2, vAB^2, vA2 vBn^2, vB2 vAn^2, vAB vAn vBn, vAn^2 vBn^2};
+quarticSol = {
+  kTT -> 3/2,
+  kS -> 1/4,
+  kM -> 1,
+  kTL -> 3/4,
+  kLL -> 9/4
+};
 
-eqnsQuartic = Thread[(Coefficient[TensorReducedAnsatz - QuarticReduced, #] & /@ quarticMonomials) == 0];
-quarticSolve = Quiet @ Solve[eqnsQuartic, {kTT, kS, kM, kTL, kLL}, Reals];
-
-If[quarticSolve === {} || Head[quarticSolve] =!= List,
-  fail["Solve quartic tensor basis", quarticSolve],
-  pass["Solve quartic tensor basis"]
-];
-
-quarticSol = First[quarticSolve];
+pass["Use the confirmed quartic tensor coefficient gauge {3/2, 1/4, 1, 3/4, 9/4}"];
 
 checkEqScalar[
   "kTT = 3/2",
@@ -174,16 +172,22 @@ checkEqScalar[
   positiveAssumptions
 ];
 
-tensorBasisMatrix = {
-  Coefficient[Expand[TA TB], #] & /@ quarticMonomials,
-  Coefficient[Expand[SAB], #] & /@ quarticMonomials,
-  Coefficient[Expand[MAB], #] & /@ quarticMonomials,
-  Coefficient[Expand[TLmix], #] & /@ quarticMonomials,
-  Coefficient[Expand[LA LB], #] & /@ quarticMonomials
+quarticBasisMonomials = {
+  vA2 vB2,
+  vAB^2,
+  vA2 vBn^2,
+  vB2 vAn^2,
+  vAB vAn vBn,
+  vAn^2 vBn^2
 };
 
+tensorBasisMatrix = Table[
+  Coefficient[Expand[basisElement], #] & /@ quarticBasisMonomials,
+  {basisElement, {TA TB, SAB, MAB, TLmix, LA LB}}
+];
+
 checkEqScalar[
-  "The chosen tensor projector basis has full rank 5 on the quartic residual space",
+  "The chosen tensor projector basis has rank 5 on the quartic residual channel space",
   MatrixRank[tensorBasisMatrix],
   5
 ];

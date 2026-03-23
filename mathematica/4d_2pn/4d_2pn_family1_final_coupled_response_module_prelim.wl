@@ -265,3 +265,23 @@ Print["Monopole closure:      K00[s] = -757/2520 + R_-/(1 - s/lambda_-) + R_+/(1
 Print["Default balanced cap:  alphaCap = ", N[alphaCap, 15], ", epsz = ", N[epsz, 15], ", chiCap = ", N[chiCap, 15]];
 Print["Conservative 2PN status: the full added cross block is reproduced exactly at zero frequency;"];
 Print["dynamic non-monopole pole scales remain genuine inner-throat observables for a beyond-2PN / Paper-7 extension."];
+
+section["SUITE verification"];
+Print[If[TrueQ[FullSimplify[sProf[μ] == 10 - (63/2) zBase[μ]]], "PASS: ", "FAIL: "], "Family-1 static support/source identity remains exact"];
+Print[If[TrueQ[residual === 0], "PASS: ", "FAIL: "], "Final throat module still reproduces the exact added 2PN cross block"];
+Print[If[TrueQ[Chop[K00Full[0] - 4/45] == 0], "PASS: ", "FAIL: "], "Full monopole closure still satisfies K00_full(0) = 4/45"];
+
+Family1FinalCoupledResponseResults = <|
+  "zBase" -> zBase[μ],
+  "tProf" -> tProf[μ],
+  "sProf" -> sProf[μ],
+  "CrossBlockResidual" -> residual,
+  "K00FullAtZero" -> K00Full[0],
+  "LambdaMinus" -> vals[[1]],
+  "LambdaPlus" -> vals[[2]],
+  "Residues" -> res,
+  "LambdaEff" -> leff,
+  "PadeError" -> err
+|>;
+
+Print["Key exported symbol: Family1FinalCoupledResponseResults."];

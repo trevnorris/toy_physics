@@ -9,6 +9,8 @@ section[title_String] := Module[{},
   Print[StringRepeat["=", 78]];
 ];
 
+pass[name_String, cond_] := Print[If[TrueQ[cond], "PASS: ", "FAIL: "], name];
+
 sWall[x_] := (1 + Tanh[x])/2;
 
 gLocal[x_?NumericQ, alpha_?NumericQ, p_Integer] := Module[{arg},
@@ -288,4 +290,70 @@ Module[
   Print["4) Combining the carried-forward sidewall branch with the new cap branch"];
   Print["   gives a near-final full-wall dynamic monopole response.  The remaining"];
   Print["   gap is the fully coupled sidewall-cap derivation beyond separated order."];
+
+  section["7) Verification"];
+  pass[
+    "Representative endcap asymptotic c0 correction stays within 1% of the direct full-profile value",
+    Abs[N[(c0As - c0Ex)/c0Ex, 20]] < 10^-2
+  ];
+  pass[
+    "Representative endcap asymptotic c2 correction stays within 1% of the direct full-profile value",
+    Abs[N[(c2As - c2Ex)/c2Ex, 20]] < 10^-2
+  ];
+  pass[
+    "Representative endcap asymptotic M_LL stays within 1% of the direct full-profile value",
+    Abs[N[(mllAs - mllEx)/mllEx, 20]] < 10^-2
+  ];
+  pass[
+    "Endcap-corrected monopole residues stay positive",
+    Min[capData["Residues"]] > 0
+  ];
+  pass[
+    "Endcap-corrected monopole residues still sum to 109/280",
+    Abs[N[Total[capData["Residues"]] - target, 20]] < 10^-12
+  ];
+  pass[
+    "Endcap-corrected one-pole Pade error stays below 1e-3 on the low-frequency band",
+    capErr < 10^-3
+  ];
+  pass[
+    "Separated-order full-wall monopole residues stay positive",
+    Min[fullData["Residues"]] > 0
+  ];
+  pass[
+    "Separated-order full-wall monopole residues still sum to 109/280",
+    Abs[N[Total[fullData["Residues"]] - target, 20]] < 10^-12
+  ];
+  pass[
+    "Separated-order full-wall one-pole Pade error stays below 1e-3 on the low-frequency band",
+    fullErr < 10^-3
+  ];
+
+  Family1EndcapSoftwallResults = <|
+    "RepresentativeBranch" -> <|
+      "epsZ" -> epsRep,
+      "alphaZ" -> alphaRep,
+      "pZ" -> pRep,
+      "nu0" -> nu0Rep,
+      "xTurn" -> xStarRep,
+      "c0Asymptotic" -> c0As,
+      "c0Direct" -> c0Ex,
+      "c2Asymptotic" -> c2As,
+      "c2Direct" -> c2Ex,
+      "MLLAsymptotic" -> mllAs,
+      "MLLDirect" -> mllEx
+    |>,
+    "BaselineData" -> baseData,
+    "BaselineError" -> baseErr,
+    "CapFactor" -> rCap,
+    "CapData" -> capData,
+    "CapError" -> capErr,
+    "CapPoleRatios" -> omRatioCap,
+    "FullFactor" -> rFull,
+    "FullData" -> fullData,
+    "FullError" -> fullErr,
+    "FullPoleRatios" -> omRatioFull
+  |>;
+
+  Print["Key exported symbol: Family1EndcapSoftwallResults."];
 ];

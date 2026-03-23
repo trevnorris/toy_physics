@@ -34,6 +34,13 @@ The key deliverables are:
 
 Throughout, the paper is careful to classify statements as **(i) exact**, **(ii) controlled reductions**, or **(iii) regime approximations**.
 
+
+The corrected charge ontology running through the paper is:
+- electric-charge sign is a fixed topological puncture orientation \(\eta_Q=\pm1\),
+- electric-charge magnitude on the brane is controlled by EM localization thickness through \(Z_{\rm int}=\int Z(w)\,dw\),
+- circulation is a quantized superfluid winding / magnetic-vortical sector rather than the definition of electric charge,
+- the zero-mode EM reduction is a far-field brane limit that suppresses the mixed core sector \((A_w,J^w,F_{aw})\), not the full microscopic ontology.
+
 ---
 
 ## 2) Core objects, geometry, and notation (things you’ll keep using)
@@ -97,9 +104,14 @@ Throughout, the paper is careful to classify statements as **(i) exact**, **(ii)
    \]
 
 ### Minimal coupling (covariant derivatives)
+Use a sign/magnitude split:
 \[
-D_t\psi = \partial_t\psi + \frac{i q}{\hbar}A_0\psi,\qquad
-D_i\psi = \partial_i\psi - \frac{i q}{\hbar}A_i\psi.
+\eta_Q\in\{+1,-1\},\qquad e_\star>0,\qquad q_\star\equiv \eta_Q e_\star.
+\]
+The sign label \(\eta_Q\) is the puncture orientation into \(\pm w\); \(q_\star\) is fixed for a given defect branch and is **not** a function of throat radius, length, or circulation. The minimal-coupling derivatives are then
+\[
+D_t\psi = \partial_t\psi + \frac{i q_\star}{\hbar}A_0\psi,\qquad
+D_i\psi = \partial_i\psi - \frac{i q_\star}{\hbar}A_i\psi.
 \]
 
 ### Matter number current and bulk velocity
@@ -115,9 +127,9 @@ j^i=\rho v^i,\qquad v^i=j^i/\rho.
 ### Charge current bookkeeping
 The paper uses the convention
 \[
-J_\psi^M = (q\rho,\ q j^i),
+J_\psi^M = q_\star(\rho, j^i),
 \]
-and distinguishes this dynamical matter current from **external/background** sources \(J_{\rm ext}^M\).
+and distinguishes this dynamical matter current from **external/background** sources \(J_{\rm ext}^M\). For a unit-normalized localized defect, \(Q_{\rm tot}=\int J_\psi^0\,d^4X=q_\star\), so the total electric charge is fixed by topological orientation plus fixed coupling magnitude, not by geometry breathing.
 
 ---
 
@@ -141,7 +153,11 @@ In controlled limits (e.g. EM zero-mode), one **integrates the bulk equations** 
 \[
 Z_{\rm int}=\int Z(w)\,dw,\qquad \mu_0^{\rm eff}=\mu_0/Z_{\rm int}.
 \]
-This is a **controlled reduction** that depends on explicit assumptions (e.g. \(w\)-independence of the fields).
+With canonical zero-mode normalization one can equally state the reduced coupling as
+\[
+e_{\rm eff}=e_\star/\sqrt{Z_{\rm int}},\qquad q_{\rm eff}=q_\star/\sqrt{Z_{\rm int}}=\eta_Q e_{\rm eff}.
+\]
+This is a **controlled reduction** that depends on explicit assumptions (e.g. \(w\)-independence of the fields) and suppresses the mixed core sector rather than eliminating it from the ontology.
 
 ---
 
@@ -186,7 +202,7 @@ with \(i\in\{x,y,z,w\}\).
 
 ### 4.2 Electromagnetic sector: localized Maxwell + gauge fixing + external sources
 Key bookkeeping rule: because \(\mathcal L_\psi\) uses covariant derivatives, **varying \(S_\psi\) already generates the dynamical matter current \(J_\psi^M\)**.  
-Therefore any explicit \(A_MJ^M\) term in \(\mathcal L_{\rm EM}\) must represent **external/background sources only**, denoted \(J_{\rm ext}^M\).
+Therefore any explicit source term in \(\mathcal L_{\rm EM}\) must enter as **\(-A_MJ_{\rm ext}^M\)** and represent external/background sources only.
 
 Lagrangian density:
 \[
@@ -195,7 +211,7 @@ Lagrangian density:
 =
 -\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}
 -\frac{1}{2\xi\mu_0}(\partial\!\cdot\!A)^2
-+ A_M J_{\rm ext}^M
+- A_M J_{\rm ext}^M
 }
 \]
 - \(\xi\): covariant gauge-fixing parameter.
@@ -206,10 +222,11 @@ Lagrangian density:
 
 **Neutralizing background (“jellium”)** is implemented as \(J_{\rm ext}^0\), e.g.
 \[
-J_{\rm ext}^0=-q\rho_0,\qquad J_{\rm ext}^i=0
+J_{\rm ext}^0=-q_\star\rho_{\rm bg},\qquad J_{\rm ext}^i=0
 \quad\Rightarrow\quad
-J_{\rm tot}^0=q(\rho-\rho_0).
+J_{\rm tot}^0=q_\star(\rho-\rho_{\rm bg}).
 \]
+This is a background subtraction convention, not a statement that fundamental charge is density-generated.
 
 ### 4.3 Geometry sector: two dynamical DOFs \(a(t),L(t)\)
 Baseline effective mechanical Lagrangian:
@@ -295,7 +312,7 @@ Madelung substitution:
 Gauge-invariant velocity:
 \[
 \boxed{
-v_i=\frac{\hbar}{m}\left(\partial_i\theta - \frac{q}{\hbar}A_i\right).
+v_i=\frac{\hbar}{m}\left(\partial_i\theta - \frac{q_\star}{\hbar}A_i\right).
 }
 \]
 Quantum potential:
@@ -309,7 +326,7 @@ Exact Euler-like equation in bulk:
 \boxed{
 m(\partial_t+v_j\partial_j)v_i
 =
-q(E_i+v_jB_{ij})
+q_\star(E_i+v_jB_{ij})
 -\partial_i\left(V_{\rm conf}+h(\rho)+Q(\rho)\right).
 }
 \]
@@ -322,10 +339,27 @@ Define vorticity 2-form:
 Then (away from phase singularities),
 \[
 \boxed{
-\Omega_{ij} = -\frac{q}{m}B_{ij} = -\frac{q}{m}F_{ij}.
+\Omega_{ij} = -\frac{q_\star}{m}B_{ij} = -\frac{q_\star}{m}F_{ij}.
 }
 \]
-So bulk vorticity is directly tied to the gauge field.
+So bulk vorticity is directly tied to the gauge field. This is why circulation belongs to the magnetic/vortical sector. It should not be read as making electric charge a circulation-generated quantity.
+
+### 5.6 Quantized phase winding and fluxoid quantization
+Single-valuedness of \(\psi\) around loops enclosing the defect mouth gives the gauge-invariant winding law
+\[
+\boxed{
+\oint_{\mathcal C}\left(\partial_i\theta-\frac{q_\star}{\hbar}A_i\right)d\ell^i = 2\pi n,
+\qquad n\in\mathbb Z.
+}
+\]
+Using the Madelung velocity, this is equivalently
+\[
+\boxed{
+\oint_{\mathcal C} v_i\,d\ell^i = n\frac{h}{m}-\frac{q_\star}{m}\Phi_{\mathcal C},
+\qquad \Phi_{\mathcal C}=\oint_{\mathcal C}A_i\,d\ell^i.
+}
+\]
+In the intrinsic/no-flux limit this reduces to the familiar scaling \(\Gamma_n\sim n h/m\). In the corrected ontology this quantized winding is the rigid superfluid / magnetic-vortical sector, not the electric-charge source.
 
 ---
 
@@ -419,22 +453,22 @@ Then:
 \[
 \rho_{\rm brane}\,\nabla_3^2\varphi \approx S_{\rm eff},
 \]
-and if \(\rho_{\rm brane}\approx \rho_0\) is approximately constant:
+and if \(\rho_{\rm brane}\approx \rho_{\rm ref}\) is approximately constant:
 \[
 \boxed{
-\nabla_3^2\varphi \approx \frac{1}{\rho_0}S_{\rm eff}.
+\nabla_3^2\varphi \approx \frac{1}{\rho_{\rm ref}}S_{\rm eff}.
 }
 \]
 
 ### 7.4 Inverse-square scaling
 For a localized effective source \(S_{\rm eff}\approx \mathcal S\,\delta^{(3)}(\mathbf x)\),
 \[
-\varphi(\mathbf x)\sim -\frac{\mathcal S}{4\pi\rho_0}\frac{1}{r},\qquad r=|\mathbf x|.
+\varphi(\mathbf x)\sim -\frac{\mathcal S}{4\pi\rho_{\rm ref}}\frac{1}{r},\qquad r=|\mathbf x|.
 \]
 If \(\mathbf v_{\rm brane}\approx \nabla_3\varphi\), then the longitudinal field scales as
 \[
 \boxed{
-\mathbf v_L(\mathbf x)=\nabla_3\varphi(\mathbf x)\sim \frac{\mathcal S}{4\pi\rho_0}\frac{1}{r^2}\,\hat{\mathbf r}.
+\mathbf v_L(\mathbf x)=\nabla_3\varphi(\mathbf x)\sim \frac{\mathcal S}{4\pi\rho_{\rm ref}}\frac{1}{r^2}\,\hat{\mathbf r}.
 }
 \]
 **Interpretational boundary:** the paper derives inverse-square scaling for \(\mathbf v_L\). Any identification of \(\mathbf v_L\) with “Newtonian gravity felt by test bodies” is an additional constitutive step beyond this kinematic derivation.
@@ -450,7 +484,7 @@ Start from exact localized Maxwell:
 \[
 \partial_M(ZF^{MN})+\frac{1}{\xi}\partial^N(\partial\!\cdot\!A)=\mu_0(J_\psi^N+J_{\rm ext}^N).
 \]
-Assume:
+For the far-field brane reduction, assume the controlled zero-mode ansatz
 \[
 \boxed{
 A_w=0,\qquad \partial_w A_\mu = 0\ (\mu\in\{0,1,2,3\}),
@@ -462,7 +496,7 @@ Consistency of the \(N=w\) component then requires
 \[
 0=\mu_0(J_\psi^w+J_{\rm ext}^w),
 \]
-so a strict zero-mode sector is consistent only when the **total \(w\)-directed charge current is negligible**.
+so a strict zero-mode sector is consistent only when the **total \(w\)-directed charge current is negligible**. This is a controlled far-field sector, not a statement that the charged defect core has no mixed structure: near a topologically charged core one generically expects nonzero \((A_w,J^w,F_{aw})\), and the zero-mode reduction suppresses precisely those channels.
 
 ### 8.2 Localization integral and effective coupling
 Define
@@ -484,6 +518,19 @@ with effective source
 J_{\rm eff}^\nu(\mathbf x,t)=\int_{-\infty}^{\infty}\big(J_\psi^\nu(\mathbf x,w,t)+J_{\rm ext}^\nu(\mathbf x,w,t)\big)\,dw.
 }
 \]
+This keeps the mathematically correct reduced coupling law, but the same reduction can be expressed in canonically normalized variables. If
+\[
+A_\mu^{(c)}=\sqrt{Z_{\rm int}}\,A_\mu,
+\]
+then the source coupling is
+\[
+\boxed{
+q_{\rm eff}=\frac{q_\star}{\sqrt{Z_{\rm int}}}=\eta_Q e_{\rm eff},
+\qquad
+ e_{\rm eff}=\frac{e_\star}{\sqrt{Z_{\rm int}}}.
+}
+\]
+This is the precise sense in which the reduced brane coupling is locked to localization thickness rather than throat breathing. The microscopic defect-branch label \(q_\star\) itself remains fixed; only the canonically normalized brane coupling \(q_{\rm eff}\) scales with \(Z_{\rm int}\).
 
 ### 8.3 Source profile matching (important subtlety)
 Because the bulk equation is pointwise in \(w\), a strictly \(w\)-independent \(F^{\mu\nu}(\mathbf x,t)\) solves it for all \(w\) only if the total source matches the localization profile:
@@ -504,6 +551,12 @@ Under \(\partial_w A_\mu=0\), \(A_w=0\), the Maxwell term reduces as
 \left(\int Z(w)\,dw\right)\int dt\int d^3x\left(-\frac{1}{4\mu_0}F_{\mu\nu}F^{\mu\nu}\right),
 \]
 which is equivalent to renormalizing \(\mu_0\to\mu_0^{\rm eff}=\mu_0/Z_{\rm int}\).
+For a Gaussian localization profile \(Z(w)=e^{-w^2/\lambda^2}\), one has
+\[
+Z_{\rm int}=\sqrt{\pi}\,\lambda,
+\qquad e_{\rm eff}\propto \lambda^{-1/2}.
+\]
+So thicker localization weakens the brane-observable EM coupling.
 
 ### 8.5 Electrostatic brane limit
 If time-independent and \(\mathbf E=-\nabla_3\Phi_{\rm EM}\), then
@@ -557,10 +610,10 @@ F_L^{(\rm ratio)}=-\kappa(L-\alpha a).
 \]
 
 ### 9.4 Minimal geometry energy model used in this paper
-Baseline closure:
+Preferred curvature-completed closure:
 \[
 \boxed{
-E_{\rm geom}(a,L)=P_{\rm vac}V(a,L)+\sigma A(a,L),
+E_{\rm geom}(a,L)=P_{\rm vac}V(a,L)+\sigma A(a,L)+\kappa_b\frac{a^2}{L},
 }
 \]
 interpreting \(V\) and \(A\) as 4D “tube” measures for \(B^3(a)\times[0,L]\):
@@ -571,6 +624,7 @@ V(a,L)=\frac{4\pi}{3}a^3 L,
 A(a,L)=4\pi a^2L + 2\cdot\frac{4\pi}{3}a^3
 \quad\text{(side hyperarea + two endcaps)}.
 \]
+The added \(\kappa_b a^2/L\) term is the minimal curvature/bending completion needed for a stored throat-support interpretation.
 Derivatives:
 \[
 \frac{\partial V}{\partial a}=4\pi a^2L,\qquad
@@ -578,7 +632,11 @@ Derivatives:
 \]
 \[
 \frac{\partial A}{\partial a}=8\pi a L + 8\pi a^2,\qquad
-\frac{\partial A}{\partial L}=4\pi a^2.
+\frac{\partial A}{\partial L}=4\pi a^2,
+\]
+\[
+\frac{\partial}{\partial a}\left(\kappa_b\frac{a^2}{L}\right)=2\kappa_b\frac{a}{L},\qquad
+\frac{\partial}{\partial L}\left(\kappa_b\frac{a^2}{L}\right)=-\kappa_b\frac{a^2}{L^2}.
 \]
 
 ### 9.5 Dynamic geometry equations and quasi-static limits
@@ -591,7 +649,7 @@ Controlled quasi-static reductions:
 - **Overdamped**: neglect \(\ddot a,\ddot L\) → first-order relaxation.
 - **Instantaneous minimization**: \(\partial_a H_{\rm tot}\approx 0\), \(\partial_L H_{\rm tot}\approx 0\).
 
-Interpretation: this closure provides explicit energy exchange + ringing/relaxation, but does not claim to be a microscopic wall theory.
+Interpretation: this closure provides explicit energy exchange + ringing/relaxation, and the geometry energy should be read as the stored energetic cost of holding the puncture open across the brane thickness. The force channels \(F_a\) and \(F_L\) track stored support cost and mass-like breathing effects, not electric-charge variability.
 
 ---
 
@@ -609,7 +667,7 @@ From the Euler-like equation, the brane component satisfies the exact bulk balan
 \boxed{
 \partial_t(\rho v_a) + \partial_j(\rho v_a v_j)
 =
-\frac{q}{m}\rho(E_a+v_jB_{aj}) - \frac{1}{m}\rho\,\partial_a\Pi,
+\frac{q_\star}{m}\rho(E_a+v_jB_{aj}) - \frac{1}{m}\rho\,\partial_a\Pi,
 }
 \]
 with \(j\in\{x,y,z,w\}\).
@@ -635,7 +693,7 @@ where the projected force/source is
 \mathcal S^{(\rm mom)}_a
 =
 \left\langle
-\frac{q}{m}\rho(E_a+v_jB_{aj})
+\frac{q_\star}{m}\rho(E_a+v_jB_{aj})
 -\frac{1}{m}\rho\,\partial_a\Pi
 \right\rangle_W,
 }
@@ -689,10 +747,11 @@ So **any** attempt to write a closed 3D Euler system on the brane requires model
 
 ### 11.1 Gauge transformations
 \[
-A_M\mapsto A_M+\partial_M\chi,\qquad
-\psi\mapsto e^{iq\chi/\hbar}\psi.
+A_0\mapsto A_0-\partial_t\chi,\qquad
+A_i\mapsto A_i+\partial_i\chi,\qquad
+\psi\mapsto e^{iq_\star\chi/\hbar}\psi.
 \]
-Then \(D_M\psi\) transforms covariantly and \(F_{MN}\) is gauge invariant.
+Then \(D_t\psi\) and \(D_i\psi\) transform covariantly and \(F_{MN}\) is gauge invariant. The fixed sign in this phase is carried by \(\eta_Q\), not generated by circulation.
 
 ### 11.2 Gauge fixing (\(\xi\))
 The gauge-fixing term is
@@ -703,7 +762,7 @@ Lorenz gauge \(\partial\!\cdot\!A=0\) is used as a convenient presentation choic
 
 ### 11.3 Single-source bookkeeping rule
 - \(J_\psi\) is generated automatically by varying \(S_\psi\).
-- Any explicit \(A_MJ^M\) term in \(\mathcal L_{\rm EM}\) must use \(J_{\rm ext}\) (external/background only).
+- Any explicit source term in \(\mathcal L_{\rm EM}\) must appear as \(-A_MJ_{\rm ext}^M\) (external/background only).
 - Neutralizing background implemented via \(J_{\rm ext}^0\).
 
 A practical checklist in the appendix emphasizes avoiding double counting.
@@ -714,12 +773,13 @@ A practical checklist in the appendix emphasizes avoiding double counting.
 
 ### Exact (no approximations)
 - EOM from the declared action: GNLS, localized Maxwell, geometry force definitions/closure.
-- Conservation and hydrodynamic identities: current, continuity, Madelung velocity, quantum potential, Euler-like form, vorticity–gauge identity.
+- Conservation and hydrodynamic identities: current, continuity, Madelung velocity, quantum potential, Euler-like form, vorticity–gauge identity, and gauge-invariant fluxoid quantization.
 - Projection identities: brane observables, projected continuity + exact leakage, Helmholtz identity, exact longitudinal identity.
-- Geometry ledger identities: force definitions and force decompositions.
+- Geometry ledger identities: force definitions and force decompositions, including the curvature-completed \(E_{\rm geom}\) derivatives.
 
 ### Controlled reductions (explicit assumptions)
-- EM localization reduction to brane Maxwell: requires zero-mode ansatz (and usually Lorenz gauge during reduction).
+- EM localization reduction to brane Maxwell: requires zero-mode ansatz (and usually Lorenz gauge during reduction), and suppresses the mixed core sector rather than exhausting the defect ontology.
+- Canonical zero-mode normalization, giving \(q_{\rm eff}=q_\star/\sqrt{Z_{\rm int}}\).
 - Electrostatic limit of reduced EM.
 - Quasi-static geometry limits (overdamped or fast-relaxation).
 - Boundary-term suppression in leakage formulas.
@@ -732,11 +792,11 @@ A practical checklist in the appendix emphasizes avoiding double counting.
 
 ## 13) How to use this framework in practice (paper’s recommended workflow)
 
-1. **Fix model inputs**: choose \(V_{\rm conf}\), \(Z(w)\), projection weight \(W(w)\), external sources \(J_{\rm ext}\), and geometry parameters \((M_a,M_L,\Gamma_a,\Gamma_L,\kappa,\alpha)\).
+1. **Fix model inputs**: choose the charge orientation \(\eta_Q\), bulk coupling scale \(e_\star\), localization profile \(Z(w)\) / thickness, confinement \(V_{\rm conf}\), projection weight \(W(w)\), external sources \(J_{\rm ext}\), geometry parameters \((M_a,M_L,\Gamma_a,\Gamma_L,\kappa,\alpha,\kappa_b)\), and whether the calculation keeps the full mixed sector or works only in the far-field zero-mode reduction.
 2. **Solve/analyze bulk EOMs**: GNLS + localized Maxwell + geometry ODEs.
 3. **Construct brane observables**: compute \(\rho_{\rm brane}\), \(\mathbf j_{\rm brane}\), and leakage \(S_{\rm leak}\).
 4. **Diagnose Poisson regime**: evaluate the explicit correction terms in the exact longitudinal identity and compare them to the source term.
-5. **Use controlled reductions** where appropriate: EM zero-mode reduction, quasi-static geometry, etc.
+5. **Use controlled reductions** where appropriate: EM zero-mode reduction for brane far fields, canonical normalization \(q_{\rm eff}=q_\star/\sqrt{Z_{\rm int}}\), quasi-static geometry, etc.
 
 ---
 
@@ -748,7 +808,12 @@ A practical checklist in the appendix emphasizes avoiding double counting.
   - *identity*: projected continuity → longitudinal identity,
   - *regime*: Poisson limit → inverse-square scaling for \(\nabla_3\varphi\).
 - **Brane electromagnetism** comes from:
-  - *controlled reduction*: zero-mode + integrating over \(w\) → effective Maxwell with \(\mu_0^{\rm eff}\).
+  - *controlled reduction*: zero-mode + integrating over \(w\) → effective Maxwell with \(\mu_0^{\rm eff}=\mu_0/Z_{\rm int}\), or equivalently \(q_{\rm eff}=q_\star/\sqrt{Z_{\rm int}}\) after canonical normalization.
+- **Charge ontology** is split cleanly:
+  - topological sign: \(\eta_Q\),
+  - brane coupling strength: localization thickness via \(Z_{\rm int}\),
+  - circulation: quantized magnetic/vortical winding,
+  - mixed \(w\) sector: the suppressed but physically important channel for future twist/spin structure.
 
 This paper’s main philosophical move is: **operators like \(\nabla_3^2\)** on the brane are not assumed; they appear as consequences of what the brane observer measures, plus mathematically inevitable decompositions in 3D.
 

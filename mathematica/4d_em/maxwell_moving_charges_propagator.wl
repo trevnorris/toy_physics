@@ -2,7 +2,7 @@
 
 (*
 ========================================================
-Paper VIII (referee add-on v3): moving charges + covariant propagator (KK tower)
+Paper VIII (referee add-on v3): moving defect branches + covariant propagator (KK tower)
 ========================================================
 
 Purpose (referee-walkable):
@@ -10,7 +10,7 @@ Purpose (referee-walkable):
       scalar k^2 (in momentum space), hence has *exact* 3+1 Lorentz invariance
       (no preferred-frame artifacts) even when KK corrections are included.
   (2) Provide a compact expression for the brane effective propagator as a KK sum:
-         D_eff(k^2) = mu0 * Sum_n c_n / (k^2 - m_n^2 + i eps)
+         D_eff(k^2) = mu0 * Sum_n c_n / (k^2 + m_n^2 + i eps)
       with the Gaussian-localization spectrum:
          m_n^2 = 2 n / lambdaConf^2,
          c_n = f_n(0)^2 / ∫dw Z(w) f_n(w)^2,
@@ -22,7 +22,7 @@ Purpose (referee-walkable):
 What this establishes for the paper:
   - The EM sector is exactly Lorentz invariant in the *brane* (t,x,y,z) directions:
     Z(w) breaks boosts mixing w with the brane, but preserves the full SO(1,3) on-brane.
-  - Therefore, moving-charge fields computed from this sector cannot contain a preferred
+  - Therefore, moving-defect-branch fields computed from this sector cannot contain a preferred
     direction in the brane (no anisotropic v/c artifacts from Z(w) itself).
   - Deviations from standard EM appear only as Lorentz-covariant Yukawa/KK corrections.
 
@@ -37,15 +37,15 @@ Conventions:
 *)
 
 Print["\n========================================"];
-Print["Paper VIII add-on v3: moving charges + covariant propagator (KK tower)"];
+Print["Paper VIII add-on v3: moving defect branches + covariant propagator (KK tower)"];
 Print["========================================\n"];
 
 ClearAll["Global`*"];
 
 (* ---------- Assumptions + helpers ---------- *)
 $Assumptions = {
-  Element[{mu0, lambdaConf, betaB, k0, kx, ky, kz, epsReg}, Reals],
-  mu0 > 0, lambdaConf > 0,
+  Element[{mu0, lambdaConf, betaB, k0, kx, ky, kz, epsReg, qStar, eStar, etaQ}, Reals],
+  mu0 > 0, lambdaConf > 0, eStar > 0, etaQ^2 == 1,
   0 <= betaB < 1,
   epsReg > 0
 };
@@ -93,6 +93,8 @@ mu0eff = Simp[mu0/Zint];
 
 Print["Zint -> ", Zint];
 Print["mu0eff -> ", mu0eff];
+Print["Fixed defect branch relation: qStar = etaQ * eStar"];
+Print["Canonical brane charge relation: qEff = qStar / Sqrt[Zint]"];
 
 (* KK spectrum for the Gaussian Z(w) = exp(-w^2/lambda^2) (as validated in add-on v2):
      f_n(w) = HermiteH[n, w/lambdaConf],    m_n^2 = 2n/lambdaConf^2
@@ -110,17 +112,18 @@ Print["c_n = f_n(0)^2 / norm_n, with norm_n = 2^n lambdaConf Sqrt[Pi] n!"];
 (* Spot-check: odd n should vanish *)
 oddCheck = Table[{n, Simp[cCoef[n]]}, {n, 1, 9, 2}];
 Print["Odd-n c_n should be 0. Spot-check (n,c_n): ", oddCheck];
+Print["Interpretation: odd modes decouple from centered brane sources, but odd-w core structure need not be absent microscopically."];
 
 (* ---------- (C) Brane-to-brane propagator depends only on k^2 ---------- *)
 
 Print["\n--- (C) Brane-to-brane propagator D_eff(k^2) depends only on k^2 ---\n"];
 
 (* Effective (Feynman) propagator kernel in momentum space:
-     D_eff(k^2) = mu0 * Sum_n c_n / (k^2 - m_n^2 + i eps)
+     D_eff(k^2) = mu0 * Sum_n c_n / (k^2 + m_n^2 + i eps)
    For classical retarded solutions, replace the i eps prescription accordingly;
    the key point here is Lorentz covariance: dependence only on k^2.
 *)
-Deff[k2in_, nmax_Integer?NonNegative] := mu0 * Sum[cCoef[n]/(k2in - mn2[n] + I epsReg), {n, 0, nmax}];
+Deff[k2in_, nmax_Integer?NonNegative] := mu0 * Sum[cCoef[n]/(k2in + mn2[n] + I epsReg), {n, 0, nmax}];
 
 Print["Example truncations (nmax=0..6), showing dependence only on k2:"];
 Do[
@@ -142,17 +145,17 @@ If[ZeroQAssume[invCheck],
 Print["\n--- (D) Static limit (k0=0): Coulomb + Yukawa tower, isotropic in r ---\n"];
 
 (* In the static limit, each massive mode gives Yukawa exp(-m r)/(4 pi r).
-   The brane potential (for a point charge q) becomes:
-     A0(r) = (mu0 q)/(4 pi r) * Sum_n c_n exp(-m_n r)
+   The brane potential for a fixed defect branch qStar becomes:
+     A0(r) = (mu0 qStar)/(4 pi r) * Sum_n c_n exp(-m_n r)
    with c_0 = 1/Zint, so the leading term is Coulomb with mu0eff.
 *)
 mn[n_Integer?NonNegative] := Sqrt[mn2[n]];
 
-A0tower[r_, nmax_Integer?NonNegative] := (mu0*q)/(4*Pi*r) * Sum[cCoef[n] Exp[-mn[n] r], {n, 0, nmax}];
+A0tower[r_, nmax_Integer?NonNegative] := (mu0*qStar)/(4*Pi*r) * Sum[cCoef[n] Exp[-mn[n] r], {n, 0, nmax}];
 
-A0zero[r_] := (mu0eff*q)/(4*Pi*r);
+A0zero[r_] := (mu0eff*qStar)/(4*Pi*r);
 
-Print["A0_zero(r) = mu0eff q/(4 pi r) -> ", A0zero[r]];
+Print["A0_zero(r) = mu0eff qStar/(4 pi r) -> ", A0zero[r]];
 Print["First correction (keep n=0,2): A0(r) = ", Simp[A0tower[r, 2]]];
 Print["Relative correction Delta(r) = (A0 - A0zero)/A0zero (nmax=2): ", Simp[(A0tower[r, 2] - A0zero[r])/A0zero[r]]];
 
@@ -172,11 +175,11 @@ Print["\nCanonical (3+1) retarded Green functions (c=1) for reference (printed a
 Print["  Massless wave:   G0_ret(t,r) = theta(t) * delta(t-r) / (4 pi r)"];
 Print["  Massive KG:      Gm_ret(t,r) = theta(t) * [ delta(t^2-r^2)/(2 pi) - (m/(4 pi)) theta(t^2-r^2) J1(m sqrt(t^2-r^2))/sqrt(t^2-r^2) ]"];
 
-Print["\nMoving-charge potentials can be written covariantly as:"];
+Print["\nMoving-defect-branch potentials can be written covariantly as:"];
 Print["  A_mu(x) = ∫ d^4x' D_eff_ret(x-x') J_mu(x')"];
 Print["and in momentum space:"];
 Print["  A_mu(k) = D_eff(k^2) J_mu(k),  with D_eff depending only on k^2."];
-Print["This is the cleanest way to see there is no preferred-frame artifact in the brane EM sector."];
+Print["This is the cleanest way to see there is no preferred-frame artifact in the brane EM sector for a fixed charge branch."];
 
 Print["\n========== End add-on v3 ==========\n"];
 
@@ -218,8 +221,8 @@ OK: D_eff is a function of the Lorentz scalar k^2 only (manifest brane Lorentz i
 
 --- (D) Static limit (k0=0): Coulomb + Yukawa tower, isotropic in r ---
 
-A0_zero(r) = mu0eff q/(4 pi r) -> (mu0*q)/(4*lambdaConf*Pi^(3/2)*r)
-First correction (keep n=0,2): A0(r) = ((2 + E^((-2*r)/lambdaConf))*mu0*q)/(8*lambdaConf*Pi^(3/2)*r)
+A0_zero(r) = mu0eff qStar/(4 pi r) -> (mu0*qStar)/(4*lambdaConf*Pi^(3/2)*r)
+First correction (keep n=0,2): A0(r) = ((2 + E^((-2*r)/lambdaConf))*mu0*qStar)/(8*lambdaConf*Pi^(3/2)*r)
 Relative correction Delta(r) = (A0 - A0zero)/A0zero (nmax=2): 1/(2*E^((2*r)/lambdaConf))
 Note: all static corrections depend only on r (no angular dependence), hence no brane anisotropy.
 
@@ -235,7 +238,7 @@ Canonical (3+1) retarded Green functions (c=1) for reference (printed as strings
   Massless wave:   G0_ret(t,r) = theta(t) * delta(t-r) / (4 pi r)
   Massive KG:      Gm_ret(t,r) = theta(t) * [ delta(t^2-r^2)/(2 pi) - (m/(4 pi)) theta(t^2-r^2) J1(m sqrt(t^2-r^2))/sqrt(t^2-r^2) ]
 
-Moving-charge potentials can be written covariantly as:
+Moving-defect-branch potentials can be written covariantly as:
   A_mu(x) = ∫ d^4x' D_eff_ret(x-x') J_mu(x')
 and in momentum space:
   A_mu(k) = D_eff(k^2) J_mu(k),  with D_eff depending only on k^2.

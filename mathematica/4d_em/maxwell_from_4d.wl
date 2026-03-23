@@ -39,7 +39,7 @@ ClearAll["Global`*"];
 Needs["VariationalMethods`"];
 
 (* Assumptions for simplification; extend if desired *)
-$Assumptions = {mu0 != 0, xi != 0, lambdaConf > 0};
+$Assumptions = {mu0 != 0, xi != 0, lambdaConf > 0, eStar > 0, Element[etaQ, Reals], etaQ^2 == 1};
 
 (* Simplification helper: Together first (rational structure), then FullSimplify *)
 Simp[expr_] := FullSimplify[Together[expr], Assumptions -> $Assumptions];
@@ -61,6 +61,11 @@ EqToExpr[eq_] := Module[{lst},
 
 (* Convenience: boolean check for "expr == 0" under assumptions *)
 ZeroQAssume[expr_] := TrueQ[FullSimplify[expr == 0, Assumptions -> $Assumptions]];
+
+Print["---------- Charge ontology bookkeeping ----------\n"]; 
+Print["Fixed defect branch label: qStar = etaQ * eStar, with etaQ = +/- 1 and eStar > 0."]; 
+Print["In the coupled reading, Jtot^M = Jpsi^M + Jext^M; the compact J^M used below is shorthand total source."]; 
+Print[""]; 
 
 Print["---------- Conventions: coordinates, metric, fields ----------\n"]; 
 
@@ -234,11 +239,18 @@ mu0eff = Simp[mu0/Zint];
 Print["Localization integral and effective coupling:"]; 
 Print[HoldForm[Zint], " -> ", Zint];
 Print[HoldForm[mu0eff], " -> ", mu0eff];
+qStar = etaQ*eStar;
+qEff = Simp[qStar/Sqrt[Zint]];
+eEff = Simp[eStar/Sqrt[Zint]];
+Print[HoldForm[qStar], " -> ", qStar];
+Print[HoldForm[qEff], " -> ", qEff];
+Print[HoldForm[eEff], " -> ", eEff];
 Print[""];
 
 Print["Under (i)-(ii), the kinetic term reduces as:"]; 
 Print["  Integral dw [ -(Z(w)/(4 mu0)) F_{MN}F^{MN} ]  ->  -(Zint/(4 mu0)) f_{mu nu} f^{mu nu}" ];
 Print["which is standard 3+1 Maxwell with mu0eff = mu0/Zint.\n" ];
+Print["Equivalent canonical normalization statement: if a_mu = a_mu^can / Sqrt[Zint], then qEff = qStar / Sqrt[Zint] and eEff = eStar / Sqrt[Zint].\n"];
 
 (* ---------- 3+1D brane Maxwell: derive from reduced action ---------- *)
 Print["--- 3+1D effective Maxwell system (brane) ---\n"]; 

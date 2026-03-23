@@ -76,7 +76,7 @@ Q     = Symbol["Q"];
 Ee     = Symbol["Ee"];
 B     = Symbol["B"];
 
-m = Symbol["m"]; q = Symbol["q"];
+m = Symbol["m"]; etaQ = Symbol["etaQ"]; eStar = Symbol["eStar"]; qstar = Symbol["qstar"];
 
 (* ----------------------------- *)
 (* Appendix: continuity + Poisson hook *)
@@ -117,8 +117,12 @@ EqBlock["Exact longitudinal identity (from continuity + Helmholtz)", {
 
 Section["APPENDIX: Projected brane momentum equation (structure + correction terms)"];
 
+EqBlock["Charge convention", {
+  HoldForm[qstar == etaQ*eStar]
+}];
+
 EqBlock["Bulk momentum (conservative form; i in {x,y,z}, j in {x,y,z,w})", {
-  HoldForm[m*(D[rho*v[i], t] + Subscript[del, j][rho*v[i]*v[j]]) == q*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]]
+  HoldForm[m*(D[rho*v[i], t] + Subscript[del, j][rho*v[i]*v[j]]) == qstar*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]]
 }];
 
 EqBlock["Projected brane momentum density and flux tensor", {
@@ -132,7 +136,7 @@ EqBlock["Momentum leakage source (from the w-flux term)", {
 }];
 
 EqBlock["Projected brane momentum equation (i in {x,y,z}; a in {x,y,z})", {
-  HoldForm[m*(D[Jbrane[i], t] + Subscript[del, a][Pibrane[i, a]]) == Integrate[W[w]*(q*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]), {w, -Infinity, Infinity}] + m*Smom[i]],
+  HoldForm[m*(D[Jbrane[i], t] + Subscript[del, a][Pibrane[i, a]]) == Integrate[W[w]*(qstar*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]), {w, -Infinity, Infinity}] + m*Smom[i]],
   HoldForm[Pibrane[i, a] == rhobrane*vbrane[i]*vbrane[a] + Rstress[i, a]]
 }];
 
@@ -141,53 +145,3 @@ EqPrint["(Optional alternate form) Reynolds/stress correction as a variance in w
 ];
 
 Print["END"];
-
-(*"
-Output:
-
-==============================================================================
-APPENDIX: Brane continuity and exact longitudinal identity
-------------------------------------------------------------------------------
-Projection (definitions)
-TraditionalForm[HoldForm[rhobrane == Integrate[W[w]*rho, {w, -Infinity, Infinity}]]]
-TraditionalForm[HoldForm[Jbrane == Integrate[W[w]*Jxyz, {w, -Infinity, Infinity}]]]
-TraditionalForm[HoldForm[Jxyz == {Jx, Jy, Jz}]]
-TraditionalForm[HoldForm[vbrane == Jbrane/rhobrane]]
-
-Projected continuity + leakage source (identity)
-TraditionalForm[HoldForm[D[rhobrane, t] + Div[Jbrane, coords3] == Sleak]]
-TraditionalForm[HoldForm[Sleak == -Limit[W[w]*Jw, w -> Infinity] + Limit[W[w]*Jw, w -> -Infinity] + Integrate[D[W[w], w]*Jw, {w, -Infinity, Infinity}]]]
-
-Helmholtz decomposition (brane)
-TraditionalForm[HoldForm[vbrane == Grad[Phi, coords3] + vT]]
-TraditionalForm[HoldForm[Div[vT, coords3] == 0]]
-
-Exact longitudinal identity (from continuity + Helmholtz)
-TraditionalForm[HoldForm[D[rhobrane, t] + Div[rhobrane*vbrane, coords3] == Sleak]]
-TraditionalForm[HoldForm[rhobrane*Laplacian[Phi, coords3] == Sleak - D[rhobrane, t] - Grad[rhobrane, coords3] . (Grad[Phi, coords3] + vT) - rhobrane*Div[vT, coords3]]]
-TraditionalForm[HoldForm[rhobrane*Laplacian[Phi, coords3] == Sleak - D[rhobrane, t] - Grad[rhobrane, coords3] . (Grad[Phi, coords3] + vT)]]
-
-
-==============================================================================
-APPENDIX: Projected brane momentum equation (structure + correction terms)
-------------------------------------------------------------------------------
-Bulk momentum (conservative form; i in {x,y,z}, j in {x,y,z,w})
-TraditionalForm[HoldForm[m*(D[rho*v[i], t] + Subscript[del, j][rho*v[i]*v[j]]) == q*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]]]
-
-Projected brane momentum density and flux tensor
-TraditionalForm[HoldForm[Jbrane[i] == Integrate[W[w]*rho*v[i], {w, -Infinity, Infinity}]]]
-TraditionalForm[HoldForm[Pibrane[i, a] == Integrate[W[w]*rho*v[i]*v[a], {w, -Infinity, Infinity}]]]
-TraditionalForm[HoldForm[Rstress[i, a] == Pibrane[i, a] - rhobrane*vbrane[i]*vbrane[a]]]
-
-Momentum leakage source (from the w-flux term)
-TraditionalForm[HoldForm[Smom[i] == -Limit[W[w]*rho*v[i]*v[w], w -> Infinity] + Limit[W[w]*rho*v[i]*v[w], w -> -Infinity] + Integrate[D[W[w], w]*rho*v[i]*v[w], {w, -Infinity, Infinity}]]]
-
-Projected brane momentum equation (i in {x,y,z}; a in {x,y,z})
-TraditionalForm[HoldForm[m*(D[Jbrane[i], t] + Subscript[del, a][Pibrane[i, a]]) == Integrate[W[w]*(q*rho*(Ee[i] + v[j]*B[i, j]) - rho*Subscript[del, i][Vconf + h[rho] + Q]), {w, -Infinity, Infinity}] + m*Smom[i]]]
-TraditionalForm[HoldForm[Pibrane[i, a] == rhobrane*vbrane[i]*vbrane[a] + Rstress[i, a]]]
-
-(Optional alternate form) Reynolds/stress correction as a variance in w
-TraditionalForm[HoldForm[Rstress[i, a] == Integrate[W[w]*rho*(v[i] - vbrane[i])*(v[a] - vbrane[a]), {w, -Infinity, Infinity}]]]
-
-END
-"*)

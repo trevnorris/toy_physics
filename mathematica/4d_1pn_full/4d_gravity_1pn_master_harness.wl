@@ -32,7 +32,7 @@ ClearAll[
   x, y, z, t, w, r, rr, theta, phi, tau,
   ellw, wProj, sigJ, rho0, cs0, mParam,
   Qsrc, muKepler, cLight, aSemi, ecc,
-  M0, qVar, PhiN, vSq,
+  M0, kappaRhoVar, PhiN, vSq,
   mInert, mGrav, X, Y, Z, PhiExt,
   R11, R12, R13, R21, R22, R23, R31, R32, R33,
   rhoBf, Jx, Jy, Jz, SrhoF,
@@ -342,18 +342,18 @@ checkEqScalar[
 ];
 
 (* Legacy hybrid/Newtonian checks carried forward from the pre-4D papers *)
-LNewton = (1/2) M0 vSq - M0 qVar PhiN;
-qSolve = qVar /. First[Solve[Coefficient[LNewton, PhiN] == Coefficient[(1/2) M0 vSq - M0 PhiN, PhiN], qVar]];
+LNewton = (1/2) M0 vSq - M0 kappaRhoVar PhiN;
+kappaRhoSolution = kappaRhoVar /. First[Solve[Coefficient[LNewton, PhiN] == Coefficient[(1/2) M0 vSq - M0 PhiN, PhiN], kappaRhoVar]];
 
 checkEqScalar[
-  "Hybrid Newtonian limit fixes q = 1",
-  qSolve,
+  "Hybrid Newtonian limit fixes kappa_rho = 1 (historically q = 1)",
+  kappaRhoSolution,
   1
 ];
 
-Chyb[n_, q_] := q/2 - (n - 1)/2;
+Chyb[n_, kappaRho_] := kappaRho/2 - (n - 1)/2;
 checkEqScalar[
-  "Hybrid Phi v^2 / c^2 bookkeeping coefficient at (q,n)=(1,5)",
+  "Hybrid Phi v^2 / c^2 bookkeeping coefficient at (kappa_rho,n)=(1,5)",
   Chyb[5, 1],
   -3/2
 ];
@@ -670,7 +670,7 @@ checkEqScalar[
   -57/64
 ];
 
-beta1PN = FullSimplify[1 + kappaAdd[3] + kappaPV];
+beta1PN = FullSimplify[kappaRhoSolution + kappaAdd[3] + kappaPV];
 
 checkEqScalar[
   "1PN inertia ledger closes to beta = kappa_rho + kappa_add + kappa_PV = 3",
@@ -818,8 +818,8 @@ PASS: Quasi-static limit solves to Laplacian(phi_3) = S_rho / rho0
 PASS: Localized monopole source gives 1/r^2 longitudinal field scaling
 PASS: Monopole longitudinal field is divergence-free away from the source
 PASS: Monopole longitudinal flux through a sphere matches the source strength
-PASS: Hybrid Newtonian limit fixes q = 1
-PASS: Hybrid Phi v^2 / c^2 bookkeeping coefficient at (q,n)=(1,5)
+PASS: Hybrid Newtonian limit fixes kappa_rho = 1 (historically q = 1)
+PASS: Hybrid Phi v^2 / c^2 bookkeeping coefficient at (kappa_rho,n)=(1,5)
 PASS: ANSATZ-LEVEL particle limit: m_i xdd = -m_g grad(Phi)
 PASS: ANSATZ-LEVEL equivalence principle requires m_g/m_i = 1
 

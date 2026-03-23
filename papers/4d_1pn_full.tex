@@ -55,6 +55,11 @@
 \newcommand{\Kvec}{K_{\mathrm{vec}}}
 \newcommand{\KEOS}{K_{\mathrm{EOS}}}
 \newcommand{\alphaSq}{\alpha^2}
+\newcommand{\etaQ}{\eta_Q}
+\newcommand{\qstar}{q_*}
+\newcommand{\estar}{e_*}
+\newcommand{\qeff}{q_{\mathrm{eff}}}
+\newcommand{\eeff}{e_{\mathrm{eff}}}
 
 \newcommand{\PhiN}{\Phi}
 \newcommand{\phibr}{\varphi}
@@ -70,7 +75,6 @@
 \newcommand{\Ansatz}{\textbf{Ansatz-level consistency}}
 
 \newcommand{\claimclass}[1]{\paragraph{Claim class.}\emph{#1.}}
-\newcommand{\TODO}[1]{\textbf{[TODO: #1]}}
 
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
@@ -89,7 +93,7 @@ from the Unified 4D Toy Model}
 \maketitle
 
 \begin{abstract}
-We present a controlled derivation of the full conservative two-body first post-Newtonian (1PN) sector from the four-spatial-dimensional brane--bulk toy model. Starting from the exact bulk action, projection map, and open-system balance laws, we identify a quasi-static near-zone Poisson hook on the brane and use a coherent-defect / small-body worldtube reduction to obtain the Newtonian point-particle limit. We then derive the 1PN ledger sector by sector. Newtonian matching fixes the scalar mass-dressing exponent \(q=1\), weak-field optical consistency fixes the polytropic exponent \(n=5\), and wave-supported rest energy yields the universal free-particle \(v^4\) coefficient. Local mass scaling plus pair counting generate the static \(G^2/r^2\) term, while exterior potential-flow topology fixes the added-mass coefficient \(\kappa_{\rm add}=1/2\) for a \(w\)-uniform throat. In the parity-even velocity-dependent cross sector, a constructive isotropic Fourier-space wake basis, together with the thermodynamic closure implied by \(n=5\), selects \(\alpha^2=3/4\), \(a_H=0\), and \(K_{\rm vec}=2/\pi^2\), reproducing the Einstein--Infeld--Hoffmann coefficients \(C_\parallel=-7/2\) and \(C_L=-1/2\). Under an explicit adiabatic one-degree-of-freedom breathing closure we further obtain \(\kappa_{\rm PV}=3/2\), so that \(\beta_{1\rm PN}=\kappa_\rho+\kappa_{\rm add}+\kappa_{\rm PV}=3\). The assembled reduced two-body Lagrangian is then algebraically identical to the standard conservative EIH form, and the test-mass limit reproduces the standard perihelion shift. The result is a full conservative 1PN derivation within a clearly stated closure hierarchy, with remaining freedom confined to generalized internal response, finite-size structure, and beyond-1PN open-system effects.
+We present a controlled derivation of the full conservative two-body first post-Newtonian (1PN) sector from the four-spatial-dimensional brane--bulk toy model. Starting from the exact bulk action, projection map, open-system balance laws, and quasi-static near-zone Poisson hook on the brane, we use a coherent-defect / small-body worldtube reduction to obtain the Newtonian point-particle limit and then assemble the conservative 1PN ledger sector by sector. Newtonian matching fixes the scalar mass-dressing coefficient \(\krho=1\) (historically written \(q=1\) in earlier gravity-side bookkeeping), weak-field optical consistency fixes the polytropic exponent \(n=5\), and wave-supported rest energy yields the universal free-particle \(v^4\) coefficient. Local mass scaling plus pair counting generate the static \(G^2/r^2\) term, exterior potential-flow topology fixes the added-mass coefficient \(\kappa_{\rm add}=1/2\) for a \(w\)-uniform throat, and a constructive isotropic Fourier-space wake basis reproduces the Einstein--Infeld--Hoffmann coefficients \(C_\parallel=-7/2\) and \(C_L=-1/2\) with \(\alpha^2=3/4\), \(a_H=0\), and \(K_{\rm vec}=2/\pi^2\). Under an explicit adiabatic one-degree-of-freedom breathing closure we further obtain \(\kappa_{\rm PV}=3/2\), so that \(\beta_{1\rm PN}=\kappa_\rho+\kappa_{\rm add}+\kappa_{\rm PV}=3\). The assembled reduced two-body Lagrangian is then algebraically identical to the standard conservative EIH form, and the test-mass limit reproduces the standard perihelion shift. The result is a full conservative 1PN derivation within a declared closure hierarchy that makes explicit which ingredients are fixed, protocol-fixed, and still symbolic, with remaining freedom confined to generalized internal response, finite-size structure, and beyond-1PN open-system effects.
 \end{abstract}
 
 % ============================================================
@@ -114,6 +118,8 @@ This paper is therefore narrower than the unified 4D action paper and stronger t
 
 A second purpose of the paper is bookkeeping clarity. In the 4D framework, brane observables are defined by a projection/measurement map rather than by stitched boundary conditions, so leakage, unresolved stress, and response terms are not optional decorations; they are the natural price of projection. For the 1PN problem this matters because it forces a clean separation between what is exact, what is reduced under an explicit regime assumption, and what depends on a declared response protocol. That separation is part of the result.
 
+This paper is also downstream of the corrected Paper~7 / Paper~8 matter--gauge ontology. Electric-charge sign is the fixed topological puncture orientation \(\etaQ=\pm1\), the microscopic branch coupling is \(\qstar=\etaQ\estar\) with \(\estar>0\), and the canonically normalized brane charge is \(\qeff=\qstar/\sqrt{Z_{\rm int}}=\etaQ\eeff\) with \(\eeff=\estar/\sqrt{Z_{\rm int}}\). Quantized circulation belongs to the magnetic/vortical sector rather than the electric-charge dictionary, and the zero-mode Maxwell reduction \((A_w\approx0,\ \partial_w A_\mu\approx0,\ J^w\approx0,\ F_{\mu w}\approx0)\) is used here only as a controlled far-field brane limit. Separately, the scalar Newtonian mass-dressing coefficient historically denoted \(q\) in pre-4D gravity bookkeeping is not electric charge; in the present downstream notation it is written \(\krho\), fixed by Newtonian matching to \(\krho=1\).
+
 \subsection{What this paper claims}
 \label{sec:claims}
 
@@ -122,7 +128,7 @@ The main claims are the following.
   \item The unified 4D model supplies the exact field-theoretic and projection framework needed to define a brane Newtonian potential: exact bulk balance laws, exact projected balances with explicit exchange terms, and a quasi-static near-zone Poisson hook.
   \item Under a coherent-defect / small-body closure---compact support, smooth external fields across the defect, negligible boundary fluxes at the retained order, and vanishing defect-centered dipole moment---the worldtube dynamics reduce to a Newtonian particle Lagrangian on the brane.
   \item Wave-supported rest energy reproduces the universal special-relativistic quartic kinetic coefficient, so the free-particle \(v^4\) term entering the 1PN bookkeeping is not inserted by hand.
-  \item Scalar mass dressing together with the weak-field optical consistency condition fixes \(q=1\) and \(n=5\), and therefore fixes the self-sector \(\Phi v^2/c^2\) coefficient appearing in the pair Lagrangian.
+  \item Scalar mass dressing together with the weak-field optical consistency condition fixes \(\krho=1\) and \(n=5\), and therefore fixes the self-sector \(\Phi v^2/c^2\) coefficient appearing in the pair Lagrangian.
   \item Local mass scaling and pair counting produce the static nonlinear \(G^2/r^2\) term, topology fixes \(\kadd=1/2\) for a \(w\)-uniform throat, and one explicit adiabatic breathing-response closure yields \(\kPV=3/2\), so that the familiar precession ledger closes to \(\betaPN=\krho+\kadd+\kPV=3\).
   \item A constructive isotropic Fourier-space wake basis yields the EIH cross coefficients \(\Cpara=-7/2\) and \(\CLong=-1/2\), with the unique minimal real solution \(\alphaSq=3/4\), \(a_H=0\), and \(\Kvec=2/\pi^2\).
   \item Combining these ingredients reproduces the standard conservative two-body 1PN/EIH Lagrangian exactly and yields the canonical perihelion coefficient in the test-mass orbit reduction.
@@ -178,7 +184,7 @@ from the dimensionless vector-sector normalization \(\Kvec\) that appears in the
 
 \paragraph{Headline result.}
 The main claim of the paper is that, within the declared closure hierarchy, the toy model reproduces the full conservative two-body Einstein--Infeld--Hoffmann ledger through order \(c^{-2}\). The required coefficients are not fixed by a single argument but by a triangulated chain:
-Newtonian matching fixes \(q=1\), weak-field optics fixes \(n=5\), wave-supported rest energy gives the universal quartic kinetic coefficient, topology fixes \(\kadd\), one explicit adiabatic response closure fixes \(\kPV\), and the wake overlap tensor fixes the velocity-dependent cross terms. The resulting reduced Lagrangian then agrees identically with the standard two-body EIH form.
+Newtonian matching fixes \(\krho=1\), weak-field optics fixes \(n=5\), wave-supported rest energy gives the universal quartic kinetic coefficient, topology fixes \(\kadd\), one explicit adiabatic response closure fixes \(\kPV\), and the wake overlap tensor fixes the velocity-dependent cross terms. The resulting reduced Lagrangian then agrees identically with the standard two-body EIH form.
 
 Table~\ref{tab:headline-results} lists the quantities proved in the paper and the logic by which each is obtained.
 
@@ -193,10 +199,10 @@ Table~\ref{tab:headline-results} lists the quantities proved in the paper and th
     \toprule
     Quantity & Value & Source of derivation & Claim class \\
     \midrule
-    Newtonian scalar coupling & \(q=1\) & Newtonian matching of the scalar-dressed particle action & \Controlled \\
+    Newtonian scalar coupling & \(\krho=1\) & Newtonian matching of the scalar-dressed particle action (historically \(q=1\)) & \Controlled \\
     EOS exponent & \(n=5\) & weak-field optical/refraction coefficient & \Controlled \\
     Free-particle quartic coefficient & \(1/8\) in \(L\) & wave-supported rest energy / SR expansion & \Controlled \\
-    Self-sector pair coefficient & \(+3/2\) in the EIH pair term & scalar + optical dressing with \(q=1\), \(n=5\) & \Controlled \\
+    Self-sector pair coefficient & \(+3/2\) in the EIH pair term & scalar + optical dressing with \(\krho=1\), \(n=5\) & \Controlled \\
     Static 1PN coefficient & \(-1/2\) & local mass scaling + pair counting & \Exact / \Controlled \\
     Added-mass coefficient & \(\kadd=1/2\) & topology of a \(w\)-uniform throat slice & \Controlled \\
     Counterfactual bubble check & \(1/3\) & 4D bubble added-mass comparison & \Controlled \\
@@ -213,7 +219,7 @@ Table~\ref{tab:headline-results} lists the quantities proved in the paper and th
 \end{table}
 
 \paragraph{How the ledger closes.}
-The scalar/self sector and the vector/cross sector are fixed by different physical inputs and only meet at the very end. On the scalar side, Newtonian reduction forces the mass-dressing exponent \(q=1\), weak-field optics forces the stiff polytropic exponent \(n=5\), and those two facts together fix the pair self coefficient multiplying \(v_A^2+v_B^2\). The universal free-particle quartic term follows from treating rest energy as wave-supported energy, so the \(v^4\) coefficient is not inserted by hand. The remaining static nonlinear term proportional to \(G^2/r^2\) then follows from local mass scaling together with the pair bookkeeping of the reduced two-body action.
+The scalar/self sector and the vector/cross sector are fixed by different physical inputs and only meet at the very end. On the scalar side, Newtonian reduction forces the mass-dressing coefficient \(\krho=1\), weak-field optics forces the stiff polytropic exponent \(n=5\), and those two facts together fix the pair self coefficient multiplying \(v_A^2+v_B^2\). The universal free-particle quartic term follows from treating rest energy as wave-supported energy, so the \(v^4\) coefficient is not inserted by hand. The remaining static nonlinear term proportional to \(G^2/r^2\) then follows from local mass scaling together with the pair bookkeeping of the reduced two-body action.
 
 On the response side, the \(w\)-uniform throat geometry fixes the added-mass contribution to the inertial ledger at \(\kadd=1/2\), while a counterfactual \(4\)D bubble would instead give \(1/3\). This is useful because it turns added mass into a topology discriminator rather than a tunable inertial correction. The pressure-volume / breathing contribution is more subtle: in general \(\kPV\) is a response coefficient and should remain symbolic, but for the explicit adiabatic one-degree-of-freedom closure adopted here it evaluates to
 \[
@@ -266,7 +272,7 @@ Most rows in Table~\ref{tab:headline-results} are \Controlled statements: they r
 Within the scope of this paper, the quantities
 \[
 \begin{aligned}
-q &= 1, \qquad
+\krho &= 1, \qquad
 n = 5, \qquad
 \kadd = \frac12, \qquad
 \alphaSq = \frac34, \\
@@ -417,6 +423,10 @@ the parent action yields an exact localized Maxwell equation of the form
 \mu_0\bigl(J_\psi^N+J_{\rm ext}^N\bigr).
 \label{eq:dictionary-maxwell}
 \end{equation}
+When electric charge is named explicitly in this downstream notation, it is the corrected
+branch quantity \(\qstar=\etaQ\estar\) or the reduced brane charge
+\(\qeff=\qstar/\sqrt{Z_{\rm int}}\); it is not the gravity-side scalar coefficient
+\(\krho\) used later in the \(1\)PN ledger.
 This is included here not because we will solve the full bulk gauge problem in the
 Newtonian sector, but because it makes clear that any brane-effective transverse/vector
 sector is grounded in an exact action-based channel rather than in a purely kinematic
@@ -581,9 +591,13 @@ Although the scalar Newtonian sector is the main focus of the next section, the 
 paper also provides a second example of how familiar brane operators emerge as controlled
 reductions rather than axioms. Under the zero-mode assumptions
 \begin{equation}
-A_w = 0,
+A_w \approx 0,
 \qquad
-\partial_w A_\mu = 0,
+\partial_w A_\mu \approx 0,
+\qquad
+J^w \approx 0,
+\qquad
+F_{\mu w}\approx 0,
 \qquad
 \mu\in\{0,1,2,3\},
 \label{eq:dictionary-zero-mode}
@@ -602,6 +616,9 @@ and with a brane-compatible gauge choice, integrating
 Z_{\rm int}\equiv \int_{-\infty}^{\infty}\Zloc(w)\,\dd w.
 \label{eq:dictionary-brane-maxwell}
 \end{equation}
+This reduction should be read as a controlled far-field brane Maxwell limit. It suppresses
+the mixed sector \((A_w,J^w,F_{\mu w})\) in the reduced description, but it does not erase
+those channels from the microscopic ontology of the parent \(4{+}1\)D theory.
 We do not use \eqref{eq:dictionary-brane-maxwell} as an engine for the Newtonian scalar
 derivation itself. Its role here is organizational: it reminds the reader that the same
 exact-versus-controlled logic used for the Poisson hook also governs the transverse/vector
@@ -946,11 +963,13 @@ channel. In the present framework that channel is the combined effect of
 
 The logic of the section is straightforward. We first write the minimal reduced
 scalar/optical worldline ansatz that captures both effects at the order needed for
-\(1\)PN bookkeeping. Its Newtonian term fixes the scalar dressing coefficient \(q\).
+\(1\)PN bookkeeping. Its Newtonian term fixes the scalar dressing coefficient \(\krho\).
 Independently, the optical weak-field coefficient fixes the EOS exponent \(n\). Once
 those two numbers are known, the coefficient of the mixed \(\PhiN v^2/c^2\) term follows
 algebraically. We also record the universal free-particle \(v^4\) coefficient, since it
 enters the same two-body \(1\)PN ledger.
+The scalar mass-dressing coefficient historically denoted \(q\) in earlier gravity-side
+bookkeeping is written here as \(\krho\); Newtonian matching will fix \(\krho=1\).
 
 A bookkeeping remark is important at the outset. In this section we keep the
 \(\PhiN v^2/c^2\) channel and the free \(v^4/c^2\) channel, but we do \emph{not} use this
@@ -959,13 +978,13 @@ separate and is derived in \cref{sec:static-term} by local mass scaling plus pai
 counting.
 
 \subsection{Scalar-dressed particle action and Newtonian matching}
-\label{sec:q-matching}
+\label{sec:kappa-rho-matching}
 
 The reduced one-body ansatz we need is
 \begin{equation}
 L_{\rm sc}
 =
--M_0\bigl(1+q\,\epsilon_\Phi\bigr)c^2
+-M_0\bigl(1+\krho\,\epsilon_\Phi\bigr)c^2
 \sqrt{1-\frac{\epsilon_v^2}{1+(n-1)\epsilon_\Phi}},
 \label{eq:scalar-optical-ansatz}
 \end{equation}
@@ -976,7 +995,7 @@ with the dimensionless weak-field parameters
 \epsilon_v^2 \equiv \frac{v^2}{c^2}.
 \label{eq:eps-defs}
 \end{equation}
-The prefactor \(1+q\,\epsilon_\Phi\) is the scalar mass dressing, while the denominator
+The prefactor \(1+\krho\,\epsilon_\Phi\) is the scalar mass dressing, while the denominator
 \(1+(n-1)\epsilon_\Phi\) encodes the leading optical/barotropic shift in the local
 propagation speed inherited from the same microphysics that controls the refractive
 sector. Equation \eqref{eq:scalar-optical-ansatz} is a \Controlled reduction: it is the
@@ -989,12 +1008,12 @@ quartic order in \(v/c\) gives
 L_{\rm sc}
 =
 {}&-M_0 c^2
-- q\,M_0\PhiN
+- \krho\,M_0\PhiN
 + \frac12 M_0 v^2
 + \frac18 M_0\frac{v^4}{c^2}
 \nonumber\\
 &\hspace{2em}
-+ M_0\left(\frac q2-\frac{n-1}{2}\right)\frac{\PhiN v^2}{c^2}
++ M_0\left(\frac{\krho}{2}-\frac{n-1}{2}\right)\frac{\PhiN v^2}{c^2}
 + O\!\left(\frac{v^6}{c^4},\frac{\PhiN^2}{c^2},\frac{\PhiN v^4}{c^4}\right).
 \label{eq:scalar-optical-expanded}
 \end{align}
@@ -1008,8 +1027,8 @@ L_{\rm N}
 Comparing \eqref{eq:scalar-optical-expanded} with
 \eqref{eq:newtonian-worldline-recalled}, the coefficient of the Newtonian potential fixes
 \begin{equation}
-q=1.
-\label{eq:q-equals-one}
+\krho=1.
+\label{eq:kappa-rho-equals-one-self}
 \end{equation}
 
 This is the first key result of the section. The coefficient multiplying the scalar
@@ -1085,10 +1104,10 @@ The mixed coefficient of \(\PhiN v^2/c^2\) in
 \begin{equation}
 \Cself
 =
-\frac q2-\frac{n-1}{2}.
+\frac{\krho}{2}-\frac{n-1}{2}.
 \label{eq:self-coeff-general}
 \end{equation}
-Using \eqref{eq:q-equals-one} and \eqref{eq:n-equals-five},
+Using \eqref{eq:kappa-rho-equals-one-self} and \eqref{eq:n-equals-five},
 \begin{equation}
 \Cself
 =
@@ -1141,7 +1160,7 @@ This is exactly the EIH self-sector coefficient multiplying
 
 Two points deserve emphasis. First, this coefficient is fixed without any use of the wake
 overlap tensor; it belongs to a genuinely different sector of the theory. Second, the
-derivation depends only on the already-fixed values \(q=1\) and \(n=5\). Once those are
+derivation depends only on the already-fixed values \(\krho=1\) and \(n=5\). Once those are
 established, the self coefficient is no longer an adjustable number.
 
 \subsection{Free kinematic expansion}
@@ -1184,7 +1203,7 @@ all we need operationally is the Lagrangian coefficient \(1/8\).
 \paragraph{Summary of the self-sector route.}
 The direct scalar/optical route therefore fixes
 \begin{equation}
-q=1,
+\krho=1,
 \qquad
 n=5,
 \qquad
@@ -1200,7 +1219,7 @@ topology-plus-response ledger
 consistency check of the full \(1\)PN construction.
 
 \claimclass{\Controlled. Equation \eqref{eq:scalar-optical-ansatz} is a reduced
-scalar/optical worldline ansatz, Newtonian matching fixes \(q=1\), the optical weak-field
+scalar/optical worldline ansatz, Newtonian matching fixes \(\krho=1\), the optical weak-field
 coefficient fixes \(n=5\), and the \(\PhiN v^2/c^2\) self coefficient then follows
 algebraically. The free \(v^4\) coefficient in the Lagrangian is the universal
 special-relativistic value \(1/8\).}
@@ -1253,9 +1272,10 @@ m_A\left(1+\krho\,\frac{\Phi_A^{\rm loc}}{c^2}\right)
 \end{equation}
 Here \(\krho\) is simply the static-sector notation for the local mass-scaling
 coefficient. In the present theory it is not a new free parameter: it is the same scalar
-dressing coefficient that appeared as \(q\) in \cref{sec:self-sector}, so
+dressing coefficient that appeared historically as \(q\) in \cref{sec:self-sector}, so in
+the present notation
 \begin{equation}
-\krho=q=1.
+\krho=1.
 \label{eq:kappa-rho-equals-one}
 \end{equation}
 
@@ -1359,8 +1379,9 @@ Two comments are worth recording explicitly.
 First, the coefficient \(-1/2\) is not imported from the EIH target. It is the direct
 consequence of expanding the locally dressed mass only to first order in
 \(\Phi_A^{\rm loc}/c^2\) and then pair-counting exactly once. Second, this sector carries
-no new free parameter once Newtonian matching has fixed \(q=1\): the only coefficient
-that appears here is \(\krho\), and in the present framework \(\krho=q=1\).
+no new free parameter once Newtonian matching has fixed \(\krho=1\): the only coefficient
+that appears here is \(\krho\), historically denoted \(q\) in earlier gravity-side
+bookkeeping.
 
 \subsection{Three-body consistency pattern}
 \label{sec:three-body-pattern}
@@ -1419,7 +1440,7 @@ m_A^{\rm eff}(\Phi_A^{\rm loc})
 =
 m_A\left(1+\krho\frac{\Phi_A^{\rm loc}}{c^2}\right),
 \qquad
-\krho=q=1,
+\krho=1,
 \qquad
 L_{\rm stat}
 =
@@ -1451,7 +1472,7 @@ coefficient into the static sector. Exact for the pair counting, the expansion o
 This section closes the scalar/self ledger from a second direction. In
 \cref{sec:self-sector}, the coefficient of the mixed \(\PhiN v^2/c^2\) term was obtained
 directly from the reduced scalar/optical worldline ansatz and the already-fixed values
-\(q=1\) and \(n=5\). Here we reorganize the same self-sector bookkeeping into three
+\(\krho=1\) and \(n=5\). Here we reorganize the same self-sector bookkeeping into three
 physically distinct contributions:
 \begin{equation}
 \betaPN = \krho + \kadd + \kPV.
@@ -1460,7 +1481,7 @@ physically distinct contributions:
 The first term, \(\krho\), is the scalar density/mass-dressing contribution already fixed
 by Newtonian matching:
 \begin{equation}
-\krho = q = 1.
+\krho = 1.
 \label{eq:krho-one-ledger}
 \end{equation}
 The second term, \(\kadd\), comes from exterior added mass and is controlled by the
@@ -2804,14 +2825,11 @@ tunable parameters.
 \paragraph{Newtonian/scalar sector.}
 Newtonian matching of the reduced one-body action fixes the scalar mass-dressing exponent:
 \begin{equation}
-q=1.
-\label{eq:fixed-q}
+\krho=1.
+\label{eq:fixed-kappa-rho}
 \end{equation}
-Equivalently, in the static/local-mass notation,
-\begin{equation}
-\krho = 1.
-\label{eq:fixed-krho}
-\end{equation}
+This is the coefficient historically written \(q=1\) in earlier gravity-side bookkeeping;
+in the present notation the same fixed quantity is \(\krho\).
 This means that the Newtonian potential couples to the defect monopole with unit strength
 in the reduced worldline description.
 
@@ -3072,7 +3090,7 @@ quantities entering the present paper.
     \toprule
     Quantity & Status & Comments \\
     \midrule
-    \(q\), \(\krho\) & fixed & Newtonian matching gives \(q=\krho=1\) \\
+    \(\krho\) & fixed & Newtonian matching gives \(\krho=1\) (historically \(q=1\)) \\
     \(n\) & fixed & optical consistency gives \(n=5\) \\
     \(1/8\) quartic Lagrangian coefficient & fixed & universal relativistic/wave-supported kinematics \\
     Static \(G^2/r^2\) coefficient & fixed & local mass scaling + pair counting gives \(-1/2\) \\
@@ -3153,7 +3171,8 @@ summarized in \cref{tab:verification}.
     \makecell[l]{\texttt{4d\_gravity\_1pn\_master\_harness}\\\texttt{.wl}}
     &
     Consolidated gravity-side referee harness: projection normalization, leakage split,
-    exact longitudinal identity, Poisson-hook reduction, Newtonian coupling \(q=1\),
+    exact longitudinal identity, Poisson-hook reduction, Newtonian coupling \(\krho=1\)
+    (historically \(q=1\)),
     optical coefficient and \(n=5\), added mass, vector-family invariants, adiabatic
     \(\kPV\) closure, \(\betaPN=3\), and orbit/perihelion bookkeeping. Includes
     manufactured-data checks for extraction machinery.
@@ -3386,8 +3405,8 @@ The derivation chain established here is:
   longitudinal behavior on the brane;
   \item a coherent-defect / small-body worldtube reduction, which yields the Newtonian
   point-particle limit;
-  \item scalar and optical dressing, which fix \(q=1\) and \(n=5\) and therefore the
-  self-sector coefficient;
+  \item scalar and optical dressing, which fix \(\krho=1\) (historically \(q=1\)) and
+  \(n=5\) and therefore the self-sector coefficient;
   \item local mass scaling plus exact pair counting, which generate the static nonlinear
   \(G^2/r^2\) term;
   \item topology and internal response, which give \(\kadd=1/2\),
@@ -3448,7 +3467,7 @@ Within that hierarchy, however, the bookkeeping is now substantially cleaner tha
 earlier stages of the program. The conservative two-body \(1\)PN sector contains no
 remaining free dimensionless coefficients. The quantities
 \begin{equation}
-q=1,
+\krho=1,
 \qquad
 n=5,
 \qquad
@@ -3533,7 +3552,7 @@ and which are merely naming conventions.
     \(\KEOS\) & equation-of-state constant in \(P(\rho)=\KEOS\rho^n\) \\
     \(n\) & EOS exponent, fixed here to \(5\) \\
     \(\Kvec\) & vector-sector normalization in the wake overlap tensor \\
-    \(\krho,\kadd,\kPV\) & scalar mass-dressing, added-mass, and breathing-response coefficients \\
+    \(\krho,\kadd,\kPV\) & scalar mass-dressing, added-mass, and breathing-response coefficients; \(\krho\) is the historical gravity-side \(q\) rewritten in the corrected notation \\
     \(\betaPN\) & self-sector/precession ledger, \(\betaPN=\krho+\kadd+\kPV\) \\
     \(\alphaSq\) & longitudinal wake fraction \\
     \(\Cself,\Cpara,\CLong\) & self, transverse-cross, and longitudinal-cross coefficients \\
@@ -3887,14 +3906,16 @@ The bulk matter field is a complex order parameter \(\psi(\mathbf X,t)\) with de
 \end{equation}
 We use minimal gauge coupling
 \begin{equation}
-D_t\psi = \partial_t\psi + \frac{i q}{\hbar}A_0\psi,
+D_t\psi = \partial_t\psi + \frac{i \qstar}{\hbar}A_0\psi,
 \qquad
-D_i\psi = \partial_i\psi - \frac{i q}{\hbar}A_i\psi,
+D_i\psi = \partial_i\psi - \frac{i \qstar}{\hbar}A_i\psi,
 \qquad
 i\in\{x,y,z,w\},
 \label{eq:app-cov-derivs}
 \end{equation}
-and the matter Lagrangian density
+with microscopic branch charge \(\qstar=\etaQ\estar\); any canonically normalized brane
+charge is instead \(\qeff=\qstar/\sqrt{Z_{\rm int}}\).
+The corresponding matter Lagrangian density is
 \begin{equation}
 \boxed{
 \mathcal L_\psi
@@ -3960,13 +3981,14 @@ the minimal gauge-field Lagrangian density is
 =
 -\frac{\Zloc(w)}{4\mu_0}F_{MN}F^{MN}
 -\frac{1}{2\xi\mu_0}\,(\partial\!\cdot\!A)^2
-+ A_M J_{\rm ext}^M.
+- A_M J_{\rm ext}^M.
 }
 \label{eq:app-LEM}
 \end{equation}
 The explicit source \(J_{\rm ext}^M\) is reserved for prescribed external/background
-contributions. The matter current is generated automatically by varying the covariantized
-matter action and is therefore not duplicated inside \(\mathcal L_{\rm EM}\).
+contributions, including any neutralizing backgrounds. The matter current is generated
+automatically by varying the covariantized matter action and is therefore not duplicated
+inside \(\mathcal L_{\rm EM}\).
 
 \paragraph{Geometry sector.}
 The localized throat is represented by two collective coordinates,
@@ -4044,9 +4066,9 @@ and therefore the exact bulk continuity identity
 \end{equation}
 The gauge-coupled matter current entering Maxwell's equations is
 \begin{equation}
-J_\psi^0 = q\rho,
+J_\psi^0 = \qstar\rho,
 \qquad
-J_\psi^i = q\,j^i.
+J_\psi^i = \qstar\,j^i.
 \label{eq:app-gauge-current}
 \end{equation}
 Equation \eqref{eq:app-continuity} is the exact input that later produces the projected
@@ -4067,9 +4089,13 @@ Varying \(S_{\rm EM}+S_\psi\) with respect to \(A_N\) gives
 This is the exact parent equation behind the controlled zero-mode reduction used in the
 main text. Under the brane-compatible zero-mode ansatz
 \begin{equation}
-A_w=0,
+A_w\approx0,
 \qquad
-\partial_w A_\mu = 0,
+\partial_w A_\mu \approx 0,
+\qquad
+J^w \approx 0,
+\qquad
+F_{\mu w} \approx 0,
 \qquad
 \mu\in\{0,1,2,3\},
 \label{eq:app-zero-mode}
@@ -4087,8 +4113,10 @@ integration over \(w\) yields the effective brane Maxwell equation quoted earlie
 Z_{\rm int}\equiv \int \Zloc(w)\,dw.
 \label{eq:app-brane-maxwell}
 \end{equation}
-Equation \eqref{eq:app-brane-maxwell} is a controlled reduction; the variational formula
-that underlies it is the exact bulk equation \eqref{eq:app-maxwell}.
+Equation \eqref{eq:app-brane-maxwell} is a controlled far-field brane reduction; the
+variational formula that underlies it is the exact bulk equation \eqref{eq:app-maxwell},
+and suppressing the mixed channels \((A_w,J^w,F_{\mu w})\) here does not deny their
+possible role in the full microscopic ontology.
 
 \subsection{Minimal thermodynamic formulas used later}
 \label{app:variational-thermo}
@@ -4280,14 +4308,14 @@ corrections to the monopole motion.
 
 When the defect is isotropic to leading order, rotational symmetry implies
 \begin{equation}
-Q_{ij}=q_2\,\delta_{ij},
+Q_{ij}=M_2\,\delta_{ij},
 \label{eq:app-Qij-isotropic}
 \end{equation}
 and
 \begin{equation}
 Q_{ijkl}
 =
-q_4\,
+M_4\,
 \bigl(
 \delta_{ij}\delta_{kl}
 +
@@ -4297,7 +4325,7 @@ q_4\,
 \bigr),
 \label{eq:app-Qijkl-isotropic}
 \end{equation}
-for scalar coefficients \(q_2,q_4\).
+for scalar moment coefficients \(M_2,M_4\).
 
 \subsection{Gaussian representative closure}
 \label{app:moments-gaussian}
@@ -4345,8 +4373,8 @@ Q_{ij}
 \end{equation}
 Thus the scalar second-moment coefficient is
 \begin{equation}
-q_2=\frac{Ma^2}{2}.
-\label{eq:app-q2}
+M_2=\frac{Ma^2}{2}.
+\label{eq:app-M2}
 \end{equation}
 Similarly, the fourth moment is
 \begin{equation}
@@ -4364,8 +4392,8 @@ Q_{ijkl}
 \end{equation}
 so
 \begin{equation}
-q_4=\frac{Ma^4}{4}.
-\label{eq:app-q4}
+M_4=\frac{Ma^4}{4}.
+\label{eq:app-M4}
 \end{equation}
 
 It is sometimes useful to record the rotationally invariant contractions:
@@ -4532,13 +4560,13 @@ F_{\partial W,i}.
 \label{eq:app-force-quadrupole}
 \end{equation}
 
-For an isotropic profile with \(Q_{jk}=q_2\delta_{jk}\), this simplifies to
+For an isotropic profile with \(Q_{jk}=M_2\delta_{jk}\), this simplifies to
 \begin{equation}
 F_i
 =
 - M\,\partial_i\PhiN
--\frac{q_2}{2}\,\partial_i\nabla^2\PhiN
-+O(q_4\nabla^5\PhiN)
+-\frac{M_2}{2}\,\partial_i\nabla^2\PhiN
++O(M_4\nabla^5\PhiN)
 +
 F_{\partial W,i}.
 \label{eq:app-force-isotropic}
@@ -5613,10 +5641,10 @@ ambient density.
 \subsection{Generic adiabatic-elimination formula}
 \label{app:adiabatic-generic}
 
-Let \(q^a\) denote the internal geometry variables of the defect. In the full parent
+Let \(y^a\) denote the internal geometry variables of the defect. In the full parent
 theory one may take, for example,
 \begin{equation}
-q^a=(a,L,\dots),
+y^a=(a,L,\dots),
 \end{equation}
 but the derivation below is initially independent of how many such variables are retained.
 Introduce a small external control parameter \(\epsilon\) encoding the weak environmental
@@ -5629,9 +5657,9 @@ where \(\rho\) is the ambient medium density evaluated at the defect location an
 is the slowly varying Newtonian potential.
 
 Expand the total conservative energy about an equilibrium point
-\((q_0^a,\epsilon=0)\):
+\((y_0^a,\epsilon=0)\):
 \begin{equation}
-H_{\rm tot}(q,\epsilon)
+H_{\rm tot}(y,\epsilon)
 =
 H_0
 +
@@ -5639,21 +5667,21 @@ H_\epsilon\,\epsilon
 +
 \frac12 H_{\epsilon\epsilon}\,\epsilon^2
 +
-\frac12 K_{ab}\,\delta q^a\delta q^b
+\frac12 K_{ab}\,\delta y^a\delta y^b
 +
-f_a\,\delta q^a\,\epsilon
+f_a\,\delta y^a\,\epsilon
 +\cdots,
 \label{eq:app-H-expand}
 \end{equation}
 where
 \begin{equation}
-\delta q^a\equiv q^a-q_0^a,
+\delta y^a\equiv y^a-y_0^a,
 \qquad
 K_{ab}\equiv
-\left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial q^b}\right|_0,
+\left.\frac{\partial^2 H_{\rm tot}}{\partial y^a\partial y^b}\right|_0,
 \qquad
 f_a\equiv
-\left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial \epsilon}\right|_0.
+\left.\frac{\partial^2 H_{\rm tot}}{\partial y^a\partial \epsilon}\right|_0.
 \label{eq:app-Kab-fa}
 \end{equation}
 Here \(K_{ab}\) is the stiffness matrix of the internal geometry and \(f_a\) is the
@@ -5662,18 +5690,18 @@ mixed environment--geometry coupling vector.
 In the adiabatic regime, the geometry relaxes to the instantaneous minimum of
 \(H_{\rm tot}\) at each \(\epsilon\), so
 \begin{equation}
-\frac{\partial H_{\rm tot}}{\partial q^a}=0.
+\frac{\partial H_{\rm tot}}{\partial y^a}=0.
 \end{equation}
 To linear order in \(\epsilon\), this gives
 \begin{equation}
 \boxed{
-\delta q^a_{\rm ad}
+\delta y^a_{\rm ad}
 =
 -(K^{-1})^{ab}f_b\,\epsilon
 +
 O(\epsilon^2).
 }
-\label{eq:app-dq-adiabatic}
+\label{eq:app-dy-adiabatic}
 \end{equation}
 Substituting back into \eqref{eq:app-H-expand} yields the adiabatically eliminated
 effective energy
@@ -6085,7 +6113,7 @@ with the present result understood as the low-frequency limit of that more gener
 response function.
 
 \claimclass{\Protocol. The generic adiabatic-elimination formulas
-\eqref{eq:app-dq-adiabatic}--\eqref{eq:app-Heff-adiabatic} are exact consequences of the
+\eqref{eq:app-dy-adiabatic}--\eqref{eq:app-Heff-adiabatic} are exact consequences of the
 quadratic response expansion once the control parameter and geometry coordinates are
 declared, but the explicit results
 \(\kPV=3/2\), \(x=2/11\), \(E_w:E_f:E_{\rm PV}=11:2:5\), and

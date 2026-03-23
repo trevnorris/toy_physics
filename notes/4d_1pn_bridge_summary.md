@@ -15,6 +15,10 @@ The paper also makes a second, structural contribution:
 
 Finally, it identifies what **remains undetermined** (response/compliance and open-system coupling operators) and gives a **minimal derivation program** for computing them *within the same 4D model*.
 
+### Charge ontology update
+
+This bridge now inherits the corrected Paper 7 / Paper 8 matter-gauge ontology directly. Electric-charge sign is the fixed topological puncture orientation \(\eta_Q=\pm1\), the microscopic branch coupling is \(q_*=\eta_Q e_*\) with \(e_*>0\), and the canonically normalized brane coupling is \(q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}=\eta_Q e_{\rm eff}\) with \(e_{\rm eff}=e_*/\sqrt{Z_{\rm int}}\). Quantized circulation belongs to the magnetic/vortical sector rather than defining electric charge, and the zero-mode Maxwell reduction \((A_w,\,J^w,\,F_{\mu w})\to 0\) is used only as a controlled far-field brane limit. Separately, the gravity-side scalar coefficient historically written \(q=1\) is not electric charge; in downstream notation it is the Newtonian mass-dressing coefficient \(\kappa_\rho=1\).
+
 ---
 
 ## 1) “Headline” derived values (carry-forward constants)
@@ -125,6 +129,15 @@ h(\rho)=\frac{dU}{d\rho},
 P(\rho)=\rho\,h(\rho)-U(\rho).
 \]
 
+The charge labels used in the downstream EM sector are
+\[
+\eta_Q\in\{+1,-1\},\qquad e_*>0,\qquad q_*=\eta_Q e_*.
+\]
+After canonical brane normalization, the observable coupling is
+\[
+q_{\rm eff}=\frac{q_*}{\sqrt{Z_{\rm int}}},\qquad e_{\rm eff}=\frac{e_*}{\sqrt{Z_{\rm int}}}.
+\]
+
 For \(P=K_{\rm EOS}\rho^5\):
 \[
 U(\rho)=\frac{K_{\rm EOS}}{4}\rho^5,
@@ -134,9 +147,9 @@ h(\rho)=\frac{5K_{\rm EOS}}{4}\rho^4.
 
 Gauge-covariant derivatives:
 \[
-D_t=\partial_t+\frac{i q}{\hbar}A_0,
+D_t=\partial_t+\frac{i q_*}{\hbar}A_0,
 \qquad
-D_i=\partial_i-\frac{i q}{\hbar}A_i.
+D_i=\partial_i-\frac{i q_*}{\hbar}A_i.
 \]
 
 Bulk GNLS equation:
@@ -157,6 +170,10 @@ j^i=\frac{\hbar}{m}\Im(\psi^\ast D^i\psi),
 \partial_t\rho+\partial_i j^i=0
 \quad (i\in\{x,y,z,w\}).
 \]
+For a fixed charged defect branch, the matter current is
+\[
+J_\psi^M=q_*(\rho,j^i).
+\]
 
 ### 2.3 Madelung/hydrodynamic form and vorticity–gauge identity
 
@@ -167,7 +184,7 @@ Madelung transform:
 
 Gauge-invariant velocity:
 \[
-v_i=\frac{\hbar}{m}\partial_i\theta-\frac{q}{m}A_i.
+v_i=\frac{\hbar}{m}\partial_i\theta-\frac{q_*}{m}A_i.
 \]
 
 Quantum potential:
@@ -179,7 +196,7 @@ Euler-like momentum equation (structural):
 \[
 m(\partial_t+v_j\partial_j)v_i
 =
-q(E_i+v_j B_{ij})-\partial_i\big(V_{\rm conf}+h(\rho)+Q(\rho)\big).
+q_*(E_i+v_j B_{ij})-\partial_i\big(V_{\rm conf}+h(\rho)+Q(\rho)\big).
 \]
 
 Field strength pieces:
@@ -193,7 +210,7 @@ Vorticity identity from minimal coupling:
 \[
 \Omega_{ij}\equiv \partial_i v_j-\partial_j v_i
 =
--\frac{q}{m}B_{ij}.
+-\frac{q_*}{m}B_{ij}.
 \]
 
 ### 2.4 Gauge sector (if enabled): localized Maxwell + neutrality bookkeeping
@@ -202,20 +219,21 @@ Maxwell Lagrangian with localization profile \(Z(w)\):
 \[
 \mathcal{L}_{\rm EM}=
 -\frac{1}{4\mu_0}Z(w)F_{MN}F^{MN}-\frac{1}{2\xi\mu_0}(\partial_MA^M)^2
-+ A_N J^N_{\rm ext}.
+- A_N J^N_{\rm ext}.
 \]
 
 Field equation:
 \[
 \partial_M\big(Z(w)F^{MN}\big)+\frac{1}{\xi}\partial^N(\partial\cdot A)
 =
-\mu_0(J_{\rm ch}^N+J_{\rm ext}^N).
+\mu_0 J_{\rm tot}^N,\qquad J_{\rm tot}^N=J_\psi^N+J_{\rm ext}^N.
 \]
 
-Matter charge current from minimal coupling uses the GNLS current; the charge density is defined with a neutralizing background (“jellium”):
+The dynamical matter current already comes from minimal coupling, while neutrality subtraction belongs in the external/background source bookkeeping:
 \[
-J^0_{\rm ch}=q(|\psi|^2-\rho_0).
+J_\psi^0=q_*|\psi|^2,\qquad J_{\rm ext}^0=-q_*\rho_{\rm bg},\qquad J_{\rm tot}^0=q_*(|\psi|^2-\rho_{\rm bg}).
 \]
+Here \(\rho_{\rm bg}\) is the neutralizing background density and is distinct from the optical/barotropic reference density \(\rho_0\).
 
 ### 2.5 Geometry through confinement and generalized forces
 
@@ -233,8 +251,8 @@ Geometry closure options:
 - Static equilibrium: \(\partial_{a,L}H_{\rm tot}=0\).
 - Dynamic “breathing” law (symbolic):
 \[
-M_{ab}\ddot q^b+C_{ab}\dot q^b=-\frac{\partial H_{\rm tot}}{\partial q^a},
-\qquad q^a=(a,L).
+M_{ab}\ddot Q^b+C_{ab}\dot Q^b=-\frac{\partial H_{\rm tot}}{\partial Q^a},
+\qquad Q^a=(a,L).
 \]
 
 ### 2.6 Brane observables via projection (open-system structure)
@@ -779,6 +797,11 @@ so
 \[
 \mu_{0,\rm eff}=\frac{\mu_0}{Z_{\rm int}}.
 \]
+Equivalently, after canonical normalization of the reduced brane gauge field,
+\[
+a_\mu^{\rm can}=\sqrt{Z_{\rm int}}\,a_\mu,\qquad q_{\rm eff}=\frac{q_*}{\sqrt{Z_{\rm int}}},\qquad e_{\rm eff}=\frac{e_*}{\sqrt{Z_{\rm int}}}.
+\]
+This zero-mode reduction suppresses \((A_w,J^w,F_{\mu w})\) only as a controlled far-field Maxwell limit. It is not a microscopic statement that the charged core lacks mixed-sector structure.
 
 Brane-observed fields are defined by projection:
 \[
@@ -800,42 +823,42 @@ Earlier orbital bookkeeping uses:
 \[
 \beta_{\rm 1PN}=\kappa_\rho+\kappa_{\rm add}+\kappa_{\rm PV}.
 \]
-- \(\kappa_\rho\): rest-mass normalization (taken as 1 in the standard ledger).
+- \(\kappa_\rho\): rest-mass normalization (taken as 1 in the standard ledger); this is the gravity-side scalar coefficient historically written as \(q=1\), and it is not electric charge.
 - \(\kappa_{\rm add}\): exterior added mass (derived here as 1/2 for throat).
 - \(\kappa_{\rm PV}\): additional inertia due to internal work as geometry responds to environment.
 
-**Key point:** \(\kappa_{\rm PV}\) depends on how geometric DOFs \(q^a=(a,L)\) respond to an external control \(\Xi\) (e.g., ambient density, potential).
+**Key point:** \(\kappa_{\rm PV}\) depends on how geometric DOFs \(Q^a=(a,L)\) respond to an external control \(\Xi\) (e.g., ambient density, potential).
 
 ### 9.2 Energy-based response framework (generic linear response)
 
 Total energy functional has form:
 \[
-H_{\rm tot}[\psi,A;q^a;\Xi]=H_{\rm fluid}+H_{\rm wave}+E_{\rm geom}+H_{\rm aux}.
+H_{\rm tot}[\psi,A;Q^a;\Xi]=H_{\rm fluid}+H_{\rm wave}+E_{\rm geom}+H_{\rm aux}.
 \]
 Generalized forces:
 \[
-F_a=-\frac{\partial H_{\rm tot}}{\partial q^a}.
+F_a=-\frac{\partial H_{\rm tot}}{\partial Q^a}.
 \]
 Equilibrium closure:
 \[
-\partial_{q^a}H_{\rm tot}=0.
+\partial_{Q^a}H_{\rm tot}=0.
 \]
 Optional dynamic closure:
 \[
-M_{ab}\ddot q^b+C_{ab}\dot q^b=-\partial_{q^a}H_{\rm tot}.
+M_{ab}\ddot Q^b+C_{ab}\dot Q^b=-\partial_{Q^a}H_{\rm tot}.
 \]
 
 Introduce small perturbation parameter \(\epsilon\) describing environmental change. Expand:
 \[
-H_{\rm tot}(q,\epsilon)=
+H_{\rm tot}(Q,\epsilon)=
 H_0+H_\epsilon\epsilon+\frac{1}{2}H_{\epsilon\epsilon}\epsilon^2
-+\frac{1}{2}K_{ab}\delta q^a\delta q^b+f_a\delta q^a\epsilon+\cdots,
++\frac{1}{2}K_{ab}\delta Q^a\delta Q^b+f_a\delta Q^a\epsilon+\cdots,
 \]
-with stiffness matrix \(K_{ab}=\partial_{q^a}\partial_{q^b}H|_0\) and mixed coupling \(f_a=\partial_{q^a}\partial_\epsilon H|_0\).
+with stiffness matrix \(K_{ab}=\partial_{Q^a}\partial_{Q^b}H|_0\) and mixed coupling \(f_a=\partial_{Q^a}\partial_\epsilon H|_0\).
 
 In the adiabatic regime:
 \[
-\delta q^a_{\rm ad}=-(K^{-1})^{ab}f_b\,\epsilon+\mathcal{O}(\epsilon^2),
+\delta Q^a_{\rm ad}=-(K^{-1})^{ab}f_b\,\epsilon+\mathcal{O}(\epsilon^2),
 \]
 giving an effective energy shift
 \[
@@ -930,7 +953,7 @@ The absolute scale \(a(\rho_0)\) is not fixed because \(\mathcal{C}_w,\mathcal{C
 
 ### 9.4 Frequency dependence
 
-If the response is not adiabatic, solve the linearized dynamic law to obtain compliance \(\delta q^a(\omega)/\epsilon(\omega)\) and treat
+If the response is not adiabatic, solve the linearized dynamic law to obtain compliance \(\delta Q^a(\omega)/\epsilon(\omega)\) and treat
 \[
 \kappa_{\rm PV}\to \kappa_{\rm PV}(\omega),
 \qquad
@@ -969,7 +992,7 @@ is stable away from resonances (insensitive to numerical damping, monitoring sur
 The paper explicitly keeps symbolic:
 
 - **Units/scale:** \(m,\hbar\) and any global normalization mapping to physical units.
-- **Gauge/EM:** \(q,\mu_0\), localization thickness, gauge fixing.
+- **Gauge/EM:** \(q_*,q_{\rm eff},\mu_0\), localization thickness, gauge fixing.
 - **Geometry energy:** ambient bulk pressure \(P_{\rm vac}\), surface tension \(\sigma\), higher-order geometric terms.
 - **Adiabatic closure normalizations:** \(\Lambda\), \(\mathcal{C}_w,\mathcal{C}_f,\mathcal{C}_{\rm PV}\).
 - **Reservoir/dissipation:** chemical-potential coupling, PML/sponge parameters, drive strengths/frequencies.

@@ -21,8 +21,8 @@ ClearAll["Global`*"];
 
 (* ---------- Assumptions ---------- *)
 $Assumptions = {
-  Element[{mu0, xi, lambdaConf}, Reals],
-  mu0 > 0, xi > 0, lambdaConf > 0
+  Element[{mu0, xi, lambdaConf, qStar, hbar}, Reals],
+  mu0 > 0, xi > 0, lambdaConf > 0, hbar > 0
 };
 
 (* Robust "is zero" helpers (avoid brittle === 0 tests). *)
@@ -157,6 +157,47 @@ If[zeroQ[resDiv],
 ];
 
 Print["\nNote: The gauge-fixing term is not gauge invariant; this is expected and harmless."];
+
+(* ===================================================================== *)
+(* (A2) Paper VII brane matter gauge convention                            *)
+(* ===================================================================== *)
+
+Print["\n--- (A2) Paper VII brane matter gauge convention ---\n"];
+
+psiB = psiBf[t, x, y, z];
+A0m = A0mF[t, x, y, z];
+Axm = AxmF[t, x, y, z];
+Aym = AymF[t, x, y, z];
+Azm = AzmF[t, x, y, z];
+chiB = chiBf[t, x, y, z];
+phaseB = Exp[I*qStar*chiB/hbar];
+
+DtMatter[field_, a0_] := D[field, t] + I*(qStar/hbar)*a0*field;
+DxMatter[field_, ax_] := D[field, x] - I*(qStar/hbar)*ax*field;
+DyMatter[field_, ay_] := D[field, y] - I*(qStar/hbar)*ay*field;
+DzMatter[field_, az_] := D[field, z] - I*(qStar/hbar)*az*field;
+
+psiBg = phaseB*psiB;
+A0mg = A0m - D[chiB, t];
+Axmg = Axm + D[chiB, x];
+Aymg = Aym + D[chiB, y];
+Azmg = Azm + D[chiB, z];
+
+resDtMatter = FullSimplify[DtMatter[psiBg, A0mg] - phaseB*DtMatter[psiB, A0m], Assumptions -> $Assumptions];
+resDxMatter = FullSimplify[DxMatter[psiBg, Axmg] - phaseB*DxMatter[psiB, Axm], Assumptions -> $Assumptions];
+resDyMatter = FullSimplify[DyMatter[psiBg, Aymg] - phaseB*DyMatter[psiB, Aym], Assumptions -> $Assumptions];
+resDzMatter = FullSimplify[DzMatter[psiBg, Azmg] - phaseB*DzMatter[psiB, Azm], Assumptions -> $Assumptions];
+
+Print["Residuals for Dt/Dx/Dy/Dz matter covariant derivatives (each should be 0):"];
+Print["  Dt -> ", resDtMatter];
+Print["  Dx -> ", resDxMatter];
+Print["  Dy -> ", resDyMatter];
+Print["  Dz -> ", resDzMatter];
+
+If[And @@ (zeroQ /@ {resDtMatter, resDxMatter, resDyMatter, resDzMatter}),
+  Print["OK: Paper VII matter-gauge convention is internally consistent."],
+  Print["WARNING: Matter-gauge convention check failed (unexpected)."]
+];
 
 (* ===================================================================== *)
 (* (B) 3+1 Lorentz invariance (effective brane Maxwell sector)            *)

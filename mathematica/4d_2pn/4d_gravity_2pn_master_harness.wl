@@ -8,7 +8,7 @@
 
   What this script does:
     1) Re-runs the key 1PN regressions that must remain frozen:
-         q = 1,
+         kappa_rho = 1,
          n = 5,
          C_self^(1PN) = -3/2 in the one-body scalar/optical ledger,
          static 1PN pair-count coefficient = -1/2,
@@ -109,7 +109,7 @@ checkEqScalar[
   5
 ];
 
-LscRaw1PN = -M0 (1 + qVar epsPhi) cLight^2 Sqrt[1 - epsV2/(1 + (nEOS - 1) epsPhi)];
+LscRaw1PN = -M0 (1 + kappaRhoVar epsPhi) cLight^2 Sqrt[1 - epsV2/(1 + (nEOS - 1) epsPhi)];
 LscScaled1PN = Expand[LscRaw1PN/(M0 cLight^2)];
 LscPNScaled1PN = Expand[PNSeries[LscScaled1PN, {epsPhi, epsV2}, 2]];
 
@@ -119,17 +119,17 @@ coeffV4 = FullSimplify[Coefficient[LscPNScaled1PN /. epsPhi -> 0, epsV2, 2], cLi
 coeffPhiV2 = FullSimplify[Coefficient[Coefficient[LscPNScaled1PN, epsPhi], epsV2], cLight > 0];
 
 checkEqScalar[
-  "Scalar-sector Newtonian coupling coefficient remains -q",
+  "Scalar-sector Newtonian coupling coefficient remains -kappa_rho",
   coeffNewtonPhi,
-  -qVar,
+  -kappaRhoVar,
   cLight > 0
 ];
 
-qSolution = qVar /. First[Solve[coeffNewtonPhi == -1, qVar]];
+kappaRhoSolution = kappaRhoVar /. First[Solve[coeffNewtonPhi == -1, kappaRhoVar]];
 
 checkEqScalar[
-  "Newtonian matching still fixes q = 1",
-  qSolution,
+  "Newtonian matching still fixes kappa_rho = 1 (historically q = 1)",
+  kappaRhoSolution,
   1,
   cLight > 0
 ];
@@ -149,22 +149,22 @@ checkEqScalar[
 ];
 
 checkEqScalar[
-  "Scalar+optical 1PN self coefficient remains q/2 - (n-1)/2",
+  "Scalar+optical 1PN self coefficient remains kappa_rho/2 - (n-1)/2",
   coeffPhiV2,
-  qVar/2 - (nEOS - 1)/2,
+  kappaRhoVar/2 - (nEOS - 1)/2,
   cLight > 0
 ];
 
 checkEqScalar[
-  "With q = 1 and n = 5 the one-body Phi v^2 coefficient is still -3/2",
-  coeffPhiV2 /. {qVar -> qSolution, nEOS -> nSolution},
+  "With kappa_rho = 1 and n = 5 the one-body Phi v^2 coefficient is still -3/2",
+  coeffPhiV2 /. {kappaRhoVar -> kappaRhoSolution, nEOS -> nSolution},
   -3/2,
   cLight > 0
 ];
 
 PhiLocA = -(Gconst mB)/rAB;
 PhiLocB = -(Gconst mA)/rAB;
-LpairPotential1PN = Expand[-(1/2) (mA (1 + qSolution PhiLocA/cLight^2) PhiLocA + mB (1 + qSolution PhiLocB/cLight^2) PhiLocB)];
+LpairPotential1PN = Expand[-(1/2) (mA (1 + kappaRhoSolution PhiLocA/cLight^2) PhiLocA + mB (1 + kappaRhoSolution PhiLocB/cLight^2) PhiLocB)];
 invC = Unique["invC"];
 LpairPotential1PNInv = Expand[LpairPotential1PN /. cLight -> 1/invC];
 
@@ -204,7 +204,7 @@ checkEqScalar[
 
 xSolution = xRatio /. First[Solve[dlnFn5 == 5/2, xRatio]];
 kappaPV = FullSimplify[(dlnFn5 /. xRatio -> xSolution) - 1, rho0 > 0 && aRad > 0];
-beta1PN = FullSimplify[qSolution + kappaAdd[3] + kappaPV, rho0 > 0 && aRad > 0];
+beta1PN = FullSimplify[kappaRhoSolution + kappaAdd[3] + kappaPV, rho0 > 0 && aRad > 0];
 
 checkEqScalar[
   "Adiabatic internal response closure still gives x = 2/11",
@@ -340,8 +340,8 @@ info["That +3/2 static coefficient is incompatible with the already-frozen pair-
 section["EXACT / quadratic local mass scaling and the 2PN static hierarchy"];
 (* ---------------------------------------------------------------------- *)
 
-mEffA = mA (1 + qSolution PhiLocA/cLight^2 + lambdaRho PhiLocA^2/cLight^4);
-mEffB = mB (1 + qSolution PhiLocB/cLight^2 + lambdaRho PhiLocB^2/cLight^4);
+mEffA = mA (1 + kappaRhoSolution PhiLocA/cLight^2 + lambdaRho PhiLocA^2/cLight^4);
+mEffB = mB (1 + kappaRhoSolution PhiLocB/cLight^2 + lambdaRho PhiLocB^2/cLight^4);
 LpairPotential2PN = Expand[-(1/2) (mEffA PhiLocA + mEffB PhiLocB)];
 LpairPotential2PNInv = Expand[LpairPotential2PN /. cLight -> 1/invC];
 
@@ -645,7 +645,7 @@ section["SUMMARY"];
 (* ---------------------------------------------------------------------- *)
 
 TwoPNResults = <|
-  "qSolution" -> qSolution,
+  "kappaRhoSolution" -> kappaRhoSolution,
   "nSolution" -> nSolution,
   "kappaAdd" -> kappaAdd[3],
   "kappaPV" -> kappaPV,
@@ -690,12 +690,12 @@ Output:
 
 === CARRY-FORWARD / frozen 1PN regressions ===
 PASS: Optical weak-field matching still fixes n = 5
-PASS: Scalar-sector Newtonian coupling coefficient remains -q
-PASS: Newtonian matching still fixes q = 1
+PASS: Scalar-sector Newtonian coupling coefficient remains -kappa_rho
+PASS: Newtonian matching still fixes kappa_rho = 1 (historically q = 1)
 PASS: Free kinetic coefficient remains 1/2
 PASS: Free-particle quartic kinetic coefficient remains 1/8 in the Lagrangian
-PASS: Scalar+optical 1PN self coefficient remains q/2 - (n-1)/2
-PASS: With q = 1 and n = 5 the one-body Phi v^2 coefficient is still -3/2
+PASS: Scalar+optical 1PN self coefficient remains kappa_rho/2 - (n-1)/2
+PASS: With kappa_rho = 1 and n = 5 the one-body Phi v^2 coefficient is still -3/2
 PASS: Pair-counted local mass scaling still gives the 1PN static coefficient -1/2
 PASS: Added-mass closure still gives kappa_add = 1/2 in 3D
 PASS: At n = 5 the adiabatic response slope remains (11+7x)/(4+5x)

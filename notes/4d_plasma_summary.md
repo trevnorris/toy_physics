@@ -23,17 +23,22 @@ The paper has two big deliverables:
    \;\Rightarrow\;
    \text{(single-fluid MHD)}.
    \]
-   The only structural change at the Maxwell/MHD level is that \(\mu_0\) becomes an **effective** \(\mu_0^{\rm eff}=\mu_0/\!\int Z\).
+   In the plasma paper the primary Maxwell/MHD packaging is that \(\mu_0\) becomes an **effective** \(\mu_0^{\rm eff}=\mu_0/Z_{\rm int}\), equivalently one may package the same localization dependence into fixed reduced source charges \(q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}\).
 
 2. **A principled “beyond-MHD” mechanism without ad hoc resistivity.**
-   When the controlled-limit suppressions are relaxed, three new correction channels appear:
+   When the controlled-limit suppressions are relaxed, four new correction channels appear:
    - **Mixed-sector electromagnetism:** the *extra* gauge component \(A_w\) and mixed field components \(F_{\mu w}\) are dynamical and produce new force/EMF terms absent in strictly 3+1 Maxwell.
    - **Explicit brane–bulk exchange:** transverse drift \(j^w\neq 0\) produces **leakage sources** in brane continuity and related balances.
    - **Finite-localization transverse modes:** for Gaussian \(Z(w)\), the transverse operator has a **Hermite/KK tower** with masses \(m_n^2\propto n/\lambda^2\), generating computable Yukawa corrections and additional energy/topology reservoirs.
+   - **Projected unresolved-stress / topology-stress effects:** projection-noncommutation leaves a computable covariance/stress channel that behaves as a brane-facing non-ideal correction without requiring ad hoc dissipation.
 
 A core interpretive claim is:
 
 > **Reconnection-like non-ideality on the brane can correspond to conservative transport into \(w\) and into higher transverse modes**, rather than local collisional dissipation.
+
+## Charge ontology note
+
+This plasma paper assumes fixed species charges and does not derive electric charge from circulation, throat radius, or breathing variables. For elementary defect branches, the sign is the fixed topological orientation \(\eta_Q=\pm1\) and the brane-observed magnitude is the reduced localization-controlled charge \(e_{\rm eff}=e_*/\sqrt{Z_{\rm int}}\), so \(q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}\) with \(q_*=\eta_Q e_*\). In the plasma formulas, \(q_s\) is retained as the fixed species charge label for readability, while canonical vorticity remains part of the magnetic--vortical sector rather than the definition of electric charge.
 
 ---
 
@@ -195,6 +200,7 @@ S_{\rm EM}[A;Z]
 \]
 - \(\xi\) is a gauge-fixing parameter for invertibility/hyperbolicity.
 - Gauge invariance of \(-A_MJ^M\) requires \(\partial_M J^M=0\) (up to boundary terms).
+- Here \(J^M\) is shorthand for the total conserved Maxwell source; when explicit species closures are added later as \(J_{\rm ext}^M+\sum_s J_s^M\), those matter currents should not be double-counted.
 
 ### Euler–Lagrange field equations
 \[
@@ -249,13 +255,14 @@ The paper supports multiple matter realizations that share the same bulk gauge c
 ### Option (field-based): multi-species gauged GNLS (“Schrödinger plasma”)
 
 #### Covariant derivatives
-For species \(s\) with charge \(q_s\) and mass \(m_s\):
+For species \(s\) with fixed charge label \(q_s\) and mass \(m_s\):
 \[
 D_t^{(s)}=\partial_t+\frac{i q_s}{\hbar}A_0,
 \qquad
 D_A^{(s)}=\partial_A-\frac{i q_s}{\hbar}A_A,
 \qquad A\in\{x,y,z,w\}.
 \]
+For elementary defect branches, \(q_s\) may be viewed as the reduced brane charge inherited from the localized-charge ontology; for composite ions, it may simply be treated as the usual effective charge state.
 
 #### GNLS equation
 \[
@@ -342,6 +349,7 @@ Away from phase singularities:
 \partial_A v_{s,B}-\partial_B v_{s,A} = -\frac{q_s}{m_s}F_{AB}.
 \]
 This ties canonical vorticity to gauge flux in the bulk; brane non-ideality can arise from projection/leakage even while this bulk constraint holds.
+It is a vortical/canonical-momentum constraint, not a charge-from-circulation rule.
 
 ### Option (kinetic): 4D Vlasov / PIC plasma
 
@@ -427,6 +435,9 @@ Controlled assumptions (summarized):
 
 Result:
 - standard 3+1 Maxwell with \(\mu_0\to \mu_0^{\rm eff}=\mu_0/Z_{\rm int}\).
+- equivalently, one may package the same localization dependence into fixed reduced source charges \(q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}\), although the plasma paper keeps \(\mu_0^{\rm eff}\) as the primary notation.
+
+This suppression of \(A_w\), \(F_{\mu w}\), \(J^w\), and \(\partial_w(\cdot)\) is a controlled far-field brane reduction used to recover standard brane plasma theory; it is not a denial of microscopic mixed-core structure.
 
 ### Step 2: bulk plasma → brane two-fluid
 Assume species are effectively brane-supported at the measurement scale:
@@ -442,6 +453,10 @@ Standard assumptions:
 - optionally neglect displacement current (Darwin/MHD ordering).
 
 With brane 3-vectors \(\mathbf{E},\mathbf{B}\) and brane current \(\mathbf{J}\), two-fluid equations:
+\[
+q_i=+e,\qquad q_e=-e,
+\]
+where \(e>0\) denotes the fixed brane-observed elementary charge magnitude (equivalently \(e_{\rm eff}\) in the localized-defect reading).
 \[
 \partial_t n_s + \nabla_3\cdot(n_s\mathbf{v}_s)=0,
 \]
@@ -500,6 +515,7 @@ The controlled MHD limit suppressed:
 \partial_w(\cdot)\approx 0,\quad A_w\approx 0,\quad F_{\mu w}\approx 0,\quad J^w\approx 0,\quad \text{(zero-mode dominance)}.
 \]
 Beyond MHD, these are allowed to be non-negligible.
+This should be read as a controlled far-field brane reduction, not as a claim that the microscopic charged core lacks mixed-sector structure.
 
 ### 10.1 Three coupled correction classes
 1. **Mixed-sector electromagnetism (scalar-photon channel).**
@@ -751,12 +767,12 @@ D_{\rm eff}(k^2)=\sum_{n\ge 0}\frac{c_n}{k^2-m_n^2+i\epsilon}.
 \]
 
 ### Coulomb law + Yukawa tower (static limit)
-For a point charge \(q\) on the brane:
+For a fixed point source \(q_{\rm src}\) on the brane:
 \[
-A_0(r)=\frac{\mu_0 q}{4\pi r}\sum_{n\ge 0}c_n e^{-m_n r},
+A_0(r)=\frac{\mu_0 q_{\rm src}}{4\pi r}\sum_{n\ge 0}c_n e^{-m_n r},
 \qquad r=|\mathbf{x}|.
 \]
-Zero-mode piece reproduces Coulomb with \(\mu_0^{\rm eff}=\mu_0 c_0=\mu_0/Z_{\rm int}\); massive modes add Yukawa corrections at \(r\sim \lambda\).
+Zero-mode piece reproduces Coulomb with \(\mu_0^{\rm eff}=\mu_0 c_0=\mu_0/Z_{\rm int}\); massive modes add Yukawa corrections at \(r\sim \lambda\). Here \(q_{\rm src}\) is a fixed source label, and for an elementary defect branch one may identify \(q_{\rm src}=q_{\rm eff}=\eta_Q e_{\rm eff}\) in canonically normalized brane variables.
 
 ---
 
@@ -955,6 +971,7 @@ Acceptance criteria emphasize:
 ## 15) Geometry DOFs coupled to plasma loads (appendix-level extension)
 
 The model can include low-dimensional geometry variables \(\Theta^I(t)\) (e.g. throat radius \(a(t)\), extent \(L(t)\), or directly the EM localization width \(\lambda(t)\)) that parameterize \(Z(w;\Theta)\) and/or matter confinement \(V_{\rm conf}(\cdot;\Theta)\).
+If \(\lambda(t)\) changes, it changes reduced coupling/mode packaging such as \(\mu_0^{\rm eff}(\lambda)\), \(q_{\rm eff}(\lambda)=q_*/\sqrt{Z_{\rm int}(\lambda)}\), and \(m_n^2(\lambda)\), but not the fixed topological branch sign or the microscopic branch charge \(q_*\).
 
 ### Geometry Lagrangian (collective-coordinate closure)
 \[
@@ -1006,10 +1023,11 @@ with overdamped and quasi-static limits as controlled sub-regimes.
 
 1. **Two kernels, two roles:** \(Z(w)\) shapes bulk EM dynamics; \(W(w)\) defines brane observables and produces exact leakage/covariance terms.
 2. **Bulk is conservative, brane is open:** projected balances acquire explicit leakage \(S_{\rm leak}\) and covariance reservoirs.
-3. **MHD is recovered in a controlled limit:** suppress \(A_w\), \(F_{\mu w}\), \(J^w\), and transverse structure; then 3+1 Maxwell + two-fluid + MHD emerge with \(\mu_0\to\mu_0^{\rm eff}\).
-4. **Beyond-MHD is not a “closure guess” here:** it is the computable, diagnosable consequence of retaining
+3. **MHD is recovered in a controlled far-field brane limit:** suppress \(A_w\), \(F_{\mu w}\), \(J^w\), and transverse structure; then 3+1 Maxwell + two-fluid + MHD emerge with primary packaging \(\mu_0\to\mu_0^{\rm eff}\) (equivalently \(q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}\)).
+4. **Species charges are fixed inputs in this plasma paper:** the plasma notation \(q_s\) is retained as the species charge label and is not dynamically rederived from circulation or geometry variables.
+5. **Beyond-MHD is not a “closure guess” here:** it is the computable, diagnosable consequence of retaining
    - mixed-sector fields \(E_w,\mathbf{C}\),
    - transverse drift \(v^w\) and \(J^w\),
    - and finite-\(\lambda\) transverse modes.
-5. **Key brane non-ideality object:** the **topology EMF** \(\boldsymbol{\mathcal{E}}_{\rm topo}\), which enters generalized Ohm’s law and the induction equation and can drive reconnection-like behavior with bulk energy conservation.
-6. **Ledger closure is the scientific test:** brane topology change must correlate with energy/helicity transport into \(w\)/modes (and with explicit leakage and \(J^wE_w\)) rather than being attributed solely to resistive heating.
+6. **Key brane non-ideality object:** the **topology EMF** \(\boldsymbol{\mathcal{E}}_{\rm topo}\), which enters generalized Ohm’s law and the induction equation and can drive reconnection-like behavior with bulk energy conservation.
+7. **Ledger closure is the scientific test:** brane topology change must correlate with energy/helicity transport into \(w\)/modes (and with explicit leakage and \(J^wE_w\)) rather than being attributed solely to resistive heating.

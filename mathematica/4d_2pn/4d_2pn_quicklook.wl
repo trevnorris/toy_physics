@@ -26,7 +26,7 @@ If[MissingQ[mainFile],
 Get[mainFile];
 
 Print["\n--- 2PN QUICKLOOK ---"];
-Print["q = ", TwoPNResults["qSolution"]];
+Print["kappa_rho = ", TwoPNResults["kappaRhoSolution"]];
 Print["n = ", TwoPNResults["nSolution"]];
 Print["kappa_PV = ", TwoPNResults["kappaPV"]];
 Print["beta_1PN = ", TwoPNResults["beta1PN"]];

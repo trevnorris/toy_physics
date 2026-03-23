@@ -43,6 +43,11 @@
 \newcommand{\psiField}{\psi}
 \newcommand{\rhoField}{\rho}
 \newcommand{\thetaField}{\theta}
+\newcommand{\etaQ}{\eta_Q}
+\newcommand{\estar}{e_\star}
+\newcommand{\qstar}{q_\star}
+\newcommand{\eeff}{e_{\rm eff}}
+\newcommand{\qeff}{q_{\rm eff}}
 
 \newcommand{\kadd}{\kappa_{\mathrm{add}}}
 \newcommand{\kPV}{\kappa_{\mathrm{PV}}}
@@ -75,7 +80,7 @@
 % -----------------------------
 % Title metadata
 % -----------------------------
-\title{Deriving Key Post-Newtonian Coefficients from the Unified 4D Hydrodynamic Model}
+\title{Deriving Key Post-Newtonian Coefficients from the Unified 4D Toy Model}
 \author{Trevor Norris}
 \date{\today}
 
@@ -83,7 +88,7 @@
 \maketitle
 
 \begin{abstract}
-This paper is a derivation supplement to the unified $4$D throat model of Ref.~\cite{norris2026_4d_model}, written to make explicit which coefficients used earlier in the series are fixed by the $4$D structure (and which must remain symbolic pending additional closure). We show that a defect uniform in the extra coordinate behaves as a throat with hypercylindrical topology, for which the exterior potential--flow problem yields the classical added-mass coefficient $\kappa_{\mathrm{add}}=\tfrac12$ (whereas a $4$D bubble would instead give $\tfrac13$), providing a sharp topology discriminator. We then show that matching the weak-field refractive coefficient uniquely selects the stiff polytropic exponent $n=5$. In the $1$PN interaction sector, EIH matching produces a one-parameter family of couplings, which collapses uniquely to $\alpha^2=\tfrac34$ and $K=2/\pi^2$ once the $n=5$ thermodynamic relation is imposed. Treating rest mass as wave-supported energy reproduces the special-relativistic expansion $E=\gamma E_0$, including the universal $v^4$ coefficient $3/8$. We also summarize a controlled reduction to brane-effective equations, making leakage/source terms explicit, and we outline the additional response modeling required to determine the remaining undetermined coefficients.
+This paper is a derivation supplement to the unified $4$D throat model of Ref.~\cite{norris2026_4d_model}, written to make explicit which coefficients used earlier in the series are fixed by the $4$D structure (and which must remain symbolic pending additional closure). We show that a defect uniform in the extra coordinate behaves as a throat with hypercylindrical topology, for which the exterior potential--flow problem yields the classical added-mass coefficient $\kappa_{\mathrm{add}}=\tfrac12$ (whereas a $4$D bubble would instead give $\tfrac13$), providing a sharp topology discriminator. We then show that matching the weak-field refractive coefficient uniquely selects the stiff polytropic exponent $n=5$. In the $1$PN interaction sector, EIH matching produces a one-parameter family of couplings, which collapses uniquely to $\alpha^2=\tfrac34$ and $K_{\rm vec}=2/\pi^2$ once the $n=5$ thermodynamic relation is imposed. Treating rest mass as wave-supported energy reproduces the special-relativistic expansion $E=\gamma E_0$, including the universal $v^4$ coefficient $3/8$. We also summarize a controlled reduction to brane-effective equations, making leakage/source terms explicit, and we outline the additional response modeling required to determine the remaining undetermined coefficients.
 \end{abstract}
 
 % ======================================================================
@@ -137,6 +142,8 @@ E(v) &= E_0\,\gamma(v)
 In the vector sector we distinguish the dimensionless wake/overlap coupling $K_{\rm vec}$ from the
 equation-of-state constant $K_{\rm EOS}$ in $P(\rho)=K_{\rm EOS}\rho^n$ to avoid notational
 overload.
+
+This bridge is downstream of the corrected Paper~7 / Paper~8 matter--gauge ontology: electric-charge sign is the fixed topological puncture orientation \(\etaQ=\pm1\), the microscopic branch coupling is \(\qstar=\etaQ\estar\) with \(\estar>0\), and the canonically normalized brane coupling is \(\qeff=\qstar/\sqrt{Z_{\rm int}}=\etaQ\eeff\) with \(\eeff=\estar/\sqrt{Z_{\rm int}}\). Quantized circulation belongs to the magnetic/vortical sector rather than the electric-charge dictionary, and the zero-mode Maxwell reduction \((A_w\approx 0,\ \partial_w A_\mu\approx 0,\ J^w\approx 0,\ F_{\mu w}\approx 0)\) is used here only as a controlled far-field brane limit. Separately, the scalar Newtonian mass-dressing coefficient historically denoted $q$ in pre-4D gravity bookkeeping is not electric charge; in the present downstream notation it is identified with $\kappa_\rho$, fixed by Newtonian matching to $\kappa_\rho=1$.
 
 \subsection{What remains symbolic (and why)}
 
@@ -318,7 +325,7 @@ Beyond the numerical constants in Table~\ref{tab:carry-forward}, the paper also 
 
   \item \textbf{EM sector placement.}
   When a true gauge sector is included (Ref.~\cite{norris2026_4d_model}), minimal coupling ties bulk vorticity to gauge field strength,
-  \(\Omega_{ij}=-(q/m)B_{ij}\),
+  \(\Omega_{ij}=-(\qstar/m)B_{ij}\),
   and the brane-observed fields are defined by projection of \(F_{MN}\). This cleanly separates (i) a kinematic ``EM-from-flow'' dictionary from (ii) a dynamical Maxwell sector, and it makes explicit what additional assumptions are required for standard \(3\!+\!1\)D scaling on the brane.
 \end{enumerate}
 
@@ -382,29 +389,37 @@ Define the bulk density
 Ref.~\cite{norris2026_4d_model} fixes a stiff polytropic closure
 \begin{equation}
 \boxed{
-P(\rho)=K\rho^{5},
+P(\rho)=K_{\rm EOS}\rho^{5},
 }
 \label{eq:recap_eos}
 \end{equation}
 implemented variationally via the internal energy density
 \begin{equation}
-U(\rho)=\frac{K}{4}\rho^{5},
+U(\rho)=\frac{K_{\rm EOS}}{4}\rho^{5},
 \qquad
-h(\rho):=\frac{dU}{d\rho}=\frac{5K}{4}\rho^{4},
+h(\rho):=\frac{dU}{d\rho}=\frac{5K_{\rm EOS}}{4}\rho^{4},
 \label{eq:recap_thermo_ladder}
 \end{equation}
 and the associated sound-speed relation
 \begin{equation}
-c_s^2(\rho)=\frac{1}{m}\frac{dP}{d\rho}=\frac{5K}{m}\rho^{4}.
+c_s^2(\rho)=\frac{1}{m}\frac{dP}{d\rho}=\frac{5K_{\rm EOS}}{m}\rho^{4}.
 \label{eq:recap_cs2}
 \end{equation}
 
 \paragraph{Minimal coupling.}
+We follow the corrected charge split used downstream of Ref.~\cite{norris2026_4d_model} and its Maxwell continuation:
+\begin{equation}
+\qstar \equiv \etaQ \estar,
+\qquad
+\etaQ\in\{+1,-1\},
+\qquad
+\estar>0.
+\end{equation}
 Introduce the gauge-covariant derivatives
 \begin{equation}
-D_t := \partial_t + \frac{i q}{\hbar}A_0,
+D_t := \partial_t + \frac{i \qstar}{\hbar}A_0,
 \qquad
-D_i := \partial_i - \frac{i q}{\hbar}A_i,\quad i\in\{x,y,z,w\}.
+D_i := \partial_i - \frac{i \qstar}{\hbar}A_i,\quad i\in\{x,y,z,w\}.
 \label{eq:recap_cov_derivs}
 \end{equation}
 
@@ -453,7 +468,7 @@ Write
 The gauge-invariant superfluid velocity is
 \begin{equation}
 \boxed{
-v_i = \frac{\hbar}{m}\partial_i\theta - \frac{q}{m}A_i.
+v_i = \frac{\hbar}{m}\partial_i\theta - \frac{\qstar}{m}A_i.
 }
 \label{eq:recap_velocity}
 \end{equation}
@@ -467,7 +482,7 @@ Then the GNLS implies an Euler-like momentum equation of the structural form
 \boxed{
 m(\partial_t+v_j\partial_j)v_i
 =
-q\big(E_i+v_j B_{ij}\big)
+\qstar\big(E_i+v_j B_{ij}\big)
 -\partial_i\!\big(V_{\mathrm{conf}}+h(\rho)+Q(\rho)\big),
 }
 \label{eq:recap_euler_like}
@@ -479,7 +494,7 @@ A key identity used repeatedly in Ref.~\cite{norris2026_4d_model} is that minima
 \boxed{
 \Omega_{ij}:=\partial_i v_j-\partial_j v_i
 =
--\frac{q}{m}B_{ij}.
+-\frac{\qstar}{m}B_{ij}.
 }
 \label{eq:recap_vorticity_identity}
 \end{equation}
@@ -497,7 +512,8 @@ Ref.~\cite{norris2026_4d_model} uses a localized Maxwell sector with a positive 
 \mathcal{L}_{\mathrm{EM}}
 =
 -\frac{1}{4\mu_0}Z(w)\,F_{MN}F^{MN}
-\;-\;\frac{1}{2\xi\mu_0}\big(\partial_M A^M\big)^2,
+\;-\;\frac{1}{2\xi\mu_0}\big(\partial_M A^M\big)^2
+\;-\;A_N J_{\mathrm{ext}}^{\,N},
 \label{eq:recap_em_lagrangian}
 \end{equation}
 where $\xi$ is a gauge-fixing parameter (kept symbolic here).
@@ -507,26 +523,34 @@ The corresponding field equation is
 \boxed{
 \partial_M\!\left(Z(w)F^{MN}\right)+\frac{1}{\xi}\partial^N(\partial\cdot A)
 =
-\mu_0\,J_{\mathrm{ch}}^{\,N}
-+\mu_0\,J_{\mathrm{ext}}^{\,N}.
+\mu_0\,J_{\mathrm{tot}}^{\,N},
 }
 \label{eq:recap_maxwell_localized}
 \end{equation}
-The matter-sourced charge current is defined from the GNLS current by
+with the single-source bookkeeping
 \begin{equation}
-J_{\mathrm{ch}}^{\,i} = q\,j^i,
+J_{\mathrm{tot}}^{\,N}=J_{\psi}^{\,N}+J_{\mathrm{ext}}^{\,N}.
 \end{equation}
-and the charge density is rendered neutral by a background subtraction (``jellium''):
+The matter current of a fixed topological defect branch is defined from the GNLS current by
+\begin{equation}
+J_{\psi}^{\,i} = \qstar\,j^i,
+\qquad
+J_{\psi}^{\,0} = \qstar\,|\psi(\mathbf{X},t)|^2,
+\end{equation}
+so the dynamical matter sector already carries the signed coupling \(\qstar=\etaQ\estar\). Neutrality bookkeeping is placed in the external/background sector rather than folded into the dynamical matter current:
 \begin{equation}
 \boxed{
-J_{\mathrm{ch}}^{\,0}(\mathbf{X},t)
+J_{\mathrm{ext}}^{\,0}(\mathbf{X},t)
 =
-q\big(|\psi(\mathbf{X},t)|^2-\rho_0\big),
+-\qstar\,\rho_{\rm bg},
 }
 \label{eq:recap_jellium}
 \end{equation}
-with $\rho_0$ the far-field background density.
-External sources $J_{\mathrm{ext}}^{\,N}$ are reserved for controlled driving/benchmark tests.
+so that
+\begin{equation}
+J_{\mathrm{tot}}^{\,0}(\mathbf{X},t)=\qstar\big(|\psi(\mathbf{X},t)|^2-\rho_{\rm bg}\big).
+\end{equation}
+Here \(\rho_{\rm bg}\) is a neutralizing background density used only for Maxwell source bookkeeping; it is distinct from the optical/barotropic reference density \(\rho_0\). External sources $J_{\mathrm{ext}}^{\,N}$ are therefore reserved for background subtraction and/or controlled driving, and the explicit Maxwell source term must not double-count $J_\psi^N$.
 
 \subsection{Geometry encoded as a smooth confinement potential and generalized forces}
 \label{sec:recap_geometry}
@@ -825,20 +849,20 @@ where $c_0$ is the asymptotic (far-field) propagation speed, i.e. $c_s\to c_0$ a
 
 For a barotropic/polytropic closure
 \begin{equation}
-P(\rho)=K\rho^n,
+P(\rho)=K_{\rm EOS}\rho^n,
 \label{eq:poly_eos}
 \end{equation}
 the local sound speed is
 \begin{equation}
-c_s^2(\rho)=\frac{dP}{d\rho}=nK\rho^{n-1}.
+c_s^2(\rho)=\frac{dP}{d\rho}=nK_{\rm EOS}\rho^{n-1}.
 \label{eq:cs2_poly}
 \end{equation}
 We define the background density $\rho_0$ by $c_s(\rho_0)=c_0$, equivalently
 \begin{equation}
-c_0^2 = nK\rho_0^{\,n-1},
+c_0^2 = nK_{\rm EOS}\rho_0^{\,n-1},
 \label{eq:c0_def}
 \end{equation}
-so that $K$ is not fixed by optical tests alone (it is absorbed into the background normalization once $c_0$ and $\rho_0$ are chosen). 
+so that $K_{\rm EOS}$ is not fixed by optical tests alone (it is absorbed into the background normalization once $c_0$ and $\rho_0$ are chosen). 
 
 Now introduce the weak-field fractional density contrast
 \begin{equation}
@@ -973,18 +997,18 @@ so Shapiro delay fixes the \emph{same} $\alpha_n$ as bending in this ``pure refr
 
 Ref.~\cite{norris2026_4d_model} adopts the $n=5$ stiffness in the bulk superfluid sector; in the GNLS formulation this corresponds to the enthalpy ladder
 \begin{equation}
-P(\rho)=K\rho^5,\qquad
-c_s^2(\rho)=5K\rho^4,\qquad
-h(\rho)=\frac{5K}{4}\rho^4,
+P(\rho)=K_{\rm EOS}\rho^5,\qquad
+c_s^2(\rho)=5K_{\rm EOS}\rho^4,\qquad
+h(\rho)=\frac{5K_{\rm EOS}}{4}\rho^4,
 \label{eq:n5_ladder}
 \end{equation}
-and therefore to the specific nonlinear term $h(|\psi|^2)\propto |\psi|^8$ in the 4D field equation. The derivation above explains why this structure is forced by optical matching, while leaving the remaining amplitude scale(s) (e.g. $K$ after choosing $c_0$ and $\rho_0$) to be fixed by other sectors. 
+and therefore to the specific nonlinear term $h(|\psi|^2)\propto |\psi|^8$ in the 4D field equation. The derivation above explains why this structure is forced by optical matching, while leaving the remaining amplitude scale(s) (e.g. $K_{\rm EOS}$ after choosing $c_0$ and $\rho_0$) to be fixed by other sectors. 
 
 \paragraph{Remark (scope).}
 The result $n=5$ is an \emph{optical-sector} constraint: it applies to how wave propagation on the brane responds to weak background density variations. As emphasized elsewhere in the series, the resulting ``optical metric'' should not be naively promoted to the complete effective metric for massive-body orbital dynamics; matter dynamics involves additional dressing/inertia mechanisms beyond the refraction map used for null trajectories. 
 
 % ======================================================================
-\section{1PN interaction sector: derivation of \texorpdfstring{$\alpha^2$}{alpha^2} and \texorpdfstring{$K$}{K}}
+\section{1PN interaction sector: derivation of \texorpdfstring{$\alpha^2$}{alpha^2} and \texorpdfstring{$K_{\rm vec}$}{K_vec}}
 \label{sec:1pn-interaction-alpha-K}
 
 \subsection{What is being fixed in this section}
@@ -1001,16 +1025,16 @@ This sector introduces three \emph{a priori} dimensionless constants:
 \begin{itemize}
   \item $\alpha$ (wake mixing): controls the longitudinal/compressible admixture in the wake basis;
   \item $a_H$ (helical transverse admixture): a potential additional transverse basis component;
-  \item $K$ (overall normalization): the dimensionless coupling/normalization inherited from the wake basis
+  \item $K_{\rm vec}$ (overall normalization): the dimensionless coupling/normalization inherited from the wake basis
         and the definition of the effective interaction functional.
 \end{itemize}
 \noindent
-\textbf{Notation warning:} the $K$ in this section is \emph{not} the EOS constant in $P=K_{\rm EOS}\rho^n$.
-To avoid collision we write the EOS constant as $K_{\rm EOS}$ whenever both appear.
+\textbf{Notation warning:} the wake-sector normalization is written $K_{\rm vec}$ in this section; it is \emph{not} the EOS constant in $P=K_{\rm EOS}\rho^n$.
+We write the EOS constant as $K_{\rm EOS}$ whenever both appear.
 
 Our goal is to show that once the stiff EOS exponent is fixed (Sec.~\ref{sec:optics_eos}),
 the interaction sector is no longer tunable: the EIH cross-tensor match determines
-$\alpha^2$ and $K$ (and collapses the apparent $a_H$ freedom).
+$\alpha^2$ and $K_{\rm vec}$ (and collapses the apparent $a_H$ freedom).
 
 \subsection{1PN vector-interaction template and the EIH ``target'' coefficients}
 \label{sec:1pn-interaction-template}
@@ -1032,7 +1056,7 @@ the toy model writes the velocity-dependent \emph{pair} interaction in the stand
   \Big],
   \label{eq:Lvec_template}
 \end{equation}
-where the ellipsis denotes additional structures not needed to fix $(\alpha^2,K)$.
+where the ellipsis denotes additional structures not needed to fix $(\alpha^2,K_{\rm vec})$.
 
 The GR/EIH expansion fixes the numerical values of the \emph{cross-tensor} coefficients to
 \begin{equation}
@@ -1048,20 +1072,20 @@ In this section we use \eqref{eq:EIH_target_cross} as the target ``data'' that t
 In the toy model, a moving defect sources a far-field wake that is expanded in a completed basis.
 At the level needed for the EIH cross terms, the bookkeeping reduces to two numbers:
 \begin{equation}
-  C_\parallel(\alpha,a_H)=K\pi^2\Big(-1+a_H^2-\alpha^2\Big),
+  C_\parallel(\alpha,a_H)=K_{\rm vec}\pi^2\Big(-1+a_H^2-\alpha^2\Big),
   \qquad
-  C_L(\alpha,a_H)=K\pi^2\Big(-1+a_H^2+\alpha^2\Big).
+  C_L(\alpha,a_H)=K_{\rm vec}\pi^2\Big(-1+a_H^2+\alpha^2\Big).
   \label{eq:CL_Cpar_forms}
 \end{equation}
 Equation \eqref{eq:CL_Cpar_forms} is the crucial closed-form result: it packages the wake-basis
-normalization (the overall $K\pi^2$) and the longitudinal/helical mixing into a pair of scalars
+normalization (the overall $K_{\rm vec}\pi^2$) and the longitudinal/helical mixing into a pair of scalars
 that multiply the EIH tensor structures in \eqref{eq:Lvec_template}.
 
 \paragraph{Connection to the unified 4D model.}
 In the conventions of Ref.~\cite{norris2026_4d_model}, the content of \eqref{eq:CL_Cpar_forms} is that the bilinear part of the
 interaction functional is fixed once one specifies (i) the brane projection/measurement convention
 and (ii) a basis decomposition of the brane-projected response into longitudinal and transverse sectors.
-The remaining question is whether the parameters $(\alpha,a_H,K)$ are genuine free knobs or are fixed by
+The remaining question is whether the parameters $(\alpha,a_H,K_{\rm vec})$ are genuine free knobs or are fixed by
 the same microphysics that already fixed the EOS exponent.
 
 \subsection{EIH matching yields a one-parameter family}
@@ -1070,38 +1094,38 @@ the same microphysics that already fixed the EOS exponent.
 Imposing \eqref{eq:EIH_target_cross} on \eqref{eq:CL_Cpar_forms} gives two equations in three unknowns.
 It is convenient to take sum and difference:
 \begin{align}
-  C_L-C_\parallel &= 2K\pi^2\,\alpha^2,
+  C_L-C_\parallel &= 2K_{\rm vec}\pi^2\,\alpha^2,
   \label{eq:diff_CL_Cpar}\\
-  C_L+C_\parallel &= 2K\pi^2\,(-1+a_H^2).
+  C_L+C_\parallel &= 2K_{\rm vec}\pi^2\,(-1+a_H^2).
   \label{eq:sum_CL_Cpar}
 \end{align}
 Using the EIH targets \eqref{eq:EIH_target_cross}:
 \begin{align}
-  (-\tfrac12)-(-\tfrac72) &= 3 = 2K\pi^2\,\alpha^2
+  (-\tfrac12)-(-\tfrac72) &= 3 = 2K_{\rm vec}\pi^2\,\alpha^2
   \quad\Rightarrow\quad
-  K\alpha^2=\frac{3}{2\pi^2},
+  K_{\rm vec}\alpha^2=\frac{3}{2\pi^2},
   \label{eq:invariant1}\\
-  (-\tfrac12)+(-\tfrac72) &= -4 = 2K\pi^2\,(-1+a_H^2)
+  (-\tfrac12)+(-\tfrac72) &= -4 = 2K_{\rm vec}\pi^2\,(-1+a_H^2)
   \quad\Rightarrow\quad
-  K(1-a_H^2)=\frac{2}{\pi^2}.
+  K_{\rm vec}(1-a_H^2)=\frac{2}{\pi^2}.
   \label{eq:invariant2}
 \end{align}
 Equations \eqref{eq:invariant1}--\eqref{eq:invariant2} exhibit the EIH-matching structure clearly:
 \emph{EIH matching alone} fixes two invariants and leaves a one-parameter family.
-Solving for $(\alpha^2,K)$ in terms of $a_H^2$ gives
+Solving for $(\alpha^2,K_{\rm vec})$ in terms of $a_H^2$ gives
 \begin{equation}
   \alpha^2(a_H^2)=\frac{3}{4}(1-a_H^2),
   \qquad
-  K(a_H^2)=\frac{2}{\pi^2(1-a_H^2)},
+  K_{\rm vec}(a_H^2)=\frac{2}{\pi^2(1-a_H^2)},
   \qquad
   0\le a_H^2<1,
   \label{eq:family_alphaK}
 \end{equation}
 with two useful invariant products (equivalent to \eqref{eq:invariant1}--\eqref{eq:invariant2}):
 \begin{equation}
-  K(1-a_H^2)=\frac{2}{\pi^2},
+  K_{\rm vec}(1-a_H^2)=\frac{2}{\pi^2},
   \qquad
-  K\alpha^2=\frac{3}{2\pi^2}.
+  K_{\rm vec}\alpha^2=\frac{3}{2\pi^2}.
   \label{eq:family_invariants}
 \end{equation}
 At this stage, $a_H$ is a \emph{candidate} knob: distinct wake bases can reproduce the same EIH cross-tensor data.
@@ -1149,7 +1173,7 @@ With the stiffness already fixed by optics ($n=5$), this becomes
   \label{eq:alpha_value}
 \end{equation}
 
-\subsection{Collapse of the EIH family and the unique values of \texorpdfstring{$K$}{K} and \texorpdfstring{$\alpha^2$}{alpha^2}}
+\subsection{Collapse of the EIH family and the unique values of \texorpdfstring{$K_{\rm vec}$}{K_vec} and \texorpdfstring{$\alpha^2$}{alpha^2}}
 \label{sec:1pn-interaction-collapse}
 
 Combining the thermodynamic prediction \eqref{eq:alpha_value} with the EIH family \eqref{eq:family_alphaK} gives
@@ -1162,7 +1186,7 @@ Substituting back into \eqref{eq:family_alphaK} yields the unique point
   \boxed{
   \alpha^2=\frac{3}{4},\qquad
   a_H=0,\qquad
-  K=\frac{2}{\pi^2}.
+  K_{\rm vec}=\frac{2}{\pi^2}.
   }
   \label{eq:alphaK_final}
 \end{equation}
@@ -1179,7 +1203,7 @@ As a direct check, inserting \eqref{eq:alphaK_final} into \eqref{eq:CL_Cpar_form
 
 \paragraph{Interpretation.}
 EIH matching \emph{by itself} admits a one-parameter family because one may trade a helical admixture ($a_H^2$)
-against a rescaling of the overlap normalization ($K$) while preserving the two invariants
+against a rescaling of the overlap normalization ($K_{\rm vec}$) while preserving the two invariants
 \eqref{eq:family_invariants}.  However, once the stiff EOS exponent is fixed by optics, the thermodynamic closure
 \eqref{eq:alpha_thermo_general} removes that freedom and forces the minimal translational wake basis $a_H=0$.
 In this sense, the interaction sector inherits its numerical constants from the same microphysics that fixed $n=5$.
@@ -1365,8 +1389,8 @@ c^2 \;\equiv\; \frac{\rho_0\,h'(\rho_0)}{m}
 \;=\; \frac{1}{m}\left.\frac{dP}{d\rho}\right|_{\rho_0}.
 \label{eq:brane_wave_equation_pref_frame}
 \end{equation}
-(For the stiff EOS used throughout this series, $P=K\rho^5$, one has
-$c^2 = (5K\rho_0^4)/m$, but we keep $c$ symbolic as the characteristic signal
+(For the stiff EOS used throughout this series, $P=K_{\rm EOS}\rho^5$, one has
+$c^2 = (5K_{\rm EOS}\rho_0^4)/m$, but we keep $c$ symbolic as the characteristic signal
 speed of the regime.)
 
 In the \emph{free} limit $S_{\rm brane}\to 0$, Eq.~\eqref{eq:brane_wave_equation_pref_frame}
@@ -1593,9 +1617,9 @@ u \;\equiv\; \delta h(\rho_{\rm brane})
 \;\approx\; h'(\rho_{\rm brane,0})\,\delta\rho_{\rm brane}.
 \end{align}
 For the stiff $n=5$ equation of state (already fixed above),
-$h(\rho)=\frac{5K}{4}\rho^4$ so $h'(\rho)=5K\rho^3$ and therefore
+$h(\rho)=\frac{5K_{\rm EOS}}{4}\rho^4$ so $h'(\rho)=5K_{\rm EOS}\rho^3$ and therefore
 \begin{align}
-u \;\approx\; 5K\,\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
+u \;\approx\; 5K_{\rm EOS}\,\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
 \end{align}
 
 We choose a measurement surface $\Gamma$ on the brane and a finite port basis
@@ -1825,7 +1849,7 @@ Then \eqref{eq:div_v_exact} reduces to
 
 The same conclusion follows from the linearized acoustic relations in the stiff
 fluid.  Define $u\equiv\delta h(\rho_{\rm brane})$ and note that
-$h'(\rho_0)=5K\rho_0^3$ and $c_{s,0}^2\equiv (dP/d\rho)|_{\rho_0}=5K\rho_0^4$.
+$h'(\rho_0)=5K_{\rm EOS}\rho_0^3$ and $c_{s,0}^2\equiv (dP/d\rho)|_{\rho_0}=5K_{\rm EOS}\rho_0^4$.
 In the longitudinal, small-amplitude regime one has
 \begin{align}
 \partial_t \delta\rho + \rho_0 \nabla_3^2 \phi_3 &= S_\rho,\\
@@ -1876,7 +1900,19 @@ so the effective coupling is rescaled according to
 \mu_{0,{\rm eff}} = \frac{\mu_0}{Z_{\rm int}}.
 \label{eq:mu_eff}
 \end{align}
-The precise value of $Z_{\rm int}$ (and whether $F_{\mu w}$ contributions can be
+Equivalently, after canonical normalization of the reduced brane gauge field,
+\begin{align}
+a_\mu^{\rm can}=\sqrt{Z_{\rm int}}\,a_\mu,
+\qquad
+\qeff=\frac{\qstar}{\sqrt{Z_{\rm int}}},
+\qquad
+\eeff=\frac{\estar}{\sqrt{Z_{\rm int}}},
+\end{align}
+so the same localization thickness that rescales \(\mu_{0,{\rm eff}}\) also fixes the observed brane charge strength. The reduction assumptions
+\begin{align}
+A_w\approx 0,\qquad \partial_w A_\mu\approx 0,\qquad J^w\approx 0,\qquad F_{\mu w}\approx 0
+\end{align}
+should be read as a controlled far-field brane limit. They suppress the mixed core sector used later for charged-defect ontology, but they do not erase that sector from the microscopic \(4{+}1\)D theory. The precise value of $Z_{\rm int}$ (and whether $F_{\mu w}$ contributions can be
 neglected) is a regime question to be checked rather than assumed; the unified
 theory provides the correct variational starting point in any case.
 
@@ -1938,41 +1974,41 @@ Unlike $\kappa_{\rm add}$, which is determined by an exterior potential-flow pro
 geometry, $\kappa_{\rm PV}$ depends on how the defect's internal state shifts when the environment
 changes. In the unified 4D model the defect has reduced geometry degrees of freedom
 \begin{equation}
-  q^a(t)\equiv (a(t),L(t))\,,
+  Q^a(t)\equiv (a(t),L(t))\,,
 \end{equation}
 and its total energy functional (for a declared field-content scenario) takes the generic form
 \begin{equation}
-  H_{\rm tot}[\psi,A;\,q^a;\,\Xi]
+  H_{\rm tot}[\psi,A;\,Q^a;\,\Xi]
   \;=\;
-  H_{\rm fluid}[\psi;\,q^a]
+  H_{\rm fluid}[\psi;\,Q^a]
   \;+\;
-  H_{\rm wave}[A;\,q^a]
+  H_{\rm wave}[A;\,Q^a]
   \;+\;
-  E_{\rm geom}(q^a)
+  E_{\rm geom}(Q^a)
   \;+\;
   H_{\rm aux}[\psi,A;\,\Xi]\,,
   \label{eq:Htot_generic}
 \end{equation}
 where $\Xi$ denotes external control parameters (e.g.\ background density/enthalpy, imposed drive,
-reservoir couplings, etc.). The key point is that $\kappa_{\rm PV}$ depends on how $q^a$ responds to $\Xi$.
+reservoir couplings, etc.). The key point is that $\kappa_{\rm PV}$ depends on how $Q^a$ responds to $\Xi$.
 
 \paragraph{Energy-derived closure and forces.}
 The model supplies an unambiguous definition of generalized forces:
 \begin{equation}
-  F_a(t)\equiv -\frac{\partial H_{\rm tot}}{\partial q^a}\,.
+  F_a(t)\equiv -\frac{\partial H_{\rm tot}}{\partial Q^a}\,.
   \label{eq:Fa_def}
 \end{equation}
 The baseline equilibrium closure is
 \begin{equation}
-  \frac{\partial H_{\rm tot}}{\partial q^a}=0
-  \qquad (q^a=a,L)\,,
+  \frac{\partial H_{\rm tot}}{\partial Q^a}=0
+  \qquad (Q^a=a,L)\,,
   \label{eq:equilibrium_closure}
 \end{equation}
 and an optional dynamic closure (useful for stability and finite-rate response) is
 \begin{equation}
-  M_{ab}\,\ddot q^b + C_{ab}\,\dot q^b
+  M_{ab}\,\ddot Q^b + C_{ab}\,\dot Q^b
   \;=\;
-  -\frac{\partial H_{\rm tot}}{\partial q^a}\,,
+  -\frac{\partial H_{\rm tot}}{\partial Q^a}\,,
   \label{eq:dynamic_wall_law}
 \end{equation}
 with symmetric $M_{ab}$ and $C_{ab}$ kept symbolic.
@@ -1986,7 +2022,7 @@ defect center, or equivalently a slow variation in background enthalpy/density.
 Expand about an equilibrium $(q_0^a,\psi_0,A_0)$ at $\epsilon=0$. The geometry-only part of the expansion
 can be organized as
 \begin{equation}
-  H_{\rm tot}(q,\epsilon)
+  H_{\rm tot}(Q,\epsilon)
   \;=\;
   H_0
   \;+\;
@@ -1994,24 +2030,24 @@ can be organized as
   \;+\;
   \frac12 H_{\epsilon\epsilon}\,\epsilon^2
   \;+\;
-  \frac12\,K_{ab}\,\delta q^a\delta q^b
+  \frac12\,K_{ab}\,\delta Q^a\delta Q^b
   \;+\;
-  f_a\,\delta q^a\,\epsilon
+  f_a\,\delta Q^a\,\epsilon
   \;+\;\cdots,
   \label{eq:H_expand}
 \end{equation}
-where $\delta q^a=q^a-q_0^a$, the stiffness matrix is
+where $\delta Q^a=Q^a-Q_0^a$, the stiffness matrix is
 \begin{equation}
-  K_{ab}\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial q^b}\right|_0,
+  K_{ab}\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial Q^a\partial Q^b}\right|_0,
 \end{equation}
 and the mixed coupling vector is
 \begin{equation}
-  f_a\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial q^a\partial \epsilon}\right|_0.
+  f_a\equiv \left.\frac{\partial^2 H_{\rm tot}}{\partial Q^a\partial \epsilon}\right|_0.
 \end{equation}
 In the adiabatic regime (geometry relaxes quickly compared to orbital timescales), the equilibrium
 shift satisfies
 \begin{equation}
-  \delta q^a_{\rm ad} = -(K^{-1})^{ab}\,f_b\,\epsilon + \mathcal O(\epsilon^2)\,.
+  \delta Q^a_{\rm ad} = -(K^{-1})^{ab}\,f_b\,\epsilon + \mathcal O(\epsilon^2)\,.
   \label{eq:dq_adiabatic}
 \end{equation}
 Substituting back yields an effective energy shift
@@ -2157,7 +2193,7 @@ precisely is meant by ``PV energy'' vs.\ enthalpy), which can be handled in the 
 \paragraph{Dynamic response and frequency dependence.}
 The adiabatic closure above should be understood as an explicit \(\omega\to0\) adiabatic limit of the more general response problem.
 If the geometry response is not adiabatic, one instead solves \eqref{eq:dynamic_wall_law} (linearized
-about equilibrium) to obtain a frequency-dependent compliance $\delta q^a(\omega)/\epsilon(\omega)$.
+about equilibrium) to obtain a frequency-dependent compliance $\delta Q^a(\omega)/\epsilon(\omega)$.
 In that case one should treat $\kappa_{\rm PV}$ as the low-frequency limit of a response function,
 \begin{equation}
   \kappa_{\rm PV} \;\to\; \kappa_{\rm PV}(\omega),
@@ -2223,7 +2259,7 @@ them or constrain them by consistency.
 We therefore keep the following quantities symbolic throughout:
 \begin{itemize}
   \item \textbf{Scale/units parameters:} $m,\hbar$ and any global normalization used to map the dimensionless 4D solve to physical units.
-  \item \textbf{Gauge/EM parameters:} $q$, $\mu_0$, localization thickness $\lambda_{\rm conf}$, and gauge-fixing parameters (where applicable).
+  \item \textbf{Gauge/EM parameters:} $\qstar$, $\qeff$, $\mu_0$, localization thickness $\lambda_{\rm conf}$, and gauge-fixing parameters (where applicable).
   \item \textbf{Geometry-energy parameters:} $P_{\rm vac}$ (ambient bulk pressure), $\sigma$ (and any higher-order geometric terms if included).
   \item \textbf{Adiabatic closure normalizations:} the dimensionless aspect ratio \(\Lambda\) and overall coefficients \(\mathcal{C}_w,\mathcal{C}_f,\mathcal{C}_{\rm PV}\) in the reduced closure functional (Sec.~\ref{sec:kappaPV:adiabatic1dof}), which set the absolute scale \(a(\rho_0)\) but not the dimensionless partition.
   \item \textbf{Reservoir/dissipation parameters:} any chemical-potential coupling strength, sponge/PML parameters, and drive amplitudes/frequencies.
@@ -2296,7 +2332,7 @@ Within the assumptions stated explicitly in the preceding sections, five key res
   \item \textbf{Optical consistency fixes the equation-of-state exponent:}
   matching the required weak-field refractive coefficient selects the stiff polytrope
   \(
-    P(\rho)=K\rho^5
+    P(\rho)=K_{\rm EOS}\rho^5
   \),
   i.e.\ \(n=5\), rather than leaving the stiffness as a free modeling choice.
 
@@ -2456,7 +2492,7 @@ and a separate geometry energy functional $E_{\rm geom}(a,L)$.
 \paragraph{Constants and ``knobs.''}
 We keep the following as symbolic parameters unless explicitly fixed:
 \begin{equation}
-  m,\ \hbar,\ q,\ K,\ \mu_0,\ \lambda_{\rm conf},\ \omega_w,\ \sigma,\ P_{\rm vac},
+  m,\ \hbar,\ \qstar,\ \qeff,\ K_{\rm EOS},\ \mu_0,\ \lambda_{\rm conf},\ \omega_w,\ \sigma,\ P_{\rm vac},
   \ \text{etc.}
 \end{equation}
 We keep the speed of light $c$ explicit whenever relativistic comparisons are made.
@@ -2465,19 +2501,19 @@ We keep the speed of light $c$ explicit whenever relativistic comparisons are ma
 
 We use a barotropic closure with density $\rho=|\psi|^2$ and pressure
 \begin{equation}
-  P(\rho)=K\rho^5.
+  P(\rho)=K_{\rm EOS}\rho^5.
 \end{equation}
 Associated thermodynamic functions used in the hydrodynamic form are
 \begin{equation}
-  U(\rho)=\frac{K}{4}\rho^5,\qquad
-  h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K}{4}\rho^4,\qquad
-  c_s^2(\rho)\equiv \frac{dP}{d\rho}=5K\rho^4.
+  U(\rho)=\frac{K_{\rm EOS}}{4}\rho^5,\qquad
+  h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K_{\rm EOS}}{4}\rho^4,\qquad
+  c_s^2(\rho)\equiv \frac{dP}{d\rho}=5K_{\rm EOS}\rho^4.
 \end{equation}
 A brane ``effort'' variable (used in port definitions) is the enthalpy perturbation
 \begin{equation}
   u \equiv \delta h(\rho_{\rm brane})
   \approx h'(\rho_{\rm brane,0})\,\delta\rho_{\rm brane}
-  = 5K\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
+  = 5K_{\rm EOS}\rho_{\rm brane,0}^3\,\delta\rho_{\rm brane}.
 \end{equation}
 
 \subsection{Gauge sector: potentials, field strength, and minimal coupling}
@@ -2498,9 +2534,9 @@ On the brane, the usual 3D magnetic pseudovector is obtained from $B_{ab}$ in th
 \paragraph{Minimal coupling.}
 The gauge-covariant derivatives acting on $\psi$ are
 \begin{equation}
-  D_t \equiv \partial_t + \frac{i q}{\hbar}A_0,
+  D_t \equiv \partial_t + \frac{i \qstar}{\hbar}A_0,
   \qquad
-  D_i \equiv \partial_i - \frac{i q}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
+  D_i \equiv \partial_i - \frac{i \qstar}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
 \end{equation}
 
 \paragraph{Gauge-localized Maxwell sector.}
@@ -2512,9 +2548,9 @@ When a localization profile is used, it appears as a kinetic prefactor $Z(w)$ in
 \paragraph{Neutrality convention (background subtraction).}
 When charge density is required, we use a neutralizing background of the form
 \begin{equation}
-  J^0(\mathbf X,t)=q\big(|\psi(\mathbf X,t)|^2-\rho_0\big),
+  J^0_{\rm tot}(\mathbf X,t)=\qstar\big(|\psi(\mathbf X,t)|^2-\rho_{\rm bg}\big),
 \end{equation}
-with $\rho_0$ a reference background density.
+with \(\rho_{\rm bg}\) a neutralizing background density distinct from the optical/barotropic reference density \(\rho_0\).
 
 \subsection{Currents, velocities, and the hydrodynamic dictionary}
 
@@ -2536,7 +2572,7 @@ with velocity components defined below.
 \paragraph{Gauge-covariant superfluid velocity.}
 In Madelung variables, the bulk velocity is
 \begin{equation}
-  v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{q}{\hbar}A_i\right).
+  v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{\qstar}{\hbar}A_i\right).
 \end{equation}
 
 \paragraph{Quantum pressure potential.}
@@ -2669,8 +2705,8 @@ dissipation and are \emph{not} part of the conservative action.
 \subsubsection{Gauge-covariant derivatives}
 Minimal coupling is implemented by
 \begin{align}
-D_t \equiv \partial_t + \frac{i q}{\hbar}A_0, \qquad
-D_i \equiv \partial_i - \frac{i q}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
+D_t \equiv \partial_t + \frac{i \qstar}{\hbar}A_0, \qquad
+D_i \equiv \partial_i - \frac{i \qstar}{\hbar}A_i \quad (i\in\{x,y,z,w\}).
 \label{eq:cov_derivs}
 \end{align}
 
@@ -2688,18 +2724,18 @@ A convenient Hermitian matter Lagrangian density is
 where $U(\rho)$ is an internal-energy density that encodes the equation of state.
 For the stiff polytrope used in this work,
 \begin{align}
-P(\rho) = K\rho^5,
+P(\rho) = K_{\rm EOS}\rho^5,
 \qquad
-U(\rho)=\frac{K}{4}\rho^5,
+U(\rho)=\frac{K_{\rm EOS}}{4}\rho^5,
 \qquad
-h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K}{4}\rho^4,
+h(\rho)\equiv \frac{dU}{d\rho}=\frac{5K_{\rm EOS}}{4}\rho^4,
 \label{eq:stiff_thermo_ladder}
 \end{align}
 and one checks the standard barotropic identity
 \begin{align}
-P(\rho)=\rho\,h(\rho)-U(\rho)=K\rho^5,
+P(\rho)=\rho\,h(\rho)-U(\rho)=K_{\rm EOS}\rho^5,
 \qquad
-c_s^2(\rho)=\frac{dP}{d\rho}=5K\rho^4.
+c_s^2(\rho)=\frac{dP}{d\rho}=5K_{\rm EOS}\rho^4.
 \end{align}
 
 \subsubsection{Variation with respect to $\psi^\ast$: the bulk GNLS equation}
@@ -2735,10 +2771,9 @@ and the exact continuity equation
 \qquad \rho=|\psi|^2.
 \label{eq:continuity_4d}
 \end{align}
-The corresponding charge current is $J^i_{\rm ch}=q\,J^i_{\rm mass}$.  In the main
-text we also employ a neutralizing background (``jellium'') when defining the
-charge density for Maxwell sourcing; this is a modeling choice and does not alter
-the variational derivation above.
+The corresponding matter charge current is $J^i_{\psi}=\qstar\,J^i_{\rm mass}$. In the main
+text we then package neutralizing background subtraction in the external Maxwell
+source sector, so that the total source is $J^N_{\rm tot}=J^N_{\psi}+J^N_{\rm ext}$ without double counting the matter variation.
 
 \subsection{Gauge sector: localized Maxwell equation from variation}
 \subsubsection{Localized Maxwell Lagrangian}
@@ -2748,7 +2783,7 @@ We take a gauge-invariant Maxwell sector with a localization prefactor $Z(w)$:
 =
 -\frac{1}{4\mu_0}\,Z(w)\,F_{MN}F^{MN}
 -\frac{1}{2\xi\mu_0}\,(\partial_M A^M)^2
-+ A_N J^N_{\rm ext},
+- A_N J^N_{\rm ext},
 \label{eq:LEM}
 \end{align}
 where $\xi$ is a gauge-fixing parameter (Lorenz family), and $J^N_{\rm ext}$ is an
@@ -2762,13 +2797,10 @@ Varying $S$ with respect to $A_N$ gives
 \partial_M\!\Big(Z(w)F^{MN}\Big)
 +\frac{1}{\xi}\,\partial^N(\partial\cdot A)
 =
-\mu_0\Big(J^N_{\rm ch}+J^N_{\rm ext}\Big),
+\mu_0\,J^N_{\rm tot},
 \label{eq:maxwell_localized}
 \end{align}
-where $J^N_{\rm ch}$ is the matter source induced by minimal coupling, with
-spatial part $J^i_{\rm ch}=q\,J^i_{\rm mass}$ and (model-dependent) charge density
-$J^0_{\rm ch}$.  The localization is entirely captured by the single replacement
-$F^{MN}\mapsto Z(w)F^{MN}$ in the divergence.
+where $J^N_{\rm tot}=J^N_{\psi}+J^N_{\rm ext}$, with the matter source induced by minimal coupling given by $J^i_{\psi}=\qstar\,J^i_{\rm mass}$ and any explicit source term reserved for external/background bookkeeping. The localization is entirely captured by the single replacement $F^{MN}\mapsto Z(w)F^{MN}$ in the divergence.
 
 \subsection{Geometry DOFs and the force ledger}
 \subsubsection{Energy functionals}
@@ -2837,7 +2869,7 @@ Define the Madelung variables
 \end{align}
 The gauge-invariant superfluid velocity is
 \begin{align}
-v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{q}{\hbar}A_i\right).
+v_i \equiv \frac{\hbar}{m}\left(\partial_i\theta-\frac{\qstar}{\hbar}A_i\right).
 \label{eq:vel_def}
 \end{align}
 Using \eqref{eq:continuity_4d} yields the exact $4$D continuity equation in
@@ -2848,7 +2880,7 @@ hydrodynamic form:
 \end{align}
 The real part of \eqref{eq:gnls_gauged} yields a Hamilton--Jacobi/Bernoulli relation
 \begin{align}
-\hbar\,\partial_t\theta + qA_0 + \frac{m}{2}v_iv_i + V_{\rm conf} + h(\rho) + Q(\rho)=0,
+\hbar\,\partial_t\theta + \qstar A_0 + \frac{m}{2}v_iv_i + V_{\rm conf} + h(\rho) + Q(\rho)=0,
 \label{eq:HJ}
 \end{align}
 where the quantum potential is
@@ -2861,7 +2893,7 @@ equation
 \begin{align}
 m(\partial_t+v_j\partial_j)v_i
 =
-q\Big(E_i+v_j B_{ij}\Big)
+\qstar\Big(E_i+v_j B_{ij}\Big)
 -\partial_i\Big(V_{\rm conf}+h(\rho)+Q(\rho)\Big),
 \label{eq:euler_bulk}
 \end{align}
@@ -2874,7 +2906,7 @@ B_{ij}=\partial_iA_j-\partial_jA_i.
 A useful immediate corollary of \eqref{eq:vel_def} is the vorticity--field-strength
 identity
 \begin{align}
-\Omega_{ij}\equiv \partial_i v_j-\partial_j v_i = -\frac{q}{m}B_{ij}.
+\Omega_{ij}\equiv \partial_i v_j-\partial_j v_i = -\frac{\qstar}{m}B_{ij}.
 \label{eq:vorticity_identity}
 \end{align}
 In particular, in the ungauged limit $A_i\to 0$ one has $\Omega_{ij}=0$ wherever $\theta$
@@ -2961,7 +2993,7 @@ For completeness, we record the standard linearized bridge used in the controlle
 reductions.  Around a uniform brane state $(\rho_{\rm brane},\mathbf{v}_{\rm brane})\approx (\rho_0,\mathbf{0})$,
 assume the brane flow is predominantly longitudinal $\mathbf{v}_{\rm brane}\approx \nabla \phi_3$ and define
 the effort variable $u\equiv \delta h(\rho_{\rm brane})\approx h'(\rho_0)\,\delta\rho_{\rm brane}$ with
-$h'(\rho_0)=5K\rho_0^3$.  Then a minimal acoustic closure yields
+$h'(\rho_0)=5K_{\rm EOS}\rho_0^3$.  Then a minimal acoustic closure yields
 \begin{align}
 \partial_t \delta\rho_{\rm brane} + \rho_0 \nabla_3^2 \phi_3 &= S_{\rho,\rm brane},
 \\
@@ -2972,7 +3004,7 @@ Eliminating $\delta\rho_{\rm brane}$ gives a forced wave equation for $\phi_3$,
 \begin{align}
 \partial_t^2 \phi_3 - \frac{c_{s,0}^2}{m}\,\nabla_3^2 \phi_3
 = -\frac{c_{s,0}^2}{m\rho_0}\,S_{\rho,\rm brane},
-\qquad c_{s,0}^2=5K\rho_0^4,
+\qquad c_{s,0}^2=5K_{\rm EOS}\rho_0^4,
 \label{eq:app_forced_wave_phi}
 \end{align}
 whose quasi-static limit is the Poisson-type candidate
@@ -3557,16 +3589,16 @@ responses into transverse and longitudinal parts using the standard projectors
 A convenient closed wake ansatz for the translational response of a moving defect is
 \begin{equation}
 \mathbf{u}(\mathbf{k};\mathbf{v}) =
-i\,\frac{K}{k}\,\mathcal{P}_T(\mathbf{k})\,\mathbf{v}
+i\,\frac{K_{\rm vec}}{k}\,\mathcal{P}_T(\mathbf{k})\,\mathbf{v}
 \;+\;
-i\,\frac{K a_H}{k^2}\,(\mathbf{k}\times\mathbf{v})
+i\,\frac{K_{\rm vec} a_H}{k^2}\,(\mathbf{k}\times\mathbf{v})
 \;+\;
-i\,\frac{K\alpha}{k^3}\,\mathbf{k}\,(\mathbf{k}\cdot\mathbf{v}),
+i\,\frac{K_{\rm vec}\alpha}{k^3}\,\mathbf{k}\,(\mathbf{k}\cdot\mathbf{v}),
 \label{eq:wake-ansatz-k}
 \end{equation}
 where:
 \begin{itemize}
-\item \(K\) is an overall (dimensionless) coupling amplitude for the induced wake,
+\item \(K_{\rm vec}\) is an overall (dimensionless) coupling amplitude for the induced wake,
 \item \(\alpha\) weights the longitudinal (compressible) component,
 \item \(a_H\) weights a helical/transverse-rotational component.
 \end{itemize}
@@ -3607,18 +3639,18 @@ C_L(\alpha,a_H)\,(\mathbf{v}_A\!\cdot\!\mathbf{n}_{AB})(\mathbf{v}_B\!\cdot\!\ma
 \end{equation}
 with closed-form coefficients
 \begin{equation}
-C_\parallel(\alpha,a_H)=K\pi^2\bigl(-1+a_H^2-\alpha^2\bigr),
+C_\parallel(\alpha,a_H)=K_{\rm vec}\pi^2\bigl(-1+a_H^2-\alpha^2\bigr),
 \qquad
-C_L(\alpha,a_H)=K\pi^2\bigl(-1+a_H^2+\alpha^2\bigr).
+C_L(\alpha,a_H)=K_{\rm vec}\pi^2\bigl(-1+a_H^2+\alpha^2\bigr).
 \label{eq:Cpar-CL-closed}
 \end{equation}
 
 \subsection{Solving the EIH constraints}
 Imposing the EIH targets \eqref{eq:eih-targets} on \eqref{eq:Cpar-CL-closed} gives the system
 \begin{align}
-K\pi^2\bigl(-1+a_H^2-\alpha^2\bigr) &= -\frac{7}{2},
+K_{\rm vec}\pi^2\bigl(-1+a_H^2-\alpha^2\bigr) &= -\frac{7}{2},
 \label{eq:match-eq1}\\
-K\pi^2\bigl(-1+a_H^2+\alpha^2\bigr) &= -\frac{1}{2}.
+K_{\rm vec}\pi^2\bigl(-1+a_H^2+\alpha^2\bigr) &= -\frac{1}{2}.
 \label{eq:match-eq2}
 \end{align}
 Define the shorthand
@@ -3628,22 +3660,22 @@ X \equiv -1+a_H^2.
 \end{equation}
 Then \eqref{eq:match-eq1}--\eqref{eq:match-eq2} become
 \begin{align}
-K\pi^2(X-\alpha^2) &= -\frac{7}{2},
+K_{\rm vec}\pi^2(X-\alpha^2) &= -\frac{7}{2},
 \\
-K\pi^2(X+\alpha^2) &= -\frac{1}{2}.
+K_{\rm vec}\pi^2(X+\alpha^2) &= -\frac{1}{2}.
 \end{align}
 Add the two equations:
 \begin{equation}
-2K\pi^2 X = -4
+2K_{\rm vec}\pi^2 X = -4
 \quad\Longrightarrow\quad
-K\pi^2 X = -2.
+K_{\rm vec}\pi^2 X = -2.
 \label{eq:sum-eq}
 \end{equation}
 Subtract the first from the second:
 \begin{equation}
-2K\pi^2 \alpha^2 = 3
+2K_{\rm vec}\pi^2 \alpha^2 = 3
 \quad\Longrightarrow\quad
-K\pi^2\alpha^2=\frac{3}{2}.
+K_{\rm vec}\pi^2\alpha^2=\frac{3}{2}.
 \label{eq:diff-eq}
 \end{equation}
 Solving \eqref{eq:sum-eq}--\eqref{eq:diff-eq} yields the one-parameter family
@@ -3651,28 +3683,28 @@ Solving \eqref{eq:sum-eq}--\eqref{eq:diff-eq} yields the one-parameter family
 \boxed{
 \alpha^2(a_H^2)=\frac{3}{4}\,(1-a_H^2),
 \qquad
-K(a_H^2)=\frac{2}{\pi^2(1-a_H^2)}.
+K_{\rm vec}(a_H^2)=\frac{2}{\pi^2(1-a_H^2)}.
 }
 \label{eq:family-solution}
 \end{equation}
 Two convenient invariants (often useful for cross-checks) are
 \begin{equation}
 \boxed{
-K(1-a_H^2)=\frac{2}{\pi^2},
+K_{\rm vec}(1-a_H^2)=\frac{2}{\pi^2},
 \qquad
-K\alpha^2=\frac{3}{2\pi^2}.
+K_{\rm vec}\alpha^2=\frac{3}{2\pi^2}.
 }
 \label{eq:family-invariants}
 \end{equation}
 
 \paragraph{Physical domain.}
-If \(K\) is required positive and \(\alpha^2\ge 0\), then \eqref{eq:family-solution}
+If \(K_{\rm vec}\) is required positive and \(\alpha^2\ge 0\), then \eqref{eq:family-solution}
 implies
 \begin{equation}
 0\le a_H^2 < 1.
 \label{eq:aH-domain}
 \end{equation}
-(If a different sign convention for \(K\) is adopted elsewhere, the same algebra still
+(If a different sign convention for \(K_{\rm vec}\) is adopted elsewhere, the same algebra still
 goes through with the corresponding sign flips.)
 
 \subsection{Minimal parity-even solution (optional specialization)}
@@ -3685,7 +3717,7 @@ which collapses \eqref{eq:family-solution} to the unique values
 \boxed{
 \alpha^2=\frac{3}{4},
 \qquad
-K=\frac{2}{\pi^2}.
+K_{\rm vec}=\frac{2}{\pi^2}.
 }
 \label{eq:minimal-solution}
 \end{equation}

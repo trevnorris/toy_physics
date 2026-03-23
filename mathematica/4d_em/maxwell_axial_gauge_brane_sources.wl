@@ -66,6 +66,11 @@ mu0eff = Simp[mu0/Zint];
 
 Print["\nZint = Integrate[Z(w) dw] -> ", Zint];
 Print["mu0eff = mu0/Zint -> ", mu0eff];
+Print["Charge/source bookkeeping note:"];
+Print["  Fixed defect branch label: qStar = etaQ * eStar."];
+Print["  In the coupled reading, Jtot^mu = Jpsi^mu + Jext^mu."];
+Print["  The condition Jw = 0 is imposed only in the controlled far-field Maxwell limit."];
+Print["  Mixed core structure (Aw, Jw, F_{mu w}) is suppressed here, not excluded microscopically."];
 
 (* ---------- Derivative operators ---------- *)
 dDown5[i_][expr_] := D[expr, coords5[[i]]];

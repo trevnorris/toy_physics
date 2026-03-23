@@ -198,13 +198,13 @@ Print["  aT (fixed) = ", aT];
 Print["  aH = ", aHval];
 Print["  aL = ", aLval];
 
-(* Determine the overall coupling constant K that matches the parallel coefficient. *)
+(* Determine the overall vector normalization K_vec that matches the parallel coefficient. *)
 Kval = Simplify[TargetPara / (VecParaShape /. params)];
 
-Print["\nOverall coupling K needed to match TargetPara:"];
-Print["  K = ", Kval];
+Print["\nOverall vector normalization K_vec needed to match TargetPara:"];
+Print["  K_vec = ", Kval];
 
-(* Predict the longitudinal coefficient with this K (should match TargetLong). *)
+(* Predict the longitudinal coefficient with this K_vec (should match TargetLong). *)
 LongPred = Simplify[Kval * (VecLongShape /. params)];
 ParaPred = Simplify[Kval * (VecParaShape /. params)];
 
@@ -263,8 +263,8 @@ Selected real parameters:
   aH = 0
   aL = -1/2*Sqrt[3]
 
-Overall coupling K needed to match TargetPara:
-  K = 2/Pi^2
+Overall vector normalization K_vec needed to match TargetPara:
+  K_vec = 2/Pi^2
 
 Check (should reproduce EIH cross coefficients):
   Predicted Para = -7/2   (target -7/2)

@@ -33,8 +33,8 @@ zeroQ[expr_, asm_] := TrueQ[FullSimplify[expr == 0, Assumptions -> asm]];
 
 (* ---------- Assumptions ---------- *)
 asmBase = {
-  Element[{mu0, lambdaConf}, Reals],
-  mu0 > 0, lambdaConf > 0
+  Element[{mu0, lambdaConf, eStar, etaQ}, Reals],
+  mu0 > 0, lambdaConf > 0, eStar > 0, etaQ^2 == 1
 };
 
 (* ---------- Localization profile ---------- *)
@@ -49,6 +49,12 @@ mu0eff = FullSimplify[mu0/Zint, Assumptions -> asmBase];
 
 PrintEq["Zint = Integrate[Z(w) dw]", Zint];
 PrintEq["mu0eff = mu0/Zint", mu0eff];
+qStarFromCharge = etaQ*eStar;
+qEffFromCharge = FullSimplify[qStarFromCharge/Sqrt[Zint], Assumptions -> asmBase];
+eEffFromCharge = FullSimplify[eStar/Sqrt[Zint], Assumptions -> asmBase];
+PrintEq["Fixed defect branch relation qStar = etaQ * eStar", HoldForm[qStar == etaQ*eStar]];
+PrintEq["Canonical brane charge relation qEff = qStar/Sqrt[Zint]", HoldForm[qEff == qStar/Sqrt[Zint]]];
+PrintEq["Derived Gaussian scaling for eEff", eEffFromCharge];
 
 (* ---------- Sturm-Liouville eigenproblem (Gaussian Z) ----------
    KK separation gives w-profiles f_n(w) satisfying:
@@ -175,23 +181,23 @@ Table[
 PrintHeader["Brane potential: Coulomb + Yukawa tower"];
 
 (*
-For a static point charge on the brane (w=0), the brane-observed potential has
+For a fixed defect branch on the brane (w=0), the brane-observed potential has
 the spectral representation:
 
-  A0(r) = (mu0*q)/(4 Pi r) * Sum_{n>=0} c_n * Exp[-m_n r]
+  A0(r) = (mu0*qStar)/(4 Pi r) * Sum_{n>=0} c_n * Exp[-m_n r]
 
 Zero mode (n=0) gives:
-  A0_0(r) = (mu0*q)/(4 Pi r) * (1/Zint) = (mu0eff*q)/(4 Pi r)
+  A0_0(r) = (mu0*qStar)/(4 Pi r) * (1/Zint) = (mu0eff*qStar)/(4 Pi r)
 
 Even-n modes correct this by Yukawa terms with range ~ 1/m_n.
 Odd-n modes do not couple for a symmetric brane source because f_{odd}(0)=0.
 *)
 
-ClearAll[r, q];
-asmR = Join[asmBase, {Element[{r, q}, Reals], r > 0}];
+ClearAll[r, qStar, qEff];
+asmR = Join[asmBase, {Element[{r, qStar, qEff}, Reals], r > 0}];
 
-A0zero[r_] := FullSimplify[(mu0*q)/(4*Pi*r) * cCoef[0], Assumptions -> asmR];
-PrintEq["A0_zero(r) = (mu0 q)/(4 Pi r) * c0 = (mu0eff q)/(4 Pi r)", A0zero[r]];
+A0zero[r_] := FullSimplify[(mu0*qStar)/(4*Pi*r) * cCoef[0], Assumptions -> asmR];
+PrintEq["A0_zero(r) = (mu0 qStar)/(4 Pi r) * c0 = (mu0eff qStar)/(4 Pi r)", A0zero[r]];
 
 (* Correction ratio Delta(r) := (A0 - A0_zero)/A0_zero, truncated at kmax even modes *)
 corrRatioTrunc[r_, kmax_Integer?NonNegative] := FullSimplify[
@@ -214,6 +220,7 @@ leadMass = FullSimplify[Sqrt[m2[2]], Assumptions -> asmR];
 PrintEq["(c2/c0)", leadCoeff];
 PrintEq["m2", leadMass];
 PrintEq["Leading Delta(r) approx", FullSimplify[leadCoeff*Exp[-leadMass*r], Assumptions -> asmR]];
+Print["Equivalent canonical brane description: replace qStar by qEff = qStar/Sqrt[Zint] after field normalization."];
 
 (* ---------- Brane-to-brane propagator (momentum space; Lorentz scalar) ---------- *)
 PrintHeader["Brane-to-brane propagator depends only on k^2"];
@@ -342,8 +349,8 @@ Spot-check c_{2k} closed form (k=0..8):
 Brane potential: Coulomb + Yukawa tower
 ------------------------------------------------------------
 
-A0_zero(r) = (mu0 q)/(4 Pi r) * c0 = (mu0eff q)/(4 Pi r):
-OutputForm[(mu0*q)/(4*lambdaConf*Pi^(3/2)*r)]
+A0_zero(r) = (mu0 qStar)/(4 Pi r) * c0 = (mu0eff qStar)/(4 Pi r):
+OutputForm[(mu0*qStar)/(4*lambdaConf*Pi^(3/2)*r)]
 
 Correction ratio Delta(r) := (A0 - A0_zero)/A0_zero  (finite truncations):
 kmax=1  Delta(r) = OutputForm[1/(2*E^((2*r)/lambdaConf))]

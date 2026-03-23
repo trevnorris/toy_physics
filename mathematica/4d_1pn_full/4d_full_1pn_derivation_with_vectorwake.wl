@@ -16,7 +16,7 @@
          - external fields smooth across the defect support.
     3) It derives the full two-body 1PN Lagrangian structure from:
          - Newtonian pair counting,
-         - scalar mass scaling q,
+         - scalar mass-dressing coefficient kappa_rho,
          - optical speed dependence n,
          - added-mass closure,
          - adiabatic kappa_PV closure,
@@ -53,8 +53,8 @@ ClearAll[
   velField, uintVec, massDefect, Pdef, Tcm, Tcross, Tint, Tdef, zeroMeanRules,
   g1, g2, g3, gVec, H11, H12, H13, H21, H22, H23, H31, H32, H33, Hmat,
   forceDensityTaylor, ForceTaylor, ForceMonopole,
-  epsP, epsV, M0, qVar, nEOS, cLight, LscRaw, LscSeries, coeffNewtonPhi,
-  coeffV2, coeffV4, coeffPhiV2, qSolution, alphaN, nSolution,
+  epsP, epsV, M0, kappaRhoVar, nEOS, cLight, LscRaw, LscSeries, coeffNewtonPhi,
+  coeffV2, coeffV4, coeffPhiV2, kappaRhoSolution, alphaN, nSolution,
   kappaRho, Gconst, mA, mB, mC, rAB, rAC, rBC, PhiLocA, PhiLocB,
   LpairPotential, invC, LpairPotentialInv, staticCoeff2Body,
   uAB, uAC, uBC, PhiA3, PhiB3, PhiC3, Lstatic3Body, Lstatic3Sub,
@@ -384,7 +384,7 @@ checkEqScalar[
   5
 ];
 
-LscRaw = -M0 (1 + qVar epsP) cLight^2 Sqrt[1 - epsV^2/(1 + (nEOS - 1) epsP)];
+LscRaw = -M0 (1 + kappaRhoVar epsP) cLight^2 Sqrt[1 - epsV^2/(1 + (nEOS - 1) epsP)];
 LscSeries = FullSimplify[
   Expand[Normal[Series[Normal[Series[LscRaw, {epsP, 0, 1}]], {epsV, 0, 4}]]],
   cLight > 0
@@ -396,17 +396,17 @@ coeffV4 = FullSimplify[Coefficient[(LscSeries/(M0 cLight^2)) /. epsP -> 0, epsV,
 coeffPhiV2 = FullSimplify[Coefficient[Coefficient[LscSeries/(M0 cLight^2), epsP], epsV, 2], cLight > 0];
 
 checkEqScalar[
-  "Scalar-sector Newtonian coupling coefficient is -q",
+  "Scalar-sector Newtonian coupling coefficient is -kappa_rho",
   coeffNewtonPhi,
-  -qVar,
+  -kappaRhoVar,
   cLight > 0
 ];
 
-qSolution = qVar /. First[Solve[coeffNewtonPhi == -1, qVar]];
+kappaRhoSolution = kappaRhoVar /. First[Solve[coeffNewtonPhi == -1, kappaRhoVar]];
 
 checkEqScalar[
-  "Newtonian matching fixes q = 1",
-  qSolution,
+  "Newtonian matching fixes kappa_rho = 1 (historically q = 1)",
+  kappaRhoSolution,
   1,
   cLight > 0
 ];
@@ -426,15 +426,15 @@ checkEqScalar[
 ];
 
 checkEqScalar[
-  "Scalar+optical expansion gives C_self(Phi v^2/c^2) = q/2 - (n-1)/2",
+  "Scalar+optical expansion gives C_self(Phi v^2/c^2) = kappa_rho/2 - (n-1)/2",
   coeffPhiV2,
-  qVar/2 - (nEOS - 1)/2,
+  kappaRhoVar/2 - (nEOS - 1)/2,
   cLight > 0
 ];
 
 checkEqScalar[
-  "With q = 1 and n = 5 the self Phi v^2 coefficient becomes -3/2",
-  coeffPhiV2 /. {qVar -> qSolution, nEOS -> nSolution},
+  "With kappa_rho = 1 and n = 5 the self Phi v^2 coefficient becomes -3/2",
+  coeffPhiV2 /. {kappaRhoVar -> kappaRhoSolution, nEOS -> nSolution},
   -3/2,
   cLight > 0
 ];
@@ -443,7 +443,7 @@ checkEqScalar[
 section["EXACT / pair counting and the static nonlinear term from local mass scaling"];
 (* ============================================================ *)
 
-kappaRho = qSolution;
+kappaRho = kappaRhoSolution;
 Gconst = G;
 PhiLocA = -(Gconst mB)/rAB;
 PhiLocB = -(Gconst mA)/rAB;
@@ -558,7 +558,7 @@ selfCoeffLedger = FullSimplify[-beta1PN/2, rho0 > 0 && aRad > 0];
 checkEqScalar[
   "Ledger route and scalar+optical route give the same self Phi v^2 coefficient",
   selfCoeffLedger,
-  coeffPhiV2 /. {qVar -> qSolution, nEOS -> nSolution},
+  coeffPhiV2 /. {kappaRhoVar -> kappaRhoSolution, nEOS -> nSolution},
   cLight > 0 && rho0 > 0 && aRad > 0
 ];
 
@@ -590,7 +590,7 @@ vAB = dot3[vAvec, vBvec];
 vAn = dot3[vAvec, nABvec];
 vBn = dot3[vBvec, nABvec];
 
-selfPairCoeff = FullSimplify[-(coeffPhiV2 /. {qVar -> qSolution, nEOS -> nSolution})];
+selfPairCoeff = FullSimplify[-(coeffPhiV2 /. {kappaRhoVar -> kappaRhoSolution, nEOS -> nSolution})];
 
 If[!MissingQ[wakeFile] && TrueQ[wakeLoaded],
   LDerived2Body =
@@ -703,8 +703,8 @@ Selected real parameters:
   aH = 0
   aL = -1/2*Sqrt[3]
 
-Overall coupling K needed to match TargetPara:
-  K = 2/Pi^2
+Overall vector normalization K_vec needed to match TargetPara:
+  K_vec = 2/Pi^2
 
 Check (should reproduce EIH cross coefficients):
   Predicted Para = -7/2   (target -7/2)
@@ -736,15 +736,15 @@ PASS: Quadrupole / finite-size force corrections scale as (a/r)^2 relative to th
 === EXACT / Newtonian test-body reduction from the worldtube force law ===
 PASS: Worldtube-derived Newtonian particle Lagrangian reproduces M Xdd = -M grad(Phi)
 
-=== CONTROLLED / scalar plus optical self-term derivation: q and n fix the Phi v^2 coefficient ===
+=== CONTROLLED / scalar plus optical self-term derivation: kappa_rho and n fix the Phi v^2 coefficient ===
 PASS: Optical weak-field coefficient is alpha_n = (n-1)/2
 PASS: Optical-sector GR matching fixes the stiff exponent n = 5
-PASS: Scalar-sector Newtonian coupling coefficient is -q
-PASS: Newtonian matching fixes q = 1
+PASS: Scalar-sector Newtonian coupling coefficient is -kappa_rho
+PASS: Newtonian matching fixes kappa_rho = 1 (historically q = 1)
 PASS: Free kinetic coefficient remains 1/2
 PASS: Free relativistic particle Lagrangian gives the universal 1/8 coefficient in L(v)
-PASS: Scalar+optical expansion gives C_self(Phi v^2/c^2) = q/2 - (n-1)/2
-PASS: With q = 1 and n = 5 the self Phi v^2 coefficient becomes -3/2
+PASS: Scalar+optical expansion gives C_self(Phi v^2/c^2) = kappa_rho/2 - (n-1)/2
+PASS: With kappa_rho = 1 and n = 5 the self Phi v^2 coefficient becomes -3/2
 
 === EXACT / pair counting and the static nonlinear term from local mass scaling ===
 PASS: Pair-counted Newtonian interaction energy is + G m_A m_B / r

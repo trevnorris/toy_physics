@@ -5,6 +5,9 @@
    - avoids Solve pitfalls (uses manual + LinearSolve cross-checks)
    - uses explicit div/curl operators to prevent CAS false negatives
    - includes Maxwell=>continuity and Poynting theorem checks that close the loop
+   - treats species charges as fixed plasma inputs; no circulation-based charge law is used
+   - records the equivalent reduced source-charge packaging qEff = qStar/Sqrt[Zint]
+   - treats suppression of (Aw, Jw, F_{mu w}) as a controlled far-field brane reduction
 *)
 
 Print["--- 4D -> 3+1 Maxwell -> two-fluid -> MHD reduction (symbolic) ---"];
@@ -14,15 +17,28 @@ Print["--- 4D -> 3+1 Maxwell -> two-fluid -> MHD reduction (symbolic) ---"];
    ========= *)
 
 ClearAll[
-  mu0eff, mu0, eps0, c, Zint, eC, nDen, mi, me,
+  mu0Eff, mu0eff, mu0, eps0, c, Zint,
+  eC, eEff, qIon, qElectron, qStar, qEff, etaQ, eStar,
+  nDen, mi, me,
   cross3, dot3, outer3, grad3, div3, curl3, divTensor3,
   checkScalar, checkVector, checkEqScalar, checkEqVector,
   vVec, JVec, viVec, veVec, BVec, gpEVec, EVec,
   x, y, z, t
 ];
 
-mu0eff = mu0/Zint;
-Print["Effective brane coupling:  mu0eff = mu0/Zint = ", mu0eff];
+mu0Eff = mu0/Zint;
+mu0eff = mu0Eff;
+eEff = eC;
+qIon = +eEff;
+qElectron = -eEff;
+qStar = etaQ eStar;
+qEff = qStar/Sqrt[Zint];
+
+Print["Effective brane coupling:  mu0Eff = mu0/Zint = ", mu0Eff];
+Print["Equivalent canonical charge packaging:  qEff = qStar/Sqrt[Zint] with qStar = etaQ eStar and eStar > 0."];
+Print["Fixed species charge labels:  qIon = +eEff, qElectron = -eEff, with eEff the fixed brane-observed elementary charge magnitude."];
+Print["Controlled reduction note: suppressing (Aw, Jw, F_{mu w}) is a far-field brane reduction assumption used to recover standard MHD; it does not deny microscopic mixed-core structure."];
+Print["Charge-ontology note: this harness treats species charges as fixed inputs and does not use any circulation-based charge law."];
 
 (* =========
    1) Helper operators (explicit, not built-ins)
@@ -81,13 +97,14 @@ checkEqVector[name_String, lhs_List, rhs_List, assum_: True] := checkVector[name
 
 (* =========
    3) Two-fluid definitions -> solve vi, ve in terms of v, J
+      Charge labels are fixed inputs: qIon = +eEff, qElectron = -eEff.
    ========= *)
 
 vVec = {vX, vY, vZ};
 JVec = {JX, JY, JZ};
 
 Print["Mass density rho = (mi+me) nDen = ", (mi + me) nDen];
-Print["Current definition:  J = eC nDen (vi - ve)"];
+Print["Current definition:  J = eEff nDen (vi - ve), with eEff carried symbolically as eC below."];
 Print["COM definition:      v = (mi vi + me ve)/(mi+me)"];
 
 (* Manual solution (vector form) *)
@@ -240,7 +257,8 @@ Module[
   hall = (1/(eC nFun)) cross3[JFun, bFun];
   bier = -(1/(eC nFun)) {D[pEfun, x], D[pEfun, y], D[pEfun, z]};
 
-  (* Non-ideal Ohm (no resistivity, no electron inertia): E = -v×B + Hall + Biermann *)
+  (* Non-ideal Ohm (no resistivity, no electron inertia): E = -v×B + Hall + Biermann.
+     Species charge labels remain fixed plasma inputs throughout. *)
   Eohm = -cross3[vFun, bFun] + hall + bier;
 
   (* Faraday => ∂t B = -curl(E) *)

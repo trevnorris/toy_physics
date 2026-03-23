@@ -153,6 +153,9 @@ The electromagnetic sector is evolved as a relativistic hyperbolic system (wave 
 \paragraph{What we do not claim.}
 We do not claim that the present paper completes a full kinetic microphysics program for all plasma regimes, nor that any single truncation of the transverse-mode tower is universally adequate. Instead, we provide a systematic parent model, a controlled reduction to known limits, and a hierarchy of correction terms with explicit simulation knobs that can be increased until convergence is achieved.
 
+\paragraph{Charge ontology and scope.}
+This plasma paper treats species charges as fixed input parameters and does not attempt to derive particle identity. For elementary defect branches, the electric sign is a fixed topological orientation label \(\eta_Q=\pm 1\) and the observed brane magnitude is inherited from localization thickness; in the plasma equations we therefore retain \(q_s\) simply as the fixed species charge label. Circulation and canonical vorticity remain part of the magnetic--vortical sector and are not used here to define electric charge.
+
 \subsection{Roadmap}
 This paper is organized as follows. Section~\ref{sec:conventions} defines the bulk/brane geometry, index conventions, and the operational projection map used to define brane observables. Section~\ref{sec:em_sector} presents the localized 4+1D electromagnetic sector, emphasizing the physical role of the \(A_w\) degree of freedom and the transverse-mode (KK/Hermite) structure induced by a localized kinetic weight \(Z(w)\). Section~\ref{sec:matter_sector} introduces the plasma matter sector (multi-species field, two-fluid, or kinetic) and the associated currents and conservation laws. Section~\ref{sec:full_system} collects the coupled bulk system to be simulated and summarizes bulk invariants.
 
@@ -723,18 +726,18 @@ Proca-like degrees of freedom with dispersion \(\omega^2=\mathbf{k}^2+m_n^2\).
 
 \paragraph{Static brane potential: Coulomb plus Yukawa tower.}
 In the static limit, the brane-to-brane response is a sum of Yukawa propagators.
-For a point charge \(q\) on the brane, the scalar potential on the brane takes the
+For a fixed point source \(q_{\rm src}\) on the brane, the scalar potential on the brane takes the
 form
 \begin{equation}
 A_0(r)
-=\frac{\muzero q}{4\pi r}\sum_{n\ge 0} c_n\,\ee^{-m_n r},
+=\frac{\muzero q_{\rm src}}{4\pi r}\sum_{n\ge 0} c_n\,\ee^{-m_n r},
 \qquad r\equiv|\x|.
 \label{eq:A0_KK_sum_em}
 \end{equation}
 Separating the zero mode gives
 \begin{equation}
 A_0(r)
-=\frac{\muzeff q}{4\pi r}
+=\frac{\muzeff q_{\rm src}}{4\pi r}
 \left[1+\sum_{m\ge 1}\frac{c_{2m}}{c_0}\,\ee^{-m_{2m}r}\right],
 \qquad
 m_{2m}=\frac{2\sqrt{m}}{\lambda},
@@ -750,11 +753,14 @@ Thus for \(r\gg \lambda\) the leading deviation from Coulomb has fixed coefficie
 \(\tfrac12\) and range set by \(\lambda\):
 \begin{equation}
 A_0(r)
-=\frac{\muzeff q}{4\pi r}
+=\frac{\muzeff q_{\rm src}}{4\pi r}
 \left[1+\frac12\,\ee^{-2r/\lambda}
 +\mathcal{O}\!\left(\ee^{-2\sqrt{2}\,r/\lambda}\right)\right].
 \label{eq:leading_yukawa_em}
 \end{equation}
+Here \(q_{\rm src}\) is a fixed source label; for an elementary defect branch in the
+canonically normalized brane packaging one may identify
+\(q_{\rm src}=q_{\rm eff}=\eta_Q e_{\rm eff}\).
 For plasma modeling, \(\lambda\) therefore sets a concrete crossover scale: at
 separations \(r\gg\lambda\) the interaction is effectively Maxwellian, while at
 \(r\sim\lambda\) additional transverse modes and mixed components can contribute.
@@ -796,8 +802,12 @@ demonstrated here.
 
 \paragraph{Species.}
 We consider \(S\) charged species indexed by \(s\in\{1,\ldots,S\}\), each with
-mass \(m_s\) and charge \(q_s\). In applications, \(s=\ele\) (electrons) and
-\(s=\ion\) (ions) are the minimal choice.
+mass \(m_s\) and fixed species charge parameter \(q_s\). This paper treats \(q_s\)
+as a plasma-model input rather than as a derivation of particle identity. For
+elementary defect branches, \(q_s\) may be viewed as the reduced brane charge
+inherited from the corrected localized-charge ontology; for composite ions,
+\(q_s\) may simply be treated as the usual effective charge state. In
+applications, \(s=\ele\) (electrons) and \(s=\ion\) (ions) are the minimal choice.
 
 \subsubsection*{Option A (field-based): multi-species Schr\"odinger/GNLS--Maxwell}
 
@@ -1046,6 +1056,8 @@ This ``London-type'' identity states that canonical vorticity is locked to gauge
 flux as a bulk geometric constraint; its brane-facing implications for topology,
 reconnection, and projected non-ideality are developed in
 Section~\ref{sec:vorticity_identity}.
+It is a vortical/canonical-momentum constraint and should not be read as a rule
+that defines electric charge from circulation.
 
 % ============================================================
 \section{Full Coupled 4+1D Plasma--EM System}
@@ -1388,6 +1400,13 @@ equations with an effective coupling
 \end{equation}
 If desired, define the corresponding effective permittivity by
 \(\epsilon_0^{\rm eff}\mu_0^{\rm eff}=c^{-2}\).
+For an elementary defect branch with \(q_*=\eta_Q e_*\), \(\eta_Q=\pm1\), and
+\(e_*>0\), the same localization dependence may equivalently be packaged into the
+fixed reduced brane charge \(q_{\rm eff}=q_*/\sqrt{\Zint}\); in this plasma paper
+we keep \(\mu_0^{\rm eff}\) as the primary Maxwell/MHD notation.
+Suppressing \((A_w,F_{\mu w},J^w)\) here is a controlled far-field brane reduction
+used to recover standard plasma theory, not a microscopic statement that the
+underlying charged core lacks mixed-sector structure.
 
 \subsubsection*{Step 2: bulk plasma \(\to\) brane two-fluid}
 To obtain standard brane plasma equations, we assume the species are effectively
@@ -1446,6 +1465,8 @@ q_s n_s\left(\E + \mathbf{v}_s\times\B\right) - \gradthree p_s + \mathbf{R}_s,
 \end{align}
 where \(p_s\) is species pressure and \(\mathbf{R}_s\) represents optional collisional
 momentum exchange (e.g.\ electron--ion drag), with \(\sum_s \mathbf{R}_s=0\).
+Here \(e>0\) denotes the fixed brane-observed elementary charge magnitude
+(equivalently \(e_{\rm eff}\) in the localized-defect reading).
 
 \paragraph{Single-fluid variables.}
 Define the (approximate) mass density, center-of-mass velocity, and current:
@@ -3106,7 +3127,7 @@ $\mathbf{J}$ & Brane current density (in the controlled $3+1$ Maxwell limit) \\
 Symbol & Meaning \\
 \midrule
 $s$ & Species index (e.g.\ $s\in\{\mathrm{e},\mathrm{i}\}$ for electrons/ions) \\
-$m_s,\,q_s$ & Mass and charge of species $s$ \\
+$m_s,\,q_s$ & Mass and fixed species charge label of species $s$; for elementary defect branches $q_s$ may be viewed as the reduced brane charge inherited from the localized-charge ontology, while for composite ions it may be treated as the usual effective charge state \\
 $\psi_s$ & Species field (GNLS option) \\
 $f_s$ & Species distribution function (Vlasov/PIC option) \\
 $\rho_s$ & Bulk species number density (GNLS: $\rho_s=|\psi_s|^2$; Vlasov: $\rho_s=\int f_s\,\dd^4v$) \\
@@ -3402,6 +3423,9 @@ This appendix records the standard algebraic reduction from a brane two-fluid pl
 SI-MHD is that, in our framework, \(\mu_0\) may be replaced by \(\mu_0^{\rm eff}\)
 in Amp\`ere's law if one is working in the controlled brane-Maxwell limit of
 Appendix~\ref{app:maxwell_reduction}. Otherwise the reduction is unchanged.
+Equivalently, one may package the same localization dependence into fixed reduced
+brane source charges \(q_{\rm eff}=q_*/\sqrt{\Zint}\), but we keep
+\(\mu_0^{\rm eff}\) as the plasma-facing notation in this appendix.
 
 Throughout, all fields and fluid variables in this appendix are \emph{brane} \(3\)-vectors
 and \(3\)-scalar densities; we use \(\gradthree\) as the brane gradient.
@@ -3415,6 +3439,8 @@ q_\ion = +e,\qquad q_\ele=-e.
 \end{equation}
 Let \(n_s(t,\mathbf{x})\) be the number density, \(\mathbf{v}_s(t,\mathbf{x})\) the
 species velocity, and \(p_s(t,\mathbf{x})\) the species pressure.
+Here \(e>0\) denotes the fixed brane-observed elementary charge magnitude
+(equivalently \(e_{\rm eff}\) in the localized-defect reading).
 
 \paragraph{Continuity (each species).}
 \begin{equation}
@@ -3928,12 +3954,13 @@ m_n^2=\frac{2n}{\lambda^2},
 where \(k^2\) is the brane Lorentz scalar built from \((\omega,\mathbf{k})\).
 
 In the static limit (\(\omega=0\)), each massive mode contributes a Yukawa potential.
-For a point charge \(q\) on the brane (\(J_b^0=q\,\delta^{(3)}(\mathbf{x})\)),
+For a fixed point source \(q_{\rm src}\) on the brane, with
+\(J_b^0=q_{\rm src}\,\delta^{(3)}(\mathbf{x})\),
 the scalar potential on the brane takes the form
 \begin{equation}
 A_0(r)
 =
-\frac{\mu_0 q}{4\pi r}\sum_{n\ge 0}c_n\,e^{-m_n r},
+\frac{\mu_0 q_{\rm src}}{4\pi r}\sum_{n\ge 0}c_n\,e^{-m_n r},
 \qquad r\equiv|\mathbf{x}|.
 \label{eq:A0_KK_sum_app}
 \end{equation}
@@ -3941,7 +3968,7 @@ Separating the zero mode and using \(\mu_0^{\rm eff}=\mu_0 c_0\), one can write
 \begin{equation}
 A_0(r)
 =
-\frac{\mu_0^{\rm eff} q}{4\pi r}
+\frac{\mu_0^{\rm eff} q_{\rm src}}{4\pi r}
 \left[
 1+\sum_{m\ge 1}\frac{c_{2m}}{c_0}\,e^{-m_{2m}r}
 \right],
@@ -3962,13 +3989,16 @@ Therefore the leading deviation from Coulomb at large \(r\) is
 \begin{equation}
 A_0(r)
 =
-\frac{\mu_0^{\rm eff} q}{4\pi r}
+\frac{\mu_0^{\rm eff} q_{\rm src}}{4\pi r}
 \left[
 1+\frac12\,e^{-2r/\lambda}
 +\mathcal{O}\!\left(e^{-2\sqrt{2}\,r/\lambda}\right)
 \right].
 \label{eq:leading_yukawa_em}
 \end{equation}
+Here \(q_{\rm src}\) is a fixed source label; for an elementary defect branch in the
+canonically normalized brane packaging one may identify
+\(q_{\rm src}=q_{\rm eff}=\eta_Q e_{\rm eff}\).
 
 \paragraph{Brane interpretation.}
 For \(r\gg \lambda\), brane observers see ordinary Coulomb behavior with coupling
@@ -4925,6 +4955,11 @@ When \(\lambda\) changes, both the effective Maxwell coupling and KK masses chan
 \qquad
 m_n^2(\lambda)=\frac{2n}{\lambda^2}.
 \end{equation}
+Equivalently, in a canonically normalized brane packaging one may write
+\(q_{\rm eff}(\lambda)=q_*/\sqrt{\Zint(\lambda)}\) for a fixed microscopic branch
+charge \(q_*=\eta_Q e_*\). Thus changing \(\lambda\) repackages the reduced brane
+coupling and the KK spectrum, but it does not make the underlying branch sign or
+the fixed microscopic charge \(q_*\) itself vary.
 In a \(\text{3D}\times\text{modes}\) code, this means the diagonal mode operator
 \((\square_4+m_n^2)\) acquires a time-dependent mass term. If \(\lambda(t)\) varies slowly
 relative to the EM wave timestep, this is straightforward to implement as a time-dependent

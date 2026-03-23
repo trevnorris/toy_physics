@@ -31,10 +31,16 @@
 \newcommand{\dd}{\mathrm d}
 \newcommand{\ii}{\mathrm i}
 \newcommand{\ee}{\mathrm e}
+\newcommand{\etaQ}{\eta_Q}
+\newcommand{\qstar}{q_*}
+\newcommand{\estar}{e_*}
+\newcommand{\qeff}{q_{\mathrm{eff}}}
+\newcommand{\eeff}{e_{\mathrm{eff}}}
 
 \newcommand{\R}{\mathbb R}
 \newcommand{\X}{\mathbf X}
 \newcommand{\x}{\mathbf x}
+\newcommand{\Qgeom}{\mathbf Q_{\geom}}
 \newcommand{\pvec}{\mathbf p}
 \newcommand{\vct}{\mathbf v}
 \newcommand{\nvec}{\mathbf n}
@@ -92,24 +98,24 @@ from the Unified 4D Toy Model}
 \maketitle
 
 \begin{abstract}
-This draft skeleton is organized to mirror the successful structure of the
-\(1\)PN assembly paper while keeping the main text focused on the proof of the
-full conservative two-body \(2\)PN result.  The intended derivation chain is:
-(i) exact carry-forward of the earlier 4D projection / Poisson-hook / worldtube
-reduction logic and of the frozen Newtonian+\(1\)PN ledger,
-(ii) closure of the one-body missing \(2\)PN slot by a minimal \(\DtN\)-invariant
-conservative denominator that preserves the already-fixed \(1\)PN coefficient,
-(iii) construction of the self/static \(2\)PN sector from minimal Bernoulli
-exactification and quadratic local mass scaling,
-(iv) a unique comparable-mass \(\ADM\) lift of the remaining residual cross block,
-and finally
-(v) exact assembly of the full conservative two-body \(2\)PN candidate and its
-exact match to the generic-frame \(\ADM\) target within the stated closure
-hierarchy.  All constructive throat-response material beyond what is needed for
-this proof is collected in appendices: tensor-wake packaging, the
-\(P_0\oplus P_2\) mouth-port layer, support-minus-closure EFT, minimal
-irreducible-channel throat operators, \(\DtN\) scaffolding, Family-1 soft-wall
-reductions, and the final coupled response module.
+We present a controlled derivation of the full conservative two-body second
+post-Newtonian (\(\TwoPN\)) sector from the unified \(4\)D toy model.  Carrying
+forward the exact projection / Poisson-hook / worldtube reduction logic and the
+already-fixed Newtonian+\(\OnePN\) ledger, we close the missing one-body
+\(\TwoPN\) response slot by a minimal \(\DtN\)-invariant denominator that
+preserves the frozen \(\OnePN\) coefficient and reproduces the isotropic
+Schwarzschild test-mass target through \(\TwoPN\).  Minimal Bernoulli
+exactification and quadratic local mass scaling then supply the self/static
+\(\TwoPN\) seed, with the pure-static isotropic gate fixing
+\(\lambda_\rho=\tfrac12\).  The remaining comparable-mass mismatch against the
+generic-frame \(\ADM\) target collapses to a finite algebraic residual with a
+unique solution for the added cross-sector coefficients \(\{q_i,t_i,s_1\}\).
+After assembly, the full reduced two-body Lagrangian Legendre-transforms
+exactly to the standard generic-frame conservative \(\ADM\) Hamiltonian through
+\(\TwoPN\).  The paper therefore gives a full conservative \(\TwoPN\)
+derivation within a declared closure hierarchy, while the appendices preserve
+the broader throat-response constructions and the remaining dynamic
+\(\DtN\)/PDE observables.
 \end{abstract}
 
 % ============================================================
@@ -154,6 +160,21 @@ In the $4$D framework, projection is not a harmless relabeling; it naturally pro
 That makes the separation between exact carry-forward facts, reduced-regime statements, protocol-dependent closures, and final assembled equalities especially important at $2$PN.
 The reader should be able to see, line by line, which parts of the derivation are inherited exactly, which parts depend on a declared low-frequency or small-body hierarchy, and which parts represent the minimal new closure input required to finish the conservative proof.
 That separation is part of the result.
+
+This paper is also downstream of the corrected Paper~7 / Paper~8 matter--gauge
+ontology. Electric-charge sign is the fixed topological puncture orientation
+\(\etaQ=\pm1\), the microscopic branch coupling is \(\qstar=\etaQ\estar\) with
+\(\estar>0\), and the canonically normalized brane charge is
+\(\qeff=\qstar/\sqrt{Z_{\rm int}}=\etaQ\eeff\), where
+\(Z_{\rm int}\equiv\int Z(w)\,\dd w\), with
+\(\eeff=\estar/\sqrt{Z_{\rm int}}\). Quantized circulation belongs to the
+magnetic/vortical sector rather than the electric-charge dictionary, and the
+zero-mode Maxwell reduction
+\((A_w\approx0,\ \partial_w A_\mu\approx0,\ J^w\approx0,\ F_{\mu w}\approx0)\)
+is used here only as a controlled far-field brane limit. Separately, the
+scalar Newtonian mass-dressing coefficient historically denoted \(q\) in pre-4D
+gravity bookkeeping is not electric charge; in the present downstream notation
+it is written \(\krho\), fixed by Newtonian matching to \(\krho=1\).
 
 \subsection{What this paper claims}
 \label{sec:intro-claims}
@@ -399,7 +420,11 @@ J=\left(\frac{4}{\sqrt5},\frac54,0,0,0,0\right),
 \qquad
 \Delta_{\geom}=\frac{281}{80},
 \]
-which packages the new conservative cross content into a carried odd dipole backbone, a new even $P_0\oplus P_2$ support layer, and a pure-$U$ geometry-closure channel. What remains open are the dynamical pole scales
+where \(J\) is an appendix-side throat-response source-weight vector rather than
+an electromagnetic current. This ledger packages the new conservative cross
+content into a carried odd dipole backbone, a new even $P_0\oplus P_2$ support
+layer, and a pure-$U$ geometry-closure channel. What remains open are the
+dynamical pole scales
 \[
 \Omega_{1\perp},\ \Omega_{10},\ \Omega_0,\ \Omega_{20},\ \Omega_{21},\ \Omega_{22},\ \Omega_g,
 \]
@@ -429,6 +454,14 @@ The point of the present paper is to keep those moves separate. In particular, t
 \(\TwoPN\) calculation is not permitted to retune the already-proved \(\OnePN\) answer.
 Any acceptable \(\TwoPN\) completion must reduce to the same Newtonian and \(\OnePN\)
 ledger when the \(c^{-4}\) block is switched off.
+
+The notation carried forward here is also downstream of the corrected
+matter--gauge stack. Electric charge does not enter the main conservative
+\(\TwoPN\) proof; when it is named explicitly it follows the corrected
+\((\etaQ,\qstar,\qeff)\) ontology above. The residual-basis coefficients
+\(q_i\) used later are simply \(\ADM\)-lift coefficients, and the historical
+gravity-side scalar coefficient once written as bare \(q\) is written here as
+\(\krho\), fixed by Newtonian matching to \(\krho=1\).
 
 \subsection{What is imported without rederivation}
 \label{sec:carry-forward-import}
@@ -580,8 +613,8 @@ the fixed lower-order input to every \(\TwoPN\) statement below.
 
 It is useful to record explicitly which lower-order facts are now being treated as
 settled.
-Newtonian matching fixed the scalar mass-dressing exponent to
-\(q=1\).
+Newtonian matching fixed the scalar mass-dressing coefficient to
+\(\krho=1\) (historically \(q=1\) in earlier gravity-side bookkeeping).
 Weak-field optical consistency fixed the barotropic exponent to
 \(n=5\).
 Wave-supported free kinematics fixed the quartic kinetic coefficient to \(1/8\).
@@ -608,7 +641,7 @@ regression at lower order. And the comparable-mass residual solve is performed w
 \(L_0\) and \(L_1\) held exactly fixed from the start.
 
 \claimclass{\Controlled{} for the carried small-body reduction and for the lower-order
-fixing of \(q=1\) and \(n=5\). \Protocol{} for the already-declared adiabatic response
+fixing of \(\krho=1\) and \(n=5\). \Protocol{} for the already-declared adiabatic response
 input \(\kappa_{\rm PV}=3/2\), and therefore for the carried value
 \(\beta_{\OnePN}=3\). \FullMatch{} for the statement that
 \(L_0+c^{-2}L_1\) is already exactly the standard conservative two-body \(\EIH\)
@@ -1759,8 +1792,6 @@ outputs of the present \(\TwoPN\) derivation.
 The lower-order ledger remains frozen throughout the paper.
 In particular,
 \begin{equation}
-q=1,
-\qquad
 \krho=1,
 \qquad
 n=5,
@@ -1948,6 +1979,8 @@ so that
 J\cdot J=\frac{381}{80}.
 \label{eq:status-fixed-JdotJ}
 \end{equation}
+Here \(J\) is the appendix-side throat-response source-weight vector, not a
+Maxwell current.
 Because the exact solved static cross coefficient is only \(5/4\), the direct closure
 term is fixed to the deficit
 \begin{equation}
@@ -2075,7 +2108,7 @@ quantities entering the present \(\TwoPN\) paper.
     \toprule
     Quantity & Status & Comments \\
     \midrule
-    \(q=\krho=1\), \(n=5\) & fixed carry-forward & Newtonian and optical lower-order backbone \\
+    \(\krho=1\), \(n=5\) & fixed carry-forward & Newtonian and optical lower-order backbone; historical gravity-side \(q=1\) is now written \(\krho=1\) \\
     \(\kadd=1/2\), \(C_\parallel=-7/2\), \(C_L=-1/2\) & fixed carry-forward & frozen topology/wake data from the \(\OnePN\) program \\
     \(\kPV=3/2\), \(\beta_{\OnePN}=3\) & protocol-fixed carry-forward & adiabatic one-DOF breathing closure \\
     \(g_1=57/64\) & protocol-fixed carry-forward & breathing slope used in the one-body \(\TwoPN\) closure \\
@@ -2169,7 +2202,7 @@ compact executable \(\TwoPN\) harness, and the symbolic \(\TwoPN\) derivation le
     \nolinkurl{4d_full_1pn_derivation_with_vectorwake.wl}
     &
     Inherited \(\OnePN\) referee suite.  Freezes the lower-order backbone used unchanged
-    in the present paper: Newtonian coupling \(q=1\), optical matching \(n=5\),
+    in the present paper: Newtonian mass-dressing coefficient \(\krho=1\), optical matching \(n=5\),
     \(\kadd=1/2\), the adiabatic \(\kPV=3/2\) closure, \(\beta_{\OnePN}=3\), the
     parity-even wake coefficients, and the exact conservative EIH equality.
     &
@@ -2231,7 +2264,7 @@ checks naturally fall into five groups.
 Before any \(\TwoPN\) step is accepted, the carried lower-order ledger is rechecked.
 The executable archive verifies, among other items,
 \begin{equation}
-q=1,
+\krho=1,
 \qquad
 n=5,
 \qquad
@@ -2714,8 +2747,8 @@ literal definitions, which are reduction conventions, and which are claim-class 
     \(H_0,H_1,H_2\) & corresponding Hamiltonian blocks after perturbative Legendre transform \\
     \(\ADM\), \(\EIH\), \(\Schw\), \(\DtN\) & standard abbreviations used throughout the paper \\
     \(C_s(u),G(u)\) & normalized low-frequency one-body \(\DtN\) invariants \\
-    \(q_i,t_i,s_1\) & solved coefficients of the added comparable-mass \(\TwoPN\) cross block \\
-    \(R_{1\perp},R_{10},R_0,R_{20},R_{21},R_{22},J,\Delta_{\geom}\) & appendix-side zero-frequency throat-response data \\
+    \(q_i,t_i,s_1\) & solved \(\ADM\)-lift coefficients of the added comparable-mass \(\TwoPN\) cross block; unrelated to electric charge \\
+    \(R_{1\perp},R_{10},R_0,R_{20},R_{21},R_{22},J,\Delta_{\geom}\) & appendix-side zero-frequency throat-response data; \(J\) here is a throat-response source-weight vector, not a Maxwell current \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -2870,6 +2903,8 @@ pure-potential geometry-closure deficit, and
 \end{equation}
 for the corresponding dynamical pole scales.  These quantities are used only in the
 appendix-side constructive program and are not needed to read the main \(\TwoPN\) proof.
+In particular, the symbol \(J\) in this appendix notation is a throat-response
+source-weight vector rather than a Maxwell current.
 
 \subsection{Claim-class labels}
 \label{app:notation-claims}
@@ -3104,7 +3139,7 @@ reduced scalar/optical worldline ansatz
 \begin{equation}
 L_{\rm sc}
 =
--M_0\left(1+q\,\frac{\Phi_N}{c^2}\right)c^2
+-M_0\left(1+\krho\,\frac{\Phi_N}{c^2}\right)c^2
 \sqrt{1-
 \frac{v^2/c^2}{1+(n-1)\Phi_N/c^2}}.
 \label{eq:app-cf-scalar-optical-ansatz}
@@ -3112,19 +3147,19 @@ L_{\rm sc}
 Its weak-field expansion is
 \begin{align}
 L_{\rm sc}
-={}&-M_0c^2-qM_0\Phi_N+\frac12M_0v^2+\frac18M_0\frac{v^4}{c^2}
+={}&-M_0c^2-\krho M_0\Phi_N+\frac12M_0v^2+\frac18M_0\frac{v^4}{c^2}
 \nonumber\\
-&+M_0\left(\frac q2-\frac{n-1}{2}\right)\frac{\Phi_N v^2}{c^2}+O(c^{-4}).
+&+M_0\left(\frac{\krho}{2}-\frac{n-1}{2}\right)\frac{\Phi_N v^2}{c^2}+O(c^{-4}).
 \label{eq:app-cf-scalar-optical-expansion}
 \end{align}
 Newtonian matching fixes
 \begin{equation}
-q=1,
-\qquad
 \kappa_\rho=1,
-\label{eq:app-cf-q-krho}
+\label{eq:app-cf-krho}
 \end{equation}
-while weak-field optical consistency for the polytropic equation of state
+where \(\krho\) is the historical gravity-side scalar mass-dressing coefficient
+rather than an electric charge.
+Weak-field optical consistency for the polytropic equation of state
 \begin{equation}
 P(\rho)=K_{\rm EOS}\rho^n
 \label{eq:app-cf-polytrope}
@@ -3146,10 +3181,10 @@ so the frozen \(\OnePN\) Lagrangian coefficient of \(v^4\) is \(1/8\).
 
 The mixed coefficient in \cref{eq:app-cf-scalar-optical-expansion} is
 \begin{equation}
-\mathcal C_{\rm self}=\frac q2-\frac{n-1}{2}.
+\mathcal C_{\rm self}=\frac{\krho}{2}-\frac{n-1}{2}.
 \label{eq:app-cf-Cself-def}
 \end{equation}
-Using \cref{eq:app-cf-q-krho,eq:app-cf-n-five} gives
+Using \cref{eq:app-cf-krho,eq:app-cf-n-five} gives
 \begin{equation}
 \mathcal C_{\rm self}=\frac12-2=-\frac32.
 \label{eq:app-cf-Cself-value}
@@ -5373,6 +5408,8 @@ For a positive support channel \(q\) with body sources \(S_A,S_B\), use
 L_q=-\frac12 q^2+q(S_A+S_B).
 \label{eq:mouth-port-aux-positive}
 \end{equation}
+Here the auxiliary variable \(q\) is a local EFT support channel and is unrelated
+to electric charge or to the gravity-side coefficient \(\krho\).
 Eliminating \(q\) gives the cross term \(+S_AS_B\).
 For the negative closure channel \(g\) with sources \(C_A,C_B\), use
 \begin{equation}
@@ -6029,7 +6066,8 @@ This is exactly the basis generated by the carried Family-1 flare profile
 a(z)=a_0\Bigl(1+\beta e^{-z^2/z_m^2}\Bigr).
 \label{eq:family1-flare-profile}
 \end{equation}
-Near the mouth center, with \(a_m=a(0)\) and suitable dimensionless \(q,r\), one has
+Near the mouth center, with \(a_m=a(0)\) and suitable dimensionless
+\(q,r\) that are purely flare-shape coefficients rather than charges, one has
 \begin{equation}
 \frac{a(z)}{a_m}=1-q\mu^2+r\mu^4+O(\mu^6).
 \label{eq:family1-flare-mu-expansion}
@@ -6841,8 +6879,8 @@ auxiliary was already a good static reduction.
 
 To dynamize the static compressibility, use the dimensionless geometry variables
 \begin{equation}
-q=\left(\frac{\delta a}{a_0},\frac{\delta L}{a_0}\right)
-\label{eq:geom-breathing-qvars}
+\Qgeom=\left(\frac{\delta a}{a_0},\frac{\delta L}{a_0}\right)
+\label{eq:geom-breathing-Qgeom-vars}
 \end{equation}
 and the minimal affine displacement field inside the cylinder-like throat,
 \begin{equation}
@@ -6856,7 +6894,7 @@ exactly the form
 \begin{equation}
 T^{(2)}
 =
-\frac12\rho_{\rm eff}V_0a_0^2\,\dot q^T\widehat M\,\dot q,
+\frac12\rho_{\rm eff}V_0a_0^2\,\dot{\Qgeom}^{T}\widehat M\,\dot{\Qgeom},
 \qquad
 \widehat M=
 \begin{pmatrix}
@@ -6867,7 +6905,7 @@ T^{(2)}
 \end{equation}
 The corresponding quadratic energy is
 \begin{equation}
-E^{(2)}=\frac12\Sigma\,q^T\widehat H\,q,
+E^{(2)}=\frac12\Sigma\,\Qgeom^{T}\widehat H\,\Qgeom,
 \qquad
 \widehat H\equiv \frac{a_0^2}{\Sigma}H_0.
 \label{eq:geom-breathing-E2-Hhat}
@@ -7380,6 +7418,8 @@ J=\left(\frac{4}{\sqrt5},\frac54,0,0,0,0\right),
 \Delta_{\rm geom}=\frac{281}{80}.
 \label{eq:family1-final-J-deltageom}
 \end{equation}
+Again, \(J\) denotes the appendix-side throat-response source-weight vector, not a
+Maxwell current.
 Thus
 \begin{equation}
 J\!\cdot\!J

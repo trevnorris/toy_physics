@@ -56,8 +56,11 @@ Print[""];
 
 (* --- Parameters & assumptions --- *)
 $Assumptions = {
-  Element[{m, q, hbar}, Reals], m > 0, hbar > 0
+  Element[{m, qStar, hbar, eStar, etaQ}, Reals], m > 0, hbar > 0, eStar > 0, etaQ^2 == 1
 };
+
+Print["Charge/source bookkeeping: qStar = etaQ * eStar and Jpsi^mu = qStar * j^mu."]; 
+Print["Interpretation: this brane matter model is a representative localized-defect / background-neutralization closure.\n"]; 
 
 (* Potential: generic function of rho; remains symbolic. *)
 Ufun[r_] := UfunSym[r];
@@ -68,17 +71,17 @@ DxI[e_]  := Inactive[D][e, x];
 DyI[e_]  := Inactive[D][e, y];
 DzI[e_]  := Inactive[D][e, z];
 
-DtPsiI[e_]  := DtI[e] + I*(q/hbar)*A0b*e;
-DtPsiCI[e_] := DtI[e] - I*(q/hbar)*A0b*e;
+DtPsiI[e_]  := DtI[e] + I*(qStar/hbar)*A0b*e;
+DtPsiCI[e_] := DtI[e] - I*(qStar/hbar)*A0b*e;
 
-DxPsiI[e_]  := DxI[e] - I*(q/hbar)*Axb*e;
-DxPsiCI[e_] := DxI[e] + I*(q/hbar)*Axb*e;
+DxPsiI[e_]  := DxI[e] - I*(qStar/hbar)*Axb*e;
+DxPsiCI[e_] := DxI[e] + I*(qStar/hbar)*Axb*e;
 
-DyPsiI[e_]  := DyI[e] - I*(q/hbar)*Ayb*e;
-DyPsiCI[e_] := DyI[e] + I*(q/hbar)*Ayb*e;
+DyPsiI[e_]  := DyI[e] - I*(qStar/hbar)*Ayb*e;
+DyPsiCI[e_] := DyI[e] + I*(qStar/hbar)*Ayb*e;
 
-DzPsiI[e_]  := DzI[e] - I*(q/hbar)*Azb*e;
-DzPsiCI[e_] := DzI[e] + I*(q/hbar)*Azb*e;
+DzPsiI[e_]  := DzI[e] - I*(qStar/hbar)*Azb*e;
+DzPsiCI[e_] := DzI[e] + I*(qStar/hbar)*Azb*e;
 
 rho = psiC*psi;
 
@@ -163,9 +166,9 @@ Print["\nNoether spatial current j = {jx,jy,jz} ="]; Print[{jxN, jyN, jzN} // Tr
 rhoExpected = rho;
 
 jExpected = {
-  (hbar/(2*I*m)) (psiC*D[psi, x] - psi*D[psiC, x]) - (q/m)*Axb*rho,
-  (hbar/(2*I*m)) (psiC*D[psi, y] - psi*D[psiC, y]) - (q/m)*Ayb*rho,
-  (hbar/(2*I*m)) (psiC*D[psi, z] - psi*D[psiC, z]) - (q/m)*Azb*rho
+  (hbar/(2*I*m)) (psiC*D[psi, x] - psi*D[psiC, x]) - (qStar/m)*Axb*rho,
+  (hbar/(2*I*m)) (psiC*D[psi, y] - psi*D[psiC, y]) - (qStar/m)*Ayb*rho,
+  (hbar/(2*I*m)) (psiC*D[psi, z] - psi*D[psiC, z]) - (qStar/m)*Azb*rho
 };
 
 Print["\nCheck j0 - rhoExpected (should be 0):"]; 
@@ -209,13 +212,14 @@ Print["\n----------------------------------------\n"];
 (* --- Charge current used as Maxwell source (project convention) --- *)
 Print["--- Charge current used as Maxwell source ---"]; 
 
-J0 = q*j0N;
-Jvec = q*{jxN, jyN, jzN};
+J0 = qStar*j0N;
+Jvec = qStar*{jxN, jyN, jzN};
 
-Print["J0 = q * j0 ="]; Print[J0 // TraditionalForm];
-Print["\nJvec = q * j ="]; Print[Jvec // TraditionalForm];
+Print["Jpsi^0 = qStar * j0 ="]; Print[J0 // TraditionalForm];
+Print["\nJpsi^vec = qStar * j ="]; Print[Jvec // TraditionalForm];
 
-Print["\nCharge continuity:  \[PartialD]_t J0 + \[Del]\[CenterDot]J = q (\[PartialD]_t j0 + \[Del]\[CenterDot]j).\n"]; 
+Print["\nCharge continuity:  \[PartialD]_t Jpsi^0 + \[Del]\[CenterDot]Jpsi = qStar (\[PartialD]_t j0 + \[Del]\[CenterDot]j).\n"]; 
+Print["Background-neutralization, when needed, belongs in Jext^0 rather than in a fluctuating qStar.\n"]; 
 
 Print["========== End add-on v6 (matter current) =========="];
 

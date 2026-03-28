@@ -1,0 +1,2457 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdftitle={Finite-Throat Atomic Response, P22 Mouth Modes, and a Conditional Same-Charge Corridor},
+  pdfauthor={Author Name(s)}
+}
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{topsep=0.3em,itemsep=0.2em,leftmargin=1.5em}
+\setlist[enumerate]{topsep=0.3em,itemsep=0.2em,leftmargin=1.8em}
+
+% ---------- theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------- status tags ----------
+\newcommand{\statusInherited}{\textsc{Inherited input}}
+\newcommand{\statusReduced}{\textsc{Reduced derivation}}
+\newcommand{\statusConditional}{\textsc{Conditional import}}
+\newcommand{\statusDeferred}{\textsc{Deferred}}
+\newcommand{\claimstatus}[1]{\par\smallskip\noindent\textbf{Status:} #1\par\smallskip}
+
+% ---------- notation firewall ----------
+\newcommand{\Ptwotwo}{P_{22}}
+\newcommand{\Rth}{R_{\mathrm{th}}}
+\newcommand{\Lth}{L_{\mathrm{th}}}
+\newcommand{\aorb}{a_{\mathrm{orb}}}
+\newcommand{\nuB}{\nu_{\mathrm{B}}}
+\newcommand{\epsell}{\varepsilon_{\mathrm{ell}}}
+\newcommand{\throt}{\vartheta}
+\newcommand{\thmouth}{\theta_m}
+\newcommand{\qeff}{q_{\mathrm{eff}}}
+\newcommand{\qstar}{q_*}
+\newcommand{\Zint}{Z_{\mathrm{int}}}
+\newcommand{\alphawake}{\alpha_{\mathrm{wake}}}
+\newcommand{\alphafs}{\alpha_{\mathrm{fs}}}
+\newcommand{\betapn}{\beta_{\mathrm{1PN}}}
+\newcommand{\kappaadd}{\kappa_{\mathrm{add}}}
+\newcommand{\kappapv}{\kappa_{\mathrm{PV}}}
+\newcommand{\kappaq}{\kappa_q}
+\newcommand{\kappam}{\kappa_m}
+\newcommand{\kapparho}{\kappa_{\rho}}
+\newcommand{\Order}[1]{\mathcal{O}\!\left(#1\right)}
+
+% ---------- title data ----------
+\title{Finite-Throat Atomic Response, \texorpdfstring{$\Ptwotwo$}{P22} Mouth Modes,\\ and a Conditional Same-Charge Corridor in a 4D Superfluid Defect Model}
+\author{Author Name(s)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% TODO: Replace with a 150--220 word abstract written directly from Table~\ref{tab:claim-status}.
+We study a scoped sector of the 4D superfluid defect program in which four ingredients are kept central: a controlled hydrogenic reduction, finite-throat atomic response, emergence of the real quadrupolar mouth mode \(\Ptwotwo\), and a conditional same-charge internal corridor. The paper is organized to separate inherited inputs, reduced derivations, and conditional imports. The main reduced-sector claims are that the existing action supports a hydrogenic variational minimum with the expected reduced-mass structure, that finite throat size turns the first shape-sensitive atomic load into a regular tidal/Hessian problem, and that centering plus area preservation selects the first driven non-axisymmetric mouth response into the real \(\Ptwotwo\) sector. The lepton-side result is presented only in conditional form: adopting the half-flux/autonomous-eigenmode closure from the earlier audit, the mixed core supports an intrinsic quadrupole bracing channel and a protected reduced doublet. Tree-level \(g=2\), anomaly corrections, and the local transport hierarchy are explicitly deferred to follow-up work.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Localized charged defects in the 4D superfluid defect model admit two complementary descriptions. Far from the defect core, a controlled brane-effective reduction yields a Coulomb-dominated binding sector. Near the core, however, each defect retains a finite throat geometry with a mouth, an interior support channel, and dormant mixed modes that are invisible in the strict point-defect picture. A point-source treatment is therefore sufficient for the existence of a hydrogenic sector, but it is not sufficient for the first genuinely shape-sensitive correction. The aim of this paper is to isolate the smallest sector in which the far-field atomic reduction and the finite-throat geometric response must be treated together.
+
+The first structural claim is that the inherited reduction hierarchy already supports a hydrogenic bound-state problem in which the Bohr-scale length appears as a variational minimum of the reduced action, with the expected two-body reduced-mass structure. In the present framework, that matters because it fixes a clean long-distance atomic sector without inserting Bohr quantization by hand. The second structural claim is that once the bound defect is allowed to have finite throat size, the first active shape-sensitive load is tidal rather than scalar: it is governed by the Hessian of the partner field across the mouth, not by the raw potential value at a point. This immediately changes the short-distance problem. The apparent point-source divergence is replaced by a regular finite-core response, and the relevant mouth forcing lives in a \(P_0 \oplus P_2\) sector.
+
+Within that response hierarchy, centering and area preservation pick out the first driven real non-axisymmetric mouth mode. The result is the quadrupolar deformation \(\Ptwotwo\), conveniently represented as an area-preserving ellipse. This is the main atomic result of the paper, but it also has a second role. In the same model, the only viable same-charge internal corridor identified so far is a mixed-sector core carrying an internal rotor. What that corridor lacks on its own is a real static \(m=2\) splitter capable of turning a continuous internal phase into a protected two-state package. The finite-throat atomic analysis identifies the first concrete source of exactly such a splitter: a static \(\Ptwotwo\) mouth background.
+
+This paper is therefore organized around one message: finite-throat atomic response does not merely correct a hydrogenic calculation; it reveals the first non-axisymmetric mouth sector and thereby furnishes the missing geometric ingredient for a conditional same-charge doublet. The bridge to the same-charge corridor is stated conservatively. We import only the half-flux/autonomous-eigenmode closure needed to keep the mixed core on its minimal branch, and we treat the resulting protected doublet as a conditional reduced-sector consequence rather than as a theorem of the fully solved moving-throat problem.
+
+\subsection{Main results}\label{subsec:intro-results}
+
+The main results may be summarized as follows.
+\begin{enumerate}
+  \item Within the declared reduction hierarchy, the parent 4D action admits a controlled hydrogenic sector whose variational minimum reproduces the expected Bohr-scale length and two-body reduced-mass structure.
+  \item Finite throat size converts the first atomic shape response into a regular tidal/Hessian problem and removes the spurious short-distance singularity of the point-Hessian approximation.
+  \item Centering and area preservation force the first driven non-axisymmetric mouth response into the real quadrupolar sector \(\Ptwotwo\).
+  \item If the half-flux/autonomous-eigenmode closure is adopted as a conditional import, then the same \(m=2\) sector supplies a static splitter for the mixed same-charge core and supports a protected reduced doublet.
+\end{enumerate}
+
+\subsection{Scope and non-claims}\label{subsec:intro-boundary}
+
+The claims of this paper are deliberately limited. We work within an explicit hierarchy built from inherited inputs, controlled reductions, and a single conditional import on the same-charge side. We do not claim a complete solution of the full moving-throat PDE, a full charged-lepton theorem, tree-level \(g=2\), the anomaly ladder, or a complete transport/dissipation analysis of the isolated core. Those topics require additional closure steps and are deferred. The purpose of the present paper is narrower and sharper: to establish the finite-throat atomic quadrupole sector cleanly enough that its bridge to the protected same-charge corridor can be stated without overclaiming.
+
+\subsection{Organization of the paper}\label{subsec:intro-roadmap}
+
+Section~\ref{sec:frozen} states the inherited inputs, the reduction domain, the notation firewall, and the claim-status taxonomy used throughout the paper. Section~\ref{sec:hydrogenic} develops the hydrogenic reduced sector and its variational minimum. Section~\ref{sec:finite-response} derives the finite-throat tidal response, the core-resolved regulator, and the emergence of the \(\Ptwotwo\) mouth mode. Section~\ref{sec:corridor} compresses the same-charge audit to the only live mixed-sector corridor and states the conditional closure imported there. Section~\ref{sec:bridge} builds the atomic-to-lepton bridge by showing how the finite-throat \(\Ptwotwo\) sector supplies the missing splitter for the mixed core. Section~\ref{sec:discussion} summarizes what is established, what remains conditional, and what is deferred.
+
+\begin{figure}[t]
+    \centering
+    \fbox{\rule{0pt}{1.8in}\rule{0.92\linewidth}{0pt}}
+    \caption{Placeholder for the reduction-map figure: parent 4D action \(\to\) hydrogenic sector \(\to\) finite-throat response \(\to\) \(\Ptwotwo\) bridge \(\to\) conditional protected doublet.}
+    \label{fig:reduction-map}
+\end{figure}
+
+\section{Frozen prior inputs and reduction conventions}\label{sec:frozen}
+
+To keep the present paper readable and to prevent accidental claim inflation, we separate inherited inputs from new derivations at the outset. This section records the earlier results that are taken as fixed, states the reduction domain in which later arguments are to be read, fixes the claim-status labels used throughout the paper, and installs a notation firewall against symbol collisions with the earlier program.
+
+\subsection{Frozen inherited inputs}\label{subsec:frozen-inputs}
+
+Only the ingredients actually used below are carried forward. In particular, the electric branch data are fixed by
+\begin{equation}
+q_* = \eta_Q e_*,
+\qquad
+\eta_Q\in\{+1,-1\},
+\qquad
+q_{\rm eff}=\frac{q_*}{\sqrt{Z_{\rm int}}},
+\qquad
+Z_{\rm int}=\int Z(w)\,dw,
+\label{eq:frozen-charge-ledger}
+\end{equation}
+so that charge sign is topological while observable Coulomb strength is controlled by localization. The working inherited ledger is summarized in Table~\ref{tab:frozen-inputs}.
+
+\begin{table}[t]
+\centering
+\caption{Frozen inputs carried forward into the present paper. Only quantities actually used later are listed.}
+\label{tab:frozen-inputs}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth} >{\raggedright\arraybackslash}p{0.28\textwidth} X@{}}
+\toprule
+Input & Fixed statement & Role in this paper \\
+\midrule
+Electric branch sign & $\eta_Q=\pm1$, with $q_*=\eta_Q e_*$ & Fixes charge-sign bookkeeping independently of circulation or throat-breathing variables. \\
+Observable electric coupling & $q_{\rm eff}=q_*/\sqrt{Z_{\rm int}}$, with $Z_{\rm int}=\int Z(w)\,dw$ & Sets the reduced Coulomb strength used in the hydrogenic sector. \\
+Localization/profile notation & $Z(w)$ is the localization profile and $W(w)$ is the projection kernel & Keeps thickness/localization and observational projection distinct. \\
+Circulation/winding dictionary & $n_\Gamma$ belongs to the magnetic/vortical sector, not to the electric-charge definition & Prevents later atomic or same-charge arguments from silently re-identifying charge with circulation. \\
+Gravity-side scalar ledger & $\kappa_{\rho}=1$ & Historical bare $q=1$ from the gravity ledger is renamed $\kappa_{\rho}$ and is \emph{not} electric charge. \\
+Equation-of-state exponent & $n=5$ & Frozen background material law inherited from the earlier weak-field sector. \\
+Conservative 1PN ledger & $\kappa_{\rm add}=\tfrac12$, $\kappa_{\rm PV}=\tfrac32$, $\beta_{\rm 1PN}=3$ & Inherited low-order coefficients carried forward without re-derivation. \\
+Wake/vector sector & $\alpha_{\rm wake}^2=\tfrac34$, $a_H=0$, $K_{\rm vec}=2/\pi^2$ & Reserved notation and carried-forward dipole/wake response data. \\
+Throat geometry scale & $L_{\rm th}/R_{\rm th}\approx 1.85$ when geometric estimates are needed & Sets the inherited aspect-ratio scale for finite-throat comparisons. \\
+2PN support hierarchy & Genuine $P_0\oplus P_2$ mouth/support layer plus a separate geometry-closure channel & Supplies the prior structural motivation for a finite-throat atomic response theory. \\
+Mixed channels in the microscopic ontology & $A_w$, $J^w$, $F_{\mu w}$, and $F_{aw}$ are suppressed only in the controlled far-field brane reduction, not erased from the ontology & Keeps the mixed same-charge corridor available when internal structure is reintroduced. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two points in Table~\ref{tab:frozen-inputs} deserve emphasis. First, electric sign is carried by the topological branch label $\eta_Q$, while circulation and winding belong to the magnetic/vortical dictionary. Second, the historical gravity-side scalar coefficient once written as a bare $q$ is written here as $\kappa_{\rho}$ in order to make it impossible to confuse gravitational mass dressing with electric charge.
+
+\subsection{Reduction domain}\label{subsec:reduction-domain}
+
+The later sections are all to be read inside one declared reduction hierarchy.
+
+\begin{definition}[Reduction domain]
+The reduction domain used in this paper is the hierarchy in which
+\begin{enumerate}
+    \item the long-distance atomic sector is described by the lowest transverse/zero-mode brane reduction, so that the leading interaction is Coulombic with controlled short-range corrections;
+    \item finite throat size is retained whenever shape response is probed, so the partner defect is not replaced by a literal point source at mouth scale;
+    \item the bound-state response problem is treated in the quasi-static or adiabatic regime appropriate to the retained order, so that the mouth responds to an instantaneous tidal/Hessian load rather than to a fully solved radiative moving-throat PDE; and
+    \item the inherited 1PN and 2PN ledgers are used as frozen inputs rather than re-derived from a completed strong-field particle solution.
+\end{enumerate}
+\end{definition}
+
+This hierarchy separates two distinct approximations that should not be conflated. The hydrogenic reduction uses the far-field regime $r\gg R_{\rm th}$, where the lowest brane-visible Coulomb channel is sufficient. The finite-response analysis then relaxes the point-source approximation while still remaining within a reduced, quasi-static mouth-response theory. In particular, ``finite throat'' in this paper means that the defect retains a mouth and interior support structure on scales of order $R_{\rm th}$ and $L_{\rm th}$, even though the orbital motion is treated in a nonrelativistic reduced sector.
+
+\begin{remark}[Explicit non-claims]
+Nothing in the present paper should be read as a claim of a fully solved moving-throat bulk PDE, a complete dissipative or radiative closure, a full spinor transformation law, a full charged-lepton theorem, tree-level $g=2$, or the anomaly/transport ladder. Those questions require additional closure steps and are deferred.
+\end{remark}
+
+\subsection{Claim-status taxonomy}\label{subsec:claim-status}
+
+The paper uses four claim labels, summarized in Table~\ref{tab:claim-status}. The purpose of the taxonomy is simple: it prevents reduced-sector consequences from being mistaken for already-frozen exact theorems.
+
+\begin{table}[t]
+\centering
+\caption{Claim-status labels used throughout the paper.}
+\label{tab:claim-status}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} X@{}}
+\toprule
+Label & Meaning & Typical examples in this paper \\
+\midrule
+\textsc{Inherited input} & Carried forward from earlier parts of the program and used here without re-derivation & Charge ontology, localization-thickness coupling, frozen 1PN ledger, wake-sector constants, prior $P_0\oplus P_2$ support hierarchy. \\
+\textsc{Reduced derivation} & Derived directly within the present paper's declared reduction hierarchy & Hydrogenic variational minimum, reduced-mass upgrade, finite-throat tidal kernel, selection of the real $\Ptwotwo$ mouth mode. \\
+\textsc{Conditional import} & Imported from the same-charge audit subject to an explicit closure assumption & The mixed $(a\text{-}w)$ corridor as the only live same-charge route, and the half-flux/autonomous-eigenmode lock used later in the bridge section. \\
+\textsc{Deferred / open} & Not claimed in the present paper & Fully solved moving-throat particle dynamics, complete charged-lepton completion, tree-level $g=2$, anomaly corrections, and transport/radiation closure. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Whenever a result later in the paper depends on a conditional import, that dependence should be stated explicitly in the text rather than hidden in notation. In particular, the same-charge corridor and any half-flux lock used there remain conditional imports; the hydrogenic minimum and finite-throat $\Ptwotwo$ response do not.
+
+\subsection{Notation firewall}\label{subsec:notation-firewall}
+
+The earlier program reused several symbols for unrelated objects. Since the present paper draws simultaneously on the atomic, post-Newtonian, EM, and same-charge notes, those collisions must be blocked explicitly. Table~\ref{tab:notation-firewall} records the conventions adopted here.
+
+\begin{table}[t]
+\centering
+\caption{Notation firewall used in the present paper. The third column lists overloaded symbols that are intentionally avoided or tightly reserved.}
+\label{tab:notation-firewall}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.33\textwidth} >{\raggedright\arraybackslash}p{0.27\textwidth} X@{}}
+\toprule
+Meaning & Symbol used here & Symbol avoided or reserved \\
+\midrule
+Electric branch data & $\eta_Q$, $q_*$, $q_{\rm eff}$ & Avoid bare $q$ for anything except explicitly labeled electric charge. \\
+Gravity-side scalar coefficient & $\kappa_{\rho}$ & Historical bare $q=1$ from the Newtonian/1PN gravity ledger. \\
+Wake-mixing parameter & $\alpha_{\rm wake}$ & Reserved wake-sector symbol only; not to be reused elsewhere. \\
+Half-flux / Berry parameter (if introduced later) & $\nu_{\rm B}$ or $\alpha_{\rm top}$ & Never use naked $\alpha$ for the internal topological quantity. \\
+Fine-structure constant (only if needed later) & $\alpha_{\rm fs}$ & Keep separate from both $\alpha_{\rm wake}$ and any Berry/topological parameter. \\
+Mouth ellipticity & $\varepsilon_{\rm ell}$ & Avoid $\sigma$, which is overloaded elsewhere in the program. \\
+Mouth orientation angle & $\theta_m$ & Avoid reusing $\phi$ for the mouth axis. \\
+Internal rotor phase & $\vartheta$ & Avoid reusing $\phi$ or $\varphi$ for multiple angular variables. \\
+Throat radius / waist & $R_{\rm th}$ & Avoid bare $a$ when throat geometry is meant. \\
+Hydrogenic variational scale & $a_{\rm orb}$ & Avoid bare $a$ when the orbital scale is meant. \\
+Throat length & $L_{\rm th}$ & Avoid bare $L$ in places where it can be mistaken for angular momentum. \\
+Angular momentum & $J_z$ or $\ell_z$ & Avoid bare $L$ in the present paper. \\
+Localization profile vs.
+projection kernel & $Z(w)$ and $W(w)$ & Do not interchange these symbols; they refer to different inherited objects. \\
+Real quadrupole basis labels & $A,B$ & Avoid $\alpha,\beta$ as basis labels because $\alpha$ is already overloaded. \\
+First real non-axisymmetric mouth mode & $\Ptwotwo$ & Use this for the real $m=2$ mouth sector, not for complex spherical-harmonic notation. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These conventions are not cosmetic. They enforce the separation between electric branch data, inherited gravity bookkeeping, and later same-charge internal variables. With Tables~\ref{tab:frozen-inputs}--\ref{tab:notation-firewall} fixed, the later sections can be read unambiguously: hydrogenic reduction and finite-throat $\Ptwotwo$ response are reduced derivations, the same-charge corridor is a conditional import, and the magnetic/anomaly package lies outside the scope of the present paper.
+
+
+\section{Hydrogenic reduced sector}\label{sec:hydrogenic}
+
+This section isolates the long-distance atomic problem already supported by the frozen inputs and reduction rules of \cref{sec:frozen}. The purpose is narrow but substantive: within the declared reduction domain, the existing action stack already yields a controlled hydrogenic sector in which the orbital scale appears as a variational minimum of the reduced energy. No separate Bohr or de Broglie quantization rule is imposed. At the same time, the section is deliberately limited to the regime in which the interaction is dominated by the zero-mode Coulomb channel; finite-throat response is introduced only as a deferred correction and is developed in \cref{sec:finite-response}.
+
+\subsection{Lowest-mode brane reduction}\label{subsec:lowest-mode-reduction}
+
+Consider an opposite-charge pair in the far-field, zero-mode Maxwell regime of \cref{subsec:reduction-domain}. In a first fixed-source pass, the positive branch is treated as a heavy static source at the brane origin and the negative branch is treated dynamically. The reduction assumptions are the same ones used in the brane Maxwell sector:
+\begin{equation}
+A_w\approx 0,
+\qquad
+\partial_w A_\mu\approx 0,
+\qquad
+J^w\approx 0,
+\qquad
+F_{\mu w}\approx 0.
+\label{eq:hydrogenic-zero-mode-regime}
+\end{equation}
+On the matter side, the light branch is restricted to its lowest transverse mode,
+\begin{equation}
+\psi(\mathbf x,w,t)=\chi_0(w)\,\phi(\mathbf x,t),
+\qquad
+\int_{-\infty}^{\infty}|\chi_0(w)|^2\,dw=1.
+\label{eq:lowest-transverse-factorization}
+\end{equation}
+This is a dynamical reduction, not a mere observational projection: the profile $\chi_0(w)$ enters the reduced equation of motion, whereas the projection kernel $W(w)$ from \cref{subsec:notation-firewall} does not.
+
+Substituting \cref{eq:lowest-transverse-factorization} into the exact matter sector and integrating over the transverse coordinate produces two inherited reduced quantities,
+\begin{align}
+E_\perp
+&\equiv
+\int dw\,\chi_0^*(w)
+\left[-\frac{\hbar^2}{2m_-}\partial_w^2+V_{\rm conf}(w;\Rth,\Lth)\right]\chi_0(w),
+\label{eq:Eperp-def}
+\\[0.5ex]
+\Gamma_{10}
+&\equiv \int dw\,|\chi_0(w)|^{10},
+\label{eq:Gamma10-def}
+\end{align}
+where $m_-$ is the light-branch mass parameter. The first quantity is the transverse confinement offset; the second is the overlap factor that carries the inherited $n=5$ GNLS stiffness into the reduced brane theory.
+
+On the gauge side, the opposite-charge source produces the usual brane Coulomb zero mode together with its first even transverse correction. Writing the magnitude of the attractive Coulomb coefficient as $g_C>0$, the reduced static potential is
+\begin{equation}
+V_{\rm H}(r)
+=
+-\frac{g_C}{r}
+-\frac{g_C}{2r}e^{-2r/\lambda_Z}
++\Order{\frac{e^{-2\sqrt2\,r/\lambda_Z}}{r}},
+\label{eq:hydrogenic-potential}
+\end{equation}
+where $\lambda_Z$ is the localization-thickness scale of the EM zero mode. For equal-magnitude opposite branches,
+\begin{equation}
+g_C
+=
+\frac{\qeff^2}{4\pi\epsilon_0}
+=
+\frac{\qstar^2}{4\pi\epsilon_0 Z_{\rm int}},
+\qquad
+Z_{\rm int}=\int_{-\infty}^{\infty} Z(w)\,dw.
+\label{eq:gC-def}
+\end{equation}
+Thus the observable Coulomb strength is controlled by localization thickness rather than by the topological sign variable itself. For a Gaussian localization profile,
+\begin{equation}
+Z(w)=e^{-w^2/\lambda_Z^2},
+\qquad
+Z_{\rm int}=\lambda_Z\sqrt\pi,
+\qquad
+\qeff=\frac{\qstar}{\sqrt{\lambda_Z\sqrt\pi}}.
+\label{eq:gaussian-localization-law}
+\end{equation}
+
+The reduced one-body brane equation is therefore
+\begin{equation}
+i\hbar\partial_t\phi
+=
+\left[
+-\frac{\hbar^2}{2m_-}\nabla^2
++E_\perp
++V_{\rm H}(r)
++\frac{5K_{\rm GNLS}\Gamma_{10}}{4}|\phi|^8
+\right]\phi,
+\label{eq:hydrogenic-brane-equation}
+\end{equation}
+with $K_{\rm GNLS}$ the inherited stiff-matter coefficient from the parent GNLS sector.
+
+\begin{proposition}[Fixed-source hydrogenic reduction]\label{prop:fixed-source-hydrogenic}
+Within the reduction domain of \cref{subsec:reduction-domain}, the one-light/one-heavy opposite-charge sector reduces to the brane equation \cref{eq:hydrogenic-brane-equation}, with Coulomb strength given by \cref{eq:gC-def} and short-range corrections organized into the Yukawa tower of \cref{eq:hydrogenic-potential} and the inherited GNLS overlap factor \cref{eq:Gamma10-def}.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\subsection{Variational hydrogenic functional}\label{subsec:variational-hydrogenic-functional}
+
+To test whether the reduced sector supports a preferred orbital scale, normalize the brane field by
+\begin{equation}
+\int d^3x\,|\phi|^2=1
+\label{eq:phi-normalization}
+\end{equation}
+and use the standard $1s$-type trial state
+\begin{equation}
+\phi_{\aorb}(r)=\frac{1}{\sqrt{\pi\aorb^3}}e^{-r/\aorb},
+\qquad \aorb>0.
+\label{eq:trial-1s}
+\end{equation}
+This ansatz does not impose Bohr quantization. It simply probes whether the reduced functional prefers a finite bound-state size.
+
+The required expectation values are elementary:
+\begin{align}
+\bigl\langle T\bigr\rangle
+&=\frac{\hbar^2}{2m_-\aorb^2},
+&
+\left\langle \frac1r\right\rangle
+&=\frac1\aorb,
+\label{eq:hydrogenic-basic-expectations}
+\\[0.5ex]
+\left\langle \frac{e^{-2r/\lambda_Z}}{r}\right\rangle
+&=\frac{\lambda_Z^2}{\aorb(\aorb+\lambda_Z)^2},
+&
+\int d^3x\,|\phi_{\aorb}|^{10}
+&=\frac{1}{125\pi^4\aorb^{12}}.
+\label{eq:hydrogenic-correction-expectations}
+\end{align}
+Hence the one-parameter reduced energy is
+\begin{equation}
+E_{1\rm b}(\aorb)
+=
+E_\perp
++\frac{\hbar^2}{2m_-\aorb^2}
+-\frac{g_C}{\aorb}
+-\frac{g_C}{2\aorb\bigl(1+\aorb/\lambda_Z\bigr)^2}
++\frac{K_{\rm GNLS}\Gamma_{10}}{500\pi^4\aorb^{12}}
++\cdots,
+\label{eq:hydrogenic-functional}
+\end{equation}
+where the omitted terms are higher Yukawa/KK contributions beyond the first retained even mode.
+
+The structure of \cref{eq:hydrogenic-functional} is the essential reduced-sector result. The first two nonconstant terms are the familiar competition between delocalizing kinetic energy and attractive Coulomb binding. The third term is the short-range thick-brane correction inherited from the localized Maxwell tower. The fourth is a stiff repulsive term inherited from the parent GNLS matter sector. The paper's first atomic claim is therefore not that hydrogen is solved in full microscopic detail, but that the current 4D action already yields a mathematically controlled hydrogenic energy functional with explicit correction channels.
+
+\subsection{Bohr-scale minimum and thickness law}\label{subsec:bohr-scale-minimum}
+
+The clean hydrogenic limit is the decoupling regime in which the Yukawa and GNLS corrections are subleading at the orbital scale,
+\begin{equation}
+\lambda_Z\ll \aorb,
+\qquad
+\frac{K_{\rm GNLS}\Gamma_{10}}{\aorb^{12}}\ll \frac{g_C}{\aorb}.
+\label{eq:clean-hydrogenic-limit}
+\end{equation}
+In that regime, \cref{eq:hydrogenic-functional} reduces to
+\begin{equation}
+E_{1\rm b}(\aorb)
+\approx
+E_\perp+\frac{\hbar^2}{2m_-\aorb^2}-\frac{g_C}{\aorb}.
+\label{eq:hydrogenic-clean-functional}
+\end{equation}
+Minimizing with respect to $\aorb$ gives
+\begin{equation}
+\frac{dE_{1\rm b}}{d\aorb}
+=-\frac{\hbar^2}{m_-\aorb^3}+\frac{g_C}{\aorb^2}=0,
+\end{equation}
+and therefore the unique positive minimizer
+\begin{equation}
+\aorb^* = \frac{\hbar^2}{m_- g_C}.
+\label{eq:bohr-min}
+\end{equation}
+Substituting \cref{eq:gC-def} gives the fixed-source Bohr-scale law
+\begin{equation}
+\aorb^*
+=
+\frac{4\pi\epsilon_0\hbar^2}{m_-\qeff^2}
+=
+\frac{4\pi\epsilon_0\hbar^2 Z_{\rm int}}{m_-\qstar^2}.
+\label{eq:bohr-min-thickness-law}
+\end{equation}
+For Gaussian localization this becomes
+\begin{equation}
+\aorb^* = \frac{4\pi^{3/2}\epsilon_0\hbar^2}{m_-\qstar^2}\,\lambda_Z.
+\label{eq:bohr-min-gaussian}
+\end{equation}
+The thickness law is therefore immediate: broader EM localization weakens the observable brane coupling and inflates the orbital scale linearly.
+
+The corresponding clean-limit binding scale is
+\begin{equation}
+E_{1\rm b}(\aorb^*)-E_\perp
+=
+-\frac{m_- g_C^2}{2\hbar^2}
+=
+-\frac{m_-\qeff^4}{2(4\pi\epsilon_0)^2\hbar^2}.
+\label{eq:binding-scale-fixed-source}
+\end{equation}
+This is the precise sense in which the Bohr radius is recovered from the reduced action: the orbital size and binding energy arise from a variational competition inside the brane-effective theory, not from an externally imposed phase-winding rule.
+
+\begin{corollary}[Bohr-scale minimum without imposed Bohr quantization]\label{cor:bohr-minimum}
+In the clean decoupling limit \cref{eq:clean-hydrogenic-limit}, the reduced hydrogenic energy functional has a unique variational minimum at \cref{eq:bohr-min}. The resulting orbital scale is the standard Bohr form with the observable brane coupling $\qeff$, and hence inherits the thickness law \cref{eq:bohr-min-thickness-law}.
+\end{corollary}
+\claimstatus{\statusReduced}
+
+\subsection{Two-body upgrade and reduced mass}\label{subsec:two-body-upgrade}
+
+The fixed-source derivation is already useful, but the cleaner formulation treats the atom as a genuine two-defect system rather than a light branch moving in an externally imposed field. Let the brane positions of the negative and positive defects be $\mathbf x_-(t)$ and $\mathbf x_+(t)$. In the same reduced hierarchy, the conservative pair action may be written as
+\begin{equation}
+S_{\rm pair}^{\rm red}
+=
+\int dt\,
+\Bigg[
+\frac12 m_- \dot{\mathbf x}_-^{2}
++\frac12 m_+ \dot{\mathbf x}_+^{2}
+-E_-^{\rm int}-E_+^{\rm int}
+-V_{+-}(r)
++\delta L_{\rm fs}
+\Bigg],
+\label{eq:pair-reduced-action}
+\end{equation}
+with
+\begin{equation}
+\mathbf r\equiv \mathbf x_- - \mathbf x_+,
+\qquad r=|\mathbf r|,
+\qquad
+V_{+-}(r)
+=
+-\frac{g_C}{r}
+-\frac{g_C}{2r}e^{-2r/\lambda_Z}
++\delta V_{\rm fs}(r)
++\cdots.
+\label{eq:pair-potential}
+\end{equation}
+Here $\delta V_{\rm fs}$ collects the finite-size and throat-response corrections whose internal structure is developed in \cref{sec:finite-response}.
+
+Introduce the center-of-mass and relative variables,
+\begin{equation}
+M\equiv m_-+m_+,
+\qquad
+\mu\equiv \frac{m_-m_+}{m_-+m_+},
+\qquad
+\mathbf R\equiv \frac{m_-\mathbf x_-+m_+\mathbf x_+}{M},
+\qquad
+\mathbf r\equiv \mathbf x_- - \mathbf x_+.
+\label{eq:pair-cm-relative}
+\end{equation}
+Then the kinetic term splits exactly:
+\begin{equation}
+\frac12 m_- \dot{\mathbf x}_-^{2}+\frac12 m_+ \dot{\mathbf x}_+^{2}
+=
+\frac12 M\dot{\mathbf R}^{2}+\frac12 \mu\dot{\mathbf r}^{2}.
+\label{eq:pair-kinetic-split}
+\end{equation}
+Consequently the relative Hamiltonian is
+\begin{equation}
+H_{\rm rel}
+=
+-\frac{\hbar^2}{2\mu}\nabla_r^2
++E_{\rm int}^{\rm tot}
+-\frac{g_C}{r}
+-\frac{g_C}{2r}e^{-2r/\lambda_Z}
++\delta V_{\rm fs}(r)
++\cdots,
+\label{eq:relative-hamiltonian}
+\end{equation}
+with $E_{\rm int}^{\rm tot}=E_-^{\rm int}+E_+^{\rm int}$.
+
+Using the same $1s$ trial state \cref{eq:trial-1s} for the relative coordinate gives
+\begin{equation}
+E_{\rm rel}(\aorb)
+=
+E_{\rm int}^{\rm tot}
++\frac{\hbar^2}{2\mu\aorb^2}
+-\frac{g_C}{\aorb}
+-\frac{g_C}{2\aorb\bigl(1+\aorb/\lambda_Z\bigr)^2}
++\bigl\langle \delta V_{\rm fs}\bigr\rangle_{\aorb}
++\cdots.
+\label{eq:relative-energy-functional}
+\end{equation}
+In the clean pair limit,
+\begin{equation}
+\lambda_Z\ll \aorb,
+\qquad
+\left|\bigl\langle \delta V_{\rm fs}\bigr\rangle_{\aorb}\right|
+\ll
+\frac{g_C}{\aorb},
+\label{eq:clean-pair-limit}
+\end{equation}
+the minimum occurs at
+\begin{equation}
+\aorb^*
+=
+\frac{\hbar^2}{\mu g_C}
+=
+\frac{4\pi\epsilon_0\hbar^2}{\mu\qeff^2}
+=
+\frac{4\pi\epsilon_0\hbar^2 Z_{\rm int}}{\mu\qstar^2}.
+\label{eq:two-body-bohr-min}
+\end{equation}
+The heavy-source limit is recovered smoothly:
+\begin{equation}
+m_+\gg m_-
+\qquad\Longrightarrow\qquad
+\mu\to m_-,
+\label{eq:heavy-source-limit}
+\end{equation}
+so the fixed-source hydrogenic minimum is the expected limit of the pair reduction rather than a separate construction.
+
+\begin{proposition}[Two-body reduced-mass upgrade]\label{prop:two-body-reduced-mass-upgrade}
+Treating both opposite-charge defects dynamically upgrades the fixed-source hydrogenic sector to a genuine two-body central-force problem whose orbital minimum is governed by the reduced mass $\mu$. In the clean pair limit, the minimizer is \cref{eq:two-body-bohr-min}.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\subsection{Scope of the result}\label{subsec:hydrogenic-scope}
+
+The section establishes three facts needed later in the paper. First, the present 4D action stack admits a controlled hydrogenic reduction in the zero-mode, far-field regime. Second, the Bohr-scale orbital radius is recovered as a variational minimum of the reduced energy rather than as an imposed circulation rule. Third, the two-body formulation automatically upgrades the fixed-source mass parameter to the reduced mass $\mu$, while preserving the thickness law carried by $\qeff=\qstar/\sqrt{Z_{\rm int}}$.
+
+Just as importantly, the section does not claim a full microscopic theorem of atomic structure. It does not yet determine the branch masses or microscopic charge scale from throat geometry alone, it does not resolve the detailed relation between the EM localization profile $Z(w)$ and the matter profile $\chi_0(w)$, and it does not compute the finite-size potential $\delta V_{\rm fs}$ that becomes relevant once the point-source approximation is relaxed. Those questions are precisely why the next section turns to finite-throat response and the emergence of the real $\Ptwotwo$ mouth mode.
+
+
+\section{Finite-throat atomic response and the \texorpdfstring{$\Ptwotwo$}{P22} mouth mode}\label{sec:finite-response}
+
+Section~\ref{sec:hydrogenic} reduced the opposite-charge pair to a Coulomb-dominated two-body problem with one unresolved term,
+\begin{equation}
+\delta V_{\rm fs}(r).
+\label{eq:finite-unresolved-fs}
+\end{equation}
+The present section identifies that term at the level already supported by the current reduction hierarchy. The key point is that once each object is treated as a finite throat rather than a literal point source, the first shape-sensitive atomic load is not the raw Coulomb depth itself. It is the variation of the partner field \emph{across} the mouth. That converts the atomic finite-size problem into a tidal/Hessian response problem, exposes a natural \(P_0\oplus P_2\) load multiplet, selects the real \(\Ptwotwo\) mouth sector as the first driven non-axisymmetric deformation under centering and area preservation, and removes the apparent short-distance divergence by replacing the point-Hessian approximation with a core-resolved finite-throat kernel.
+
+\subsection{Why the first finite-size load is tidal / Hessian}\label{subsec:finite-hessian-load}
+
+Consider one defect, denoted body $A$, with brane center $\mathbf R_A$ and internal coordinates $Q^a$. Let the partner body $B$ generate a static brane potential $V_B(\mathbf x)$. If the normalized internal density of body $A$ is written as $\rho_A(\boldsymbol\xi,w;Q)$ in a centered coordinate system,
+\begin{equation}
+\int d^3\xi\,dw\;\rho_A(\boldsymbol\xi,w;Q)=1,
+\label{eq:finite-density-normalization}
+\end{equation}
+then the external interaction energy of $A$ is
+\begin{equation}
+H_A^{\rm ext}[Q;V_B]
+=
+\int d^3\xi\,dw\;\rho_A(\boldsymbol\xi,w;Q)
+V_B(\mathbf R_A+\boldsymbol\xi).
+\label{eq:finite-external-energy}
+\end{equation}
+Expanding the partner potential about the center of $A$ gives
+\begin{equation}
+V_B(\mathbf R_A+\boldsymbol\xi)
+=
+V_B(\mathbf R_A)
++\xi^i\partial_iV_B(\mathbf R_A)
++\frac12\xi^i\xi^j\partial_i\partial_jV_B(\mathbf R_A)
++\Order{|\boldsymbol\xi|^3},
+\label{eq:finite-potential-expansion}
+\end{equation}
+with $i,j\in\{x,y,z\}$. Define the internal moments
+\begin{equation}
+d_A^i(Q)
+\equiv
+\int d^3\xi\,dw\;\rho_A\,\xi^i,
+\qquad
+M_A^{ij}(Q)
+\equiv
+\int d^3\xi\,dw\;\rho_A\,\xi^i\xi^j.
+\label{eq:finite-moment-definitions}
+\end{equation}
+Then
+\begin{equation}
+H_A^{\rm ext}
+=
+V_B(\mathbf R_A)
++\partial_iV_B(\mathbf R_A)\,d_A^i(Q)
++\frac12\partial_i\partial_jV_B(\mathbf R_A)\,M_A^{ij}(Q)
++\cdots.
+\label{eq:finite-external-energy-expanded}
+\end{equation}
+
+The logic is now immediate. The zeroth-order term shifts only the center-of-mass energy because the density is normalized. In a centered frame the equilibrium dipole vanishes,
+\begin{equation}
+d_A^i(Q_0)=0,
+\label{eq:finite-centered-frame}
+\end{equation}
+so the first derivative does not drive the internal deformation sector either. The first shape-sensitive internal load therefore begins at second derivative order,
+\begin{equation}
+H_{A,\rm int}^{\rm drive}
+=
+\frac12\,T_{ij}(\mathbf R_A)\,M_A^{ij}(Q)+\cdots,
+\qquad
+T_{ij}\equiv \partial_i\partial_jV_B.
+\label{eq:finite-hessian-load}
+\end{equation}
+
+\begin{proposition}[Finite-throat tidal load]\label{prop:finite-throat-tidal-load}
+Within the centered finite-throat reduction domain, the first shape-sensitive external loading on a defect is governed by the partner-field Hessian $T_{ij}=\partial_i\partial_jV_B$ rather than by the raw scalar potential itself.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\subsection{The \texorpdfstring{$P_0\oplus P_2$}{P0+P2} response layer}\label{subsec:finite-p0-p2-layer}
+
+The Hessian naturally decomposes into scalar and traceless-quadrupole pieces,
+\begin{equation}
+T_{ij}=T_0\,\delta_{ij}+T_{2,ij},
+\qquad
+T_0\equiv \frac13\delta^{ij}T_{ij}=\frac13\nabla_3^2V_B,
+\qquad
+\delta^{ij}T_{2,ij}=0.
+\label{eq:finite-hessian-decomposition}
+\end{equation}
+Thus the first atomic load is not a single number but the multiplet
+\begin{equation}
+\epsilon_{\rm atom}\sim \bigl(T_0,\,T_{2,ij}\bigr),
+\label{eq:finite-atomic-load-multiplet}
+\end{equation}
+which is precisely the reduced atomic realization of the already inherited \(P_0\oplus P_2\) support hierarchy.
+
+For an isotropic equilibrium throat, adiabatic elimination of the internal coordinates gives a quadratic response energy of the form
+\begin{equation}
+\delta H_{A,\rm resp}
+=
+-\frac12\Lambda_A^{(0)}T_0^2
+-\frac12\Lambda_A^{(2)}T_{2,ij}T_2^{ij}
++\Order{T^3},
+\label{eq:finite-bodywise-response}
+\end{equation}
+with positive susceptibilities $\Lambda_A^{(0)}$ and $\Lambda_A^{(2)}$. Summing the bodywise contributions for the bound pair yields
+\begin{equation}
+\delta V_{\rm fs}(r)
+=
+-\frac12\Lambda_{0,\rm pair}T_0(r)^2
+-\frac12\Lambda_{2,\rm pair}T_{2,ij}(r)T_2^{ij}(r)
++\Order{T^3},
+\label{eq:finite-pair-response}
+\end{equation}
+where
+\begin{equation}
+\Lambda_{0,\rm pair}\equiv \Lambda_A^{(0)}+\Lambda_B^{(0)},
+\qquad
+\Lambda_{2,\rm pair}\equiv \Lambda_A^{(2)}+\Lambda_B^{(2)}.
+\label{eq:finite-pair-susceptibilities}
+\end{equation}
+
+Apply this to the hydrogenic partner potential from \cref{eq:pair-potential},
+\begin{equation}
+V_B(r)
+=
+-\frac{g_C}{r}
+-\frac{g_C}{2r}e^{-2r/\lambda_Z}
++\cdots.
+\label{eq:finite-partner-potential}
+\end{equation}
+Away from the source, the pure Coulomb term is harmonic,
+\begin{equation}
+\nabla_3^2\!\left(\frac1r\right)=0
+\qquad (r>0),
+\label{eq:finite-coulomb-harmonic}
+\end{equation}
+so it drives no scalar trace load outside the core. The scalar channel begins only once the finite-thickness Yukawa tower is retained:
+\begin{equation}
+T_0(r)
+=
+\frac13\nabla_3^2V_B(r)
+=
+-\frac{2g_C}{3\lambda_Z^2}\frac{e^{-2r/\lambda_Z}}{r}+\cdots.
+\label{eq:finite-trace-load-yukawa}
+\end{equation}
+The quadrupole channel is different. Writing $\mathbf n\equiv \mathbf r/r$, the pure Coulomb piece gives
+\begin{equation}
+T_{2,ij}^{\rm C}(r)
+=
+-g_C\frac{3n_in_j-\delta_{ij}}{r^3},
+\label{eq:finite-coulomb-tide}
+\end{equation}
+and therefore
+\begin{equation}
+T_{2,ij}^{\rm C}T_{\rm C}^{2,ij} = \frac{6g_C^2}{r^6}.
+\label{eq:finite-coulomb-tide-square}
+\end{equation}
+Substituting into \cref{eq:finite-pair-response} yields the far-field quadrupolar correction
+\begin{equation}
+\delta V_{\rm fs}^{\rm(C)}(r)
+=
+-3\Lambda_{2,\rm pair}\frac{g_C^2}{r^6},
+\label{eq:finite-r6-law}
+\end{equation}
+while scalar breathing corrections are exponentially suppressed by the localization thickness scale $\lambda_Z$.
+
+\begin{proposition}[Quadrupolar far-field response]\label{prop:quadrupolar-far-field-response}
+Within the hydrogenic reduction domain, pure Coulomb loading excites the quadrupolar $P_2$ response channel and produces an attractive $r^{-6}$ far-field correction, while the scalar $P_0$ breathing channel enters only through the finite-thickness Yukawa sector.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\subsection{Constant-area ellipse and the real \texorpdfstring{$\Ptwotwo$}{P22} mouth mode}\label{subsec:finite-p22-ellipse}
+
+The same quadrupolar tide that produces \cref{eq:finite-r6-law} also determines the first non-axisymmetric mouth deformation. Work in the mouth plane and write the deformed boundary in polar angle $\varphi$ as
+\begin{equation}
+r_m(\varphi)=\Rth\bigl[1+u(\varphi)\bigr],
+\qquad |u|\ll 1.
+\label{eq:finite-mouth-boundary-linear}
+\end{equation}
+Its area is
+\begin{equation}
+A
+=
+\frac12\int_0^{2\pi}r_m(\varphi)^2\,d\varphi
+=
+\pi\Rth^2+\Rth^2\int_0^{2\pi}u(\varphi)\,d\varphi+\Order{u^2}.
+\label{eq:finite-mouth-area}
+\end{equation}
+Thus fixed area implies
+\begin{equation}
+\int_0^{2\pi}u(\varphi)\,d\varphi=0,
+\label{eq:finite-area-constraint}
+\end{equation}
+which removes the monopole mode. Centering removes the dipole sector as well:
+\begin{equation}
+\int_0^{2\pi}u(\varphi)e^{\pm i\varphi}\,d\varphi=0.
+\label{eq:finite-centering-constraint}
+\end{equation}
+
+Now let $\theta_T$ denote the principal-axis angle of the planar traceless tide, so that
+\begin{equation}
+T_{xx}^\perp-T_{yy}^\perp = T_2^\perp\cos 2\theta_T,
+\qquad
+2T_{xy}^\perp = T_2^\perp\sin 2\theta_T.
+\label{eq:finite-planar-tide-axis}
+\end{equation}
+The linear tidal coupling to the boundary deformation is then of the form
+\begin{equation}
+\delta U_{\rm tid}^{(1)}
+\propto
+-\Rth^2T_2^\perp
+\int_0^{2\pi}u(\varphi)\cos 2\bigl(\varphi-\theta_T\bigr)\,d\varphi.
+\label{eq:finite-linear-mouth-coupling}
+\end{equation}
+Area preservation removes $m=0$, centering removes $m=1$, and the traceless tidal tensor first couples to $m=2$. The first driven non-axisymmetric harmonic is therefore
+\begin{equation}
+u(\varphi)=\epsell\cos 2\bigl(\varphi-\theta_T\bigr).
+\label{eq:finite-first-harmonic}
+\end{equation}
+Equivalently, the natural exact completion of the weak-field mode is the constant-area ellipse with semiaxes
+\begin{equation}
+R_1=\Rth e^{\epsell},
+\qquad
+R_2=\Rth e^{-\epsell},
+\label{eq:finite-ellipse-semiaxes}
+\end{equation}
+so that $A=\pi R_1R_2=\pi\Rth^2$, and boundary
+\begin{equation}
+r_m(\varphi)
+=
+\frac{\Rth}{\sqrt{e^{-2\epsell}\cos^2(\varphi-\thmouth)+e^{2\epsell}\sin^2(\varphi-\thmouth)}}.
+\label{eq:finite-exact-ellipse}
+\end{equation}
+Expanding \cref{eq:finite-exact-ellipse} for small $\epsell$ recovers the linearized form
+\begin{equation}
+r_m(\varphi)
+=
+\Rth\Bigl[1+\epsell\cos 2\bigl(\varphi-\thmouth\bigr)\Bigr]+\Order{\epsell^2}.
+\label{eq:finite-ellipse-linearized}
+\end{equation}
+
+Define the area-averaged mouth quadrupole tensor by
+\begin{equation}
+Q_{IJ}^{\rm mouth}
+\equiv
+\frac1A\int_{\rm mouth}dA\;\left(X_IX_J-\frac12\delta_{IJ}R_\perp^2\right),
+\qquad I,J\in\{x,y\}.
+\label{eq:finite-mouth-quadrupole-tensor}
+\end{equation}
+For the ellipse \cref{eq:finite-exact-ellipse}, the real quadrupole components are
+\begin{align}
+Q_c^{\rm mouth}
+&\equiv Q_{xx}^{\rm mouth}-Q_{yy}^{\rm mouth}
+=\frac{\Rth^2}{2}\sinh 2\epsell\cos 2\thmouth,
+\label{eq:finite-mouth-Qc}
+\\[0.5ex]
+Q_s^{\rm mouth}
+&\equiv 2Q_{xy}^{\rm mouth}
+=\frac{\Rth^2}{2}\sinh 2\epsell\sin 2\thmouth.
+\label{eq:finite-mouth-Qs}
+\end{align}
+Thus the mouth carries a genuine real \(\Ptwotwo\) source pair with amplitude
+\begin{equation}
+Q_{22}^{\rm mouth}=\frac{\Rth^2}{2}\sinh 2\epsell.
+\label{eq:finite-mouth-Q22}
+\end{equation}
+Its tidal coupling is
+\begin{equation}
+U_{\rm tid}^{\rm mouth}(\epsell,\thmouth;r)
+=
+-\frac12T_{IJ}^{\rm eff}(r;\Rth)Q_{\rm mouth}^{IJ}
+=
+-\frac{\Rth^2}{8}T_2^{\rm eff}(r;\Rth)\sinh 2\epsell\cos 2\bigl(\thmouth-\theta_T\bigr),
+\label{eq:finite-mouth-energy}
+\end{equation}
+where $T_2^{\rm eff}(r;\Rth)$ is the finite-throat effective planar tidal amplitude introduced below. In the weak-field regime,
+\begin{equation}
+U_{\rm tid}^{\rm mouth}(\epsell,\thmouth;r)
+=
+-\frac{\Rth^2}{4}T_2^{\rm eff}(r;\Rth)\,\epsell\cos 2\bigl(\thmouth-\theta_T\bigr)
++\Order{\epsell^3}.
+\label{eq:finite-mouth-energy-weak}
+\end{equation}
+
+Add an even support-sector stiffness,
+\begin{equation}
+U_{\rm supp}(\epsell)=\frac12k_{22}\epsell^2+\Order{\epsell^4},
+\qquad k_{22}>0.
+\label{eq:finite-mouth-stiffness}
+\end{equation}
+Adiabatic minimization gives
+\begin{equation}
+\epsell^{*}(r,\thmouth)
+=
+\chi_{22}T_2^{\rm eff}(r;\Rth)\cos 2\bigl(\thmouth-\theta_T\bigr)
++\Order{\bigl(T_2^{\rm eff}\bigr)^2},
+\qquad
+\chi_{22}\equiv \frac{\Rth^2}{4k_{22}},
+\label{eq:finite-mouth-ellipticity-response}
+\end{equation}
+and, after alignment of the major axis with the principal tidal axis, the static response energy
+\begin{equation}
+\delta V_{\rm mouth}(r)
+=
+-\frac18\chi_{22}\Rth^2\bigl[T_2^{\rm eff}(r;\Rth)\bigr]^2
+=
+-\frac{\Rth^4}{32k_{22}}\bigl[T_2^{\rm eff}(r;\Rth)\bigr]^2
++\Order{\bigl(T_2^{\rm eff}\bigr)^4}.
+\label{eq:finite-mouth-response-energy}
+\end{equation}
+In the far field this reproduces the same $r^{-6}$ law as \cref{eq:finite-r6-law}.
+
+\begin{proposition}[First driven non-axisymmetric mouth mode]\label{prop:finite-first-p22-mode}
+Under centering and area preservation, the first driven non-axisymmetric mouth deformation lies in the real \(\Ptwotwo\) sector. Its natural finite-amplitude completion is the constant-area ellipse \cref{eq:finite-exact-ellipse}.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\begin{figure}[t]
+    \centering
+    \fbox{\rule{0pt}{1.8in}\rule{0.92\linewidth}{0pt}}
+    \caption{Placeholder for the mouth-geometry figure: circular mouth versus constant-area real \(\Ptwotwo\) ellipse, showing the principal tidal axis $\theta_T$ and the mouth-axis angle $\thmouth$.}
+    \label{fig:finite-ellipse}
+\end{figure}
+
+\subsection{Finite-throat core regulation}\label{subsec:finite-core-regulation}
+
+The $r^{-6}$ law derived above is only a far-field asymptotic. Its naive short-distance divergence is the signal that the point-Hessian approximation has been pushed beyond its valid regime. The correct near-core object is the finite-throat averaged tidal kernel
+\begin{equation}
+T_{ij}^{\rm eff}(\mathbf R;\Rth)
+\equiv
+\int d^3\xi\;\rho_{\Rth}(\boldsymbol\xi)\,
+\partial_i\partial_j\left(-\frac{g_C}{|\mathbf R+\boldsymbol\xi|}\right),
+\label{eq:finite-effective-tidal-kernel}
+\end{equation}
+where $\rho_{\Rth}$ is a smooth normalized source profile of characteristic width $\Rth$.
+
+For a Gaussian profile,
+\begin{equation}
+\rho_{\Rth}(\boldsymbol\xi)
+=
+\frac{1}{(2\pi\Rth^2)^{3/2}}
+\exp\!\left(-\frac{|\boldsymbol\xi|^2}{2\Rth^2}\right),
+\label{eq:finite-gaussian-profile}
+\end{equation}
+the regularized Coulomb potential is
+\begin{equation}
+\Phi_{\Rth}(r)
+=
+-g_C\frac{\operatorname{erf}\!\bigl(r/(\sqrt2\Rth)\bigr)}{r},
+\label{eq:finite-regularized-potential}
+\end{equation}
+and the effective quadrupolar tidal amplitude may be written as
+\begin{equation}
+T_2^{\rm eff}(r;\Rth)
+=
+\Phi_{\Rth}''(r)-\frac{\Phi_{\Rth}'(r)}{r}
+=
+\frac{g_C}{\Rth^3}\,\mathcal F\!\left(\frac{r}{\Rth}\right),
+\label{eq:finite-regularized-tide}
+\end{equation}
+with
+\begin{equation}
+\mathcal F(x)
+=
+-\frac{3\,\operatorname{erf}(x/\sqrt2)}{x^3}
++\sqrt{\frac{2}{\pi}}e^{-x^2/2}\left(1+\frac{3}{x^2}\right).
+\label{eq:finite-F-function}
+\end{equation}
+This profile has the two asymptotic limits
+\begin{align}
+\mathcal F(x)
+&\sim -\frac{3}{x^3}, && x\gg 1,
+\label{eq:finite-F-large-x}
+\\[0.5ex]
+\mathcal F(x)
+&= -\sqrt{\frac{2}{\pi}}\frac{x^2}{5}+\Order{x^4}, && x\to 0.
+\label{eq:finite-F-small-x}
+\end{align}
+Hence
+\begin{equation}
+T_2^{\rm eff}(r;\Rth)
+\sim -\frac{3g_C}{r^3}
+\qquad (r\gg \Rth),
+\label{eq:finite-tide-large-r}
+\end{equation}
+while near the core
+\begin{equation}
+T_2^{\rm eff}(r;\Rth)=\Order{r^2}
+\qquad (r\to 0).
+\label{eq:finite-tide-small-r}
+\end{equation}
+The finite-throat kernel therefore matches the point-source tide in the far field but softens to zero at overlap because the resolved partner field becomes locally isotropic at the center.
+
+Substituting \cref{eq:finite-regularized-tide} into \cref{eq:finite-mouth-response-energy} shows that
+\begin{equation}
+\delta V_{\rm mouth}(r)
+\sim -\frac{9\Rth^4}{32k_{22}}\frac{g_C^2}{r^6}
+= -\frac{9}{8}\chi_{22}\Rth^2\frac{g_C^2}{r^6}
+\qquad (r\gg \Rth),
+\label{eq:finite-mouth-large-r}
+\end{equation}
+whereas near the core the response softens as
+\begin{equation}
+\delta V_{\rm mouth}(r)=\Order{r^4}
+\qquad (r\to 0).
+\label{eq:finite-mouth-small-r}
+\end{equation}
+The apparent short-distance singularity is therefore not physical. It is an artifact of extrapolating the point-Hessian approximation into the overlap regime.
+
+\begin{proposition}[Core regulation by finite throat size]\label{prop:finite-core-regulation}
+Replacing the point-partner approximation by the finite-throat kernel \cref{eq:finite-effective-tidal-kernel} removes the apparent short-distance divergence of the quadrupolar response. The far-field $r^{-6}$ law survives as an asymptotic regime, while the near-core response softens to zero.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\begin{figure}[t]
+    \centering
+    \fbox{\rule{0pt}{1.8in}\rule{0.92\linewidth}{0pt}}
+    \caption{Placeholder for the core-regulation plot: point-source tidal asymptotic $\propto r^{-3}$ versus finite-throat $T_2^{\rm eff}(r;\Rth)$, together with the induced mouth-response energy.}
+    \label{fig:finite-core-reg}
+\end{figure}
+
+\subsection{Scope of the result}\label{subsec:finite-response-scope}
+
+This section establishes four reduced-sector facts that the rest of the paper relies on. First, the first shape-sensitive atomic load on a finite throat is the partner-field Hessian across the mouth, not the raw Coulomb scalar. Second, that load decomposes naturally into a scalar $P_0$ trace sector and a quadrupolar $P_2$ sector. Third, pure Coulomb loading directly excites the quadrupolar channel and, under centering and area preservation, drives the first non-axisymmetric mouth response into the real \(\Ptwotwo\) ellipse. Fourth, finite throat size itself regulates the apparent short-distance divergence by replacing the point-Hessian approximation with a smooth core-resolved tidal kernel.
+
+What remains open is equally important. The section does not determine the exact microscopic throat profile, the exact numerical values of $\Lambda_{0,\rm pair}$, $\Lambda_{2,\rm pair}$, or $k_{22}$ from a fully solved moving-throat bulk PDE, nor does it yet derive the full dynamical coupling of the atomic mouth background to the later same-charge internal rotor. Those are the next steps. The present section only needs the solid reduced conclusion that the atomic bound state generates a real finite \(\Ptwotwo\) mouth background, and that this background is both physically selected and core regulated.
+
+\section{The same-charge corridor and why it needed a splitter}\label{sec:corridor}
+
+\subsection{Corrected ontology and the only live same-charge corridor}\label{subsec:corridor-live}
+
+With the corrected dictionary from \cref{sec:frozen} in place, the same-charge internal label cannot be identified with the electric sign $\eta_Q$, with the vortical/circulation label $n_\Gamma$, or with the gravity-side scalar ledger coefficient $\kapparho$. The only remaining microscopic sector that can carry a genuinely internal same-charge degree of freedom is therefore the mixed $(a\text{-}w)$ sector, where the hidden-core channels
+\begin{equation}
+A_w,
+\qquad
+F_{\mu w},
+\qquad
+J^w,
+\qquad
+F_{aw}
+\label{eq:corridor-mixed-channels}
+\end{equation}
+remain part of the microscopic ontology outside the strict brane-zero-mode reduction.
+
+After the circulation, side-bit, and purely axisymmetric wall routes are removed, the minimal same-charge collective ansatz retains a transverse odd pair $(b_x,b_y)$ together with a mixed-sector sign $\tau=\pm1$. At low energy the surviving reduced model is
+\begin{equation}
+L_{\rm tr}
+=
+\frac{M_b}{2}\dot b_i\dot b_i
++\frac{\tau\nu_0}{2}\epsilon_{ij}b_i\dot b_j
+-V_{\rm stat}(b_x^2+b_y^2),
+\label{eq:corridor-Ltr}
+\end{equation}
+where $\nu_0$ is the mixed-sector Berry coefficient and $V_{\rm stat}$ is axisymmetric in the transverse plane. If the odd branch pins at a nonzero radius
+\begin{equation}
+s_*=b_x^2+b_y^2,
+\label{eq:corridor-pinned-radius}
+\end{equation}
+one may write
+\begin{equation}
+b_x=\sqrt{s_*}\cos\throt,
+\qquad
+b_y=\sqrt{s_*}\sin\throt,
+\label{eq:corridor-polar}
+\end{equation}
+so the dynamics reduce to an internal rotor,
+\begin{equation}
+L_{\rm rot}
+=
+\frac{I}{2}\dot\throt^{\,2}+\tau\kappa_0\dot\throt
+=
+\frac{I}{2}\dot\throt^{\,2}+\tau\hbar\nuB\dot\throt,
+\label{eq:corridor-Lrot}
+\end{equation}
+with
+\begin{equation}
+I=M_b s_*,
+\qquad
+\kappa_0=\frac{\nu_0 s_*}{2},
+\qquad
+\nuB\equiv\frac{\kappa_0}{\hbar}=\frac{\nu_0 s_*}{2\hbar}.
+\label{eq:corridor-kappa-nuB}
+\end{equation}
+The corresponding momentum-shifted spectrum is
+\begin{equation}
+E_n^{(\tau)}
+=
+\frac{(n\hbar-\tau\kappa_0)^2}{2I}
+=
+\frac{\hbar^2}{2I}(n-\tau\nuB)^2,
+\qquad n\in\mathbb Z.
+\label{eq:corridor-spectrum}
+\end{equation}
+
+The significance of \cref{eq:corridor-Ltr,eq:corridor-spectrum} is structural. This is the only corridor in the corrected ontology where a same-charge sign and a genuine first-order internal phase law coexist without collapsing back into ordinary orbital motion or opposite-charge bookkeeping.
+
+\begin{proposition}[Only live same-charge corridor]\label{prop:corridor-only-live}
+Within the corrected ontology used in this paper, the mixed $(a\text{-}w)$ sector remains the only viable same-charge internal corridor identified so far. Its low-energy reduction is the internal rotor \cref{eq:corridor-Lrot} with Berry offset \cref{eq:corridor-kappa-nuB}.
+\end{proposition}
+\claimstatus{\statusConditional}
+
+\subsection{Why a real static \texorpdfstring{$m=2$}{m=2} splitter is needed}\label{subsec:corridor-need-splitter}
+
+The rotor \cref{eq:corridor-Lrot} is already nontrivial, but it is not yet a protected same-charge doublet. The canonical momentum is
+\begin{equation}
+p_{\throt}=I\dot\throt+\tau\hbar\nuB,
+\label{eq:corridor-canonical-momentum}
+\end{equation}
+so the Hamiltonian is
+\begin{equation}
+H_{\rm rot}
+=
+\frac{1}{2I}\bigl(p_{\throt}-\tau\hbar\nuB\bigr)^2.
+\label{eq:corridor-Hrot}
+\end{equation}
+As long as the reduced energy depends only on the pinned radius $s_*$, the angle $\throt$ is absent from $H_{\rm rot}$. The Berry offset shifts the momentum ladder, but it does not by itself discretize the rotor angle. The accidental transverse $O(2)$ degeneracy is still intact.
+
+A same-charge two-state package requires a headless anisotropy that identifies $\throt$ and $\throt+\pi$ at the level of static observables. The first symmetry-allowed splitter is therefore not an $m=1$ vector term but a real $m=2$ term,
+\begin{equation}
+V_{\rm split}(\throt)
+=
+-V_2\cos 2\bigl(\throt-\theta_s\bigr),
+\qquad V_2>0,
+\label{eq:corridor-splitter}
+\end{equation}
+where $\theta_s$ is the axis of the static splitter. The corresponding reduced rotor-plus-splitter model is
+\begin{equation}
+L_{\rm rot}^{(2)}
+=
+\frac{I}{2}\dot\throt^{\,2}+\tau\hbar\nuB\dot\throt
+-V_2\cos 2\bigl(\throt-\theta_s\bigr).
+\label{eq:corridor-Lrot-split}
+\end{equation}
+Because \cref{eq:corridor-splitter} is $\pi$-periodic, it breaks the continuous rotor family down to the headless $m=2$ structure appropriate to a same-charge doublet. This is the precise sense in which the earlier obstruction was not the absence of an internal rotor, but the absence of a real static splitter.
+
+The distinction between ``can host'' and ``can generate'' is important here. The inherited support sector already leaves room for a real quadrupolar response channel, but the conservative isolated reduction does not yet make the coefficient $V_2$ in \cref{eq:corridor-splitter} nonzero. The next section identifies the first concrete mechanism that does.
+
+\begin{proposition}[Why the free rotor is not yet a protected doublet]\label{prop:corridor-need-real-splitter}
+A nonzero Berry offset $\nuB$ in the axisymmetric rotor \cref{eq:corridor-Lrot} shifts the compact momentum ladder but does not remove the continuous angular degeneracy. A protected same-charge two-state package therefore requires an additional real $\pi$-periodic anisotropy of the form \cref{eq:corridor-splitter}.
+\end{proposition}
+\claimstatus{\statusReduced}
+
+\subsection{Conditional half-flux closure imported from the audit}\label{subsec:corridor-half-flux}
+
+The lepton audit narrowed the remaining topological question to whether the mixed rotor admits a compact loop law that fixes the offset $\nuB$. On the selective same-charge $\tau$-subbundle, the strongest loop operator compatible with the current reduced closure is diagonal,
+\begin{equation}
+U_{\rm loop}
+=
+ e^{i\phi_0}W(\nuB),
+\qquad
+W(\nuB)
+=
+\exp\!\bigl(i2\pi\nuB\sigma_3\bigr)
+=
+\begin{pmatrix}
+ e^{i2\pi\nuB} & 0 \\
+ 0 & e^{-i2\pi\nuB}
+\end{pmatrix},
+\label{eq:corridor-loop-law}
+\end{equation}
+where $\phi_0$ is the common scalar recirculation/support phase and $W(\nuB)$ is the mixed-sector Berry Wilson loop.
+
+If one imposes the central-sign closure target
+\begin{equation}
+U_{\rm loop}=-I_2,
+\label{eq:corridor-central-sign}
+\end{equation}
+then
+\begin{equation}
+e^{i(\phi_0\pm2\pi\nuB)}=-1.
+\label{eq:corridor-central-sign-components}
+\end{equation}
+Thus there exist integers $p,q$ such that
+\begin{equation}
+\phi_0+2\pi\nuB=(2p+1)\pi,
+\qquad
+\phi_0-2\pi\nuB=(2q+1)\pi,
+\label{eq:corridor-pq-system}
+\end{equation}
+which implies only
+\begin{equation}
+\nuB=\frac{p-q}{2}\in\frac12\mathbb Z.
+\label{eq:corridor-halfinteger-with-phase}
+\end{equation}
+So the central-sign condition by itself is not yet enough to isolate the minimal half-flux branch. It still leaves the common scalar phase free.
+
+The audit therefore required a stronger closure on the support channel. Write the one-cycle amplitude map as
+\begin{equation}
+A_{n+1}=\Lambda A_n + D,
+\qquad
+\Lambda=\rho e^{i\phi_0},
+\label{eq:corridor-cycle-map}
+\end{equation}
+where $D$ is a replenishment term. A generic steady state is too weak, because the fixed point
+\begin{equation}
+A_* = \frac{D}{1-\Lambda}
+\label{eq:corridor-steady-fixed-point}
+\end{equation}
+can exist without forcing $\phi_0=0$. The needed cancellation arises only under the stronger autonomous self-reproducing eigenmode closure,
+\begin{equation}
+D=0,
+\qquad
+A_{n+1}=A_n\neq0,
+\label{eq:corridor-autonomous-closure}
+\end{equation}
+which implies
+\begin{equation}
+\Lambda=1,
+\qquad
+\rho=1,
+\qquad
+e^{i\phi_0}=1.
+\label{eq:corridor-phase-cancel}
+\end{equation}
+
+\begin{theorem}[Conditional half-flux lock]\label{thm:corridor-half-flux-lock}
+Assume that the same-charge mixed sector lives on a selective $\tau$-subbundle whose loop holonomy closes with the central sign \cref{eq:corridor-central-sign}, and assume in addition the autonomous eigenmode closure \cref{eq:corridor-autonomous-closure} so that \cref{eq:corridor-phase-cancel} holds. Then the mixed-sector Berry offset is forced onto the half-integer lattice,
+\begin{equation}
+\nuB\in\mathbb Z+\frac12.
+\label{eq:corridor-half-flux-lock}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Under \cref{eq:corridor-phase-cancel}, the loop law \cref{eq:corridor-loop-law} reduces to $U_{\rm loop}=W(\nuB)$. The central-sign condition \cref{eq:corridor-central-sign} therefore becomes $W(\nuB)=-I_2$, which is equivalent to
+\[
+ e^{i2\pi\nuB}=-1.
+\]
+Hence $\nuB\in\mathbb Z+\tfrac12$.
+\end{proof}
+\claimstatus{\statusConditional}
+
+\begin{remark}
+Theorem~\ref{thm:corridor-half-flux-lock} is imported as a conditional closure result from the audit. In particular, the autonomous-eigenmode assumption \cref{eq:corridor-autonomous-closure} is not claimed here as a theorem of the fully solved moving-throat PDE.
+\end{remark}
+
+\subsection{Scope of the result}\label{subsec:corridor-scope}
+
+This section isolates the minimum same-charge content needed for the rest of the paper. First, once the corrected ontology is enforced, the mixed $(a\text{-}w)$ sector is the only live corridor carrying both a same-charge sign and a first-order internal phase law. Second, the resulting low-energy package is initially only a continuous rotor: the Berry offset shifts the compact momentum ladder, but it does not by itself create a protected doublet. Third, the audit supplies a sharp conditional topological statement: if the mixed-sector loop closes with the central sign and the common scalar phase is killed by autonomous eigenmode closure, then the offset is locked to the half-integer branch \cref{eq:corridor-half-flux-lock}.
+
+Just as importantly, this section still does \emph{not} provide the missing splitter. The reduced free rotor leaves the coefficient $V_2$ in \cref{eq:corridor-splitter} undetermined, and nothing here yet shows how an actual static $m=2$ background is generated. That is the exact gap closed in the next section, where the finite-throat atomic \(\Ptwotwo\) tide is identified as the first concrete splitter mechanism.
+
+\section{Atomic-to-lepton bridge through \texorpdfstring{$\Ptwotwo$}{P22} forcing}\label{sec:bridge}
+
+\Cref{sec:finite-response} established the first real non-axisymmetric mouth response available in the atomic sector: under centering and area preservation, finite-throat tidal loading drives the mouth into the real \(\Ptwotwo\) ellipse. \Cref{sec:corridor} then identified the only live same-charge internal corridor left in the corrected ontology: the mixed \((a\text{-}w)\) rotor, together with the sharp statement that this rotor still required a genuine static \(m=2\) splitter. The purpose of the present section is to join those two results. First, the bound-state atomic \(\Ptwotwo\) background is shown to be the first concrete splitter acting on the mixed internal rotor. Second, because the external tide vanishes in the isolated limit, the section identifies the reduced intrinsic continuation that can keep the \(\Ptwotwo\) sector alive once the partner is removed. The resulting claim is deliberately narrow: this is a bridge from the atomic \(\Ptwotwo\) sector to a \emph{conditional reduced same-charge doublet}, not a full charged-lepton theorem.
+
+\subsection{Atomic \texorpdfstring{$\Ptwotwo$}{P22} tide as the first concrete splitter}\label{subsec:bridge-atomic-splitter}
+
+The mouth sector derived in \cref{sec:finite-response} already provides the exact geometric object the same-charge corridor was missing. Combining the support stiffness \cref{eq:finite-mouth-stiffness} with the tidal coupling \cref{eq:finite-mouth-energy} gives the reduced atomic mouth energy
+\begin{equation}
+U_{\rm mouth}^{\rm atom}(\epsell,\thmouth;r)
+=
+\frac12 k_{22}\epsell^2
+-\frac{\Rth^2}{8}T_2^{\rm eff}(r;\Rth)\sinh 2\epsell\cos 2\bigl(\thmouth-\theta_T\bigr)
++\Order{\epsell^4},
+\label{eq:bridge-atomic-mouth-energy}
+\end{equation}
+where \(\theta_T\) is the principal axis of the planar tidal tensor. In the weak-response regime, adiabatic minimization reproduces \cref{eq:finite-mouth-ellipticity-response}; after axis alignment,
+\begin{equation}
+\epsell^{*}(r)
+=
+\frac{\Rth^2}{4k_{22}}\,\bigl|T_2^{\rm eff}(r;\Rth)\bigr|
++\Order{\bigl(T_2^{\rm eff}\bigr)^2},
+\qquad
+\thmouth=\theta_T\pmod{\pi}.
+\label{eq:bridge-epsell-star}
+\end{equation}
+The corresponding real mouth quadrupole amplitude is
+\begin{equation}
+Q_{22}^{\rm mouth}(r)
+\equiv
+\frac{\Rth^2}{2}\sinh 2\epsell^{*}(r)
+=
+\Rth^2\epsell^{*}(r)+\Order{(\epsell^{*})^3}
+=
+\frac{\Rth^4}{4k_{22}}\,\bigl|T_2^{\rm eff}(r;\Rth)\bigr|
++\Order{\bigl(T_2^{\rm eff}\bigr)^2}.
+\label{eq:bridge-mouth-Q22-star}
+\end{equation}
+
+The mixed rotor from \cref{sec:corridor} is a distinct degree of freedom from the mouth ellipse: \(\throt\) is an internal collective coordinate of the mixed \((a\text{-}w)\) sector, whereas \((\epsell,\thmouth)\) describe a support/background deformation of the throat mouth. The lowest symmetry-allowed scalar coupling between them is therefore a headless quadrupole interaction,
+\begin{equation}
+U_{\rm mix-mouth}(\throt,\epsell,\thmouth)
+=
+-g_{\rm mix}\,Q_{22}^{\rm mouth}(\epsell)
+\cos 2\bigl(\throt-\thmouth\bigr),
+\qquad
+g_{\rm mix}>0,
+\label{eq:bridge-mix-mouth-coupling}
+\end{equation}
+with
+\begin{equation}
+Q_{22}^{\rm mouth}(\epsell)=\frac{\Rth^2}{2}\sinh 2\epsell.
+\label{eq:bridge-mouth-Q22-epsell}
+\end{equation}
+If the mouth variables are slow on the timescale of the internal rotor, then \((\epsell,\thmouth)\) may be adiabatically eliminated in favor of the static atomic background \cref{eq:bridge-epsell-star}. The rotor then sees the effective bound-state Lagrangian
+\begin{equation}
+L_{\rm rot}^{\rm atom}
+=
+\frac{I}{2}\dot\throt^{\,2}
++\tau\hbar\nuB\dot\throt
+-V_2^{\rm atom}(r)\cos 2\bigl(\throt-\theta_T\bigr),
+\label{eq:bridge-atomic-rotor}
+\end{equation}
+with splitter amplitude
+\begin{equation}
+V_2^{\rm atom}(r)
+=
+g_{\rm mix}\,Q_{22}^{\rm mouth}\!\bigl(\epsell^{*}(r)\bigr)
+=
+\frac{g_{\rm mix}\Rth^4}{4k_{22}}\,\bigl|T_2^{\rm eff}(r;\Rth)\bigr|
++\Order{\bigl(T_2^{\rm eff}\bigr)^2}.
+\label{eq:bridge-atomic-splitter-amplitude}
+\end{equation}
+Thus the finite-throat atomic \(\Ptwotwo\) mouth background is not merely a shape correction to hydrogen. It is the first concrete reduced-sector mechanism that makes the splitter coefficient in \cref{eq:corridor-splitter} nonzero.
+
+\begin{proposition}[Atomic splitter mechanism]\label{prop:bridge-atomic-splitter}
+Assuming the mixed same-charge rotor of \cref{sec:corridor}, the bound-state \(\Ptwotwo\) mouth deformation generated in \cref{sec:finite-response} produces the effective rotor-plus-splitter model \cref{eq:bridge-atomic-rotor}. In particular, the atomic environment supplies the first concrete real \(m=2\) splitter acting on the mixed internal rotor.
+\end{proposition}
+\claimstatus{\statusReduced + \statusConditional}
+
+\subsection{Why the bound-state splitter is not yet enough}\label{subsec:bridge-not-enough}
+
+The bridge-level gain in \cref{eq:bridge-atomic-rotor} is substantial, but it is still an \emph{environmental} result. As the partner is removed,
+\begin{equation}
+T_2^{\rm eff}(r;\Rth)\to 0,
+\qquad
+Q_{22}^{\rm mouth}(r)\to 0,
+\qquad
+V_2^{\rm atom}(r)\to 0,
+\qquad
+r\to\infty.
+\label{eq:bridge-isolated-limit-vanishing}
+\end{equation}
+So the atomic tide alone cannot support an isolated same-charge doublet. To keep the corridor identified in \cref{sec:corridor} alive in the free-particle limit, one needs an intrinsic source for the same headless \(\Ptwotwo\) sector that the atomic environment first revealed dynamically.
+
+This is exactly where the conditional half-flux closure imported in \cref{subsec:corridor-half-flux} becomes useful. Once the mixed core is restricted to the half-integer branch, the first static observable available to it is not a vector but a traceless rank-2 tensor. The next subsection shows that, in the reduced mixed-core ansatz, this tensor is automatically nonzero for every nontrivial localized profile.
+
+\subsection{Intrinsic mixed-core stress and isolated \texorpdfstring{$\Ptwotwo$}{P22} bracing}\label{subsec:bridge-intrinsic-bracing}
+
+Work in a local static gauge near the isolated core,
+\begin{equation}
+A_a\approx 0,
+\qquad
+\partial_t A_w\approx 0,
+\label{eq:bridge-static-gauge}
+\end{equation}
+so the mixed field is carried by the core channel \(F_{Iw}=\partial_I A_w\) in the mouth plane \((I,J,K\in\{x,y\})\). The lowest localized mixed-sector representative consistent with the corridor of \cref{sec:corridor} is
+\begin{equation}
+A_w(x,y,w)
+=
+b_I x_I\,\chi(r_\perp,w),
+\qquad
+r_\perp\equiv \sqrt{x^2+y^2},
+\label{eq:bridge-Aw-ansatz}
+\end{equation}
+with
+\begin{equation}
+b_I=\sqrt{s_*}\,n_I(\theta_b),
+\qquad
+n_I(\theta_b)=(\cos\theta_b,\sin\theta_b),
+\qquad
+s_*\equiv b_I b_I.
+\label{eq:bridge-bI-def}
+\end{equation}
+Under \(\theta_b\to\theta_b+\pi\), the representative \cref{eq:bridge-Aw-ansatz} changes sign, but all quadratic observables remain unchanged. The first static observable is therefore naturally headless and lies in the real \(m=2\) sector.
+
+Define the localized mixed-core energy density and its integrated traceless planar stress by
+\begin{equation}
+\mathcal E_{\rm mix}
+=
+\frac{Z(w)}{2\mu_0}
+\left[(\partial_I A_w)(\partial_I A_w)+(\partial_w A_w)^2\right],
+\label{eq:bridge-mixed-energy-density}
+\end{equation}
+\begin{equation}
+\Pi^{\rm mix}_{IJ}
+\equiv
+\int d^2x_\perp\,dw\;
+\frac{Z(w)}{\mu_0}
+\left[
+\partial_I A_w\partial_J A_w
+-\frac12\delta_{IJ}\,\partial_K A_w\partial_K A_w
+\right].
+\label{eq:bridge-mixed-stress-def}
+\end{equation}
+For the ansatz \cref{eq:bridge-Aw-ansatz}, one has
+\begin{equation}
+\partial_I A_w
+=
+b_I\chi + (b_Kx_K)\frac{x_I}{r_\perp}\,\partial_{r_\perp}\chi.
+\label{eq:bridge-dIw}
+\end{equation}
+A direct angular average in the mouth plane then yields the exact reduced identity
+\begin{equation}
+\Pi^{\rm mix}_{IJ}
+=
+C_{\rm mix}
+\left(
+ b_I b_J-\frac12 s_*\delta_{IJ}
+\right),
+\label{eq:bridge-mixed-stress-theorem}
+\end{equation}
+with
+\begin{equation}
+C_{\rm mix}
+=
+\frac{\pi}{2\mu_0}
+\int_{-\infty}^{\infty}dw\,Z(w)
+\int_0^{\infty}r_\perp\,dr_\perp\,
+\Bigl(2\chi+r_\perp\partial_{r_\perp}\chi\Bigr)^2.
+\label{eq:bridge-Cmix}
+\end{equation}
+Because the integrand in \cref{eq:bridge-Cmix} is a square and \(Z(w)>0\) on the localized support, \(C_{\rm mix}>0\) for every nontrivial localized core profile.
+
+\begin{proposition}[Intrinsic mixed-core stress theorem]\label{prop:bridge-mixed-stress}
+Within the reduced mixed-core ansatz \cref{eq:bridge-Aw-ansatz}, the isolated same-charge core automatically carries a real traceless planar stress of the form \cref{eq:bridge-mixed-stress-theorem}. In particular, the first static observable of the mixed core is a headless \(\Ptwotwo\)-type tensor rather than a scalar or vector.
+\end{proposition}
+\claimstatus{\statusReduced + \statusConditional}
+
+To turn \cref{eq:bridge-mixed-stress-theorem} into an isolated mouth bracer, adopt the conditional half-flux branch from \cref{thm:corridor-half-flux-lock} and specialize to the minimal sector
+\begin{equation}
+|\nuB|=\frac12.
+\label{eq:bridge-minimal-half-flux}
+\end{equation}
+Using \cref{eq:corridor-kappa-nuB}, this fixes the pinned mixed amplitude to
+\begin{equation}
+s_* = \frac{\hbar}{\nu_0}.
+\label{eq:bridge-s-half-flux}
+\end{equation}
+Introduce the headless basis tensor
+\begin{equation}
+\mathcal N_{IJ}(\theta)
+\equiv
+n_I(\theta)n_J(\theta)-\frac12\delta_{IJ},
+\label{eq:bridge-N-basis}
+\end{equation}
+so that \cref{eq:bridge-mixed-stress-theorem,eq:bridge-s-half-flux} become
+\begin{equation}
+\Pi^{(1/2)}_{IJ}
+=
+C_{\rm mix}\frac{\hbar}{\nu_0}\,\mathcal N_{IJ}(\theta_b).
+\label{eq:bridge-half-flux-stress}
+\end{equation}
+The mouth quadrupole tensor from \cref{sec:finite-response} can be written in the same basis as
+\begin{equation}
+Q_{IJ}^{\rm mouth}(\epsell,\thmouth)
+=
+Q_{22}^{\rm mouth}(\epsell)\,\mathcal N_{IJ}(\thmouth),
+\qquad
+Q_{22}^{\rm mouth}(\epsell)=\frac{\Rth^2}{2}\sinh 2\epsell.
+\label{eq:bridge-mouth-tensor}
+\end{equation}
+The lowest symmetry-allowed scalar transfer between the mixed core and the mouth is then
+\begin{equation}
+U_{\rm coup}
+=
+-\Lambda_Q\,\Pi^{(1/2)}_{IJ}Q_{\rm mouth}^{IJ},
+\label{eq:bridge-Ucoup-def}
+\end{equation}
+where \(\Lambda_Q\) is a reduced mouth--core transfer coefficient. Using
+\begin{equation}
+\mathcal N_{IJ}(\theta_1)\mathcal N_{IJ}(\theta_2)
+=
+\frac12\cos 2\bigl(\theta_1-\theta_2\bigr),
+\label{eq:bridge-N-contraction}
+\end{equation}
+one obtains
+\begin{equation}
+U_{\rm coup}
+=
+-h_{1/2}\sinh 2\epsell\cos 2\bigl(\thmouth-\theta_b\bigr),
+\qquad
+h_{1/2}
+\equiv
+\frac{\Lambda_Q\Rth^2 C_{\rm mix}\hbar}{4\nu_0}.
+\label{eq:bridge-h-half}
+\end{equation}
+Thus, provided the transfer coefficient does not vanish accidentally, the isolated mouth energy becomes
+\begin{equation}
+U_{\rm iso}(\epsell,\thmouth)
+=
+\frac12 k_{22}\epsell^2
+-h_{1/2}\sinh 2\epsell\cos 2\bigl(\thmouth-\theta_b\bigr)
++\Order{\epsell^4}.
+\label{eq:bridge-isolated-mouth-energy}
+\end{equation}
+
+\begin{theorem}[Conditional isolated \texorpdfstring{$\Ptwotwo$}{P22} bracing]\label{thm:bridge-isolated-bracing}
+Adopt the conditional half-flux branch \cref{eq:bridge-minimal-half-flux}. If the mixed-core profile is nontrivial and the transfer coefficient \(\Lambda_Q\) is nonzero, then the isolated throat supports a permanent headless \(\Ptwotwo\) bracing term of the form \cref{eq:bridge-isolated-mouth-energy}. In the weak-bracing regime with \(h_{1/2}>0\), the isolated minimum is
+\begin{equation}
+\thmouth=\theta_b\pmod{\pi},
+\qquad
+\epsell^{(\infty)}
+=
+\frac{2h_{1/2}}{k_{22}}+\Order{h_{1/2}^2},
+\label{eq:bridge-isolated-ellipticity}
+\end{equation}
+so the isolated mouth remains in the \(\Ptwotwo\) sector after the external atomic tide is removed.
+\end{theorem}
+\begin{proof}
+\Cref{eq:bridge-Cmix} gives \(C_{\rm mix}>0\) for every nontrivial localized profile, so \cref{eq:bridge-h-half} is nonzero whenever \(\Lambda_Q\neq 0\). Minimization of \cref{eq:bridge-isolated-mouth-energy} with respect to the headless angle fixes \(\thmouth=\theta_b\pmod{\pi}\). Expanding \(\sinh 2\epsell = 2\epsell+\Order{\epsell^3}\) then gives
+\[
+U_{\rm iso}(\epsell,\theta_b)
+=
+\frac12 k_{22}\epsell^2-2h_{1/2}\epsell+\Order{\epsell^4,h_{1/2}\epsell^3},
+\]
+whose minimum is \cref{eq:bridge-isolated-ellipticity} in the weak-bracing regime.
+\end{proof}
+\claimstatus{\statusReduced + \statusConditional}
+
+\subsection{Reduced protected doublet under half-flux bracing}\label{subsec:bridge-doublet}
+
+Once the isolated mouth has a permanent headless \(\Ptwotwo\) axis, the mixed rotor no longer sees a continuously degenerate background. Substituting the isolated bracing sector into the coupling \cref{eq:bridge-mix-mouth-coupling} gives the reduced isolated rotor model
+\begin{equation}
+L_{\rm rot}^{\rm iso}
+=
+\frac{I}{2}\dot\throt^{\,2}
++\tau\frac{\hbar}{2}\dot\throt
+-V_\infty\cos 2\bigl(\throt-\theta_b\bigr),
+\qquad
+\tau=\pm1,
+\label{eq:bridge-isolated-rotor}
+\end{equation}
+with
+\begin{equation}
+V_\infty
+\equiv
+g_{\rm mix}\,Q_{22}^{\rm mouth}(\epsell^{(\infty)})>0.
+\label{eq:bridge-Vinfty}
+\end{equation}
+The coefficient of the Berry term in \cref{eq:bridge-isolated-rotor} is fixed by the minimal half-flux branch \cref{eq:bridge-minimal-half-flux}; the sign \(\tau\) labels the complex-conjugate mixed branches.
+
+\begin{theorem}[Conditional reduced protected doublet]\label{thm:bridge-protected-doublet}
+Assume the conditional half-flux branch \cref{eq:bridge-minimal-half-flux} and the isolated bracing of \cref{thm:bridge-isolated-bracing}. Then the reduced isolated Hamiltonian associated with \cref{eq:bridge-isolated-rotor} has exact spectral doublets.
+\end{theorem}
+\begin{proof}
+For fixed \(\tau\), apply the gauge transformation
+\begin{equation}
+\psi(\throt)=e^{i\tau\throt/2}\,\widetilde\psi(\throt).
+\label{eq:bridge-gauge-transform}
+\end{equation}
+This removes the Berry shift from the kinetic term and yields the real Schr\"odinger operator
+\begin{equation}
+\widetilde H
+=
+-\frac{\hbar^2}{2I}\,\partial_{\throt}^2
+-V_\infty\cos 2\bigl(\throt-\theta_b\bigr),
+\label{eq:bridge-Htilde}
+\end{equation}
+with antiperiodic boundary condition
+\begin{equation}
+\widetilde\psi(\throt+2\pi)=-\widetilde\psi(\throt).
+\label{eq:bridge-antiperiodic-bc}
+\end{equation}
+Because the potential in \cref{eq:bridge-Htilde} is \(\pi\)-periodic, the half-turn operator
+\begin{equation}
+(S\widetilde\psi)(\throt)=\widetilde\psi(\throt+\pi)
+\label{eq:bridge-halfturn}
+\end{equation}
+commutes with \(\widetilde H\). Antiperiodicity gives
+\begin{equation}
+S^2\widetilde\psi(\throt)=\widetilde\psi(\throt+2\pi)=-\widetilde\psi(\throt),
+\qquad
+S^2=-1.
+\label{eq:bridge-S2}
+\end{equation}
+Hence the eigenvalues of \(S\) are \(\pm i\). Since \(\widetilde H\) is real, complex conjugation maps any \(+i\) eigenstate of \(S\) to a linearly independent \(-i\) eigenstate at the same energy. Every energy level of \(\widetilde H\), and therefore of \cref{eq:bridge-isolated-rotor}, is thus exactly paired.
+\end{proof}
+\claimstatus{\statusReduced + \statusConditional}
+
+\subsection{Scope of the bridge result}\label{subsec:bridge-scope}
+
+The bridge result is now precise. First, the finite-throat atomic environment produces a real \(\Ptwotwo\) mouth background that acts as the first concrete splitter on the mixed same-charge rotor. Second, that environmental splitter vanishes in the isolated limit, so the atomic result by itself is not yet an isolated-particle theorem. Third, once the conditional half-flux branch from \cref{sec:corridor} is adopted, the same mixed core that carries the rotor also carries a real traceless planar stress, and this induces a permanent isolated \(\Ptwotwo\) bracing term. Fourth, the resulting half-flux-plus-bracing rotor has exact spectral doublets in the reduced model.
+
+Equally important are the non-claims. This section does \emph{not} prove the autonomous-eigenmode closure from the fully solved moving-throat PDE, does not derive a complete charged-lepton theorem, does not establish a non-Abelian exchange structure, and does not enter the magnetic-moment or anomaly sectors. Its role is narrower and cleaner: it closes the structural gap identified in \cref{sec:corridor} by showing how the atomic \(\Ptwotwo\) sector provides the first real splitter, and how that splitter can persist intrinsically only under the explicit conditional closure already isolated by the audit.
+
+\begin{figure}[t]
+    \centering
+    \fbox{\rule{0pt}{1.8in}\rule{0.92\linewidth}{0pt}}
+    \caption{Placeholder for the conceptual bridge figure: the atomic tide drives a real \(\Ptwotwo\) mouth ellipse, the ellipse acts as an \(m=2\) splitter on the mixed internal rotor, and under the conditional half-flux branch the isolated mixed core carries a permanent traceless stress that preserves the braced \(\Ptwotwo\) sector.}
+    \label{fig:bridge}
+\end{figure}
+
+\section{Discussion and conclusion: what is established, what is conditional, and what is deferred}\label{sec:discussion}
+
+The logical core of the paper can now be stated compactly. In the opposite-charge sector, the declared reduction hierarchy yields a controlled hydrogenic problem with the expected variational Bohr scale and reduced-mass upgrade. Once finite throat size is retained, the first shape-sensitive atomic load is promoted from a raw scalar depth to a tidal/Hessian response problem; that response decomposes naturally into a scalar $P_0$ trace channel and a quadrupolar $P_2$ channel; and under centering plus area preservation the first driven non-axisymmetric mouth deformation is the real \(\Ptwotwo\) ellipse. The same mouth sector then supplies the first concrete static splitter acting on the mixed same-charge rotor. The only genuinely conditional step is the continuation of that splitter into an isolated same-charge doublet through the half-flux mixed-core branch.
+
+\subsection{What is established in the present reduction domain}\label{subsec:discussion-established}
+
+The reduced atomic chain is no longer just heuristic. It can be summarized as a single scoped statement.
+
+\begin{proposition}[Established reduced-sector chain]\label{prop:discussion-established-chain}
+Within the reduction domain of \cref{sec:frozen}, the following statements are established in the present paper:
+\begin{enumerate}
+    \item the inherited action stack admits a controlled hydrogenic reduced sector with variational energy functional \cref{eq:hydrogenic-functional} and Bohr-scale minimum \cref{eq:bohr-min};
+    \item treating both defects dynamically upgrades the fixed-source picture to the genuine two-body reduced-mass sector of \cref{sec:hydrogenic};
+    \item for a finite throat, the first shape-sensitive external loading is the partner-field Hessian \cref{eq:finite-hessian-load}, not the raw scalar Coulomb depth;
+    \item this finite-throat load decomposes into the scalar--trace and traceless--quadrupole channels of \cref{eq:finite-hessian-decomposition}, with pure Coulomb loading directly exciting the quadrupolar branch and producing the far-field law \cref{eq:finite-r6-law};
+    \item under centering and area preservation, the first driven non-axisymmetric mouth deformation is the real constant-area \(\Ptwotwo\) ellipse described in \cref{subsec:finite-p22-ellipse};
+    \item finite throat size regulates the apparent short-distance divergence by replacing the point-Hessian approximation with the smooth core-resolved kernel of \cref{subsec:finite-core-regulation}.
+\end{enumerate}
+\end{proposition}
+\claimstatus{\statusReduced}
+
+These six statements already form a coherent standalone result. They show that finite throat size is not a small cosmetic correction to the hydrogenic reduction. It changes the first internal atomic question into a regular response problem and exposes a real headless mouth observable that was invisible in the strict point-particle limit.
+
+The bridge result is then the natural final step on top of that atomic chain. Once the mixed same-charge rotor of \cref{sec:corridor} is admitted, the atomic mouth quadrupole provides the first concrete real \(m=2\) splitter, with effective reduced dynamics given by \cref{eq:bridge-atomic-rotor}. In that precise sense, the atomic \(\Ptwotwo\) sector does more than modify bound-state energetics: it supplies the missing structural ingredient that the same-charge corridor lacked.
+
+\begin{proposition}[Established bridge statement within the adopted corridor]\label{prop:discussion-bridge-established}
+Assuming the mixed same-charge rotor identified in \cref{sec:corridor}, the finite-throat atomic \(\Ptwotwo\) mouth background derived in \cref{sec:finite-response} generates the effective splitter term \cref{eq:bridge-atomic-splitter-amplitude} and therefore realizes the first concrete static \(m=2\) splitting mechanism acting on that rotor.
+\end{proposition}
+\claimstatus{\statusReduced + \statusConditional}
+
+The conclusion to draw is therefore sharp. The present paper establishes an internally complete atomic-to-splitter chain: hydrogenic reduction $\to$ finite-throat tidal response $\to$ real \(\Ptwotwo\) mouth mode $\to$ first concrete splitter for the mixed same-charge rotor. That chain is the main result of the paper.
+
+\subsection{What remains conditional, and why}\label{subsec:discussion-conditional}
+
+The same-charge extension is intentionally narrower than the atomic result. Two inputs remain conditional throughout.
+
+First, the corridor statement from \cref{sec:corridor} is imported rather than re-derived from a fully solved parent PDE: within the corrected ontology, the mixed \((a\text{-}w)\) sector is the only live same-charge internal corridor presently identified. Second, the half-flux lock of \cref{thm:corridor-half-flux-lock} depends on the autonomous-eigenmode closure \cref{eq:corridor-autonomous-closure}, which kills the common scalar phase and reduces the loop law to the central-sign condition on the mixed Berry branch.
+
+Once those inputs are adopted, the bridge section shows something stronger than a mere environmental perturbation. The atomic splitter itself vanishes in the isolated limit, but on the conditional half-flux branch the mixed core carries an intrinsic traceless planar stress, and a nonzero mouth--core transfer coefficient then produces the isolated bracing energy \cref{eq:bridge-isolated-mouth-energy}. The resulting reduced isolated rotor \cref{eq:bridge-isolated-rotor} has exact spectral doublets.
+
+\begin{proposition}[Conditional isolated continuation]\label{prop:discussion-conditional-continuation}
+Adopt the mixed-corridor statement of \cref{prop:corridor-only-live}, the half-flux closure of \cref{thm:corridor-half-flux-lock}, and the nonvanishing reduced mouth--core transfer coefficient used in \cref{thm:bridge-isolated-bracing}. Then the atomic splitter identified in the bound-state problem admits a reduced isolated continuation: the mixed core supports permanent \(\Ptwotwo\) bracing, and the associated isolated rotor has exact spectral doublets.
+\end{proposition}
+\claimstatus{\statusConditional}
+
+This is the right place to keep the logical boundary explicit. The paper does \emph{not} prove the autonomous-eigenmode closure from the full moving-throat PDE, does \emph{not} establish uniqueness of the same-charge corridor as a theorem of the completed theory, and does \emph{not} claim an exact charged-particle theorem beyond the stated reduced branch. What it does provide is a clean structural statement: if the explicit conditional closure isolated by the audit is granted, then the atomic \(\Ptwotwo\) sector supplies the missing splitter and admits a consistent reduced isolated continuation.
+
+\subsection{What is deferred, and why the boundary matters}\label{subsec:discussion-deferred}
+
+Several nearby topics are intentionally deferred. This is not because they are uninteresting, but because they live at a different closure tier than the result proved here. The present paper does not need them, and including them would blur the distinction between reduced derivation and higher-order modeling.
+
+\begin{itemize}
+    \item \textbf{Tree-level magnetic moment and \texorpdfstring{$g=2$}{g=2}.} The geometric gear-reduction result is a natural next target, but it requires additional closure linking the mixed branch to the observable carrier sector.
+    \item \textbf{Anomaly and correction hierarchy.} Schwinger-scale support transfer, self-loop renormalization, finite-thickness softening, and the local transport hierarchy are downstream of the present paper and should be judged on their own terms.
+    \item \textbf{Full charged-lepton completion.} The present result isolates a conditional same-charge doublet corridor, not a complete charged-particle theorem with full transformation law and all observables closed.
+    \item \textbf{Exchange structure, chirality, weak couplings, neutral partner, and family structure.} Those topics require additional physics beyond the scoped atomic-to-splitter chain established here.
+\end{itemize}
+
+Keeping those topics deferred is methodologically valuable. It prevents the main claim from being diluted by a stack of closures that are logically downstream of the finite-throat response problem. It also preserves a clean notation boundary: the present paper can keep the hydrogenic, mouth-response, and mixed-corridor symbols stable without importing the much denser magnetic and anomaly bookkeeping.
+
+\subsection{Conclusion}\label{subsec:discussion-conclusion}
+
+The durable conclusion of the paper is simple. Finite throat size does more than regularize short-distance atomic physics. It exposes a real, headless, mechanically selected \(\Ptwotwo\) mouth sector. That sector is the first concrete splitter needed by the same-charge mixed rotor, and it therefore provides the first direct structural bridge from the atomic reduction to the same-charge corridor. In this sense, the atomic and same-charge questions are not separate pieces of the program: the atomic finite-throat problem reveals the exact geometric object that the same-charge corridor was missing.
+
+The claim hierarchy is therefore stable. The hydrogenic reduction, finite-throat response law, \(\Ptwotwo\) mode selection, and core regulation are established in the reduced sector. The continuation to an isolated same-charge doublet is conditional and is stated as such. The magnetic-moment and anomaly programs are deferred. With that separation kept explicit, the present paper stands as a coherent result in its own right and as a clean launching point for the next stage of the program.
+
+\appendix
+
+\section{Notation ledger}\label{sec:notation-ledger}
+
+This section is a reading aid. It collects the active symbols of the scoped paper and records the collision locks that keep the atomic, post-Newtonian, electromagnetic, and same-charge sectors from reusing the same letters for incompatible objects. No new assumptions are introduced here; the ledger only summarizes notation already fixed in \cref{sec:frozen,sec:hydrogenic,sec:finite-response,sec:corridor,sec:bridge}.
+
+\subsection{Charge, localization, and frozen inherited inputs}\label{subsec:notation-ledger-core}
+
+\begin{table}[t]
+\centering
+\caption{Core charge, localization, and frozen-input notation used in the paper.}
+\label{tab:notation-ledger-core}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} X@{}}
+\toprule
+Symbol & Meaning & Remarks \\
+\midrule
+$\eta_Q$ & electric branch sign & Topological sign label of the electric branch; not a circulation or same-charge rotor label. \\
+$e_*$ & branch charge magnitude & Fixed microscopic electric scale before localization dressing. \\
+$\qstar=\eta_Q e_*$ & unprojected electric branch charge & Bookkeeping charge prior to localization-induced rescaling. \\
+$\qeff=\qstar/\sqrt{\Zint}$ & observable brane electric charge & Enters the reduced Coulomb strength through $g_C=\qeff^2/(4\pi\epsilon_0)$. \\
+$Z(w)$ & localization profile in the Maxwell action & Shapes bulk EM dynamics and defines $\Zint$. \\
+$\Zint=\int Z(w)\,dw$ & integrated localization weight & Controls the brane-observable electric coupling; for Gaussian $Z$, $\Zint=\lambda_Z\sqrt\pi$. \\
+$W(w)$ & projection kernel for brane observables & Operational projection across $w$; kept distinct from both $Z(w)$ and the dynamical matter mode $\chi_0(w)$. \\
+$\chi_0(w)$ & lowest transverse matter mode & Appears in the reduced matter ansatz $\psi=\chi_0\phi$ and therefore belongs to the dynamics, not to observation. \\
+$\lambda_Z$ & EM localization thickness scale & Width parameter of the localized Maxwell zero mode. \\
+$n$ & equation-of-state exponent & Frozen inherited material-law exponent; fixed to $n=5$ in the present paper. \\
+$\kapparho$ & gravity-side scalar coefficient & Historical bare $q=1$ from the gravity ledger, renamed to prevent confusion with electric charge. \\
+$\kappaadd,\ \kappapv,\ \betapn$ & inherited 1PN coefficients & Frozen low-order ledger data; not re-derived here. \\
+$\alphawake,\ a_H,\ K_{\rm vec}$ & inherited wake/vector constants & Reserved for the wake sector only; no other use of naked $\alpha$ is allowed in the paper. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Atomic reduction and finite-throat response symbols}\label{subsec:notation-ledger-atomic}
+
+\begin{table}[t]
+\centering
+\caption{Symbols used in the hydrogenic and finite-throat atomic sections.}
+\label{tab:notation-ledger-atomic}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} X@{}}
+\toprule
+Symbol & Meaning & Remarks \\
+\midrule
+$\aorb$ & hydrogenic variational/orbital scale & The Bohr-scale minimizer of the reduced atomic functional; never reused for throat radius. \\
+$\mu$ & two-body reduced mass & The dynamical reduced mass in the opposite-charge sector. \\
+$g_C$ & effective attractive Coulomb coefficient & Defined by the observable electric coupling, $g_C=\qeff^2/(4\pi\epsilon_0)$. \\
+$E_\perp$ & transverse confinement offset & Constant inherited from the lowest transverse matter mode. \\
+$\Gamma_{10}$ & ten-power overlap factor & Carries the frozen $n=5$ GNLS stiffness into the reduced brane theory. \\
+$\delta V_{\rm fs}(r)$ & finite-size atomic correction & Placeholder for the first internal finite-throat correction beyond the pure Coulomb reduction. \\
+$\Rth,\ \Lth$ & throat radius and throat length & Geometric throat scales; kept separate from the orbital scale $\aorb$. \\
+$T_{ij}$ & partner-field Hessian / tidal tensor & First shape-sensitive external load on a finite throat. \\
+$T_0,\ T_{2,ij}$ & scalar trace and traceless quadrupole pieces of $T_{ij}$ & The atomic load decomposes into a $P_0\oplus P_2$ multiplet. \\
+$\Lambda_A^{(0)},\ \Lambda_A^{(2)}$ & bodywise scalar and quadrupole susceptibilities & Reduced coefficients controlling the throat response of body $A$. \\
+$\Lambda_{0,{\rm pair}},\ \Lambda_{2,{\rm pair}}$ & pairwise response coefficients & Sums of the bodywise susceptibilities for the bound pair. \\
+$\epsell$ & mouth ellipticity & Real amplitude of the constant-area mouth ellipse; never denoted by $\sigma$ in this paper. \\
+$\thmouth$ & mouth-axis angle & Headless major-axis orientation of the real $\Ptwotwo$ mouth deformation. \\
+$\theta_T$ & principal axis of the planar quadrupolar tide & Axis of the imposed atomic tidal tensor in the mouth plane. \\
+$Q_{IJ}^{\rm mouth}$ & mouth quadrupole tensor & Area-averaged traceless quadrupole tensor of the deformed mouth. \\
+$Q_{22}^{\rm mouth}$ & real $\Ptwotwo$ amplitude of the mouth & For the constant-area ellipse, $Q_{22}^{\rm mouth}=(\Rth^2/2)\sinh 2\epsell$. \\
+$k_{22}$ & even support-sector stiffness of the mouth mode & Quadratic restoring coefficient in the $\Ptwotwo$ channel. \\
+$\chi_{22}=\Rth^2/(2k_{22})$ & static $\Ptwotwo$ susceptibility & Linear response coefficient relating ellipticity to the effective quadrupolar tide. \\
+$T_2^{\rm eff}(r;\Rth)$ & finite-throat effective planar tidal amplitude & Core-resolved quadrupolar load felt by the mouth. \\
+$\mathcal F(x)$ & dimensionless regulator profile & Shape function in $T_2^{\rm eff}(r;\Rth)=g_C\mathcal F(r/\Rth)/\Rth^3$. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Same-charge corridor and bridge symbols}\label{subsec:notation-ledger-corridor}
+
+\begin{table}[t]
+\centering
+\caption{Symbols used in the same-charge corridor and the atomic-to-lepton bridge.}
+\label{tab:notation-ledger-corridor}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.30\textwidth} X@{}}
+\toprule
+Symbol & Meaning & Remarks \\
+\midrule
+$b_x,b_y$ or $b_i$ & odd transverse collective coordinates & Minimal same-charge transverse pair retained in the mixed $(a\text{-}w)$ corridor. \\
+$s_*=b_x^2+b_y^2$ & pinned odd-branch radius & Fixed radius of the odd transverse pair in the reduced rotor limit. \\
+$M_b$ & transverse collective mass & Inertial coefficient of the odd pair prior to angular reduction. \\
+$I=M_b s_*$ & internal rotor inertia & Kept distinct from the $2\times 2$ identity matrix, which should be written as $\mathbb{1}_2$ when needed. \\
+$\tau=\pm1$ & mixed-sector sign on the selective same-charge bundle & Same-charge label carried by the mixed corridor; not an electric sign and not a circulation label. \\
+$\nu_0$ & mixed-sector Berry coefficient & Microscopic coefficient entering the first-order rotor term. \\
+$\kappa_0=\nu_0 s_*/2$ & reduced Berry shift & Intermediate quantity used to define the dimensionless offset $\nuB$. \\
+$\nuB=\kappa_0/\hbar$ & Berry / half-flux offset & The internal offset that can be forced onto the half-integer lattice under the conditional loop closure. \\
+$\throt$ & internal rotor angle & Compact internal phase variable of the mixed same-charge rotor. \\
+$V_2,\ \theta_s$ & generic real $m=2$ splitter amplitude and axis & Minimal headless anisotropy needed to reduce the free rotor to a protected doublet. \\
+$\phi_0$ & common scalar support/recirculation phase & Phase that must be killed by the autonomous-eigenmode closure in the conditional half-flux theorem. \\
+$\mathcal W_{\rm B}(\nuB)$ & Berry Wilson loop matrix & Recommended final-manuscript notation for the mixed-sector loop matrix, used to avoid collision with the projection kernel $W(w)$. \\
+$\theta_b$ & axis of the intrinsic mixed-core tensor & Headless orientation of the localized mixed-core stress. \\
+$\mathcal N_{IJ}(\theta)$ & headless quadrupole basis tensor & Defined by $\mathcal N_{IJ}(\theta)=n_I(\theta)n_J(\theta)-\tfrac12\delta_{IJ}$. \\
+$C_{\rm mix}$ & intrinsic mixed-core stress coefficient & Positive reduced coefficient determined by the localized mixed-core profile. \\
+$g_{\rm mix}$ & atomic mouth--rotor transfer coefficient & Converts the bound-state mouth quadrupole into a rotor splitter amplitude. \\
+$\Lambda_Q$ & isolated mouth--core transfer coefficient & Couples the intrinsic mixed-core stress to the mouth quadrupole in the isolated continuation. \\
+$h_{1/2}$ & half-flux isolated bracing amplitude & Leading headless bracing coefficient on the conditional half-flux branch. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Collision locks and reserved symbols}\label{subsec:notation-ledger-locks}
+
+The scoped paper is easier to read if a small number of high-risk collisions are locked explicitly. Table~\ref{tab:notation-ledger-locks} records the conventions that should be enforced uniformly in the final manuscript.
+
+\begin{table}[t]
+\centering
+\caption{Reserved symbols and collision locks for the final manuscript.}
+\label{tab:notation-ledger-locks}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth} >{\raggedright\arraybackslash}p{0.28\textwidth} X@{}}
+\toprule
+Meaning to keep fixed & Symbol to use in this paper & Symbol to avoid or reserve \\
+\midrule
+Electric charge variables & $\qstar,\ \qeff$ & Avoid bare $q$ unless the electric meaning is explicit; keep the gravity-side scalar coefficient as $\kapparho$. \\
+Projection across $w$ & $W(w)$ & Do not reuse $W$ for the same-charge Wilson loop; write the latter as $\mathcal W_{\rm B}(\nuB)$. \\
+Equation-of-state exponent & $n=5$ & Do not reuse $n$ as the rotor spectral integer; write the latter as $m_{\rm rot}\in\mathbb Z$ or equivalent. \\
+Throat radius and orbital scale & $\Rth$ and $\aorb$ & Avoid bare $a$, which is overloaded in the earlier geometry notes. \\
+Berry / half-flux parameter & $\nuB$ & Do not use naked $\alpha$ for the internal topological quantity. \\
+Wake-mixing parameter & $\alphawake$ & Reserved to the wake sector only; keep separate from both $\nuB$ and $\alpha_{\rm fs}$. \\
+Mouth ellipticity & $\epsell$ & Avoid $\sigma$, which is overloaded elsewhere in the program. \\
+Mouth axis and rotor phase & $\thmouth$ and $\throt$ & Avoid a single overloaded angle symbol for both geometrical and internal phases. \\
+Moment of inertia vs.
+identity matrix & $I$ and $\mathbb{1}_2$ & Do not let the rotor inertia compete typographically with the $2\times2$ identity. \\
+Localization profile vs.
+projection kernel vs.
+matter mode & $Z(w)$, $W(w)$, $\chi_0(w)$ & Keep the three transverse functions conceptually and notationally distinct at all times. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Unless a local exception is announced explicitly, the final manuscript should avoid bare $a$, $L$, $q$, $\alpha$, $\sigma$, and $W$ as standalone symbols, since each already carries incompatible meanings elsewhere in the program. The point of the ledger is not pedantry; it is to ensure that the finite-throat atomic story and the same-charge bridge can be read as a single paper without the notation silently changing its ontology from section to section.
+
+\section{Hydrogenic integral ledger}\label{app:hydrogenic-integrals}
+
+This appendix records the elementary radial integrals used in \cref{sec:hydrogenic}. The goal is purely bookkeeping: the formulas below are the ones needed to pass from the trial state \cref{eq:trial-1s} to the expectation values quoted in \cref{eq:hydrogenic-basic-expectations,eq:hydrogenic-correction-expectations,eq:hydrogenic-functional,eq:relative-energy-functional}. The same identities apply in both the fixed-source and two-body sectors; only the kinetic mass parameter changes, from $m_-$ in the one-body reduction to the reduced mass $\mu$ in the relative-coordinate problem.
+
+\subsection{Trial state and master radial average}\label{subsec:hydrogenic-integral-master}
+
+For convenience, rewrite the trial state of \cref{eq:trial-1s} as
+\begin{equation}
+\phi_{\aorb}(r)=\frac{1}{\sqrt{\pi\aorb^3}}e^{-r/\aorb},
+\qquad
+|\phi_{\aorb}(r)|^2 = \frac{1}{\pi\aorb^3}e^{-2r/\aorb}.
+\label{eq:appendix-trial-state}
+\end{equation}
+Using spherical symmetry,
+\begin{equation}
+\int d^3x\,f(r)
+=
+4\pi\int_0^\infty r^2 f(r)\,dr.
+\label{eq:appendix-radial-measure}
+\end{equation}
+Hence any central observable $F(r)$ has expectation value
+\begin{equation}
+\bigl\langle F(r)\bigr\rangle_{\aorb}
+=
+\int d^3x\,|\phi_{\aorb}(r)|^2 F(r)
+=
+\frac{4}{\aorb^3}\int_0^\infty r^2 e^{-2r/\aorb}F(r)\,dr.
+\label{eq:appendix-central-average}
+\end{equation}
+The elementary integral repeatedly used below is
+\begin{equation}
+\int_0^\infty r^n e^{-\beta r}\,dr = \frac{n!}{\beta^{n+1}},
+\qquad
+\beta>0,
+\qquad
+n=0,1,2,\dots.
+\label{eq:appendix-gamma-identity}
+\end{equation}
+Normalization follows immediately from \cref{eq:appendix-central-average} with $F(r)=1$:
+\begin{equation}
+\int d^3x\,|\phi_{\aorb}(r)|^2
+=
+\frac{4}{\aorb^3}\int_0^\infty r^2 e^{-2r/\aorb}\,dr
+=
+\frac{4}{\aorb^3}\cdot \frac{2}{(2/\aorb)^3}
+=1.
+\label{eq:appendix-normalization-check}
+\end{equation}
+
+\subsection{Kinetic expectation and Coulomb channel}\label{subsec:hydrogenic-integral-kinetic}
+
+Let $M$ denote the kinetic mass appearing in the radial Hamiltonian,
+\begin{equation}
+H_M = -\frac{\hbar^2}{2M}\nabla^2 + V(r).
+\label{eq:appendix-kinetic-hamiltonian}
+\end{equation}
+For the trial state \cref{eq:appendix-trial-state},
+\begin{equation}
+\partial_r \phi_{\aorb}(r) = -\frac{1}{\aorb}\phi_{\aorb}(r),
+\qquad
+|\nabla \phi_{\aorb}(r)|^2 = \frac{1}{\aorb^2}|\phi_{\aorb}(r)|^2.
+\label{eq:appendix-gradient-trial}
+\end{equation}
+Therefore, using integration by parts,
+\begin{align}
+\bigl\langle T\bigr\rangle_M
+&=
+-\frac{\hbar^2}{2M}\int d^3x\,\phi_{\aorb}^*\nabla^2 \phi_{\aorb}
+=
+\frac{\hbar^2}{2M}\int d^3x\,|\nabla\phi_{\aorb}|^2
+\notag\\
+&=
+\frac{\hbar^2}{2M\aorb^2}\int d^3x\,|\phi_{\aorb}|^2
+=
+\frac{\hbar^2}{2M\aorb^2}.
+\label{eq:appendix-kinetic-expectation}
+\end{align}
+Setting $M=m_-$ reproduces the fixed-source kinetic term in \cref{eq:hydrogenic-basic-expectations}; setting $M=\mu$ gives the two-body relative-coordinate version used in \cref{eq:relative-energy-functional}.
+
+For the Coulomb kernel, \cref{eq:appendix-central-average} gives
+\begin{equation}
+\left\langle \frac{1}{r} \right\rangle_{\aorb}
+=
+\frac{4}{\aorb^3}\int_0^\infty r e^{-2r/\aorb}\,dr
+=
+\frac{4}{\aorb^3}\cdot\frac{1}{(2/\aorb)^2}
+=
+\frac{1}{\aorb}.
+\label{eq:appendix-coulomb-expectation}
+\end{equation}
+Hence the attractive Coulomb contribution is simply
+\begin{equation}
+\left\langle -\frac{g_C}{r} \right\rangle_{\aorb} = -\frac{g_C}{\aorb}.
+\label{eq:appendix-coulomb-energy}
+\end{equation}
+Combining \cref{eq:appendix-kinetic-expectation,eq:appendix-coulomb-energy} yields the clean hydrogenic competition quoted in \cref{eq:hydrogenic-clean-functional}.
+
+\subsection{Exponentially screened Coulomb channel}\label{subsec:hydrogenic-integral-yukawa}
+
+A convenient master formula for the Yukawa/KK tower is obtained by evaluating
+\begin{equation}
+\mathcal Y(\kappa;\aorb)
+\equiv
+\left\langle \frac{e^{-\kappa r}}{r} \right\rangle_{\aorb}
+=
+\frac{4}{\aorb^3}\int_0^\infty r\,e^{-(2/\aorb+\kappa)r}\,dr
+=
+\frac{4}{\aorb^3\bigl(\kappa+2/\aorb\bigr)^2}.
+\label{eq:appendix-master-yukawa}
+\end{equation}
+Equivalently,
+\begin{equation}
+\mathcal Y(\kappa;\aorb)
+=
+\frac{1}{\aorb\bigl(1+\kappa\aorb/2\bigr)^2}.
+\label{eq:appendix-master-yukawa-compact}
+\end{equation}
+Two cases are used explicitly in the main text:
+\begin{align}
+\mathcal Y(0;\aorb)
+&=
+\frac{1}{\aorb},
+\label{eq:appendix-yukawa-kappa-zero}
+\\[0.5ex]
+\mathcal Y\!\left(\frac{2}{\lambda_Z};\aorb\right)
+&=
+\frac{1}{\aorb\bigl(1+\aorb/\lambda_Z\bigr)^2}
+=
+\frac{\lambda_Z^2}{\aorb(\aorb+\lambda_Z)^2}.
+\label{eq:appendix-yukawa-kappa-lambda}
+\end{align}
+Therefore the first retained even-mode correction in \cref{eq:hydrogenic-potential} contributes
+\begin{equation}
+\left\langle -\frac{g_C}{2r}e^{-2r/\lambda_Z} \right\rangle_{\aorb}
+=
+-\frac{g_C}{2\aorb\bigl(1+\aorb/\lambda_Z\bigr)^2},
+\label{eq:appendix-first-yukawa-energy}
+\end{equation}
+which is the term appearing in \cref{eq:hydrogenic-functional,eq:relative-energy-functional}.
+
+In the clean decoupling regime $\lambda_Z\ll \aorb$,
+\begin{equation}
+\mathcal Y\!\left(\frac{2}{\lambda_Z};\aorb\right)
+=
+\frac{\lambda_Z^2}{\aorb^3}
+\left[1-2\frac{\lambda_Z}{\aorb}+\Order{\left(\frac{\lambda_Z}{\aorb}\right)^2}\right],
+\label{eq:appendix-yukawa-asymptotic}
+\end{equation}
+so the first screened correction is parametrically smaller than the leading Coulomb term by a factor of order $(\lambda_Z/\aorb)^2$.
+
+\subsection{Nonlinear overlap integral and generic central corrections}\label{subsec:hydrogenic-integral-nonlinear}
+
+The GNLS contribution in \cref{eq:hydrogenic-brane-equation} depends on the ten-power norm of the trial state. More generally, for any integer $m\ge 1$,
+\begin{align}
+\int d^3x\,|\phi_{\aorb}|^{2m}
+&=
+\frac{1}{(\pi\aorb^3)^m}4\pi\int_0^\infty r^2 e^{-2mr/\aorb}\,dr
+\notag\\
+&=
+\frac{4\pi}{(\pi\aorb^3)^m}\cdot\frac{2}{(2m/\aorb)^3}
+=
+\frac{\pi^{1-m}}{m^3}\,\aorb^{3-3m}.
+\label{eq:appendix-general-2m-norm}
+\end{align}
+Setting $m=5$ gives the value used in \cref{eq:hydrogenic-correction-expectations}:
+\begin{equation}
+\int d^3x\,|\phi_{\aorb}|^{10}
+=
+\frac{1}{125\pi^4\aorb^{12}}.
+\label{eq:appendix-ten-power-norm}
+\end{equation}
+Thus the reduced GNLS contribution is
+\begin{equation}
+\frac{5K_{\rm GNLS}\Gamma_{10}}{4}
+\int d^3x\,|\phi_{\aorb}|^{10}
+=
+\frac{K_{\rm GNLS}\Gamma_{10}}{500\pi^4\aorb^{12}},
+\label{eq:appendix-gnls-energy}
+\end{equation}
+exactly as quoted in \cref{eq:hydrogenic-functional}.
+
+Finally, any additional central correction channel $\delta V(r)$ may be averaged against the same trial state through
+\begin{equation}
+\bigl\langle \delta V\bigr\rangle_{\aorb}
+=
+\frac{4}{\aorb^3}\int_0^\infty r^2 e^{-2r/\aorb}\,\delta V(r)\,dr.
+\label{eq:appendix-generic-central-correction}
+\end{equation}
+This is the formula implicitly used for the finite-size correction term $\langle\delta V_{\rm fs}\rangle_{\aorb}$ in \cref{eq:relative-energy-functional}. The appendix therefore contains all radial identities actually needed by the hydrogenic sector: normalization, kinetic energy, Coulomb binding, the first screened even-mode channel, the inherited nonlinear overlap, and the generic averaging rule for any additional central correction retained later in the reduction hierarchy.
+
+\section{Constant-area ellipse identities}\label{app:ellipse}
+
+This appendix records the exact geometric identities for the constant-area mouth ellipse used in \cref{sec:finite-response,sec:bridge}. The purpose is bookkeeping rather than new dynamics: we fix the exact one-parameter area-preserving family, its weak-ellipticity expansion, the area-averaged second moments, and the resulting real \(\Ptwotwo\) tensor algebra.
+
+\subsection{Exact area-preserving parametrization}\label{subsec:ellipse-parametrization}
+
+Work first in principal-axis coordinates \((X',Y')\) aligned with the ellipse. The exact constant-area family is
+\begin{equation}
+X'(\Theta)=\Rth e^{\epsell}\cos\Theta,
+\qquad
+Y'(\Theta)=\Rth e^{-\epsell}\sin\Theta,
+\qquad
+\Theta\in[0,2\pi).
+\label{eq:ellipse-principal-param}
+\end{equation}
+Hence the semiaxes are
+\begin{equation}
+R_1=\Rth e^{\epsell},
+\qquad
+R_2=\Rth e^{-\epsell},
+\label{eq:ellipse-semiaxes-appendix}
+\end{equation}
+and their product is fixed exactly,
+\begin{equation}
+R_1R_2=\Rth^2.
+\label{eq:ellipse-semiaxes-product}
+\end{equation}
+Therefore the enclosed area is independent of \(\epsell\):
+\begin{equation}
+A=\pi R_1R_2=\pi\Rth^2.
+\label{eq:ellipse-area-exact}
+\end{equation}
+This is the exact constant-area statement used throughout the finite-throat analysis.
+
+Let the major-axis direction in the laboratory frame be \(\thmouth\). Then
+\begin{equation}
+\begin{pmatrix} X \\ Y \end{pmatrix}
+=
+\begin{pmatrix}
+\cos\thmouth & -\sin\thmouth \\
+\sin\thmouth & \cos\thmouth
+\end{pmatrix}
+\begin{pmatrix} X' \\ Y' \end{pmatrix}.
+\label{eq:ellipse-lab-rotation}
+\end{equation}
+In polar coordinates \((X,Y)=r_m(\varphi)(\cos\varphi,\sin\varphi)\), the exact boundary is
+\begin{equation}
+r_m(\varphi)
+=
+\frac{\Rth}{\sqrt{e^{-2\epsell}\cos^2(\varphi-\thmouth)+e^{2\epsell}\sin^2(\varphi-\thmouth)}}.
+\label{eq:ellipse-polar-boundary}
+\end{equation}
+Equivalently,
+\begin{equation}
+r_m(\varphi)
+=
+\Rth\Bigl[\cosh 2\epsell-\sinh 2\epsell\,\cos 2(\varphi-\thmouth)\Bigr]^{-1/2}.
+\label{eq:ellipse-polar-boundary-hyperbolic}
+\end{equation}
+The ellipse is headless: the same geometric curve is obtained under
+\begin{equation}
+(\epsell,\thmouth)\sim(-\epsell,\thmouth+\pi/2),
+\qquad
+\thmouth\sim\thmouth+\pi.
+\label{eq:ellipse-headless-identification}
+\end{equation}
+In practice one may fix a canonical branch by taking \(\epsell\ge 0\) and interpreting \(\thmouth\) modulo \(\pi\).
+
+\subsection{Weak-ellipticity expansion and real \texorpdfstring{$\Ptwotwo$}{P22} basis}\label{subsec:ellipse-small-eps}
+
+Let \(\Delta\varphi\equiv \varphi-\thmouth\). Expanding \cref{eq:ellipse-polar-boundary-hyperbolic} for \(|\epsell|\ll 1\) gives
+\begin{align}
+\frac{r_m(\varphi)}{\Rth}
+&=
+1+\epsell\cos 2\Delta\varphi
++\epsell^2\left(\frac32\cos^2 2\Delta\varphi-1\right)
++\Order{\epsell^3}
+\notag\\
+&=
+1+\epsell\cos 2\Delta\varphi
++\epsell^2\left(-\frac14+\frac34\cos 4\Delta\varphi\right)
++\Order{\epsell^3}.
+\label{eq:ellipse-small-eps-expansion}
+\end{align}
+Thus the first-order boundary perturbation is
+\begin{equation}
+\frac{\delta r_m^{(1)}(\varphi)}{\Rth}
+=
+\epsell\cos 2(\varphi-\thmouth).
+\label{eq:ellipse-first-order-boundary}
+\end{equation}
+In the real \(m=2\) basis \(\{\cos 2\varphi,\sin 2\varphi\}\),
+\begin{equation}
+\frac{\delta r_m^{(1)}(\varphi)}{\Rth}
+=u_c\cos 2\varphi+u_s\sin 2\varphi,
+\qquad
+u_c\equiv \epsell\cos 2\thmouth,
+\qquad
+u_s\equiv \epsell\sin 2\thmouth.
+\label{eq:ellipse-real-p22-basis}
+\end{equation}
+So the exact constant-area ellipse furnishes a genuine real \(\Ptwotwo\) pair \((u_c,u_s)\) at linear order. No dipole piece appears, and the monopole shift begins only at quadratic order, where it is fixed automatically by exact area preservation.
+
+\subsection{Area moments and the mouth quadrupole tensor}\label{subsec:ellipse-quadrupole}
+
+The area-averaged second moments are easiest in the principal frame. For a uniform elliptical disk,
+\begin{equation}
+\frac{1}{A}\int_{\rm mouth} X'^2\,dA = \frac{R_1^2}{4},
+\qquad
+\frac{1}{A}\int_{\rm mouth} Y'^2\,dA = \frac{R_2^2}{4},
+\qquad
+\frac{1}{A}\int_{\rm mouth} X'Y'\,dA = 0.
+\label{eq:ellipse-second-moments-principal}
+\end{equation}
+Using \cref{eq:ellipse-semiaxes-appendix}, this becomes
+\begin{equation}
+\bigl\langle X'^2\bigr\rangle = \frac{\Rth^2}{4}e^{2\epsell},
+\qquad
+\bigl\langle Y'^2\bigr\rangle = \frac{\Rth^2}{4}e^{-2\epsell}.
+\label{eq:ellipse-second-moments-principal-explicit}
+\end{equation}
+Now define the area-averaged mouth quadrupole tensor exactly as in \cref{eq:finite-mouth-quadrupole-tensor}:
+\begin{equation}
+Q_{IJ}^{\rm mouth}
+\equiv
+\frac1A\int_{\rm mouth}dA\;\left(X_IX_J-\frac12\delta_{IJ}R_\perp^2\right),
+\qquad I,J\in\{x,y\}.
+\label{eq:ellipse-mouth-quadrupole-def}
+\end{equation}
+In the principal frame,
+\begin{equation}
+Q_{I'J'}^{\rm mouth}
+=
+\frac{\Rth^2}{4}\sinh 2\epsell
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}_{I'J'}.
+\label{eq:ellipse-mouth-quadrupole-principal}
+\end{equation}
+It is convenient to introduce the headless director tensor
+\begin{equation}
+\mathcal N_{IJ}(\theta)
+\equiv
+n_I(\theta)n_J(\theta)-\frac12\delta_{IJ},
+\qquad
+n(\theta)=(\cos\theta,\sin\theta).
+\label{eq:ellipse-director-tensor}
+\end{equation}
+Then the rotated laboratory-frame tensor is
+\begin{equation}
+Q_{IJ}^{\rm mouth}(\epsell,\thmouth)
+=
+Q_{22}^{\rm mouth}(\epsell)\,\mathcal N_{IJ}(\thmouth),
+\qquad
+Q_{22}^{\rm mouth}(\epsell)=\frac{\Rth^2}{2}\sinh 2\epsell.
+\label{eq:ellipse-mouth-tensor-director}
+\end{equation}
+The real Cartesian components are therefore
+\begin{align}
+Q_{xx}^{\rm mouth}
+&=
+\frac{\Rth^2}{4}\sinh 2\epsell\cos 2\thmouth,
+&
+Q_{yy}^{\rm mouth}
+&=
+-\frac{\Rth^2}{4}\sinh 2\epsell\cos 2\thmouth,
+\label{eq:ellipse-mouth-components-diag}
+\\[0.5ex]
+Q_{xy}^{\rm mouth}
+&=
+\frac{\Rth^2}{4}\sinh 2\epsell\sin 2\thmouth.
+\label{eq:ellipse-mouth-components-offdiag}
+\end{align}
+Equivalently,
+\begin{equation}
+Q_c^{\rm mouth}
+\equiv
+Q_{xx}^{\rm mouth}-Q_{yy}^{\rm mouth}
+=
+\frac{\Rth^2}{2}\sinh 2\epsell\cos 2\thmouth,
+\qquad
+Q_s^{\rm mouth}
+\equiv
+2Q_{xy}^{\rm mouth}
+=
+\frac{\Rth^2}{2}\sinh 2\epsell\sin 2\thmouth.
+\label{eq:ellipse-mouth-real-components}
+\end{equation}
+So the exact amplitude of the real \(\Ptwotwo\) mouth tensor is
+\begin{equation}
+Q_{22}^{\rm mouth}(\epsell)=\frac{\Rth^2}{2}\sinh 2\epsell
+=\Rth^2\epsell+\frac{2}{3}\Rth^2\epsell^3+\Order{\epsell^5}.
+\label{eq:ellipse-mouth-amplitude-expansion}
+\end{equation}
+
+\subsection{Useful contraction identity}\label{subsec:ellipse-contraction}
+
+The director tensor \cref{eq:ellipse-director-tensor} obeys the exact identity
+\begin{equation}
+\mathcal N_{IJ}(\theta_1)\mathcal N_{IJ}(\theta_2)
+=
+\frac12\cos 2(\theta_1-\theta_2).
+\label{eq:ellipse-director-contraction}
+\end{equation}
+Hence any two real \(\Ptwotwo\)-type tensors written as
+\begin{equation}
+A_{IJ}=A_2\,\mathcal N_{IJ}(\theta_A),
+\qquad
+B_{IJ}=B_2\,\mathcal N_{IJ}(\theta_B)
+\label{eq:ellipse-two-director-tensors}
+\end{equation}
+contract to
+\begin{equation}
+A_{IJ}B_{IJ}
+=
+\frac12 A_2 B_2\cos 2(\theta_A-\theta_B).
+\label{eq:ellipse-two-director-contraction}
+\end{equation}
+Two special cases used in the main text are immediate. First, for the mouth tensor and the planar tidal tensor
+\begin{equation}
+T_{IJ}^{(2)} = T_2\,\mathcal N_{IJ}(\theta_T),
+\label{eq:ellipse-planar-tide-director}
+\end{equation}
+one obtains
+\begin{equation}
+T_{IJ}^{(2)}Q_{\rm mouth}^{IJ}
+=
+\frac12 T_2 Q_{22}^{\rm mouth}\cos 2(\thmouth-\theta_T),
+\label{eq:ellipse-mouth-tide-contraction}
+\end{equation}
+which is the scalar coupling behind \cref{eq:finite-mouth-energy}. Second, if a mixed-core bracing tensor is written as
+\begin{equation}
+\Pi_{IJ}^{\rm mix}=\Pi_2\,\mathcal N_{IJ}(\theta_b),
+\label{eq:ellipse-mixed-core-director}
+\end{equation}
+then
+\begin{equation}
+\Pi_{IJ}^{\rm mix}Q_{\rm mouth}^{IJ}
+=
+\frac12\Pi_2 Q_{22}^{\rm mouth}\cos 2(\thmouth-\theta_b),
+\label{eq:ellipse-mouth-core-contraction}
+\end{equation}
+which is the geometric core of the reduced mouth--core transfer used in \cref{sec:bridge}. The appendix therefore contains the full algebraic content of the constant-area ellipse needed in paper~1: exact area preservation, real \(\Ptwotwo\) boundary data, exact mouth quadrupole moments, and the contraction rule that converts tensor alignment into the familiar \(\cos 2\Delta\theta\) coupling.
+
+\section{Mixed-core stress integral}\label{app:stress}
+
+This appendix derives the mixed-core stress theorem used in \cref{sec:bridge}. The goal is not to introduce a new dynamical assumption, but to make explicit the angular-average identity behind \cref{eq:bridge-mixed-stress-theorem,eq:bridge-Cmix,eq:bridge-half-flux-stress}. Starting from the reduced mixed-core ansatz of \cref{eq:bridge-Aw-ansatz}, we show that the first static planar observable is automatically a real traceless \(m=2\) tensor, and we isolate the positive radial coefficient that controls its strength.
+
+\subsection{Ansatz, derivatives, and regularity}\label{subsec:stress-ansatz}
+
+Work in the same local static gauge used in \cref{subsec:bridge-intrinsic-bracing},
+\begin{equation}
+A_a\approx 0,
+\qquad
+\partial_t A_w\approx 0,
+\label{eq:stress-static-gauge}
+\end{equation}
+so the mixed core is carried by the channel \(F_{Iw}=\partial_I A_w\) in the mouth plane \((I,J,K,L\in\{x,y\})\). The reduced localized ansatz is
+\begin{equation}
+A_w(x,y,w)=b_Ix_I\,\chi(r_\perp,w),
+\qquad
+r_\perp\equiv\sqrt{x^2+y^2},
+\label{eq:stress-Aw-ansatz}
+\end{equation}
+with
+\begin{equation}
+b_I=\sqrt{s_*}\,n_I(\theta_b),
+\qquad
+n_I(\theta_b)=(\cos\theta_b,\sin\theta_b),
+\qquad
+s_*\equiv b_Ib_I.
+\label{eq:stress-bI-def}
+\end{equation}
+Introduce the planar unit vector
+\begin{equation}
+\hat x_I\equiv \frac{x_I}{r_\perp},
+\qquad
+x_I=r_\perp\hat x_I,
+\qquad
+\hat x_I\hat x_I=1.
+\label{eq:stress-xhat-def}
+\end{equation}
+Then the spatial derivative of the ansatz is
+\begin{equation}
+\partial_I A_w
+=
+b_I\chi + (b_Kx_K)\frac{x_I}{r_\perp}\,\partial_{r_\perp}\chi
+=
+b_I\chi + r_\perp(b\!\cdot\!\hat x)\hat x_I\,\chi_r,
+\label{eq:stress-dIw}
+\end{equation}
+where, for brevity,
+\begin{equation}
+\chi_r\equiv \partial_{r_\perp}\chi.
+\label{eq:stress-chi-r}
+\end{equation}
+The corresponding planar trace is
+\begin{equation}
+\partial_KA_w\partial_KA_w
+=
+s_*\chi^2 + 2r_\perp\chi\chi_r\,(b\!\cdot\!\hat x)^2 + r_\perp^2\chi_r^2\,(b\!\cdot\!\hat x)^2.
+\label{eq:stress-trace-pointwise}
+\end{equation}
+
+For the integrated stress to be well defined, it is enough to assume that \(\chi(r_\perp,w)\) is regular at the origin and localized in both \(r_\perp\) and \(w\). In particular, we assume
+\begin{equation}
+\chi(r_\perp,w)=\chi_0(w)+\Order{r_\perp^2}
+\quad (r_\perp\to 0),
+\qquad
+\chi(r_\perp,w)\to 0
+\quad (r_\perp\to\infty\ \text{or}\ |w|\to\infty),
+\label{eq:stress-regularity}
+\end{equation}
+with decay fast enough that all integrals below converge.
+
+\subsection{Exact angular averaging}\label{subsec:stress-angular-average}
+
+Write the planar measure as
+\begin{equation}
+d^2x_\perp = r_\perp\,dr_\perp\,d\vartheta,
+\qquad
+\hat x(\vartheta)=(\cos\vartheta,\sin\vartheta).
+\label{eq:stress-planar-measure}
+\end{equation}
+The only angular identities needed are
+\begin{equation}
+\int_0^{2\pi}\hat x_I\hat x_J\,d\vartheta = \pi\,\delta_{IJ},
+\label{eq:stress-xx-average}
+\end{equation}
+\begin{equation}
+\int_0^{2\pi}\hat x_I\hat x_J\hat x_K\hat x_L\,d\vartheta
+=
+\frac{\pi}{4}
+\bigl(
+\delta_{IJ}\delta_{KL}+\delta_{IK}\delta_{JL}+\delta_{IL}\delta_{JK}
+\bigr).
+\label{eq:stress-xxxx-average}
+\end{equation}
+Contracting \cref{eq:stress-xx-average,eq:stress-xxxx-average} with \(b_I\) gives
+\begin{equation}
+\int_0^{2\pi}(b\!\cdot\!\hat x)\hat x_I\,d\vartheta = \pi b_I,
+\label{eq:stress-bxhat-average}
+\end{equation}
+\begin{equation}
+\int_0^{2\pi}(b\!\cdot\!\hat x)^2\hat x_I\hat x_J\,d\vartheta
+=
+\frac{\pi}{4}\bigl(s_*\delta_{IJ}+2b_Ib_J\bigr),
+\label{eq:stress-bxhat2-average}
+\end{equation}
+\begin{equation}
+\int_0^{2\pi}(b\!\cdot\!\hat x)^2\,d\vartheta = \pi s_*.
+\label{eq:stress-bxhat2-scalar}
+\end{equation}
+
+Now expand the quadratic tensor from \cref{eq:stress-dIw}:
+\begin{align}
+\partial_I A_w\partial_J A_w
+&=
+b_Ib_J\chi^2
++r_\perp\chi\chi_r\,(b\!\cdot\!\hat x)(b_I\hat x_J+b_J\hat x_I)
++r_\perp^2\chi_r^2\,(b\!\cdot\!\hat x)^2\hat x_I\hat x_J.
+\label{eq:stress-product-expanded}
+\end{align}
+Integrating over \(\vartheta\) with \cref{eq:stress-bxhat-average,eq:stress-bxhat2-average} yields
+\begin{align}
+\int_0^{2\pi}\partial_I A_w\partial_J A_w\,d\vartheta
+&=
+2\pi\left(\chi^2+r_\perp\chi\chi_r+\frac{r_\perp^2}{4}\chi_r^2\right)b_Ib_J
++\frac{\pi}{4}s_*r_\perp^2\chi_r^2\,\delta_{IJ}.
+\label{eq:stress-product-angular}
+\end{align}
+Similarly, \cref{eq:stress-trace-pointwise,eq:stress-bxhat2-scalar} give
+\begin{equation}
+\int_0^{2\pi}\partial_KA_w\partial_KA_w\,d\vartheta
+=
+2\pi s_*\left(\chi^2+r_\perp\chi\chi_r+\frac{r_\perp^2}{2}\chi_r^2\right).
+\label{eq:stress-trace-angular}
+\end{equation}
+Subtracting the half-trace then produces the exact identity
+\begin{align}
+&\int_0^{2\pi}d\vartheta\,
+\left[
+\partial_IA_w\partial_JA_w
+-\frac12\delta_{IJ}\partial_KA_w\partial_KA_w
+\right]
+\notag\\
+&\qquad=
+2\pi\left(\chi^2+r_\perp\chi\chi_r+\frac{r_\perp^2}{4}\chi_r^2\right)
+\left(b_Ib_J-\frac12s_*\delta_{IJ}\right)
+\notag\\
+&\qquad=
+\frac{\pi}{2}\bigl(2\chi+r_\perp\chi_r\bigr)^2
+\left(b_Ib_J-\frac12s_*\delta_{IJ}\right).
+\label{eq:stress-traceless-angular}
+\end{align}
+This is the complete angular-average content of the mixed-core stress theorem.
+
+\subsection{Integrated stress tensor and positivity}\label{subsec:stress-positivity}
+
+The gauge-invariant traceless planar stress used in \cref{sec:bridge} is
+\begin{equation}
+\Pi^{\rm mix}_{IJ}
+\equiv
+\int d^2x_\perp\,dw\;
+\frac{Z(w)}{\mu_0}
+\left[
+\partial_I A_w\partial_J A_w
+-\frac12\delta_{IJ}\,\partial_K A_w\partial_K A_w
+\right].
+\label{eq:stress-tensor-def}
+\end{equation}
+Substituting \cref{eq:stress-traceless-angular} and using \(d^2x_\perp=r_\perp dr_\perp d\vartheta\) gives
+\begin{equation}
+\Pi^{\rm mix}_{IJ}
+=
+C_{\rm mix}
+\left(
+ b_Ib_J-\frac12s_*\delta_{IJ}
+\right),
+\label{eq:stress-tensor-result}
+\end{equation}
+with
+\begin{equation}
+C_{\rm mix}
+=
+\frac{\pi}{2\mu_0}
+\int_{-\infty}^{\infty}dw\,Z(w)
+\int_0^{\infty}r_\perp\,dr_\perp\,
+\bigl(2\chi+r_\perp\partial_{r_\perp}\chi\bigr)^2.
+\label{eq:stress-Cmix}
+\end{equation}
+This reproduces \cref{eq:bridge-mixed-stress-theorem,eq:bridge-Cmix} exactly.
+
+The coefficient \(C_{\rm mix}\) is nonnegative because the integrand in \cref{eq:stress-Cmix} is a square and \(Z(w)>0\) on the localized support. To see that it is strictly positive for every nontrivial localized profile, note that equality would require
+\begin{equation}
+2\chi+r_\perp\partial_{r_\perp}\chi = 0
+\qquad \text{for almost every }(r_\perp,w).
+\label{eq:stress-zero-condition}
+\end{equation}
+For each fixed \(w\), this ordinary differential equation has the solution
+\begin{equation}
+\chi(r_\perp,w)=\frac{c(w)}{r_\perp^2}.
+\label{eq:stress-zero-solution}
+\end{equation}
+Regularity at \(r_\perp=0\) forces \(c(w)=0\), hence \(\chi\equiv 0\). Therefore,
+\begin{equation}
+C_{\rm mix}>0
+\qquad
+\text{for every nontrivial localized mixed-core profile.}
+\label{eq:stress-Cmix-positive}
+\end{equation}
+So the reduced mixed core automatically carries a genuine real traceless planar stress whenever the profile is nonzero.
+
+\subsection{Director form, half-flux specialization, and bracing coefficient}\label{subsec:stress-director}
+
+Introduce the headless director tensor
+\begin{equation}
+\mathcal N_{IJ}(\theta)
+\equiv
+n_I(\theta)n_J(\theta)-\frac12\delta_{IJ},
+\qquad
+n_I(\theta)=(\cos\theta,\sin\theta).
+\label{eq:stress-director-tensor}
+\end{equation}
+Then \cref{eq:stress-bI-def} implies
+\begin{equation}
+b_Ib_J-\frac12s_*\delta_{IJ}
+=
+s_*\mathcal N_{IJ}(\theta_b),
+\label{eq:stress-bI-director}
+\end{equation}
+so the integrated stress becomes
+\begin{equation}
+\Pi^{\rm mix}_{IJ}
+=
+C_{\rm mix}\,s_*\mathcal N_{IJ}(\theta_b).
+\label{eq:stress-director-form}
+\end{equation}
+This shows explicitly that the first static observable of the mixed core is not a scalar and not a vector; it is a true headless \(\Ptwotwo\)-type tensor.
+
+On the conditional minimal half-flux branch used in \cref{sec:bridge},
+\begin{equation}
+|\nuB|=\frac12,
+\qquad
+s_* = \frac{\hbar}{\nu_0},
+\label{eq:stress-half-flux-specialization}
+\end{equation}
+so \cref{eq:stress-director-form} reduces to
+\begin{equation}
+\Pi^{(1/2)}_{IJ}
+=
+C_{\rm mix}\frac{\hbar}{\nu_0}\,\mathcal N_{IJ}(\theta_b),
+\label{eq:stress-half-flux-result}
+\end{equation}
+which is the form quoted in \cref{eq:bridge-half-flux-stress}.
+
+To couple this stress to the mouth sector, write the mouth quadrupole as
+\begin{equation}
+Q_{IJ}^{\rm mouth}(\epsell,\thmouth)
+=
+Q_{22}^{\rm mouth}(\epsell)\,\mathcal N_{IJ}(\thmouth),
+\qquad
+Q_{22}^{\rm mouth}(\epsell)=\frac{\Rth^2}{2}\sinh 2\epsell.
+\label{eq:stress-mouth-tensor}
+\end{equation}
+Using the contraction identity from \cref{app:ellipse},
+\begin{equation}
+\mathcal N_{IJ}(\theta_1)\mathcal N_{IJ}(\theta_2)
+=
+\frac12\cos 2(\theta_1-\theta_2),
+\label{eq:stress-director-contraction}
+\end{equation}
+we obtain the reduced scalar transfer
+\begin{equation}
+U_{\rm coup}
+=
+-\Lambda_Q\,\Pi^{(1/2)}_{IJ}Q_{\rm mouth}^{IJ}
+=
+-h_{1/2}\sinh 2\epsell\cos 2(\thmouth-\theta_b),
+\label{eq:stress-reduced-coupling}
+\end{equation}
+with
+\begin{equation}
+h_{1/2}
+\equiv
+\frac{\Lambda_Q\Rth^2 C_{\rm mix}\hbar}{4\nu_0}.
+\label{eq:stress-h-half}
+\end{equation}
+Since \(C_{\rm mix}>0\), the sign of \(h_{1/2}\) is exactly the sign of the reduced transfer coefficient \(\Lambda_Q\). In particular, if \(\Lambda_Q>0\) then \(h_{1/2}>0\); if \(\Lambda_Q<0\), the preferred headless axis is shifted by \(\pi/2\). Thus the appendix supplies the full integral backbone for the intrinsic-bracing sector used in paper~1: the exact stress tensor, the strict positivity theorem for \(C_{\rm mix}\), the half-flux specialization, and the reduced mouth--core bracing coefficient.
+
+\section*{Acknowledgment of scope}
+This skeleton is intentionally written so that every major claim can be tagged as either an inherited input, a reduced derivation, a conditional import, or a deferred result. When expanding section-by-section, preserve that separation rigorously.
+
+\end{document}

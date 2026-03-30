@@ -3277,3 +3277,1522 @@ A future session or future paper draft should therefore treat the program as bei
 - **not yet an unconditional theorem,**
 - **no longer blocked by diffuse structural uncertainty,**
 - **and close enough that the remaining work is a sharply focused PDE/normalization problem rather than a full-model rescue.**
+## 1. Quadrupole normalization target
+
+After the channel audit, the universal point-particle route to a GR-like 2.5PN sector is sharply narrowed: on the natural compact/passive/outgoing small-body branch, the surviving universal odd channel is the orbital/worldtube STF quadrupole. The remaining theorem gap is therefore not a generic “missing dissipative sector,” but the final normalization of the passive/outgoing quadrupole response.
+
+To isolate that normalization, let
+\[
+I_{ij}=\mu\,x_{\langle i}x_{j\rangle}
+\]
+be the canonical orbital STF quadrupole of the relative two-body motion, and let \(q_a\) denote its components in a canonical real STF basis \(E_a\),
+\[
+q_a \equiv I_{ij}E_a^{ij}.
+\]
+The unique local odd quadratic action with the correct STF structure is
+\[
+L_{\rm rr}^{(2)}=-\frac{\gamma}{2}\sum_a q_{a,-}\,q_{a,+}^{(5)}.
+\]
+In the physical limit this produces the relative acceleration
+\[
+a_i=-\gamma\,x^j I_{ij}^{(5)}.
+\]
+Comparison with the Burke–Thorne reaction force,
+\[
+a_i^{\rm BT}=-\frac{2G}{5c^5}\,x^j I_{ij}^{(5)},
+\]
+therefore fixes the exact canonical GR target
+\[
+\gamma_{\rm GR}=\frac{2G}{5c^5}.
+\]
+
+The toy-model quadrupole sector is not written directly in that canonical basis. If the low-frequency source coordinate used by the throat/worldtube response is normalized as
+\[
+q_a^{\rm toy}=\hat m_0\,q_a^{\rm can},
+\]
+and if the corresponding retarded STF matching matrix has low-frequency form
+\[
+\mathcal M_{ab}^R(\omega)
+=
+\Bigl[
+\hat m_0+\cdots+i\Gamma_5\omega^5+\cdots
+\Bigr]\delta_{ab},
+\]
+then the local odd action depends only on the single product
+\[
+\gamma_{\rm toy}=\hat m_0^2\,\Gamma_5.
+\]
+Matching to Burke–Thorne is therefore equivalent to the scalar equality
+\[
+\boxed{
+\hat m_0^2\,\Gamma_5=\frac{2G}{5c^5}.
+}
+\]
+
+This is the sharpest form of the 2.5PN normalization target. Once the dangerous scalar and dipole channels have been demoted, the whole GR-like 2.5PN problem reduces to determining the canonically normalized passive/outgoing quadrupole coefficient. On the natural source-map branch used throughout the notes,
+\[
+\hat m_0 = 1 + O(a^2/r^2),
+\]
+so the final theorem gap is the determination of the outgoing quadrupole normalization itself.
+
+
+## 2. Outgoing \(l=2\) PDE fingerprint and the raw quadrupole coefficient
+
+The next step is to determine the exact low-frequency fingerprint of the outgoing quadrupole branch on the exterior throat/worldtube problem. For the STF quadrupole sector the radial equation is the outgoing \(l=2\) Helmholtz problem
+\[
+u''+\frac{2}{r}u'+\left(k^2-\frac{6}{r^2}\right)u=0,
+\qquad
+u(r)\propto h_2^{(1)}(kr),
+\qquad
+k=\omega/c_s.
+\]
+At a matching radius \(a\), the exact outgoing Dirichlet-to-Neumann map is
+\[
+\Lambda_2(k)=k\,\frac{h_2^{(1)\prime}(ka)}{h_2^{(1)}(ka)}.
+\]
+Its low-frequency expansion is
+\[
+\Lambda_2(k)
+=
+-\frac{3}{a}
++\frac{a}{3}k^2
++\frac{a^3}{9}k^4
++i\frac{a^4}{9}k^5
+-\frac{2a^5}{27}k^6
++O(k^7).
+\]
+
+Inverting and normalizing by the static residue gives the outgoing quadrupole admittance
+\[
+\widehat Y_2(k)
+=
+1+\frac{a^2k^2}{9}
++\frac{4a^4k^4}{81}
++i\frac{a^5k^5}{27}
++O(k^6).
+\]
+Equivalently, in \(\omega\)-language,
+\[
+\widehat Y_2(\omega)
+=
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\frac{a^5\omega^5}{27c_s^5}
++O(\omega^6).
+\]
+
+This is the raw spectral fingerprint of the compact passive/outgoing \(l=2\) branch. If the retarded STF matching matrix is written in the isotropic form
+\[
+\mathcal M_{ab}^R(\omega)
+=
+\Bigl[
+m_0+m_2\omega^2+m_4\omega^4+i\Gamma_5^{\rm PDE}\omega^5+\cdots
+\Bigr]\delta_{ab},
+\]
+then the outgoing branch forces
+\[
+m_2=\frac{m_0a^2}{9c_s^2},
+\qquad
+m_4=\frac{4m_0a^4}{81c_s^4},
+\qquad
+\Gamma_5^{\rm PDE}=\frac{m_0a^5}{27c_s^5}.
+\]
+So the compact outgoing branch is equivalently characterized by the invariant identities
+\[
+\boxed{
+m_4=\frac{4m_2^2}{m_0},
+\qquad
+\Gamma_5^{\rm PDE}=9\frac{m_2^{5/2}}{m_0^{3/2}}.
+}
+\]
+
+Two points matter here. First, the sign of the odd term is the correct passive/outgoing sign:
+\[
++i\,\Gamma_5^{\rm PDE}\omega^5,
+\qquad
+\Gamma_5^{\rm PDE}>0
+\]
+on the natural branch. Second, \(\Gamma_5^{\rm PDE}\) is only the raw spectral coefficient of the outgoing \(l=2\) PDE sector. By itself it is not yet the final Burke–Thorne worldline coefficient, because the source-to-port normalization still has to be fixed. That normalization problem is the content of the next section.
+
+
+## 3. Source/port normalization and the canonical quadrupole coefficient
+
+The final bookkeeping problem before theorem closure is the normalization of the source map between the solved real \(P_2\) support bundle and the canonical STF quadrupole. The 2PN conservative throat-response reconstruction already shows that the real \(P_2\) channels are exactly the real STF \(l=2\) content, but the raw audit output mixes a port-basis numerator with a canonical STF denominator. That mixed-basis number is not the physical quadrupole normalization.
+
+Let \(q^{\rm port}\) denote the real \(P_2\) coefficient vector produced by the solved throat-support package and \(q^{\rm can}\) the corresponding canonical STF coefficients. The two are related by the fixed diagonal basis map
+\[
+q^{\rm can}=B\,q^{\rm port},
+\qquad
+B=\mathrm{diag}\!\left(\sqrt{\frac23},\,1,\,1,\,2,\,2\right),
+\qquad
+\det B=\frac{4\sqrt6}{3}\neq0.
+\]
+So the port and canonical STF bases are equivalent; no physical information is lost in moving between them.
+
+The static audit number that first appears in the raw output comes from dividing the canonical orbital source coefficient
+\[
+C_{20}\!\left[\frac{\ddot I_{\rm orb}}{2\mu}\right]
+=
+-\frac{\sqrt6\,GM}{3r}
+\]
+by the raw solved port amplitude
+\[
+q_{20,\rm port}^{\rm static}=\frac54.
+\]
+That produces the mixed-basis ratio
+\[
+m_0^{\rm mixed}=-\frac{5\sqrt6\,r}{8GM}.
+\]
+But the same-basis raw orbital source coefficient is instead
+\[
+P_{20}\!\left[\frac{\ddot I_{\rm orb}}{2\mu}\right]=-\frac{GM}{r},
+\]
+so the clean raw overlap is
+\[
+m_{0,\rm raw}
+=
+\frac{q_{20,\rm port}^{\rm static}}{P_{20}[\ddot I_{\rm orb}/(2\mu)]}
+=
+-\frac{5r}{4GM}.
+\]
+If the numerator is first converted into canonical STF units, the same same-basis ratio is recovered. So the printed mixed-basis \(m_0\) is a convention artifact, not the canonically normalized overlap used in the 2.5PN theorem statement.
+
+The natural cure is to choose the point-particle orbital static branch as the unit overlap. Define
+\[
+\mathcal N_{\rm orb}=\frac{1}{m_{0,\rm raw}}=-\frac{4GM}{5r},
+\qquad
+\hat m_0\equiv \mathcal N_{\rm orb}\,m_{0,\rm raw}.
+\]
+Then on the pure orbital point-particle branch,
+\[
+\hat m_0=1,
+\]
+and finite-size worldtube corrections can only perturb this as
+\[
+\hat m_0=1+O(a^2/r^2).
+\]
+
+This normalization can now be combined with the outgoing \(l=2\) fingerprint. If the canonical STF source couples to the outgoing branch with amplitude \(\kappa\) and static residue \(Y_0\), the full effective retarded kernel is
+\[
+\mathcal M_{\rm eff}^R(\omega)=\kappa^2Y_0\,\widehat Y_2(\omega).
+\]
+Its low-frequency coefficients are therefore
+\[
+m_0^{\rm eff}=\kappa^2Y_0,
+\qquad
+m_2^{\rm eff}=m_0^{\rm eff}\frac{a^2}{9c_s^2},
+\qquad
+m_4^{\rm eff}=m_0^{\rm eff}\frac{4a^4}{81c_s^4},
+\qquad
+\Gamma_{5,\rm eff}=m_0^{\rm eff}\frac{a^5}{27c_s^5}.
+\]
+After the source normalization is standardized, the only surviving datum is the canonically normalized static overlap. Writing that overlap as \(\hat m_0\), the odd coefficient becomes
+\[
+\boxed{
+\Gamma_{5,\rm can}=\hat m_0\,\frac{a^5}{27c_s^5}.
+}
+\]
+
+So the remaining 2.5PN theorem gap is no longer basis bookkeeping. It is the final outgoing-branch normalization of the universal STF quadrupole. Equivalently, once the future conservative quadrupole calculation determines the canonical pair \((\overline K_0,\overline K_2)\) on the natural branch, \(\overline K_4\) and \(\overline\Gamma_5\) are no longer independent unknowns; they are fixed automatically by the same compact passive/outgoing \(l=2\) branch.
+## 4. Convention-invariant quadrupole normalization
+
+The source-map cleanup of the previous section resolves the mixed-basis bookkeeping, but one additional distinction is still needed before the quadrupole theorem can be stated cleanly. There are two different normalization objects in the low-frequency quadrupole problem, and they should not be conflated.
+
+First, the canonical orbital/worldtube STF source \(q_a^{\rm can}\) is mapped into the working throat/port coordinate \(p_a\) by a source normalization,
+\[
+p_a=\mathfrak m_0\,q_a^{\rm can}.
+\]
+Second, in that port basis the retarded quadrupole kernel has the low-frequency form
+\[
+K_{ab}^R(\omega)
+=
+\Bigl[
+K_0+K_2\omega^2+K_4\omega^4+i\Gamma_5^{\rm port}\omega^5+\cdots
+\Bigr]\delta_{ab}.
+\]
+The physical Burke–Thorne coefficient is not either object separately. It is the canonical-basis product obtained after pulling the port kernel back to the STF source basis:
+\[
+\boxed{
+\gamma_{\rm quad}^{\rm eff}=\mathfrak m_0^2\,\Gamma_5^{\rm port}.
+}
+\]
+
+This combination is basis-invariant. If the working port basis is rescaled by
+\[
+p_a'=\lambda\,p_a,
+\]
+then the same quadratic action requires
+\[
+\mathfrak m_0'=\lambda\,\mathfrak m_0,
+\qquad
+K_0'=\frac{K_0}{\lambda^2},
+\qquad
+\Gamma_5^{\rm port\,\prime}=\frac{\Gamma_5^{\rm port}}{\lambda^2},
+\]
+and therefore
+\[
+\mathfrak m_0'^2K_0'=\mathfrak m_0^2K_0,
+\qquad
+\mathfrak m_0'^2\Gamma_5^{\rm port\,\prime}
+=
+\mathfrak m_0^2\Gamma_5^{\rm port}.
+\]
+So the meaningful low-frequency normalization data are the invariant products
+\[
+\boxed{
+\mathfrak m_0^2K_0,
+\qquad
+\mathfrak m_0^2\Gamma_5^{\rm port}.
+}
+\]
+
+Now insert the exact outgoing \(l=2\) Dirichlet-to-Neumann fingerprint derived in the previous section. On the compact passive/outgoing branch,
+\[
+\Gamma_5^{\rm port}
+=
+K_0\,\frac{a^5}{27c_s^5}.
+\]
+Hence the physical canonical odd coefficient is
+\[
+\gamma_{\rm quad}^{\rm eff}
+=
+\mathfrak m_0^2 K_0\,\frac{a^5}{27c_s^5}.
+\]
+Define the single invariant normalization product
+\[
+\boxed{
+\mathcal N_Q\equiv \mathfrak m_0^2K_0.
+}
+\]
+Then the full quadrupole coefficient takes the compact form
+\[
+\boxed{
+\gamma_{\rm quad}^{\rm eff}
+=
+\mathcal N_Q\,\frac{a^5}{27c_s^5}.
+}
+\]
+
+Burke–Thorne matching requires
+\[
+\gamma_{\rm quad}^{\rm eff}=\frac{2G}{5c^5},
+\]
+so the entire remaining quadrupole normalization problem collapses to one scalar equality:
+\[
+\boxed{
+\mathcal N_Q\,\frac{a^5}{27c_s^5}=\frac{2G}{5c^5}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\mathcal N_Q^{\rm target}
+=
+\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+
+This is the cleanest normalization statement reached in the 2.5PN program. The unresolved theorem target is not separately “what is \(\mathfrak m_0\)?” and “what is \(K_0\)?” It is the single invariant product \(\mathcal N_Q=\mathfrak m_0^2K_0\), or equivalently the physical odd coefficient \(\gamma_{\rm quad}^{\rm eff}=\mathfrak m_0^2\Gamma_5^{\rm port}\).
+
+
+## 5. Canonical low-frequency fingerprint of the quadrupole branch
+
+The outgoing \(l=2\) branch can now be rewritten entirely in terms of canonical invariant coefficients. Define
+\[
+\overline K_0\equiv \mathfrak m_0^2K_0,
+\qquad
+\overline K_2\equiv \mathfrak m_0^2K_2,
+\qquad
+\overline K_4\equiv \mathfrak m_0^2K_4,
+\qquad
+\overline\Gamma_5\equiv \mathfrak m_0^2\Gamma_5^{\rm port}.
+\]
+These are exactly the coefficients that enter the canonically normalized STF influence action.
+
+Because the compact outgoing \(l=2\) branch already forces
+\[
+K_2=K_0\frac{a^2}{9c_s^2},
+\qquad
+K_4=K_0\frac{4a^4}{81c_s^4},
+\qquad
+\Gamma_5^{\rm port}=K_0\frac{a^5}{27c_s^5},
+\]
+multiplying by \(\mathfrak m_0^2\) gives the canonical invariant form
+\[
+\boxed{
+\overline K_2=\overline K_0\frac{a^2}{9c_s^2},
+\qquad
+\overline K_4=\overline K_0\frac{4a^4}{81c_s^4},
+\qquad
+\overline\Gamma_5=\overline K_0\frac{a^5}{27c_s^5}.
+}
+\]
+
+These relations can be made more useful by eliminating the geometric ratio \(a/c_s\). From the first equation,
+\[
+\frac{a^2}{c_s^2}=9\,\frac{\overline K_2}{\overline K_0}.
+\]
+Substituting back gives the fully invariant branch fingerprint
+\[
+\boxed{
+\overline K_4=\frac{4\overline K_2^2}{\overline K_0},
+\qquad
+\overline\Gamma_5
+=
+9\,\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}.
+}
+\]
+
+So the compact passive/outgoing quadrupole branch is not merely a sign statement. It enforces exact nonlinear algebraic relations among the canonical low-frequency coefficients. In particular, once \((\overline K_0,\overline K_2)\) are known on the same branch, both \(\overline K_4\) and \(\overline\Gamma_5\) are fixed automatically.
+
+The GR-like 2.5PN matching condition can therefore be written in either of two equivalent forms. The direct form is
+\[
+\boxed{
+\overline\Gamma_5=\frac{2G}{5c^5}.
+}
+\]
+Using the invariant fingerprint, this is equivalent to
+\[
+\boxed{
+9\,\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}
+=
+\frac{2G}{5c^5}.
+}
+\]
+
+One may also solve this for the quadratic conservative coefficient:
+\[
+\boxed{
+\overline K_2^{\rm target}
+=
+\left(\frac{2G}{45c^5}\right)^{2/5}\overline K_0^{3/5}.
+}
+\]
+This form is useful because it shows that a future conservative quadrupole calculation need not fit the \(\omega^5\) coefficient directly if the branch identity has already been verified. Extracting the canonical even pair \((\overline K_0,\overline K_2)\) would already determine the predicted 2.5PN odd coefficient on the same branch.
+
+
+## 6. Extraction of the canonical invariant pair \((\overline K_0,\overline K_2)\)
+
+At this point the strongest possible extraction from the current file stack can be stated very cleanly. The exact outgoing quadrupole branch does **not** yet determine the absolute normalization \(\overline K_0\) from first principles. What it does determine is the pair up to that single invariant scalar.
+
+From the branch relations,
+\[
+\boxed{
+(\overline K_0,\overline K_2)
+=
+\left(
+\overline K_0,\;
+\overline K_0\frac{a^2}{9c_s^2}
+\right).
+}
+\]
+Equivalently,
+\[
+\overline K_4=\overline K_0\frac{4a^4}{81c_s^4}
+=\frac{4\overline K_2^2}{\overline K_0},
+\qquad
+\overline\Gamma_5
+=
+\overline K_0\frac{a^5}{27c_s^5}
+=
+9\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}.
+\]
+
+So the current stack already extracts the entire low-frequency quadrupole branch **except** for the overall invariant normalization \(\overline K_0\). That is why the remaining theorem gap has been repeatedly described as a narrow normalization problem rather than a missing tensor structure or missing parity selection rule.
+
+If one now imposes exact Burke–Thorne matching,
+\[
+\overline\Gamma_5=\frac{2G}{5c^5},
+\]
+the target invariant pair becomes
+\[
+\boxed{
+\overline K_0^{\rm target}
+=
+\frac{54Gc_s^5}{5a^5c^5},
+\qquad
+\overline K_2^{\rm target}
+=
+\frac{6Gc_s^3}{5a^3c^5}.
+}
+\]
+The next higher invariant is then fixed automatically:
+\[
+\boxed{
+\overline K_4^{\rm target}
+=
+\frac{8Gc_s}{15ac^5}.
+}
+\]
+
+If the asymptotic propagation speed closes to \(c_s=c\), these reduce to
+\[
+\boxed{
+\overline K_0^{\rm target}=\frac{54G}{5a^5},
+\qquad
+\overline K_2^{\rm target}=\frac{6G}{5a^3c^2},
+\qquad
+\overline K_4^{\rm target}=\frac{8G}{15ac^4}.
+}
+\]
+
+This makes the remaining theorem target maximally sharp. The completed moving-throat quadrupole program no longer needs to discover an entire new tensor channel. It only has to supply the one invariant scalar \(\overline K_0\) on the natural branch. Once \(\overline K_0\) is known, \(\overline K_2\), \(\overline K_4\), and \(\overline\Gamma_5\) follow automatically from the same passive/outgoing isotropic \(l=2\) structure.
+## 7. Single-prefactor obstruction
+
+Sections 4–6 reduce the quadrupole problem to its sharpest current form. The 2.5PN notes already isolate the orbital/worldtube STF quadrupole as the only surviving universal point-particle route, state that rotational invariance forces the low-frequency \(P_2\to{\rm STF}\) matching matrix to be scalar, and record that the feared zero static-overlap option fails naturally on the preferred branch. In the same notes, the remaining unresolved quantity is identified explicitly as the final normalization of the positive retarded quadrupole coefficient rather than the existence of the branch itself. fileciteturn47file12 fileciteturn47file16
+
+The frozen 2PN files fit that picture. They already fix the zero-frequency support/source layer, but they are also explicit that the dynamic pole scales remain genuine inner-throat PDE observables rather than solved conservative data. The 2PN result is therefore a strong static and low-frequency organizational theorem, not yet a completed dynamic throat theorem. fileciteturn46file6 fileciteturn48file9
+
+With that bookkeeping in hand, the current-file extraction of the canonical invariant quadrupole kernel is
+\[
+\overline K^R(\omega)
+=
+\mathcal C_Q
+\left[
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\frac{a^5\omega^5}{27c_s^5}
++\cdots
+\right].
+\]
+The corresponding coefficients are therefore
+\[
+\overline K_0=\mathcal C_Q,\qquad
+\overline K_2=\mathcal C_Q\frac{a^2}{9c_s^2},\qquad
+\overline K_4=\mathcal C_Q\frac{4a^4}{81c_s^4},\qquad
+\overline\Gamma_5=\mathcal C_Q\frac{a^5}{27c_s^5}.
+\]
+So the entire branch shape is already fixed, and only one dimensional prefactor remains unknown:
+\[
+\boxed{
+(\overline K_0,\overline K_2)=
+\left(
+\mathcal C_Q,\;
+\mathcal C_Q\frac{a^2}{9c_s^2}
+\right).
+}
+\]
+
+That is the exact obstruction. The current stack does not yet determine \(\mathcal C_Q\) from first principles. It determines the whole low-frequency branch up to that one invariant scalar. This is precisely the sense in which the present 2.5PN status is narrower than “the PDE is missing somewhere”: the theorem gap has collapsed to one normalization datum.
+
+If one now imposes the Burke–Thorne target
+\[
+\overline\Gamma_5=\frac{2G}{5c^5},
+\]
+then the missing prefactor is fixed uniquely:
+\[
+\boxed{
+\mathcal C_Q^{\rm GR}
+=
+\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+Hence the exact GR target branch is
+\[
+\boxed{
+\overline K_0^{\rm target}
+=
+\frac{54Gc_s^5}{5a^5c^5},
+\qquad
+\overline K_2^{\rm target}
+=
+\frac{6Gc_s^3}{5a^3c^5},
+\qquad
+\overline K_4^{\rm target}
+=
+\frac{8Gc_s}{15ac^5}.
+}
+\]
+If the asymptotic propagation speed closes to \(c_s=c\), this simplifies to
+\[
+\overline K_0^{\rm target}=\frac{54G}{5a^5},
+\qquad
+\overline K_2^{\rm target}=\frac{6G}{5a^3c^2},
+\qquad
+\overline K_4^{\rm target}=\frac{8G}{15ac^4}.
+\]
+
+So the exact content of the obstruction is now transparent. The current file stack already fixes the branch shape and the GR target value of the remaining prefactor, but it does not yet derive the prefactor itself from the completed moving-throat PDE. This is the narrow residual gap described in the notes and echoed by the master 2.5PN audit ledger. fileciteturn48file15
+
+
+## 8. What the frozen 2PN files already fix about the quadrupole branch
+
+Although the dynamic quadrupole normalization remains open, the frozen 2PN files already determine a substantial amount of the quadrupole structure. The 2PN result is explicit that the conservative cross block is no longer just a coefficient list: it has reorganized into a carried-forward dipole wake, a genuinely new even \(P_0\oplus P_2\) mouth/support layer, and a separate geometry-closure channel. In that sharpened sense the particle is already more than a scalar monopole. fileciteturn48file0 fileciteturn48file9
+
+At the kinematic level, the pair-frame STF map is exact. With
+\[
+\mathbf n=\hat z,\qquad
+\mathbf v=(u_x,u_y,d),\qquad
+U=\frac{GM}{r},
+\]
+the Newtonian orbital STF source satisfies
+\[
+\frac{\ddot I_{ij}}{2\mu}
+=
+\mathrm{STF}\!\big(v_i v_j-U n_i n_j\big).
+\]
+Projecting this onto the canonical real STF basis
+\[
+E_{20},\ E_{21c},\ E_{21s},\ E_{22c},\ E_{22s}
+\]
+reproduces exactly the real mouth-port \(P_2\) bundle used in the 2PN appendix, with the fixed diagonal basis conversion
+\[
+q^{\rm can}=B\,q^{\rm port},
+\qquad
+B=\mathrm{diag}\!\left(\sqrt{\frac23},1,1,2,2\right),
+\qquad
+\det B=\frac{4\sqrt6}{3}\neq 0.
+\]
+So the solved 2PN \(P_2\) channels are exactly the full real STF \(l=2\) representation content. This is the representation-theoretic reason the 2.5PN notes can later treat the universal orbital/worldtube source as an STF quadrupole without introducing any new tensor channel. fileciteturn47file12
+
+The zero-frequency support/source data are also already frozen. In the static even support layer,
+\[
+R_0=R_{20}=R_{21}=R_{22}=1,
+\]
+while the scalar source vector is
+\[
+J=\left(\frac{4}{\sqrt5},\frac54,0,0,0,0\right).
+\]
+The same 2PN static ledger also identifies the pure-potential geometry-closure deficit
+\[
+\Delta_{\rm geom}=\frac{281}{80}.
+\]
+So the static support-minus-closure operator on the real quadrupole multiplet is already known before any dynamical completion is attempted. fileciteturn46file6
+
+What the frozen files do **not** yet fix is equally clear. The 2PN paper is explicit that the important dynamic pole scales,
+\[
+\Omega_{1\perp},\ \Omega_{10},\ \Omega_0,\ \Omega_{20},\ \Omega_{21},\ \Omega_{22},\ \Omega_g,
+\]
+remain genuine PDE/\(\DtN\) observables after the conservative zero-frequency coefficient ledger has been solved. In particular, the \(P_2\) poles are not yet derived from a completed moving-throat dynamic throat problem. fileciteturn48file9
+
+So the exact lesson of the frozen 2PN files is the following. They already fix:
+
+- the real STF \(l=2\) representation content of the quadrupole branch,
+- the zero-frequency support/source normalization of that branch,
+- and the fact that the orbital/worldtube STF source is not naturally projected away on the preferred branch.
+
+But they do **not** yet fix the final dynamic quadrupole normalization. That is the specific item that the later 2.5PN work had to isolate and sharpen. fileciteturn47file12 fileciteturn48file15
+
+
+## 9. One-pole insufficiency and the minimal positive conservative precursor
+
+Once the quadrupole branch is written in canonical form, the next question is how much conservative structure is needed before the outgoing odd completion can possibly reproduce the 2.5PN theorem. The exact outgoing \(l=2\) fingerprint derived earlier has normalized even moments
+\[
+m_2^{\rm norm}=\frac{a^2}{9c_s^2},
+\qquad
+m_4^{\rm norm}=\frac{4a^4}{81c_s^4}.
+\]
+Writing
+\[
+A\equiv \frac{a^2}{9c_s^2},
+\]
+this is
+\[
+\widehat Y_2^{\rm out}(\omega)
+=
+1+A\omega^2+4A^2\omega^4
++i\frac{a^5}{27c_s^5}\omega^5+\cdots.
+\]
+
+The first natural test is the historical one-pole conservative proxy
+\[
+\widehat Y_Q^{(1{\rm pole})}(\omega)
+=
+\frac{1}{1-\omega^2/\Omega_1^2}.
+\]
+Matching the exact \(O(\omega^2)\) term forces
+\[
+\Omega_1=\frac{1}{\sqrt{A}}=\frac{3c_s}{a}.
+\]
+But then the \(\omega^4\) coefficient of the one-pole series is only \(A^2\), whereas the exact outgoing branch requires \(4A^2\). So a single conservative pole reproduces the quadratic moment but misses the quartic moment by a factor of four. The old one-pole-per-channel scaffold is therefore already too small even before the radiative \(+i\omega^5\) term is added.
+
+That failure leads to the smallest admissible isotropic conservative quadrupole module. Let
+\[
+\widehat Y_Q^{\rm cons}(\omega)
+=
+c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2}.
+\]
+Matching the exact \(O(\omega^0)\), \(O(\omega^2)\), and \(O(\omega^4)\) moments gives a unique positive-real solution:
+\[
+\boxed{
+c_0=\frac34,
+\qquad
+c_1=\frac14,
+\qquad
+\Omega_Q=\frac{3c_s}{2a}.
+}
+\]
+So the minimal conservative precursor is
+\[
+\boxed{
+\widehat Y_{Q,\min}^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+=
+\frac{3(a^2\omega^2-3c_s^2)}{4a^2\omega^2-9c_s^2}.
+}
+\]
+
+This is the smallest viable isotropic conservative quadrupole support module consistent with the exact outgoing branch moments. It can be read in two equivalent ways:
+
+1. as a static contact fraction \(3/4\) plus one finite conservative pole of residue \(1/4\),
+2. or as the minimal positive two-point Stieltjes precursor matching the exact even moments.
+
+Either way, the one-pole conservative proxy is ruled out, and the next viable Family-1-style completion is already more structured.
+
+In canonical invariant language, the same module can be written as
+\[
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right].
+\]
+Then
+\[
+\overline K_2=\frac{\overline K_0}{4\Omega_Q^2},
+\qquad
+\overline K_4=\frac{\overline K_0}{4\Omega_Q^4},
+\]
+so the exact conservative branch identity is
+\[
+\boxed{
+\overline K_4\,\overline K_0=4\overline K_2^2.
+}
+\]
+On the same outgoing \(l=2\) branch, the odd coefficient is then no longer independent:
+\[
+\boxed{
+\overline\Gamma_5
+=
+9\,\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}.
+}
+\]
+
+This is the real value of the minimal precursor analysis. The 2.5PN notes already say that only the universal orbital/worldtube STF quadrupole survives at point-particle 2.5PN and that the remaining gap is the final normalization of that branch. The precursor result sharpens that further: any future higher-order conservative calculation does not need to rediscover a generic whole theory. It needs to determine whether the grouped \(P_2\) sector realizes exactly this minimal conservative moment pattern, because once \((\overline K_0,\overline K_2)\) are known on that branch, \(\overline K_4\) and \(\overline\Gamma_5\) are fixed automatically. fileciteturn47file9 fileciteturn47file16
+## 10. Minimal isotropic quadrupole response module
+
+By the end of the channel audit, the quadrupole side had become the only surviving universal point-particle 2.5PN route. The solved 2PN \(P_2\) ports already contain the full real STF \(\ell=2\) representation content, the low-frequency \(P_2\to{\rm STF}\) matching matrix is forced by rotational invariance to be scalar on the natural branch, and the remaining unresolved issue is the final normalization of the retarded quadrupole response rather than the existence of the branch itself. In that situation the next natural question is: what is the smallest conservative quadrupole module that can possibly remain compatible with the exact outgoing \(l=2\) fingerprint?
+
+From the outgoing compact \(l=2\) branch, the normalized quadrupole admittance is
+\[
+\widehat Y_2^{\rm out}(\omega)
+=
+1+\frac{a^2}{9c_s^2}\omega^2
++\frac{4a^4}{81c_s^4}\omega^4
++i\frac{a^5}{27c_s^5}\omega^5+\cdots.
+\]
+So the exact conservative even moments are
+\[
+m_2^{\rm norm}=\frac{a^2}{9c_s^2},
+\qquad
+m_4^{\rm norm}=\frac{4a^4}{81c_s^4}.
+\]
+
+A normalized one-pole conservative proxy,
+\[
+\widehat Y_Q^{(1{\rm pole})}(\omega)=\frac{1}{1-\omega^2/\Omega_Q^2},
+\]
+can reproduce the quadratic moment by choosing
+\[
+\Omega_Q=\frac{3c_s}{a},
+\]
+but then its quartic coefficient is only \(m_2^2\), whereas the outgoing branch requires \(4m_2^2\). So a single conservative pole by itself is already too small. The exact outgoing quadrupole branch therefore excludes the old one-pole-per-channel conservative scaffold as a complete low-frequency closure.
+
+The smallest isotropic conservative module with the correct moments is instead
+\[
+\widehat Y_Q^{\rm cons}(\omega)=c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2}.
+\]
+Matching the exact \(O(\omega^0)\), \(O(\omega^2)\), and \(O(\omega^4)\) moments yields the unique positive-real solution
+\[
+\boxed{
+c_0=\frac34,
+\qquad
+c_1=\frac14,
+\qquad
+\Omega_Q=\frac{3c_s}{2a}.
+}
+\]
+Thus the minimal conservative quadrupole module is
+\[
+\boxed{
+\widehat Y_{Q,\min}^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+}
+\]
+Equivalently,
+\[
+\widehat Y_{Q,\min}^{\rm cons}(\omega)
+=
+\frac{3(a^2\omega^2-3c_s^2)}{4a^2\omega^2-9c_s^2}.
+\]
+
+This module has a simple physical interpretation. The smallest admissible conservative quadrupole support sector is not a lone pole. It is a static contact fraction \(3/4\) plus one finite conservative pole of residue \(1/4\). That is the first place where the 2.5PN program really tightens the higher-order target: any future conservative quadrupole derivation that still looks like “one pole only” is already too poor to support the outgoing \(l=2\) fingerprint.
+
+The same result can be written directly in canonical invariant language. Let
+\[
+\overline K^R(\omega)
+=
+\overline K_0+\overline K_2\omega^2+\overline K_4\omega^4+i\overline\Gamma_5\omega^5+\cdots.
+\]
+Then the minimal conservative branch is
+\[
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right],
+\]
+with
+\[
+\Omega_Q^2=\frac{\overline K_0}{4\overline K_2},
+\qquad
+\Omega_Q=\frac{\sqrt{\overline K_0}}{2\sqrt{\overline K_2}}.
+\]
+Expanding gives the exact invariant relation
+\[
+\overline K_4=\frac{4\overline K_2^2}{\overline K_0}.
+\]
+On the same outgoing \(l=2\) branch, the odd coefficient is then fixed automatically:
+\[
+\overline\Gamma_5
+=
+9\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}.
+\]
+
+So the real significance of the minimal module is not merely that it improves the conservative fit. It identifies the smallest quadrupole support structure from which a GR-like point-particle 2.5PN theorem could possibly emerge. The current stack has therefore gone beyond “the quadrupole branch survives.” It now says exactly what conservative moment structure that branch must carry if it is to survive in a form compatible with the outgoing retarded completion.
+
+
+## 11. Componentwise \(P_2\) channel target
+
+The minimal isotropic quadrupole module is most useful only after it is translated back into the real \(P_2\) channel language actually used by the conservative throat-response program. The 2PN support hierarchy already fixes the real \(P_2\) package, and the quadrupole audit shows that this package is exactly the real STF \(l=2\) representation. In the canonical real STF basis
+\[
+E_{20},\ E_{21c},\ E_{21s},\ E_{22c},\ E_{22s},
+\]
+the Frobenius Gram matrix is the identity, so the five real channels form an orthonormal basis of the full \(\ell=2\) space.
+
+Because this is an irreducible real \(l=2\) representation, rotational invariance forces any isotropic low-frequency quadrupole kernel to be proportional to the identity:
+\[
+\mathcal Y_{ab}^{(2)}(\omega)=Y_Q(\omega)\,\delta_{ab}.
+\]
+So once the minimal conservative module is known, the full real \(P_2\) response matrix is fixed immediately:
+\[
+\boxed{
+\mathcal Y_{ab}^{(2)}(\omega)
+=
+\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right]\delta_{ab}.
+}
+\]
+
+Componentwise, that means
+\[
+Y_{20}=Y_{21c}=Y_{21s}=Y_{22c}=Y_{22s}
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\]
+In grouped channel language,
+\[
+\boxed{
+Y_{20}=Y_{21}=Y_{22},
+\qquad
+\Omega_{20}=\Omega_{21}=\Omega_{22}=\Omega_Q.
+}
+\]
+Using the minimal isotropic branch,
+\[
+\boxed{
+\Omega_Q=\frac{3c_s}{2a}.
+}
+\]
+
+This is the concrete \(P_2\) target that any future higher-order conservative calculation has to hit if the current quadrupole route is to remain viable. It is not enough to extract “some” \(P_2\) coefficients. The grouped real channels must line up across the full bundle:
+\[
+P_{20}\oplus P_{21}\oplus P_{22}.
+\]
+And they must line up through the first two even orders,
+\[
+O(\omega^2),\qquad O(\omega^4),
+\]
+with one and the same effective pole.
+
+This can also be expressed directly in canonical invariant form. If a future conservative extraction yields
+\[
+Y_Q^{\rm inv}(\omega)
+=
+\overline K_0+\overline K_2\omega^2+\overline K_4\omega^4+\cdots,
+\]
+then on the minimal isotropic branch one must have
+\[
+Y_Q^{\rm inv}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-4\overline K_2\omega^2/\overline K_0}
+\right].
+\]
+So the exact componentwise conservative fingerprint is
+\[
+\boxed{
+\text{all five real }P_2\text{ components share the same }
+\overline K_0,\overline K_2,\overline K_4,
+}
+\]
+together with
+\[
+\boxed{
+\overline K_4\,\overline K_0=4\overline K_2^2,
+\qquad
+\Omega_Q^2=\frac{\overline K_0}{4\overline K_2}.
+}
+\]
+
+The practical payoff is large. The next conservative quadrupole calculation no longer needs to be described vaguely as “do 3PN and 5PN somehow.” It has a very concrete target: extract the grouped \(P_{20}\), \(P_{21}\), and \(P_{22}\) coefficients through \(O(\omega^4)\), check whether they coincide, and then test whether they satisfy the branch identity above. If they do not, the minimal isotropic quadrupole branch is ruled out. If they do, the quadrupole route remains alive and tightly constrained.
+
+
+## 12. Single-pole sufficiency theorem for the 2.5PN quadrupole closure
+
+The minimal isotropic quadrupole module becomes genuinely powerful only after one more observation: on that branch, the conservative and dissipative low-frequency coefficients are no longer independent. Once the conservative pole and static normalization are known, the full 2.5PN quadrupole ledger is fixed.
+
+Start from the minimal conservative module
+\[
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right].
+\]
+Expanding through \(O(\omega^4)\) gives
+\[
+\boxed{
+\overline K_2=\frac{\overline K_0}{4\Omega_Q^2},
+\qquad
+\overline K_4=\frac{\overline K_0}{4\Omega_Q^4}.
+}
+\]
+These are exact consequences of the minimal isotropic conservative branch.
+
+Now combine this with the outgoing \(l=2\) retarded fingerprint already established earlier. On that branch,
+\[
+\overline\Gamma_5
+=
+9\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}.
+\]
+Substituting the single-pole conservative relations yields
+\[
+\boxed{
+\overline\Gamma_5
+=
+\frac{9\overline K_0}{32\Omega_Q^5}.
+}
+\]
+So the entire low-frequency quadrupole sector is determined by just two conservative quantities:
+\[
+\boxed{
+\overline K_0,
+\qquad
+\Omega_Q.
+}
+\]
+Equivalently, one may use
+\[
+(\overline K_0,\overline K_2)
+\]
+since
+\[
+\Omega_Q^2=\frac{\overline K_0}{4\overline K_2}.
+\]
+
+This is the sharpest reduction achieved in the 2.5PN program. A future conservative calculation does **not** need to derive an independent \(\omega^5\) coefficient if the branch structure is already known. It only has to determine enough of the conservative quadrupole module to fix \(\overline K_0\) and \(\Omega_Q\). Once those are known, \(\overline K_4\) and \(\overline\Gamma_5\) follow automatically.
+
+The Burke–Thorne condition
+\[
+\overline\Gamma_5=\frac{2G}{5c^5}
+\]
+is therefore equivalent to a single scaling law:
+\[
+\boxed{
+\overline K_0=\frac{64G}{45c^5}\,\Omega_Q^5.
+}
+\]
+Then the whole low-frequency ledger is fixed:
+\[
+\boxed{
+\overline K_2=\frac{16G}{45c^5}\,\Omega_Q^3,
+\qquad
+\overline K_4=\frac{16G}{45c^5}\,\Omega_Q,
+\qquad
+\overline\Gamma_5=\frac{2G}{5c^5}.
+}
+\]
+
+If one rewrites the pole in the geometric form already derived from the minimal isotropic module,
+\[
+\Omega_Q=\frac{3c_s}{2a},
+\]
+these relations reduce exactly to the earlier GR target branch:
+\[
+\overline K_0^{\rm target}
+=
+\frac{54Gc_s^5}{5a^5c^5},
+\qquad
+\overline K_2^{\rm target}
+=
+\frac{6Gc_s^3}{5a^3c^5},
+\qquad
+\overline K_4^{\rm target}
+=
+\frac{8Gc_s}{15ac^5}.
+\]
+
+This gives the cleanest reduced theorem statement available before the full moving-throat PDE is solved:
+
+\[
+\boxed{
+\text{On the minimal isotropic outgoing }l=2\text{ branch, a full GR-like point-particle 2.5PN closure is obtained if}
+}
+\]
+\[
+\boxed{
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right]
+}
+\]
+and
+\[
+\boxed{
+\overline K_0=\frac{64G}{45c^5}\Omega_Q^5.
+}
+\]
+Under those conditions, the same branch automatically yields the Burke–Thorne / Iyer–Will local 2.5PN quadrupole reaction term.
+
+This is why the theorem target has become so much narrower than “derive all of 3PN and 5PN before doing anything else.” The minimal higher-order conservative payload needed to decide the 2.5PN theorem is now explicit: determine the isotropic quadrupole pole and static normalization from the grouped real \(P_2\) bundle. If that succeeds, the 2.5PN quadrupole closure follows on the same branch. If it fails, the minimal branch is ruled out and the quadrupole module must be richer. That is the exact pass/fail test the later extraction ledger formalizes.
+## 13. Explicit extraction ledger for the conservative quadrupole module
+
+By this stage of the 2.5PN program, the quadrupole branch has been reduced as far as possible without a full moving-throat PDE. The remaining task is no longer to guess the whole higher-order conservative structure. It is to formulate an extraction test sharp enough that any future conservative quadrupole calculation can be checked immediately against the reduced 2.5PN theorem.
+
+The minimal isotropic conservative quadrupole module derived earlier is
+\[
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right].
+\]
+Its low-frequency expansion is
+\[
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0
++\frac{\overline K_0}{4\Omega_Q^2}\omega^2
++\frac{\overline K_0}{4\Omega_Q^4}\omega^4
++O(\omega^6).
+\]
+So the branch coefficients are
+\[
+\boxed{
+\overline K_2=\frac{\overline K_0}{4\Omega_Q^2},
+\qquad
+\overline K_4=\frac{\overline K_0}{4\Omega_Q^4},
+\qquad
+\overline\Gamma_5=\frac{9\overline K_0}{32\Omega_Q^5}.
+}
+\]
+They satisfy the exact branch identity
+\[
+\boxed{
+\overline K_0\overline K_4=4\overline K_2^2.
+}
+\]
+
+This already shows what the future conservative calculation has to return. Suppose it yields the real low-frequency series
+\[
+Y_Q^{\rm cons}(\omega)=c_0+c_2\omega^2+c_4\omega^4+O(\omega^6).
+\]
+On the minimal isotropic branch these coefficients are simply
+\[
+\boxed{
+c_0=\overline K_0,
+\qquad
+c_2=\overline K_2,
+\qquad
+c_4=\overline K_4.
+}
+\]
+So the higher-order conservative payload needed for the 2.5PN theorem is only the first three even coefficients of the isotropic quadrupole response.
+
+From those coefficients one can reconstruct the effective conservative pole in two equivalent ways. From \((\overline K_0,\overline K_2)\),
+\[
+\boxed{
+\Omega_Q^2=\frac{\overline K_0}{4\overline K_2}.
+}
+\]
+From \((\overline K_2,\overline K_4)\),
+\[
+\boxed{
+\Omega_Q^2=\frac{\overline K_2}{\overline K_4},
+\qquad
+\overline K_0=\frac{4\overline K_2^2}{\overline K_4}.
+}
+\]
+And the corresponding 2.5PN odd coefficient is then fixed automatically:
+\[
+\boxed{
+\overline\Gamma_5
+=
+9\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}}
+=
+\frac{9}{8}\frac{\overline K_4^{3/2}}{\sqrt{\overline K_2}}
+=
+\frac{9\overline K_0}{32\Omega_Q^5}.
+}
+\]
+
+This makes the GR gate very compact. Burke–Thorne matching requires
+\[
+\overline\Gamma_5=\frac{2G}{5c^5}.
+\]
+On the minimal isotropic branch this is equivalent to
+\[
+\boxed{
+\overline K_0^{\rm target}=\frac{64G}{45c^5}\Omega_Q^5,
+\qquad
+\overline K_2^{\rm target}=\frac{16G}{45c^5}\Omega_Q^3,
+\qquad
+\overline K_4^{\rm target}=\frac{16G}{45c^5}\Omega_Q.
+}
+\]
+Or, eliminating \(\Omega_Q\),
+\[
+\boxed{
+\frac{\overline K_4^3}{\overline K_2}=\frac{256G^2}{2025c^{10}}.
+}
+\]
+So if a future conservative calculation can deliver \((c_2,c_4)\) alone, the 2.5PN GR test is already
+\[
+\boxed{
+\frac{c_4^3}{c_2}=\frac{256G^2}{2025c^{10}}.
+}
+\]
+
+The full 2.5PN closure on the minimal branch is therefore reduced to a simple extraction ledger:
+
+1. show that the conservative real \(P_2\) bundle is isotropic through \(O(\omega^4)\);
+2. extract the common coefficients \((c_0,c_2,c_4)\);
+3. verify the branch identity \(c_0c_4=4c_2^2\);
+4. reconstruct \(\Omega_Q\) and \(\overline\Gamma_5\);
+5. test the GR gate \(\overline\Gamma_5=2G/(5c^5)\).
+
+This is the sharpest reduced theorem target reached before the full moving-throat PDE.
+
+
+## 14. Exact grouped-\(P_2\) extraction formulas
+
+The conservative extraction ledger becomes more practical when it is translated directly into the real throat-response channel language used by the 2PN program. The future higher-order conservative quadrupole calculation should therefore be formulated in terms of the grouped real \(P_2\) channels
+\[
+P_{20}\oplus P_{21}\oplus P_{22}.
+\]
+
+Suppose the conservative grouped channels are expanded through fourth order in frequency as
+\[
+Y_{20}(\omega)=c_0^{(20)}+c_2^{(20)}\omega^2+c_4^{(20)}\omega^4+O(\omega^6),
+\]
+\[
+Y_{21}(\omega)=c_0^{(21)}+c_2^{(21)}\omega^2+c_4^{(21)}\omega^4+O(\omega^6),
+\]
+\[
+Y_{22}(\omega)=c_0^{(22)}+c_2^{(22)}\omega^2+c_4^{(22)}\omega^4+O(\omega^6).
+\]
+Here \(21\) and \(22\) denote the common grouped values of the \((c,s)\) channel pairs in the real STF basis.
+
+Because the real STF \(l=2\) multiplet has multiplicities \(1,2,2\) for \(20,21,22\), the unique scalar trace-average invariants are
+\[
+\boxed{
+\bar c_0=\frac{c_0^{(20)}+2c_0^{(21)}+2c_0^{(22)}}{5},
+}
+\]
+\[
+\boxed{
+\bar c_2=\frac{c_2^{(20)}+2c_2^{(21)}+2c_2^{(22)}}{5},
+}
+\]
+\[
+\boxed{
+\bar c_4=\frac{c_4^{(20)}+2c_4^{(21)}+2c_4^{(22)}}{5}.
+}
+\]
+These are the exact scalar invariants obtained by tracing over the full five-component real STF bundle.
+
+It is equally useful to define anisotropy diagnostics by subtracting the trace averages:
+\[
+\delta c_n^{(20)}=c_n^{(20)}-\bar c_n,
+\qquad
+\delta c_n^{(21)}=c_n^{(21)}-\bar c_n,
+\qquad
+\delta c_n^{(22)}=c_n^{(22)}-\bar c_n,
+\]
+for \(n=0,2,4\). These obey the exact weighted-sum constraints
+\[
+\delta c_n^{(20)}+2\delta c_n^{(21)}+2\delta c_n^{(22)}=0.
+\]
+So any future conservative calculation naturally splits into an isotropic trace part
+\[
+(\bar c_0,\bar c_2,\bar c_4)
+\]
+plus anisotropy diagnostics
+\[
+(\delta c_n^{(20)},\delta c_n^{(21)},\delta c_n^{(22)}).
+\]
+
+On the minimal isotropic quadrupole branch needed for the reduced 2.5PN theorem, the grouped coefficients must satisfy
+\[
+c_n^{(20)}=c_n^{(21)}=c_n^{(22)}\equiv c_n,
+\qquad n=0,2,4.
+\]
+Then
+\[
+\bar c_0=c_0,\qquad \bar c_2=c_2,\qquad \bar c_4=c_4,
+\]
+and the first pass/fail gate is simply
+\[
+\boxed{
+\delta c_n^{(20)}=\delta c_n^{(21)}=\delta c_n^{(22)}=0,
+\qquad n=0,2,4.
+}
+\]
+
+If that grouped isotropy test passes, the effective conservative pole and the 2.5PN odd coefficient are fixed by the conservative data alone:
+\[
+\boxed{
+\Omega_Q^2=\frac{c_2}{c_4},
+\qquad
+\overline K_0=\frac{4c_2^2}{c_4},
+\qquad
+\overline\Gamma_5=\frac{9}{8}\frac{c_4^{3/2}}{\sqrt{c_2}}.
+}
+\]
+The minimal-branch identity becomes
+\[
+\boxed{
+c_0c_4=4c_2^2.
+}
+\]
+
+Burke–Thorne matching then reduces to the exact scalar test
+\[
+\boxed{
+\frac{c_4^3}{c_2}=\frac{256G^2}{2025c^{10}}.
+}
+\]
+Equivalently, in pole language,
+\[
+\boxed{
+\overline K_0=\frac{64G}{45c^5}\Omega_Q^5,
+\qquad
+\overline K_2=\frac{16G}{45c^5}\Omega_Q^3,
+\qquad
+\overline K_4=\frac{16G}{45c^5}\Omega_Q.
+}
+\]
+
+This is the smallest grouped \(P_2\) payload that would decide whether the current quadrupole branch can close the 2.5PN theorem. A future higher-order conservative calculation does not yet need the full moving-throat PDE. It only needs to return the grouped low-frequency coefficients
+\[
+(c_0^{(20)},c_2^{(20)},c_4^{(20)}),
+\qquad
+(c_0^{(21)},c_2^{(21)},c_4^{(21)}),
+\qquad
+(c_0^{(22)},c_2^{(22)},c_4^{(22)}),
+\]
+so that the isotropy and branch identities can be tested explicitly.
+
+
+## 15. Normalized-support extraction ledger
+
+The grouped extraction formulas become even cleaner when they are specialized to the raw support convention already frozen by the 2PN paper. In that convention, the static even \(P_2\) support residues are fixed to
+\[
+R_{20}=R_{21}=R_{22}=1.
+\]
+So the future higher-order conservative quadrupole calculation does not need to rediscover the zero-frequency support amplitudes. It only needs to extract the genuinely new \(O(\omega^2)\) and \(O(\omega^4)\) data.
+
+In that normalized-support convention the grouped channel expansions can be written as
+\[
+Y_{20}(\omega)=1+u_2^{(20)}\omega^2+u_4^{(20)}\omega^4+O(\omega^6),
+\]
+\[
+Y_{21}(\omega)=1+u_2^{(21)}\omega^2+u_4^{(21)}\omega^4+O(\omega^6),
+\]
+\[
+Y_{22}(\omega)=1+u_2^{(22)}\omega^2+u_4^{(22)}\omega^4+O(\omega^6).
+\]
+So the new conservative payload begins at \(O(\omega^2)\), not at zero frequency. The six genuinely new numbers are
+\[
+\boxed{
+u_2^{(20)},u_2^{(21)},u_2^{(22)},u_4^{(20)},u_4^{(21)},u_4^{(22)}.
+}
+\]
+
+The corresponding weighted trace averages are
+\[
+\bar u_2=\frac{u_2^{(20)}+2u_2^{(21)}+2u_2^{(22)}}{5},
+\qquad
+\bar u_4=\frac{u_4^{(20)}+2u_4^{(21)}+2u_4^{(22)}}{5}.
+\]
+Again, deviations from those averages define anisotropy diagnostics, and the exact weighted-sum constraints remain
+\[
+\delta u_n^{(20)}+2\delta u_n^{(21)}+2\delta u_n^{(22)}=0,
+\qquad n=2,4.
+\]
+
+On the minimal isotropic branch one must have
+\[
+u_2^{(20)}=u_2^{(21)}=u_2^{(22)}\equiv u_2,
+\qquad
+u_4^{(20)}=u_4^{(21)}=u_4^{(22)}\equiv u_4.
+\]
+Then the normalized-support branch identity becomes especially simple:
+\[
+\boxed{
+u_4=4u_2^2.
+}
+\]
+The effective conservative pole is
+\[
+\boxed{
+\Omega_Q^2=\frac{u_2}{u_4}=\frac{1}{4u_2},
+\qquad
+\Omega_Q=\frac{1}{2\sqrt{u_2}}.
+}
+\]
+
+In this convention the outgoing branch predicts the normalized odd coefficient
+\[
+\Gamma_{5,\rm norm}=\frac{9}{8}\frac{u_4^{3/2}}{\sqrt{u_2}}.
+\]
+On the minimal branch this reduces to
+\[
+\boxed{
+\Gamma_{5,\rm norm}=9u_2^{5/2}.
+}
+\]
+The physical canonical odd coefficient still carries the overall quadrupole normalization:
+\[
+\overline\Gamma_5=\overline K_0\,\Gamma_{5,\rm norm}.
+\]
+So Burke–Thorne matching
+\[
+\overline\Gamma_5=\frac{2G}{5c^5}
+\]
+fixes
+\[
+\boxed{
+\overline K_0^{\rm target}
+=
+\frac{2G}{45c^5u_2^{5/2}}.
+}
+\]
+In pole language this is exactly
+\[
+\boxed{
+\overline K_0^{\rm target}
+=
+\frac{64G}{45c^5}\Omega_Q^5.
+}
+\]
+
+This is the cleanest version of the higher-order conservative target in the raw \(P_2\) support convention already used by the 2PN paper. Because the static support residues are frozen to one, the next conservative extraction does not need to solve the full moving-throat PDE and does not need to rediscover the static support layer. It only needs to determine whether the grouped normalized moments
+\[
+u_2^{(20)},u_2^{(21)},u_2^{(22)},u_4^{(20)},u_4^{(21)},u_4^{(22)}
+\]
+satisfy the isotropy and branch identities above. If they do, the physical 2.5PN quadrupole coefficient follows from one remaining normalization number \(\overline K_0\), with the GR target fixed by the displayed scaling law.
+## 16. Axisymmetric grouped-\(P_2\) parameterization
+
+The conservative extraction ledger becomes most useful only after it is written in the same grouped channel language that a future higher-order throat-response calculation would naturally return. The 2PN support hierarchy already fixes two structural facts needed here. First, the conservative cross sector has reorganized into a genuine \(P_0\oplus P_2\) mouth/support layer rather than a single scalar correction channel. Second, the static even \(P_2\) support residues are already frozen as
+\[
+R_{20}=R_{21}=R_{22}=1,
+\]
+while the dynamic pole scales \(\Omega_{20},\Omega_{21},\Omega_{22}\) remain genuine open throat observables. That means the correct future conservative payload is not “some generic 3PN/5PN coefficients,” but the grouped low-frequency \(P_{20}\oplus P_{21}\oplus P_{22}\) response itself. fileciteturn47file12turn47file3
+
+In the real STF ordering
+\[
+(20,\ 21c,\ 21s,\ 22c,\ 22s),
+\]
+the most general **axisymmetric** diagonal normalized-support kernel through \(O(\omega^4)\) can be written as
+\[
+Y^{(2)}_{\rm cons}(\omega)=I_5+\omega^2U_2+\omega^4U_4+O(\omega^6),
+\]
+with
+\[
+U_2=\bar u_2 I_5+a_2T+b_2S,
+\qquad
+U_4=\bar u_4 I_5+a_4T+b_4S,
+\]
+where
+\[
+T=\mathrm{diag}(4,-1,-1,-1,-1),
+\qquad
+S=\mathrm{diag}(0,1,1,-1,-1).
+\]
+These two matrices are the natural axisymmetric traceless generators on the five-component real STF bundle: \(T\) measures the splitting of the singlet-like \(20\) channel against the \(\{21,22\}\) sector, while \(S\) measures the residual \(21\)-vs-\(22\) splitting inside the non-axisymmetric doublets.
+
+The grouped channels are then
+\[
+Y_{20}(\omega)
+=
+1+\bigl(\bar u_2+4a_2\bigr)\omega^2
++\bigl(\bar u_4+4a_4\bigr)\omega^4
++O(\omega^6),
+\]
+\[
+Y_{21}(\omega)
+=
+1+\bigl(\bar u_2-a_2+b_2\bigr)\omega^2
++\bigl(\bar u_4-a_4+b_4\bigr)\omega^4
++O(\omega^6),
+\]
+\[
+Y_{22}(\omega)
+=
+1+\bigl(\bar u_2-a_2-b_2\bigr)\omega^2
++\bigl(\bar u_4-a_4-b_4\bigr)\omega^4
++O(\omega^6).
+\]
+So the six real numbers
+\[
+u_2^{(20)},u_2^{(21)},u_2^{(22)},u_4^{(20)},u_4^{(21)},u_4^{(22)}
+\]
+are not arbitrary. They are exactly equivalent to the six parameters
+\[
+\bar u_2,\ a_2,\ b_2,\ \bar u_4,\ a_4,\ b_4.
+\]
+
+The inverse map is unique and explicit. Given any grouped coefficient triple \((x_{20},x_{21},x_{22})\), the corresponding isotropic trace part and anisotropy components are
+\[
+\boxed{
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+}
+\qquad
+\boxed{
+a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+}
+\qquad
+\boxed{
+b_x=\frac{x_{21}-x_{22}}{2}.
+}
+\]
+Thus a future grouped conservative \(P_2\) extraction can be converted back into the axisymmetric STF basis with no ambiguity.
+
+It is useful to package the anisotropy directly as norms on the full five-component bundle:
+\[
+\mathcal A_2^2
+\equiv
+\frac15\mathrm{tr}\,(U_2-\bar u_2I_5)^2
+=
+4a_2^2+\frac45 b_2^2,
+\]
+\[
+\mathcal A_4^2
+\equiv
+\frac15\mathrm{tr}\,(U_4-\bar u_4I_5)^2
+=
+4a_4^2+\frac45 b_4^2.
+\]
+These are exact diagnostics of how far a future grouped calculation lies from the minimal isotropic branch. The isotropy gate is simply
+\[
+\boxed{
+a_2=b_2=a_4=b_4=0.
+}
+\]
+
+If that gate passes, the grouped sector collapses to
+\[
+Y_{20}=Y_{21}=Y_{22}
+=
+1+\bar u_2\omega^2+\bar u_4\omega^4+O(\omega^6).
+\]
+Then the minimal-branch identity derived earlier becomes
+\[
+\boxed{
+\bar u_4=4\bar u_2^2.
+}
+\]
+And therefore the effective conservative pole and normalized odd coefficient are fixed:
+\[
+\boxed{
+\Omega_Q^2=\frac{1}{4\bar u_2},
+\qquad
+\Gamma_{5,\rm norm}=9\bar u_2^{5/2}.
+}
+\]
+The physical 2.5PN odd coefficient is still
+\[
+\overline\Gamma_5=\overline K_0\,\Gamma_{5,\rm norm},
+\]
+so exact Burke–Thorne matching requires
+\[
+\boxed{
+\overline K_0^{\rm target}
+=
+\frac{2G}{45c^5\bar u_2^{5/2}}.
+}
+\]
+
+This is the exact axisymmetric template the future conservative quadrupole extraction has to hit. It is the final sharpening of the higher-order target before the full moving-throat PDE is solved. The next conservative calculation does not need to guess a generic high-order tensor structure. It only needs to return the grouped \(P_{20}\oplus P_{21}\oplus P_{22}\) coefficients through \(O(\omega^4)\), from which one reconstructs
+\[
+\bar u_2,\bar u_4,a_2,b_2,a_4,b_4
+\]
+and then immediately decides:
+
+1. whether the grouped quadrupole bundle is isotropic,
+2. whether it lies on the minimal branch,
+3. what effective conservative pole it predicts,
+4. and what \(\overline K_0\) would be required for exact GR-like 2.5PN closure.
+
+That is the precise end-state of the reduced 2.5PN conservative program.
+
+
+## 17. Project anchors and carry-forward inputs
+
+The present 2.5PN package does not stand alone. It is the next layer in a stack whose lower-order and parent-theory inputs are already frozen elsewhere in the project. For future paper assembly, the cleanest way to handle this is not to rederive those earlier layers inside the 2.5PN document, but to state clearly what is being carried forward and where it comes from.
+
+The deepest anchor is the parent 4D theory. The exact 4D action-based bulk model already fixes the projection map, projected continuity with leakage, the exact longitudinal identity, the quasi-static Poisson hook, and the controlled zero-mode Maxwell reduction on the brane. Those are the parent structures underneath every later reduced theorem in the PN sequence. fileciteturn46file4
+
+The next anchor is the full conservative 1PN assembly. Within a declared closure hierarchy, the 1PN program already froze the key lower-order viability conditions
+\[
+\kappa_\rho=1,\qquad
+n=5,\qquad
+\kappa_{\rm add}=\frac12,\qquad
+\kappa_{\rm PV}=\frac32,\qquad
+\beta_{\rm 1PN}=3,
+\]
+and closed the conservative EIH ledger through 1PN. It was also explicit about what remained outside scope: spin couplings, dissipative leakage and radiation reaction, strong-field completion, higher-PN sectors beyond the solved conservative range, and the fully solved moving-throat PDE. That claim taxonomy is still the right one for the present 2.5PN work. fileciteturn46file5turn48file4
+
+The third anchor is the full conservative 2PN assembly. The 2PN program did more than extend the coefficient ledger. It showed that the conservative particle/throat structure had already become a small throat-response theory with a carried-forward dipole wake, a genuinely new even \(P_0\oplus P_2\) mouth/support layer, and a separate geometry-closure channel. It also froze the zero-frequency even support data
+\[
+R_0=R_{20}=R_{21}=R_{22}=1,
+\]
+the scalar source vector
+\[
+J=\left(\frac{4}{\sqrt5},\frac54,0,0,0,0\right),
+\]
+and it made equally explicit that the dynamic pole scales
+\[
+\Omega_{20},\Omega_{21},\Omega_{22}
+\]
+remain genuine open observables of the unresolved throat/\(\DtN\) completion. That is exactly why the present 2.5PN analysis could use the \(P_2\) sector structurally while still treating its final low-frequency normalization as open. fileciteturn47file12turn47file3
+
+The fourth anchor is the present 2.5PN ledger itself. The session notes and the master SymPy audit now agree on the strongest honest verdict: the scalar and dipole dangers can be demoted on the natural compact/passive/outgoing small-body branch, the surviving universal point-particle route is the orbital/worldtube STF quadrupole, and the remaining serious gap is the final passive/outgoing quadrupole normalization. The master audit summarizes that conclusion in its final conditional theorem ledger, while the notes sharpen the same point by stating that the branch is structurally in place and the remaining unresolved quantity is the correct far-zone quadrupole normalization. fileciteturn48file2turn48file14turn48file3turn48file7
+
+That is the right way to read the document assembled in this session. Sections 1–16 are not trying to replace the 4D parent theory or the full conservative 1PN/2PN papers. They are a reduced 2.5PN theorem package built on top of them. The parent 4D paper supplies the ontology and projection/reduction infrastructure. The 1PN and 2PN papers supply the frozen conservative hierarchy, the response bookkeeping, and the real \(P_2\) support layer. The present 2.5PN session then isolates the first dissipative PN gate, shows that only the quadrupole route survives as the universal point-particle channel, and reduces the theorem gap to one narrow remaining normalization problem.
+
+So the clean handoff into any future session or paper-assembly pass is:
+
+1. use the 4D parent paper for ontology, projection, and reduction rules,
+2. use the 1PN paper for the frozen lower-order viability constants and claim taxonomy,
+3. use the 2PN paper for the real throat-response support hierarchy and fixed static \(P_2\) data,
+4. and use the present 2.5PN package for the reduced dissipative theorem audit, extraction ledger, and quadrupole normalization target.
+
+That is the exact place where the current 2.5PN program ends and the final paper assembly can begin.

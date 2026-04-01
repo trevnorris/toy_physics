@@ -1,0 +1,49 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage126_equal_normalized_singular_limit_sympy_audit.py
+# Date: 2026-04-02T16:41:23-06:00
+# Elapsed: 61s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 126 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+Exact strict inequality g_Pi < 1 for finite Pi
+----------------------------------------------------------------------------------------
+numerator = -16*Pi**4*exp(2*Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + 16*Pi**4*exp(Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) - 8*pi*Pi**3*exp(Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + 8*pi*Pi**3/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + 4*Pi**2*exp(Pi) - 4*Pi**2 - 4*pi**2*Pi**2*exp(2*Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + 4*pi**2*Pi**2*exp(Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) - 2*pi**3*Pi*exp(Pi)/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + 2*pi**3*Pi/(4*Pi**2*exp(Pi) - 4*Pi**2 + pi**2*exp(Pi) - pi**2) + pi**2*exp(Pi) - pi**2
+numerator - exact positive decomposition = 0
+positive pieces:
+  exp remainder = -Pi**2/2 - Pi + exp(Pi) - 1
+  linear coeff  = pi*(-2 + pi)
+  quadratic coeff = -4 + pi**2/2
+
+----------------------------------------------------------------------------------------
+Endpoint limits
+----------------------------------------------------------------------------------------
+lim_{Pi->0+} g_Pi = 2/pi
+lim_{Pi->oo} g_Pi = 1
+R_infty = (-sqrt(4107 - 100*pi**2) + 10*pi)**2/4107
+S_infty = 1
+lim Sigma0/Pi = 4107/(20*pi*sqrt(4107 - 100*pi**2))
+lim That/sqrt(Pi) = 111*sqrt(3)/(20*sqrt(pi)*(4107 - 100*pi**2)**(1/4))
+
+========================================================================================
+STAGE 126 LEDGER
+========================================================================================
+For every finite Pi>0:
+  2/pi < g_Pi < 1
+So g_c = 1 is not a finite positive-bias branch.
+
+Equal-normalized branch:
+  reached only as Pi -> infinity
+  and That -> infinity like sqrt(Pi).
+
+Numerics:
+  R_infty = 0.145454452260420126101421595368
+  lim That/sqrt(Pi) = 0.725669130700713219781041125011
+
+EXIT_CODE: 0

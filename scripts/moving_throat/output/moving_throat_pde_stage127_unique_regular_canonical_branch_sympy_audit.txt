@@ -1,0 +1,38 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage127_unique_regular_canonical_branch_sympy_audit.py
+# Date: 2026-04-02T16:41:27-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 127 — UNIQUE REGULAR CANONICAL MOUTH BRANCH
+========================================================================================
+
+----------------------------------------------------------------------------------------
+Compensated branches
+----------------------------------------------------------------------------------------
+g_-^F1 = 0.758035078944662826919680890414
+g_+^F1 = 2.79795199200529341011158893417
+2/pi   = 0.636619772367581343075535053490
+Pi_*          = 1.50882951349315552747043511772
+That(Pi_*)    = 0.901484054174204022702401688674
+Pi_match      = 1.90848600654854538838378630317
+That(Pi_match)= 1.01132972803599475860454058210
+
+========================================================================================
+STAGE 127 LEDGER
+========================================================================================
+Positive-source theorem gives 0 <= g <= 1, so the upper compensated branch is impossible.
+The exponential mouth family is monotone and spans (2/pi, 1).
+Since g_-^F1 lies strictly inside that interval, it is reached at one unique finite Pi_*.
+That point has finite moderate traction, whereas g=1 is only the singular Pi->infty limit.
+
+Pi_*       = 1.50882951349315552747043511772
+That_*     = 0.901484054174204022702401688674
+Pi_match   = 1.90848600654854538838378630317
+That_match = 1.01132972803599475860454058210
+
+EXIT_CODE: 0

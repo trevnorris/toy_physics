@@ -1,0 +1,54 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage044_microscopic_gain_thresholds_sympy_audit.py
+# Date: 2026-04-02T16:34:48-06:00
+# Elapsed: 19s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 44 — MICROSCOPIC GAIN THRESHOLDS
+========================================================================================
+Delta_0 = eta*(cosh(sqrt(kappa)) - 1)/(kappa*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa))))
+Delta_inf = (eta*sinh(sqrt(kappa)) + sqrt(kappa)*(cosh(sqrt(kappa)) - 1))/(sqrt(kappa)*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa))))
+Xi_micro = L**2*Lambda_phi**2*chi_sigma/T_X
+G_micro definition = Lambda_phi**2*chi_sigma/K_X
+Xi_micro - kappa G_micro = 0
+G_fail = Pe_req*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(eta*sqrt(kappa)*sinh(sqrt(kappa)) + kappa*cosh(sqrt(kappa)) - kappa)
+G_suff = Pe_req*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(eta*(cosh(sqrt(kappa)) - 1))
+chi_fail = Pe_req*T_X*sqrt(kappa)*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(L**2*Lambda_phi**2*(eta*sinh(sqrt(kappa)) + sqrt(kappa)*(cosh(sqrt(kappa)) - 1)))
+chi_suff = Pe_req*T_X*kappa*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(L**2*Lambda_phi**2*eta*(cosh(sqrt(kappa)) - 1))
+Lambda^2_fail = Pe_req*T_X*sqrt(kappa)*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(L**2*chi_sigma*(eta*sinh(sqrt(kappa)) + sqrt(kappa)*(cosh(sqrt(kappa)) - 1)))
+Lambda^2_suff = Pe_req*T_X*kappa*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa)))/(L**2*chi_sigma*eta*(cosh(sqrt(kappa)) - 1))
+chi_fail from G_fail = 0
+chi_suff from G_suff = 0
+Lambda^2_fail from G_fail = 0
+Lambda^2_suff from G_suff = 0
+lim_{kappa->0+} Delta_0 = 1/2
+lim_{kappa->0+} Delta_inf = 1
+Delta0 soft-support limit - 1/2 = 0
+Delta_inf soft-support limit - 1 = 0
+kappa*G_fail soft-support limit - Pe_req = 0
+kappa*G_suff soft-support limit - 2 Pe_req = 0
+lim_{eta->oo} Delta_0 = (1 - 1/cosh(sqrt(kappa)))/kappa
+lim_{eta->oo} Delta_inf = tanh(sqrt(kappa))/sqrt(kappa)
+Delta0 eta->oo formula = 0
+Delta_inf eta->oo formula = 0
+G_fail^(inf) = Pe_req/(sqrt(kappa)*tanh(sqrt(kappa)))
+G_suff^(inf) = Pe_req*cosh(sqrt(kappa))/(cosh(sqrt(kappa)) - 1)
+G_fail^(inf) formula = 0
+G_suff^(inf) formula = 0
+stiff-support compliant-mouth limit: sqrt(kappa)*G_fail -> Pe_req = 0
+stiff-support compliant-mouth limit: G_suff -> Pe_req = 0
+
+========================================================================================
+STAGE 44 THEOREM LEDGER
+========================================================================================
+1. The microscopic coupling is Xi_micro = kappa * G_micro with G_micro = chi_sigma Lambda_phi^2 / K_X.
+2. The exact operator phase diagram is set by G_fail = Pe_req/[kappa Delta_inf] and G_suff = Pe_req/[kappa Delta_0].
+3. Soft support is strongly disfavored: G_fail ~ Pe_req/kappa, G_suff ~ 2 Pe_req/kappa as kappa -> 0+.
+4. In the highly compliant-mouth branch, G_fail^(inf) = Pe_req/[sqrt(kappa) tanh(sqrt(kappa))] and G_suff^(inf) = Pe_req/[1-sech(sqrt(kappa))].
+5. For stiff support with a compliant mouth, G_fail ~ Pe_req/sqrt(kappa) while G_suff -> Pe_req.
+
+EXIT_CODE: 0

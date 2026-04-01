@@ -1,0 +1,43 @@
+
+========================================================================================
+STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT
+========================================================================================
+
+========================================================================================
+1. Exact tracking identity from the coherent local kernel
+========================================================================================
+g_B g_R - g_W g_S = 0
+rho_0   = g_U*gamma*sqrt(mu_eta)/(K_U*sqrt(mu_U))
+sigma_0 = g_U*gamma*sqrt(mu_eta)/(K_U*sqrt(mu_U))
+rho_0 - sigma_0 = 0
+
+========================================================================================
+2. Common direction factor and exact range identities
+========================================================================================
+R_tr = (chi_0 + delta_U + 1)/((chi_0 + 1)*(delta_U + 1))
+1 - R_tr = chi_0*delta_U/(chi_0*delta_U + chi_0 + delta_U + 1)
+R_tr - 1/(1+delta_U) = delta_U/((chi_0 + 1)*(delta_U + 1))
+range identity 1 = 0
+range identity 2 = 0
+
+========================================================================================
+3. Exact total baseline
+========================================================================================
+M_mix  = 8*Z_W*(chi_0 + 1)**2/(pi**2*(eps_W_split - 1)*(eps_eta - 1))
+M_supp = 8*Z_phi*(chi_0 + 1)**2/(pi**2*(eps_eta - 1)*(eps_phi_split - 1))
+M_tr   = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
+M_tr - expected = 0
+
+========================================================================================
+4. Exact collapse of the Stage-27 branch equation
+========================================================================================
+tracking numerator = Mmix*R_U**2*lambda_0*xi + Mmix*delta + Mmix*xi + Msupp*R_U**2*lambda_0*xi + Msupp*delta + Msupp*xi - delta*xi - xi**2
+tracking denominator = R_U**2*lambda_0*xi + delta + xi
+tracking quadratic collapse = 0
+M_tr required on tracking branch = xi*(delta + xi)/(R_U**2*lambda_0*xi + delta + xi)
+G_tr formula = 0
+G_tr D/N specialization = 0
+F_tr normalization law = 0
+coherent normalization residual = (R_target*(xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2 + (9*delta + xi*(2*R_U + 9))**2*(9*delta + xi*(2*R_U**2 + 9))**2/81)/((xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2)
+
+All Stage-28 symbolic checks passed.

@@ -1,0 +1,44 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+# Date: 2026-04-03T09:52:06-06:00
+# Elapsed: 42s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 160 — WEAK-AXISYMMETRIC OUTGOING-SLIPPAGE COLLAPSE
+========================================================================================
+weak-axisymmetric d ln M = 0
+weak-axisymmetric d ln I = 0
+weak-axisymmetric d ln H = 0
+
+========================================================================================
+Portwise outgoing-defect amplitude
+========================================================================================
+Sigma_{A,r} = lambda_A sigma_r = 0
+
+========================================================================================
+Grouped weak-axisymmetric trace/anomaly law
+========================================================================================
+grouped trace vanishes = 0
+a_Xi - eps Xi1/4 = 0
+b_Xi - 3 eps Xi1/4 = 0
+axisymmetric defect law b_Xi - 3 a_Xi = 0
+
+========================================================================================
+Outgoing-prefactor slope identification
+========================================================================================
+P_A slope = P0 * Xi_load = 0
+(P1/P0) - Xi_load = 0
+
+Carry-forward formulas:
+  m_r = gW1 - oW1 - kappa1/2
+  i_r = r1 + gU1 - oU1 - gW1
+  h_r = 2 r1 - oU1 - oW1
+  sigma_r = 2 m_r + 2 I/(1+I) i_r + 2 H/(1-H) h_r
+  Xi_A = eps lambda_A Xi1  =>  abar=0, a=eps Xi1/4, b=3 eps Xi1/4
+  On the conservative-shape-preserving branch, Xi1 = P1/P0.
+
+EXIT_CODE: 0

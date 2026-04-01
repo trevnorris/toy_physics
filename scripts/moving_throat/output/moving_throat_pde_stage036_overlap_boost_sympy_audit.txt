@@ -1,0 +1,62 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage036_overlap_boost_sympy_audit.py
+# Date: 2026-04-02T16:32:53-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 36 — EXACT OVERLAP-BOOST WINDOW
+========================================================================================
+chi0(s) =
+      ⎛π⋅s⎞
+√2⋅sin⎜───⎟
+      ⎝2⋅L⎠
+───────────
+    √L     
+I_W = 2*sqrt(2)*sqrt(L)/pi
+max chi0 = sqrt(2)/sqrt(L)
+Omega_max = pi/2
+A_I,max = pi**2/4
+Omega_max - pi/2 = 0
+A_I,max - pi^2/4 = 0
+
+========================================================================================
+EXPLICIT EXPONENTIAL BOTTOM-BIASED FAMILY
+========================================================================================
+sigma_alpha(s) =
+   α⋅s
+   ───
+    L 
+α⋅ℯ   
+──────
+ α    
+ℯ  - 1
+Integral sigma_alpha ds = L
+I_alpha = 2*sqrt(2)*sqrt(L)*alpha*(2*alpha*exp(alpha) + pi)/((4*alpha**2 + pi**2)*(exp(alpha) - 1))
+Omega_alpha = pi*alpha*(2*alpha*exp(alpha) + pi)/((4*alpha**2 + pi**2)*(exp(alpha) - 1))
+same total source strength = 0
+Omega_alpha closed form = 0
+Omega_alpha(alpha->0) = 1
+Omega_alpha(alpha->+infty) = pi/2
+uniform branch value = 0
+antinode concentration limit = 0
+small-alpha series = alpha**2*(-4/pi**2 + 1/12 + 1/pi) + alpha*(-1/2 + 2/pi) + 1
+linear coefficient = (4 - pi)/(2*pi)
+linear coefficient - (4-pi)/(2pi) = 0
+
+========================================================================================
+PURE OVERLAP THRESHOLD
+========================================================================================
+Pure-overlap rescue possible only if zeta_req <= pi**2/4
+A_I,max - zeta_req = -zeta_req + pi**2/4
+
+FINAL LEDGER
+  Omega_0 is bounded by pi/2 for any nonnegative equal-strength support density.
+  A_I = Omega_0^2 is therefore bounded by pi^2/4.
+  The explicit exponential family interpolates from 1 to pi/2.
+  So pure overlap rescue is possible only if zeta_req <= pi^2/4.
+
+EXIT_CODE: 0

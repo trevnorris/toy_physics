@@ -1,0 +1,43 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage077_isotropic_geometry_decoupling_sympy_audit.py
+# Date: 2026-04-02T16:37:55-06:00
+# Elapsed: 25s
+# Exit code: 0
+# Status: PASS
+#
+
+Y00 normalization = 1
+Y20 normalization = 1
+<Y00|Y20> = 0
+(-Delta)Y20 - 6Y20 = 0
+<grad Y00 . grad Y20> = 0
+<Y00|(-Delta)Y20> = 0
+Y21c normalization = 1
+<Y00|Y21c> = 0
+(-Delta)Y21c - 6Y21c = 0
+<grad Y00 . grad Y21c> = 0
+<Y00|(-Delta)Y21c> = 0
+Y21s normalization = 1
+<Y00|Y21s> = 0
+(-Delta)Y21s - 6Y21s = 0
+<grad Y00 . grad Y21s> = 0
+<Y00|(-Delta)Y21s> = 0
+Y22c normalization = 1
+<Y00|Y22c> = 0
+(-Delta)Y22c - 6Y22c = 0
+<grad Y00 . grad Y22c> = 0
+<Y00|(-Delta)Y22c> = 0
+Y22s normalization = 1
+<Y00|Y22s> = 0
+(-Delta)Y22s - 6Y22s = 0
+<grad Y00 . grad Y22s> = 0
+<Y00|(-Delta)Y22s> = 0
+Generic isotropic cross coefficient C_0,20 = 0
+Generic isotropic cross coefficient C_0,21c = 0
+Generic isotropic cross coefficient C_0,21s = 0
+Generic isotropic cross coefficient C_0,22c = 0
+Generic isotropic cross coefficient C_0,22s = 0
+
+Stage 77 theorem verified: isotropic l=0 <-> l=2 cross terms vanish exactly.
+
+EXIT_CODE: 0

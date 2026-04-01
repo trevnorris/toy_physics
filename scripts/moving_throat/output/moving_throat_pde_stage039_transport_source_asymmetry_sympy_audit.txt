@@ -1,0 +1,29 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage039_transport_source_asymmetry_sympy_audit.py
+# Date: 2026-04-02T16:33:08-06:00
+# Elapsed: 10s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 39 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY
+========================================================================================
+zero-flux transport residual = 0
+normalization int sigma_Pe ds - L = 0
+I_W = 2*sqrt(2)*sqrt(L)/pi
+I_Pe = 2*sqrt(2)*sqrt(L)*Pe*(2*Pe*exp(Pe) + pi)/((4*Pe**2 + pi**2)*(exp(Pe) - 1))
+Omega_Pe = pi*Pe*(2*Pe*exp(Pe) + pi)/((4*Pe**2 + pi**2)*(exp(Pe) - 1))
+Omega_Pe - expected formula = 0
+Omega_Pe(0) = 1
+lim Pe->+inf Omega_Pe = pi/2
+dOmega/dPe - Cov/I_W = 0
+Omega_Pe small-Pe series = -4*Pe**2/pi**2 + Pe**2/12 + Pe**2/pi - Pe/2 + 2*Pe/pi + 1
+small-Pe linear coefficient = 0
+Omega_Pe large-Pe series = pi/2 - pi**3/(8*Pe**2)
+large-Pe asymptotic through O(Pe^-2) = 0
+
+Stage 39 audit passed.
+
+EXIT_CODE: 0

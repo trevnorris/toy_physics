@@ -1,0 +1,31 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage057_family1_healing_lock_sympy_audit.py
+# Date: 2026-04-02T16:36:08-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 57 — HEALING-LENGTH LOCK AND SUPPORT SCALE
+========================================================================================
+chi_s (locked) = Lambda_ell/2
+kappa(Lambda_ell) = 9*Lambda_ell**2/5
+chi_s - Lambda_ell/2 = 0
+kappa - (9/5) Lambda_ell^2 = 0
+
+Reference branch:
+Lambda_ell = 37
+chi_s      = 37/2
+kappa      = 12321/5
+alpha      = 111*sqrt(5)/5
+alpha (numeric) = 49.640709100495331260
+chi_ref - 37/2 = 0
+kappa_ref - 12321/5 = 0
+
+Final ledger:
+  chi_s = 37/2
+  kappa = 12321/5
+
+EXIT_CODE: 0

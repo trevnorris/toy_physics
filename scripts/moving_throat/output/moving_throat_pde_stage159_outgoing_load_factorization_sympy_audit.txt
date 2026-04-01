@@ -1,0 +1,31 @@
+
+========================================================================================
+STAGE 159 — OUTGOING LOAD-FACTOR FACTORIZATION
+========================================================================================
+exact factorization of Lambda^2/K = 0
+
+Carry-forward exact identity:
+  Lambda^2/K = M^2 (1+I)^2 / (1-H)^2
+
+========================================================================================
+First-order logarithmic transport
+========================================================================================
+factored first-order defect formula = 0
+expanded primitive-variable transport = 0
+
+First-order formulas:
+  d ln M = d ln G_W - d ln Omega_W^2 - 1/2 dK
+  d ln I = d ln R + d ln G_U - d ln Omega_U^2 - d ln G_W
+  d ln H = 2 d ln R - d ln Omega_U^2 - d ln Omega_W^2
+  Sigma^(N) = 2 d ln M + 2 I/(1+I) d ln I + 2 H/(1-H) d ln H
+
+========================================================================================
+Rigidity corollary
+========================================================================================
+rigidity reduction to 2 d ln M = 0
+
+Conclusion:
+  If the interference and hybridization ratios are rigid, then
+      Sigma^(N) = 2 d ln[ G_W / (Omega_W^2 sqrt(K)) ].
+  So the remaining linear grouped defect vanishes when the raw mixed leg
+  obeys the square-root wall-loading law G_W / Omega_W^2 ∝ sqrt(K).

@@ -1,0 +1,213 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage003_bdg_sympy_audit.py
+# Date: 2026-04-02T16:19:35-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION I — AXISYMMETRIC WALL + SCALAR BdG REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I.1 — Euler–Lagrange equations
+----------------------------------------------------------------------------------------
+qa equation = 0
+qL equation = 0
+xa equation = 0
+xb equation = 0
+
+----------------------------------------------------------------------------------------
+I.2 — Frequency-space elimination
+----------------------------------------------------------------------------------------
+Effective axisymmetric kernel D0_eff(omega) =
+⎡                    2          2                                      ⎤
+⎢           2     c1a        c1b                2   c1a⋅c2a    c1b⋅c2b ⎥
+⎢Kaa - Maa⋅ω  + ──────── + ────────  KaL - MaL⋅ω  + ──────── + ────────⎥
+⎢                2     2    2     2                  2     2    2     2⎥
+⎢               ω  - wa    ω  - wb                  ω  - wa    ω  - wb ⎥
+⎢                                                                      ⎥
+⎢                                                        2          2  ⎥
+⎢           2   c1a⋅c2a    c1b⋅c2b              2     c2a        c2b   ⎥
+⎢KaL - MaL⋅ω  + ──────── + ────────  KLL - MLL⋅ω  + ──────── + ────────⎥
+⎢                2     2    2     2                  2     2    2     2⎥
+⎣               ω  - wa    ω  - wb                  ω  - wa    ω  - wb ⎦
+D0_eff - manual form =
+⎡0  0⎤
+⎢    ⎥
+⎣0  0⎦
+
+----------------------------------------------------------------------------------------
+I.3 — Low-frequency expansion
+----------------------------------------------------------------------------------------
+D0_eff(omega) through O(omega^4) =
+⎡                           2  4      2  2      2      2  4      2  2      2   ↪
+⎢                    2   c1a ⋅ω    c1a ⋅ω    c1a    c1b ⋅ω    c1b ⋅ω    c1b    ↪
+⎢         Kaa - Maa⋅ω  - ─────── - ─────── - ──── - ─────── - ─────── - ────   ↪
+⎢                            6         4       2        6         4       2    ↪
+⎢                          wa        wa      wa       wb        wb      wb     ↪
+⎢                                                                              ↪
+⎢                        4            2                      4            2    ↪
+⎢           2   c1a⋅c2a⋅ω    c1a⋅c2a⋅ω    c1a⋅c2a   c1b⋅c2b⋅ω    c1b⋅c2b⋅ω     ↪
+⎢KaL - MaL⋅ω  - ────────── - ────────── - ─────── - ────────── - ────────── -  ↪
+⎢                    6            4           2          6            4        ↪
+⎣                  wa           wa          wa         wb           wb         ↪
+
+↪                                  4            2                      4       ↪
+↪                     2   c1a⋅c2a⋅ω    c1a⋅c2a⋅ω    c1a⋅c2a   c1b⋅c2b⋅ω    c1b ↪
+↪          KaL - MaL⋅ω  - ────────── - ────────── - ─────── - ────────── - ─── ↪
+↪                              6            4           2          6           ↪
+↪                            wa           wa          wa         wb            ↪
+↪                                                                              ↪
+↪                                     2  4      2  2      2      2  4      2   ↪
+↪ c1b⋅c2b                      2   c2a ⋅ω    c2a ⋅ω    c2a    c2b ⋅ω    c2b ⋅ω ↪
+↪ ───────           KLL - MLL⋅ω  - ─────── - ─────── - ──── - ─────── - ────── ↪
+↪     2                                6         4       2        6         4  ↪
+↪   wb                               wa        wa      wa       wb        wb   ↪
+
+↪       2          ⎤
+↪ ⋅c2b⋅ω    c1b⋅c2b⎥
+↪ ─────── - ───────⎥
+↪   4           2  ⎥
+↪ wb          wb   ⎥
+↪                  ⎥
+↪ 2      2         ⎥
+↪     c2b          ⎥
+↪ ─ - ────         ⎥
+↪       2          ⎥
+↪     wb           ⎦
+series match =
+⎡0  0⎤
+⎢    ⎥
+⎣0  0⎦
+So the scalar BdG sector renormalizes:
+  K_AB -> K_AB - sum_alpha C_Aa C_Ba / varpi_a^2
+  M_AB -> M_AB + sum_alpha C_Aa C_Ba / varpi_a^4
+  N_AB ->          sum_alpha C_Aa C_Ba / varpi_a^6
+
+========================================================================================
+SECTION II — ONE WALL MODE + ONE STABLE BdG MODE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+II.1 — Exact roots
+----------------------------------------------------------------------------------------
+omega_-^2 =
+                    ________________________________________________
+                   ╱        2                              2      2 
+Ωₑₜₐ₂   varpi₂   ╲╱  M⋅Ωₑₜₐ₂  - 2⋅M⋅Ωₑₜₐ₂⋅varpi₂ + M⋅varpi₂  + 4⋅g  
+───── + ────── - ───────────────────────────────────────────────────
+  2       2                             2⋅√M                        
+omega_+^2 =
+                    ________________________________________________
+                   ╱        2                              2      2 
+Ωₑₜₐ₂   varpi₂   ╲╱  M⋅Ωₑₜₐ₂  - 2⋅M⋅Ωₑₜₐ₂⋅varpi₂ + M⋅varpi₂  + 4⋅g  
+───── + ────── + ───────────────────────────────────────────────────
+  2       2                             2⋅√M                        
+minus-root closed form = 0
+plus-root closed form = 0
+
+----------------------------------------------------------------------------------------
+II.2 — Perturbative wall-like shift
+----------------------------------------------------------------------------------------
+wall-like pole through O(g^2) =
+           2  2
+        eps ⋅g 
+Ωₑₜₐ₂ - ───────
+          M⋅δ  
+matter-like pole through O(g^2) =
+               2  2
+            eps ⋅g 
+Ωₑₜₐ₂ + δ + ───────
+              M⋅δ  
+wall-like shift = 0
+matter-like shift = 0
+Therefore, for varpi^2 > Omega_eta^2,
+  delta Omega_eta^2 = - g^2 / [ M (varpi^2 - Omega_eta^2) ] + O(g^4)
+  delta varpi^2     = + g^2 / [ M (varpi^2 - Omega_eta^2) ] + O(g^4)
+
+========================================================================================
+SECTION III — GROUPED REAL P2 + BdG COUPLINGS
+========================================================================================
+
+----------------------------------------------------------------------------------------
+III.1 — Channelwise low-frequency coefficients
+----------------------------------------------------------------------------------------
+D20 = K20 - M20*omega**2 - g20**2*omega**4/w20**6 - g20**2*omega**2/w20**4 - g20**2/w20**2
+D21 = K21 - M21*omega**2 - g21**2*omega**4/w21**6 - g21**2*omega**2/w21**4 - g21**2/w21**2
+D22 = K22 - M22*omega**2 - g22**2*omega**4/w22**6 - g22**2*omega**2/w22**4 - g22**2/w22**2
+d0-shifts:
+  d0^(20) = K20 - g20**2/w20**2
+  d0^(21) = K21 - g21**2/w21**2
+  d0^(22) = K22 - g22**2/w22**2
+d2-shifts:
+  d2^(20) = -M20 - g20**2/w20**4
+  d2^(21) = -M21 - g21**2/w21**4
+  d2^(22) = -M22 - g22**2/w22**4
+d4-shifts:
+  d4^(20) = -g20**2/w20**6
+  d4^(21) = -g21**2/w21**6
+  d4^(22) = -g22**2/w22**6
+
+----------------------------------------------------------------------------------------
+III.2 — Grouped trace / anisotropy diagnostics
+----------------------------------------------------------------------------------------
+d2bar =
+                            2         2        2
+  M₂₀   2⋅M₂₁   2⋅M₂₂    g₂₀     2⋅g₂₁    2⋅g₂₂ 
+- ─── - ───── - ───── - ────── - ────── - ──────
+   5      5       5          4        4        4
+                        5⋅w₂₀    5⋅w₂₁    5⋅w₂₂ 
+a2 =
+                        2        2         2  
+  M₂₀   M₂₁   M₂₂    g₂₀      g₂₁       g₂₂   
+- ─── + ─── + ─── - ────── + ─────── + ───────
+   5    10    10         4         4         4
+                    5⋅w₂₀    10⋅w₂₁    10⋅w₂₂ 
+b2 =
+                  2        2 
+  M₂₁   M₂₂    g₂₁      g₂₂  
+- ─── + ─── - ────── + ──────
+   2     2         4        4
+              2⋅w₂₁    2⋅w₂₂ 
+
+----------------------------------------------------------------------------------------
+III.3 — Isotropic matter-coupling branch
+----------------------------------------------------------------------------------------
+isotropic a2 = 0
+isotropic b2 = 0
+isotropic D20-D21 = 0
+isotropic D21-D22 = 0
+So identical channelwise wall data and identical BdG couplings/frequencies preserve grouped-P2 degeneracy.
+Any nonzero a2 or b2 must come from anisotropy in K_A, M_A, g_A, or varpi_A.
+
+========================================================================================
+SECTION IV — HARMONIC SELECTION RULE FOR THE CONFINEMENT COUPLING
+========================================================================================
+Y00-Y20 cross integral = 0
+Y20-Y21c cross integral = 0
+Y20-Y22c cross integral = 0
+Y20 norm - 1 = 0
+With an isotropic background and scalar confinement coupling, the angular overlap is diagonal in (l,m).
+So l=0 wall motion couples only to l=0 matter modes, and grouped real l=2 wall motion couples channelwise inside l=2.
+
+========================================================================================
+FINAL STAGE-3 LEDGER
+========================================================================================
+Verified with SymPy:
+  • the reduced (a,L) wall variables coupled to stable scalar BdG modes yield
+    D0_eff(omega) = K - omega^2 M - C (Omega_m^2 - omega^2 I)^(-1) C^T;
+  • low-frequency matter coupling renormalizes the scalar/geometry stiffness and inertia matrices as
+    K_eff = K - C Omega_m^{-2} C^T and M_eff = M + C Omega_m^{-4} C^T;
+  • a single wall mode coupled to a single BdG mode has the exact two-pole spectrum
+    omega_±^2 = [Omega_eta^2 + varpi^2 ± sqrt((Omega_eta^2-varpi^2)^2 + 4 g^2/M)]/2;
+  • for varpi^2 > Omega_eta^2, the wall-like pole shifts downward by
+    delta Omega_eta^2 = - g^2 / [ M (varpi^2 - Omega_eta^2) ] + O(g^4);
+  • grouped real P2 channels acquire channelwise self-energies
+    -g_A^2/(varpi_A^2-omega^2), whose anisotropy is measured by the usual (trace, a2, b2) combinations;
+  • identical grouped-P2 couplings/frequencies preserve a2=b2=0;
+  • harmonic orthogonality enforces the l=0 / l=2 selection rule for the scalar confinement coupling on an isotropic background.
+
+EXIT_CODE: 0

@@ -1,0 +1,41 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage051_resonance_thresholds_sympy_audit.py
+# Date: 2026-04-02T16:35:26-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 51 — RESONANCE-CORRECTED THRESHOLDS
+========================================================================================
+W_res = C2*W_wall
+Matched fail threshold     = Pe_req/Delta_inf
+Matched succeed threshold  = Pe_req/Delta_0
+Profile-family fail thresh = Pe_req/(C2*Delta_inf)
+Profile-family succ thresh = Pe_req/(C2*Delta_0)
+Wfail_res - P_res*Wfail_match = 0
+Wsuff_res - P_res*Wsuff_match = 0
+Success-side band width = Pe_req*(P_res - 1)/Delta_0
+Failure-side band width = Pe_req*(P_res - 1)/Delta_inf
+success width / matched threshold = 0
+failure width / matched threshold = 0
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Exact formulas:
+  W_res(r) = C^2(r) W_wall
+  W_fail^(res) = Pe_req / [ C^2(r) Delta_inf ]
+  W_suff^(res) = Pe_req / [ C^2(r) Delta_0 ]
+At the resonance point C^2 = C_res^2, these become:
+  W_fail^(res,*) = P_res Pe_req / Delta_inf
+  W_suff^(res,*) = P_res Pe_req / Delta_0
+with P_res = 1/C_res^2.
+
+Interpretation:
+  The explicit independent-profile benchmark modifies the matched-layer
+  threshold window only by the multiplicative factor P_res.
+
+EXIT_CODE: 0

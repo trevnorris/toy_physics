@@ -1,0 +1,20 @@
+
+========================================================================================
+STAGE 89 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+========================================================================================
+Normalization constraint = Eq(N_Q*chi_Q*m0hat**2, 1)
+N_Q on the general outgoing branch = 1/(chi_Q*m0hat**2)
+N_Q on the canonical outgoing branch = m0hat**(-2)
+point-particle canonical branch gives N_Q = 1 = 0
+K0 = 54*G*c_s**5/(5*a**5*c**5*chi_Q*m0hat**2)
+K2 = 6*G*c_s**3/(5*a**3*c**5*chi_Q*m0hat**2)
+K4 = 8*G*c_s/(15*a*c**5*chi_Q*m0hat**2)
+Gamma5 = 2*G/(5*c**5*chi_Q*m0hat**2)
+branch identity K4 - 4 K2^2 / K0 = 0
+branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2) = 0
+canonical gamma_eff - target = 0
+
+RESULT:
+  On the canonical outgoing branch, N_Q = 1/m0hat^2 and therefore
+  the strict point-particle limit m0hat = 1 collapses the reduced closure to N_Q = 1.
+  The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.

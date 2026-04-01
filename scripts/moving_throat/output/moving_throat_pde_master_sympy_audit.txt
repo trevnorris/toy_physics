@@ -1,0 +1,161 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_master_sympy_audit.py
+# Date: 2026-04-02T16:19:23-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION I — REAL-SPHERICAL-HARMONIC BOOKKEEPING
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I.1 — Norms and zero averages
+----------------------------------------------------------------------------------------
+Y00: average = 2*sqrt(pi), norm = 1
+Y20: average = 0, norm = 1
+Y21c: average = 0, norm = 1
+Y21s: average = 0, norm = 1
+Y22c: average = 0, norm = 1
+Y22s: average = 0, norm = 1
+average(Y20) = 0
+average(Y21c) = 0
+average(Y21s) = 0
+average(Y22c) = 0
+average(Y22s) = 0
+norm(Y00)-1 = 0
+norm(Y20)-1 = 0
+norm(Y21c)-1 = 0
+norm(Y22c)-1 = 0
+cross(Y00,Y20) = 0
+cross(Y20,Y22c) = 0
+
+----------------------------------------------------------------------------------------
+I.2 — Mouth-average extraction rule
+----------------------------------------------------------------------------------------
+For eta = q00 Y00 + grouped-P2, the mouth average is:
+q₀₀ 
+────
+2⋅√π
+mouth average - q00/(2 sqrt(pi)) = 0
+Therefore identifying the physical mouth-average shift delta a requires q00 = 2 sqrt(pi) delta a.
+
+----------------------------------------------------------------------------------------
+I.3 — Spherical-Laplacian eigenvalue checks
+----------------------------------------------------------------------------------------
+-Delta_S2 Y00 = 0
+-Delta_S2 Y20 - 6 Y20 = 0
+-Delta_S2 Y21c - 6 Y21c = 0
+-Delta_S2 Y21s - 6 Y21s = 0
+-Delta_S2 Y22c - 6 Y22c = 0
+-Delta_S2 Y22s - 6 Y22s = 0
+
+========================================================================================
+SECTION II — LEVEL-SET / CONFINEMENT LINEARIZATION
+========================================================================================
+First variation d/dε Vwall((Sigma0-ε eta)/ell_c)|_{ε=0} =
+   ⎛ d            ⎞│         
+-η⋅⎜───(Vwall(ξ₁))⎟│    Σ₀   
+   ⎝dξ₁           ⎠│ξ₁=───── 
+                       ell_c 
+─────────────────────────────
+            ell_c            
+linearized confinement variation = 0
+Equivalent form:
+  delta V_conf = -(V_wall'(Sigma0/ell_c)/ell_c) * eta
+
+========================================================================================
+SECTION III — MODAL WALL EQUATION FROM THE QUADRATIC ACTION
+========================================================================================
+Euler–Lagrange equation minus expected form = 0
+Modal equation written in the usual sign convention:
+  mu_eta q_tt - T_w q_ww + K_l q = 0
+with K_l = K_eta + l(l+1) T_Omega
+Special cases:
+  K_0 = K_eta
+  K_2 = K_eta + 6*T_Omega
+
+========================================================================================
+SECTION IV — GEOMETRY-ONLY FINITE-THROAT DTN OPERATOR
+========================================================================================
+
+----------------------------------------------------------------------------------------
+IV.1 — Exact solution checks
+----------------------------------------------------------------------------------------
+ODE q'' + k^2 q = 0
+mouth datum q(0)-u_m = 0
+Neumann cap q'(L0) = 0
+
+----------------------------------------------------------------------------------------
+IV.2 — Mouth traction / DtN operator
+----------------------------------------------------------------------------------------
+Z_l^(eta)(k) =
+-T_w⋅k⋅tan(L₀⋅k)
+DtN formula = 0
+
+----------------------------------------------------------------------------------------
+IV.3 — Pole ladder
+----------------------------------------------------------------------------------------
+If k_l^2 = (mu_eta omega^2 - K_l)/T_w and cos(k_l L0)=0, then
+omega_{l,n}^2 =
+        2              2
+ Kₗ    π ⋅T_w⋅(2⋅n + 1) 
+──── + ─────────────────
+μₑₜₐ          2         
+          4⋅L₀ ⋅μₑₜₐ    
+
+========================================================================================
+SECTION V — FROZEN-WALL D/N BENCHMARK
+========================================================================================
+Z_00^(DN)(omega) =
+      ⎛L₀⋅ω⎞ 
+-ω⋅tan⎜────⎟ 
+      ⎝ cₛ ⎠ 
+─────────────
+     cₛ      
+Low-frequency series through O(omega^6):
+      5  6     3  4       2
+  2⋅L₀ ⋅ω    L₀ ⋅ω    L₀⋅ω 
+- ──────── - ────── - ─────
+        6        4       2 
+   15⋅cₛ     3⋅cₛ      cₛ  
+Z2 + L0/c_s^2 = 0
+Z4 + L0^3/(3 c_s^4) = 0
+Z6 + 2 L0^5/(15 c_s^6) = 0
+Pole ladder:
+π⋅cₛ⋅(2⋅n + 1)
+──────────────
+     2⋅L₀     
+
+========================================================================================
+SECTION VI — LOWEST-MODE BREATHING REDUCTION
+========================================================================================
+E-L for q_a = 0
+E-L for q_L = 0
+Matrix form recovered:
+  M_AB q̈^B + K_AB q^B = 0
+This is the conservative linear reduction of the distributed wall back to the old (a,L)-type closure.
+
+========================================================================================
+SECTION VII — ISOTROPIC GROUPED-P2 REDUCTION
+========================================================================================
+P2 mode E-L = 0
+On an isotropic background, every real P2 component carries the same l=2 restoring term
+  K_2 = K_eta + 6 T_Omega,
+so the uncoupled grouped-P2 block is degenerate before symmetry breaking or matter/gauge coupling.
+
+========================================================================================
+FINAL MOVING-THROAT PHASE-1/PHASE-2 LEDGER
+========================================================================================
+Verified with SymPy:
+  • grouped real P2 harmonics are orthonormal, zero-average, and satisfy -Delta_S2 Y_2m = 6 Y_2m;
+  • the level-set confinement lift linearizes as delta V_conf = -(V'_wall/ell_c) eta;
+  • the quadratic wall action gives the modal equation mu_eta q_tt - T_w q_ww + (K_eta + l(l+1) T_Omega) q = 0;
+  • the finite-throat geometry-only DtN operator is Z_l^(eta) = -T_w k_l tan(k_l L0);
+  • the frozen-wall support benchmark gives Z_00^(DN) = -(omega/c_s) tan(omega L0/c_s) with the advertised low-frequency coefficients;
+  • the lowest-mode axisymmetric truncation reduces back to an (a,L)-type matrix system;
+  • the uncoupled isotropic grouped-P2 block is degenerate before coupling/symmetry breaking.
+
+EXIT_CODE: 0

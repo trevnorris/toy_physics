@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""
+Stage 28 SymPy audit.
+
+Checks:
+1. The coherent local D/N support kernel implies g_B g_R = g_W g_S exactly.
+2. The mixed and support interference ratios coincide: rho_0 = sigma_0.
+3. The common direction factor R_tr has the exact range identities used in the note.
+4. The Stage-27 quadratic branch equation collapses to the one-parameter tracking law.
+"""
+
+from __future__ import annotations
+
+import sympy as sp
+
+
+def banner(title: str) -> None:
+    line = "=" * 88
+    print("\n" + line)
+    print(title)
+    print(line)
+
+
+def expect_zero(name: str, expr: sp.Expr) -> None:
+    expr = sp.simplify(sp.expand(expr))
+    print(f"{name} = {expr}")
+    if expr != 0:
+        raise AssertionError(f"{name} is not zero")
+
+
+banner("STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT")
+
+# ---------------------------------------------------------------------------
+# 1. Coherent local support density => exact tracking condition
+# ---------------------------------------------------------------------------
+
+banner("1. Exact tracking identity from the coherent local kernel")
+
+lam_W, lam_phi, gamma = sp.symbols("lambda_W lambda_phi gamma", positive=True, real=True)
+mu_eta, mu_U, mu_W, mu_phi = sp.symbols("mu_eta mu_U mu_W mu_phi", positive=True, real=True)
+K_U = sp.symbols("K_U", positive=True, real=True)
+g_U = sp.symbols("g_U", real=True)
+
+# Mass-normalized amplitudes produced by
+#   [lambda_W W + lambda_phi phi] [eta - gamma U].
+g_W = lam_W / sp.sqrt(mu_eta * mu_W)
+g_R = gamma * lam_W / sp.sqrt(mu_U * mu_W)
+g_B = lam_phi / sp.sqrt(mu_eta * mu_phi)
+g_S = gamma * lam_phi / sp.sqrt(mu_U * mu_phi)
+
+expect_zero("g_B g_R - g_W g_S", g_B * g_R - g_W * g_S)
+
+rho_0 = sp.simplify(g_R * g_U / (K_U * g_W))
+sigma_0 = sp.simplify(g_U * g_S / (K_U * g_B))
+print("rho_0   =", rho_0)
+print("sigma_0 =", sigma_0)
+expect_zero("rho_0 - sigma_0", rho_0 - sigma_0)
+
+chi_0 = sp.symbols("chi_0", positive=True, real=True)
+chi_subs = {rho_0: chi_0, sigma_0: chi_0}
+
+# ---------------------------------------------------------------------------
+# 2. Common direction factor and exact range identities
+# ---------------------------------------------------------------------------
+
+banner("2. Common direction factor and exact range identities")
+
+delta_U = sp.symbols("delta_U", positive=True, real=True)
+R_tr = sp.simplify((1 + chi_0 / (1 + delta_U)) / (1 + chi_0))
+print("R_tr =", R_tr)
+
+expr1 = sp.simplify(1 - R_tr)
+expr2 = sp.simplify(R_tr - 1 / (1 + delta_U))
+print("1 - R_tr =", expr1)
+print("R_tr - 1/(1+delta_U) =", expr2)
+
+expect_zero(
+    "range identity 1",
+    expr1 - chi_0 * delta_U / ((1 + chi_0) * (1 + delta_U)),
+)
+expect_zero(
+    "range identity 2",
+    expr2 - delta_U / ((1 + chi_0) * (1 + delta_U)),
+)
+
+# ---------------------------------------------------------------------------
+# 3. Total baseline on the coherent branch
+# ---------------------------------------------------------------------------
+
+banner("3. Exact total baseline")
+
+Z_W, Z_phi = sp.symbols("Z_W Z_phi", positive=True, real=True)
+eps_eta, eps_W_split, eps_phi_split = sp.symbols(
+    "eps_eta eps_W_split eps_phi_split", real=True
+)
+
+M_mix = sp.simplify(8 * Z_W * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta) * (1 - eps_W_split)))
+M_supp = sp.simplify(8 * Z_phi * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta) * (1 - eps_phi_split)))
+M_tr = sp.simplify(M_mix + M_supp)
+print("M_mix  =", M_mix)
+print("M_supp =", M_supp)
+print("M_tr   =", M_tr)
+
+M_tr_expected = sp.simplify(
+    8 * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta))
+    * (Z_W / (1 - eps_W_split) + Z_phi / (1 - eps_phi_split))
+)
+expect_zero("M_tr - expected", M_tr - M_tr_expected)
+
+# ---------------------------------------------------------------------------
+# 4. Stage-27 quadratic branch equation collapses to tracking law
+# ---------------------------------------------------------------------------
+
+banner("4. Exact collapse of the Stage-27 branch equation")
+
+xi, delta, lam0 = sp.symbols("xi delta lambda_0", positive=True, real=True)
+R_U, R_phi = sp.symbols("R_U R_phi", real=True)
+Mmix, Msupp = sp.symbols("Mmix Msupp", real=True)
+
+# Stage-27 continuum-selected branch equation in the reduced notation.
+branch_eq = sp.simplify(
+    Msupp - (
+        xi * (delta + xi) - Mmix * (delta + (1 + lam0 * R_U ** 2) * xi)
+    ) / (
+        delta + (1 + lam0 * R_phi ** 2) * xi - Mmix * lam0 * (R_U - R_phi) ** 2
+    )
+)
+
+branch_track = sp.together(sp.simplify(branch_eq.subs(R_phi, R_U)))
+num_track = sp.expand(sp.factor(sp.together(branch_track).as_numer_denom()[0]))
+den_track = sp.factor(sp.together(branch_track).as_numer_denom()[1])
+print("tracking numerator =", num_track)
+print("tracking denominator =", den_track)
+
+M_tr_sym = sp.symbols("M_tr", real=True)
+collapsed_num = sp.expand(
+    xi ** 2 + (delta - M_tr_sym * (1 + lam0 * R_U ** 2)) * xi - delta * M_tr_sym
+)
+expect_zero(
+    "tracking quadratic collapse",
+    num_track + collapsed_num.subs(M_tr_sym, Mmix + Msupp),
+)
+
+M_tr_req = sp.simplify(sp.solve(sp.Eq(collapsed_num, 0), M_tr_sym)[0])
+print("M_tr required on tracking branch =", M_tr_req)
+expect_zero(
+    "G_tr formula",
+    M_tr_req - xi * (delta + xi) / (delta + (1 + lam0 * R_U ** 2) * xi),
+)
+
+R_target = sp.symbols("R_target", positive=True, real=True)
+lam0_dn = sp.Rational(2, 9)
+G_tr_dn = sp.simplify(M_tr_req.subs(lam0, lam0_dn))
+G_tr_expected = sp.simplify(9 * xi * (delta + xi) / (9 * delta + (9 + 2 * R_U ** 2) * xi))
+expect_zero("G_tr D/N specialization", G_tr_dn - G_tr_expected)
+
+F_track = sp.simplify(
+    (delta + (1 + lam0 * R_U ** 2) * xi) ** 2
+    * (delta + (1 + lam0 * R_U) * xi) ** 2
+    / ((1 - xi) * ((delta + xi) ** 2 + lam0 * R_U ** 2 * xi ** 2) ** 2)
+)
+F_tr_expected = sp.simplify(
+    (9 * delta + (9 + 2 * R_U ** 2) * xi) ** 2
+    * (9 * delta + (9 + 2 * R_U) * xi) ** 2
+    / (81 * (1 - xi) * (9 * delta ** 2 + 18 * delta * xi + (9 + 2 * R_U ** 2) * xi ** 2) ** 2)
+)
+expect_zero("F_tr normalization law", sp.simplify(F_track.subs(lam0, lam0_dn)) - F_tr_expected)
+print("coherent normalization residual =", sp.simplify(R_target - F_tr_expected))
+
+print("\nAll Stage-28 symbolic checks passed.")

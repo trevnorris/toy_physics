@@ -1,0 +1,100 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage024_rank2_support_sympy_audit.py
+# Date: 2026-04-02T16:28:55-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 24 — RANK-2 SUPPORT COMPLETION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+24.1 — Exact rank-2 determinant and support-loading theorem
+----------------------------------------------------------------------------------------
+det(M - (1-xi)I) =
+                        2                    2      2              2           ↪
+-δ⋅m - δ⋅n + δ⋅ξ + m⋅n⋅q  - 2⋅m⋅n⋅q⋅r + m⋅n⋅r  - m⋅q ⋅ξ - m⋅ξ - n⋅r ⋅ξ - n⋅ξ + ↪
+
+↪   2
+↪  ξ 
+determinant decomposition = 0
+n_req =
+                   2            2    
+    δ⋅m - δ⋅ξ + m⋅q ⋅ξ + m⋅ξ - ξ     
+─────────────────────────────────────
+        2                2    2      
+-δ + m⋅q  - 2⋅m⋅q⋅r + m⋅r  - r ⋅ξ - ξ
+n_req - expected = 0
+
+----------------------------------------------------------------------------------------
+24.2 — Exact monotonicity with respect to mixed baseline loading
+----------------------------------------------------------------------------------------
+d n_req / d m =
+                           2            
+           -(δ + q⋅r⋅ξ + ξ)             
+────────────────────────────────────────
+                                       2
+⎛        2                2    2      ⎞ 
+⎝-δ + m⋅q  - 2⋅m⋅q⋅r + m⋅r  - r ⋅ξ - ξ⎠ 
+dn/dm - expected = 0
+
+----------------------------------------------------------------------------------------
+24.3 — Tracking theorem: support follows the mixed direction
+----------------------------------------------------------------------------------------
+n_req(r=q) =
+ ⎛               2            2⎞ 
+-⎝δ⋅m - δ⋅ξ + m⋅q ⋅ξ + m⋅ξ - ξ ⎠ 
+─────────────────────────────────
+               2                 
+          δ + q ⋅ξ + ξ           
+tracking collapse = 0
+
+----------------------------------------------------------------------------------------
+24.4 — Source-tied theorem: support remains aligned with the original source vector
+----------------------------------------------------------------------------------------
+n_req^(src) =
+     2                                  2
+2⋅R_U ⋅m⋅ξ + 9⋅δ⋅m - 9⋅δ⋅ξ + 9⋅m⋅ξ - 9⋅ξ 
+─────────────────────────────────────────
+       2                                 
+  2⋅R_U ⋅m - 4⋅R_U⋅m - 9⋅δ + 2⋅m - 11⋅ξ  
+source-tied formula = 0
+mixed-loading pole threshold =
+ 9⋅δ + 11⋅ξ 
+────────────
+           2
+2⋅(R_U - 1) 
+mixed-loading ceiling from n_req >= 0 =
+    9⋅ξ⋅(δ + ξ)     
+────────────────────
+        ⎛     2    ⎞
+9⋅δ + ξ⋅⎝2⋅R_U  + 9⎠
+d n_req^(src) / d m =
+                              2         
+        -(2⋅R_U⋅ξ + 9⋅δ + 9⋅ξ)          
+────────────────────────────────────────
+                                       2
+⎛     2                               ⎞ 
+⎝2⋅R_U ⋅m - 4⋅R_U⋅m - 9⋅δ + 2⋅m - 11⋅ξ⎠ 
+source-tied dn/dm = 0
+
+========================================================================================
+STAGE 24 THEOREM LEDGER
+========================================================================================
+1. The selected rank-2 wall problem remains analytically solvable because the
+   determinant is linear in the support loading n.
+2. The exact support-loading theorem is
+      n_req = [xi(delta+xi) - m(delta + (1+q^2)xi)]
+              / [delta + (1+r^2)xi - m(q-r)^2].
+3. The mixed baseline always lowers the support needed to hit the same branch:
+      d n_req / d m < 0.
+4. If support tracks the mixed direction (r=q), the rank-2 completion collapses
+   exactly to the Stage-23 one-direction geometry:
+      n_req = G_q - m.
+5. If support stays tied to the original source direction, the selected branch
+   acquires a genuine new source-tied support-feasibility window.
+
+EXIT_CODE: 0

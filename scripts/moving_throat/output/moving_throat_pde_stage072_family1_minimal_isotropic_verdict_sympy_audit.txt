@@ -1,0 +1,33 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage072_family1_minimal_isotropic_verdict_sympy_audit.py
+# Date: 2026-04-02T16:37:23-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 72 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
+========================================================================================
+rho_min   = 1.333333333333333333333333
+rho_suff  = 3.466222913478460000000000
+rho_fail  = 3.467529132738700000000000
+rho_max   = 3.467529229456010000000000
+zeta_min  = 0.3333333333333333333333333
+zeta_max  = 2.467529229456010000000000
+A_F1      = 1.000051928802200000000000
+
+Margins:
+Delta_suff = 2.132889580145126666666667
+Delta_fail = 2.134195799405366666666667
+Delta_max  = 2.134195896122676666666667
+Delta_zeta = 2.134195896122676666666667
+Delta_AF1  = 0.6667185954688666666666667
+
+Regime checks:
+  rho_min < rho_suff   -> guaranteed success
+  zeta_min < 1         -> symmetric lowest twin already enough
+  zeta_min < A_F1      -> Pe_req = 0 on the explicit Family-1 transport map
+
+EXIT_CODE: 0

@@ -1,0 +1,23 @@
+
+========================================================================================
+STAGE 19.1 — EXACT SUPPORT-FEASIBILITY FUNCTION
+========================================================================================
+G(xi,delta) = 9*xi*(delta + xi)/(9*delta + 11*xi)
+M_mix = 8*Chi**2/(pi**2*A*Delta_0*Omega_U**2)
+g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix) = 0
+
+========================================================================================
+STAGE 19.2 — EXACT MONOTONICITY AND ENDPOINTS OF G
+========================================================================================
+dG/dxi = 9*(-11*xi*(delta + xi) + (delta + 2*xi)*(9*delta + 11*xi))/(9*delta + 11*xi)**2
+dG/dxi - manifestly positive form = 0
+G(0,delta) = 0
+G_max(delta) = 9*(delta + 1)/(9*delta + 11)
+G_max - closed form = 0
+
+========================================================================================
+STAGE 19.3 — NEAR-ONSET ASYMPTOTICS
+========================================================================================
+G(xi,delta) near xi=0 = xi - 2*xi**2/(9*delta)
+G near-onset series through O(xi^2) = 0
+All Stage 19 checks passed.

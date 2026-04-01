@@ -1,0 +1,40 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py
+# Date: 2026-04-02T16:35:27-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 52 — FINAL REDUCED SUPPORT/SOURCE VERDICT
+========================================================================================
+Universal matched fail threshold    = Pe_req/Delta_inf
+Universal matched success threshold = Pe_req/Delta_0
+Resonance-family fail threshold     = P_res*Pe_req/Delta_inf
+Resonance-family success threshold  = P_res*Pe_req/Delta_0
+Failure-side profile-sensitive width = Pe_req*(P_res - 1)/Delta_inf
+Success-side profile-sensitive width = Pe_req*(P_res - 1)/Delta_0
+failure relative width = 0
+success relative width = 0
+Success if W_wall - P_res*Pe_req/Delta_0 >= 0:
+         Pᵣₑₛ⋅Pe_req
+W_wall - ───────────
+             Δ₀     
+Failure if Pe_req/Delta_inf - W_wall >= 0:
+          Pe_req
+-W_wall + ──────
+          Δ_inf 
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Exact reduced verdict:
+  Universal fail   : W_wall <= Pe_req / Delta_inf
+  Universal succeed: W_wall >= Pe_req / Delta_0
+  Resonance-family thresholds are shifted only by P_res.
+Therefore profile mismatch matters only in the narrow O(P_res - 1) bands
+around the universal matched-branch thresholds.
+
+EXIT_CODE: 0

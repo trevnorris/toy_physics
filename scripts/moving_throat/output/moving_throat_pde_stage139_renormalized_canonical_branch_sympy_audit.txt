@@ -1,0 +1,29 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage139_renormalized_canonical_branch_sympy_audit.py
+# Date: 2026-04-02T16:45:06-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 139 — RENORMALIZED CANONICAL BRANCH
+========================================================================================
+Sigma0_can = 4.651033550168867
+g_can      = 0.758035078944663
+S_can      = 0.6703621156734617
+R_can      = 0.2500000000000005
+Pi_can     = 3.871564377479002
+T_hat_can  = 1.4467083664567613
+
+Relative shifts from original canonical point:
+Sigma0 ratio - 1 = 1.5754070949222982
+Pi ratio - 1     = 1.5659389234213528
+T_hat ratio - 1  = 0.604807494661683
+
+Conclusion:
+  Full co-evolution preserves the lower compensated branch,
+  but only after a unique upward traction renormalization.
+
+EXIT_CODE: 0

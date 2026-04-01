@@ -1,0 +1,69 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage147_microscopic_log_channels_sympy_audit.py
+# Date: 2026-04-02T16:45:54-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 147 — MICROSCOPIC LOG-IMBALANCE CHANNELS
+========================================================================================
+g/r - (g_q K_s)/(g_s lam) = 0
+1/r_c - (K_s K_q)/lam^2 = 0
+Therefore:
+  dln[(g_q K_s)/(g_s lam)] = dln(g/r)
+  dln[(K_s K_q)/lam^2] = - dln(r_c)
+
+========================================================================================
+General Stage-101 formulas
+========================================================================================
+general first product = -sqrt(2)*pi*K_s*Z_q/(2*I_sq*J_s*L_W**(3/2)*T_m*mu_0*qstar*v_w0)
+general second product = pi**2*K_s*Z_q*c_s**2/(4*I_sq**2*L_W**2*mu_0*qstar**2*v_w0**2)
+
+========================================================================================
+Uniform-overlap + D/N simplification
+========================================================================================
+uniform-overlap first product = -9*K_s*Z_q/(64*L_W**2*T_m*a**4*ell**2*mu_0*qstar*v_w0)
+uniform-overlap second product = 9*pi**2*K_s*Z_q*c_s**2/(512*L_W**3*a**4*ell**2*mu_0*qstar**2*v_w0**2)
+
+========================================================================================
+Healing-locked shell branch
+========================================================================================
+healing-locked first product = -27*pi*Z_q*c_sw**3*mpsi**2/(40*L_W**2*T_m*a**2*hbar*mu_0*qstar*rho_w*v_w0)
+healing-locked second product = 27*pi**3*Z_q*c_s**2*c_sw**3*mpsi**2/(320*L_W**3*a**2*hbar*mu_0*qstar**2*rho_w*v_w0**2)
+healing first product exact formula = 0
+healing second product exact formula = 0
+
+========================================================================================
+delta_perp on the healing-locked branch
+========================================================================================
+delta_perp compressed form = 0
+delta_perp = (-3*dlnLw + dlnZ - 2*dlna + 2*dlncs + 3*dlncsw - dlnrho - 2*dlnv + 4*gstar*sqrt(rstar**2 + 1)*(-2*dlnLw - dlnTm + dlnZ - 2*dlna + 3*dlncsw - dlnrho - dlnv))/(4*sqrt(rstar**2 + 1))
+tangency-law dln T_m = (-3*dlnLw + dlnZ - 2*dlna + 2*dlncs + 3*dlncsw - dlnrho - 2*dlnv - 4*gstar*sqrt(rstar**2 + 1)*(2*dlnLw - dlnZ + 2*dlna - 3*dlncsw + dlnrho + dlnv))/(4*gstar*sqrt(rstar**2 + 1))
+
+========================================================================================
+Family-1 numerical coefficients
+========================================================================================
+g_* = 0.758035078944663000000000000000
+1/(4 sqrt(1+r_*^2)) = 0.12255401109690651300
+A_* = g_* + 1/(4 sqrt(...)) = 0.88058909004156951300
+B_* = 1/(2 sqrt(1+r_*^2)) = 0.24510802219381302601
+coeff[ln(Z_q/rho_w)] = 0.88058909004156951300
+coeff[ln(c_sw)]      = 2.6417672701247085390
+coeff[ln(c_s)]       = 0.24510802219381302601
+coeff[ln(T_m)]       = -0.75803507894466300000
+coeff[ln(v_w0)]      = -1.0031431011384760260
+coeff[ln(a)]         = -1.7611781800831390260
+coeff[ln(L_W)]       = -1.8837321911800455390
+
+Carry-forward formulas:
+  dln[(g_q K_s)/(g_s lam)] = dln(g/r)
+  dln[(K_s K_q)/lam^2] = - dln(r_c)
+  On the healing-locked branch:
+    dln[(g_q K_s)/(g_s lam)] = dln Z_q + 3 dln c_sw - dln rho_w - dln T_m - dln v_w0 - 2 dln a - 2 dln L_W
+    dln[(K_s K_q)/lam^2] = dln Z_q + 2 dln c_s + 3 dln c_sw - dln rho_w - 2 dln v_w0 - 2 dln a - 3 dln L_W
+  delta_perp is the weighted sum of those two channels.
+
+EXIT_CODE: 0

@@ -1,0 +1,99 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage035_nontwin_asymmetry_threshold_sympy_audit.py
+# Date: 2026-04-02T16:32:50-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 35 — EXACT BRANCH-PRODUCT REGIME CLASSIFICATION
+========================================================================================
+S_req = Pi_tr / C_mix =
+Πₜᵣ 
+────
+Cₘᵢₓ
+
+zeta_req(Pi_tr,C_mix,eps) =
+        Cₘᵢₓ - Πₜᵣ        
+──────────────────────────
+-Cₘᵢₓ + eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)
+zeta_req at Pi_tr = C_mix = 0
+zeta_req at Pi_tr = 2 C_mix minus 1 = 0
+
+d zeta_req / d Pi_tr =
+       -Cₘᵢₓ⋅(eps - 1)        
+──────────────────────────────
+                             2
+(2⋅Cₘᵢₓ⋅eps - Cₘᵢₓ - Πₜᵣ⋅eps) 
+dzeta_req/dPi - expected = 0
+
+========================================================================================
+EXACT EXCESS BEYOND THE SYMMETRIC TWIN
+========================================================================================
+Delta_zeta = zeta_req - 1 =
+-2⋅Cₘᵢₓ + Πₜᵣ + eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)
+──────────────────────────────────
+    Cₘᵢₓ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)     
+Delta_zeta - expected = 0
+
+========================================================================================
+GENERAL LOWEST-LANE ASYMMETRY THRESHOLDS
+========================================================================================
+zeta_0^(phys) =
+      2
+K_W⋅Ω₀ 
+───────
+ Kₚₕᵢ₀ 
+
+Omega_(0,req)^2 =
+     -Kₚₕᵢ₀⋅(Cₘᵢₓ - Πₜᵣ)       
+───────────────────────────────
+K_W⋅(Cₘᵢₓ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ))
+
+K_(phi,0)^(req) =
+       2                             
+-K_W⋅Ω₀ ⋅(Cₘᵢₓ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)) 
+─────────────────────────────────────
+             Cₘᵢₓ - Πₜᵣ              
+threshold equality at fixed stiffness = 0
+threshold equality at fixed overlap = 0
+
+========================================================================================
+SYMMETRIC TWIN DIAGNOSTICS
+========================================================================================
+zeta_0^(twin) - 1 = 0
+At equal stiffness K_phi0 = K_W, required overlap boost is
+    ___________________________
+   ╱        -Cₘᵢₓ + Πₜᵣ        
+  ╱  ───────────────────────── 
+╲╱   Cₘᵢₓ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ) 
+
+At equal overlap Omega0 = 1, required softened stiffness is
+-K_W⋅(Cₘᵢₓ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)) 
+─────────────────────────────────
+           Cₘᵢₓ - Πₜᵣ            
+
+Exact softening fraction at equal overlap =
+2⋅Cₘᵢₓ - Πₜᵣ - eps⋅(2⋅Cₘᵢₓ - Πₜᵣ)
+─────────────────────────────────
+           Cₘᵢₓ - Πₜᵣ            
+softening fraction - expected = 0
+
+========================================================================================
+STAGE 35 THEOREM LEDGER
+========================================================================================
+Exact regime split:
+  Pi_tr <= C_mix            : mixed-only branch already enough
+  C_mix < Pi_tr <= 2 C_mix  : symmetric lowest twin branch is enough
+  Pi_tr > 2 C_mix           : non-twin asymmetry is required
+
+Exact support-ratio formula:
+  zeta_req = (Pi_tr - C_mix) / [ C_mix - eps (2 C_mix - Pi_tr) ]
+
+Exact lowest-lane rescue thresholds:
+  Omega_0^2 >= zeta_req K_phi0 / K_W
+  K_phi0 <= K_W Omega_0^2 / zeta_req
+
+EXIT_CODE: 0

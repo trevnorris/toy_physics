@@ -1,0 +1,50 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage152_no_linear_p2_scalar_slippage_sympy_audit.py
+# Date: 2026-04-02T16:46:10-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
+========================================================================================
+
+========================================================================================
+Grouped bilinear invariant
+========================================================================================
+I[x,y] = 4*x20*y20/25 - 2*x20*y21/25 - 2*x20*y22/25 - 2*x21*y20/25 + 6*x21*y21/25 - 4*x21*y22/25 - 2*x22*y20/25 - 4*x22*y21/25 + 6*x22*y22/25
+I[x,y] - [4 a_x a_y + 4/5 b_x b_y] = 0
+
+========================================================================================
+Weak axisymmetric grouped law
+========================================================================================
+a_x(axis) = eps*x1/4
+b_x(axis) = 3*eps*x1/4
+b_x - 3 a_x = 0
+I_axis - (7/10) eps^2 x1 y1 = 0
+
+========================================================================================
+Explicit harmonic average
+========================================================================================
+<Y20> = 0
+<Y20^2> = 1/(4*pi)
+average Y20 = 0
+average Y20^2 - 1/(4 pi) = 0
+<log(X0 (1 + e Y20))> through O(e^2) = -e**2/(8*pi) + log(X0)
+linear coefficient in averaged log-observable = 0
+
+========================================================================================
+Stage-151 weighted transport
+========================================================================================
+eps_perp - Xi_perp Igrp = 0
+Numeric Xi_perp combination = 1.883732191180045539*XiL + 0.758035078944663*XiT + 1.003143101138476026*Xiv
+
+Carry-forward formulas:
+  I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y
+  Pure grouped P2 anisotropy has no linear scalar feed-down on an isotropic branch.
+  Weak axisymmetric branch: b = 3 a and I[x,y] = (7/10) eps^2 x^(1) y^(1).
+  Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.
+
+EXIT_CODE: 0

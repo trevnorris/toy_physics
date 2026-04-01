@@ -1,0 +1,30 @@
+
+========================================================================================
+STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
+========================================================================================
+K_A split = 0
+G_A split = 0
+delta B0 formula = 0
+delta B2 formula = 0
+BdG obstruction bundle = 0
+delta Delta formula = 0
+delta S formula = 0
+delta G formula = 0
+delta P formula = 0
+delta Q formula = 0
+delta Z0 formula = 0
+delta Z2 formula = 0
+delta N0 formula = 0
+Z obstruction bundle = 0
+N obstruction bundle = 0
+weak-axisymmetric K obstruction lambda=1 = 0
+weak-axisymmetric G obstruction lambda=1 = 0
+weak-axisymmetric K obstruction lambda=1/2 = 0
+weak-axisymmetric G obstruction lambda=1/2 = 0
+weak-axisymmetric K obstruction lambda=-1 = 0
+weak-axisymmetric G obstruction lambda=-1 = 0
+
+Carry-forward formulas:
+  K_A = (1/9 delta K_A - delta M_A) - (delta B_A2 + 1/9 delta B_A0) - (delta Z_A2 + 1/9 delta Z_A0)
+  G_A = -P0 delta K_A + P0 delta B_A0 + (delta N_A0 + P0 delta Z_A0)
+  The weak grouped branch collapses to the scalar pair (K_1, G_1).

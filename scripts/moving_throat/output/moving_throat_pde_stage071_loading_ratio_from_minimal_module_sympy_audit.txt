@@ -1,0 +1,37 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage071_loading_ratio_from_minimal_module_sympy_audit.py
+# Date: 2026-04-02T16:37:21-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 71 — LOADING-RATIO EXTRACTION FROM THE MINIMAL ISOTROPIC MODULE
+========================================================================================
+Y_loading(omega) = (Omega_Q**2*alpha_req - alpha_mix*omega**2)/(alpha_req*(Omega_Q**2 - omega**2))
+Y_rho(omega)     = (Omega_Q**2*rho_alpha - omega**2)/(rho_alpha*(Omega_Q**2 - omega**2))
+loading form - rho form = 0
+contact-plus-pole reconstruction = 0
+c0(rho_alpha) = 1/rho_alpha
+c1(rho_alpha) = (rho_alpha - 1)/rho_alpha
+c0 + c1 - 1 = 0
+rho_alpha from c0 = 1/c0
+rho_alpha from c1 = -1/(c1 - 1)
+zeta_req from (c0,c1) = c1/c0
+rho(c0(rho)) - rho = 0
+rho(c1(rho)) - rho = 0
+zeta(c(rho)) - (rho-1) = 0
+rho_alpha(minimal isotropic module) = 4/3
+zeta_req(minimal isotropic module) = 1/3
+rho_min - 4/3 = 0
+zeta_min - 1/3 = 0
+Pi_tr/C_mix - 4/3 = 0
+
+Regime classification:
+  Pi_tr = (4/3) C_mix
+  therefore C_mix < Pi_tr < 2 C_mix
+  and zeta_req = 1/3 < 1, so the symmetric lowest twin suffices.
+
+EXIT_CODE: 0

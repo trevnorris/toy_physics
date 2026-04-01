@@ -1,0 +1,65 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage021_dimensionless_continuum_placement_sympy_audit.py
+# Date: 2026-04-02T16:28:45-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 21 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Stage-20 continuum formulas
+----------------------------------------------------------------------------------------
+A         = (K_U*(K_eta + 6*T_Omega) - c_etaU**2)/(K_U*mu_eta)
+delta     = pi**2*K_U*T_w/(L**2*(K_U*(K_eta + 6*T_Omega) - c_etaU**2))
+M_mix     = 288*L**2*(K_U*c_etaW + c_UW*c_etaU)**2/((K_U*(K_eta + 6*T_Omega) - c_etaU**2)*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2))
+beta0     = 1296*pi**4*L**4*mu_W*(K_U*c_etaW + c_UW*c_etaU)**2/(mu_eta*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2)**2)
+R_target  = G*c_s**5*(K_U*(K_eta + 6*T_Omega) - c_etaU**2)*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2)**2/(960*pi**2*K_U*L**4*a**5*c_light**5*mu_W*(K_U*c_etaW + c_UW*c_etaU)**2)
+
+----------------------------------------------------------------------------------------
+2. Dimensionless kernel substitutions
+----------------------------------------------------------------------------------------
+delta - delta0/(1-eps_eta) = 0
+M_mix - 8 Z_W (1+rho)^2 / [pi^2 (1-eps_eta)(1-eps_W)] = 0
+R_target - Lambda (1-eps_eta)(1-eps_W)^2 / [Z_W (1+rho)^2] = 0
+beta0 - (mu_W/mu_eta)(Keta_eff/KWeff) Z_W (1+rho)^2/(1-eps_W)^2 = 0
+delta(dimless)    = -delta0/(eps_eta - 1)
+M_mix(dimless)    = 8*Z_W*(rho**2 + 2*rho + 1)/(pi**2*(eps_W*eps_eta - eps_W - eps_eta + 1))
+R_target(dimless) = Lambda*(-eps_W**2*eps_eta + eps_W**2 + 2*eps_W*eps_eta - 2*eps_W - eps_eta + 1)/(Z_W*(rho**2 + 2*rho + 1))
+beta0(dimless)    = 4*L**2*Z_W*mu_W*(K_eta*rho**2 + 2*K_eta*rho + K_eta + 6*T_Omega*rho**2 + 12*T_Omega*rho + 6*T_Omega)/(mu_eta*(4*K_W*L**2*eps_W**2 - 8*K_W*L**2*eps_W + 4*K_W*L**2 + pi**2*T_W*eps_W**2 - 2*pi**2*T_W*eps_W + pi**2*T_W))
+
+----------------------------------------------------------------------------------------
+3. Exact product relation
+----------------------------------------------------------------------------------------
+R_target M_mix - 8 Lambda (1-eps_W)/pi^2 = 0
+8 Lambda (1-eps_W)/pi^2 - NQ * KWeff(1-eps_W)/mu_W = 0
+R_target M_mix = 8*Lambda*(1 - eps_W)/pi**2
+
+----------------------------------------------------------------------------------------
+4. Exact derivative factors
+----------------------------------------------------------------------------------------
+d delta / d eps_eta factorization = 0
+d M / d Z_W factorization = 0
+d R / d Z_W factorization = 0
+d M / d eps_eta factorization = 0
+d R / d eps_eta factorization = 0
+d M / d eps_W factorization = 0
+d R / d eps_W factorization = 0
+d M / d rho factorization = 0
+d R / d rho factorization = 0
+On the natural nonvanishing transfer branch 1+rho > 0:
+  delta increases with eps_eta
+  M_mix increases with eps_eta, eps_W, Z_W, rho
+  R_target decreases with eps_eta, eps_W, Z_W, rho
+
+========================================================================================
+STAGE 21 AUDIT COMPLETE
+========================================================================================
+The Stage-20 continuum operator collapses to an exact five-ratio placement map
+together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.
+
+EXIT_CODE: 0

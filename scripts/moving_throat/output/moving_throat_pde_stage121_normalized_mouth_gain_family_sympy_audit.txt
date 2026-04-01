@@ -1,0 +1,17 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage121_normalized_mouth_gain_family_sympy_audit.py
+# Date: 2026-04-02T16:40:12-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+M_s normalized = Sigma_0
+M_q normalized = -Sigma_0*(g_c - r)**2/(r**2 + 1)
+R_q = (g_c - r)**2/(r**2 + 1)
+R_q on + branch = 1/4
+R_q on - branch = 1/4
+
+Normalized mouth-gain family verified.
+
+EXIT_CODE: 0

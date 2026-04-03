@@ -1,0 +1,47 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage159_outgoing_load_factorization_mathematica_audit.wl
+# Date: 2026-04-03T23:47:38-06:00
+# Elapsed: 15s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 159 — OUTGOING LOAD-FACTOR FACTORIZATION
+========================================================================================
+exact factorization of Lambda^2/K = 0
+PASS: exact factorization of Lambda^2/K
+
+Carry-forward exact identity:
+  Lambda^2/K = M^2 (1+I)^2 / (1-H)^2
+
+========================================================================================
+First-order logarithmic transport
+========================================================================================
+factored first-order defect formula = 0
+PASS: factored first-order defect formula
+expanded primitive-variable transport = 0
+PASS: expanded primitive-variable transport
+
+First-order formulas:
+  d ln M = d ln G_W - d ln Omega_W^2 - 1/2 dK
+  d ln I = d ln R + d ln G_U - d ln Omega_U^2 - d ln G_W
+  d ln H = 2 d ln R - d ln Omega_U^2 - d ln Omega_W^2
+  Sigma^(N) = 2 d ln M + 2 I/(1+I) d ln I + 2 H/(1-H) d ln H
+
+========================================================================================
+Rigidity corollary
+========================================================================================
+rigidity reduction to 2 d ln M = 0
+PASS: rigidity reduction to 2 d ln M
+
+Conclusion:
+  If the interference and hybridization ratios are rigid, then
+      Sigma^(N) = 2 d ln[ G_W / (Omega_W^2 sqrt(K)) ].
+  So the remaining linear grouped defect vanishes when the raw mixed leg
+  obeys the square-root wall-loading law G_W / Omega_W^2 ∝ sqrt(K).
+
+Stage 159 Mathematica audit passed.
+
+EXIT_CODE: 0

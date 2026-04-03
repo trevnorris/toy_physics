@@ -1,0 +1,36 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage082_reduced_finish_line_mathematica_audit.wl
+# Date: 2026-04-03T15:14:35-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 082 — REDUCED FINISH LINE
+========================================================================================
+Yhat_Q^cons(omega) = (3 + (1 - omega^2/omegaQ^2)^(-1))/4
+K0_target geometric form = 0
+PASS: K0_target geometric form
+Kbar_Q^cons series = (16*G*nQ*omegaQ*(omega^4 + omega^2*omegaQ^2 + 4*omegaQ^4))/(45*c^5)
+K0 = (64*G*nQ*omegaQ^5)/(45*c^5)
+K2 = (16*G*nQ*omegaQ^3)/(45*c^5)
+K4 = (16*G*nQ*omegaQ)/(45*c^5)
+Gamma5 = (2*G*nQ)/(5*c^5)
+R0 - (N_Q - 1) = 0
+PASS: R0 - (N_Q - 1)
+R2 - (N_Q - 1) = 0
+PASS: R2 - (N_Q - 1)
+R4 - (N_Q - 1) = 0
+PASS: R4 - (N_Q - 1)
+R5 - (N_Q - 1) = 0
+PASS: R5 - (N_Q - 1)
+R0 = -1 + nQ
+R2 = -1 + nQ
+R4 = -1 + nQ
+R5 = -1 + nQ
+
+STAGE 082 AUDIT PASSED
+
+EXIT_CODE: 0

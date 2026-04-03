@@ -1,0 +1,35 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.wl
+# Date: 2026-04-03T16:30:57-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 063 — FAMILY-1 ZETA THRESHOLDS
+========================================================================================
+zeta_max^(F1) =2.46752922945601223332958450157053542039`20.
+zeta_suff^(chi)(lambda_mu) = zeta_F1(96.5285247264386 lambda_mu^2)
+zeta_fail^(chi)(lambda_mu) = zeta_F1(11220.5441626259 lambda_mu^2)
+zeta_suff^(J)(lambda_mu)   = zeta_F1(22.0062226330754 lambda_mu^2)
+zeta_fail^(J)(lambda_mu)   = zeta_F1(2558.01892349205 lambda_mu^2)
+zeta_suff^(chi)(1) =2.46622291347846457791328137819243030101`20.
+zeta_fail^(chi)(1) =2.46752913273870334015751818227041848881`20.
+zeta_suff^(J)(1) =2.44257571477179109572165455182292815007`20.
+zeta_fail^(J)(1) =2.46752736855057822496070633999540348651`20.
+limit zeta_suff^(chi) =2.46752922945601223332958450157053542039`20.
+limit zeta_fail^(chi) =2.46752922945601223332958450157053542039`20.
+limit zeta_suff^(J) =2.46752922945601223332958450157053542039`20.
+limit zeta_fail^(J) =2.46752922945601223332958450157053542039`20.
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Guaranteed success: zeta_req <= zeta_suff^(chi)(lambda_mu)
+Guaranteed failure: zeta_req >= zeta_fail^(chi)(lambda_mu)
+Conservative floor success/failure obtained by replacing (chi) with (J)
+For lambda_mu = 1 the natural Family-1 branch already reaches zeta_req ≈ 2.46622 before the indeterminate band.
+
+EXIT_CODE: 0

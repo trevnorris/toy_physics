@@ -1,0 +1,58 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage049_wall_figure_of_merit_mathematica_audit.wl
+# Date: 2026-04-03T16:21:38-06:00
+# Elapsed: 11s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 049 — DIMENSIONLESS WALL FIGURE OF MERIT
+========================================================================================
+W_wall = (4*a^2*j1*len^2*Pi*v0^2)/(ell*tx)
+W_fail = peReq/deltaInf
+W_suff = peReq/delta0
+W_wall - kappa G_eq^(tw) = 0
+PASS: W_wall - kappa G_eq^(tw)
+W_wall(V0_fail)^2 - W_fail = 0
+PASS: W_wall(V0_fail)^2 - W_fail
+W_wall(V0_suff)^2 - W_suff = 0
+PASS: W_wall(V0_suff)^2 - W_suff
+
+========================================================================================
+MONOTONICITY
+========================================================================================
+dW/d(V0^2) = (4*a^2*j1*len^2*Pi)/(ell*tx)
+dW/da = (8*a*j1*len^2*Pi*v0^2)/(ell*tx)
+dW/dL = (8*a^2*j1*len*Pi*v0^2)/(ell*tx)
+dW/dell = (-4*a^2*j1*len^2*Pi*v0^2)/(ell^2*tx)
+dW/dJ1 = (4*a^2*len^2*Pi*v0^2)/(ell*tx)
+dW/dT_X = (-4*a^2*j1*len^2*Pi*v0^2)/(ell*tx^2)
+dW/d(V0^2) > 0 = True
+PASS: dW/d(V0^2) > 0
+dW/da > 0 = True
+PASS: dW/da > 0
+dW/dL > 0 = True
+PASS: dW/dL > 0
+dW/dell < 0 = True
+PASS: dW/dell < 0
+dW/dJ1 > 0 = True
+PASS: dW/dJ1 > 0
+dW/dT_X < 0 = True
+PASS: dW/dT_X < 0
+
+========================================================================================
+CONSTANT-COMPRESSIBILITY FORM
+========================================================================================
+W_H = (4*a^2*ifMom*len^2*Pi*v0^2)/(ell*hw*tx)
+J1 = I_f/H_w reduction = 0
+PASS: J1 = I_f/H_w reduction
+W_H(V0_fail)^2 - W_fail = 0
+PASS: W_H(V0_fail)^2 - W_fail
+W_H(V0_suff)^2 - W_suff = 0
+PASS: W_H(V0_suff)^2 - W_suff
+
+Stage 049 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,59 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage152_no_linear_p2_scalar_slippage_mathematica_audit.wl
+# Date: 2026-04-03T23:40:52-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
+========================================================================================
+
+========================================================================================
+Grouped bilinear invariant
+========================================================================================
+I[x,y] = (-2*(x22*(y20 + 2*y21 - 3*y22) + x20*(-2*y20 + y21 + y22) + x21*(y20 - 3*y21 + 2*y22)))/25
+I[x,y] - [4 a_x a_y + 4/5 b_x b_y] = 0
+PASS: I[x,y] - [4 a_x a_y + 4/5 b_x b_y]
+
+========================================================================================
+Weak axisymmetric grouped law
+========================================================================================
+a_x(axis) = (eps*x1)/4
+b_x(axis) = (3*eps*x1)/4
+b_x - 3 a_x = 0
+PASS: b_x - 3 a_x
+I_axis - (7/10) eps^2 x1 y1 = 0
+PASS: I_axis - (7/10) eps^2 x1 y1
+
+========================================================================================
+Explicit harmonic average
+========================================================================================
+<Y20> = 0
+<Y20^2> = 1/(4*Pi)
+average Y20 = 0
+PASS: average Y20
+average Y20^2 - 1/(4 pi) = 0
+PASS: average Y20^2 - 1/(4 pi)
+<log(X0 (1 + e Y20))> through O(e^2) = -1/8*e^2/Pi + Log[x0s]
+linear coefficient in averaged log-observable = 0
+PASS: linear coefficient in averaged log-observable
+
+========================================================================================
+Stage-151 weighted transport
+========================================================================================
+eps_perp - Xi_perp Igrp = 0
+PASS: eps_perp - Xi_perp Igrp
+Numeric Xi_perp combination = 1.88373219118004561473246690540253089711`20.*xiL + 0.75803507894466304328773276210995391011`20.*xiT + 1.00314310113847606205906701623170262804`20.*xiv
+
+Carry-forward formulas:
+  I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y
+  Pure grouped P2 anisotropy has no linear scalar feed-down on an isotropic branch.
+  Weak axisymmetric branch: b = 3 a and I[x,y] = (7/10) eps^2 x^(1) y^(1).
+  Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.
+
+Stage 152 Mathematica audit passed.
+
+EXIT_CODE: 0

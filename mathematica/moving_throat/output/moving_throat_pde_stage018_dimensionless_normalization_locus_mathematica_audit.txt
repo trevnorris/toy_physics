@@ -1,0 +1,48 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage018_dimensionless_normalization_locus_mathematica_audit.wl
+# Date: 2026-04-03T15:45:09-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 018 — DIMENSIONLESS NORMALIZATION LOCUS
+========================================================================================
+eta = 2/9
+F(xi,delta) = -1/81*(9*delta + 11*xi)^4/((-1 + xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)^2)
+R_target = (A*NQ*Pi^2)/(8*beta0)
+F - closed D/N form = 0
+PASS: F - closed D/N form
+R_target - Pi^2 A NQ/(8 beta0) = 0
+PASS: R_target - Pi^2 A NQ/(8 beta0)
+dF/dxi = ((9*delta + 11*xi)^3*(81*delta^3 + 297*delta*xi^2 + 121*xi^3 + 9*delta^2*(8 + 21*xi)))/(81*(-1 + xi)^2*(9*delta^2 + 18*delta*xi + 11*xi^2)^3)
+dF/dxi - manifestly positive form = 0
+PASS: dF/dxi - manifestly positive form
+F(0,delta) - 1 = 0
+PASS: F(0,delta) - 1
+softening constant C(delta) = (11 + 9*delta)^4/(81*(11 + 9*delta*(2 + delta))^2)
+softening constant - closed form = 0
+PASS: softening constant - closed form
+near-softening asymptotic coefficient = 0
+PASS: near-softening asymptotic coefficient
+alpha_req(xi,delta) = (9*A*Pi^2*xi*(delta + xi))/(72*delta + 88*xi)
+alpha_crit = (9*A*(1 + delta)*Pi^2)/(88 + 72*delta)
+alpha_req - closed D/N form = 0
+PASS: alpha_req - closed D/N form
+alpha_crit - closed form = 0
+PASS: alpha_crit - closed form
+g_B,req^2 / varpi^2 = -(Chi^2/(Delta0*OmegaU^2)) + (9*A*Pi^2*xi*(delta + xi))/(72*delta + 88*xi)
+support split residual = 0
+PASS: support split residual
+F(xi,delta) near xi=0 = 1 + (xi*(-28*xi + 3*delta*(8 + 9*delta)*(1 + xi)))/(27*delta^2)
+alpha_req near xi=0 = (A*Pi^2*(9*delta - 2*xi)*xi)/(72*delta)
+near-onset F series through O(xi^2) = 0
+PASS: near-onset F series through O(xi^2)
+alpha_req near-onset series through O(xi^2) = 0
+PASS: alpha_req near-onset series through O(xi^2)
+
+Stage 018 Mathematica audit passed.
+
+EXIT_CODE: 0

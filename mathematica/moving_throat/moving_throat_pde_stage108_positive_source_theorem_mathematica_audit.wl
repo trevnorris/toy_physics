@@ -1,0 +1,77 @@
+ClearAll["Global`*"];
+$HistoryLength = 0;
+
+banner[title_String] := (
+  Print[""];
+  Print[StringRepeat["=", 88]];
+  Print[title];
+  Print[StringRepeat["=", 88]];
+);
+
+pass[name_String] := Print["PASS: ", name];
+
+fmt[expr_] := ToString[InputForm[expr]];
+
+fail[name_String, detail_: Missing["NotAvailable"]] := (
+  Print["FAIL: ", name];
+  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+  Exit[1];
+);
+
+expectZero[name_String, expr_] := Module[{res},
+  res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res === 0], pass[name], fail[name, res]];
+];
+
+expectTrue[name_String, cond_] := Module[{res},
+  res = FullSimplify[cond, Assumptions -> $Assumptions];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res], pass[name], fail[name, res]];
+];
+
+banner["STAGE 108 — POSITIVE LOCAL MOUTH-SOURCE THEOREM"];
+
+Clear[x, z, L];
+$Assumptions = L > 0 && Element[{x, z}, Reals];
+
+k = Pi/(2*L);
+kernel = Cos[Pi*x/2];
+
+Print["D/N half-wave derivative factor:"];
+Print["Cos[k z] with k = Pi/(2 L) = ", fmt[Cos[k*z]]];
+
+kernelMin = FullSimplify[MinValue[{kernel, 0 <= x <= 1}, x], Assumptions -> $Assumptions];
+kernelMax = FullSimplify[MaxValue[{kernel, 0 <= x <= 1}, x], Assumptions -> $Assumptions];
+expectZero["kernel minimum on [0,1]", kernelMin];
+expectZero["kernel maximum on [0,1] - 1", kernelMax - 1];
+
+Print[""];
+Print["Because the normalized kernel lies in [0,1] on x in [0,1],"];
+Print["every positive normalized source law has its cosine moment in [0,1]."];
+
+rrad = Sqrt[4107 - 100*Pi^2];
+r = FullSimplify[Sqrt[12*(37/20)^2/Pi^2 - 1], Assumptions -> $Assumptions];
+gminus = FullSimplify[(2*rrad - 37*Sqrt[3])/(20*Pi), Assumptions -> $Assumptions];
+gplus = FullSimplify[(2*rrad + 37*Sqrt[3])/(20*Pi), Assumptions -> $Assumptions];
+
+expectZero["r - sqrt(4107 - 100 Pi^2)/(10 Pi)", r - rrad/(10*Pi)];
+expectZero["lower branch balance relation", 1 + r^2 - 4*(gminus - r)^2];
+expectZero["upper branch balance relation", 1 + r^2 - 4*(gplus - r)^2];
+
+Print[""];
+Print["Explicit Family-1 compensated branches:"];
+Print["g_- = ", fmt[gminus]];
+Print["g_+ = ", fmt[gplus]];
+Print["g_- (numeric) = ", N[gminus, 20]];
+Print["g_+ (numeric) = ", N[gplus, 20]];
+
+expectTrue["g_- > 0", gminus > 0];
+expectTrue["g_- < 1", gminus < 1];
+expectTrue["g_+ > 1", gplus > 1];
+
+Print[""];
+Print["Conclusion: under any positive localized mouth source law,"];
+Print["the upper compensated branch is impossible and the lower branch is unique."];
+
+Exit[0];

@@ -1,0 +1,59 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage157_static_self_similarity_mathematica_audit.wl
+# Date: 2026-04-03T23:46:45-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION
+========================================================================================
+weight identity = 0
+PASS: weight identity
+delta_D weighted decomposition = 0
+PASS: delta_D weighted decomposition
+Xi_load wall-referenced form = 0
+PASS: Xi_load wall-referenced form
+Xi_load = n01/n0 - (b01 - k1 + z01)/(b0 - k + z0)
+
+========================================================================================
+BdG bundle weighted logarithmic slope
+========================================================================================
+BdG weighted-average formula = 0
+PASS: BdG weighted-average formula
+
+========================================================================================
+Conservative Maxwell/mixed weighted logarithmic slope
+========================================================================================
+Z weighted-average formula = 0
+PASS: Z weighted-average formula
+
+========================================================================================
+Outgoing-transfer weighted logarithmic slope
+========================================================================================
+N weighted-average formula = 0
+PASS: N weighted-average formula
+
+========================================================================================
+Static self-similarity theorem
+========================================================================================
+Xi_load under static self-similarity = 0
+PASS: Xi_load under static self-similarity
+Xi_load mismatch-field form = 0
+PASS: Xi_load mismatch-field form
+Xi_load mismatch-field prototype = sigmaN - (b0*sigmaB + sigmaZ*z0)/(b0 - k + z0)
+
+Carry-forward formulas:
+  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ
+  omegaK - omegaB - omegaZ = 1
+  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)
+  delta_B = weighted average of 2 dln(c_alpha/varpi_alpha)
+  delta_Z = weighted average of dln(Q_r/Delta_r)
+  delta_N = weighted average of 2 dln(P_r/Delta_r)
+  static self-similarity => Xi_load = 0
+
+Stage 157 Mathematica audit passed.
+
+EXIT_CODE: 0

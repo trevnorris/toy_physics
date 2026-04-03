@@ -1,0 +1,60 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage012_dynamic_loading_mathematica_audit.wl
+# Date: 2026-04-03T15:50:15-06:00
+# Elapsed: 167s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 012 — DYNAMIC LOADING
+========================================================================================
+D_bare(omega) = {{K0 - M0*omega^2, 0}, {0, DeltaKax + K0 - M1*omega^2}}
+Xi(omega) = lambdaU^2/(-omega^2 + OmegaU^2)
+alpha(omega) = (lambdaR*lambdaU + lambdaW*(-omega^2 + OmegaU^2))^2/((-omega^2 + OmegaU^2)*((-88*lambdaR^2)/(9*Pi^2) + (omega - OmegaU)*(omega + OmegaU)*(omega^2 - OmegaW^2 + portPi))) + lambdaB^2/(-omega^2 + varpi^2)
+Delta_UW(omega) = (-88*lambdaR^2)/(9*Pi^2) + (omega - OmegaU)*(omega + OmegaU)*(omega^2 - OmegaW^2 + portPi)
+Sigma - (Xi I + alpha vv^T) = {{0, 0}, {0, 0}}
+PASS: Sigma - (Xi I + alpha vv^T)
+sigma - 88/(9 Pi^2) = 0
+PASS: sigma - 88/(9 Pi^2)
+xi - 56/(9 Pi^2) = 0
+PASS: xi - 56/(9 Pi^2)
+eta + 8 Sqrt[2]/(3 Pi^2) = 0
+PASS: eta + 8 Sqrt[2]/(3 Pi^2)
+Xi_0 = lambdaU^2/OmegaU^2
+Delta_0 = OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2)
+alpha_0 = (lambdaR*lambdaU + lambdaW*OmegaU^2)^2/(OmegaU^2*(OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2))) + lambdaB^2/varpi^2
+DeltaK_tilde - DeltaK_ax = 0
+PASS: DeltaK_tilde - DeltaK_ax
+dE/dtheta - stationarity/2 = 0
+PASS: dE/dtheta - stationarity/2
+-tan(2 theta_-) - manifestly positive form = 0
+PASS: -tan(2 theta_-) - manifestly positive form
+tan(2 theta_-) = (-16*Sqrt[2]*((lambdaR*lambdaU + lambdaW*OmegaU^2)^2/(OmegaU^2*(OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2))) + lambdaB^2/varpi^2))/(3*Pi^2*(DeltaKax + (56*(lambdaR*lambdaU + lambdaW*OmegaU^2)^2)/(-88*lambdaR^2*OmegaU^2 + 9*OmegaU^4*OmegaW^2*Pi^2) + (56*lambdaB^2)/(9*Pi^2*varpi^2)))
+alpha_crit = (9*(lambdaU^2 - K0*OmegaU^2)*(lambdaU^2 - (DeltaKax + K0)*OmegaU^2)*Pi^2)/(-88*lambdaU^2*OmegaU^2 + 8*(9*DeltaKax + 11*K0)*OmegaU^4)
+det(alpha_crit) = 0
+PASS: det(alpha_crit)
+alpha_cons(omega) = (lambdaR*lambdaU + lambdaW*(-omega^2 + OmegaU^2))^2/((-omega^2 + OmegaU^2)*((omega - OmegaU)*(omega + OmegaU)*(omega - OmegaW)*(omega + OmegaW) - (88*lambdaR^2)/(9*Pi^2))) + lambdaB^2/(-omega^2 + varpi^2)
+beta(omega) = (81*(lambdaR*lambdaU + lambdaW*(-omega^2 + OmegaU^2))^2*Pi^4)/(88*lambdaR^2 - 9*(omega - OmegaU)*(omega + OmegaU)*(omega - OmegaW)*(omega + OmegaW)*Pi^2)^2
+beta - clean transfer factor = 0
+PASS: beta - clean transfer factor
+alpha - (alpha_cons + beta portPi) at O(portPi) = 0
+PASS: alpha - (alpha_cons + beta portPi) at O(portPi)
+alpha_out(omega) through O(omega^5) = (I*GammaPort*omega^5*(lambdaR*lambdaU + lambdaW*OmegaU^2)^2)/(OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2))^2 + (lambdaR*lambdaU + lambdaW*OmegaU^2)^2/(OmegaU^2*(OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2))) + omega^4*((9*Pi^2*(7744*lambdaR^6*lambdaU^2 - 792*lambdaR^2*OmegaU^2*(-2*lambdaR*lambdaU*lambdaW*OmegaU^4 + 3*lambdaR^2*lambdaU^2*OmegaW^2 - lambdaW^2*OmegaU^4*(2*OmegaU^2 + OmegaW^2))*Pi^2 + 81*OmegaU^4*(OmegaU^4*(lambdaR*lambdaU + lambdaW*OmegaU^2)^2 + 2*lambdaR*lambdaU*OmegaU^2*(lambdaR*lambdaU + lambdaW*OmegaU^2)*OmegaW^2 + lambdaR*lambdaU*(3*lambdaR*lambdaU + 2*lambdaW*OmegaU^2)*OmegaW^4)*Pi^4))/(OmegaU^6*(-88*lambdaR^2 + 9*OmegaU^2*OmegaW^2*Pi^2)^3) + lambdaB^2/varpi^6) + omega^2*((9*(lambdaR*lambdaU + lambdaW*OmegaU^2)*Pi^2*(88*lambdaR^2*(-(lambdaR*lambdaU) + lambdaW*OmegaU^2) + 9*OmegaU^2*(lambdaW*OmegaU^4 + lambdaR*lambdaU*(OmegaU^2 + 2*OmegaW^2))*Pi^2))/(OmegaU^4*(88*lambdaR^2 - 9*OmegaU^2*OmegaW^2*Pi^2)^2) + lambdaB^2/varpi^4) + lambdaB^2/varpi^2
+beta_5 = (GammaPort*(lambdaR*lambdaU + lambdaW*OmegaU^2)^2)/(OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2))^2
+beta_5 - GammaPort (OmegaU^2 lambdaW + lambdaR lambdaU)^2/Delta0^2 = 0
+PASS: beta_5 - GammaPort (OmegaU^2 lambdaW + lambdaR lambdaU)^2/Delta0^2
+extracted beta_5 - expected beta_5 = 0
+PASS: extracted beta_5 - expected beta_5
+kappa(theta)^2 = (4*(11 + 7*Cos[2*theta] - 6*Sqrt[2]*Sin[2*theta]))/(9*Pi^2)
+kappa_sel^2 = (88 + (8*(968*alphaLoad + 63*DeltaKax*Pi^2))/Sqrt[7744*alphaLoad^2 + 1008*alphaLoad*DeltaKax*Pi^2 + 81*DeltaKax^2*Pi^4])/(18*Pi^2)
+weak-loading kappa_sel^2 - kappa0^2 = 0
+PASS: weak-loading kappa_sel^2 - kappa0^2
+strong-loading kappa_sel^2 - sigma = 0
+PASS: strong-loading kappa_sel^2 - sigma
+delta D_-^(odd)(omega) template = ((-1/18*I)*GammaPort*omega^5*(lambdaR*lambdaU + lambdaW*OmegaU^2)^2*(88 + (8*(968*alphaLoad + 63*DeltaKax*Pi^2))/Sqrt[7744*alphaLoad^2 + 1008*alphaLoad*DeltaKax*Pi^2 + 81*DeltaKax^2*Pi^4]))/((-88*lambdaR^2)/(9*Pi) + OmegaU^2*OmegaW^2*Pi)^2
+
+Stage 012 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,36 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage133_full_profile_residual_mathematica_audit.wl
+# Date: 2026-04-03T23:23:34-06:00
+# Elapsed: 10s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+FULL-PROFILE FAMILY-1 MOUTH RESIDUAL
+========================================================================================
+S_q(Pi) = (2*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
+T_s(0) = 0
+PASS: T_s(0)
+T_q(0) = 0
+PASS: T_q(0)
+T_s'(0)-1 = 0
+PASS: T_s'(0)-1
+T_q'(0)-S_q = 0
+PASS: T_q'(0)-S_q
+R(0) = 0
+PASS: R(0)
+R'(0) = 0
+PASS: R'(0)
+R''(0) = (-3*E^p*p*sigmaM)/(-1 + E^p)
+R''(0) - target = 0
+PASS: R''(0) - target
+
+Theorem:
+  R(0)=0, R'(0)=0, and R''(0) = -3 Sigma Pi/(1-exp(-Pi)) < 0.
+  So the full compensated mouth potential is tangent-matched but sublinear at the mouth.
+
+Stage 133 Mathematica audit passed.
+
+EXIT_CODE: 0

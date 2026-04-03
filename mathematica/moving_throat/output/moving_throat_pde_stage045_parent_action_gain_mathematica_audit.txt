@@ -1,0 +1,34 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage045_parent_action_gain_mathematica_audit.wl
+# Date: 2026-04-03T16:11:29-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 045 — PARENT ACTION GAIN
+========================================================================================
+U(rho) = (capitalK*rho^5)/4
+h(rho) = (5*capitalK*rho^4)/4
+h'(rho) = 5*capitalK*rho^3
+c_s^2(rho) = (5*capitalK*rho^4)/m
+h'(rho) - m c_s^2 / rho = 0
+PASS: h'(rho) - m c_s^2 / rho
+Theta_sigma = (csStarSq*m*nSS)/rhoStar
+Lambda_phi = gPhi*oSP
+chi_sigma^(eff) = rhoStar/(csStarSq*m*nSS)
+G_micro = (gPhi^2*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
+G_micro - expected parent formula = 0
+PASS: G_micro - expected parent formula
+C_(sigma phi)^2 definition = oSP^2/(nPP*nSS)
+coherence-factor decomposition = 0
+PASS: coherence-factor decomposition
+Xi_micro = (gPhi^2*kappa*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
+Xi_micro - parent projected formula = 0
+PASS: Xi_micro - parent projected formula
+
+Stage 045 Mathematica audit passed.
+
+EXIT_CODE: 0

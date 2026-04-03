@@ -1,0 +1,25 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage110_penetration_families_mathematica_audit.wl
+# Date: 2026-04-03T17:13:05-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES
+========================================================================================
+g_slab(x) = (2*Sin[(Pi*x)/2])/(Pi*x)
+g_exp(x) = (2*(2*E^x^(-1) + Pi*x))/((-1 + E^x^(-1))*(4 + Pi^2*x^2))
+g_-^F1 = 0.7580350789446628269196808904141104577505296234775693214353`30.
+x_*^slab = 0.7978393609045644050849088127997294178960101895890027174113`30.
+x_*^exp  = 0.6627654026231614025125887501352902661785511376116529147062`30.
+slab compensation root residual = 1.16882742585378873655042409453696839846`21.805699803526704*^-58
+PASS: slab compensation root
+exponential compensation root residual = -3.24825251379346805149450640626666467835`21.900281148171647*^-58
+PASS: exponential compensation root
+
+Stage 110 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,63 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage154_microscopic_grouped_obstructions_mathematica_audit.wl
+# Date: 2026-04-03T23:45:42-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
+========================================================================================
+K_A split = 0
+PASS: K_A split
+G_A split = 0
+PASS: G_A split
+delta B0 formula = 0
+PASS: delta B0 formula
+delta B2 formula = 0
+PASS: delta B2 formula
+BdG obstruction bundle = 0
+PASS: BdG obstruction bundle
+delta Delta formula = 0
+PASS: delta Delta formula
+delta S formula = 0
+PASS: delta S formula
+delta G formula = 0
+PASS: delta G formula
+delta P formula = 0
+PASS: delta P formula
+delta Q formula = 0
+PASS: delta Q formula
+delta Z0 formula = 0
+PASS: delta Z0 formula
+delta Z2 formula = 0
+PASS: delta Z2 formula
+delta N0 formula = 0
+PASS: delta N0 formula
+Z obstruction bundle = 0
+PASS: Z obstruction bundle
+N obstruction bundle = 0
+PASS: N obstruction bundle
+weak-axisymmetric K obstruction lambda=1 = 0
+PASS: weak-axisymmetric K obstruction lambda=1
+weak-axisymmetric G obstruction lambda=1 = 0
+PASS: weak-axisymmetric G obstruction lambda=1
+weak-axisymmetric K obstruction lambda=1/2 = 0
+PASS: weak-axisymmetric K obstruction lambda=1/2
+weak-axisymmetric G obstruction lambda=1/2 = 0
+PASS: weak-axisymmetric G obstruction lambda=1/2
+weak-axisymmetric K obstruction lambda=-1 = 0
+PASS: weak-axisymmetric K obstruction lambda=-1
+weak-axisymmetric G obstruction lambda=-1 = 0
+PASS: weak-axisymmetric G obstruction lambda=-1
+
+Carry-forward formulas:
+  K_A = (1/9 delta K_A - delta M_A) - (delta B_A2 + 1/9 delta B_A0) - (delta Z_A2 + 1/9 delta Z_A0)
+  G_A = -P0 delta K_A + P0 delta B_A0 + (delta N_A0 + P0 delta Z_A0)
+  The weak grouped branch collapses to the scalar pair (K_1, G_1).
+
+Stage 154 Mathematica audit passed.
+
+EXIT_CODE: 0

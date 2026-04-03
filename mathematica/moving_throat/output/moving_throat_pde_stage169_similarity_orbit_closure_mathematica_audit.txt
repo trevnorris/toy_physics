@@ -1,0 +1,65 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage169_similarity_orbit_closure_mathematica_audit.wl
+# Date: 2026-04-04T00:00:41-06:00
+# Elapsed: 15s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 169 — EXACT MICROSCOPIC SIMILARITY ORBIT
+========================================================================================
+delta log C_tr = c1 + c1*delta + gam1 + delta*gam1 - 2*kU - chi*kU - delta*kU + tau1 + chi*tau1
+delta log C_nt = 2*eParam*gam1 - kEta - eParam*kU + fParam*kU - 2*kW - eParam*kW + 2*lam1 + 2*eParam*lam1 + mu1 - fParam*tau1
+delta log eps_eta = 2*c1 - kEta - kU
+
+M_* = MatrixForm[{{0, 1 + delta, 1 + delta, -2 - chi - delta, 0, 0, 0, 1 + chi}, {2 + 2*eParam, 0, 2*eParam, -eParam + fParam, -1, -2 - eParam, 1, -fParam}, {0, 2, 0, -1, -1, 0, 0, 0}}]
+
+minor det(tau1,kEta,mu1) = 1 + chi
+
+========================================================================================
+Linear compatibility solve
+========================================================================================
+tau1 = (-((1 + delta)*(c1 + gam1)) + (2 + chi + delta)*kU)/(1 + chi)
+kEta = 2*c1 - kU
+mu1  = c1*(2 - ((1 + delta)*fParam)/(1 + chi)) - kU + ((1 + delta)*fParam*(-gam1 + kU))/(1 + chi) + 2*kW + eParam*(-2*gam1 + kU + kW - 2*lam1) - 2*lam1
+tau1 - [kU - ((1+delta)/(1+chi)) (gam1+c1-kU)] = 0
+PASS: tau1 - [kU - ((1+delta)/(1+chi)) (gam1+c1-kU)]
+kEta - (2 c1 - kU) = 0
+PASS: kEta - (2 c1 - kU)
+mu1 - Stage-168 form = 0
+PASS: mu1 - Stage-168 form
+
+========================================================================================
+Finite five-parameter similarity orbit
+========================================================================================
+K_eta exponent = 2*cSym - uSym
+T_U exponent   = -(((1 + delta)*(cSym + gamSym - uSym))/(1 + chi)) + uSym
+mu_W exponent  = 2*cSym - 2*lamSym - ((1 + delta)*fParam*(cSym + gamSym - uSym))/(1 + chi) - uSym + 2*wSym + eParam*(-2*gamSym - 2*lamSym + uSym + wSym)
+finite orbit preserves C_tr = 0
+PASS: finite orbit preserves C_tr
+finite orbit preserves C_nt = 0
+PASS: finite orbit preserves C_nt
+finite orbit preserves eps_eta = 0
+PASS: finite orbit preserves eps_eta
+
+========================================================================================
+Linearization reproduces compatibility ledger
+========================================================================================
+linearized tau formula = 0
+PASS: linearized tau formula
+linearized kEta formula = 0
+PASS: linearized kEta formula
+linearized mu formula = 0
+PASS: linearized mu formula
+
+Conclusion:
+  The three Stage-168 compatibility equations are exactly the tangent-space
+  equations of a finite five-parameter multiplicative similarity orbit.
+  The coherent weak-axisymmetric zero-defect branch is therefore codimension 3,
+  not an isolated fine-tuning point.
+
+Stage 169 Mathematica audit passed.
+
+EXIT_CODE: 0

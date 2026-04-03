@@ -1,0 +1,99 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage020_continuum_kernel_mathematica_audit.wl
+# Date: 2026-04-04T00:26:27-06:00
+# Elapsed: 8s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 020 — CONTINUUM-KERNEL EXTRACTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Exact N/N and D/N modes
+----------------------------------------------------------------------------------------
+u0 normalization - 1 = 0
+PASS: u0 normalization - 1
+u1 normalization - 1 = 0
+PASS: u1 normalization - 1
+f0 normalization - 1 = 0
+PASS: f0 normalization - 1
+u0-u1 orthogonality = 0
+PASS: u0-u1 orthogonality
+u0 N/N boundary slope @0 = 0
+PASS: u0 N/N boundary slope @0
+u1 N/N boundary slope @0 = 0
+PASS: u1 N/N boundary slope @0
+u1 N/N boundary slope @ell = 0
+PASS: u1 N/N boundary slope @ell
+f0 D/N boundary value @0 = 0
+PASS: f0 D/N boundary value @0
+f0 D/N boundary slope @ell = 0
+PASS: f0 D/N boundary slope @ell
+kappa0 = (2*Sqrt[2])/Pi
+kappa1 = -4/(3*Pi)
+sigma = 88/(9*Pi^2)
+kappa0 - 2 Sqrt[2]/Pi = 0
+PASS: kappa0 - 2 Sqrt[2]/Pi
+kappa1 + 4/(3 Pi) = 0
+PASS: kappa1 + 4/(3 Pi)
+sigma - 88/(9 Pi^2) = 0
+PASS: sigma - 88/(9 Pi^2)
+
+----------------------------------------------------------------------------------------
+2. Mass-normalized projected kernels
+----------------------------------------------------------------------------------------
+K0 = (kEta + 6*tOmega)/muEta
+DeltaK_ax = (Pi^2*tw)/(ell^2*muEta)
+varpi^2 = (kPhi + (Pi^2*tPhi)/(4*ell^2))/muPhi
+Omega_U^2 = kU/muU
+Omega_W^2 = (kW + (Pi^2*tW)/(4*ell^2))/muW
+
+----------------------------------------------------------------------------------------
+3. Schur-complement factorization
+----------------------------------------------------------------------------------------
+Sigma_wall - (Xi I + alpha v v^T) = {{0, 0}, {0, 0}}
+PASS: Sigma_wall - (Xi I + alpha v v^T)
+
+----------------------------------------------------------------------------------------
+4. Continuum extraction of A, alpha_mix, beta0, M_mix, delta
+----------------------------------------------------------------------------------------
+A continuum formula = 0
+PASS: A continuum formula
+Delta0 continuum formula = 0
+PASS: Delta0 continuum formula
+Chi continuum formula = 0
+PASS: Chi continuum formula
+beta0 continuum formula = 0
+PASS: beta0 continuum formula
+alpha_mix continuum formula = 0
+PASS: alpha_mix continuum formula
+M_mix continuum formula = 0
+PASS: M_mix continuum formula
+delta continuum formula = 0
+PASS: delta continuum formula
+A = (-cEtaU^2 + kU*(kEta + 6*tOmega))/(kU*muEta)
+Delta0 = ((-88*cUW^2)/(9*Pi^2) + kU*(kW + (Pi^2*tW)/(4*ell^2)))/(muU*muW)
+Chi = (cEtaU*cUW + cEtaW*kU)/(muU*Sqrt[muEta*muW])
+beta0 = ((cEtaU*cUW + cEtaW*kU)^2*muW)/(muEta*((-88*cUW^2)/(9*Pi^2) + kU*(kW + (Pi^2*tW)/(4*ell^2)))^2)
+alpha_mix = (cEtaU*cUW + cEtaW*kU)^2/(kU*muEta*((-88*cUW^2)/(9*Pi^2) + kU*(kW + (Pi^2*tW)/(4*ell^2))))
+M_mix = (-288*ell^2*(cEtaU*cUW + cEtaW*kU)^2)/((cEtaU^2 - kU*(kEta + 6*tOmega))*(4*ell^2*(-88*cUW^2 + 9*kU*kW*Pi^2) + 9*kU*Pi^4*tW))
+delta = (kU*Pi^2*tw)/(ell^2*(-cEtaU^2 + kU*(kEta + 6*tOmega)))
+
+----------------------------------------------------------------------------------------
+5. Exact continuum stability surfaces
+----------------------------------------------------------------------------------------
+A - [K_U K_eta^(eff) - c_(etaU)^2]/(mu_eta K_U) = 0
+PASS: A - [K_U K_eta^(eff) - c_(etaU)^2]/(mu_eta K_U)
+Delta0 - [K_U K_W^(eff) - c_(UW)^2 sigma]/(mu_U mu_W) = 0
+PASS: Delta0 - [K_U K_W^(eff) - c_(UW)^2 sigma]/(mu_U mu_W)
+Stable selected branch requires:
+  K_U K_eta^(eff) > c_(etaU)^2
+  K_U K_W^(eff)   > c_(UW)^2 sigma
+  sigma = 88/(9*Pi^2)
+
+Stage 020 Mathematica audit passed.
+
+EXIT_CODE: 0

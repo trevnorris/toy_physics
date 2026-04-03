@@ -1,0 +1,65 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage156_axisymmetric_loading_mismatch_mathematica_audit.wl
+# Date: 2026-04-03T23:46:26-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 156 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT
+========================================================================================
+u2^(1) general = (d01*d2 - d0*d21)/d0^2
+u4^(1) general = (-2*d01*d2^2 + 2*d0*d2*d21 + d0*d01*d4 - d0^2*d41)/d0^3
+P1 general     = (-(d01*n0) + d0*n01)/d0^2
+u2 slope identity = 0
+PASS: u2 slope identity
+
+========================================================================================
+Canonical branch formulas
+========================================================================================
+u2^(1) canonical = -1/9*(d01 + 9*d21)/d0
+u4^(1) canonical = -1/81*(5*d01 + 18*d21 + 81*d41)/d0
+P1/P0            = -(d01/d0) + n01/n0
+u4 canonical formula = 0
+PASS: u4 canonical formula
+P1/P0 formula = 0
+PASS: P1/P0 formula
+
+========================================================================================
+Hidden-even operator identity
+========================================================================================
+hidden-even residual = 0
+PASS: hidden-even residual
+D41 from hidden-even relation = (d01 + 18*d21)/27
+
+========================================================================================
+Even-preserving collapse
+========================================================================================
+D21 from u2^(1)=0 = -1/9*d01
+D41 on even-preserving branch = -1/27*d01
+D21 + D01/9 = 0
+PASS: D21 + D01/9
+D41 + D01/27 = 0
+PASS: D41 + D01/27
+
+========================================================================================
+Single static loading mismatch
+========================================================================================
+Xi_load = -(d01/d0) + n01/n0
+Delta_Q^(20)/eps = -(d01/d0) + n01/n0
+Delta_Q^(21)/eps = (-(d01/d0) + n01/n0)/2
+Delta_Q^(22)/eps = d01/d0 - n01/n0
+
+Carry-forward formulas:
+  u2^(1) = -(D21 + u2 D01)/D0
+  u4^(1) = -(5 D01 + 18 D21 + 81 D41)/(81 D0) on the canonical branch
+  P1/P0  = N01/N0 - D01/D0
+  hidden-even  <=>  D41 = 2 D21/3 + D01/27
+  if u2^(1)=0, then D21 = -D01/9 and D41 = -D01/27
+  remaining defect Xi_load = N01/N0 - D01/D0
+
+Stage 156 Mathematica audit passed.
+
+EXIT_CODE: 0

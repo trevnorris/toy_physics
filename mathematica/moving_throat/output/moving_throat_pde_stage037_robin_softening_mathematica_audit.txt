@@ -1,0 +1,45 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage037_robin_softening_mathematica_audit.wl
+# Date: 2026-04-04T00:39:33-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 037 — ROBIN-COMPLIANCE SOFTENING
+========================================================================================
+B from Neumann bottom = a*Tan[ell*k]
+Robin characteristic equation factor = (-(a*h) + a*k*Tan[ell*k])/a
+Robin equation -> k tan(kL) - h = 0
+PASS: Robin equation -> k tan(kL) - h
+dimensionless form = 0
+PASS: dimensionless form
+K_W^(eff) = kX + (Pi^2*tX)/(4*ell^2)
+K_phi,0^(eff) = kX + (tX*y^2)/ell^2
+A_K = (4*ell^2*kX + Pi^2*tX)/(4*ell^2*kX + 4*tX*y^2)
+K_W identity = 0
+PASS: K_W identity
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+A_K in x,y form = kWBar/(kWBar + kWBar*x*(-1/4 + y^2/Pi^2))
+A_K(y=Pi/2) = 1
+A_K(y->0+) = -4/(-4 + x)
+A_K x-form = 0
+PASS: A_K x-form
+DN limit = 0
+PASS: DN limit
+soft-mouth limit = 0
+PASS: soft-mouth limit
+Condition A_K >= zeta_req implies y^2 <= (Pi^2*(-1 + x/4 + zetaReq^(-1)))/x
+A_K,max = -4/(-4 + x)
+x floor at saturation = 4 - 4/zetaReq
+x floor = 4 - 4/zeta_req = 0
+PASS: x floor = 4 - 4/zeta_req
+A_K,max(x_floor) - zeta_req = 0
+PASS: A_K,max(x_floor) - zeta_req
+
+Stage 037 Mathematica audit passed.
+
+EXIT_CODE: 0

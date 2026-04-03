@@ -1,0 +1,121 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage010_nonconstant_axial_family_mathematica_audit.wl
+# Date: 2026-04-04T00:19:53-06:00
+# Elapsed: 24s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION V — NORMALIZATION EQUATION AND BLIND-ANGLE NO-GO
+========================================================================================
+
+========================================================================================
+SECTION IV — PROFILE-DRESSED STAGE-8/9 BRANCH
+========================================================================================
+
+========================================================================================
+SECTION III — EXACT WALL STIFFNESS EXPECTATION
+========================================================================================
+
+========================================================================================
+SECTION II — EXACT OVERLAP LAW
+========================================================================================
+
+========================================================================================
+SECTION I — EXACT FINITE-THROAT N/N AND D/N BASIS
+========================================================================================
+u0(s)  = 1/Sqrt[l]
+u1(s)  = Sqrt[2]*Sqrt[l^(-1)]*Cos[(Pi*s)/l]
+f0(s)  = Sqrt[2]*Sqrt[l^(-1)]*Sin[(Pi*s)/(2*l)]
+chi(s) = Cos[theta]/Sqrt[l] + Sqrt[2]*Sqrt[l^(-1)]*Cos[(Pi*s)/l]*Sin[theta]
+int u0^2 - 1 = 0
+PASS: int u0^2 - 1
+int u1^2 - 1 = 0
+PASS: int u1^2 - 1
+int u0*u1 = 0
+PASS: int u0*u1
+int f0^2 - 1 = 0
+PASS: int f0^2 - 1
+
+----------------------------------------------------------------------------------------
+II.1 — Base overlap constants
+----------------------------------------------------------------------------------------
+kappa0 = (2*Sqrt[2])/Pi
+kappa1 = -4/(3*Pi)
+kappa(theta) = (6*Sqrt[2]*Cos[theta] - 4*Sin[theta])/(3*Pi)
+rho = (2*Sqrt[22])/(3*Pi)
+kappa0 - 2*sqrt(2)/pi = 0
+PASS: kappa0 - 2*sqrt(2)/pi
+kappa1 + 4/(3*pi) = 0
+PASS: kappa1 + 4/(3*pi)
+kappa(theta) - [kappa0 cos(theta) + kappa1 sin(theta)] = 0
+PASS: kappa(theta) - [kappa0 cos(theta) + kappa1 sin(theta)]
+rho - 2*sqrt(22)/(3*pi) = 0
+PASS: rho - 2*sqrt(22)/(3*pi)
+
+----------------------------------------------------------------------------------------
+II.2 — Blind angle and max-coupling branch
+----------------------------------------------------------------------------------------
+kappa(blind) = 0
+kappa(max)   = (2*Sqrt[22])/(3*Pi)
+sin^2(theta_max) = 2/11
+kappa(blind) = 0
+PASS: kappa(blind)
+kappa(max) - rho = 0
+PASS: kappa(max) - rho
+sin^2(theta_max) - 2/11 = 0
+PASS: sin^2(theta_max) - 2/11
+K_geo(theta) = kEta + 6*tOmega + (Pi^2*tW*Sin[theta]^2)/l^2
+K_geo - expected = 0
+PASS: K_geo - expected
+K_geo(theta_max) = kEta + 6*tOmega + (2*Pi^2*tW)/(11*l^2)
+K_geo(theta_max) - [K_eta + 6 T_Omega + 2 T_w pi^2/(11 L^2)] = 0
+PASS: K_geo(theta_max) - [K_eta + 6 T_Omega + 2 T_w pi^2/(11 L^2)]
+
+----------------------------------------------------------------------------------------
+IV.1 — Reduced branch quantities
+----------------------------------------------------------------------------------------
+C     = (lambdaB*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi)
+G_U   = lambdaU
+G_W   = (lambdaW*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi)
+R     = (lambdaR*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi)
+Delta = omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2)
+Q     = lambdaU^2*omegaW^2 + (2*lambdaR*lambdaU*lambdaW*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2) + (lambdaW^2*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2)
+P     = (lambdaR*lambdaU*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi) + (lambdaW*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi)
+B0    = (lambdaB^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2*varpi^2)
+Z0    = (lambdaU^2*omegaW^2 + (2*lambdaR*lambdaU*lambdaW*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2) + (lambdaW^2*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))/(omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))
+N0    = ((lambdaR*lambdaU*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi) + (lambdaW*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi))^2/(omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))^2
+D0    = kEta + 6*tOmega - (lambdaU^2*omegaW^2 + (2*lambdaR*lambdaU*lambdaW*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2) + (lambdaW^2*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))/(omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2)) - (lambdaB^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2*varpi^2) + (Pi^2*tW*Sin[theta]^2)/l^2
+Delta - expected = 0
+PASS: Delta - expected
+Q - expected = 0
+PASS: Q - expected
+P - expected = 0
+PASS: P - expected
+B0 - expected = 0
+PASS: B0 - expected
+
+----------------------------------------------------------------------------------------
+IV.2 — Exact recovery of Stage 9 at theta = 0
+----------------------------------------------------------------------------------------
+kappa(theta=0) - kappa0 = 0
+PASS: kappa(theta=0) - kappa0
+K_geo(theta=0) - (K_eta + 6 T_Omega) = 0
+PASS: K_geo(theta=0) - (K_eta + 6 T_Omega)
+Delta(theta=0) - [Omega_U^2 Omega_W^2 - lambda_R^2 kappa0^2] = 0
+PASS: Delta(theta=0) - [Omega_U^2 Omega_W^2 - lambda_R^2 kappa0^2]
+K_req(theta) = (5*a^5*cSpeed^5*mhat^2*((lambdaR*lambdaU*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi) + (lambdaW*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta]))/(3*Pi))^2)/(54*cs^5*gConst*(omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))^2) + (lambdaU^2*omegaW^2 + (2*lambdaR*lambdaU*lambdaW*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2) + (lambdaW^2*omegaU^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2))/(omegaU^2*omegaW^2 - (lambdaR^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2)) + (lambdaB^2*(6*Sqrt[2]*Cos[theta] - 4*Sin[theta])^2)/(9*Pi^2*varpi^2)
+
+----------------------------------------------------------------------------------------
+V.1 — Blind-angle no-go
+----------------------------------------------------------------------------------------
+P(theta_blind) = 0
+PASS: P(theta_blind)
+N0(theta_blind) = 0
+PASS: N0(theta_blind)
+
+Stage 10 Mathematica audit passed.
+
+EXIT_CODE: 0

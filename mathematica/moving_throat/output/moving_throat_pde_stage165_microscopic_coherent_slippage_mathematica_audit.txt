@@ -1,0 +1,88 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage165_microscopic_coherent_slippage_mathematica_audit.wl
+# Date: 2026-04-03T23:56:30-06:00
+# Elapsed: 41s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 165 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION
+========================================================================================
+
+========================================================================================
+Physical branch drifts from microscopic logs
+========================================================================================
+zeta_Z formula = 0
+PASS: zeta_Z formula
+omega_W formula = 0
+PASS: omega_W formula
+chi_1 formula = 0
+PASS: chi_1 formula
+eta_1 formula = 0
+PASS: eta_1 formula
+varepsilon_W formula = 0
+PASS: varepsilon_W formula
+delta_U,1 formula = 0
+PASS: delta_U,1 formula
+
+========================================================================================
+Four-slippage grouped-defect law
+========================================================================================
+Xi_1 direct - slippage form = 0
+PASS: Xi_1 direct - slippage form
+Xi_1 = (2*chi0*sigmaChi)/(1 + chi0) + (4*deltaU*epsW*sigmaDel - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + sigmaZ
+
+========================================================================================
+Selected-branch demand slippage
+========================================================================================
+R_1 direct - slippage form = 0
+PASS: R_1 direct - slippage form
+R_1 = (-2*chi0*sigmaChi)/(1 + chi0) + (-4*deltaU*epsW*sigmaDel + 2*(1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + (epsEta*sigmaEta)/(-1 + epsEta) - sigmaZ
+
+========================================================================================
+Tracking-factor factorization
+========================================================================================
+Theta_1 factorization = 0
+PASS: Theta_1 factorization
+Sigma_tr = sigmaChi + deltaU*sigmaChi + sigmaDel + chi0*sigmaDel
+Theta_1 = -((chi0*deltaU*sigmaTr)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)))
+
+========================================================================================
+Tracking/nontracking split of Xi_1
+========================================================================================
+Xi_1 split - slippage form = 0
+PASS: Xi_1 split - slippage form
+Xi_1 split = (2*((2*deltaU*epsW*sigmaDel - (1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW) + chi0*(-sigmaDel + sigmaTr/(1 + chi0))))/(1 + deltaU) + sigmaZ
+
+========================================================================================
+Support-blindness at the microscopic level
+========================================================================================
+free symbols of Xi_1: {"{{2, chi0, sigmaChi}, {2, sigmaChi}}", "     4                                4                              1\n{{{-(--), deltaU, epsW, sigmaDel}, {-(--), epsW, sigmaDel}}, {{-2, ------, sigmaEps}, {-2, sigmaEps}}}\n     11                               11                           deltaU", "sigmaZ"}
+dXi_1/dlamphi1 = 0
+PASS: dXi_1/dlamphi1
+dXi_1/dkphi = 0
+PASS: dXi_1/dkphi
+dR_1/dlamphi1 = 0
+PASS: dR_1/dlamphi1
+dR_1/dkphi = 0
+PASS: dR_1/dkphi
+dTheta_1/dlamphi1 = 0
+PASS: dTheta_1/dlamphi1
+dTheta_1/dkphi = 0
+PASS: dTheta_1/dkphi
+
+Carry-forward formulas:
+  Sigma_Z   = 2 lam_1 + mu_1 - kappa_eta - 2 kappa_W
+  Sigma_chi = gamma_1 + c_1 - kappa_U
+  Sigma_eta = 2 c_1 - kappa_U - kappa_eta
+  Sigma_eps = 2 gamma_1 + 2 lam_1 - kappa_U - kappa_W
+  Sigma_del = tau_1 - kappa_U
+  Xi_1 depends only on (Sigma_Z, Sigma_chi, Sigma_eps, Sigma_del)
+  R_1 adds only Sigma_eta
+  Theta_1 is carried by Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi
+
+Stage 165 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,29 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage117_family1_mouth_fixedpoint_mathematica_audit.wl
+# Date: 2026-04-03T15:15:52-06:00
+# Elapsed: 24s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 117 — FAMILY-1 FIXED-POINT REDUCTION
+========================================================================================
+S_shell = 1
+static shell channel = 0
+PASS: static shell channel
+S_q(p) = (2*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
+specialized D/N kernel = 0
+PASS: specialized D/N kernel
+Fixed-point law p = Ms + (2*Mq*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
+S_q(Pi_star) = 0.65807593760542948674050367268182940317`28.269941337792933
+Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q
+1.508829513493159968362533618346787989139556884765625`30. - 0.65807593760542948674050367268182940317`28.269941337792933*Mq
+
+RESULT:
+  Family-1 reduces the coupled mouth law to p = Ms + Mq S_q(p).
+  The static shell lane gives S_shell = 1 exactly.
+  Evaluated at Pi_star, the canonical compensation line matches the Stage 117 note.
+
+EXIT_CODE: 0

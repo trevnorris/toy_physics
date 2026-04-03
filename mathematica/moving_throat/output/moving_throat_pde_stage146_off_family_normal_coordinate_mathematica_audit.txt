@@ -1,0 +1,50 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage146_off_family_normal_coordinate_mathematica_audit.wl
+# Date: 2026-04-03T23:34:24-06:00
+# Elapsed: 10s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 146 — OFF-FAMILY NORMAL COORDINATE
+========================================================================================
+delta F - 4 s delta_perp = 0
+PASS: delta F - 4 s delta_perp
+delta R + delta_perp/s = 0
+PASS: delta R + delta_perp/s
+g_-'(r) = 1 - r/(2*Sqrt[1 + r^2])
+microscopic delta_perp identity = 0
+PASS: microscopic delta_perp identity
+delta_perp microscopic form = (dlnKq + dlnKs - 2*dlnLam)/(4*Sqrt[1 + r^2]) + (dlnGq - dlnGs + dlnKs - dlnLam)*(r - Sqrt[1 + r^2]/2)
+delta C = (16*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2]
+delta E2 = (-9*dkapW*sigmaStar + (16*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2])/(27*(1 - sigmaStar))
+delta E4 = (-72*dkapW*sigmaStar + (80*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2])/(243*(1 - sigmaStar))
+Delta_Q = (-27*dgamW*sigmaStar + (16*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2])/(3*(1 - sigmaStar))
+delta C - 4 sigma_star deltaF/(1+r^2) = 0
+PASS: delta C - 4 sigma_star deltaF/(1+r^2)
+delta Pi tangent/normal split = 0
+PASS: delta Pi tangent/normal split
+delta Pi = dSigma0 - (dS*sigma0)/4 - (dSigma0*sStar)/4 + (dg/Sqrt[1 + r^2] - dr/Sqrt[1 + r^2] + (dr*r)/(2 + 2*r^2))*sigma0*sStar
+
+========================================================================================
+Family-1 numerical coefficients
+========================================================================================
+4 sqrt(1+r_*^2) = 8.15966765224252913333073120835023049913`20.
+-1/sqrt(1+r_*^2) = -0.49021604438762603754266850824349743585`20.
+g_* = 0.7580350789446630432877327621099539101123809814453125`30.
+1/(4 sqrt(1+r_*^2)) = 0.12255401109690650938566712706087435896`20.
+Sigma0_can S_can / sqrt(1+r_*^2) = 1.52843317823248362127665487307121799914`20.
+16 / sqrt(1+r_*^2) = 7.84345671020201660068269613189595897357`20.
+
+Carry-forward formulas:
+  delta_perp = delta g - g_-'(r_*) delta r
+  delta F = 4 sqrt(1+r_*^2) delta_perp
+  delta R_q = -delta_perp/sqrt(1+r_*^2)
+  delta_perp = g_* dln[(g_q K_s)/(g_s lam)] + [4 sqrt(1+r_*^2)]^{-1} dln[(K_s K_q)/lam^2]
+  delta C, delta E2, delta E4, Delta_Q are all linear in delta_perp
+
+Stage 146 Mathematica audit passed.
+
+EXIT_CODE: 0

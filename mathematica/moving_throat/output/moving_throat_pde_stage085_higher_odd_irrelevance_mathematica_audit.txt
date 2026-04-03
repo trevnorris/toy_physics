@@ -1,0 +1,26 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage085_higher_odd_irrelevance_mathematica_audit.wl
+# Date: 2026-04-03T16:57:12-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 085 — HIGHER ODD IRRELEVANCE
+========================================================================================
+series through O(omega^5) = 1 + (((9*I)/32)*chiQ*omega^5)/omegaQ^5 + omega^4/(4*omegaQ^4) + omega^2/(4*omegaQ^2)
+series through O(omega^7) = 1 + (((9*I)/16)*chiQ*omega^7)/omegaQ^7 + omega^6/(4*omegaQ^6) + (((9*I)/32)*chiQ*omega^5)/omegaQ^5 + omega^4/(4*omegaQ^4) + omega^2/(4*omegaQ^2) + (I/4)*omega^7*tauQ
+tauQ coefficient in omega^5 term = 0
+tauQ coefficient in omega^7 term = 1/4
+tauQ irrelevance at omega^5 = 0
+PASS: tauQ irrelevance at omega^5
+tauQ coefficient at omega^7 - 1/4 = 0
+PASS: tauQ coefficient at omega^7 - 1/4
+check canonical odd coefficient = 0
+PASS: check canonical odd coefficient
+
+Stage 085 Mathematica audit passed.
+
+EXIT_CODE: 0

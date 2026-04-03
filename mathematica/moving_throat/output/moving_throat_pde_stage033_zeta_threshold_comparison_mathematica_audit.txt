@@ -1,0 +1,38 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage033_zeta_threshold_comparison_mathematica_audit.wl
+# Date: 2026-04-04T00:36:13-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 033 — PHYSICAL ZETA VS ZETA_REQ
+========================================================================================
+zeta_req = (-1 + sReq)/(1 + eps*(-2 + sReq))
+S(zeta;eps) = 1 + ((-1 + eps)*zeta)/(-1 + eps*zeta)
+S(1;eps) - 2 = 0
+PASS: S(1;eps) - 2
+zeta_req - 1 = -1 + (-1 + sReq)/(1 + eps*(-2 + sReq))
+zeta_req - 1 - (1-eps)(S_req-2)/(1+eps(S_req-2)) = 0
+PASS: zeta_req - 1 - (1-eps)(S_req-2)/(1+eps(S_req-2))
+zeta_n^(twin) = 1/((1 + 2*n)^2*(1 + n*(1 + n)*x))
+x_max(n;zeta_req) = (-1 + (1 + eps*(-2 + sReq))/((1 + 2*n)^2*(-1 + sReq)))/(n*(1 + n))
+zeta_n^(twin)(x_max) - zeta_req = 0
+PASS: zeta_n^(twin)(x_max) - zeta_req
+x_max - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)] = 0
+PASS: x_max - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)]
+(2n+1)^2 zeta_n^(twin) = (1 + n*(1 + n)*x)^(-1)
+suppression factor - 1/(1+x n(n+1)) = 0
+PASS: suppression factor - 1/(1+x n(n+1))
+S_n^(twin) = 1 + (-1 + eps)/(eps - (1 + 2*n)^2*(1 + n*(1 + n)*x))
+S_n^(max) = 1 + (-1 + eps)/(eps - (1 + 2*n)^2)
+S_n^(twin)(x=0) - S_n^(max) = 0
+PASS: S_n^(twin)(x=0) - S_n^(max)
+S_1^(max) = 1 + (-1 + eps)/(-9 + eps)
+S_2^(max) = 1 + (-1 + eps)/(-25 + eps)
+
+Stage 033 Mathematica audit passed.
+
+EXIT_CODE: 0

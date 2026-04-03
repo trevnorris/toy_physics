@@ -1,0 +1,78 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage007_overlap_isotropy_mathematica_audit.wl
+# Date: 2026-04-03T15:34:30-06:00
+# Elapsed: 56s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 007 — OVERLAP ISOTROPY
+========================================================================================
+
+========================================================================================
+SECTION I — NORMALIZED HARMONICS AND SOURCE MAP
+========================================================================================
+Gram - I5 = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+PASS: Gram - I5
+projected coefficients - source coefficients = {0, 0, 0, 0, 0}
+PASS: projected coefficients - source coefficients
+
+========================================================================================
+SECTION II — ISOTROPIC GROUPED-BUNDLE COLLAPSE
+========================================================================================
+xbar - x0 = 0
+PASS: xbar - x0
+a_x on equal lanes = 0
+PASS: a_x on equal lanes
+b_x on equal lanes = 0
+PASS: b_x on equal lanes
+a_x witness - 1/5 = 0
+PASS: a_x witness - 1/5
+b_x witness = 0
+PASS: b_x witness
+a_x second witness + 1/10 = 0
+PASS: a_x second witness + 1/10
+b_x second witness - 1/2 = 0
+PASS: b_x second witness - 1/2
+
+========================================================================================
+SECTION III — AXISYMMETRIC SPLITTING MATRIX
+========================================================================================
+M - M_target = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+PASS: M - M_target
+xbar axisymmetric - x0 = 0
+PASS: xbar axisymmetric - x0
+a_x - eps*x1/4 = 0
+PASS: a_x - eps*x1/4
+b_x - 3 eps*x1/4 = 0
+PASS: b_x - 3 eps*x1/4
+b_x - 3 a_x = 0
+PASS: b_x - 3 a_x
+
+========================================================================================
+SECTION IV — FIRST-ORDER TRANSPORT LAW
+========================================================================================
+P20 - (P0 + eps P1) = 0
+PASS: P20 - (P0 + eps P1)
+P21 - (P0 + eps P1/2) = 0
+PASS: P21 - (P0 + eps P1/2)
+P22 - (P0 - eps P1) = 0
+PASS: P22 - (P0 - eps P1)
+Pbar - P0 = 0
+PASS: Pbar - P0
+a_P - eps*P1/4 = 0
+PASS: a_P - eps*P1/4
+b_P - 3 eps*P1/4 = 0
+PASS: b_P - 3 eps*P1/4
+b_P - 3 a_P = 0
+PASS: b_P - 3 a_P
+
+FINAL STAGE-007 LEDGER:
+  Verified the normalized real STF harmonic orthonormality, the exact angular
+  source-map identity, the O(3) isotropy collapse, the axisymmetric Y20 triple-
+  overlap matrix, the grouped splitting law b = 3 a, and the corresponding
+  first-order transport law for P_A = N_A / D_A.
+
+EXIT_CODE: 0

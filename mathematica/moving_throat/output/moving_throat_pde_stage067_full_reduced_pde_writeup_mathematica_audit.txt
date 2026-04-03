@@ -1,0 +1,39 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage067_full_reduced_pde_writeup_mathematica_audit.wl
+# Date: 2026-04-03T16:44:38-06:00
+# Elapsed: 24s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 067 — FULL REDUCED MOVING-THROAT PDE WRITE-UP SKELETON
+========================================================================================
+zeta_phys(Pe,eta;kappa) = (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(kappa + Pi^2/4))/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2))
+zeta_req(Pi_tr,C_mix,eps_blk) = -((cMix - piTr)/(cMix - 2*cMix*epsBlk + epsBlk*piTr))
+Q(zeta;eps_blk) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)
+R_quad = -((cMix - piTr)/(cMix - 2*cMix*epsBlk + epsBlk*piTr)) - (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(4*kappa + Pi^2))/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2))
+inverse demand map = 0
+PASS: inverse demand map
+kappa_F1 = 12321/5
+eta_F1 = 37
+Xi_F1 from Upsilon_w = 1369*upsilonW
+Xi_F1 from Theta_w = 136900*thetaW
+Xi_F1(Upsilon) - 1369 Upsilon_w = 0
+PASS: Xi_F1(Upsilon) - 1369 Upsilon_w
+Xi_F1(Theta) - 136900 Theta_w = 0
+PASS: Xi_F1(Theta) - 136900 Theta_w
+zeta_-^(chi) = 2.46622291347846`20.
+zeta_+^(chi) = 2.4675291327387`20.
+zeta_-^(J) = 2.44257571477179`20.
+zeta_+^(J) = 2.46752736855058`20.
+zeta_max^(F1) = 2.46752922945601`20.
+natural-window ordering gap diff = 0``19.30670771549162
+PASS: natural-window ordering gap
+hard-ceiling gap diff = 1.`2.012285407595214*^-15
+PASS: hard-ceiling gap
+
+Stage 067 Mathematica audit passed.
+
+EXIT_CODE: 0

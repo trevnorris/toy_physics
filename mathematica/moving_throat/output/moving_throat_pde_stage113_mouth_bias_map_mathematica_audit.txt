@@ -1,0 +1,32 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage113_mouth_bias_map_mathematica_audit.wl
+# Date: 2026-04-03T17:17:11-06:00
+# Elapsed: 80s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 113 — EXACT MOUTH-BIAS MAP AND FAMILY-1 COMPENSATION POINT
+========================================================================================
+g_Pi = (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2))
+Covariance identity residual = 0
+covariance identity = 0
+PASS: covariance identity
+limit Pi->0+ = 2/Pi
+limit Pi->oo = 1
+uniform-source limit = 0
+PASS: uniform-source limit
+point-source limit = 0
+PASS: point-source limit
+Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
+x_* = 1/Pi_* = 0.6627654026231614025125887501352902661785511376116529146987`30.
+g(Pi_*) = 0.7580350789446628269196808904141104577505296234775693214362`30.
+g'(Pi_*) = 0.071445355808319521189460301988135751110742153928880903667`30.
+Family-1 compensation point residual = 8.92158055695105409424027319355077730156`22.229621263047616*^-58
+PASS: Family-1 compensation point
+
+Stage 113 Mathematica audit passed.
+
+EXIT_CODE: 0

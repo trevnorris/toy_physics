@@ -1,0 +1,32 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage057_family1_healing_lock_mathematica_audit.wl
+# Date: 2026-04-03T16:34:07-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 057 — HEALING-LENGTH LOCK AND SUPPORT SCALE
+========================================================================================
+chi_s (locked) = lambdaEll/2
+kappa(Lambda_ell) = (9*lambdaEll^2)/5
+chi_s - Lambda_ell/2 = 0
+PASS: chi_s - Lambda_ell/2
+kappa - (9/5) Lambda_ell^2 = 0
+PASS: kappa - (9/5) Lambda_ell^2
+Reference branch:
+Lambda_ell = 37
+chi_s = 37/2
+kappa = 12321/5
+alpha = 111/Sqrt[5]
+alpha (numeric) = 49.64070910049533126028365544583433242664`20.
+chi_ref - 37/2 = 0
+PASS: chi_ref - 37/2
+kappa_ref - 12321/5 = 0
+PASS: kappa_ref - 12321/5
+
+Stage 057 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,40 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage068_quadrupole_demand_cancellation_mathematica_audit.wl
+# Date: 2026-04-03T16:45:07-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 068 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS
+========================================================================================
+R_target = (aNorm*nQ*Pi^2)/(8*beta0)
+G_tr = (8*alphaReq)/(aNorm*Pi^2)
+M_mix = (8*alphaMix)/(aNorm*Pi^2)
+Pi_tr = (alphaReq*nQ)/beta0
+C_mix = (alphaMix*nQ)/beta0
+Pi_tr - N_Q alpha_req/beta0 = 0
+PASS: Pi_tr - N_Q alpha_req/beta0
+C_mix - N_Q alpha_mix/beta0 = 0
+PASS: C_mix - N_Q alpha_mix/beta0
+Pi_tr/C_mix - alpha_req/alpha_mix = 0
+PASS: Pi_tr/C_mix - alpha_req/alpha_mix
+N_Q^(target) = (beta0*mhat^2*sMinus)/lamMinus
+Pi_sel = (alphaReq*mhat^2*sMinus)/lamMinus
+C_sel = (alphaMix*mhat^2*sMinus)/lamMinus
+Pi_sel - mhat^2 s_- alpha_req/lambda_- = 0
+PASS: Pi_sel - mhat^2 s_- alpha_req/lambda_-
+C_sel - mhat^2 s_- alpha_mix/lambda_- = 0
+PASS: C_sel - mhat^2 s_- alpha_mix/lambda_-
+zeta_req product form - loading form = 0
+PASS: zeta_req product form - loading form
+zeta_req loading form - rho_alpha form = 0
+PASS: zeta_req loading form - rho_alpha form
+unblocked limit = 0
+PASS: unblocked limit
+
+Stage 068 Mathematica audit passed.
+
+EXIT_CODE: 0

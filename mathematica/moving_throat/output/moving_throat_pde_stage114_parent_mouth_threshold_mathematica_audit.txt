@@ -1,0 +1,22 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage114_parent_mouth_threshold_mathematica_audit.wl
+# Date: 2026-04-03T17:15:15-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 114 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION
+========================================================================================
+Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
+V1_* = (1.5088295134931555830055507559542749287786371931530784314262`30.*thetaSigma)/lM
+g'(Pi_*) = 0.071445355808319521189460301988135751110742153928880903667`30.
+Parent bias mismatch formula = -(a0Prime*qStar) - (piM*thetaSigma)/lM + tM
+Pi_* compensation point residual = 8.92158055695105409424027319355077730156`22.229621263047616*^-58
+PASS: Pi_* compensation point
+
+Stage 114 Mathematica audit passed.
+
+EXIT_CODE: 0

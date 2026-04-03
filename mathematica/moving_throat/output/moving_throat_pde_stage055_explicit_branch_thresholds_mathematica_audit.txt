@@ -1,0 +1,44 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage055_explicit_branch_thresholds_mathematica_audit.wl
+# Date: 2026-04-03T16:33:01-06:00
+# Elapsed: 28s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 055 — EXPLICIT BRANCH THRESHOLD SURFACES
+========================================================================================
+kappa = (4*(5*chiS^2 + lambdaEll^2))/5
+eta = lambdaEll
+Delta_0 = (25*lambdaEll*Sinh[Sqrt[5*chiS^2 + lambdaEll^2]/Sqrt[5]]^2)/(2*(5*chiS^2 + lambdaEll^2)*(5*lambdaEll*Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + 2*Sqrt[5]*Sqrt[5*chiS^2 + lambdaEll^2]*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]]))
+Delta_inf = (-1 + Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (Sqrt[5]*lambdaEll*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/(2*Sqrt[5*chiS^2 + lambdaEll^2]))/(lambdaEll*Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (2*Sqrt[5*chiS^2 + lambdaEll^2]*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/Sqrt[5])
+Upsilon_fail = (peReq*(lambdaEll*Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (2*Sqrt[5*chiS^2 + lambdaEll^2]*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/Sqrt[5]))/(lambdaEll^2*(-1 + Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (Sqrt[5]*lambdaEll*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/(2*Sqrt[5*chiS^2 + lambdaEll^2])))
+Upsilon_suff = (2*(5*chiS^2 + lambdaEll^2)*peReq*(4*Sqrt[5]*Sqrt[5*chiS^2 + lambdaEll^2]*Coth[Sqrt[5*chiS^2 + lambdaEll^2]/Sqrt[5]] + 5*lambdaEll*(1 + Coth[Sqrt[5*chiS^2 + lambdaEll^2]/Sqrt[5]]^2)))/(25*lambdaEll^3)
+V0_fail^2 = (cSw^2*hbar^2*peReq*(lambdaEll*Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (2*Sqrt[5*chiS^2 + lambdaEll^2]*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/Sqrt[5]))/(4*lambdaEll^2*rhoW^2*(-1 + Cosh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]] + (Sqrt[5]*lambdaEll*Sinh[(2*Sqrt[5*chiS^2 + lambdaEll^2])/Sqrt[5]])/(2*Sqrt[5*chiS^2 + lambdaEll^2])))
+V0_suff^2 = (cSw^2*hbar^2*(5*chiS^2 + lambdaEll^2)*peReq*(4*Sqrt[5]*Sqrt[5*chiS^2 + lambdaEll^2]*Coth[Sqrt[5*chiS^2 + lambdaEll^2]/Sqrt[5]] + 5*lambdaEll*(1 + Coth[Sqrt[5*chiS^2 + lambdaEll^2]/Sqrt[5]]^2)))/(50*lambdaEll^3*rhoW^2)
+
+========================================================================================
+SHELL-GRADIENT DOMINATED ASYMPTOTICS
+========================================================================================
+Upsilon_fail_shell = (2*peReq)/(Sqrt[5]*lambdaEll)
+Upsilon_suff_shell = (4*(5 + 2*Sqrt[5])*peReq)/25
+shell fail asymptotic = 0
+PASS: shell fail asymptotic
+shell suff asymptotic = 0
+PASS: shell suff asymptotic
+
+========================================================================================
+COMPRESSION DOMINATED ASYMPTOTICS
+========================================================================================
+Upsilon_fail_comp = (2*chiS*peReq)/lambdaEll^2
+Upsilon_suff_comp = (4*chiS^2*(2*chiS + lambdaEll)*peReq)/lambdaEll^3
+compression fail asymptotic = 0
+PASS: compression fail asymptotic
+compression suff asymptotic = 0
+PASS: compression suff asymptotic
+
+Stage 055 Mathematica audit passed.
+
+EXIT_CODE: 0

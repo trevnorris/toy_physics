@@ -1,0 +1,58 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage023_generalized_selected_branch_mathematica_audit.wl
+# Date: 2026-04-04T00:29:06-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 023 — GENERALIZED SELECTED-BRANCH NORMALIZATION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Exact 2x2 selected-branch solve with generic loading ratio
+----------------------------------------------------------------------------------------
+alpha_req = (a0*xi*(delta + xi))/((delta + xi + q^2*xi)*z0^2)
+e1/e0 = (q*xi)/(delta + xi)
+e1/e0 closed form = 0
+PASS: e1/e0 closed form
+
+----------------------------------------------------------------------------------------
+2. Exact overlap formulas and generalized F,G functions
+----------------------------------------------------------------------------------------
+(z.e_-)^2 / z0^2 = (delta + xi + q^2*xi)^2/(delta^2 + 2*delta*xi + (1 + q^2)*xi^2)
+(s.e_-)^2 / s0^2 = (delta + xi + eta*xi)^2/(delta^2 + 2*delta*xi + (1 + q^2)*xi^2)
+F_(q,eta) = ((delta + xi + eta*xi)^2*(delta + xi + q^2*xi)^2)/((1 - xi)*(delta^2 + 2*delta*xi + (1 + q^2)*xi^2)^2)
+G_q = (xi*(delta + xi))/(delta + xi + q^2*xi)
+F_general - expected = 0
+PASS: F_general - expected
+G_general - expected = 0
+PASS: G_general - expected
+
+----------------------------------------------------------------------------------------
+3. Split-U specialization
+----------------------------------------------------------------------------------------
+F_U(xi,delta;R_U) = ((delta + xi + (2*rU*xi)/9)^2*(delta + xi + (2*rU^2*xi)/9)^2)/((1 - xi)*((2*rU^2*xi^2)/9 + (delta + xi)^2)^2)
+G_U(xi,delta;R_U) = (xi*(delta + xi))/(delta + xi + (2*rU^2*xi)/9)
+F_U(R_U=1) - Stage18 F = 0
+PASS: F_U(R_U=1) - Stage18 F
+G_U(R_U=1) - Stage19 G = 0
+PASS: G_U(R_U=1) - Stage19 G
+
+----------------------------------------------------------------------------------------
+4. Exact small-deformation expansion about the flat-U limit
+----------------------------------------------------------------------------------------
+F_U / F_flat = 1 + (4*eps*xi*(27*delta^2 + 36*delta*xi + 11*xi^2))/((9*delta + 11*xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)) + O(eps^2)
+G_U / G_flat = 1 - (4*eps*xi)/(9*delta + 11*xi) + O(eps^2)
+H_F = (4*xi*(27*delta^2 + 36*delta*xi + 11*xi^2))/((9*delta + 11*xi)*(9*delta^2 + 18*delta*xi + 11*xi^2))
+H_G = (-4*xi)/(9*delta + 11*xi)
+F_ratio - (1 + eps H_F) = 0
+PASS: F_ratio - (1 + eps H_F)
+G_ratio - (1 + eps H_G) = 0
+PASS: G_ratio - (1 + eps H_G)
+
+Stage 023 Mathematica audit passed.
+
+EXIT_CODE: 0

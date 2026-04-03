@@ -1,0 +1,38 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage053_gnls_wall_shell_mathematica_audit.wl
+# Date: 2026-04-03T16:18:36-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 053 — EXPLICIT GNLS WALL-SHELL REDUCTION
+========================================================================================
+H_w = (cSw^2*m)/rhoW
+N_(phi phi) = 4*a^2*ell*IfMoment*Pi
+G_(phi phi) = (4*a^2*Ig*Pi)/ell
+T_X = (a^2*ell*hbar^2*IfMoment*Pi)/(m*rhoW)
+K_X = (a^2*(hbar^2*Ig + 4*cSw^2*ell^2*IfMoment*m^2)*Pi)/(ell*m*rhoW)
+kappa = L^2*(Ig/(ell^2*IfMoment) + (4*cSw^2*m^2)/hbar^2)
+kappa - expected = 0
+PASS: kappa - expected
+J_1 = (IfMoment*rhoW)/(cSw^2*m)
+W_wall = (4*L^2*rhoW^2*V0^2)/(cSw^2*ell^2*hbar^2)
+W_wall - expected = 0
+PASS: W_wall - expected
+g_phi = V0/ell
+Xi = (4*L^2*rhoW^2*V0^2)/(cSw^2*ell^2*hbar^2)
+Xi - W_wall = 0
+PASS: Xi - W_wall
+
+========================================================================================
+STAGE 053 THEOREM LEDGER
+========================================================================================
+T_X = pi a^2 ell I_f hbar^2 / (m rho_w)
+K_X = 4 pi a^2 ell I_f H_w + pi a^2 I_g hbar^2 / (m rho_w ell)
+kappa = 4 (m c_(s,w) L / hbar)^2 + (I_g/I_f)(L/ell)^2
+W_wall = Xi = 4 rho_w^2 V0^2 L^2 / (hbar^2 c_(s,w)^2 ell^2)
+
+EXIT_CODE: 0

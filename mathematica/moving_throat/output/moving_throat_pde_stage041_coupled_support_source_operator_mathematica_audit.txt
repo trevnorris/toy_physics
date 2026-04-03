@@ -1,0 +1,43 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage041_coupled_support_source_operator_mathematica_audit.wl
+# Date: 2026-04-03T15:12:15-06:00
+# Elapsed: 28s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 041 — COUPLED SUPPORT/SOURCE OPERATOR
+========================================================================================
+K_(alpha,eta)(x) = (Cosh[alpha*x] - Cosh[alpha - alpha*x] + (eta*Sinh[alpha*x])/alpha)/(eta*Cosh[alpha] + alpha*Sinh[alpha])
+dK/dx = (eta*Cosh[alpha*x] + alpha*(Sinh[alpha*x] + Sinh[alpha - alpha*x]))/(eta*Cosh[alpha] + alpha*Sinh[alpha])
+Kprime identity = 0
+PASS: Kprime identity
+Sigma_Pe(x) = (E^(Pe*x)*Pe)/(-1 + E^Pe)
+Sigma normalization = 0
+PASS: Sigma normalization
+Ic antiderivative check = 0
+PASS: Ic antiderivative check
+Is antiderivative check = 0
+PASS: Is antiderivative check
+Ic(Pe,alpha) = (Pe - E^Pe*Pe*Cosh[alpha] + alpha*E^Pe*Sinh[alpha])/(alpha^2 - Pe^2)
+Is(Pe,alpha) = -((alpha - alpha*E^Pe*Cosh[alpha] + E^Pe*Pe*Sinh[alpha])/(alpha^2 - Pe^2))
+Delta(Pe;alpha,eta) = (Pe*(alpha*(Pe + E^Pe*(-eta + Pe))*Cosh[alpha] + alpha*(eta - Pe + alpha*Sinh[alpha]) - E^Pe*(alpha*Pe + (alpha^2 - eta*Pe)*Sinh[alpha])))/(alpha*(-1 + E^Pe)*(-alpha^2 + Pe^2)*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
+Delta_0 = (eta*(-1 + Cosh[alpha]))/(alpha^2*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
+Delta0 formula = 0
+PASS: Delta0 formula
+Delta0 integral identity = 0
+PASS: Delta0 integral identity
+Delta_inf = (-1 + Cosh[alpha] + (eta*Sinh[alpha])/alpha)/(eta*Cosh[alpha] + alpha*Sinh[alpha])
+Delta_inf formula = 0
+PASS: Delta_inf formula
+Pe_lo = Xi Delta_0 = (eta*Xi*(-1 + Cosh[alpha]))/(alpha^2*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
+Pe_hi = Xi Delta_inf = (Xi*(-1 + Cosh[alpha] + (eta*Sinh[alpha])/alpha))/(eta*Cosh[alpha] + alpha*Sinh[alpha])
+Delta(Pe) small-Pe series = (-2*alpha*eta + alpha*(4 + eta)*Pe + alpha*(-4*Pe + eta*(2 + Pe))*Cosh[alpha] + 2*(alpha^2 - eta)*Pe*Sinh[alpha])/(2*alpha^3*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
+weak-coupling constant term = 0
+PASS: weak-coupling constant term
+
+Stage 041 Mathematica audit passed.
+
+EXIT_CODE: 0

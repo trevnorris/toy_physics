@@ -1,0 +1,31 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage083_outgoing_normalization_factorization_mathematica_audit.wl
+# Date: 2026-04-03T16:56:17-06:00
+# Elapsed: 13s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 083 — OUTGOING NORMALIZATION FACTORIZATION
+========================================================================================
+Yhat_Q^ret series = 1 + (((9*I)/32)*chiQ*omega^5)/omegaQ^5 + omega^4/(4*omegaQ^4) + omega^2/(4*omegaQ^2)
+K2 = k0/(4*omegaQ^2)
+K4 = k0/(4*omegaQ^4)
+Gamma5 = (9*chiQ*k0)/(32*omegaQ^5)
+NQ = (45*cLight^5*k0)/(64*gNewton*omegaQ^5)
+K2/K2_target - NQ = 0
+PASS: K2/K2_target - NQ
+K4/K4_target - NQ = 0
+PASS: K4/K4_target - NQ
+Gamma5/Gamma5_target - chiQ*NQ = 0
+PASS: Gamma5/Gamma5_target - chiQ*NQ
+mhat0^2*Gamma5/Gamma5_target - mhat0^2*chiQ*NQ = 0
+PASS: mhat0^2*Gamma5/Gamma5_target - mhat0^2*chiQ*NQ
+NQ - 1/(mhat0^2*chiQ) after odd normalization = 0
+PASS: NQ - 1/(mhat0^2*chiQ) after odd normalization
+
+Stage 083 Mathematica audit passed.
+
+EXIT_CODE: 0

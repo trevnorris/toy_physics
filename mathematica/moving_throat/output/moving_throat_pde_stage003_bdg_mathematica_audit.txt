@@ -1,0 +1,81 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage003_bdg_mathematica_audit.wl
+# Date: 2026-04-04T00:54:21-06:00
+# Elapsed: 9s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 003 — MINIMAL BdG-WALL COUPLING
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Axisymmetric wall + scalar BdG reduction
+----------------------------------------------------------------------------------------
+qa kinetic coefficient = 0
+PASS: qa kinetic coefficient
+qL kinetic coefficient = 0
+PASS: qL kinetic coefficient
+qa-qL mixed kinetic coefficient = 0
+PASS: qa-qL mixed kinetic coefficient
+D0_eff(omega) = {{kaa - maa*omega^2 + c1a^2/(omega^2 - wa^2) + c1b^2/(omega^2 - wb^2), kaL - maL*omega^2 + (c1a*c2a)/(omega^2 - wa^2) + (c1b*c2b)/(omega^2 - wb^2)}, {kaL - maL*omega^2 + (c1a*c2a)/(omega^2 - wa^2) + (c1b*c2b)/(omega^2 - wb^2), kLL - mLL*omega^2 + c2a^2/(omega^2 - wa^2) + c2b^2/(omega^2 - wb^2)}}
+D0_eff - manual form = {{0, 0}, {0, 0}}
+PASS: D0_eff - manual form
+series match = {{0, 0}, {0, 0}}
+PASS: series match
+
+----------------------------------------------------------------------------------------
+II. One wall mode + one stable BdG mode
+----------------------------------------------------------------------------------------
+omega_-^2 = (om2 - Sqrt[(4*g^2)/m + (om2 - varpi2)^2] + varpi2)/2
+omega_+^2 = (om2 + Sqrt[(4*g^2)/m + (om2 - varpi2)^2] + varpi2)/2
+minus-root solves dispersion = 0
+PASS: minus-root solves dispersion
+plus-root solves dispersion = 0
+PASS: plus-root solves dispersion
+sum of roots = 0
+PASS: sum of roots
+product of roots = 0
+PASS: product of roots
+wall-like pole through O(g^2) = -((eps^2*g^2)/(delta*m)) + om2
+matter-like pole through O(g^2) = delta + (eps^2*g^2)/(delta*m) + om2
+wall-like shift = 0
+PASS: wall-like shift
+matter-like shift = 0
+PASS: matter-like shift
+
+----------------------------------------------------------------------------------------
+III. Grouped real P2 + BdG couplings
+----------------------------------------------------------------------------------------
+D20 = k20 - m20*omega^2 - (g20^2*omega^4)/w20^6 - (g20^2*omega^2)/w20^4 - g20^2/w20^2
+D21 = k21 - m21*omega^2 - (g21^2*omega^4)/w21^6 - (g21^2*omega^2)/w21^4 - g21^2/w21^2
+D22 = k22 - m22*omega^2 - (g22^2*omega^4)/w22^6 - (g22^2*omega^2)/w22^4 - g22^2/w22^2
+d2bar = (-m20 - 2*m21 - 2*m22 - g20^2/w20^4 - (2*g21^2)/w21^4 - (2*g22^2)/w22^4)/5
+a2 = (-2*m20 + m21 + m22 - (2*g20^2)/w20^4 + g21^2/w21^4 + g22^2/w22^4)/10
+b2 = (-m21 + m22 - g21^2/w21^4 + g22^2/w22^4)/2
+isotropic a2 = 0
+PASS: isotropic a2
+isotropic b2 = 0
+PASS: isotropic b2
+isotropic D20-D21 = 0
+PASS: isotropic D20-D21
+isotropic D21-D22 = 0
+PASS: isotropic D21-D22
+
+----------------------------------------------------------------------------------------
+IV. Harmonic selection rule
+----------------------------------------------------------------------------------------
+Y00-Y20 cross integral = 0
+PASS: Y00-Y20 cross integral
+Y20-Y21c cross integral = 0
+PASS: Y20-Y21c cross integral
+Y20-Y22c cross integral = 0
+PASS: Y20-Y22c cross integral
+Y20 norm - 1 = 0
+PASS: Y20 norm - 1
+
+Stage 003 Mathematica audit passed.
+
+EXIT_CODE: 0

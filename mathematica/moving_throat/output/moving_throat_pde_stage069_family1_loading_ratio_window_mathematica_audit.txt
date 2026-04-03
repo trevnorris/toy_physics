@@ -1,0 +1,38 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage069_family1_loading_ratio_window_mathematica_audit.wl
+# Date: 2026-04-03T16:47:43-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 069 — FAMILY-1 PURE LOADING-RATIO WINDOW
+========================================================================================
+Q(zeta;eps) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)
+dQ/dzeta = (1 - epsBlk)/(-1 + epsBlk*zeta)^2
+dQ exact formula = 0
+PASS: dQ exact formula
+Q(zeta;0) - (1+zeta) = 0
+PASS: Q(zeta;0) - (1+zeta)
+rho_suff^(chi)(0) = 3.46622291347846`20.147824160408735
+rho_fail^(chi)(0) = 3.4675291327387`20.147757829678003
+rho_suff^(J)(0) = 3.44257571477179`20.149035465924605
+rho_max^(F1)(0) = 3.46752922945601`20.147757824768853
+rho_suff^(chi) numeric check diff = 1.2143918414949`3.692326512284878*^-16
+PASS: rho_suff^(chi) numeric check
+rho_fail^(chi) numeric check diff = 1.070317295671`3.6372502543953216*^-16
+PASS: rho_fail^(chi) numeric check
+rho_suff^(J) numeric check diff = 8.12999487971`3.5222422370706656*^-17
+PASS: rho_suff^(J) numeric check
+rho_max numeric check diff = 5.366711433453`3.33744593798107*^-17
+PASS: rho_max numeric check
+d rho_max / d eps exact formula = 0
+PASS: d rho_max / d eps exact formula
+eps_blk cap numeric check diff = 1.803508033556857462192`3.6483696708385422*^-17
+PASS: eps_blk cap numeric check
+
+Stage 069 Mathematica audit passed.
+
+EXIT_CODE: 0

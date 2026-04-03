@@ -1,0 +1,27 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage121_normalized_mouth_gain_family_mathematica_audit.wl
+# Date: 2026-04-03T17:19:01-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 121 — NORMALIZED MOUTH-GAIN FAMILY AND COMPENSATION RATIO
+========================================================================================
+M_s normalized = sigma0
+M_q normalized = -(((gCore - rHat)^2*sigma0)/(1 + rHat^2))
+R_q = (gCore - rHat)^2/(1 + rHat^2)
+R_q exact formula = 0
+PASS: R_q exact formula
+R_q on + branch = 1/4
+R_q on - branch = 1/4
+R_q on + branch - 1/4 = 0
+PASS: R_q on + branch - 1/4
+R_q on - branch - 1/4 = 0
+PASS: R_q on - branch - 1/4
+
+Normalized mouth-gain family verified.
+
+EXIT_CODE: 0

@@ -1,0 +1,58 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage155_physical_slope_collapse_mathematica_audit.wl
+# Date: 2026-04-03T23:46:05-06:00
+# Elapsed: 17s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
+========================================================================================
+delta u_2^(A) = -((dD2 + dD0*u2)/d0)
+delta P_0^(A) = (d0*dN0 - dD0*n0)/d0^2
+
+========================================================================================
+Exact obstruction-pair rewrite
+========================================================================================
+K_A + D0*delta_u2 - (1/9-u2)*dD0 = 0
+PASS: K_A + D0*delta_u2 - (1/9-u2)*dD0
+G_A - D0*delta_P0 = 0
+PASS: G_A - D0*delta_P0
+
+========================================================================================
+Canonical-even collapse at u2 = 1/9
+========================================================================================
+K_A + D0*delta_u2 on canonical branch = 0
+PASS: K_A + D0*delta_u2 on canonical branch
+
+========================================================================================
+Physical form of the hidden-even consistency relation
+========================================================================================
+delta u_2^(A) on canonical branch = -1/9*(dD0 + 9*dD2)/d0
+delta u_4^(A) on canonical branch = -1/81*(5*dD0 + 18*dD2 + 81*dD4)/d0
+delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation = 0
+PASS: delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation
+
+========================================================================================
+Direct outlet formulas in physical grouped variables
+========================================================================================
+delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A) = 0
+PASS: delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A)
+delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A) = 0
+PASS: delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A)
+Delta_Q^(A) - delta P_0^(A)/P0 = 0
+PASS: Delta_Q^(A) - delta P_0^(A)/P0
+
+Carry-forward formulas:
+  K_A = -D_0 delta u_2^(A) on the canonical even branch
+  G_A = D_0 delta P_0^(A) exactly
+  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0
+  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)
+  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0
+  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch
+
+Stage 155 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -2,8 +2,10 @@
 (* R is the instantaneous distance, v is velocity, cs is sound speed *)
 (* nDotV is the projection of velocity onto the line of sight *)
 
+ClearAll["Global`*"];
+
 (* 1. The Retarded Potential (Liénard-Wiechert) *)
-(* This represents the TRUE total solution to the wave equation for a moving point source *)
+(* This is the full scalar retarded solution for a moving point source. *)
 PhiRetarded = -mu / (R * (1 - nDotV / cs));
 
 (* 2. The Poisson Potential (Instantaneous) *)
@@ -13,52 +15,51 @@ PhiPoisson = -mu / R;
 (* In the central-field test-mass limit, the source is static:
    nDotV -> 0, so PhiRetarded == PhiPoisson exactly. *)
 PhiStatic = Simplify[PhiRetarded /. nDotV -> 0];
-Print["Static-source check: PhiStatic = ", PhiStatic];
+Print["Static-source check: PhiRetarded(static) = ", PhiStatic];
 Print["(Should match PhiPoisson = ", PhiPoisson, ")"];
 
 (* 3. Series Expansion of the Retarded Potential *)
 (* We assume v is small compared to cs *)
-PhiRetardedExpanded = Series[PhiRetarded, {cs, Infinity, 2}];
+PhiRetardedExpanded = Normal[Series[PhiRetarded, {cs, Infinity, 2}]];
 
-Print["--- Expansion of the True Retarded Potential (PhiTotal) ---"];
-Print[Normal[PhiRetardedExpanded]];
+Print["--- Expansion of the full retarded scalar potential PhiRetarded ---"];
+Print[PhiRetardedExpanded];
 
-(* 4. The 'Double Counting' Problem in the current text *)
-(* The text defines PhiTotal = PhiPoisson + PhiL *)
-(* But later derives PhiL as the full Retarded Potential *)
-PhiTotalCurrentText = PhiPoisson + Normal[PhiRetardedExpanded];
+(* 4. Paper-consistent lag definition *)
+(* The paper defines PhiL as the residual between the retarded and *)
+(* Poisson solutions, so that Phi = PhiPoisson + PhiL = PhiRetarded. *)
+PhiLag = Simplify[PhiRetardedExpanded - PhiPoisson];
 
-Print["\n--- PhiTotal in Current Text (Static Limit Check) ---"];
-(* Check the term that does not depend on cs (the static limit) *)
-StaticLimitCurrent = Select[PhiTotalCurrentText, FreeQ[#, cs] &];
-Print["Static Limit (should be -mu/R): ", StaticLimitCurrent];
+Print["\n--- Paper definition: PhiL = PhiRetarded - PhiPoisson ---"];
+Print[PhiLag];
 
-(* 5. The Fix: Defining PhiL as the Difference *)
-(* PhiL should be the difference between the Full Retarded and the Poisson potentials *)
-PhiLagCorrected = Normal[PhiRetardedExpanded] - PhiPoisson;
+PhiTotalPaper = Simplify[PhiPoisson + PhiLag];
 
-Print["\n--- Corrected PhiL (Lag Potential) ---"];
-Print[PhiLagCorrected];
+Print["\n--- Reconstructed total potential Phi = PhiPoisson + PhiL ---"];
+Print[PhiTotalPaper];
 
-(* 6. Physical Interpretation of the Corrected Lag *)
-(* Notice the leading order term is now Order(1/cs), not Order(1) *)
-Print["\n--- Leading order of Corrected PhiL ---"];
-Print["Does it vanish in static limit (cs->infinity)? ", Limit[PhiLagCorrected, cs -> Infinity] == 0];
+StaticLimitPaper = Simplify[PhiTotalPaper /. nDotV -> 0];
+Print["Static-source limit from reconstructed Phi: ", StaticLimitPaper];
+
+Print["\n--- Static-limit checks ---"];
+Print["PhiL vanishes for static source? ", Simplify[PhiLag /. nDotV -> 0] == 0];
+Print["PhiL vanishes as cs->infinity? ", Limit[PhiLag, cs -> Infinity] == 0];
 
 (*"
 Output:
-
-Static-source check: PhiStatic = -(mu/R)
+Static-source check: PhiRetarded(static) = -(mu/R)
 (Should match PhiPoisson = -(mu/R))
---- Expansion of the True Retarded Potential (PhiTotal) ---
+--- Expansion of the full retarded scalar potential PhiRetarded ---
 -(mu/R) - (mu*nDotV)/(cs*R) - (mu*nDotV^2)/(cs^2*R)
 
---- PhiTotal in Current Text (Static Limit Check) ---
-Static Limit (should be -mu/R): (-2*mu)/R
+--- Paper definition: PhiL = PhiRetarded - PhiPoisson ---
+-((mu*nDotV*(cs + nDotV))/(cs^2*R))
 
---- Corrected PhiL (Lag Potential) ---
--((mu*nDotV)/(cs*R)) - (mu*nDotV^2)/(cs^2*R)
+--- Reconstructed total potential Phi = PhiPoisson + PhiL ---
+-((mu*(cs^2 + cs*nDotV + nDotV^2))/(cs^2*R))
+Static-source limit from reconstructed Phi: -(mu/R)
 
---- Leading order of Corrected PhiL ---
-Does it vanish in static limit (cs->infinity)? True
+--- Static-limit checks ---
+PhiL vanishes for static source? True
+PhiL vanishes as cs->infinity? True
 "*)

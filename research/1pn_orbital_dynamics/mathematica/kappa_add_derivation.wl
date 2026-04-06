@@ -22,8 +22,8 @@ Print["SECTION 1: Stationary Sink Flow"];
 Print["-------------------------------------------------------------"];
 
 (* The velocity potential for a point sink of strength Q at origin *)
-(* Flux through any sphere = Q, so integral v.dA = Q *)
-(* v_r = Q/(4 Pi r^2), pointing inward means Q > 0 for sink *)
+(* Outward-normal flux through any sphere = -Q for a sink of strength Q *)
+(* v_r = -Q/(4 Pi r^2), pointing inward means Q > 0 for sink *)
 (* Potential: phiSink = -Q/(4 Pi r) so that v = -grad(phi) gives inward flow *)
 
 phiSink[r_] := -Q/(4 Pi r);
@@ -36,7 +36,7 @@ Print["1.2: Radial velocity: v_r(r) = -d phi/dr = ", vSinkR[r]];
 (* Verify: flux through sphere of radius R *)
 fluxCheck = vSinkR[R] * 4 Pi R^2 // Simplify;
 Print["1.3: Flux through sphere: v_r * 4 Pi R^2 = ", fluxCheck];
-Print["     (This equals Q as required for sink strength Q)"];
+Print["     (Outward-normal flux is -Q, i.e. inward sink strength has magnitude Q)"];
 Print[""];
 
 (* ================================================================== *)
@@ -362,7 +362,6 @@ Print["============================================================="];
 
 (*"
 Output:
-
 =============================================================
 DERIVATION OF kappa_add: ADDED MASS OF A MOVING SINK
 =============================================================
@@ -372,7 +371,7 @@ SECTION 1: Stationary Sink Flow
 1.1: Sink potential: phi_sink(r) = -1/4*Q/(Pi*r)
 1.2: Radial velocity: v_r(r) = -d phi/dr = -1/4*Q/(Pi*r^2)
 1.3: Flux through sphere: v_r * 4 Pi R^2 = -Q
-     (This equals Q as required for sink strength Q)
+     (Outward-normal flux is -Q, i.e. inward sink strength has magnitude Q)
 
 SECTION 2: Moving Sink Perturbation
 -------------------------------------------------------------
@@ -472,4 +471,35 @@ VERIFIED by two independent methods:
   +----------------------------------+
   |  kappa_add = 1/2  (DERIVED)     |
   +----------------------------------+
+
+=============================================================
+CONTEXT: UPDATED beta = 3.0 DECOMPOSITION
+=============================================================
+
+Static-source scalar sector contributes 0/6 of the GR precession.
+All 1PN precession must be supplied by inertia modulation.
+
+Therefore, we require beta = 3.0 (all from inertia; scalar = 0).
+  sigma(r) = beta * mu / (cs^2 * r)
+
+Updated decomposition: beta = kappa_rho + kappa_add + kappa_PV
+
+  +------------+-------+------------------------------------------+
+  | Component  | Value | Status                                   |
+  +------------+-------+------------------------------------------+
+  | kappa_rho  |   1   | TRIVIAL: m_eff = rho(r) * V_cav          |
+  |            |       | follows from cavitation mass definition  |
+  +------------+-------+------------------------------------------+
+  | kappa_add  |  1/2  | DERIVED: this script (dipole KE)         |
+  +------------+-------+------------------------------------------+
+  | kappa_PV   |  3/2  | REQUIRED: pressure–volume inertia from   |
+  |            |       | compressible 4D throat dynamics          |
+  +------------+-------+------------------------------------------+
+  | TOTAL      |  3.0  | Required by GR matching                  |
+  +------------+-------+------------------------------------------+
+
+Conclusion: Matching GR now requires a nonzero kappa_PV alongside
+density and added-mass contributions.
+
+=============================================================
 "*)

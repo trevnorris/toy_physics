@@ -208,7 +208,6 @@ Print["============================================================="];
 
 (*"
 Output:
-
 D0: Setup complete. Assumptions: μ>0, cs>0, 0≤e<1, etc.
 D1: Lagrangian defined with static-source (Newtonian) scalar potential.
 D1: Expanded Lagrangian:

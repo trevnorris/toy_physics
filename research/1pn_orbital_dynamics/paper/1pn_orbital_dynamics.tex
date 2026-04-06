@@ -37,7 +37,7 @@
 \begin{abstract}
 We construct and analyze a superfluid defect toy model that reproduces both Newtonian (0PN) gravity and the leading post-Newtonian (1PN) perihelion precession of a test body in a central field. The model consists of a homogeneous superfluid background and sink-like defects whose effective gravitational potential splits into two scalar pieces: an instantaneous Poisson sector $\PhiP$ and a finite-speed ``lag'' sector $\PhiL$ governed by a wave equation with propagation speed $\cS$. For a static central defect in the test-mass limit we show that the retarded scalar solution collapses exactly to the Poisson solution, so that $\PhiL$ vanishes and the near-zone potential is strictly Newtonian, $\Phi_{\rm tot}(r) = -\mu/r$ with no $1/\cS^2$ corrections. As a result the scalar sector generates no 1PN perihelion precession: the entire 1PN correction is encoded kinematically in a position-dependent effective mass $m_{\rm eff}(r) = m[1 + \sigma(r)]$ with $\sigma(r) = \beta \mu/(\cS^2 r)$. Matching the Schwarzschild 1PN precession for $\cS = c$ and $\mu = GM$ requires $\beta = 3$.
 
-We interpret this coefficient as a sum of three hydrodynamic contributions, $\beta = \kappa_\rho + \kappa_{\rm add} + \kappa_{\rm PV}$, coming respectively from density depletion in the cavitation region, classical added mass of entrained fluid, and internal pressure--volume inertia of a compressible throat. The first two pieces are derived quantitatively from the toy model and the associated Mathematica calculations, yielding $\kappa_\rho = 1$ and $\kappa_{\rm add} = 1/2$. The remaining piece is fixed by the 1PN matching condition to be $\kappa_{\rm PV} = 3/2$, which we view as an effective field theory constraint on the bulk equation of state and throat compressibility. This provides a concrete hydrodynamic target for future microphysical derivations.
+We interpret this coefficient as a sum of three hydrodynamic contributions, $\beta = \kappa_\rho + \kappa_{\rm add} + \kappa_{\rm PV}$, coming respectively from density depletion in the cavitation region, classical added mass of entrained fluid, and internal pressure--volume inertia of a compressible throat. The first two pieces are supported by simplified hydrodynamic derivations and companion Mathematica calculations within the toy-model parameterization, yielding $\kappa_\rho = 1$ and $\kappa_{\rm add} = 1/2$. The remaining piece is not derived here; instead it is fixed by the 1PN matching condition to be $\kappa_{\rm PV} = 3/2$, which we view as an effective field theory constraint on the bulk equation of state and throat compressibility. This provides a concrete hydrodynamic target for future microphysical derivations.
 \end{abstract}
 
 \section{Introduction}
@@ -109,7 +109,7 @@ Matching the GR 1PN result for $\mu = GM$ and $\cS = c$ fixes
   \quad \Rightarrow \quad
   \beta = 3.
 \end{equation}
-We will interpret this value as the sum $\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}} = 1 + 1/2 + 3/2 = 3$, where the first two pieces are derived from density depletion and classical added mass, and the last piece is fixed by an effective-field-theory matching condition on the bulk equation of state.
+We will interpret this value as the sum $\beta = \kappa_\rho + \kappa_{\mathrm{add}} + \kappa_{\mathrm{PV}} = 1 + 1/2 + 3/2 = 3$, where the first two pieces are supported by simplified density-depletion and classical added-mass calculations, and the last piece is fixed by an effective-field-theory matching condition on the bulk equation of state.
 
 \paragraph{Hydrodynamic interpretation of $\beta$.}
 
@@ -630,7 +630,7 @@ The analysis in Section~\ref{sec:beta} showed that a position-dependent kinetic 
   \qquad
   \sigma(r) = \beta\,\frac{\mu}{\cS^2 r},
 \end{equation}
-supplies the entire GR 1PN perihelion precession through the factor $2\beta$ and matching fixes $\beta = 3$. In this section we interpret $\beta$ as the sum of three hydrodynamic contributions to the effective kinetic coefficient appearing in the test--body Lagrangian, associated with density dependence, added mass, and compressible pressure--volume work. Two of these contributions can be motivated directly from standard fluid dynamics; the third is derived from the bulk inertia of a finite-depth 4D throat.
+supplies the entire GR 1PN perihelion precession through the factor $2\beta$ and matching fixes $\beta = 3$. In this section we interpret $\beta$ as the sum of three hydrodynamic contributions to the effective kinetic coefficient appearing in the test--body Lagrangian, associated with density dependence, added mass, and compressible pressure--volume work. Two of these contributions can be estimated directly within the effective hydrodynamic model; the third is not derived here but is fixed phenomenologically by the GR matching condition and interpreted as a target for the bulk throat dynamics.
 
 \subsection{Decomposition into $\kappa$-coefficients}
 \label{sec:hydro_beta_decomposition}
@@ -649,7 +649,7 @@ Here:
 \end{itemize}
 Each of these contributions naturally scales as $\mu/(\cS^2 r)$ in the weak-field PN regime, so it is meaningful to fold them into the single coefficient $\beta$ in the ansatz for $\sigma(r)$.
 
-In what follows we sketch how $\kappa_\rho$ and $\kappa_{\mathrm{add}}$ can be estimated from standard hydrodynamic arguments, and we emphasize that matching the corrected 1PN accounting requires a nonzero $\kappa_{\mathrm{PV}}$ supplied by internal pressure--volume inertia of the throat.
+In what follows we sketch how $\kappa_\rho$ and $\kappa_{\mathrm{add}}$ can be estimated from standard hydrodynamic arguments, and we emphasize that matching the corrected 1PN accounting requires a nonzero $\kappa_{\mathrm{PV}}$, which we interpret as an internal pressure--volume inertia of the throat and leave as a target for future microphysical modeling.
 
 \subsection{Density-driven cavitation mass: $\kappa_\rho = 1$}
 \label{sec:hydro_kappa_rho}
@@ -730,7 +730,7 @@ with
 \end{equation}
 once all factors are expressed in terms of the PN parameter $\mu/[\cS^2 a(1-e^2)]$. This effective identification is what enters the derivation of the total coefficient $2\beta$ in Eq.~\eqref{eq:Delta_phi_total_beta}: the added-mass contribution combines with the inertia modulation to shift the coefficient of $u$ in the orbit equation.
 
-A detailed calculation in the companion notebook \texttt{kappa\_add\_derivation.wl} shows that the cross-terms vanish by symmetry and the dipole self-energy of the entrained flow yields an effective inertia equal to one half of the displaced fluid mass, corresponding to $\kappa_{\mathrm{add}} = 1/2$ in our parametrization.
+A detailed calculation in the companion notebook \texttt{kappa\_add\_derivation.wl} shows that the cross-terms vanish by symmetry and the dipole self-energy of the entrained flow yields an effective inertia equal to one half of the displaced fluid mass, supporting the identification $\kappa_{\mathrm{add}} = 1/2$ in our parametrization.
 
 We therefore associate
 \begin{equation}
@@ -967,6 +967,10 @@ Fourth, it would be interesting to investigate \emph{radiation and energy loss} 
 Finally, the present work has focused on the scalar sink sector of a more general ``dyon'' defect, which also carries circulation and spin degrees of freedom. In the full toy universe, vortical flow around the throat and its coupling to spin lead to electromagnetic-like forces and ``hydrodynamic atom'' phenomena. Extending the present analysis to include these additional degrees of freedom would allow a unified treatment of gravity, electromagnetism, and spin in the same superfluid framework, and would provide a natural context for studying spin-orbit couplings, spin precession, and magnetogravitational analogues of PN effects.
 
 More broadly, the main lesson of this work is that a relatively simple hydrodynamic system---a superfluid with defects and a scalar lag mode---already contains enough structure to reproduce the leading PN phenomenology of GR in a controlled approximation, provided one takes seriously the emergent and position-dependent nature of inertial mass. This suggests that future explorations of emergent or analogue gravity can profitably use the 1PN sector, and in particular the requirement $\beta = 3$, as a concrete quantitative target for model building and microphysical derivations.
+
+\section*{Acknowledgments}
+
+This work was carried out by an independent researcher. Generative-AI tools were used during the development of the manuscript to help translate conceptual ideas into mathematical form, assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy verification scripts, and improve the exposition. The conceptual direction, hypotheses, and overall structure of the work were directed by the author. The resulting arguments and calculations were checked for internal consistency using the accompanying symbolic scripts, but the work should be regarded as exploratory and would benefit from review by subject-matter experts. Any errors, omissions, or misunderstandings remain the author's.
 
 \appendix
 

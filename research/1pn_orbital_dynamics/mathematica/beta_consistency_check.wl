@@ -62,7 +62,6 @@ Print["============================================================="];
 
 (*"
 Output:
-
 C0: Testing consistency of β = 3
 C1: σ(r) = 1 at r = ConditionalExpression[(3*μ)/cs^2, Element[m, Reals] && Element[Q, Reals] && Element[r0, Reals] && Element[rThroat, Reals] && Element[κg, Reals] && Element[ξ, Reals] && Element[ρ0, Reals]]
 C1: r_breakdown = 3/2 × r_Schwarzschild

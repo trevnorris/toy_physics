@@ -163,23 +163,22 @@ ratioSimplified = Simplify[ratioPrecession];
 
 Print["    Simplified ratio = ", ratioSimplified];
 
-(* C3: Solve for μ in terms of GR parameters if we demand Δφ_SF = Δφ_GR *)
+(* C3: Confirm the static scalar sector cannot match GR on its own *)
 muRule =
   Solve[ratioSimplified == 1, μ] // Simplify;
 
-Print["C3: μ that makes Δφ_SF = Δφ_GR: ", muRule];
-Print[""];
+checkC3 = (muRule === {});
 
-(* This shows: μ needs to be proportional to G_phys M_phys * (cs^2 / c^2)
-   if this single scalar lag sector is to reproduce the full GR 1PN precession.
-*)
+Print["C3: Solve Δφ_SF = Δφ_GR for μ: ", muRule];
+Print["    Any scalar-only μ match to GR? ", Not[checkC3]];
+Print[""];
 
 (* ================================================================== *)
 (* CHECK SUMMARY                                                      *)
 (* ================================================================== *)
 
 allPass =
-  checkA5 && checkBdelta && checkBForce && checkB7;
+  checkA5 && checkBdelta && checkBForce && checkB7 && checkC3;
 
 Print["============================================================="];
 Print["CHECK SUMMARY"];
@@ -188,10 +187,9 @@ Print["============================================================="];
 Print["  Stage A: series expansion of LW factor:                    ", checkA5];
 Print["  Stage B: rigorous scalar coefficient, 1/r^3 force, Δφ_Toy ∝ 1/a:        ",
       checkBdelta && checkBForce && checkB7];
-Print["  Stage C: GR precession comparison:                         ",
-      True (* ratioPrecession was symbolically derived *)];
+Print["  Stage C: no scalar-only μ match to GR:                     ", checkC3];
 Print[""];
-Print["  ALL PROGRAMMATIC CHECKS (Stages A & B): ",
+Print["  ALL PROGRAMMATIC CHECKS (Stages A-C): ",
       If[allPass, "PASSED ✓", "FAILED ✗"]];
 Print[""];
 
@@ -212,7 +210,8 @@ Print[""];
 Print["  4. Only in Stage C do we introduce physical GR parameters"];
 Print["     G_phys, M_phys, c, and compare Δφ_SF to the standard"];
 Print["     Δφ_GR = 6 π G_phys M_phys / (c^2 a (1-e^2)). Mathematica"];
-Print["     derives the ratio and the μ needed to match GR exactly."];
+Print["     shows that no choice of μ lets the static scalar sector"];
+Print["     reproduce the GR 1PN precession by itself."];
 Print[""];
 Print["  Thus, orbits in the toy model can be computed using μ and cs"];
 Print["  alone for the scalar sector, while any identification μ ↔"];
@@ -222,7 +221,6 @@ Print["============================================================="];
 
 (*"
 Output:
-
 STAGE A: Wave PDE → Retarded potential (structural assumptions)
 ----------------------------------------------------------------
   Expansion of 1/(1 - n·v/cs) up to O((n·v/cs)^3):
@@ -262,14 +260,41 @@ C1: GR 1PN precession (input):
 
 C2: Precession ratio Δφ_SF / Δφ_GR = 0
     Simplified ratio = 0
-C3: μ that makes Δφ_SF = Δφ_GR: {}
+C3: Solve Δφ_SF = Δφ_GR for μ: {}
+    Any scalar-only μ match to GR? False
 
 =============================================================
 CHECK SUMMARY
 =============================================================
   Stage A: series expansion of LW factor:                    True
   Stage B: rigorous scalar coefficient, 1/r^3 force, Δφ_Toy ∝ 1/a:        True
-  Stage C: GR precession comparison:                         True
+  Stage C: no scalar-only μ match to GR:                     True
 
-  ALL PROGRAMMATIC CHECKS (Stages A & B): PASSED ✓
+  ALL PROGRAMMATIC CHECKS (Stages A-C): PASSED ✓
+
+=============================================================
+CONCLUSIONS (what this script actually verifies)
+=============================================================
+  1. Assumes the standard scalar wave Green's function and
+     Liénard–Wiechert-like retarded factor with sound speed cs.
+
+  2. In the static-source, test-mass limit the scalar sector
+     collapses to the Poisson potential with no 1/cs^2 term:
+       Φ_scalar(r) = -μ/r,  δΦ(r) = 0,  δF(r) = 0.
+
+  3. Consequently the scalar lag sector produces no secular
+     1PN precession: Δφ_SF(a,e) = 0. All precession must come
+     from the inertia/metric sector if GR is to be matched.
+
+  4. Only in Stage C do we introduce physical GR parameters
+     G_phys, M_phys, c, and compare Δφ_SF to the standard
+     Δφ_GR = 6 π G_phys M_phys / (c^2 a (1-e^2)). Mathematica
+     shows that no choice of μ lets the static scalar sector
+     reproduce the GR 1PN precession by itself.
+
+  Thus, orbits in the toy model can be computed using μ and cs
+  alone for the scalar sector, while any identification μ ↔
+  G_phys M_phys is a mapping step used only for GR comparison,
+  not an input to the PDEs.
+=============================================================
 "*)

@@ -109,7 +109,6 @@ Print["\n--- DONE ---"];
 
 (*"
 Output:
-
 --- Binet equation to O(σ) (general form) ---
 u[θ] + Derivative[2][u][θ] == (m^2*μ)/J^2 + (m*β*μ*(E + 2*m*μ*u[θ]))/(cS^2*J^2)
 
@@ -123,4 +122,6 @@ u[θ] + Derivative[2][u][θ] == p^(-1) + (m*β*μ*(E + 2*m*μ*u[θ]))/(cS^2*J^2)
 Exact (closed form) in p: 2*Pi*(-1 + 1/Sqrt[1 - (2*β*μ)/(cS^2*p)])
 Series to first order in μ/(cS^2 p): (2*Pi*β*μ)/(cS^2*p)
 Series to first order in a,e: (-2*Pi*β*μ)/(a*cS^2*(-1 + e^2))
+
+--- DONE ---
 "*)

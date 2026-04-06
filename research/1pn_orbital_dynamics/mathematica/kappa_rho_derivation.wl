@@ -139,7 +139,6 @@ Print["\nFinal kappaRho value: ", kappaRho];
 
 (*"
 Output:
-
 =============================================================
 STEP 1: Define Potentials and Equation of State
 =============================================================

@@ -1,1 +1,19 @@
 __pycache__
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.nav
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.vrb
+*.out

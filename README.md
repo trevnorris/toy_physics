@@ -1,70 +1,60 @@
 # Toy Superfluid Gravity
 
-Lightweight research sandbox for a toy superfluid model that reproduces Newtonian gravity and leading 1PN effects discussed in the accompanying papers.
+Lightweight research sandbox for a toy superfluid model that reproduces Newtonian gravity and leading post-Newtonian effects.
 
 ## Repository Layout
-- `papers/` – Source and PDFs for:
-  - *Paper 1: Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model* (`1pn_orbital_dynamics.*`)
-  - *Paper 2: 1PN Optics* (`1pn_optics.*`) – extends the model to light propagation, lensing, and Shapiro delay.
-  - *Paper 3: Spin, Vorticity, and N-Body Dynamics* (`1pn_spin_and_nbody.*`) – spin precession, Lense–Thirring, and the EIH N-body Lagrangian.
-  - *Paper 4: Electromagnetic Fields and Charged Defects* (`em_fields.*`) – emergent electromagnetism from the superfluid vacuum.
-  - *Paper 5: Brane–Bulk Throat Ontology* (`brane_bulk_ontology.*`) – resolves the sphere–cylinder geometric tension via 4D bulk construction.
-  - *Paper 6: 1PN Hybrid* (`1pn_hybrid.*`) – unifies scalar, vector, and optical sectors into a single 1PN model.
-- `mathematica/` – Mathematica notebooks/scripts organized by paper (`1pn_orbital_dynamics/`, `1pn_optics/`, `1pn_spin_and_nbody/`, `em_fields/`, `brane_bulk_ontology/`, `1pn_hybrid/`, `2pn/`).
-- `scripts/` – Small Python proofs-of-concept (Shapiro delay partitioning, ray-bending tests).
-- `superfluid_lib/` – WIP physics engine (scalar Poisson + wave solvers, particle dynamics, 1PN orbit integrator); uses CuPy if available, otherwise NumPy.
-- `experiments/` – Python experiments that exercise the engine (radial force law fit, Mercury perihelion calibration/precession).
 
-## Papers Snapshot
-**Paper 1 (Orbital Dynamics):** Constructs a superfluid defect toy model with two scalar potentials—an instantaneous Poisson sector and a finite-speed lag sector. The lag sector adds an attractive \(1/r^3\) correction that yields one half of the GR 1PN precession; introducing a mild position-dependent inertia with \(\beta = 3/2\) recovers the full GR 1PN perihelion shift. See `papers/1pn_orbital_dynamics.pdf`.
+### `research/`
+Each published paper lives in its own folder with subdirectories for the paper source, Mathematica derivations, Python scripts, and notes (where applicable):
 
-**Paper 2 (Optics):** Extends the model to light propagation, deriving the optical metric and recovering standard 1PN lensing and Shapiro delay results with PPN parameters \(\beta = \gamma = 1\). See `papers/1pn_optics.pdf`.
+```
+research/<paper_name>/
+  paper/        .tex and .pdf
+  mathematica/  .wl derivation scripts
+  scripts/      Python verification / simulation scripts
+  notes/        working notes (when present)
+```
 
-**Paper 3 (Spin & N-Body):** Promotes defects to composite "dyons" (flux-tube sink + vortex ring) whose far-field vorticity defines a gravitomagnetic vector potential. Reproduces Lense–Thirring frame dragging, spin precession, and the full Einstein–Infeld–Hoffmann N-body Lagrangian. Key finding: matching the EIH tensor requires an effective Lorentzian signature in the longitudinal sector, encoded by \(\alpha^2 = -2/5\). See `papers/1pn_spin_and_nbody.pdf`.
+Papers currently in `research/`:
+- `1pn_orbital_dynamics` — Paper 1: Newtonian and 1PN orbital dynamics
+- `1pn_optics` — Paper 2: 1PN light propagation, lensing, Shapiro delay
+- `1pn_spin_and_nbody` — Paper 3: Spin precession, Lense-Thirring, EIH N-body
+- `em_fields` — Paper 4: Emergent electromagnetism from superfluid vacuum
+- `brane_bulk_ontology` — Paper 5: Brane-bulk throat ontology
+- `1pn_hybrid` — Paper 6: Unified scalar/vector/optical 1PN model
+- `4d` — 4D bulk superfluid construction
+- `4d_1pn_bridge` — Bridge from 4D bulk to 1PN observables
+- `4d_1pn_full` — Full 4D 1PN derivation
+- `4d_2pn` — 2PN extensions
+- `4d_em_fields` — 4D electromagnetic sector
+- `4d_plasma` — Plasma dynamics in the 4D model
+- `atomic_p22_bridge` — Atomic P22 bridge construction
 
-**Paper 4 (Electromagnetism):** Introduces a hydrodynamic dictionary mapping enthalpy and velocity fields to EM potentials—magnetic field becomes vorticity, electric field becomes minus the Euler acceleration. The breathing mode of a defect throat generates a Coulomb \(1/r\) potential, and the Lorentz force emerges from Magnus and pressure forces on vortices. Explains the EM/gravitational hierarchy as scaling with \(1/a^2\) (throat radius). See `papers/em_fields.pdf`.
+### Work in progress (not yet published)
+Files for ongoing work that doesn't have a paper yet remain in the original directories:
+- `mathematica/` — `moving_throat/`, `inner_throat/`
+- `scripts/` — `moving_throat/`, `inner_throat/`, `4pn/`, and loose audit scripts for 2.5pn, 3pn, lepton, atom work
+- `notes/` — `moving_throat/`, `inner_throat/`, `4pn/`, and various top-level working notes
+- `notes/summaries/` — Per-paper summaries (kept together for easy batch upload)
 
-**Paper 5 (Brane–Bulk Ontology):** Resolves the geometric tension between spherical (gravity) and cylindrical (EM) defect requirements by promoting defects to brane–bulk throats connecting the 3D brane to a 4D superfluid bulk. Dimensional reduction recovers the spherical monopolar far-field for 1PN gravity, while internal 4D acoustic modes retain cylindrical Bessel profiles for EM. Enthalpy minimization at fixed charge selects the preferred aspect ratio \(L/a \approx 1.85\). See `papers/brane_bulk_ontology.pdf`.
+### `superfluid_lib/`
+WIP physics engine (scalar Poisson + wave solvers, particle dynamics, 1PN orbit integrator); uses CuPy if available, otherwise NumPy.
+- `core.py` — Unit scaling helper and grid classes (3D FFT-ready; 4D stub)
+- `solvers.py` — Spectral Poisson solver and scalar wave equation solver with CFL guard
+- `dynamics.py` — Particle ensemble, force accumulator, leapfrog stepper
+- `pn_orbit.py` — Fast two-body 1PN toy integrator with scalar 1/r^3 correction
 
-**Paper 6 (1PN Hybrid):** Synthesizes the scalar (orbital) and vector/optical sectors into a single hybrid 1PN description using a barotropic polytrope and defect mass scaling. Matching EIH coefficients fixes a stiff polytrope with \(n=5\) and \(q=1\), consistent with the Paper III wake-mixing ratio. Explores strong-field brane structure (transonic inflow, acoustic horizon) and predicts photon-sphere/lensing corrections controlled by the throat aspect ratio \(\Lambda \equiv L/a\). See `papers/1pn_hybrid.pdf`.
+### `experiments/`
+Python experiments that exercise the engine:
+- `verify_radial_law.py` — Fits inverse-square slope from a Gaussian source
+- `verify_mercury_calibrated.py` — Mercury perihelion: Newtonian vs scalar-only vs full 1PN
+
+Both use CuPy on GPU if installed; otherwise CPU.
 
 ## Python Environment
-- Core deps: `numpy`, `scipy`, `matplotlib`.
-- Optional GPU accel: `cupy` (falls back to NumPy when unavailable).
-- Experiments assume Python 3.9+; install deps via `pip install -r requirements.txt` if you add one, or install the packages above manually.
+- Core deps: `numpy`, `scipy`, `matplotlib`
+- Optional GPU accel: `cupy` (falls back to NumPy when unavailable)
+- Python 3.9+
 
-## Running the Experiments
-From the repo root:
-- Radial law check (fits the inverse-square slope from a Gaussian source):  
-  `python experiments/verify_radial_law.py`  
-  Saves `experiments/radial_law_nearfield.png`.
-- Mercury perihelion calibration (Newtonian vs scalar-only vs full 1PN toy):  
-  `python experiments/verify_mercury_calibrated.py`  
-  Prints orbit period/precession stats and saves mode-specific orbit plots.
-
-Both experiments will use CuPy on GPU if installed; otherwise they run on CPU.
-
-## Library Notes (`superfluid_lib/`)
-- `core.py` – Unit scaling helper and grid classes (3D FFT-ready; 4D stub).
-- `solvers.py` – Spectral Poisson solver and scalar wave equation solver with CFL guard.
-- `dynamics.py` – Particle ensemble container plus force accumulator (Poisson + optional wave potential, β-based inertia correction, Magnus/halo forces) and a simple leapfrog stepper.
-- `pn_orbit.py` – Fast two-body 1PN toy integrator with the scalar \(1/r^3\) correction.
-
-## Mathematica Derivations
-Files in `mathematica/` mirror the analytic steps in the papers, organized by subdirectory:
-- `1pn_orbital_dynamics/` – Lagrangian/Hamiltonian derivations, beta consistency checks, added-mass pieces.
-- `1pn_optics/` – Optical metric, polytropic index constraints, lensing/Shapiro derivations.
-- `1pn_spin_and_nbody/` – Gravitomagnetic sector, EIH Lagrangian matching, alpha constraint derivation.
-- `em_fields/` – Hydrodynamic-EM dictionary, breathing mode, Lorentz force from Magnus/pressure.
-- `brane_bulk_ontology/` – Brane-bulk mode resonance, dimensional reduction, quadratic form diagonalization.
-- `1pn_hybrid/` – Hybrid 1PN derivations.
-- `2pn/` – Work-in-progress 2PN extensions.
-
-The `.wl` files are runnable scripts; each file's output is stored as a final comment block within the file itself, so you can inspect results without re-running.
-
-## Misc Scripts (`scripts/`)
-- `ray_tracing.py` – Hamiltonian ray-bending toy tests (refraction vs flow vs split model).
-- `shapiro_delay.py` – Shapiro delay partitioning into refraction and flow contributions.
-
-## Status / Next Steps
-The paper series now covers 1PN orbital dynamics, optics, spin/N-body, electromagnetism, brane–bulk ontology, and hybrid 1PN results (Papers 1–6). Current work focuses on 2PN extensions (see `mathematica/2pn/`). The PDE/ODE engine in `superfluid_lib/` is still under active development (e.g., 4D grid support, tighter coupling between scalar sectors, better interpolation). Experiments currently focus on validation of the toy 1PN model.
+## Mathematica Notes
+The `.wl` files in each `research/<paper>/mathematica/` directory are runnable scripts. Each file's output is stored as a final comment block within the file itself, so you can inspect results without re-running.

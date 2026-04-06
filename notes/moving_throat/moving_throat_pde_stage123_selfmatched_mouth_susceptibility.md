@@ -29,6 +29,11 @@ So
 \Theta_\sigma = H_w J_s.
 }
 \]
+This is a same-layer closure: it removes an otherwise free susceptibility scale by
+identifying the source channel with the already active shell layer, rather than
+fitting a new branch-dependent coefficient by hand. If the actual mouth source
+lives on a materially different layer, the numerical prefactor derived below would
+change with that microscopic choice.
 
 Using the Stage-101 shell coupling
 \[
@@ -40,7 +45,7 @@ K_s=\frac{3\pi a^2\hbar^2}{5m_\psi\rho_w\ell},
 \]
 Stage 121 gives
 \[
-\Sigma_0=M_s=rac{L g_s^2}{K_s\Theta_\sigma}.
+\Sigma_0=M_s=\frac{L g_s^2}{K_s\Theta_\sigma}.
 \]
 A direct simplification yields
 \[
@@ -52,7 +57,7 @@ A direct simplification yields
 \]
 
 So the overall mouth shell gain is no longer abstract: it is fixed by one explicit
-traction scale.
+traction scale within this self-matched mouth-layer closure.
 
 ---
 

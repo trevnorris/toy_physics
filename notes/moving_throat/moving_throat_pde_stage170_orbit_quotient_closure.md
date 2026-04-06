@@ -54,7 +54,7 @@ then
 }
 \]
 
-The first grouped weak-axisymmetric defect is therefore nothing but the **infinitesimal motion of the actual branch in this exact three-dimensional quotient**.
+The first grouped weak-axisymmetric defect is therefore nothing but the **infinitesimal motion of the reduced grouped branch data in this exact three-dimensional quotient**.
 
 This is the cleanest finite closure reached so far.
 
@@ -398,7 +398,7 @@ Using the exact triangular normal form from Stage 166, the weak-axisymmetric obs
 }
 \]
 
-So the first coherent grouped weak-axisymmetric defect is literally the infinitesimal motion of the actual branch in the exact quotient coordinates.
+So the first coherent grouped weak-axisymmetric defect is literally the infinitesimal motion of the reduced grouped branch data in the exact quotient coordinates.
 
 ---
 
@@ -434,7 +434,12 @@ So the reduced coherent weak-axisymmetric zero-defect problem is now completely 
 
 - the five-parameter similarity orbit \(\mathcal G_*\) is the exact finite zero-cost co-scaling family,
 - the three monomials \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\) are the exact quotient coordinates,
-- and the first grouped weak-axisymmetric defect is exactly the infinitesimal motion of the actual branch in that three-dimensional quotient.
+- and the first grouped weak-axisymmetric defect is exactly the infinitesimal motion of the reduced grouped branch data in that three-dimensional quotient.
+
+Here “zero-cost” and “orbit” refer to the reduced coherent invariant structure only:
+they identify microscopic co-scalings that leave the reduced monomial data unchanged.
+They are not being asserted as fundamental gauge redundancies of the completed
+moving-throat PDE.
 
 ---
 
@@ -481,16 +486,16 @@ Then:
 1. \(\mathcal G_*\) preserves \(\mathcal I\) exactly.
 2. The fibres of \(\mathcal I\) are exactly the \(\mathcal G_*\)-orbits.
 3. Hence \(\mathcal M_+/\mathcal G_*\cong(\mathbb R_{>0})^3\) with quotient coordinates \(\mathcal I\).
-4. The first grouped weak-axisymmetric observables \((\Theta_1,\Xi_1,\mathcal R_1)\) are exactly the linearized motion of the actual branch in these quotient coordinates.
+4. The first grouped weak-axisymmetric observables \((\Theta_1,\Xi_1,\mathcal R_1)\) are exactly the linearized motion of the reduced grouped branch data in these quotient coordinates.
 
-Therefore the coherent weak-axisymmetric zero-defect theorem can now be stated in its cleanest finite form:
+Therefore the reduced coherent weak-axisymmetric zero-defect theorem can now be stated in its cleanest finite form:
 \[
 \boxed{
-\text{the defect vanishes exactly when the actual microscopic branch remains on one }
-\mathcal G_*\text{-orbit, i.e. when }
-(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)
-\text{ are preserved.}
+\text{at the reduced coherent level, zero defect is equivalent to vanishing first-order motion in }
+(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta),
+\text{ while finite equality of those invariants is equivalent to lying on one }
+\mathcal G_*\text{-orbit.}
 }
 \]
 
-That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself.
+That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself. The remaining open question is still the dynamical branch-selection theorem: whether the true PDE branch preserves those invariants.

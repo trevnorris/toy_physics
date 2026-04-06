@@ -1,0 +1,56 @@
+{
+  "schema": "moving_throat_numerical_stage108_v1",
+  "quadrature_points": 20001,
+  "bisection_iterations": 70,
+  "tolerances": {
+    "normalization_tol": 1e-8,
+    "moment_tol": 1e-8,
+    "root_tol": 1e-8
+  },
+  "g_minus": 0.758035078944663,
+  "g_plus": 2.79795199200529,
+  "profiles": [
+    {
+      "name": "uniform",
+      "kind": "uniform"
+    },
+    {
+      "name": "left_linear",
+      "kind": "left_linear"
+    },
+    {
+      "name": "left_beta_8",
+      "kind": "left_beta",
+      "p": 8
+    },
+    {
+      "name": "left_beta_20",
+      "kind": "left_beta",
+      "p": 20
+    },
+    {
+      "name": "right_beta_8",
+      "kind": "right_beta",
+      "p": 8
+    },
+    {
+      "name": "right_beta_20",
+      "kind": "right_beta",
+      "p": 20
+    },
+    {
+      "name": "exp_left_beta_1",
+      "kind": "exp_left",
+      "beta": 1.0
+    },
+    {
+      "name": "exp_left_beta_2",
+      "kind": "exp_left",
+      "beta": 2.0
+    }
+  ],
+  "gminus_realization": {
+    "family": "exp_left",
+    "beta_bracket": [1.0, 2.0]
+  }
+}

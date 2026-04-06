@@ -12,7 +12,7 @@ The next honest move is therefore to compress the coherent local kernel to the s
 
 This stage does that.
 
-The main result is that the first coherent local D/N kernel collapses to a very small parameter set:
+The main result is that, on the coherent tracking branch identified in Stage 28, the first coherent local D/N kernel collapses to a very small parameter set:
 
 - one wall/internal dressing ratio `eps_eta`,
 - one split-`U` axial ratio `delta_U`,
@@ -226,7 +226,7 @@ The first coherent local D/N kernel is now compressed to an exact dimensionless 
 The reduced theorem gap is no longer “how do we represent the support lane?”
 It is now much sharper:
 
-> for the first coherent local D/N kernel, the support lane enters only by increasing the baseline through one exact enhancement factor, while the retarded demand ratio is still fixed by the mixed/outgoing lane.
+> for the first coherent local D/N kernel on the coherent tracking branch, the support lane enters only by increasing the baseline through one exact enhancement factor, while the retarded demand ratio is still fixed by the mixed/outgoing lane.
 
 So the next honest question is no longer about closure choice.
 It is:

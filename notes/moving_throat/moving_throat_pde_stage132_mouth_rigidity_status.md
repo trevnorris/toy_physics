@@ -51,7 +51,8 @@ The mouth-side branch problem is now significantly tighter than it was at Stage 
    |A_T|/B_T\approx 31.68.
    \]
 
-5. For representative positive non-exponential families:
+5. For representative positive non-exponential families at this same first-order
+   deformation level:
    - uniform broadening raises the canonical point,
    - derivative matching lowers it,
    - and the zero-shift mixture coincides almost exactly with the earlier Stage-109
@@ -59,14 +60,18 @@ The mouth-side branch problem is now significantly tighter than it was at Stage 
 
 ## Updated interpretation
 
-Inside the explicit Family-1 positive mouth-layer closure, the mouth-side ambiguity is now
+Inside the explicit Family-1 positive mouth-layer closure, and at the same
+first-order deformation level used in Stages 129-131, the mouth-side ambiguity is now
 no longer a branch-selection problem and no longer a large shape-space uncertainty.
 
 It has been reduced to:
 
-1. a single canonical branch,
+1. a single regular canonical branch inside the explicit Family-1 closure,
 2. one explicit rigidity kernel \(\mathcal W_*(x)\),
-3. and modest finite shifts under smooth positive non-exponential deformations.
+3. and perturbative finite shifts under smooth positive non-exponential deformations.
+
+The stage remains a perturbative rigidity summary, not yet a full nonlinear
+mouth theorem for arbitrary finite deformations.
 
 So the remaining PDE-facing question is not “which mouth branch?” but rather:
 

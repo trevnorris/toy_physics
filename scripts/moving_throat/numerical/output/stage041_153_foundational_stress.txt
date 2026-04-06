@@ -1,0 +1,66 @@
+Loaded config from /var/projects/toy_physics/scripts/moving_throat/numerical/stage041_153_foundational_samples.json
+
+=== Stage 041: coupled support/source fixed point ===
+
+small_xi_interior (interior): alpha=0.8, eta=0.4, Xi=0.5
+[PASS] stage041 bracket sign: flo=-0.00313620964604, fhi=0.217459513509
+[PASS] small_xi_interior Delta0 quadrature check: quadrature=0.169332656784, formula=0.169332656761
+[PASS] small_xi_interior Delta(root) quadrature check: quadrature=0.175846337545, formula=0.175846337489
+[PASS] small_xi_interior fixed point residual: residual=-1.38777878078e-16
+[PASS] small_xi_interior Pe bracket: Pe_lo=0.0846663283805, root=0.0879231687443, Pe_hi=0.313734970525
+  Delta0=0.169332656761, Delta_inf=0.627469941051, Pe_*=0.0879231687443, Xi Delta(Pe_*)=0.0879231687443
+
+moderate_xi_same_kernel (interior): alpha=0.8, eta=0.4, Xi=3
+[PASS] stage041 bracket sign: flo=-0.112531501563, fhi=0.977299406245
+[PASS] moderate_xi_same_kernel Delta0 quadrature check: quadrature=0.169332656784, formula=0.169332656761
+[PASS] moderate_xi_same_kernel Delta(root) quadrature check: quadrature=0.217365043429, formula=0.217365043135
+[PASS] moderate_xi_same_kernel fixed point residual: residual=-7.77156117238e-16
+[PASS] moderate_xi_same_kernel Pe bracket: Pe_lo=0.507997970283, root=0.652095129404, Pe_hi=1.88240982315
+  Delta0=0.169332656761, Delta_inf=0.627469941051, Pe_*=0.652095129404, Xi Delta(Pe_*)=0.652095129404
+
+moderate_alpha_stronger_eta (interior): alpha=1.4, eta=1.2, Xi=0.8
+[PASS] stage041 bracket sign: flo=-0.00520448234435, fhi=0.296365294887
+[PASS] moderate_alpha_stronger_eta Delta0 quadrature check: quadrature=0.134289736962, formula=0.134289736907
+[PASS] moderate_alpha_stronger_eta Delta(root) quadrature check: quadrature=0.141126630208, formula=0.141126630114
+[PASS] moderate_alpha_stronger_eta fixed point residual: residual=5.55111512313e-17
+[PASS] moderate_alpha_stronger_eta Pe bracket: Pe_lo=0.107431789525, root=0.112901304092, Pe_hi=0.424334471542
+  Delta0=0.134289736907, Delta_inf=0.530418089427, Pe_*=0.112901304092, Xi Delta(Pe_*)=0.112901304092
+
+larger_xi_moderate_kernel (stress): alpha=1.4, eta=1.2, Xi=4
+[PASS] stage041 bracket sign: flo=-0.129843854814, fhi=1.09949015551
+[PASS] larger_xi_moderate_kernel Delta0 quadrature check: quadrature=0.134289736962, formula=0.134289736907
+[PASS] larger_xi_moderate_kernel Delta(root) quadrature check: quadrature=0.176959014392, formula=0.176959014075
+[PASS] larger_xi_moderate_kernel fixed point residual: residual=-4.4408920985e-16
+[PASS] larger_xi_moderate_kernel Pe bracket: Pe_lo=0.537158947627, root=0.707836056301, Pe_hi=2.12167235771
+  Delta0=0.134289736907, Delta_inf=0.530418089427, Pe_*=0.707836056301, Xi Delta(Pe_*)=0.707836056301
+
+large_xi_larger_alpha (stress): alpha=2, eta=0.7, Xi=6
+[PASS] stage041 bracket sign: flo=-0.0946391559426, fhi=1.42317388281
+[PASS] large_xi_larger_alpha Delta0 quadrature check: quadrature=0.048889616934, formula=0.0488896168932
+[PASS] large_xi_larger_alpha Delta(root) quadrature check: quadrature=0.0721413440927, formula=0.0721413439045
+[PASS] large_xi_larger_alpha fixed point residual: residual=1.11022302463e-16
+[PASS] large_xi_larger_alpha Pe bracket: Pe_lo=0.293337701359, root=0.432848063427, Pe_hi=2.44654094124
+  Delta0=0.0488896168932, Delta_inf=0.40775682354, Pe_*=0.432848063427, Xi Delta(Pe_*)=0.432848063427
+
+=== Stage 153: grouped outlet map ===
+
+pair_a1: dD0=0.09, dD2=0.01, dD4=0.01, dN0=0.48
+[PASS] pair_a1 direct even consistency: du4=-0.00592592586113, 8/9 du2=-0.00592592592281
+[PASS] pair_a1 delta kappa map: direct=0.0107692307636, expected=0.0107692307692
+[PASS] pair_a1 delta gamma map: direct=-0.00299145310612, expected=-0.00299145299145
+  K_A=0.02, G_A=0.3, delta_kappa=0.0107692307636, delta_gamma=-0.00299145310612
+
+pair_a2: dD0=-0.18, dD2=0.04, dD4=0.02, dN0=-0.06
+[PASS] pair_a2 direct even consistency: du4=-0.00592592599991, 8/9 du2=-0.00592592592281
+[PASS] pair_a2 delta kappa map: direct=0.0107692307636, expected=0.0107692307692
+[PASS] pair_a2 delta gamma map: direct=-0.00299145310612, expected=-0.00299145299145
+  K_A=0.02, G_A=0.3, delta_kappa=0.0107692307636, delta_gamma=-0.00299145310612
+[PASS] consistent pair K_A collapse: K_A(1)=0.02, K_A(2)=0.02
+[PASS] consistent pair G_A collapse: G_A(1)=0.3, G_A(2)=0.3
+[PASS] consistent pair delta kappa equality: delta_kappa(1)=0.0107692307692, delta_kappa(2)=0.0107692307692
+[PASS] consistent pair delta gamma equality: delta_gamma(1)=-0.00299145299145, delta_gamma(2)=-0.00299145299145
+
+bad_even_lane: mismatch=0.00506172838212
+[PASS] bad_even_lane violates hidden-even consistency: du4 - 8/9 du2=0.00506172838212
+
+All stage-041/153 foundational stress checks passed.

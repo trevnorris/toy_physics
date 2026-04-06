@@ -223,7 +223,7 @@ This is the exact reduced statement behind the compensation theorem:
 
 ## 6. Best current theorem statement after Stage 31
 
-The coherent local D/N branch now has an exact support-feasibility theorem.
+The coherent local D/N branch now has an exact reduced support-feasibility theorem.
 
 ### What is exact now
 

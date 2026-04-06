@@ -1,0 +1,198 @@
+Loaded config from /var/projects/toy_physics/scripts/moving_throat/numerical/stage168_170_orbit_samples.json
+
+=== interior_positive ===
+reference coefficients: chi0*=0.513333333333, deltaU*=0.400000000000, epsilon_W*=0.368761904762, epsilon*=0.349605442177, E*=1.075056480629, F*=0.775409907918, epsilon_eta*=0.362962962963
+
+-- Stage 168: observable vs microscopic drifts --
+tangent tangent_a: obs=(0.000000000000, 0.000000002220, -0.000000002220) mon=(-0.000000005551, 0.000000000000, -0.000000002220)
+[PASS] tangent_a monomial drift matches linear Sigma_tr: direct=-0.000000005551, linear=0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_nt: direct=0.000000000000, linear=-0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_eta: direct=-0.000000002220, linear=0.000000000000
+[PASS] tangent_a observable drift matches monomial Sigma_tr: observable=0.000000000000, monomial=-0.000000005551
+[PASS] tangent_a observable drift matches monomial Sigma_nt: observable=0.000000002220, monomial=0.000000000000
+[PASS] tangent_a observable drift matches monomial Sigma_eta: observable=-0.000000002220, monomial=-0.000000002220
+  defects: Theta_1=0.000000000281, Xi_1=-0.000000002690, R_1+Xi_1=0.000000001265
+tangent tangent_b: obs=(0.000000000000, 0.000000013323, -0.000000002220) mon=(0.000000004441, -0.000000002220, -0.000000002220)
+[PASS] tangent_b monomial drift matches linear Sigma_tr: direct=0.000000004441, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_nt: direct=-0.000000002220, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_eta: direct=-0.000000002220, linear=0.000000000000
+[PASS] tangent_b observable drift matches monomial Sigma_tr: observable=0.000000000000, monomial=0.000000004441
+[PASS] tangent_b observable drift matches monomial Sigma_nt: observable=0.000000013323, monomial=-0.000000002220
+[PASS] tangent_b observable drift matches monomial Sigma_eta: observable=-0.000000002220, monomial=-0.000000002220
+  defects: Theta_1=-0.000000000225, Xi_1=-0.000000000068, R_1+Xi_1=0.000000001265
+transverse transverse_a: obs=(0.236466674554, 0.603976939097, -0.109999998604) mon=(0.236466670114, 0.603976930215, -0.109999998604)
+[PASS] transverse_a monomial drift matches linear Sigma_tr: direct=0.236466670114, linear=0.236466666667
+[PASS] transverse_a monomial drift matches linear Sigma_nt: direct=0.603976930215, linear=0.603976937574
+[PASS] transverse_a monomial drift matches linear Sigma_eta: direct=-0.109999998604, linear=-0.110000000000
+[PASS] transverse_a observable drift matches monomial Sigma_tr: observable=0.236466674554, monomial=0.236466670114
+[PASS] transverse_a observable drift matches monomial Sigma_nt: observable=0.603976939097, monomial=0.603976930215
+[PASS] transverse_a observable drift matches monomial Sigma_eta: observable=-0.109999998604, monomial=-0.109999998604
+  defects: Theta_1=-0.011977774200, Xi_1=0.718564303398, R_1+Xi_1=0.062674417809
+[PASS] transverse_a is genuinely transverse: max monomial drift=0.603976930215
+transverse transverse_b: obs=(-0.044266643782, -0.596258197273, 0.079999999638) mon=(-0.044266662656, -0.596258193943, 0.079999999638)
+[PASS] transverse_b monomial drift matches linear Sigma_tr: direct=-0.044266662656, linear=-0.044266666667
+[PASS] transverse_b monomial drift matches linear Sigma_nt: direct=-0.596258193943, linear=-0.596258181224
+[PASS] transverse_b monomial drift matches linear Sigma_eta: direct=0.079999999638, linear=0.080000000000
+[PASS] transverse_b observable drift matches monomial Sigma_tr: observable=-0.044266643782, monomial=-0.044266662656
+[PASS] transverse_b observable drift matches monomial Sigma_nt: observable=-0.596258197273, monomial=-0.596258193943
+[PASS] transverse_b observable drift matches monomial Sigma_eta: observable=0.079999999638, monomial=0.079999999638
+  defects: Theta_1=0.002242244497, Xi_1=-0.617708999635, R_1+Xi_1=-0.045581395143
+[PASS] transverse_b is genuinely transverse: max monomial drift=0.596258193943
+
+-- Stage 169: tangent-space kernel checks --
+det selected minor = 1.513333333333
+cond(M_*) = 3.300875258308
+cond(selected minor) = 3.308900163833
+[PASS] selected minor determinant = 1 + chi_*: det=1.513333333333, expected=1.513333333333
+[PASS] tangent_a lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_a preserves the invariant triple to first order: max drift=0.000000005551
+[PASS] tangent_b lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_b preserves the invariant triple to first order: max drift=0.000000004441
+
+-- Stage 170: finite orbit/quotient checks --
+[PASS] orbit_pair_a recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_a Delta_eta finite law: direct=-0.370000000000, expected=-0.370000000000
+[PASS] orbit_pair_a Delta_T finite law: direct=0.136255506608, expected=0.136255506608
+[PASS] orbit_pair_a Delta_mu finite law: direct=-2.000182724834, expected=-2.000182724834
+[PASS] orbit_pair_a preserves Ctr: log ratio=0.000000000000
+[PASS] orbit_pair_a preserves Cnt: log ratio=0.000000000000
+[PASS] orbit_pair_a preserves eps_eta: log ratio=0.000000000000
+[PASS] orbit_pair_b recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_b Delta_eta finite law: direct=0.080000000000, expected=0.080000000000
+[PASS] orbit_pair_b Delta_T finite law: direct=0.243259911894, expected=0.243259911894
+[PASS] orbit_pair_b Delta_mu finite law: direct=1.561603485893, expected=1.561603485893
+[PASS] orbit_pair_b preserves Ctr: log ratio=0.000000000000
+[PASS] orbit_pair_b preserves Cnt: log ratio=-0.000000000000
+[PASS] orbit_pair_b preserves eps_eta: log ratio=0.000000000000
+
+=== weak_coherent_edge ===
+reference coefficients: chi0*=0.014400000000, deltaU*=0.400000000000, epsilon_W*=0.003689411765, epsilon*=0.003497754011, E*=0.007020062473, F*=0.020846186398, epsilon_eta*=0.017052631579
+
+-- Stage 168: observable vs microscopic drifts --
+tangent tangent_a: obs=(0.000000000000, -0.000000004441, 0.000000000000) mon=(-0.000000003331, -0.000000002220, 0.000000000000)
+[PASS] tangent_a monomial drift matches linear Sigma_tr: direct=-0.000000003331, linear=0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_nt: direct=-0.000000002220, linear=-0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_eta: direct=0.000000000000, linear=0.000000000000
+[PASS] tangent_a observable drift matches monomial Sigma_tr: observable=0.000000000000, monomial=-0.000000003331
+[PASS] tangent_a observable drift matches monomial Sigma_nt: observable=-0.000000004441, monomial=-0.000000002220
+[PASS] tangent_a observable drift matches monomial Sigma_eta: observable=0.000000000000, monomial=0.000000000000
+  defects: Theta_1=0.000000000010, Xi_1=-0.000000002288, R_1+Xi_1=0.000000000000
+tangent tangent_b: obs=(-0.000000389688, 0.000000000000, 0.000000002220) mon=(0.000000000000, -0.000000001110, 0.000000002220)
+[PASS] tangent_b monomial drift matches linear Sigma_tr: direct=0.000000000000, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_nt: direct=-0.000000001110, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_eta: direct=0.000000002220, linear=0.000000000000
+[PASS] tangent_b observable drift matches monomial Sigma_tr: observable=-0.000000389688, monomial=0.000000000000
+[PASS] tangent_b observable drift matches monomial Sigma_nt: observable=0.000000000000, monomial=-0.000000001110
+[PASS] tangent_b observable drift matches monomial Sigma_eta: observable=0.000000002220, monomial=0.000000002220
+  defects: Theta_1=0.000000000000, Xi_1=-0.000000001110, R_1+Xi_1=-0.000000000039
+transverse transverse_a: obs=(0.151152120788, 0.230648915083, -0.070000002706) mon=(0.151152003104, 0.230648921744, -0.070000002706)
+[PASS] transverse_a monomial drift matches linear Sigma_tr: direct=0.151152003104, linear=0.151152000000
+[PASS] transverse_a monomial drift matches linear Sigma_nt: direct=0.230648921744, linear=0.230648925704
+[PASS] transverse_a monomial drift matches linear Sigma_eta: direct=-0.070000002706, linear=-0.070000000000
+[PASS] transverse_a observable drift matches monomial Sigma_tr: observable=0.151152120788, monomial=0.151152003104
+[PASS] transverse_a observable drift matches monomial Sigma_nt: observable=0.230648915083, monomial=0.230648921744
+[PASS] transverse_a observable drift matches monomial Sigma_eta: observable=-0.070000002706, monomial=-0.070000002706
+  defects: Theta_1=-0.000433437883, Xi_1=0.233714194453, R_1+Xi_1=0.001214392851
+[PASS] transverse_a is genuinely transverse: max monomial drift=0.230648921744
+transverse transverse_b: obs=(0.003855937791, -0.196160446478, 0.085000000010) mon=(0.003855995522, -0.196160443148, 0.085000000010)
+[PASS] transverse_b monomial drift matches linear Sigma_tr: direct=0.003855995522, linear=0.003856000000
+[PASS] transverse_b monomial drift matches linear Sigma_nt: direct=-0.196160443148, linear=-0.196160450318
+[PASS] transverse_b monomial drift matches linear Sigma_eta: direct=0.085000000010, linear=0.085000000000
+[PASS] transverse_b observable drift matches monomial Sigma_tr: observable=0.003855937791, monomial=0.003855995522
+[PASS] transverse_b observable drift matches monomial Sigma_nt: observable=-0.196160446478, monomial=-0.196160443148
+[PASS] transverse_b observable drift matches monomial Sigma_eta: observable=0.085000000010, monomial=0.085000000010
+  defects: Theta_1=-0.000011057310, Xi_1=-0.196082245852, R_1+Xi_1=-0.001474619833
+[PASS] transverse_b is genuinely transverse: max monomial drift=0.196160443148
+
+-- Stage 169: tangent-space kernel checks --
+det selected minor = 1.014400000000
+cond(M_*) = 2.355299330032
+cond(selected minor) = 2.618536006902
+[PASS] selected minor determinant = 1 + chi_*: det=1.014400000000, expected=1.014400000000
+[PASS] tangent_a lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_a preserves the invariant triple to first order: max drift=0.000000003331
+[PASS] tangent_b lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_b preserves the invariant triple to first order: max drift=0.000000002220
+
+-- Stage 170: finite orbit/quotient checks --
+[PASS] orbit_pair_a recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_a Delta_eta finite law: direct=-0.260000000000, expected=-0.260000000000
+[PASS] orbit_pair_a Delta_T finite law: direct=0.121403785489, expected=0.121403785489
+[PASS] orbit_pair_a Delta_mu finite law: direct=-0.743489327703, expected=-0.743489327703
+[PASS] orbit_pair_a preserves Ctr: log ratio=0.000000000000
+[PASS] orbit_pair_a preserves Cnt: log ratio=-0.000000000000
+[PASS] orbit_pair_a preserves eps_eta: log ratio=0.000000000000
+[PASS] orbit_pair_b recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_b Delta_eta finite law: direct=0.090000000000, expected=0.090000000000
+[PASS] orbit_pair_b Delta_T finite law: direct=0.179006309148, expected=0.179006309148
+[PASS] orbit_pair_b Delta_mu finite law: direct=0.555510154618, expected=0.555510154618
+[PASS] orbit_pair_b preserves Ctr: log ratio=0.000000000000
+[PASS] orbit_pair_b preserves Cnt: log ratio=-0.000000000000
+[PASS] orbit_pair_b preserves eps_eta: log ratio=0.000000000000
+
+=== weak_split_edge ===
+reference coefficients: chi0*=0.492187500000, deltaU*=0.012500000000, epsilon_W*=0.384924568966, epsilon*=0.384060540752, E*=1.247072370461, F*=0.974993147791, epsilon_eta*=0.319602272727
+
+-- Stage 168: observable vs microscopic drifts --
+tangent tangent_a: obs=(0.000000000000, 0.000000004441, 0.000000000000) mon=(-0.000000001110, 0.000000000000, 0.000000000000)
+[PASS] tangent_a monomial drift matches linear Sigma_tr: direct=-0.000000001110, linear=0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_nt: direct=0.000000000000, linear=0.000000000000
+[PASS] tangent_a monomial drift matches linear Sigma_eta: direct=0.000000000000, linear=0.000000000000
+[PASS] tangent_a observable drift matches monomial Sigma_tr: observable=0.000000000000, monomial=-0.000000001110
+[PASS] tangent_a observable drift matches monomial Sigma_nt: observable=0.000000004441, monomial=0.000000000000
+[PASS] tangent_a observable drift matches monomial Sigma_eta: observable=0.000000000000, monomial=0.000000000000
+  defects: Theta_1=0.000000000003, Xi_1=-0.000000000723, R_1+Xi_1=0.000000000000
+tangent tangent_b: obs=(0.000000413003, -0.000000260902, 0.000000002220) mon=(0.000000004441, 0.000000002220, 0.000000002220)
+[PASS] tangent_b monomial drift matches linear Sigma_tr: direct=0.000000004441, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_nt: direct=0.000000002220, linear=0.000000000000
+[PASS] tangent_b monomial drift matches linear Sigma_eta: direct=0.000000002220, linear=0.000000000000
+[PASS] tangent_b observable drift matches monomial Sigma_tr: observable=0.000000413003, monomial=0.000000004441
+[PASS] tangent_b observable drift matches monomial Sigma_nt: observable=-0.000000260902, monomial=0.000000002220
+[PASS] tangent_b observable drift matches monomial Sigma_eta: observable=0.000000002220, monomial=0.000000002220
+  defects: Theta_1=-0.000000000012, Xi_1=0.000000005114, R_1+Xi_1=-0.000000001043
+transverse transverse_a: obs=(0.122305076429, 0.489570103574, -0.070000000486) mon=(0.122304687851, 0.489570354485, -0.070000000486)
+[PASS] transverse_a monomial drift matches linear Sigma_tr: direct=0.122304687851, linear=0.122304687500
+[PASS] transverse_a monomial drift matches linear Sigma_nt: direct=0.489570354485, linear=0.489570347270
+[PASS] transverse_a monomial drift matches linear Sigma_eta: direct=-0.070000000486, linear=-0.070000000000
+[PASS] transverse_a observable drift matches monomial Sigma_tr: observable=0.122305076429, monomial=0.122304687851
+[PASS] transverse_a observable drift matches monomial Sigma_nt: observable=0.489570103574, monomial=0.489570354485
+[PASS] transverse_a observable drift matches monomial Sigma_eta: observable=-0.070000000486, monomial=-0.070000000486
+  defects: Theta_1=-0.000330993110, Xi_1=0.569256945755, R_1+Xi_1=0.032881002316
+[PASS] transverse_a is genuinely transverse: max monomial drift=0.489570354485
+transverse transverse_b: obs=(0.006234730508, -0.335187702105, 0.092000000528) mon=(0.006234375236, -0.335187472289, 0.092000000528)
+[PASS] transverse_b monomial drift matches linear Sigma_tr: direct=0.006234375236, linear=0.006234375000
+[PASS] transverse_b monomial drift matches linear Sigma_nt: direct=-0.335187472289, linear=-0.335187475646
+[PASS] transverse_b monomial drift matches linear Sigma_eta: direct=0.092000000528, linear=0.092000000000
+[PASS] transverse_b observable drift matches monomial Sigma_tr: observable=0.006234730508, monomial=0.006234375236
+[PASS] transverse_b observable drift matches monomial Sigma_nt: observable=-0.335187702105, monomial=-0.335187472289
+[PASS] transverse_b observable drift matches monomial Sigma_eta: observable=0.092000000528, monomial=0.092000000528
+  defects: Theta_1=-0.000016872086, Xi_1=-0.331125517510, R_1+Xi_1=-0.043215031563
+[PASS] transverse_b is genuinely transverse: max monomial drift=0.335187472289
+
+-- Stage 169: tangent-space kernel checks --
+det selected minor = 1.492187500000
+cond(M_*) = 3.539599525330
+cond(selected minor) = 3.585928796887
+[PASS] selected minor determinant = 1 + chi_*: det=1.492187500000, expected=1.492187500000
+[PASS] tangent_a lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_a preserves the invariant triple to first order: max drift=0.000000001110
+[PASS] tangent_b lies in ker(M_*): max residual=0.000000000000
+[PASS] tangent_b preserves the invariant triple to first order: max drift=0.000000004441
+
+-- Stage 170: finite orbit/quotient checks --
+[PASS] orbit_pair_a recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_a Delta_eta finite law: direct=-0.220000000000, expected=-0.220000000000
+[PASS] orbit_pair_a Delta_T finite law: direct=0.087141361257, expected=0.087141361257
+[PASS] orbit_pair_a Delta_mu finite law: direct=-1.159661372870, expected=-1.159661372870
+[PASS] orbit_pair_a preserves Ctr: log ratio=-0.000000000000
+[PASS] orbit_pair_a preserves Cnt: log ratio=0.000000000000
+[PASS] orbit_pair_a preserves eps_eta: log ratio=0.000000000000
+[PASS] orbit_pair_b recovers its finite log-ratio vector: max recovery error=0.000000000000
+[PASS] orbit_pair_b Delta_eta finite law: direct=0.080000000000, expected=0.080000000000
+[PASS] orbit_pair_b Delta_T finite law: direct=0.130534031414, expected=0.130534031414
+[PASS] orbit_pair_b Delta_mu finite law: direct=1.055894485520, expected=1.055894485520
+[PASS] orbit_pair_b preserves Ctr: log ratio=0.000000000000
+[PASS] orbit_pair_b preserves Cnt: log ratio=-0.000000000000
+[PASS] orbit_pair_b preserves eps_eta: log ratio=0.000000000000
+
+All stage-168/170 orbit-conditioning stress checks passed.

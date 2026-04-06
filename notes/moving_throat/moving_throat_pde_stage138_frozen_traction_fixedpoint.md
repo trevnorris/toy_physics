@@ -22,7 +22,7 @@ This answers a very specific question:
 
 ---
 
-## 1. Unique positive fixed point
+## 1. Positive fixed point on the analyzed branch window
 
 Iterating the exact nonlinear map
 \[
@@ -30,8 +30,9 @@ Iterating the exact nonlinear map
 \frac{e^{-\Phi_{\Sigma_0^*}[\Sigma]}}
 {\int_0^1 e^{-\Phi_{\Sigma_0^*}[\Sigma](y)}dy}
 \]
-from the canonical exponential seed converges to a unique positive fixed point
-\(\Sigma_{\rm fp}\) on the explicit Family-1 branch.
+from the canonical exponential seed converges to a positive fixed point
+\(\Sigma_{\rm fp}\) on the explicit Family-1 branch. On the analyzed branch window,
+this fixed point is unique.
 
 Its selected moments are
 \[
@@ -124,7 +125,7 @@ the observed fixed-point broadening predicts
 -\frac{\delta\mathfrak g_{\rm fp}}{\sqrt{1+\mathfrak r_{F1}^2}}
 +
 \frac{(\delta\mathfrak g_{\rm fp})^2}{1+\mathfrak r_{F1}^2}
-pprox 0.0327139049082381,
+\approx 0.0327139049082381,
 \]
 which matches the direct fixed-point value.
 

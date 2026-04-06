@@ -1,0 +1,159 @@
+{
+  "schema": "moving_throat_numerical_stage125_127_v1",
+  "quadrature_points": 8193,
+  "bisection_iterations": 60,
+  "tolerances": {
+    "normalization_tol": 1e-12,
+    "quadrature_tol": 3e-7,
+    "residual_tol": 3e-6,
+    "root_tol": 1e-10,
+    "ratio_tol": 5e-3
+  },
+  "constants": {
+    "rF1": 1.77799353547498,
+    "g_minus_expected": 0.758035078944663,
+    "g_plus_expected": 2.79795199200529,
+    "Pi_star_expected": 1.50882951349316,
+    "Pi_match_expected": 1.90848600654854,
+    "T_hat_star_expected": 0.901484054174205,
+    "T_hat_match_expected": 1.01132972803599,
+    "R_inf_expected": 0.145454452260420,
+    "denom_inf_expected": 0.854545547739580,
+    "that_sqrtPi_limit_expected": 0.725669130700713
+  },
+  "sample_points": [
+    {
+      "name": "small_bias",
+      "kind": "interior",
+      "Pi": 0.1,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "finite positive bias"
+      ]
+    },
+    {
+      "name": "moderate_bias",
+      "kind": "interior",
+      "Pi": 0.5,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "finite positive bias"
+      ]
+    },
+    {
+      "name": "canonical_point",
+      "kind": "interior",
+      "Pi": 1.50882951349316,
+      "assumptions": [
+        "lower compensated Family-1 branch inside the explicit closure",
+        "finite regular positive source"
+      ]
+    },
+    {
+      "name": "derivative_match_point",
+      "kind": "interior",
+      "Pi": 1.90848600654854,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "finite derivative-match point"
+      ]
+    },
+    {
+      "name": "large_bias",
+      "kind": "stress",
+      "Pi": 4.0,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "large but finite bias"
+      ]
+    },
+    {
+      "name": "asymptotic_16",
+      "kind": "near-boundary",
+      "Pi": 16.0,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "approach to the point-source singular limit"
+      ]
+    },
+    {
+      "name": "asymptotic_32",
+      "kind": "near-boundary",
+      "Pi": 32.0,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "approach to the point-source singular limit"
+      ]
+    },
+    {
+      "name": "asymptotic_64",
+      "kind": "near-boundary",
+      "Pi": 64.0,
+      "assumptions": [
+        "explicit positive exponential mouth-layer family",
+        "approach to the point-source singular limit"
+      ]
+    }
+  ],
+  "monotone_scan_points": [
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0
+  ],
+  "root_checks": [
+    {
+      "name": "lower_compensated_branch",
+      "target_key": "g_minus_expected",
+      "expected_pi": 1.50882951349316,
+      "brackets": [
+        [
+          0.5,
+          2.5
+        ],
+        [
+          1.0,
+          2.0
+        ]
+      ]
+    },
+    {
+      "name": "derivative_match_branch",
+      "target_key": "pi_over_4",
+      "expected_pi": 1.90848600654854,
+      "brackets": [
+        [
+          1.5,
+          2.5
+        ],
+        [
+          1.8,
+          2.1
+        ]
+      ]
+    }
+  ],
+  "finite_exclusion_points": [
+    0.1,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0
+  ],
+  "asymptotic_samples": [
+    16.0,
+    32.0,
+    64.0
+  ]
+}

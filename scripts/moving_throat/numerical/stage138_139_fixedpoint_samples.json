@@ -1,0 +1,93 @@
+{
+  "schema": "moving_throat_numerical_stage138_139_v1",
+  "grid_points": 2401,
+  "max_iterations": 500,
+  "fixed_point_tol": 1e-13,
+  "profile_tolerance": 1e-9,
+  "moment_tolerance": 1e-10,
+  "root_tolerance": 1e-10,
+  "bisection_iterations": 50,
+  "constants": {
+    "rF1": 1.77799353547498,
+    "g_star": 0.758035078944663,
+    "Pi_star": 1.50882951349316,
+    "Sigma0_star": 1.80594111095636,
+    "T_hat_star": 0.901484054174204,
+    "Sigma0_can_expected": 4.651033550168867,
+    "S_can_expected": 0.6703621156734617,
+    "Pi_can_expected": 3.871564377479002,
+    "T_hat_can_expected": 1.4467083664567613
+  },
+  "seeds": [
+    {
+      "name": "canonical_exponential",
+      "kind": "canonical_exponential"
+    },
+    {
+      "name": "uniform",
+      "kind": "uniform"
+    },
+    {
+      "name": "derivative_match",
+      "kind": "derivative_match"
+    },
+    {
+      "name": "broad_mixture",
+      "kind": "convex_blend",
+      "lambda": 0.38
+    }
+  ],
+  "seed_check_sigmas": [
+    {
+      "name": "frozen_canonical_traction",
+      "kind": "interior",
+      "sigma0": 1.80594111095636,
+      "assumptions": [
+        "explicit Family-1 co-evolving fixed-point map",
+        "positive normalized source profiles",
+        "same analyzed branch window as stages 138-139"
+      ]
+    },
+    {
+      "name": "low_sigma_scan_point",
+      "kind": "interior",
+      "sigma0": 3.0,
+      "assumptions": [
+        "positive fixed-point branch",
+        "seed-independence test below renormalized root"
+      ]
+    },
+    {
+      "name": "near_renormalized_branch",
+      "kind": "interior",
+      "sigma0": 4.651033550168867,
+      "assumptions": [
+        "positive fixed-point branch",
+        "seed-independence test at the numerically located compensation root"
+      ]
+    },
+    {
+      "name": "high_sigma_scan_point",
+      "kind": "interior",
+      "sigma0": 6.0,
+      "assumptions": [
+        "positive fixed-point branch",
+        "seed-independence test above renormalized root"
+      ]
+    }
+  ],
+  "stage139_scan_points": [
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0
+  ],
+  "stage139_root_brackets": [
+    [3.0, 6.0],
+    [4.0, 5.0],
+    [4.6, 4.7]
+  ]
+}

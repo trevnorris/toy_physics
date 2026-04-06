@@ -10,6 +10,9 @@ The coupled mouth-layer problem is now much tighter than it was at Stage 116.
    \qquad
    M_q=-\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
    \]
+   This statement is within the explicit throat-core plus mouth-layer closure of
+   Stages 120–123; it is not yet a theorem that the full PDE admits no other
+   microscopic realization of the mouth source law.
 
 2. In normalized core variables,
    \[
@@ -48,7 +51,8 @@ The coupled mouth-layer problem is now much tighter than it was at Stage 116.
 
 ## What remains open
 
-The mouth-layer ambiguity is no longer a profile ambiguity and no longer a free gain pair.
+Within the explicit mouth-layer closure, the ambiguity is no longer a profile ambiguity
+and no longer a free gain pair.
 It has shrunk to two very concrete microscopic questions:
 
 1. does the real moving-throat mouth source choose the natural equal-normalized branch

@@ -202,6 +202,11 @@ Here:
 - `K_eta(w)` is a local restoring potential,
 - `gamma_0` is the metric determinant on the background throat surface.
 
+At this stage these are fixed effective constitutive functions of the chosen
+reference throat. The later derivation treats them as branch data to be computed
+or constrained, not as coefficients to be refit stage by stage to rescue the
+normalization chain.
+
 From this point onward, the modal equations are written in a densitized
 convention: after integrating over the reference sphere, the remaining
 background surface weight is absorbed into the effective one-dimensional

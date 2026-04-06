@@ -93,7 +93,7 @@ Now interpolate the two explicit positive families:
 \]
 
 Because the first-order formulas are affine in \((\bar g_\varsigma,\bar S_\varsigma)\),
-the canonical shifts are exactly
+the canonical first-order shifts are exactly
 \[
 \boxed{
 \frac{\delta\Pi_\lambda}{\epsilon}
@@ -155,6 +155,6 @@ For the two most natural explicit positive non-exponential mouth families:
 - and the zero-shift mixture lies very close to the earlier exact compensation
   broadening fraction.
 
-This is the best evidence so far that the canonical Family-1 mouth branch is
+This is the best first-order evidence so far that the canonical Family-1 mouth branch is
 **rigid but not brittle**: moderate positive non-exponential corrections move it in a
 controlled, almost one-parameter way.

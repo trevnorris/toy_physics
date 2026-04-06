@@ -1,0 +1,116 @@
+
+=== interior_support_needed (interior) ===
+assumptions:
+  - coherent tracking branch
+  - 0 < eps < 1
+  - 0 < xi < 1
+  - M_mix < M_crit
+  - support enhancement required
+[PASS] rho0=sigma0: rho0=0.427311792981, sigma0=0.427311792981
+[PASS] R_tr in tracking range: R_tr=0.888252148997
+R_tr = 0.888252148997
+R_U = 0.888252148997
+R_phi = 0.888252148997
+M_mix = 0.060488500101
+M_supp = 0.025060785351
+S(zeta0;eps) = 1.192958568528
+R_target = 153.789576521719
+[PASS] R_target independence of zeta: R_target(zeta=0.200000000000) = R_target(zeta=0.800000000000)
+[PASS] dG_tr/dR < 0: dG/dR=-0.059857548311
+[PASS] dF_tr/dR > 0: dF/dR=0.779857038685
+[PASS] G_tr > G_flat: G_tr-G_flat=0.020940744788
+[PASS] F_flat > F_tr: F_flat-F_tr=0.264667991597
+G_tr = 0.528184561042
+F_tr = 2.619595506934
+G_flat = 0.507243816254
+F_flat = 2.884263498530
+[PASS] dG_tr/dxi > 0: dG/dxi=0.936692772154
+[PASS] dS/dzeta > 0: dS/dzeta=0.973284745998
+[PASS] finite positive support-enhanced load: M_mix*S(zeta0)=0.072160274493, target=0.528184561042, residual=-0.456024286549
+M_crit = 0.945796460177
+S_req = 8.731983106894
+S_crit = 15.635971442506
+zeta_req = 5.976723643987
+zeta_crit = 9.176912335734
+[PASS] Stage-31 domain: M_mix < M_crit: M_mix=0.060488500101, M_crit=0.945796460177
+[PASS] zeta_req < zeta_crit < 1/eps: zeta_req=5.976723643987, zeta_crit=9.176912335734, 1/eps=22.922652437526
+[PASS] sample zetas below pole: zeta0=0.200000000000, zeta1=0.800000000000, 1/eps=22.922652437526
+dxi_phys/dzeta = 0.062851487923 (sample zeta=0.200000000000)
+
+=== near_flat_support_not_needed (near-boundary) ===
+assumptions:
+  - coherent tracking branch
+  - 0 < eps < 1
+  - 0 < xi < 1
+  - M_mix < M_crit
+  - mixed-only baseline already sufficient
+[PASS] rho0=sigma0: rho0=0.326296086097, sigma0=0.326296086097
+[PASS] R_tr in tracking range: R_tr=0.993868165560
+R_tr = 0.993868165560
+R_U = 0.993868165560
+R_phi = 0.993868165560
+M_mix = 0.894494229928
+M_supp = 0.392674973702
+S(zeta0;eps) = 1.092528091922
+R_target = 5.759349932078
+[PASS] R_target independence of zeta: R_target(zeta=0.120000000000) = R_target(zeta=0.350000000000)
+[PASS] dG_tr/dR < 0: dG/dR=-0.095136817811
+[PASS] dF_tr/dR > 0: dF/dR=1.407266932939
+[PASS] G_tr > G_flat: G_tr-G_flat=0.003861705257
+[PASS] F_flat > F_tr: F_flat-F_tr=0.057140076269
+G_tr = 0.650888732284
+F_tr = 4.245838811921
+G_flat = 0.647027027027
+F_flat = 4.302978888190
+[PASS] dG_tr/dxi > 0: dG/dxi=0.888638935549
+[PASS] dS/dzeta > 0: dS/dzeta=0.795138675447
+[PASS] finite positive support-enhanced load: M_mix*S(zeta0)=0.977260074259, target=0.650888732284, residual=0.326371341975
+M_crit = 0.914836992681
+S_req = 0.727661186072
+S_crit = 1.022742195615
+zeta_req = 0
+zeta_crit = 0.030183592432
+[PASS] Stage-31 domain: M_mix < M_crit: M_mix=0.894494229928, M_crit=0.914836992681
+[PASS] zeta_req = 0 when support is not needed: zeta_req=0, zeta_crit=0.030183592432, M_mix=0.894494229928, M_req=0.650888732284
+[PASS] sample zetas below pole: zeta0=0.120000000000, zeta1=0.350000000000, 1/eps=3.963926665013
+dxi_phys/dzeta = 0.800377891096 (sample zeta=0.120000000000)
+
+=== near_pole_support_not_needed (near-boundary) ===
+assumptions:
+  - coherent tracking branch
+  - 0 < eps < 1
+  - 0 < xi < 1
+  - near support-pole boundary
+  - intentional stress case with M_mix >= M_crit
+[PASS] rho0=sigma0: rho0=0.669729055498, sigma0=0.669729055498
+[PASS] R_tr in tracking range: R_tr=0.774642289348
+R_tr = 0.774642289348
+R_U = 0.774642289348
+R_phi = 0.774642289348
+M_mix = 1.684466339051
+M_supp = 0.434071514212
+S(zeta0;eps) = 2.825622444900
+R_target = 2.482756717576
+[PASS] R_target independence of zeta: R_target(zeta=1.200000000000) = R_target(zeta=1.520000000000)
+[PASS] dG_tr/dR < 0: dG/dR=-0.074589387980
+[PASS] dF_tr/dR > 0: dF/dR=6.430103152845
+[PASS] G_tr > G_flat: G_tr-G_flat=0.121582706756
+[PASS] F_flat > F_tr: F_flat-F_tr=6.162677347971
+G_tr = 0.930581965466
+F_tr = 18.141890941702
+G_flat = 0.808999258710
+F_flat = 24.304568289673
+[PASS] dG_tr/dxi > 0: dG/dxi=0.987289666606
+[PASS] dS/dzeta > 0: dS/dzeta=6.280311943428
+[PASS] finite positive support-enhanced load: M_mix*S(zeta0)=4.759665895301, target=0.930581965466, residual=3.829083929835
+M_crit = 0.989816700611
+S_req = 0.552449131153
+S_crit = 0.587614413933
+zeta_req = 0
+zeta_crit = -3.813888918293
+[PASS] boundary stress outside Stage-31 domain: M_mix=1.684466339051, M_crit=0.989816700611
+note: Stage-31 support-feasibility inequalities are intentionally not enforced for this out-of-domain stress sample.
+[PASS] sample zetas below pole: zeta0=1.200000000000, zeta1=1.520000000000, 1/eps=1.583617950341
+dxi_phys/dzeta = 10.715167417692 (sample zeta=1.200000000000)
+
+All coherent support-chain numerical stress checks passed.

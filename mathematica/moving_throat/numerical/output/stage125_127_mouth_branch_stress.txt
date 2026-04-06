@@ -1,0 +1,163 @@
+Loaded config from /var/projects/toy_physics/scripts/moving_throat/numerical/stage125_127_mouth_branch_samples.json
+=== Stages 125-126: explicit positive-mouth branch samples ===
+
+small_bias (interior): Pi=0.100000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - finite positive bias
+  g_quad=0.645292602906, g_exact=0.645292604638, S_quad=0.588712902446, S_exact=0.588712900490
+  R=0.308322741324, denom=0.818486425223, Sigma0=0.122176736129, T_hat=0.234477144426
+[PASS] small_bias positive source normalization: integral=1.000000000000
+[PASS] small_bias source stays nonnegative: min sigma=0.950833194466
+[PASS] small_bias g quadrature matches formula: quadrature=0.645292602906, formula=0.645292604638
+[PASS] small_bias S quadrature matches formula: quadrature=0.588712902446, formula=0.588712900490
+[PASS] small_bias self-consistent residual: residual=0.000000000142
+[PASS] small_bias stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.645292604638
+[PASS] small_bias denominator stays positive: 1-R_q S_q=0.818486425223
+
+moderate_bias (interior): Pi=0.500000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - finite positive bias
+  g_quad=0.679347682330, g_exact=0.679347683256, S_quad=0.608336418370, S_exact=0.608336415688
+  R=0.290061764233, denom=0.823544866315, Sigma0=0.607131463568, T_hat=0.522694134849
+[PASS] moderate_bias positive source normalization: integral=1.000000000000
+[PASS] moderate_bias source stays nonnegative: min sigma=0.770747041029
+[PASS] moderate_bias g quadrature matches formula: quadrature=0.679347682330, formula=0.679347683256
+[PASS] moderate_bias S quadrature matches formula: quadrature=0.608336418370, formula=0.608336415688
+[PASS] moderate_bias self-consistent residual: residual=0.000000000653
+[PASS] moderate_bias stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.679347683256
+[PASS] moderate_bias denominator stays positive: 1-R_q S_q=0.823544866315
+
+canonical_point (interior): Pi=1.508829513493
+assumptions:
+  - lower compensated Family-1 branch inside the explicit closure
+  - finite regular positive source
+  g_quad=0.758035079596, g_exact=0.758035078945, S_quad=0.658075942521, S_exact=0.658075937605
+  R=0.249999999681, denom=0.835481015599, Sigma0=1.805941110956, T_hat=0.901484054174
+[PASS] canonical_point positive source normalization: integral=1.000000000000
+[PASS] canonical_point source stays nonnegative: min sigma=0.428470021650
+[PASS] canonical_point g quadrature matches formula: quadrature=0.758035079596, formula=0.758035078945
+[PASS] canonical_point S quadrature matches formula: quadrature=0.658075942521, formula=0.658075937605
+[PASS] canonical_point self-consistent residual: residual=0.000000001840
+[PASS] canonical_point stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.758035078945
+[PASS] canonical_point denominator stays positive: 1-R_q S_q=0.835481015599
+
+derivative_match_point (interior): Pi=1.908486006549
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - finite derivative-match point
+  g_quad=0.785398164507, g_exact=0.785398163397, S_quad=0.677106491083, S_exact=0.677106485140
+  R=0.236766107096, denom=0.839684133065, Sigma0=2.272861819576, T_hat=1.011329728036
+[PASS] derivative_match_point positive source normalization: integral=1.000000000000
+[PASS] derivative_match_point source stays nonnegative: min sigma=0.332322549468
+[PASS] derivative_match_point g quadrature matches formula: quadrature=0.785398164507, formula=0.785398163397
+[PASS] derivative_match_point S quadrature matches formula: quadrature=0.677106491083, formula=0.677106485140
+[PASS] derivative_match_point self-consistent residual: residual=0.000000002383
+[PASS] derivative_match_point stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.785398163397
+[PASS] derivative_match_point denominator stays positive: 1-R_q S_q=0.839684133065
+
+large_bias (stress): Pi=4.000000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - large but finite bias
+  g_quad=0.888903932617, g_exact=0.888903930185, S_quad=0.761819218391, S_exact=0.761819206147
+  R=0.189961725447, denom=0.855283508330, Sigma0=4.676811795202, T_hat=1.450712000309
+[PASS] large_bias positive source normalization: integral=1.000000000000
+[PASS] large_bias source stays nonnegative: min sigma=0.074629439972
+[PASS] large_bias g quadrature matches formula: quadrature=0.888903932617, formula=0.888903930185
+[PASS] large_bias S quadrature matches formula: quadrature=0.761819218391, formula=0.761819206147
+[PASS] large_bias self-consistent residual: residual=0.000000007175
+[PASS] large_bias stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.888903930185
+[PASS] large_bias denominator stays positive: 1-R_q S_q=0.855283508330
+
+asymptotic_16 (near-boundary): Pi=16.000000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - approach to the point-source singular limit
+  g_quad=0.990453849623, g_exact=0.990453846588, S_quad=0.918814689807, S_exact=0.918814635376
+  R=0.149045867341, denom=0.863054474690, Sigma0=18.538806609804, T_hat=2.888332213304
+[PASS] asymptotic_16 positive source normalization: integral=1.000000000000
+[PASS] asymptotic_16 source stays nonnegative: min sigma=0.000001800562
+[PASS] asymptotic_16 g quadrature matches formula: quadrature=0.990453849623, formula=0.990453846588
+[PASS] asymptotic_16 S quadrature matches formula: quadrature=0.918814689807, formula=0.918814635376
+[PASS] asymptotic_16 self-consistent residual: residual=0.000000130835
+[PASS] asymptotic_16 stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.990453846588
+[PASS] asymptotic_16 denominator stays positive: 1-R_q S_q=0.863054474690
+
+asymptotic_32 (near-boundary): Pi=32.000000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - approach to the point-source singular limit
+  g_quad=0.997596223747, g_exact=0.997596220691, S_quad=0.957286150610, S_exact=0.957286039050
+  R=0.146354665657, denom=0.859896720719, Sigma0=37.213771408780, T_hat=4.092211765531
+[PASS] asymptotic_32 positive source normalization: integral=1.000000000000
+[PASS] asymptotic_32 source stays nonnegative: min sigma=0.000000000000
+[PASS] asymptotic_32 g quadrature matches formula: quadrature=0.997596223747, formula=0.997596220691
+[PASS] asymptotic_32 S quadrature matches formula: quadrature=0.957286150610, formula=0.957286039050
+[PASS] asymptotic_32 self-consistent residual: residual=0.000000566761
+[PASS] asymptotic_32 stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.997596220691
+[PASS] asymptotic_32 denominator stays positive: 1-R_q S_q=0.859896720719
+
+asymptotic_64 (near-boundary): Pi=64.000000000000
+assumptions:
+  - explicit positive exponential mouth-layer family
+  - approach to the point-source singular limit
+  g_quad=0.999397972874, g_exact=0.999397969812, S_quad=0.978079108711, S_exact=0.978078882723
+  R=0.145679650550, denom=0.857513809034, Sigma0=74.634366613972, T_hat=5.795296797946
+[PASS] asymptotic_64 positive source normalization: integral=1.000000000000
+[PASS] asymptotic_64 source stays nonnegative: min sigma=0.000000000000
+[PASS] asymptotic_64 g quadrature matches formula: quadrature=0.999397972874, formula=0.999397969812
+[PASS] asymptotic_64 S quadrature matches formula: quadrature=0.978079108711, formula=0.978078882723
+[PASS] asymptotic_64 self-consistent residual: residual=0.000002373459
+[PASS] asymptotic_64 stays in 2/pi < g < 1: 2/pi=0.636619772368, g=0.999397969812
+[PASS] asymptotic_64 denominator stays positive: 1-R_q S_q=0.857513809034
+[PASS] canonical T_hat matches audited value: T_hat(Pi_*)=0.901484054174, expected=0.901484054174
+[PASS] derivative-match T_hat matches audited value: T_hat(Pi_match)=1.011329728036, expected=1.011329728036
+
+=== Stage 127: branch selection and finite-bias exclusion ===
+scan Pi=0.100000000000 -> g(Pi)=0.645292604638
+scan Pi=0.250000000000 -> g(Pi)=0.658195783303
+scan Pi=0.500000000000 -> g(Pi)=0.679347683256
+scan Pi=1.000000000000 -> g(Pi)=0.719888904720
+scan Pi=1.500000000000 -> g(Pi)=0.757403685558
+scan Pi=2.000000000000 -> g(Pi)=0.791320217854
+scan Pi=4.000000000000 -> g(Pi)=0.888903930185
+scan Pi=8.000000000000 -> g(Pi)=0.963264588585
+scan Pi=16.000000000000 -> g(Pi)=0.990453846588
+scan Pi=32.000000000000 -> g(Pi)=0.997596220691
+scan Pi=64.000000000000 -> g(Pi)=0.999397969812
+[PASS] g(Pi) increases on the explicit branch scan: min diff=0.001801749121
+[PASS] root bracket sign change on [0.500000000000, 2.500000000000]: f(lo)=-0.078687395689, f(hi)=0.063320082586
+lower_compensated_branch root from [0.500000000000, 2.500000000000] = 1.508829513493
+[PASS] root bracket sign change on [1.000000000000, 2.000000000000]: f(lo)=-0.038146174225, f(hi)=0.033285138910
+lower_compensated_branch root from [1.000000000000, 2.000000000000] = 1.508829513493
+[PASS] lower_compensated_branch bracket 1 agrees with bracket 0: root=1.508829513493, ref=1.508829513493
+[PASS] lower_compensated_branch root matches expected value: root=1.508829513493, expected=1.508829513493
+[PASS] root bracket sign change on [1.500000000000, 2.500000000000]: f(lo)=-0.027994477839, f(hi)=0.035956998133
+derivative_match_branch root from [1.500000000000, 2.500000000000] = 1.908486006549
+[PASS] root bracket sign change on [1.800000000000, 2.100000000000]: f(lo)=-0.007188298789, f(hi)=0.012243732573
+derivative_match_branch root from [1.800000000000, 2.100000000000] = 1.908486006549
+[PASS] derivative_match_branch bracket 1 agrees with bracket 0: root=1.908486006549, ref=1.908486006549
+[PASS] derivative_match_branch root matches expected value: root=1.908486006549, expected=1.908486006549
+[PASS] derivative-match point lies above canonical point: Pi_match=1.908486006549, Pi_*=1.508829513493
+[PASS] finite explicit branch never reaches g=1: max g(Pi) on finite window=0.999397969812
+[PASS] finite explicit branch never reaches g_+: max g(Pi)=0.999397969812, g_+=2.797951992005
+[PASS] upper compensated branch remains outside the positive-source range: g_+=2.797951992005
+
+=== Stage 126: singular-limit asymptotics ===
+Pi=16.000000000000: 1-g=0.009546153412, denom=0.863054474690, T_hat/sqrt(Pi)=0.722083053326
+[PASS] Pi=16.000000000000 keeps g(Pi)<1: g(Pi)=0.990453846588
+[PASS] Pi=16.000000000000 asymptotic T_hat ratio stays near limit: ratio=0.722083053326, limit=0.725669130701
+Pi=32.000000000000: 1-g=0.002403779309, denom=0.859896720719, T_hat/sqrt(Pi)=0.723407672365
+[PASS] Pi=32.000000000000 keeps g(Pi)<1: g(Pi)=0.997596220691
+[PASS] Pi=32.000000000000 asymptotic T_hat ratio stays near limit: ratio=0.723407672365, limit=0.725669130701
+Pi=64.000000000000: 1-g=0.000602030188, denom=0.857513809034, T_hat/sqrt(Pi)=0.724412099743
+[PASS] Pi=64.000000000000 keeps g(Pi)<1: g(Pi)=0.999397969812
+[PASS] Pi=64.000000000000 asymptotic T_hat ratio stays near limit: ratio=0.724412099743, limit=0.725669130701
+[PASS] 1-g(Pi) decreases toward the singular limit: tail gaps=0.009546153412, 0.002403779309, 0.000602030188
+[PASS] denominator approaches positive large-Pi limit: errors=0.008508926950, 0.005351172980, 0.002968261295
+[PASS] T_hat/sqrt(Pi) approaches the predicted asymptotic coefficient: errors=0.003586077375, 0.002261458336, 0.001257030957
+[PASS] large-Pi denominator limit matches Stage 126: 1-R_inf=0.854545547740, expected=0.854545547740
+
+All stage-125/127 mouth-branch stress checks passed.

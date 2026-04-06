@@ -1,0 +1,13 @@
+PASS  stage003_004_foundational_stress  (0s)
+PASS  stage028_031_stress  (0s)
+PASS  stage041_153_foundational_stress  (0s)
+PASS  stage089_canonical_outgoing_stress  (0s)
+PASS  stage108_positive_source_stress  (1s)
+PASS  stage125_127_mouth_branch_stress  (0s)
+PASS  stage129_130_rigidity_stress  (3s)
+PASS  stage133_135_profile_correction_stress  (2s)
+PASS  stage137_coevolving_map_stress  (1s)
+PASS  stage138_139_fixedpoint_stress  (1s)
+PASS  stage168_170_orbit_stress  (0s)
+
+TOTAL: 11  PASS: 11  FAIL: 0  SKIPPED: 1  MODE: check

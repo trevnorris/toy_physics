@@ -82,6 +82,10 @@ For the present step, we pass to the **stable normal-mode reduction** of that Bd
 
 That is a controlled reduced-sector move, not a full theorem of the unsolved PDE.
 But it is the natural one if we want the first conservative pole shifts and low-frequency response data.
+What matters for the present derivation is that this move introduces no fitted
+numerical data of its own: once the stable support spectrum and overlap matrices
+are fixed on the chosen branch, the wall self-energy is forced by the exact
+Schur complement.
 
 ### 3.1 Axisymmetric scalar sector
 

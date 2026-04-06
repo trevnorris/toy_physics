@@ -39,6 +39,9 @@ with
 \Theta_\sigma>0
 \]
 the effective source compressibility/entropic scale.
+The normalization imposed below factors out the overall source amplitude, so this
+stage is about the **shape law** of the stationary mouth profile rather than the
+total amount of source injected into the reduced throat model.
 
 Near the mouth, linearize the parent potential load as
 \[
@@ -52,6 +55,10 @@ q_*\left.\partial_z A_0\right|_{\rm m}.
 \]
 So \(V_1\) is the **net mouth-localizing slope** coming from the mechanical mouth
 traction and the localized-Maxwell scalar-potential drop.
+Using the linear form \(V_m(z)\approx V_1 z\) across the active interval
+\([0,L]\) is the reduced mouth-layer closure of this stage. It should be read as
+the lowest-order effective potential on the interval where the source profile is
+being modeled, not as a claim that the full throat potential is globally linear.
 
 The corresponding electrochemical potential is
 \[

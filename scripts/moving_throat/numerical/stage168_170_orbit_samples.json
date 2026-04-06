@@ -1,0 +1,234 @@
+{
+  "schema": "moving_throat_numerical_stage168_170_v1",
+  "stage168_step": 1e-7,
+  "stage169_step": 1e-7,
+  "tolerances": {
+    "monomial_linear_tol": 1e-8,
+    "observable_linear_tol": 5e-7,
+    "tangent_zero_tol": 1e-8,
+    "kernel_tol": 1e-12,
+    "invariant_tol": 1e-10,
+    "transverse_floor": 1e-3
+  },
+  "cases": [
+    {
+      "name": "interior_positive",
+      "reference_state": {
+        "lambda_W": 0.8,
+        "c_etaU": 0.7,
+        "gamma": 1.1,
+        "K_U": 1.5,
+        "K_eta_eff": 0.9,
+        "K_W_eff": 1.4,
+        "mu_W": 0.95,
+        "T_U": 0.6
+      },
+      "tangent_free_vectors": [
+        {
+          "name": "tangent_a",
+          "Delta_lambda": 0.12,
+          "Delta_c": -0.08,
+          "Delta_gamma": 0.05,
+          "Delta_U": 0.07,
+          "Delta_W": -0.04
+        },
+        {
+          "name": "tangent_b",
+          "Delta_lambda": -0.09,
+          "Delta_c": 0.11,
+          "Delta_gamma": -0.06,
+          "Delta_U": 0.03,
+          "Delta_W": 0.08
+        }
+      ],
+      "transverse_full_vectors": [
+        {
+          "name": "transverse_a",
+          "Delta_lambda": 0.1,
+          "Delta_c": -0.04,
+          "Delta_gamma": 0.07,
+          "Delta_U": -0.02,
+          "Delta_eta": 0.05,
+          "Delta_W": -0.03,
+          "Delta_mu": 0.06,
+          "Delta_T": 0.09
+        },
+        {
+          "name": "transverse_b",
+          "Delta_lambda": -0.08,
+          "Delta_c": 0.06,
+          "Delta_gamma": -0.02,
+          "Delta_U": 0.05,
+          "Delta_eta": -0.01,
+          "Delta_W": 0.04,
+          "Delta_mu": -0.07,
+          "Delta_T": 0.03
+        }
+      ],
+      "finite_orbit_pairs": [
+        {
+          "name": "orbit_pair_a",
+          "Delta_lambda": 0.25,
+          "Delta_c": -0.14,
+          "Delta_gamma": 0.18,
+          "Delta_U": 0.09,
+          "Delta_W": -0.11
+        },
+        {
+          "name": "orbit_pair_b",
+          "Delta_lambda": -0.2,
+          "Delta_c": 0.12,
+          "Delta_gamma": -0.05,
+          "Delta_U": 0.16,
+          "Delta_W": 0.1
+        }
+      ]
+    },
+    {
+      "name": "weak_coherent_edge",
+      "reference_state": {
+        "lambda_W": 0.7,
+        "c_etaU": 0.18,
+        "gamma": 0.16,
+        "K_U": 2.0,
+        "K_eta_eff": 0.95,
+        "K_W_eff": 1.7,
+        "mu_W": 1.05,
+        "T_U": 0.8
+      },
+      "tangent_free_vectors": [
+        {
+          "name": "tangent_a",
+          "Delta_lambda": 0.1,
+          "Delta_c": -0.05,
+          "Delta_gamma": 0.08,
+          "Delta_U": 0.04,
+          "Delta_W": -0.03
+        },
+        {
+          "name": "tangent_b",
+          "Delta_lambda": -0.07,
+          "Delta_c": 0.09,
+          "Delta_gamma": -0.03,
+          "Delta_U": 0.02,
+          "Delta_W": 0.05
+        }
+      ],
+      "transverse_full_vectors": [
+        {
+          "name": "transverse_a",
+          "Delta_lambda": 0.09,
+          "Delta_c": -0.02,
+          "Delta_gamma": 0.06,
+          "Delta_U": -0.01,
+          "Delta_eta": 0.04,
+          "Delta_W": -0.02,
+          "Delta_mu": 0.05,
+          "Delta_T": 0.07
+        },
+        {
+          "name": "transverse_b",
+          "Delta_lambda": -0.06,
+          "Delta_c": 0.05,
+          "Delta_gamma": -0.01,
+          "Delta_U": 0.03,
+          "Delta_eta": -0.015,
+          "Delta_W": 0.025,
+          "Delta_mu": -0.04,
+          "Delta_T": 0.02
+        }
+      ],
+      "finite_orbit_pairs": [
+        {
+          "name": "orbit_pair_a",
+          "Delta_lambda": 0.18,
+          "Delta_c": -0.09,
+          "Delta_gamma": 0.14,
+          "Delta_U": 0.08,
+          "Delta_W": -0.06
+        },
+        {
+          "name": "orbit_pair_b",
+          "Delta_lambda": -0.16,
+          "Delta_c": 0.1,
+          "Delta_gamma": -0.04,
+          "Delta_U": 0.11,
+          "Delta_W": 0.07
+        }
+      ]
+    },
+    {
+      "name": "weak_split_edge",
+      "reference_state": {
+        "lambda_W": 0.9,
+        "c_etaU": 0.75,
+        "gamma": 1.05,
+        "K_U": 1.6,
+        "K_eta_eff": 1.1,
+        "K_W_eff": 1.45,
+        "mu_W": 0.9,
+        "T_U": 0.02
+      },
+      "tangent_free_vectors": [
+        {
+          "name": "tangent_a",
+          "Delta_lambda": 0.06,
+          "Delta_c": -0.04,
+          "Delta_gamma": 0.03,
+          "Delta_U": 0.02,
+          "Delta_W": -0.015
+        },
+        {
+          "name": "tangent_b",
+          "Delta_lambda": -0.05,
+          "Delta_c": 0.07,
+          "Delta_gamma": -0.025,
+          "Delta_U": 0.015,
+          "Delta_W": 0.03
+        }
+      ],
+      "transverse_full_vectors": [
+        {
+          "name": "transverse_a",
+          "Delta_lambda": 0.08,
+          "Delta_c": -0.03,
+          "Delta_gamma": 0.04,
+          "Delta_U": -0.015,
+          "Delta_eta": 0.025,
+          "Delta_W": -0.02,
+          "Delta_mu": 0.035,
+          "Delta_T": 0.05
+        },
+        {
+          "name": "transverse_b",
+          "Delta_lambda": -0.045,
+          "Delta_c": 0.05,
+          "Delta_gamma": -0.015,
+          "Delta_U": 0.02,
+          "Delta_eta": -0.012,
+          "Delta_W": 0.018,
+          "Delta_mu": -0.03,
+          "Delta_T": 0.014
+        }
+      ],
+      "finite_orbit_pairs": [
+        {
+          "name": "orbit_pair_a",
+          "Delta_lambda": 0.14,
+          "Delta_c": -0.08,
+          "Delta_gamma": 0.1,
+          "Delta_U": 0.06,
+          "Delta_W": -0.05
+        },
+        {
+          "name": "orbit_pair_b",
+          "Delta_lambda": -0.12,
+          "Delta_c": 0.09,
+          "Delta_gamma": -0.035,
+          "Delta_U": 0.1,
+          "Delta_W": 0.06
+        }
+      ]
+    }
+  ]
+}

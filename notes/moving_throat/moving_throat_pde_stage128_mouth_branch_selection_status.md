@@ -1,10 +1,12 @@
 # Moving-Throat PDE — Stage 128: Mouth-Branch Selection Status
 
-The mouth-source side is now much tighter than it was at Stage 124.
+Inside the explicit positive exponential mouth-family reduction, the mouth-source
+side is now much tighter than it was at Stage 124.
 
 ## What is now explicit
 
-1. The positive mouth-layer family selects a unique bias factor
+1. The positive exponential mouth-layer family is parameterized by a unique bias
+   factor \(\Pi>0\),
    \[
    \mathfrak g_\Pi
    =
@@ -41,7 +43,8 @@ The mouth-source side is now much tighter than it was at Stage 124.
    \widehat T_m\to\infty.
    \]
 
-5. The lower compensated branch is uniquely reachable at finite values,
+5. Within this explicit family, the lower compensated branch is the unique finite
+   regular compensated branch,
    \[
    \Pi_*\approx 1.50882951349316,
    \qquad
@@ -56,7 +59,7 @@ It is no longer:
 - which compensation branch,
 - or whether equal-normalized sourcing survives.
 
-It is now only this:
+It is now only this inside the explicit mouth-family reduction:
 
 1. how accurately the actual moving-throat mouth layer follows the explicit exponential
    electrochemical family,

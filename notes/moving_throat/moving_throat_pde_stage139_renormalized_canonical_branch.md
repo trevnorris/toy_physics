@@ -22,9 +22,9 @@ interval used in the solve. Therefore the compensation-restoration equation
 \[
 \mathfrak g_{\rm fp}(\Sigma_0)=\mathfrak g_*
 \]
-has a unique positive root.
+has a unique positive root on that analyzed interval.
 
-That root is
+That numerically located root is
 \[
 \boxed{
 \Sigma_0^{\rm can}
@@ -44,8 +44,9 @@ this corresponds to the renormalized canonical traction
 }
 \]
 
-So the full co-evolving theory does preserve the lower compensated branch, but only
-after a substantial upward retuning of the mouth traction.
+So the full co-evolving reduced closure on the analyzed positive branch window does
+preserve the lower compensated branch, but only after a substantial upward
+renormalization of the mouth traction.
 
 ---
 
@@ -128,8 +129,8 @@ the exact co-evolving compensation costs
 }
 \]
 
-So exact preservation of the canonical outgoing quadrupole branch under full
-core–mouth co-evolution requires roughly a
+So exact preservation of the canonical outgoing quadrupole branch under the analyzed
+full core–mouth co-evolving closure requires roughly a
 
 - \(60.48\%\) traction increase,
 - and a \(156.59\%\) mouth-bias increase,
@@ -142,7 +143,7 @@ relative to the original lower compensated point.
 
 This is the sharpest Family-1 mouth/core result so far.
 
-Inside the explicit Family-1 closure:
+Inside the explicit Family-1 co-evolving closure on the analyzed positive branch window:
 
 1. the lower compensated branch **survives** full co-evolution,
 2. it remains the unique physically admissible compensated branch,

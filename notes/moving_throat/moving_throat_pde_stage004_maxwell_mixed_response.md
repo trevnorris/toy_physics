@@ -185,6 +185,9 @@ This is one of the main results of the stage.
 
 It says that if the outgoing branch is passive, then the wall inherits that odd part with a manifestly nonnegative transfer coefficient.
 The moving-throat PDE does not have to guess the sign at this reduced level; the sign is carried by the outgoing port, and the internal Maxwell/mixed block only multiplies it by a positive conservative factor.
+So within this reduced model the remaining gap is determination of the actual
+branch data, not insertion of an ad hoc sign or phase to force the quadrupole
+route.
 
 ### 5.1 Wall-operator sign convention
 

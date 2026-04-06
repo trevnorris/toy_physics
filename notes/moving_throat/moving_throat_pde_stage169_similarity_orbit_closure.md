@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 169: Exact Microscopic Similarity Orbit and the Final Weak-Axisymmetric Closure Theorem
+# Moving-Throat PDE — Stage 169: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
 
 ## Purpose
 
@@ -26,7 +26,7 @@ That was already very sharp, but it still left the closure in the form of three 
 
 That is what this stage does.
 
-The main result is that the full coherent weak-axisymmetric zero-defect problem is **exactly** the tangent problem of a finite five-parameter multiplicative similarity orbit acting on the microscopic kernel couplings
+The main result is that, within the coherent reduced hierarchy, the full weak-axisymmetric zero-defect problem is **exactly** the tangent problem of a finite five-parameter multiplicative similarity orbit acting on the microscopic kernel couplings
 \[
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
 \]
@@ -380,7 +380,7 @@ M_*\,\delta\mathbf x=0
 }
 \]
 
-Equivalently, the coherent weak-axisymmetric defect vanishes exactly when the microscopic grouped drift is tangent to the finite monomial-preserving similarity orbit \(\mathcal G_*\).
+Equivalently, within this tangent-space theorem, the coherent weak-axisymmetric defect vanishes exactly when the microscopic grouped drift is tangent to the finite monomial-preserving similarity orbit \(\mathcal G_*\).
 
 This is the sharpest final formulation of the reduced theorem reached so far.
 
@@ -442,4 +442,3 @@ So the continuation point is now as small and as clean as it can be without the 
 > determine whether the true moving-throat grouped weak-axisymmetric branch is tangent to the exact monomial-preserving similarity orbit \(\mathcal G_*\).
 
 If it is, the coherent first-order grouped weak-axisymmetric defect vanishes automatically.
-

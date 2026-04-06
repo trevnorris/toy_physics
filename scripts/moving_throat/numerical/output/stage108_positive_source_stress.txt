@@ -1,0 +1,53 @@
+Loaded config from /var/projects/toy_physics/scripts/moving_throat/numerical/stage108_positive_source_samples.json
+=== Stage 108: positive local mouth-source stress ===
+
+uniform (uniform): g[sigma]=0.63661977204
+[PASS] uniform stays nonnegative: min sigma=1
+[PASS] uniform normalization: integral=1
+[PASS] uniform moment stays in [0,1]: g[sigma]=0.63661977204
+
+left_linear (left_linear): g[sigma]=0.810569469555
+[PASS] left_linear stays nonnegative: min sigma=0
+[PASS] left_linear normalization: integral=1
+[PASS] left_linear moment stays in [0,1]: g[sigma]=0.810569469555
+
+left_beta_8 (left_beta): g[sigma]=0.977919732782
+[PASS] left_beta_8 stays nonnegative: min sigma=0
+[PASS] left_beta_8 normalization: integral=1
+[PASS] left_beta_8 moment stays in [0,1]: g[sigma]=0.977919732782
+
+left_beta_20 (left_beta): g[sigma]=0.995143696322
+[PASS] left_beta_20 stays nonnegative: min sigma=0
+[PASS] left_beta_20 normalization: integral=1
+[PASS] left_beta_20 moment stays in [0,1]: g[sigma]=0.995143696322
+
+right_beta_8 (right_beta): g[sigma]=0.154182827519
+[PASS] right_beta_8 stays nonnegative: min sigma=0
+[PASS] right_beta_8 normalization: integral=1
+[PASS] right_beta_8 moment stays in [0,1]: g[sigma]=0.154182827519
+
+right_beta_20 (right_beta): g[sigma]=0.0710818752817
+[PASS] right_beta_20 stays nonnegative: min sigma=0
+[PASS] right_beta_20 normalization: integral=1
+[PASS] right_beta_20 moment stays in [0,1]: g[sigma]=0.0710818752817
+
+exp_left_beta_1 (exp_left): g[sigma]=0.719888904709
+[PASS] exp_left_beta_1 stays nonnegative: min sigma=0.581976706748
+[PASS] exp_left_beta_1 normalization: integral=1
+[PASS] exp_left_beta_1 moment stays in [0,1]: g[sigma]=0.719888904709
+
+exp_left_beta_2 (exp_left): g[sigma]=0.791320218056
+[PASS] exp_left_beta_2 stays nonnegative: min sigma=0.313035285238
+[PASS] exp_left_beta_2 normalization: integral=1
+[PASS] exp_left_beta_2 moment stays in [0,1]: g[sigma]=0.791320218056
+[PASS] g_- lies in (0,1): g_-=0.758035078945
+[PASS] g_+ lies above 1: g_+=2.79795199201
+[PASS] uniform < g_- < left_linear: uniform=0.63661977204, g_-=0.758035078945, left_linear=0.810569469555
+[PASS] right-localized profiles drive g toward 0: right_beta_20=0.0710818752817, right_beta_8=0.154182827519, uniform=0.63661977204
+[PASS] left-localized profiles drive g toward 1: left_beta_20=0.995143696322, left_beta_8=0.977919732782, left_linear=0.810569469555, g_-=0.758035078945
+[PASS] g_- realization bracket: f(lo)=-0.0381461742355, f(hi)=0.0332851391115
+[PASS] exp_left family realizes g_-: beta*=1.50882951196, g(beta*)=0.758035078945, g_-=0.758035078945
+
+Solved exp_left beta* = 1.50882951196 with g[beta*] = 0.758035078945
+
+All stage-108 positive-source stress checks passed.

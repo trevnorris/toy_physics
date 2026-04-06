@@ -1,0 +1,74 @@
+Loaded config from /var/projects/toy_physics/scripts/moving_throat/numerical/stage003_004_foundational_samples.json
+
+=== Stage 003: one-mode resonance stress ===
+
+well_separated_perturbative (interior): M=2.000000000000, Omega_eta^2=1.100000000000, delta=0.800000000000, g=0.120000000000
+  resonance parameter g^2/(M delta^2) = 0.011250000000
+[PASS] well_separated_perturbative exact root ordering: omega_-^2=1.091099033995, Omega_eta^2=1.100000000000, varpi^2=1.900000000000, omega_+^2=1.908900966005
+[PASS] well_separated_perturbative exact sum of roots: sum=3.000000000000, target=3.000000000000
+[PASS] well_separated_perturbative exact product of roots: product=2.082800000000, target=2.082800000000
+[PASS] well_separated_perturbative wall/matter shift signs: wall_shift=-0.008900966005, matter_shift=0.008900966005
+  exact shifts: wall=-0.008900966005, matter=0.008900966005; perturbative: wall=-0.009000000000, matter=0.009000000000
+[PASS] well_separated_perturbative wall-like perturbative validity: relative error=0.011003777198, tol=0.020000000000
+[PASS] well_separated_perturbative matter-like perturbative validity: relative error=0.011003777198, tol=0.020000000000
+
+moderate_gap_perturbative (near-degenerate): M=2.000000000000, Omega_eta^2=1.100000000000, delta=0.250000000000, g=0.100000000000
+  resonance parameter g^2/(M delta^2) = 0.080000000000
+[PASS] moderate_gap_perturbative exact root ordering: omega_-^2=1.081385933837, Omega_eta^2=1.100000000000, varpi^2=1.350000000000, omega_+^2=1.368614066163
+[PASS] moderate_gap_perturbative exact sum of roots: sum=2.450000000000, target=2.450000000000
+[PASS] moderate_gap_perturbative exact product of roots: product=1.480000000000, target=1.480000000000
+[PASS] moderate_gap_perturbative wall/matter shift signs: wall_shift=-0.018614066163, matter_shift=0.018614066163
+  exact shifts: wall=-0.018614066163, matter=0.018614066163; perturbative: wall=-0.020000000000, matter=0.020000000000
+[PASS] moderate_gap_perturbative wall-like perturbative validity: relative error=0.069296691827, tol=0.100000000000
+[PASS] moderate_gap_perturbative matter-like perturbative validity: relative error=0.069296691827, tol=0.100000000000
+
+near_resonance_breakdown (stress): M=2.000000000000, Omega_eta^2=1.100000000000, delta=0.050000000000, g=0.100000000000
+  resonance parameter g^2/(M delta^2) = 2.000000000000
+[PASS] near_resonance_breakdown exact root ordering: omega_-^2=1.050000000000, Omega_eta^2=1.100000000000, varpi^2=1.150000000000, omega_+^2=1.200000000000
+[PASS] near_resonance_breakdown exact sum of roots: sum=2.250000000000, target=2.250000000000
+[PASS] near_resonance_breakdown exact product of roots: product=1.260000000000, target=1.260000000000
+[PASS] near_resonance_breakdown wall/matter shift signs: wall_shift=-0.050000000000, matter_shift=0.050000000000
+  exact shifts: wall=-0.050000000000, matter=0.050000000000; perturbative: wall=-0.100000000000, matter=0.100000000000
+[PASS] near_resonance_breakdown perturbative breakdown is visible: wall_rel=0.500000000000, matter_rel=0.500000000000, floor=0.300000000000
+
+=== Stage 004: outgoing mixed-sector stress ===
+
+generic_mixed_sector (interior): Omega_A=1.500000000000, Omega_W=1.800000000000, R=0.700000000000
+  denominator Omega_A^2 Omega_W^2 - R^2 = 6.800000000000
+[PASS] generic_mixed_sector positive mixed denominator: denominator=6.800000000000
+  omega=0.010000000000: N(omega)=0.057463958204, Im(delta D)/omega^5=-0.000505054320, Im(Y2hat)/omega^5=0.008789007569
+[PASS] generic_mixed_sector N0 convergence at omega=0.010000000000: relative error=0.000004773868, tol=0.000500000000
+[PASS] generic_mixed_sector wall odd coefficient at omega=0.010000000000: relative error=0.000000044346, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat odd coefficient at omega=0.010000000000: relative error=0.000000054452, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat even branch at omega=0.010000000000: abs error=0.000000000000, tol=0.000000100000
+  omega=0.030000000000: N(omega)=0.057504368734, Im(delta D)/omega^5=-0.000505409491, Im(Y2hat)/omega^5=0.008788568199
+[PASS] generic_mixed_sector N0 convergence at omega=0.030000000000: relative error=0.000042988621, tol=0.000500000000
+[PASS] generic_mixed_sector wall odd coefficient at omega=0.030000000000: relative error=0.000000399338, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat odd coefficient at omega=0.030000000000: relative error=0.000000489995, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat even branch at omega=0.030000000000: abs error=0.000000000002, tol=0.000000100000
+  omega=0.060000000000: N(omega)=0.057641085433, Im(delta D)/omega^5=-0.000506611102, Im(Y2hat)/omega^5=0.008787086294
+[PASS] generic_mixed_sector N0 convergence at omega=0.060000000000: relative error=0.000172276574, tol=0.000500000000
+[PASS] generic_mixed_sector wall odd coefficient at omega=0.060000000000: relative error=0.000001600343, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat odd coefficient at omega=0.060000000000: relative error=0.000001958988, tol=0.000010000000
+[PASS] generic_mixed_sector Y2hat even branch at omega=0.060000000000: abs error=0.000000000125, tol=0.000000100000
+
+near_mixed_pole_conditioning (stress): Omega_A=1.200000000000, Omega_W=1.500000000000, R=1.750000000000
+  denominator Omega_A^2 Omega_W^2 - R^2 = 0.177500000000
+[PASS] near_mixed_pole_conditioning positive mixed denominator: denominator=0.177500000000
+  omega=0.005000000000: N(omega)=73.696728898881, Im(delta D)/omega^5=-4.395900698479, Im(Y2hat)/omega^5=0.059648318033
+[PASS] near_mixed_pole_conditioning N0 convergence at omega=0.005000000000: relative error=0.001011709574, tol=0.050000000000
+[PASS] near_mixed_pole_conditioning wall odd coefficient at omega=0.005000000000: relative error=0.000835250207, tol=0.040000000000
+[PASS] near_mixed_pole_conditioning Y2hat odd coefficient at omega=0.005000000000: relative error=0.000000189200, tol=0.000050000000
+[PASS] near_mixed_pole_conditioning Y2hat even branch at omega=0.005000000000: abs error=0.000000000000, tol=0.000001000000
+  omega=0.015000000000: N(omega)=74.304894612122, Im(delta D)/omega^5=-4.432176882288, Im(Y2hat)/omega^5=0.059646714315
+[PASS] near_mixed_pole_conditioning N0 convergence at omega=0.015000000000: relative error=0.009161745181, tol=0.050000000000
+[PASS] near_mixed_pole_conditioning wall odd coefficient at omega=0.015000000000: relative error=0.007563780906, tol=0.040000000000
+[PASS] near_mixed_pole_conditioning Y2hat odd coefficient at omega=0.015000000000: relative error=0.000001702644, tol=0.000050000000
+[PASS] near_mixed_pole_conditioning Y2hat even branch at omega=0.015000000000: abs error=0.000000000000, tol=0.000001000000
+  omega=0.030000000000: N(omega)=76.414042156486, Im(delta D)/omega^5=-4.557984408646, Im(Y2hat)/omega^5=0.059641303666
+[PASS] near_mixed_pole_conditioning N0 convergence at omega=0.030000000000: relative error=0.037426455300, tol=0.050000000000
+[PASS] near_mixed_pole_conditioning wall odd coefficient at omega=0.030000000000: relative error=0.030898644565, tol=0.040000000000
+[PASS] near_mixed_pole_conditioning Y2hat odd coefficient at omega=0.030000000000: relative error=0.000006808722, tol=0.000050000000
+[PASS] near_mixed_pole_conditioning Y2hat even branch at omega=0.030000000000: abs error=0.000000000019, tol=0.000001000000
+
+All stage-003/004 foundational stress checks passed.

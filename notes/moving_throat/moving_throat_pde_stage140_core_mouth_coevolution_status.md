@@ -3,7 +3,7 @@
 ## New closure result
 
 The explicit Family-1 GNLS + localized-Maxwell program now has a **fully co-evolving
-core–mouth closure**.
+core–mouth closure** on the analyzed positive branch window.
 
 For a positive normalized source \(\Sigma\), the source moment
 \[
@@ -28,24 +28,24 @@ which then re-enters the full mouth potential
 \Bigr].
 \]
 
-So the explicit Family-1 problem is now an honest nonlinear fixed point, not a
-frozen-core correction.
+So the explicit Family-1 problem is now an honest nonlinear fixed-point problem
+inside this reduced closure, not merely a frozen-core correction.
 
 ## What the full solve says
 
 The numerics below are carried directly from Stage 138 for the frozen canonical
-traction and Stage 139 for the renormalized canonical branch.
+traction on the analyzed fixed-point branch and from Stage 139 for the
+renormalized canonical branch.
 
-At the old canonical traction from Stage 138
+At the old canonical traction from Stage 138, the solved positive fixed point on the
+analyzed branch lands at
 \[
 \Sigma_0^*\approx 1.80594111095636
 \quad
 \left(
 \widehat T_{m,*}\approx 0.901484054174204
 \right),
-\]
-the co-evolving fixed point lands at
-\[
+\qquad
 \mathfrak g_{\rm fp}\approx 0.693352419668063,
 \qquad
 \mathcal R_{\rm fp}\approx 0.2827139049082381,
@@ -55,8 +55,8 @@ the co-evolving fixed point lands at
 So the branch survives and stays close in bias, but it is no longer exactly
 compensated.
 
-Restoring the exact lower compensated branch requires the unique renormalized
-traction from Stage 139
+Restoring the exact lower compensated branch requires the numerically located
+renormalized traction from Stage 139 on the analyzed monotone bracket
 \[
 \Sigma_0^{\rm can}\approx 4.651033550168876,
 \qquad
@@ -68,13 +68,17 @@ traction from Stage 139
 ## Interpretation
 
 The mouth/core ambiguity is now essentially gone inside the explicit Family-1
-closure:
+closure on the analyzed positive branch window:
 
 - the upper compensated branch is impossible,
 - the equal-normalized branch is singular,
-- the lower compensated branch remains the only regular canonical branch,
+- the lower compensated branch remains the only regular canonical branch inside the explicit Family-1 closure,
 - and full self-consistency promotes it to a renormalized finite-traction,
   finite-bias fixed point.
+
+This stage identifies the reduced co-evolving target. It does **not** yet prove that
+the full moving-throat PDE branch dynamically realizes that target without additional
+deviation analysis.
 
 ## Next serious step
 

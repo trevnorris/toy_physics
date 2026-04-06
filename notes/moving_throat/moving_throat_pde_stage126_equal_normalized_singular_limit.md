@@ -129,4 +129,4 @@ The explicit positive exponential mouth-layer family proves that:
 3. and in that same limit the normalized mouth traction diverges.
 
 So the naive equal-normalized mouth-source branch is **not** a regular finite branch of the
-explicit mouth-layer dynamics. It is a singular point-source limit.
+explicit mouth-layer dynamics. Inside this explicit family it is a singular point-source limit.

@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 168: Direct Microscopic Monomial Coordinates and the Exact Zero-Defect Compatibility Ledger
+# Moving-Throat PDE — Stage 168: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
 
 ## Purpose
 
@@ -19,7 +19,7 @@ The next honest step is even smaller:
 
 That is what this stage does.
 
-The main result is that the three branch-adapted defect coordinates are exactly the first logarithmic drifts of three direct microscopic monomials:
+The main result is that, at first grouped weak-axisymmetric/reference-branch order, the three branch-adapted defect coordinates are exactly the first logarithmic drifts of three direct microscopic monomials:
 \[
 \boxed{
 \delta\ln \mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
@@ -61,7 +61,7 @@ F_*:=\frac{2\chi_{0,*}}{1+\delta_{U,*}}
 }
 \]
 
-So the full coherent weak-axisymmetric zero-defect theorem is now equivalent to the first-order invariance of three direct microscopic objects:
+So the coherent weak-axisymmetric zero-defect theorem at this same linearized reference-branch order is now equivalent to the first-order invariance of three direct microscopic objects:
 \[
 \boxed{
 \Theta_1=\Xi_1=\mathcal R_1=0
@@ -82,7 +82,7 @@ This is a genuine sharpening of Stage 167:
 
 The continuation point is therefore no longer “compute drifts of three branch composites.” It is now the smaller theorem gate:
 
-> determine whether the actual moving-throat branch preserves the three direct microscopic monomials
+> determine whether the true grouped weak-axisymmetric branch preserves, to first order about the coherent reference branch, the three direct microscopic monomials
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
 
 ---
@@ -373,7 +373,7 @@ So the direct weak-axisymmetric branch equations are now microscopic monomial eq
 
 ---
 
-## 6. Exact zero-defect microscopic compatibility ledger
+## 6. First-order zero-defect microscopic compatibility ledger
 
 Because
 \[
@@ -381,7 +381,7 @@ Because
 \iff
 \Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0,
 \]
-Stage 168 turns the zero-defect theorem into the explicit microscopic compatibility system
+Stage 168 turns the first-order zero-defect theorem on the coherent reference branch into the explicit microscopic compatibility system
 \[
 \boxed{
 (1+\chi_{0,*})(\tau_1-\kappa_U)
@@ -479,7 +479,7 @@ It is no longer
 
 It is now
 
-> determine whether the actual moving-throat branch preserves the three direct microscopic monomials
+> determine whether the true grouped weak-axisymmetric branch preserves, to first order about the coherent reference branch, the three direct microscopic monomials
 > \[
 > \mathfrak C_{{\rm tr},*},
 > \qquad
@@ -534,13 +534,12 @@ Therefore the full coherent weak-axisymmetric zero-defect theorem is now equival
 }
 \]
 
-Equivalently, the actual moving-throat branch must satisfy a three-equation microscopic compatibility ledger for the grouped weak-axisymmetric drifts of
+Equivalently, the grouped weak-axisymmetric branch at this same linearized reference-branch order must satisfy a three-equation microscopic compatibility ledger for the drifts of
 \[
 (\lambda_W,c_{\eta U},\gamma,K_U,K_\eta^{(\mathrm{eff})},K_W^{(\mathrm{eff})},\mu_W,T_U).
 \]
 
 So the continuation point is now smaller than Stage 167 left it:
 
-> determine whether the true moving-throat branch is microscopically monomial-rigid in the three direct coordinates
+> determine whether the true grouped weak-axisymmetric branch is microscopically monomial-rigid, at this same first-order reference-branch level, in the three direct coordinates
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
-

@@ -57,6 +57,8 @@ It is just the pair
 \]
 
 That is a substantial narrowing of the theorem gate.
+It is a linear-response statement on the compensated isotropic branch; it does not
+yet say which grouped anisotropies the full PDE dynamically realizes.
 
 ---
 

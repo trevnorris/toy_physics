@@ -3,8 +3,8 @@
 ## New closure result
 
 The full explicit GNLS + localized-Maxwell Family-1 mouth boundary layer now selects
-a **definite non-exponential correction** around the unique regular lower compensated
-branch.
+a **definite first-order non-exponential correction** around the unique regular lower
+compensated branch in the mouth-only closure.
 
 The exact compensated mouth potential
 \[
@@ -65,15 +65,22 @@ and a retuned point
 
 So the nonlinear correction is slightly stronger than the linear estimate but follows
 the same direction and scale.
+It is a one-step consistency check, not a proof of full nonlinear convergence for the
+mouth-only Picard iteration.
 
 ## Interpretation
 
-Inside the explicit Family-1 closure:
+Inside the explicit Family-1 closure, and before full core-mouth co-evolution is
+turned back on:
 
 - branch selection is finished;
-- the lower compensated branch remains the unique regular branch;
+- the lower compensated branch remains the unique regular branch in this mouth-only correction analysis;
 - the full coupled mouth profile does **not** destroy it;
 - but it shifts the preferred point upward in both bias and normalized traction.
+
+Numerical stress tests confirm that the linear correction is quantitatively good for
+small residual loads and remains directionally correct at the full one-step nonlinear
+load, but it should not be read as an exact finite-amplitude law.
 
 The mouth-side problem is therefore no longer one of branch ambiguity. It is now a
 finite correction problem around a unique regular branch.

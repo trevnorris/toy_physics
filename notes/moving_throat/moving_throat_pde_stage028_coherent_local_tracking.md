@@ -12,7 +12,7 @@ That is the first honest “concrete kernel” question after Stage 27.
 
 This stage answers it.
 
-The main result is that the first coherent local D/N kernel does **not** land on the generic intermediate closure. It lands **exactly on the tracking surface**.
+The main result is that, **within this coherent local-kernel hypothesis**, the first coherent local D/N kernel does **not** land on the generic intermediate closure. It lands exactly on the tracking surface of the reduced Stage-27 branch problem.
 
 So the Stage-27 continuum-selected problem collapses back to a one-parameter selected branch, now with a physically identified total loading
 
@@ -94,13 +94,13 @@ Therefore the Stage-26 codimension-one interference-match surface is now automat
 
 ### Exact conclusion
 
-> **The first coherent local D/N support kernel lands exactly on the tracking surface.**
+> **For the first coherent local D/N support kernel, the reduced Stage-27 branch lands exactly on the tracking surface.**
 
 Equivalently,
 
 `R_phi = R_U`.
 
-So the generic Stage-27 intermediate closure is not the first coherent local-kernel outcome. The first coherent local-kernel outcome is the exact tracking reduction.
+So the generic Stage-27 intermediate closure is not the first coherent local-kernel outcome. For this coherent local-kernel model, the outcome is the exact tracking reduction.
 
 ---
 
@@ -243,6 +243,6 @@ This is the first exact “concrete-kernel” form of the normalization test.
 
 ### What this means physically
 
-The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: it lands exactly on the tracking surface.
+The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
 
 So the next theorem step is no longer to resolve the rank-2 closure ambiguity. That is now done for the first concrete local kernel. The next step is to evaluate how this physical tracking branch compares with the old flat branch and whether the split-`U` deformation helps or hurts the normalization test.

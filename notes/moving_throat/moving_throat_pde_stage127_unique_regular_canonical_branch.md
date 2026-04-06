@@ -64,8 +64,8 @@ Numerically,
 }
 \]
 
-So the lower compensated branch is not merely allowed. It is the **unique finite-bias**
-compensated branch.
+So the lower compensated branch is not merely allowed. Inside the explicit exponential
+positive mouth family it is the **unique finite-bias** compensated branch.
 
 ---
 
@@ -102,7 +102,7 @@ Within the explicit Family-1 core + positive exponential mouth-layer closure:
 Equivalently,
 \[
 \boxed{
-\text{the canonical Family-1 mouth branch is uniquely selected as the regular positive-source branch.}
+\text{inside the explicit Family-1 positive exponential mouth-layer closure, the canonical mouth branch is uniquely selected as the regular finite positive-source branch.}
 }
 \]
 

@@ -72,12 +72,12 @@ Inside the present reduced hierarchy:
 4. the natural source map gives \(\hat m_0=1+O(a^2/r^2)\),
 5. and the explicit compact passive/outgoing grouped-`P2` DtN model gives \(\chi_Q=1\).
 
-Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**.
+Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**, conditional on that branch realization and the strict point-particle limit.
 
 ## What is still genuinely open
 
 What remains open is no longer a reduced PN bookkeeping problem. It is the deeper PDE-side branch-selection theorem:
 
-> Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN branch, rather than a deformed branch with \(\xi_Q\neq1\)?
+> Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN branch, rather than a deformed branch with \(\chi_Q\neq1\)?
 
-So the reduced theorem is now finished **conditional only on actual branch realization**, not on any remaining reduced-sector normalization ambiguity.
+So the reduced theorem is now finished **conditional on actual branch realization**, not on any remaining reduced-sector normalization ambiguity.

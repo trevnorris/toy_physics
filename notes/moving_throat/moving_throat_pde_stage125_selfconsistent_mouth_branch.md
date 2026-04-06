@@ -123,7 +123,7 @@ so
 \]
 
 This reproduces the earlier outlet-consistent canonical branch exactly, but now from the
-fully self-consistent positive mouth-layer + core map.
+fully self-consistent positive mouth-layer + core map inside this explicit closure.
 
 ---
 
@@ -135,6 +135,6 @@ The mouth problem is now much sharper:
 - the gain ratio is no longer free,
 - and the shell traction is no longer free.
 
-Once the positive mouth layer is assumed, the branch is governed by one scalar variable
+Once this explicit positive mouth layer is assumed, the branch is governed by one scalar variable
 \(\Pi\), with a unique canonical compensation point at moderate finite bias and moderate
-finite traction.
+finite traction inside that closure.

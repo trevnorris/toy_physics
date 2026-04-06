@@ -4,32 +4,28 @@
 (* 0. Parameters and Setup *)
 (* ---------------------------------------------------------------------- *)
 
+ClearAll["Global`*"];
+
 $Assumptions = {
-  rho0 > 0, a > 0, Gamma > 0,
-  q \[Element] Reals, B0 \[Element] Reals, v0 \[Element] Reals,
+  rho0 > 0, Gamma > 0, a > 0, L > 0, kappaQ > 0,
+  B0 \[Element] Reals, v0 \[Element] Reals,
   ux \[Element] Reals, uy \[Element] Reals, uz \[Element] Reals
 };
 
-(* Vectors defined as Lists {x, y, z} *)
-iVec = {1, 0, 0};
-jVec = {0, 1, 0};
-kVec = {0, 0, 1};
-
 uVec = {ux, uy, uz};
-vInf = v0 * iVec; (* Background flow in +x *)
+kVec = {0, 0, 1};
+vInf = {v0, 0, 0};
 
 (* ---------------------------------------------------------------------- *)
 (* 1. Magnus force on a straight vortex line (per unit length) *)
 (* ---------------------------------------------------------------------- *)
 
-(* Classical Magnus force: F_M = rho0 * Gamma * k x (u - v_inf) *)
-FM = rho0 * Gamma * Cross[kVec, uVec - vInf];
+FM = rho0 * Gamma * Cross[kVec, (uVec - vInf)];
 
-Print["Magnus force per unit length, F_M = rho0 * Gamma * k x (u - v_inf):"];
+Print["Magnus force per unit length, f_M = rho0 * Gamma * k x (u - v_inf):"];
 Print[ToString[Simplify[FM], InputForm]];
 Print[""];
 
-(* Split into u-dependent (magnetic-like) and v_inf-dependent parts *)
 FMuPart = rho0 * Gamma * Cross[kVec, uVec];
 FMvinfPart = -rho0 * Gamma * Cross[kVec, vInf];
 
@@ -37,56 +33,41 @@ Print["u-dependent (magnetic-like) part of Magnus force:"];
 Print[ToString[Simplify[FMuPart], InputForm]];
 Print[""];
 
-Print["Background-flow (v_inf) contribution to Magnus force:"];
+Print["Background-flow contribution to Magnus force:"];
 Print[ToString[Simplify[FMvinfPart], InputForm]];
 Print[""];
 
-
 (* ---------------------------------------------------------------------- *)
-(* 2. Lorentz force with q = rho0 * pi * a^2 * Gamma *)
+(* 2. Magnetic Lorentz force per unit length *)
 (* ---------------------------------------------------------------------- *)
 
-qDef = rho0 * Pi * a^2 * Gamma;
-Print["Toy-model effective charge: q_defect = rho0 * pi * a^2 * Gamma"];
+qDef = kappaQ * rho0 * Pi * a^2 * Gamma;
+BVec = B0 * kVec;
+FLmagPerLength = (qDef/L) * Cross[uVec, BVec];
+
+Print["Toy-model effective charge: q = kappaQ * rho0 * pi * a^2 * Gamma"];
 Print["q = ", ToString[qDef, InputForm]];
 Print[""];
 
-(* Effective magnetic field B along z-axis *)
-BVec = B0 * kVec;
-
-(* Magnetic part of Lorentz force: F_L,mag = q * u x B *)
-FLmag = q * Cross[uVec, BVec];
-
-Print["Magnetic part of Lorentz force, F_L,mag = q * u x B:"];
-Print[ToString[Simplify[FLmag], InputForm]];
+Print["Magnetic Lorentz force per unit length, f_L,mag = (q/L) * u x B:"];
+Print[ToString[Simplify[FLmagPerLength], InputForm]];
 Print[""];
-
-(* Substitute q_def into Lorentz force *)
-FLmagQdef = FLmag /. q -> qDef;
-
-Print["F_L,mag with q = rho0 * pi * a^2 * Gamma:"];
-Print[ToString[Simplify[FLmagQdef], InputForm]];
-Print[""];
-
 
 (* ---------------------------------------------------------------------- *)
-(* 3. Compare with Magnus u-part *)
+(* 3. Compare with the u-dependent Magnus piece *)
 (* ---------------------------------------------------------------------- *)
 
 FMuSimplified = Simplify[FMuPart];
-FLuSimplified = Simplify[FLmagQdef];
+FLuSimplified = Simplify[FLmagPerLength];
+solutionB0 = Solve[FMuSimplified == FLuSimplified, B0];
 
 Print["u-dependent Magnus term:"];
 Print[ToString[FMuSimplified, InputForm]];
 Print[""];
 
-Print["u-dependent Lorentz term (with q_def):"];
+Print["u-dependent Lorentz term (with geometric q):"];
 Print[ToString[FLuSimplified, InputForm]];
 Print[""];
-
-(* Explicit Check: Solve for B0 *)
-(* We equate the coefficients of the Cross product or the vectors themselves *)
-solutionB0 = Solve[FMuSimplified == FLuSimplified, B0];
 
 Print["
 We can read off the proportionality by inspection.
@@ -96,13 +77,56 @@ Print[ToString[solutionB0, InputForm]];
 
 Print["
 Thus, with the identification
-    q = rho0 * pi * a^2 * Gamma,
-    B = -(1 / (pi * a^2)) k,
-the u-dependent Magnus force matches the magnetic part of the Lorentz force.
+    q = kappaQ * rho0 * pi * a^2 * Gamma,
+    B = -(L / (kappaQ * pi * a^2)) k,
+the u-dependent Magnus force matches the magnetic part of the Lorentz force
+per unit length in the straight-vortex geometry used in the paper.
 
-The remaining background-flow term F_M_vinf can be grouped with
-pressure-gradient forces and interpreted as part of an effective
-electric field E in the Lorentz force qE.
+The remaining background-flow term can be grouped with
+pressure-gradient forces and interpreted as part of the effective
+electric field contribution qE.
 "];
 
 Print["em_lorentz_vs_magnus.wl: algebraic comparison complete."];
+
+(*
+Output:
+Magnus force per unit length, f_M = rho0 * Gamma * k x (u - v_inf):
+{-(Gamma*rho0*uy), Gamma*rho0*(ux - v0), 0}
+
+u-dependent (magnetic-like) part of Magnus force:
+{-(Gamma*rho0*uy), Gamma*rho0*ux, 0}
+
+Background-flow contribution to Magnus force:
+{0, -(Gamma*rho0*v0), 0}
+
+Toy-model effective charge: q = kappaQ * rho0 * pi * a^2 * Gamma
+q = a^2*Gamma*kappaQ*Pi*rho0
+
+Magnetic Lorentz force per unit length, f_L,mag = (q/L) * u x B:
+{(a^2*B0*Gamma*kappaQ*Pi*rho0*uy)/L, -((a^2*B0*Gamma*kappaQ*Pi*rho0*ux)/L), 0}
+
+u-dependent Magnus term:
+{-(Gamma*rho0*uy), Gamma*rho0*ux, 0}
+
+u-dependent Lorentz term (with geometric q):
+{(a^2*B0*Gamma*kappaQ*Pi*rho0*uy)/L, -((a^2*B0*Gamma*kappaQ*Pi*rho0*ux)/L), 0}
+
+
+We can read off the proportionality by inspection.
+Mathematica solution for B0 equating the two forces:
+
+{{B0 -> -(L/(a^2*kappaQ*Pi))}}
+
+Thus, with the identification
+    q = kappaQ * rho0 * pi * a^2 * Gamma,
+    B = -(L / (kappaQ * pi * a^2)) k,
+the u-dependent Magnus force matches the magnetic part of the Lorentz force
+per unit length in the straight-vortex geometry used in the paper.
+
+The remaining background-flow term can be grouped with
+pressure-gradient forces and interpreted as part of the effective
+electric field contribution qE.
+
+em_lorentz_vs_magnus.wl: algebraic comparison complete.
+*)

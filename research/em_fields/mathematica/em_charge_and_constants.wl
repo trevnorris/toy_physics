@@ -6,7 +6,7 @@
 
 $Assumptions = {
   rho0 > 0, a > 0, L > 0, Gamma > 0, aspect > 0,
-  q > 0, eps0 > 0, mu0 > 0, c > 0,
+  kappaM > 0, kappaQ > 0, q > 0, eps0 > 0, mu0 > 0, c > 0,
   x \[Element] Reals, y \[Element] Reals, z \[Element] Reals
 };
 
@@ -21,15 +21,14 @@ Print["===========================================================\n"];
 (* ---------------------------------------------------------------------- *)
 
 Lexpr = aspect * a;
-massG = rho0 * (Pi * a^2 * Lexpr);
-chargeQ = rho0 * (Pi * a^2) * Gamma;
+massG = kappaM * rho0 * (Pi * a^2 * Lexpr);
+chargeQ = kappaQ * rho0 * (Pi * a^2) * Gamma;
 
-Print["Gravitational mass m_G ~ rho0 * Volume:"];
-(* ToString[..., InputForm] forces it to a string without the wrapper label *)
+Print["Gravitational mass m_G = kappaM * rho0 * Volume:"];
 Print["m_G = ", ToString[massG, InputForm]];
 Print[""];
 
-Print["Electric charge q ~ rho0 * Area * Circulation:"];
+Print["Electric charge q = kappaQ * rho0 * Area * Circulation:"];
 Print["q_defect = ", ToString[chargeQ, InputForm]];
 Print[""];
 
@@ -39,7 +38,6 @@ forceRatio = Simplify[chargeQ^2 / massG^2];
 Print["F_elec / F_grav ~ q^2 / m_G^2 ~ "];
 Print[ToString[forceRatio, InputForm]];
 Print[""];
-
 
 (* ---------------------------------------------------------------------- *)
 (* 1. Coulomb potential and Gauss's law structure *)
@@ -66,12 +64,11 @@ Print["Divergence of E (valid for r != 0):"];
 Print["divE = ", ToString[Simplify[divE, {x != 0 || y != 0 || z != 0}], InputForm]];
 
 Print["
-SymPy returns zero for div(E) away from the origin, as expected.
+The symbolic divergence simplifies to zero away from the origin, as expected.
 The missing piece at r = 0 is the standard distributional identity:
     div(E) = q * delta^3(r) / eps0
 which encodes Gauss's law for a point charge.
 "];
-
 
 (* ---------------------------------------------------------------------- *)
 (* 2. Relating eps0 and mu0 via the wave speed c *)
@@ -91,12 +88,11 @@ acoustic wave speed c_s of the superfluid vacuum.
 The above relation is therefore a *definition* of mu0 in terms of eps0.
 "];
 
-mu0Sol = Solve[relRelation, mu0][[1, 1, 2]]; 
+mu0Sol = Solve[relRelation, mu0][[1, 1, 2]];
 
 Print["Solving for mu0 in terms of eps0 and c:"];
 Print["mu0 = ", ToString[mu0Sol, InputForm]];
 Print[""];
-
 
 (* ---------------------------------------------------------------------- *)
 (* 3. Source densities rho_e and J *)
@@ -106,8 +102,6 @@ Print["PART 4: Charge density rho_e and current J for a moving defect"];
 Print["===========================================================\n"];
 
 uVec = {ux, uy, uz};
-
-(* Symbolic placeholder *)
 delta3[val__] := Subscript[\[Delta], 3][val];
 
 rhoE = q * delta3[x, y, z];
@@ -131,22 +125,21 @@ are satisfied in the standard distributional sense.
 
 Print["em_charge_and_constants.wl: symbolic derivation complete."];
 
-(*"
+(*
 Output:
-
 ===========================================================
 PART 1: Defect mass and charge scaling (from toy model)
 ===========================================================
 
-Gravitational mass m_G ~ rho0 * Volume:
-m_G = a^3*aspect*Pi*rho0
+Gravitational mass m_G = kappaM * rho0 * Volume:
+m_G = a^3*aspect*kappaM*Pi*rho0
 
-Electric charge q ~ rho0 * Area * Circulation:
-q_defect = a^2*Gamma*Pi*rho0
+Electric charge q = kappaQ * rho0 * Area * Circulation:
+q_defect = a^2*Gamma*kappaQ*Pi*rho0
 
 These relations encode the basic hierarchy scaling:
-F_elec / F_grav ~ q^2 / m_G^2 ~
-Gamma^2/(a^2*aspect^2)
+F_elec / F_grav ~ q^2 / m_G^2 ~ 
+(Gamma^2*kappaQ^2)/(a^2*aspect^2*kappaM^2)
 
 ===========================================================
 PART 2: Coulomb potential and Gauss's law
@@ -161,7 +154,7 @@ E_vec = {(q*x)/(4*eps0*Pi*(x^2 + y^2 + z^2)^(3/2)), (q*y)/(4*eps0*Pi*(x^2 + y^2 
 Divergence of E (valid for r != 0):
 divE = 0
 
-SymPy returns zero for div(E) away from the origin, as expected.
+The symbolic divergence simplifies to zero away from the origin, as expected.
 The missing piece at r = 0 is the standard distributional identity:
     div(E) = q * delta^3(r) / eps0
 which encodes Gauss's law for a point charge.
@@ -199,4 +192,4 @@ With these definitions, Gauss's law and the continuity equation
 are satisfied in the standard distributional sense.
 
 em_charge_and_constants.wl: symbolic derivation complete.
-"*)
+*)

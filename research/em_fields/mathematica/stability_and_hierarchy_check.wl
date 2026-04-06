@@ -2,131 +2,85 @@
 (* MICROSCOPIC STABILITY & EM CONSISTENCY CHECK                      *)
 (* ================================================================= *)
 (* Purpose:                                                          *)
-(* 1. Verify the derivation of L/a = 1.847 from Enthalpy minimization*)
-(* 2. Confirm EM/Gravity hierarchy remains valid with this new L/a   *)
+(* 1. Verify the derivation of L/a = sqrt(2) pi / x01 from the       *)
+(*    cavity enthalpy used in the paper.                             *)
+(* 2. Confirm q^2 / m_G^2 scales as Gamma^2 / a^2 at fixed aspect.   *)
 (* ================================================================= *)
 
-ClearAll["Global`*"]
+ClearAll["Global`*"];
+
+$Assumptions = {
+  a > 0, L > 0, alphaCav > 0, betaVac \[Element] Reals,
+  kappaM > 0, kappaQ > 0, rho0 > 0, Gamma > 0
+};
+
+x01 = BesselJZero[0, 1];
 
 (* ----------------------------------------------------------------- *)
 (* PART 1: THERMODYNAMIC STABILITY (The "Why" of the Defect)         *)
 (* ----------------------------------------------------------------- *)
 Print["--- Part 1: Thermodynamic Stability Check ---"];
 
-(* Define Energy of the Fundamental TM-like Mode *)
-(* E ~ Sqrt[ (x01/a)^2 + (pi/L)^2 ] *)
-(* We use generic constants k for the prefactors *)
-x01 = BesselJZero[0, 1]; (* First zero of J0 ~ 2.4048 *)
-modeEnergy = k * Sqrt[(x01/a)^2 + (Pi/L)^2];
+(* Dimensionless cavity enthalpy from the paper appendix:
+   H ~ L x01^2 + a^2 Pi^2/L + betaVac a^2 L
+*)
+Hdimless = L*x01^2 + a^2*Pi^2/L + betaVac*a^2*L;
 
-(* Define Vacuum Work term *)
-(* Work = P_vac * Volume. Volume of cylinder = Pi * a^2 * L *)
-vacuumWork = Pvac * (Pi * a^2 * L);
+eqRadial = D[Hdimless, a] == 0;
+eqAxial = D[Hdimless, L] == 0;
 
-(* Define Enthalpy *)
-enthalpyH = modeEnergy + vacuumWork;
+betaVacFromRadial = Simplify[betaVac /. Solve[eqRadial, betaVac][[1]]];
+chiEq = Simplify[(eqAxial /. betaVac -> betaVacFromRadial) /. L -> chi*a];
+aspectRatio = Simplify[chi /. Solve[chiEq && chi > 0, chi][[1]]];
+numericalRatio = N[aspectRatio];
+betaVacAtMinimum = Simplify[betaVacFromRadial /. L -> aspectRatio*a];
 
-(* DERIVATION: Minimize H with respect to a and L *)
-(* Equation 1: dH/da = 0 *)
-eqRadial = D[enthalpyH, a] == 0;
-
-(* Equation 2: dH/dL = 0 *)
-eqAxial = D[enthalpyH, L] == 0;
-
-(* Solve for Pvac in both equations to eliminate it *)
-solPvacRadial = Solve[eqRadial, Pvac][[1]];
-solPvacAxial = Solve[eqAxial, Pvac][[1]];
-
-(* Equate the two expressions for Pvac (Mechanical Equilibrium) *)
-geometricConstraint = (Pvac /. solPvacRadial) == (Pvac /. solPvacAxial);
-
-(* Solve for the aspect ratio L/a *)
-(* We assume L > 0 and a > 0 *)
-solutionAspect = Solve[geometricConstraint, L];
-ratioExpression = Simplify[L/a /. solutionAspect][[1]]; (* Taking the positive solution *)
-
-Print["Derived Aspect Ratio Expression (L/a): "];
-Print[ratioExpression];
-
-(* Calculate Numerical Value *)
-numericalRatio = N[ratioExpression];
+Print["Derived Aspect Ratio Expression (L/a):"];
+Print[aspectRatio];
 Print["Numerical L/a Value: ", numericalRatio];
-
-(* Compare to User's value *)
-Print["User's Value: 1.8475"];
-Print["Match: ", Abs[numericalRatio - 1.8475] < 0.001];
-
+Print["betaVac required at the minimum:"];
+Print[betaVacAtMinimum];
+Print["Match to paper's 1.85 aspect ratio: ", Abs[numericalRatio - 1.8475] < 0.001];
 
 (* ----------------------------------------------------------------- *)
 (* PART 2: EM HIERARCHY ROBUSTNESS                                   *)
 (* ----------------------------------------------------------------- *)
-Print["\n--- Part 2: EM Hierarchy Robustness ---"];
+Print[""];
+Print["--- Part 2: EM Hierarchy Robustness ---"];
 
-(* We need to ensure that F_EM / F_Grav is stable under this change. *)
-(* EM Force: F_e ~ q^2 / r^2 *)
-(* Grav Force: F_g ~ m^2 / r^2 *)
+massGrav = kappaM * rho0 * Pi * a^2 * L;
+chargeQ = kappaQ * rho0 * Pi * a^2 * Gamma;
 
-(* CHARGE q: *)
-(* From previous notes: q ~ Area * Circulation ~ a^2 * Gamma *)
-(* This depends on 'a', but NOT on 'L'. *)
-chargeQ = Cq * rho0 * a^2 * Gamma;
+ratioFixedAspect = Simplify[(chargeQ^2 / massGrav^2) /. L -> aspectRatio*a];
+exponentA = Exponent[ratioFixedAspect, a];
 
-(* GRAVITATIONAL MASS m: *)
-(* The "Cavity Mass" is the missing mass of the hole. *)
-(* m ~ Volume * rho0 *)
-(* If the shape is now fixed to L = 1.847a, the volume is purely a function of a^3 *)
-volumeFixed = Pi * a^2 * (ratioExpression * a); 
-massGrav = rho0 * volumeFixed;
+Print["q^2 / m_G^2 at fixed aspect ratio:"];
+Print[ratioFixedAspect];
+Print["Exponent of a in q^2 / m_G^2: ", exponentA];
 
-(* FORCE RATIO *)
-(* F_e / F_g *)
-forceRatio = (chargeQ^2) / (massGrav^2);
-
-(* SIMPLIFY *)
-(* We want to see if the dependence on 'a' cancels out, or if we are left with *)
-(* a dependency that matches observation (e.g. Gamma^2/a^2). *)
-simplifiedRatio = Simplify[forceRatio];
-
-Print["Force Ratio F_EM / F_G:"];
-Print[simplifiedRatio];
-
-(* CHECK: Is the ratio determined purely by Circulation (Gamma) and Radius (a)? *)
-(* It should NOT depend on arbitrary 'L' anymore, since L is fixed by a. *)
-Print["Dependency Check: The ratio is a function of Gamma, rho0, and a."];
-Print["This is consistent with the standard hierarchy where small 'a' -> large Mass -> smaller ratio?"];
-Print["Wait, Charge ~ a^2, Mass ~ a^3. Ratio ~ a^4 / a^6 ~ 1/a^2."];
-Print["This implies smaller particles (small a) have LARGER charge-to-mass ratios?"];
-Print["Let's check 1/a^2 behavior:"];
-exponentA = Exponent[simplifiedRatio, a];
-Print["Exponent of 'a' in Force Ratio: ", exponentA];
-
-(* Conclusion *)
 If[exponentA == -2,
- Print["CONFIRMED: F_em/F_g scales as 1/a^2."],
- Print["WARNING: Scaling is different."]
+ Print["CONFIRMED: q^2 / m_G^2 scales as 1/a^2."],
+ Print["WARNING: Scaling is different from the paper."]
 ];
 
-Print["Interpretation: Since 'a' is small, 1/a^2 is huge."];
-Print["This naturally explains why EM >> Gravity for microscopic particles."];
+Print["Interpretation: at fixed circulation, smaller throats have larger charge-to-mass ratios."];
+Print["This naturally explains why EM >> Gravity for microscopic particles in the toy model."];
 
-(*"
+(*
 Output:
-
 --- Part 1: Thermodynamic Stability Check ---
 Derived Aspect Ratio Expression (L/a):
--((Sqrt[2]*Pi)/BesselJZero[0, 1])
-Numerical L/a Value: -1.847486577120128
-User's Value: 1.8475
-Match: False
+(Sqrt[2]*Pi)/BesselJZero[0, 1]
+Numerical L/a Value: 1.8474865771201279
+betaVac required at the minimum:
+-1/2*BesselJZero[0, 1]^2/a^2
+Match to paper's 1.85 aspect ratio: True
 
 --- Part 2: EM Hierarchy Robustness ---
-Force Ratio F_EM / F_G:
-(Cq^2*Gamma^2*BesselJZero[0, 1]^2)/(2*a^2*Pi^4)
-Dependency Check: The ratio is a function of Gamma, rho0, and a.
-This is consistent with the standard hierarchy where small 'a' -> large Mass -> smaller ratio?
-Wait, Charge ~ a^2, Mass ~ a^3. Ratio ~ a^4 / a^6 ~ 1/a^2.
-This implies smaller particles (small a) have LARGER charge-to-mass ratios?
-Let's check 1/a^2 behavior:
-Exponent of 'a' in Force Ratio: -2
-CONFIRMED: F_em/F_g scales as 1/a^2.
-"*)
+q^2 / m_G^2 at fixed aspect ratio:
+(Gamma^2*kappaQ^2*BesselJZero[0, 1]^2)/(2*a^2*kappaM^2*Pi^2)
+Exponent of a in q^2 / m_G^2: -2
+CONFIRMED: q^2 / m_G^2 scales as 1/a^2.
+Interpretation: at fixed circulation, smaller throats have larger charge-to-mass ratios.
+This naturally explains why EM >> Gravity for microscopic particles in the toy model.
+*)

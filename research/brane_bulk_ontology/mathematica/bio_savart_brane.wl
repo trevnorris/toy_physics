@@ -1,107 +1,98 @@
 (* ================================================================= *)
-(* DERIVATION OF BIOT-SAVART LAW FROM BRANE VORTICITY                *)
+(* BRANE TRANSVERSE WAKE AND THE BIOT-SAVART STRUCTURE               *)
 (* ================================================================= *)
 (* Purpose:                                                          *)
-(* 1. Demonstrate that Bulk Potential Flow yields B = 0.             *)
-(* 2. Demonstrate that a "Brane Wake" (Stokeslet) yields B ~ u x r.  *)
-(* 3. Confirm this matches the Biot-Savart Law for a point charge.   *)
+(* 1. Verify that the irrotational bulk potential gives Curl[v] = 0. *)
+(* 2. Verify that a brane-localized transverse wake A ~ u/r gives    *)
+(*    B = Curl[A] ~ (u x r)/r^3.                                     *)
+(* 3. Match the result to the paper's vector-Poisson construction.   *)
 (* ================================================================= *)
 
 ClearAll["Global`*"]
 
-(* ----------------------------------------------------------------- *)
-(* 1. SETUP & PARAMETERS                                             *)
-(* ----------------------------------------------------------------- *)
 Print["--- 1. Setup & Definitions ---"];
 
-(* Cartesian Coordinates *)
 rVec = {x, y, z};
 rMag = Sqrt[x^2 + y^2 + z^2];
-
-(* Defect Velocity (Current Source) *)
-(* Assume defect is at origin, moving with velocity uVec *)
 uVec = {ux, uy, uz};
+kappaA = Symbol["kappaA"];
+qEff = Symbol["Q"];
 
-(* Standard Biot-Savart Law for a Point Charge q moving with v *)
-(* B_BS ~ (v x r) / r^3 *)
-biotSavartStandard = Cross[uVec, rVec] / rMag^3;
+biotSavartTarget =
+  Simplify[(kappaA*qEff/(4*Pi)) * Cross[uVec, rVec] / rMag^3];
 
-Print["Target Form (Standard Biot-Savart ~ u x r / r^3):"];
-Print[biotSavartStandard];
+Print["Target Biot-Savart form B = (kappaA Q / 4 Pi) (u x r)/r^3:"];
+Print[biotSavartTarget];
 
 
-(* ----------------------------------------------------------------- *)
-(* 2. THE BULK: IRROTATIONAL POTENTIAL FLOW                          *)
-(* ----------------------------------------------------------------- *)
 Print["\n--- 2. The Bulk: Irrotational Potential Flow ---"];
 
-(* A moving body in an inviscid fluid creates a Dipole Potential *)
-(* Phi ~ u . r / r^3 *)
 phiBulk = (uVec . rVec) / rMag^3;
-
-(* Velocity v = Grad(Phi) *)
 vBulk = Grad[phiBulk, {x, y, z}];
+bBulk = Simplify[Curl[vBulk, {x, y, z}]];
 
-(* Magnetic Field B = Curl(v) *)
-bBulk = Curl[vBulk, {x, y, z}];
+Print["Bulk vorticity Curl[v_bulk]:"];
+Print[bBulk];
 
-Print["Bulk Vorticity (B-field):"];
-Print[Simplify[bBulk]];
-
-If[AllTrue[Simplify[bBulk], # == 0 &],
-   Print["RESULT: B = 0 in the Bulk (As expected for potential flow)."],
-   Print["RESULT: Non-zero B in Bulk."]
+If[AllTrue[bBulk, # == 0 &],
+   Print["RESULT: Curl[v_bulk] = 0 outside the core, as required for the gravitational sector."],
+   Print["RESULT: Non-zero bulk vorticity found."]
 ];
 
 
-(* ----------------------------------------------------------------- *)
-(* 3. THE BRANE: INDUCED VORTICITY (STOKESLET)                       *)
-(* ----------------------------------------------------------------- *)
-Print["\n--- 3. The Brane: Induced Vorticity (Stokeslet Model) ---"];
-Print["Hypothesis: The Brane has an effective viscosity/structure."];
-Print["A moving defect creates a drag wake scaling like 1/r (Stokeslet)."];
+Print["\n--- 3. The Brane: Transverse Wake Potential ---"];
 
-(* The Stokeslet Velocity Field (Flow due to a point force in viscous fluid) *)
-(* v_brane ~ (u/r) + ((u.r)r / r^3) *)
-(* We calculate the Curl of the dominant 1/r term (Green's function) *)
-(* Effective Vector Potential A ~ v_brane *)
+aBrane = (kappaA*qEff/(4*Pi)) * uVec / rMag;
+bBrane = Simplify[Curl[aBrane, {x, y, z}]];
 
-(* Simplified Ansatz: A ~ u / r  (The Liénard-Wiechert potential) *)
-(* Note: This matches the 'Stokeslet' leading order term *)
-vBraneSimple = uVec / rMag;
+Print["Brane vector potential A(r) = (kappaA Q / 4 Pi) u/r:"];
+Print[Simplify[aBrane]];
+Print["Derived magnetic field B = Curl[A]:"];
+Print[bBrane];
 
-(* Calculate Derived B-field *)
-bBrane = Curl[vBraneSimple, {x, y, z}];
 
-Print["Calculated Brane Vorticity (B-field):"];
-Print[Simplify[bBrane]];
+Print["\n--- 4. Comparison with the Target Structure ---"];
 
-(* ----------------------------------------------------------------- *)
-(* 4. COMPARISON & VERIFICATION                                      *)
-(* ----------------------------------------------------------------- *)
-Print["\n--- 4. Comparison with Biot-Savart ---"];
+matchCheck = Simplify[bBrane - biotSavartTarget];
 
-(* Check if bBrane is proportional to u x r / r^3 *)
-(* We compute the ratio or cross product check *)
-
-(* Standard Identity: Curl(u/r) = Grad(1/r) x u = -(r/r^3) x u = (u x r)/r^3 *)
-(* Let's see if Mathematica agrees *)
-
-matchCheck = Simplify[bBrane - (-Cross[rVec, uVec] / rMag^3)];
-(* Note: Cross[u, r] = -Cross[r, u]. The signs should align. *)
-
-Print["Difference between Derived B and Target Biot-Savart (scaling):"];
+Print["Difference between derived B and target Biot-Savart form:"];
 Print[matchCheck];
 
-If[AllTrue[Simplify[matchCheck], # == 0 &],
-   Print["SUCCESS: Brane Vorticity matches Biot-Savart structure exactly!"],
+If[AllTrue[matchCheck, # == 0 &],
+   Print["SUCCESS: The brane transverse wake reproduces the Biot-Savart structure exactly."],
    Print["FAILURE: Structure mismatch."]
 ];
 
-(* ----------------------------------------------------------------- *)
-(* 5. PHYSICAL INTERPRETATION                                        *)
-(* ----------------------------------------------------------------- *)
+
 Print["\n--- Conclusion ---"];
-Print["In the Bulk, v ~ Grad(1/r^2), so Curl(v) = 0."];
-Print["On the Brane, drag induces v ~ 1/r, so Curl(v) ~ 1/r^2 (Biot-Savart)."];
-Print["The 'Magnetic Field' is the vorticity of the Brane Wake."];
+Print["The bulk potential flow remains irrotational, so it cannot supply far-zone magnetostatics."];
+Print["The brane-localized transverse wake A ~ u/r yields B ~ (u x r)/r^3 with the expected normalization."];
+Print["This matches the paper's vector-Poisson interpretation and does not rely on a Stokeslet/viscous-drag picture."];
+
+(* 
+Output:
+--- 1. Setup & Definitions ---
+Target Biot-Savart form B = (kappaA Q / 4 Pi) (u x r)/r^3:
+{(kappaA*Q*(-(uz*y) + uy*z))/(4*Pi*(x^2 + y^2 + z^2)^(3/2)), (kappaA*Q*(uz*x - ux*z))/(4*Pi*(x^2 + y^2 + z^2)^(3/2)), (kappaA*Q*(-(uy*x) + ux*y))/(4*Pi*(x^2 + y^2 + z^2)^(3/2))}
+
+--- 2. The Bulk: Irrotational Potential Flow ---
+Bulk vorticity Curl[v_bulk]:
+{0, 0, 0}
+RESULT: Curl[v_bulk] = 0 outside the core, as required for the gravitational sector.
+
+--- 3. The Brane: Transverse Wake Potential ---
+Brane vector potential A(r) = (kappaA Q / 4 Pi) u/r:
+{(kappaA*Q*ux)/(4*Pi*Sqrt[x^2 + y^2 + z^2]), (kappaA*Q*uy)/(4*Pi*Sqrt[x^2 + y^2 + z^2]), (kappaA*Q*uz)/(4*Pi*Sqrt[x^2 + y^2 + z^2])}
+Derived magnetic field B = Curl[A]:
+{(kappaA*Q*(-(uz*y) + uy*z))/(4*Pi*(x^2 + y^2 + z^2)^(3/2)), (kappaA*Q*(uz*x - ux*z))/(4*Pi*(x^2 + y^2 + z^2)^(3/2)), (kappaA*Q*(-(uy*x) + ux*y))/(4*Pi*(x^2 + y^2 + z^2)^(3/2))}
+
+--- 4. Comparison with the Target Structure ---
+Difference between derived B and target Biot-Savart form:
+{0, 0, 0}
+SUCCESS: The brane transverse wake reproduces the Biot-Savart structure exactly.
+
+--- Conclusion ---
+The bulk potential flow remains irrotational, so it cannot supply far-zone magnetostatics.
+The brane-localized transverse wake A ~ u/r yields B ~ (u x r)/r^3 with the expected normalization.
+This matches the paper's vector-Poisson interpretation and does not rely on a Stokeslet/viscous-drag picture.
+*)

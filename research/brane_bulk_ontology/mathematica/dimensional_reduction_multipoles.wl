@@ -109,21 +109,20 @@ ratio = Simplify[Q20 / M];
 Print["Ratio Q20 / M = "];
 Print[ratio // TraditionalForm];
 
-(*"
+(* 
 Output:
-
 --- Step 1: Calculating rho3 ---
-rho3(r, theta) =
+rho3(r, theta) = 
 TraditionalForm[(L*Sqrt[Pi]*rho0*(4 + eps + 3*eps*Cos[2*theta]))/(4*E^(r^2/a^2))]
 
 --- Step 2: Calculating Mass M ---
-Total Mass M =
+Total Mass M = 
 TraditionalForm[a^3*L*Pi^2*rho0]
 
 --- Step 3: Calculating Quadrupole Q20 ---
-Quadrupole Q20 =
+Quadrupole Q20 = 
 TraditionalForm[(3*a^5*eps*L*Pi^2*rho0)/10]
 
-Ratio Q20 / M =
+Ratio Q20 / M = 
 TraditionalForm[(3*a^2*eps)/10]
-"*)
+*)

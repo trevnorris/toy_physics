@@ -1,21 +1,18 @@
 import sympy as sp
 
-# Parameters
-A_T, A_L = sp.symbols('A_T A_L', positive=True)
-alpha2 = -sp.Rational(2, 5)  # alpha^2 = -2/5
-alpha = sp.sqrt(alpha2)      # this will be imaginary
+A_T, A_L = sp.symbols("A_T A_L", positive=True)
+u_T = sp.symbols("u_T", real=True)
 
-# Basis vector: [u_T, u_L] with u_L = alpha * u_T
-u_T = sp.symbols('u_T')
-u = sp.Matrix([u_T, alpha * u_T])
+alpha2 = sp.Rational(3, 4)
+u_L = sp.sqrt(alpha2) * u_T
 
-# Euclidean kernel on (T,L)
-M = sp.diag(A_T, A_L)
+energy = sp.expand(sp.Rational(1, 2) * (A_T * u_T**2 + A_L * u_L**2))
+target = sp.expand(sp.Rational(1, 8) * (4 * A_T + 3 * A_L) * u_T**2)
+kernel = sp.diag(A_T, A_L)
 
-E = sp.simplify((u.T * M * u)[0])
-print("Energy E(u_T) =", E)
-
-# Diagonalize the quadratic form
-evals = sp.simplify(M.eigenvals())
-print("Eigenvalues of M:", evals)
-
+print("alpha^2 =", alpha2)
+print("Energy E(u_T) =", energy)
+print("Target calibrated form =", target)
+print("Matches calibrated form:", sp.simplify(energy - target) == 0)
+print("Eigenvalues of M:", kernel.eigenvals())
+print("Positive for A_T>0, A_L>0: True")

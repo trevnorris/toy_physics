@@ -80,4 +80,8 @@ InputForm[((2*k^2 + eps^2*kw^2)*(2*c^2 + Phi - n*Phi))/(4*c^2*k*Sqrt[k^2])]
 
 --- Specialize to n=5 ---
 InputForm[((2*k^2 + eps^2*kw^2)*(c^2 - 2*Phi))/(2*c^2*k*Sqrt[k^2])]
+
+Interpretation:
+  • If k_w = 0 (true zero mode), N_eff = N0 = 1 - 2 Φ/c^2 = 1 + 2 GM/(rc^2).
+  • If k_w ≠ 0, N_eff has a + (1/2)(k_w/k)^2 correction ⇒ chromatic / dispersive lensing.
 "*)

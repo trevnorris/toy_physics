@@ -119,4 +119,12 @@ Lw=10.  m=0  kw=0.  fc=0.  Δ=[0., 0., 0., 0., 0., 0.]
 Lw=10.  m=1  kw=0.6283185307179586  fc=3.e7  Δ=[0.0004503039779921725, 4.5000303752207316e-6, 4.5000003723316695e-10, 4.5075054799781356e-14, 1.7763568394002505e-15, 4.440892098500626e-16]
 
 Legend (Δ list order): 1 GHz (radio) | 10 GHz (microwave) | 1 THz (far IR) | 100 THz (IR) | 500 THz (optical) | 1 PHz (near UV)
+
+Interpretation:
+  • m=0 => kw=0 => fc=0 => Δ=0 for all frequencies (clean photon branch).
+  • m>=1 => fc ~ c/(2Lw) (Neumann) or fc ~ c/Lw (Periodic): a cutoff exists.
+  • For f <= fc: NO-PROP (evanescent along the brane).
+  • Just above fc: Δ becomes large (strong dispersion near cutoff).
+
+Done.
 "*)

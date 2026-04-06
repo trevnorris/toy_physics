@@ -134,6 +134,7 @@ Print["Ratio (Orbital / Optical): ", ratio]
 
 (*"
 Output:
+--- PART 1: DEFINITIONS ---
 
 --- PART 2: OPTICAL METRIC & LIGHT SPEED ---
 Coordinate speed of light (dr/dt):

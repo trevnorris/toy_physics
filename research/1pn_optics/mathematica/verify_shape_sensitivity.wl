@@ -241,7 +241,6 @@ Print["    (ghost-like) superfluid vacuum over a solid-obstacle picture."];
 
 (*"
 Output:
-
 --- 1. SHAPE SENSITIVITY (THE STIFFNESS CONSTRAINT) ---
 
 Table: Added Mass Coefficient (kappa) vs Shape (b/a ratio)
@@ -283,4 +282,14 @@ Condition for Solid Planet to match Single Defect:
 Effective defect density: rho_defect = mDefect / vDefect = mDefect/vDefect
 Required rhoMatter for exact equality: rhoMatter = (kappaMacro*mDefect)/(kappaSingle*vDefect)
 So rhoMatter / rho_defect must equal: kappaMacro/kappaSingle
+
+Interpretation:
+  - If the vacuum permeates matter (case 2), a composite planet
+    falls with the same acceleration as a single defect (WEP OK).
+  - If the vacuum treats the planet as a solid body (case 3),
+    the acceleration depends on the macroscopic density rhoMatter.
+    Exact agreement with the single-defect acceleration requires a
+    fine-tuned relation between rhoMatter and the defect density.
+  - Thus, in this hydrodynamic model, WEP favors a permeating
+    (ghost-like) superfluid vacuum over a solid-obstacle picture.
 "*)

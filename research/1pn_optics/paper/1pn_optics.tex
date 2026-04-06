@@ -423,7 +423,7 @@ Of these contributions, the static density term $\kappa_\rho$ and the
 added-mass term $\kappa_{\mathrm{add}}$ can be computed directly from the
 near-zone density perturbation and the dipole-like flow field around a
 translating void (see Appendix~\ref{app:dipole-derivation} and the
-verification scripts in \texttt{mathematica/1pn\_optics/}).
+verification scripts in \path{research/1pn_optics/mathematica/}).
 See Ref.~\cite{Norris:2025Orbits} for the orbital-sector development and
 definitions; here we summarize which pieces are directly computable and which
 are fixed by calibration.
@@ -1031,7 +1031,8 @@ and Appendix~\ref{app:ppn-metric}.
 
 For completeness, we briefly sketch how the analytic result
 Eq.~\eqref{eq:lensing-dtheta-result} can be checked numerically within the
-toy model.
+toy model.  A companion implementation of this Hamiltonian check is provided
+in \path{research/1pn_optics/scripts/ray_tracing.py}.
 
 In the geometric-optics limit, rays in an inhomogeneous medium with phase
 speed $c_s(\mathbf{x})$ can be described by the Hamiltonian
@@ -1334,7 +1335,8 @@ PPN coefficient.
 \label{subsec:shapiro-numerics}
 
 As with lensing, the analytic Shapiro delay can be checked numerically
-within the superfluid-defect model.
+within the superfluid-defect model.  A companion direct line-integral check
+is provided in \path{research/1pn_optics/scripts/shapiro_delay.py}.
 
 One approach is to integrate the time-of-flight integral
 Eq.~\eqref{eq:shapiro-t-integral} directly on a discrete grid.
@@ -1560,7 +1562,7 @@ exponents,
   \quad\Rightarrow\quad
   s = \frac{n-1}{2} - q.
   \label{eq:clock-universality-s}
-\end{equation}\footnote{For explicit algebraic derivations of the scaling condition and of the energy-minimization example below, see \texttt{mathematica/1pn\_optics/verify\_clock\_scaling\_universality.wl} and \texttt{mathematica/1pn\_optics/verify\_length\_scaling\_from\_energy\_balance.wl}.}
+\end{equation}\footnote{For explicit algebraic derivations of the scaling condition and of the energy-minimization example below, see \path{research/1pn_optics/mathematica/verify_clock_scaling_universality.wl} and \path{research/1pn_optics/mathematica/verify_length_scaling_from_energy_balance.wl}.}
 In the stiff $n=5$ branch with $q=1$, this condition becomes $s=1$, i.e.\
 \begin{equation}
   L(\rho) \propto \rho.
@@ -1811,9 +1813,10 @@ frequency $\omega = 2\pi f$)
 implicitly assumes that the relevant ``photon''/wave packet is the zero mode
 of any transverse (bulk) structure.\footnote{For explicit mode-by-mode checks
 in the simple waveguide/KK toy model used here, see
-\texttt{mathematica/1pn\_optics/verify\_w\_zero\_mode.wl},
-\texttt{mathematica/1pn\_optics/verify\_w\_cutoff\_and\_dispersion.wl}, and
-\texttt{mathematica/1pn\_optics/verify\_w\_mode\_leakage\_budget.wl}.}
+\path{research/1pn_optics/mathematica/verify_bulk_guided_photon_index.wl},
+\path{research/1pn_optics/mathematica/verify_w_zero_mode.wl},
+\path{research/1pn_optics/mathematica/verify_w_cutoff_and_dispersion.wl}, and
+\path{research/1pn_optics/mathematica/verify_w_mode_leakage_budget.wl}.}
 A true $k_w=0$ branch exists only if the bulk boundary conditions admit a
 constant $w$ eigenfunction (e.g. Neumann--Neumann or periodic in the simple
 waveguide model; Dirichlet or mixed boundary conditions have no zero mode).
@@ -2698,6 +2701,12 @@ strong-field gravity, and cosmology in a similarly coherent way remains an
 open and intriguing question.
 
 %---------------------------------------------------------------------------
+\section*{Acknowledgments}
+
+This work was carried out by an independent researcher. Generative-AI tools were used during the development of the manuscript to help translate conceptual ideas into mathematical form, assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy verification scripts, and improve the exposition. The conceptual direction, hypotheses, and overall structure of the work were directed by the author. The resulting arguments and calculations were checked for internal consistency using the accompanying symbolic scripts, but the work should be regarded as exploratory and would benefit from review by subject-matter experts. Any errors, omissions, or misunderstandings remain the author’s.
+
+\medskip
+
 \appendix
 
 \section{Stiff $n=5$ superfluid vacuum and optical sector details}

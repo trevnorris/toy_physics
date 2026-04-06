@@ -80,7 +80,6 @@ Print["Plugging q=1 gives n = ", (n /. solN[[1]] /. q -> 1) // Rationalize];
 
 (*"
 Output:
-
 =======================================================
  verify_hybrid_cancellation.wl
 =======================================================

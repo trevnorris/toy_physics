@@ -195,4 +195,10 @@ Zero mode present?  NO
 --- Dirichlet-like limit (α→∞, β→∞) ---
 (Infinity treated as 'Dirichlet-like': expect NO zero mode.)
 Zero mode present?  NO
+
+Interpretation (Robin):
+  • A true zero mode is NOT generic under Robin BCs.
+  • Neumann-Neumann (α=β=0) is the clean, natural way to guarantee k_w=0.
+  • If your bulk confinement is 'reflective' (vanishing normal derivative), you get a gapless branch.
+  • If confinement is 'hard wall' (Dirichlet-like), you generally do not.
 "*)

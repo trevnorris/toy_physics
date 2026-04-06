@@ -133,6 +133,7 @@ Print["   The defect is not a solid body, but its topological stability"];
 Print["   forces the fluid to generate a dipole cloud, creating the 1.5 factor."];
 
 (*"
+Output:
 --- 1. DEFINING THE PHYSICS OF THE MOVING THROAT ---
 Velocity Potential Ansatz (Dipole):
 -((muDipole*Cos[theta])/r^2)
@@ -155,4 +156,12 @@ Added Mass Coefficient (kappa):
 If Throat is Spherical: kappa = 1/2
 If Throat stretches to Cylinder (broadside): kappa = 1
 If Throat stretches to Needle (end-on): kappa = 0
+
+--- CONCLUSION ---
+1. A massless void moving through a fluid carries kinetic energy.
+2. This energy manifests exactly as an inertial mass of 0.5 * DisplacedMass.
+3. This derivation assumed the boundary remained Spherical (Stiff).
+4. This confirms the physics of the 'Soliton Geodesic' hypothesis:
+   The defect is not a solid body, but its topological stability
+   forces the fluid to generate a dipole cloud, creating the 1.5 factor.
 "*)

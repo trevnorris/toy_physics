@@ -84,4 +84,9 @@ Required s for universality: s = 1   (i.e., L ∝ ρ^1)
 Bohr-like rods: s = -q = -1  ⇒ cavity exponent = 3
 Fixed rods:     s = 0  ⇒ cavity exponent = 2
 Universal rods: s = 1  ⇒ cavity exponent = 1
+
+Interpretation:
+  • With (n,q)=(5,1), atomic exponent = 1.
+  • If you assume Bohr scaling (s=-1), cavity exponent = 3 (the '3×' issue).
+  • If your cavity length instead scales as L ∝ ρ^(+1), cavity exponent = 1 and universality is restored.
 "*)

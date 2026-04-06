@@ -104,7 +104,7 @@ Print[solutionN];
 n5Check = deflectionAngle /. n -> 5;
 Print["Deflection Angle for n=5:"];
 Print[n5Check];
-Print["Does it match GR? "];
+Print["Does it match GR?"];
 Print[Simplify[n5Check == targetGR]];
 
 
@@ -163,7 +163,7 @@ Print[redshiftFraction];
 (* We found delta_rho/rho = - GM / (r cs^2) earlier. *)
 (* Magnitude matches GR weak field potential exactly. *)
 
-Print["Does magnitude match GR potential GM/(r c^2)? "];
+Print["Does magnitude match GR potential GM/(r c^2)?"];
 (* Added Assumptions to allow Simplify to process the Abs[] correctly *)
 Print[Simplify[Abs[redshiftFraction] == (G * M) / (r * cs0sq), Assumptions -> {G > 0, M > 0, r > 0, cs0sq > 0}]];
 
@@ -175,7 +175,6 @@ Print["4. The density drop matches the gravitational redshift potential."];
 
 (*"
 Output:
-
 --- 1. Deriving Refractive Index from EOS ---
 Fractional Density Perturbation (delta rho / rho):
 -((G*M)/(cs0sq*r))
@@ -206,4 +205,10 @@ Redshift (delta rho / rho):
 -((G*M)/(cs0sq*r))
 Does magnitude match GR potential GM/(r c^2)?
 True
+
+--- CONCLUSION ---
+1. n=5 is uniquely required to match the factor of 4 in Lensing.
+2. This sets alpha=2 in the refractive index.
+3. alpha=2 yields the correct factor of 4 in Shapiro delay.
+4. The density drop matches the gravitational redshift potential.
 "*)

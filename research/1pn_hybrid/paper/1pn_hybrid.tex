@@ -1091,11 +1091,12 @@ equation of the form
 \end{equation}
 where \(\mathcal{F}_{\text{throat}}\) encodes corrections due to the finite
 throat size and the transition from 3D to 4D flow.  Equation
-\eqref{eq:du-dr-generic} is the continuum version of the nonlinear profile
-solved numerically in the \texttt{nonlinear\_profile\_solver.wl} script; the
-full expression, including the explicit form of
-\(\mathcal{F}_{\text{throat}}\), is recorded in
-App.~\ref{app:inflow}.
+\eqref{eq:du-dr-generic} motivates the representative transonic profile
+construction recorded in the \texttt{nonlinear\_profile\_solver.wl} script.
+For the purposes of the present paper, that standalone script should be read
+as a reduced \(n=5\) profile model that enforces continuity, sonic matching,
+and the correct far--field normalization rather than as a complete numerical
+solution of the Paper~V throat problem.
 
 The structure of Eq.~\eqref{eq:du-dr-generic} immediately reveals the
 existence of a critical (sonic) point.  The right–hand side remains finite
@@ -1117,9 +1118,9 @@ solutions exhibit a smooth transition from subsonic inflow
 \(r\), with the transonic condition \eqref{eq:transonic-conditions} satisfied
 at a unique radius \(r_H \gtrsim a\).
 
-Figure~\ref{fig:mach-profile} (generated from the numerical solutions)
-illustrates a representative Mach number profile,
-\(\mathcal{M}(r) \equiv |u(r)|/c_s(r)\), for the \(n=5\) vacuum.  The flow
+A representative Mach number profile,
+\(\mathcal{M}(r) \equiv |u(r)|/c_s(r)\), extracted from the companion script,
+illustrates the same qualitative behavior for the \(n=5\) vacuum.  The flow
 is nearly incompressible and slow at large radii, accelerates inward as the
 density decreases, and crosses \(\mathcal{M} = 1\) at \(r = r_H\).  The
 precise location of \(r_H\) depends on the throat radius \(a\), the mass
@@ -1279,31 +1280,32 @@ of motion of the form
   b \equiv \frac{L_{\text{opt}}}{E_{\text{opt}}/c},
   \label{eq:optical-radial-eq}
 \end{equation}
-where \(b\) is the impact parameter and the effective potential is
+where \(b\) is the impact parameter.  Eliminating
+\(\mathrm{d}t/\mathrm{d}\lambda\) and \(\mathrm{d}\phi/\mathrm{d}\lambda\)
+in favor of \(E_{\text{opt}}\), \(L_{\text{opt}}\), and \(b\) gives
 \begin{equation}
   V_{\text{eff}}(r; b)
-  = \frac{c^2}{N^4(r)}
+  = -\frac{E_{\text{opt}}^2}{c^2}
     \left[
-      \frac{b^2}{r^2} - N^2(r)
+      1 - \frac{b^2}{N^4(r)\,r^2}
     \right].
   \label{eq:Veff-def}
 \end{equation}
-The turning points and circular photon orbits are determined by the zeros
-and extrema of \(V_{\text{eff}}\).
+The turning points and circular photon orbits are therefore controlled by
+the combination \(N^4(r)\,r^2\).
 
 In practice, the lensing calculations in the
 \texttt{lensing\_from\_flow.wl} script are implemented in terms of the
 equivalent ray equation for \(\phi(r)\),
 \begin{equation}
   \frac{\mathrm{d}\phi}{\mathrm{d}r}
-  = \frac{b}{r^2}
-    \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}},
+  = \frac{b}{r\,\sqrt{N^4(r)\,r^2 - b^2}},
   \label{eq:dphi-dr}
 \end{equation}
-which is integrated numerically using the full index profile obtained from
-the inflow solution.  The analytic discussion here is intended to highlight
-the key structures in the effective potential that control the photon sphere
-and shadow.
+which is integrated numerically using representative weak--field--matched
+index profiles with finite--size corrections near the throat.  The analytic
+discussion here is intended to highlight the key structures in the optical
+profile that control the photon sphere and shadow.
 
 \subsection{Photon sphere and shadow size}
 \label{subsec:photon-sphere-shadow}
@@ -1322,48 +1324,48 @@ for some critical impact parameter \(b_{\text{ph}}\).  Using
 Eq.~\eqref{eq:Veff-def}, these conditions can be expressed more directly in
 terms of the index profile as
 \begin{equation}
-  \frac{b_{\text{ph}}^2}{r_{\text{ph}}^2}
-  = N^2(r_{\text{ph}}),
+  b_{\text{ph}}^2
+  = N^4(r_{\text{ph}})\,r_{\text{ph}}^2,
   \qquad
   \frac{\mathrm{d}}{\mathrm{d}r}
-  \left[ \frac{N^2(r)}{r^2} \right]_{r = r_{\text{ph}}}
+  \left[ N^4(r)\,r^2 \right]_{r = r_{\text{ph}}}
   = 0.
   \label{eq:photon-sphere-N}
 \end{equation}
 The second condition implies
 \begin{equation}
-  \left. \frac{2 N(r) N'(r)}{r^2}
-    - \frac{2 N^2(r)}{r^3}
+  \left. \frac{4 N'(r)}{N(r)}
+    + \frac{2}{r}
   \right|_{r = r_{\text{ph}}}
   = 0,
 \end{equation}
 or equivalently
 \begin{equation}
   \frac{N'(r_{\text{ph}})}{N(r_{\text{ph}})}
-  = \frac{1}{r_{\text{ph}}}.
+  = -\frac{1}{2 r_{\text{ph}}}.
   \label{eq:photon-sphere-slope}
 \end{equation}
-For a simple \(1/r\) index profile, \(N(r) = 1 + \beta_{\rm idx} G M/(r c^2)\), this
-condition yields
+For a simple \(1/r\) index profile,
+\(N(r) = 1 + \beta_{\rm idx} G M/(r c^2)\), this weak--field estimate gives
 \begin{equation}
   r_{\text{ph}}
-  \simeq \frac{3 \beta_{\rm idx} G M}{c^2},
+  \simeq \frac{\beta_{\rm idx} G M}{c^2},
   \qquad
   b_{\text{ph}}
-  \simeq \sqrt{3}\,r_{\text{ph}},
+  \simeq 4\,r_{\text{ph}},
   \label{eq:rph-beta}
 \end{equation}
-up to corrections of order \((G M / r c^2)^2\).  For the Schwarzschild
-metric in isotropic coordinates, the effective index has \(\beta_{\rm idx} = 2\), and
-one recovers the standard relation \(r_{\text{ph}} = 3 G M / c^2\) in
-Schwarzschild radius units.
+up to corrections of order \((G M / r c^2)^2\).  These coefficients should
+be read only as order--unity estimates extracted from the weak--field tail;
+a quantitatively reliable photon sphere requires the full nonperturbative
+optical profile near the throat.
 
 In the superfluid defect model, the actual index profile deviates from a
 pure \(1/r\) law inside the acoustic horizon due to the nonlinear inflow and
-finite throat size.  The numerical solutions in
-\texttt{lensing\_from\_flow.wl} use the full \(N(r)\) obtained from the
-\(n=5\) inflow to solve Eqs.~\eqref{eq:dphi-dr} and
-\eqref{eq:photon-sphere-N} directly.  The results can be summarized as
+finite throat size.  The representative profiles explored in
+\texttt{lensing\_from\_flow.wl} therefore use the correct \(n=5\) weak--field
+tail together with a smooth finite--size correction near the throat.  The
+results can be summarized as
 follows:
 \begin{itemize}
   \item A photon-sphere-like orbit exists at a radius
@@ -1373,20 +1375,20 @@ follows:
           \label{eq:rph-scaling}
         \end{equation}
         with \(\kappa_{\text{ph}}\) a dimensionless constant of order
-        unity that is slightly larger than the Schwarzschild value \(3\).
+        unity in the representative profiles studied here.
   \item The corresponding critical impact parameter scales as
         \begin{equation}
           b_{\text{ph}}
           \simeq \eta_{\text{ph}}\,\frac{G M}{c^2},
           \label{eq:bph-scaling}
         \end{equation}
-        with \(\eta_{\text{ph}}\) close to the GR value \(\sqrt{27}\).
+        with \(\eta_{\text{ph}}\) likewise an order--unity, model--dependent
+        coefficient.
   \item The shadow radius seen by a distant observer, defined by
         \(b_{\text{sh}} \approx b_{\text{ph}}\), is therefore nearly
-        proportional to \(M\) with a proportionality constant that deviates
-        from the Schwarzschild value at the few to few-tens of percent
-        level, depending on the throat radius \(a\) and the details of the
-        inflow.
+        proportional to \(M\), with the detailed coefficient controlled by
+        the throat radius \(a\), the near--throat optical profile, and the
+        finite--size correction used to regularize the strong--field region.
 \end{itemize}
 In other words, the \(n=5\) superfluid vacuum predicts a photon-sphere and
 shadow structure that is qualitatively similar to, but not exactly the same
@@ -1494,6 +1496,10 @@ radius \(r_H\), and throat radius \(a\) are related schematically by
 \end{equation}
 with \(k \lesssim 1\) and \(\mu, \kappa\) dimensionless coefficients that
 depend on \(\Lambda\) and on the detailed boundary conditions in the bulk.
+In the present standalone audit bundle, these scripts should be read as
+phenomenological scaling models anchored to the preferred aspect ratio
+\(\Lambda_\star\), not as first--principles derivations of the full throat
+microphysics.
 For an exactly Schwarzschild black hole one would have \(k = 1\) and a
 strictly linear mass--radius relation; in the stiff \(n=5\) vacuum the
 scaling is close to but not exactly linear, leaving room for small
@@ -1557,8 +1563,8 @@ flow is still predominantly 3D and the throat is not fully resolved.  Here:
   \item The effective index profile \(N(r)\) remains close to its
         Schwarzschild counterpart, and the photon-sphere and shadow sizes
         obey Eqs.~\eqref{eq:rph-scaling} and \eqref{eq:bph-scaling} with
-        coefficients that differ from GR at the few to few-tens of percent
-        level.
+        order--unity coefficients that vary only mildly across the
+        representative profiles studied here.
   \item 2PN corrections in the toy model are expected to track those of GR
         up to corrections of order \(\epsilon_{\text{fs}}\), making this a
         natural regime in which to look for small deviations.
@@ -1693,16 +1699,18 @@ what can be learned by combining it with the thermodynamic/equivalence
 structure that fixes \((n,q)\).
 
 On the geometric side, we have shown that the same stiff fluid which
-supports the 1PN dynamics also admits an acoustic horizon and photon
-sphere in the near--defect region.  Steady inflow in the \(n=5\) vacuum
-becomes transonic, defining an acoustic horizon at \(r = r_H\) where the
-radial flow speed equals the local sound speed.  The location of this
-horizon scales approximately linearly with mass,
-\(r_H \sim \kappa G M / c^2\), and lies just outside the minimal throat
-radius \(a\).  The associated refractive index profile supports a
-photon--sphere--like orbit at \(r_{\text{ph}} \sim \kappa_{\text{ph}} G M /
-c^2\) and a nearly Schwarzschild shadow, with small deviations controlled by
-the throat impedance and aspect ratio \(L/a\).
+supports the 1PN dynamics also admits acoustic-horizon and photon-sphere-like
+structures in the representative strong--field models studied here.  Steady
+inflow in the \(n=5\) vacuum can be organized into a smooth transonic
+profile with an acoustic horizon at \(r = r_H\) where the radial flow speed
+equals the local sound speed.  In the associated phenomenological
+inflow/impedance fits, the horizon scale remains approximately linear in the
+mass, \(r_H \sim \kappa G M / c^2\), and lies just outside the minimal
+throat radius \(a\).  The corresponding weak--field--matched optical
+profiles support photon--sphere--like orbits at
+\(r_{\text{ph}} \sim \kappa_{\text{ph}} G M / c^2\) and nearly
+Schwarzschild shadows, with the detailed coefficients controlled by the
+throat impedance and aspect ratio \(L/a\).
 
 Taken together, these results complete the conceptual arc of the 1PN
 program:
@@ -1816,6 +1824,9 @@ observational tests.  Whether the model ultimately survives these tests or
 is ruled out, it offers a concrete example of how a self--healing vacuum
 might mimic GR to high accuracy at 1PN order while leaving its own
 fingerprints in the strong--field and 2PN regimes.
+
+\section*{Acknowledgments}
+This work was carried out by an independent researcher. Generative-AI tools were used during the development of the manuscript to help translate conceptual ideas into mathematical form, assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy verification scripts, and improve the exposition. The conceptual direction, hypotheses, and overall structure of the work were directed by the author. The resulting arguments and calculations were checked for internal consistency using the accompanying symbolic scripts, but the work should be regarded as exploratory and would benefit from review by subject-matter experts. Any errors, omissions, or misunderstandings remain the author's.
 
 \appendix
 
@@ -2363,10 +2374,11 @@ an inherited calibration from Paper~III.
 This appendix collects the details of the nonlinear inflow model used to
 define the acoustic horizon in Sec.~\ref{sec:acoustic_horizon}.  We work
 with a steady, spherically symmetric accretion flow in the stiff
-\(n=5\) vacuum, and we show how the transonic condition arises as a regularity
-condition of the governing ordinary differential equation (ODE).  We also
-outline the numerical method implemented in the
-\texttt{nonlinear\_profile\_solver.wl} script.
+\(n=5\) vacuum, and we show how the transonic condition arises at the level
+of the governing ordinary differential equation (ODE).  For the present
+audit bundle, the accompanying \texttt{nonlinear\_profile\_solver.wl} script
+implements a reduced profile model that enforces the same continuity, sonic,
+and far--field constraints without attempting a full Paper~V throat solve.
 
 \subsection{Governing equations}
 \label{app:inflow-equations}
@@ -2411,8 +2423,9 @@ transition.  We parametrize
 where \(\Phi_{\text{throat}}(r; a)\) is a short--range potential that
 decays rapidly for \(r \gg a\) and encodes the finite throat size.  Its
 specific form is not needed for the PN analysis, but is fixed in the
-\texttt{nonlinear\_profile\_solver.wl} script so that the 4D throat geometry
-matches the construction of Paper~V.
+\texttt{nonlinear\_profile\_solver.wl} audit model by a smooth near--throat
+regularization chosen to keep the profile transonic and weak--field
+normalized.
 
 \paragraph{Equation of state.}
 The stiff superfluid vacuum is modeled as a polytrope
@@ -2504,8 +2517,9 @@ where \(\mathcal{G}\) is a dimensionless function that encodes the detailed
 dependence of the effective potential and sound speed on \(x\), and
 \(\Lambda\) is the throat aspect ratio introduced in
 Eq.~\eqref{eq:aspect-ratio}.  The explicit expression for
-\(\mathcal{G}(x; \mathcal{M}, \Lambda)\) used in the numerical work is
-recorded in the comments of \texttt{nonlinear\_profile\_solver.wl}.
+\(\mathcal{G}(x; \mathcal{M}, \Lambda)\) is model dependent; the reduced
+profile ansatz used in the standalone audit script is recorded in the
+comments of \texttt{nonlinear\_profile\_solver.wl}.
 
 \subsection{Sonic point and regularity condition}
 \label{app:inflow-sonic}
@@ -2568,25 +2582,20 @@ conditions are:
         requirement that the mass flux \(\dot{M}_{\text{flux}}\) be finite.
 \end{itemize}
 
-The \texttt{nonlinear\_profile\_solver.wl} script solves the ODE by
-treating the sonic radius \(r_H\) and the mass flux \(\dot{M}_{\text{flux}}\)
-as shooting parameters.  The procedure is:
+The \texttt{nonlinear\_profile\_solver.wl} audit script does not solve the
+full ODE directly.  Instead, it constructs a representative profile by
+imposing:
 \begin{enumerate}
-  \item Choose trial values for \(r_H\) and \(\dot{M}_{\text{flux}}\).
-  \item Impose the sonic conditions \eqref{eq:transonic-conditions-app} at
-        \(r = r_H\) to determine \(u(r_H)\) and \(\rho(r_H)\).
-  \item Integrate the ODE outward from \(r_H\) to \(r_{\max}\) and inward
-        from \(r_H\) to \(r \approx a\), using a standard ODE solver (for
-        example, a Runge--Kutta method).
-  \item Adjust \(r_H\) and \(\dot{M}_{\text{flux}}\) iteratively until the
-        outer solution approaches the desired asymptotic state
-        \((u,\rho) \to (u_{\infty},\rho_0)\) at \(r_{\max}\) and the inner
-        solution remains regular at \(r \approx a\).
+  \item a chosen sonic radius \(r_H\) and depleted horizon density
+        \(\rho(r_H)=\rho_H<\rho_0\),
+  \item the sonic matching condition \(|u(r_H)|=c_s(r_H)\),
+  \item the continuity relation \(4\pi r^2 \rho(r) u(r)=\text{const}\), and
+  \item a smooth interpolation to \((u,\rho)\to(0,\rho_0)\) in the far field.
 \end{enumerate}
-For \(n=5\) and realistic choices of \(a\), \(\Lambda\), and the asymptotic
-state, this procedure converges to a unique transonic solution in which the
-flow is subsonic at large radii, crosses \(\mathcal{M} = 1\) at a radius
-\(r_H \gtrsim a\), and becomes supersonic as it approaches the throat.
+This reduced construction is sufficient for the present paper's internal
+consistency checks: it exhibits a smooth transonic crossing, it respects the
+\(n=5\) EOS, and it provides a representative profile for the strong--field
+optical estimates discussed below.
 
 \subsection{Asymptotic behavior}
 \label{app:inflow-asymptotics}
@@ -2674,8 +2683,11 @@ through the finite impedance of the throat.
 
 The calculations described here are implemented in the Mathematica scripts\\
 \texttt{4d\_throat\_impedance\_scaling.wl} and
-\texttt{black\_hole\_scaling.wl}.  We do not reproduce the full symbolic and
-numerical code, but we record the key formulas and scaling relations.
+\texttt{black\_hole\_scaling.wl}.  In the present audit bundle these scripts
+should be read as phenomenological scaling models anchored to the preferred
+aspect ratio \(\Lambda_\star\); they illustrate how finite throat impedance
+can keep the effective exponent close to unity, rather than deriving that
+behavior microscopically from a full bulk solve.
 
 \subsection{Throat impedance and mass flux}
 \label{app:impedance-mass-flux}
@@ -2714,7 +2726,7 @@ dominant scaling with \(a\) is expected to be \(Z_{\text{th}} \propto a^{-2}\).
 
 The defect mass \(M\) is controlled by how much of the vacuum is drained
 and stored in the throat and bulk.  A simple dimensional estimate, confirmed
-by the numerical experiments in \texttt{black\_hole\_scaling.wl}, is
+by the representative scaling model in \texttt{black\_hole\_scaling.wl}, is
 \begin{equation}
   M \sim \rho_0 a^3 \mathcal{F}(\Lambda),
   \label{eq:M-a3-schematic}
@@ -2730,16 +2742,15 @@ spread into the bulk.
 \label{app:impedance-exponent}
 
 To quantify this renormalization, the \texttt{4d\_throat\_impedance\_scaling.wl}
-script computes an effective exponent \(k\) defined by
+script evaluates a local effective exponent \(k_{\rm eff}\) defined by
 \begin{equation}
   k
   \equiv \frac{\mathrm{d}\log M}{\mathrm{d}\log a},
   \label{eq:k-def}
 \end{equation}
-using numerical solutions of the inflow and throat matching problem for a
-range of parameter choices.  Operationally, one fits the relation between
-\(M\) and \(a\) over a finite range to a power law \(M \propto a^{k}\) and
-extracts \(k\).
+for representative finite--impedance fits of the relation between
+\(M\) and \(a\).  Operationally, one tracks how the local power--law slope
+approaches unity as \(a\) increases.
 
 The main findings can be summarized as:
 \begin{itemize}
@@ -2782,7 +2793,7 @@ allowing room for small finite--size corrections.
 The acoustic horizon radius \(r_H\) is determined by the transonic condition
 \eqref{eq:transonic-conditions-app}, which involves both the gravitational
 potential and the sound speed.  For the \(n=5\) vacuum, the combined
-inflow--impedance calculations in \texttt{black\_hole\_scaling.wl} yield a
+inflow--impedance fits in \texttt{black\_hole\_scaling.wl} yield a
 relation of the form
 \begin{equation}
   r_H
@@ -2859,9 +2870,10 @@ numerical and observational tests.
 This appendix summarizes the numerical setup used to compute null-ray
 trajectories, bending angles, and shadow radii in the fixed \(n=5\)
 superfluid vacuum.  The calculations are implemented in the
-\texttt{lensing\_from\_flow.wl} script, which takes as input the radial
-flow and index profiles obtained from the nonlinear inflow solutions and
-outputs ray trajectories and effective photon-sphere parameters.
+\texttt{lensing\_from\_flow.wl} script, which works with representative
+weak--field--matched index profiles augmented by a smooth near--throat
+finite--size correction and outputs ray trajectories and effective
+photon-sphere parameters.
 
 \subsection{Effective index profile from the inflow}
 \label{app:lensing-index}
@@ -2882,17 +2894,18 @@ effective refractive index is then
   N(r) \equiv \frac{c}{c_s(r)}.
   \label{eq:N-of-r-full}
 \end{equation}
-In practice, the script works with a tabulated index profile
-\(\{ r_i, N_i \}\), typically sampled on a logarithmic grid spanning from
-\(r \approx a\) up to an outer radius \(r_{\max} \gg r_H\).  Between grid
-points the profile is interpolated using a smooth spline to ensure that
-\(N(r)\) and its first derivative are continuous.
+In practice, the standalone script works with an analytic profile
+\(N(r)\) chosen so that:
+\begin{itemize}
+  \item its weak--field tail matches the \(n=5\) coefficient of
+        Eq.~\eqref{eq:N-of-r-n5}, and
+  \item a smooth finite--size correction regularizes the near--throat region.
+\end{itemize}
 
-The radial velocity \(u(r)\) is used primarily to locate the acoustic
-horizon \(r_H\) via the condition \(|u(r_H)| = c_s(r_H)\).  The ray-tracing
-itself is performed in the optical metric determined by \(N(r)\); the
-explicit dependence on \(u(r)\) enters only through its influence on
-\(c_s(r)\) and hence on \(N(r)\).
+The radial velocity \(u(r)\) enters this audit model only indirectly,
+through the requirement that the near--throat correction be consistent with
+an acoustic horizon at \(r_H \gtrsim a\).  The ray tracing itself is
+performed entirely in the optical metric determined by \(N(r)\).
 
 \subsection{Ray equations and impact parameter}
 \label{app:lensing-ray-eqns}
@@ -2941,21 +2954,17 @@ which, after eliminating \(\mathrm{d}t/\mathrm{d}\lambda\) and
 \(\mathrm{d}\phi/\mathrm{d}\lambda\) in favor of \(E_{\text{opt}}\),
 \(L_{\text{opt}}\), and \(b\), can be written as
 \begin{equation}
-  \left( \frac{\mathrm{d}r}{\mathrm{d}\phi} \right)^2
-  = \frac{r^4}{b^2}
+  \left( \frac{\mathrm{d}r}{\mathrm{d}\lambda} \right)^2
+  = \frac{E_{\text{opt}}^2}{c^2}
     \left[
-      \frac{N^2(r)}{1 - b^2 N^{-2}(r) / r^2}
-    \right]^2
-  \left[
-    1 - \frac{b^2}{r^2 N^2(r)}
-  \right].
+      1 - \frac{b^2}{N^4(r)\,r^2}
+    \right].
 \end{equation}
 A more convenient form for numerical integration, equivalent to
 Eq.~\eqref{eq:dphi-dr} in the main text, is
 \begin{equation}
   \frac{\mathrm{d}\phi}{\mathrm{d}r}
-  = \frac{b}{r^2}
-    \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}}.
+  = \frac{b}{r\,\sqrt{N^4(r)\,r^2 - b^2}}.
   \label{eq:dphi-dr-app}
 \end{equation}
 For a given impact parameter \(b\), this equation describes the angular
@@ -2969,27 +2978,26 @@ radius \(r_{\min}\), and returns to infinity is
 \begin{equation}
   \Delta\phi(b)
   = 2 \int_{r_{\min}}^{\infty}
-      \frac{b}{r^2}
-      \frac{N^2(r)}{\sqrt{N^2(r) - b^2/r^2}}
+      \frac{b}{r\,\sqrt{N^4(r)\,r^2 - b^2}}
       \,\mathrm{d}r
     - \pi,
   \label{eq:bending-angle}
 \end{equation}
 where \(r_{\min}\) is defined implicitly by
 \begin{equation}
-  N^2(r_{\min})
-  = \frac{b^2}{r_{\min}^2},
+  N^4(r_{\min})\,r_{\min}^2
+  = b^2,
   \label{eq:rmin-condition}
 \end{equation}
 so that the denominator in Eq.~\eqref{eq:dphi-dr-app} changes sign.  For
 impact parameters smaller than a critical value \(b_{\text{ph}}\), the
-equation \(N^2(r) = b^2 / r^2\) has no real solution outside the horizon,
+equation \(N^4(r)\,r^2 = b^2\) has no real solution outside the horizon,
 and the ray plunges into the throat; this defines the effective shadow.
 
 The numerical integration proceeds as follows:
 \begin{enumerate}
   \item For a given impact parameter \(b\), solve
-        \(N^2(r) = b^2 / r^2\) for \(r_{\min}\) using a root-finding method
+        \(N^4(r)\,r^2 = b^2\) for \(r_{\min}\) using a root-finding method
         (for example, Newton-Raphson), starting from an initial guess near
         the expected turning point.
   \item Evaluate the integral in Eq.~\eqref{eq:bending-angle} from
@@ -3013,11 +3021,11 @@ range of \(b\) for which the ray is captured.
 The photon sphere radius \(r_{\text{ph}}\) and critical impact parameter
 \(b_{\text{ph}}\) are determined numerically by the conditions
 \begin{equation}
-  N^2(r_{\text{ph}})
-  = \frac{b_{\text{ph}}^2}{r_{\text{ph}}^2},
+  N^4(r_{\text{ph}})\,r_{\text{ph}}^2
+  = b_{\text{ph}}^2,
   \qquad
   \frac{\mathrm{d}}{\mathrm{d}r}
-  \left[ \frac{N^2(r)}{r^2} \right]_{r = r_{\text{ph}}}
+  \left[ N^4(r)\,r^2 \right]_{r = r_{\text{ph}}}
   = 0,
 \end{equation}
 which are equivalent to Eqs.~\eqref{eq:photon-sphere-N} and

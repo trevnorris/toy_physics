@@ -260,6 +260,7 @@ Print["\n========== End add-on v4 =========="];
 (*"
 Output:
 
+
 ========================================
 Paper VIII add-on v4: axial gauge + brane-source consistency
 ========================================
@@ -271,6 +272,11 @@ HoldForm[Zprof[w]] -> E^(-(w^2/lambdaConf^2))
 
 Zint = Integrate[Z(w) dw] -> lambdaConf*Sqrt[Pi]
 mu0eff = mu0/Zint -> mu0/(lambdaConf*Sqrt[Pi])
+Charge/source bookkeeping note:
+  Fixed defect branch label: qStar = etaQ * eStar.
+  In the coupled reading, Jtot^mu = Jpsi^mu + Jext^mu.
+  The condition Jw = 0 is imposed only in the controlled far-field Maxwell limit.
+  Mixed core structure (Aw, Jw, F_{mu w}) is suppressed here, not excluded microscopically.
 
 --- (1) Axial gauge reachability: choose chi so that Aw + d_w chi = 0 ---
 
@@ -285,9 +291,9 @@ OK: Residual gauge parameter chi0(t,x,y,z) is the usual 3+1 gauge freedom on the
 
 --- (2) Brane-localized current: d_M J^M reduces to 3+1 continuity ---
 
-d_M J^M (5D) =
+d_M J^M (5D) = 
 DiracDelta[w]*Derivative[0, 0, 0, 1][Jzb][t, x, y, z] + DiracDelta[w]*Derivative[0, 0, 1, 0][Jyb][t, x, y, z] + DiracDelta[w]*Derivative[0, 1, 0, 0][Jxb][t, x, y, z] + DiracDelta[w]*Derivative[1, 0, 0, 0][J0b][t, x, y, z]
-Integrate over w: ∫dw d_M J^M =
+Integrate over w: ∫dw d_M J^M = 
 Derivative[0, 0, 0, 1][Jzb][t, x, y, z] + Derivative[0, 0, 1, 0][Jyb][t, x, y, z] + Derivative[0, 1, 0, 0][Jxb][t, x, y, z] + Derivative[1, 0, 0, 0][J0b][t, x, y, z]
 So if d_M J^M = 0 distributionally, then the induced 3+1 current is conserved:
   d_t J0b + d_x Jxb + d_y Jyb + d_z Jzb = 0.

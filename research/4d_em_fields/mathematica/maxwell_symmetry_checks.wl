@@ -339,6 +339,15 @@ OK: DivA shifts by Box(chi), as expected.
 
 Note: The gauge-fixing term is not gauge invariant; this is expected and harmless.
 
+--- (A2) Paper VII brane matter gauge convention ---
+
+Residuals for Dt/Dx/Dy/Dz matter covariant derivatives (each should be 0):
+  Dt -> 0
+  Dx -> 0
+  Dy -> 0
+  Dz -> 0
+OK: Paper VII matter-gauge convention is internally consistent.
+
 --- (B) 3+1 Lorentz invariance check (boost along x) ---
 
 Covector transform check: (Inverse[LambdaUp]^T) - (eta LambdaUp eta) should be 0:

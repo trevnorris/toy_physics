@@ -226,6 +226,7 @@ Print["========== End add-on v6 (matter current) =========="];
 (*"
 Output:
 
+
 ========================================
 Paper VIII add-on v6: brane matter current conservation (fixed local-phase Noether extraction)
 ========================================
@@ -235,20 +236,23 @@ psi(t,x,y,z)  = psiF[t, x, y, z]
 psiC(t,x,y,z) = psiCF[t, x, y, z]
 A_μ(t,x,y,z) = {A0,A\_x,A\_y,A\_z} = {A0bF[t, x, y, z], AxbF[t, x, y, z], AybF[t, x, y, z], AzbF[t, x, y, z]}
 
+Charge/source bookkeeping: qStar = etaQ * eStar and Jpsi^mu = qStar * j^mu.
+Interpretation: this brane matter model is a representative localized-defect / background-neutralization closure.
+
 ----------------------------------------
 
 --- Lagrangian density pieces (Activated for display) ---
-L_time =
-TraditionalForm[I/2*hbar*(-(psiF[t, x, y, z]*((-I*q*A0bF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiCF][t, x, y, z])) + psiCF[t, x, y, z]*((I*q*A0bF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiF][t, x, y, z]))]
+L_time = 
+TraditionalForm[I/2*hbar*(-(psiF[t, x, y, z]*((-I*qStar*A0bF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiCF][t, x, y, z])) + psiCF[t, x, y, z]*((I*qStar*A0bF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiF][t, x, y, z]))]
 
-L_space =
-TraditionalForm[-1/2*(hbar^2*(((I*q*AzbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiCF][t, x, y, z])*((-I*q*AzbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + ((I*q*AybF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiCF][t, x, y, z])*((-I*q*AybF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + ((I*q*AxbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiCF][t, x, y, z])*((-I*q*AxbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiF][t, x, y, z])))/m]
+L_space = 
+TraditionalForm[-1/2*(hbar^2*(((I*qStar*AzbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiCF][t, x, y, z])*((-I*qStar*AzbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + ((I*qStar*AybF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiCF][t, x, y, z])*((-I*qStar*AybF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + ((I*qStar*AxbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiCF][t, x, y, z])*((-I*qStar*AxbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiF][t, x, y, z])))/m]
 
-L_pot =
+L_pot = 
 TraditionalForm[-UfunSym[psiCF[t, x, y, z]*psiF[t, x, y, z]]]
 
-L_total =
-TraditionalForm[-UfunSym[psiCF[t, x, y, z]*psiF[t, x, y, z]] - (hbar^2*(((I*q*AzbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiCF][t, x, y, z])*((-I*q*AzbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + ((I*q*AybF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiCF][t, x, y, z])*((-I*q*AybF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + ((I*q*AxbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiCF][t, x, y, z])*((-I*q*AxbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiF][t, x, y, z])))/(2*m) + I/2*hbar*(-(psiF[t, x, y, z]*((-I*q*A0bF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiCF][t, x, y, z])) + psiCF[t, x, y, z]*((I*q*A0bF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiF][t, x, y, z]))]
+L_total = 
+TraditionalForm[-UfunSym[psiCF[t, x, y, z]*psiF[t, x, y, z]] - (hbar^2*(((I*qStar*AzbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiCF][t, x, y, z])*((-I*qStar*AzbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + ((I*qStar*AybF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiCF][t, x, y, z])*((-I*qStar*AybF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + ((I*qStar*AxbF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiCF][t, x, y, z])*((-I*qStar*AxbF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[0, 1, 0, 0][psiF][t, x, y, z])))/(2*m) + I/2*hbar*(-(psiF[t, x, y, z]*((-I*qStar*A0bF[t, x, y, z]*psiCF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiCF][t, x, y, z])) + psiCF[t, x, y, z]*((I*qStar*A0bF[t, x, y, z]*psiF[t, x, y, z])/hbar + Derivative[1, 0, 0, 0][psiF][t, x, y, z]))]
 
 ----------------------------------------
 
@@ -257,10 +261,10 @@ Head[eomEqnPsi]  -> Times
 Head[eomEqnPsiC] -> Times
 
 ELpsi  (variation wrt psiF)  == 0 with ELpsi  =
-TraditionalForm[(-2*m*q*A0bF[t, x, y, z]*psiCF[t, x, y, z] - q^2*AxbF[t, x, y, z]^2*psiCF[t, x, y, z] - q^2*AybF[t, x, y, z]^2*psiCF[t, x, y, z] - q^2*AzbF[t, x, y, z]^2*psiCF[t, x, y, z] - 2*m*psiCF[t, x, y, z]*Derivative[1][UfunSym][psiCF[t, x, y, z]*psiF[t, x, y, z]] + I*hbar*q*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + (2*I)*hbar*q*AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + hbar^2*Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + I*hbar*q*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][AybF][t, x, y, z] + (2*I)*hbar*q*AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + hbar^2*Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + I*hbar*q*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][AxbF][t, x, y, z] + (2*I)*hbar*q*AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z] + hbar^2*Derivative[0, 2, 0, 0][psiCF][t, x, y, z] - (2*I)*hbar*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z])/(2*m)]
+TraditionalForm[(-2*m*qStar*A0bF[t, x, y, z]*psiCF[t, x, y, z] - qStar^2*AxbF[t, x, y, z]^2*psiCF[t, x, y, z] - qStar^2*AybF[t, x, y, z]^2*psiCF[t, x, y, z] - qStar^2*AzbF[t, x, y, z]^2*psiCF[t, x, y, z] - 2*m*psiCF[t, x, y, z]*Derivative[1][UfunSym][psiCF[t, x, y, z]*psiF[t, x, y, z]] + I*hbar*qStar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + (2*I)*hbar*qStar*AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + hbar^2*Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + I*hbar*qStar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][AybF][t, x, y, z] + (2*I)*hbar*qStar*AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + hbar^2*Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + I*hbar*qStar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][AxbF][t, x, y, z] + (2*I)*hbar*qStar*AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z] + hbar^2*Derivative[0, 2, 0, 0][psiCF][t, x, y, z] - (2*I)*hbar*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z])/(2*m)]
 
 ELpsiC (variation wrt psiCF) == 0 with ELpsiC =
-TraditionalForm[-(q*A0bF[t, x, y, z]*psiF[t, x, y, z]) - (q^2*AxbF[t, x, y, z]^2*psiF[t, x, y, z] + q^2*AybF[t, x, y, z]^2*psiF[t, x, y, z] + q^2*AzbF[t, x, y, z]^2*psiF[t, x, y, z] + 2*m*psiF[t, x, y, z]*Derivative[1][UfunSym][psiCF[t, x, y, z]*psiF[t, x, y, z]] + I*hbar*q*psiF[t, x, y, z]*Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + (2*I)*hbar*q*AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] - hbar^2*Derivative[0, 0, 0, 2][psiF][t, x, y, z] + I*hbar*q*psiF[t, x, y, z]*Derivative[0, 0, 1, 0][AybF][t, x, y, z] + (2*I)*hbar*q*AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] - hbar^2*Derivative[0, 0, 2, 0][psiF][t, x, y, z] + I*hbar*q*psiF[t, x, y, z]*Derivative[0, 1, 0, 0][AxbF][t, x, y, z] + (2*I)*hbar*q*AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z] - hbar^2*Derivative[0, 2, 0, 0][psiF][t, x, y, z])/(2*m) + I*hbar*Derivative[1, 0, 0, 0][psiF][t, x, y, z]]
+TraditionalForm[-(qStar*A0bF[t, x, y, z]*psiF[t, x, y, z]) - (qStar^2*AxbF[t, x, y, z]^2*psiF[t, x, y, z] + qStar^2*AybF[t, x, y, z]^2*psiF[t, x, y, z] + qStar^2*AzbF[t, x, y, z]^2*psiF[t, x, y, z] + 2*m*psiF[t, x, y, z]*Derivative[1][UfunSym][psiCF[t, x, y, z]*psiF[t, x, y, z]] + I*hbar*qStar*psiF[t, x, y, z]*Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + (2*I)*hbar*qStar*AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] - hbar^2*Derivative[0, 0, 0, 2][psiF][t, x, y, z] + I*hbar*qStar*psiF[t, x, y, z]*Derivative[0, 0, 1, 0][AybF][t, x, y, z] + (2*I)*hbar*qStar*AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] - hbar^2*Derivative[0, 0, 2, 0][psiF][t, x, y, z] + I*hbar*qStar*psiF[t, x, y, z]*Derivative[0, 1, 0, 0][AxbF][t, x, y, z] + (2*I)*hbar*qStar*AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z] - hbar^2*Derivative[0, 2, 0, 0][psiF][t, x, y, z])/(2*m) + I*hbar*Derivative[1, 0, 0, 0][psiF][t, x, y, z]]
 
 ----------------------------------------
 
@@ -268,7 +272,7 @@ TraditionalForm[-(q*A0bF[t, x, y, z]*psiF[t, x, y, z]) - (q^2*AxbF[t, x, y, z]^2
 We probe: psi -> exp(i s eps/ℏ) psi,   psiC -> exp(-i s eps/ℏ) psiC, expand to O(s).
 
 deltaL (linearized, collected in eps and its derivatives) =
-TraditionalForm[(Derivative[0, 0, 0, 1][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*q*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + Derivative[0, 0, 1, 0][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*q*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + Derivative[0, 1, 0, 0][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*q*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) - 2*m*psiCF[t, x, y, z]*psiF[t, x, y, z]*Derivative[1, 0, 0, 0][epsN][t, x, y, z])/(2*m)]
+TraditionalForm[(Derivative[0, 0, 0, 1][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*qStar*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z]) + Derivative[0, 0, 1, 0][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*qStar*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z]) + Derivative[0, 1, 0, 0][epsN][t, x, y, z]*(psiF[t, x, y, z]*(2*qStar*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) - 2*m*psiCF[t, x, y, z]*psiF[t, x, y, z]*Derivative[1, 0, 0, 0][epsN][t, x, y, z])/(2*m)]
 
 Check: deltaL for constant eps (set d eps = 0) (should be 0):
 TraditionalForm[0]
@@ -277,7 +281,7 @@ Noether density j0 =
 TraditionalForm[psiCF[t, x, y, z]*psiF[t, x, y, z]]
 
 Noether spatial current j = {jx,jy,jz} =
-TraditionalForm[{-1/2*(psiF[t, x, y, z]*(2*q*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z])/m, -1/2*(psiF[t, x, y, z]*(2*q*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z])/m, -1/2*(psiF[t, x, y, z]*(2*q*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z])/m}]
+TraditionalForm[{-1/2*(psiF[t, x, y, z]*(2*qStar*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z])/m, -1/2*(psiF[t, x, y, z]*(2*qStar*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z])/m, -1/2*(psiF[t, x, y, z]*(2*qStar*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z])/m}]
 
 Check j0 - rhoExpected (should be 0):
 TraditionalForm[0]
@@ -289,10 +293,10 @@ TraditionalForm[{0, 0, 0}]
 
 --- Off-shell Noether identity and on-shell continuity ---
 Continuity divergence  ∂_t j0 + ∇·j  =
-TraditionalForm[(psiF[t, x, y, z]*(-2*q*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + Derivative[0, 2, 0, 0][psiCF][t, x, y, z]) + 2*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z]) - psiCF[t, x, y, z]*(2*q*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] + psiF[t, x, y, z]*(Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + Derivative[0, 0, 1, 0][AybF][t, x, y, z] + Derivative[0, 1, 0, 0][AxbF][t, x, y, z]) + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiF][t, x, y, z] + Derivative[0, 0, 2, 0][psiF][t, x, y, z] + Derivative[0, 2, 0, 0][psiF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiF][t, x, y, z]))/(2*m)]
+TraditionalForm[(psiF[t, x, y, z]*(-2*qStar*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + Derivative[0, 2, 0, 0][psiCF][t, x, y, z]) + 2*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z]) - psiCF[t, x, y, z]*(2*qStar*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] + psiF[t, x, y, z]*(Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + Derivative[0, 0, 1, 0][AybF][t, x, y, z] + Derivative[0, 1, 0, 0][AxbF][t, x, y, z]) + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiF][t, x, y, z] + Derivative[0, 0, 2, 0][psiF][t, x, y, z] + Derivative[0, 2, 0, 0][psiF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiF][t, x, y, z]))/(2*m)]
 
 Noether combo  (I/ℏ) (psiC ELpsiC - psi ELpsi) =
-TraditionalForm[(psiF[t, x, y, z]*(2*q*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) - I*hbar*(Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + Derivative[0, 2, 0, 0][psiCF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z]) + psiCF[t, x, y, z]*(2*q*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] + psiF[t, x, y, z]*(Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + Derivative[0, 0, 1, 0][AybF][t, x, y, z] + Derivative[0, 1, 0, 0][AxbF][t, x, y, z]) + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiF][t, x, y, z] + Derivative[0, 0, 2, 0][psiF][t, x, y, z] + Derivative[0, 2, 0, 0][psiF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiF][t, x, y, z]))/(2*m)]
+TraditionalForm[(psiF[t, x, y, z]*(2*qStar*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiCF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiCF][t, x, y, z] + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) - I*hbar*(Derivative[0, 0, 0, 2][psiCF][t, x, y, z] + Derivative[0, 0, 2, 0][psiCF][t, x, y, z] + Derivative[0, 2, 0, 0][psiCF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiCF][t, x, y, z]) + psiCF[t, x, y, z]*(2*qStar*(AzbF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z] + AybF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z] + psiF[t, x, y, z]*(Derivative[0, 0, 0, 1][AzbF][t, x, y, z] + Derivative[0, 0, 1, 0][AybF][t, x, y, z] + Derivative[0, 1, 0, 0][AxbF][t, x, y, z]) + AxbF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]) + I*hbar*(Derivative[0, 0, 0, 2][psiF][t, x, y, z] + Derivative[0, 0, 2, 0][psiF][t, x, y, z] + Derivative[0, 2, 0, 0][psiF][t, x, y, z]) - 2*m*Derivative[1, 0, 0, 0][psiF][t, x, y, z]))/(2*m)]
 
 Identity residual (should be 0):
 TraditionalForm[0]
@@ -303,13 +307,15 @@ OK: Off-shell Noether identity verified. On-shell (ELpsi=ELpsiC=0), continuity h
 ----------------------------------------
 
 --- Charge current used as Maxwell source ---
-J0 = q * j0 =
-TraditionalForm[q*psiCF[t, x, y, z]*psiF[t, x, y, z]]
+Jpsi^0 = qStar * j0 =
+TraditionalForm[qStar*psiCF[t, x, y, z]*psiF[t, x, y, z]]
 
-Jvec = q * j =
-TraditionalForm[{-1/2*(q*(psiF[t, x, y, z]*(2*q*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]))/m, -1/2*(q*(psiF[t, x, y, z]*(2*q*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z]))/m, -1/2*(q*(psiF[t, x, y, z]*(2*q*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z]))/m}]
+Jpsi^vec = qStar * j =
+TraditionalForm[{-1/2*(qStar*(psiF[t, x, y, z]*(2*qStar*AxbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 1, 0, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 1, 0, 0][psiF][t, x, y, z]))/m, -1/2*(qStar*(psiF[t, x, y, z]*(2*qStar*AybF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 1, 0][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 1, 0][psiF][t, x, y, z]))/m, -1/2*(qStar*(psiF[t, x, y, z]*(2*qStar*AzbF[t, x, y, z]*psiCF[t, x, y, z] - I*hbar*Derivative[0, 0, 0, 1][psiCF][t, x, y, z]) + I*hbar*psiCF[t, x, y, z]*Derivative[0, 0, 0, 1][psiF][t, x, y, z]))/m}]
 
-Charge continuity:  ∂_t J0 + ∇·J = q (∂_t j0 + ∇·j).
+Charge continuity:  ∂_t Jpsi^0 + ∇·Jpsi = qStar (∂_t j0 + ∇·j).
+
+Background-neutralization, when needed, belongs in Jext^0 rather than in a fluctuating qStar.
 
 ========== End add-on v6 (matter current) ==========
 "*)

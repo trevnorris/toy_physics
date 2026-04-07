@@ -186,8 +186,9 @@ Print["\n========== End add-on v3 ==========\n"];
 (*"
 Output:
 
+
 ========================================
-Paper VIII add-on v3: moving charges + covariant propagator (KK tower)
+Paper VIII add-on v3: moving defect branches + covariant propagator (KK tower)
 ========================================
 
 --- (A) Brane Lorentz invariance: k^2 is invariant under boosts ---
@@ -201,20 +202,23 @@ OK: k^2 is invariant under the brane Lorentz boost.
 
 Zint -> lambdaConf*Sqrt[Pi]
 mu0eff -> mu0/(lambdaConf*Sqrt[Pi])
+Fixed defect branch relation: qStar = etaQ * eStar
+Canonical brane charge relation: qEff = qStar / Sqrt[Zint]
 m_n^2 = 2 n / lambdaConf^2
 c_n = f_n(0)^2 / norm_n, with norm_n = 2^n lambdaConf Sqrt[Pi] n!
 Odd-n c_n should be 0. Spot-check (n,c_n): {{1, 0}, {3, 0}, {5, 0}, {7, 0}, {9, 0}}
+Interpretation: odd modes decouple from centered brane sources, but odd-w core structure need not be absent microscopically.
 
 --- (C) Brane-to-brane propagator D_eff(k^2) depends only on k^2 ---
 
 Example truncations (nmax=0..6), showing dependence only on k2:
   nmax=0 : Deff(k2) = mu0/((I*epsReg + k2sym)*lambdaConf*Sqrt[Pi])
   nmax=1 : Deff(k2) = mu0/((I*epsReg + k2sym)*lambdaConf*Sqrt[Pi])
-  nmax=2 : Deff(k2) = ((8 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2)*mu0)/(2*(4*(I*epsReg + k2sym)*lambdaConf + (epsReg - I*k2sym)^2*lambdaConf^3)*Sqrt[Pi])
-  nmax=3 : Deff(k2) = ((8 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2)*mu0)/(2*(4*(I*epsReg + k2sym)*lambdaConf + (epsReg - I*k2sym)^2*lambdaConf^3)*Sqrt[Pi])
-  nmax=4 : Deff(k2) = ((256*I + 5*(epsReg - I*k2sym)*lambdaConf^2*(28 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2))*mu0)/(8*(epsReg - I*k2sym)*lambdaConf*(4*I + (epsReg - I*k2sym)*lambdaConf^2)*(8*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
-  nmax=5 : Deff(k2) = ((256*I + 5*(epsReg - I*k2sym)*lambdaConf^2*(28 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2))*mu0)/(8*(epsReg - I*k2sym)*lambdaConf*(4*I + (epsReg - I*k2sym)*lambdaConf^2)*(8*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
-  nmax=6 : Deff(k2) = ((-6144 + 4032*(I*epsReg + k2sym)*lambdaConf^2 + 700*(epsReg - I*k2sym)^2*lambdaConf^4 - (35*I)*(epsReg - I*k2sym)^3*lambdaConf^6)*mu0)/(16*(epsReg - I*k2sym)*lambdaConf*(4*I + (epsReg - I*k2sym)*lambdaConf^2)*(8*I + (epsReg - I*k2sym)*lambdaConf^2)*(12*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
+  nmax=2 : Deff(k2) = ((-8 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2)*mu0)/(2*(epsReg - I*k2sym)*lambdaConf*(-4*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
+  nmax=3 : Deff(k2) = ((-8 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2)*mu0)/(2*(epsReg - I*k2sym)*lambdaConf*(-4*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
+  nmax=4 : Deff(k2) = ((256*I + 5*(epsReg - I*k2sym)*lambdaConf^2*(-28 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2))*mu0)/(8*(epsReg - I*k2sym)*lambdaConf*(-4*I + (epsReg - I*k2sym)*lambdaConf^2)*(-8*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
+  nmax=5 : Deff(k2) = ((256*I + 5*(epsReg - I*k2sym)*lambdaConf^2*(-28 - (3*I)*epsReg*lambdaConf^2 - 3*k2sym*lambdaConf^2))*mu0)/(8*(epsReg - I*k2sym)*lambdaConf*(-4*I + (epsReg - I*k2sym)*lambdaConf^2)*(-8*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
+  nmax=6 : Deff(k2) = ((6144 + 4032*(I*epsReg + k2sym)*lambdaConf^2 - 700*(epsReg - I*k2sym)^2*lambdaConf^4 - (35*I)*(epsReg - I*k2sym)^3*lambdaConf^6)*mu0)/(16*(epsReg - I*k2sym)*lambdaConf*(-4*I + (epsReg - I*k2sym)*lambdaConf^2)*(-8*I + (epsReg - I*k2sym)*lambdaConf^2)*(-12*I + (epsReg - I*k2sym)*lambdaConf^2)*Sqrt[Pi])
 
 Check Deff(k2') - Deff(k2) at nmax=6 (should be 0): 0
 OK: D_eff is a function of the Lorentz scalar k^2 only (manifest brane Lorentz invariance).
@@ -242,7 +246,7 @@ Moving-defect-branch potentials can be written covariantly as:
   A_mu(x) = ∫ d^4x' D_eff_ret(x-x') J_mu(x')
 and in momentum space:
   A_mu(k) = D_eff(k^2) J_mu(k),  with D_eff depending only on k^2.
-This is the cleanest way to see there is no preferred-frame artifact in the brane EM sector.
+This is the cleanest way to see there is no preferred-frame artifact in the brane EM sector for a fixed charge branch.
 
 ========== End add-on v3 ==========
 "*)

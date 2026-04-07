@@ -345,9 +345,15 @@ Print["\n========== End of referee harness v2 ==========" ];
 (*"
 Output:
 
+
 ========================================
 Paper VIII (referee harness v2): Maxwell from 4D localized Maxwell sector
 ========================================
+
+---------- Charge ontology bookkeeping ----------
+
+Fixed defect branch label: qStar = etaQ * eStar, with etaQ = +/- 1 and eStar > 0.
+In the coupled reading, Jtot^M = Jpsi^M + Jext^M; the compact J^M used below is shorthand total source.
 
 ---------- Conventions: coordinates, metric, fields ----------
 
@@ -429,10 +435,15 @@ Reduction assumptions (strings):
 Localization integral and effective coupling:
 HoldForm[Zint] -> lambdaConf*Sqrt[Pi]
 HoldForm[mu0eff] -> mu0/(lambdaConf*Sqrt[Pi])
+HoldForm[qStar] -> eStar*etaQ
+HoldForm[qEff] -> (eStar*etaQ)/(Sqrt[lambdaConf]*Pi^(1/4))
+HoldForm[eEff] -> eStar/(Sqrt[lambdaConf]*Pi^(1/4))
 
 Under (i)-(ii), the kinetic term reduces as:
   Integral dw [ -(Z(w)/(4 mu0)) F_{MN}F^{MN} ]  ->  -(Zint/(4 mu0)) f_{mu nu} f^{mu nu}
 which is standard 3+1 Maxwell with mu0eff = mu0/Zint.
+
+Equivalent canonical normalization statement: if a_mu = a_mu^can / Sqrt[Zint], then qEff = qStar / Sqrt[Zint] and eEff = eStar / Sqrt[Zint].
 
 --- 3+1D effective Maxwell system (brane) ---
 

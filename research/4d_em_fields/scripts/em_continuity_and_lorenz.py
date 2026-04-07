@@ -2,120 +2,82 @@
 em_continuity_and_lorenz.py
 
 Purpose:
-    Show, in a 4D formalism, that current conservation
-        ∂_μ J^μ = 0
-    follows automatically from:
-        □ A^μ = -μ0 J^μ
-    together with the Lorenz gauge
-        ∂_μ A^μ = 0.
+    Current-supportive symbolic check for the 4d_em_fields paper.
 
-This mirrors the standard textbook argument but makes the logic
-explicit for the superfluid toy model (where the same □ comes from
-the acoustic wave equation and c is the sound speed).
+    In flat 3+1 form, verify that
+        Box(phi) = -mu0 c^2 rho_e,
+        Box(A_i) = -mu0 J_i,
+    together with the Lorenz gauge condition
+        div(A) + (1/c^2) dphi/dt = 0,
+    imply charge continuity
+        d(rho_e)/dt + div(J) = 0.
 
 Dependencies:
     sympy
 """
 
-from sympy import symbols, Function, diff, Eq, pprint, simplify
+from sympy import Eq, Function, diff, pprint, simplify, symbols
 
-# ----------------------------------------------------------------------
-# 0. Coordinates and symbols
-# ----------------------------------------------------------------------
 
-t, x, y, z = symbols('t x y z', real=True)
-c, mu0 = symbols('c mu0', positive=True)
-
-# Components of 4-potential A^μ = (phi/c, A_x, A_y, A_z)
-phi = Function('phi')(t, x, y, z)
-Ax  = Function('Ax')(t, x, y, z)
-Ay  = Function('Ay')(t, x, y, z)
-Az  = Function('Az')(t, x, y, z)
-
-# Components of 4-current J^μ = (c rho_e, Jx, Jy, Jz)
-rho_e = Function('rho_e')(t, x, y, z)
-Jx    = Function('Jx')(t, x, y, z)
-Jy    = Function('Jy')(t, x, y, z)
-Jz    = Function('Jz')(t, x, y, z)
-
-# ----------------------------------------------------------------------
-# 1. Define d'Alembertian □ and Lorenz gauge
-# ----------------------------------------------------------------------
-
-def box(field):
-    """Flat-space d'Alembertian □ = (1/c^2) d^2/dt^2 - ∇^2."""
-    return (1/c**2)*diff(field, t, 2) - (
+def box(field, time_coord, spatial_coords, light_speed):
+    x, y, z = spatial_coords
+    return diff(field, time_coord, 2) / light_speed**2 - (
         diff(field, x, 2) + diff(field, y, 2) + diff(field, z, 2)
     )
 
-# Lorenz gauge: ∂_μ A^μ = 0
-lorenz_gauge = (1/c**2)*diff(phi, t) + diff(Ax, x) + diff(Ay, y) + diff(Az, z)
 
-print("Lorenz gauge condition ∂_μ A^μ = 0:")
+t, x, y, z = symbols("t x y z", real=True)
+c, mu0 = symbols("c mu0", positive=True)
+
+phi = Function("phi")(t, x, y, z)
+Ax = Function("Ax")(t, x, y, z)
+Ay = Function("Ay")(t, x, y, z)
+Az = Function("Az")(t, x, y, z)
+
+rho_e = Function("rho_e")(t, x, y, z)
+Jx = Function("Jx")(t, x, y, z)
+Jy = Function("Jy")(t, x, y, z)
+Jz = Function("Jz")(t, x, y, z)
+
+lorenz_gauge = diff(phi, t) / c**2 + diff(Ax, x) + diff(Ay, y) + diff(Az, z)
+
+eq_phi = Eq(box(phi, t, (x, y, z), c), -mu0 * c**2 * rho_e)
+eq_Ax = Eq(box(Ax, t, (x, y, z), c), -mu0 * Jx)
+eq_Ay = Eq(box(Ay, t, (x, y, z), c), -mu0 * Jy)
+eq_Az = Eq(box(Az, t, (x, y, z), c), -mu0 * Jz)
+
+continuity = diff(rho_e, t) + diff(Jx, x) + diff(Jy, y) + diff(Jz, z)
+box_divA = box(lorenz_gauge, t, (x, y, z), c)
+continuity_combo = simplify(diff(eq_phi.lhs - eq_phi.rhs, t) / c**2 + (
+    diff(eq_Ax.lhs - eq_Ax.rhs, x)
+    + diff(eq_Ay.lhs - eq_Ay.rhs, y)
+    + diff(eq_Az.lhs - eq_Az.rhs, z)
+))
+identity_residual = simplify(continuity_combo - box_divA - mu0 * continuity)
+
+print("Lorenz-gauge continuity check")
+print("=============================")
+print()
+
+print("Lorenz gauge condition:")
 pprint(Eq(lorenz_gauge, 0))
 print()
 
-# ----------------------------------------------------------------------
-# 2. Field equations □ A^μ = -μ0 J^μ
-# ----------------------------------------------------------------------
-
-eq_phi = Eq(box(phi), -mu0 * c**2 * rho_e)  # time component (note extra c^2)
-eq_Ax  = Eq(box(Ax), -mu0 * Jx)
-eq_Ay  = Eq(box(Ay), -mu0 * Jy)
-eq_Az  = Eq(box(Az), -mu0 * Jz)
-
-print("Wave equation for the scalar potential (time component):")
+print("Wave equations:")
 pprint(eq_phi)
-print()
-
-print("Wave equation for the spatial components of A:")
 pprint(eq_Ax)
 pprint(eq_Ay)
 pprint(eq_Az)
 print()
 
-# ----------------------------------------------------------------------
-# 3. Take ∂_μ of the field equations and derive continuity
-# ----------------------------------------------------------------------
+print("Check exact identity:")
+print("div(field equations) - Box(Lorenz gauge) - mu0 * continuity =")
+pprint(identity_residual)
+print("PASS" if identity_residual == 0 else "FAIL")
+print()
 
-# Compute □(∂_μ A^μ):
-divA = lorenz_gauge  # shorthand
-box_divA = box(divA)
-
-print("□(∂_μ A^μ) written out explicitly:")
-pprint(box_divA)
-print("""
-By Lorenz gauge, ∂_μ A^μ = 0, so □(∂_μ A^μ) = 0 identically.
-Now take ∂_μ of the field equations □ A^μ = -μ0 J^μ:
-    ∂_μ □ A^μ = -μ0 ∂_μ J^μ.
-Because derivatives commute (in flat space),
-    ∂_μ □ A^μ = □ (∂_μ A^μ) = 0,
-so we obtain the continuity equation
-    ∂_μ J^μ = 0.
-We now make that last step explicit in components.
-""")
-
-# Time derivative of eq_phi, spatial divergence of eq_Ai:
-d_eq_phi_dt  = diff(eq_phi.lhs - eq_phi.rhs, t)
-div_eq_A = (
-    diff(eq_Ax.lhs - eq_Ax.rhs, x) +
-    diff(eq_Ay.lhs - eq_Ay.rhs, y) +
-    diff(eq_Az.lhs - eq_Az.rhs, z)
+print("Conclusion:")
+print(
+    "The exact identity is div(field equations) = Box(Lorenz gauge) + mu0 * continuity. "
+    "Under the Lorenz gauge, continuity therefore follows."
 )
-
-# Their sum should be proportional to the continuity equation
-continuity_expr = simplify(d_eq_phi_dt / c**2 + div_eq_A)
-
-print("Combination (1/c^2)∂_t[time-component equation] + ∇·[spatial equations]:")
-pprint(continuity_expr)
-print("""
-The left-hand side reduces to
-    -μ0 ( ∂_t rho_e + ∂_x Jx + ∂_y Jy + ∂_z Jz ),
-so the field equations imply
-    ∂_t rho_e + ∇·J = 0.
-This is the ordinary continuity equation, i.e. ∂_μ J^μ = 0.
-""")
-
-if __name__ == "__main__":
-    print("em_continuity_and_lorenz.py: formal continuity derivation complete.")
-

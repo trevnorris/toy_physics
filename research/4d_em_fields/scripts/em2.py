@@ -1,108 +1,108 @@
-from sympy import symbols, Function, diff, simplify
+"""
+em2.py
+
+Purpose:
+    Current-supportive symbolic check for the 4d_em_fields paper.
+
+    Starting from the standard potential definitions
+        B = curl(A),
+        E = -grad(phi) - dA/dt,
+    this script verifies three identities:
+
+        div(B) = 0,
+        curl(E) + dB/dt = 0,
+        curl(B) - (1/c^2) dE/dt
+          = -Box(A) + grad(div(A) + (1/c^2) dphi/dt).
+
+    The last line makes the paper's logic explicit: if the brane gauge field
+    satisfies the wave equation Box(A) = -mu0 J and the Lorenz gauge condition
+    div(A) + (1/c^2) dphi/dt = 0, then the Ampere-Maxwell law follows
+    automatically.
+
+Dependencies:
+    sympy
+"""
+
+from sympy import Function, diff, simplify, symbols
 from sympy.vector import CoordSys3D, curl, divergence, gradient
 
-# Initialize Coordinate System
-N = CoordSys3D('N')
+
+def scalar_laplacian(field, coords):
+    x, y, z = coords
+    return diff(field, x, 2) + diff(field, y, 2) + diff(field, z, 2)
+
+
+N = CoordSys3D("N")
 x, y, z = N.x, N.y, N.z
-t = symbols('t')
-c = symbols('c')  # sound speed / light speed effective
+t = symbols("t", real=True)
+c = symbols("c", positive=True)
 
-# Define Potentials A (Vector) and phi (Scalar) as functions of space and time
-# We use generic functions for components
-Ax = Function('Ax')(x, y, z, t)
-Ay = Function('Ay')(x, y, z, t)
-Az = Function('Az')(x, y, z, t)
-phi = Function('phi')(x, y, z, t)
+Ax = Function("Ax")(x, y, z, t)
+Ay = Function("Ay")(x, y, z, t)
+Az = Function("Az")(x, y, z, t)
+phi = Function("phi")(x, y, z, t)
 
-# Construct Vector Potential A
 A = Ax * N.i + Ay * N.j + Az * N.k
-
-# --- Step 1: Define EM Fields from Fluid Potentials ---
-# B = Curl A
 B = curl(A)
-
-# E = -Grad phi - dA/dt
 E = -gradient(phi) - diff(A, t)
 
-# --- Step 2: Calculate LHS of Ampere-Maxwell Law ---
-# LHS = Curl B - (1/c^2) * dE/dt
-# We want to see what this simplifies to.
-LHS = curl(B) - (1/c**2) * diff(E, t)
+div_B = simplify(divergence(B))
+faraday_residual = curl(E) + diff(B, t)
 
-# --- Step 3: Apply Vector Identity and Gauge Condition ---
-# Vector Identity: curl(curl(A)) = grad(div(A)) - laplacian(A)
-# We can compute curl(curl(A)) directly or rely on sympy to handle it.
-# Let's check the divergence of A and E.
+laplacian_A = (
+    scalar_laplacian(Ax, (x, y, z)) * N.i
+    + scalar_laplacian(Ay, (x, y, z)) * N.j
+    + scalar_laplacian(Az, (x, y, z)) * N.k
+)
+box_A = laplacian_A - diff(A, t, 2) / c**2
 
-# We impose the Lorenz Gauge condition for the effective theory:
-# Div A + (1/c^2) d(phi)/dt = 0  =>  Div A = -(1/c^2) d(phi)/dt
-div_A = divergence(A)
-lorenz_gauge_condition = -(1/c**2) * diff(phi, t)
+gauge_scalar = divergence(A) + diff(phi, t) / c**2
+grad_gauge = gradient(gauge_scalar)
+ampere_lhs = curl(B) - diff(E, t) / c**2
+ampere_residual = ampere_lhs - (-box_A + grad_gauge)
 
-# Substitute Divergence of A with the Gauge term in the expression?
-# Sympy might not simplify vector calculus identities automatically 
-# without explicit component expansion, so let's look at the components.
+component_names = {"x": N.i, "y": N.j, "z": N.k}
+faraday_checks = {
+    name: simplify(faraday_residual.dot(direction))
+    for name, direction in component_names.items()
+}
+ampere_checks = {
+    name: simplify(ampere_residual.dot(direction))
+    for name, direction in component_names.items()
+}
 
-# Calculate the x-component of the LHS
-LHS_x = LHS.dot(N.i)
+print("Potential-based Maxwell identity checks")
+print("=======================================")
+print()
 
-# We want to show LHS_x corresponds to -Box(Ax) = - (Laplacian Ax - 1/c^2 d^2Ax/dt^2)
-# Box operator on a scalar f: grad^2 f - 1/c^2 d^2f/dt^2
-# But wait, the standard identity is:
-# Curl(Curl A) = Grad(Div A) - Laplacian A
-# So Curl B = Grad(Div A) - Laplacian A
-# LHS = Grad(Div A) - Laplacian A - 1/c^2 d/dt (-Grad phi - dA/dt)
-#     = Grad(Div A) - Laplacian A + Grad(1/c^2 dphi/dt) + 1/c^2 d^2A/dt^2
-#     = Grad( Div A + 1/c^2 dphi/dt ) - (Laplacian A - 1/c^2 d^2A/dt^2)
+print("Gauss-for-B residual div(B):")
+print(div_B)
+print("PASS" if div_B == 0 else "FAIL")
+print()
 
-# If Lorenz Gauge holds (Div A + 1/c^2 dphi/dt = 0), the first term vanishes.
-# Then LHS = - (Laplacian A - 1/c^2 d^2A/dt^2) = - Box A.
-# If the wave equation holds (Box A = -mu0 J), then LHS = mu0 J.
-# This recovers Ampere's Law: Curl B - 1/c^2 dE/dt = mu0 J.
+print("Faraday residuals curl(E) + dB/dt:")
+for name in ("x", "y", "z"):
+    print(f"  {name}: {faraday_checks[name]}")
+print(
+    "PASS"
+    if all(expr == 0 for expr in faraday_checks.values())
+    else "FAIL"
+)
+print()
 
-# Let's verify this algebra with Sympy to be sure.
-# We will construct the term "Remainder" = LHS - (-Laplacian A + 1/c^2 d^2A/dt^2)
-# And see if it equals Grad( Div A + 1/c^2 dphi/dt )
+print("Ampere-Maxwell identity residuals")
+print("curl(B) - (1/c^2) dE/dt - [-Box(A) + grad(gauge)] :")
+for name in ("x", "y", "z"):
+    print(f"  {name}: {ampere_checks[name]}")
+print(
+    "PASS"
+    if all(expr == 0 for expr in ampere_checks.values())
+    else "FAIL"
+)
+print()
 
-# Laplacian of a Vector in Cartesian coordinates is just Laplacian of components
-laplacian_A = (diff(Ax, x, 2) + diff(Ax, y, 2) + diff(Ax, z, 2)) * N.i + \
-              (diff(Ay, x, 2) + diff(Ay, y, 2) + diff(Ay, z, 2)) * N.j + \
-              (diff(Az, x, 2) + diff(Az, y, 2) + diff(Az, z, 2)) * N.k
-
-# Box A (D'Alembertian)
-box_A = laplacian_A - (1/c**2) * diff(A, t, 2)
-
-# The "Source" J is defined by the wave equation Box A = -J (ignoring mu0 for now)
-# So we expect LHS to be equal to -Box A + Gauge_Terms
-
-difference = LHS - (-box_A)
-
-# We expect this difference to be Grad( Div A + 1/c^2 dphi/dt )
-gauge_term = divergence(A) + (1/c**2) * diff(phi, t)
-grad_gauge = gradient(gauge_term)
-
-# Check if difference - grad_gauge is zero
-check = simplify((difference - grad_gauge).dot(N.i)) # Check x component
-
-print("Verification of Ampere-Maxwell derivation:")
-print(f"Is the identity (Curl B - 1/c^2 dE/dt) == (-Box A + Grad(Gauge)) valid? {check == 0}")
-
-if check == 0:
-    print("\nCONCLUSION:")
-    print("If the fluid satisfies the Wave Equation (Box A = -mu0 J) and the Lorenz Gauge condition,")
-    print("then the Ampere-Maxwell Law is automatically satisfied.")
-    print("Therefore, we do NOT need a new hydrodynamic derivation for the displacement current;")
-    print("it is a mathematical consequence of the acoustic wave equation derived in Papers I-III.")
-else:
-    print("Verification failed. Manual inspection needed.")
-
-"""
-Verification of Ampere-Maxwell derivation:
-Is the identity (Curl B - 1/c^2 dE/dt) == (-Box A + Grad(Gauge)) valid? True
-
-CONCLUSION:
-If the fluid satisfies the Wave Equation (Box A = -mu0 J) and the Lorenz Gauge condition,
-then the Ampere-Maxwell Law is automatically satisfied.
-Therefore, we do NOT need a new hydrodynamic derivation for the displacement current;
-it is a mathematical consequence of the acoustic wave equation derived in Papers I-III.
-"""
+print("Conclusion:")
+print(
+    "If Box(A) = -mu0 J and div(A) + (1/c^2) dphi/dt = 0, "
+    "then curl(B) - (1/c^2) dE/dt = mu0 J."
+)

@@ -258,6 +258,7 @@ Print["\n========== End KK/Coulomb/propagator add-on v2 ==========\n"];
 (*"
 Output:
 
+
 ========================================
 Paper VIII add-on v2: KK spectrum + Coulomb + propagator (Gaussian Z)
 ========================================
@@ -272,6 +273,15 @@ OutputForm[lambdaConf*Sqrt[Pi]]
 
 mu0eff = mu0/Zint:
 OutputForm[mu0/(lambdaConf*Sqrt[Pi])]
+
+Fixed defect branch relation qStar = etaQ * eStar:
+OutputForm[HoldForm[qStar == etaQ*eStar]]
+
+Canonical brane charge relation qEff = qStar/Sqrt[Zint]:
+OutputForm[HoldForm[qEff == qStar/Sqrt[Zint]]]
+
+Derived Gaussian scaling for eEff:
+OutputForm[eStar/(Sqrt[lambdaConf]*Pi^(1/4))]
 
 ============================================================
 Sturm-Liouville eigenproblem (Gaussian Z)
@@ -368,6 +378,7 @@ OutputForm[2/lambdaConf]
 
 Leading Delta(r) approx:
 OutputForm[1/(2*E^((2*r)/lambdaConf))]
+Equivalent canonical brane description: replace qStar by qEff = qStar/Sqrt[Zint] after field normalization.
 
 ============================================================
 Brane-to-brane propagator depends only on k^2

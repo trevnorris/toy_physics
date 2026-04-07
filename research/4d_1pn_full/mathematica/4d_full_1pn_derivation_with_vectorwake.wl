@@ -365,7 +365,7 @@ checkEqVector[
 ];
 
 (* ============================================================ *)
-section["CONTROLLED / scalar plus optical self-term derivation: q and n fix the Phi v^2 coefficient"];
+section["CONTROLLED / scalar plus optical self-term derivation: kappa_rho and n fix the Phi v^2 coefficient"];
 (* ============================================================ *)
 
 alphaN[n_] := (n - 1)/2;
@@ -665,7 +665,6 @@ If[failCount == 0,
 
 (*"
 Output:
-
 --- 4D -> full 1PN derivation attempt (with imported vector wake module) ---
 
 === IMPORT / vector_wake_rebuild.wl as the constructive cross-term module ===

@@ -234,6 +234,10 @@ Print["    of the stiff vacuum (determined by EOS / microphysics), not as an ima
 (*"
 Output:
 
+=======================================================
+ PAPER III: TRANSLATIONAL WAKE REBUILD (CROSS-TERM MATCH)
+=======================================================
+
 EIH Targets (cross terms only):
   TargetPara (vA·vB) = -7/2
   TargetLong ((vA·n)(vB·n)) = -1/2
@@ -271,4 +275,10 @@ Check (should reproduce EIH cross coefficients):
   Predicted Long = -1/2   (target -1/2)
 
 SUCCESS: Found a real-parameter wake that matches EIH cross terms.
+
+NOTE:
+  - If Minimize returns no real solution, the restricted basis is still too small,
+    and you must add additional response channels (e.g., k-dependent weights A(k)).
+  - If a real solution exists, Paper III should treat these as *response parameters*
+    of the stiff vacuum (determined by EOS / microphysics), not as an imaginary alpha.
 "*)

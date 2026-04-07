@@ -793,7 +793,6 @@ If[failCount == 0,
 
 (*"
 Output:
-
 --- 4D gravity + Newtonian + 1PN master harness ---
 
 === EXACT / operational definitions and projection kernel ===

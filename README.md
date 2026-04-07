@@ -26,14 +26,14 @@ Papers currently in `research/`:
 - `4d_1pn_bridge` — Bridge from 4D bulk to 1PN observables
 - `4d_1pn_full` — Full 4D 1PN derivation
 - `4d_2pn` — 2PN extensions
+- `4d_2_5pn` — Conditional 2.5PN dissipative sector
 - `4d_em_fields` — 4D electromagnetic sector
 - `4d_plasma` — Plasma dynamics in the 4D model
-- `atomic_p22_bridge` — Atomic P22 bridge construction
 
 ### Work in progress (not yet published)
 Files for ongoing work that doesn't have a paper yet remain in the original directories:
 - `mathematica/` — `moving_throat/`, `inner_throat/`
-- `scripts/` — `moving_throat/`, `inner_throat/`, `4pn/`, and loose audit scripts for 2.5pn, 3pn, lepton, atom work
+- `scripts/` — `moving_throat/`, `inner_throat/`, `4pn/`, and loose audit scripts for 3pn, lepton, atom work
 - `notes/` — `moving_throat/`, `inner_throat/`, `4pn/`, and various top-level working notes
 - `notes/summaries/` — Per-paper summaries (kept together for easy batch upload)
 

@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{enumitem}
+\usepackage{float}
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{makecell}
@@ -188,7 +189,7 @@ Newtonian matching fixes \(\krho=1\), weak-field optics fixes \(n=5\), wave-supp
 
 Table~\ref{tab:headline-results} lists the quantities proved in the paper and the logic by which each is obtained.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Headline results established in this paper. The quartic kinetic coefficient is listed in Lagrangian normalization; the equivalent energy-expansion coefficient is \(3/8\).}
   \label{tab:headline-results}
@@ -2439,7 +2440,7 @@ EIH Lagrangian.
 A useful way to read the result is coefficient by coefficient. The entire provenance of
 \cref{eq:derived-eih} is summarized in \cref{tab:coefficient-provenance}.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Coefficient provenance in the final two-body \(1\)PN Lagrangian.}
   \label{tab:coefficient-provenance}
@@ -3080,7 +3081,7 @@ the full moving-throat PDE problem for arbitrary motion.
 For convenience, \cref{tab:fixed-symbolic-ledger} summarizes the status of the main
 quantities entering the present paper.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Status ledger for the main quantities entering the \(1\)PN derivation.}
   \label{tab:fixed-symbolic-ledger}
@@ -3158,7 +3159,7 @@ in the final \(1\)PN assembly can be checked independently.
 The project uses three main WL files, each with a distinct role. Their functions are
 summarized in \cref{tab:verification}.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{WL referee suite used to verify the algebra and bookkeeping of the \(1\)PN derivation.}
   \label{tab:verification}
@@ -3206,7 +3207,7 @@ summarized in \cref{tab:verification}.
   \end{tabularx}
 \end{table}
 
-The division of labor among these scripts mirrors the logic of the paper itself.
+The division of labor among these scripts mirrors the logic of the paper itself.\\
 \texttt{vector\_wake\_rebuild.wl} isolates the cross-velocity tensor so that its
 \(-7/2\) and \(-1/2\) coefficients are not contaminated by self-sector bookkeeping.
 \texttt{4d\_gravity\_1pn\_master\_harness.wl} acts as a broad regression suite for the
@@ -3515,7 +3516,7 @@ important scope condition that the derivation is complete within the stated clos
 hierarchy rather than as an assumption-free theorem of the fully solved parent \(4\)D
 dynamics.}
 
-\paragraph{Acknowledgments.}
+\section*{Acknowledgments}
 This work was carried out by an independent researcher. Generative-AI tools were used
 during the development of the manuscript to help translate conceptual ideas into
 mathematical form, assist with symbolic manipulations, prototype and revise companion
@@ -3538,7 +3539,7 @@ in different physical contexts. The purpose of this appendix is to keep those us
 unambiguous and to make clear which operations are exact definitions, which are reductions,
 and which are merely naming conventions.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Core notation used throughout the paper.}
   \label{tab:notation-core}
@@ -5116,7 +5117,7 @@ Within the controlled regime used in this paper, however, the coefficient is fix
 For convenience, the two relevant cases are summarized in
 \cref{tab:app-added-mass-comparison}.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Added-mass comparison for the two geometries discussed in the paper.}
   \label{tab:app-added-mass-comparison}
@@ -6135,9 +6136,9 @@ adopted in this paper.}
 
 \bibitem{norris2026_4d_model}
 Norris, T. (2026).
-\textit{4D Model - Action, Projections, and Controlled Brane Limits}.
+\textit{4D Toy Model - Action, Projections, and Controlled Brane Limits}.
 Zenodo.
-\url{https://doi.org/10.5281/zenodo.18309732}
+\url{https://doi.org/10.5281/zenodo.19449589}
 
 \end{thebibliography}
 

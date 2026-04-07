@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{enumitem}
+\usepackage{tabularx}
 
 \hypersetup{
   colorlinks=true,
@@ -99,13 +100,6 @@ A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Correct
 \maketitle
 
 \begin{abstract}
-% TODO (Abstract):
-% 1) State the goal: a computable 4+1D plasma interaction model (Option B) with brane observables.
-% 2) State what is proven: controlled reduction to 3+1 Maxwell -> two-fluid -> ideal/resistive MHD.
-% 3) State what is new: scalar photon A_w, leakage J^w, KK tower / finite-width corrections,
-%    and projected ``topology stress'' terms that act as an effective reconnection channel.
-% 4) State the computational plan: full 4D vs Hermite spectral decomposition in w, HPC scaling plan.
-
 We present a 4+1D plasma interaction model derived from a unified bulk action with localized electromagnetism and an operational brane-observer map. The model provides exact bulk conservation laws, exact projected (brane) balance laws with explicit leakage terms, and controlled reductions that recover standard 3+1 Maxwell theory, two-fluid plasma equations, and the ideal-MHD induction equation. We then identify and organize the leading beyond-MHD corrections that arise when 4D interactions are retained: a dynamical scalar-photon sector \(A_w\), brane--bulk charge/current exchange \(J^w\), and finite-localization (KK/mode) corrections that modify propagation and topology transport. Finally, we outline a simulation architecture for massive plasma computations that evolves either the full 4+1D system or a mode-reduced Hermite basis in \(w\), with diagnostics designed to quantify reconnection and topology change as genuine 4D transport rather than ad hoc resistivity.
 \end{abstract}
 
@@ -2305,7 +2299,8 @@ we use a truncated expansion
 \label{eq:Aw_mode_expand}
 \end{equation}
 where \(\{\phin(w)\}\) are orthonormal with respect to the \(\Z\)-weighted inner
-product \(\langle f,g\rangle_{\Z}=\int \dd w\,\Z(w)f(w)g(w)\). For Gaussian \(\Z\),
+product\\
+\(\langle f,g\rangle_{\Z}=\int \dd w\,\Z(w)f(w)g(w)\). For Gaussian \(\Z\),
 a Hermite basis yields a simple spectrum
 \begin{equation}
 m_n^2 = \frac{2n}{\lambda^2},
@@ -3039,7 +3034,7 @@ promise is that reconnection and other topology-changing plasma processes become
 consequences of evolving a larger interaction system, rather than exceptions that require
 phenomenological fixes at the outset.
 
-\paragraph{Acknowledgments.}
+\section*{Acknowledgments}
 This work was carried out by an independent researcher. Generative-AI tools were used during
 the development of the manuscript to help translate conceptual ideas into mathematical form,
 assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy
@@ -3143,7 +3138,7 @@ $\mathbf{J}$ & Brane current density (in the controlled $3+1$ Maxwell limit) \\
 \subsection*{Plasma matter sector (bulk and brane observables)}
 
 \begin{center}
-\begin{tabular}{@{}ll@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}
 \toprule
 Symbol & Meaning \\
 \midrule
@@ -3162,13 +3157,13 @@ $S_{\mathrm{leak}}^{(s)}$ & Leakage/source in projected continuity: $\partial_t\
 $U_s(\rho_s),\,h_s(\rho_s)$ & EOS potential and enthalpy-like function: $h_s=\dd U_s/\dd\rho_s$ \\
 $Q_s$ & Dispersive/quantum potential $Q_s=-(\hbar^2/2m_s)(\nabla_4^2\sqrt{\rho_s})/\sqrt{\rho_s}$ (GNLS option) \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \subsection*{Two-fluid and MHD variables (controlled brane limit)}
 
 \begin{center}
-\begin{tabular}{@{}ll@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}
 \toprule
 Symbol & Meaning \\
 \midrule
@@ -3180,13 +3175,13 @@ $\mathbf{J}$ & Brane current density, $\mathbf{J}=e n(\mathbf{v}_{\mathrm{i}}-\m
 $p_s,\;p$ & Species pressures and total pressure $p=p_{\mathrm{i}}+p_{\mathrm{e}}$ \\
 $\eta$ & (Optional) resistivity in resistive closures, $\mathbf{E}+\mathbf{v}\times\mathbf{B}=\eta\mathbf{J}+\cdots$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \subsection*{Transverse-mode (Hermite/KK) notation}
 
 \begin{center}
-\begin{tabular}{@{}ll@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}
 \toprule
 Symbol & Meaning \\
 \midrule
@@ -3197,7 +3192,7 @@ $c_n$ & Mode coupling weight to brane-localized sources (defined from $f_n(0)$ a
 $N_w$ & Number of retained transverse modes in a truncated expansion \\
 $Q_w$ & Quadrature order / number of transverse nodes in pseudo-spectral projection \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \section{Derivation Details: Maxwell Reduction and \texorpdfstring{$\mu_0^{\rm eff}$}{mu0eff}}
@@ -3315,7 +3310,8 @@ j_{\rm eff}^\mu(t,\mathbf{x})
 \end{equation}
 
 \paragraph{Brane-localized sources as a special case.}
-If the source is strictly brane-localized, \(J^\mu(t,\mathbf{x},w)=j_b^\mu(t,\mathbf{x})\delta(w)\),
+If the source is strictly brane-localized,\\
+\(J^\mu(t,\mathbf{x},w)=j_b^\mu(t,\mathbf{x})\delta(w)\),
 then \(j_{\rm eff}^\mu=j_b^\mu\), and the reduced action is exactly the standard Maxwell action
 (with \(\mu_0\to\mu_0^{\rm eff}\)) coupled to the brane current.
 

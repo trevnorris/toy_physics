@@ -1156,11 +1156,13 @@ which is now identical to the exact target
 The corresponding generic-frame two-body self/static block is then obtained by the usual
 symmetric promotion of the one-body monomials:
 \begin{equation}
-L_{2,\mathrm{self}+\mathrm{static}}=
-\frac{m_A v_A^6+m_B v_B^6}{16}
-+\frac{7Gm_A m_B}{8r}(v_A^4+v_B^4)
-+\frac{2G^2m_A m_B}{r^2}(m_B v_A^2+m_A v_B^2)
+\begin{aligned}
+L_{2,\mathrm{self}+\mathrm{static}}
+&=\frac{m_A v_A^6+m_B v_B^6}{16}
++\frac{7Gm_A m_B}{8r}(v_A^4+v_B^4) \\
+&\quad +\frac{2G^2m_A m_B}{r^2}(m_B v_A^2+m_A v_B^2)
 +\frac{G^3m_A m_B(m_A^2+m_B^2)}{4r^3}.
+\end{aligned}
 \label{eq:self-static-final-two-body}
 \end{equation}
 This is the entire self/static input used later in the comparable-mass \(\ADM\) lift.
@@ -2097,7 +2099,7 @@ complete direct bulk solution.
 For convenience, \cref{tab:status-ledger-2pn} summarizes the status of the main
 quantities entering the present \(\TwoPN\) paper.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Status ledger for the main quantities entering the conservative two-body
   \(\TwoPN\) derivation.}
@@ -2187,7 +2189,7 @@ The verification archive used for the present paper is summarized in
 \cref{tab:verification-2pn}.  It has three layers: the inherited \(\OnePN\) freeze, the
 compact executable \(\TwoPN\) harness, and the symbolic \(\TwoPN\) derivation ledger.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Verification archive used for the conservative two-body \(\TwoPN\) paper.}
   \label{tab:verification-2pn}
@@ -2750,7 +2752,7 @@ Lagrangian, and as appendix-side throat-response parameters.  The purpose of the
 appendix is to keep those uses unambiguous and to state explicitly which equalities are
 literal definitions, which are reduction conventions, and which are claim-class labels.
 
-\begin{table}[t]
+\begin{table}[H]
   \centering
   \caption{Core notation used repeatedly in the main text and appendices.}
   \label{tab:notation-core-2pn}
@@ -4514,12 +4516,13 @@ quadratic correction is fixed by the already-carried \(\OnePN\) coefficients.
 
 The repaired self/static \(\TwoPN\) seed carried into the lift is
 \begin{equation}
+\begin{aligned}
 L_{2,\mathrm{self+static}}
-=
-\frac{m_A v_A^6+m_B v_B^6}{16}
-+\frac{7Gm_A m_B}{8r}(v_A^4+v_B^4)
-+\frac{2G^2m_A m_B}{r^2}(m_B v_A^2+m_A v_B^2)
+&=\frac{m_A v_A^6+m_B v_B^6}{16}
++\frac{7Gm_A m_B}{8r}(v_A^4+v_B^4) \\
+&\quad +\frac{2G^2m_A m_B}{r^2}(m_B v_A^2+m_A v_B^2)
 +\frac{G^3m_A m_B(m_A^2+m_B^2)}{4r^3},
+\end{aligned}
 \label{eq:app-adm-self-static-seed}
 \end{equation}
 with the overall factor \(c^{-4}\) understood.  As explained in the main text, this
@@ -4938,13 +4941,12 @@ M_{AB}
 \end{equation}
 The interpretations are
 \begin{equation}
-T:\ \text{transverse-trace scalar},
-\qquad
-L:\ \text{longitudinal scalar},
-\qquad
-S:\ \text{transverse shear},
-\qquad
-M:\ \text{mixed transverse--longitudinal tensor}.
+\begin{aligned}
+T&:\ \text{transverse-trace scalar},\\
+L&:\ \text{longitudinal scalar},\\
+S&:\ \text{transverse shear},\\
+M&:\ \text{mixed transverse--longitudinal tensor}.
+\end{aligned}
 \label{eq:tensor-wake-channel-meanings}
 \end{equation}
 
@@ -6407,11 +6409,11 @@ r\approx 2.758343474052255,
 \end{equation}
 and the support residuals vanish at machine precision.  In Legendre form,
 \begin{equation}
-B_{\rm tan}(\mu)=\beta_0+\beta_2 P_2(\mu),
-\qquad
-\beta_0=B_0+\frac13 B_2\approx 0.287103174603175,
-\qquad
-\beta_2=\frac23 B_2\approx -0.723623069251115.
+\begin{aligned}
+B_{\rm tan}(\mu)&=\beta_0+\beta_2 P_2(\mu),\\
+\beta_0&=B_0+\frac13 B_2\approx 0.287103174603175,\\
+\beta_2&=\frac23 B_2\approx -0.723623069251115.
+\end{aligned}
 \label{eq:family1-beta0-beta2}
 \end{equation}
 So the minimal successful PDE-side completion is an axisymmetric
@@ -6672,9 +6674,10 @@ reduction of the full \((a,L)\) geometry sector, not a disconnected ad hoc inser
 The cleanest static closure statement is therefore
 \begin{equation}
 \boxed{
-\text{local Family-1 support/source wall law}
-\;+
-\text{dominant-coupling reduction of the reduced geometry Hessian}.
+\begin{gathered}
+\text{local Family-1 support/source wall law}\\
+{}+\text{dominant-coupling reduction of the reduced geometry Hessian}.
+\end{gathered}
 }
 \label{eq:family1-final-static-closure}
 \end{equation}
@@ -7333,11 +7336,11 @@ But as far as the scalar breathing branch is concerned, the constructive program
 already reached a near-final form:
 \begin{equation}
 \boxed{
-\text{exact static monopole closure}
-\;+
-\text{exact reduced two-pole breathing response}
-\;+
-\text{explicit Family-1 bulk and wall inertia completion}.
+\begin{gathered}
+\text{exact static monopole closure}\\
+{}+\text{exact reduced two-pole breathing response}\\
+{}+\text{explicit Family-1 bulk and wall inertia completion}.
+\end{gathered}
 }
 \label{eq:geom-breathing-final-summary}
 \end{equation}
@@ -7628,11 +7631,11 @@ At conservative \(\TwoPN\) order the constructive throat program has effectively
 three coupled pieces:
 \begin{equation}
 \boxed{
-\text{carried odd dipole wake}
-\;\oplus\;
-\text{exact }P_0\oplus P_2\text{ even support/source sector}
-\;\oplus\;
-\text{coupled two-pole monopole breathing channel }K_{00}(s).
+\begin{gathered}
+\text{carried odd dipole wake}\\
+\oplus\,\text{exact }P_0\oplus P_2\text{ even support/source sector}\\
+\oplus\,\text{coupled two-pole monopole breathing channel }K_{00}(s).
+\end{gathered}
 }
 \label{eq:family1-final-boxed-summary}
 \end{equation}

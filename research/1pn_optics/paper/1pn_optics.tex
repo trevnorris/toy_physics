@@ -423,7 +423,7 @@ Of these contributions, the static density term $\kappa_\rho$ and the
 added-mass term $\kappa_{\mathrm{add}}$ can be computed directly from the
 near-zone density perturbation and the dipole-like flow field around a
 translating void (see Appendix~\ref{app:dipole-derivation} and the
-verification scripts in \path{research/1pn_optics/mathematica/}).
+verification scripts in \path{mathematica/}).
 See Ref.~\cite{Norris:2025Orbits} for the orbital-sector development and
 definitions; here we summarize which pieces are directly computable and which
 are fixed by calibration.
@@ -1032,7 +1032,7 @@ and Appendix~\ref{app:ppn-metric}.
 For completeness, we briefly sketch how the analytic result
 Eq.~\eqref{eq:lensing-dtheta-result} can be checked numerically within the
 toy model.  A companion implementation of this Hamiltonian check is provided
-in \path{research/1pn_optics/scripts/ray_tracing.py}.
+in \path{scripts/ray_tracing.py}.
 
 In the geometric-optics limit, rays in an inhomogeneous medium with phase
 speed $c_s(\mathbf{x})$ can be described by the Hamiltonian
@@ -1336,7 +1336,7 @@ PPN coefficient.
 
 As with lensing, the analytic Shapiro delay can be checked numerically
 within the superfluid-defect model.  A companion direct line-integral check
-is provided in \path{research/1pn_optics/scripts/shapiro_delay.py}.
+is provided in \path{scripts/shapiro_delay.py}.
 
 One approach is to integrate the time-of-flight integral
 Eq.~\eqref{eq:shapiro-t-integral} directly on a discrete grid.
@@ -1562,7 +1562,7 @@ exponents,
   \quad\Rightarrow\quad
   s = \frac{n-1}{2} - q.
   \label{eq:clock-universality-s}
-\end{equation}\footnote{For explicit algebraic derivations of the scaling condition and of the energy-minimization example below, see \path{research/1pn_optics/mathematica/verify_clock_scaling_universality.wl} and \path{research/1pn_optics/mathematica/verify_length_scaling_from_energy_balance.wl}.}
+\end{equation}\footnote{For explicit algebraic derivations of the scaling condition and of the energy-minimization example below, see \path{mathematica/verify_clock_scaling_universality.wl} and \path{mathematica/verify_length_scaling_from_energy_balance.wl}.}
 In the stiff $n=5$ branch with $q=1$, this condition becomes $s=1$, i.e.\
 \begin{equation}
   L(\rho) \propto \rho.
@@ -1813,10 +1813,10 @@ frequency $\omega = 2\pi f$)
 implicitly assumes that the relevant ``photon''/wave packet is the zero mode
 of any transverse (bulk) structure.\footnote{For explicit mode-by-mode checks
 in the simple waveguide/KK toy model used here, see
-\path{research/1pn_optics/mathematica/verify_bulk_guided_photon_index.wl},
-\path{research/1pn_optics/mathematica/verify_w_zero_mode.wl},
-\path{research/1pn_optics/mathematica/verify_w_cutoff_and_dispersion.wl}, and
-\path{research/1pn_optics/mathematica/verify_w_mode_leakage_budget.wl}.}
+\path{mathematica/verify_bulk_guided_photon_index.wl},
+\path{mathematica/verify_w_zero_mode.wl},
+\path{mathematica/verify_w_cutoff_and_dispersion.wl}, and
+\path{mathematica/verify_w_mode_leakage_budget.wl}.}
 A true $k_w=0$ branch exists only if the bulk boundary conditions admit a
 constant $w$ eigenfunction (e.g. Neumann--Neumann or periodic in the simple
 waveguide model; Dirichlet or mixed boundary conditions have no zero mode).
@@ -3798,7 +3798,7 @@ runs.
 \bibitem{Norris:2025Orbits}
 T.~Norris,
 ``Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model,''
-Zenodo, 2025. \href{https://doi.org/10.5281/zenodo.17875005}{doi:10.5281/zenodo.17875005}
+Zenodo, 2025. \href{https://doi.org/10.5281/zenodo.19449058}{doi:10.5281/zenodo.19449058}
 
 \bibitem{Einstein:1915}
 A.~Einstein,

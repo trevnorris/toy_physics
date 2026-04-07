@@ -117,3 +117,81 @@ Print["Interpretation:"];
 Print["- This is the first exact reduced variational wall-Hessian that reproduces the passed static axisymmetric support data."];
 Print["- The Family-1 Gaussian flare naturally generates the same {1, P2, P2^2} axisymmetric basis at second order."];
 Print["- In the minimal linear-gradient reading, the flare width comes out of order the throat radius: zm/a0 ~= 1.0114."];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Input channel data and exact angular moments
+==============================================================================
+{0, 0, 0, 4/45}
+{1perp, 1, 1, 2/7}
+{10, 1, 0, 1/4}
+{20, 2, 0, 4/9}
+{21, 2, 1, 2/3}
+{22, 2, 2, 8/3}
+
+==============================================================================
+2) Reduced modal wall-Hessian ansatz
+==============================================================================
+Ansatz:
+  K_00 = Kmono
+  K_{ell m} = Kmono + Tau0 ell(ell+1) + (A0 + A1 ell(ell+1)) <P2> + (B0 + B1 ell(ell+1)) <P2^2>, for ell = 1,2
+Solved coefficients:
+  Kmono = 4/45  ~=  0.08888888888888888888888888888888888889`16.
+  Tau0 = 23/135  ~=  0.17037037037037037037037037037037037037`16.
+  A0 = 9095/3528  ~=  2.57794784580498866213151927437641723356`16.
+  A1 = -25559/21168  ~=  -1.20743575207860922146636432350718065004`16.
+  B0 = -109/56  ~=  -1.94642857142857142857142857142857142857`16.
+  B1 = 1765/3024  ~=  0.58366402116402116402116402116402116402`16.
+
+==============================================================================
+3) Exact reconstruction check
+==============================================================================
+0: K = 4/45, target = 4/45, residual = 0
+PASS: Residual vanishes for 0
+1perp: K = 2/7, target = 2/7, residual = 0
+PASS: Residual vanishes for 1perp
+10: K = 1/4, target = 1/4, residual = 0
+PASS: Residual vanishes for 10
+20: K = 4/9, target = 4/9, residual = 0
+PASS: Residual vanishes for 20
+21: K = 2/3, target = 2/3, residual = 0
+PASS: Residual vanishes for 21
+22: K = 8/3, target = 8/3, residual = 0
+PASS: Residual vanishes for 22
+
+==============================================================================
+4) Family-1 Gaussian flare -> {1, P2, P2^2} basis
+==============================================================================
+For a(z) = a0 (1 + beta Exp[-z^2/zm^2]) and xi = a0^2/zm^2,
+  delta a(theta)/a0 = beta [D0 + D1 P2 + D2 P2^2] + O(xi^3)
+  D0 = 1 + ((-6 + xi)*xi)/18
+  D1 = (2*(-3 + xi)*xi)/9
+  D2 = (2*xi^2)/9
+So the actual Family-1 flare automatically produces the exact axisymmetric basis used by the reduced wall Hessian.
+
+==============================================================================
+5) Minimal linear-gradient interpretation
+==============================================================================
+If the anisotropic gradient block is linear in the Family-1 flare profile, then
+  B1 / A1 = D2 / D1 = xi / (xi - 3)
+  B1/A1 = -12355/25559  ~=  -0.48339136898939708126296020971086505732`16.
+  xi = a0^2/zm^2 = 12355/12638  ~=  0.97760721633169805348947618294033866118`16.
+  zm/a0 = 1/Sqrt[xi] = Sqrt[12638/12355]  ~=  1.01138800971329750681587838229057966196`16.
+
+==============================================================================
+6) Summary
+==============================================================================
+Main exact result:
+  K_00 = 4/45
+  K_{ell m} = 4/45 + (23/135) ell(ell+1)
+             + (9095/3528 - (25559/21168) ell(ell+1)) <P2>
+             + (-109/56 + (1765/3024) ell(ell+1)) <P2^2>, for ell = 1,2
+
+Interpretation:
+- This is the first exact reduced variational wall-Hessian that reproduces the passed static axisymmetric support data.
+- The Family-1 Gaussian flare naturally generates the same {1, P2, P2^2} axisymmetric basis at second order.
+- In the minimal linear-gradient reading, the flare width comes out of order the throat radius: zm/a0 ~= 1.0114.
+"*)

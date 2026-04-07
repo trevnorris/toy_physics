@@ -362,3 +362,41 @@ If[failCount == 0,
   Print["All support-minus-closure throat EFT checks passed."],
   Print["Some support-minus-closure throat EFT checks failed."]
 ];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN support-minus-closure throat EFT ---
+
+=== MASTER / component kinematics and solved targets ===
+
+=== 1PN / frozen wake as odd dipole channels ===
+PASS: The frozen 1PN wake is exactly an odd dipole overlap
+
+=== 2PN / even P0⊕P2 block in mouth-port language ===
+PASS: The new quartic residual is exactly the positive P0⊕P2 port overlap
+
+=== ODD / kinetic and potential dressing of the dipole wake ===
+PASS: Odd dipole kinetic+potential dressing reproduces the full added odd 2PN block
+
+=== MATRIX / exact support-minus-closure decomposition ===
+PASS: Closure deficit is exactly 281/80
+PASS: Exact even response matrix = support PSD block minus pure-U geometry block
+PASS: The scalar {P0,P20,U} block has determinant -281/80
+PASS: The pure geometry closure block lives entirely in the U direction
+
+=== CHANNELS / support and closure sources ===
+PASS: Even block = six positive support channels minus one pure-U closure channel
+
+=== AUXILIARY / generic low-frequency elimination identities ===
+PASS: Positive support auxiliary produces +SA SB cross term
+PASS: Wrong-sign geometry auxiliary produces -CA CB cross term
+PASS: Odd dipole auxiliary produces -DA DB cross term
+
+=== ASSEMBLY / full added conservative 2PN cross block ===
+PASS: Full added conservative 2PN cross block equals dressed odd dipole wake plus support-minus-closure even sector
+
+=== SUMMARY ===
+Pass count = 12, Fail count = 0
+All support-minus-closure throat EFT checks passed.
+"*)

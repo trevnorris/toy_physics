@@ -346,3 +346,50 @@ If[failCount == 0,
   Print["\nALL CHECKS PASSED."],
   Print["\nSOME CHECKS FAILED."]
 ];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN comparable-mass ADM lift ---
+
+=== SETUP / kinematic variables and frozen Lagrangian sectors ===
+
+=== TARGET / generic-frame ADM Hamiltonians through 2PN ===
+PASS: Frozen 1PN Lagrangian still Legendre-transforms to the generic-frame ADM H1PN target
+
+=== CONTROLLED / residual of the DtN-corrected self/static 2PN candidate ===
+INFO: H2ResidualNoCross is the exact 2PN Hamiltonian residual of the DtN-corrected self/static candidate against the generic-frame ADM target.
+PASS: The no-cross comparable-mass 2PN residual is nonzero (so a genuine 2PN cross sector is still needed)
+INFO: Because H2 = -L2(v0) + (1/2) A0^T M^-1 A0, any added 2PN cross block enters the Hamiltonian only as -L2Cross(v0); therefore the required added Lagrangian block is H2ResidualNoCross with p -> m v.
+
+=== SOLVE / compact invariant 2PN cross-sector basis ===
+PASS: The chosen 7+6+1 invariant cross basis admits a coefficient solution
+PASS: q1 = -7/4
+PASS: q2 = -1/4
+PASS: q3 = 11/8
+PASS: q4 = 1/4
+PASS: q5 = -5/8
+PASS: q6 = 3/2
+PASS: q7 = 3/8
+PASS: t1 = 0
+PASS: t2 = 11/8
+PASS: t3 = -15/4
+PASS: t4 = 0
+PASS: t5 = 0
+PASS: t6 = 15/8
+PASS: s1 = 5/4
+PASS: The solved added cross block equals the required mapped residual exactly
+
+=== FULL / exact generic-frame ADM H2PN match after adding the solved cross block ===
+PASS: Full DtN-corrected 2PN candidate now Legendre-transforms to the generic-frame ADM H2PN target exactly
+PASS: Clean invariant formula reproduces the solved cross block
+PASS: Added comparable-mass cross block vanishes in the strict test-mass limit with the heavy body at rest
+PASS: The combined 2PN static mass polynomial becomes +(mA mB/4)(mA^2 + 5 mA mB + mB^2)
+
+=== SUMMARY ===
+Key exported symbols: H2ResidualNoCross, CrossBasisSolution2PN, L2CrossAdded2PN, L2CrossAdded2PNClean, L2Full2PN, H2TargetADM, H2FullCandidate, TwoPNComparableMassADMLiftResults.
+Passes: 22
+Fails : 0
+
+ALL CHECKS PASSED.
+"*)

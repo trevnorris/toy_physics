@@ -285,3 +285,75 @@ Family1FinalCoupledResponseResults = <|
 |>;
 
 Print["Key exported symbol: Family1FinalCoupledResponseResults."];
+
+(*"
+Output:
+
+
+==============================================================================
+EXACT Family-1 static support/source law
+==============================================================================
+zBase[mu] = 17/56 - (5*μ^2)/56
+tProf[mu] = 593/672 - (1553*μ^2)/672 + (7*μ^4)/8
+sProf[mu] = 10 - (63*(17/56 - (5*μ^2)/56))/2
+sProf == 10 - (63/2) zBase: PASS   (True)
+
+==============================================================================
+EXACT 2PN cross-block reconstruction from final throat module
+==============================================================================
+Final throat module reproduces exact added 2PN cross block: PASS   (True)
+Residual = 0
+
+==============================================================================
+DIRECT coupled sidewall + endcap full-profile wall completion
+==============================================================================
+Rmass_full_exact = 0.8863139729897237
+Maa_full_exact   = 0.5631149689539836
+Mll_full_exact   = 0.06582922811934913
+
+==============================================================================
+Compare direct full-profile values to separated-order carried-forward branch
+==============================================================================
+Rmass relative shift vs separated = 0.0019107668714480326
+Maa   relative shift vs separated = 0.0013049703880545012
+Mll   relative shift vs separated = -0.020348769996937265
+
+==============================================================================
+Geometry breathing response from exact full-profile wall completion
+==============================================================================
+Lambda_EM = 1.84748657712012805104337448393961224287`15.
+Sigma_*   = 0.20761432918354888540403250898444970518`15.
+lambda_-   = 6.405572392138904
+lambda_+   = 254.4449681369374
+R_-        = 0.0025524747717377352
+R_+        = 0.38673323951397665
+R_- + R_+  = 0.3892857142857144
+lambda_eff = 202.92351636751968
+max rel err on [0, 0.1 lambda_-] = 0.0000689464436711859
+Omega^2/Omega_TF^2 (minus) = 1.2196655544121753
+Omega^2/Omega_TF^2 (plus)  = 1.2066780945388536
+K00_raw(static local) = -0.30039682539682539682539682539682539683`15.
+K00_full(0)           = 0.08888888888888902
+4/45                  = 0.08888888888888888888888888888888888889`15.
+K00_full(0) == 4/45: PASS   (True)
+
+==============================================================================
+FINAL low-frequency Family-1 throat-response object
+==============================================================================
+Odd dipole residues:   R1_perp = 7/2, R10 = 4
+Odd dressings:         sigma = 1/2, eta_perp = 15/14, eta_parallel = 15/16
+Even local support:    K00_raw = -757/2520, K1_perp = 2/7, K10 = 1/4, K20 = 4/9, K21 = 2/3, K22 = 8/3
+Even source vector:    J = (4/Sqrt[5], 5/4)
+Monopole closure:      K00[s] = -757/2520 + R_-/(1 - s/lambda_-) + R_+/(1 - s/lambda_+)
+Default balanced cap:  alphaCap = 0.80000000000000004440892098500626161695`15., epsz = 0.05000000000000000277555756156289135106`15., chiCap = 4.`15.
+Conservative 2PN status: the full added cross block is reproduced exactly at zero frequency;
+dynamic non-monopole pole scales remain genuine inner-throat observables for a beyond-2PN / Paper-7 extension.
+
+==============================================================================
+SUITE verification
+==============================================================================
+PASS: Family-1 static support/source identity remains exact
+PASS: Final throat module still reproduces the exact added 2PN cross block
+PASS: Full monopole closure still satisfies K00_full(0) = 4/45
+Key exported symbol: Family1FinalCoupledResponseResults.
+"*)

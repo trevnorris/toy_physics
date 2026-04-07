@@ -357,3 +357,160 @@ Module[
 
   Print["Key exported symbol: Family1EndcapSoftwallResults."];
 ];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Filled-to-endcap soft-cap scaling
+==============================================================================
+Baseline n = 5 filled-to-endcap TF weight:
+  rho_0(u) ∝ (1 - u^2)^(1/4),   u = 2 w / L
+
+Near the cap, u = 1 + eps_z x, so
+  1 - u^2 = eps_z (-2 x - eps_z x^2).
+
+Therefore a genuine thin-endcap layer must scale as
+  V_cap / mu_c = 2 eps_z alpha_z S(x)^p,
+not O(1) in mu_c.  This is the key difference from the sidewall.
+
+Reduced local profile:
+  g_{alpha,p}(x) = (-x - alpha S(x)^p)_+^(1/4)
+
+So the endcap correction is weaker than the sidewall by one extra
+power of the vanishing TF profile at the cap, namely eps_z^(5/4).
+
+==============================================================================
+2) Exact asymptotic form of the endcap correction
+==============================================================================
+Define the defect moments
+  nu_k(alpha,p) = Integral x^k [g_{alpha,p}(x) - (-x)_+^(1/4)] dx
+
+Then for n = 5:
+  c0^cap = c0 + 2^(1/4) eps_z^(5/4) nu_0 + O(eps_z^(9/4))
+  c2^cap = c2 + 2^(1/4) eps_z^(5/4) nu_0 + O(eps_z^(9/4))
+
+Therefore
+  rho_eff^(TF+cap) / rho_eff^TF = 1 + A_cap nu_0 eps_z^(5/4) + ...
+  M_LL^(TF+cap) = 1/14 + B_cap nu_0 eps_z^(5/4) + ...
+
+A_cap = 1.3606190066912236182756960790094114888931090988606056803949`30.
+B_cap = 0.2429676797662899318349457283945377658737694819393938714991`30.
+
+==============================================================================
+3) Representative steep-cap branch and direct full-profile check
+==============================================================================
+Representative endcap branch:
+  eps_z = 0.05000000000000000277555756156289135105907917022705078125`50.
+  alpha_z = 1.`50.
+  p_z = 2
+
+Local turning point x_* solving x + alpha S(x)^p = 0:
+  x_* = -0.1720646550263600131524020623998347021416427990314126189252`30.
+
+Defect moment nu_0 = -0.129717121094554977624409185396406052639451568605557971578`30.
+
+Asymptotic vs direct full-profile values:
+  c0 asymptotic = 0.8703719198752304850128091226758594147985878012473424646553`30.
+  c0 direct     = 0.8703582632533208735917762478962476635195924316532794385425`30.
+  relative error = 0.00001569080513875308904577782490903477`20.
+
+  c2 asymptotic = 0.2460725021866305301402282679398786020169794794779083782703`30.
+  c2 direct     = 0.2461235845668365322952753581469143125434274532380978150235`30.
+  relative error = -0.00020754768502134498814903878106410022`20.
+
+  M_LL asymptotic = 0.0706802737334131551577823344204524518913281962776625658844`29.69897000433602
+  M_LL direct     = 0.0706960555664884249145380213260314649250027532901543262391`30.
+  relative error  = -0.00022323498742341026446783374922772638`20.
+
+So the leading eps_z^(5/4) asymptotic is already very accurate at eps_z = 0.05.
+
+==============================================================================
+4) Dynamic monopole response with the endcap correction
+==============================================================================
+Baseline TF branch:
+  lambda_- = 5.9255625769268585838222385594374512585639450952200111942518`30.
+  lambda_+ = 237.91117494303324065318581486681708803894`30.
+  residues = {0.0026280028657021827179081311195504674743576298665594278846`27.357675499791714, 0.3866577114200121029963775831661638182397013620131685287482`29.09691001262318}
+  lambda_eff = 188.17695898017126349792842186993058185251`27.949704504763947
+  max relative Pade error = 0.00007100969970122965
+
+Endcap-corrected branch:
+  rho_eff factor R_cap = c0^cap / c0 = 0.9958113945614278400150315119581863189245647077529426983699`30.
+  mHat_cap = {{0.6000000000000000000000000000000000000000000000000000000001`30., 0}, {0, 0.0706960555664884249145380213260314649250027532901543262391`30.}}
+
+  lambda_- = 5.9743204945455909174564671786352624767651340024390619490172`30.
+  lambda_+ = 238.41451639640104966595731700374101049039`30.
+  residues = {0.0025851672043531042688485264913050708348536525990567167356`27.354082151651184, 0.3867005470813611814454371877944092148795721158225923448356`29.09691001262318}
+  residue fractions = {0.00664079648824650637869346254647174159`20., 0.99335920351175349362130653745352825841`20.}
+  lambda_eff = 189.46289723924532568038193028445062914108`27.953147544026734
+  max relative Pade error = 0.00006983937917456873
+
+Physical pole-squared ratios relative to the sharp-wall TF baseline:
+  Omega_-^2 / Omega_-^2(sharp) = 1.01246923727752781965038674301492711931`20.
+  Omega_+^2 / Omega_+^2(sharp) = 1.00633079228437766651961604440700012432`20.
+
+Static sum of residues = 0.3892857142857142857142857142857142857144257684216490615712`28.96315333239801 (target 109/280 = 0.3892857142857142857142857142857142857142857142857142857144`40.)
+
+==============================================================================
+5) Leading separated-order full-wall composite branch
+==============================================================================
+Carried-forward sidewall branch (from the previous step):
+  R_side  = 0.9060975247692787
+  M_aa    = 0.5623811549096673
+
+New endcap branch:
+  R_cap   = 0.9958113945614278400150315119581863189245647077529426983699`30.
+  M_LL    = 0.0706960555664884249145380213260314649250027532901543262391`30.
+
+Leading separated-order composite:
+  R_full = R_side * R_cap = 0.9023022397491534
+  mHat_full = {{0.5623811549096673, 0}, {0, 0.0706960555664884249145380213260314649250027532901543262391`30.}}
+
+  lambda_- = 6.052355928868017
+  lambda_+ = 251.0829615183736
+  residues = {0.0028552853638614327, 0.3864304289218528}
+  residue fractions = {0.007334677998910103, 0.9926653220010898}
+  lambda_eff = 193.59559675191792
+  max relative Pade error = 0.00007722575556500872
+
+Physical pole-squared ratios relative to the sharp-wall TF baseline:
+  Omega_-^2 / Omega_-^2(sharp) = 1.1319906403274251
+  Omega_+^2 / Omega_+^2(sharp) = 1.1696350262065394
+
+This is the first full wall-completed monopole breathing branch in the
+current Family-1 program, at least to separated leading order in the
+sidewall and endcap thickness parameters.
+
+==============================================================================
+6) Interpretation
+==============================================================================
+1) The endcap layer is parametrically weaker than the sidewall because the
+   filled-to-endcap TF profile already vanishes at the cap.
+
+2) The correct cap scaling is W_cap / mu_c = O(eps_z), and the first
+   nontrivial correction is O(eps_z^(5/4)) on the n = 5 branch.
+
+3) Even after adding the cap correction, the monopole wall channel remains
+   an excellent positive two-pole Stieltjes response with a one-pole
+   reduction that is accurate well below the lower pole.
+
+4) Combining the carried-forward sidewall branch with the new cap branch
+   gives a near-final full-wall dynamic monopole response.  The remaining
+   gap is the fully coupled sidewall-cap derivation beyond separated order.
+
+==============================================================================
+7) Verification
+==============================================================================
+PASS: Representative endcap asymptotic c0 correction stays within 1% of the direct full-profile value
+PASS: Representative endcap asymptotic c2 correction stays within 1% of the direct full-profile value
+PASS: Representative endcap asymptotic M_LL stays within 1% of the direct full-profile value
+PASS: Endcap-corrected monopole residues stay positive
+PASS: Endcap-corrected monopole residues still sum to 109/280
+PASS: Endcap-corrected one-pole Pade error stays below 1e-3 on the low-frequency band
+PASS: Separated-order full-wall monopole residues stay positive
+PASS: Separated-order full-wall monopole residues still sum to 109/280
+PASS: Separated-order full-wall one-pole Pade error stays below 1e-3 on the low-frequency band
+Key exported symbol: Family1EndcapSoftwallResults.
+"*)

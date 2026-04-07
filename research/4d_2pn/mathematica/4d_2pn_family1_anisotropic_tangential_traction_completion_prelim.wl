@@ -145,3 +145,72 @@ Print["Main result:"];
 Print["- The smallest genuine strict boundary-layer / soft-wall completion that works is to keep the normal penetration moment isotropic while promoting the tangential wall moment to the axisymmetric profile B_tan(mu)=Btan0+Btan2 mu^2."];
 Print["- That single extra tangential wall-stress degree of freedom reproduces the entire l=1,2 support sector exactly."];
 Print["- The monopole remains separate, but now with an exact universal prediction K_(0,0)^BL = -757/2520 and exact required monopole add-on 109/280."];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Minimal anisotropic tangential-traction completion
+==============================================================================
+Strict Family-1 boundary-layer ansatz:
+  isotropic normal penetration moment   A
+  axisymmetric tangential wall moment   B_tan(mu) = Btan0 + Btan2 mu^2
+  flared mouth profile                  sigma(mu) = 1 - q mu^2 + r mu^4
+
+Exact projected channel formulas:
+  K_(0,0) = A - (2*A*q)/3 + (7*A*q^2)/15 + (2*A*r)/5 - (26*A*q*r)/35 + (23*A*r^2)/63
+  K_(1,1) = A + 2*Btan0 + (4*Btan2)/5 - (2*A*q)/5 + (11*A*q^2)/35 + (8*Btan0*q^2)/35 + (8*Btan2*q^2)/105 + (6*A*r)/35 - (2*A*q*r)/5 - (32*Btan0*q*r)/105 - (32*Btan2*q*r)/231 + (13*A*r^2)/77 + (32*Btan0*r^2)/231 + (32*Btan2*r^2)/429
+  K_(1,0) = A + 2*Btan0 + (2*Btan2)/5 - (6*A*q)/5 + (27*A*q^2)/35 - (16*Btan0*q^2)/35 - (16*Btan2*q^2)/105 + (6*A*r)/7 - (10*A*q*r)/7 + (64*Btan0*q*r)/105 + (64*Btan2*q*r)/231 + (25*A*r^2)/33 - (64*Btan0*r^2)/231 - (64*Btan2*r^2)/429
+  K_(2,0) = A + 6*Btan0 + (18*Btan2)/7 - (22*A*q)/21 + (13*A*q^2)/21 - (16*Btan0*q^2)/7 - (80*Btan2*q^2)/77 + (6*A*r)/7 - (94*A*q*r)/77 + (320*Btan0*q*r)/77 + (320*Btan2*q*r)/143 + (6185*A*r^2)/9009 - (320*Btan0*r^2)/143 - (192*Btan2*r^2)/143
+  K_(2,1) = A + 6*Btan0 + (16*Btan2)/7 - (6*A*q)/7 + (13*A*q^2)/21 + (8*Btan0*q^2)/21 + (24*Btan2*q^2)/77 + (10*A*r)/21 - (230*A*q*r)/231 - (96*Btan0*q*r)/77 - (800*Btan2*q*r)/1001 + (205*A*r^2)/429 + (800*Btan0*r^2)/1001 + (224*Btan2*r^2)/429
+  K_(2,2) = A + 6*Btan0 + (10*Btan2)/7 - (2*A*q)/7 + (5*A*q^2)/21 + (16*Btan0*q^2)/21 + (16*Btan2*q^2)/77 + (2*A*r)/21 - (58*A*q*r)/231 - (64*Btan0*q*r)/77 - (320*Btan2*q*r)/1001 + (25*A*r^2)/273 + (320*Btan0*r^2)/1001 + (64*Btan2*r^2)/429
+
+==============================================================================
+2) Exact l=1,2 support solve on the Family-1-like branch
+==============================================================================
+Selected Family-1-like physical branch:
+  A = -0.28192321930256801306217652511668432095`20.
+  Btan0 = 0.64891470922873163178469476960102677809`20.
+  Btan2 = -1.08543460387667108583027478499355652474`20.
+  q = 2.37091571716857638961663327439521543074`20.
+  r = 2.75834347405224663495172884331598732546`20.
+  K11-2/7 = 0``48.644578961902404
+  K10-1/4 = 0``48.295444607504045
+  K20-4/9 = 0``47.62926904811592
+  K21-2/3 = 0``48.05745389626773
+  K22-8/3 = 0``48.32488137360163
+
+sigma(mu) minimum on [-1,1] = {0.4905238061543064337863356228519762886551107971869820347949`40., {mu -> -0.6555697230448126001326550714083302247219097175702208906147`40.}}
+B_tan(mu) minimum on [-1,1] = {-0.4365198946479394540455800153925297466515206722420924556133`40., {mu -> 1.`40.}}
+
+Legendre form of the selected tangential wall profile:
+  B_tan(mu) = beta0 + beta2 P2(mu)
+  beta0 = 0.28710317460317460317460317460317460317`20.
+  beta2 = -0.72362306925111405722018318999570434983`20.
+PASS: Exact l=1,2 support-sector reconstruction achieved on the Family-1-like branch.
+
+==============================================================================
+3) Universal monopole prediction
+==============================================================================
+Exact structural identity:
+  K_(0,0) - [ K_(1,1) + 1/2 K_(1,0) - 1/10 K_(2,0) - 1/5 K_(2,1) - 1/5 K_(2,2) ] = 0
+
+So once the l=1,2 support targets are matched exactly, the raw boundary-layer monopole is fixed to
+  K_(0,0)^BL = -757/2520
+and the separate monopole wall add-on needed to recover K_(0,0)=4/45 is
+  Delta K_(0,0)^mono = 109/280
+
+Numerically:
+  K_(0,0)^BL = -0.30039682539682539682539682539682539683`20.
+  Delta K_(0,0)^mono = 0.38928571428571428571428571428571428572`20.
+PASS: Universal monopole prediction and add-on are exact.
+
+==============================================================================
+4) Conclusion
+==============================================================================
+Main result:
+- The smallest genuine strict boundary-layer / soft-wall completion that works is to keep the normal penetration moment isotropic while promoting the tangential wall moment to the axisymmetric profile B_tan(mu)=Btan0+Btan2 mu^2.
+- That single extra tangential wall-stress degree of freedom reproduces the entire l=1,2 support sector exactly.
+- The monopole remains separate, but now with an exact universal prediction K_(0,0)^BL = -757/2520 and exact required monopole add-on 109/280.
+"*)

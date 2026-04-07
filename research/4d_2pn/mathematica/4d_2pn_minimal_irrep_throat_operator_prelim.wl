@@ -266,3 +266,72 @@ Print["  velocity 3-body lift = ", Factor[pairABThreeBodyVelExpected]];
 Print["  static   3-body lift = ", Factor[pairABThreeBodyStaticExpected]];
 
 Print["\nDone."];
+
+(*"
+Output:
+
+--- 2PN minimal irreducible-channel throat operator preliminary Mathematica script ---
+
+=== MASTER / pair kinematics and canonical port basis ===
+PASS: Frozen 1PN wake = transverse/longitudinal dipole metric
+
+=== EVEN / solve the minimal P0⊕P2 zero-frequency support operator ===
+PASS: Minimal P0⊕P2 support operator is uniquely fixed
+Solved even data: {a0 -> 1, a20 -> 1, a21 -> 1, a22 -> 1, j0 -> 4/Sqrt[5], j20 -> 5/4, s -> 5/4}
+PASS: Solved even operator reproduces the exact even 2PN target
+PASS: a0 = a20 = a21 = a22 = 1
+PASS: j0 = 4/Sqrt[5]
+PASS: j20 = 5/4
+PASS: static support+closure target coefficient = 5/4
+
+=== ODD / solve the minimal dressed dipole operator ===
+PASS: Minimal odd dipole operator is uniquely fixed
+Solved odd data: {sigma -> 1/2, pperp -> 15/4, ppara -> 15/4}
+PASS: Solved odd operator reproduces the exact odd 2PN target
+PASS: sigma = 1/2
+PASS: pperp = ppara = 15/4
+PASS: eta_perp = 15/14
+PASS: eta_parallel = 15/16
+
+=== DATA / canonical zero-frequency operator package ===
+PASS: Odd zero-frequency residues are fixed at {7/2, 7/2, 4}
+PASS: Even zero-frequency support residues are all 1
+PASS: Support static coefficient = 381/80
+PASS: Geometry closure deficit = 281/80
+PASS: Direct geometry-energy coefficient = 281/160
+PASS: Direct geometry-energy term produces the pure-U closure block
+PASS: Canonical operator package reproduces the full added conservative 2PN cross block
+
+=== LOW-FREQUENCY / unresolved DtN data beyond the zero-frequency residues ===
+PASS: Y0(0) = 1
+PASS: Y2(0) = 1
+PASS: Y1_perp(0) = 7/2
+PASS: Y1_parallel(0) = 4
+Current 2PN conservative matching fixes only the zero-frequency residues; the omega^2 DtN coefficients remain free PDE observables:
+  Y0[omega]  = 1 + chi0*omega^2
+  Y2[omega]  = 1 + chi2*omega^2
+  Y1p[omega] = 7/2 + chi1p*omega^2
+  Y10[omega] = 4 + chi10*omega^2
+
+=== N-BODY / pair AB in a three-body background C ===
+PASS: U-driven scalar source = 11/8 v^2 + 15/8 d^2
+PASS: Pair AB velocity-dependent 3-body lift is fixed by the minimal operator
+PASS: Pair AB static 3-body lift is fixed by the minimal operator
+
+Solved zero-frequency operator data:
+  odd residues      : {7/2, 7/2, 4}
+  even residues     : {1, 1, 1, 1, 1, 1}
+  J source vector   : {4/Sqrt[5], 5/4, 0, 0, 0, 0}
+  support static    : 381/80
+  geometry closure  : 281/80
+  kappa_geom        : 281/160
+  sigma             : 1/2
+  eta_perp          : 15/14
+  eta_parallel      : 15/16
+
+Pair AB in background C:
+  velocity 3-body lift = (Gconst^2*mA*mB*mC*(15*dAAB^2*rAC + 15*dBAB^2*rBC + 11*rAC*vA2AB - 30*rAC*vABAB - 30*rBC*vABAB + 11*rBC*vB2AB))/(8*cLight^4*rAB*rAC*rBC)
+  static   3-body lift = (5*Gconst^3*mA*mB*mC*(mC*rAB + mB*rAC + mA*rBC))/(4*cLight^4*rAB^2*rAC*rBC)
+
+Done.
+"*)

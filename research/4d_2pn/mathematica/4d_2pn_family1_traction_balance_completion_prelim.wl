@@ -149,3 +149,89 @@ Print["Main result:"];
 Print["- The passed l=1,2 support-sector data admit an exact minimal local traction-balance completion with one base profile zBase(mu) and one tangential wall-stress profile t(mu)."];
 Print["- Both profiles sit in the Family-1 low-order basis {1, mu^2, mu^4}."];
 Print["- The resulting local wall-energy form reproduces all dipole and quadrupole support channels exactly, while K_(0,0)=4/45 remains the separate monopole wall channel from the earlier PDE steps."];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Carried-forward support targets
+==============================================================================
+K_{0, 0} = 4/45
+K_{1, 1} = 2/7
+K_{1, 0} = 1/4
+K_{2, 0} = 4/9
+K_{2, 1} = 2/3
+K_{2, 2} = 8/3
+
+K_(0,0)=4/45 is kept as the separate monopole wall channel.
+We solve the exact local traction-balance completion on the l=1,2 support sector.
+
+==============================================================================
+2) Minimal local traction-balance ansatz
+==============================================================================
+zBase(mu) = b0 + b2 mu^2
+t(mu)     = t0 + t2 mu^2 + t4 mu^4
+
+Channel formula on the l=1,2 support sector:
+K_(l,m) = <zBase>_(l,m) + (l(l+1)-2) <t>_(l,m)
+Exact solution:
+  b0 = 17/56
+  b2 = -5/56
+  t0 = 593/672
+  t2 = -1553/672
+  t4 = 7/8
+
+Solved profiles:
+  zBase(mu) = (17 - 5*mu^2)/56
+  t(mu)     = (593 - 1553*mu^2 + 588*mu^4)/672
+
+Legendre-basis form:
+  zBase(mu) = 23/84 + (-5/84) P2(mu)
+  t(mu)     = 211/1008 + (-129/112) P2(mu) + (7/18) P2(mu)^2
+
+==============================================================================
+3) Equivalent local wall-energy form
+==============================================================================
+For the operator zBase + 1/2{L-2,t}, with L=-Delta_S, the local quadratic form is
+  E = 1/2 ∫ dΩ [ p(mu) Psi^2 + t(mu) |∇_S Psi|^2 ]
+with p(mu) = zBase(mu) - 2 t(mu) - 1/2 Delta_S t(mu).
+Delta_S t(mu) = (-1553 + 8187*mu^2 - 5880*mu^4)/336
+p(mu)         = 571/672 - (5141*mu^2)/672 + 7*mu^4
+p(mu)         = -155/168 + (-2005/1008) P2(mu) + (28/9) P2(mu)^2
+
+==============================================================================
+4) Verification
+==============================================================================
+Local residual {1, 1} = 0
+Local residual {1, 0} = 0
+Local residual {2, 0} = 0
+Local residual {2, 1} = 0
+Local residual {2, 2} = 0
+Operator residual {1, 1} = 0
+Operator residual {1, 0} = 0
+Operator residual {2, 0} = 0
+Operator residual {2, 1} = 0
+Operator residual {2, 2} = 0
+PASS: Exact l=1,2 support-sector reconstruction holds in both operator and local wall-energy forms.
+
+Monopole channel:
+  K_(0,0) = 4/45 is kept separate.
+  The local traction-balance completion derived here supplements that monopole wall mode.
+
+==============================================================================
+5) Numerical sign structure
+==============================================================================
+t(0) = 0.88244047619047619047619047619047619048`16.
+t(1) = -0.55357142857142857142857142857142857143`16.
+p(0) = 0.84970238095238095238095238095238095238`16.
+p(1) = 0.19940476190476190476190476190476190476`16.
+
+==============================================================================
+6) Conclusion
+==============================================================================
+Main result:
+- The passed l=1,2 support-sector data admit an exact minimal local traction-balance completion with one base profile zBase(mu) and one tangential wall-stress profile t(mu).
+- Both profiles sit in the Family-1 low-order basis {1, mu^2, mu^4}.
+- The resulting local wall-energy form reproduces all dipole and quadrupole support channels exactly, while K_(0,0)=4/45 remains the separate monopole wall channel from the earlier PDE steps.
+"*)

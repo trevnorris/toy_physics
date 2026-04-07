@@ -269,3 +269,65 @@ Print[
   "This reproduces the full raw static support data, gives a finite monopole pole, ",
   "and yields explicit axisymmetric dipole/quadrupole pole splittings in the 4D-ball DtN model."
 ];
+
+(*"
+Output:
+
+
+=== Axisymmetric P2 and P2^2 expectation values on the raw mouth basis ===
+cVals = <|1perp -> -1/5, 10 -> 2/5, 20 -> 2/7, 21 -> 1/7, 22 -> -2/7|>
+dVals = <|1perp -> 1/7, 10 -> 11/35, 20 -> 3/7, 21 -> 1/7, 22 -> 1/7|>
+PASS: <P2> dipole and quadrupole expectations
+PASS: <P2^2> expectations
+
+=== Static 2PN raw support targets ===
+zTarget = <|0 -> 4/45, 1perp -> 2/7, 10 -> 1/4, 20 -> 4/9, 21 -> 2/3, 22 -> 8/3|>
+
+=== Odd sector: exact first-order P2 wall fit ===
+solOdd = {b1 -> 23/84, a1 -> -5/84}
+PASS: Odd first-order P2 fit exact
+
+=== Even sector: first-order P2 no-go ===
+solEven1Partial = {b2 -> 8/9, a2 -> -14/9}
+predZ22First = 4/3
+PASS: No exact first-order quadrupole fit exists
+PASS: First-order quadrupole mismatch is 4/3 vs 8/3
+
+=== Even sector: exact second-order P2^2 wall fit ===
+solEven2 = {b2 -> 10/9, a2 -> -14/3, c2w -> 14/9}
+PASS: Second-order quadrupole fit exact
+
+=== Monopole stiffness and axisymmetric source ===
+b0Val = 4/45
+sourceSol = {pIso -> 11/8, qAx -> 15/8}
+PASS: Finite monopole stiffness exact
+PASS: Axisymmetric source profile exact
+
+=== 4D-ball DtN pole equations ===
+z0Exact = 0.591884444464394019440908589584727551310748752011342143072947657880163107690913923054738969149333`80.
+z0Small = 0.59628479399994391904244631166167366278416489589640685980557259877613891350342`50.
+z1Base = 2.551215916564764676393581162842128123751325887704508159626101335954070874849917840917794428504768`80.
+z1PerpExact = 2.561183722397930069126329165563586152889319845156466532670796401096724015784164147276040060760274`80.
+z1PerpPert = 2.56121956124411371555363177978553688448852610610638532958950092733090217301352`50.
+z10Exact = 2.531063390840353185540383409043570295843302232319006491201978536009772881955892670240579925673424`80.
+z10Pert = 2.53120862720606659807347992895531060227692545090075381969930215320040827852272`50.
+z2Base = 4.254105628646176791948969078511014543701338915488990175247646105292148330059152637978224460308372`80.
+z20Exact = 3.901921523190568443589262195652032313178209772132984781710174625285751361097667166557759613306794`80.
+z20Pert = 3.94278345317696445544578176311367916396349152736313112483935806569373702798892`50.
+z21Exact = 4.029116369391941252418361533049407298938856501765538607120511568734524437646561251152477335514323`80.
+z21Pert = 4.046557511666701900946844201579457623876107323405084141642120745559874128679`50.
+z22Exact = 4.821811915561262760590424018987091101998904375187419710656092620015174030759792898202192834281759`80.
+z22Pert = 4.98052403807433891045640614777146376308964948778266129286698486435510803488969`50.
+PASS: Finite monopole pole exists and small-z estimate is close
+PASS: Dipole pole splitting exists
+PASS: Odd perturbative root shifts are accurate
+PASS: Quadrupole pole ordering exists
+PASS: Quadrupole perturbative ordering is at least qualitatively correct
+
+=== Summary ===
+Minimal static throat-wall PDE scaffold:
+  Z0(0) = 4/45,
+  Z1m(0) = 23/84 - (5/84) <P2>_(1m),
+  Z2m(0) = 10/9 - (14/3) <P2>_(2m) + (14/9) <P2^2>_(2m).
+This reproduces the full raw static support data, gives a finite monopole pole, and yields explicit axisymmetric dipole/quadrupole pole splittings in the 4D-ball DtN model.
+"*)

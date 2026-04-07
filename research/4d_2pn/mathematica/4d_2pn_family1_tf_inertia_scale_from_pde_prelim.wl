@@ -215,3 +215,58 @@ If[relErr < 10^-3, pass["TF one-pole Padé error remains below 1e-3 on the low-f
 section["Summary"];
 Print["PASS count = ", passCount];
 Print["FAIL count = ", failCount];
+
+(*"
+Output:
+
+--- 2PN Family-1 TF inertia scale from parent PDE ---
+
+=== 1) Family-1 TF bulk inertia from the parent n-polytrope ===
+alpha = (-1 + nEOS)^(-1)
+c0(n) = Beta[1/2, nEOS/(-1 + nEOS)]/2
+c2(n) = Beta[3/2, nEOS/(-1 + nEOS)]/2
+c2/c0 = (-1 + nEOS)/(-1 + 3*nEOS)
+mLL(n) = (-1 + nEOS)/(-4 + 12*nEOS)
+rhoCenter = ((a0^2*Lam^2*mPsi*(-1 + nEOS)*OmegaIn^2)/(KEOS*nEOS))^(-1 + nEOS)^(-1)/8^(-1 + nEOS)^(-1)
+rhoEffTF = 2^((2 + nEOS)/(1 - nEOS))*((a0^2*Lam^2*mPsi*(-1 + nEOS)*OmegaIn^2)/(KEOS*nEOS))^(-1 + nEOS)^(-1)*Beta[1/2, nEOS/(-1 + nEOS)]
+mHatGeneral = MatrixForm[{{3/5, 0}, {0, (-1 + nEOS)/(-4 + 12*nEOS)}}]
+PASS: Exact TF ratio c2/c0 = (n-1)/(3 n - 1)
+PASS: Exact TF axial inertia coefficient mLL = (n-1)/(4(3 n - 1))
+
+=== 2) Frozen n = 5 specialization ===
+c0(5) = (Sqrt[Pi]*Gamma[5/4])/(2*Gamma[7/4])
+N[c0(5),20] = 0.87401918476403993682161319663185145628`20.
+rhoCenter(5) = ((mPsi/KEOS)^(1/4)*Sqrt[a0*Lam*OmegaIn])/10^(1/4)
+rhoEffTF(5) = ((mPsi/KEOS)^(1/4)*Sqrt[a0*Lam*OmegaIn]*Sqrt[Pi]*Gamma[5/4])/(2*10^(1/4)*Gamma[7/4])
+mHatTF(5) = MatrixForm[{{3/5, 0}, {0, 1/14}}]
+PASS: TF n=5 axial inertia coefficient is 1/14
+
+=== 3) Geometry breathing response with TF inertia ===
+hBar = MatrixForm[{{(2*betaGeom)/Lam + 8*Pi*(2 + Lam + Lam*rhoGeom), (-2*betaGeom)/Lam^2 + 4*Pi*(2 + rhoGeom)}, {(-2*betaGeom)/Lam^2 + 4*Pi*(2 + rhoGeom), (2*betaGeom)/Lam^3}}]
+gBar = {3, Lam^(-1)}
+Delta0 = (-4*betaGeom + Lam*Pi*(-2 + Lam*(5 + 2*rhoGeom)))/(2*Pi*(Lam^3*Pi*(2 + rhoGeom)^2 - betaGeom*(2 + Lam*(3 + 2*rhoGeom)))*Sigma)
+Delta2TF = (4*betaGeom^2*(42 + 5*Lam^2) + Lam^4*Pi^2*(248 - 40*Lam*(4 + rhoGeom) + 42*rhoGeom*(4 + rhoGeom) + 5*Lam^2*(4 + rhoGeom)^2) - 4*betaGeom*Lam^2*Pi*(42*(2 + rhoGeom) + 5*Lam*(-4 + Lam*(4 + rhoGeom))))/(1120*Pi^2*(Lam^3*Pi*(2 + rhoGeom)^2 - betaGeom*(2 + Lam*(3 + 2*rhoGeom)))^2*Sigma)
+lamEffTF = (560*Pi*(Lam^3*Pi*(2 + rhoGeom)^2 - betaGeom*(2 + Lam*(3 + 2*rhoGeom)))*(-4*betaGeom + Lam*Pi*(-2 + Lam*(5 + 2*rhoGeom))))/(4*betaGeom^2*(42 + 5*Lam^2) + Lam^4*Pi^2*(248 - 40*Lam*(4 + rhoGeom) + 42*rhoGeom*(4 + rhoGeom) + 5*Lam^2*(4 + rhoGeom)^2) - 4*betaGeom*Lam^2*Pi*(42*(2 + rhoGeom) + 5*Lam*(-4 + Lam*(4 + rhoGeom))))
+Ytf(s) = -((560*(4*betaGeom + Lam*Pi*(2 - Lam*(5 + 2*rhoGeom))) - 3*Lam*(14 + 15*Lam^2)*s)/((2*betaGeom*(-560*Pi*(2 + 3*Lam + 2*Lam*rhoGeom) + (42 + 5*Lam^2)*s) + Lam^3*(1120*Pi^2*(2 + rhoGeom)^2 + 40*Pi*(2 + Lam + Lam*rhoGeom)*s - 3*s^2))*Sigma))
+
+=== 4) EM-worked point with TF inertia ===
+LamEM = 1.8474865771201280510433744839396122428696573796896114673321817811568650327843`50.
+SigmaStar = 0.20761432918354888540403250898444970518124118990882318258536279134129844964869`48.15554576568318
+mHatTF(worked point) = MatrixForm[{{0.6`60., 0}, {0, 0.07142857142857142857142857142857142857142857142857142857142857142857142857143`60.}}]
+Dimensionless poles lambda_i = {5.92556257692685858382223855943745125857`20., 237.91117494303324065318581486681708803893`20.}
+Residues = {0.002628002865702182717908131119550467474353909167098464977`40., 0.3866577114200121029963775831661638182399318051186158207373`40.}
+Residue fractions = {0.006750833049510194137745657921781017365312794190711653152`39.69897000433602, 0.993249166950489805862254342078218982634687205809288346848`39.69897000433602}
+lamEffTFNum = 188.1769589801712634979284218699305818526037636010761944631566`40.
+Max relative error on 0 <= s <= 0.1 lambda_- = 0.00007100969970122965
+rhoEffWorked = 0.66805406566754947933377993028331689290644414273125724893935683781830504186007`50.30102999566398*(mPsi/KEOS)^(1/4)*Sqrt[OmegaIn]
+Omega_-^2 = (1.1461674649753605162726260465006270842628882262896971236478`40.*(KEOS/mPsi)^(1/4)*Sigma)/Sqrt[OmegaIn]
+Omega_+^2 = (46.018592282791748388736666001371046906470351267877636869586`40.*(KEOS/mPsi)^(1/4)*Sigma)/Sqrt[OmegaIn]
+Omega_eff^2 = (36.3986212686211154220866044111710401757808298741717865596416`40.*(KEOS/mPsi)^(1/4)*Sigma)/Sqrt[OmegaIn]
+PASS: Static geometry channel still sums to 109/280 at the EM worked point
+PASS: TF dynamic geometry residues stay positive
+PASS: TF one-pole Padé error remains below 1e-3 on the low-frequency band
+
+=== Summary ===
+PASS count = 6
+FAIL count = 0
+"*)

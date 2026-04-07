@@ -161,3 +161,74 @@ Family1GeneralizedRobinResults = <|
 |>;
 
 Print["Key exported symbol: Family1GeneralizedRobinResults."];
+
+(*"
+Output:
+
+
+=== Minimal generalized Robin / wall-stress support operator ===
+Ansatz:
+  Z_lm = A0 + A1 (lambda_l-2) + (B0 + B1 (lambda_l-2)) <P2>_lm + C (lambda_l-2) <P2^2>_lm
+
+Solved coefficients:
+  A0 = 23/84
+  A1 = 211/1008
+  B0 = -5/84
+  B1 = -129/112
+  C  = 7/18
+
+=== Exact verification on passed support data ===
+1perp: predicted Z = 2/7, target Z = 2/7, residual = 0
+10: predicted Z = 1/4, target Z = 1/4, residual = 0
+20: predicted Z = 4/9, target Z = 4/9, residual = 0
+21: predicted Z = 2/3, target Z = 2/3, residual = 0
+22: predicted Z = 8/3, target Z = 8/3, residual = 0
+
+=== Equivalent profile decomposition in mu = Cos[theta] ===
+Equivalent diagonal form on l=1,2:
+  Z_lm = < zBase(mu) >_lm + (lambda_l-2) < zCurv(mu) >_lm
+
+Base profile:
+  zBase(mu) = 17/56 - (5*mu^2)/56
+
+Curvature profile:
+  zCurv(mu) = 593/672 - (1553*mu^2)/672 + (7*mu^4)/8
+
+=== Family-1 flare / soft-wall mouth basis ===
+Use h1(mu) = -mu^2 and h2(mu) = mu^4.
+
+Base profile in {1, h1}:
+  zBase(mu) = 17/56 + 5/56 h1(mu)
+
+Curvature profile in {1, h1, h2}:
+  zCurv(mu) = 593/672 + 1553/672 h1(mu) + 7/8 h2(mu)
+
+=== Family-1 flare expansion near the mouth ===
+Assume a(z)/a_m = 1 - q mu^2 + r mu^4 + O(mu^6), with mu = Cos[theta].
+
+Then
+  -q mu^2 + r mu^4 = (-3*q + r)/9 + (-2*q)/3 + (4*r)/9 P2(mu) + (4*r)/9 P2(mu)^2
+
+=== Axisymmetric source profile in the same mu^2 basis ===
+S(mu) = 11/8 + (15/8) P2(mu) = 7/16 + (45*mu^2)/16
+     = 7/16 + 45/16 mu^2
+
+=== Suggested minimal support-sector boundary operator ===
+Suggested diagonal-matrix-element form on the passed l=1,2 support sector:
+  B_eff = d_n + zBase(mu) + 1/2 {(-Delta_S - 2), zCurv(mu)}
+
+with
+  zBase(mu) = 17/56 - (5*mu^2)/56
+  zCurv(mu) = 593/672 - (1553*mu^2)/672 + (7*mu^4)/8
+
+This exactly reproduces the passed support impedances for the l=1,2 channels.
+
+Note: the previously reported z^8 correction in the isotropic 4D-ball unit-test series does not affect this static operator reconstruction, which uses the exact support-channel data rather than the old truncated z^8 quotient.
+
+=== Verification ===
+PASS: Generalized Robin solve reproduces all passed support impedances exactly
+PASS: Generalized Robin base profile matches zBase(mu) = 17/56 - 5 mu^2/56
+PASS: Generalized Robin curvature profile matches the carried-forward Family-1 polynomial
+PASS: Axisymmetric source profile equals 10 - (63/2) zBase(mu)
+Key exported symbol: Family1GeneralizedRobinResults.
+"*)

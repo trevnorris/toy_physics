@@ -157,3 +157,80 @@ Print["Baseline P_vac V + sigma A fails; the minimal curvature term kappa_b a^2/
 Print["At the EM-aspect-ratio worked point, the dominant geometry eigenmode carries ",
   100 N[frac[[dominantIndex]], 20], "% of the static monopole response."];
 Print["So the earlier single global monopole auxiliary is a controlled reduction of the full 2DOF geometry sector."];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Exact geometry-side setup
+==============================================================================
+V(a,L) = (4*a^3*L*Pi)/3
+A(a,L) = (8*a^3*Pi)/3 + 4*a^2*L*Pi
+E_geom(a,L) = (a^2*beta*Sigma)/(a0*L) + (8*a^3*Pi*Sigma)/(3*a0^3) + (4*a^2*L*Pi*Sigma)/a0^3 + (4*a^3*L*Pi*rho*Sigma)/(3*a0^4)
+
+H0 = 
+MatrixForm[{{(2*(beta + 4*Lam*Pi*(2 + Lam + Lam*rho))*Sigma)/(a0^2*Lam), (-2*(beta - 2*Lam^2*Pi*(2 + rho))*Sigma)/(a0^2*Lam^2)}, {(-2*(beta - 2*Lam^2*Pi*(2 + rho))*Sigma)/(a0^2*Lam^2), (2*beta*Sigma)/(a0^2*Lam^3)}}]
+
+g0 = {4*a0^3*Lam*Pi, (4*a0^3*Pi)/3}
+V0 = (4*a0^4*Lam*Pi)/3
+
+deltaGeomExact = (-4*beta + Lam*Pi*(-2 + Lam*(5 + 2*rho)))/(2*Pi*(Lam^3*Pi*(2 + rho)^2 - beta*(2 + Lam*(3 + 2*rho)))*Sigma)
+PASS: Exact geometry compressibility formula matches the closed form.
+
+==============================================================================
+2) Baseline no-go: P_vac V + sigma A alone
+==============================================================================
+Hbar(beta->0) = 
+MatrixForm[{{8*Pi*(2 + Lam + Lam*rho), 4*Pi*(2 + rho)}, {4*Pi*(2 + rho), 0}}]
+
+det Hbar(beta->0) = -16*Pi^2*(2 + rho)^2
+PASS: Baseline P_vac V + sigma A geometry Hessian is non-passive / incomplete.
+
+==============================================================================
+3) Minimal curvature completion and positivity thresholds
+==============================================================================
+Hbar = 
+MatrixForm[{{(2*beta)/Lam + 8*Pi*(2 + Lam + Lam*rho), (-2*beta)/Lam^2 + 4*Pi*(2 + rho)}, {(-2*beta)/Lam^2 + 4*Pi*(2 + rho), (2*beta)/Lam^3}}]
+
+det Hbar = (16*Pi*(2*beta + 3*beta*Lam - 4*Lam^3*Pi + 2*beta*Lam*rho - 4*Lam^3*Pi*rho - Lam^3*Pi*rho^2))/Lam^3
+
+betaStab  = (Lam^3*Pi*(2 + rho)^2)/(2 + Lam*(3 + 2*rho))
+betaDelta = (Lam*Pi*(-2 + Lam*(5 + 2*rho)))/4
+PASS: Exact determinant formula verified.
+
+==============================================================================
+4) EM-branch worked example
+==============================================================================
+x01    = 2.4048255576957727686216318793264546431242448744030541130613`40.
+lamEM  = 1.8474865771201280510433744839423359328346518255562865225964`40.
+rho    = 1/10
+beta   = 12
+
+betaStab(lamEM,rho)  = 11.0420171279767040812782221095668582296868838697928396551216`30.
+betaDelta(lamEM,rho) = 11.0377512995058568785259740252946644482073208982664271078894`30.
+
+sigmaStar = 0.207614329183548885404032508984223700118618761503853649117`38.149376382662915
+deltaMatched = 0.3892857142857142857142857142857142857142857142857142857142`37.85142012368221
+target       = 0.3892857142857142857142857142857142857142857142857142857144`40.
+residual     = 0``38.25807792040053
+
+ghat = {3.`50., 0.541275921776279069788505193310942032322216431247716077666`40.}
+eigenvalues = {0.1066421106060453666428129461665073098219280442765518087383`38.12134734160716, 24.4204443746412621920373727684403337225957795276437327766765`38.12134734160716}
+eigenvectors = {{-0.1676695043645746649730008030149482439546040994879132112654`38.12134734160716, 0.9858432620382095391202495781290871089746347795463380558859`38.12134734160716}, {0.9858432620382095391202495781290871089746347795463380558859`38.12134734160716, 0.1676695043645746649730008030149482439546040994879132112654`38.12134734160716}}
+mode contributions = {0.0087830980010024472525101569043649648810408569803525174863`36.28121768008498, 0.3805026162847118384617755573813493208332448573053617682269`37.644112114251826}
+fractions = {0.02256208660807968101562242140570816666689394453668536602`36.25389034444535, 0.9774379133919203189843775785942918333331060554633146339799`37.24656110894301}
+dominant one-pole relative error = 0.0225620866080796810156224214057081666668939445366853660229`36.0054046450556
+PASS: EM-branch worked point matches 109/280 exactly and is dominantly one-pole.
+
+==============================================================================
+5) Compact interpretation
+==============================================================================
+Exact reduced-geometry statement:
+  delta K00^(geom) = (grad V)^T H0^{-1} (grad V) / V0^2
+with H0 the (a,L) geometry Hessian.
+
+Baseline P_vac V + sigma A fails; the minimal curvature term kappa_b a^2/L repairs the Hessian.
+At the EM-aspect-ratio worked point, the dominant geometry eigenmode carries 97.74379133919203189843775785942918333344`20.% of the static monopole response.
+So the earlier single global monopole auxiliary is a controlled reduction of the full 2DOF geometry sector.
+"*)

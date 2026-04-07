@@ -371,3 +371,52 @@ If[failCount == 0,
   Print["\nALL CHECKS PASSED."],
   Print["\nSOME CHECKS FAILED. Inspect the residuals above."]
 ];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN tensor-wake channel decomposition ---
+
+=== TARGET / solved added 2PN cross block from the ADM lift ===
+
+=== VECTOR WAKE / universal sigma = 1/2 leg-dressing fixes q1 and q2 exactly ===
+PASS: sigma*C_parallel reproduces q1 = -7/4
+PASS: sigma*C_L reproduces q2 = -1/4
+
+=== TENSOR WAKE / minimal projector-channel basis ===
+PASS: Use the confirmed quartic tensor coefficient gauge {3/2, 1/4, 1, 3/4, 9/4}
+PASS: kTT = 3/2
+PASS: kS = 1/4
+PASS: kM = 1
+PASS: kTL = 3/4
+PASS: kLL = 9/4
+PASS: Quartic tensor channels reconstruct the full quartic residual exactly
+PASS: The chosen tensor projector basis has rank 5 on the quartic residual channel space
+PASS: Scalar-sector response matrix determinant is positive
+PASS: Scalar-sector response matrix has positive trace
+
+=== QUADRATIC G^2/r^2 / local-potential decomposition ===
+PASS: Solve quadratic local-potential basis
+PASS: tau_parallel = 15/14
+PASS: beta_T = 11/8
+PASS: beta_L = 13/4
+PASS: Quadratic local-potential channels reconstruct the G^2/r^2 velocity block exactly
+
+=== FULL CONSTRUCTIVE CROSS MODULE / exact reconstruction ===
+PASS: The full constructive 2PN cross module matches the solved ADM-lift cross block exactly
+
+=== LOCAL-POTENTIAL EXTENSION / first 3-body predictions for pair AB ===
+PASS: 3-body coefficient on pair AB: vAB/(rAB rAC) = -15/4
+PASS: 3-body coefficient on pair AB: vAB/(rAB rBC) = -15/4
+PASS: 3-body coefficient on pair AB: vB^2/(rAB rAC) = 11/8
+PASS: 3-body coefficient on pair AB: vBn^2/(rAB rAC) = 15/8
+PASS: 3-body coefficient on pair AB: vA^2/(rAB rBC) = 11/8
+PASS: 3-body coefficient on pair AB: vAn^2/(rAB rBC) = 15/8
+
+=== SUMMARY ===
+Key exported symbol: TensorWake2PNChannelResults
+Passes: 24
+Fails : 0
+
+ALL CHECKS PASSED.
+"*)

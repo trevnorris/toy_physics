@@ -2226,19 +2226,21 @@ compact executable \(\TwoPN\) harness, and the symbolic \(\TwoPN\) derivation le
     with an overall all-pass summary.
     \\[4pt]
 
-    \nolinkurl{4d_2pn_full_notes.md}
+    \nolinkurl{4d_2pn_full_verification_harness.wl}\\
+    \nolinkurl{wl_notes.txt}\\
+    \nolinkurl{4d_2pn_*_prelim.wl}
     &
-    Symbolic \(\TwoPN\) derivation ledger for the exact comparable-mass \(\ADM\) lift
-    and for the appendix-side constructive throat-response program.
-    Records the perturbative Legendre identity used for the lift, the compact residual
-    basis, the unique solved coefficients \(q_i\), \(t_i\), \(s_1\), the zero-residual
-    full \(\ADM\) match, and the exact zero-frequency throat-module reconstruction.
+    Manifest-driven \(\TwoPN\) symbolic derivation suite for the exact comparable-mass
+    \(\ADM\) lift and for the appendix-side constructive throat-response program.
+    Executes the focused ledger scripts that record the perturbative Legendre identity
+    used for the lift, the compact residual basis, the unique solved coefficients
+    \(q_i\), \(t_i\), \(s_1\), the zero-residual full \(\ADM\) match, and the exact
+    zero-frequency throat-module reconstruction.
     &
-    Reports an exact generic-frame \(\ADM\) match for the assembled conservative
-    \(\TwoPN\) block and records that the final low-frequency throat module has a
-    symbolic residual that vanishes identically against the solved added cross target.
-    This layer is presently a symbolic derivation ledger rather than a single released
-    PASS/FAIL WL harness.
+    Current suite run passes every manifest entry with no detected FAIL lines.
+    This layer complements the compact master harness: each derivation script remains
+    individually readable, while the suite runner executes the full symbolic ledger in
+    a reproducible order.
     \\
     \bottomrule
   \end{tabularx}
@@ -2250,9 +2252,9 @@ not allowed to retune.
 The compact \(\TwoPN\) harness checks the one-body, self, static, and test-mass parts of
 the proof in explicit executable form.
 The comparable-mass \(\ADM\) lift and the appendix-side throat-response modules are then
-made reproducible by writing their residual basis and solved coefficient set explicitly,
-so that the final match can be checked coefficient by coefficient rather than trusted as
-an opaque notebook output.
+made reproducible by a manifest-driven suite whose component scripts expose their residual
+bases and solved coefficient sets explicitly, so that the final match can be checked
+coefficient by coefficient rather than trusted as an opaque notebook output.
 
 \subsection{What is actually being checked}
 \label{sec:verification-checked}
@@ -2401,9 +2403,21 @@ and terminates with an explicit all-pass summary.
 In other words, every executable check currently bundled with the \(\TwoPN\) project
 snapshot closes cleanly.
 
-The symbolic derivation ledger does not report a single aggregate pass count, because it is
-organized as an exact coefficient solve rather than as a compact transcripted harness.
-Its reproducibility metadata is instead the sequence of exact outputs written in the notes:
+For the manifest-driven symbolic \(\TwoPN\) suite, the current run reports
+\begin{equation}
+\texttt{Files passed: 22},
+\qquad
+\texttt{Files failed: 0},
+\qquad
+\texttt{Detected FAIL lines: 0},
+\label{eq:verification-2pn-suite-counts}
+\end{equation}
+while preserving the exact coefficient-level outputs of the individual derivation
+scripts.
+
+The symbolic derivation suite is still organized as an exact coefficient solve rather than
+as a single monolithic transcript.
+Its reproducibility metadata is the sequence of exact outputs written in the ledger scripts:
 the unique comparable-mass coefficients \((q_i,t_i,s_1)\), the full assembled
 \(L_{2,\mathrm{full}}\), the exact generic-frame conservative \(\ADM\) equality
 \begin{equation}
@@ -2431,8 +2445,8 @@ paper.
 It covers the frozen \(\OnePN\) regressions, the Bernoulli continuation, the self/static
 seed, the isotropic one-body target, and the finite-size gate.
 The exact comparable-mass \(\ADM\) lift and the appendix-side throat-response packaging
-are presently documented as symbolic ledgers rather than as one public all-in-one WL
-script.
+are executed as a manifest-driven suite of focused symbolic ledger scripts rather than
+folded into the compact referee harness itself.
 This is a statement about how the archive is currently organized, not about any missing
 analytic step in the paper itself.
 
@@ -2477,9 +2491,10 @@ content.
 
 For readability, the main text reports only the archive structure, the all-pass summaries,
 and the zero-residual assembly statements.
-A longer PASS/FAIL transcript or a future consolidated \(\TwoPN\) WL harness can be added
-later as a repository note or supplementary appendix, but the present paper already
-contains enough metadata for a referee to audit the derivation sector by sector.
+The compact master harness is now supplemented by a manifest-driven full-suite runner;
+a future single-file transcript could still be added later as a repository note or
+supplementary appendix, but the present paper already contains enough metadata for a
+referee to audit the derivation sector by sector.
 
 \paragraph{Bottom line.}
 The purpose of the verification archive is not to ask the reader to trust a computation
@@ -2702,6 +2717,19 @@ to a genuine conservative \(\TwoPN\) proof.
 important scope condition that the derivation is complete within the stated closure
 hierarchy rather than as an assumption-free theorem of the fully solved parent \(4\)D
 dynamics.}
+
+\section*{Acknowledgments}
+This work was carried out by an independent researcher.
+Generative-AI tools were used during the development of the manuscript to help
+translate conceptual ideas into mathematical form, assist with symbolic
+manipulations, prototype and revise companion Mathematica and SymPy
+verification scripts, and improve the exposition.
+The conceptual direction, hypotheses, and overall structure of the work were
+directed by the author.
+The resulting arguments and calculations were checked for internal consistency
+using the accompanying symbolic scripts, but the work should be regarded as
+exploratory and would benefit from review by subject-matter experts.
+Any errors, omissions, or misunderstandings remain the author's.
 
 % ============================================================
 \appendix

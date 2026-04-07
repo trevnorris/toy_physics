@@ -277,3 +277,44 @@ info["Therefore the solved added conservative 2PN cross block already has a mini
 Print["\n--- FINAL COUNTS ---"];
 Print["Passes: ", passCount];
 Print["Fails:  ", failCount];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN P0/P2 mouth-port operator rebuild ---
+
+=== MASTER / component kinematics and solved targets ===
+
+=== 1PN / frozen wake as a body-local dipole kernel ===
+PASS: The frozen 1PN wake is exactly a body-local dipole kernel
+
+=== 2PN / universal leg dressing plus quartic residual ===
+INFO: QuarticResidual is the genuinely new quartic tensor sector once the universal 1PN leg dressing is removed.
+
+=== 2PN / exact P0 plus full P2 mouth-port factorization ===
+PASS: The new quartic residual is exactly the positive overlap of P0 plus the full real P2 multiplet
+
+=== DIAGONALIZATION / old scalar TL sector becomes P0 and P20 ===
+PASS: The TL scalar kernel diagonalizes to diag(5/4, 1/4) in the {P0,P20} basis
+
+=== 2PN / scalar-potential dressing excites only P0 and P20 ===
+PASS: The quadratic G^2/r^2 velocity block equals an isotropic dipole term plus scalar P0/P20 driving
+PASS: The normalized scalar-potential block is exact in the P0/P20 port basis
+
+=== STATIC / cross term is a pure monopole-potential overlap ===
+PASS: The static cross term is exactly +(5/4) U_A U_B in the overall cross normalization
+
+=== ASSEMBLY / full added 2PN cross block in dipole plus P0/P2 language ===
+PASS: The full added 2PN cross block matches exactly in dipole plus P0/P2 mouth-port language
+
+=== SUMMARY ===
+INFO: The frozen 1PN wake is a body-local dipole kernel with transverse m=±1 and longitudinal m=0 pieces.
+INFO: After removing the universal leg dressing, the genuinely new quartic 2PN tensor sector is exactly a positive overlap of one P0 scalar port plus the full real P2 multiplet {m=0,±1,±2}.
+INFO: The old TL scalar kernel diagonalizes exactly to diag(5/4,1/4) in the {P0,P20} basis.
+INFO: The scalar-potential dressing excites only the scalar ports P0 and P20, while the static cross term is +(5/4) U_A U_B.
+INFO: Therefore the solved added conservative 2PN cross block already has a minimal constructive mouth-port interpretation: carried-forward dipole wake plus a new P0⊕P2 response layer.
+
+--- FINAL COUNTS ---
+Passes: 7
+Fails:  0
+"*)

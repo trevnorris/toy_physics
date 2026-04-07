@@ -302,3 +302,53 @@ If[failCount == 0,
   Print["\nALL CHECKS PASSED."],
   Print["\nSOME CHECKS FAILED. Inspect the residuals above."]
 ];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN mouth-operator / DtN reduction prototype ---
+
+=== General one-body denominator conditions ===
+PASS: For D = 1 + d1 u + d2 u^2, the 1PN self coefficient is -(d1+1)/2
+PASS: For D = 1 + d1 u + d2 u^2, the 2PN U^2 v^2 coefficient is (d1^2 + d1 - d2)/2
+PASS: Keeping the frozen 1PN self coefficient +3/2 requires d1 = -4
+PASS: With d1 = -4, matching the isotropic U^2 v^2 coefficient 2 requires d2 = 8
+
+=== Generic low-frequency DtN invariants ===
+PASS: Normalized DtN geometry invariant has linear coefficient w1 - 2 z1
+PASS: Normalized DtN sound-speed invariant has linear coefficient w1 - 3 z1
+
+=== Exact cylinder / Neumann-bottom branch ===
+PASS: Cylinder DtN invariant G recovers the normalized length L/L0 exactly
+PASS: Cylinder DtN invariant Cs recovers the normalized sound speed factor exactly
+
+=== Rebuild the known breathing slope from the 1DOF throat closure ===
+PASS: The 1DOF throat closure still reproduces the known breathing slope A1 = -57/64
+PASS: The linear geometry coefficient induced by the Bernoulli map is g1 = 57/64
+
+=== Minimal quadratic DtN-invariant response closure ===
+PASS: Any linear DtN geometry correction alpha (G-1) would shift the frozen 1PN slot by alpha g1
+PASS: Preserving the frozen 1PN slot therefore forces alpha = 0
+PASS: With alpha = 0, the 2PN quadratic coefficient is beta g1^2
+PASS: Using the fixed throat slope gives mu = 32768/3249
+PASS: With mu = 8/g1^2, only the linear geometry slope g1 enters the 2PN slot
+INFO: The quadratic DtN-invariant closure does not depend on the second geometry coefficient g2 until 3PN.
+
+=== Specialize to the current throat closure and close the isotropic target ===
+PASS: Current throat closure gives a(u) = 1 + 57/64 u + 298821/131072 u^2 + ...
+PASS: The DtN-invariant denominator becomes exactly 1 - 4u + 8u^2 through 2PN
+PASS: The DtN-corrected one-body candidate reproduces the exact isotropic target through 2PN
+
+=== Relation to the earlier raw resonance proxy / port-normalization fit ===
+PASS: The raw resonance proxy still starts as 1 - 185/32 u + 324075/65536 u^2
+PASS: The required port factor is exactly 1 + 57/32 u + 875093/65536 u^2
+PASS: Raw resonance proxy times the DtN-invariant port factor reproduces the exact denominator
+INFO: So the earlier fitted port-normalization coefficients factor non-arbitrarily as Pport = G^2 (1 + mu (G-1)^2).
+
+=== Summary ===
+Key exported symbol: MouthDtNResults.
+Passes: 21
+Fails : 0
+
+ALL CHECKS PASSED.
+"*)

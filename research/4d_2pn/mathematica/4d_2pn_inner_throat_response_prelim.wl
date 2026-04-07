@@ -195,3 +195,39 @@ If[failCount == 0,
   Print["\nALL CHECKS PASSED."],
   Print["\nSOME CHECKS FAILED. Inspect the residuals above."]
 ];
+
+(*"
+Output:
+
+--- 4D preliminary 2PN inner-throat response prototype ---
+
+=== Baseline one-body 2PN residual ===
+PASS: Current self+static one-body candidate misses the isotropic target only by +4 U^2 v^2
+
+=== Minimal denominator correction and isotropic solve ===
+PASS: With D = 1 - 4u + chi u^2, the U^2 v^2 coefficient becomes 6 - chi/2
+PASS: Exact isotropic one-body matching fixes chi = 8
+PASS: Substituting chi = 8 reproduces the isotropic one-body target through 2PN
+INFO: The dynamic denominator D(u)=1-4u+8u^2 is the unique minimal one-body fix within this separation of static vs dynamic sectors.
+
+=== Second-order 1DOF throat closure around the operating point ===
+PASS: Second-order closure reproduces the known breathing slope A1 = -57/64
+PASS: Pure internal response factor has the linear coefficient +3/2 in eps = delta rho / rho0
+INFO: RPVeps stores the pure internal response factor after dividing out the baseline density scaling kappa_rho = 1.
+
+=== Compose with exact n=5 Bernoulli density ===
+PASS: Bernoulli-composed throat breathing starts as a(u) = 1 + 57/64 u + ...
+PASS: Bernoulli-composed pure response factor starts as R_PV(u) = 1 - 3/2 u + ...
+
+=== Minimal quadratic geometry dressing ===
+PASS: A quadratic geometry dressing D_eff = (1-4u)(1 + mu deltaa^2) can realize chi = 8
+INFO: mu = DisplayForm[FormBox[FractionBox[32768, 3249], TraditionalForm]] is the required quadratic geometry coefficient in the minimal dressing ansatz.
+INFO: Raw resonance proxy c_s^2/L^2 gives u^2 coefficient DisplayForm[FormBox[FractionBox[324075, 65536], TraditionalForm]], so the sign is right but the magnitude is not yet enough.
+
+=== Summary ===
+Key exported symbol: PrelimResponseResults.
+Passes: 9
+Fails : 0
+
+ALL CHECKS PASSED.
+"*)

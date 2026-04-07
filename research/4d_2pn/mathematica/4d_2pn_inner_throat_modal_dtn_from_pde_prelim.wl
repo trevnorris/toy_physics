@@ -241,3 +241,87 @@ Print["   - one pure-U geometry closure channel."];
 Print["3. The solved 2PN derivation fixes all zero-frequency residues and the scalar source vector, but not the seven pole scales. Those are now clean PDE/DtN observables."];
 
 Print["\nDone."];
+
+(*"
+Output:
+
+--- 2PN inner-throat modal DtN from PDE-side scaffolding preliminary Mathematica script ---
+
+=== PDE unit test / isotropic 4D-ball DtN branch ===
+PASS: 4D-ball monopole DtN series
+PASS: 4D-ball dipole DtN series
+PASS: 4D-ball quadrupole DtN series
+PASS: Laplace limit: Lambda_0(0)=0
+PASS: Laplace limit: Lambda_1(0)=1/a
+PASS: Laplace limit: Lambda_2(0)=2/a
+PASS: 4D-ball dipole admittance series
+PASS: 4D-ball quadrupole admittance series
+4D-ball low-k series:
+  Lambda0[z] = -1/4*z^2/a - z^4/(96*a) - z^6/(1536*a) - z^8/(23040*a)
+  Lambda1[z] = a^(-1) - z^2/(6*a) - z^4/(288*a) - z^6/(8640*a) - (7*z^8)/(1658880*a)
+  Lambda2[z] = 2/a - z^2/(8*a) - z^4/(640*a) - z^6/(30720*a) - (13*z^8)/(17203200*a)
+  Y1Ball[z]  = a + (a*z^2)/6 + (a*z^4)/32
+  Y2Ball[z]  = a/2 + (a*z^2)/32 + (3*a*z^4)/1280
+Implication: isotropic spherical support is a valid PDE unit test, but it cannot furnish finite static monopole stiffness or dipole splitting.
+
+=== DTN completion / minimal axisymmetric one-pole-per-channel model ===
+PASS: Y1p(0)=7/2
+PASS: Y10(0)=4
+PASS: Y0(0)=Y20(0)=Y21(0)=Y22(0)=1
+PASS: YGeom(0)=1
+PASS: Z1p(0)=2/7
+PASS: Z10(0)=1/4
+PASS: Z0(0)=Z20(0)=Z21(0)=Z22(0)=1
+PASS: ZGeom(0)=1
+PASS: Meven[omega] = support PSD block minus one pure-U closure block
+PASS: Static even matrix reproduces the solved 2PN support/closure data
+PASS: Static U-U coefficient is 5/4
+Bare channel DtN kernels:
+  Z1p[omega]   = (2*(1 - omega^2/Omega1p^2))/7
+  Z10[omega]   = (1 - omega^2/Omega10^2)/4
+  Z0[omega]    = 1 - omega^2/Omega0^2
+  Z20[omega]   = 1 - omega^2/Omega20^2
+  Z21[omega]   = 1 - omega^2/Omega21^2
+  Z22[omega]   = 1 - omega^2/Omega22^2
+  ZGeom[omega] = 1 - omega^2/OmegaGeom^2
+Jeff[omega] = {4/(Sqrt[5]*(1 - omega^2/Omega0^2)), 5/(4*(1 - omega^2/Omega20^2)), 0, 0, 0, 0}
+Seff[omega] = (256/(1 - omega^2/Omega0^2) + 125/(1 - omega^2/Omega20^2) + (281*OmegaGeom^2)/(omega^2 - OmegaGeom^2))/80
+
+=== STATIC limit / recover the solved full conservative 2PN cross operator ===
+PASS: Static limit of the dynamic model reproduces the solved full cross operator
+
+=== LOW-FREQUENCY / what 2PN fixed and what remains PDE data ===
+PASS: Seff low-frequency coefficient is fixed channel-by-channel
+Low-frequency admittance series:
+  Y1p[omega]   = 7/2 + (7*omega^2)/(2*Omega1p^2)
+  Y10[omega]   = 4 + (4*omega^2)/Omega10^2
+  Y0[omega]    = 1 + omega^2/Omega0^2
+  Y20[omega]   = 1 + omega^2/Omega20^2
+  Y21[omega]   = 1 + omega^2/Omega21^2
+  Y22[omega]   = 1 + omega^2/Omega22^2
+  YGeom[omega] = 1 + omega^2/OmegaGeom^2
+Low-frequency DtN series:
+  Z1p[omega]   = 2/7 - (2*omega^2)/(7*Omega1p^2)
+  Z10[omega]   = 1/4 - omega^2/(4*Omega10^2)
+  Z0[omega]    = 1 - omega^2/Omega0^2
+  Z20[omega]   = 1 - omega^2/Omega20^2
+  Z21[omega]   = 1 - omega^2/Omega21^2
+  Z22[omega]   = 1 - omega^2/Omega22^2
+  ZGeom[omega] = 1 - omega^2/OmegaGeom^2
+JeffSeries = {4/Sqrt[5] + (4*omega^2)/(Sqrt[5]*Omega0^2), 5/4 + (5*omega^2)/(4*Omega20^2), 0, 0, 0, 0}
+SeffSeries = 5/4 + (16*omega^2)/(5*Omega0^2) + (25*omega^2)/(16*Omega20^2) - (281*omega^2)/(80*OmegaGeom^2)
+Remaining PDE observables: {Omega1p, Omega10, Omega0, Omega20, Omega21, Omega22, OmegaGeom}.
+Optional near-spherical reduction: set Omega20 = Omega21 = Omega22.
+
+=== SUMMARY ===
+1. The isotropic 4D-ball DtN branch is a valid PDE unit test but fails two key checks:
+   - no finite static monopole support, and
+   - no dipole splitting.
+2. The minimal throat completion is therefore axisymmetric and must include:
+   - odd dipole channels {1perp, 10},
+   - even support channels {0, 20, 21, 22},
+   - one pure-U geometry closure channel.
+3. The solved 2PN derivation fixes all zero-frequency residues and the scalar source vector, but not the seven pole scales. Those are now clean PDE/DtN observables.
+
+Done.
+"*)

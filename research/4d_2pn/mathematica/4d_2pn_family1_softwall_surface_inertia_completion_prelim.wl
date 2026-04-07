@@ -312,3 +312,106 @@ Family1SurfaceInertiaResults = <|
 |>;
 
 Print["Key exported symbol: Family1SurfaceInertiaResults."];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Universal Family-1 thin-wall formulas
+==============================================================================
+J2 = 
+TraditionalForm[1/3 + eps*mb0 + 2*eps^2*mb1 + eps^3*mb2]
+
+J4 = 
+TraditionalForm[1/5 + eps*mb0 + 4*eps^2*mb1 + 6*eps^3*mb2]
+
+R_mass = 3 J2 = 
+TraditionalForm[1 + 3*eps*mb0 + 6*eps^2*mb1 + 3*eps^3*mb2]
+
+M_aa = J4/J2 through O(eps^3) = 
+TraditionalForm[3/5 + (6*eps*mb0)/5 - (6*eps^2*(3*mb0^2 - 7*mb1))/5 + (27*eps^3*(2*mb0^3 - 6*mb0*mb1 + 3*mb2))/5]
+
+==============================================================================
+2) Worked geometry point carried forward from the monopole branch
+==============================================================================
+Lam_EM = 1.8474865771201280510433744839396122428696573796896114673325`29.3810835788064
+Sigma*  = 0.20761432918354888540403250898444970518`26.476476754460833
+
+hBar = 
+MatrixForm[{{114.33174685298724550956098370044657032947`29.632621016158737, 19.35786732628000931888935542023829255417`29.51986243386294}, {19.35786732628000931888935542023829255417`29.51986243386294, 3.80598757845104928960045813753644681536`28.903962324086738}}]
+
+gBar = {3.`30., 0.5412759217762790697885051933117400179826769616175860802256`29.3810835788064}
+
+Baseline sharp-wall poles = {5.925562576926863, 237.91117494303325}
+Baseline residues        = {0.0026280028657021397, 0.3866577114200121}
+Baseline Pade pole       = 188.17695898017192
+Baseline max rel. err.   = 0.00007100969970122967
+
+Leading physical pole-shift coefficients c_{-,+} = {-3.408286213590945, -4.5917137855849415}
+
+==============================================================================
+3) Representative steep-wall cases
+==============================================================================
+
+Case p=2., alpha0=10., epsR=0.05
+  threshold 2^p = 4.
+  xi*(0)        = -0.3855810692154256
+  mbar0         = -0.65088873122065008379221256309790053717`19.9996325479206
+  mbar1         = 0.25050113075080546135567455398106278544`19.999473638705286
+  mbar2         = -0.15564575968474289279578537218256416667`19.999327217351524
+  RMass         = 0.9060658401182828
+  Maa           = 0.5623671912556893
+  poles         = {6.002317874599835, 250.58594815325637}
+  residues      = {0.0028985744267034873, 0.3863871398590109}
+  Omega^2 ratios= {1.117968701458279, 1.1624709663217863}
+  Pade pole     = 192.25469161621535
+  max rel. err. = 0.00007841090874976033
+
+Case p=4., alpha0=10., epsR=0.05
+  threshold 2^p = 16.
+  xi*(0)        = 0.12533484020558097
+  mbar0         = -0.06871900887756139638433062476173914115`19.8715058298112
+  mbar1         = 0.02098204877157089886189677040803353417`19.999203774519213
+  mbar2         = -0.00650709388379880272996267095677777998`19.999099784835735
+  RMass         = 0.9900044392397329
+  Maa           = 0.5962672063713681
+  poles         = {5.933096894056334, 239.0965532765938}
+  residues      = {0.002653972006883264, 0.386631742278831}
+  Omega^2 ratios= {1.0113808123389363, 1.0151292266168788}
+  Pade pole     = 188.57368458791117
+  max rel. err. = 0.00007171939497249488
+
+==============================================================================
+4) Summary
+==============================================================================
+1) The Family-1 radial soft wall gives a derived boundary-layer correction to the
+   monopole inertia metric, not a new phenomenological completion term.
+
+2) At O(epsR), the same averaged wall moment mbar0 controls both
+      RMass = 1 + 3 epsR mbar0 + ...
+   and
+      Maa   = 3/5 + (6/5) epsR mbar0 + ...
+
+3) On the representative steep-wall branch (p=2, alpha0=10, epsR=0.05), the
+   physical monopole poles move upward while the static 109/280 closure remains
+   unchanged, and the one-pole Pade reduction stays at ~10^-4 relative error.
+
+4) The next natural tightening is to add the endcap soft-wall layer, or tie the
+   same wall profile directly to the earlier tangential traction/support law.
+
+==============================================================================
+5) Verification
+==============================================================================
+PASS: Sharp-wall baseline residues sum to 109/280
+PASS: Sharp-wall baseline one-pole Pade error stays below 1e-3
+PASS: Surface-inertia case p=2. keeps positive residues
+PASS: Surface-inertia case p=2. preserves the static 109/280 closure
+PASS: Surface-inertia case p=2. keeps one-pole Pade error below 1e-3
+PASS: Surface-inertia case p=2. shifts both physical poles upward
+PASS: Surface-inertia case p=4. keeps positive residues
+PASS: Surface-inertia case p=4. preserves the static 109/280 closure
+PASS: Surface-inertia case p=4. keeps one-pole Pade error below 1e-3
+PASS: Surface-inertia case p=4. shifts both physical poles upward
+Key exported symbol: Family1SurfaceInertiaResults.
+"*)

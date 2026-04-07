@@ -201,3 +201,108 @@ Print["       deltaK00 = ", deltaK00];
 Print[""];
 Print["So the entire static even wall sector is:"];
 Print["  [local Family-1 support/source constitutive law] + [one monopole auxiliary channel]"];
+
+(*"
+Output:
+
+
+==============================================================================
+1) Carried-forward local Family-1 support/source data
+==============================================================================
+chi(mu)       = 1 - (1176*mu^2)/1553 + (691488*mu^4)/2411809
+Delta chi(mu) = -2352/1553 + (19255824*mu^2)/2411809 - (13829760*mu^4)/2411809
+
+zBase(mu)     = 17/56 - (5*mu^2)/56
+t(mu)         = 593/672 - (1553*mu^2)/672 + (7*mu^4)/8
+
+z residual    = 0
+t residual    = 0
+PASS: Carried-forward Family-1 support profiles reproduced exactly.
+
+==============================================================================
+2) Exact source-from-support closure
+==============================================================================
+S_target(mu)  = 7/16 + (45*mu^2)/16
+S_from_z(mu)  = 7/16 + (45*mu^2)/16
+
+source residual = 0
+
+Exact flare-basis coefficient relation:
+  s0 - [10 - 63 pi0/2] = 0
+  s1 + 63 pi1/2        = 0
+  s2 + 63 pi2/2        = 0
+PASS: Source sector is fixed exactly by the base support profile.
+
+==============================================================================
+3) Dipole support residues determine the scalar source sector
+==============================================================================
+zBase(mu) reconstructed from dipole support residues:
+  a0 = (K10sym + 2*K1perp)/3
+  a2 = (5*(K10sym - K1perp))/3
+  zFromDipole(mu) = -1/2*K10sym + (3*K1perp)/2 + (5*K10sym*mu^2)/2 - (5*K1perp*mu^2)/2
+
+Wall/source coefficients determined by dipole support:
+  pIso = 10 - (21*(K10sym + 2*K1perp))/2
+  qAx  = (-105*(K10sym - K1perp))/2
+
+At the passed dipole support values K1perp=2/7, K10=1/4:
+  z residual = 0
+  pIso residual = 0
+  qAx residual  = 0
+PASS: Dipole support residues reconstruct the exact base and source profiles.
+
+==============================================================================
+4) Canonical scalar source vector from the dipole support data
+==============================================================================
+Canonical mapping:
+  J0  = (2/Sqrt[5]) (pIso + qAx/3)
+  J20 = (2/3) qAx
+
+J0(K1perp,K10)  = (20 - 56*K10sym - 7*K1perp)/Sqrt[5]
+J20(K1perp,K10) = 35*(-K10sym + K1perp)
+
+At the passed dipole support values:
+  J0 residual  = 0
+  J20 residual = 0
+PASS: Canonical scalar source vector is fixed by the dipole support residues.
+
+==============================================================================
+5) Full static local wall operator + monopole auxiliary completion
+==============================================================================
+Local Family-1 wall operator:
+  O_loc = zBase(mu) + 1/2 { -Delta_S - 2, t(mu) }
+
+Channel values from O_loc:
+  K00 raw = -757/2520
+  K11     = 2/7
+  K10     = 1/4
+  K20     = 4/9
+  K21     = 2/3
+  K22     = 8/3
+
+Monopole add-on needed to reach the carried-forward target 4/45:
+  deltaK00 = 109/280
+
+Minimal full static even-wall completion:
+  O_full = O_loc + deltaK00 * P_00
+with P_00 the monopole projector.
+
+Equivalent auxiliary breathing-channel realizations:
+  residue-normalized pole:   Y_mono(omega) = 109/280/(1 - omega^2/Omega_mono^2)
+  stiffness-normalized aux:  E[b,Psi00] = 1/2 b^2 - Sqrt[109/280] b Psi00
+PASS: Local wall operator and monopole auxiliary completion are exact.
+
+==============================================================================
+6) Compact closure statement
+==============================================================================
+Exact static Family-1 even-sector closure:
+  1) local support operator
+       O_loc = zBase + 1/2{ -Delta_S - 2, t }
+  2) source fixed by the base support profile
+       S = 10 - (63/2) zBase
+  3) one global monopole breathing add-on
+       deltaK00 = 109/280
+
+So the entire static even wall sector is:
+  [local Family-1 support/source constitutive law] + [one monopole auxiliary channel]
+"*)

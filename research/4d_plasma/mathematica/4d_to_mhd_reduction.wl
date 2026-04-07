@@ -1,6 +1,6 @@
 
 (* 4D -> 3+1 Maxwell -> two-fluid -> MHD reduction (symbolic)
-   Referee-proof Wolfram Language script: v10
+   Referee-proof Wolfram Language script: v11
    - avoids protected symbols
    - avoids Solve pitfalls (uses manual + LinearSolve cross-checks)
    - uses explicit div/curl operators to prevent CAS false negatives
@@ -8,6 +8,8 @@
    - treats species charges as fixed plasma inputs; no circulation-based charge law is used
    - records the equivalent reduced source-charge packaging qEff = qStar/Sqrt[Zint]
    - treats suppression of (Aw, Jw, F_{mu w}) as a controlled far-field brane reduction
+   - now also checks Gaussian mode-tower identities, projected topology-EMF bookkeeping,
+     open-system leakage bookkeeping, and geometry-force formulas used in the paper
 *)
 
 Print["--- 4D -> 3+1 Maxwell -> two-fluid -> MHD reduction (symbolic) ---"];
@@ -21,7 +23,7 @@ ClearAll[
   eC, eEff, qIon, qElectron, qStar, qEff, etaQ, eStar,
   nDen, mi, me,
   cross3, dot3, outer3, grad3, div3, curl3, divTensor3,
-  checkScalar, checkVector, checkEqScalar, checkEqVector,
+  checkScalar, checkVector, checkListZero, checkTrue, checkEqScalar, checkEqVector,
   vVec, JVec, viVec, veVec, BVec, gpEVec, EVec,
   x, y, z, t
 ];
@@ -89,6 +91,22 @@ checkVector[name_String, expr_List, assum_: True] := Module[{res},
   If[res === {0, 0, 0},
     Print["PASS: ", name],
     Print["FAIL: ", name, "\n  residual -> ", res]
+  ];
+];
+
+checkListZero[name_String, exprs_List, assum_: True] := Module[{res},
+  res = FullSimplify[exprs, assum];
+  If[VectorQ[res, (# === 0) &],
+    Print["PASS: ", name],
+    Print["FAIL: ", name, "\n  residual -> ", res]
+  ];
+];
+
+checkTrue[name_String, cond_, assum_: True] := Module[{res},
+  res = FullSimplify[cond, assum];
+  If[TrueQ[res],
+    Print["PASS: ", name],
+    Print["FAIL: ", name, "\n  condition -> ", res]
   ];
 ];
 
@@ -594,6 +612,181 @@ Module[{coords, Avec, phi, Bvec, Evec, helicityRes, vvec},
 ];
 
 (* =========
+   11.7) Exact checks: localized Maxwell reduction + Gaussian mode tower
+   ========= *)
+
+Print["--- Exact checks: localized Maxwell reduction + Gaussian mode tower ---"];
+
+Module[{wLoc, lamLoc, zGauss, zIntGauss, modeResiduals, normResiduals, evenCouplingResiduals},
+  zGauss[ww_] := Exp[-ww^2/lamLoc^2];
+  zIntGauss = Assuming[lamLoc > 0, FullSimplify[Integrate[zGauss[wLoc], {wLoc, -Infinity, Infinity}]]];
+
+  checkEqScalar["Gaussian localization integral: Zint = λ Sqrt[π]", zIntGauss, lamLoc Sqrt[Pi], lamLoc > 0];
+  checkEqScalar["Effective Maxwell coupling under Gaussian localization: μ0eff = μ0/(λ Sqrt[π])", mu0/zIntGauss, mu0/(lamLoc Sqrt[Pi]), lamLoc > 0];
+  checkEqScalar["Canonical charge packaging under Gaussian localization: qEff = qStar/Sqrt[λ Sqrt[π]]", qStar/Sqrt[zIntGauss], qStar/Sqrt[lamLoc Sqrt[Pi]], lamLoc > 0];
+
+  modeResiduals = Table[
+    FullSimplify[
+      -D[zGauss[wLoc] D[HermiteH[nMode, wLoc/lamLoc], wLoc], wLoc] -
+      ((2 nMode)/(lamLoc^2)) zGauss[wLoc] HermiteH[nMode, wLoc/lamLoc],
+      lamLoc > 0
+    ],
+    {nMode, 0, 6}
+  ];
+  checkListZero["Gaussian soft-wall Sturm-Liouville modes: Hermite profiles satisfy the weighted eigenproblem for n=0..6", modeResiduals, lamLoc > 0];
+
+  normResiduals = Table[
+    FullSimplify[
+      Integrate[
+        zGauss[wLoc] HermiteH[nMode, wLoc/lamLoc]^2,
+        {wLoc, -Infinity, Infinity},
+        Assumptions -> lamLoc > 0
+      ] - lamLoc Sqrt[Pi] 2^nMode nMode!,
+      lamLoc > 0
+    ],
+    {nMode, 0, 6}
+  ];
+  checkListZero["Gaussian mode norms: ||H_n(w/λ)||_Z^2 = λ Sqrt[π] 2^n n! for n=0..6", normResiduals, lamLoc > 0];
+
+  checkListZero["Odd-mode brane coupling selection rule: H_{2m+1}(0)=0 for m=0..4", Table[HermiteH[2 m + 1, 0], {m, 0, 4}]];
+
+  evenCouplingResiduals = Table[
+    FullSimplify[
+      (HermiteH[2 m, 0]^2)/(lamLoc Sqrt[Pi] 2^(2 m) (2 m)!) -
+      (1/(lamLoc Sqrt[Pi])) Binomial[2 m, m]/4^m,
+      lamLoc > 0
+    ],
+    {m, 0, 4}
+  ];
+  checkListZero["Even-mode brane couplings: c_{2m} = (1/(λ Sqrt[π])) Binomial[2m,m]/4^m for m=0..4", evenCouplingResiduals, lamLoc > 0];
+  checkEqScalar["Zero-mode coupling matches controlled reduction: c0 = 1/Zint", 1/(lamLoc Sqrt[Pi]), 1/zIntGauss, lamLoc > 0];
+];
+
+(* =========
+   11.8) Exact checks: projected generalized Ohm bookkeeping
+   ========= *)
+
+Print["--- Exact checks: projected generalized Ohm bookkeeping ---"];
+
+Module[
+  {
+    barE, barv, barB, barVe, barJ, barGradPe, barExtra, overVcrossB,
+    pressureProj, resistProj, inertiaProj, ewTopo, ecov, ep, er, ei, etopo,
+    hallExact, hallClosure, etaProj, iBar, exactProjected, splitClosed, splitResidual, finalResidual
+  },
+  barE = {Eb1, Eb2, Eb3};
+  barv = {vb1, vb2, vb3};
+  barB = {Bb1, Bb2, Bb3};
+  barVe = {veb1, veb2, veb3};
+  barJ = {Jb1, Jb2, Jb3};
+  barGradPe = {gpb1, gpb2, gpb3};
+  barExtra = {xpb1, xpb2, xpb3};
+  overVcrossB = {ovcb1, ovcb2, ovcb3};
+  pressureProj = {praw1, praw2, praw3};
+  resistProj = {rraw1, rraw2, rraw3};
+  inertiaProj = {iraw1, iraw2, iraw3};
+  ewTopo = {ew1, ew2, ew3};
+  etaProj = etaOhm;
+  iBar = {ibar1, ibar2, ibar3};
+
+  exactProjected = -overVcrossB + ewTopo + pressureProj + resistProj + inertiaProj + barExtra;
+  hallExact = cross3[barv - barVe, barB];
+
+  splitResidual = FullSimplify[
+    (exactProjected + cross3[barv, barB]) -
+    (hallExact + (cross3[barVe, barB] - overVcrossB) + ewTopo + pressureProj + resistProj + inertiaProj + barExtra)
+  ];
+  checkVector["Projected exact Ohm split: add-subtract vbar×Bbar exposes Hall + covariance + projected remainder", splitResidual];
+
+  ecov = cross3[barVe, barB] - overVcrossB;
+  ep = pressureProj + barGradPe/(eC nDen);
+  er = resistProj - etaProj barJ;
+  ei = inertiaProj + (me/eC) iBar;
+  etopo = ecov + ewTopo + ep + er + ei;
+  hallClosure = cross3[barJ, barB]/(eC nDen);
+  splitClosed = hallExact + ecov + ewTopo + pressureProj + resistProj + inertiaProj + barExtra;
+
+  finalResidual = FullSimplify[
+    (splitClosed /. Thread[(barv - barVe) -> barJ/(eC nDen)]) -
+    (hallClosure - barGradPe/(eC nDen) + etaProj barJ - (me/eC) iBar + etopo + barExtra),
+    eC != 0 && nDen != 0
+  ];
+  checkVector["Projected generalized Ohm law closes with E_topo bookkeeping", finalResidual, eC != 0 && nDen != 0];
+
+  checkVector[
+    "Covariance EMF vanishes in the zero-mode reduction: overline(ve×B) = vbar_e×Bbar",
+    FullSimplify[ecov /. Thread[overVcrossB -> cross3[barVe, barB]]]
+  ];
+];
+
+(* =========
+   11.9) Exact checks: open-system leakage + subscale helicity bookkeeping
+   ========= *)
+
+Print["--- Exact checks: open-system leakage + subscale helicity bookkeeping ---"];
+
+Module[{wLoc, wKernel, sW, lhsLeak, rhsLeak, hProj, hRes, fProj, fRes, ebProj, ebRes, hSub, fSub, xLoc},
+  wKernel[ww_] := Exp[-ww^2];
+  sW[ww_] := (1 + ww) Exp[-ww^2/2];
+
+  lhsLeak = FullSimplify[-Integrate[wKernel[wLoc] D[sW[wLoc], wLoc], {wLoc, -Infinity, Infinity}]];
+  rhsLeak = FullSimplify[
+    -(Limit[wKernel[wLoc] sW[wLoc], wLoc -> Infinity] - Limit[wKernel[wLoc] sW[wLoc], wLoc -> -Infinity]) +
+    Integrate[D[wKernel[wLoc], wLoc] sW[wLoc], {wLoc, -Infinity, Infinity}]
+  ];
+  checkEqScalar["Projected leakage identity: -∫W ∂w S = -[WS] + ∫W' S", lhsLeak, rhsLeak];
+
+  hProj = hProjF[xLoc, t];
+  hRes = hResF[xLoc, t];
+  fProj = fProjF[xLoc, t];
+  fRes = fResF[xLoc, t];
+  ebProj = ebProjF[xLoc, t];
+  ebRes = ebResF[xLoc, t];
+  hSub = hProj - hRes;
+  fSub = fProj - fRes;
+
+  checkScalar[
+    "Subscale helicity bookkeeping: subtracting projected and resolved budgets yields the covariance source",
+    FullSimplify[
+      (D[hProj, t] + D[fProj, xLoc] + 2 ebProj) -
+      (D[hRes, t] + D[fRes, xLoc] + 2 ebRes) -
+      (D[hSub, t] + D[fSub, xLoc] + 2 (ebProj - ebRes))
+    ]
+  ];
+];
+
+(* =========
+   11.10) Exact checks: geometry-force ledger formulas
+   ========= *)
+
+Print["--- Exact checks: geometry-force ledger formulas ---"];
+
+Module[{wLoc, lamLoc, zGauss, kappa, alpha, aVar, lVar, pVac, sigmaWall, vTube, aTube, eGeom},
+  zGauss[ww_] := Exp[-ww^2/lamLoc^2];
+
+  checkEqScalar["Gaussian width derivative: ∂λ Z = (2 w^2 / λ^3) Z", D[zGauss[wLoc], lamLoc], (2 wLoc^2/lamLoc^3) zGauss[wLoc], lamLoc > 0];
+  checkTrue["Gaussian-width EM force density is compressive: -(∂λ Z) <= 0 for λ>0", -D[zGauss[wLoc], lamLoc] <= 0, lamLoc > 0 && Element[wLoc, Reals]];
+
+  checkEqScalar["Ratio-penalty force on a: F_a^{ratio} = κ α (L - α a)", -D[(kappa/2) (lVar - alpha aVar)^2, aVar], kappa alpha (lVar - alpha aVar)];
+  checkEqScalar["Ratio-penalty force on L: F_L^{ratio} = -κ (L - α a)", -D[(kappa/2) (lVar - alpha aVar)^2, lVar], -kappa (lVar - alpha aVar)];
+
+  vTube = (4 Pi/3) aVar^3 lVar;
+  aTube = 4 Pi aVar^2 lVar + (8 Pi/3) aVar^3;
+  eGeom = pVac vTube + sigmaWall aTube;
+
+  checkEqScalar[
+    "Tube geometry force on a from E_geom(a,L)",
+    -D[eGeom, aVar],
+    -(4 Pi pVac aVar^2 lVar + sigmaWall (8 Pi aVar lVar + 8 Pi aVar^2))
+  ];
+  checkEqScalar[
+    "Tube geometry force on L from E_geom(a,L)",
+    -D[eGeom, lVar],
+    -((4 Pi/3) pVac aVar^3 + 4 Pi sigmaWall aVar^2)
+  ];
+];
+
+(* =========
    12) Paper-friendly display (no math used for checks)
    ========= *)
 
@@ -607,10 +800,14 @@ Print["Done."];
 Output:
 
 --- 4D -> 3+1 Maxwell -> two-fluid -> MHD reduction (symbolic) ---
-Effective brane coupling:  mu0eff = mu0/Zint = mu0/Zint
+Effective brane coupling:  mu0Eff = mu0/Zint = mu0/Zint
+Equivalent canonical charge packaging:  qEff = qStar/Sqrt[Zint] with qStar = etaQ eStar and eStar > 0.
+Fixed species charge labels:  qIon = +eEff, qElectron = -eEff, with eEff the fixed brane-observed elementary charge magnitude.
+Controlled reduction note: suppressing (Aw, Jw, F_{mu w}) is a far-field brane reduction assumption used to recover standard MHD; it does not deny microscopic mixed-core structure.
+Charge-ontology note: this harness treats species charges as fixed inputs and does not use any circulation-based charge law.
 (Helpers defined: cross3, dot3, outer3, grad3, div3, curl3, divTensor3)
 Mass density rho = (mi+me) nDen = (me + mi)*nDen
-Current definition:  J = eC nDen (vi - ve)
+Current definition:  J = eEff nDen (vi - ve), with eEff carried symbolically as eC below.
 COM definition:      v = (mi vi + me ve)/(mi+me)
 Solved velocities (manual):
   vi = {(JX*me)/(eC*(me + mi)*nDen) + vX, (JY*me)/(eC*(me + mi)*nDen) + vY, (JZ*me)/(eC*(me + mi)*nDen) + vZ}
@@ -668,6 +865,29 @@ PASS: Resistive decomposition: -J·E = -v·(J×B) - eta |J|^2
 --- Very-strong check: magnetic helicity (ideal MHD) ---
 PASS: Helicity density identity: ∂t(A·B)+div(φ B + E×A) = -2 E·B
 PASS: Ideal Ohm implies E·B=0: (-v×B)·B = 0
+--- Exact checks: localized Maxwell reduction + Gaussian mode tower ---
+PASS: Gaussian localization integral: Zint = λ Sqrt[π]
+PASS: Effective Maxwell coupling under Gaussian localization: μ0eff = μ0/(λ Sqrt[π])
+PASS: Canonical charge packaging under Gaussian localization: qEff = qStar/Sqrt[λ Sqrt[π]]
+PASS: Gaussian soft-wall Sturm-Liouville modes: Hermite profiles satisfy the weighted eigenproblem for n=0..6
+PASS: Gaussian mode norms: ||H_n(w/λ)||_Z^2 = λ Sqrt[π] 2^n n! for n=0..6
+PASS: Odd-mode brane coupling selection rule: H_{2m+1}(0)=0 for m=0..4
+PASS: Even-mode brane couplings: c_{2m} = (1/(λ Sqrt[π])) Binomial[2m,m]/4^m for m=0..4
+PASS: Zero-mode coupling matches controlled reduction: c0 = 1/Zint
+--- Exact checks: projected generalized Ohm bookkeeping ---
+PASS: Projected exact Ohm split: add-subtract vbar×Bbar exposes Hall + covariance + projected remainder
+PASS: Projected generalized Ohm law closes with E_topo bookkeeping
+PASS: Covariance EMF vanishes in the zero-mode reduction: overline(ve×B) = vbar_e×Bbar
+--- Exact checks: open-system leakage + subscale helicity bookkeeping ---
+PASS: Projected leakage identity: -∫W ∂w S = -[WS] + ∫W' S
+PASS: Subscale helicity bookkeeping: subtracting projected and resolved budgets yields the covariance source
+--- Exact checks: geometry-force ledger formulas ---
+PASS: Gaussian width derivative: ∂λ Z = (2 w^2 / λ^3) Z
+PASS: Gaussian-width EM force density is compressive: -(∂λ Z) <= 0 for λ>0
+PASS: Ratio-penalty force on a: F_a^{ratio} = κ α (L - α a)
+PASS: Ratio-penalty force on L: F_L^{ratio} = -κ (L - α a)
+PASS: Tube geometry force on a from E_geom(a,L)
+PASS: Tube geometry force on L from E_geom(a,L)
 --- Paper-friendly identities (display only) ---
 Ideal induction equation (display):
 HoldForm[D[BDisplay, t] == curl3[cross3[vDisplay, BDisplay], {x, y, z}]]

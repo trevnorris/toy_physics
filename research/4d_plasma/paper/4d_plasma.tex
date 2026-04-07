@@ -386,7 +386,7 @@ conservative bulk theory.
 Assume each species satisfies a bulk continuity equation
 \begin{equation}
 \partial_t\rho_s + \partial_a j_s^a + \partial_w j_s^w = 0.
-\label{eq:bulk_continuity_species}
+\label{eq:bulk_continuity_species_leakage}
 \end{equation}
 Multiply by \(\W(w)\) and integrate over \(w\). Using integration by parts in the
 \(\partial_w j_s^w\) term yields the exact projected balance law
@@ -648,7 +648,7 @@ the reduction scale. In the full plasma system we \emph{do not} impose \(\J^w=0\
 instead, \(\J^w\) becomes a dynamical diagnostic and a source of beyond-MHD terms.
 
 \subsection{Mode expansion in the extra dimension}
-\label{sec:kk_modes}
+\label{sec:kk_modes_em}
 
 When \(w\)-dependence is retained, the localized Maxwell sector contains a
 normalizable massless mode plus a discrete tower of massive excitations. For
@@ -1610,13 +1610,23 @@ the project sources. The script:
 \item derives the inertialess-electron generalized Ohm law and expresses it in the
 standard form \(\E+\mathbf{v}\times\B=\cdots\);
 \item combines Faraday's law with the ideal Ohm sub-limit to yield
-\(\partial_t\B=\gradthree\times(\mathbf{v}\times\B)\).
+\(\partial_t\B=\gradthree\times(\mathbf{v}\times\B)\);
+\item verifies the Gaussian soft-wall identities used later in the paper:
+\(Z_{\rm int}=\lambda\sqrt{\pi}\), \(m_n^2=2n/\lambda^2\), the weighted Hermite norms,
+and the odd/even brane-coupling selection rules;
+\item verifies the exact bookkeeping behind the projected generalized Ohm law,
+including \(\boldsymbol{\mathcal{E}}_{\rm cov}\), \(\boldsymbol{\mathcal{E}}_w\),
+and the assembled topology EMF \(\boldsymbol{\mathcal{E}}_{\rm topo}\);
+\item checks representative open-system and geometry-ledger identities used in the
+appendices, including the projected \(w\)-leakage integration-by-parts identity and
+the ratio-penalty / tube-geometry force derivatives.
 \end{enumerate}
 We do not include the script source code in this paper; it is intended as a
 machine-checkable supplement to the human-readable derivation above.
 
 \paragraph{Where the suppressed 4D terms re-enter.}
-The script also records, as an explicit reminder, the three primary ways in which the
+The script therefore does more than record reminders: it also machine-checks the
+exact appendix-level identities that expose the three primary ways in which the
 controlled MHD reduction can fail in the parent theory:
 (i) brane leakage in continuity/momentum via \(j^w\) (and thus \(\Sleak\neq 0\)),
 (ii) additional force channels mediated by the \(A_w\) sector and mixed components
@@ -1826,7 +1836,7 @@ expected. When \(\chi_\lambda\gtrsim 1\), higher transverse modes and mixed-sect
 become dynamically relevant and beyond-MHD corrections should be expected.
 
 \subsection{Generalized Ohm's law and the topology EMF}
-\label{sec:generalized_ohm_4d}
+\label{sec:generalized_ohm_preview}
 
 The brane induction equation is always obtained by projecting Faraday's law:
 \begin{equation}
@@ -2842,6 +2852,7 @@ topology channels without requiring an intractable full \(4\)D spatial grid at
 high resolution.
 
 \subsection{Canonical vorticity constraint and the origin of brane non-ideality}
+\label{sec:vorticity_identity}
 A useful structural identity in the bulk is the London-type relation
 \eqref{eq:london_identity_bulk}:
 \begin{equation}
@@ -3027,6 +3038,16 @@ loads on localization/geometry degrees of freedom when those sectors are activat
 promise is that reconnection and other topology-changing plasma processes become diagnosable
 consequences of evolving a larger interaction system, rather than exceptions that require
 phenomenological fixes at the outset.
+
+\paragraph{Acknowledgments.}
+This work was carried out by an independent researcher. Generative-AI tools were used during
+the development of the manuscript to help translate conceptual ideas into mathematical form,
+assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy
+verification scripts, and improve the exposition. The conceptual direction, hypotheses, and
+overall structure of the work were directed by the author. The resulting arguments and
+calculations were checked for internal consistency using the accompanying symbolic scripts, but
+the work should be regarded as exploratory and would benefit from review by subject-matter
+experts. Any errors, omissions, or misunderstandings remain the author's.
 
 % ============================================================
 % Appendices
@@ -3994,7 +4015,7 @@ A_0(r)
 1+\frac12\,e^{-2r/\lambda}
 +\mathcal{O}\!\left(e^{-2\sqrt{2}\,r/\lambda}\right)
 \right].
-\label{eq:leading_yukawa_em}
+\label{eq:leading_yukawa_em_app}
 \end{equation}
 Here \(q_{\rm src}\) is a fixed source label; for an elementary defect branch in the
 canonically normalized brane packaging one may identify

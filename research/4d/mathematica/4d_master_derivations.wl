@@ -935,3 +935,323 @@ Example replacements (optional):
     "rho" -> "\\rho"
   };
 *)
+
+(*
+Output:
+Toggles: $UseGauge=True  |  $PrintAppendix=True  |  $SimplifyMode=Light
+
+==============================================================================
+PAPER FORM: Conventions, coordinates, frozen EOS
+------------------------------------------------------------------------------
+Index + metric conventions
+TraditionalForm[HoldForm[coords4 == {x, y, z, w}]]
+TraditionalForm[HoldForm[coords5 == {t, x, y, z, w}]]
+TraditionalForm[HoldForm[eta == DiagonalMatrix[{-1, 1, 1, 1, 1}]]]
+
+Charge ontology (paper)
+TraditionalForm[HoldForm[qstar == etaQ*eStar]]
+TraditionalForm[HoldForm[etaQ^2 == 1]]
+TraditionalForm[HoldForm[eStar > 0]]
+
+EOS ladder
+TraditionalForm[HoldForm[P[r]] -> K*r^5]
+TraditionalForm[HoldForm[U[r]] -> (K*r^5)/4]
+TraditionalForm[HoldForm[h[r]] -> (5*K*r^4)/4]
+TraditionalForm[HoldForm[cs2[r]] -> 5*K*r^4]
+
+EOS checks
+TraditionalForm[HoldForm[P[r] == K*r^5] -> True]
+TraditionalForm[HoldForm[h[r] == (5*K/4)*r^4] -> True]
+TraditionalForm[HoldForm[cs2[r] == 5*K*r^4] -> True]
+
+
+==============================================================================
+PAPER FORM: Matter field, minimal coupling, currents
+------------------------------------------------------------------------------
+Minimal coupling (paper definitions)
+TraditionalForm[HoldForm[qstar == etaQ*eStar]]
+TraditionalForm[HoldForm[Subscript[D, t][psi] == Subscript[del, t][psi] + (I*qstar/hbar)*Subscript[A, 0]*psi]]
+TraditionalForm[HoldForm[Subscript[D, t][psib] == Subscript[del, t][psib] - (I*qstar/hbar)*Subscript[A, 0]*psib]]
+TraditionalForm[HoldForm[Subscript[D, i][psi] == Subscript[del, i][psi] - (I*qstar/hbar)*Subscript[A, i]*psi]]
+TraditionalForm[HoldForm[Subscript[D, i][psib] == Subscript[del, i][psib] + (I*qstar/hbar)*Subscript[A, i]*psib]]
+TraditionalForm[HoldForm[rho == psib*psi]]
+
+Current + continuity (paper definitions)
+TraditionalForm[HoldForm[Jmass[i] == hbar/m*Im[psib*Subscript[D, i][psi]]]]
+TraditionalForm[HoldForm[Jch[i] == qstar*Jmass[i]]]
+TraditionalForm[HoldForm[Qtot == qstar]]
+TraditionalForm[HoldForm[Subscript[del, t][rho] + Subscript[del, i][rho*v[i]] == 0]]
+
+(Appendix) Explicit density and current components
+TraditionalForm[{HoldForm[rho] -> psi[t, x, y, z, w]*psib[t, x, y, z, w], HoldForm[Jx] -> ((-1/2*I)*hbar*(psib[t, x, y, z, w]*((-I*qstar*Ax[t, x, y, z, w]*psi[t, x, y, z, w])/hbar + Derivative[0, 1, 0, 0, 0][psi][t, x, y, z, w]) - psi[t, x, y, z, w]*((I*qstar*Ax[t, x, y, z, w]*psib[t, x, y, z, w])/hbar + Derivative[0, 1, 0, 0, 0][psib][t, x, y, z, w])))/m, HoldForm[Jy] -> ((-1/2*I)*hbar*(psib[t, x, y, z, w]*((-I*qstar*Ay[t, x, y, z, w]*psi[t, x, y, z, w])/hbar + Derivative[0, 0, 1, 0, 0][psi][t, x, y, z, w]) - psi[t, x, y, z, w]*((I*qstar*Ay[t, x, y, z, w]*psib[t, x, y, z, w])/hbar + Derivative[0, 0, 1, 0, 0][psib][t, x, y, z, w])))/m, HoldForm[Jz] -> ((-1/2*I)*hbar*(psib[t, x, y, z, w]*((-I*qstar*Az[t, x, y, z, w]*psi[t, x, y, z, w])/hbar + Derivative[0, 0, 0, 1, 0][psi][t, x, y, z, w]) - psi[t, x, y, z, w]*((I*qstar*Az[t, x, y, z, w]*psib[t, x, y, z, w])/hbar + Derivative[0, 0, 0, 1, 0][psib][t, x, y, z, w])))/m, HoldForm[Jw] -> ((-1/2*I)*hbar*(psib[t, x, y, z, w]*((-I*qstar*Aw[t, x, y, z, w]*psi[t, x, y, z, w])/hbar + Derivative[0, 0, 0, 0, 1][psi][t, x, y, z, w]) - psi[t, x, y, z, w]*((I*qstar*Aw[t, x, y, z, w]*psib[t, x, y, z, w])/hbar + Derivative[0, 0, 0, 0, 1][psib][t, x, y, z, w])))/m}]
+
+
+==============================================================================
+PAPER FORM: Confinement potential V_conf (Family-1 baseline)
+------------------------------------------------------------------------------
+Family-1 modulated brane trap (with optional wall/cap add-on)
+TraditionalForm[HoldForm[Vconf] -> HoldForm[Vbrane + Vwallcap]]
+TraditionalForm[HoldForm[Vbrane] -> (m*w^2*(OmegaOut^2 - ((-OmegaIn^2 + OmegaOut^2)*(1 + (-1 - Tanh[(-1/2*L + Sqrt[epsW^2 + w^2])/deltaPar])/2))/E^((x^2 + y^2 + z^2)^2/a^4)))/2]
+TraditionalForm[HoldForm[Vwallcap] -> 0]
+
+Required geometry derivatives (symbolic)
+TraditionalForm[HoldForm[dVda] -> (-2*m*(-OmegaIn^2 + OmegaOut^2)*w^2*(x^2 + y^2 + z^2)^2*(1 + (-1 - Tanh[(-1/2*L + Sqrt[epsW^2 + w^2])/deltaPar])/2))/(a^5*E^((x^2 + y^2 + z^2)^2/a^4))]
+TraditionalForm[HoldForm[dVdL] -> -1/8*(m*(-OmegaIn^2 + OmegaOut^2)*w^2*Sech[(-1/2*L + Sqrt[epsW^2 + w^2])/deltaPar]^2)/(deltaPar*E^((x^2 + y^2 + z^2)^2/a^4))]
+
+
+==============================================================================
+PAPER FORM: Matter Lagrangian density and GNLS (stiff EOS)
+------------------------------------------------------------------------------
+Matter Lagrangian density L_psi (paper form)
+TraditionalForm[HoldForm[(L_psi) == (I*hbar/2)*(psib*Subscript[D, t][psi] - psi*Subscript[D, t][psib]) - hbar^2/(2*m)*(Subscript[D, x][psib]*Subscript[D, x][psi] + Subscript[D, y][psib]*Subscript[D, y][psi] + Subscript[D, z][psib]*Subscript[D, z][psi] + Subscript[D, w][psib]*Subscript[D, w][psi]) - Vconf*rho - K/4*rho^5]]
+
+GNLS (paper form)
+TraditionalForm[HoldForm[I*hbar*Subscript[D, t][psi] == (-(hbar^2/(2*m))*(Subscript[D, x][Subscript[D, x][psi]] + Subscript[D, y][Subscript[D, y][psi]] + Subscript[D, z][Subscript[D, z][psi]] + Subscript[D, w][Subscript[D, w][psi]]) + Vconf + (5*K/4)*rho^4)*psi]]
+
+(Appendix) L_psi internal (expanded covariant derivative form)
+TraditionalForm[HoldForm[LpsiInternal] -> I/2*hbar*(psib[t, x, y, z, w]*((I*qstar*A0[t, x, y, z, w]*psi[t, x, y, z, w])/hbar + Derivative[1, 0, 0, 0, 0][psi][t, x, y, z, w]) - psi[t, x, y, z, w]*((-I*qstar*A0[t, x, y, z, w]*psib[t, x, y, z, w])/hbar + Derivative[1, 0, 0, 0, 0][psib][t, x, y, z, w]))]
+
+
+==============================================================================
+PAPER FORM: Continuity identity
+------------------------------------------------------------------------------
+Continuity (paper form)
+TraditionalForm[HoldForm[Subscript[del, t][rho] + Subscript[del, i][rho*v[i]] == 0]]
+
+(Appendix) 4D continuity (explicit components)
+TraditionalForm[HoldForm[D[rhoF, t] + D[Jx, x] + D[Jy, y] + D[Jz, z] + D[Jw, w] == 0]]
+
+
+==============================================================================
+PAPER FORM: Madelung variables, Q, Euler equation, vorticity identity
+------------------------------------------------------------------------------
+Madelung definitions (paper)
+TraditionalForm[HoldForm[psi == Sqrt[rho]*Exp[I*theta]]]
+TraditionalForm[HoldForm[v[i] == hbar/m*(Subscript[del, i][theta] - qstar/hbar*Subscript[A, i])]]
+TraditionalForm[HoldForm[h[rho] == (5*K/4)*rho^4]]
+
+Quantum potential Q (canonical compact form)
+TraditionalForm[HoldForm[Q == -(hbar^2/(2*m))*Laplacian[Sqrt[rho], {x, y, z, w}]/Sqrt[rho]]]
+
+Euler-like equation (compact index form)
+TraditionalForm[HoldForm[m*(Subscript[del, t] + v[j]*Subscript[del, j])[v[i]] == qstar*(E[i] + v[j]*B[i, j]) - Subscript[del, i][Vconf + h[rho] + Q]]]
+
+EM-like fields (paper definitions)
+TraditionalForm[HoldForm[E[i] == -Subscript[del, t][Subscript[A, i]] - Subscript[del, i][Subscript[A, 0]]]]
+TraditionalForm[HoldForm[B[i, j] == Subscript[del, i][Subscript[A, j]] - Subscript[del, j][Subscript[A, i]]]]
+
+Vorticity <-> gauge identity (paper form)
+TraditionalForm[HoldForm[Omega[i, j] == Subscript[del, i][v[j]] - Subscript[del, j][v[i]] == -(qstar/m)*B[i, j]]]
+
+Fluxoid quantization (paper form)
+TraditionalForm[HoldForm[LoopInt[Subscript[del, i][theta] - qstar/hbar*Subscript[A, i], Cloop] == 2*Pi*nWind]]
+TraditionalForm[HoldForm[GammaC == nWind*hPlanck/m - qstar/m*PhiC]]
+TraditionalForm[HoldForm[PhiC == 0 -> GammaC == nWind*hPlanck/m]]
+
+(Appendix) Madelung identity residuals (should be 0)
+TraditionalForm[HoldForm[Jx - rhoMField*vx] -> -1/2*(hbar*Sqrt[rhoM[t, x, y, z, w]]*((I*Derivative[0, 1, 0, 0, 0][psi][t, x, y, z, w])/E^(I*thetaM[t, x, y, z, w]) - I*E^(I*thetaM[t, x, y, z, w])*Derivative[0, 1, 0, 0, 0][psib][t, x, y, z, w] + 2*Sqrt[rhoM[t, x, y, z, w]]*Derivative[0, 1, 0, 0, 0][thetaM][t, x, y, z, w]))/m]
+TraditionalForm[HoldForm[Jy - rhoMField*vy] -> -1/2*(hbar*Sqrt[rhoM[t, x, y, z, w]]*((I*Derivative[0, 0, 1, 0, 0][psi][t, x, y, z, w])/E^(I*thetaM[t, x, y, z, w]) - I*E^(I*thetaM[t, x, y, z, w])*Derivative[0, 0, 1, 0, 0][psib][t, x, y, z, w] + 2*Sqrt[rhoM[t, x, y, z, w]]*Derivative[0, 0, 1, 0, 0][thetaM][t, x, y, z, w]))/m]
+TraditionalForm[HoldForm[Jz - rhoMField*vz] -> -1/2*(hbar*Sqrt[rhoM[t, x, y, z, w]]*((I*Derivative[0, 0, 0, 1, 0][psi][t, x, y, z, w])/E^(I*thetaM[t, x, y, z, w]) - I*E^(I*thetaM[t, x, y, z, w])*Derivative[0, 0, 0, 1, 0][psib][t, x, y, z, w] + 2*Sqrt[rhoM[t, x, y, z, w]]*Derivative[0, 0, 0, 1, 0][thetaM][t, x, y, z, w]))/m]
+TraditionalForm[HoldForm[Jw - rhoMField*vw] -> -1/2*(hbar*Sqrt[rhoM[t, x, y, z, w]]*((I*Derivative[0, 0, 0, 0, 1][psi][t, x, y, z, w])/E^(I*thetaM[t, x, y, z, w]) - I*E^(I*thetaM[t, x, y, z, w])*Derivative[0, 0, 0, 0, 1][psib][t, x, y, z, w] + 2*Sqrt[rhoM[t, x, y, z, w]]*Derivative[0, 0, 0, 0, 1][thetaM][t, x, y, z, w]))/m]
+
+(Appendix) Q expanded in components (rhoM)
+TraditionalForm[HoldForm[Q] -> (hbar^2*(Derivative[0, 0, 0, 0, 1][rhoM][t, x, y, z, w]^2 + Derivative[0, 0, 0, 1, 0][rhoM][t, x, y, z, w]^2 + Derivative[0, 0, 1, 0, 0][rhoM][t, x, y, z, w]^2 + Derivative[0, 1, 0, 0, 0][rhoM][t, x, y, z, w]^2 - 2*rhoM[t, x, y, z, w]*(Derivative[0, 0, 0, 0, 2][rhoM][t, x, y, z, w] + Derivative[0, 0, 0, 2, 0][rhoM][t, x, y, z, w] + Derivative[0, 0, 2, 0, 0][rhoM][t, x, y, z, w] + Derivative[0, 2, 0, 0, 0][rhoM][t, x, y, z, w])))/(8*m*rhoM[t, x, y, z, w]^2)]
+
+
+==============================================================================
+PAPER FORM: EM sector (localized Maxwell + gauge fixing + jellium)
+------------------------------------------------------------------------------
+Charge bookkeeping + jellium (paper)
+TraditionalForm[HoldForm[qstar == etaQ*eStar]]
+TraditionalForm[HoldForm[Superscript[Jpsi, 0] == qstar*rho]]
+TraditionalForm[HoldForm[Superscript[Jext, 0] == -qstar*rhoBg]]
+TraditionalForm[HoldForm[Superscript[Jtot, 0] == qstar*(rho - rhoBg)]]
+TraditionalForm[HoldForm[Z[w] == Exp[-w^2/lambdaConf^2]]]
+TraditionalForm[HoldForm[Subscript[F, MNn] == Subscript[del, M][Subscript[A, Nn]] - Subscript[del, Nn][Subscript[A, M]]]]
+TraditionalForm[HoldForm[divA == Subscript[del, M][Superscript[A, M]]]]
+
+L_EM (paper form; compact invariant expression)
+TraditionalForm[HoldForm[(L_EM) == -(Z[w]/(4*mu0))*(Subscript[F, MNn]*Superscript[F, MNn]) - 1/(2*xi*mu0)*divA^2 - Subscript[A, M]*Superscript[Jext, M]]]
+
+Maxwell EOM (paper form)
+TraditionalForm[HoldForm[Subscript[del, M][Z[w]*Superscript[F, MNn]] + 1/xi*Superscript[del, Nn][divA] == mu0*(Superscript[Jpsi, Nn] + Superscript[Jext, Nn])]]
+
+(Appendix) L_EM internal (expanded)
+TraditionalForm[HoldForm[LemInternal] -> qstar*rhoBg*A0[t, x, y, z, w] - (Derivative[0, 0, 0, 0, 1][Aw][t, x, y, z, w] + Derivative[0, 0, 0, 1, 0][Az][t, x, y, z, w] + Derivative[0, 0, 1, 0, 0][Ay][t, x, y, z, w] + Derivative[0, 1, 0, 0, 0][Ax][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][A0][t, x, y, z, w])^2/(2*mu0*xi) - ((Derivative[0, 0, 0, 0, 1][Az][t, x, y, z, w] - Derivative[0, 0, 0, 1, 0][Aw][t, x, y, z, w])^2 + (-Derivative[0, 0, 0, 0, 1][Az][t, x, y, z, w] + Derivative[0, 0, 0, 1, 0][Aw][t, x, y, z, w])^2 + (Derivative[0, 0, 0, 0, 1][Ay][t, x, y, z, w] - Derivative[0, 0, 1, 0, 0][Aw][t, x, y, z, w])^2 + (-Derivative[0, 0, 0, 0, 1][Ay][t, x, y, z, w] + Derivative[0, 0, 1, 0, 0][Aw][t, x, y, z, w])^2 + (Derivative[0, 0, 0, 1, 0][Ay][t, x, y, z, w] - Derivative[0, 0, 1, 0, 0][Az][t, x, y, z, w])^2 + (-Derivative[0, 0, 0, 1, 0][Ay][t, x, y, z, w] + Derivative[0, 0, 1, 0, 0][Az][t, x, y, z, w])^2 + (Derivative[0, 0, 0, 0, 1][Ax][t, x, y, z, w] - Derivative[0, 1, 0, 0, 0][Aw][t, x, y, z, w])^2 + (-Derivative[0, 0, 0, 0, 1][Ax][t, x, y, z, w] + Derivative[0, 1, 0, 0, 0][Aw][t, x, y, z, w])^2 + (Derivative[0, 0, 1, 0, 0][Ax][t, x, y, z, w] - Derivative[0, 1, 0, 0, 0][Ay][t, x, y, z, w])^2 + (-Derivative[0, 0, 1, 0, 0][Ax][t, x, y, z, w] + Derivative[0, 1, 0, 0, 0][Ay][t, x, y, z, w])^2 + (Derivative[0, 0, 0, 1, 0][Ax][t, x, y, z, w] - Derivative[0, 1, 0, 0, 0][Az][t, x, y, z, w])^2 + (-Derivative[0, 0, 0, 1, 0][Ax][t, x, y, z, w] + Derivative[0, 1, 0, 0, 0][Az][t, x, y, z, w])^2 + 2*(Derivative[0, 0, 0, 0, 1][A0][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][Aw][t, x, y, z, w])*(-Derivative[0, 0, 0, 0, 1][A0][t, x, y, z, w] + Derivative[1, 0, 0, 0, 0][Aw][t, x, y, z, w]) + 2*(Derivative[0, 1, 0, 0, 0][A0][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][Ax][t, x, y, z, w])*(-Derivative[0, 1, 0, 0, 0][A0][t, x, y, z, w] + Derivative[1, 0, 0, 0, 0][Ax][t, x, y, z, w]) + 2*(Derivative[0, 0, 1, 0, 0][A0][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][Ay][t, x, y, z, w])*(-Derivative[0, 0, 1, 0, 0][A0][t, x, y, z, w] + Derivative[1, 0, 0, 0, 0][Ay][t, x, y, z, w]) + 2*(Derivative[0, 0, 0, 1, 0][A0][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][Az][t, x, y, z, w])*(-Derivative[0, 0, 0, 1, 0][A0][t, x, y, z, w] + Derivative[1, 0, 0, 0, 0][Az][t, x, y, z, w]))/(4*E^(w^2/lambdaConf^2)*mu0)]
+
+(Appendix) Maxwell EOM components (compact sums)
+TraditionalForm[HoldForm[Sum[D[Zfac*Fup[[muIdx,1]], coords5[[muIdx]]], {muIdx, 1, 5}] + 1/xi*eta[[1,1]]*D[divA, coords5[[1]]] == mu0*Jtot5[[1]]]]
+TraditionalForm[HoldForm[Sum[D[Zfac*Fup[[muIdx,2]], coords5[[muIdx]]], {muIdx, 1, 5}] + 1/xi*eta[[2,2]]*D[divA, coords5[[2]]] == mu0*Jtot5[[2]]]]
+TraditionalForm[HoldForm[Sum[D[Zfac*Fup[[muIdx,3]], coords5[[muIdx]]], {muIdx, 1, 5}] + 1/xi*eta[[3,3]]*D[divA, coords5[[3]]] == mu0*Jtot5[[3]]]]
+TraditionalForm[HoldForm[Sum[D[Zfac*Fup[[muIdx,4]], coords5[[muIdx]]], {muIdx, 1, 5}] + 1/xi*eta[[4,4]]*D[divA, coords5[[4]]] == mu0*Jtot5[[4]]]]
+TraditionalForm[HoldForm[Sum[D[Zfac*Fup[[muIdx,5]], coords5[[muIdx]]], {muIdx, 1, 5}] + 1/xi*eta[[5,5]]*D[divA, coords5[[5]]] == mu0*Jtot5[[5]]]]
+
+
+==============================================================================
+PAPER FORM: EM localization reduction (controlled zero-mode)
+------------------------------------------------------------------------------
+Localization normalization
+TraditionalForm[HoldForm[Zint == Integrate[Z[w], {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[Zint] -> lambdaConf*Sqrt[Pi]]
+
+Zero-mode / brane-dominant assumptions (paper)
+TraditionalForm[HoldForm[Subscript[A, w] == 0]]
+TraditionalForm[HoldForm[Subscript[del, w][Subscript[A, Nn]] == 0]]
+TraditionalForm[HoldForm[divA == 0]]
+
+Effective brane Maxwell equation (controlled reduction)
+TraditionalForm[HoldForm[Jeff[Nn] == Integrate[Superscript[Jtot, Nn], {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[mu0eff == mu0/Zint]]
+TraditionalForm[HoldForm[Subscript[del, mu][Superscript[F, muNn]] == mu0eff*Jeff[Nn]]]
+
+Canonical normalization / effective charge (paper)
+TraditionalForm[HoldForm[Acanon[mu] == Sqrt[Zint]*Subscript[A, mu]]]
+TraditionalForm[HoldForm[qeff == qstar/Sqrt[Zint]]]
+TraditionalForm[HoldForm[eEff == eStar/Sqrt[Zint]]]
+TraditionalForm[HoldForm[qeff == etaQ*eEff]]
+TraditionalForm[HoldForm[eEff == eStar/Sqrt[lambdaConf*Sqrt[Pi]]]]
+
+Action-level localization reduction (paper)
+TraditionalForm[HoldForm[divA == 0]]
+TraditionalForm[HoldForm[Subscript[F, MNn]*Superscript[F, MNn] == Subscript[F, munu]*Superscript[F, munu] + 2*Subscript[F, wmu]*Superscript[F, wmu]]]
+TraditionalForm[HoldForm[Subscript[F, wmu] == 0]]
+TraditionalForm[HoldForm[JextEff[mu] == Integrate[Superscript[Jext, mu], {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[(L_EM4) == -(Zint/(4*mu0))*(Subscript[F, munu]*Superscript[F, munu]) - Subscript[A, mu]*JextEff[mu]]]
+TraditionalForm[HoldForm[mu0eff == mu0/Zint]]
+
+Electrostatic brane limit (hook)
+TraditionalForm[HoldForm[Laplacian[PhiEM, {x, y, z}] == -mu0eff*Jeff[0]]]
+
+
+==============================================================================
+APPENDIX: EM localization reduction sanity check (electrostatic zero-mode)
+------------------------------------------------------------------------------
+Time-component Maxwell residual under electrostatic zero-mode
+TraditionalForm[HoldForm[resid0] -> mu0*qstar*(rhoBg - psi[t, x, y, z, w]*psib[t, x, y, z, w]) + (2*w*(Derivative[0, 0, 0, 0, 1][A0][t, x, y, z, w] - Derivative[1, 0, 0, 0, 0][Aw][t, x, y, z, w]))/(E^(w^2/lambdaConf^2)*lambdaConf^2) + (-Derivative[0, 0, 0, 0, 2][A0][t, x, y, z, w] + Derivative[1, 0, 0, 0, 1][Aw][t, x, y, z, w])/E^(w^2/lambdaConf^2) + (-Derivative[0, 0, 0, 2, 0][A0][t, x, y, z, w] + Derivative[1, 0, 0, 1, 0][Az][t, x, y, z, w])/E^(w^2/lambdaConf^2) + (-Derivative[0, 0, 2, 0, 0][A0][t, x, y, z, w] + Derivative[1, 0, 1, 0, 0][Ay][t, x, y, z, w])/E^(w^2/lambdaConf^2) + (-Derivative[0, 2, 0, 0, 0][A0][t, x, y, z, w] + Derivative[1, 1, 0, 0, 0][Ax][t, x, y, z, w])/E^(w^2/lambdaConf^2) - (Derivative[1, 0, 0, 0, 1][Aw][t, x, y, z, w] + Derivative[1, 0, 0, 1, 0][Az][t, x, y, z, w] + Derivative[1, 0, 1, 0, 0][Ay][t, x, y, z, w] + Derivative[1, 1, 0, 0, 0][Ax][t, x, y, z, w] - Derivative[2, 0, 0, 0, 0][A0][t, x, y, z, w])/xi]
+
+w-integrated form (PhiEM independent of w)
+TraditionalForm[HoldForm[Zint*Laplacian[PhiEM, {x, y, z}] == -mu0*Integrate[J0tot, {w, -Infinity, Infinity}]]]
+
+
+==============================================================================
+PAPER FORM: Brane projection and leakage source term
+------------------------------------------------------------------------------
+Weighted projection (paper)
+TraditionalForm[HoldForm[(rho_brane) == Integrate[W[w]*rho, {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[(J_xyz) == {Jx, Jy, Jz}]]
+TraditionalForm[HoldForm[(J_brane) == Integrate[W[w]*(J_xyz), {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[Integrate[W[w], {w, -Infinity, Infinity}] == 1]]
+
+Projected continuity (paper identity)
+TraditionalForm[HoldForm[Subscript[del, t][rho_brane] + Div[J_brane, {x, y, z}] == (S_leak)]]
+TraditionalForm[HoldForm[(S_leak) == -Limit[W[w]*Jw, w -> Infinity] + Limit[W[w]*Jw, w -> -Infinity] + Integrate[D[W[w], w]*Jw, {w, -Infinity, Infinity}]]]
+
+Fast-decay simplification (paper sanity check)
+TraditionalForm[HoldForm[Limit[W[w]*Jw, w -> Infinity] == 0]]
+TraditionalForm[HoldForm[Limit[W[w]*Jw, w -> -Infinity] == 0]]
+TraditionalForm[HoldForm[(S_leak) == Integrate[D[W[w], w]*Jw, {w, -Infinity, Infinity}]]]
+
+(Appendix) Harmonic trap ground-state weight W0(w)
+TraditionalForm[HoldForm[W[w] == W0[w]]]
+TraditionalForm[HoldForm[W0[w]] -> 1/(E^(w^2/ellW^2)*ellW*Sqrt[Pi])]
+TraditionalForm[HoldForm[Integrate[W0[w], {w, -Infinity, Infinity}]] -> 1]
+
+
+==============================================================================
+PAPER FORM: Geometry force ledger and wall law
+------------------------------------------------------------------------------
+Geometry energy (paper form)
+TraditionalForm[HoldForm[(E_geom)[a, L] == Pvac*Vgeom[a, L] + sigma*Ageom[a, L] + kappaB*a^2/L]]
+
+Geometry derivatives (paper)
+TraditionalForm[HoldForm[D[kappaB*a^2/L, a] == 2*kappaB*a/L]]
+TraditionalForm[HoldForm[D[kappaB*a^2/L, L] == -(kappaB*a^2/L^2)]]
+
+Force ledger identity (ASCII-safe)
+TraditionalForm[HoldForm[(F_a)[t] == -D[H_tot, a]]]
+TraditionalForm[HoldForm[(F_L)[t] == -D[H_tot, L]]]
+TraditionalForm[HoldForm[(F_a) == (F_a)*_psi + (F_a)*_EM + (F_a)*_geom + (F_a)*_other]]
+TraditionalForm[HoldForm[(F_L) == (F_L)*_psi + (F_L)*_EM + (F_L)*_geom + (F_L)*_other]]
+
+Matter contribution (Hellmann-Feynman form)
+TraditionalForm[HoldForm[(F_a)*_psi == -Integrate[rho*D[Vconf, a], {x, -Infinity, Infinity}, {y, -Infinity, Infinity}, {z, -Infinity, Infinity}, {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[(F_L)*_psi == -Integrate[rho*D[Vconf, L], {x, -Infinity, Infinity}, {y, -Infinity, Infinity}, {z, -Infinity, Infinity}, {w, -Infinity, Infinity}]]]
+
+Dynamic wall law (paper form)
+TraditionalForm[HoldForm[Ma*Derivative[2][a][t] + Ca*Derivative[1][a][t] == (F_a)[t]]]
+TraditionalForm[HoldForm[ML*Derivative[2][L][t] + CL*Derivative[1][L][t] == (F_L)[t]]]
+
+
+==============================================================================
+PAPER FORM: Brane sector decomposition (Helmholtz + Poisson hook)
+------------------------------------------------------------------------------
+Brane velocity (operational)
+TraditionalForm[HoldForm[(v_brane) == (J_brane)/(rho_brane)]]
+
+Brane Helmholtz decomposition (symbolic)
+TraditionalForm[HoldForm[(v_brane) == Grad[Phi, {x, y, z}] + vT]]
+TraditionalForm[HoldForm[Div[vT, {x, y, z}] == 0]]
+
+Exact longitudinal identity (from projected continuity)
+TraditionalForm[HoldForm[(J_brane) == (rho_brane)*(v_brane)]]
+TraditionalForm[HoldForm[Subscript[del, t][rho_brane] + Div[(rho_brane)*(v_brane), {x, y, z}] == (S_leak)]]
+TraditionalForm[HoldForm[(rho_brane)*Laplacian[Phi, {x, y, z}] == (S_leak) - Subscript[del, t][rho_brane] - Grad[rho_brane, {x, y, z}] . (Grad[Phi, {x, y, z}] + vT)]]
+
+Poisson candidate (regime statement)
+TraditionalForm[HoldForm[Laplacian[Phi, {x, y, z}] == 4*Pi*Geff*rho3D]]
+
+
+==============================================================================
+PAPER NOTE: Poisson sector is a regime/limit (not forced)
+------------------------------------------------------------------------------
+Regime statement (paper text):
+In a quasi-static, longitudinal-dominant brane regime with small leakage and subdominant Q, the longitudinal brane potential (from a Helmholtz split) is the natural Poisson candidate.
+
+
+==============================================================================
+APPENDIX: Minimal w-mode truncation and Gaussian scaling (optional)
+------------------------------------------------------------------------------
+Two-mode ansatz: rho and projected rho_brane
+TraditionalForm[HoldForm[psi] -> psi0[t, x, y, z]/(E^(w^2/(2*ellW^2))*Sqrt[ellW]*Pi^(1/4)) + (Sqrt[2]*eps*w*psi1[t, x, y, z])/(E^(w^2/(2*ellW^2))*ellW^(3/2)*Pi^(1/4))]
+TraditionalForm[HoldForm[rho] -> (eps*w*psi1[t, x, y, z]*(Sqrt[2]*ellW*psib0[t, x, y, z] + 2*eps*w*psib1[t, x, y, z]) + ellW*psi0[t, x, y, z]*(ellW*psib0[t, x, y, z] + Sqrt[2]*eps*w*psib1[t, x, y, z]))/(E^(w^2/ellW^2)*ellW^3*Sqrt[Pi])]
+TraditionalForm[HoldForm[rho_brane] -> (2*psi0[t, x, y, z]*psib0[t, x, y, z] + eps^2*psi1[t, x, y, z]*psib1[t, x, y, z])/(2*ellW*Sqrt[2*Pi])]
+
+Parity check (should be 0): Integrate[W0 chi0 chi1]
+TraditionalForm[HoldForm[cross] -> 0]
+
+Two-mode ansatz: J_w structure (no gauge)
+TraditionalForm[HoldForm[Jw] -> (-I*eps*hbar*(psi1[t, x, y, z]*psib0[t, x, y, z] - psi0[t, x, y, z]*psib1[t, x, y, z]))/(E^(w^2/ellW^2)*ellW^2*m*Sqrt[2*Pi])]
+
+(Appendix) Two-mode projected leakage source (symmetric W0)
+TraditionalForm[HoldForm[S_leak] -> 0]
+
+(Appendix) Leakage turns on under parity breaking (shifted weight)
+TraditionalForm[HoldForm[W[w] == W0[w - w0]]]
+TraditionalForm[HoldForm[(S_leak)*_shift] -> ((-1/2*I)*eps*hbar*w0*(psi1[t, x, y, z]*psib0[t, x, y, z] - psi0[t, x, y, z]*psib1[t, x, y, z]))/(E^(w0^2/(2*ellW^2))*ellW^4*m*Sqrt[Pi])]
+TraditionalForm[HoldForm[(S_leak)*_shift*_series] -> ((-1/2*I)*eps*hbar*w0*(psi1[t, x, y, z]*psib0[t, x, y, z] - psi0[t, x, y, z]*psib1[t, x, y, z]))/(ellW^4*m*Sqrt[Pi])]
+
+(Appendix) Separable HO-w trap constants
+TraditionalForm[HoldForm[C10 == Integrate[chi0[w]^10, {w, -Infinity, Infinity}]]]
+TraditionalForm[HoldForm[C10] -> 1/(Sqrt[5]*ellW^4*Pi^2)]
+TraditionalForm[HoldForm[E0w] -> hbar^2/(2*ellW^2*m)]
+TraditionalForm[HoldForm[E1w] -> (3*hbar^2)/(2*ellW^2*m)]
+
+(Appendix) Projected brane-mode GNLS (psi0; separable HO w-trap)
+TraditionalForm[HoldForm[I*hbar*D[psi0F, t] == (-(hbar^2/(2*m))*Laplacian[psi0F, {x, y, z}] + V3F + E0w + (5*K/4)*C10*rho03^4)*psi0F]]
+
+Gaussian quantum potential Q(x,y,z,w)
+TraditionalForm[HoldForm[Qgauss] -> (hbar^2*(3*a^2*L^4 + a^4*(L^2 - w^2) - L^4*(x^2 + y^2 + z^2)))/(2*a^4*L^4*m)]
+
+Gaussian internal energy (stiff EOS)
+TraditionalForm[HoldForm[Uint] -> (K*M^5)/(100*a^12*L^4*Pi^8)]
+
+Restoring forces from Uint(a,L)
+TraditionalForm[HoldForm[(F_a)*_from*_U] -> (3*K*M^5)/(25*a^13*L^4*Pi^8)]
+TraditionalForm[HoldForm[(F_L)*_from*_U] -> (K*M^5)/(25*a^12*L^5*Pi^8)]
+
+
+==============================================================================
+END: Paper-polished master derivation harness loaded
+------------------------------------------------------------------------------
+
+*)

@@ -1528,6 +1528,9 @@ The zero-mode Maxwell reduction should therefore be read as a controlled far-fie
 
 The framework is therefore ready to be used as a consistent foundation for targeted analyses and numerical demonstrations: one can specify $(V_{\rm conf},W,Z,J_{\rm ext},\etaQ)$, evolve the coupled bulk--geometry system, and directly test when and how accurately brane Poisson behavior emerges, as well as how geometry dynamics modulates the effective brane laws. This provides a concrete bridge between earlier 3D phenomenology and a fully 4D, variationally consistent description.
 
+\section*{Acknowledgments}
+Acknowledgments. This work was carried out by an independent researcher. Generative-AI tools were used during the development of the manuscript to help translate conceptual ideas into mathematical form, assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy verification scripts, and improve the exposition. The conceptual direction, hypotheses, and overall structure of the work were directed by the author. The resulting arguments and calculations were checked for internal consistency using the accompanying symbolic scripts, but the work should be regarded as exploratory and would benefit from review by subject-matter experts. Any errors, omissions, or misunderstandings remain the author’s.
+
 % ============================================================
 \appendix
 
@@ -1539,18 +1542,18 @@ This appendix summarizes the role and content of the Mathematica verification ha
 \paragraph{Scope of this appendix.}
 We do \emph{not} include the full Mathematica source code in the paper. Instead, we (a) state what each harness verifies, (b) list the key identities/equations the harness prints in final paper form, and (c) describe how to reproduce the output exactly. The current repository harnesses directly used for Paper~7 are:
 \begin{itemize}[leftmargin=2.0em]
-\item \texttt{mathematica/4d/4d\_master\_derivations.wl} (full equation-stack harness; final printed output appears at the end of the script execution),
-\item \texttt{mathematica/4d/brane\_momentum\_appendix\_min.wl} (minimal momentum-projection appendix harness; final printed output appears at the end).
+\item \texttt{mathematica/4d\_master\_derivations.wl} (full equation-stack harness; final printed output appears at the end of the script execution),
+\item \texttt{mathematica/brane\_momentum\_appendix\_min.wl} (minimal momentum-projection appendix harness; final printed output appears at the end).
 \end{itemize}
-Other files in \texttt{mathematica/4d/} are auxiliary or historical and are not part of the core Paper~7 verification bundle summarized here.
+Other files in \texttt{mathematica/} are auxiliary or historical and are not part of the core Paper~7 verification bundle summarized here.
 
 \subsection{Reproducibility: how to run the harnesses}
 \label{app:wl-repro}
 
-From a shell with WolframScript available, run:
+From the paper bundle root, run:
 \begin{verbatim}
-wolframscript -file mathematica/4d/4d_master_derivations.wl
-wolframscript -file mathematica/4d/brane_momentum_appendix_min.wl
+math -script mathematica/4d_master_derivations.wl
+math -script mathematica/brane_momentum_appendix_min.wl
 \end{verbatim}
 The harnesses print a compact ``paper-form'' output block near the end of execution.
 

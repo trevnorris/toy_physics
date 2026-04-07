@@ -278,9 +278,12 @@ P7TextLine["All bridge checks passed."];
 (*"
 Output:
 
+
 ========================================
 1) Added mass from geometry
 ========================================
+
+
 
 --- 1.1 3D sphere result (relevant to w-uniform hyper-cylinder) ---
 
@@ -303,6 +306,8 @@ For a w-uniform hyper-cylinder (S^2 x R) moving transverse to w, the external po
 ========================================
 2) Optics: polytropic index n fixes the 1/r coefficient
 ========================================
+
+
 
 --- 2.1 EOS + sound speed expansion ---
 
@@ -363,6 +368,8 @@ TraditionalForm[{{n -> 5}}]
 ========================================
 3) Vector/EIH sector: α^2 and K (upgraded cross-checks)
 ========================================
+
+
 
 --- 3.1 Coefficients from the wake overlap reduction ---
 
@@ -438,6 +445,8 @@ TraditionalForm[0]
 4) Special relativity: v^4 coefficient (3/8)
 ========================================
 
+
+
 --- 4.1 Gamma expansion ---
 
 gamma(v) series to O(v^4):
@@ -457,4 +466,5 @@ Done
 ========================================
 
 All bridge checks passed.
+
 "*)

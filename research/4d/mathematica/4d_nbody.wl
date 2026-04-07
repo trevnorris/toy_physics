@@ -66,7 +66,6 @@ Print["DERIVATION COMPLETE"];
 (*"
 Output:
 
-
 ============================================================
 1. DERIVING PARTICLE-PARTICLE FORCE LAW
 ------------------------------------------------------------
@@ -95,4 +94,5 @@ Note: At High Energy (v ~ cs), Meff diverges or becomes complex.
 
 ============================================================
 DERIVATION COMPLETE
+
 "*)

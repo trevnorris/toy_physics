@@ -104,7 +104,6 @@ Print["DERIVATION COMPLETE"];
 (*"
 Output:
 
-
 ============================================================
 1. FUNDAMENTALS & EOS
 ------------------------------------------------------------
@@ -146,4 +145,5 @@ OutputForm[HoldForm[Integrate[JwSym*WeightGrad, {w, -Infinity, Infinity}]]]
 
 ============================================================
 DERIVATION COMPLETE
+
 "*)

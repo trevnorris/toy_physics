@@ -1,3 +1,10 @@
+"""Exploratory throat-spin geometry test.
+
+This file is retained for note-level geometry exploration and is not part of the
+paper's required verification bundle. It compares a long 4D cylindrical source
+against the expected 3D dipole falloff on the brane.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import quad
@@ -7,6 +14,7 @@ from scipy.integrate import quad
 # ==========================================
 
 def test_cylindrical_spin():
+    print("NOTE: exploratory geometry script; not a cited manuscript verification harness.")
     print("Computing 4D Cylinder -> 3D Projection...")
     
     # SETUP
@@ -90,6 +98,12 @@ def test_cylindrical_spin():
     plt.title(f"The Cylinder Spin Test: Slope = {slope:.2f}")
     plt.legend()
     plt.grid(True)
-    plt.show()
+    backend = plt.get_backend().lower()
+    if "agg" in backend:
+        print("Plot display skipped on non-GUI backend.")
+    else:
+        plt.show()
 
-test_cylindrical_spin()
+
+if __name__ == "__main__":
+    test_cylindrical_spin()

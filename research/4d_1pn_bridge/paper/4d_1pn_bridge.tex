@@ -2399,6 +2399,42 @@ With these pieces in place, subsequent papers can address multi-defect interacti
 \subsection*{Closing perspective}
 Ref.~\cite{norris2026_4d_model} established the unified 4D dynamical arena. The present follow-up isolates the cross-paper constants that are fixed by that arena and draws a bright line around those that require additional closure. This is the correct foundation for future work: it makes clear which results are geometric and thermodynamic necessities, and which are dynamical predictions to be extracted next from the same underlying model.
 
+\subsection*{Companion verification bundle}
+The paper bundle includes a small set of verification scripts that mirror the
+manuscript's current preferred branch:
+\begin{itemize}
+  \item \path{mathematica/4d_1pn_bridge_core.wl} checks the added-mass
+  topology discriminator, the optical \(n=5\) selection, the EIH family and
+  its thermodynamic collapse to \(\alpha^2=\tfrac34,\ K_{\rm vec}=2/\pi^2\),
+  and the universal \(3/8\) coefficient in the \(\gamma\)-expansion.
+  \item \path{mathematica/kappa_pv_adiabatic_closure.wl} checks the explicit
+  one-DOF adiabatic closure of Sec.~\ref{sec:kappaPV:adiabatic1dof},
+  including \(x=2/11\), the partition \(E_w:E_f:E_{\rm PV}=11:2:5\),
+  \(\kappa_{\rm PV}=3/2\), and \(d\ln a/d\ln\rho=-57/64\).
+  \item \path{mathematica/brane_projection_identities.wl} records the exact
+  projected continuity, leakage, momentum, and open-system brane identities
+  used in Sec.~\ref{sec:brane_reduction} and
+  Appendix~\ref{app:projection_leakage}.
+  \item \path{scripts/throat_kappaPV_closure.py} provides a direct numerical
+  realization of the same adiabatic \(\kappa_{\rm PV}\) closure.
+  \item \path{scripts/verify_bridge_coefficients_sympy.py} provides an
+  independent symbolic cross-check of the core coefficient algebra.
+\end{itemize}
+From the paper bundle root, run:
+\begin{verbatim}
+math -script mathematica/4d_1pn_bridge_core.wl
+math -script mathematica/kappa_pv_adiabatic_closure.wl
+math -script mathematica/brane_projection_identities.wl
+python3 scripts/throat_kappaPV_closure.py
+python3 scripts/verify_bridge_coefficients_sympy.py
+\end{verbatim}
+The exploratory file \path{scripts/cylinder_spin_test.py} is retained as a
+note-level geometry experiment and is not required for the claims in this
+manuscript.
+
+\section*{Acknowledgments}
+This work was carried out by an independent researcher. Generative-AI tools were used during the development of the manuscript to help translate conceptual ideas into mathematical form, assist with symbolic manipulations, prototype and revise companion Mathematica and SymPy verification scripts, and improve the exposition. The conceptual direction, hypotheses, and overall structure of the work were directed by the author. The resulting arguments and calculations were checked for internal consistency using the accompanying symbolic scripts, but the work should be regarded as exploratory and would benefit from review by subject-matter experts. Any errors, omissions, or misunderstandings remain the author’s.
+
 % ======================================================================
 % Appendices
 % ======================================================================

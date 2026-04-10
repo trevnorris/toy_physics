@@ -1,0 +1,91 @@
+# 5PN download index
+
+## Earliest standalone stages
+- 5pn_stage1_grouped_p2_kickoff.py
+- 5pn_stage2_projectors_and_splitting.py
+- 5pn_stage3_isotropic_overlap_model.py
+- 5pn_stage4_axisymmetric_transport.py
+- 5pn_stage5_primitive_deformation_compensation.py
+- 5pn_stage6_sector_sieve_and_outgoing_load.py
+- 5pn_stage7_weak_axisymmetric_xi1.py
+- 5pn_stage8_outgoing_port_coloading.py
+- 5pn_stage9_effective_transfer_shape_and_coherent_branch.py
+- 5pn_stage10_microscopic_slippage_and_triangular_form.py
+- 5pn_stage11_monomials_and_similarity_orbit.py
+- 5pn_stage12_normalized_monomial_bridge.py
+- 5pn_stage13_normalized_zero_defect_kernel.py
+- 5pn_stage14_support_blind_extension.py
+- 5pn_stage15_xi_bridge_to_similarity_kernel.py
+- 5pn_stage16_conservative_even_gates_vs_similarity.py
+- 5pn_stage17_lower_bound_even_gate_solution.py
+- 5pn_stage18_full_bundle_isotropic_targets.py
+- 5pn_stage19_mixed_sector_Z_even_gate_bridge.py
+- 5pn_stage20_full_even_gate_constructive_slice.py
+- 5pn_stage21_dimensionless_continuum_placement_map.py
+- 5pn_stage22_split_u_sector.py
+- 5pn_stage23_generalized_selected_branch.py
+- 5pn_stage24_source_map_microscopic_normalization_softening.py
+- 5pn_stage25_dimensionless_normalization_and_support_frontier.py
+- 5pn_stage26_continuum_kernel_extraction_and_placement_map.py
+- 5pn_stage27_continuum_selected_rank2_closure.py
+- 5pn_stage28_coherent_local_tracking_reduction.py
+- 5pn_stage29_tracking_branch_bounds.py
+- 5pn_stage30_coherent_kernel_dimensionless_map.py
+- 5pn_stage31_support_compensation_theorem.py
+- 5pn_stage32_dn_overlap_zeta_extraction.py
+- 5pn_stage33_zeta_threshold_comparison.py
+- 5pn_stage34_lowest_twin_sufficiency.py
+- 5pn_stage35_nontwin_asymmetry_threshold.py
+- 5pn_stage36_overlap_boost_window.py
+- 5pn_stage37_robin_softening_support_lane.py
+- 5pn_stage38_lowest_lane_reachability.py
+- 5pn_stage39_transport_source_asymmetry.py
+- 5pn_stage40_physical_parameter_map.py
+
+## Bundle-based stages
+- 5pn_stage41_51_bundle.zip
+- 5pn_stage52_72_bundle.zip
+- 5pn_stage73_90_bundle.zip
+- 5pn_stage91_100_bundle.zip
+- 5pn_stage101_120_bundle.zip
+- 5pn_stage121_140_bundle.zip
+- 5pn_stage141_150_bundle.zip
+- 5pn_stage151_160_bundle.zip
+- 5pn_stage161_170_bundle.zip
+- 5pn_stage171_174_bundle.zip
+- 5pn_stage175_180_bundle.zip
+- 5pn_stage181_186_bundle.zip
+- 5pn_stage187_192_bundle.zip
+- 5pn_stage193_198_bundle.zip
+- 5pn_stage199_201_bundle.zip
+
+## Notes bundles
+- 5pn_kickoff_notes.md
+- 5pn_stage3_4_notes.md
+- 5pn_stage6_7_notes.md
+- 5pn_stage8_11_notes.md
+- 5pn_stage12_14_notes.md
+- 5pn_stage15_17_notes.md
+- 5pn_stage18_20_notes.md
+- 5pn_stage21_23_and_27_33_notes.md
+- 5pn_stage24_26_notes.md
+- 5pn_stage34_40_notes.md
+- 5pn_stage41_51_notes.md
+- 5pn_stage52_72_notes.md
+- 5pn_stage73_90_notes.md
+- 5pn_stage91_100_notes.md
+- 5pn_stage101_120_notes.md
+- 5pn_stage121_140_notes.md
+- 5pn_stage141_150_notes.md
+- 5pn_stage151_160_notes.md
+- 5pn_stage161_170_notes.md
+- 5pn_stage171_174_notes.md
+- 5pn_stage175_180_notes.md
+- 5pn_stage181_186_notes.md
+- 5pn_stage187_192_notes.md
+- 5pn_stage193_198_notes.md
+- 5pn_stage199_201_notes.md
+
+## Final wrap-up
+- 5pn_final_wrap_up.md
+- 5pn_download_index.md

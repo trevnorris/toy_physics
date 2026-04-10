@@ -1,11 +1,27 @@
 \documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{microtype}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{bm}
-\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{array}
 \usepackage{hyperref}
-\geometry{margin=1in}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
 
 \title{A Conditional Derivation of the Point-Particle 2.5PN Sector\\from the Unified 4D Toy Model}
 \author{Trevor Norris}
@@ -2888,7 +2904,7 @@ the decisive Burke--Thorne benchmark, the low-frequency odd-channel framework,
 the scalar and dipole audits, and the core quadrupole representation/source-map
 checks.  The third layer is the session-completion master audit, again
 implemented in parallel as
-\texttt{2\_5pn\_master\_session\_sympy\_audit.py} and
+\texttt{2\_5pn\_master\_session\_sympy\_audit.py} and\\
 \texttt{2\_5pn\_master\_session\_mathematica\_audit.wl}, which retain the
 earlier channel audit and extend it through the later
 quadrupole-normalization package: canonical normalization maps, outgoing
@@ -3049,16 +3065,15 @@ computation instead of a derivation.  It is to provide an auditable backstop
 showing that, under the stated assumptions, the load-bearing symbolic statements
 close exactly:
 \[
-(\alpha,\beta)=(4,5),
-\qquad
+\begin{aligned}
+(\alpha,\beta)&=(4,5),\\
 \mathcal M_{ab}^R(\omega)
-=
-\bigl[\hat m_0+\hat m_2\omega^2+\hat m_4\omega^4+i\Gamma_5\omega^5+\cdots\bigr]\delta_{ab},
-\qquad
-\overline K_4=\frac{4\overline K_2^2}{\overline K_0},
-\qquad
+&=
+\bigl[\hat m_0+\hat m_2\omega^2+\hat m_4\omega^4+i\Gamma_5\omega^5+\cdots\bigr]\delta_{ab},\\
+\overline K_4&=\frac{4\overline K_2^2}{\overline K_0},\\
 \overline\Gamma_5
-=9\,\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}},
+&=9\,\frac{\overline K_2^{5/2}}{\overline K_0^{3/2}},
+\end{aligned}
 \]
 while leaving the final physical normalization condition
 \(
@@ -3330,9 +3345,11 @@ F_5=-\gamma_5 q^{(5)}.
 This is the low-frequency selection rule used throughout the main text.  The
 channel hierarchy is therefore
 \[
-\boxed{n=1\ \text{(scalar / monopole candidate)},\qquad
-n=3\ \text{(dipole / vector candidate)},\qquad
-n=5\ \text{(quadrupole candidate)}.}
+\boxed{\begin{gathered}
+n=1\ \text{(scalar / monopole candidate)},\\
+n=3\ \text{(dipole / vector candidate)},\\
+n=5\ \text{(quadrupole candidate)}.
+\end{gathered}}
 \]
 A GR-like point-particle $2.5$PN theorem requires the lower odd scalar and
 vector channels to be absent, derivative-mediated, or finite-size demoted, while

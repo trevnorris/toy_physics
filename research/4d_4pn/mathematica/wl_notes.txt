@@ -1,0 +1,8 @@
+# Official referee-facing Mathematica mirror for the published 4PN bundle.
+4pn_onebody_mathematica_audit.wl
+4pn_quartic_legendre_mathematica_audit.wl
+4pn_local_scaffold_target_mathematica_audit.wl
+4pn_hamiltonian_chain_mathematica_audit.wl
+4pn_ordinary_chain_mathematica_audit.wl
+4pn_tail_bridge_mathematica_audit.wl
+4pn_conditional_referee_master_mathematica_audit.wl

@@ -116,7 +116,7 @@ def nonzero_terms(coords: sp.Matrix, basis: list[sp.Expr]) -> list[tuple[int, sp
 # Load prior exact audits quietly
 # ---------------------------------------------------------------------------
 
-BASE = "/mnt/data"
+BASE = os.path.dirname(os.path.abspath(__file__))
 with contextlib.redirect_stdout(io.StringIO()):
     mod_can = runpy.run_path(os.path.join(BASE, "4pn_hamiltonian_chart_generic_frame_lift_audit.py"))
     mod_ord = runpy.run_path(os.path.join(BASE, "4pn_local_hamiltonian_to_ordinary_audit.py"))

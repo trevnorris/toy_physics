@@ -110,7 +110,7 @@ def nonzero_slot_dict(slot_map: dict[int, sp.Expr]) -> dict[int, sp.Expr]:
 # Load prior exact audits without executing their main blocks
 # ---------------------------------------------------------------------------
 
-BASE = "/mnt/data"
+BASE = os.path.dirname(os.path.abspath(__file__))
 mod_can = runpy.run_path(os.path.join(BASE, "4pn_hamiltonian_chart_canonical_slice_audit.py"))
 mod_ord = runpy.run_path(os.path.join(BASE, "4pn_local_hamiltonian_to_ordinary_audit.py"))
 

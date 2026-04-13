@@ -2397,6 +2397,515 @@ that the full PDE dynamically remains on one similarity orbit.
 
 ---
 
+
+### 8.7 Stage-171 branch-observable packet
+
+**Status:** `Exact Within Closure`
+
+Stage 171 upgrades the Stage-170 quotient finish into the natural first-order
+**PDE-facing observable packet**
+\[
+\boxed{
+\Delta_{\rm obs}^{(1)}
+:=
+\begin{pmatrix}
+\delta\ln R_{\rm tr}\\[2pt]
+\delta\ln \mathfrak N_*\\[2pt]
+\delta\ln \epsilon_\eta
+\end{pmatrix},
+\qquad
+\mathfrak N_*:=\mathcal T^2R_{\rm tr}^{B_*},
+\qquad
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+}
+\]
+
+The exact coefficient identity
+\[
+\boxed{
+A_{{\rm tr},*}=B_*\,C_{{\rm tr},*}
+}
+\]
+makes the tracking feed-through subtraction exact.
+
+The observable packet compiles invertibly to the Stage-170 tangent quotient
+packet:
+\[
+\boxed{
+\Delta_{\rm quot}^{(1)}
+=
+\begin{pmatrix}
+-\dfrac{1}{C_{{\rm tr},*}} & 0 & 0\\[8pt]
+0 & 1 & 0\\[2pt]
+0 & 0 & 1
+\end{pmatrix}
+\Delta_{\rm obs}^{(1)}.
+}
+\]
+
+It also compiles invertibly to the defect packet:
+\[
+\boxed{
+\Theta_1=\delta\ln R_{\rm tr},
+}
+\]
+\[
+\boxed{
+\Xi_1=\delta\ln\mathfrak N_*-B_*\,\delta\ln R_{\rm tr},
+}
+\]
+\[
+\boxed{
+\mathcal R_1
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta
+-\Xi_1.
+}
+\]
+
+So the first-order coherent zero-defect theorem can now be written directly in
+the branch observables:
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\delta\ln R_{\rm tr}=0,
+\quad
+\delta\ln\mathfrak N_*=0,
+\quad
+\delta\ln\epsilon_\eta=0.
+}
+\]
+
+### 8.8 Stage-172 transfer-shape / outgoing-prefactor compiler
+
+**Status:** `Exact Within Closure`
+
+Stage 172 rewrites the Stage-171 observable packet in the direct
+transfer-shape / selected-branch language and then compiles it into the
+grouped outgoing-prefactor language already used by the `2.5`PN / `4`PN
+normalization bridge.
+
+The direct coherent transfer shape is
+\[
+\boxed{
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+=
+\Lambda_0\,\frac{1-\epsilon_\eta}{R_{\rm target}},
+\qquad
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+}
+\]
+
+Its exact first-order identities are
+\[
+\boxed{
+\delta\ln\mathcal T^2=\Xi_1,
+\qquad
+\delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1,
+}
+\]
+with compatibility relation
+\[
+\boxed{
+\delta\ln R_{\rm target}
++
+\delta\ln\mathcal T^2
+-
+\delta\ln(1-\epsilon_\eta)=0.
+}
+\]
+
+Section `7` already records the exact isotropic grouped compiler
+\[
+(D_0,D_2,D_4,N_0,N_2,N_4)\longmapsto(u_2,u_4,P_0,P_2,P_4).
+\]
+Stage 172 adds the outgoing completion
+\[
+\boxed{
+K_0=P_0,
+\qquad
+K_2=P_2+\frac{a^2}{9c_s^2}P_0,
+\qquad
+K_4=P_4+\frac{a^2}{9c_s^2}P_2+\frac{4a^4}{81c_s^4}P_0,
+}
+\]
+\[
+\boxed{
+\Gamma_5=\frac{a^5}{27c_s^5}\,P_0.
+}
+\]
+
+Therefore the universal odd normalization target is exactly the one-product test
+\[
+\boxed{
+m_{\hat 0}^{\,2}\Gamma_5=\frac{2G}{5c^5}
+\iff
+m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+
+The direct transfer-shape language and the outgoing-prefactor language are
+already the same scalar language at first grouped weak-axisymmetric order:
+\[
+\boxed{
+\Xi_1
+=
+\frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+=
+\frac{P_1}{P_0}.
+}
+\]
+
+### 8.9 Stage-173 direct-defect / dressing split and the weak-axisymmetric filters
+
+**Status:** `Exact Within Closure`
+
+Stage 173 sharpens the internal structure of the coherent weak-axisymmetric
+problem.
+
+The direct transfer-shape defect depends only on the four microscopic slippages
+\[
+(\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta),
+\]
+while the selected-branch dressing residual introduces only the additional
+slippage
+\[
+\Sigma_\eta=\delta\ln\epsilon_\eta.
+\]
+
+The exact block-triangular split is
+\[
+\boxed{
+\Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+}
+\]
+
+The inverse reconstruction is exact:
+\[
+\boxed{
+\Sigma_{\rm tr}
+=
+-\frac{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}{\chi_0\delta_U}\,\Theta_1,
+}
+\]
+\[
+\boxed{
+\Sigma_{\rm nt}
+=
+\Xi_1+\frac{2(1+\chi_0+\delta_U)}{\delta_U}\,\Theta_1,
+}
+\]
+\[
+\boxed{
+\Sigma_\eta
+=
+-\frac{1-\epsilon_\eta}{\epsilon_\eta}\,(\mathcal R_1+\Xi_1).
+}
+\]
+
+So the full first-order rigidity theorem becomes
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0.
+}
+\]
+
+Two exact obstruction theorems are now explicit.
+
+First, the direct transfer shape is **support-blind**:
+\[
+\boxed{
+\partial_\zeta\mathcal T^2
+=
+\partial_\zeta\mathfrak N_*
+=
+\partial_\zeta R_{\rm target}
+=
+0,
+\qquad
+\partial_\zeta\Xi_1=0.
+}
+\]
+So coherent support enhancement can move the baseline loading, but it cannot
+cancel the direct weak-axisymmetric transfer-shape defect.
+
+Second, a pure grouped real `P2` anisotropy cannot linearly feed the scalar
+off-bundle slippages. Its scalar feed-down begins only at quadratic order
+through the grouped invariants. So the remaining **linear** theorem gate must
+live in the direct outlet / transfer-shape data themselves.
+
+### 8.10 Stage-174 minimal PDE data packet and the home-stretch theorem
+
+**Status:** `Exact Within Closure`
+
+Stage 174 packages the endgame into the smallest exact finite data packet that
+the completed moving-throat PDE still has to supply.
+
+Packet A is the grouped low-frequency bundle
+\[
+\boxed{
+\mathcal P_A
+:=
+\Bigl(
+(D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4})_{A=20,21,22},
+\ m_{\hat 0}
+\Bigr).
+}
+\]
+
+The compact keeps the notation `\(u_2^{(A)},u_4^{(A)}\)` from Section `7`
+rather than the temporary Stage-174 notation `\(\nu_2^{(A)},\nu_4^{(A)}\)`.
+Apply the grouped trace/anomaly decomposition to
+\[
+(u_2^{(A)},u_4^{(A)},P_0^{(A)}),
+\]
+and define
+\[
+\boxed{
+\Delta_{\rm pole}:=\bar u_4-4\bar u_2^{\,2},
+}
+\qquad
+\boxed{
+\Delta_{\rm norm}
+:=
+m_{\hat 0}^{\,2}\bar P_0-\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+
+The exact branch-side verdict vector is
+\[
+\boxed{
+\Delta_{\rm branch}
+:=
+\bigl(
+a_2,\ b_2,\ a_4,\ b_4,\ a_{P_0},\ b_{P_0},\ \Delta_{\rm pole},\ \Delta_{\rm norm}
+\bigr).
+}
+\]
+
+Packet B is any one of three exact representations of the same orbit-lock data:
+\[
+\boxed{
+(m_T,m_K,m_\mu),
+\qquad
+(\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+\qquad
+(q_{\rm tr},q_{\rm nt},q_\eta).
+}
+\]
+The exact interconversion laws are
+\[
+\boxed{
+\mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},
+\qquad
+\mathfrak R_{\rm nt}=\frac{m_\mu}{m_Km_T^{F_*}},
+\qquad
+\mathfrak R_\eta=\frac{1}{m_K},
+}
+\]
+\[
+\boxed{
+q_{\rm tr}=\ln\mathfrak R_{\rm tr},
+\qquad
+q_{\rm nt}=\ln\mathfrak R_{\rm nt},
+\qquad
+q_\eta=\ln\mathfrak R_\eta,
+}
+\]
+\[
+\boxed{
+m_T=e^{q_{\rm tr}/(1+\chi_{0,*})},
+\qquad
+m_K=e^{-q_\eta},
+\qquad
+m_\mu=e^{q_{\rm nt}-q_\eta+F_*q_{\rm tr}/(1+\chi_{0,*})}.
+}
+\]
+
+The sharpest orbit-side verdict vector is
+\[
+\boxed{
+\Delta_{\rm orbit}:=(q_{\rm tr},q_{\rm nt},q_\eta).
+}
+\]
+
+The exact home-stretch theorem is therefore
+\[
+\boxed{
+\text{reduced closure is complete}
+\iff
+\Delta_{\rm branch}=0
+\quad\text{and}\quad
+\Delta_{\rm orbit}=0.
+}
+\]
+
+So inside the present hierarchy the completed PDE no longer has to supply a
+diffuse “higher-PN miracle.” It only has to supply the actual branch values
+needed to evaluate two exact finite residual packets.
+
+### 8.11 Stage-175 orbit/quotient projector calculus
+
+**Status:** `Exact Within Closure`
+
+Stage 175 upgrades the finite orbit packet into an exact microscopic projector
+calculus on the full eight-dimensional drift space.
+
+Work in the finite log-ratio drift vector
+\[
+\boxed{
+\Delta\mathbf x:=
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T.
+}
+\]
+With the carried monomial-drift map
+\[
+\mathbf q=M_*\,\Delta\mathbf x=(q_{\rm tr},q_{\rm nt},q_\eta)^T,
+\]
+the dependent microscopic triple is
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu).
+\]
+
+Selecting the dependent columns in the order `(T,K_\eta,\mu)` gives the exact
+pivot block
+\[
+\boxed{
+P_{(T,K_\eta,\mu)}
+=
+\begin{pmatrix}
+1+\chi_{0,*} & 0 & 0\\[4pt]
+-F_* & -1 & 1\\[4pt]
+0 & -1 & 0
+\end{pmatrix},
+\qquad
+\det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+}
+\]
+Its inverse is
+\[
+\boxed{
+P_{(T,K_\eta,\mu)}^{-1}
+=
+\begin{pmatrix}
+\dfrac{1}{1+\chi_{0,*}} & 0 & 0\\[8pt]
+0 & 0 & -1\\[4pt]
+\dfrac{F_*}{1+\chi_{0,*}} & 1 & -1
+\end{pmatrix}.
+}
+\]
+
+Let `\(E_{(T,K_\eta,\mu)}\)` embed a three-vector into the dependent positions.
+Then the canonical quotient section is
+\[
+\boxed{
+S_{(T,K_\eta,\mu)}:=E_{(T,K_\eta,\mu)}\,P_{(T,K_\eta,\mu)}^{-1},
+\qquad
+M_*S_{(T,K_\eta,\mu)}=I_3.
+}
+\]
+
+Define the complementary projectors
+\[
+\boxed{
+Q_{\rm quot}:=S_{(T,K_\eta,\mu)}M_*,
+\qquad
+O_{\rm orb}:=I-Q_{\rm quot}.
+}
+\]
+They satisfy
+\[
+\boxed{
+Q_{\rm quot}^2=Q_{\rm quot},
+\qquad
+O_{\rm orb}^2=O_{\rm orb},
+\qquad
+Q_{\rm quot}O_{\rm orb}=O_{\rm orb}Q_{\rm quot}=0,
+}
+\]
+with
+\[
+\boxed{
+M_*Q_{\rm quot}=M_*,
+\qquad
+M_*O_{\rm orb}=0.
+}
+\]
+
+So every microscopic drift splits uniquely as
+\[
+\boxed{
+\Delta\mathbf x
+=
+\underbrace{O_{\rm orb}\Delta\mathbf x}_{\Delta\mathbf x_{\rm orbit}}
++
+\underbrace{Q_{\rm quot}\Delta\mathbf x}_{\Delta\mathbf x_{\rm fail}}.
+}
+\]
+
+The entire quotient-failure piece is supported only on the dependent triple:
+\[
+\boxed{
+(\Delta_T)_{\rm fail}=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+\qquad
+(\Delta_{K_\eta})_{\rm fail}=-q_\eta,
+\qquad
+(\Delta_\mu)_{\rm fail}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.
+}
+\]
+
+The orbit projector leaves the five free similarity coordinates untouched and
+restores the exact Stage-170 single-orbit law on the dependent triple. Writing
+\[
+\alpha_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}},
+\]
+the orbit piece satisfies
+\[
+(\Delta_{K_\eta})_{\rm orbit}=2\Delta_c-\Delta_U,
+\]
+\[
+(\Delta_T)_{\rm orbit}=\Delta_U-\alpha_*(\Delta_\gamma+\Delta_c-\Delta_U),
+\]
+\[
+(\Delta_\mu)_{\rm orbit}
+=
+2\Delta_c-\Delta_U+2\Delta_W-2\Delta_\lambda
+-
+E_*(2\Delta_\gamma+2\Delta_\lambda-\Delta_U-\Delta_W)
+-
+F_*\alpha_*(\Delta_\gamma+\Delta_c-\Delta_U).
+\]
+
+So the orbit-lock condition now has several exact equivalent forms:
+\[
+\boxed{
+\Delta_{\rm orbit}=0
+\iff
+M_*\Delta\mathbf x=0
+\iff
+Q_{\rm quot}\Delta\mathbf x=0
+\iff
+\Delta\mathbf x\in\ker M_*
+\iff
+\Delta\mathbf x=O_{\rm orb}\Delta\mathbf x.
+}
+\]
+
+This is the sharpest microscopic finish currently available without the
+completed PDE itself: the whole remaining orbit failure is an exact
+quotient-supported correction on the dependent triple.
+
 ## 9. Final Theorem Ledger
 
 ### 9.1 Exact parent-theory statements
@@ -2427,8 +2936,11 @@ that the full PDE dynamically remains on one similarity orbit.
   support-enhancement factor, the microscopic slippage normal form, and the
   finite similarity-orbit / quotient theorem are exact inside the coherent
   reduced hierarchy and the positive coherent microscopic sector where stated.
-- The grouped linear anisotropy bottleneck collapses exactly to the hidden-even
-  and hidden-odd outlet combinations on the compensated isotropic branch.
+- Stages `171-175` are exact within the carried coherent/grouped/outgoing
+  hierarchy: the branch-observable packet, the transfer-shape /
+  outgoing-prefactor compiler, the direct-defect / dressing split, the finite
+  home-stretch packets \(\Delta_{\rm branch},\Delta_{\rm orbit}\), and the
+  microscopic orbit/quotient projector calculus.
 
 ### 9.3 Numerically located branch data
 
@@ -2472,44 +2984,69 @@ that the full PDE dynamically remains on one similarity orbit.
   \Pi_{\rm can}\approx 3.8715643774790087.
   \]
 
-### 9.4 Reduced or conditional endpoint statements
+### 9.4 Reduced endpoint statements now fixed by the home-stretch compiler
 
 **Status:** `Reduced / Controlled Reduction`
 
-- The compact outgoing quadrupole target matches the canonical GR-style
-  fingerprint only on the canonical outgoing DtN branch and in the strict
-  point-particle limit.
-- The direct monomial compatibility law
+- The first grouped weak-axisymmetric zero-defect theorem now has an exact
+  branch-observable form:
   \[
   \Theta_1=\Xi_1=\mathcal R_1=0
   \iff
-  \delta\ln\mathfrak C_{{\rm tr},*}
+  \delta\ln R_{\rm tr}
   =
-  \delta\ln\mathfrak C_{{\rm nt},*}
+  \delta\ln\mathfrak N_*
   =
   \delta\ln\epsilon_\eta
   =
-  0
+  0.
   \]
-  is the honest linearized zero-defect theorem at first grouped
-  weak-axisymmetric/reference-branch order.
-- The finite quotient theorem is exact inside the positive coherent microscopic
-  sector, but it is still a reduced invariant-structure theorem rather than a
-  completed full-PDE dynamical branch theorem.
+- The transfer-shape language and the outgoing-prefactor language are already the
+  same scalar language at first grouped weak-axisymmetric order:
+  \[
+  \Xi_1
+  =
+  \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+  =
+  \frac{P_1}{P_0}.
+  \]
+- The reduced endgame is now the exact two-packet theorem
+  \[
+  \boxed{
+  \text{reduced closure is complete}
+  \iff
+  \Delta_{\rm branch}=0
+  \quad\text{and}\quad
+  \Delta_{\rm orbit}=0.
+  }
+  \]
+- The orbit-lock condition has an exact microscopic projector form:
+  \[
+  \Delta_{\rm orbit}=0
+  \iff
+  M_*\Delta\mathbf x=0
+  \iff
+  Q_{\rm quot}\Delta\mathbf x=0.
+  \]
 
 ### 9.5 Practical global verdict
 
 **Status:** `Open`
 
-- There is currently no known algebraic blocker, no known hidden tuning
-  mechanism, and no known contradiction in the derivation chain through
-  Stage `170`.
-- The strongest remaining theorem gap is realization:
-  whether the actual moving-throat PDE branch realizes the reduced outgoing,
-  mouth/core, coherent-support, and invariant structures strongly enough for
-  referee-level claims.
+- There is currently no known algebraic blocker, no known stale-notation
+  obstruction, and no known missing compiler step in the derivation chain through
+  Stage `175`.
+- The strongest remaining theorem gap is now fully localized:
+  whether the actual moving-throat PDE branch returns Packet A and Packet B on
+  the joint zero set
+  \[
+  \Delta_{\rm branch}=0,
+  \qquad
+  \Delta_{\rm orbit}=0.
+  \]
+- So the active bottleneck is no longer compression. It is realization of the
+  reduced home-stretch packets on the true branch.
 
----
 
 ## 10. Open Realization Gap
 
@@ -2518,37 +3055,51 @@ The remaining gap is now concentrated and explicit.
 ### 10.1 What is no longer the main risk
 
 - not dropped factors, sign mistakes, or stale symbolic algebra,
-- not SymPy-vs-Mathematica disagreement,
-- not hidden branch rescue inside the explicit Family-1 closure,
-- not a physically nonsensical use of positivity, Onsager drift-diffusion, or
-  grouped linear response.
+- not disagreement about the grouped trace/anomaly projectors,
+- not ambiguity in the first-order branch-observable packet,
+- not ambiguity in the transfer-shape / outgoing-prefactor compiler,
+- not ambiguity in the direct-defect / dressing split,
+- not ambiguity about how to represent the orbit-lock packet.
 
 ### 10.2 What is still genuinely open
 
-- Whether the completed moving-throat PDE actually realizes the canonical
-  passive/outgoing DtN branch rather than a nearby deformed one.
-- Whether the real mouth layer is close enough to the one-lane positive
-  exponential closure, and whether the same-layer susceptibility closure is the
-  physically realized one.
-- Whether the full PDE branch dynamically realizes the renormalized co-evolving
-  Family-1 fixed point rather than only the reduced fixed-point law.
-- Whether the physical coherent-support ratio \(\zeta\) reaches the exact
-  reduced requirement \(\zeta_{\rm req}\) before the branch softens out.
-- Whether the true grouped weak-axisymmetric branch preserves the three coherent
-  monomial invariants closely enough that the similarity-orbit quotient is the
-  correct physical branch language rather than only the correct reduced one.
+- The actual grouped bundle coefficients
+  \[
+  (D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4}),
+  \qquad
+  A\in\{20,21,22\},
+  \]
+  on the physical moving-throat branch.
+- The actual source-map factor
+  \[
+  m_{\hat 0}.
+  \]
+- The actual orbit-lock packet on that branch, in any exact form
+  \[
+  (m_T,m_K,m_\mu),
+  \quad\text{or}\quad
+  (\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+  \quad\text{or}\quad
+  (q_{\rm tr},q_{\rm nt},q_\eta).
+  \]
+- Whether the true branch stays on one similarity orbit strongly enough that the
+  quotient-failure projector vanishes:
+  \[
+  Q_{\rm quot}\Delta\mathbf x=0.
+  \]
 
 ### 10.3 How to read the current program honestly
 
 - The document now supports the claim that there is a mathematically coherent
-  reduced derivation chain from the parent PDE setup to the present endpoint.
+  reduced derivation chain from the parent PDE setup to the exact two-packet
+  home-stretch theorem.
 - It does not yet justify collapsing every reduced closure into an unconditional
   full-PDE realization theorem.
 - So the right referee-facing language is:
   exact parent theory, exact statements inside explicit closures, numerically
-  located reduced branches, and an explicitly isolated realization gap.
+  located reduced branches, exact packet/projector compilers, and an explicitly
+  isolated realization gap.
 
----
 
 ## 11. Quick Translation Dictionary
 
@@ -2792,3 +3343,159 @@ The final reduced coherent invariant coordinates are
 
 Inside the reduced coherent hierarchy, these are the three quotient coordinates
 carried by the final invariant theorem.
+
+
+### 11.8 Branch-observable and transfer-shape packet
+
+The Stage-171 PDE-facing observable packet is
+\[
+\Delta_{\rm obs}^{(1)}
+=
+(\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta)^T,
+\qquad
+\mathfrak N_*:=\mathcal T^2R_{\rm tr}^{B_*}.
+\]
+
+Here
+\[
+B_*=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}},
+\qquad
+A_{{\rm tr},*}=B_*C_{{\rm tr},*}.
+\]
+
+The exact transfer-shape / selected-branch variables are
+\[
+\mathcal T^2=\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+\qquad
+R_{\rm target},
+\qquad
+1-\epsilon_\eta,
+\]
+with
+\[
+R_{\rm target}\mathcal T^2
+=
+\Lambda_0(1-\epsilon_\eta),
+\qquad
+\Lambda_0=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+\]
+
+At first grouped weak-axisymmetric order,
+\[
+\delta\ln\mathcal T^2=\Xi_1,
+\qquad
+\delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1.
+\]
+
+### 11.9 Home-stretch packet variables
+
+Packet A is the grouped low-frequency bundle
+\[
+\mathcal P_A
+=
+\Bigl(
+(D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4})_{A=20,21,22},
+\ m_{\hat 0}
+\Bigr).
+\]
+
+Its exact branch-side residual packet is
+\[
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
+\]
+with
+\[
+\Delta_{\rm pole}=\bar u_4-4\bar u_2^{\,2},
+\qquad
+\Delta_{\rm norm}=m_{\hat 0}^{\,2}\bar P_0-\frac{54Gc_s^5}{5a^5c^5}.
+\]
+
+Packet B is any one of the equivalent orbit-lock packets
+\[
+(m_T,m_K,m_\mu),
+\qquad
+(\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+\qquad
+(q_{\rm tr},q_{\rm nt},q_\eta).
+\]
+
+Important notation firewall:
+\[
+R_{\rm tr}
+\]
+is the **tracking factor** from the Stage-171 observable packet, while
+\[
+\mathfrak R_{\rm tr}
+\]
+is the finite **orbit/invariant ratio** used in Packet B.
+
+The sharp orbit-side verdict vector is
+\[
+\Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta).
+\]
+
+### 11.10 Orbit/quotient projector calculus
+
+The finite microscopic drift vector is
+\[
+\Delta\mathbf x
+=
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T.
+\]
+
+The exact quotient packet is
+\[
+(q_{\rm tr},q_{\rm nt},q_\eta)^T=M_*\Delta\mathbf x.
+\]
+
+With dependent triple
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+\]
+the canonical quotient section
+\[
+S_{(T,K_\eta,\mu)}
+\]
+defines the complementary projectors
+\[
+Q_{\rm quot}=S_{(T,K_\eta,\mu)}M_*,
+\qquad
+O_{\rm orb}=I-Q_{\rm quot}.
+\]
+
+So every microscopic drift splits uniquely as
+\[
+\Delta\mathbf x
+=
+O_{\rm orb}\Delta\mathbf x
++
+Q_{\rm quot}\Delta\mathbf x
+=
+\Delta\mathbf x_{\rm orbit}
++
+\Delta\mathbf x_{\rm fail}.
+\]
+
+The quotient-failure piece has support only on the dependent triple:
+\[
+(\Delta_T)_{\rm fail}=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+\qquad
+(\Delta_{K_\eta})_{\rm fail}=-q_\eta,
+\qquad
+(\Delta_\mu)_{\rm fail}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.
+\]
+
+Orbit lock is therefore equivalently
+\[
+\Delta_{\rm orbit}=0
+\iff
+M_*\Delta\mathbf x=0
+\iff
+Q_{\rm quot}\Delta\mathbf x=0
+\iff
+\Delta\mathbf x\in\ker M_*.
+\]

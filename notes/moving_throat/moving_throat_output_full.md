@@ -37007,3 +37007,2684 @@ Therefore the reduced coherent weak-axisymmetric zero-defect theorem can now be 
 \]
 
 That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself. The remaining open question is still the dynamical branch-selection theorem: whether the true PDE branch preserves those invariants.
+# Moving-Throat PDE — Stage 171: Branch-Observable Completion and the Exact First-Order Observable Compiler
+
+## Status
+
+**Exact within the coherent local D/N weak-axisymmetric reference-branch closure.**
+
+This stage does **not** replace the exact finite quotient closure of Stage 170.
+It identifies the exact **first-order PDE-facing observable packet** whose vanishing is equivalent to vanishing first grouped weak-axisymmetric defect on the selected coherent branch.
+
+---
+
+## Purpose
+
+Stage 170 finished the coherent weak-axisymmetric problem at the exact finite quotient level:
+
+a) the similarity orbit `\(\mathcal G_*\)` is exact,
+
+b) the finite quotient coordinates are the three direct microscopic invariants
+\[
+\mathfrak C_{{\rm tr},*},
+\qquad
+\mathfrak C_{{\rm nt},*},
+\qquad
+\epsilon_\eta,
+\]
+
+and
+
+c) the first grouped weak-axisymmetric defect is the infinitesimal motion of the actual branch in that exact three-dimensional quotient.
+
+That is the right reduced finish for the orbit side, but it is not yet the most useful **PDE-facing** statement.
+The actual moving-throat solve will not first return abstract quotient coordinates. It will return direct branch observables.
+
+The missing bridge is therefore:
+
+> convert the Stage-170 tangent quotient packet into a direct observable packet built from the exact branch quantities
+> \[
+> R_{\rm tr},
+> \qquad
+> \mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+> \qquad
+> \epsilon_\eta,
+> \]
+> and then compile that observable packet directly into the defect triple
+> \[
+> (\Theta_1,\Xi_1,\mathcal R_1).
+> \]
+
+That is what this stage does.
+
+The main outputs are:
+
+1. an exact coefficient identity
+   \[
+   A_{{\rm tr},*}=B_* C_{{\rm tr},*},
+   \]
+2. an exact first-order compiler from the observable packet
+   \[
+   \Delta_{\rm obs}^{(1)}:=
+   \begin{pmatrix}
+   \delta\ln R_{\rm tr}\\
+   \delta\ln \mathfrak N_*\\
+   \delta\ln \epsilon_\eta
+   \end{pmatrix}
+   \]
+   to the Stage-170 tangent quotient packet,
+3. an exact first-order compiler from `\(\Delta_{\rm obs}^{(1)}\)` to the defect packet
+   \[
+   \Delta_{\rm def}^{(1)}:=(\Theta_1,\Xi_1,\mathcal R_1)^T,
+   \]
+4. and the sharp branch-observable zero-defect theorem
+   \[
+   \Theta_1=\Xi_1=\mathcal R_1=0
+   \iff
+   \delta\ln R_{\rm tr}=0,
+   \quad
+   \delta\ln \mathfrak N_*=0,
+   \quad
+   \delta\ln\epsilon_\eta=0.
+   \]
+
+So this stage is the clean PDE-facing completion of the Stage-170 quotient theorem.
+
+---
+
+## 1. Carry-forward exact branch observables
+
+### 1.1 Tracking factor
+
+The coherent tracking factor is the exact branch observable
+\[
+\boxed{
+R_{\rm tr}
+=
+\frac{1+\chi_0+\delta_U}{(1+\chi_0)(1+\delta_U)}.
+}
+\]
+By definition of the grouped weak-axisymmetric tracking defect,
+\[
+\boxed{
+\delta\ln R_{\rm tr}=\Theta_1.
+}
+\]
+
+### 1.2 Corrected nontracking transfer-shape observable
+
+The direct grouped weak-axisymmetric defect `\(\Xi_1\)` is the logarithmic drift of the effective transfer shape,
+\[
+\boxed{
+\delta\ln \mathcal T^2=\Xi_1,
+\qquad
+\mathcal T^2=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}.
+}
+\]
+But the genuine nontracking coordinate is the tracking-feed-through-subtracted composite
+\[
+\boxed{
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+}
+\]
+Its first grouped weak-axisymmetric logarithmic drift is
+\[
+\boxed{
+\delta\ln \mathfrak N_*=\Sigma_{\rm nt}.
+}
+\]
+
+### 1.3 Dressing observable and complementary selected-branch observable
+
+The third direct branch observable is already microscopic:
+\[
+\boxed{
+\delta\ln\epsilon_\eta=\Sigma_\eta.
+}
+\]
+The exact selected-branch identity
+\[
+\boxed{
+\frac{R_{\rm target}\mathcal T^2}{\Lambda_0}=1-\epsilon_\eta,
+\qquad
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5},
+}
+\]
+shows that the complementary selected-branch observable
+\[
+\boxed{
+\mathfrak E:=1-\epsilon_\eta
+}
+\]
+has logarithmic drift
+\[
+\boxed{
+\delta\ln\mathfrak E
+=
+\mathcal R_1+\Xi_1
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta.
+}
+\]
+So the selected-branch residual is not an extra independent datum. It is the complementary drift of the same dressing variable.
+
+---
+
+## 2. Exact coefficient identity
+
+Carry forward the exact coherent reference-branch coefficients
+\[
+\boxed{
+C_{{\rm tr},*}
+=
+\frac{\chi_{0,*}\delta_{U,*}}
+{(1+\chi_{0,*})(1+\delta_{U,*})(1+\chi_{0,*}+\delta_{U,*})},
+}
+\]
+\[
+\boxed{
+A_{{\rm tr},*}
+=
+\frac{2\chi_{0,*}}{(1+\chi_{0,*})(1+\delta_{U,*})}.
+}
+\]
+Then with
+\[
+\boxed{
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}},
+}
+\]
+we have the exact identity
+\[
+\boxed{
+A_{{\rm tr},*}=B_* C_{{\rm tr},*}.
+}
+\]
+
+This identity is the algebraic hinge that lets the corrected nontracking composite `\(\mathfrak N_*\)` subtract the universal tracking feed-through exactly.
+
+---
+
+## 3. Exact first-order observable packet and its quotient-tangent image
+
+Define the first-order branch-observable packet
+\[
+\boxed{
+\Delta_{\rm obs}^{(1)}:=
+\begin{pmatrix}
+\delta\ln R_{\rm tr}\\[2pt]
+\delta\ln \mathfrak N_*\\[2pt]
+\delta\ln \epsilon_\eta
+\end{pmatrix}.
+}
+\]
+
+Stage 170 already fixed the tangent quotient packet as
+\[
+\Delta_{\rm quot}^{(1)}:=
+\begin{pmatrix}
+\delta\ln \mathfrak C_{{\rm tr},*}\\[2pt]
+\delta\ln \mathfrak C_{{\rm nt},*}\\[2pt]
+\delta\ln \epsilon_\eta
+\end{pmatrix}
+=
+\begin{pmatrix}
+\Sigma_{\rm tr}\\[2pt]
+\Sigma_{\rm nt}\\[2pt]
+\Sigma_\eta
+\end{pmatrix}.
+\]
+
+Using the Stage-167/168 identities,
+\[
+\delta\ln \mathfrak C_{{\rm tr},*}=-\frac{1}{C_{{\rm tr},*}}\,\delta\ln R_{\rm tr},
+\qquad
+\delta\ln \mathfrak C_{{\rm nt},*}=\delta\ln \mathfrak N_*,
+\qquad
+\delta\ln\epsilon_\eta=\delta\ln\epsilon_\eta,
+\]
+so the exact first-order observable-to-quotient compiler is
+\[
+\boxed{
+\Delta_{\rm quot}^{(1)}
+=
+\underbrace{
+\begin{pmatrix}
+-\dfrac{1}{C_{{\rm tr},*}} & 0 & 0\\[8pt]
+0 & 1 & 0\\[2pt]
+0 & 0 & 1
+\end{pmatrix}}_{\mathcal C_{\rm obs\to quot}}
+\Delta_{\rm obs}^{(1)}.
+}
+\]
+Its determinant is
+\[
+\det \mathcal C_{\rm obs\to quot}=-\frac{1}{C_{{\rm tr},*}}\neq 0.
+\]
+So the observable packet and the tangent quotient packet have exactly the same zero set.
+
+### Interpretation
+
+Stage 170 still remains the exact **finite** quotient closure.
+Stage 171 does not replace it by a new finite quotient statement.
+It shows something narrower and more useful for the actual PDE solve:
+
+> at first grouped weak-axisymmetric/reference-branch order, the direct branch-observable packet is an exact invertible compiler for the tangent packet of the Stage-170 quotient.
+
+That is the precise sense in which `\(R_{\rm tr}\)`, `\(\mathfrak N_*\)`, and `\(\epsilon_\eta\)` become first-class PDE outputs.
+
+---
+
+## 4. Exact first-order compiler from branch observables to the defect triple
+
+The observable defect packet is
+\[
+\boxed{
+\Delta_{\rm def}^{(1)}:=
+\begin{pmatrix}
+\Theta_1\\[2pt]
+\Xi_1\\[2pt]
+\mathcal R_1
+\end{pmatrix}.
+}
+\]
+Using
+\[
+\Theta_1=\delta\ln R_{\rm tr},
+\]
+\[
+\delta\ln\mathfrak N_*=
+\delta\ln\mathcal T^2+B_*\delta\ln R_{\rm tr}
+=\Xi_1+B_*\Theta_1,
+\]
+and
+\[
+\mathcal R_1+\Xi_1
+=-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta,
+\]
+we obtain the exact first-order observable compiler
+\[
+\boxed{
+\Delta_{\rm def}^{(1)}
+=
+\underbrace{
+\begin{pmatrix}
+1 & 0 & 0\\[2pt]
+-B_* & 1 & 0\\[2pt]
+B_* & -1 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}
+\end{pmatrix}}_{\mathcal C_{\rm obs\to def}}
+\Delta_{\rm obs}^{(1)}.
+}
+\]
+Equivalently, componentwise,
+\[
+\boxed{
+\Theta_1=\delta\ln R_{\rm tr},
+}
+\]
+\[
+\boxed{
+\Xi_1=\delta\ln\mathfrak N_*-B_*\,\delta\ln R_{\rm tr},
+}
+\]
+\[
+\boxed{
+\mathcal R_1
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta
+-\Xi_1.
+}
+\]
+
+The inverse compiler is also exact:
+\[
+\boxed{
+\Delta_{\rm obs}^{(1)}
+=
+\underbrace{
+\begin{pmatrix}
+1 & 0 & 0\\[2pt]
+B_* & 1 & 0\\[2pt]
+0 & -\dfrac{1-\epsilon_{\eta,*}}{\epsilon_{\eta,*}} & -\dfrac{1-\epsilon_{\eta,*}}{\epsilon_{\eta,*}}
+\end{pmatrix}}_{\mathcal C_{\rm def\to obs}}
+\Delta_{\rm def}^{(1)}.
+}
+\]
+So
+\[
+\det \mathcal C_{\rm obs\to def}
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\neq 0
+\qquad (0<\epsilon_{\eta,*}<1).
+\]
+Therefore the defect packet and the observable packet also have exactly the same zero set.
+
+---
+
+## 5. Factorization through the Stage-170 tangent packet
+
+The Stage-166/168 triangular normal form already gives
+\[
+\Theta_1=-C_{{\rm tr},*}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{{\rm tr},*}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1+
+\Xi_1=-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\Sigma_\eta.
+\]
+With
+\[
+\Delta_{\rm quot}^{(1)}=(\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)^T,
+\]
+this is the exact tangent-packet compiler
+\[
+\Delta_{\rm def}^{(1)}
+=
+\underbrace{
+\begin{pmatrix}
+-C_{{\rm tr},*} & 0 & 0\\[2pt]
+A_{{\rm tr},*} & 1 & 0\\[2pt]
+-A_{{\rm tr},*} & -1 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}
+\end{pmatrix}}_{\mathcal C_{\rm quot\to def}}
+\Delta_{\rm quot}^{(1)}.
+\]
+
+Stage 171 then shows that this factorizes exactly as
+\[
+\boxed{
+\mathcal C_{\rm obs\to def}=
+\mathcal C_{\rm quot\to def}\,\mathcal C_{\rm obs\to quot}.
+}
+\]
+The first-column entries match because of the identity
+\[
+A_{{\rm tr},*}=B_* C_{{\rm tr},*}.
+\]
+
+So the Stage-171 observable compiler is not a new independent rule. It is exactly the Stage-170 tangent quotient compiler rewritten in the natural direct branch observables.
+
+---
+
+## 6. Exact first-order branch-observable zero-defect theorem
+
+Because both compilers above are invertible, we obtain the sharp observable theorem:
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\delta\ln R_{\rm tr}=0,
+\quad
+\delta\ln \mathfrak N_*=0,
+\quad
+\delta\ln\epsilon_\eta=0.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\delta\ln R_{\rm tr}=0,
+\quad
+\delta\ln(\mathcal T^2R_{\rm tr}^{B_*})=0,
+\quad
+\delta\ln\epsilon_\eta=0.
+}
+\]
+And because the tangent quotient packet is an exact compiler image of the same observable packet,
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\delta\ln\mathfrak C_{{\rm tr},*}=0,
+\quad
+\delta\ln\mathfrak C_{{\rm nt},*}=0,
+\quad
+\delta\ln\epsilon_\eta=0.
+}
+\]
+So the Stage-167 branch-composite theorem and the Stage-170 tangent quotient theorem are now joined cleanly.
+
+### Interpretation
+
+The actual moving-throat branch no longer has to be tested against a broad microscopic slippage ledger to answer the first-order defect question.
+It only has to answer three direct branch-observable questions:
+
+1. is the coherent tracking factor `\(R_{\rm tr}\)` invariant?
+2. is the corrected nontracking composite `\(\mathfrak N_*\)` invariant?
+3. is the microscopic dressing ratio `\(\epsilon_\eta\)` invariant?
+
+If yes, then the full coherent first grouped weak-axisymmetric defect vanishes.
+
+---
+
+## 7. Best current theorem statement after Stage 171
+
+Stage 170 already reduced the coherent weak-axisymmetric problem to an exact finite quotient.
+Stage 171 now adds the direct PDE-facing front end.
+
+At the first grouped weak-axisymmetric/reference-branch order:
+
+1. the exact finite quotient tangent packet
+   \[
+   (\delta\ln\mathfrak C_{{\rm tr},*},\;\delta\ln\mathfrak C_{{\rm nt},*},\;\delta\ln\epsilon_\eta)
+   \]
+   is an exact invertible compiler image of the branch-observable packet
+   \[
+   (\delta\ln R_{\rm tr},\;\delta\ln\mathfrak N_*,\;\delta\ln\epsilon_\eta),
+   \]
+2. the defect packet
+   \[
+   (\Theta_1,\Xi_1,\mathcal R_1)
+   \]
+   is an exact invertible compiler image of that same branch-observable packet,
+3. and therefore the first grouped weak-axisymmetric zero-defect theorem can be written directly in the exact branch observables
+   \[
+   R_{\rm tr},\qquad \mathfrak N_*=\mathcal T^2R_{\rm tr}^{B_*},\qquad \epsilon_\eta.
+   \]
+
+So the next honest theorem gate for the completed PDE is now completely sharp:
+
+> compute the first grouped weak-axisymmetric drifts of
+> \[
+> R_{\rm tr},
+> \qquad
+> \mathfrak N_*=
+> \mathcal T^2R_{\rm tr}^{B_*},
+> \qquad
+> \epsilon_\eta,
+> \]
+> on the actual moving-throat branch.
+
+That is the smallest branch-specific front end of the coherent defect theorem reached so far.
+
+---
+
+## 8. Immediate next stage
+
+The right next stage after this one is the first one that uses these exact branch observables as the PDE-facing inputs of the later grouped-bundle/outgoing compiler.
+
+In particular, the next clean move is to keep the present Stage-171 observable packet fixed and then ask how the completed grouped real `P2` bundle packages those observables into the finite branch packet that controls:
+
+- grouped isotropy,
+- one-pole conservative closure,
+- and outgoing quadrupole normalization.
+
+So Stage 171 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.
+# Moving-Throat PDE — Stage 172: Transfer-Shape / Outgoing-Prefactor Compiler and the Exact Normalization Bridge
+
+## Status
+
+**Exact within the carried coherent local D/N reference-branch closure together with the exact grouped-outgoing compiler used by the reduced `P_2` normalization bridge.**
+
+This stage does **not** yet solve the full grouped-bundle isotropy or the final branch-selection problem.
+It fixes the exact algebra that converts the Stage-171 branch-observable packet into:
+
+1. the direct **transfer-shape / selected-branch** packet,
+2. the isotropic grouped **response / prefactor** packet,
+3. the compact outgoing `l=2` branch coefficients,
+4. and the exact normalization product that the completed PDE still has to hit.
+
+---
+
+## Purpose
+
+Stage 171 completed the coherent weak-axisymmetric front end in the most natural direct branch observables:
+\[
+R_{\rm tr},
+\qquad
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+\epsilon_\eta.
+\]
+At first grouped weak-axisymmetric/reference-branch order, the observable packet
+\[
+\Delta_{\rm obs}^{(1)}
+:=
+\begin{pmatrix}
+\delta\ln R_{\rm tr}\\[2pt]
+\delta\ln \mathfrak N_*\\[2pt]
+\delta\ln\epsilon_\eta
+\end{pmatrix}
+\]
+was shown to be an exact invertible compiler for the defect triple
+\[
+(\Theta_1,\Xi_1,\mathcal R_1).
+\]
+
+But Stage 171 still stopped one step short of the actual outgoing normalization bridge.
+The remaining missing algebra is:
+
+> take the Stage-171 observable packet, rewrite it in the **direct transfer-shape language**, then compile the isotropic grouped operator moments into the outgoing prefactor moments
+> \[
+> P_0,\qquad P_2,\qquad P_4,
+> \]
+> and finally into the compact outgoing `l=2` branch coefficient that carries the universal odd quadrupole normalization.
+
+That is what this stage does.
+
+The main outputs are:
+
+1. the exact first-order transfer-shape identities
+   \[
+   \delta\ln\mathcal T^2=\Xi_1,
+   \qquad
+   \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+   \qquad
+   \delta\ln R_{\rm target}=\mathcal R_1,
+   \]
+   together with the selected-branch compatibility relation
+   \[
+   R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta),
+   \qquad
+   \Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5};
+   \]
+2. the exact isotropic grouped compiler
+   \[
+   (D_0,D_2,D_4,N_0,N_2,N_4)
+   \longmapsto
+   (u_2,u_4,P_0,P_2,P_4);
+   \]
+3. the exact outgoing-branch coefficients
+   \[
+   K_0,\ K_2,\ K_4,\ \Gamma_5
+   \]
+   generated by multiplying the prefactor by the compact outgoing `l=2` fingerprint;
+4. the exact normalization equivalence
+   \[
+   m_{\hat 0}^{\,2}\Gamma_5=\frac{2G}{5c^5}
+   \iff
+   m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5};
+   \]
+5. and the carry-forward weak-axisymmetric bridge
+   \[
+   \Xi_1
+   =
+   \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+   =
+   \frac{P_1}{P_0}
+   \]
+   on the conservative-shape-preserving grouped branch.
+
+So Stage 172 is the exact compiler that turns the Stage-171 direct branch observables into the language actually consumed by the `2.5`PN / `4`PN outgoing-normalization bridge.
+
+---
+
+## 1. Carry-forward exact transfer-shape identities
+
+### 1.1 Direct coherent transfer shape
+
+Stage 171 already fixed the corrected nontracking branch observable
+\[
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+\]
+Therefore
+\[
+\delta\ln\mathfrak N_*
+=
+\delta\ln\mathcal T^2
++
+B_*\,\delta\ln R_{\rm tr}.
+\]
+Using
+\[
+\delta\ln R_{\rm tr}=\Theta_1,
+\qquad
+\delta\ln\mathfrak N_*=\Xi_1+B_*\Theta_1,
+\]
+we obtain the exact direct transfer-shape drift law
+\[
+\boxed{
+\delta\ln\mathcal T^2
+=
+\delta\ln\mathfrak N_*-B_*\,\delta\ln R_{\rm tr}
+=\Xi_1.
+}
+\]
+So the direct grouped defect is literally the logarithmic drift of the exact transfer shape.
+
+### 1.2 Selected-branch identity and complementary dressing observable
+
+Carry forward the exact selected-branch identity
+\[
+\boxed{
+R_{\rm target}\,\mathcal T^2
+=
+\Lambda_0(1-\epsilon_\eta),
+\qquad
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+}
+\]
+At first grouped weak-axisymmetric order on the isotropic reference branch, the scalar front factor `\(\Lambda_0\)` is inert, so
+\[
+\delta\ln R_{\rm target}
++
+\delta\ln\mathcal T^2
+=
+\delta\ln(1-\epsilon_\eta).
+\]
+Since
+\[
+\delta\ln\epsilon_\eta
+=
+\Sigma_\eta,
+\qquad
+\delta\ln(1-\epsilon_\eta)
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta,
+\]
+this reproduces the exact Stage-171 complementary dressing relation
+\[
+\boxed{
+\delta\ln(1-\epsilon_\eta)
+=
+\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1.
+}
+\]
+So the selected-branch residual is simply the remaining logarithmic drift after the direct transfer-shape drift is removed.
+
+### 1.3 Exact first-order transfer-shape packet and its built-in compatibility relation
+
+Define the direct first-order transfer packet
+\[
+\boxed{
+\Delta_{\rm trf}^{(1)}
+:=
+\begin{pmatrix}
+\delta\ln\mathcal T^2\\[2pt]
+\delta\ln(1-\epsilon_\eta)\\[2pt]
+\delta\ln R_{\rm target}
+\end{pmatrix}.
+}
+\]
+From the Stage-171 observable packet
+\[
+\Delta_{\rm obs}^{(1)}
+=
+\begin{pmatrix}
+\delta\ln R_{\rm tr}\\[2pt]
+\delta\ln\mathfrak N_*\\[2pt]
+\delta\ln\epsilon_\eta
+\end{pmatrix},
+\]
+we have the exact compiler
+\[
+\boxed{
+\Delta_{\rm trf}^{(1)}
+=
+\underbrace{
+\begin{pmatrix}
+-B_* & 1 & 0\\[4pt]
+0 & 0 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\\[8pt]
+B_* & -1 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}
+\end{pmatrix}}_{\mathcal C_{\rm obs\to trf}}
+\Delta_{\rm obs}^{(1)}.
+}
+\]
+But this packet is **not** independent. Its components satisfy the exact linear relation
+\[
+\boxed{
+\delta\ln R_{\rm target}
++
+\delta\ln\mathcal T^2
+-
+\delta\ln(1-\epsilon_\eta)
+=0.
+}
+\]
+So the Stage-171 branch-observable packet has now been turned into the physical transfer-shape/selected-branch packet, with the exact selected-branch identity built in as a rank-2 compatibility condition.
+
+---
+
+## 2. One-port continuum specialization and the actual coherent branch
+
+### 2.1 Actual one-port continuum transfer shape
+
+Earlier continuum-kernel stages already fixed the actual one-port transfer shape as
+\[
+\boxed{
+\mathcal T_A^2
+=
+\frac{Z_{W,A}(1+\rho_A)^2}{\Omega_{W,A}^2(1-\epsilon_{W,A})^2}
+=
+\frac{27\pi^2Gc_s^5}{20a^5c^5}
+\frac{1-\epsilon_{\eta,A}}{R_{{\rm target},A}}.
+}
+\]
+This is the direct one-port realization of the abstract Stage-171 transfer shape.
+
+So at the actual continuum-kernel level the grouped weak-axisymmetric direct defect is the slope of
+\[
+Z_W,
+\qquad
+\rho,
+\qquad
+\Omega_W^2,
+\qquad
+\epsilon_W,
+\qquad
+R_{\rm target},
+\qquad
+\epsilon_\eta,
+\]
+combined exactly in the way above.
+
+### 2.2 Coherent local D/N specialization
+
+On the coherent local D/N tracking branch the one-port continuum variables specialize to
+\[
+\rho\mapsto\chi_0,
+\qquad
+\epsilon_W\mapsto\epsilon,
+\qquad
+\epsilon
+=
+\epsilon_W\!\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right),
+\]
+so the direct coherent transfer shape becomes
+\[
+\boxed{
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+=
+\Lambda_0\,\frac{1-\epsilon_\eta}{R_{\rm target}}.
+}
+\]
+This is exactly the transfer-shape observable used implicitly in Stage 171.
+
+### 2.3 Weak-axisymmetric direct-slope bridge
+
+The direct grouped weak-axisymmetric law therefore reads
+\[
+\boxed{
+\delta\ln\mathcal T_A^2
+=
+\epsilon\lambda_A\,\Xi_1.
+}
+\]
+So the first grouped defect scalar is the exact logarithmic slope of the actual one-port transfer shape.
+This is the direct transfer-side half of the outgoing-prefactor bridge.
+
+---
+
+## 3. Exact isotropic grouped response / prefactor compiler
+
+To connect the transfer-shape language to the outgoing bridge, carry forward the grouped-lane conservative operator and outgoing-transfer moments
+\[
+D_A^{\rm(cons)}(\omega)=D_{A,0}+D_{A,2}\omega^2+D_{A,4}\omega^4+O(\omega^6),
+\]
+\[
+N_A(\omega)=N_{A,0}+N_{A,2}\omega^2+N_{A,4}\omega^4+O(\omega^6).
+\]
+For the moment fix one grouped lane and suppress the lane label.
+
+### 3.1 Normalized grouped response
+
+Define the normalized conservative grouped response
+\[
+\boxed{
+Y(\omega)
+:=
+\frac{D_0}{D^{\rm(cons)}(\omega)}
+=
+1+u_2\omega^2+u_4\omega^4+O(\omega^6).
+}
+\]
+Then the exact isotropic compiler is
+\[
+\boxed{
+u_2=-\frac{D_2}{D_0},
+\qquad
+u_4=\frac{D_2^2-D_0D_4}{D_0^2}.
+}
+\]
+To match the standard grouped notation used later, write
+\[
+\boxed{
+ u_2=-\frac{D_2}{D_0},
+ \qquad
+ u_4=\frac{D_2^2-D_0D_4}{D_0^2}.
+}
+\]
+So the even grouped response coefficients are exact rational functions of the conservative operator moments.
+
+### 3.2 Static transfer shape versus static outgoing prefactor
+
+To avoid collision with the later outgoing branch coefficients `\(K_0,K_2,K_4\)`, denote the static baseline wall coefficient by
+\[
+K_A^{\rm(bl)}.
+\]
+Stage 163 gave the effective transfer shape as
+\[
+\mathcal T_{\rm eff,A}^2=\frac{N_{A,0}}{K_A^{\rm(bl)}}.
+\]
+The static outgoing prefactor, however, is
+\[
+\boxed{
+P_{A,0}=\frac{N_{A,0}}{D_{A,0}}.
+}
+\]
+Therefore the static transfer/prefactor bridge is the exact identity
+\[
+\boxed{
+P_{A,0}
+=
+\frac{K_A^{\rm(bl)}}{D_{A,0}}\,\mathcal T_{\rm eff,A}^2.
+}
+\]
+So the static prefactor is the transfer shape dressed by the conservative denominator ratio `\(K_A^{\rm(bl)}/D_{A,0}\)`.
+
+On the one-port branch this is the exact bridge between the direct transfer-shape language and the outgoing-prefactor language.
+
+### 3.3 Full outgoing prefactor series
+
+Define the exact grouped prefactor series by
+\[
+\boxed{
+\operatorname{Pref}(\omega)
+:=
+\frac{D_0N(\omega)}{\bigl(D^{\rm(cons)}(\omega)\bigr)^2}
+=
+P_0+P_2\omega^2+P_4\omega^4+O(\omega^6).
+}
+\]
+Then the exact compiler is
+\[
+\boxed{
+P_0=\frac{N_0}{D_0},
+}
+\]
+\[
+\boxed{
+P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+}
+\]
+\[
+\boxed{
+P_4=
+\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+}
+\]
+So the exact isotropic grouped outgoing packet
+\[
+(D_0,D_2,D_4,N_0,N_2,N_4)
+\]
+already determines the full even prefactor data
+\[
+(P_0,P_2,P_4)
+\]
+before any outgoing fingerprint is attached.
+
+### 3.4 Weak-axisymmetric prefactor slope
+
+Now restore one grouped weak-axisymmetric lane label and write
+\[
+P_A=P_0+\epsilon\lambda_A P_1+O(\epsilon^2).
+\]
+Then purely algebraically,
+\[
+\boxed{
+P_1=\frac{N_1D_0-N_0D_1}{D_0^2},
+\qquad
+\frac{P_1}{P_0}=\frac{N_1}{N_0}-\frac{D_1}{D_0}.
+}
+\]
+So the logarithmic weak-axisymmetric slope of the prefactor is
+\[
+\boxed{
+\frac{\delta\ln P_A}{\epsilon\lambda_A}
+=\frac{P_1}{P_0}.
+}
+\]
+Carry forward the exact grouped outgoing-load theorem from the earlier reduced stages:
+\[
+\boxed{
+\Xi_1
+=
+\frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+=
+\frac{P_1}{P_0}
+}
+\]
+on the conservative-shape-preserving weak-axisymmetric branch.
+
+So the first grouped defect scalar is simultaneously
+
+1. the direct transfer-shape slope, and
+2. the logarithmic outgoing-prefactor slope.
+
+That is the exact first-order transfer-shape / outgoing-prefactor bridge.
+
+---
+
+## 4. Compact outgoing `l=2` fingerprint and outgoing branch coefficients
+
+### 4.1 Compact outgoing fingerprint
+
+Carry forward the normalized compact outgoing `l=2` branch fingerprint
+\[
+\boxed{
+\widehat Y_2^{\rm(out)}(\omega)
+=
+1+A\omega^2+B\omega^4+iG_5\omega^5+O(\omega^6),
+}
+\]
+with
+\[
+\boxed{
+A=\frac{a^2}{9c_s^2},
+\qquad
+B=\frac{4a^4}{81c_s^4},
+\qquad
+G_5=\frac{a^5}{27c_s^5}.
+}
+\]
+
+### 4.2 Exact outgoing-branch compiler
+
+The outgoing contribution to the grouped response is
+\[
+\delta Y^{\rm(out)}(\omega)
+=
+\operatorname{Pref}(\omega)\,\widehat Y_2^{\rm(out)}(\omega).
+\]
+Write
+\[
+\delta Y^{\rm(out)}(\omega)
+=
+K_0+K_2\omega^2+K_4\omega^4+i\Gamma_5\omega^5+O(\omega^6).
+\]
+Then the exact compiler is
+\[
+\boxed{K_0=P_0,}
+\]
+\[
+\boxed{K_2=P_2+A\,P_0,}
+\]
+\[
+\boxed{K_4=P_4+A\,P_2+B\,P_0,}
+\]
+\[
+\boxed{\Gamma_5=G_5P_0=\frac{a^5}{27c_s^5}\,P_0.}
+\]
+So the leading odd branch coefficient depends only on the **static** outgoing prefactor `\(P_0\)`. The higher even prefactor moments `\(P_2,P_4\)` change the even branch bookkeeping, but they do **not** enter the first odd coefficient.
+
+This is the precise sense in which the whole `2.5`PN / `4`PN normalization gap is controlled by one static outgoing prefactor on the isotropic branch.
+
+---
+
+## 5. Exact normalization product and the constant-prefactor branch
+
+### 5.1 Exact normalization equivalence
+
+The invariant odd normalization target is
+\[
+\boxed{
+m_{\hat 0}^{\,2}\,\Gamma_5=\frac{2G}{5c^5}.
+}
+\]
+Using
+\[
+\Gamma_5=\frac{a^5}{27c_s^5}\,P_0,
+\]
+this is exactly equivalent to
+\[
+\boxed{
+m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+So the direct normalization question is no longer diffuse.
+It is the one scalar invariant product
+\[
+m_{\hat 0}^{\,2}P_0.
+\]
+
+### 5.2 Constant-prefactor branch
+
+A particularly useful reduced sub-branch is the constant isotropic prefactor branch
+\[
+\boxed{P_2=0,
+\qquad
+P_4=0.}
+\]
+From the exact prefactor compiler this is equivalent to the algebraic conditions
+\[
+\boxed{
+P_2=0
+\iff
+N_2=\frac{2D_2N_0}{D_0},
+}
+\]
+and, after imposing the first condition,
+\[
+\boxed{
+P_4=0
+\iff
+N_4=\frac{D_2^2+2D_0D_4}{D_0^2}\,N_0.
+}
+\]
+On that branch the outgoing coefficients reduce to
+\[
+\boxed{K_0=P_0,}
+\qquad
+\boxed{K_2=A\,P_0=\frac{a^2}{9c_s^2}P_0,}
+\qquad
+\boxed{K_4=B\,P_0=\frac{4a^4}{81c_s^4}P_0.}
+\]
+So the even branch fingerprint then comes entirely from the compact outgoing `l=2` factor, with no additional even prefactor distortion.
+
+This is the exact constant-prefactor branch already isolated as the cleanest canonical outgoing normalization route.
+
+---
+
+## 6. Best current theorem statement after Stage 172
+
+Stage 171 fixed the exact direct branch-observable packet
+\[
+(\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta).
+\]
+Stage 172 now shows that this packet feeds the actual outgoing normalization chain in two exact steps.
+
+### 6.1 First exact step — direct transfer-shape / selected-branch compiler
+
+The exact coherent transfer packet satisfies
+\[
+\delta\ln\mathcal T^2=\Xi_1,
+\qquad
+\delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1,
+\]
+with the exact compatibility relation
+\[
+\delta\ln R_{\rm target}
++
+\delta\ln\mathcal T^2
+-
+\delta\ln(1-\epsilon_\eta)=0.
+\]
+So the direct coherent defect is already the logarithmic drift of one exact transfer shape.
+
+### 6.2 Second exact step — isotropic grouped prefactor compiler
+
+The grouped operator/transfer data
+\[
+(D_0,D_2,D_4,N_0,N_2,N_4)
+\]
+compile exactly to
+\[
+(u_2,u_4,P_0,P_2,P_4),
+\]
+and the compact outgoing `l=2` fingerprint then compiles these to
+\[
+(K_0,K_2,K_4,\Gamma_5).
+\]
+The first odd coefficient is
+\[
+\Gamma_5=\frac{a^5}{27c_s^5}P_0,
+\]
+so the universal normalization question is exactly the one-product test
+\[
+m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+\]
+
+### 6.3 First-order bridge between the two languages
+
+On the carried weak-axisymmetric outgoing branch,
+\[
+\Xi_1
+=
+\frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+=
+\frac{P_1}{P_0}.
+\]
+So the direct transfer-shape language and the outgoing-prefactor language are already the same scalar language at first grouped weak-axisymmetric order.
+
+That is the Stage-172 completion:
+
+> the Stage-171 branch observables now compile all the way to the isotropic outgoing prefactor packet and to the exact odd normalization product.
+
+So the next honest theorem gate is smaller than before.
+It is no longer “derive the outgoing bridge somehow.”
+It is now:
+
+> compute the direct transfer shape and the grouped isotropic operator/transfer moments on the actual moving-throat branch, then evaluate the exact compiler above.
+
+That is the precise hinge point before Stage 173, where the direct transfer-shape defect and the selected-branch dressing residual will be separated even more sharply.
+
+---
+
+## 7. Immediate next stage
+
+The next clean move after this stage is **not** to enlarge the packet again.
+It is to separate, inside the transfer-shape language just compiled here,
+
+1. the direct transfer-shape defect,
+2. the tracking feed-through subtraction,
+3. and the selected-branch dressing residual,
+
+so that the microscopic slippages split into the exact direct-defect variables versus the exact dressing variable.
+
+That is the natural Stage-173 continuation.
+# Moving-Throat PDE — Stage 173: Direct Transfer-Shape Defect vs. Dressing Residual, Support-Blindness, and the Scalar No-Go Filters
+
+## Status
+
+**Exact within the carried coherent local D/N weak-axisymmetric reference-branch closure, together with the exact reduced grouped-lane symmetry theorem for pure real `P2` anisotropy.**
+
+This stage does **not** enlarge the endgame packet from Stage 172.
+It sharpens the internal logic of that packet by separating:
+
+1. the **direct transfer-shape defect**,
+2. the **tracking feed-through** inside that defect,
+3. the **selected-branch dressing residual**,
+4. and the two main obstruction theorems that prevent the remaining gap from being blamed on the wrong microscopic channels.
+
+---
+
+## Purpose
+
+Stage 171 completed the first-order branch-observable compiler in the direct observables
+\[
+R_{\rm tr},
+\qquad
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+\epsilon_\eta,
+\]
+and Stage 172 carried that packet all the way to the isotropic grouped outgoing-prefactor compiler.
+
+At that point the remaining algebra was no longer the issue.
+The actual missing clarification was structural:
+
+> which microscopic slippages belong to the **direct transfer-shape defect**, which belong only to the **selected-branch dressing residual**, and which channels are ruled out as first-order rescue mechanisms by exact symmetry?
+
+That is what this stage fixes.
+
+The main outputs are:
+
+1. an exact **direct-defect / dressing** split of the coherent weak-axisymmetric problem,
+2. an exact **support-blindness theorem** for the direct transfer shape,
+3. the exact branch-adapted direct-defect coordinates
+   \[
+   \Sigma_{\rm tr},\qquad \Sigma_{\rm nt},\qquad \Sigma_\eta,
+   \]
+   with
+   \[
+   \Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+   \qquad
+   \Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+   \qquad
+   \mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta,
+   \]
+4. exact inverse reconstruction formulas,
+5. and the exact no-go filter saying that a **pure grouped real `P2` anisotropy cannot linearly feed the scalar off-bundle slippages**.
+
+So this stage is the clean separation layer between the Stage-172 transfer compiler and the later finite packet theorem gate.
+
+---
+
+## 1. Carry-forward exact transfer-shape and selected-branch identities
+
+### 1.1 Direct coherent transfer shape
+
+Carry forward the exact coherent transfer shape
+\[
+\boxed{
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}.
+}
+\]
+The corrected nontracking branch observable from Stage 171 is
+\[
+\boxed{
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+R_{\rm tr}:=\frac{1+\chi_0+\delta_U}{(1+\chi_0)(1+\delta_U)},
+\qquad
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+}
+\]
+By Stage 172,
+\[
+\boxed{
+\delta\ln\mathcal T^2=\Xi_1,
+\qquad
+\delta\ln\mathfrak N_*=\Sigma_{\rm nt}.
+}
+\]
+So the direct grouped defect is already the logarithmic drift of one exact transfer shape, while the corrected nontracking coordinate is the logarithmic drift of a feed-through-subtracted branch composite.
+
+### 1.2 Selected-branch identity
+
+Carry forward the exact selected-branch relation
+\[
+\boxed{
+R_{\rm target}\,\mathcal T^2
+=
+\Lambda_0(1-\epsilon_\eta),
+\qquad
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\mathfrak E:=\frac{R_{\rm target}\,\mathcal T^2}{\Lambda_0}=1-\epsilon_\eta.
+}
+\]
+So the complementary selected-branch observable is not independent. It is just the complementary dressing variable built from the same microscopic ratio \(\epsilon_\eta\).
+
+At first grouped weak-axisymmetric order,
+\[
+\boxed{
+\delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1.
+}
+\]
+
+### 1.3 Immediate structural lesson
+
+The problem already separates at the level of exact observables:
+
+- `\(\Xi_1\)` measures the direct transfer-shape drift,
+- `\(\mathcal R_1+\Xi_1\)` measures only the complementary dressing drift,
+- and `\(\mathcal R_1\)` is what remains after subtracting the direct defect from the selected-branch demand drift.
+
+That separation will now be pushed down to the microscopic slippage level.
+
+---
+
+## 2. Exact support-blindness theorem for the direct transfer shape
+
+### 2.1 Coherent support enhancement changes the baseline, not the transfer shape
+
+On the coherent branch the support enhancement may be written as
+\[
+M_{\rm tr}=M_{\rm mix}\,S(\zeta;\epsilon),
+\qquad
+S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}.
+\]
+But the transfer shape itself is still
+\[
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+\]
+with no explicit support factor `\(\zeta\)`.
+Therefore
+\[
+\boxed{
+\frac{\partial\mathcal T^2}{\partial\zeta}=0,
+\qquad
+\frac{\partial\ln\mathcal T^2}{\partial\zeta}=0.
+}
+\]
+The same is true for the selected-branch demand ratio,
+\[
+R_{\rm target}
+=
+\Lambda_0\,\frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+\]
+so
+\[
+\boxed{
+\frac{\partial R_{\rm target}}{\partial\zeta}=0,
+\qquad
+\frac{\partial\ln R_{\rm target}}{\partial\zeta}=0.
+}
+\]
+Hence also
+\[
+\boxed{
+\frac{\partial\mathfrak N_*}{\partial\zeta}=0,
+\qquad
+\frac{\partial\ln\mathfrak N_*}{\partial\zeta}=0,
+\qquad
+\partial_\zeta\Xi_1=0.
+}
+\]
+
+### 2.2 Physical meaning
+
+This is a sharp role separation:
+
+- the coherent support lane can alter the **baseline loading** of the branch,
+- but it cannot alter the **effective transfer shape**,
+- so it can help satisfy steady normalization,
+- yet it cannot cancel the weak-axisymmetric direct defect.
+
+That is the first obstruction theorem promoted explicitly by this stage.
+
+---
+
+## 3. Exact microscopic slippage ledger
+
+The coherent weak-axisymmetric branch depends on the five microscopic logarithmic slippages
+\[
+\boxed{
+\Sigma_Z,
+\qquad
+\Sigma_\chi,
+\qquad
+\Sigma_\epsilon,
+\qquad
+\Sigma_\delta,
+\qquad
+\Sigma_\eta.
+}
+\]
+They are defined by
+\[
+\boxed{
+\Sigma_\chi=\delta\ln\chi_0,
+\qquad
+\Sigma_\delta=\delta\ln\delta_U,
+\qquad
+\Sigma_Z=\delta\ln\!\left(\frac{Z_W}{\Omega_W^2}\right),
+}
+\]
+\[
+\boxed{
+\Sigma_\epsilon=\delta\ln\epsilon_W,
+\qquad
+\Sigma_\eta=\delta\ln\epsilon_\eta.
+}
+\]
+Using the coherent-kernel definitions,
+\[
+\chi_0=\frac{\gamma c_{\eta U}}{K_U},
+\qquad
+\delta_U=\frac{\pi^2T_U}{L^2K_U},
+\qquad
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
+\]
+\[
+\epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+\qquad
+\frac{Z_W}{\Omega_W^2}
+=
+\frac{\lambda_W^2\mu_W}{K_\eta^{(\mathrm{eff})}(K_W^{(\mathrm{eff})})^2},
+\]
+the microscopic drift forms are
+\[
+\boxed{
+\Sigma_\chi=\gamma_1+c_1-\kappa_U,
+\qquad
+\Sigma_\delta=\tau_1-\kappa_U,
+}
+\]
+\[
+\boxed{
+\Sigma_Z=2\lambda_1+\mu_1-\kappa_\eta-2\kappa_W,
+\qquad
+\Sigma_\epsilon=2\gamma_1+2\lambda_1-\kappa_U-\kappa_W,
+}
+\]
+\[
+\boxed{
+\Sigma_\eta=2c_1-\kappa_U-\kappa_\eta.
+}
+\]
+
+The important structural split is now visible already:
+
+- the **direct transfer-shape defect** depends only on
+  \[
+  (\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta),
+  \]
+- the **selected-branch dressing residual** introduces only the additional slippage
+  \[
+  \Sigma_\eta.
+  \]
+
+---
+
+## 4. Exact direct transfer-shape defect law
+
+### 4.1 Direct microscopic law before branch adaptation
+
+The exact coherent direct-defect law is
+\[
+\boxed{
+\Xi_1
+=
+\Sigma_Z
++\frac{2\chi_0}{1+\chi_0}\Sigma_\chi
++\frac{2\epsilon_W}{1-\epsilon}
+\left[
+\frac{11+9\delta_U}{11(1+\delta_U)}\Sigma_\epsilon
+-\frac{2\delta_U}{11(1+\delta_U)^2}\Sigma_\delta
+\right].
+}
+\]
+So the direct grouped defect is already a scalar built purely from the four direct slippages.
+
+### 4.2 Exact tracking combination
+
+Define the exact tracking combination
+\[
+\boxed{
+\Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi.
+}
+\]
+Then the tracking-factor drift is
+\[
+\boxed{
+\Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+\qquad
+C_{\rm tr}:=
+\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}.
+}
+\]
+
+### 4.3 Exact nontracking direct-defect scalar
+
+Now define the branch-adapted nontracking direct-defect coordinate
+\[
+\boxed{
+\Sigma_{\rm nt}
+:=
+\Sigma_Z
++\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\Sigma_\epsilon
+-\left[
+\frac{2\chi_0}{1+\delta_U}
++\frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+\right]\Sigma_\delta.
+}
+\]
+Then the exact direct grouped-defect law becomes
+\[
+\boxed{
+\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+A_{\rm tr}:=\frac{2\chi_0}{(1+\chi_0)(1+\delta_U)}.
+}
+\]
+
+So the direct defect packet has a canonical split:
+
+- `\(\Sigma_{\rm tr}\)` = universal tracking feed-through,
+- `\(\Sigma_{\rm nt}\)` = genuine nontracking transfer-shape defect.
+
+Two remarks are important.
+
+First, after the exact feed-through subtraction, `\(\Sigma_{\rm nt}\)` carries **no explicit** `\(\Sigma_\chi\)` term.
+The interference ratio only survives inside the universal tracking channel.
+
+Second, `\(\Sigma_{\rm nt}\)` is support-blind for the same reason `\(\mathcal T^2\)` and `\(\mathfrak N_*\)` are support-blind: no coherent-support factor enters.
+
+---
+
+## 5. Exact dressing residual and the direct-defect / dressing split
+
+The third branch-adapted coordinate is simply the microscopic dressing slippage
+\[
+\boxed{
+\Sigma_\eta=\delta\ln\epsilon_\eta.
+}
+\]
+The selected-branch residual then satisfies the exact complementary law
+\[
+\boxed{
+\mathcal R_1+\Xi_1
+=
+-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+}
+\]
+So the direct-defect / dressing split is exact:
+\[
+\boxed{
+(\Theta_1,\Xi_1)
+\text{ depend only on }
+(\Sigma_{\rm tr},\Sigma_{\rm nt}),
+\qquad
+\mathcal R_1+\Xi_1
+\text{ depends only on }
+\Sigma_\eta.
+}
+\]
+Equivalently, the observable compiler is block-triangular:
+\[
+\boxed{
+\begin{pmatrix}
+\Theta_1\\[2pt]
+\Xi_1\\[2pt]
+\mathcal R_1+\Xi_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-C_{\rm tr} & 0 & 0\\[2pt]
+A_{\rm tr} & 1 & 0\\[2pt]
+0 & 0 & -\dfrac{\epsilon_\eta}{1-\epsilon_\eta}
+\end{pmatrix}
+\begin{pmatrix}
+\Sigma_{\rm tr}\\[2pt]
+\Sigma_{\rm nt}\\[2pt]
+\Sigma_\eta
+\end{pmatrix}.
+}
+\]
+The determinant is
+\[
+\boxed{
+\det = \frac{C_{\rm tr}\epsilon_\eta}{1-\epsilon_\eta}>0
+}
+\]
+on the constructive physical branch
+\[
+\chi_0>0,
+\qquad
+\delta_U>0,
+\qquad
+0<\epsilon_\eta<1.
+\]
+So the split is not heuristic. It is exact and invertible.
+
+### Physical meaning
+
+The selected-branch residual is **not** an additional direct transfer-shape error.
+It is just the complementary drift of the same microscopic dressing variable once the direct transfer-shape defect has already been accounted for.
+
+That is the second major structural clarification of this stage.
+
+---
+
+## 6. Exact inverse reconstruction and rigidity statements
+
+Because the direct/dressing compiler is triangular, it inverts exactly.
+
+### 6.1 Tracking coordinate
+
+\[
+\boxed{
+\Sigma_{\rm tr}
+=
+-\frac{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}{\chi_0\delta_U}\,\Theta_1.
+}
+\]
+So
+\[
+\boxed{
+\Theta_1=0
+\iff
+\Sigma_{\rm tr}=0.
+}
+\]
+
+### 6.2 Nontracking direct-defect coordinate
+
+Using `\(\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt}\)`,
+\[
+\boxed{
+\Sigma_{\rm nt}
+=
+\Xi_1+\frac{A_{\rm tr}}{C_{\rm tr}}\Theta_1
+=
+\Xi_1+\frac{2(1+\chi_0+\delta_U)}{\delta_U}\Theta_1.
+}
+\]
+Therefore
+\[
+\boxed{
+\Xi_1=0
+\iff
+\Sigma_{\rm nt}=-A_{\rm tr}\Sigma_{\rm tr}.
+}
+\]
+So a vanishing grouped defect can still hide a compensating tracking slippage unless tracking is checked separately.
+On the tracking-rigid branch,
+\[
+\boxed{
+\Theta_1=0\ \text{and}\ \Xi_1=0
+\iff
+\Sigma_{\rm tr}=0,
+\quad
+\Sigma_{\rm nt}=0.
+}
+\]
+
+### 6.3 Dressing coordinate
+
+\[
+\boxed{
+\Sigma_\eta
+=
+-\frac{1-\epsilon_\eta}{\epsilon_\eta}(\mathcal R_1+\Xi_1).
+}
+\]
+Hence
+\[
+\boxed{
+\mathcal R_1+\Xi_1=0
+\iff
+\Sigma_\eta=0.
+}
+\]
+And if the direct transfer-shape defect already vanishes,
+\[
+\Xi_1=0,
+\]
+then
+\[
+\boxed{
+\mathcal R_1=0
+\iff
+\Sigma_\eta=0.
+}
+\]
+
+### 6.4 Full triple-rigidity theorem
+
+Combining the three blocks,
+\[
+\boxed{
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0.
+}
+\]
+So the first-order coherent problem has decomposed completely into:
+
+1. a tracking sector,
+2. a direct nontracking transfer-shape sector,
+3. and a dressing sector.
+
+---
+
+## 7. Exact no-go filter: pure grouped real `P2` anisotropy cannot linearly feed the scalar off-bundle slippages
+
+The second obstruction theorem carried into this stage is the pure grouped-lane scalar no-go.
+
+Let
+\[
+x=(x_{20},x_{21},x_{22})^T
+\]
+be any grouped real `P2` bundle, with grouped metric
+\[
+G_{\rm grp}=\operatorname{diag}(1,2,2).
+\]
+The weighted trace/anomaly variables are
+\[
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+ a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+ b_x=\frac{x_{21}-x_{22}}{2}.
+\]
+The exact grouped quadratic invariant is
+\[
+\boxed{
+\mathcal I[x,y]
+=
+\frac15\,\delta x^T G_{\rm grp}\,\delta y
+=
+4a_x a_y+\frac45 b_x b_y,
+}
+\]
+where `\(\delta x:=x-\bar x(1,1,1)^T\)`.
+
+On the weak axisymmetric `\(Y_{20}\)` branch,
+\[
+ x_{20}=x^{(0)}+\varepsilon x^{(1)},
+\qquad
+ x_{21}=x^{(0)}+\frac\varepsilon2 x^{(1)},
+\qquad
+ x_{22}=x^{(0)}-\varepsilon x^{(1)}.
+\]
+Then
+\[
+\boxed{
+\bar x=x^{(0)},
+\qquad
+b_x=3a_x,
+\qquad
+\mathcal I[x,x]=\frac{7}{10}\,\varepsilon^2\,(x^{(1)})^2.
+}
+\]
+So the first weak-axisymmetric grouped anisotropy is already **quadratic** as a scalar invariant.
+
+The representation-theoretic consequence is the exact no-go statement:
+\[
+\boxed{
+\delta^{(1)}_{P_2}\mathcal S=0
+}
+\]
+for every rotational scalar observable `\(\mathcal S\)` extracted from the isotropic branch.
+In particular, for the scalar off-bundle slippages of Stage 151,
+\[
+\boxed{
+\varepsilon_L^{(1,P_2)}=0,
+\qquad
+\varepsilon_v^{(1,P_2)}=0,
+\qquad
+\varepsilon_T^{(1,P_2)}=0,
+}
+\]
+and therefore
+\[
+\boxed{
+\varepsilon_\perp^{(1,P_2)}=0,
+\qquad
+\delta_\perp^{(1,P_2)}=0.
+}
+\]
+So a pure grouped real `P2` anisotropy cannot be the first linear source of the scalar normal/off-family defect.
+Its scalar feed-down begins only at quadratic order through the grouped invariants `\(\mathcal I[X,Y]\)`.
+
+### Why this matters here
+
+This means the remaining **linear** first-order theorem gate cannot be blamed on a hidden scalar backreaction from pure grouped-lane anisotropy.
+At linear order, the grouped-anisotropy problem must live in the direct outlet / transfer-shape data themselves.
+
+That is the second obstruction theorem packaged explicitly by this stage.
+
+---
+
+## 8. Best current theorem statement after Stage 173
+
+After Stages 171–173, the coherent weak-axisymmetric first-order problem is now split as sharply as it can be before the final finite packet compiler.
+
+### 8.1 Direct defect vs dressing
+
+The exact microscopic split is
+\[
+\boxed{
+\Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+}
+\]
+So the first-order coherent problem is exactly the zero-set test of
+\[
+\boxed{
+(\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta).
+}
+\]
+
+### 8.2 Two obstruction theorems are now explicit
+
+1. **Support-blindness:** the direct transfer shape `\(\mathcal T^2\)` and the corrected nontracking composite `\(\mathfrak N_*\)` are blind to the coherent support-enhancement lane. So that lane cannot cancel the direct grouped defect.
+
+2. **No linear scalar feed-down from pure grouped real `P2`:** pure grouped-lane anisotropy cannot linearly generate the scalar off-bundle slippages. Its scalar feed-down begins only at quadratic order.
+
+So two common escape routes are now removed from the first-order theorem gate.
+
+### 8.3 Smallest remaining first-order microscopic gate
+
+The actual moving-throat branch must now answer only three first-order questions:
+
+1. does the tracking coordinate `\(\Sigma_{\rm tr}\)` vanish?
+2. does the genuine nontracking direct-defect coordinate `\(\Sigma_{\rm nt}\)` vanish?
+3. does the dressing coordinate `\(\Sigma_\eta\)` vanish?
+
+If yes, then
+\[
+\Theta_1=\Xi_1=\mathcal R_1=0.
+\]
+If not, the remaining mismatch is already classified as either
+
+- tracking,
+- direct transfer-shape,
+- or dressing.
+
+That is the cleanest microscopic separation reached so far.
+
+---
+
+## 9. Immediate next stage
+
+The next clean move is now exactly the Stage-174 compiler step.
+
+The purpose of that next stage should be:
+
+1. take the direct/dressing split fixed here,
+2. take the grouped operator / transfer data from Stage 172,
+3. and compile the **smallest exact finite PDE data packet** that still has to be computed on the actual moving-throat branch.
+
+So Stage 173 is the last structural-cleanup stage before the minimal PDE packet theorem gate.
+# Moving-Throat PDE — Stage 174: Minimal PDE Data Packet, Exact Branch/Orbit Residuals, and the Home-Stretch Theorem
+
+## Status
+
+**Exact within the carried grouped real `P2` / coherent-branch / outgoing-compiler hierarchy already fixed in Stages 171–173.**
+
+This stage does **not** add a new microscopic closure law.
+It packages the existing reduced theorem chain into the smallest exact finite data packet that the completed moving-throat PDE still has to supply.
+
+---
+
+## Purpose
+
+Stage 171 completed the first-order **branch-observable** front end in the direct observables
+\[
+R_{\rm tr},
+\qquad
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
+\qquad
+\epsilon_\eta,
+\]
+and showed that their logarithmic drifts are an exact first-order compiler for
+\[
+(\Theta_1,\Xi_1,\mathcal R_1).
+\]
+
+Stage 172 carried the same branch-observable data into the exact **transfer-shape / grouped-response / outgoing-prefactor** compiler,
+so that the isotropic grouped bundle is described by the low-frequency coefficients
+\[
+(D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4}),
+\qquad
+A\in\{20,21,22\},
+\]
+together with the source-map factor `\(m_{\hat 0}\)`.
+
+Stage 173 then separated the **direct transfer-shape defect** from the **selected-branch dressing residual**, proved the support-blindness theorem for the direct transfer shape, and promoted the main weak-axisymmetric no-go filters. After that stage, the remaining gap was no longer “what microscopic channel is missing?” but rather:
+
+> what is the smallest exact finite packet of branch data the completed PDE must return so that the final reduced verdict is automatic?
+
+This stage answers that question.
+
+The main outputs are:
+
+1. the exact **Packet A** compiler from grouped-lane low-frequency data to the final branch residual packet
+   \[
+   \Delta_{\rm branch},
+   \]
+2. the exact **Packet B** interconversion between the three equivalent orbit-lock packets
+   \[
+   (m_T,m_K,m_\mu),
+   \qquad
+   (\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+   \qquad
+   (q_{\rm tr},q_{\rm nt},q_\eta),
+   \]
+3. the exact reduced closure criterion
+   \[
+   \Delta_{\rm branch}=0,
+   \qquad
+   \Delta_{\rm orbit}=0,
+   \]
+4. and the sharp statement that **everything else in the reduced 2.5PN / 4PN / 5PN endgame is downstream algebra of those two packets.**
+
+So this stage is the finite-packet endpoint of the moving-throat PDE derivation program in its present hierarchy.
+
+---
+
+## 1. Carry-forward grouped-lane bundle data
+
+### 1.1 Packet A: the grouped low-frequency PDE bundle
+
+For each grouped real `P2` lane
+\[
+A\in\{20,21,22\},
+\]
+carry forward the exact conservative wall/worldtube operator and outgoing-transfer expansions
+\[
+D_A^{(\mathrm{cons})}(\omega)
+=
+D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6),
+\]
+\[
+N_A(\omega)
+=
+N_{A0}+N_{A2}\omega^2+N_{A4}\omega^4+O(\omega^6).
+\]
+These coefficients already absorb everything computed in the previous stages:
+
+- geometry-only wall data,
+- BdG support self-energy,
+- conservative localized-Maxwell / mixed-sector self-energy,
+- and the static part of the outgoing transfer block.
+
+The exact finite grouped bundle packet is therefore
+\[
+\boxed{
+\mathcal P_A
+:=
+\Bigl(
+(D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4})_{A=20,21,22},
+\ m_{\hat 0}
+\Bigr).
+}
+\]
+
+This is the smallest branch-side packet that still retains all low-frequency information needed by the reduced endgame compiler.
+
+### 1.2 Exact normalized grouped response and prefactor moments
+
+From `\(\mathcal P_A\)` define the exact grouped response moments
+\[
+\boxed{
+\nu_2^{(A)}:=-\frac{D_{A2}}{D_{A0}},}
+\qquad
+\boxed{
+\nu_4^{(A)}:=\frac{D_{A2}^2-D_{A0}D_{A4}}{D_{A0}^2}.}
+\]
+To avoid collision with the bulk velocity symbol `v`, this stage writes these grouped response moments as `\(\nu_2^{(A)},\nu_4^{(A)}\)` rather than `u_2^{(A)},u_4^{(A)}`. They are the same objects used in the later endgame notes.
+
+Likewise define the outgoing prefactor moments
+\[
+\boxed{P_0^{(A)}:=\frac{N_{A0}}{D_{A0}},}
+\]
+\[
+\boxed{P_2^{(A)}:=\frac{D_{A0}N_{A2}-2D_{A2}N_{A0}}{D_{A0}^2},}
+\]
+\[
+\boxed{
+P_4^{(A)}:=
+\frac{D_{A0}^2N_{A4}-2D_{A0}(D_{A2}N_{A2}+D_{A4}N_{A0})+3D_{A2}^2N_{A0}}
+{D_{A0}^3}.
+}
+\]
+
+These formulas are exact compiler identities. They do not introduce any new closure choice.
+
+### 1.3 Exact grouped trace/anomaly decomposition
+
+For any grouped triple
+\[
+x=(x_{20},x_{21},x_{22}),
+\]
+define the weighted grouped trace/anomaly variables
+\[
+\boxed{
+\bar x:=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+ a_x:=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+ b_x:=\frac{x_{21}-x_{22}}{2}.
+}
+\]
+The exact inverse map is
+\[
+\boxed{x_{20}=\bar x+4a_x,}
+\qquad
+\boxed{x_{21}=\bar x-a_x+b_x,}
+\qquad
+\boxed{x_{22}=\bar x-a_x-b_x.}
+\]
+
+Apply this decomposition to the grouped response and prefactor moments:
+\[
+(\bar\nu_2,a_2,b_2),
+\qquad
+(\bar\nu_4,a_4,b_4),
+\qquad
+(\bar P_0,a_{P_0},b_{P_0}).
+\]
+
+Then the exact grouped isotropy gate is simply
+\[
+a_2=b_2=a_4=b_4=a_{P_0}=b_{P_0}=0.
+\]
+
+### 1.4 Exact one-pole and normalization defects
+
+The one-pole conservative defect is
+\[
+\boxed{\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}.}
+\]
+It measures failure of the isotropic grouped response to land on the one-pole conservative identity.
+
+The normalization defect is
+\[
+\boxed{
+\Delta_{\rm norm}
+:=
+ m_{\hat 0}^{\,2}\bar P_0-
+ \frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+It is exactly the invariant normalization gap already isolated by the outgoing quadrupole bridge.
+
+### 1.5 The exact final branch residual packet
+
+Collecting the previous quantities gives the exact branch-side verdict vector
+\[
+\boxed{
+\Delta_{\rm branch}
+:=
+\bigl(
+ a_2,\ b_2,\ a_4,\ b_4,\ a_{P_0},\ b_{P_0},\ \Delta_{\rm pole},\ \Delta_{\rm norm}
+\bigr).
+}
+\]
+
+This is the exact finite packet whose zero-set encodes the grouped-lane isotropy, one-pole, and outgoing-normalization demands.
+
+### 1.6 Why `P_2` and `P_4` are compiled but not retained in `\Delta_{\rm branch}`
+
+Packet A contains `\(N_{A2},N_{A4}\)` because they are part of the exact low-frequency bundle and because they compile the even outgoing prefactor moments `\(P_2^{(A)},P_4^{(A)}\)`.
+
+But the **minimal reduced verdict packet** does not need extra residual entries built from `P_2` and `P_4`.
+Within the present hierarchy, the leading odd quadrupole coefficient depends only on the isotropic static prefactor `\(\bar P_0\)`, while the grouped conservative side is already monitored by
+\[
+(a_2,b_2,a_4,b_4,\Delta_{\rm pole}).
+\]
+So `P_2` and `P_4` remain exact derived diagnostics, but they are not additional independent verdict coordinates in the minimal home-stretch packet.
+
+---
+
+## 2. Carry-forward orbit-lock data
+
+### 2.1 Packet B: three exact representations of the same finite orbit verdict
+
+The orbit side is already known to be exactly representable by any one of three equivalent packets.
+
+#### (i) Residual mismatch ratios
+\[
+\boxed{(m_T,m_K,m_\mu).}
+\]
+
+#### (ii) Invariant ratios
+To avoid collision with the exact Stage-171 tracking factor `\(R_{\rm tr}\)`, this note writes the finite orbit/invariant ratios as
+\[
+\boxed{(\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta).}
+\]
+The later endgame notes denote the same packet by `(R_tr,R_nt,R_eta)`.
+
+#### (iii) Quotient coordinates
+\[
+\boxed{(q_{\rm tr},q_{\rm nt},q_\eta).}
+\]
+
+So the exact orbit-side packet is
+\[
+\boxed{\mathcal P_B:=\text{any one of the three equivalent packets above}.}
+\]
+
+### 2.2 Exact interconversion formulas
+
+Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+Then the exact packet interconversion laws are
+\[
+\boxed{\mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},}
+\qquad
+\boxed{\mathfrak R_{\rm nt}=\frac{m_\mu}{m_K m_T^{F_*}},}
+\qquad
+\boxed{\mathfrak R_\eta=\frac{1}{m_K}.}
+\]
+Taking logarithms gives
+\[
+\boxed{q_{\rm tr}=\ln \mathfrak R_{\rm tr},}
+\qquad
+\boxed{q_{\rm nt}=\ln \mathfrak R_{\rm nt},}
+\qquad
+\boxed{q_\eta=\ln \mathfrak R_\eta.}
+\]
+Conversely,
+\[
+\boxed{m_T=e^{q_{\rm tr}/(1+\chi_{0,*})},}
+\qquad
+\boxed{m_K=e^{-q_\eta},}
+\qquad
+\boxed{m_\mu=e^{q_{\rm nt}-q_\eta+F_* q_{\rm tr}/(1+\chi_{0,*})}.}
+\]
+
+### 2.3 Exact orbit residual packet
+
+The sharpest orbit-lock verdict is therefore the quotient-coordinate packet
+\[
+\boxed{
+\Delta_{\rm orbit}:=
+(q_{\rm tr},q_{\rm nt},q_\eta).
+}
+\]
+Its zero-set is exactly orbit lock:
+\[
+\boxed{
+\Delta_{\rm orbit}=0
+\iff
+m_T=m_K=m_\mu=1
+\iff
+\mathfrak R_{\rm tr}=\mathfrak R_{\rm nt}=\mathfrak R_\eta=1.
+}
+\]
+
+### 2.4 Relation to the Stage-171 quotient directions
+
+At the infinitesimal level, `\(\Delta_{\rm orbit}\)` is just the finite upgrade of the same three quotient directions whose tangent compiler was fixed in Stages 170–171.
+So Packet B is not a new object. It is the exact finite orbit-lock version of the already-frozen three-coordinate quotient structure.
+
+---
+
+## 3. Exact home-stretch theorem
+
+### 3.1 Statement
+
+\[
+\boxed{\textbf{Theorem (Stage 174 home-stretch theorem).}}
+\]
+
+Within the carried grouped real `P_2` / coherent-branch / outgoing-prefactor hierarchy of Stages 171–173,
+all reduced endgame diagnostics needed for the final GR-compatible test are exact compiler outputs of the two finite packets
+\[
+\mathcal P_A
+\qquad\text{and}\qquad
+\mathcal P_B.
+\]
+In particular,
+\[
+\boxed{
+\text{reduced closure is complete}
+\iff
+\Delta_{\rm branch}=0
+\quad\text{and}\quad
+\Delta_{\rm orbit}=0.
+}
+\]
+
+### 3.2 Meaning
+
+This theorem says that the moving-throat PDE no longer has to “show 5PN somehow,” or “produce the anomaly correction somehow,” or “demonstrate 2.5PN/4PN closure somehow.”
+It only has to supply the actual branch values needed to evaluate two exact finite residual vectors:
+\[
+\Delta_{\rm branch},
+\qquad
+\Delta_{\rm orbit}.
+\]
+Everything else is compiler algebra already fixed by the previous stages.
+
+### 3.3 Decision tree
+
+The reduced verdict is now immediate.
+
+1. **Compile Packet A** into `\(\Delta_{\rm branch}\)`.
+2. **Compile Packet B** into `\(\Delta_{\rm orbit}\)`.
+3. If
+   \[
+   \Delta_{\rm branch}\neq 0,
+   \]
+   then the branch fails the reduced GR-compatible grouped test.
+4. If
+   \[
+   \Delta_{\rm branch}=0
+   \quad\text{but}\quad
+   \Delta_{\rm orbit}\neq 0,
+   \]
+   then the branch is isotropic and normalized on the grouped side but is still off the exact similarity orbit.
+5. Only if
+   \[
+   \Delta_{\rm branch}=0
+   \quad\text{and}\quad
+   \Delta_{\rm orbit}=0
+   \]
+   is the reduced closure complete inside the present hierarchy.
+
+---
+
+## 4. What is now settled, and what the completed PDE still has to compute
+
+### 4.1 Settled inside the present hierarchy
+
+The following are no longer active algebraic bottlenecks.
+
+1. The first-order branch-observable front end is fixed exactly by Stage 171.
+2. The transfer-shape / outgoing-prefactor compiler is fixed exactly by Stage 172.
+3. The direct-defect / dressing split and the main weak-axisymmetric no-go filters are fixed exactly by Stage 173.
+4. The final finite residual packets `\(\Delta_{\rm branch}\)` and `\(\Delta_{\rm orbit}\)` are now explicit.
+
+So the remaining gap is no longer compression, notation, or algebra.
+
+### 4.2 What the completed moving-throat PDE still has to return
+
+The completed PDE still has to compute the actual branch values of:
+
+- the grouped bundle coefficients
+  \[
+  (D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4}),
+  \qquad A\in\{20,21,22\},
+  \]
+- the source-map factor `\(m_{\hat 0}\)`,
+- and one exact form of the orbit-lock packet
+  \[
+  (m_T,m_K,m_\mu),
+  \quad\text{or}\quad
+  (\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+  \quad\text{or}\quad
+  (q_{\rm tr},q_{\rm nt},q_\eta).
+  \]
+
+That is the entire remaining home-stretch theorem gap in the current hierarchy.
+
+---
+
+## 5. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact single-lane response and prefactor compilers from `\((D_0,D_2,D_4,N_0,N_2,N_4)\)`,
+- the exact grouped trace/anomaly inverse formulas and weighted-projector identities,
+- the exact compilation of `\(\Delta_{\rm branch}\)` from Packet A,
+- isotropic collapse of the grouped anisotropy coordinates,
+- vanishing of `\(\Delta_{\rm branch}\)` on the isotropic one-pole normalized test branch,
+- the exact orbit-packet interconversion formulas,
+- and the zero-set equivalence of the three orbit-lock packet representations.
+
+Supporting files:
+
+- `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py`
+- `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt`
+# Moving-Throat PDE — Stage 175: Exact Orbit/Quotient Projectors and the Microscopic Orbit-Lock Split
+
+## Status
+
+**Exact within the carried Stage-170 coherent quotient closure and the finite-packet hierarchy isolated in Stage 174.**
+
+This stage does **not** introduce any new constitutive law or new physical closure.
+It upgrades the finite quotient packet of Stage 174 into an exact **microscopic projector calculus** on the full eight-dimensional drift space.
+
+---
+
+## Purpose
+
+Stage 174 showed that the reduced home-stretch verdict depends only on two exact finite packets:
+
+- the grouped bundle packet `\(\mathcal P_A\)`, and
+- the quotient / orbit-lock packet
+  \[
+  \Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta).
+  \]
+
+That result is already strong enough for the endgame compiler. But it still leaves one important microscopic question open:
+
+> given an arbitrary candidate microscopic drift of the actual moving-throat branch, how do we split it **exactly** into
+> 
+> 1. the pure similarity-orbit motion that preserves the branch invariants, and
+> 2. the true quotient-failure piece measured by
+>    \((q_{\rm tr},q_{\rm nt},q_\eta)\)?
+
+That split is the missing bridge between the finite packet theorem and the actual microscopic branch-selection problem.
+
+The main outputs of this stage are:
+
+1. the exact pivot block in the dependent coordinates
+   \[
+   (\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+   \]
+2. the exact canonical quotient section
+   \[
+   S_{(T,K_\eta,\mu)},
+   \]
+3. the exact complementary projectors
+   \[
+   Q_{\rm quot},\qquad O_{\rm orb}=I-Q_{\rm quot},
+   \]
+4. the sharp result that the entire quotient-failure piece has support only on the dependent triple
+   \[
+   (\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+   \]
+5. and the exact theorem that the orbit-lock condition is simply
+   \[
+   Q_{\rm quot}\Delta\mathbf x=0
+   \iff
+   M_*\Delta\mathbf x=0.
+   \]
+
+So Stage 175 turns the abstract finite quotient packet of Stage 174 into a direct microscopic orbit/failure decomposition.
+
+---
+
+## 1. Carry-forward microscopic drift space and finite quotient packet
+
+Work in the ordered finite log-ratio drift vector
+\[
+\boxed{
+\Delta\mathbf x:=
+\begin{pmatrix}
+\Delta_\lambda\\
+\Delta_c\\
+\Delta_\gamma\\
+\Delta_U\\
+\Delta_{K_\eta}\\
+\Delta_W\\
+\Delta_\mu\\
+\Delta_T
+\end{pmatrix},
+}
+\]
+where the entries are the logarithmic ratios of
+\[
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+\]
+
+Carry forward the exact monomial-drift map
+\[
+\boxed{
+\mathbf q:=
+\begin{pmatrix}
+q_{\rm tr}\\
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}
+=M_*\,\Delta\mathbf x,
+}
+\]
+with
+\[
+\boxed{
+M_*=
+\begin{pmatrix}
+0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+2(1+E_*) & 0 & 2E_* & F_*-E_* & -1 & -(2+E_*) & 1 & -F_*\\[4pt]
+0 & 2 & 0 & -1 & -1 & 0 & 0 & 0
+\end{pmatrix}.
+}
+\]
+
+So the finite Packet B of Stage 174 is not abstract. It is literally the quotient projection of the microscopic drift under `\(M_*\)`.
+
+The five free similarity coordinates are
+\[
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W),
+\]
+while the three dependent microscopic coordinates are
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu).
+\]
+
+---
+
+## 2. Exact pivot block on the dependent triple
+
+Select the columns of `\(M_*\)` corresponding to the dependent triple in the order
+\[
+(T,K_\eta,\mu).
+\]
+Then
+\[
+\boxed{
+P_{(T,K_\eta,\mu)}:=M_*[:,(T,K_\eta,\mu)]
+=
+\begin{pmatrix}
+1+\chi_{0,*} & 0 & 0\\[4pt]
+-F_* & -1 & 1\\[4pt]
+0 & -1 & 0
+\end{pmatrix}.
+}
+\]
+Its determinant is
+\[
+\boxed{
+\det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+}
+\]
+So the dependent triple is an exact pivot block on the constructive coherent branch.
+
+The inverse is therefore exact:
+\[
+\boxed{
+P_{(T,K_\eta,\mu)}^{-1}
+=
+\begin{pmatrix}
+\dfrac{1}{1+\chi_{0,*}} & 0 & 0\\[8pt]
+0 & 0 & -1\\[4pt]
+\dfrac{F_*}{1+\chi_{0,*}} & 1 & -1
+\end{pmatrix}.
+}
+\]
+
+This already shows that the quotient coordinates can be reinserted into microscopic drift space using only the dependent triple.
+
+---
+
+## 3. Exact canonical quotient section
+
+Let
+\[
+E_{(T,K_\eta,\mu)}
+\]
+be the ambient `\(8\times 3\)` embedding that inserts a three-vector into the dependent positions
+\[
+(T,K_\eta,\mu)
+\]
+in the ordered drift basis `\((\lambda,c,\gamma,U,K_\eta,W,\mu,T)\)`.
+
+Define the canonical quotient section
+\[
+\boxed{
+S_{(T,K_\eta,\mu)}:=E_{(T,K_\eta,\mu)}\,P_{(T,K_\eta,\mu)}^{-1}.
+}
+\]
+Explicitly,
+\[
+\boxed{
+S_{(T,K_\eta,\mu)}=
+\begin{pmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & -1\\
+0 & 0 & 0\\
+\dfrac{F_*}{1+\chi_{0,*}} & 1 & -1\\[8pt]
+\dfrac{1}{1+\chi_{0,*}} & 0 & 0
+\end{pmatrix}.
+}
+\]
+By construction,
+\[
+\boxed{M_*S_{(T,K_\eta,\mu)}=I_3.}
+\]
+So `\(S_{(T,K_\eta,\mu)}\)` is an exact right inverse of the quotient map.
+
+This means every quotient packet
+\[
+\mathbf q=(q_{\rm tr},q_{\rm nt},q_\eta)^T
+\]
+already has a canonical microscopic representative supported only on the dependent triple:
+\[
+\boxed{\Delta\mathbf x_{\rm quot}:=S_{(T,K_\eta,\mu)}\,\mathbf q.}
+\]
+
+---
+
+## 4. Exact complementary orbit/quotient projectors
+
+Define
+\[
+\boxed{Q_{\rm quot}:=S_{(T,K_\eta,\mu)}M_*,}
+qquad
+\boxed{O_{\rm orb}:=I_8-Q_{\rm quot}.}
+\]
+Then the projector identities are exact:
+\[
+\boxed{Q_{\rm quot}^2=Q_{\rm quot},}
+qquad
+\boxed{O_{\rm orb}^2=O_{\rm orb},}
+qquad
+\boxed{Q_{\rm quot}O_{\rm orb}=O_{\rm orb}Q_{\rm quot}=0.}
+\]
+Moreover,
+\[
+\boxed{M_*O_{\rm orb}=0,}
+qquad
+\boxed{M_*Q_{\rm quot}=M_*.}
+\]
+So for every microscopic drift,
+\[
+\boxed{
+\Delta\mathbf x
+=
+\underbrace{O_{\rm orb}\Delta\mathbf x}_{\Delta\mathbf x_{\rm orbit}}
++
+\underbrace{Q_{\rm quot}\Delta\mathbf x}_{\Delta\mathbf x_{\rm fail}}.
+}
+\]
+This decomposition is exact and unique, with
+\[
+\boxed{\Delta\mathbf x_{\rm orbit}\in\ker M_*,}
+qquad
+\boxed{M_*\Delta\mathbf x_{\rm fail}=M_*\Delta\mathbf x=\mathbf q.}
+\]
+
+So `\(O_{\rm orb}\)` is the exact microscopic orbit projector, while `\(Q_{\rm quot}\)` is the exact quotient-failure projector.
+
+---
+
+## 5. Exact support of the quotient-failure piece
+
+Let
+\[
+\mathbf q=M_*\Delta\mathbf x=
+\begin{pmatrix}
+q_{\rm tr}\\
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}.
+\]
+Then the quotient-failure piece is
+\[
+\boxed{\Delta\mathbf x_{\rm fail}=Q_{\rm quot}\Delta\mathbf x=S_{(T,K_\eta,\mu)}\mathbf q.}
+\]
+So its only nonzero components are
+\[
+\boxed{(\Delta_T)_{\rm fail}=\frac{q_{\rm tr}}{1+\chi_{0,*}},}
+\]
+\[
+\boxed{(\Delta_{K_\eta})_{\rm fail}=-q_\eta,}
+\]
+\[
+\boxed{(\Delta_\mu)_{\rm fail}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.}
+\]
+All five free similarity directions vanish in `\(\Delta\mathbf x_{\rm fail}\)`.
+
+This is the sharpest microscopic result of the stage:
+
+> **the entire failure of single-orbit lock is carried only by the dependent triple**
+> \((\Delta_T,\Delta_{K_\eta},\Delta_\mu)\).
+
+So the five free similarity coordinates never directly carry quotient failure.
+
+---
+
+## 6. Exact orbit piece and the single-orbit law
+
+Because
+\[
+\Delta\mathbf x_{\rm orbit}=O_{\rm orb}\Delta\mathbf x,
+\]
+the orbit projector leaves the five free coordinates unchanged:
+\[
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W)_{\rm orbit}
+=
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W).
+\]
+It rewrites only the dependent triple, forcing it onto the exact Stage-170 single-orbit law.
+
+Define
+\[
+\boxed{\alpha_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.}
+\]
+Then the orbit piece satisfies
+\[
+\boxed{(\Delta_{K_\eta})_{\rm orbit}=2\Delta_c-\Delta_U,}
+\]
+\[
+\boxed{(\Delta_T)_{\rm orbit}=\Delta_U-\alpha_*(\Delta_\gamma+\Delta_c-\Delta_U),}
+\]
+\[
+\boxed{
+(\Delta_\mu)_{\rm orbit}
+=
+2\Delta_c-\Delta_U+2\Delta_W-2\Delta_\lambda
+-
+E_*(2\Delta_\gamma+2\Delta_\lambda-\Delta_U-\Delta_W)
+-
+F_*\alpha_*(\Delta_\gamma+\Delta_c-\Delta_U).
+}
+\]
+These are exactly the Stage-170 finite orbit formulas recovered by projection.
+
+So the projector calculus does not invent a new orbit law.
+It isolates the exact same law as the unique orbit representative with the same five free coordinates as the original microscopic drift.
+
+---
+
+## 7. Exact orbit-lock theorem in projector form
+
+The exact orbit-lock condition now has several equivalent forms:
+\[
+\boxed{\mathbf q=0,}
+\qquad
+\boxed{M_*\Delta\mathbf x=0,}
+\qquad
+\boxed{Q_{\rm quot}\Delta\mathbf x=0,}
+\qquad
+\boxed{\Delta\mathbf x=O_{\rm orb}\Delta\mathbf x,}
+\qquad
+\boxed{\Delta\mathbf x\in\ker M_*.}
+\]
+So the Packet-B zero-set of Stage 174 is now a literal microscopic projector statement.
+
+In words:
+
+- Stage 174 said the reduced orbit packet must vanish.
+- Stage 175 shows that this is exactly the statement that the candidate microscopic drift has no quotient-supported dependent-triple correction.
+
+That is the clean bridge from the finite-packet theorem back to the actual moving-throat PDE branch.
+
+---
+
+## 8. What this stage fixes, and what remains for Stage 176
+
+### Fixed here
+
+This stage fixes the exact microscopic geometry of the orbit packet.
+In particular:
+
+1. Packet B is exactly the quotient projection `\(M_*\Delta\mathbf x\)`.
+2. The orbit/failure split is exact and complementary.
+3. The quotient failure lives only on the dependent triple.
+4. The orbit projector leaves the five similarity coordinates untouched and restores the exact Stage-170 single-orbit dependent law.
+
+### Still missing
+
+What this stage does **not** yet do is compose the microscopic projector with the observable defect packet
+\[
+(\Theta_1,\Xi_1,\mathcal R_1).
+\]
+That is the next step.
+
+Stage 176 will take the exact observable inversion from the earlier compiler stages and feed it through the canonical quotient section
+\[
+S_{(T,K_\eta,\mu)}
+\]
+to obtain the exact observable-to-microscopic correction compiler.
+
+---
+
+## 9. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact Stage-170 monomial-drift matrix `\(M_*\)`,
+- the dependent pivot block `\(P_{(T,K_\eta,\mu)}\)` and its inverse,
+- the exact right-inverse section `\(S_{(T,K_\eta,\mu)}\)`,
+- the complementary projector identities for `\(Q_{\rm quot}\)` and `\(O_{\rm orb}\)`,
+- the support of the quotient-failure projector only on the dependent triple,
+- the exact formulas for the failure components in terms of `\((q_{\rm tr},q_{\rm nt},q_\eta)\)`,
+- the exact orbit-law formulas for the projected dependent coordinates,
+- and the equivalence
+  \[
+  Q_{\rm quot}\Delta\mathbf x=0
+  \iff
+  M_*\Delta\mathbf x=0.
+  \]
+
+Supporting files:
+
+- `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py`
+- `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt`

@@ -40,19 +40,7 @@
 \maketitle
 
 \begin{abstract}
-We present the conditional full conservative two-body $4$PN assembly for the $4$D toy-model program within the same declared closure hierarchy used at $1$PN, $2$PN, and $3$PN. Starting from the exact $4$D reduction backbone, the frozen lower-order conservative ledger, and the $2.5$PN narrowing to the canonically normalized orbital/worldtube STF quadrupole branch, we close the complete \emph{local instantaneous} near-zone ledger through order $c^{-8}$ and isolate the hereditary contribution in the form
-\[
-L_{4\mathrm{PN}}^{\mathrm{cons}} = L_{4\mathrm{PN}}^{\mathrm{local}} + L_{4\mathrm{PN}}^{\mathrm{tail}},
-\qquad
-C_{\rm tail}=\frac{GM}{2c^3}\,\gamma_{\rm quad}^{\rm eff}.
-\]
-The local theorem chain uses the exact Schwarzschild one-body $4$PN gate, the exact quartic Legendre compiler, the Hamiltonian-first generic-frame lift of the fixed local target, the exact canonical residual slice, the generic-frame lift of the aligned-seed ordinary correction, and the exact local referee reconstruction. The only conditional step left for a fully normalized conservative $4$PN theorem is the same passive/outgoing STF quadrupole normalization already isolated by the $2.5$PN program,
-\[
-\gamma_{\rm quad}^{\rm eff}\stackrel{?}{=}\frac{2G}{5c^5}.
-\]
-The paper is written as a theorem-status ledger: exact, reduced, and conditional
-claims are separated explicitly so that the remaining $4$PN gate is isolated
-rather than blurred into the solved local closure.
+We present the full conservative fourth post-Newtonian (4PN) assembly for the 4D toy-model program within the same declared closure hierarchy used at lower orders. The strict Schwarzschild one-body gate, exact quartic Legendre compiler, Hamiltonian-first generic-frame lift, canonical comparable-mass local residual, aligned-seed correction, and referee reconstruction together show that the entire local instantaneous 4PN sector already has an exact generic-frame ordinary representative. We then isolate the hereditary sector and show that its coefficient is not a new independent datum, but is fixed by the same canonically normalized orbital/worldtube STF quadrupole branch that controls the 2.5PN Burke--Thorne channel, through $C_{\rm tail}=(GM/2c^3)\,\gamma_{\rm quad}^{\rm eff}$. Hence 4PN opens no new normalization constant: if $\gamma_{\rm quad}^{\rm eff}=2G/(5c^5)$, then $C_{\rm tail}=G^2M/(5c^8)$ and the full conservative 4PN local+tail structure matches the standard GR target. The remaining gap is therefore the same passive/outgoing quadrupole-normalization theorem on the moving-throat branch already isolated by the 2.5PN program.
 \end{abstract}
 
 % ---------------------------------------------------------------------------
@@ -210,7 +198,7 @@ The main claims of the paper are the following.
   continuation of the carried $3$PN one-body closure.
 
   \item The exact quartic perturbative Legendre-transform identity closes the
-  ordinary/Hamiltonian bridge through $4$PN and provides the unique compiler
+  chart bridge through $4$PN and provides the unique compiler
   needed for any trustworthy local comparable-mass lift.
 
   \item The raw exchange-symmetric generic-frame local scaffold is already
@@ -627,11 +615,14 @@ The extra ordinary-chart $\nu^4$ tails in the middle and upper blocks are
 therefore a translation artifact rather than evidence of a true local span
 failure.  This is why the correct local $4$PN route is
 \[
+\begin{gathered}
 \text{fixed local Hamiltonian target}
 \longrightarrow
 \text{generic-frame Hamiltonian lift}
+\\
 \longrightarrow
-\text{ordinary translation only afterward}.
+\text{ordinary translation only afterward}
+\end{gathered}.
 \]
 
 \paragraph{Hamiltonian-chart completeness and exact ordinary reconstruction.}
@@ -1491,6 +1482,8 @@ L_{4,\mathrm{seed}}={}&
 \\[0.5ex]
 &
 +\frac{203G^3m_A m_B}{32r^3}(m_B^2 v_A^4+m_A^2 v_B^4)
+\\[0.5ex]
+&
 +\frac{31G^4m_A m_B}{32r^4}(m_B^3 v_A^2+m_A^3 v_B^2)
 +\frac{G^5m_A m_B}{16r^5}(m_B^4+m_A^4),
 \end{aligned}
@@ -1509,7 +1502,7 @@ reduces back to \eqref{eq:4pn-onebody-lagrangian-gate} exactly.
 
 This seed should therefore be read as a theorem-level starting point, not as a
 convenient ansatz.  It is the correct local front end because the one-body gate
-forces it and because later generic-frame comparable-mass data must be measured
+forces it.  Later generic-frame comparable-mass data must be measured
 \emph{relative} to it.  In particular, the subsequent local comparable-mass
 problem is not allowed to hide one-body repair information inside the residual.
 That information has already been frozen here.  The later Hamiltonian-first lift
@@ -1796,11 +1789,14 @@ not
 but rather
 \begin{equation}
 \boxed{
+\begin{gathered}
 \text{fixed local Hamiltonian target}
 \;\longrightarrow\;
 \text{generic-frame Hamiltonian lift}
-\;\longrightarrow\;
-\text{ordinary translation only afterward}.
+\\
+\longrightarrow
+\text{ordinary translation only afterward}
+\end{gathered}
 }
 \label{eq:4pn-local-hamiltonian-first-scheme}
 \end{equation}
@@ -1815,11 +1811,16 @@ question becomes exact.  The COM interaction residual is decomposed into
 explicit $\nu$-polynomial coefficient space:
 \begin{equation}
 \begin{aligned}
-\frac{G}{r}:&\quad 5\text{ slots}\times(\nu,\nu^2,\nu^3,\nu^4) &&\Rightarrow 20\text{ coefficients},\\
-\frac{G^2}{r^2}:&\quad 4\text{ slots}\times(\nu,\nu^2,\nu^3) &&\Rightarrow 12,\\
-\frac{G^3}{r^3}:&\quad 3\text{ slots}\times(\nu,\nu^2,\nu^3) &&\Rightarrow 9,\\
-\frac{G^4}{r^4}:&\quad 2\text{ slots}\times(\nu,\nu^2) &&\Rightarrow 4,\\
-\frac{G^5}{r^5}:&\quad 1\text{ slot}\times(\nu,\nu^2) &&\Rightarrow 2,
+\frac{G}{r}:&\quad 5\text{ slots}\times(\nu,\nu^2,\nu^3,\nu^4),\\
+&\qquad\Rightarrow 20\text{ coeffs},\\
+\frac{G^2}{r^2}:&\quad 4\text{ slots}\times(\nu,\nu^2,\nu^3),\\
+&\qquad\Rightarrow 12,\\
+\frac{G^3}{r^3}:&\quad 3\text{ slots}\times(\nu,\nu^2,\nu^3),\\
+&\qquad\Rightarrow 9,\\
+\frac{G^4}{r^4}:&\quad 2\text{ slots}\times(\nu,\nu^2),\\
+&\qquad\Rightarrow 4,\\
+\frac{G^5}{r^5}:&\quad 1\text{ slot}\times(\nu,\nu^2),\\
+&\qquad\Rightarrow 2,
 \end{aligned}
 \label{eq:4pn-local-polynomial-coefficient-space}
 \end{equation}
@@ -3210,17 +3211,21 @@ because the point of the $4$PN package is precisely to show that no new
 independent normalization datum opens beyond that carried interface.
 
 The grouped Mathematica mirror lives beside the stagewise SymPy archive and is
-organized around the seven scripts
-\nolinkurl{4pn_onebody_mathematica_audit.wl},
-\nolinkurl{4pn_quartic_legendre_mathematica_audit.wl},
-\nolinkurl{4pn_local_scaffold_target_mathematica_audit.wl},
-\nolinkurl{4pn_hamiltonian_chain_mathematica_audit.wl},
-\nolinkurl{4pn_ordinary_chain_mathematica_audit.wl},
-\nolinkurl{4pn_tail_bridge_mathematica_audit.wl}, and
-\nolinkurl{4pn_conditional_referee_master_mathematica_audit.wl}.  These files do
-not replace the finer stage structure on the SymPy side; their role is to
-provide an independent second-engine replay of the same one-body, compiler,
-local-chain, hereditary-bridge, and conditional-closure statements.
+organized around the following seven scripts:
+\begin{quote}
+\raggedright
+\small
+\nolinkurl{4pn_onebody_mathematica_audit.wl}\\
+\nolinkurl{4pn_quartic_legendre_mathematica_audit.wl}\\
+\nolinkurl{4pn_local_scaffold_target_mathematica_audit.wl}\\
+\nolinkurl{4pn_hamiltonian_chain_mathematica_audit.wl}\\
+\nolinkurl{4pn_ordinary_chain_mathematica_audit.wl}\\
+\nolinkurl{4pn_tail_bridge_mathematica_audit.wl}\\
+\nolinkurl{4pn_conditional_referee_master_mathematica_audit.wl}
+\end{quote}
+These files do not replace the finer stage structure on the SymPy side; their
+role is to provide an independent second-engine replay of the same one-body,
+compiler, local-chain, hereditary-bridge, and conditional-closure statements.
 
 \subsection{Stage audits replayed by the master runner}
 \label{sec:verification-stage-audits}
@@ -4078,13 +4083,17 @@ These are exactly the lower-order self-sector values that the present $4$PN
 At the full conservative $3$PN level, the comparable-mass residual in COM form
  is fixed by the split
 \[
+\begin{aligned}
 \Delta \hat L_3^{\rm GR}
-=
+={}&
 \underbrace{\Delta l_1v^8}_{\text{compiler image of the free COM Hamiltonian}}
-+
+\\
+&+
 \underbrace{L_{P_2}^{\rm mid}}_{\text{exact grouped real }P_2\text{ closure}}
-+
+\\
+&+
 \underbrace{\Delta l_{15}^{(g)}U^4}_{\text{unique geometry completion}}.
+\end{aligned}
 \]
 Within the same declared closure hierarchy as the $1$PN and $2$PN papers, the
  earlier paper also fixed the exact sign and determinant statements
@@ -4172,55 +4181,65 @@ Expanding
 \eqref{eq:app-4pn-isotropic-schwarzschild-worldline} in powers of $c^{-2}$ at
 fixed $U$ and $v^2$ gives
 \begin{equation}
-\begin{aligned}
+\begin{split}
 \frac{L_{\rm exact}}{m}
 ={}&
 -c^2
 +\left(\frac12 v^2+U\right)
-+\frac{1}{c^2}\left[
++\frac{1}{c^2}\Bigl[
 \frac18 v^4
 +\frac32 Uv^2
 -\frac12 U^2
-\right]
-+\frac{1}{c^4}\left[
+\Bigr]
+\\[0.75ex]
+&+\frac{1}{c^4}\Bigl[
 \frac1{16}v^6
 +\frac78 Uv^4
 +2U^2v^2
 +\frac14 U^3
-\right]
+\Bigr]
 \\[0.75ex]
-&
-+\frac{1}{c^6}\left[
+&+\frac{1}{c^6}\Bigl[
 \frac5{128}v^8
 +\frac{11}{16}Uv^6
 +\frac{47}{16}U^2v^4
 +\frac{13}{8}U^3v^2
 -\frac18 U^4
-\right]
-+\frac{1}{c^8}\left[
+\Bigr]
+\\[0.75ex]
+&+\frac{1}{c^8}\Bigl[
 \frac7{256}v^{10}
 +\frac{75}{128}Uv^8
 +\frac{59}{16}U^2v^6
+\\
+&\hspace{2em}
 +\frac{203}{32}U^3v^4
 +\frac{31}{32}U^4v^2
 +\frac1{16}U^5
-\right]
+\Bigr]
 +O(c^{-10}).
-\end{aligned}
+\end{split}
 \label{eq:app-4pn-exact-schwarzschild-series}
 \end{equation}
 Equation~\eqref{eq:app-4pn-exact-schwarzschild-series} is the complete exact
 one-body expansion through $4$PN.  In particular, the $4$PN coefficient is read
 off without ambiguity as
 \begin{equation}
+\begin{aligned}
 \frac{L_{4\mathrm{PN},1\text{-body}}}{m}
-=
+\\
+={}&
 \frac7{256}v^{10}
-+\frac{75}{128}Uv^8
+\\
+&+
+\frac{75}{128}Uv^8
 +\frac{59}{16}U^2v^6
-+\frac{203}{32}U^3v^4
+\\
+&+
+\frac{203}{32}U^3v^4
 +\frac{31}{32}U^4v^2
 +\frac1{16}U^5.
+\end{aligned}
 \label{eq:app-4pn-onebody-coefficient}
 \end{equation}
 This is the exact gate used in
@@ -4235,15 +4254,19 @@ one-body coefficients imported into the conservative hierarchy are simply the
 successive coefficients of
 \eqref{eq:app-4pn-exact-schwarzschild-series}.  Writing
 \[
+\begin{aligned}
 L_{\rm exact}
-=
+={}&
 -mc^2
 +L_{\rm N,1\text{-body}}
 +\frac{1}{c^2}L_{1\mathrm{PN},1\text{-body}}
 +\frac{1}{c^4}L_{2\mathrm{PN},1\text{-body}}
-+\frac{1}{c^6}L_{3\mathrm{PN},1\text{-body}}
+\\
+&+
+\frac{1}{c^6}L_{3\mathrm{PN},1\text{-body}}
 +\frac{1}{c^8}L_{4\mathrm{PN},1\text{-body}}
 +O(c^{-10}),
+\end{aligned}
 \]
 one has
 \begin{equation}
@@ -4347,6 +4370,9 @@ gives
 +\frac{75}{128}Uv^8
 +\frac{15}{4}U^2v^6
 +\left(4-\frac{d_3}{4}\right)U^3v^4
+\right.
+\nonumber\\
+&\left.\hspace{2em}
 +\left(-32-\frac{7d_3}{2}-\frac{d_4}{2}\right)U^4v^2
 \right)
 +O(c^{-10}).
@@ -4474,12 +4500,16 @@ the already frozen lower-order values
 \end{equation}
 gives the exact residual
 \begin{equation}
+\begin{aligned}
 \left(\frac{L_{4\mathrm{PN},1\text{-body}}}{m}-\frac{L_{\rm cand}}{m}\right)_{c^{-8}}
-=
+={}&
 \left(\frac1{16}-\frac{\mu_{\rho,4}}{2}\right)U^5
 +\left(-\frac{205}{32}+\frac{d_4}{2}\right)U^4v^2
-+\left(-\frac{15}{32}-s_{34}\right)U^3v^4
+\\
+&+
+\left(-\frac{15}{32}-s_{34}\right)U^3v^4
 +\left(-\frac1{16}-s_{26}\right)U^2v^6.
+\end{aligned}
 \label{eq:app-4pn-onebody-repair-residual}
 \end{equation}
 So the one-body repair algebra again separates cleanly by slot.
@@ -4491,9 +4521,15 @@ The first two coefficients in
 exact repairs, the candidate with no new $4$PN self slots still leaves the
 uncancelled discrepancy
 \begin{equation}
-\left(\frac{L_{4\mathrm{PN},1\text{-body}}}{m}-\frac{L_{\rm cand}}{m}\right)_{c^{-8},\,d_4=205/16,\,\mu_{\rho,4}=1/8,\,s_{34}=s_{26}=0}
-=
+\begin{aligned}
+\left(\frac{L_{4\mathrm{PN},1\text{-body}}}{m}-\frac{L_{\rm cand}}{m}\right)_{
+\substack{
+c^{-8},\,d_4=205/16,\\
+\mu_{\rho,4}=1/8,\,s_{34}=s_{26}=0
+}}
+={}&
 -\frac{15}{32}U^3v^4-\frac1{16}U^2v^6.
+\end{aligned}
 \label{eq:app-4pn-onebody-repair-two-slot-mismatch}
 \end{equation}
 So a quartic denominator plus a quartic static gate is still not enough.  Two
@@ -5048,22 +5084,26 @@ The audit establishes the exact blockwise ranks
 \end{equation}
 with nullities
 \begin{equation}
+\begin{aligned}
 \dim\ker M_Q=47,
 \qquad
 \dim\ker M_T=42,
 \qquad
 \dim\ker M_S=26,
+\\
 \qquad
 \dim\ker M_U=8,
 \qquad
 \dim\ker M_W=1.
+\end{aligned}
 \label{eq:app-4pn-local-scaffold-nullities}
 \end{equation}
 Equivalently, the exact COM interaction-slot structure is
 \begin{equation}
-\#_{\rm COM}^{\rm int}=(5,4,3,2,1),
-\qquad
-5+4+3+2+1=15,
+\begin{aligned}
+\#_{\rm COM}^{\rm int}&=(5,4,3,2,1),\\
+5+4+3+2+1&=15,
+\end{aligned}
 \label{eq:app-4pn-local-scaffold-slot-counts}
 \end{equation}
 so the total COM interaction rank is
@@ -5371,11 +5411,13 @@ The translated exact ordinary local target is as follows.
 
 \paragraph{Free block.}
 \begin{equation}
+\begin{aligned}
 L_1^{\rm target}
-=
+&=
 \frac{7+71\nu-1135\nu^2+4082\nu^3-4497\nu^4}{256},
-\qquad
-L_2^{\rm target}=L_3^{\rm target}=L_4^{\rm target}=L_5^{\rm target}=L_6^{\rm target}=0.
+\\
+L_2^{\rm target}&=L_3^{\rm target}=L_4^{\rm target}=L_5^{\rm target}=L_6^{\rm target}=0.
+\end{aligned}
 \label{eq:app-local-target-ordinary-free}
 \end{equation}
 So the free block remains a one-slot block after quartic translation.
@@ -5435,17 +5477,32 @@ L_{15}^{\rm target}
 \begin{align}
 L_{16}^{\rm target}
 &=
-\frac{30412800\nu^4+128822400\nu^3-3987675\pi^2\nu^2+258968192\nu^2-76341312\nu-1294650\pi^2\nu+23385600}{3686400},
+\frac{1}{3686400}\Bigl(
+30412800\nu^4+128822400\nu^3
++(258968192-3987675\pi^2)\nu^2
+\Bigr.
+\nonumber\\
+&\hspace{2em}\Bigl.
+-(76341312+1294650\pi^2)\nu+23385600
+\Bigr),
 \label{eq:app-local-target-ordinary-L16}
 \\
 L_{17}^{\rm target}
 &=
-\frac{\nu(6144000\nu^3+15650400\nu^2+281025\pi^2\nu+5897600\nu-7914912+166050\pi^2)}{153600},
+\frac{\nu}{153600}\Bigl(
+6144000\nu^3+15650400\nu^2
++(5897600+281025\pi^2)\nu
+-7914912+166050\pi^2
+\Bigr),
 \label{eq:app-local-target-ordinary-L17}
 \\
 L_{18}^{\rm target}
 &=
-\frac{\nu(5836800\nu^3+4899200\nu^2-13348224\nu+579825\pi^2\nu-11250\pi^2+3289536)}{245760}.
+\frac{\nu}{245760}\Bigl(
+5836800\nu^3+4899200\nu^2
++(579825\pi^2-13348224)\nu
+-11250\pi^2+3289536
+\Bigr).
 \label{eq:app-local-target-ordinary-L18}
 \end{align}
 
@@ -5453,37 +5510,60 @@ L_{18}^{\rm target}
 \begin{align}
 L_{19}^{\rm target}
 &=
--\frac{614400\nu^4+1382400\nu^3-3916025\pi^2\nu^2+40000704\nu^2-3160350\pi^2\nu+22640704\nu-1190400}{1228800},
+-\frac{1}{1228800}\Bigl(
+614400\nu^4+1382400\nu^3
++(40000704-3916025\pi^2)\nu^2
+\Bigr.
+\nonumber\\
+&\hspace{2em}\Bigl.
++(22640704-3160350\pi^2)\nu-1190400
+\Bigr),
 \label{eq:app-local-target-ordinary-L19}
 \\
 L_{20}^{\rm target}
 &=
--\frac{\nu(27648000\nu^3+89856000\nu^2+21708480\nu+7681425\pi^2\nu-5340450\pi^2+114494656)}{3686400}.
+-\frac{\nu}{3686400}\Bigl(
+27648000\nu^3+89856000\nu^2
++(21708480+7681425\pi^2)\nu
+\Bigr.
+\nonumber\\
+&\hspace{2em}\Bigl.
+-5340450\pi^2+114494656
+\Bigr).
 \label{eq:app-local-target-ordinary-L20}
 \end{align}
 
 \paragraph{\texorpdfstring{$G^5/r^5$}{G	extasciicircum5/r	extasciicircum5} block.}
 \begin{equation}
+\begin{aligned}
 L_{21}^{\rm target}
-=
--\frac{-6430720\nu^2+555225\pi^2\nu^2-16243104\nu+1403325\pi^2\nu-14400}{230400}.
+={}&
+-\frac{1}{230400}\Bigl(
+(555225\pi^2-6430720)\nu^2
++(1403325\pi^2-16243104)\nu
+-14400
+\Bigr).
+\end{aligned}
 \label{eq:app-local-target-ordinary-L21}
 \end{equation}
 
 The translated ordinary target still satisfies the strict one-body gate exactly:
 \begin{equation}
-L_1\to\frac{7}{256},
-\qquad
-L_7\to\frac{75}{128},
-\qquad
-L_{12}\to\frac{59}{16},
-\qquad
-L_{16}\to\frac{203}{32},
-\qquad
-L_{19}\to\frac{31}{32},
-\qquad
-L_{21}\to\frac{1}{16},
-\qquad (\nu\to0),
+\begin{aligned}
+L_1&\to\frac{7}{256},
+&\qquad
+L_7&\to\frac{75}{128},
+&\qquad
+L_{12}&\to\frac{59}{16},
+\\
+L_{16}&\to\frac{203}{32},
+&\qquad
+L_{19}&\to\frac{31}{32},
+&\qquad
+L_{21}&\to\frac{1}{16},
+&\qquad
+(\nu\to0),
+\end{aligned}
 \label{eq:app-local-target-ordinary-onebody-gate}
 \end{equation}
 with every subleading slot vanishing in that same limit.  So the translation
@@ -5543,11 +5623,14 @@ constant-coefficient ordinary scaffold.
 So the correct local-first program is
 \begin{equation}
 \boxed{
+\begin{gathered}
 \text{fixed local Hamiltonian target}
 \;\longrightarrow\;
 \text{generic-frame Hamiltonian lift}
-\;\longrightarrow\;
-\text{ordinary-chart translation only afterward.}
+\\
+\longrightarrow
+\text{ordinary-chart translation only afterward}
+\end{gathered}
 }
 \label{eq:app-local-target-correct-program-order}
 \end{equation}
@@ -6699,11 +6782,14 @@ One exact canonical representative is the following.
 \begin{aligned}
 Q_\delta={}&-\frac{1}{32}\Big(
 214 a^3 c - 698 a^2 b^2 - 476 a^2 b c - 122 a^2 b d^2 - 290 a^2 b d e - 181 a^2 b e^2
-+ 16 a^2 c^2 - 8 a^2 c d^2 - 18 a^2 d^2 e^2 - 54 a^2 d e^3 - 27 a^2 e^4
++ 16 a^2 c^2 - 8 a^2 c d^2
+\\
+&\hspace{2em}- 18 a^2 d^2 e^2 - 54 a^2 d e^3 - 27 a^2 e^4
 \\
 &\hspace{2em}- 476 a b^2 c - 181 a b^2 d^2 - 290 a b^2 d e - 122 a b^2 e^2
-+ 30 a d^3 e^3 + 15 a d^2 e^4
-+ 214 b^3 c + 16 b^2 c^2 - 8 b^2 c e^2 - 27 b^2 d^4 - 54 b^2 d^3 e - 18 b^2 d^2 e^2
++ 30 a d^3 e^3 + 15 a d^2 e^4 + 214 b^3 c
+\\
+&\hspace{2em}+ 16 b^2 c^2 - 8 b^2 c e^2 - 27 b^2 d^4 - 54 b^2 d^3 e - 18 b^2 d^2 e^2
 \\
 &\hspace{2em}+ 15 b d^4 e^2 + 30 b d^3 e^3
 \Big).
@@ -6716,17 +6802,24 @@ Q_\delta={}&-\frac{1}{32}\Big(
 \begin{aligned}
 T_\delta={}&-\frac{1}{96}\Big(
 2814 a^2 b p^2 q + 1065 a^2 b p - 4725 a^2 b q + 2256 a^2 c q
-- 3495 a^2 d^2 p^2 q + 408 a^2 d^2 p + 8031 a^2 d e p^2 q - 1782 a^2 d e p
+- 3495 a^2 d^2 p^2 q + 408 a^2 d^2 p
+\\
+&\hspace{2em}+ 8031 a^2 d e p^2 q - 1782 a^2 d e p
 \\
 &\hspace{2em}+ 2814 a b^2 p q^2 - 4725 a b^2 p + 1065 a b^2 q
-- 80 a d^3 e q + 2736 a d^2 e^2 p^2 q - 592 a d^2 e^2 p + 80 a d^2 e^2 q
-+ 2256 b^2 c p
+- 80 a d^3 e q + 2736 a d^2 e^2 p^2 q
+\\
+&\hspace{2em}- 592 a d^2 e^2 p + 80 a d^2 e^2 q + 2256 b^2 c p
 \\
 &\hspace{2em}+ 8031 b^2 d e p q^2 - 1782 b^2 d e q
 - 3495 b^2 e^2 p q^2 + 408 b^2 e^2 q
-+ 2736 b d^2 e^2 p q^2 + 80 b d^2 e^2 p - 592 b d^2 e^2 q - 80 b d e^3 p
 \\
-&\hspace{2em}+ 432 d^3 e^3 p^2 q + 432 d^3 e^3 p q^2 + 576 d^3 e^3 p + 576 d^3 e^3 q
+&\hspace{2em}+ 2736 b d^2 e^2 p q^2 + 80 b d^2 e^2 p
+- 592 b d^2 e^2 q - 80 b d e^3 p
+\\
+&\hspace{2em}+ 432 d^3 e^3 p^2 q + 432 d^3 e^3 p q^2
+\\
+&\hspace{2em}+ 576 d^3 e^3 p + 576 d^3 e^3 q
 \Big).
 \end{aligned}
 \label{eq:app-structured-aligned-seed-Tdelta}
@@ -6736,18 +6829,28 @@ T_\delta={}&-\frac{1}{96}\Big(
 \begin{equation}
 \begin{aligned}
 S_\delta={}&\frac{1}{192}\Big(
-3672 a^2 p^3 q + 4464 a^2 p^2 q^2 - (10660+3\pi^2)a^2 p^2 + (1220-3\pi^2)a^2 p q
+3672 a^2 p^3 q + 4464 a^2 p^2 q^2
+\\
+&\hspace{2em}- (10660+3\pi^2)a^2 p^2 + (1220-3\pi^2)a^2 p q
 - 11304 a d^2 p^3 q - 7464 a d^2 p^2 q^2
 \\
 &\hspace{2em}- (2460-9\pi^2)a d^2 p^2 + (9\pi^2-2292)a d^2 p q
-+ 4464 b^2 p^2 q^2 + 3672 b^2 p q^3 + (1220-3\pi^2)b^2 p q - (10660+3\pi^2)b^2 q^2
++ 4464 b^2 p^2 q^2 + 3672 b^2 p q^3
 \\
-&\hspace{2em}- 7464 b e^2 p^2 q^2 - 11304 b e^2 p q^3 + (9\pi^2-2292)b e^2 p q - (2460-9\pi^2)b e^2 q^2
-+ 960 d^3 e q^2
+&\hspace{2em}+ (1220-3\pi^2)b^2 p q - (10660+3\pi^2)b^2 q^2
 \\
-&\hspace{2em}- 11848 d^2 e^2 p^3 q - 19136 d^2 e^2 p^2 q^2 - 8512 d^2 e^2 p^2
-- 11848 d^2 e^2 p q^3 - 8512 d^2 e^2 q^2
-+ 960 d e^3 p^2
+&\hspace{2em}- 7464 b e^2 p^2 q^2 - 11304 b e^2 p q^3
++ (9\pi^2-2292)b e^2 p q
+\\
+&\hspace{2em}- (2460-9\pi^2)b e^2 q^2
+\\
+&\hspace{2em}+ 960 d^3 e q^2
+\\
+&\hspace{2em}- 11848 d^2 e^2 p^3 q - 19136 d^2 e^2 p^2 q^2
+\\
+&\hspace{2em}- 8512 d^2 e^2 p^2 - 11848 d^2 e^2 p q^3
+\\
+&\hspace{2em}- 8512 d^2 e^2 q^2 + 960 d e^3 p^2
 \Big).
 \end{aligned}
 \label{eq:app-structured-aligned-seed-Sdelta}
@@ -6758,10 +6861,15 @@ S_\delta={}&\frac{1}{192}\Big(
 \begin{aligned}
 U_\delta={}&-\frac{pq}{96}\Big(
 372 a p^3 q^2 + 108 a p^2 q^3 + (30\pi^2-1799)a p + (9\pi^2-1200)a q
-+ 108 b p^3 q^2 + 372 b p^2 q^3 + (9\pi^2-1200)b p + (30\pi^2-1799)b q
++ 108 b p^3 q^2 + 372 b p^2 q^3
 \\
-&\hspace{2em}+ 7740 d^2 p^3 q^2 + 2340 d^2 p^2 q^3 - (6953+96\pi^2)d^2 p - (2688+27\pi^2)d^2 q
-+ 2340 e^2 p^3 q^2 + 7740 e^2 p^2 q^3 - (2688+27\pi^2)e^2 p - (6953+96\pi^2)e^2 q
+&\hspace{2em}+ (9\pi^2-1200)b p + (30\pi^2-1799)b q
+\\
+&\hspace{2em}+ 7740 d^2 p^3 q^2 + 2340 d^2 p^2 q^3
+- (6953+96\pi^2)d^2 p - (2688+27\pi^2)d^2 q
+\\
+&\hspace{2em}+ 2340 e^2 p^3 q^2 + 7740 e^2 p^2 q^3
+- (2688+27\pi^2)e^2 p - (6953+96\pi^2)e^2 q
 \Big).
 \end{aligned}
 \label{eq:app-structured-aligned-seed-Udelta}
@@ -7571,7 +7679,7 @@ stage audits.  For each artifact we record both its theorem role and the short
 reference summary against which reruns should be checked.
 
 \begin{enumerate}
-  \item \textbf{\texttt{4pn\_onebody\_audit.py}.}  \emph{Role:} exact
+  \item \textbf{\nolinkurl{4pn_onebody_audit.py}.}  \emph{Role:} exact
   Schwarzschild one-body gate through order $c^{-8}$.  \emph{Reference
   summary:} the strict one-body target forces the minimal repair ledger
   \[
@@ -7584,13 +7692,13 @@ reference summary against which reruns should be checked.
   s_{26}=-\frac1{16}.
   \]
 
-  \item \textbf{\texttt{4pn\_quartic\_legendre\_audit.py}.}  \emph{Role:}
+  \item \textbf{\nolinkurl{4pn_quartic_legendre_audit.py}.}  \emph{Role:}
   exact quartic perturbative Legendre-transform compiler.  \emph{Reference
   summary:} the audit verifies the exact coefficients $H_1$ through $H_4$ and
   freezes the quartic ordinary / Hamiltonian map used everywhere later in the
   local chain.
 
-  \item \textbf{\texttt{4pn\_local\_scaffold\_audit.py}.}  \emph{Role:}
+  \item \textbf{\nolinkurl{4pn_local_scaffold_audit.py}.}  \emph{Role:}
   raw local generic-frame interaction scaffold and COM completeness test.
   \emph{Reference summary:} the raw exchange-symmetric block sizes are
   \[
@@ -7603,21 +7711,21 @@ reference summary against which reruns should be checked.
   \]
   with total COM-nullity $124$.  So there is no early local span shortage.
 
-  \item \textbf{\texttt{4pn\_local\_target\_import\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_local_target_import_audit.py}.}
   \emph{Role:} fixed-chart local ADM target import.  \emph{Reference
   summary:} the strict one-body Hamiltonian gate matches the imported local
   target exactly, the local COM Hamiltonian has one free slot plus interaction
   slot structure $5+4+3+2+1$, and the upper local Hamiltonian blocks stop at
   $\nu^2$ in the $G^4/r^4$ and $G^5/r^5$ sectors.
 
-  \item \textbf{\texttt{4pn\_local\_hamiltonian\_to\_ordinary\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_local_hamiltonian_to_ordinary_audit.py}.}\\
   \emph{Role:} exact reduced COM Hamiltonian-to-ordinary translation.
   \emph{Reference summary:} the quartic compiler translates the fixed local
   Hamiltonian target into the exact local ordinary target, but the ordinary
   chart develops extra $\nu^4$ tails in the $G^2/r^2$, $G^3/r^3$, and
   $G^4/r^4$ blocks.  This freezes the Hamiltonian-first lesson.
 
-  \item \textbf{\texttt{4pn\_hamiltonian\_chart\_generic\_frame\_lift\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_hamiltonian_chart_generic_frame_lift_audit.py}.}\\
   \emph{Role:} Hamiltonian-chart generic-frame lift of the local comparable-mass
   residual.  \emph{Reference summary:} the exact blockwise coefficient-space
   ranks are maximal,
@@ -7626,7 +7734,7 @@ reference summary against which reruns should be checked.
   \]
   so there is no Hamiltonian-side span obstruction.
 
-  \item \textbf{\texttt{4pn\_hamiltonian\_chart\_canonical\_slice\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_hamiltonian_chart_canonical_slice_audit.py}.}\\
   \emph{Role:} canonical comparable-mass local residual slice.
   \emph{Reference summary:} the audit quotients the $92$-direction COM-blind
   null family and records one sparse canonical representative with blockwise
@@ -7636,7 +7744,7 @@ reference summary against which reruns should be checked.
   \]
   together with exact COM verification.
 
-  \item \textbf{\texttt{4pn\_generic\_frame\_ordinary\_translation\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_generic_frame_ordinary_translation_audit.py}.}
   \emph{Role:} translation of the canonical Hamiltonian residual back to the
   ordinary chart.  \emph{Reference summary:} the canonical comparable-mass
   local residual satisfies the exact sign-flip theorem
@@ -7646,7 +7754,7 @@ reference summary against which reruns should be checked.
   and the translated target is measured relative to the Hamiltonian-aligned
   ordinary seed.
 
-  \item \textbf{\texttt{4pn\_generic\_frame\_aligned\_seed\_lift\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_generic_frame_aligned_seed_lift_audit.py}.}\\
   \emph{Role:} generic-frame lift of the aligned-seed ordinary correction.
   \emph{Reference summary:} the old ordinary obstruction is shown to be a
   seed-sector problem only, and the aligned-seed correction lifts exactly in the
@@ -7663,20 +7771,20 @@ reference summary against which reruns should be checked.
   W=0.
   \]
 
-  \item \textbf{\texttt{4pn\_local\_referee\_master\_sympy\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_local_referee_master_sympy_audit.py}.}
   \emph{Role:} end-to-end referee reconstruction of the full local ordinary
   target.  \emph{Reference summary:} the assembled generic-frame local ordinary
   candidate reproduces the fixed-chart local ordinary target slot by slot in the
   $Q$, $T$, $S$, $U$, and $W$ blocks, so the entire local instantaneous $4$PN
   sector is closed exactly inside the declared hierarchy.
 
-  \item \textbf{\texttt{4pn\_tail\_bridge\_audit.py}.}  \emph{Role:}
+  \item \textbf{\nolinkurl{4pn_tail_bridge_audit.py}.}  \emph{Role:}
   universal Newtonian quadrupole shadow of the conservative GR tail.
   \emph{Reference summary:} the order-reduced STF quadrupole shadow is confined
   to the degree-$2$ $G^4/r^4$ block, so the hereditary problem is structurally
   much smaller than the local generic-frame lift.
 
-  \item \textbf{\texttt{4pn\_tail\_hereditary\_bridge\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_tail_hereditary_bridge_audit.py}.}
   \emph{Role:} exact coefficient bridge from the normalized STF quadrupole to
   the hereditary $4$PN coefficient.  \emph{Reference summary:} the audit proves
   \[
@@ -7685,7 +7793,7 @@ reference summary against which reruns should be checked.
   so the hereditary coefficient introduces no new independent normalization
   datum.
 
-  \item \textbf{\texttt{4pn\_conditional\_referee\_master\_audit.py}.}
+  \item \textbf{\nolinkurl{4pn_conditional_referee_master_audit.py}.}
   \emph{Role:} conditional full conservative $4$PN replay.  \emph{Reference
   summary:} the final replay ties the inherited $2.5$PN quadrupole narrowing to
   the exact local $4$PN closure and the hereditary bridge, and reduces the full

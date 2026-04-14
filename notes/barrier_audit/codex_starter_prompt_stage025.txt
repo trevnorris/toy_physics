@@ -1,0 +1,48 @@
+You are continuing the moving-throat PDE completion and same-charge Stage-025 program.
+
+Read these files first:
+1. moving_throat_pde_program_compact.md
+2. 5pn_notes_full.md
+3. barrier_audit_full.md
+4. moving_throat_pde_stage174_minimal_pde_data_packet.md
+5. moving_throat_pde_stage175_orbit_quotient_projectors.md
+6. same_charge_barrier_audit_stage025_actual_twin_support_and_orbit_lock_compiler.md
+7. same_charge_barrier_audit_stage023_selected_branch_loading_ratio_from_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+8. same_charge_barrier_audit_stage024_exact_primitive_ranking_on_selected_twin_support_branch_sympy_audit.py
+
+Non-negotiable rules:
+- Do not rederive already-closed reduced algebra.
+- Do not retune the parent PDE or EOS.
+- Keep support/normalization and orbit packets separate.
+- Do not force chi_Q = 1 or N_Q = 1.
+- Save full branch state before reduction.
+- Require refinement stability before calling anything done.
+
+Primary goal:
+Build a local-first reduced solver that extracts the actual stationary coherent branch and its first weak-axisymmetric tangent, then compute:
+- dln R_tr
+- dln R_target
+- dln epsilon_eta
+- N_Q - 1
+and the Stage-025 same-charge packet:
+- epsilon
+- varrho_phys
+- sigma_phys
+- ranking region
+- R_tr
+- R_target
+- epsilon_eta
+
+Work packages:
+- WP0 conventions and JSON schemas
+- WP1 solver skeleton
+- WP2 conservative support stack
+- WP3 stationary isotropic branch solve
+- WP4 isotropic packet extraction
+- WP5 weak-axisymmetric tangent solve
+- WP6 Stage-025 postprocessing
+- WP7 final verdict compiler
+
+Required exact formulas and JSON schemas are in codex_handoff_moving_throat_stage025.md.
+
+Start by creating the repository skeleton, conventions file, output schemas, and the exact algebraic regression tests for Stage 023, Stage 024, Stage 174, Stage 175, and Stage 025 before attempting the stationary solve.

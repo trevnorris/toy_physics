@@ -4,17 +4,17 @@
 
 **Exact within the carried Stage-198 support-`<=4` certified ledger, once a compact interior ratio window and the corresponding validity map are supplied on the chosen five-coordinate patch.**
 
-This stage folds the skipped support-cardinality-`5` gate and the full interior optimizer into one note because there is only **one** primitive five-coordinate simplex,
+Stage 199 now supplies the support-cardinality-`5` gate and the exact five-face boundary splice. Because there is only **one** primitive five-coordinate simplex,
 \[
-\{\lambda,c,\gamma,U,W\}.
+\{\lambda,c,\gamma,U,W\},
 \]
-So nothing genuinely new is hiding in a combinatorial family anymore; the only new content is the **four-parameter interior** problem.
+this note can focus entirely on the only genuinely new remaining content: the **four-parameter interior** problem.
 
 ---
 
 ## Purpose
 
-Stage 198 finished the full support-`<=4` search: every primitive quadruple carries a closed-simplex certified interval, and the global search through four active primitive coordinates is already finite and certified.
+Stage 198 finished the full support-`<=4` search, and Stage 199 then built the unique positive spherical five-simplex, reduced its full codimension-one boundary back to the Stage-198 quadruple packets, and isolated the two canonical five-way interior screens.
 
 That leaves one exact continuation point:
 

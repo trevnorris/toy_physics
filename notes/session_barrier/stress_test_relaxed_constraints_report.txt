@@ -1,0 +1,100 @@
+Reduced moving-throat same-charge stress-test
+========================================================================
+
+This report is a reduced closure, not a solved full moving-throat PDE theorem.
+It keeps the exact reduced formulas fixed by the file stack and makes only one
+explicit phenomenological choice: the sign-changing source branch feeds back into
+the primitive Yukawa amplitudes beta_U, beta_W through a linear function of R[sigma].
+
+Chosen parameter set
+------------------------------------------------------------------------
+           lam = 1.0
+         r_reg = 0.25
+        E0_amp = 0.18
+          rho0 = 1.0
+          mu_w = 0.8
+             q = 1.0
+           a_U = 2.5
+           a_V = 3.0
+          g_UV = 0.95
+            s0 = 0.9
+   epsilon_ref = 0.3
+        K_star = 4.0
+    Omega_U_sq = 9.0
+    Omega_W_sq = 16.0
+           G_U = 1.0
+           G_W = 1.25
+         R_mix = 1.35
+        beta_Q = 0.03
+       beta_U0 = 0.15
+       beta_W0 = 0.2
+         kappa = 1.0
+            a0 = 2.2
+            b0 = -0.6
+       r_sigma = 0.8
+          xi_R = 0.9
+      eta_leak = 0.03
+        eta_uv = 0.22
+        kk_amp = 0.0
+          r_F1 = 1.77799353547498
+
+Exact symbolic formulas
+------------------------------------------------------------------------
+S_leak^(s) = sqrt(2)*E0*mu_w*rho0/(2*sqrt(pi)*lambda**3)
+J^w E_w work = 2*E0**2*mu_w*q*rho0/lambda**2
+
+U(r) = a_V*s0*(r + r_reg)**2*exp(-r/lambda)/(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2)
+V(r) = -g_UV*lambda*s0*(r + r_reg)*exp(-r/lambda)/(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2)
+Xi_1(r) [first-order rigid-mouth packet] = a_V*s0*(r + r_reg)**2*exp(-r/lambda)/(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2)
+Xi_tilde(r) [finite nonlinear rigid-mouth proxy] = (-epsilon_ref*g_UV*lambda*s0*(r + r_reg) - (epsilon_ref - 1)*(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2)*exp(r/lambda)*log((epsilon_ref - exp(g_UV*lambda*s0*(r + r_reg)*exp(-r/lambda)/(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2)))*exp(-s0*(r + r_reg)*(a_V*(r + r_reg) + g_UV*lambda)*exp(-r/lambda)/(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2))/(epsilon_ref - 1)))*exp(-r/lambda)/((epsilon_ref - 1)*(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2))
+UV energy-drop = g_UV**2*lambda**2*s0**2*exp(-2*r/lambda)/(2*a_U*(a_U*a_V*(r + r_reg)**2 - g_UV**2*lambda**2))
+
+g[sigma] for sigma=1+a cos(pi x)+b cos(2 pi x) = 2*(5*a - b + 15)/(15*pi)
+R[sigma] = (10*a - 2*b - 15*pi*r_F1 + 30)**2/(225*pi**2*(r_F1**2 + 1))
+
+Dynamic first-order outgoing correction = -I*Gamma_out*T_J**2/2
+Average absorbed power = Gamma_out*T_J**2*omega/2
+
+One-port admissibility
+------------------------------------------------------------------------
+Delta = 142.17750000  (must be >0)
+D0    = 3.76481862  (must be >0)
+
+Evaluation at r = lambda
+------------------------------------------------------------------------
+r_eval           = 1.00217028
+Xi_1(r_eval)     = 0.14313458
+Xi_tilde(r_eval) = 0.14352690
+U(r_eval)        = 0.14313458
+V(r_eval)        = -0.03619791
+epsilon_eta      = 0.28933482
+S_leak(r_eval)   = 0.03663918
+Jw*Ew(r_eval)    = 0.02108684
+g_sigma(r_eval)  = 0.82823667
+R_sigma(r_eval)  = 0.21677037
+sigma_min        = -0.08979545
+sign_change?     = True
+
+Strongest barrier softening in plotted range
+------------------------------------------------------------------------
+r_soft          = 0.18000000
+V_eff           = 1.74701126
+V_coulomb       = 5.55555556
+V_eff / V_coul  = 0.31446203
+UV drop         = 0.21064278
+bulk work       = 1.51632107
+g_sigma         = 1.10521636
+R_sigma         = 0.10877211
+
+Interpretation
+------------------------------------------------------------------------
+1) Leakage and J^w E_w both rise as r decreases because E0(r) was chosen to sharpen
+   at small separation. That is the open-system export channel.
+2) The UV cross-coupling makes V nonzero, so epsilon_eta is not invariant once
+   chi_lambda grows. The exact energy-drop formula quantifies the amount of
+   transfer-shape energy drained into the dressing leg.
+3) The sign-changing sigma branch can push g[sigma] outside the positive-source range.
+   That is the explicit compensated-branch stress test requested in Task 3.
+4) The plotted V_eff(r) is lower than Coulomb over part of the near-contact range
+   for this parameter set, but the reduction is still carried only by short-range
+   families plus open-system export; no new long-range attractive law is inserted.

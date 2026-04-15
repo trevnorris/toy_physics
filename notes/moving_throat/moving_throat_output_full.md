@@ -1,3 +1,4 @@
+moving_throat_pde_stage001_geometry_lift.md
 # Moving-Throat PDE — Stage 1 Geometry Lift and Linearized PDE Skeleton
 
 ## 0. What this note does
@@ -508,6 +509,7 @@ The next real calculation should be:
 4. then add the BdG + Maxwell couplings and track how the pole locations and low-frequency coefficients shift.
 
 That is the first point where the moving-throat PDE stops being a slogan and starts producing the observables the current hierarchy still leaves open.
+moving_throat_pde_stage002_breathing_reduction.md
 # Moving-Throat PDE — Phase 2A Breathing Reduction Back to the Old `(a,L)` Closure
 
 ## Purpose
@@ -691,6 +693,7 @@ The accompanying SymPy audit verifies the concrete algebraic claims used here:
 
 Supporting file:
 - `moving_throat_pde_master_sympy_audit.py`
+moving_throat_pde_stage003_bdg_coupling.md
 
 # Moving-Throat PDE — Stage 3: Minimal BdG–Wall Coupling and First Pole Shifts
 
@@ -1164,6 +1167,7 @@ The next clean move is now well defined:
 4. and identify which part of that enlarged system can generate the passive/outgoing branch needed for the final quadrupole normalization.
 
 That is the first point where the moving-throat PDE program can start touching the actual remaining 2.5PN/4PN bridge instead of only its conservative front end.
+moving_throat_pde_stage004_maxwell_mixed_response.md
 # Moving-Throat PDE — Stage 4: Localized Maxwell + Mixed-Sector Reduction and the First Honest Outgoing Quadrupole Bridge
 
 ## Purpose
@@ -1505,6 +1509,7 @@ Instead:
 4. and then evaluate the outgoing quadrupole normalization product on the isotropic branch.
 
 That is the smallest next theorem target that directly attacks the remaining 2.5PN/4PN bottleneck rather than only reorganizing the conservative input data.
+moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
 # Moving-Throat PDE — Stage 5: Grouped Real `P2` Bundle and the Normalized Outgoing-Quadrupole Bridge
 
 ## Purpose
@@ -1841,6 +1846,7 @@ Instead:
 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
 
 That is the smallest next theorem gate that directly attacks the remaining 2.5PN/4PN bottleneck.
+moving_throat_pde_stage006_full_grouped_bundle.md
 # Moving-Throat PDE — Stage 6: Full Grouped Real `P2` Bundle, Exact Projectors, and the Isotropic Normalization Test
 
 ## Purpose
@@ -2308,6 +2314,7 @@ Instead:
 against the universal target.
 
 That is now the smallest honest next theorem gate.
+moving_throat_pde_stage007_overlap_isotropy.md
 # Moving-Throat PDE — Stage 7: Explicit Overlap Integrals, the `O(3)` Isotropy Theorem, and the First Axisymmetric Splitting Law
 
 ## Purpose
@@ -2681,6 +2688,7 @@ It is now:
 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-7 angular fingerprints.
 
 That is a real tightening of the theorem target.
+moving_throat_pde_stage008_minimal_isotropic_normalization.md
 # Moving-Throat PDE — Stage 8: Minimal Isotropic Single-Mode Closure and the Explicit Normalization Formula
 
 ## Purpose
@@ -2919,6 +2927,7 @@ On the minimal isotropic branch, the remaining higher-order bridge is the one sc
 `mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.
 
 That is the sharpest reduced theorem target reached so far.
+moving_throat_pde_stage009_concrete_axial_overlaps.md
 # Moving-Throat PDE — Stage 9: Concrete Finite-Throat Axial Modes, Exact Overlap Constants, and the First Branch-Level Normalization Test
 
 ## Purpose
@@ -3215,6 +3224,7 @@ So the next honest step is no longer to “invent more overlap algebra.”
 It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether a different wall-profile family is forced by the full PDE.
 
 Either way, the theorem target is now much sharper than it was at the end of Stage 8.
+moving_throat_pde_stage010_nonconstant_axial_family.md
 # Moving-Throat PDE — Stage 10: First Nonconstant Finite-Throat Wall/Brane Family, Exact Overlap Law, and the Profile-Selection Theorem Gate
 
 ## Purpose
@@ -3557,6 +3567,7 @@ The sharper question is now
 > what axial profile does the real moving-throat eigenproblem actually select, and does that profile keep enough overlap with the D/N support/mixed half-wave to satisfy the outgoing quadrupole normalization equation?
 
 The next honest derivation step is therefore to stop choosing the profile family by hand and solve the first actual axial wall eigenproblem with the matter/gauge loading included, so that the profile angle `theta` is no longer free but is an output of the reduced moving-throat operator itself.
+moving_throat_pde_stage011_loaded_profile_selection.md
 # Moving-Throat PDE — Stage 11: Loaded Axial Profile Selection, Exact 2x2 Eigenproblem, and Why the Blind-Angle Branch Is Dynamically Disfavored
 
 ## Purpose
@@ -3851,6 +3862,7 @@ So the next honest derivation step is now very sharply defined:
 
 At this point the roadmap is no longer “invent a PDE.”
 It is starting to look like a specific spectral problem.
+moving_throat_pde_stage012_dynamic_loading.md
 # Moving-Throat PDE — Stage 12: Exact Dynamic Loading from the Coupled Wall/BdG/Maxwell/Mixed Operator, and the First Selected-Mode Quadrupole Damping Coefficient
 
 ## Purpose
@@ -4182,6 +4194,7 @@ What remains is now much sharper:
 That is a much smaller theorem gap than we had before.
 It is no longer “derive some PDE loading somehow.”
 It is a specific spectral-transfer problem.
+moving_throat_pde_stage013_selected_mode_normalization.md
 # Moving-Throat PDE — Stage 13: Selected-Mode Normalized Response, Exact Static Prefactor, and the Selected-Branch Quadrupole Target
 
 ## Purpose
@@ -4430,6 +4443,7 @@ And the full selected-branch normalization theorem is simply
 That is the cleanest selected-mode formulation we have reached so far.
 The next honest step is no longer to invent another reduced parameter.
 It is to determine whether the physical stable branch can actually reach this target in a controlled way.
+moving_throat_pde_stage014_selected_branch_reachability.md
 # Moving-Throat PDE — Stage 14: Selected-Branch Reachability, Monotonicity, and the Stable-Side Normalization Window
 
 ## Purpose
@@ -4612,6 +4626,7 @@ It is now the following exact test:
 4. and check whether the resulting stable-side crossing sits on the natural passive/outgoing branch with `alpha_0 < alpha_crit`.
 
 So the theorem gap is now a controlled spectral-placement problem, not an algebraic unknown.
+moving_throat_pde_stage015_source_map_from_mode_integrals.md
 # Moving-Throat PDE — Stage 15: Explicit Finite-Throat Mode Integrals, Kernel-Level Couplings, and Elimination of the Abstract Selected-Branch Source Map
 
 ## Purpose
@@ -4895,6 +4910,7 @@ but rather
 - “selected stiffness plus selected overlap plus the explicit mixed-sector transfer factor.”
 
 The next honest step is therefore to write the full selected-branch normalization equation directly in microscopic coupling language and see what exact stability and reachability constraints it imposes.
+moving_throat_pde_stage016_microscopic_normalization_equation.md
 # Moving-Throat PDE — Stage 16: Microscopic Selected-Branch Normalization Equation, Exact Stability Gate, and the First Coupling-Level Onset Criterion
 
 ## Purpose
@@ -5146,6 +5162,7 @@ The first explicit finite-throat kernel model has reduced the theorem gap to:
 
 So the open problem is no longer hidden in a free source map or a generic tuning story.
 It is an explicit coupling-level spectral-placement problem on the selected stable quadrupole branch.
+moving_throat_pde_stage017_softening_depth_normal_form.md
 # Moving-Throat PDE — Stage 17: Softening-Depth Normal Form, Exact Secular Reduction, and Elimination of the Selected-Mode Eigenvector Algebra
 
 ## Purpose
@@ -5335,6 +5352,7 @@ Once that is known,
 
 So the remaining gap is no longer hidden in eigenvector algebra.
 It is a scalar branch-placement problem.
+moving_throat_pde_stage018_dimensionless_normalization_locus.md
 # Moving-Throat PDE — Stage 18: Dimensionless D/N Shape Function, Unique Normalization Locus, and Exact Required Support Coupling
 
 ## Purpose
@@ -5551,6 +5569,7 @@ Once those are known,
 
 So the open problem is no longer a vague multi-parameter search.
 It is now a one-dimensional universal D/N branch-shape problem plus one exact support-coupling feasibility check.
+moving_throat_pde_stage019_support_feasibility_frontier.md
 # Moving-Throat PDE — Stage 19: Dimensionless Support-Feasibility Frontier for the Selected Quadrupole Branch
 
 ## Purpose
@@ -5714,6 +5733,7 @@ not even “find the right branch stiffness,”
 but simply:
 
 > does the completed moving-throat PDE place the physical defect on the exact admissible region of the universal `(F,G)` branch geometry?
+moving_throat_pde_stage020_continuum_kernel_extraction.md
 # Moving-Throat PDE — Stage 20: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`
 
 ## Purpose
@@ -6029,6 +6049,7 @@ So the remaining task is no longer “invent microscopic inputs.”
 It is:
 
 > determine whether the completed moving-throat PDE places the actual defect on the admissible Stage-18/19 branch geometry generated by these continuum-kernel quantities.
+moving_throat_pde_stage021_dimensionless_continuum_placement.md
 # Moving-Throat PDE — Stage 21: Dimensionless Continuum Placement Map, Exact Product Relation, and the Three-Lane Factorization of the Selected Quadrupole Branch
 
 ## Purpose
@@ -6257,6 +6278,7 @@ It is no longer:
 It is:
 
 > compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat PDE and check whether the resulting point lies inside the exact Stage-18/19 admissible region.
+moving_throat_pde_stage022_split_u_sector.md
 # Moving-Throat PDE — Stage 22: First Non-Flat `U` Doublet, Exact Split Continuum Map, and the Direction-Splitting Theorem
 
 ## Purpose
@@ -6514,6 +6536,7 @@ The next theorem problem is:
 > how does the selected-branch normalization law deform when the source vector and the loading vector are no longer the same?
 
 That is the target of Stage 23.
+moving_throat_pde_stage023_generalized_selected_branch.md
 # Moving-Throat PDE — Stage 23: Generalized Selected-Branch Normalization with Source/Loading Mismatch
 
 ## Purpose
@@ -6742,6 +6765,7 @@ The next step is:
 > determine how the additional support/BdG loading enters the now noncollinear selected-branch geometry, and whether the physical support direction tracks the deformed loading vector or remains tied to the original source vector.
 
 That is the first place where the old Stage-19 support-feasibility theorem may need a true rank-2 extension.
+moving_throat_pde_stage024_rank2_support_completion.md
 # Moving-Throat PDE — Stage 24: Rank-2 Support Completion and the Exact Support-Loading Theorem
 
 ## Purpose
@@ -6995,6 +7019,7 @@ If it aligns with `z`, the Stage-23 one-parameter deformation is already the who
 If it stays tied to `v`, the branch acquires a new exact rank-2 support-feasibility window.
 
 That is the next theorem gate the completed moving-throat operator has to decide.
+moving_throat_pde_stage025_rank2_selected_mode_normalization.md
 # Moving-Throat PDE — Stage 25: Selected-Mode Normalization Under Rank-2 Support Completion
 
 ## Purpose
@@ -7230,6 +7255,7 @@ The open PDE-side theorem question is therefore no longer diffuse:
 > compute the actual projected support/BdG loading direction from the moving-throat operator and determine whether the physical kernel lands on the tracking closure or the source-tied closure.
 
 That is now the sharp reduced theorem gate for the next stage.
+moving_throat_pde_stage026_support_direction_extraction.md
 # Moving-Throat PDE — Stage 26: Continuum Extraction of the Actual Support/BdG Loading Direction
 
 ## Purpose
@@ -7481,6 +7507,7 @@ So the next theorem step is no longer “guess the support direction.”
 It is:
 
 > insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-24/25 selected-branch formulas and determine the physical selected branch.
+moving_throat_pde_stage027_continuum_selected_rank2_closure.md
 # Moving-Throat PDE — Stage 27: Continuum-Selected Rank-2 Closure and the Exact Quadratic Branch Equation
 
 ## Purpose
@@ -7750,6 +7777,7 @@ It is to evaluate the continuum-selected residual
 `R_target - F_cont(xi_phys)`
 
 on concrete kernel data from the moving-throat operator.
+moving_throat_pde_stage028_coherent_local_tracking.md
 # Moving-Throat PDE — Stage 28: Coherent Local D/N Support Kernel and the Exact Tracking Reduction
 
 ## Purpose
@@ -7998,6 +8026,7 @@ This is the first exact “concrete-kernel” form of the normalization test.
 The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
 
 So the next theorem step is no longer to resolve the rank-2 closure ambiguity. That is now done for the first concrete local kernel. The next step is to evaluate how this physical tracking branch compares with the old flat branch and whether the split-`U` deformation helps or hurts the normalization test.
+moving_throat_pde_stage029_tracking_branch_bounds.md
 # Moving-Throat PDE — Stage 29: Exact Tracking-Branch Bounds, Monotonicity in `R_tr`, and the Residual Comparison Theorem
 
 ## Purpose
@@ -8218,6 +8247,7 @@ The constructive split-`U` deformation
 So the remaining theorem gap is now even sharper:
 
 > the completed moving-throat PDE must supply kernel data strong enough to overcome this exact tracking-branch deficit, not merely to match the old flat-branch heuristic.
+moving_throat_pde_stage030_coherent_kernel_map.md
 # Moving-Throat PDE — Stage 30: Exact Coherent-Kernel Dimensionless Map and the Support-Enhancement Factor
 
 ## Purpose
@@ -8452,6 +8482,7 @@ So the next honest question is no longer about closure choice.
 It is:
 
 > **how much coherent support enhancement is needed to overcome the exact tracking-branch deficit before the stable branch softens out?**
+moving_throat_pde_stage031_support_compensation_theorem.md
 # Moving-Throat PDE — Stage 31: Exact Support-Compensation Theorem on the Physical Tracking Branch
 
 ## Purpose
@@ -8696,6 +8727,7 @@ The remaining question is no longer whether compensation is possible in principl
 It is narrower:
 
 > **does the actual moving-throat PDE produce a physical support ratio `zeta` large enough to reach the exact required value `zeta_req` on the real branch?**
+moving_throat_pde_stage032_dn_overlap_zeta.md
 # Moving-Throat PDE — Stage 32: Explicit D/N Overlap Extraction of the Physical Coherent Support Ratio `zeta`
 
 ## Purpose
@@ -8925,6 +8957,7 @@ It is:
 > **which explicit support harmonic is physically realized by the moving-throat PDE, and does its exact microscopic `zeta_n^(phys)` beat the exact Stage-31 threshold `zeta_req`?**
 
 That question is now concrete enough to answer branch by branch.
+moving_throat_pde_stage033_zeta_threshold_comparison.md
 # Moving-Throat PDE — Stage 33: Exact Comparison of the Physical Coherent `zeta` Against `zeta_req`
 
 ## Purpose
@@ -9140,6 +9173,7 @@ It also orders the entire support tower.
 So the next honest PDE question is now extremely narrow:
 
 > **does the completed moving-throat operator place the physical coherent support lane on the lowest twin branch with `zeta_req <= 1`, or does the real branch need non-twin asymmetry to overcome the exact support threshold?**
+moving_throat_pde_stage034_lowest_twin_criterion.md
 # Moving-Throat PDE — Stage 34: Exact Lowest-Twin Sufficiency Criterion on the Physical Tracking Branch
 
 ## Purpose
@@ -9343,6 +9377,7 @@ So the next honest question is no longer “how do we parameterize support?”
 It is:
 
 > **does the completed moving-throat operator produce enough mixed baseline / radiative scale to satisfy the exact twin-sufficiency product test, or must the physical lowest support lane become non-twin before the normalization target can be met?**
+moving_throat_pde_stage035_nontwin_asymmetry_threshold.md
 # Moving-Throat PDE — Stage 35: Exact Non-Twin Asymmetry Requirement Once the Symmetric Lowest Twin Fails
 
 ## Purpose
@@ -9561,6 +9596,7 @@ If it lands above that, then the missing theorem gap is no longer “find some b
 It is:
 
 > **derive from the completed moving-throat operator whether the lowest support lane acquires the exact overlap boost and/or stiffness softening required by the non-twin threshold formulas above.**
+moving_throat_pde_stage036_overlap_boost_window.md
 # Moving-Throat PDE — Stage 36: Exact Overlap-Boost Window for the Lowest Support Lane
 
 ## Purpose
@@ -9759,6 +9795,7 @@ The moving-throat operator may indeed produce `Omega_0 > 1`, but even the most f
 So the remaining question is already sharper:
 
 > if the physical branch demands `zeta_req > pi^2/4`, then the lowest support lane must become softer as well; overlap enhancement alone cannot rescue it.
+moving_throat_pde_stage037_robin_softening_support_lane.md
 # Moving-Throat PDE — Stage 37: Robin-Compliance Softening of the Lowest Support Lane
 
 ## Purpose
@@ -9997,6 +10034,7 @@ The lowest support lane can indeed become softer than the mixed D/N lane, but on
 So the remaining question is already narrower:
 
 > if the physical branch needs more than the Stage-36 overlap ceiling `pi^2/4`, does the moving-throat operator also supply enough Robin-type support softening to bridge the remaining gap?
+moving_throat_pde_stage038_explicit_lowest_lane_reachability.md
 # Moving-Throat PDE — Stage 38: Explicit Reachability of the Non-Twin Lowest Support Lane
 
 ## Purpose
@@ -10199,6 +10237,7 @@ For the first explicit constructive moving-throat family, the non-twin lowest su
 So the remaining gap is now extremely narrow:
 
 > does the completed moving-throat PDE generate a physical lowest-lane deformation whose effective `x` and source-shape asymmetry place it inside the exact Stage-38 reachability window, or does the real branch require an even stronger non-twin mechanism than exponential overlap bias plus Robin-compliance softening?
+moving_throat_pde_stage039_transport_source_asymmetry.md
 # Moving-Throat PDE — Stage 39: Transport Origin of the Lowest-Lane Source Asymmetry
 
 ## Purpose
@@ -10420,6 +10459,7 @@ It is the axial transport Peclet number of the lowest support-source channel.
 So one of the two Stage-38 “unknown physical inputs” has now been converted into a concrete moving-throat operator datum.
 
 The remaining operator-level task is to combine that transport bias with the physical support-compliance ratios, so that the whole lowest-lane reachability problem is written directly in terms of real throat operator parameters rather than the old abstract pair `(alpha,x)`.
+moving_throat_pde_stage040_physical_parameter_map.md
 # Moving-Throat PDE — Stage 40: Physical `(Pe, kappa, eta)` Placement Map for the Lowest Support Lane
 
 ## Purpose
@@ -10740,6 +10780,7 @@ It has collapsed to three concrete moving-throat operator ratios:
 So the remaining gap is now as narrow as it can be without the full PDE:
 
 > compute the physical branch point `(Pe, eta, kappa)` from the completed moving-throat operator and check whether it satisfies the exact threshold `zeta_req <= zeta_max(kappa)` and the corresponding monotone placement inequalities above.
+moving_throat_pde_stage041_coupled_support_source_operator.md
 # Moving-Throat PDE — Stage 41: Coupled Support/Source Operator and the Exact `Pe` Branch Equation
 
 ## Purpose
@@ -11066,6 +11107,7 @@ The open problem is no longer “what abstract `Pe` should we try?”
 It is:
 
 > for the real moving-throat operator, what is the actual coupling strength `Xi`, and where inside the exact interval `[Xi Delta_0, Xi Delta_inf]` does the selected branch point `Pe_*` land?
+moving_throat_pde_stage042_operator_branch_residual_bounds.md
 # Moving-Throat PDE — Stage 42: Exact Residual Bounds on the Operator-Selected Branch
 
 ## Purpose
@@ -11335,6 +11377,7 @@ The remaining theorem gap is no longer “derive everything about the lowest sup
 It is now:
 
 > compute the real moving-throat coupling strength `Xi`, compare it to the exact interval `[Xi_fail, Xi_suff]`, and then solve the fixed-point root only if the real branch lands inside that already narrow intermediate window.
+moving_throat_pde_stage043_entropic_microclosure.md
 # Moving-Throat PDE — Stage 43: Entropic Source Microclosure and the Microscopic Support/Source Gain
 
 ## Purpose
@@ -11613,6 +11656,7 @@ That is a much tighter result because:
 So the remaining theorem gap is now sharper again:
 
 > compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare it directly to the exact support thresholds from Stage 42.
+moving_throat_pde_stage044_microscopic_gain_thresholds.md
 # Moving-Throat PDE — Stage 44: Microscopic Gain Thresholds and the Exact Operator Phase Diagram
 
 ## Purpose
@@ -11876,6 +11920,7 @@ The sharpest practical lesson is now clear:
 - and on the best-case compliant branch, success is controlled by whether `G_micro` can reach an order-`Pe_req` value.
 
 So the next honest step is to compute `G_micro = chi_sigma Lambda_phi^2/K_X` from a more explicit moving-throat branch and compare it directly to the exact threshold surfaces derived here.
+moving_throat_pde_stage045_parent_action_gain.md
 # Moving-Throat PDE — Stage 45: Parent-Action Projection of the Microscopic Support/Source Gain
 
 ## Purpose
@@ -12133,6 +12178,7 @@ is now determined by three parent-action ingredients only:
 - and the support tension/Robin geometry sector entering `(T_X,kappa,eta)`.
 
 That is the cleanest microscopic restatement yet of the support/source theorem gap.
+moving_throat_pde_stage046_parent_thresholds.md
 # Moving-Throat PDE — Stage 46: Parent-Overlap Threshold Theorem and Exact Microscopic Success/No-Go Tests
 
 ## Purpose
@@ -12389,6 +12435,7 @@ That is stronger than the Stage-44 statement because it pushes the support/sourc
 In other words, the unresolved PDE question is now no longer “is the microscopic gain big enough?” It is
 
 > does the completed moving-throat branch generate sufficient **parent confinement loading** and sufficient **source/support coherence** to cross the explicit fail/succeed surfaces above?
+moving_throat_pde_stage047_equilibrium_alignment.md
 # Moving-Throat PDE — Stage 47: Parent Equilibrium Source/Support Alignment and the Exact Matched-Layer Gain
 
 ## Purpose
@@ -12618,6 +12665,7 @@ The coherence factor is no longer free. It is a derived quantity,
 and it is automatically near 1 when the active wall layer is thin enough that `H(y)` is nearly constant there.
 
 That is the point where it becomes worthwhile to stop speaking abstractly about `g_phi` and evaluate it on a concrete parent confinement branch.
+moving_throat_pde_stage048_thin_wall_confinement.md
 # Moving-Throat PDE — Stage 48: Explicit Thin-Wall Confinement Branch and Parent Thresholds for the Wall Amplitude
 
 ## Purpose
@@ -12904,6 +12952,7 @@ The next honest step is therefore no longer another abstract overlap theorem. It
 - and the axial support functions,
 
 and test them against the explicit wall-amplitude fail/succeed surfaces derived here.
+moving_throat_pde_stage049_wall_figure_of_merit.md
 # Moving-Throat PDE — Stage 49: Dimensionless Wall Figure of Merit for the First Explicit Parent Branch
 
 ## Purpose
@@ -13052,6 +13101,7 @@ The remaining work is no longer to invent more algebra. It is to compute the act
 - and the axial support functions `Delta_0`, `Delta_inf`,
 
 and then evaluate whether the real branch lands below, within, or above the exact wall-control window.
+moving_throat_pde_stage050_sech_gaussian_resonance.md
 
 # Moving-Throat PDE — Stage 50: Exact Sech–Gaussian Coherence Resonance Benchmark
 
@@ -13222,6 +13272,7 @@ So the user memo is mathematically useful — but the strongest justified conclu
 > the first explicit independent-profile family almost saturates the ideal matched source/support branch.
 
 The actual survival theorem still has to be stated in terms of the Stage-44/49 gain and wall-figure thresholds.
+moving_throat_pde_stage051_resonance_thresholds.md
 
 # Moving-Throat PDE — Stage 51: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family
 
@@ -13386,6 +13437,7 @@ but it changes the Stage-49 theorem window only by the small factor
 
 So the dominant unresolved reduced-theorem question is still not transverse profile mismatch.
 It is the actual wall/axial branch data entering `W_wall`, `Delta_0`, and `Delta_inf`.
+moving_throat_pde_stage052_final_reduced_verdict.md
 
 # Moving-Throat PDE — Stage 52: Final Reduced Verdict for the Support/Source Program
 
@@ -13539,6 +13591,7 @@ The right expert reading is:
 What it really proves is that a natural explicit independent-profile family comes within `0.56%` of the ideal matched branch.
 
 That is exactly the kind of result that helps us finish the reduced phase cleanly.
+moving_throat_pde_stage053_gnls_wall_shell.md
 # Moving-Throat PDE — Stage 53: Explicit GNLS Wall-Shell Reduction for the First Support Branch
 
 ## Purpose
@@ -13727,6 +13780,7 @@ directly from the parent GNLS shell reduction.
 
 That means the next phase is no longer to invent more branch coefficients.
 It is to choose one concrete wall profile and one concrete mouth closure, and then evaluate the branch point in terms of a very small set of parent dimensionless ratios.
+moving_throat_pde_stage054_tanh_wall_branch.md
 # Moving-Throat PDE — Stage 54: Canonical Tanh-Wall Branch and Natural Local Mouth Closure
 
 ## Purpose
@@ -13868,6 +13922,7 @@ What remains now is not a symbolic branch ledger.
 What remains is an explicit three-parameter branch-placement problem.
 
 That is exactly the right form for the next step, because it means we can now compare the explicit branch directly to the exact Stage-49 / Stage-52 success window instead of still talking in abstract support/source language.
+moving_throat_pde_stage055_explicit_branch_thresholds.md
 # Moving-Throat PDE — Stage 55: Explicit Branch Placement Map and Threshold Surfaces
 
 ## Purpose
@@ -14021,6 +14076,7 @@ So the next phase is now sharply defined:
 > compute the actual moving-throat branch values of `chi_s`, `Lambda_ell`, and `Upsilon_w` on the real throat, and compare them directly to the explicit surfaces `Upsilon_fail`, `Upsilon_suff`.
 
 That is the first genuinely explicit branch-placement problem beyond the finished reduced support/source program.
+moving_throat_pde_stage056_family1_geometry_map.md
 # Moving-Throat PDE — Stage 56: Family-1 Reference-Branch Geometry Map
 
 ## Purpose
@@ -14131,6 +14187,7 @@ and therefore also fixes the Robin support variable to
 `eta = 37.`
 
 That means the remaining actual branch uncertainty is now concentrated in the support/healing scale `chi_s` and the wall-loading amplitude `Upsilon_w`.
+moving_throat_pde_stage057_family1_healing_lock.md
 # Moving-Throat PDE — Stage 57: Healing-Length Lock and the Actual Reference-Branch Support Scale
 
 ## Purpose
@@ -14265,6 +14322,7 @@ After Stages 56–57, the explicit Family-1 throat-support branch has fixed
 So the only remaining explicit-branch unknown from the Stage-55 triplet is the wall-loading amplitude `Upsilon_w`.
 
 That is a much sharper endpoint than the earlier symbolic branch map.
+moving_throat_pde_stage058_family1_threshold_window.md
 # Moving-Throat PDE — Stage 58: Explicit Family-1 Threshold Window and the Last Remaining Wall-Amplitude Datum
 
 ## Purpose
@@ -14417,6 +14475,7 @@ That means the explicit-branch phase is now essentially finished.
 
 What remains is one last microscopic closure question on this branch:
 derive or estimate `Theta_w` from the real wall/throat PDE and compare it directly to the explicit threshold window above.
+moving_throat_pde_stage059_n5_wall_depth_lock.md
 # Moving-Throat PDE — Stage 59: Exact `n=5` Wall-Depth Lock for the Family-1 Branch
 
 ## Purpose
@@ -14546,6 +14605,7 @@ After this step, that datum is no longer opaque:
 in the normalized Family-1 wall variables.
 
 So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the active shell and compare the resulting `Theta_w` to the explicit Stage-58 threshold window.
+moving_throat_pde_stage060_family1_theta_extraction.md
 # Moving-Throat PDE — Stage 60: Shell-Weighted Extraction of `Theta_w` on the Explicit Family-1 Wall
 
 ## Purpose
@@ -14680,6 +14740,7 @@ So the final branch-level question is no longer “what is `Theta_w`?”
 It is now only:
 
 > where do these explicit branch values sit relative to the exact Stage-58 threshold window?
+moving_throat_pde_stage061_family1_branch_verdict.md
 # Moving-Throat PDE — Stage 61: Explicit Family-1 Branch Comparison and Closing Verdict for This Subprogram
 
 ## Purpose
@@ -14781,6 +14842,7 @@ The remaining serious problem is now the one the higher-order stack had already 
 > determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization branch and compare it to the explicit success/failure bands above.
 
 So from this point on, the real bottleneck is no longer the wall-depth amplitude. It is the final quadrupole normalization bridge.
+moving_throat_pde_stage062_family1_quadrupole_pe_map.md
 # Moving-Throat PDE — Stage 62: Exact Family-1 Map from Quadrupole Demand `zeta_req` to the Required Transport Bias `Pe_req`
 
 ## Purpose
@@ -14943,6 +15005,7 @@ with a hard ceiling
 So the remaining serious question is now much narrower:
 
 > does the final selected quadrupole branch demand a support ratio `zeta_req` that stays below this explicit Family-1 ceiling?
+moving_throat_pde_stage063_family1_zeta_thresholds.md
 # Moving-Throat PDE — Stage 63: Explicit Family-1 Conversion of the Stage-61 `Pe_req` Window into Quadrupole-Demand Thresholds `zeta_req`
 
 ## Purpose
@@ -15081,6 +15144,7 @@ After this step, the explicit branch verdict is fully phrased in the same suppor
 So the remaining serious theorem question is now extremely narrow:
 
 > does the final selected quadrupole branch require `zeta_req` below the explicit Family-1 support window `zeta_suff^(chi)(lambda_mu)` (or at least below the hard ceiling `zeta_max^(F1)`), or does it demand more than the explicit branch can ever supply?
+moving_throat_pde_stage064_family1_pi_thresholds.md
 # Moving-Throat PDE — Stage 64: Final Explicit Family-1 Quadrupole-Demand Window in the Branch-Product Variable `Pi_tr`
 
 ## Purpose
@@ -15247,6 +15311,7 @@ So the remaining explicit theorem gap is now as narrow as it can be without solv
 > does the completed moving-throat quadrupole branch produce a selected product `Pi_tr` that stays below the explicit Family-1 ceiling `Pi_max^(F1)(eps_blk)` and, more sharply, below the natural success threshold `Pi_suff^(chi)(lambda_mu;eps_blk)`?
 
 That is the clean finish line for the present explicit-branch phase.
+moving_throat_pde_stage065_master_quadrupole_residual.md
 # Moving-Throat PDE — Stage 65: Master Quadrupole Residual of the Full Reduced Moving-Throat PDE
 
 ## Purpose
@@ -15485,6 +15550,7 @@ The remaining unresolved problem is not another support/source reduction and not
 `R_quad(Pi_tr,C_mix,eps_blk ; Xi,eta,kappa).`
 
 Everything else in the reduced program now feeds this one object.
+moving_throat_pde_stage066_family1_direct_operator_window.md
 # Moving-Throat PDE — Stage 66: Direct Operator-Selected Family-1 Window for the Surviving Quadrupole Branch
 
 ## Purpose
@@ -15683,6 +15749,7 @@ So the remaining reduced theorem gap is no longer on the explicit support/source
 It is entirely on the outgoing quadrupole-normalization side:
 
 > what value of `Pi_tr` does the actual passive/outgoing moving-throat quadrupole branch produce, and does it stay below the explicit Family-1 ceiling? 
+moving_throat_pde_stage067_full_reduced_pde_writeup.md
 # Moving-Throat PDE — Stage 67: Full Reduced Moving-Throat PDE Write-Up Skeleton and the Final Remaining Theorem Gap
 
 ## Purpose
@@ -15883,6 +15950,7 @@ The next derivation is now as narrow as it can reasonably get:
 > derive the physical outgoing quadrupole product `Pi_tr` (and its accompanying `C_mix`, `eps_blk`) from the actual passive/outgoing moving-throat branch and evaluate the sign of `R_quad`.
 
 That is the remaining finish line for the present reduced moving-throat PDE program.
+moving_throat_pde_stage068_quadrupole_demand_cancellation.md
 # Moving-Throat PDE — Stage 68: Exact Cancellation of the Outgoing-Normalization Factors in the Selected Quadrupole-Demand Product
 
 ## Purpose
@@ -16070,6 +16138,7 @@ So the remaining support theorem gap is no longer “determine several separate 
 It is:
 
 > **determine the normalized selected-branch loading ratio `rho_alpha` of the actual passive/outgoing moving-throat quadrupole branch.**
+moving_throat_pde_stage069_family1_loading_ratio_window.md
 # Moving-Throat PDE — Stage 69: Exact Family-1 Success/Failure Window in the Pure Loading-Ratio Variable
 
 ## Purpose
@@ -16235,6 +16304,7 @@ So the explicit Family-1 theorem gap is no longer about the outgoing normalizati
 It is just this:
 
 > **does the actual passive/outgoing moving-throat quadrupole branch produce a normalized loading ratio `rho_alpha = alpha_req/alpha_mix` below about `3.4675`?**
+moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish.md
 # Moving-Throat PDE — Stage 70: Final Reduced Finish-Line for the Explicit Family-1 Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16332,6 +16402,7 @@ The strongest honest statement is therefore:
 > **within the explicit Family-1 support/source branch, the reduced moving-throat PDE program is complete up to one final passive/outgoing quadrupole loading-ratio calculation.**
 
 That is as close as the reduced program can get to a full explicit write-up without solving the last outgoing branch itself.
+moving_throat_pde_stage071_loading_ratio_from_minimal_module.md
 # Moving-Throat PDE — Stage 71: Loading-Ratio Extraction from the Minimal Isotropic Quadrupole Module
 
 ## Purpose
@@ -16508,6 +16579,7 @@ equivalently
 So the reduced moving-throat PDE has advanced from a vague outgoing-branch loading question to a sharp statement:
 
 > **if the actual passive/outgoing quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit support/source side is comfortably compatible with it.**
+moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md
 # Moving-Throat PDE — Stage 72: Explicit Family-1 Verdict for the Minimal Isotropic Passive/Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16655,6 +16727,7 @@ and therefore lies safely inside the exact Family-1 success region.
 So the explicit branch-level reduced theorem is now:
 
 > **if the actual passive/outgoing moving-throat quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit Family-1 support/source side already succeeds without requiring transport bias or non-twin asymmetry.**
+moving_throat_pde_stage073_updated_reduced_status.md
 # Moving-Throat PDE — Stage 73: Updated Reduced Theorem Status After the Loading-Ratio Extraction
 
 ## Purpose
@@ -16716,6 +16789,7 @@ For the explicit Family-1 branch, the reduced moving-throat PDE program has adva
 - and the remaining reduced bottleneck is now the derivation of that minimal isotropic conservative quadrupole module from the actual grouped-`P2` / geometry throat branch.
 
 That is the right place for the next derivation phase.
+moving_throat_pde_stage074_grouped_p2_static_geometry_derivation.md
 # Moving-Throat PDE — Stage 74: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2` + Geometry Split
 
 ## Purpose
@@ -16888,6 +16962,7 @@ So the remaining reduced theorem gap is now extremely sharp:
 - or the missing PDE must generate extra dynamic geometry moments or a richer isotropic grouped-`P2` pole structure.
 
 That is exactly the right question to carry into the next phase.
+moving_throat_pde_stage075_dynamic_geometry_obstruction.md
 # Moving-Throat PDE — Stage 75: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments
 
 ## Purpose
@@ -17035,6 +17110,7 @@ Stage 75 sharpens the remaining gap:
 
 If both vanish, the Stage-74 result is exact.
 If they do not, the contact/pole fractions are still fixed — but by the obstruction formula above rather than by the simple `3/4 + 1/4` split.
+moving_throat_pde_stage076_grouped_p2_status_update.md
 # Moving-Throat PDE — Stage 76: Updated Status After the Direct Grouped-`P2` + Geometry Derivation
 
 ## Purpose
@@ -17102,6 +17178,7 @@ At this point the reduced program is in its sharpest state yet.
 - The only remaining reduced ambiguity is whether the real geometry lane is dynamically inert through `O(omega^4)` on the natural branch.
 
 So the next derivation phase should be aimed squarely at the geometry lane, not at reopening the already-solved support/source side.
+moving_throat_pde_stage077_isotropic_geometry_decoupling.md
 # Moving-Throat PDE — Stage 77: Isotropic Geometry-Decoupling Theorem
 
 ## Purpose
@@ -17263,6 +17340,7 @@ Therefore
 on the natural isotropic branch,
 
 and the Stage-74 `3/4 + 1/4` split is recovered exactly.
+moving_throat_pde_stage078_second_order_geometry_contamination.md
 # Moving-Throat PDE — Stage 78: First Nonzero Geometry Contamination Appears Only at Second Order in Anisotropy/Mixing
 
 ## Purpose
@@ -17404,6 +17482,7 @@ exactly on the isotropic branch, and for weak symmetry breaking
 `eps_2, eps_4 = O(chi^2)`.
 
 So the dynamic geometry obstruction is absent on the actual isotropic branch and only enters at second order once an explicit mixing mechanism is turned on.
+moving_throat_pde_stage079_geometry_lane_check_verdict.md
 # Moving-Throat PDE — Stage 79: Actual Branch Verdict for the Geometry-Lane Check
 
 ## Purpose
@@ -17470,6 +17549,7 @@ The remaining serious open question is deeper and more physical:
 
 So the geometry-lane check is now finished at reduced level.
 The live gap is again the same narrow one isolated by the 2.5PN program: the final passive/outgoing quadrupole normalization on the true moving-throat branch.
+moving_throat_pde_stage080_single_normalization_defect.md
 # Moving-Throat PDE — Stage 80: The Actual Isotropic Passive/Outgoing Branch Collapses to a Single Normalization Defect
 
 ## Purpose
@@ -17600,6 +17680,7 @@ The present stage shows that the second question is no longer a multi-parameter 
 Once the actual isotropic grouped-`P2` one-pole structure is accepted, it is only the one-number defect `N_Q`.
 
 That is as narrow a reduced theorem gate as one can reasonably ask for before solving the full moving-throat PDE.
+moving_throat_pde_stage081_family1_support_is_automatic.md
 # Moving-Throat PDE — Stage 81: The Explicit Family-1 Support Test Is Automatic on the Actual Isotropic Branch
 
 ## Purpose
@@ -17713,6 +17794,7 @@ So the explicit Family-1 branch has now dropped out of the active uncertainty le
 The only remaining reduced theorem question is whether the completed moving-throat PDE gives
 
 `N_Q = 1`.
+moving_throat_pde_stage082_reduced_finish_line.md
 # Moving-Throat PDE — Stage 82: The Reduced Finish Line After the Geometry-Lane Check
 
 ## Purpose
@@ -17802,6 +17884,7 @@ Inside the present reduced hierarchy, the moving-throat PDE program has reached 
 > the actual isotropic grouped-`P2` one-pole branch is conservatively clean, the explicit Family-1 support/source side is already sufficient, and the only remaining reduced theorem gap is the single passive/outgoing quadrupole normalization defect `N_Q - 1`.
 
 That is the narrowest and strongest honest carry-forward statement available before solving the full moving-throat PDE normalization problem.
+moving_throat_pde_stage083_outgoing_normalization_factorization.md
 # Moving-Throat PDE — Stage 83: Exact Factorization of the Last 2.5PN Defect into Conservative and Outgoing Pieces
 
 ## Purpose
@@ -17915,6 +17998,7 @@ This stage refines that statement:
 `chi_Q`.
 
 So the problem is no longer “some unknown outgoing structure.” It is exactly the leading outgoing-normalization factor of the actual grouped-`P2` one-pole branch.
+moving_throat_pde_stage084_natural_source_map_reduction.md
 # Moving-Throat PDE — Stage 84: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely Outgoing
 
 ## Purpose
@@ -18006,6 +18090,7 @@ What remains is no longer a broad question about conservative structure, support
 > does the actual passive/outgoing moving-throat quadrupole branch realize `chi_Q = 1`, or does it carry a nontrivial outgoing-normalization defect `Delta_Q`?
 
 That is the cleanest reduced 2.5PN finish line reached so far.
+moving_throat_pde_stage085_higher_odd_irrelevance.md
 # Moving-Throat PDE — Stage 85: At 2.5PN the Only Live Retarded Obstruction is the Leading `omega^5` Outgoing Normalization
 
 ## Purpose
@@ -18064,6 +18149,7 @@ Inside the present reduced hierarchy, the moving-throat PDE program is now reduc
 > does the actual passive/outgoing grouped-`P2` quadrupole branch have the canonical compact outgoing `omega^5` coefficient, i.e. `chi_Q = 1`?
 
 Everything else that could have obstructed the reduced 2.5PN theorem has either been fixed or pushed above the relevant order.
+moving_throat_pde_stage086_reduced_25pn_conditional_closure.md
 # Moving-Throat PDE — Stage 86: Conditional Reduced 2.5PN Closure
 
 ## Statement
@@ -18093,6 +18179,7 @@ So the remaining PDE-facing problem is no longer “derive 2.5PN somehow.”
 It is:
 
 > compute the leading outgoing `omega^5` normalization of the actual passive/outgoing grouped-`P2` quadrupole branch and determine whether it equals the canonical compact outgoing value.
+moving_throat_pde_stage087_outgoing_dtn_fingerprint.md
 # Moving-Throat PDE — Stage 87: Exact Outgoing `l=2` DtN Fingerprint
 
 ## Goal
@@ -18185,6 +18272,7 @@ The canonical outgoing coefficient is therefore not free. On the exact spherical
 \]
 
 So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity in the canonical outgoing `l=2` DtN model itself.
+moving_throat_pde_stage088_chiQ_fix_from_outgoing_dtn.md
 # Moving-Throat PDE — Stage 88: Exact Fixing of `chi_Q`
 
 ## Goal
@@ -18283,6 +18371,7 @@ so
 \]
 
 That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md
 # Moving-Throat PDE — Stage 89: Reduced 2.5PN Closure on the Canonical Outgoing DtN Branch
 
 ## Goal
@@ -18366,6 +18455,7 @@ What remains open is no longer a reduced PN bookkeeping problem. It is the deepe
 > Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN branch, rather than a deformed branch with \(\chi_Q\neq1\)?
 
 So the reduced theorem is now finished **conditional on actual branch realization**, not on any remaining reduced-sector normalization ambiguity.
+moving_throat_pde_stage090_general_dtn_deformation.md
 # Moving-Throat PDE — Stage 90: General Isotropic `l=2` DtN Deformation Algebra
 
 ## Goal
@@ -18490,6 +18580,7 @@ This is the first explicit moving-throat DtN deformation model for the last redu
 - odd `l=2` throat-core outlet `Sigma_5`.
 
 Overall scale `S` is not itself an independent obstruction; it only enters through the ratios above.
+moving_throat_pde_stage091_robustness_classes.md
 # Moving-Throat PDE — Stage 91: Robustness Classes for `chi_Q`
 
 ## Goal
@@ -18597,6 +18688,7 @@ The canonical value `chi_Q = 1` is robust against:
 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
 
 It is shifted only by a genuine isotropic throat-core self-energy that is not on the exact preservation submanifold above.
+moving_throat_pde_stage092_linearized_branch_selection.md
 # Moving-Throat PDE — Stage 92: Linearized Branch-Selection Law Near the Canonical Outgoing Branch
 
 ## Goal
@@ -18678,6 +18770,7 @@ After the grouped-`P2` conservative split, geometry cleaning, and Family-1 suppo
 > compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact nonlinear condition of Stage 91, or at least the linearized condition above.
 
 So the remaining PDE-facing ambiguity is no longer an open-ended “deformed branch somehow.” It is a small explicit set of outgoing-branch deformation scalars.
+moving_throat_pde_stage093_robin_outlet_model.md
 # Moving-Throat PDE — Stage 93: Explicit Isotropic Robin Outlet Model
 
 ## Goal
@@ -18755,6 +18848,7 @@ Therefore the linearized outgoing-normalization shift is
 ## Consequence
 
 A pure isotropic geometric Robin outlet is **not** automatically harmless. By itself it deforms both the canonical even fingerprint and the odd normalization. So if the already-fixed conservative grouped-`P_2` branch is to survive, a Robin core must either be negligible or be compensated by additional outlet structure.
+moving_throat_pde_stage094_mixed_sidechannel_pole.md
 # Moving-Throat PDE — Stage 94: Explicit Mixed `A_w/F_{\mu w}`-Type Side-Channel Pole
 
 ## Goal
@@ -18837,6 +18931,7 @@ So the linearized branch-selection triple is
 ## Consequence
 
 A naive passive mixed `A_w/F_{\mu w}` side-channel pole is **too rigid**. It generically shifts the outgoing normalization and, more importantly, it cannot preserve the already-fixed canonical even `l=2` branch. If a mixed sector survives on the actual branch, it must appear in a more structured, compensated outlet law.
+moving_throat_pde_stage095_hybrid_robin_mixed_compensation.md
 # Moving-Throat PDE — Stage 95: Exact Robin–Mixed Compensation Law
 
 ## Goal
@@ -18947,6 +19042,7 @@ again giving
 ## Consequence
 
 This is the first explicit compensated moving-throat outlet model that preserves the canonical outgoing quadrupole branch. It shows that neither a pure geometric Robin core nor a naive hidden mixed pole is sufficient by itself, but a specific Robin–mixed balance law can reduce the whole deformation to a pure mouth renormalization, which is exactly the robust class already identified in Stages 90–92.
+moving_throat_pde_stage096_outlet_model_status.md
 # Moving-Throat PDE — Stage 96: Outlet-Model Status Update
 
 ## What is now explicit
@@ -18997,6 +19093,7 @@ The completed moving-throat PDE does **not** need to decide among an unlimited s
 - or a compensated Robin–mixed outlet of the exact type above.
 
 Pure Robin loading alone and a naive standalone hidden mixed pole are not enough.
+moving_throat_pde_stage097_concrete_core_schur.md
 
 # Moving-Throat PDE — Stage 97: Concrete Two-Channel Core Outlet Model
 
@@ -19100,6 +19197,7 @@ This is already a significant narrowing. The outlet is no longer described by fo
 - plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.
 
 The next question is whether this concrete core model can *naturally* land on the compensated canonical branch found algebraically in Stage 95.
+moving_throat_pde_stage098_core_balance_compensation.md
 
 # Moving-Throat PDE — Stage 98: Exact Core-Balance Compensation Theorem
 
@@ -19205,6 +19303,7 @@ This is the first explicit throat-core theorem in the outlet program:
 - the Stage-95 compensation law is not just an algebraic accident,
 - it is realized by a concrete two-channel core model,
 - and the surviving free data are sharply reduced to one coupling-balance surface plus one scale-deformed bare mixed outlet.
+moving_throat_pde_stage099_dn_mixed_tube_realization.md
 
 # Moving-Throat PDE — Stage 99: Finite D/N Mixed-Tube Realization
 
@@ -19299,6 +19398,7 @@ A fully compensated canonical branch exists whenever:
 
 So the remaining PDE-side question is no longer “some unknown outlet deformation.”
 It is whether the actual moving-throat core realizes this specific D/N-tube + coupling-balance structure.
+moving_throat_pde_stage100_outlet_core_status.md
 
 # Moving-Throat PDE — Stage 100: Concrete Outlet-Core Status
 
@@ -19363,6 +19463,7 @@ It is much sharper:
 > Does the actual moving-throat core realize the concrete coupling-balance surface and the auxiliary D/N-tube normalization identified above?
 
 That is a genuinely microscopic throat-core question, not more reduced outlet algebra.
+moving_throat_pde_stage101_parent_core_extraction.md
 
 # Moving-Throat PDE — Stage 101: Parent-Action Extraction of Core Parameters
 
@@ -19654,6 +19755,7 @@ g_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi}{\sqrt2\,L_W^{3/2}}.
 \]
 
 The next step is to rewrite the compensation surface entirely in terms of the parent overlap ratios these formulas define.
+moving_throat_pde_stage102_parent_balance_family.md
 
 # Moving-Throat PDE — Stage 102: One-Parameter Parent Compensation Family
 
@@ -19825,6 +19927,7 @@ The compensated canonical outlet has now been reduced to a **one-parameter paren
    \]
 
 So the remaining PDE-facing question is no longer a large outlet-coefficient search. It is whether the actual GNLS + localized-Maxwell throat core picks one of these parent-balance branches.
+moving_throat_pde_stage103_core_parameter_status.md
 
 # Moving-Throat PDE — Stage 103: Core-Parameter Extraction Status
 
@@ -19866,6 +19969,7 @@ It is now:
 > “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core select?”
 
 That is a substantially smaller target for the next derivation.
+moving_throat_pde_stage108_positive_source_theorem.md
 
 # Moving-Throat PDE — Stage 108: Positive Local Mouth-Source Theorem
 
@@ -19958,6 +20062,7 @@ The outlet-core ambiguity is no longer “which branch do we choose?” Within a
 - the lower compensated branch is the only canonical candidate.
 
 So the remaining question is not branch sign, but the **shape** of the positive source profile \(\sigma(z)\).
+moving_throat_pde_stage109_positive_source_families.md
 
 # Moving-Throat PDE — Stage 109: Explicit Positive Source Families and the Family-1 Compensation Point
 
@@ -20073,6 +20178,7 @@ The explicit mouth-source bias is now much narrower than before:
 - and the true Family-1 compensated branch is reached by a small \(18.4\%\) broadening of that already-natural positive source law.
 
 So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of positive localized mouth sources.
+moving_throat_pde_stage110_penetration_families.md
 
 # Moving-Throat PDE — Stage 110: Geometric Mouth-Penetration Families
 
@@ -20170,6 +20276,7 @@ Combined with Stages 108–109, this means:
 - the upper compensated branch is excluded by positivity,
 - the lower compensated branch is the unique physical candidate,
 - and simple positive localized source laws reach it without requiring sign-changing or finely oscillatory mouth forcing.
+moving_throat_pde_stage111_mouth_source_bias_status.md
 
 # Moving-Throat PDE — Stage 111: Mouth-Source Bias Status
 
@@ -20249,6 +20356,7 @@ It is now much sharper:
 \]
 
 So the remaining PDE-facing question is not branch sign. It is the detailed shape of the actual mouth source profile \(\sigma(z)\), or equivalently the exact amount of positive mouth broadening away from the point-source limit.
+moving_throat_pde_stage112_mouth_boundary_layer.md
 
 # Moving-Throat PDE — Stage 112: Explicit GNLS + Localized-Maxwell Mouth Boundary Layer
 
@@ -20419,6 +20527,7 @@ So the next question is no longer “what source family should we try?” It is 
 \boxed{
 \text{what value of }\Pi_m\text{ does the actual moving-throat mouth layer select?}
 }
+moving_throat_pde_stage113_mouth_bias_map.md
 
 # Moving-Throat PDE — Stage 113: Exact Mouth-Bias Map and Family-1 Compensation Point
 
@@ -20565,6 +20674,7 @@ So the remaining branch-selection ambiguity has collapsed to one explicit number
 \Pi_m \stackrel{?}{\approx} 1.50882951349.
 }
 \]
+moving_throat_pde_stage114_parent_mouth_threshold.md
 
 # Moving-Throat PDE — Stage 114: Parent Micro-Threshold for Canonical Mouth Compensation
 
@@ -20697,6 +20807,7 @@ T_m-q_*A_0'
 \]
 
 That is a concrete microscopic threshold, not a broad qualitative criterion.
+moving_throat_pde_stage115_mouth_boundary_layer_status.md
 
 # Moving-Throat PDE — Stage 115: Mouth Boundary-Layer Status After Explicit Source-Law Extraction
 
@@ -20767,6 +20878,7 @@ And the target value is moderate:
 \]
 
 So the remaining gap is now one clean microscopic bias law, not a diffuse branch-selection problem.
+moving_throat_pde_stage116_coupled_mouth_fixedpoint.md
 
 # Moving-Throat PDE — Stage 116: Full Coupled Mouth-Layer Fixed-Point Law
 
@@ -20983,6 +21095,7 @@ M_+\mathcal S(\Pi,\kappa_+)+M_-\mathcal S(\Pi,\kappa_-).
 
 So the remaining ambiguity is now just a **small dimensionless gain/stiffness
 quadruple** \((M_+,M_-,\kappa_+,\kappa_-)\).
+moving_throat_pde_stage117_family1_mouth_fixedpoint.md
 
 # Moving-Throat PDE — Stage 117: Family-1 Shell + First Mixed D/N Tube Reduction
 
@@ -21128,6 +21241,7 @@ M_s \approx 1.50882951349316 - 0.658075937605429\,M_q.
 
 The remaining ambiguity is therefore no longer profile selection and no longer a
 free mouth slope: it is just the signed gain pair \((M_s,M_q)\).
+moving_throat_pde_stage118_outlet_consistent_mouth_closure.md
 
 # Moving-Throat PDE — Stage 118: Outlet-Consistent Mouth Closure
 
@@ -21286,6 +21400,7 @@ and the canonical Family-1 branch is selected at
 
 So the remaining mouth-layer ambiguity is now one dimensionless gain amplitude,
 not an arbitrary source profile and not an arbitrary parent slope combination.
+moving_throat_pde_stage119_coupled_mouth_status.md
 
 # Moving-Throat PDE — Stage 119: Mouth-Layer Fixed-Point Status After the Coupled Solve
 
@@ -21350,6 +21465,7 @@ moving-throat mouth layer select?}
 
 So the open microscopic bias problem has collapsed from a free profile question to
 a small, explicit fixed-point law.
+moving_throat_pde_stage120_core_to_mouth_gain_map.md
 # Moving-Throat PDE — Stage 120: Explicit Core-to-Mouth Gain Map
 
 ## Goal
@@ -21487,6 +21603,7 @@ M_q=
 
 So the mouth fixed-point ambiguity has now collapsed from an abstract gain pair to
 one explicit set of parent core quantities.
+moving_throat_pde_stage121_normalized_mouth_gain_family.md
 # Moving-Throat PDE — Stage 121: Normalized Mouth-Gain Family and Compensation Ratio
 
 ## Goal
@@ -21593,6 +21710,7 @@ On the exact compensated branch this collapses to
 \boxed{R_q=\frac14,}
 \]
 so the outlet-consistent mouth closure is derived rather than assumed.
+moving_throat_pde_stage122_family1_actual_mouth_gains.md
 # Moving-Throat PDE — Stage 122: Actual Family-1 Mouth Gains
 
 ## Goal
@@ -21754,6 +21872,7 @@ The actual Family-1 mouth gains are now explicit.
 
 So the remaining ambiguity is no longer “what are the gains?” It is only whether the real
 mouth core stays on the natural branch or shifts modestly toward the lower compensated one.
+moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md
 # Moving-Throat PDE — Stage 123: Self-Matched Mouth Susceptibility Closure
 
 ## Goal
@@ -21900,6 +22019,7 @@ On the explicit Family-1 branch, the natural and exact-compensated mouth closure
 by only about `4%` in the normalized traction amplitude.
 
 That is the cleanest explicit parent-level narrowing of the mouth-gain problem so far.
+moving_throat_pde_stage124_mouth_gain_status.md
 # Moving-Throat PDE — Stage 124: Mouth-Gain Status Update
 
 The coupled mouth-layer problem is now much tighter than it was at Stage 116.
@@ -21962,6 +22082,7 @@ It has shrunk to two very concrete microscopic questions:
 2. and does the actual mouth traction land at the corresponding `\widehat T_m` value?
 
 That is a much smaller target than the original abstract `\Pi_m` problem.
+moving_throat_pde_stage125_selfconsistent_mouth_branch.md
 # Moving-Throat PDE — Stage 125: Self-Consistent Mouth-Branch Law
 
 ## Goal
@@ -22102,6 +22223,7 @@ The mouth problem is now much sharper:
 Once this explicit positive mouth layer is assumed, the branch is governed by one scalar variable
 \(\Pi\), with a unique canonical compensation point at moderate finite bias and moderate
 finite traction inside that closure.
+moving_throat_pde_stage126_equal_normalized_singular_limit.md
 # Moving-Throat PDE — Stage 126: Equal-Normalized Branch Is a Singular Limit
 
 ## Goal
@@ -22234,6 +22356,7 @@ The explicit positive exponential mouth-layer family proves that:
 
 So the naive equal-normalized mouth-source branch is **not** a regular finite branch of the
 explicit mouth-layer dynamics. Inside this explicit family it is a singular point-source limit.
+moving_throat_pde_stage127_unique_regular_canonical_branch.md
 # Moving-Throat PDE — Stage 127: Unique Regular Canonical Mouth Branch
 
 ## Goal
@@ -22351,6 +22474,7 @@ This is a real narrowing.
 The remaining mouth ambiguity is no longer a branch-choice ambiguity at all.
 On the explicit Family-1 positive mouth-layer closure, the canonical outgoing-preserving
 branch is the only regular finite one.
+moving_throat_pde_stage128_mouth_branch_selection_status.md
 # Moving-Throat PDE — Stage 128: Mouth-Branch Selection Status
 
 Inside the explicit positive exponential mouth-family reduction, the mouth-source
@@ -22422,6 +22546,7 @@ It is now only this inside the explicit mouth-family reduction:
    \]
 
 That is a much smaller target than the earlier abstract branch ambiguity.
+moving_throat_pde_stage129_positive_deformation_expansion.md
 
 # Moving-Throat PDE — Stage 129: First-Order Expansion for Positive Mouth-Layer Deformations
 
@@ -22566,6 +22691,7 @@ So the compensated mixed-channel response changes by
 \]
 
 This is the first non-exponential correction formula at `O(epsilon)`.
+moving_throat_pde_stage130_first_order_rigidity_kernel.md
 
 # Moving-Throat PDE — Stage 130: First-Order Rigidity Kernel at the Canonical Family-1 Point
 
@@ -22693,6 +22819,7 @@ branch-choice ambiguity suggested:
 - and the remaining first-order traction shift is controlled by one explicit kernel.
 
 That is a strong reduction of the mouth-side uncertainty.
+moving_throat_pde_stage131_representative_positive_families.md
 
 # Moving-Throat PDE — Stage 131: Representative Non-Exponential Positive Mouth Families
 
@@ -22853,6 +22980,7 @@ For the two most natural explicit positive non-exponential mouth families:
 This is the best first-order evidence so far that the canonical Family-1 mouth branch is
 **rigid but not brittle**: moderate positive non-exponential corrections move it in a
 controlled, almost one-parameter way.
+moving_throat_pde_stage132_mouth_rigidity_status.md
 
 # Moving-Throat PDE — Stage 132: Non-Exponential Mouth-Rigidity Status
 
@@ -22937,6 +23065,7 @@ So the remaining PDE-facing question is not “which mouth branch?” but rather
 \]
 
 That is a much smaller target than the earlier mouth-source ambiguity.
+moving_throat_pde_stage133_full_profile_residual.md
 # Moving-Throat PDE — Stage 133: Exact Full-Profile Mouth Potential and Curvature Residual
 
 ## Goal
@@ -23080,7 +23209,8 @@ The important point is not just that a correction exists. The important point is
 
 So the remaining mouth uncertainty is no longer a branch-choice issue.
 It is a finite profile correction around the already-selected lower compensated
-branch.# Moving-Throat PDE — Stage 134: First-Order Source Correction Selected by the Full Mouth Profile
+branch.moving_throat_pde_stage134_first_order_selected_correction.md
+# Moving-Throat PDE — Stage 134: First-Order Source Correction Selected by the Full Mouth Profile
 
 ## Goal
 
@@ -23218,7 +23348,8 @@ bias retuning, and traction retuning follow automatically.
 
 So the next question is no longer “which positive family?”
 It is simply: what are the actual numerical covariances of \(R_*(x)\) on the
-explicit Family-1 branch?# Moving-Throat PDE — Stage 135: Actual Family-1 Mouth Correction and One-Step Nonlinear Check
+explicit Family-1 branch?moving_throat_pde_stage135_family1_actual_correction.md
+# Moving-Throat PDE — Stage 135: Actual Family-1 Mouth Correction and One-Step Nonlinear Check
 
 ## Goal
 
@@ -23374,7 +23505,8 @@ Equivalently, the actual selected correction corresponds to a **broadening fract
 \]
 
 So the full mouth profile behaves much more like a moderate broadening toward
-uniformity than like a sharpening toward the self-matched derivative branch.# Moving-Throat PDE — Stage 136 / v58 Status
+uniformity than like a sharpening toward the self-matched derivative branch.moving_throat_pde_stage136_full_mouth_correction_status.md
+# Moving-Throat PDE — Stage 136 / v58 Status
 
 ## New closure result
 
@@ -23466,6 +23598,7 @@ finite correction problem around a unique regular branch.
 The next PDE-facing step is to let the **core outlet coefficients and the mouth profile
 co-evolve** self-consistently, instead of holding the compensated core branch fixed while
 correcting only the mouth source law.
+moving_throat_pde_stage137_coevolving_core_mouth_map.md
 # Moving-Throat PDE — Stage 137: Exact Co-Evolving Core–Mouth Fixed-Point Map
 
 ## Goal
@@ -23658,6 +23791,7 @@ Under the self-matched susceptibility closure from Stage 123,
 So the remaining ambiguity is now only the required **normalized mouth traction**
 \(\widehat T_m\) that makes the co-evolving fixed point land on
 \(\mathfrak g_*\).
+moving_throat_pde_stage138_frozen_traction_fixedpoint.md
 # Moving-Throat PDE — Stage 138: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction
 
 ## Goal
@@ -23812,6 +23946,7 @@ traction-dependent fixed point with
 
 That means exact preservation of the canonical outgoing quadrupole fingerprint now
 requires a **retuned traction**, not just the old canonical value.
+moving_throat_pde_stage139_renormalized_canonical_branch.md
 # Moving-Throat PDE — Stage 139: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution
 
 ## Goal
@@ -23968,6 +24103,7 @@ Inside the explicit Family-1 co-evolving closure on the analyzed positive branch
 So the mouth-side problem is no longer branch selection and no longer a broad
 profile ambiguity. It is now a quantitative renormalization problem for the
 unique regular canonical branch.
+moving_throat_pde_stage140_core_mouth_coevolution_status.md
 # Moving-Throat PDE — Stage 140 / v59 Status
 
 ## New closure result
@@ -24056,6 +24192,7 @@ The next PDE-facing task is no longer branch selection. It is to derive the actu
 deviation of the moving-throat mouth/core system from this explicit Family-1
 co-evolving fixed point, and then translate that deviation into the remaining
 outgoing quadrupole-normalization defect.
+moving_throat_pde_stage141_linear_defect_transport.md
 # Moving-Throat PDE — Stage 141: Linear Defect Transport from the Renormalized Family-1 Canonical Point
 
 ## Goal
@@ -24466,6 +24603,7 @@ The clean next derivation is now:
 The most economical first pass is to test the **compensated Robin–mixed branch**,
 because it is the only explicit isotropic outlet class already known to preserve the
 canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
+moving_throat_pde_stage142_hybrid_outlet_projection.md
 
 # Moving-Throat PDE — Stage 142: Linear Projection of the Co-Evolving Family-1 Defect onto the Compensated Robin–Mixed Outlet
 
@@ -24938,6 +25076,7 @@ projection. It is the much narrower DtN problem:
 > tangential co-evolving mouth deformation on the compensated hybrid outlet.
 
 That is now the exact next theorem gate.
+moving_throat_pde_stage143_bare_mixed_port_slippage.md
 
 # Moving-Throat PDE — Stage 143: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate
 
@@ -25386,6 +25525,7 @@ The clean next derivation is now:
 4. and extract the coefficient `\Upsilon_\Pi`.
 
 That is the exact next theorem gate.
+moving_throat_pde_stage144_dn_similarity_slippage.md
 # Moving-Throat PDE — Stage 144: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility
 
 ## Goal
@@ -25883,6 +26023,7 @@ So the next theorem gate is now as small as it can be without solving the true m
 > to first order, or produces a nonzero similarity-slippage scalar `\Xi_{\rm slip}`.
 
 That is the exact next microscopic closure question.
+moving_throat_pde_stage145_parent_compensation_rigidity.md
 # Moving-Throat PDE — Stage 145: Parent Compensation-Surface Rigidity and Automatic Similarity Preservation
 
 ## Goal
@@ -26134,6 +26275,7 @@ The remaining PDE-facing question is now even narrower:
 > does the true moving-throat co-evolving core stay on the exact parent compensation family to first order?
 
 If it does, the first-order reduced 2.5PN quadrupole-normalization defect vanishes automatically.
+moving_throat_pde_stage146_off_family_normal_coordinate.md
 # Moving-Throat PDE — Stage 146: Off-Family Normal Coordinate and Microscopic Compensation Defect
 
 ## Goal
@@ -26553,6 +26695,7 @@ It is the much smaller question:
 
 If that scalar vanishes, Stage 145 is recovered and the first-order reduced \(2.5\)PN obstruction disappears automatically.
 If it does not, the whole first-order defect ledger is already explicit.
+moving_throat_pde_stage147_microscopic_log_channels.md
 # Moving-Throat PDE — Stage 147: Explicit Microscopic Log-Imbalance Channels on the Linearized Wall/BdG/Maxwell/Mixed Branch
 
 ## Goal
@@ -27010,6 +27153,7 @@ It is only to determine the actual linearized values of these branch-variable dr
 If they satisfy the tangency law above, then \(\delta_\perp=0\) and the first-order reduced
 \(2.5\)PN obstruction disappears automatically.
 If they do not, the whole first-order off-family defect is now already explicit.
+moving_throat_pde_stage148_exact_branch_drifts.md
 # Moving-Throat PDE — Stage 148: Exact Lower-Branch Drift Laws for `L_W`, `v_{w0}`, and `\mathcal T_m`
 
 ## Goal
@@ -27444,6 +27588,7 @@ So the next PDE-facing question is now as small as it has ever been:
 > `L_W`, `v_{w0}`, `\mathcal T_m`, and `c_{s,w}` for us?
 
 That is a much sharper continuation target than Stage 147 left us with.
+moving_throat_pde_stage149_bundle_inversion_four_drifts.md
 # Moving-Throat PDE — Stage 149: Exact Bundle Inversion of the Last Four Irreducible Branch Drifts
 
 ## Purpose
@@ -27679,6 +27824,7 @@ So the remaining PDE-facing bottleneck is no longer the direct computation of fo
 4. and the isotropic outgoing normalization drift \(\delta\ln P_0\).
 
 Once those are known, the Stage-148 lower-branch transport is fully closed at first order.
+moving_throat_pde_stage150_bundle_transport_tangent_compensation.md
 # Moving-Throat PDE — Stage 150: Bundle Transport of the Remaining Mouth Variables and the Tangent-Compensation Theorem
 
 ## Goal
@@ -28151,6 +28297,7 @@ The exact bundle-side transport laws are:
 
 So the first-order isotropic branch transport is no longer missing at all.
 What is missing is the first correction that escapes this closed bundle algebra.
+moving_throat_pde_stage151_off_bundle_slippage.md
 # Moving-Throat PDE — Stage 151: Exact Off-Bundle Slippage Decomposition
 
 ## Purpose
@@ -28608,6 +28755,7 @@ for example from:
 - or the first nonlinear correction to the explicit Family-1 co-evolving branch.
 
 That is the smallest next derivation step that can actually move the theorem forward.
+moving_throat_pde_stage152_no_linear_p2_scalar_slippage.md
 # Moving-Throat PDE — Stage 152: No Linear Grouped-`P2` Feed-Down into the Scalar Off-Bundle Slippages
 
 ## Purpose
@@ -28985,6 +29133,7 @@ The next honest gate is
 > \(\Xi_I^{(XY)}\).
 
 That is a genuine narrowing of the moving-throat PDE bottleneck.
+moving_throat_pde_stage153_linear_grouped_outlet_map.md
 # Moving-Throat PDE — Stage 153: Exact Linear Grouped-`P2` Map into the Direct Outlet Coefficients `\delta\kappa_W` and `\delta\gamma_W`
 
 ## Purpose
@@ -29477,6 +29626,7 @@ The next gate is:
 > on the physical branch.
 
 That is the direct continuation point.
+moving_throat_pde_stage154_microscopic_grouped_obstructions.md
 # Moving-Throat PDE — Stage 154: Exact Microscopic Decomposition of the Linear Grouped Outlet Obstructions
 
 ## Purpose
@@ -30005,6 +30155,7 @@ The next gate is:
 > \).
 
 That is the direct continuation point.
+moving_throat_pde_stage155_physical_slope_collapse.md
 
 
 # Moving-Throat PDE — Stage 155: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}` and `P_1`
@@ -30410,6 +30561,7 @@ So the next honest theorem gate is now much narrower than Stage 154 suggested:
 > compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) — and, on the even-preserving branch, just \(P_1/P_0\) — directly from the actual grouped moving-throat response.
 
 That is the direct continuation point.
+moving_throat_pde_stage156_axisymmetric_loading_mismatch.md
 # Moving-Throat PDE — Stage 156: Weak-Axisymmetric Transport of the Physical Slopes and Collapse to One Static Loading Mismatch
 
 ## Purpose
@@ -30858,6 +31010,7 @@ So the next honest theorem gate is now smaller than Stage 155 suggested:
 > compute the weak-axisymmetric static operator slope \(D_{01}/D_0\) and the weak-axisymmetric static outgoing-transfer slope \(N_{01}/N_0\) on the actual moving-throat branch — and, on the even-preserving branch, only their difference \(\Xi_{\rm load}\).
 
 That is the direct continuation point.
+moving_throat_pde_stage157_static_self_similarity.md
 # Moving-Throat PDE — Stage 157: Static Self-Similarity and Exact Collapse of the Remaining Linear Grouped Loading Defect
 
 ## Purpose
@@ -31293,6 +31446,7 @@ The next honest theorem gate is now:
 > on the actual weak-axisymmetric moving-throat branch.
 
 That will tell us whether the first linear grouped `2.5`PN defect comes from support non-self-similarity, conservative Maxwell/mixed non-self-similarity, or outgoing-transfer non-self-similarity.
+moving_throat_pde_stage158_wall_normalized_load_shape.md
 # Moving-Throat PDE — Stage 158: Wall-Normalized Port Shape Variables and the Outgoing-Load Theorem
 
 ## Purpose
@@ -31746,6 +31900,7 @@ The next theorem gate is now:
 > \]
 
 That is a real narrowing of the moving-throat PDE bottleneck.
+moving_throat_pde_stage159_outgoing_load_factorization.md
 # Moving-Throat PDE — Stage 159: Outgoing Load-Factor Factorization and the Square-Root Mixed-Leg Law
 
 ## Purpose
@@ -32045,6 +32200,7 @@ It is:
 > on the actual moving-throat branch.
 
 Once those three microscopic slippages are known, the remaining linear grouped `2.5`PN defect is already explicit.
+moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage.md
 # Moving-Throat PDE — Stage 160: Weak-Axisymmetric Collapse of the Outgoing-Slippage Bundle to One Scalar Amplitude
 
 ## Purpose
@@ -32438,6 +32594,7 @@ It is simply:
 > from the real moving-throat outgoing ports.
 
 That is the direct continuation point.
+moving_throat_pde_stage161_outgoing_port_coloading_theorem.md
 # Moving-Throat PDE — Stage 161: Outgoing-Port Co-Loading Theorem and Direct Portwise Formula for `\Xi_1`
 
 ## Purpose
@@ -32883,6 +33040,7 @@ It is simply:
 > of the real moving-throat outgoing ports, and check whether their outgoing-weighted average equals \(\kappa_1\).
 
 That is the direct continuation point.
+moving_throat_pde_stage162_transfer_shape_theorem.md
 # Moving-Throat PDE — Stage 162: Wall-Normalized Transfer-Shape Theorem and the Final Collapse of the Port Co-Loading Gate
 
 ## Purpose
@@ -33332,6 +33490,7 @@ It is simply
 > compute the weak-axisymmetric transfer-shape slopes \(\tau_r\), and test whether their outgoing-weighted average vanishes.
 
 That is the direct continuation point.
+moving_throat_pde_stage163_effective_transfer_shape_collapse.md
 # Moving-Throat PDE — Stage 163: Effective Transfer-Shape Collapse and the Actual Continuum-Kernel Slope Law
 
 ## Purpose
@@ -33746,6 +33905,7 @@ It is now:
 > determine whether the actual weak-axisymmetric moving-throat branch keeps this single continuum transfer shape rigid.
 
 That is the direct continuation point.
+moving_throat_pde_stage164_coherent_tracking_defect.md
 
 # Moving-Throat PDE — Stage 164: Coherent Tracking-Branch Weak-Axisymmetric Defect Law and the Support-Blindness Theorem
 
@@ -34169,6 +34329,7 @@ It is:
 > on the coherent moving-throat branch.
 
 That is the direct continuation point.
+moving_throat_pde_stage165_microscopic_coherent_slippage.md
 # Moving-Throat PDE — Stage 165: Microscopic Coherent-Kernel Slippage Decomposition and the Exact Tracking/Nontracking Split
 
 ## Purpose
@@ -34687,6 +34848,7 @@ It is now
 > on the actual moving-throat branch, and test whether the nontracking set vanishes.
 
 That is the direct continuation point.
+moving_throat_pde_stage166_triangular_normal_form.md
 
 # Moving-Throat PDE — Stage 166: Exact Triangular Normal Form of the Coherent Weak-Axisymmetric Defect
 
@@ -35083,6 +35245,7 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct next theorem gate.
+moving_throat_pde_stage167_branch_invariant_coordinates.md
 # Moving-Throat PDE — Stage 167: Exact Branch-Invariant Coordinates for the Coherent Weak-Axisymmetric Defect
 
 ## Purpose
@@ -35517,6 +35680,7 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct continuation point.
+moving_throat_pde_stage168_microscopic_monomials.md
 
 # Moving-Throat PDE — Stage 168: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
 
@@ -36062,6 +36226,7 @@ So the continuation point is now smaller than Stage 167 left it:
 
 > determine whether the true grouped weak-axisymmetric branch is microscopically monomial-rigid, at this same first-order reference-branch level, in the three direct coordinates
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
+moving_throat_pde_stage169_similarity_orbit_closure.md
 
 # Moving-Throat PDE — Stage 169: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
 
@@ -36506,6 +36671,7 @@ So the continuation point is now as small and as clean as it can be without the 
 > determine whether the true moving-throat grouped weak-axisymmetric branch is tangent to the exact monomial-preserving similarity orbit \(\mathcal G_*\).
 
 If it is, the coherent first-order grouped weak-axisymmetric defect vanishes automatically.
+moving_throat_pde_stage170_orbit_quotient_closure.md
 # Moving-Throat PDE — Stage 170: Exact Orbit–Quotient Closure and the Finite Weak-Axisymmetric Defect Theorem
 
 ## Purpose
@@ -37007,6 +37173,7 @@ Therefore the reduced coherent weak-axisymmetric zero-defect theorem can now be 
 \]
 
 That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself. The remaining open question is still the dynamical branch-selection theorem: whether the true PDE branch preserves those invariants.
+moving_throat_pde_stage171_branch_observables_completion.md
 # Moving-Throat PDE — Stage 171: Branch-Observable Completion and the Exact First-Order Observable Compiler
 
 ## Status
@@ -37514,6 +37681,7 @@ In particular, the next clean move is to keep the present Stage-171 observable p
 - and outgoing quadrupole normalization.
 
 So Stage 171 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.
+moving_throat_pde_stage172_transfer_shape_prefactor_compiler.md
 # Moving-Throat PDE — Stage 172: Transfer-Shape / Outgoing-Prefactor Compiler and the Exact Normalization Bridge
 
 ## Status
@@ -38174,6 +38342,7 @@ It is to separate, inside the transfer-shape language just compiled here,
 so that the microscopic slippages split into the exact direct-defect variables versus the exact dressing variable.
 
 That is the natural Stage-173 continuation.
+moving_throat_pde_stage173_direct_defect_vs_dressing_split.md
 # Moving-Throat PDE — Stage 173: Direct Transfer-Shape Defect vs. Dressing Residual, Support-Blindness, and the Scalar No-Go Filters
 
 ## Status
@@ -38855,6 +39024,7 @@ The purpose of that next stage should be:
 3. and compile the **smallest exact finite PDE data packet** that still has to be computed on the actual moving-throat branch.
 
 So Stage 173 is the last structural-cleanup stage before the minimal PDE packet theorem gate.
+moving_throat_pde_stage174_minimal_pde_data_packet.md
 # Moving-Throat PDE — Stage 174: Minimal PDE Data Packet, Exact Branch/Orbit Residuals, and the Home-Stretch Theorem
 
 ## Status
@@ -39277,6 +39447,7 @@ Supporting files:
 
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py`
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt`
+moving_throat_pde_stage175_orbit_quotient_projectors.md
 # Moving-Throat PDE — Stage 175: Exact Orbit/Quotient Projectors and the Microscopic Orbit-Lock Split
 
 ## Status
@@ -39688,3 +39859,13034 @@ Supporting files:
 
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py`
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt`
+moving_throat_pde_stage176_isotropic_grouped_p2_target_surface.md
+# Moving-Throat PDE — Stage 176: Exact Isotropic Grouped-`P2` Target Surface and the Scalar/Geometry Firewall
+
+## Status
+
+**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 174, the microscopic orbit/quotient split of Stage 175, and the reduced 5PN isotropic grouped-real `P2` closure.**
+
+This stage does **not** introduce a new constitutive law or a new physical closure.
+Its job is to freeze the first new audited theorem target that the 5PN derivation made unavoidable:
+
+1. the exact **isotropic grouped-real `P2` conservative target surface**, and
+2. the exact **scalar/geometry firewall** showing that the `l=0` geometry lane cannot contaminate that target surface at linear anisotropy order.
+
+---
+
+## Purpose
+
+Stage 174 compressed the reduced endgame to the finite grouped bundle packet
+\[
+\mathcal P_A
+=
+\bigl((D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4})_{A=20,21,22},\ m_{\hat 0}\bigr),
+\]
+and the exact branch residual packet
+\[
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+\]
+Stage 175 then separated the microscopic quotient-failure packet from pure similarity-orbit motion, so the remaining PDE problem became a clean finite-packet realization problem.
+
+But the 5PN compression sharpened something further:
+
+> before worrying about outgoing normalization, orbit lock, or the realized coherent placement point, the completed moving-throat PDE must first land on one exact **conservative isotropic grouped-real `P2` surface**.
+
+That surface is the real front-end theorem target. It is where the grouped `20/21/22` bundle stops being an arbitrary three-lane packet and becomes the minimal isotropic one-pole conservative carrier needed by the higher-order chain.
+
+The main outputs of this stage are:
+
+1. the exact conservative isotropy surface
+   \[
+   a_2=b_2=a_4=b_4=0,
+   \]
+2. the exact one-pole surface
+   \[
+   \Delta_{\rm pole}=\bar\nu_4-4\bar\nu_2^{\,2}=0,
+   \]
+3. the exact equivalent one-parameter conservative carrier
+   \[
+   \widehat Y_Q^{\rm cons}(\omega)
+   =
+   \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2},
+   \]
+4. and the exact reduced theorem that the `l=0` scalar/geometry lane can re-enter the grouped `l=2` carrier only at **quadratic** order in anisotropy-induced mixing.
+
+So this stage is the correct audited start of the new post-175 extension.
+
+---
+
+## 1. Carry-forward Packet-A conservative compiler
+
+Work only with the conservative grouped-lane data from Packet A:
+\[
+D_A^{(\mathrm{cons})}(\omega)
+=
+D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6),
+\qquad
+A\in\{20,21,22\}.
+\]
+
+As in Stage 174, define the normalized conservative grouped response moments
+\[
+\nu_2^{(A)}:=-\frac{D_{A2}}{D_{A0}},
+\qquad
+\nu_4^{(A)}:=\frac{D_{A2}^2-D_{A0}D_{A4}}{D_{A0}^2}.
+\]
+
+For any grouped triple \((x_{20},x_{21},x_{22})\), the exact weighted trace/anomaly map is
+\[
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+b_x=\frac{x_{21}-x_{22}}{2},
+\]
+with inverse
+\[
+x_{20}=\bar x+4a_x,
+\qquad
+x_{21}=\bar x-a_x+b_x,
+\qquad
+x_{22}=\bar x-a_x-b_x.
+\]
+
+Apply this to the conservative response moments:
+\[
+(\bar\nu_2,a_2,b_2),
+\qquad
+(\bar\nu_4,a_4,b_4).
+\]
+
+No outgoing data are needed yet. Stage 176 is deliberately only the conservative front end.
+
+---
+
+## 2. Exact isotropic grouped-real `P2` conservative target surface
+
+The first theorem target is the exact isotropy surface
+\[
+\boxed{
+\mathcal S_{\rm iso}^{(\mathrm{cons})}
+:
+\quad
+a_2=b_2=a_4=b_4=0.
+}
+\]
+
+Because the grouped inverse map is exact, this is equivalent to the common-lane collapse
+\[
+\nu_2^{(20)}=\nu_2^{(21)}=\nu_2^{(22)}=\bar\nu_2,
+\]
+\[
+\nu_4^{(20)}=\nu_4^{(21)}=\nu_4^{(22)}=\bar\nu_4.
+\]
+
+Equivalently, at the level of the conservative operator moments,
+\[
+D_{20,0}=D_{21,0}=D_{22,0}=:D_0,
+\]
+\[
+D_{20,2}=D_{21,2}=D_{22,2}=:D_2,
+\]
+\[
+D_{20,4}=D_{21,4}=D_{22,4}=:D_4.
+\]
+
+So on the exact isotropic branch the three grouped lanes collapse to one common conservative carrier
+\[
+D_Q^{(\mathrm{cons})}(\omega)=D_0+D_2\omega^2+D_4\omega^4+O(\omega^6),
+\]
+and one common normalized conservative response
+\[
+\widehat Y_Q^{\rm cons}(\omega)
+:=
+\frac{D_0}{D_Q^{(\mathrm{cons})}(\omega)}
+=
+1+\bar\nu_2\omega^2+\bar\nu_4\omega^4+O(\omega^6).
+\]
+
+This is the exact grouped-real `P2` conservative front-end surface the completed PDE must hit before later outgoing or orbit-side tests even matter.
+
+---
+
+## 3. Exact one-pole conservative surface
+
+The second theorem target is the exact one-pole conservative identity
+\[
+\boxed{
+\mathcal S_{\rm pole}^{(\mathrm{cons})}
+:
+\quad
+\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}=0.
+}
+\]
+
+On the isotropic branch,
+\[
+\bar\nu_2=-\frac{D_2}{D_0},
+\qquad
+\bar\nu_4=\frac{D_2^2-D_0D_4}{D_0^2},
+\]
+so
+\[
+\Delta_{\rm pole}
+=
+\frac{D_2^2-D_0D_4}{D_0^2}-4\frac{D_2^2}{D_0^2}
+=
+-\frac{3D_2^2+D_0D_4}{D_0^2}.
+\]
+
+Therefore the one-pole surface is exactly equivalent to
+\[
+\boxed{
+D_0D_4+3D_2^2=0.
+}
+\]
+If one rewrites the conservative moments in the underlying isotropic bundle language,
+\[
+D_0=K-B_0-Z_0,
+\qquad
+D_2=-(M+B_2+Z_2),
+\qquad
+D_4=-(B_4+Z_4),
+\]
+then the same surface is
+\[
+\boxed{
+D_0(B_4+Z_4)=3(M+B_2+Z_2)^2.
+}
+\]
+
+So the exact grouped conservative target surface is
+\[
+\boxed{
+\mathcal S_{\rm iso+pole}^{(\mathrm{cons})}
+:
+\quad
+a_2=b_2=a_4=b_4=0,
+\qquad
+\Delta_{\rm pole}=0.
+}
+\]
+
+---
+
+## 4. Exact one-parameter conservative carrier
+
+Once the isotropic one-pole surface is imposed, the common grouped conservative carrier is forced into a one-parameter form.
+
+Define
+\[
+\boxed{
+\Omega_Q^2:=-\frac{D_0}{4D_2}.
+}
+\]
+Because
+\[
+\bar\nu_2=-\frac{D_2}{D_0}=\frac{1}{4\Omega_Q^2},
+\]
+and the one-pole surface gives
+\[
+\bar\nu_4=4\bar\nu_2^{\,2}=\frac{1}{4\Omega_Q^4},
+\]
+the unique isotropic one-pole conservative precursor through `O(ω^4)` is
+\[
+\boxed{
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+}
+\]
+Indeed,
+\[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+=
+1+\frac{\omega^2}{4\Omega_Q^2}+\frac{\omega^4}{4\Omega_Q^4}+O(\omega^6)
+=
+1+\bar\nu_2\omega^2+\bar\nu_4\omega^4+O(\omega^6).
+\]
+
+So Stage 176 freezes the exact conservative theorem target in the cleanest possible form:
+
+> the grouped `20/21/22` conservative carrier must be isotropic and one-pole, and therefore must reduce to the
+> \(\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}\)
+> module through the audited orders.
+
+---
+
+## 5. Exact scalar/geometry firewall
+
+The next question is whether the `l=0` scalar/geometry lane can contaminate this grouped `l=2` conservative target at the same order.
+
+On the exact isotropic quadratic wall theory, the answer is **no**.
+
+### 5.1 Exact isotropic block separation
+
+At the quadratic level, the reference throat is `O(3)` invariant, so the wall/support operator is block-diagonal in angular momentum:
+\[
+\mathcal D^{(0)}(\omega)
+=
+\mathcal D_{l=0}(\omega)\oplus \mathcal D_{l=2}(\omega)\oplus\cdots.
+\]
+
+In particular, there is no linear `l=0 \leftrightarrow l=2` coupling on the isotropic background. So the scalar/geometry lane does not enter the grouped `l=2` conservative carrier at all on the exact isotropic branch.
+
+### 5.2 Weak anisotropy-induced mixing appears only quadratically
+
+Now introduce a small anisotropy parameter `χ` that turns on the first `l=0 \leftrightarrow l=2` mixing. Write the reduced block operator schematically as
+\[
+\mathcal D(\omega,\chi)
+=
+\begin{pmatrix}
+\mathcal D_{0}(\omega) & \chi\,C^T(\omega)\\[4pt]
+\chi\,C(\omega) & \mathcal D_{2}(\omega)I_3
+\end{pmatrix},
+\]
+where:
+
+- `\(\mathcal D_0\)` is the scalar/geometry block,
+- `\(\mathcal D_2 I_3\)` is the isotropic grouped `l=2` block,
+- `\(C\)` is the anisotropy-induced mixing vector.
+
+Eliminating the scalar/geometry block by an exact Schur complement gives
+\[
+\boxed{
+\mathcal D_{2,\rm eff}(\omega,\chi)
+=
+\mathcal D_2(\omega)I_3
+-
+\chi^2\,C(\omega)\,\mathcal D_0(\omega)^{-1}C(\omega)^T.
+}
+\]
+
+So the entire scalar/geometry contamination of the grouped `l=2` block carries an explicit factor `χ^2`.
+There is **no** `O(χ)` contamination from the scalar/geometry lane.
+
+This is the exact reduced firewall statement:
+\[
+\boxed{
+\partial_\chi\mathcal D_{2,\rm eff}(\omega,\chi)\big|_{\chi=0}=0.
+}
+\]
+
+Therefore:
+
+1. the scalar/geometry lane does **not** contaminate the grouped `l=2` carrier at `O(χ^0)` because the isotropic theory is block-diagonal,
+2. it does **not** contaminate it at `O(χ^1)` because the first Schur-complement correction is quadratic,
+3. and any re-entry of the scalar/geometry lane into the grouped `l=2` conservative moments begins only at `O(χ^2)` through anisotropy-induced mixing.
+
+This is precisely the firewall the 5PN derivation was implicitly using and which now becomes an explicit audited theorem target.
+
+---
+
+## 6. Exact Stage-176 theorem target
+
+The conservative front-end theorem target after Stage 175 is now explicit.
+
+### 6.1 Conservative grouped-real `P2` target surface
+
+The completed moving-throat PDE must supply Packet-A data whose conservative part lands on
+\[
+\boxed{
+\mathcal S_{176}
+:
+\quad
+a_2=b_2=a_4=b_4=0,
+\qquad
+\Delta_{\rm pole}=0.
+}
+\]
+
+Equivalently, the grouped conservative carrier must satisfy
+\[
+\boxed{
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
++O(\omega^6)
+}
+\]
+through the audited orders.
+
+### 6.2 Firewall statement
+
+Within the exact isotropic quadratic wall closure, the `l=0` scalar/geometry lane is not a linear contaminant of this target.
+Any contamination of the grouped `l=2` conservative carrier from the scalar/geometry side begins only at quadratic order in anisotropy-induced mixing:
+\[
+\boxed{
+\delta\mathcal D_{2,\rm geom}
+=
+O(\chi^2).
+}
+\]
+
+So Stage 176 turns a previously implicit design rule into an explicit audited theorem surface.
+
+---
+
+## 7. Why this is the correct next audited stage after 175
+
+Stage 174 said the home-stretch problem depends only on Packet A and Packet B.
+Stage 175 said Packet B is an exact microscopic orbit/failure split.
+
+The next audited extension therefore should not jump immediately to outgoing normalization or the final four-condition verdict.
+It should first freeze the **conservative front-end surface** that Packet A must land on before those later stages even make sense.
+
+That is exactly what Stage 176 does.
+
+It does three useful things for every later stage:
+
+1. it tells us what exact conservative grouped-real `P2` state the PDE must realize,
+2. it gives one exact one-parameter carrier that later outgoing stages can attach to,
+3. and it removes the temptation to blame linear grouped-lane failures on the scalar/geometry lane when the exact isotropic block structure forbids that.
+
+So this is the right starting point for the new post-175 audited sequence.
+
+---
+
+## 8. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact grouped trace/anomaly inverse map on the conservative side,
+- vanishing of the grouped conservative anomalies on the common-lane isotropic branch,
+- the exact one-pole identity
+  \(\Delta_{\rm pole}=-(3D_2^2+D_0D_4)/D_0^2\),
+- exact equivalence of the one-pole surface to
+  \(D_0D_4+3D_2^2=0\),
+- the exact `\(\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}\)` series on that surface,
+- and the exact Schur-complement firewall showing that scalar/geometry contamination of the grouped `l=2` carrier starts only at `O(\chi^2)`.
+
+Supporting file:
+- `moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py`
+moving_throat_pde_stage177_outgoing_l2_fingerprint_and_deformation_algebra.md
+# Moving-Throat PDE — Stage 177: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic Deformation Algebra
+
+## Status
+
+**Exact within the carried Stage-176 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing compiler, and the canonical compact passive/outgoing `l=2` DtN closure already isolated in the 5PN notes.**
+
+This stage does **not** introduce a new constitutive law.
+It upgrades Stage 176 from the exact conservative isotropic one-pole front end to the first exact **retarded** isotropic branch test.
+
+---
+
+## Purpose
+
+Stage 176 froze the conservative grouped-real `P2` target surface
+\[
+ a_2=b_2=a_4=b_4=0,
+ \qquad
+ \Delta_{\rm pole}=\bar\nu_4-4\bar\nu_2^{\,2}=0,
+\]
+and therefore the exact one-parameter conservative carrier
+\[
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\]
+That was the right front end, but it still left one reduced scalar open:
+
+> once the grouped-real `P2` branch is isotropic and one-pole conservative, what fixes the **leading outgoing `l=2` normalization** on the actual passive/outgoing branch?
+
+The 5PN chain narrowed that remaining freedom to the single scalar
+\[
+\chi_Q,
+\]
+which multiplies the leading odd `\omega^5` term in the isotropic retarded grouped-`P2` module. This stage freezes the next audited theorem target:
+
+1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
+2. the exact fixing
+   \[
+   \chi_Q=1
+   \]
+   on the canonical compact passive/outgoing branch,
+3. and the exact first isotropic deformation algebra showing which DtN-side branch data can move `\chi_Q` while preserving the canonical even moments.
+
+So Stage 177 is the first precise retarded continuation of the Stage-176 conservative surface.
+
+---
+
+## 1. Carry-forward retarded grouped-`P2` module
+
+From Stage 176, the isotropic one-pole conservative carrier is already fixed through `O(\omega^4)`.
+The corresponding retarded grouped-`P2` one-pole-plus-contact module is written as
+\[
+\boxed{
+\widehat Y_Q^{\rm ret}(\omega)
+=
+\frac34
++
+\frac14\,
+\frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\,\sigma_Q^{\rm can}\,\omega^5}
++O(\omega^6).
+}
+\]
+Here:
+
+- `\Omega_Q` is the Stage-176 conservative pole scale,
+- `\sigma_Q^{\rm can}` is the canonical compact outgoing normalization,
+- `\chi_Q` is the only reduced outgoing-normalization scalar that remains open before the explicit DtN model is inserted.
+
+Matching the even coefficients of Stage 176 to the canonical compact outgoing `l=2` branch fixes
+\[
+\boxed{
+\Omega_Q=\frac{3c_s}{2a},
+\qquad
+\sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+}
+\]
+Therefore the retarded module expands as
+\[
+\widehat Y_Q^{\rm ret}(\omega)
+=
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
++O(\omega^6).
+\]
+So the only leading retarded mismatch relative to the canonical compact branch is the multiplier `\chi_Q`.
+
+---
+
+## 2. Exact outgoing spherical `l=2` DtN fingerprint
+
+Define the dimensionless outgoing argument
+\[
+\boxed{z:=\frac{a\omega}{c_s}.}
+\]
+Let the canonical compact outgoing partial wave be the spherical Hankel mode
+\[
+h_2^{(1)}(z)=j_2(z)+i\,y_2(z).
+\]
+Then the exact outgoing `l=2` DtN operator is
+\[
+\boxed{
+\Lambda_2^{\rm out}(z)
+=
+ z\,\frac{d}{dz}\ln h_2^{(1)}(z)
+=
+ z\,\frac{h_2^{(1)\prime}(z)}{h_2^{(1)}(z)}.
+}
+\]
+Its small-`z` expansion is
+\[
+\boxed{
+\Lambda_2^{\rm out}(z)
+=
+-3+\frac{z^2}{3}+\frac{z^4}{9}
++i\,\frac{z^5}{9}
+-\frac{2z^6}{27}
+-i\,\frac{z^7}{27}
++O(z^8).
+}
+\]
+So the exact static slot is
+\[
+\Lambda_2^{\rm out}(0)=-3.
+\]
+
+Normalize by that static slot:
+\[
+\boxed{
+\widehat Y_2^{\rm out}(z)
+:=-\frac{3}{\Lambda_2^{\rm out}(z)}.
+}
+\]
+Then
+\[
+\boxed{
+\widehat Y_2^{\rm out}(z)
+=
+1+\frac{z^2}{9}
++\frac{4z^4}{81}
++i\,\frac{z^5}{27}
+-\frac{11z^6}{729}
+-i\frac{z^7}{243}
++O(z^8).
+}
+\]
+Restoring `\omega`,
+\[
+\boxed{
+\widehat Y_2^{\rm out}(\omega)
+=
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\,\frac{a^5\omega^5}{27c_s^5}
++O(\omega^6).
+}
+\]
+This is the exact canonical compact outgoing `l=2` fingerprint.
+
+---
+
+## 3. Exact fixing of `\chi_Q` on the canonical compact branch
+
+Compare the Stage-177 retarded grouped-`P2` module
+\[
+\widehat Y_Q^{\rm ret}(\omega)
+=
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
++O(\omega^6)
+\]
+with the explicit outgoing DtN branch
+\[
+\widehat Y_2^{\rm out}(\omega)
+=
+1+\frac{a^2\omega^2}{9c_s^2}
++\frac{4a^4\omega^4}{81c_s^4}
++i\,\frac{a^5\omega^5}{27c_s^5}
++O(\omega^6).
+\]
+Matching the leading odd coefficient yields
+\[
+\boxed{\chi_Q=1.}
+\]
+So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar is fixed exactly.
+
+Equivalently, any deformed outgoing DtN branch of the form
+\[
+\Lambda_2^{\rm def}(z)
+=
+-3+\frac{z^2}{3}+\frac{z^4}{9}+i\,\xi_Q\,\frac{z^5}{9}+O(z^6)
+\]
+simply produces
+\[
+\boxed{\chi_Q=\xi_Q.}
+\]
+So after the canonical DtN model is inserted, the only reduced outgoing uncertainty left is deviation of the **actual** moving-throat isotropic branch from the exact compact outgoing fingerprint.
+
+---
+
+## 4. Exact isotropic DtN deformation algebra
+
+To make that last statement explicit, take the first isotropic moving-throat DtN deformation family
+\[
+\boxed{
+\Lambda_2^{\rm def}(z)
+=
+S\,\Lambda_2^{\rm out}(\beta z)
++\Sigma_0+\Sigma_2 z^2+\Sigma_4 z^4+i\Sigma_5 z^5+O(z^6).
+}
+\]
+Here:
+
+- `S` is an overall mouth normalization,
+- `\beta` rescales the effective outgoing argument,
+- `\Sigma_0,\Sigma_2,\Sigma_4` are isotropic even throat-core self-energy data,
+- `\Sigma_5` is the first extra isotropic odd `l=2` core outlet.
+
+Expanding,
+\[
+\Lambda_2^{\rm def}(z)=L_0+L_2 z^2+L_4 z^4+iL_5 z^5+O(z^6),
+\]
+with
+\[
+L_0=-3S+\Sigma_0,
+\qquad
+L_2=\frac{S\beta^2}{3}+\Sigma_2,
+\qquad
+L_4=\frac{S\beta^4}{9}+\Sigma_4,
+\qquad
+L_5=\frac{S\beta^5}{9}+\Sigma_5.
+\]
+Normalize by the actual static slot:
+\[
+\widehat Y_2^{\rm def}(z):=\frac{L_0}{L_0+L_2 z^2+L_4 z^4+iL_5 z^5}+O(z^6).
+\]
+Then the exact low-frequency coefficients are
+\[
+\boxed{
+\widehat Y_2^{\rm def}(z)
+=
+1-\frac{L_2}{L_0}z^2
++\left(\frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}\right)z^4
+-i\frac{L_5}{L_0}z^5
++O(z^6).
+}
+\]
+
+### 4.1 Canonical-even matching conditions
+
+Demand that the deformed branch preserve the canonical even fingerprint
+\[
+\frac{z^2}{9},
+\qquad
+\frac{4z^4}{81}.
+\]
+Then
+\[
+-\frac{L_2}{L_0}=\frac19,
+\qquad
+\frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}=\frac{4}{81}.
+\]
+Solving for the even isotropic core coefficients gives
+\[
+\boxed{
+\Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
+\qquad
+\Sigma_4=-\frac{3S\beta^4-3S+\Sigma_0}{27}.
+}
+\]
+So the even deformations are not free once the canonical conservative moments are held fixed.
+
+### 4.2 Exact outgoing-normalization map
+
+With those canonical-even constraints imposed, the retarded normalization scalar is
+\[
+\boxed{
+\chi_Q=
+\frac{3\big(S\beta^5+9\Sigma_5\big)}{3S-\Sigma_0}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\chi_Q-1=
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
+}
+\]
+So the only isotropic DtN-side branch data that can move the canonical outgoing normalization are:
+
+1. argument deformation `\beta`,
+2. static additive core shift `\Sigma_0`,
+3. odd isotropic `l=2` core outlet `\Sigma_5`.
+
+The overall scale `S` is not a separate obstruction by itself. It matters only through the normalized ratios above.
+
+---
+
+## 5. Carry-forward corollary on the canonical branch
+
+If one also carries the natural point-particle source-map branch
+\[
+\hat m_0\to 1
+\]
+from the reduced 2.5PN package, then the exact fixing `\chi_Q=1` immediately returns the canonical invariant tuple
+\[
+\boxed{
+\overline K_0=\frac{54Gc_s^5}{5a^5c^5},
+\qquad
+\overline K_2=\frac{6Gc_s^3}{5a^3c^5},
+\qquad
+\overline K_4=\frac{8Gc_s}{15ac^5},
+\qquad
+\overline\Gamma_5=\frac{2G}{5c^5}.
+}
+\]
+This is not a new theorem input in Stage 177. It is the immediate reduced corollary of:
+
+- the Stage-176 isotropic one-pole conservative surface,
+- the exact outgoing `l=2` fingerprint,
+- and the already-carried natural point-particle source-map branch.
+
+---
+
+## 6. What Stage 177 changes in the theorem problem
+
+Stage 176 left the reduced hierarchy with one isotropic conservative carrier but one unfixed retarded normalization scalar.
+Stage 177 changes that in three precise ways.
+
+### 6.1 The canonical outgoing coefficient is no longer symbolic
+
+The exact outgoing spherical `l=2` DtN model fixes the canonical odd coefficient directly. So `\chi_Q` is no longer a placeholder on the compact passive/outgoing branch.
+
+### 6.2 The canonical compact passive/outgoing branch is fully normalized
+
+Matching the exact DtN fingerprint to the retarded grouped-`P2` module gives
+\[
+\chi_Q=1.
+\]
+So on that branch the last reduced outgoing scalar is closed.
+
+### 6.3 The remaining isotropic PDE-facing freedom is sharply localized
+
+If the actual moving-throat branch deviates from the canonical outgoing DtN branch while preserving the canonical even moments, then the full isotropic retarded defect is carried only by
+\[
+(\beta,\Sigma_0,\Sigma_5).
+\]
+So the remaining isotropic DtN realization problem is not diffuse. It is an explicit three-parameter deformation problem.
+
+---
+
+## 7. Immediate next derivation step
+
+The next clean stage is now much narrower than before.
+
+Do **not** reopen the conservative grouped bundle.
+Instead:
+
+1. keep the Stage-176 isotropic conservative one-pole surface,
+2. keep the Stage-177 exact outgoing `l=2` fingerprint,
+3. compute the actual moving-throat isotropic DtN data that feed
+   \[
+   (\beta,\Sigma_0,\Sigma_5),
+   \]
+4. and test whether the realized branch lands on the canonical submanifold
+   \[
+   \chi_Q=1.
+   \]
+
+That is the smallest honest next theorem gate on the retarded side.
+moving_throat_pde_stage178_source_map_reduction_of_canonical_outgoing_branch.md
+# Moving-Throat PDE — Stage 178: Exact Source-Map Reduction of the Canonical Outgoing Branch, the Factorization `m_{\hat 0}^{\,2}\chi_Q N_Q=1`, and the Collapse of `\Delta_{\rm norm}`
+
+## Status
+
+**Exact within the carried Stage-174 Packet-A branch-residual hierarchy, the Stage-176 isotropic grouped-real `P2` conservative surface, the Stage-177 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced natural point-particle source-map branch already isolated by the 2.5PN package.**
+
+This stage does **not** introduce a new constitutive law.
+It upgrades Stage 177 from the canonical outgoing DtN fixing `\chi_Q=1` to the exact **source-map reduction** of the last isotropic retarded normalization defect.
+
+---
+
+## Purpose
+
+Stage 176 froze the exact isotropic grouped-real `P2` conservative one-pole carrier
+\[
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2},
+\]
+and Stage 177 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical outgoing scalar
+\[
+\chi_Q=1.
+\]
+
+But one reduced factor still sits between that retarded branch and the actual observable point-particle normalization:
+\[
+ m_{\hat 0}.
+\]
+In the Packet-A language of Stage 174, the remaining observable normalization defect is
+\[
+\Delta_{\rm norm}
+:=
+ m_{\hat 0}^{\,2}\,\bar P_0-
+ \frac{54Gc_s^5}{5a^5c^5}.
+\]
+So the next honest theorem gate is:
+
+> once the isotropic grouped-real `P2` branch is already conservative one-pole and the outgoing `l=2` fingerprint has fixed `\chi_Q`, how does the last observable normalization condition factor through the source map?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact isotropic retarded branch ratio
+   \[
+   \frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+   \]
+2. the exact observable odd-closure factorization
+   \[
+   \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
+   \]
+3. the exact collapse of the Packet-A normalization residual to a **purely outgoing** scalar once the odd observable condition is imposed,
+4. the natural source-map reduction
+   \[
+   m_{\hat 0}=1+O(a^2/r^2)
+   \quad\Longrightarrow\quad
+   N_Q=\frac{1}{\chi_Q}
+   \]
+   in the strict point-particle limit,
+5. and the explicit source-map-reduced defect formulas obtained by inserting the Stage-177 DtN deformation algebra.
+
+So Stage 178 is the natural source-map successor to Stage 177.
+
+---
+
+## 1. Carry-forward isotropic retarded invariant tuple
+
+Define the exact Packet-A target scale
+\[
+\boxed{
+P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+Using the Stage-177 carrier,
+\[
+\widehat Y_Q^{\rm ret}(\omega)
+=
+\frac34+
+\frac14\,
+\frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5}
++O(\omega^6),
+\]
+with
+\[
+\Omega_Q=\frac{3c_s}{2a},
+\qquad
+\sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5},
+\]
+the isotropic retarded invariant tuple is
+\[
+\boxed{\bar P_0,}
+\qquad
+\boxed{\bar P_2=\frac{\bar P_0}{4\Omega_Q^2},}
+\qquad
+\boxed{\bar P_4=\frac{\bar P_0}{4\Omega_Q^4},}
+\qquad
+\boxed{\bar\Gamma_5=\chi_Q\frac{9\bar P_0}{32\Omega_Q^5}=\chi_Q\frac{a^5\bar P_0}{27c_s^5}.}
+\]
+
+Define the conservative isotropic normalization ratio
+\[
+\boxed{
+N_Q:=\frac{\bar P_0}{P_0^{\rm target}}.
+}
+\]
+Then the exact even ratios are
+\[
+\frac{\bar P_2}{\bar P_2^{\rm target}}=N_Q,
+\qquad
+\frac{\bar P_4}{\bar P_4^{\rm target}}=N_Q,
+\]
+while the odd ratio is
+\[
+\boxed{
+\frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+}
+\]
+where
+\[
+\boxed{
+\bar\Gamma_5^{\rm target}:=\frac{2G}{5c^5}.
+}
+\]
+So Stage 177's outgoing scalar `\chi_Q` multiplies the same isotropic conservative normalization ratio `N_Q` that already carries the even packet.
+
+---
+
+## 2. Exact factorization of the observable odd closure
+
+The observable point-particle odd normalization condition is
+\[
+\boxed{
+m_{\hat 0}^{\,2}\,\bar\Gamma_5=\bar\Gamma_5^{\rm target}.
+}
+\]
+Substituting the ratio above gives the exact factorized condition
+\[
+\boxed{
+m_{\hat 0}^{\,2}\chi_Q N_Q=1.
+}
+\]
+Equivalently,
+\[
+\boxed{
+N_Q=\frac{1}{m_{\hat 0}^{\,2}\chi_Q},
+\qquad
+m_{\hat 0}^{\,2}N_Q=\frac{1}{\chi_Q}.
+}
+\]
+
+This is the exact source/outgoing/conservative factorization of the last isotropic retarded closure condition.
+No further reduced ambiguity survives beyond these three scalars.
+
+---
+
+## 3. Exact Packet-A normalization collapse
+
+Stage 174 defined the observable Packet-A normalization residual
+\[
+\boxed{
+\Delta_{\rm norm}
+:=
+ m_{\hat 0}^{\,2}\bar P_0-P_0^{\rm target}
+=
+P_0^{\rm target}(m_{\hat 0}^{\,2}N_Q-1).
+}
+\]
+Now insert the exact odd-closure factorization
+\[
+ m_{\hat 0}^{\,2}N_Q=\frac{1}{\chi_Q}.
+\]
+Then the Packet-A residual collapses **exactly** to
+\[
+\boxed{
+\Delta_{\rm norm}
+=
+P_0^{\rm target}\left(\frac{1}{\chi_Q}-1\right).
+}
+\]
+So once the observable odd normalization is imposed, the entire Packet-A normalization defect is already a purely outgoing scalar.
+The source-map factor drops out identically.
+
+Define the outgoing-normalization defect
+\[
+\boxed{\Delta_Q:=\chi_Q-1.}
+\]
+Then
+\[
+\boxed{
+\Delta_{\rm norm}
+=
+-\,P_0^{\rm target}\,\frac{\Delta_Q}{1+\Delta_Q}.
+}
+\]
+So the exact Packet-A normalization defect is equivalent to the exact outgoing-normalization defect.
+No additional source-map ambiguity survives at this stage once the odd observable closure is enforced.
+
+---
+
+## 4. Natural source-map reduction
+
+The carried natural orbital/worldtube STF source-map branch is
+\[
+\boxed{
+m_{\hat 0}=1+O(a^2/r^2).
+}
+\]
+So in the strict point-particle limit,
+\[
+ m_{\hat 0}\to 1.
+\]
+Then the exact factorization reduces to
+\[
+\boxed{
+N_Q=\frac{1}{\chi_Q}.
+}
+\]
+Therefore:
+\[
+\boxed{
+N_Q=1
+\iff
+\chi_Q=1.
+}
+\]
+
+At the level of the conservative carrier itself, the last isotropic retarded mismatch is therefore purely the outgoing-normalization scalar.
+In particular,
+\[
+N_Q-1
+=
+\frac{1}{\chi_Q}-1
+=
+-\frac{\chi_Q-1}{\chi_Q}.
+\]
+For a small outgoing deviation,
+\[
+\boxed{
+N_Q-1=-(\chi_Q-1)+O\!\big((\chi_Q-1)^2\big).
+}
+\]
+So on the natural source-map branch the last reduced isotropic theorem gap is linearly controlled by the first outgoing-normalization defect.
+
+---
+
+## 5. Explicit source-map-reduced DtN deformation algebra
+
+Stage 177 already showed that the most general first isotropic DtN deformation preserving the canonical even moments is
+\[
+\Lambda_2^{\rm def}(z)
+=
+S\Lambda_2^{\rm out}(\beta z)
++\Sigma_0+\Sigma_2 z^2+\Sigma_4 z^4+i\Sigma_5 z^5+O(z^6),
+\]
+with canonical-even constraints fixing
+\[
+\Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
+\qquad
+\Sigma_4=-\frac{3S\beta^4-3S+\Sigma_0}{27},
+\]
+and outgoing normalization
+\[
+\boxed{
+\chi_Q=
+\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
+}
+\]
+
+### 5.1 Exact conservative ratio on the natural source-map branch
+
+Insert this into the Stage-178 source-map reduction:
+\[
+N_Q=\frac{1}{\chi_Q}.
+\]
+Then
+\[
+\boxed{
+N_Q
+=
+\frac{3S-\Sigma_0}{3(S\beta^5+9\Sigma_5)}.
+}
+\]
+So the source-map-reduced conservative normalization ratio is already an explicit function of the same isotropic DtN deformation data that control `\chi_Q`.
+
+### 5.2 Exact Packet-A normalization defect on the natural source-map branch
+
+Likewise,
+\[
+\Delta_{\rm norm}^{\rm pt}
+:=
+\Delta_{\rm norm}\big|_{m_{\hat 0}\to 1}
+=
+P_0^{\rm target}(N_Q-1),
+\]
+so
+\[
+\boxed{
+\Delta_{\rm norm}^{\rm pt}
+=
+P_0^{\rm target}
+\left[
+\frac{3S-\Sigma_0}{3(S\beta^5+9\Sigma_5)}-1
+\right].
+}
+\]
+Equivalently,
+\[
+\boxed{
+\Delta_{\rm norm}^{\rm pt}
+=
+-\,P_0^{\rm target}
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}
+     {3(S\beta^5+9\Sigma_5)}.
+}
+\]
+So the entire source-map-reduced Packet-A defect is already localized on the same three isotropic DtN deformation coordinates isolated in Stage 177:
+\[
+(\beta,\Sigma_0,\Sigma_5).
+\]
+
+### 5.3 Linearized source-map-reduced defect
+
+Write
+\[
+\beta=1+\varepsilon_\beta,
+\qquad
+\Sigma_0=\delta\Sigma_0,
+\qquad
+\Sigma_5=\delta\Sigma_5,
+\]
+with all three small. Then
+\[
+\boxed{
+N_Q-1
+=
+-5\varepsilon_\beta
+-\frac{\delta\Sigma_0}{3S}
+-\frac{9\,\delta\Sigma_5}{S}
++O(2).
+}
+\]
+Hence
+\[
+\boxed{
+\Delta_{\rm norm}^{\rm pt}
+=
+-\,P_0^{\rm target}
+\left(
+5\varepsilon_\beta
++\frac{\delta\Sigma_0}{3S}
++\frac{9\,\delta\Sigma_5}{S}
+\right)
++O(2).
+}
+\]
+So at first order the source-map-reduced normalization defect is carried only by:
+
+1. argument deformation `\beta`,
+2. static isotropic core shift `\Sigma_0`,
+3. odd isotropic core outlet `\Sigma_5`.
+
+This is the exact linearized finish-line map for the Stage-177 deformation algebra.
+
+---
+
+## 6. Canonical compact outgoing branch
+
+On the canonical compact passive/outgoing branch from Stage 177,
+\[
+\chi_Q=1.
+\]
+Equivalently, in the first isotropic DtN deformation family,
+\[
+\beta=1,
+\qquad
+\Sigma_0=0,
+\qquad
+\Sigma_5=0.
+\]
+Then the Stage-178 formulas reduce exactly to
+\[
+\boxed{N_Q=1,}
+\qquad
+\boxed{\Delta_{\rm norm}=0,}
+\qquad
+\boxed{\Delta_{\rm norm}^{\rm pt}=0.}
+\]
+So once the canonical outgoing DtN fingerprint of Stage 177 is carried through the exact source-map reduction, the Packet-A normalization residual of Stage 174 closes automatically.
+
+This is the exact bridge from:
+
+- Stage 174's observable branch residual `\Delta_{\rm norm}`,
+- through Stage 176's isotropic one-pole conservative carrier,
+- through Stage 177's fixing `\chi_Q=1`,
+- to the strict point-particle natural source-map branch.
+
+---
+
+## 7. What Stage 178 changes in the theorem problem
+
+Stage 177 left the hierarchy with one exact outgoing scalar `\chi_Q`, but the observable point-particle branch still carried the source-map factor `m_{\hat 0}`.
+Stage 178 changes that in four precise ways.
+
+### 7.1 The observable odd closure is now fully factorized
+
+The full odd condition is exactly
+\[
+ m_{\hat 0}^{\,2}\chi_Q N_Q=1.
+\]
+So the last observable isotropic retarded closure is one exact three-factor product.
+
+### 7.2 The Packet-A normalization residual collapses to a purely outgoing scalar
+
+Once the observable odd closure is imposed,
+\[
+\Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1).
+\]
+So the source-map factor no longer appears in the normalization residual itself.
+
+### 7.3 On the natural source-map branch the conservative carrier ratio is also purely outgoing
+
+In the strict point-particle limit,
+\[
+N_Q=\chi_Q^{-1}.
+\]
+So the last reduced isotropic branch defect is no longer a mixed source/outgoing product.
+It is purely the outgoing scalar `\chi_Q-1`.
+
+### 7.4 The remaining isotropic PDE-facing freedom is now completely explicit
+
+Combining Stage 177 with Stage 178 shows that the full source-map-reduced Packet-A defect is carried only by
+\[
+(\beta,\Sigma_0,\Sigma_5),
+\]
+through the exact formulas above.
+So the remaining isotropic PDE realization problem is no longer diffuse.
+
+---
+
+## 8. Immediate next derivation step
+
+The next clean continuation is now very sharp.
+
+Do **not** reopen the source-map branch or the conservative grouped bundle.
+Instead:
+
+1. keep the Stage-177 exact outgoing `l=2` fingerprint,
+2. keep the Stage-178 exact factorization
+   \[
+   m_{\hat 0}^{\,2}\chi_Q N_Q=1,
+   \]
+3. and prove that any extra retarded structure first entering at `O(\omega^7)` or higher is irrelevant to the 2.5PN theorem.
+
+That is the natural next theorem gate after Stage 178.
+moving_throat_pde_stage179_higher_odd_irrelevance_theorem.md
+# Moving-Throat PDE — Stage 179: Exact Higher-Odd Irrelevance Theorem, Stability of `\chi_Q`, and the Collapse of the 2.5PN Retarded Finish Line to `\Delta_Q=\chi_Q-1`
+
+## Status
+
+**Exact within the carried Stage-174 Packet-A branch-residual hierarchy, the Stage-176 isotropic grouped-real `P2` conservative one-pole surface, the Stage-177 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage-178 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**
+
+This stage does **not** introduce a new constitutive law.
+It answers the last natural objection left by Stage 178:
+
+> what if the actual moving-throat quadrupole branch carries additional isotropic retarded structure beginning at `O(\omega^7)` or higher?
+
+The answer is that such higher odd data are invisible to the reduced point-particle `2.5`PN theorem.
+So the only live retarded obstruction that survives the full carried hierarchy is still the leading outgoing-normalization scalar
+\[
+\chi_Q.
+\]
+
+---
+
+## Purpose
+
+Stage 176 froze the exact isotropic grouped-real `P2` conservative one-pole carrier,
+Stage 177 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
+\[
+\chi_Q,
+\]
+and Stage 178 then reduced the last observable normalization defect to the source/outgoing factorization
+\[
+ m_{\hat 0}^{\,2}\chi_Q N_Q=1,
+\qquad
+\Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1)
+\]
+once the odd observable condition is imposed.
+
+So after Stage 178 the last reduced `2.5`PN question is already sharp:
+
+> does anything beyond the leading `\omega^5` outgoing slot survive into the reduced theorem, or is the whole retarded finish line really measured by `\chi_Q-1` alone?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. an exact **response-side higher-odd difference identity** showing that any extra retarded tail `O(\omega^7)` or higher changes the isotropic grouped response only at `O(\omega^7)`,
+2. an exact **DtN-side higher-odd difference identity** showing the same at the operator level,
+3. the exact theorem that the Stage-177 outgoing-normalization compiler
+   \[
+   \chi_Q=
+   \frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}
+   \]
+   is unchanged by all higher odd DtN data beginning at `O(z^7)`,
+4. the exact Packet-A consequence that the source-map-reduced normalization residual of Stage 178 is likewise unchanged,
+5. and the final reduced statement that the only live retarded obstruction at `2.5`PN is
+   \[
+   \boxed{\Delta_Q:=\chi_Q-1.}
+   \]
+
+So Stage 179 is the rigorous Stage-174–178 reformulation of the older higher-odd irrelevance result.
+
+---
+
+## 1. Generalized isotropic grouped-`P2` retarded module with a higher odd tail
+
+Keep the Stage-177 isotropic retarded grouped module,
+\[
+\widehat Y_Q^{\rm ret,5}(\omega)
+=
+\frac34+
+\frac14\,
+\frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5},
+\]
+and now allow an arbitrary extra isotropic retarded tail beginning at order `\omega^7`:
+\[
+\boxed{
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)
+=
+\frac34+
+\frac14\,
+\frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5-i\,\mathcal T_{\ge7}(\omega)},
+}
+\]
+with
+\[
+\boxed{\mathcal T_{\ge7}(\omega)=O(\omega^7).}
+\]
+
+The Stage-177 canonical outgoing scale is still
+\[
+\Omega_Q=\frac{3c_s}{2a},
+\qquad
+\sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+\]
+
+A useful one-coefficient representative is
+\[
+\mathcal T_{\ge7}(\omega)=\tau_Q\omega^7,
+\]
+but the theorem below is not restricted to a monomial tail.
+It applies to **any** isotropic retarded correction whose first nonzero term is `O(\omega^7)`.
+
+---
+
+## 2. Exact response-side higher-odd difference identity
+
+Define
+\[
+X_Q(\omega):=\frac{\omega^2}{\Omega_Q^2}+i\chi_Q\sigma_Q^{\rm can}\omega^5,
+\qquad
+H_Q(\omega):=i\,\mathcal T_{\ge7}(\omega).
+\]
+Then
+\[
+\widehat Y_Q^{\rm ret,5}(\omega)=\frac34+\frac14\frac{1}{1-X_Q(\omega)},
+\]
+while
+\[
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)=\frac34+\frac14\frac{1}{1-X_Q(\omega)-H_Q(\omega)}.
+\]
+Subtracting gives the exact identity
+\[
+\boxed{
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)-\widehat Y_Q^{\rm ret,5}(\omega)
+=
+\frac{H_Q(\omega)}{4\,(1-X_Q(\omega))\,(1-X_Q(\omega)-H_Q(\omega))}.
+}
+\]
+Since
+\[
+H_Q(\omega)=O(\omega^7),
+\qquad
+1-X_Q(\omega)=1+O(\omega^2),
+\]
+it follows immediately that
+\[
+\boxed{
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)-\widehat Y_Q^{\rm ret,5}(\omega)=O(\omega^7).
+}
+\]
+So all coefficients through `O(\omega^5)` are unchanged.
+In particular,
+\[
+\boxed{
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)
+=
+1+
+\frac{\omega^2}{4\Omega_Q^2}
++
+\frac{\omega^4}{4\Omega_Q^4}
++
+ i\chi_Q\frac{9}{32\Omega_Q^5}\omega^5
++
+O(\omega^6).
+}
+\]
+
+If one keeps the first higher odd tail explicitly,
+\[
+\mathcal T_{\ge7}(\omega)=\tau_Q\omega^7,
+\]
+then
+\[
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)
+=
+1+
+\frac{\omega^2}{4\Omega_Q^2}
++
+\frac{\omega^4}{4\Omega_Q^4}
++
+ i\chi_Q\frac{9}{32\Omega_Q^5}\omega^5
++
+\frac{\omega^6}{4\Omega_Q^6}
++
+ i\left(
+\frac{9\chi_Q}{16\Omega_Q^7}+\frac{\tau_Q}{4}
+\right)\omega^7
++
+O(\omega^8).
+\]
+So the first place the extra higher odd tail can appear is exactly `\omega^7`.
+It does not modify the leading odd Burke–Thorne slot.
+
+---
+
+## 3. Exact DtN-side higher-odd difference identity
+
+Work now at the isotropic DtN level.
+Let the Stage-177 truncated isotropic DtN denominator be
+\[
+D_5(z):=L_0+L_2 z^2+L_4 z^4+iL_5 z^5,
+\]
+with normalized grouped response
+\[
+\widehat Y_2^{\rm def,5}(z):=\frac{L_0}{D_5(z)}.
+\]
+Allow now a completely arbitrary higher odd DtN remainder beginning at `O(z^7)`:
+\[
+\boxed{\mathcal L_{\ge7}(z)=O(z^7),}
+\]
+and define
+\[
+D_{\ge7}(z):=D_5(z)+\mathcal L_{\ge7}(z),
+\qquad
+\widehat Y_2^{\rm def,\ge7}(z):=\frac{L_0}{D_{\ge7}(z)}.
+\]
+Then the exact difference identity is
+\[
+\boxed{
+\widehat Y_2^{\rm def,\ge7}(z)-\widehat Y_2^{\rm def,5}(z)
+=
+-\frac{L_0\,\mathcal L_{\ge7}(z)}{D_5(z)\,D_{\ge7}(z)}.
+}
+\]
+Since `\mathcal L_{\ge7}(z)=O(z^7)` and both denominators are nonzero deformations of `L_0` near `z=0`,
+\[
+\boxed{
+\widehat Y_2^{\rm def,\ge7}(z)-\widehat Y_2^{\rm def,5}(z)=O(z^7).
+}
+\]
+So the normalized DtN response through `O(z^5)` is unchanged.
+Equivalently,
+\[
+\boxed{
+\widehat Y_2^{\rm def,\ge7}(z)
+=
+1-
+\frac{L_2}{L_0}z^2
++
+\left(\frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}\right)z^4
+-
+ i\frac{L_5}{L_0}z^5
++
+O(z^6),
+}
+\]
+with no dependence on `\mathcal L_{\ge7}` before `O(z^7)`.
+
+---
+
+## 4. Stability of the Stage-177 isotropic deformation algebra
+
+Parameterize the Stage-177 isotropic DtN front end by
+\[
+L_0=-3S+\Sigma_0,
+\qquad
+L_2=\frac{S\beta^2}{3}+\Sigma_2,
+\qquad
+L_4=\frac{S\beta^4}{9}+\Sigma_4,
+\qquad
+L_5=\frac{S\beta^5}{9}+\Sigma_5,
+\]
+and leave the entire higher odd block inside the single remainder
+\[
+\mathcal L_{\ge7}(z)=O(z^7).
+\]
+Then the exact canonical-even matching conditions are still
+\[
+-\frac{L_2}{L_0}=\frac19,
+\qquad
+\frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}=\frac{4}{81},
+\]
+so the same Stage-177 solution follows:
+\[
+\boxed{
+\Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
+\qquad
+\Sigma_4=-\frac{3S\beta^4-3S+\Sigma_0}{27}.
+}
+\]
+These formulas do not contain any higher odd coefficient.
+
+Likewise the outgoing-normalization factor is still compiled only from the `z^5` coefficient:
+\[
+\boxed{
+\chi_Q=-27\,\frac{L_5}{L_0}
+=\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
+}
+\]
+So all higher odd DtN data beginning at `O(z^7)` are invisible to the Stage-177 isotropic outgoing-normalization compiler.
+They can change the response only at `z^7` and higher, but they cannot change `\chi_Q`.
+
+---
+
+## 5. Exact Packet-A consequence after Stage 178
+
+Stage 178 already reduced the odd observable closure to
+\[
+\boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
+\]
+and therefore the Packet-A normalization residual to
+\[
+\boxed{
+\Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1)
+}
+\]
+once the odd observable condition is imposed, with
+\[
+P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5}.
+\]
+On the natural point-particle source-map branch,
+\[
+\boxed{m_{\hat 0}\to 1,\qquad N_Q=\chi_Q^{-1}.}
+\]
+
+Now combine this with Stage 179.
+Since all higher odd retarded data beginning at `O(\omega^7)` or `O(z^7)` leave `\chi_Q` unchanged, they also leave unchanged:
+\[
+\boxed{N_Q,}
+\qquad
+\boxed{m_{\hat 0}^{\,2}\chi_Q N_Q,}
+\qquad
+\boxed{\Delta_{\rm norm}.}
+\]
+The remaining Packet-A entries are already conservative:
+\[
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole}),
+\]
+so they are manifestly untouched by any extra higher odd retarded tail.
+
+Therefore the entire Stage-174 branch residual packet
+\[
+\boxed{
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm})
+}
+\]
+is unchanged at the level relevant to the reduced point-particle `2.5`PN theorem.
+
+---
+
+## 6. PN meaning of the higher odd tail
+
+The Burke–Thorne slot is the leading odd grouped-`P2` coefficient,
+\[
+ i\,\Gamma_5\omega^5.
+\]
+Any new isotropic retarded structure that first appears as
+\[
+ i\,\Gamma_7\omega^7
+\quad\text{or higher}
+\]
+contains two extra powers of `\omega` relative to the `\omega^5` reaction term.
+So in the standard small-velocity bookkeeping it sits **above** the universal point-particle `2.5`PN slot.
+
+Stage 179 does not need to decide the full higher-PN interpretation of those terms.
+It only needs the exact reduced statement:
+
+> they cannot alter the `\omega^5` coefficient and therefore cannot alter the reduced point-particle `2.5`PN closure.
+
+So the completed moving-throat PDE may well carry additional higher odd retarded data, but such data live beyond the theorem order that the present Packet-A endgame is testing.
+
+---
+
+## 7. Exact higher-odd irrelevance theorem
+
+Let the isotropic grouped-real `P2` branch satisfy the carried Stage-176 conservative one-pole surface, the Stage-177 outgoing `l=2` compiler, and the Stage-178 source-map reduction.
+Let the exact retarded grouped response differ from the Stage-177 one-pole model only by additional isotropic retarded structure whose first nonzero term is `O(\omega^7)` (equivalently `O(z^7)`).
+
+Then:
+
+1. the normalized grouped response through `O(\omega^5)` is unchanged,
+2. the isotropic outgoing-normalization factor `\chi_Q` is unchanged,
+3. the exact source-map-reduced Packet-A normalization residual `\Delta_{\rm norm}` is unchanged,
+4. and the entire reduced point-particle `2.5`PN theorem remains sensitive only to the leading outgoing-normalization defect
+   \[
+   \boxed{\Delta_Q:=\chi_Q-1.}
+   \]
+
+So the only live retarded obstruction at reduced `2.5`PN order is still the single scalar `\chi_Q`.
+If
+\[
+\boxed{\chi_Q=1,}
+\]
+then the reduced point-particle `2.5`PN theorem is closed regardless of all higher odd retarded data beginning at `O(\omega^7)`.
+
+---
+
+## 8. What Stage 179 changes in the theorem problem
+
+Stage 178 had already reduced the finish line to the outgoing scalar `\chi_Q-1`, but one natural loophole remained: perhaps uncomputed higher odd retarded structure could re-enter the Packet-A compiler indirectly.
+
+Stage 179 closes that loophole exactly.
+
+### 8.1 The retarded finish line is now unique at `2.5`PN
+
+No extra isotropic retarded datum beginning at `O(\omega^7)` can modify the reduced point-particle `2.5`PN verdict.
+So the retarded finish line is not a family of hidden coefficients.
+It is one number only:
+\[
+\chi_Q.
+\]
+
+### 8.2 The Stage-177 deformation algebra is complete at theorem order
+
+The only isotropic DtN-side data that can move the reduced `2.5`PN verdict are still
+\[
+(\beta,\Sigma_0,\Sigma_5).
+\]
+All higher odd DtN data are outside the theorem order.
+
+### 8.3 The Packet-A home-stretch theorem is stable
+
+The Stage-174 minimal branch-residual packet and the Stage-178 source-map reduction already contain the whole reduced `2.5`PN theorem.
+There is no hidden higher-odd loophole left inside that packet language.
+
+---
+
+## 9. Immediate next derivation step
+
+The next clean continuation is now the exact conditional closure statement in the modern Packet-A language:
+
+1. keep the Stage-176 isotropic conservative one-pole surface,
+2. keep the Stage-178 exact source-map reduction,
+3. keep the Stage-179 higher-odd irrelevance theorem,
+4. and state the finish-line equivalence
+   \[
+   \Delta_{\rm branch}=0
+   \iff
+   \chi_Q=1
+   \]
+   on the natural point-particle source-map branch.
+
+That is the natural successor to Stage 179.
+moving_throat_pde_stage180_conditional_packetA_closure_theorem.md
+# Moving-Throat PDE — Stage 180: Exact Conditional Packet-A Closure Theorem, the Equivalence `\Delta_{\rm branch}=0 \iff \chi_Q=1`, and the Final Retarded Finish-Line Reduction
+
+## Status
+
+**Exact within the carried Stage-174 Packet-A branch-residual hierarchy, the Stage-176 isotropic grouped-real `P2` conservative one-pole surface, the Stage-177 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage-178 exact source-map reduction, and the Stage-179 higher-odd irrelevance theorem.**
+
+This stage does **not** introduce a new constitutive law.
+It is the exact finish-line theorem in the modern Packet-A language.
+
+---
+
+## Purpose
+
+Stage 174 compressed the branch-side verdict to the exact Packet-A residual
+\[
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
+\]
+and Stage 176 then fixed the conservative front-end theorem target:
+\[
+a_2=b_2=a_4=b_4=0,
+\qquad
+\Delta_{\rm pole}=0.
+\]
+Stage 177 identified the only remaining isotropic outgoing scalar
+\[
+\chi_Q,
+\]
+Stage 178 reduced the observable normalization finish line to the exact factorization
+\[
+m_{\hat 0}^{\,2}\chi_Q N_Q=1,
+\]
+and Stage 179 proved that every extra isotropic odd retarded tail beginning at `O(\omega^7)` leaves the reduced `2.5`PN theorem unchanged.
+
+So after Stage 179 the natural next question is already forced:
+
+> in the modern Packet-A language, what is the exact final finish-line criterion on the natural point-particle source-map branch?
+
+This stage answers that completely.
+
+The main outputs are:
+
+1. the exact collapse of the full Packet-A residual to a **single scalar slot** once the carried isotropic one-pole front end is imposed,
+2. the exact equivalence
+   \[
+   \boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1}
+   \]
+   on the natural point-particle source-map branch,
+3. the equivalent conservative/outgoing forms
+   \[
+   \chi_Q=1
+   \iff
+   N_Q=1
+   \iff
+   \Delta_Q:=\chi_Q-1=0,
+   \]
+4. the exact deformation-algebra form
+   \[
+   \chi_Q=1
+   \iff
+   3S(\beta^5-1)+\Sigma_0+27\Sigma_5=0,
+   \]
+5. and the sharp statement that the full reduced **Packet-A retarded finish line** is one scalar only.
+
+So Stage 180 is the Packet-A home-stretch theorem promised at the end of Stage 179.
+
+---
+
+## 1. Carry-forward Packet-A front-end hypotheses
+
+Work throughout on the carried isotropic grouped-real `P2` retarded branch with the following already-imposed front-end conditions.
+
+### 1.1 Conservative isotropy and one-pole surface
+
+From Stage 176,
+\[
+\boxed{a_2=b_2=a_4=b_4=0,}
+\qquad
+\boxed{\Delta_{\rm pole}=0.}
+\]
+Equivalently, the grouped conservative carrier has already collapsed to the one common isotropic one-pole form
+\[
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\]
+So the first five Packet-A entries are already zero.
+
+### 1.2 Isotropic outgoing lane
+
+On the same isotropic branch,
+\[
+P_0^{(20)}=P_0^{(21)}=P_0^{(22)}=:\bar P_0.
+\]
+Therefore the grouped prefactor anisotropies vanish identically:
+\[
+\boxed{a_{P_0}=b_{P_0}=0.}
+\]
+So after the isotropic front end is imposed, the only Packet-A entry that can still be nonzero is `\Delta_{\rm norm}`.
+
+### 1.3 Exact source/outgoing factorization
+
+From Stage 178, the observable odd normalization condition factorizes exactly as
+\[
+\boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1.}
+\]
+On the natural point-particle source-map branch,
+\[
+\boxed{m_{\hat 0}\to 1,}
+\qquad
+\boxed{N_Q=\chi_Q^{-1}.}
+\]
+So the isotropic conservative normalization ratio is already a pure function of the outgoing scalar.
+
+### 1.4 Higher-odd irrelevance
+
+From Stage 179, every extra isotropic retarded contribution whose first nonzero term is `O(\omega^7)` or `O(z^7)` leaves `\chi_Q` unchanged. So the finish-line theorem below is already stable against all higher odd isotropic retarded tails beyond theorem order.
+
+---
+
+## 2. Exact collapse of the Packet-A residual
+
+Start from the Stage-174 Packet-A residual vector
+\[
+\boxed{
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+}
+\]
+Now impose the carried front-end conditions above.
+
+From Sections 1.1 and 1.2,
+\[
+a_2=b_2=a_4=b_4=a_{P_0}=b_{P_0}=\Delta_{\rm pole}=0.
+\]
+So the exact Packet-A residual collapses to
+\[
+\boxed{
+\Delta_{\rm branch}
+=
+(0,0,0,0,0,0,0,\Delta_{\rm norm}).
+}
+\]
+Next use the exact Stage-178 source-map reduction of the normalization slot:
+\[
+\Delta_{\rm norm}
+=
+P_0^{\rm target}(N_Q-1),
+\qquad
+P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5},
+\]
+and on the natural point-particle source-map branch,
+\[
+N_Q=\frac{1}{\chi_Q}.
+\]
+Therefore
+\[
+\boxed{
+\Delta_{\rm norm}
+=
+P_0^{\rm target}(\chi_Q^{-1}-1).
+}
+\]
+So the full Packet-A residual is exactly
+\[
+\boxed{
+\Delta_{\rm branch}
+=
+\left(0,0,0,0,0,0,0,
+P_0^{\rm target}(\chi_Q^{-1}-1)
+\right).
+}
+\]
+This is the final Packet-A collapse formula.
+
+---
+
+## 3. Exact conditional Packet-A closure theorem
+
+Because
+\[
+P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5}>0
+\]
+on the physical branch, the last scalar slot vanishes iff its bracket vanishes. Therefore
+\[
+\Delta_{\rm branch}=0
+\iff
+\Delta_{\rm norm}=0
+\iff
+\chi_Q^{-1}-1=0
+\iff
+\chi_Q=1.
+\]
+So we have the exact finish-line theorem:
+\[
+\boxed{\textbf{Theorem (Stage 180 conditional Packet-A closure theorem).}}
+\]
+
+**Within the carried isotropic grouped-real `P2` conservative one-pole surface, the Stage-178 source-map reduction, and the Stage-179 higher-odd irrelevance theorem, the Packet-A branch residual closes exactly iff the outgoing-normalization scalar is canonical:**
+\[
+\boxed{
+\Delta_{\rm branch}=0
+\iff
+\chi_Q=1.
+}
+\]
+
+Equivalently, on the natural point-particle source-map branch,
+\[
+\boxed{
+\Delta_{\rm branch}=0
+\iff
+N_Q=1
+\iff
+\Delta_Q:=\chi_Q-1=0.
+}
+\]
+
+This is the precise modern Packet-A version of the older statement that the last reduced `2.5`PN / `4`PN retarded obstruction is the outgoing quadrupole normalization only.
+
+---
+
+## 4. Exact deformation-algebra form of the finish-line condition
+
+Stage 177 already gave the exact isotropic DtN deformation algebra preserving the canonical even moments:
+\[
+\chi_Q
+=
+\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
+\]
+Therefore
+\[
+\chi_Q-1
+=
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
+\]
+So the Stage-180 closure condition is exactly
+\[
+\boxed{
+\chi_Q=1
+\iff
+3S(\beta^5-1)+\Sigma_0+27\Sigma_5=0.
+}
+\]
+On the natural point-particle source-map branch the Packet-A normalization slot becomes
+\[
+\boxed{
+\Delta_{\rm norm}^{\rm pt}
+=
+-\,P_0^{\rm target}
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}
+     {3(S\beta^5+9\Sigma_5)}.
+}
+\]
+So the exact vanishing of the final Packet-A defect is the exact vanishing of the Stage-177 isotropic DtN deformation numerator.
+
+---
+
+## 5. Linearized finish-line map
+
+Write the isotropic DtN deformation coordinates as
+\[
+\beta=1+\varepsilon_\beta,
+\qquad
+\Sigma_0=\delta\Sigma_0,
+\qquad
+\Sigma_5=\delta\Sigma_5,
+\]
+with all three small. Then
+\[
+\chi_Q-1
+=
+5\varepsilon_\beta
++\frac{\delta\Sigma_0}{3S}
++\frac{9\,\delta\Sigma_5}{S}
++O(2).
+\]
+Hence
+\[
+\boxed{
+\Delta_{\rm norm}^{\rm pt}
+=
+-\,P_0^{\rm target}
+\left(
+5\varepsilon_\beta
++\frac{\delta\Sigma_0}{3S}
++\frac{9\,\delta\Sigma_5}{S}
+\right)
++O(2).
+}
+\]
+So the linearized Packet-A finish line is carried only by:
+
+1. outgoing argument deformation `\beta`,
+2. static isotropic core shift `\Sigma_0`,
+3. odd isotropic core outlet `\Sigma_5`.
+
+No other isotropic retarded datum survives into the reduced theorem order.
+
+---
+
+## 6. What remains separate from Stage 180
+
+Stage 180 is deliberately only the **Packet-A retarded finish-line theorem**.
+It does **not** erase the orbit/quotient side of Stage 174.
+
+So the full reduced home-stretch statement remains:
+
+- Stage 180 says the Packet-A retarded finish line is exactly
+  \[
+  \chi_Q=1.
+  \]
+- Stage 174 still requires the separate orbit packet
+  \[
+  \Delta_{\rm orbit}=0
+  \]
+  for full reduced closure.
+
+This separation is a feature, not a bug. Stage 180 isolates the last branch-side retarded scalar without mixing it with the microscopic similarity-orbit realization problem.
+
+---
+
+## 7. Exact higher-odd stability of the finish-line theorem
+
+Because Stage 179 already proved that every extra isotropic odd retarded datum beginning at `O(\omega^7)` leaves `\chi_Q` unchanged, the Stage-180 theorem is automatically stable under the replacement
+\[
+\widehat Y_Q^{\rm ret,5}(\omega)
+\longrightarrow
+\widehat Y_Q^{\rm ret,\ge 7}(\omega)
+=
+\widehat Y_Q^{\rm ret,5}(\omega)+O(\omega^7).
+\]
+So the equivalence
+\[
+\boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1}
+\]
+is already the **final** reduced Packet-A retarded finish-line theorem at point-particle `2.5`PN order.
+
+There is no remaining higher-odd loophole inside the present hierarchy.
+
+---
+
+## 8. What Stage 180 changes in the theorem problem
+
+Stage 179 had already reduced the retarded uncertainty to one scalar `\chi_Q`, but the result was still phrased as a carried finish-line recommendation.
+Stage 180 upgrades that to an exact theorem.
+
+### 8.1 The Packet-A finish line is now one scalar equation
+
+After the isotropic one-pole front end is imposed, the entire Packet-A retarded verdict is one equation only:
+\[
+\chi_Q=1.
+\]
+
+### 8.2 The Stage-177 deformation algebra is now the final isotropic realization gate
+
+The actual moving-throat PDE does not have to supply a large retarded coefficient family at theorem order.
+It only has to land the isotropic DtN deformation data on
+\[
+3S(\beta^5-1)+\Sigma_0+27\Sigma_5=0.
+\]
+
+### 8.3 The reduced 2.5PN / 4PN branch-side bottleneck is fully localized
+
+The universal point-particle `2.5`PN and hereditary `4`PN finish line is now exactly the outgoing-normalization scalar.
+No additional Packet-A retarded coordinate survives.
+
+---
+
+## 9. Immediate next derivation step
+
+The next clean continuation is no longer another algebraic reduction.
+It is the actual realization question:
+
+1. compute the realized isotropic moving-throat DtN deformation data
+   \[
+   (\beta,\Sigma_0,\Sigma_5),
+   \]
+2. evaluate
+   \[
+   \chi_Q=
+   \frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0},
+   \]
+3. and test the exact Packet-A finish-line theorem
+   \[
+   \Delta_{\rm branch}=0
+   \iff
+   \chi_Q=1.
+   \]
+
+That is the sharpest next theorem gate after Stage 180.
+moving_throat_pde_stage181_exact_finite_orbit_law.md
+# Moving-Throat PDE — Stage 181: Exact Finite Orbit Law for the Dependent Triple, Exact Mismatch Coordinates, and the Orbit-Restoration Theorem
+
+## Status
+
+**Exact within the carried Stage-174 Packet-B hierarchy, the Stage-175 orbit/quotient projector calculus, and the exact coherent-branch monomial definitions already frozen before Stage 180.**
+
+This stage does **not** introduce a new constitutive law.
+It is the finite orbit-side complement to the Packet-A retarded finish-line theorem of Stage 180.
+
+---
+
+## Purpose
+
+Stage 180 completed the exact Packet-A retarded statement:
+\[
+\Delta_{\rm branch}=0
+\iff
+\chi_Q=1.
+\]
+But Stage 180 also left the second home-stretch packet untouched:
+\[
+\Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta),
+\]
+which must still vanish for full reduced closure.
+
+Stage 174 had already shown that Packet B can be represented equivalently by
+\[
+(m_T,m_K,m_\mu),
+\qquad
+(\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+\qquad
+(q_{\rm tr},q_{\rm nt},q_\eta),
+\]
+and Stage 175 then upgraded the infinitesimal quotient side into an exact projector calculus on the full eight-dimensional microscopic drift space. What was still missing was the **finite microscopic orbit law itself**:
+
+> given the five free microscopic coordinates and the invariant triple, what are the exact dependent microscopic coordinates on the same similarity orbit, and how does a general candidate branch fail to follow them?
+
+This stage answers that completely.
+
+The main outputs are:
+
+1. the exact finite **single-orbit law** for the dependent triple
+   \[
+   (T_U, K_\eta^{(\mathrm{eff})}, \mu_W),
+   \]
+2. the exact three-dimensional **dependent residual mismatch triple**
+   \[
+   (m_T,m_K,m_\mu),
+   \]
+3. the exact logarithmic chart
+   \[
+   q_{\rm tr}=(1+\chi_{0,*})\ln m_T,
+   \qquad
+   q_\eta=-\ln m_K,
+   \qquad
+   q_{\rm nt}=\ln m_\mu-\ln m_K-F_*\ln m_T,
+   \]
+4. the exact restoration map that returns a candidate branch to the same similarity orbit by changing only the dependent triple,
+5. and the sharp orbit-lock theorem
+   \[
+   \Delta_{\rm orbit}=0
+   \iff
+   m_T=m_K=m_\mu=1.
+   \]
+
+So Stage 181 turns the orbit side of the home stretch into a direct finite comparison problem.
+
+---
+
+## 1. Carry-forward split of microscopic coordinates and exact coherent monomials
+
+Work on the positive microscopic state
+\[
+\boxed{
+\mathbf x=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+}
+\]
+Keep the same five free microscopic coordinates used throughout the Stage-174/175 orbit package:
+\[
+\boxed{(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})})}
+\]
+and the same dependent microscopic triple:
+\[
+\boxed{(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W).}
+\]
+
+Let the carried coherent-branch constants be
+\[
+\chi_{0,*},\qquad \delta_{U,*},\qquad E_*,\qquad F_*,
+\]
+and let the invariant triple be fixed at
+\[
+\boxed{\bigl(\mathfrak C_{{\rm tr},*},\ \mathfrak C_{{\rm nt},*},\ \epsilon_{\eta,*}\bigr).}
+\]
+
+The exact coherent monomials are
+\[
+\boxed{
+\mathfrak C_{{\rm tr},*}
+=
+\left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\mathfrak C_{{\rm nt},*}
+=
+\frac{\lambda_W^2\mu_W}
+{K_\eta^{(\mathrm{eff})}\bigl(K_W^{(\mathrm{eff})}\bigr)^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}
+\right)^{E_*}
+\left(
+\frac{\pi^2T_U}{L^2K_U}
+\right)^{-F_*},
+}
+\]
+\[
+\boxed{
+\epsilon_\eta=
+\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}}.
+}
+\]
+
+These are the same exact monomials whose infinitesimal drift compiler was encoded by `\(M_*\)` in Stage 175.
+
+---
+
+## 2. Exact finite orbit law for the dependent triple
+
+Because the three monomials are triangular in the dependent triple, they can be solved in closed form.
+
+### 2.1 Exact orbit value of `\(K_\eta^{(\mathrm{eff})}\)`
+
+The third monomial gives immediately
+\[
+\boxed{
+K_\eta^{(\mathrm{orbit})}
+=
+\frac{c_{\eta U}^2}{K_U\,\epsilon_{\eta,*}}.
+}
+\]
+
+### 2.2 Exact orbit value of `\(T_U\)`
+
+Substituting the free microscopic point into the tracking monomial gives
+\[
+\boxed{
+T_U^{(\mathrm{orbit})}
+=
+\frac{L^2K_U}{\pi^2}
+\left[
+\frac{\mathfrak C_{{\rm tr},*}}
+{(\gamma c_{\eta U}/K_U)^{1+\delta_{U,*}}}
+\right]^{\!1/(1+\chi_{0,*})}.
+}
+\]
+
+### 2.3 Exact orbit value of `\(\mu_W\)`
+
+Finally the nontracking monomial fixes
+\[
+\boxed{
+\mu_W^{(\mathrm{orbit})}
+=
+\frac{\mathfrak C_{{\rm nt},*}\,K_\eta^{(\mathrm{orbit})}\bigl(K_W^{(\mathrm{eff})}\bigr)^2}{\lambda_W^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}
+\right)^{-E_*}
+\left(
+\frac{\pi^2T_U^{(\mathrm{orbit})}}{L^2K_U}
+\right)^{F_*}.
+}
+\]
+
+So the dependent triple is not abstract any more. For fixed free microscopic point and fixed invariant triple,
+\[
+\boxed{
+(T_U, K_\eta^{(\mathrm{eff})}, \mu_W)
+=
+\bigl(T_U^{(\mathrm{orbit})},K_\eta^{(\mathrm{orbit})},\mu_W^{(\mathrm{orbit})}\bigr)
+}
+\]
+is the unique microscopic point on the same exact similarity orbit.
+
+### 2.4 Exact finite orbit theorem
+
+\[
+\boxed{\textbf{Theorem (Stage 181 finite orbit law).}}
+\]
+
+**Given the five free microscopic coordinates and the invariant triple**
+\[
+\bigl(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_{\eta,*}\bigr),
+\]
+**the dependent microscopic triple is determined uniquely and exactly by the formulas above.**
+
+This is the finite microscopic orbit law promised by Stage 175.
+
+---
+
+## 3. Exact dependent residual mismatch triple
+
+Now let a general candidate branch share the same five free microscopic coordinates as the orbit point, but not necessarily the same dependent triple. Define the exact residual mismatch ratios by
+\[
+\boxed{
+T_U=m_T\,T_U^{(\mathrm{orbit})},
+\qquad
+K_\eta^{(\mathrm{eff})}=m_K\,K_\eta^{(\mathrm{orbit})},
+\qquad
+\mu_W=m_\mu\,\mu_W^{(\mathrm{orbit})}.
+}
+\]
+These are the Stage-174 residual mismatch ratios, now written as direct ratios to the explicit orbit point.
+
+Then the invariant ratios collapse exactly to
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm tr},*}^{\rm(actual)}}{\mathfrak C_{{\rm tr},*}^{\rm(orbit)}}
+= m_T^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\frac{\epsilon_\eta^{\rm(actual)}}{\epsilon_{\eta,*}}
+=\frac{1}{m_K},
+}
+\]
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm nt},*}^{\rm(actual)}}{\mathfrak C_{{\rm nt},*}^{\rm(orbit)}}
+=\frac{m_\mu}{m_K m_T^{F_*}}.
+}
+\]
+
+So the entire finite orbit-side branch-selection problem is exactly three-dimensional:
+\[
+\boxed{(m_T,m_K,m_\mu).}
+\]
+
+If desired, the invariant-ratio packet of Stage 174 is therefore
+\[
+\boxed{
+\mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},
+\qquad
+\mathfrak R_{\rm nt}=\frac{m_\mu}{m_K m_T^{F_*}},
+\qquad
+\mathfrak R_\eta=\frac{1}{m_K}.
+}
+\]
+
+---
+
+## 4. Exact logarithmic chart and agreement with Stage 175
+
+Define the logarithmic mismatch coordinates
+\[
+\tau:=\ln m_T,
+\qquad
+\kappa:=\ln m_K,
+\qquad
+\mu:=\ln m_\mu.
+\]
+Then the quotient coordinates are exactly
+\[
+\boxed{q_{\rm tr}=(1+\chi_{0,*})\tau,}
+\]
+\[
+\boxed{q_\eta=-\kappa,}
+\]
+\[
+\boxed{q_{\rm nt}=\mu-\kappa-F_*\tau.}
+\]
+
+So the Stage-174 Packet-B logarithmic chart is not merely a finite reparameterization by analogy. It is the exact logarithmic chart of the finite mismatch triple.
+
+### 4.1 Direct connection to the Stage-175 drift compiler
+
+Take the pure dependent mismatch drift vector in the ordered Stage-175 microscopic basis
+\[
+\Delta\mathbf x_{\rm mis}=
+\begin{pmatrix}
+0\\0\\0\\0\\ \kappa \\0\\ \mu \\ \tau
+\end{pmatrix}.
+\]
+Then the Stage-175 quotient map gives
+\[
+M_*\Delta\mathbf x_{\rm mis}
+=
+\begin{pmatrix}
+(1+\chi_{0,*})\tau\\[4pt]
+\mu-\kappa-F_*\tau\\[4pt]
+-\kappa
+\end{pmatrix}
+=
+\begin{pmatrix}
+q_{\rm tr}\\ q_{\rm nt}\\ q_\eta
+\end{pmatrix}.
+\]
+So the Stage-175 first-order formulas are not just infinitesimal approximations of the finite mismatch language. They are the exact logarithmic chart of the finite mismatch ratios.
+
+---
+
+## 5. Exact restoration map
+
+Given the quotient packet
+\[
+\Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta),
+\]
+restoration to the same exact similarity orbit is achieved by changing only the dependent triple:
+\[
+\boxed{
+T_U^{(\mathrm{restore})}
+=
+T_U\,e^{-q_{\rm tr}/(1+\chi_{0,*})},
+}
+\]
+\[
+\boxed{
+K_\eta^{(\mathrm{eff}),\,\mathrm{restore}}
+=
+K_\eta^{(\mathrm{eff})}\,e^{q_\eta},
+}
+\]
+\[
+\boxed{
+\mu_W^{(\mathrm{restore})}
+=
+\mu_W\,e^{-q_{\rm nt}+q_\eta-F_*q_{\rm tr}/(1+\chi_{0,*})}.
+}
+\]
+By construction,
+\[
+\boxed{
+T_U^{(\mathrm{restore})}=T_U^{(\mathrm{orbit})},
+\qquad
+K_\eta^{(\mathrm{eff}),\,\mathrm{restore}}=K_\eta^{(\mathrm{orbit})},
+\qquad
+\mu_W^{(\mathrm{restore})}=\mu_W^{(\mathrm{orbit})}.
+}
+\]
+So orbit restoration is exact and algebraic.
+
+---
+
+## 6. Exact finite orbit-lock theorem
+
+The orbit-side criterion is now completely explicit.
+
+\[
+\boxed{\textbf{Theorem (Stage 181 finite orbit-lock theorem).}}
+\]
+
+**Within the carried coherent-branch hierarchy, a candidate branch with fixed free microscopic coordinates lies on the exact similarity orbit determined by the invariant triple if and only if any one of the following equivalent conditions holds:**
+\[
+\boxed{m_T=m_K=m_\mu=1,}
+\]
+\[
+\boxed{\mathfrak R_{\rm tr}=\mathfrak R_{\rm nt}=\mathfrak R_\eta=1,}
+\]
+\[
+\boxed{q_{\rm tr}=q_{\rm nt}=q_\eta=0.}
+\]
+Equivalently,
+\[
+\boxed{\Delta_{\rm orbit}=0.}
+\]
+
+So Stage 181 is the exact Packet-B complement of Stage 180:
+
+- Stage 180 says the Packet-A retarded finish line is
+  \[
+  \chi_Q=1.
+  \]
+- Stage 181 says the Packet-B orbit-side finish line is
+  \[
+  \Delta_{\rm orbit}=0.
+  \]
+
+Together they sharpen the full reduced home stretch to
+\[
+\boxed{
+\text{full reduced closure}
+\iff
+\chi_Q=1
+\quad\text{and}\quad
+\Delta_{\rm orbit}=0.
+}
+\]
+
+---
+
+## 7. What Stage 181 changes in the theorem problem
+
+Stage 175 gave the exact infinitesimal orbit/failure split, but the actual finite orbit point was still implicit. Stage 181 removes that last ambiguity.
+
+### 7.1 The finite similarity orbit is now explicit
+
+The completed moving-throat PDE no longer needs an abstract “orbit-lock surface” to be compared by hand. The exact orbit point in the dependent triple is already known algebraically once the free coordinates and invariant triple are supplied.
+
+### 7.2 The quotient coordinates are exact finite mismatch coordinates
+
+The finite quotient packet
+\[
+(q_{\rm tr},q_{\rm nt},q_\eta)
+\]
+is now recognized as the exact logarithmic chart of the dependent mismatch triple
+\[
+(m_T,m_K,m_\mu).
+\]
+
+### 7.3 The remaining microscopic realization problem is localized completely
+
+Once the PDE returns the actual microscopic state,
+all residual orbit failure is localized exactly into the dependent triple:
+\[
+T_U,
+\qquad
+K_\eta^{(\mathrm{eff})},
+\qquad
+\mu_W.
+\]
+The free microscopic coordinates carry the similarity-orbit transport only; they do not themselves signal orbit-lock failure.
+
+---
+
+## 8. Immediate next derivation step
+
+The next clean continuation is now fully finite and microscopic:
+
+1. choose the actual free microscopic point returned by the moving-throat PDE,
+2. compute the exact orbit-predicted dependent triple from the Stage-181 formulas,
+3. compare the actual dependent triple to that orbit prediction,
+4. and read off
+   \[
+   (m_T,m_K,m_\mu)
+   \quad\text{or equivalently}\quad
+   (q_{\rm tr},q_{\rm nt},q_\eta).
+   \]
+
+That is the sharpest direct orbit-lock test available after Stage 181.
+moving_throat_pde_stage182_pairwise_orbit_transport_law.md
+# Moving-Throat PDE — Stage 182: Exact Pairwise Orbit-Transport Law, Reference-Independent Mismatch Packet, and the Two-Point Orbit-Lock Theorem
+
+## Status
+
+**Exact within the carried Stage-175 orbit/quotient projector calculus, the Stage-181 finite orbit law for the dependent triple, and the exact coherent-branch monomial definitions frozen before Stage 180.**
+
+This stage does **not** introduce a new constitutive law.
+It removes the last orbit-side reference-point privilege from the reduced home stretch.
+
+---
+
+## Purpose
+
+Stage 181 solved the dependent microscopic triple
+\[
+(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W)
+\]
+exactly once a free microscopic point and an invariant triple were fixed. That was the right finite complement to the Packet-A finish line of Stage 180, but it still privileged one orbit base point.
+
+So the natural next question is already forced:
+
+> can two arbitrary positive microscopic states be compared **directly**, without first choosing a preferred orbit representative?
+
+This stage answers that completely.
+
+The main outputs are:
+
+1. the exact finite **two-point quotient packet**
+   \[
+   \Delta_{\rm orbit}^{(2\leftarrow1)}
+   =
+   \bigl(q_{\rm tr}^{(2\leftarrow1)},q_{\rm nt}^{(2\leftarrow1)},q_\eta^{(2\leftarrow1)}\bigr),
+   \]
+   obtained by applying the Stage-175 drift compiler to the logarithmic pairwise ratio vector,
+2. the exact **pairwise orbit-transport factors**
+   \[
+   \Phi_T^{(2\leftarrow1)},\qquad
+   \Phi_K^{(2\leftarrow1)},\qquad
+   \Phi_\mu^{(2\leftarrow1)},
+   \]
+   which determine how the dependent triple must transform between any two points on the same similarity orbit once the five free coordinate ratios are fixed,
+3. the exact **reference-independent mismatch triple**
+   \[
+   (m_T^{(2\leftarrow1)},m_K^{(2\leftarrow1)},m_\mu^{(2\leftarrow1)}),
+   \]
+4. the exact finite pairwise decomposition
+   \[
+   \Delta\mathbf x^{(2\leftarrow1)}
+   =
+   O_{\rm orb}\,\Delta\mathbf x^{(2\leftarrow1)}
+   +
+   Q_{\rm quot}\,\Delta\mathbf x^{(2\leftarrow1)},
+   \]
+5. the exact cocycle laws for transport, mismatch, and quotient packet,
+6. and the sharp two-point theorem
+   \[
+   \mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)}
+   \iff
+   m_T^{(2\leftarrow1)}=m_K^{(2\leftarrow1)}=m_\mu^{(2\leftarrow1)}=1
+   \iff
+   q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
+   \]
+
+So Stage 182 is the exact pairwise/reference-independent completion of the Packet-B side of the home stretch.
+
+---
+
+## 1. Two-point logarithmic ratio packet and exact pairwise monomial compiler
+
+Work with two positive microscopic states
+\[
+\mathbf x^{(1)},\qquad \mathbf x^{(2)},
+\]
+in the same ordered microscopic coordinates as Stages 175 and 181:
+\[
+\boxed{
+\mathbf x
+=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+}
+\]
+
+Define the exact finite pairwise logarithmic ratio vector
+\[
+\boxed{
+\Delta\mathbf x^{(2\leftarrow1)}
+:=
+\ln\!\left(\frac{\mathbf x^{(2)}}{\mathbf x^{(1)}}\right)
+=
+\begin{pmatrix}
+\ln \mathfrak r_\lambda \\
+\ln \mathfrak r_c \\
+\ln \mathfrak r_\gamma \\
+\ln \mathfrak r_U \\
+\ln \mathfrak r_K \\
+\ln \mathfrak r_W \\
+\ln \mathfrak r_\mu \\
+\ln \mathfrak r_T
+\end{pmatrix},
+}
+\]
+where the raw pairwise ratios are
+\[
+\mathfrak r_\lambda:=\frac{\lambda_{W,2}}{\lambda_{W,1}},
+\quad
+\mathfrak r_c:=\frac{c_{\eta U,2}}{c_{\eta U,1}},
+\quad
+\mathfrak r_\gamma:=\frac{\gamma_2}{\gamma_1},
+\quad
+\mathfrak r_U:=\frac{K_{U,2}}{K_{U,1}},
+\quad
+\mathfrak r_W:=\frac{K_{W,2}}{K_{W,1}},
+\]
+\[
+\mathfrak r_T:=\frac{T_{U,2}}{T_{U,1}},
+\qquad
+\mathfrak r_K:=\frac{K_{\eta,2}^{(\mathrm{eff})}}{K_{\eta,1}^{(\mathrm{eff})}},
+\qquad
+\mathfrak r_\mu:=\frac{\mu_{W,2}}{\mu_{W,1}}.
+\]
+
+Because the coherent monomials are multiplicative, the Stage-175 linear compiler becomes an **exact finite two-point compiler**:
+\[
+\boxed{
+\mathbf q^{(2\leftarrow1)}
+:=
+\begin{pmatrix}
+q_{\rm tr}^{(2\leftarrow1)}\\
+q_{\rm nt}^{(2\leftarrow1)}\\
+q_\eta^{(2\leftarrow1)}
+\end{pmatrix}
+=
+M_*\,\Delta\mathbf x^{(2\leftarrow1)}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+q_{\rm tr}^{(2\leftarrow1)}
+=
+\ln\!\frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}},
+\qquad
+q_{\rm nt}^{(2\leftarrow1)}
+=
+\ln\!\frac{\mathfrak C_{{\rm nt},*}^{(2)}}{\mathfrak C_{{\rm nt},*}^{(1)}},
+\qquad
+q_\eta^{(2\leftarrow1)}
+=
+\ln\!\frac{\epsilon_{\eta,2}}{\epsilon_{\eta,1}}.
+}
+\]
+
+Written directly in the raw pairwise ratios,
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}}
+=
+\left(\frac{\mathfrak r_\gamma\mathfrak r_c}{\mathfrak r_U}\right)^{1+\delta_{U,*}}
+\left(\frac{\mathfrak r_T}{\mathfrak r_U}\right)^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\frac{\epsilon_{\eta,2}}{\epsilon_{\eta,1}}
+=
+\frac{\mathfrak r_c^2}{\mathfrak r_U\mathfrak r_K},
+}
+\]
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm nt},*}^{(2)}}{\mathfrak C_{{\rm nt},*}^{(1)}}
+=
+\frac{\mathfrak r_\lambda^2\mathfrak r_\mu}{\mathfrak r_K\mathfrak r_W^2}
+\left(\frac{\mathfrak r_\gamma^2\mathfrak r_\lambda^2}{\mathfrak r_U\mathfrak r_W}\right)^{E_*}
+\left(\frac{\mathfrak r_T}{\mathfrak r_U}\right)^{-F_*}.
+}
+\]
+
+So the two-point quotient packet is exact and requires no distinguished orbit representative.
+
+---
+
+## 2. Exact pairwise orbit-transport law
+
+Suppose now that the two microscopic states lie on the **same** exact similarity orbit, so that their coherent monomials agree:
+\[
+\mathfrak C_{{\rm tr},*}^{(2)}=\mathfrak C_{{\rm tr},*}^{(1)},
+\qquad
+\mathfrak C_{{\rm nt},*}^{(2)}=\mathfrak C_{{\rm nt},*}^{(1)},
+\qquad
+\epsilon_{\eta,2}=\epsilon_{\eta,1}.
+\]
+
+Define the tracking exponent
+\[
+\boxed{
+\alpha_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.
+}
+\]
+Then the same-orbit condition solves exactly for the dependent pairwise ratios.
+
+### 2.1 Tracking transport factor
+
+\[
+\boxed{
+\Phi_T^{(2\leftarrow1)}
+:=
+\mathfrak r_U
+\left(\frac{\mathfrak r_U}{\mathfrak r_\gamma\mathfrak r_c}\right)^{\alpha_*}.
+}
+\]
+So on the same exact orbit,
+\[
+\boxed{T_{U,2}=\Phi_T^{(2\leftarrow1)}\,T_{U,1}.}
+\]
+
+### 2.2 Dressing transport factor
+
+\[
+\boxed{
+\Phi_K^{(2\leftarrow1)}
+:=
+\frac{\mathfrak r_c^2}{\mathfrak r_U}.
+}
+\]
+So on the same exact orbit,
+\[
+\boxed{K_{\eta,2}^{(\mathrm{eff})}=\Phi_K^{(2\leftarrow1)}\,K_{\eta,1}^{(\mathrm{eff})}.}
+\]
+
+### 2.3 Nontracking transport factor
+
+A factorized exact form aligned with the coherent monomials is
+\[
+\boxed{
+\Phi_\mu^{(2\leftarrow1)}
+:=
+\frac{\Phi_K^{(2\leftarrow1)}(\mathfrak r_W)^2}{(\mathfrak r_\lambda)^2}
+\left(\frac{\mathfrak r_\gamma^2\mathfrak r_\lambda^2}{\mathfrak r_U\mathfrak r_W}\right)^{-E_*}
+\left(\frac{\Phi_T^{(2\leftarrow1)}}{\mathfrak r_U}\right)^{F_*}.
+}
+\]
+Equivalently, after eliminating `\(\Phi_T\)` and `\(\Phi_K\)`,
+\[
+\boxed{
+\Phi_\mu^{(2\leftarrow1)}
+=
+(\mathfrak r_c)^{2-F_*\alpha_*}
+(\mathfrak r_\gamma)^{-2E_*-F_*\alpha_*}
+(\mathfrak r_\lambda)^{-2(1+E_*)}
+(\mathfrak r_U)^{-1+E_*+F_*\alpha_*}
+(\mathfrak r_W)^{2+E_*}.
+}
+\]
+So on the same exact orbit,
+\[
+\boxed{\mu_{W,2}=\Phi_\mu^{(2\leftarrow1)}\,\mu_{W,1}.}
+\]
+
+### 2.4 Exact pairwise transport theorem
+
+\[
+\boxed{\textbf{Theorem (Stage 182 exact pairwise orbit-transport law).}}
+\]
+
+**For any two positive microscopic states, once the five free pairwise ratios**
+\[
+(\mathfrak r_\lambda,\mathfrak r_c,\mathfrak r_\gamma,\mathfrak r_U,\mathfrak r_W)
+\]
+**are fixed, the exact same-orbit transport of the dependent triple is uniquely determined by**
+\[
+\Phi_T^{(2\leftarrow1)},\qquad
+\Phi_K^{(2\leftarrow1)},\qquad
+\Phi_\mu^{(2\leftarrow1)}.
+\]
+
+So Stage 181 no longer requires a privileged orbit point. Any microscopic state can serve as the transport source.
+
+---
+
+## 3. Exact reference-independent mismatch triple
+
+For an arbitrary pair of positive microscopic states define the exact reference-independent mismatch ratios by dividing the raw dependent pairwise ratios by the exact same-orbit transport factors:
+\[
+\boxed{
+m_T^{(2\leftarrow1)}:=\frac{\mathfrak r_T}{\Phi_T^{(2\leftarrow1)}},
+\qquad
+m_K^{(2\leftarrow1)}:=\frac{\mathfrak r_K}{\Phi_K^{(2\leftarrow1)}},
+\qquad
+m_\mu^{(2\leftarrow1)}:=\frac{\mathfrak r_\mu}{\Phi_\mu^{(2\leftarrow1)}}.
+}
+\]
+
+Then the pairwise invariant-ratio packet collapses **exactly** to the same functional form found in Stage 181:
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}}
+=
+\bigl(m_T^{(2\leftarrow1)}\bigr)^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\frac{\epsilon_{\eta,2}}{\epsilon_{\eta,1}}
+=
+\frac{1}{m_K^{(2\leftarrow1)}},
+}
+\]
+\[
+\boxed{
+\frac{\mathfrak C_{{\rm nt},*}^{(2)}}{\mathfrak C_{{\rm nt},*}^{(1)}}
+=
+\frac{m_\mu^{(2\leftarrow1)}}{m_K^{(2\leftarrow1)}\bigl(m_T^{(2\leftarrow1)}\bigr)^{F_*}}.
+}
+\]
+
+So the same three packets remain exactly equivalent in the pairwise setting:
+\[
+\boxed{
+(m_T,m_K,m_\mu)
+\longleftrightarrow
+\left(\frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}},
+      \frac{\mathfrak C_{{\rm nt},*}^{(2)}}{\mathfrak C_{{\rm nt},*}^{(1)}},
+      \frac{\epsilon_{\eta,2}}{\epsilon_{\eta,1}}
+\right)
+\longleftrightarrow
+(q_{\rm tr},q_{\rm nt},q_\eta).
+}
+\]
+But now the packet is completely base-point free.
+
+---
+
+## 4. Exact logarithmic chart and the finite two-point projector split
+
+Write the finite pairwise logarithmic mismatch coordinates as
+\[
+\tau^{(2\leftarrow1)}:=\ln m_T^{(2\leftarrow1)},
+\qquad
+\kappa^{(2\leftarrow1)}:=\ln m_K^{(2\leftarrow1)},
+\qquad
+\mu^{(2\leftarrow1)}:=\ln m_\mu^{(2\leftarrow1)}.
+\]
+Then exactly as in Stage 181,
+\[
+\boxed{q_{\rm tr}^{(2\leftarrow1)}=(1+\chi_{0,*})\tau^{(2\leftarrow1)},}
+\]
+\[
+\boxed{q_\eta^{(2\leftarrow1)}=-\kappa^{(2\leftarrow1)},}
+\]
+\[
+\boxed{q_{\rm nt}^{(2\leftarrow1)}=\mu^{(2\leftarrow1)}-\kappa^{(2\leftarrow1)}-F_*\tau^{(2\leftarrow1)}.}
+\]
+
+So the Packet-B chart of Stage 181 is already the exact pairwise chart as well.
+
+### 4.1 Exact finite use of the Stage-175 projectors
+
+Because `\(\Delta\mathbf x^{(2\leftarrow1)}\)` is a logarithmic pairwise ratio vector, the Stage-175 projectors apply **exactly** to it:
+\[
+\boxed{
+\Delta\mathbf x^{(2\leftarrow1)}
+=
+O_{\rm orb}\,\Delta\mathbf x^{(2\leftarrow1)}
++
+Q_{\rm quot}\,\Delta\mathbf x^{(2\leftarrow1)}.
+}
+\]
+The exact orbit part is
+\[
+\boxed{
+O_{\rm orb}\,\Delta\mathbf x^{(2\leftarrow1)}
+=
+\begin{pmatrix}
+\ln \mathfrak r_\lambda \\
+\ln \mathfrak r_c \\
+\ln \mathfrak r_\gamma \\
+\ln \mathfrak r_U \\
+\ln \Phi_K^{(2\leftarrow1)} \\
+\ln \mathfrak r_W \\
+\ln \Phi_\mu^{(2\leftarrow1)} \\
+\ln \Phi_T^{(2\leftarrow1)}
+\end{pmatrix},
+}
+\]
+while the exact quotient-failure part has support only on the dependent triple:
+\[
+\boxed{
+Q_{\rm quot}\,\Delta\mathbf x^{(2\leftarrow1)}
+=
+\begin{pmatrix}
+0\\0\\0\\0\\
+\ln m_K^{(2\leftarrow1)}\\
+0\\
+\ln m_\mu^{(2\leftarrow1)}\\
+\ln m_T^{(2\leftarrow1)}
+\end{pmatrix}.
+}
+\]
+
+So Stage 175 is now recognized as an exact finite two-point orbit/failure decomposition.
+
+### 4.2 Exact pairwise restoration map
+
+Restoration of state `2` to the exact similarity orbit through state `1`, while holding the free pairwise ratios fixed, changes only the dependent triple:
+\[
+\boxed{
+T_{U,2}^{\rm restore}
+=
+T_{U,2}\,e^{-q_{\rm tr}^{(2\leftarrow1)}/(1+\chi_{0,*})}
+=
+\Phi_T^{(2\leftarrow1)}T_{U,1},
+}
+\]
+\[
+\boxed{
+K_{\eta,2}^{(\mathrm{eff}),\,\rm restore}
+=
+K_{\eta,2}^{(\mathrm{eff})}\,e^{q_\eta^{(2\leftarrow1)}}
+=
+\Phi_K^{(2\leftarrow1)}K_{\eta,1}^{(\mathrm{eff})},
+}
+\]
+\[
+\boxed{
+\mu_{W,2}^{\rm restore}
+=
+\mu_{W,2}\,e^{-q_{\rm nt}^{(2\leftarrow1)}+q_\eta^{(2\leftarrow1)}-F_*q_{\rm tr}^{(2\leftarrow1)}/(1+\chi_{0,*})}
+=
+\Phi_\mu^{(2\leftarrow1)}\mu_{W,1}.
+}
+\]
+
+So the pairwise orbit-restoration map is exact and algebraic.
+
+---
+
+## 5. Exact composition laws and reference independence
+
+Take three positive microscopic states
+\[
+\mathbf x^{(1)},\qquad \mathbf x^{(2)},\qquad \mathbf x^{(3)}.
+\]
+Then the raw pairwise ratios compose multiplicatively, hence the logarithmic pairwise ratio vectors compose additively:
+\[
+\boxed{
+\Delta\mathbf x^{(3\leftarrow1)}
+=
+\Delta\mathbf x^{(3\leftarrow2)}+\Delta\mathbf x^{(2\leftarrow1)}.
+}
+\]
+Applying the exact pairwise transport factors gives
+\[
+\boxed{
+\Phi_T^{(3\leftarrow1)}=
+\Phi_T^{(3\leftarrow2)}\Phi_T^{(2\leftarrow1)},
+\qquad
+\Phi_K^{(3\leftarrow1)}=
+\Phi_K^{(3\leftarrow2)}\Phi_K^{(2\leftarrow1)},
+\qquad
+\Phi_\mu^{(3\leftarrow1)}=
+\Phi_\mu^{(3\leftarrow2)}\Phi_\mu^{(2\leftarrow1)}.
+}
+\]
+Therefore the mismatch ratios compose multiplicatively as well:
+\[
+\boxed{
+m_T^{(3\leftarrow1)}=m_T^{(3\leftarrow2)}m_T^{(2\leftarrow1)},
+\qquad
+m_K^{(3\leftarrow1)}=m_K^{(3\leftarrow2)}m_K^{(2\leftarrow1)},
+\qquad
+m_\mu^{(3\leftarrow1)}=m_\mu^{(3\leftarrow2)}m_\mu^{(2\leftarrow1)}.
+}
+\]
+Since `\(M_*\)` is linear,
+\[
+\boxed{
+\mathbf q^{(3\leftarrow1)}
+=
+\mathbf q^{(3\leftarrow2)}+\mathbf q^{(2\leftarrow1)}.
+}
+\]
+So the Packet-B quotient packet is an exact additive two-point cocycle.
+
+This is the precise sense in which the orbit verdict is now **reference independent**: any intermediate orbit representative gives the same final two-point mismatch packet after composition.
+
+---
+
+## 6. Exact two-point orbit-lock theorem
+
+We can now remove the last orbit-side reference-point privilege completely.
+
+\[
+\boxed{\textbf{Theorem (Stage 182 two-point orbit-lock theorem).}}
+\]
+
+For any two positive microscopic states `\(\mathbf x^{(1)},\mathbf x^{(2)}\)`, the following are equivalent:
+
+1. they lie on the same exact similarity orbit,
+   \[
+   \boxed{\mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)};}
+   \]
+2. their dependent raw pairwise ratios equal the exact pairwise orbit-transport factors,
+   \[
+   \boxed{
+   \mathfrak r_T=\Phi_T^{(2\leftarrow1)},
+   \qquad
+   \mathfrak r_K=\Phi_K^{(2\leftarrow1)},
+   \qquad
+   \mathfrak r_\mu=\Phi_\mu^{(2\leftarrow1)};
+   }
+   \]
+3. the reference-independent mismatch triple is trivial,
+   \[
+   \boxed{
+   m_T^{(2\leftarrow1)}=m_K^{(2\leftarrow1)}=m_\mu^{(2\leftarrow1)}=1;
+   }
+   \]
+4. the pairwise invariant-ratio packet is trivial,
+   \[
+   \boxed{
+   \frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}}
+   =
+   \frac{\mathfrak C_{{\rm nt},*}^{(2)}}{\mathfrak C_{{\rm nt},*}^{(1)}}
+   =
+   \frac{\epsilon_{\eta,2}}{\epsilon_{\eta,1}}
+   =1;
+   }
+   \]
+5. the pairwise quotient packet vanishes,
+   \[
+   \boxed{
+   q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
+   }
+   \]
+
+Equivalently,
+\[
+\boxed{
+Q_{\rm quot}\,\Delta\mathbf x^{(2\leftarrow1)}=0
+\iff
+M_*\,\Delta\mathbf x^{(2\leftarrow1)}=0.
+}
+\]
+
+So the orbit-lock test is now an exact **two-point** statement.
+
+---
+
+## 7. Reduction to Stage 181
+
+If the two states share the same free microscopic coordinates, then
+\[
+\mathfrak r_\lambda=\mathfrak r_c=\mathfrak r_\gamma=\mathfrak r_U=\mathfrak r_W=1.
+\]
+Hence
+\[
+\boxed{
+\Phi_T^{(2\leftarrow1)}=\Phi_K^{(2\leftarrow1)}=\Phi_\mu^{(2\leftarrow1)}=1.
+}
+\]
+Therefore
+\[
+\boxed{
+m_T^{(2\leftarrow1)}=\mathfrak r_T,
+\qquad
+m_K^{(2\leftarrow1)}=\mathfrak r_K,
+\qquad
+m_\mu^{(2\leftarrow1)}=\mathfrak r_\mu.
+}
+\]
+So if state `1` is chosen to be the explicit orbit point of Stage 181, Stage 182 reduces **exactly** to Stage 181.
+
+This shows that Stage 181 is the fixed-base specialization of the present pairwise law.
+
+---
+
+## 8. What Stage 182 changes in the theorem problem
+
+Stage 181 solved the dependent triple exactly but still privileged one orbit base point.
+Stage 182 removes that remaining asymmetry.
+
+### 8.1 The orbit side is now a direct two-point test
+
+The completed moving-throat PDE no longer needs a distinguished orbit representative before the microscopic orbit-lock verdict can be read off. Any two positive microscopic states can be compared directly.
+
+### 8.2 The Stage-175 projectors are now exact finite two-point objects
+
+The orbit/quotient split is no longer merely infinitesimal language. It is the exact decomposition of the finite logarithmic pairwise ratio vector.
+
+### 8.3 The full reduced home stretch is now cleanly split into one Packet-A scalar and one two-point Packet-B test
+
+- Packet A (Stage 180):
+  \[
+  \chi_Q=1.
+  \]
+- Packet B (Stage 182):
+  \[
+  \Delta_{\rm orbit}^{(2\leftarrow1)}=0.
+  \]
+
+So the actual moving-throat realization problem is now:
+
+1. realize the Packet-A outgoing finish line,
+2. and realize the exact two-point Packet-B orbit-lock condition.
+
+Nothing else survives in the reduced endgame algebra.
+
+---
+
+## 9. Immediate next derivation step
+
+The natural continuation is now the fully reference-free home-stretch theorem:
+
+1. combine the Stage-180 Packet-A scalar finish line with the Stage-182 two-point Packet-B orbit-lock theorem,
+2. state the exact reduced closure criterion without privileging any orbit base point,
+3. and then feed the actual PDE-selected branch directly into that two-packet compiler.
+
+That is the sharpest next theorem gate after Stage 182.
+moving_throat_pde_stage183_reference_free_home_stretch_theorem.md
+# Moving-Throat PDE — Stage 183: Exact Reference-Free Full Home-Stretch Theorem, Orbit-Representative Independence, and the Four-Scalar Final Verdict Packet
+
+## Status
+
+**Exact within the carried Stage-180 Packet-A finish-line theorem, the Stage-182 exact pairwise orbit-transport / orbit-lock theorem, and the Stage-174 two-packet home-stretch hierarchy.**
+
+This stage does **not** introduce a new constitutive law.
+It is the exact reference-free completion of the reduced home stretch.
+
+---
+
+## Purpose
+
+Stage 174 had already reduced the endgame to two finite packets:
+\[
+\Delta_{\rm branch},
+\qquad
+\Delta_{\rm orbit}.
+\]
+Stage 180 then collapsed the full Packet-A branch-side verdict to the single scalar finish line
+\[
+\Delta_{\rm branch}=0
+\iff
+\chi_Q=1.
+\]
+Stage 182, in turn, removed the last orbit-side base-point privilege by proving the exact two-point theorem
+\[
+\mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)}
+\iff
+q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
+\]
+
+So after Stages 180 and 182, the natural next question is already forced:
+
+> can the entire reduced home stretch be written as one exact **reference-free** verdict packet with no privileged orbit representative left anywhere?
+
+This stage answers that completely.
+
+The main outputs are:
+
+1. the exact proof that the Packet-B orbit packet can be attached to an **orbit** rather than to a chosen orbit representative,
+2. the exact four-scalar **full reduced verdict packet**
+   \[
+   \Delta_{\rm full},
+   \]
+3. the equivalent multiplicative and mismatch versions of the same packet,
+4. the exact theorem
+   \[
+   \boxed{\Delta_{\rm full}=0
+   \iff
+   \Delta_{\rm branch}=0\ \text{and}\ \mathbf x\in\mathcal O_*},
+   \]
+   where `\(\mathcal O_*\)` is the target similarity orbit,
+5. and the sharp statement that the reduced endgame now consists of **one Packet-A scalar plus one Packet-B quotient triple and nothing else.**
+
+So Stage 183 is the exact reference-free upgrade of the Stage-174 home-stretch theorem.
+
+---
+
+## 1. Carry-forward Packet-A and Packet-B sharpeners
+
+### 1.1 Packet A after Stage 180
+
+Within the carried isotropic grouped-real `P2` one-pole front end and the natural point-particle source-map branch, Stage 180 proved
+\[
+\boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1.}
+\]
+Equivalently,
+\[
+\boxed{\Delta_Q:=\chi_Q-1=0,}
+qquad
+\boxed{N_Q=1,}
+\]
+with
+\[
+\boxed{N_Q=\chi_Q^{-1}}
+\]
+on the same natural source-map branch.
+
+So Packet A no longer carries eight independent residual slots. It carries one scalar only.
+
+### 1.2 Packet B after Stage 182
+
+Stage 182 proved the exact two-point orbit-lock equivalences
+\[
+\boxed{
+\mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)}
+\iff
+m_T^{(2\leftarrow1)}=m_K^{(2\leftarrow1)}=m_\mu^{(2\leftarrow1)}=1,
+}
+\]
+\[
+\boxed{
+\mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)}
+\iff
+\mathfrak R_{\rm tr}^{(2\leftarrow1)}=\mathfrak R_{\rm nt}^{(2\leftarrow1)}=\mathfrak R_\eta^{(2\leftarrow1)}=1,
+}
+\]
+\[
+\boxed{
+\mathbf x^{(2)}\in\mathcal G_*\!\cdot\mathbf x^{(1)}
+\iff
+q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
+}
+\]
+
+So Packet B is already an exact three-scalar orbit-lock packet.
+
+---
+
+## 2. Exact orbit-representative independence
+
+Let the target similarity orbit be
+\[
+\boxed{\mathcal O_*:=\mathcal G_*\!\cdot\mathbf x_*\subset\mathcal M_+.}
+\]
+Take any two representatives
+\[
+\mathbf x_*,\ \widetilde{\mathbf x}_*\in\mathcal O_*.
+\]
+Since they lie on the same exact similarity orbit, Stage 182 gives
+\[
+\boxed{
+q_{\rm tr}^{(\widetilde *\leftarrow *)}
+=
+q_{\rm nt}^{(\widetilde *\leftarrow *)}
+=
+q_\eta^{(\widetilde *\leftarrow *)}=0.
+}
+\]
+Using the exact Packet-B cocycle law,
+\[
+\mathbf q^{(x\leftarrow \widetilde *)}
+=
+\mathbf q^{(x\leftarrow *)}+
+\mathbf q^{(*\leftarrow \widetilde *)},
+\]
+we immediately get
+\[
+\boxed{
+\mathbf q^{(x\leftarrow \widetilde *)}=
+\mathbf q^{(x\leftarrow *)}.
+}
+\]
+
+The same argument works for the mismatch and invariant-ratio packets because Stage 182 proved the exact multiplicative composition laws
+\[
+\boxed{
+m_\bullet^{(3\leftarrow1)}=m_\bullet^{(3\leftarrow2)}m_\bullet^{(2\leftarrow1)},
+\qquad
+\mathfrak R_\bullet^{(3\leftarrow1)}=
+\mathfrak R_\bullet^{(3\leftarrow2)}\mathfrak R_\bullet^{(2\leftarrow1)}.
+}
+\]
+Since
+\[
+m_\bullet^{(\widetilde *\leftarrow *)}=1,
+\qquad
+\mathfrak R_\bullet^{(\widetilde *\leftarrow *)}=1,
+\]
+we have
+\[
+\boxed{
+m_\bullet^{(x\leftarrow \widetilde *)}=m_\bullet^{(x\leftarrow *)},
+\qquad
+\mathfrak R_\bullet^{(x\leftarrow \widetilde *)}=\mathfrak R_\bullet^{(x\leftarrow *)}.
+}
+\]
+
+So the Packet-B orbit packet is now genuinely attached to the **orbit** rather than to an orbit representative.
+
+### 2.1 Orbit-relative notation
+
+Therefore the following are well defined for any candidate microscopic state `\(\mathbf x\)`:
+\[
+\boxed{
+\mathbf q^{(x\leftarrow \mathcal O_*)},
+\qquad
+\mathbf m^{(x\leftarrow \mathcal O_*)},
+\qquad
+\boldsymbol{\mathfrak R}^{(x\leftarrow \mathcal O_*)}.
+}
+\]
+By definition, one may compute them against **any** orbit representative `\(\mathbf x_*\in\mathcal O_*\)`.
+
+This is the exact sense in which the Packet-B side is now reference free.
+
+---
+
+## 3. Exact four-scalar full verdict packet
+
+### 3.1 Additive chart
+
+Define the exact four-scalar additive full verdict packet by
+\[
+\boxed{
+\Delta_{\rm full}^{(x\mid \mathcal O_*)}
+:=
+\Bigl(
+\Delta_Q(x),
+q_{\rm tr}^{(x\leftarrow \mathcal O_*)},
+q_{\rm nt}^{(x\leftarrow \mathcal O_*)},
+q_\eta^{(x\leftarrow \mathcal O_*)}
+\Bigr),
+}
+\]
+where
+\[
+\boxed{\Delta_Q(x):=\chi_Q(x)-1.}
+\]
+
+So the full reduced verdict is now four scalars only.
+
+### 3.2 Multiplicative chart
+
+Define the exact multiplicative chart of the same packet by
+\[
+\boxed{
+\mathcal V_{\rm full}^{(x\mid \mathcal O_*)}
+:=
+\Bigl(
+\chi_Q(x),
+\mathfrak R_{\rm tr}^{(x\leftarrow \mathcal O_*)},
+\mathfrak R_{\rm nt}^{(x\leftarrow \mathcal O_*)},
+\mathfrak R_\eta^{(x\leftarrow \mathcal O_*)}
+\Bigr).
+}
+\]
+On the natural point-particle source-map branch one may equally use `\(N_Q\)` in the first slot because
+\[
+\boxed{N_Q=\chi_Q^{-1},}
+qquad
+\boxed{\chi_Q=1 \iff N_Q=1.}
+\]
+
+### 3.3 Mismatch chart
+
+Define the exact mismatch version by
+\[
+\boxed{
+\mathcal M_{\rm full}^{(x\mid \mathcal O_*)}
+:=
+\Bigl(
+\chi_Q(x),
+ m_T^{(x\leftarrow \mathcal O_*)},
+ m_K^{(x\leftarrow \mathcal O_*)},
+ m_\mu^{(x\leftarrow \mathcal O_*)}
+\Bigr).
+}
+\]
+
+### 3.4 Exact chart conversion laws
+
+The Packet-B conversion laws from Stage 181/182 become, in orbit-relative form,
+\[
+\boxed{
+\mathfrak R_{\rm tr}=e^{q_{\rm tr}}=(m_T)^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\mathfrak R_\eta=e^{q_\eta}=\frac{1}{m_K},
+}
+\]
+\[
+\boxed{
+\mathfrak R_{\rm nt}=e^{q_{\rm nt}}=\frac{m_\mu}{m_K m_T^{F_*}}.
+}
+\]
+Equivalently,
+\[
+\boxed{m_T=\exp\!\left(\frac{q_{\rm tr}}{1+\chi_{0,*}}\right),}
+\qquad
+\boxed{m_K=e^{-q_\eta},}
+\]
+\[
+\boxed{m_\mu=\exp\!\left(q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}\right).}
+\]
+So the additive, multiplicative, and mismatch forms of the full four-scalar packet are exact reparameterizations of the same final verdict.
+
+---
+
+## 4. Exact reference-free full home-stretch theorem
+
+\[
+\boxed{\textbf{Theorem (Stage 183 exact reference-free full home-stretch theorem).}}
+\]
+
+**Within the carried Stage-180 Packet-A finish-line hierarchy and the Stage-182 exact pairwise orbit-lock hierarchy, the following are equivalent for any positive microscopic state `\(\mathbf x\)` and any target similarity orbit `\(\mathcal O_*\)`:**
+
+1. **full reduced closure relative to the target orbit:**
+   \[
+   \boxed{\text{`\(\mathbf x\)` is fully reduced-admissible relative to `\(\mathcal O_*\)`};}
+   \]
+2. **the original Stage-174 two-packet criterion:**
+   \[
+   \boxed{\Delta_{\rm branch}(x)=0\quad\text{and}\quad \mathbf x\in\mathcal O_*;}
+   \]
+3. **the sharpened Packet-A + Packet-B scalar/quoitent form:**
+   \[
+   \boxed{
+   \chi_Q(x)=1,
+   \qquad
+   q_{\rm tr}^{(x\leftarrow \mathcal O_*)}=q_{\rm nt}^{(x\leftarrow \mathcal O_*)}=q_\eta^{(x\leftarrow \mathcal O_*)}=0;
+   }
+   \]
+4. **the multiplicative four-scalar verdict packet equals its canonical value:**
+   \[
+   \boxed{\mathcal V_{\rm full}^{(x\mid \mathcal O_*)}=(1,1,1,1);}
+   \]
+5. **the mismatch four-scalar packet equals its canonical value:**
+   \[
+   \boxed{\mathcal M_{\rm full}^{(x\mid \mathcal O_*)}=(1,1,1,1);}
+   \]
+6. **the additive four-scalar verdict packet vanishes:**
+   \[
+   \boxed{\Delta_{\rm full}^{(x\mid \mathcal O_*)}=0.}
+   \]
+
+### 4.1 Proof in one line
+
+Stage 174 gave
+\[
+\text{full reduced closure}
+\iff
+\Delta_{\rm branch}=0\ \text{and}\ \Delta_{\rm orbit}=0.
+\]
+Stage 180 sharpened the first factor to
+\[
+\Delta_{\rm branch}=0\iff\chi_Q=1,
+\]
+and Stage 182 sharpened the second to the exact orbit-relative condition
+\[
+\Delta_{\rm orbit}=0
+\iff
+q_{\rm tr}=q_{\rm nt}=q_\eta=0,
+\]
+with the packet already reference-independent at the orbit level. Combining the two gives the theorem.
+
+---
+
+## 5. Exact one-sided pairwise corollary
+
+Suppose now that `\(\mathbf x^{(1)}\)` is already known to be fully reduced closed relative to the target orbit `\(\mathcal O_*\)`. Then
+\[
+\chi_Q\bigl(\mathbf x^{(1)}\bigr)=1,
+\qquad
+\mathbf x^{(1)}\in\mathcal O_*.
+\]
+By orbit-representative independence,
+\[
+\mathbf q^{(2\leftarrow1)}
+=
+\mathbf q^{(\mathbf x^{(2)}\leftarrow \mathcal O_*)}.
+\]
+So for any second candidate state `\(\mathbf x^{(2)}\)` the exact one-sided full verdict packet is simply
+\[
+\boxed{
+\Delta_{\rm full}^{(2\leftarrow1)}
+:=
+\Bigl(
+\chi_Q\bigl(\mathbf x^{(2)}\bigr)-1,
+q_{\rm tr}^{(2\leftarrow1)},
+q_{\rm nt}^{(2\leftarrow1)},
+q_\eta^{(2\leftarrow1)}
+\Bigr).
+}
+\]
+Then
+\[
+\boxed{
+\Delta_{\rm full}^{(2\leftarrow1)}=0
+\iff
+\mathbf x^{(2)}\ \text{is fully reduced closed relative to the same target orbit}.
+}
+\]
+
+So once one fully closed state on the target orbit is known, every further candidate can be tested by one Packet-A scalar and one direct pairwise Packet-B quotient triple.
+
+---
+
+## 6. Exact two-state closed-branch corollary
+
+For any two positive microscopic states `\(\mathbf x^{(1)},\mathbf x^{(2)}\)`,
+\[
+\boxed{
+\chi_Q\bigl(\mathbf x^{(1)}\bigr)=\chi_Q\bigl(\mathbf x^{(2)}\bigr)=1,
+\qquad
+q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0
+}
+\]
+is equivalent to the statement that both states are fully reduced closed and lie on the same exact target similarity orbit.
+
+So the completed PDE may be benchmarked either:
+
+- against a chosen target orbit, or
+- directly between any two candidate fully closed realizations.
+
+---
+
+## 7. What Stage 183 changes in the theorem problem
+
+Stage 174 reduced the endgame to two packets, but not yet to its sharpest form.
+Stages 180 and 182 removed the remaining redundancies separately.
+Stage 183 is the exact combined endpoint.
+
+### 7.1 The full reduced endgame is now four scalars only
+
+The completed moving-throat PDE no longer has to be judged against an eight-slot Packet-A vector plus a separate orbit packet. After the carried sharpeners, the whole reduced verdict is
+\[
+\boxed{(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta).}
+\]
+
+### 7.2 No privileged orbit representative remains
+
+The Packet-B orbit packet is now attached to the target similarity orbit itself. Any convenient representative may be used in practice, but the verdict is mathematically independent of that choice.
+
+### 7.3 Everything still open is a realization problem, not an algebra problem
+
+The reduced compiler algebra is finished.
+What remains is only:
+
+1. realize the Packet-A scalar finish line `\(\chi_Q=1\)`, and
+2. realize the Packet-B orbit-relative quotient triple `\(\mathbf q=0\)`.
+
+No other reduced endgame coordinate survives.
+
+---
+
+## 8. Immediate next derivation step
+
+The natural continuation after Stage 183 is now procedural rather than algebraic:
+
+1. feed the actual completed moving-throat PDE output into the Packet-A compiler to extract `\(\chi_Q\)`,
+2. feed the same output into the Packet-B orbit-relative compiler to extract
+   \[
+   (q_{\rm tr},q_{\rm nt},q_\eta),
+   \]
+3. and evaluate the exact four-scalar final verdict packet
+   \[
+   \Delta_{\rm full}^{(x\mid \mathcal O_*)}.
+   \]
+
+That is the sharpest possible reduced theorem gate after Stage 183.
+moving_throat_pde_stage184_explicit_realization_compiler_and_canonical_orbit_projection.md
+# Moving-Throat PDE — Stage 184: Exact Realization Compiler, Canonical Orbit Projection, and the First Explicit Four-Scalar Audit
+
+## Status
+
+**Exact within the carried Stage-175 orbit/quotient projector calculus, the Stage-181 finite restoration law, and the Stage-183 exact reference-free full home-stretch theorem.**
+
+This stage does **not** introduce a new constitutive law.
+It turns the already-carried home-stretch theorem into an explicit realizability compiler that can be applied directly to any candidate moving-throat branch.
+
+---
+
+## Purpose
+
+Stage 183 completed the reduced home stretch in theorem form:
+\[
+\Delta_{\rm full}=0
+\iff
+\chi_Q=1
+\quad\text{and}\quad
+q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+\]
+
+That already answers the logical question.
+But it still leaves the practical audit question open:
+
+> given one candidate microscopic state from the completed moving-throat PDE, how do we test it against the target branch **without** choosing an arbitrary orbit representative, and how do we identify the unique microscopic correction that would return it to the target orbit if only the quotient packet failed?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the **intrinsic** four-scalar realization packet written directly against the target monomial values,
+2. the exact **canonical dependent-triple repair vector**
+   \[
+   \Delta\mathbf x_{\rm rep},
+   \]
+3. the exact **canonical orbit projection**
+   \[
+   \Pi^{\rm can}_{\mathcal O_*}(\mathbf x),
+   \]
+   which lands on the target similarity orbit while preserving the five free similarity coordinates,
+4. the exact uniqueness theorem that this projected state is the **only** point on the target orbit with the same free quintuple,
+5. and the explicit audit criterion
+   \[
+   \boxed{
+   \mathbf x\in\mathcal Z_*
+   \iff
+   \chi_Q(\mathbf x)=1
+   \ \text{and}\
+   \Pi^{\rm can}_{\mathcal O_*}(\mathbf x)=\mathbf x,
+   }
+   \]
+   where `\(\mathcal Z_*:=\{\mathbf x\in\mathcal O_*:\chi_Q(\mathbf x)=1\}\)` is the fully closed target set.
+
+So Stage 184 is the first exact **operational** realization test of the completed branch.
+
+---
+
+## 1. Carry-forward target data and intrinsic branch ratios
+
+Let the positive microscopic state be
+\[
+\boxed{
+\mathbf x:=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U
+\bigr).
+}
+\]
+
+Carry forward the three exact coherent monomials from the Stage-170 / Stage-175 quotient hierarchy:
+\[
+\mathfrak C_{{\rm tr},*}(\mathbf x),
+\qquad
+\mathfrak C_{{\rm nt},*}(\mathbf x),
+\qquad
+\epsilon_\eta(\mathbf x).
+\]
+
+Fix the target orbit by the exact target values
+\[
+\boxed{
+\mathfrak C_{{\rm tr},*}^{\rm target},
+\qquad
+\mathfrak C_{{\rm nt},*}^{\rm target},
+\qquad
+\epsilon_{\eta,*}^{\rm target}.
+}
+\]
+Then
+\[
+\boxed{
+\mathcal O_*=
+\left\{
+\mathbf x>0:
+\mathfrak C_{{\rm tr},*}(\mathbf x)=\mathfrak C_{{\rm tr},*}^{\rm target},\ 
+\mathfrak C_{{\rm nt},*}(\mathbf x)=\mathfrak C_{{\rm nt},*}^{\rm target},\ 
+\epsilon_\eta(\mathbf x)=\epsilon_{\eta,*}^{\rm target}
+\right\}.
+}
+\]
+
+Define the exact intrinsic multiplicative ratios
+\[
+\boxed{
+\mathfrak R_{\rm tr}(\mathbf x)
+:=
+\frac{\mathfrak C_{{\rm tr},*}(\mathbf x)}{\mathfrak C_{{\rm tr},*}^{\rm target}},
+\qquad
+\mathfrak R_{\rm nt}(\mathbf x)
+:=
+\frac{\mathfrak C_{{\rm nt},*}(\mathbf x)}{\mathfrak C_{{\rm nt},*}^{\rm target}},
+\qquad
+\mathfrak R_\eta(\mathbf x)
+:=
+\frac{\epsilon_\eta(\mathbf x)}{\epsilon_{\eta,*}^{\rm target}}.
+}
+\]
+
+Their exact logarithmic versions are
+\[
+\boxed{
+q_{\rm tr}(\mathbf x)=\ln \mathfrak R_{\rm tr}(\mathbf x),
+\qquad
+q_{\rm nt}(\mathbf x)=\ln \mathfrak R_{\rm nt}(\mathbf x),
+\qquad
+q_\eta(\mathbf x)=\ln \mathfrak R_\eta(\mathbf x).
+}
+\]
+
+So the target orbit condition is already intrinsic:
+\[
+\boxed{
+\mathbf x\in\mathcal O_*
+\iff
+\mathfrak R_{\rm tr}=\mathfrak R_{\rm nt}=\mathfrak R_\eta=1
+\iff
+q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+}
+\]
+
+No orbit witness is needed.
+
+---
+
+## 2. Exact intrinsic four-scalar realization packet
+
+The Packet-A scalar remains
+\[
+\boxed{
+\Delta_Q(\mathbf x):=\chi_Q(\mathbf x)-1.
+}
+\]
+
+Define the exact intrinsic full realization packet by
+\[
+\boxed{
+\Delta_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+:=
+\Bigl(
+\Delta_Q(\mathbf x),\
+q_{\rm tr}(\mathbf x),\
+q_{\rm nt}(\mathbf x),\
+q_\eta(\mathbf x)
+\Bigr),
+}
+\]
+where
+\[
+\boxed{
+\mathcal Z_*:=\{\mathbf x\in\mathcal O_*:\chi_Q(\mathbf x)=1\}.
+}
+\]
+
+Equivalently, the exact multiplicative chart is
+\[
+\boxed{
+\mathcal V_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+:=
+\Bigl(
+\chi_Q(\mathbf x),\
+\mathfrak R_{\rm tr}(\mathbf x),\
+\mathfrak R_{\rm nt}(\mathbf x),\
+\mathfrak R_\eta(\mathbf x)
+\Bigr).
+}
+\]
+
+By Stage 181/182, the exact mismatch chart is
+\[
+\boxed{
+\mathcal M_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+:=
+\Bigl(
+\chi_Q(\mathbf x),\
+m_T(\mathbf x),\
+m_K(\mathbf x),\
+m_\mu(\mathbf x)
+\Bigr),
+}
+\]
+with
+\[
+\boxed{
+m_T=\exp\!\left(\frac{q_{\rm tr}}{1+\chi_{0,*}}\right)
+=
+\mathfrak R_{\rm tr}^{1/(1+\chi_{0,*})},
+}
+\]
+\[
+\boxed{
+m_K=e^{-q_\eta}=\mathfrak R_\eta^{-1},
+}
+\]
+\[
+\boxed{
+m_\mu=\exp\!\left(q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}\right)
+=
+\mathfrak R_{\rm nt}\,\mathfrak R_\eta^{-1}\,\mathfrak R_{\rm tr}^{F_* /(1+\chi_{0,*})}.
+}
+\]
+
+So the exact closure criterion is already
+\[
+\boxed{
+\Delta_{\rm real}^{\rm int}=0
+\iff
+\mathcal V_{\rm real}^{\rm int}=(1,1,1,1)
+\iff
+\mathcal M_{\rm real}^{\rm int}=(1,1,1,1)
+\iff
+\mathbf x\in\mathcal Z_*.
+}
+\]
+
+This is the intrinsic version of Stage 183.
+
+---
+
+## 3. Exact canonical dependent-triple repair vector
+
+Carry forward the Stage-175 exact quotient map
+\[
+\boxed{
+\mathbf q=
+\begin{pmatrix}
+q_{\rm tr}\\
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}
+=
+M_*\,\Delta\mathbf x,
+}
+\]
+on the ordered microscopic drift basis
+\[
+\Delta\mathbf x=
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T.
+\]
+
+Carry forward the exact canonical quotient section
+\[
+\boxed{
+S_{(T,K_\eta,\mu)}.
+}
+\]
+Then the exact canonical quotient representative is
+\[
+\Delta\mathbf x_{\rm quot}=S_{(T,K_\eta,\mu)}\,\mathbf q,
+\]
+and the exact canonical **repair** vector is
+\[
+\boxed{
+\Delta\mathbf x_{\rm rep}:=-S_{(T,K_\eta,\mu)}\,\mathbf q.
+}
+\]
+
+Using the explicit Stage-175 section, this becomes
+\[
+\boxed{
+\Delta\mathbf x_{\rm rep}
+=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+0\\
+q_\eta\\
+0\\
+-\;q_{\rm nt}+q_\eta-\dfrac{F_*}{1+\chi_{0,*}}\,q_{\rm tr}\\[8pt]
+-\dfrac{q_{\rm tr}}{1+\chi_{0,*}}
+\end{pmatrix}.
+}
+\]
+
+So the repair demand has support only on the dependent triple
+\[
+(T,\ K_\eta^{(\mathrm{eff})},\ \mu_W).
+\]
+
+### 3.1 Exact cancellation property
+
+Because
+\[
+M_*S_{(T,K_\eta,\mu)}=I_3,
+\]
+the repair vector kills the quotient packet exactly:
+\[
+\boxed{
+M_*\,\Delta\mathbf x_{\rm rep}
+=
+-\mathbf q.
+}
+\]
+So for any candidate microscopic drift,
+\[
+\boxed{
+M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+}
+\]
+
+This is the exact microscopic meaning of “repair to the target orbit while keeping the free similarity coordinates fixed.”
+
+---
+
+## 4. Exact canonical orbit projection in multiplicative variables
+
+Write the intrinsic Packet-B ratios
+\[
+\mathfrak R_{\rm tr}=e^{q_{\rm tr}},
+\qquad
+\mathfrak R_{\rm nt}=e^{q_{\rm nt}},
+\qquad
+\mathfrak R_\eta=e^{q_\eta}.
+\]
+
+Exponentiating the repair vector gives the exact canonical orbit projection
+\[
+\boxed{
+\Pi^{\rm can}_{\mathcal O_*}(\mathbf x)
+=
+\bigl(
+\lambda_W,\ 
+c_{\eta U},\
+\gamma,\
+K_U,\
+K_\eta^{(\mathrm{eff})}\,\mathfrak R_\eta,\
+K_W^{(\mathrm{eff})},\
+\mu_W\,\mathfrak R_{\rm nt}^{-1}\mathfrak R_\eta\,\mathfrak R_{\rm tr}^{-F_* /(1+\chi_{0,*})},\
+T_U\,\mathfrak R_{\rm tr}^{-1/(1+\chi_{0,*})}
+\bigr).
+}
+\]
+
+Equivalently,
+\[
+\boxed{
+T_U^{(\mathrm{proj})}
+=
+T_U\,e^{-q_{\rm tr}/(1+\chi_{0,*})},
+}
+\]
+\[
+\boxed{
+K_\eta^{(\mathrm{eff}),\,\mathrm{proj}}
+=
+K_\eta^{(\mathrm{eff})}\,e^{q_\eta},
+}
+\]
+\[
+\boxed{
+\mu_W^{(\mathrm{proj})}
+=
+\mu_W\,e^{-q_{\rm nt}+q_\eta-F_*q_{\rm tr}/(1+\chi_{0,*})}.
+}
+\]
+
+So Stage 181’s restoration law is exactly the canonical target-orbit projection of the Stage-183 intrinsic packet.
+
+---
+
+## 5. Exact target-orbit projection theorem
+
+\[
+\boxed{\textbf{Theorem (Stage 184 canonical orbit projection).}}
+\]
+
+For any positive microscopic state `\(\mathbf x\)` and any target orbit `\(\mathcal O_*\)` in the carried coherent quotient hierarchy:
+
+1. the projected state lies on the target orbit,
+   \[
+   \boxed{
+   \Pi^{\rm can}_{\mathcal O_*}(\mathbf x)\in\mathcal O_*,
+   }
+   \]
+2. it preserves the five free similarity coordinates
+   \[
+   (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}),
+   \]
+3. and it is the **unique** state on `\(\mathcal O_*\)` with those five free coordinates fixed.
+
+### 5.1 Proof
+
+Because
+\[
+M_*\,\Delta\mathbf x_{\rm rep}=-\mathbf q,
+\]
+the corrected drift satisfies
+\[
+M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+\]
+So the corrected state has
+\[
+q_{\rm tr}=q_{\rm nt}=q_\eta=0,
+\]
+which is equivalent to lying on `\(\mathcal O_*\)`.
+
+The support of `\(\Delta\mathbf x_{\rm rep}\)` lies only on the dependent triple, so the free quintuple is unchanged.
+
+Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates are fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.
+
+---
+
+## 6. Fixed-point criterion and explicit realization test
+
+The projection is a fixed point exactly on the target orbit:
+\[
+\boxed{
+\Pi^{\rm can}_{\mathcal O_*}(\mathbf x)=\mathbf x
+\iff
+q_{\rm tr}=q_{\rm nt}=q_\eta=0
+\iff
+\mathbf x\in\mathcal O_*.
+}
+\]
+
+Therefore the Stage-183 full closure theorem can be rewritten in the most explicit audit form so far:
+\[
+\boxed{
+\mathbf x\in\mathcal Z_*
+\iff
+\chi_Q(\mathbf x)=1
+\ \text{and}\
+\Pi^{\rm can}_{\mathcal O_*}(\mathbf x)=\mathbf x.
+}
+\]
+
+Equivalently,
+\[
+\boxed{
+\mathbf x\in\mathcal Z_*
+\iff
+\Delta_{\rm real}^{\rm int}(\mathbf x\mid\mathcal Z_*)=0.
+}
+\]
+
+So the first exact realizability audit of a completed PDE branch is now:
+
+1. compute the Packet-A scalar `\(\chi_Q(\mathbf x)\)`,
+2. compute the three intrinsic monomial ratios `\((\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta)\)`,
+3. form the four-scalar packet
+   \[
+   (\chi_Q-1,\ln\mathfrak R_{\rm tr},\ln\mathfrak R_{\rm nt},\ln\mathfrak R_\eta),
+   \]
+4. or equivalently compute the canonical orbit projection and check whether it is a fixed point.
+
+No orbit witness is required anywhere.
+
+---
+
+## 7. Exact same-free-quintuple interpretation
+
+The projection theorem gives a very concrete microscopic reading of the Packet-B failure.
+
+Take a candidate state `\(\mathbf x\)`. Freeze the five free coordinates
+\[
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+\]
+Then:
+
+- there exists exactly one point on the target orbit with those frozen free coordinates,
+- that point is `\(\Pi^{\rm can}_{\mathcal O_*}(\mathbf x)\)`,
+- and the three quotient coordinates
+  \[
+  (q_{\rm tr},q_{\rm nt},q_\eta)
+  \]
+  are exactly the logarithmic mismatch that tells us how far the dependent triple
+  \[
+  (T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W)
+  \]
+  must move to land on that orbit.
+
+So Packet B is now not only a quotient theorem.
+It is an explicit same-free-quintuple orbit locator.
+
+---
+
+## 8. First-order linearized version
+
+At first order around a target-orbit witness,
+\[
+\Delta\mathbf x_{\rm rep}^{\rm lin}
+=
+-S_{(T,K_\eta,\mu)}\,M_*\,\Delta\mathbf x,
+\]
+and the full linearized realization packet is simply
+\[
+\boxed{
+\Delta_{\rm real}^{\rm lin}
+=
+\Bigl(
+\delta\chi_Q,\
+M_*\,\Delta\mathbf x
+\Bigr).
+}
+\]
+
+So the fully nonlinear intrinsic packet and the exact projector calculus already collapse to the expected linear compiler without further assumptions.
+
+---
+
+## 9. What Stage 184 changes in the theorem problem
+
+Stage 183 completed the reduced theorem logically.
+Stage 184 makes it executable.
+
+### 9.1 Packet B is now directly computable from target monomial values
+
+No orbit representative and no pairwise witness are needed. The target orbit is specified by the three target monomial values, and the quotient packet is just their intrinsic log-ratio packet.
+
+### 9.2 The unique microscopic repair is now explicit
+
+The exact repair vector is carried only by
+\[
+(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W),
+\]
+and it is given algebraically by the Stage-181 restoration law.
+
+### 9.3 The realization audit has become fully procedural
+
+The completed PDE now has to provide only:
+
+- the Packet-A scalar `\(\chi_Q\)`,
+- and the three target monomial ratios.
+
+Everything else in the reduced realization audit is exact downstream algebra.
+
+---
+
+## 10. Immediate next derivation step
+
+The next stage should use this compiler on the first actual reduced branch family returned by the moving-throat construction.
+
+That means:
+
+1. compute `\(\chi_Q\)` from the Packet-A grouped bundle,
+2. compute the intrinsic Packet-B ratios
+   \[
+   \mathfrak R_{\rm tr},\ \mathfrak R_{\rm nt},\ \mathfrak R_\eta,
+   \]
+3. evaluate the exact four-scalar realization packet,
+4. and, if the branch misses the target orbit, compute the exact canonical dependent-triple repair
+   \[
+   \Pi^{\rm can}_{\mathcal O_*}(\mathbf x)
+   \]
+   to locate the unique same-free-quintuple point on the target orbit.
+
+That is the first truly explicit realization audit after Stage 184.
+moving_throat_pde_stage185_free_quintuple_target_graph.md
+# Moving-Throat PDE — Stage 185: Exact Free-Quintuple Target Graph, Same-Free-Quintuple Closure Surface, and the First Reduced-Family Test
+
+## Status
+
+**Exact within the carried Stage-168 direct microscopic monomial formulas, the Stage-175 orbit/quotient projector calculus, and the Stage-184 canonical orbit projection theorem.**
+
+This stage does **not** introduce a new constitutive law.
+It removes the last abstractness from the Stage-184 realization compiler by solving the target orbit explicitly as a graph over the five free microscopic coordinates.
+
+---
+
+## Purpose
+
+Stage 184 already gave an exact realization compiler:
+
+\[
+\mathbf x\in\mathcal Z_*
+\iff
+\chi_Q(\mathbf x)=1
+\ \text{and}\
+\Pi^{\rm can}_{\mathcal O_*}(\mathbf x)=\mathbf x.
+\]
+
+That is logically complete, but it still leaves one practical inconvenience:
+
+> to evaluate the target-orbit comparison, one still first computes the quotient packet
+> \[
+> (q_{\rm tr},q_{\rm nt},q_\eta)
+> \]
+> and then exponentiates the canonical repair law.
+
+The natural next step is therefore:
+
+> solve the target-orbit constraints **directly** for the dependent triple
+> \[
+> (T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W)
+> \]
+> in terms of the five free microscopic coordinates
+> \[
+> (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+> \]
+
+This stage does exactly that.
+
+The main outputs are:
+
+1. the exact **free-quintuple target graph**
+   \[
+   \Phi_*:
+   (\lambda_W,c_{\eta U},\gamma,K_U,K_W^{(\mathrm{eff})})
+   \mapsto
+   (T_U^{\rm graph},K_{\eta,*}^{\rm graph},\mu_W^{\rm graph}),
+   \]
+2. the exact theorem that the target orbit `\(\mathcal O_*\)` is the graph of `\(\Phi_*\)`,
+3. the exact **graph-error packet**
+   \[
+   (E_T,E_K,E_\mu),
+   \]
+4. the exact identities
+   \[
+   E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+   \qquad
+   E_K=-q_\eta,
+   \qquad
+   E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}\,q_{\rm tr},
+   \]
+5. the explicit repair law
+   \[
+   \Delta\mathbf x_{\rm rep}
+   =
+   (0,0,0,0,-E_K,0,-E_\mu,-E_T)^T,
+   \]
+6. and the first exact **reduced-family closure test**
+   \[
+   \boxed{
+   \mathbf x\in\mathcal Z_*
+   \iff
+   \chi_Q(\mathbf x)=1,\ 
+   E_T(\mathbf x)=0,\ 
+   E_K(\mathbf x)=0,\ 
+   E_\mu(\mathbf x)=0.
+   }
+   \]
+
+So Stage 185 is the first place where the target branch becomes an explicit five-variable closure surface rather than an abstract quotient orbit.
+
+---
+
+## 1. Carry-forward direct microscopic monomials
+
+Let the positive microscopic state be
+\[
+\boxed{
+\mathbf x=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U
+\bigr).
+}
+\]
+
+Carry forward the exact direct microscopic monomials
+\[
+\boxed{
+\mathfrak C_{{\rm tr},*}
+=
+\left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+}
+\]
+\[
+\boxed{
+\mathfrak C_{{\rm nt},*}
+=
+\frac{\lambda_W^2\mu_W}
+{K_\eta^{(\mathrm{eff})}(K_W^{(\mathrm{eff})})^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}
+{K_U K_W^{(\mathrm{eff})}}
+\right)^{E_*}
+\left(
+\frac{\pi^2T_U}{L^2K_U}
+\right)^{-F_*},
+}
+\]
+\[
+\boxed{
+\epsilon_\eta
+=
+\frac{c_{\eta U}^2}
+{K_U K_\eta^{(\mathrm{eff})}}.
+}
+\]
+
+Fix the target orbit by the exact target values
+\[
+\boxed{
+\mathfrak C_{{\rm tr},*}^{\rm target},
+\qquad
+\mathfrak C_{{\rm nt},*}^{\rm target},
+\qquad
+\epsilon_{\eta,*}^{\rm target}.
+}
+\]
+
+Then the target orbit is
+\[
+\boxed{
+\mathcal O_*=
+\left\{
+\mathbf x>0:
+\mathfrak C_{{\rm tr},*}(\mathbf x)=\mathfrak C_{{\rm tr},*}^{\rm target},\ 
+\mathfrak C_{{\rm nt},*}(\mathbf x)=\mathfrak C_{{\rm nt},*}^{\rm target},\ 
+\epsilon_\eta(\mathbf x)=\epsilon_{\eta,*}^{\rm target}
+\right\}.
+}
+\]
+
+---
+
+## 2. Exact free-quintuple base and direct split-`U` target graph
+
+Define the five free microscopic coordinates
+\[
+\boxed{
+\mathbf y:=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+}
+\]
+These are exactly the five similarity coordinates left untouched by the Stage-175 orbit projector.
+
+The first direct target quantity solved from `\(\mathfrak C_{{\rm tr},*}\)` is the split-`U` ratio
+\[
+\delta_U=\frac{\pi^2T_U}{L^2K_U}.
+\]
+So define the exact free-quintuple target graph
+\[
+\boxed{
+\delta_{U,*}^{\rm graph}(\mathbf y)
+:=
+\left[
+\frac{\mathfrak C_{{\rm tr},*}^{\rm target}}
+{\left(\dfrac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}}
+\right]^{\!1/(1+\chi_{0,*})}.
+}
+\]
+
+By construction,
+\[
+\boxed{
+\left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+\left(\delta_{U,*}^{\rm graph}\right)^{1+\chi_{0,*}}
+=
+\mathfrak C_{{\rm tr},*}^{\rm target}.
+}
+\]
+
+So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice.
+
+---
+
+## 3. Exact dependent-triple target graph
+
+### 3.1 Target throat-depth coordinate
+
+From the definition of `\(\delta_U\)`,
+\[
+\boxed{
+T_U^{\rm graph}(\mathbf y)
+=
+\frac{L^2K_U}{\pi^2}\,
+\delta_{U,*}^{\rm graph}(\mathbf y).
+}
+\]
+
+### 3.2 Target dressing coordinate
+
+From the exact dressing ratio,
+\[
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{(\mathrm{eff})}},
+\]
+the target wall stiffness is
+\[
+\boxed{
+K_{\eta,*}^{\rm graph}(\mathbf y)
+=
+\frac{c_{\eta U}^2}{K_U\,\epsilon_{\eta,*}^{\rm target}}.
+}
+\]
+
+### 3.3 Target mixed-mass coordinate
+
+Substitute the graph target data into the nontracking monomial to obtain the exact target mixed-mass coordinate:
+\[
+\boxed{
+\mu_W^{\rm graph}(\mathbf y)
+=
+\frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,
+K_{\eta,*}^{\rm graph}(\mathbf y)\,(K_W^{(\mathrm{eff})})^2}{\lambda_W^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}
+\right)^{-E_*}
+\left(
+\delta_{U,*}^{\rm graph}(\mathbf y)
+\right)^{F_*}.
+}
+\]
+
+Equivalently, after eliminating `\(K_{\eta,*}^{\rm graph}\)`,
+\[
+\boxed{
+\mu_W^{\rm graph}(\mathbf y)
+=
+\frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,c_{\eta U}^2\,(K_W^{(\mathrm{eff})})^2}
+{\epsilon_{\eta,*}^{\rm target}\,K_U\,\lambda_W^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}
+\right)^{-E_*}
+\left(
+\delta_{U,*}^{\rm graph}(\mathbf y)
+\right)^{F_*}.
+}
+\]
+
+A useful exact simplification is that `\(\mu_W^{\rm graph}\)` depends on `\(L\)` only through the already-eliminated split-`U` graph; after direct elimination it is independent of `\(L\)` and `\(\pi\)`.
+
+---
+
+## 4. Exact target-orbit graph theorem
+
+Define the exact microscopic target-graph map
+\[
+\boxed{
+\mathbf x_*^{\rm graph}(\mathbf y)
+:=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_{\eta,*}^{\rm graph}(\mathbf y),\ K_W^{(\mathrm{eff})},\ \mu_W^{\rm graph}(\mathbf y),\ T_U^{\rm graph}(\mathbf y)
+\bigr).
+}
+\]
+
+\[
+\boxed{\textbf{Theorem (Stage 185 exact target graph).}}
+\]
+
+For every positive free quintuple `\(\mathbf y\)`,
+
+1. the graph state lies on the target orbit,
+   \[
+   \boxed{
+   \mathbf x_*^{\rm graph}(\mathbf y)\in\mathcal O_*,
+   }
+   \]
+2. every point of the target orbit is uniquely of this form,
+   \[
+   \boxed{
+   \mathcal O_*=
+   \left\{
+   \mathbf x_*^{\rm graph}(\mathbf y):
+   \mathbf y\in(\mathbb R_{>0})^5
+   \right\},
+   }
+   \]
+3. and therefore the target orbit is an exact five-dimensional graph over the free coordinates.
+
+### 4.1 Proof sketch
+
+The definitions of `\(T_U^{\rm graph}\)`, `\(K_{\eta,*}^{\rm graph}\)`, and `\(\mu_W^{\rm graph}\)` were obtained by solving the three target monomial equations in the dependent triple
+\[
+(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W)
+\]
+with the free quintuple fixed. Direct substitution gives
+\[
+\mathfrak C_{{\rm tr},*}=\mathfrak C_{{\rm tr},*}^{\rm target},
+\qquad
+\mathfrak C_{{\rm nt},*}=\mathfrak C_{{\rm nt},*}^{\rm target},
+\qquad
+\epsilon_\eta=\epsilon_{\eta,*}^{\rm target}.
+\]
+Uniqueness follows from the exact Stage-175 pivot block on the dependent triple, equivalently from the explicit algebraic solve above.
+
+So the same-free-quintuple uniqueness theorem of Stage 184 has now been turned into an explicit graph formula.
+
+---
+
+## 5. Exact graph projection and elimination of the abstract source map
+
+Let
+\[
+\pi_{\rm free}(\mathbf x)
+=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})})
+\]
+denote the free-quintuple projection.
+
+Then the exact **graph projection**
+\[
+\boxed{
+\Pi_{\mathcal O_*}^{\rm graph}(\mathbf x)
+:=
+\mathbf x_*^{\rm graph}\!\bigl(\pi_{\rm free}(\mathbf x)\bigr)
+}
+\]
+is simply “freeze the free quintuple and replace the dependent triple by the graph target values.”
+
+By direct substitution,
+\[
+\boxed{
+\Pi_{\mathcal O_*}^{\rm graph}(\mathbf x)
+=
+\Pi_{\mathcal O_*}^{\rm can}(\mathbf x).
+}
+\]
+
+So Stage 185 removes the last abstractness from the Stage-184 source/orbit map:
+the canonical orbit projection is not merely a quotient-theoretic object; it is the explicit graph replacement of the dependent triple.
+
+---
+
+## 6. Exact graph-error packet
+
+Define the exact dependent-triple graph errors
+\[
+\boxed{
+E_T(\mathbf x):=\ln\!\left(\frac{T_U}{T_U^{\rm graph}(\pi_{\rm free}(\mathbf x))}\right),
+}
+\]
+\[
+\boxed{
+E_K(\mathbf x):=\ln\!\left(\frac{K_\eta^{(\mathrm{eff})}}{K_{\eta,*}^{\rm graph}(\pi_{\rm free}(\mathbf x))}\right),
+}
+\]
+\[
+\boxed{
+E_\mu(\mathbf x):=\ln\!\left(\frac{\mu_W}{\mu_W^{\rm graph}(\pi_{\rm free}(\mathbf x))}\right).
+}
+\]
+
+The exact multiplicative chart is
+\[
+\boxed{
+M_T=e^{E_T}=\frac{T_U}{T_U^{\rm graph}},
+\qquad
+M_K=e^{E_K}=\frac{K_\eta^{(\mathrm{eff})}}{K_{\eta,*}^{\rm graph}},
+\qquad
+M_\mu=e^{E_\mu}=\frac{\mu_W}{\mu_W^{\rm graph}}.
+}
+\]
+
+These graph errors are exactly the Stage-184 mismatch logs:
+\[
+\boxed{
+E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}}=\ln m_T,
+}
+\]
+\[
+\boxed{
+E_K=-q_\eta=\ln m_K,
+}
+\]
+\[
+\boxed{
+E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}\,q_{\rm tr}=\ln m_\mu.
+}
+\]
+
+So the four-scalar realization packet can be rewritten as
+\[
+\boxed{
+\Delta_{\rm real}^{\rm graph}(\mathbf x\mid\mathcal Z_*)
+=
+\bigl(
+\chi_Q(\mathbf x)-1,\ E_T(\mathbf x),\ E_K(\mathbf x),\ E_\mu(\mathbf x)
+\bigr).
+}
+\]
+
+### 6.1 Exact repair law in graph-error coordinates
+
+The Stage-184 canonical repair vector becomes
+\[
+\boxed{
+\Delta\mathbf x_{\rm rep}
+=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+0\\
+-\,E_K\\
+0\\
+-\,E_\mu\\
+-\,E_T
+\end{pmatrix}.
+}
+\]
+
+So the unique same-free-quintuple correction back to the target orbit is simply the negative graph-error vector on the dependent triple.
+
+---
+
+## 7. First reduced-family closure test
+
+Let a candidate completed-PDE family be written in same-free-quintuple form as
+\[
+\boxed{
+\mathbf x_{\rm cand}(\mathbf y)
+=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})}(\mathbf y),\ K_W^{(\mathrm{eff})},\ \mu_W(\mathbf y),\ T_U(\mathbf y)
+\bigr),
+}
+\]
+with free variables
+\[
+\mathbf y=(\lambda_W,c_{\eta U},\gamma,K_U,K_W^{(\mathrm{eff})}).
+\]
+
+Then the exact reduced-family audit packet is
+\[
+\boxed{
+\Delta_{\rm fam}^{\rm graph}(\mathbf y)
+:=
+\Bigl(
+\chi_Q(\mathbf x_{\rm cand}(\mathbf y))-1,\ 
+E_T(\mathbf x_{\rm cand}(\mathbf y)),\ 
+E_K(\mathbf x_{\rm cand}(\mathbf y)),\ 
+E_\mu(\mathbf x_{\rm cand}(\mathbf y))
+\Bigr).
+}
+\]
+
+\[
+\boxed{\textbf{Theorem (Stage 185 first reduced-family test).}}
+\]
+
+For any positive candidate family in the carried hierarchy,
+\[
+\boxed{
+\Delta_{\rm fam}^{\rm graph}(\mathbf y)=0
+\iff
+\mathbf x_{\rm cand}(\mathbf y)\in\mathcal Z_*.
+}
+\]
+
+So the completed moving-throat PDE no longer needs to be tested against an abstract quotient packet if one works on a same-free-quintuple family.
+It only needs to supply the four graph-side scalars
+\[
+\chi_Q-1,\quad E_T,\quad E_K,\quad E_\mu.
+\]
+
+This is the first exact reduced-family closure surface in directly usable coordinates.
+
+---
+
+## 8. What this stage changes operationally
+
+Stage 184 already told us how to project any state onto the target orbit.
+Stage 185 improves that in three ways.
+
+### 8.1 The target orbit is now an explicit graph
+
+There is no longer any need to think of `\(\mathcal O_*\)` as an abstract similarity orbit in practical audit work.
+It is the graph of three exact target functions over the free quintuple.
+
+### 8.2 The dependent-triple correction is now immediate
+
+The canonical repair vector no longer has to be reconstructed through the quotient map.
+It is simply minus the graph-error triple on
+\[
+(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W).
+\]
+
+### 8.3 The PDE search space is reduced from 8D to 5D
+
+At the reduced-family level, the moving-throat realization problem is now:
+
+1. choose or compute the free quintuple,
+2. evaluate the exact target graph,
+3. compare the actual dependent triple against it,
+4. and check the Packet-A scalar `\(\chi_Q-1\)`.
+
+That is a much cleaner audit geometry than the earlier abstract orbit language.
+
+---
+
+## 9. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact direct microscopic monomial formulas,
+- the exact target-graph solve for
+  \[
+  \delta_{U,*}^{\rm graph},\ T_U^{\rm graph},\ K_{\eta,*}^{\rm graph},\ \mu_W^{\rm graph},
+  \]
+- direct substitution of the graph solve back into the target monomials,
+- the exact equality of the graph projection and the Stage-184 canonical orbit projection,
+- the exact identities
+  \[
+  E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}},\quad
+  E_K=-q_\eta,\quad
+  E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr},
+  \]
+- the exact repair-vector rewrite
+  \[
+  \Delta\mathbf x_{\rm rep}=(0,0,0,0,-E_K,0,-E_\mu,-E_T)^T,
+  \]
+- and the exact vanishing of the reduced-family packet on the target graph.
+
+Supporting files:
+
+- `moving_throat_pde_stage185_free_quintuple_target_graph_sympy_audit.py`
+- `moving_throat_pde_stage185_free_quintuple_target_graph_sympy_audit_output.txt`
+
+---
+
+## 10. Immediate next step
+
+The next clean continuation is now sharply defined:
+
+1. take one explicit candidate moving-throat family returned by the reduced PDE,
+2. express it in the same-free-quintuple form,
+3. evaluate the four graph-side scalars
+   \[
+   \chi_Q-1,\ E_T,\ E_K,\ E_\mu,
+   \]
+4. and then ask whether their vanishing reduces to a simpler one-parameter or low-rank crossing problem on that family.
+
+So Stage 186 should be the first exact **family crossing theorem** built on the Stage-185 target graph.
+moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+# Moving-Throat PDE — Stage 186: Free-Quintuple Scalar Closure Slice, Exact Graph-Family Tangency, and the One-Parameter Crossing Theorem
+
+## Status
+
+**Exact within the carried Stage-175 orbit/quotient projector calculus and the Stage-185 exact free-quintuple target graph.**
+
+This stage does **not** introduce a new constitutive law.
+It takes the Stage-185 target-orbit graph and proves that, once a candidate family is aligned with that graph, the full reduced home-stretch test collapses to a **single scalar closure function** on the five free microscopic coordinates.
+
+---
+
+## Purpose
+
+Stage 185 solved the target orbit `\(\mathcal O_*\)` explicitly as a graph over the free quintuple
+\[
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+\]
+That already removed the abstractness from the Stage-184 canonical projection. But one practical question was still left open:
+
+> once the target orbit is written as an explicit graph, what is the actual reduced closure problem for a one-parameter branch family in that free-quintuple space?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact **graph-closure scalar**
+   \[
+   \widehat\chi_Q(\mathbf y):=\chi_Q\bigl(\mathbf x_*^{\rm graph}(\mathbf y)\bigr),
+   \]
+2. the exact theorem that the full reduced closure set is the codimension-one graph slice
+   \[
+   \mathcal Z_*=
+   \{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\},
+   \]
+3. the exact formulas for the dependent-triple log tangents of any graph-lifted free family,
+4. the exact theorem that those graph tangents lie in the Stage-175 similarity-orbit kernel,
+5. the exact same-free-quintuple decomposition of an arbitrary candidate family into
+   - the graph-lifted orbit piece, and
+   - the three dependent graph errors \((E_T,E_K,E_\mu)\),
+6. and the exact **one-parameter crossing theorem** reducing the graph-aligned closure search to a single scalar sign-change problem.
+
+So Stage 186 is the first point where a reduced moving-throat branch search becomes a genuine **one-scalar spectral-placement problem** on the free-quintuple target graph.
+
+---
+
+## 1. Carry-forward exact free-quintuple target graph
+
+Let the positive microscopic state be
+\[
+\boxed{
+\mathbf x=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U
+\bigr).
+}
+\]
+
+Carry forward the Stage-185 free-quintuple projection
+\[
+\boxed{
+\mathbf y:=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+}
+\]
+
+The dependent triple is
+\[
+(T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W).
+\]
+
+The exact Stage-185 target-graph map is
+\[
+\boxed{
+\mathbf x_*^{\rm graph}(\mathbf y)
+:=
+\bigl(
+\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,
+K_{\eta,*}^{\rm graph}(\mathbf y),
+K_W^{(\mathrm{eff})},
+\mu_W^{\rm graph}(\mathbf y),
+T_U^{\rm graph}(\mathbf y)
+\bigr),
+}
+\]
+with
+\[
+\boxed{
+\delta_{U,*}^{\rm graph}(\mathbf y)
+:=
+\left[
+\frac{\mathfrak C_{{\rm tr},*}^{\rm target}}
+{\left(\dfrac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}}
+\right]^{1/(1+\chi_{0,*})},
+}
+\]
+\[
+\boxed{
+T_U^{\rm graph}(\mathbf y)
+=
+\frac{L^2K_U}{\pi^2}\,\delta_{U,*}^{\rm graph}(\mathbf y),
+}
+\]
+\[
+\boxed{
+K_{\eta,*}^{\rm graph}(\mathbf y)
+=
+\frac{c_{\eta U}^2}{K_U\,\epsilon_{\eta,*}^{\rm target}},
+}
+\]
+\[
+\boxed{
+\mu_W^{\rm graph}(\mathbf y)
+=
+\frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,c_{\eta U}^2\,(K_W^{(\mathrm{eff})})^2}
+{\epsilon_{\eta,*}^{\rm target}\,K_U\,\lambda_W^2}
+\left(
+\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}
+\right)^{-E_*}
+\left(\delta_{U,*}^{\rm graph}(\mathbf y)\right)^{F_*}.
+}
+\]
+
+By Stage 185,
+\[
+\boxed{
+\mathcal O_*=
+\{\mathbf x_*^{\rm graph}(\mathbf y):\mathbf y\in(\mathbb R_{>0})^5\}.
+}
+\]
+
+---
+
+## 2. Exact graph-closure scalar and the codimension-one closure slice
+
+Define the exact graph-closure scalar
+\[
+\boxed{
+\widehat\chi_Q(\mathbf y)
+:=
+\chi_Q\bigl(\mathbf x_*^{\rm graph}(\mathbf y)\bigr).
+}
+\]
+Equivalently, define the graph residual
+\[
+\boxed{
+\widehat\Delta_Q(\mathbf y):=\widehat\chi_Q(\mathbf y)-1.
+}
+\]
+
+Since every graph state already lies on `\(\mathcal O_*\)`, the full reduced closure set is obtained by imposing only the Packet-A scalar target on the graph.
+
+\[
+\boxed{\textbf{Theorem (Stage 186 scalar graph-slice theorem).}}
+\]
+
+The fully reduced closure set is exactly
+\[
+\boxed{
+\mathcal Z_*
+=
+\Bigl\{
+\mathbf x_*^{\rm graph}(\mathbf y):
+\widehat\chi_Q(\mathbf y)=1
+\Bigr\}
+=
+\Bigl\{
+\mathbf x_*^{\rm graph}(\mathbf y):
+\widehat\Delta_Q(\mathbf y)=0
+\Bigr\}.
+}
+\]
+
+### Proof
+
+By Stage 185, `\(\mathbf x_*^{\rm graph}(\mathbf y)\in\mathcal O_*\)` for every positive free quintuple `\(\mathbf y\)`.
+Therefore the only remaining reduced closure condition is the Packet-A scalar condition
+\[
+\chi_Q=1.
+\]
+Evaluating that on the graph gives exactly the displayed slice condition.
+
+So once the target orbit has been solved as a graph, the reduced closure set is a codimension-one scalar slice of that graph.
+
+---
+
+## 3. Exact graph-family tangent formulas
+
+Let
+\[
+\boxed{\mathbf y(\tau)}
+\]
+be a smooth one-parameter free-quintuple family, and define the corresponding graph-lifted microscopic family
+\[
+\boxed{
+\mathbf x_{\rm graph}(\tau):=\mathbf x_*^{\rm graph}(\mathbf y(\tau)).
+}
+\]
+
+Introduce the free log-tangent components
+\[
+\boxed{
+(\lambda_1,c_1,\gamma_1,\kappa_U,\kappa_W)
+:=
+\left(
+\frac{d\ln\lambda_W}{d\tau},
+\frac{d\ln c_{\eta U}}{d\tau},
+\frac{d\ln\gamma}{d\tau},
+\frac{d\ln K_U}{d\tau},
+\frac{d\ln K_W^{(\mathrm{eff})}}{d\tau}
+\right).
+}
+\]
+
+Then the graph formulas imply the exact dependent-triple log tangents
+\[
+\boxed{
+\frac{d\ln \delta_{U,*}^{\rm graph}}{d\tau}
+=
+-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}
+\bigl(\gamma_1+c_1-\kappa_U\bigr),
+}
+\]
+\[
+\boxed{
+\tau_1^{\rm graph}
+:=
+\frac{d\ln T_U^{\rm graph}}{d\tau}
+=
+\kappa_U
+-
+\frac{1+\delta_{U,*}}{1+\chi_{0,*}}
+\bigl(\gamma_1+c_1-\kappa_U\bigr),
+}
+\]
+\[
+\boxed{
+\kappa_{\eta}^{\rm graph}
+:=
+\frac{d\ln K_{\eta,*}^{\rm graph}}{d\tau}
+=
+2c_1-\kappa_U,
+}
+\]
+\[
+\boxed{
+\mu_1^{\rm graph}
+:=
+\frac{d\ln\mu_W^{\rm graph}}{d\tau}
+=
+2c_1-\kappa_U+2\kappa_W-2\lambda_1
+-E_*\bigl(2\gamma_1+2\lambda_1-\kappa_U-\kappa_W\bigr)
+-F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}\bigl(\gamma_1+c_1-\kappa_U\bigr).
+}
+\]
+
+So the full graph-family log tangent is
+\[
+\boxed{
+\dot{\Delta\mathbf x}_{\rm graph}
+=
+\begin{pmatrix}
+\lambda_1\\
+c_1\\
+\gamma_1\\
+\kappa_U\\
+\kappa_{\eta}^{\rm graph}\\
+\kappa_W\\
+\mu_1^{\rm graph}\\
+\tau_1^{\rm graph}
+\end{pmatrix}.
+}
+\]
+
+---
+
+## 4. Exact graph-family tangency to the Stage-175 orbit kernel
+
+Carry forward the exact Stage-175 monomial-drift map
+\[
+\boxed{
+\mathbf q=M_*\,\Delta\mathbf x,
+}
+\]
+with
+\[
+\boxed{
+M_*=
+\begin{pmatrix}
+0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+2(1+E_*) & 0 & 2E_* & F_*-E_* & -1 & -(2+E_*) & 1 & -F_*\\[4pt]
+0 & 2 & 0 & -1 & -1 & 0 & 0 & 0
+\end{pmatrix}.
+}
+\]
+
+Then the graph-family tangent satisfies the exact kernel identity
+\[
+\boxed{
+M_*\,\dot{\Delta\mathbf x}_{\rm graph}=0.
+}
+\]
+
+\[
+\boxed{\textbf{Corollary (graph-family orbit tangency).}}
+\]
+
+Every graph-lifted free-quintuple family lies identically in the Stage-175 similarity-orbit tangent:
+\[
+\boxed{
+\dot{\Delta\mathbf x}_{\rm graph}(\tau)\in\ker M_*.
+}
+\]
+
+So the entire Packet-B part of the reduced home-stretch theorem vanishes identically on graph-aligned families. That is the exact reason the closure search drops from four scalars to one scalar on the graph.
+
+---
+
+## 5. Same-free-quintuple candidate decomposition and exact graph errors
+
+Let
+\[
+\boxed{
+\mathbf x_{\rm cand}(\tau)
+}
+\]
+be an arbitrary candidate family sharing the same free-quintuple path `\(\mathbf y(\tau)\)` as the graph family.
+Write its dependent triple against the graph lift as
+\[
+\boxed{
+T_U(\tau)=T_U^{\rm graph}(\tau)e^{E_T(\tau)},
+\qquad
+K_\eta^{(\mathrm{eff})}(\tau)=K_{\eta,*}^{\rm graph}(\tau)e^{E_K(\tau)},
+\qquad
+\mu_W(\tau)=\mu_W^{\rm graph}(\tau)e^{E_\mu(\tau)}.
+}
+\]
+
+Then the exact same-free-quintuple error vector is
+\[
+\boxed{
+\Delta\mathbf x_{\rm err}
+=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+0\\
+E_K\\
+0\\
+E_\mu\\
+E_T
+\end{pmatrix}.
+}
+\]
+Applying the Stage-175 monomial map gives the exact quotient packet carried by those graph errors:
+\[
+\boxed{
+q_{\rm tr}=(1+\chi_{0,*})E_T,
+}
+\]
+\[
+\boxed{
+q_{\rm nt}=E_\mu-E_K-F_*E_T,
+}
+\]
+\[
+\boxed{
+q_\eta=-E_K.
+}
+\]
+
+The inverse formulas are therefore
+\[
+\boxed{
+E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+\qquad
+E_K=-q_\eta,
+\qquad
+E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}.
+}
+\]
+
+This is exactly the Stage-185 graph-error packet, now written as the unique same-free-quintuple decomposition of any candidate family into
+
+- the graph-lifted orbit piece, and
+- the genuine quotient-failure piece.
+
+---
+
+## 6. Exact family packet on and off the graph
+
+For a general same-free-quintuple candidate family, the exact reduced four-scalar packet is
+\[
+\boxed{
+\Delta_{\rm fam}^{\rm graph}(\tau)
+=
+\bigl(
+\chi_Q(\mathbf x_{\rm cand}(\tau))-1,
+E_T(\tau),
+E_K(\tau),
+E_\mu(\tau)
+\bigr).
+}
+\]
+
+So the full reduced closure criterion remains
+\[
+\boxed{
+\mathbf x_{\rm cand}(\tau)\in\mathcal Z_*
+\iff
+\chi_Q(\mathbf x_{\rm cand}(\tau))=1,
+\ E_T(\tau)=0,
+\ E_K(\tau)=0,
+\ E_\mu(\tau)=0.
+}
+\]
+
+But on the graph-lifted family itself one has
+\[
+E_T\equiv E_K\equiv E_\mu\equiv 0,
+\]
+so the packet collapses to
+\[
+\boxed{
+\Delta_{\rm fam}^{\rm graph,\,lift}(\tau)
+=
+\bigl(
+\widehat\chi_Q(\mathbf y(\tau))-1,
+0,
+0,
+0
+\bigr).
+}
+\]
+
+This is the exact one-scalar reduction of the home-stretch family test.
+
+---
+
+## 7. One-parameter graph crossing theorem
+
+Let
+\[
+\boxed{
+\mathbf y:[\tau_-,\tau_+]\to(\mathbb R_{>0})^5
+}
+\]
+be a continuous free-quintuple path, and let
+\[
+\mathbf x_{\rm graph}(\tau)=\mathbf x_*^{\rm graph}(\mathbf y(\tau)).
+\]
+Define the graph scalar residual
+\[
+\boxed{
+\widehat\Delta_Q(\tau):=
+\widehat\chi_Q(\mathbf y(\tau))-1.
+}
+\]
+
+\[
+\boxed{\textbf{Theorem (Stage 186 one-parameter graph crossing theorem).}}
+\]
+
+If
+\[
+\widehat\Delta_Q(\tau_-)\,\widehat\Delta_Q(\tau_+)<0,
+\]
+then there exists
+\[
+\boxed{
+\tau_*\in(\tau_-,\tau_+)
+}
+\]
+such that
+\[
+\boxed{
+\widehat\Delta_Q(\tau_*)=0,
+\qquad
+\mathbf x_{\rm graph}(\tau_*)\in\mathcal Z_*.
+}
+\]
+
+### Proof
+
+The graph residual `\(\widehat\Delta_Q(\tau)\)` is continuous because both the free path and the graph lift are continuous and `\(\chi_Q\)` is continuous on the carried reduced branch. So the conclusion follows immediately from the intermediate value theorem.
+
+This is the first exact existence theorem for a closed reduced state along a one-parameter graph-aligned family.
+
+---
+
+## 8. Simple crossing and tangency on the graph
+
+Let `\(\tau_*\)` be a graph-family closure point with
+\[
+\widehat\Delta_Q(\tau_*)=0.
+\]
+Then:
+
+### 8.1 Transverse graph crossing
+If
+\[
+\boxed{
+\frac{d\widehat\Delta_Q}{d\tau}(\tau_*)\neq 0,
+}
+\]
+then the closure point is a simple transverse crossing of the scalar graph slice. In particular, it is locally isolated on the one-parameter family.
+
+### 8.2 Graph tangency
+If
+\[
+\boxed{
+\frac{d\widehat\Delta_Q}{d\tau}(\tau_*)=0,
+}
+\]
+then the graph family is tangent to the codimension-one closure slice at first order.
+
+Because the Packet-B part vanishes identically on graph families, these are the only two first-order possibilities.
+
+So the first-order family audit on the graph is reduced completely to the derivative of one scalar function.
+
+---
+
+## 9. Operational meaning for the PDE program
+
+Stage 185 reduced the target orbit from an abstract similarity set to an explicit graph over five free coordinates.
+Stage 186 goes one decisive step further.
+
+### 9.1 Graph-aligned PDE searches are one-scalar searches
+
+If a reduced moving-throat solve is organized as a graph-aligned family in the free quintuple, then the whole home-stretch packet becomes
+\[
+(\widehat\chi_Q-1,0,0,0).
+\]
+So the closure search is no longer a four-scalar search. It is a one-scalar search.
+
+### 9.2 Same-free-quintuple candidate families are still fully explicit
+
+If the candidate family is not exactly graph-aligned, there is still no abstract quotient problem left.
+The failure is exactly the dependent graph-error triple
+\[
+(E_T,E_K,E_\mu),
+\]
+and those errors generate the exact quotient packet
+\[
+(q_{\rm tr},q_{\rm nt},q_\eta)
+
+automatically.
+\]
+
+### 9.3 The remaining reduced theorem gap is now sharply executable
+
+The completed moving-throat PDE no longer needs to be asked for a vague “final closure.”
+It needs to do one of two concrete things:
+
+1. either return a graph-aligned free-quintuple family and let one solve
+   \[
+   \widehat\chi_Q(\mathbf y)=1,
+   \]
+2. or return a same-free-quintuple candidate family and let one solve the explicit four-scalar packet
+   \[
+   (\chi_Q-1,E_T,E_K,E_\mu)=0.
+   \]
+
+That is the smallest clean family-level theorem gate reached so far.
+moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor.md
+# Moving-Throat PDE — Stage 187: Explicit Free-Quintuple Log-Ray Sweep, Finite Graph Invariance, and the Scalar Root Predictor
+
+## Status
+
+**Exact within the carried Stage-185 free-quintuple target graph and the Stage-186 scalar graph-slice theorem.**
+
+This stage does **not** introduce a new constitutive law.
+It turns the abstract one-parameter family of Stage 186 into an explicit, audit-ready family generator on the five free microscopic coordinates and reduces the local branch search to a scalar root problem on a logarithmic ray.
+
+---
+
+## Purpose
+
+Stage 186 proved that once the target orbit is written as the exact free-quintuple graph
+\[
+\mathbf x_*^{\rm graph}(\mathbf y),
+\]
+all reduced closure points are exactly the scalar slice
+\[
+\widehat\chi_Q(\mathbf y)=1.
+\]
+That is already a complete existence theorem, but it still leaves one practical question open:
+
+> what is the smallest explicit one-parameter family in free-quintuple space that can be followed, audited, and differentiated without rebuilding the whole orbit geometry each time?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact **free-quintuple logarithmic ray**
+   \[
+   \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+   \]
+2. the exact finite graph lift of that ray, with the dependent triple carried by four explicit exponents,
+3. the exact theorem that the full graph-lifted ray stays on the target orbit `\(\mathcal O_*\)` for **all** `\(\tau\)`, not only at first order,
+4. the explicit **primitive direction table** for the five free microscopic directions,
+5. the exact scalarized closure function
+   \[
+   \Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)),
+   \]
+6. the monotone-ray uniqueness theorem,
+7. and the exact affine and log-linear root predictors that turn the Stage-186 crossing test into a concrete local branch-audit tool.
+
+So Stage 187 is the first fully explicit **family compiler** for the reduced home stretch.
+
+---
+
+## 1. Carry-forward free quintuple and target graph
+
+The free quintuple is
+\[
+\boxed{
+\mathbf y:=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+}
+\]
+The exact Stage-185 target graph gives the dependent triple
+\[
+(T_U^{\rm graph}(\mathbf y),\ K_{\eta,*}^{\rm graph}(\mathbf y),\ \mu_W^{\rm graph}(\mathbf y))
+\]
+and therefore the full target-orbit graph point
+\[
+\boxed{
+\mathbf x_*^{\rm graph}(\mathbf y)
+=
+(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,
+K_{\eta,*}^{\rm graph}(\mathbf y),
+K_W^{(\mathrm{eff})},
+\mu_W^{\rm graph}(\mathbf y),
+T_U^{\rm graph}(\mathbf y)).
+}
+\]
+By Stage 186,
+\[
+\boxed{
+\mathcal Z_*
+=
+\{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\},
+\qquad
+\widehat\chi_Q(\mathbf y):=\chi_Q(\mathbf x_*^{\rm graph}(\mathbf y)).
+}
+\]
+So the only missing practical ingredient is an explicit one-parameter family in `\(\mathbf y\)`.
+
+---
+
+## 2. Exact free-quintuple logarithmic ray
+
+Fix a positive base point
+\[
+\boxed{
+\mathbf y_\circ
+=(\lambda_{W,\circ},\ c_{\eta U,\circ},\ \gamma_\circ,\ K_{U,\circ},\ K_{W,\circ}^{(\mathrm{eff})})
+\in(\mathbb R_{>0})^5,
+}
+\]
+and a logarithmic direction
+\[
+\boxed{
+\mathbf s=(s_\lambda,s_c,s_\gamma,s_U,s_W)\in\mathbb R^5.
+}
+\]
+The exact log-ray through `\(\mathbf y_\circ\)` is
+\[
+\boxed{
+\mathbf y_{\mathbf s}(\tau)
+:=
+\mathbf y_\circ\odot e^{\tau\mathbf s},
+}
+\]
+meaning
+\[
+\lambda_W(\tau)=\lambda_{W,\circ}e^{s_\lambda\tau},
+\qquad
+c_{\eta U}(\tau)=c_{\eta U,\circ}e^{s_c\tau},
+\qquad
+\gamma(\tau)=\gamma_\circ e^{s_\gamma\tau},
+\]
+\[
+K_U(\tau)=K_{U,\circ}e^{s_U\tau},
+\qquad
+K_W^{(\mathrm{eff})}(\tau)=K_{W,\circ}^{(\mathrm{eff})}e^{s_W\tau}.
+\]
+So the free-quintuple logarithmic slopes are exactly constant:
+\[
+\frac{d\ln\lambda_W}{d\tau}=s_\lambda,
+\qquad
+\frac{d\ln c_{\eta U}}{d\tau}=s_c,
+\qquad
+\frac{d\ln\gamma}{d\tau}=s_\gamma,
+\qquad
+\frac{d\ln K_U}{d\tau}=s_U,
+\qquad
+\frac{d\ln K_W^{(\mathrm{eff})}}{d\tau}=s_W.
+\]
+
+### 2.1 Local completeness of the log-ray library
+
+Let `\(\mathbf y(\tau)\)` be any smooth positive free-quintuple path, and fix `\(\tau_0\)`.
+Define
+\[
+\boxed{
+\mathbf s_{\tau_0}:=
+\left.
+\frac{d\ln \mathbf y}{d\tau}
+\right|_{\tau_0}.
+}
+\]
+Then
+\[
+\boxed{
+\mathbf y(\tau_0+\Delta\tau)
+=
+\mathbf y(\tau_0)\odot e^{\Delta\tau\mathbf s_{\tau_0}}+O(\Delta\tau^2).
+}
+\]
+So every smooth free-quintuple path is locally represented, to first order, by a unique log-ray.
+This is why the log-ray family is the natural Stage-186 continuation for local branch auditing.
+
+---
+
+## 3. Exact finite graph lift of the log-ray
+
+Introduce the carried ratio
+\[
+\boxed{
+\mathfrak a_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.
+}
+\]
+Define the four dependent exponents
+\[
+\boxed{
+\sigma_\delta(
+\mathbf s)
+:=
+-\mathfrak a_*(s_\gamma+s_c-s_U),
+}
+\]
+\[
+\boxed{
+\sigma_T(\mathbf s):=s_U+\sigma_\delta(\mathbf s),
+\qquad
+\sigma_{K_\eta}(\mathbf s):=2s_c-s_U,
+}
+\]
+\[
+\boxed{
+\sigma_\mu(\mathbf s)
+:=
+2s_c-s_U+2s_W-2s_\lambda
+-E_*(2s_\gamma+2s_\lambda-s_U-s_W)
++F_*\sigma_\delta(\mathbf s).
+}
+\]
+Then the exact Stage-185 target graph along the ray is
+\[
+\boxed{
+\delta_{U,*}^{\rm graph}(\tau)
+=
+\delta_{U,*}^{\rm graph}(0)
+\,e^{\sigma_\delta\tau},
+}
+\]
+\[
+\boxed{
+T_U^{\rm graph}(\tau)
+=
+T_{U,\circ}^{\rm graph}
+\,e^{\sigma_T\tau},
+}
+\]
+\[
+\boxed{
+K_{\eta,*}^{\rm graph}(\tau)
+=
+K_{\eta,\circ}^{\rm graph}
+\,e^{\sigma_{K_\eta}\tau},
+}
+\]
+\[
+\boxed{
+\mu_W^{\rm graph}(\tau)
+=
+\mu_{W,\circ}^{\rm graph}
+\,e^{\sigma_\mu\tau}.
+}
+\]
+So the full graph-lifted microscopic ray is
+\[
+\boxed{
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)
+=
+\bigl(
+\lambda_{W,\circ}e^{s_\lambda\tau},
+ c_{\eta U,\circ}e^{s_c\tau},
+ \gamma_\circ e^{s_\gamma\tau},
+ K_{U,\circ}e^{s_U\tau},
+ K_{\eta,\circ}^{\rm graph}e^{\sigma_{K_\eta}\tau},
+ K_{W,\circ}^{(\mathrm{eff})}e^{s_W\tau},
+ \mu_{W,\circ}^{\rm graph}e^{\sigma_\mu\tau},
+ T_{U,\circ}^{\rm graph}e^{\sigma_T\tau}
+\bigr).
+}
+\]
+
+The corresponding constant microscopic log-tangent is
+\[
+\boxed{
+\dot{\Delta\mathbf x}_{\mathbf s}^{\rm graph}
+=
+(s_\lambda,s_c,s_\gamma,s_U,\sigma_{K_\eta},s_W,\sigma_\mu,\sigma_T)^T.
+}
+\]
+
+---
+
+## 4. Exact finite monomial invariance theorem on the graph ray
+
+The three Stage-185 target monomials are
+\[
+\mathfrak C_{{\rm tr},*},
+\qquad
+\mathfrak C_{{\rm nt},*},
+\qquad
+\epsilon_\eta.
+\]
+By direct substitution of the log-ray graph lift,
+\[
+\boxed{
+\mathfrak C_{{\rm tr},*}(\mathbf x_{\mathbf s}^{\rm graph}(\tau))
+=
+\mathfrak C_{{\rm tr},*}^{\rm target},
+}
+\]
+\[
+\boxed{
+\mathfrak C_{{\rm nt},*}(\mathbf x_{\mathbf s}^{\rm graph}(\tau))
+=
+\mathfrak C_{{\rm nt},*}^{\rm target},
+}
+\]
+\[
+\boxed{
+\epsilon_\eta(\mathbf x_{\mathbf s}^{\rm graph}(\tau))
+=
+\epsilon_{\eta,*}^{\rm target},
+}
+\]
+for **all** `\(\tau\in\mathbb R\)`.
+Therefore
+\[
+\boxed{
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)\in\mathcal O_*
+\qquad\text{for all }\tau.
+}
+\]
+
+This is the finite version of the Stage-186 kernel theorem.
+Equivalently, the exact Stage-175 quotient map annihilates the constant ray tangent:
+\[
+\boxed{
+M_*\dot{\Delta\mathbf x}_{\mathbf s}^{\rm graph}=0.
+}
+\]
+So the Packet-B part of the home-stretch verdict vanishes identically on every free-quintuple log-ray graph lift.
+
+---
+
+## 5. Primitive free-direction table
+
+The five primitive free rays are the coordinate directions
+\[
+\mathbf e_\lambda,
+\mathbf e_c,
+\mathbf e_\gamma,
+\mathbf e_U,
+\mathbf e_W.
+\]
+For each one, the dependent exponents are exact.
+Let
+\[
+\sigma_\delta\sim \delta_{U,*}^{\rm graph},
+\qquad
+\sigma_T\sim T_U^{\rm graph},
+\qquad
+\sigma_{K_\eta}\sim K_{\eta,*}^{\rm graph},
+\qquad
+\sigma_\mu\sim \mu_W^{\rm graph}.
+\]
+Then:
+
+| Primitive ray | `\(\sigma_\delta\)` | `\(\sigma_T\)` | `\(\sigma_{K_\eta}\)` | `\(\sigma_\mu\)` |
+|---|---:|---:|---:|---:|
+| `\(\mathbf e_\lambda\)` | `\(0\)` | `\(0\)` | `\(0\)` | `\(-2-2E_*\)` |
+| `\(\mathbf e_c\)` | `\(-\mathfrak a_*\)` | `\(-\mathfrak a_*\)` | `\(2\)` | `\(2-F_*\mathfrak a_*\)` |
+| `\(\mathbf e_\gamma\)` | `\(-\mathfrak a_*\)` | `\(-\mathfrak a_*\)` | `\(0\)` | `\(-2E_*-F_*\mathfrak a_*\)` |
+| `\(\mathbf e_U\)` | `\(+\mathfrak a_*\)` | `\(1+\mathfrak a_*\)` | `\(-1\)` | `\(-1+E_*+F_*\mathfrak a_*\)` |
+| `\(\mathbf e_W\)` | `\(0\)` | `\(0\)` | `\(0\)` | `\(2+E_*\)` |
+
+Two immediate consequences are worth recording.
+
+1. The `\(\lambda_W\)` and `\(K_W^{(\mathrm{eff})}\)` rays do **not** move
+   \(\delta_{U,*}^{\rm graph}\), \(T_U^{\rm graph}\), or
+   \(K_{\eta,*}^{\rm graph}\) at all; they act only through `\(\mu_W^{\rm graph}\)`.
+2. The direct tracking quantity `\(\delta_{U,*}^{\rm graph}\)` is controlled only by the combination
+   \(s_\gamma+s_c-s_U\).
+
+So this table is the first exact primitive audit library for the free-quintuple branch search.
+
+---
+
+## 6. Scalarized closure function on a log-ray
+
+Define the scalarized graph-ray closure function
+\[
+\boxed{
+\Phi_{\mathbf s}(\tau)
+:=
+\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)),
+}
+\]
+and the scalar residual
+\[
+\boxed{
+\Delta_{\mathbf s}(\tau):=\Phi_{\mathbf s}(\tau)-1.
+}
+\]
+Then Stage 186 immediately becomes
+\[
+\boxed{
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)\in\mathcal Z_*
+\iff
+\Delta_{\mathbf s}(\tau)=0.
+}
+\]
+So once a base point and a free direction are chosen, the whole reduced closure search is a one-variable root problem in `\(\tau\)`.
+
+Introduce the exact directional derivative operator on free-quintuple log space:
+\[
+\boxed{
+\mathcal D_{\mathbf s}
+:=
+s_\lambda\partial_{\ln\lambda_W}
++s_c\partial_{\ln c_{\eta U}}
++s_\gamma\partial_{\ln\gamma}
++s_U\partial_{\ln K_U}
++s_W\partial_{\ln K_W^{(\mathrm{eff})}}.
+}
+\]
+Then
+\[
+\boxed{
+\Phi_{\mathbf s}'(0)
+=
+(\mathcal D_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ),
+}
+\]
+and, whenever `\(\Phi_{\mathbf s}(0)>0\)`,
+\[
+\boxed{
+L_{\mathbf s}(0)
+:=
+\left.\frac{d}{d\tau}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0}
+=
+(\mathcal D_{\mathbf s}\ln\widehat\chi_Q)(\mathbf y_\circ)
+=
+\frac{\Phi_{\mathbf s}'(0)}{\Phi_{\mathbf s}(0)}.
+}
+\]
+
+---
+
+## 7. Monotone-ray uniqueness theorem
+
+Assume `\(\Phi_{\mathbf s}(\tau)>0\)` on an interval `[\tau_-,\tau_+]`.
+If the logarithmic slope
+\[
+L_{\mathbf s}(\tau)=\frac{d}{d\tau}\ln\Phi_{\mathbf s}(\tau)
+\]
+has a fixed sign on that interval, then `\(\Phi_{\mathbf s}(\tau)\)` is monotone there.
+So:
+
+\[
+\boxed{\textbf{Theorem (Stage 187 monotone-ray uniqueness theorem).}}
+\]
+
+If
+\[
+\Phi_{\mathbf s}(\tau_-)<1<\Phi_{\mathbf s}(\tau_+)
+\qquad\text{or}\qquad
+\Phi_{\mathbf s}(\tau_+)<1<\Phi_{\mathbf s}(\tau_-),
+\]
+and `\(L_{\mathbf s}(\tau)\)` has fixed sign on `[\tau_-,\tau_+]`, then there exists a **unique**
+\[
+\boxed{\tau_*\in(\tau_-,\tau_+)}
+\]
+with
+\[
+\boxed{\Phi_{\mathbf s}(\tau_*)=1.}
+\]
+
+So the scalar graph-slice theorem of Stage 186 becomes a practical uniqueness test as soon as one can certify monotonicity along the chosen free-quintuple ray.
+
+---
+
+## 8. Exact local root predictors
+
+Let
+\[
+\Phi_0:=\Phi_{\mathbf s}(0),
+\qquad
+\Phi_1:=\Phi_{\mathbf s}'(0),
+\qquad
+L_0:=\frac{\Phi_1}{\Phi_0}.
+\]
+Assume `\(\Phi_1\neq0\)`.
+Then the exact affine root predictor is
+\[
+\boxed{
+\tau_{\rm aff}:=\frac{1-\Phi_0}{\Phi_1}.
+}
+\]
+If `\(\Phi_0>0\)` and `\(L_0\neq0\)`, the exact log-linear predictor is
+\[
+\boxed{
+\tau_{\log}:=-\frac{\ln\Phi_0}{L_0}.
+}
+\]
+
+These are the two natural first local predictors for the scalarized branch closure point.
+
+### 8.1 First-order agreement of the two predictors
+
+Write
+\[
+\Phi_0=1+\varepsilon,
+\qquad |\varepsilon|\ll1.
+\]
+Then
+\[
+\boxed{
+\tau_{\log}-\tau_{\rm aff}
+=
+-\frac{\varepsilon^2}{2L_0}+O(\varepsilon^3).
+}
+\]
+So both predictors agree to first order in the closure defect and differ only at quadratic order.
+
+This is useful operationally:
+
+- `\(\tau_{\rm aff}\)` is the direct linear predictor for `\(\widehat\chi_Q\)`,
+- `\(\tau_{\log}\)` is the direct linear predictor for `\(\ln\widehat\chi_Q\)`.
+
+Near the scalar slice, they are equivalent to first order.
+
+---
+
+## 9. Best current reading after Stage 187
+
+The Stage-186 scalar graph-slice theorem is now fully operational.
+
+The reduced closure search no longer needs a vague “family” in the free quintuple.
+It now has an explicit audit-ready one-parameter generator:
+\[
+\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}.
+\]
+Its graph lift is exact, its monomial invariants are exact, its Packet-B quotient defect vanishes identically, and its remaining reduced closure problem is the single scalar root equation
+\[
+\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))=1.
+\]
+
+So after Stage 187 the next honest step is no longer to invent a family parameterization.
+It is to compute, on candidate free-quintuple rays,
+
+1. the scalar `\(\Phi_{\mathbf s}(0)=\widehat\chi_Q(\mathbf y_\circ)\)`,
+2. the directional logarithmic slope `\(L_0=(\mathcal D_{\mathbf s}\ln\widehat\chi_Q)(\mathbf y_\circ)\)`,
+3. the local predictor `\(\tau_{\log}\)` (or `\(\tau_{\rm aff}\)`),
+4. and then verify whether the actual scalarized branch crosses `1` uniquely before leaving the controlled branch.
+
+That is the sharpest explicit one-parameter continuation point reached so far.
+moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement.md
+# Moving-Throat PDE — Stage 188: Directional Hessian, Exact Quadratic Log-Ray Refinement, and the Turning-Point Closure Test
+
+## Status
+
+**Exact within the carried Stage-186 scalar graph-slice theorem and the Stage-187 explicit free-quintuple log-ray family compiler.**
+
+This stage does **not** introduce a new constitutive law.
+It upgrades the Stage-187 first-order scalarized ray search to the exact **second-order** level, so the reduced branch search remains controlled even when the directional slope is small, vanishes, or is strongly curvature-corrected.
+
+---
+
+## Purpose
+
+Stage 187 reduced the graph-lifted home-stretch problem to the scalar root equation
+\[
+\Phi_{\mathbf s}(\tau)=1,
+\qquad
+\Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)),
+\]
+and supplied two exact first-order local predictors:
+
+- the affine predictor on `\(\widehat\chi_Q\)`, and
+- the log-linear predictor on `\(\ln\widehat\chi_Q\)`.
+
+That already solves the generic monotone case locally, but it leaves one practical gap:
+
+> what is the exact second-order structure of the scalarized log-ray closure problem, and how do we treat rays whose first slope is weak or vanishes?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact **directional Hessian operators** on free-quintuple log space,
+2. the exact first/second derivative scalars
+   \[
+   \Phi_0,\ \Phi_1,\ \Phi_2,
+   \qquad
+   L_0,\ L_1,
+   \]
+   together with the exact identity
+   \[
+   \Phi_2=\Phi_0\,(L_1+L_0^2),
+   \]
+3. the exact **quadratic affine predictor** and **quadratic log predictor** for the closure point,
+4. the exact discriminant conditions under which those predictors are real,
+5. the exact **turning-point / tangency theorem** for rays with `\(\Phi_1=0\)`,
+6. the curvature-corrected local expansions of the Stage-187 predictors,
+7. and the exact theorem that the ordinary and logarithmic quadratic predictors agree through second order in the closure defect.
+
+So Stage 188 turns the Stage-187 scalarized ray sweep into a true second-order spectral-placement tool.
+
+---
+
+## 1. Carry-forward scalarized graph-ray data
+
+Keep the Stage-187 positive free quintuple
+\[
+\mathbf y=(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}),
+\]
+with logarithmic ray
+\[
+\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+\qquad
+\mathbf s=(s_\lambda,s_c,s_\gamma,s_U,s_W).
+\]
+The graph-lifted microscopic state remains
+\[
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)=\mathbf x_*^{\rm graph}(\mathbf y_{\mathbf s}(\tau)),
+\]
+and Stage 187 already proved that this graph lift lies on the target orbit `\(\mathcal O_*\)` for **all** `\(\tau\)`.
+
+So Packet B still vanishes identically:
+\[
+M_*\dot{\Delta\mathbf x}^{\rm graph}_{\mathbf s}=0.
+\]
+The only remaining reduced closure question is the Packet-A scalar slice
+\[
+\Phi_{\mathbf s}(\tau)=1,
+\qquad
+\Delta_{\mathbf s}(\tau):=\Phi_{\mathbf s}(\tau)-1.
+\]
+
+---
+
+## 2. Exact directional Hessian on free log space
+
+Introduce free log coordinates
+\[
+\boxed{
+\boldsymbol\ell:=
+(\ln\lambda_W,\ \ln c_{\eta U},\ \ln\gamma,\ \ln K_U,\ \ln K_W^{(\mathrm{eff})}).
+}
+\]
+The Stage-187 directional derivative operator is
+\[
+\boxed{
+\mathcal D_{\mathbf s}
+:=
+\sum_{i=1}^5 s_i\,\partial_{\ell_i}.
+}
+\]
+The exact second-order directional operator is therefore
+\[
+\boxed{
+\mathcal H_{\mathbf s}:=\mathcal D_{\mathbf s}^2
+=\sum_{i,j=1}^5 s_i s_j\,\partial_{\ell_i}\partial_{\ell_j}.
+}
+\]
+Equivalently, if
+\[
+H_{\widehat\chi_Q}(\mathbf y_\circ)
+:=\bigl(\partial_{\ell_i}\partial_{\ell_j}\widehat\chi_Q\bigr)_{ij}\Big|_{\mathbf y_\circ},
+\]
+then the ordinary directional curvature is the quadratic form
+\[
+\boxed{
+\Phi_2
+:=
+(\mathcal H_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ)
+=
+\mathbf s^T H_{\widehat\chi_Q}(\mathbf y_\circ)\,\mathbf s.
+}
+\]
+Likewise, the logarithmic directional Hessian is
+\[
+H_{\ln\widehat\chi_Q}(\mathbf y_\circ)
+:=\bigl(\partial_{\ell_i}\partial_{\ell_j}\ln\widehat\chi_Q\bigr)_{ij}\Big|_{\mathbf y_\circ},
+\]
+and its directional curvature is
+\[
+\boxed{
+L_1
+:=
+(\mathcal H_{\mathbf s}\ln\widehat\chi_Q)(\mathbf y_\circ)
+=
+\mathbf s^T H_{\ln\widehat\chi_Q}(\mathbf y_\circ)\,\mathbf s.
+}
+\]
+
+So once the Hessian matrices are known on the chosen free-quintuple base point, every ray curvature is obtained by a single quadratic form evaluation.
+
+---
+
+## 3. Exact first/second derivative scalars and ordinary/log identities
+
+Define the base scalar values
+\[
+\boxed{
+\Phi_0:=\Phi_{\mathbf s}(0)=\widehat\chi_Q(\mathbf y_\circ),
+\qquad
+\Phi_1:=\Phi_{\mathbf s}'(0)=(\mathcal D_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ),
+\qquad
+\Phi_2:=\Phi_{\mathbf s}''(0)=(\mathcal H_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ).
+}
+\]
+Assume `\(\Phi_0>0\)`. Then the Stage-187 logarithmic slope is
+\[
+\boxed{
+L_0:=\left.\frac{d}{d\tau}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0}
+=
+\frac{\Phi_1}{\Phi_0}.
+}
+\]
+The logarithmic directional curvature is
+\[
+\boxed{
+L_1:=\left.\frac{d^2}{d\tau^2}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0}
+=
+\frac{\Phi_2}{\Phi_0}-\frac{\Phi_1^2}{\Phi_0^2}.
+}
+\]
+So the ordinary and logarithmic curvatures are related exactly by
+\[
+\boxed{
+\Phi_2
+=
+\Phi_0\,(L_1+L_0^2).
+}
+\]
+This is the central algebraic bridge of the stage.
+It says the second-order Taylor data of `\(\widehat\chi_Q\)` and of `\(\ln\widehat\chi_Q\)` are not independent.
+
+---
+
+## 4. Exact quadratic scalar models on the ray
+
+The ordinary second-order Taylor model of the closure residual is
+\[
+\boxed{
+\Delta_{\mathbf s}^{\rm quad}(\tau)
+:=
+(\Phi_0-1)+\Phi_1\tau+\frac12\Phi_2\tau^2.
+}
+\]
+The logarithmic second-order Taylor model is
+\[
+\boxed{
+\mathcal L_{\mathbf s}^{\rm quad}(\tau)
+:=
+\ln\Phi_0+L_0\tau+\frac12 L_1\tau^2.
+}
+\]
+The exact discriminants are therefore
+\[
+\boxed{
+\Delta_{\rm aff}
+:=
+\Phi_1^2-2\Phi_2(\Phi_0-1),
+}
+\]
+\[
+\boxed{
+\Delta_{\log}
+:=
+L_0^2-2L_1\ln\Phi_0.
+}
+\]
+Whenever these are nonnegative, the corresponding quadratic predictor is real.
+
+---
+
+## 5. Exact quadratic affine predictor
+
+Assume `\(\Phi_1\neq0\)` and choose the square-root branch continuously from the Stage-187 affine predictor. Then the exact quadratic predictor for the scalar slice is
+\[
+\boxed{
+\tau_{\rm quad}
+:=
+\frac{2(1-\Phi_0)}{\Phi_1+\operatorname{sgn}(\Phi_1)\sqrt{\Delta_{\rm aff}}}.
+}
+\]
+Equivalently, this is the root of
+\[
+(\Phi_0-1)+\Phi_1\tau+\frac12\Phi_2\tau^2=0
+\]
+that reduces continuously to the Stage-187 affine predictor when `\(\Phi_2\to0\)`.
+
+### 5.1 Exact zero-curvature limit
+
+As `\(\Phi_2\to0\)`,
+\[
+\boxed{
+\tau_{\rm quad}\to\tau_{\rm aff}:=\frac{1-\Phi_0}{\Phi_1}.
+}
+\]
+So Stage 187 is recovered exactly as the zero-curvature limit of the present construction.
+
+---
+
+## 6. Exact quadratic logarithmic predictor
+
+Assume `\(L_0\neq0\)` and again choose the square-root branch continuously from the Stage-187 log-linear predictor. Then the exact logarithmic quadratic predictor is
+\[
+\boxed{
+\tau_{\log,2}
+:=
+-\frac{2\ln\Phi_0}{L_0+\operatorname{sgn}(L_0)\sqrt{\Delta_{\log}}}.
+}
+\]
+Equivalently, this is the root of
+\[
+\ln\Phi_0+L_0\tau+\frac12L_1\tau^2=0
+\]
+that reduces continuously to the Stage-187 log-linear predictor when `\(L_1\to0\)`.
+
+### 6.1 Exact zero-curvature limit
+
+As `\(L_1\to0\)`,
+\[
+\boxed{
+\tau_{\log,2}\to\tau_{\log}:=-\frac{\ln\Phi_0}{L_0}.
+}
+\]
+So the Stage-187 log-linear predictor is exactly the zero-log-curvature limit of the present construction.
+
+---
+
+## 7. Turning-point and tangency theorem
+
+The new content of Stage 188 appears most sharply when the first directional slope vanishes.
+
+### 7.1 Turning-point case: `\(\Phi_1=0\)` but `\(\Phi_0\neq1\)`
+
+Then the quadratic scalar model becomes
+\[
+(\Phi_0-1)+\frac12\Phi_2\tau^2=0.
+\]
+So:
+
+\[
+\boxed{\textbf{Theorem (Stage 188 turning-point closure theorem).}}
+\]
+
+If `\(\Phi_1=0\)` and `\(\Phi_0\neq1\)`, then the quadratic model predicts real nearby closure points iff
+\[
+\boxed{
+(1-\Phi_0)\Phi_2>0.
+}
+\]
+In that case the two symmetric quadratic predictors are
+\[
+\boxed{
+\tau_\pm
+=
+\pm\sqrt{\frac{2(1-\Phi_0)}{\Phi_2}}.
+}
+\]
+If instead
+\[
+(1-\Phi_0)\Phi_2<0,
+\]
+then the quadratic model predicts **no nearby closure point** on that turning ray.
+
+So Stage 188 provides the exact local replacement for the Stage-187 monotone theorem when the first slope vanishes.
+
+### 7.2 Tangency case: `\(\Phi_0=1\)` and `\(\Phi_1=0\)`
+
+If the base point already lies on the closure slice and the first derivative vanishes, then
+\[
+\boxed{
+\Delta_{\mathbf s}(\tau)=\frac12\Phi_2\tau^2+O(\tau^3).
+}
+\]
+So the ray is quadratically tangent to the closure slice at `\(\tau=0\)` unless `\(\Phi_2=0\)` as well, in which case higher-order data are needed.
+
+This is the exact second-order tangency test for graph-lifted free-quintuple rays.
+
+---
+
+## 8. Curvature-corrected local expansions
+
+Write the local closure defect as
+\[
+\Phi_0=1+\varepsilon,
+\qquad |\varepsilon|\ll1.
+\]
+Then the Stage-187 and Stage-188 predictors are related by exact second-order expansions.
+
+### 8.1 Ordinary quadratic correction
+
+The affine predictor is
+\[
+\tau_{\rm aff}=\frac{1-\Phi_0}{\Phi_1}.
+\]
+The quadratic predictor satisfies
+\[
+\boxed{
+\tau_{\rm quad}
+=
+\tau_{\rm aff}-\frac{\Phi_2}{2\Phi_1}\,\tau_{\rm aff}^2+O(\tau_{\rm aff}^3).
+}
+\]
+So the ordinary second-order correction is controlled by the dimensionless ratio `\(\Phi_2/\Phi_1\)`.
+
+### 8.2 Logarithmic quadratic correction
+
+The Stage-187 log-linear predictor is
+\[
+\tau_{\log}=-\frac{\ln\Phi_0}{L_0}.
+\]
+The quadratic log predictor satisfies
+\[
+\boxed{
+\tau_{\log,2}
+=
+\tau_{\log}-\frac{L_1}{2L_0}\,\tau_{\log}^2+O(\tau_{\log}^3).
+}
+\]
+So the logarithmic second-order correction is controlled by the dimensionless ratio `\(L_1/L_0\)`.
+
+### 8.3 Agreement theorem for the two quadratic predictors
+
+The ordinary and logarithmic quadratic predictors agree more strongly than the Stage-187 first-order pair. In fact,
+\[
+\boxed{
+\tau_{\log,2}-\tau_{\rm quad}=O((\Phi_0-1)^3).
+}
+\]
+More explicitly, with `\(\Phi_0=1+\varepsilon\)`,
+\[
+\boxed{
+\tau_{\log,2}-\tau_{\rm quad}
+=
+\frac{(L_0^2+3L_1)}{6L_0^3}\,\varepsilon^3+O(\varepsilon^4).
+}
+\]
+So the second-order ordinary and logarithmic predictors coincide through quadratic order in the closure defect. Only at cubic order do they begin to separate.
+
+This is the sharpest local predictor-equivalence statement reached so far in the free-quintuple ray program.
+
+---
+
+## 9. Best current reading after Stage 188
+
+Stage 187 reduced the reduced closure search to a scalarized free-quintuple log-ray root problem.
+Stage 188 now gives the exact second-order refinement of that problem.
+
+The Packet-B orbit defect still vanishes identically on every graph-lifted ray, so the only remaining reduced question is the scalar Packet-A slice. But that scalar search is now controlled by:
+
+1. the Stage-187 first derivative `\(L_0\)` or `\(\Phi_1\)`,
+2. the Stage-188 directional Hessian `\(L_1\)` or `\(\Phi_2\)`,
+3. the quadratic discriminants `\(\Delta_{\rm aff},\Delta_{\log}\)`,
+4. and, when needed, the exact turning-point criterion.
+
+So after Stage 188 the next honest continuation is no longer to invent a better local predictor by hand.
+It is to evaluate the actual Hessian data of `\(\widehat\chi_Q\)` on candidate base points and free directions, and then use the quadratic crossing / tangency theorem to rank which free-quintuple rays are genuinely promising for the final branch search.
+moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem.md
+# Moving-Throat PDE — Stage 189: Curvature-Enveloped Ray Ranking, Certified Local Brackets, and the Search Sieve Theorem
+
+## Status
+
+**Exact within the carried Stage-188 scalarized log-ray / directional-Hessian framework, once a local curvature envelope is supplied on the chosen oriented ray.**
+
+This stage does **not** introduce a new constitutive law.
+It upgrades the Stage-188 quadratic predictor from a local approximation into a **certified local search tool** by adding exact curvature majorants/minorants for the oriented logarithmic closure residual.
+
+---
+
+## Purpose
+
+Stage 188 gave the exact first/second derivative data
+\[
+\Phi_0,\ \Phi_1,\ \Phi_2,
+\qquad
+L_0,\ L_1,
+\]
+and the exact quadratic affine/log predictors for the scalarized free-quintuple ray problem
+\[
+\Phi_{\mathbf s}(\tau)=1.
+\]
+That already solved the local predictor problem, but it still left one practical gap:
+
+> how do we turn those second-order predictors into a **certified** local root bracket, and how do we rank competing rays without running the full scalar solve on all of them?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact **oriented logarithmic residual** and its local curvature envelope,
+2. exact quadratic **minorant / majorant** functions on a ray,
+3. the exact monotone-branch root map
+   \[
+   \mathcal T(H_0,K_0;c),
+   \]
+4. the exact **certified bracket theorem** for monotone rays,
+5. the exact **turning-ray bracket theorem** when the first slope vanishes,
+6. the exact bracket-width law and its small-envelope expansion,
+7. the exact **pairwise ray-ordering theorem** for disjoint certified brackets,
+8. and the final Stage-189 conclusion that the free-quintuple search has become a true **search sieve** rather than only a local predictor library.
+
+So Stage 189 is the first place where the Stage-187/188 scalarized ray program becomes a rigorous branch-ranking tool.
+
+---
+
+## 1. Carry-forward scalarized ray and the oriented logarithmic residual
+
+Keep the Stage-187 graph-lifted free-quintuple log ray
+\[
+\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+\qquad
+\Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)).
+\]
+Stage 188 already defined the logarithmic scalar
+\[
+h_{\mathbf s}(\tau):=\ln \Phi_{\mathbf s}(\tau).
+\]
+To make the local crossing problem one-sided, define the **oriented** logarithmic residual
+\[
+\boxed{
+H_{\mathbf s}(\tau)
+:=
+\operatorname{sgn}\!\bigl(h_{\mathbf s}(0)\bigr)\,h_{\mathbf s}(\tau).
+}
+\]
+If necessary, replace `\(\mathbf s\)` by `\(-\mathbf s\)` so that the forward search direction is toward the closure slice. Then the oriented local data are
+\[
+\boxed{
+H_0:=H_{\mathbf s}(0)=\bigl|\ln\Phi_{\mathbf s}(0)\bigr|>0,
+\qquad
+K_0:=H_{\mathbf s}'(0)<0.
+}
+\]
+The remaining closure condition is simply
+\[
+\boxed{
+H_{\mathbf s}(\tau)=0.
+}
+\]
+So every admissible local branch search can be normalized to the same canonical shape:
+
+- positive initial oriented defect `\(H_0>0\)`,
+- negative initial oriented slope `\(K_0<0\)`,
+- and forward search parameter `\(\tau\ge0\)`.
+
+This is the natural Stage-188 continuation because it removes the sign bookkeeping while keeping the exact logarithmic scalarization.
+
+---
+
+## 2. Exact local curvature envelope and quadratic comparison functions
+
+Assume there is a controlled interval
+\[
+\boxed{I_T:=[0,T]}
+\]
+on which the oriented log curvature is bounded by exact constants
+\[
+\boxed{
+\underline K_1
+\le
+H_{\mathbf s}''(\tau)
+\le
+\overline K_1
+\qquad
+(0\le \tau\le T).
+}
+\]
+Integrating twice from `\(0\)` gives the exact quadratic comparison functions
+\[
+\boxed{
+H_-(\tau):=H_0+K_0\tau+\frac12\underline K_1\tau^2,
+\qquad
+H_+(\tau):=H_0+K_0\tau+\frac12\overline K_1\tau^2,
+}
+\]
+with the exact sandwich theorem
+\[
+\boxed{
+H_-(\tau)
+\le
+H_{\mathbf s}(\tau)
+\le
+H_+(\tau)
+\qquad
+(0\le\tau\le T).
+}
+\]
+So the Stage-188 second-order data become rigorous as soon as the directional Hessian of `\(\ln\widehat\chi_Q\)` is bounded on the local interval.
+
+### 2.1 Exact discriminants
+
+Define the quadratic discriminants
+\[
+\boxed{
+\Delta(c):=K_0^2-2cH_0,
+\qquad
+\Delta_-:=\Delta(\underline K_1),
+\qquad
+\Delta_+:=\Delta(\overline K_1).
+}
+\]
+Whenever `\(\Delta(c)\ge0\)`, the quadratic comparison curve with curvature `\(c\)` has a real forward root.
+
+---
+
+## 3. Exact monotone-branch root map
+
+For any real curvature parameter `\(c\)` with `\(\Delta(c)\ge0\)`, define the forward quadratic root map
+\[
+\boxed{
+\mathcal T(H_0,K_0;c)
+:=
+-\frac{2H_0}{K_0+\operatorname{sgn}(K_0)\sqrt{\Delta(c)}}.
+}
+\]
+On the oriented search branch `\(K_0<0\)`, this becomes
+\[
+\boxed{
+\mathcal T(H_0,K_0;c)
+=
+-\frac{2H_0}{K_0-\sqrt{K_0^2-2cH_0}}.
+}
+\]
+It is the exact forward root of
+\[
+H_0+K_0\tau+\frac12 c\tau^2=0
+\]
+that reduces continuously to the Stage-187/188 zero-curvature predictor.
+
+### 3.1 Zero-curvature limit
+
+As `\(c\to0\)`,
+\[
+\boxed{
+\mathcal T(H_0,K_0;0)=-\frac{H_0}{K_0}.
+}
+\]
+So the Stage-187 log-linear predictor is the zero-curvature limit of the Stage-189 certified bracket map.
+
+### 3.2 Exact monotonicity in the curvature parameter
+
+Differentiate the defining quadratic relation implicitly. One gets
+\[
+\boxed{
+\frac{\partial\mathcal T}{\partial c}
+=
+\frac{\mathcal T(H_0,K_0;c)^2}{2\sqrt{K_0^2-2cH_0}}
+>0.
+}
+\]
+So the forward root grows strictly with the curvature parameter.
+This is the key exact ordering fact behind the certified bracket theorem below.
+
+### 3.3 Collapse to the Stage-188 quadratic predictor
+
+If the curvature envelope collapses to a point,
+\[
+\underline K_1=\overline K_1=L_1,
+\]
+then
+\[
+\boxed{
+\tau_{\rm lo}=\tau_{\rm hi}=\mathcal T(H_0,K_0;L_1),
+}
+\]
+which is exactly the Stage-188 quadratic logarithmic predictor written in the oriented variables.
+
+So Stage 188 is recovered as the zero-width Stage-189 bracket.
+
+---
+
+## 4. Exact certified bracket theorem for monotone rays
+
+Define the two quadratic comparison roots
+\[
+\boxed{
+\tau_{\rm lo}:=\mathcal T(H_0,K_0;\underline K_1),
+\qquad
+\tau_{\rm hi}:=\mathcal T(H_0,K_0;\overline K_1).
+}
+\]
+By the exact monotonicity of `\(\mathcal T\)`,
+\[
+\boxed{
+0<\tau_{\rm lo}\le \tau_{\rm hi}
+}
+\]
+whenever `\(\Delta_\pm\ge0\)`.
+
+### 4.1 Exact descent sign on the whole bracket interval
+
+On `\([0,\tau_{\rm hi}]\)` the derivative obeys
+\[
+H_{\mathbf s}'(\tau)
+\le
+K_0+\overline K_1\tau.
+\]
+If `\(\overline K_1\ge0\)`, the right-hand side is increasing in `\(\tau\)` and therefore
+\[
+K_0+\overline K_1\tau
+\le
+K_0+\overline K_1\tau_{\rm hi}
+=
+-\sqrt{\Delta_+}<0.
+\]
+If `\(\overline K_1<0\)`, the right-hand side is decreasing and already satisfies
+\[
+K_0+\overline K_1\tau \le K_0 <0.
+\]
+So in both cases
+\[
+\boxed{
+H_{\mathbf s}'(\tau)<0
+\qquad(0\le\tau\le\tau_{\rm hi}).
+}
+\]
+Thus the true oriented residual is strictly decreasing throughout the certified bracket interval.
+
+### 4.2 Certified local bracket theorem
+
+\[
+\boxed{\textbf{Theorem (Stage 189 certified monotone bracket theorem).}}
+\]
+
+Assume:
+
+1. `\(H_0>0\)` and `\(K_0<0\)` on the oriented ray,
+2. `\(\underline K_1\le H_{\mathbf s}''(\tau)\le\overline K_1\)` on `\([0,T]\)`,
+3. `\(\Delta_-\ge0\)` and `\(\Delta_+\ge0\)`,
+4. `\(\tau_{\rm hi}\le T\)`.
+
+Then:
+
+- for every `\(0\le\tau<\tau_{\rm lo}\)`, one has
+  \[
+  H_{\mathbf s}(\tau)\ge H_-(\tau)>0,
+  \]
+  so the true root cannot occur before `\(\tau_{\rm lo}\)`;
+- at the upper comparison root,
+  \[
+  H_{\mathbf s}(\tau_{\rm hi})\le H_+(\tau_{\rm hi})=0,
+  \]
+  so the true root has occurred by `\(\tau_{\rm hi}\)`;
+- and because `\(H_{\mathbf s}'(\tau)<0\)` on `\([0,\tau_{\rm hi}]\)`, the true root is unique.
+
+Therefore there exists a unique actual closure point
+\[
+\boxed{
+\tau_*\in[\tau_{\rm lo},\tau_{\rm hi}].
+}
+\]
+
+So Stage 189 upgrades the Stage-188 quadratic predictor into a rigorous local bracket.
+
+---
+
+## 5. Exact turning-ray bracket theorem
+
+Stage 188 already identified the turning-point criterion for rays with vanishing first slope.
+Stage 189 promotes that criterion to a certified local bracket.
+
+Assume the oriented initial slope vanishes,
+\[
+\boxed{K_0=0,\qquad H_0>0,}
+\]
+and the local curvature envelope is strictly negative:
+\[
+\boxed{
+\underline K_1
+\le
+H_{\mathbf s}''(\tau)
+\le
+\overline K_1<0
+\qquad(0\le\tau\le T).
+}
+\]
+Then the quadratic comparison functions are
+\[
+H_-(\tau)=H_0+\frac12\underline K_1\tau^2,
+\qquad
+H_+(\tau)=H_0+\frac12\overline K_1\tau^2.
+\]
+Define the turning-ray comparison roots
+\[
+\boxed{
+\tau_{\rm lo}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\underline K_1}},
+\qquad
+\tau_{\rm hi}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\overline K_1}}.
+}
+\]
+Because `\(\underline K_1\le\overline K_1<0\)`, one has
+\[
+\boxed{
+0<\tau_{\rm lo}^{\rm(tp)}\le \tau_{\rm hi}^{\rm(tp)}.
+}
+\]
+Also
+\[
+H_{\mathbf s}'(\tau)
+\le
+\overline K_1\tau<0
+\qquad(0<\tau\le\tau_{\rm hi}^{\rm(tp)}),
+\]
+so the turning ray becomes strictly decreasing immediately after the base point.
+
+Hence:
+\[
+\boxed{\textbf{Theorem (Stage 189 certified turning-ray bracket theorem).}}
+\]
+
+If `\(\tau_{\rm hi}^{\rm(tp)}\le T\)`, then the true turning-ray closure point exists uniquely and obeys
+\[
+\boxed{
+\tau_*\in[\tau_{\rm lo}^{\rm(tp)},\tau_{\rm hi}^{\rm(tp)}].
+}
+\]
+
+So even the Stage-188 tangency/turning case can be turned into a certified bracket whenever the oriented curvature is strictly negative on a controlled interval.
+
+---
+
+## 6. Exact bracket width law and the small-envelope expansion
+
+For a monotone admissible ray define the exact bracket width
+\[
+\boxed{
+W_{\mathbf s}:=\tau_{\rm hi}-\tau_{\rm lo}.
+}
+\]
+Because the root map is strictly increasing in the curvature parameter,
+\[
+\boxed{
+W_{\mathbf s}>0
+\iff
+\overline K_1>\underline K_1.
+}
+\]
+So the bracket width is a direct measure of unresolved curvature uncertainty on the chosen ray.
+
+### 6.1 Symmetric-envelope expansion
+
+Write the envelope as
+\[
+\underline K_1=\bar K_1-\frac12\Delta K_1,
+\qquad
+\overline K_1=\bar K_1+\frac12\Delta K_1.
+\]
+Then, by odd-order Taylor cancellation,
+\[
+\boxed{
+W_{\mathbf s}
+=
+\frac{\mathcal T(H_0,K_0;\bar K_1)^2}{2\sqrt{K_0^2-2\bar K_1H_0}}
+\,\Delta K_1
++O(\Delta K_1^3).
+}
+\]
+So the width is linear in the curvature-envelope size at leading order.
+
+### 6.2 Zero-curvature simplification
+
+At `\(\bar K_1=0\)`, write
+\[
+\tau_0:=-\frac{H_0}{K_0},
+\]
+which is the oriented Stage-187 log-linear predictor. Then
+\[
+\boxed{
+W_{\mathbf s}
+=
+\frac{\tau_0^2}{2|K_0|}
+(\overline K_1-\underline K_1)
++O\!\bigl((\overline K_1-\underline K_1)^3\bigr).
+}
+\]
+So, near the Stage-187 limit, rays with larger initial descent `\(|K_0|\)` and smaller curvature-envelope size are exactly the rays with the tightest certified brackets.
+
+This is the first exact Stage-187/188 search-quality law.
+
+---
+
+## 7. Exact pairwise ray-ordering theorem
+
+Let two admissible rays `\(\mathbf s_a\)` and `\(\mathbf s_b\)` have certified brackets
+\[
+[\tau_{\rm lo}^{(a)},\tau_{\rm hi}^{(a)}],
+\qquad
+[\tau_{\rm lo}^{(b)},\tau_{\rm hi}^{(b)}].
+\]
+Then:
+\[
+\boxed{\textbf{Theorem (Stage 189 certified pairwise ray-ordering theorem).}}
+\]
+
+If
+\[
+\boxed{
+\tau_{\rm hi}^{(a)}<\tau_{\rm lo}^{(b)},
+}
+\]
+then the actual closure points satisfy
+\[
+\boxed{
+\tau_*^{(a)}<\tau_*^{(b)}.
+}
+\]
+So disjoint certified brackets produce a strict and exact ordering of rays.
+
+This is the first rigorous ranking theorem in the free-quintuple search program.
+
+### 7.1 Canonical local priority pair
+
+When certified brackets overlap, strict theorem-level ordering is not yet available. The natural audit ordering is then the exact priority pair
+\[
+\boxed{
+\mathcal Q_{\mathbf s}:=(\tau_{\rm hi},\ W_{\mathbf s}).
+}
+\]
+Smaller `\(\tau_{\rm hi}\)` means the ray reaches closure no later than a smaller guaranteed time, while smaller `\(W_{\mathbf s}\)` means the local placement is more sharply certified.
+
+So the Stage-189 search sieve is:
+
+1. reject rays with no admissible local bracket,
+2. certify strict pairwise order whenever brackets are disjoint,
+3. among overlapping candidates, sort lexicographically by `\(\mathcal Q_{\mathbf s}\)`.
+
+This last step is an audit convention rather than a theorem, but it is now backed by exact bracket data rather than by heuristic slope comparisons alone.
+
+---
+
+## 8. Exact admissibility test for the local search sieve
+
+A free-quintuple ray enters the Stage-189 search sieve only if one of the following exact local conditions is met.
+
+### 8.1 Monotone admissible ray
+
+A ray is locally admissible in the monotone class if:
+
+1. the oriented base data satisfy `\(H_0>0\)` and `\(K_0<0\)`,
+2. a finite curvature envelope `\([\underline K_1,\overline K_1]\)` is known on `\([0,T]\)`,
+3. both quadratic discriminants are nonnegative,
+4. the certified upper bracket satisfies `\(\tau_{\rm hi}\le T\)`.
+
+### 8.2 Turning admissible ray
+
+A ray is locally admissible in the turning class if:
+
+1. `\(H_0>0\)` and `\(K_0=0\)`,
+2. a strictly negative curvature envelope is known on `\([0,T]\)`,
+3. the upper turning bracket satisfies `\(\tau_{\rm hi}^{\rm(tp)}\le T\)`.
+
+Every other local ray is uncertified at this stage and should be deprioritized in the scalarized search.
+
+---
+
+## 9. Best current reading after Stage 189
+
+Stage 187 turned the reduced home stretch into an explicit one-parameter free-quintuple log-ray search.
+Stage 188 turned that search into an exact second-order predictor problem.
+Stage 189 now turns it into a **certified search sieve**.
+
+The final reduced search is no longer organized by vague statements like
+“follow a promising ray.”
+It is now organized by exact local data on each candidate ray:
+
+1. the oriented defect `\(H_0\)`,
+2. the oriented initial slope `\(K_0\)`,
+3. the local curvature envelope `\([\underline K_1,\overline K_1]\)`.
+
+Those three ingredients determine:
+
+- whether the ray is locally admissible,
+- an exact local root bracket,
+- the bracket width,
+- and, when brackets separate, an exact pairwise ray ordering.
+
+So after Stage 189 the next honest continuation is no longer to invent another predictor.
+It is to evaluate the actual directional Hessian envelope of `\(\ln\widehat\chi_Q\)` on candidate free-quintuple rays and let the certified bracket/ranking theorem decide which rays are genuinely worth following in the final scalar branch search.
+moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+# Moving-Throat PDE — Stage 190: Primitive-Ray Hessian Envelopes, Exact Certified Ray Table, and the Local Elimination Theorem
+
+## Status
+
+**Exact within the carried Stage-187 primitive free-ray family and the Stage-189 certified local bracket / ranking framework, once a local diagonal Hessian envelope of `\(\ln\widehat\chi_Q\)` is supplied on the chosen primitive intervals.**
+
+This stage does **not** introduce a new constitutive law.
+It specializes the generic Stage-189 search sieve to the five primitive free-quintuple rays and isolates the smallest actual differential data the completed PDE must return before the primitive local search is fully decided.
+
+---
+
+## Purpose
+
+Stage 187 already gave the exact primitive free-direction table
+\[
+\mathbf e_\lambda,\ \mathbf e_c,\ \mathbf e_\gamma,\ \mathbf e_U,\ \mathbf e_W,
+\]
+and Stage 189 upgraded the scalarized branch search to a certified local bracket theorem on an arbitrary oriented ray.
+
+That left one sharp continuation point:
+
+> what does the Stage-189 sieve become when we apply it to the **actual primitive candidate rays**, and how much Hessian data does the PDE really need at that level?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact **canonical orientation rule** for each primitive ray,
+2. the exact theorem that a primitive ray uses only one diagonal Hessian restriction
+   \[
+   \partial_{\ell_i\ell_i}\ln\widehat\chi_Q,
+   \]
+   with no off-diagonal entry,
+3. the exact **primitive certified ray table** carrying both the Stage-187 microscopic drift data and the Stage-189 bracket data,
+4. the exact **primitive elimination theorem**,
+5. the exact **primitive winner theorem** when one certified bracket sits strictly to the left of all others,
+6. and the exact statement that off-diagonal Hessian entries first appear only for genuine two-coordinate mixed rays.
+
+So Stage 190 is the first point where the final scalar branch search becomes a concrete five-row primitive audit table rather than a generic ray library.
+
+---
+
+## 1. Carry-forward free log coordinates and the scalar closure function
+
+Keep the free-quintuple logarithmic coordinates
+\[
+\boxed{
+\boldsymbol\ell:=(\ell_\lambda,\ell_c,\ell_\gamma,\ell_U,\ell_W)
+=(\ln\lambda_W,\ln c_{\eta U},\ln\gamma,\ln K_U,\ln K_W^{(\mathrm{eff})}).
+}
+\]
+Define the carried scalar closure function
+\[
+\boxed{
+h(\boldsymbol\ell):=\ln\widehat\chi_Q(\boldsymbol\ell).
+}
+\]
+Fix a positive base point `\(\boldsymbol\ell_\circ\)` and write
+\[
+\boxed{
+h_0:=h(\boldsymbol\ell_\circ),
+\qquad
+\sigma_0:=\operatorname{sgn}(h_0),
+\qquad
+H_0:=|h_0|>0.
+}
+\]
+The oriented logarithmic residual of Stage 189 is therefore
+\[
+H_{\mathbf s}(\tau)=\sigma_0\,h(\boldsymbol\ell_\circ+\tau\mathbf s).
+\]
+Its initial directional slope and curvature are
+\[
+K_0(\mathbf s)=\sigma_0\,(\mathbf s\cdot\nabla_\ell h)(\boldsymbol\ell_\circ),
+\qquad
+H_1(\mathbf s;\tau)=\sigma_0\,\mathbf s^T H_h(\boldsymbol\ell_\circ+\tau\mathbf s)\mathbf s,
+\]
+where `\(H_h\)` is the Hessian of `\(h\)` in the log coordinates.
+
+So the Stage-189 data for any candidate ray are still:
+
+1. the positive initial defect `\(H_0\)`,
+2. the oriented initial slope `\(K_0\)`,
+3. a local curvature envelope for `\(H_1\)`.
+
+---
+
+## 2. Primitive candidate rays and their canonical orientation
+
+The five primitive free rays are
+\[
+\boxed{
+\mathbf e_\lambda,
+\quad
+\mathbf e_c,
+\quad
+\mathbf e_\gamma,
+\quad
+\mathbf e_U,
+\quad
+\mathbf e_W.
+}
+\]
+Define the five oriented gradient components at the base point
+\[
+\boxed{
+\Gamma_i:=\sigma_0\,\partial_{\ell_i}h(\boldsymbol\ell_\circ),
+\qquad
+i\in\{\lambda,c,\gamma,U,W\}.
+}
+\]
+These are the Stage-189 initial slopes on the **positive** primitive axes.
+
+### 2.1 Monotone primitive rays
+
+If `\(\Gamma_i\neq0\)`, define the canonical sign
+\[
+\boxed{
+\varepsilon_i:=-\operatorname{sgn}(\Gamma_i),
+\qquad
+\widehat{\mathbf s}_i:=\varepsilon_i\mathbf e_i.
+}
+\]
+Then the oriented initial slope is exactly
+\[
+\boxed{
+K_i:=K_0(\widehat{\mathbf s}_i)=\varepsilon_i\Gamma_i=-|\Gamma_i|<0.
+}
+\]
+So every nonflat primitive axis admits a unique canonical forward orientation that points toward local closure.
+
+### 2.2 Turning primitive rays
+
+If `\(\Gamma_i=0\)`, the primitive axis is a turning candidate. Its sign is irrelevant at first order, and Stage 189 says the forward root question is decided entirely by the sign and envelope of the second derivative.
+
+So the primitive search problem splits cleanly:
+
+- `\(\Gamma_i\neq0\)`  → monotone primitive candidate,
+- `\(\Gamma_i=0\)`     → turning primitive candidate.
+
+---
+
+## 3. Exact primitive Hessian-envelope theorem
+
+For a primitive candidate ray,
+\[
+\widehat{\mathbf s}_i=\varepsilon_i\mathbf e_i,
+\qquad
+\varepsilon_i^2=1.
+\]
+Therefore the exact second-order directional operator is
+\[
+\boxed{
+\mathcal H_{\widehat{\mathbf s}_i}
+=
+(\varepsilon_i\mathbf e_i)^T H_h (\varepsilon_i\mathbf e_i)
+=
+\partial_{\ell_i\ell_i}.
+}
+\]
+So the primitive ray curvature depends only on the corresponding diagonal Hessian restriction:
+\[
+\boxed{
+H_1^{(i)}(\tau)
+=
+\sigma_0\,\partial_{\ell_i\ell_i}h(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_i).
+}
+\]
+This is the first main theorem of the stage.
+
+### Primitive Hessian-envelope theorem
+
+If, on an interval `\([0,T_i]\)`, the oriented diagonal Hessian restriction obeys
+\[
+\boxed{
+\underline\kappa_i
+\le
+\sigma_0\,\partial_{\ell_i\ell_i}h(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_i)
+\le
+\overline\kappa_i,
+\qquad
+0\le\tau\le T_i,
+}
+\]
+then that interval is the **full** Stage-189 curvature envelope for the primitive ray.
+
+So no off-diagonal Hessian entry is needed to certify any primitive ray.
+The completed PDE must provide only the five diagonal restrictions
+\[
+\partial_{\ell_\lambda\ell_\lambda}h,
+\quad
+\partial_{\ell_c\ell_c}h,
+\quad
+\partial_{\ell_\gamma\ell_\gamma}h,
+\quad
+\partial_{\ell_U\ell_U}h,
+\quad
+\partial_{\ell_W\ell_W}h
+\]
+along the corresponding oriented primitive intervals.
+
+---
+
+## 4. Sign-adapted primitive microscopic drift table
+
+Stage 187 already fixed the dependent graph exponents in terms of the free log-ray direction.
+Write
+\[
+\boxed{
+\mathfrak a_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.
+}
+\]
+For a primitive ray `\(\widehat{\mathbf s}_i=\varepsilon_i\mathbf e_i\)`, the dependent graph exponents are just the Stage-187 primitive values multiplied by the orientation sign `\(\varepsilon_i\)`.
+
+| Primitive ray | `\(\sigma_\delta\)` | `\(\sigma_T\)` | `\(\sigma_{K_\eta}\)` | `\(\sigma_\mu\)` |
+|---|---:|---:|---:|---:|
+| `\(\widehat{\mathbf s}_\lambda=\varepsilon_\lambda\mathbf e_\lambda\)` | `\(0\)` | `\(0\)` | `\(0\)` | `\(\varepsilon_\lambda(-2-2E_*)\)` |
+| `\(\widehat{\mathbf s}_c=\varepsilon_c\mathbf e_c\)` | `\(-\varepsilon_c\mathfrak a_*\)` | `\(-\varepsilon_c\mathfrak a_*\)` | `\(2\varepsilon_c\)` | `\(\varepsilon_c(2-F_*\mathfrak a_*)\)` |
+| `\(\widehat{\mathbf s}_\gamma=\varepsilon_\gamma\mathbf e_\gamma\)` | `\(-\varepsilon_\gamma\mathfrak a_*\)` | `\(-\varepsilon_\gamma\mathfrak a_*\)` | `\(0\)` | `\(\varepsilon_\gamma(-2E_*-F_*\mathfrak a_*)\)` |
+| `\(\widehat{\mathbf s}_U=\varepsilon_U\mathbf e_U\)` | `\(+\varepsilon_U\mathfrak a_*\)` | `\(\varepsilon_U(1+\mathfrak a_*)\)` | `\(-\varepsilon_U\)` | `\(\varepsilon_U(-1+E_*+F_*\mathfrak a_*)\)` |
+| `\(\widehat{\mathbf s}_W=\varepsilon_W\mathbf e_W\)` | `\(0\)` | `\(0\)` | `\(0\)` | `\(\varepsilon_W(2+E_*)\)` |
+
+So Stage 190 does not replace the Stage-187 primitive family compiler.
+It adds the exact certified search data to it.
+
+---
+
+## 5. Exact certified primitive ray table
+
+For each primitive index `\(i\in\{\lambda,c,\gamma,U,W\}\)`, define the primitive data packet
+\[
+\boxed{
+\mathcal R_i^{\rm prim}
+:=
+(H_0,\Gamma_i,\underline\kappa_i,\overline\kappa_i,T_i).
+}
+\]
+The Stage-189 root map is
+\[
+\mathcal T(H_0,k;c)= -\frac{2H_0}{-k-\sqrt{k^2-2cH_0}} = \frac{2H_0}{k+\sqrt{k^2-2cH_0}},
+\qquad k>0.
+\]
+
+### 5.1 Monotone primitive rows
+
+If `\(\Gamma_i\neq0\)`, set
+\[
+\boxed{k_i:=|\Gamma_i|>0.}
+\]
+The two discriminants are
+\[
+\boxed{
+\Delta_i^{\rm lo}:=k_i^2-2\underline\kappa_iH_0,
+\qquad
+\Delta_i^{\rm hi}:=k_i^2-2\overline\kappa_iH_0.
+}
+\]
+If both are nonnegative, define the certified bracket
+\[
+\boxed{
+\tau_{i,\rm lo}:=\mathcal T(H_0,k_i;\underline\kappa_i),
+\qquad
+\tau_{i,\rm hi}:=\mathcal T(H_0,k_i;\overline\kappa_i),
+}
+\]
+with width
+\[
+\boxed{W_i:=\tau_{i,\rm hi}-\tau_{i,\rm lo}.}
+\]
+If also `\(\tau_{i,\rm hi}\le T_i\)`, then the primitive ray is locally admissible and Stage 189 guarantees one unique true primitive closure point
+\[
+\boxed{\tau_*^{(i)}\in[\tau_{i,\rm lo},\tau_{i,\rm hi}].}
+\]
+
+### 5.2 Turning primitive rows
+
+If `\(\Gamma_i=0\)`, the primitive ray is turning-admissible only when
+\[
+\boxed{\overline\kappa_i<0.}
+\]
+Then the exact turning comparison roots are
+\[
+\boxed{
+\tau_{i,\rm lo}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\underline\kappa_i}},
+\qquad
+\tau_{i,\rm hi}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\overline\kappa_i}},
+}
+\]
+with turning width
+\[
+\boxed{W_i^{\rm(tp)}:=\tau_{i,\rm hi}^{\rm(tp)}-\tau_{i,\rm lo}^{\rm(tp)}.}
+\]
+If `\(\tau_{i,\rm hi}^{\rm(tp)}\le T_i\)`, then Stage 189 again gives one unique primitive closure point on that axis.
+
+### 5.3 Compact certified primitive-ray table
+
+So each primitive row is decided by the exact data
+
+| Row type | Input data | Certified output |
+|---|---|---|
+| monotone primitive | `\(H_0,\ k_i,\ \underline\kappa_i,\ \overline\kappa_i,\ T_i\)` | `\([\tau_{i,\rm lo},\tau_{i,\rm hi}],\ W_i\)` |
+| turning primitive | `\(H_0,\ \underline\kappa_i,\ \overline\kappa_i,\ T_i\)` with `\(\overline\kappa_i<0\)` | `\([\tau_{i,\rm lo}^{\rm(tp)},\tau_{i,\rm hi}^{\rm(tp)}],\ W_i^{\rm(tp)}\)` |
+
+This is the first fully explicit certified ray table for the moving-throat free-quintuple search.
+
+---
+
+## 6. Exact primitive elimination theorem
+
+A primitive candidate ray is **eliminated** from the certified local search sieve if any of the following exact conditions hold.
+
+### 6.1 Monotone primitive elimination
+
+For `\(\Gamma_i\neq0\)`, the primitive row is eliminated if
+
+1. one of the discriminants is negative,
+   \[
+   \Delta_i^{\rm lo}<0\quad\text{or}\quad\Delta_i^{\rm hi}<0,
+   \]
+   so no certified local quadratic comparison root exists; or
+2. the certified upper bracket exceeds the local validity interval,
+   \[
+   \tau_{i,\rm hi}>T_i.
+   \]
+
+### 6.2 Turning primitive elimination
+
+For `\(\Gamma_i=0\)`, the primitive row is eliminated if
+
+1. `\(\overline\kappa_i\ge0\)`, so the turning branch is not locally downward-bending; or
+2. `\(\tau_{i,\rm hi}^{\rm(tp)}>T_i\)`.
+
+### 6.3 Primitive elimination theorem
+
+Therefore:
+\[
+\boxed{\textbf{A primitive ray survives the certified local sieve iff it satisfies the corresponding Stage-189 admissibility test on its own primitive row.}}
+\]
+
+So after Stage 190 the primitive local search is no longer heuristic at all.
+It is a finite exact elimination problem on five rows.
+
+---
+
+## 7. Exact primitive winner theorem and the local priority pair
+
+Suppose primitive rows `\(i\)` and `\(j\)` are both admissible.
+Then Stage 189 gives the exact pairwise ordering theorem:
+\[
+\boxed{
+\tau_{i,\rm hi}<\tau_{j,\rm lo}
+\quad\Longrightarrow\quad
+\tau_*^{(i)}<\tau_*^{(j)}.
+}
+\]
+So if there exists one primitive row `\(i\)` with
+\[
+\boxed{
+\tau_{i,\rm hi}<\min_{j\neq i}\tau_{j,\rm lo},
+}
+\]
+then `\(i\)` is the unique earliest primitive closure direction.
+
+When certified brackets overlap, the exact theorem-level winner is no longer fixed, but the Stage-189 local priority pair remains
+\[
+\boxed{
+\mathcal Q_i:=(\tau_{i,\rm hi},W_i)
+}
+\]
+(or the turning analogue when `\(\Gamma_i=0\)`).
+So the primitive local ranking rule is:
+
+1. eliminate every nonadmissible primitive row,
+2. certify strict winner status whenever one upper bracket lies below all other lower brackets,
+3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
+
+This is the exact Stage-190 primitive winner theorem.
+
+---
+
+## 8. Exact diagonal-Hessian sufficiency theorem and the mixed-ray preview
+
+The primitive Hessian-envelope theorem shows that primitive certification uses only the five diagonal Hessian restrictions.
+The reason is exact:
+\[
+\boxed{
+\mathcal H_{\widehat{\mathbf s}_i}=\partial_{\ell_i\ell_i}.
+}
+\]
+But if we move to a genuine two-coordinate ray
+\[
+\mathbf s=a\mathbf e_i+b\mathbf e_j,
+\qquad i\neq j,
+\]
+then the exact second directional derivative becomes
+\[
+\boxed{
+\mathcal H_{\mathbf s}
+=
+a^2\partial_{\ell_i\ell_i}
++2ab\partial_{\ell_i\ell_j}
++b^2\partial_{\ell_j\ell_j}.
+}
+\]
+So the off-diagonal Hessian entries `\(\partial_{\ell_i\ell_j}h\)` first appear **only** for mixed rays.
+
+This gives the exact sufficiency theorem:
+\[
+\boxed{
+\textbf{Stage 190 exhausts all certified primitive-ray information using only the diagonal Hessian envelopes.}
+}
+\]
+No cross-Hessian datum can change any primitive certified bracket or primitive winner ordering.
+It can only matter when the search is enlarged beyond the primitive family.
+
+---
+
+## 9. Best current reading after Stage 190
+
+Stage 187 gave the exact primitive free-direction family.
+Stage 189 turned the scalarized branch search into a certified local bracket / ranking theorem.
+Stage 190 now compresses the primitive local search to the smallest exact data packet the completed PDE still has to provide:
+
+1. the base defect magnitude `\(H_0=|\ln\widehat\chi_Q(\boldsymbol\ell_\circ)|\)`,
+2. the five oriented primitive gradient components `\(\Gamma_i\)`,
+3. the five oriented primitive diagonal Hessian envelopes `\([\underline\kappa_i,\overline\kappa_i]\)`,
+4. the five local validity lengths `\(T_i\)`.
+
+Those data determine the entire primitive certified ray table, the primitive eliminations, and—when brackets separate—the exact primitive winner.
+
+So the next honest continuation is no longer to discuss primitive rays abstractly.
+It is to move one step beyond them:
+
+> evaluate the first genuine two-coordinate mixed rays, where the off-diagonal Hessian entries of `\(\ln\widehat\chi_Q\)` can finally enter and possibly beat the primitive certified brackets.
+
+That is the natural Stage-191 gate.
+moving_throat_pde_stage191_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+# Moving-Throat PDE — Stage 191: Pairwise Mixed Rays, Exact Off-Diagonal Hessian Synergy, and the Canonical Two-Ray Audit
+
+## Status
+
+**Exact within the carried Stage-189 scalarized search framework and the Stage-190 primitive certified sieve, once local pairwise diagonal/off-diagonal Hessian envelopes are supplied on the chosen mixed-ray intervals.**
+
+This stage does **not** introduce a new constitutive law.
+It is the first exact continuation beyond the primitive-ray table: the first place where the off-diagonal Hessian entries of
+\[
+\ln\widehat\chi_Q
+\]
+can actually enter the certified local search.
+
+---
+
+## Purpose
+
+Stage 190 proved that every primitive ray uses only one diagonal Hessian restriction
+\[
+\partial_{\ell_i\ell_i}\ln\widehat\chi_Q,
+\]
+so no off-diagonal Hessian entry can affect the primitive certified brackets.
+That already closed the primitive local sieve, but it also made the next gate completely sharp:
+
+> what is the first exact mixed-ray family, how do the off-diagonal Hessian terms enter it, and what is the smallest certified pairwise audit that can possibly beat the primitive winners?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact **pairwise mixed-ray cone** built from two canonically oriented primitive descent directions,
+2. the exact **gradient-synergy theorem** for the initial mixed slope,
+3. the exact **off-diagonal curvature-synergy law** and the proof that the equal-mix ray maximizes cross-Hessian leverage,
+4. the exact **mixed-ray curvature-envelope theorem** and certified bracket theorem for a fixed mixing ratio,
+5. two exact canonical screen rays for each primitive pair:
+   - the **gradient-optimal** ray,
+   - the **equal-mix synergy** ray,
+6. and the exact rule that the full one-parameter pairwise optimizer is now the only missing step beyond this first mixed-ray screen.
+
+So Stage 191 is the first theorem-level audit of genuine two-coordinate mixed rays.
+It does **not** yet solve the full pairwise optimization problem, but it reduces that problem to a one-parameter family with two exact canonical screening rays.
+
+---
+
+## 1. Carry-forward primitive data and the pairwise mixed-ray cone
+
+Keep the free log coordinates
+\[
+\boldsymbol\ell=(\ell_\lambda,\ell_c,\ell_\gamma,\ell_U,\ell_W)
+\]
+and the scalar closure function
+\[
+h(\boldsymbol\ell)=\ln\widehat\chi_Q(\boldsymbol\ell).
+\]
+At the base point `\(\boldsymbol\ell_\circ\)`, Stage 190 already defined
+\[
+H_0=|h(\boldsymbol\ell_\circ)|>0,
+\qquad
+\Gamma_i=\sigma_0\,\partial_{\ell_i}h(\boldsymbol\ell_\circ),
+\qquad
+\sigma_0=\operatorname{sgn}(h(\boldsymbol\ell_\circ)).
+\]
+For every primitive axis with `\(\Gamma_i\neq0\)`, the canonical oriented primitive direction is
+\[
+\widehat{\mathbf e}_i:=\varepsilon_i\mathbf e_i,
+\qquad
+\varepsilon_i:=-\operatorname{sgn}(\Gamma_i),
+\qquad
+k_i:=|\Gamma_i|>0.
+\]
+So the forward primitive slope on `\(\widehat{\mathbf e}_i\)` is exactly
+\[
+K_i=-k_i<0.
+\]
+
+Now fix a **monotone–monotone primitive pair** `\(i\neq j\)` with
+\[
+\Gamma_i\neq0,
+\qquad
+\Gamma_j\neq0.
+\]
+The first genuine mixed-ray cone is the one-parameter family
+\[
+\boxed{
+\widehat{\mathbf s}_{ij}(r)
+:=
+\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
+\qquad r\ge0.
+}
+\]
+If all five primitive gradients are nonzero, this produces the full set of
+\[
+\binom{5}{2}=10
+\]
+monotone pairwise cones:
+\[
+(\lambda,c),\ (\lambda,\gamma),\ (\lambda,U),\ (\lambda,W),\ (c,\gamma),\ (c,U),\ (c,W),\ (\gamma,U),\ (\gamma,W),\ (U,W).
+\]
+Mixed rays involving a turning primitive axis are deferred to the next stage.
+
+---
+
+## 2. Exact gradient-synergy theorem
+
+The oriented initial slope on the pairwise mixed ray is
+\[
+\boxed{
+K_{ij}(r)
+:=
+\sigma_0\,\nabla_\ell h(\boldsymbol\ell_\circ)\cdot \widehat{\mathbf s}_{ij}(r)
+=
+-\frac{k_i+r k_j}{\sqrt{1+r^2}}.
+}
+\]
+So the positive slope magnitude carried into the Stage-189 root map is
+\[
+\boxed{
+k_{ij}(r):=\frac{k_i+r k_j}{\sqrt{1+r^2}}>0.
+}
+\]
+
+Differentiating gives the exact first-order mixed-slope law
+\[
+\boxed{
+\frac{d k_{ij}}{dr}
+=
+\frac{k_j-k_i r}{(1+r^2)^{3/2}}.
+}
+\]
+Therefore the mixed-slope magnitude has a unique maximizer
+\[
+\boxed{
+r_{ij}^{\rm grad}=\frac{k_j}{k_i},
+}
+\]
+with exact maximum value
+\[
+\boxed{
+k_{ij}^{\rm grad}=\sqrt{k_i^2+k_j^2}.
+}
+\]
+So the first mixed-ray theorem is:
+
+### Exact gradient-synergy theorem
+
+For every monotone–monotone primitive pair,
+\[
+\boxed{
+\max_{r\ge0} k_{ij}(r)=\sqrt{k_i^2+k_j^2}>\max(k_i,k_j).
+}
+\]
+Thus a mixed ray can improve the **first-order** descent rate even when the off-diagonal Hessian entry vanishes.
+The off-diagonal Hessian is therefore the first genuinely new **curvature** datum, not the first source of mixed-ray advantage.
+
+---
+
+## 3. Exact off-diagonal curvature-synergy law
+
+Along the pairwise mixed ray define the oriented Hessian entries
+\[
+h_{ii}^{(ij)}(r;\tau)
+:=
+\sigma_0\,\partial_{\ell_i\ell_i}h\bigl(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_{ij}(r)\bigr),
+\]
+\[
+h_{jj}^{(ij)}(r;\tau)
+:=
+\sigma_0\,\partial_{\ell_j\ell_j}h\bigl(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_{ij}(r)\bigr),
+\]
+\[
+h_{ij}^{(ij)}(r;\tau)
+:=
+\sigma_0\,\varepsilon_i\varepsilon_j\,
+\partial_{\ell_i\ell_j}h\bigl(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_{ij}(r)\bigr).
+\]
+Then the exact mixed second directional derivative is
+\[
+\boxed{
+H_{1,ij}(r;\tau)
+=
+\frac{h_{ii}^{(ij)}(r;\tau)+2r\,h_{ij}^{(ij)}(r;\tau)+r^2 h_{jj}^{(ij)}(r;\tau)}{1+r^2}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+H_{1,ij}(r;\tau)
+=
+\frac{h_{ii}^{(ij)}+r^2 h_{jj}^{(ij)}}{1+r^2}
++
+\frac{2r}{1+r^2}\,h_{ij}^{(ij)}.
+}
+\]
+So the off-diagonal Hessian contributes with the exact cross weight
+\[
+\boxed{
+w_{\times}(r):=\frac{2r}{1+r^2}.
+}
+\]
+It satisfies
+\[
+0\le w_{\times}(r)\le1,
+\qquad
+\frac{d w_{\times}}{dr}=\frac{2(1-r^2)}{(1+r^2)^2},
+\]
+hence
+\[
+\boxed{
+\max_{r\ge0} w_{\times}(r)=1
+\quad\text{at}\quad r=1.
+}
+\]
+
+This gives the second main theorem.
+
+### Exact off-diagonal curvature-synergy theorem
+
+The **equal-mix ray**
+\[
+\boxed{
+\widehat{\mathbf s}_{ij}^{\rm eq}:=\frac{\widehat{\mathbf e}_i+\widehat{\mathbf e}_j}{\sqrt2}
+}
+\]
+maximizes the absolute leverage of the off-diagonal Hessian entry inside the pairwise cone.
+
+So there are two exact but different canonical ratios already at Stage 191:
+
+- `\(r_{ij}^{\rm grad}=k_j/k_i\)` maximizes first-order descent,
+- `\(r_{ij}^{\rm eq}=1\)` maximizes cross-Hessian leverage.
+
+### Exact diagonal-neutrality law
+
+If
+\[
+h_{ij}^{(ij)}(r;\tau)=0,
+\]
+then the pairwise curvature is the convex interpolation of the two diagonal restrictions:
+\[
+\boxed{
+H_{1,ij}(r;\tau)=\frac{h_{ii}^{(ij)}(r;\tau)+r^2 h_{jj}^{(ij)}(r;\tau)}{1+r^2}.
+}
+\]
+So the off-diagonal Hessian is exactly the first datum that can lower or raise the pairwise curvature beyond diagonal interpolation.
+
+---
+
+## 4. Exact mixed-ray curvature envelopes and certified brackets
+
+Fix a pair `\((i,j)\)` and a chosen mixing ratio `\(r\ge0\)`.
+Assume the pairwise mixed ray is valid on an interval
+\[
+\boxed{0\le \tau\le T_{ij}(r)}
+\]
+and that on this interval the three oriented Hessian entries admit bounds
+\[
+\underline h_{ii}\le h_{ii}^{(ij)}(r;\tau)\le \overline h_{ii},
+\qquad
+\underline h_{ij}\le h_{ij}^{(ij)}(r;\tau)\le \overline h_{ij},
+\qquad
+\underline h_{jj}\le h_{jj}^{(ij)}(r;\tau)\le \overline h_{jj}.
+\]
+Because the weights are nonnegative for `\(r\ge0\)`, the exact mixed curvature bounds are
+\[
+\boxed{
+\underline\kappa_{ij}(r)
+:=
+\frac{\underline h_{ii}+2r\underline h_{ij}+r^2\underline h_{jj}}{1+r^2},
+}
+\]
+\[
+\boxed{
+\overline\kappa_{ij}(r)
+:=
+\frac{\overline h_{ii}+2r\overline h_{ij}+r^2\overline h_{jj}}{1+r^2}.
+}
+\]
+So the pairwise mixed ray is again inside the exact Stage-189 certified framework, now with slope magnitude `\(k_{ij}(r)\)` and curvature envelope `\([\underline\kappa_{ij}(r),\overline\kappa_{ij}(r)]\)`.
+
+Using the carried monotone-ray root map
+\[
+\boxed{
+\mathcal T(H_0,k;c):=
+\frac{2H_0}{k+\sqrt{k^2-2cH_0}},
+\qquad k>0,
+}
+\]
+define the mixed discriminants
+\[
+\boxed{
+\Delta_{ij}^{\rm lo}(r):=k_{ij}(r)^2-2\underline\kappa_{ij}(r)H_0,
+\qquad
+\Delta_{ij}^{\rm hi}(r):=k_{ij}(r)^2-2\overline\kappa_{ij}(r)H_0.
+}
+\]
+Whenever both are nonnegative, the exact pairwise certified bracket is
+\[
+\boxed{
+\tau_{ij,\rm lo}(r):=\mathcal T\bigl(H_0,k_{ij}(r);\underline\kappa_{ij}(r)\bigr),
+\qquad
+\tau_{ij,\rm hi}(r):=\mathcal T\bigl(H_0,k_{ij}(r);\overline\kappa_{ij}(r)\bigr).
+}
+\]
+If also
+\[
+\boxed{
+\tau_{ij,\rm hi}(r)\le T_{ij}(r),
+}
+\]
+then there exists one unique true mixed-ray closure point on that ray, lying in
+\[
+\boxed{
+\tau_*^{(ij)}(r)\in[\tau_{ij,\rm lo}(r),\tau_{ij,\rm hi}(r)].
+}
+\]
+So Stage 191 reduces every fixed pairwise ratio to the same certified bracket theorem already used for primitive rows.
+
+---
+
+## 5. The two canonical pairwise audit rays
+
+Although the full pairwise cone is one-parameter, two exact rays already isolate the two independent advantages a mixed ray can exploit.
+
+### 5.1 Gradient-optimal ray
+
+The exact gradient-optimal ratio is
+\[
+\boxed{
+r_{ij}^{\rm grad}=\frac{k_j}{k_i}.}
+\]
+So the normalized gradient-optimal ray is
+\[
+\boxed{
+\widehat{\mathbf s}_{ij}^{\rm grad}
+=
+\frac{k_i\widehat{\mathbf e}_i+k_j\widehat{\mathbf e}_j}{\sqrt{k_i^2+k_j^2}}.
+}
+\]
+Its exact slope magnitude is
+\[
+\boxed{
+k_{ij}^{\rm grad}=\sqrt{k_i^2+k_j^2}.
+}
+\]
+Its exact curvature is the weighted Rayleigh quotient
+\[
+\boxed{
+H_{1,ij}^{\rm grad}(\tau)
+=
+\frac{k_i^2 h_{ii}^{\rm grad}(\tau)+2k_i k_j h_{ij}^{\rm grad}(\tau)+k_j^2 h_{jj}^{\rm grad}(\tau)}{k_i^2+k_j^2}.
+}
+\]
+So this ray maximizes first-order descent inside the pairwise cone.
+
+### 5.2 Equal-mix synergy ray
+
+The exact equal-mix ray is
+\[
+\boxed{
+\widehat{\mathbf s}_{ij}^{\rm eq}
+=
+\frac{\widehat{\mathbf e}_i+\widehat{\mathbf e}_j}{\sqrt2}.
+}
+\]
+Its exact slope magnitude is
+\[
+\boxed{
+k_{ij}^{\rm eq}=\frac{k_i+k_j}{\sqrt2}.
+}
+\]
+Its exact curvature is
+\[
+\boxed{
+H_{1,ij}^{\rm eq}(\tau)
+=
+\frac{h_{ii}^{\rm eq}(\tau)+2h_{ij}^{\rm eq}(\tau)+h_{jj}^{\rm eq}(\tau)}{2}.
+}
+\]
+So this ray maximizes the cross-Hessian leverage inside the pairwise cone.
+
+### 5.3 Exact comparison of the two canonical rays
+
+The gradient-optimal and equal-mix rays coincide iff
+\[
+\boxed{k_i=k_j.}
+\]
+Otherwise they are distinct.
+So Stage 191 exposes the first genuine tradeoff in the mixed-ray search:
+
+- one ray optimizes **descent magnitude**,
+- the other optimizes **off-diagonal curvature leverage**.
+
+That is why both belong in the canonical pairwise audit.
+
+---
+
+## 6. Exact canonical pairwise screen and the promotion rule
+
+For every monotone primitive pair `\((i,j)\)`, define the two canonical mixed-ray rows
+\[
+\boxed{
+\mathcal R_{ij}^{\rm grad}
+:=
+(H_0,k_{ij}^{\rm grad},\underline\kappa_{ij}^{\rm grad},\overline\kappa_{ij}^{\rm grad},T_{ij}^{\rm grad}),
+}
+\]
+\[
+\boxed{
+\mathcal R_{ij}^{\rm eq}
+:=
+(H_0,k_{ij}^{\rm eq},\underline\kappa_{ij}^{\rm eq},\overline\kappa_{ij}^{\rm eq},T_{ij}^{\rm eq}).
+}
+\]
+Here the envelope data are obtained by evaluating the Stage-191 mixed curvature-envelope formulas at the corresponding canonical ratio.
+
+This gives the first exact pairwise promotion rule.
+
+### Canonical pairwise promotion theorem
+
+If one of the two canonical rows is admissible and its certified upper bracket lies strictly to the left of every surviving primitive lower bracket, i.e.
+\[
+\boxed{
+\tau_{ij,\rm hi}^{\rm grad}<\min_m \tau_{m,\rm lo}^{\rm prim}
+\quad\text{or}\quad
+\tau_{ij,\rm hi}^{\rm eq}<\min_m \tau_{m,\rm lo}^{\rm prim},
+}
+\]
+then that pair is already certified to beat the primitive sieve.
+
+This theorem is exact because the corresponding canonical mixed ray is itself a valid candidate ray, not a bound.
+
+### Canonical pairwise deferral rule
+
+If both canonical rows fail admissibility or fail to beat the primitive table, the pair is **not eliminated**. It is merely deferred to the full one-parameter pairwise optimizer.
+
+So Stage 191 is a true first mixed-ray audit, but it is not yet the final pairwise search theorem.
+
+---
+
+## 7. Minimal data packet for the full pairwise optimizer
+
+The full pairwise optimizer of the next stage will need, for each monotone pair `\((i,j)\)`, the exact finite packet
+\[
+\boxed{
+\mathcal P_{ij}^{\rm mix}
+:=
+\bigl(k_i,k_j,
+[\underline h_{ii},\overline h_{ii}],
+[\underline h_{ij},\overline h_{ij}],
+[\underline h_{jj},\overline h_{jj}],
+T_{ij}(r)\bigr),
+}
+\]
+with the first five entries evaluated at the base point and the interval information supplied on the chosen pairwise cone.
+
+Everything else is downstream algebra:
+
+1. slope magnitude `\(k_{ij}(r)\)`,
+2. curvature envelopes `\(\underline\kappa_{ij}(r),\overline\kappa_{ij}(r)\)`,
+3. discriminants,
+4. certified brackets,
+5. and the pairwise winner comparison.
+
+So Stage 191 turns the mixed-ray problem into a one-parameter certified search family, no longer an unconstrained five-dimensional speculation.
+
+---
+
+## 8. Best current reading after Stage 191
+
+Stage 190 closed the primitive certified ray table and proved that off-diagonal Hessian data are invisible there.
+Stage 191 now gives the first exact mixed-ray continuation:
+
+1. a monotone–monotone primitive pair generates a one-parameter mixed-ray cone,
+2. the first-order descent rate is optimized at
+   \[
+   r_{ij}^{\rm grad}=k_j/k_i,
+   \]
+3. the off-diagonal Hessian leverage is optimized at
+   \[
+   r_{ij}^{\rm eq}=1,
+   \]
+4. every fixed ratio still lies inside the exact Stage-189 certified bracket framework,
+5. and the first honest mixed-ray audit is therefore the two-row canonical screen
+   \[
+   \mathcal R_{ij}^{\rm grad},\qquad \mathcal R_{ij}^{\rm eq}.
+   \]
+
+So the next honest continuation is now very sharply defined:
+
+> carry out the full one-parameter optimization over `\(r\)` on each surviving pairwise cone, and decide whether any mixed ray can beat both the primitive and canonical-screen rows.
+
+That is the natural Stage-192 theorem gate.
+moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+# Moving-Throat PDE — Stage 192: Exact Pairwise Ratio Optimizer, Finite Candidate Set, and the Mixed-Ray Winner Theorem
+
+## Status
+
+**Exact within the carried Stage-191 mixed-ray cone / curvature-envelope framework, once a compact pairwise ratio window and the corresponding entrywise Hessian envelopes are supplied on that window.**
+
+This stage does **not** introduce a new constitutive law.
+It closes the Stage-191 deferral step: the full one-parameter ratio search on each monotone pairwise cone is reduced to a finite algebraic candidate set.
+
+---
+
+## Purpose
+
+Stage 191 proved that every monotone primitive pair `\((i,j)\)` generates a genuine one-parameter mixed-ray cone
+\[
+\widehat{\mathbf s}_{ij}(r)=\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
+\qquad r\ge 0,
+\]
+and that two canonical rays already isolate the two independent sources of mixed-ray advantage:
+
+- the **gradient-optimal** ray `\(r_{ij}^{\rm grad}=k_j/k_i\)`,
+- the **equal-mix synergy** ray `\(r_{ij}^{\rm eq}=1\)`.
+
+That was enough for the first exact mixed-ray screen, but it also made the next theorem gate completely sharp:
+
+> how does one optimize the full certified pairwise bracket over the ratio `\(r\)`, and how can one compare different mixed pairs without running a free-form continuum search on every cone?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact **algebraic form** of the pairwise certified upper/lower objective functions,
+2. the exact **stationary numerator theorem** for the one-parameter ratio search,
+3. the exact **quartic elimination theorem** for interior optimizer candidates,
+4. the exact **finite candidate-set theorem** on a compact pairwise ratio window,
+5. the exact **optimized pairwise bracket** for the best mixed ray inside one pair,
+6. two exact special reductions:
+   - the **diagonal-neutral curvature reduction** back to the gradient-optimal ray,
+   - the **pair-symmetry reduction** forcing the equal-mix ray to be critical,
+7. and the exact **mixed-ray winner theorem** that promotes one pair above all primitive and competing mixed rows.
+
+So Stage 192 is the first place where the pairwise mixed-ray search becomes a finite certified optimization problem rather than a one-parameter continuum deferment.
+
+---
+
+## 1. Carry-forward pairwise cone and the compact ratio window
+
+Fix one monotone primitive pair `\((i,j)\)` with positive primitive slope magnitudes
+\[
+k_i>0,
+\qquad
+k_j>0,
+\]
+and keep the Stage-191 pairwise cone
+\[
+\widehat{\mathbf s}_{ij}(r)=\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
+\qquad r\ge0.
+\]
+The exact positive initial slope magnitude on that cone is
+\[
+\boxed{
+k_{ij}(r)=\frac{k_i+r k_j}{\sqrt{1+r^2}}.
+}
+\]
+
+Stage 191 allowed arbitrary `\(r\ge0\)`. For the certified optimizer, the natural local object is a **compact pairwise ratio window**
+\[
+\boxed{
+\mathcal R_{ij}:=[0,R_{ij}],
+\qquad 0<R_{ij}<\infty,
+}
+\]
+on which the pairwise curvature-envelope data and the local validity radius
+\(T_{ij}(r)\) are available.
+
+This does not weaken the search theorem. It is the natural local replacement of the infinite cone for the Stage-189/191 certified program, and it has one major technical payoff:
+
+> every optimized pairwise certified bracket will now come from a **finite** candidate set.
+
+---
+
+## 2. Exact algebraic form of the upper/lower certified objectives
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+write the three oriented pairwise Hessian envelope entries as
+\[
+(u_\star,v_\star,w_\star)
+=
+\begin{cases}
+(\underline h_{ii},\underline h_{ij},\underline h_{jj}), & \star={\rm lo},\\[4pt]
+(\overline h_{ii},\overline h_{ij},\overline h_{jj}), & \star={\rm hi}.
+\end{cases}
+\]
+Define the exact quadratic numerator coefficients
+\[
+\boxed{
+A_\star:=k_i^2-2H_0 u_\star,
+\qquad
+B_\star:=2k_i k_j-4H_0 v_\star,
+\qquad
+C_\star:=k_j^2-2H_0 w_\star.
+}
+\]
+Then the Stage-191 discriminant numerator becomes
+\[
+\boxed{
+\Delta_{ij,\star}^{\sharp}(r)
+:=
+A_\star+B_\star r+C_\star r^2.
+}
+\]
+Because
+\[
+k_{ij}(r)^2-2H_0\kappa_{ij,\star}(r)
+=
+\frac{\Delta_{ij,\star}^{\sharp}(r)}{1+r^2},
+\]
+the exact certified comparison roots take the explicit algebraic form
+\[
+\boxed{
+\tau_{ij,\star}(r)
+=
+\frac{2H_0\sqrt{1+r^2}}
+{k_i+r k_j+\sqrt{A_\star+B_\star r+C_\star r^2}}.
+}
+\]
+So the full one-parameter pairwise certified search is already reduced to a single square-root rational function of `\(r\)`.
+
+---
+
+## 3. Exact admissible ratio set on a compact cone window
+
+For each envelope label `\(\star\)`, define the admissible ratio set
+\[
+\boxed{
+\mathcal A_{ij,\star}
+:=
+\Bigl\{
+ r\in[0,R_{ij}]:
+ \Delta_{ij,\star}^{\sharp}(r)\ge0,
+ \tau_{ij,\star}(r)\le T_{ij}(r)
+\Bigr\}.
+}
+\]
+So the admissible set keeps exactly the two Stage-191 conditions:
+
+1. the quadratic comparison discriminant is real,
+2. the certified upper/lower root stays inside the available local validity interval.
+
+For the rest of this stage, optimization always means optimization **on** `\(\mathcal A_{ij,\star}\)`.
+
+---
+
+## 4. Exact stationary numerator theorem
+
+The exact pairwise certified search is easier to analyze through the denominator functional
+\[
+\boxed{
+\Phi_{ij,\star}(r)
+:=
+\frac{k_i+r k_j+\sqrt{A_\star+B_\star r+C_\star r^2}}{\sqrt{1+r^2}},
+}
+\]
+so that
+\[
+\boxed{
+\tau_{ij,\star}(r)=\frac{2H_0}{\Phi_{ij,\star}(r)}.
+}
+\]
+Hence minimizing `\(\tau_{ij,\star}\)` is equivalent to maximizing `\(\Phi_{ij,\star}\)`.
+
+Differentiating gives the exact derivative law
+\[
+\boxed{
+\frac{d\Phi_{ij,\star}}{dr}
+=
+\frac{\mathcal N_{ij,\star}(r)}
+{2(1+r^2)^{3/2}\sqrt{A_\star+B_\star r+C_\star r^2}},
+}
+\]
+where the exact stationary numerator is
+\[
+\boxed{
+\mathcal N_{ij,\star}(r)
+:=
+2(k_j-k_i r)\sqrt{A_\star+B_\star r+C_\star r^2}
++
+B_\star+2(C_\star-A_\star)r-B_\star r^2.
+}
+\]
+Therefore every interior optimizer satisfies
+\[
+\boxed{
+\mathcal N_{ij,\star}(r)=0.
+}
+\]
+
+This is the first exact optimizer theorem of Stage 192:
+
+### Exact stationary numerator theorem
+
+For either the upper or lower certified pairwise objective, every interior ratio optimizer on `\(\mathcal A_{ij,\star}\)` is a zero of the explicit scalar numerator `\(\mathcal N_{ij,\star}\)`.
+
+---
+
+## 5. Exact quartic elimination theorem
+
+The stationary numerator still contains the square root
+\(
+\sqrt{A_\star+B_\star r+C_\star r^2}
+\).
+Eliminating it gives an exact quartic candidate polynomial.
+
+Square the stationary equation carefully and define
+\[
+\boxed{
+\mathcal Q_{ij,\star}(r)
+:=
+\Bigl[B_\star+2(C_\star-A_\star)r-B_\star r^2\Bigr]^2
+-
+4(k_j-k_i r)^2\bigl(A_\star+B_\star r+C_\star r^2\bigr).
+}
+\]
+Then every interior optimizer satisfies
+\[
+\boxed{
+\mathcal Q_{ij,\star}(r)=0.
+}
+\]
+
+So the full ratio search has become algebraic in the strongest possible local sense:
+
+### Exact quartic elimination theorem
+
+For each envelope label `\(\star\in\{{\rm lo},{\rm hi}\}\)`, every interior optimizer of the pairwise certified search on the compact ratio window belongs to the positive real root set of the quartic `\(\mathcal Q_{ij,\star}\)`.
+
+The quartic equation may contain extraneous roots from squaring, so the genuine interior optimizer candidates are exactly the roots that also satisfy the unsquared stationary equation `\(\mathcal N_{ij,\star}=0\)`.
+
+---
+
+## 6. Exact finite candidate-set theorem
+
+Because `\(\mathcal Q_{ij,\star}\)`` is quartic, it has at most four real roots.
+Therefore each envelope search reduces to a finite set.
+
+For `\(\star\in\{{\rm lo},{\rm hi}\}\)`, define the candidate set
+\[
+\boxed{
+\mathcal C_{ij,\star}
+:=
+\partial\mathcal A_{ij,\star}
+\cup
+\Bigl\{r\in \operatorname{int}(\mathcal A_{ij,\star}):
+\mathcal N_{ij,\star}(r)=0\Bigr\}.
+}
+\]
+Here `\(\partial\mathcal A_{ij,\star}\)` means the admissible endpoints inherited from the compact ratio window and any internal admissibility boundaries.
+
+Then:
+
+### Exact finite candidate-set theorem
+
+On a compact pairwise ratio window, every optimizer of `\(\tau_{ij,\star}(r)\)` occurs in the finite set `\(\mathcal C_{ij,\star}\)`.
+
+In particular, if the admissible set is a single closed interval inside `\([0,R_{ij}]\)`, then each envelope optimizer requires at most
+
+- the two interval endpoints, and
+- up to four admissible quartic roots,
+
+so each of the lower/upper searches needs at most **six** evaluations.
+
+That means one mixed pair requires at most **twelve** exact candidate evaluations to obtain its optimized certified bracket.
+
+---
+
+## 7. Exact optimized pairwise bracket
+
+Define the optimized lower and upper certified pairwise values by
+\[
+\boxed{
+\tau_{ij,\min}^{\rm lo}:=
+\min_{r\in\mathcal C_{ij,{\rm lo}}}
+\tau_{ij,{\rm lo}}(r),
+\qquad
+\tau_{ij,\min}^{\rm hi}:=
+\min_{r\in\mathcal C_{ij,{\rm hi}}}
+\tau_{ij,{\rm hi}}(r).
+}
+\]
+Now let
+\[
+\tau_{ij,*}^{\rm best}
+:=
+\min_{r\in\mathcal A_{ij}} \tau_{ij,*}(r)
+\]
+be the unknown exact best closure time on the pairwise cone, where `\(\tau_{ij,*}(r)\)` is the true mixed-ray closure time.
+Because
+\[
+\tau_{ij,{\rm lo}}(r)
+\le
+\tau_{ij,*}(r)
+\le
+\tau_{ij,{\rm hi}}(r)
+\qquad (r\in\mathcal A_{ij}),
+\]
+one gets the exact optimized bracket
+\[
+\boxed{
+\tau_{ij,\min}^{\rm lo}
+\le
+\tau_{ij,*}^{\rm best}
+\le
+\tau_{ij,\min}^{\rm hi}.
+}
+\]
+So Stage 192 turns each mixed pair into one finite certified interval for the **best** ray in that pairwise cone.
+
+---
+
+## 8. Two exact special reductions
+
+The full quartic optimizer is the generic case.
+But two important exact reductions show how Stage 192 collapses back to the canonical Stage-191 rays when symmetry removes the true one-parameter competition.
+
+### 8.1 Diagonal-neutral curvature reduction
+
+Suppose the chosen envelope is diagonal-neutral and isotropic in the pair:
+\[
+\boxed{
+u_\star=w_\star=\kappa_\star,
+\qquad
+v_\star=0.}
+\]
+Then
+\[
+\kappa_{ij,\star}(r)=\kappa_\star
+\]
+is constant in `\(r\)`, so minimizing `\(\tau_{ij,\star}(r)\)` is equivalent to maximizing `\(k_{ij}(r)\)`.
+By Stage 191, that gives the exact optimizer
+\[
+\boxed{
+r_{ij,\star}^{\rm opt}=r_{ij}^{\rm grad}=\frac{k_j}{k_i}.
+}
+\]
+So when the upper/lower curvature data contain no pairwise directional preference, the full Stage-192 optimizer collapses back to the gradient-optimal ray.
+
+### 8.2 Pair-symmetry reduction
+
+Suppose the pair is symmetric in the sense that
+\[
+\boxed{
+k_i=k_j,
+\qquad
+u_\star=w_\star.
+}
+\]
+Then the certified objective is invariant under
+\[
+ r\longmapsto 1/r,
+\]
+namely
+\[
+\boxed{
+\tau_{ij,\star}(r)=\tau_{ij,\star}(1/r).
+}
+\]
+Therefore
+\[
+\boxed{
+\frac{d\tau_{ij,\star}}{dr}\Big|_{r=1}=0.
+}
+\]
+So in a pair-symmetric mixed cone the equal-mix ray `\(r=1\)` is an exact critical ray for both the lower and upper certified searches.
+If the admissible set is logarithmically symmetric and the optimizer is unique, then the Stage-192 optimizer collapses to the Stage-191 equal-mix screen.
+
+These two reductions show that the Stage-191 canonical rays were not arbitrary screens. They are the exact optimizer whenever the pairwise data lose the asymmetry needed to create a true interior mixed-ratio competition.
+
+---
+
+## 9. Exact pairwise promotion and mixed-ray winner theorems
+
+Let `\(\mathfrak P_{\rm mix}\)` be the set of monotone primitive pairs carried into Stage 192, and let the primitive sieve from Stage 190 still carry its certified rows
+\[
+[\tau_{m,\rm lo}^{\rm prim},\tau_{m,\rm hi}^{\rm prim}].
+\]
+For each mixed pair, Stage 192 now provides the optimized bracket
+\[
+[\tau_{ij,\min}^{\rm lo},\tau_{ij,\min}^{\rm hi}].
+\]
+
+### Exact pairwise promotion theorem
+
+If, for one pair `\((i,j)\)`,
+\[
+\boxed{
+\tau_{ij,\min}^{\rm hi}
+<
+\min_m \tau_{m,\rm lo}^{\rm prim},
+}
+\]
+then that pair is already certified to beat the entire primitive sieve.
+
+### Exact mixed-pair winner theorem
+
+If one pair `\((i,j)\)` satisfies
+\[
+\boxed{
+\tau_{ij,\min}^{\rm hi}
+<
+\min\Bigl(
+\min_m \tau_{m,\rm lo}^{\rm prim},
+\min_{(p,q)\in\mathfrak P_{\rm mix}\setminus\{(i,j)\}}\tau_{pq,\min}^{\rm lo}
+\Bigr),
+}
+\]
+then `\((i,j)\)` is the unique certified mixed-ray winner at the Stage-192 level.
+
+So the full mixed-ray screen is now finite and ordered:
+
+1. primitive certified rows from Stage 190,
+2. canonical mixed-ray screens from Stage 191,
+3. full pairwise optimized brackets from Stage 192.
+
+No continuum search survives beyond the exact quartic candidate reduction.
+
+---
+
+## 10. Minimal packet for the next stage
+
+After Stage 192, each monotone pair needs only the exact finite packet
+\[
+\boxed{
+\mathcal P_{ij}^{\rm opt}
+:=
+\bigl(k_i,k_j,H_0,
+(u_{\rm lo},v_{\rm lo},w_{\rm lo}),
+(u_{\rm hi},v_{\rm hi},w_{\rm hi}),
+R_{ij},T_{ij}(r)\bigr),
+}
+\]
+from which the entire optimized bracket is downstream algebra.
+
+So the next honest continuation is no longer to optimize over `\(r\)` again.
+The natural continuation is to go **beyond pairwise cones** and ask whether any genuine three-coordinate mixed simplex can beat the Stage-192 pairwise winner.
+
+---
+
+## 11. Best current reading after Stage 192
+
+Stage 191 reduced the first honest mixed-ray search to a one-parameter family plus two exact screen rays.
+Stage 192 now finishes the pairwise part of that search:
+
+1. every certified pairwise objective is an explicit square-root rational function of `\(r\)`,
+2. every interior optimizer satisfies one exact stationary numerator equation,
+3. that stationary equation reduces to one exact quartic,
+4. each envelope search therefore collapses to a finite candidate set,
+5. every monotone pair now carries one optimized certified bracket,
+6. and the mixed-ray winner can be promoted exactly by comparing optimized upper and lower brackets.
+
+So the next theorem gate is no longer “what is the best pairwise mixed ray?”
+That question is now finite and exact.
+The next real question is whether any **three-coordinate** mixed branch can still beat the Stage-192 pairwise winner.
+moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit.md
+# Moving-Throat PDE — Stage 193: Three-Coordinate Mixed-Simplex, Exact Interior Gradient/Curvature Synergy, and the Canonical Triple-Screen Audit
+
+## Status
+
+**Exact within the carried Stage-189 scalarized search framework and the fully optimized Stage-192 pairwise certified sieve, once a local oriented `3 x 3` Hessian-envelope block and a triple-simplex validity map are supplied on the chosen three-coordinate patch.**
+
+This stage does **not** yet solve the full two-parameter interior optimizer on a three-coordinate branch.
+It is the first exact continuation *beyond* the optimized pairwise cones: the first place where a genuinely interior three-coordinate mixed ray can appear and be audited without redoing the pairwise boundary problem.
+
+---
+
+## Purpose
+
+Stage 192 closed the pairwise problem exactly. Every monotone pair now carries a finite optimized certified bracket, and every boundary pairwise winner can be ranked without a free-form continuum search.
+
+That immediately makes the next theorem gate sharp:
+
+> can a **genuine interior three-coordinate** mixed branch beat the fully optimized pairwise edges, and what is the smallest exact audit that can test that before solving the full two-parameter optimizer?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact **positive spherical simplex** for a monotone primitive triple,
+2. the exact **boundary-reduction theorem** showing that all three boundary edges are already Stage-192 pairwise cones,
+3. the exact **three-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
+4. the exact **three-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes total off-diagonal leverage,
+5. the exact **fixed-simplex certified bracket** for any admissible interior point,
+6. the exact **canonical triple-screen audit** consisting of three optimized boundary rows plus two interior canonical rows,
+7. and the exact **interior-screen dominance criterion** that certifies a genuine three-coordinate improvement over all pairwise winners.
+
+So Stage 193 is the three-coordinate analogue of Stage 191, but now with the Stage-192 boundary optimizer already finished and imported.
+
+---
+
+## 1. Carry-forward monotone primitive data and the positive spherical simplex
+
+Keep the free log coordinates
+\[
+\boldsymbol\ell=(\ell_\lambda,\ell_c,\ell_\gamma,\ell_U,\ell_W)
+\]
+and the oriented scalar closure residual from Stages 189–192,
+\[
+H_0>0,
+\qquad
+\Gamma_i=\sigma_0\,\partial_{\ell_i}h(\boldsymbol\ell_\circ),
+\qquad
+\sigma_0=\operatorname{sgn}(h(\boldsymbol\ell_\circ)).
+\]
+For a monotone primitive axis,
+\[
+\widehat{\mathbf e}_i:=\varepsilon_i\mathbf e_i,
+\qquad
+\varepsilon_i:=-\operatorname{sgn}(\Gamma_i),
+\qquad
+k_i:=|\Gamma_i|>0.
+\]
+So the forward oriented primitive slope is
+\[
+K_i=-k_i<0.
+\]
+
+Now fix a monotone primitive triple `\((i,j,k)\)` with
+\[
+k_i>0,
+\qquad
+k_j>0,
+\qquad
+k_k>0.
+\]
+The first genuinely three-coordinate search set is the **positive spherical simplex**
+\[
+\boxed{
+\Delta_{ijk}^{+}
+:=
+\Bigl\{
+\mathbf a=(a_i,a_j,a_k)\in\mathbb R_{\ge0}^3:
+ a_i^2+a_j^2+a_k^2=1
+\Bigr\}.
+}
+\]
+Each point generates the oriented mixed ray
+\[
+\boxed{
+\widehat{\mathbf s}_{ijk}(\mathbf a)
+:=
+ a_i\widehat{\mathbf e}_i+a_j\widehat{\mathbf e}_j+a_k\widehat{\mathbf e}_k.
+}
+\]
+Interior points have all three coordinates positive. Boundary points lie on one of the three pairwise edges.
+
+---
+
+## 2. Exact boundary-reduction theorem
+
+The three simplex edges are
+\[
+E_{ij}:=\{a_k=0\},
+\qquad
+E_{ik}:=\{a_j=0\},
+\qquad
+E_{jk}:=\{a_i=0\}.
+\]
+Each edge is exactly one of the Stage-192 pairwise cones.
+
+### 2.1 Edge `\(E_{ij}\)`
+With the ratio coordinate
+\[
+r=\frac{a_j}{a_i}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{ij}(r)=\frac{(1,r,0)}{\sqrt{1+r^2}},
+\qquad
+\widehat{\mathbf s}_{ijk}(\mathbf a_{ij}(r))
+=
+\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}}.
+}
+\]
+So `\(E_{ij}\)` is exactly the Stage-192 pairwise cone for `\((i,j)\)`.
+
+### 2.2 Edge `\(E_{ik}\)`
+With the ratio coordinate
+\[
+s=\frac{a_k}{a_i}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{ik}(s)=\frac{(1,0,s)}{\sqrt{1+s^2}},
+\qquad
+\widehat{\mathbf s}_{ijk}(\mathbf a_{ik}(s))
+=
+\frac{\widehat{\mathbf e}_i+s\widehat{\mathbf e}_k}{\sqrt{1+s^2}}.
+}
+\]
+So `\(E_{ik}\)` is exactly the Stage-192 pairwise cone for `\((i,k)\)`.
+
+### 2.3 Edge `\(E_{jk}\)`
+With the ratio coordinate
+\[
+u=\frac{a_k}{a_j}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{jk}(\nu)=\frac{(0,1,\nu)}{\sqrt{1+\nu^2}},
+\qquad
+\widehat{\mathbf s}_{ijk}(\mathbf a_{jk}(\nu))
+=
+\frac{\widehat{\mathbf e}_j+\nu\widehat{\mathbf e}_k}{\sqrt{1+\nu^2}}.
+}
+\]
+So `\(E_{jk}\)` is exactly the Stage-192 pairwise cone for `\((j,k)\)`.
+
+This is the first theorem-level simplification of Stage 193:
+
+> nothing on the boundary of the three-coordinate simplex is new. The only new content is the **interior** of `\(\Delta_{ijk}^{+}\)`.
+
+---
+
+## 3. Exact three-coordinate gradient-synergy theorem
+
+The positive oriented initial slope magnitude on the simplex ray is
+\[
+\boxed{
+k_{ijk}(\mathbf a)
+:=
+-\sigma_0\,\nabla_\ell h(\boldsymbol\ell_\circ)\cdot \widehat{\mathbf s}_{ijk}(\mathbf a)
+=
+a_i k_i+a_j k_j+a_k k_k.
+}
+\]
+So the oriented forward slope is
+\[
+K_{ijk}(\mathbf a)=-k_{ijk}(\mathbf a)<0.
+\]
+
+Because `\(\mathbf a\)` is constrained only by the unit condition `\(a_i^2+a_j^2+a_k^2=1\)`, the exact Lagrange-multiplier solution is immediate:
+\[
+\boxed{
+\mathbf a_{ijk}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k)}{\sqrt{k_i^2+k_j^2+k_k^2}}.
+}
+\]
+The exact maximum slope magnitude is
+\[
+\boxed{
+\max_{\mathbf a\in\Delta_{ijk}^{+}} k_{ijk}(\mathbf a)
+=
+\sqrt{k_i^2+k_j^2+k_k^2}.
+}
+\]
+In the interior ratio coordinates on `\(a_i>0\)`,
+\[
+\boxed{
+r_{ijk}^{\rm grad}=\frac{k_j}{k_i},
+\qquad
+s_{ijk}^{\rm grad}=\frac{k_k}{k_i}.
+}
+\]
+
+Because all three primitive slopes are positive, the interior gradient-optimal value is strictly larger than every pairwise edge maximum:
+\[
+\sqrt{k_i^2+k_j^2+k_k^2}
+>
+\max\!\bigl(\sqrt{k_i^2+k_j^2},\sqrt{k_i^2+k_k^2},\sqrt{k_j^2+k_k^2}\bigr).
+\]
+So Stage 193 yields the exact first-order theorem:
+
+### Exact three-coordinate gradient-synergy theorem
+
+If all three primitive slopes are nonzero and monotone, a genuine interior three-coordinate mixed ray always beats every pairwise edge at the **first-order** descent level.
+
+That does **not** yet prove it wins after certified curvature enters, but it proves that the interior simplex is carrying genuinely new descent information already at linear order.
+
+---
+
+## 4. Exact three-coordinate curvature law and the total cross-leverage theorem
+
+Let the oriented symmetric Hessian block along the triple ray be
+\[
+H_{ijk}(\mathbf a;\tau)
+=
+\begin{pmatrix}
+ h_{ii} & h_{ij} & h_{ik}\\
+ h_{ij} & h_{jj} & h_{jk}\\
+ h_{ik} & h_{jk} & h_{kk}
+\end{pmatrix}_{(ijk)}
+\]
+where, exactly as in Stage 191, each entry is evaluated on the oriented ray
+\(
+\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_{ijk}(\mathbf a)
+\)
+and already includes the sign/orientation factors.
+
+Then the exact second directional derivative is
+\[
+\boxed{
+H_{1,ijk}(\mathbf a;\tau)
+=
+\mathbf a^T H_{ijk}(\mathbf a;\tau)\mathbf a.
+}
+\]
+Expanding,
+\[
+\boxed{
+H_{1,ijk}
+=
+a_i^2 h_{ii}+a_j^2 h_{jj}+a_k^2 h_{kk}
++2a_i a_j h_{ij}+2a_i a_k h_{ik}+2a_j a_k h_{jk}.
+}
+\]
+So the total off-diagonal leverage is carried by the exact weight
+\[
+\boxed{
+w_{\Sigma}(\mathbf a)
+:=2(a_i a_j+a_i a_k+a_j a_k).
+}
+\]
+This weight admits the identity
+\[
+\boxed{
+w_{\Sigma}(\mathbf a)
+=
+(a_i+a_j+a_k)^2-1,
+}
+\]
+because `\(a_i^2+a_j^2+a_k^2=1\)` on the simplex.
+
+Now use the exact inequality
+\[
+3(a_i^2+a_j^2+a_k^2)-(a_i+a_j+a_k)^2
+=
+(a_i-a_j)^2+(a_i-a_k)^2+(a_j-a_k)^2\ge0.
+\]
+Since `\(a_i^2+a_j^2+a_k^2=1\)`, it follows that
+\[
+(a_i+a_j+a_k)^2\le 3,
+\qquad
+w_{\Sigma}(\mathbf a)\le 2.
+\]
+Equality holds iff
+\[
+a_i=a_j=a_k=\frac{1}{\sqrt3}.
+\]
+So the **equal-mix barycenter**
+\[
+\boxed{
+\mathbf a_{ijk}^{\rm eq}=
+\frac{(1,1,1)}{\sqrt3}
+}
+\]
+maximizes the total three-way off-diagonal leverage, with
+\[
+\boxed{
+w_{\Sigma}(\mathbf a_{ijk}^{\rm eq})=2.
+}
+\]
+For comparison, the equal-mix point on any pairwise edge has only
+\[
+w_{\Sigma}=1.
+\]
+So the interior barycenter doubles the maximum total cross leverage available on a pairwise equal-mix edge.
+
+### Exact diagonal-neutral reduction
+
+If all off-diagonal Hessian entries vanish,
+\[
+h_{ij}=h_{ik}=h_{jk}=0,
+\]
+then
+\[
+\boxed{
+H_{1,ijk}(\mathbf a;\tau)=a_i^2 h_{ii}+a_j^2 h_{jj}+a_k^2 h_{kk},
+}
+\]
+so there is no genuine three-way curvature synergy. In that case the interior simplex carries only the first-order gradient gain from Section 3.
+
+---
+
+## 5. Exact fixed-simplex curvature envelopes and certified local brackets
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+let the oriented symmetric envelope block be
+\[
+H_{ijk,\star}=
+\begin{pmatrix}
+ u_{ii,\star} & u_{ij,\star} & u_{ik,\star}\\
+ u_{ij,\star} & u_{jj,\star} & u_{jk,\star}\\
+ u_{ik,\star} & u_{jk,\star} & u_{kk,\star}
+\end{pmatrix}.
+\]
+For any fixed simplex point `\(\mathbf a\)`, define the exact envelope curvature scalar
+\[
+\boxed{
+\kappa_{ijk,\star}(\mathbf a)
+:=
+\mathbf a^T H_{ijk,\star}\mathbf a.
+}
+\]
+Then the exact certified local comparison root at that simplex point is
+\[
+\boxed{
+\tau_{ijk,\star}(\mathbf a)
+:=
+\mathcal T\bigl(H_0,-k_{ijk}(\mathbf a);\kappa_{ijk,\star}(\mathbf a)\bigr)
+=
+\frac{2H_0}{k_{ijk}(\mathbf a)+\sqrt{k_{ijk}(\mathbf a)^2-2H_0\kappa_{ijk,\star}(\mathbf a)}}.
+}
+\]
+So the three-coordinate simplex introduces **no new root algebra** at a fixed point. The only new difficulty is the two-parameter interior search over `\(\mathbf a\)`.
+
+### 5.1 Interior ratio coordinates
+
+On the interior patch `\(a_i>0\)`, use the exact ratio coordinates
+\[
+r=\frac{a_j}{a_i},
+\qquad
+s=\frac{a_k}{a_i},
+\qquad
+(a_i,a_j,a_k)=\frac{(1,r,s)}{\sqrt{1+r^2+s^2}}.
+\]
+Define the six exact quadratic numerator coefficients
+\[
+\boxed{
+A_\star:=k_i^2-2H_0 u_{ii,\star},
+\qquad
+B_\star:=2k_i k_j-4H_0 u_{ij,\star},
+\qquad
+C_\star:=2k_i k_k-4H_0 u_{ik,\star},
+}
+\]
+\[
+\boxed{
+D_\star:=k_j^2-2H_0 u_{jj,\star},
+\qquad
+E_\star:=2k_j k_k-4H_0 u_{jk,\star},
+\qquad
+F_\star:=k_k^2-2H_0 u_{kk,\star}.
+}
+\]
+Then the exact discriminant numerator is
+\[
+\boxed{
+\Delta_{ijk,\star}^{\sharp}(r,s)
+:=
+A_\star+B_\star r+C_\star s+D_\star r^2+E_\star rs+F_\star s^2.
+}
+\]
+The certified bracket becomes
+\[
+\boxed{
+\tau_{ijk,\star}(r,s)
+=
+\frac{2H_0\sqrt{1+r^2+s^2}}
+{k_i+r k_j+s k_k+
+\sqrt{A_\star+B_\star r+C_\star s+D_\star r^2+E_\star rs+F_\star s^2}}.
+}
+\]
+Restricting to any edge recovers the exact Stage-192 pairwise formulas.
+
+---
+
+## 6. The canonical triple-screen audit
+
+Stage 193 does **not** yet solve the full interior optimizer.
+The smallest exact screen set is instead:
+
+1. the three exact optimized boundary brackets imported from Stage 192,
+   \[
+   \mathcal B_{ij}^{\rm opt},
+   \qquad
+   \mathcal B_{ik}^{\rm opt},
+   \qquad
+   \mathcal B_{jk}^{\rm opt},
+   \]
+2. the unique interior gradient-optimal screen point
+   \[
+   \mathbf a_{ijk}^{\rm grad},
+   \]
+3. the unique interior equal-mix barycentric screen point
+   \[
+   \mathbf a_{ijk}^{\rm eq}.
+   \]
+
+So the exact Stage-193 triple-screen packet is
+\[
+\boxed{
+\mathcal S_{ijk}^{\rm tri}
+:=
+\Bigl(
+\mathcal B_{ij}^{\rm opt},
+\mathcal B_{ik}^{\rm opt},
+\mathcal B_{jk}^{\rm opt},
+\mathbf a_{ijk}^{\rm grad},
+\mathbf a_{ijk}^{\rm eq}
+\Bigr).
+}
+\]
+This is the exact three-coordinate analogue of the Stage-191 canonical pairwise screen, but with the three pairwise boundaries already fully optimized and imported rather than re-audited.
+
+---
+
+## 7. Exact interior-screen dominance criterion
+
+Let
+\[
+\tau_{ijk,\rm hi}^{\rm grad}:=\tau_{ijk,\rm hi}(\mathbf a_{ijk}^{\rm grad}),
+\qquad
+\tau_{ijk,\rm hi}^{\rm eq}:=\tau_{ijk,\rm hi}(\mathbf a_{ijk}^{\rm eq}),
+\]
+and keep the three Stage-192 optimized boundary lower brackets
+\[
+\tau_{ij,\min}^{\rm lo},
+\qquad
+\tau_{ik,\min}^{\rm lo},
+\qquad
+\tau_{jk,\min}^{\rm lo}.
+\]
+Then the first exact three-coordinate certification rule is immediate:
+
+### Exact interior-screen dominance theorem
+
+If either canonical interior screen satisfies
+\[
+\boxed{
+\tau_{ijk,\rm hi}^{\rm can}
+<
+\min\bigl(
+\tau_{ij,\min}^{\rm lo},
+\tau_{ik,\min}^{\rm lo},
+\tau_{jk,\min}^{\rm lo}
+\bigr),
+\qquad
+\text{can}\in\{{\rm grad},{\rm eq}\},
+}
+\]
+then there exists a **genuine interior three-coordinate mixed ray** whose certified root lies strictly below every pairwise boundary winner.
+
+The proof is immediate:
+
+- the actual root at the chosen interior screen point is bounded above by its certified upper bracket,
+- the actual pairwise boundary winners are bounded below by their certified lower brackets,
+- so the interior screen point already certifies a strict interior improvement over all pairwise edges.
+
+### Exact canonical non-improvement filter
+
+Conversely, if
+\[
+\boxed{
+\min\bigl(
+\tau_{ijk,\rm lo}^{\rm grad},
+\tau_{ijk,\rm lo}^{\rm eq}
+\bigr)
+>
+\min\bigl(
+\tau_{ij,\min}^{\rm hi},
+\tau_{ik,\min}^{\rm hi},
+\tau_{jk,\min}^{\rm hi}
+\bigr),
+}
+\]
+then neither canonical interior screen beats the best pairwise edge winner.
+
+That is **not** a full no-go theorem for the interior simplex, because the full two-parameter optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical interior mechanisms before the full interior search is attempted.
+
+---
+
+## 8. Minimal packet for the next stage
+
+After Stage 193, the boundary problem is already solved and the interior problem has only one unresolved part: the genuine two-parameter optimizer on the simplex interior.
+
+The smallest exact packet for that next stage is
+\[
+\boxed{
+\mathcal P_{ijk}^{\rm tri}
+:=
+\Bigl(
+H_0,
+(k_i,k_j,k_k),
+H_{ijk,\rm lo},
+H_{ijk,\rm hi},
+T_{ijk}(\mathbf a)
+\Bigr),
+}
+\]
+where
+
+- `\(H_0\)` is the oriented logarithmic defect,
+- `\((k_i,k_j,k_k)\)` are the three primitive slope magnitudes,
+- `\(H_{ijk,\rm lo},H_{ijk,\rm hi}\)` are the lower/upper oriented `3 x 3` Hessian-envelope blocks,
+- `\(T_{ijk}(\mathbf a)\)` is the local validity-radius map on the simplex patch.
+
+The natural continuation is now completely sharp:
+
+> solve the full interior simplex optimizer by reducing the two-parameter stationary system to a finite algebraic candidate set, just as Stage 192 did for the one-parameter pairwise cones.
+
+That is the natural content of Stage 194.
+
+---
+
+## 9. Best current reading after Stage 193
+
+Stage 192 already proved that the pairwise boundary problem is finite and exact.
+Stage 193 now shows what is genuinely new at the first three-coordinate level:
+
+1. every boundary edge of the three-coordinate simplex is already one of the Stage-192 pairwise cones,
+2. a genuine interior triple ray always beats the pairwise edges at the first-order gradient level,
+3. the equal-mix barycenter uniquely maximizes the total three-way off-diagonal Hessian leverage,
+4. every fixed interior simplex point already carries an exact certified local bracket,
+5. and the smallest honest interior audit is now a five-row screen:
+   - three optimized boundary rows,
+   - one interior gradient-optimal row,
+   - one interior equal-mix row.
+
+So the next theorem gate is no longer “is there any three-coordinate effect at all?”
+There is.
+The next real question is whether the full two-parameter interior simplex optimizer can produce a certified winner that beats both canonical interior screens and all optimized pairwise edges.
+moving_throat_pde_stage194_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+# Moving-Throat PDE — Stage 194: Full Interior Triple-Simplex Optimizer, Exact Stationary Elimination, and the Finite Algebraic Candidate Set
+
+## Status
+
+**Exact within the carried Stage-193 interior-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer is not sitting on an artificial chart boundary of that window.**
+
+The true simplex boundaries are already closed by Stage 192 and imported into Stage 193, so this stage addresses only the genuinely new content: the **interior** optimizer on a three-coordinate mixed simplex.
+
+---
+
+## Purpose
+
+Stage 193 proved three things at once.
+
+1. Every boundary face of the positive three-coordinate simplex is already one of the Stage-192 pairwise cones.
+2. A genuine interior triple ray always beats the pairwise edges at the purely first-order gradient level.
+3. The smallest honest interior audit is the five-row screen made from three optimized pairwise boundary rows plus two canonical interior rows.
+
+That makes the next theorem gate completely sharp:
+
+> how do we optimize the full certified interior objective on the two-parameter simplex interior, and can that search be reduced to a finite algebraic candidate set rather than a free-form continuum scan?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact two-component stationary system for the interior ratio patch,
+2. the exact elimination of the square root into one **quartic** and one **sextic** polynomial condition,
+3. the exact finite algebraic pre-candidate set for all interior stationary rays,
+4. two exact special reductions explaining why the Stage-193 canonical interior screens were the right first screens,
+5. and the exact full interior winner theorem against the already-optimized pairwise boundaries.
+
+So Stage 194 is the three-coordinate analogue of Stage 192: the interior optimizer is no longer a deferred continuum search; it is a finite algebraic candidate problem.
+
+---
+
+## 1. Carry-forward interior ratio patch and exact certified objective
+
+Fix a monotone primitive triple `\((i,j,k)\)` with positive oriented primitive slope magnitudes
+\[
+ k_i>0,
+ \qquad
+ k_j>0,
+ \qquad
+ k_k>0.
+\]
+On the interior patch `\(a_i>0\)`, use the positive ratio coordinates
+\[
+ r:=\frac{a_j}{a_i}>0,
+ \qquad
+ s:=\frac{a_k}{a_i}>0.
+\]
+Then the positive spherical-simplex point is
+\[
+\boxed{
+\mathbf a(r,s)
+=
+\frac{(1,r,s)}{\sqrt{1+r^2+s^2}}.
+}
+\]
+The oriented initial slope magnitude is
+\[
+\boxed{
+ k_{ijk}(r,s)
+ =
+ \frac{k_i+r k_j+s k_k}{\sqrt{1+r^2+s^2}}.
+}
+\]
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+write the oriented `\(3\times 3\)` Hessian-envelope block entries as
+\[
+ u_{ii,\star},\ u_{ij,\star},\ u_{ik,\star},\ u_{jj,\star},\ u_{jk,\star},\ u_{kk,\star}.
+\]
+Define the exact quadratic discriminant coefficients
+\[
+\boxed{
+A_\star:=k_i^2-2H_0 u_{ii,\star},
+\qquad
+B_\star:=2k_i k_j-4H_0 u_{ij,\star},
+\qquad
+C_\star:=2k_i k_k-4H_0 u_{ik,\star},
+}
+\]
+\[
+\boxed{
+D_\star:=k_j^2-2H_0 u_{jj,\star},
+\qquad
+E_\star:=2k_j k_k-4H_0 u_{jk,\star},
+\qquad
+F_\star:=k_k^2-2H_0 u_{kk,\star}.
+}
+\]
+The exact interior discriminant numerator is then
+\[
+\boxed{
+\Delta^{\sharp}_{ijk,\star}(r,s)
+:=
+A_\star+B_\star r+C_\star s+D_\star r^2+E_\star r s+F_\star s^2.
+}
+\]
+The Stage-193 fixed-point comparison root becomes
+\[
+\boxed{
+\tau_{ijk,\star}(r,s)
+=
+\frac{2H_0\sqrt{1+r^2+s^2}}
+{k_i+r k_j+s k_k+\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}}.
+}
+\]
+Equivalently, define the denominator functional
+\[
+\boxed{
+\Phi_{ijk,\star}(r,s)
+:=
+\frac{k_i+r k_j+s k_k+\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}}{\sqrt{1+r^2+s^2}},
+\qquad
+\tau_{ijk,\star}(r,s)=\frac{2H_0}{\Phi_{ijk,\star}(r,s)}.
+}
+\]
+So interior optimization again means maximizing `\(\Phi\)` or equivalently minimizing `\(\tau\)`.
+
+Let
+\[
+\boxed{
+\mathcal W_{ijk}:=[0,R_{ijk}]\times[0,S_{ijk}],
+\qquad
+0<R_{ijk},S_{ijk}<\infty,
+}
+\]
+be a compact interior ratio window on which the envelope data and the local validity map `\(T_{ijk}(r,s)\)` are supplied.
+The exact admissible interior set is
+\[
+\boxed{
+\mathcal A^{\rm int}_{ijk,\star}
+:=
+\Bigl\{(r,s)\in(0,\infty)^2\cap\mathcal W_{ijk}:
+\Delta^{\sharp}_{ijk,\star}(r,s)\ge0,
+\ \tau_{ijk,\star}(r,s)\le T_{ijk}(r,s)
+\Bigr\}.
+}
+\]
+
+---
+
+## 2. Exact two-component stationary numerator theorem
+
+Differentiate `\(\Phi_{ijk,\star}\)` with respect to `\(r\)` and `\(s\)`.
+Introduce the exact slope numerators
+\[
+\boxed{
+M_r(r,s):=(1+r^2+s^2)k_j-r(k_i+r k_j+s k_k)=k_j(1+s^2)-r(k_i+s k_k),
+}
+\]
+\[
+\boxed{
+M_s(r,s):=(1+r^2+s^2)k_k-s(k_i+r k_j+s k_k)=k_k(1+r^2)-s(k_i+r k_j).
+}
+\]
+Also define the exact discriminant-transport numerators
+\[
+\boxed{
+L_{r,\star}(r,s)
+:=
+(1+r^2+s^2)\,\partial_r\Delta^{\sharp}_{ijk,\star}(r,s)-2r\,\Delta^{\sharp}_{ijk,\star}(r,s),
+}
+\]
+\[
+\boxed{
+L_{s,\star}(r,s)
+:=
+(1+r^2+s^2)\,\partial_s\Delta^{\sharp}_{ijk,\star}(r,s)-2s\,\Delta^{\sharp}_{ijk,\star}(r,s).
+}
+\]
+Then the exact derivative laws are
+\[
+\boxed{
+\frac{\partial\Phi_{ijk,\star}}{\partial r}
+=
+\frac{\mathcal N_{r,\star}(r,s)}
+{2(1+r^2+s^2)^{3/2}\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}},
+}
+\]
+\[
+\boxed{
+\frac{\partial\Phi_{ijk,\star}}{\partial s}
+=
+\frac{\mathcal N_{s,\star}(r,s)}
+{2(1+r^2+s^2)^{3/2}\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}},
+}
+\]
+with exact stationary numerators
+\[
+\boxed{
+\mathcal N_{r,\star}(r,s)=2M_r(r,s)\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}+L_{r,\star}(r,s),
+}
+\]
+\[
+\boxed{
+\mathcal N_{s,\star}(r,s)=2M_s(r,s)\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}+L_{s,\star}(r,s).
+}
+\]
+So every interior stationary point satisfies
+\[
+\boxed{
+\mathcal N_{r,\star}(r,s)=0,
+\qquad
+\mathcal N_{s,\star}(r,s)=0.
+}
+\]
+
+### Exact interior stationary numerator theorem
+
+For either the upper or lower certified interior objective, every interior stationary mixed ray is a common zero of the two explicit square-root numerators `\(\mathcal N_{r,\star}\)` and `\(\mathcal N_{s,\star}\)`.
+
+This is the exact two-parameter analogue of the Stage-192 pairwise stationary-numerator theorem.
+
+---
+
+## 3. Exact quartic-sextic elimination theorem
+
+The stationary equations still contain the square root
+\(
+\sqrt{\Delta^{\sharp}_{ijk,\star}(r,s)}
+\).
+Eliminate it in two steps.
+
+### 3.1 Exact quartic cross-consistency polynomial
+
+Multiply the stationary numerators crosswise to remove the square root.
+Define
+\[
+\boxed{
+\mathcal C_{ijk,\star}(r,s)
+:=
+M_s(r,s)L_{r,\star}(r,s)-M_r(r,s)L_{s,\star}(r,s).
+}
+\]
+Then every interior stationary point satisfies
+\[
+\boxed{
+\mathcal C_{ijk,\star}(r,s)=0.
+}
+\]
+This polynomial is **quartic** in `\((r,s)\)`.
+
+### 3.2 Exact sextic square conditions
+
+From
+\[
+2M_r\sqrt{\Delta^{\sharp}}=-L_{r,\star},
+\qquad
+2M_s\sqrt{\Delta^{\sharp}}=-L_{s,\star},
+\]
+squaring gives the exact sextic eliminants
+\[
+\boxed{
+\mathcal S_{r,ijk,\star}(r,s)
+:=
+L_{r,\star}(r,s)^2-4M_r(r,s)^2\,\Delta^{\sharp}_{ijk,\star}(r,s),
+}
+\]
+\[
+\boxed{
+\mathcal S_{s,ijk,\star}(r,s)
+:=
+L_{s,\star}(r,s)^2-4M_s(r,s)^2\,\Delta^{\sharp}_{ijk,\star}(r,s).
+}
+\]
+Every interior stationary point satisfies
+\[
+\boxed{
+\mathcal S_{r,ijk,\star}(r,s)=0,
+\qquad
+\mathcal S_{s,ijk,\star}(r,s)=0.
+}
+\]
+Both are **sextic** in `\((r,s)\)`.
+
+### Exact elimination theorem
+
+Every interior stationary point of the certified three-coordinate simplex objective is a common zero of
+\[
+\boxed{
+\mathcal C_{ijk,\star}(r,s)=0,
+\qquad
+\mathcal S_{r,ijk,\star}(r,s)=0,
+}
+\]
+and also of the equivalent pair
+\[
+\boxed{
+\mathcal C_{ijk,\star}(r,s)=0,
+\qquad
+\mathcal S_{s,ijk,\star}(r,s)=0.
+}
+\]
+
+Because the first polynomial is quartic and the second is sextic, the algebraic pre-candidate set is finite whenever the intersection is zero-dimensional. By Bézout, it has at most
+\[
+\boxed{4\cdot 6 = 24}
+\]
+complex roots counting multiplicity.
+
+So the full interior stationary problem has been reduced from a two-parameter continuum search to a **finite algebraic pre-candidate set**.
+
+---
+
+## 4. Exact finite candidate-set theorem on a compact interior window
+
+Define the algebraic pre-candidate set
+\[
+\boxed{
+\widetilde{\mathcal C}^{\rm int}_{ijk,\star}
+:=
+\Bigl\{(r,s)\in\mathcal W_{ijk}:
+\mathcal C_{ijk,\star}(r,s)=0,
+\ \mathcal S_{r,ijk,\star}(r,s)=0
+\Bigr\}.
+}
+\]
+Because `\(\mathcal C\)` is quartic and `\(\mathcal S_r\)` is sextic, this set is finite whenever the common zeros are isolated.
+
+Now filter by the original square-root and validity conditions. Define the exact admissible stationary candidate set
+\[
+\boxed{
+\mathcal C^{\rm int}_{ijk,\star}
+:=
+\Bigl\{(r,s)\in\widetilde{\mathcal C}^{\rm int}_{ijk,\star}:
+\Delta^{\sharp}_{ijk,\star}(r,s)\ge0,
+\ \tau_{ijk,\star}(r,s)\le T_{ijk}(r,s),
+\ \mathcal N_{r,\star}(r,s)=0,
+\ \mathcal N_{s,\star}(r,s)=0
+\Bigr\}.
+}
+\]
+This final filtering removes any spurious roots introduced by squaring.
+
+### Exact finite interior candidate-set theorem
+
+Assume the optimizer does not lie on an artificial outer boundary of the chosen ratio window `\(\mathcal W_{ijk}\)`. Then every interior optimizer of `\(\tau_{ijk,\star}\)` belongs to the finite admissible set `\(\mathcal C^{\rm int}_{ijk,\star}\)`.
+
+So the interior optimized bracket is obtained by finite evaluation:
+\[
+\boxed{
+\tau_{ijk,\min}^{\star,\rm int}
+=
+\min_{(r,s)\in\mathcal C^{\rm int}_{ijk,\star}} \tau_{ijk,\star}(r,s),
+\qquad \star\in\{{\rm lo},{\rm hi}\}.
+}
+\]
+
+The true simplex boundaries are already solved by Stage 192 and imported in Stage 193, so this is the only genuinely new interior algebraic candidate problem.
+
+---
+
+## 5. Two exact special reductions
+
+These two reductions justify the Stage-193 canonical interior screens.
+
+### 5.1 Diagonal-isotropic curvature reduction
+
+Suppose the interior Hessian envelope is diagonal-isotropic:
+\[
+ u_{ij,\star}=u_{ik,\star}=u_{jk,\star}=0,
+ \qquad
+ u_{ii,\star}=u_{jj,\star}=u_{kk,\star}=u_\star.
+\]
+Then
+\[
+\Delta^{\sharp}_{ijk,\star}(r,s)
+=
+(k_i+r k_j+s k_k)^2-2H_0 u_\star(1+r^2+s^2),
+\]
+so
+\[
+\tau_{ijk,\star}(r,s)
+=
+\frac{2H_0}
+{k_{ijk}(r,s)+\sqrt{k_{ijk}(r,s)^2-2H_0 u_\star}}.
+\]
+The right-hand side depends only on the first-order slope magnitude `\(k_{ijk}(r,s)\)`, and is strictly decreasing in that quantity on the admissible branch.
+
+Therefore the exact optimizer is the Stage-193 gradient-optimal interior ray
+\[
+\boxed{
+\mathbf a_{ijk}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k)}{\sqrt{k_i^2+k_j^2+k_k^2}}.
+}
+\]
+So the Stage-193 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
+
+### 5.2 Full triple-symmetry reduction
+
+Suppose the triple is fully symmetric:
+\[
+ k_i=k_j=k_k=:k,
+\]
+and the Hessian envelope is permutation-symmetric:
+\[
+ u_{ii,\star}=u_{jj,\star}=u_{kk,\star}=:u_{d,\star},
+ \qquad
+ u_{ij,\star}=u_{ik,\star}=u_{jk,\star}=:u_{x,\star}.
+\]
+Then the exact stationary numerators satisfy
+\[
+\boxed{
+\mathcal N_{r,\star}(1,1)=0,
+\qquad
+\mathcal N_{s,\star}(1,1)=0.
+}
+\]
+So the equal-mix barycenter
+\[
+\boxed{
+\mathbf a_{ijk}^{\rm eq}=rac{(1,1,1)}{\sqrt 3}
+}
+\]
+is an exact interior stationary ray. On a symmetric admissible window it is therefore the exact optimizer.
+
+So the Stage-193 equal-mix screen also has an exact theorem regime behind it.
+
+---
+
+## 6. Exact interior winner theorem against the optimized pairwise boundaries
+
+Keep the Stage-192 optimized pairwise boundary brackets
+\[
+\tau_{ij,\min}^{\rm lo},\qquad \tau_{ik,\min}^{\rm lo},\qquad \tau_{jk,\min}^{\rm lo},
+\]
+and similarly the corresponding upper certified values
+\[
+\tau_{ij,\min}^{\rm hi},\qquad \tau_{ik,\min}^{\rm hi},\qquad \tau_{jk,\min}^{\rm hi}.
+\]
+Once the finite interior candidate sets are evaluated, the full three-coordinate comparison is immediate.
+
+### Exact interior winner theorem
+
+If
+\[
+\boxed{
+\tau_{ijk,\min}^{\rm hi,int}
+<
+\min\bigl(
+\tau_{ij,\min}^{\rm lo},
+\tau_{ik,\min}^{\rm lo},
+\tau_{jk,\min}^{\rm lo}
+\bigr),
+}
+\]
+then there exists a genuine interior three-coordinate mixed ray whose certified root lies strictly below every optimized pairwise boundary winner.
+
+### Exact interior non-improvement theorem
+
+If
+\[
+\boxed{
+\tau_{ijk,\min}^{\rm lo,int}
+>
+\min\bigl(
+\tau_{ij,\min}^{\rm hi},
+\tau_{ik,\min}^{\rm hi},
+\tau_{jk,\min}^{\rm hi}
+\bigr),
+}
+\]
+then no admissible interior stationary candidate beats the best pairwise boundary winner.
+
+So after Stage 194 the three-coordinate simplex no longer needs a free-form interior search to be compared with the already-optimized pairwise cones. The comparison is again finite and certified.
+
+---
+
+## 7. Minimal packet for the next stage
+
+After Stage 194, the genuinely new three-coordinate content is compressed to the finite interior candidate problem plus the already-imported pairwise boundaries.
+
+The smallest exact packet for the next stage is
+\[
+\boxed{
+\mathcal P_{ijk}^{\rm int}
+:=
+\Bigl(
+H_0,
+(k_i,k_j,k_k),
+H_{ijk,\rm lo},
+H_{ijk,\rm hi},
+T_{ijk}(r,s),
+\mathcal C_{ijk,\star},
+\mathcal S_{r,ijk,\star}
+\Bigr).
+}
+\]
+The natural continuation is now completely sharp:
+
+> rank the full set of primitive triples by their finite certified interior winners, splice those winners together with the optimized boundary ledger, and determine whether any three-coordinate simplex truly beats all pairwise branches in the carried local search.
+
+That is the natural content of Stage 195.
+
+---
+
+## 8. Best current reading after Stage 194
+
+Stage 192 turned every pairwise cone into a finite certified candidate problem.
+Stage 193 proved that the three-coordinate simplex has genuinely new interior content and isolated the first canonical interior screens.
+Stage 194 now closes the missing algebraic step:
+
+1. the interior stationary system is explicit,
+2. the square root is eliminated exactly into one quartic and one sextic condition,
+3. the admissible interior optimizer sits in a finite algebraic candidate set,
+4. the gradient-optimal and equal-mix screens are justified by exact special-reduction theorems,
+5. and the full interior-versus-boundary comparison is again a finite certified ranking problem.
+
+So the next theorem gate is no longer “how do we search the interior at all?”
+That problem is finished.
+The next question is which primitive triples, if any, actually produce certified interior winners once the real PDE-derived local packet is supplied.
+moving_throat_pde_stage195_full_primitive_triple_ranking_theorem.md
+# Moving-Throat PDE — Stage 195: Full Primitive-Triple Ranking, Exact Boundary Splice, and the Up-to-Three-Coordinate Search Sieve
+
+## Status
+
+**Exact within the carried Stage-192 pairwise certified optimizer and the Stage-194 finite interior triple-candidate reduction, once the local pairwise ledger and the admissible interior triple packets are supplied on the chosen free-quintuple patch.**
+
+This stage does **not** introduce a new constitutive law or a new optimizer.
+It upgrades the Stage-194 interior algebraic reduction into a **global certified ranking ledger** for all primitive three-coordinate simplices, and it splices that ledger to the already-finished pairwise cones.
+
+---
+
+## Purpose
+
+Stage 194 solved the genuinely new algebraic problem on a fixed primitive triple: every interior optimizer on a three-coordinate mixed simplex is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
+
+That leaves one exact continuation point:
+
+> how do we rank the **full set** of primitive triples against one another, and how do we splice those triple-interior winners together with the already-optimized pairwise boundary ledger so the full search up through three-coordinate mixed rays becomes finite and certified?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact combinatorial ledger for the five primitive free directions,
+2. the exact **boundary-splice theorem** for every primitive triple,
+3. the exact **local triple classification theorem** into interior-certified, boundary-certified, and unresolved simplices,
+4. the exact **primitive-triple ranking theorem** by disjoint certified intervals,
+5. the exact **global three-coordinate improvement / non-improvement theorems** against the pairwise ledger,
+6. and the exact **finite evaluation budget theorem** for the whole up-to-three-coordinate local sieve.
+
+So Stage 195 is the global ranking complement of Stage 194: the interior candidate problem is no longer a continuum search, and the full search up through three active free coordinates is now reduced to a finite certified ledger.
+
+---
+
+## 1. Carry-forward primitive pair and primitive triple ledgers
+
+Let the free primitive index set be
+\[
+\boxed{
+\mathfrak I_5:=\{\lambda,c,\gamma,U,W\}.
+}
+\]
+Then the primitive pair set and primitive triple set are
+\[
+\boxed{
+\mathfrak P_2
+:=
+\bigl\{\{i,j\}\subset\mathfrak I_5: i<j\bigr\},
+\qquad
+\#\mathfrak P_2=\binom52=10,
+}
+\]
+\[
+\boxed{
+\mathfrak T_3
+:=
+\bigl\{\{i,j,k\}\subset\mathfrak I_5: i<j<k\bigr\},
+\qquad
+\#\mathfrak T_3=\binom53=10.
+}
+\]
+Every primitive pair belongs to exactly three primitive triples, because after fixing `\((i,j)\)` there are exactly three remaining primitive directions from which the third coordinate can be chosen.
+
+### 1.1 Imported Stage-192 pairwise packets
+
+For each primitive pair `\((i,j)\in\mathfrak P_2\)`, carry forward the exact optimized certified interval
+\[
+\boxed{
+\tau_{ij,\min}^{\rm lo}
+\le
+\tau_{ij,*}^{\rm best}
+\le
+\tau_{ij,\min}^{\rm hi}.
+}
+\]
+Because the Stage-192 admissible pairwise candidate set already contains the admissible ratio endpoints, this pairwise packet already subsumes the primitive one-axis rays on that edge.
+So Stage 195 does **not** need a separate primitive-ray ledger.
+
+### 1.2 Imported Stage-194 interior triple packets
+
+For each primitive triple `\((i,j,k)\in\mathfrak T_3\)`, carry forward the exact interior certified interval
+\[
+\boxed{
+\tau_{ijk,\min}^{\rm lo,int}
+\le
+\tau_{ijk,*}^{\rm best,int}
+\le
+\tau_{ijk,\min}^{\rm hi,int}.
+}
+\]
+Here `\(\tau_{ijk,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive three-coordinate simplex, while the simplex boundaries themselves are already the Stage-192 pairwise cones.
+
+---
+
+## 2. Exact boundary splice theorem for a primitive triple
+
+Fix one primitive triple
+\[
+T=(i,j,k)\in\mathfrak T_3.
+\]
+Its three simplex edges are the Stage-192 pairwise cones
+\[
+(i,j),\qquad (i,k),\qquad (j,k).
+\]
+Define the exact boundary minima
+\[
+\boxed{
+\beta_T^{\rm lo}
+:=
+\min\bigl(
+\tau_{ij,\min}^{\rm lo},
+\tau_{ik,\min}^{\rm lo},
+\tau_{jk,\min}^{\rm lo}
+\bigr),
+}
+\]
+\[
+\boxed{
+\beta_T^{\rm hi}
+:=
+\min\bigl(
+\tau_{ij,\min}^{\rm hi},
+\tau_{ik,\min}^{\rm hi},
+\tau_{jk,\min}^{\rm hi}
+\bigr).
+}
+\]
+Let
+\[
+\tau_{T,*}^{\rm best,\triangle}
+\]
+be the unknown true best closure time on the **closed** three-coordinate simplex, i.e. interior plus all three edges.
+Then define the full triple certified interval
+\[
+\boxed{
+\tau_{T,\min}^{\rm lo,\triangle}
+:=
+\min\bigl(\beta_T^{\rm lo},\tau_{ijk,\min}^{\rm lo,int}\bigr),
+}
+\]
+\[
+\boxed{
+\tau_{T,\min}^{\rm hi,\triangle}
+:=
+\min\bigl(\beta_T^{\rm hi},\tau_{ijk,\min}^{\rm hi,int}\bigr).
+}
+\]
+
+### Exact boundary-splice theorem
+
+For every primitive triple `\(T=(i,j,k)\)`, the best closure time on the closed simplex obeys
+\[
+\boxed{
+\tau_{T,\min}^{\rm lo,\triangle}
+\le
+\tau_{T,*}^{\rm best,\triangle}
+\le
+\tau_{T,\min}^{\rm hi,\triangle}.
+}
+\]
+
+The proof is immediate: the true simplex winner is the minimum of
+
+- the true boundary winner on the union of the three edges, and
+- the true interior winner.
+
+Each of those pieces already has an exact certified interval, so the best over their union is bounded by the minima of the lower and upper certified bounds.
+
+So after Stage 195, every primitive triple has been reduced to **one finite certified interval** on its full closed simplex.
+
+---
+
+## 3. Exact local triple classification theorem
+
+The boundary splice immediately splits the primitive triples into three exact classes.
+
+### 3.1 Interior-certified triples
+
+If the interior upper bound already lies below the boundary lower bound,
+\[
+\boxed{
+\tau_{ijk,\min}^{\rm hi,int}<\beta_T^{\rm lo},
+}
+\]
+then every admissible interior winner beats every admissible boundary winner on that simplex.
+So the triple is **interior-certified**, and the closed-simplex winner is genuinely three-coordinate.
+
+### 3.2 Boundary-certified triples
+
+If the interior lower bound already lies above the boundary upper bound,
+\[
+\boxed{
+\tau_{ijk,\min}^{\rm lo,int}>\beta_T^{\rm hi},
+}
+\]
+then no admissible interior stationary candidate beats the boundary winner.
+So the triple is **boundary-certified**, and the three-coordinate simplex contributes nothing beyond its already-imported Stage-192 edges.
+
+### 3.3 Ambiguous triples
+
+Otherwise,
+\[
+\beta_T^{\rm lo}\le \tau_{ijk,\min}^{\rm hi,int}
+\qquad\text{and}\qquad
+\tau_{ijk,\min}^{\rm lo,int}\le \beta_T^{\rm hi},
+\]
+one has only an overlapping certified interval picture. The triple is then **unresolved** at the certified level, even though its candidate set is finite.
+
+Define the three exact triple classes
+\[
+\boxed{
+\mathfrak T_3^{\rm int}
+:=
+\Bigl\{T\in\mathfrak T_3:
+\tau_{T,\min}^{\rm hi,int}<\beta_T^{\rm lo}
+\Bigr\},
+}
+\]
+\[
+\boxed{
+\mathfrak T_3^{\rm bdry}
+:=
+\Bigl\{T\in\mathfrak T_3:
+\tau_{T,\min}^{\rm lo,int}>\beta_T^{\rm hi}
+\Bigr\},
+}
+\]
+\[
+\boxed{
+\mathfrak T_3^{\rm amb}
+:=
+\mathfrak T_3\setminus
+\bigl(
+\mathfrak T_3^{\rm int}\cup\mathfrak T_3^{\rm bdry}
+\bigr).
+}
+\]
+
+### Exact local triple classification theorem
+
+Every primitive triple belongs to exactly one of these three classes. The interior-certified triples are the only simplices that are already proven to contain a genuine three-coordinate winner.
+
+---
+
+## 4. Exact primitive-triple ranking theorem
+
+For each triple `\(T\in\mathfrak T_3\)`, keep its full certified interval
+\[
+\mathcal I_T^{\triangle}:=
+\bigl[
+\tau_{T,\min}^{\rm lo,\triangle},
+\tau_{T,\min}^{\rm hi,\triangle}
+\bigr].
+\]
+Now compare any two primitive triples `\(T_a,T_b\in\mathfrak T_3\)`.
+
+### Exact interval-ordering relation
+
+If
+\[
+\boxed{
+\tau_{T_a,\min}^{\rm hi,\triangle}
+<
+\tau_{T_b,\min}^{\rm lo,\triangle},
+}
+\]
+then every admissible simplex winner from `\(T_a\)` beats every admissible simplex winner from `\(T_b\)`.
+
+So the certified intervals define an exact partial order on the primitive triples.
+
+### Exact primitive-triple winner theorem
+
+If there exists a triple `\(T_\star\in\mathfrak T_3\)` such that
+\[
+\boxed{
+\tau_{T_\star,\min}^{\rm hi,\triangle}
+<
+\min_{T\in\mathfrak T_3\setminus\{T_\star\}}
+\tau_{T,\min}^{\rm lo,\triangle},
+}
+\]
+then `\(T_\star\)` is the **unique certified primitive-triple winner**.
+
+Its exact closed-simplex best closure time is guaranteed to lie strictly below the best closure time on every other primitive triple simplex.
+
+Define the global primitive-triple interval ledger
+\[
+\boxed{
+\tau_{3,\min}^{\rm lo,\triangle}
+:=
+\min_{T\in\mathfrak T_3}
+\tau_{T,\min}^{\rm lo,\triangle},
+\qquad
+\tau_{3,\min}^{\rm hi,\triangle}
+:=
+\min_{T\in\mathfrak T_3}
+\tau_{T,\min}^{\rm hi,\triangle}.
+}
+\]
+Then the best closure time over **all** primitive triple simplices obeys
+\[
+\boxed{
+\tau_{3,\min}^{\rm lo,\triangle}
+\le
+\tau_{3,*}^{\rm best,\triangle}
+\le
+\tau_{3,\min}^{\rm hi,\triangle}.
+}
+\]
+
+---
+
+## 5. Exact global three-coordinate improvement theorem against the pairwise ledger
+
+Define the global pairwise best interval
+\[
+\boxed{
+\tau_{2,\min}^{\rm lo}
+:=
+\min_{(i,j)\in\mathfrak P_2}
+\tau_{ij,\min}^{\rm lo},
+\qquad
+\tau_{2,\min}^{\rm hi}
+:=
+\min_{(i,j)\in\mathfrak P_2}
+\tau_{ij,\min}^{\rm hi}.
+}
+\]
+Because the primitive one-axis rays are already embedded in the Stage-192 pairwise edges, this interval is the full certified ledger for all searches with at most two active primitive coordinates.
+
+Now define the global **interior** triple interval
+\[
+\boxed{
+\tau_{3,\min}^{\rm lo,int}
+:=
+\min_{T\in\mathfrak T_3}
+\tau_{T,\min}^{\rm lo,int},
+\qquad
+\tau_{3,\min}^{\rm hi,int}
+:=
+\min_{T\in\mathfrak T_3}
+\tau_{T,\min}^{\rm hi,int}.
+}
+\]
+This is the only genuinely new three-coordinate content, because triple boundaries are already pairwise.
+
+### Exact global three-coordinate improvement theorem
+
+If
+\[
+\boxed{
+\tau_{3,\min}^{\rm hi,int}<\tau_{2,\min}^{\rm lo},
+}
+\]
+then there exists a genuine three-coordinate interior mixed ray whose certified closure time lies strictly below every pairwise cone winner.
+
+### Exact global three-coordinate no-improvement theorem
+
+If
+\[
+\boxed{
+\tau_{3,\min}^{\rm lo,int}>\tau_{2,\min}^{\rm hi},
+}
+\]
+then no admissible three-coordinate interior stationary ray can beat the global pairwise winner.
+
+So after Stage 195 the full question “do genuinely interior three-coordinate rays matter?” has become a single certified interval comparison.
+
+---
+
+## 6. Exact up-to-three-coordinate search sieve theorem
+
+The pairwise ledger already contains all one-axis primitive rays, and the triple interior ledger contains the genuinely new three-coordinate content. Therefore the best closure time among **all** rays with support on at most three primitive coordinates obeys
+\[
+\boxed{
+\tau_{\le 3,\min}^{\rm lo}
+:=
+\min\bigl(
+\tau_{2,\min}^{\rm lo},
+\tau_{3,\min}^{\rm lo,int}
+\bigr),
+}
+\]
+\[
+\boxed{
+\tau_{\le 3,\min}^{\rm hi}
+:=
+\min\bigl(
+\tau_{2,\min}^{\rm hi},
+\tau_{3,\min}^{\rm hi,int}
+\bigr).
+}
+\]
+
+### Exact up-to-three-coordinate search sieve theorem
+
+Let `\(\tau_{\le3,*}^{\rm best}\)` be the unknown true best closure time among all primitive rays, all pairwise mixed cones, and all genuine interior three-coordinate mixed simplices on the supplied local patch. Then
+\[
+\boxed{
+\tau_{\le 3,\min}^{\rm lo}
+\le
+\tau_{\le3,*}^{\rm best}
+\le
+\tau_{\le 3,\min}^{\rm hi}.
+}
+\]
+So the local search up through three active primitive coordinates is now completely reduced to one finite certified interval.
+
+---
+
+## 7. Exact finite evaluation budget theorem
+
+The combinatorics are now explicit.
+
+### 7.1 Imported Stage-192 pairwise budget
+
+There are
+\[
+\#\mathfrak P_2=10
+\]
+primitive pairs.
+Each Stage-192 pair needs at most
+\[
+12
+\]
+exact candidate evaluations (six for the lower envelope and six for the upper envelope) on a compact admissible ratio interval.
+So the full pairwise ledger costs at most
+\[
+\boxed{10\times 12 = 120}
+\]
+exact candidate evaluations.
+
+### 7.2 New Stage-194 interior triple budget
+
+There are
+\[
+\#\mathfrak T_3=10
+\]
+primitive triples.
+Each Stage-194 interior simplex needs at most
+\[
+24
+\]
+admissible algebraic candidates per envelope, hence at most
+\[
+48
+\]
+interior candidate evaluations per triple.
+So the full interior triple ledger costs at most
+\[
+\boxed{10\times 48 = 480}
+\]
+exact candidate evaluations.
+
+### 7.3 Full up-to-three-coordinate budget
+
+Therefore the entire local search up through three active primitive coordinates has the exact finite budget
+\[
+\boxed{
+120+480=600
+}
+\]
+exact candidate evaluations once the local slope data, envelope blocks, and admissible validity maps are supplied.
+
+If the Stage-192 pairwise ledger is already imported, then Stage 195 itself adds only the triple-interior work:
+\[
+\boxed{480}
+\]
+new candidate evaluations plus exact interval comparisons.
+
+This is the first exact global cost theorem for the primitive local sieve.
+
+---
+
+## 8. Minimal packet for the next stage
+
+After Stage 195, the full search up through three active free coordinates is already finite and certified.
+What remains beyond it is the first genuinely four-coordinate interior search.
+
+The natural next packet is therefore the positive four-coordinate simplex ledger
+\[
+\boxed{
+\mathcal P_{ijkl}^{(4)}
+:=
+\Bigl(
+H_0,
+(k_i,k_j,k_k,k_l),
+H_{ijkl,\rm lo},
+H_{ijkl,\rm hi},
+T_{ijkl}(\cdot)
+\Bigr),
+}
+\]
+with the exact boundary reduction now taken against the Stage-195 triple ledger rather than against the pairwise ledger directly.
+
+So the natural continuation is completely sharp:
+
+> Stage 196 should build the exact four-coordinate positive simplex, reduce its full boundary to the Stage-195 triple packets, and isolate the first canonical interior four-way screens before solving the full three-parameter interior optimizer.
+
+---
+
+## 9. Best current reading after Stage 195
+
+Stage 192 turned every pairwise cone into a finite certified candidate problem.
+Stage 194 did the same for the genuinely new interior of each three-coordinate simplex.
+Stage 195 now closes the global ranking step.
+
+1. There are exactly ten primitive pairs and ten primitive triples.
+2. Every primitive triple now carries one exact closed-simplex certified interval obtained by splicing its finite interior packet to the imported pairwise boundary ledger.
+3. The primitive triples split exactly into interior-certified, boundary-certified, and unresolved classes.
+4. The full three-coordinate-versus-pairwise question collapses to the single interval comparison
+   \(
+   \tau_{3,\min}^{\rm hi,int}\ ?\ \tau_{2,\min}^{\rm lo}
+   \).
+5. The entire local search up through three active primitive coordinates now has a finite certified budget of at most `600` exact candidate evaluations.
+
+So the next theorem gate is no longer “is the three-coordinate search tractable?”
+That problem is finished.
+The next honest question is whether the first four-coordinate simplex can produce a certified interior winner that beats the now-finite up-to-three-coordinate ledger.
+moving_throat_pde_stage196_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+# Moving-Throat PDE — Stage 196: Four-Coordinate Mixed Simplex, Exact Face Reduction, and the Support-Cardinality-4 Theorem Gate
+
+## Status
+
+**Exact within the carried Stage-195 up-to-three-coordinate certified sieve, once a local oriented `4 x 4` Hessian-envelope block and the corresponding validity map are supplied on the chosen four-coordinate patch.**
+
+This stage does **not** yet solve the full three-parameter interior optimizer on a primitive four-coordinate simplex.
+It is the first exact continuation *beyond* the fully ranked support-`<=3` ledger: the first place where a genuinely interior support-cardinality-`4` mixed ray can appear and be audited without reopening the solved pairwise and triple boundary problems.
+
+---
+
+## Purpose
+
+Stage 195 closed the full support-`<=3` local search.
+Every primitive pair is already a finite certified candidate problem, every primitive triple carries a closed-simplex certified interval, and the full local sieve through three active primitive coordinates has been reduced to one finite certified ledger.
+
+That makes the next theorem gate completely sharp:
+
+> can a **genuine interior four-coordinate** mixed branch beat the already-finished support-`<=3` ledger, and what is the smallest exact audit that can test that before solving the full three-parameter interior optimizer?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact combinatorial ledger for the five primitive four-coordinate simplices,
+2. the exact **positive spherical four-simplex** and its full face reduction back to the Stage-195 triple packets,
+3. the exact **four-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
+4. the exact **four-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes the total six-way off-diagonal leverage,
+5. the exact **fixed-simplex certified bracket** for any admissible interior point,
+6. the exact **canonical quadruple-screen audit** consisting of four imported triple faces plus two interior canonical rows,
+7. and the exact **support-cardinality-4 theorem gate** that certifies a genuine four-coordinate improvement over the entire up-to-three-coordinate ledger whenever one canonical interior screen already wins.
+
+So Stage 196 is the four-coordinate analogue of Stage 193, but now with the whole support-`<=3` boundary ledger already finished and imported from Stage 195.
+
+---
+
+## 1. Carry-forward primitive quadruple ledger and the positive spherical four-simplex
+
+Keep the free log coordinates
+\[
+\boldsymbol\ell=(\ell_\lambda,\ell_c,\ell_\gamma,\ell_U,\ell_W)
+\]
+and the oriented primitive slope magnitudes from the carried scalarized closure chain,
+\[
+H_0>0,
+\qquad
+\widehat{\mathbf e}_i:=\varepsilon_i\mathbf e_i,
+\qquad
+\varepsilon_i:=-\operatorname{sgn}(\Gamma_i),
+\qquad
+k_i:=|\Gamma_i|>0.
+\]
+So every monotone primitive axis has forward oriented slope
+\[
+K_i=-k_i<0.
+\]
+
+Let the primitive free-axis set be
+\[
+\boxed{
+\mathfrak I_5:=\{\lambda,c,\gamma,U,W\}.
+}
+\]
+The primitive quadruple set is then
+\[
+\boxed{
+\mathfrak Q_4
+:=
+\bigl\{\{i,j,k,l\}\subset\mathfrak I_5:i<j<k<l\bigr\},
+\qquad
+\#\mathfrak Q_4=\binom54=5.
+}
+\]
+Every primitive triple belongs to exactly two primitive quadruples, because once three axes are fixed there are exactly two remaining primitive directions that can complete the quadruple.
+
+Now fix a monotone primitive quadruple
+\[
+Q=(i,j,k,l)\in\mathfrak Q_4,
+\qquad
+k_i,k_j,k_k,k_l>0.
+\]
+The first genuinely four-coordinate search set is the **positive spherical four-simplex**
+\[
+\boxed{
+\Delta_{ijkl}^{+}
+:=
+\Bigl\{
+\mathbf a=(a_i,a_j,a_k,a_l)\in\mathbb R_{\ge0}^4:
+ a_i^2+a_j^2+a_k^2+a_l^2=1
+\Bigr\}.
+}
+\]
+Each point generates the oriented mixed ray
+\[
+\boxed{
+\widehat{\mathbf s}_{ijkl}(\mathbf a)
+:=
+ a_i\widehat{\mathbf e}_i+a_j\widehat{\mathbf e}_j+a_k\widehat{\mathbf e}_k+a_l\widehat{\mathbf e}_l.
+}
+\]
+Interior points have all four coordinates positive. Boundary points lie on one of the four three-coordinate faces.
+
+---
+
+## 2. Exact face-reduction theorem
+
+The four codimension-one faces are
+\[
+F_{ijk}:=\{a_l=0\},
+\qquad
+F_{ijl}:=\{a_k=0\},
+\qquad
+F_{ikl}:=\{a_j=0\},
+\qquad
+F_{jkl}:=\{a_i=0\}.
+\]
+Each face is exactly one of the Stage-195 primitive triple **closed** simplices.
+
+### 2.1 Face `\(F_{ijk}\)`
+With positive ratio coordinates
+\[
+r=\frac{a_j}{a_i}\ge0,
+\qquad
+s=\frac{a_k}{a_i}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{ijk}(r,s)=\frac{(1,r,s,0)}{\sqrt{1+r^2+s^2}},
+\qquad
+\widehat{\mathbf s}_{ijkl}(\mathbf a_{ijk}(r,s))
+=
+\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j+s\widehat{\mathbf e}_k}{\sqrt{1+r^2+s^2}}.
+}
+\]
+So `\(F_{ijk}\)` is exactly the Stage-195 closed simplex attached to the primitive triple `\((i,j,k)\)`.
+
+### 2.2 Face `\(F_{ijl}\)`
+With positive ratio coordinates
+\[
+r=\frac{a_j}{a_i}\ge0,
+\qquad
+t=\frac{a_l}{a_i}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{ijl}(r,t)=\frac{(1,r,0,t)}{\sqrt{1+r^2+t^2}},
+\qquad
+\widehat{\mathbf s}_{ijkl}(\mathbf a_{ijl}(r,t))
+=
+\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j+t\widehat{\mathbf e}_l}{\sqrt{1+r^2+t^2}}.
+}
+\]
+So `\(F_{ijl}\)` is exactly the Stage-195 closed simplex for the primitive triple `\((i,j,l)\)`.
+
+### 2.3 Face `\(F_{ikl}\)`
+With positive ratio coordinates
+\[
+s=\frac{a_k}{a_i}\ge0,
+\qquad
+t=\frac{a_l}{a_i}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{ikl}(s,t)=\frac{(1,0,s,t)}{\sqrt{1+s^2+t^2}},
+\qquad
+\widehat{\mathbf s}_{ijkl}(\mathbf a_{ikl}(s,t))
+=
+\frac{\widehat{\mathbf e}_i+s\widehat{\mathbf e}_k+t\widehat{\mathbf e}_l}{\sqrt{1+s^2+t^2}}.
+}
+\]
+So `\(F_{ikl}\)` is exactly the Stage-195 closed simplex for the primitive triple `\((i,k,l)\)`.
+
+### 2.4 Face `\(F_{jkl}\)`
+With positive ratio coordinates
+\[
+u=\frac{a_k}{a_j}\ge0,
+\qquad
+w=\frac{a_l}{a_j}\ge0,
+\]
+we have
+\[
+\boxed{
+\mathbf a_{jkl}(\nu,w)=\frac{(0,1,\nu,w)}{\sqrt{1+\nu^2+w^2}},
+\qquad
+\widehat{\mathbf s}_{ijkl}(\mathbf a_{jkl}(\nu,w))
+=
+\frac{\widehat{\mathbf e}_j+\nu\widehat{\mathbf e}_k+w\widehat{\mathbf e}_l}{\sqrt{1+\nu^2+w^2}}.
+}
+\]
+So `\(F_{jkl}\)` is exactly the Stage-195 closed simplex for the primitive triple `\((j,k,l)\)`.
+
+This gives the first exact four-coordinate simplification:
+
+> nothing on the boundary of the four-coordinate simplex is new. The entire codimension-one boundary is already closed by the Stage-195 primitive-triple ledger.
+
+Define the imported Stage-195 full-face certified intervals
+\[
+\mathcal I_{ijk}^{\triangle},
+\qquad
+\mathcal I_{ijl}^{\triangle},
+\qquad
+\mathcal I_{ikl}^{\triangle},
+\qquad
+\mathcal I_{jkl}^{\triangle},
+\]
+with lower and upper face minima
+\[
+\boxed{
+\beta_Q^{\rm lo}
+:=
+\min\bigl(
+\tau_{ijk,\min}^{\rm lo,\triangle},
+\tau_{ijl,\min}^{\rm lo,\triangle},
+\tau_{ikl,\min}^{\rm lo,\triangle},
+\tau_{jkl,\min}^{\rm lo,\triangle}
+\bigr),
+}
+\]
+\[
+\boxed{
+\beta_Q^{\rm hi}
+:=
+\min\bigl(
+\tau_{ijk,\min}^{\rm hi,\triangle},
+\tau_{ijl,\min}^{\rm hi,\triangle},
+\tau_{ikl,\min}^{\rm hi,\triangle},
+\tau_{jkl,\min}^{\rm hi,\triangle}
+\bigr).
+}
+\]
+So the entire four-simplex boundary already carries one exact certified interval,
+\[
+\boxed{
+\beta_Q^{\rm lo}
+\le
+\tau_{Q,*}^{\rm best,\partial}
+\le
+\beta_Q^{\rm hi},
+}
+\]
+where `\(\tau_{Q,*}^{\rm best,\partial}\)` is the unknown true best closure time on the full boundary of the four-coordinate simplex.
+
+---
+
+## 3. Exact four-coordinate gradient-synergy theorem
+
+The positive oriented initial slope magnitude on the four-simplex ray is
+\[
+\boxed{
+k_{ijkl}(\mathbf a)
+:=
+-\sigma_0\,\nabla_\ell h(\boldsymbol\ell_\circ)\cdot \widehat{\mathbf s}_{ijkl}(\mathbf a)
+=
+a_i k_i+a_j k_j+a_k k_k+a_l k_l.
+}
+\]
+So the oriented forward slope is
+\[
+K_{ijkl}(\mathbf a)=-k_{ijkl}(\mathbf a)<0.
+\]
+
+By the same exact Lagrange-multiplier argument as in Stage 193, the unique gradient-optimal interior point is
+\[
+\boxed{
+\mathbf a_{ijkl}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k,k_l)}{\sqrt{k_i^2+k_j^2+k_k^2+k_l^2}}.
+}
+\]
+The exact maximum first-order slope magnitude is
+\[
+\boxed{
+\max_{\mathbf a\in\Delta_{ijkl}^{+}} k_{ijkl}(\mathbf a)
+=
+\sqrt{k_i^2+k_j^2+k_k^2+k_l^2}.
+}
+\]
+On the interior ratio patch `\(a_i>0\)`, the gradient-optimal ratios are
+\[
+\boxed{
+r_{ijkl}^{\rm grad}=\frac{k_j}{k_i},
+\qquad
+s_{ijkl}^{\rm grad}=\frac{k_k}{k_i},
+\qquad
+t_{ijkl}^{\rm grad}=\frac{k_l}{k_i}.
+}
+\]
+
+Because all four primitive slopes are positive, the interior four-coordinate gradient winner strictly beats every triple-face first-order maximum. For example,
+\[
+\bigl(k_{ijkl}^{\rm grad}\bigr)^2-igl(k_{ijk}^{\rm grad}\bigr)^2 = k_l^2>0,
+\]
+and similarly for the other three faces. Therefore:
+
+### Exact four-coordinate gradient-synergy theorem
+
+If all four primitive slopes are nonzero and monotone, a genuine interior four-coordinate mixed ray always beats every three-coordinate face at the **first-order** descent level.
+
+That does **not** yet prove a four-coordinate winner after curvature enters, but it proves that the interior four-simplex carries genuinely new descent information already at linear order.
+
+---
+
+## 4. Exact four-coordinate curvature law and the total six-way cross-leverage theorem
+
+Let the oriented symmetric Hessian block along the quadruple ray be
+\[
+H_{ijkl}(\mathbf a;\tau)
+=
+\begin{pmatrix}
+ h_{ii} & h_{ij} & h_{ik} & h_{il}\\
+ h_{ij} & h_{jj} & h_{jk} & h_{jl}\\
+ h_{ik} & h_{jk} & h_{kk} & h_{kl}\\
+ h_{il} & h_{jl} & h_{kl} & h_{ll}
+\end{pmatrix}_{(ijkl)}.
+\]
+Then the exact second directional derivative is
+\[
+\boxed{
+H_{1,ijkl}(\mathbf a;\tau)=\mathbf a^T H_{ijkl}(\mathbf a;\tau)\mathbf a.
+}
+\]
+Expanding,
+\[
+\boxed{
+\begin{aligned}
+H_{1,ijkl}
+={}&a_i^2 h_{ii}+a_j^2 h_{jj}+a_k^2 h_{kk}+a_l^2 h_{ll}\\
+&+2a_i a_j h_{ij}+2a_i a_k h_{ik}+2a_i a_l h_{il}
++2a_j a_k h_{jk}+2a_j a_l h_{jl}+2a_k a_l h_{kl}.
+\end{aligned}
+}
+\]
+So the total off-diagonal leverage is carried by the exact weight
+\[
+\boxed{
+w_{\Sigma}(\mathbf a)
+:=
+2\sum_{p<q} a_p a_q
+=2(a_i a_j+a_i a_k+a_i a_l+a_j a_k+a_j a_l+a_k a_l).
+}
+\]
+This weight admits the identity
+\[
+\boxed{
+w_{\Sigma}(\mathbf a)=(a_i+a_j+a_k+a_l)^2-1,
+}
+\]
+because `\(a_i^2+a_j^2+a_k^2+a_l^2=1\)` on the simplex.
+
+Now use the exact Cauchy slack identity
+\[
+4(a_i^2+a_j^2+a_k^2+a_l^2)-(a_i+a_j+a_k+a_l)^2
+=
+\sum_{p<q}(a_p-a_q)^2\ge0.
+\]
+Since `\(a_i^2+a_j^2+a_k^2+a_l^2=1\)`, it follows that
+\[
+(a_i+a_j+a_k+a_l)^2\le 4,
+\qquad
+w_{\Sigma}(\mathbf a)\le 3.
+\]
+Equality holds iff
+\[
+a_i=a_j=a_k=a_l=\frac12.
+\]
+So the **equal-mix barycenter**
+\[
+\boxed{
+\mathbf a_{ijkl}^{\rm eq}=\frac{(1,1,1,1)}{2}
+}
+\]
+maximizes the total six-way off-diagonal leverage, with
+\[
+\boxed{
+w_{\Sigma}(\mathbf a_{ijkl}^{\rm eq})=3.
+}
+\]
+For comparison,
+
+- the equal-mix point on any triple face has `\(w_{\Sigma}=2\)`,
+- the equal-mix point on any pairwise edge has `\(w_{\Sigma}=1\)`.
+
+So the four-coordinate interior barycenter adds one full new unit of total cross leverage beyond the triple-simplex barycenter.
+
+### Exact diagonal-neutral reduction
+
+If all off-diagonal Hessian entries vanish,
+\[
+h_{ij}=h_{ik}=h_{il}=h_{jk}=h_{jl}=h_{kl}=0,
+\]
+then
+\[
+\boxed{
+H_{1,ijkl}(\mathbf a;\tau)
+=
+a_i^2 h_{ii}+a_j^2 h_{jj}+a_k^2 h_{kk}+a_l^2 h_{ll},
+}
+\]
+so there is no genuine four-way curvature synergy. In that case the interior four-simplex carries only the first-order gradient gain from Section 3.
+
+---
+
+## 5. Exact fixed-simplex curvature envelopes and the certified local bracket
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+let the oriented symmetric `\(4\times 4\)` envelope block be
+\[
+H_{ijkl,\star}=
+\begin{pmatrix}
+ u_{ii,\star} & u_{ij,\star} & u_{ik,\star} & u_{il,\star}\\
+ u_{ij,\star} & u_{jj,\star} & u_{jk,\star} & u_{jl,\star}\\
+ u_{ik,\star} & u_{jk,\star} & u_{kk,\star} & u_{kl,\star}\\
+ u_{il,\star} & u_{jl,\star} & u_{kl,\star} & u_{ll,\star}
+\end{pmatrix}.
+\]
+For any fixed simplex point `\(\mathbf a\)`, define the exact envelope curvature scalar
+\[
+\boxed{
+\kappa_{ijkl,\star}(\mathbf a):=
+\mathbf a^T H_{ijkl,\star}\mathbf a.
+}
+\]
+Then the exact certified local comparison root at that simplex point is
+\[
+\boxed{
+\tau_{ijkl,\star}(\mathbf a)
+:=
+\mathcal T\bigl(H_0,-k_{ijkl}(\mathbf a);\kappa_{ijkl,\star}(\mathbf a)\bigr)
+=
+\frac{2H_0}{k_{ijkl}(\mathbf a)+\sqrt{k_{ijkl}(\mathbf a)^2-2H_0\kappa_{ijkl,\star}(\mathbf a)}}.
+}
+\]
+So the four-coordinate simplex introduces **no new root algebra** at a fixed interior point. The only new difficulty is the genuine three-parameter interior search over `\(\mathbf a\)`.
+
+### 5.1 Interior ratio patch `\(a_i>0\)`
+
+Use the positive ratio coordinates
+\[
+r:=\frac{a_j}{a_i}>0,
+\qquad
+s:=\frac{a_k}{a_i}>0,
+\qquad
+t:=\frac{a_l}{a_i}>0,
+\]
+so that
+\[
+\boxed{
+\mathbf a(r,s,t)
+=
+\frac{(1,r,s,t)}{\sqrt{1+r^2+s^2+t^2}}.
+}
+\]
+Define the ten exact quadratic discriminant coefficients
+\[
+\boxed{
+A_\star:=k_i^2-2H_0 u_{ii,\star},
+\qquad
+B_\star:=2k_i k_j-4H_0 u_{ij,\star},
+\qquad
+C_\star:=2k_i k_k-4H_0 u_{ik,\star},
+}
+\]
+\[
+\boxed{
+D_\star:=2k_i k_l-4H_0 u_{il,\star},
+\qquad
+E_\star:=k_j^2-2H_0 u_{jj,\star},
+\qquad
+F_\star:=2k_j k_k-4H_0 u_{jk,\star},
+}
+\]
+\[
+\boxed{
+G_\star:=2k_j k_l-4H_0 u_{jl,\star},
+\qquad
+H_\star:=k_k^2-2H_0 u_{kk,\star},
+\qquad
+I_\star:=2k_k k_l-4H_0 u_{kl,\star},
+}
+\]
+\[
+\boxed{
+J_\star:=k_l^2-2H_0 u_{ll,\star}.
+}
+\]
+Then the exact discriminant numerator is
+\[
+\boxed{
+\Delta^{\sharp}_{ijkl,\star}(r,s,t)
+:=
+A_\star+B_\star r+C_\star s+D_\star t
++E_\star r^2+F_\star rs+G_\star rt+H_\star s^2+I_\star st+J_\star t^2.
+}
+\]
+The certified interior bracket becomes
+\[
+\boxed{
+\tau_{ijkl,\star}(r,s,t)
+=
+\frac{2H_0\sqrt{1+r^2+s^2+t^2}}
+{k_i+r k_j+s k_k+t k_l+\sqrt{\Delta^{\sharp}_{ijkl,\star}(r,s,t)}}.
+}
+\]
+Restricting to any face recovers the exact Stage-194 triple formulas.
+
+---
+
+## 6. The canonical quadruple-screen audit
+
+Stage 196 does **not** yet solve the full three-parameter interior optimizer.
+The smallest exact screen set is instead:
+
+1. the four exact imported full-face intervals from Stage 195,
+   \[
+   \mathcal I_{ijk}^{\triangle},
+   \qquad
+   \mathcal I_{ijl}^{\triangle},
+   \qquad
+   \mathcal I_{ikl}^{\triangle},
+   \qquad
+   \mathcal I_{jkl}^{\triangle},
+   \]
+2. the unique interior gradient-optimal screen point
+   \[
+   \mathbf a_{ijkl}^{\rm grad},
+   \]
+3. the unique interior equal-mix barycentric screen point
+   \[
+   \mathbf a_{ijkl}^{\rm eq}.
+   \]
+
+So the exact Stage-196 quadruple-screen packet is
+\[
+\boxed{
+\mathcal S_{ijkl}^{\rm quad}
+:=
+\Bigl(
+\mathcal I_{ijk}^{\triangle},
+\mathcal I_{ijl}^{\triangle},
+\mathcal I_{ikl}^{\triangle},
+\mathcal I_{jkl}^{\triangle},
+\mathbf a_{ijkl}^{\rm grad},
+\mathbf a_{ijkl}^{\rm eq}
+\Bigr).
+}
+\]
+This is the exact four-coordinate analogue of the Stage-193 canonical triple-screen packet, but now the whole codimension-one boundary is already fully optimized and imported rather than re-audited.
+
+---
+
+## 7. Exact support-cardinality-4 theorem gate
+
+Let
+\[
+\tau_{ijkl,\rm hi}^{\rm grad}:=\tau_{ijkl,\rm hi}(\mathbf a_{ijkl}^{\rm grad}),
+\qquad
+\tau_{ijkl,\rm hi}^{\rm eq}:=\tau_{ijkl,\rm hi}(\mathbf a_{ijkl}^{\rm eq}),
+\]
+and similarly for the lower certified screen values.
+Then the first exact four-coordinate certification rule is immediate.
+
+### Exact interior-screen dominance theorem
+
+If either canonical interior screen satisfies
+\[
+\boxed{
+\tau_{ijkl,\rm hi}^{\rm can}
+<
+\beta_Q^{\rm lo},
+\qquad
+\text{can}\in\{{\rm grad},{\rm eq}\},
+}
+\]
+then there exists a **genuine interior four-coordinate mixed ray** whose certified closure time lies strictly below every already-solved triple-face boundary winner.
+
+The proof is the same as in Stage 193:
+
+- the actual root at the chosen interior screen point is bounded above by its certified upper bracket,
+- the actual face winners are bounded below by the imported certified lower face brackets,
+- so the interior screen point already certifies a strict interior four-coordinate improvement over the full Stage-195 boundary ledger.
+
+### Exact canonical non-improvement filter
+
+Conversely, if
+\[
+\boxed{
+\min\bigl(
+\tau_{ijkl,\rm lo}^{\rm grad},
+\tau_{ijkl,\rm lo}^{\rm eq}
+\bigr)
+>
+\beta_Q^{\rm hi},
+}
+\]
+then neither canonical four-coordinate screen beats the best Stage-195 boundary winner on that simplex.
+
+That is **not** a full no-go theorem for the four-simplex interior, because the genuine three-parameter interior optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical four-way interior mechanisms before the full interior search is attempted.
+
+---
+
+## 8. Global support-cardinality-4 gate against the Stage-195 up-to-three-coordinate ledger
+
+Carry forward the exact Stage-195 certified interval for the whole local support-`<=3` search,
+\[
+\boxed{
+\tau_{\le 3,\min}^{\rm lo}
+\le
+\tau_{\le 3,*}^{\rm best}
+\le
+\tau_{\le 3,\min}^{\rm hi}.
+}
+\]
+Now compare any primitive quadruple canonical interior screen against this already-finished ledger.
+
+### Exact support-cardinality-4 improvement gate
+
+If for some primitive quadruple `\(Q=(i,j,k,l)\)` and some canonical interior screen `\(\text{can}\in\{{\rm grad},{\rm eq}\}\)` one has
+\[
+\boxed{
+\tau_{ijkl,\rm hi}^{\rm can}
+<
+\tau_{\le 3,\min}^{\rm lo},
+}
+\]
+then there exists a genuine support-cardinality-`4` mixed ray whose certified closure time lies strictly below **every** already-ranked support-`<=3` ray.
+
+### Exact canonical support-cardinality-4 non-improvement filter
+
+If for **every** primitive quadruple `\(Q\)` one has
+\[
+\boxed{
+\min\bigl(
+\tau_{ijkl,\rm lo}^{\rm grad},
+\tau_{ijkl,\rm lo}^{\rm eq}
+\bigr)
+>
+\tau_{\le 3,\min}^{\rm hi},
+}
+\]
+then no canonical four-way screen beats the current support-`<=3` winner.
+
+Again, this is a filter on the canonical four-way screens, not yet a full no-go theorem for the entire four-coordinate interior.
+
+So after Stage 196 the support-cardinality-`4` question is no longer opaque.
+The first honest gate is now a direct interval comparison against the already-finished Stage-195 sieve.
+
+---
+
+## 9. Minimal packet for the next stage
+
+After Stage 196, the full boundary of every primitive four-coordinate simplex is already solved, and the only unresolved part is the genuinely new three-parameter interior optimizer.
+
+The smallest exact packet for that next stage is
+\[
+\boxed{
+\mathcal P_{ijkl}^{(4)}
+:=
+\Bigl(
+H_0,
+(k_i,k_j,k_k,k_l),
+H_{ijkl,\rm lo},
+H_{ijkl,\rm hi},
+T_{ijkl}(\mathbf a)
+\Bigr),
+}
+\]
+where
+
+- `\(H_0\)` is the oriented logarithmic defect,
+- `\((k_i,k_j,k_k,k_l)\)` are the four primitive slope magnitudes,
+- `\(H_{ijkl,\rm lo},H_{ijkl,\rm hi}\)` are the lower/upper oriented `4 x 4` Hessian-envelope blocks,
+- `\(T_{ijkl}(\mathbf a)\)` is the local validity-radius map on the four-simplex patch.
+
+The natural continuation is now completely sharp:
+
+> Stage 197 should solve the full interior four-simplex optimizer by reducing the three-parameter stationary system to a finite algebraic candidate set, just as Stage 194 did for the three-coordinate simplex interior.
+
+---
+
+## 10. Best current reading after Stage 196
+
+Stage 195 already proved that the support-`<=3` search is finite and exact.
+Stage 196 now shows what is genuinely new at the first four-coordinate level:
+
+1. every codimension-one face of the four-coordinate simplex is already one of the Stage-195 primitive triples,
+2. a genuine interior four-coordinate ray always beats every triple face at the first-order gradient level,
+3. the equal-mix four-way barycenter uniquely maximizes the total six-way off-diagonal Hessian leverage,
+4. every fixed interior four-simplex point already carries an exact certified local bracket,
+5. and the smallest honest support-cardinality-`4` audit is now a six-row screen:
+   - four imported triple-face rows,
+   - one interior gradient-optimal row,
+   - one interior equal-mix row.
+
+So the next theorem gate is no longer “is there any four-coordinate effect at all?”
+There is.
+The next real question is whether the full three-parameter interior optimizer on a primitive four-simplex can produce a certified winner that beats both canonical interior screens and the now-finished support-`<=3` ledger.
+moving_throat_pde_stage197_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+# Moving-Throat PDE — Stage 197: Full Interior Four-Coordinate Simplex Optimizer, Exact Lifted Stationary System, and the Finite Algebraic Candidate Set
+
+## Status
+
+**Exact within the carried Stage-196 four-coordinate mixed-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer does not sit on an artificial outer boundary of that chosen window.**
+
+The whole codimension-one boundary of the four-coordinate simplex is already closed by the Stage-195 / Stage-196 ledger, so this stage addresses only the genuinely new content: the **three-parameter interior** optimizer on a primitive four-coordinate simplex.
+
+---
+
+## Purpose
+
+Stage 196 did three things at once.
+
+1. It proved that every codimension-one face of a primitive four-coordinate simplex is already one of the finished Stage-195 primitive triples.
+2. It showed that the first honest support-cardinality-`4` audit is the four imported triple faces plus two canonical interior screens.
+3. It isolated the exact next theorem gate:
+
+> how do we optimize the **full** certified interior objective on the three-parameter simplex interior, and can that search be reduced to a finite algebraic candidate set rather than a free-form continuum scan?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact three-component stationary numerator system for the interior ratio patch,
+2. the exact **lifted polynomial stationary system** with one auxiliary square-root variable,
+3. the exact degree ledger `(3,3,3,2)` and the corresponding Bézout candidate bound `54`,
+4. the direct square-root-free elimination into three quintic cross-consistency polynomials and three sextic square conditions,
+5. the exact finite candidate-set theorem on a compact interior window,
+6. two exact special reductions explaining why the Stage-196 canonical screens were the right first interior screens,
+7. and the exact interior winner / non-improvement theorems against the already-closed Stage-196 four-face boundary ledger.
+
+So Stage 197 is the four-coordinate analogue of Stage 194: the full interior optimizer is no longer a deferred continuum search. It is a finite algebraic candidate problem.
+
+---
+
+## 1. Carry-forward interior ratio patch and exact certified objective
+
+Fix a monotone primitive quadruple
+\[
+Q=(i,j,k,l)\in\mathfrak Q_4,
+\qquad
+k_i,k_j,k_k,k_l>0.
+\]
+On the interior chart `a_i>0`, use the positive ratio coordinates
+\[
+r:=\frac{a_j}{a_i}>0,
+\qquad
+s:=\frac{a_k}{a_i}>0,
+\qquad
+t:=\frac{a_l}{a_i}>0.
+\]
+Then the interior simplex point is
+\[
+\boxed{
+\mathbf a(r,s,t)
+=
+\frac{(1,r,s,t)}{\sqrt{1+r^2+s^2+t^2}}.
+}
+\]
+The oriented initial slope magnitude is
+\[
+\boxed{
+k_{ijkl}(r,s,t)
+=
+\frac{k_i+r k_j+s k_k+t k_l}{\sqrt{1+r^2+s^2+t^2}}.
+}
+\]
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+write the oriented `4 \times 4` Hessian-envelope block entries as
+\[
+\nu_{ii,\star},\nu_{ij,\star},\nu_{ik,\star},\nu_{il,\star},
+\nu_{jj,\star},\nu_{jk,\star},\nu_{jl,\star},
+\nu_{kk,\star},\nu_{kl,\star},\nu_{ll,\star}.
+\]
+Define the exact discriminant coefficients
+\[
+\boxed{
+A_\star:=k_i^2-2H_0\nu_{ii,\star},
+\qquad
+B_\star:=2k_i k_j-4H_0\nu_{ij,\star},
+\qquad
+C_\star:=2k_i k_k-4H_0\nu_{ik,\star},
+\qquad
+D_\star:=2k_i k_l-4H_0\nu_{il,\star},
+}
+\]
+\[
+\boxed{
+E_\star:=k_j^2-2H_0\nu_{jj,\star},
+\qquad
+F_\star:=2k_j k_k-4H_0\nu_{jk,\star},
+\qquad
+G_\star:=2k_j k_l-4H_0\nu_{jl,\star},
+}
+\]
+\[
+\boxed{
+H_\star:=k_k^2-2H_0\nu_{kk,\star},
+\qquad
+I_\star:=2k_k k_l-4H_0\nu_{kl,\star},
+\qquad
+J_\star:=k_l^2-2H_0\nu_{ll,\star}.
+}
+\]
+Then the exact interior discriminant numerator is
+\[
+\boxed{
+\Delta^{\sharp}_{Q,\star}(r,s,t)
+:=
+A_\star+B_\star r+C_\star s+D_\star t
++E_\star r^2+F_\star rs+G_\star rt+H_\star s^2+I_\star st+J_\star t^2.
+}
+\]
+The exact certified interior root function is
+\[
+\boxed{
+\tau_{Q,\star}(r,s,t)
+=
+\frac{2H_0\sqrt{1+r^2+s^2+t^2}}
+{k_i+r k_j+s k_k+t k_l+\sqrt{\Delta^{\sharp}_{Q,\star}(r,s,t)}}.
+}
+\]
+Equivalently define the denominator functional
+\[
+\boxed{
+\Phi_{Q,\star}(r,s,t)
+:=
+\frac{k_i+r k_j+s k_k+t k_l+\sqrt{\Delta^{\sharp}_{Q,\star}(r,s,t)}}{\sqrt{1+r^2+s^2+t^2}},
+\qquad
+\tau_{Q,\star}(r,s,t)=\frac{2H_0}{\Phi_{Q,\star}(r,s,t)}.
+}
+\]
+So interior optimization again means maximizing `\(\Phi\)` or equivalently minimizing `\(\tau\)`.
+
+Let the compact interior ratio window be
+\[
+\boxed{
+\mathcal W_Q:=[0,R_Q]\times[0,S_Q]\times[0,T_Q],
+\qquad
+0<R_Q,S_Q,T_Q<\infty,
+}
+\]
+and let the local validity map be denoted by
+\[
+\mathcal T_Q(r,s,t).
+\]
+The exact admissible interior set is
+\[
+\boxed{
+\mathcal A^{\rm int}_{Q,\star}
+:=
+\Bigl\{(r,s,t)\in(0,\infty)^3\cap\mathcal W_Q:
+\Delta^{\sharp}_{Q,\star}(r,s,t)\ge0,
+\ \tau_{Q,\star}(r,s,t)\le \mathcal T_Q(r,s,t)
+\Bigr\}.
+}
+\]
+
+---
+
+## 2. Exact three-component stationary numerator theorem
+
+Differentiate `\(\Phi_{Q,\star}\)` with respect to `\(r\)`, `\(s\)`, and `\(t\)`.
+Introduce the exact slope numerators
+\[
+\boxed{
+M_r(r,s,t)
+:=(1+r^2+s^2+t^2)k_j-r(k_i+r k_j+s k_k+t k_l)
+=
+k_j(1+s^2+t^2)-r(k_i+s k_k+t k_l),
+}
+\]
+\[
+\boxed{
+M_s(r,s,t)
+:=(1+r^2+s^2+t^2)k_k-s(k_i+r k_j+s k_k+t k_l)
+=
+k_k(1+r^2+t^2)-s(k_i+r k_j+t k_l),
+}
+\]
+\[
+\boxed{
+M_t(r,s,t)
+:=(1+r^2+s^2+t^2)k_l-t(k_i+r k_j+s k_k+t k_l)
+=
+k_l(1+r^2+s^2)-t(k_i+r k_j+s k_k).
+}
+\]
+Also define the exact discriminant-transport numerators
+\[
+\boxed{
+L_{r,Q,\star}
+:=
+(1+r^2+s^2+t^2)\partial_r\Delta^{\sharp}_{Q,\star}-2r\Delta^{\sharp}_{Q,\star},
+}
+\]
+\[
+\boxed{
+L_{s,Q,\star}
+:=
+(1+r^2+s^2+t^2)\partial_s\Delta^{\sharp}_{Q,\star}-2s\Delta^{\sharp}_{Q,\star},
+}
+\]
+\[
+\boxed{
+L_{t,Q,\star}
+:=
+(1+r^2+s^2+t^2)\partial_t\Delta^{\sharp}_{Q,\star}-2t\Delta^{\sharp}_{Q,\star}.
+}
+\]
+Then define the exact stationary numerators
+\[
+\boxed{
+\mathcal N_{r,Q,\star}=2M_r\sqrt{\Delta^{\sharp}_{Q,\star}}+L_{r,Q,\star},
+}
+\]
+\[
+\boxed{
+\mathcal N_{s,Q,\star}=2M_s\sqrt{\Delta^{\sharp}_{Q,\star}}+L_{s,Q,\star},
+}
+\]
+\[
+\boxed{
+\mathcal N_{t,Q,\star}=2M_t\sqrt{\Delta^{\sharp}_{Q,\star}}+L_{t,Q,\star}.
+}
+\]
+The exact derivative laws are
+\[
+\boxed{
+\frac{\partial\Phi_{Q,\star}}{\partial r}
+=
+\frac{\mathcal N_{r,Q,\star}}
+{2(1+r^2+s^2+t^2)^{3/2}\sqrt{\Delta^{\sharp}_{Q,\star}}},
+}
+\]
+\[
+\boxed{
+\frac{\partial\Phi_{Q,\star}}{\partial s}
+=
+\frac{\mathcal N_{s,Q,\star}}
+{2(1+r^2+s^2+t^2)^{3/2}\sqrt{\Delta^{\sharp}_{Q,\star}}},
+}
+\]
+\[
+\boxed{
+\frac{\partial\Phi_{Q,\star}}{\partial t}
+=
+\frac{\mathcal N_{t,Q,\star}}
+{2(1+r^2+s^2+t^2)^{3/2}\sqrt{\Delta^{\sharp}_{Q,\star}}}.
+}
+\]
+
+### Exact interior stationary numerator theorem
+
+Every interior stationary point of the certified four-coordinate simplex objective satisfies
+\[
+\boxed{
+\mathcal N_{r,Q,\star}(r,s,t)=0,
+\qquad
+\mathcal N_{s,Q,\star}(r,s,t)=0,
+\qquad
+\mathcal N_{t,Q,\star}(r,s,t)=0.
+}
+\]
+This is the exact three-parameter analogue of the Stage-194 two-numerator interior theorem.
+
+---
+
+## 3. Exact lifted algebraic stationary system and the `54`-candidate bound
+
+The stationary equations still contain the square root
+\(
+\sqrt{\Delta^{\sharp}_{Q,\star}(r,s,t)}
+\).
+The cleanest exact elimination is to introduce one auxiliary variable
+\[
+\boxed{y:=\sqrt{\Delta^{\sharp}_{Q,\star}(r,s,t)}\ge 0.}
+\]
+Then the interior stationary system becomes the **lifted polynomial system**
+\[
+\boxed{
+\mathcal F_{r,Q,\star}(r,s,t,y):=2M_r(r,s,t)\,y+L_{r,Q,\star}(r,s,t)=0,
+}
+\]
+\[
+\boxed{
+\mathcal F_{s,Q,\star}(r,s,t,y):=2M_s(r,s,t)\,y+L_{s,Q,\star}(r,s,t)=0,
+}
+\]
+\[
+\boxed{
+\mathcal F_{t,Q,\star}(r,s,t,y):=2M_t(r,s,t)\,y+L_{t,Q,\star}(r,s,t)=0,
+}
+\]
+\[
+\boxed{
+\mathcal F_{\Delta,Q,\star}(r,s,t,y):=y^2-\Delta^{\sharp}_{Q,\star}(r,s,t)=0.
+}
+\]
+The exact degree ledger is
+\[
+\deg \mathcal F_r=3,
+\qquad
+\deg \mathcal F_s=3,
+\qquad
+\deg \mathcal F_t=3,
+\qquad
+\deg \mathcal F_\Delta=2.
+\]
+Therefore, whenever the lifted stationary set is zero-dimensional, Bézout gives the exact finite candidate bound
+\[
+\boxed{3\cdot 3\cdot 3\cdot 2 = 54.}
+\]
+
+### Exact lifted pre-candidate set
+
+Define the lifted algebraic pre-candidate set
+\[
+\boxed{
+\widetilde{\mathcal C}^{\rm int,lift}_{Q,\star}
+:=
+\Bigl\{(r,s,t,y)\in\mathcal W_Q\times\mathbb R_{\ge0}:
+\mathcal F_{r,Q,\star}=0,
+\ \mathcal F_{s,Q,\star}=0,
+\ \mathcal F_{t,Q,\star}=0,
+\ \mathcal F_{\Delta,Q,\star}=0
+\Bigr\}.
+}
+\]
+Now filter by the original admissibility conditions. Define the exact admissible lifted candidate set
+\[
+\boxed{
+\mathcal C^{\rm int,lift}_{Q,\star}
+:=
+\Bigl\{(r,s,t,y)\in\widetilde{\mathcal C}^{\rm int,lift}_{Q,\star}:
+\tau_{Q,\star}(r,s,t)\le\mathcal T_Q(r,s,t)
+\Bigr\}.
+}
+\]
+Because `\(\mathcal F_\Delta=0\)` already enforces `\(y^2=\Delta^{\sharp}\)` and the lifted set is restricted to `\(y\ge0\)`, the original square-root relation is automatic on this admissible set.
+
+### Exact lifted finite candidate-set theorem
+
+Assume the optimizer does not lie on an artificial outer boundary of the chosen ratio window `\(\mathcal W_Q\)` and that the lifted stationary set is zero-dimensional on that window. Then every interior optimizer of `\(\tau_{Q,\star}\)` belongs to the finite admissible set `\(\mathcal C^{\rm int,lift}_{Q,\star}\)`.
+
+So the full interior optimized bracket is obtained by finite evaluation:
+\[
+\boxed{
+\tau_{Q,\min}^{\star,\rm int}
+=
+\min_{(r,s,t,y)\in\mathcal C^{\rm int,lift}_{Q,\star}}\tau_{Q,\star}(r,s,t),
+\qquad \star\in\{{\rm lo},{\rm hi}\}.
+}
+\]
+
+This is the preferred candidate compiler for the four-coordinate interior problem.
+
+---
+
+## 4. Direct square-root-free elimination and the projected algebraic pre-candidate set
+
+The lifted system is the cleanest exact compiler, but the direct square-root-free elimination is still useful.
+
+### 4.1 Exact quintic cross-consistency polynomials
+
+From
+\[
+2M_r y + L_r=0,
+\qquad
+2M_s y + L_s=0,
+\qquad
+2M_t y + L_t=0,
+\]
+eliminate `\(y\)` pairwise and define
+\[
+\boxed{
+\mathcal C_{rs,Q,\star}:=M_s L_{r,Q,\star}-M_r L_{s,Q,\star},
+}
+\]
+\[
+\boxed{
+\mathcal C_{rt,Q,\star}:=M_t L_{r,Q,\star}-M_r L_{t,Q,\star},
+}
+\]
+\[
+\boxed{
+\mathcal C_{st,Q,\star}:=M_t L_{s,Q,\star}-M_s L_{t,Q,\star}.
+}
+\]
+Each is **quintic** in `(r,s,t)`.
+
+### 4.2 Exact sextic square conditions
+
+Squaring any stationary numerator gives
+\[
+\boxed{
+\mathcal S_{r,Q,\star}:=L_{r,Q,\star}^2-4M_r^2\Delta^{\sharp}_{Q,\star}=0,
+}
+\]
+\[
+\boxed{
+\mathcal S_{s,Q,\star}:=L_{s,Q,\star}^2-4M_s^2\Delta^{\sharp}_{Q,\star}=0,
+}
+\]
+\[
+\boxed{
+\mathcal S_{t,Q,\star}:=L_{t,Q,\star}^2-4M_t^2\Delta^{\sharp}_{Q,\star}=0.
+}
+\]
+Each is **sextic** in `(r,s,t)`.
+
+So every interior stationary point satisfies all six projected elimination equations.
+
+### 4.3 One-chart projected candidate bound
+
+If one works on a nondegenerate chart where the chosen `r`-stationary relation is not sitting on an auxiliary elimination degeneracy, then every interior stationary point lies in the projected algebraic pre-candidate set
+\[
+\boxed{
+\widetilde{\mathcal C}^{\rm int}_{Q,\star;r}
+:=
+\Bigl\{(r,s,t)\in\mathcal W_Q:
+\mathcal C_{rs,Q,\star}=0,
+\ \mathcal C_{rt,Q,\star}=0,
+\ \mathcal S_{r,Q,\star}=0
+\Bigr\}.
+}
+\]
+Because the two cross-consistency polynomials are quintic and the square condition is sextic, Bézout gives the projected one-chart bound
+\[
+\boxed{5\cdot 5\cdot 6 = 150.}
+\]
+This is a useful projected algebraic upper bound, but the lifted `54`-point system above is the preferred exact candidate compiler because it avoids the chart-dependent square-root degeneracy.
+
+---
+
+## 5. Two exact special reductions
+
+These two reductions justify the Stage-196 canonical interior screens.
+
+### 5.1 Diagonal-isotropic curvature reduction
+
+Suppose the interior Hessian envelope is diagonal-isotropic:
+\[
+\nu_{ij,\star}=\nu_{ik,\star}=\nu_{il,\star}=\nu_{jk,\star}=\nu_{jl,\star}=\nu_{kl,\star}=0,
+\]
+\[
+\nu_{ii,\star}=\nu_{jj,\star}=\nu_{kk,\star}=\nu_{ll,\star}=:\nu_\star.
+\]
+Then
+\[
+\Delta^{\sharp}_{Q,\star}(r,s,t)
+=
+(k_i+r k_j+s k_k+t k_l)^2-2H_0\nu_\star(1+r^2+s^2+t^2),
+\]
+so
+\[
+\tau_{Q,\star}(r,s,t)
+=
+\frac{2H_0}
+{k_{ijkl}(r,s,t)+\sqrt{k_{ijkl}(r,s,t)^2-2H_0\nu_\star}}.
+\]
+The right-hand side depends only on the first-order slope magnitude `\(k_{ijkl}(r,s,t)\)` and is strictly decreasing in that quantity on the admissible branch.
+
+Therefore the exact optimizer is the Stage-196 gradient-optimal interior ray
+\[
+\boxed{
+\mathbf a_{Q}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k,k_l)}{\sqrt{k_i^2+k_j^2+k_k^2+k_l^2}}.
+}
+\]
+So the Stage-196 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
+
+### 5.2 Full quadruple-symmetry reduction
+
+Suppose the quadruple is fully symmetric:
+\[
+ k_i=k_j=k_k=k_l=:k,
+\]
+and the Hessian envelope is permutation-symmetric:
+\[
+\nu_{ii,\star}=\nu_{jj,\star}=\nu_{kk,\star}=\nu_{ll,\star}=:\nu_{d,\star},
+\]
+\[
+\nu_{ij,\star}=\nu_{ik,\star}=\nu_{il,\star}=\nu_{jk,\star}=\nu_{jl,\star}=\nu_{kl,\star}=:\nu_{x,\star}.
+\]
+Then the exact stationary numerators satisfy
+\[
+\boxed{
+\mathcal N_{r,Q,\star}(1,1,1)=0,
+\qquad
+\mathcal N_{s,Q,\star}(1,1,1)=0,
+\qquad
+\mathcal N_{t,Q,\star}(1,1,1)=0.
+}
+\]
+So the equal-mix barycenter
+\[
+\boxed{
+\mathbf a_Q^{\rm eq}=\frac{(1,1,1,1)}{2}
+}
+\]
+is an exact interior stationary ray. On a symmetric admissible window it is therefore the exact optimizer.
+
+So the Stage-196 equal-mix screen also has an exact theorem regime behind it.
+
+---
+
+## 6. Exact interior winner theorem against the Stage-196 boundary ledger
+
+Keep the imported Stage-196 four-face boundary bracket
+\[
+\boxed{
+\beta_Q^{\rm lo}
+\le
+\tau_{Q,*}^{\rm best,\partial}
+\le
+\beta_Q^{\rm hi},
+}
+\]
+where `\(\tau_{Q,*}^{\rm best,\partial}\)` is the unknown true best root on the full codimension-one boundary of the four-coordinate simplex.
+
+Once the finite interior candidate sets are evaluated, the full four-coordinate comparison is immediate.
+
+### Exact interior winner theorem
+
+If
+\[
+\boxed{
+\tau_{Q,\min}^{\rm hi,int} < \beta_Q^{\rm lo},
+}
+\]
+then there exists a genuine interior four-coordinate mixed ray whose certified root lies strictly below the best full-boundary winner.
+
+### Exact interior non-improvement theorem
+
+If
+\[
+\boxed{
+\tau_{Q,\min}^{\rm lo,int} > \beta_Q^{\rm hi},
+}
+\]
+then no admissible interior stationary candidate beats the best boundary winner on that primitive four-coordinate simplex.
+
+So after Stage 197 the full question on a primitive quadruple is no longer a continuum search. It is a finite comparison between:
+
+- one imported exact boundary interval from Stage 196, and
+- one finite admissible interior candidate set from the lifted algebraic system above.
+
+The global support-cardinality-`4` ranking across the five primitive quadruples is deferred to the next stage.
+
+---
+
+## 7. What Stage 197 changes in the theorem problem
+
+Stage 196 reduced the first support-cardinality-`4` audit to four imported triple faces plus two canonical interior screens.
+
+Stage 197 now proves that the **full** interior search is still finite and algebraic.
+
+The problem is therefore no longer
+
+> search a three-parameter simplex interior by free-form scanning.
+
+It is now
+
+1. enumerate the finite lifted stationary candidate set,
+2. filter it by admissibility,
+3. evaluate its lower and upper certified interior minima,
+4. compare those against the already-closed Stage-196 boundary ledger.
+
+That is a major reduction in complexity.
+
+---
+
+## 8. Best current summary after Stage 197
+
+The support-cardinality-`4` program is now organized in the same way as the support-`<=3` program.
+
+- Stage 196 closed the boundary and canonical-screen audit.
+- Stage 197 closes the **full interior optimizer** as a finite algebraic candidate problem.
+
+So the next theorem gate is now completely sharp:
+
+> rank the five primitive four-coordinate simplices by their full certified interior minima and compare the winning support-cardinality-`4` candidate against the already-finished support-`<=3` ledger.
+
+That is the natural continuation point for Stage 198.
+moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem.md
+# Moving-Throat PDE — Stage 198: Full Primitive-Quadruple Ranking, Exact Boundary Splice, and the Up-to-Four-Coordinate Search Sieve
+
+## Status
+
+**Exact within the carried Stage-195 up-to-three-coordinate certified ledger and the Stage-197 finite interior four-coordinate candidate reduction, once the admissible interior quadruple packets are supplied on the chosen four-coordinate patches.**
+
+This stage does **not** introduce a new constitutive law or a new optimizer.
+It upgrades the Stage-197 interior four-coordinate candidate problem into a **global certified ranking ledger** for all primitive four-coordinate simplices, and it splices that ledger to the already-finished support-`<=3` search.
+
+---
+
+## Purpose
+
+Stage 197 solved the genuinely new interior problem on a fixed primitive four-coordinate simplex: every admissible interior optimizer is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
+
+That leaves one exact continuation point:
+
+> how do we rank the **full set** of primitive four-coordinate simplices against one another, and how do we splice those interior winners together with the already-finished support-`<=3` ledger so the full search up through four active primitive coordinates becomes finite and certified?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact combinatorial ledger for the five primitive quadruples,
+2. the exact **boundary-splice theorem** for every primitive quadruple,
+3. the exact **local quadruple classification theorem** into interior-certified, boundary-certified, and unresolved simplices,
+4. the exact **primitive-quadruple ranking theorem** by disjoint certified intervals,
+5. the exact **global support-cardinality-4 improvement / non-improvement theorems** against the already-finished support-`<=3` ledger,
+6. the exact **up-to-four-coordinate search sieve theorem**,
+7. and the exact **finite evaluation budget theorem** for the whole support-`<=4` local search.
+
+So Stage 198 is the global ranking complement of Stage 197: the four-coordinate interior candidate problem is no longer a deferred continuum search, and the full search up through four active primitive coordinates is now reduced to one finite certified ledger.
+
+---
+
+## 1. Carry-forward primitive triple and primitive quadruple ledgers
+
+Let the free primitive index set be
+\[
+\boxed{
+\mathfrak I_5:=\{\lambda,c,\gamma,U,W\}.
+}
+\]
+The primitive triple set and primitive quadruple set are
+\[
+\boxed{
+\mathfrak T_3
+:=
+\bigl\{\{i,j,k\}\subset\mathfrak I_5: i<j<k\bigr\},
+\qquad
+\#\mathfrak T_3=\binom53=10,
+}
+\]
+\[
+\boxed{
+\mathfrak Q_4
+:=
+\bigl\{\{i,j,k,l\}\subset\mathfrak I_5: i<j<k<l\bigr\},
+\qquad
+\#\mathfrak Q_4=\binom54=5.
+}
+\]
+Every primitive quadruple has exactly four codimension-one faces, and each face is one of the primitive triples. Dually, every primitive triple belongs to exactly two primitive quadruples, because after fixing three primitive directions there are exactly two remaining choices for the fourth.
+
+### 1.1 Imported Stage-195 boundary packets
+
+For each primitive triple
+\[
+T=(i,j,k)\in\mathfrak T_3,
+\]
+carry forward the exact closed-simplex certified interval
+\[
+\boxed{
+\tau_{T,\min}^{\rm lo,\triangle}
+\le
+\tau_{T,*}^{\rm best,\triangle}
+\le
+\tau_{T,\min}^{\rm hi,\triangle}.
+}
+\]
+These packets already include
+
+- the full pairwise boundary splice, and
+- the exact best certified closure time on the **closed** primitive triple simplex.
+
+So by the time Stage 198 starts, every codimension-one face of a primitive quadruple is already solved.
+
+### 1.2 Imported Stage-197 interior quadruple packets
+
+For each primitive quadruple
+\[
+Q=(i,j,k,l)\in\mathfrak Q_4,
+\]
+carry forward the exact interior certified interval
+\[
+\boxed{
+\tau_{Q,\min}^{\rm lo,int}
+\le
+\tau_{Q,*}^{\rm best,int}
+\le
+\tau_{Q,\min}^{\rm hi,int}.
+}
+\]
+Here `\(\tau_{Q,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive four-coordinate simplex, while the entire codimension-one boundary is already the Stage-195 triple ledger.
+
+---
+
+## 2. Exact boundary-splice theorem for a primitive quadruple
+
+Fix one primitive quadruple
+\[
+Q=(i,j,k,l)\in\mathfrak Q_4.
+\]
+Its four codimension-one faces are the primitive triple simplices
+\[
+(i,j,k),\qquad (i,j,l),\qquad (i,k,l),\qquad (j,k,l).
+\]
+Define the exact boundary minima
+\[
+\boxed{
+\beta_Q^{\rm lo}
+:=
+\min\bigl(
+\tau_{ijk,\min}^{\rm lo,\triangle},
+\tau_{ijl,\min}^{\rm lo,\triangle},
+\tau_{ikl,\min}^{\rm lo,\triangle},
+\tau_{jkl,\min}^{\rm lo,\triangle}
+\bigr),
+}
+\]
+\[
+\boxed{
+\beta_Q^{\rm hi}
+:=
+\min\bigl(
+\tau_{ijk,\min}^{\rm hi,\triangle},
+\tau_{ijl,\min}^{\rm hi,\triangle},
+\tau_{ikl,\min}^{\rm hi,\triangle},
+\tau_{jkl,\min}^{\rm hi,\triangle}
+\bigr).
+}
+\]
+Let
+\[
+\tau_{Q,*}^{\rm best,\square}
+\]
+be the unknown true best closure time on the **closed** four-coordinate simplex, i.e. its interior plus all four triple faces.
+Define the full quadruple certified interval
+\[
+\boxed{
+\tau_{Q,\min}^{\rm lo,\square}
+:=
+\min\bigl(\beta_Q^{\rm lo},\tau_{Q,\min}^{\rm lo,int}\bigr),
+}
+\]
+\[
+\boxed{
+\tau_{Q,\min}^{\rm hi,\square}
+:=
+\min\bigl(\beta_Q^{\rm hi},\tau_{Q,\min}^{\rm hi,int}\bigr).
+}
+\]
+
+### Exact boundary-splice theorem
+
+For every primitive quadruple `\(Q=(i,j,k,l)\)`, the best closure time on the closed simplex obeys
+\[
+\boxed{
+\tau_{Q,\min}^{\rm lo,\square}
+\le
+\tau_{Q,*}^{\rm best,\square}
+\le
+\tau_{Q,\min}^{\rm hi,\square}.
+}
+\]
+
+The proof is the same as in Stage 195: the true closed-simplex winner is the minimum of
+
+- the true best boundary winner on the union of the four triple faces, and
+- the true best interior winner.
+
+Each of those pieces already has an exact certified interval, so the best over their union is bounded by the minima of the lower and upper certified bounds.
+
+So after Stage 198, every primitive quadruple carries **one exact closed-simplex certified interval**.
+
+---
+
+## 3. Exact local quadruple classification theorem
+
+The boundary splice immediately splits the primitive quadruples into three exact classes.
+
+### 3.1 Interior-certified quadruples
+
+If the interior upper bound already lies below the boundary lower bound,
+\[
+\boxed{
+\tau_{Q,\min}^{\rm hi,int}<\beta_Q^{\rm lo},
+}
+\]
+then every admissible interior winner beats every admissible boundary winner on that simplex.
+So `\(Q\)` is **interior-certified**, and the closed-simplex winner is genuinely four-coordinate.
+
+### 3.2 Boundary-certified quadruples
+
+If the interior lower bound already lies above the boundary upper bound,
+\[
+\boxed{
+\tau_{Q,\min}^{\rm lo,int}>\beta_Q^{\rm hi},
+}
+\]
+then no admissible interior stationary candidate beats the best triple-face winner on that simplex.
+So `\(Q\)` is **boundary-certified**, and that four-coordinate simplex contributes nothing beyond the already-ranked support-`<=3` ledger.
+
+### 3.3 Ambiguous quadruples
+
+Otherwise the certified interior and boundary intervals overlap, and `\(Q\)` remains **unresolved** at the certified level, even though its admissible interior candidate set is finite.
+
+Define the three exact quadruple classes
+\[
+\boxed{
+\mathfrak Q_4^{\rm int}
+:=
+\Bigl\{Q\in\mathfrak Q_4:
+\tau_{Q,\min}^{\rm hi,int}<\beta_Q^{\rm lo}
+\Bigr\},
+}
+\]
+\[
+\boxed{
+\mathfrak Q_4^{\rm bdry}
+:=
+\Bigl\{Q\in\mathfrak Q_4:
+\tau_{Q,\min}^{\rm lo,int}>\beta_Q^{\rm hi}
+\Bigr\},
+}
+\]
+\[
+\boxed{
+\mathfrak Q_4^{\rm amb}
+:=
+\mathfrak Q_4\setminus\bigl(\mathfrak Q_4^{\rm int}\cup\mathfrak Q_4^{\rm bdry}\bigr).
+}
+\]
+
+So Stage 198 gives the exact local answer to the question
+
+> is a given primitive quadruple truly a new support-cardinality-`4` simplex, or is it already exhausted by its triple-face boundary?
+
+---
+
+## 4. Exact primitive-quadruple ranking theorem
+
+Take two primitive quadruples
+\[
+Q_1,Q_2\in\mathfrak Q_4.
+\]
+If their certified closed-simplex intervals are disjoint and ordered,
+\[
+\boxed{
+\tau_{Q_1,\min}^{\rm hi,\square}
+<
+\tau_{Q_2,\min}^{\rm lo,\square},
+}
+\]
+then every admissible winner on `\(Q_1\)` lies strictly below every admissible winner on `\(Q_2\)`.
+So `\(Q_1\)` is certifiably better than `\(Q_2\)`.
+
+### Exact unique certified primitive-quadruple winner theorem
+
+If for some primitive quadruple `\(Q_\star\in\mathfrak Q_4\)` one has
+\[
+\boxed{
+\tau_{Q_\star,\min}^{\rm hi,\square}
+<
+\min_{Q\in\mathfrak Q_4\setminus\{Q_\star\}}
+\tau_{Q,\min}^{\rm lo,\square},
+}
+\]
+then `\(Q_\star\)` is the **unique certified primitive-quadruple winner**.
+Its exact closed-simplex best closure time is guaranteed to lie strictly below the best closure time on every other primitive quadruple simplex.
+
+Define the global primitive-quadruple interval ledger
+\[
+\boxed{
+\tau_{4,\min}^{\rm lo,\square}
+:=
+\min_{Q\in\mathfrak Q_4}
+\tau_{Q,\min}^{\rm lo,\square},
+\qquad
+\tau_{4,\min}^{\rm hi,\square}
+:=
+\min_{Q\in\mathfrak Q_4}
+\tau_{Q,\min}^{\rm hi,\square}.
+}
+\]
+Then the best closure time over **all** primitive quadruple simplices obeys
+\[
+\boxed{
+\tau_{4,\min}^{\rm lo,\square}
+\le
+\tau_{4,*}^{\rm best,\square}
+\le
+\tau_{4,\min}^{\rm hi,\square}.
+}
+\]
+
+---
+
+## 5. Exact global support-cardinality-4 improvement theorem against the support-`<=3` ledger
+
+Carry forward the exact Stage-195 certified interval for the whole support-`<=3` search,
+\[
+\boxed{
+\tau_{\le 3,\min}^{\rm lo}
+\le
+\tau_{\le 3,*}^{\rm best}
+\le
+\tau_{\le 3,\min}^{\rm hi}.
+}
+\]
+Because every codimension-one face of a primitive quadruple is already a primitive triple, the only genuinely new support-cardinality-`4` content is the quadruple **interior**.
+
+Define the global interior quadruple interval
+\[
+\boxed{
+\tau_{4,\min}^{\rm lo,int}
+:=
+\min_{Q\in\mathfrak Q_4}
+\tau_{Q,\min}^{\rm lo,int},
+\qquad
+\tau_{4,\min}^{\rm hi,int}
+:=
+\min_{Q\in\mathfrak Q_4}
+\tau_{Q,\min}^{\rm hi,int}.
+}
+\]
+
+### Exact global support-cardinality-4 improvement theorem
+
+If
+\[
+\boxed{
+\tau_{4,\min}^{\rm hi,int}<\tau_{\le 3,\min}^{\rm lo},
+}
+\]
+then there exists a genuine four-coordinate interior mixed ray whose certified closure time lies strictly below every already-ranked support-`<=3` ray.
+
+### Exact global support-cardinality-4 no-improvement theorem
+
+If
+\[
+\boxed{
+\tau_{4,\min}^{\rm lo,int}>\tau_{\le 3,\min}^{\rm hi},
+}
+\]
+then no admissible four-coordinate interior stationary ray can beat the current support-`<=3` winner.
+
+So after Stage 198, the full question
+
+> do genuinely interior support-cardinality-`4` rays matter?
+
+has become a single certified interval comparison.
+
+---
+
+## 6. Exact up-to-four-coordinate search sieve theorem
+
+The support-`<=3` ledger already contains
+
+- every primitive axis,
+- every primitive pair,
+- and every primitive triple,
+
+while the quadruple interior ledger contains the genuinely new four-coordinate content.
+Therefore the best closure time among **all** rays with support on at most four primitive coordinates obeys
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm lo}
+:=
+\min\bigl(
+\tau_{\le 3,\min}^{\rm lo},
+\tau_{4,\min}^{\rm lo,int}
+\bigr),
+}
+\]
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm hi}
+:=
+\min\bigl(
+\tau_{\le 3,\min}^{\rm hi},
+\tau_{4,\min}^{\rm hi,int}
+\bigr).
+}
+\]
+Then the exact global support-`<=4` sieve theorem is
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm lo}
+\le
+\tau_{\le 4,*}^{\rm best}
+\le
+\tau_{\le 4,\min}^{\rm hi}.
+}
+\]
+
+So after Stage 198, the full local search up through four active primitive coordinates has been reduced to one finite certified interval comparison between
+
+- the already-closed support-`<=3` ledger, and
+- the finite interior quadruple ledger.
+
+---
+
+## 7. Exact finite evaluation budget theorem
+
+Stage 197 already reduced every primitive quadruple interior to a finite algebraic candidate set with at most
+\[
+\boxed{54}
+\]
+admissible lifted stationary candidates per envelope.
+There are exactly five primitive quadruples.
+So the exact four-coordinate interior budget per envelope is
+\[
+\boxed{5\times 54 = 270}
+\]
+exact candidate evaluations.
+Across the `\({\rm lo}/{\rm hi}\)` envelopes, the full support-cardinality-`4` interior budget is therefore
+\[
+\boxed{5\times 2\times 54 = 540}
+\]
+exact candidate evaluations.
+
+Stage 195 already closed the support-`<=3` search with the exact finite budget
+\[
+\boxed{600}
+\]
+exact candidate evaluations.
+Therefore the entire local search up through four active primitive coordinates has the exact finite budget
+\[
+\boxed{600+540=1140}
+\]
+exact candidate evaluations once the local slope data, envelope blocks, and admissible validity maps are supplied.
+
+If the Stage-195 support-`<=3` ledger is already imported, then Stage 198 itself adds only the four-coordinate interior work:
+\[
+\boxed{540}
+\]
+new candidate evaluations plus exact interval comparisons.
+
+This is the exact support-`<=4` cost theorem.
+
+---
+
+## 8. Minimal packet for the next stage
+
+After Stage 198, the full search up through four active free coordinates is already finite and certified.
+What remains beyond it is the unique five-coordinate positive simplex.
+
+The natural next packet is therefore the five-coordinate simplex ledger
+\[
+\boxed{
+\mathcal P_{\lambda c\gamma UW}^{(5)}
+:=
+\Bigl(
+H_0,
+(k_\lambda,k_c,k_\gamma,k_U,k_W),
+H_{\lambda c\gamma UW,\rm lo},
+H_{\lambda c\gamma UW,\rm hi},
+T_{\lambda c\gamma UW}(\cdot)
+\Bigr),
+}
+\]
+with the exact boundary reduction now taken against the Stage-198 primitive-quadruple packets rather than against the Stage-195 triple ledger directly.
+
+So the natural continuation is completely sharp:
+
+> Stage 199 should build the exact five-coordinate positive simplex, reduce its full codimension-one boundary to the Stage-198 quadruple packets, and isolate the first canonical five-way interior screens before solving the full four-parameter interior optimizer.
+
+---
+
+## 9. Best current reading after Stage 198
+
+Stage 195 turned every support-`<=3` search into a finite certified ledger.
+Stage 197 did the same for the genuinely new interior of each four-coordinate simplex.
+Stage 198 now closes the global support-cardinality-`4` ranking step.
+
+1. There are exactly five primitive quadruples.
+2. Every primitive quadruple now carries one exact closed-simplex certified interval obtained by splicing its finite interior packet to the imported triple-face boundary ledger.
+3. The primitive quadruples split exactly into interior-certified, boundary-certified, and unresolved classes.
+4. The full four-coordinate-versus-support-`<=3` question collapses to the single interval comparison
+   \(
+   \tau_{4,\min}^{\rm hi,int}\ ?\ \tau_{\le 3,\min}^{\rm lo}
+   \).
+5. The entire local search up through four active primitive coordinates now has a finite certified budget of at most `1140` exact candidate evaluations.
+
+So the next theorem gate is no longer “is the four-coordinate search tractable?”
+That problem is finished.
+The next honest question is whether the unique five-coordinate simplex can produce a certified interior winner that beats the now-finite support-`<=4` ledger.
+moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
+# Moving-Throat PDE — Stage 199: Unique Five-Coordinate Positive Simplex, Exact Face Reduction, and the Support-Cardinality-5 Theorem Gate
+
+## Status
+
+**Exact within the carried Stage-198 support-`<=4` certified ledger, once a local oriented `5 x 5` Hessian-envelope block and the corresponding validity map are supplied on the chosen free-quintuple patch.**
+
+This stage does **not** yet solve the full four-parameter interior optimizer on the unique five-coordinate simplex.
+It is the exact continuation *between* the Stage-198 global support-`<=4` splice and the Stage-200 interior five-coordinate candidate reduction: the first place where a genuinely interior support-cardinality-`5` mixed ray can appear and be audited without reopening the already-finished quadruple boundary problem.
+
+---
+
+## Purpose
+
+Stage 198 closed the full support-`<=4` local search.
+Every primitive quadruple already carries a closed-simplex certified interval, and the whole local sieve through four active primitive coordinates has been reduced to one finite certified ledger.
+
+That makes the next theorem gate completely sharp:
+
+> can a **genuine interior five-coordinate** mixed branch beat the already-finished support-`<=4` ledger, and what is the smallest exact audit that can test that before solving the full four-parameter interior optimizer?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact **unique positive spherical five-simplex** and its full face reduction back to the Stage-198 primitive-quadruple packets,
+2. the exact **five-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
+3. the exact **five-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes the total ten-way off-diagonal leverage,
+4. the exact **fixed-simplex certified bracket** for any admissible interior point,
+5. the exact **canonical five-way screen audit** consisting of five imported quadruple faces plus two interior canonical rows,
+6. the exact **support-cardinality-`5` theorem gate** that certifies a genuine five-coordinate improvement over the entire support-`<=4` ledger whenever one canonical interior screen already wins,
+7. and the exact statement that there are **no higher-support local mixed rays** beyond this stage because the free-quintuple has only five primitive axes.
+
+So Stage 199 is the five-coordinate analogue of Stage 196, but now the whole codimension-one boundary is already fully optimized and imported from Stage 198, and the only genuinely new local content is the interior of the unique five-coordinate simplex.
+
+---
+
+## 1. The unique positive spherical five-simplex and exact face reduction
+
+Keep the oriented primitive free axes
+\[
+\widehat{\mathbf e}_\lambda,\quad
+\widehat{\mathbf e}_c,\quad
+\widehat{\mathbf e}_\gamma,\quad
+\widehat{\mathbf e}_U,\quad
+\widehat{\mathbf e}_W,
+\]
+with positive oriented slope magnitudes
+\[
+k_\lambda,\quad k_c,\quad k_\gamma,\quad k_U,\quad k_W>0.
+\]
+
+The unique support-cardinality-`5` search set is the positive spherical five-simplex
+\[
+\boxed{
+\Delta_5^+
+:=
+\Bigl\{
+\mathbf a=(a_\lambda,a_c,a_\gamma,a_U,a_W)\in\mathbb R_{\ge 0}^5:
+ a_\lambda^2+a_c^2+a_\gamma^2+a_U^2+a_W^2=1
+\Bigr\}.
+}
+\]
+Each simplex point generates the oriented mixed ray
+\[
+\boxed{
+\widehat{\mathbf s}_5(\mathbf a)
+=
+a_\lambda\widehat{\mathbf e}_\lambda
++a_c\widehat{\mathbf e}_c
++a_\gamma\widehat{\mathbf e}_\gamma
++a_U\widehat{\mathbf e}_U
++a_W\widehat{\mathbf e}_W.
+}
+\]
+
+Its five codimension-one faces are exactly the five Stage-198 primitive quadruple simplices:
+\[
+Q_{\widehat\lambda}=\{c,\gamma,U,W\},
+\qquad
+Q_{\widehat c}=\{\lambda,\gamma,U,W\},
+\]
+\[
+Q_{\widehat\gamma}=\{\lambda,c,U,W\},
+\qquad
+Q_{\widehat U}=\{\lambda,c,\gamma,W\},
+\qquad
+Q_{\widehat W}=\{\lambda,c,\gamma,U\}.
+\]
+So the entire codimension-one boundary is already closed by the Stage-198 ledger.
+
+Let the imported Stage-198 closed-simplex intervals be
+\[
+\mathcal I_{\widehat\lambda}^{\square},\quad
+\mathcal I_{\widehat c}^{\square},\quad
+\mathcal I_{\widehat\gamma}^{\square},\quad
+\mathcal I_{\widehat U}^{\square},\quad
+\mathcal I_{\widehat W}^{\square},
+\]
+with lower and upper face minima
+\[
+\boxed{
+\beta_5^{\rm lo}
+:=
+\min\bigl(
+\tau_{\widehat\lambda,\min}^{\rm lo,\square},
+\tau_{\widehat c,\min}^{\rm lo,\square},
+\tau_{\widehat\gamma,\min}^{\rm lo,\square},
+\tau_{\widehat U,\min}^{\rm lo,\square},
+\tau_{\widehat W,\min}^{\rm lo,\square}
+\bigr),
+}
+\]
+\[
+\boxed{
+\beta_5^{\rm hi}
+:=
+\min\bigl(
+\tau_{\widehat\lambda,\min}^{\rm hi,\square},
+\tau_{\widehat c,\min}^{\rm hi,\square},
+\tau_{\widehat\gamma,\min}^{\rm hi,\square},
+\tau_{\widehat U,\min}^{\rm hi,\square},
+\tau_{\widehat W,\min}^{\rm hi,\square}
+\bigr).
+}
+\]
+Therefore the full boundary of the unique five-coordinate simplex already carries one exact certified interval,
+\[
+\boxed{
+\beta_5^{\rm lo}
+\le
+\tau_{5,*}^{\rm best,\partial}
+\le
+\beta_5^{\rm hi},
+}
+\]
+where `\(\tau_{5,*}^{\rm best,\partial}\)` is the unknown true best closure time on the full codimension-one boundary of `\(\Delta_5^+\)`.
+
+So from this point onward, the only genuinely new content is the **interior** of the unique five-coordinate simplex.
+
+---
+
+## 2. Exact five-coordinate gradient-synergy theorem
+
+The positive oriented initial slope magnitude on the five-simplex ray is
+\[
+\boxed{
+k_5(\mathbf a)
+:=
+-\sigma_0\,\nabla_\ell h(\boldsymbol\ell_\circ)\cdot \widehat{\mathbf s}_5(\mathbf a)
+=
+a_\lambda k_\lambda+a_c k_c+a_\gamma k_\gamma+a_U k_U+a_W k_W.
+}
+\]
+So the oriented forward slope is
+\[
+K_5(\mathbf a)=-k_5(\mathbf a)<0.
+\]
+
+By the exact Cauchy/Lagrange-multiplier argument used in the earlier support-cardinality stages, the unique gradient-optimal interior point is
+\[
+\boxed{
+\mathbf a_5^{\rm grad}
+=
+\frac{(k_\lambda,k_c,k_\gamma,k_U,k_W)}{\sqrt{k_\lambda^2+k_c^2+k_\gamma^2+k_U^2+k_W^2}}.
+}
+\]
+The exact maximum first-order slope magnitude is
+\[
+\boxed{
+\max_{\mathbf a\in\Delta_5^+} k_5(\mathbf a)
+=
+\sqrt{k_\lambda^2+k_c^2+k_\gamma^2+k_U^2+k_W^2}.
+}
+\]
+On the interior ratio patch `\(a_\lambda>0\)`, the gradient-optimal ratios are
+\[
+\boxed{
+r_5^{\rm grad}=\frac{k_c}{k_\lambda},
+\qquad
+s_5^{\rm grad}=\frac{k_\gamma}{k_\lambda},
+\qquad
+t_5^{\rm grad}=\frac{k_U}{k_\lambda},
+\qquad
+u_5^{\rm grad}=\frac{k_W}{k_\lambda}.
+}
+\]
+
+Because all five primitive slopes are positive, the interior five-coordinate gradient winner strictly beats every quadruple-face first-order maximum. For example,
+\[
+\bigl(k_5^{\rm grad}\bigr)^2-
+\bigl(k_{Q_{\widehat\lambda}}^{\rm grad}\bigr)^2
+=
+k_\lambda^2>0,
+\]
+and similarly for the other four faces.
+Therefore:
+
+### Exact five-coordinate gradient-synergy theorem
+
+If all five primitive slopes are nonzero and monotone, a genuine interior five-coordinate mixed ray always beats every four-coordinate face at the **first-order** descent level.
+
+That does **not** yet prove a five-coordinate winner after curvature enters, but it proves that the interior five-simplex carries genuinely new descent information already at linear order.
+
+---
+
+## 3. Exact five-coordinate curvature law and the total ten-way cross-leverage theorem
+
+Let the oriented symmetric Hessian block along the five-coordinate ray be
+\[
+H_5(\mathbf a;\tau)=\bigl(h_{pq}(\tau)\bigr)_{p,q\in\{\lambda,c,\gamma,U,W\}}.
+\]
+Then the exact second directional derivative is
+\[
+\boxed{
+H_{1,5}(\mathbf a;\tau)=\mathbf a^T H_5(\mathbf a;\tau)\mathbf a.
+}
+\]
+Expanding,
+\[
+\boxed{
+H_{1,5}
+=
+\sum_p a_p^2 h_{pp}
++
+2\sum_{p<q} a_p a_q h_{pq}.
+}
+\]
+So the total off-diagonal leverage is carried by the exact weight
+\[
+\boxed{
+w_\Sigma(\mathbf a)
+:=
+2\sum_{p<q} a_p a_q
+=
+2(a_\lambda a_c+a_\lambda a_\gamma+a_\lambda a_U+a_\lambda a_W+a_c a_\gamma+a_c a_U+a_c a_W+a_\gamma a_U+a_\gamma a_W+a_U a_W).
+}
+\]
+This weight admits the identity
+\[
+\boxed{
+w_\Sigma(\mathbf a)=\Bigl(\sum_p a_p\Bigr)^2-1,
+}
+\]
+because `\(\sum_p a_p^2=1\)` on the simplex.
+
+Now use the exact Cauchy slack identity
+\[
+5\sum_p a_p^2-\Bigl(\sum_p a_p\Bigr)^2
+=
+\sum_{p<q}(a_p-a_q)^2\ge 0.
+\]
+Since `\(\sum_p a_p^2=1\)`, it follows that
+\[
+\Bigl(\sum_p a_p\Bigr)^2\le 5,
+\qquad
+w_\Sigma(\mathbf a)\le 4.
+\]
+Equality holds iff
+\[
+a_\lambda=a_c=a_\gamma=a_U=a_W=\frac{1}{\sqrt5}.
+\]
+So the **equal-mix barycenter**
+\[
+\boxed{
+\mathbf a_5^{\rm eq}=\frac{(1,1,1,1,1)}{\sqrt5}
+}
+\]
+maximizes the total ten-way off-diagonal leverage, with
+\[
+\boxed{
+w_\Sigma(\mathbf a_5^{\rm eq})=4.
+}
+\]
+For comparison,
+
+- the equal-mix point on any quadruple face has `\(w_\Sigma=3\)`,
+- the equal-mix point on any triple face has `\(w_\Sigma=2\)`,
+- the equal-mix point on any pairwise edge has `\(w_\Sigma=1\)`.
+
+So the five-coordinate interior barycenter adds one full new unit of total cross leverage beyond the quadruple-simplex barycenter.
+
+### Exact diagonal-neutral reduction
+
+If all off-diagonal Hessian entries vanish,
+\[
+h_{pq}=0\qquad(p\neq q),
+\]
+then
+\[
+\boxed{
+H_{1,5}(\mathbf a;\tau)=\sum_p a_p^2 h_{pp},
+}
+\]
+so there is no genuine five-way curvature synergy. In that case the interior five-simplex carries only the first-order gradient gain from Section 2.
+
+---
+
+## 4. Exact fixed-simplex curvature envelopes and the certified local bracket
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+let the oriented symmetric `\(5\times 5\)` envelope block be
+\[
+H_{5,\star}=\bigl(u_{pq,\star}\bigr)_{p,q\in\{\lambda,c,\gamma,U,W\}}.
+\]
+For any fixed simplex point `\(\mathbf a\)`, define the exact envelope curvature scalar
+\[
+\boxed{
+\kappa_{5,\star}(\mathbf a):=\mathbf a^T H_{5,\star}\mathbf a.
+}
+\]
+Then the exact certified local comparison root at that simplex point is
+\[
+\boxed{
+\tau_{5,\star}(\mathbf a)
+:=
+\mathcal T\bigl(H_0,-k_5(\mathbf a);\kappa_{5,\star}(\mathbf a)\bigr)
+=
+\frac{2H_0}{k_5(\mathbf a)+\sqrt{k_5(\mathbf a)^2-2H_0\kappa_{5,\star}(\mathbf a)}}.
+}
+\]
+So the five-coordinate simplex introduces **no new root algebra** at a fixed interior point. The only new difficulty is the genuine four-parameter interior search over `\(\mathbf a\)`.
+
+That full four-parameter interior optimizer is deferred deliberately to Stage 200.
+Stage 199 keeps only the first exact gate needed before that solve: the full boundary splice plus the two canonical interior screen points.
+
+---
+
+## 5. The canonical five-way screen audit
+
+Stage 199 does **not** yet solve the full four-parameter interior optimizer.
+The smallest exact screen set is instead:
+
+1. the five exact imported full-face intervals from Stage 198,
+   \[
+   \mathcal I_{\widehat\lambda}^{\square},\quad
+   \mathcal I_{\widehat c}^{\square},\quad
+   \mathcal I_{\widehat\gamma}^{\square},\quad
+   \mathcal I_{\widehat U}^{\square},\quad
+   \mathcal I_{\widehat W}^{\square},
+   \]
+2. the unique interior gradient-optimal screen point
+   \[
+   \mathbf a_5^{\rm grad},
+   \]
+3. the unique interior equal-mix barycentric screen point
+   \[
+   \mathbf a_5^{\rm eq}.
+   \]
+
+So the exact Stage-199 five-way screen packet is
+\[
+\boxed{
+\mathcal S_5^{\rm can}
+:=
+\Bigl(
+\mathcal I_{\widehat\lambda}^{\square},
+\mathcal I_{\widehat c}^{\square},
+\mathcal I_{\widehat\gamma}^{\square},
+\mathcal I_{\widehat U}^{\square},
+\mathcal I_{\widehat W}^{\square},
+\mathbf a_5^{\rm grad},
+\mathbf a_5^{\rm eq}
+\Bigr).
+}
+\]
+This is the exact five-coordinate analogue of the Stage-196 canonical quadruple-screen packet, but now there is only **one** support-cardinality-`5` simplex, and its whole codimension-one boundary is already fully optimized and imported rather than re-audited.
+
+---
+
+## 6. Exact support-cardinality-`5` theorem gate
+
+Let
+\[
+\tau_{5,\rm hi}^{\rm grad}:=\tau_{5,\rm hi}(\mathbf a_5^{\rm grad}),
+\qquad
+\tau_{5,\rm hi}^{\rm eq}:=\tau_{5,\rm hi}(\mathbf a_5^{\rm eq}),
+\]
+and similarly for the lower certified screen values.
+Then the first exact five-coordinate certification rule is immediate.
+
+### Exact interior-screen dominance theorem
+
+If either canonical interior screen satisfies
+\[
+\boxed{
+\tau_{5,\rm hi}^{\rm can}
+<
+\beta_5^{\rm lo},
+\qquad
+\text{can}\in\{{\rm grad},{\rm eq}\},
+}
+\]
+then there exists a **genuine interior five-coordinate mixed ray** whose certified closure time lies strictly below every already-solved four-coordinate boundary winner on the unique five-simplex.
+
+The proof is the same as in Stage 196:
+
+- the actual root at the chosen interior screen point is bounded above by its certified upper bracket,
+- the actual face winners are bounded below by the imported certified lower face brackets,
+- so the interior screen point already certifies a strict interior five-coordinate improvement over the full support-`<=4` boundary ledger.
+
+### Exact canonical non-improvement filter
+
+Conversely, if
+\[
+\boxed{
+\min\bigl(
+\tau_{5,\rm lo}^{\rm grad},
+\tau_{5,\rm lo}^{\rm eq}
+\bigr)
+>
+\beta_5^{\rm hi},
+}
+\]
+then neither canonical five-coordinate screen beats the best support-`<=4` boundary winner on the closed five-simplex.
+
+That is **not** a full no-go theorem for the five-simplex interior, because the genuine four-parameter interior optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical five-way interior mechanisms before the full Stage-200 interior search is attempted.
+
+---
+
+## 7. Global support-cardinality-`5` gate against the Stage-198 support-`<=4` ledger
+
+Carry forward the exact Stage-198 certified interval for the whole local support-`<=4` search,
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm lo}
+\le
+\tau_{\le 4,*}^{\rm best}
+\le
+\tau_{\le 4,\min}^{\rm hi}.
+}
+\]
+Now compare the unique five-coordinate canonical interior screens against this already-finished ledger.
+
+### Exact support-cardinality-`5` improvement gate
+
+If for some canonical interior screen `\(\text{can}\in\{{\rm grad},{\rm eq}\}\)` one has
+\[
+\boxed{
+\tau_{5,\rm hi}^{\rm can}
+<
+\tau_{\le 4,\min}^{\rm lo},
+}
+\]
+then there exists a genuine support-cardinality-`5` mixed ray whose certified closure time lies strictly below **every** already-ranked support-`<=4` ray.
+
+### Exact canonical support-cardinality-`5` non-improvement filter
+
+If
+\[
+\boxed{
+\min\bigl(
+\tau_{5,\rm lo}^{\rm grad},
+\tau_{5,\rm lo}^{\rm eq}
+\bigr)
+>
+\tau_{\le 4,\min}^{\rm hi},
+}
+\]
+then neither canonical five-coordinate screen beats the already-finished global support-`<=4` winner.
+
+Again, that is not yet a complete no-go theorem for the five-coordinate interior, because the full four-parameter interior optimizer has not yet been solved. But it is the exact final **support-cardinality gate** before the unique interior optimizer of Stage 200.
+
+---
+
+## 8. Exact support-cardinality ceiling theorem
+
+Because the free log space itself is the free quintuple
+\[
+(\lambda,c,\gamma,U,W),
+\]
+no local mixed ray can activate more than these five primitive coordinates at once.
+Therefore:
+
+\[
+\boxed{
+\text{there are no support-cardinality-`>5` local mixed rays in the free-quintuple search.}
+}
+\]
+
+So Stage 199 is the **last combinatorial support-cardinality gate** in the local mixed-ray ladder.
+What remains after it is not another support class, but only the unique four-parameter interior optimizer on `\(\Delta_5^+\)`.
+
+---
+
+## 9. What Stage 199 changes in the program
+
+This stage does three things.
+
+### 9.1 It identifies the exact missing bridge between Stage 198 and Stage 200
+
+Stage 198 closed the support-`<=4` ledger.
+Stage 200 solves the unique interior five-coordinate optimizer.
+Stage 199 is the missing exact bridge between them: it defines the unique five-coordinate simplex, proves that its full codimension-one boundary is already closed, and isolates the two canonical five-way interior screens before the interior algebra is attacked.
+
+### 9.2 It shows that the last genuinely new local content is interior
+
+Nothing on the codimension-one boundary is new anymore.
+Every boundary face is already a Stage-198 quadruple packet.
+So the only new support-cardinality-`5` question is whether the unique four-parameter interior optimizer can beat the imported support-`<=4` ledger.
+
+### 9.3 It makes the final search ladder conceptually complete
+
+After this note there is no higher-support combinatorial stage left to build.
+The whole local mixed-ray ladder is now:
+
+- support-`<=3` closed by Stage 195,
+- support-`4` globally ranked by Stage 198,
+- support-`5` gated here at Stage 199,
+- and the unique support-`5` interior optimizer solved next in Stage 200.
+
+---
+
+## 10. Immediate next derivation step
+
+The next exact move is now completely sharp:
+
+1. keep the imported Stage-198 five-face boundary ledger from this note,
+2. move to the interior ratio chart on `\(\Delta_5^+\)`,
+3. derive the full four-parameter stationary equations,
+4. and reduce the unique interior five-coordinate optimizer to a finite algebraic candidate set.
+
+That is exactly the Stage-200 task.
+moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+# Moving-Throat PDE — Stage 200: Unique Five-Coordinate Mixed Simplex, Exact Face Reduction, Full Interior Optimizer, and the Finite Algebraic Candidate Set
+
+## Status
+
+**Exact within the carried Stage-198 support-`<=4` certified ledger, once a compact interior ratio window and the corresponding validity map are supplied on the chosen five-coordinate patch.**
+
+Stage 199 now supplies the support-cardinality-`5` gate and the exact five-face boundary splice. Because there is only **one** primitive five-coordinate simplex,
+\[
+\{\lambda,c,\gamma,U,W\},
+\]
+this note can focus entirely on the only genuinely new remaining content: the **four-parameter interior** problem.
+
+---
+
+## Purpose
+
+Stage 198 finished the full support-`<=4` search, and Stage 199 then built the unique positive spherical five-simplex, reduced its full codimension-one boundary back to the Stage-198 quadruple packets, and isolated the two canonical five-way interior screens.
+
+That leaves one exact continuation point:
+
+> can the **unique interior five-coordinate** mixed branch beat the already-finished support-`<=4` ledger, and can that interior optimization again be reduced to a finite algebraic candidate set rather than a free four-parameter continuum scan?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact positive spherical five-simplex and its five-face reduction back to the Stage-198 quadruple packets,
+2. the exact four-ratio interior chart and certified root functional,
+3. the exact four-component stationary numerator system,
+4. the exact lifted polynomial stationary system with degree pattern `(3,3,3,3,2)`,
+5. the exact finite algebraic candidate-set theorem with lifted Bézout bound `162`,
+6. the direct square-root-free elimination into three quintic cross-consistency polynomials plus one sextic square condition on a chosen interior chart, giving the projected bound `750`,
+7. two exact special reductions explaining why the gradient-optimal and equal-mix interior screens are the right canonical screens,
+8. and the exact local improvement / non-improvement theorems against the imported Stage-198 five-face boundary ledger.
+
+So Stage 200 turns the last genuinely new local mixed-simplex problem into a finite candidate problem.
+
+---
+
+## 1. The unique positive spherical five-simplex and exact face reduction
+
+Keep the oriented primitive free axes
+\[
+\widehat{\mathbf e}_\lambda,\quad
+\widehat{\mathbf e}_c,\quad
+\widehat{\mathbf e}_\gamma,\quad
+\widehat{\mathbf e}_U,\quad
+\widehat{\mathbf e}_W,
+\]
+with positive oriented slope magnitudes
+\[
+k_\lambda,\quad k_c,\quad k_\gamma,\quad k_U,\quad k_W>0.
+\]
+
+The unique support-cardinality-`5` search set is the positive spherical five-simplex
+\[
+\boxed{
+\Delta_5^+
+:=
+\Bigl\{
+\mathbf a=(a_\lambda,a_c,a_\gamma,a_U,a_W)\in\mathbb R_{\ge 0}^5:
+a_\lambda^2+a_c^2+a_\gamma^2+a_U^2+a_W^2=1
+\Bigr\}.
+}
+\]
+Each simplex point generates the oriented mixed ray
+\[
+\boxed{
+\widehat{\mathbf s}_5(\mathbf a)
+=
+a_\lambda\widehat{\mathbf e}_\lambda
++a_c\widehat{\mathbf e}_c
++a_\gamma\widehat{\mathbf e}_\gamma
++a_U\widehat{\mathbf e}_U
++a_W\widehat{\mathbf e}_W.
+}
+\]
+
+Its five codimension-one faces are exactly the five Stage-198 primitive quadruple simplices:
+\[
+Q_{\widehat\lambda}=\{c,\gamma,U,W\},
+\qquad
+Q_{\widehat c}=\{\lambda,\gamma,U,W\},
+\]
+\[
+Q_{\widehat\gamma}=\{\lambda,c,U,W\},
+\qquad
+Q_{\widehat U}=\{\lambda,c,\gamma,W\},
+\qquad
+Q_{\widehat W}=\{\lambda,c,\gamma,U\}.
+\]
+
+So the entire codimension-one boundary is already closed by the Stage-198 ledger.
+
+Let the imported Stage-198 closed-simplex intervals be
+\[
+\mathcal I_{\widehat\lambda}^{\square},
+\quad
+\mathcal I_{\widehat c}^{\square},
+\quad
+\mathcal I_{\widehat\gamma}^{\square},
+\quad
+\mathcal I_{\widehat U}^{\square},
+\quad
+\mathcal I_{\widehat W}^{\square},
+\]
+with lower and upper face minima
+\[
+\boxed{
+\beta_5^{\rm lo}
+:=
+\min\bigl(
+\tau_{\widehat\lambda,\min}^{\rm lo,\square},
+\tau_{\widehat c,\min}^{\rm lo,\square},
+\tau_{\widehat\gamma,\min}^{\rm lo,\square},
+\tau_{\widehat U,\min}^{\rm lo,\square},
+\tau_{\widehat W,\min}^{\rm lo,\square}
+\bigr),
+}
+\]
+\[
+\boxed{
+\beta_5^{\rm hi}
+:=
+\min\bigl(
+\tau_{\widehat\lambda,\min}^{\rm hi,\square},
+\tau_{\widehat c,\min}^{\rm hi,\square},
+\tau_{\widehat\gamma,\min}^{\rm hi,\square},
+\tau_{\widehat U,\min}^{\rm hi,\square},
+\tau_{\widehat W,\min}^{\rm hi,\square}
+\bigr).
+}
+\]
+
+So from this point onward, the only genuinely new content is the **interior** of `\(\Delta_5^+\)`.
+
+---
+
+## 2. Interior ratio chart and the exact certified objective
+
+On the interior chart `a_\lambda>0`, define the positive ratio coordinates
+\[
+r:=\frac{a_c}{a_\lambda}>0,
+\qquad
+s:=\frac{a_\gamma}{a_\lambda}>0,
+\qquad
+t:=\frac{a_U}{a_\lambda}>0,
+\qquad
+u:=\frac{a_W}{a_\lambda}>0.
+\]
+Then
+\[
+\boxed{
+\mathbf a(r,s,t,u)
+=
+\frac{(1,r,s,t,u)}{\sqrt{1+r^2+s^2+t^2+u^2}}.
+}
+\]
+The oriented initial slope magnitude is
+\[
+\boxed{
+k_5(r,s,t,u)
+=
+\frac{k_\lambda+r k_c+s k_\gamma+t k_U+u k_W}
+{\sqrt{1+r^2+s^2+t^2+u^2}}.
+}
+\]
+
+For either envelope label
+\[
+\star\in\{{\rm lo},{\rm hi}\},
+\]
+write the `5\times 5` symmetric Hessian-envelope block entries as
+\[
+\nu_{\lambda\lambda,\star},\ \nu_{\lambda c,\star},\ \nu_{\lambda\gamma,\star},\ \nu_{\lambda U,\star},\ \nu_{\lambda W,\star},
+\]
+\[
+\nu_{cc,\star},\ \nu_{c\gamma,\star},\ \nu_{cU,\star},\ \nu_{cW,\star},
+\]
+\[
+\nu_{\gamma\gamma,\star},\ \nu_{\gamma U,\star},\ \nu_{\gamma W,\star},
+\]
+\[
+\nu_{UU,\star},\ \nu_{UW,\star},\ \nu_{WW,\star}.
+\]
+
+Define the exact discriminant coefficients
+\[
+A_\star:=k_\lambda^2-2H_0\nu_{\lambda\lambda,\star},
+\qquad
+B_\star:=2k_\lambda k_c-4H_0\nu_{\lambda c,\star},
+\]
+\[
+C_\star:=2k_\lambda k_\gamma-4H_0\nu_{\lambda\gamma,\star},
+\qquad
+D_\star:=2k_\lambda k_U-4H_0\nu_{\lambda U,\star},
+\qquad
+E_\star:=2k_\lambda k_W-4H_0\nu_{\lambda W,\star},
+\]
+\[
+F_\star:=k_c^2-2H_0\nu_{cc,\star},
+\qquad
+G_\star:=2k_c k_\gamma-4H_0\nu_{c\gamma,\star},
+\qquad
+H_\star:=2k_c k_U-4H_0\nu_{cU,\star},
+\qquad
+I_\star:=2k_c k_W-4H_0\nu_{cW,\star},
+\]
+\[
+J_\star:=k_\gamma^2-2H_0\nu_{\gamma\gamma,\star},
+\qquad
+K_\star:=2k_\gamma k_U-4H_0\nu_{\gamma U,\star},
+\qquad
+L_\star:=2k_\gamma k_W-4H_0\nu_{\gamma W,\star},
+\]
+\[
+M_\star:=k_U^2-2H_0\nu_{UU,\star},
+\qquad
+N_\star:=2k_U k_W-4H_0\nu_{UW,\star},
+\qquad
+O_\star:=k_W^2-2H_0\nu_{WW,\star}.
+\]
+
+Then the exact interior discriminant numerator is
+\[
+\boxed{
+\Delta^\sharp_\star(r,s,t,u)
+=
+A_\star+B_\star r+C_\star s+D_\star t+E_\star u
++F_\star r^2+G_\star rs+H_\star rt+I_\star ru
++J_\star s^2+K_\star st+L_\star su
++M_\star t^2+N_\star tu+O_\star u^2.
+}
+\]
+
+The exact certified root function is
+\[
+\boxed{
+\tau_\star(r,s,t,u)
+=
+\frac{2H_0\sqrt{1+r^2+s^2+t^2+u^2}}
+{k_\lambda+r k_c+s k_\gamma+t k_U+u k_W+\sqrt{\Delta^\sharp_\star(r,s,t,u)}}.
+}
+\]
+Equivalently define
+\[
+\boxed{
+\Phi_\star(r,s,t,u)
+:=
+\frac{k_\lambda+r k_c+s k_\gamma+t k_U+u k_W+\sqrt{\Delta^\sharp_\star(r,s,t,u)}}
+{\sqrt{1+r^2+s^2+t^2+u^2}},
+\qquad
+\tau_\star=\frac{2H_0}{\Phi_\star}.
+}
+\]
+
+Let the compact interior ratio window be
+\[
+\boxed{
+\mathcal W_5:=[0,R_5]\times[0,S_5]\times[0,T_5]\times[0,U_5],
+\qquad
+0<R_5,S_5,T_5,U_5<\infty,
+}
+\]
+with validity map `\(\mathcal T_5(r,s,t,u)\)`. The admissible interior set is
+\[
+\boxed{
+\mathcal A_{5,\star}^{\rm int}
+:=
+\Bigl\{
+(r,s,t,u)\in(0,\infty)^4\cap \mathcal W_5:
+\Delta^\sharp_\star\ge 0,\ 
+\tau_\star(r,s,t,u)\le \mathcal T_5(r,s,t,u)
+\Bigr\}.
+}
+\]
+
+---
+
+## 3. Exact four-component stationary numerator theorem
+
+Write
+\[
+S:=1+r^2+s^2+t^2+u^2,
+\qquad
+K_{\rm lin}:=k_\lambda+r k_c+s k_\gamma+t k_U+u k_W.
+\]
+
+Define the exact slope numerators
+\[
+\boxed{
+M_r:=S k_c-r K_{\rm lin}
+=
+k_c(1+s^2+t^2+u^2)-r(k_\lambda+s k_\gamma+t k_U+u k_W),
+}
+\]
+\[
+\boxed{
+M_s:=S k_\gamma-s K_{\rm lin}
+=
+k_\gamma(1+r^2+t^2+u^2)-s(k_\lambda+r k_c+t k_U+u k_W),
+}
+\]
+\[
+\boxed{
+M_t:=S k_U-t K_{\rm lin}
+=
+k_U(1+r^2+s^2+u^2)-t(k_\lambda+r k_c+s k_\gamma+u k_W),
+}
+\]
+\[
+\boxed{
+M_u:=S k_W-u K_{\rm lin}
+=
+k_W(1+r^2+s^2+t^2)-u(k_\lambda+r k_c+s k_\gamma+t k_U).
+}
+\]
+
+Also define the discriminant-transport numerators
+\[
+\boxed{
+L_{r,\star}:=S\,\partial_r\Delta^\sharp_\star-2r\Delta^\sharp_\star,
+}
+\qquad
+\boxed{
+L_{s,\star}:=S\,\partial_s\Delta^\sharp_\star-2s\Delta^\sharp_\star,
+}
+\]
+\[
+\boxed{
+L_{t,\star}:=S\,\partial_t\Delta^\sharp_\star-2t\Delta^\sharp_\star,
+}
+\qquad
+\boxed{
+L_{u,\star}:=S\,\partial_u\Delta^\sharp_\star-2u\Delta^\sharp_\star.
+}
+\]
+
+Then the exact stationary numerators are
+\[
+\boxed{
+\mathcal N_{r,\star}=2M_r\sqrt{\Delta^\sharp_\star}+L_{r,\star},
+\qquad
+\mathcal N_{s,\star}=2M_s\sqrt{\Delta^\sharp_\star}+L_{s,\star},
+}
+\]
+\[
+\boxed{
+\mathcal N_{t,\star}=2M_t\sqrt{\Delta^\sharp_\star}+L_{t,\star},
+\qquad
+\mathcal N_{u,\star}=2M_u\sqrt{\Delta^\sharp_\star}+L_{u,\star}.
+}
+\]
+
+### Exact stationary numerator theorem
+
+For every interior admissible point with `\(\Delta^\sharp_\star>0\)`,
+\[
+\boxed{
+\partial_r\Phi_\star=0,\quad
+\partial_s\Phi_\star=0,\quad
+\partial_t\Phi_\star=0,\quad
+\partial_u\Phi_\star=0
+\iff
+\mathcal N_{r,\star}=\mathcal N_{s,\star}=\mathcal N_{t,\star}=\mathcal N_{u,\star}=0.
+}
+\]
+So every interior optimizer is an admissible common zero of four exact stationary numerators.
+
+---
+
+## 4. Exact lifted polynomial stationary system and finite candidate set
+
+Introduce the auxiliary square-root variable
+\[
+y:=\sqrt{\Delta^\sharp_\star(r,s,t,u)}\ge 0.
+\]
+Then the lifted stationary system is
+\[
+\boxed{
+\mathcal F_{r,\star}:=2M_r\,y+L_{r,\star}=0,
+\qquad
+\mathcal F_{s,\star}:=2M_s\,y+L_{s,\star}=0,
+}
+\]
+\[
+\boxed{
+\mathcal F_{t,\star}:=2M_t\,y+L_{t,\star}=0,
+\qquad
+\mathcal F_{u,\star}:=2M_u\,y+L_{u,\star}=0,
+}
+\]
+together with
+\[
+\boxed{
+\mathcal F_{\Delta,\star}:=y^2-\Delta^\sharp_\star(r,s,t,u)=0.
+}
+\]
+
+### Exact degree ledger
+
+Each stationary equation `\(\mathcal F_{r,\star},\mathcal F_{s,\star},\mathcal F_{t,\star},\mathcal F_{u,\star}\)` has total degree `3` in `(r,s,t,u,y)`, while `\(\mathcal F_{\Delta,\star}\)` has total degree `2`. So the exact lifted degree pattern is
+\[
+\boxed{(3,3,3,3,2).}
+\]
+
+Hence the lifted Bézout candidate bound is
+\[
+\boxed{3\cdot 3\cdot 3\cdot 3\cdot 2 = 162.}
+\]
+
+Define the lifted admissible stationary set
+\[
+\boxed{
+\mathcal C_{5,\star}^{\rm int,lift}
+:=
+\Bigl\{
+(r,s,t,u,y)\in \mathcal W_5\times\mathbb R_{\ge 0}:
+\mathcal F_{r,\star}=\mathcal F_{s,\star}=\mathcal F_{t,\star}=\mathcal F_{u,\star}=\mathcal F_{\Delta,\star}=0,
+\ \tau_\star(r,s,t,u)\le \mathcal T_5(r,s,t,u)
+\Bigr\}.
+}
+\]
+
+### Exact lifted finite candidate-set theorem
+
+Assume the optimizer does not sit on an artificial outer boundary of the chosen ratio window and that the lifted stationary set is zero-dimensional on that window. Then every interior optimizer of `\(\tau_\star\)` belongs to the finite admissible set `\(\mathcal C_{5,\star}^{\rm int,lift}\)`.
+
+So the interior optimized brackets are finite evaluations:
+\[
+\boxed{
+\tau_{5,\min}^{\star,\rm int}
+=
+\min_{(r,s,t,u,y)\in\mathcal C_{5,\star}^{\rm int,lift}}
+\tau_\star(r,s,t,u),
+\qquad
+\star\in\{{\rm lo},{\rm hi}\}.
+}
+\]
+
+This is the preferred exact candidate compiler for the unique support-cardinality-`5` interior problem.
+
+---
+
+## 5. Direct square-root-free elimination and the projected candidate bound
+
+The lifted system is the cleanest compiler, but the direct elimination remains useful.
+
+### 5.1 Quintic cross-consistency polynomials
+
+From the four stationary equations,
+\[
+2M_r y + L_{r,\star}=0,\quad
+2M_s y + L_{s,\star}=0,\quad
+2M_t y + L_{t,\star}=0,\quad
+2M_u y + L_{u,\star}=0,
+\]
+eliminate `\(y\)` pairwise and define
+\[
+\boxed{
+\mathcal C_{rs,\star}:=M_sL_{r,\star}-M_rL_{s,\star},
+}
+\qquad
+\boxed{
+\mathcal C_{rt,\star}:=M_tL_{r,\star}-M_rL_{t,\star},
+}
+\qquad
+\boxed{
+\mathcal C_{ru,\star}:=M_uL_{r,\star}-M_rL_{u,\star}.
+}
+\]
+Each is **quintic** in `(r,s,t,u)`.
+
+### 5.2 Sextic square condition
+
+Squaring the `\(r\)`-stationary numerator gives
+\[
+\boxed{
+\mathcal S_{r,\star}:=L_{r,\star}^2-4M_r^2\Delta^\sharp_\star=0,
+}
+\]
+which is **sextic** in `(r,s,t,u)`.
+
+So on a nondegenerate `r`-chart every interior stationary point lies in the projected algebraic pre-candidate set
+\[
+\boxed{
+\widetilde{\mathcal C}_{5,\star;r}^{\rm int}
+:=
+\Bigl\{
+(r,s,t,u)\in\mathcal W_5:
+\mathcal C_{rs,\star}=0,\ 
+\mathcal C_{rt,\star}=0,\ 
+\mathcal C_{ru,\star}=0,\ 
+\mathcal S_{r,\star}=0
+\Bigr\}.
+}
+\]
+
+Because the three cross-consistency polynomials are quintic and the square condition is sextic, Bézout gives the projected one-chart bound
+\[
+\boxed{
+5\cdot 5\cdot 5\cdot 6 = 750.
+}
+\]
+
+This projected bound is useful, but the lifted `162`-point system above remains the preferred exact compiler because it avoids chart-dependent square-root degeneracies.
+
+---
+
+## 6. Two exact special reductions
+
+These justify the canonical interior screens inherited from the skipped gate logic.
+
+### 6.1 Diagonal-isotropic curvature reduction
+
+Suppose the interior Hessian envelope is diagonal-isotropic:
+\[
+\nu_{\lambda c,\star}=\nu_{\lambda\gamma,\star}=\nu_{\lambda U,\star}=\nu_{\lambda W,\star}=0,
+\]
+\[
+\nu_{c\gamma,\star}=\nu_{cU,\star}=\nu_{cW,\star}=\nu_{\gamma U,\star}=\nu_{\gamma W,\star}=\nu_{UW,\star}=0,
+\]
+and
+\[
+\nu_{\lambda\lambda,\star}=\nu_{cc,\star}=\nu_{\gamma\gamma,\star}=\nu_{UU,\star}=\nu_{WW,\star}=: \nu_\star.
+\]
+Then the unique interior gradient-optimal ray
+\[
+\boxed{
+\mathbf a_{\rm grad}
+=
+\frac{(k_\lambda,k_c,k_\gamma,k_U,k_W)}
+{\sqrt{k_\lambda^2+k_c^2+k_\gamma^2+k_U^2+k_W^2}}
+}
+\]
+is an exact stationary ray.
+
+In the `a_\lambda>0` ratio chart this is
+\[
+\boxed{
+r_{\rm grad}=\frac{k_c}{k_\lambda},
+\qquad
+s_{\rm grad}=\frac{k_\gamma}{k_\lambda},
+\qquad
+t_{\rm grad}=\frac{k_U}{k_\lambda},
+\qquad
+u_{\rm grad}=\frac{k_W}{k_\lambda}.
+}
+\]
+
+### 6.2 Full fivefold symmetry reduction
+
+Suppose the free slopes are all equal,
+\[
+k_\lambda=k_c=k_\gamma=k_U=k_W=:k,
+\]
+and the Hessian envelope is fully permutation-symmetric over the five primitive axes. Then the equal-mix barycenter
+\[
+\boxed{
+\mathbf a_{\rm eq}=\frac{(1,1,1,1,1)}{\sqrt5}
+}
+\]
+is an exact stationary ray. In the `a_\lambda>0` chart this is simply
+\[
+\boxed{
+r=s=t=u=1.
+}
+\]
+
+So the two canonical interior screens are not arbitrary. They are the exact special reductions of the full five-coordinate interior problem.
+
+---
+
+## 7. Exact local five-coordinate improvement / non-improvement theorems
+
+Let
+\[
+\tau_{5,\min}^{\rm lo,int}
+\le
+\tau_{5,*}^{\rm best,int}
+\le
+\tau_{5,\min}^{\rm hi,int}
+\]
+be the exact interior certified interval supplied by the lifted finite candidate compiler.
+
+Because the whole codimension-one boundary is already closed by the imported Stage-198 five-face ledger, the local five-coordinate comparison is now exact.
+
+### Genuine five-coordinate interior improvement theorem
+
+If
+\[
+\boxed{
+\tau_{5,\min}^{\rm hi,int}<\beta_5^{\rm lo},
+}
+\]
+then every admissible interior five-coordinate winner beats every admissible support-`<=4` boundary winner. So the unique support-cardinality-`5` simplex carries a genuine interior improvement.
+
+### No genuine five-coordinate interior improvement theorem
+
+If
+\[
+\boxed{
+\tau_{5,\min}^{\rm lo,int}>\beta_5^{\rm hi},
+}
+\]
+then no admissible interior five-coordinate optimizer beats the already-finished support-`<=4` boundary ledger on the chosen window.
+
+So the support-cardinality-`5` question is now reduced to a finite local interval comparison.
+
+---
+
+## 8. Exact incremental evaluation budget
+
+The lifted interior candidate compiler contributes at most
+\[
+\boxed{162}
+\]
+stationary candidates per envelope on the chosen window, hence at most
+\[
+\boxed{324}
+\]
+candidate evaluations across the `{lo,hi}` envelopes.
+
+This is the only genuinely new finite search work beyond the already-finished support-`<=4` ledger.
+
+---
+
+## 9. Best current summary after Stage 200
+
+The support-cardinality-`5` problem is no longer a continuum search.
+
+- Its entire codimension-one boundary is already closed by Stage 198.
+- Its genuinely new interior optimizer is governed by an exact lifted polynomial system with degree pattern `(3,3,3,3,2)`.
+- Every interior optimizer lies in a finite admissible candidate set with lifted Bézout bound `162`.
+- And the local improvement/non-improvement verdict against the full support-`<=4` ledger is now an exact interval comparison.
+
+That means the natural next move is Stage 201 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.
+moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+# Moving-Throat PDE — Stage 201: Full Support-`<=5` Completion, Exact Boundary Identification, and the Final Local Mixed-Ray Closure Theorem
+
+## Status
+
+**Exact within the carried Stage-198 support-`<=4` certified ledger and the Stage-200 unique five-coordinate interior candidate reduction, once the admissible interior five-coordinate packets are supplied on the chosen free-quintuple patch.**
+
+This stage does **not** introduce a new constitutive law or a new optimizer.
+It splices the unique support-cardinality-`5` interior packet back into the already-finished support-`<=4` ledger and closes the **entire local mixed-ray search** on the positive free-quintuple simplex.
+
+---
+
+## Purpose
+
+Stage 198 already finished the global support-`<=4` search: every primitive quadruple carries a closed-simplex certified interval, and the whole local search through four active primitive coordinates is finite and certified.
+
+Stage 200 then solved the only genuinely new support-cardinality-`5` problem: the unique interior five-coordinate mixed simplex is reduced to a finite algebraic candidate set, with an exact certified interval for the best admissible interior winner.
+
+That leaves one last exact continuation point:
+
+> how do we splice the unique support-`5` interior packet to the already-finished support-`<=4` ledger so that the **entire** local mixed-ray search over the free quintuple is closed once and for all?
+
+This stage answers that.
+
+The main outputs are:
+
+1. the exact **boundary-identification theorem** saying that the full boundary of the unique five-coordinate simplex is precisely the already-solved support-`<=4` search set,
+2. the exact **support-cardinality ceiling theorem** showing that there are no higher-support local branches beyond `5`,
+3. the exact **support-`<=5` splice theorem** for the global best local closure time,
+4. the exact **support-`5` improvement / non-improvement theorems** against the imported support-`<=4` ledger,
+5. the exact statement that any remaining ambiguity is **finite-candidate ambiguity**, not a new continuum scan,
+6. and the exact **final evaluation-budget theorem** for the full local mixed-ray search.
+
+So Stage 201 is the closure of the whole local mixed-ray sieve: after this note there are no more combinatorial support-cardinality stages left to build.
+
+---
+
+## 1. Carry-forward global packets
+
+Let the free primitive index set be
+\[
+\boxed{
+\mathfrak I_5:=\{\lambda,c,\gamma,U,W\}.
+}
+\]
+There is only one positive spherical five-simplex on this free quintuple,
+\[
+\boxed{
+\Delta_5^+
+:=
+\Bigl\{
+\mathbf a=(a_\lambda,a_c,a_\gamma,a_U,a_W)\in\mathbb R_{\ge 0}^5:
+\ a_\lambda^2+a_c^2+a_\gamma^2+a_U^2+a_W^2=1
+\Bigr\}.
+}
+\]
+
+### 1.1 Imported Stage-198 support-`<=4` global ledger
+
+Carry forward the already-closed support-`<=4` certified interval
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm lo}
+\le
+\tau_{\le 4,*}^{\rm best}
+\le
+\tau_{\le 4,\min}^{\rm hi}.
+}
+\]
+This packet already includes
+
+- every primitive ray,
+- every optimized pairwise cone,
+- every closed primitive triple simplex,
+- and every closed primitive quadruple simplex.
+
+Equivalently, using the Stage-200 notation for the five quadruple-face splice,
+\[
+\boxed{
+\tau_{\le 4,\min}^{\rm lo}=\beta_5^{\rm lo},
+\qquad
+\tau_{\le 4,\min}^{\rm hi}=\beta_5^{\rm hi}.
+}
+\]
+
+### 1.2 Imported Stage-200 support-`5` interior packet
+
+Carry forward the exact interior five-coordinate certified interval
+\[
+\boxed{
+\tau_{5,\min}^{\rm lo,int}
+\le
+\tau_{5,*}^{\rm best,int}
+\le
+\tau_{5,\min}^{\rm hi,int}.
+}
+\]
+Here `\(\tau_{5,*}^{\rm best,int}\)` is the unknown true best admissible closure time over the **interior** of `\(\Delta_5^+\)`, while its whole boundary is already absorbed into the support-`<=4` ledger above.
+
+So the full remaining local search content is now only the pair
+\[
+\boxed{
+\bigl(
+[\tau_{\le 4,\min}^{\rm lo},\tau_{\le 4,\min}^{\rm hi}],
+[\tau_{5,\min}^{\rm lo,int},\tau_{5,\min}^{\rm hi,int}]
+\bigr).
+}
+\]
+
+---
+
+## 2. Exact boundary identification theorem
+
+The unique five-coordinate simplex `\(\Delta_5^+\)` has the usual positive-support face stratification.
+Its codimension-one faces are the five primitive quadruple simplices
+\[
+Q_{\widehat\lambda}=\{c,\gamma,U,W\},
+\quad
+Q_{\widehat c}=\{\lambda,\gamma,U,W\},
+\quad
+Q_{\widehat\gamma}=\{\lambda,c,U,W\},
+\]
+\[
+Q_{\widehat U}=\{\lambda,c,\gamma,W\},
+\quad
+Q_{\widehat W}=\{\lambda,c,\gamma,U\}.
+\]
+Their intersections generate all lower-support strata:
+
+- `5` support-`4` facets,
+- `10` support-`3` ridges,
+- `10` support-`2` edges,
+- `5` support-`1` vertices.
+
+So the number of nonempty proper support strata is
+\[
+\boxed{
+5+10+10+5=30=2^5-2.
+}
+\]
+Every nonempty proper support set in `\mathfrak I_5` is contained in at least one codimension-one quadruple face, and in fact a support subset of size `k` belongs to exactly `5-k` quadruple faces.
+
+### Exact boundary-identification theorem
+
+Let `\(\mathcal S_{\le 4}^{\rm loc}\)` denote the already-solved local search set with support-cardinality at most `4` on the free quintuple. Then
+\[
+\boxed{
+\partial\Delta_5^+ = \mathcal S_{\le 4}^{\rm loc}.
+}
+\]
+Equivalently, the whole boundary of the unique support-`5` simplex is exactly the already-closed support-`<=4` search domain.
+
+This theorem is stronger than a mere combinatorial count: because every quadruple face is carried as a **closed** simplex from Stage 198, all of its triple, pair, and ray subfaces are already included automatically.
+
+---
+
+## 3. Exact support-cardinality ceiling theorem
+
+There are only five primitive free axes in `\mathfrak I_5`. Therefore every local mixed ray on the free quintuple has support-cardinality
+\[
+1\le \#\operatorname{supp}(\mathbf a) \le 5.
+\]
+There is no support-cardinality-`6` or higher local branch to consider.
+
+### Exact support ceiling theorem
+
+Let `\(\tau_{\le 5,*}^{\rm best}\)` be the true best local closure time on the full closed simplex `\(\Delta_5^+\)`. Then
+\[
+\boxed{
+\tau_{\le 5,*}^{\rm best}
+=
+\min\bigl(
+\tau_{\le 4,*}^{\rm best},
+\tau_{5,*}^{\rm best,int}
+\bigr).
+}
+\]
+So after Stage 200 there is literally no further support-cardinality family left to add: the full local search is the support-`<=4` boundary winner versus the unique support-`5` interior winner.
+
+---
+
+## 4. Exact support-`<=5` splice theorem
+
+Define the final support-`<=5` certified interval by
+\[
+\boxed{
+\tau_{\le 5,\min}^{\rm lo}
+:=
+\min\bigl(
+\tau_{\le 4,\min}^{\rm lo},
+\tau_{5,\min}^{\rm lo,int}
+\bigr),
+}
+\]
+\[
+\boxed{
+\tau_{\le 5,\min}^{\rm hi}
+:=
+\min\bigl(
+\tau_{\le 4,\min}^{\rm hi},
+\tau_{5,\min}^{\rm hi,int}
+\bigr).
+}
+\]
+
+### Exact support-`<=5` splice theorem
+
+The true best local closure time on the full free-quintuple simplex obeys
+\[
+\boxed{
+\tau_{\le 5,\min}^{\rm lo}
+\le
+\tau_{\le 5,*}^{\rm best}
+\le
+\tau_{\le 5,\min}^{\rm hi}.
+}
+\]
+
+The proof is now immediate from the previous section:
+\[
+\tau_{\le 5,*}^{\rm best}
+=
+\min\bigl(
+\tau_{\le 4,*}^{\rm best},
+\tau_{5,*}^{\rm best,int}
+\bigr),
+\]
+and each of the two entries on the right-hand side already carries an exact certified interval.
+
+So the entire local mixed-ray search is reduced to **one last interval splice**.
+
+---
+
+## 5. Exact support-`5` classification and winner theorems
+
+Because there is only one support-`5` simplex, its contribution to the full search falls into three exact classes.
+
+### 5.1 Genuine support-`5` improvement theorem
+
+If the support-`5` interior upper bound already lies below the support-`<=4` lower bound,
+\[
+\boxed{
+\tau_{5,\min}^{\rm hi,int}<\tau_{\le 4,\min}^{\rm lo},
+}
+\]
+then every admissible support-`5` interior winner beats every admissible support-`<=4` winner. Therefore
+\[
+\boxed{
+\tau_{\le 5,*}^{\rm best}=\tau_{5,*}^{\rm best,int},
+}
+\]
+and the full local search has a genuine five-coordinate interior winner.
+
+### 5.2 No genuine support-`5` improvement theorem
+
+If the support-`5` interior lower bound already lies above the support-`<=4` upper bound,
+\[
+\boxed{
+\tau_{5,\min}^{\rm lo,int}>\tau_{\le 4,\min}^{\rm hi},
+}
+\]
+then no admissible support-`5` interior candidate beats the already-finished support-`<=4` ledger. Therefore
+\[
+\boxed{
+\tau_{\le 5,*}^{\rm best}=\tau_{\le 4,*}^{\rm best},
+}
+\]
+and the full local search closes without any genuine five-coordinate improvement.
+
+### 5.3 Ambiguous but finite theorem gate
+
+If instead the intervals overlap,
+\[
+\tau_{5,\min}^{\rm lo,int}\le \tau_{\le 4,\min}^{\rm hi}
+\qquad\text{and}\qquad
+\tau_{5,\min}^{\rm hi,int}\ge \tau_{\le 4,\min}^{\rm lo},
+\]
+then the support-`5` interior remains **certifiedly ambiguous at the interval level**.
+
+But this is no longer a continuum ambiguity. Stage 200 already reduced the support-`5` interior to a finite admissible algebraic candidate set. So even in the ambiguous case, the only unresolved work is finite candidate comparison, not a new free multi-parameter scan.
+
+This is the exact sense in which Stage 201 closes the search sieve even before the actual PDE data are inserted.
+
+---
+
+## 6. Exact final local mixed-ray closure theorem
+
+Collect the carried finite ledgers:
+
+- Stage 192: optimized primitive pair cones,
+- Stage 195: full primitive triple closed-simplex packets,
+- Stage 198: full primitive quadruple closed-simplex packets and support-`<=4` global ledger,
+- Stage 200: unique support-`5` interior candidate packet.
+
+Then the full local mixed-ray search on the free quintuple is completely exhausted.
+
+### Exact final local mixed-ray closure theorem
+
+The best local closure time on the free primitive quintuple is fully determined, up to the already-certified intervals of the carried packets, by the finite ledger
+\[
+\boxed{
+\Bigl(
+\tau_{\le 4,\min}^{\rm lo},\tau_{\le 4,\min}^{\rm hi},
+\tau_{5,\min}^{\rm lo,int},\tau_{5,\min}^{\rm hi,int}
+\Bigr),
+}
+\]
+and there are no additional support-cardinality families beyond this stage.
+
+Equivalently, the full local search on `\(\Delta_5^+\)` is no longer a continuum optimization problem. It is a finite certified ledger with one final splice.
+
+So after Stage 201 there is no more generic local mixed-ray ranking work left to do.
+The next honest move is no longer “rank larger support families.” It is to insert the actual PDE-derived branch data into this completed ledger.
+
+---
+
+## 7. Exact evaluation-budget theorem
+
+The preferred lifted candidate compiler from Stage 200 contributes at most
+\[
+162
+\]
+interior five-coordinate stationary candidates **per** envelope, hence
+\[
+\boxed{324}
+\]
+across the `{lo,hi}` envelopes.
+
+The already-finished support-`<=4` search budget from Stage 198 is
+\[
+\boxed{1140}.
+\]
+So the exact preferred total budget for the full support-`<=5` local search is
+\[
+\boxed{
+1140+324=1464.
+}
+\]
+
+If one instead falls back to the projected one-chart quintuple elimination bound from Stage 200, then the support-`5` interior contributes at most
+\[
+2\times 750 = 1500
+\]
+candidate evaluations, giving the fallback total
+\[
+\boxed{
+1140+1500=2640.
+}
+\]
+
+So even the fallback full local search is finite and explicit.
+
+---
+
+## 8. Best current summary after Stage 201
+
+The local mixed-ray sieve is now finished.
+
+- The whole support-`<=4` boundary is already closed by Stage 198.
+- The only new support-`5` content was the unique interior five-coordinate optimizer, and Stage 200 reduced that to a finite algebraic candidate set.
+- Stage 201 proves that the boundary of the unique five-simplex is exactly the already-solved support-`<=4` search set.
+- Therefore the full local search over the positive free-quintuple simplex is reduced to one exact splice between the support-`<=4` global ledger and the unique support-`5` interior packet.
+- The preferred exact total evaluation budget is `1464`, with fallback chart budget `2640`.
+
+So the natural continuation after Stage 201 is **not** another support-cardinality theorem.
+It is to begin inserting the actual PDE-derived Hessian-envelope and branch data into the completed search ledger — or, equivalently, to port this whole audited completion back into the compact PDE program master.

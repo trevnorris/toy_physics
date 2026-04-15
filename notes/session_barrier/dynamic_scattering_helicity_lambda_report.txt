@@ -1,0 +1,150 @@
+Dynamic continuation of the relaxed same-charge barrier stress test
+==============================================================================
+
+Scope
+------------------------------------------------------------------------------
+This is a reduced continuation of the earlier stationary U/V + leakage +
+sign-changing-source closure. It is not a solved moving-throat PDE theorem.
+The dynamic barrier side is kept on the same short-range-family branch as the
+same-charge barrier audit, while the magnetic/helicity side uses the exact
+canonical-vorticity and projected/subscale-helicity identities as the structural
+anchors and closes the unresolved mixed correlations phenomenologically.
+
+Representative symbolic formulas
+------------------------------------------------------------------------------
+Xi_1 = (-delta_ln_R_target*(epsilon_eta_star - 1) + delta_ln_epsilon_eta*epsilon_eta_star)/(epsilon_eta_star - 1)
+Omega_ij = -F_ij*q_s/m_s
+P_WKB ~ exp(-2*I_WKB/hbar_eff)
+lambda_th(r_turn) = Abs(V_eff(r)/Derivative(V_eff(r), r))
+dh_sub/dt (local source term) = -2*Eprime_dot_Bprime
+
+Parameter set
+------------------------------------------------------------------------------
+             lam = 1.0
+           r_reg = 0.25
+          E0_amp = 0.18
+            rho0 = 1.0
+            mu_w = 0.8
+               q = 1.0
+             a_U = 2.5
+             a_V = 3.0
+            g_UV = 0.95
+              s0 = 0.9
+     epsilon_ref = 0.3
+          K_star = 4.0
+      Omega_U_sq = 9.0
+      Omega_W_sq = 16.0
+             G_U = 1.0
+             G_W = 1.25
+           R_mix = 1.35
+          beta_Q = 0.03
+         beta_U0 = 0.15
+         beta_W0 = 0.2
+           kappa = 1.0
+              a0 = 2.2
+              b0 = -0.6
+         r_sigma = 0.8
+            xi_R = 0.9
+        eta_leak = 0.03
+          eta_uv = 0.22
+          kk_amp = 0.0
+            r_F1 = 1.77799353547498
+             m_s = 1.0
+        hbar_eff = 1.0
+              r0 = 5.0
+       r_contact = 0.18
+           E_sub = 2.5
+    cross_factor = 1.02
+         xi_spin = 0.4
+         C0_spin = 0.05
+          r_spin = 0.8
+          r_core = 0.15
+           eta_h = 0.25
+      Omega0_sub = 0.7
+              dt = 0.0001
+            tmax = 10.0
+
+Stationary barrier summary
+------------------------------------------------------------------------------
+Barrier peak position r_peak          = 0.23944389
+Barrier peak height V_peak           = 3.42933112
+V_eff(r0) at r0=5               = 0.19999794
+Coulomb V(r0)                       = 0.20000000
+Finite reduced-model threshold v_crit,new = 2.54139063
+Coulomb contact speed to r_contact      = 3.27278339
+
+Interpretation: there is a genuine reduced-unit window
+  v_crit,new < v0 < v_contact,coul
+in which the lowered reduced barrier can be crossed classically while the
+pure Coulomb model still turns back.
+
+Task 1 — subbarrier dynamic scattering
+------------------------------------------------------------------------------
+Chosen subbarrier energy E_sub       = 2.50000000
+Initial inward speed v0_sub          = 2.14476202
+New-model outer turning point        = 0.39096144
+Coulomb outer turning point          = 0.40000141
+New-model inner turning point        = 0.19039548
+Trajectory status (new / Coulomb)    = turn / turn
+
+WKB comparison (contact matched at the same reduced inner radius)
+I_new                                = 0.19744614
+I_coul                               = 0.30222297
+T_new                                = 6.73752615e-01
+T_coul                               = 5.46377065e-01
+T_new / T_coul                       = 1.23312756
+Fusion-probability increase          = 23.3128%
+
+Dynamic barrier scalar Xi_1(r_turn)  = 0.34437471
+lambda_th(r_turn)                    = 0.42826825
+
+Above-threshold crossing demonstration
+------------------------------------------------------------------------------
+Chosen crossing speed v0_cross       = 2.59221845
+New-model total energy               = 3.55979618
+Coulomb total energy                 = 3.55979824
+Trajectory status (new / Coulomb)    = contact / turn
+Coulomb turning point at same v0     = 0.28091705
+
+Task 2 — magnetic / subscale-helicity audit
+------------------------------------------------------------------------------
+Aligned trajectory status            = contact
+Anti-aligned trajectory status       = contact
+Aligned contact/turn time            = 2.25690000
+Anti-aligned contact/turn time       = 2.28950000
+max(dh_sub/dt)_aligned               = 281.79830789
+max(dh_sub/dt)_anti                  = 56.96878122
+Peak helicity-export ratio           = 4.94653917
+h_sub(final)_aligned                 = 20.58070146
+h_sub(final)_anti                    = 5.00843357
+Integrated helicity-export ratio     = 4.10920923
+
+Winner on the requested diagnostic: aligned spins.
+In this reduced mixed-sector model the aligned branch maximizes
+d h_sub / dt and exports substantially more unresolved magnetic/topological
+structure into the higher/transverse sector, while the anti-aligned branch
+partially self-cancels the same channel and exports much less.
+
+Task 3 — threshold equation for lambda
+------------------------------------------------------------------------------
+Operational definition used here:
+  chi_lambda(r) := lambda * |d ln(V_eff)/dr|
+so the threshold for beyond-MHD behavior at a turning point is
+  lambda_th(r_turn) = 1 / |d ln(V_eff)/dr|_(r_turn)
+                    = |V_eff(r_turn) / V_eff'(r_turn)|.
+
+Scanned outer-turning-point range    = [0.25094181, 0.56222252]
+Scanned lambda_th range              = [0.40673709, 1.06949146]
+Scanned Xi_1 range on turning curve  = [0.25095422, 0.53817934]
+Scanned WKB multiplier range         = [1.18016972, 1.31627906]
+
+Bottom line
+------------------------------------------------------------------------------
+1) The lowered reduced barrier admits a finite classical threshold that is absent
+   in pure Coulomb, and the default subbarrier slice gives a >20% WKB enhancement
+   in reduced units.
+2) The magnetic/helicity sector prefers aligned spins for access to the pure-transfer
+   subcorridor on the present reduced closure.
+3) The confinement-width trigger is now explicit as lambda_th(r_turn), so the
+   branch can be read directly as a laboratory steepness requirement once a
+   physical unit map for r is chosen.

@@ -1,0 +1,136 @@
+Proton-proxy structural-stability sweep for the lowered same-charge barrier
+========================================================================================
+
+Scope
+----------------------------------------------------------------------------------------
+This script keeps the same reduced stationary branch used in the earlier
+relaxed-constraint and dynamic/helicity runs, then overlays the requested
+proton-proxy mass/inertia scaling and the new crossing-vs-collapse timescale test.
+The aligned-spin closure stays active for the dynamic transit cross-check.
+
+Symbolic formulas used
+----------------------------------------------------------------------------------------
+t_cross(E)    = sqrt(2)*lambda_eff*sqrt(m_s)*sqrt(1/(E - V_peak))/2
+t_collapse    = sqrt(mu_eta)/(sqrt(chi_peak)*sqrt(g_UV))
+S(E)          = sqrt(2)*sqrt(chi_peak)*sqrt(g_UV)*lambda_eff*sqrt(m_s)*sqrt(1/(E - V_peak))/(2*sqrt(mu_eta))
+E_edge        = V_peak + chi_peak*g_UV*lambda_eff**2*m_s/(2*mu_eta)
+
+If the heavy throat scales as mu_eta = alpha * m_s, these reduce to
+S(E)          = sqrt(2)*sqrt(chi_peak)*sqrt(g_UV)*lambda_eff*sqrt(1/(E - V_peak))/(2*sqrt(alpha))
+E_edge        = V_peak + chi_peak*g_UV*lambda_eff**2/(2*alpha)
+
+Parameter set
+----------------------------------------------------------------------------------------
+                 lam = 1.0
+               r_reg = 0.25
+              E0_amp = 0.18
+                rho0 = 1.0
+                mu_w = 0.8
+                   q = 1.0
+                 a_U = 2.5
+                 a_V = 3.0
+                g_UV = 0.95
+                  s0 = 0.9
+         epsilon_ref = 0.3
+              K_star = 4.0
+          Omega_U_sq = 9.0
+          Omega_W_sq = 16.0
+                 G_U = 1.0
+                 G_W = 1.25
+               R_mix = 1.35
+              beta_Q = 0.03
+             beta_U0 = 0.15
+             beta_W0 = 0.2
+               kappa = 1.0
+                  a0 = 2.2
+                  b0 = -0.6
+             r_sigma = 0.8
+                xi_R = 0.9
+            eta_leak = 0.03
+              eta_uv = 0.22
+              kk_amp = 0.0
+                r_F1 = 1.77799353547498
+                  r0 = 5.0
+           r_contact = 0.18
+     E_sub_reference = 2.5
+   proton_mass_ratio = 1836.15267343
+    v_multiplier_min = 1.001
+    v_multiplier_max = 5.0
+     n_energy_points = 350
+   n_dynamic_samples = 24
+          dt_dynamic = 0.002
+        tmax_dynamic = 500.0
+             xi_spin = 0.4
+             C0_spin = 0.05
+              r_spin = 0.8
+              r_core = 0.15
+       lambda_choice = trigger
+
+Rebuilt stationary branch
+----------------------------------------------------------------------------------------
+Barrier peak location r_peak                 = 0.23944389
+Barrier peak height V_peak                  = 3.42933112
+Reference outer turning point r_turn(sub)   = 0.39096144
+Trigger width lambda_th(r_turn)             = 0.42826825
+Chosen lambda_eff                           = 0.42826825 (previous trigger width lambda_th(r_turn))
+
+Heavy-throat proton proxy
+----------------------------------------------------------------------------------------
+Particle mass m_s                           = 1836.15267343
+Wall inertia mu_eta                         = 1836.15267343
+Old reduced threshold speed (m_s = 1)       = 2.54139063
+Proton-proxy threshold speed                = 0.05930851
+
+Collapse-side ingredients
+----------------------------------------------------------------------------------------
+Steepest log-gradient location              = 0.18000000
+chi_lambda^peak                             = 21.73204372
+t_collapse                                  = 9.43066476
+
+Characteristic safe window (main lambda choice)
+----------------------------------------------------------------------------------------
+Analytic lower edge E_safe,min              = 5.32265943
+Analytic lower edge speed                   = 0.07469791
+Lower edge in threshold units               = 1.25948037 * v_crit,p
+Numeric lower edge on scan                  = 5.36393605
+Numeric upper edge on scan                  = 80.93332737
+
+Interpretation: on the requested characteristic estimate, the stable region is
+one-sided. Once E_inc exceeds E_safe,min, the ratio S = t_cross/t_collapse
+stays below 1 all the way to the top of the scanned over-barrier band.
+
+Dynamic aligned-spin transit cross-check
+----------------------------------------------------------------------------------------
+min actual barrier transit (aligned)        = 0.20400000
+max actual barrier transit (aligned)        = 4.05400000
+all sampled aligned trajectories status     = {'contact'}
+Across the sampled over-barrier aligned-spin trajectories, the actual peak-to-contact
+transit time stays below the collapse time already at the very bottom of the scan.
+So the characteristic formula is the more conservative stability criterion here.
+
+Sensitivity to the raw model width lambda = 1
+----------------------------------------------------------------------------------------
+chi_lambda^peak (raw model width)          = 50.74399964
+t_collapse (raw model width)               = 6.17163516
+E_safe,min (raw model width)               = 27.53273095
+v_safe,min (raw model width)               = 0.17254490
+
+This matters because the proton proxy by itself does not move the characteristic
+energy threshold when m_s and mu_eta are scaled together; what moves the window is
+the chosen confinement width entering chi_lambda. Using the previously derived
+trigger width gives the less severe and more branch-faithful lower edge.
+
+Safe energy window reported
+----------------------------------------------------------------------------------------
+Main reported window (analytic lower edge, scan-limited upper edge): [5.32265943, 80.93332737]
+Equivalent speed window: [0.07469791, 0.29654256]
+
+Bottom line
+----------------------------------------------------------------------------------------
+1) With the proton-proxy scaling m_s = mu_eta = m_p/m_e and the earlier trigger
+   width lambda_th kept as the active barrier width, the characteristic stability
+   boundary lands at E_inc ≈ 5.32266 in the same reduced units.
+2) No upper collapse edge appears before the top of the scanned hot branch, so the
+   mathematically permitted region is one-sided rather than a closed island on this closure.
+3) The actual aligned-spin barrier-region transit is even shorter than the requested
+   characteristic estimate, so the conservative stability window is not being overstated.

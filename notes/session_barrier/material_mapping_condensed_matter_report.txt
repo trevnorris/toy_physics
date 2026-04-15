@@ -1,0 +1,82 @@
+Material mapping for the damped moving-throat cold-crossing branch
+============================================================================================
+
+Inputs carried from earlier reduced runs
+--------------------------------------------------------------------------------------------
+gamma_lattice,req  = 4.79562976
+t_cross,red        = 1.82169718
+lambda_th,red      = 0.42826825
+r_turn,red         = 0.39096144
+V_eff(r_turn),red  = 2.50000000
+
+Task 1 — electron-phonon threshold
+--------------------------------------------------------------------------------------------
+Model:
+  gamma_lattice^phys = zeta_ep * lambda_ep * omega_D
+  gamma_lattice^phys = gamma_lattice^red / t_star
+
+Exact threshold:
+  (lambda_ep * omega_D)_min = 4.79562976/(t_star*zeta_ep)
+
+Using t_cross^phys = t_cross,red * t_star, this is equivalently:
+  (lambda_ep * omega_D)_min = 8.73618521011608/(t_cross_phys*zeta_ep)
+  (lambda_ep * omega_D * t_cross^phys)_min = 8.73618521011608/zeta_ep
+
+Interpretation:
+  For zeta_ep = 1, the lattice drain must turn over about
+  8.73618521 times during one physical crossing event.
+
+Task 2 — harmonic-trap geometry and stiffness
+--------------------------------------------------------------------------------------------
+Pure harmonic trap:
+  V_lattice(r) = k_eff*r_phys**2/2
+  d ln(V_lattice)/dr = 2/r_phys
+  chi_lambda,lattice = 2*lambda_phys_A/r_phys
+  Threshold chi_lambda >= 1 implies: r_phys <= 2*lambda_phys_A
+
+So chi_lambda alone constrains geometry (r <= 2 lambda_phys), not stiffness.
+Evaluated on the earlier reduced turning point:
+  r_turn^phys = 0.912889153001653*lambda_phys_A
+  chi_lambda,lattice(r_turn) = 2.19084649371048
+                              ≈ 2.19084649
+
+Minimal extra assumption to obtain k_eff:
+  match the absolute harmonic-trap force to the reduced-model force at r_turn.
+That gives
+  k_eff,req = 2.7385581171381*E_star_eV/lambda_phys_A**2  [eV/Å^2]
+
+If lambda_phys is identified with one-half of an interstitial spacing a_int,
+  lambda_phys = a_int / 2,
+then
+  k_eff,req = 10.9542324685524*E_star_eV/a_int_A**2  [eV/Å^2]
+
+Reference numbers for E_star = 1 eV:
+  lambda_phys = 0.5 Å  -> k_eff ≈ 10.95423247 eV/Å^2
+  lambda_phys = 1.0 Å  -> k_eff ≈ 2.73855812 eV/Å^2
+  lambda_phys = 1.5 Å  -> k_eff ≈ 1.21713694 eV/Å^2
+  a_int = 2.0 Å        -> k_eff ≈ 2.73855812 eV/Å^2
+
+Task 3 — Korringa depolarization limit
+--------------------------------------------------------------------------------------------
+Korringa relation and spin-survival condition:
+  T1 * T = Kcorr,    safe if T1 >= t_cross^phys
+Hence
+  T_max = Kcorr/t_cross_phys
+
+Using the earlier reduced crossing time:
+  T_max = 0.548938655106224*Kcorr/t_star
+
+So the spin-aligned branch survives only if the operating temperature stays
+below Kcorr divided by the physical crossing time.
+
+Bottom line
+--------------------------------------------------------------------------------------------
+1) The clean database-comparison target for the lattice drain is
+     lambda_ep * omega_D >= 8.73618521011608/(t_cross_phys*zeta_ep)
+   or, equivalently,
+     lambda_ep * omega_D * t_cross^phys >= 8.73618521011608/zeta_ep.
+2) The harmonic-trap chi_lambda test by itself fixes only the geometry ratio
+   r_turn / lambda_phys. A stiffness emerges only after force matching, which
+   gives the explicit eV/Å^2 formula above.
+3) The thermal depolarization ceiling is simply
+     T_max = Kcorr/t_cross_phys.

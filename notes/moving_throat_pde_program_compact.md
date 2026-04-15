@@ -6,17 +6,21 @@ This document is the primary compact working master for the moving-throat PDE
 program. It is meant to support new sessions and new derivation work without
 requiring a full walk through the entire stage tree.
 
-It is now updated through the `5`PN extension sequence `176-201`. The stable
-backbone from the earlier compact master is preserved, but the old stage-wise
-home stretch has been rewritten as a cleaner conceptual ledger:
+It is now updated through the post-`201` extension carried in
+`moving_throat_latest_full.md`, i.e. through Stages `202-225`. The stable
+backbone from the earlier compact master is preserved, but the endgame is now
+rewritten around the actual theorem structure that the later same-charge,
+rigid-mouth, and selected-branch work fixed:
 
 - the exact parent `4+1` theory,
 - the moving-throat geometry and reduced wall/support/outgoing stack,
 - the Family-1 mouth/core and co-evolving branches,
 - the full grouped real `P2` conservative and retarded finish line,
 - the coherent local-kernel / invariant / orbit structure,
-- the explicit free-quintuple realization compiler,
-- and the now-finite local mixed-ray search sieve.
+- the explicit free-quintuple realization compiler and finite local mixed-ray sieve,
+- the one-port same-charge mixed-kernel verdict and the actual-branch prefactor ceiling,
+- the rigid-mouth physical normal form and Cartesian orbit-lock packet,
+- and the selected twin-support placement / ranking / support-versus-orbit split.
 
 This is **not** a paper draft.
 It is a compact program ledger.
@@ -73,18 +77,51 @@ Current best reading of the program:
   \[
   \chi_Q-1,
   \]
-- the full reduced endgame is now the exact four-scalar packet
+- the one-port same-charge audit no longer leaves the mixed sector as a generic placeholder: the static bundle creates no new long-range attractive law, and the linear dynamic bundle creates no new kernel class beyond resonant dispersive enhancement of the already-short-range families,
+- the actual weak-axisymmetric same-charge bottleneck is now the transported prefactor packet
+  \[
+  (\Delta_{\rm norm},a_{P_0},b_{P_0}),
+  \]
+  equivalently the pair
+  \[
+  (\Delta_{\rm norm},\Xi_1),
+  \qquad
+  \Xi_1=\frac{P_1}{P_0},
+  \]
+  on the weak-axisymmetric line
+  \[
+  b_{P_0}=3a_{P_0},
+  \]
+- on the rigid-mouth actual branch the post-static same-charge problem is already diagonal in the physical logarithmic chart
+  \[
+  (U,V)=\left(
+  \ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+  \ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}
+  \right),
+  \]
+  and orbit lock is the Cartesian codimension-two condition `U=V=0`,
+- the passive/outgoing support-selection ambiguity has collapsed to the exact lowest-twin slice
+  \[
+  \rho_\alpha=\frac43,
+  \qquad
+  \zeta_{\rm req}=\frac13,
+  \]
+  with actual placement then reduced to one coordinate on the selected twin-support curve,
+- the full reduced back end is still the exact four-scalar packet
   \[
   \Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta),
   \]
   together with its explicit graph-error realization form,
-- the local free-quintuple mixed-ray search is now finite through support-cardinality `<=5`,
-- and the main remaining theorem gap is full PDE branch realization, not algebraic compression.
+- the local free-quintuple mixed-ray search is still finite through support-cardinality `<=5`,
+- and the main remaining theorem gap is now actual branch realization of the selected support/orbit/outgoing packet, not algebraic compression.
 
 So the active bottleneck is no longer “derive another compiler.” It is whether
 the actual moving-throat branch returns the isotropic one-pole grouped-`P2`
-carrier, the canonical outgoing normalization, the target-orbit monomial data,
-and the local Hessian packets required by the now-completed search sieve.
+carrier, the canonical outgoing normalization, an admissible weak-axisymmetric
+prefactor slope `\Xi_1`, the rigid-mouth Cartesian orbit-lock packet, the
+selected twin-support placement state, and—if one needs the back-end repair
+audit rather than the front-end branch test—the local Hessian packets required
+by the now-completed search sieve.
 
 ---
 
@@ -3026,6 +3063,507 @@ move is to insert actual PDE-derived Hessian envelopes and branch data into this
 completed ledger.
 
 
+### 8.16 One-port same-charge mixed-kernel verdict and static/dynamic narrowing
+
+**Status:** `Exact Within Closure`
+
+The post-`201` same-charge audit inserts actual one-port wall/BdG/Maxwell/mixed
+bundle data into the already-completed local mixed-ray ledger.
+
+After the stable BdG support mode is integrated out,
+\[
+\boxed{
+K_*:=K-\frac{C^2}{\varpi^2},
+\qquad
+\Delta:=\Omega_U^2\Omega_W^2-R^2,
+}
+\]
+\[
+\boxed{
+Q:=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\qquad
+P:=\Omega_U^2G_W+RG_U,
+}
+\]
+\[
+\boxed{
+D_0:=K_*-\frac{Q}{\Delta}.
+}
+\]
+The exact reduced static `3\times 3` bundle has determinant
+\[
+\boxed{\det\mathcal K_{\rm red}=\Delta D_0.}
+\]
+So the natural admissible static branch is
+\[
+\boxed{
+\Omega_U^2>0,
+\qquad
+\Delta>0,
+\qquad
+D_0>0.
+}
+\]
+
+On that branch the exact static susceptibility shift is
+\[
+\boxed{
+\delta V_{\rm mix}(r)
+=
+-\frac12 J(r)^T\mathcal K_{\rm red}^{-1}J(r)\le 0,
+}
+\]
+so the induced same-charge static correction is always attractive or neutral at
+quadratic order.
+
+The wall–mixed bridge is already tied to the outgoing-prefactor chain:
+\[
+\boxed{
+\Lambda:=\frac{P}{\Delta},
+\qquad
+N_0=\Lambda^2,
+\qquad
+P_0=\frac{N_0}{D_0},
+}
+\]
+\[
+\boxed{
+\chi_{qW}=\frac{\Lambda}{D_0},
+\qquad
+\chi_{qW}^2=\frac{P_0}{D_0}.
+}
+\]
+So static same-charge softening and outgoing quadrupole normalization are not
+independent knobs inside the one-port bundle.
+
+For the first primitive same-charge source families
+\[
+\mathcal S_Q(x)=\frac{1}{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+\]
+the exact static mixed correction can generate only
+\[
+\boxed{
+\frac{1}{x^6},
+\qquad
+\frac{e^{-2\kappa x}}{x^4},
+\qquad
+\frac{e^{-4\kappa x}}{x^2}.
+}
+\]
+So the minimal static one-port mixed bundle creates **no new long-range
+attractive law**. It survives only as short-range coefficient renormalization /
+hybridization / near-softening.
+
+The linear dynamic lift keeps the same narrowing. With
+\[
+K_B(\omega)
+=
+K-M\omega^2-\frac{C^2}{\varpi^2-\omega^2},
+\qquad
+D_\Pi(\omega)=K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)},
+\]
+the one-port mixed sector makes those same short-range families frequency
+dependent, but it does **not** create a new conservative kernel class. The first
+outgoing correction is phase-lag / pumping rather than linear barrier bypass.
+After the residue/linewidth audit and the exact `5`PN compatibility surface,
+the only linear dynamic corridor left is resonant dispersive enhancement of the
+already-existing short-range families inside a finite branch-compatible window.
+
+So the post-`201` same-charge bundle verdict is now:
+
+- no new static long-range law,
+- no new linear dynamic kernel class,
+- one surviving short-range resonant corridor tied to the same bundle
+  denominators that already appear in the `5`PN / `2.5`PN normalization chain.
+
+### 8.17 Actual-branch same-charge ceiling, `\Xi_1`, and the static-first theorem
+
+**Status:** `Exact Within Closure`
+
+The later same-charge stages then convert the Stage-206 compatibility surface
+into an actual-branch ceiling test.
+
+For any prefactor ceiling `P_{\rm crit}`, the actual weak-axisymmetric branch is
+carried by the grouped signature
+\[
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1,
+\]
+and by the exact outgoing-prefactor slope
+\[
+\boxed{\Xi_1=\frac{P_1}{P_0}.}
+\]
+The branch prefactors are
+\[
+\boxed{
+P_A=\bar P_0\bigl(1+\epsilon\lambda_A\Xi_1\bigr),
+}
+\]
+so the grouped anomaly packet becomes
+\[
+\boxed{
+a_{P_0}=\frac{\epsilon\bar P_0\Xi_1}{4},
+\qquad
+b_{P_0}=\frac{3\epsilon\bar P_0\Xi_1}{4},
+}
+\]
+hence
+\[
+\boxed{b_{P_0}=3a_{P_0}.}
+\]
+
+Therefore the exact all-lane ceiling collapses to one scalar inequality:
+\[
+\boxed{
+\bar P_0\bigl(1+|\epsilon\Xi_1|\bigr)\le P_{\rm crit}.
+}
+\]
+Using the normalization compiler,
+\[
+\boxed{
+\bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}},
+}
+\]
+this becomes
+\[
+\boxed{
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+\bigl(1+|\epsilon\Xi_1|\bigr)
+\le P_{\rm crit}.
+}
+\]
+
+So the actual weak-axisymmetric same-charge bottleneck is no longer generic
+mixed-sector anisotropy. It is the explicit packet
+\[
+(\Delta_{\rm norm},a_{P_0},b_{P_0}),
+\]
+or, on the weak-axisymmetric line, just
+\[
+\boxed{(\Delta_{\rm norm},\Xi_1).}
+\]
+
+The strict `5`PN even-gate package, the pure-transfer sieve, the selected-branch
+rigid-split classifier, and its continuum pullback then sharpen the verdict
+further:
+
+- the surviving first-order outlet is exactly the transported prefactor slope
+  `\(\Xi_1\)`,
+- the wall-like dynamic ceilings can be classified exactly along the selected
+  branch,
+- but on the carried branch family they are always weaker than the universal
+  transported static ceilings.
+
+So the first global kill condition is still
+\[
+\boxed{\text{the transported static }\Xi_1\text{ budget, not the wall-like dynamic window}.}
+\]
+
+### 8.18 Rigid-mouth physical normal form and Cartesian orbit lock
+
+**Status:** `Exact Within Closure`
+
+On the actual coherent branch, the physical direct observables are
+\[
+R_{\rm tr},
+\qquad
+\mathcal T^2,
+\qquad
+\epsilon_\eta,
+\]
+with exact identity
+\[
+\boxed{
+R_{\rm target}\,\mathcal T^2
+=
+\Lambda_0(1-\epsilon_\eta),
+\qquad
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+}
+\]
+
+On the rigid-mouth slice `\(q_{\rm tr}=0\)`, the surviving finite packet is
+already diagonal in the physical logarithmic chart
+\[
+\boxed{
+U:=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+}
+\]
+with
+\[
+\boxed{
+q_{\rm nt}=U,
+\qquad
+q_\eta=V.
+}
+\]
+
+So the rigid-mouth branch is the exact Cartesian product of
+
+1. a pure transfer-shape leg
+   \[
+   \mathcal T^2=\mathcal T_{\rm ref}^2 e^U,
+   \qquad
+   \epsilon_\eta=\epsilon_{\eta,\rm ref},
+   \]
+2. a pure dressing leg
+   \[
+   \mathcal T^2=\mathcal T_{\rm ref}^2,
+   \qquad
+   \epsilon_\eta=\epsilon_{\eta,\rm ref}e^V.
+   \]
+
+The exact physical-to-microscopic dependent-plane compiler is
+\[
+\boxed{
+\begin{pmatrix}
+\Delta_T\\
+\Delta_{K_\eta}\\
+\Delta_\mu
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+-V\\
+U-V
+\end{pmatrix}.
+}
+\]
+So:
+
+- clearing the static transfer-shape defect changes only `\(\mu_W\)`,
+- the post-static dressing correction is the equal
+  `\(K_\eta^{(\mathrm{eff})}\)`–`\(\mu_W\)` shift,
+- and the full orbit-restoring correction is the sum of those two pieces.
+
+The rigid-mouth orbit-lock theorem is now completely sharp:
+\[
+\boxed{
+U=0,\ V=0
+\iff
+\mathcal T^2=\mathcal T_{\rm ref}^2,\ \epsilon_\eta=\epsilon_{\eta,\rm ref}
+\iff
+R_{\rm target}=R_{\rm target,ref},\ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+}
+\]
+
+The whole rigid-mouth packet and its microscopic correction are support-blind:
+coherent support enhancement can move the support baseline, but it cannot alter
+either the `(U,V)` packet or the orbit-restoring correction it requires.
+
+### 8.19 Selected twin-support slice and primitive ranking
+
+**Status:** `Exact Within Closure`
+
+The passive/outgoing support-selection ambiguity is now fixed by the minimal
+isotropic conservative quadrupole precursor
+\[
+Y_Q^{\rm cons}(\omega)
+=
+c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2},
+\qquad
+c_0+c_1=1.
+\]
+On the natural isotropic branch
+\[
+\boxed{
+c_0=\frac34,
+\qquad
+c_1=\frac14,
+}
+\]
+so the exact support loading ratio is
+\[
+\boxed{
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\rho_\alpha-1=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43\,C_{\rm mix}.
+}
+\]
+
+Equivalently, the selected branch is the exact one-parameter twin-support curve
+\[
+\boxed{
+\epsilon_* = 1-\frac{3\varrho}{2},
+\qquad
+\sigma = \frac{4}{3\varrho}-2,
+\qquad
+0<\varrho<\frac23,
+}
+\]
+and it lies strictly inside the symmetric lowest-twin support window for the
+whole allowed range. So the mixed-only and non-twin branches are gone from the
+live same-charge closure.
+
+On that selected curve only two primitive thresholds survive:
+\[
+\boxed{
+\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)}{3(2+\beta^2)},
+\qquad
+\varrho_{U\Lambda}
+=
+\frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+}
+\]
+The exact primitive ranking is then
+\[
+\boxed{
+\begin{aligned}
+&0<\varrho<\varrho_{W\Lambda}
+&&\Longrightarrow&&
+q_\chi > q_Z > q_\Lambda > q_W > |q_U|,\\[1mm]
+&\varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda}
+&&\Longrightarrow&&
+q_\chi > q_Z > q_W > q_\Lambda > |q_U|,\\[1mm]
+&\varrho_{U\Lambda}<\varrho<\frac23
+&&\Longrightarrow&&
+q_\chi > q_Z > q_W > |q_U| > q_\Lambda.
+\end{aligned}
+}
+\]
+
+So the quartic same-charge repair is **not** generically a large split-`U`
+effect. Along the selected branch,
+
+- `\(q_\chi\)` is always dominant,
+- `\(q_Z\)` is always second,
+- `\(q_W>|q_U|\)` everywhere,
+- and the live quartic interpretation is generically
+  interference / overlap / wall-blocking / outgoing-scale.
+
+### 8.20 Actual twin-support placement, support/orbit split, and branch packet
+
+**Status:** `Exact Within Closure`
+
+On the actual coherent local D/N branch, the support coordinate that places the
+branch on the selected twin-support curve is
+\[
+\boxed{
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+}
+\]
+So the realized selected point is
+\[
+\boxed{
+\varrho_{\rm phys}=\frac23(1-\epsilon),
+\qquad
+\sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}
+=\frac{4}{3\varrho_{\rm phys}}-2.
+}
+\]
+Once `\(\epsilon\)` is known, the Stage-224 ranking region is fixed with no
+further support solve.
+
+The coherent orbit packet can then be read directly from the physical placement
+variables:
+\[
+\boxed{
+q_{\rm tr}
+=
+(1+\delta_{U,*})\ln\frac{\chi_0}{\chi_{0,\rm ref}}
++
+(1+\chi_{0,*})\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+\[
+\boxed{
+q_{\rm nt}
+=
+\ln\frac{Z_W}{Z_{W,\rm ref}}
+-
+\ln\frac{\Lambda}{\Lambda_{\rm ref}}
++
+E_*\ln\frac{\epsilon_W}{\epsilon_{W,\rm ref}}
+-
+F_*\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+\[
+\boxed{
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+}
+\]
+
+At infinitesimal order, the direct-observable compiler is
+\[
+\boxed{\Theta_1=d\ln R_{\rm tr},}
+\]
+\[
+\boxed{
+\Xi_1
+=
+-d\ln R_{\rm target}
+-
+\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,d\ln\epsilon_\eta,
+}
+\]
+and the coherent orbit-lock theorem is
+\[
+\boxed{
+q_{\rm tr}=q_{\rm nt}=q_\eta=0
+\iff
+d\ln R_{\rm tr}=d\ln R_{\rm target}=d\ln\epsilon_\eta=0.
+}
+\]
+The outgoing finish line remains separate:
+\[
+\boxed{
+N_Q=1,
+\qquad
+\text{equivalently }\chi_Q=1
+\text{ on the natural source-map branch.}
+}
+\]
+
+The exact support/orbit separation is now also explicit. The coherent support
+ratio `\(\zeta\)` affects only the support packet
+\[
+\boxed{
+\bigl(\zeta,\ M_{\rm mix},\ S(\zeta;\epsilon),\ M_{\rm tr}\bigr),
+}
+\]
+while the orbit packet depends only on
+\[
+(\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda).
+\]
+So support compensation cannot rescue orbit-lock failure, and orbit lock does
+not determine support enhancement.
+
+The smallest exact front-end packet that the completed moving-throat branch now
+needs to return is therefore
+\[
+\boxed{
+\Bigl(
+\epsilon,\,
+\varrho_{\rm phys},\,
+\sigma_{\rm phys},\,
+\text{ranking region},\,
+R_{\rm tr},\,
+R_{\rm target},\,
+\epsilon_\eta,\,
+d\ln R_{\rm tr},\,
+d\ln R_{\rm target},\,
+d\ln\epsilon_\eta,\,
+N_Q-1
+\Bigr).
+}
+\]
+This is the most concrete actual-branch evaluation checklist the compact program
+currently has.
+
 ## 9. Final Theorem Ledger
 
 ### 9.1 Exact parent-theory statements
@@ -3064,6 +3602,16 @@ completed ledger.
   projection, the free-quintuple target graph, the graph-error packet, the
   graph-slice theorem, the explicit log-ray compiler, and the finite support-`<=5`
   local mixed-ray sieve.
+- The post-201 same-charge / rigid-mouth / selected-branch extension is now also
+  exact inside the carried one-port, weak-axisymmetric, rigid-mouth, and
+  selected-branch closures:
+  the one-port static susceptibility kernel and square-law suppression theorem,
+  the dynamic mixed-port / phase-lag no-go and resonant-survival window,
+  the actual-branch prefactor-ceiling compiler in `\((\Delta_{\rm norm},\Xi_1)\)`,
+  the selected-branch static-first theorem, the rigid-mouth physical normal form
+  `(U,V)`, the physical-to-microscopic dependent compiler, the exact support
+  slice `\(\rho_\alpha=4/3\)`, the selected twin-support ranking theorem, and the
+  actual placement / support-versus-orbit packet compiler.
 
 ### 9.3 Numerically located branch data
 
@@ -3111,8 +3659,8 @@ completed ledger.
 
 **Status:** `Reduced / Controlled Reduction`
 
-- The grouped real `P2` conservative front end now has an exact isotropic
-  one-pole target surface:
+- The grouped real `P2` conservative front end still has the exact isotropic
+  one-pole target surface
   \[
   a_2=b_2=a_4=b_4=0,
   \qquad
@@ -3120,7 +3668,7 @@ completed ledger.
   \qquad
   \widehat Y_Q^{\rm cons}(\omega)=\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}.
   \]
-- The entire Packet-A retarded finish line is now one scalar equation only:
+- The entire Packet-A retarded finish line is still one scalar equation only:
   \[
   \boxed{\chi_Q=1.}
   \]
@@ -3132,57 +3680,136 @@ completed ledger.
   \qquad
   m_{\hat 0}^{\,2}\chi_QN_Q=1.
   \]
-- The isotropic DtN-side realization gate is fully localized in
+- The one-port same-charge bundle verdict is now sharp:
+  the static mixed sector generates no new long-range attractive family, and the
+  linear dynamic mixed sector generates no new kernel class beyond resonant
+  dispersive enhancement of the already-short-range families.
+- The actual weak-axisymmetric same-charge ceiling is now the packet
   \[
-  (\beta,\Sigma_0,\Sigma_5),
+  (\Delta_{\rm norm},a_{P_0},b_{P_0}),
   \]
-  with exact closure condition
+  equivalently
   \[
-  3S(\beta^5-1)+\Sigma_0+27\Sigma_5=0.
+  (\Delta_{\rm norm},\Xi_1),
+  \qquad
+  \Xi_1=\frac{P_1}{P_0},
+  \qquad
+  b_{P_0}=3a_{P_0},
   \]
-- The full reduced endgame is now the exact four-scalar packet
+  with exact robust ceiling
+  \[
+  \boxed{
+  \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+  \bigl(1+|\epsilon\Xi_1|\bigr)
+  \le P_{\rm crit}.
+  }
+  \]
+- The first global kill condition on the carried same-charge branch is therefore
+  still the transported static `\(\Xi_1\)` budget, not the wall-like dynamic
+  window.
+- On the rigid-mouth actual branch the physical packet is already diagonal in
+  \[
+  U=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+  \qquad
+  V=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+  \]
+  with exact dependent-plane compiler
+  \[
+  (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V),
+  \]
+  so orbit lock is the Cartesian condition
+  \[
+  U=V=0.
+  \]
+- The passive/outgoing support-selection problem has collapsed to the exact
+  lowest-twin slice
+  \[
+  \rho_\alpha=\frac43,
+  \qquad
+  \zeta_{\rm req}=\frac13,
+  \qquad
+  \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+  \]
+  equivalently the one-parameter selected twin-support curve
+  \[
+  \epsilon_* = 1-\frac{3\varrho}{2},
+  \qquad
+  \sigma = \frac{4}{3\varrho}-2,
+  \qquad
+  0<\varrho<\frac23.
+  \]
+- The selected-branch primitive hierarchy is exact in the three regions bounded
+  by
+  \[
+  \varrho_{W\Lambda}
+  =
+  \frac{2(1+\beta^2)}{3(2+\beta^2)},
+  \qquad
+  \varrho_{U\Lambda}
+  =
+  \frac{2(1+\beta^2)}{3(1+\beta+\beta^2)},
+  \]
+  and it is generically an interference / overlap / wall-blocking /
+  outgoing-scale correction rather than a large split-`U` effect.
+- The smallest actual front-end branch packet is now
+  \[
+  \Bigl(
+  \epsilon,\,
+  \varrho_{\rm phys},\,
+  \sigma_{\rm phys},\,
+  \text{ranking region},\,
+  R_{\rm tr},\,
+  R_{\rm target},\,
+  \epsilon_\eta,\,
+  d\ln R_{\rm tr},\,
+  d\ln R_{\rm target},\,
+  d\ln\epsilon_\eta,\,
+  N_Q-1
+  \Bigr),
+  \]
+  with separate support packet
+  \[
+  (\zeta,\ M_{\rm mix},\ S(\zeta;\epsilon),\ M_{\rm tr}).
+  \]
+- The full reduced back end is still the exact four-scalar packet
   \[
   \Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta),
   \]
-  together with the equivalent multiplicative, mismatch, and graph-error charts.
-- The target similarity orbit is now an explicit graph over the free quintuple,
-  and the same-free-quintuple realization audit is the exact four-scalar packet
-  \[
-  (\chi_Q-1,E_T,E_K,E_\mu).
-  \]
-- On graph-aligned free-quintuple families, Packet B vanishes identically and the
-  closure search drops to the one-scalar slice
-  \[
-  \widehat\chi_Q(\mathbf y)=1.
-  \]
-- The full local mixed-ray search on the free quintuple is finite through
-  support-cardinality `<=5`, with preferred total evaluation budget `1464` and
-  fallback budget `2640`.
+  together with the equivalent multiplicative, mismatch, graph-error, and local
+  mixed-ray charts. The local search sieve remains exact, but it is no longer
+  the front-line bottleneck.
 
 ### 9.5 Practical global verdict
 
 **Status:** `Open`
 
 - There is currently no known algebraic blocker, no known stale-notation
-  obstruction, no missing Packet-A compiler step, no remaining ambiguity in the
-  orbit/graph realization maps, and no unfinished support-cardinality theorem in
-  the local search sieve.
-- The strongest remaining theorem gap is now fully localized: whether the actual
-  moving-throat PDE branch lands simultaneously on
+  obstruction, no missing Packet-A compiler step, no remaining support-selection
+  ambiguity on the passive/outgoing side, no hidden same-charge long-range kernel
+  class left un-audited at the one-port level, and no unfinished
+  support-cardinality theorem in the local search sieve.
+- The strongest remaining theorem gap is now branch realization of one combined
+  front-end packet, not another symbolic closure:
+  whether the actual moving-throat branch returns
   \[
-  \chi_Q=1
+  N_Q=1,
+  \qquad
+  \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+  \bigl(1+|\epsilon\Xi_1|\bigr)\le P_{\rm crit},
   \]
-  and
+  together with the rigid-mouth orbit condition
   \[
-  q_{\rm tr}=q_{\rm nt}=q_\eta=0,
+  d\ln R_{\rm tr}=d\ln R_{\rm target}=d\ln\epsilon_\eta=0,
   \]
-  equivalently on the same-free-quintuple graph packet
-  \[
-  E_T=E_K=E_\mu=0.
-  \]
-- So the active bottleneck is no longer compression. It is realization of the
-  isotropic grouped bundle, the target-orbit monomials, and the local Hessian
-  data on the true branch.
+  on one and the same selected twin-support placement state.
+- The free-quintuple graph/orbit packet and the local mixed-ray sieve are still
+  the exact back-end repair and audit language, but the active front-end
+  bottleneck is now: selected support placement, actual `\Xi_1` placement, and
+  rigid-mouth orbit lock on the realized branch.
+
+So the active bottleneck is no longer compression. It is realization of the
+same combined support / orbit / outgoing packet on the true moving-throat branch.
+
 
 ## 10. Open Realization Gap
 
@@ -3194,44 +3821,62 @@ The remaining gap is now concentrated and explicit.
 - not disagreement about the grouped trace/anomaly projectors,
 - not ambiguity in the Packet-A source/outgoing factorization,
 - not a hidden higher-odd loophole in the point-particle `2.5`PN theorem,
+- not an unfinished support-selection problem on the passive/outgoing side,
+- not a missing static or linear dynamic same-charge kernel class at the one-port level,
+- not uncertainty about whether the first global kill is the wall-like dynamic window,
 - not ambiguity in the reference-free orbit packet or the same-free-quintuple
   repair map,
 - not unfinished support-cardinality combinatorics in the local mixed-ray search.
 
 ### 10.2 What is still genuinely open
 
-- The actual isotropic grouped bundle coefficients, or any exactly equivalent
-  reduced data, on the physical moving-throat branch:
+- The actual one-port reduced branch data, or any exactly equivalent physical
+  packet, on the realized moving-throat branch:
   \[
-  (D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4}),
-  \qquad A\in\{20,21,22\}.
-  \]
-- Whether those realized grouped coefficients land on the exact conservative
-  front-end surface
-  \[
-  a_2=b_2=a_4=b_4=0,
+  (\Delta,D_0,P_0,\Xi_1),
   \qquad
-  \Delta_{\rm pole}=0.
+  \text{or equivalently }
+  (\Delta_{\rm norm},\Xi_1).
   \]
-- The actual isotropic DtN deformation data
+- Whether the realized weak-axisymmetric branch satisfies the transported static
+  ceiling
   \[
-  (\beta,\Sigma_0,\Sigma_5),
+  \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+  \bigl(1+|\epsilon\Xi_1|\bigr)\le P_{\rm crit}.
   \]
-  equivalently the realized outgoing scalar `\(\chi_Q\)`.
-- The actual Packet-B target ratios on the realized branch, in any exact form:
+- The actual rigid-mouth physical packet
   \[
-  (q_{\rm tr},q_{\rm nt},q_\eta),
-  \quad
-  (\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
-  \quad
-  (m_T,m_K,m_\mu),
-  \quad
-  (E_T,E_K,E_\mu).
+  (R_{\rm tr},\mathcal T^2,\epsilon_\eta),
+  \qquad
+  \text{equivalently }(U,V),
   \]
+  and whether it lands at
+  \[
+  U=V=0
+  \quad\text{or}\quad
+  d\ln R_{\rm tr}=d\ln R_{\rm target}=d\ln\epsilon_\eta=0
+  \]
+  on the same realized branch.
+- The actual selected twin-support placement state
+  \[
+  (\epsilon,\varrho_{\rm phys},\sigma_{\rm phys},\text{ranking region}),
+  \]
+  together with the separate support packet
+  \[
+  (\zeta,M_{\rm mix},S(\zeta;\epsilon),M_{\rm tr}).
+  \]
+- Whether one and the same realized branch satisfies
+  \[
+  N_Q=1,
+  \qquad
+  \Xi_1\text{-ceiling admissibility},
+  \qquad
+  \text{and rigid-mouth orbit lock},
+  \]
+  rather than satisfying them only on nearby or repaired branches.
 - The actual directional-Hessian / admissibility packets needed to populate the
-  now-finite local mixed-ray search ledger on the physical branch.
-- Whether one realized branch satisfies Packet A and Packet B simultaneously,
-  rather than separately on nearby or repaired branches.
+  now-finite local mixed-ray search ledger if the back-end graph repair audit is
+  still needed after the front-end branch test.
 
 ### 10.3 How to read the current program honestly
 
@@ -3490,7 +4135,7 @@ Inside the reduced coherent hierarchy, these are the three quotient coordinates
 carried by the final invariant theorem.
 
 
-### 11.8 Branch-observable and transfer-shape packet
+### 11.8 Branch-observable, transfer-shape, and rigid-mouth physical packet
 
 The Stage-171 PDE-facing observable packet is
 \[
@@ -3534,7 +4179,27 @@ At first grouped weak-axisymmetric order,
 \delta\ln R_{\rm target}=\mathcal R_1.
 \]
 
-### 11.9 Packet-A finish-line variables
+On the rigid-mouth slice `\(q_{\rm tr}=0\)`, the exact physical packet is already
+diagonal in
+\[
+\boxed{
+U:=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+}
+\]
+with
+\[
+\boxed{
+q_{\rm nt}=U,
+\qquad
+q_\eta=V.
+}
+\]
+So the actual rigid-mouth branch is charted directly by the physical pair
+`(U,V)` rather than by a triangular quotient representation.
+
+### 11.9 Packet-A finish-line and actual prefactor-ceiling variables
 
 Packet A is no longer best thought of as an eight-slot branch residual at theorem
 order. Its exact conservative front end is the isotropic one-pole grouped-real
@@ -3569,7 +4234,40 @@ equivalently
 P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5}.
 \]
 
-### 11.10 Packet-B orbit / graph variables
+On the actual weak-axisymmetric branch, the first same-charge ceiling is carried
+by the prefactor packet
+\[
+(\Delta_{\rm norm},a_{P_0},b_{P_0}),
+\]
+or equivalently by
+\[
+\boxed{
+(\Delta_{\rm norm},\Xi_1),
+\qquad
+\Xi_1=\frac{P_1}{P_0},
+}
+\]
+with
+\[
+\boxed{
+a_{P_0}=\frac{\epsilon\bar P_0\Xi_1}{4},
+\qquad
+b_{P_0}=\frac{3\epsilon\bar P_0\Xi_1}{4}.
+}
+\]
+The robust all-lane ceiling is
+\[
+\boxed{
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+\bigl(1+|\epsilon\Xi_1|\bigr)\le P_{\rm crit}.
+}
+\]
+So Packet A now has two front-end faces:
+
+- the isotropic outgoing finish line `\(\chi_Q=1\)`,
+- the transported actual-branch prefactor ceiling in `\((\Delta_{\rm norm},\Xi_1)\)`.
+
+### 11.10 Packet-B orbit / graph variables and actual placement packet
 
 Important notation firewall:
 \[
@@ -3605,7 +4303,7 @@ m_T=e^{q_{\rm tr}/(1+\chi_{0,*})},
 \qquad
 m_K=e^{-q_\eta},
 \qquad
-m_\mu=e^{q_{\rm nt}-q_\eta+F_*q_{\rm tr}/(1+\chi_{0,*})}.
+m_\mu=e^{q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}}.
 \]
 On the same-free-quintuple graph, the dependent-triple graph errors are
 \[
@@ -3620,6 +4318,71 @@ So the graph-error packet
 (E_T,E_K,E_\mu)
 \]
 is just the Packet-B mismatch packet written directly on the dependent triple.
+
+On the actual coherent placement branch, the finite packet is also available
+directly in the physical placement variables:
+\[
+\boxed{
+q_{\rm tr}
+=
+(1+\delta_{U,*})\ln\frac{\chi_0}{\chi_{0,\rm ref}}
++
+(1+\chi_{0,*})\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+\[
+\boxed{
+q_{\rm nt}
+=
+\ln\frac{Z_W}{Z_{W,\rm ref}}
+-
+\ln\frac{\Lambda}{\Lambda_{\rm ref}}
++
+E_*\ln\frac{\epsilon_W}{\epsilon_{W,\rm ref}}
+-
+F_*\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+\[
+\boxed{
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+}
+\]
+The coherent orbit-lock theorem is
+\[
+\boxed{
+q_{\rm tr}=q_{\rm nt}=q_\eta=0
+\iff
+d\ln R_{\rm tr}=d\ln R_{\rm target}=d\ln\epsilon_\eta=0.
+}
+\]
+
+The actual placement / support front-end packet is
+\[
+\boxed{
+\Bigl(
+\epsilon,\,
+\varrho_{\rm phys},\,
+\sigma_{\rm phys},\,
+\text{ranking region},\,
+R_{\rm tr},\,
+R_{\rm target},\,
+\epsilon_\eta,\,
+d\ln R_{\rm tr},\,
+d\ln R_{\rm target},\,
+d\ln\epsilon_\eta,\,
+N_Q-1
+\Bigr),
+}
+\]
+with separate support packet
+\[
+\boxed{
+(\zeta,\ M_{\rm mix},\ S(\zeta;\epsilon),\ M_{\rm tr}).
+}
+\]
+So Packet B still has the exact graph/orbit backend, but it now also has a
+concrete actual-branch front-end placement chart.
 
 ### 11.11 Free-quintuple graph and local search variables
 

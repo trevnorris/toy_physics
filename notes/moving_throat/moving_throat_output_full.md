@@ -1,4 +1,6 @@
-moving_throat_pde_stage001_geometry_lift.md
+
+=== moving_throat_pde_stage001_geometry_lift.md ===
+
 # Moving-Throat PDE — Stage 1 Geometry Lift and Linearized PDE Skeleton
 
 ## 0. What this note does
@@ -509,7 +511,9 @@ The next real calculation should be:
 4. then add the BdG + Maxwell couplings and track how the pole locations and low-frequency coefficients shift.
 
 That is the first point where the moving-throat PDE stops being a slogan and starts producing the observables the current hierarchy still leaves open.
-moving_throat_pde_stage002_breathing_reduction.md
+
+=== moving_throat_pde_stage002_breathing_reduction.md ===
+
 # Moving-Throat PDE — Phase 2A Breathing Reduction Back to the Old `(a,L)` Closure
 
 ## Purpose
@@ -693,7 +697,9 @@ The accompanying SymPy audit verifies the concrete algebraic claims used here:
 
 Supporting file:
 - `moving_throat_pde_master_sympy_audit.py`
-moving_throat_pde_stage003_bdg_coupling.md
+
+=== moving_throat_pde_stage003_bdg_coupling.md ===
+
 
 # Moving-Throat PDE — Stage 3: Minimal BdG–Wall Coupling and First Pole Shifts
 
@@ -1167,7 +1173,9 @@ The next clean move is now well defined:
 4. and identify which part of that enlarged system can generate the passive/outgoing branch needed for the final quadrupole normalization.
 
 That is the first point where the moving-throat PDE program can start touching the actual remaining 2.5PN/4PN bridge instead of only its conservative front end.
-moving_throat_pde_stage004_maxwell_mixed_response.md
+
+=== moving_throat_pde_stage004_maxwell_mixed_response.md ===
+
 # Moving-Throat PDE — Stage 4: Localized Maxwell + Mixed-Sector Reduction and the First Honest Outgoing Quadrupole Bridge
 
 ## Purpose
@@ -1509,7 +1517,9 @@ Instead:
 4. and then evaluate the outgoing quadrupole normalization product on the isotropic branch.
 
 That is the smallest next theorem target that directly attacks the remaining 2.5PN/4PN bottleneck rather than only reorganizing the conservative input data.
-moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+
+=== moving_throat_pde_stage005_grouped_p2_normalization_bridge.md ===
+
 # Moving-Throat PDE — Stage 5: Grouped Real `P2` Bundle and the Normalized Outgoing-Quadrupole Bridge
 
 ## Purpose
@@ -1846,7 +1856,9 @@ Instead:
 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
 
 That is the smallest next theorem gate that directly attacks the remaining 2.5PN/4PN bottleneck.
-moving_throat_pde_stage006_full_grouped_bundle.md
+
+=== moving_throat_pde_stage006_full_grouped_bundle.md ===
+
 # Moving-Throat PDE — Stage 6: Full Grouped Real `P2` Bundle, Exact Projectors, and the Isotropic Normalization Test
 
 ## Purpose
@@ -2314,7 +2326,9 @@ Instead:
 against the universal target.
 
 That is now the smallest honest next theorem gate.
-moving_throat_pde_stage007_overlap_isotropy.md
+
+=== moving_throat_pde_stage007_overlap_isotropy.md ===
+
 # Moving-Throat PDE — Stage 7: Explicit Overlap Integrals, the `O(3)` Isotropy Theorem, and the First Axisymmetric Splitting Law
 
 ## Purpose
@@ -2688,7 +2702,9 @@ It is now:
 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-7 angular fingerprints.
 
 That is a real tightening of the theorem target.
-moving_throat_pde_stage008_minimal_isotropic_normalization.md
+
+=== moving_throat_pde_stage008_minimal_isotropic_normalization.md ===
+
 # Moving-Throat PDE — Stage 8: Minimal Isotropic Single-Mode Closure and the Explicit Normalization Formula
 
 ## Purpose
@@ -2927,7 +2943,9 @@ On the minimal isotropic branch, the remaining higher-order bridge is the one sc
 `mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.
 
 That is the sharpest reduced theorem target reached so far.
-moving_throat_pde_stage009_concrete_axial_overlaps.md
+
+=== moving_throat_pde_stage009_concrete_axial_overlaps.md ===
+
 # Moving-Throat PDE — Stage 9: Concrete Finite-Throat Axial Modes, Exact Overlap Constants, and the First Branch-Level Normalization Test
 
 ## Purpose
@@ -3224,7 +3242,9 @@ So the next honest step is no longer to “invent more overlap algebra.”
 It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether a different wall-profile family is forced by the full PDE.
 
 Either way, the theorem target is now much sharper than it was at the end of Stage 8.
-moving_throat_pde_stage010_nonconstant_axial_family.md
+
+=== moving_throat_pde_stage010_nonconstant_axial_family.md ===
+
 # Moving-Throat PDE — Stage 10: First Nonconstant Finite-Throat Wall/Brane Family, Exact Overlap Law, and the Profile-Selection Theorem Gate
 
 ## Purpose
@@ -3567,7 +3587,9 @@ The sharper question is now
 > what axial profile does the real moving-throat eigenproblem actually select, and does that profile keep enough overlap with the D/N support/mixed half-wave to satisfy the outgoing quadrupole normalization equation?
 
 The next honest derivation step is therefore to stop choosing the profile family by hand and solve the first actual axial wall eigenproblem with the matter/gauge loading included, so that the profile angle `theta` is no longer free but is an output of the reduced moving-throat operator itself.
-moving_throat_pde_stage011_loaded_profile_selection.md
+
+=== moving_throat_pde_stage011_loaded_profile_selection.md ===
+
 # Moving-Throat PDE — Stage 11: Loaded Axial Profile Selection, Exact 2x2 Eigenproblem, and Why the Blind-Angle Branch Is Dynamically Disfavored
 
 ## Purpose
@@ -3862,7 +3884,9 @@ So the next honest derivation step is now very sharply defined:
 
 At this point the roadmap is no longer “invent a PDE.”
 It is starting to look like a specific spectral problem.
-moving_throat_pde_stage012_dynamic_loading.md
+
+=== moving_throat_pde_stage012_dynamic_loading.md ===
+
 # Moving-Throat PDE — Stage 12: Exact Dynamic Loading from the Coupled Wall/BdG/Maxwell/Mixed Operator, and the First Selected-Mode Quadrupole Damping Coefficient
 
 ## Purpose
@@ -4194,7 +4218,9 @@ What remains is now much sharper:
 That is a much smaller theorem gap than we had before.
 It is no longer “derive some PDE loading somehow.”
 It is a specific spectral-transfer problem.
-moving_throat_pde_stage013_selected_mode_normalization.md
+
+=== moving_throat_pde_stage013_selected_mode_normalization.md ===
+
 # Moving-Throat PDE — Stage 13: Selected-Mode Normalized Response, Exact Static Prefactor, and the Selected-Branch Quadrupole Target
 
 ## Purpose
@@ -4443,7 +4469,9 @@ And the full selected-branch normalization theorem is simply
 That is the cleanest selected-mode formulation we have reached so far.
 The next honest step is no longer to invent another reduced parameter.
 It is to determine whether the physical stable branch can actually reach this target in a controlled way.
-moving_throat_pde_stage014_selected_branch_reachability.md
+
+=== moving_throat_pde_stage014_selected_branch_reachability.md ===
+
 # Moving-Throat PDE — Stage 14: Selected-Branch Reachability, Monotonicity, and the Stable-Side Normalization Window
 
 ## Purpose
@@ -4626,7 +4654,9 @@ It is now the following exact test:
 4. and check whether the resulting stable-side crossing sits on the natural passive/outgoing branch with `alpha_0 < alpha_crit`.
 
 So the theorem gap is now a controlled spectral-placement problem, not an algebraic unknown.
-moving_throat_pde_stage015_source_map_from_mode_integrals.md
+
+=== moving_throat_pde_stage015_source_map_from_mode_integrals.md ===
+
 # Moving-Throat PDE — Stage 15: Explicit Finite-Throat Mode Integrals, Kernel-Level Couplings, and Elimination of the Abstract Selected-Branch Source Map
 
 ## Purpose
@@ -4910,7 +4940,9 @@ but rather
 - “selected stiffness plus selected overlap plus the explicit mixed-sector transfer factor.”
 
 The next honest step is therefore to write the full selected-branch normalization equation directly in microscopic coupling language and see what exact stability and reachability constraints it imposes.
-moving_throat_pde_stage016_microscopic_normalization_equation.md
+
+=== moving_throat_pde_stage016_microscopic_normalization_equation.md ===
+
 # Moving-Throat PDE — Stage 16: Microscopic Selected-Branch Normalization Equation, Exact Stability Gate, and the First Coupling-Level Onset Criterion
 
 ## Purpose
@@ -5162,7 +5194,9 @@ The first explicit finite-throat kernel model has reduced the theorem gap to:
 
 So the open problem is no longer hidden in a free source map or a generic tuning story.
 It is an explicit coupling-level spectral-placement problem on the selected stable quadrupole branch.
-moving_throat_pde_stage017_softening_depth_normal_form.md
+
+=== moving_throat_pde_stage017_softening_depth_normal_form.md ===
+
 # Moving-Throat PDE — Stage 17: Softening-Depth Normal Form, Exact Secular Reduction, and Elimination of the Selected-Mode Eigenvector Algebra
 
 ## Purpose
@@ -5352,7 +5386,9 @@ Once that is known,
 
 So the remaining gap is no longer hidden in eigenvector algebra.
 It is a scalar branch-placement problem.
-moving_throat_pde_stage018_dimensionless_normalization_locus.md
+
+=== moving_throat_pde_stage018_dimensionless_normalization_locus.md ===
+
 # Moving-Throat PDE — Stage 18: Dimensionless D/N Shape Function, Unique Normalization Locus, and Exact Required Support Coupling
 
 ## Purpose
@@ -5569,7 +5605,9 @@ Once those are known,
 
 So the open problem is no longer a vague multi-parameter search.
 It is now a one-dimensional universal D/N branch-shape problem plus one exact support-coupling feasibility check.
-moving_throat_pde_stage019_support_feasibility_frontier.md
+
+=== moving_throat_pde_stage019_support_feasibility_frontier.md ===
+
 # Moving-Throat PDE — Stage 19: Dimensionless Support-Feasibility Frontier for the Selected Quadrupole Branch
 
 ## Purpose
@@ -5733,7 +5771,9 @@ not even “find the right branch stiffness,”
 but simply:
 
 > does the completed moving-throat PDE place the physical defect on the exact admissible region of the universal `(F,G)` branch geometry?
-moving_throat_pde_stage020_continuum_kernel_extraction.md
+
+=== moving_throat_pde_stage020_continuum_kernel_extraction.md ===
+
 # Moving-Throat PDE — Stage 20: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`
 
 ## Purpose
@@ -6049,7 +6089,9 @@ So the remaining task is no longer “invent microscopic inputs.”
 It is:
 
 > determine whether the completed moving-throat PDE places the actual defect on the admissible Stage-18/19 branch geometry generated by these continuum-kernel quantities.
-moving_throat_pde_stage021_dimensionless_continuum_placement.md
+
+=== moving_throat_pde_stage021_dimensionless_continuum_placement.md ===
+
 # Moving-Throat PDE — Stage 21: Dimensionless Continuum Placement Map, Exact Product Relation, and the Three-Lane Factorization of the Selected Quadrupole Branch
 
 ## Purpose
@@ -6278,7 +6320,9 @@ It is no longer:
 It is:
 
 > compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat PDE and check whether the resulting point lies inside the exact Stage-18/19 admissible region.
-moving_throat_pde_stage022_split_u_sector.md
+
+=== moving_throat_pde_stage022_split_u_sector.md ===
+
 # Moving-Throat PDE — Stage 22: First Non-Flat `U` Doublet, Exact Split Continuum Map, and the Direction-Splitting Theorem
 
 ## Purpose
@@ -6536,7 +6580,9 @@ The next theorem problem is:
 > how does the selected-branch normalization law deform when the source vector and the loading vector are no longer the same?
 
 That is the target of Stage 23.
-moving_throat_pde_stage023_generalized_selected_branch.md
+
+=== moving_throat_pde_stage023_generalized_selected_branch.md ===
+
 # Moving-Throat PDE — Stage 23: Generalized Selected-Branch Normalization with Source/Loading Mismatch
 
 ## Purpose
@@ -6765,7 +6811,9 @@ The next step is:
 > determine how the additional support/BdG loading enters the now noncollinear selected-branch geometry, and whether the physical support direction tracks the deformed loading vector or remains tied to the original source vector.
 
 That is the first place where the old Stage-19 support-feasibility theorem may need a true rank-2 extension.
-moving_throat_pde_stage024_rank2_support_completion.md
+
+=== moving_throat_pde_stage024_rank2_support_completion.md ===
+
 # Moving-Throat PDE — Stage 24: Rank-2 Support Completion and the Exact Support-Loading Theorem
 
 ## Purpose
@@ -7019,7 +7067,9 @@ If it aligns with `z`, the Stage-23 one-parameter deformation is already the who
 If it stays tied to `v`, the branch acquires a new exact rank-2 support-feasibility window.
 
 That is the next theorem gate the completed moving-throat operator has to decide.
-moving_throat_pde_stage025_rank2_selected_mode_normalization.md
+
+=== moving_throat_pde_stage025_rank2_selected_mode_normalization.md ===
+
 # Moving-Throat PDE — Stage 25: Selected-Mode Normalization Under Rank-2 Support Completion
 
 ## Purpose
@@ -7255,7 +7305,9 @@ The open PDE-side theorem question is therefore no longer diffuse:
 > compute the actual projected support/BdG loading direction from the moving-throat operator and determine whether the physical kernel lands on the tracking closure or the source-tied closure.
 
 That is now the sharp reduced theorem gate for the next stage.
-moving_throat_pde_stage026_support_direction_extraction.md
+
+=== moving_throat_pde_stage026_support_direction_extraction.md ===
+
 # Moving-Throat PDE — Stage 26: Continuum Extraction of the Actual Support/BdG Loading Direction
 
 ## Purpose
@@ -7507,7 +7559,9 @@ So the next theorem step is no longer “guess the support direction.”
 It is:
 
 > insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-24/25 selected-branch formulas and determine the physical selected branch.
-moving_throat_pde_stage027_continuum_selected_rank2_closure.md
+
+=== moving_throat_pde_stage027_continuum_selected_rank2_closure.md ===
+
 # Moving-Throat PDE — Stage 27: Continuum-Selected Rank-2 Closure and the Exact Quadratic Branch Equation
 
 ## Purpose
@@ -7777,7 +7831,9 @@ It is to evaluate the continuum-selected residual
 `R_target - F_cont(xi_phys)`
 
 on concrete kernel data from the moving-throat operator.
-moving_throat_pde_stage028_coherent_local_tracking.md
+
+=== moving_throat_pde_stage028_coherent_local_tracking.md ===
+
 # Moving-Throat PDE — Stage 28: Coherent Local D/N Support Kernel and the Exact Tracking Reduction
 
 ## Purpose
@@ -8026,7 +8082,9 @@ This is the first exact “concrete-kernel” form of the normalization test.
 The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
 
 So the next theorem step is no longer to resolve the rank-2 closure ambiguity. That is now done for the first concrete local kernel. The next step is to evaluate how this physical tracking branch compares with the old flat branch and whether the split-`U` deformation helps or hurts the normalization test.
-moving_throat_pde_stage029_tracking_branch_bounds.md
+
+=== moving_throat_pde_stage029_tracking_branch_bounds.md ===
+
 # Moving-Throat PDE — Stage 29: Exact Tracking-Branch Bounds, Monotonicity in `R_tr`, and the Residual Comparison Theorem
 
 ## Purpose
@@ -8247,7 +8305,9 @@ The constructive split-`U` deformation
 So the remaining theorem gap is now even sharper:
 
 > the completed moving-throat PDE must supply kernel data strong enough to overcome this exact tracking-branch deficit, not merely to match the old flat-branch heuristic.
-moving_throat_pde_stage030_coherent_kernel_map.md
+
+=== moving_throat_pde_stage030_coherent_kernel_map.md ===
+
 # Moving-Throat PDE — Stage 30: Exact Coherent-Kernel Dimensionless Map and the Support-Enhancement Factor
 
 ## Purpose
@@ -8482,7 +8542,9 @@ So the next honest question is no longer about closure choice.
 It is:
 
 > **how much coherent support enhancement is needed to overcome the exact tracking-branch deficit before the stable branch softens out?**
-moving_throat_pde_stage031_support_compensation_theorem.md
+
+=== moving_throat_pde_stage031_support_compensation_theorem.md ===
+
 # Moving-Throat PDE — Stage 31: Exact Support-Compensation Theorem on the Physical Tracking Branch
 
 ## Purpose
@@ -8727,7 +8789,9 @@ The remaining question is no longer whether compensation is possible in principl
 It is narrower:
 
 > **does the actual moving-throat PDE produce a physical support ratio `zeta` large enough to reach the exact required value `zeta_req` on the real branch?**
-moving_throat_pde_stage032_dn_overlap_zeta.md
+
+=== moving_throat_pde_stage032_dn_overlap_zeta.md ===
+
 # Moving-Throat PDE — Stage 32: Explicit D/N Overlap Extraction of the Physical Coherent Support Ratio `zeta`
 
 ## Purpose
@@ -8957,7 +9021,9 @@ It is:
 > **which explicit support harmonic is physically realized by the moving-throat PDE, and does its exact microscopic `zeta_n^(phys)` beat the exact Stage-31 threshold `zeta_req`?**
 
 That question is now concrete enough to answer branch by branch.
-moving_throat_pde_stage033_zeta_threshold_comparison.md
+
+=== moving_throat_pde_stage033_zeta_threshold_comparison.md ===
+
 # Moving-Throat PDE — Stage 33: Exact Comparison of the Physical Coherent `zeta` Against `zeta_req`
 
 ## Purpose
@@ -9173,7 +9239,9 @@ It also orders the entire support tower.
 So the next honest PDE question is now extremely narrow:
 
 > **does the completed moving-throat operator place the physical coherent support lane on the lowest twin branch with `zeta_req <= 1`, or does the real branch need non-twin asymmetry to overcome the exact support threshold?**
-moving_throat_pde_stage034_lowest_twin_criterion.md
+
+=== moving_throat_pde_stage034_lowest_twin_criterion.md ===
+
 # Moving-Throat PDE — Stage 34: Exact Lowest-Twin Sufficiency Criterion on the Physical Tracking Branch
 
 ## Purpose
@@ -9377,7 +9445,9 @@ So the next honest question is no longer “how do we parameterize support?”
 It is:
 
 > **does the completed moving-throat operator produce enough mixed baseline / radiative scale to satisfy the exact twin-sufficiency product test, or must the physical lowest support lane become non-twin before the normalization target can be met?**
-moving_throat_pde_stage035_nontwin_asymmetry_threshold.md
+
+=== moving_throat_pde_stage035_nontwin_asymmetry_threshold.md ===
+
 # Moving-Throat PDE — Stage 35: Exact Non-Twin Asymmetry Requirement Once the Symmetric Lowest Twin Fails
 
 ## Purpose
@@ -9596,7 +9666,9 @@ If it lands above that, then the missing theorem gap is no longer “find some b
 It is:
 
 > **derive from the completed moving-throat operator whether the lowest support lane acquires the exact overlap boost and/or stiffness softening required by the non-twin threshold formulas above.**
-moving_throat_pde_stage036_overlap_boost_window.md
+
+=== moving_throat_pde_stage036_overlap_boost_window.md ===
+
 # Moving-Throat PDE — Stage 36: Exact Overlap-Boost Window for the Lowest Support Lane
 
 ## Purpose
@@ -9795,7 +9867,9 @@ The moving-throat operator may indeed produce `Omega_0 > 1`, but even the most f
 So the remaining question is already sharper:
 
 > if the physical branch demands `zeta_req > pi^2/4`, then the lowest support lane must become softer as well; overlap enhancement alone cannot rescue it.
-moving_throat_pde_stage037_robin_softening_support_lane.md
+
+=== moving_throat_pde_stage037_robin_softening_support_lane.md ===
+
 # Moving-Throat PDE — Stage 37: Robin-Compliance Softening of the Lowest Support Lane
 
 ## Purpose
@@ -10034,7 +10108,9 @@ The lowest support lane can indeed become softer than the mixed D/N lane, but on
 So the remaining question is already narrower:
 
 > if the physical branch needs more than the Stage-36 overlap ceiling `pi^2/4`, does the moving-throat operator also supply enough Robin-type support softening to bridge the remaining gap?
-moving_throat_pde_stage038_explicit_lowest_lane_reachability.md
+
+=== moving_throat_pde_stage038_explicit_lowest_lane_reachability.md ===
+
 # Moving-Throat PDE — Stage 38: Explicit Reachability of the Non-Twin Lowest Support Lane
 
 ## Purpose
@@ -10237,7 +10313,9 @@ For the first explicit constructive moving-throat family, the non-twin lowest su
 So the remaining gap is now extremely narrow:
 
 > does the completed moving-throat PDE generate a physical lowest-lane deformation whose effective `x` and source-shape asymmetry place it inside the exact Stage-38 reachability window, or does the real branch require an even stronger non-twin mechanism than exponential overlap bias plus Robin-compliance softening?
-moving_throat_pde_stage039_transport_source_asymmetry.md
+
+=== moving_throat_pde_stage039_transport_source_asymmetry.md ===
+
 # Moving-Throat PDE — Stage 39: Transport Origin of the Lowest-Lane Source Asymmetry
 
 ## Purpose
@@ -10459,7 +10537,9 @@ It is the axial transport Peclet number of the lowest support-source channel.
 So one of the two Stage-38 “unknown physical inputs” has now been converted into a concrete moving-throat operator datum.
 
 The remaining operator-level task is to combine that transport bias with the physical support-compliance ratios, so that the whole lowest-lane reachability problem is written directly in terms of real throat operator parameters rather than the old abstract pair `(alpha,x)`.
-moving_throat_pde_stage040_physical_parameter_map.md
+
+=== moving_throat_pde_stage040_physical_parameter_map.md ===
+
 # Moving-Throat PDE — Stage 40: Physical `(Pe, kappa, eta)` Placement Map for the Lowest Support Lane
 
 ## Purpose
@@ -10780,7 +10860,9 @@ It has collapsed to three concrete moving-throat operator ratios:
 So the remaining gap is now as narrow as it can be without the full PDE:
 
 > compute the physical branch point `(Pe, eta, kappa)` from the completed moving-throat operator and check whether it satisfies the exact threshold `zeta_req <= zeta_max(kappa)` and the corresponding monotone placement inequalities above.
-moving_throat_pde_stage041_coupled_support_source_operator.md
+
+=== moving_throat_pde_stage041_coupled_support_source_operator.md ===
+
 # Moving-Throat PDE — Stage 41: Coupled Support/Source Operator and the Exact `Pe` Branch Equation
 
 ## Purpose
@@ -11107,7 +11189,9 @@ The open problem is no longer “what abstract `Pe` should we try?”
 It is:
 
 > for the real moving-throat operator, what is the actual coupling strength `Xi`, and where inside the exact interval `[Xi Delta_0, Xi Delta_inf]` does the selected branch point `Pe_*` land?
-moving_throat_pde_stage042_operator_branch_residual_bounds.md
+
+=== moving_throat_pde_stage042_operator_branch_residual_bounds.md ===
+
 # Moving-Throat PDE — Stage 42: Exact Residual Bounds on the Operator-Selected Branch
 
 ## Purpose
@@ -11377,7 +11461,9 @@ The remaining theorem gap is no longer “derive everything about the lowest sup
 It is now:
 
 > compute the real moving-throat coupling strength `Xi`, compare it to the exact interval `[Xi_fail, Xi_suff]`, and then solve the fixed-point root only if the real branch lands inside that already narrow intermediate window.
-moving_throat_pde_stage043_entropic_microclosure.md
+
+=== moving_throat_pde_stage043_entropic_microclosure.md ===
+
 # Moving-Throat PDE — Stage 43: Entropic Source Microclosure and the Microscopic Support/Source Gain
 
 ## Purpose
@@ -11656,7 +11742,9 @@ That is a much tighter result because:
 So the remaining theorem gap is now sharper again:
 
 > compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare it directly to the exact support thresholds from Stage 42.
-moving_throat_pde_stage044_microscopic_gain_thresholds.md
+
+=== moving_throat_pde_stage044_microscopic_gain_thresholds.md ===
+
 # Moving-Throat PDE — Stage 44: Microscopic Gain Thresholds and the Exact Operator Phase Diagram
 
 ## Purpose
@@ -11920,7 +12008,9 @@ The sharpest practical lesson is now clear:
 - and on the best-case compliant branch, success is controlled by whether `G_micro` can reach an order-`Pe_req` value.
 
 So the next honest step is to compute `G_micro = chi_sigma Lambda_phi^2/K_X` from a more explicit moving-throat branch and compare it directly to the exact threshold surfaces derived here.
-moving_throat_pde_stage045_parent_action_gain.md
+
+=== moving_throat_pde_stage045_parent_action_gain.md ===
+
 # Moving-Throat PDE — Stage 45: Parent-Action Projection of the Microscopic Support/Source Gain
 
 ## Purpose
@@ -12178,7 +12268,9 @@ is now determined by three parent-action ingredients only:
 - and the support tension/Robin geometry sector entering `(T_X,kappa,eta)`.
 
 That is the cleanest microscopic restatement yet of the support/source theorem gap.
-moving_throat_pde_stage046_parent_thresholds.md
+
+=== moving_throat_pde_stage046_parent_thresholds.md ===
+
 # Moving-Throat PDE — Stage 46: Parent-Overlap Threshold Theorem and Exact Microscopic Success/No-Go Tests
 
 ## Purpose
@@ -12435,7 +12527,9 @@ That is stronger than the Stage-44 statement because it pushes the support/sourc
 In other words, the unresolved PDE question is now no longer “is the microscopic gain big enough?” It is
 
 > does the completed moving-throat branch generate sufficient **parent confinement loading** and sufficient **source/support coherence** to cross the explicit fail/succeed surfaces above?
-moving_throat_pde_stage047_equilibrium_alignment.md
+
+=== moving_throat_pde_stage047_equilibrium_alignment.md ===
+
 # Moving-Throat PDE — Stage 47: Parent Equilibrium Source/Support Alignment and the Exact Matched-Layer Gain
 
 ## Purpose
@@ -12665,7 +12759,9 @@ The coherence factor is no longer free. It is a derived quantity,
 and it is automatically near 1 when the active wall layer is thin enough that `H(y)` is nearly constant there.
 
 That is the point where it becomes worthwhile to stop speaking abstractly about `g_phi` and evaluate it on a concrete parent confinement branch.
-moving_throat_pde_stage048_thin_wall_confinement.md
+
+=== moving_throat_pde_stage048_thin_wall_confinement.md ===
+
 # Moving-Throat PDE — Stage 48: Explicit Thin-Wall Confinement Branch and Parent Thresholds for the Wall Amplitude
 
 ## Purpose
@@ -12952,7 +13048,9 @@ The next honest step is therefore no longer another abstract overlap theorem. It
 - and the axial support functions,
 
 and test them against the explicit wall-amplitude fail/succeed surfaces derived here.
-moving_throat_pde_stage049_wall_figure_of_merit.md
+
+=== moving_throat_pde_stage049_wall_figure_of_merit.md ===
+
 # Moving-Throat PDE — Stage 49: Dimensionless Wall Figure of Merit for the First Explicit Parent Branch
 
 ## Purpose
@@ -13101,7 +13199,9 @@ The remaining work is no longer to invent more algebra. It is to compute the act
 - and the axial support functions `Delta_0`, `Delta_inf`,
 
 and then evaluate whether the real branch lands below, within, or above the exact wall-control window.
-moving_throat_pde_stage050_sech_gaussian_resonance.md
+
+=== moving_throat_pde_stage050_sech_gaussian_resonance.md ===
+
 
 # Moving-Throat PDE — Stage 50: Exact Sech–Gaussian Coherence Resonance Benchmark
 
@@ -13272,7 +13372,9 @@ So the user memo is mathematically useful — but the strongest justified conclu
 > the first explicit independent-profile family almost saturates the ideal matched source/support branch.
 
 The actual survival theorem still has to be stated in terms of the Stage-44/49 gain and wall-figure thresholds.
-moving_throat_pde_stage051_resonance_thresholds.md
+
+=== moving_throat_pde_stage051_resonance_thresholds.md ===
+
 
 # Moving-Throat PDE — Stage 51: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family
 
@@ -13437,7 +13539,9 @@ but it changes the Stage-49 theorem window only by the small factor
 
 So the dominant unresolved reduced-theorem question is still not transverse profile mismatch.
 It is the actual wall/axial branch data entering `W_wall`, `Delta_0`, and `Delta_inf`.
-moving_throat_pde_stage052_final_reduced_verdict.md
+
+=== moving_throat_pde_stage052_final_reduced_verdict.md ===
+
 
 # Moving-Throat PDE — Stage 52: Final Reduced Verdict for the Support/Source Program
 
@@ -13591,7 +13695,9 @@ The right expert reading is:
 What it really proves is that a natural explicit independent-profile family comes within `0.56%` of the ideal matched branch.
 
 That is exactly the kind of result that helps us finish the reduced phase cleanly.
-moving_throat_pde_stage053_gnls_wall_shell.md
+
+=== moving_throat_pde_stage053_gnls_wall_shell.md ===
+
 # Moving-Throat PDE — Stage 53: Explicit GNLS Wall-Shell Reduction for the First Support Branch
 
 ## Purpose
@@ -13780,7 +13886,9 @@ directly from the parent GNLS shell reduction.
 
 That means the next phase is no longer to invent more branch coefficients.
 It is to choose one concrete wall profile and one concrete mouth closure, and then evaluate the branch point in terms of a very small set of parent dimensionless ratios.
-moving_throat_pde_stage054_tanh_wall_branch.md
+
+=== moving_throat_pde_stage054_tanh_wall_branch.md ===
+
 # Moving-Throat PDE — Stage 54: Canonical Tanh-Wall Branch and Natural Local Mouth Closure
 
 ## Purpose
@@ -13922,7 +14030,9 @@ What remains now is not a symbolic branch ledger.
 What remains is an explicit three-parameter branch-placement problem.
 
 That is exactly the right form for the next step, because it means we can now compare the explicit branch directly to the exact Stage-49 / Stage-52 success window instead of still talking in abstract support/source language.
-moving_throat_pde_stage055_explicit_branch_thresholds.md
+
+=== moving_throat_pde_stage055_explicit_branch_thresholds.md ===
+
 # Moving-Throat PDE — Stage 55: Explicit Branch Placement Map and Threshold Surfaces
 
 ## Purpose
@@ -14076,7 +14186,9 @@ So the next phase is now sharply defined:
 > compute the actual moving-throat branch values of `chi_s`, `Lambda_ell`, and `Upsilon_w` on the real throat, and compare them directly to the explicit surfaces `Upsilon_fail`, `Upsilon_suff`.
 
 That is the first genuinely explicit branch-placement problem beyond the finished reduced support/source program.
-moving_throat_pde_stage056_family1_geometry_map.md
+
+=== moving_throat_pde_stage056_family1_geometry_map.md ===
+
 # Moving-Throat PDE — Stage 56: Family-1 Reference-Branch Geometry Map
 
 ## Purpose
@@ -14187,7 +14299,9 @@ and therefore also fixes the Robin support variable to
 `eta = 37.`
 
 That means the remaining actual branch uncertainty is now concentrated in the support/healing scale `chi_s` and the wall-loading amplitude `Upsilon_w`.
-moving_throat_pde_stage057_family1_healing_lock.md
+
+=== moving_throat_pde_stage057_family1_healing_lock.md ===
+
 # Moving-Throat PDE — Stage 57: Healing-Length Lock and the Actual Reference-Branch Support Scale
 
 ## Purpose
@@ -14322,7 +14436,9 @@ After Stages 56–57, the explicit Family-1 throat-support branch has fixed
 So the only remaining explicit-branch unknown from the Stage-55 triplet is the wall-loading amplitude `Upsilon_w`.
 
 That is a much sharper endpoint than the earlier symbolic branch map.
-moving_throat_pde_stage058_family1_threshold_window.md
+
+=== moving_throat_pde_stage058_family1_threshold_window.md ===
+
 # Moving-Throat PDE — Stage 58: Explicit Family-1 Threshold Window and the Last Remaining Wall-Amplitude Datum
 
 ## Purpose
@@ -14475,7 +14591,9 @@ That means the explicit-branch phase is now essentially finished.
 
 What remains is one last microscopic closure question on this branch:
 derive or estimate `Theta_w` from the real wall/throat PDE and compare it directly to the explicit threshold window above.
-moving_throat_pde_stage059_n5_wall_depth_lock.md
+
+=== moving_throat_pde_stage059_n5_wall_depth_lock.md ===
+
 # Moving-Throat PDE — Stage 59: Exact `n=5` Wall-Depth Lock for the Family-1 Branch
 
 ## Purpose
@@ -14605,7 +14723,9 @@ After this step, that datum is no longer opaque:
 in the normalized Family-1 wall variables.
 
 So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the active shell and compare the resulting `Theta_w` to the explicit Stage-58 threshold window.
-moving_throat_pde_stage060_family1_theta_extraction.md
+
+=== moving_throat_pde_stage060_family1_theta_extraction.md ===
+
 # Moving-Throat PDE — Stage 60: Shell-Weighted Extraction of `Theta_w` on the Explicit Family-1 Wall
 
 ## Purpose
@@ -14740,7 +14860,9 @@ So the final branch-level question is no longer “what is `Theta_w`?”
 It is now only:
 
 > where do these explicit branch values sit relative to the exact Stage-58 threshold window?
-moving_throat_pde_stage061_family1_branch_verdict.md
+
+=== moving_throat_pde_stage061_family1_branch_verdict.md ===
+
 # Moving-Throat PDE — Stage 61: Explicit Family-1 Branch Comparison and Closing Verdict for This Subprogram
 
 ## Purpose
@@ -14842,7 +14964,9 @@ The remaining serious problem is now the one the higher-order stack had already 
 > determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization branch and compare it to the explicit success/failure bands above.
 
 So from this point on, the real bottleneck is no longer the wall-depth amplitude. It is the final quadrupole normalization bridge.
-moving_throat_pde_stage062_family1_quadrupole_pe_map.md
+
+=== moving_throat_pde_stage062_family1_quadrupole_pe_map.md ===
+
 # Moving-Throat PDE — Stage 62: Exact Family-1 Map from Quadrupole Demand `zeta_req` to the Required Transport Bias `Pe_req`
 
 ## Purpose
@@ -15005,7 +15129,9 @@ with a hard ceiling
 So the remaining serious question is now much narrower:
 
 > does the final selected quadrupole branch demand a support ratio `zeta_req` that stays below this explicit Family-1 ceiling?
-moving_throat_pde_stage063_family1_zeta_thresholds.md
+
+=== moving_throat_pde_stage063_family1_zeta_thresholds.md ===
+
 # Moving-Throat PDE — Stage 63: Explicit Family-1 Conversion of the Stage-61 `Pe_req` Window into Quadrupole-Demand Thresholds `zeta_req`
 
 ## Purpose
@@ -15144,7 +15270,9 @@ After this step, the explicit branch verdict is fully phrased in the same suppor
 So the remaining serious theorem question is now extremely narrow:
 
 > does the final selected quadrupole branch require `zeta_req` below the explicit Family-1 support window `zeta_suff^(chi)(lambda_mu)` (or at least below the hard ceiling `zeta_max^(F1)`), or does it demand more than the explicit branch can ever supply?
-moving_throat_pde_stage064_family1_pi_thresholds.md
+
+=== moving_throat_pde_stage064_family1_pi_thresholds.md ===
+
 # Moving-Throat PDE — Stage 64: Final Explicit Family-1 Quadrupole-Demand Window in the Branch-Product Variable `Pi_tr`
 
 ## Purpose
@@ -15311,7 +15439,9 @@ So the remaining explicit theorem gap is now as narrow as it can be without solv
 > does the completed moving-throat quadrupole branch produce a selected product `Pi_tr` that stays below the explicit Family-1 ceiling `Pi_max^(F1)(eps_blk)` and, more sharply, below the natural success threshold `Pi_suff^(chi)(lambda_mu;eps_blk)`?
 
 That is the clean finish line for the present explicit-branch phase.
-moving_throat_pde_stage065_master_quadrupole_residual.md
+
+=== moving_throat_pde_stage065_master_quadrupole_residual.md ===
+
 # Moving-Throat PDE — Stage 65: Master Quadrupole Residual of the Full Reduced Moving-Throat PDE
 
 ## Purpose
@@ -15550,7 +15680,9 @@ The remaining unresolved problem is not another support/source reduction and not
 `R_quad(Pi_tr,C_mix,eps_blk ; Xi,eta,kappa).`
 
 Everything else in the reduced program now feeds this one object.
-moving_throat_pde_stage066_family1_direct_operator_window.md
+
+=== moving_throat_pde_stage066_family1_direct_operator_window.md ===
+
 # Moving-Throat PDE — Stage 66: Direct Operator-Selected Family-1 Window for the Surviving Quadrupole Branch
 
 ## Purpose
@@ -15749,7 +15881,9 @@ So the remaining reduced theorem gap is no longer on the explicit support/source
 It is entirely on the outgoing quadrupole-normalization side:
 
 > what value of `Pi_tr` does the actual passive/outgoing moving-throat quadrupole branch produce, and does it stay below the explicit Family-1 ceiling? 
-moving_throat_pde_stage067_full_reduced_pde_writeup.md
+
+=== moving_throat_pde_stage067_full_reduced_pde_writeup.md ===
+
 # Moving-Throat PDE — Stage 67: Full Reduced Moving-Throat PDE Write-Up Skeleton and the Final Remaining Theorem Gap
 
 ## Purpose
@@ -15950,7 +16084,9 @@ The next derivation is now as narrow as it can reasonably get:
 > derive the physical outgoing quadrupole product `Pi_tr` (and its accompanying `C_mix`, `eps_blk`) from the actual passive/outgoing moving-throat branch and evaluate the sign of `R_quad`.
 
 That is the remaining finish line for the present reduced moving-throat PDE program.
-moving_throat_pde_stage068_quadrupole_demand_cancellation.md
+
+=== moving_throat_pde_stage068_quadrupole_demand_cancellation.md ===
+
 # Moving-Throat PDE — Stage 68: Exact Cancellation of the Outgoing-Normalization Factors in the Selected Quadrupole-Demand Product
 
 ## Purpose
@@ -16138,7 +16274,9 @@ So the remaining support theorem gap is no longer “determine several separate 
 It is:
 
 > **determine the normalized selected-branch loading ratio `rho_alpha` of the actual passive/outgoing moving-throat quadrupole branch.**
-moving_throat_pde_stage069_family1_loading_ratio_window.md
+
+=== moving_throat_pde_stage069_family1_loading_ratio_window.md ===
+
 # Moving-Throat PDE — Stage 69: Exact Family-1 Success/Failure Window in the Pure Loading-Ratio Variable
 
 ## Purpose
@@ -16304,7 +16442,9 @@ So the explicit Family-1 theorem gap is no longer about the outgoing normalizati
 It is just this:
 
 > **does the actual passive/outgoing moving-throat quadrupole branch produce a normalized loading ratio `rho_alpha = alpha_req/alpha_mix` below about `3.4675`?**
-moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish.md
+
+=== moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish.md ===
+
 # Moving-Throat PDE — Stage 70: Final Reduced Finish-Line for the Explicit Family-1 Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16402,7 +16542,9 @@ The strongest honest statement is therefore:
 > **within the explicit Family-1 support/source branch, the reduced moving-throat PDE program is complete up to one final passive/outgoing quadrupole loading-ratio calculation.**
 
 That is as close as the reduced program can get to a full explicit write-up without solving the last outgoing branch itself.
-moving_throat_pde_stage071_loading_ratio_from_minimal_module.md
+
+=== moving_throat_pde_stage071_loading_ratio_from_minimal_module.md ===
+
 # Moving-Throat PDE — Stage 71: Loading-Ratio Extraction from the Minimal Isotropic Quadrupole Module
 
 ## Purpose
@@ -16579,7 +16721,9 @@ equivalently
 So the reduced moving-throat PDE has advanced from a vague outgoing-branch loading question to a sharp statement:
 
 > **if the actual passive/outgoing quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit support/source side is comfortably compatible with it.**
-moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md
+
+=== moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md ===
+
 # Moving-Throat PDE — Stage 72: Explicit Family-1 Verdict for the Minimal Isotropic Passive/Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16727,7 +16871,9 @@ and therefore lies safely inside the exact Family-1 success region.
 So the explicit branch-level reduced theorem is now:
 
 > **if the actual passive/outgoing moving-throat quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit Family-1 support/source side already succeeds without requiring transport bias or non-twin asymmetry.**
-moving_throat_pde_stage073_updated_reduced_status.md
+
+=== moving_throat_pde_stage073_updated_reduced_status.md ===
+
 # Moving-Throat PDE — Stage 73: Updated Reduced Theorem Status After the Loading-Ratio Extraction
 
 ## Purpose
@@ -16789,7 +16935,9 @@ For the explicit Family-1 branch, the reduced moving-throat PDE program has adva
 - and the remaining reduced bottleneck is now the derivation of that minimal isotropic conservative quadrupole module from the actual grouped-`P2` / geometry throat branch.
 
 That is the right place for the next derivation phase.
-moving_throat_pde_stage074_grouped_p2_static_geometry_derivation.md
+
+=== moving_throat_pde_stage074_grouped_p2_static_geometry_derivation.md ===
+
 # Moving-Throat PDE — Stage 74: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2` + Geometry Split
 
 ## Purpose
@@ -16962,7 +17110,9 @@ So the remaining reduced theorem gap is now extremely sharp:
 - or the missing PDE must generate extra dynamic geometry moments or a richer isotropic grouped-`P2` pole structure.
 
 That is exactly the right question to carry into the next phase.
-moving_throat_pde_stage075_dynamic_geometry_obstruction.md
+
+=== moving_throat_pde_stage075_dynamic_geometry_obstruction.md ===
+
 # Moving-Throat PDE — Stage 75: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments
 
 ## Purpose
@@ -17110,7 +17260,9 @@ Stage 75 sharpens the remaining gap:
 
 If both vanish, the Stage-74 result is exact.
 If they do not, the contact/pole fractions are still fixed — but by the obstruction formula above rather than by the simple `3/4 + 1/4` split.
-moving_throat_pde_stage076_grouped_p2_status_update.md
+
+=== moving_throat_pde_stage076_grouped_p2_status_update.md ===
+
 # Moving-Throat PDE — Stage 76: Updated Status After the Direct Grouped-`P2` + Geometry Derivation
 
 ## Purpose
@@ -17178,7 +17330,9 @@ At this point the reduced program is in its sharpest state yet.
 - The only remaining reduced ambiguity is whether the real geometry lane is dynamically inert through `O(omega^4)` on the natural branch.
 
 So the next derivation phase should be aimed squarely at the geometry lane, not at reopening the already-solved support/source side.
-moving_throat_pde_stage077_isotropic_geometry_decoupling.md
+
+=== moving_throat_pde_stage077_isotropic_geometry_decoupling.md ===
+
 # Moving-Throat PDE — Stage 77: Isotropic Geometry-Decoupling Theorem
 
 ## Purpose
@@ -17340,7 +17494,9 @@ Therefore
 on the natural isotropic branch,
 
 and the Stage-74 `3/4 + 1/4` split is recovered exactly.
-moving_throat_pde_stage078_second_order_geometry_contamination.md
+
+=== moving_throat_pde_stage078_second_order_geometry_contamination.md ===
+
 # Moving-Throat PDE — Stage 78: First Nonzero Geometry Contamination Appears Only at Second Order in Anisotropy/Mixing
 
 ## Purpose
@@ -17482,7 +17638,9 @@ exactly on the isotropic branch, and for weak symmetry breaking
 `eps_2, eps_4 = O(chi^2)`.
 
 So the dynamic geometry obstruction is absent on the actual isotropic branch and only enters at second order once an explicit mixing mechanism is turned on.
-moving_throat_pde_stage079_geometry_lane_check_verdict.md
+
+=== moving_throat_pde_stage079_geometry_lane_check_verdict.md ===
+
 # Moving-Throat PDE — Stage 79: Actual Branch Verdict for the Geometry-Lane Check
 
 ## Purpose
@@ -17549,7 +17707,9 @@ The remaining serious open question is deeper and more physical:
 
 So the geometry-lane check is now finished at reduced level.
 The live gap is again the same narrow one isolated by the 2.5PN program: the final passive/outgoing quadrupole normalization on the true moving-throat branch.
-moving_throat_pde_stage080_single_normalization_defect.md
+
+=== moving_throat_pde_stage080_single_normalization_defect.md ===
+
 # Moving-Throat PDE — Stage 80: The Actual Isotropic Passive/Outgoing Branch Collapses to a Single Normalization Defect
 
 ## Purpose
@@ -17680,7 +17840,9 @@ The present stage shows that the second question is no longer a multi-parameter 
 Once the actual isotropic grouped-`P2` one-pole structure is accepted, it is only the one-number defect `N_Q`.
 
 That is as narrow a reduced theorem gate as one can reasonably ask for before solving the full moving-throat PDE.
-moving_throat_pde_stage081_family1_support_is_automatic.md
+
+=== moving_throat_pde_stage081_family1_support_is_automatic.md ===
+
 # Moving-Throat PDE — Stage 81: The Explicit Family-1 Support Test Is Automatic on the Actual Isotropic Branch
 
 ## Purpose
@@ -17794,7 +17956,9 @@ So the explicit Family-1 branch has now dropped out of the active uncertainty le
 The only remaining reduced theorem question is whether the completed moving-throat PDE gives
 
 `N_Q = 1`.
-moving_throat_pde_stage082_reduced_finish_line.md
+
+=== moving_throat_pde_stage082_reduced_finish_line.md ===
+
 # Moving-Throat PDE — Stage 82: The Reduced Finish Line After the Geometry-Lane Check
 
 ## Purpose
@@ -17884,7 +18048,9 @@ Inside the present reduced hierarchy, the moving-throat PDE program has reached 
 > the actual isotropic grouped-`P2` one-pole branch is conservatively clean, the explicit Family-1 support/source side is already sufficient, and the only remaining reduced theorem gap is the single passive/outgoing quadrupole normalization defect `N_Q - 1`.
 
 That is the narrowest and strongest honest carry-forward statement available before solving the full moving-throat PDE normalization problem.
-moving_throat_pde_stage083_outgoing_normalization_factorization.md
+
+=== moving_throat_pde_stage083_outgoing_normalization_factorization.md ===
+
 # Moving-Throat PDE — Stage 83: Exact Factorization of the Last 2.5PN Defect into Conservative and Outgoing Pieces
 
 ## Purpose
@@ -17998,7 +18164,9 @@ This stage refines that statement:
 `chi_Q`.
 
 So the problem is no longer “some unknown outgoing structure.” It is exactly the leading outgoing-normalization factor of the actual grouped-`P2` one-pole branch.
-moving_throat_pde_stage084_natural_source_map_reduction.md
+
+=== moving_throat_pde_stage084_natural_source_map_reduction.md ===
+
 # Moving-Throat PDE — Stage 84: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely Outgoing
 
 ## Purpose
@@ -18090,7 +18258,9 @@ What remains is no longer a broad question about conservative structure, support
 > does the actual passive/outgoing moving-throat quadrupole branch realize `chi_Q = 1`, or does it carry a nontrivial outgoing-normalization defect `Delta_Q`?
 
 That is the cleanest reduced 2.5PN finish line reached so far.
-moving_throat_pde_stage085_higher_odd_irrelevance.md
+
+=== moving_throat_pde_stage085_higher_odd_irrelevance.md ===
+
 # Moving-Throat PDE — Stage 85: At 2.5PN the Only Live Retarded Obstruction is the Leading `omega^5` Outgoing Normalization
 
 ## Purpose
@@ -18149,7 +18319,9 @@ Inside the present reduced hierarchy, the moving-throat PDE program is now reduc
 > does the actual passive/outgoing grouped-`P2` quadrupole branch have the canonical compact outgoing `omega^5` coefficient, i.e. `chi_Q = 1`?
 
 Everything else that could have obstructed the reduced 2.5PN theorem has either been fixed or pushed above the relevant order.
-moving_throat_pde_stage086_reduced_25pn_conditional_closure.md
+
+=== moving_throat_pde_stage086_reduced_25pn_conditional_closure.md ===
+
 # Moving-Throat PDE — Stage 86: Conditional Reduced 2.5PN Closure
 
 ## Statement
@@ -18179,7 +18351,9 @@ So the remaining PDE-facing problem is no longer “derive 2.5PN somehow.”
 It is:
 
 > compute the leading outgoing `omega^5` normalization of the actual passive/outgoing grouped-`P2` quadrupole branch and determine whether it equals the canonical compact outgoing value.
-moving_throat_pde_stage087_outgoing_dtn_fingerprint.md
+
+=== moving_throat_pde_stage087_outgoing_dtn_fingerprint.md ===
+
 # Moving-Throat PDE — Stage 87: Exact Outgoing `l=2` DtN Fingerprint
 
 ## Goal
@@ -18272,7 +18446,9 @@ The canonical outgoing coefficient is therefore not free. On the exact spherical
 \]
 
 So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity in the canonical outgoing `l=2` DtN model itself.
-moving_throat_pde_stage088_chiQ_fix_from_outgoing_dtn.md
+
+=== moving_throat_pde_stage088_chiQ_fix_from_outgoing_dtn.md ===
+
 # Moving-Throat PDE — Stage 88: Exact Fixing of `chi_Q`
 
 ## Goal
@@ -18371,7 +18547,9 @@ so
 \]
 
 That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
-moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md
+
+=== moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md ===
+
 # Moving-Throat PDE — Stage 89: Reduced 2.5PN Closure on the Canonical Outgoing DtN Branch
 
 ## Goal
@@ -18455,7 +18633,9 @@ What remains open is no longer a reduced PN bookkeeping problem. It is the deepe
 > Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN branch, rather than a deformed branch with \(\chi_Q\neq1\)?
 
 So the reduced theorem is now finished **conditional on actual branch realization**, not on any remaining reduced-sector normalization ambiguity.
-moving_throat_pde_stage090_general_dtn_deformation.md
+
+=== moving_throat_pde_stage090_general_dtn_deformation.md ===
+
 # Moving-Throat PDE — Stage 90: General Isotropic `l=2` DtN Deformation Algebra
 
 ## Goal
@@ -18580,7 +18760,9 @@ This is the first explicit moving-throat DtN deformation model for the last redu
 - odd `l=2` throat-core outlet `Sigma_5`.
 
 Overall scale `S` is not itself an independent obstruction; it only enters through the ratios above.
-moving_throat_pde_stage091_robustness_classes.md
+
+=== moving_throat_pde_stage091_robustness_classes.md ===
+
 # Moving-Throat PDE — Stage 91: Robustness Classes for `chi_Q`
 
 ## Goal
@@ -18688,7 +18870,9 @@ The canonical value `chi_Q = 1` is robust against:
 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
 
 It is shifted only by a genuine isotropic throat-core self-energy that is not on the exact preservation submanifold above.
-moving_throat_pde_stage092_linearized_branch_selection.md
+
+=== moving_throat_pde_stage092_linearized_branch_selection.md ===
+
 # Moving-Throat PDE — Stage 92: Linearized Branch-Selection Law Near the Canonical Outgoing Branch
 
 ## Goal
@@ -18770,7 +18954,9 @@ After the grouped-`P2` conservative split, geometry cleaning, and Family-1 suppo
 > compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact nonlinear condition of Stage 91, or at least the linearized condition above.
 
 So the remaining PDE-facing ambiguity is no longer an open-ended “deformed branch somehow.” It is a small explicit set of outgoing-branch deformation scalars.
-moving_throat_pde_stage093_robin_outlet_model.md
+
+=== moving_throat_pde_stage093_robin_outlet_model.md ===
+
 # Moving-Throat PDE — Stage 93: Explicit Isotropic Robin Outlet Model
 
 ## Goal
@@ -18848,7 +19034,9 @@ Therefore the linearized outgoing-normalization shift is
 ## Consequence
 
 A pure isotropic geometric Robin outlet is **not** automatically harmless. By itself it deforms both the canonical even fingerprint and the odd normalization. So if the already-fixed conservative grouped-`P_2` branch is to survive, a Robin core must either be negligible or be compensated by additional outlet structure.
-moving_throat_pde_stage094_mixed_sidechannel_pole.md
+
+=== moving_throat_pde_stage094_mixed_sidechannel_pole.md ===
+
 # Moving-Throat PDE — Stage 94: Explicit Mixed `A_w/F_{\mu w}`-Type Side-Channel Pole
 
 ## Goal
@@ -18931,7 +19119,9 @@ So the linearized branch-selection triple is
 ## Consequence
 
 A naive passive mixed `A_w/F_{\mu w}` side-channel pole is **too rigid**. It generically shifts the outgoing normalization and, more importantly, it cannot preserve the already-fixed canonical even `l=2` branch. If a mixed sector survives on the actual branch, it must appear in a more structured, compensated outlet law.
-moving_throat_pde_stage095_hybrid_robin_mixed_compensation.md
+
+=== moving_throat_pde_stage095_hybrid_robin_mixed_compensation.md ===
+
 # Moving-Throat PDE — Stage 95: Exact Robin–Mixed Compensation Law
 
 ## Goal
@@ -19042,7 +19232,9 @@ again giving
 ## Consequence
 
 This is the first explicit compensated moving-throat outlet model that preserves the canonical outgoing quadrupole branch. It shows that neither a pure geometric Robin core nor a naive hidden mixed pole is sufficient by itself, but a specific Robin–mixed balance law can reduce the whole deformation to a pure mouth renormalization, which is exactly the robust class already identified in Stages 90–92.
-moving_throat_pde_stage096_outlet_model_status.md
+
+=== moving_throat_pde_stage096_outlet_model_status.md ===
+
 # Moving-Throat PDE — Stage 96: Outlet-Model Status Update
 
 ## What is now explicit
@@ -19093,7 +19285,9 @@ The completed moving-throat PDE does **not** need to decide among an unlimited s
 - or a compensated Robin–mixed outlet of the exact type above.
 
 Pure Robin loading alone and a naive standalone hidden mixed pole are not enough.
-moving_throat_pde_stage097_concrete_core_schur.md
+
+=== moving_throat_pde_stage097_concrete_core_schur.md ===
+
 
 # Moving-Throat PDE — Stage 97: Concrete Two-Channel Core Outlet Model
 
@@ -19197,7 +19391,9 @@ This is already a significant narrowing. The outlet is no longer described by fo
 - plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.
 
 The next question is whether this concrete core model can *naturally* land on the compensated canonical branch found algebraically in Stage 95.
-moving_throat_pde_stage098_core_balance_compensation.md
+
+=== moving_throat_pde_stage098_core_balance_compensation.md ===
+
 
 # Moving-Throat PDE — Stage 98: Exact Core-Balance Compensation Theorem
 
@@ -19303,7 +19499,9 @@ This is the first explicit throat-core theorem in the outlet program:
 - the Stage-95 compensation law is not just an algebraic accident,
 - it is realized by a concrete two-channel core model,
 - and the surviving free data are sharply reduced to one coupling-balance surface plus one scale-deformed bare mixed outlet.
-moving_throat_pde_stage099_dn_mixed_tube_realization.md
+
+=== moving_throat_pde_stage099_dn_mixed_tube_realization.md ===
+
 
 # Moving-Throat PDE — Stage 99: Finite D/N Mixed-Tube Realization
 
@@ -19398,7 +19596,9 @@ A fully compensated canonical branch exists whenever:
 
 So the remaining PDE-side question is no longer “some unknown outlet deformation.”
 It is whether the actual moving-throat core realizes this specific D/N-tube + coupling-balance structure.
-moving_throat_pde_stage100_outlet_core_status.md
+
+=== moving_throat_pde_stage100_outlet_core_status.md ===
+
 
 # Moving-Throat PDE — Stage 100: Concrete Outlet-Core Status
 
@@ -19463,7 +19663,9 @@ It is much sharper:
 > Does the actual moving-throat core realize the concrete coupling-balance surface and the auxiliary D/N-tube normalization identified above?
 
 That is a genuinely microscopic throat-core question, not more reduced outlet algebra.
-moving_throat_pde_stage101_parent_core_extraction.md
+
+=== moving_throat_pde_stage101_parent_core_extraction.md ===
+
 
 # Moving-Throat PDE — Stage 101: Parent-Action Extraction of Core Parameters
 
@@ -19755,7 +19957,9 @@ g_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi}{\sqrt2\,L_W^{3/2}}.
 \]
 
 The next step is to rewrite the compensation surface entirely in terms of the parent overlap ratios these formulas define.
-moving_throat_pde_stage102_parent_balance_family.md
+
+=== moving_throat_pde_stage102_parent_balance_family.md ===
+
 
 # Moving-Throat PDE — Stage 102: One-Parameter Parent Compensation Family
 
@@ -19927,7 +20131,9 @@ The compensated canonical outlet has now been reduced to a **one-parameter paren
    \]
 
 So the remaining PDE-facing question is no longer a large outlet-coefficient search. It is whether the actual GNLS + localized-Maxwell throat core picks one of these parent-balance branches.
-moving_throat_pde_stage103_core_parameter_status.md
+
+=== moving_throat_pde_stage103_core_parameter_status.md ===
+
 
 # Moving-Throat PDE — Stage 103: Core-Parameter Extraction Status
 
@@ -19969,7 +20175,9 @@ It is now:
 > “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core select?”
 
 That is a substantially smaller target for the next derivation.
-moving_throat_pde_stage108_positive_source_theorem.md
+
+=== moving_throat_pde_stage108_positive_source_theorem.md ===
+
 
 # Moving-Throat PDE — Stage 108: Positive Local Mouth-Source Theorem
 
@@ -20062,7 +20270,9 @@ The outlet-core ambiguity is no longer “which branch do we choose?” Within a
 - the lower compensated branch is the only canonical candidate.
 
 So the remaining question is not branch sign, but the **shape** of the positive source profile \(\sigma(z)\).
-moving_throat_pde_stage109_positive_source_families.md
+
+=== moving_throat_pde_stage109_positive_source_families.md ===
+
 
 # Moving-Throat PDE — Stage 109: Explicit Positive Source Families and the Family-1 Compensation Point
 
@@ -20178,7 +20388,9 @@ The explicit mouth-source bias is now much narrower than before:
 - and the true Family-1 compensated branch is reached by a small \(18.4\%\) broadening of that already-natural positive source law.
 
 So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of positive localized mouth sources.
-moving_throat_pde_stage110_penetration_families.md
+
+=== moving_throat_pde_stage110_penetration_families.md ===
+
 
 # Moving-Throat PDE — Stage 110: Geometric Mouth-Penetration Families
 
@@ -20276,7 +20488,9 @@ Combined with Stages 108–109, this means:
 - the upper compensated branch is excluded by positivity,
 - the lower compensated branch is the unique physical candidate,
 - and simple positive localized source laws reach it without requiring sign-changing or finely oscillatory mouth forcing.
-moving_throat_pde_stage111_mouth_source_bias_status.md
+
+=== moving_throat_pde_stage111_mouth_source_bias_status.md ===
+
 
 # Moving-Throat PDE — Stage 111: Mouth-Source Bias Status
 
@@ -20356,7 +20570,9 @@ It is now much sharper:
 \]
 
 So the remaining PDE-facing question is not branch sign. It is the detailed shape of the actual mouth source profile \(\sigma(z)\), or equivalently the exact amount of positive mouth broadening away from the point-source limit.
-moving_throat_pde_stage112_mouth_boundary_layer.md
+
+=== moving_throat_pde_stage112_mouth_boundary_layer.md ===
+
 
 # Moving-Throat PDE — Stage 112: Explicit GNLS + Localized-Maxwell Mouth Boundary Layer
 
@@ -20527,7 +20743,9 @@ So the next question is no longer “what source family should we try?” It is 
 \boxed{
 \text{what value of }\Pi_m\text{ does the actual moving-throat mouth layer select?}
 }
-moving_throat_pde_stage113_mouth_bias_map.md
+
+=== moving_throat_pde_stage113_mouth_bias_map.md ===
+
 
 # Moving-Throat PDE — Stage 113: Exact Mouth-Bias Map and Family-1 Compensation Point
 
@@ -20674,7 +20892,9 @@ So the remaining branch-selection ambiguity has collapsed to one explicit number
 \Pi_m \stackrel{?}{\approx} 1.50882951349.
 }
 \]
-moving_throat_pde_stage114_parent_mouth_threshold.md
+
+=== moving_throat_pde_stage114_parent_mouth_threshold.md ===
+
 
 # Moving-Throat PDE — Stage 114: Parent Micro-Threshold for Canonical Mouth Compensation
 
@@ -20807,7 +21027,9 @@ T_m-q_*A_0'
 \]
 
 That is a concrete microscopic threshold, not a broad qualitative criterion.
-moving_throat_pde_stage115_mouth_boundary_layer_status.md
+
+=== moving_throat_pde_stage115_mouth_boundary_layer_status.md ===
+
 
 # Moving-Throat PDE — Stage 115: Mouth Boundary-Layer Status After Explicit Source-Law Extraction
 
@@ -20878,7 +21100,9 @@ And the target value is moderate:
 \]
 
 So the remaining gap is now one clean microscopic bias law, not a diffuse branch-selection problem.
-moving_throat_pde_stage116_coupled_mouth_fixedpoint.md
+
+=== moving_throat_pde_stage116_coupled_mouth_fixedpoint.md ===
+
 
 # Moving-Throat PDE — Stage 116: Full Coupled Mouth-Layer Fixed-Point Law
 
@@ -21095,7 +21319,9 @@ M_+\mathcal S(\Pi,\kappa_+)+M_-\mathcal S(\Pi,\kappa_-).
 
 So the remaining ambiguity is now just a **small dimensionless gain/stiffness
 quadruple** \((M_+,M_-,\kappa_+,\kappa_-)\).
-moving_throat_pde_stage117_family1_mouth_fixedpoint.md
+
+=== moving_throat_pde_stage117_family1_mouth_fixedpoint.md ===
+
 
 # Moving-Throat PDE — Stage 117: Family-1 Shell + First Mixed D/N Tube Reduction
 
@@ -21241,7 +21467,9 @@ M_s \approx 1.50882951349316 - 0.658075937605429\,M_q.
 
 The remaining ambiguity is therefore no longer profile selection and no longer a
 free mouth slope: it is just the signed gain pair \((M_s,M_q)\).
-moving_throat_pde_stage118_outlet_consistent_mouth_closure.md
+
+=== moving_throat_pde_stage118_outlet_consistent_mouth_closure.md ===
+
 
 # Moving-Throat PDE — Stage 118: Outlet-Consistent Mouth Closure
 
@@ -21400,7 +21628,9 @@ and the canonical Family-1 branch is selected at
 
 So the remaining mouth-layer ambiguity is now one dimensionless gain amplitude,
 not an arbitrary source profile and not an arbitrary parent slope combination.
-moving_throat_pde_stage119_coupled_mouth_status.md
+
+=== moving_throat_pde_stage119_coupled_mouth_status.md ===
+
 
 # Moving-Throat PDE — Stage 119: Mouth-Layer Fixed-Point Status After the Coupled Solve
 
@@ -21465,7 +21695,9 @@ moving-throat mouth layer select?}
 
 So the open microscopic bias problem has collapsed from a free profile question to
 a small, explicit fixed-point law.
-moving_throat_pde_stage120_core_to_mouth_gain_map.md
+
+=== moving_throat_pde_stage120_core_to_mouth_gain_map.md ===
+
 # Moving-Throat PDE — Stage 120: Explicit Core-to-Mouth Gain Map
 
 ## Goal
@@ -21603,7 +21835,9 @@ M_q=
 
 So the mouth fixed-point ambiguity has now collapsed from an abstract gain pair to
 one explicit set of parent core quantities.
-moving_throat_pde_stage121_normalized_mouth_gain_family.md
+
+=== moving_throat_pde_stage121_normalized_mouth_gain_family.md ===
+
 # Moving-Throat PDE — Stage 121: Normalized Mouth-Gain Family and Compensation Ratio
 
 ## Goal
@@ -21710,7 +21944,9 @@ On the exact compensated branch this collapses to
 \boxed{R_q=\frac14,}
 \]
 so the outlet-consistent mouth closure is derived rather than assumed.
-moving_throat_pde_stage122_family1_actual_mouth_gains.md
+
+=== moving_throat_pde_stage122_family1_actual_mouth_gains.md ===
+
 # Moving-Throat PDE — Stage 122: Actual Family-1 Mouth Gains
 
 ## Goal
@@ -21872,7 +22108,9 @@ The actual Family-1 mouth gains are now explicit.
 
 So the remaining ambiguity is no longer “what are the gains?” It is only whether the real
 mouth core stays on the natural branch or shifts modestly toward the lower compensated one.
-moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md
+
+=== moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md ===
+
 # Moving-Throat PDE — Stage 123: Self-Matched Mouth Susceptibility Closure
 
 ## Goal
@@ -22019,7 +22257,9 @@ On the explicit Family-1 branch, the natural and exact-compensated mouth closure
 by only about `4%` in the normalized traction amplitude.
 
 That is the cleanest explicit parent-level narrowing of the mouth-gain problem so far.
-moving_throat_pde_stage124_mouth_gain_status.md
+
+=== moving_throat_pde_stage124_mouth_gain_status.md ===
+
 # Moving-Throat PDE — Stage 124: Mouth-Gain Status Update
 
 The coupled mouth-layer problem is now much tighter than it was at Stage 116.
@@ -22082,7 +22322,9 @@ It has shrunk to two very concrete microscopic questions:
 2. and does the actual mouth traction land at the corresponding `\widehat T_m` value?
 
 That is a much smaller target than the original abstract `\Pi_m` problem.
-moving_throat_pde_stage125_selfconsistent_mouth_branch.md
+
+=== moving_throat_pde_stage125_selfconsistent_mouth_branch.md ===
+
 # Moving-Throat PDE — Stage 125: Self-Consistent Mouth-Branch Law
 
 ## Goal
@@ -22223,7 +22465,9 @@ The mouth problem is now much sharper:
 Once this explicit positive mouth layer is assumed, the branch is governed by one scalar variable
 \(\Pi\), with a unique canonical compensation point at moderate finite bias and moderate
 finite traction inside that closure.
-moving_throat_pde_stage126_equal_normalized_singular_limit.md
+
+=== moving_throat_pde_stage126_equal_normalized_singular_limit.md ===
+
 # Moving-Throat PDE — Stage 126: Equal-Normalized Branch Is a Singular Limit
 
 ## Goal
@@ -22356,7 +22600,9 @@ The explicit positive exponential mouth-layer family proves that:
 
 So the naive equal-normalized mouth-source branch is **not** a regular finite branch of the
 explicit mouth-layer dynamics. Inside this explicit family it is a singular point-source limit.
-moving_throat_pde_stage127_unique_regular_canonical_branch.md
+
+=== moving_throat_pde_stage127_unique_regular_canonical_branch.md ===
+
 # Moving-Throat PDE — Stage 127: Unique Regular Canonical Mouth Branch
 
 ## Goal
@@ -22474,7 +22720,9 @@ This is a real narrowing.
 The remaining mouth ambiguity is no longer a branch-choice ambiguity at all.
 On the explicit Family-1 positive mouth-layer closure, the canonical outgoing-preserving
 branch is the only regular finite one.
-moving_throat_pde_stage128_mouth_branch_selection_status.md
+
+=== moving_throat_pde_stage128_mouth_branch_selection_status.md ===
+
 # Moving-Throat PDE — Stage 128: Mouth-Branch Selection Status
 
 Inside the explicit positive exponential mouth-family reduction, the mouth-source
@@ -22546,7 +22794,9 @@ It is now only this inside the explicit mouth-family reduction:
    \]
 
 That is a much smaller target than the earlier abstract branch ambiguity.
-moving_throat_pde_stage129_positive_deformation_expansion.md
+
+=== moving_throat_pde_stage129_positive_deformation_expansion.md ===
+
 
 # Moving-Throat PDE — Stage 129: First-Order Expansion for Positive Mouth-Layer Deformations
 
@@ -22691,7 +22941,9 @@ So the compensated mixed-channel response changes by
 \]
 
 This is the first non-exponential correction formula at `O(epsilon)`.
-moving_throat_pde_stage130_first_order_rigidity_kernel.md
+
+=== moving_throat_pde_stage130_first_order_rigidity_kernel.md ===
+
 
 # Moving-Throat PDE — Stage 130: First-Order Rigidity Kernel at the Canonical Family-1 Point
 
@@ -22819,7 +23071,9 @@ branch-choice ambiguity suggested:
 - and the remaining first-order traction shift is controlled by one explicit kernel.
 
 That is a strong reduction of the mouth-side uncertainty.
-moving_throat_pde_stage131_representative_positive_families.md
+
+=== moving_throat_pde_stage131_representative_positive_families.md ===
+
 
 # Moving-Throat PDE — Stage 131: Representative Non-Exponential Positive Mouth Families
 
@@ -22980,7 +23234,9 @@ For the two most natural explicit positive non-exponential mouth families:
 This is the best first-order evidence so far that the canonical Family-1 mouth branch is
 **rigid but not brittle**: moderate positive non-exponential corrections move it in a
 controlled, almost one-parameter way.
-moving_throat_pde_stage132_mouth_rigidity_status.md
+
+=== moving_throat_pde_stage132_mouth_rigidity_status.md ===
+
 
 # Moving-Throat PDE — Stage 132: Non-Exponential Mouth-Rigidity Status
 
@@ -23065,7 +23321,9 @@ So the remaining PDE-facing question is not “which mouth branch?” but rather
 \]
 
 That is a much smaller target than the earlier mouth-source ambiguity.
-moving_throat_pde_stage133_full_profile_residual.md
+
+=== moving_throat_pde_stage133_full_profile_residual.md ===
+
 # Moving-Throat PDE — Stage 133: Exact Full-Profile Mouth Potential and Curvature Residual
 
 ## Goal
@@ -23209,7 +23467,9 @@ The important point is not just that a correction exists. The important point is
 
 So the remaining mouth uncertainty is no longer a branch-choice issue.
 It is a finite profile correction around the already-selected lower compensated
-branch.moving_throat_pde_stage134_first_order_selected_correction.md
+branch.
+=== moving_throat_pde_stage134_first_order_selected_correction.md ===
+
 # Moving-Throat PDE — Stage 134: First-Order Source Correction Selected by the Full Mouth Profile
 
 ## Goal
@@ -23348,7 +23608,9 @@ bias retuning, and traction retuning follow automatically.
 
 So the next question is no longer “which positive family?”
 It is simply: what are the actual numerical covariances of \(R_*(x)\) on the
-explicit Family-1 branch?moving_throat_pde_stage135_family1_actual_correction.md
+explicit Family-1 branch?
+=== moving_throat_pde_stage135_family1_actual_correction.md ===
+
 # Moving-Throat PDE — Stage 135: Actual Family-1 Mouth Correction and One-Step Nonlinear Check
 
 ## Goal
@@ -23505,7 +23767,9 @@ Equivalently, the actual selected correction corresponds to a **broadening fract
 \]
 
 So the full mouth profile behaves much more like a moderate broadening toward
-uniformity than like a sharpening toward the self-matched derivative branch.moving_throat_pde_stage136_full_mouth_correction_status.md
+uniformity than like a sharpening toward the self-matched derivative branch.
+=== moving_throat_pde_stage136_full_mouth_correction_status.md ===
+
 # Moving-Throat PDE — Stage 136 / v58 Status
 
 ## New closure result
@@ -23598,7 +23862,9 @@ finite correction problem around a unique regular branch.
 The next PDE-facing step is to let the **core outlet coefficients and the mouth profile
 co-evolve** self-consistently, instead of holding the compensated core branch fixed while
 correcting only the mouth source law.
-moving_throat_pde_stage137_coevolving_core_mouth_map.md
+
+=== moving_throat_pde_stage137_coevolving_core_mouth_map.md ===
+
 # Moving-Throat PDE — Stage 137: Exact Co-Evolving Core–Mouth Fixed-Point Map
 
 ## Goal
@@ -23791,7 +24057,9 @@ Under the self-matched susceptibility closure from Stage 123,
 So the remaining ambiguity is now only the required **normalized mouth traction**
 \(\widehat T_m\) that makes the co-evolving fixed point land on
 \(\mathfrak g_*\).
-moving_throat_pde_stage138_frozen_traction_fixedpoint.md
+
+=== moving_throat_pde_stage138_frozen_traction_fixedpoint.md ===
+
 # Moving-Throat PDE — Stage 138: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction
 
 ## Goal
@@ -23946,7 +24214,9 @@ traction-dependent fixed point with
 
 That means exact preservation of the canonical outgoing quadrupole fingerprint now
 requires a **retuned traction**, not just the old canonical value.
-moving_throat_pde_stage139_renormalized_canonical_branch.md
+
+=== moving_throat_pde_stage139_renormalized_canonical_branch.md ===
+
 # Moving-Throat PDE — Stage 139: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution
 
 ## Goal
@@ -24103,7 +24373,9 @@ Inside the explicit Family-1 co-evolving closure on the analyzed positive branch
 So the mouth-side problem is no longer branch selection and no longer a broad
 profile ambiguity. It is now a quantitative renormalization problem for the
 unique regular canonical branch.
-moving_throat_pde_stage140_core_mouth_coevolution_status.md
+
+=== moving_throat_pde_stage140_core_mouth_coevolution_status.md ===
+
 # Moving-Throat PDE — Stage 140 / v59 Status
 
 ## New closure result
@@ -24192,7 +24464,9 @@ The next PDE-facing task is no longer branch selection. It is to derive the actu
 deviation of the moving-throat mouth/core system from this explicit Family-1
 co-evolving fixed point, and then translate that deviation into the remaining
 outgoing quadrupole-normalization defect.
-moving_throat_pde_stage141_linear_defect_transport.md
+
+=== moving_throat_pde_stage141_linear_defect_transport.md ===
+
 # Moving-Throat PDE — Stage 141: Linear Defect Transport from the Renormalized Family-1 Canonical Point
 
 ## Goal
@@ -24603,7 +24877,9 @@ The clean next derivation is now:
 The most economical first pass is to test the **compensated Robin–mixed branch**,
 because it is the only explicit isotropic outlet class already known to preserve the
 canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
-moving_throat_pde_stage142_hybrid_outlet_projection.md
+
+=== moving_throat_pde_stage142_hybrid_outlet_projection.md ===
+
 
 # Moving-Throat PDE — Stage 142: Linear Projection of the Co-Evolving Family-1 Defect onto the Compensated Robin–Mixed Outlet
 
@@ -25076,7 +25352,9 @@ projection. It is the much narrower DtN problem:
 > tangential co-evolving mouth deformation on the compensated hybrid outlet.
 
 That is now the exact next theorem gate.
-moving_throat_pde_stage143_bare_mixed_port_slippage.md
+
+=== moving_throat_pde_stage143_bare_mixed_port_slippage.md ===
+
 
 # Moving-Throat PDE — Stage 143: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate
 
@@ -25525,7 +25803,9 @@ The clean next derivation is now:
 4. and extract the coefficient `\Upsilon_\Pi`.
 
 That is the exact next theorem gate.
-moving_throat_pde_stage144_dn_similarity_slippage.md
+
+=== moving_throat_pde_stage144_dn_similarity_slippage.md ===
+
 # Moving-Throat PDE — Stage 144: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility
 
 ## Goal
@@ -26023,7 +26303,9 @@ So the next theorem gate is now as small as it can be without solving the true m
 > to first order, or produces a nonzero similarity-slippage scalar `\Xi_{\rm slip}`.
 
 That is the exact next microscopic closure question.
-moving_throat_pde_stage145_parent_compensation_rigidity.md
+
+=== moving_throat_pde_stage145_parent_compensation_rigidity.md ===
+
 # Moving-Throat PDE — Stage 145: Parent Compensation-Surface Rigidity and Automatic Similarity Preservation
 
 ## Goal
@@ -26275,7 +26557,9 @@ The remaining PDE-facing question is now even narrower:
 > does the true moving-throat co-evolving core stay on the exact parent compensation family to first order?
 
 If it does, the first-order reduced 2.5PN quadrupole-normalization defect vanishes automatically.
-moving_throat_pde_stage146_off_family_normal_coordinate.md
+
+=== moving_throat_pde_stage146_off_family_normal_coordinate.md ===
+
 # Moving-Throat PDE — Stage 146: Off-Family Normal Coordinate and Microscopic Compensation Defect
 
 ## Goal
@@ -26695,7 +26979,9 @@ It is the much smaller question:
 
 If that scalar vanishes, Stage 145 is recovered and the first-order reduced \(2.5\)PN obstruction disappears automatically.
 If it does not, the whole first-order defect ledger is already explicit.
-moving_throat_pde_stage147_microscopic_log_channels.md
+
+=== moving_throat_pde_stage147_microscopic_log_channels.md ===
+
 # Moving-Throat PDE — Stage 147: Explicit Microscopic Log-Imbalance Channels on the Linearized Wall/BdG/Maxwell/Mixed Branch
 
 ## Goal
@@ -27153,7 +27439,9 @@ It is only to determine the actual linearized values of these branch-variable dr
 If they satisfy the tangency law above, then \(\delta_\perp=0\) and the first-order reduced
 \(2.5\)PN obstruction disappears automatically.
 If they do not, the whole first-order off-family defect is now already explicit.
-moving_throat_pde_stage148_exact_branch_drifts.md
+
+=== moving_throat_pde_stage148_exact_branch_drifts.md ===
+
 # Moving-Throat PDE — Stage 148: Exact Lower-Branch Drift Laws for `L_W`, `v_{w0}`, and `\mathcal T_m`
 
 ## Goal
@@ -27588,7 +27876,9 @@ So the next PDE-facing question is now as small as it has ever been:
 > `L_W`, `v_{w0}`, `\mathcal T_m`, and `c_{s,w}` for us?
 
 That is a much sharper continuation target than Stage 147 left us with.
-moving_throat_pde_stage149_bundle_inversion_four_drifts.md
+
+=== moving_throat_pde_stage149_bundle_inversion_four_drifts.md ===
+
 # Moving-Throat PDE — Stage 149: Exact Bundle Inversion of the Last Four Irreducible Branch Drifts
 
 ## Purpose
@@ -27824,7 +28114,9 @@ So the remaining PDE-facing bottleneck is no longer the direct computation of fo
 4. and the isotropic outgoing normalization drift \(\delta\ln P_0\).
 
 Once those are known, the Stage-148 lower-branch transport is fully closed at first order.
-moving_throat_pde_stage150_bundle_transport_tangent_compensation.md
+
+=== moving_throat_pde_stage150_bundle_transport_tangent_compensation.md ===
+
 # Moving-Throat PDE — Stage 150: Bundle Transport of the Remaining Mouth Variables and the Tangent-Compensation Theorem
 
 ## Goal
@@ -28297,7 +28589,9 @@ The exact bundle-side transport laws are:
 
 So the first-order isotropic branch transport is no longer missing at all.
 What is missing is the first correction that escapes this closed bundle algebra.
-moving_throat_pde_stage151_off_bundle_slippage.md
+
+=== moving_throat_pde_stage151_off_bundle_slippage.md ===
+
 # Moving-Throat PDE — Stage 151: Exact Off-Bundle Slippage Decomposition
 
 ## Purpose
@@ -28755,7 +29049,9 @@ for example from:
 - or the first nonlinear correction to the explicit Family-1 co-evolving branch.
 
 That is the smallest next derivation step that can actually move the theorem forward.
-moving_throat_pde_stage152_no_linear_p2_scalar_slippage.md
+
+=== moving_throat_pde_stage152_no_linear_p2_scalar_slippage.md ===
+
 # Moving-Throat PDE — Stage 152: No Linear Grouped-`P2` Feed-Down into the Scalar Off-Bundle Slippages
 
 ## Purpose
@@ -29133,7 +29429,9 @@ The next honest gate is
 > \(\Xi_I^{(XY)}\).
 
 That is a genuine narrowing of the moving-throat PDE bottleneck.
-moving_throat_pde_stage153_linear_grouped_outlet_map.md
+
+=== moving_throat_pde_stage153_linear_grouped_outlet_map.md ===
+
 # Moving-Throat PDE — Stage 153: Exact Linear Grouped-`P2` Map into the Direct Outlet Coefficients `\delta\kappa_W` and `\delta\gamma_W`
 
 ## Purpose
@@ -29626,7 +29924,9 @@ The next gate is:
 > on the physical branch.
 
 That is the direct continuation point.
-moving_throat_pde_stage154_microscopic_grouped_obstructions.md
+
+=== moving_throat_pde_stage154_microscopic_grouped_obstructions.md ===
+
 # Moving-Throat PDE — Stage 154: Exact Microscopic Decomposition of the Linear Grouped Outlet Obstructions
 
 ## Purpose
@@ -30155,7 +30455,9 @@ The next gate is:
 > \).
 
 That is the direct continuation point.
-moving_throat_pde_stage155_physical_slope_collapse.md
+
+=== moving_throat_pde_stage155_physical_slope_collapse.md ===
+
 
 
 # Moving-Throat PDE — Stage 155: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}` and `P_1`
@@ -30561,7 +30863,9 @@ So the next honest theorem gate is now much narrower than Stage 154 suggested:
 > compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) — and, on the even-preserving branch, just \(P_1/P_0\) — directly from the actual grouped moving-throat response.
 
 That is the direct continuation point.
-moving_throat_pde_stage156_axisymmetric_loading_mismatch.md
+
+=== moving_throat_pde_stage156_axisymmetric_loading_mismatch.md ===
+
 # Moving-Throat PDE — Stage 156: Weak-Axisymmetric Transport of the Physical Slopes and Collapse to One Static Loading Mismatch
 
 ## Purpose
@@ -31010,7 +31314,9 @@ So the next honest theorem gate is now smaller than Stage 155 suggested:
 > compute the weak-axisymmetric static operator slope \(D_{01}/D_0\) and the weak-axisymmetric static outgoing-transfer slope \(N_{01}/N_0\) on the actual moving-throat branch — and, on the even-preserving branch, only their difference \(\Xi_{\rm load}\).
 
 That is the direct continuation point.
-moving_throat_pde_stage157_static_self_similarity.md
+
+=== moving_throat_pde_stage157_static_self_similarity.md ===
+
 # Moving-Throat PDE — Stage 157: Static Self-Similarity and Exact Collapse of the Remaining Linear Grouped Loading Defect
 
 ## Purpose
@@ -31446,7 +31752,9 @@ The next honest theorem gate is now:
 > on the actual weak-axisymmetric moving-throat branch.
 
 That will tell us whether the first linear grouped `2.5`PN defect comes from support non-self-similarity, conservative Maxwell/mixed non-self-similarity, or outgoing-transfer non-self-similarity.
-moving_throat_pde_stage158_wall_normalized_load_shape.md
+
+=== moving_throat_pde_stage158_wall_normalized_load_shape.md ===
+
 # Moving-Throat PDE — Stage 158: Wall-Normalized Port Shape Variables and the Outgoing-Load Theorem
 
 ## Purpose
@@ -31900,7 +32208,9 @@ The next theorem gate is now:
 > \]
 
 That is a real narrowing of the moving-throat PDE bottleneck.
-moving_throat_pde_stage159_outgoing_load_factorization.md
+
+=== moving_throat_pde_stage159_outgoing_load_factorization.md ===
+
 # Moving-Throat PDE — Stage 159: Outgoing Load-Factor Factorization and the Square-Root Mixed-Leg Law
 
 ## Purpose
@@ -32200,7 +32510,9 @@ It is:
 > on the actual moving-throat branch.
 
 Once those three microscopic slippages are known, the remaining linear grouped `2.5`PN defect is already explicit.
-moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage.md
+
+=== moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage.md ===
+
 # Moving-Throat PDE — Stage 160: Weak-Axisymmetric Collapse of the Outgoing-Slippage Bundle to One Scalar Amplitude
 
 ## Purpose
@@ -32594,7 +32906,9 @@ It is simply:
 > from the real moving-throat outgoing ports.
 
 That is the direct continuation point.
-moving_throat_pde_stage161_outgoing_port_coloading_theorem.md
+
+=== moving_throat_pde_stage161_outgoing_port_coloading_theorem.md ===
+
 # Moving-Throat PDE — Stage 161: Outgoing-Port Co-Loading Theorem and Direct Portwise Formula for `\Xi_1`
 
 ## Purpose
@@ -33040,7 +33354,9 @@ It is simply:
 > of the real moving-throat outgoing ports, and check whether their outgoing-weighted average equals \(\kappa_1\).
 
 That is the direct continuation point.
-moving_throat_pde_stage162_transfer_shape_theorem.md
+
+=== moving_throat_pde_stage162_transfer_shape_theorem.md ===
+
 # Moving-Throat PDE — Stage 162: Wall-Normalized Transfer-Shape Theorem and the Final Collapse of the Port Co-Loading Gate
 
 ## Purpose
@@ -33490,7 +33806,9 @@ It is simply
 > compute the weak-axisymmetric transfer-shape slopes \(\tau_r\), and test whether their outgoing-weighted average vanishes.
 
 That is the direct continuation point.
-moving_throat_pde_stage163_effective_transfer_shape_collapse.md
+
+=== moving_throat_pde_stage163_effective_transfer_shape_collapse.md ===
+
 # Moving-Throat PDE — Stage 163: Effective Transfer-Shape Collapse and the Actual Continuum-Kernel Slope Law
 
 ## Purpose
@@ -33905,7 +34223,9 @@ It is now:
 > determine whether the actual weak-axisymmetric moving-throat branch keeps this single continuum transfer shape rigid.
 
 That is the direct continuation point.
-moving_throat_pde_stage164_coherent_tracking_defect.md
+
+=== moving_throat_pde_stage164_coherent_tracking_defect.md ===
+
 
 # Moving-Throat PDE — Stage 164: Coherent Tracking-Branch Weak-Axisymmetric Defect Law and the Support-Blindness Theorem
 
@@ -34329,7 +34649,9 @@ It is:
 > on the coherent moving-throat branch.
 
 That is the direct continuation point.
-moving_throat_pde_stage165_microscopic_coherent_slippage.md
+
+=== moving_throat_pde_stage165_microscopic_coherent_slippage.md ===
+
 # Moving-Throat PDE — Stage 165: Microscopic Coherent-Kernel Slippage Decomposition and the Exact Tracking/Nontracking Split
 
 ## Purpose
@@ -34848,7 +35170,9 @@ It is now
 > on the actual moving-throat branch, and test whether the nontracking set vanishes.
 
 That is the direct continuation point.
-moving_throat_pde_stage166_triangular_normal_form.md
+
+=== moving_throat_pde_stage166_triangular_normal_form.md ===
+
 
 # Moving-Throat PDE — Stage 166: Exact Triangular Normal Form of the Coherent Weak-Axisymmetric Defect
 
@@ -35245,7 +35569,9 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct next theorem gate.
-moving_throat_pde_stage167_branch_invariant_coordinates.md
+
+=== moving_throat_pde_stage167_branch_invariant_coordinates.md ===
+
 # Moving-Throat PDE — Stage 167: Exact Branch-Invariant Coordinates for the Coherent Weak-Axisymmetric Defect
 
 ## Purpose
@@ -35680,7 +36006,9 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct continuation point.
-moving_throat_pde_stage168_microscopic_monomials.md
+
+=== moving_throat_pde_stage168_microscopic_monomials.md ===
+
 
 # Moving-Throat PDE — Stage 168: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
 
@@ -36226,7 +36554,9 @@ So the continuation point is now smaller than Stage 167 left it:
 
 > determine whether the true grouped weak-axisymmetric branch is microscopically monomial-rigid, at this same first-order reference-branch level, in the three direct coordinates
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
-moving_throat_pde_stage169_similarity_orbit_closure.md
+
+=== moving_throat_pde_stage169_similarity_orbit_closure.md ===
+
 
 # Moving-Throat PDE — Stage 169: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
 
@@ -36671,7 +37001,9 @@ So the continuation point is now as small and as clean as it can be without the 
 > determine whether the true moving-throat grouped weak-axisymmetric branch is tangent to the exact monomial-preserving similarity orbit \(\mathcal G_*\).
 
 If it is, the coherent first-order grouped weak-axisymmetric defect vanishes automatically.
-moving_throat_pde_stage170_orbit_quotient_closure.md
+
+=== moving_throat_pde_stage170_orbit_quotient_closure.md ===
+
 # Moving-Throat PDE — Stage 170: Exact Orbit–Quotient Closure and the Finite Weak-Axisymmetric Defect Theorem
 
 ## Purpose
@@ -37173,7 +37505,9 @@ Therefore the reduced coherent weak-axisymmetric zero-defect theorem can now be 
 \]
 
 That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself. The remaining open question is still the dynamical branch-selection theorem: whether the true PDE branch preserves those invariants.
-moving_throat_pde_stage171_branch_observables_completion.md
+
+=== moving_throat_pde_stage171_branch_observables_completion.md ===
+
 # Moving-Throat PDE — Stage 171: Branch-Observable Completion and the Exact First-Order Observable Compiler
 
 ## Status
@@ -37681,7 +38015,9 @@ In particular, the next clean move is to keep the present Stage-171 observable p
 - and outgoing quadrupole normalization.
 
 So Stage 171 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.
-moving_throat_pde_stage172_transfer_shape_prefactor_compiler.md
+
+=== moving_throat_pde_stage172_transfer_shape_prefactor_compiler.md ===
+
 # Moving-Throat PDE — Stage 172: Transfer-Shape / Outgoing-Prefactor Compiler and the Exact Normalization Bridge
 
 ## Status
@@ -38342,7 +38678,9 @@ It is to separate, inside the transfer-shape language just compiled here,
 so that the microscopic slippages split into the exact direct-defect variables versus the exact dressing variable.
 
 That is the natural Stage-173 continuation.
-moving_throat_pde_stage173_direct_defect_vs_dressing_split.md
+
+=== moving_throat_pde_stage173_direct_defect_vs_dressing_split.md ===
+
 # Moving-Throat PDE — Stage 173: Direct Transfer-Shape Defect vs. Dressing Residual, Support-Blindness, and the Scalar No-Go Filters
 
 ## Status
@@ -39024,7 +39362,9 @@ The purpose of that next stage should be:
 3. and compile the **smallest exact finite PDE data packet** that still has to be computed on the actual moving-throat branch.
 
 So Stage 173 is the last structural-cleanup stage before the minimal PDE packet theorem gate.
-moving_throat_pde_stage174_minimal_pde_data_packet.md
+
+=== moving_throat_pde_stage174_minimal_pde_data_packet.md ===
+
 # Moving-Throat PDE — Stage 174: Minimal PDE Data Packet, Exact Branch/Orbit Residuals, and the Home-Stretch Theorem
 
 ## Status
@@ -39447,7 +39787,9 @@ Supporting files:
 
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py`
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt`
-moving_throat_pde_stage175_orbit_quotient_projectors.md
+
+=== moving_throat_pde_stage175_orbit_quotient_projectors.md ===
+
 # Moving-Throat PDE — Stage 175: Exact Orbit/Quotient Projectors and the Microscopic Orbit-Lock Split
 
 ## Status
@@ -39859,7 +40201,9 @@ Supporting files:
 
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py`
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt`
-moving_throat_pde_stage176_isotropic_grouped_p2_target_surface.md
+
+=== moving_throat_pde_stage176_isotropic_grouped_p2_target_surface.md ===
+
 # Moving-Throat PDE — Stage 176: Exact Isotropic Grouped-`P2` Target Surface and the Scalar/Geometry Firewall
 
 ## Status
@@ -40262,7 +40606,9 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py`
-moving_throat_pde_stage177_outgoing_l2_fingerprint_and_deformation_algebra.md
+
+=== moving_throat_pde_stage177_outgoing_l2_fingerprint_and_deformation_algebra.md ===
+
 # Moving-Throat PDE — Stage 177: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic Deformation Algebra
 
 ## Status
@@ -40634,7 +40980,9 @@ Instead:
    \]
 
 That is the smallest honest next theorem gate on the retarded side.
-moving_throat_pde_stage178_source_map_reduction_of_canonical_outgoing_branch.md
+
+=== moving_throat_pde_stage178_source_map_reduction_of_canonical_outgoing_branch.md ===
+
 # Moving-Throat PDE — Stage 178: Exact Source-Map Reduction of the Canonical Outgoing Branch, the Factorization `m_{\hat 0}^{\,2}\chi_Q N_Q=1`, and the Collapse of `\Delta_{\rm norm}`
 
 ## Status
@@ -41089,7 +41437,9 @@ Instead:
 3. and prove that any extra retarded structure first entering at `O(\omega^7)` or higher is irrelevant to the 2.5PN theorem.
 
 That is the natural next theorem gate after Stage 178.
-moving_throat_pde_stage179_higher_odd_irrelevance_theorem.md
+
+=== moving_throat_pde_stage179_higher_odd_irrelevance_theorem.md ===
+
 # Moving-Throat PDE — Stage 179: Exact Higher-Odd Irrelevance Theorem, Stability of `\chi_Q`, and the Collapse of the 2.5PN Retarded Finish Line to `\Delta_Q=\chi_Q-1`
 
 ## Status
@@ -41512,7 +41862,9 @@ The next clean continuation is now the exact conditional closure statement in th
    on the natural point-particle source-map branch.
 
 That is the natural successor to Stage 179.
-moving_throat_pde_stage180_conditional_packetA_closure_theorem.md
+
+=== moving_throat_pde_stage180_conditional_packetA_closure_theorem.md ===
+
 # Moving-Throat PDE — Stage 180: Exact Conditional Packet-A Closure Theorem, the Equivalence `\Delta_{\rm branch}=0 \iff \chi_Q=1`, and the Final Retarded Finish-Line Reduction
 
 ## Status
@@ -41906,7 +42258,9 @@ It is the actual realization question:
    \]
 
 That is the sharpest next theorem gate after Stage 180.
-moving_throat_pde_stage181_exact_finite_orbit_law.md
+
+=== moving_throat_pde_stage181_exact_finite_orbit_law.md ===
+
 # Moving-Throat PDE — Stage 181: Exact Finite Orbit Law for the Dependent Triple, Exact Mismatch Coordinates, and the Orbit-Restoration Theorem
 
 ## Status
@@ -42350,7 +42704,9 @@ The next clean continuation is now fully finite and microscopic:
    \]
 
 That is the sharpest direct orbit-lock test available after Stage 181.
-moving_throat_pde_stage182_pairwise_orbit_transport_law.md
+
+=== moving_throat_pde_stage182_pairwise_orbit_transport_law.md ===
+
 # Moving-Throat PDE — Stage 182: Exact Pairwise Orbit-Transport Law, Reference-Independent Mismatch Packet, and the Two-Point Orbit-Lock Theorem
 
 ## Status
@@ -42970,7 +43326,9 @@ The natural continuation is now the fully reference-free home-stretch theorem:
 3. and then feed the actual PDE-selected branch directly into that two-packet compiler.
 
 That is the sharpest next theorem gate after Stage 182.
-moving_throat_pde_stage183_reference_free_home_stretch_theorem.md
+
+=== moving_throat_pde_stage183_reference_free_home_stretch_theorem.md ===
+
 # Moving-Throat PDE — Stage 183: Exact Reference-Free Full Home-Stretch Theorem, Orbit-Representative Independence, and the Four-Scalar Final Verdict Packet
 
 ## Status
@@ -43415,7 +43773,9 @@ The natural continuation after Stage 183 is now procedural rather than algebraic
    \]
 
 That is the sharpest possible reduced theorem gate after Stage 183.
-moving_throat_pde_stage184_explicit_realization_compiler_and_canonical_orbit_projection.md
+
+=== moving_throat_pde_stage184_explicit_realization_compiler_and_canonical_orbit_projection.md ===
+
 # Moving-Throat PDE — Stage 184: Exact Realization Compiler, Canonical Orbit Projection, and the First Explicit Four-Scalar Audit
 
 ## Status
@@ -43984,7 +44344,9 @@ That means:
    to locate the unique same-free-quintuple point on the target orbit.
 
 That is the first truly explicit realization audit after Stage 184.
-moving_throat_pde_stage185_free_quintuple_target_graph.md
+
+=== moving_throat_pde_stage185_free_quintuple_target_graph.md ===
+
 # Moving-Throat PDE — Stage 185: Exact Free-Quintuple Target Graph, Same-Free-Quintuple Closure Surface, and the First Reduced-Family Test
 
 ## Status
@@ -44553,7 +44915,9 @@ The next clean continuation is now sharply defined:
 4. and then ask whether their vanishing reduces to a simpler one-parameter or low-rank crossing problem on that family.
 
 So Stage 186 should be the first exact **family crossing theorem** built on the Stage-185 target graph.
-moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+
+=== moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md ===
+
 # Moving-Throat PDE — Stage 186: Free-Quintuple Scalar Closure Slice, Exact Graph-Family Tangency, and the One-Parameter Crossing Theorem
 
 ## Status
@@ -45118,7 +45482,9 @@ It needs to do one of two concrete things:
    \]
 
 That is the smallest clean family-level theorem gate reached so far.
-moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor.md
+
+=== moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor.md ===
+
 # Moving-Throat PDE — Stage 187: Explicit Free-Quintuple Log-Ray Sweep, Finite Graph Invariance, and the Scalar Root Predictor
 
 ## Status
@@ -45639,7 +46005,9 @@ It is to compute, on candidate free-quintuple rays,
 4. and then verify whether the actual scalarized branch crosses `1` uniquely before leaving the controlled branch.
 
 That is the sharpest explicit one-parameter continuation point reached so far.
-moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement.md
+
+=== moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement.md ===
+
 # Moving-Throat PDE — Stage 188: Directional Hessian, Exact Quadratic Log-Ray Refinement, and the Turning-Point Closure Test
 
 ## Status
@@ -46046,7 +46414,9 @@ The Packet-B orbit defect still vanishes identically on every graph-lifted ray, 
 
 So after Stage 188 the next honest continuation is no longer to invent a better local predictor by hand.
 It is to evaluate the actual Hessian data of `\(\widehat\chi_Q\)` on candidate base points and free directions, and then use the quadratic crossing / tangency theorem to rank which free-quintuple rays are genuinely promising for the final branch search.
-moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem.md
+
+=== moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem.md ===
+
 # Moving-Throat PDE — Stage 189: Curvature-Enveloped Ray Ranking, Certified Local Brackets, and the Search Sieve Theorem
 
 ## Status
@@ -46567,7 +46937,9 @@ Those three ingredients determine:
 
 So after Stage 189 the next honest continuation is no longer to invent another predictor.
 It is to evaluate the actual directional Hessian envelope of `\(\ln\widehat\chi_Q\)` on candidate free-quintuple rays and let the certified bracket/ranking theorem decide which rays are genuinely worth following in the final scalar branch search.
-moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+
+=== moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table.md ===
+
 # Moving-Throat PDE — Stage 190: Primitive-Ray Hessian Envelopes, Exact Certified Ray Table, and the Local Elimination Theorem
 
 ## Status
@@ -47004,7 +47376,9 @@ It is to move one step beyond them:
 > evaluate the first genuine two-coordinate mixed rays, where the off-diagonal Hessian entries of `\(\ln\widehat\chi_Q\)` can finally enter and possibly beat the primitive certified brackets.
 
 That is the natural Stage-191 gate.
-moving_throat_pde_stage191_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+
+=== moving_throat_pde_stage191_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md ===
+
 # Moving-Throat PDE — Stage 191: Pairwise Mixed Rays, Exact Off-Diagonal Hessian Synergy, and the Canonical Two-Ray Audit
 
 ## Status
@@ -47496,7 +47870,9 @@ So the next honest continuation is now very sharply defined:
 > carry out the full one-parameter optimization over `\(r\)` on each surviving pairwise cone, and decide whether any mixed ray can beat both the primitive and canonical-screen rows.
 
 That is the natural Stage-192 theorem gate.
-moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+
+=== moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md ===
+
 # Moving-Throat PDE — Stage 192: Exact Pairwise Ratio Optimizer, Finite Candidate Set, and the Mixed-Ray Winner Theorem
 
 ## Status
@@ -47962,7 +48338,9 @@ Stage 192 now finishes the pairwise part of that search:
 So the next theorem gate is no longer “what is the best pairwise mixed ray?”
 That question is now finite and exact.
 The next real question is whether any **three-coordinate** mixed branch can still beat the Stage-192 pairwise winner.
-moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit.md
+
+=== moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit.md ===
+
 # Moving-Throat PDE — Stage 193: Three-Coordinate Mixed-Simplex, Exact Interior Gradient/Curvature Synergy, and the Canonical Triple-Screen Audit
 
 ## Status
@@ -48527,7 +48905,9 @@ Stage 193 now shows what is genuinely new at the first three-coordinate level:
 So the next theorem gate is no longer “is there any three-coordinate effect at all?”
 There is.
 The next real question is whether the full two-parameter interior simplex optimizer can produce a certified winner that beats both canonical interior screens and all optimized pairwise edges.
-moving_throat_pde_stage194_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+
+=== moving_throat_pde_stage194_full_interior_simplex_optimizer_and_finite_candidate_reduction.md ===
+
 # Moving-Throat PDE — Stage 194: Full Interior Triple-Simplex Optimizer, Exact Stationary Elimination, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -49046,7 +49426,9 @@ Stage 194 now closes the missing algebraic step:
 So the next theorem gate is no longer “how do we search the interior at all?”
 That problem is finished.
 The next question is which primitive triples, if any, actually produce certified interior winners once the real PDE-derived local packet is supplied.
-moving_throat_pde_stage195_full_primitive_triple_ranking_theorem.md
+
+=== moving_throat_pde_stage195_full_primitive_triple_ranking_theorem.md ===
+
 # Moving-Throat PDE — Stage 195: Full Primitive-Triple Ranking, Exact Boundary Splice, and the Up-to-Three-Coordinate Search Sieve
 
 ## Status
@@ -49566,7 +49948,9 @@ Stage 195 now closes the global ranking step.
 So the next theorem gate is no longer “is the three-coordinate search tractable?”
 That problem is finished.
 The next honest question is whether the first four-coordinate simplex can produce a certified interior winner that beats the now-finite up-to-three-coordinate ledger.
-moving_throat_pde_stage196_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+
+=== moving_throat_pde_stage196_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md ===
+
 # Moving-Throat PDE — Stage 196: Four-Coordinate Mixed Simplex, Exact Face Reduction, and the Support-Cardinality-4 Theorem Gate
 
 ## Status
@@ -50269,7 +50653,9 @@ Stage 196 now shows what is genuinely new at the first four-coordinate level:
 So the next theorem gate is no longer “is there any four-coordinate effect at all?”
 There is.
 The next real question is whether the full three-parameter interior optimizer on a primitive four-simplex can produce a certified winner that beats both canonical interior screens and the now-finished support-`<=3` ledger.
-moving_throat_pde_stage197_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+
+=== moving_throat_pde_stage197_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md ===
+
 # Moving-Throat PDE — Stage 197: Full Interior Four-Coordinate Simplex Optimizer, Exact Lifted Stationary System, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -50861,7 +51247,9 @@ So the next theorem gate is now completely sharp:
 > rank the five primitive four-coordinate simplices by their full certified interior minima and compare the winning support-cardinality-`4` candidate against the already-finished support-`<=3` ledger.
 
 That is the natural continuation point for Stage 198.
-moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem.md
+
+=== moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem.md ===
+
 # Moving-Throat PDE — Stage 198: Full Primitive-Quadruple Ranking, Exact Boundary Splice, and the Up-to-Four-Coordinate Search Sieve
 
 ## Status
@@ -51360,7 +51748,9 @@ Stage 198 now closes the global support-cardinality-`4` ranking step.
 So the next theorem gate is no longer “is the four-coordinate search tractable?”
 That problem is finished.
 The next honest question is whether the unique five-coordinate simplex can produce a certified interior winner that beats the now-finite support-`<=4` ledger.
-moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
+
+=== moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md ===
+
 # Moving-Throat PDE — Stage 199: Unique Five-Coordinate Positive Simplex, Exact Face Reduction, and the Support-Cardinality-5 Theorem Gate
 
 ## Status
@@ -51886,7 +52276,9 @@ The next exact move is now completely sharp:
 4. and reduce the unique interior five-coordinate optimizer to a finite algebraic candidate set.
 
 That is exactly the Stage-200 task.
-moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+
+=== moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md ===
+
 # Moving-Throat PDE — Stage 200: Unique Five-Coordinate Mixed Simplex, Exact Face Reduction, Full Interior Optimizer, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -52524,7 +52916,9 @@ The support-cardinality-`5` problem is no longer a continuum search.
 - And the local improvement/non-improvement verdict against the full support-`<=4` ledger is now an exact interval comparison.
 
 That means the natural next move is Stage 201 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.
-moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+
+=== moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md ===
+
 # Moving-Throat PDE — Stage 201: Full Support-`<=5` Completion, Exact Boundary Identification, and the Final Local Mixed-Ray Closure Theorem
 
 ## Status
@@ -52890,3 +53284,18814 @@ The local mixed-ray sieve is now finished.
 
 So the natural continuation after Stage 201 is **not** another support-cardinality theorem.
 It is to begin inserting the actual PDE-derived Hessian-envelope and branch data into the completed search ledger — or, equivalently, to port this whole audited completion back into the compact PDE program master.
+
+=== moving_throat_pde_stage202_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 202: One-Port Mixed-Bundle Static Kernel and the Square-Law Suppression Test
+
+## Status
+
+**Exact within the carried isotropic one-port wall/BdG/Maxwell/mixed closure, once the reduced static branch is taken on the admissible side**
+\[
+\Omega_U^2>0,
+\qquad
+\Delta>0,
+\qquad
+D_0>0.
+\]
+
+This is the first post-Stage-201 insertion of actual reduced bundle data into the now-closed local mixed-ray ledger.
+It does **not** solve the full two-throat moving PDE.
+It computes the first honest same-charge kernel already implied by the one-port mixed bundle.
+
+---
+
+## Purpose
+
+Stage 201 closed the local mixed-ray search sieve.
+The natural continuation is no longer another support-cardinality theorem, but the insertion of actual PDE-derived branch data into the completed ledger.
+
+The first such insertion is the static same-charge audit of the isotropic one-port wall/BdG/Maxwell/mixed bundle.
+The goal is to answer one sharp question:
+
+> does the minimal static mixed bundle create a genuinely new long-range same-charge attractive family, or does it only renormalize short-range kernels that were already present?
+
+This stage answers that exactly.
+
+The main outputs are:
+
+1. the exact static reduced `3 x 3` bundle and determinant identity,
+2. the exact static susceptibility kernel,
+3. the exact inverse-entry formulas and collinear-source factorization theorem,
+4. the exact bridge from the wall–mixed susceptibility to the same outgoing-prefactor objects that already appear in the 5PN / 2.5PN normalization chain,
+5. the exact product-kernel theorem for the first primitive same-charge source families,
+6. and the square-law suppression verdict: **the static one-port mixed bundle creates no new long-range attractive law.**
+
+So Stage 202 keeps the same-charge mixed corridor alive, but in a sharply narrowed form.
+
+---
+
+## 1. Frozen one-port bundle data
+
+Keep the same isotropic one-port reduction already used in the moving-throat normalization chain.
+After the stable BdG support mode is integrated out, the effective wall stiffness is
+\[
+K_*:=K-\frac{C^2}{\varpi^2}.
+\]
+
+The one-port Maxwell/mixed block is then controlled by
+\[
+\Delta:=\Omega_U^2\Omega_W^2-R^2,
+\]
+\[
+Q:=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\]
+\[
+P:=\Omega_U^2G_W+RG_U,
+\]
+with static conservative wall operator
+\[
+\boxed{
+D_0:=K_* - \frac{Q}{\Delta}.
+}
+\]
+
+These are the same reduced bundle quantities that already feed the isotropic 5PN / 2.5PN ledger:
+\[
+N_0=\frac{P^2}{\Delta^2},
+\qquad
+P_0=\frac{N_0}{D_0},
+\qquad
+m_{\hat 0}^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+\]
+
+So the same-charge barrier audit is directly tied to the same reduced bundle data that the normalization chain already constrains.
+
+---
+
+## 2. Exact static reduced bundle and admissibility
+
+Take three reduced static coordinates:
+
+- wall/worldtube amplitude `q`,
+- brane-like internal gauge coordinate `U`,
+- mixed `A_w/F_{\mu w}/J^w` coordinate `W`.
+
+Their static quadratic energy is
+\[
+V_{\rm stat}(q,U,W;r)
+=
+\frac12 K_* q^2
++\frac12 \Omega_U^2 U^2
++\frac12 \Omega_W^2 W^2
+-RUW
+-G_U qU
+-G_W qW
+-J_q(r)q-J_U(r)U-J_W(r)W.
+\]
+
+In matrix form,
+\[
+V_{\rm stat}
+=
+\frac12 X^T\mathcal K_{\rm red}X-J^TX,
+\qquad
+X=(q,U,W)^T,
+\qquad
+J=(J_q,J_U,J_W)^T,
+\]
+with
+\[
+\mathcal K_{\rm red}
+=
+\begin{pmatrix}
+K_* & -G_U & -G_W \\
+-G_U & \Omega_U^2 & -R \\
+-G_W & -R & \Omega_W^2
+\end{pmatrix}.
+\]
+
+A direct computation gives the exact determinant identity
+\[
+\boxed{
+\det \mathcal K_{\rm red}=\Delta D_0.
+}
+\]
+
+The internal `(U,W)` block is positive definite when
+\[
+\Omega_U^2>0,
+\qquad
+\Delta>0,
+\]
+and the full reduced bundle is then positive definite exactly when its Schur complement satisfies
+\[
+\boxed{D_0>0.}
+\]
+
+So the natural static admissibility conditions are precisely the same ones that already appear in the normalization chain.
+
+---
+
+## 3. Exact static susceptibility kernel
+
+Minimizing the quadratic energy gives
+\[
+X_*(r)=\mathcal K_{\rm red}^{-1}J(r),
+\]
+and the on-shell energy shift is
+\[
+\boxed{
+\delta V_{\rm mix}(r)
+=
+-\frac12 J(r)^T\mathcal K_{\rm red}^{-1}J(r).
+}
+\]
+
+Because `\mathcal K_{\rm red}` is positive definite on the admissible branch, the quadratic form is nonnegative and therefore
+\[
+\boxed{
+\delta V_{\rm mix}(r)\le 0.
+}
+\]
+
+So the first one-port mixed-bundle conclusion is immediate:
+
+> the static mixed bundle is always attractive or neutral at second order in the external same-charge load.
+
+### 3.1 Exact inverse entries
+
+The inverse entries are
+\[
+\chi_{qq}:=(\mathcal K_{\rm red}^{-1})_{qq}=\frac{1}{D_0},
+\]
+\[
+\chi_{qU}:=(\mathcal K_{\rm red}^{-1})_{qU}=\frac{P_U}{\Delta D_0},
+\qquad
+P_U:=G_U\Omega_W^2+RG_W,
+\]
+\[
+\chi_{qW}:=(\mathcal K_{\rm red}^{-1})_{qW}=\frac{P}{\Delta D_0},
+\]
+\[
+\chi_{UU}:=(\mathcal K_{\rm red}^{-1})_{UU}
+=
+\frac{K_*\Omega_W^2-G_W^2}{\Delta D_0},
+\]
+\[
+\chi_{UW}:=(\mathcal K_{\rm red}^{-1})_{UW}
+=
+\frac{K_*R+G_UG_W}{\Delta D_0},
+\]
+\[
+\chi_{WW}:=(\mathcal K_{\rm red}^{-1})_{WW}
+=
+\frac{K_*\Omega_U^2-G_U^2}{\Delta D_0}.
+\]
+
+So every static same-charge correction is controlled by the same denominator `\Delta D_0`.
+
+### 3.2 Collinear-source theorem
+
+If the reduced external load is collinear in source space,
+\[
+J(r)=\mathcal S(r)
+\begin{pmatrix}
+s_q\\ s_U\\ s_W
+\end{pmatrix},
+\]
+then the induced correction factorizes exactly:
+\[
+\boxed{
+\delta V_{\rm mix}(r)
+=
+-\frac12\chi_s\,\mathcal S(r)^2,
+\qquad
+\chi_s=\frac{\mathcal N_s}{\Delta D_0},
+}
+\]
+with
+\[
+\mathcal N_s
+=
+\Delta s_q^2
++2P_U s_q s_U
++2P s_q s_W
++(K_*\Omega_W^2-G_W^2)s_U^2
++2(K_*R+G_UG_W)s_U s_W
++(K_*\Omega_U^2-G_U^2)s_W^2.
+\]
+
+So the first PDE-constrained static mixed kernel is **not** a free radial law.
+It is the square of the source profile times an exact bundle susceptibility.
+
+---
+
+## 4. Exact bridge to outgoing-prefactor data
+
+Define the outgoing-load factor
+\[
+\Lambda:=\frac{P}{\Delta}.
+\]
+Then the static outgoing-transfer and prefactor objects are
+\[
+N_0=\Lambda^2,
+\qquad
+P_0=\frac{\Lambda^2}{D_0}.
+\]
+
+The wall–mixed cross susceptibility becomes
+\[
+\boxed{
+\chi_{qW}=\frac{\Lambda}{D_0}.
+}
+\]
+
+There is an especially useful identity:
+\[
+\boxed{
+\chi_{qW}^2=\frac{P_0}{D_0}.
+}
+\]
+
+So static same-charge softening and outgoing quadrupole normalization are **not** independent knobs inside the one-port bundle.
+If one tries to enhance the static mixed corridor by
+
+- increasing `\Lambda`, or
+- softening `D_0`,
+
+one is simultaneously pushing on the same reduced bundle variables that already govern the 5PN / 2.5PN normalization side.
+
+---
+
+## 5. Product-kernel theorem for the first primitive source families
+
+Use the first two primitive reduced source profiles already natural from the frozen files:
+
+- quadrupolar / Coulomb-Hessian drive
+  \[
+  \mathcal S_Q(x)=\frac{1}{x^3},
+  \]
+- Yukawa / mixed-sector drive
+  \[
+  \mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+  \qquad
+  \kappa:=\frac{a}{\lambda}.
+  \]
+
+Take the reduced source vector to be
+\[
+J(x)=
+\begin{pmatrix}
+\beta_Q\,\mathcal S_Q(x)\\
+\beta_U\,\mathcal S_Y(x)\\
+\beta_W\,\mathcal S_Y(x)
+\end{pmatrix}.
+\]
+
+Then the exact static mixed correction is
+\[
+\boxed{
+\widetilde{\delta V}_{\rm mix}(x)
+=
+-\frac12
+\left[
+\frac{\mathcal C_6}{x^6}
++
+2\mathcal C_4\,\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2\,\frac{e^{-4\kappa x}}{x^2}
+\right],
+}
+\]
+where
+\[
+\mathcal C_6=\chi_{qq}\,\beta_Q^2,
+\]
+\[
+\mathcal C_4=
+\chi_{qU}\,\beta_Q\beta_U
++
+\chi_{qW}\,\beta_Q\beta_W,
+\]
+\[
+\mathcal C_2=
+\chi_{UU}\,\beta_U^2
++
+2\chi_{UW}\,\beta_U\beta_W
++
+\chi_{WW}\,\beta_W^2.
+\]
+
+### 5.1 What this theorem says
+
+The minimal static one-port mixed bundle can generate only the three product families
+\[
+\frac{1}{x^6},
+\qquad
+\frac{e^{-2\kappa x}}{x^4},
+\qquad
+\frac{e^{-4\kappa x}}{x^2}.
+\]
+
+So it does **not** create a new slower-than-source attractive family.
+In particular, it does not create a new long-range attractive term of the form
+\[
+-\frac{1}{x},
+\qquad
+-\frac{e^{-2\kappa x}}{x},
+\qquad
+\text{or any family longer-ranged than the primitive source profiles themselves.}
+\]
+
+What it does do is:
+
+1. renormalize the already-known inverse-sixth channel,
+2. renormalize the already-known Yukawa-square channel,
+3. and add one hybrid cross family
+   \[
+   \frac{e^{-2\kappa x}}{x^4},
+   \]
+   which is still shorter-ranged than a Yukawa tail and still much shorter-ranged than Coulomb.
+
+So the static mixed bundle is already much less exotic than the generic placeholder mixed kernel made it look.
+
+---
+
+## 6. Updated reduced barrier audit potential
+
+The natural Stage-202 replacement for the generic static mixed term is therefore
+\[
+\widetilde V_{\rm audit}^{(2)}(x)
+=
+\frac{1}{x}\Bigl(1+\frac12 e^{-2\kappa x}\Bigr)
+-
+3\alpha_6\,\mathcal G_6(x)
+-
+\alpha_2\frac{e^{-4\kappa x}}{x^2}
++
+\widetilde{\delta V}_{\rm mix}(x),
+\]
+with `\widetilde{\delta V}_{\rm mix}` fixed by the one-port susceptibility theorem above.
+
+Equivalently, after collecting like families,
+\[
+\widetilde V_{\rm audit}^{(2)}(x)
+=
+\frac{1}{x}\Bigl(1+\frac12 e^{-2\kappa x}\Bigr)
+-
+\frac{\alpha_{6,{\rm eff}}}{x^6}
+-
+\alpha_{4,{\rm mix}}\frac{e^{-2\kappa x}}{x^4}
+-
+\alpha_{2,{\rm eff}}\frac{e^{-4\kappa x}}{x^2}
++
+\text{(core-resolved replacement of }x^{-6}\text{ near overlap)}.
+\]
+
+So the minimal static mixed bundle does **not** open an entirely new barrier corridor.
+It only changes the coefficients of short-range attractive families, with one extra hybrid family in between.
+
+---
+
+## 7. What this kills, and what still survives
+
+### 7.1 What is now strongly disfavored
+
+The following picture is now much harder to sustain inside the present static audit:
+
+> a modest mixed-sector static deformation produces a qualitatively new long-range attractive channel that materially changes same-charge approach before the usual short-range response terms matter.
+
+The one-port bundle does not do that.
+Its static correction is a quadratic response built from source products, and those products are all short-range.
+
+### 7.2 What still survives
+
+A static same-charge mixed corridor is **not** dead yet, but it has become much more specific.
+It can survive only through one of the following:
+
+1. unusually large coefficient renormalization of the already-known short-range families,
+2. a sizable hybrid `e^{-2\kappa x}/x^4` cross family,
+3. or a near-instability softening of `D_0` that magnifies the static susceptibility.
+
+But the third option is not a free win, because the same `D_0` appears in the outgoing-prefactor and normalization chain.
+So trying to exploit near-instability for barrier softening pushes directly on the same bundle objects that the 5PN / 2.5PN program already constrains.
+
+### 7.3 Practical reading
+
+At the static one-port level, the surviving question is no longer
+
+> can the mixed sector create a magical new attractive law?
+
+It is now
+
+> can the mixed bundle generate **large enough coefficients** on the short-range families it already knows how to produce, while staying on an admissible branch?
+
+That is a much sharper kill test.
+
+---
+
+## 8. Best current summary after Stage 202
+
+Stage 202 gives the first honest static same-charge kernel implied by the one-port moving-throat mixed bundle.
+
+- The reduced static bundle is an exact `3 x 3` quadratic system with determinant `\Delta D_0`.
+- On the admissible branch, the induced same-charge static correction is always attractive or neutral at quadratic order.
+- The wall–mixed cross susceptibility is tied exactly to the same outgoing-load factor `\Lambda=P/\Delta` and prefactor object `P_0=N_0/D_0` that already appear in the 5PN / 2.5PN normalization chain.
+- For the first primitive same-charge source families, the bundle can generate only
+  \[
+  x^{-6},\qquad e^{-2\kappa x}/x^4,\qquad e^{-4\kappa x}/x^2.
+  \]
+- Therefore the static one-port mixed bundle creates **no new long-range attractive law**.
+
+So the static mixed corridor survives only as a coefficient-engineering problem on already-short-range families, not as a genuinely new barrier-bypass law.
+
+---
+
+## 9. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+1. the determinant identity
+   \[
+   \det \mathcal K_{\rm red}=\Delta D_0,
+   \]
+2. the internal-block Schur complement formula for `D_0`,
+3. the exact inverse-entry formulas,
+4. the exact susceptibility formula
+   \[
+   \delta V_{\rm mix}=-\tfrac12 J^T\mathcal K_{\rm red}^{-1}J,
+   \]
+5. the collinear-source factorization theorem,
+6. the outgoing-load identities
+   \[
+   \chi_{qW}=\Lambda/D_0,
+   \qquad
+   \chi_{qW}^2=P_0/D_0,
+   \]
+7. and the primitive-source product-kernel decomposition into the `x^{-6}`, `e^{-2\kappa x}/x^4`, and `e^{-4\kappa x}/x^2` families.
+
+Supporting file:
+- `moving_throat_pde_stage202_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py`
+
+---
+
+## 10. Immediate next step
+
+The next honest continuation is now narrower.
+
+1. Keep the Stage-202 static susceptibility kernel.
+2. Test whether the actual branch data can make its coefficients large while keeping
+   \[
+   \Delta>0,
+   \qquad
+   D_0>0,
+   \qquad
+   \Delta_{\rm branch}=0,
+   \qquad
+   \Delta_{\rm orbit}=0.
+   \]
+3. If the static corridor stays too weak, move to the genuinely time-dependent / non-adiabatic mixed-port audit.
+
+That is the cleanest continuation point after the static square-law suppression test.
+
+=== moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 203: Dynamic Mixed-Port Kernel, Phase-Lag No-Go, and the Resonant-Survival Gate
+
+## Status
+
+**Exact within the carried isotropic one-port wall/BdG/Maxwell/mixed closure, away from the internal poles**
+\[
+\varpi^2-\omega^2\neq 0,
+\qquad
+\Delta_\Pi(\omega)\neq 0,
+\qquad
+D_\Pi(\omega)\neq 0,
+\]
+and exact to first order in the outgoing-port dressing when the phase-lag result is invoked.
+
+This is the first post-Stage-202 dynamic insertion of actual mixed-port bundle data into the now-closed local mixed-ray ledger.
+It does **not** solve the full driven two-throat moving PDE.
+It computes the first honest frequency-dependent same-charge kernel already implied by the one-port mixed bundle and identifies the only linear dynamic corridor left alive after the static audit.
+
+---
+
+## Purpose
+
+Stage 202 closed the first honest static same-charge mixed-bundle audit.
+It showed that the minimal one-port wall/BdG/Maxwell/mixed bundle does **not** create a new long-range attractive law.
+It only generates short-range product families built from the primitive source profiles.
+
+That leaves one clean escape hatch:
+
+> perhaps a genuinely time-dependent / non-adiabatic mixed-port drive can do something qualitatively stronger than the static bundle.
+
+The job of Stage 203 is narrower than solving the full driven PDE.
+It is to:
+
+1. promote the Stage-202 one-port bundle to a frequency-dependent mixed-port kernel,
+2. derive its exact complex susceptibility,
+3. test whether linear monochromatic driving creates a genuinely new spatial attractive family,
+4. separate the in-phase barrier reshaping from the out-of-phase pumping / leakage channel,
+5. and identify the only surviving linear dynamic corridor.
+
+The main outputs are:
+
+1. the exact dynamic reduced `3 x 3` bundle and determinant identity,
+2. the exact dynamic susceptibility law and inverse-entry formulas,
+3. the exact collinear-source and primitive-source product-family theorems,
+4. the exact outgoing-port derivative identity,
+5. the exact linear phase-lag theorem,
+6. and the resulting survival gate: **the only linear dynamic corridor left is resonant dispersive enhancement of the already-known short-range families, and that corridor must beat its own absorptive load to count as real barrier engineering.**
+
+So Stage 203 keeps the dynamic same-charge idea alive, but only in a much narrower form than the raw mixed-port intuition suggested.
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Static one-port bundle from Stage 202
+
+After the stable BdG support mode is integrated into the static wall stiffness,
+\[
+K_* = K - \frac{C^2}{\varpi^2},
+\]
+the static one-port bundle is controlled by
+\[
+\Delta = \Omega_U^2\Omega_W^2 - R^2,
+\]
+\[
+Q = G_U^2\Omega_W^2 + 2 G_U G_W R + G_W^2\Omega_U^2,
+\]
+\[
+P = \Omega_U^2 G_W + R G_U,
+\]
+\[
+D_0 = K_* - \frac{Q}{\Delta},
+\]
+with exact outgoing-prefactor bridge
+\[
+N_0 = \frac{P^2}{\Delta^2},
+\qquad
+P_0 = \frac{N_0}{D_0}.
+\]
+
+Stage 202 proved that the static mixed correction is always attractive or neutral on the admissible branch and that, for the primitive reduced source families,
+\[
+\mathcal S_Q(x)=\frac1{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+\]
+the bundle can produce only the three product families
+\[
+\frac1{x^6},
+\qquad
+\frac{e^{-2\kappa x}}{x^4},
+\qquad
+\frac{e^{-4\kappa x}}{x^2}.
+\]
+
+So the linear dynamic audit has to be judged against that already-frozen static baseline.
+
+### 1.2 Why the dynamic mixed sector is the right next lane
+
+The parent `4+1` / plasma ontology keeps the mixed variables
+\[
+A_w,
+\qquad
+F_{\mu w},
+\qquad
+J^w,
+\]
+alive once one relaxes the strict far-field brane reduction, and it treats brane-facing non-ideality as conservative transport into the hidden `w` sector and higher localization modes rather than as purely local dissipation.
+So if a field-driven corridor survives at all, it has to pass through the dynamic mixed sector rather than through the static zero-mode Maxwell law.
+
+### 1.3 Outgoing-port motivation
+
+The moving-throat program already isolated the mixed-sector port as the first place where a genuine passive/outgoing channel can enter the reduced wall language.
+On the outgoing `l=2` branch the first odd fingerprint begins at `i\omega^5`, not at an even static correction.
+So the same reduced sector that can carry dynamic pumping is also the sector that carries the radiative quadrupole bridge.
+
+That is exactly why the dynamic barrier audit has to distinguish **real in-phase reshaping** from **imaginary out-of-phase pumping**.
+
+---
+
+## 2. Minimal dynamic one-port mixed bundle
+
+Keep the same reduced coordinates as in Stage 202:
+
+- wall/worldtube amplitude `q`,
+- brane-like internal gauge coordinate `U`,
+- mixed `A_w/F_{\mu w}/J^w` coordinate `W`.
+
+Now retain the frequency dependence explicitly.
+
+### 2.1 Dynamic reduced coefficients
+
+Define
+\[
+K_B(\omega)
+:=
+K - M\omega^2 - \frac{C^2}{\varpi^2-\omega^2},
+\]
+\[
+A(\omega):=\Omega_U^2-\omega^2,
+\qquad
+W(\omega):=\Omega_W^2-\omega^2-\Pi(\omega),
+\]
+where `\Pi(\omega)` is the effective outgoing/self-energy carried by the mixed coordinate.
+Then define
+\[
+\Delta_\Pi(\omega):=A(\omega)W(\omega)-R^2,
+\]
+\[
+Q_\Pi(\omega):=G_U^2W(\omega)+2G_UG_WR+G_W^2A(\omega),
+\]
+\[
+\boxed{
+D_\Pi(\omega):=K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)}.
+}
+\]
+
+### 2.2 Dynamic reduced stiffness matrix
+
+The frequency-domain reduced bundle is
+\[
+\mathcal K_{\rm dyn}(\omega)
+=
+\begin{pmatrix}
+K_B(\omega) & -G_U & -G_W \\
+-G_U & A(\omega) & -R \\
+-G_W & -R & W(\omega)
+\end{pmatrix}.
+\]
+
+Its exact determinant identity is
+\[
+\boxed{
+\det \mathcal K_{\rm dyn}(\omega)
+=
+\Delta_\Pi(\omega)\,D_\Pi(\omega).
+}
+\]
+
+So the same two denominator factors govern the dynamic bundle:
+
+- the internal `(U,W)` block denominator `\Delta_\Pi`,
+- the dressed wall denominator `D_\Pi`.
+
+### 2.3 Static reduction check
+
+At zero frequency with no outgoing dressing,
+\[
+\omega=0,
+\qquad
+\Pi(0)=0,
+\]
+one has
+\[
+K_B(0)=K-\frac{C^2}{\varpi^2}=K_*,
+\qquad
+A(0)=\Omega_U^2,
+\qquad
+W(0)=\Omega_W^2,
+\]
+so the dynamic bundle reduces exactly to the Stage-202 static one-port bundle.
+
+So Stage 203 is a genuine continuation, not a different reduced model.
+
+---
+
+## 3. Exact dynamic susceptibility law
+
+Define the complex reduced quadratic response functional
+\[
+\mathfrak V_{\rm mix}(x,\omega)
+:=
+-\frac12 J(x,\omega)^T\mathcal K_{\rm dyn}(\omega)^{-1}J(x,\omega).
+\]
+
+This is the direct dynamic analogue of the Stage-202 static on-shell shift.
+
+- `\Re\,\mathfrak V_{\rm mix}` is the in-phase conservative barrier reshaping.
+- `\Im\,\mathfrak V_{\rm mix}` is the quadrature / pumping / leakage channel.
+
+### 3.1 Exact inverse entries
+
+The inverse entries are the direct dynamic lifts of the Stage-202 formulas:
+\[
+\chi_{qq}(\omega)=\frac1{D_\Pi(\omega)},
+\]
+\[
+\chi_{qU}(\omega)=\frac{P_U(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+\qquad
+P_U(\omega):=G_UW(\omega)+RG_W,
+\]
+\[
+\chi_{qW}(\omega)=\frac{P(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+\qquad
+P(\omega):=A(\omega)G_W+RG_U,
+\]
+\[
+\chi_{UU}(\omega)=\frac{K_B(\omega)W(\omega)-G_W^2}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+\]
+\[
+\chi_{UW}(\omega)=\frac{K_B(\omega)R+G_UG_W}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+\]
+\[
+\chi_{WW}(\omega)=\frac{K_B(\omega)A(\omega)-G_U^2}{\Delta_\Pi(\omega)D_\Pi(\omega)}.
+\]
+
+So every dynamic same-charge correction is still controlled by the same denominator pair `\Delta_\Pi D_\Pi`.
+
+### 3.2 Collinear-source theorem
+
+If the reduced source is collinear in source space,
+\[
+J(x,\omega)=\mathcal S(x,\omega)
+\begin{pmatrix}
+s_q\\ s_U\\ s_W
+\end{pmatrix},
+\]
+then the response still factorizes exactly:
+\[
+\boxed{
+\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\,\chi_s(\omega)\,\mathcal S(x,\omega)^2,
+\qquad
+\chi_s(\omega)=\frac{\mathcal N_s(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)}.
+}
+\]
+Here
+\[
+\mathcal N_s(\omega)
+=
+\Delta_\Pi s_q^2
++2P_U s_q s_U
++2P s_q s_W
++\bigl(K_BW-G_W^2\bigr)s_U^2
++2\bigl(K_BR+G_UG_W\bigr)s_Us_W
++\bigl(K_BA-G_U^2\bigr)s_W^2.
+\]
+
+So the dynamic bundle still acts by a scalar susceptibility on each collinear reduced source family.
+
+---
+
+## 4. Dynamic product-family theorem for the primitive same-charge loads
+
+Return to the same primitive reduced source profiles used in Stage 202:
+\[
+\mathcal S_Q(x)=\frac1{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x}.
+\]
+Take the reduced source vector
+\[
+J(x,\omega)
+=
+\begin{pmatrix}
+\beta_Q\mathcal S_Q(x)\\
+\beta_U\mathcal S_Y(x)\\
+\beta_W\mathcal S_Y(x)
+\end{pmatrix}.
+\]
+Then the exact dynamic correction is
+\[
+\boxed{
+\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\left[
+\frac{\mathcal C_6(\omega)}{x^6}
++
+2\mathcal C_4(\omega)\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2(\omega)\frac{e^{-4\kappa x}}{x^2}
+\right],
+}
+\]
+with
+\[
+\mathcal C_6(\omega)=\chi_{qq}(\omega)\,\beta_Q^2,
+\]
+\[
+\mathcal C_4(\omega)=\chi_{qU}(\omega)\beta_Q\beta_U+
+\chi_{qW}(\omega)\beta_Q\beta_W,
+\]
+\[
+\mathcal C_2(\omega)=\chi_{UU}(\omega)\beta_U^2
++2\chi_{UW}(\omega)\beta_U\beta_W
++\chi_{WW}(\omega)\beta_W^2.
+\]
+
+This is the first strong dynamic theorem of the stage:
+
+> the linear monochromatic mixed bundle does **not** create a new spatial kernel family.
+> It keeps exactly the same three short-range spatial families as the static one-port bundle, but promotes their coefficients to complex frequency-dependent susceptibilities.
+
+So linear time dependence does **not** yet buy a qualitatively new radial law.
+It buys only:
+
+1. frequency-dependent renormalization of the same short-range families,
+2. complex phase structure,
+3. and the possibility of resonant amplification through the denominator pair `\Delta_\Pi D_\Pi`.
+
+---
+
+## 5. Exact outgoing-port derivative identity
+
+Let
+\[
+e_W=(0,0,1)^T,
+\]
+so that the mixed coordinate is the `W` lane.
+Because `\Pi(\omega)` enters only in the `WW` slot,
+\[
+\partial_\Pi \mathcal K_{\rm dyn}(\omega)
+=
+- e_W e_W^T.
+\]
+
+Matrix calculus therefore gives the exact identity
+\[
+\boxed{
+\partial_\Pi \mathcal K_{\rm dyn}(\omega)^{-1}
+=
+\mathcal K_{\rm dyn}(\omega)^{-1}
+\,e_W e_W^T\,
+\mathcal K_{\rm dyn}(\omega)^{-1}.
+}
+\]
+Hence the dynamic response functional obeys
+\[
+\boxed{
+\partial_\Pi \mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12
+\bigl[e_W^T\mathcal K_{\rm dyn}(\omega)^{-1}J(x,\omega)\bigr]^2.
+}
+\]
+
+So for a small outgoing port around the conservative branch `\Pi=0`,
+\[
+\boxed{
+\delta\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\Pi(\omega)\,\mathcal T_J(\omega)^2
++O\bigl(\Pi(\omega)^2\bigr),
+}
+\]
+with exact transfer amplitude
+\[
+\mathcal T_J(\omega)
+:=
+ e_W^T\mathcal K_{\rm cons}(\omega)^{-1}J(x,\omega),
+\qquad
+\mathcal K_{\rm cons}:=\mathcal K_{\rm dyn}\big|_{\Pi=0}.
+\]
+
+This is the exact dynamic lift of the Stage-004 outgoing-transfer factor, now written directly for the driven same-charge source vector.
+
+---
+
+## 6. Phase-lag no-go at linear order
+
+Take a passive/outgoing mixed port at linear order:
+\[
+\Pi(\omega)=i\Gamma(\omega)+O\bigl(\Gamma(\omega)^2\bigr),
+\qquad
+\Gamma(\omega)\ge 0.
+\]
+On the conservative off-pole branch, `\mathcal K_{\rm cons}(\omega)` and the reduced source data are real, so `\mathcal T_J(\omega)` is real.
+Therefore the first outgoing correction becomes
+\[
+\boxed{
+\delta\mathfrak V_{\rm mix}^{(1)}(x,\omega)
+=
+-\frac{i}{2}\Gamma(\omega)\,\mathcal T_J(\omega)^2.
+}
+\]
+Its real and imaginary parts are then
+\[
+\boxed{
+\Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+\qquad
+\Im\,\delta\mathfrak V_{\rm mix}^{(1)}=-\frac12\Gamma(\omega)\,\mathcal T_J(\omega)^2.
+}
+\]
+So the first outgoing correction is **purely phase-lag / pumping** at linear order.
+It does **not** lower the barrier conservatively.
+
+Define the absorbed-power diagnostic by
+\[
+\boxed{
+\overline P_{\rm abs}(x,\omega)
+:=
+-\omega\,\Im\mathfrak V_{\rm mix}(x,\omega).
+}
+\]
+Then at first outgoing order,
+\[
+\boxed{
+\overline P_{\rm abs}^{(1)}(x,\omega)
+=
+\frac{\omega\Gamma(\omega)}{2}\,\mathcal T_J(\omega)^2
+\ge 0.
+}
+\]
+
+So the first passive/outgoing mixed-port correction is not barrier softening.
+It is dissipative loading in exactly the sense the 4D/plasma ontology suggested.
+
+This is the Stage-203 phase-lag no-go theorem.
+
+---
+
+## 7. What still survives: the resonant dispersive corridor
+
+The previous section kills the naive dynamic story:
+
+> the first passive/outgoing dynamic correction is not a new attractive contribution.
+> It is pure quadrature at linear order.
+
+So the only linear dynamic corridor left is the **even dispersive** dependence already present in the conservative coefficients through
+\[
+K_B(\omega),
+\qquad
+A(\omega),
+\qquad
+W(\omega),
+\]
+and therefore through the conservative denominator pair
+\[
+\Delta_0(\omega)=\bigl(\Omega_U^2-\omega^2\bigr)\bigl(\Omega_W^2-\omega^2\bigr)-R^2,
+\]
+\[
+D_0(\omega)=K_B(\omega)-\frac{Q_0(\omega)}{\Delta_0(\omega)},
+\qquad
+Q_0(\omega):=Q_\Pi(\omega)\big|_{\Pi=0}.
+\]
+
+Away from poles this is only an even analytic deformation of the static coefficients.
+Only near zeros of `\Delta_0` or `D_0` can the real in-phase response be parametrically amplified.
+But those are exactly the regions where the same transfer factors also amplify `\mathcal T_J` and therefore the absorptive channel once the passive/outgoing port is restored.
+
+So the linear dynamic survival gate is no longer a kernel-class question.
+It is the following resonance test:
+
+> can the real dispersive enhancement of the already-known short-range attractive families become large enough **before** the absorptive / leakage channel simply turns the mechanism into disguised heating or branch loss?
+
+That is the correct Stage-203 meaning of “resonant survival.”
+The full residue/linewidth tradeoff is deferred to the next stage.
+
+---
+
+## 8. Updated reduced barrier audit after Stage 203
+
+At linear monochromatic order the same-charge audit potential is best written as the **real** part of the driven response correction:
+\[
+\widetilde V_{\rm audit}^{(3)}(x,\omega)
+=
+\frac{1}{x}\Bigl(1+\frac12 e^{-2\kappa x}\Bigr)
+-
+3\alpha_6\,\mathcal G_6(x)
+-
+\alpha_2\frac{e^{-4\kappa x}}{x^2}
++
+\Re\,\mathfrak V_{\rm mix}(x,\omega),
+\]
+with
+\[
+\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\left[
+\frac{\mathcal C_6(\omega)}{x^6}
++
+2\mathcal C_4(\omega)\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2(\omega)\frac{e^{-4\kappa x}}{x^2}
+\right].
+\]
+The pumping / leakage diagnostic is
+\[
+\boxed{
+\overline P_{\rm abs}(x,\omega)
+=
+-\omega\,\Im\mathfrak V_{\rm mix}(x,\omega).
+}
+\]
+
+So any linear dynamic claim now has to clear **both** tests:
+
+1. `\Re\,\mathfrak V_{\rm mix}` must materially reduce the barrier,
+2. `\overline P_{\rm abs}` must stay small enough that the effect is not just covert heating / leakage.
+
+That is the first honest dynamic kill test.
+
+---
+
+## 9. Best current summary after Stage 203
+
+Stage 203 closes the first honest **linear dynamic** same-charge audit of the one-port moving-throat mixed bundle.
+
+- The dynamic reduced bundle is an exact `3 x 3` frequency-domain system with determinant `\Delta_\Pi D_\Pi`.
+- At zero frequency with `\Pi(0)=0`, it reduces exactly to the Stage-202 static bundle.
+- For the first primitive same-charge source families, the linear dynamic bundle still produces only
+  \[
+  x^{-6},\qquad e^{-2\kappa x}/x^4,\qquad e^{-4\kappa x}/x^2.
+  \]
+- Time dependence only makes their coefficients complex and frequency dependent; it does **not** introduce a new spatial kernel family.
+- The first passive/outgoing correction is exactly pure phase lag:
+  \[
+  \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+  \qquad
+  \overline P_{\rm abs}^{(1)}=\frac{\omega\Gamma}{2}\mathcal T_J^2\ge0.
+  \]
+- Therefore the only surviving linear dynamic corridor is resonant dispersive enhancement of the already-known short-range families, and that corridor must defeat its own absorptive load to count as real barrier engineering.
+
+So the dynamic mixed-port idea survives, but only as a narrow resonance / quality-factor problem, not as a linear monochromatic barrier-bypass law.
+
+---
+
+## 10. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+1. the determinant identity
+   \[
+   \det \mathcal K_{\rm dyn}=\Delta_\Pi D_\Pi,
+   \]
+2. the exact static reduction back to the Stage-202 one-port bundle,
+3. the exact inverse-entry formulas,
+4. the exact dynamic susceptibility formula
+   \[
+   \mathfrak V_{\rm mix}=-\tfrac12 J^T\mathcal K_{\rm dyn}^{-1}J,
+   \]
+5. the collinear-source factorization theorem,
+6. the primitive-source product-family theorem preserving the `x^{-6}`, `e^{-2\kappa x}/x^4`, and `e^{-4\kappa x}/x^2` families,
+7. the exact outgoing-port derivative identity
+   \[
+   \partial_\Pi \mathfrak V_{\rm mix}=-\tfrac12\mathcal T_J^2,
+   \]
+8. the linear outgoing correction
+   \[
+   \delta\mathfrak V_{\rm mix}^{(1)}=-\tfrac{i}{2}\Gamma\mathcal T_J^2,
+   \]
+9. and the phase-lag consequence
+   \[
+   \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+   \qquad
+   \overline P_{\rm abs}^{(1)}>0
+   \]
+   on a constructive off-pole slice.
+
+Supporting file:
+- `moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py`
+
+---
+
+## 11. Immediate next step
+
+The next theorem gate is now very sharp.
+
+1. Keep the exact Stage-203 dynamic one-port kernel.
+2. Move to the local simple-pole / linewidth normal form near the first admissible internal resonances.
+3. Quantify the residue-to-linewidth tradeoff between
+   \[
+   -\Re\,\mathfrak V_{\rm mix}
+   \]
+   and
+   \[
+   \overline P_{\rm abs}.
+   \]
+4. Ask whether any resonance window gives a materially larger conservative reshaping before absorptive loading takes over.
+
+That is the cleanest continuation point after the phase-lag no-go theorem and the first resonant-survival gate.
+
+=== moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 204: Resonance/Linewidth Tradeoff, the Dispersive No-Free-Lunch Theorem, and the Linear Survival Window
+
+## Status
+
+**Exact within the carried isotropic one-port wall/BdG/Maxwell/mixed closure, once one expands near a simple conservative pole**
+\[
+F_0(\omega_*)=0,
+\qquad
+F_0'(\omega_*)\neq 0,
+\]
+and, for the wall-like specialization,
+\[
+D_0(\omega_*)=0,
+\qquad
+\Delta_0(\omega_*)\neq 0.
+\]
+
+The local line-shape statements are exact to first order in detuning and passive/outgoing dressing after this normal form is taken. The accompanying SymPy audit verifies the line-shape algebra on a sign-fixed local slice
+\[
+F_0'(\omega_*)>0,
+\qquad
+D_0'(\omega_*)>0,
+\]
+and the absolute-value forms quoted below follow immediately by restoring magnitudes at the end.
+
+This stage is the first post-Stage-203 resonance/linewidth insertion of actual mixed-port pole logic into the now-closed local mixed-ray ledger.
+It does **not** solve the full driven two-throat moving PDE.
+It computes the exact local resonance theorem implied by the one-port mixed bundle and reduces the linear dynamic survival question to one residue-to-linewidth inequality.
+
+---
+
+## Purpose
+
+Stage 203 killed the naive dynamic story but left one narrow escape hatch alive:
+
+> perhaps a **resonant dispersive** mixed-sector window can amplify the already-known short-range attractive families enough to matter before the same pole simply turns into absorptive pumping / leakage.
+
+The job of Stage 204 is not to solve the full driven PDE.
+It is much sharper:
+
+1. isolate the local simple-pole normal form of the dynamic one-port mixed bundle,
+2. derive the exact relation between conservative dispersive gain and absorptive load,
+3. specialize that relation to the wall-like pole of the Stage-203 bundle,
+4. and state the first honest **linear survival window**.
+
+The main outputs are:
+
+1. the exact local Breit–Wigner normal form of the reduced susceptibility near a simple conservative pole,
+2. the exact wall-like specialization in which the same outgoing transfer factor that helps the quadrupole bridge also widens the wall pole,
+3. the exact resonance tradeoff theorem
+   \[
+   \frac{|\Re\chi_*|}{|\Im\chi_*|}=\frac{|\delta|}{\gamma_*},
+   \]
+4. the exact no-free-lunch optimum
+   \[
+   \max |\Re\chi_*|=\frac{|A_*|}{2\gamma_*}
+   \]
+   at equal conservative and absorptive strength,
+5. the exact low-loss bound
+   \[
+   \sup_{|\Im\chi_*|\le \eta|\Re\chi_*|}|\Re\chi_*|
+   =
+   \frac{|A_*|}{\gamma_*}\frac{\eta}{1+\eta^2},
+   \]
+6. and the resulting linear survival window
+   \[
+   \frac{|A_j|}{\gamma_*}\frac{\eta}{1+\eta^2}S_j(x)^2
+   \ge
+   2\,\Delta V_{\rm req}(x)
+   \]
+   as the first honest low-loss gate for any linear resonant same-charge claim.
+
+So Stage 204 keeps the dynamic same-charge idea alive, but only as a **residue-to-linewidth** question on one of the already-known short-range families.
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Dynamic one-port bundle from Stage 203
+
+The Stage-203 dynamic reduced correction has the exact collinear-source form
+\[
+\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\,\chi_s(\omega)\,\mathcal S(x,\omega)^2,
+\qquad
+\chi_s(\omega)=\frac{\mathcal N_s(\omega)}{\Delta_\Pi(\omega)\,D_\Pi(\omega)}.
+\]
+
+For the primitive same-charge source families
+\[
+\mathcal S_Q(x)=\frac1{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+\]
+the spatial kernel class is already frozen:
+\[
+\mathfrak V_{\rm mix}(x,\omega)
+=
+-\frac12\left[
+\frac{\mathcal C_6(\omega)}{x^6}
++
+2\mathcal C_4(\omega)\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2(\omega)\frac{e^{-4\kappa x}}{x^2}
+\right].
+\]
+
+So Stage 204 is **not** about inventing a new spatial family.
+It is about what the local pole structure can do to the coefficients of the existing short-range families.
+
+### 1.2 Why the pole analysis is the right next move
+
+The parent `4+1` / plasma ontology keeps the mixed-sector variables
+\[
+A_w,
+\qquad
+F_{\mu w},
+\qquad
+J^w
+\]
+alive beyond the strict far-field brane reduction, and the moving-throat / 5PN stack has already narrowed the remaining weak-axisymmetric grouped payload to the outgoing-prefactor side.
+So once the static and first dynamic no-gos are accepted, the only linear corridor left is a mixed-sector **resonant** one.
+
+---
+
+## 2. Exact simple-pole normal form
+
+Let
+\[
+F_\Pi(\omega):=\Delta_\Pi(\omega)\,D_\Pi(\omega)
+\]
+be the full dynamic denominator entering the reduced susceptibility.
+Suppose the conservative branch has a simple real pole at \(\omega=\omega_*\):
+\[
+F_0(\omega_*)=0,
+\qquad
+F_0'(\omega_*)\neq 0,
+\qquad
+F_0:=F_\Pi\big|_{\Pi=0}.
+\]
+
+Define the outgoing-port sensitivity
+\[
+Z_*:=-\partial_\Pi F_\Pi(\omega)\big|_{(\omega_*,\,\Pi=0)}.
+\]
+Then to first order in detuning
+\[
+\delta:=\omega-\omega_*,
+\]
+and to first order in the passive/outgoing port,
+\[
+F_\Pi(\omega)
+=
+F_0'(\omega_*)\,\delta
+-
+\Pi(\omega_*)\,Z_*
++
+O(\delta^2,\Pi\delta,\Pi^2).
+\]
+
+If the port is passive,
+\[
+\Pi(\omega_*)=i\,\Gamma_*,
+\qquad
+\Gamma_*\ge 0,
+\]
+then every reduced coefficient near that pole has the universal Breit–Wigner form
+\[
+\boxed{
+\chi_s(\omega)
+\approx
+\frac{A_*}{\delta-i\gamma_*},
+\qquad
+A_*:=\frac{\mathcal N_s(\omega_*)}{F_0'(\omega_*)},
+\qquad
+\gamma_*:=\frac{\Gamma_* Z_*}{|F_0'(\omega_*)|}.
+}
+\]
+
+So the whole linear resonance problem collapses to two real scalars:
+
+- the signed residue scale \(A_*\),
+- the positive linewidth \(\gamma_*\).
+
+---
+
+## 3. Specialization to the wall-like pole
+
+The Stage-203 one-port bundle is controlled by the reduced wall denominator
+\[
+D_\Pi(\omega)
+=
+K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)}.
+\]
+
+The exact Stage-203 derivative identity is
+\[
+\partial_\Pi D_\Pi(\omega)=-N(\omega),
+\qquad
+N(\omega)=\frac{P(\omega)^2}{\Delta_\Pi(\omega)^2}.
+\]
+
+So at a **wall-like** conservative pole
+\[
+D_0(\omega_*)=0,
+\qquad
+\Delta_0(\omega_*)\neq 0,
+\]
+one has the local normal form
+\[
+D_\Pi(\omega)
+=
+D_0'(\omega_*)\,\delta
+-
+\Pi(\omega_*)\,N_*
++
+O(\delta^2,\Pi\delta,\Pi^2),
+\qquad
+N_*:=N(\omega_*).
+\]
+
+Therefore the wall susceptibility itself is
+\[
+\chi_{qq}(\omega)
+=
+\frac1{D_\Pi(\omega)}
+\approx
+\frac{1}{D_0'(\omega_*)}\,
+\frac1{\delta-i\gamma_{\rm wall}},
+\qquad
+\gamma_{\rm wall}:=\frac{\Gamma_* N_*}{|D_0'(\omega_*)|}.
+\]
+
+This is the first exact dynamic self-limiting statement of the audit:
+
+> the same transfer factor \(N_*\) that helps the outgoing quadrupole bridge also widens the wall pole once the passive/outgoing port is restored.
+
+So a larger transfer strength is not a free win.
+It simultaneously increases the linewidth that weakens the dispersive amplification.
+
+---
+
+## 4. Exact dispersive/absorptive tradeoff theorem
+
+Now write the universal local line shape as
+\[
+\chi_*(\omega)=\frac{A_*}{\delta-i\gamma_*},
+\qquad
+\gamma_*>0.
+\]
+
+Rationalizing the denominator gives
+\[
+\chi_*(\omega)
+=
+A_*\frac{\delta+i\gamma_*}{\delta^2+\gamma_*^2}.
+\]
+
+So the conservative and absorptive pieces are exactly
+\[
+\Re\chi_*(\omega)=A_*\frac{\delta}{\delta^2+\gamma_*^2},
+\qquad
+\Im\chi_*(\omega)=A_*\frac{\gamma_*}{\delta^2+\gamma_*^2}.
+\]
+
+Introduce the dimensionless detuning ratio
+\[
+r:=\frac{|\delta|}{\gamma_*}.
+\]
+Then the line-shape magnitudes collapse to
+\[
+|\Re\chi_*|
+=
+\frac{|A_*|}{\gamma_*}\,\frac{r}{1+r^2},
+\qquad
+|\Im\chi_*|
+=
+\frac{|A_*|}{\gamma_*}\,\frac{1}{1+r^2},
+\]
+and therefore
+\[
+\boxed{
+\frac{|\Re\chi_*|}{|\Im\chi_*|}=r.
+}
+\]
+
+So the ratio of useful conservative reshaping to absorptive loading is **nothing but the detuning in linewidth units**.
+
+### 4.1 Exact maximum of the conservative line shape
+
+The dispersive factor
+\[
+f(r):=\frac{r}{1+r^2}
+\]
+obeys the exact identity
+\[
+f(r)-\frac12
+=
+-\frac{(r-1)^2}{2(1+r^2)}.
+\]
+So the exact maximum occurs at
+\[
+r=1,
+\qquad
+\text{i.e.}
+\qquad
+|\delta|=\gamma_*.
+\]
+At that point
+\[
+\boxed{
+\max_r |\Re\chi_*|
+=
+\frac{|A_*|}{2\gamma_*},
+}
+\]
+and simultaneously
+\[
+\boxed{
+|\Re\chi_*|=|\Im\chi_*|.
+}
+\]
+
+This is the cleanest no-free-lunch theorem in the linear audit:
+
+> the largest possible conservative dispersive enhancement appears precisely where the absorptive load is of the same size.
+
+### 4.2 Exact low-loss bound
+
+Suppose one demands that the absorptive part be at most a fraction \(\eta\) of the conservative part:
+\[
+|\Im\chi_*|\le \eta\,|\Re\chi_*|,
+\qquad
+0<\eta\le 1.
+\]
+Using \(|\Re|/|\Im|=r\), this is equivalent to
+\[
+r\ge \frac1\eta.
+\]
+The exact comparison identity is
+\[
+\frac{r}{1+r^2}-\frac{\eta}{1+\eta^2}
+=
+-\frac{(r-\eta)(\eta r-1)}{(1+r^2)(1+\eta^2)}.
+\]
+So on the low-loss domain \(r\ge 1/\eta\) with \(0<\eta\le 1\), the right-hand side is nonpositive and the largest conservative magnitude allowed by that low-loss condition occurs at the boundary \(r=1/\eta\). Therefore
+\[
+\boxed{
+\sup_{\,|\Im\chi_*|\le \eta|\Re\chi_*|}\,|\Re\chi_*|
+=
+\frac{|A_*|}{\gamma_*}\,
+\frac{\eta}{1+\eta^2}.
+}
+\]
+For small \(\eta\),
+\[
+\frac{\eta}{1+\eta^2}=
+\eta-\eta^3+O(\eta^5).
+\]
+So in a genuinely low-loss window, the best linear conservative enhancement scales only **linearly** with the allowed loss fraction.
+
+This is the central Stage-204 theorem.
+
+---
+
+## 5. Barrier language and absorbed-power language
+
+Take one of the already-frozen spatial families \(S_j(x)\) from Stage 203.
+Near a simple pole its coefficient has the local form
+\[
+\chi_j(\omega)\approx \frac{A_j}{\delta-i\gamma_*}.
+\]
+
+Then the in-phase barrier reshaping contribution is
+\[
+U_j^{\rm disp}(x,\omega)
+=
+-\frac12\,\Re\chi_j(\omega)\,S_j(x)^2,
+\]
+while the out-of-phase absorbed-power diagnostic is
+\[
+\overline P_j(x,\omega)
+=
+-\omega\,\Im\mathfrak V_j(x,\omega)
+=
+\frac{\omega}{2}\,|\Im\chi_j(\omega)|\,S_j(x)^2.
+\]
+
+So the exact tradeoff becomes
+\[
+\boxed{
+\frac{\overline P_j(x,\omega)}{\omega\,|U_j^{\rm disp}(x,\omega)|}
+=
+\frac{|\Im\chi_j|}{|\Re\chi_j|}
+=
+\frac1r
+=
+\frac{\gamma_*}{|\delta|}.
+}
+\]
+
+This makes the physical reading completely transparent:
+
+- **on resonance** \((\delta=0)\), the conservative reshaping vanishes and the response is purely absorptive;
+- **at the dispersive optimum** \((|\delta|=\gamma_*)\), the power load and the conservative barrier term are locked one-to-one;
+- **in a low-loss window** \((|\delta|\gg\gamma_*)\), the absorptive fraction is smaller, but the conservative gain is proportionally suppressed.
+
+---
+
+## 6. Quality-factor form and the exact linear survival window
+
+Introduce the local quality factor
+\[
+Q_*:=\frac{\omega_*}{2\gamma_*}.
+\]
+Then
+\[
+\frac{|\delta|}{\omega_*}=\frac{r}{2Q_*}.
+\]
+So if one imposes the same low-loss condition
+\[
+|\Im\chi_*|\le \eta|\Re\chi_*|,
+\]
+the exact detuning requirement becomes
+\[
+\boxed{
+\frac{|\omega-\omega_*|}{\omega_*}
+\ge
+\frac{1}{2Q_*\eta}.
+}
+\]
+
+This says the clean dispersive corridor is only parametrically easy when the actual branch provides a large enough quality factor.
+
+Now let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\) for one spatial family \(S_j(x)\) to matter.
+Inside the same low-loss window, the exact Stage-204 bound implies
+\[
+|U_j^{\rm disp}(x,\omega)|
+\le
+\frac12\,\frac{|A_j|}{\gamma_*}\,
+\frac{\eta}{1+\eta^2}
+S_j(x)^2.
+\]
+Therefore a necessary low-loss **linear survival condition** is
+\[
+\boxed{
+\frac{|A_j|}{\gamma_*}
+\frac{\eta}{1+\eta^2}
+S_j(x)^2
+\ge
+2\,\Delta V_{\rm req}(x)
+}
+\]
+for at least one admissible pole and at least one detuning with the sign chosen so that \(-\Re\chi_j\,S_j(x)^2\) actually lowers the same-charge barrier.
+Equivalently,
+\[
+\boxed{
+\frac{|A_j|}{\gamma_*}
+\ge
+\frac{2\,\Delta V_{\rm req}(x)}{S_j(x)^2}
+\frac{1+\eta^2}{\eta}.
+}
+\]
+
+So the linear resonant corridor is now completely explicit: it lives or dies on whether the actual branch can provide a sufficiently large **residue-to-linewidth ratio** on one of the already-known short-range families.
+
+---
+
+## 7. What survives after Stage 204
+
+Stage 203 already proved that linear monochromatic driving never creates a new spatial family.
+Stage 204 now adds the exact resonance theorem.
+
+### 7.1 What is dead
+
+The following picture is now strongly disfavored:
+
+> tune a monochromatic mixed-sector drive to resonance and obtain a large conservative barrier reduction without paying a comparable pumping / leakage price.
+
+That does not happen at linear order.
+
+- On resonance the effect is purely absorptive.
+- At the point of maximal conservative gain the absorptive and conservative pieces are equal in magnitude.
+- In lower-loss windows the best achievable conservative gain is bounded by
+  \[
+  \frac{|A_*|}{\gamma_*}\frac{\eta}{1+\eta^2}.
+  \]
+
+So there is no linear resonant “free lunch.”
+
+### 7.2 What is still alive
+
+A linear dynamic corridor still survives, but only in the narrow form:
+
+1. one of the already-known short-range families must already be spatially relevant in the tunneling region,
+2. the actual PDE branch must supply a pole with sufficiently large \(|A_*|/\gamma_*|\),
+3. the detuning must remain inside an admissible low-loss window set by the same quality-factor bound above,
+4. and that branch must remain admissible under the same outgoing / grouped / branch constraints already frozen earlier.
+
+So after Stage 204, the dynamic same-charge route lives or dies on a **residue-to-linewidth** question, not on a generic resonance slogan.
+
+---
+
+## 8. Best current verdict after Stage 204
+
+The idea is still alive, but it has narrowed again.
+
+- Stage 201 closed the local mixed-ray search sieve.
+- Stage 202 killed the hope for a brand-new static mixed-sector spatial law.
+- Stage 203 killed the linear outgoing-phase shortcut.
+- Stage 204 now kills the naive “resonance fixes it” shortcut.
+
+What survives is only this:
+
+> a high-quality mixed-sector pole could still amplify one of the already-existing short-range attractive families enough to matter, but only if its residue-to-linewidth ratio is large enough to overcome the exact low-loss tradeoff bound.
+
+That is a real theorem gate, not a slogan.
+
+---
+
+## 9. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+1. the generic simple-pole reduction
+   \[
+   \chi_s(\omega)\approx \frac{A_*}{\delta-i\gamma_*},
+   \]
+   from the local denominator normal form
+   \[
+   F_\Pi(\omega)=F_0'(\omega_*)\,\delta-\Pi(\omega_*)Z_*,
+   \]
+   on a sign-fixed slice,
+2. the exact Stage-203 derivative identity
+   \[
+   \partial_\Pi D_\Pi(\omega)=-N(\omega),
+   \]
+3. the wall-like pole specialization
+   \[
+   \chi_{qq}(\omega)\approx \frac{1}{D_0'(\omega_*)}\frac{1}{\delta-i\gamma_{\rm wall}},
+   \]
+4. the exact real/imaginary line-shape formulas,
+5. the exact resonance optimum
+   \[
+   \max |\Re\chi_*|=\frac{|A_*|}{2\gamma_*}
+   \]
+   at \(r=1\),
+6. the exact low-loss factorization identity
+   \[
+   \frac{r}{1+r^2}-\frac{\eta}{1+\eta^2}
+   =-
+   \frac{(r-\eta)(\eta r-1)}{(1+r^2)(1+\eta^2)},
+   \]
+7. the barrier/absorbed-power ratio
+   \[
+   \frac{\overline P_j}{\omega |U_j^{\rm disp}|}=\frac{\gamma_*}{|\delta|},
+   \]
+8. the quality-factor detuning bound
+   \[
+   \frac{|\omega-\omega_*|}{\omega_*}\ge \frac{1}{2Q_*\eta},
+   \]
+9. and the linear survival-window inequality in its residue-to-linewidth form.
+
+Supporting file:
+- `moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py`
+
+---
+
+## 10. Immediate next step
+
+The continuation point is now very sharp.
+
+1. Keep the exact Stage-203 dynamic one-port bundle.
+2. Choose an explicit primitive branch family for
+   \[
+   K,\ M,\ C,\ \varpi,\ \Omega_U,\ \Omega_W,\ G_U,\ G_W,\ R.
+   \]
+3. Compute the first actual pole locations \(\omega_*\), residues \(A_*\), and linewidths \(\gamma_*\).
+4. Compare
+   \[
+   \frac{|A_*|}{\gamma_*}\frac{\eta}{1+\eta^2}
+   \]
+   against the barrier-softening size demanded by the reduced same-charge problem.
+
+That is the smallest honest continuation point after the resonance/linewidth audit.
+
+=== moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 205: Concrete Finite-Throat Primitive Branch, Pole Census, and the Residue/Linewidth Survival Test
+
+## Status
+
+**Exact within the carried isotropic finite-throat primitive one-port wall/BdG/Maxwell/mixed closure** once the lowest N/N wall/U profile and the lowest D/N half-wave support/W profile are fixed.
+
+The quartic pole polynomial, the wall-like residue/linewidth cancellation, and the low-loss survival gate are exact inside that reduced closure. The explicit pole census and the outgoing-leg scan below are illustrative evaluations on one admissible sample slice of the same exact formulas.
+
+This stage is the first post-Stage-204 insertion of an actual primitive finite-throat branch into the local mixed-port resonance ledger. It does **not** solve the full driven two-throat PDE. It computes the first concrete pole census and turns the linear same-charge dynamic question into one explicit branch inequality.
+
+---
+
+## Purpose
+
+Stage 204 reduced the linear dynamic corridor to one exact question:
+
+> can an admissible pole of the mixed one-port bundle produce a large enough residue-to-linewidth ratio to matter in the tunneling region before the same pole is dominated by absorptive loading?
+
+The next honest move is therefore not another generic resonance slogan. It is to choose one **explicit primitive branch family**, compute the first actual poles, and write the survival test in direct branch data.
+
+The main outputs are:
+
+1. one concrete finite-throat primitive branch built from the lowest N/N wall/U profile and the lowest D/N half-wave support/W profile,
+2. the exact quartic pole polynomial of the conservative one-port bundle,
+3. the exact simple-pole cancellation
+   \[
+   \mathcal R_{Q,*}:=\frac{|A_{Q,*}|}{\gamma_*}
+   =
+   \frac{27c_s^5}{a^5\omega_*^5N(\omega_*)},
+   \]
+   for the pure quadrupolar same-charge family,
+4. the exact low-loss survival inequality against a required local barrier reduction,
+5. one explicit numerical pole census,
+6. and the first clean evidence of a **static/dynamic tension**: strengthening the static outgoing prefactor makes the linear dynamic residue/linewidth corridor worse on the same branch family.
+
+So Stage 205 keeps the dynamic same-charge idea alive, but only in a much narrower and more branch-specific form.
+
+---
+
+## 1. Frozen input carried forward
+
+The parent `4+1` / plasma ontology keeps the mixed channels
+\[
+A_w,\qquad F_{\mu w},\qquad J^w
+\]
+alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live in the mixed sector rather than in pure brane Maxwell shaping.
+
+Stage 204 already showed that the only linear corridor left is a **resonant dispersive** one. Near a wall-like pole of the dynamic one-port bundle, the local susceptibility takes the normal form
+\[
+\chi_{qq}(\omega)
+\approx
+\frac{A_{qq,*}}{\delta-i\gamma_*},
+\qquad
+\delta=\omega-\omega_*,
+\]
+with the low-loss bound
+\[
+\sup_{|\Im\chi|\le \eta|\Re\chi|}|\Re\chi|
+=
+\frac{|A_{qq,*}|}{\gamma_*}\frac{\eta}{1+\eta^2},
+\qquad 0<\eta\le 1.
+\]
+So the next question is no longer whether a new spatial kernel class exists. It is whether an explicit admissible pole can make the already-known quadrupolar family large enough **before** passive/outgoing widening destroys the gain.
+
+---
+
+## 2. Concrete primitive finite-throat branch
+
+Fix the finite throat interval
+\[
+s\in[0,L].
+\]
+Use the lowest N/N zero mode for the wall and the brane-like internal coordinate,
+\[
+u_0(s)=\frac1{\sqrt L},
+\]
+and the lowest D/N half-wave for the trapped support and mixed coordinate,
+\[
+f_0(s)=\sqrt{\frac2L}\,\sin\frac{\pi s}{2L}.
+\]
+Then the exact overlap constant is
+\[
+\kappa:=\int_0^L u_0(s)f_0(s)\,ds=\frac{2\sqrt2}{\pi}.
+\]
+
+On this primitive branch the overlap-renormalized one-port couplings are
+\[
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R.
+\]
+
+The conservative dynamic one-port wall/BdG/Maxwell/mixed bundle is therefore
+\[
+K_B(\omega)=K-M\omega^2-\frac{C^2}{\varpi^2-\omega^2},
+\]
+\[
+A(\omega)=\Omega_U^2-\omega^2,
+\qquad
+W(\omega)=\Omega_W^2-\omega^2,
+\]
+\[
+\Delta(\omega)=A(\omega)W(\omega)-R^2,
+\]
+\[
+Q(\omega)=G_U^2W(\omega)+2G_UG_WR+G_W^2A(\omega),
+\]
+\[
+D(\omega)=K_B(\omega)-\frac{Q(\omega)}{\Delta(\omega)}.
+\]
+
+The static admissibility conditions are the same as before:
+\[
+\Delta_0>0,
+\qquad
+D_0>0,
+\]
+with
+\[
+\Delta_0=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+D_0=K-\frac{C^2}{\varpi^2}-\frac{Q_0}{\Delta_0}.
+\]
+
+---
+
+## 3. Exact quartic pole polynomial
+
+Write
+\[
+y=\omega^2.
+\]
+Then the conservative pole condition is exactly the quartic equation
+\[
+F(y)=0,
+\]
+with
+\[
+F(y)=
+\Bigl((K-My)(\varpi^2-y)-C^2\Bigr)
+\Bigl((\Omega_U^2-y)(\Omega_W^2-y)-R^2\Bigr)
+-
+(\varpi^2-y)
+\Bigl(G_U^2(\Omega_W^2-y)+2G_UG_WR+G_W^2(\Omega_U^2-y)\Bigr).
+\]
+
+Equivalently,
+\[
+D(\omega)=\frac{F(\omega^2)}{(\varpi^2-\omega^2)\,\Delta(\omega)}.
+\]
+So the primitive finite-throat one-port branch has exactly four conservative poles in the generic admissible case.
+
+This is already a major narrowing. We are no longer talking about a vague resonance landscape, but about one explicit quartic pole census.
+
+---
+
+## 4. Exact residue/linewidth cancellation
+
+For a simple conservative wall-like pole \(\omega_*\) with
+\[
+D_0(\omega_*)=0,
+\qquad
+D_0'(\omega_*)\neq 0,
+\qquad
+\Delta(\omega_*)\neq 0,
+\]
+attach the passive outgoing quadrupole port
+\[
+\Pi_{\rm out}(\omega)=i\Gamma_5\omega^5,
+\qquad
+\Gamma_5=\frac{a^5}{27c_s^5}.
+\]
+
+The exact outgoing transfer factor on the primitive branch is
+\[
+N(\omega)=\frac{P(\omega)^2}{\Delta(\omega)^2},
+\qquad
+P(\omega)=A(\omega)G_W+RG_U.
+\]
+
+For the wall susceptibility
+\[
+\chi_{qq}(\omega)=\frac1{D_\Pi(\omega)},
+\]
+Stage 204 gives the local normal form
+\[
+\chi_{qq}(\omega)
+\approx
+\frac{1/D_0'(\omega_*)}{\delta-i\gamma_*},
+\qquad
+\gamma_*=
+\frac{\Gamma_5\omega_*^5N(\omega_*)}{|D_0'(\omega_*)|}.
+\]
+Therefore the simple-pole residue and linewidth satisfy
+\[
+|A_{qq,*}|=\frac1{|D_0'(\omega_*)|},
+\qquad
+\gamma_*=
+\frac{\Gamma_5\omega_*^5N(\omega_*)}{|D_0'(\omega_*)|},
+\]
+so the derivative cancels out exactly:
+\[
+\boxed{
+\mathcal R_{qq,*}:=\frac{|A_{qq,*}|}{\gamma_*}
+=
+\frac{1}{\Gamma_5\omega_*^5N(\omega_*)}
+=
+\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)}.
+}
+\]
+
+For the **pure quadrupolar same-charge family**
+\[
+S_Q(x)=\frac1{x^3},
+\]
+the reduced barrier contribution is
+\[
+\mathfrak V_Q(x,\omega)=-\frac12\chi_{qq}(\omega)\frac1{x^6},
+\]
+so the same exact ratio controls the useful conservative coefficient:
+\[
+\boxed{
+\mathcal R_{Q,*}=\mathcal R_{qq,*}
+=
+\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)}.
+}
+\]
+
+This is the first truly branch-level simplification of the dynamic same-charge problem. The residue-to-linewidth figure is controlled only by
+
+1. the pole frequency \(\omega_*\), and
+2. the exact outgoing transfer factor \(N(\omega_*)\).
+
+Everything else cancels out.
+
+---
+
+## 5. Exact low-loss survival inequality
+
+Let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\), and impose the same low-loss condition as in Stage 204,
+\[
+|\Im\chi|\le \eta|\Re\chi|,
+\qquad 0<\eta\le 1.
+\]
+Then the maximum conservative line shape allowed in that window is
+\[
+|\Re\chi|_{\max,\eta}
+=
+\frac{|A_*|}{\gamma_*}\frac{\eta}{1+\eta^2}.
+\]
+For the pure quadrupolar family this gives the exact local survival criterion
+\[
+\frac12\,\mathcal R_{Q,*}\,\frac{\eta}{1+\eta^2}\,\frac1{x^6}
+\ge
+\Delta V_{\rm req}(x).
+\]
+Equivalently,
+\[
+\boxed{
+\mathcal R_{Q,*}
+\ge
+2\,\Delta V_{\rm req}(x)
+\frac{1+\eta^2}{\eta}
+\,x^6.
+}
+\]
+Substituting the exact pole ratio gives the branch-level theorem gate
+\[
+\boxed{
+\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)}
+\ge
+2\,\Delta V_{\rm req}(x)
+\frac{1+\eta^2}{\eta}
+\,x^6.
+}
+\]
+So the linear dynamic corridor lives or dies on one explicit inequality in the primitive branch data.
+
+---
+
+## 6. Explicit numerical primitive slice
+
+Take the admissible sample branch
+\[
+(\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,K,M)
+=
+(0.5,\,0.3,\,0.4,\,0.25,\,1.0,\,1.4,\,2.0,\,3.0,\,1.0)
+\]
+with \(a=c_s=1\).
+
+The overlap-renormalized couplings are
+\[
+C\approx 0.450158158078553,
+\qquad
+G_U=0.3,
+\qquad
+G_W\approx 0.360126526462842,
+\qquad
+R\approx 0.225079079039277.
+\]
+The static branch data are
+\[
+\Delta_0\approx 1.90933940817883,
+\qquad
+D_0\approx 2.76355510933127,
+\]
+\[
+N_0\approx 0.0501661980249591,
+\qquad
+P_0\approx 0.0181527764203328.
+\]
+So the sample slice is statically admissible.
+
+### 6.1 Uncoupled roots
+
+The uncoupled wall/BdG roots are
+\[
+\omega_{\rm wall/BdG}^{(0)}\approx 1.68143182591478,
+\qquad
+2.04274007519334,
+\]
+and the uncoupled internal U/W roots are
+\[
+\omega_{UW}^{(0)}\approx 0.974601723746314,
+\qquad
+1.41779810977117.
+\]
+
+### 6.2 Full conservative pole census
+
+The full quartic pole census is
+
+| pole \(\omega_*\) | type | \(\mathcal R_{Q,*}\) |
+|---:|:---|---:|
+| 0.938272741746754 | internal-like | 18.7069287828307 |
+| 1.39141087653804 | internal-like | 0.380740659074003 |
+| 1.72045371048003 | wall-like | 16.0250330226177 |
+| 2.04539948783659 | wall-like | 32.0025481088465 |
+
+So on this concrete slice the strongest candidate is the **upper wall-like pole**.
+
+---
+
+## 7. Comparison to the illustrative barrier benchmark
+
+Carry forward the same illustrative reduced barrier benchmark at \(x=1\):
+\[
+V_{\rm known}(1)\approx 1.181909222592,
+\qquad
+\epsilon=0.1,
+\qquad
+\Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
+\]
+Since \(S_Q(1)^2=1\), the exact low-loss thresholds are
+\[
+\mathcal R_{Q,*}^{\rm req}(\eta=0.1)
+\approx 21.8545662963584,
+\]
+\[
+\mathcal R_{Q,*}^{\rm req}(\eta=0.3)
+\approx 7.86187368416853.
+\]
+
+### 7.1 Sample-slice verdict
+
+For the lower wall-like pole,
+\[
+\mathcal R_{Q,*}\approx 16.0250,
+\]
+so it
+
+- **fails** the \(10\%\)-loss benchmark,
+- but **passes** the \(30\%\)-loss benchmark.
+
+For the upper wall-like pole,
+\[
+\mathcal R_{Q,*}\approx 32.0025,
+\]
+so it passes both.
+
+So the concrete primitive slice does **not** kill the dynamic corridor. But it also does **not** make it generic. Only part of the pole spectrum on the same branch is actually strong enough.
+
+---
+
+## 8. First static/dynamic tension
+
+Now scan the outgoing-leg coupling \(\lambda_W\) while keeping all other sample parameters fixed. The resulting static prefactor \(P_0\) and upper-wall residue/linewidth figure \(\mathcal R_{Q,*}\) are:
+
+| \(\lambda_W\) | \(P_0\) | \(D_0\) | upper wall \(\omega_*\) | upper wall \(\mathcal R_{Q,*}\) |
+|---:|---:|---:|---:|---:|
+| 0.2 | 0.00594740531769 | 2.82723442158450 | 2.04402272302752 | 145.483858657863 |
+| 0.4 | 0.01815277642033 | 2.76355510933127 | 2.04539948783659 | 32.0025481088465 |
+| 0.6 | 0.03800016314041 | 2.66591349720966 | 2.04793277506821 | 13.6885356356808 |
+| 0.8 | 0.06717078268091 | 2.53430958521967 | 2.05190668889211 | 7.58097126746582 |
+| 1.0 | 0.10847330811048 | 2.36874337336129 | 2.05778339035510 | 4.82738925564702 |
+
+So on this explicit family:
+
+- stronger outgoing coupling raises the static prefactor \(P_0\),
+- but the same move lowers the dynamic residue-to-linewidth figure \(\mathcal R_{Q,*}\).
+
+That is the first clean evidence that the **static outgoing-normalization corridor** and the **linear dynamic low-loss corridor** are in real tension on the same branch family.
+
+---
+
+## 9. What Stage 205 achieves physically
+
+This stage does **not** prove that the same-charge dynamic idea works. But it changes the status materially.
+
+Before this stage, the dynamic corridor lived or died on a generic slogan: “find a pole with a large enough residue-to-linewidth ratio.”
+
+After this stage, we have a much sharper statement:
+
+1. the primitive finite-throat branch gives an exact quartic pole census,
+2. the pure-Q same-charge family has the exact branch-level figure
+   \[
+   \mathcal R_{Q,*}=\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)},
+   \]
+3. the survival test is one explicit inequality in \(\omega_*\) and \(N(\omega_*)\),
+4. and on a concrete admissible slice the corridor is **non-empty**, but only for part of the pole spectrum and only with a real static/dynamic tradeoff.
+
+So the idea survives this stage, but narrowly.
+
+---
+
+## 10. What is still missing
+
+Several things remain outside the scope of this primitive-branch theorem.
+
+1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
+2. **Compatibility with the exact isotropic target surface.** This stage does not yet force the primitive branch onto the 5PN / 2.5PN / 4PN isotropic one-pole and outgoing-normalization surface.
+3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local barrier requirement must be pulled back from the actual same-charge branch.
+
+So the right continuation is not another generic resonance story. It is to ask whether the same primitive branch can remain useful **after** it is forced onto the exact isotropic target surface.
+
+---
+
+## 11. SymPy-backed status
+
+The accompanying SymPy audit verifies all of the concrete algebra used here:
+
+- the exact primitive overlap constant
+  \(\kappa=2\sqrt2/\pi\),
+- the exact quartic pole polynomial of the conservative primitive bundle,
+- the wall-like residue/linewidth cancellation
+  \(\mathcal R_{Q,*}=27c_s^5/(a^5\omega_*^5N(\omega_*))\),
+- the exact low-loss survival threshold,
+- the uncoupled and coupled pole census on the sample slice,
+- the residue/linewidth figures quoted in the table,
+- and the monotone static/dynamic tension under the \(\lambda_W\) scan.
+
+Supporting file:
+
+- `moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py`
+
+---
+
+## 12. Immediate next step
+
+The next clean move is now even sharper than before.
+
+1. Keep the exact primitive finite-throat branch.
+2. Force it onto the exact isotropic one-pole and outgoing-normalization surface.
+3. Recompute the pole census and the survival inequality on that compatible branch.
+4. Then ask whether the resulting compatible branch still has a non-empty dynamic survival window.
+
+That is exactly the Stage-206 theorem gate.
+
+=== moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md ===
+
+
+# Moving-Throat PDE — Stage 206: `5`PN Isotropic Target Surface, Primitive-Branch Compatibility, and the Dynamic Survival Window
+
+## Status
+
+**Exact within the carried isotropic finite-throat primitive one-port wall/BdG/Maxwell/mixed closure** once the exact isotropic one-pole and outgoing-normalization target surface is imposed.
+
+The compatibility equation, the compatible wall stiffness, the compatibility-branch pole census, and the finite dynamic survival windows below are exact inside that reduced closure. The numerical values are exact evaluations on one explicit admissible primitive slice of the same formulas.
+
+This stage does **not** solve the full driven two-throat PDE. It asks a narrower and sharper question: whether the same primitive one-port branch can satisfy the exact isotropic `5`PN target surface **and** still retain a viable linear wall-like same-charge dynamic corridor.
+
+---
+
+## Purpose
+
+Stage 205 showed that the linear same-charge corridor does **not** immediately die on the explicit primitive finite-throat branch. But that result was still too loose, because the primitive slice had not yet been forced onto the exact isotropic target surface already isolated by the `5`PN / `2.5`PN / `4`PN moving-throat endgame.
+
+So the next honest question is:
+
+> if the same primitive one-port branch is required to satisfy the exact isotropic one-pole and outgoing-normalization conditions, does the dynamic same-charge corridor survive or die?
+
+The main outputs are:
+
+1. the exact symbolic compatibility equation between the isotropic one-pole condition and the isotropic outgoing-normalization condition,
+2. its specialization to the explicit primitive finite-throat one-port family,
+3. one concrete compatibility branch on the Stage-205 sample slice,
+4. the resulting compatibility-branch pole census,
+5. and a finite **dynamic survival window** in the branch-compatible target parameter.
+
+So after Stage 206, the problem is no longer merely “find a good pole.” It is:
+
+> can the same branch support a good pole **while also lying on the `5`PN-compatible isotropic target surface**?
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Primitive finite-throat one-port branch from Stage 205
+
+Keep the same explicit finite-throat branch:
+
+- lowest N/N zero mode for the wall and brane-like internal coordinate,
+- lowest D/N half-wave for the trapped support and mixed coordinate,
+- overlap constant
+  \[
+  \kappa=\frac{2\sqrt2}{\pi}.
+  \]
+
+With reduced couplings
+\[
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R,
+\]
+we still have
+\[
+\Delta=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+Q=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\qquad
+P=\Omega_U^2G_W+RG_U.
+\]
+
+The primitive bundle moments are
+\[
+B_0=\frac{C^2}{\varpi^2},
+\qquad
+B_2=\frac{C^2}{\varpi^4},
+\qquad
+B_4=\frac{C^2}{\varpi^6},
+\]
+\[
+Z_0=\frac{Q}{\Delta},
+\qquad
+Z_2=\frac{QS_2-H\Delta}{\Delta^2},
+\qquad
+Z_4=\frac{Q(S_2^2-\Delta)-S_2H\Delta}{\Delta^3},
+\]
+where
+\[
+S_2=\Omega_U^2+\Omega_W^2,
+\qquad
+H=G_U^2+G_W^2,
+\]
+and
+\[
+N_0=\frac{P^2}{\Delta^2}.
+\]
+
+### 1.2 Exact isotropic `5`PN / `2.5`PN target surface
+
+On the isotropic one-port bundle,
+\[
+D_0=K-B_0-Z_0,
+\qquad
+D_2=-(M+B_2+Z_2),
+\qquad
+D_4=-(B_4+Z_4),
+\]
+with normalized conservative response
+\[
+u_2=-\frac{D_2}{D_0},
+\qquad
+u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+\]
+and outgoing prefactor
+\[
+P_0=\frac{N_0}{D_0}.
+\]
+
+The exact isotropic one-pole condition is
+\[
+u_4=4u_2^2
+\iff
+D_0(B_4+Z_4)=3(M+B_2+Z_2)^2.
+\]
+The isotropic outgoing-normalization condition is
+\[
+P_0=P_{0,\mathrm{target}},
+\]
+where for the fully calibrated moving-throat branch
+\[
+P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+\]
+
+In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive branch is compatibility rather than full calibration.
+
+---
+
+## 2. Exact compatibility equation
+
+The one-pole condition solves for the wall stiffness as
+\[
+K_{\mathrm{pole}}
+=
+\frac{3(M+B_2+Z_2)^2}{B_4+Z_4}+B_0+Z_0.
+\]
+The outgoing-normalization condition solves for the same wall stiffness as
+\[
+K_{\mathrm{norm}}
+=
+\frac{N_0}{P_{0,\mathrm{target}}}+B_0+Z_0.
+\]
+
+So simultaneous isotropic one-pole success and isotropic normalization success require
+\[
+K_{\mathrm{pole}}=K_{\mathrm{norm}},
+\]
+which is equivalent to the exact compatibility equation
+\[
+\boxed{
+\frac{N_0}{P_{0,\mathrm{target}}}
+=
+\frac{3(M+B_2+Z_2)^2}{B_4+Z_4}.
+}
+\]
+Equivalently, the primitive branch itself induces the unique branch-compatible target
+\[
+\boxed{
+P_{0,\mathrm{target,compat}}
+=
+\frac{N_0(B_4+Z_4)}{3(M+B_2+Z_2)^2}.
+}
+\]
+
+Two points matter here.
+
+First, this is **not** a generic fit condition. It is the exact consequence of trying to hit the same isotropic target surface from the conservative one-pole side and the outgoing-normalization side.
+
+Second, the compatibility equation does **not** determine every coupling. It tells us whether the primitive branch wants a normalization target that is even compatible with its own conservative one-pole structure.
+
+---
+
+## 3. Primitive specialization of the compatibility equation
+
+Substituting the explicit primitive one-port data gives
+\[
+P_{0,\mathrm{target,compat}}
+=
+\frac{\dfrac{P^2}{\Delta^2}\left(\dfrac{C^2}{\varpi^6}+Z_4\right)}
+{3\left(M+\dfrac{C^2}{\varpi^4}+Z_2\right)^2},
+\]
+or equivalently
+\[
+\boxed{
+\frac{P^2/\Delta^2}{P_{0,\mathrm{target}}}
+=
+\frac{3\left(M+\dfrac{C^2}{\varpi^4}+Z_2\right)^2}
+{\dfrac{C^2}{\varpi^6}+Z_4}.
+}
+\]
+
+So on the primitive family the isotropic `5`PN-compatible surface is already a single explicit algebraic relation in the radial/axial couplings and frequencies.
+
+That is a substantial tightening compared with Stage 205.
+
+---
+
+## 4. Concrete sample compatibility branch
+
+Now specialize to the same Stage-205 sample values
+\[
+(\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+=
+(0.5,\,0.3,\,0.4,\,0.25,\,1.0,\,1.4,\,2.0,\,1.0),
+\]
+with \(a=c_s=1\).
+
+The overlap-renormalized primitive data are
+\[
+C \approx 0.450158158078553,
+\qquad
+G_U = 0.3,
+\qquad
+G_W \approx 0.360126526462842,
+\qquad
+R \approx 0.225079079039277.
+\]
+The static bundle quantities are
+\[
+\Delta \approx 1.90933940817883,
+\qquad
+Q \approx 0.354725283210515,
+\qquad
+P \approx 0.427650250174625,
+\]
+\[
+B_0 \approx 0.0506605918211689,
+\qquad
+B_2 \approx 0.0126651479552922,
+\qquad
+B_4 \approx 0.00316628698882306,
+\]
+\[
+Z_0 \approx 0.185784298847558,
+\qquad
+Z_2 \approx 0.172955320626603,
+\qquad
+Z_4 \approx 0.170825285860668,
+\]
+\[
+N_0 \approx 0.0501661980249591.
+\]
+
+The exact compatibility target on this primitive slice is
+\[
+\boxed{
+P_{0,\mathrm{target,compat}}
+\approx 0.00206979231806289.
+}
+\]
+The corresponding compatibility wall stiffness is
+\[
+\boxed{
+K_{\mathrm{compat}}
+\approx 24.4737548792910.
+}
+\]
+So the compatibility branch is much stiffer than the loose Stage-205 sample branch. Its compatible static denominator is
+\[
+D_{0,\mathrm{compat}}
+=
+K_{\mathrm{compat}}-B_0-Z_0
+\approx 24.2373099886222.
+\]
+
+This is already informative.
+
+The Stage-205 sample branch had
+\[
+P_0\approx 0.0181527764203329,
+\]
+while the same primitive family, when forced onto the exact isotropic one-pole/normalization compatibility surface, wants
+\[
+P_{0,\mathrm{target,compat}}\approx 0.00207.
+\]
+So the `5`PN-compatible branch lives at a much lower static prefactor and a much higher wall stiffness on this primitive slice.
+
+---
+
+## 5. Pole census on the compatibility branch
+
+Using \(K=K_{\mathrm{compat}}\), the conservative pole census is
+\[
+\omega_* \approx 0.971575315129468 \quad (\text{internal-like}),
+\]
+\[
+\omega_* \approx 1.41651290122561 \quad (\text{internal-like}),
+\]
+\[
+\omega_* \approx 1.99753567893361 \quad (\text{wall-like}),
+\]
+\[
+\omega_* \approx 4.94905432364313 \quad (\text{wall-like}).
+\]
+
+The exact pure-quadrupolar residue/linewidth figure remains
+\[
+\mathcal R_{Q,*}
+=
+\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)}.
+\]
+On the compatibility branch the four values are
+\[
+\mathcal R_{Q,*}\approx 0.159888393135835 \quad (\text{internal-like}),
+\]
+\[
+\mathcal R_{Q,*}\approx 0.000806281535937178 \quad (\text{internal-like}),
+\]
+\[
+\mathcal R_{Q,*}\approx 30.1999075602499 \quad (\text{wall-like}),
+\]
+\[
+\mathcal R_{Q,*}\approx 36.1711864832695 \quad (\text{wall-like}).
+\]
+
+So on this concrete `5`PN-compatible branch the dynamic same-charge corridor is **not** carried by the internal poles at all. It is carried entirely by the wall-like poles.
+
+That is already a nontrivial structural simplification.
+
+---
+
+## 6. Dynamic survival window on the compatibility surface
+
+Carry forward the same illustrative local barrier benchmark from Stage 205 at \(x=1\):
+\[
+V_{\mathrm{known}}(1)\approx 1.181909222592,
+\qquad
+\epsilon=0.1,
+\qquad
+\Delta V_{\mathrm{req}}(1)\approx 1.081909222592.
+\]
+Then the required residue/linewidth thresholds are
+\[
+\mathcal R_{Q,*}^{\mathrm{req}}(\eta=0.1)
+\approx 21.8545662963584,
+\]
+\[
+\mathcal R_{Q,*}^{\mathrm{req}}(\eta=0.3)
+\approx 7.86187368416853.
+\]
+
+Now scan \(\lambda_W\) **along the exact compatibility surface**, i.e. always resetting \(K\) to \(K_{\mathrm{compat}}(\lambda_W)\). The resulting branch-compatible target and wall-like residue/linewidth figures are:
+
+| \(\lambda_W\) | \(P_{0,\mathrm{target,compat}}\) | \(K_{\mathrm{compat}}\) | lower wall \(\mathcal R_Q\) | upper wall \(\mathcal R_Q\) |
+|---:|---:|---:|---:|---:|
+| 0.2 | 0.000576970879843 | 29.3158464872314 | 138.814136942081 | 137.502546600713 |
+| 0.4 | 0.002069792318063 | 24.4737548792910 | 30.1999075602499 | 36.1711864832695 |
+| 0.6 | 0.004865681200486 | 21.1544287401845 | 12.8348600273988 | 16.7575510327116 |
+| 0.8 | 0.009169913681573 | 19.0298300900561 | 7.06074242207991 | 9.69035785242054 |
+| 1.0 | 0.014981190324091 | 17.7824591822917 | 4.45922850098679 | 6.30111094469551 |
+
+This scan shows a clean monotonic tradeoff on the explicit compatibility family:
+
+- increasing \(\lambda_W\) raises the branch-compatible static target \(P_{0,\mathrm{target,compat}}\),
+- the same move lowers the required wall stiffness \(K_{\mathrm{compat}}\),
+- and both wall-like dynamic figures \(\mathcal R_Q\) fall monotonically.
+
+So the static/dynamic tension from Stage 205 survives **even after** the branch is forced onto the exact `5`PN isotropic target surface.
+
+### 6.1 Finite survival windows
+
+At the stricter \(10\%\)-loss benchmark,
+
+- the **lower wall** pole survives only up to
+  \[
+  P_{0,\mathrm{target,compat}}
+  \lesssim 0.00283133168555932,
+  \]
+- the **upper wall** pole survives only up to
+  \[
+  P_{0,\mathrm{target,compat}}
+  \lesssim 0.00359651058968466.
+  \]
+
+At the looser \(30\%\)-loss benchmark,
+
+- the **lower wall** pole survives only up to
+  \[
+  P_{0,\mathrm{target,compat}}
+  \lesssim 0.00817339430971383,
+  \]
+- the **upper wall** pole survives only up to
+  \[
+  P_{0,\mathrm{target,compat}}
+  \lesssim 0.0116633929790174.
+  \]
+
+So the dynamic corridor is not generically open on the explicit primitive family. It survives only inside a finite interval of the same branch-compatible target that the isotropic `5`PN surface itself wants.
+
+That is the sharpest same-charge compatibility statement reached so far.
+
+---
+
+## 7. What Stage 206 changes
+
+Stage 206 does **not** prove the same-charge idea works. But it materially tightens the status.
+
+Before this stage, the dynamic corridor lived on a primitive branch that had not yet been forced to satisfy the exact isotropic `5`PN surface.
+
+After this stage, we know four much stronger things.
+
+### 7.1 The primitive branch can be put on the exact isotropic `5`PN surface
+
+The isotropic one-pole and normalization conditions do not conflict abstractly. They reduce to one exact compatibility equation.
+
+### 7.2 The dynamic corridor is not killed automatically by that calibration
+
+On the concrete sample slice, once the branch is moved to the compatibility wall stiffness, both wall-like poles still clear the stricter \(10\%\)-loss benchmark.
+
+### 7.3 The same branch develops a genuine target window
+
+The dynamic corridor survives only for a finite range of the branch-compatible static target. So the eventual PDE-selected normalization cannot be arbitrarily large on this primitive family if the dynamic same-charge corridor is to remain alive.
+
+### 7.4 The wall-like poles are now the only relevant survivors
+
+The internal poles are dynamically irrelevant on the compatibility branch. So the surviving same-charge corridor is a wall-like corridor, not a generic mixed-pole corridor.
+
+---
+
+## 8. Best current verdict after Stage 206
+
+The idea is still alive.
+
+But it is now alive in a much narrower form:
+
+> an explicit primitive finite-throat branch can satisfy the exact isotropic `5`PN compatibility surface **and** still retain a wall-like dynamic same-charge corridor, but only inside a finite branch-compatible normalization window.
+
+So the next honest move is no longer another generic resonance scan. It is:
+
+1. extract the actual branch-compatible normalization target from the moving-throat PDE,
+2. compare it against the finite survival window above,
+3. and see whether the real branch lands inside or outside that window.
+
+That is the next clean kill test.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies:
+
+1. the exact primitive overlap constant
+   \[
+   \kappa=\frac{2\sqrt2}{\pi},
+   \]
+2. the exact isotropic one-pole identity
+   \[
+   u_4-4u_2^2
+   =
+   \frac{D_0(B_4+Z_4)-3(M+B_2+Z_2)^2}{D_0^2},
+   \]
+3. the exact compatibility identity
+   \[
+   \frac{N_0}{P_{0,\mathrm{target,compat}}}
+   =
+   \frac{3(M+B_2+Z_2)^2}{B_4+Z_4},
+   \]
+4. the primitive specialization of \(P_{0,\mathrm{target,compat}}\),
+5. the concrete sample values
+   \[
+   P_{0,\mathrm{target,compat}},
+   \qquad
+   K_{\mathrm{compat}},
+   \qquad
+   D_{0,\mathrm{compat}},
+   \]
+6. the compatibility-branch quartic pole census,
+7. the exact wall-like residue/linewidth figures,
+8. the monotone compatibility-family scan in \(\lambda_W\),
+9. and the four finite survival-window thresholds in \(P_{0,\mathrm{target,compat}}\).
+
+Supporting file:
+- `moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py`
+
+=== moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 207: PDE Branch-Packet Compiler, Weak-Axisymmetric Ceiling Transport, and the First Actual-Branch Kill Test
+
+## Status
+
+**Exact within the carried final `5`PN branch-packet / grouped-prefactor compiler and the transported primitive-family same-charge window closure** once the Stage-206 survival ceilings are taken as frozen inputs.
+
+The compiler from the final branch packet to the actual grouped prefactors, the isotropic and weak-axisymmetric ceiling inequalities, the exact one-scalar reduction
+\[
+\Xi_1=\frac{P_1}{P_0},
+\]
+and the explicit headroom numbers below are exact consequences of that reduced closure. The numerical values are exact evaluations at the Stage-206 compatibility point
+\[
+\bar P_0=P_{0,\mathrm{target,compat}}\approx 0.002069792318062885.
+\]
+
+This stage does **not** solve the full moving-throat PDE. It performs the first honest actual-branch transport step: it converts the final `5`PN branch packet into the exact prefactor variables that the surviving same-charge dynamic window cares about.
+
+---
+
+## Purpose
+
+Stage 206 forced the primitive finite-throat one-port branch onto the exact isotropic `5`PN target surface and found that the wall-like same-charge corridor survives only inside a **finite normalization window**.
+
+But that still left one gap:
+
+> how do we test the **actual** moving-throat / `5`PN branch, rather than the primitive family, against that finite window?
+
+The next honest step is therefore not another primitive scan. It is to compile the real PDE-selected branch data into the same prefactor variables the Stage-206 window uses.
+
+The main outputs are:
+
+1. the exact compiler from the final `5`PN branch packet to the three lane prefactors
+   \[
+   P_0^{(20)},\qquad P_0^{(21)},\qquad P_0^{(22)},
+   \]
+2. the exact isotropic ceiling test in terms of the normalization defect `\Delta_{\rm norm}`,
+3. the exact weak-axisymmetric transported ceiling test in terms of the grouped prefactor defects `a_{P_0},b_{P_0}`,
+4. the exact axisymmetric specialization
+   \[
+   b_{P_0}=3a_{P_0},
+   \qquad
+   \Xi_1=\frac{P_1}{P_0},
+   \]
+5. and the explicit anisotropy headroom left at the Stage-206 compatibility point.
+
+So after Stage 207, the problem is no longer
+
+> “extract the normalization target from the PDE somehow.”
+
+It is now
+
+> “does the actual branch packet land inside one explicit finite corridor in `\Delta_{\rm norm}` and weak-axisymmetric outgoing-prefactor slope?”
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Final `5`PN branch packet
+
+The carried reduced branch verdict packet is
+\[
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+\]
+Its normalization slot is
+\[
+\Delta_{\rm norm}
+=
+\hat m_0^{\,2}\,\bar P_0-
+\frac{54Gc_s^5}{5a^5c^5}.
+\]
+So the actual isotropic mean prefactor is fixed exactly by
+\[
+\boxed{
+\bar P_0=
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}},
+\qquad
+T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+}
+\]
+
+### 1.2 Exact grouped inverse map
+
+The grouped prefactor anomalies compile back to the three actual lane prefactors by
+\[
+\boxed{P_{20}=\bar P_0+4a_{P_0},}
+\]
+\[
+\boxed{P_{21}=\bar P_0-a_{P_0}+b_{P_0},}
+\]
+\[
+\boxed{P_{22}=\bar P_0-a_{P_0}-b_{P_0}.}
+\]
+So the actual branch packet already determines the three lane-wise static prefactors that must be compared against the transported same-charge window.
+
+### 1.3 Finite survival ceilings carried from Stage 206
+
+The carried primitive-family dynamic ceilings are:
+
+At the stricter `10%`-loss benchmark:
+\[
+P_{\rm both}^{(10)}=0.0028313316855593175,
+\qquad
+P_{\rm one}^{(10)}=0.0035965105896846573.
+\]
+
+At the looser `30%`-loss benchmark:
+\[
+P_{\rm both}^{(30)}=0.00817339430971383,
+\qquad
+P_{\rm one}^{(30)}=0.0116633929790174.
+\]
+
+These are still transported primitive-family ceilings, not final full-PDE theorems. But they are the first exact dynamic windows available, so they are the right actual-branch kill test to carry forward.
+
+---
+
+## 2. Exact compiler from the actual branch packet to the transported window test
+
+For any chosen ceiling `P_{\rm crit}`, define
+\[
+P_{20}=\bar P_0+4a_{P_0},
+\qquad
+P_{21}=\bar P_0-a_{P_0}+b_{P_0},
+\qquad
+P_{22}=\bar P_0-a_{P_0}-b_{P_0}.
+\]
+Then the strongest transported sufficient condition that **all grouped lanes** stay inside that primitive-family window is
+\[
+\boxed{
+\max\{P_{20},P_{21},P_{22}\}\le P_{\rm crit}.
+}
+\]
+Equivalently, in packet variables,
+\[
+\boxed{
+\max\Bigl\{
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}+4a_{P_0},
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}-a_{P_0}+b_{P_0},
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}-a_{P_0}-b_{P_0}
+\Bigr\}
+\le P_{\rm crit}.
+}
+\]
+
+So the Stage-206 window has now been converted into a direct inequality on the actual branch packet.
+
+---
+
+## 3. Exact isotropic kill test in terms of `\Delta_{\rm norm}`
+
+If the actual branch is exactly isotropic at the prefactor level,
+\[
+a_{P_0}=b_{P_0}=0,
+\]
+then every lane sees the same prefactor
+\[
+P_{20}=P_{21}=P_{22}=\bar P_0.
+\]
+So the transported isotropic ceiling test is simply
+\[
+\boxed{\bar P_0\le P_{\rm crit}.}
+\]
+Using the exact normalization compiler,
+\[
+\boxed{
+\Delta_{\rm norm}
+\le
+\hat m_0^{\,2}P_{\rm crit}-T_{\rm quad}.
+}
+\]
+This is the first actual-branch same-charge kill test written directly in the endgame residual language.
+
+### 3.1 Calibrated-branch lower bound on `\hat m_0`
+
+If the real branch already hits the universal quadrupole normalization exactly,
+\[
+\Delta_{\rm norm}=0,
+\]
+then isotropic survival at ceiling `P_{\rm crit}` is equivalent to
+\[
+\boxed{
+\hat m_0^{\,2}
+\ge
+\frac{T_{\rm quad}}{P_{\rm crit}}.
+}
+\]
+So the same-charge corridor places a direct lower bound on the source-map factor of the actual calibrated branch.
+
+---
+
+## 4. Weak-axisymmetric specialization from the exact grouped signature
+
+The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude with grouped signature
+\[
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1,
+\]
+and identify that amplitude with the physical outgoing-prefactor slope
+\[
+\boxed{\Xi_1=\frac{P_1}{P_0}.}
+\]
+So the weak-axisymmetric prefactor lanes take the exact first-order form
+\[
+\boxed{P_A=\bar P_0\bigl(1+\epsilon\lambda_A\Xi_1\bigr).}
+\]
+Explicitly,
+\[
+P_{20}=\bar P_0(1+\epsilon\Xi_1),
+\qquad
+P_{21}=\bar P_0\Bigl(1+\frac12\epsilon\Xi_1\Bigr),
+\qquad
+P_{22}=\bar P_0(1-\epsilon\Xi_1).
+\]
+
+The grouped trace/anomaly compiler then gives
+\[
+\boxed{a_{P_0}=\frac{\epsilon\bar P_0\Xi_1}{4},}
+\qquad
+\boxed{b_{P_0}=\frac{3\epsilon\bar P_0\Xi_1}{4}.}
+\]
+So the exact weak-axisymmetric branch law is
+\[
+\boxed{b_{P_0}=3a_{P_0}.}
+\]
+
+This matters because the actual same-charge window is not generic in the full `(a_{P_0},b_{P_0})` plane. On the weak-axisymmetric branch it collapses to a one-dimensional axisymmetric line.
+
+---
+
+## 5. Exact transported ceiling test in terms of `\Xi_1`
+
+On the axisymmetric weak-anisotropy line,
+\[
+P_{20}=\bar P_0+4a_{P_0},
+\qquad
+P_{21}=\bar P_0+2a_{P_0},
+\qquad
+P_{22}=\bar P_0-4a_{P_0}.
+\]
+So the worst surviving lane is always the one with the larger sign of `a_{P_0}`. Therefore the exact robust all-lane ceiling test collapses to
+\[
+\boxed{
+\bar P_0+4|a_{P_0}|
+\le
+P_{\rm crit}.
+}
+\]
+Equivalently, in the one-scalar `\Xi_1` language,
+\[
+\boxed{
+\bar P_0\bigl(1+|\epsilon\Xi_1|\bigr)
+\le
+P_{\rm crit}.
+}
+\]
+Using the exact normalization compiler,
+\[
+\boxed{
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}\bigl(1+|\epsilon\Xi_1|\bigr)
+\le
+P_{\rm crit}.
+}
+\]
+
+This is the cleanest same-charge continuation reached so far.
+
+The actual moving-throat branch now lives or dies, at this transported level, by one explicit inequality in
+
+- the normalization defect `\Delta_{\rm norm}`,
+- the source-map factor `\hat m_0`,
+- and the weak-axisymmetric outgoing-prefactor slope `\Xi_1=P_1/P_0`.
+
+### 5.1 Calibrated-branch bound with weak anisotropy included
+
+If the actual branch is exactly calibrated,
+\[
+\Delta_{\rm norm}=0,
+\]
+then the robust transported ceiling becomes
+\[
+\boxed{
+\hat m_0^{\,2}
+\ge
+\frac{T_{\rm quad}(1+|\epsilon\Xi_1|)}{P_{\rm crit}}.
+}
+\]
+So weak-axisymmetric prefactor loading raises the lower bound on the source-map factor linearly in the absolute outgoing slope.
+
+---
+
+## 6. Explicit headroom at the Stage-206 compatibility point
+
+Stage 206 found the concrete compatibility point
+\[
+\bar P_0=P_{0,\rm target,compat}
+\approx 0.002069792318062885.
+\]
+Substituting this into the robust weak-axisymmetric ceiling law
+\[
+|\epsilon\Xi_1|\le \frac{P_{\rm crit}}{\bar P_0}-1,
+\qquad
+|a_{P_0}|\le \frac{P_{\rm crit}-\bar P_0}{4},
+\]
+gives the following explicit budgets.
+
+### 6.1 Stricter `10%`-loss benchmark
+
+For **both wall-like poles** to remain alive,
+\[
+|\epsilon\Xi_1|
+\lesssim 0.367930328492646,
+\qquad
+|a_{P_0}|
+\lesssim 1.90384841874108\times 10^{-4}.
+\]
+For a **nonempty wall-like corridor** to remain alive,
+\[
+|\epsilon\Xi_1|
+\lesssim 0.737619063660757,
+\qquad
+|a_{P_0}|
+\lesssim 3.81679567905443\times 10^{-4}.
+\]
+
+### 6.2 Looser `30%`-loss benchmark
+
+For **both wall-like poles** to remain alive,
+\[
+|\epsilon\Xi_1|
+\lesssim 2.94889585703134,
+\qquad
+|a_{P_0}|
+\lesssim 1.52590049791274\times 10^{-3}.
+\]
+For a **nonempty wall-like corridor** to remain alive,
+\[
+|\epsilon\Xi_1|
+\lesssim 4.63505472371892,
+\qquad
+|a_{P_0}|
+\lesssim 2.39840016523863\times 10^{-3}.
+\]
+
+So the Stage-206 compatibility point still has finite weak-axisymmetric headroom. But the stricter `10%` robust budget is not large. That is exactly the sort of narrow corridor one would expect if the idea is real but difficult.
+
+---
+
+## 7. What Stage 207 changes
+
+Stage 207 does not yet prove success or failure. But it converts the remaining ambiguity into an actual-branch compiler.
+
+Before this stage, the next step was still phrased loosely as
+
+> “extract the actual branch-compatible normalization target from the PDE.”
+
+After this stage, the exact thing to compute is clear:
+
+1. the real branch packet gives `\Delta_{\rm norm}`, `a_{P_0}`, and `b_{P_0}`,
+2. those compile to the actual lane prefactors `P_{20},P_{21},P_{22}`,
+3. on the weak-axisymmetric branch they collapse to one scalar `\Xi_1=P_1/P_0`,
+4. and the same-charge corridor survives only if those data satisfy one explicit finite inequality.
+
+So the best current summary is:
+
+> the idea is still alive, but the actual moving-throat branch now has to land inside a sharply delimited corridor in `\Delta_{\rm norm}` and weak-axisymmetric outgoing-prefactor slope, or equivalently in `\Delta_{\rm norm}`, `a_{P_0}`, and `b_{P_0}`.
+
+That is the first genuine PDE-selected same-charge kill test.
+
+---
+
+## 8. Best current verdict after Stage 207
+
+The same-charge idea is still alive.
+
+But it is now alive in a much narrower form:
+
+> once the Stage-206 primitive dynamic window is transported onto the actual branch packet, the remaining survival question reduces to a finite corridor in the normalization defect and weak-axisymmetric prefactor loading.
+
+So the next honest move is no longer another generic primitive scan. It is:
+
+1. extract the actual endgame packet `(\Delta_{\rm norm},a_{P_0},b_{P_0})` or equivalently `(\Delta_{\rm norm},\Xi_1)` from the moving-throat branch,
+2. insert it into the exact inequalities above,
+3. and see whether the real branch lands inside or outside the surviving corridor.
+
+That is the clean next kill test.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies:
+
+1. the exact grouped inverse map
+   \[
+   (\bar P_0,a_{P_0},b_{P_0})\mapsto(P_{20},P_{21},P_{22}),
+   \]
+2. the exact normalization compiler
+   \[
+   \bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}},
+   \]
+3. the isotropic ceiling inequality
+   \[
+   \Delta_{\rm norm}\le \hat m_0^{\,2}P_{\rm crit}-T_{\rm quad},
+   \]
+4. the exact weak-axisymmetric lane law
+   \[
+   P_A=\bar P_0(1+\epsilon\lambda_A\Xi_1),
+   \]
+   with
+   \[
+   \lambda_{20}=1,\quad \lambda_{21}=\frac12,\quad \lambda_{22}=-1,
+   \]
+5. the exact compiler
+   \[
+   a_{P_0}=\frac{\epsilon\bar P_0\Xi_1}{4},
+   \qquad
+   b_{P_0}=\frac{3\epsilon\bar P_0\Xi_1}{4},
+   \]
+   and therefore
+   \[
+   b_{P_0}=3a_{P_0},
+   \]
+6. the exact robust ceiling collapse
+   \[
+   \max\{P_{20},P_{21},P_{22}\}=\bar P_0(1+|\epsilon\Xi_1|)=\bar P_0+4|a_{P_0}|,
+   \]
+7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
+8. and the four explicit Stage-206 compatibility-point headroom budgets.
+
+Supporting file:
+- `moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py`
+
+=== moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 208: Microscopic `\Xi_1` Compiler, First-Order Conservative Compensation Surface, and the Mixed-Sector Survival Sieve
+
+## Status
+
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-206 compatibility branch and the transported Stage-207 same-charge ceiling test.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the first actual finite-throat base branch that already satisfies the isotropic `5`PN compatibility surface, perturbs it by weak-axisymmetric primitive microscopic drifts, and determines exactly which first-order mechanism families can preserve the conservative grouped response while still carrying a nonzero same-charge scalar
+\[
+\Xi_1=\frac{P_1}{P_0}.
+\]
+
+---
+
+## Purpose
+
+Stage 207 converted the actual-branch same-charge test into one explicit transported inequality in
+\[
+\Delta_{\rm norm},
+\qquad
+\Xi_1=\frac{P_1}{P_0}.
+\]
+
+So the next honest step is no longer another abstract branch-packet manipulation.
+It is to compute `\Xi_1` **microscopically** on the explicit finite-throat one-port branch, while keeping track of the conservative grouped-`P2` conditions that the `5`PN branch still has to respect.
+
+The main outputs are:
+
+1. the exact arbitrary-base first-order formulas for
+   \[
+   u_2^{(1)},\qquad u_4^{(1)},\qquad \Xi_1,
+   \]
+   together with the exact compensation surface that preserves the conservative grouped response on a one-pole base branch;
+2. the specialization of those formulas to the explicit Stage-206 compatibility point;
+3. the exact primitive compiler from microscopic logarithmic slopes
+   \[
+   (x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
+   \]
+   to
+   \[
+   D_{01},\qquad D_{21},\qquad D_{41},\qquad N_{01},\qquad \Xi_1;
+   \]
+4. the first mechanism sieve:
+   - wall-only,
+   - pure BdG-only,
+   - mixed-sector-only;
+5. one explicit mixed-sector compensated family that survives and carries nonzero `\Xi_1`;
+6. the direct translation of that surviving family into the transported Stage-207 same-charge headroom budgets.
+
+So after Stage 208, the question is no longer
+
+> can some microscopic anisotropy produce a useful `\Xi_1`?
+
+It is now
+
+> which microscopic families survive the conservative first-order compensation surface, and what same-charge headroom do they actually leave?
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Explicit isotropic one-port base branch from Stage 206
+
+Keep the same explicit finite-throat branch used in Stages 205–207:
+
+- lowest N/N zero mode for the wall and the brane-like internal coordinate,
+- lowest D/N half-wave for the trapped support and mixed coordinate,
+- exact overlap constant
+  \[
+  \kappa = \frac{2\sqrt2}{\pi}.
+  \]
+
+With primitive couplings
+\[
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R,
+\]
+the static bundle data are
+\[
+\Delta = \Omega_U^2\Omega_W^2-R^2,
+\qquad
+S_2=\Omega_U^2+\Omega_W^2,
+\qquad
+H=G_U^2+G_W^2,
+\]
+\[
+Q = G_U^2\Omega_W^2 + 2G_UG_WR + G_W^2\Omega_U^2,
+\qquad
+P = \Omega_U^2G_W + RG_U.
+\]
+The primitive moments are
+\[
+B_0=\frac{C^2}{\varpi^2},
+\qquad
+B_2=\frac{C^2}{\varpi^4},
+\qquad
+B_4=\frac{C^2}{\varpi^6},
+\]
+\[
+Z_0=\frac{Q}{\Delta},
+\qquad
+Z_2=\frac{QS_2-H\Delta}{\Delta^2},
+\qquad
+Z_4=\frac{Q(S_2^2-\Delta)-S_2H\Delta}{\Delta^3},
+\]
+\[
+N_0=\frac{P^2}{\Delta^2}.
+\]
+
+For the concrete Stage-206 compatibility sample
+\[
+(\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+=
+\left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right),
+\]
+the exact compatibility wall stiffness is
+\[
+K_{\mathrm{compat}}\approx 24.4737548792910.
+\]
+The corresponding isotropic one-pole base values are
+\[
+D_0 \approx 24.2373099886223,
+\qquad
+D_2 \approx -1.18562046858190,
+\qquad
+D_4 \approx -0.173991572849491,
+\]
+\[
+u_2 \approx 0.0489171640391802,
+\qquad
+u_4 \approx 0.00957155575054425,
+\qquad
+\frac{D_4}{D_0}\approx -0.00717866681290820,
+\]
+with exact one-pole identity
+\[
+u_4-4u_2^2=0.
+\]
+The same branch reproduces the carried compatibility prefactor
+\[
+P_{0,\mathrm{target,compat}}
+=
+\frac{N_0}{D_0}
+\approx 0.00206979231806289.
+\]
+
+### 1.2 Stage-207 transported same-charge ceilings at that point
+
+At the same compatibility point, the stricter weak-axisymmetric budgets carried from Stage 207 are
+\[
+|\epsilon\Xi_1| \lesssim 0.367930328492646
+\]
+for the `10%`-loss “both wall-like poles survive” criterion, and
+\[
+|\epsilon\Xi_1| \lesssim 0.737619063660757
+\]
+for the `10%`-loss “nonempty wall-like corridor” criterion.
+
+The corresponding looser `30%` transported budgets are
+\[
+|\epsilon\Xi_1| \lesssim 2.94889585703134,
+\qquad
+|\epsilon\Xi_1| \lesssim 4.63505472371892.
+\]
+
+---
+
+## 2. Exact arbitrary-base first-order formulas
+
+Let a one-pole isotropic base branch be described by
+\[
+D_0,\qquad D_2,\qquad D_4,\qquad N_0.
+\]
+Then
+\[
+u_2=-\frac{D_2}{D_0},
+\qquad
+u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+\qquad
+P_0=\frac{N_0}{D_0}.
+\]
+Introduce weak-axisymmetric first-order slopes
+\[
+D_{A0}=D_0+\epsilon\lambda_A D_{01},
+\qquad
+D_{A2}=D_2+\epsilon\lambda_A D_{21},
+\qquad
+D_{A4}=D_4+\epsilon\lambda_A D_{41},
+\]
+\[
+N_{A0}=N_0+\epsilon\lambda_A N_{01},
+\qquad
+\lambda_{20}=1,
+\quad
+\lambda_{21}=\frac12,
+\quad
+\lambda_{22}=-1.
+\]
+Then the exact first-order physical slopes are
+\[
+\boxed{
+u_2^{(1)}=
+\frac{-D_0D_{21}+D_2D_{01}}{D_0^2}
+= -\frac{D_{21}+u_2 D_{01}}{D_0},
+}
+\]
+\[
+\boxed{
+u_4^{(1)}=
+\frac{-D_0(D_0D_{41}+D_{01}D_4-2D_2D_{21})+2D_{01}(D_0D_4-D_2^2)}{D_0^3},
+}
+\]
+\[
+\boxed{
+\Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+}
+\]
+
+So on any one-pole base branch the same-charge scalar is already a **static loading mismatch** between
+
+- outgoing-transfer strengthening `N_{01}/N_0`, and
+- conservative static loading `D_{01}/D_0`.
+
+---
+
+## 3. Exact conservative first-order compensation surface
+
+If the conservative grouped response is to remain fixed to first order,
+\[
+u_2^{(1)}=0,
+\qquad
+u_4^{(1)}=0,
+\]
+then the exact compensation surface is
+\[
+\boxed{D_{21}=-u_2 D_{01},}
+\]
+\[
+\boxed{D_{41}=\frac{D_4}{D_0}D_{01}.}
+\]
+Using
+\[
+\frac{D_4}{D_0}=u_2^2-u_4,
+\]
+this can also be written as
+\[
+D_{41}=(u_2^2-u_4)D_{01}.
+\]
+On a one-pole branch,
+\[
+u_4=4u_2^2,
+\]
+so the second equation reduces to
+\[
+\boxed{D_{41}=-3u_2^2 D_{01}.}
+\]
+
+This is the exact arbitrary-base continuation of the canonical `5`PN even-preserving surface.
+Once it is imposed, the only remaining first-order outlet is `\Xi_1`.
+
+For the concrete Stage-206 compatibility point, the compensation surface becomes
+\[
+D_{21}\approx -0.0489171640391802\,D_{01},
+\qquad
+D_{41}\approx -0.00717866681290820\,D_{01}.
+\]
+
+---
+
+## 4. Primitive logarithmic-slope compiler
+
+Parameterize primitive weak-axisymmetric microscopic drifts by logarithmic slopes
+\[
+(x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}),
+\]
+so that each positive primitive parameter is dressed as
+\[
+p_A = p\,e^{\epsilon\lambda_A x_p}.
+\]
+
+Then the exact first-order primitive moment drifts are:
+
+### 4.1 BdG sector
+\[
+B_{0,1}=B_0(2x_{\lambda_B}-2x_{\varpi}),
+\]
+\[
+B_{2,1}=B_2(2x_{\lambda_B}-4x_{\varpi}),
+\]
+\[
+B_{4,1}=B_4(2x_{\lambda_B}-6x_{\varpi}).
+\]
+
+### 4.2 Conservative Maxwell/mixed sector
+\[
+\Delta_1 = 2\Omega_U^2\Omega_W^2(x_{\Omega_U}+x_{\Omega_W})-2R^2x_{\lambda_R},
+\]
+\[
+S_{2,1}=2\Omega_U^2x_{\Omega_U}+2\Omega_W^2x_{\Omega_W},
+\]
+\[
+H_1=2G_U^2x_{\lambda_U}+2G_W^2x_{\lambda_W},
+\]
+\[
+Q_1
+=
+2G_U^2\Omega_W^2(x_{\lambda_U}+x_{\Omega_W})
++
+2G_UG_WR(x_{\lambda_U}+x_{\lambda_W}+x_{\lambda_R})
++
+2G_W^2\Omega_U^2(x_{\lambda_W}+x_{\Omega_U}),
+\]
+\[
+P_1^{\rm raw}
+=
+\Omega_U^2G_W(2x_{\Omega_U}+x_{\lambda_W})
++
+RG_U(x_{\lambda_R}+x_{\lambda_U}).
+\]
+So
+\[
+Z_{0,1}=\frac{Q_1\Delta-Q\Delta_1}{\Delta^2},
+\]
+\[
+Z_{2,1}=
+\frac{\Delta(-\Delta H_1-H\Delta_1+QS_{2,1}+S_2Q_1)+2\Delta_1(\Delta H-QS_2)}{\Delta^3},
+\]
+\[
+Z_{4,1}=
+-\frac{\Delta^2HS_{2,1}+\Delta^2S_2H_1+\Delta^2Q_1-2\Delta HS_2\Delta_1-2\Delta QS_2S_{2,1}-2\Delta Q\Delta_1-\Delta S_2^2Q_1+3QS_2^2\Delta_1}{\Delta^4},
+\]
+\[
+N_{0,1}=\frac{2PP_1^{\rm raw}}{\Delta^2}-\frac{2P^2\Delta_1}{\Delta^3}.
+\]
+
+### 4.3 First-order bundle compiler
+\[
+\boxed{D_{01}=Kx_K-B_{0,1}-Z_{0,1},}
+\]
+\[
+\boxed{D_{21}=-(Mx_M+B_{2,1}+Z_{2,1}),}
+\]
+\[
+\boxed{D_{41}=-(B_{4,1}+Z_{4,1}),}
+\]
+\[
+\boxed{N_{01}=N_{0,1}.}
+\]
+
+### 4.4 Concrete microscopic `\Xi_1` compiler at the compatibility point
+
+On the concrete Stage-206 compatibility point, the same-charge scalar compiles numerically to
+\[
+\boxed{
+\begin{aligned}
+\Xi_1 \approx{}&
+-1.00975540977030\,x_K
++0.00418038073077834\,x_{\lambda_B}
+-0.00418038073077834\,x_{\varpi} \\
+&+0.324464020216766\,x_{\lambda_U}
++1.69086641859305\,x_{\lambda_W}
++0.423379354382463\,x_{\lambda_R} \\
+&-0.747843374599229\,x_{\Omega_U}
+-4.11424577297551\,x_{\Omega_W}.
+\end{aligned}
+}
+\]
+The `x_M` coefficient vanishes identically on this base branch.
+So the strongest positive same-charge leverage sits in the mixed-channel loading `x_{\lambda_W}`, while the strongest negative leverage sits in the mixed frequency drift `x_{\Omega_W}`.
+
+---
+
+## 5. Mechanism sieve
+
+### 5.1 Wall-only family — exact generic no-go
+
+If only
+\[
+(x_K,x_M)
+\]
+are active, then
+\[
+D_{01}=Kx_K,
+\qquad
+D_{21}=-Mx_M,
+\qquad
+D_{41}=0.
+\]
+The conservative first-order compensation equations become
+\[
+Ku_2 x_K - Mx_M = 0,
+\qquad
+-\frac{D_4}{D_0}Kx_K = 0.
+\]
+So whenever
+\[
+\frac{D_4}{D_0}\neq 0,
+\]
+the second equation forces
+\[
+x_K=0,
+\]
+and then the first forces
+\[
+x_M=0.
+\]
+Therefore
+\[
+\boxed{\text{wall-only compensated deformations are generically trivial.}}
+\]
+
+This already kills the naive pure-wall route on the Stage-206 compatibility point, since there
+\[
+\frac{D_4}{D_0}\approx -0.00717866681290820\neq 0.
+\]
+
+### 5.2 Pure BdG family — exact sample-point no-go
+
+If only
+\[
+(x_{\lambda_B},x_{\varpi})
+\]
+are active, then the compensation equations are
+\[
+\begin{pmatrix}
+-(B_2+u_2B_0) & 2B_2+u_2B_0 \\
+-(B_4-\tfrac{D_4}{D_0}B_0) & 3B_4-\tfrac{D_4}{D_0}B_0
+\end{pmatrix}
+\binom{x_{\lambda_B}}{x_{\varpi}}=0.
+\]
+Its exact determinant is
+\[
+\boxed{
+\Delta_{\rm BdG}
+=
+-B_0B_2\frac{D_4}{D_0}-2B_0B_4u_2-B_2B_4.
+}
+\]
+On the Stage-206 compatibility point,
+\[
+\Delta_{\rm BdG}\approx -5.11886996120011\times 10^{-5}\neq 0.
+\]
+So
+\[
+\boxed{\text{the pure BdG compensated family is also trivial on the concrete branch.}}
+\]
+
+This is the same structural conclusion reached later in the `5`PN continuation notes in a stricter language: neither pure wall nor pure support/BdG anisotropy carries the live weak-axisymmetric corridor by itself.
+
+### 5.3 Mixed-sector-only family — explicit surviving corridor
+
+Now activate only the mixed/U family
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}).
+\]
+On the Stage-206 compatibility point, the compensation matrix is
+\[
+\begin{pmatrix}
+-0.241952861865934 & -0.122133861432532 & -0.0656784156312263 & 0.553209522700447 & 0.288144673113677 \\
+-0.250543086743604 & -0.0937748521387244 & -0.0899548469020231 & 0.881694465041011 & 0.325834311088034
+\end{pmatrix}.
+\]
+It has rank `2`, hence nullity `3`.
+
+A convenient null basis is
+\[
+v_1\approx(-0.610255553634424,\ 0.671187016268095,\ 1,\ 0,\ 0),
+\]
+\[
+v_2\approx(7.05469842496522,\ -9.44615143817664,\ 0,\ 1,\ 0),
+\]
+\[
+v_3\approx(1.61486053113911,\ -0.839860892848583,\ 0,\ 0,\ 1).
+\]
+The corresponding same-charge slopes are
+\[
+\Xi_1(v_1)\approx 1.36026097049402,
+\qquad
+\Xi_1(v_2)\approx -14.4310278139755,
+\qquad
+\Xi_1(v_3)\approx -5.01037421295998.
+\]
+So the mixed/U family retains a **nontrivial compensated nullspace** and can still carry nonzero `\Xi_1`.
+
+Therefore
+\[
+\boxed{\text{the same-charge idea survives this stage only in a constrained mixed-sector corridor.}}
+\]
+
+---
+
+## 6. Direct same-charge headroom on the first surviving mixed family
+
+Choose the first surviving mixed basis vector `v_1` and write its microscopic amplitude as `t`.
+Then
+\[
+\Xi_1 = \sigma_1 t,
+\qquad
+\sigma_1\approx 1.36026097049402.
+\]
+The transported Stage-207 ceiling law is
+\[
+|\epsilon\Xi_1| \le \text{budget},
+\]
+so on this family it becomes
+\[
+|\epsilon t| \le \frac{\text{budget}}{\sigma_1}.
+\]
+
+The explicit headroom windows are:
+
+### `10%`-loss, both wall-like poles survive
+\[
+|\epsilon t| \lesssim 0.270485102839510.
+\]
+
+### `10%`-loss, nonempty wall-like corridor
+\[
+|\epsilon t| \lesssim 0.542262903708006.
+\]
+
+### `30%`-loss, both wall-like poles survive
+\[
+|\epsilon t| \lesssim 2.16788978070904.
+\]
+
+### `30%`-loss, nonempty wall-like corridor
+\[
+|\epsilon t| \lesssim 3.40747461278373.
+\]
+
+So the strict transported window is not huge, but it is definitely nonzero.
+That is exactly what we would expect if the corridor is real but narrow.
+
+---
+
+## 7. What Stage 208 changes
+
+Before this stage, the same-charge continuation was still phrased as
+
+> compute `\Xi_1` somehow from the branch and compare it against the Stage-207 ceiling.
+
+After this stage, the problem is materially sharper.
+
+1. The microscopic same-charge scalar is now compiled directly from primitive one-port weak-axisymmetric slopes.
+2. The conservative first-order compensation surface is exact on any one-pole base branch:
+   \[
+   D_{21}=-u_2 D_{01},
+   \qquad
+   D_{41}=\frac{D_4}{D_0}D_{01}.
+   \]
+3. Pure wall and pure BdG deformations are killed once that conservative surface is imposed.
+4. The mixed/U family survives and carries an explicit nonzero `\Xi_1`.
+5. The transported same-charge window can now be read directly as a bound on one microscopic mixed-sector amplitude.
+
+So the best current summary is:
+
+> the idea survives this stage, but only as a constrained mixed-sector corridor.
+> Pure wall-only or pure support/BdG anisotropy does not survive the first conservative same-charge compensation test.
+
+That is exactly the narrowing we wanted.
+
+---
+
+## 8. SymPy-backed status
+
+The paired audit script verifies all of the following:
+
+1. the exact arbitrary-base formulas for
+   \[
+   u_2^{(1)},\qquad u_4^{(1)},\qquad \Xi_1;
+   \]
+2. the exact first-order conservative compensation surface;
+3. the full primitive logarithmic-slope compiler;
+4. the Stage-206 compatibility-point values
+   \[
+   D_0,\qquad D_2,\qquad D_4,\qquad u_2,\qquad u_4,\qquad P_{0,\mathrm{target,compat}};
+   \]
+5. the concrete compatibility-point `\Xi_1` linear form;
+6. the wall-only and pure-BdG no-go results;
+7. the mixed/U compensation matrix, its rank-`2` / nullity-`3` structure, the convenient null basis above, and the corresponding `\Xi_1` values;
+8. the transported Stage-207 amplitude windows on the first surviving mixed family.
+
+Supporting file:
+- `moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py`
+
+=== moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 209: Strict `5`PN Even-Gate Package, the Surviving Mixed Corridor, and the Pure-Transfer Subcorridor
+
+## Status
+
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-206 compatibility branch, the Stage-208 primitive compiler, and the imported strict `5`PN even-gate package.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the explicit mixed-sector survivor from Stage 208 and carries it into the stricter imported `5`PN first-order package
+\[
+\Xi_{\rm load},\qquad K_1,\qquad H_{\rm even},
+\]
+then determines exactly whether the corridor dies or survives on the concrete noncanonical compatibility branch.
+
+---
+
+## Purpose
+
+Stage 208 showed that the explicit finite-throat one-port branch still supports a nontrivial mixed-sector corridor after imposing the **first-order conservative compensation surface** that keeps the actual grouped response fixed on that branch.
+
+But the later `5`PN notes impose a stricter first-order package than Stage 208 used. In that later language, the surviving weak-axisymmetric grouped problem is organized by three scalars:
+
+\[
+\Xi_{\rm load}=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0},
+\]
+\[
+K_1=D_{21}+\frac{D_{01}}{9},
+\]
+\[
+H_{\rm even}=D_{41}-\frac{2}{3}D_{21}-\frac{D_{01}}{27}.
+\]
+
+So the next honest step is not another loose mechanism scan. It is:
+
+> carry the Stage-208 mixed-sector survivor into the stricter imported `5`PN even-gate package and see whether the corridor collapses or survives.
+
+The main outputs are:
+
+1. the exact bridge
+   \[
+   \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0},
+   \]
+   so the same-charge scalar from Stage 208 is already the imported `5`PN load defect;
+2. the exact comparison between the Stage-208 compensation surface and the stricter `5`PN even-gate package;
+3. the explicit mixed-sector-only strict-even-gate solve on the concrete Stage-206 compatibility point;
+4. the sharper **pure-transfer** subcorridor that survives once one also enforces the Stage-208 conservative-shape preservation on this noncanonical sample branch;
+5. the transported same-charge ceiling budgets on both the strict mixed corridor and the pure-transfer subcorridor.
+
+So after Stage 209, the question is no longer
+
+> does some mixed anisotropy survive?
+
+It is now
+
+> does the actual moving-throat branch realize the surviving same-charge effect primarily as mixed-sector outgoing-transfer enhancement, with the conservative one-pole bundle frozen at first order?
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Explicit one-port compatibility branch from Stages 206–208
+
+Keep the same finite-throat branch:
+
+- wall and brane-like internal coordinate on the lowest N/N zero mode,
+- trapped support and mixed channel on the lowest D/N half-wave,
+- exact overlap constant
+  \[
+  \kappa=\frac{2\sqrt2}{\pi}.
+  \]
+
+With primitive parameters
+\[
+(\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+=
+\left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right),
+\]
+Stage 208 fixed the isotropic one-pole base data
+\[
+D_0\approx 24.2373099886223,
+\qquad
+D_2\approx -1.18562046858190,
+\qquad
+D_4\approx -0.173991572849491,
+\]
+\[
+u_2\approx 0.0489171640391802,
+\qquad
+u_4\approx 0.00957155575054425,
+\qquad
+\frac{D_4}{D_0}\approx -0.00717866681290820,
+\]
+with exact one-pole identity
+\[
+u_4-4u_2^2=0.
+\]
+The same branch also carries
+\[
+P_{0,\rm compat}=\frac{N_0}{D_0}\approx 0.002069792318062885.
+\]
+
+### 1.2 Stage-208 first-order primitive compiler
+
+Stage 208 already compiled the primitive weak-axisymmetric slopes
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
+\]
+into
+\[
+D_{01},\qquad D_{21},\qquad D_{41},\qquad N_{01},\qquad \Xi_1.
+\]
+On the mixed-only sector, the Stage-208 conservative compensation surface was
+\[
+D_{21}=-u_2D_{01},
+\qquad
+D_{41}=\frac{D_4}{D_0}D_{01},
+\]
+and the transported same-charge scalar was already
+\[
+\Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\]
+
+### 1.3 Stage-207 transported same-charge ceilings
+
+At this same compatibility point the robust carried budgets were
+\[
+|\epsilon\Xi_1|\lesssim 0.367930328492646
+\]
+for the stricter `10%`-loss “both wall-like poles survive” criterion, and
+\[
+|\epsilon\Xi_1|\lesssim 0.737619063660757
+\]
+for the stricter `10%`-loss “nonempty wall-like corridor” criterion.
+The looser `30%` windows remain
+\[
+|\epsilon\Xi_1|\lesssim 2.94889585703134,
+\qquad
+|\epsilon\Xi_1|\lesssim 4.63505472371892.
+\]
+
+---
+
+## 2. Exact bridge to the imported `5`PN load defect
+
+The imported weak-axisymmetric `5`PN load defect is
+\[
+\Xi_{\rm load}:=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\]
+But Stage 208 already gave
+\[
+\Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\]
+So coefficientwise,
+\[
+\boxed{\Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.}
+\]
+
+That matters because we are not introducing a new scalar here. We are simply re-reading the Stage-208 same-charge scalar in the stricter imported `5`PN language.
+
+So the same-charge scalar already is the `5`PN loading defect.
+
+---
+
+## 3. Exact comparison: Stage-208 compensation is weaker than the strict `5`PN package
+
+The Stage-208 first-order conservative compensation surface on an arbitrary one-pole base branch is
+\[
+D_{21}=-u_2D_{01},
+\qquad
+D_{41}=\frac{D_4}{D_0}D_{01}.
+\]
+Insert this into the stricter imported `5`PN even gates:
+\[
+K_1=D_{21}+\frac{D_{01}}{9},
+\qquad
+H_{\rm even}=D_{41}-\frac{2}{3}D_{21}-\frac{D_{01}}{27}.
+\]
+Then exactly,
+\[
+\boxed{K_1=\left(\frac19-u_2\right)D_{01},}
+\]
+\[
+\boxed{H_{\rm even}=\left(\frac{D_4}{D_0}+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+\]
+Using
+\[
+\frac{D_4}{D_0}=u_2^2-u_4,
+\]
+and the one-pole identity
+\[
+u_4=4u_2^2,
+\]
+one also gets
+\[
+\boxed{H_{\rm even}=\left(-3u_2^2+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+\]
+
+So the Stage-208 conservative-shape preservation and the stricter imported `5`PN even gates are **not** the same condition. They agree only on the canonical branch for which the coefficients above vanish.
+
+On the explicit Stage-206 compatibility branch the coefficients are numerically
+\[
+K_1\approx 0.0621939470719309\,D_{01},
+\qquad
+H_{\rm even}\approx -0.0116042611571584\,D_{01}.
+\]
+Both are nonzero. Therefore, on this noncanonical sample branch,
+\[
+\boxed{\text{Stage-208 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+\]
+
+This is the first real sharpening of the corridor.
+
+It means that once the stricter imported `5`PN gates are imposed on top of the Stage-208 compensation surface, the surviving same-charge corridor can no longer use first-order conservative static loading. It must pass through a branch with
+\[
+D_{01}=0.
+\]
+
+---
+
+## 4. Mixed-sector-only strict even-gate corridor
+
+Now restrict attention to the mixed/U primitive family
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}).
+\]
+The strict even-gate matrix on the concrete branch is
+\[
+\begin{pmatrix}
+-0.255028994532 & -0.132167046465 & -0.067875763349 & 0.568483003085 & 0.300375205864 \\
+-0.086801409924 & -0.010480267714 & -0.045759251298 & 0.510038362482 & 0.131455867026
+\end{pmatrix}.
+\]
+It has rank `2`, hence nullity `3`.
+
+So the mixed sector **survives** the strict imported `5`PN even-gate package as a three-dimensional corridor.
+
+A convenient raw null basis is
+\[
+w_1\approx(-0.606454972136,
+            0.656652628212,
+            1,
+            0,
+            0),
+\]
+\[
+w_2\approx(6.983614208603,
+           -9.174307357027,
+            0,
+            1,
+            0),
+\]
+\[
+w_3\approx(1.616693986742,
+           -0.846872492318,
+            0,
+            0,
+            1).
+\]
+The corresponding same-charge scalars are
+\[
+\Xi_1(w_1)\approx 1.33691841376792,
+\]
+\[
+\Xi_1(w_2)\approx -13.9944400566810,
+\]
+\[
+\Xi_1(w_3)\approx -5.02163500066813.
+\]
+So the strict even-gate package does **not** kill the mixed-sector corridor. It only deforms it relative to the weaker Stage-208 compensation surface.
+
+Let `\Pi_{\rm even}` denote the ambient-Euclidean orthogonal projector onto this nullspace. Then the induced operator norm of the same-charge functional on the strict corridor is
+\[
+\sigma_{\rm even}=\|\Pi_{\rm even}\,\Xi_1\|_2.
+\]
+Numerically,
+\[
+\boxed{\sigma_{\rm even}\approx 2.67386816837173.}
+\]
+That gives a canonical same-charge gain scale for unit microscopic mixed-sector drift amplitude.
+
+---
+
+## 5. The pure-transfer subcorridor
+
+Now impose the full intersection of
+
+1. Stage-208 conservative-shape preservation, and
+2. the stricter imported `5`PN even-gate package.
+
+On this noncanonical sample branch, Section 3 showed that this is equivalent to solving
+\[
+D_{01}=0,
+\qquad
+D_{21}=0,
+\qquad
+D_{41}=0.
+\]
+In the mixed-only sector, that is the `3 x 5` linear system built from
+\[
+\text{eq1}=D_{21}+u_2D_{01},
+\qquad
+\text{eq2}=D_{41}-\frac{D_4}{D_0}D_{01},
+\qquad
+D_{01}=0.
+\]
+The intersection matrix has rank `3`, hence nullity `2`.
+
+So a **two-dimensional** mixed-sector corridor still survives even after imposing both the Stage-208 compensation surface and the imported strict `5`PN even gates.
+
+A convenient raw basis is
+\[
+t_1\approx(-4.359222794718,
+           3.107402039105,
+           18.703510605854,
+           1,
+           0),
+\]
+\[
+t_2\approx(1.909256655687,
+          -1.163651238154,
+          -0.482414494705,
+           0,
+           1).
+\]
+On these directions,
+\[
+D_{01}(t_i)=D_{21}(t_i)=D_{41}(t_i)=0,
+\]
+while the same-charge scalar remains nonzero:
+\[
+\Xi_1(t_1)\approx 11.0106276743889,
+\qquad
+\Xi_1(t_2)\approx -5.66658382170817.
+\]
+At the same time,
+\[
+N_{01}(t_1)\approx 0.552361328292489,
+\qquad
+N_{01}(t_2)\approx -0.284270966124842.
+\]
+So on this subcorridor the whole effect is carried purely by outgoing-transfer loading:
+\[
+\boxed{D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0}.}
+\]
+
+This is the cleanest surviving mechanism so far.
+
+It means the same-charge corridor can survive all gates reached up to this stage with the conservative one-pole bundle frozen at first order. The remaining effect is purely a mixed-sector transfer enhancement.
+
+Let `\Pi_{\rm transfer}` denote the ambient-Euclidean orthogonal projector onto this two-dimensional subspace. Then the induced same-charge norm is
+\[
+\sigma_{\rm transfer}=\|\Pi_{\rm transfer}\,\Xi_1\|_2.
+\]
+Numerically,
+\[
+\boxed{\sigma_{\rm transfer}\approx 2.31561904386057.}
+\]
+
+---
+
+## 6. Transported same-charge ceiling budgets on the strict corridors
+
+Interpret the ambient microscopic mixed-sector drift amplitude as
+\[
+\|x_{\rm mixed}\|_2=t.
+\]
+If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-207 ceiling law becomes
+\[
+|\epsilon|t \le \frac{\text{budget}}{\sigma}.
+\]
+
+### 6.1 Strict three-dimensional even-gate corridor
+
+Using
+\[
+\sigma_{\rm even}\approx 2.67386816837173,
+\]
+the robust carried budgets become:
+
+for the stricter `10%`-loss “both wall-like poles survive” test,
+\[
+|\epsilon|t \lesssim 0.137602269567650;
+\]
+
+for the stricter `10%`-loss “nonempty wall-like corridor” test,
+\[
+|\epsilon|t \lesssim 0.275862165676603.
+\]
+
+The looser `30%` budgets are
+\[
+|\epsilon|t \lesssim 1.10285760977778,
+\qquad
+|\epsilon|t \lesssim 1.73346419189450.
+\]
+
+### 6.2 Pure-transfer two-dimensional subcorridor
+
+Using
+\[
+\sigma_{\rm transfer}\approx 2.31561904386057,
+\]
+the robust carried budgets become:
+
+for the stricter `10%`-loss “both wall-like poles survive” test,
+\[
+|\epsilon|t \lesssim 0.158890698998242;
+\]
+
+for the stricter `10%`-loss “nonempty wall-like corridor” test,
+\[
+|\epsilon|t \lesssim 0.318540765855427.
+\]
+
+The looser `30%` budgets are
+\[
+|\epsilon|t \lesssim 1.27348056877049,
+\qquad
+|\epsilon|t \lesssim 2.00164821411704.
+\]
+
+So the corridor narrows again, but it does not die.
+
+And in fact the pure-transfer subcorridor leaves slightly **more** same-charge headroom than the larger strict even-gate corridor, because the surviving `\Xi_1` functional is a little more concentrated there.
+
+---
+
+## 7. What Stage 209 changes
+
+Before this stage, the strongest positive statement was only
+
+> a mixed-sector corridor survives the first-order conservative compensation surface from Stage 208.
+
+After this stage, the picture is much sharper.
+
+1. The imported strict `5`PN loading defect is **exactly** the same scalar already isolated in Stage 208:
+   \[
+   \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.
+   \]
+2. The Stage-208 compensation surface is weaker than the stricter imported `5`PN even-gate package.
+3. On the concrete noncanonical sample branch, imposing both structures together forces
+   \[
+   D_{01}=0.
+   \]
+4. Even after that sharpening, a nontrivial mixed-sector corridor still survives.
+5. The sharpest surviving subcorridor is the **pure-transfer** family with
+   \[
+   D_{01}=D_{21}=D_{41}=0,
+   \qquad
+   \Xi_1=\frac{N_{01}}{N_0}.
+   \]
+
+So the best current summary is:
+
+> the idea survives Stage 209, but no longer as generic mixed anisotropy. The sharpest surviving mechanism is mixed-sector outgoing-transfer enhancement with the conservative one-pole bundle frozen at first order.
+
+That is a real narrowing, and it is the kind of narrowing we want.
+
+---
+
+## 8. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact bridge
+  \[
+  \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0};
+  \]
+- the exact formulas obtained by inserting the Stage-208 compensation surface into the imported strict `5`PN even gates;
+- the concrete noncanonical compatibility-point coefficients in front of `D_{01}`;
+- the strict mixed-only even-gate matrix, its rank-`2` nullity-`3` solve, the displayed raw null basis, the corresponding `\Xi_1` values, and the induced corridor norm `\sigma_{\rm even}`;
+- the pure-transfer `3 x 5` intersection system, its rank-`3` nullity-`2` solve, the displayed raw basis, the corresponding `\Xi_1` and `N_{01}` values, and the induced norm `\sigma_{\rm transfer}`;
+- and the transported same-charge ceiling budgets on both surviving strict corridors.
+
+Supporting file:
+- `moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py`
+
+=== moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 210: Pure-Transfer Load Factor, Outgoing-Rigidity Sieve, and the First Co-Loading No-Go
+
+## Status
+
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-206 compatibility branch and the Stage-209 pure-transfer subcorridor.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the strict same-charge survivor from Stage 209,
+\[
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0},
+\]
+and asks the next natural microscopic question:
+
+> if the conservative one-pole bundle is frozen at first order, what one-port outgoing load factor is actually carrying the same-charge signal, and which rigidity assumptions kill that mechanism?
+
+---
+
+## Purpose
+
+Stage 209 already reduced the live same-charge corridor to a very specific mechanism:
+\[
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0}.
+\]
+
+So the next honest step is no longer another generic mixed-anisotropy scan.
+The surviving effect is already telling us what it is:
+
+> it is a **pure outgoing-load** problem.
+
+The main outputs of this stage are:
+
+1. the exact pure-transfer theorem
+   \[
+   \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta};
+   \]
+2. the exact one-port load-factor decomposition
+   \[
+   \Lambda:=\frac{P}{\Delta}
+   =
+   \frac{G_W}{\Omega_W^2}\,\frac{1+I}{1-H},
+   \]
+   with
+   \[
+   I=\frac{RG_U}{\Omega_U^2G_W},
+   \qquad
+   H=\frac{R^2}{\Omega_U^2\Omega_W^2};
+   \]
+3. the exact pure-transfer identity
+   \[
+   \Xi_1=2\,\delta\ln\Lambda;
+   \]
+4. the outgoing-rigidity sieve:
+   \[
+   i=0,\qquad h=0,\qquad m=0,\qquad i=h=0;
+   \]
+5. the first exact same-charge **co-loading no-go**
+   \[
+   i=h=0
+   \quad\Longrightarrow\quad
+   \text{only the trivial pure-transfer drift survives;}
+   \]
+6. and the transported dynamic ceilings on the remaining one-dimensional rigid survivors.
+
+So after Stage 210, the question is no longer
+
+> does some pure-transfer effect survive?
+
+It is now
+
+> which outgoing-load channels are allowed to move together, and which rigidity assumptions kill the same-charge corridor outright?
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Concrete finite-throat one-port sample branch
+
+Keep the same explicit finite-throat branch from Stages 206–209:
+
+- wall and brane-like internal coordinate on the lowest N/N zero mode,
+- trapped support and mixed coordinate on the lowest D/N half-wave,
+- exact overlap constant
+  \[
+  \kappa=\frac{2\sqrt2}{\pi}.
+  \]
+
+The primitive parameters remain
+\[
+(\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+=
+\left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right).
+\]
+
+The one-port mixed primitives are
+\[
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R,
+\]
+\[
+\Delta=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+P=\Omega_U^2G_W+RG_U,
+\qquad
+N_0=\frac{P^2}{\Delta^2}.
+\]
+
+### 1.2 Stage-209 pure-transfer corridor
+
+Stage 209 showed that on this noncanonical compatibility branch, the full intersection of
+
+1. Stage-208 conservative-shape preservation, and
+2. the stricter imported `5`PN even-gate package,
+
+is equivalent to
+\[
+D_{01}=D_{21}=D_{41}=0.
+\]
+
+So on that two-dimensional mixed-sector subcorridor the same-charge scalar becomes
+\[
+\boxed{
+\Xi_1=\frac{N_{01}}{N_0}.
+}
+\]
+
+That is the starting point of this stage.
+
+---
+
+## 2. Exact pure-transfer load theorem
+
+Differentiate
+\[
+N_0=\frac{P^2}{\Delta^2}.
+\]
+Then on any weak first-order deformation,
+\[
+\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta}.
+\]
+Because the pure-transfer corridor has
+\[
+D_{01}=0,
+\]
+the surviving same-charge scalar is exactly
+\[
+\boxed{
+\Xi_1
+=
+\frac{N_{01}}{N_0}
+=
+2\frac{P_{01}}{P}
+-
+2\frac{\Delta_{01}}{\Delta}.
+}
+\]
+
+So the surviving same-charge mechanism is literally the logarithmic slope of the one-port load factor
+\[
+\Lambda:=\frac{P}{\Delta}.
+\]
+
+Equivalently,
+\[
+\boxed{
+\Xi_1=2\,\delta\ln\Lambda.
+}
+\]
+
+This is already a major sharpening of the Stage-209 verdict.
+The mechanism is no longer “mixed-sector enhancement” in general.
+It is one exact load-factor slope.
+
+---
+
+## 3. Exact one-port factorization
+
+Write
+\[
+P=\Omega_U^2G_W+RG_U,
+\qquad
+\Delta=\Omega_U^2\Omega_W^2-R^2.
+\]
+Then
+\[
+P=\Omega_U^2G_W\left(1+\frac{RG_U}{\Omega_U^2G_W}\right),
+\qquad
+\Delta=\Omega_U^2\Omega_W^2\left(1-\frac{R^2}{\Omega_U^2\Omega_W^2}\right).
+\]
+So the load factor becomes
+\[
+\boxed{
+\Lambda
+=
+\frac{P}{\Delta}
+=
+\frac{G_W}{\Omega_W^2}\,
+\frac{1+I}{1-H},
+}
+\]
+with exact one-port invariants
+\[
+\boxed{
+I=\frac{RG_U}{\Omega_U^2G_W},
+\qquad
+H=\frac{R^2}{\Omega_U^2\Omega_W^2}.
+}
+\]
+
+Define the microscopic logarithmic drifts
+\[
+m:=\delta\ln\!\left(\frac{G_W}{\Omega_W^2}\right),
+\qquad
+i:=\delta\ln I,
+\qquad
+h:=\delta\ln H.
+\]
+In the primitive mixed slope variables
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}),
+\]
+these are
+\[
+m=x_{\lambda_W}-2x_{\Omega_W},
+\]
+\[
+i=x_{\lambda_R}+x_{\lambda_U}-x_{\lambda_W}-2x_{\Omega_U},
+\]
+\[
+h=2x_{\lambda_R}-2x_{\Omega_U}-2x_{\Omega_W}.
+\]
+
+Then on the Stage-209 pure-transfer corridor,
+\[
+\boxed{
+\Xi_1
+=
+2\left[
+m+\frac{I}{1+I}\,i+\frac{H}{1-H}\,h
+\right].
+}
+\]
+
+So the outgoing-load scalar has three transparent pieces:
+
+1. a direct mixed-leg / port-weight piece \(m\),
+2. an interference-ratio piece \(i\),
+3. a hybridization-ratio piece \(h\).
+
+### 3.1 Exact sample-branch coefficients
+
+On the concrete sample branch,
+\[
+I=\frac{3}{16},
+\qquad
+H=\frac{25}{98\pi^2}.
+\]
+So the exact Stage-210 load law is
+\[
+\boxed{
+\Xi_1
+=
+2m+\frac{6}{19}i+\frac{50}{98\pi^2-25}\,h
+}
+\]
+on the pure-transfer corridor.
+
+This is the first exact microscopic decomposition of the surviving same-charge scalar.
+
+---
+
+## 4. The outgoing-rigidity sieve
+
+Now impose the first natural rigidity filters.
+
+### 4.1 Combined interference and hybridization rigidity
+
+If both
+\[
+i=0,
+\qquad
+h=0,
+\]
+are imposed on the pure-transfer corridor, the exact reduced `2 x 2` rigidity matrix on the Stage-209 basis has nonzero determinant:
+\[
+\det[(i,h)|_{\rm pure\ transfer}]
+=
+-\frac{19(-25+98\pi^2)(200+147\pi^2)(441\pi^2+4400)}
+{6(8670000+14894275\pi^2+2117682\pi^4)}
+\neq 0.
+\]
+
+So the combined rigidity system has only the trivial solution:
+\[
+\boxed{
+D_{01}=D_{21}=D_{41}=0,\quad i=0,\quad h=0
+\ \Longrightarrow\
+x_{\rm mixed}=0.
+}
+\]
+
+This is the first exact same-charge co-loading no-go of the audit.
+
+It says:
+
+> if both the interference ratio and the hybridization ratio are frozen, the pure-transfer same-charge mechanism dies on this concrete branch.
+
+### 4.2 Single-rigidity survivors
+
+The situation is different if only one rigidity is imposed.
+
+The audit finds:
+
+- \(i=0\) leaves a one-dimensional survivor,
+- \(h=0\) leaves a one-dimensional survivor,
+- \(m=0\) also leaves a one-dimensional survivor.
+
+So the corridor is narrower, but it does not die under a **single** outgoing-rigidity filter.
+
+This is useful physically.
+It means the same-charge branch still has room to live if one of the outgoing subchannels is rigid, but not if both \(i\) and \(h\) are rigid simultaneously.
+
+---
+
+## 5. Concrete unit directions and same-charge gain scales
+
+Using ambient Euclidean normalization in the mixed primitive space
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}),
+\]
+the audit gives the following unit directions.
+
+### 5.1 `i = 0` survivor
+\[
+v_i\approx
+(0.45280825,\,-0.29424612,\,-0.82815170,\,-0.04054866,\,0.14458380),
+\]
+with
+\[
+|\Xi_1(v_i)|\approx 1.26576248.
+\]
+
+### 5.2 `h = 0` survivor
+\[
+v_h\approx
+(0.66561963,\,-0.38941932,\,0.46712837,\,0.03609301,\,0.43103536),
+\]
+with
+\[
+|\Xi_1(v_h)|\approx 2.04509123.
+\]
+
+### 5.3 `m = 0` survivor
+\[
+v_m\approx
+(0.13386239,\,-0.10586713,\,-0.98242900,\,-0.05389175,\,-0.05293356),
+\]
+with
+\[
+|\Xi_1(v_m)|\approx 0.29342952.
+\]
+
+The `m = 0` result is especially interesting.
+It means the direct mixed-leg factor can be frozen while the same-charge signal is carried entirely by a correlated interference/hybridization deformation.
+
+So the pure-transfer corridor is not synonymous with a raw mixed-leg effect.
+
+---
+
+## 6. Transported dynamic ceilings on the rigid survivors
+
+Interpret the ambient microscopic mixed-sector drift amplitude as
+\[
+\|x_{\rm mixed}\|_2=t.
+\]
+If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-207 ceiling law becomes
+\[
+|\epsilon|t \le \frac{\text{budget}}{\sigma}.
+\]
+
+### 6.1 Reference pure-transfer corridor
+\[
+\sigma_{\rm transfer}\approx 2.31561904.
+\]
+So the stricter `10%`-loss ceilings are
+\[
+|\epsilon|t \lesssim 0.15889070
+\qquad
+(\text{both wall-like poles survive}),
+\]
+\[
+|\epsilon|t \lesssim 0.31854077
+\qquad
+(\text{nonempty wall-like corridor}).
+\]
+
+### 6.2 `i = 0` survivor
+\[
+\sigma_i\approx 1.26576248.
+\]
+So the stricter `10%`-loss ceilings become
+\[
+|\epsilon|t \lesssim 0.29067881,
+\qquad
+|\epsilon|t \lesssim 0.58274682.
+\]
+
+### 6.3 `h = 0` survivor
+\[
+\sigma_h\approx 2.04509123.
+\]
+So the stricter `10%`-loss ceilings become
+\[
+|\epsilon|t \lesssim 0.17990900,
+\qquad
+|\epsilon|t \lesssim 0.36067783.
+\]
+
+### 6.4 `m = 0` survivor
+\[
+\sigma_m\approx 0.29342952.
+\]
+So the stricter `10%`-loss ceilings become
+\[
+|\epsilon|t \lesssim 1.25389678,
+\qquad
+|\epsilon|t \lesssim 2.51378617.
+\]
+
+The `m = 0` branch leaves the most headroom simply because the same-charge scalar is much smaller per unit ambient microscopic drift there.
+
+That does **not** make it automatically the physically best mechanism, but it does make it the least constrained by the transported dynamic ceiling.
+
+---
+
+## 7. What Stage 210 changes
+
+Before this stage, the strongest statement was only
+
+> the strict even-gate survivor is a pure-transfer mixed corridor.
+
+After this stage, the picture is much sharper.
+
+1. The surviving same-charge scalar is exactly one **outgoing load-factor slope**:
+   \[
+   \Xi_1=2\,\delta\ln\Lambda.
+   \]
+2. On the concrete branch, that load factor splits into three pieces:
+   \[
+   m,\qquad i,\qquad h.
+   \]
+3. Freezing both \(i\) and \(h\) kills the corridor outright.
+4. Freezing only one of \(i,h,m\) still leaves a one-dimensional same-charge survivor.
+5. Even with \(m=0\), the same-charge effect can survive through correlated interference/hybridization motion.
+
+So the best current summary is:
+
+> the idea survives Stage 210, but only as a very structured outgoing co-loading effect. Pure transfer is real, but it is not generically “just the mixed leg.” And the first exact no-go now says that simultaneous interference and hybridization rigidity kills the mechanism on this concrete branch.
+
+That is a real narrowing, and it is the right kind of narrowing.
+
+---
+
+## 8. Script-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact Stage-209 pure-transfer corridor on the explicit finite-throat compatibility branch;
+- the exact pure-transfer theorem
+  \[
+  \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta};
+  \]
+- the exact one-port factorization
+  \[
+  \Lambda=\frac{G_W}{\Omega_W^2}\frac{1+I}{1-H};
+  \]
+- the exact microscopic slope law
+  \[
+  \Xi_1=2\left[m+\frac{I}{1+I}i+\frac{H}{1-H}h\right]
+  \]
+  and its explicit sample-branch specialization
+  \[
+  \Xi_1=2m+\frac{6}{19}i+\frac{50}{98\pi^2-25}h;
+  \]
+- the nonzero pure-transfer rigidity determinant for the combined `i=h=0` filter;
+- the one-dimensional unit survivors for `i=0`, `h=0`, and `m=0`;
+- the corresponding same-charge gain scales \(\sigma_i,\sigma_h,\sigma_m\);
+- and the transported stricter `10%`-loss dynamic ceilings on the reference pure-transfer corridor and on each rigid survivor.
+
+Supporting file:
+- `moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py`
+
+=== moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 211: Numerator/Denominator Split of the Pure-Transfer Corridor and the First Actual Dynamic-Window Test
+
+## Status
+
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-206 compatibility branch and the Stage-210 pure-transfer corridor.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the strict same-charge survivor from Stage 210,
+\[
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\frac{N_{01}}{N_0}=2\,\delta\ln\Lambda,
+\qquad
+\Lambda=\frac{P}{\Delta},
+\]
+and asks the next natural microscopic question:
+
+> once the conservative one-pole bundle is frozen at first order, is the surviving same-charge effect carried by the **load numerator** or by the **load denominator**, and does either option die once the actual wall-like dynamic window is imposed?
+
+---
+
+## Purpose
+
+Stage 210 already reduced the live same-charge corridor to the exact pure-transfer subcorridor
+\[
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\frac{N_{01}}{N_0}=2\,\delta\ln\Lambda.
+\]
+
+So the next honest step is no longer another mixed-anisotropy scan.
+The surviving effect is already one exact outgoing-load slope.
+The only remaining structural question is:
+
+> does that load slope survive as a **numerator motion**, a **denominator motion**, or only as correlated co-loading?
+
+The main outputs of this stage are:
+
+1. the exact static split
+   \[
+   \Xi_1=2(\pi_1-\delta_1),
+   \qquad
+   \pi_1:=\frac{P_{01}}{P},
+   \qquad
+   \delta_1:=\frac{\Delta_{01}}{\Delta};
+   \]
+2. the exact rigid-subcorridor theorem:
+   - pure-transfer + \(\pi_1=0\) leaves a 1D **numerator-rigid** survivor,
+   - pure-transfer + \(\delta_1=0\) leaves a 1D **denominator-rigid** survivor,
+   - imposing both rigidities kills the corridor exactly;
+3. the explicit positive-\(\Xi_1\) unit directions on the concrete compatibility branch;
+4. the first actual wall-like dynamic-window audit on those two 1D survivors;
+5. and the sharp verdict that **neither** rigid split is killed by the dynamic window on the concrete compatibility point — the first ceiling is still the transported static one.
+
+So after Stage 211 the live question is not whether the pure-transfer corridor can survive either rigidity split at all.
+It is which split the real PDE-selected mixed branch actually resembles.
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Concrete compatibility branch
+
+Keep the same explicit finite-throat one-port branch used in Stages 206–210:
+
+- lowest N/N zero mode for the wall and brane-like internal coordinate,
+- lowest D/N half-wave for the trapped support and mixed coordinate,
+- exact overlap constant
+  \[
+  \kappa=\frac{2\sqrt2}{\pi},
+  \]
+- primitive parameters
+  \[
+  (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+  =\left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right),
+  \]
+- and the exact isotropic compatibility wall stiffness
+  \[
+  K_{\rm compat}\approx 24.473754879290965.
+  \]
+
+The static one-port primitives remain
+\[
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R,
+\]
+\[
+\Delta=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+P=\Omega_U^2G_W+RG_U,
+\qquad
+N_0=\frac{P^2}{\Delta^2}.
+\]
+
+### 1.2 Stage-210 pure-transfer corridor
+
+Stage 210 already reduced the strict same-charge survivor to
+\[
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\frac{N_{01}}{N_0}.
+\]
+
+So all that remains here is to split the static outgoing load factor
+\[
+\Lambda=\frac{P}{\Delta}
+\]
+into its numerator and denominator pieces.
+
+---
+
+## 2. Exact numerator/denominator split theorem
+
+Define the exact static slopes
+\[
+\pi_1:=\frac{P_{01}}{P},
+\qquad
+\delta_1:=\frac{\Delta_{01}}{\Delta}.
+\]
+Then on the pure-transfer corridor,
+\[
+\Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta},
+\]
+so
+\[
+\boxed{
+\Xi_1 = 2(\pi_1-\delta_1).
+}
+\]
+
+On the concrete sample branch, the exact row formulas in the mixed primitive slope space
+\[
+(x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
+\]
+are
+\[
+\pi_1
+=
+\frac{3}{19}x_{\lambda_U}
++\frac{16}{19}x_{\lambda_W}
++\frac{3}{19}x_{\lambda_R}
++\frac{32}{19}x_{\Omega_U},
+\]
+\[
+\delta_1
+=
+\frac{50}{25-98\pi^2}x_{\lambda_R}
++\frac{196\pi^2}{98\pi^2-25}x_{\Omega_U}
++\frac{196\pi^2}{98\pi^2-25}x_{\Omega_W}.
+\]
+
+So the numerator and denominator are not sampling the same microscopic slots:
+
+- the **numerator** sees \(\lambda_U,\lambda_W,\lambda_R,\Omega_U\),
+- the **denominator** sees \(\lambda_R,\Omega_U,\Omega_W\),
+- and only \(\lambda_R\) and \((\Omega_U,\Omega_W)\) are shared.
+
+That already shows the two rigidities are physically distinct, not just algebraically complementary.
+
+### 2.1 Exact subcorridor counts
+
+Inside the five-dimensional mixed primitive slope space, the audit gives:
+
+- pure-transfer:
+  \[
+  \operatorname{rank}=3,
+  \qquad
+  \operatorname{nullity}=2;
+  \]
+- pure-transfer + numerator rigidity \(\pi_1=0\):
+  \[
+  \operatorname{rank}=4,
+  \qquad
+  \operatorname{nullity}=1;
+  \]
+- pure-transfer + denominator rigidity \(\delta_1=0\):
+  \[
+  \operatorname{rank}=4,
+  \qquad
+  \operatorname{nullity}=1;
+  \]
+- pure-transfer + both rigidities:
+  \[
+  \operatorname{rank}=5,
+  \qquad
+  \operatorname{nullity}=0.
+  \]
+
+Equivalently, on a basis of the pure-transfer nullspace, the exact reduced determinant is
+\[
+\det[(\pi_1,\delta_1)|_{\rm pure\ transfer}]
+=
+\frac{196(200+147\pi^2)(80000+343225\pi^2+43218\pi^4)}{475(8670000+14894275\pi^2+2117682\pi^4)}
+\neq 0.
+\]
+
+So the split theorem is exact:
+\[
+\boxed{
+\text{pure-transfer} + \pi_1=0 \Rightarrow \text{1D survivor},
+}
+\]
+\[
+\boxed{
+\text{pure-transfer} + \delta_1=0 \Rightarrow \text{1D survivor},
+}
+\]
+\[
+\boxed{
+\text{pure-transfer} + \pi_1=0 + \delta_1=0 \Rightarrow \text{only the trivial drift}.
+}
+\]
+
+This is the Stage-211 analogue of the Stage-210 co-loading no-go.
+
+---
+
+## 3. Positive-\(\Xi_1\) unit survivors on the concrete branch
+
+Orient the surviving directions so that \(\Xi_1>0\), since that is the sign relevant to the same-charge barrier-softening corridor.
+
+### 3.1 Numerator-rigid branch \(\pi_1=0\)
+
+A Euclidean unit generator is
+\[
+ v_{\rm num}
+ \approx
+ (-0.55551149,
+ \,0.31814576,
+ \, -0.65766801,
+ \, -0.04533730,
+ \, -0.39447126),
+\]
+with
+\[
+\pi_1(v_{\rm num})=0,
+\qquad
+\delta_1(v_{\rm num})\approx -0.86805617,
+\qquad
+\Xi_1(v_{\rm num})\approx 1.73611235.
+\]
+So this branch carries the same-charge signal entirely through the denominator:
+\[
+\Xi_1=-2\delta_1.
+\]
+
+### 3.2 Denominator-rigid branch \(\delta_1=0\)
+
+A Euclidean unit generator is
+\[
+ v_{\rm den}
+ \approx
+ (-0.26583993,
+ \,0.18448137,
+ \,0.94454459,
+ \,0.04984499,
+ \, -0.02543112),
+\]
+with
+\[
+\delta_1(v_{\rm den})=0,
+\qquad
+\pi_1(v_{\rm den})\approx 0.34646608,
+\qquad
+\Xi_1(v_{\rm den})\approx 0.69293215.
+\]
+So this branch carries the same-charge signal entirely through the numerator:
+\[
+\Xi_1=2\pi_1.
+\]
+
+### 3.3 Immediate static reading
+
+The numerator-rigid survivor produces a larger same-charge scalar per unit mixed drift:
+\[
+\sigma_{\rm num}\approx 1.73611235,
+\qquad
+\sigma_{\rm den}\approx 0.69293215.
+\]
+So at fixed ambient microscopic amplitude it is the **stronger static lever**. The denominator-rigid branch is the **gentler** one.
+
+At this point alone one might be tempted to prefer the numerator-rigid branch.
+Stage 211 shows why the dynamic test is needed before making that judgment.
+
+---
+
+## 4. First actual dynamic-window split on the wall-like poles
+
+Now carry those two unit directions into the actual pole census of the concrete compatibility branch.
+
+At the undeformed compatibility point, the wall-like poles are
+\[
+\omega_-\approx 1.997535678933614,
+\qquad
+\mathcal R_{Q,-}\approx 30.199907560250075,
+\]
+\[
+\omega_+\approx 4.949054323643126,
+\qquad
+\mathcal R_{Q,+}\approx 36.171186483269487,
+\]
+with
+\[
+P_0\approx 0.002069792318062885.
+\]
+
+Using symmetric finite difference on the full pole census gives the first-order log-slopes.
+
+### 4.1 Numerator-rigid positive-\(\Xi_1\) motion
+
+The audit finds
+\[
+\delta\ln P_0 \approx +1.73611235,
+\]
+\[
+\delta\ln \mathcal R_{Q,+} \approx -0.52346582,
+\qquad
+\delta\ln \mathcal R_{Q,-} \approx +0.71358484,
+\]
+with only negligible wall-pole frequency drift.
+
+So the numerator-rigid branch has a very specific dynamic signature:
+
+- it **hurts** the upper wall-like dynamic figure,
+- but it **improves** the lower wall-like dynamic figure.
+
+This is a split-sign dynamic response.
+
+### 4.2 Denominator-rigid positive-\(\Xi_1\) motion
+
+The audit finds
+\[
+\delta\ln P_0 \approx +0.69293215,
+\]
+\[
+\delta\ln \mathcal R_{Q,+} \approx -0.35245541,
+\qquad
+\delta\ln \mathcal R_{Q,-} \approx -0.23169484,
+\]
+again with negligible wall-pole frequency drift.
+
+So the denominator-rigid branch has the opposite qualitative pattern:
+
+- it **hurts both** wall-like dynamic figures,
+- but it does so more mildly than the numerator-rigid branch hurts the upper wall pole.
+
+This is a same-sign dynamic penalty.
+
+That is the first genuinely physical difference between the two rigid subcorridors.
+
+---
+
+## 5. Comparison with the actual dynamic window
+
+Use the same local wall-like survival threshold carried from the earlier stages.
+At the stricter `10%`-loss benchmark,
+\[
+\mathcal R_{Q,\rm req}\approx 21.8545662963584.
+\]
+
+### 5.1 Dynamic ceilings
+
+The first-order wall-like dynamic ceilings are:
+
+#### Numerator-rigid
+\[
+|\epsilon|t \lesssim 0.96253269
+\qquad
+(\text{both wall-like poles survive}),
+\]
+\[
+|\epsilon|t \lesssim \infty
+\qquad
+(\text{nonempty wall-like corridor}).
+\]
+The nonempty dynamic ceiling is infinite at first order because one wall-like pole improves while the other worsens.
+
+#### Denominator-rigid
+\[
+|\epsilon|t \lesssim 1.39592653
+\qquad
+(\text{both wall-like poles survive}),
+\]
+\[
+|\epsilon|t \lesssim 1.42955095
+\qquad
+(\text{nonempty wall-like corridor}).
+\]
+So the denominator-rigid branch is the **only** one with a genuinely finite nonempty dynamic ceiling on the concrete branch.
+
+### 5.2 Static ceilings from the carried Stage-207 transport
+
+But the transported static ceilings are still much tighter:
+
+#### Numerator-rigid
+\[
+|\epsilon|t \lesssim 0.21192772
+\qquad
+(\text{both wall-like poles}),
+\]
+\[
+|\epsilon|t \lesssim 0.42486828
+\qquad
+(\text{nonempty wall-like corridor}).
+\]
+
+#### Denominator-rigid
+\[
+|\epsilon|t \lesssim 0.53097598
+\qquad
+(\text{both wall-like poles}),
+\]
+\[
+|\epsilon|t \lesssim 1.06448959
+\qquad
+(\text{nonempty wall-like corridor}).
+\]
+
+So on the actual sample compatibility point,
+\[
+\boxed{
+\text{dynamic ceiling} > \text{transported static ceiling}
+}
+\]
+for both rigid splits.
+
+That is the decisive Stage-211 result.
+
+---
+
+## 6. What Stage 211 changes
+
+Before this stage, the best statement was only:
+
+> the Stage-210 pure-transfer corridor survives unless both the interference and hybridization pieces are rigid simultaneously.
+
+After this stage, the picture is much sharper.
+
+1. The pure-transfer corridor splits cleanly into two exact 1D branches:
+   - numerator-rigid,
+   - denominator-rigid.
+2. Imposing both rigidities kills the corridor exactly.
+3. The two surviving branches are dynamically different:
+   - numerator-rigid is a stronger static lever, but it dynamically **splits** the two wall poles;
+   - denominator-rigid is a weaker static lever, but it dynamically **penalizes both** wall poles.
+4. On the concrete compatibility point, however, **neither** split is killed by the actual dynamic window.
+5. The first true ceiling is still the transported **static** one.
+
+So the next clean question is no longer:
+
+> does numerator rigidity or denominator rigidity kill the mechanism?
+
+The answer is no.
+
+The sharper next question is:
+
+> which of those two structural load splits does the real PDE-selected mixed branch most closely realize?
+
+That is the right continuation point after Stage 211.
+
+---
+
+## 7. Script-backed status
+
+The paired SymPy audit verifies all of the following directly on the Stage-206 compatibility branch:
+
+1. the exact split
+   \[
+   \Xi_1 = 2(\pi_1-\delta_1);
+   \]
+2. the exact row formulas for \(\pi_1\) and \(\delta_1\);
+3. the pure-transfer, numerator-rigid, denominator-rigid, and doubly rigid rank/nullity counts;
+4. the exact reduced determinant showing that the two rigidities are independent on the pure-transfer plane;
+5. the positive-\(\Xi_1\) Euclidean unit generators \(v_{\rm num}\) and \(v_{\rm den}\);
+6. the undeformed compatibility-branch wall-like pole census and \(\mathcal R_Q\) values;
+7. the first-order log-slopes of \(P_0\) and the two wall-like \(\mathcal R_Q\) figures on the two rigid survivors;
+8. the resulting actual dynamic ceilings; and
+9. the comparison showing that the transported static ceilings still bind earlier than the dynamic window on both rigid splits.
+
+Supporting file:
+- `moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py`
+
+---
+
+## 8. Immediate next derivation step
+
+The next honest continuation is now very specific:
+
+1. keep the exact Stage-211 rigid split as the local proxy family,
+2. place the actual PDE-selected mixed branch on the selected-branch numerator/denominator classifier,
+3. determine whether the real branch looks locally more numerator-like or denominator-like,
+4. and then compare that selected-branch signature against the concrete Stage-211 dynamic ceilings.
+
+That is the cleanest bridge into Stage 212.
+
+=== moving_throat_pde_stage212_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 212: Selected-Branch Numerator/Denominator Signature and the Softening-Depth Crossover Theorem
+
+## Status
+
+**Exact within the explicit finite-throat D/N selected-branch closure built on the Stage-024/025 selected-mode normalization product and compared against the Stage-211 pure-transfer numerator/denominator split.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the two exact rigid same-charge survivors from Stage 211,
+
+- **numerator-rigid** \((\pi_1=0)\),
+- **denominator-rigid** \((\delta_1=0)\),
+
+and asks the next natural microscopic question:
+
+> once the actual selected quadrupole branch is written in its exact finite-throat form, which of those two rigid signatures does the real PDE-selected mixed branch most closely resemble?
+
+---
+
+## Purpose
+
+Stage 211 already reduced the surviving same-charge pure-transfer corridor to the exact static split
+\[
+\Xi_1 = 2(\pi_1-\delta_1),
+\qquad
+\pi_1:=\frac{P_{01}}{P},
+\qquad
+\delta_1:=\frac{\Delta_{01}}{\Delta},
+\]
+and then isolated the two rigid 1D subcorridors
+
+- numerator-rigid \((\pi_1=0)\),
+- denominator-rigid \((\delta_1=0)\).
+
+But the later moving-throat selected-branch chain already replaced the free one-port static factor by the exact selected-mode normalization product
+\[
+N_-(x)=\frac{\beta_0\,s_-(x)^2}{\kappa_0^2\,(A-x)},
+\qquad 0\le x < A,
+\]
+with exact selected overlap
+\[
+s_-(x)=
+\frac{\bigl[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\bigr]^2}
+{\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2}.
+\]
+
+So the next honest question is now sharper:
+
+> when the actual selected branch is written in its exact softening-depth language, is it numerator-like, denominator-like, or something genuinely different from both rigid Stage-211 subcorridors?
+
+The main outputs of this stage are:
+
+1. the exact factorization of the selected-branch normalization product into a **numerator-like** and a **denominator-like** piece;
+2. the exact log-slope classifier that decides which rigid Stage-211 signature the selected branch most closely resembles at any point on the stable branch;
+3. the universal crossover theorem in the dimensionless variables
+   \[
+   \xi=\frac{x}{A},
+   \qquad
+   \delta=\frac{\Delta K_{\rm ax}}{A};
+   \]
+4. the exact threshold
+   \[
+   \delta=\frac89
+   \]
+   separating always-denominator branches from branches that begin numerator-dominant;
+5. and the sharp conclusion that the actual selected branch is **never** literally one of the rigid Stage-211 subcorridors — it is an exact co-loading product — but it becomes unambiguously **denominator-like** near softening, and for all \(\delta\ge 8/9\) it is denominator-like on the entire stable branch.
+
+So after Stage 212 the continuation point is no longer “numerator-rigid or denominator-rigid?” in the abstract.
+It is:
+
+> what are the actual selected-branch ratios \((\xi,\delta)\) on the physical moving-throat branch, and where do they land on this universal classifier map?
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Stage-211 static split
+
+Stage 211 isolated the exact static pure-transfer identity
+\[
+\Xi_1 = 2(\pi_1-\delta_1),
+\qquad
+\pi_1:=\frac{P_{01}}{P},
+\qquad
+\delta_1:=\frac{\Delta_{01}}{\Delta},
+\]
+and then split the two-dimensional pure-transfer corridor into
+
+- the 1D numerator-rigid branch \(\pi_1=0\),
+- the 1D denominator-rigid branch \(\delta_1=0\).
+
+That gave the right static classifiers, but it was still a classifier internal to the primitive mixed-slope space.
+
+### 1.2 Actual selected-branch product
+
+The later moving-throat selected-branch chain already replaced the free static load-factor language by the exact selected-mode normalization product
+\[
+N_-(x)=\frac{\beta_0\,s_-(x)^2}{\kappa_0^2\,(A-x)},
+\]
+with exact D/N constants
+\[
+\kappa_0^2=\frac{8}{\pi^2},
+\qquad
+\kappa_1^2=\frac{16}{9\pi^2}.
+\]
+
+The point of Stage 212 is to compare the Stage-211 numerator/denominator split against **this** actual selected-branch object rather than against a free one-port static factor.
+
+---
+
+## 2. Exact dimensionless selected-branch factorization
+
+Introduce the dimensionless stable-branch variables
+\[
+\xi:=\frac{x}{A},
+\qquad
+\delta:=\frac{\Delta K_{\rm ax}}{A},
+\qquad
+0\le \xi < 1,
+\qquad
+\delta>0.
+\]
+
+With
+\[
+x=A\xi,
+\qquad
+\Delta K_{\rm ax}=A\delta,
+\]
+the selected-branch normalization product factors exactly as
+\[
+N_-(x)=\frac{8\beta_0}{\pi^2 A}\,F(\xi,\delta),
+\]
+where
+\[
+\boxed{
+F(\xi,\delta)
+=
+\frac{(9\delta+11\xi)^4}
+{81(1-\xi)(9\delta^2+18\delta\xi+11\xi^2)^2}.
+}
+\]
+
+So the same universal selected-branch function \(F\) still controls the normalization product; the extra factor \(8/\pi^2=\kappa_0^2\) is a fixed D/N overlap constant and does not affect the classifier below.
+
+Now split this into
+\[
+\boxed{
+F(\xi,\delta)=F_{\rm num}(\xi,\delta)\,F_{\rm den}(\xi),
+}
+\]
+with
+\[
+\boxed{
+F_{\rm num}(\xi,\delta)
+=
+\frac{(9\delta+11\xi)^4}
+{81(9\delta^2+18\delta\xi+11\xi^2)^2},
+}
+\qquad
+\boxed{
+F_{\rm den}(\xi)=\frac{1}{1-\xi}.
+}
+\]
+
+This is the key exact factorization.
+
+It says:
+
+- the selected-branch **numerator-like** gain is the overlap / source-map / internal-transfer factor \(F_{\rm num}\),
+- the selected-branch **denominator-like** gain is the explicit softening factor \((1-\xi)^{-1}\).
+
+So the actual PDE-selected branch already comes with a built-in numerator/denominator split.
+But unlike Stage 211, the split is not “either/or.” It is an exact product.
+
+---
+
+## 3. Exact log-slope classifier
+
+To decide which rigid Stage-211 branch the selected branch most closely resembles, the right invariant is the log-slope split of \(F\) along the physical softening coordinate \(\xi\).
+
+Define
+\[
+L_{\rm num}:=\partial_\xi\ln F_{\rm num},
+\qquad
+L_{\rm den}:=\partial_\xi\ln F_{\rm den},
+\qquad
+L_{\rm tot}:=\partial_\xi\ln F=L_{\rm num}+L_{\rm den}.
+\]
+
+The exact derivatives are
+\[
+\boxed{
+L_{\rm num}(\xi,\delta)
+=
+\frac{72\delta^2}
+{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},
+}
+\]
+\[
+\boxed{
+L_{\rm den}(\xi)=\frac{1}{1-\xi}.
+}
+\]
+
+So the exact selected-branch numerator/denominator classifier is
+\[
+\boxed{
+\mathcal R_{ND}(\xi,\delta)
+:=
+\frac{L_{\rm num}}{L_{\rm den}}
+=
+\frac{72\delta^2(1-\xi)}{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)}.
+}
+\]
+
+Interpretation:
+
+- \(\mathcal R_{ND}>1\): the selected branch is **numerator-like** at that point;
+- \(\mathcal R_{ND}<1\): it is **denominator-like**;
+- \(\mathcal R_{ND}=1\): exact crossover.
+
+This is the Stage-212 replacement for the rigid Stage-211 subcorridors.
+It is no longer a statement about a free primitive mixed slope.
+It is a statement about the actual selected normalization product.
+
+---
+
+## 4. Exact onset and near-softening limits
+
+### 4.1 Onset
+
+At zero softening,
+\[
+\xi=0,
+\]
+the classifier is
+\[
+\boxed{
+\mathcal R_{ND}(0,\delta)=\frac{8}{9\delta}.
+}
+\]
+
+So the selected branch begins
+
+- numerator-like if \(0<\delta<8/9\),
+- exactly balanced if \(\delta=8/9\),
+- denominator-like if \(\delta>8/9\).
+
+### 4.2 Near softening
+
+As \(\xi\to1^-\),
+\[
+L_{\rm den}(\xi)=\frac{1}{1-\xi}\to+\infty,
+\]
+while
+\[
+L_{\rm num}(\xi,\delta)\to
+\frac{72\delta^2}{(9\delta+11)(9\delta^2+18\delta+11)},
+\]
+which is finite.
+
+Therefore
+\[
+\boxed{
+\lim_{\xi\to1^-}\mathcal R_{ND}(\xi,\delta)=0.
+}
+\]
+
+So the actual selected branch is always denominator-like sufficiently close to the softening edge.
+This is already a strong answer to the Stage-211 continuation question:
+
+> whatever the selected branch does near onset, it becomes denominator-like before softening.
+
+---
+
+## 5. Exact crossover theorem
+
+The numerator/denominator crossover condition is
+\[
+\mathcal R_{ND}(\xi,\delta)=1.
+\]
+Equivalently,
+\[
+L_{\rm num}=L_{\rm den}.
+\]
+
+Clearing denominators gives the exact cubic
+\[
+\boxed{
+\mathcal P(\xi,\delta)
+=
+121\xi^3+297\delta\xi^2+333\delta^2\xi+81\delta^3-72\delta^2
+=0.
+}
+\]
+
+The derivative is
+\[
+\boxed{
+\partial_\xi\mathcal P
+=
+363\xi^2+594\delta\xi+333\delta^2 > 0
+}
+\]
+for every \(\xi\ge0\), \(\delta>0\).
+
+So \(\mathcal P\) is strictly increasing in \(\xi\).
+That yields the exact theorem.
+
+### 5.1 Always-denominator regime
+
+If
+\[
+\delta\ge \frac89,
+\]
+then
+\[
+\mathcal P(0,\delta)=9\delta^2(9\delta-8)\ge0.
+\]
+Since \(\mathcal P\) is strictly increasing, it follows that
+\[
+\mathcal P(\xi,\delta)>0
+\qquad
+\text{for all }0<\xi<1,
+\]
+so
+\[
+\boxed{
+\delta\ge\frac89
+\quad\Longrightarrow\quad
+\mathcal R_{ND}(\xi,\delta)<1
+\ \text{for the entire stable branch.}
+}
+\]
+
+This means:
+
+> if the physical axial gap ratio satisfies \(\delta\ge 8/9\), the selected PDE branch is denominator-like from the start.
+
+### 5.2 Mixed regime
+
+If
+\[
+0<\delta<\frac89,
+\]
+then
+\[
+\mathcal P(0,\delta)<0,
+\qquad
+\lim_{\xi\to1^-}\mathcal P(\xi,\delta)>0.
+\]
+Because \(\mathcal P\) is strictly increasing, there exists a **unique**
+\[
+\xi_*(\delta)\in(0,1)
+\]
+such that
+\[
+\mathcal P(\xi_*,\delta)=0.
+\]
+
+So
+\[
+\boxed{
+0<\delta<\frac89
+\quad\Longrightarrow\quad
+\begin{cases}
+\mathcal R_{ND}>1,& 0\le \xi<\xi_*(\delta),\\[4pt]
+\mathcal R_{ND}=1,& \xi=\xi_*(\delta),\\[4pt]
+\mathcal R_{ND}<1,& \xi_*(\delta)<\xi<1.
+\end{cases}
+}
+\]
+
+This is the exact universal crossover theorem.
+It says the actual selected branch interpolates from numerator-like to denominator-like whenever the axial gap ratio is sufficiently small.
+
+---
+
+## 6. Sample crossover depths
+
+The exact crossover root \(\xi_*(\delta)\) is algebraic but not especially transparent in radicals, so the most useful quick reading is numerical.
+
+For a few representative gap ratios:
+
+- \(\delta=\frac14\):
+  \[
+  \xi_*\approx 0.107223051105697;
+  \]
+- \(\delta=\frac12\):
+  \[
+  \xi_*\approx 0.081847937860074;
+  \]
+- \(\delta=\frac34\):
+  \[
+  \xi_*\approx 0.032505121082825.
+  \]
+
+So even when the selected branch begins numerator-like, that window is usually quite short.
+The denominator-like regime takes over early.
+
+That is important for the same-charge audit, because the actual normalization hit is not expected at infinitesimal loading.
+It happens deeper on the stable branch, where denominator dominance is the natural expectation.
+
+---
+
+## 7. What this says about the Stage-211 rigid subcorridors
+
+Stage 211 asked which rigid static signature the real PDE-selected mixed branch most closely resembles.
+Stage 212 gives the precise answer.
+
+### 7.1 It is not literally either rigid subcorridor
+
+The selected branch carries
+\[
+F(\xi,\delta)=F_{\rm num}(\xi,\delta)\,F_{\rm den}(\xi),
+\]
+so both factors move simultaneously.
+Therefore the actual selected branch is **not** literally numerator-rigid or denominator-rigid.
+
+It is an exact co-loading branch.
+
+### 7.2 It becomes denominator-like near the physical target window
+
+Because the denominator factor diverges and the numerator factor stays finite as \(\xi\to1^-\), the selected branch always becomes denominator-like sufficiently near softening.
+
+So if the physical branch hits the universal target at appreciable softening depth, the right Stage-211 proxy is the denominator-rigid one, not the numerator-rigid one.
+
+### 7.3 Only very early on can it look numerator-like
+
+Numerator-like behavior is confined to the small-softening regime
+\[
+0\le \xi < \xi_*(\delta),
+\qquad
+0<\delta<\frac89.
+\]
+
+So the numerator-rigid Stage-211 branch is best read as an **onset-side local proxy**, not as the global selected-branch signature.
+
+---
+
+## 8. Best current verdict after Stage 212
+
+The continuation question from Stage 211 now has a clean answer.
+
+1. The real selected PDE branch is not one of the rigid Stage-211 subcorridors.
+   It is an exact numerator/denominator **co-loading** product.
+2. The exact classifier is
+   \[
+   \mathcal R_{ND}(\xi,\delta)
+   =
+   \frac{72\delta^2(1-\xi)}
+   {(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)}.
+   \]
+3. If \(\delta\ge 8/9\), the selected branch is denominator-like on the whole stable branch.
+4. If \(0<\delta<8/9\), the selected branch begins numerator-like but crosses uniquely to denominator-like at \(\xi=\xi_*(\delta)\).
+5. Near softening — and therefore near any large selected-branch normalization gain — the selected branch is always denominator-like.
+
+So the next honest stage is now very specific:
+
+> feed the actual moving-throat selected-branch data into \((\xi,\delta)\), place the physical branch on this universal classifier map, and then compare the resulting denominator-vs-numerator signature against the concrete Stage-211 dynamic ceilings.
+
+That is the clean continuation point.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit verifies:
+
+- the exact reduction of the selected-mode product \(N_-(x)\) to the universal dimensionless function \(F(\xi,\delta)\);
+- the exact factorization \(F=F_{\rm num}F_{\rm den}\);
+- the exact log-slope formulas for \(L_{\rm num}\), \(L_{\rm den}\), and \(\mathcal R_{ND}\);
+- the exact onset law \(\mathcal R_{ND}(0,\delta)=8/(9\delta)\);
+- the near-softening limit \(\lim_{\xi\to1^-}\mathcal R_{ND}=0\);
+- the exact crossover cubic \(\mathcal P(\xi,\delta)=0\) and the positivity of \(\partial_\xi\mathcal P\);
+- the always-denominator threshold \(\delta=8/9\);
+- and the sample crossover depths for \(\delta=1/4,1/2,3/4\).
+
+Supporting file:
+- `moving_throat_pde_stage212_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.py`
+
+---
+
+## 10. Immediate next step
+
+The next clean move is now well defined.
+
+1. Keep the exact Stage-212 classifier map.
+2. Insert the actual selected-branch moving-throat ratios \((\xi,\delta)\).
+3. Decide whether the physical branch sits in the numerator-like onset window or the denominator-like deeper-softening window.
+4. Then compile that placement into the carried Stage-211 wall-like dynamic ceilings.
+
+That is the smallest next theorem gate that directly connects the selected-branch normalization geometry to the already-audited same-charge dynamic windows.
+
+=== moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 213: Selected-Branch Classifier-to-Dynamic-Window Compiler and the Static-First Theorem
+
+## Status
+
+**Exact within the explicit finite-throat D/N selected-branch classifier closure built on the Stage-211 rigid dynamic data and the Stage-212 selected-branch numerator/denominator classifier.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the exact Stage-212 selected-branch classifier
+\[
+\mathcal R_{ND}(\xi,\delta)
+=
+\frac{72\delta^2(1-\xi)}{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},
+\]
+together with the two exact Stage-211 rigid same-charge survivors,
+
+- **numerator-rigid** \((\pi_1=0)\), which is dynamically **denominator-carried**,
+- **denominator-rigid** \((\delta_1=0)\), which is dynamically **numerator-carried**,
+
+and asks the next natural physical question:
+
+> once the actual selected branch is an exact numerator/denominator **co-loading** product rather than one rigid split, does the wall-like dynamic window ever become the first kill condition, or is the first real ceiling still the transported static \(|\epsilon\Xi_1|\) budget?
+
+---
+
+## Purpose
+
+Stage 211 already produced the first actual wall-like dynamic responses of the two rigid pure-transfer survivors.
+Stage 212 then showed that the actual selected branch is not literally either rigid split: it is an exact co-loading product with classifier \(\mathcal R_{ND}\).
+
+So the next honest question is now completely sharp:
+
+> if the actual selected branch is sampled through the exact rigid-split compiler built from the Stage-211 rigid dynamic data, does its wall-like dynamic window ever beat the universal static budget?
+
+The main outputs of this stage are:
+
+1. the exact selected-branch share weights
+   \[
+   w_{\rm num}=\frac{\mathcal R_{ND}}{1+\mathcal R_{ND}},
+   \qquad
+   w_{\rm den}=\frac{1}{1+\mathcal R_{ND}},
+   \]
+   which split the selected branch into its numerator-carried and denominator-carried pieces;
+2. the exact selected-branch wall-like dynamic slopes per unit \(\Xi_1\) as affine mixtures of the carried Stage-211 rigid-branch slopes;
+3. the exact sign theorem that the upper wall-like pole always worsens, while the lower wall-like pole flips sign only at one finite classifier threshold
+   \[
+   \mathcal R_*\approx 1.229255438463336;
+   \]
+4. the associated onset threshold
+   \[
+   \delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*}\approx 0.723111617875019;
+   \]
+5. and the central **static-first theorem**: the dynamic ceilings are everywhere weaker than the universal transported static ceilings, so the first kill condition on the selected branch is still the static \(|\epsilon\Xi_1|\) budget, not the wall-like dynamic window.
+
+So after Stage 213 the continuation point is no longer to wonder whether the selected-branch dynamic window kills the same-charge corridor.
+Inside this exact rigid-split compiler on the concrete compatibility branch, it does not.
+The remaining question is still the static placement of \(\Xi_1\) on the actual moving-throat branch.
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Stage-211 rigid dynamic data
+
+Stage 211 isolated two exact one-dimensional pure-transfer survivors on the explicit compatibility branch.
+
+The first is the **numerator-rigid** branch
+\[
+\pi_1=0,
+\]
+so the same-charge signal is carried entirely by the denominator:
+\[
+\Xi_1=-2\delta_1.
+\]
+Its carried Stage-211 unit direction has
+\[
+\Xi_1\approx 1.73611234967676,
+\]
+and wall-like dynamic slopes
+\[
+\delta\ln \mathcal R_{Q,+}\approx -0.52346582,
+\qquad
+\delta\ln \mathcal R_{Q,-}\approx +0.71358484.
+\]
+So per unit \(\Xi_1\), the **denominator-carried** dynamic slopes are
+\[
+\boxed{
+ s_{+}^{(\rm den)}\approx -0.301516097158113,
+ \qquad
+ s_{-}^{(\rm den)}\approx +0.411024574532864.
+}
+\]
+
+The second is the **denominator-rigid** branch
+\[
+\delta_1=0,
+\]
+so the same-charge signal is carried entirely by the numerator:
+\[
+\Xi_1=2\pi_1.
+\]
+Its carried Stage-211 unit direction has
+\[
+\Xi_1\approx 0.692932151812037,
+\]
+and wall-like dynamic slopes
+\[
+\delta\ln \mathcal R_{Q,+}\approx -0.35245541,
+\qquad
+\delta\ln \mathcal R_{Q,-}\approx -0.23169484.
+\]
+So per unit \(\Xi_1\), the **numerator-carried** dynamic slopes are
+\[
+\boxed{
+ s_{+}^{(\rm num)}\approx -0.508643465308977,
+ \qquad
+ s_{-}^{(\rm num)}\approx -0.334368725711457.
+}
+\]
+
+These four numbers are the only dynamic inputs needed in Stage 213.
+
+### 1.2 Stage-212 selected-branch classifier
+
+Stage 212 showed that the actual selected branch is not rigid.
+It is an exact co-loading product with classifier
+\[
+\mathcal R_{ND}(\xi,\delta)
+=
+\frac{72\delta^2(1-\xi)}{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},
+\qquad
+0\le \xi<1,\quad \delta>0.
+\]
+
+Its derivative is
+\[
+\partial_\xi \mathcal R_{ND}
+=
+-
+\frac{72\delta^2\Bigl(81\delta^3+261\delta^2+297\delta\xi(2-\xi)+\xi^2(363-242\xi)\Bigr)}
+{(9\delta+11\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^2},
+\]
+which is strictly negative on the stable interval.
+So the classifier decreases monotonically along the selected branch.
+
+That monotonicity is the key Stage-212 input that lets us convert onset information into whole-branch dynamic statements below.
+
+---
+
+## 2. Exact rigid-split share compiler
+
+The selected branch has numerator-like and denominator-like log-slope contributions
+\[
+L_{\rm num},\qquad L_{\rm den},
+\qquad
+\mathcal R_{ND}=\frac{L_{\rm num}}{L_{\rm den}}.
+\]
+So its exact contribution shares are
+\[
+\boxed{
+ w_{\rm num}=\frac{L_{\rm num}}{L_{\rm num}+L_{\rm den}}
+ =
+ \frac{\mathcal R_{ND}}{1+\mathcal R_{ND}},
+ \qquad
+ w_{\rm den}=\frac{L_{\rm den}}{L_{\rm num}+L_{\rm den}}
+ =
+ \frac{1}{1+\mathcal R_{ND}}.
+}
+\]
+
+Inside the exact rigid-split compiler, these are the weights with which the selected branch samples the carried Stage-211 dynamic responses.
+So the selected-branch wall-like dynamic slopes **per unit \(\Xi_1\)** are
+\[
+\boxed{
+S_+(\mathcal R_{ND})
+=
+\frac{\mathcal R_{ND}\,s_+^{(\rm num)}+s_+^{(\rm den)}}{1+\mathcal R_{ND}},
+}
+\]
+\[
+\boxed{
+S_-(\mathcal R_{ND})
+=
+\frac{\mathcal R_{ND}\,s_-^{(\rm num)}+s_-^{(\rm den)}}{1+\mathcal R_{ND}}.
+}
+\]
+
+This is the first Stage-213 compression:
+
+> once the Stage-212 classifier is known, the selected-branch dynamic response is completely determined inside the rigid-split compiler.
+
+Because the compiler is affine in the rigid data, every later dynamic conclusion is now a statement about the single scalar classifier \(\mathcal R_{ND}\).
+
+---
+
+## 3. Exact sign theorem for the selected wall-like poles
+
+### 3.1 Upper wall-like pole
+
+Both carried upper-pole slopes are negative:
+\[
+s_+^{(\rm num)}<0,
+\qquad
+s_+^{(\rm den)}<0.
+\]
+So for every classifier value
+\[
+\boxed{S_+(\mathcal R_{ND})<0.}
+\]
+
+The upper wall-like pole always worsens.
+
+### 3.2 Lower wall-like pole
+
+The carried lower-pole slopes have opposite sign:
+\[
+s_-^{(\rm num)}<0,
+\qquad
+s_-^{(\rm den)}>0.
+\]
+So the lower wall-like pole flips sign exactly once, at
+\[
+S_-(\mathcal R_*)=0.
+\]
+This gives the exact threshold
+\[
+\boxed{
+\mathcal R_*=
+\frac{s_-^{(\rm den)}}{-s_-^{(\rm num)}}
+\approx 1.229255438463336.
+}
+\]
+
+Therefore
+\[
+\boxed{
+\mathcal R_{ND}<\mathcal R_*
+\Longrightarrow
+S_-(\mathcal R_{ND})>0,
+}
+\]
+\[
+\boxed{
+\mathcal R_{ND}=\mathcal R_*
+\Longrightarrow
+S_-(\mathcal R_{ND})=0,
+}
+\]
+\[
+\boxed{
+\mathcal R_{ND}>\mathcal R_*
+\Longrightarrow
+S_-(\mathcal R_{ND})<0.
+}
+\]
+
+So the selected branch has a universal dynamic-sign split:
+
+- if the classifier is not too numerator-dominant, the lower wall-like pole actually **improves**;
+- only once the selected branch is strongly numerator-dominant do both wall-like poles worsen.
+
+That is already enough to show that the denominator-like part of the classifier map is dynamically safer than the numerator-like part.
+
+---
+
+## 4. Immediate consequences for the Stage-212 classifier map
+
+### 4.1 Every denominator-like point has infinite nonempty dynamic ceiling
+
+Stage 212 already proved that denominator-like means
+\[
+\mathcal R_{ND}\le 1.
+\]
+Since
+\[
+1<\mathcal R_*,
+\]
+we get immediately
+\[
+\boxed{
+\mathcal R_{ND}\le 1
+\Longrightarrow
+S_-(\mathcal R_{ND})>0.
+}
+\]
+
+So every denominator-like selected-branch point has the same split-sign dynamic response as the Stage-211 denominator-carried rigid branch:
+
+- upper wall-like pole worsens,
+- lower wall-like pole improves.
+
+That means its **nonempty** dynamic ceiling is infinite.
+
+In particular, the whole always-denominator regime from Stage 212,
+\[
+\delta\ge \frac89,
+\]
+inherits an infinite nonempty dynamic ceiling on the entire stable branch.
+
+### 4.2 A stronger onset threshold
+
+At onset,
+\[
+\mathcal R_{ND}(0,\delta)=\frac{8}{9\delta}.
+\]
+Requiring onset to stay below the sign-flip threshold gives
+\[
+\frac{8}{9\delta}\le \mathcal R_*,
+\]
+so
+\[
+\boxed{
+\delta\ge \delta_*^{(\rm dyn)}:=\frac{8}{9\mathcal R_*}
+\approx 0.723111617875019.
+}
+\]
+
+Because \(\mathcal R_{ND}\) decreases monotonically with \(\xi\), every branch with
+\[
+\delta\ge \delta_*^{(\rm dyn)}
+\]
+stays below \(\mathcal R_*\) on the whole stable interval.
+Therefore
+\[
+\boxed{
+\delta\ge 0.723111617875019
+\Longrightarrow
+\text{nonempty dynamic ceiling is infinite on the entire selected branch.}
+}
+\]
+
+This is stronger than the Stage-212 denominator-like theorem.
+It says even a substantial subset of the onset-side numerator-like branches still never lose their nonempty dynamic window.
+
+---
+
+## 5. Exact dynamic ceilings in \(|\epsilon\Xi_1|\)
+
+Use the carried Stage-211 wall-like dynamic figures
+\[
+\mathcal R_{Q,-}\approx 30.199907560250075,
+\qquad
+\mathcal R_{Q,+}\approx 36.171186483269487,
+\]
+and the same stricter \(10\%\)-loss requirement
+\[
+\mathcal R_{Q,\rm req}\approx 21.854566296358396.
+\]
+Define the dynamic margins
+\[
+\ell_-:=\ln\frac{\mathcal R_{Q,-}}{\mathcal R_{Q,\rm req}}
+\approx 0.323428979934714,
+\]
+\[
+\ell_+:=\ln\frac{\mathcal R_{Q,+}}{\mathcal R_{Q,\rm req}}
+\approx 0.503852964869151.
+\]
+
+Then the selected-branch **robust** dynamic ceiling on \(|\epsilon\Xi_1|\) is
+\[
+\boxed{
+B_{\rm dyn}^{(\rm both)}(\mathcal R_{ND})
+=
+\min\!\left(
+\frac{\ell_+}{-S_+(\mathcal R_{ND})},
+\frac{\ell_-}{-S_-(\mathcal R_{ND})}
+\right),
+}
+\]
+with the second term understood as \(+\infty\) whenever \(S_-\ge 0\).
+
+The **nonempty** dynamic ceiling is
+\[
+\boxed{
+B_{\rm dyn}^{(\rm nonempty)}(\mathcal R_{ND})
+=
+\begin{cases}
++\infty, & S_-(\mathcal R_{ND})\ge 0,\\[4pt]
+\max\!\left(
+\dfrac{\ell_+}{-S_+(\mathcal R_{ND})},
+\dfrac{\ell_-}{-S_-(\mathcal R_{ND})}
+\right), & S_-(\mathcal R_{ND})<0.
+\end{cases}
+}
+\]
+
+Because
+\[
+\frac{dS_\pm}{d\mathcal R_{ND}}
+=
+\frac{s_\pm^{(\rm num)}-s_\pm^{(\rm den)}}{(1+\mathcal R_{ND})^2}<0,
+\]
+both \(S_+\) and \(S_-\) decrease monotonically with the classifier.
+So wherever the ceiling formulas are finite, they decrease monotonically as the selected branch becomes more numerator-like.
+Their worst values therefore sit in the strong numerator limit.
+
+The endpoint values are already enough to understand the whole story:
+\[
+\boxed{
+B_{\rm dyn}^{(\rm both)}(0)
+\approx 1.671064893775584,
+}
+\]
+\[
+\boxed{
+\lim_{\mathcal R_{ND}\to\infty} B_{\rm dyn}^{(\rm both)}
+\approx 0.967282389363822,
+}
+\]
+\[
+\boxed{
+\lim_{\mathcal R_{ND}\to\infty} B_{\rm dyn}^{(\rm nonempty)}
+\approx 0.990581810705233.
+}
+\]
+
+So even the worst selected-branch robust dynamic ceiling is still close to one full unit of \(|\epsilon\Xi_1|\).
+
+That is already much looser than the transported static budgets below.
+
+---
+
+## 6. Universal transported static ceilings in \(|\epsilon\Xi_1|\)
+
+Stage 211 gave the transported static ceilings in the rigid branch parameter \(t\).
+Converting them to \(|\epsilon\Xi_1|\) yields the same universal numbers from both rigid splits:
+\[
+\boxed{
+B_{\rm stat}^{(\rm both)}\approx 0.367930328492646,
+}
+\]
+\[
+\boxed{
+B_{\rm stat}^{(\rm nonempty)}\approx 0.737619063660757.
+}
+\]
+
+This universality is expected: on the pure-transfer corridor,
+\[
+\delta\ln P_0=\Xi_1,
+\]
+so the transported Stage-207/211 static budgets naturally live in the branch-invariant variable \(|\epsilon\Xi_1|\).
+
+Now compare the worst selected-branch dynamic ceilings with these universal static budgets:
+\[
+\boxed{
+\inf_{\mathcal R_{ND}\ge 0} B_{\rm dyn}^{(\rm both)}
+\approx 0.967282389363822
+>
+0.367930328492646
+=
+B_{\rm stat}^{(\rm both)},
+}
+\]
+\[
+\boxed{
+\inf_{\mathcal R_{ND}\ge 0,\;B_{\rm dyn}^{(\rm nonempty)}<\infty}
+B_{\rm dyn}^{(\rm nonempty)}
+\approx 0.990581810705233
+>
+0.737619063660757
+=
+B_{\rm stat}^{(\rm nonempty)}.
+}
+\]
+
+So the selected-branch dynamic window is **everywhere weaker** than the universal transported static ceiling.
+
+This is the central Stage-213 theorem.
+
+---
+
+## 7. Sample classifier points
+
+For a few representative classifier values:
+
+### 7.1 Pure denominator-carried limit \(\mathcal R_{ND}=0\)
+
+\[
+S_+\approx -0.301516097158113,
+\qquad
+S_-\approx +0.411024574532864,
+\]
+so
+\[
+B_{\rm dyn}^{(\rm both)}\approx 1.671064893775584,
+\qquad
+B_{\rm dyn}^{(\rm nonempty)}=+\infty.
+\]
+
+### 7.2 Exact numerator/denominator balance \(\mathcal R_{ND}=1\)
+
+\[
+S_+\approx -0.405079781233545,
+\qquad
+S_-\approx +0.0383279244107035,
+\]
+so
+\[
+B_{\rm dyn}^{(\rm both)}\approx 1.243836370541187,
+\qquad
+B_{\rm dyn}^{(\rm nonempty)}=+\infty.
+\]
+
+### 7.3 Sign-flip threshold \(\mathcal R_{ND}=\mathcal R_*\)
+
+\[
+S_-(\mathcal R_*)=0,
+\]
+so the lower wall-like pole is exactly neutral and the nonempty dynamic ceiling is still infinite.
+
+### 7.4 Strong numerator-like point \(\mathcal R_{ND}=10\)
+
+\[
+S_+\approx -0.489813704567990,
+\qquad
+S_-\approx -0.266605698416519,
+\]
+so
+\[
+B_{\rm dyn}^{(\rm both)}\approx 1.028662448947899,
+\qquad
+B_{\rm dyn}^{(\rm nonempty)}\approx 1.213136035184892.
+\]
+
+Even here, the robust dynamic ceiling is still far above the universal static robust budget.
+
+---
+
+## 8. Best current verdict after Stage 213
+
+Stage 213 does not kill the same-charge corridor.
+It sharpens the verdict instead.
+
+Inside the exact rigid-split compiler built from Stages 211 and 212 on the concrete compatibility branch:
+
+1. the selected-branch wall-like dynamic response is completely controlled by the single classifier \(\mathcal R_{ND}\);
+2. the upper wall-like pole always worsens, but the lower one improves whenever
+   \[
+   \mathcal R_{ND}\le \mathcal R_*\approx 1.229255438463336;
+   \]
+3. every denominator-like point therefore has infinite nonempty dynamic ceiling;
+4. if
+   \[
+   \delta\ge \frac89,
+   \]
+   the whole selected branch is denominator-like and hence has infinite nonempty dynamic ceiling on the whole stable interval;
+5. even more strongly, if
+   \[
+   \delta\ge 0.723111617875019,
+   \]
+   the entire selected branch stays below the sign-flip threshold \(\mathcal R_*\), so its nonempty dynamic ceiling is still infinite everywhere;
+6. and for **all** selected-branch signatures,
+   \[
+   B_{\rm dyn}^{(\rm both)} > B_{\rm stat}^{(\rm both)},
+   \qquad
+   B_{\rm dyn}^{(\rm nonempty)} > B_{\rm stat}^{(\rm nonempty)}.
+   \]
+
+So the first kill condition on the selected same-charge branch is still the transported static \(\Xi_1\) budget, not the wall-like dynamic window.
+
+That is the right continuation point after Stage 213.
+
+---
+
+## 9. SymPy-backed audit status
+
+The accompanying SymPy audit verifies:
+
+1. the exact Stage-212 classifier formula and its strict monotonicity in \(\xi\);
+2. the exact rigid-split share weights and the selected-branch affine compiler
+   \[
+   S_\pm(\mathcal R_{ND});
+   \]
+3. the exact sign-flip threshold
+   \[
+   \mathcal R_*=\frac{s_-^{(\rm den)}}{-s_-^{(\rm num)}};
+   \]
+4. the exact onset threshold
+   \[
+   \delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*};
+   \]
+5. the dynamic ceiling formulas in \(|\epsilon\Xi_1|\), their endpoint values, and their sample classifier values;
+6. the universal transported static budgets;
+7. and the global strict inequalities
+   \[
+   B_{\rm dyn}^{(\rm both)} > B_{\rm stat}^{(\rm both)},
+   \qquad
+   B_{\rm dyn}^{(\rm nonempty)} > B_{\rm stat}^{(\rm nonempty)}
+   \]
+   on the entire selected-branch classifier half-line.
+
+Supporting file:
+- `moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py`
+
+=== moving_throat_pde_stage214_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 214: Continuum Placement Pullback of the Selected-Branch Dynamic-Class Map
+
+## Status
+
+**Exact within the carried universal selected-branch D/N geometry, the exact continuum placement map, and the Stage-213 selected-branch classifier-to-dynamic-window compiler.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the exact Stage-213 dynamic classifier
+\[
+\mathcal R_{ND}(\xi,\delta),
+\]
+and pulls it all the way back through the actual continuum selected-branch placement map, so the same-charge dynamic verdict is expressed directly in the physical kernel ratios of the moving-throat branch.
+
+---
+
+## Purpose
+
+Stage 213 solved the exact dynamic-sign problem on the full selected-branch classifier half-line:
+
+- the wall-like dynamic window never became the first kill condition,
+- the only live global kill still came from the transported static \(\Xi_1\) budget.
+
+But Stage 213 still spoke in the abstract classifier coordinate
+\[
+\mathcal R_{ND}.
+\]
+
+The next honest step is therefore very specific:
+
+> pull that classifier and its dynamic sign thresholds back through the **actual continuum selected-branch placement map**, so the same-charge verdict is stated directly in the physical kernel ratios of the moving-throat branch.
+
+The main outputs of this stage are:
+
+1. the exact physical classifier
+   \[
+   \mathcal R_{\rm phys}(\delta,R_{\rm target})
+   :=
+   \mathcal R_{ND}\!\bigl(\xi_{\rm req}(\delta,R_{\rm target}),\delta\bigr),
+   \]
+   where \(\xi_{\rm req}\) is the unique stable selected-branch point solving
+   \[
+   F(\xi,\delta)=R_{\rm target};
+   \]
+2. the exact monotonicity theorem
+   \[
+   \partial_{R_{\rm target}}\mathcal R_{\rm phys}<0,
+   \]
+   so larger normalization demand ratio always pushes the physical selected branch in the denominator-like / dynamically safer direction;
+3. the exact pulled-back target thresholds
+   \[
+   R_{\rm flip}(\delta),
+   \qquad
+   R_{\rm den}(\delta),
+   \]
+   corresponding respectively to
+   \[
+   \mathcal R_{\rm phys}=\mathcal R_*,
+   \qquad
+   \mathcal R_{\rm phys}=1;
+   \]
+4. the equivalent exact inequalities on the continuum kernel ratios
+   \[
+   (\epsilon_\eta,\epsilon_W,\rho,Z_W,\delta_0,\Lambda)
+   \]
+   and on the mixed-baseline coordinate \(M_{\rm mix}\);
+5. and the refined verdict that even on the **actual continuum-selected branch** the dynamic window is still not the first kill condition.
+
+So after Stage 214, the same-charge corridor is still alive.
+What changes is that the classifier map is no longer a sample-branch statement.
+It is now a physical continuum-kernel statement.
+
+---
+
+## 1. Frozen input carried forward
+
+### 1.1 Universal selected-branch geometry
+
+From the carried universal D/N selected-branch geometry, the stable selected branch is controlled by the exact functions
+\[
+F(\xi,\delta)
+=
+\frac{(9\delta+11\xi)^4}{81(1-\xi)(9\delta^2+18\delta\xi+11\xi^2)^2},
+\]
+\[
+G(\xi,\delta)
+=
+\frac{9\xi(\xi+\delta)}{9\delta+11\xi},
+\]
+with
+\[
+0\le \xi<1,\qquad \delta>0.
+\]
+
+Their exact monotonicities are
+\[
+\partial_\xi F
+=
+\frac{(9\delta+11\xi)^3\bigl(81\delta^3+189\delta^2\xi+72\delta^2+297\delta\xi^2+121\xi^3\bigr)}
+{81(1-\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^3}
+>0,
+\]
+\[
+\partial_\xi G
+=
+\frac{9(9\delta^2+18\delta\xi+11\xi^2)}{(9\delta+11\xi)^2}
+>0.
+\]
+
+The endpoint data are
+\[
+F(0,\delta)=1,
+\qquad
+F\to+\infty\quad(\xi\to1^-),
+\]
+\[
+G(0,\delta)=0,
+\qquad
+G_{\max}(\delta)=\frac{9(1+\delta)}{9\delta+11}.
+\]
+
+So for fixed \(\delta\), the physical selected branch is placed by a unique normalization locus
+\[
+F(\xi,\delta)=R_{\rm target},
+\]
+together with the support-feasibility frontier
+\[
+M_{\rm mix}\le G(\xi,\delta).
+\]
+
+### 1.2 Exact selected-branch classifier and Stage-213 dynamic thresholds
+
+From Stages 212–213, the exact selected-branch numerator/denominator classifier is
+\[
+\mathcal R_{ND}(\xi,\delta)
+=
+\frac{72\delta^2(1-\xi)}
+{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},
+\]
+with strict monotonicity
+\[
+\partial_\xi \mathcal R_{ND}
+=
+-
+\frac{72\delta^2\bigl(81\delta^3+261\delta^2+297\delta\xi(2-\xi)+\xi^2(363-242\xi)\bigr)}
+{(9\delta+11\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^2}
+<0.
+\]
+
+The carried Stage-213 sign threshold is
+\[
+\mathcal R_*\approx 1.229255438463336,
+\]
+and the denominator-like threshold is
+\[
+\mathcal R_{ND}=1.
+\]
+
+The associated onset thresholds are
+\[
+\delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*}\approx 0.723111617875019,
+\qquad
+\delta_{\rm den}=\frac89.
+\]
+
+So Stage 213 already gave two exact global statements:
+
+- if \(\delta\ge \delta_*^{(\rm dyn)}\), the nonempty dynamic ceiling is infinite on the whole selected branch;
+- if \(\delta\ge 8/9\), the whole selected branch is denominator-like.
+
+### 1.3 Continuum placement map
+
+From the carried continuum kernel extraction, the actual moving-throat branch is placed by the exact dimensionless ratios
+\[
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{\rm eff}},
+\qquad
+\epsilon_W=\frac{c_{UW}^2\sigma}{K_UK_W^{\rm eff}},
+\]
+\[
+\rho=\frac{c_{UW}c_{\eta U}}{K_Uc_{\eta W}},
+\qquad
+Z_W=\frac{c_{\eta W}^2}{K_\eta^{\rm eff}K_W^{\rm eff}},
+\qquad
+\delta_0=\frac{\pi^2T_w}{L^2K_\eta^{\rm eff}},
+\]
+together with the radiative demand scale
+\[
+\Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
+\]
+
+The exact placement formulas are
+\[
+\delta=\frac{\delta_0}{1-\epsilon_\eta},
+\]
+\[
+M_{\rm mix}
+=
+\frac{8Z_W(1+\rho)^2}{\pi^2(1-\epsilon_\eta)(1-\epsilon_W)},
+\]
+\[
+R_{\rm target}
+=
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{Z_W(1+\rho)^2},
+\]
+with exact product law
+\[
+R_{\rm target}M_{\rm mix}
+=
+\frac{8\Lambda(1-\epsilon_W)}{\pi^2}.
+\]
+
+So the actual physical selected branch is obtained by
+
+1. computing the continuum ratios,
+2. mapping them to \((\delta,M_{\rm mix},R_{\rm target})\),
+3. solving the unique equation \(F(\xi,\delta)=R_{\rm target}\),
+4. and checking \(M_{\rm mix}\le G(\xi,\delta)\).
+
+---
+
+## 2. Exact pullback of the classifier to the physical placement locus
+
+Define the physical selected-branch point \(\xi_{\rm req}(\delta,R_{\rm target})\) by the unique stable solution of
+\[
+F(\xi_{\rm req},\delta)=R_{\rm target},
+\qquad
+R_{\rm target}\ge 1.
+\]
+
+Then the actual physical classifier is
+\[
+\boxed{
+\mathcal R_{\rm phys}(\delta,R_{\rm target})
+:=
+\mathcal R_{ND}\!\bigl(\xi_{\rm req}(\delta,R_{\rm target}),\delta\bigr).
+}
+\]
+
+This is the exact continuum pullback of the Stage-213 classifier.
+
+Because
+\[
+\partial_\xi F>0,
+\qquad
+\partial_\xi \mathcal R_{ND}<0,
+\]
+implicit differentiation gives
+\[
+\frac{\partial \xi_{\rm req}}{\partial R_{\rm target}}
+=
+\frac{1}{\partial_\xi F}>0,
+\]
+and therefore
+\[
+\boxed{
+\frac{\partial \mathcal R_{\rm phys}}{\partial R_{\rm target}}
+=
+\frac{\partial_\xi \mathcal R_{ND}}{\partial_\xi F}
+<
+0.
+}
+\]
+
+So for fixed \(\delta\):
+
+> larger normalization demand ratio \(R_{\rm target}\) always pushes the physical selected branch in the denominator-like / dynamically safer direction.
+
+Using the exact product law
+\[
+R_{\rm target}M_{\rm mix}
+=
+\frac{8\Lambda(1-\epsilon_W)}{\pi^2},
+\]
+the same statement can be rewritten as
+\[
+\boxed{
+\frac{\partial \mathcal R_{\rm phys}}{\partial M_{\rm mix}}>0
+\quad
+\text{(at fixed }\delta,\Lambda,\epsilon_W\text{)}.
+}
+\]
+
+So larger mixed baseline drives the physical selected branch in the numerator-like direction, while smaller mixed baseline drives it in the denominator-like direction.
+
+This is the first real physical reading of the Stage-213 classifier map.
+
+---
+
+## 3. Exact threshold compiler for any classifier cap
+
+Fix any classifier cap \(c>0\).
+Define the threshold polynomial
+\[
+P_c(\xi,\delta)
+:=
+c(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)-72\delta^2(1-\xi).
+\]
+
+Its exact derivative is
+\[
+\partial_\xi P_c
+=
+3\bigl(87c\delta^2+198c\delta\xi+121c\xi^2+24\delta^2\bigr)>0
+\]
+for
+\[
+\xi\ge 0,\qquad \delta>0,\qquad c>0.
+\]
+
+So if a threshold root exists, it is unique.
+
+At onset,
+\[
+P_c(0,\delta)=9\delta^2(9c\delta-8),
+\]
+which is equivalent to the carried onset classifier
+\[
+\mathcal R_{ND}(0,\delta)=\frac{8}{9\delta}.
+\]
+
+Therefore the exact onset threshold for the classifier cap \(c\) is
+\[
+\boxed{
+\delta_c=\frac{8}{9c}.
+}
+\]
+
+This gives the exact pullback theorem:
+
+- if \(\delta\ge \delta_c\), then the physical selected branch already satisfies \(\mathcal R_{\rm phys}\le c\) at onset, so the pulled-back target threshold is simply
+  \[
+  R_{\rm target}\ge 1;
+  \]
+- if \(0<\delta<\delta_c\), there is a unique \(\xi_c(\delta)\in(0,1)\) with
+  \[
+  \mathcal R_{ND}(\xi_c,\delta)=c,
+  \]
+  and the pulled-back target threshold is
+  \[
+  \boxed{
+  R_c(\delta)=F(\xi_c(\delta),\delta)>1.
+  }
+  \]
+
+So every dynamic-class condition on the abstract selected branch has a unique continuum-placement target curve.
+
+---
+
+## 4. Two pulled-back dynamic-class surfaces
+
+### 4.1 Lower-pole sign-flip surface
+
+Take
+\[
+c=\mathcal R_*\approx 1.229255438463336.
+\]
+Then
+\[
+\delta_c=\delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*}\approx 0.723111617875019.
+\]
+
+Define the exact pulled-back sign-flip target curve
+\[
+\boxed{
+R_{\rm flip}(\delta):=R_{\mathcal R_*}(\delta).
+}
+\]
+
+Then the physical selected branch has
+\[
+\mathcal R_{\rm phys}\le \mathcal R_*
+\iff
+R_{\rm target}\ge R_{\rm flip}(\delta).
+\]
+
+Equivalently:
+
+> once the physical normalization demand ratio exceeds \(R_{\rm flip}(\delta)\), the lower wall-like pole improves and the nonempty dynamic ceiling becomes infinite.
+
+For
+\[
+\delta\ge \delta_*^{(\rm dyn)},
+\]
+the threshold collapses to onset:
+\[
+\boxed{
+R_{\rm flip}(\delta)=1.
+}
+\]
+
+### 4.2 Denominator-like surface
+
+Take
+\[
+c=1.
+\]
+Then
+\[
+\delta_c=\frac89.
+\]
+
+Define the exact pulled-back denominator target curve
+\[
+\boxed{
+R_{\rm den}(\delta):=R_1(\delta).
+}
+\]
+
+Then
+\[
+\mathcal R_{\rm phys}\le 1
+\iff
+R_{\rm target}\ge R_{\rm den}(\delta).
+\]
+
+So once the physical target ratio exceeds \(R_{\rm den}(\delta)\), the actual selected branch is fully denominator-like.
+
+For
+\[
+\delta\ge \frac89,
+\]
+this again collapses to onset:
+\[
+\boxed{
+R_{\rm den}(\delta)=1.
+}
+\]
+
+Because
+\[
+\mathcal R_*>1,
+\]
+the sign-flip surface is weaker than the denominator surface:
+\[
+R_{\rm flip}(\delta)\le R_{\rm den}(\delta).
+\]
+
+So as \(R_{\rm target}\) increases, the physical branch crosses the “lower pole improves” threshold before it reaches the fully denominator-like regime.
+
+---
+
+## 5. Sample pulled-back thresholds
+
+The exact pulled-back thresholds on a few representative \(\delta\)-slices are:
+
+| \(\delta\) | \(\xi_{\rm flip}\) | \(R_{\rm flip}\) | \(\xi_{\rm den}\) | \(R_{\rm den}\) |
+|---:|---:|---:|---:|---:|
+| \(0.25\) | \(0.087442106\) | \(1.330868539\) | \(0.107223051\) | \(1.393832566\) |
+| \(0.50\) | \(0.051428579\) | \(1.139956630\) | \(0.081847938\) | \(1.221087062\) |
+| \(0.75\) | \(0\) | \(1\) | \(0.032505121\) | \(1.071471867\) |
+
+So the physical selected branch becomes dynamically sign-safe quite early.
+For \(\delta=0.75\), the nonempty dynamic ceiling is already infinite from onset, even though the branch is not yet denominator-like from onset because \(0.75<8/9\).
+
+This is a strong continuation of the Stage-213 picture.
+
+---
+
+## 6. Exact continuum-kernel inequalities
+
+Because
+\[
+R_{\rm target}
+=
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{Z_W(1+\rho)^2},
+\]
+the pulled-back sign-flip condition
+\[
+R_{\rm target}\ge R_{\rm flip}(\delta)
+\]
+is exactly equivalent to
+\[
+\boxed{
+Z_W(1+\rho)^2
+\le
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{R_{\rm flip}(\delta)}.
+}
+\]
+
+Likewise, the denominator-like condition
+\[
+R_{\rm target}\ge R_{\rm den}(\delta)
+\]
+is equivalent to
+\[
+\boxed{
+Z_W(1+\rho)^2
+\le
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{R_{\rm den}(\delta)}.
+}
+\]
+
+Using the exact product law
+\[
+R_{\rm target}M_{\rm mix}
+=
+\frac{8\Lambda(1-\epsilon_W)}{\pi^2},
+\]
+the same thresholds become upper bounds on the mixed baseline:
+\[
+\boxed{
+M_{\rm mix}
+\le
+\frac{8\Lambda(1-\epsilon_W)}{\pi^2R_{\rm flip}(\delta)}
+\quad\Longleftrightarrow\quad
+\text{nonempty dynamic ceiling infinite},
+}
+\]
+\[
+\boxed{
+M_{\rm mix}
+\le
+\frac{8\Lambda(1-\epsilon_W)}{\pi^2R_{\rm den}(\delta)}
+\quad\Longleftrightarrow\quad
+\text{physical branch denominator-like}.
+}
+\]
+
+So at fixed product scale \(8\Lambda(1-\epsilon_W)/\pi^2\):
+
+- lowering \(M_{\rm mix}\) first drives the actual branch across the dynamic sign-flip threshold,
+- and lowering it further drives the branch fully into the denominator-like regime.
+
+This is the first exact continuum-kernel dynamic-class map.
+
+---
+
+## 7. The static-first theorem survives the pullback
+
+Stage 213 already proved the global inequalities
+\[
+\inf B_{\rm dyn}^{(\rm both)}
+\approx 0.967282389363822
+>
+0.367930328492646
+=
+B_{\rm stat}^{(\rm both)},
+\]
+\[
+\inf B_{\rm dyn}^{(\rm nonempty)}
+\approx 0.990581810705233
+>
+0.737619063660757
+=
+B_{\rm stat}^{(\rm nonempty)}.
+\]
+
+The continuum placement map only restricts the full classifier half-line to a physical subset
+\[
+\mathcal R_{\rm phys}(\delta,R_{\rm target})\subseteq [0,\infty).
+\]
+So the same strict inequalities survive under pullback:
+\[
+\boxed{
+B_{\rm dyn}^{(\rm both)}(\text{physical})
+>
+B_{\rm stat}^{(\rm both)},
+}
+\]
+\[
+\boxed{
+B_{\rm dyn}^{(\rm nonempty)}(\text{physical})
+>
+B_{\rm stat}^{(\rm nonempty)}.
+}
+\]
+
+Therefore:
+
+> even on the actual continuum-selected branch, the first kill condition remains the transported static \(\Xi_1\) budget, not the wall-like dynamic window.
+
+This is the central Stage-214 theorem.
+
+---
+
+## 8. Best current verdict after Stage 214
+
+Stage 214 does not kill the same-charge corridor.
+It sharpens the physical classification instead.
+
+The exact selected-branch classifier is now pulled all the way back to the continuum kernel ratios:
+
+1. for fixed \(\delta\), larger \(R_{\rm target}\) always makes the actual selected branch more denominator-like;
+2. equivalently, at fixed product scale, larger \(M_{\rm mix}\) makes it more numerator-like;
+3. there is an exact pulled-back sign-flip threshold \(R_{\rm flip}(\delta)\) beyond which the nonempty dynamic ceiling is infinite;
+4. there is a second exact pulled-back denominator threshold \(R_{\rm den}(\delta)\) beyond which the physical branch is denominator-like;
+5. these thresholds translate directly into exact inequalities on
+   \[
+   (\epsilon_\eta,\epsilon_W,\rho,Z_W,\delta_0,\Lambda)
+   \]
+   or on \(M_{\rm mix}\) through the exact product law;
+6. but nowhere on the continuum placement map does the dynamic window become the first kill condition.
+
+So after Stage 214, the same-charge idea is still alive.
+The remaining first kill condition is still the **static placement of \(\Xi_1\) on the actual moving-throat branch**, not the wall-like dynamic window.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies:
+
+- the exact monotonicity formulas for \(F(\xi,\delta)\), \(G(\xi,\delta)\), and \(\mathcal R_{ND}(\xi,\delta)\);
+- the implicit-derivative compiler
+  \[
+  \partial_{R_{\rm target}}\mathcal R_{\rm phys}
+  =
+  \frac{\partial_\xi\mathcal R_{ND}}{\partial_\xi F}
+  <0;
+  \]
+- the exact threshold polynomial
+  \[
+  P_c(\xi,\delta)
+  \]
+  and its unique-root / onset law
+  \[
+  \delta_c=\frac{8}{9c};
+  \]
+- the pulled-back sign-flip and denominator thresholds \(R_{\rm flip}(\delta)\), \(R_{\rm den}(\delta)\) on representative slices;
+- the exact continuum product law
+  \[
+  R_{\rm target}M_{\rm mix}
+  =
+  \frac{8\Lambda(1-\epsilon_W)}{\pi^2};
+  \]
+- and the Stage-213 static-first inequalities after pullback.
+
+The note and script are therefore aligned: the stage is a clean compiler from the abstract selected-branch classifier to the actual continuum placement coordinates of the moving-throat branch.
+
+=== moving_throat_pde_stage215_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md ===
+
+
+# Moving-Throat PDE — Stage 215: Known 5PN Data Injection and Current Branch Verdict
+
+## Status
+
+**Exact within the carried same-charge barrier chain plus the numerically located `5`PN Family-1 support/source branch on the refreshed `\Lambda_{\rm EM}` geometry.**
+
+This stage does **not** solve the full moving-throat PDE.
+It takes the support/source data that are already numerically present in the `5`PN stack, injects them into the same-charge audit language, and asks whether the corridor dies there or whether the unresolved bottleneck stays where the earlier audit said it was.
+
+---
+
+## Purpose
+
+The earlier same-charge barrier audit had already narrowed the live corridor to a small ordered chain:
+
+1. the **dynamic** wall-like window is *not* the first kill condition;
+2. the **support/source** side must still be large enough;
+3. the first unresolved kill test is the **static** placement / orbit-lock side.
+
+The `5`PN continuation then did something new: it actually **numerically located** the explicit Family-1 support/source branch on the refreshed exact `\Lambda_{\rm EM}` geometry. That means the next honest stage is no longer more support algebra. It is simply:
+
+> inject the known `5`PN support/source data into the same-charge audit chain and decide whether the live bottleneck moves, or stays on the unresolved static orbit-lock / coherent placement packet.
+
+The main result is clear:
+
+> after the known `5`PN data are injected, the same-charge corridor is still alive.
+> The support/source side is numerically safe by a large margin, while the first unresolved gate remains the actual PDE-selected static orbit-lock / placement point.
+
+---
+
+## 1. What is already numerically known from the `5`PN stack
+
+### 1.1 Refreshed exact `\Lambda_{\rm EM}` geometry branch
+
+With the carried thin-wall Family-1 lock
+\[
+\frac{\ell}{a}=\frac1{20},
+\]
+the exact EM-branch geometry refresh gives
+\[
+\Lambda_\ell:=\frac{L}{\ell}
+=
+20\,\Lambda_{\rm EM}
+=
+\frac{20\sqrt2\,\pi}{x_{01}}
+\approx 36.94973154240256,
+\]
+where \(x_{01}\) is the first positive zero of \(J_0\).
+
+The same branch fixes
+\[
+\eta=\Lambda_\ell\approx 36.94973154240256,
+\]
+\[
+\chi_s=\frac{L}{2\ell}=\frac{\Lambda_\ell}{2}\approx 18.47486577120128,
+\]
+\[
+\kappa
+=
+4\chi_s^2+\frac45\Lambda_\ell^2
+=
+\frac95\Lambda_\ell^2
+\approx 2457.5087899001137.
+\]
+
+On the Robin support side, the lowest support eigenvalue solves
+\[
+y\tan y=\eta,
+\qquad
+0<y<\frac{\pi}{2},
+\]
+so the exact support-softening factor is
+\[
+A_K
+=
+\frac{\kappa+\pi^2/4}{\kappa+y^2}
+\approx 1.0000521380385143,
+\]
+and the Family-1 support ceiling is
+\[
+\boxed{
+\zeta_{\max}
+=
+A_K\frac{\pi^2}{4}
+\approx 2.4675297457259358.
+}
+\]
+
+### 1.2 Exact support-drop kernel and fixed-point equation
+
+The same support/source branch is selected by the exact fixed-point law
+\[
+Pe=\Xi\,\Delta(Pe;\kappa,\eta),
+\]
+with stationary zero-flux source profile
+\[
+\Sigma_{Pe}(x)=\frac{Pe\,e^{Pe x}}{e^{Pe}-1},
+\qquad x\in[0,1],
+\]
+and support-drop kernel
+\[
+K_{\kappa,\eta}(x)
+=
+\frac{\cosh(\alpha x)+(\eta/\alpha)\sinh(\alpha x)-\cosh(\alpha(1-x))}
+{\alpha\sinh\alpha+\eta\cosh\alpha},
+\qquad
+\alpha=\sqrt\kappa.
+\]
+So
+\[
+\Delta(Pe;\kappa,\eta)
+=
+\int_0^1 K_{\kappa,\eta}(x)\,\Sigma_{Pe}(x)\,dx.
+\]
+
+Its exact endpoint values are
+\[
+\Delta_0(\kappa,\eta)
+=
+\frac{\eta(\cosh\alpha-1)}
+{\alpha^2(\alpha\sinh\alpha+\eta\cosh\alpha)}
+\approx 1.7377393923469950\times 10^{-4},
+\]
+\[
+\Delta_\infty(\kappa,\eta)
+=
+\frac{\cosh\alpha+(\eta/\alpha)\sinh\alpha-1}
+{\alpha\sinh\alpha+\eta\cosh\alpha}
+\approx 2.0172162594593645\times 10^{-2}.
+\]
+
+So every constructive root obeys the exact branch bracket
+\[
+\Xi\,\Delta_0
+\le Pe_*
+\le
+\Xi\,\Delta_\infty.
+\]
+
+### 1.3 Two explicit wall-depth extractions
+
+On the carried Family-1 branch, the two explicit wall-depth extractions are
+\[
+\Theta_w^{(\chi)}\approx 4.06863235008162,
+\qquad
+\Theta_w^{(J)}\approx 0.927552032539308
+\]
+for the benchmark \(\lambda_\mu=1\).
+
+The exact wall/source figures of merit are then
+\[
+\Xi_\chi = 100\,\Theta_w^{(\chi)}\Lambda_\ell^2
+\approx 5.5548332017764099\times 10^5,
+\]
+\[
+\Xi_J = 100\,\Theta_w^{(J)}\Lambda_\ell^2
+\approx 1.2663707072528143\times 10^5.
+\]
+
+The numerically located fixed-point roots are:
+
+#### \(\chi\)-weighted extraction
+\[
+Pe_*^{(\chi)}\approx 11155.7265863205869,
+\]
+\[
+\zeta_{\rm phys}^{(\chi)}
+=
+A_K\,\Omega_{Pe_*^{(\chi)}}^2
+\approx 2.4675296478814376,
+\]
+\[
+\rho_{\alpha,\max}^{(\chi)}
+=
+1+\zeta_{\rm phys}^{(\chi)}
+\approx 3.4675296478814376.
+\]
+
+#### \(J\)-weighted extraction
+\[
+Pe_*^{(J)}\approx 2504.9703142859238,
+\]
+\[
+\zeta_{\rm phys}^{(J)}
+=
+A_K\,\Omega_{Pe_*^{(J)}}^2
+\approx 2.4675278051675084,
+\]
+\[
+\rho_{\alpha,\max}^{(J)}
+=
+1+\zeta_{\rm phys}^{(J)}
+\approx 3.4675278051675084.
+\]
+
+Here the exact overlap-boost law is
+\[
+\Omega_{Pe}
+=
+\frac{\pi Pe\bigl(2Pe\,e^{Pe}+\pi\bigr)}
+{(4Pe^2+\pi^2)(e^{Pe}-1)},
+\]
+or, in numerically stable form,
+\[
+\Omega_{Pe}
+=
+\frac{\pi Pe\bigl(2Pe+\pi e^{-Pe}\bigr)}
+{(4Pe^2+\pi^2)(1-e^{-Pe})}.
+\]
+
+So the support/source side is no longer just “probably okay.”
+It is numerically located on the actual explicit Family-1 operator branch.
+
+---
+
+## 2. Exact margins after plugging in the known `5`PN data
+
+The natural isotropic passive/outgoing grouped-\(P_2\) branch still requires only
+\[
+\zeta_{\rm req}=\frac13,
+\qquad
+\rho_\alpha^{\rm req}=\frac43.
+\]
+
+So the injected support/source safety margins are:
+
+### \(\chi\)-weighted branch
+\[
+\zeta_{\rm phys}^{(\chi)}-\zeta_{\rm req}
+\approx 2.1341963145481043,
+\]
+\[
+\rho_{\alpha,\max}^{(\chi)}-\frac43
+\approx 2.1341963145481043.
+\]
+
+### \(J\)-weighted branch
+\[
+\zeta_{\rm phys}^{(J)}-\zeta_{\rm req}
+\approx 2.1341944718341751,
+\]
+\[
+\rho_{\alpha,\max}^{(J)}-\frac43
+\approx 2.1341944718341751.
+\]
+
+Useful ratio form:
+
+### \(\chi\)-weighted branch
+\[
+\frac{\zeta_{\rm phys}^{(\chi)}}{\zeta_{\rm req}}
+\approx 7.402588943644313,
+\qquad
+\frac{\rho_{\alpha,\max}^{(\chi)}}{4/3}
+\approx 2.600647235911078.
+\]
+
+### \(J\)-weighted branch
+\[
+\frac{\zeta_{\rm phys}^{(J)}}{\zeta_{\rm req}}
+\approx 7.402583415502525,
+\qquad
+\frac{\rho_{\alpha,\max}^{(J)}}{4/3}
+\approx 2.600645853875631.
+\]
+
+So the explicit support/source branch overshoots the canonical isotropic demand by a factor of about \(7.4\) in the \(\zeta\) variable.
+
+At the same time, both operator-selected points sit extremely close to the Family-1 ceiling:
+
+### \(\chi\)-weighted branch
+\[
+\zeta_{\max}-\zeta_{\rm phys}^{(\chi)}
+\approx 9.784449817674381\times 10^{-8}.
+\]
+
+### \(J\)-weighted branch
+\[
+\zeta_{\max}-\zeta_{\rm phys}^{(J)}
+\approx 1.940558427350484\times 10^{-6}.
+\]
+
+That is not a contradiction.
+It simply means that the numerically selected Family-1 support/source point nearly saturates the **Family-1 support ceiling** while still sitting far above the much smaller isotropic demand \(\zeta_{\rm req}=1/3\).
+
+---
+
+## 3. Transported consequence for the same-charge audit chain
+
+The earlier same-charge audit had already established two load-bearing orderings before any `5`PN injection:
+
+1. the **dynamic** selected-branch wall-window is not the first kill condition;
+2. the first real bottleneck is the **static** transported placement / \(\Xi_1\) side.
+
+Injecting the numerically located `5`PN support/source data does **not** change that ordering.
+It sharpens it.
+
+The carried consequences are now:
+
+- the support/source side is numerically safe;
+- the canonical passive/outgoing normalization side stays exact on the natural isotropic branch;
+- so the first unresolved kill condition remains exactly where the reduced `5`PN finish-line notes already said it was:
+  the actual PDE-selected orbit-lock / coherent placement point.
+
+In the exact `5`PN finish-line language, the still-missing numerical object is the actual branch point satisfying
+\[
+d\ln R_{\rm tr}=0,
+\qquad
+d\ln R_{\rm target}=0,
+\qquad
+d\ln \epsilon_\eta=0,
+\]
+together with the canonical outgoing-normalization condition
+\[
+N_Q=1.
+\]
+
+So after the known `5`PN data are injected, the support/source side is no longer the place where the same-charge idea should die inside the current reduced theorem stack.
+
+---
+
+## 4. Current best verdict after plugging in the known numbers
+
+The same-charge corridor is still alive.
+
+More precisely:
+
+1. **Static same-sign Maxwell shaping** is still not the answer.
+2. **Dynamic resonance** is still not the first bottleneck.
+3. **Support/source enhancement** is now numerically located and strongly non-bottlenecked.
+4. The first unresolved gate is still the **actual PDE-selected static orbit-lock / placement point**.
+
+So after Stage 215 the question is no longer:
+
+> can the reduced support/source side possibly be large enough?
+
+It already is.
+
+The question is now:
+
+> when the completed moving-throat branch is actually selected, does its realized orbit packet / static placement verdict land inside the surviving same-charge window, or does the route finally die there?
+
+That is the cleanest current stopping point.
+
+---
+
+## 5. SymPy-backed status
+
+The accompanying audit script verifies all of the following:
+
+1. the exact refreshed `\Lambda_{\rm EM}` geometry formulas
+   \[
+   \Lambda_\ell=\frac{20\sqrt2\,\pi}{x_{01}},
+   \qquad
+   \kappa=\frac95\Lambda_\ell^2;
+   \]
+2. the exact Robin support equation
+   \[
+   y\tan y=\eta
+   \]
+   and the derived Family-1 support ceiling
+   \[
+   \zeta_{\max}=A_K\pi^2/4;
+   \]
+3. the exact support-drop endpoint formulas
+   \[
+   \Delta_0(\kappa,\eta),
+   \qquad
+   \Delta_\infty(\kappa,\eta);
+   \]
+4. the exact fixed-point equation
+   \[
+   Pe=\Xi\,\Delta(Pe;\kappa,\eta)
+   \]
+   for both wall-depth extractions;
+5. the numerically located roots
+   \[
+   Pe_*^{(\chi)},\qquad Pe_*^{(J)};
+   \]
+6. the exact transported support/source values
+   \[
+   \zeta_{\rm phys}^{(\chi)},\quad
+   \zeta_{\rm phys}^{(J)},\quad
+   \rho_{\alpha,\max}^{(\chi)},\quad
+   \rho_{\alpha,\max}^{(J)};
+   \]
+7. the exact margins above
+   \[
+   \zeta_{\rm req}=\frac13,
+   \qquad
+   \rho_\alpha^{\rm req}=\frac43;
+   \]
+8. and the proximity of both explicit Family-1 points to the ceiling \(\zeta_{\max}\).
+
+So the note is not just a verbal carry-forward statement.
+It is backed by an executable reconstruction of the known `5`PN data injection step.
+
+---
+
+## 6. What the next honest stage should do
+
+The next stage should **not** invent more support algebra.
+
+The honest next theorem gate is now:
+
+1. take the exact unresolved coherent placement packet
+   \[
+   (R_{\rm tr},R_{\rm target},\epsilon_\eta),
+   \]
+   or equivalently
+   \[
+   (d\ln R_{\rm tr},d\ln R_{\rm target},d\ln\epsilon_\eta),
+   \]
+2. express its weak-axisymmetric verdict as the actual static \(\Xi_1\) / transported placement scalar used in the same-charge chain,
+3. and test whether the realized branch clears the already-carried static ceiling.
+
+That is where the present stack says the real answer now lives.
+
+=== moving_throat_pde_stage216_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 216: Rigid-Mouth Orbit-Lock Compiler and the Static Turbulence Gate
+
+## Status
+
+**Exact within the carried Stage-207 / Stage-215 same-charge reduction plus the Stage-171 coherent branch-observable compiler.**
+
+This stage does **not** claim that hydrodynamic turbulence or cavitation has already been derived from the full PDE.
+It shows something narrower and more useful:
+
+> if one adopts the physical reading that the brane mouth is rigid while the internal branch can still repackage loading, then the unresolved same-charge kill test is exactly a bound on the internal orbit/transfer packet, and the Stage-207 static ceiling can be read as a first reduced “choke / turbulence” gate.
+
+The theorem content is exact inside the reduced branch language.
+The words “turbulence”, “choked flow”, and “collapse” are **interpretive labels** for leaving that surviving static branch window.
+
+---
+
+## Purpose
+
+Stage 215 already showed that the explicit `5`PN support/source branch is numerically safe and that the first unresolved same-charge bottleneck is still the **PDE-selected orbit-lock / coherent placement point**. The same notes are explicit that the numerically missing object is the actual point satisfying the coherent placement conditions
+\[
+d\ln R_{\rm tr}=0,\qquad
+d\ln R_{\rm target}=0,\qquad
+d\ln \epsilon_\eta=0.
+\]
+
+So the natural next question is no longer whether support/source is large enough.
+It is:
+
+> how should the unresolved orbit packet be interpreted if the defect mouth is geometrically rigid and the remaining load can only reorganize internally?
+
+This stage compiles that idea into exact reduced formulas.
+
+The main result is sharp:
+
+> on a track-locked branch, the surviving static same-charge scalar is literally the drift of the corrected internal transfer observable \(\mathfrak N_*\), and with the stronger operator-rigidity hypothesis \(D_{01}=0\) the same static gate becomes a pure internal outgoing-transfer bound.
+
+---
+
+## 1. Interpretive firewall
+
+Two distinctions matter.
+
+### 1.1 Rigid mouth is **not** identical to `D_{01}=0`
+
+The geometric statement “the brane entrance is rigid” is a statement about the mouth geometry.
+The algebraic condition
+\[
+D_{01}=0
+\]
+is a stronger statement: it says the **effective static grouped-lane operator** does not drift at first weak-axisymmetric order.
+
+So throughout this stage:
+
+- **mouth rigidity / tracking lock** is represented first by
+  \[
+  \delta\ln R_{\rm tr}=0,
+  \]
+- while
+  \[
+  D_{01}=0
+  \]
+  is introduced only later as an additional **operator-rigidity hypothesis**.
+
+### 1.2 The carried `L/a` lock is still a branch freeze, not a full-PDE theorem
+
+The preferred aspect ratio
+\[
+L/a \approx 1.85
+\]
+is a carried branch value / reference freeze in the present stack, not yet a theorem that every loaded moving-throat branch must obey exactly.
+
+So the physical reading “the throat does not deepen with more loading” should currently be read as:
+
+> on the branch family we are actually carrying, the large-scale geometry is treated as effectively locked, and the first remaining freedom is internal transfer / placement rather than wholesale mouth growth.
+
+That is strong enough for the present reduced audit, but it is not yet a finished nonlinear PDE theorem.
+
+---
+
+## 2. Exact branch-observable compiler from Stage 171
+
+Stage 171 already gives the first-order observable compiler
+\[
+\Theta_1=\delta\ln R_{\rm tr},
+\]
+\[
+\Xi_1=\delta\ln \mathfrak N_* - B_*\,\delta\ln R_{\rm tr},
+\]
+\[
+\mathcal R_1
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln \epsilon_\eta
+-\Xi_1,
+\]
+where
+\[
+\mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*}
+\]
+is the corrected nontracking branch observable.
+
+So the full coherent weak-axisymmetric defect packet is already an exact linear compiler image of the direct observable packet
+\[
+\bigl(\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta\bigr).
+\]
+
+This gives the first sharp reduced translation of the rigid-mouth picture:
+
+- \(R_{\rm tr}\) measures tracking / mouth-side placement,
+- \(\mathfrak N_*\) measures corrected internal transfer / nontracking load,
+- \(\epsilon_\eta\) measures selected-branch dressing.
+
+---
+
+## 3. Rigid-mouth / track-locked specialization
+
+If the mouth-side branch is rigid at the first observable level, impose
+\[
+\boxed{\delta\ln R_{\rm tr}=0.}
+\]
+
+Then the exact Stage-171 compiler collapses to
+\[
+\boxed{\Theta_1=0,}
+\]
+\[
+\boxed{\Xi_1=\delta\ln\mathfrak N_*,}
+\]
+\[
+\boxed{
+\mathcal R_1
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta
+-\delta\ln\mathfrak N_*.
+}
+\]
+
+So on a track-locked branch the direct same-charge placement scalar is **literally**
+the logarithmic drift of the corrected internal transfer observable \(\mathfrak N_*\).
+
+That is the precise reduced sense in which “the entrance is rigid but the inside can still load” is already visible in the math.
+
+---
+
+## 4. Stronger operator-rigidity specialization
+
+Stages 207 and 208 already showed that the weak-axisymmetric static load scalar is
+\[
+\Xi_{\rm load}
+=
+\frac{N_{01}}{N_0}
+-
+\frac{D_{01}}{D_0}
+=
+\frac{P_1}{P_0}.
+\]
+
+If one imposes the stronger operator-rigidity hypothesis
+\[
+\boxed{D_{01}=0,}
+\]
+then
+\[
+\boxed{
+\Xi_{\rm load}
+=
+\frac{N_{01}}{N_0}.
+}
+\]
+
+So on a branch where
+
+1. the mouth/track side is rigid,
+2. the static entrance operator is also rigid,
+
+the entire weak-axisymmetric load defect is reinterpreted as **pure internal outgoing-transfer strengthening**.
+
+This is the closest exact reduced analogue of the “internal choke opens while the entrance does not” picture.
+
+---
+
+## 5. Transported static ceiling as an internal choke / turbulence gate
+
+Stage 207 already transported the primitive-family same-charge window onto the actual branch packet:
+\[
+\bar P_0(1+|\epsilon\Xi_1|)\le P_{\rm crit},
+\]
+equivalently
+\[
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}(1+|\epsilon\Xi_1|)\le P_{\rm crit},
+\qquad
+T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+\]
+
+So for any actual branch packet, the first robust static same-charge survival gate is
+\[
+\boxed{
+|\epsilon\Xi_1|
+\le
+\frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+}
+\]
+
+On a calibrated branch with
+\[
+\Delta_{\rm norm}=0,
+\]
+this becomes
+\[
+\boxed{
+|\epsilon\Xi_1|
+\le
+\frac{P_{\rm crit}\hat m_0^{\,2}}{T_{\rm quad}}-1.
+}
+\]
+
+Now add the rigid-mouth specialization from Section 3:
+\[
+\Xi_1=\delta\ln\mathfrak N_*.
+\]
+Then the same survival gate becomes
+\[
+\boxed{
+|\epsilon\,\delta\ln\mathfrak N_*|
+\le
+\frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+}
+\]
+
+And with the stronger operator-rigidity closure \(D_{01}=0\),
+\[
+\Xi_{\rm load}=\Xi_1=\frac{N_{01}}{N_0},
+\]
+so the same gate is
+\[
+\boxed{
+\left|\epsilon\,\frac{N_{01}}{N_0}\right|
+\le
+\frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+}
+\]
+
+This is the exact reduced formula behind the proposed “choked-flow / turbulence threshold” reading.
+
+---
+
+## 6. The Stage-207 numerical budgets in this language
+
+At the Stage-206 compatibility point
+\[
+\bar P_0 \approx 0.002069792318062885,
+\]
+Stage 207 gave the strict `10%` robust budget
+\[
+|\epsilon\Xi_1|\lesssim 0.367930328492646
+\]
+for **both wall-like poles** to remain alive, and the looser nonempty-corridor budget
+\[
+|\epsilon\Xi_1|\lesssim 0.737619063660757.
+\]
+
+So under the rigid-mouth specialization these are directly reinterpreted as
+
+### Robust static gate
+\[
+\boxed{
+|\epsilon\,\delta\ln\mathfrak N_*|
+\lesssim 0.367930328492646.
+}
+\]
+
+### Nonempty static gate
+\[
+\boxed{
+|\epsilon\,\delta\ln\mathfrak N_*|
+\lesssim 0.737619063660757.
+}
+\]
+
+Under the additional operator-rigidity closure \(D_{01}=0\), the same become
+
+### Robust internal-transfer gate
+\[
+\boxed{
+\left|\epsilon\,\frac{N_{01}}{N_0}\right|
+\lesssim 0.367930328492646.
+}
+\]
+
+### Nonempty internal-transfer gate
+\[
+\boxed{
+\left|\epsilon\,\frac{N_{01}}{N_0}\right|
+\lesssim 0.737619063660757.
+}
+\]
+
+So the Stage-207 `36.8%` figure really is the first exact reduced scalar at which the surviving static same-charge branch stops being robust.
+
+---
+
+## 7. Why this is compatible with the support/source verdict
+
+Stage 215 already showed that the explicit `5`PN support/source branch overshoots the canonical isotropic demand by a large margin and is not the active bottleneck. What is still missing is the actual PDE-selected orbit-lock / coherent placement point.
+
+So if one adopts the rigid-mouth reading, the situation is:
+
+- support/source can feed the branch,
+- the dynamic wall-window is not the first failure,
+- the first unresolved gate is whether the **internal transfer / placement observable** \(\mathfrak N_*\) remains inside the Stage-207 static ceiling.
+
+That is exactly the mathematical form of the “internal choke versus rigid entrance” picture.
+
+---
+
+## 8. Best current verdict after Stage 216
+
+The rigid-mouth physical interpretation is **mostly compatible** with the reduced math, but with two important corrections:
+
+1. **Good match:** it is reasonable to read the surviving same-charge problem as a rigid-mouth / internal-load competition, because on the exact observable compiler
+   \[
+   \delta\ln R_{\rm tr}=0
+   \quad\Longrightarrow\quad
+   \Xi_1=\delta\ln\mathfrak N_*,
+   \]
+   so the unresolved scalar is literally an internal transfer / placement drift.
+
+2. **Important correction:** the statement
+   \[
+   D_{01}=0
+   \]
+   is **not** the same thing as “the entrance radius cannot change.”
+   It is a stronger effective-static-operator rigidity condition.
+   It is useful for the reduced thought experiment, but it should not be confused with the geometric mouth lock itself.
+
+3. **Interpretive caution:** the Stage-207 `36.8%` ceiling is an exact reduced static branch bound. Calling it a “turbulence threshold” is a plausible physical interpretation, but not yet a derivation of literal hydrodynamic turbulence from the full PDE.
+
+So the next real falsification step is:
+
+> compute or model the actual rigid-mouth orbit packet
+> \[
+> \bigl(\delta\ln R_{\rm tr},\delta\ln\mathfrak N_*,\delta\ln\epsilon_\eta\bigr)
+> \]
+> strongly enough to decide whether the realized branch clears or exceeds the static gate above.
+
+That is where the present stack now says the answer lives.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies all of the following:
+
+1. the exact Stage-171 observable compiler
+   \[
+   \Theta_1=\delta\ln R_{\rm tr},
+   \qquad
+   \Xi_1=\delta\ln\mathfrak N_* - B_*\,\delta\ln R_{\rm tr},
+   \qquad
+   \mathcal R_1=
+   -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta-\Xi_1;
+   \]
+2. the track-locked specialization
+   \[
+   \delta\ln R_{\rm tr}=0
+   \Longrightarrow
+   \Theta_1=0,\quad \Xi_1=\delta\ln\mathfrak N_*;
+   \]
+3. the exact prefactor identity
+   \[
+   \Xi_{\rm load}
+   =
+   \frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}
+   =
+   \frac{P_1}{P_0};
+   \]
+4. the stronger operator-rigidity specialization
+   \[
+   D_{01}=0
+   \Longrightarrow
+   \Xi_{\rm load}=\frac{N_{01}}{N_0};
+   \]
+5. the transported static ceiling
+   \[
+   |\epsilon\Xi_1|
+   \le
+   \frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1;
+   \]
+6. its calibrated-branch simplification
+   \[
+   \Delta_{\rm norm}=0
+   \Longrightarrow
+   |\epsilon\Xi_1|
+   \le
+   \frac{P_{\rm crit}\hat m_0^{\,2}}{T_{\rm quad}}-1;
+   \]
+7. the equivalent \(\bar P_0\)-form
+   \[
+   \bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+   \Longrightarrow
+   |\epsilon\Xi_1|
+   \le
+   \frac{P_{\rm crit}}{\bar P_0}-1;
+   \]
+8. and the numerical recovery of the two carried Stage-207 budgets
+   \[
+   0.367930328492646,
+   \qquad
+   0.737619063660757
+   \]
+   from the Stage-206 compatibility-point value
+   \[
+   \bar P_0 \approx 0.002069792318062885.
+   \]
+
+So the note is not just a verbal reinterpretation.
+It is backed by an executable reconstruction of the rigid-mouth packet compiler and its static gate.
+
+---
+
+## 10. What the next honest stage should do
+
+The next stage should **not** invent more support algebra.
+
+The honest next theorem gate is now:
+
+1. take the exact unresolved coherent placement packet
+   \[
+   (R_{\rm tr},R_{\rm target},\epsilon_\eta),
+   \]
+   or equivalently
+   \[
+   (d\ln R_{\rm tr},d\ln R_{\rm target},d\ln\epsilon_\eta),
+   \]
+2. express its weak-axisymmetric verdict as the actual static \(\Xi_1\) / transported placement scalar used in the same-charge chain,
+3. and test whether the realized branch clears the already-carried static ceiling.
+
+That is where the present stack says the real answer now lives.
+
+=== moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 217: Direct Branch-Observable Static Gate and the Two-Observable Kill Test
+
+## Status
+
+**Exact within the carried Stage-216 same-charge reduction and the later `5`PN direct-branch observable compiler.**
+
+This stage does **not** introduce a new physical mechanism.
+It rewrites the unresolved rigid-mouth orbit-lock problem in the sharpest actual-branch variables currently available:
+
+\[
+R_{\rm tr},\qquad R_{\rm target},\qquad \epsilon_\eta.
+\]
+
+The main new result is stronger than the Stage-216 wording:
+
+> at first weak-axisymmetric order, the surviving static same-charge gate is already independent of the tracking observable \(R_{\rm tr}\). Once the coherent branch is written in direct observables, the remaining static bottleneck lives entirely on the two-observable plane \((R_{\rm target},\epsilon_\eta)\).
+
+So the “rigid mouth” picture remains useful as an interpretation, but the exact reduced kill test is now a **target–dressing mismatch theorem**, not a direct mouth-motion theorem.
+
+---
+
+## Purpose
+
+Stage 216 used the carried Stage-171 observable compiler to show that on a track-locked branch
+\[
+\delta\ln R_{\rm tr}=0
+\quad\Longrightarrow\quad
+\Xi_1=\delta\ln \mathfrak N_*,
+\qquad
+\mathfrak N_* = \mathcal T^2 R_{\rm tr}^{B_*}.
+\]
+
+That was already a useful rigid-mouth translation. But the later `5`PN notes go further. They show that the coherent weak-axisymmetric orbit packet can be charted directly by the exact branch observables
+\[
+(R_{\rm tr},R_{\rm target},\epsilon_\eta),
+\]
+and that in this chart the first-order defect packet becomes completely triangular.
+
+So the next honest step is to eliminate the remaining quotient bookkeeping and write the same-charge static gate directly in those observables.
+
+---
+
+## 1. Exact finite quotient chart from direct branch observables
+
+Relative to a coherent reference branch
+\[
+(R_{\rm tr,ref},R_{\rm target,ref},\epsilon_{\eta,\rm ref}),
+\]
+the exact finite quotient coordinates are
+
+\[
+q_{\rm tr}
+=
+-\,C_*\ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right),
+\]
+
+\[
+q_{\rm nt}
+=
+B_*\ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right)
++
+\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right),
+\]
+
+\[
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+\]
+
+with the carried branch constants
+
+\[
+C_*=
+\frac{(1+\chi_{0,*})(1+\delta_{U,*})(1+\chi_{0,*}+\delta_{U,*})}
+{\chi_{0,*}\delta_{U,*}},
+\qquad
+B_*=
+\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+\]
+
+The inverse map is exact:
+
+\[
+R_{\rm tr}
+=
+R_{\rm tr,ref}\,e^{-q_{\rm tr}/C_*},
+\]
+
+\[
+\epsilon_\eta
+=
+\epsilon_{\eta,\rm ref}\,e^{q_\eta},
+\]
+
+\[
+R_{\rm target}
+=
+R_{\rm target,ref}\,
+e^{-q_{\rm nt}-(B_*/C_*)q_{\rm tr}}
+\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
+\]
+
+So once the actual weak-axisymmetric branch is known, it can be tested either by the finite quotient packet \((q_{\rm tr},q_{\rm nt},q_\eta)\) or directly by the three physical observables \((R_{\rm tr},R_{\rm target},\epsilon_\eta)\).
+
+---
+
+## 2. Exact first-order defect compiler in direct branch language
+
+Linearizing the finite chart gives
+
+\[
+q_{\rm tr}
+=
+-\,C_*\,\delta\ln R_{\rm tr},
+\]
+
+\[
+q_{\rm nt}
+=
+B_*\,\delta\ln R_{\rm tr}
+-
+\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,
+\delta\ln\epsilon_\eta
+-
+\delta\ln R_{\rm target},
+\]
+
+\[
+q_\eta
+=
+\delta\ln\epsilon_\eta.
+\]
+
+Define the selected-branch dressing coefficient
+\[
+c_\eta := \frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+\]
+
+Composing the linearized chart with the carried quotient-to-defect compiler gives the triangular first-order direct-branch map
+
+\[
+\boxed{\Theta_1=\delta\ln R_{\rm tr},}
+\]
+
+\[
+\boxed{
+\Xi_1
+=
+-\delta\ln R_{\rm target}
+-
+c_\eta\,\delta\ln\epsilon_\eta,
+}
+\]
+
+\[
+\boxed{\mathcal R_1=\delta\ln R_{\rm target}.}
+\]
+
+So the physical first-order defect packet is exactly equivalent to the three direct observable drifts
+\[
+(\delta\ln R_{\rm tr},\delta\ln R_{\rm target},\delta\ln\epsilon_\eta).
+\]
+
+The inverse map is equally simple:
+
+\[
+\delta\ln R_{\rm tr}=\Theta_1,
+\]
+
+\[
+\delta\ln R_{\rm target}=\mathcal R_1,
+\]
+
+\[
+\delta\ln\epsilon_\eta
+=
+-\frac{1-\epsilon_{\eta,*}}{\epsilon_{\eta,*}}\,
+(\mathcal R_1+\Xi_1).
+\]
+
+---
+
+## 3. Two exact cancellations
+
+### 3.1 `R_{\rm tr}` cancels out of `\Xi_1`
+
+Although the finite nontracking quotient contains the tracking observable,
+\[
+q_{\rm nt}
+=
+B_*\,\delta\ln R_{\rm tr}
+-
+c_\eta\,\delta\ln\epsilon_\eta
+-
+\delta\ln R_{\rm target},
+\]
+the physical defect is
+\[
+\Xi_1
+=
+q_{\rm nt}
++
+\frac{B_*}{C_*}\,q_{\rm tr}.
+\]
+
+So the tracking contribution cancels exactly, and
+\[
+\boxed{\partial_{\delta\ln R_{\rm tr}}\Xi_1=0.}
+\]
+
+This is stronger than the Stage-216 wording. It means the surviving first-order static same-charge gate is already **mouth-blind** in the direct observable chart.
+
+### 3.2 Support/source rescaling decouples from the direct static gate
+
+The later `5`PN direct-branch notes further show that, once the branch is charted by \((R_{\rm tr},R_{\rm target},\epsilon_\eta)\), the first-order defect packet is blind to the total support-compensation baseline and to the coherent support-enhancement ratio. This stage takes that carried result as input rather than rederiving it.
+
+So the Stage-215 support/source verdict and the Stage-216 static gate are genuinely distinct theorem pieces.
+
+---
+
+## 4. Exact rigid-mouth specialization revisited
+
+The rigid-mouth interpretation still has one exact role:
+\[
+\delta\ln R_{\rm tr}=0
+\quad\Longleftrightarrow\quad
+\Theta_1=0.
+\]
+
+On that branch,
+\[
+q_{\rm tr}=0,
+\qquad
+q_{\rm nt}
+=
+\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right).
+\]
+
+And at first order,
+\[
+\boxed{q_{\rm nt}=\Xi_1.}
+\]
+
+So the Stage-216 statement
+\[
+\Xi_1 = \delta\ln \mathfrak N_*
+\]
+on a track-locked branch sharpens here to:
+
+> under rigid-mouth lock, the surviving first-order defect is exactly the tangent of the finite **two-observable** nontracking quotient built from \(R_{\rm target}\) and \(\epsilon_\eta\).
+
+That is the cleanest current form of the “inside can still repackage while the mouth stays locked” picture.
+
+---
+
+## 5. The direct two-observable static gate
+
+Let
+\[
+R_1 := \delta\ln R_{\rm target},
+\qquad
+E_1 := \delta\ln\epsilon_\eta.
+\]
+
+Then the entire first-order same-charge placement scalar is
+
+\[
+\boxed{\Xi_1 = -R_1 - c_\eta E_1.}
+\]
+
+So the Stage-207 / Stage-216 static ceilings become exact two-observable band conditions.
+
+### 5.1 Robust static gate
+
+\[
+\boxed{
+\left|\varepsilon\,(-R_1-c_\eta E_1)\right|
+\le
+0.367930328492646.
+}
+\]
+
+Equivalently,
+\[
+R_1
+\in
+\left[
+-c_\eta E_1-\frac{0.367930328492646}{|\varepsilon|},
+\,
+-c_\eta E_1+\frac{0.367930328492646}{|\varepsilon|}
+\right].
+\]
+
+### 5.2 Nonempty-corridor gate
+
+\[
+\boxed{
+\left|\varepsilon\,(-R_1-c_\eta E_1)\right|
+\le
+0.737619063660757.
+}
+\]
+
+Equivalently,
+\[
+R_1
+\in
+\left[
+-c_\eta E_1-\frac{0.737619063660757}{|\varepsilon|},
+\,
+-c_\eta E_1+\frac{0.737619063660757}{|\varepsilon|}
+\right].
+\]
+
+So the first unresolved same-charge kill test is now literally a strip in the \((R_1,E_1)\) plane.
+
+---
+
+## 6. Canonical direct-branch families
+
+For a prescribed first-order defect value
+\[
+\Xi_1 = \xi,
+\]
+the direct branch families are simple.
+
+### 6.1 Pure target-drift family
+
+\[
+E_1=0,
+\qquad
+R_1=-\xi.
+\]
+
+So if dressing is frozen, the whole defect is a pure selected-target drift.
+
+### 6.2 Pure dressing-drift family
+
+\[
+R_1=0,
+\qquad
+E_1=-\frac{\xi}{c_\eta}.
+\]
+
+So if the target is frozen, the whole defect is a pure dressing drift.
+
+### 6.3 Balanced minimal-norm family
+
+Minimizing
+\[
+R_1^2+E_1^2
+\]
+subject to
+\[
+-R_1-c_\eta E_1 = \xi
+\]
+gives the exact minimum-norm branch
+
+\[
+\boxed{
+R_1=-\frac{\xi}{1+c_\eta^2},
+\qquad
+E_1=-\frac{c_\eta\,\xi}{1+c_\eta^2}.
+}
+\]
+
+So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation family that realizes any chosen \(\Xi_1\).
+
+---
+
+## 7. What changes in the physical interpretation
+
+Stage 216 suggested:
+- rigid mouth \(\Rightarrow\) the corrected internal transfer observable \(\mathfrak N_*\) carries the first unresolved scalar.
+
+Stage 217 sharpens that statement:
+- at first order, the same unresolved scalar is already
+  \[
+  \Xi_1=-\delta\ln R_{\rm target}-c_\eta\,\delta\ln\epsilon_\eta,
+  \]
+  so it is **independent of the mouth tracking variable** \(R_{\rm tr}\).
+
+That means the first static failure mode is not a mouth-motion theorem even in disguised form.
+It is a **selected-target / dressing mismatch theorem**.
+
+A “hyper-trumpet choke” or “internal repackaging” reading is still consistent with the reduced math if the physical reason \(R_{\rm target}\) or \(\epsilon_\eta\) drifts is internal throat restructuring. But the reduced observable that actually decides the branch is the two-observable combination above.
+
+---
+
+## 8. Best current verdict after Stage 217
+
+The same-charge corridor is still alive, but the unresolved static bottleneck has narrowed again.
+
+It is no longer:
+
+- support/source strength,
+- dynamic wall-window survival,
+- or even mouth tracking at first order.
+
+It is now exactly
+\[
+\boxed{
+\Xi_1
+=
+-\delta\ln R_{\rm target}
+-
+\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta,
+}
+\]
+together with the robust and nonempty ceilings above.
+
+So the next honest theorem gate is:
+
+> compute the actual coherent weak-axisymmetric branch drifts of \(R_{\rm target}\) and \(\epsilon_\eta\), then test whether their exact linear combination clears the direct static gate above.
+
+That is the sharpest branch-level same-charge kill test reached so far.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact finite quotient chart and its inverse,
+- the first-order linearization of the direct branch-observable coordinates,
+- the exact cancellation of `R_tr` out of `\Xi_1`,
+- the rigid-mouth reduction `q_{\rm nt}=\Xi_1`,
+- the strip form of the robust and nonempty static gates,
+- and the canonical direct-branch families, including the balanced minimal-norm solution.
+
+Supporting file:
+- `moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py`
+
+=== moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 218: Rigid-Mouth Packet Projectors, the Static-Blind Dressing Line, and the Codimension-Two Orbit-Lock Point
+
+## Status
+
+**Exact within the carried Stage-217 direct branch-observable compiler and the later `5`PN orbit/quotient projector calculus.**
+
+This stage does **not** add a new physical mechanism.
+It upgrades the Stage-217 rigid-mouth strip picture into an exact **two-coordinate projector calculus** on the direct observable plane
+\[
+(R_1,E_1)
+:=
+(\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta).
+\]
+
+The main new result is sharper than the Stage-217 wording:
+
+> on the rigid-mouth branch, the first static same-charge scalar sees only one quotient coordinate, `q_nt = Xi_1`, while a second exact dressing coordinate `q_eta` survives completely invisible to that static gate. So the static strip is a codimension-one test inside a codimension-two orbit-lock problem.
+
+In other words, clearing the first static ceiling is necessary but not sufficient even after the mouth side is frozen.
+
+---
+
+## Purpose
+
+Stage 217 already proved that on the direct coherent branch
+\[
+\Theta_1=\delta\ln R_{\rm tr},
+\qquad
+\Xi_1=-\delta\ln R_{\rm target}-c_\eta\,\delta\ln\epsilon_\eta,
+\qquad
+\mathcal R_1=\delta\ln R_{\rm target},
+\]
+with
+\[
+c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+\]
+So under rigid-mouth lock
+\[
+\delta\ln R_{\rm tr}=0,
+\]
+the surviving static scalar is already
+\[
+\Xi_1=-R_1-c_\eta E_1.
+\]
+
+But the later orbit/quotient program also shows that full orbit lock is an exact quotient-packet statement: the quotient packet must vanish, not just one scalar projection of it. In the full microscopic language, orbit lock is exactly the zero-set condition
+\[
+Q_{\rm quot}\,\Delta x=0
+\iff
+M_*\Delta x=0,
+\]
+where the finite Packet-B coordinates are `q = (q_tr,q_nt,q_eta)`. So the right next step is to reduce that packet picture onto the rigid-mouth slice and see what the static strip is actually testing.
+
+---
+
+## 1. Exact rigid-mouth direct packet
+
+On the rigid-mouth branch define the direct observable vector
+\[
+\boxed{
+\mathbf x_{\rm rm}:=
+\begin{pmatrix}
+R_1\\
+E_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+\delta\ln R_{\rm target}\\
+\delta\ln\epsilon_\eta
+\end{pmatrix}.
+}
+\]
+The surviving quotient packet is
+\[
+\boxed{
+\mathbf q_{\rm rm}:=
+\begin{pmatrix}
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}
+=
+\begin{pmatrix}
+\Xi_1\\
+E_1
+\end{pmatrix}.
+}
+\]
+Using the Stage-217 direct compiler,
+\[
+q_{\rm nt}=-R_1-c_\eta E_1,
+\qquad
+q_\eta=E_1,
+\]
+so
+\[
+\boxed{
+\mathbf q_{\rm rm}=M_{\rm rm}\,\mathbf x_{\rm rm},
+\qquad
+M_{\rm rm}:=
+\begin{pmatrix}
+-1 & -c_\eta\\
+0 & 1
+\end{pmatrix}.
+}
+\]
+This matrix is an involution:
+\[
+\boxed{M_{\rm rm}^2=I_2.}
+\]
+So the direct observable plane and the rigid-mouth quotient packet are related by an exact one-step involutive compiler.
+
+The inverse map is therefore identical:
+\[
+\boxed{\mathbf x_{\rm rm}=M_{\rm rm}\,\mathbf q_{\rm rm},}
+\]
+that is,
+\[
+\boxed{R_1=-q_{\rm nt}-c_\eta q_\eta,}
+\qquad
+\boxed{E_1=q_\eta.}
+\]
+
+---
+
+## 2. Exact canonical packet projectors on the rigid-mouth plane
+
+In packet space, the two obvious complementary projectors are
+\[
+Q_{\rm nt}:=
+\begin{pmatrix}
+1&0\\
+0&0
+\end{pmatrix},
+\qquad
+Q_\eta:=
+\begin{pmatrix}
+0&0\\
+0&1
+\end{pmatrix},
+\qquad
+Q_{\rm nt}+Q_\eta=I_2.
+\]
+Push them back to direct-observable space with the exact section `S_rm = M_rm`:
+\[
+\boxed{P_{\rm nt}:=S_{\rm rm}Q_{\rm nt}M_{\rm rm}},
+\qquad
+\boxed{P_\eta:=S_{\rm rm}Q_\eta M_{\rm rm}}.
+\]
+Because `M_rm` is its own inverse, these are explicit:
+\[
+\boxed{
+P_{\rm nt}=
+\begin{pmatrix}
+1 & c_\eta\\
+0 & 0
+\end{pmatrix},
+\qquad
+P_\eta=
+\begin{pmatrix}
+0 & -c_\eta\\
+0 & 1
+\end{pmatrix}.
+}
+\]
+They are exact complementary projectors:
+\[
+P_{\rm nt}^2=P_{\rm nt},
+\qquad
+P_\eta^2=P_\eta,
+\qquad
+P_{\rm nt}P_\eta=P_\eta P_{\rm nt}=0,
+\qquad
+P_{\rm nt}+P_\eta=I_2.
+\]
+
+So every rigid-mouth direct branch point splits uniquely as
+\[
+\boxed{
+\mathbf x_{\rm rm}=\mathbf x_{\rm nt}+\mathbf x_\eta,
+\qquad
+\mathbf x_{\rm nt}:=P_{\rm nt}\mathbf x_{\rm rm},
+\qquad
+\mathbf x_\eta:=P_\eta\mathbf x_{\rm rm}.
+}
+\]
+Explicitly,
+\[
+\boxed{
+\mathbf x_{\rm nt}=
+\begin{pmatrix}
+R_1+c_\eta E_1\\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\Xi_1\\
+0
+\end{pmatrix},
+}
+\]
+\[
+\boxed{
+\mathbf x_\eta=
+\begin{pmatrix}
+-c_\eta E_1\\
+E_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-c_\eta q_\eta\\
+q_\eta
+\end{pmatrix}.
+}
+\]
+So the rigid-mouth direct plane already contains two exact, complementary, physically meaningful pieces:
+
+- `x_nt`: the piece seen by the first static scalar,
+- `x_eta`: the pure dressing / selected-target drift that the static scalar cannot see.
+
+---
+
+## 3. Exact codimension-two orbit-lock theorem on the rigid-mouth branch
+
+Because the rigid-mouth quotient packet is
+\[
+\mathbf q_{\rm rm}=(q_{\rm nt},q_\eta)^T=(\Xi_1,E_1)^T,
+\]
+full rigid-mouth orbit lock is exactly
+\[
+\boxed{
+\mathbf q_{\rm rm}=0
+\iff
+q_{\rm nt}=0\ \text{and}\ q_\eta=0.
+}
+\]
+Equivalently,
+\[
+\boxed{R_1=0,\qquad E_1=0.}
+\]
+Since `q_nt = Xi_1` and `q_eta = E_1`, this is also equivalent to
+\[
+\boxed{\Xi_1=0\ \text{and}\ E_1=0,}
+\]
+and, because `R_1=-q_{\rm nt}-c_\eta q_\eta`, equally to
+\[
+\boxed{\Xi_1=0\ \text{and}\ R_1=0.}
+\]
+So on the rigid-mouth branch:
+
+- the static strip `\Xi_1 = 0` is codimension one,
+- the true orbit-lock point is codimension two.
+
+This is the sharpest version yet of “the static gate is not the whole orbit-lock problem.”
+
+---
+
+## 4. The static-blind dressing line
+
+The compensated strip from Stage 217 is now simply the direct-space image of the packet projector `Q_eta`:
+\[
+\Xi_1=0
+\iff
+q_{\rm nt}=0
+\iff
+\mathbf x_{\rm rm}=\mathbf x_\eta=
+\begin{pmatrix}
+-c_\eta q_\eta\\
+q_\eta
+\end{pmatrix}.
+\]
+So the entire static-blind line is parameterized by the single dressing coordinate `q_eta`.
+
+Its direct-space norm is exact:
+\[
+\boxed{
+\|\mathbf x_\eta\|^2=(1+c_\eta^2)\,q_\eta^2.
+}
+\]
+Therefore the static strip contains points arbitrarily far from the orbit-lock point.
+For any prescribed size `L > 0`, choose
+\[
+q_\eta = \frac{L}{\sqrt{1+c_\eta^2}},
+\]
+then
+\[
+\Xi_1=0,
+\qquad
+\|\mathbf x_{\rm rm}\|=L.
+\]
+
+So the first static same-charge gate does **not** bound the true rigid-mouth orbit-failure amplitude.
+It only bounds the `q_nt` component.
+
+This is the exact static-blindness theorem on the rigid-mouth slice.
+
+---
+
+## 5. Canonical correction compilers
+
+The projector formulas immediately give the two natural rigid-mouth corrections.
+
+### 5.1 Static-only correction
+
+Project to the static strip by removing only the `q_nt` component:
+\[
+\boxed{
+\Delta\mathbf x_{\rm static}:=-\mathbf x_{\rm nt}
+=
+\begin{pmatrix}
+\Xi_1\\
+0
+\end{pmatrix}.
+}
+\]
+After this correction,
+\[
+\mathbf x_{\rm rm}+\Delta\mathbf x_{\rm static}=\mathbf x_\eta,
+\qquad
+\Xi_1\to 0,
+\qquad
+q_\eta\to q_\eta.
+\]
+So the branch clears the first static ceiling but generally still fails orbit lock.
+
+### 5.2 Full orbit-lock correction
+
+Project all the way to the orbit-lock point by removing both packet components:
+\[
+\boxed{
+\Delta\mathbf x_{\rm orbit}:=-\mathbf x_{\rm rm}
+=
+\begin{pmatrix}
+q_{\rm nt}+c_\eta q_\eta\\
+-q_\eta
+\end{pmatrix}.
+}
+\]
+This is exactly the sum of the static correction and the static-blind dressing correction:
+\[
+\boxed{
+\Delta\mathbf x_{\rm orbit}
+=
+\Delta\mathbf x_{\rm static}+
+\begin{pmatrix}
+ c_\eta q_\eta\\
+-q_\eta
+\end{pmatrix}.
+}
+\]
+So the extra step beyond the static gate is not mysterious. It is the exact removal of the packet component `q_eta`.
+
+---
+
+## 6. What changes physically after Stage 218
+
+Stage 217 already showed that first-order same-charge survival on the rigid-mouth branch is governed by the strip
+\[
+|\varepsilon\Xi_1|\le B,
+\qquad
+\Xi_1=-R_1-c_\eta E_1.
+\]
+Stage 218 now sharpens that into an exact orbit-packet statement:
+
+1. the static gate constrains only `q_nt = Xi_1`,
+2. the dressing coordinate `q_eta = E_1` survives completely outside that gate,
+3. and the full rigid-mouth orbit-lock problem is exactly the vanishing of both packet coordinates.
+
+So the next honest theorem gate is no longer “does the branch clear the static strip?”
+It is:
+
+> compute the actual rigid-mouth dressing coordinate `q_eta = \delta\ln\epsilon_\eta` (equivalently `R_1` once `Xi_1` is known), because that is the exact static-blind residue that still blocks orbit lock after the first static same-charge ceiling is cleared.
+
+---
+
+## 7. Best current verdict after Stage 218
+
+The same-charge corridor is still alive, but the rigid-mouth bottleneck has narrowed again.
+
+It is no longer enough to know that the branch lies inside the Stage-217 static strip.
+On the rigid-mouth slice that strip only kills the `q_nt` packet component.
+The surviving dressing coordinate
+\[
+q_\eta=\delta\ln\epsilon_\eta
+\]
+remains completely unconstrained by the first static ceiling and can carry an arbitrarily large residual along the exact static-blind line.
+
+So the sharp rigid-mouth statement is now:
+
+> the first static same-charge ceiling is a necessary codimension-one condition, but the true rigid-mouth orbit-lock problem is codimension two, and the entire post-static obstruction is the single dressing coordinate `q_eta`.
+
+That is the cleanest continuation point into Stage 219.
+
+---
+
+## 8. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact rigid-mouth packet compiler `q_rm = M_rm x_rm`,
+- the involution identity `M_rm^2 = I_2`,
+- the exact canonical direct-space projectors `P_nt` and `P_eta`,
+- the decomposition `x_rm = x_nt + x_eta`,
+- the codimension-two orbit-lock equivalences,
+- the static-blind dressing line and its exact norm,
+- and the static-only and full orbit-lock correction compilers.
+
+Supporting file:
+- `moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py`
+
+=== moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 219: Rigid-Mouth Microscopic Dependent-Plane Projectors, the Equal-Drift Dressing Ray, and the Static-Only Restoration Gap
+
+## Status
+
+**Exact within the carried Stage-218 rigid-mouth packet split and the later microscopic quotient section on the dependent triple.**
+
+This stage does **not** yet compute the actual magnitude of the rigid-mouth dressing coordinate on the completed PDE branch.
+It does something narrower and sharper:
+
+> it identifies the exact **microscopic carrier** of the static-blind residue `q_eta` once the first static same-charge strip has already been cleared.
+
+The main new result is stricter than the Stage-218 direct-space wording:
+
+> on the rigid-mouth slice the surviving dressing residue is not a generic three-coordinate failure.
+> It lives on the exact diagonal ray
+> \[
+> (\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+> =
+> -q_\eta\,(0,1,1),
+> \]
+> inside the dependent triple.
+> So after the static gate is cleared, the unresolved same-charge orbit defect is exactly an **equal-drift `K_\eta`–`\mu` dressing shift at fixed `T_U`**.
+
+In other words, Stage 218 identified the static-blind direct-space line.
+Stage 219 identifies its exact microscopic image.
+
+---
+
+## Purpose
+
+Stage 218 showed that on the rigid-mouth direct-observable plane
+\[
+(R_1,E_1):=
+(\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta),
+\]
+the surviving quotient packet is
+\[
+(q_{\rm nt},q_\eta)=(\Xi_1,E_1),
+\]
+and that the first static same-charge gate only constrains
+\[
+q_{\rm nt}=\Xi_1,
+\]
+while the dressing coordinate
+\[
+q_\eta=\delta\ln\epsilon_\eta
+\]
+remains completely invisible to that gate.
+
+But the later quotient-program compilers also say that every quotient failure is represented microscopically only on the dependent triple
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+\]
+via the exact dependent section.
+So the right next step is now immediate:
+
+> what is the exact microscopic dependent-coordinate image of the rigid-mouth packet \((q_{\rm nt},q_\eta)\)?
+
+This stage answers that exactly.
+
+---
+
+## 1. Carry-forward rigid-mouth packet and dependent section
+
+From Stage 218 the rigid-mouth packet map is
+\[
+\boxed{
+\mathbf q_{\rm rm}:=
+\begin{pmatrix}
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}
+=
+M_{\rm rm}
+\begin{pmatrix}
+R_1\\
+E_1
+\end{pmatrix},
+\qquad
+M_{\rm rm}=
+\begin{pmatrix}
+-1 & -c_\eta\\
+0 & 1
+\end{pmatrix},
+}
+\]
+with
+\[
+c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+\]
+So explicitly,
+\[
+q_{\rm nt}=-R_1-c_\eta E_1=\Xi_1,
+\qquad
+q_\eta=E_1.
+\]
+
+From the exact microscopic quotient section on the dependent triple,
+\[
+\Delta_T^{(q)}=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+\qquad
+\Delta_{K_\eta}^{(q)}=-q_\eta,
+\qquad
+\Delta_\mu^{(q)}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.
+\]
+On the rigid-mouth slice,
+\[
+q_{\rm tr}=0,
+\]
+so the dependent correction reduces exactly to
+\[
+\boxed{
+\mathbf y_{\rm rm}:=
+\begin{pmatrix}
+\Delta_T^{(q)}\\
+\Delta_{K_\eta}^{(q)}\\
+\Delta_\mu^{(q)}
+\end{pmatrix}
+=
+S_{\rm rm}^{\rm dep}
+\begin{pmatrix}
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix},
+\qquad
+S_{\rm rm}^{\rm dep}:=
+\begin{pmatrix}
+0 & 0\\
+0 & -1\\
+1 & -1
+\end{pmatrix}.
+}
+\]
+So explicitly,
+\[
+\boxed{
+\Delta_T^{(q)}=0,
+\qquad
+\Delta_{K_\eta}^{(q)}=-q_\eta,
+\qquad
+\Delta_\mu^{(q)}=q_{\rm nt}-q_\eta.
+}
+\]
+
+The rigid-mouth quotient failure therefore fills the full plane
+\[
+\Delta_T=0
+\]
+inside the dependent triple.
+
+---
+
+## 2. Exact direct-observable-to-dependent compiler
+
+Composing the direct rigid-mouth packet map with the dependent microscopic section gives
+\[
+\boxed{
+\mathbf y_{\rm rm}
+=
+C_{\rm rm}^{\rm dep}
+\begin{pmatrix}
+R_1\\
+E_1
+\end{pmatrix},
+\qquad
+C_{\rm rm}^{\rm dep}:=
+S_{\rm rm}^{\rm dep}M_{\rm rm}
+=
+\begin{pmatrix}
+0 & 0\\
+0 & -1\\
+-1 & -\dfrac{1}{1-\epsilon_{\eta,*}}
+\end{pmatrix}.
+}
+\]
+So the exact microscopic dependent correction in direct rigid-mouth variables is
+\[
+\boxed{
+\Delta_T^{(q)}=0,
+}
+\]
+\[
+\boxed{
+\Delta_{K_\eta}^{(q)}=-E_1=-\delta\ln\epsilon_\eta,
+}
+\]
+\[
+\boxed{
+\Delta_\mu^{(q)}
+=
+-R_1-\frac{1}{1-\epsilon_{\eta,*}}E_1
+=
+-\delta\ln R_{\rm target}
+-\frac{1}{1-\epsilon_{\eta,*}}\delta\ln\epsilon_\eta.
+}
+\]
+
+So even before any projector algebra is applied, one exact fact is already clear:
+
+> on the rigid-mouth slice, the microscopic quotient correction never uses `T_U` at first order.
+> The entire failure is carried only by the `(K_\eta,\mu)` plane.
+
+---
+
+## 3. Exact dependent-plane packet projectors
+
+The rigid-mouth dependent compiler has an exact left inverse on the plane `\Delta_T=0`:
+\[
+\boxed{
+L_{\rm rm}^{\rm dep}:=
+\begin{pmatrix}
+0 & -1 & 1\\
+0 & -1 & 0
+\end{pmatrix},
+\qquad
+L_{\rm rm}^{\rm dep}S_{\rm rm}^{\rm dep}=I_2.
+}
+\]
+So the packet coordinates can be recovered directly from the dependent correction by
+\[
+\boxed{
+q_{\rm nt}=\Delta_\mu^{(q)}-\Delta_{K_\eta}^{(q)},
+\qquad
+q_\eta=-\Delta_{K_\eta}^{(q)}.
+}
+\]
+
+Push the packet projectors back to the dependent plane:
+\[
+P_{\rm nt}^{\rm dep}:=
+S_{\rm rm}^{\rm dep}
+\begin{pmatrix}1&0\\0&0\end{pmatrix}
+L_{\rm rm}^{\rm dep},
+\qquad
+P_\eta^{\rm dep}:=
+S_{\rm rm}^{\rm dep}
+\begin{pmatrix}0&0\\0&1\end{pmatrix}
+L_{\rm rm}^{\rm dep}.
+\]
+They are explicit:
+\[
+\boxed{
+P_{\rm nt}^{\rm dep}=
+\begin{pmatrix}
+0&0&0\\
+0&0&0\\
+0&-1&1
+\end{pmatrix},
+\qquad
+P_\eta^{\rm dep}=
+\begin{pmatrix}
+0&0&0\\
+0&1&0\\
+0&1&0
+\end{pmatrix}.
+}
+\]
+These are exact complementary projectors on the rigid-mouth dependent plane:
+\[
+(P_{\rm nt}^{\rm dep})^2=P_{\rm nt}^{\rm dep},
+\qquad
+(P_\eta^{\rm dep})^2=P_\eta^{\rm dep},
+\qquad
+P_{\rm nt}^{\rm dep}P_\eta^{\rm dep}=P_\eta^{\rm dep}P_{\rm nt}^{\rm dep}=0,
+\]
+and
+\[
+P_{\rm nt}^{\rm dep}+P_\eta^{\rm dep}
+=
+\begin{pmatrix}
+0&0&0\\
+0&1&0\\
+0&0&1
+\end{pmatrix},
+\]
+which is the identity on the plane `\Delta_T=0`.
+
+So every rigid-mouth dependent correction decomposes uniquely as
+\[
+\boxed{
+\mathbf y_{\rm rm}=\mathbf y_{\rm nt}+\mathbf y_\eta,
+\qquad
+\mathbf y_{\rm nt}:=P_{\rm nt}^{\rm dep}\mathbf y_{\rm rm},
+\qquad
+\mathbf y_\eta:=P_\eta^{\rm dep}\mathbf y_{\rm rm}.
+}
+\]
+Explicitly,
+\[
+\boxed{
+\mathbf y_{\rm nt}=
+\begin{pmatrix}
+0\\
+0\\
+q_{\rm nt}
+\end{pmatrix},
+\qquad
+\mathbf y_\eta=
+-q_\eta
+\begin{pmatrix}
+0\\
+1\\
+1
+\end{pmatrix}.
+}
+\]
+
+So the rigid-mouth dependent plane contains two exact, complementary, physically meaningful pieces:
+
+- `y_nt`: the pure `\mu` mismatch seen by the first static strip,
+- `y_eta`: the equal-drift dressing ray that remains after that strip is cleared.
+
+---
+
+## 4. The equal-drift dressing ray and the microscopic meaning of the static strip
+
+Stage 218 showed that the static strip is
+\[
+q_{\rm nt}=\Xi_1=0.
+\]
+In the dependent microscopic plane, this becomes
+\[
+\boxed{
+q_{\rm nt}=0
+\iff
+\Delta_\mu^{(q)}=\Delta_{K_\eta}^{(q)}.
+}
+\]
+So the entire static-blind line is exactly the diagonal ray
+\[
+\boxed{
+\mathbf y_\eta=-q_\eta(0,1,1)^T.
+}
+\]
+Equivalently, using the direct observable compiler,
+\[
+q_{\rm nt}=0
+\iff
+R_1=-c_\eta E_1,
+\]
+and then
+\[
+\boxed{
+\mathbf y_{\rm rm}
+=
+\begin{pmatrix}
+0\\
+-E_1\\
+-E_1
+\end{pmatrix}
+=
+\frac{R_1}{c_\eta}
+\begin{pmatrix}
+0\\
+1\\
+1
+\end{pmatrix}.
+}
+\]
+So the Stage-218 static-blind line in the direct observable plane maps exactly to an **equal-drift `K_\eta`–`\mu` ray** in the dependent microscopic plane.
+
+Its microscopic norm is exact:
+\[
+\boxed{
+\|\mathbf y_\eta\|^2 = 2q_\eta^2 = 2E_1^2 = \frac{2R_1^2}{c_\eta^2}.
+}
+\]
+Therefore clearing the first static same-charge ceiling does **not** force the microscopic quotient correction to be small.
+It only forces that correction to lie on a one-dimensional diagonal ray.
+
+The full rigid-mouth orbit-lock point remains the endpoint of that ray:
+\[
+\boxed{
+q_{\rm nt}=0,\ q_\eta=0
+\iff
+\Delta_T^{(q)}=\Delta_{K_\eta}^{(q)}=\Delta_\mu^{(q)}=0.
+}
+\]
+
+---
+
+## 5. Exact microscopic correction compilers
+
+The dependent-plane projectors immediately give the two natural microscopic corrections.
+
+### 5.1 Static-only microscopic correction
+
+Remove only the static component:
+\[
+\boxed{
+\Delta\mathbf y_{\rm static}:=-\mathbf y_{\rm nt}=
+\begin{pmatrix}
+0\\
+0\\
+-q_{\rm nt}
+\end{pmatrix}.
+}
+\]
+After this correction,
+\[
+\mathbf y_{\rm rm}+\Delta\mathbf y_{\rm static}=\mathbf y_\eta,
+\qquad
+q_{\rm nt}\to 0,
+\qquad
+q_\eta\to q_\eta.
+\]
+So the first static ceiling is cleared by changing only `\mu_W` inside the dependent triple.
+
+### 5.2 Full orbit-lock correction
+
+Remove the entire rigid-mouth dependent correction:
+\[
+\boxed{
+\Delta\mathbf y_{\rm orbit}:=-\mathbf y_{\rm rm}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\Delta\mathbf y_{\rm orbit}
+=
+\Delta\mathbf y_{\rm static}
++
+q_\eta
+\begin{pmatrix}
+0\\
+1\\
+1
+\end{pmatrix}.
+}
+\]
+So the extra step beyond the static gate is again completely sharp:
+
+> once the `\mu` mismatch `q_{\rm nt}` has been removed, the only remaining orbit-restoring correction is the equal `K_\eta`–`\mu` dressing shift generated by `q_\eta`.
+
+This is the exact rigid-mouth meaning of the static-only restoration gap.
+
+---
+
+## 6. What changes physically after Stage 219
+
+Stage 218 already said that the first static same-charge strip is not the whole rigid-mouth orbit-lock problem.
+Stage 219 now says something more microscopic and more useful:
+
+1. on the rigid-mouth slice, the quotient-failure image is the full plane `\Delta_T=0`,
+2. the first static gate tests only the `\mu-K_\eta` difference,
+3. the static-blind residue is exactly the diagonal equal-drift ray `\Delta_\mu=\Delta_{K_\eta}`,
+4. and the surviving same-charge obstruction after the static strip is cleared is therefore not generic throat motion but one scalar `K_\eta`–`\mu` dressing amplitude.
+
+So the next honest theorem gate is now even sharper than at Stage 218:
+
+> compute the actual dressing coordinate `q_\eta=\delta\ln\epsilon_\eta`, because after the first static gate is cleared that single scalar is exactly the amplitude of the remaining equal-drift microscopic obstruction.
+
+---
+
+## 7. Best current verdict after Stage 219
+
+The same-charge corridor is still alive, but the rigid-mouth bottleneck has narrowed again.
+
+It is no longer enough to know that the branch lies inside the Stage-218 static strip.
+On the rigid-mouth slice that strip only kills the `q_{\rm nt}` packet component.
+The surviving dressing coordinate
+\[
+q_\eta=\delta\ln\epsilon_\eta
+\]
+maps microscopically to the exact equal-drift ray
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+=
+-q_\eta(0,1,1),
+\]
+which remains completely unconstrained by the first static ceiling except for its one-dimensional direction.
+
+So the sharp rigid-mouth statement is now:
+
+> the first static same-charge ceiling is a necessary codimension-one condition, but the true rigid-mouth orbit-lock problem is still codimension two, and the entire post-static microscopic obstruction is the single dressing coordinate `q_\eta` carried by an equal-drift `K_\eta`–`\mu` ray at fixed `T_U`.
+
+That is the cleanest continuation point into Stage 220.
+
+---
+
+## 8. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the rigid-mouth dependent section obtained from the later microscopic quotient formulas,
+- the exact direct-observable-to-dependent compiler `C_{\rm rm}^{\rm dep}`,
+- the exact left inverse `L_{\rm rm}^{\rm dep}`,
+- the complementary dependent-plane projectors `P_{\rm nt}^{\rm dep}` and `P_\eta^{\rm dep}`,
+- the decomposition `y_{\rm rm}=y_{\rm nt}+y_\eta`,
+- the static-strip equivalence `q_{\rm nt}=0 \iff \Delta_\mu^{(q)}=\Delta_{K_\eta}^{(q)}`,
+- the equal-drift dressing ray and its exact norm,
+- and the static-only and full orbit-lock correction compilers.
+
+Supporting file:
+- `moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py`
+
+=== moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 220: Actual-Branch Dressing Compiler, the Finite Static-Blind Curve, and the Support-Blind Post-Static Orbit-Lock Theorem
+
+## Status
+
+**Exact within the carried Stage-219 rigid-mouth dependent-plane split and the later direct-branch / microscopic packet compilers on the actual coherent branch.**
+
+This stage does **not** solve the full moving-throat PDE branch.
+It does something narrower and more useful:
+
+> it computes the surviving rigid-mouth dressing coordinate `q_eta` exactly in the actual branch observables and in the actual microscopic variables, and shows that this post-static obstruction is completely blind to the coherent support-enhancement sector.
+
+So after Stage 220, the next same-charge gate is no longer vague.
+Once the first static ceiling `q_nt = 0` has been cleared, the remaining obstruction is exactly the single actual-branch scalar
+\[
+q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+\]
+which may also be read directly from the target observable `R_{\rm target}` on the static-blind curve.
+
+---
+
+## Purpose
+
+Stage 219 proved that on the rigid-mouth slice the remaining quotient failure is carried microscopically by the equal-drift dependent-plane ray
+\[
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+=
+-q_\eta(0,1,1).
+\]
+So after the first static gate is cleared, the entire unresolved same-charge obstruction is one scalar: the dressing coordinate `q_eta`.
+
+But Stage 219 still left one obvious unfinished task:
+
+> how do we compute `q_eta` on the actual coherent branch, rather than only locating its microscopic carrier?
+
+The later branch-packet compilers already contain the answer. On the actual coherent branch the finite quotient packet is charted exactly by the three physical observables
+\[
+(R_{\rm tr},\,R_{\rm target},\,\epsilon_\eta),
+\]
+and the dressing coordinate is simply the logarithmic ratio of `\epsilon_\eta` itself. This stage isolates that fact, pushes it through the rigid-mouth static gate, and shows that the surviving dressing obstruction is rigorously support-blind.
+
+---
+
+## 1. Exact rigid-mouth finite packet on the actual branch
+
+Relative to a coherent reference branch
+\[
+(R_{\rm tr,ref},\,R_{\rm target,ref},\,\epsilon_{\eta,\rm ref}),
+\]
+the exact finite quotient coordinates are
+\[
+q_{\rm tr}
+=
+-C_* \ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right),
+\]
+\[
+q_{\rm nt}
+=
+B_* \ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right)
++\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right),
+\]
+\[
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+\]
+
+Here `B_*` and `C_*` are the carried direct-branch packet coefficients from the earlier observable compiler.
+On the rigid-mouth slice,
+\[
+q_{\rm tr}=0,
+\qquad
+R_{\rm tr}=R_{\rm tr,ref},
+\]
+so the surviving packet is exactly
+\[
+\boxed{
+q_{\rm nt}
+=
+\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right),
+\qquad
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+}
+\]
+
+So on the actual rigid-mouth branch the two finite surviving coordinates are already completely explicit:
+
+- `q_nt` is the target–dressing mismatch of the finite branch observables,
+- `q_eta` is the pure dressing logarithmic ratio.
+
+---
+
+## 2. Exact finite static-blind curve and direct computation of `q_eta`
+
+The first static same-charge ceiling is
+\[
+q_{\rm nt}=0.
+\]
+On the rigid-mouth branch this becomes the exact finite relation
+\[
+\boxed{
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
+}
+\]
+
+So the static-blind set is not just a tangent line.
+It is an exact one-parameter finite curve in the direct branch observables.
+
+Parameterizing that curve by `q_eta`, we use
+\[
+\epsilon_\eta=\epsilon_{\eta,\rm ref}e^{q_\eta},
+\]
+which gives
+\[
+\boxed{
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^{q_\eta}}{1-\epsilon_{\eta,\rm ref}}.
+}
+\]
+
+Conversely, once the static gate has been cleared, `q_eta` can be computed directly from the actual branch target observable alone:
+\[
+\boxed{
+q_\eta
+=
+\ln\!\left(
+\frac{1-(1-\epsilon_{\eta,\rm ref})\,R_{\rm target}/R_{\rm target,ref}}
+{\epsilon_{\eta,\rm ref}}
+\right).
+}
+\]
+
+So after the static gate is passed, the direct same-charge branch is exactly one-dimensional and can be charted either by
+
+- the dressing observable `\epsilon_\eta`, or
+- the target observable `R_{\rm target}`.
+
+The full rigid-mouth orbit-lock point remains the endpoint of that curve:
+\[
+q_{\rm nt}=0,\ q_\eta=0
+\iff
+R_{\rm target}=R_{\rm target,ref},
+\ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+\]
+
+---
+
+## 3. Exact first-order compiler and the tangent of the finite static-blind curve
+
+Linearizing around the coherent reference branch gives
+\[
+q_\eta=\delta\ln\epsilon_\eta,
+\]
+and on the rigid-mouth slice
+\[
+q_{\rm nt}
+=
+-\delta\ln R_{\rm target}
+-
+\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta.
+\]
+
+Define the carried dressing coefficient
+\[
+c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+\]
+Then the exact first-order direct packet is
+\[
+\boxed{
+q_{\rm nt}=-R_1-c_\eta E_1,
+\qquad
+q_\eta=E_1,
+}
+\]
+with
+\[
+R_1:=\delta\ln R_{\rm target},
+\qquad
+E_1:=\delta\ln\epsilon_\eta.
+\]
+
+So once the static gate is cleared,
+\[
+q_{\rm nt}=0
+\iff
+R_1=-c_\eta q_\eta,
+\qquad
+q_\eta=-\frac{R_1}{c_\eta}.
+\]
+
+This is exactly the tangent relation of the finite curve from Section 2.
+Indeed,
+\[
+\frac{d}{dq_\eta}
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right)\Bigg|_{q_\eta=0}
+=
+-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}
+=
+-c_\eta.
+\]
+
+So the earlier rigid-mouth static-blind line is precisely the tangent of the finite actual-branch static-blind curve.
+
+---
+
+## 4. Exact microscopic compiler for `q_eta`
+
+### 4.1 Direct microscopic coherent variables
+
+On the actual coherent branch,
+\[
+\epsilon_\eta
+=
+\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
+\]
+so the finite dressing coordinate is
+\[
+\boxed{
+q_\eta
+=
+\ln\!\left(
+\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}}
+\frac{K_{U,\rm ref}K_{\eta,\rm ref}^{(\mathrm{eff})}}{c_{\eta U,\rm ref}^2}
+\right).
+}
+\]
+
+Equivalently,
+\[
+\boxed{
+q_\eta
+=
+2\ln\!\left(\frac{c_{\eta U}}{c_{\eta U,\rm ref}}\right)
+-
+\ln\!\left(\frac{K_U}{K_{U,\rm ref}}\right)
+-
+\ln\!\left(\frac{K_\eta^{(\mathrm{eff})}}{K_{\eta,\rm ref}^{(\mathrm{eff})}}\right).
+}
+\]
+
+### 4.2 First-order microscopic drift packet
+
+For the weak-axisymmetric microscopic drifts
+\[
+(c_1,\kappa_U,\kappa_\eta),
+\]
+the exact first-order extractor is
+\[
+\boxed{
+q_\eta
+=
+\delta\ln\epsilon_\eta
+=
+2c_1-\kappa_U-\kappa_\eta.
+}
+\]
+
+So the post-static same-charge obstruction is directly the combined logarithmic drift of
+
+- the wall–U coupling `c_{ηU}`,
+- the `U` stiffness `K_U`,
+- and the effective wall stiffness `K_η^{(\mathrm{eff})}`.
+
+No additional transport bookkeeping is needed.
+
+---
+
+## 5. Exact support-blindness theorem for the dressing coordinate
+
+Introduce the coherent support ratio in the usual form
+\[
+\zeta
+=
+\frac{\lambda_\phi^2 K_W^{(\mathrm{eff})}}{\lambda_W^2 K_\phi^{(\mathrm{eff})}},
+\]
+and the total coherent support-enhanced baseline
+\[
+M_{\rm tr}
+=
+M_{\rm mix}
+\left[
+1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}
+\right].
+\]
+
+Then the exact dressing coordinate satisfies
+\[
+\boxed{
+\partial_\zeta q_\eta = 0,
+\qquad
+\partial_{M_{\rm tr}} q_\eta = 0.
+}
+\]
+
+At the microscopic parameter level this is even sharper:
+\[
+\boxed{
+\partial_{\lambda_\phi} q_\eta = 0,
+\qquad
+\partial_{K_\phi^{(\mathrm{eff})}} q_\eta = 0.
+}
+\]
+
+So the coherent support lane is exactly blind to the dressing obstruction.
+
+This has a strong physical consequence:
+
+> support enhancement can rescue the steady normalization side of the branch, but it cannot change the post-static same-charge dressing obstruction.
+
+So if the static gate has been cleared and `q_eta` is still nonzero, no adjustment of the coherent support ratio can remove that failure.
+
+---
+
+## 6. Post-static orbit-lock theorem on the actual rigid-mouth branch
+
+Stage 219 showed that after the static gate is cleared, the remaining microscopic correction is the equal-drift dependent-plane ray
+\[
+\mathbf y_\eta = -q_\eta(0,1,1)^T.
+\]
+
+Stage 220 now identifies the amplitude of that ray exactly:
+\[
+\boxed{
+\mathbf y_\eta
+=
+-\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right)
+\begin{pmatrix}
+0\\
+1\\
+1
+\end{pmatrix}.
+}
+\]
+Equivalently, on the finite static-blind curve,
+\[
+\boxed{
+\mathbf y_\eta
+=
+-\ln\!\left(
+\frac{1-(1-\epsilon_{\eta,\rm ref})\,R_{\rm target}/R_{\rm target,ref}}
+{\epsilon_{\eta,\rm ref}}
+\right)
+\begin{pmatrix}
+0\\
+1\\
+1
+\end{pmatrix}.
+}
+\]
+
+Therefore the full rigid-mouth post-static orbit-lock theorem is
+\[
+\boxed{
+q_{\rm nt}=0\ \text{and}\ q_\eta=0
+\iff
+R_{\rm target}=R_{\rm target,ref}
+\ \text{and}\
+\epsilon_\eta=\epsilon_{\eta,\rm ref}.
+}
+\]
+
+At first order this becomes
+\[
+\boxed{
+q_{\rm nt}=0\ \text{and}\ q_\eta=0
+\iff
+R_1=0
+\ \text{and}\
+E_1=0.
+}
+\]
+
+So after the first static ceiling is cleared, the same-charge barrier reduces to one exact test:
+
+> is `\epsilon_\eta` invariant on the actual rigid-mouth branch?
+
+If yes, the post-static dressing ray collapses and orbit lock is restored.
+If no, the same-charge obstruction remains, and its exact amplitude is `q_eta`.
+
+---
+
+## 7. Best current summary after Stage 220
+
+The continuation from Stage 219 is now complete.
+
+1. The static-blind microscopic carrier is still the equal-drift dependent-plane ray
+   \[
+   -q_\eta(0,1,1).
+   \]
+2. Its exact actual-branch amplitude is now explicit:
+   \[
+   q_\eta = \ln(\epsilon_\eta/\epsilon_{\eta,\rm ref}).
+   \]
+3. Once the first static gate is cleared, that same amplitude can be read directly from `R_{\rm target}`:
+   \[
+   q_\eta
+   =
+   \ln\!\left(
+   \frac{1-(1-\epsilon_{\eta,\rm ref})R_{\rm target}/R_{\rm target,ref}}
+   {\epsilon_{\eta,\rm ref}}
+   \right).
+   \]
+4. The dressing coordinate is exactly support-blind.
+5. Therefore the next actual same-charge theorem gate is no longer the full quotient packet.
+   It is simply:
+
+> compute `\epsilon_\eta` on the actual rigid-mouth branch and test whether it is invariant.
+
+That is the sharpest post-static same-charge criterion reached so far.
+
+---
+
+## 8. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the carried finite packet formulas and their rigid-mouth reduction,
+- the exact finite static-blind curve and its inverse `q_eta(R_{\rm target})`,
+- the first-order packet compiler and the tangent slope `-c_\eta`,
+- the exact microscopic coherent compiler for `q_eta`,
+- the first-order microscopic drift extractor `q_\eta = 2c_1-\kappa_U-\kappa_\eta`,
+- the exact support-blindness identities,
+- the post-static equal-drift dependent-plane ray with its actual-branch amplitude,
+- and the codimension-two rigid-mouth orbit-lock theorem in both finite and first-order form.
+
+Supporting file:
+- `moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py`
+
+=== moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 221: Physical-Branch Transfer-Shape Compiler, Packet Factorization, and the Post-Static Dressing-Invariance Theorem
+
+## Status
+
+**Exact within the carried Stage-220 actual-branch dressing compiler and the later coherent-branch observable compiler already frozen in the moving-throat notes.**
+
+This stage does **not** solve the full moving-throat PDE branch.
+It does the next sharp reduction after Stage 220:
+
+> it rewrites the actual same-charge packet directly in the physical coherent-branch variables
+> \((R_{\rm tr},\,\mathcal T^2,\,\epsilon_\eta)\),
+> shows that the static same-charge ceiling is exactly transfer-shape rigidity,
+> and isolates the post-static barrier as pure dressing invariance.
+
+So after this stage the same-charge chain factors into three clean gates:
+
+1. tracking rigidity,
+2. transfer-shape rigidity,
+3. dressing rigidity.
+
+And once the first two have been cleared, the barrier reduces to one scalar test only:
+\[
+\delta\ln\epsilon_\eta = 0.
+\]
+
+---
+
+## Purpose
+
+Stage 220 proved that on the rigid-mouth slice the surviving post-static obstruction is
+\[
+q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+\]
+and that this scalar is exactly support-blind.
+
+But Stage 220 still left one useful bridge implicit:
+
+> what does the static same-charge gate `q_nt = 0` look like in the actual coherent branch variables before the dressing scalar is read off?
+
+The later coherent-branch observable compiler already supplies the missing object. On that branch the target observable is not primitive; it is tied to one wall-normalized transfer shape
+\[
+\mathcal T^2.
+\]
+Once that identity is inserted, the same-charge packet becomes triangular in the physical variables themselves.
+
+---
+
+## 0. Why this stage is needed
+
+Stage 220 showed that on the rigid-mouth slice the surviving actual-branch packet is
+\[
+q_{\rm nt}
+=
+\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,\rm ref}}\right),
+\qquad
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+\]
+So after the first static gate is cleared, the same-charge obstruction is indeed the dressing coordinate `q_eta`.
+
+But the remaining static gate `q_nt = 0` is still written there in the mixed observable pair
+\((R_{\rm target},\epsilon_\eta)\).
+The next clean move is therefore to use the later coherent-branch observable compiler to rewrite that gate directly in terms of the physical transfer-shape observable `\mathcal T^2`.
+
+That step is useful because it exposes the packet factorization already present in the actual branch and turns the same-charge chain into a clean three-gate structure.
+
+---
+
+## 1. Exact coherent-branch observables and the transfer-shape identity
+
+On the actual coherent branch the direct observables are
+\[
+R_{\rm tr}
+=
+\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0}
+=
+\frac{1+\chi_0+\delta_U}{(1+\chi_0)(1+\delta_U)},
+\]
+\[
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+\]
+\[
+R_{\rm target}
+=
+\Lambda_0\,\frac{\Omega_W^2(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+\]
+with the exact selected-branch identity
+\[
+\boxed{
+R_{\rm target}\,\mathcal T^2 = \Lambda_0(1-\epsilon_\eta).
+}
+\]
+So the actual coherent branch itself supplies the finite physical packet
+\[
+(R_{\rm tr},\,\mathcal T^2,\,\epsilon_\eta),
+\]
+from which the quotient coordinates can be reconstructed exactly.
+
+---
+
+## 2. Exact finite same-charge packet in physical branch variables
+
+Relative to a coherent reference branch
+\[
+(R_{\rm tr,ref},\,\mathcal T_{\rm ref}^2,\,\epsilon_{\eta,\rm ref}),
+\]
+the carried finite packet is
+\[
+q_{\rm tr}=-C_*\ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right),
+\]
+\[
+q_{\rm nt}
+=
+B_*\ln\!\left(\frac{R_{\rm tr}}{R_{\rm tr,ref}}\right)
++
+\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+-
+\ln\!\left(\frac{R_{\rm target}}{R_{\rm target,ref}}\right),
+\]
+\[
+q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+\]
+Using
+\[
+R_{\rm target}\,\mathcal T^2=\Lambda_0(1-\epsilon_\eta),
+\qquad
+R_{\rm target,ref}\,\mathcal T_{\rm ref}^2=\Lambda_0(1-\epsilon_{\eta,\rm ref}),
+\]
+one gets the exact finite factorization
+\[
+\boxed{
+q_{\rm nt} + \frac{B_*}{C_*}q_{\rm tr}
+=
+\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right).
+}
+\]
+So the finite nontracking packet is already the transfer-shape ratio up to the universal tracking feed-through.
+
+On the rigid-mouth slice,
+\[
+q_{\rm tr}=0,
+\qquad
+R_{\rm tr}=R_{\rm tr,ref},
+\]
+so the finite surviving packet becomes
+\[
+\boxed{
+q_{\rm nt}=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+q_\eta=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+}
+\]
+Therefore the first static same-charge ceiling is exactly
+\[
+\boxed{
+q_{\rm nt}=0
+\iff
+\mathcal T^2=\mathcal T_{\rm ref}^2.
+}
+\]
+So the finite static-blind set is transfer-shape rigidity, not an additional hidden quotient condition.
+
+---
+
+## 3. Exact first-order physical drift compiler
+
+Linearizing the coherent observables gives
+\[
+\delta\ln R_{\rm tr}
+=
+-
+\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}
+\bigl[(1+\delta_U)\,d\ln\chi_0 + (1+\chi_0)\,d\ln\delta_U\bigr],
+\]
+\[
+\delta\ln \mathcal T^2
+=
+ d\ln Z_W - d\ln \Omega_W^2
+ + \frac{2\chi_0}{1+\chi_0}d\ln\chi_0
+ + \frac{2\epsilon}{1-\epsilon}d\ln\epsilon,
+\]
+\[
+\delta\ln R_{\rm target}
+=
+ d\ln\Omega_W^2 - d\ln Z_W
+ - \frac{2\chi_0}{1+\chi_0}d\ln\chi_0
+ - \frac{2\epsilon}{1-\epsilon}d\ln\epsilon
+ - \frac{\epsilon_\eta}{1-\epsilon_\eta}d\ln\epsilon_\eta,
+\]
+\[
+\delta\ln\epsilon_\eta=d\ln\epsilon_\eta.
+\]
+So the first-order same-charge packet is
+\[
+\boxed{
+q_{\rm tr}=-C_*\,\delta\ln R_{\rm tr},
+\qquad
+q_{\rm nt}+\frac{B_*}{C_*}q_{\rm tr}=\delta\ln\mathcal T^2,
+\qquad
+q_\eta=d\ln\epsilon_\eta.
+}
+\]
+On the rigid-mouth branch,
+\[
+q_{\rm tr}=0,
+\]
+so the surviving first-order packet is simply
+\[
+\boxed{
+q_{\rm nt}=\delta\ln\mathcal T^2,
+\qquad
+q_\eta=d\ln\epsilon_\eta.
+}
+\]
+Thus the first-order static same-charge ceiling is
+\[
+\boxed{
+q_{\rm nt}=0
+\iff
+\delta\ln\mathcal T^2=0.
+}
+\]
+And once that ceiling has been cleared, the remaining post-static obstruction is exactly
+\[
+\boxed{
+q_\eta=d\ln\epsilon_\eta.
+}
+\]
+
+---
+
+## 4. Exact support-blindness factorization of the physical packet
+
+The coherent support-enhancement sector enters only through the baseline factor
+\[
+M_{\rm tr}=M_{\rm mix}
+\left[1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}\right].
+\]
+But the direct same-charge observables satisfy
+\[
+\partial_\zeta R_{\rm tr}=0,
+\qquad
+\partial_\zeta \mathcal T^2=0,
+\qquad
+\partial_\zeta \epsilon_\eta=0,
+\]
+\[
+\partial_{M_{\rm mix}} R_{\rm tr}=0,
+\qquad
+\partial_{M_{\rm mix}} \mathcal T^2=0,
+\qquad
+\partial_{M_{\rm mix}} \epsilon_\eta=0.
+\]
+Therefore the full finite and first-order packet is support-blind:
+\[
+\boxed{
+\partial_\zeta q_{\rm tr}=\partial_\zeta q_{\rm nt}=\partial_\zeta q_\eta=0,
+\qquad
+\partial_{M_{\rm mix}} q_{\rm tr}=\partial_{M_{\rm mix}} q_{\rm nt}=\partial_{M_{\rm mix}} q_\eta=0.
+}
+\]
+So support enhancement may rescue the steady normalization side of the branch, but it cannot change the actual same-charge packet at first weak-axisymmetric order.
+
+---
+
+## 5. Post-static dressing-invariance theorem on the actual branch
+
+The same-charge chain on the actual coherent rigid-mouth branch now factors exactly into three gates.
+
+### 5.1 Tracking gate
+\[
+q_{\rm tr}=0
+\iff
+R_{\rm tr}=R_{\rm tr,ref}
+\iff
+(1+\delta_U)d\ln\chi_0 + (1+\chi_0)d\ln\delta_U = 0
+\quad\text{(at first order).}
+\]
+
+### 5.2 Static-blind transfer-shape gate
+\[
+q_{\rm nt}=0
+\iff
+\mathcal T^2 = \mathcal T_{\rm ref}^2
+\iff
+\delta\ln\mathcal T^2 = 0
+\quad\text{(at first order).}
+\]
+
+### 5.3 Post-static dressing gate
+After the first two have been cleared, the remaining obstruction is exactly
+\[
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+\qquad
+q_\eta^{(1)}=d\ln\epsilon_\eta.
+\]
+So the final post-static criterion is
+\[
+\boxed{
+q_\eta=0
+\iff
+\epsilon_\eta=\epsilon_{\eta,\rm ref}
+\iff
+ d\ln\epsilon_\eta=0
+\quad\text{(at first order).}
+}
+\]
+This is the exact post-static dressing-invariance theorem.
+
+---
+
+## 6. Best current summary after Stage 221
+
+The continuation from Stage 220 is now complete.
+
+1. The actual same-charge packet is charted directly by
+   \[
+   (R_{\rm tr},\,\mathcal T^2,\,\epsilon_\eta).
+   \]
+2. The finite static same-charge ceiling is exactly
+   \[
+   q_{\rm nt}=0 \iff \mathcal T^2 = \mathcal T_{\rm ref}^2.
+   \]
+3. The first-order static ceiling is exactly
+   \[
+   q_{\rm nt}=\delta\ln\mathcal T^2.
+   \]
+4. The whole direct packet is support-blind.
+5. Therefore, once tracking rigidity and transfer-shape rigidity have both been imposed, the same-charge barrier reduces to one exact test only:
+
+> compute `\epsilon_eta` on the actual rigid-mouth branch and check whether it is invariant.
+
+That is the sharpest post-static physical-variable criterion reached so far.
+
+---
+
+## 7. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact coherent-branch identity
+  \[
+  R_{\rm target}\,\mathcal T^2 = \Lambda_0(1-\epsilon_\eta),
+  \]
+- the finite packet factorization
+  \[
+  q_{\rm nt}+\frac{B_*}{C_*}q_{\rm tr}=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+  \]
+- the rigid-mouth reduction
+  \[
+  q_{\rm nt}=\ln(\mathcal T^2/\mathcal T_{\rm ref}^2),
+  \qquad
+  q_\eta=\ln(\epsilon_\eta/\epsilon_{\eta,\rm ref}),
+  \]
+- the exact first-order physical drift compiler for `\delta\ln R_tr`, `\delta\ln \mathcal T^2`, and `\delta\ln R_target`,
+- the first-order packet relation
+  \[
+  q_{\rm nt}+\frac{B_*}{C_*}q_{\rm tr}=\delta\ln\mathcal T^2,
+  \qquad
+  q_\eta=d\ln\epsilon_\eta,
+  \]
+- the support-blindness identities with respect to `\zeta` and `M_mix`,
+- and the three-gate post-static dressing-invariance theorem on the actual rigid-mouth branch.
+
+Supporting file:
+- `moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py`
+
+=== moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 222: Rigid-Mouth Physical Normal Form, Exact Physical-to-Microscopic Correction Compiler, and the Cartesian Orbit-Lock Theorem
+
+## Status
+
+**Exact within the carried Stage-219 rigid-mouth dependent-plane projector calculus and the Stage-221 physical-branch transfer-shape compiler.**
+
+This stage does **not** solve the full moving-throat PDE branch.
+It does the next sharp reduction after Stage 221:
+
+> it diagonalizes the rigid-mouth same-charge packet in the actual physical logarithmic variables
+> \((\mathcal T^2,\epsilon_\eta)\),
+> converts that diagonal packet into an exact microscopic dependent-plane compiler,
+> and shows that rigid-mouth orbit lock is already a Cartesian product of transfer-shape rigidity and dressing rigidity.
+
+So after this stage the surviving rigid-mouth same-charge geometry is no longer triangular.
+It is exactly a two-axis normal form:
+
+1. a **pure transfer-shape axis**,
+2. a **pure dressing axis**.
+
+And the corresponding microscopic correction splits just as sharply:
+
+- clearing the static transfer-shape defect changes only `\mu_W`,
+- clearing the post-static dressing defect adds the equal `K_\eta^{(\mathrm{eff})}`–`\mu_W` shift.
+
+---
+
+## Purpose
+
+Stage 221 already proved that on the rigid-mouth actual branch the surviving finite packet coordinates are
+\[
+q_{\rm nt}
+=
+\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+q_\eta
+=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+\]
+and Stage 219 already gave their exact microscopic dependent-plane carriers.
+
+The next obvious question is therefore:
+
+> what happens if we use those physical logarithmic variables themselves as the rigid-mouth packet chart?
+
+This stage shows that doing so diagonalizes the packet completely, yields an exact physical-to-microscopic compiler, and turns rigid-mouth orbit lock into a direct Cartesian codimension-two condition.
+
+---
+
+## 0. Why this stage is needed
+
+Stage 219 already proved that on the rigid-mouth slice the quotient-failure image in the dependent microscopic plane is
+\[
+\mathbf y_{\rm rm}
+=
+\mathbf y_{\rm nt}+\mathbf y_\eta,
+\qquad
+\mathbf y_{\rm nt}=\begin{pmatrix}0\\0\\q_{\rm nt}\end{pmatrix},
+\qquad
+\mathbf y_\eta=-q_\eta\begin{pmatrix}0\\1\\1\end{pmatrix}.
+\]
+So after the first static gate is cleared, the remaining obstruction is already the equal-drift `K_\eta`–`\mu` ray.
+
+Stage 221 then rewrote the rigid-mouth finite packet directly in the physical branch observables and proved
+\[
+q_{\rm nt}=
+\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+q_\eta=
+\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+\]
+So the next clean move is immediate:
+
+> use these physical logarithmic variables themselves as the rigid-mouth coordinates.
+
+This stage shows that the resulting chart is already diagonal and that the microscopic correction compiler splits into the direct image of those two physical axes.
+
+---
+
+## 1. Exact rigid-mouth physical logarithmic chart
+
+On the rigid-mouth branch define the physical logarithmic coordinates
+\[
+\boxed{
+U:=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+}
+\]
+By Stage 221 these are exactly the surviving finite packet coordinates:
+\[
+\boxed{
+q_{\rm nt}=U,
+\qquad
+q_\eta=V.
+}
+\]
+So the rigid-mouth physical packet compiler is already diagonal:
+\[
+\boxed{
+\mathbf q_{\rm rm}^{\rm phys}
+:=
+\begin{pmatrix}
+q_{\rm nt}\\
+q_\eta
+\end{pmatrix}
+=
+M_{\rm phys}
+\begin{pmatrix}
+U\\
+V
+\end{pmatrix},
+\qquad
+M_{\rm phys}=I_2.
+}
+\]
+
+The third direct observable on the rigid-mouth branch, `R_{\rm target}`, is then recovered exactly from the selected-branch identity
+\[
+R_{\rm target}\,\mathcal T^2=
+\Lambda_0(1-\epsilon_\eta),
+\qquad
+R_{\rm target,ref}\,\mathcal T_{\rm ref}^2=
+\Lambda_0(1-\epsilon_{\eta,\rm ref}),
+\]
+which gives
+\[
+\boxed{
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}\,e^{-U}.
+}
+\]
+So the full rigid-mouth actual branch is already charted exactly by the diagonal logarithmic pair `(U,V)`.
+
+---
+
+## 2. Exact physical projectors and the two commuting finite legs
+
+Because the rigid-mouth packet is diagonal in `(U,V)`, the canonical physical packet projectors are simply
+\[
+\boxed{
+P_{\mathcal T}:=
+\begin{pmatrix}1&0\\0&0\end{pmatrix},
+\qquad
+P_\eta:=
+\begin{pmatrix}0&0\\0&1\end{pmatrix}.
+}
+\]
+They are exact complementary projectors:
+\[
+P_{\mathcal T}^2=P_{\mathcal T},
+\qquad
+P_\eta^2=P_\eta,
+\qquad
+P_{\mathcal T}P_\eta=P_\eta P_{\mathcal T}=0,
+\qquad
+P_{\mathcal T}+P_\eta=I_2.
+\]
+So every rigid-mouth physical point decomposes uniquely as
+\[
+\boxed{
+\begin{pmatrix}U\\V\end{pmatrix}
+=
+\begin{pmatrix}U\\0\end{pmatrix}
++
+\begin{pmatrix}0\\V\end{pmatrix}.
+}
+\]
+
+### 2.1 Pure transfer-shape leg
+
+The image of `P_{\mathcal T}` is the exact finite transfer-shape leg
+\[
+\boxed{
+\mathcal T^2=\mathcal T_{\rm ref}^2 e^U,
+\qquad
+\epsilon_\eta=\epsilon_{\eta,\rm ref},
+\qquad
+\frac{R_{\rm target}}{R_{\rm target,ref}}=e^{-U}.
+}
+\]
+So pure transfer-shape motion changes only `\mathcal T^2` directly and compensates `R_{\rm target}` inversely.
+
+### 2.2 Pure dressing leg
+
+The image of `P_\eta` is the exact finite dressing leg
+\[
+\boxed{
+\mathcal T^2=\mathcal T_{\rm ref}^2,
+\qquad
+\epsilon_\eta=\epsilon_{\eta,\rm ref}e^V,
+\qquad
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}.
+}
+\]
+So pure dressing motion is exactly the finite static-blind curve from Stage 220, now recognized as one coordinate axis of the physical chart.
+
+### 2.3 Exact commutativity
+
+Because the target ratio factorizes as
+\[
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\underbrace{e^{-U}}_{\text{transfer leg}}
+\underbrace{\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}}_{\text{dressing leg}},
+\]
+the two finite legs commute exactly.
+So the rigid-mouth branch is an exact Cartesian product of
+
+- transfer-shape motion, and
+- dressing motion.
+
+This is the physical normal-form version of the earlier packet projector calculus.
+
+---
+
+## 3. Exact physical-to-microscopic dependent-plane compiler
+
+Stage 219 gives the dependent-plane packet carriers
+\[
+\mathbf y_{\rm nt}=\begin{pmatrix}0\\0\\q_{\rm nt}\end{pmatrix},
+\qquad
+\mathbf y_\eta=-q_\eta\begin{pmatrix}0\\1\\1\end{pmatrix}.
+\]
+Substituting the physical coordinates `q_{\rm nt}=U`, `q_\eta=V` gives the exact rigid-mouth dependent correction
+\[
+\boxed{
+\mathbf y_{\rm rm}^{\rm dep}(U,V)
+=
+\begin{pmatrix}
+\Delta_T\\
+\Delta_{K_\eta}\\
+\Delta_\mu
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+-V\\
+U-V
+\end{pmatrix}.
+}
+\]
+So the physical-to-microscopic compiler matrix is
+\[
+\boxed{
+C_{\rm phys}^{\rm dep}
+:=
+\begin{pmatrix}
+0&0\\
+0&-1\\
+1&-1
+\end{pmatrix},
+\qquad
+\mathbf y_{\rm rm}^{\rm dep}=C_{\rm phys}^{\rm dep}
+\begin{pmatrix}U\\V\end{pmatrix}.
+}
+\]
+A left inverse is immediate:
+\[
+\boxed{
+L_{\rm phys}^{\rm dep}
+:=
+\begin{pmatrix}
+0&-1&1\\
+0&-1&0
+\end{pmatrix},
+\qquad
+L_{\rm phys}^{\rm dep}C_{\rm phys}^{\rm dep}=I_2.
+}
+\]
+So the physical packet coordinates can be recovered directly from the dependent microscopic correction by
+\[
+\boxed{
+U=\Delta_\mu-\Delta_{K_\eta},
+\qquad
+V=-\Delta_{K_\eta}.
+}
+\]
+
+This is the cleanest rigid-mouth compiler obtained so far:
+
+- `U` is the microscopic `\mu_W-K_\eta^{(\mathrm{eff})}` difference,
+- `V` is minus the `K_\eta^{(\mathrm{eff})}` drift itself.
+
+---
+
+## 4. Exact microscopic images of the two physical axes
+
+Push the physical projectors through `C_{\rm phys}^{\rm dep}`.
+
+### 4.1 Pure transfer-shape image
+
+Applying `P_{\mathcal T}` gives
+\[
+\boxed{
+\mathbf y_{\mathcal T}^{\rm dep}
+=
+C_{\rm phys}^{\rm dep}
+\begin{pmatrix}U\\0\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+0\\
+U
+\end{pmatrix}.
+}
+\]
+So a pure transfer-shape defect is carried microscopically by a `\mu_W` shift only.
+
+### 4.2 Pure dressing image
+
+Applying `P_\eta` gives
+\[
+\boxed{
+\mathbf y_\eta^{\rm dep}
+=
+C_{\rm phys}^{\rm dep}
+\begin{pmatrix}0\\V\end{pmatrix}
+=
+-V\begin{pmatrix}0\\1\\1\end{pmatrix}.
+}
+\]
+So a pure dressing defect is carried microscopically by the exact equal-drift `K_\eta^{(\mathrm{eff})}`–`\mu_W` ray.
+
+This is the physical version of the Stage-219 dependent-plane theorem.
+The difference is that the two microscopic pieces are now the direct images of the actual physical axes, not only of abstract quotient coordinates.
+
+---
+
+## 5. Exact correction compilers
+
+Because the rigid-mouth packet is diagonal in `(U,V)`, the orbit-restoring corrections are immediate.
+
+### 5.1 Static-only correction
+
+To clear only the transfer-shape defect, subtract the pure transfer image:
+\[
+\boxed{
+\Delta\mathbf y_{\rm static}
+:=-\mathbf y_{\mathcal T}^{\rm dep}
+=
+\begin{pmatrix}0\\0\\-U\end{pmatrix}.
+}
+\]
+After this correction,
+\[
+\mathbf y_{\rm rm}^{\rm dep}+
+\Delta\mathbf y_{\rm static}
+=
+-V\begin{pmatrix}0\\1\\1\end{pmatrix},
+\]
+so the branch is moved exactly onto the pure dressing ray.
+
+Thus the first static ceiling is cleared by changing only `\mu_W`.
+
+### 5.2 Post-static dressing correction
+
+Once the static ceiling has been cleared, the remaining orbit-restoring correction is just the opposite of the dressing image:
+\[
+\boxed{
+\Delta\mathbf y_{\eta,\rm rest}
+:=+V\begin{pmatrix}0\\1\\1\end{pmatrix}.
+}
+\]
+So the extra step beyond the static gate is the equal positive shift in
+
+- `K_\eta^{(\mathrm{eff})}`,
+- `\mu_W`.
+
+### 5.3 Full orbit-lock correction
+
+Removing the whole rigid-mouth dependent correction gives
+\[
+\boxed{
+\Delta\mathbf y_{\rm orbit}
+:=-\mathbf y_{\rm rm}^{\rm dep}
+=
+\begin{pmatrix}
+0\\
+V\\
+V-U
+\end{pmatrix}
+=
+\Delta\mathbf y_{\rm static}+
+\Delta\mathbf y_{\eta,\rm rest}.
+}
+\]
+So the full orbit-restoring correction is literally the sum of
+
+1. the static-only `\mu_W` correction,
+2. the post-static equal `K_\eta`–`\mu_W` dressing correction.
+
+This is the sharpest correction split reached so far.
+
+---
+
+## 6. Exact support-blindness of the physical normal form
+
+Stage 221 already showed that the direct physical observables are support-blind:
+\[
+\partial_\zeta \mathcal T^2=0,
+\qquad
+\partial_\zeta \epsilon_\eta=0,
+\qquad
+\partial_{M_{\rm mix}}\mathcal T^2=0,
+\qquad
+\partial_{M_{\rm mix}}\epsilon_\eta=0.
+\]
+Therefore the physical logarithmic coordinates themselves satisfy
+\[
+\boxed{
+\partial_\zeta U=
+\partial_{M_{\rm mix}}U=
+\partial_\zeta V=
+\partial_{M_{\rm mix}}V=0.
+}
+\]
+And because the microscopic compiler is linear in `(U,V)`, the dependent correction and all three correction compilers are support-blind as well:
+\[
+\boxed{
+\partial_\zeta \mathbf y_{\rm rm}^{\rm dep}=
+\partial_{M_{\rm mix}}\mathbf y_{\rm rm}^{\rm dep}=0,
+}
+\]
+\[
+\boxed{
+\partial_\zeta \Delta\mathbf y_{\rm static}=
+\partial_\zeta \Delta\mathbf y_{\rm orbit}=0,
+\qquad
+\partial_{M_{\rm mix}} \Delta\mathbf y_{\rm static}=
+\partial_{M_{\rm mix}} \Delta\mathbf y_{\rm orbit}=0.
+}
+\]
+So coherent support enhancement cannot alter either
+
+- the rigid-mouth physical packet, or
+- the microscopic orbit-restoring correction required by that packet.
+
+---
+
+## 7. Cartesian orbit-lock theorem and first-order form
+
+On the rigid-mouth actual branch,
+\[
+\boxed{
+q_{\rm nt}=0,\ q_\eta=0
+\iff
+U=0,\ V=0
+\iff
+\mathcal T^2=\mathcal T_{\rm ref}^2,\ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+}
+\]
+Because
+\[
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}e^{-U},
+\]
+this is also equivalent to
+\[
+\boxed{
+\mathcal T^2=\mathcal T_{\rm ref}^2,\ \epsilon_\eta=\epsilon_{\eta,\rm ref}
+\iff
+R_{\rm target}=R_{\rm target,ref},\ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+}
+\]
+So the rigid-mouth orbit-lock point is already a Cartesian codimension-two point in the physical logarithmic chart.
+
+At first order the same statement becomes simply
+\[
+U=\delta\ln\mathcal T^2,
+\qquad
+V=\delta\ln\epsilon_\eta,
+\]
+so
+\[
+\boxed{
+\mathbf y_{\rm rm}^{\rm dep,(1)}
+=
+\begin{pmatrix}
+0\\
+-\delta\ln\epsilon_\eta\\
+\delta\ln\mathcal T^2-\delta\ln\epsilon_\eta
+\end{pmatrix}.
+}
+\]
+The static-blind line from Stages 218–220 is just the axis
+\[
+U=0,
+\]
+and its microscopic image is the pure equal-drift dressing ray.
+
+So the earlier direct-space triangular packet was not the final normal form.
+The later coherent transfer-shape compiler diagonalizes it completely.
+
+---
+
+## 8. Best current summary after Stage 222
+
+The continuation from Stage 221 is now complete.
+
+1. On the rigid-mouth actual branch, the physical logarithmic variables
+   \[
+   \left(\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},\ \ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right)
+   \]
+   are already the exact finite packet coordinates.
+2. In that chart, the packet projector calculus is diagonal.
+3. The microscopic dependent correction is exactly
+   \[
+   (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V).
+   \]
+4. The static-only correction changes only `\mu_W`.
+5. The post-static dressing correction is the equal `K_\eta`–`\mu_W` shift.
+6. The whole rigid-mouth physical normal form and its microscopic correction compiler are support-blind.
+
+So the same-charge barrier is now fully factorized on the rigid-mouth actual branch:
+
+> first clear the pure transfer-shape axis `U`,
+> then test whether the remaining pure dressing axis `V` collapses.
+
+That is the sharpest Cartesian rigid-mouth statement reached so far.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the rigid-mouth physical logarithmic chart
+  \[
+  U=\ln(\mathcal T^2/\mathcal T_{\rm ref}^2),
+  \qquad
+  V=\ln(\epsilon_\eta/\epsilon_{\eta,\rm ref}),
+  \]
+  together with the exact target-ratio formula
+  \[
+  \frac{R_{\rm target}}{R_{\rm target,ref}}
+  =
+  \frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}e^{-U},
+  \]
+- the exact complementary physical projectors and the commuting finite transfer/dressing legs,
+- the physical-to-microscopic compiler
+  \[
+  (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V),
+  \]
+  together with its exact left inverse,
+- the microscopic images of the pure transfer-shape and pure dressing axes,
+- the static-only, post-static, and full orbit-restoring correction compilers,
+- the support-blindness identities with respect to `\zeta` and `M_{\rm mix}`,
+- and the Cartesian rigid-mouth orbit-lock theorem in both finite and first-order form.
+
+Supporting file:
+- `moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py`
+
+=== moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md ===
+
+
+# Moving-Throat PDE — Stage 223: Selected-Branch Loading Ratio from the Minimal Isotropic Quadrupole Precursor
+
+## Status
+
+**Exact within the carried selected-branch normalization identities and the minimal isotropic one-pole conservative quadrupole precursor.**
+
+This stage does **not** solve the full moving-throat PDE branch.
+It closes a narrower reduced question:
+
+> once the selected passive/outgoing quadrupole branch is normalized, what exact support loading ratio does the natural minimal isotropic conservative precursor pick?
+
+The answer is completely sharp:
+
+\[
+\boxed{
+\rho_\alpha=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}=\frac43,
+\qquad
+\zeta_{\rm req}=\rho_\alpha-1=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43\,C_{\rm mix}.
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+\varrho:=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+=\frac{2(1-\epsilon_*)}{3},
+\qquad
+S_{\rm req}:=\frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43.
+}
+\]
+
+So the natural minimal isotropic passive/outgoing branch is **not** mixed-only and **not** non-twin.
+It lands exactly on the **symmetric lowest-twin** support slice.
+
+---
+
+## Purpose
+
+Stage 222 completed the rigid-mouth physical normal form and showed that the rigid-mouth actual branch is already a Cartesian product of
+
+1. a transfer-shape axis, and
+2. a dressing axis.
+
+But the same-charge barrier / support-selection side of the program still carried one scalar ambiguity:
+
+\[
+\varrho=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda}.
+\]
+
+What was still missing was the actual value selected by the passive/outgoing normalization side.
+This stage fixes that value exactly by combining two already-carried ingredients:
+
+1. the selected-branch product identities, which cancel all separate outgoing-normalization amplitudes and reduce the support test to a single loading ratio,
+2. the minimal isotropic conservative quadrupole precursor, whose contact/pole split fixes that loading ratio algebraically.
+
+So the real job of Stage 223 is:
+
+> compress the selected-branch support demand from an open scalar selector down to one exact support slice.
+
+---
+
+## Provenance
+
+This note is the moving-throat Stage-223 version of the support-selection computation carried by the selected-branch normalization track.
+The barrier-audit Stage 023 records the same result in the same notation, and the matching `g2` step carries the exact contact-plus-pole extraction that fixes the loading ratio.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the selected passive/outgoing support problem was still phrased in terms of the demand parameter
+
+\[
+\varrho=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda},
+\]
+
+with three possible support regimes:
+
+\[
+\Pi_{\rm tr}\le C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{mixed-only enough},
+\]
+
+\[
+C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{symmetric lowest twin enough},
+\]
+
+\[
+\Pi_{\rm tr}>2C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{non-twin asymmetry required}.
+\]
+
+So the missing datum was no longer a whole response function.
+It was only the exact ratio \(\Pi_{\rm tr}/C_{\rm mix}\) selected by the passive/outgoing branch.
+
+This stage shows that the ratio is not free.
+
+---
+
+## 1. Exact selected-branch product identities
+
+The selected-branch normalization side gives the exact product formulas
+
+\[
+\Pi_{\rm tr}
+=
+\frac{N_Q^{(\rm target)}}{\beta_0}\,\alpha_{\rm req},
+\qquad
+C_{\rm mix}
+=
+\frac{N_Q^{(\rm target)}}{\beta_0}\,\alpha_{\rm mix}.
+\]
+
+Therefore the separate selected-mode amplitudes cancel immediately in the ratio:
+
+\[
+\boxed{
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}
+=
+\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+=:\rho_\alpha.
+}
+\]
+
+So the selected support demand depends only on the loading ratio
+
+\[
+\boxed{
+\rho_\alpha:=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}.
+}
+\]
+
+In the spectral notation of the selected branch one may also write
+
+\[
+N_Q^{(\rm target)}
+=
+\hat m_-^{\,2}\,\beta_0\,\frac{s_-}{\lambda_-},
+\]
+
+so the same identities become
+
+\[
+\Pi_{\rm tr}
+=
+\hat m_-^{\,2}\frac{s_-}{\lambda_-}\alpha_{\rm req},
+\qquad
+C_{\rm mix}
+=
+\hat m_-^{\,2}\frac{s_-}{\lambda_-}\alpha_{\rm mix},
+\]
+
+and again the ratio is exactly \(\rho_\alpha\).
+
+So after the selected-branch normalization is imposed, the support test no longer scans independent amplitudes.
+It scans one loading ratio.
+
+---
+
+## 2. Exact contact-plus-pole inverse compiler
+
+Write the natural minimal conservative quadrupole precursor as
+
+\[
+Y_Q^{\rm cons}(\omega)
+=
+c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2},
+\qquad
+c_0+c_1=1.
+\]
+
+On the explicit support/source branch the natural contact/pole interpretation is:
+
+- the mixed baseline contributes the static contact fraction,
+- the extra support lane contributes the finite conservative pole.
+
+So the same precursor can be written as
+
+\[
+Y_Q^{\rm cons}(\omega)
+=
+\frac{\alpha_{\rm mix}}{\alpha_{\rm req}}
++
+\frac{\alpha_{\rm req}-\alpha_{\rm mix}}{\alpha_{\rm req}}
+\frac{1}{1-\omega^2/\Omega_Q^2}.
+\]
+
+Introducing the loading ratio
+\[
+\rho_\alpha:=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}},
+\]
+this becomes
+\[
+Y_Q^{\rm cons}(\omega)
+=
+\frac{1}{\rho_\alpha}
++
+\frac{\rho_\alpha-1}{\rho_\alpha}
+\frac{1}{1-\omega^2/\Omega_Q^2}.
+\]
+
+So the contact and pole fractions are exactly
+
+\[
+\boxed{
+c_0=\frac{1}{\rho_\alpha},
+\qquad
+c_1=\frac{\rho_\alpha-1}{\rho_\alpha}.
+}
+\]
+
+The inverse formulas are therefore immediate:
+
+\[
+\boxed{
+\rho_\alpha=\frac{1}{c_0}=\frac{1}{1-c_1},
+}
+\]
+
+and
+
+\[
+\boxed{
+\zeta_{\rm req}:=\rho_\alpha-1=\frac{c_1}{c_0}.
+}
+\]
+
+So the support/source loading ratio is encoded exactly in the static contact/pole split of the conservative quadrupole precursor.
+
+### 2.1 What does not matter here
+
+The pole location \(\Omega_Q\) controls the dynamical conservative shape of the precursor, but it does **not** enter the static loading-ratio extraction.
+At this stage only the normalized contact and pole weights \((c_0,c_1)\) matter.
+
+That is why the support-selection problem collapses so sharply.
+
+---
+
+## 3. Matching to the minimal isotropic quadrupole module
+
+The minimal isotropic conservative quadrupole module is
+
+\[
+\boxed{
+c_0=\frac34,
+\qquad
+c_1=\frac14,
+\qquad
+\Omega_Q=\frac{3c_s}{2a}.
+}
+\]
+
+Substituting these values into the inverse compiler gives immediately
+
+\[
+\boxed{
+\rho_\alpha=\frac{1}{3/4}=\frac43,
+}
+\]
+
+and
+
+\[
+\boxed{
+\zeta_{\rm req}=\frac{1/4}{3/4}=\frac13.
+}
+\]
+
+Then the selected demand product is fixed exactly:
+
+\[
+\boxed{
+\Pi_{\rm tr}
+=
+\rho_\alpha\,C_{\rm mix}
+=
+\frac43\,C_{\rm mix}.
+}
+\]
+
+So the natural minimal isotropic passive/outgoing branch does **not** leave the support loading ratio open.
+It fixes it once and for all.
+
+---
+
+## 4. Exact support-selector compiler
+
+Now combine the selected loading ratio with the support selector
+
+\[
+\varrho:=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda},
+\qquad
+C_{\rm mix}=\frac{8\Lambda(1-\epsilon_*)}{\pi^2}.
+\]
+
+Substituting \(\Pi_{\rm tr}=\frac43 C_{\rm mix}\) gives
+
+\[
+\varrho
+=
+\frac{\pi^2}{16\Lambda}\cdot\frac43\cdot\frac{8\Lambda(1-\epsilon_*)}{\pi^2}
+=
+\boxed{\frac{2(1-\epsilon_*)}{3}.}
+\]
+
+The required support enhancement becomes
+
+\[
+S_{\rm req}
+=
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}
+=
+\boxed{\frac43.}
+\]
+
+So the selected branch is no longer scanning arbitrary demand sectors.
+It is locked to one exact support ratio.
+
+---
+
+## 5. Regime meaning
+
+The three support regimes were
+
+\[
+\Pi_{\rm tr}\le C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{mixed-only enough},
+\]
+
+\[
+C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{symmetric lowest twin enough},
+\]
+
+\[
+\Pi_{\rm tr}>2C_{\rm mix}
+\quad\Longleftrightarrow\quad
+\text{non-twin asymmetry required}.
+\]
+
+But the selected branch gives
+
+\[
+\Pi_{\rm tr}=\frac43 C_{\rm mix},
+\]
+
+so one has the exact strict inequality
+
+\[
+\boxed{
+C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+}
+\]
+
+Therefore:
+
+- mixed-only is **not** enough,
+- the symmetric lowest twin **is** enough,
+- non-twin asymmetry is **not** required.
+
+So the last support ambiguity collapses from three sectors to exactly one selected support slice:
+
+\[
+\boxed{
+\text{symmetric lowest twin, with }
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43.
+}
+\]
+
+---
+
+## 6. Exact theorem statement
+
+The whole stage can now be read as one exact theorem.
+
+### Selected-branch loading-ratio theorem
+
+Assume:
+
+1. the selected passive/outgoing normalization side satisfies
+   \[
+   \Pi_{\rm tr}
+   =
+   \frac{N_Q^{(\rm target)}}{\beta_0}\alpha_{\rm req},
+   \qquad
+   C_{\rm mix}
+   =
+   \frac{N_Q^{(\rm target)}}{\beta_0}\alpha_{\rm mix},
+   \]
+2. the conservative quadrupole precursor is read in the natural contact-plus-pole form
+   \[
+   Y_Q^{\rm cons}(\omega)
+   =
+   \frac{\alpha_{\rm mix}}{\alpha_{\rm req}}
+   +
+   \frac{\alpha_{\rm req}-\alpha_{\rm mix}}{\alpha_{\rm req}}
+   \frac{1}{1-\omega^2/\Omega_Q^2},
+   \]
+3. the actual isotropic minimal conservative module is
+   \[
+   c_0=\frac34,
+   \qquad
+   c_1=\frac14.
+   \]
+
+Then the selected support loading is fixed exactly by
+
+\[
+\boxed{
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43 C_{\rm mix},
+}
+\]
+
+equivalently
+
+\[
+\boxed{
+\varrho=\frac{2(1-\epsilon_*)}{3},
+\qquad
+S_{\rm req}=\frac43,
+}
+\]
+
+and the selected support regime is exactly the symmetric lowest-twin slice
+
+\[
+\boxed{
+C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+}
+\]
+
+So the support-selection side of the selected passive/outgoing branch is no longer an open phase diagram.
+It is one exact branch value.
+
+---
+
+## 7. What this fixes, and what it leaves open
+
+This stage fixes:
+
+1. the loading ratio
+   \[
+   \rho_\alpha=\frac43,
+   \]
+2. the required support excess
+   \[
+   \zeta_{\rm req}=\frac13,
+   \]
+3. the selected support selector
+   \[
+   \varrho=\frac{2(1-\epsilon_*)}{3},
+   \]
+4. the exact regime classification:
+   symmetric lowest twin is enough and non-twin asymmetry is not needed.
+
+What remains open is not support-sector selection anymore.
+The next honest question is narrower:
+
+> once we restrict to this selected twin-support branch, how much of the remaining primitive ranking or branch-loading ambiguity survives?
+
+So the program has moved from “which support sector?” to “what survives on the selected support curve?”
+
+---
+
+## 8. Best current summary after Stage 223
+
+The selected-branch normalization side has now fixed the support ratio carried by the natural minimal isotropic passive/outgoing quadrupole branch:
+
+\[
+\boxed{
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43 C_{\rm mix}.
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+\varrho=\frac{2(1-\epsilon_*)}{3},
+\qquad
+S_{\rm req}=\frac43.
+}
+\]
+
+So the last support ambiguity has collapsed from three sectors
+
+- mixed-only,
+- symmetric lowest twin,
+- non-twin asymmetry,
+
+to exactly one selected support slice:
+
+\[
+\text{symmetric lowest twin, with demand ratio }
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43.
+\]
+
+That is the cleanest reduced loading-ratio statement available before the next primitive ranking step.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+- the exact selected-branch product-ratio identity
+  \[
+  \frac{\Pi_{\rm tr}}{C_{\rm mix}}
+  =
+  \frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+  =\rho_\alpha,
+  \]
+- the contact-plus-pole compiler
+  \[
+  c_0=\frac{1}{\rho_\alpha},
+  \qquad
+  c_1=\frac{\rho_\alpha-1}{\rho_\alpha},
+  \]
+  together with the inverse formulas
+  \[
+  \rho_\alpha=\frac{1}{c_0}=\frac{1}{1-c_1},
+  \qquad
+  \zeta_{\rm req}=\frac{c_1}{c_0},
+  \]
+- the specialization of the minimal isotropic conservative module
+  \[
+  c_0=\frac34,
+  \qquad
+  c_1=\frac14,
+  \]
+  to
+  \[
+  \rho_\alpha=\frac43,
+  \qquad
+  \zeta_{\rm req}=\frac13,
+  \]
+- the exact support-selector reduction
+  \[
+  \varrho
+  =
+  \frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+  =
+  \frac{2(1-\epsilon_*)}{3},
+  \]
+- and the regime classification proving that the selected branch lies strictly in the symmetric-lowest-twin sector.
+
+Supporting file:
+- `moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py`
+
+=== moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 224: Exact Primitive Ranking on the Selected Twin-Support Branch
+
+## Status
+
+**Exact within the carried selected-branch support identities, the support-carried primitive coherent closure, and the constructive coherent bound**
+\[
+0<\beta<\frac{2}{11}.
+\]
+
+This stage does **not** yet place the actual moving-throat branch at a unique point on the selected support curve.
+It closes a narrower reduced question:
+
+> once Stage 223 has fixed the passive/outgoing support slice to the symmetric lowest-twin branch, what primitive quartic-carrier hierarchy survives along that exact slice?
+
+The answer is completely sharp.
+
+The selected same-charge branch is the one-parameter curve
+
+\[
+\boxed{
+\epsilon_* = 1-\frac{3\varrho}{2},
+\qquad
+\sigma = \frac{4}{3\varrho}-2,
+\qquad
+0<\varrho<\frac23,
+}
+\]
+
+and on that curve only **two** primitive crossover thresholds remain,
+
+\[
+\boxed{
+\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)}{3(2+\beta^2)},
+\qquad
+\varrho_{U\Lambda}
+=
+\frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+}
+\]
+
+So the complete selected-branch primitive ranking is
+
+\[
+\boxed{
+\begin{aligned}
+&0<\varrho<\varrho_{W\Lambda}
+&&\Longrightarrow&&
+q_\chi > q_Z > q_\Lambda > q_W > |q_U|,\\[1mm]
+&\varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda}
+&&\Longrightarrow&&
+q_\chi > q_Z > q_W > q_\Lambda > |q_U|,\\[1mm]
+&\varrho_{U\Lambda}<\varrho<\frac23
+&&\Longrightarrow&&
+q_\chi > q_Z > q_W > |q_U| > q_\Lambda.
+\end{aligned}
+}
+\]
+
+So the selected same-charge anomaly branch now has a completely explicit primitive ranking phase diagram.
+
+---
+
+## Purpose
+
+Stage 223 compressed the support-selection side of the passive/outgoing same-charge branch to one exact support ratio:
+
+\[
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43\,C_{\rm mix}.
+\]
+
+Equivalently, the support selector
+
+\[
+\varrho:=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+\]
+
+was no longer free. It was tied to the same selected branch by
+
+\[
+\epsilon_* = 1-\frac{3\varrho}{2}.
+\]
+
+That killed the old mixed-only and non-twin support branches, but it still left one real microscopic ambiguity:
+
+> along the exact selected twin-support slice, which primitive coherent carriers actually dominate the quartic same-charge correction?
+
+This stage answers that by taking the primitive weight formulas from the coherent branch, pulling them back to the selected twin-support curve, and solving the surviving carrier crossovers exactly.
+
+---
+
+## Provenance
+
+This note is the moving-throat Stage-224 version of the selected-branch primitive-ranking computation carried by the anomaly-side support track.
+
+Conceptually it sits directly after:
+
+- **Stage 223**, which fixed the selected support ratio to the exact lowest-twin slice
+  \[
+  \rho_\alpha=\frac43,
+  \qquad
+  \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+  \]
+- and the carried coherent primitive-weight formulas in the same anomaly ledger.
+
+So the real job of Stage 224 is not to reopen support selection.
+It is to determine what primitive hierarchy survives **after** support selection has already collapsed.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the selected same-charge branch was already known to lie strictly inside the symmetric lowest-twin support window.
+But that still did **not** tell us whether the quartic same-charge repair should be read physically as dominated by
+
+- outgoing-scale motion `q_\Lambda`,
+- wall blocking `q_W`,
+- overlap/interference `q_Z, q_\chi`,
+- or the split-`U` companion `q_U`.
+
+The coherent primitive side had already narrowed the ambiguity substantially:
+
+- `q_\chi` is always above `q_Z`,
+- `q_Z` is always above `q_W`,
+- `q_W` is always above `|q_U|`,
+- `q_Z` is always above `q_\Lambda`,
+
+so the only unresolved comparisons were
+
+\[
+q_W \ \text{vs.}\ q_\Lambda,
+\qquad
+|q_U| \ \text{vs.}\ q_\Lambda.
+\]
+
+Stage 224 shows that, on the exact selected twin-support curve, those two comparisons are controlled by only two exact threshold coordinates in `\varrho`.
+
+---
+
+## 1. The selected branch is an exact one-parameter twin-support curve
+
+Stage 223 fixed the selected support ratio to
+
+\[
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43,
+\qquad
+C_{\rm mix}=\frac{8\Lambda(1-\epsilon_*)}{\pi^2}.
+\]
+
+So
+
+\[
+\varrho
+=
+\frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+=
+\frac{\pi^2}{16\Lambda}\cdot\frac43\cdot\frac{8\Lambda(1-\epsilon_*)}{\pi^2}
+=
+\frac{2(1-\epsilon_*)}{3}.
+\]
+
+Hence the selected branch satisfies the exact support law
+
+\[
+\boxed{
+\epsilon_* = 1-\frac{3\varrho}{2}.
+}
+\]
+
+Since `0<\epsilon_*<1`, this gives the exact selected-branch range
+
+\[
+\boxed{
+0<\varrho<\frac23.
+}
+\]
+
+Now convert to the blocking variable
+
+\[
+\sigma:=\frac{2\epsilon_*}{1-\epsilon_*}.
+\]
+
+Substituting the selected-branch law gives
+
+\[
+\sigma
+=
+\frac{2(1-3\varrho/2)}{3\varrho/2}
+=
+\boxed{
+\frac{4}{3\varrho}-2.
+}
+\]
+
+So the selected branch is not a two-parameter region in `(\epsilon_*,\varrho)`.
+It is one exact curve, and all surviving primitive carrier comparisons have to be read along that curve.
+
+---
+
+## 2. The selected curve lies strictly inside the symmetric lowest-twin window
+
+The support windows already carried forward are
+
+\[
+0<\sigma\le \frac{1}{\varrho}-2
+\quad\Longleftrightarrow\quad
+\text{mixed-only enough},
+\]
+
+\[
+\frac{1}{\varrho}-2 < \sigma \le \frac{2}{\varrho}-2
+\quad\Longleftrightarrow\quad
+\text{symmetric lowest twin enough},
+\]
+
+\[
+\sigma > \frac{2}{\varrho}-2
+\quad\Longleftrightarrow\quad
+\text{non-twin asymmetry required}.
+\]
+
+On the selected branch,
+
+\[
+\sigma_{\rm sel}=\frac{4}{3\varrho}-2.
+\]
+
+Then
+
+\[
+\sigma_{\rm sel} - \left(\frac{1}{\varrho}-2\right)
+=
+\frac{1}{3\varrho}>0,
+\]
+
+and
+
+\[
+\left(\frac{2}{\varrho}-2\right)-\sigma_{\rm sel}
+=
+\frac{2}{3\varrho}>0.
+\]
+
+So for every allowed point on the selected branch,
+
+\[
+\boxed{
+\frac{1}{\varrho}-2
+<
+\sigma_{\rm sel}
+<
+\frac{2}{\varrho}-2.
+}
+\]
+
+Therefore the selected same-charge branch lies **strictly inside** the symmetric lowest-twin regime for all `0<\varrho<2/3`.
+
+So mixed-only and non-twin branches are gone from the live closure before we even start ranking the primitive quartic carriers.
+
+---
+
+## 3. Primitive coherent weights on the selected curve
+
+On the support-carried minimum-norm coherent closure, introduce the positive normalization factor
+
+\[
+N(\epsilon_*,\beta)
+=
+5(1-\epsilon_*)^2 + 6\epsilon_*^2(1+\beta^2)>0.
+\]
+
+The primitive carrier weights are
+
+\[
+\boxed{
+w_\Lambda
+=
+\frac{\epsilon_*^2(1+\beta^2)}{N},
+}
+\]
+
+\[
+\boxed{
+w_Z
+=
+\frac{1-2\epsilon_*+(2+\beta^2)\epsilon_*^2}{N},
+}
+\]
+
+\[
+\boxed{
+w_\chi
+=
+\frac{2\bigl[1-2\epsilon_*+(2+\beta^2)\epsilon_*^2\bigr]}{N},
+}
+\]
+
+\[
+\boxed{
+w_W
+=
+\frac{\epsilon_*(1-\epsilon_*)}{N},
+}
+\]
+
+\[
+\boxed{
+|w_U|
+=
+\frac{\beta\,\epsilon_*(1-\epsilon_*)}{N}.
+}
+\]
+
+With the common coherent scalar `\Lambda_1` factored out, the primitive amplitudes are
+
+\[
+q_\Lambda=\Lambda_1 w_\Lambda,\qquad
+q_Z=\Lambda_1 w_Z,\qquad
+q_\chi=\Lambda_1 w_\chi,\qquad
+q_W=\Lambda_1 w_W,\qquad
+q_U=-\Lambda_1|w_U|.
+\]
+
+So the primitive hierarchy reduces to the ordering of the weights.
+
+### 3.1 Branch-independent identities
+
+Before imposing the selected-branch curve, the coherent branch already gives the exact identities
+
+\[
+\boxed{
+w_\chi = 2w_Z,
+}
+\]
+
+\[
+w_Z-w_\Lambda
+=
+\frac{(1-\epsilon_*)^2}{N}>0,
+\]
+
+\[
+w_Z-w_W
+=
+\frac{\beta^2\epsilon_*^2+3(\epsilon_*-1/2)^2+1/4}{N}>0,
+\]
+
+\[
+w_W-|w_U|
+=
+\frac{\epsilon_*(1-\epsilon_*)(1-\beta)}{N}>0,
+\]
+
+because the constructive coherent branch obeys
+
+\[
+\boxed{
+0<\beta<\frac{2}{11}<1.
+}
+\]
+
+So the branch-independent ranking is
+
+\[
+\boxed{
+q_\chi > q_Z > q_W > |q_U|,
+\qquad
+q_Z > q_\Lambda.
+}
+\]
+
+Therefore the only surviving comparisons are
+
+\[
+q_W \ \text{vs.}\ q_\Lambda,
+\qquad
+|q_U| \ \text{vs.}\ q_\Lambda.
+\]
+
+Those are exactly the two thresholds that remain on the selected curve.
+
+---
+
+## 4. Surviving threshold 1: `q_W` versus `q_\Lambda`
+
+The exact crossover condition from the coherent primitive side is
+
+\[
+q_W=q_\Lambda
+\iff
+\epsilon_*=\frac{1}{2+\beta^2}.
+\]
+
+Insert the selected-branch law
+
+\[
+\epsilon_* = 1-\frac{3\varrho}{2}.
+\]
+
+Then
+
+\[
+1-\frac{3\varrho}{2}=\frac{1}{2+\beta^2},
+\]
+
+so the selected-branch threshold is
+
+\[
+\boxed{
+\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)}{3(2+\beta^2)}.
+}
+\]
+
+Equivalently,
+
+\[
+\epsilon_*-\frac{1}{2+\beta^2}
+=
+\frac32\bigl(\varrho_{W\Lambda}-\varrho\bigr).
+\]
+
+So:
+
+- if
+  \[
+  0<\varrho<\varrho_{W\Lambda},
+  \]
+  then `q_\Lambda > q_W`;
+- if
+  \[
+  \varrho>\varrho_{W\Lambda},
+  \]
+  then `q_W > q_\Lambda`.
+
+A useful exact factorization on the selected curve is
+
+\[
+\boxed{
+w_\Lambda-w_W
+=
+\frac{(2-3\varrho)(2+\beta^2)(\varrho_{W\Lambda}-\varrho)}
+{18\beta^2\varrho^2-24\beta^2\varrho+8\beta^2+33\varrho^2-24\varrho+8}.
+}
+\]
+
+So the sign transfer is completely explicit:
+the only zero occurs at `\varrho=\varrho_{W\Lambda}`.
+
+---
+
+## 5. Surviving threshold 2: `|q_U|` versus `q_\Lambda`
+
+The second coherent primitive crossover is
+
+\[
+|q_U|=q_\Lambda
+\iff
+\epsilon_*=\frac{\beta}{1+\beta+\beta^2}.
+\]
+
+Again insert the selected-branch law:
+
+\[
+1-\frac{3\varrho}{2}
+=
+\frac{\beta}{1+\beta+\beta^2}.
+\]
+
+Then the second selected-branch threshold is
+
+\[
+\boxed{
+\varrho_{U\Lambda}
+=
+\frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+}
+\]
+
+Equivalently,
+
+\[
+\epsilon_*-\frac{\beta}{1+\beta+\beta^2}
+=
+\frac32\bigl(\varrho_{U\Lambda}-\varrho\bigr).
+\]
+
+So:
+
+- if
+  \[
+  \varrho<\varrho_{U\Lambda},
+  \]
+  then `q_\Lambda > |q_U|`;
+- if
+  \[
+  \varrho>\varrho_{U\Lambda},
+  \]
+  then `|q_U| > q_\Lambda`.
+
+The exact sign factorization on the selected curve is
+
+\[
+\boxed{
+w_\Lambda-|w_U|
+=
+\frac{(2-3\varrho)(1+\beta+\beta^2)(\varrho_{U\Lambda}-\varrho)}
+{18\beta^2\varrho^2-24\beta^2\varrho+8\beta^2+33\varrho^2-24\varrho+8}.
+}
+\]
+
+Again the sign transfer is explicit and controlled by one threshold only.
+
+---
+
+## 6. Ordering and numerical size of the two thresholds
+
+The thresholds are not independent.
+Their difference is
+
+\[
+\varrho_{U\Lambda}-\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)(1-\beta)}{3(1+\beta+\beta^2)(2+\beta^2)} > 0,
+\]
+
+because `0<\beta<2/11<1`.
+
+And
+
+\[
+\frac23-\varrho_{U\Lambda}
+=
+\frac{2\beta}{3(1+\beta+\beta^2)} > 0.
+\]
+
+So the exact threshold ordering on the selected branch is
+
+\[
+\boxed{
+0<\varrho_{W\Lambda}<\varrho_{U\Lambda}<\frac23.
+}
+\]
+
+This means the selected twin-support curve always splits into **three** ranking regions and never fewer.
+
+### 6.1 Numerical windows from the constructive coherent bound
+
+Because
+
+\[
+0<\beta<\frac{2}{11},
+\]
+
+the threshold windows are very narrow.
+
+First,
+
+\[
+\frac{d\varrho_{W\Lambda}}{d\beta}
+=
+\frac{4\beta}{3(\beta^2+2)^2}>0,
+\]
+
+so `\varrho_{W\Lambda}` increases across the constructive branch.
+Therefore
+
+\[
+\boxed{
+\frac13 < \varrho_{W\Lambda} < \frac{125}{369}\approx 0.338753.
+}
+\]
+
+Second,
+
+\[
+\frac{d\varrho_{U\Lambda}}{d\beta}
+=
+-\frac{2(1-\beta^2)}{3(1+\beta+\beta^2)^2}<0
+\qquad (0<\beta<1),
+\]
+
+so `\varrho_{U\Lambda}` decreases across the constructive branch.
+Therefore
+
+\[
+\boxed{
+\frac{250}{441}\approx 0.566893 < \varrho_{U\Lambda} < \frac23.
+}
+\]
+
+So the selected curve has a very clean geometry:
+
+- only the **low-`\varrho`** end allows `q_\Lambda` to beat `q_W`,
+- across the middle of the selected curve, `q_W` beats `q_\Lambda` but `q_\Lambda` still beats `|q_U|`,
+- only near the **large-`\varrho` / very weak-blocking** end does `|q_U|` overtake `q_\Lambda`.
+
+---
+
+## 7. Exact primitive ranking theorem on the selected twin-support branch
+
+Combining the branch-independent ordering
+
+\[
+q_\chi > q_Z > q_W > |q_U|,
+\qquad
+q_Z > q_\Lambda,
+\]
+
+with the two selected-branch thresholds above gives the complete selected-branch ranking.
+
+### Region I — low `\varrho`, strong blocking
+
+If
+
+\[
+0<\varrho<\varrho_{W\Lambda},
+\]
+
+then
+
+\[
+\boxed{
+q_\chi > q_Z > q_\Lambda > q_W > |q_U|.
+}
+\]
+
+### Region II — intermediate `\varrho`
+
+If
+
+\[
+\varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda},
+\]
+
+then
+
+\[
+\boxed{
+q_\chi > q_Z > q_W > q_\Lambda > |q_U|.
+}
+\]
+
+### Region III — large `\varrho`, very weak blocking
+
+If
+
+\[
+\varrho_{U\Lambda}<\varrho<\frac23,
+\]
+
+then
+
+\[
+\boxed{
+q_\chi > q_Z > q_W > |q_U| > q_\Lambda.
+}
+\]
+
+So the selected anomaly branch now has a completely explicit primitive ranking phase diagram.
+
+---
+
+## 8. Physical reading
+
+This stage is the cleanest answer the selected support branch can currently support.
+
+The quartic same-charge repair is **not** generically driven by large split-`U` motion.
+Instead:
+
+1. `q_\chi` is always the dominant primitive carrier;
+2. `q_Z` is always the second-largest carrier;
+3. `q_W` dominates over `|q_U|` everywhere;
+4. `q_\Lambda` overtakes `q_W` only in the low-`\varrho` / high-blocking corner;
+5. and `|q_U|` overtakes `q_\Lambda` only in the large-`\varrho` / very weak-blocking corner.
+
+So the selected same-charge quartic layer is generically an
+
+\[
+\text{interference / overlap / wall-blocking / outgoing-scale correction,}
+\]
+
+not a large axial split correction.
+
+That is already a strong sharpening of the old broader support-phase picture.
+
+---
+
+## 9. What this stage fixes and what it leaves open
+
+### What is now fixed
+
+- the selected branch is an exact one-parameter twin-support curve;
+- the selected branch lies strictly inside the symmetric lowest-twin support window;
+- only two primitive crossover thresholds survive on that curve;
+- the complete primitive ranking is exact in three regions.
+
+### What is still open
+
+The actual moving-throat branch is still not pinned to one unique value of `\varrho` (equivalently `\epsilon_*`) inside the selected curve.
+
+So the next honest task is now extremely narrow:
+
+> determine the actual physical position of the moving-throat branch on the selected twin-support curve.
+
+Once that single coordinate is known, the quartic same-charge hierarchy stops being a phase diagram and becomes one definite branch verdict.
+
+That is exactly what the next stage has to do.
+
+---
+
+## 10. SymPy-backed status
+
+The accompanying SymPy audit verifies:
+
+1. the exact selected-branch reduction
+   \[
+   \epsilon_* = 1-\frac{3\varrho}{2},
+   \qquad
+   \sigma = \frac{4}{3\varrho}-2,
+   \]
+2. the strict inclusion of the selected curve in the symmetric lowest-twin support window,
+3. the exact primitive weight identities
+   \[
+   w_\chi=2w_Z,
+   \qquad
+   w_Z>w_\Lambda,\ w_Z>w_W,\ w_W>|w_U|,
+   \]
+4. the exact selected-branch thresholds `\varrho_{W\Lambda}` and `\varrho_{U\Lambda}`,
+5. the factorized sign-transfer laws for `w_\Lambda-w_W` and `w_\Lambda-|w_U|`,
+6. the exact ordering
+   \[
+   0<\varrho_{W\Lambda}<\varrho_{U\Lambda}<\frac23,
+   \]
+7. the numerical threshold windows implied by `0<\beta<2/11`,
+8. and representative region checks confirming all three ranking regimes.
+
+Supporting file:
+- `moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py`
+
+=== moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 225: Actual Twin-Support Placement and Coherent Orbit-Lock Compiler
+
+## Status
+
+**Exact within the carried selected-branch support identities, the coherent local D/N placement map, and the support-blind orbit-lock packet compiler.**
+
+This stage does **not** yet solve the completed moving-throat PDE.
+It takes the exact Stage-224 selected twin-support curve and shows how an **actual coherent branch state** is placed on that curve, how the Stage-224 ranking region is therefore fixed, and how the separate orbit-lock packet is compiled directly from the physical placement variables.
+
+The outcome is that the endgame is no longer “find another ranking theorem.”
+It is:
+
+1. extract the stationary coherent placement state,
+2. place that state on the selected twin-support curve,
+3. compute the weak-axisymmetric orbit packet,
+4. and test the separate outgoing finish line.
+
+---
+
+## Purpose
+
+Stage 224 left the same-charge selected branch as the exact one-parameter twin-support curve
+
+\[
+\epsilon_* = 1-\frac{3\varrho}{2},
+\qquad
+\sigma=\frac{4}{3\varrho}-2,
+\qquad
+0<\varrho<\frac23.
+\]
+
+That solved the **parametric** support-selection problem, but it did not yet tell us where the **actual coherent moving-throat branch** sits on that curve.
+
+Stage 225 closes that gap.
+
+It also packages the separate coherent orbit-lock data in the same step, so that the reduced endgame becomes a concrete observable packet rather than a loose combination of branch variables.
+
+---
+
+## Provenance
+
+This stage is the moving-throat Stage-225 translation of Barrier Stage 025, sharpened by the later coherent-placement packet compiler.
+
+Conceptually it sits directly after:
+
+- **Stage 223**, which fixed the selected support slice through
+  \[
+  \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+  \]
+- **Stage 224**, which converted that slice into the exact twin-support curve and solved the primitive carrier ranking along it,
+- and the later coherent placement-map continuation, which rewrote the orbit packet directly in the physical placement variables
+  \[
+  (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta).
+  \]
+
+So Stage 225 is the front-end compiler that turns the selected twin-support phase diagram into an actual branch test.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the selected same-charge branch was known only as a parametric curve.
+That meant the primitive hierarchy from Stage 224 was still a **phase diagram** rather than an actual prediction.
+
+But once the actual coherent branch returns the physical placement data
+
+\[
+(\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta),
+\]
+
+the selected support point is fixed immediately by the coherent support variable
+
+\[
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+\]
+
+That collapses the remaining support-selection ambiguity to one realized coordinate on the Stage-224 curve.
+
+At the same time, the coherent orbit-lock packet is carried by the support-blind observables
+
+\[
+R_{\rm tr},\qquad R_{\rm target},\qquad \epsilon_\eta,
+\]
+
+so the two tests naturally separate:
+
+- **selected twin-support placement**, and
+- **coherent orbit lock**.
+
+That is the exact structure this note compiles.
+
+---
+
+## 1. Actual selected-twin placement
+
+On the coherent local D/N branch, the stationary placement packet is
+
+\[
+(\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta).
+\]
+
+The exact coherent reduction uses
+
+\[
+\boxed{
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+}
+\]
+
+The selected same-charge branch already carries the Stage-223 support demand
+
+\[
+\Pi_{\rm tr}=\frac43\,C_{\rm mix},
+\qquad
+C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+\]
+
+Therefore the actual selected-branch coordinate on the Stage-224 twin-support curve is
+
+\[
+\varrho_{\rm phys}
+:=
+\frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+=
+\frac{\pi^2}{16\Lambda}\cdot\frac43\cdot\frac{8\Lambda(1-\epsilon)}{\pi^2}
+=
+\boxed{
+\frac23(1-\epsilon).
+}
+\]
+
+Hence the actual selected point is
+
+\[
+\boxed{
+\epsilon_{*,\rm phys}=\epsilon,
+\qquad
+\varrho_{\rm phys}=\frac23(1-\epsilon),
+\qquad
+\sigma_{\rm phys}
+=
+\frac{4}{3\varrho_{\rm phys}}-2
+=
+\frac{2\epsilon}{1-\epsilon}.
+}
+\]
+
+So the Stage-224 support curve is no longer parametric once the completed PDE returns the coherent support pair \((\delta_U,\epsilon_W)\).
+
+---
+
+## 2. Exact threshold rewrite in the realized variable \(\epsilon\)
+
+Stage 224 found the two surviving primitive crossover thresholds
+
+\[
+\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)}{3(2+\beta^2)},
+\qquad
+\varrho_{U\Lambda}
+=
+\frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+\]
+
+Using
+\[
+\epsilon_*=1-\frac32\varrho,
+\]
+these rewrite exactly as
+
+\[
+\boxed{
+\epsilon_{W\Lambda}=\frac{1}{2+\beta^2},
+\qquad
+\epsilon_{U\Lambda}=\frac{\beta}{1+\beta+\beta^2}.
+}
+\]
+
+So the realized Stage-224 ranking region is decided directly by the actual coherent support variable \(\epsilon\):
+
+\[
+\epsilon>\epsilon_{W\Lambda}
+\iff
+0<\varrho<\varrho_{W\Lambda},
+\]
+
+\[
+\epsilon_{U\Lambda}<\epsilon<\epsilon_{W\Lambda}
+\iff
+\varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda},
+\]
+
+\[
+0<\epsilon<\epsilon_{U\Lambda}
+\iff
+\varrho_{U\Lambda}<\varrho<\frac23.
+\]
+
+So once the coherent branch returns \(\epsilon\), the Stage-224 primitive ranking is fixed with no additional support solve.
+
+---
+
+## 3. Support-lane classifier on the realized branch
+
+The coherent support classifier is still
+
+\[
+\Pi_{\rm tr}\le C_{\rm mix}
+\quad\text{mixed-only enough},
+\]
+
+\[
+C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+\quad\text{lowest symmetric twin enough},
+\]
+
+\[
+\Pi_{\rm tr}>2C_{\rm mix}
+\quad\text{non-twin asymmetry required}.
+\]
+
+But on the selected same-charge branch one has
+
+\[
+\Pi_{\rm tr}=\frac43\,C_{\rm mix},
+\]
+
+so the realized support slice is **automatically** in the lowest symmetric twin window:
+
+\[
+\boxed{
+C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+}
+\]
+
+This is exactly the support-side meaning of the selected branch:
+
+- the demand-side ratio from Stage 223 is fixed to
+  \[
+  \frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43,
+  \]
+- the support window is therefore the lowest symmetric twin sector,
+- and the physical coherent support variable \(\zeta\) is a **separate** support quantity, not another name for the Stage-223 demand ratio.
+
+Important notation firewall:
+
+- the Stage-223 reduced demand-side quantity \(\zeta_{\rm req}=1/3\) belongs to the contact/pole loading problem,
+- the physical coherent local D/N support ratio \(\zeta\) is a separate support variable,
+- and on the lowest symmetric twin branch the physical coherent support value is \(\zeta=1\).
+
+These must not be conflated.
+
+---
+
+## 4. Exact coherent placement map and reduced-state bridge
+
+The direct coherent-branch observables are
+
+\[
+\boxed{
+R_{\rm tr}
+=
+\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
+}
+\]
+
+\[
+\boxed{
+R_{\rm target}
+=
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+}
+\]
+
+together with \(\epsilon_\eta\).
+
+A useful exact bridge is
+
+\[
+\Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5},
+\qquad
+\widehat Z_W = Z_W\frac{\Lambda_0}{\Lambda}.
+\]
+
+Then
+
+\[
+R_{\rm target}
+=
+\Lambda_0\frac{(1-\epsilon_\eta)(1-\epsilon)^2}{\widehat Z_W(1+\chi_0)^2},
+\]
+
+so the physical placement-map version and the older reduced-state version are exactly equivalent.
+
+Most importantly, the support ratio \(\zeta\) does **not** enter
+
+\[
+\widehat Z_W,\qquad
+\epsilon,\qquad
+R_{\rm tr},\qquad
+R_{\rm target}.
+\]
+
+So the coherent support ratio is absent from the extracted orbit state.
+
+This is the first exact support-blindness theorem of the stage.
+
+---
+
+## 5. Exact finite orbit packet and infinitesimal compiler
+
+The finite coherent orbit packet is the exact quotient packet in the physical placement variables.
+
+Let the reference branch state be
+
+\[
+(\chi_{0,\rm ref},\delta_{U,\rm ref},Z_{W,\rm ref},\epsilon_{W,\rm ref},
+\epsilon_{\eta,\rm ref},\Lambda_{\rm ref}),
+\]
+
+and keep the carried coherent coefficients \(E_*,F_*\).
+Then
+
+\[
+\boxed{
+q_{\rm tr}
+=
+(1+\delta_{U,*})\ln\frac{\chi_0}{\chi_{0,\rm ref}}
++
+(1+\chi_{0,*})\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+
+\[
+\boxed{
+q_{\rm nt}
+=
+\ln\frac{Z_W}{Z_{W,\rm ref}}
+-
+\ln\frac{\Lambda}{\Lambda_{\rm ref}}
++
+E_*\ln\frac{\epsilon_W}{\epsilon_{W,\rm ref}}
+-
+F_*\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+}
+\]
+
+\[
+\boxed{
+q_\eta = \ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+}
+\]
+
+So the only change from the older reduced-state language is the exact substitution
+
+\[
+\ln \widehat Z_W = \ln Z_W - \ln\Lambda + \ln\Lambda_0,
+\]
+
+with the constant \(\Lambda_0\) dropping out of the quotient packet.
+
+### 5.1 Infinitesimal coherent packet
+
+Let the infinitesimal coherent placement drifts be
+
+\[
+(d\ln\chi_0,\,
+ d\ln\delta_U,\,
+ d\ln Z_W,\,
+ d\ln\epsilon_W,\,
+ d\ln\epsilon_\eta,\,
+ d\ln\Lambda).
+\]
+
+Then
+
+\[
+\boxed{
+\Sigma_{\rm tr}
+=
+(1+\delta_{U,*})\,d\ln\chi_0
++
+(1+\chi_{0,*})\,d\ln\delta_U,
+}
+\]
+
+\[
+\boxed{
+\Sigma_{\rm nt}
+=
+(d\ln Z_W-d\ln\Lambda)
++
+E_*\,d\ln\epsilon_W
+-
+F_*\,d\ln\delta_U,
+}
+\]
+
+\[
+\boxed{
+\Sigma_\eta = d\ln\epsilon_\eta.
+}
+\]
+
+The physical defect packet is the exact triangular normal form
+
+\[
+\Theta_1=-C_{{\rm tr},*}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{{\rm tr},*}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1=-\Xi_1-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\Sigma_\eta,
+\]
+
+with the carried coherent coefficients
+
+\[
+C_{{\rm tr},*}
+=
+\frac{\chi_{0,*}\delta_{U,*}}
+{(1+\chi_{0,*})(1+\delta_{U,*})(1+\chi_{0,*}+\delta_{U,*})},
+\]
+
+\[
+A_{{\rm tr},*}
+=
+\frac{2\chi_{0,*}}
+{(1+\chi_{0,*})(1+\delta_{U,*})}.
+\]
+
+### 5.2 Direct-observable drift form
+
+The strongest exact bridge in this stage is the direct-observable compiler
+
+\[
+\boxed{
+\Theta_1=d\ln R_{\rm tr},
+}
+\]
+
+\[
+\boxed{
+d\ln\epsilon
+=
+d\ln\epsilon_W
+-
+\frac{2\delta_U}{(1+\delta_U)(11+9\delta_U)}\,d\ln\delta_U,
+}
+\]
+
+\[
+\boxed{
+d\ln R_{\rm target}
+=
+d\ln\Lambda-d\ln Z_W
+-
+\frac{2\chi_0}{1+\chi_0}d\ln\chi_0
+-
+\frac{\epsilon_\eta}{1-\epsilon_\eta}d\ln\epsilon_\eta
+-
+\frac{2\epsilon}{1-\epsilon}d\ln\epsilon,
+}
+\]
+
+and therefore
+
+\[
+\boxed{
+\Xi_1
+=
+-d\ln R_{\rm target}
+-
+\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,d\ln\epsilon_\eta
+=
+-d\ln\Lambda+d\ln Z_W
++
+\frac{2\chi_0}{1+\chi_0}d\ln\chi_0
++
+\frac{2\epsilon}{1-\epsilon}d\ln\epsilon.
+}
+\]
+
+So \(\Xi_1\) is explicitly blind to both the support lane \(\zeta\) and the selected-branch demand variable \(\epsilon_\eta\).
+
+---
+
+## 6. Exact two-packet split and the coherent orbit-lock theorem
+
+The coherent branch now separates exactly into two packets.
+
+### 6.1 Orbit-lock packet
+
+Finite packet:
+
+\[
+(q_{\rm tr},q_{\rm nt},q_\eta).
+\]
+
+Infinitesimal packet:
+
+\[
+(\Theta_1,\Xi_1,\mathcal R_1).
+\]
+
+This packet depends only on
+
+\[
+(\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda),
+\]
+
+and is exactly blind to \(\zeta\).
+
+### 6.2 Support / normalization packet
+
+The support packet is
+
+\[
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right),
+\]
+
+\[
+M_{\rm mix}
+=
+\frac{8Z_W(1+\chi_0)^2}{\pi^2(1-\epsilon_\eta)(1-\epsilon)},
+\]
+
+\[
+S(\zeta;\epsilon)
+=
+1+
+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon},
+\qquad
+M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
+\]
+
+\[
+R_{\rm target}
+=
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
+\]
+
+The mixed-only product law is
+
+\[
+\boxed{
+R_{\rm target}M_{\rm mix}
+=
+\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+}
+\]
+
+The exact separation statement is:
+
+- \(\zeta\) changes only the available support baseline through \(S(\zeta;\epsilon)\),
+- \(\zeta\) leaves the finite orbit packet unchanged,
+- \(\zeta\) leaves the infinitesimal orbit defect packet unchanged.
+
+So support compensation cannot rescue orbit-lock failure, and orbit lock does not determine support enhancement.
+
+### 6.3 Coherent orbit-lock theorem
+
+The actual coherent local D/N branch satisfies orbit lock iff
+
+\[
+\boxed{
+q_{\rm tr}=q_{\rm nt}=q_\eta=0,
+}
+\]
+
+equivalently iff
+
+\[
+\boxed{
+d\ln R_{\rm tr}=0,
+\qquad
+d\ln R_{\rm target}=0,
+\qquad
+d\ln\epsilon_\eta=0.
+}
+\]
+
+The outgoing finish line remains separate:
+
+\[
+\boxed{
+N_Q=1,
+\qquad
+\text{or equivalently }\chi_Q=1
+\text{ on the natural source-map branch.}
+}
+\]
+
+So the actual remaining moving-throat endgame is exactly:
+
+1. extract the stationary coherent placement state,
+2. compute the weak-axisymmetric tangent,
+3. place the branch on the selected twin-support curve via \(\epsilon\),
+4. evaluate
+   \[
+   d\ln R_{\rm tr},\qquad
+   d\ln R_{\rm target},\qquad
+   d\ln\epsilon_\eta,\qquad
+   N_Q-1.
+   \]
+
+---
+
+## 7. Practical Stage-225 output packet
+
+The smallest exact front-end packet to return from the completed moving-throat branch is
+
+\[
+\boxed{
+\Bigl(
+\epsilon,\,
+\varrho_{\rm phys},\,
+\sigma_{\rm phys},\,
+\text{ranking region},\,
+R_{\rm tr},\,
+R_{\rm target},\,
+\epsilon_\eta,\,
+d\ln R_{\rm tr},\,
+d\ln R_{\rm target},\,
+d\ln\epsilon_\eta,\,
+N_Q-1
+\Bigr).
+}
+\]
+
+If the support-compensation lane is being tracked separately, the smallest exact support packet is
+
+\[
+\boxed{
+\Bigl(
+\zeta,\,
+M_{\rm mix},\,
+S(\zeta;\epsilon),\,
+M_{\rm tr}
+\Bigr).
+}
+\]
+
+So Stage 225 turns the old support phase diagram and orbit-lock language into a concrete branch-evaluation checklist.
+
+---
+
+## 8. What this stage achieves
+
+Stage 225 closes three specific gaps left open by Stage 224.
+
+### 8.1 It places the actual branch on the Stage-224 support curve
+
+The selected same-charge point is no longer a free parameter once the coherent branch returns \((\delta_U,\epsilon_W)\).
+It is fixed by
+
+\[
+\varrho_{\rm phys}=\frac23(1-\epsilon),
+\qquad
+\sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}.
+\]
+
+### 8.2 It compiles the orbit packet directly from physical placement variables
+
+The orbit-lock packet no longer needs the full microscopic kernel tuple.
+It is already determined by
+
+\[
+(\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda),
+\]
+
+with exact finite and infinitesimal compilers.
+
+### 8.3 It rigorously separates orbit lock from support compensation
+
+The support variable \(\zeta\) affects only
+
+\[
+S(\zeta;\epsilon),\qquad M_{\rm tr},
+\]
+
+and does **not** enter
+
+\[
+R_{\rm tr},\qquad R_{\rm target},\qquad \epsilon_\eta,
+\qquad
+(q_{\rm tr},q_{\rm nt},q_\eta),
+\qquad
+(\Theta_1,\Xi_1,\mathcal R_1).
+\]
+
+So the completed PDE has to satisfy the orbit-lock packet and the support packet separately on the same physical branch.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies the exact algebra used here:
+
+- the actual selected-branch placement identity
+  \[
+  \varrho_{\rm phys}=\frac23(1-\epsilon),
+  \]
+- the twin-support rewrite
+  \[
+  \sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}
+  =\frac{4}{3\varrho_{\rm phys}}-2,
+  \]
+- the threshold rewrite
+  \[
+  \epsilon_{W\Lambda}=\frac{1}{2+\beta^2},
+  \qquad
+  \epsilon_{U\Lambda}=\frac{\beta}{1+\beta+\beta^2},
+  \]
+- strict inclusion of the selected branch in the lowest symmetric twin window,
+- the reduced-state bridge
+  \[
+  \widehat Z_W = Z_W\Lambda_0/\Lambda,
+  \qquad
+  R_{\rm target}
+  =
+  \Lambda_0\frac{(1-\epsilon_\eta)(1-\epsilon)^2}{\widehat Z_W(1+\chi_0)^2},
+  \]
+- exact support-blindness of
+  \[
+  \epsilon,\quad R_{\rm tr},\quad R_{\rm target},
+  \quad q_{\rm tr},\quad q_{\rm nt},\quad q_\eta,
+  \]
+  with respect to \(\zeta\),
+- the infinitesimal compilers for
+  \[
+  d\ln\epsilon,\quad d\ln R_{\rm tr},\quad d\ln R_{\rm target},
+  \]
+- the direct-observable identity for \(\Xi_1\),
+- and the exact two-packet split
+  \[
+  \partial_\zeta R_{\rm tr}
+  =
+  \partial_\zeta R_{\rm target}
+  =
+  \partial_\zeta \epsilon
+  = 0,
+  \qquad
+  \partial_\zeta M_{\rm tr}
+  =
+  M_{\rm mix}\frac{1-\epsilon}{(1-\zeta\epsilon)^2}.
+  \]
+
+Supporting file:
+- `moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py`
+
+=== moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 226: Relaxed-Constraint Branch Declaration and Short-Range Open-System Compiler
+
+## Status
+
+**Exact within the carried Stage-225 placement/orbit packet, the exact projected leakage identity, the one-port short-range same-charge kernel verdict, and the declared reduced non-rigid / compensated-source closure used to translate the barrier session into the PDE stack.**
+
+This stage does **not** yet compute the lowered barrier itself.
+It declares the first honest post-Stage-225 branch family in which three standard-recovery suppressions are lifted in a controlled way:
+
+1. transverse-current suppression `J^w \approx 0`,
+2. rigid-mouth factorization / orbit slice `U = V = 0`,
+3. positive-source Family-1 mouth/core closure.
+
+The main outcome is that the Session-I barrier corridor now enters the derivation stack as a **codimension-three lift** of the Stage-225 front end, while the same-charge long-range verdict remains unchanged:
+
+- no new static long-range attractive law,
+- no new linear dynamic kernel class,
+- only short-range/open-system reshaping of the already-carried one-port families.
+
+---
+
+## Purpose
+
+Stage 225 ended with a concrete front-end branch test:
+
+- actual selected twin-support placement,
+- actual coherent orbit packet,
+- separate outgoing finish line.
+
+But the barrier session deliberately stepped **outside** the strict standard-recovery slice by relaxing three assumptions that the compact program had been carrying as part of the far-field / rigid-mouth / positive-source corridor.
+
+So the next derivation move is not yet another barrier formula.
+It is a branch declaration.
+
+Stage 226 therefore does four things:
+
+1. fixes the precise **base slice** inherited from Stage 225,
+2. declares the three lifted closure lanes,
+3. proves the exact **recovery map** back to the Stage-225 slice,
+4. and hard-wires the crucial short-range theorem so the relaxed branch cannot later be misread as a hidden long-range same-charge force.
+
+---
+
+## Provenance
+
+This stage is the moving-throat translation of the first barrier-session stress test into the PDE program.
+
+Conceptually it sits directly after:
+
+- **Stage 225**, which turned selected support placement and coherent orbit lock into an actual branch packet,
+- the compact same-charge verdict, which already narrowed the one-port mixed sector to short-range static families and resonant short-range linear dynamics,
+- and the barrier-session Section I, which relaxed `J^w \approx 0`, rigid-mouth factorization, and positive-source closure simultaneously.
+
+So Stage 226 is the declaration step that makes those relaxations part of the formal derivation tree rather than a side calculation.
+
+---
+
+## 0. Why this stage is needed
+
+Without this step, the barrier-session branch sits outside the audited PDE stack in an awkward way.
+The compact program already says that the actual same-charge bottleneck is now the front-end packet
+
+\[
+(\Delta_{\rm norm},\Xi_1),
+\qquad
+U = V = 0,
+\qquad
+\text{selected twin-support placement},
+\]
+
+and that the mixed channels
+
+\[
+A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a
+\]
+
+are suppressed only in the strict far-field brane reduction, not deleted from the ontology.
+
+So if we want to compare the standard branch to the relaxed session branch honestly, we need one intermediate theorem saying:
+
+> what is being lifted, what stays fixed, and what does **not** change about the same-charge kernel class?
+
+That is exactly the job of Stage 226.
+
+---
+
+## 1. Carried base branch from Stage 225
+
+Stage 225 returns the concrete front-end packet
+
+\[
+\mathcal P_{225}
+=
+\Bigl(
+\epsilon,
+\varrho_{\rm phys},
+\sigma_{\rm phys},
+\text{ranking region},
+R_{\rm tr},
+R_{\rm target},
+\epsilon_\eta,
+ d\ln R_{\rm tr},
+ d\ln R_{\rm target},
+ d\ln \epsilon_\eta,
+N_Q-1
+\Bigr),
+\]
+
+with separate support packet
+
+\[
+\mathcal S_{225}
+=
+\bigl(
+\zeta,
+M_{\rm mix},
+S(\zeta;\epsilon),
+M_{\rm tr}
+\bigr).
+\]
+
+The compact rigid-mouth normal form then identifies the physical post-static variables
+
+\[
+U := \ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V := \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+\]
+
+and on the strict rigid-mouth orbit slice one asks for
+
+\[
+U = 0,
+\qquad
+V = 0.
+\]
+
+For the present stage, the standard-recovery slice is therefore taken to be
+
+\[
+\boxed{
+\mathfrak B_{\rm std}
+:=
+\Bigl\{
+J^w = 0,
+\ U = 0,
+\ V = 0,
+\ \varsigma(z) \equiv 1
+\Bigr\}
+\subset
+\bigl(\mathcal P_{225},\mathcal S_{225}\bigr).
+}
+\]
+
+Here `\varsigma(z)` is the Session-I mouth/core source profile.
+It is written with a new symbol on purpose so it is **not** confused with the Stage-225 selected-support coordinate `\sigma_{\rm phys}`.
+
+So Stage 226 starts from the precise standard slice
+
+- no transverse leakage,
+- rigid-mouth orbit lock,
+- uncompensated positive-source mouth/core input.
+
+---
+
+## 2. The three lifted closure lanes
+
+We now declare three independent reduced lifts.
+
+### 2.1 Open-system leakage/work lane
+
+The exact projected continuity identity already gives
+
+\[
+S_{\rm leak}
+=
+-\bigl[W(w)j^w\bigr]_{-\infty}^{+\infty}
++
+\int_{-\infty}^{+\infty} W'(w)j^w(w)\,dw.
+\]
+
+To make the lift concrete, choose the normalized Gaussian projector
+
+\[
+W(w)=\frac{e^{-w^2}}{\sqrt\pi}
+\]
+
+and the first parity-odd reduced transverse current profile
+
+\[
+j^w(w)=\ell_w j_0\,w e^{-w^2}.
+\]
+
+Then the boundary term vanishes and the exact leakage source is
+
+\[
+\boxed{
+S_{\rm leak}
+=
+\int_{-\infty}^{+\infty}W'(w)j^w(w)\,dw
+=
+-\frac{\sqrt2}{4}\,\ell_w j_0.
+}
+\]
+
+So the leakage channel is nonzero as soon as the transverse-current lift `\ell_w` is turned on.
+
+To accompany it, take the first parity-matched transverse electric field profile
+
+\[
+E_w(w)=E_0\,w e^{-w^2}.
+\]
+
+Then the reduced scalar-photon work channel becomes
+
+\[
+\boxed{
+\mathcal W_w
+:=
+\int_{-\infty}^{+\infty} j^w(w)E_w(w)\,dw
+=
+\frac{\sqrt{2\pi}}{8}\,\ell_w j_0 E_0.
+}
+\]
+
+So the open-system lift is carried by the exact pair
+
+\[
+\boxed{
+L_w := \bigl(S_{\rm leak},\mathcal W_w\bigr),
+}
+\]
+
+with both components vanishing on `\ell_w = 0`.
+
+The sign of `S_{\rm leak}` depends on the orientation of the chosen odd profile.
+Its magnitude is the physically relevant point here: the branch is no longer closed once `J^w` is allowed.
+
+---
+
+### 2.2 Non-rigid mouth / dressing lane
+
+The compact program already diagonalized the strict rigid-mouth packet in the physical logarithmic variables `(U,V)`.
+To declare the first non-rigid lift, use the minimal reduced free energy
+
+\[
+\mathcal F_{UV}(U,V)
+=
+\frac12 k_U U^2
++
+\frac12 k_V V^2
+-
+\chi_\lambda U V
+-
+f_U U.
+\]
+
+Here:
+
+- `k_U > 0` is the transfer-shape stiffness,
+- `k_V > 0` is the dressing-leg stiffness,
+- `\chi_\lambda` is the first non-rigid mouth coupling,
+- `f_U` is the reduced same-charge forcing on the transfer leg.
+
+The stationarity equations are
+
+\[
+k_U U - \chi_\lambda V = f_U,
+\qquad
+k_V V - \chi_\lambda U = 0.
+\]
+
+Solving exactly gives
+
+\[
+\boxed{
+U = \frac{k_V f_U}{k_U k_V - \chi_\lambda^2},
+\qquad
+V = \frac{\chi_\lambda f_U}{k_U k_V - \chi_\lambda^2}.
+}
+\]
+
+So the rigid/factorized and non-rigid cases separate sharply:
+
+- if `f_U = 0`, then `U = V = 0`,
+- if `f_U \neq 0` and `\chi_\lambda = 0`, then `V = 0`,
+- if `f_U \neq 0` and `\chi_\lambda \neq 0`, then `V \neq 0` exactly.
+
+The exact response ratio is
+
+\[
+\boxed{
+\frac{V}{U} = \frac{\chi_\lambda}{k_V}.
+}
+\]
+
+So the dressing leg is activated linearly once rigid-mouth factorization is lifted.
+
+The stability Hessian is
+
+\[
+H_{UV}=
+\begin{pmatrix}
+k_U & -\chi_\lambda \\
+-\chi_\lambda & k_V
+\end{pmatrix},
+\qquad
+\det H_{UV}=k_U k_V - \chi_\lambda^2.
+\]
+
+Hence the reduced non-rigid branch is admissible precisely when
+
+\[
+\boxed{k_U k_V - \chi_\lambda^2 > 0.}
+\]
+
+On that admissible branch, the induced drain term is
+
+\[
+\boxed{
+\mathcal D_{UV}:=\chi_\lambda U V
+=
+\frac{\chi_\lambda^2 k_V f_U^2}{(k_U k_V - \chi_\lambda^2)^2}
+\ge 0.
+}
+\]
+
+So the minimal reduced closure already reproduces the qualitative Session-I statement:
+
+> once the rigid-mouth factorization is broken, the dressing leg is no longer inert and the transfer forcing drains positive energy into it.
+
+At infinitesimal order, this lane is the relaxed continuation of the compact transfer-shape scalar:
+
+\[
+\Xi_1 = \delta U.
+\]
+
+So the later explicit `\Xi_1` bookkeeping belongs to the same lifted lane.
+
+---
+
+### 2.3 Compensated sign-changing source lane
+
+To lift the positive-source Family-1 corridor without changing the mean source strength, take the minimal compensated profile
+
+\[
+\boxed{
+\varsigma(z)=1+a\cos(\pi z)+b\cos(2\pi z),
+\qquad z\in[0,1].
+}
+\]
+
+Its mean is exactly preserved:
+
+\[
+\boxed{
+\int_0^1 \varsigma(z)\,dz = 1.
+}
+\]
+
+So this branch changes source *shape* without changing total normalized source weight.
+
+Now write
+
+\[
+y := \cos(\pi z),
+\qquad y\in[-1,1],
+\]
+
+so that
+
+\[
+\cos(2\pi z)=2y^2-1.
+\]
+
+Then the compensated source becomes the exact quadratic
+
+\[
+\boxed{
+\varsigma(y)=1-b+a y+2b y^2,
+\qquad y\in[-1,1].
+}
+\]
+
+The interior stationary point is
+
+\[
+\boxed{
+y_*=-\frac{a}{4b}}
+\]
+
+when `b \neq 0`, and the corresponding vertex value is
+
+\[
+\boxed{
+\varsigma(y_*) = 1-b-\frac{a^2}{8b}.
+}
+\]
+
+So a sign-changing compensated branch exists whenever the quadratic takes a negative value somewhere on `[-1,1]`.
+In particular:
+
+- the boundary candidates are
+  \[
+  \varsigma(1)=1+a+b,
+  \qquad
+  \varsigma(-1)=1-a+b,
+  \]
+- if `b>0` and `|a|\le 4b`, the interior minimum is exact and sign change occurs whenever
+  \[
+  1-b-\frac{a^2}{8b}<0.
+  \]
+
+So the compensated-source lane is not a hand-waving statement.
+It is an explicit zero-mean shape deformation with an exact sign-change test.
+
+We package this lift as
+
+\[
+\boxed{
+L_\varsigma := \bigl(\varsigma(z),\ \varsigma_{\min},\ \mathrm{signchg}\bigr),
+}
+\]
+
+where `signchg` is the boolean condition `\varsigma_{\min}<0`.
+
+---
+
+## 3. Exact relaxed-branch declaration
+
+We can now declare the relaxed family directly.
+
+\[
+\boxed{
+\mathfrak B_{226}^{\rm relax}
+:=
+\Bigl\{
+(\mathcal P_{225},\mathcal S_{225});
+L_w,\ L_{UV},\ L_\varsigma
+\Bigr\}
+}
+\]
+
+with the explicit lifted lanes
+
+\[
+L_w = (S_{\rm leak},\mathcal W_w),
+\qquad
+L_{UV}=(U,V,\mathcal D_{UV}),
+\qquad
+L_\varsigma=(\varsigma,\varsigma_{\min},\mathrm{signchg}).
+\]
+
+So the relaxed branch is **not** a replacement for the Stage-225 packet.
+It is an **augmentation** of that packet by three new channels:
+
+1. open-system export,
+2. non-rigid mouth/dressing response,
+3. compensated source-shape response.
+
+The selected twin-support placement packet from Stage 225 is carried through unchanged.
+The relaxed branch only adds new reduced lanes around it.
+
+---
+
+## 4. Exact recovery map back to the Stage-225 slice
+
+The Stage-225/compact front end is recovered on the codimension-three slice
+
+\[
+\boxed{
+\ell_w = 0,
+\qquad
+f_U = 0,
+\qquad
+a = b = 0.
+}
+\]
+
+Indeed:
+
+\[
+\ell_w=0
+\implies
+S_{\rm leak}=0,
+\quad
+\mathcal W_w=0,
+\]
+
+\[
+f_U=0
+\implies
+U=0,
+\quad
+V=0,
+\quad
+\mathcal D_{UV}=0,
+\]
+
+\[
+a=b=0
+\implies
+\varsigma(z)\equiv 1,
+\quad
+\varsigma_{\min}=1,
+\quad
+\mathrm{signchg}=\mathrm{False}.
+\]
+
+So the relaxed branch declaration is honest in both directions:
+
+- it extends the carried front end,
+- and it reduces exactly back to the Stage-225 standard-recovery slice.
+
+---
+
+## 5. Short-range kernel-span theorem for the lifted branch
+
+This is the most important structural statement of the stage.
+
+The lifted branch is **not** allowed to change the already-audited same-charge long-range verdict.
+So we now record that theorem directly in the derivation stack.
+
+Take the same primitive reduced source profiles already isolated by the one-port same-charge audit:
+
+\[
+\mathcal S_Q(x)=\frac{1}{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+\qquad \kappa>0.
+\]
+
+For the one-port static mixed bundle, the exact conservative correction is of the form
+
+\[
+\boxed{
+\delta V_{\rm stat}(x)
+=
+-\frac12\left[
+\frac{\mathcal C_6}{x^6}
++
+2\mathcal C_4\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2\frac{e^{-4\kappa x}}{x^2}
+\right],
+}
+\]
+
+and the linear monochromatic dynamic bundle keeps the **same** spatial span with frequency-dependent coefficients,
+
+\[
+\boxed{
+\Re\,\mathfrak V_{\rm dyn}(x,\omega)
+=
+-\frac12\left[
+\frac{\mathcal C_6(\omega)}{x^6}
++
+2\mathcal C_4(\omega)\frac{e^{-2\kappa x}}{x^4}
++
+\mathcal C_2(\omega)\frac{e^{-4\kappa x}}{x^2}
+\right].
+}
+\]
+
+Therefore both the static and the linear dynamic conservative corrections lie in the exact kernel span
+
+\[
+\boxed{
+\mathcal K_{\rm SR}
+=
+\mathrm{span}\!\left\{
+\frac{1}{x^6},
+\frac{e^{-2\kappa x}}{x^4},
+\frac{e^{-4\kappa x}}{x^2}
+\right\}.
+}
+\]
+
+In particular,
+
+\[
+\boxed{
+\lim_{x\to\infty} x\,\delta V_{\rm stat}(x)=0,
+\qquad
+\lim_{x\to\infty} x\,\Re\mathfrak V_{\rm dyn}(x,\omega)=0.
+}
+\]
+
+So the relaxed branch declaration hard-wires the following invariant:
+
+> turning on `J^w`, turning on non-rigid `U/V` response, or allowing compensated sign-changing source data does **not** adjoin a new `1/x`-type or Yukawa-`1/x` same-charge attraction.
+
+What the lift can do is only:
+
+1. change the coefficients of the already-carried short-range families,
+2. open energy-export channels through `S_{\rm leak}` and `\mathcal W_w`,
+3. move energy between the transfer and dressing legs through `\mathcal D_{UV}`.
+
+That is the exact short-range/open-system meaning of the Session-I corridor.
+
+---
+
+## 6. Practical Stage-226 output packet
+
+The smallest reduced packet that Stage 226 asks the later derivation tree to carry is
+
+\[
+\boxed{
+\mathcal P_{226}^{\rm relax}
+=
+\Bigl(
+\mathcal P_{225};
+S_{\rm leak},
+\mathcal W_w,
+U,
+V,
+\mathcal D_{UV},
+\varsigma(z),
+\varsigma_{\min},
+\mathrm{signchg}
+\Bigr).
+}
+\]
+
+If the linear weak-axisymmetric packet is being used, then `\Xi_1` is simply the infinitesimal transfer-shape component of the same `U` lane.
+
+So the correct reading of the relaxed branch is:
+
+- Stage 225 still fixes the **placement/orbit/outgoing** front end,
+- Stage 226 adds the first **open-system / non-rigid / compensated-source** lanes,
+- and the short-range kernel class remains frozen.
+
+---
+
+## 7. What this stage achieves
+
+Stage 226 closes four concrete bookkeeping gaps.
+
+### 7.1 It imports the Session-I relaxations without breaking the compact firewall
+
+The three relaxed assumptions are now represented directly inside the derivation stack:
+
+- `J^w \neq 0`,
+- non-rigid `(U,V)` dynamics,
+- compensated sign-changing `\varsigma(z)`.
+
+### 7.2 It proves exact recovery of the carried Stage-225 slice
+
+The relaxed family is not a different theory.
+It is a codimension-three lift of the already-carried selected-support / orbit packet.
+
+### 7.3 It records the reduced energetic meaning of the new lanes
+
+- `S_{\rm leak}` and `\mathcal W_w` are the open-system export channels,
+- `\mathcal D_{UV}` is the transfer-to-dressing drain,
+- `\varsigma(z)` is a zero-mean source-shape deformation that can change sign.
+
+### 7.4 It hard-wires the short-range theorem
+
+This is the key conceptual safeguard.
+The relaxed same-charge branch is now formally declared to be a **short-range/open-system bypass** branch.
+It is **not** allowed to be reinterpreted later as a hidden long-range attractive law.
+
+---
+
+## 8. Immediate next derivation step
+
+The next honest continuation is now sharply defined.
+
+Stage 227 should take the newly declared open-system lane and compile the reduced observables that actually turn on once `J^w` is allowed:
+
+\[
+S_{\rm leak},
+\qquad
+J^w E_w,
+\qquad
+\text{and their pullback into the same selected placement/orbit packet.}
+\]
+
+That is the right first quantitative continuation of the relaxed branch.
+Only after that does it make sense to fold in the full non-rigid mouth packet and the compensated source compiler.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies all of the algebra used here:
+
+1. the exact Gaussian/odd-profile leakage reduction
+   \[
+   S_{\rm leak}=-\frac{\sqrt2}{4}\,\ell_w j_0,
+   \]
+2. the exact Gaussian/odd-profile work channel
+   \[
+   \mathcal W_w=\frac{\sqrt{2\pi}}{8}\,\ell_w j_0 E_0,
+   \]
+3. the exact non-rigid mouth response
+   \[
+   U = \frac{k_V f_U}{k_Uk_V-\chi_\lambda^2},
+   \qquad
+   V = \frac{\chi_\lambda f_U}{k_Uk_V-\chi_\lambda^2},
+   \]
+4. the exact drain identity
+   \[
+   \mathcal D_{UV}=\chi_\lambda U V
+   =
+   \frac{\chi_\lambda^2 k_V f_U^2}{(k_Uk_V-\chi_\lambda^2)^2},
+   \]
+5. the exact compensated-source normalization
+   \[
+   \int_0^1 \varsigma(z)\,dz = 1,
+   \]
+6. the exact quadratic rewrite
+   \[
+   \varsigma(y)=1-b+a y+2b y^2,
+   \qquad y=\cos(\pi z),
+   \]
+7. the interior stationary point and candidate minimum
+   \[
+   y_*=-\frac{a}{4b},
+   \qquad
+   \varsigma(y_*)=1-b-\frac{a^2}{8b},
+   \]
+8. the exact standard-recovery slice
+   \[
+   \ell_w=0,
+   \quad f_U=0,
+   \quad a=b=0
+   \implies
+   S_{\rm leak}=\mathcal W_w=U=V=\mathcal D_{UV}=0,
+   \quad \varsigma\equiv1,
+   \]
+9. and the strict short-range limits
+   \[
+   \lim_{x\to\infty}x\,\delta V_{\rm stat}(x)=0,
+   \qquad
+   \lim_{x\to\infty}x\,\Re\mathfrak V_{\rm dyn}(x,\omega)=0.
+   \]
+
+Supporting file:
+- `moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py`
+
+=== moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 227: Selected-Branch Leakage and Scalar-Photon Work Compiler
+
+## Status
+
+**Exact within the carried Stage-226 relaxed open-system branch declaration, the exact projected continuity / EM energy identities, the exact Stage-225 selected-support pullback, and the declared one-mode scalar-photon amplitude closure used to translate Session I into the PDE stack.**
+
+This stage does **not** yet lower the barrier by itself.
+It compiles the first two observables that actually switch on once the `J^w \neq 0` lane is allowed:
+
+1. the projected leakage source `S_{\rm leak}`,
+2. the scalar-photon work channel `J^w E_w` in the reduced one-mode sense used by the barrier session.
+
+The main outcome is that these observables are now attached directly to the same **selected-support packet** that Stage 225 already fixed:
+
+- they pull back through the selected support demand `\Pi_{\rm tr}`,
+- they depend only on the support-side variables `(\Lambda,\epsilon)` or `(\Lambda,\varrho)`,
+- and they remain separate from the orbit-lock packet.
+
+---
+
+## Purpose
+
+Stage 226 declared the open-system branch family but stopped at the declaration step.
+It told us that once `J^w` is no longer suppressed, the PDE stack must carry explicit leakage and work observables, but it did not yet compile those observables onto the actual Stage-225 selected branch.
+
+Stage 227 closes that gap.
+
+It does five things:
+
+1. restates the exact parent-theory identities that make `S_{\rm leak}` and `J^wE_w` legitimate observables,
+2. fixes a minimal odd Gaussian scalar-photon profile that gives an exact leakage compiler,
+3. defines the exact one-mode bulk work scalar and the reduced Session-I work scalar,
+4. pulls the amplitude back through the actual selected-support demand `\Pi_{\rm tr}` from Stage 225,
+5. proves that the whole leakage/work lane is **support-side**, not orbit-side.
+
+So this stage is the first quantitative continuation of the relaxed branch declaration.
+
+---
+
+## Provenance
+
+This stage sits directly after:
+
+- **Stage 225**, which fixed the actual selected-support packet and separated support placement from orbit lock,
+- **Stage 226**, which declared the open-system lift as a codimension-three extension of the standard branch,
+- the exact projection and mixed-sector energy identities from the parent 4D / plasma stack,
+- and the Session-I barrier run, which tracked explicit `S_{\rm leak}` and `J^wE_w` channels once `J^w` was allowed.
+
+So Stage 227 is the first point where the relaxed open-system lane is no longer just “allowed.”
+It is explicitly compiled into the moving-throat derivation tree.
+
+---
+
+## 0. Why this stage is needed
+
+The compact program already distinguishes two front-end packets:
+
+1. the **selected-support** packet,
+2. the **orbit-lock** packet.
+
+Stage 225 made that split concrete.
+It showed that the selected support point is fixed by the coherent support variables, while the coherent orbit-lock test is carried by the separate support-blind orbit packet.
+
+Stage 226 then declared the relaxed branch but did not yet say where the new leakage/work observables attach.
+
+That point matters.
+If these observables are really part of the same same-charge front end, then they should not float freely.
+They should either:
+
+- attach to the selected-support packet,
+- attach to the orbit packet,
+- or mix the two.
+
+Stage 227 proves that, in the first honest reduced compiler, they attach to the **selected-support packet alone**.
+
+---
+
+## 1. Exact parent-theory identities that turn on when `J^w` is allowed
+
+The exact projected continuity identity already gives
+
+\[
+\boxed{
+S_{\rm leak}
+=
+-\bigl[W(w)j^w\bigr]_{-\infty}^{+\infty}
++
+\int_{-\infty}^{+\infty}W'(w)j^w(w)\,dw.
+}
+\]
+
+So once `j^w` is nonzero, the projected brane subsystem is explicitly open.
+
+The exact localized-Maxwell energy ledger gives
+
+\[
+\boxed{
+\partial_t u_{\rm EM}+\partial_A S_{\rm EM}^A
+=
+-J^A E_A
+=
+-(J^aE_a+J^wE_w).
+}
+\]
+
+So `J^wE_w` is an explicit scalar-photon work channel as soon as the mixed field `E_w` is active.
+
+In projected form one has
+
+\[
+\partial_t\overline{u_{\rm EM}}+\partial_a\overline{S_{\rm EM}^a}
+=
+-\overline{J^A E_A}
++\mathcal L_{\rm EM}^{(w)},
+\]
+
+with
+
+\[
+\mathcal L_{\rm EM}^{(w)}
+=
+-\bigl[W S_{\rm EM}^w\bigr]_{-\infty}^{+\infty}
++
+\int W'(w)S_{\rm EM}^w\,dw.
+\]
+
+Stage 227 keeps the leakage source `S_{\rm leak}` and the scalar-photon work channel `J^wE_w` as the first reduced observables in the newly opened lane.
+
+---
+
+## 2. Minimal odd Gaussian leakage profile and exact projected leakage compiler
+
+Choose the normalized Gaussian projector
+
+\[
+\boxed{
+W_\lambda(w)
+=
+\frac{e^{-w^2/\lambda^2}}{\lambda\sqrt\pi}.
+}
+\]
+
+Introduce the first odd scalar-photon profile
+
+\[
+\boxed{
+\phi_\lambda(w)
+=
+\frac{2w}{\sqrt\pi\,\lambda^3}
+\,e^{-w^2/\lambda^2}.
+}
+\]
+
+Now define the reduced mixed field and current by
+
+\[
+\boxed{
+E_w(w;r)=-\mathcal E_0(r)\,\phi_\lambda(w),
+\qquad
+j^w(w;r)=\mu_w\rho_0\,E_w(w;r),
+\qquad
+J^w=q\,j^w.
+}
+\]
+
+Here:
+
+- `\mathcal E_0(r)` is the selected-branch scalar-photon amplitude,
+- `\mu_w` is the reduced transverse mobility,
+- `\rho_0` is the carried density scale,
+- `q` is the reduced charge label used in the session barrier closure.
+
+Because both `W_\lambda` and `\phi_\lambda` decay rapidly, the boundary term vanishes exactly:
+
+\[
+\bigl[W_\lambda j^w\bigr]_{-\infty}^{+\infty}=0.
+\]
+
+The leakage source is therefore
+
+\[
+S_{\rm leak}(r)
+=
+\int_{-\infty}^{+\infty}W_\lambda'(w)j^w(w;r)\,dw.
+\]
+
+A direct evaluation gives
+
+\[
+\boxed{
+S_{\rm leak}(r)
+=
+\frac{\sqrt2\,\mu_w\rho_0}{2\sqrt\pi\,\lambda^3}
+\,\mathcal E_0(r).
+}
+\]
+
+So the first honest selected-branch leakage scalar is linear in the reduced scalar-photon amplitude `\mathcal E_0(r)`.
+
+This is the exact projected-continuity compiler for the chosen one-mode Gaussian closure.
+
+---
+
+## 3. Exact one-mode bulk work scalar and the reduced Session-I work scalar
+
+The same odd Gaussian lane carries an exact one-mode bulk work scalar
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)
+:=
+q\int_{-\infty}^{+\infty}j^w(w;r)E_w(w;r)\,dw.
+}
+\]
+
+For the chosen profile this evaluates exactly to
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)
+=
+\frac{\sqrt2\,\mu_w q\rho_0}{2\sqrt\pi\,\lambda^3}
+\,\mathcal E_0(r)^2.
+}
+\]
+
+So the one-mode bulk work scalar obeys the exact relation
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)=q\,\mathcal E_0(r)\,S_{\rm leak}(r).
+}
+\]
+
+Thus, once the selected-branch amplitude is fixed, the one-mode bulk work lane is not independent of the leakage lane.
+
+### 3.1 Reduced Session-I scalar-photon work compiler
+
+The barrier session tracked a reduced scalar-photon work scalar of the form
+
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+:=
+\frac{2\mu_w q\rho_0}{\lambda^2}\,\mathcal E_0(r)^2.
+}
+\]
+
+Within the present one-mode Gaussian closure this is exactly the thickness-rescaled bulk work scalar
+
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+2\sqrt{2\pi}\,\lambda\,\mathcal W_w^{\rm bulk}(r).
+}
+\]
+
+So the Session-I work scalar is not a separate physical lane.
+It is the wall-thickness rescaling of the same one-mode bulk scalar-photon work channel.
+
+Combining this with the leakage compiler gives the exact quadratic law
+
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{4\pi q\lambda^4}{\mu_w\rho_0}
+\,S_{\rm leak}(r)^2.
+}
+\]
+
+So the reduced Session-I work scalar is quadratic in the projected leakage amplitude on the chosen one-mode branch.
+
+---
+
+## 4. Pullback into the Stage-225 selected-support packet
+
+Stage 225 already fixed the exact selected-support demand
+
+\[
+\Pi_{\rm tr}=
+\frac43\,C_{\rm mix},
+\qquad
+C_{\rm mix}=
+\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+\]
+
+Hence
+
+\[
+\boxed{
+\Pi_{\rm tr}(r)
+=
+\frac{32\Lambda(r)(1-\epsilon(r))}{3\pi^2}.
+}
+\]
+
+Using the actual selected-branch coordinate
+
+\[
+\varrho(r)=\frac23(1-\epsilon(r)),
+\]
+
+this can be rewritten exactly as
+
+\[
+\boxed{
+\Pi_{\rm tr}(r)=\frac{16}{\pi^2}\,\Lambda(r)\,\varrho(r).
+}
+\]
+
+Stage 227 now chooses the simplest selected-branch amplitude pullback:
+
+\[
+\boxed{
+\mathcal E_0(r):=\eta_{\rm leak}\,\Pi_{\rm tr}(r),
+}
+\]
+
+where `\eta_{\rm leak}` is the reduced leakage-strength parameter already used in the session barrier closure.
+
+### 4.1 Leakage source on the selected branch
+
+Substituting into the exact leakage compiler gives
+
+\[
+\boxed{
+S_{\rm leak}(r)
+=
+\frac{16\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{3\pi^{5/2}\lambda^3}
+\,\Lambda(r)(1-\epsilon(r)).
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+S_{\rm leak}(r)
+=
+\frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+\,\Lambda(r)\varrho(r).
+}
+\]
+
+### 4.2 One-mode bulk work scalar on the selected branch
+
+The exact one-mode bulk work scalar becomes
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)
+=
+\frac{512\sqrt2\,\eta_{\rm leak}^2\mu_w q\rho_0}{9\pi^{9/2}\lambda^3}
+\,\Lambda(r)^2(1-\epsilon(r))^2.
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)
+=
+\frac{128\sqrt2\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^{9/2}\lambda^3}
+\,\Lambda(r)^2\varrho(r)^2.
+}
+\]
+
+### 4.3 Reduced Session-I work scalar on the selected branch
+
+The reduced Session-I scalar becomes
+
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{2048\,\eta_{\rm leak}^2\mu_w q\rho_0}{9\pi^4\lambda^2}
+\,\Lambda(r)^2(1-\epsilon(r))^2.
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+\,\Lambda(r)^2\varrho(r)^2.
+}
+\]
+
+So the selected-branch leakage/work packet is now fully explicit in the realized support variables.
+
+---
+
+## 5. Exact support-versus-orbit split and recovery slice
+
+The key structural result of the stage is now immediate.
+
+All three selected-branch formulas
+
+\[
+S_{\rm leak}(r),
+\qquad
+\mathcal W_w^{\rm bulk}(r),
+\qquad
+\mathcal W_w^{\rm sess}(r)
+\]
+
+depend only on
+
+\[
+\Lambda(r),\qquad \epsilon(r)
+\quad\text{or equivalently}\quad
+\Lambda(r),\qquad \varrho(r).
+\]
+
+They do **not** depend on the separate coherent orbit variables
+
+\[
+R_{\rm tr},\qquad R_{\rm target},\qquad \epsilon_\eta.
+\]
+
+So the exact support-side factorization is
+
+\[
+\boxed{
+\partial_{R_{\rm tr}} S_{\rm leak}
+=
+\partial_{R_{\rm target}} S_{\rm leak}
+=
+\partial_{\epsilon_\eta} S_{\rm leak}=0,
+}
+\]
+
+and likewise for both work scalars.
+
+This proves that Stage 227 is a **selected-support compiler**, not an orbit-lock compiler.
+
+### 5.1 Orientation parity
+
+The pullback parameter `\eta_{\rm leak}` enters the compiled observables with exact parity
+
+\[
+\boxed{
+S_{\rm leak}(-\eta_{\rm leak})=-S_{\rm leak}(\eta_{\rm leak}),
+}
+\]
+
+while both work scalars are even:
+
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(-\eta_{\rm leak})
+=
+\mathcal W_w^{\rm bulk}(\eta_{\rm leak}),
+\qquad
+\mathcal W_w^{\rm sess}(-\eta_{\rm leak})
+=
+\mathcal W_w^{\rm sess}(\eta_{\rm leak}).
+}
+\]
+
+So changing the transport orientation flips the sign of net leakage but leaves the exported-work magnitudes unchanged.
+
+### 5.2 Recovery of the standard slice
+
+The Stage-226 standard-recovery slice is recovered at
+
+\[
+\boxed{
+\eta_{\rm leak}=0.
+}
+\]
+
+Then
+
+\[
+\mathcal E_0(r)=0,
+\qquad
+S_{\rm leak}(r)=0,
+\qquad
+\mathcal W_w^{\rm bulk}(r)=0,
+\qquad
+\mathcal W_w^{\rm sess}(r)=0.
+\]
+
+So the Stage-227 compiler reduces exactly back to the carried Stage-225 / Stage-226 front end on the closed-branch slice.
+
+---
+
+## 6. Practical Stage-227 output packet
+
+The smallest packet that this stage asks the later derivation tree to carry is
+
+\[
+\boxed{
+\mathcal P_{227}^{\rm leak}
+=
+\Bigl(
+\mathcal P_{225};
+\Pi_{\rm tr},
+\mathcal E_0,
+S_{\rm leak},
+\mathcal W_w^{\rm bulk},
+\mathcal W_w^{\rm sess}
+\Bigr).
+}
+\]
+
+Equivalently, on the realized selected branch one may use the packet
+
+\[
+\boxed{
+\mathcal P_{227}^{\rm leak}
+=
+\Bigl(
+\mathcal P_{225};
+\Lambda,
+\epsilon,
+\eta_{\rm leak},
+S_{\rm leak},
+\mathcal W_w^{\rm bulk},
+\mathcal W_w^{\rm sess}
+\Bigr).
+}
+\]
+
+So the first quantitative open-system lane is now fully attached to the same selected-support packet that Stage 225 had already fixed.
+
+---
+
+## 7. What this stage achieves
+
+Stage 227 closes five concrete bookkeeping gaps.
+
+### 7.1 It turns the Stage-226 open-system declaration into actual observables
+
+The leakage/work lane is no longer only “allowed.”
+It now carries explicit scalars:
+
+- `S_{\rm leak}`,
+- `\mathcal W_w^{\rm bulk}`,
+- `\mathcal W_w^{\rm sess}`.
+
+### 7.2 It ties the open-system lane to the selected-support packet
+
+The amplitude pullback
+
+\[
+\mathcal E_0=\eta_{\rm leak}\Pi_{\rm tr}
+\]
+
+forces the entire leakage/work compiler through the same selected-support demand that Stage 225 already fixed.
+
+### 7.3 It proves the support-versus-orbit split
+
+The leakage/work lane depends only on the support-side variables `(\Lambda,\epsilon)` or `(\Lambda,\varrho)`.
+It does not depend on the separate orbit packet.
+
+### 7.4 It clarifies the relation between the exact one-mode bulk work scalar and the Session-I work scalar
+
+The Session-I scalar-photon work quantity is the thickness-rescaled form of the same one-mode bulk work channel.
+So the session quantity is not a different lane; it is a reduced compiler of the same mixed-sector work observable.
+
+### 7.5 It records the exact parity structure of the leakage/work lane
+
+- leakage is odd in the transport-orientation parameter,
+- work magnitude is even.
+
+That is the first honest sign theorem for the selected-branch open-system packet.
+
+---
+
+## 8. Immediate next derivation step
+
+The next honest continuation is now sharply defined.
+
+Stage 228 should take the already-declared non-rigid mouth lane `(U,V)` from Stage 226 and compile it onto the same selected-support branch, so that one can study:
+
+\[
+U(r),\qquad V(r),\qquad \mathcal D_{UV}(r)
+\]
+
+side by side with
+
+\[
+S_{\rm leak}(r),\qquad \mathcal W_w^{\rm sess}(r).
+\]
+
+That is the right point to join the open-system export lane to the dressing-leg drain lane in one packet.
+
+---
+
+## 9. SymPy-backed status
+
+The accompanying audit script verifies all of the algebra used here:
+
+1. the exact Gaussian leakage compiler
+   \[
+   S_{\rm leak}(r)
+   =
+   \frac{\sqrt2\,\mu_w\rho_0}{2\sqrt\pi\,\lambda^3}
+   \,\mathcal E_0(r),
+   \]
+2. the exact one-mode bulk work scalar
+   \[
+   \mathcal W_w^{\rm bulk}(r)
+   =
+   \frac{\sqrt2\,\mu_w q\rho_0}{2\sqrt\pi\,\lambda^3}
+   \,\mathcal E_0(r)^2,
+   \]
+3. the exact relation
+   \[
+   \mathcal W_w^{\rm bulk}=q\,\mathcal E_0\,S_{\rm leak},
+   \]
+4. the exact reduced Session-I compiler
+   \[
+   \mathcal W_w^{\rm sess}
+   =
+   2\sqrt{2\pi}\,\lambda\,\mathcal W_w^{\rm bulk}
+   =
+   \frac{2\mu_w q\rho_0}{\lambda^2}\,\mathcal E_0^2,
+   \]
+5. the exact quadratic leakage-to-work law
+   \[
+   \mathcal W_w^{\rm sess}
+   =
+   \frac{4\pi q\lambda^4}{\mu_w\rho_0}
+   \,S_{\rm leak}^2,
+   \]
+6. the exact selected-support pullback
+   \[
+   \Pi_{\rm tr}
+   =
+   \frac{32\Lambda(1-\epsilon)}{3\pi^2}
+   =
+   \frac{16\Lambda\varrho}{\pi^2},
+   \qquad
+   \mathcal E_0=\eta_{\rm leak}\Pi_{\rm tr},
+   \]
+7. the resulting compiled selected-branch formulas for
+   `S_{\rm leak}`, `\mathcal W_w^{\rm bulk}`, and `\mathcal W_w^{\rm sess}`,
+8. the exact support-versus-orbit split
+   \[
+   \partial_{R_{\rm tr}}=
+   \partial_{R_{\rm target}}=
+   \partial_{\epsilon_\eta}=0
+   \quad\text{on the compiled leakage/work lane},
+   \]
+9. the exact orientation parity
+   \[
+   S_{\rm leak}(-\eta_{\rm leak})=-S_{\rm leak}(\eta_{\rm leak}),
+   \quad
+   \mathcal W(-\eta_{\rm leak})=\mathcal W(\eta_{\rm leak}),
+   \]
+10. and exact recovery of the closed standard slice at `\eta_{\rm leak}=0`.
+
+Supporting file:
+- `moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py`
+
+=== moving_throat_pde_stage228_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 228: Non-Rigid Mouth/Dressing Packet and `U/V` Drain Compiler
+
+## Status
+
+**Exact within the carried rigid-mouth actual-branch chart, the Stage-226 non-rigid reduced free-energy lane, and the declared reduced orbit-side forcing closure that lifts the rigid-mouth slice into a two-coordinate physical packet `(U,V)`.**
+
+This stage does **not** yet lower the barrier by itself.
+It compiles the second lifted lane from Stage 226 into the actual physical observables that the compact program already uses:
+
+1. transfer-shape motion `\mathcal T^2`,
+2. dressing motion `\epsilon_\eta`,
+3. target-ratio motion `R_{\rm target}`,
+4. the dependent microscopic correction,
+5. and the positive `U/V` drain term.
+
+The main outcome is that once rigid-mouth factorization is broken, the direct transfer packet is still carried by `U`, but the finite selected-branch ratio acquires a second exact leg through `V`; the dressing variable becomes active, and the resulting compiler is **orbit-side / support-blind** rather than a new support-placement lane.
+
+---
+
+## Purpose
+
+Stage 226 declared the non-rigid mouth/dressing lane abstractly.
+It introduced a minimal reduced `U/V` free energy and showed that a transfer-side forcing can activate the dressing leg once the mouth is allowed to flex.
+
+But that declaration step stopped short of the actual physical compiler.
+The compact program and the rigid-mouth barrier audit had already fixed the exact physical chart
+
+\[
+U=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+\]
+
+together with the exact selected-branch identity relating `\mathcal T^2`, `\epsilon_\eta`, and `R_{\rm target}`.
+
+So the missing step is now sharp:
+
+> take the abstract Stage-226 non-rigid `U/V` lane and compile it all the way into the actual finite physical packet, the weak-axisymmetric first-order packet, and the dependent microscopic correction.
+
+That is what Stage 228 does.
+
+---
+
+## Provenance
+
+This stage sits directly after:
+
+- **Stage 226**, which declared the non-rigid mouth/dressing lift through a reduced `U/V` free energy,
+- **Stage 227**, which proved the leakage/work compiler is selected-support side rather than orbit side,
+- the compact rigid-mouth normal form, which already diagonalized the actual branch in `(U,V)`,
+- and the barrier-session Section I, which reported a nonzero `V`, active `\epsilon_\eta`, and a positive `U/V` drain once the rigid-mouth assumption was relaxed.
+
+So Stage 228 is the first place where the barrier session’s `U/V` lane is no longer just a reduced add-on.
+It becomes part of the actual derivation stack.
+
+---
+
+## 0. Why this stage is needed
+
+The compact program already says that, on the rigid-mouth actual branch, orbit lock is the Cartesian codimension-two condition
+
+\[
+U=0,\qquad V=0.
+\]
+
+Stage 226 then showed that a non-rigid mouth coupling and a transfer-side forcing produce a nonzero solution `(U,V)` on an admissible reduced branch.
+But as long as that result remains in abstract free-energy form, the derivation stack is still missing three things:
+
+1. the exact finite update of the physical observables `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`,
+2. the exact dependent microscopic correction induced by that finite packet,
+3. the precise relation between the new finite packet and the earlier weak-axisymmetric scalar `\Xi_1`.
+
+Without those compilers, one cannot tell whether the Session-I `U/V` branch is:
+
+- a support-placement effect,
+- an orbit-side deformation,
+- or an uncontrolled mixture of the two.
+
+Stage 228 closes that ambiguity.
+
+---
+
+## 1. Carried exact rigid-mouth chart
+
+The rigid-mouth actual branch is already charted by the diagonal logarithmic pair
+
+\[
+\boxed{
+U:=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+\qquad
+V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+}
+\]
+
+So the direct observables are
+
+\[
+\boxed{
+\mathcal T^2=\mathcal T_{\rm ref}^2 e^U,
+\qquad
+\epsilon_\eta=\epsilon_{\eta,\rm ref}e^V.
+}
+\]
+
+The selected-branch identity
+\[
+R_{\rm target}\,\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+\]
+then gives the exact target-ratio compiler
+\[
+\boxed{
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}\,e^{-U}.
+}
+\]
+
+So the rigid-mouth branch already tells us something important before any new closure is added:
+
+- `U` is the direct transfer-shape leg,
+- `V` is the direct dressing leg,
+- and the target ratio is the commuting product of those two finite legs.
+
+Stage 228 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
+
+---
+
+## 2. Reduced non-rigid mouth/dressing free energy
+
+Stage 226 already declared the minimal reduced non-rigid lane.
+For the present stage it is convenient to rewrite the same closure in the session notation
+
+\[
+\chi_{UV}(r):=g_{UV}\,\chi_\lambda(r),
+\]
+
+so the reduced free energy becomes
+
+\[
+\boxed{
+\mathcal F_{\rm nr}(U,V;r)
+=
+\frac12 a_U U^2
++
+\frac12 a_V V^2
+-
+\chi_{UV}(r)\,U V
+-
+f_U(r)\,U.
+}
+\]
+
+Here:
+
+- `a_U>0` is the transfer-shape stiffness,
+- `a_V>0` is the dressing-leg stiffness,
+- `\chi_{UV}(r)` is the signed non-rigid mouth coupling,
+- `f_U(r)` is the orbit-side transfer forcing.
+
+Two important limiting cases are immediate.
+
+### 2.1 Rigid-mouth orbit slice
+
+If the forcing is absent,
+
+\[
+f_U(r)=0,
+\]
+
+then the unique stationary point is
+
+\[
+U=0,\qquad V=0.
+\]
+
+So the non-rigid compiler still recovers the exact rigid-mouth orbit slice when the forcing is shut off.
+
+### 2.2 Factorized-but-forced slice
+
+If the mouth coupling is shut off,
+
+\[
+\chi_{UV}(r)=0,
+\]
+
+then the transfer leg survives but the dressing leg stays inert:
+
+\[
+U=\frac{f_U}{a_U},
+\qquad
+V=0.
+\]
+
+So the dressing activation is a genuinely non-rigid effect rather than a rephrasing of the old transfer leg.
+
+---
+
+## 3. Exact stationary `U/V` packet
+
+The stationarity equations are linear:
+
+\[
+a_U U-\chi_{UV}V=f_U,
+\qquad
+a_V V-\chi_{UV}U=0.
+\]
+
+Define the non-rigid determinant
+
+\[
+\boxed{
+\Delta_{UV}:=a_U a_V-\chi_{UV}^2.
+}
+\]
+
+Then the exact stationary packet is
+
+\[
+\boxed{
+U(r)=\frac{a_V f_U(r)}{\Delta_{UV}(r)},
+\qquad
+V(r)=\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)}.
+}
+\]
+
+The exact response ratio is therefore
+
+\[
+\boxed{
+\frac{V}{U}=\frac{\chi_{UV}}{a_V}.
+}
+\]
+
+So the sign of `V/U` is the sign of the signed mouth coupling.
+The Session-I branch with `U>0` and `V<0` is therefore the branch on which `\chi_{UV}<0`.
+
+The admissibility condition is simply positive-definiteness of the Hessian:
+
+\[
+H_{\rm nr}=
+\begin{pmatrix}
+a_U & -\chi_{UV}\\
+-\chi_{UV} & a_V
+\end{pmatrix},
+\qquad
+\det H_{\rm nr}=\Delta_{UV}.
+\]
+
+Hence the reduced non-rigid packet is admissible precisely when
+
+\[
+\boxed{
+\Delta_{UV}>0.
+}
+\]
+
+This is the same condition already anticipated in Stage 226, now carried in the session notation.
+
+---
+
+## 4. Exact finite physical compiler
+
+Substituting the exact stationary packet into the carried physical chart gives
+
+\[
+\boxed{
+\mathcal T^2(r)
+=
+\mathcal T_{\rm ref}^2
+\exp\!\left(\frac{a_V f_U(r)}{\Delta_{UV}(r)}\right),
+}
+\]
+
+\[
+\boxed{
+\epsilon_\eta(r)
+=
+\epsilon_{\eta,\rm ref}
+\exp\!\left(\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)}\right),
+}
+\]
+
+\[
+\boxed{
+\frac{R_{\rm target}(r)}{R_{\rm target,ref}}
+=
+\frac{
+1-\epsilon_{\eta,\rm ref}\exp\!\left(\chi_{UV}f_U/\Delta_{UV}\right)
+}{
+1-\epsilon_{\eta,\rm ref}
+}
+\exp\!\left(-a_V f_U/\Delta_{UV}\right).
+}
+\]
+
+This is the exact finite compiler that Stage 226 did not yet provide.
+
+It shows that once rigid-mouth factorization is broken, the reduced branch is no longer characterized by a single transfer coordinate alone:
+
+- `U` moves `\mathcal T^2` directly,
+- `V` moves `\epsilon_\eta` directly,
+- and the selected-branch target ratio sees both legs simultaneously.
+
+So the non-rigid packet is already larger than the original one-scalar rigid-mouth front end.
+
+---
+
+## 5. Exact dependent microscopic correction and positive drain
+
+The rigid-mouth actual branch already carries the exact dependent-plane compiler
+
+\[
+\boxed{
+\mathbf y_{\rm rm}^{\rm dep}(U,V)
+=
+\begin{pmatrix}
+\Delta_T\\
+\Delta_{K_\eta}\\
+\Delta_\mu
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+-V\\
+U-V
+\end{pmatrix}.
+}
+\]
+
+So the first non-rigid packet induces the exact microscopic correction
+
+\[
+\boxed{
+\mathbf y_{\rm nr}^{\rm dep}(r)
+=
+\begin{pmatrix}
+0\\
+-\chi_{UV}f_U/\Delta_{UV}\\
+(a_V-\chi_{UV})f_U/\Delta_{UV}
+\end{pmatrix}.
+}
+\]
+
+This gives the physical interpretation immediately.
+
+- The transfer leg changes `\mu_W` directly.
+- The dressing activation changes `K_\eta^{(\rm eff)}` directly and shifts `\mu_W` by the same amount with opposite sign.
+- The `T_U` slot remains untouched on the rigid-mouth dependent plane.
+
+The exact `U/V` drain term is
+
+\[
+\boxed{
+\mathcal D_{UV}:=\chi_{UV}UV
+=
+\frac{\chi_{UV}^2\,a_V\,f_U^2}{\Delta_{UV}^2}
+\ge 0.
+}
+\]
+
+So even when `\chi_{UV}` is negative and `V` is opposite in sign to `U`, the reduced drain is still positive.
+This is the exact version of the Session-I statement that a relaxed mouth can drain positive energy into the dressing leg.
+
+---
+
+## 6. Weak-axisymmetric first-order packet and prefactor shift
+
+The compact program already gives the exact first-order identities
+
+\[
+\delta\ln\mathcal T^2=\Xi_1,
+\qquad
+\delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+\qquad
+\delta\ln R_{\rm target}=\mathcal R_1.
+\]
+
+To connect the finite Stage-228 packet to that weak-axisymmetric front end, set
+
+\[
+U=\varepsilon u_1+O(\varepsilon^2),
+\qquad
+V=\varepsilon v_1+O(\varepsilon^2).
+\]
+
+Then the exact finite compiler gives
+
+\[
+\delta\ln\mathcal T^2=u_1,
+\]
+
+\[
+\delta\ln(1-\epsilon_\eta)
+=
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1,
+\]
+
+\[
+\delta\ln R_{\rm target}
+=
+-u_1
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1.
+\]
+
+So the non-rigid first-order packet is
+
+\[
+\boxed{
+\Xi_1^{\rm nr}=u_1,
+}
+\]
+
+\[
+\boxed{
+\mathcal R_1^{\rm nr}+\Xi_1^{\rm nr}
+=
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1,
+}
+\]
+
+\[
+\boxed{
+\mathcal R_1^{\rm nr}
+=
+-u_1
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1.
+}
+\]
+
+This is the key first-order compiler of the stage.
+
+It says:
+
+1. the direct prefactor-shape scalar is still carried by `U`,
+2. the dressing leg enters only through the selected-branch residual at first order,
+3. and once `V` is activated, the target-ratio packet is no longer determined by `\Xi_1` alone.
+
+So the compact front-end packet `(\Delta_{\rm norm},\Xi_1)` is the rigid-mouth projection of a larger two-leg packet on the non-rigid branch.
+
+---
+
+## 7. Orbit-side / support-blind split
+
+Stage 227 attached the leakage/work compiler to the **selected-support** packet.
+Stage 228 is the complementary statement for the non-rigid packet.
+
+Within the present closure, the quantities
+
+\[
+U,\qquad
+V,\qquad
+\epsilon_\eta,\qquad
+\frac{R_{\rm target}}{R_{\rm target,ref}},
+\qquad
+\mathbf y_{\rm nr}^{\rm dep},
+\qquad
+\mathcal D_{UV},
+\]
+
+depend only on
+
+\[
+a_U,\qquad
+a_V,\qquad
+\chi_{UV},\qquad
+f_U,\qquad
+\epsilon_{\eta,\rm ref},
+\]
+
+and **not** on the selected-support coordinates from Stage 225.
+
+So if `(\Lambda,\varrho)` denote the support-side placement variables, then
+
+\[
+\partial_\Lambda U
+=
+\partial_\varrho U
+=
+\partial_\Lambda V
+=
+\partial_\varrho V
+=
+0,
+\]
+
+and similarly for the finite observable compiler above, so long as the orbit-side forcing `f_U` and signed mouth coupling `\chi_{UV}` are carried independently.
+
+That is the right structural split:
+
+- Stage 227 is the support-side open-system compiler,
+- Stage 228 is the orbit-side non-rigid packet compiler.
+
+---
+
+## 8. Session-I readback
+
+The session write-up records the representative relaxed-rigid-mouth point
+
+\[
+U(r_{\rm eval})\approx 0.14313458,
+\qquad
+V(r_{\rm eval})\approx -0.03619791,
+\qquad
+\epsilon_{\eta,\rm ref}=0.3.
+\]
+
+Feeding those numbers into the exact Stage-228 compiler gives
+
+\[
+\epsilon_\eta(r_{\rm eval})
+=
+0.3\,e^{-0.03619791}
+\approx 0.28933482,
+\]
+
+which matches the Session-I value.
+
+The same finite compiler gives
+
+\[
+\frac{R_{\rm target}(r_{\rm eval})}{R_{\rm target,ref}}
+\approx 0.87984149.
+\]
+
+And the dependent microscopic correction becomes
+
+\[
+\mathbf y_{\rm nr}^{\rm dep}(r_{\rm eval})
+=
+\begin{pmatrix}
+0\\
+0.03619791\\
+0.17933249
+\end{pmatrix}.
+\]
+
+So the sampled branch is a clear transfer-up / dressing-down branch:
+
+- transfer-shape grows,
+- the dressing variable falls,
+- and the target ratio shifts accordingly through the exact selected-branch identity.
+
+At first weak-axisymmetric order, the same point gives
+
+\[
+\Xi_1^{\rm nr}\approx 0.14313458,
+\qquad
+\mathcal R_1^{\rm nr}\approx -0.12762119
+\quad
+(\epsilon_{\eta,\rm ref}=0.3).
+\]
+
+So the session’s `\Xi_1` readback remains the direct transfer scalar, while the newly active dressing leg contributes the additional selected-branch residual.
+
+---
+
+## 9. What this stage accomplishes
+
+Stage 228 closes the main gap left after Stage 226.
+
+1. It turns the abstract Stage-226 `U/V` free-energy lane into an **exact finite compiler** for the physical observables `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`.
+2. It shows that the dressing variable `\epsilon_\eta` is no longer a frozen bystander once rigid-mouth factorization is broken.
+3. It proves that the induced `U/V` drain is always nonnegative on the admissible branch.
+4. It identifies the exact microscopic correction carried by the finite non-rigid packet.
+5. It shows that, at first weak-axisymmetric order, the direct prefactor scalar is still `U`, but the active dressing leg adds a second selected-branch residual.
+6. It cleanly separates the non-rigid packet from the support-side lane compiled in Stage 227.
+
+So after Stage 228 the barrier-session `U/V` story is no longer floating outside the derivation stack.
+It is an explicit orbit-side packet compiler.
+
+---
+
+## 10. Immediate next step
+
+The next stage should now use the same non-rigid packet but relax the **source profile** itself beyond the positive Family-1 corridor.
+
+That means:
+
+1. promote the mouth/core source to the first compensated multimode branch,
+2. compile its mouth-bias and shell-loading functionals,
+3. and then feed those functionals together with the Stage-227 leakage/work lane and the Stage-228 non-rigid packet into the first honest reduced stationary barrier compiler.
+
+That is the natural continuation to Stage 229.
+
+=== moving_throat_pde_stage229_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 229: Compensated Multimode Source Compiler Beyond Positive Family-1
+
+## Status
+
+**Exact within the carried positive-source Family-1 mouth-bias theorem, the carried two-moment source map \((\mathfrak g[\sigma],\mathcal S[\sigma])\), and the declared mean-preserving two-mode compensated source family with the radial attenuation closure**
+\[
+s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2},
+\]
+**used here as the minimal continuation that reproduces the sampled Session-I source point.**
+
+This stage does **not** yet assemble the full reduced stationary barrier.
+It compiles the source lane that Stage 226 only declared abstractly:
+
+1. the exact sign-change test for the first compensated two-mode source,
+2. the exact mouth-bias functional \(\mathfrak g[\sigma]\),
+3. the exact shell-loading functional \(\mathcal S[\sigma]\),
+4. the exact mixed-to-shell loading ratio \(\mathcal R[\sigma]\),
+5. and the first explicit source packet that can be fed into Stage 230 together with the Stage-227 leakage/work lane and the Stage-228 non-rigid `U/V` packet.
+
+---
+
+## Purpose
+
+Stage 226 already lifted the positive-source Family-1 corridor to the first sign-changing multimode source family,
+\[
+\sigma(x)=1+a\cos(\pi x)+b\cos(2\pi x),
+\qquad x\in[0,1],
+\]
+and proved the exact sign-change test.
+
+Stage 228 then stated the next job clearly:
+
+> promote the mouth/core source to the first compensated multimode branch, compile its mouth-bias and shell-loading functionals, and feed those functionals into the stationary barrier compiler.
+
+That is exactly what Stage 229 does.
+
+The important structural point is that this stage does **not** invent a new mouth observable.
+It keeps the same carried Family-1 mouth-bias functional and the same carried mixed-to-shell loading law, and only extends them from the positive corridor to the first mean-preserving sign-changing two-mode family.
+
+---
+
+## Provenance
+
+This stage sits directly after:
+
+- **Stage 226**, which declared the compensated sign-changing source lane but did not yet compile its source moments,
+- **Stage 227**, which compiled the leakage/work lane on the selected-support side,
+- **Stage 228**, which compiled the non-rigid `U/V` packet on the orbit side,
+- the compact program’s positive-source Family-1 theorem,
+- and the barrier-session Section I, which explicitly used the sign-changing source branch and recorded
+  \[
+  \mathfrak g[\sigma](r_{\rm eval})\approx 0.82823667,
+  \qquad
+  \mathcal R[\sigma](r_{\rm eval})\approx 0.21677037,
+  \qquad
+  \sigma_{\min}<0.
+  \]
+
+So Stage 229 is the source-side continuation of the relaxed branch.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the derivation stack had an asymmetry:
+
+- the open-system export lane had explicit observables from Stage 227,
+- the non-rigid mouth/dressing lane had explicit physical compilers from Stage 228,
+- but the compensated source lane was still only a declared profile with a sign-change flag.
+
+That was no longer enough.
+The compact program already says that, at first order in source deformation, the mouth/source sector enters the Family-1 throat core only through **two** scalar source moments:
+\[
+\mathfrak g[\sigma]
+\quad\text{and}\quad
+\mathcal S[\sigma].
+\]
+
+So the next honest step is not “pick another profile by taste.”
+It is to compute those two moments explicitly for the first compensated multimode family and then reconstruct the mixed-to-shell loading ratio from the carried Family-1 gain law.
+
+That is the whole content of Stage 229.
+
+---
+
+## 1. Carried positive-source Family-1 source law
+
+Work on the dimensionless mouth interval
+\[
+x=\frac{z}{L}\in[0,1].
+\]
+
+The compact program already fixes the two carried source kernels
+\[
+c(x)=\cos\!\left(\frac{\pi x}{2}\right),
+\qquad
+K_q(x)=\frac{\cosh\!\left(\frac{\pi}{2}(1-x)\right)}{\cosh(\pi/2)}.
+\]
+
+The corresponding source moments are
+\[
+\boxed{
+\mathfrak g[\sigma]=\int_0^1 \sigma(x)\,c(x)\,dx,
+\qquad
+\mathcal S[\sigma]=\int_0^1 \sigma(x)\,K_q(x)\,dx.
+}
+\]
+
+Inside the positive-source theorem one has
+\[
+\sigma(x)\ge 0,
+\qquad
+\int_0^1 \sigma(x)\,dx=1,
+\]
+and therefore
+\[
+0\le \mathfrak g[\sigma]\le 1.
+\]
+
+The carried Family-1 mixed-to-shell loading ratio is
+\[
+\boxed{
+\mathcal R[\sigma]
+=
+\frac{\bigl(\mathfrak g[\sigma]-\mathfrak r_{F1}\bigr)^2}{1+\mathfrak r_{F1}^2},
+}
+\]
+with the fixed Family-1 geometric constant
+\[
+\boxed{
+\mathfrak r_{F1}
+=
+\sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}.
+}
+\]
+
+So the positive-source Family-1 mouth law is
+\[
+\boxed{
+\Pi=\Sigma_0\bigl[1-\mathcal R[\sigma]\mathcal S[\sigma]\bigr].
+}
+\]
+
+Stage 229 keeps this law and changes only the source family inserted into it.
+
+---
+
+## 2. Mean-preserving compensated two-mode source family
+
+Take the first compensated two-mode branch
+\[
+\boxed{
+\sigma_{a,b}(x)=1+a\cos(\pi x)+b\cos(2\pi x),
+\qquad x\in[0,1].
+}
+\]
+
+Because the cosine modes integrate to zero on \([0,1]\),
+\[
+\boxed{
+\int_0^1 \sigma_{a,b}(x)\,dx = 1.
+}
+\]
+
+So this family changes source **shape** while preserving total normalized source weight exactly.
+
+Write
+\[
+y=\cos(\pi x),\qquad y\in[-1,1].
+\]
+Then
+\[
+\cos(2\pi x)=2y^2-1,
+\]
+so the compensated source becomes the exact quadratic
+\[
+\boxed{
+\sigma_{a,b}(y)=1-b+a y+2 b y^2.
+}
+\]
+
+The candidate minima are therefore explicit:
+
+- boundary values
+  \[
+  \sigma_{a,b}(1)=1+a+b,
+  \qquad
+  \sigma_{a,b}(-1)=1-a+b,
+  \]
+- interior stationary point, when \(b\neq 0\),
+  \[
+  y_*=-\frac{a}{4b},
+  \]
+  with vertex value
+  \[
+  \sigma_{a,b}(y_*)=1-b-\frac{a^2}{8b}.
+  \]
+
+Hence the exact minimum is
+\[
+\boxed{
+\sigma_{\min}(a,b)=
+\begin{cases}
+1+b-|a|, & b\le 0\ \text{or}\ |a|\ge 4b,\\[4pt]
+1-b-\dfrac{a^2}{8b}, & b>0\ \text{and}\ |a|\le 4b.
+\end{cases}
+}
+\]
+
+So the sign-change condition is simply
+\[
+\boxed{
+\mathrm{signchg}(a,b)\iff \sigma_{\min}(a,b)<0.
+}
+\]
+
+This is the exact extension of the Stage-226 sign-change declaration.
+
+---
+
+## 3. Exact mouth-bias and shell-loading compilers
+
+The crucial point is that the two carried source moments stay exactly computable on the compensated family.
+
+### 3.1 Mouth-bias functional
+
+Using
+\[
+\mathfrak g[\sigma]=\int_0^1 \sigma(x)\cos\!\left(\frac{\pi x}{2}\right)dx,
+\]
+one gets
+\[
+\boxed{
+\mathfrak g(a,b)
+=
+\frac{2}{\pi}\left(1+\frac{a}{3}-\frac{b}{15}\right).
+}
+\]
+
+So the same mouth-bias functional that was carried through the positive-source theorem extends linearly to the compensated two-mode family.
+
+### 3.2 Shell-loading functional
+
+Using
+\[
+\mathcal S[\sigma]=\int_0^1 \sigma(x)\,K_q(x)\,dx,
+\qquad
+K_q(x)=\frac{\cosh\!\left(\frac{\pi}{2}(1-x)\right)}{\cosh(\pi/2)},
+\]
+one gets
+\[
+\boxed{
+\mathcal S(a,b)
+=
+\frac{2\tanh(\pi/2)}{\pi}
+\left(1+\frac{a}{5}+\frac{b}{17}\right).
+}
+\]
+
+So the compensated two-mode branch is exactly the first source family that can tune the two carried source moments away from the positive exponential Family-1 slice while still remaining fully explicit.
+
+---
+
+## 4. Exact two-moment source map and its inverse
+
+Define the normalized source moments
+\[
+\widetilde g:=\frac{\pi}{2}\mathfrak g-1,
+\qquad
+\widetilde S:=\frac{\pi}{2\tanh(\pi/2)}\mathcal S-1.
+\]
+
+Then
+\[
+\boxed{
+\begin{pmatrix}
+\widetilde g\\[4pt]
+\widetilde S
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dfrac13 & -\dfrac1{15}\\[8pt]
+\dfrac15 & \dfrac1{17}
+\end{pmatrix}
+\begin{pmatrix}
+a\\[4pt]
+b
+\end{pmatrix}.
+}
+\]
+
+The determinant is
+\[
+\boxed{
+\det M_{\rm src}=\frac{14}{425}>0.
+}
+\]
+
+So the first compensated two-mode branch is **exactly invertible** as a source compiler.
+Its inverse map is
+\[
+\boxed{
+a=\frac{85}{42}\widetilde S+\frac{25}{14}\widetilde g,
+\qquad
+b=\frac{425}{42}\widetilde S-\frac{85}{14}\widetilde g.
+}
+\]
+
+This is structurally important:
+
+> the two-mode branch is not just “some sign-changing profile.”
+> It is the first exact two-parameter source family that independently spans the two carried Family-1 source moments \((\mathfrak g,\mathcal S)\).
+
+That is why it is the correct Stage-229 source compiler.
+
+---
+
+## 5. Exact mixed-to-shell loading ratio on the compensated branch
+
+The carried Family-1 loading law gives
+\[
+\boxed{
+\mathcal R(a,b)
+=
+\frac{\bigl(\mathfrak g(a,b)-\mathfrak r_{F1}\bigr)^2}{1+\mathfrak r_{F1}^2}.
+}
+\]
+
+So after Stage 229 the compensated source branch enters the reduced mouth law only through the explicit source packet
+\[
+\boxed{
+\mathcal M_\sigma(a,b)
+=
+\bigl(
+\sigma_{a,b},\,
+\sigma_{\min},\,
+\mathrm{signchg},\,
+\mathfrak g(a,b),\,
+\mathcal S(a,b),\,
+\mathcal R(a,b)
+\bigr).
+}
+\]
+
+### 5.1 Compensation line
+
+For any target mouth-bias level \(\mathfrak g_c\), the corresponding exact line in \((a,b)\)-space is
+\[
+\boxed{
+b
+=
+5a+15-\frac{15\pi}{2}\,\mathfrak g_c.
+}
+\]
+
+In particular, on the carried Family-1 lower compensated branch
+\[
+\mathfrak g_-(\mathfrak r)
+=
+\mathfrak r-\frac12\sqrt{1+\mathfrak r^2},
+\]
+so
+\[
+\boxed{
+b
+=
+5a+15-\frac{15\pi}{2}\,\mathfrak g_-\!\bigl(\mathfrak r_{F1}\bigr).
+}
+\]
+
+### 5.2 Exact quarter-ratio test
+
+If
+\[
+\mathfrak g(a,b)=\mathfrak g_\pm(\mathfrak r_{F1})
+=
+\mathfrak r_{F1}\pm\frac12\sqrt{1+\mathfrak r_{F1}^2},
+\]
+then
+\[
+\boxed{
+\mathcal R(a,b)=\frac14.
+}
+\]
+
+So the quarter-ratio theorem survives exactly on the compensated two-mode branch.
+The positive-source theorem had forced the lower branch as the only admissible positive candidate.
+The compensated family keeps the same quarter-ratio surface but no longer enforces positivity.
+
+---
+
+## 6. Radially transported source branch used for the Session-I readback
+
+To connect the exact two-mode source family to the recorded Session-I sampled point, use the minimal radial attenuation closure
+\[
+\boxed{
+a(r)=a_0\,s(r),
+\qquad
+b(r)=b_0\,s(r),
+\qquad
+s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2}.
+}
+\]
+
+Then the full transported source is
+\[
+\boxed{
+\sigma(x;r)=1+a(r)\cos(\pi x)+b(r)\cos(2\pi x).
+}
+\]
+
+The two carried source moments become
+\[
+\boxed{
+\mathfrak g(r)
+=
+\frac{2}{\pi}
+\left[
+1+s(r)\left(\frac{a_0}{3}-\frac{b_0}{15}\right)
+\right],
+}
+\]
+\[
+\boxed{
+\mathcal S(r)
+=
+\frac{2\tanh(\pi/2)}{\pi}
+\left[
+1+s(r)\left(\frac{a_0}{5}+\frac{b_0}{17}\right)
+\right].
+}
+\]
+
+The mixed-to-shell ratio becomes
+\[
+\boxed{
+\mathcal R(r)
+=
+\frac{\bigl(\mathfrak g(r)-\mathfrak r_{F1}\bigr)^2}{1+\mathfrak r_{F1}^2}.
+}
+\]
+
+### 6.1 Exact sign-change threshold for the Session-I orientation
+
+On the Session-I orientation
+\[
+a_0>0,\qquad b_0<0,
+\]
+the branch stays in the boundary-minimum case, so
+\[
+\boxed{
+\sigma_{\min}(r)=1+b(r)-a(r)=1-(a_0-b_0)s(r).
+}
+\]
+
+Therefore the exact sign-change threshold is
+\[
+\boxed{
+\mathrm{signchg}(r)\iff
+s(r)>\frac{1}{a_0-b_0}
+\iff
+r<r_\sigma\sqrt{a_0-b_0-1}.
+}
+\]
+
+So the transported compensated source has a sharp same-charge contact window in which the source profile necessarily becomes sign-changing.
+
+---
+
+## 7. Exact Session-I readback
+
+Use the recorded Session-I source-side parameters
+\[
+a_0=2.2,
+\qquad
+b_0=-0.6,
+\qquad
+r_\sigma=0.8,
+\qquad
+r_{\rm eval}=1.00217028,
+\]
+together with the carried Family-1 constant
+\[
+\mathfrak r_{F1}\approx 1.77799353547498.
+\]
+
+Then
+\[
+s(r_{\rm eval})
+=
+\frac{r_\sigma^2}{r_{\rm eval}^2+r_\sigma^2}
+\approx 0.38921266210419.
+\]
+
+So the transported mode amplitudes are
+\[
+a(r_{\rm eval})\approx 0.856267856629217,
+\qquad
+b(r_{\rm eval})\approx -0.233527597262514.
+\]
+
+The exact Stage-229 source compilers then give
+\[
+\boxed{
+\mathfrak g[\sigma](r_{\rm eval})
+\approx 0.828236674079292,
+}
+\]
+\[
+\boxed{
+\mathcal S[\sigma](r_{\rm eval})
+\approx 0.675847711465632,
+}
+\]
+\[
+\boxed{
+\mathcal R[\sigma](r_{\rm eval})
+\approx 0.216770371559385,
+}
+\]
+\[
+\boxed{
+\sigma_{\min}(r_{\rm eval})
+\approx -0.089795453891731,
+\qquad
+\mathrm{signchg}=\mathrm{True}.
+}
+\]
+
+The last three values reproduce the sampled Session-I mouth/source diagnostics exactly at the precision reported in the session table.
+
+Two structural consequences follow immediately.
+
+1. The transported Session-I source branch is genuinely **outside** the positive-source corridor because \(\sigma_{\min}<0\).
+2. The same branch still lives inside the **same carried Family-1 source law**: nothing new had to be invented beyond the compensated two-mode source compiler.
+
+A further diagnostic is
+\[
+\mathfrak g(0)
+=
+\frac{2}{\pi}\left(1+\frac{a_0}{3}-\frac{b_0}{15}\right)
+\approx 1.12893906>1,
+\]
+so the transported branch really does leave the positive-source theorem window at sufficiently small separation.
+
+---
+
+## 8. What this stage achieves physically
+
+Stage 229 closes the source-side gap left open by Stages 226–228.
+
+1. It keeps the exact carried Family-1 source observables \(\mathfrak g[\sigma]\) and \(\mathcal S[\sigma]\) rather than replacing them with new phenomenological knobs.
+2. It proves that the first sign-changing two-mode source family is exactly invertible onto those two source moments.
+3. It reconstructs the mixed-to-shell loading ratio \(\mathcal R[\sigma]\) from the same carried gain law that the compact program already uses.
+4. It reproduces the sampled Session-I mouth/source diagnostics exactly with one explicit transported compensated source branch.
+
+So after Stage 229 the compensated source lane is no longer just a profile with a sign-change flag.
+It is an exact source packet that can be inserted directly into the stationary barrier compiler.
+
+---
+
+## 9. Result
+
+The compensated multimode source lane now has an explicit derivation-stack compiler.
+
+The exact packet is
+\[
+\boxed{
+\mathcal M_\sigma(r)
+=
+\bigl(
+\sigma(x;r),\,
+\sigma_{\min}(r),\,
+\mathrm{signchg}(r),\,
+\mathfrak g[\sigma](r),\,
+\mathcal S[\sigma](r),\,
+\mathcal R[\sigma](r)
+\bigr),
+}
+\]
+with
+\[
+\mathfrak g[\sigma](r)
+=
+\frac{2}{\pi}
+\left[
+1+\frac{a(r)}{3}-\frac{b(r)}{15}
+\right],
+\qquad
+\mathcal S[\sigma](r)
+=
+\frac{2\tanh(\pi/2)}{\pi}
+\left[
+1+\frac{a(r)}{5}+\frac{b(r)}{17}
+\right],
+\]
+\[
+\mathcal R[\sigma](r)
+=
+\frac{\bigl(\mathfrak g[\sigma](r)-\mathfrak r_{F1}\bigr)^2}{1+\mathfrak r_{F1}^2}.
+\]
+
+This is exactly the source-side packet that Stage 230 needs.
+
+---
+
+## 10. Immediate next step
+
+The next stage should now assemble the first honest reduced stationary barrier compiler from the three relaxed lanes:
+
+1. Stage-227 leakage/work packet,
+2. Stage-228 non-rigid `U/V` packet,
+3. Stage-229 compensated source packet.
+
+At that point the lowered barrier branch can be written as one explicit reduced stationary compiler rather than as three separate session-side ingredients.
+
+=== moving_throat_pde_stage231_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 231: Dynamic Event-Chain Compiler from the Relaxed Stationary Barrier Front End, Turning Points, Threshold Speed, and WKB
+
+## Status
+
+**Exact within**
+
+1. the carried Stage-230 stationary lowered-barrier front end
+   \[
+   V_{\rm eff}^{(230)}(r),
+   \]
+2. the reduced one-dimensional separation dynamics
+   \[
+   m_s\ddot r=-\partial_r V_{\rm eff}^{(230)}(r),
+   \]
+3. the standard turning-point / WKB reduction for a smooth single-peak barrier,
+4. and the declared Session-II benchmark specialization.
+
+This stage does **not** introduce a new same-charge kernel class.
+It is the dynamic continuation of Stage 230, not a replacement for the static-first barrier audit. The short-range/open-system firewall remains unchanged: the dynamic event chain is built on the already-lowered short-range branch rather than on a new long-range attractive law or a new linear dynamic kernel class.
+
+---
+
+## Purpose
+
+Stage 230 assembled the lowered stationary branch
+\[
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W\mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_\sigma(r).
+\]
+
+What was still missing was the **dynamic event chain** that turns that stationary front end into the objects actually used by the Session-II scattering test:
+
+1. the barrier peak \((r_{\rm peak},V_{\rm peak})\),
+2. the finite-radius classical threshold speed,
+3. the subbarrier turning points,
+4. the WKB action and transmission factor,
+5. the dynamic turning-point diagnostics carried by the same lowered branch,
+6. and the exact window condition that says when the lowered branch reaches contact while the pure Coulomb reference still turns back.
+
+That is exactly what Stage 231 does.
+
+---
+
+## Provenance
+
+This stage sits directly after Stage 230 and uses the same claim-status discipline.
+
+- The stationary lowering already came from the one-port short-range baseline plus the Stage-227 leakage/work packet, the Stage-228 non-rigid `U/V` drain packet, and the Stage-229 compensated-source packet.
+- The same-charge barrier audit had already shown that the linear dynamic mixed bundle does **not** generate a new conservative kernel class at large distance. Linear time dependence only makes the already-admissible short-range families frequency dependent, while the first outgoing correction is phase lag / pumping rather than direct conservative barrier lowering.
+- Session II then tested what the lowered stationary front end does dynamically inside a reduced scattering problem.
+
+So Stage 231 is the correct next step in the audit trail: it keeps the static-first theorem logic intact and promotes the already-lowered front end into explicit event-chain formulas.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the derivation stack had a fully explicit **stationary** lowered branch but no corresponding dynamic compiler.
+
+That meant the stack still lacked direct formulas for statements of the form
+
+- “the lowered branch becomes classically traversable at finite launch speed,”
+- “the outer turning point moves inward,”
+- “the WKB exponent is reduced relative to Coulomb,”
+- and “the turning-point branch carries a definite dynamic gradient trigger.”
+
+Stage 231 closes that gap.
+
+---
+
+## 1. Dynamic lift of the Stage-230 stationary front end
+
+Take the Stage-230 reduced barrier as the one-dimensional same-charge front end
+\[
+V(r):=V_{\rm eff}^{(230)}(r).
+\]
+
+The reduced radial dynamics is
+\[
+\boxed{
+ m_s\ddot r=-V'(r).
+}
+\]
+
+### 1.1 Exact energy integral
+
+Define the reduced mechanical energy
+\[
+\boxed{
+E=\frac{m_s}{2}\dot r^{\,2}+V(r).
+}
+\]
+Then
+\[
+\frac{dE}{dt}=m_s\dot r\ddot r+V'(r)\dot r
+=\dot r\bigl(m_s\ddot r+V'(r)\bigr)=0.
+\]
+So the event chain is completely controlled by the stationary front end once the launch energy is fixed.
+
+### 1.2 Launch energy from finite initial radius
+
+If the reduced trajectory is launched at radius \(r_0\) with inward speed \(v_0\), its energy is
+\[
+\boxed{
+E_0(v_0)=\frac{m_s}{2}v_0^2+V(r_0).
+}
+\]
+This is the quantity used throughout the rest of the compiler.
+
+---
+
+## 2. Barrier peak and classical-threshold compiler
+
+Assume the lowered branch has one barrier peak between the launch point and the chosen contact scale:
+\[
+V'(r_{\rm peak})=0,
+\qquad
+V''(r_{\rm peak})<0,
+\qquad
+V_{\rm peak}:=V(r_{\rm peak}).
+\]
+
+### 2.1 Finite-radius classical threshold speed on the lowered branch
+
+The minimum launch speed required to reach the top of the reduced barrier is determined by
+\[
+E_0(v_{\rm crit,new})=V_{\rm peak}.
+\]
+So
+\[
+\boxed{
+ v_{\rm crit,new}
+ =
+ \sqrt{\frac{2}{m_s}\bigl(V_{\rm peak}-V(r_0)\bigr)}.
+}
+\]
+
+This is the first exact dynamic compiler output of the lowered branch.
+
+### 2.2 Pure-Coulomb contact threshold at the same launch radius
+
+For the reference potential
+\[
+V_{\rm Coul}(r)=\frac1r,
+\]
+the energy needed to reach a chosen contact radius \(r_{\rm contact}\) from the same \(r_0\) is
+\[
+E_{\rm Coul}(v_0)=\frac{m_s}{2}v_0^2+\frac1{r_0}.
+\]
+The corresponding threshold speed is therefore
+\[
+\boxed{
+ v_{\rm contact,Coul}
+ =
+ \sqrt{\frac{2}{m_s}\left(\frac1{r_{\rm contact}}-\frac1{r_0}\right)}.
+}
+\]
+
+### 2.3 Exact classical-window theorem
+
+Let the lowered branch be single-peaked on \([r_{\rm contact},r_0]\), so that crossing the peak is sufficient to reach contact. Then if
+\[
+\boxed{
+ v_{\rm crit,new}<v_0<v_{\rm contact,Coul},
+}
+\]
+one has simultaneously
+\[
+E_0(v_0)>V_{\rm peak},
+\qquad
+E_{\rm Coul}(v_0)<\frac1{r_{\rm contact}}.
+\]
+So the lowered branch reaches the contact scale while the pure Coulomb branch still turns back outside it.
+
+This is the cleanest exact statement of the Session-II classical corridor.
+
+---
+
+## 3. Turning-point compiler and subbarrier WKB event chain
+
+Now fix a subbarrier energy \(E\) satisfying
+\[
+V(r_0)<E<V_{\rm peak}.
+\]
+
+### 3.1 Turning points
+
+The classically forbidden interval is bounded by the turning points
+\[
+\boxed{
+V\bigl(r_-(E)\bigr)=E,
+\qquad
+V\bigl(r_+(E)\bigr)=E,
+\qquad
+r_-(E)<r_+(E).
+}
+\]
+Here \(r_+(E)\) is the outer turning point and \(r_-(E)\) is the inner turning point.
+
+Differentiating the turning-point equation gives the exact transport law
+\[
+\boxed{
+\frac{dr_\pm}{dE}=\frac{1}{V'\bigl(r_\pm(E)\bigr)}.
+}
+\]
+So on the usual barrier geometry,
+
+- \(V'(r_+(E))<0\), hence \(dr_+/dE<0\): the outer turning point moves inward as energy rises;
+- \(V'(r_-(E))>0\), hence \(dr_-/dE>0\): the inner turning point moves outward as energy rises.
+
+Therefore the forbidden width shrinks as \(E\) approaches the peak from below.
+
+### 3.2 Launch speed for a chosen subbarrier energy
+
+If one wants the reduced trajectory to have energy \(E_{\rm sub}\) at launch radius \(r_0\), then
+\[
+\boxed{
+ v_{0,\rm sub}(E_{\rm sub})
+ =
+ \sqrt{\frac{2}{m_s}\bigl(E_{\rm sub}-V(r_0)\bigr)}.
+}
+\]
+
+### 3.3 Exact WKB action and transmission factor
+
+The reduced WKB action is
+\[
+\boxed{
+ I_{\rm new}(E)
+ =
+ \frac{1}{\hbar_{\rm eff}}
+ \int_{r_-(E)}^{r_+(E)}
+ \sqrt{2m_s\bigl(V(r)-E\bigr)}\,dr.
+}
+\]
+The transmission factor is
+\[
+\boxed{
+ T_{\rm new}(E)=e^{-2I_{\rm new}(E)}.
+}
+\]
+
+Differentiating under the integral sign and using the vanishing boundary terms at the turning points gives
+\[
+\boxed{
+\frac{dI_{\rm new}}{dE}
+=
+-\frac{\sqrt{m_s/2}}{\hbar_{\rm eff}}
+\int_{r_-(E)}^{r_+(E)}
+\frac{dr}{\sqrt{V(r)-E}}
+<0.
+}
+\]
+So any mechanism that lowers the barrier or raises the incident energy decreases the action and increases the transmission exponentially.
+
+### 3.4 Pure-Coulomb reference action
+
+For the pure Coulomb reference
+\[
+V_{\rm Coul}(r)=\frac1r,
+\]
+the outer turning point is exact:
+\[
+\boxed{
+ r_{\rm turn,Coul}(E)=\frac1E.
+}
+\]
+If the inner comparison point is the chosen contact radius \(r_{\rm contact}\), then
+\[
+\boxed{
+ I_{\rm Coul}(E)
+ =
+ \frac{\sqrt{2m_s}}{\hbar_{\rm eff}}
+ \int_{r_{\rm contact}}^{1/E}
+ \sqrt{\frac1r-E}\,dr.
+}
+\]
+The integral closes in elementary form for \(Er_{\rm contact}<1\):
+\[
+\boxed{
+I_{\rm Coul}(E)
+=
+\frac{\sqrt{2m_s}}{\hbar_{\rm eff}}
+\left[
+\frac{\pi}{2\sqrt{E}}
+-
+\sqrt{r_{\rm contact}\bigl(1-Er_{\rm contact}\bigr)}
+-
+\frac{\arcsin\sqrt{Er_{\rm contact}}}{\sqrt{E}}
+\right].
+}
+\]
+
+### 3.5 Exact transmission-ratio compiler
+
+The reduced-vs-Coulomb tunneling ratio is therefore
+\[
+\boxed{
+\frac{T_{\rm new}(E)}{T_{\rm Coul}(E)}
+=
+\exp\!\bigl[-2\bigl(I_{\rm new}(E)-I_{\rm Coul}(E)\bigr)\bigr].
+}
+\]
+So once the lowered branch gives \(I_{\rm new}<I_{\rm Coul}\), the enhancement is completely fixed.
+
+---
+
+## 4. Near-top normal form
+
+For energies just below the peak it is useful to expand
+\[
+V(r)=V_{\rm peak}-\frac{K_{\rm peak}}{2}(r-r_{\rm peak})^2+O\bigl((r-r_{\rm peak})^3\bigr),
+\qquad
+K_{\rm peak}:=-V''(r_{\rm peak})>0.
+\]
+Define
+\[
+\Delta E:=V_{\rm peak}-E>0.
+\]
+Then the turning points are
+\[
+\boxed{
+ r_\pm(E)
+ =
+ r_{\rm peak}
+ \pm
+ \sqrt{\frac{2\Delta E}{K_{\rm peak}}}
+ +O\bigl(\Delta E\bigr).
+}
+\]
+The leading WKB action is
+\[
+\boxed{
+ I_{\rm top}(E)
+ =
+ \frac{\pi\Delta E}{\hbar_{\rm eff}}\sqrt{\frac{m_s}{K_{\rm peak}}}
+ +O\bigl(\Delta E^{3/2}\bigr).
+}
+\]
+
+So near the top the event chain collapses to one curvature scale \(K_{\rm peak}\).
+
+This normal form is not needed for the Session-II benchmark itself, but it is the right local compiler for later near-threshold analysis.
+
+---
+
+## 5. Dynamic turning-point diagnostics carried forward
+
+Even before the magnetic/helicity branch is added, the turning-point event chain naturally carries two reduced diagnostics that are useful later.
+
+### 5.1 Dynamic barrier scalar at the outer turning point
+
+The same weak-axisymmetric barrier scalar from the stationary front end may be sampled dynamically on the event chain:
+\[
+\boxed{
+\Xi_{\rm turn}(E):=\Xi_1\bigl(r_+(E)\bigr).
+}
+\]
+This quantity is not a new theorem by itself, but it tells the later weak-axisymmetric audit where the subbarrier path is sitting on the transported front-end packet.
+
+### 5.2 Trigger-width diagnostic
+
+The Session-II gradient trigger was defined by
+\[
+\chi_\lambda\equiv \lambda\,\bigl|\partial_r\ln V(r)\bigr|.
+\]
+Solving the threshold condition \(\chi_\lambda=1\) at the outer turning point gives
+\[
+\boxed{
+\lambda_{\rm th}(E)
+=
+\left|\frac{V\bigl(r_+(E)\bigr)}{V'\bigl(r_+(E)\bigr)}\right|
+=
+\left|\frac{E}{V'\bigl(r_+(E)\bigr)}\right|.
+}
+\]
+So the same turning-point event chain also determines the first dynamic confinement-width trigger.
+
+### 5.3 Scope boundary
+
+Stage 231 stops here.
+The aligned-vs-anti-aligned helicity-export diagnostic belongs to the next stage because it is not part of the scalar scattering compiler itself; it is an additional mixed/vortical diagnostic layered on top of this event chain.
+
+---
+
+## 6. Session-II benchmark specialization
+
+The Session-II run used
+\[
+m_s=1,
+\qquad
+\hbar_{\rm eff}=1,
+\qquad
+r_0=5,
+\qquad
+r_{\rm contact}=0.18,
+\qquad
+E_{\rm sub}=2.5.
+\]
+The reported lowered-branch dynamic observables were
+\[
+r_{\rm peak}=0.23944389,
+\qquad
+V_{\rm peak}=3.42933112,
+\qquad
+V(r_0)=0.19999794,
+\]
+\[
+r_{\rm turn,new}=0.39096144,
+\qquad
+r_{\rm inner}=0.19039548,
+\qquad
+I_{\rm new}=0.19744614,
+\]
+with the additional turning-point diagnostics
+\[
+\Xi_{\rm turn}=0.34437471,
+\qquad
+\lambda_{\rm th}=0.42826825.
+\]
+
+### 6.1 Peak-to-threshold compiler
+
+Using the exact finite-radius threshold law,
+\[
+v_{\rm crit,new}
+=
+\sqrt{2\bigl(V_{\rm peak}-V(r_0)\bigr)}
+=
+\sqrt{2\bigl(3.42933112-0.19999794\bigr)}
+\approx 2.54139063.
+\]
+This reproduces the Session-II threshold value.
+
+For the pure Coulomb contact comparison,
+\[
+v_{\rm contact,Coul}
+=
+\sqrt{2\left(\frac1{0.18}-\frac15\right)}
+\approx 3.27278339.
+\]
+So the reduced classical corridor is explicit:
+\[
+\boxed{
+2.54139063<v_0<3.27278339.
+}
+\]
+
+### 6.2 Subbarrier launch speed and Coulomb turning point
+
+At the fixed subbarrier energy \(E_{\rm sub}=2.5\), the launch speed is
+\[
+v_{0,\rm sub}
+=
+\sqrt{2\bigl(2.5-0.19999794\bigr)}
+\approx 2.14476202.
+\]
+The pure-Coulomb outer turning point is
+\[
+r_{\rm turn,Coul}=\frac1{2.5}=0.4,
+\]
+which agrees with the reported Coulomb reference value \(0.40000141\) up to the expected numerical rounding of the session scan.
+
+### 6.3 WKB enhancement
+
+The reported Coulomb comparison action was
+\[
+I_{\rm Coul}\approx 0.30222297.
+\]
+Using the exact transmission law,
+\[
+T_{\rm new}=e^{-2I_{\rm new}}=e^{-2(0.19744614)}\approx 0.67375262,
+\]
+\[
+T_{\rm Coul}=e^{-2I_{\rm Coul}}=e^{-2(0.30222297)}\approx 0.54637707.
+\]
+So
+\[
+\frac{T_{\rm new}}{T_{\rm Coul}}
+=
+\exp\!\bigl[-2(I_{\rm new}-I_{\rm Coul})\bigr]
+\approx 1.23312756.
+\]
+That is a transmission increase of
+\[
+\boxed{
+\left(\frac{T_{\rm new}}{T_{\rm Coul}}-1\right)\times 100\%
+\approx 23.3128\%.
+}
+\]
+
+### 6.4 Above-threshold contact demonstration
+
+The Session-II report also gave an explicit above-threshold demonstration speed
+\[
+v_{0,\rm cross}=2.59221845.
+\]
+This lies inside the exact window:
+\[
+2.54139063<2.59221845<3.27278339.
+\]
+So the lowered branch is above its own barrier while the pure Coulomb branch is still below the energy needed for the same contact radius.
+
+Using the Coulomb energy at that speed,
+\[
+E_{\rm Coul}(v_{0,\rm cross})
+=
+\frac12 v_{0,\rm cross}^2+\frac15,
+\]
+the pure-Coulomb turning point is
+\[
+r_{\rm turn,Coul}(v_{0,\rm cross})
+=
+\frac{1}{E_{\rm Coul}(v_{0,\rm cross})}
+\approx 0.2809,
+\]
+consistent with the reported value \(0.28091705\).
+
+So the benchmark does exactly what Stage 231 needs it to do: it exhibits a concrete speed range where the lowered branch reaches the chosen contact scale and the Coulomb comparison does not.
+
+### 6.5 Coulomb closed-form check
+
+The exact Coulomb WKB formula from §3.4 gives, with \(m_s=\hbar_{\rm eff}=1\),
+\[
+I_{\rm Coul}(2.5;0.18)
+=
+\sqrt2\left[
+\frac{\pi}{2\sqrt{2.5}}
+-
+\sqrt{0.18\,(1-2.5\times 0.18)}
+-
+\frac{\arcsin\sqrt{2.5\times 0.18}}{\sqrt{2.5}}
+\right]
+\approx 0.30230580.
+\]
+That is within the numerical tolerance implied by the reported Session-II discrete reference value \(0.30222297\), so the closed-form Coulomb side of the compiler is consistent with the dynamic benchmark.
+
+---
+
+## 7. What Stage 231 proves
+
+Stage 231 upgrades the relaxed barrier branch from a stationary softening plot into a real dynamic event chain.
+
+It proves, within the declared reduced closure:
+
+1. the exact reduced motion is still energy-conserving once the Stage-230 front end is fixed,
+2. the barrier peak determines a finite launch threshold
+   \[
+   v_{\rm crit,new}=\sqrt{2\bigl(V_{\rm peak}-V(r_0)\bigr)/m_s},
+   \]
+3. there is an exact comparison threshold for the same contact scale on the pure Coulomb branch,
+4. the subbarrier branch is controlled by explicit turning points and an explicit WKB action,
+5. the transmission improvement is exactly
+   \[
+   \exp\!\bigl[-2(I_{\rm new}-I_{\rm Coul})\bigr],
+   \]
+6. and the turning-point path naturally carries the dynamic diagnostics
+   \[
+   \Xi_{\rm turn},\qquad \lambda_{\rm th},
+   \]
+   needed by the next stages.
+
+So the lowered same-charge branch is no longer just “a smaller plotted barrier.”
+It is a complete reduced scattering object with explicit classical and subbarrier compilers.
+
+At the same time, this stage **does not** reopen the barrier-audit verdict.
+The event-chain improvement still sits on a short-range/open-system front end, and the linear dynamic mixed bundle still contributes phase-lag / pumping rather than a new conservative kernel class.
+
+---
+
+## 8. Immediate next step
+
+The next stage should attach the magnetic/helicity diagnostic to this event chain.
+That means:
+
+1. keep the dynamic turning-point and WKB compiler derived here,
+2. add the aligned-vs-anti-aligned mixed/vortical export observable,
+3. and test whether the preferred branch is the one that most effectively unloads unresolved repulsive structure while traversing the same lowered event chain.
+
+That is exactly the Stage-232 job.
+
+=== moving_throat_pde_stage232_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 232: Conditional Helicity-Export Diagnostic Compiler on the Dynamic Event Chain and the Aligned-vs-Anti-Aligned Mixed-Sector Closure
+
+## Status
+
+**Exact within**
+
+1. the exact projected helicity identities already carried by the localized `4+1` Maxwell / plasma extension,
+2. the Stage-231 dynamic event chain
+   \[
+   r=r_E(t),
+   \qquad
+   E=\frac{m_s}{2}\dot r^{\,2}+V_{\rm eff}^{(230)}(r),
+   \]
+3. the declared Session-II reduced mixed/vortical orientation closure,
+4. and the Session-II benchmark specialization recorded in the barrier-session write-up.
+
+This stage is **diagnostic rather than constitutive**.  It does not change the scalar event chain from Stage 231, and it does not upgrade the aligned-vs-anti-aligned comparison into a theorem about microscopic spin support.  It attaches an unresolved-helicity export ledger to the already-compiled crossing branch.
+
+---
+
+## Purpose
+
+Stage 231 ended with the scalar event chain
+
+\[
+(r_{\rm peak},V_{\rm peak}),
+\qquad
+v_{\rm crit,new},
+\qquad
+r_\pm(E),
+\qquad
+I_{\rm new}(E),
+\qquad
+\Xi_{\rm turn}(E),
+\qquad
+\lambda_{\rm th}(E).
+\]
+
+What it deliberately did **not** yet include was the additional Session-II diagnostic that compared the two reduced magnetic/vortical orientation branches.
+
+The next missing object was therefore:
+
+> on the already-compiled dynamic crossing branch, how much unresolved / transverse-structure helicity is exported into the hidden sector, and how does that export differ between the aligned and anti-aligned reduced orientation closures?
+
+That is exactly what Stage 232 does.
+
+---
+
+## Provenance
+
+This stage is the correct continuation of Stage 231 for three reasons.
+
+1. The parent/plasma theory already carries an exact projected-vs-resolved helicity ledger with a precise subscale-helicity transfer equation.
+2. Stage 231 already supplied the dynamic event chain and the same turning-point diagnostics used in the Session-II run.
+3. The barrier-session write-up explicitly states that, inside the chosen reduced mixed-sector closure, both aligned and anti-aligned branches reached contact, while the difference between them was the efficiency of unresolved helicity export rather than the existence of scalar crossing itself.
+
+So Stage 232 is not a new scattering compiler.  It is a conditional **hidden-channel export diagnostic** layered on top of the Stage-231 path.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the derivation stack could say all of the following:
+
+- the lowered branch has a finite threshold-speed window,
+- the subbarrier turning points move relative to Coulomb,
+- the WKB exponent is reduced,
+- and the turning-point branch carries the diagnostics
+  \(\Xi_{\rm turn}\) and \(\lambda_{\rm th}\).
+
+But the stack still had no explicit derivation object for the Session-II statement
+
+> aligned spins export more subscale helicity than anti-aligned ones on the chosen mixed-sector closure.
+
+Stage 232 turns that statement into an auditable reduced compiler.
+
+---
+
+## 1. Exact subscale-helicity ledger carried by the parent theory
+
+The projected helicity machinery is already exact in the plasma extension.
+At fixed `w`,
+
+\[
+\partial_t(\mathbf A\!\cdot\!\mathbf B)
++\nabla_3\!\cdot\!(\Phi\,\mathbf B+\mathbf E\times\mathbf A)
+=-2\,\mathbf E\!\cdot\!\mathbf B.
+\]
+
+Projecting in `w` gives
+
+\[
+\partial_t\overline h+\nabla_3\cdot\overline{\mathbf F}_h
+=-2\,\overline{\mathbf E\cdot\mathbf B},
+\qquad
+\overline h\equiv\overline{\mathbf A\cdot\mathbf B}.
+\]
+
+The resolved brane helicity built from projected fields is
+
+\[
+h_{\rm res}=\overline{\mathbf A}\cdot\overline{\mathbf B},
+\qquad
+\partial_t h_{\rm res}+\nabla_3\cdot\mathbf F_{h,{\rm res}}
+=-2\,\overline{\mathbf E}\cdot\overline{\mathbf B}.
+\]
+
+So the exact **subscale / unresolved helicity** is
+
+\[
+\boxed{
+h_{\rm sub}
+:=
+\overline h-h_{\rm res}
+=
+\overline{\mathbf A'\cdot\mathbf B'}.
+}
+\]
+
+Subtracting the two identities gives the exact transfer law
+
+\[
+\boxed{
+\partial_t h_{\rm sub}+\nabla_3\cdot\mathbf F_{h,{\rm sub}}
+=
+-2\Bigl(\overline{\mathbf E\cdot\mathbf B}
+-\overline{\mathbf E}\cdot\overline{\mathbf B}\Bigr)
+=
+-2\,\overline{\mathbf E'\cdot\mathbf B'}.
+}
+\]
+
+So the hidden-sector export diagnostic is not ad hoc: it is exactly the projected covariance helicity ledger of the parent theory.
+
+---
+
+## 2. Volume-integrated event-chain diagnostic attached to Stage 231
+
+Let `\mathcal V_{\rm br}` be the reduced brane control region used to monitor the event chain.  Define the integrated unresolved helicity
+
+\[
+H_{\rm sub}(t;E)
+:=
+\int_{\mathcal V_{\rm br}} h_{\rm sub}(\mathbf x,t;E)\,d^3x.
+\]
+
+Integrating the exact local equation gives
+
+\[
+\boxed{
+\frac{dH_{\rm sub}}{dt}
+=
+-\Phi_h(t;E)-2\,\mathcal C_h(t;E),
+}
+\]
+
+where
+
+\[
+\Phi_h(t;E)
+:=
+\oint_{\partial\mathcal V_{\rm br}} \mathbf F_{h,{\rm sub}}\cdot d\mathbf S,
+\qquad
+\mathcal C_h(t;E)
+:=
+\int_{\mathcal V_{\rm br}}\overline{\mathbf E'\cdot\mathbf B'}\,d^3x.
+\]
+
+Stage 231 already supplies the reduced dynamic path
+\(r=r_E(t)\),
+so Stage 232 simply evaluates the helicity diagnostic **along that same path**.
+
+The Stage-231 turning-point tags
+
+\[
+\Xi_{\rm turn}(E)=\Xi_1\bigl(r_+(E)\bigr),
+\qquad
+\lambda_{\rm th}(E)=\left|\frac{E}{V'\bigl(r_+(E)\bigr)}\right|
+\]
+
+are therefore carried here only as path labels for the benchmark branch.
+They do not change the helicity algebra.
+
+---
+
+## 3. Minimal aligned-vs-anti-aligned mixed-sector closure
+
+Introduce the reduced orientation label
+
+\[
+\sigma\in\{+1,-1\},
+\qquad
+\sigma=+1\;\text{(aligned)},
+\qquad
+\sigma=-1\;\text{(anti-aligned)}.
+\]
+
+The minimal closure assumption is that the hidden-sector helicity export is linear in this two-state label:
+
+\[
+\Phi_{h,\sigma}(t;E)=\Phi_{h,0}(t;E)+\sigma\,\Phi_{h,1}(t;E),
+\]
+\[
+\mathcal C_{h,\sigma}(t;E)=\mathcal C_{h,0}(t;E)+\sigma\,\mathcal C_{h,1}(t;E).
+\]
+
+Then the integrated export rate is exactly of the form
+
+\[
+\boxed{
+\dot H_{{\rm sub},\sigma}(t;E)
+=
+\Gamma_0(t;E)+\sigma\,\Gamma_1(t;E),
+}
+\]
+
+with
+
+\[
+\Gamma_0:=-\Phi_{h,0}-2\mathcal C_{h,0},
+\qquad
+\Gamma_1:=-\Phi_{h,1}-2\mathcal C_{h,1}.
+\]
+
+Define the normalized orientation asymmetry
+
+\[
+\boxed{
+\alpha_h(t;E):=\frac{\Gamma_1(t;E)}{\Gamma_0(t;E)}.
+}
+\]
+
+Whenever \(\Gamma_0>0\), the branch takes the canonical form
+
+\[
+\boxed{
+\dot H_{{\rm sub},\sigma}(t;E)
+=
+\Gamma_0(t;E)\bigl[1+\sigma\,\alpha_h(t;E)\bigr].
+}
+\]
+
+### 3.1 Positivity and preference conditions
+
+For both branches to export positively, it is enough that
+
+\[
+\boxed{
+\Gamma_0(t;E)>\bigl|\Gamma_1(t;E)\bigr|
+\iff
+\bigl|\alpha_h(t;E)\bigr|<1.
+}
+\]
+
+For the aligned branch to dominate instantaneously, it is enough that
+
+\[
+\boxed{
+\Gamma_1(t;E)>0
+\iff
+\alpha_h(t;E)>0.
+}
+\]
+
+So the entire aligned-vs-anti-aligned comparison collapses to the sign and size of one reduced scalar \(\alpha_h\).
+
+### 3.2 Separation from the scalar event chain
+
+The scalar Stage-231 crossing path is still controlled only by
+
+\[
+E,
+\qquad
+V_{\rm eff}^{(230)}(r),
+\qquad
+r_\pm(E),
+\qquad
+I_{\rm new}(E).
+\]
+
+The orientation label `\sigma` enters only through the hidden-channel export functional \(H_{{\rm sub},\sigma}\).  That is why this stage is a diagnostic layered on top of Stage 231 rather than a replacement for it.
+
+---
+
+## 4. Exact peak and integrated ratio compilers
+
+### 4.1 Instantaneous / peak ratio
+
+At any common reference point on the same dynamic path,
+
+\[
+\boxed{
+R_{\rm inst}(t;E)
+:=
+\frac{\dot H_{{\rm sub},+}(t;E)}{\dot H_{{\rm sub},-}(t;E)}
+=
+\frac{1+\alpha_h(t;E)}{1-\alpha_h(t;E)}.
+}
+\]
+
+Therefore the orientation asymmetry is recovered exactly from the observed ratio by
+
+\[
+\boxed{
+\alpha_h(t;E)
+=
+\frac{R_{\rm inst}(t;E)-1}{R_{\rm inst}(t;E)+1}.
+}
+\]
+
+In particular, at the export peak,
+
+\[
+R_{\rm pk}
+=
+\frac{1+\alpha_{\rm pk}}{1-\alpha_{\rm pk}},
+\qquad
+\alpha_{\rm pk}:=\alpha_h(t_{\rm pk};E).
+\]
+
+### 4.2 Integrated ratio on a common event interval
+
+Define the integrated exported unresolved helicity over a common event interval `I_E` on the same crossing branch,
+
+\[
+\mathcal H_\sigma(E)
+:=
+\int_{I_E}\dot H_{{\rm sub},\sigma}(t;E)\,dt.
+\]
+
+Then
+
+\[
+\mathcal H_+(E)-\mathcal H_-(E)
+=
+2\int_{I_E}\Gamma_1(t;E)\,dt,
+\]
+\[
+\mathcal H_+(E)+\mathcal H_-(E)
+=
+2\int_{I_E}\Gamma_0(t;E)\,dt.
+\]
+
+Define the `\Gamma_0`-weighted mean asymmetry
+
+\[
+\boxed{
+\bar\alpha_h(E)
+:=
+\frac{\int_{I_E}\Gamma_1(t;E)\,dt}{\int_{I_E}\Gamma_0(t;E)\,dt}.
+}
+\]
+
+Then the integrated ratio obeys the exact same Möbius form
+
+\[
+\boxed{
+R_{\rm int}(E)
+:=
+\frac{\mathcal H_+(E)}{\mathcal H_-(E)}
+=
+\frac{1+\bar\alpha_h(E)}{1-\bar\alpha_h(E)}.
+}
+\]
+
+Hence
+
+\[
+\boxed{
+\bar\alpha_h(E)
+=
+\frac{R_{\rm int}(E)-1}{R_{\rm int}(E)+1}.
+}
+\]
+
+Any common overall export scale, including the Session-II parameter \(\eta_h\), multiplies both \(\mathcal H_+\) and \(\mathcal H_-\) equally and therefore cancels out of \(R_{\rm int}\).  So the aligned-vs-anti-aligned preference is a pure asymmetry diagnostic rather than a statement about the absolute size of the hidden-channel source.
+
+### 4.3 Final-helicity ratio on equal-start runs
+
+If the two runs start with the same initial unresolved helicity, and in particular if
+
+\[
+H_{{\rm sub},+}(t_{\rm in};E)=H_{{\rm sub},-}(t_{\rm in};E)=0,
+\]
+
+then the final values satisfy
+
+\[
+\boxed{
+\frac{H_{{\rm sub},+}(t_{\rm out};E)}{H_{{\rm sub},-}(t_{\rm out};E)}
+=
+R_{\rm int}(E).
+}
+\]
+
+So the benchmark may be checked either by integrated export or by final unresolved-helicity load.
+
+---
+
+## 5. Session-II benchmark specialization
+
+The Session-II benchmark used the same reduced path family already compiled in Stage 231, with turning-point tags
+
+\[
+\Xi_{\rm turn}\approx 0.34437471,
+\qquad
+\lambda_{\rm th}\approx 0.42826825,
+\]
+
+and the above-threshold contact demonstration at
+
+\[
+v_0\approx 2.59221845.
+\]
+
+The reported helicity-export outputs were
+
+\[
+\max\dot H_{{\rm sub},+}
+\approx 281.79830789,
+\qquad
+\max\dot H_{{\rm sub},-}
+\approx 56.96878122,
+\]
+
+\[
+H_{{\rm sub},+}^{\rm final}
+\approx 20.58070146,
+\qquad
+H_{{\rm sub},-}^{\rm final}
+\approx 5.00843357.
+\]
+
+### 5.1 Peak-ratio reconstruction
+
+From the reported peak rates,
+
+\[
+R_{\rm pk}
+=
+\frac{281.79830789}{56.96878122}
+\approx 4.94653917.
+\]
+
+So the reconstructed peak asymmetry is
+
+\[
+\boxed{
+\alpha_{\rm pk}
+=
+\frac{R_{\rm pk}-1}{R_{\rm pk}+1}
+\approx 0.6636699192.
+}
+\]
+
+Thus the aligned branch carries about two-thirds of the instantaneous export asymmetry scale at the benchmark peak, while the anti-aligned branch still remains positive because \(|\alpha_{\rm pk}|<1\).
+
+### 5.2 Integrated / final-ratio reconstruction
+
+From the reported integrated ratio,
+
+\[
+R_{\rm int}\approx 4.10920923,
+\]
+
+the weighted mean asymmetry is
+
+\[
+\boxed{
+\bar\alpha_h
+=
+\frac{R_{\rm int}-1}{R_{\rm int}+1}
+\approx 0.6085499908.
+}
+\]
+
+Using the reported final unresolved-helicity loads,
+
+\[
+\frac{H_{{\rm sub},+}^{\rm final}}{H_{{\rm sub},-}^{\rm final}}
+=
+\frac{20.58070146}{5.00843357}
+\approx 4.10920923,
+\]
+
+which matches the integrated ratio to displayed precision.
+So the benchmark is consistent with equal-start bookkeeping for the two branches.
+
+### 5.3 Exact interpretation of the benchmark inequalities
+
+The benchmark therefore satisfies
+
+\[
+0<\bar\alpha_h\approx 0.60855<\alpha_{\rm pk}\approx 0.66367<1.
+\]
+
+This has three immediate consequences.
+
+1. **Both** branches export positive unresolved helicity throughout the representative active region.
+2. The aligned branch exports strictly more than the anti-aligned branch.
+3. The asymmetry is strongest near the export peak and averages down over the full trajectory.
+
+So the reduced comparison is not “aligned crosses, anti-aligned fails.”
+It is
+
+> both branches can share the same scalar crossing corridor, but the aligned label unloads unresolved repulsive structure more efficiently into the hidden transverse sector.
+
+That is exactly the diagnostic content the session write-up attributed to the run.
+
+---
+
+## 6. Why this stage is diagnostic rather than a spin theorem
+
+This derivation deliberately stops at the reduced export ledger.
+The label
+
+\[
+\sigma\in\{+1,-1\}
+\]
+
+is only the Session-II **orientation closure index** carried by the mixed/vortical diagnostic.  It is not yet a derived microscopic spin quantum number.
+
+So Stage 232 proves only the following conditional statement:
+
+> on the Stage-231 event chain and within the declared reduced mixed-sector closure, the aligned orientation label produces a larger unresolved-helicity export than the anti-aligned label whenever the reduced asymmetry scalar satisfies \(0<\alpha_h<1\).
+
+It does **not** yet prove intrinsic spin-`1/2`, a microscopic Pauli sector, or a completed spin-support theorem of the parent defect ontology.
+
+---
+
+## 7. What this stage adds to the audit trail
+
+After Stage 231 the stack could already say where the lowered same-charge branch turned, tunneled, and crossed.
+
+After Stage 232 the stack can additionally say:
+
+1. the unresolved-helicity export ledger is anchored to an exact parent-theory projection identity,
+2. the aligned-vs-anti-aligned diagnostic is a one-scalar mixed/vortical asymmetry problem,
+3. the instantaneous and integrated preference ratios are exactly invertible,
+4. the Session-II benchmark lies strictly inside the “both branches export, aligned dominates” regime,
+5. and the comparison is a **hidden-channel unloading diagnostic**, not yet a theorem of microscopic spin support.
+
+That is precisely the right status for the next branch in the derivation stack.
+
+---
+
+## 8. Benchmark summary packet
+
+For the representative Session-II branch,
+
+\[
+\boxed{
+R_{\rm pk}\approx 4.94653917,
+\qquad
+\alpha_{\rm pk}\approx 0.66366992,
+}
+\]
+
+\[
+\boxed{
+R_{\rm int}\approx 4.10920923,
+\qquad
+\bar\alpha_h\approx 0.60854999,
+}
+\]
+
+with matching final-load ratio
+
+\[
+\boxed{
+\frac{H_{{\rm sub},+}^{\rm final}}{H_{{\rm sub},-}^{\rm final}}
+\approx 4.10920923.
+}
+\]
+
+So the Stage-232 benchmark packet is
+
+\[
+\boxed{
+\bigl(\Xi_{\rm turn},\lambda_{\rm th},R_{\rm pk},R_{\rm int},\alpha_{\rm pk},\bar\alpha_h\bigr)
+=
+\bigl(0.34437471,\;0.42826825,\;4.94653917,\;4.10920923,\;0.66366992,\;0.60854999\bigr).
+}
+\]
+
+---
+
+## 9. Immediate next step
+
+The next stage should **not** reinterpret this diagnostic as a spin theorem.
+The right continuation is instead to ask how this hidden-channel export diagnostic interacts with the structural survival problem:
+
+- does the branch that exports more unresolved helicity also survive long enough to use that unloading advantage,
+- and how does that preference feed into the crossing-vs-collapse / Goldilocks compiler that compares transit against dressing-leg failure?
+
+That is the correct bridge into the next stage.
+
+=== moving_throat_pde_stage233_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage231_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 233: Crossing-vs-Collapse / Goldilocks-Window Compiler from the Stage-231 Event Chain and the Relaxed Wall-Timescale Closure
+
+## Status
+
+**Exact within**
+
+1. the Stage-231 dynamic event chain
+   \[
+   E=\frac{m_s}{2}\dot r^{\,2}+V_{\rm eff}^{(230)}(r),
+   \]
+2. the Stage-231 trigger-width packet
+   \[
+   \lambda_{\rm th}(E)=\left|\frac{E}{V'\bigl(r_+(E)\bigr)}\right|,
+   \]
+3. the Stage-228 non-rigid dressing-leg data \((g_{UV},\mu_\eta)\),
+4. the Session-III characteristic-collapse closure for the active dressing leg,
+5. and the Session-III proton-proxy / aligned-branch benchmark specialization.
+
+This stage is a **timescale compiler**, not a new barrier law.
+It does not modify the Stage-230 stationary lowered branch, and it does not add the Stage-234 damping/export kernel yet.  Its job is narrower: turn the relaxed branch into an explicit survival criterion of the form
+\[
+\text{crossing outruns collapse}.
+\]
+
+---
+
+## Purpose
+
+Stage 231 supplied the dynamic crossing branch:
+\[
+(r_{\rm peak},V_{\rm peak}),
+\qquad
+v_{\rm crit,new},
+\qquad
+r_\pm(E),
+\qquad
+\lambda_{\rm th}(E),
+\qquad
+\Xi_{\rm turn}(E).
+\]
+
+Stage 232 then attached the aligned-vs-anti-aligned hidden-channel export diagnostic to that same event chain.
+What was still missing was the next reduced question actually used in Session III:
+
+> on the already-lowered and dynamically traversable branch, when does the barrier-region transit finish before the relaxed dressing leg collapses?
+
+That is exactly what Stage 233 compiles.
+
+The output of this stage is the explicit **Goldilocks-window ledger**:
+
+1. an exact event-chain transit-time integral,
+2. the characteristic reduced crossing-time compiler,
+3. the relaxed dressing-leg collapse-time compiler,
+4. the stability ratio
+   \[
+   \mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}},
+   \]
+5. the lower safe edge in both energy and speed form,
+6. the heavy-throat scaling theorem,
+7. and the trigger-width sensitivity theorem that explains why the Session-III window was one-sided and geometry-sensitive.
+
+---
+
+## Provenance
+
+This stage is the correct continuation of Stages 228–232.
+
+- Stage 228 activated the non-rigid \(U/V\) lane and made the dressing leg into a live reduced degree of freedom.
+- Stage 231 supplied the dynamic crossing branch, the peak energy \(V_{\rm peak}\), and the turning-point trigger width \(\lambda_{\rm th}\).
+- Stage 232 fixed the aligned branch as the preferred hidden-channel export branch for the benchmark dynamic check, but deliberately left the scalar crossing law unchanged.
+- Session III then compared barrier-region transit against dressing-leg collapse on that already-compiled relaxed branch.
+
+So Stage 233 is not a fresh phenomenology layer.  It is the derivation-stack object corresponding to the Session-III “Goldilocks zone.”
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the stack could already say:
+
+- the lowered branch has a finite threshold speed,
+- a classical crossing window exists relative to Coulomb,
+- the turning-point branch carries the diagnostics \(\Xi_{\rm turn}\) and \(\lambda_{\rm th}\),
+- and the aligned branch exports hidden helicity more efficiently than the anti-aligned branch in the chosen reduced closure.
+
+But it still could **not** say:
+
+- whether a successful crossing event survives its own relaxed dressing-leg drain,
+- where the lower survival edge sits,
+- why the safe set is one-sided on the chosen closure,
+- or which quantities actually control that edge.
+
+Stage 233 closes that gap.
+
+---
+
+## 1. Event-chain transit time from the Stage-231 branch
+
+Let
+\[
+V(r):=V_{\rm eff}^{(230)}(r)
+\]
+be the Stage-230 lowered barrier front end and let the Stage-231 event chain satisfy
+\[
+E=\frac{m_s}{2}\dot r^{\,2}+V(r).
+\]
+Then along an inward same-charge trajectory,
+\[
+\dot r=-\sqrt{\frac{2}{m_s}\bigl(E-V(r)\bigr)}.
+\]
+So the exact path-time between any two radii on the already-compiled branch is
+\[
+\boxed{
+T_{\rm traj}(E;r_a\to r_b)
+=
+\sqrt{\frac{m_s}{2}}
+\int_{r_b}^{r_a}
+\frac{dr}{\sqrt{E-V(r)}}.
+}
+\]
+
+This is the exact event-chain transit object inherited from Stage 231.
+
+### 1.1 Characteristic barrier-region transit compiler
+
+Session III did not use the full path-time integral as its stress-test clock.
+Instead, it compressed the active barrier region to one effective width
+\[
+\lambda_{\rm eff}
+\]
+and used the peak-over-barrier kinetic speed
+\[
+\boxed{
+ v_{\rm bar}(E)=\sqrt{\frac{2(E-V_{\rm peak})}{m_s}}.
+}
+\]
+Hence the characteristic crossing-time compiler is
+\[
+\boxed{
+ t_{\rm cross}(E)
+ =
+ \frac{\lambda_{\rm eff}}{v_{\rm bar}(E)}
+ =
+ \lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
+}
+\]
+
+This is exact **within the declared characteristic-width closure** once the active width \(\lambda_{\rm eff}\) has been chosen.
+
+### 1.2 Monotonicity
+
+For fixed \((m_s,\lambda_{\rm eff},V_{\rm peak})\),
+\[
+\frac{d t_{\rm cross}}{dE}
+=
+-\frac{\lambda_{\rm eff}\sqrt{m_s}}{2\sqrt{2}\,(E-V_{\rm peak})^{3/2}}<0.
+\]
+So higher incident energy shortens the barrier-region transit monotonically on this closure.
+
+---
+
+## 2. Relaxed dressing-leg collapse-time compiler
+
+Stage 228 already turned the dressing leg into a live reduced degree of freedom.
+Session III then adopted the local unstable normal form
+\[
+\mu_\eta\,\ddot V = g_{UV}\,\chi_{\rm peak}\,V,
+\]
+where
+
+- \(\mu_\eta\) is the wall-inertia scale of the active dressing/geometry leg,
+- \(g_{UV}\) is the non-rigid transfer-to-dressing coupling carried from Stage 228,
+- and
+  \[
+  \chi_{\rm peak}:=\max\chi_\lambda(r)
+  \]
+  is the steepest logarithmic barrier gradient on the active branch.
+
+The corresponding local growth rate is
+\[
+\Gamma_{\rm coll}=\sqrt{\frac{g_{UV}\chi_{\rm peak}}{\mu_\eta}},
+\]
+so the characteristic collapse time is
+\[
+\boxed{
+ t_{\rm collapse}
+ =
+ \Gamma_{\rm coll}^{-1}
+ =
+ \sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+}
+\]
+
+This is the exact Stage-233 collapse compiler **within the declared local unstable-envelope closure**.
+
+---
+
+## 3. Stability ratio and lower safe edge
+
+Define the characteristic survival ratio
+\[
+\boxed{
+\mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}}.
+}
+\]
+Substituting the previous two compilers gives
+\[
+\boxed{
+\mathcal S(E)
+=
+\lambda_{\rm eff}
+\sqrt{\frac{m_s g_{UV}\chi_{\rm peak}}{2\mu_\eta\,(E-V_{\rm peak})}}.
+}
+\]
+
+### 3.1 Exact lower-edge theorem
+
+The characteristic-safe branch is defined by
+\[
+\mathcal S(E)<1.
+\]
+Because \(\mathcal S(E)\) is monotone decreasing in \(E\), there is at most one lower survival edge and it is fixed by
+\[
+\mathcal S(E_{\rm edge})=1.
+\]
+Solving gives
+\[
+\boxed{
+E_{\rm edge}
+=
+V_{\rm peak}
++
+\frac{m_s}{\mu_\eta}
+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+}
+\]
+So the reduced Goldilocks window is
+\[
+\boxed{
+E>E_{\rm edge}
+}
+\]
+intersected with whatever energy band the scan or branch realization actually samples.
+
+### 3.2 Why the window is one-sided on this closure
+
+Under the present closure:
+
+1. \(t_{\rm collapse}\) is energy-independent,
+2. \(t_{\rm cross}(E)\) decreases monotonically with \(E\),
+3. no additional high-energy collapse channel is turned on.
+
+Therefore once \(E\) crosses the lower edge, the reduced timescale inequality stays satisfied for all larger energies on the same branch.
+So the safe set is a **half-line**, not a closed island.
+A finite upper edge can only appear if one adds extra energy dependence to the collapse law or an additional high-energy failure mechanism.  Those are outside Stage 233 and belong to later damping/export work.
+
+---
+
+## 4. Speed-space compiler
+
+Let the reduced trajectory start at radius \(r_0\) with inward speed \(v_0\).
+Then
+\[
+E=\frac{m_s}{2}v_0^2+V(r_0).
+\]
+Substitute this into the Stage-233 safe-edge law.
+
+### 4.1 Reduced safe speed at fixed launch radius
+
+The lower safe speed is
+\[
+\boxed{
+ v_{\rm safe,min}
+ =
+ \sqrt{\frac{2(E_{\rm edge}-V(r_0))}{m_s}}.
+}
+\]
+Using
+\[
+ v_{\rm crit,new}^2
+ =
+ \frac{2(V_{\rm peak}-V(r_0))}{m_s},
+\]
+this becomes the exact speed-space identity
+\[
+\boxed{
+ v_{\rm safe,min}^2
+ =
+ v_{\rm crit,new}^2
+ +
+ \frac{\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}}{\mu_\eta}.
+}
+\]
+So Stage 233 turns the Goldilocks edge into a direct shift above the Stage-231 classical threshold speed.
+
+### 4.2 Crossing-time compiler in speed form
+
+At fixed launch radius,
+\[
+E-V_{\rm peak}=\frac{m_s}{2}\bigl(v_0^2-v_{\rm crit,new}^2\bigr),
+\]
+so the characteristic crossing time can be written exactly as
+\[
+\boxed{
+ t_{\rm cross}(v_0)
+ =
+ \frac{\lambda_{\rm eff}}{\sqrt{v_0^2-v_{\rm crit,new}^2}}.
+}
+\]
+The corresponding survival ratio is
+\[
+\boxed{
+ \mathcal S(v_0)
+ =
+ \frac{\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}/\mu_\eta}}{\sqrt{v_0^2-v_{\rm crit,new}^2}}.
+}
+\]
+Thus the reduced window is simply
+\[
+\boxed{
+ v_0>v_{\rm safe,min}.
+}
+\]
+Again, this is one-sided unless additional high-speed failure channels are added.
+
+---
+
+## 5. Heavy-throat scaling theorem
+
+Session III emphasized the case
+\[
+\mu_\eta=\alpha m_s.
+\]
+Substituting into the stability ratio gives
+\[
+\boxed{
+\mathcal S(E)
+=
+\frac{\sqrt{2}\,\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}}}{2\sqrt{\alpha}}
+\,(E-V_{\rm peak})^{-1/2}.
+}
+\]
+The lower edge becomes
+\[
+\boxed{
+E_{\rm edge}
+=
+V_{\rm peak}
++
+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2\alpha}.
+}
+\]
+Therefore the simultaneous scaling of particle mass and wall inertia cancels out of the survival edge.
+In particular,
+\[
+\frac{\partial E_{\rm edge}}{\partial m_s}=0
+\qquad
+\text{when}
+\qquad
+\mu_\eta=\alpha m_s.
+\]
+So heavy-throat scaling by itself does **not** move the Goldilocks edge if mass and wall inertia are scaled together.
+What still matters is
+\[
+\lambda_{\rm eff},\qquad \chi_{\rm peak},\qquad g_{UV},\qquad \alpha.
+\]
+
+---
+
+## 6. Trigger-width specialization from Stage 231
+
+Session III used the Stage-231 turning-point trigger width as the active barrier width,
+\[
+\boxed{
+\lambda_{\rm eff}=\lambda_{\rm th}\bigl(r_{\rm turn}\bigr),
+\qquad
+\lambda_{\rm th}(r_{\rm turn})
+=
+\left|\frac{V\bigl(r_{\rm turn}\bigr)}{V'\bigl(r_{\rm turn}\bigr)}\right|.
+}
+\]
+This is the cleanest front-end specialization because it ties the Stage-233 timescale ledger directly to the Stage-231 event-chain diagnostic rather than to an unrelated geometric guess.
+
+The same session also recorded the gradient trigger
+\[
+\chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
+\]
+and then used the steepest value on the active branch,
+\[
+\chi_{\rm peak}=\max \chi_\lambda(r),
+\]
+inside the collapse-time compiler.
+
+So Stage 233 depends on the Stage-231/Session-II front end only through the pair
+\[
+\boxed{
+\bigl(\lambda_{\rm eff},\chi_{\rm peak}\bigr).
+}
+\]
+That is why the later width-sensitivity result is so important.
+
+---
+
+## 7. Session-III benchmark specialization
+
+Use the Session-II/III reduced benchmark values
+\[
+V_{\rm peak}=3.42933112,
+\qquad
+V(r_0=5)=0.19999794,
+\qquad
+\lambda_{\rm eff}=0.42826825,
+\]
+\[
+ g_{UV}=0.95,
+ \qquad
+ \chi_{\rm peak}=21.73204372,
+ \qquad
+ m_s=\mu_\eta=1836.15267343.
+\]
+Then:
+
+### 7.1 Proton-proxy classical threshold speed
+
+From the Stage-231 threshold-speed compiler,
+\[
+\boxed{
+ v_{\rm crit,p}
+ =
+ \sqrt{\frac{2\bigl(V_{\rm peak}-V(r_0)\bigr)}{m_s}}
+ \approx 0.05930851.
+}
+\]
+
+### 7.2 Collapse time
+
+The Stage-233 collapse compiler gives
+\[
+\boxed{
+ t_{\rm collapse}
+ =
+ \sqrt{\frac{1836.15267343}{0.95\times 21.73204372}}
+ \approx 9.43066476.
+}
+\]
+
+### 7.3 Lower safe edge in energy
+
+The heavy-throat edge is
+\[
+\boxed{
+ E_{\rm safe,min}
+ =
+ 3.42933112
+ +
+ \frac{0.95\times 21.73204372\times 0.42826825^2}{2}
+ \approx 5.32265943.
+}
+\]
+
+### 7.4 Lower safe edge in speed
+
+Using the Stage-233 speed compiler,
+\[
+\boxed{
+ v_{\rm safe,min}
+ =
+ \sqrt{\frac{2\bigl(E_{\rm safe,min}-0.19999794\bigr)}{1836.15267343}}
+ \approx 0.07469791.
+}
+\]
+Measured in proton-threshold units,
+\[
+\boxed{
+\frac{v_{\rm safe,min}}{v_{\rm crit,p}}
+\approx 1.25948037.
+}
+\]
+So the Goldilocks edge sits about \(25.95\%\) above the proton-proxy classical threshold speed on this closure.
+
+### 7.5 One-sided safe band on the sampled closure
+
+The Session-III scan did not find an upper collapse edge before the top of the sampled band,
+\[
+E_{\rm max,scan}=80.93332737,
+\]
+so the reported safe window is the one-sided interval
+\[
+\boxed{
+5.32265943\lesssim E_{\rm inc}\lesssim 80.93332737.
+}
+\]
+The corresponding sampled speed band is
+\[
+\boxed{
+0.07469791\lesssim v_0\lesssim 0.29654256.
+}
+\]
+
+### 7.6 Dynamic cross-check with actual aligned trajectories
+
+The same aligned branch carried actual barrier-region transit times between about
+\[
+0.204
+\quad\text{and}\quad
+4.054,
+\]
+all of which remained below
+\[
+ t_{\rm collapse}\approx 9.43066476.
+\]
+So the characteristic Stage-233 criterion is consistent with the sampled dynamic trajectories on the chosen aligned branch.
+
+---
+
+## 8. Trigger-width / steepness sensitivity theorem
+
+Session III also repeated the same calculation using the raw model width
+\[
+\lambda=1
+\]
+instead of the trigger-width choice.
+Then the branch recorded
+\[
+\chi_{\rm peak}^{\rm raw}\approx 50.74399964.
+\]
+The same Stage-233 formulas give
+\[
+\boxed{
+ t_{\rm collapse}^{\rm raw}
+ =
+ \sqrt{\frac{1836.15267343}{0.95\times 50.74399964}}
+ \approx 6.17163516,
+}
+\]
+\[
+\boxed{
+ E_{\rm safe,min}^{\rm raw}
+ =
+ 3.42933112
+ +
+ \frac{0.95\times 50.74399964\times 1^2}{2}
+ \approx 27.53273095.
+}
+\]
+So the safe edge shifts upward dramatically when the width/steepness packet is changed.
+
+This is the exact reduced form of the Session-III sensitivity verdict:
+
+- the dominant lever is not heavy mass by itself,
+- it is the pair
+  \[
+  (\lambda_{\rm eff},\chi_{\rm peak}),
+  \]
+  i.e. the geometric steepness packet imported from the Stage-231 trigger-width analysis.
+
+At the formula level this is obvious from
+\[
+E_{\rm edge}-V_{\rm peak}
+\propto
+\lambda_{\rm eff}^2\chi_{\rm peak}.
+\]
+
+---
+
+## 9. What this stage accomplishes physically
+
+Stage 233 turns the Session-III “Goldilocks” story into an explicit derivation-stack object.
+
+### 9.1 It separates the exact event chain from the characteristic survival closure
+
+The Stage-231 branch already determines the exact path-time integral
+\(T_{\rm traj}\).
+Stage 233 then adds the **declared characteristic-timescale reduction** used to stress-test survival on the relaxed branch:
+\[
+T_{\rm traj}\quad\leadsto\quad t_{\rm cross},
+\qquad
+V\text{-leg instability}\quad\leadsto\quad t_{\rm collapse}.
+\]
+This keeps the claim-status firewall explicit.
+
+### 9.2 It proves the lower-edge structure algebraically
+
+The Goldilocks edge is not a scan artifact.
+Inside the declared closure it is forced by the exact algebra
+\[
+\mathcal S(E)<1
+\iff
+E>V_{\rm peak}+\frac{m_s}{\mu_\eta}\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+\]
+
+### 9.3 It identifies the real control parameters
+
+The lower survival edge is controlled by
+\[
+\lambda_{\rm eff},\qquad \chi_{\rm peak},\qquad g_{UV},\qquad \mu_\eta/m_s,
+\]
+not by heavy scaling alone.
+That is exactly why the trigger-width choice mattered so much in the Session-III sweep.
+
+### 9.4 It explains why the benchmark window was one-sided
+
+As long as
+\[
+ t_{\rm collapse}=\text{constant in }E,
+ \qquad
+ t_{\rm cross}(E)\downarrow,
+\]
+there is only one lower edge.
+Any upper edge requires new physics beyond the present closure.
+
+---
+
+## 10. What is still missing
+
+Stage 233 is still **not** a completed moving-throat survival theorem.
+Several items remain outside its scope.
+
+1. The collapse-time law is a reduced characteristic closure, not yet a solved geometry-time output of the full moving-throat PDE.
+2. The aligned-vs-anti-aligned selection enters only through the chosen benchmark branch; the scalar timescale compiler itself is orientation-blind.
+3. The stage does not yet include the damping/export kernel that can stabilize slower cold events.  That belongs to Stage 234.
+4. The physical-unit mapping of \(\lambda_{\rm eff},\chi_{\rm peak},\mu_\eta\) into a material-specific device remains downstream.
+
+So the correct reading is:
+
+- Stage 231 gave the dynamic crossing branch,
+- Stage 232 tagged the preferred hidden-channel export branch,
+- Stage 233 now gives the structural survival inequality on that relaxed branch,
+- and Stage 234 must replace the purely characteristic collapse law by a microscopic damping/export kernel.
+
+---
+
+## 11. SymPy-backed status
+
+The accompanying audit script verifies all of the following.
+
+1. The exact event-chain transit integral derived from the Stage-231 energy law.
+2. The characteristic crossing-time compiler from the active width \(\lambda_{\rm eff}\).
+3. The unstable-leg growth rate and collapse-time compiler.
+4. The exact stability ratio \(\mathcal S(E)\) and the general lower-edge formula.
+5. The heavy-throat scaling theorem and cancellation of explicit mass dependence when \(\mu_\eta=\alpha m_s\).
+6. The exact speed-space compiler
+   \[
+   v_{\rm safe,min}^2=v_{\rm crit,new}^2+\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}/\mu_\eta.
+   \]
+7. The full Session-III benchmark specialization, including
+   \(t_{\rm collapse}\), \(E_{\rm safe,min}\), \(v_{\rm safe,min}\), the threshold-speed ratio, the sampled speed band, and the raw-width sensitivity values.
+8. The inequality check that the sampled aligned transit times remain below the characteristic collapse time on the chosen benchmark branch.
+
+---
+
+## 12. Immediate next step
+
+The next clean derivation move is now sharply defined.
+
+Do **not** reopen the whole barrier chain.
+Instead:
+
+1. keep the Stage-233 lower-edge compiler,
+2. replace the phenomenological characteristic-collapse law by a microscopic wall/BdG/localized-Maxwell/mixed export kernel,
+3. derive the actual damping/export timescale from that kernel,
+4. and then recompile the cold-survival threshold without using an imposed envelope law.
+
+That is exactly the Stage-234 theorem gate.
+
+=== moving_throat_pde_stage234_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 234: Microscopic Damping/Export Kernel Replacing the Phenomenological `V`-Leg Envelope Law
+
+## Status
+
+**Exact within**
+
+1. the Stage-228 non-rigid mouth/dressing packet with active dressing variable `V`,
+2. the Stage-233 local unstable-leg coefficient
+   \[
+   \kappa_V:=g_{UV}\chi_{\rm peak},
+   \qquad
+   s_0:=\sqrt{\kappa_V/\mu_\eta}=1/t_{\rm collapse,0},
+   \]
+3. the moving-throat scalar derivative-coupled outgoing lane,
+4. the Stage-12/13 selected mixed outgoing quadrupole coefficient,
+5. linear projection of the active `V` leg onto those outgoing lanes,
+6. and the causal Laplace-domain growth test.
+
+This stage is a **microscopic export-kernel compiler**, not a materials theorem and not a full nonlinear damping solve.
+It replaces the Session-IV phenomenological envelope law
+\[
+\gamma_{\rm tot}\,\dot V
+\]
+by the first actual odd export kernel implied by the wall/BdG/localized-Maxwell/mixed reduction.
+
+---
+
+## Purpose
+
+Stage 233 turned the relaxed branch into a Goldilocks-window criterion,
+\[
+\mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}},
+\]
+but it still used the Session-IV effective shedding law
+\[
+\gamma_{\rm tot}=\gamma_{\rm vac}+\gamma_{\rm lattice},
+\qquad
+ t_{\rm collapse}^{\rm damped}=\frac{1}{\gamma_{\rm crit}-\gamma_{\rm tot}}
+ \ \ (\gamma_{\rm tot}<\gamma_{\rm crit}).
+\]
+The session write-up was explicit that this was only an **envelope closure**, not a microscopic theorem of the completed PDE.
+
+So the next honest question is:
+
+> what is the first actual passive/export law seen by the active dressing leg once the wall/BdG/localized-Maxwell/mixed outgoing channels are projected back onto `V`?
+
+That is exactly what Stage 234 compiles.
+
+The main results are:
+
+1. the active `V` leg inherits a **cubic-plus-quintic** odd export kernel,
+2. the selected mixed quadrupole lane contributes the exact quintic coefficient
+   \[
+   \Gamma_5=\Pi_{V-}^2\,\Gamma_{5,-},
+   \qquad
+   \Gamma_{5,-}=\frac{a^5}{27c_s^5}P_{0,-},
+   \]
+3. the derivative-coupled scalar outlet contributes the exact cubic coefficient
+   \[
+   \Gamma_3=\Pi_{V0}^2\,\Gamma_{3,0},
+   \qquad
+   \Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+   \]
+4. the resulting microscopic collapse law is not Ohmic and does **not** admit a finite analogue of the Session-IV unconditional threshold `\gamma_{\rm crit}`,
+5. but it does give an exact event-level safe surface replacing `\gamma_{\rm safe}`.
+
+So Stage 234 is the right bridge between the reduced barrier session and the actual moving-throat outgoing machinery.
+
+---
+
+## Provenance
+
+This stage pulls together four earlier threads.
+
+- Stage 228 activated the non-rigid `U/V` lane and made `V` a live reduced dressing variable.
+- Stage 233 converted that live leg into the Goldilocks-window question
+  \[
+  \text{crossing outruns collapse}.
+  \]
+- The moving-throat outgoing program already proved that a derivative-coupled scalar outlet first appears at odd order `\omega^3`, while the selected mixed quadrupole outlet appears at odd order `\omega^5`.
+- The session write-up then stated explicitly that the remaining gap was a **higher-fidelity damping/export closure** replacing the phenomenological envelope law.
+
+So Stage 234 is not a speculative add-on. It is the direct derivation-stack replacement for the Session-IV `\gamma_{\rm tot}` closure.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the stack could already say:
+
+- the relaxed branch lowers the near-contact barrier,
+- a dynamic crossing corridor exists,
+- aligned orientation exports hidden structure more efficiently on the chosen closure,
+- and a phenomenological shedding rate can rescue a slow cold event.
+
+But it still could **not** say:
+
+- what odd export operator the active `V` leg actually sees,
+- how that operator relates to the selected mixed outgoing branch,
+- whether the finite Session-IV `\gamma_{\rm crit}` survives microscopic replacement,
+- or how the later heat-partition stage should be written without inserting a by-hand damping law.
+
+Stage 234 closes that gap.
+
+---
+
+## 1. Microscopic odd export channels seen by the active `V` leg
+
+Write the active dressing variable as its projection onto the first outgoing scalar and selected outgoing quadrupole channels,
+\[
+V(t)=\Pi_{V0}\,q_0(t)+\Pi_{V-}\,q_-(t)+\cdots.
+\]
+Here:
+
+- `q_0` is the derivative-coupled scalar outlet,
+- `q_-` is the selected mixed quadrupole wall/outgoing mode,
+- `\Pi_{V0}` and `\Pi_{V-}` are the active-leg projection amplitudes.
+
+### 1.1 Derivative-coupled scalar outlet
+
+In the reduced scalar mixed-port lane, take the first derivative coupling
+\[
+ g_{W,0}(\omega)=\eta_0\,\omega,
+ \qquad g_{A,0}(\omega)=0,
+\]
+with outgoing scalar port law
+\[
+ \Pi_0^{\rm out}(\omega)=i\gamma_1\omega+O(\omega^3).
+\]
+From the Stage-4 transfer factor,
+\[
+ N_0(\omega)=
+ \frac{\bigl(A_0(\omega)g_{W,0}(\omega)\bigr)^2}{\bigl(A_0(\omega)W_0(\omega)-R_0^2\bigr)^2},
+\]
+where
+\[
+A_0(\omega)=\Omega_{U,0}^2-\omega^2,
+\qquad
+W_0(\omega)=\Omega_{W,0}^2-\omega^2,
+\qquad
+\Delta_0:=\Omega_{U,0}^2\Omega_{W,0}^2-R_0^2,
+\]
+one gets the exact low-frequency expansion
+\[
+N_0(\omega)=\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2}\,\omega^2+O(\omega^4).
+\]
+So the wall-operator odd correction begins at cubic order,
+\[
+\delta D_0^{\rm odd}(\omega)
+=
+-i\Gamma_{3,0}\,\omega^3+O(\omega^5),
+\]
+with exact coefficient
+\[
+\boxed{
+\Gamma_{3,0}
+=
+\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2}.
+}
+\]
+Projecting this outlet onto the active dressing leg gives
+\[
+\boxed{
+\Gamma_3=\Pi_{V0}^2\,\Gamma_{3,0}.
+}
+\]
+
+### 1.2 Selected mixed quadrupole outlet
+
+From the selected-mode outgoing branch,
+\[
+\delta D_-^{\rm odd}(\omega)
+=
+-i\Gamma_{5,-}\,\omega^5+O(\omega^7),
+\]
+with exact selected-mode coefficient
+\[
+\boxed{
+\Gamma_{5,-}
+=
+\frac{a^5}{27c_s^5}P_{0,-},
+\qquad
+P_{0,-}=\frac{\beta_0 s_-}{\lambda_-}.
+}
+\]
+Projecting onto the active `V` leg gives the exact quintic export coefficient
+\[
+\boxed{
+\Gamma_5=\Pi_{V-}^2\,\Gamma_{5,-}
+=
+\Pi_{V-}^2\frac{a^5}{27c_s^5}P_{0,-}.
+}
+\]
+
+### 1.3 First microscopic export kernel
+
+So the first active-leg odd export kernel already implied by the moving-throat reduction is
+\[
+\boxed{
+\Sigma_{\rm exp}(\omega)
+=
+-i\Gamma_3\omega^3-i\Gamma_5\omega^5+O(\omega^7),
+\qquad
+\Gamma_3,\Gamma_5\ge 0.
+}
+\]
+This is the stage’s first main theorem.
+
+It says that the phenomenological Session-IV `\gamma_{\rm tot}\dot V` law is not the first microscopic export law of the branch.
+The first microscopic law is **super-Ohmic**: cubic if the derivative-coupled scalar lane is active, quintic if the selected quadrupole lane is the first live outlet.
+
+---
+
+## 2. Causal equation for the active `V` leg
+
+Let
+\[
+\kappa_V:=g_{UV}\chi_{\rm peak},
+\qquad
+s_0:=\sqrt{\kappa_V/\mu_\eta}=\frac{1}{t_{\rm collapse,0}},
+\]
+be the undamped Stage-233 unstable-leg coefficient and growth rate.
+Absorb the even low-frequency conservative renormalizations into the effective `\mu_\eta` and `\kappa_V` notation.
+Then the first microscopic active-leg equation is
+\[
+\boxed{
+\mu_\eta\,\ddot V-\kappa_V V
++\Gamma_3 V^{(3)}
+-\Gamma_5 V^{(5)}
+=\mathcal S_V(t).
+}
+\]
+Here `\mathcal S_V(t)` denotes any retained forcing from leakage/work or branch transport, but the stability analysis below uses the homogeneous equation.
+
+Equivalently, in Laplace space with growth variable `s`,
+\[
+\boxed{
+\mathcal D_V(s)
+=
+\mu_\eta s^2-\kappa_V+\Gamma_3 s^3+\Gamma_5 s^5.
+}
+\]
+So the exact microscopic export kernel is
+\[
+\boxed{
+K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5.
+}
+\]
+
+This replaces the Session-IV envelope scalar `\gamma_{\rm tot}`.
+
+---
+
+## 3. Exact passive power identities
+
+The active-leg odd force is
+\[
+F_{\rm odd}=\Gamma_3 V^{(3)}-\Gamma_5 V^{(5)}.
+\]
+Its power input is
+\[
+\dot V F_{\rm odd}
+=
+\Gamma_3\dot V V^{(3)}-\Gamma_5\dot V V^{(5)}.
+\]
+Using the exact Schott identities
+\[
+\dot q\,q^{(3)}=\frac{d}{dt}(\dot q\,\ddot q)-(\ddot q)^2,
+\]
+\[
+\dot q\,(-q^{(5)})
+=-\frac{d}{dt}(\dot q\,q^{(4)}-\ddot q\,q^{(3)})-(q^{(3)})^2,
+\]
+one gets
+\[
+\boxed{
+\dot V F_{\rm odd}
+=
+\frac{d}{dt}\mathcal S_{\rm odd}
+-\Gamma_3\,\ddot V^{\,2}
+-\Gamma_5\,\dddot V^{\,2},
+}
+\]
+with Schott storage
+\[
+\boxed{
+\mathcal S_{\rm odd}
+=
+\Gamma_3\dot V\ddot V
+-\Gamma_5\bigl(\dot V V^{(4)}-\ddot V\dddot V\bigr).
+}
+\]
+So after the total derivative is removed, the microscopic export power is positive-definite:
+\[
+\boxed{
+\mathcal P_{\rm exp}
+=
+\Gamma_3\,\ddot V^{\,2}+
+\Gamma_5\,\dddot V^{\,2}\ge 0.
+}
+\]
+
+This is the second main theorem of the stage.
+
+It gives the first actual wall/support/mixed export ledger for the active dressing leg.
+
+---
+
+## 4. Collapse law from the microscopic kernel
+
+For homogeneous growth, set
+\[
+V(t)=V_0 e^{st},
+\qquad s>0.
+\]
+Substituting into the microscopic equation gives the exact characteristic polynomial
+\[
+\boxed{
+F(s):=\Gamma_5 s^5+\Gamma_3 s^3+\mu_\eta s^2-\kappa_V=0.
+}
+\]
+
+### 4.1 Exact uniqueness of the positive growth root
+
+For
+\[
+\Gamma_3,\Gamma_5,\mu_\eta,\kappa_V>0,
+\]
+one has
+\[
+F(0)=-\kappa_V<0,
+\qquad
+\lim_{s\to\infty}F(s)=+\infty,
+\]
+and
+\[
+F'(s)=5\Gamma_5 s^4+3\Gamma_3 s^2+2\mu_\eta s>0
+\qquad (s>0).
+\]
+Therefore:
+\[
+\boxed{
+\text{for every finite }\Gamma_3,\Gamma_5\ge0,
+\text{ there is exactly one positive real growth root }s_+.
+}
+\]
+
+This gives the key structural verdict:
+
+> the minimal microscopic export kernel does **not** admit a finite analogue of the Session-IV unconditional threshold `\gamma_{\rm crit}`.
+
+The positive growth root can be reduced, but not removed, by any finite passive cubic/quintic coefficient on this minimal closure.
+
+### 4.2 Small-kernel slowdown formula
+
+For weak export,
+\[
+\Gamma_3,\Gamma_5\ll 1,
+\]
+expand around
+\[
+ s_0=\sqrt{\kappa_V/\mu_\eta}.
+\]
+Then the unique positive root is
+\[
+\boxed{
+ s_+
+ =
+ s_0-
+ \frac{\Gamma_3 s_0^2+\Gamma_5 s_0^4}{2\mu_\eta}
+ +O(\Gamma^2).
+ }
+\]
+So both microscopic channels slow the collapse, and the quintic channel is weighted by the extra factor `s_0^2` relative to the cubic one.
+
+---
+
+## 5. Exact event-level safe surface replacing `\gamma_{\rm safe}`
+
+Let
+\[
+ s_c:=\frac{1}{t_{\rm cross}}
+\]
+be the Stage-233 crossing-rate target for a chosen event.
+Since `F(s)` is strictly increasing for `s>0`, the event is safe iff
+\[
+ s_+\le s_c
+ \iff
+ F(s_c)\ge 0.
+\]
+Therefore the exact microscopic safe condition is
+\[
+\boxed{
+\Gamma_3 s_c^3+\Gamma_5 s_c^5
+\ge
+\mu_\eta\bigl(s_0^2-s_c^2\bigr).
+}
+\]
+This is the stage’s third main theorem.
+
+It is the direct microscopic replacement for the Session-IV `\gamma_{\rm safe}` inequality.
+
+### 5.1 Normalized form
+
+Define the mass-normalized coefficients
+\[
+\widehat\Gamma_3:=\frac{\Gamma_3}{\mu_\eta},
+\qquad
+\widehat\Gamma_5:=\frac{\Gamma_5}{\mu_\eta}.
+\]
+Then the safe surface becomes the exact half-plane
+\[
+\boxed{
+\widehat\Gamma_3+s_c^2\widehat\Gamma_5
+\ge
+\frac{s_0^2-s_c^2}{s_c^3}.
+}
+\]
+So the microscopic event-safe region is linear in the normalized cubic/quintic export strengths.
+
+### 5.2 One-channel limits
+
+If only the cubic lane is active,
+\[
+\boxed{
+\widehat\Gamma_{3,\rm safe}
+=
+\frac{s_0^2-s_c^2}{s_c^3}.
+}
+\]
+If only the selected quadrupole quintic lane is active,
+\[
+\boxed{
+\widehat\Gamma_{5,\rm safe}
+=
+\frac{s_0^2-s_c^2}{s_c^5}.
+}
+\]
+Hence
+\[
+\frac{\widehat\Gamma_{5,\rm safe}}{\widehat\Gamma_{3,\rm safe}}=\frac{1}{s_c^2}.
+\]
+So on slow cold events the quintic branch is less efficient than the cubic branch by the exact factor `1/s_c^2`.
+
+---
+
+## 6. Session-IV benchmark specialization
+
+The Session-IV cold aligned event used the characteristic data
+\[
+ t_{\rm cross}\approx 1.82169718,
+ \qquad
+ t_{\rm collapse,0}\approx 0.14402764,
+ \qquad
+ \gamma_{\rm crit}\approx 6.94311167,
+\]
+so, using the displayed Session-IV growth-rate benchmark,
+\[
+ s_c=\frac{1}{t_{\rm cross}}\approx 0.5489386551,
+\qquad
+ s_0\approx \gamma_{\rm crit}\approx 6.94311167.
+\]
+(The inverse of the rounded printed `t_{\rm collapse,0}` agrees only to the displayed report precision.)
+Therefore
+\[
+ s_c^2\approx 0.3013336471,
+\qquad
+ \frac{s_0^2-s_c^2}{s_c^3}\approx 289.61004918.
+\]
+So the exact benchmark safe surface becomes
+\[
+\boxed{
+\widehat\Gamma_3+0.3013336471\,\widehat\Gamma_5
+\ge 289.61004918.
+}
+\]
+In particular,
+\[
+\boxed{
+\widehat\Gamma_{3,\rm safe}\approx 289.61004918,
+\qquad
+\widehat\Gamma_{5,\rm safe}\approx 961.09429528.
+}
+\]
+So for the default cold event, a pure quintic selected-mode outlet would need about
+\[
+\frac{961.09429528}{289.61004918}\approx 3.318
+\]
+times the normalized strength of a pure cubic derivative-coupled scalar outlet to achieve the same event-level rescue.
+
+This gives the first clean microscopic reading of the Session-IV damping story.
+The phenomenological envelope closure did not distinguish these super-Ohmic outlet classes; the microscopic kernel does.
+
+---
+
+## 7. Channel-resolved vacuum/lattice export decomposition
+
+The microscopic kernel can now be split by channel rather than by a by-hand `3:1` damping partition.
+Write
+\[
+\Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+\qquad
+\Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat},
+\]
+with all four coefficients nonnegative.
+Then the exact exported-power split is
+\[
+\boxed{
+\mathcal P_{\rm vac}
+=
+\Gamma_3^{\rm vac}\ddot V^{\,2}+
+\Gamma_5^{\rm vac}\dddot V^{\,2},
+}
+\]
+\[
+\boxed{
+\mathcal P_{\rm lat}
+=
+\Gamma_3^{\rm lat}\ddot V^{\,2}+
+\Gamma_5^{\rm lat}\dddot V^{\,2}.
+}
+\]
+Therefore the integrated exported energies are
+\[
+\boxed{
+E_{\rm vac}
+=
+\int dt\,\bigl(\Gamma_3^{\rm vac}\ddot V^{\,2}+
+\Gamma_5^{\rm vac}\dddot V^{\,2}\bigr),
+}
+\]
+\[
+\boxed{
+E_{\rm lat}
+=
+\int dt\,\bigl(\Gamma_3^{\rm lat}\ddot V^{\,2}+
+\Gamma_5^{\rm lat}\dddot V^{\,2}\bigr).
+}
+\]
+So Stage 235 no longer needs a phenomenological heat partition. It can start from an exact kernel-level one.
+
+---
+
+## 8. What this stage achieves physically
+
+Stage 234 changes the barrier thread in four concrete ways.
+
+### 8.1 It replaces `\gamma_{\rm tot}` by an actual microscopic export operator
+
+The first honest `V`-leg export law is not Ohmic. It is
+\[
+K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5,
+\]
+with the cubic coefficient coming from derivative-coupled scalar export and the quintic coefficient coming from the selected mixed quadrupole outlet.
+
+### 8.2 It explains why the Session-IV `\gamma_{\rm crit}` was closure-specific
+
+Because the microscopic characteristic polynomial always has one positive real growth root for finite passive coefficients, the finite unconditional threshold
+\[
+\gamma_{\rm crit}\approx 6.94311167
+\]
+is not a theorem of the minimal microscopic kernel. It is a property of the Session-IV envelope closure.
+
+### 8.3 It preserves an exact event-safe criterion
+
+Although there is no finite microscopic unconditional threshold, there is still an exact event-level safe half-plane,
+\[
+\widehat\Gamma_3+s_c^2\widehat\Gamma_5
+\ge
+\frac{s_0^2-s_c^2}{s_c^3},
+\]
+which is the correct microscopic replacement for `\gamma_{\rm safe}`.
+
+### 8.4 It opens the exact heat-partition path needed by Stage 235
+
+The exported power now splits channel by channel into vacuum and lattice pieces without inserting an ad hoc partition ratio.
+
+---
+
+## 9. What is still missing
+
+This stage is still not the full damping theorem of the completed PDE.
+The remaining open objects are now sharply identified:
+
+1. the actual projection amplitudes `\Pi_{V0}` and `\Pi_{V-}` on the realized branch,
+2. the actual scalar derivative-coupled port coefficient `\gamma_1` on that branch,
+3. the actual selected-mode prefactor `P_{0,-}` and therefore `\Gamma_{5,-}`,
+4. and the actual vacuum-vs-lattice split of those microscopic coefficients.
+
+So the active bottleneck has moved from “invent a damping law” to “compute the realized branch coefficients of the microscopic export kernel.”
+
+---
+
+## 10. Immediate next step
+
+The next stage is now well defined.
+
+1. Keep the exact Stage-234 kernel
+   \[
+   K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5.
+   \]
+2. Use the exact power formulas above to compute
+   \[
+   E_{\rm vac},\qquad E_{\rm lat},
+   \]
+   along a chosen cold event.
+3. Pull the microscopic coefficients into the condensed-matter map rather than using the Session-IV `3:1` partition.
+
+That is precisely the Stage-235 heat-partition / cold-survival compiler.
+
+=== moving_throat_pde_stage235_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 235: Vacuum-vs-Lattice Heat Partition and Cold-Survival Compiler from the Microscopic Export Kernel
+
+## Status
+
+**Exact within**
+
+1. the Stage-234 microscopic export kernel
+   \[
+   K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5,
+   \]
+2. the exact channel split
+   \[
+   \Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+   \qquad
+   \Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat},
+   \qquad
+   \Gamma_n^{\rm vac},\Gamma_n^{\rm lat}\ge 0,
+   \]
+3. the exact exported-power identities from Stage 234,
+4. an arbitrary finite event window \([0,T]\) with square-integrable \(\ddot V\) and \(\dddot V\),
+5. the single-growth cold-event specialization
+   \[
+   V(t)=V_{\rm in}e^{s t},
+   \]
+6. and the Stage-234 event-safe equality on the cold edge
+   \[
+   \Gamma_3 s_c^3+\Gamma_5 s_c^5=\mu_\eta(s_0^2-s_c^2).
+   \]
+
+This stage is a **channel-resolved energy compiler**. It does not yet map the result to \(\lambda_{\rm ep}\omega_D\), \(k_{\rm eff}\), or \(T_{\max}\); that is the Stage-236 job.
+
+---
+
+## Purpose
+
+Stage 234 replaced the Session-IV phenomenological envelope law
+\[
+\gamma_{\rm tot}\,\dot V
+\]
+by the first microscopic passive/export kernel carried by the moving-throat wall/BdG/localized-Maxwell/mixed stack,
+\[
+\Sigma_{\rm exp}(\omega)=-i\Gamma_3\omega^3-i\Gamma_5\omega^5+O(\omega^7).
+\]
+It also gave the exact channel-resolved power split
+\[
+\mathcal P_{\rm vac}
+=
+\Gamma_3^{\rm vac}\ddot V^{\,2}+\Gamma_5^{\rm vac}\dddot V^{\,2},
+\qquad
+\mathcal P_{\rm lat}
+=
+\Gamma_3^{\rm lat}\ddot V^{\,2}+\Gamma_5^{\rm lat}\dddot V^{\,2},
+\]
+but it deliberately stopped one step before the actual heat-partition problem.
+
+So the next honest question is:
+
+> for a chosen cold event, what fraction of the exported energy goes into the vacuum outlet, what fraction goes into the lattice outlet, and what total export is minimally required for the cold event to survive?
+
+That is exactly what Stage 235 compiles.
+
+The main results are:
+
+1. the exact vacuum-vs-lattice split depends on one scalar event-shape quotient,
+2. on a single-growth event that quotient collapses to \(s^2\),
+3. the Stage-234 safe surface implies an exact **safe-edge exported-energy theorem**,
+4. the Session-IV `3:1` heat split becomes a microscopic coefficient surface rather than a by-hand partition,
+5. and the microscopic event-equivalent damping rates that Stage 236 must map into condensed-matter variables are now explicit.
+
+---
+
+## Provenance
+
+This stage is the direct continuation Stage 234 itself asked for.
+
+- Stage 233 converted the relaxed branch into a cold-event survival problem.
+- Stage 234 replaced the phenomenological damping scalar by the microscopic cubic-plus-quintic export kernel and derived exact channel-resolved exported-power formulas.
+- Session IV used a by-hand vacuum/lattice split to estimate exported energies and cold-event rescue.
+- Session V then mapped that phenomenological lattice component into condensed-matter quantities.
+
+Stage 235 is therefore the missing bridge:
+
+- it removes the ad hoc heat partition,
+- it computes the exact microscopic vacuum/lattice fractions on a chosen event,
+- and it packages the result in the form that Stage 236 can translate into \(\lambda_{\rm ep}\omega_D\), trap stiffness, and thermal-survival variables.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step the stack could already say:
+
+- which microscopic channels export energy from the active `V` leg,
+- that the total safe-event condition is
+  \[
+  \Gamma_3 s_c^3+\Gamma_5 s_c^5
+  \ge
+  \mu_\eta(s_0^2-s_c^2),
+  \]
+- and that Session IV’s default split numerically placed most of the dissipated energy in the lattice channel.
+
+But it still could **not** say:
+
+- what the exact vacuum-vs-lattice fraction is on a general cold event,
+- how that fraction depends on the relative cubic vs quintic loading of the two channels,
+- how the phenomenological `3:1` split is written microscopically,
+- or what exact exported energy is minimally required on the cold-survival edge.
+
+Stage 235 closes those gaps.
+
+---
+
+## 1. Exact channel-resolved exported-energy ledger
+
+Split the Stage-234 microscopic coefficients into vacuum and lattice pieces:
+\[
+\Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+\qquad
+\Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat}.
+\]
+For an arbitrary finite event window \([0,T]\), define the exact shape integrals
+\[
+\mathcal I_2(T):=\int_0^T \ddot V^{\,2}\,dt,
+\qquad
+\mathcal I_3(T):=\int_0^T \dddot V^{\,2}\,dt.
+\]
+Then the integrated exported energies are exactly
+\[
+\boxed{
+E_{\rm vac}(T)=\Gamma_3^{\rm vac}\,\mathcal I_2(T)+\Gamma_5^{\rm vac}\,\mathcal I_3(T),
+}
+\]
+\[
+\boxed{
+E_{\rm lat}(T)=\Gamma_3^{\rm lat}\,\mathcal I_2(T)+\Gamma_5^{\rm lat}\,\mathcal I_3(T),
+}
+\]
+so the total exported energy is
+\[
+\boxed{
+E_{\rm exp}(T)=\Gamma_3\,\mathcal I_2(T)+\Gamma_5\,\mathcal I_3(T).
+}
+\]
+
+This is the exact channel-resolved replacement for the Session-IV `3:1` heat split.
+
+### 1.1 One-scalar shape quotient
+
+Assume \(\mathcal I_2(T)>0\) and define the exact shape quotient
+\[
+\boxed{
+\mathfrak r_V(T):=\frac{\mathcal I_3(T)}{\mathcal I_2(T)}.
+}
+\]
+Then the partition fractions are
+\[
+\boxed{
+ f_{\rm vac}(\mathfrak r_V)
+ =
+ \frac{\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}\mathfrak r_V}
+ {\Gamma_3+\Gamma_5\mathfrak r_V},
+}
+\]
+\[
+\boxed{
+ f_{\rm lat}(\mathfrak r_V)
+ =
+ \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}
+ {\Gamma_3+\Gamma_5\mathfrak r_V},
+ \qquad
+ f_{\rm vac}+f_{\rm lat}=1.
+}
+\]
+So the entire heat-partition problem collapses to one scalar event-shape quotient.
+
+### 1.2 Exact speed-drift law of the partition
+
+Treat \(\mathfrak r_V\) as the event-shape variable. Then
+\[
+\boxed{
+\frac{d f_{\rm lat}}{d\mathfrak r_V}
+=
+\frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}
+     {(\Gamma_3+\Gamma_5\mathfrak r_V)^2}.
+}
+\]
+So the partition drifts upward toward the lattice side iff
+\[
+\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}>
+\Gamma_3^{\rm lat}\Gamma_5^{\rm vac},
+\]
+i.e. iff the lattice outlet is relatively more quintic-loaded than the vacuum outlet.
+
+The endpoint limits are exact:
+\[
+\boxed{
+ f_{\rm lat}(0)=\frac{\Gamma_3^{\rm lat}}{\Gamma_3},
+ \qquad
+ \lim_{\mathfrak r_V\to\infty} f_{\rm lat}(\mathfrak r_V)=\frac{\Gamma_5^{\rm lat}}{\Gamma_5}.
+}
+\]
+So slow events are controlled by the cubic split, while rapidly varying events are controlled by the quintic split.
+
+---
+
+## 2. Single-growth cold-event specialization
+
+For the reduced cold-event model, use the one-rate growth orbit
+\[
+\boxed{
+V(t)=V_{\rm in}e^{st},
+\qquad 0\le t\le T,
+\qquad s>0.
+}
+\]
+Then
+\[
+\dot V=sV,
+\qquad
+\ddot V=s^2V,
+\qquad
+\dddot V=s^3V.
+\]
+Therefore the exact shape integrals become
+\[
+\boxed{
+\mathcal I_2(T)
+=
+\frac{V_{\rm in}^2 s^3}{2}\bigl(e^{2sT}-1\bigr),
+}
+\]
+\[
+\boxed{
+\mathcal I_3(T)=s^2\mathcal I_2(T).
+}
+\]
+So the Stage-235 shape quotient collapses exactly to
+\[
+\boxed{
+\mathfrak r_V=s^2.
+}
+\]
+
+### 2.1 Event-equivalent damping rates
+
+Define the exact velocity-weighted event integral
+\[
+\mathcal I_1(T):=\int_0^T \dot V^{\,2}\,dt
+=
+\frac{V_{\rm in}^2 s}{2}\bigl(e^{2sT}-1\bigr).
+\]
+Then the exported energies can be written as
+\[
+\boxed{
+E_{\rm vac}(T)=\gamma_{\rm vac}^{\rm eq}(s)\,\mathcal I_1(T),
+\qquad
+\gamma_{\rm vac}^{\rm eq}(s):=\Gamma_3^{\rm vac}s^2+\Gamma_5^{\rm vac}s^4,
+}
+\]
+\[
+\boxed{
+E_{\rm lat}(T)=\gamma_{\rm lat}^{\rm eq}(s)\,\mathcal I_1(T),
+\qquad
+\gamma_{\rm lat}^{\rm eq}(s):=\Gamma_3^{\rm lat}s^2+\Gamma_5^{\rm lat}s^4,
+}
+\]
+with total event-equivalent export rate
+\[
+\boxed{
+\gamma_{\rm eff}^{\rm eq}(s)=\Gamma_3 s^2+\Gamma_5 s^4.
+}
+\]
+So the microscopic replacement for the Session-IV phenomenological pair
+\[
+(\gamma_{\rm vac},\gamma_{\rm lattice})
+\]
+is the rate pair
+\[
+(\gamma_{\rm vac}^{\rm eq}(s),\gamma_{\rm lat}^{\rm eq}(s))
+\]
+evaluated on the actual event shape.
+
+The partition fractions become
+\[
+\boxed{
+ f_{\rm vac}(s)=\frac{\gamma_{\rm vac}^{\rm eq}(s)}{\gamma_{\rm eff}^{\rm eq}(s)},
+ \qquad
+ f_{\rm lat}(s)=\frac{\gamma_{\rm lat}^{\rm eq}(s)}{\gamma_{\rm eff}^{\rm eq}(s)}.
+}
+\]
+
+---
+
+## 3. Exact cold-survival compiler on the safe edge
+
+Let
+\[
+ s_c:=\frac{1}{t_{\rm cross}},
+ \qquad
+ s_0:=\frac{1}{t_{\rm collapse,0}}=\sqrt{\kappa_V/\mu_\eta},
+\]
+and specialize to the **safe-edge** equality from Stage 234,
+\[
+\boxed{
+\Gamma_3 s_c^3+\Gamma_5 s_c^5
+=
+\mu_\eta(s_0^2-s_c^2).
+}
+\]
+Take the event window to be the characteristic crossing time,
+\[
+T=t_{\rm cross}=\frac{1}{s_c}.
+\]
+Then
+\[
+\mathcal I_1\Bigl(\frac{1}{s_c}\Bigr)
+=
+\frac{V_{\rm in}^2 s_c}{2}(e^2-1),
+\]
+so the safe-edge total exported energy is exactly
+\[
+\boxed{
+E_{\rm exp,min}^{\rm safe}
+=
+\frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2).
+}
+\]
+This is the stage’s first main theorem.
+
+It says that once the event is pinned to the cold-survival edge, the **minimum total exported energy** is completely fixed by
+
+- the initial active-leg amplitude \(V_{\rm in}\),
+- the Stage-233/234 rate deficit \(s_0^2-s_c^2\),
+- and the effective dressing inertia \(\mu_\eta\),
+
+and is independent of how the microscopic vacuum/lattice split is distributed between the cubic and quintic channels.
+
+### 3.1 Channel-resolved safe-edge energies
+
+The safe-edge channel energies are therefore
+\[
+\boxed{
+E_{\rm vac,min}^{\rm safe}=f_{\rm vac}(s_c)
+\frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2),
+}
+\]
+\[
+\boxed{
+E_{\rm lat,min}^{\rm safe}=f_{\rm lat}(s_c)
+\frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2).
+}
+\]
+So the Stage-234 cold-survival surface and the Stage-235 heat partition now combine into one exact compiler.
+
+### 3.2 Safe-edge event-equivalent rate
+
+At the same edge, the total event-equivalent export rate obeys
+\[
+\boxed{
+\gamma_{\rm eff,safe}^{\rm eq}
+:=
+\Gamma_3 s_c^2+\Gamma_5 s_c^4
+=
+\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+}
+\]
+Therefore
+\[
+\boxed{
+\gamma_{\rm vac,safe}^{\rm eq}=f_{\rm vac}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c},
+\qquad
+\gamma_{\rm lat,safe}^{\rm eq}=f_{\rm lat}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+}
+\]
+This is the exact microscopic object that later condensed-matter maps must use. It is **not** numerically the same object as Session-IV’s envelope parameter \(\gamma_{\rm lattice}\).
+
+---
+
+## 4. The Session-IV `3:1` split as a microscopic coefficient surface
+
+The Session-IV default split was
+\[
+ f_{\rm vac}=\frac14,
+ \qquad
+ f_{\rm lat}=\frac34.
+\]
+On the Stage-235 microscopic compiler, evaluated on the cold-survival edge, this becomes
+\[
+\boxed{
+ f_{\rm lat}(s_c)=\frac34
+ \iff
+ \Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}s_c^2
+ =
+ 3\Bigl(\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}s_c^2\Bigr).
+}
+\]
+So the old by-hand partition is now a linear surface in microscopic coefficient space.
+
+### 4.1 Speed-independent special family
+
+If the vacuum/lattice split is the same in both channels, i.e.
+\[
+\Gamma_3^{\rm lat}=\phi\,\Gamma_3,
+\qquad
+\Gamma_5^{\rm lat}=\phi\,\Gamma_5,
+\]
+then
+\[
+\boxed{
+ f_{\rm lat}(s)=\phi
+ \qquad\text{for every event speed }s.
+}
+\]
+So the Session-IV `3:1` rule is recovered exactly by the microscopic family
+\[
+\boxed{
+\phi=\frac34.
+}
+\]
+That is the simplest reduced continuation of the old phenomenological split.
+
+### 4.2 Speed-dependent split
+
+If the cubic and quintic channels do **not** share the same vacuum/lattice fraction, then the partition becomes event-speed dependent through the exact law in Section 1.2. In that case:
+
+- slower events sample mostly the cubic split,
+- faster events sample mostly the quintic split,
+- and the Session-IV `3:1` fraction can hold at one chosen cold edge without holding elsewhere.
+
+That is the second main theorem of the stage.
+
+---
+
+## 5. Session-IV benchmark specialization
+
+Use the Session-IV cold-event data carried into Stage 234:
+\[
+ t_{\rm cross}\approx 1.82169718,
+ \qquad
+ s_c=1/t_{\rm cross}\approx 0.5489386551,
+ \qquad
+ s_c^2\approx 0.3013336471,
+\]
+\[
+ s_0\approx \gamma_{\rm crit}\approx 6.94311167,
+ \qquad
+ \mu_\eta=1.
+\]
+Then the exact safe-edge event-equivalent export rate is
+\[
+\boxed{
+\gamma_{\rm eff,safe}^{\rm eq}
+=
+\frac{s_0^2-s_c^2}{s_c}
+\approx 87.26925235.
+}
+\]
+On the speed-independent `3:1` microscopic family \((\phi=3/4)\), this gives
+\[
+\boxed{
+\gamma_{\rm vac,safe}^{\rm eq}\approx 21.81731309,
+\qquad
+\gamma_{\rm lat,safe}^{\rm eq}\approx 65.45193926.
+}
+\]
+These are the exact microscopic event-equivalent rates replacing the phenomenological Session-IV pair.
+
+### 5.1 Safe-edge energy match to Session IV
+
+Session IV reported the safe-edge dissipated energy
+\[
+E_{\rm diss,total}^{\rm sess}\approx 0.01033460.
+\]
+If one uses this only as a **benchmark calibration** of the initial active-leg amplitude, the safe-edge energy theorem gives
+\[
+V_{\rm in,match}
+=
+\sqrt{\frac{E_{\rm diss,total}^{\rm sess}}
+{\tfrac12(e^2-1)\mu_\eta(s_0^2-s_c^2)}}
+\approx 8.21771260\times 10^{-3}.
+\]
+Then the Stage-235 channel formulas reproduce the Session-IV split exactly:
+\[
+\boxed{
+E_{\rm vac,min}^{\rm safe}\approx 0.00258365,
+\qquad
+E_{\rm lat,min}^{\rm safe}\approx 0.00775095,
+}
+\]
+with
+\[
+E_{\rm exp,min}^{\rm safe}\approx 0.01033460.
+\]
+So the old benchmark numbers are absorbed by the new microscopic compiler without keeping the heat partition phenomenological.
+
+This is a calibration consistency check, not a theorem that the realized branch must use the speed-independent `3:1` family.
+
+---
+
+## 6. What this stage achieves physically
+
+Stage 235 changes the barrier thread in four concrete ways.
+
+### 6.1 It removes the ad hoc vacuum/lattice heat split
+
+The exported energies are now exact functions of the microscopic coefficients
+\[
+(\Gamma_3^{\rm vac},\Gamma_3^{\rm lat},\Gamma_5^{\rm vac},\Gamma_5^{\rm lat})
+\]
+and one scalar event-shape quotient.
+
+### 6.2 It isolates the true event variable controlling the partition
+
+For a general event the partition is controlled by
+\[
+\mathfrak r_V=\mathcal I_3/\mathcal I_2,
+\]
+while on the cold single-growth branch it reduces exactly to
+\[
+\mathfrak r_V=s^2.
+\]
+So the partition is sensitive not only to the outlet coefficients, but also to the dynamical roughness of the event.
+
+### 6.3 It produces an exact safe-edge exported-energy theorem
+
+At cold survival threshold, the minimum exported energy is fixed by
+\[
+\frac{V_{\rm in}^2}{2}(e^2-1)\mu_\eta(s_0^2-s_c^2),
+\]
+and the vacuum/lattice shares are obtained by a pure fraction multiplier.
+
+### 6.4 It gives Stage 236 the right microscopic object to map
+
+The quantity that later condensed-matter equations must map is not the old envelope scalar \(\gamma_{\rm lattice}\), but the event-equivalent microscopic rate
+\[
+\gamma_{\rm lat}^{\rm eq}(s_c)=\Gamma_3^{\rm lat}s_c^2+\Gamma_5^{\rm lat}s_c^4.
+\]
+That is the exact bridge needed for the materials stage.
+
+---
+
+## 7. What is still missing
+
+Stage 235 is still not the full materials theorem of the completed PDE.
+The remaining open objects are now sharply narrowed to:
+
+1. the realized branch values of
+   \[
+   \Gamma_3^{\rm vac},\Gamma_3^{\rm lat},\Gamma_5^{\rm vac},\Gamma_5^{\rm lat},
+   \]
+2. the realized event shape quotient \(\mathfrak r_V\) on the cold branch,
+3. the physical-unit conversion linking
+   \[
+   \gamma_{\rm lat}^{\rm eq}(s_c)
+   \]
+   to condensed-matter turnover variables,
+4. and any branch-dependent calibration of the initial active-leg amplitude if one wants absolute per-event energies rather than fractions.
+
+So the live bottleneck has moved from “invent a damping partition” to “compute the realized microscopic coefficient split and then map it physically.”
+
+---
+
+## 8. Immediate next step
+
+Stage 236 is now sharply defined.
+
+1. Keep the Stage-235 microscopic event-equivalent lattice rate
+   \[
+   \gamma_{\rm lat}^{\rm eq}(s_c)=\Gamma_3^{\rm lat}s_c^2+\Gamma_5^{\rm lat}s_c^4.
+   \]
+2. Map that quantity into the electron-phonon turnover condition replacing the old phenomenological \(\gamma_{\rm lattice}\).
+3. Carry the same microscopic compiler into the harmonic-trap stiffness and Korringa-limited spin-survival maps.
+
+That is the right Stage-236 condensed-matter companion.
+
+=== moving_throat_pde_stage236_physical_calibration_and_material_threshold_companion_from_the_stage235_export_and_cold_survival_compiler_sympy_audit.md ===
+
+# Moving-Throat PDE — Stage 236: Physical Calibration and Material-Threshold Companion from the Stage-235 Microscopic Export and Cold-Survival Compiler
+
+## Status
+
+**Exact within**
+
+1. the Stage-235 channel-resolved microscopic export / cold-survival compiler,
+2. the exact safe-edge lattice event-equivalent rate
+   \[
+   \gamma_{\rm lat,safe}^{\rm eq}
+   =
+   f_{\rm lat}(s_c)\,\mu_\eta\,\frac{s_0^2-s_c^2}{s_c},
+   \]
+3. the explicit physical calibration dictionary
+   \[
+   t^{\rm phys}=t_*\,t,
+   \qquad
+   r^{\rm phys}=\frac{\lambda_{\rm phys}}{\lambda_{\rm ref}}\,r,
+   \qquad
+   E^{\rm phys}=E_*\,E,
+   \]
+4. a one-scalar transport projection factor
+   \(\Upsilon_{\rm lat}>0\) relating the Stage-235 event-equivalent lattice export rate to a coarse lattice-turnover rate,
+5. the Session-V condensed-matter identifications
+   \[
+   \gamma_{\rm lat,turn}^{\rm phys}=\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D,
+   \qquad
+   V_{\rm lattice}(r)=\tfrac12 k_{\rm eff}r_{\rm phys}^2,
+   \qquad
+   T_1T=\mathcal K_{\rm corr},
+   \]
+6. and, for the benchmark slice, the same reduced turning-point and crossing-time data already carried by Sessions II–V.
+
+This stage is a **physical-calibration / materials companion**. It is not part of the core PDE theorem ladder. Its job is to translate the exact reduced Stage-235 outputs into experimentally recognizable threshold equations while keeping the unit map and coarse-graining assumptions explicit.
+
+---
+
+## Purpose
+
+Stage 235 removed the ad hoc vacuum-vs-lattice heat split and replaced it by the exact microscopic channel compiler
+\[
+E_{\rm vac}(T),\qquad E_{\rm lat}(T),\qquad f_{\rm vac}(s),\qquad f_{\rm lat}(s),
+\]
+together with the exact safe-edge event-equivalent rates
+\[
+\gamma_{\rm vac,safe}^{\rm eq},
+\qquad
+\gamma_{\rm lat,safe}^{\rm eq}.
+\]
+But Stage 235 stopped deliberately one step before condensed-matter language. It did **not** tell us how to express those microscopic rates and energies as
+
+- an electron-phonon turnover threshold \(\lambda_{\rm ep}\omega_D\),
+- a force-matched interstitial stiffness \(k_{\rm eff}\),
+- or a Korringa-limited thermal spin-survival ceiling \(T_{\max}\).
+
+That is exactly what Stage 236 does.
+
+The main results are:
+
+1. the lattice-turnover threshold is an exact algebraic image of the Stage-235 safe-edge rate once one introduces a single explicit coarse transport factor \(\Upsilon_{\rm lat}\),
+2. the Session-V formulas are recovered as one particular calibration slice of that exact map,
+3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
+4. the Korringa ceiling collapses to one exact reduced-time prefactor,
+5. and the whole condensed-matter side reduces to a short list of material-screening inequalities.
+
+So Stage 236 does not make the corridor stronger. It makes the Stage-235 microscopic compiler **physically calibratable and screenable**.
+
+---
+
+## Provenance
+
+This stage is the direct continuation Stage 235 asked for.
+
+- Stage 233 turned the relaxed same-charge branch into a crossing-vs-collapse problem.
+- Stage 234 replaced the phenomenological \(\gamma_{\rm tot}\dot V\) envelope by the microscopic cubic-plus-quintic export kernel.
+- Stage 235 derived the exact vacuum/lattice heat partition and the safe-edge exported-energy / event-rate formulas.
+- Session V then translated the older phenomenological lattice thresholds into the condensed-matter variables \(\lambda_{\rm ep}\omega_D\), \(k_{\rm eff}\), and \(T_{\max}\).
+
+Stage 236 is the missing bridge between the exact Stage-235 microscopic compiler and that Session-V materials language.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step the stack could already say:
+
+- the minimum exported energy needed for cold survival,
+- the exact vacuum-vs-lattice partition fraction on a chosen event,
+- and the microscopic event-equivalent lattice export rate.
+
+But it still could **not** say, without one more calibration move,
+
+- what lattice-turnover threshold a real host must satisfy,
+- what interstitial stiffness corresponds to the reduced barrier force,
+- or how the spin-survival condition translates into a temperature ceiling.
+
+There was also one important conceptual mismatch left open. Session V’s phenomenological lattice damping scalar
+\[
+\gamma_{\rm lattice}^{\rm red}\approx 4.79562976
+\]
+is **not** numerically the same object as the exact Stage-235 event-equivalent lattice rate
+\[
+\gamma_{\rm lat,safe}^{\rm eq}.
+\]
+So a companion stage has to do two things at once:
+
+1. preserve the Session-V parameter map as a valid legacy slice,
+2. and make explicit the extra calibration/projection factor needed to connect it to the exact microscopic Stage-235 object.
+
+That is the role of \(\Upsilon_{\rm lat}\) below.
+
+---
+
+## 1. Physical calibration dictionary
+
+Let the reduced-to-physical bridge be
+\[
+\boxed{
+ t^{\rm phys}=t_*\,t,
+ \qquad
+ r^{\rm phys}=\frac{\lambda_{\rm phys}}{\lambda_{\rm ref}}\,r,
+ \qquad
+ E^{\rm phys}=E_*\,E.
+}
+\]
+Here
+
+- \(t_*\) is the physical time unit,
+- \(\lambda_{\rm phys}\) is the physical localization width assigned to the chosen reduced branch,
+- \(\lambda_{\rm ref}\) is the reduced width used to attach that physical scale,
+- \(E_*\) is the physical energy scale for the reduced barrier potential.
+
+On the Session-V turning-point slice, the natural choice is
+\[
+\lambda_{\rm ref}=\lambda_{\rm th}(r_{\rm turn}).
+\]
+
+From Stage 235, the exact safe-edge lattice event-equivalent rate is
+\[
+\boxed{
+\gamma_{\rm lat,safe}^{\rm eq}
+=
+ f_{\rm lat}(s_c)\,\mu_\eta\,\frac{s_0^2-s_c^2}{s_c}.
+}
+\]
+Introduce one explicit coarse transport / projection factor
+\[
+\boxed{\Upsilon_{\rm lat}>0}
+\]
+by defining the coarse physical lattice-turnover rate
+\[
+\boxed{
+\gamma_{\rm lat,turn}^{\rm phys}
+:=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,t_*}.
+}
+\]
+This is the physical rate that Stage 236 identifies with the standard condensed-matter turnover lane
+\[
+\boxed{
+\gamma_{\rm lat,turn}^{\rm phys}
+=
+\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D.
+}
+\]
+
+The point of \(\Upsilon_{\rm lat}\) is precise:
+
+- if the microscopic event-equivalent export rate is already the correct coarse lattice turnover, then \(\Upsilon_{\rm lat}=1\),
+- if the older Session-IV/Session-V envelope rate is a coarser observable, then \(\Upsilon_{\rm lat}\neq 1\) captures that down-projection exactly.
+
+This is a calibration factor, not a new dynamical degree of freedom.
+
+---
+
+## 2. Microscopic lattice-turnover compiler
+
+With the dictionary above, the Stage-235 safe-edge rate implies the exact condensed-matter threshold
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,t_*}
+=
+\frac{f_{\rm lat}(s_c)\,\mu_\eta\,(s_0^2-s_c^2)}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,s_c\,t_*}.
+}
+\]
+Using
+\[
+ t_{\rm cross}^{\rm phys}=\frac{t_*}{s_c},
+\]
+the same condition can be written as the exact event-product threshold
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{(236)}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,s_c}
+=
+\frac{f_{\rm lat}(s_c)\,\mu_\eta\,(s_0^2-s_c^2)}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,s_c^2}.
+}
+\]
+
+So the lattice side is no longer a vague materials statement. It is one exact inequality with one explicit calibration factor.
+
+### 2.1 Legacy Session-V slice
+
+Session V used the phenomenological reduced lattice rate
+\[
+\gamma_{\rm lattice}^{\rm red}\approx 4.79562976.
+\]
+The exact Stage-236 map reproduces that older threshold if one chooses the calibration slice
+\[
+\boxed{
+\Upsilon_{\rm lat}^{\rm(sess)}
+:=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\gamma_{\rm lattice}^{\rm red}}.
+}
+\]
+Then
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D)_{\min}^{\rm(sess)}
+=
+\frac{4.79562976}{\zeta_{\rm ep} t_*},
+}
+\]
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{\rm(sess)}
+=
+\frac{8.73618521}{\zeta_{\rm ep}},
+}
+\]
+which is exactly the Session-V turnover product.
+
+So the Session-V parameter map is not discarded. It is recovered as a definite calibration slice of the exact Stage-235/236 bridge.
+
+### 2.2 Benchmark specialization
+
+Use the Stage-235 benchmark slice
+\[
+ f_{\rm lat}(s_c)=\frac34,
+ \qquad
+ \mu_\eta=1,
+ \qquad
+ s_c\approx 0.5489386551,
+ \qquad
+ s_0\approx 6.94311167.
+\]
+Then
+\[
+\boxed{
+\gamma_{\rm lat,safe}^{\rm eq}\approx 65.45193926.
+}
+\]
+On the raw microscopic slice \(\Upsilon_{\rm lat}=1\), this implies the much stronger direct product requirement
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{\rm(micro)}
+\approx
+\frac{119.23361317}{\zeta_{\rm ep}}.
+}
+\]
+The legacy Session-V slice is recovered by the benchmark factor
+\[
+\boxed{
+\Upsilon_{\rm lat}^{\rm(sess)}
+\approx
+\frac{65.45193926}{4.79562976}
+\approx
+13.64824695.
+}
+\]
+This is the cleanest way to state the relation between the exact microscopic Stage-235 rate and the older Session-V envelope rate.
+
+---
+
+## 3. Harmonic interstitial trigger and force-matched stiffness compiler
+
+Take the turning point \(r_{\rm turn}\) on the reduced branch and attach the physical radius by
+\[
+\boxed{
+ r_{\rm turn}^{\rm phys}
+ =
+ \frac{r_{\rm turn}}{\lambda_{\rm ref}}\,\lambda_{\rm phys}.
+}
+\]
+For a harmonic interstitial trap
+\[
+\boxed{
+V_{\rm lattice}(r)=\frac12 k_{\rm eff} r_{\rm phys}^2,
+\qquad
+\partial_r\ln V_{\rm lattice}=\frac{2}{r_{\rm phys}}.
+}
+\]
+Therefore the geometric trigger ratio is exactly
+\[
+\boxed{
+\chi_{\lambda,\rm lattice}(r_{\rm turn})
+=
+\frac{2\lambda_{\rm phys}}{r_{\rm turn}^{\rm phys}}
+=
+\frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+}
+\]
+So the \(\chi_\lambda\) criterion fixes only a geometry ratio. It does **not** fix a stiffness by itself.
+
+### 3.1 Force-matched stiffness
+
+Let the reduced barrier potential near the turning point be \(V_{\rm red}(r)\). Under the physical energy map
+\[
+V_{\rm phys}(r_{\rm phys})=E_* V_{\rm red}(r),
+\qquad
+r=\frac{\lambda_{\rm ref}}{\lambda_{\rm phys}}r_{\rm phys},
+\]
+the physical barrier force at the turning point is
+\[
+\boxed{
+F_{\rm barrier}^{\rm phys}(r_{\rm turn})
+=
+\frac{E_*\lambda_{\rm ref}}{\lambda_{\rm phys}}
+\Bigl|V_{\rm red}'(r_{\rm turn})\Bigr|.
+}
+\]
+Force matching against the harmonic trap
+\[
+F_{\rm lattice}^{\rm phys}(r_{\rm turn})=k_{\rm eff}\,r_{\rm turn}^{\rm phys}
+\]
+gives the exact stiffness compiler
+\[
+\boxed{
+k_{\rm eff,req}
+=
+\frac{E_*\lambda_{\rm ref}^2}{\lambda_{\rm phys}^2}
+\frac{|V_{\rm red}'(r_{\rm turn})|}{r_{\rm turn}}.
+}
+\]
+Define the reduced force-matching coefficient
+\[
+\boxed{
+\mathcal K_{\rm turn}
+:=
+\frac{\lambda_{\rm ref}^2}{r_{\rm turn}}|V_{\rm red}'(r_{\rm turn})|.
+}
+\]
+Then
+\[
+\boxed{
+k_{\rm eff,req}=\mathcal K_{\rm turn}\,\frac{E_*}{\lambda_{\rm phys}^2}.
+}
+\]
+If one rewrites the localization width as half an interstitial scale,
+\[
+\lambda_{\rm phys}=\frac{a_{\rm int}}{2},
+\]
+then
+\[
+\boxed{
+k_{\rm eff,req}=4\mathcal K_{\rm turn}\,\frac{E_*}{a_{\rm int}^2}.
+}
+\]
+
+So the stiffness formula is an exact companion of the reduced barrier force **only after** one adds the force-matching assumption. It is not a pure consequence of the geometric \(\chi_\lambda\) trigger.
+
+### 3.2 Session-V benchmark slice
+
+On the turning-point benchmark carried by the session,
+\[
+ r_{\rm turn}\approx 0.39096144,
+ \qquad
+ \lambda_{\rm ref}=\lambda_{\rm th}(r_{\rm turn})\approx 0.42826825.
+\]
+Therefore
+\[
+\boxed{
+ r_{\rm turn}^{\rm phys}
+ \approx
+ 0.9128891530\,\lambda_{\rm phys},
+}
+\]
+\[
+\boxed{
+ \chi_{\lambda,\rm lattice}(r_{\rm turn})
+ \approx
+ 2.19084649.
+}
+\]
+If one inserts the Session-V force-matching benchmark
+\[
+\boxed{\mathcal K_{\rm turn}\approx 2.73855812,}
+\]
+then the stiffness formulas become
+\[
+\boxed{
+ k_{\rm eff,req}
+ =
+ 2.73855812\,
+ \frac{E_*[\mathrm{eV}]}{\lambda_{\rm phys}^2[\mathrm{\AA}^2]}
+ \quad \mathrm{eV/\AA^2},
+}
+\]
+\[
+\boxed{
+ k_{\rm eff,req}
+ =
+ 10.95423247\,
+ \frac{E_*[\mathrm{eV}]}{a_{\rm int}^2[\mathrm{\AA}^2]}
+ \quad \mathrm{eV/\AA^2},
+}
+\]
+which is exactly the Session-V reported stiffness map.
+
+---
+
+## 4. Korringa-limited thermal spin-survival compiler
+
+Use the standard Korringa relation
+\[
+\boxed{T_1 T = \mathcal K_{\rm corr}.}
+\]
+Impose the spin-survival condition on the same cold branch used in Sessions II–V,
+\[
+\boxed{T_1\ge t_{\rm cross}^{\rm phys}.}
+\]
+Then the exact ceiling temperature is
+\[
+\boxed{
+T_{\max}
+=
+\frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+=
+\frac{s_c\,\mathcal K_{\rm corr}}{t_*}.
+}
+\]
+Using the reduced crossing-time benchmark
+\[
+ s_c\approx 0.5489386551,
+\]
+one gets
+\[
+\boxed{
+T_{\max}
+\approx
+0.548938655\,\frac{\mathcal K_{\rm corr}}{t_*}.
+}
+\]
+So the Korringa side is the cleanest of the three condensed-matter companions: once \(t_*\) and the material-specific \(\mathcal K_{\rm corr}\) are fixed, the ceiling temperature follows immediately.
+
+---
+
+## 5. Material-screening companion invariants
+
+Stage 236 packages the Session-V condensed-matter map into four exact screening ratios.
+
+### 5.1 Lattice-turnover ratio
+\[
+\boxed{
+\Pi_{\rm ep}
+:=
+\frac{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D\,t_*}{\gamma_{\rm lat,safe}^{\rm eq}}
+=
+\frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}}.
+}
+\]
+The cold-survival / lattice-turnover condition is
+\[
+\boxed{\Pi_{\rm ep}\ge 1.}
+\]
+
+### 5.2 Geometric trigger ratio
+\[
+\boxed{
+\Pi_{\chi}
+:=
+\chi_{\lambda,\rm lattice}(r_{\rm turn})
+=
+\frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+}
+\]
+The formal geometry-side trigger is
+\[
+\boxed{\Pi_{\chi}\ge 1.}
+\]
+
+### 5.3 Force-matched stiffness ratio
+\[
+\boxed{
+\Pi_k
+:=
+\frac{k_{\rm eff}\,\lambda_{\rm phys}^2}{\mathcal K_{\rm turn}E_*}
+=
+\frac{k_{\rm eff}}{k_{\rm eff,req}}.
+}
+\]
+The stiffness requirement is
+\[
+\boxed{\Pi_k\ge 1.}
+\]
+
+### 5.4 Thermal spin-survival ratio
+\[
+\boxed{
+\Pi_T(T)
+:=
+\frac{\mathcal K_{\rm corr}}{T\,t_{\rm cross}^{\rm phys}}
+=
+\frac{T_{\max}}{T}.
+}
+\]
+The spin-survival requirement is
+\[
+\boxed{\Pi_T(T)\ge 1.}
+\]
+
+So a candidate host survives the Stage-236 companion screen only if
+\[
+\boxed{
+\Pi_{\rm ep}\ge 1,
+\qquad
+\Pi_{\chi}\ge 1,
+\qquad
+\Pi_k\ge 1,
+\qquad
+\Pi_T(T)\ge 1.
+}
+\]
+
+That is the exact condensed-matter triage package carried by this stage.
+
+---
+
+## 6. What this stage achieves physically
+
+Stage 236 changes the barrier thread in four concrete ways.
+
+### 6.1 It preserves the Session-V map while making the Stage-235 microscopic object explicit
+
+The lattice-turnover threshold is no longer forced to pretend that the Stage-235 event-equivalent export rate and the older Session-IV/Session-V envelope scalar are the same numerical object. Their relation is now carried by one explicit factor \(\Upsilon_{\rm lat}\).
+
+### 6.2 It separates geometric trigger from stiffness
+
+The \(\chi_\lambda\) condition only says whether the turning-point geometry sits inside the formal steep-trap regime. The explicit stiffness formula needs one more assumption: force matching to the reduced barrier force. Stage 236 makes that separation exact.
+
+### 6.3 It turns thermal spin survival into one clean ceiling formula
+
+Once \(t_*\) and \(\mathcal K_{\rm corr}\) are fixed, the aligned-spin survival condition becomes the exact ceiling
+\(T_{\max}=\mathcal K_{\rm corr}/t_{\rm cross}^{\rm phys}\).
+
+### 6.4 It packages the materials problem as a short inequality stack
+
+Instead of vague questions about whether a host is “good,” the condensed-matter side is now four explicit screening ratios: turnover, geometric trigger, stiffness, and Korringa survival.
+
+---
+
+## 7. What remains open
+
+This stage is still a companion, not a materials theorem.
+
+The following remain open:
+
+1. the physical unit map \((t_*,\lambda_{\rm phys},E_*)\),
+2. the transport projection factor \(\Upsilon_{\rm lat}\) unless one simply adopts the legacy Session-V slice,
+3. the material-dependent constants \(\zeta_{\rm ep}\) and \(\mathcal K_{\rm corr}\),
+4. and actual candidate-host screening against real databases.
+
+So the correct reading is:
+
+- the barrier/stability chain now produces exact reduced condensed-matter threshold equations,
+- but the project still has to calibrate units and compare those equations against real hosts before making any material claim.
+
+That is why this stage is correctly a **companion** to the core PDE ladder rather than a theorem stage of the ladder itself.
+
+---
+
+## 8. Immediate next step
+
+The next honest move is now sharply defined.
+
+1. Fix or constrain \(t_*\), \(\lambda_{\rm phys}\), and \(E_*\).
+2. Decide whether the materials map is being carried on the raw microscopic slice \((\Upsilon_{\rm lat}=1)\) or on the legacy Session-V envelope slice \((\Upsilon_{\rm lat}=\Upsilon_{\rm lat}^{\rm(sess)})\).
+3. Insert candidate-host values of \(\lambda_{\rm ep}\omega_D\), effective interstitial stiffness, and \(\mathcal K_{\rm corr}\).
+4. Apply the exact screening ratios \((\Pi_{\rm ep},\Pi_\chi,\Pi_k,\Pi_T)\).
+
+That is the smallest falsifier left on the condensed-matter side before returning to the actual moving-throat branch realization problem.

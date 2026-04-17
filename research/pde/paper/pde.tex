@@ -1,0 +1,3933 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+
+\setlist[itemize]{leftmargin=2em}
+\setlist[enumerate]{leftmargin=2.25em}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% -----------------------------------------------------------------------------
+% Theorem environments
+% -----------------------------------------------------------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{claim}[theorem]{Claim}
+
+% -----------------------------------------------------------------------------
+% Macros
+% -----------------------------------------------------------------------------
+\newcommand{\status}[1]{\textsc{#1}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\GNLS}{\mathrm{GNLS}}
+\newcommand{\Ptwo}{\ensuremath{\mathrm{P}_2}}
+\newcommand{\brane}{\mathrm{brane}}
+\newcommand{\eff}{\mathrm{eff}}
+\newcommand{\out}{\mathrm{out}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\nt}{\mathrm{nt}}
+\newcommand{\mhat}{\ensuremath{\hat m_0}}
+\newcommand{\XiOne}{\ensuremath{\Xi_1}}
+\newcommand{\ubar}{\bar u}
+\newcommand{\Yout}{\ensuremath{\widehat Y_2^{\out}}}
+\newcommand{\Rth}{R_{\mathrm{th}}}
+\newcommand{\Lint}{L_{\mathrm{int}}}
+\newcommand{\conf}{\mathrm{conf}}
+\newcommand{\wall}{\mathrm{wall}}
+\newcommand{\DtN}{\mathrm{DtN}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbS}{\mathbb S}
+
+% -----------------------------------------------------------------------------
+% Title data
+% -----------------------------------------------------------------------------
+\title{Moving-Throat PDEs for Brane--Bulk Defects:\\
+Geometry Lift, Reduced Wall--Support--Gauge Dynamics, and Quadrupole Response Extraction}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formulate a moving-throat partial differential equation framework for brane--bulk defects starting from the exact action-based $(4+1)$ parent theory with gauged matter, localized Maxwell dynamics, and explicit confinement geometry. The throat is lifted from the finite-dimensional variables $(a,L)$ to a distributed moving surface $\Sigma(\mathbf X,t)=r-R(\Omega,w,t)$, so that the wall, stable matter-support, localized Maxwell, and mixed $A_w/F_{\mu w}/J^w$ channels can be treated in one coupled response problem. This lift makes the grouped real $P_2$ bundle literal rather than symbolic and yields a reduced wall--support--gauge system whose low-frequency data are the conservative operator moments, outgoing-transfer moments, and grouped isotropy defects.
+
+On the natural isotropic branch, the angular source map is canonical and the universal outgoing quadrupole bridge collapses to the invariant normalization test $\hat m_0^{\,2}P_0=54Gc_s^5/(5a^5c^5)$. Around that branch, the first admissible weak-axisymmetric departure is not a generic three-lane deformation: it is transported by the fixed grouped signature $(1,\tfrac12,-1)$ and is measured by the single prefactor slope $\Xi_1=P_1/P_0$. The paper therefore serves two purposes at once. It states the framework in a form that makes clear what is exact, what belongs only to controlled reduction, and what observables a realized branch must compute; and it provides an operational guide for extracting overlap data, testing grouped isotropy, and evaluating the isotropic and weak-axisymmetric quadrupole-response targets. It does not claim a full nonlinear branch solution or a completed proof that the passive/outgoing quadrupole branch has already been realized.
+\end{abstract}
+
+% =============================================================================
+\section{Introduction}
+\label{sec:introduction}
+% =============================================================================
+
+\subsection{Why a moving-throat PDE is needed}
+
+The action-based $(4+1)$ parent theory already fixes three pieces of the program at a level that is no longer heuristic: a gauged bulk matter sector, a localized Maxwell sector, and an explicit defect geometry carried through confinement. That parent theory was strong enough to support the reduced brane-facing hierarchy and the conservative post-Newtonian construction, but it also exposed its own limit. As the hierarchy is pushed beyond the monopole approximation, the defect ceases to look like a point source with a few adjustable coefficients and instead begins to look like a small response system with internal structure. By the time one reaches the higher conservative and retarded bridges, the reduced data already require a carried wake sector, a genuine mouth/support layer, a separate geometry-completion channel, and a grouped real $\Ptwo$ response bundle. The unresolved problem is therefore no longer another round of coefficient matching. It is the missing moving-throat PDE that must produce those coefficients as response data of an actual branch.
+
+The older finite-dimensional throat variables $(a,L)$ remain useful, but only as the lowest collective moments of a more distributed object. They can encode breathing motion, but they cannot by themselves make the grouped real $\Ptwo$ modes literal wall/support degrees of freedom, they cannot keep the mixed-core channels
+\[
+A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a
+\]
+alive inside the microscopic response problem, and they cannot determine the mouth/worldtube operator whose outgoing quadrupole normalization remains open. A genuine moving-throat formulation therefore has to do at least four things at once: promote the throat to a distributed geometry field, couple that geometry honestly to the bulk matter and gauge sectors, retain the mixed channels that the strict far-field brane reduction suppresses, and organize the resulting response in the grouped real $\Ptwo$ language required by the higher-order bridge.
+
+A second motivation is methodological. The current program contains statements of several different types: exact consequences of the declared action, exact theorems inside fixed reduced hierarchies, controlled reductions, effective closures, and genuinely open branch-realization questions. If those statuses are not kept separate, then a reader cannot tell what has actually been derived from the parent theory and what still depends on the realized moving-throat branch. The present paper is meant to prevent that blur. Its purpose is to formulate the PDE framework in the right variables, isolate the observables that any successful branch must determine, and make the remaining theorem gap explicit rather than diffuse.
+
+At the reader-facing level, the whole framework is organized around two operational outputs. On the natural isotropic branch, the outgoing quadrupole bridge is controlled by the invariant normalization condition
+\[
+\mhat^{2} P_0 = \frac{54 G c_s^5}{5 a^5 c^5}.
+\]
+Away from exact isotropy, the first weak-axisymmetric departure is carried by the prefactor slope
+\[
+\XiOne = \frac{P_1}{P_0}.
+\]
+The point of a moving-throat PDE is to make these quantities calculable from a coupled wall--support--gauge problem rather than to leave them as symbolic placeholders.
+
+\subsection{What this paper contributes}
+
+This paper is a framework paper for that coupled problem. Its first contribution is to restate the exact parent theory together with a claim-status firewall that remains visible throughout the manuscript. The bulk matter sector, the localized Maxwell sector, the corrected charge ontology, and the exact mixed-field observables all belong to the parent theory itself. By contrast, the reduced brane limits, low-frequency closures, and branch-selection hypotheses belong to later layers of the construction and must be labeled accordingly. Making that hierarchy explicit is part of the content, not merely a stylistic choice.
+
+Its second contribution is a geometry lift from the old collective throat variables to a distributed moving surface. The paper adopts a hybrid level-set / shape-field representation,
+\[
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\]
+that preserves the bulk ontology while making the mouth harmonics explicit. In this language the old variables $a(t)$ and $L(t)$ survive as collective monopole moments rather than as the fundamental geometry, and the grouped real $\Ptwo$ sector becomes a literal wall/support bundle instead of a symbolic residual ledger. This is the minimal lift that can simultaneously keep the finite-throat picture, expose the quadrupole lanes, and support a useful linearized PDE.
+
+Its third contribution is a reduced but honest wall--support--gauge system. Starting from the lifted geometry, the paper writes the linearized coupled problem for the wall field, the stable matter-support sector, the localized Maxwell sector, and the mixed channels. It then organizes the resulting reduced kernels into the quantities that matter for higher-order matching: conservative operator moments, outgoing-transfer moments, grouped trace/anomaly projectors, and the isotropic versus weak-axisymmetric decomposition of the grouped real $\Ptwo$ bundle. The goal here is not to solve the full nonlinear branch, but to put the coupled response problem into a form in which the remaining normalization question is precise.
+
+Its fourth contribution is operational rather than purely formal. The paper shows how the reader should use the PDE once a candidate branch is specified. On the isotropic line, the grouped real bundle collapses to a common lane and the angular source map becomes canonical, so the normalization problem reduces to a radial/axial question. Around that branch, the first allowed weak-axisymmetric splitting is not arbitrary; it is transported through the grouped response and outgoing prefactor in a tightly constrained way. In other words, the paper is meant to serve as a user guide to the PDE as much as a conceptual reformulation of the defect.
+
+Viewed this way, the manuscript is designed to bridge two audiences at once. A reader coming from the parent-theory side should be able to see exactly how the moving throat is coupled to the bulk fields without stepping immediately into the entire derivation companion. A reader coming from the post-Newtonian side should be able to identify the specific quantities the PDE must determine in order for the grouped $\Ptwo$ conservative and outgoing bridges to close.
+
+\subsection{What this paper does \emph{not} claim}
+
+Because the current theorem bottleneck is branch realization rather than lack of algebraic packaging, it is important to state the non-claims early. This paper does \emph{not} claim a complete first-principles solution of the nonlinear moving-throat PDE. It does not claim that the passive/outgoing quadrupole branch has already been realized on the true defect solution, and it does not claim that the universal normalization condition above has already been proven on every admissible branch. The paper also does not attempt to subsume the full derivation companion, the symbolic-audit record, or the later same-charge, rigid-mouth, relaxed-constraint, and materials continuations into one framework narrative.
+
+Relatedly, the controlled far-field brane reduction is not taken here as a statement about microscopic ontology. The suppression of
+\[
+A_w,\qquad J^w,\qquad F_{\mu w}
+\]
+in the zero-mode brane limit is a reduction statement, not an erasure of the mixed sector. The present paper keeps those channels alive wherever the response problem requires them. That distinction is essential, because the outgoing quadrupole bridge and the weak-axisymmetric transport problem both pass through structures that would be invisible in a purely brane-zero-mode description.
+
+The claim one should attach to this paper is therefore narrower and stronger at the same time. Narrower, because it does not pretend to have solved the final branch-realization question. Stronger, because it makes precise what the moving-throat PDE must compute, what counts as exact from the declared action, what belongs only to controlled reduction, and what remains open. In that sense the paper is intended to be a stable front end for both the technical derivation companion and any later numerical or branch-construction work.
+
+\subsection{Structure of the paper}
+
+Section~\ref{sec:status-parent} states the claim-status map, fixes notation, and records the exact parent theory together with the charge-ontology firewall. Section~\ref{sec:geometry-lift} introduces the moving-throat geometry lift, explains how the old $(a,L)$ variables reappear as collective moments, and identifies the grouped real $\Ptwo$ wall/support sector. Section~\ref{sec:linearized-pde} then writes the linearized coupled wall--matter--Maxwell problem in a form suitable for reduced analysis.
+
+Section~\ref{sec:reduced-system} develops the conservative reduced wall--support--gauge system and shows how the coupled kernels arise after the stable support and internal gauge coordinates are integrated out. Section~\ref{sec:grouped-bundle} collects the full grouped real $\Ptwo$ bundle, introduces the weighted projector calculus, and separates isotropic from anisotropic bundle data. Section~\ref{sec:outgoing-normalization} presents the outgoing quadrupole bridge and states the isotropic normalization test in its final operational form.
+
+Section~\ref{sec:weak-axisymmetry} studies the first weak-axisymmetric departures, including the transport of grouped-lane anisotropy into the normalized response and outgoing prefactor. Section~\ref{sec:how-to-use} turns the formalism into a practical workflow by listing the branch data, overlap integrals, and consistency checks needed to use the PDE in actual calculations. Finally, Section~\ref{sec:discussion-gap} summarizes what the framework has fixed, what remains branch-dependent, and why the remaining problem is now a sharply delimited realization question rather than another open-ended matching exercise.
+
+% =============================================================================
+\section{Claim-status map, notation, and exact parent theory}
+\label{sec:status-parent}
+% =============================================================================
+
+The present paper sits between two layers of the program that must not be conflated: the exact $(4+1)$ parent theory, and the still-open realization of the full moving-throat branch. For that reason, the first task is not to introduce new equations but to fix the status firewall under which later equations are to be read. The moving-throat program is now rich enough that exact parent statements, exact statements inside a declared closure, controlled reductions, effective closures, and genuinely open branch-realization questions all coexist in the same derivation chain. If those statuses are not kept separate, then the reader cannot tell which conclusions follow from the declared action itself and which remain hypotheses about the realized throat branch.
+
+This section therefore does four things. First, it fixes the claim-status map used throughout the paper. Second, it records the notation and ontology firewall that keep the bulk, brane, charge, and grouped-lane dictionaries from being silently mixed. Third, it states the exact parent action and the exact bulk equations already frozen by the program. Fourth, it separates projection from reduction and clarifies the status of the mixed channels that later enter the outgoing bridge.
+
+\subsection{Claim-status map}
+
+Throughout the paper, major statements should be read under the following tags.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}L{0.24\linewidth}L{0.69\linewidth}@{}}
+\toprule
+Tag & Meaning \\
+\midrule
+\textsc{Exact} & Follows directly from the declared action, exact definitions, or exact algebra. \\
+\textsc{Exact Within Closure} & Exact once a specific reduced hierarchy, branch family, or restricted response class has been declared. \\
+\textsc{Reduced / Controlled Reduction} & Requires an explicit ansatz, projection rule, low-frequency reduction, or small-body limit. \\
+\textsc{Effective Closure} & A physically motivated closure choice that is not yet a unique theorem of the completed moving-throat PDE. \\
+\textsc{Numerically Located} & Defined exactly, but currently realized at values obtained by numerical solve rather than closed form. \\
+\textsc{Open} & Still depends on the realized moving-throat branch and is not yet fixed by the present theory stack. \\
+\bottomrule
+\end{tabular}
+\caption{Claim-status firewall used throughout the framework paper.}
+\label{tab:claim-status}
+\end{table}
+
+The intended use of Table~\ref{tab:claim-status} is conservative. When a statement could be read under more than one tag, it should be assigned the weaker one. In particular, the parent matter and gauge equations are \textsc{Exact}; the brane projection identities are exact once the projection kernel is declared; the zero-mode Maxwell law and related brane-effective limits are \textsc{Reduced / Controlled Reduction}; and the final passive/outgoing quadrupole normalization remains \textsc{Open} until the realized moving-throat branch is supplied.
+
+\subsection{Coordinates, fields, operators, and geometry variables}
+
+We work on a $(4+1)$-dimensional spacetime with coordinates
+\[
+ x^M=(t,x,y,z,w),
+ \qquad M,N\in\{0,1,2,3,4\}.
+\]
+Bulk spatial coordinates are
+\[
+ \mathbf X=(x,y,z,w)\in\mathbb R^4,
+\]
+while brane spatial coordinates are
+\[
+ \mathbf x=(x,y,z)\in\mathbb R^3.
+\]
+Brane spacetime indices are
+\[
+ \mu,\nu\in\{0,1,2,3\},
+\]
+bulk spatial indices are
+\[
+ i,j\in\{x,y,z,w\},
+\]
+and brane spatial indices are
+\[
+ a,b\in\{x,y,z\}.
+\]
+The bulk metric is taken to be flat with mostly-plus signature,
+\[
+ \eta_{MN}=\operatorname{diag}(-1,+1,+1,+1,+1),
+\]
+and the bulk d'Alembertian is
+\[
+ \Box_5=-\partial_t^2+\nabla_3^2+\partial_w^2.
+\]
+We also use
+\[
+ \nabla_4=(\partial_x,\partial_y,\partial_z,\partial_w),
+ \qquad
+ \nabla_3=(\partial_x,\partial_y,\partial_z).
+\]
+
+The core dynamical objects of the exact parent theory are:
+\begin{align*}
+ &\text{matter/order parameter:} && \psi(\mathbf X,t),\qquad \rho(\mathbf X,t)=|\psi|^2,\\
+ &\text{localized gauge field:} && A_M(x),\qquad F_{MN}=\partial_M A_N-\partial_N A_M,\\
+ &\text{geometry variable:} && \Sigma(\mathbf X,t).
+\end{align*}
+Geometry enters the exact theory through the confinement coupling
+\[
+V_{\mathrm{conf}}(\mathbf X;\Sigma).
+\]
+Later sections lift \(\Sigma\) to the explicit moving-throat representation
+\[
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\qquad
+r=\sqrt{x^2+y^2+z^2},
+\qquad
+\Omega=\mathbf x/r\in S^2,
+\]
+so that the old collective variables \(a(t)\) and \(L(t)\) survive only as collective moments of a distributed throat geometry rather than as the fundamental geometry variables.
+
+Two one-dimensional profiles must also be kept distinct from the start. The first is the localization profile \(Z(w)\), which multiplies the Maxwell kinetic term in the action. The second is the projection kernel \(W(w)\), which defines what a brane observer measures. The first belongs to the microscopic dynamics; the second belongs to the observation map. They should never be silently identified unless a later controlled choice explicitly does so.
+
+\subsection{Charge ontology and notation firewall}
+
+The corrected electric-charge bookkeeping is
+\[
+\eta_Q=\pm 1,
+\qquad
+q_\star=\eta_Q e_\star,
+\qquad
+e_\star>0.
+\]
+After canonical zero-mode brane normalization,
+\[
+q_{\mathrm{eff}}=\frac{q_\star}{\sqrt{Z_{\mathrm{int}}}},
+\qquad
+e_{\mathrm{eff}}=\frac{e_\star}{\sqrt{Z_{\mathrm{int}}}},
+\qquad
+Z_{\mathrm{int}}=\int_{-\infty}^{+\infty} Z(w)\,\mathrm dw.
+\]
+The structural firewall is as follows.
+\begin{enumerate}
+    \item Electric-charge sign is carried by \(\eta_Q\), not by circulation, throat radius, or breathing variables.
+    \item The observable brane coupling is controlled by localization thickness through \(Z_{\mathrm{int}}\).
+    \item The historical gravity-side bare \(q=1\) is the mass-dressing coefficient
+    \[
+    \kappa_\rho=1,
+    \]
+    not electric charge.
+    \item Grouped labels \(20/21/22\) always denote grouped real \(P_2\) lanes, not spacetime tensor indices.
+    \item The mixed channels
+    \[
+    A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a
+    \]
+    are suppressed only in the strict far-field brane reduction. They remain part of the microscopic ontology and later become essential to the honest outgoing bridge.
+\end{enumerate}
+
+This separation matters for the rest of the paper. The grouped real \(P_2\) response problem is not an electromagnetic-index problem, and the brane-effective Maxwell limit is not a statement that the mixed-core variables do not exist.
+
+\subsection{Exact parent action}
+
+The exact parent theory presently frozen by the program is an action-based bulk matter--gauge system in which geometry is carried through the confinement term. The total action is
+\[
+S=\int \mathrm dt\,\mathrm d^4X\,\bigl(\mathcal L_\psi+\mathcal L_{\mathrm{EM}}\bigr),
+\]
+with the geometry sector entering through \(V_{\mathrm{conf}}(\mathbf X;\Sigma)\).
+
+\subsubsection*{Matter sector: gauged GNLS}
+
+The bulk matter Lagrangian density is
+\begin{equation}
+\mathcal L_\psi
+=
+\frac{i\hbar}{2}\bigl(\psi^*D_t\psi-\psi D_t\psi^*\bigr)
+-\frac{\hbar^2}{2m}(D_i\psi)^*(D_i\psi)
+-V_{\mathrm{conf}}(\mathbf X;\Sigma)\,\rho
+-U(\rho),
+\label{eq:parent-Lpsi}
+\end{equation}
+where the gauge-covariant derivatives are
+\[
+D_t\psi=\partial_t\psi+\frac{i q_\star}{\hbar}A_0\psi,
+\qquad
+D_i\psi=\partial_i\psi-\frac{i q_\star}{\hbar}A_i\psi.
+\]
+The frozen stiff-polytropic equation of state is
+\[
+P(\rho)=K\rho^5,
+\qquad
+U(\rho)=\frac{K}{4}\rho^5,
+\qquad
+h(\rho)=\frac{\mathrm dU}{\mathrm d\rho}=\frac{5K}{4}\rho^4.
+\]
+The corresponding bulk sound speed is
+\[
+c_s^2(\rho)=\frac{1}{m}\frac{\mathrm dP}{\mathrm d\rho}=\frac{5K}{m}\rho^4.
+\]
+
+\subsubsection*{Localized Maxwell sector}
+
+The gauge-field Lagrangian density is
+\begin{equation}
+\mathcal L_{\mathrm{EM}}
+=
+-\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}
+-\frac{1}{2\xi\mu_0}(\partial\!\cdot\!A)^2
+-A_M J_{\mathrm{ext}}^M,
+\label{eq:parent-LEM}
+\end{equation}
+with
+\[
+\partial\!\cdot\!A\equiv \partial_M A^M.
+\]
+Because the matter sector is already minimally coupled, varying \eqref{eq:parent-Lpsi} generates the dynamical matter current automatically. The explicit source term in \eqref{eq:parent-LEM} should therefore be read as external or background sourcing only. The full source entering Maxwell's equation is
+\[
+J_{\mathrm{tot}}^M=J_\psi^M+J_{\mathrm{ext}}^M.
+\]
+That bookkeeping rule is structural. The dynamical matter current must not be double-counted by inserting it by hand into the explicit Maxwell source term.
+
+\subsection{Exact bulk equations and identities}
+
+Variation of the exact parent action gives the bulk field equations already fixed by the theory stack.
+
+\subsubsection*{Gauged GNLS equation}
+
+Variation with respect to \(\psi^*\) gives
+\begin{equation}
+ i\hbar D_t\psi
+ =
+ \left[
+ -\frac{\hbar^2}{2m}D_iD_i
+ +V_{\mathrm{conf}}(\mathbf X;\Sigma)
+ +h(\rho)
+ \right]\psi.
+ \label{eq:exact-gnls}
+\end{equation}
+
+\subsubsection*{Exact current and continuity}
+
+The exact bulk number current is
+\begin{equation}
+ j^i=\frac{\hbar}{m}\,\mathrm{Im}(\psi^*D_i\psi),
+ \label{eq:exact-current}
+\end{equation}
+and exact continuity is
+\begin{equation}
+ \partial_t\rho+\partial_i j^i=0.
+ \label{eq:exact-continuity}
+\end{equation}
+Where \(\rho>0\), one may write \(j^i=\rho v^i\) and treat \(v^i\) as the bulk velocity field.
+
+\subsubsection*{Localized Maxwell equation and Bianchi identities}
+
+Variation with respect to \(A_N\) gives the exact localized Maxwell equation
+\begin{equation}
+\partial_M\!\bigl(Z(w)F^{MN}\bigr)
++\frac{1}{\xi}\,\partial^N(\partial\!\cdot\!A)
+=
+\mu_0 J_{\mathrm{tot}}^N.
+\label{eq:exact-maxwell}
+\end{equation}
+The Bianchi identities are
+\begin{equation}
+\partial_{[L}F_{MN]}=0.
+\label{eq:bianchi}
+\end{equation}
+Gauge consistency requires conservation of the total current,
+\begin{equation}
+\partial_M J_{\mathrm{tot}}^M=0.
+\label{eq:current-conservation}
+\end{equation}
+
+\subsubsection*{Madelung form and Euler-like identity}
+
+Writing
+\[
+\psi=\sqrt\rho\,e^{i\theta},
+\]
+the exact gauge-invariant bulk velocity is
+\begin{equation}
+ v_i=\frac{\hbar}{m}\partial_i\theta-\frac{q_\star}{m}A_i.
+ \label{eq:gauge-invariant-velocity}
+\end{equation}
+The quantum potential is
+\begin{equation}
+ Q(\rho)=-\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt\rho}{\sqrt\rho}.
+ \label{eq:quantum-potential}
+\end{equation}
+The exact Euler-like identity is then
+\begin{equation}
+ m(\partial_t+v_j\partial_j)v_i
+ =
+ q_\star(E_i+v_jB_{ij})
+ -\partial_i\!\left(V_{\mathrm{conf}}+h(\rho)+Q(\rho)\right),
+ \label{eq:euler-like}
+\end{equation}
+where
+\[
+E_i=-\partial_tA_i-\partial_iA_0,
+\qquad
+B_{ij}=F_{ij}.
+\]
+
+\subsubsection*{Exact vorticity--gauge identity}
+
+Define the bulk vorticity two-form
+\[
+\Omega_{ij}=\partial_i v_j-\partial_j v_i.
+\]
+Away from phase singularities one has the exact identity
+\begin{equation}
+\Omega_{ij}=-\frac{q_\star}{m}F_{ij}.
+\label{eq:vorticity-gauge}
+\end{equation}
+This is one of the main reasons the notation firewall matters: circulation belongs to the magnetic/vortical sector, not to the electric-charge dictionary.
+
+\subsubsection*{Exact mixed-sector gauge invariants}
+
+The mixed fields
+\begin{equation}
+E_w=F_{w0}=-\partial_tA_w-\partial_wA_0,
+\qquad
+C_a=F_{aw}=\partial_aA_w-\partial_wA_a,
+\label{eq:mixed-invariants}
+\end{equation}
+are exact gauge invariants under the component gauge transformation
+\[
+A_0\to A_0-\partial_t\chi,
+\qquad
+A_a\to A_a+\partial_a\chi,
+\qquad
+A_w\to A_w+\partial_w\chi.
+\]
+These quantities are not bookkeeping artifacts. They are exact parent-theory observables, and later reduced outgoing constructions rely on keeping them alive until a controlled far-field reduction is actually taken.
+
+\subsection{Projection versus reduction and the mixed-sector firewall}
+
+A structural distinction used throughout the program is the difference between projection and reduction.
+
+\paragraph{Projection.}
+Given a fixed normalized brane weight \(W(w)\),
+\[
+\int_{-\infty}^{+\infty} W(w)\,\mathrm dw=1,
+\]
+a projected brane observable is defined by
+\[
+\mathcal P_W[f](\mathbf x,t)=\int_{-\infty}^{+\infty} W(w) f(\mathbf x,w,t)\,\mathrm dw.
+\]
+This is a definition of what the brane observer measures, not an approximation. In particular,
+\[
+\rho_{\mathrm{brane}}=\mathcal P_W[\rho],
+\qquad
+\mathbf j_{\mathrm{brane}}=\mathcal P_W[\mathbf j_{xyz}].
+\]
+Projecting exact bulk continuity gives the exact open-system brane law
+\begin{equation}
+\partial_t\rho_{\mathrm{brane}}+\nabla_3\cdot \mathbf j_{\mathrm{brane}}=S_{\mathrm{leak}},
+\label{eq:projected-continuity}
+\end{equation}
+with leakage term
+\begin{equation}
+S_{\mathrm{leak}}
+=
+-\bigl[Wj^w\bigr]_{-\infty}^{+\infty}
++\int_{-\infty}^{+\infty} W'(w) j^w\,\mathrm dw.
+\label{eq:leakage}
+\end{equation}
+Under the Helmholtz split
+\[
+\mathbf v_{\mathrm{brane}}=\nabla_3\varphi+\mathbf v_T,
+\qquad
+\nabla_3\cdot\mathbf v_T=0,
+\]
+one obtains the exact longitudinal identity
+\begin{equation}
+\rho_{\mathrm{brane}}\,\nabla_3^2\varphi
+=
+S_{\mathrm{leak}}
+-\partial_t\rho_{\mathrm{brane}}
+-(\nabla_3\rho_{\mathrm{brane}})\cdot(\nabla_3\varphi+\mathbf v_T).
+\label{eq:longitudinal-identity}
+\end{equation}
+This identity is exact once the projection kernel is declared.
+
+\paragraph{Reduction.}
+By contrast, reduction means integrating out \(w\) under additional hypotheses. A standard example is the controlled far-field zero-mode Maxwell limit,
+\begin{equation}
+A_w\approx 0,
+\qquad
+\partial_w A_\mu\approx 0,
+\qquad
+J^w\approx 0,
+\qquad
+F_{\mu w}\approx 0,
+\label{eq:zero-mode-assumptions}
+\end{equation}
+which yields the effective brane Maxwell law
+\begin{equation}
+\partial_\mu F^{\mu\nu}_{\mathrm{brane}}=\mu_0^{\mathrm{eff}} J^{\nu}_{\mathrm{eff}},
+\qquad
+\mu_0^{\mathrm{eff}}=\frac{\mu_0}{Z_{\mathrm{int}}}.
+\label{eq:effective-maxwell}
+\end{equation}
+Equivalently, the same reduction may be packaged as the thickness-controlled brane coupling
+\[
+q_{\mathrm{eff}}=\frac{q_\star}{\sqrt{Z_{\mathrm{int}}}}.
+\]
+
+The key firewall is that \eqref{eq:zero-mode-assumptions}--\eqref{eq:effective-maxwell} are \emph{controlled reduction statements}, not microscopic ontology statements. They suppress the mixed-core sector in a specific brane-effective regime; they do not prove that the mixed variables do not exist. Later sections return to the wall--support--gauge response problem precisely because the passive/outgoing quadrupole bridge cannot be honestly formulated if the mixed sector is erased at the microscopic level.
+
+\subsection{What is fixed at this stage, and what is not}
+
+At the level of this section, the following are already fixed:
+\begin{itemize}
+    \item the bulk arena, coordinates, and operator conventions;
+    \item the corrected charge ontology and notation firewall;
+    \item the exact gauged GNLS plus localized Maxwell parent action;
+    \item the exact bulk field equations, continuity law, mixed invariants, and vorticity--gauge identity;
+    \item the distinction between projection and reduction, including the exact projected leakage law and the controlled zero-mode Maxwell limit.
+\end{itemize}
+What is \emph{not} fixed here is the realized moving-throat branch itself: the distributed throat geometry, the reduced wall/support/outgoing response hierarchy, the grouped real \(P_2\) constitutive data on the actual branch, and the final isotropic and weak-axisymmetric quadrupole observables. Those belong to later sections. The role of the present section is to make sure that when those later constructions are introduced, the reader can see exactly which parts are inherited from the parent theory and which parts remain genuine branch-level questions.
+
+% =============================================================================
+\section{Moving-throat geometry lift}
+\label{sec:geometry-lift}
+% =============================================================================
+
+The exact parent theory fixes the bulk matter and gauge sectors, but it carries the defect geometry only through the confinement term. That is sufficient for low-dimensional breathing reductions, yet it is not sufficient for a genuine moving-throat PDE. A description based only on the collective variables $(a,L)$ cannot by itself make the mouth multipoles literal degrees of freedom, cannot organize the first non-scalar support channels in the grouped real $\Ptwo$ language required by the higher-order bridge, and cannot provide the distributed interface on which mixed-core response must be computed. The geometry lift adopted here is therefore the smallest distributed extension that keeps continuity with the earlier hierarchy while exposing the first nontrivial throat-mode content.
+
+The key choice is to represent the throat as a moving surface rather than as a pair of global coordinates, but to do so in a way that preserves both the bulk ontology and the mouth-harmonic structure. Concretely, we use a hybrid level-set / shape-field representation in which the geometric interface remains a level set in the full bulk, while its position is parameterized by a brane-spherical shape field. In this language the old variables $(a,L)$ survive as collective monopole moments of the moving surface rather than as the fundamental geometry. That is exactly the relation needed between the old effective closure and the PDE framework that follows.
+
+\subsection{Level-set / shape-field representation}
+
+We represent the moving throat by the hybrid lift
+\begin{equation}
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\qquad
+r=\sqrt{x^2+y^2+z^2},
+\qquad
+\Omega=\mathbf x/r\in\bbS^2.
+\label{eq:geometry-lift-levelset}
+\end{equation}
+The finite throat surface is the zero set
+\begin{equation}
+\Sigma(\mathbf X,t)=0,
+\label{eq:geometry-lift-surface}
+\end{equation}
+with sign convention
+\[
+\Sigma>0\ \text{in the exterior region},
+\qquad
+\Sigma<0\ \text{in the support/interior region}.
+\]
+This form is a deliberate compromise between two inadequate extremes. A purely collective-coordinate description hides the multipole content of the mouth, while a purely abstract level-set field hides the grouped real harmonic lanes that the response problem actually uses. Writing the interface through the brane-spherical shape field $R(\Omega,w,t)$ retains the geometric bulk coupling and at the same time makes the mouth harmonics explicit.
+
+A second virtue of \eqref{eq:geometry-lift-levelset} is that it keeps the extra coordinate $w$ inside the geometry itself rather than relegating it to a boundary label. The throat is therefore treated from the start as a finite brane--bulk object with axial structure, not as a three-dimensional mouth supplemented later by ad hoc interior data. This is the minimal language in which one can hope to recover both the older breathing variables and the higher multipole response channels from the same geometry field.
+
+\subsection{Reference stationary throat and recovery of \texorpdfstring{$(a,L)$}{(a,L)}}
+
+Take a stationary finite-throat reference surface
+\begin{equation}
+\Sigma_0(\mathbf X)=r-R_0(w)=0,
+\label{eq:geometry-lift-reference}
+\end{equation}
+with mouth at $w=0$, finite throat depth $0\leq w\leq L_0$, reference mouth radius
+\begin{equation}
+ a_0 = R_0(0),
+ \label{eq:geometry-lift-a0}
+\end{equation}
+and closure at the far end through either
+\begin{equation}
+ R_0(L_0)=0
+ \label{eq:geometry-lift-bottom-closure}
+\end{equation}
+or an equivalent regular bottom condition. This is the smallest finite-throat background compatible with the preferred finite branch and the D/N-style internal support picture carried by the later reductions.
+
+The old collective variables are recovered as lowest monopole moments of the moving surface. At the mouth,
+\begin{equation}
+ a(t)=\frac{1}{4\pi}\int_{\bbS^2} R(\Omega,0,t)\,d\Omega,
+ \label{eq:geometry-lift-a-moment}
+\end{equation}
+while if the bottom location $W_b(\Omega,t)$ is defined implicitly by
+\begin{equation}
+ R\bigl(\Omega,W_b(\Omega,t),t\bigr)=0,
+ \label{eq:geometry-lift-bottom-function}
+\end{equation}
+then the throat depth is
+\begin{equation}
+ L(t)=\frac{1}{4\pi}\int_{\bbS^2} W_b(\Omega,t)\,d\Omega.
+ \label{eq:geometry-lift-L-moment}
+\end{equation}
+So the geometry lift does not discard the earlier $(a,L)$ variables. It reinterprets them as distinguished collective moments of a genuinely distributed interface.
+
+This reinterpretation is important for two reasons. First, it preserves backward compatibility with the earlier conservative hierarchy: the breathing reduction can still be recovered as a low-dimensional truncation of the distributed wall theory. Second, it makes clear that any higher multipole channel is not an auxiliary correction layered on top of the old geometry, but another harmonic sector of the same moving surface. The old closure is therefore contained in the new one rather than replaced by a disconnected ansatz.
+
+\subsection{Promoted confinement coupling}
+
+In the parent theory the geometry enters through the confinement potential. The level-set lift promotes the older potential $V_{\mathrm{conf}}(\mathbf X;a,L)$ to a true moving-surface coupling,
+\begin{equation}
+V_{\mathrm{conf}}(\mathbf X;\Sigma)
+=
+V_{\mathrm{wall}}\!\left(\frac{\Sigma(\mathbf X,t)}{\ell_c}\right),
+\label{eq:geometry-lift-vconf}
+\end{equation}
+where $\ell_c$ is a wall-thickness scale and $V_{\mathrm{wall}}$ is a steep profile. The stationary background is then
+\begin{equation}
+V_0(\mathbf X)=V_{\mathrm{wall}}\!\left(\frac{\Sigma_0(\mathbf X)}{\ell_c}\right).
+\label{eq:geometry-lift-v0}
+\end{equation}
+
+Writing the moving shape field as
+\begin{equation}
+R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t),
+\label{eq:geometry-lift-Reta}
+\end{equation}
+one has
+\begin{equation}
+\delta\Sigma = -\eta(\Omega,w,t),
+\label{eq:geometry-lift-delta-sigma}
+\end{equation}
+and therefore the linearized confinement variation is
+\begin{equation}
+\delta V_{\mathrm{conf}}
+=
+\frac{V_{\mathrm{wall}}'(\Sigma_0/\ell_c)}{\ell_c}\,\delta\Sigma
+=
+-\frac{V_{\mathrm{wall}}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t).
+\label{eq:geometry-lift-delta-vconf}
+\end{equation}
+Equation~\eqref{eq:geometry-lift-delta-vconf} is the key interface law generated by the lift. It shows that geometry enters the bulk theory not through stitched boundary conditions but through an explicit moving confinement term. All later wall--support and wall--gauge couplings are linear or higher-order consequences of this promoted interface.
+
+This viewpoint is what makes the lift usable inside the PDE framework. The moving throat couples directly to the bulk matter and gauge fields through the parent action itself, so the eventual response problem remains anchored to the same action-based ontology as the rest of the program. In particular, the lift keeps the mixed-core channels alive at the microscopic level; it does not encode them away by collapsing the defect to a static boundary.
+
+\subsection{Harmonic decomposition on the mouth sphere}
+
+The moving-wall displacement is decomposed into real spherical harmonics on the mouth sphere. With
+\begin{equation}
+Y_{00}(\Omega)=\frac{1}{2\sqrt{\pi}},
+\label{eq:geometry-lift-Y00}
+\end{equation}
+we write
+\begin{equation}
+\eta(\Omega,w,t)
+=
+\eta_0(w,t)Y_{00}(\Omega)
++
+\sum_{A\in\{20,21c,21s,22c,22s\}} q_A(w,t)Y_A^{\mathrm{real}}(\Omega)
++
+\eta_{\ge 3}(\Omega,w,t).
+\label{eq:geometry-lift-harmonic-decomp}
+\end{equation}
+The set
+\[
+A\in\{20,21c,21s,22c,22s\}
+\]
+is the real $l=2$ bundle written in the same mouth-harmonic language that later feeds the grouped real $\Ptwo$ response bookkeeping.
+
+A useful refinement of the monopole sector is
+\begin{equation}
+\eta_0(w,t)
+=
+\alpha_a(w)\,\delta a(t)
++
+\alpha_L(w)\,\delta L(t)
++
+ g(w,t),
+\label{eq:geometry-lift-axisymmetric-split}
+\end{equation}
+where $\delta a(t)=a(t)-a_0$ is the mouth-radius shift, $\delta L(t)=L(t)-L_0$ is the depth shift, and $g(w,t)$ is the residual axisymmetric geometry lane orthogonal to those collective moments. In this way the geometry sector separates naturally into four pieces:
+\begin{enumerate}
+    \item the scalar collective breathing variables $(\delta a,\delta L)$,
+    \item the residual axisymmetric geometry field $g$,
+    \item the real $l=2$ wall/support amplitudes $q_A$,
+    \item and the higher multipoles collected in $\eta_{\ge 3}$.
+\end{enumerate}
+The old geometry variables are therefore not discarded; they reappear as distinguished components of the scalar lane.
+
+Because the mouth average of every real $l=2$ harmonic vanishes, the quadrupole bundle does not contaminate the definition of the collective throat radius. Conversely, the quadrupole amplitudes become the first explicit non-spherical geometry channels carried by the same moving surface. This is the sense in which the geometry lift turns the grouped real $\Ptwo$ bundle from a symbolic residual ledger into a literal wall/support sector.
+
+\subsection{Why the grouped real \texorpdfstring{$\Ptwo$}{Ptwo} bundle is the first nontrivial payload}
+
+The scalar sector remains essential: it carries the breathing variables and the residual axisymmetric lane that later supports geometry completion. But the first sector that is both non-scalar and still directly tied to the mouth sphere is the real $l=2$ bundle. It is therefore the first place where the moving throat can carry genuinely new conservative and radiative information while staying in direct contact with the post-Newtonian-facing grouped response structure.
+
+On an exactly isotropic reference throat, the geometry alone does not distinguish among the five real $l=2$ harmonics. After the usual pairing of the $c/s$ components into the grouped three-lane bookkeeping, the isotropic branch therefore predicts a common $20/21/22$ conservative backbone. Any later splitting of those grouped lanes must then come from anisotropy induced by support dynamics, gauge support, mixed-core transport, or wall constitutive structure. That fact is the geometric origin of the grouped isotropy tests carried later in the paper.
+
+Higher multipoles with $l\geq 3$ certainly belong to the full moving-throat PDE, but they are not needed for the first theorem target. The current normalization and weak-axisymmetric questions are already visible once one keeps the scalar geometry lane and the grouped real $\Ptwo$ bundle. For that reason the present section stops at fixing the geometry variable, its collective moments, and its mouth-harmonic organization. The distributed wall action and the linearized coupled equations that turn these variables into a response problem belong to Section~\ref{sec:linearized-pde}.
+
+% =============================================================================
+\section{Linearized moving-throat PDE}
+\label{sec:linearized-pde}
+% =============================================================================
+
+This section states the first coupled PDE system that the moving-throat program actually needs. The geometry lift of Section~\ref{sec:geometry-lift} promoted the defect from the old collective coordinates $(a,L)$ to a distributed moving surface. The remaining task is to linearize the coupled wall, matter, and gauge dynamics about a stationary finite-throat background without prematurely collapsing the mixed sector. The resulting system is still not the full nonlinear branch theorem, but it is the first point at which the framework becomes an honest PDE rather than a bookkeeping slogan.
+
+One status point should be kept explicit from the start. The distributed wall action introduced below is an effective closure: it is the smallest passive local ansatz that separates the scalar lane, the grouped real $\Ptwo$ bundle, and the higher harmonics in one field-theoretic object. Once that closure is adopted, however, the linearization of the matter and localized Maxwell sectors about a stationary reference throat is exact within the resulting wall--support--gauge hierarchy. In particular, the mixed channels
+\[
+A_w,
+\qquad
+J^w,
+\qquad
+F_{\mu w},
+\qquad
+E_w,
+\qquad
+C_a
+\]
+are kept alive throughout the derivation. They may decouple later on a strict far-field brane branch, but they are not removed from the microscopic response problem.
+
+\subsection{Distributed wall action}
+
+Write the moving surface as
+\[
+R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t),
+\qquad
+\Sigma(\mathbf X,t)=\Sigma_0(\mathbf X)-\eta(\Omega,w,t),
+\]
+so that the wall displacement field $\eta$ is the basic geometry fluctuation. The minimal passive quadratic wall action is
+\begin{equation}
+S_\eta^{(2)}
+=
+\frac12\int \dd t\,\dd w\,\dd\Omega\,\sqrt{\gamma_0}
+\Bigl[
+\mu_\eta(w)(\partial_t\eta)^2
+-
+T_w(w)(\partial_w\eta)^2
+-
+T_\Omega(w)\,\eta(-\Delta_{\bbS^2})\eta
+-
+K_\eta(w)\eta^2
+\Bigr].
+\label{eq:linpde-wall-action}
+\end{equation}
+Here $\mu_\eta(w)$ is the effective wall inertia density, $T_w(w)$ is the axial wall stiffness, $T_\Omega(w)$ is the angular stiffness on the mouth sphere, $K_\eta(w)$ is a local restoring coefficient, and $\gamma_0$ is the metric determinant of the reference throat surface. As in Section~\ref{sec:geometry-lift}, we use the densitized convention in which the background surface measure has been absorbed into the effective one-dimensional coefficients; equivalently, the remaining axial operator is written with respect to the flat measure $\dd w$.
+
+The value of \eqref{eq:linpde-wall-action} is structural. Because
+\[
+-\Delta_{\bbS^2}Y_{\ell m}=\ell(\ell+1)Y_{\ell m},
+\]
+the geometry-only wall operator already separates the scalar lane from the real $\ell=2$ bundle. Projecting onto harmonics therefore yields
+\begin{equation}
+\mu_\eta q_{\ell m,tt}
+-
+\partial_w\!\bigl(T_w\partial_w q_{\ell m}\bigr)
++
+\bigl[K_\eta+\ell(\ell+1)T_\Omega\bigr]q_{\ell m}
+=
+0
+\label{eq:linpde-wall-modal-free}
+\end{equation}
+before the matter and gauge sectors are even turned on. In particular, the scalar branch $\ell=0$ and the grouped real $\Ptwo$ branch $\ell=2$ are distinct already at the geometry-only level.
+
+\subsection{Linearized matter sector}
+
+Choose a stationary finite-throat background
+\begin{equation}
+\psi(\mathbf X,t)=\ee^{-\ii\mu_0 t/\hbar}\,\psi_0(\mathbf X),
+\qquad
+A_M(\mathbf X,t)=A_{M0}(\mathbf X),
+\qquad
+R(\Omega,w,t)=R_0(w),
+\label{eq:linpde-stationary-background}
+\end{equation}
+with background confinement potential
+\[
+V_0(\mathbf X)=V_{\wall}\!\left(\frac{\Sigma_0(\mathbf X)}{\ell_c}\right).
+\]
+Linearize the matter field as
+\begin{equation}
+\psi(\mathbf X,t)=\ee^{-\ii\mu_0 t/\hbar}\bigl[\psi_0(\mathbf X)+\delta\psi(\mathbf X,t)\bigr],
+\label{eq:linpde-psi-linearization}
+\end{equation}
+and define the density variation
+\begin{equation}
+\delta\rho
+=
+\psi_0^*\delta\psi+\psi_0\delta\psi^*.
+\label{eq:linpde-delta-rho}
+\end{equation}
+The linearized GNLS problem is naturally of Bogoliubov--de Gennes type. Writing
+\[
+\delta\Psi=
+\begin{pmatrix}
+\delta\psi\\[2pt]
+\delta\psi^*
+\end{pmatrix},
+\]
+one has the schematic matrix form
+\begin{equation}
+\ii\hbar\,\partial_t\delta\Psi
+=
+\cL_{\mathrm{BdG}}\,\delta\Psi
++
+\cC_A[\delta A_M]
++
+\cC_\eta[\eta].
+\label{eq:linpde-bdg-matrix}
+\end{equation}
+A convenient component form starts from
+\begin{equation}
+H_0=-\frac{\hbar^2}{2m}D_{0i}D_0^{\,i}+V_0+h(\rho_0)-\mu_0,
+\label{eq:linpde-H0}
+\end{equation}
+where $D_{0i}$ is the background covariant derivative. Then
+\begin{align}
+\ii\hbar\,\partial_t\delta\psi
+&=
+H_0\,\delta\psi
++
+h'(\rho_0)\,\delta\rho\,\psi_0
++
+\delta V_{\conf}\,\psi_0
++
+\cC_A^{(+)}[\delta A],
+\label{eq:linpde-bdg-plus}
+\\
+-\ii\hbar\,\partial_t\delta\psi^*
+&=
+H_0^*\,\delta\psi^*
++
+h'(\rho_0)\,\delta\rho\,\psi_0^*
++
+\delta V_{\conf}\,\psi_0^*
++
+\cC_A^{(-)}[\delta A].
+\label{eq:linpde-bdg-minus}
+\end{align}
+The moving surface enters through the promoted confinement coupling. Since
+\begin{equation}
+\delta V_{\conf}
+=
+-\frac{V_{\wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t),
+\label{eq:linpde-delta-vconf}
+\end{equation}
+the wall displacement field appears as a direct source in the BdG system rather than as a boundary condition imposed from outside the parent action.
+
+On an isotropic reference throat, the linearized angular dependence is diagonal in the spherical harmonic labels because the wall coupling is scalar on the mouth sphere and the real harmonics are orthonormal. At linear order, the axisymmetric wall sector therefore couples only to axisymmetric support modes, and each real $\ell=2$ wall channel couples only inside the corresponding real $\ell=2$ matter bundle. No linear scalar--quadrupole mixing is forced on the isotropic background.
+
+\subsection{Linearized Maxwell sector}
+
+Write the gauge field as
+\begin{equation}
+A_M=A_{M0}+\delta A_M,
+\qquad
+\delta F_{MN}=\partial_M\delta A_N-\partial_N\delta A_M.
+\label{eq:linpde-maxwell-variation}
+\end{equation}
+Linearizing the exact localized Maxwell equation from Section~\ref{sec:status-parent} gives
+\begin{equation}
+\partial_M\bigl[Z(w)\,\delta F^{MN}\bigr]
++
+\frac{1}{\xi}\partial^N(\partial\!\cdot\!\delta A)
+=
+\mu_0\,\delta J^N.
+\label{eq:linpde-maxwell}
+\end{equation}
+The source variation is the exact first variation of the minimally coupled matter current. In schematic form,
+\begin{equation}
+\delta J^0=q_\star\,\delta\rho,
+\qquad
+\delta J^i=q_\star\,\delta j^i,
+\label{eq:linpde-current-variation}
+\end{equation}
+with
+\begin{equation}
+\delta j^i
+=
+\frac{\hbar}{m}\Im\!\bigl(\psi_0^*D_0^{\,i}\delta\psi+\delta\psi^*D_0^{\,i}\psi_0\bigr)
+-
+\frac{q_\star}{m}\rho_0\,\delta A^i
++\cdots.
+\label{eq:linpde-delta-current}
+\end{equation}
+The omitted terms in \eqref{eq:linpde-delta-current} are the remaining background-gradient pieces coming from the exact linearization of the covariant current; they are straightforward but not needed to state the coupled PDE in framework form.
+
+The main structural point is not the last algebraic detail of \eqref{eq:linpde-delta-current}, but the channel content of \eqref{eq:linpde-maxwell}: the perturbations $\delta A_w$, $\delta J^w$, and $\delta F_{\mu w}$ survive. The mixed sector is therefore present already in the linearized PDE, exactly where it must be if the later outgoing bridge is to be generated microscopically rather than inserted by hand.
+
+\subsection{Exact mixed-sector gauge invariants}
+
+The mixed fields are genuine observables, not gauge artifacts. Under the scalar-potential convention
+\begin{equation}
+\delta A_0\mapsto \delta A_0-\partial_t\chi,
+\qquad
+\delta A_a\mapsto \delta A_a+\partial_a\chi,
+\qquad
+\delta A_w\mapsto \delta A_w+\partial_w\chi,
+\label{eq:linpde-gauge-transform}
+\end{equation}
+one has the exact linearized mixed-sector invariants
+\begin{equation}
+\delta E_w=-\partial_t\delta A_w-\partial_w\delta A_0,
+\qquad
+\delta C_a=\partial_a\delta A_w-\partial_w\delta A_a.
+\label{eq:linpde-mixed-invariants}
+\end{equation}
+Equivalently, at the full-field level,
+\[
+E_w=F_{w0}=-\partial_t A_w-\partial_w A_0,
+\qquad
+C_a=F_{aw}=\partial_a A_w-\partial_w A_a
+\]
+are exactly gauge invariant. This matters because any reduced mixed-sector coordinate that appears later in the wall--support--gauge reduction can be interpreted as a representative of an honest parent-theory observable.
+
+The conceptual consequence is immediate. A strict zero-mode brane reduction may set
+\[
+A_w\approx 0,
+\qquad
+J^w\approx 0,
+\qquad
+F_{\mu w}\approx 0
+\]
+in a far-field limit, but the linearized moving-throat PDE cannot do so without changing the microscopic ontology. The mixed channels must remain available until the reduced response problem itself decides whether they decouple on the branch being studied.
+
+\subsection{Linearized geometry equation}
+
+Varying the wall action \eqref{eq:linpde-wall-action} together with the promoted confinement coupling gives the linearized geometry equation
+\begin{equation}
+\mu_\eta\,\partial_t^2\eta
+-
+\partial_w\!\bigl(T_w\partial_w\eta\bigr)
+-
+T_\Omega\Delta_{\bbS^2}\eta
++
+K_\eta\eta
+=
+\cS_\eta^{(\psi)}[\delta\psi,\delta\psi^*]
++
+\cS_\eta^{(A)}[\delta A_M]
++
+f_{\mathrm{ext}}.
+\label{eq:linpde-geometry}
+\end{equation}
+At linear order, the first matter source is generated directly by the confinement variation \eqref{eq:linpde-delta-vconf}; schematically,
+\begin{equation}
+\cS_\eta^{(\psi)}
+\sim
+-\frac{V_{\wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\delta\rho
++\cdots.
+\label{eq:linpde-geometry-source}
+\end{equation}
+Projecting onto real harmonics gives the mode-resolved system
+\begin{equation}
+\mu_\eta q_{\ell m,tt}
+-
+\partial_w\!\bigl(T_w\partial_w q_{\ell m}\bigr)
++
+\bigl[K_\eta+\ell(\ell+1)T_\Omega\bigr]q_{\ell m}
+=
+S_{\ell m}^{(\psi,A)}
++
+f_{\ell m}^{\mathrm{ext}}.
+\label{eq:linpde-harmonic-modes}
+\end{equation}
+Equation~\eqref{eq:linpde-harmonic-modes} is the first usable linearized moving-throat PDE family. It carries, in one place, the scalar breathing sector, the residual axisymmetric geometry lane, the grouped real $\ell=2$ wall/support sector, and the higher harmonics that are deferred in the first reduced theorem target.
+
+For the present framework paper, the most important sectors are the scalar lane
+\[
+(\delta a,\delta L,g)
+\]
+and the grouped real $\ell=2$ bundle
+\[
+q_{20}(w,t),
+\quad
+q_{21c}(w,t),\ q_{21s}(w,t),
+\quad
+q_{22c}(w,t),\ q_{22s}(w,t).
+\]
+On an isotropic reference throat these grouped channels are degenerate at the geometry-only level, so any later splitting among the grouped lanes measures anisotropy imported by support dynamics, gauge support, mixed transport, or wall constitutive structure.
+
+\subsection{Mouth/worldtube response operator}
+
+The coupled PDE becomes operational only after one chooses the mouth/worldtube observables. At the mouth $w=0$, take the real harmonic port basis
+\begin{equation}
+\mathcal P=\{P_{00},P_{20},P_{21c},P_{21s},P_{22c},P_{22s}\},
+\label{eq:linpde-port-basis}
+\end{equation}
+with the scalar port $P_{00}=Y_{00}$ and the real $\ell=2$ ports given by the grouped quadrupole harmonics. One then defines effort variables by projecting the drive onto this basis. Typical examples are a scalar enthalpy drive $u_0(\omega)$, grouped real $\Ptwo$ drives $u_{2m}(\omega)$, and any auxiliary geometry drive used to probe the residual scalar lane.
+
+The conjugate flux variables are the corresponding projected outputs of the coupled system. Depending on the application, these can be taken to include matter flux through the mouth, leakage flux in the $w$ direction, projected wall traction
+\[
+T_w\,\partial_w q_{\ell m}\big|_{w=0},
+\]
+or any equivalent generalized force/amplitude pairing adapted to the reduction. In this language the linear response operator is written schematically as
+\begin{equation}
+j_A(\omega)=\sum_B Z_{\eff,AB}(\omega)\,u_B(\omega).
+\label{eq:linpde-response-operator}
+\end{equation}
+For an isotropic background, \eqref{eq:linpde-response-operator} block-diagonalizes into a scalar/geometry block, a grouped real $\Ptwo$ block, and higher-$\ell$ blocks.
+
+The grouped real $\Ptwo$ block is the object that later feeds the low-frequency conservative operator moments, the grouped trace/anomaly decomposition, and the outgoing-normalization bridge. In later sections it is precisely this block that is reduced to the coefficients traditionally denoted by
+\[
+D_{A0},\ D_{A2},\ D_{A4},
+\qquad
+N_{A0},\ N_{A2},\ N_{A4},
+\]
+and then to the isotropic prefactor ratio
+\[
+P_0=\frac{N_0}{D_0}.
+\]
+So the present section should be read as the place where the response problem is first defined, not yet where it is solved. Once the port basis and response operator are fixed, the later conservative and outgoing reductions become questions about explicit low-frequency data of the same linearized PDE.
+
+% =============================================================================
+\section{Reduced conservative wall--support--gauge system}
+\label{sec:reduced-system}
+% =============================================================================
+
+The linearized PDE of Section~\ref{sec:linearized-pde} becomes operational only after one reduces it to the finite set of internal coordinates that actually carry the first scalar and quadrupole response channels. The purpose of the present section is therefore not to collapse the throat back to a point or to replace the distributed wall by phenomenological coefficients. It is to extract, from the lifted wall--matter--gauge problem, the exact conservative kernels obtained when stable support modes and conservative internal gauge coordinates are integrated out.
+
+The status of the section should be kept explicit. The truncation to a small family of wall, support, and internal gauge coordinates is a controlled reduction inside the linearized moving-throat hierarchy. Once that mode list has been fixed, however, the elimination formulas below are exact Schur complements. No additional fitting is introduced at the level of the reduced kernels themselves. Those kernels are the conservative front end of the grouped real $\Ptwo$ bundle; the passive/outgoing dressing that feeds the quadrupole normalization problem is attached only afterward in Sections~\ref{sec:grouped-bundle} and~\ref{sec:outgoing-normalization}.
+
+\subsection{Breathing reduction back to \texorpdfstring{$(a,L)$}{(a,L)}}
+
+The first consistency check on the distributed wall theory is that its scalar axisymmetric sector must reduce back to the old collective geometry closure. Using the normalized monopole harmonic
+\[
+Y_{00}(\Omega)=\frac{1}{2\sqrt{\pi}},
+\qquad
+\int_{\bbS^2}Y_{00}^2\,\dd\Omega=1,
+\qquad
+\frac{1}{4\pi}\int_{\bbS^2}Y_{00}\,\dd\Omega=\frac{1}{2\sqrt{\pi}},
+\]
+one has the normalization bridge
+\[
+q_{00}(0,t)=2\sqrt{\pi}\,\delta a(t)
+\]
+between the distributed wall field and the physical mouth-average radius shift. The minimal two-mode axisymmetric truncation is then
+\begin{equation}
+\eta_0(w,t)=2\sqrt{\pi}\bigl[\alpha_a(w)\,\delta a(t)+\alpha_L(w)\,\delta L(t)\bigr],
+\label{eq:reduced-axisymmetric-ansatz}
+\end{equation}
+where $\alpha_a$ changes the mouth radius, $\alpha_L$ changes the effective depth, and higher axisymmetric wall modes are deferred.
+
+In the densitized one-dimensional convention introduced in Section~\ref{sec:linearized-pde}, inserting \eqref{eq:reduced-axisymmetric-ansatz} into the quadratic wall action yields
+\begin{equation}
+L_{\mathrm{red}}^{(0)}
+=
+\frac12 M_{AB}\,\dot Q^A\dot Q^B
+-
+\frac12 K_{AB}\,Q^A Q^B,
+\qquad
+Q^A=(\delta a,\delta L),
+\label{eq:reduced-AL-lagrangian}
+\end{equation}
+with overlap matrices
+\begin{equation}
+M_{AB}=4\pi\int \mu_\eta(w)\,\alpha_A(w)\alpha_B(w)\,\dd w,
+\label{eq:reduced-AL-mass}
+\end{equation}
+\begin{equation}
+K_{AB}=4\pi\int
+\Bigl[
+T_w(w)\,\alpha_A'(w)\alpha_B'(w)
++
+K_0(w)\,\alpha_A(w)\alpha_B(w)
+\Bigr]\,\dd w,
+\qquad
+K_0(w)=K_\eta(w).
+\label{eq:reduced-AL-stiffness}
+\end{equation}
+The corresponding Euler--Lagrange equations are
+\begin{equation}
+M_{AB}\,\ddot Q^B+K_{AB}\,Q^B=0.
+\label{eq:reduced-AL-eom}
+\end{equation}
+Equation~\eqref{eq:reduced-AL-eom} is the conservative linearization of the old $(a,L)$ geometry sector. In other words, the earlier breathing variables were not the wrong variables; they were the lowest collective truncation of the distributed wall field.
+
+The same reasoning shows that the grouped real $\Ptwo$ sector is not an add-on but the next harmonic family of the same wall theory. For a single real quadrupole component,
+\begin{equation}
+\eta_A(\Omega,w,t)=\beta_2(w)\,q_A(t)\,Y_A^{\mathrm{real}}(\Omega),
+\qquad
+A\in\{20,21c,21s,22c,22s\},
+\label{eq:reduced-p2-ansatz}
+\end{equation}
+one finds
+\begin{equation}
+L_A^{(\mathrm{wall})}
+=
+\frac12 M_A\,\dot q_A^{\,2}
+-
+\frac12 K_A\,q_A^2,
+\label{eq:reduced-p2-wall-lagrangian}
+\end{equation}
+with
+\begin{equation}
+M_A=\int \mu_\eta(w)\,\beta_2(w)^2\,\dd w,
+\label{eq:reduced-p2-mass}
+\end{equation}
+\begin{equation}
+K_A=\int
+\Bigl[
+T_w(w)\,\beta_2'(w)^2
++
+\bigl(K_\eta(w)+6T_\Omega(w)\bigr)\beta_2(w)^2
+\Bigr]\,\dd w.
+\label{eq:reduced-p2-stiffness}
+\end{equation}
+On an isotropic reference throat the baseline wall data are lane-independent,
+\[
+M_A=M_2,
+\qquad
+K_A=K_2,
+\]
+so the real $l=2$ bundle is degenerate before support and internal gauge dressing are turned on.
+
+\subsection{Finite-throat D/N support branch}
+
+The simplest conservative support branch that remains compatible with the finite-throat geometry is built on a finite interval
+\[
+s\in[0,L]
+\]
+with flat axial measure. For the collective wall mode and the brane-like internal gauge coordinate, the natural lowest axial profile is the Neumann/Neumann zero mode
+\begin{equation}
+u_0(s)=\frac{1}{\sqrt L},
+\qquad
+-u_0''=0,
+\qquad
+u_0'(0)=u_0'(L)=0,
+\label{eq:reduced-u0}
+\end{equation}
+normalized by
+\[
+\int_0^L u_0(s)^2\,\dd s=1.
+\]
+For the trapped support and mixed internal channels, the exact finite-throat Dirichlet/Neumann ladder is
+\begin{equation}
+f_n(s)=\sqrt{\frac{2}{L}}\,
+\sin\!\left(\left(n+\frac12\right)\frac{\pi s}{L}\right),
+\qquad
+k_n=\left(n+\frac12\right)\frac{\pi}{L},
+\qquad n=0,1,2,\dots,
+\label{eq:reduced-dn-ladder}
+\end{equation}
+with boundary conditions
+\[
+f_n(0)=0,
+\qquad
+f_n'(L)=0.
+\]
+A convenient reduced dispersion model is
+\begin{equation}
+\varpi_n^2=M_\phi^2+c_\phi^2 k_n^2,
+\qquad
+\Omega_{W,n}^2=M_W^2+c_W^2 k_n^2.
+\label{eq:reduced-dn-frequencies}
+\end{equation}
+The lowest trapped support/mixed half-wave is therefore
+\begin{equation}
+f_0(s)=\sqrt{\frac{2}{L}}\sin\!\left(\frac{\pi s}{2L}\right).
+\label{eq:reduced-dn-ground}
+\end{equation}
+
+This branch already contains an exact axial hierarchy. The overlap of the constant zero mode with the D/N ladder is
+\begin{equation}
+\kappa_n
+:=
+\int_0^L u_0(s)f_n(s)\,\dd s
+=
+\frac{\sqrt2}{\left(n+\frac12\right)\pi},
+\label{eq:reduced-kappa-n}
+\end{equation}
+so the lowest branch value is
+\begin{equation}
+\kappa\equiv\kappa_0=\frac{2\sqrt2}{\pi}.
+\label{eq:reduced-kappa0}
+\end{equation}
+Because $\kappa_n\sim (n+\tfrac12)^{-1}$, higher support and mixed D/N levels are axially suppressed already before any finer dynamical selection is imposed.
+
+The minimal concrete branch used repeatedly below is therefore
+\begin{equation}
+\chi_\eta=u_0,
+\qquad
+\phi=f_0,
+\qquad
+u=u_0,
+\qquad
+w=f_0,
+\label{eq:reduced-minimal-axial-branch}
+\end{equation}
+so that the radial/axial overlap data collapse to
+\begin{equation}
+I_{\eta\phi}=I_{\eta w}=I_{uw}=\kappa,
+\qquad
+I_{\eta u}=1.
+\label{eq:reduced-minimal-overlaps}
+\end{equation}
+The virtue of \eqref{eq:reduced-minimal-overlaps} is not that it proves the true branch is literally one mode deep. It is that the first concrete reduced branch already has exact overlap constants rather than symbolic placeholders.
+
+\subsection{Stable-mode reduction of the BdG sector}
+
+The linearized matter problem of Section~\ref{sec:linearized-pde} is of Bogoliubov--de Gennes type and is first order in time. For the conservative reduction, we pass to its stable normal coordinates. This is a controlled reduced-sector move rather than a theorem of the unsolved nonlinear PDE, but it is the natural one if the goal is to extract the first conservative pole shifts and low-frequency response data. Once the stable support spectrum and overlap matrices are fixed on the chosen branch, the resulting kernel is forced.
+
+For the scalar axisymmetric sector, let
+\[
+Q^A(t)=(\delta a(t),\delta L(t)),
+\qquad
+A\in\{a,L\},
+\]
+and let $X_\alpha(t)$ be stable scalar support coordinates with frequencies $\varpi_{0\alpha}>0$. The reduced quadratic Lagrangian is
+\begin{equation}
+L_{\mathrm{red}}^{(\mathrm{sc})}
+=
+\frac12 \dot Q^T M_0 \dot Q
+-
+\frac12 Q^T K_0 Q
++
+\frac12\sum_\alpha \bigl(\dot X_\alpha^{\,2}-\varpi_{0\alpha}^2 X_\alpha^2\bigr)
++
+\sum_{A,\alpha} C_{A\alpha} Q^A X_\alpha.
+\label{eq:reduced-scalar-bdg-lagrangian}
+\end{equation}
+Here $M_0$ and $K_0$ are the geometry-only matrices from \eqref{eq:reduced-AL-mass}--\eqref{eq:reduced-AL-stiffness}, while $C_{A\alpha}$ are the wall--support overlap integrals generated by the promoted confinement coupling.
+
+For a grouped real quadrupole lane $A$, let $q_A(t)$ be the wall amplitude and let $X_{A\alpha}(t)$ be stable $l=2$ support coordinates with frequencies $\varpi_{A\alpha}$. Then
+\begin{equation}
+L_A^{(\mathrm{BdG})}
+=
+\frac12 M_A\,\dot q_A^{\,2}
+-
+\frac12 K_A\,q_A^2
++
+\frac12\sum_\alpha \bigl(\dot X_{A\alpha}^{\,2}-\varpi_{A\alpha}^2 X_{A\alpha}^2\bigr)
++
+\sum_\alpha c_{A\alpha}\,q_A X_{A\alpha}.
+\label{eq:reduced-p2-bdg-lagrangian}
+\end{equation}
+On an isotropic reference throat, one expects
+\[
+M_{20}=M_{21}=M_{22},
+\qquad
+K_{20}=K_{21}=K_{22},
+\qquad
+c_{20,\alpha}=c_{21,\alpha}=c_{22,\alpha},
+\qquad
+\varpi_{20,\alpha}=\varpi_{21,\alpha}=\varpi_{22,\alpha},
+\]
+which is the reduced meaning of grouped-lane isotropy before any weak symmetry breaking is applied.
+
+\subsection{Schur-complement elimination and effective kernels}
+
+The elimination of the stable support coordinates is exact. In frequency space, the scalar support modes solve
+\[
+(\varpi_{0\alpha}^2-\omega^2)X_\alpha=C_{A\alpha}Q^A,
+\]
+so the axisymmetric wall kernel becomes
+\begin{equation}
+\cD_0^{\eff}(\omega)
+=
+K_0-\omega^2 M_0-C(\Omega_0^2-\omega^2 I)^{-1}C^T,
+\qquad
+\Omega_0^2=\diag(\varpi_{0\alpha}^2).
+\label{eq:reduced-scalar-kernel}
+\end{equation}
+Its low-frequency expansion is
+\begin{equation}
+\cD_0^{\eff}(\omega)
+=
+K_0^{\eff}-\omega^2 M_0^{\eff}-\omega^4 N_0^{\eff}+\cO(\omega^6),
+\label{eq:reduced-scalar-kernel-expansion}
+\end{equation}
+with
+\begin{equation}
+K_0^{\eff}=K_0-C\Omega_0^{-2}C^T,
+\qquad
+M_0^{\eff}=M_0+C\Omega_0^{-4}C^T,
+\qquad
+N_0^{\eff}=C\Omega_0^{-6}C^T.
+\label{eq:reduced-scalar-renormalized-moments}
+\end{equation}
+So conservative scalar support lowers the static stiffness, increases the effective inertia, and automatically generates the next even operator moment.
+
+For a grouped real lane $A$, eliminating the stable support coordinates in \eqref{eq:reduced-p2-bdg-lagrangian} gives
+\begin{equation}
+D_A^{(\mathrm{BdG})}(\omega)
+=
+K_A-M_A\omega^2-\sum_\alpha \frac{c_{A\alpha}^2}{\varpi_{A\alpha}^2-\omega^2}.
+\label{eq:reduced-p2-bdg-kernel}
+\end{equation}
+It is convenient to package the support contributions into the exact moments
+\begin{equation}
+B_{A,0}=\sum_\alpha \frac{c_{A\alpha}^2}{\varpi_{A\alpha}^2},
+\qquad
+B_{A,2}=\sum_\alpha \frac{c_{A\alpha}^2}{\varpi_{A\alpha}^4},
+\qquad
+B_{A,4}=\sum_\alpha \frac{c_{A\alpha}^2}{\varpi_{A\alpha}^6},
+\label{eq:reduced-bdg-moments}
+\end{equation}
+so that
+\begin{equation}
+D_A^{(\mathrm{BdG})}(\omega)
+=
+\bigl(K_A-B_{A,0}\bigr)
+-
+\bigl(M_A+B_{A,2}\bigr)\omega^2
+-
+B_{A,4}\,\omega^4
++
+\cO(\omega^6).
+\label{eq:reduced-p2-bdg-kernel-expansion}
+\end{equation}
+Equation~\eqref{eq:reduced-p2-bdg-kernel-expansion} is the first conservative grouped-lane operator produced directly by the wall--support reduction.
+
+To incorporate the localized Maxwell and mixed sector conservatively, retain one or more brane-like internal gauge coordinates $U_{A,r}$ and mixed coordinates $W_{A,r}$ in each grouped lane. These are the reduced representatives of the parent mixed observables built from $E_w$ and $C_a$. For each internal pair $r$, take the quadratic conservative Lagrangian block
+\begin{equation}
+L_{A,r}^{(\mathrm{g})}
+=
+\frac12\dot U_{A,r}^{\,2}-\frac12\Omega_{U,A,r}^2 U_{A,r}^2
++
+\frac12\dot W_{A,r}^{\,2}-\frac12\Omega_{W,A,r}^2 W_{A,r}^2
++
+R_{A,r}U_{A,r}W_{A,r}
++
+g_{U,A,r}q_AU_{A,r}
++
+g_{W,A,r}q_AW_{A,r}.
+\label{eq:reduced-gauge-lagrangian}
+\end{equation}
+Eliminating $(U_{A,r},W_{A,r})$ gives the exact conservative gauge self-energy
+\begin{equation}
+\Sigma_{A,r}^{(\mathrm{g})}(\omega)
+=
+\frac{g_{U,A,r}^2\bigl(\Omega_{W,A,r}^2-\omega^2\bigr)
++2g_{U,A,r}g_{W,A,r}R_{A,r}
++g_{W,A,r}^2\bigl(\Omega_{U,A,r}^2-\omega^2\bigr)}{
+\bigl(\Omega_{U,A,r}^2-\omega^2\bigr)
+\bigl(\Omega_{W,A,r}^2-\omega^2\bigr)-R_{A,r}^2}.
+\label{eq:reduced-gauge-self-energy}
+\end{equation}
+Define
+\begin{equation}
+\Delta_{A,r}=\Omega_{U,A,r}^2\Omega_{W,A,r}^2-R_{A,r}^2,
+\qquad
+S_{A,r}=\Omega_{U,A,r}^2+\Omega_{W,A,r}^2,
+\label{eq:reduced-gauge-deltaS}
+\end{equation}
+\begin{equation}
+Q_{A,r}=g_{U,A,r}^2\Omega_{W,A,r}^2+2g_{U,A,r}g_{W,A,r}R_{A,r}+g_{W,A,r}^2\Omega_{U,A,r}^2,
+\qquad
+H_{A,r}=g_{U,A,r}^2+g_{W,A,r}^2.
+\label{eq:reduced-gauge-QH}
+\end{equation}
+Then the low-frequency expansion of \eqref{eq:reduced-gauge-self-energy} is
+\begin{equation}
+\Sigma_{A,r}^{(\mathrm{g})}(\omega)
+=
+Z_{A,0}^{(r)}+Z_{A,2}^{(r)}\omega^2+Z_{A,4}^{(r)}\omega^4+\cO(\omega^6),
+\label{eq:reduced-gauge-expansion}
+\end{equation}
+with
+\begin{equation}
+Z_{A,0}^{(r)}=\frac{Q_{A,r}}{\Delta_{A,r}},
+\qquad
+Z_{A,2}^{(r)}=\frac{Q_{A,r}S_{A,r}-H_{A,r}\Delta_{A,r}}{\Delta_{A,r}^2},
+\qquad
+Z_{A,4}^{(r)}=\frac{Q_{A,r}(S_{A,r}^2-\Delta_{A,r})-S_{A,r}H_{A,r}\Delta_{A,r}}{\Delta_{A,r}^3}.
+\label{eq:reduced-gauge-moments}
+\end{equation}
+Summing over all conservative internal pairs gives
+\[
+Z_{A,n}=\sum_r Z_{A,n}^{(r)},
+\qquad n=0,2,4.
+\]
+The full conservative grouped-lane kernel is therefore
+\begin{equation}
+D_A^{\mathrm{cons}}(\omega)
+=
+D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+\cO(\omega^6),
+\label{eq:reduced-full-conservative-kernel}
+\end{equation}
+with
+\begin{equation}
+D_{A0}=K_A-B_{A,0}-Z_{A,0},
+\qquad
+D_{A2}=-\bigl(M_A+B_{A,2}+Z_{A,2}\bigr),
+\qquad
+D_{A4}=-\bigl(B_{A,4}+Z_{A,4}\bigr).
+\label{eq:reduced-conservative-moments}
+\end{equation}
+Equation~\eqref{eq:reduced-conservative-moments} is the conservative wall--support--gauge front end used by the later grouped-bundle and normalization sections. On the first concrete N/N--D/N axial branch of \eqref{eq:reduced-minimal-axial-branch}, the reduced couplings collapse to
+\[
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R,
+\]
+so even the minimal isotropic kernel already becomes an explicit algebraic function of finite-throat overlap data.
+
+\subsection{Pole shifts and grouped-lane operator moments}
+
+The simplest nontrivial pole shift is already visible in one wall mode coupled to one stable support mode,
+\begin{equation}
+L
+=
+\frac12 M\dot q^2
+-
+\frac12 K q^2
++
+\frac12 \dot X^2
+-
+\frac12 \varpi^2 X^2
++
+g qX.
+\label{eq:reduced-one-mode-lagrangian}
+\end{equation}
+The exact dispersion relation is
+\begin{equation}
+(K-M\omega^2)(\varpi^2-\omega^2)-g^2=0.
+\label{eq:reduced-two-pole-dispersion}
+\end{equation}
+Writing the uncoupled wall frequency as
+\begin{equation}
+\Omega_\eta^2=\frac{K}{M},
+\label{eq:reduced-omega-eta}
+\end{equation}
+the poles are
+\begin{equation}
+\omega_\pm^2
+=
+\frac{\Omega_\eta^2+\varpi^2
+\pm
+\sqrt{(\Omega_\eta^2-\varpi^2)^2+4g^2/M}}{2}.
+\label{eq:reduced-two-pole-spectrum}
+\end{equation}
+If the support mode lies above the wall mode, $\varpi^2>\Omega_\eta^2$, and the coupling is weak, then the wall-like pole shifts by
+\begin{equation}
+\delta\Omega_\eta^2
+=
+-\frac{g^2/M}{\varpi^2-\Omega_\eta^2}+\cO(g^4),
+\label{eq:reduced-wall-pole-shift}
+\end{equation}
+while the support pole shifts upward by the same amount with opposite sign. This is the reduced prototype for the open dynamic pole data that later appear as wall/support resonance scales.
+
+For the grouped real bundle, the important point is that the conservative kernel is already organized by the moments $(D_{A0},D_{A2},D_{A4})$. The normalized grouped response coefficients introduced in the next section are therefore fixed by
+\begin{equation}
+u_2^{(A)}=-\frac{D_{A2}}{D_{A0}},
+\qquad
+u_4^{(A)}=\frac{D_{A2}^2-D_{A0}D_{A4}}{D_{A0}^2}.
+\label{eq:reduced-u-moments-preview}
+\end{equation}
+So the output of the present section is not yet the full grouped trace/anomaly ledger, and it is not yet the outgoing-normalization test. It is the exact conservative operator family from which those later quantities are computed.
+
+In particular, if the baseline wall data, support moments, and conservative gauge moments are lane-independent,
+\[
+K_A=K_2,
+\qquad
+M_A=M_2,
+\qquad
+B_{A,n}=B_n,
+\qquad
+Z_{A,n}=Z_n,
+\]
+then the grouped-lane conservative coefficients collapse,
+\[
+D_{20,n}=D_{21,n}=D_{22,n}=D_n,
+\]
+and the grouped real $\Ptwo$ bundle is isotropic before any outgoing dressing is attached. Weak anisotropy may later split the grouped lanes, but that splitting has to be transported through the conservative moments above. That is why the present reduced wall--support--gauge system is the right stopping point before the full grouped-bundle calculus is introduced.
+
+% =============================================================================
+\section{Full grouped real \texorpdfstring{$\Ptwo$}{Ptwo} bundle}
+\label{sec:grouped-bundle}
+% =============================================================================
+
+Section~\ref{sec:reduced-system} reduced the lifted wall--support--gauge system to lane-by-lane conservative kernels. The purpose of the present section is to reorganize those kernels into the full grouped real $\Ptwo$ bundle that the later PN-facing observables actually use. The point is not merely notational tidiness. The grouped bundle is the first place where the reduced moving-throat problem has to distinguish isotropic trace data from genuine quadrupolar anisotropy, and it is the natural input language for both the outgoing-prefactor normalization problem of Section~\ref{sec:outgoing-normalization} and the weak-axisymmetric transport laws of Section~\ref{sec:weak-axisymmetry}.
+
+Throughout this section the labels $20$, $21$, and $22$ denote the grouped real lanes, with $21$ standing for the degenerate pair $21c/21s$ and $22$ for the degenerate pair $22c/22s$. The weighting of those pairs is structural, not conventional, and it is the reason the grouped bundle is not treated with the ordinary Euclidean metric.
+
+\subsection{Weighted projector calculus}
+
+Let
+\[
+ x=(x_{20},x_{21},x_{22})^T
+\]
+be any grouped triple. The natural grouped metric is
+\begin{equation}
+G_{\mathrm{grp}}=\diag(1,2,2),
+\label{eq:grouped-metric}
+\end{equation}
+which simply records that the $21$ and $22$ lanes each represent a twofold real pair. A convenient $G_{\mathrm{grp}}$-orthogonal basis is
+\begin{equation}
+ e_{\mathrm{bar}}=(1,1,1),
+ \qquad
+ e_a=(4,-1,-1),
+ \qquad
+ e_b=(0,1,-1).
+\label{eq:grouped-basis}
+\end{equation}
+These vectors satisfy
+\[
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_a=0,
+ \qquad
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_b=0,
+ \qquad
+ e_a^T G_{\mathrm{grp}} e_b=0,
+\]
+with norms
+\[
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_{\mathrm{bar}}=5,
+ \qquad
+ e_a^T G_{\mathrm{grp}} e_a=20,
+ \qquad
+ e_b^T G_{\mathrm{grp}} e_b=4.
+\]
+So the exact grouped projectors are
+\begin{equation}
+P_{\mathrm{bar}}=\frac15
+\begin{pmatrix}
+1&2&2\\
+1&2&2\\
+1&2&2
+\end{pmatrix},
+\qquad
+P_a=\frac1{20}
+\begin{pmatrix}
+16&-8&-8\\
+-4&2&2\\
+-4&2&2
+\end{pmatrix},
+\qquad
+P_b=\frac14
+\begin{pmatrix}
+0&0&0\\
+0&2&-2\\
+0&-2&2
+\end{pmatrix},
+\label{eq:grouped-projectors}
+\end{equation}
+with
+\begin{equation}
+P_{\mathrm{bar}}+P_a+P_b=I_3,
+\qquad
+P_iP_j=\delta_{ij}P_i.
+\label{eq:grouped-projector-algebra}
+\end{equation}
+The isotropic subspace is the image of $P_{\mathrm{bar}}$; the two independent anisotropy directions are the images of $P_a$ and $P_b$.
+
+\subsection{Grouped trace/anomaly variables}
+
+For any grouped triple $x$ define
+\begin{equation}
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+ a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+ b_x=\frac{x_{21}-x_{22}}{2}.
+\label{eq:grouped-trace-anomaly}
+\end{equation}
+Then
+\begin{equation}
+ x=\bar x\,e_{\mathrm{bar}}+a_x\,e_a+b_x\,e_b,
+\label{eq:grouped-decomposition}
+\end{equation}
+and isotropy is exactly the condition
+\begin{equation}
+ a_x=b_x=0.
+\label{eq:grouped-isotropy-condition}
+\end{equation}
+It is also useful to package the anisotropy into the grouped deviation vector
+\begin{equation}
+ \delta x:=x-\bar x\,(1,1,1)^T,
+\label{eq:grouped-deviation}
+\end{equation}
+and the quadratic invariant
+\begin{equation}
+ \mathcal I[x,y]
+ :=
+ \frac15\,\delta x^T G_{\mathrm{grp}}\,\delta y
+ =
+ 4a_x a_y+\frac45 b_x b_y.
+\label{eq:grouped-invariant}
+\end{equation}
+For one bundle this reduces to the anisotropy norm
+\begin{equation}
+ \mathcal A_x^2:=\mathcal I[x,x]=4a_x^2+\frac45 b_x^2.
+\label{eq:grouped-anisotropy-norm}
+\end{equation}
+Equation~\eqref{eq:grouped-anisotropy-norm} is the scalar measure of how far a grouped triple sits from the isotropic line.
+
+These formulas become physically relevant once they are applied to the reduced moving-throat coefficients themselves. For each grouped lane $A\in\{20,21,22\}$, keep a wall/worldtube amplitude $q_A$, stable BdG support modes $X_{A\alpha}$ with frequencies $\varpi_{A\alpha}$, brane-like internal gauge coordinates $U_{Ar}$ with frequencies $\Omega_{U,Ar}$, mixed $A_w/F_{\mu w}/J^w$ coordinates $W_{Ar}$ with frequencies $\Omega_{W,Ar}$, and internal gauge-sector mixing $R_{Ar}$. The reduced quadratic Lagrangian is then
+\begin{align}
+L_A
+&=
+\frac12 M_A\dot q_A^{\,2}-\frac12 K_A q_A^2
++\frac12\sum_{\alpha}\bigl(\dot X_{A\alpha}^{\,2}-\varpi_{A\alpha}^2 X_{A\alpha}^2\bigr)
++\sum_{\alpha} c_{A\alpha}q_A X_{A\alpha}
+\nonumber\\
+&\quad
++\frac12\sum_r\bigl(\dot U_{Ar}^{\,2}-\Omega_{U,Ar}^2U_{Ar}^2\bigr)
+\nonumber\\
+&\quad
++\frac12\sum_r\bigl(\dot W_{Ar}^{\,2}-\Omega_{W,Ar}^2W_{Ar}^2\bigr)
++\sum_r\Bigl(R_{Ar}U_{Ar}W_{Ar}+g_{U,Ar}q_AU_{Ar}+g_{W,Ar}q_AW_{Ar}\Bigr).
+\label{eq:grouped-lane-lagrangian}
+\end{align}
+From \eqref{eq:grouped-lane-lagrangian} the conservative support moments are
+\begin{equation}
+B_{A,0}=\sum_{\alpha}\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^2},
+\qquad
+B_{A,2}=\sum_{\alpha}\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^4},
+\qquad
+B_{A,4}=\sum_{\alpha}\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^6}.
+\label{eq:grouped-B-moments}
+\end{equation}
+For each conservative Maxwell/mixed internal pair, define
+\begin{equation}
+\Delta_{Ar}=\Omega_{U,Ar}^2\Omega_{W,Ar}^2-R_{Ar}^2,
+\qquad
+S_{Ar}=\Omega_{U,Ar}^2+\Omega_{W,Ar}^2,
+\label{eq:grouped-delta-S}
+\end{equation}
+\begin{equation}
+Q_{Ar}=g_{U,Ar}^2\Omega_{W,Ar}^2+2g_{U,Ar}g_{W,Ar}R_{Ar}+g_{W,Ar}^2\Omega_{U,Ar}^2,
+\qquad
+H_{Ar}=g_{U,Ar}^2+g_{W,Ar}^2,
+\label{eq:grouped-Q-H}
+\end{equation}
+so that the conservative Maxwell/mixed moments are
+\begin{equation}
+\begin{split}
+Z_{A,0}&=\sum_r\frac{Q_{Ar}}{\Delta_{Ar}},\\
+Z_{A,2}&=\sum_r\frac{Q_{Ar}S_{Ar}-H_{Ar}\Delta_{Ar}}{\Delta_{Ar}^2},\\
+Z_{A,4}&=\sum_r\frac{Q_{Ar}(S_{Ar}^2-\Delta_{Ar})-S_{Ar}H_{Ar}\Delta_{Ar}}{\Delta_{Ar}^3}.
+\end{split}
+\label{eq:grouped-Z-moments}
+\end{equation}
+The outgoing transfer moments are built from
+\begin{equation}
+P_{Ar}:=\Omega_{U,Ar}^2 g_{W,Ar}+R_{Ar}g_{U,Ar},
+\label{eq:grouped-PAr}
+\end{equation}
+and take the form
+\begin{align}
+N_{A,0}
+&=\sum_r \frac{P_{Ar}^2}{\Delta_{Ar}^2},
+\nonumber\\
+N_{A,2}
+&=\sum_r \frac{2P_{Ar}\bigl(P_{Ar}S_{Ar}-\Delta_{Ar}g_{W,Ar}\bigr)}{\Delta_{Ar}^3},
+\nonumber\\
+N_{A,4}
+&=\sum_r \frac{\Delta_{Ar}^2 g_{W,Ar}^2-2\Delta_{Ar}P_{Ar}^2-4\Delta_{Ar}P_{Ar}S_{Ar}g_{W,Ar}+3P_{Ar}^2S_{Ar}^2}{\Delta_{Ar}^4}.
+\label{eq:grouped-N-moments}
+\end{align}
+The resulting conservative grouped-lane operator is
+\begin{equation}
+D_A^{\mathrm{cons}}(\omega)=D_{A,0}+D_{A,2}\omega^2+D_{A,4}\omega^4+\cO(\omega^6),
+\label{eq:grouped-conservative-operator}
+\end{equation}
+with
+\begin{equation}
+D_{A,0}=K_A-B_{A,0}-Z_{A,0},
+\qquad
+D_{A,2}=-\bigl(M_A+B_{A,2}+Z_{A,2}\bigr),
+\qquad
+D_{A,4}=-\bigl(B_{A,4}+Z_{A,4}\bigr).
+\label{eq:grouped-D-moments}
+\end{equation}
+Thus the grouped trace/anomaly map is applied not to one symbolic triple but to every microscopic coefficient family
+\[
+K_A,
+\quad
+M_A,
+\quad
+B_{A,n},
+\quad
+Z_{A,n},
+\quad
+N_{A,n},
+\quad
+D_{A,n}.
+\]
+
+\subsection{Exact isotropic collapse of the three grouped lanes}
+
+The full reduced bundle is still lane-by-lane at this point. The first structural theorem is that an $O(3)$-invariant reference throat forces those lanes to collapse.
+
+Let $\hat n^i$ be the unit direction on the throat sphere and let
+\[
+E_{20},\ E_{21c},\ E_{21s},\ E_{22c},\ E_{22s}
+\]
+be the canonical real STF basis. Define the real $l=2$ harmonics by
+\begin{equation}
+Y_A(\hat n)=\sqrt{\frac{15}{8\pi}}\,E_A^{ij}\hat n_i\hat n_j,
+\label{eq:grouped-real-STF-harmonics}
+\end{equation}
+where now $A\in\{20,21c,21s,22c,22s\}$. The exact fourth-moment identity on the unit sphere implies
+\begin{equation}
+\int_{\bbS^2}Y_A(\hat n)Y_B(\hat n)\,\dd\Omega=\delta_{AB}.
+\label{eq:grouped-STF-orthonormality}
+\end{equation}
+In particular, if the reduced kernels are $O(3)$ invariant, then the angular part of every overlap is diagonal and lane-independent.
+
+\begin{proposition}[Isotropic grouped-lane collapse]
+If the reference throat and the reduced kernels are $O(3)$ invariant, then the grouped real $20/21/22$ bundle collapses lane by lane to common scalar coefficients:
+\begin{equation}
+D_{20,n}=D_{21,n}=D_{22,n}=D_n,
+\qquad
+N_{20,n}=N_{21,n}=N_{22,n}=N_n,
+\label{eq:isotropic-collapse}
+\end{equation}
+for each retained low-frequency order $n$. Equivalently, all grouped anomalies vanish,
+\begin{equation}
+a_{D,n}=b_{D,n}=a_{N,n}=b_{N,n}=0.
+\label{eq:isotropic-grouped-anomalies}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:grouped-STF-orthonormality} forces the angular overlap matrices to be proportional to the identity on the real STF $l=2$ space. After regrouping the $21c/21s$ and $22c/22s$ pairs, the three grouped lanes therefore inherit the same scalar reduced coefficients. The weighted projector decomposition then gives \eqref{eq:isotropic-grouped-anomalies} immediately.
+\end{proof}
+
+On the isotropic branch one may therefore work with common coefficients
+\begin{equation}
+D_n:=D_{20,n}=D_{21,n}=D_{22,n},
+\qquad
+N_n:=N_{20,n}=N_{21,n}=N_{22,n},
+\label{eq:grouped-common-coefficients}
+\end{equation}
+and define the normalized grouped response and outgoing-prefactor moments by
+\begin{equation}
+u_2=-\frac{D_2}{D_0},
+\qquad
+u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+\label{eq:grouped-common-u24}
+\end{equation}
+\begin{equation}
+P_0=\frac{N_0}{D_0},
+\qquad
+P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+\qquad
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\label{eq:grouped-common-prefactors}
+\end{equation}
+These are the common bundle variables that Section~\ref{sec:outgoing-normalization} combines with the compact outgoing $\ell=2$ fingerprint.
+
+\subsection{Microscopic overlap-integral representation}
+
+On the isotropic branch the grouped bundle admits a factorized overlap representation. Write
+\begin{equation}
+\eta_A(s,\Omega,t)=q_A(t)\chi_\eta(s)Y_A(\Omega),
+\label{eq:grouped-wall-factorization}
+\end{equation}
+for the grouped wall deformation, and similarly
+\begin{align}
+X_{A\alpha}(s,\Omega,t)&=X_{A\alpha}(t)\phi_\alpha(s)Y_A(\Omega),
+\nonumber\\
+U_{Ar}(s,\Omega,t)&=U_{Ar}(t)u_r(s)Y_A(\Omega),
+\nonumber\\
+W_{Ar}(s,\Omega,t)&=W_{Ar}(t)w_r(s)Y_A(\Omega).
+\label{eq:grouped-factorized-support-gauge}
+\end{align}
+If the reduced kernels are $O(3)$ invariant, all angular structure collapses into \eqref{eq:grouped-STF-orthonormality}, and every microscopic coupling becomes lane-independent:
+\begin{align}
+c_{A\alpha}&=C_\alpha=\lambda_{B,\alpha}I_{\eta,\alpha},
+\nonumber\\
+g_{U,Ar}&=G_{U,r}=\lambda_{U,r}I_{\eta,u,r},
+\nonumber\\
+g_{W,Ar}&=G_{W,r}=\lambda_{W,r}I_{\eta,w,r},
+\nonumber\\
+R_{Ar}&=R_r=\lambda_{R,r}I_{u,w,r}.
+\label{eq:grouped-lane-independent-couplings}
+\end{align}
+The radial/axial overlap integrals are
+\begin{equation}
+I_{\eta,\alpha}=\int \mu_s(s)\chi_\eta(s)\phi_\alpha(s)\,\dd s,
+\qquad
+I_{\eta,u,r}=\int \mu_s(s)\chi_\eta(s)u_r(s)\,\dd s,
+\label{eq:grouped-overlap-integrals-a}
+\end{equation}
+\begin{equation}
+I_{\eta,w,r}=\int \mu_s(s)\chi_\eta(s)w_r(s)\,\dd s,
+\qquad
+I_{u,w,r}=\int \mu_s(s)u_r(s)w_r(s)\,\dd s.
+\label{eq:grouped-overlap-integrals-b}
+\end{equation}
+Substituting \eqref{eq:grouped-lane-independent-couplings} into the bundle moments gives the common isotropic coefficients
+\begin{equation}
+B_0=\sum_{\alpha}\frac{C_\alpha^2}{\varpi_\alpha^2},
+\qquad
+B_2=\sum_{\alpha}\frac{C_\alpha^2}{\varpi_\alpha^4},
+\qquad
+B_4=\sum_{\alpha}\frac{C_\alpha^2}{\varpi_\alpha^6},
+\label{eq:isotropic-B-moments}
+\end{equation}
+\begin{equation}
+Z_0=\sum_r \frac{Q_r}{\Delta_r},
+\qquad
+Z_2=\sum_r \frac{Q_rS_r-H_r\Delta_r}{\Delta_r^2},
+\qquad
+Z_4=\sum_r \frac{Q_r(S_r^2-\Delta_r)-S_rH_r\Delta_r}{\Delta_r^3},
+\label{eq:isotropic-Z-moments}
+\end{equation}
+\begin{equation}
+\begin{split}
+N_0&=\sum_r \frac{P_r^2}{\Delta_r^2},\\
+N_2&=\sum_r \frac{2P_r(P_rS_r-\Delta_rg_{W,r})}{\Delta_r^3},\\
+N_4&=\sum_r \frac{\Delta_r^2 g_{W,r}^2-2\Delta_rP_r^2-4\Delta_rP_rS_rg_{W,r}+3P_r^2S_r^2}{\Delta_r^4},
+\end{split}
+\label{eq:isotropic-N-moments}
+\end{equation}
+where now
+\begin{equation}
+\Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2,
+\quad
+S_r=\Omega_{U,r}^2+\Omega_{W,r}^2,
+\quad
+Q_r=G_{U,r}^2\Omega_{W,r}^2+2G_{U,r}G_{W,r}R_r+G_{W,r}^2\Omega_{U,r}^2,
+\label{eq:isotropic-DeltaSQR}
+\end{equation}
+\begin{equation}
+H_r=G_{U,r}^2+G_{W,r}^2,
+\qquad
+P_r=\Omega_{U,r}^2G_{W,r}+R_rG_{U,r}.
+\label{eq:isotropic-HP}
+\end{equation}
+Accordingly, the common conservative denominator is
+\begin{equation}
+D_0=K-B_0-Z_0,
+\qquad
+D_2=-\bigl(M+B_2+Z_2\bigr),
+\qquad
+D_4=-\bigl(B_4+Z_4\bigr).
+\label{eq:isotropic-D-moments}
+\end{equation}
+A useful corollary is that the source normalization factor splits as
+\begin{equation}
+\hat m_0=\hat m_{\mathrm{rad}}\,\hat m_{\mathrm{ang}},
+\qquad
+\hat m_{\mathrm{ang}}=1,
+\label{eq:isotropic-source-map-factorization}
+\end{equation}
+on the canonical isotropic branch. The remaining source-normalization question is therefore radial/axial and dynamical rather than angular.
+
+\subsection{Sources of anisotropy in the bundle}
+
+Once the isotropic branch has been fixed, every grouped-lane deviation can be localized exactly. The microscopic sources of anisotropy are only
+\begin{equation}
+(K_A,M_A),
+\qquad
+B_{A,n},
+\qquad
+Z_{A,n},
+\qquad
+N_{A,n}.
+\label{eq:grouped-anisotropy-ledger}
+\end{equation}
+Equivalently, the grouped bundle sees four kinds of defect: wall baseline anisotropy, BdG support anisotropy, conservative Maxwell/mixed anisotropy, and outgoing-transfer anisotropy. No additional independent grouped source exists at the retained order.
+
+To first order around the isotropic branch,
+\begin{equation}
+D_{A,n}=D_n+\delta D_{A,n},
+\qquad
+N_{A,n}=N_n+\delta N_{A,n},
+\label{eq:grouped-first-order-perturbations}
+\end{equation}
+and the leading normalized response and prefactor variations are
+\begin{equation}
+\delta u_2^{(A)}=-\frac{\delta D_{A,2}+u_2\,\delta D_{A,0}}{D_0},
+\label{eq:grouped-du2}
+\end{equation}
+\begin{equation}
+\delta P_0^{(A)}=\frac{\delta N_{A,0}-P_0\,\delta D_{A,0}}{D_0}.
+\label{eq:grouped-dP0}
+\end{equation}
+Thus even if the explicit $\omega^2$ coefficient were isotropic, anisotropy in the static denominator would still leak into the normalized response, and even if the transfer bundle were isotropic, conservative static anisotropy would still leak into the outgoing prefactor.
+
+The simplest nontrivial symmetry breaking is a weak axisymmetric quadrupole deformation of the isotropic branch. In that case the grouped-lane signature is forced to be
+\begin{equation}
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1,
+\label{eq:grouped-axisymmetric-signature}
+\end{equation}
+so the first grouped defects obey the exact fingerprint
+\begin{equation}
+ b=3a.
+\label{eq:grouped-axisymmetric-fingerprint}
+\end{equation}
+Equation~\eqref{eq:grouped-axisymmetric-fingerprint} is the diagnostic used in Section~\ref{sec:weak-axisymmetry}: any weak anisotropy that fails to lie on that line cannot be a pure axisymmetric quadrupole perturbation of the isotropic branch.
+
+This is the final role of the full bundle section. It does not yet prove that the physical moving-throat branch is isotropic, nor that its first anisotropy is axisymmetric. It does, however, make both possibilities testable in one fixed language. Section~\ref{sec:outgoing-normalization} uses the common isotropic coefficients to formulate the normalization theorem target, while Section~\ref{sec:weak-axisymmetry} uses \eqref{eq:grouped-du2}--\eqref{eq:grouped-axisymmetric-fingerprint} to organize the first departures away from that target.
+
+% =============================================================================
+\section{Outgoing quadrupole bridge and isotropic normalization}
+\label{sec:outgoing-normalization}
+% =============================================================================
+
+Section~\ref{sec:grouped-bundle} organized the conservative moving-throat data into the grouped real $\Ptwo$ bundle. The present section adds the retarded side of the story. The key point is that, on the natural point-particle branch, the universal odd channel is no longer a generic radiative correction spread across many internal moments. It is the compact outgoing $\ell=2$ fingerprint transported through the isotropic static prefactor
+\[
+P_0=\frac{N_0}{D_0}.
+\]
+That is why the whole isotropic 2.5PN/4PN bridge collapses to a single normalization test rather than to a new large coefficient search.
+
+The logic is easiest to read in three layers. First, one fixes the compact outgoing $\ell=2$ fingerprint. Second, one identifies the static prefactor that transfers that fingerprint into the grouped real $\Ptwo$ wall/worldtube response. Third, one compares the resulting odd coefficient against the universal Burke--Thorne target. Weak-axisymmetric departures away from that isotropic finish line are postponed to Section~\ref{sec:weak-axisymmetry}.
+
+\subsection{Compact outgoing \texorpdfstring{$\ell=2$}{ell=2} fingerprint}
+
+The canonical compact outgoing $\ell=2$ branch has the normalized low-frequency expansion
+\begin{equation}
+\Yout(\omega)
+=
+1
++
+\frac{a^2\omega^2}{9c_s^2}
++
+\frac{4a^4\omega^4}{81c_s^4}
++
+\ii\frac{a^5\omega^5}{27c_s^5}
++
+\cO(\omega^6).
+\label{eq:outgoing-fingerprint}
+\end{equation}
+The even part of \eqref{eq:outgoing-fingerprint} is exactly what one obtains from a one-pole grouped-$\Ptwo$ carrier with pole frequency
+\begin{equation}
+\Omega_Q=\frac{3c_s}{2a}.
+\label{eq:outgoing-OmegaQ}
+\end{equation}
+It is therefore natural to package the isotropic retarded grouped-$\Ptwo$ module as
+\begin{equation}
+\widehat Y_Q^{\mathrm{ret}}(\omega)
+=
+\frac34
++
+\frac14\frac{1}{1-\omega^2/\Omega_Q^2-\ii\chi_Q\sigma_Q^{\mathrm{can}}\omega^5}
++
+\cO(\omega^6),
+\label{eq:retarded-one-pole-chiQ}
+\end{equation}
+where
+\begin{equation}
+\sigma_Q^{\mathrm{can}}:=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+\label{eq:canonical-sigmaQ}
+\end{equation}
+The dimensionless factor $\chi_Q$ is the only retained outgoing-normalization freedom of the one-pole retarded branch. On the canonical compact outgoing branch, matching \eqref{eq:retarded-one-pole-chiQ} to \eqref{eq:outgoing-fingerprint} gives
+\begin{equation}
+\chi_Q=1.
+\label{eq:canonical-chiQ}
+\end{equation}
+When the actual passive/outgoing branch is still being treated as branch data rather than as a solved DtN theorem, it is useful to keep $\chi_Q$ explicit; all outgoing uncertainty that survives to 2.5PN order is then localized in that one scalar.
+
+\subsection{Static outgoing prefactor \texorpdfstring{$P_0=N_0/D_0$}{P0=N0/D0}}
+
+On the isotropic grouped-lane branch, the conservative denominator and outgoing-transfer numerator are written as
+\begin{equation}
+D^{\mathrm{cons}}(\omega)=D_0+D_2\omega^2+D_4\omega^4+\cO(\omega^6),
+\qquad
+N(\omega)=N_0+N_2\omega^2+N_4\omega^4+\cO(\omega^6),
+\label{eq:outgoing-DN-expansions}
+\end{equation}
+with the common conservative moments already fixed in Section~\ref{sec:grouped-bundle}, namely
+\begin{equation}
+D_0=K-B_0-Z_0,
+\qquad
+D_2=-\bigl(M+B_2+Z_2\bigr),
+\qquad
+D_4=-\bigl(B_4+Z_4\bigr).
+\label{eq:outgoing-isotropic-Dmoments}
+\end{equation}
+The internal prefactor that transfers the compact outgoing branch into the wall/worldtube response is
+\begin{equation}
+P(\omega):=\frac{D_0\,N(\omega)}{\bigl(D^{\mathrm{cons}}(\omega)\bigr)^2}
+=
+P_0+P_2\omega^2+P_4\omega^4+\cO(\omega^6),
+\label{eq:outgoing-prefactor-def}
+\end{equation}
+where the exact coefficients are
+\begin{equation}
+P_0=\frac{N_0}{D_0},
+\label{eq:outgoing-P0}
+\end{equation}
+\begin{equation}
+P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+\qquad
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\label{eq:outgoing-P24}
+\end{equation}
+The outgoing quadrupole bridge is then obtained by multiplying the prefactor by the compact outgoing fingerprint:
+\begin{equation}
+\delta\widehat Y_Q^{\out}(\omega)=P(\omega)\,\Yout(\omega).
+\label{eq:outgoing-bridge-product}
+\end{equation}
+
+\begin{proposition}[Only the static prefactor controls the leading odd bridge]
+On the isotropic branch, the $\ii\omega^5$ coefficient of \eqref{eq:outgoing-bridge-product} depends on the internal prefactor only through $P_0$. More precisely,
+\begin{equation}
+\begin{aligned}
+\delta\widehat Y_Q^{\out}(\omega)
+={}&
+P_0
++
+\biggl(P_2+\frac{a^2}{9c_s^2}P_0\biggr)\omega^2
+\\[2pt]
+&+
+\biggl(P_4+\frac{a^2}{9c_s^2}P_2+\frac{4a^4}{81c_s^4}P_0\biggr)\omega^4
++
+\ii\chi_Q P_0\frac{a^5\omega^5}{27c_s^5}
++
+\cO(\omega^6).
+\end{aligned}
+\label{eq:outgoing-bridge-expanded}
+\end{equation}
+So the leading odd coefficient is
+\begin{equation}
+\Gamma_5=\chi_Q P_0\frac{a^5}{27c_s^5},
+\label{eq:outgoing-Gamma5}
+\end{equation}
+while $P_2$ and $P_4$ enter only the even branch bookkeeping through $\cO(\omega^4)$.
+\end{proposition}
+
+\begin{proof}
+Insert \eqref{eq:outgoing-fingerprint} into \eqref{eq:outgoing-bridge-product} and expand through $\cO(\omega^5)$. The odd term in \eqref{eq:outgoing-fingerprint} first appears at order $\omega^5$, so the coefficients $P_2$ and $P_4$ can only contribute to even orders at the same accuracy. If one uses the canonical compact outgoing branch, then \eqref{eq:outgoing-Gamma5} is obtained by setting $\chi_Q=1$.
+\end{proof}
+
+Equation~\eqref{eq:outgoing-Gamma5} is the first central reduction of the section. At the universal point-particle 2.5PN level, the full internal moving-throat bundle enters the odd quadrupole bridge only through the static ratio $P_0=N_0/D_0$, together with the optional outgoing-normalization scalar $\chi_Q$ if the branch is not yet fixed to the canonical compact DtN completion.
+
+\subsection{Invariant normalization condition}
+
+The observable odd coefficient must reproduce the universal Burke--Thorne target,
+\begin{equation}
+\mhat^{2}\Gamma_5=\frac{2G}{5c^5},
+\label{eq:outgoing-BT-target}
+\end{equation}
+where $\mhat$ is the source-map factor on the isotropic branch. Combining \eqref{eq:outgoing-Gamma5} with \eqref{eq:outgoing-BT-target} gives the exact factorized normalization law
+\begin{equation}
+\boxed{\mhat^{2}\chi_Q P_0=\frac{54Gc_s^5}{5a^5c^5}.}
+\label{eq:outgoing-factorized-normalization}
+\end{equation}
+On the canonical compact outgoing branch, where \eqref{eq:canonical-chiQ} holds, this reduces to
+\begin{equation}
+\boxed{\mhat^{2}P_0=\frac{54Gc_s^5}{5a^5c^5}.}
+\label{eq:outgoing-canonical-normalization}
+\end{equation}
+Using \eqref{eq:outgoing-P0}, one may rewrite the same condition as
+\begin{equation}
+\boxed{\mhat^{2}\chi_Q\frac{N_0}{K-B_0-Z_0}=\frac{54Gc_s^5}{5a^5c^5}.}
+\label{eq:outgoing-normalization-ratio}
+\end{equation}
+The natural point-particle source map satisfies
+\begin{equation}
+\mhat=1+\cO(a^2/r^2),
+\label{eq:outgoing-natural-source-map}
+\end{equation}
+so the strict point-particle target is
+\begin{equation}
+P_0^{\mathrm{target}}:=\frac{54Gc_s^5}{5a^5c^5}
+\qquad
+\text{on the canonical outgoing branch.}
+\label{eq:outgoing-P0-target}
+\end{equation}
+Thus the isotropic normalization problem is not a generic dynamical puzzle. It is the single task of determining whether the actual branch returns the correct static outgoing prefactor, possibly dressed by one outgoing-normalization factor $\chi_Q$.
+
+It is sometimes convenient to package the same statement in one reduced scalar. Define
+\begin{equation}
+N_Q:=\frac{P_0}{P_0^{\mathrm{target}}}.
+\label{eq:outgoing-NQ-def}
+\end{equation}
+Then \eqref{eq:outgoing-factorized-normalization} becomes
+\begin{equation}
+\mhat^{2}\chi_Q N_Q=1.
+\label{eq:outgoing-NQ-factorized}
+\end{equation}
+On the natural source-map branch, \eqref{eq:outgoing-natural-source-map} gives $N_Q=\chi_Q^{-1}$ at strict point-particle order, and on the canonical compact outgoing branch one recovers the one-number closure condition
+\begin{equation}
+N_Q=1.
+\label{eq:outgoing-NQ-canonical}
+\end{equation}
+This is the reduced form in which the later notes identify the last isotropic theorem gate.
+
+\subsection{Constant-prefactor branch}
+
+The simplest isotropic realization is the constant-prefactor branch,
+\begin{equation}
+P_2=0,
+\qquad
+P_4=0.
+\label{eq:outgoing-constant-prefactor-def}
+\end{equation}
+Using \eqref{eq:outgoing-P24}, the exact conditions are
+\begin{equation}
+N_2=\frac{2D_2N_0}{D_0},
+\qquad
+N_4=\frac{2D_0(D_2N_2+D_4N_0)-3D_2^2N_0}{D_0^2}.
+\label{eq:outgoing-constant-prefactor-conditions}
+\end{equation}
+So the constant-prefactor branch does not require the higher transfer moments to vanish separately. It requires them to be locked algebraically to the conservative denominator moments.
+
+On that branch,
+\begin{equation}
+\delta\widehat Y_Q^{\out}(\omega)=P_0\,\Yout(\omega)+\cO(\omega^6),
+\label{eq:outgoing-constant-prefactor-product}
+\end{equation}
+so the first even bridge coefficients are fixed automatically:
+\begin{equation}
+K_2=P_0\frac{a^2}{9c_s^2},
+\qquad
+K_4=P_0\frac{4a^4}{81c_s^4},
+\label{eq:outgoing-constant-prefactor-even}
+\end{equation}
+and the odd coefficient is still \eqref{eq:outgoing-Gamma5}. The virtue of \eqref{eq:outgoing-constant-prefactor-def} is therefore conceptual rather than cosmetic: once the prefactor is constant through $\cO(\omega^4)$, the outgoing bridge is determined by a single static scalar.
+
+\subsection{Minimal isotropic closure and branch-level interpretation}
+
+The minimal isotropic closure keeps one wall/worldtube quadrupole mode, one stable BdG support mode, one brane-like internal gauge coordinate $U$, and one mixed internal coordinate $W$. Writing the common radial/axial overlap amplitudes as
+\begin{equation}
+C=\lambda_B I_{\eta\phi},
+\qquad
+G_U=\lambda_U I_{\eta u},
+\qquad
+G_W=\lambda_W I_{\eta w},
+\qquad
+R=\lambda_R I_{uw},
+\label{eq:outgoing-minimal-overlaps}
+\end{equation}
+with frequencies $\varpi$, $\Omega_U$, and $\Omega_W$, define
+\begin{equation}
+\begin{aligned}
+\Delta&=\Omega_U^2\Omega_W^2-R^2,
+\\
+Q&=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\\
+P&=\Omega_U^2G_W+RG_U.
+\end{aligned}
+\label{eq:outgoing-minimal-DeltaQP}
+\end{equation}
+Then
+\begin{equation}
+B_0=\frac{C^2}{\varpi^2},
+\qquad
+Z_0=\frac{Q}{\Delta},
+\qquad
+N_0=\frac{P^2}{\Delta^2},
+\label{eq:outgoing-minimal-BZN}
+\end{equation}
+so the static denominator is
+\begin{equation}
+D_0=K-\frac{C^2}{\varpi^2}-\frac{Q}{\Delta},
+\label{eq:outgoing-minimal-D0}
+\end{equation}
+and the exact isotropic prefactor becomes
+\begin{equation}
+P_0=\frac{P^2}{\Delta^2\left(K-C^2/\varpi^2-Q/\Delta\right)}
+=
+\frac{P^2}{\Delta\left(K\Delta-\Delta C^2/\varpi^2-Q\right)}.
+\label{eq:outgoing-minimal-P0}
+\end{equation}
+The minimal isotropic normalization test is therefore one scalar equation in the radial/axial overlap data:
+\begin{equation}
+\mhat^{2}\chi_Q
+\frac{P^2}{\Delta\left(K\Delta-\Delta C^2/\varpi^2-Q\right)}
+=
+\frac{54Gc_s^5}{5a^5c^5}.
+\label{eq:outgoing-minimal-normalization}
+\end{equation}
+Its physical admissibility conditions are simply
+\begin{equation}
+\Delta>0,
+\qquad
+D_0>0,
+\label{eq:outgoing-minimal-stability}
+\end{equation}
+so that the internal $(U,W)$ block is statically stable and the wall/worldtube quadrupole mode retains positive effective stiffness.
+
+This minimal closure is useful because it makes clear what the full PDE still has to provide: not another symbolic compiler, but the actual overlap data of the isotropic branch. Inside the present reduced hierarchy, the actual isotropic branch is already organized as a grouped-$\Ptwo$ one-pole carrier with static geometry completion, so the normalization test above is not competing with a second dynamic quadrupole lane. The conservative module may be written as
+\begin{equation}
+\widehat Y_Q^{\mathrm{cons}}(\omega)=\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2},
+\qquad
+\Omega_Q=\frac{3c_s}{2a},
+\label{eq:outgoing-actual-one-pole-branch}
+\end{equation}
+and the isotropic finish line is therefore genuinely one-dimensional: determine the scalar ratio $P_0/P_0^{\mathrm{target}}$, or equivalently the one-number defect $N_Q-1$, subject to the possible outgoing renormalization $\chi_Q$ in \eqref{eq:outgoing-factorized-normalization}.
+
+That is the sense in which the outgoing quadrupole bridge is now operational. The conservative front end has already been compressed into the grouped real $\Ptwo$ bundle, the compact outgoing branch fixes the universal $\omega^5$ fingerprint, and the remaining isotropic question is just whether the realized moving-throat branch lands the single scalar $P_0$ on its target value. Section~\ref{sec:weak-axisymmetry} then asks how that one-number finish line deforms once the isotropic branch is weakly split.
+
+% =============================================================================
+\section{Weak-axisymmetric departures}
+\label{sec:weak-axisymmetry}
+% =============================================================================
+
+Sections~\ref{sec:grouped-bundle} and \ref{sec:outgoing-normalization} fixed the isotropic grouped real $\Ptwo$ branch as the first normalization target. The next question is how that target deforms once isotropy is relaxed slightly but not abandoned. The answer is much more rigid than a generic three-lane perturbation would suggest. For the first allowed axisymmetric departure, the grouped bundle does not open into three independent anisotropy parameters. It opens into one fixed lane pattern and one scalar slope. That is why weak-axisymmetric analysis is the right first deformation theory around the isotropic finish line.
+
+The discussion below keeps two points explicit. First, this is still a reduced-sector statement: it describes the first admissible departures of the grouped wall/support/outgoing bundle, not the full nonlinear moving-throat branch. Second, the weak-axisymmetric bookkeeping parameter $\epsilon$ organizes symmetry breaking around a branch that is already close enough to isotropy for the grouped-lane trace/anomaly variables of Section~\ref{sec:grouped-bundle} to be the natural coordinates.
+
+\subsection{First allowed axisymmetric splitting law}
+
+The first symmetry-breaking channel that talks directly to the grouped real $\Ptwo$ bundle is a weak axisymmetric quadrupole distortion of the isotropic throat. Write the perturbation schematically as
+\begin{equation}
+ \delta \cK(s,\Omega)=\epsilon\,\kappa(s)Y_{20}(\Omega),
+ \label{eq:weakax-axisymmetric-perturbation}
+\end{equation}
+where $s$ denotes the radial/axial reduced coordinate and $Y_{20}$ is the canonical real axisymmetric quadrupole harmonic. In the five-component real STF basis
+\[
+ A\in\{20,21c,21s,22c,22s\},
+\]
+the corresponding Gaunt matrix is
+\begin{equation}
+ M^{(20)}_{AB}
+ :=
+ \int_{\bbS^2} Y_A(\Omega)Y_{20}(\Omega)Y_B(\Omega)\,\dd\Omega
+ =
+ \kappa_*\,\diag\!\left(1,\frac12,\frac12,-1,-1\right),
+ \qquad
+ \kappa_*:=\frac{\sqrt5}{7\sqrt\pi}.
+ \label{eq:weakax-gaunt-matrix}
+\end{equation}
+After regrouping the $21c/21s$ and $22c/22s$ pairs into the three grouped lanes, every first-order grouped coefficient $x_A$ takes the form
+\begin{equation}
+ x_{20}=\bar x+\epsilon x_1,
+ \qquad
+ x_{21}=\bar x+\frac{\epsilon}{2}x_1,
+ \qquad
+ x_{22}=\bar x-\epsilon x_1,
+ \label{eq:weakax-x-splitting}
+\end{equation}
+so the grouped signature is
+\begin{equation}
+ \lambda_{20}=1,
+ \qquad
+ \lambda_{21}=\frac12,
+ \qquad
+ \lambda_{22}=-1.
+ \label{eq:weakax-lambda-signature}
+\end{equation}
+In the trace/anomaly variables of \eqref{eq:grouped-trace-anomaly}, this immediately gives
+\begin{equation}
+ a_x=\frac{\epsilon x_1}{4},
+ \qquad
+ b_x=\frac{3\epsilon x_1}{4},
+ \qquad
+ b_x=3a_x.
+ \label{eq:weakax-b-equals-3a}
+\end{equation}
+So the first weak-axisymmetric deformation is one-dimensional in grouped-lane space: once the isotropic trace is fixed, the two anisotropy coordinates are locked to the line $b=3a$.
+
+\begin{proposition}[Axisymmetric grouped fingerprint]
+A first-order grouped-lane anomaly can arise from a pure axisymmetric quadrupole perturbation of an isotropic branch only if it obeys \eqref{eq:weakax-b-equals-3a}. Equivalently, any first-order grouped defect that does not lie on the line $b=3a$ cannot be generated by the axisymmetric splitting law \eqref{eq:weakax-lambda-signature} alone.
+\end{proposition}
+
+This proposition is the first diagnostic use of weak-axisymmetric transport. It does not identify the microscopic source of the anisotropy, but it does identify its symmetry class. In particular, failure of \eqref{eq:weakax-b-equals-3a} signals either non-axisymmetric content, higher-rank angular structure, or a reduced kernel that is more complicated than the weak axisymmetric quadrupole ansatz.
+
+\subsection{Transport of conservative response anisotropy}
+
+The grouped conservative denominator was organized in Section~\ref{sec:grouped-bundle} as the low-frequency family
+\[
+D_A^{\mathrm{cons}}(\omega)=D_{A,0}+D_{A,2}\omega^2+D_{A,4}\omega^4+\cO(\omega^6).
+\]
+Around an isotropic branch, the first weak-axisymmetric deformation is therefore written as
+\begin{equation}
+ D_{A,0}=D_0+\epsilon\lambda_A D_{01}+\cO(\epsilon^2),
+ \qquad
+ D_{A,2}=D_2+\epsilon\lambda_A D_{21}+\cO(\epsilon^2),
+ \qquad
+ D_{A,4}=D_4+\epsilon\lambda_A D_{41}+\cO(\epsilon^2),
+ \label{eq:weakax-D-expansion}
+\end{equation}
+where the subscript $1$ records first order in the weak-axisymmetric parameter $\epsilon$, not a new frequency order.
+
+The normalized conservative response in lane $A$ is
+\begin{equation}
+ u_2^{(A)}:=-\frac{D_{A,2}}{D_{A,0}}.
+ \label{eq:weakax-u2A-def}
+\end{equation}
+Expanding \eqref{eq:weakax-u2A-def} to first order gives
+\begin{equation}
+ u_2^{(A)}
+ =
+ u_2+\epsilon\lambda_A u_2^{(1)}+\cO(\epsilon^2),
+ \qquad
+ u_2^{(1)}=-\frac{D_{21}+u_2D_{01}}{D_0}.
+ \label{eq:weakax-u2-transport}
+\end{equation}
+Thus the grouped conservative response inherits the same fixed lane pattern as the microscopic denominator itself. In particular,
+\begin{equation}
+ a_{u_2}=\frac{\epsilon u_2^{(1)}}{4},
+ \qquad
+ b_{u_2}=\frac{3\epsilon u_2^{(1)}}{4},
+ \qquad
+ b_{u_2}=3a_{u_2}.
+ \label{eq:weakax-u2-anomalies}
+\end{equation}
+The physical content of \eqref{eq:weakax-u2-transport} is simple: anisotropy in the static denominator $D_{A,0}$ leaks into the normalized response even if the explicit $\omega^2$ slot were isotropic, and anisotropy in $D_{A,2}$ is reweighted by the isotropic background response $u_2$ rather than appearing in isolation.
+
+One particularly important special case is the first even-preserving branch,
+\begin{equation}
+ u_2^{(1)}=0.
+ \label{eq:weakax-even-preserving}
+\end{equation}
+Equation~\eqref{eq:weakax-u2-transport} then reduces to
+\begin{equation}
+ D_{21}=-u_2D_{01}.
+ \label{eq:weakax-even-preserving-condition}
+\end{equation}
+So the first conservative grouped anisotropy can be compensated algebraically: once the static slope $D_{01}$ is known, the $\omega^2$ slope $D_{21}$ is no longer independent on an even-preserving branch. Higher-even moments are transported in the same way. For the purposes of the framework paper, however, the central point is already contained in \eqref{eq:weakax-u2-transport}: weak conservative anisotropy is a one-scalar perturbation on the axisymmetric line, not a free three-lane deformation.
+
+\subsection{Transport of outgoing-prefactor anisotropy}
+
+The static outgoing prefactor was identified in Section~\ref{sec:outgoing-normalization} as the isotropic ratio
+\[
+P_0=\frac{N_0}{D_0}.
+\]
+To first weak-axisymmetric order the lane-by-lane static transfer moments are written as
+\begin{equation}
+ N_{A,0}=N_0+\epsilon\lambda_A N_{01}+\cO(\epsilon^2),
+ \label{eq:weakax-N0-expansion}
+\end{equation}
+so the lane prefactors become
+\begin{equation}
+ P_A:=\frac{N_{A,0}}{D_{A,0}}.
+ \label{eq:weakax-PA-def}
+\end{equation}
+Expanding \eqref{eq:weakax-PA-def} with \eqref{eq:weakax-D-expansion} and \eqref{eq:weakax-N0-expansion} gives
+\begin{equation}
+ P_A
+ =
+ \bar P_0+\epsilon\lambda_A P_1+\cO(\epsilon^2),
+ \qquad
+ \bar P_0:=\frac{N_0}{D_0},
+ \qquad
+ P_1:=\frac{N_{01}D_0-N_0D_{01}}{D_0^2}.
+ \label{eq:weakax-prefactor-transport}
+\end{equation}
+The same grouped fingerprint therefore reappears in the prefactor anomalies:
+\begin{equation}
+ a_{P_0}=\frac{\epsilon P_1}{4},
+ \qquad
+ b_{P_0}=\frac{3\epsilon P_1}{4},
+ \qquad
+ b_{P_0}=3a_{P_0}.
+ \label{eq:weakax-prefactor-anomalies}
+\end{equation}
+Equation~\eqref{eq:weakax-prefactor-transport} is the prefactor analogue of \eqref{eq:weakax-u2-transport}. It says that the first departure from the isotropic normalization target is controlled by the mismatch between the outgoing static-loading slope $N_{01}$ and the conservative static denominator slope $D_{01}$.
+
+This is exactly the place where the isotropic and weak-axisymmetric analyses meet. The isotropic theorem of Section~\ref{sec:outgoing-normalization} asks whether the branch lands on the correct value of $\bar P_0$. The weak-axisymmetric deformation problem asks how that value changes across the grouped lanes once isotropy is broken infinitesimally. At first order, the two pieces of information are therefore $(\bar P_0,P_1)$, or equivalently $(\bar P_0,\XiOne)$.
+
+\subsection{The prefactor slope \texorpdfstring{$\Xi_1=P_1/P_0$}{Xi1=P1/P0}}
+
+The most useful way to package the first prefactor deformation is as the dimensionless slope
+\begin{equation}
+ \boxed{\XiOne:=\frac{P_1}{\bar P_0}.}
+ \label{eq:weakax-Xi1-def}
+\end{equation}
+Using \eqref{eq:weakax-prefactor-transport}, one obtains the exact equivalent form
+\begin{equation}
+ \boxed{\XiOne=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.}
+ \label{eq:weakax-Xi1-ratio}
+\end{equation}
+So $\XiOne$ is the first weak-axisymmetric mismatch between the static outgoing-transfer loading and the static conservative denominator. In terms of $\XiOne$, the grouped-lane prefactors become
+\begin{equation}
+ P_A
+ =
+ \bar P_0\bigl(1+\epsilon\lambda_A\XiOne\bigr)
+ +\cO(\epsilon^2),
+ \label{eq:weakax-prefactor-Xi1}
+\end{equation}
+and the grouped anomalies reduce to
+\begin{equation}
+ a_{P_0}=\frac{\epsilon\bar P_0\XiOne}{4},
+ \qquad
+ b_{P_0}=\frac{3\epsilon\bar P_0\XiOne}{4},
+ \qquad
+ b_{P_0}=3a_{P_0}.
+ \label{eq:weakax-prefactor-Xi1-anomalies}
+\end{equation}
+
+Equation~\eqref{eq:weakax-Xi1-def} is the reader-facing finish line of the section. Once the isotropic normalization scalar $\bar P_0$ has been extracted, the first nontrivial weak-axisymmetric datum is not a whole new bundle of coefficients. It is the single scalar $\XiOne$. On an even-preserving conservative branch, where \eqref{eq:weakax-even-preserving} holds, $\XiOne$ is the sole surviving linear grouped diagnostic of departure from the isotropic normalization target.
+
+A more resolved branch analysis can go further and rewrite $\XiOne$ as a transport-shape defect, or as a quotient-coordinate drift in a coherent-kernel normal form. Those refinements are useful for actual branch realization, but they are not needed to use the PDE. For the framework paper the operational message is simpler: the first weak-axisymmetric observable is the logarithmic prefactor slope \eqref{eq:weakax-Xi1-def}.
+
+\subsection{What weak anisotropy can and cannot mean}
+
+Weak-axisymmetric transport should be read as a diagnostic hierarchy, not as a claim that all anisotropy is axisymmetric. The formulas above establish four points.
+
+First, a pure axisymmetric quadrupole perturbation predicts the fixed grouped pattern \eqref{eq:weakax-lambda-signature}. So observing the line $b=3a$ is evidence for that symmetry class, not yet for any particular microscopic mechanism.
+
+Second, even when the fingerprint is axisymmetric, the source of the effect is still not unique. The slopes $D_{01}$ and $N_{01}$ can inherit contributions from wall-baseline anisotropy, BdG-support anisotropy, conservative Maxwell/mixed anisotropy, and outgoing-transfer anisotropy. Weak-axisymmetric transport classifies how those effects reach the grouped observables; it does not by itself tell us which microscopic sector dominates.
+
+Third, failure of the line $b=3a$ is informative. It signals that the physical branch cannot be described as a pure axisymmetric quadrupole perturbation of the isotropic carrier. In that case one must look for non-axisymmetric $m\neq 0$ content, higher angular structure, or a reduced kernel that is not separable in the simple grouped-lane sense used here.
+
+Fourth, weak anisotropy does not replace the isotropic normalization test. It supplements it. The practical data extracted from a candidate branch are therefore the isotropic normalization ratio of Section~\ref{sec:outgoing-normalization} together with the scalar slope $\XiOne$ defined in \eqref{eq:weakax-Xi1-def}. In that precise sense, the first departures away from the isotropic finish line are organized by one number, not by a new arbitrary coefficient search.
+
+% =============================================================================
+\section{How to use the PDE}
+\label{sec:how-to-use}
+% =============================================================================
+
+Sections~\ref{sec:geometry-lift}--\ref{sec:weak-axisymmetry} define the moving-throat PDE, its reduced wall--support--gauge bundle, and the two branch-facing observables that matter most for the present paper: the isotropic normalization scalar
+\[
+P_0=\frac{N_0}{D_0}
+\]
+and the first weak-axisymmetric slope
+\[
+\XiOne=\frac{P_1}{P_0}.
+\]
+The practical use of the framework is therefore not to fit PN coefficients one by one. It is to start from a candidate stationary moving-throat branch, extract the finite set of reduced data carried by that branch, collapse those data to overlap moments, and only then test isotropy, normalization, and weak-axisymmetric transport. This section records that workflow explicitly.
+
+A useful way to read the present framework is as a one-way map
+\[
+\text{candidate branch}
+\longrightarrow
+\text{reduced overlap data}
+\longrightarrow
+\text{grouped bundle moments}
+\longrightarrow
+(P_0,\XiOne).
+\]
+If the branch data are well defined, the remaining question is no longer algebraic compression. It is whether the realized branch lands on the isotropic normalization target and, if not, how the miss is organized.
+
+\subsection{Inputs required from a candidate branch}
+
+The first input is a stationary finite-throat background of the kind introduced in Sections~\ref{sec:geometry-lift} and \ref{sec:linearized-pde}. Concretely, one needs a reference surface
+\[
+R_0(w),
+\]
+a background matter field
+\[
+\psi_0(\mathbf X),
+\]
+a background localized gauge field
+\[
+A_{M0}(x),
+\]
+and the corresponding confinement profile
+\[
+V_{\conf}(\mathbf X;\Sigma_0).
+\]
+At the level of the reduced wall theory one must also know the constitutive wall data
+\[
+\mu_\eta(w),\qquad T_w(w),\qquad T_\Omega(w),\qquad K_\eta(w),
+\]
+because they determine the uncoupled wall operator and the lift back to the old $(a,L)$ sector.
+
+The second input is the linearized spectrum and its couplings to the wall. For each grouped real lane
+\[
+A\in\{20,21,22\},
+\]
+one needs the stable BdG frequencies and wall couplings
+\[
+\varpi_{A\alpha},\qquad c_{A\alpha},
+\]
+and the localized gauge/mixed data
+\[
+\Omega_{U,Ar},\qquad \Omega_{W,Ar},\qquad R_{Ar},\qquad g_{U,Ar},\qquad g_{W,Ar}.
+\]
+These are the quantities that build the conservative support moments and the outgoing-transfer moments in Sections~\ref{sec:grouped-bundle} and \ref{sec:outgoing-normalization}.
+
+The third input is branch normalization data. At minimum one needs the throat radius scale $a$, the relevant sound speed $c_s$ on the branch, and the source-map factor \(\mhat\). If one wants to keep the outgoing normalization freedom explicit rather than fixing the canonical compact branch immediately, one also keeps the outgoing scalar \(\chi_Q\) from Section~\ref{sec:outgoing-normalization}.
+
+It is convenient to summarize the usable branch data as
+\begin{equation}
+ \mathfrak B
+ :=
+ \bigl\{
+ R_0,\psi_0,A_{M0};
+ \mu_\eta,T_w,T_\Omega,K_\eta;
+ \varpi_{A\alpha},c_{A\alpha};
+ \Omega_{U,Ar},\Omega_{W,Ar},R_{Ar},g_{U,Ar},g_{W,Ar};
+ a,c_s,\mhat
+ \bigr\}.
+ \label{eq:howto-branch-data}
+\end{equation}
+A candidate branch is usable once the elements of \eqref{eq:howto-branch-data} can be extracted consistently and the reduced spectral sums below converge. In practice, these data may come from an analytic ansatz, a numerically located stationary branch, or a controlled branch family parameterized by a small set of radial/axial profile parameters. What matters is not how the branch was found, but whether it returns the reduced quantities unambiguously.
+
+One should also keep one structural point in mind. The old collective variables $(a,L)$ remain useful as initialization data and as a low-dimensional diagnostic, but they are not enough by themselves to run the grouped-$\Ptwo$ normalization test. The first practical use of the PDE begins only when the branch has been lifted far enough to determine the support, gauge, and mixed overlap data that the grouped bundle actually sees.
+
+\subsection{What overlap data must be computed}
+
+Once a candidate branch is fixed, the next step is to compute the radial/axial overlap data that feed the reduced bundle. On the isotropic branch, the angular source map is already fixed by the canonical real STF basis, so the nontrivial information is radial/axial. A convenient minimal set of overlaps is
+\begin{equation}
+ I_{\eta\alpha}=
+ \int \mu_s(s)\,\chi_\eta(s)\phi_\alpha(s)\,\dd s,
+ \qquad
+ I_{\eta u,r}=
+ \int \mu_s(s)\,\chi_\eta(s)u_r(s)\,\dd s,
+ \label{eq:howto-overlap-set-a}
+\end{equation}
+\begin{equation}
+ I_{\eta w,r}=
+ \int \mu_s(s)\,\chi_\eta(s)w_r(s)\,\dd s,
+ \qquad
+ I_{uw,r}=
+ \int \mu_s(s)\,u_r(s)w_r(s)\,\dd s,
+ \label{eq:howto-overlap-set-b}
+\end{equation}
+where $s$ denotes the reduced radial/axial coordinate and $\mu_s(s)$ is whatever one-dimensional measure the chosen reduction inherits. In the densitized convention used in the stage notes, one simply has $\mu_s=1$.
+
+These overlaps enter the reduced couplings through the schematic relations
+\begin{equation}
+ C_\alpha=\lambda_{B,\alpha}I_{\eta\alpha},
+ \qquad
+ G_{U,r}=\lambda_{U,r}I_{\eta u,r},
+ \qquad
+ G_{W,r}=\lambda_{W,r}I_{\eta w,r},
+ \qquad
+ R_r=\lambda_{R,r}I_{uw,r}.
+ \label{eq:howto-reduced-couplings}
+\end{equation}
+From these one builds the first three BdG support moments,
+\begin{equation}
+ B_0=\sum_\alpha \frac{C_\alpha^2}{\varpi_\alpha^2},
+ \qquad
+ B_2=\sum_\alpha \frac{C_\alpha^2}{\varpi_\alpha^4},
+ \qquad
+ B_4=\sum_\alpha \frac{C_\alpha^2}{\varpi_\alpha^6},
+ \label{eq:howto-B-moments}
+\end{equation}
+and the conservative Maxwell/mixed quantities
+\begin{equation}
+ \Delta_r:=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2,
+ \qquad
+ S_r:=\Omega_{U,r}^2+\Omega_{W,r}^2,
+ \label{eq:howto-Delta-S}
+\end{equation}
+\begin{equation}
+ Q_r:=G_{U,r}^2\Omega_{W,r}^2+2G_{U,r}G_{W,r}R_r+G_{W,r}^2\Omega_{U,r}^2,
+ \qquad
+ H_r:=G_{U,r}^2+G_{W,r}^2,
+ \qquad
+ P_r:=\Omega_{U,r}^2G_{W,r}+R_rG_{U,r}.
+ \label{eq:howto-Q-H-P}
+\end{equation}
+The first conservative and outgoing-transfer moments are then
+\begin{equation}
+ Z_0=\sum_r \frac{Q_r}{\Delta_r},
+ \qquad
+ Z_2=\sum_r \frac{Q_rS_r-H_r\Delta_r}{\Delta_r^2},
+ \qquad
+ Z_4=\sum_r \frac{Q_r(S_r^2-\Delta_r)-S_rH_r\Delta_r}{\Delta_r^3},
+ \label{eq:howto-Z-moments}
+\end{equation}
+\begin{equation}
+ N_0=\sum_r \frac{P_r^2}{\Delta_r^2},
+ \qquad
+ N_2=\sum_r \frac{2P_r(P_rS_r-\Delta_r G_{W,r})}{\Delta_r^3},
+ \label{eq:howto-N-moments-a}
+\end{equation}
+\begin{equation}
+ N_4=\sum_r
+ \frac{\Delta_r^2G_{W,r}^2-2\Delta_r P_r^2-4\Delta_r P_rS_rG_{W,r}+3P_r^2S_r^2}{\Delta_r^4}.
+ \label{eq:howto-N-moments-b}
+\end{equation}
+Finally, the conservative denominator moments are
+\begin{equation}
+ D_0=K-B_0-Z_0,
+ \qquad
+ D_2=-\bigl(M+B_2+Z_2\bigr),
+ \qquad
+ D_4=-\bigl(B_4+Z_4\bigr).
+ \label{eq:howto-D-moments}
+\end{equation}
+These are the only low-frequency data needed for the first framework tests. They are also the right diagnostic quantities to compare across different realizations of the same branch family, because they separate the wall baseline, the BdG support dressing, and the conservative mixed/gauge dressing cleanly.
+
+If the candidate branch is not isotropic from the start, one does exactly the same computation lane by lane, keeping the grouped label $A$ throughout:
+\[
+B_n\to B_{A,n},\qquad Z_n\to Z_{A,n},\qquad N_n\to N_{A,n},\qquad D_n\to D_{A,n}.
+\]
+Only after that does one project the grouped bundle into trace and anisotropy pieces.
+
+\subsection{How to test isotropy}
+
+The isotropy test is performed on the grouped real bundle, not on one coefficient family in isolation. For any grouped triple
+\[
+ x=(x_{20},x_{21},x_{22})^T,
+\]
+use the weighted trace/anomaly variables of Section~\ref{sec:grouped-bundle},
+\begin{equation}
+ \bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+ \qquad
+ a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+ \qquad
+ b_x=\frac{x_{21}-x_{22}}{2}.
+ \label{eq:howto-grouped-triple}
+\end{equation}
+The minimal isotropy test is simply
+\begin{equation}
+ a_x=b_x=0.
+ \label{eq:howto-isotropy-test}
+\end{equation}
+In practice one applies \eqref{eq:howto-isotropy-test} first to the effective denominator and outgoing-transfer families,
+\[
+ x=D_{\bullet,0},\ D_{\bullet,2},\ D_{\bullet,4},\ N_{\bullet,0},\ N_{\bullet,2},\ N_{\bullet,4},
+\]
+and then, if one wants sector diagnostics, to the underlying wall, BdG, and Maxwell/mixed families separately. If the candidate branch is genuinely isotropic at the retained order, then all three grouped lanes collapse to common values and the source-map angular factor is fixed by the canonical STF basis.
+
+The grouped projection also tells the user how to diagnose the first controlled failure of isotropy. If the branch is only weakly anisotropic and the deformation is a pure axisymmetric quadrupole perturbation of the isotropic carrier, then the grouped defects do not fill the whole $(a,b)$ plane. They are confined to the line
+\begin{equation}
+ b_x=3a_x.
+ \label{eq:howto-axisymmetric-line}
+\end{equation}
+So \eqref{eq:howto-axisymmetric-line} is the first practical symmetry classifier around the isotropic branch. If a computed branch violates \eqref{eq:howto-axisymmetric-line} already at first order, the anisotropy cannot be interpreted as a pure weak axisymmetric quadrupole departure. One must then look for non-axisymmetric content, higher angular structure, or a reduced kernel outside the simple grouped-lane closure.
+
+In other words, the isotropy test should be read in two stages. First ask whether the grouped anomalies vanish. If they do, proceed to the isotropic normalization test. If they do not, ask whether they lie on the weak-axisymmetric line \eqref{eq:howto-axisymmetric-line}. Only after that is it sensible to interpret the first anisotropic normalization slope.
+
+\subsection{How to test normalization}
+
+Once the branch has passed the isotropy gate, the first quantities to compute are the normalized conservative response moments and the outgoing prefactor moments,
+\begin{equation}
+ u_2=-\frac{D_2}{D_0},
+ \qquad
+ u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+ \qquad
+ P_0=\frac{N_0}{D_0},
+ \label{eq:howto-u2u4P0}
+\end{equation}
+with optional higher prefactor data
+\begin{equation}
+ P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+ \qquad
+ P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+ \label{eq:howto-P2P4}
+\end{equation}
+The main isotropic theorem test is then the normalization condition
+\begin{equation}
+ \boxed{\mhat^{2}P_0=\frac{54Gc_s^5}{5a^5c^5}}
+ \label{eq:howto-main-normalization}
+\end{equation}
+on the canonical compact outgoing branch. If one wants to keep the outgoing normalization factor explicit, the more general form is
+\begin{equation}
+ \boxed{\mhat^{2}\chi_Q P_0=\frac{54Gc_s^5}{5a^5c^5}.}
+ \label{eq:howto-main-normalization-chi}
+\end{equation}
+A convenient dimensionless diagnostic is therefore
+\begin{equation}
+ \mathcal N_Q:=
+ \frac{\mhat^{2}P_0}{54Gc_s^5/(5a^5c^5)}
+ \qquad
+ (\text{or }\chi_Q\mathcal N_Q\text{ if }\chi_Q\text{ is kept explicit}),
+ \label{eq:howto-NQ-diagnostic}
+\end{equation}
+so that isotropic normalization succeeds precisely when
+\begin{equation}
+ \mathcal N_Q=1
+ \qquad
+ (\text{canonical outgoing branch}).
+ \label{eq:howto-NQ-success}
+\end{equation}
+This is the central operational test of the paper.
+
+There is also an optional stronger check. If the candidate branch is supposed to realize the constant-prefactor isotropic carrier, then one also imposes
+\begin{equation}
+ P_2=0,
+ \qquad
+ P_4=0.
+ \label{eq:howto-constant-prefactor}
+\end{equation}
+Equations~\eqref{eq:howto-constant-prefactor} are not required to define the leading odd bridge, but they are the right next test if one wants the especially rigid constant-prefactor realization singled out by the later normalization notes.
+
+If the branch is weakly anisotropic rather than exactly isotropic, the next quantity to compute is not a new three-lane coefficient search. It is the single first slope
+\begin{equation}
+ \XiOne=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0},
+ \label{eq:howto-Xi1}
+\end{equation}
+which transports the isotropic prefactor into the grouped lanes. On the weak-axisymmetric branch one then has
+\begin{equation}
+ P_A=P_0\bigl(1+\epsilon\lambda_A\XiOne\bigr)+\cO(\epsilon^2),
+ \qquad
+ \lambda_{20}=1,
+ \quad
+ \lambda_{21}=\frac12,
+ \quad
+ \lambda_{22}=-1.
+ \label{eq:howto-PA-weakaxis}
+\end{equation}
+So the first anisotropic normalization test is controlled by one scalar, not by three unrelated grouped-lane coefficients.
+
+\subsection{What counts as framework success versus realization gap}
+
+The most useful way to evaluate a candidate branch is to separate four logically different outcomes.
+
+\begin{enumerate}
+    \item \emph{Well-posed reduced data.} The branch must return finite overlap integrals and convergent spectral sums, and the reduced static denominator must remain stable:
+    \begin{equation}
+     D_0>0.
+     \label{eq:howto-stability}
+    \end{equation}
+    If this fails, the problem is not yet one of PN normalization. The reduced branch itself is not usable.
+
+    \item \emph{Symmetry classification.} The branch either passes the isotropy test \eqref{eq:howto-isotropy-test}, or it fails isotropy in a controlled way that can still be classified, for example by the weak-axisymmetric line \eqref{eq:howto-axisymmetric-line}. If neither happens, the simple grouped-$\Ptwo$ closure used in the framework paper is not the right reduced language for that branch.
+
+    \item \emph{Normalization.} On an isotropic branch, success at the main theorem gate means satisfying \eqref{eq:howto-main-normalization} or \eqref{eq:howto-main-normalization-chi}. On a weakly anisotropic branch, the first additional datum is \eqref{eq:howto-Xi1}.
+
+    \item \emph{Interpretation of the remaining miss.} If the grouped bundle is well defined and the normalization miss is reduced to explicit scalars such as $\mathcal N_Q-1$ and $\XiOne$, then the framework has already done its job. What remains is branch realization, not another algebraic compression problem.
+\end{enumerate}
+
+This distinction is important enough to state plainly. A \emph{framework success} means that the PDE has reduced the candidate branch to a transparent finite bundle of observables and that any normalization miss can be expressed by explicit scalar diagnostics. A \emph{realization gap} means that the actual branch does not land on the desired target even though the reduction is internally consistent. A \emph{closure failure} is different again: it means the candidate branch does not satisfy the assumptions under which the grouped real $\Ptwo$ bundle and its outgoing bridge were derived.
+
+In practice the workflow is therefore short and rigid:
+\begin{enumerate}
+    \item fix a candidate stationary branch and linearize it;
+    \item compute the overlap moments \eqref{eq:howto-overlap-set-a}--\eqref{eq:howto-D-moments};
+    \item project the grouped bundle and test isotropy;
+    \item evaluate the isotropic normalization ratio \eqref{eq:howto-main-normalization};
+    \item if needed, compute the first weak-axisymmetric slope \eqref{eq:howto-Xi1}.
+\end{enumerate}
+That is the operational content of the PDE framework. The derivation companion explains why these formulas are correct; the present paper explains how to use them.
+
+% =============================================================================
+\section{Discussion and open realization gap}
+\label{sec:discussion-gap}
+% =============================================================================
+
+The present paper is a framework paper rather than a completed theorem of the full nonlinear moving-throat branch. That distinction matters. Sections~\ref{sec:status-parent}--\ref{sec:how-to-use} fix the exact parent theory, the moving-surface lift, the reduced wall--support--gauge bookkeeping, and the operational observables that the actual branch must return. But they do not, by themselves, prove that the completed moving-throat PDE selects the canonical passive/outgoing branch. What they do provide is something nearly as important for the next stage of the program: a sharp finite language in which the remaining success or failure must be stated.
+
+At the isotropic level the entire higher-order bridge has been compressed to the scalar ratio
+\[
+P_0=\frac{N_0}{D_0},
+\]
+or equivalently to the normalized defect
+\[
+N_Q:=\frac{P_0}{P_0^{\mathrm{target}}}
+\]
+of Section~\ref{sec:outgoing-normalization}. At first weak-axisymmetric order the deformation of that isotropic finish line is measured by the single slope \(\XiOne\) defined in \eqref{eq:weakax-Xi1-def}. The open realization gap is therefore no longer the vague statement that ``the full PDE remains unsolved.'' It is the much narrower statement that the actual branch still has to deliver the finite packet of data that determines \(P_0\) and, if isotropy is weakly broken, \(\XiOne\).
+
+\subsection{What the framework has fixed}
+
+The first thing this paper fixes is the claim-status hierarchy itself. The exact parent GNLS plus localized-Maxwell action, the notation firewall, and the mixed-sector observables \(E_w\) and \(C_a\) are not optional conventions; they are the \status{Exact} part of the program. Likewise, the moving-throat level-set/shape-field lift and the linearized wall/BdG/Maxwell system make explicit what the old finite-dimensional \((a,L)\) closure could only represent in compressed form. In particular, the grouped real \(\Ptwo\) sector is no longer a symbolic PN residual ledger. It is the literal \(l=2\) wall/support bundle of the moving throat.
+
+The second thing the paper fixes is the reduced observable map. Once a candidate branch is specified, the relevant data are no longer an open-ended list of coefficients but a finite set of overlap moments and reduced spectral quantities. Operationally, the framework now reads as
+\[
+\text{branch data}
+\longrightarrow
+(B_n,Z_n,N_n)
+\longrightarrow
+(D_0,D_2,D_4)
+\longrightarrow
+(P_0,\XiOne).
+\]
+That map is the main content of the framework. It tells the reader what to compute, what to compare across branches, and which parts of the reduced bundle carry the universal odd quadrupole information.
+
+The third fixed element is the symmetry bookkeeping around the isotropic carrier. On the natural isotropic branch the grouped real lanes collapse to one common denominator and one common outgoing-transfer bundle, so the first universal target is the normalization law
+\begin{equation}
+\mhat^{2}P_0=\frac{54Gc_s^5}{5a^5c^5}
+\label{eq:discussion-canonical-normalization}
+\end{equation}
+on the canonical compact outgoing branch. Around that isotropic point, the first admissible weak axisymmetric deformation does not open a generic three-lane anomaly. It is forced onto the line
+\[
+b_{P_0}=3a_{P_0},
+\]
+and is therefore governed by the one scalar \(\XiOne\). So even the first anisotropic escape from the isotropic finish line is already highly constrained.
+
+\subsection{What remains genuinely branch-dependent}
+
+What remains branch-dependent is not the form of the reduced map but the data that feed it. The unresolved objects are the actual stationary throat profile, the wall constitutive functions on that profile, the stable support spectrum, the wall--support and wall--gauge overlap integrals, and the outgoing DtN data of the selected passive/outgoing branch. In the notation of Section~\ref{sec:how-to-use}, the open problem is therefore the realization of the branch data set \(\mathfrak B\), not the derivation of another abstract reduction formula.
+
+At the isotropic level this branch dependence can be stated even more sharply. The present paper shows that the universal odd bridge depends only on the static outgoing prefactor \(P_0\), or equivalently on \(N_Q\). Later reduced continuation of the same program narrows that statement further: on the natural isotropic grouped-\(\Ptwo\) carrier, the conservative branch can be geometry-clean, the explicit support/source side can become automatic, and the remaining reduced obstruction collapses to the single normalization defect \(N_Q-1\), or equivalently to the outgoing-normalization factor \(\chi_Q-1\) when the natural point-particle source map is used. In that sharper language, what remains genuinely PDE-facing is whether the actual moving-throat solution realizes the canonical outgoing branch and, if not, which isotropic DtN deformation data move it away from that branch.
+
+At first weak-axisymmetric order the same lesson reappears. The framework does not leave an arbitrary anisotropic packet to be solved. It leaves one branch-dependent slope,
+\[
+\XiOne=\frac{P_1}{P_0},
+\]
+which measures the mismatch between the static outgoing-transfer loading and the static conservative denominator. So the weak-axisymmetric realization gap is not ``all grouped anisotropies.'' It is whether the actual branch produces an admissible transported prefactor slope and whether that slope stays compatible with the intended physical branch class.
+
+\subsection{Why the main risk is no longer algebraic compression}
+
+Methodologically, the most important change produced by the moving-throat program is that the live bottleneck has shifted away from algebra. The earlier program had to keep reopening new coefficient ledgers because the correct microscopic carrier had not yet been isolated. That is no longer the situation here. The grouped real \(\Ptwo\) bundle, the isotropic prefactor \(P_0\), and the weak-axisymmetric slope \(\XiOne\) already give a closed reduced packet for the part of the theory that matters first.
+
+This is clearest on the isotropic branch. Once the conservative grouped-\(\Ptwo\)/geometry carrier is organized in the one-pole contact-plus-pole language, the reduced normalization problem becomes one-dimensional. In the later reduced continuation, the canonical compact outgoing DtN branch even fixes
+\[
+\chi_Q=1,
+\]
+so the reduced nonspinning point-particle 2.5PN theorem is closed on that canonical branch and what remains genuinely open is branch realization rather than another missing universal coefficient. Whether one accepts that later continuation as already sufficient or treats it as a guide for the next derivation stage, the strategic lesson is the same: a future failure is now much more likely to come from the actual branch missing the intended isotropic or weak-axisymmetric realization conditions than from an undiscovered algebraic slot.
+
+That shift is scientifically healthy. It makes the program falsifiable in a narrow way. A candidate branch can now fail for definite reasons: it may not realize grouped isotropy, it may land on the wrong static prefactor, it may require a noncanonical outgoing normalization, or it may generate a weak-axisymmetric slope \(\XiOne\) that is incompatible with the intended physical branch. Those are concrete failure modes. They are preferable to the older situation in which failure could always be postponed to another round of symbolic bookkeeping.
+
+\subsection{Relation to the companion derivation paper}
+
+The companion derivation paper should be read as the proof archive for the claims used here. Its job is not to change the framework paper's story, but to justify each load-bearing step in the order the framework paper uses it: the geometry lift, the breathing reduction back to \((a,L)\), the BdG Schur complement, the localized-Maxwell/mixed self-energy, the grouped projector calculus, the isotropic normalization bridge, and the weak-axisymmetric transport laws. Put differently, the present paper tells the reader what the PDE means and how to use it; the companion should show why the reduction formulas are correct.
+
+That division of labor is also the right place to house the symbolic verification archive. The SymPy and Mathematica scripts are valuable because they check the projector algebra, the low-frequency expansions, the Schur complements, the grouped inverse maps, and the normalization identities mechanically. But those checks should support the paper rather than overwhelm it. The main text should remain readable as a framework document, while the companion and script bundle provide the referee-facing proof path.
+
+The same scope discipline applies to downstream program packets. Later same-charge, rigid-mouth, selected-support, and relaxed/open-system continuations may eventually be central to the broader research program, but they are downstream of the framework developed here. The present paper should end one layer earlier: with the moving-throat PDE, the grouped real \(\Ptwo\) carrier, the isotropic normalization test, and the first weak-axisymmetric observable. Only after those pieces are stable on an actual realized branch does it make sense to ask the more specialized downstream questions.
+
+For that reason, the right immediate continuation after this paper is not another round of formal compression. It is branch construction and branch testing. One should locate or compute candidate stationary moving-throat branches, extract the overlap data of Section~\ref{sec:how-to-use}, and test, in order, grouped isotropy, the isotropic normalization ratio, and the weak-axisymmetric slope \(\XiOne\). If those tests fail, the framework fails for a sharply identifiable reason. If they succeed, the later program has a real microscopic base rather than a purely algebraic one.
+
+\appendix
+
+% =============================================================================
+\section{Notation and claim-status dictionary}
+\label{app:notation-status}
+% =============================================================================
+
+This appendix is a lookup guide for the notation used in the framework paper. Its role is not to add new derivations. Its role is to keep four layers visibly separate: the exact $(4+1)$ parent theory, the moving-throat geometry lift, the grouped real $\Ptwo$ reduction, and the outgoing-normalization observables. The appendix also records the claim-status tags used throughout the paper so that exact statements, controlled reductions, and open realization questions are not silently mixed.
+
+\subsection{Claim-status tags}
+
+The paper uses the same status firewall throughout. When a statement could be read under more than one tag, the weaker tag should be understood.
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}L{0.26\linewidth}L{0.67\linewidth}@{}}
+\toprule
+Tag & Meaning \\
+\midrule
+\textsc{Exact} & Follows directly from the declared action, exact definitions, or exact algebra. \\
+\textsc{Exact Within Closure} & Exact once a specific reduced hierarchy, branch family, or response class has been declared. \\
+\textsc{Reduced / Controlled Reduction} & Requires an explicit ansatz, projection rule, low-frequency reduction, small-body limit, or branch restriction. \\
+\textsc{Effective Closure} & A physically motivated closure choice that is not yet a unique theorem of the completed moving-throat PDE. \\
+\textsc{Numerically Located} & Defined exactly, but presently realized at values obtained numerically rather than in closed form. \\
+\textsc{Open} & Still depends on the realized moving-throat branch and is not fixed by the present framework alone. \\
+\bottomrule
+\end{tabular}
+\caption{Claim-status dictionary used throughout the paper.}
+\label{tab:appendix-claim-status}
+\end{table}
+
+Two practical rules should be kept in mind. First, the parent matter and gauge equations are \textsc{Exact}. Second, the final passive/outgoing quadrupole normalization remains \textsc{Open} until the actual moving-throat branch is supplied, even though the algebraic normalization target is already fixed.
+
+\subsection{Structural notation firewall}
+
+Several notation separations are structural rather than cosmetic.
+\begin{enumerate}
+    \item Electric charge is carried by
+    \[
+    \eta_Q,\qquad q_\star,\qquad q_{\eff},
+    \]
+    not by circulation.
+    \item The historical gravity-side scalar coefficient once written as bare $q=1$ is the mass-dressing coefficient
+    \[
+    \kappa_\rho=1,
+    \]
+    not electric charge.
+    \item Grouped labels $20/21/22$ denote grouped real $\Ptwo$ lanes, not spacetime tensor indices.
+    \item The mixed channels
+    \[
+    A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a,
+    \]
+    are suppressed only in the strict far-field brane reduction. They remain part of the microscopic ontology.
+    \item The localization profile $Z(w)$ belongs to the action and bulk dynamics, whereas the projection kernel $W(w)$ defines what the brane observer measures.
+    \item The subscripts $0,2,4$ on coefficients such as $D_0$, $u_2$, and $P_4$ label powers of $\omega$ in a low-frequency expansion; they are not PN orders.
+\end{enumerate}
+
+These firewall rules are the fastest way to prevent category mistakes when moving between the exact parent theory, the reduced grouped-lane system, and the PN-facing observables.
+
+\subsection{Coordinates, indices, operators, and exact parent fields}
+
+We work on a $(4+1)$-dimensional spacetime with coordinates
+\[
+ x^M=(t,x,y,z,w),
+ \qquad
+ M,N\in\{0,1,2,3,4\}.
+\]
+Bulk spatial coordinates are
+\[
+ \mathbf X=(x,y,z,w)\in\mathbb R^4,
+\]
+while brane spatial coordinates are
+\[
+ \mathbf x=(x,y,z)\in\mathbb R^3.
+\]
+The index sets used most often are
+\[
+ \mu,\nu\in\{0,1,2,3\},
+ \qquad
+ i,j\in\{x,y,z,w\},
+ \qquad
+ a,b\in\{x,y,z\}.
+\]
+The bulk metric is
+\[
+ \eta_{MN}=\diag(-1,+1,+1,+1,+1),
+\]
+and the bulk d'Alembertian is
+\[
+ \Box_5=-\partial_t^2+\nabla_3^2+\partial_w^2.
+\]
+
+The exact parent fields are:
+\begin{align*}
+&\text{matter / order parameter:} && \psi(\mathbf X,t),\qquad \rho=|\psi|^2,\\
+&\text{gauge field:} && A_M(x),\qquad F_{MN}=\partial_MA_N-\partial_NA_M,\\
+&\text{geometry variable:} && \Sigma(\mathbf X,t).
+\end{align*}
+The gauge-covariant derivatives are
+\[
+D_t\psi=\partial_t\psi+\frac{\ii q_\star}{\hbar}A_0\psi,
+\qquad
+D_i\psi=\partial_i\psi-\frac{\ii q_\star}{\hbar}A_i\psi.
+\]
+The corrected charge bookkeeping is
+\[
+\eta_Q=\pm1,
+\qquad
+q_\star=\eta_Q e_\star,
+\qquad
+q_{\eff}=\frac{q_\star}{\sqrt{Z_{\mathrm{int}}}},
+\qquad
+Z_{\mathrm{int}}=\int_{-\infty}^{+\infty} Z(w)\,\dd w.
+\]
+The mixed-sector gauge invariants that later enter the outgoing bridge are
+\[
+E_w=F_{w0}=-\partial_tA_w-\partial_wA_0,
+\qquad
+C_a=F_{aw}=\partial_aA_w-\partial_wA_a.
+\]
+
+\subsection{Geometry lift and harmonic variables}
+
+The moving throat is represented by the hybrid level-set / shape-field lift
+\[
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\qquad
+r=\sqrt{x^2+y^2+z^2},
+\qquad
+\Omega=\mathbf x/r\in S^2.
+\]
+The reference stationary throat is written as
+\[
+\Sigma_0(\mathbf X)=r-R_0(w)=0,
+\]
+with mouth radius $a_0=R_0(0)$ and finite depth $0\leq w\leq L_0$.
+
+The geometry perturbation is
+\[
+R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t).
+\]
+Expanding in real spherical harmonics,
+\begin{equation}
+\eta(\Omega,w,t)
+=
+q_{00}(w,t)Y_{00}(\Omega)
++
+\sum_{m\in P_2(\mathrm{real})} q_{2m}(w,t)Y_{2m}^{\mathrm{real}}(\Omega)
++
+\eta_{\ge 3}(\Omega,w,t),
+\label{eq:appendix-eta-expansion}
+\end{equation}
+where
+\[
+P_2(\mathrm{real})=\{20,21c,21s,22c,22s\}.
+\]
+With the normalized monopole harmonic
+\[
+Y_{00}=\frac{1}{2\sqrt\pi},
+\]
+the physical mouth-average radius shift $\delta a(t)$ satisfies
+\begin{equation}
+q_{00}(0,t)=2\sqrt\pi\,\delta a(t).
+\label{eq:appendix-q00-deltaa}
+\end{equation}
+A convenient axisymmetric split is
+\[
+\eta_0(w,t)=\alpha_a(w)\,\delta a(t)+\alpha_L(w)\,\delta L(t)+g(w,t),
+\]
+where $\delta a$ and $\delta L$ are the collective radius and depth variables, and $g(w,t)$ is the residual axisymmetric geometry lane.
+
+Thus the geometry sector separates into:
+\begin{enumerate}
+    \item the collective $l=0$ throat motion $(\delta a,\delta L)$,
+    \item the residual $l=0$ geometry lane $g$,
+    \item the grouped real $l=2$ bundle $q_{2m}$,
+    \item the higher multipoles $l\geq 3$.
+\end{enumerate}
+
+\subsection{Grouped real \texorpdfstring{$\Ptwo$}{P2} conventions}
+
+The grouped real $\Ptwo$ bundle uses three grouped lanes,
+\[
+A\in\{20,21,22\},
+\]
+where $21$ stands for the pair $(21c,21s)$ and $22$ stands for the pair $(22c,22s)$. Because the latter two are twofold real pairs, the natural grouped metric is
+\begin{equation}
+G_{\mathrm{grp}}=\diag(1,2,2).
+\label{eq:appendix-grouped-metric}
+\end{equation}
+For any grouped triple $x=(x_{20},x_{21},x_{22})^T$, the weighted trace/anomaly variables are
+\begin{equation}
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+ a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+ b_x=\frac{x_{21}-x_{22}}{2}.
+\label{eq:appendix-grouped-trace-anomaly}
+\end{equation}
+The isotropy gate is simply
+\begin{equation}
+a_x=b_x=0.
+\label{eq:appendix-isotropy-gate}
+\end{equation}
+
+Around an isotropic branch, the first weak-axisymmetric quadrupole splitting has the fixed grouped signature
+\begin{equation}
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1.
+\label{eq:appendix-weakax-signature}
+\end{equation}
+Hence any first-order grouped coefficient on a pure axisymmetric quadrupole branch obeys
+\begin{equation}
+b_x=3a_x.
+\label{eq:appendix-b-equals-3a}
+\end{equation}
+Equation~\eqref{eq:appendix-b-equals-3a} is the first symmetry diagnostic for weak anisotropy: if the grouped defects do not lie on this line, the anisotropy cannot come from a pure axisymmetric $l=2$ perturbation alone.
+
+\subsection{Reduced response, outgoing bridge, and normalization symbols}
+
+For each grouped lane $A$, the reduced conservative operator is expanded as
+\begin{equation}
+D_A^{\mathrm{cons}}(\omega)=D_{A,0}+D_{A,2}\omega^2+D_{A,4}\omega^4+\cO(\omega^6).
+\label{eq:appendix-DA-expansion}
+\end{equation}
+Its microscopic ingredients are organized into three low-frequency coefficient families:
+\begin{align}
+B_{A,n} &\quad \text{stable BdG support moments},\nonumber\\
+Z_{A,n} &\quad \text{conservative localized-Maxwell / mixed moments},\nonumber\\
+N_{A,n} &\quad \text{outgoing-transfer moments}.\label{eq:appendix-BZN-families}
+\end{align}
+The conservative denominator coefficients are then
+\begin{equation}
+D_{A,0}=K_A-B_{A,0}-Z_{A,0},
+\qquad
+D_{A,2}=-\bigl(M_A+B_{A,2}+Z_{A,2}\bigr),
+\qquad
+D_{A,4}=-\bigl(B_{A,4}+Z_{A,4}\bigr).
+\label{eq:appendix-D-coefficients}
+\end{equation}
+
+The normalized conservative response in lane $A$ is written as
+\begin{equation}
+Y_A(\omega)=\frac{D_{A,0}}{D_A^{\mathrm{cons}}(\omega)}
+=1+u_2^{(A)}\omega^2+u_4^{(A)}\omega^4+\cO(\omega^6),
+\label{eq:appendix-YA-expansion}
+\end{equation}
+with
+\begin{equation}
+u_2^{(A)}=-\frac{D_{A,2}}{D_{A,0}},
+\qquad
+u_4^{(A)}=\frac{D_{A,2}^2-D_{A,0}D_{A,4}}{D_{A,0}^2}.
+\label{eq:appendix-u2-u4-def}
+\end{equation}
+On the isotropic carrier branch these collapse to common coefficients $u_2$ and $u_4$.
+
+The outgoing prefactor moments are defined from the static ratio and its higher even corrections. On the isotropic branch,
+\begin{equation}
+P_0=\frac{N_0}{D_0},
+\qquad
+P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+\qquad
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\label{eq:appendix-P-moments}
+\end{equation}
+When weak anisotropy is turned on, the common isotropic value is often denoted $\bar P_0$ to distinguish it from the lane values $P_A$.
+
+The source-map factor entering the invariant normalization test is denoted by $\mhat$, and the reader-facing isotropic target is
+\begin{equation}
+\mhat^{2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+\label{eq:appendix-normalization-target}
+\end{equation}
+The constant-prefactor branch is the special case
+\begin{equation}
+P_2=0,
+\qquad
+P_4=0,
+\label{eq:appendix-constant-prefactor}
+\end{equation}
+which leaves the first odd outgoing coefficient controlled entirely by the static prefactor $P_0$.
+
+The first weak-axisymmetric prefactor diagnostic is the dimensionless slope
+\begin{equation}
+\XiOne:=\frac{P_1}{\bar P_0}
+=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\label{eq:appendix-Xi1-def}
+\end{equation}
+Equivalently, the weak-axisymmetric prefactor bundle is written as
+\begin{equation}
+P_A=\bar P_0\bigl(1+\epsilon\lambda_A\XiOne\bigr)+\cO(\epsilon^2),
+\label{eq:appendix-PA-weakax}
+\end{equation}
+with $\lambda_A$ given by \eqref{eq:appendix-weakax-signature}. Thus the first departures from the isotropic carrier branch are organized by one number, $\XiOne$, rather than by an arbitrary new family of grouped coefficients.
+
+\subsection{How to read the symbols operationally}
+
+For practical use, the notation in this paper can be read in three layers.
+\begin{enumerate}
+    \item \emph{Exact parent layer:} $x^M$, $\psi$, $A_M$, $F_{MN}$, $\Sigma$, $Z(w)$, $W(w)$, $\eta_Q$, $q_\star$, and $q_{\eff}$.
+    \item \emph{Reduced moving-throat layer:} $R(\Omega,w,t)$, $\eta$, $\delta a$, $\delta L$, $g$, the grouped real $q_{2m}$ bundle, and the coefficient families $B_{A,n}$, $Z_{A,n}$, $N_{A,n}$, $D_{A,n}$.
+    \item \emph{PN-facing observable layer:} $u_2$, $u_4$, $P_0$, $P_2$, $P_4$, $\mhat$, and $\XiOne$.
+\end{enumerate}
+The logical flow of the paper is exactly the same: the exact parent theory feeds the reduced moving-throat system, and the reduced moving-throat system feeds the observable extraction problem. This appendix is meant to make that translation readable at a glance.
+
+% =============================================================================
+\section{Exact grouped-projector formulas}
+\label{app:grouped-projectors}
+% =============================================================================
+
+This appendix collects the exact weighted-projector identities for the grouped real $\Ptwo$ bundle. Its purpose is purely algebraic: it records the fixed conversion between lane-by-lane data
+\[
+ x=(x_{20},x_{21},x_{22})^T
+\]
+and the grouped trace/anomaly variables used throughout the main text. Once the grouped basis is fixed, the formulas below are not additional closure assumptions. They are exact bookkeeping identities. In particular, they provide the cleanest reference sheet for moving between microscopic coefficient triples, isotropic bundle data, and first-order weak-axisymmetric defects.
+
+\subsection{Grouped metric and orthogonal basis}
+
+The grouped real $\Ptwo$ bundle is not equipped with the ordinary Euclidean metric. Because the $21$ and $22$ lanes each stand for twofold real pairs, the natural grouped metric is
+\begin{equation}
+ G_{\mathrm{grp}}=\diag(1,2,2).
+ \label{eq:app-grouped-metric}
+\end{equation}
+A convenient $G_{\mathrm{grp}}$-orthogonal basis is
+\begin{equation}
+ e_{\mathrm{bar}}=(1,1,1),
+ \qquad
+ e_a=(4,-1,-1),
+ \qquad
+ e_b=(0,1,-1).
+ \label{eq:app-grouped-basis}
+\end{equation}
+These vectors satisfy
+\begin{equation}
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_a=0,
+ \qquad
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_b=0,
+ \qquad
+ e_a^T G_{\mathrm{grp}} e_b=0,
+ \label{eq:app-grouped-orthogonality}
+\end{equation}
+with norms
+\begin{equation}
+ e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_{\mathrm{bar}}=5,
+ \qquad
+ e_a^T G_{\mathrm{grp}} e_a=20,
+ \qquad
+ e_b^T G_{\mathrm{grp}} e_b=4.
+ \label{eq:app-grouped-norms}
+\end{equation}
+Thus every grouped triple admits a unique decomposition along one isotropic direction and two anisotropy directions.
+
+\subsection{Exact projector matrices}
+
+For any nonzero grouped vector $v$, the $G_{\mathrm{grp}}$-orthogonal rank-one projector onto $\Span\{v\}$ is
+\begin{equation}
+ P[v]=\frac{v\,(v^T G_{\mathrm{grp}})}{v^T G_{\mathrm{grp}} v}.
+ \label{eq:app-general-projector}
+\end{equation}
+Applying \eqref{eq:app-general-projector} to the basis vectors \eqref{eq:app-grouped-basis} gives the exact grouped projectors
+\begin{equation}
+P_{\mathrm{bar}}=\frac15
+\begin{pmatrix}
+1&2&2\\
+1&2&2\\
+1&2&2
+\end{pmatrix},
+\qquad
+P_a=\frac1{20}
+\begin{pmatrix}
+16&-8&-8\\
+-4&2&2\\
+-4&2&2
+\end{pmatrix},
+\qquad
+P_b=\frac14
+\begin{pmatrix}
+0&0&0\\
+0&2&-2\\
+0&-2&2
+\end{pmatrix}.
+\label{eq:app-projector-matrices}
+\end{equation}
+They obey the exact algebra
+\begin{equation}
+ P_{\mathrm{bar}}+P_a+P_b=I_3,
+ \qquad
+ P_iP_j=\delta_{ij}P_i,
+ \qquad
+ G_{\mathrm{grp}}P_i=P_i^T G_{\mathrm{grp}},
+ \label{eq:app-projector-algebra}
+\end{equation}
+for $i,j\in\{\mathrm{bar},a,b\}$. The last identity states that the projectors are self-adjoint with respect to the grouped metric rather than with respect to the ordinary Euclidean inner product.
+
+\begin{proposition}[Exact grouped projector decomposition]
+For any grouped triple $x\in\bbR^3$,
+\begin{equation}
+ x=P_{\mathrm{bar}}x+P_ax+P_bx.
+ \label{eq:app-projector-decomposition}
+\end{equation}
+Moreover, $P_{\mathrm{bar}}x$ is the isotropic part of $x$, while $P_ax$ and $P_bx$ are the two independent anisotropy components.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:app-projector-algebra} implies that the three projectors are mutually orthogonal idempotents whose sum is the identity. The geometric interpretation follows from the fact that the image of $P_{\mathrm{bar}}$ is $\Span\{e_{\mathrm{bar}}\}$, while the images of $P_a$ and $P_b$ are the two $G_{\mathrm{grp}}$-orthogonal anisotropy directions.
+\end{proof}
+
+\subsection{Trace/anomaly coordinates and inverse formulas}
+
+Define the grouped trace/anomaly coordinates of $x$ by
+\begin{equation}
+ \bar x:=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+ \qquad
+ a_x:=\frac{2x_{20}-x_{21}-x_{22}}{10},
+ \qquad
+ b_x:=\frac{x_{21}-x_{22}}{2}.
+ \label{eq:app-trace-anomaly-def}
+\end{equation}
+Equivalently, these are the normalized $G_{\mathrm{grp}}$-inner products
+\begin{equation}
+ \bar x=\frac{e_{\mathrm{bar}}^T G_{\mathrm{grp}} x}{e_{\mathrm{bar}}^T G_{\mathrm{grp}} e_{\mathrm{bar}}},
+ \qquad
+ a_x=\frac{e_a^T G_{\mathrm{grp}} x}{e_a^T G_{\mathrm{grp}} e_a},
+ \qquad
+ b_x=\frac{e_b^T G_{\mathrm{grp}} x}{e_b^T G_{\mathrm{grp}} e_b}.
+ \label{eq:app-trace-anomaly-inner-product}
+\end{equation}
+The exact inverse map is
+\begin{equation}
+ x_{20}=\bar x+4a_x,
+ \qquad
+ x_{21}=\bar x-a_x+b_x,
+ \qquad
+ x_{22}=\bar x-a_x-b_x.
+ \label{eq:app-trace-anomaly-inverse}
+\end{equation}
+Equivalently,
+\begin{equation}
+ x=\bar x\,e_{\mathrm{bar}}+a_x\,e_a+b_x\,e_b,
+ \label{eq:app-grouped-basis-expansion}
+\end{equation}
+and the projectors act as
+\begin{equation}
+ P_{\mathrm{bar}}x=\bar x\,e_{\mathrm{bar}},
+ \qquad
+ P_ax=a_x\,e_a,
+ \qquad
+ P_bx=b_x\,e_b.
+ \label{eq:app-projector-action}
+\end{equation}
+Thus the grouped isotropy criterion is simply
+\begin{equation}
+ x_{20}=x_{21}=x_{22}
+ \iff
+ a_x=b_x=0
+ \iff
+ P_ax=P_bx=0.
+ \label{eq:app-grouped-isotropy}
+\end{equation}
+
+\subsection{Quadratic invariants and anisotropy norms}
+
+The full grouped $G_{\mathrm{grp}}$-bilinear form decomposes exactly as
+\begin{equation}
+ x^T G_{\mathrm{grp}} y = 5\bar x\bar y + 20 a_x a_y + 4 b_x b_y.
+ \label{eq:app-grouped-bilinear-form}
+\end{equation}
+This makes it natural to define the grouped deviation vector
+\begin{equation}
+ \delta x:=x-\bar x\,(1,1,1)^T = a_x e_a+b_x e_b
+ \label{eq:app-grouped-deviation}
+\end{equation}
+and the reduced anisotropy bilinear form
+\begin{equation}
+ \mathcal I[x,y]
+ :=
+ \frac15\,\delta x^T G_{\mathrm{grp}}\,\delta y
+ =
+ 4a_x a_y+\frac45 b_x b_y.
+ \label{eq:app-anisotropy-bilinear-form}
+\end{equation}
+For one bundle this gives the anisotropy norm
+\begin{equation}
+ \mathcal A_x^2:=\mathcal I[x,x]=4a_x^2+\frac45 b_x^2.
+ \label{eq:app-anisotropy-norm}
+\end{equation}
+Equations~\eqref{eq:app-anisotropy-bilinear-form}--\eqref{eq:app-anisotropy-norm} are often the most convenient scalar diagnostics of departure from isotropy because they do not depend on the sign convention of the individual lane labels.
+
+\subsection{Application to grouped coefficient families}
+
+The projector calculus applies verbatim to any grouped coefficient family
+\[
+ X_n=(X_{20,n},X_{21,n},X_{22,n})^T,
+\]
+including the conservative bundle moments $D_{A,n}$, the outgoing-transfer moments $N_{A,n}$, and the normalized response or prefactor triples built from them. One therefore defines
+\begin{equation}
+ \bar X_n:=\frac{X_{20,n}+2X_{21,n}+2X_{22,n}}{5},
+ \qquad
+ a_{X,n}:=\frac{2X_{20,n}-X_{21,n}-X_{22,n}}{10},
+ \qquad
+ b_{X,n}:=\frac{X_{21,n}-X_{22,n}}{2}.
+ \label{eq:app-coefficient-family-trace-anomaly}
+\end{equation}
+For the conservative denominator coefficients this gives, for example,
+\begin{equation}
+ \bar D_0=\bar K-\bar B_0-\bar Z_0,
+ \qquad
+ a_{D,0}=a_K-a_{B,0}-a_{Z,0},
+ \qquad
+ b_{D,0}=b_K-b_{B,0}-b_{Z,0},
+ \label{eq:app-D0-trace-anomaly}
+\end{equation}
+\begin{equation}
+ \bar D_2=-\bigl(\bar M+\bar B_2+\bar Z_2\bigr),
+ \qquad
+ a_{D,2}=-\bigl(a_M+a_{B,2}+a_{Z,2}\bigr),
+ \qquad
+ b_{D,2}=-\bigl(b_M+b_{B,2}+b_{Z,2}\bigr),
+ \label{eq:app-D2-trace-anomaly}
+\end{equation}
+\begin{equation}
+ \bar D_4=-\bigl(\bar B_4+\bar Z_4\bigr),
+ \qquad
+ a_{D,4}=-\bigl(a_{B,4}+a_{Z,4}\bigr),
+ \qquad
+ b_{D,4}=-\bigl(b_{B,4}+b_{Z,4}\bigr).
+ \label{eq:app-D4-trace-anomaly}
+\end{equation}
+The same formulas apply to the outgoing-transfer bundle $N_{A,n}$ and to any grouped observable derived from $(D_A,N_A)$.
+
+This is the algebraic reason the grouped projector basis is useful: it localizes anisotropy sector by sector. If a deviation appears in the prefactor bundle, one can immediately ask whether it entered through the wall baseline, the BdG support data, the conservative Maxwell/mixed block, or the outgoing-transfer block itself.
+
+\subsection{Weak-axisymmetric grouped signature}
+
+The first allowed axisymmetric perturbation of an isotropic grouped branch has the exact lane pattern
+\begin{equation}
+ \lambda_{20}=1,
+ \qquad
+ \lambda_{21}=\frac12,
+ \qquad
+ \lambda_{22}=-1.
+ \label{eq:app-weak-axisymmetric-lambda}
+\end{equation}
+So any first-order grouped quantity on that branch takes the form
+\begin{equation}
+ x_{20}=x^{(0)}+\epsilon x^{(1)},
+ \qquad
+ x_{21}=x^{(0)}+\frac{\epsilon}{2}x^{(1)},
+ \qquad
+ x_{22}=x^{(0)}-\epsilon x^{(1)}.
+ \label{eq:app-weak-axisymmetric-form}
+\end{equation}
+The trace/anomaly variables then reduce to
+\begin{equation}
+ a_x=\frac{\epsilon x^{(1)}}{4},
+ \qquad
+ b_x=\frac{3\epsilon x^{(1)}}{4},
+ \qquad
+ b_x=3a_x,
+ \label{eq:app-weak-axisymmetric-line}
+\end{equation}
+with scalar anisotropy norm
+\begin{equation}
+ \mathcal A_x^2=\frac{7}{10}\,\epsilon^2\,(x^{(1)})^2.
+ \label{eq:app-weak-axisymmetric-norm}
+\end{equation}
+Equation~\eqref{eq:app-weak-axisymmetric-line} is the first diagnostic for symmetry breaking around the isotropic branch: if a weak grouped deviation does not lie on the line $b=3a$, then it cannot come from a pure axisymmetric quadrupole perturbation alone.
+
+\subsection{Practical reference sheet}
+
+For quick use, the grouped calculus may be summarized as follows.
+\begin{enumerate}
+    \item Start from any grouped triple $x=(x_{20},x_{21},x_{22})^T$.
+    \item Compute $(\bar x,a_x,b_x)$ from \eqref{eq:app-trace-anomaly-def}.
+    \item Recover the isotropic and anisotropic parts by \eqref{eq:app-projector-action}.
+    \item Measure the total anisotropy with \eqref{eq:app-anisotropy-norm}.
+    \item On a weak-axisymmetric branch, test the line constraint \eqref{eq:app-weak-axisymmetric-line}.
+\end{enumerate}
+This is the algebraic package used repeatedly in the main text whenever the grouped real $\Ptwo$ bundle is reduced from lane data to isotropic plus anisotropic observables.
+
+% =============================================================================
+\section{One-lane prototype formulas and overlap examples}
+\label{app:one-lane-overlap}
+% =============================================================================
+
+This appendix records the simplest formulas behind the reduced wall--support--gauge bundle. Its purpose is not to replace the full grouped real $\Ptwo$ construction from the main text, but to give a compact reference sheet for the one-lane prototype and then to show two explicit finite-throat overlap examples. In practice, these are the formulas one uses when checking whether a candidate branch can plausibly land on the isotropic normalization target before the full multi-lane moving-throat computation is attempted.
+
+\subsection{Minimal isotropic one-lane closure}
+
+The smallest reduced isotropic closure retains one wall/worldtube quadrupole coordinate $q$, one stable BdG support mode $X$, one brane-like internal gauge coordinate $U$, one mixed $A_w/F_{\mu w}/J^w$ coordinate $W$, and one passive outgoing port. The radial/axial overlap amplitudes are written as
+\begin{equation}
+ C=\lambda_B I_{\eta,\phi},
+ \qquad
+ G_U=\lambda_U I_{\eta,u},
+ \qquad
+ G_W=\lambda_W I_{\eta,w},
+ \qquad
+ R=\lambda_R I_{u,w},
+ \label{eq:app-one-lane-overlaps}
+\end{equation}
+with support and internal frequencies
+\begin{equation}
+ \varpi,
+ \qquad
+ \Omega_U,
+ \qquad
+ \Omega_W.
+ \label{eq:app-one-lane-frequencies}
+\end{equation}
+It is convenient to define the reduced invariants
+\begin{equation}
+ \Delta:=\Omega_U^2\Omega_W^2-R^2,
+ \qquad
+ S_2:=\Omega_U^2+\Omega_W^2,
+ \qquad
+ Q:=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+ \label{eq:app-one-lane-delta-q}
+\end{equation}
+\begin{equation}
+ H:=G_U^2+G_W^2,
+ \qquad
+ P_{\mathrm{mix}}:=\Omega_U^2 G_W + R G_U.
+ \label{eq:app-one-lane-h-pmix}
+\end{equation}
+The notation $P_{\mathrm{mix}}$ is used here only to avoid confusion with the outgoing-prefactor coefficients $P_0,P_2,P_4$.
+
+\paragraph{Prototype pole formula.}
+Before the Maxwell/mixed block is added, the single wall mode coupled to one stable BdG support mode obeys
+\begin{equation}
+ (K-M\omega^2)(\varpi^2-\omega^2)-C^2=0.
+ \label{eq:app-bdg-prototype-dispersion}
+\end{equation}
+Writing $\Omega_\eta^2=K/M$, the two exact poles are
+\begin{equation}
+ \omega_\pm^2
+ =
+ \frac{\Omega_\eta^2+\varpi^2
+ \pm
+ \sqrt{(\Omega_\eta^2-\varpi^2)^2+4C^2/M}}{2}.
+ \label{eq:app-bdg-prototype-poles}
+\end{equation}
+This is the cleanest prototype for the support-induced pole splitting discussed in the main text.
+
+\paragraph{Low-frequency moments.}
+For the full one-lane wall/BdG/Maxwell/mixed system, the BdG moments are
+\begin{equation}
+ B_0=\frac{C^2}{\varpi^2},
+ \qquad
+ B_2=\frac{C^2}{\varpi^4},
+ \qquad
+ B_4=\frac{C^2}{\varpi^6}.
+ \label{eq:app-one-lane-b-moments}
+\end{equation}
+The conservative Maxwell/mixed moments are
+\begin{equation}
+ Z_0=\frac{Q}{\Delta},
+ \qquad
+ Z_2=\frac{Q S_2 - H\Delta}{\Delta^2},
+ \qquad
+ Z_4=\frac{Q(S_2^2-\Delta)-S_2 H\Delta}{\Delta^3},
+ \label{eq:app-one-lane-z-moments}
+\end{equation}
+while the outgoing-transfer moments are
+\begin{equation}
+ N_0=\frac{P_{\mathrm{mix}}^2}{\Delta^2},
+ \qquad
+ N_2=\frac{2P_{\mathrm{mix}}(P_{\mathrm{mix}}S_2-\Delta G_W)}{\Delta^3},
+ \label{eq:app-one-lane-n0-n2}
+\end{equation}
+\begin{equation}
+ N_4=
+ \frac{\Delta^2 G_W^2 - 2\Delta P_{\mathrm{mix}}^2 - 4\Delta P_{\mathrm{mix}}S_2 G_W + 3P_{\mathrm{mix}}^2 S_2^2}{\Delta^4}.
+ \label{eq:app-one-lane-n4}
+\end{equation}
+The conservative wall operator therefore has the low-frequency expansion
+\begin{equation}
+ D(\omega)=D_0 + D_2\omega^2 + D_4\omega^4 + \cO(\omega^6),
+ \label{eq:app-one-lane-denominator-expansion}
+\end{equation}
+with
+\begin{equation}
+ D_0 = K-B_0-Z_0,
+ \qquad
+ D_2 = -\bigl(M+B_2+Z_2\bigr),
+ \qquad
+ D_4 = -\bigl(B_4+Z_4\bigr).
+ \label{eq:app-one-lane-d-moments}
+\end{equation}
+The normalized response moments and outgoing-prefactor moments are then
+\begin{equation}
+ u_2=-\frac{D_2}{D_0},
+ \qquad
+ u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+ \label{eq:app-one-lane-u-moments}
+\end{equation}
+\begin{equation}
+ P_0=\frac{N_0}{D_0},
+ \qquad
+ P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+ \qquad
+ P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+ \label{eq:app-one-lane-p-moments}
+\end{equation}
+On the stable branch one requires
+\begin{equation}
+ \Delta>0,
+ \qquad
+ D_0>0,
+ \label{eq:app-one-lane-stability}
+\end{equation}
+so that the conservative internal pair is not statically unstable and the quadrupole wall mode has positive dressed stiffness.
+
+\paragraph{Minimal isotropic normalization law.}
+Substituting \eqref{eq:app-one-lane-b-moments}--\eqref{eq:app-one-lane-d-moments} into \eqref{eq:app-one-lane-p-moments} gives the exact one-lane prefactor
+\begin{equation}
+ P_0
+ =
+ \frac{P_{\mathrm{mix}}^2}{\Delta^2\bigl(K-C^2/\varpi^2-Q/\Delta\bigr)}
+ =
+ \frac{P_{\mathrm{mix}}^2}{\Delta\bigl(K\Delta-\Delta C^2/\varpi^2-Q\bigr)}.
+ \label{eq:app-one-lane-p0-closed}
+\end{equation}
+Because the angular source-map factor is unity on the natural isotropic branch, the remaining normalization test is purely radial/axial:
+\begin{equation}
+ \mhat^2 P_0 = \frac{54Gc_s^5}{5a^5c^5}.
+ \label{eq:app-one-lane-normalization}
+\end{equation}
+Equivalently,
+\begin{equation}
+ \frac{\mhat^2 P_{\mathrm{mix}}^2}{\Delta\bigl(K\Delta-\Delta C^2/\varpi^2-Q\bigr)}
+ =
+ \frac{54Gc_s^5}{5a^5c^5}.
+ \label{eq:app-one-lane-normalization-closed}
+\end{equation}
+This is the sharpest one-lane version of the grouped isotropic normalization gate.
+
+\subsection{A concrete N/N--D/N finite-throat example}
+
+The first analytic finite-throat example uses the interval $s\in[0,L]$ with flat measure and combines the lowest Neumann/Neumann zero mode
+\begin{equation}
+ u_0(s)=\frac{1}{\sqrt L}
+ \label{eq:app-u0-mode}
+\end{equation}
+with the exact Dirichlet/Neumann half-wave ladder
+\begin{equation}
+ f_n(s)=\sqrt{\frac{2}{L}}\,
+ \sin\!\left(\Bigl(n+\frac12\Bigr)\frac{\pi s}{L}\right),
+ \qquad
+ k_n=\Bigl(n+\frac12\Bigr)\frac{\pi}{L}.
+ \label{eq:app-dn-half-wave}
+\end{equation}
+The overlap of the constant zero mode with the $n$th D/N mode is exactly
+\begin{equation}
+ \kappa_n
+ :=
+ \int_0^L u_0(s)f_n(s)\,\dd s
+ =
+ \frac{\sqrt2}{(n+\tfrac12)\pi}.
+ \label{eq:app-kappa-n}
+\end{equation}
+On the lowest branch,
+\begin{equation}
+ \kappa:=\kappa_0=\frac{2\sqrt2}{\pi}.
+ \label{eq:app-kappa0}
+\end{equation}
+Choose the minimal isotropic family
+\begin{equation}
+ \chi_\eta=u_0,
+ \qquad
+ \phi=f_0,
+ \qquad
+ u=u_0,
+ \qquad
+ w=f_0.
+ \label{eq:app-minimal-finite-throat-family}
+\end{equation}
+Then the needed overlaps are
+\begin{equation}
+ I_{\eta,\phi}=\kappa,
+ \qquad
+ I_{\eta,u}=1,
+ \qquad
+ I_{\eta,w}=\kappa,
+ \qquad
+ I_{u,w}=\kappa.
+ \label{eq:app-minimal-finite-throat-overlaps}
+\end{equation}
+Hence the one-lane amplitudes specialize to
+\begin{equation}
+ C=\kappa\lambda_B,
+ \qquad
+ G_U=\lambda_U,
+ \qquad
+ G_W=\kappa\lambda_W,
+ \qquad
+ R=\kappa\lambda_R.
+ \label{eq:app-minimal-finite-throat-amplitudes}
+\end{equation}
+The reduced invariants become
+\begin{equation}
+ \Delta = \Omega_U^2\Omega_W^2-\kappa^2\lambda_R^2,
+ \label{eq:app-minimal-finite-throat-delta}
+\end{equation}
+\begin{equation}
+ Q = \lambda_U^2\Omega_W^2 + 2\kappa^2\lambda_U\lambda_W\lambda_R + \kappa^2\lambda_W^2\Omega_U^2,
+ \label{eq:app-minimal-finite-throat-q}
+\end{equation}
+\begin{equation}
+ P_{\mathrm{mix}} = \kappa\bigl(\Omega_U^2\lambda_W+\lambda_R\lambda_U\bigr).
+ \label{eq:app-minimal-finite-throat-pmix}
+\end{equation}
+Therefore
+\begin{equation}
+ B_0=\frac{\kappa^2\lambda_B^2}{\varpi^2},
+ \qquad
+ Z_0=\frac{Q}{\Delta},
+ \qquad
+ N_0=\frac{\kappa^2\bigl(\Omega_U^2\lambda_W+\lambda_R\lambda_U\bigr)^2}{\Delta^2},
+ \label{eq:app-minimal-finite-throat-b0z0n0}
+\end{equation}
+and the branch-level normalization test becomes
+\begin{equation}
+ \frac{\mhat^2\kappa^2\bigl(\Omega_U^2\lambda_W+\lambda_R\lambda_U\bigr)^2}{\Delta\bigl(K\Delta-\Delta\kappa^2\lambda_B^2/\varpi^2-Q\bigr)}
+ =
+ \frac{54Gc_s^5}{5a^5c^5}.
+ \label{eq:app-minimal-finite-throat-normalization}
+\end{equation}
+Solving \eqref{eq:app-minimal-finite-throat-normalization} for the required wall stiffness gives
+\begin{equation}
+ K_{\mathrm{req}}
+ =
+ \frac{\kappa^2\lambda_B^2}{\varpi^2}
+ +
+ \frac{Q}{\Delta}
+ +
+ \frac{5a^5c^5}{54Gc_s^5}
+ \frac{\mhat^2\kappa^2\bigl(\Omega_U^2\lambda_W+\lambda_R\lambda_U\bigr)^2}{\Delta^2}.
+ \label{eq:app-kreq-finite-throat}
+\end{equation}
+For the constant wall profile the axial gradient term vanishes, so the bare quadrupole wall stiffness is simply the $l=2$ specialization of the wall operator,
+\begin{equation}
+ K = K_\eta + 6T_\Omega.
+ \label{eq:app-k-l2-wall}
+\end{equation}
+Thus the concrete finite-throat test is whether the realized wall combination $K_\eta+6T_\Omega$ matches \eqref{eq:app-kreq-finite-throat} after the support and internal gauge loading are inserted.
+
+\subsection{A smooth finite-throat overlap testbed}
+
+A second useful example replaces the constant N/N wall profile by a smooth sine profile on the same interval:
+\begin{equation}
+ \chi_\eta(s)=\sqrt{\frac{2}{L}}\sin\!\left(\frac{\pi s}{L}\right),
+ \qquad
+ \phi_{\mathrm{DN}}(s)=\sqrt{\frac{2}{L}}\sin\!\left(\frac{\pi s}{2L}\right),
+ \label{eq:app-sine-profile-example}
+\end{equation}
+with the simplest brane-like gauge choice $u=\chi_\eta$ and mixed profile $w=\phi_{\mathrm{DN}}$. The exact overlaps are then
+\begin{equation}
+ I_{\eta,u}=1,
+ \qquad
+ I_{\eta,\phi}=I_{\eta,w}=I_{u,w}=\frac{8}{3\pi}.
+ \label{eq:app-sine-profile-overlaps}
+\end{equation}
+This example is especially useful because it keeps the algebra elementary while avoiding a flat wall profile. At the one-mode, one-port level the same formulas from \eqref{eq:app-one-lane-b-moments}--\eqref{eq:app-one-lane-p-moments} still apply after the substitution
+\begin{equation}
+ C=\frac{8}{3\pi}\lambda_B,
+ \qquad
+ G_U=\lambda_U,
+ \qquad
+ G_W=\frac{8}{3\pi}\lambda_W,
+ \qquad
+ R=\frac{8}{3\pi}\lambda_R.
+ \label{eq:app-sine-profile-amplitudes}
+\end{equation}
+The resulting prototype has two useful features: it preserves exact grouped isotropy when the three grouped lanes share the same radial/axial data, and it makes the first nontrivial compatibility surface between conservative and outgoing calibration completely explicit.
+
+\begin{remark}[Prototype compatibility surface]
+Let
+\begin{equation}
+ P_{0,\mathrm{target}}:=\frac{54Gc_s^5}{5a^5c^5\mhat^2}.
+ \label{eq:app-p0-target}
+\end{equation}
+If one imposes both the conservative one-pole identity
+\begin{equation}
+ u_4 = 4u_2^2
+ \label{eq:app-u4-one-pole-identity}
+\end{equation}
+and the isotropic normalization target $P_0=P_{0,\mathrm{target}}$, then eliminating the static wall stiffness yields the explicit compatibility equation
+\begin{equation}
+ \frac{N_0}{P_{0,\mathrm{target}}}
+ =
+ \frac{3\bigl(M+B_2+Z_2\bigr)^2}{B_4+Z_4}.
+ \label{eq:app-compatibility-surface}
+\end{equation}
+Equation~\eqref{eq:app-compatibility-surface} is the simplest explicit example of a branch-level compatibility surface between the conservative and outgoing calibrations.
+\end{remark}
+
+\subsection{How these prototypes are meant to be used}
+
+The one-lane formulas are not replacements for the full grouped bundle. Their role is diagnostic. The minimal isotropic prototype isolates the precise scalar combination that controls the normalization gate, while the overlap examples show how quickly that scalar can become explicit once a finite-throat axial family is chosen. In practice, the most useful workflow is:
+\begin{enumerate}
+    \item compute or estimate the overlap amplitudes $I_{\eta,\phi}$, $I_{\eta,u}$, $I_{\eta,w}$, and $I_{u,w}$ on a candidate branch;
+    \item form the one-lane invariants $\Delta$, $Q$, and $P_{\mathrm{mix}}$;
+    \item evaluate $D_0$, $P_0$, and the stability inequalities \eqref{eq:app-one-lane-stability};
+    \item compare the result with the isotropic target \eqref{eq:app-one-lane-normalization} before investing in the full three-lane computation.
+\end{enumerate}
+If the prototype already fails badly, the issue is not hidden in grouped bookkeeping. It is in the radial/axial branch data themselves.
+
+% =============================================================================
+\section{Symbolic verification and reproducibility map}
+\label{app:verification-map}
+% =============================================================================
+
+This appendix explains how the algebra in the framework paper can be audited. The paper itself is analytic rather than computational, so the scripts are not presented as black-box generators of the claims. Their role is narrower and easier to referee: they provide a deterministic archive of symbolic reductions, overlap compilers, grouped-projector identities, Schur-complement eliminations, weak-axisymmetric transport laws, and packet-level consistency checks. In other words, they verify that the formulas carried in the main text reduce exactly as claimed \emph{within the stated closure hierarchy}. They do not, by themselves, upgrade the framework paper into an assumption-free theorem of the fully solved moving-throat branch.
+
+The released verification bundle is naturally split into two parts. The first part is the framework-paper archive proper: small SymPy audits that mirror the section-level algebra used in the present manuscript. The second part is the broader derivation archive: explicit isotropic overlap-model scripts, weak-axisymmetric transport scripts, and later packet or corridor compilers that are not needed to read the framework paper but make the discussion of the open realization gap auditable. The distributed Wolfram Language notebooks for the full derivation companion play the same referee role for the longer symbolic ledgers that the SymPy audits play here for the reader-facing framework paper.
+
+\subsection{Verification principles}
+
+Three conventions govern the archive.
+
+First, every audit is deterministic. There are no stochastic steps, fitted Monte Carlo procedures, or hidden numerical optimizations. When a result is exact, the scripts simplify it symbolically to zero or to a closed expression. When a result is a benchmark specialization of an exact identity, the scripts evaluate that specialization directly from the previously fixed formulas.
+
+Second, the scripts respect the same status firewall used in the main text. Exact identities are checked as exact identities. Reduced statements are checked only after the relevant closure has been declared. Primitive finite-throat examples and compatibility-point scans are therefore presented as realization tests of the carried formulas, not as universal theorems of the full PDE.
+
+Third, the archive is organized around load-bearing formulas rather than around implementation convenience. A useful audit is one that tells a referee exactly which main-text relation has been checked, which assumptions entered, and which residual vanished.
+
+\subsection{Verification layers}
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}L{0.16\linewidth}L{0.26\linewidth}L{0.50\linewidth}@{}}
+\toprule
+Layer & Main purpose & Representative artifacts \\
+\midrule
+Geometry and conservative reduction & Checks the moving-throat geometry lift, the breathing reduction back to $(a,L)$, and the first conservative BdG-wall Schur complements. & \nolinkurl{moving_throat_pde_master_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} \\
+
+Isotropic overlap and grouped normalization & Builds explicit finite-throat overlap models, computes the low-frequency moments $(B_n,Z_n,N_n)$, and tests the isotropic grouped-real $\Ptwo$ normalization surface. & \nolinkurl{5pn_stage3_isotropic_overlap_model.py}; \nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py} \\
+
+Weak-axisymmetric transport & Carries the grouped signature $(1,\tfrac12,-1)$ through the conservative and prefactor compilers, isolates $\XiOne=P_1/P_0$, and tests compensation conditions. & \nolinkurl{5pn_stage4_axisymmetric_transport.py}; \nolinkurl{5pn_stage5_primitive_deformation_compensation.py} \\
+
+Packet and realization-side compilers & Converts the section-level coefficients into branch packets, orbit-lock variables, target-surface tests, and actual-branch ceiling checks used in the discussion. & \nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py} \\
+\bottomrule
+\end{tabular}
+\caption{Verification layers for the framework paper and its immediate realization-side audit.}
+\label{tab:verification-map}
+\end{table}
+
+\subsection{Named artifacts and what they certify}
+
+\paragraph{(i) Geometry lift and breathing reduction.}
+The core geometry audit is \nolinkurl{moving_throat_pde_master_sympy_audit.py}. It checks the real-harmonic normalization facts, the mouth-average extraction rule, the reduction of the distributed wall field back to the two-coordinate $(a,L)$ sector, and the one-mode grouped-$\Ptwo$ reduction. This is the executable referee companion to the geometry-lift and breathing-reduction portions of the paper.
+
+\paragraph{(ii) Stable BdG support elimination.}
+The pair
+\nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} and
+\nolinkurl{moving_throat_pde_stage003_bdg_sympy_output.txt}
+checks the first coupled Schur-complement step. In particular it verifies the exact elimination of the stable support modes, the resulting scalar matrix kernel,
+\[
+ D_0^{\eff}(\omega)=K_0-\omega^2 M_0-C(\Omega_0^2-\omega^2 I)^{-1}C^T,
+\]
+the grouped-lane self-energies, the explicit two-pole formula in the one-mode prototype, and preservation of grouped isotropy on an isotropic matter-coupled branch.
+
+\paragraph{(iii) Explicit isotropic overlap model.}
+The pair
+\nolinkurl{5pn_stage3_isotropic_overlap_model.py} and
+\nolinkurl{5pn_stage3_isotropic_overlap_model_output.txt}
+provides the first concrete finite-throat overlap realization of the reduced bundle. It constructs the moments $(B_0,B_2,B_4)$, $(Z_0,Z_2,Z_4)$, $(N_0,N_2,N_4)$, the conservative coefficients $(D_0,D_2,D_4)$, the normalized response coefficients $(u_2,u_4)$, and the prefactor coefficients $(P_0,P_2,P_4)$. It also checks exact grouped isotropy when the three grouped lanes share the same radial/axial data, and it exhibits the prototype compatibility identity
+\[
+ \frac{N_0}{P_{0,\mathrm{target}}}
+ =
+ \frac{3\,(M+B_2+Z_2)^2}{B_4+Z_4},
+\]
+which is the simplest explicit version of the isotropic normalization surface.
+
+\paragraph{(iv) Weak-axisymmetric grouped transport.}
+The pair
+\nolinkurl{5pn_stage4_axisymmetric_transport.py} and
+\nolinkurl{5pn_stage4_axisymmetric_transport_output.txt}
+checks the first weak-axisymmetric grouped signature
+\[
+ \lambda_{20}=1,
+ \qquad
+ \lambda_{21}=\frac12,
+ \qquad
+ \lambda_{22}=-1,
+\]
+and propagates it through the conservative and prefactor compilers. The script verifies the exact formulas
+\[
+ u_2^{(1)}=-\frac{D_{21}+u_2 D_{01}}{D_0},
+ \qquad
+ \XiOne=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0},
+\]
+as well as the grouped weak-axisymmetric law
+\[
+ b=3a.
+\]
+This is the main executable audit behind the weak-axisymmetric departures section.
+
+\paragraph{(v) Primitive compensation surfaces.}
+The pair
+\nolinkurl{5pn_stage5_primitive_deformation_compensation.py} and
+\nolinkurl{5pn_stage5_primitive_deformation_compensation_output.txt}
+tests primitive anisotropy mechanisms against the three first nontrivial reduced conditions: the even-preserving relation
+\[
+ K_1=D_{21}+\frac{D_{01}}{9}=0,
+\]
+the odd or normalization-preserving relation
+\[
+ \Xi_{\mathrm{load}}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}=0,
+\]
+and the hidden-even residual
+\[
+ D_{41}-\frac23 D_{21}-\frac{D_{01}}{27}=0.
+\]
+For the framework paper, the main value of this script is not that it proves the full PDE branch, but that it shows exactly which low-order anisotropy channels must be controlled before the simple isotropic narrative can be trusted.
+
+\paragraph{(vi) Packet compilers and grouped projectors.}
+The pair
+\nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py} and
+\nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt}
+checks the exact response and prefactor compilers from
+\((D_0,D_2,D_4,N_0,N_2,N_4)\), the grouped trace/anomaly inverse formulas, isotropic collapse of the grouped coordinates, and the exact interconversion of the orbit-lock packet representations. The pair
+\nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py} and
+\nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt}
+then upgrades that finite packet to an exact quotient-projector calculus on the microscopic drift space. These artifacts are the executable companion to the notation appendix and to the discussion of what remains genuinely branch-dependent.
+
+\paragraph{(vii) Isotropic grouped-target surface.}
+The audit
+\nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}
+checks the exact conservative isotropic carrier of the grouped real $\Ptwo$ bundle: the vanishing of grouped anomalies on the common-lane branch, the one-pole identity
+\[
+ \Delta_{\mathrm{pole}}=-\frac{3D_2^2+D_0D_4}{D_0^2},
+\]
+and the equivalent target surface
+\[
+ D_0D_4+3D_2^2=0.
+\]
+It also verifies the scalar/geometry firewall showing that contamination of the grouped $l=2$ carrier begins only at quadratic order in the scalar/geometry mixing parameter.
+
+\paragraph{(viii) Realization-side compatibility and actual-branch transport.}
+Two later scripts are not needed to follow the reader-facing derivation, but they make the discussion section auditable. The first,
+\nolinkurl{moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py},
+checks the primitive compatibility identity, the compatibility-branch specialization, and the finite survival window on that primitive family. The second,
+\nolinkurl{moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py},
+transports the final branch packet to the observable prefactor variables, verifies the exact compiler for
+\[
+ \bar P_0,
+ \qquad
+ a_{P_0},
+ \qquad
+ b_{P_0},
+ \qquad
+ \XiOne=\frac{P_1}{P_0},
+\]
+and checks the isotropic and weak-axisymmetric ceiling inequalities used in the open realization-gap discussion.
+
+\subsection{How to rerun the archive}
+
+A referee-style rerun is short and hierarchical.
+
+\begin{enumerate}
+    \item Rerun the geometry audit \nolinkurl{moving_throat_pde_master_sympy_audit.py} to verify the wall-field conventions and the reduction back to $(a,L)$.
+    \item Rerun the coupled BdG audit \nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} and compare its transcript against the reduced wall-support formulas used in the main text.
+    \item Rerun the explicit isotropic overlap model and weak-axisymmetric transport scripts, namely \nolinkurl{5pn_stage3_isotropic_overlap_model.py}, \nolinkurl{5pn_stage4_axisymmetric_transport.py}, and \nolinkurl{5pn_stage5_primitive_deformation_compensation.py}. These scripts reproduce the low-frequency moments, the isotropic normalization surface, the grouped weak-axisymmetric law, and the first primitive compensation tests.
+    \item Rerun the packet and projector compilers \nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}, \nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}, and \nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}. These are the shortest route from the section-level coefficients to the packet language used in the endgame discussion.
+    \item If one wants to audit the discussion section's realization-side statements rather than only the main framework derivation, rerun the Stage-206 and Stage-207 compilers as well.
+\end{enumerate}
+
+A clean rerun should reproduce exact zero residuals for the symbolic identities and the same benchmark values recorded in the corresponding output transcripts for the explicit prototype branches. No rerun, however, eliminates the distinction between algebraic verification and physical branch realization.
+
+\subsection{Interpretive boundary}
+
+The verification archive is intentionally narrower than the derivation companion. It certifies that the framework paper's formulas are algebraically coherent, that the grouped bundle bookkeeping is exact, that the isotropic and weak-axisymmetric compilers behave as stated, and that the later branch-packet discussion is not hiding unexplained algebra. What it does \emph{not} certify is that the fully solved moving-throat PDE must realize the isotropic carrier, the canonical outgoing normalization,
+\[
+ \mhat^{2}P_0=\frac{54Gc_s^5}{5a^5c^5},
+\]
+or any particular weak-axisymmetric slope
+\[
+ \XiOne=\frac{P_1}{P_0}.
+\]
+Those remain realization-side questions, which is exactly why the present paper is paired with a longer derivation and audit archive rather than presented as a closed theorem of the full nonlinear branch.
+
+\begin{thebibliography}{99}
+
+\bibitem{Norris2026Parent4D}
+T.~Norris,
+\emph{4D Toy Model -- Action, Projections, and Controlled Brane Limits},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19449589.
+
+\bibitem{Norris2026Maxwell4D}
+T.~Norris,
+\emph{Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19449834.
+
+\bibitem{Norris2026TwoPN}
+T.~Norris,
+\emph{A Controlled Derivation of the Full Conservative Second Post-Newtonian Sector from the Unified 4D Toy Model},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19450284.
+
+\bibitem{Norris2026TwoPointFivePN}
+T.~Norris,
+\emph{A Conditional Derivation of the Point-Particle 2.5PN Sector from the Unified 4D Toy Model},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19492270.
+
+\bibitem{Norris2026ThreePN}
+T.~Norris,
+\emph{A Full Conservative Derivation of the Two-Body 3PN Sector from the Unified 4D Toy Model},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19501724.
+
+\bibitem{Norris2026FourPN}
+T.~Norris,
+\emph{A Conditional Full Conservative Derivation of the Two-Body 4PN Sector from the Unified 4D Toy Model},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19561056.
+
+\end{thebibliography}
+
+
+\end{document}

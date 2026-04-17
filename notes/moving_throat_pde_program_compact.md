@@ -7,10 +7,11 @@ program. It is meant to support new sessions and new derivation work without
 requiring a full walk through the entire stage tree.
 
 It is now updated through the post-`201` extension carried in
-`moving_throat_latest_full.md`, i.e. through Stages `202-225`. The stable
+`moving_throat_latest_full.md` and the relaxed/open-system extension carried in
+`moving_throat_extension.md`, i.e. through Stages `202-236`. The stable
 backbone from the earlier compact master is preserved, but the endgame is now
 rewritten around the actual theorem structure that the later same-charge,
-rigid-mouth, and selected-branch work fixed:
+rigid-mouth, selected-branch, and relaxed-constraint work fixed:
 
 - the exact parent `4+1` theory,
 - the moving-throat geometry and reduced wall/support/outgoing stack,
@@ -20,7 +21,20 @@ rigid-mouth, and selected-branch work fixed:
 - the explicit free-quintuple realization compiler and finite local mixed-ray sieve,
 - the one-port same-charge mixed-kernel verdict and the actual-branch prefactor ceiling,
 - the rigid-mouth physical normal form and Cartesian orbit-lock packet,
-- and the selected twin-support placement / ranking / support-versus-orbit split.
+- the selected twin-support placement / ranking / support-versus-orbit split,
+- the codimension-three relaxed open-system branch
+  \[
+  (J^w,\ U/V,\ 
+arsigma)
+  \]
+  around the strict Stage-225 front end,
+- the selected-branch leakage/work compiler, the non-rigid mouth/dressing packet,
+  and the compensated multimode source compiler,
+- the lowered stationary barrier front end and its dynamic event-chain,
+  turning-point, WKB, and Goldilocks continuations,
+- and the microscopic cubic/quintic export kernel, channel-resolved heat
+  partition, and material-screening companion.
+
 
 This is **not** a paper draft.
 It is a compact program ledger.
@@ -107,13 +121,51 @@ Current best reading of the program:
   \zeta_{\rm req}=\frac13,
   \]
   with actual placement then reduced to one coordinate on the selected twin-support curve,
+- the post-225 barrier companion is now a codimension-three relaxed branch around the Stage-225 slice, with exact recovery map
+  \[
+  \ell_w=f_U=a=b=0,
+  \]
+  and with the same same-charge long-range verdict still frozen,
+- on that relaxed branch the stationary lowered front end is carried by
+  \[
+  V_{\rm eff}^{(230)}(r)
+  =
+  V_{\rm short}^{(1p)}(r)
+  -
+  \lambda_L S_{\rm leak}(r)
+  -
+  \lambda_W\mathcal W_w^{\rm sess}(r)
+  -
+  \Delta E_{UV}(r)
+  -
+  \mathcal M_{\sigma,\rm red}(r),
+  \]
+  while the dynamic continuation already has explicit peak, threshold, turning-point,
+  WKB, and Goldilocks compilers,
+- the microscopic active-leg export law is now super-Ohmic,
+  \[
+  K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5,
+  \]
+  with an exact event-safe half-plane and a channel-resolved vacuum/lattice
+  heat-partition law,
+- the materials companion is now organized by one calibration dictionary
+  \[
+  (t_*,\lambda_{\rm phys},E_*,\Upsilon_{\rm lat})
+  \]
+  and four explicit screening ratios
+  \[
+  \Pi_{\rm ep},\ \Pi_\chi,\ \Pi_k,\ \Pi_T,
+  \]
 - the full reduced back end is still the exact four-scalar packet
   \[
   \Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta),
   \]
   together with its explicit graph-error realization form,
 - the local free-quintuple mixed-ray search is still finite through support-cardinality `<=5`,
-- and the main remaining theorem gap is now actual branch realization of the selected support/orbit/outgoing packet, not algebraic compression.
+- and the main remaining theorem gap is now actual branch realization of either
+  the strict selected support/orbit/outgoing packet or, if the relaxed barrier
+  companion is being used, the realized leakage/non-rigid/source/export/calibration
+  packet rather than more algebraic compression.
 
 So the active bottleneck is no longer “derive another compiler.” It is whether
 the actual moving-throat branch returns the isotropic one-pole grouped-`P2`
@@ -3564,9 +3616,1108 @@ N_Q-1
 This is the most concrete actual-branch evaluation checklist the compact program
 currently has.
 
-## 9. Final Theorem Ledger
 
-### 9.1 Exact parent-theory statements
+## 9. Relaxed-Constraint / Open-System Barrier Extension (`226-236`)
+
+### 9.1 Relaxed branch declaration and exact recovery slice
+
+**Status:** `Exact Within Closure`
+
+The strict Stage-225 front end is now carried as the standard-recovery slice
+\[
+\boxed{
+\mathfrak B_{\rm std}
+:=
+\Bigl\{
+J^w=0,\ U=0,\ V=0,\ \varsigma(z)\equiv1
+\Bigr\}
+\subset
+(\mathcal P_{225},\mathcal S_{225}).
+}
+\]
+
+The post-225 relaxed branch is the codimension-three lift
+\[
+\boxed{
+\mathfrak B_{226}^{\rm relax}
+=
+\Bigl\{
+(\mathcal P_{225},\mathcal S_{225});
+L_w,\ L_{UV},\ L_\varsigma
+\Bigr\},
+}
+\]
+with
+\[
+L_w=(S_{\rm leak},\mathcal W_w),
+\qquad
+L_{UV}=(U,V,\mathcal D_{UV}),
+\qquad
+L_\varsigma=(\varsigma,\varsigma_{\min},\mathrm{signchg}).
+\]
+
+The exact recovery slice is
+\[
+\boxed{
+\ell_w=0,
+\qquad
+f_U=0,
+\qquad
+a=b=0
+\iff
+S_{\rm leak}=\mathcal W_w=U=V=\mathcal D_{UV}=0,
+\quad
+\varsigma\equiv1.
+}
+\]
+
+The short-range/open-system firewall is unchanged on the relaxed branch.
+Both the static and linear dynamic conservative mixed-sector corrections remain in
+the exact kernel span
+\[
+\boxed{
+\mathcal K_{\rm SR}
+=
+\mathrm{span}\!\left\{
+\frac{1}{x^6},
+\frac{e^{-2\kappa x}}{x^4},
+\frac{e^{-4\kappa x}}{x^2}
+\right\},
+}
+\]
+so lifting `\(J^w\)`, lifting rigid-mouth factorization, or allowing a
+compensated sign-changing source does **not** adjoin a new Coulomb-like or
+Yukawa-`\(1/x\)` same-charge attraction.
+
+The minimal relaxed packet is therefore
+\[
+\boxed{
+\mathcal P_{226}^{\rm relax}
+=
+\Bigl(
+\mathcal P_{225};
+S_{\rm leak},
+\mathcal W_w,
+U,
+V,
+\mathcal D_{UV},
+\varsigma(z),
+\varsigma_{\min},
+\mathrm{signchg}
+\Bigr).
+}
+\]
+
+### 9.2 Selected-branch leakage/work compiler
+
+**Status:** `Exact Within Closure`
+
+The selected-support demand carried from Stage 225 is
+\[
+\Pi_{\rm tr}
+=
+\frac43\,C_{\rm mix}
+=
+\frac{32\Lambda(1-\epsilon)}{3\pi^2}
+=
+\frac{16}{\pi^2}\Lambda\,\varrho,
+\qquad
+\varrho=\frac23(1-\epsilon).
+\]
+
+With the minimal selected-branch pullback
+\[
+\mathcal E_0(r)=\eta_{\rm leak}\,\Pi_{\rm tr}(r),
+\]
+the first exact open-system observables are
+\[
+\boxed{
+S_{\rm leak}(r)
+=
+\frac{16\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{3\pi^{5/2}\lambda^3}
+\,\Lambda(r)(1-\epsilon(r))
+=
+\frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+\,\Lambda(r)\varrho(r),
+}
+\]
+\[
+\boxed{
+\mathcal W_w^{\rm bulk}(r)
+=
+\frac{512\sqrt2\,\eta_{\rm leak}^2\mu_w q\rho_0}{9\pi^{9/2}\lambda^3}
+\,\Lambda(r)^2(1-\epsilon(r))^2,
+}
+\]
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{2048\,\eta_{\rm leak}^2\mu_w q\rho_0}{9\pi^4\lambda^2}
+\,\Lambda(r)^2(1-\epsilon(r))^2.
+}
+\]
+
+This whole lane is support-side, not orbit-side:
+\[
+\partial_{R_{\rm tr}}S_{\rm leak}
+=
+\partial_{R_{\rm target}}S_{\rm leak}
+=
+\partial_{\epsilon_\eta}S_{\rm leak}
+=
+0,
+\]
+and likewise for both work scalars.
+
+Its exact parity is
+\[
+S_{\rm leak}(-\eta_{\rm leak})=-S_{\rm leak}(\eta_{\rm leak}),
+\qquad
+\mathcal W_w^{\rm bulk/sess}(-\eta_{\rm leak})
+=
+\mathcal W_w^{\rm bulk/sess}(\eta_{\rm leak}).
+\]
+
+A practical packet is
+\[
+\boxed{
+\mathcal P_{227}^{\rm leak}
+=
+\Bigl(
+\mathcal P_{225};
+\Lambda,\epsilon,\eta_{\rm leak},
+S_{\rm leak},
+\mathcal W_w^{\rm bulk},
+\mathcal W_w^{\rm sess}
+\Bigr).
+}
+\]
+
+### 9.3 Non-rigid mouth/dressing packet
+
+**Status:** `Exact Within Closure`
+
+The orbit-side non-rigid packet is generated by the reduced free energy
+\[
+\boxed{
+\mathcal F_{\rm nr}(U,V;r)
+=
+\frac12 a_U U^2
++
+\frac12 a_V V^2
+-
+\chi_{UV}(r)\,UV
+-
+f_U(r)\,U.
+}
+\]
+
+Define
+\[
+\boxed{
+\Delta_{UV}:=a_U a_V-\chi_{UV}^2.
+}
+\]
+Admissibility is exactly
+\[
+\boxed{\Delta_{UV}>0.}
+\]
+
+The stationary packet is
+\[
+\boxed{
+U(r)=\frac{a_V f_U(r)}{\Delta_{UV}(r)},
+\qquad
+V(r)=\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)},
+\qquad
+\frac{V}{U}=\frac{\chi_{UV}}{a_V}.
+}
+\]
+
+The exact finite physical compiler is
+\[
+\boxed{
+\mathcal T^2(r)
+=
+\mathcal T_{\rm ref}^2 e^{U(r)},
+\qquad
+\epsilon_\eta(r)
+=
+\epsilon_{\eta,\rm ref}e^{V(r)},
+}
+\]
+\[
+\boxed{
+\frac{R_{\rm target}(r)}{R_{\rm target,ref}}
+=
+\frac{
+1-\epsilon_{\eta,\rm ref}e^{V(r)}
+}{
+1-\epsilon_{\eta,\rm ref}
+}
+e^{-U(r)}.
+}
+\]
+
+The dependent rigid-mouth plane therefore induces the exact microscopic
+correction
+\[
+\boxed{
+\mathbf y_{\rm nr}^{\rm dep}
+=
+\begin{pmatrix}
+0\\
+-V\\
+U-V
+\end{pmatrix},
+}
+\]
+and the induced transfer-to-dressing drain is
+\[
+\boxed{
+\mathcal D_{UV}
+=
+\chi_{UV}UV
+=
+\frac{\chi_{UV}^2 a_V f_U^2}{\Delta_{UV}^2}
+\ge 0.
+}
+\]
+
+At weak-axisymmetric order,
+\[
+U=\varepsilon u_1+O(\varepsilon^2),
+\qquad
+V=\varepsilon v_1+O(\varepsilon^2),
+\]
+the exact first-order packet is
+\[
+\boxed{\Xi_1^{\rm nr}=u_1,}
+\]
+\[
+\boxed{
+\mathcal R_1^{\rm nr}+\Xi_1^{\rm nr}
+=
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1,
+}
+\qquad
+\boxed{
+\mathcal R_1^{\rm nr}
+=
+-u_1
+-\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1.
+}
+\]
+So the rigid-mouth front-end pair `\((\Delta_{\rm norm},\Xi_1)\)` is the
+projection of a larger two-leg packet once the dressing leg is activated.
+
+### 9.4 Compensated multimode source compiler
+
+**Status:** `Exact Within Closure`
+
+The first explicit compensated source branch is
+\[
+\boxed{
+\varsigma(x;r)
+=
+1+a(r)\cos(\pi x)+b(r)\cos(2\pi x),
+}
+\qquad
+\int_0^1 \varsigma(x;r)\,dx = 1.
+\]
+
+Its two carried source moments remain exact:
+\[
+\boxed{
+\mathfrak g(a,b)
+=
+\frac{2}{\pi}\left(1+\frac{a}{3}-\frac{b}{15}\right),
+}
+\]
+\[
+\boxed{
+\mathcal S(a,b)
+=
+\frac{2\tanh(\pi/2)}{\pi}
+\left(1+\frac{a}{5}+\frac{b}{17}\right).
+}
+\]
+
+With normalized moments
+\[
+\widetilde g:=\frac{\pi}{2}\mathfrak g-1,
+\qquad
+\widetilde S:=\frac{\pi}{2\tanh(\pi/2)}\mathcal S-1,
+\]
+the two-mode source family is exactly invertible:
+\[
+\boxed{
+a=\frac{85}{42}\widetilde S+\frac{25}{14}\widetilde g,
+\qquad
+b=\frac{425}{42}\widetilde S-\frac{85}{14}\widetilde g.
+}
+\]
+
+The carried mixed-to-shell loading law extends as
+\[
+\boxed{
+\mathcal R(a,b)
+=
+\frac{(\mathfrak g(a,b)-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
+}
+\]
+
+For the transported Session-I branch,
+\[
+a(r)=a_0 s(r),
+\qquad
+b(r)=b_0 s(r),
+\qquad
+s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2},
+\]
+the sign-change threshold on the sampled orientation `\(a_0>0,\ b_0<0\)` is
+\[
+\boxed{
+\mathrm{signchg}(r)
+\iff
+s(r)>\frac{1}{a_0-b_0}
+\iff
+r<r_\sigma\sqrt{a_0-b_0-1}.
+}
+\]
+
+The compact packet to carry forward is
+\[
+\boxed{
+\mathcal M_\sigma^{\rm pack}(r)
+=
+\bigl(
+\varsigma(x;r),\,
+\varsigma_{\min}(r),\,
+\mathrm{signchg}(r),\,
+\mathfrak g(r),\,
+\mathcal S(r),\,
+\mathcal R(r)
+\bigr).
+}
+\]
+
+### 9.5 Carried Stage-230 stationary lowered front end
+
+**Status:** `Reduced / Controlled Reduction`
+
+The extension does not restate a standalone Stage-230 theorem block, but Stage 231
+carries forward its exact reduced stationary front end as
+\[
+\boxed{
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W\mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_{\sigma,\rm red}(r).
+}
+\]
+
+Here the compact master writes
+
+- `\(\Delta E_{UV}(r)\)` for the stationary non-rigid lowering,
+  \[
+  \boxed{
+  \Delta E_{UV}(r)
+  =
+  -\mathcal F_{\rm nr}\bigl(U(r),V(r);r\bigr)
+  =
+  \frac{a_V f_U(r)^2}{2\Delta_{UV}(r)},
+  }
+  \]
+- and `\(\mathcal M_{\sigma,\rm red}(r)\)` for the scalar barrier-lowering
+  contribution built from the Stage-229 source packet
+  `\(\mathcal M_\sigma^{\rm pack}(r)\)`.
+
+This is only a short-range/open-system reshaping of the already-audited one-port
+same-charge front end. It does not change the kernel-span theorem in `§9.1`.
+
+### 9.6 Dynamic event-chain, thresholds, and WKB
+
+**Status:** `Exact Within Closure`
+
+On the carried lowered front end `\(V(r):=V_{\rm eff}^{(230)}(r)\)`, the reduced
+one-dimensional dynamics is
+\[
+\boxed{
+m_s\ddot r=-V'(r),
+\qquad
+E=\frac{m_s}{2}\dot r^{\,2}+V(r).
+}
+\]
+
+If the lowered branch has one peak
+\[
+V'(r_{\rm peak})=0,
+\qquad
+V''(r_{\rm peak})<0,
+\qquad
+V_{\rm peak}=V(r_{\rm peak}),
+\]
+then the finite-radius classical threshold speed is
+\[
+\boxed{
+v_{\rm crit,new}
+=
+\sqrt{\frac{2}{m_s}\bigl(V_{\rm peak}-V(r_0)\bigr)}.
+}
+\]
+
+For the pure Coulomb comparison,
+\[
+V_{\rm Coul}(r)=\frac1r,
+\]
+the contact threshold at the same launch radius is
+\[
+\boxed{
+v_{\rm contact,Coul}
+=
+\sqrt{\frac{2}{m_s}\left(\frac1{r_{\rm contact}}-\frac1{r_0}\right)}.
+}
+\]
+
+Hence the exact classical window theorem is
+\[
+\boxed{
+v_{\rm crit,new}<v_0<v_{\rm contact,Coul}
+\Longrightarrow
+\text{lowered branch reaches contact while Coulomb still turns back.}
+}
+\]
+
+For a subbarrier energy `\(V(r_0)<E<V_{\rm peak}\)`, the turning points are
+\[
+\boxed{
+V\bigl(r_-(E)\bigr)=E,
+\qquad
+V\bigl(r_+(E)\bigr)=E,
+}
+\]
+with exact transport law
+\[
+\boxed{
+\frac{dr_\pm}{dE}=\frac{1}{V'(r_\pm(E))}.
+}
+\]
+
+The WKB action and transmission factor are
+\[
+\boxed{
+I_{\rm new}(E)
+=
+\frac{1}{\hbar_{\rm eff}}
+\int_{r_-(E)}^{r_+(E)}
+\sqrt{2m_s\bigl(V(r)-E\bigr)}\,dr,
+\qquad
+T_{\rm new}(E)=e^{-2I_{\rm new}(E)}.
+}
+\]
+
+Against the pure-Coulomb reference,
+\[
+\boxed{
+\frac{T_{\rm new}(E)}{T_{\rm Coul}(E)}
+=
+\exp\!\bigl[-2\bigl(I_{\rm new}(E)-I_{\rm Coul}(E)\bigr)\bigr].
+}
+\]
+
+The turning-point event chain also carries two reduced diagnostics:
+\[
+\boxed{
+\Xi_{\rm turn}(E)=\Xi_1\bigl(r_+(E)\bigr),
+}
+\qquad
+\boxed{
+\lambda_{\rm th}(E)
+=
+\left|\frac{E}{V'(r_+(E))}\right|.
+}
+\]
+
+Near the peak,
+\[
+V(r)
+=
+V_{\rm peak}
+-\frac{K_{\rm peak}}{2}(r-r_{\rm peak})^2+\cdots,
+\qquad
+K_{\rm peak}:=-V''(r_{\rm peak})>0,
+\]
+so
+\[
+\boxed{
+I_{\rm top}(E)
+=
+\frac{\pi\Delta E}{\hbar_{\rm eff}}
+\sqrt{\frac{m_s}{K_{\rm peak}}}
++O(\Delta E^{3/2}),
+\qquad
+\Delta E:=V_{\rm peak}-E.
+}
+\]
+
+### 9.7 Conditional helicity-export diagnostic
+
+**Status:** `Exact Within Closure`
+
+The hidden-channel diagnostic carried by the parent projection algebra is
+\[
+\boxed{
+\frac{dH_{\rm sub}}{dt}
+=
+-\Phi_h-2\mathcal C_h,
+}
+\]
+where `\(H_{\rm sub}\)` is the unresolved projected helicity on the Stage-231
+event chain.
+
+Introduce the orientation closure label
+\[
+\sigma\in\{+1,-1\},
+\]
+and write
+\[
+\boxed{
+\dot H_{{\rm sub},\sigma}(t;E)
+=
+\Gamma_0(t;E)+\sigma\,\Gamma_1(t;E)
+=
+\Gamma_0(t;E)\bigl[1+\sigma\,\alpha_h(t;E)\bigr],
+}
+\]
+with
+\[
+\alpha_h:=\frac{\Gamma_1}{\Gamma_0}.
+\]
+
+Then the exact instantaneous and integrated comparison ratios are
+\[
+\boxed{
+R_{\rm inst}(t;E)
+=
+\frac{1+\alpha_h(t;E)}{1-\alpha_h(t;E)},
+\qquad
+\alpha_h=\frac{R_{\rm inst}-1}{R_{\rm inst}+1},
+}
+\]
+\[
+\boxed{
+R_{\rm int}(E)
+=
+\frac{1+\bar\alpha_h(E)}{1-\bar\alpha_h(E)},
+\qquad
+\bar\alpha_h=\frac{R_{\rm int}-1}{R_{\rm int}+1}.
+}
+\]
+
+So within the declared mixed/vortical closure the aligned-vs-anti-aligned
+preference is a one-scalar asymmetry problem. This remains a diagnostic
+unloading theorem, not yet a microscopic spin theorem.
+
+### 9.8 Crossing-vs-collapse / Goldilocks compiler
+
+**Status:** `Exact Within Closure`
+
+From the carried event chain,
+\[
+\dot r
+=
+-\sqrt{\frac{2}{m_s}\bigl(E-V(r)\bigr)},
+\]
+the exact path-time is
+\[
+\boxed{
+T_{\rm traj}(E;r_a\to r_b)
+=
+\sqrt{\frac{m_s}{2}}
+\int_{r_b}^{r_a}\frac{dr}{\sqrt{E-V(r)}}.
+}
+\]
+
+The Stage-233 characteristic-width closure compresses this to
+\[
+\boxed{
+t_{\rm cross}(E)
+=
+\lambda_{\rm eff}
+\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
+}
+\]
+
+On the active dressing leg, the local unstable normal form
+\[
+\mu_\eta\ddot V=g_{UV}\chi_{\rm peak}V
+\]
+gives the undamped collapse time
+\[
+\boxed{
+t_{\rm collapse}
+=
+\sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+}
+\]
+
+Hence the survival ratio is
+\[
+\boxed{
+\mathcal S(E)
+=
+\frac{t_{\rm cross}(E)}{t_{\rm collapse}}
+=
+\lambda_{\rm eff}
+\sqrt{\frac{m_s g_{UV}\chi_{\rm peak}}{2\mu_\eta(E-V_{\rm peak})}}.
+}
+\]
+
+The exact lower-edge theorem is
+\[
+\boxed{
+\mathcal S(E)<1
+\iff
+E>E_{\rm edge}
+:=
+V_{\rm peak}
++
+\frac{m_s}{\mu_\eta}
+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+}
+\]
+
+At fixed launch radius,
+\[
+E=\frac{m_s}{2}v_0^2+V(r_0),
+\]
+so the speed-space compiler becomes
+\[
+\boxed{
+v_{\rm safe,min}^2
+=
+v_{\rm crit,new}^2
++
+\frac{\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}}{\mu_\eta}.
+}
+\]
+
+On heavy-throat scaling
+\[
+\mu_\eta=\alpha m_s,
+\]
+the explicit mass dependence cancels:
+\[
+\boxed{
+E_{\rm edge}
+=
+V_{\rm peak}
++
+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2\alpha}.
+}
+\]
+
+So the wall-timescale story is controlled by
+\[
+\lambda_{\rm eff},\qquad
+\chi_{\rm peak},\qquad
+g_{UV},\qquad
+\mu_\eta/m_s,
+\]
+not by mass scaling alone.
+
+### 9.9 Microscopic cubic/quintic export kernel and safe surface
+
+**Status:** `Exact Within Closure`
+
+The first active-leg microscopic odd export channels are
+
+- a derivative-coupled scalar outlet, giving
+  \[
+  \boxed{
+  \Gamma_3
+  =
+  \Pi_{V0}^2\,
+  \gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+  }
+  \]
+- and the selected mixed quadrupole outlet, giving
+  \[
+  \boxed{
+  \Gamma_5
+  =
+  \Pi_{V-}^2\frac{a^5}{27c_s^5}P_{0,-}.
+  }
+  \]
+
+So the first microscopic export kernel is
+\[
+\boxed{
+\Sigma_{\rm exp}(\omega)
+=
+-i\Gamma_3\omega^3-i\Gamma_5\omega^5+O(\omega^7),
+}
+\]
+equivalently
+\[
+\boxed{
+K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5.
+}
+\]
+
+The homogeneous active-leg equation is
+\[
+\boxed{
+\mu_\eta\ddot V-\kappa_V V+\Gamma_3 V^{(3)}-\Gamma_5 V^{(5)}=0,
+\qquad
+\kappa_V:=g_{UV}\chi_{\rm peak}.
+}
+\]
+
+Its odd power input is exact:
+\[
+\boxed{
+\dot V F_{\rm odd}
+=
+\frac{d}{dt}\mathcal S_{\rm odd}
+-\Gamma_3\ddot V^{\,2}
+-\Gamma_5\dddot V^{\,2},
+}
+\]
+so the exported power after Schott subtraction is
+\[
+\boxed{
+\mathcal P_{\rm exp}
+=
+\Gamma_3\ddot V^{\,2}+\Gamma_5\dddot V^{\,2}\ge0.
+}
+\]
+
+For exponential growth `\(V\sim e^{st}\)`, the characteristic polynomial is
+\[
+\boxed{
+F(s)=\Gamma_5 s^5+\Gamma_3 s^3+\mu_\eta s^2-\kappa_V.
+}
+\]
+Because `\(F'(s)>0\)` for `\(s>0\)`, there is exactly one positive real growth
+root for any finite passive `\(\Gamma_3,\Gamma_5\ge0\)`. So the minimal
+microscopic kernel has no finite unconditional analogue of the Session-IV
+envelope threshold.
+
+What it **does** have is the exact event-safe surface
+\[
+\boxed{
+\Gamma_3 s_c^3+\Gamma_5 s_c^5
+\ge
+\mu_\eta(s_0^2-s_c^2),
+\qquad
+s_0:=\sqrt{\kappa_V/\mu_\eta},
+\qquad
+s_c:=\frac{1}{t_{\rm cross}}.
+}
+\]
+In normalized form,
+\[
+\boxed{
+\widehat\Gamma_3+s_c^2\widehat\Gamma_5
+\ge
+\frac{s_0^2-s_c^2}{s_c^3},
+\qquad
+\widehat\Gamma_n:=\Gamma_n/\mu_\eta.
+}
+\]
+
+### 9.10 Vacuum/lattice heat partition and cold-survival energy
+
+**Status:** `Exact Within Closure`
+
+Split the microscopic coefficients as
+\[
+\Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+\qquad
+\Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat}.
+\]
+
+For an arbitrary event window,
+\[
+\boxed{
+E_{\rm vac}(T)=\Gamma_3^{\rm vac}\mathcal I_2(T)+\Gamma_5^{\rm vac}\mathcal I_3(T),
+}
+\]
+\[
+\boxed{
+E_{\rm lat}(T)=\Gamma_3^{\rm lat}\mathcal I_2(T)+\Gamma_5^{\rm lat}\mathcal I_3(T),
+}
+\]
+with
+\[
+\mathcal I_2(T)=\int_0^T \ddot V^{\,2}dt,
+\qquad
+\mathcal I_3(T)=\int_0^T \dddot V^{\,2}dt.
+\]
+
+Define the exact shape quotient
+\[
+\boxed{
+\mathfrak r_V:=\frac{\mathcal I_3}{\mathcal I_2}.
+}
+\]
+Then the heat partition fractions are
+\[
+\boxed{
+f_{\rm vac}(\mathfrak r_V)
+=
+\frac{\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}\mathfrak r_V}
+{\Gamma_3+\Gamma_5\mathfrak r_V},
+\qquad
+f_{\rm lat}(\mathfrak r_V)
+=
+\frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}
+{\Gamma_3+\Gamma_5\mathfrak r_V}.
+}
+\]
+
+On the single-growth cold branch `\(V(t)=V_{\rm in}e^{st}\)`,
+\[
+\boxed{
+\mathfrak r_V=s^2,
+}
+\]
+and the event-equivalent rates are
+\[
+\boxed{
+\gamma_{\rm vac}^{\rm eq}(s)=\Gamma_3^{\rm vac}s^2+\Gamma_5^{\rm vac}s^4,
+\qquad
+\gamma_{\rm lat}^{\rm eq}(s)=\Gamma_3^{\rm lat}s^2+\Gamma_5^{\rm lat}s^4.
+}
+\]
+
+On the exact cold-survival edge,
+\[
+\Gamma_3 s_c^3+\Gamma_5 s_c^5=\mu_\eta(s_0^2-s_c^2),
+\]
+the minimum total exported energy is
+\[
+\boxed{
+E_{\rm exp,min}^{\rm safe}
+=
+\frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2),
+}
+\]
+with channel-resolved shares
+\[
+\boxed{
+E_{\rm vac/lat,min}^{\rm safe}
+=
+f_{\rm vac/lat}(s_c)\,
+\frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2).
+}
+\]
+
+The safe-edge event-equivalent lattice rate is therefore
+\[
+\boxed{
+\gamma_{\rm lat,safe}^{\rm eq}
+=
+f_{\rm lat}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+}
+\]
+
+The old Session-IV `\(3:1\)` split is now an exact coefficient surface:
+\[
+\boxed{
+f_{\rm lat}(s_c)=\frac34
+\iff
+\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}s_c^2
+=
+3\bigl(\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}s_c^2\bigr).
+}
+\]
+A speed-independent `\(3:1\)` family exists iff the same fraction holds in both
+channels,
+\[
+\Gamma_3^{\rm lat}=\frac34\Gamma_3,
+\qquad
+\Gamma_5^{\rm lat}=\frac34\Gamma_5.
+\]
+
+### 9.11 Physical calibration and material-screening companion
+
+**Status:** `Reduced / Controlled Reduction`
+
+Use the physical calibration dictionary
+\[
+\boxed{
+t^{\rm phys}=t_*\,t,
+\qquad
+r^{\rm phys}=\frac{\lambda_{\rm phys}}{\lambda_{\rm ref}}\,r,
+\qquad
+E^{\rm phys}=E_*\,E.
+}
+\]
+
+The exact lattice-turnover threshold is then
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,t_*},
+}
+\]
+or equivalently
+\[
+\boxed{
+(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{(236)}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,s_c}.
+}
+\]
+
+At the turning point,
+\[
+\boxed{
+\chi_{\lambda,\rm lattice}(r_{\rm turn})
+=
+\frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+}
+\]
+This is a pure geometry ratio; it does **not** determine a stiffness by itself.
+
+The force-matched stiffness compiler is
+\[
+\boxed{
+k_{\rm eff,req}
+=
+\mathcal K_{\rm turn}\,\frac{E_*}{\lambda_{\rm phys}^2},
+\qquad
+\mathcal K_{\rm turn}
+:=
+\frac{\lambda_{\rm ref}^2}{r_{\rm turn}}|V_{\rm red}'(r_{\rm turn})|.
+}
+\]
+
+The Korringa-limited spin-survival ceiling is
+\[
+\boxed{
+T_{\max}
+=
+\frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+=
+\frac{s_c\,\mathcal K_{\rm corr}}{t_*}.
+}
+\]
+
+Stage 236 then packages the condensed-matter screen into four exact ratios:
+\[
+\boxed{
+\Pi_{\rm ep}
+:=
+\frac{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D\,t_*}
+{\gamma_{\rm lat,safe}^{\rm eq}}
+=
+\frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}},
+}
+\]
+\[
+\boxed{
+\Pi_\chi
+:=
+\chi_{\lambda,\rm lattice}(r_{\rm turn}),
+}
+\]
+\[
+\boxed{
+\Pi_k
+:=
+\frac{k_{\rm eff}\,\lambda_{\rm phys}^2}{\mathcal K_{\rm turn}E_*}
+=
+\frac{k_{\rm eff}}{k_{\rm eff,req}},
+}
+\]
+\[
+\boxed{
+\Pi_T(T)
+:=
+\frac{\mathcal K_{\rm corr}}{T\,t_{\rm cross}^{\rm phys}}
+=
+\frac{T_{\max}}{T}.
+}
+\]
+
+A candidate host survives the Stage-236 companion screen only if
+\[
+\boxed{
+\Pi_{\rm ep}\ge1,
+\qquad
+\Pi_\chi\ge1,
+\qquad
+\Pi_k\ge1,
+\qquad
+\Pi_T(T)\ge1.
+}
+\]
+
+### 9.12 Global reading of the `226-236` extension
+
+**Status:** `Open`
+
+The post-225 extension does **not** overturn the earlier same-charge verdict.
+It leaves intact:
+
+- the no-new-long-range-kernel theorem,
+- the rigid-mouth / selected-support front-end packet,
+- the Packet-A finish line and actual-prefactor ceiling,
+- and the back-end graph/orbit compiler.
+
+What it does add is a controlled companion branch around that front end:
+
+1. a codimension-three relaxed lift
+   \[
+   (J^w,\ U/V,\ \varsigma),
+   \]
+2. an explicit lowered stationary front end `\(V_{\rm eff}^{(230)}\)`,
+3. a complete reduced event chain with threshold, turning-point, WKB, and
+   Goldilocks compilers,
+4. a hidden-channel unloading diagnostic,
+5. a microscopic cubic/quintic export kernel with exact event-safe surface,
+6. a channel-resolved heat-partition law,
+7. and a four-inequality material-screening companion.
+
+So the extension should be read as a **short-range/open-system barrier and
+materials companion**, not as a replacement for the strict selected-branch
+Packet-A / Packet-B realization program.
+
+On that companion branch the live open objects are now the realized coefficients
+and calibration data
+\[
+\eta_{\rm leak},
+\qquad
+f_U,\ \chi_{UV},
+\qquad
+(a,b)\ \text{or}\ (\mathfrak g,\mathcal S,\mathcal R),
+\qquad
+\Gamma_3,\Gamma_5,
+\]
+\[
+\Gamma_3^{\rm vac/lat},\ \Gamma_5^{\rm vac/lat},
+\qquad
+t_*,\ \lambda_{\rm phys},\ E_*,\ \Upsilon_{\rm lat},\ \mathcal K_{\rm corr},
+\]
+rather than more missing symbolic compilers.
+
+
+## 10. Final Theorem Ledger
+
+### 10.1 Exact parent-theory statements
 
 **Status:** `Exact`
 
@@ -3576,7 +4727,7 @@ currently has.
 - Nothing in the later reduced hierarchy changes those parent equations; all
   later reductions are branch-specific or closure-specific consequences.
 
-### 9.2 Exact results within explicit reduced closures
+### 10.2 Exact results within explicit reduced closures
 
 **Status:** `Exact Within Closure`
 
@@ -3612,8 +4763,18 @@ currently has.
   `(U,V)`, the physical-to-microscopic dependent compiler, the exact support
   slice `\(\rho_\alpha=4/3\)`, the selected twin-support ranking theorem, and the
   actual placement / support-versus-orbit packet compiler.
+- The post-225 relaxed/open-system barrier companion is now also exact within the
+  carried reduced hierarchy where stated:
+  the codimension-three relaxed-branch declaration and recovery slice,
+  the selected-branch leakage/work compiler, the finite non-rigid `U/V`
+  compiler, the compensated two-mode source compiler, the dynamic
+  event-chain/turning-point/WKB compiler, the conditional unresolved-helicity
+  export diagnostic, the Goldilocks lower-edge theorem, the microscopic
+  cubic/quintic export kernel with exact event-safe surface, the channel-resolved
+  vacuum/lattice heat-partition law, and the Stage-236 material-screening
+  companion invariants.
 
-### 9.3 Numerically located branch data
+### 10.3 Numerically located branch data
 
 **Status:** `Numerically Located`
 
@@ -3655,7 +4816,7 @@ currently has.
   \Pi_{\rm can}\approx 3.8715643774790087.
   \]
 
-### 9.4 Reduced endpoint statements now fixed by the updated compiler
+### 10.4 Reduced endpoint statements now fixed by the updated compiler
 
 **Status:** `Reduced / Controlled Reduction`
 
@@ -3767,6 +4928,69 @@ currently has.
   N_Q-1
   \Bigr),
   \]
+- The relaxed/open-system continuation now has an explicit codimension-three lift
+  of the selected-branch front end,
+  \[
+  \mathfrak B_{226}^{\rm relax}
+  =
+  \{(\mathcal P_{225},\mathcal S_{225});L_w,L_{UV},L_\varsigma\},
+  \]
+  with exact recovery slice
+  \[
+  \ell_w=f_U=a=b=0.
+  \]
+- Its carried stationary lowered front end is
+  \[
+  V_{\rm eff}^{(230)}(r)
+  =
+  V_{\rm short}^{(1p)}(r)
+  -
+  \lambda_L S_{\rm leak}(r)
+  -
+  \lambda_W\mathcal W_w^{\rm sess}(r)
+  -
+  \Delta E_{UV}(r)
+  -
+  \mathcal M_{\sigma,\rm red}(r),
+  \]
+  and its dynamic continuation already supplies
+  \[
+  (r_{\rm peak},V_{\rm peak}),\quad
+  v_{\rm crit,new},\quad
+  r_\pm(E),\quad
+  I_{\rm new}(E),\quad
+  \Xi_{\rm turn}(E),\quad
+  \lambda_{\rm th}(E).
+  \]
+- On the relaxed branch the hidden-channel unloading diagnostic is the one-scalar
+  asymmetry problem
+  \[
+  \dot H_{{\rm sub},\sigma}=\Gamma_0(1+\sigma\alpha_h),
+  \]
+  while the active `V`-leg export law is the super-Ohmic kernel
+  \[
+  K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5,
+  \]
+  with exact event-safe surface
+  \[
+  \Gamma_3 s_c^3+\Gamma_5 s_c^5
+  \ge
+  \mu_\eta(s_0^2-s_c^2).
+  \]
+- The Stage-236 materials companion is now organized by the exact inequality stack
+  \[
+  \Pi_{\rm ep}\ge1,
+  \qquad
+  \Pi_\chi\ge1,
+  \qquad
+  \Pi_k\ge1,
+  \qquad
+  \Pi_T(T)\ge1,
+  \]
+  together with the calibration dictionary
+  \[
+  (t_*,\lambda_{\rm phys},E_*,\Upsilon_{\rm lat}).
+  \]
   with separate support packet
   \[
   (\zeta,\ M_{\rm mix},\ S(\zeta;\epsilon),\ M_{\rm tr}).
@@ -3779,10 +5003,14 @@ currently has.
   mixed-ray charts. The local search sieve remains exact, but it is no longer
   the front-line bottleneck.
 
-### 9.5 Practical global verdict
+### 10.5 Practical global verdict
 
 **Status:** `Open`
 
+- None of the post-225 relaxed/open-system stages changes the earlier one-port
+  same-charge verdict: there is still no new static long-range attractive family
+  and no new linear dynamic conservative kernel class. The relaxed branch remains
+  a short-range/open-system companion around the strict selected-support front end.
 - There is currently no known algebraic blocker, no known stale-notation
   obstruction, no missing Packet-A compiler step, no remaining support-selection
   ambiguity on the passive/outgoing side, no hidden same-charge long-range kernel
@@ -3807,15 +5035,32 @@ currently has.
   bottleneck is now: selected support placement, actual `\Xi_1` placement, and
   rigid-mouth orbit lock on the realized branch.
 
+- If one follows the Stage-226-236 companion branch rather than staying on the
+  strict Stage-225 slice, the active open objects are no longer symbolic closure
+  formulas but realized coefficients and calibration data:
+  \[
+  \eta_{\rm leak},
+  \quad
+  f_U,\chi_{UV},
+  \quad
+  (a,b)\ 	ext{or}\ (\mathfrak g,\mathcal S,\mathcal R),
+  \quad
+  \Gamma_3,\Gamma_5,
+  \]
+  \[
+  \Gamma_3^{\rm vac/lat},\ \Gamma_5^{\rm vac/lat},
+  \qquad
+  t_*,\ \lambda_{\rm phys},\ E_*,\ \Upsilon_{\rm lat},\ \mathcal K_{\rm corr}.
+  \]
 So the active bottleneck is no longer compression. It is realization of the
 same combined support / orbit / outgoing packet on the true moving-throat branch.
 
 
-## 10. Open Realization Gap
+## 11. Open Realization Gap
 
 The remaining gap is now concentrated and explicit.
 
-### 10.1 What is no longer the main risk
+### 11.1 What is no longer the main risk
 
 - not dropped factors, sign mistakes, or stale symbolic algebra,
 - not disagreement about the grouped trace/anomaly projectors,
@@ -3828,8 +5073,39 @@ The remaining gap is now concentrated and explicit.
   repair map,
 - not unfinished support-cardinality combinatorics in the local mixed-ray search.
 
-### 10.2 What is still genuinely open
+### 11.2 What is still genuinely open
 
+- If the relaxed/open-system companion is kept, the realized Stage-226-230
+  branch data are also genuinely open:
+  \[
+  \eta_{\rm leak},
+  \qquad
+  f_U,\ \chi_{UV},
+  \qquad
+  (a,b)\ 	ext{or}\ (\mathfrak g,\mathcal S,\mathcal R),
+  \]
+  together with the resulting lowered front end
+  \[
+  V_{\rm eff}^{(230)}(r)
+  \quad	ext{and its dynamic tags}\quad
+  (r_{\rm peak},V_{\rm peak},r_\pm,I_{\rm new},\Xi_{\rm turn},\lambda_{\rm th}).
+  \]
+- The realized microscopic export coefficients and their physical split remain open:
+  \[
+  \Gamma_3,\ \Gamma_5,
+  \qquad
+  \Gamma_3^{\rm vac/lat},\ \Gamma_5^{\rm vac/lat},
+  \]
+  as do the channel-resolved heat fractions and the exact cold-event shape quotient
+  on the realized branch.
+- The physical calibration dictionary of the material-screening companion is still open:
+  \[
+  t_*,\ \lambda_{\rm phys},\ E_*,\ \Upsilon_{\rm lat},\ \mathcal K_{\rm corr},
+  \]
+  and therefore so are the final host-screening ratios
+  \[
+  \Pi_{\rm ep},\ \Pi_\chi,\ \Pi_k,\ \Pi_T.
+  \]
 - The actual one-port reduced branch data, or any exactly equivalent physical
   packet, on the realized moving-throat branch:
   \[
@@ -3878,7 +5154,7 @@ The remaining gap is now concentrated and explicit.
   now-finite local mixed-ray search ledger if the back-end graph repair audit is
   still needed after the front-end branch test.
 
-### 10.3 How to read the current program honestly
+### 11.3 How to read the current program honestly
 
 - The document now supports the claim that there is a mathematically coherent
   reduced derivation chain from the parent PDE setup to an exact Packet-A finish
@@ -3891,9 +5167,9 @@ The remaining gap is now concentrated and explicit.
   isolated realization gap.
 
 
-## 11. Quick Translation Dictionary
+## 12. Quick Translation Dictionary
 
-### 11.1 Core fields and brane reduction hooks
+### 12.1 Core fields and brane reduction hooks
 
 The exact parent fields are
 \[
@@ -3926,7 +5202,7 @@ In the quasi-static longitudinal regime,
 \]
 and \(\varphi\) is the brane velocity-potential / Poisson-hook variable.
 
-### 11.2 Moving-throat geometry variables
+### 12.2 Moving-throat geometry variables
 
 The moving throat is represented by the level-set / shape field
 \[
@@ -3949,7 +5225,7 @@ a(t),\qquad L(t)
 are collective moments of the moving-throat field, not the fundamental geometry
 variables.
 
-### 11.3 Harmonic and grouped real `P2` variables
+### 12.3 Harmonic and grouped real `P2` variables
 
 The mouth-sphere harmonic decomposition is
 \[
@@ -3984,7 +5260,7 @@ P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
 P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
 \]
 
-### 11.4 Family-1 mouth/core variables
+### 12.4 Family-1 mouth/core variables
 
 The throat-core closure variables are
 \[
@@ -4018,7 +5294,7 @@ So:
 - \(\mathcal S\) is the mouth-profile quadrupole overlap,
 - \(\Pi\) is the mouth slope / bias variable.
 
-### 11.5 Coherent local-kernel variables
+### 12.5 Coherent local-kernel variables
 
 The coherent reduced hierarchy is organized by
 \[
@@ -4050,7 +5326,7 @@ S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon},
 \epsilon=\epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
 \]
 
-### 11.6 Microscopic grouped defect variables
+### 12.6 Microscopic grouped defect variables
 
 The positive coherent microscopic state is
 \[
@@ -4111,7 +5387,7 @@ and they satisfy the exact triangular normal form
 \mathcal R_1+\Xi_1 \leftrightarrow \Sigma_\eta.
 \]
 
-### 11.7 Final invariant variables
+### 12.7 Final invariant variables
 
 The final reduced coherent invariant coordinates are
 \[
@@ -4135,7 +5411,7 @@ Inside the reduced coherent hierarchy, these are the three quotient coordinates
 carried by the final invariant theorem.
 
 
-### 11.8 Branch-observable, transfer-shape, and rigid-mouth physical packet
+### 12.8 Branch-observable, transfer-shape, and rigid-mouth physical packet
 
 The Stage-171 PDE-facing observable packet is
 \[
@@ -4199,7 +5475,7 @@ q_\eta=V.
 So the actual rigid-mouth branch is charted directly by the physical pair
 `(U,V)` rather than by a triangular quotient representation.
 
-### 11.9 Packet-A finish-line and actual prefactor-ceiling variables
+### 12.9 Packet-A finish-line and actual prefactor-ceiling variables
 
 Packet A is no longer best thought of as an eight-slot branch residual at theorem
 order. Its exact conservative front end is the isotropic one-pole grouped-real
@@ -4267,7 +5543,7 @@ So Packet A now has two front-end faces:
 - the isotropic outgoing finish line `\(\chi_Q=1\)`,
 - the transported actual-branch prefactor ceiling in `\((\Delta_{\rm norm},\Xi_1)\)`.
 
-### 11.10 Packet-B orbit / graph variables and actual placement packet
+### 12.10 Packet-B orbit / graph variables and actual placement packet
 
 Important notation firewall:
 \[
@@ -4384,7 +5660,7 @@ with separate support packet
 So Packet B still has the exact graph/orbit backend, but it now also has a
 concrete actual-branch front-end placement chart.
 
-### 11.11 Free-quintuple graph and local search variables
+### 12.11 Free-quintuple graph and local search variables
 
 The free quintuple is
 \[
@@ -4429,3 +5705,122 @@ splice
 \]
 The preferred full evaluation budget is `1464`, with fallback `2640`.
 
+### 12.12 Relaxed/open-system barrier companion variables
+
+The post-225 relaxed branch is organized by three lifted lanes:
+\[
+L_w=(S_{\rm leak},\mathcal W_w),
+\qquad
+L_{UV}=(U,V,\mathcal D_{UV}),
+\qquad
+L_\varsigma=(\varsigma,\varsigma_{\min},\mathrm{signchg}).
+\]
+
+The selected-support leakage/work compiler uses
+\[
+\Pi_{\rm tr},
+\qquad
+\eta_{\rm leak},
+\qquad
+S_{\rm leak},
+\qquad
+\mathcal W_w^{\rm bulk},
+\qquad
+\mathcal W_w^{\rm sess}.
+\]
+
+The orbit-side non-rigid packet uses
+\[
+a_U,\qquad
+a_V,\qquad
+\chi_{UV},\qquad
+\Delta_{UV}=a_Ua_V-\chi_{UV}^2,
+\]
+\[
+U=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\qquad
+V=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}},
+\qquad
+\mathcal D_{UV}=\chi_{UV}UV.
+\]
+
+The compensated source packet uses
+\[
+\varsigma(x;r)=1+a(r)\cos(\pi x)+b(r)\cos(2\pi x),
+\]
+\[
+\mathfrak g[\varsigma],\qquad
+\mathcal S[\varsigma],\qquad
+\mathcal R[\varsigma],
+\qquad
+\mathcal M_\sigma^{\rm pack}(r).
+\]
+
+The carried lowered stationary front end is
+\[
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-\lambda_L S_{\rm leak}(r)
+-\lambda_W\mathcal W_w^{\rm sess}(r)
+-\Delta E_{UV}(r)
+-\mathcal M_{\sigma,\rm red}(r).
+\]
+
+Its dynamic event-chain variables are
+\[
+r_{\rm peak},\qquad
+V_{\rm peak},\qquad
+v_{\rm crit,new},\qquad
+r_\pm(E),\qquad
+I_{\rm new}(E),\qquad
+\Xi_{\rm turn}(E),\qquad
+\lambda_{\rm th}(E).
+\]
+
+The wall-timescale / unloading / export variables are
+\[
+t_{\rm cross},\qquad
+t_{\rm collapse},\qquad
+\mathcal S(E),\qquad
+E_{\rm edge},\qquad
+v_{\rm safe,min},
+\]
+\[
+\alpha_h,\qquad
+R_{\rm inst},\qquad
+R_{\rm int},
+\qquad
+\Gamma_3,\qquad
+\Gamma_5,
+\qquad
+K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5.
+\]
+
+The heat-partition / materials-companion variables are
+\[
+\Gamma_3^{\rm vac/lat},\qquad
+\Gamma_5^{\rm vac/lat},\qquad
+\mathfrak r_V,\qquad
+f_{\rm vac},\qquad
+f_{\rm lat},
+\]
+\[
+\gamma_{\rm vac}^{\rm eq}(s),\qquad
+\gamma_{\rm lat}^{\rm eq}(s),\qquad
+\gamma_{\rm lat,safe}^{\rm eq},
+\]
+\[
+t_*,\qquad
+\lambda_{\rm phys},\qquad
+E_*,\qquad
+\Upsilon_{\rm lat},\qquad
+\mathcal K_{\rm turn},\qquad
+\mathcal K_{\rm corr},
+\]
+\[
+\Pi_{\rm ep},\qquad
+\Pi_\chi,\qquad
+\Pi_k,\qquad
+\Pi_T(T).
+\]

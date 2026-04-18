@@ -1,6 +1,4 @@
-
-=== moving_throat_pde_stage001_geometry_lift.md ===
-
+moving_throat_pde_stage001_geometry_lift.md
 # Moving-Throat PDE — Stage 1 Geometry Lift and Linearized PDE Skeleton
 
 ## 0. What this note does
@@ -511,9 +509,7 @@ The next real calculation should be:
 4. then add the BdG + Maxwell couplings and track how the pole locations and low-frequency coefficients shift.
 
 That is the first point where the moving-throat PDE stops being a slogan and starts producing the observables the current hierarchy still leaves open.
-
-=== moving_throat_pde_stage002_breathing_reduction.md ===
-
+moving_throat_pde_stage002_breathing_reduction.md
 # Moving-Throat PDE — Phase 2A Breathing Reduction Back to the Old `(a,L)` Closure
 
 ## Purpose
@@ -697,9 +693,7 @@ The accompanying SymPy audit verifies the concrete algebraic claims used here:
 
 Supporting file:
 - `moving_throat_pde_master_sympy_audit.py`
-
-=== moving_throat_pde_stage003_bdg_coupling.md ===
-
+moving_throat_pde_stage003_bdg_coupling.md
 
 # Moving-Throat PDE — Stage 3: Minimal BdG–Wall Coupling and First Pole Shifts
 
@@ -1173,9 +1167,7 @@ The next clean move is now well defined:
 4. and identify which part of that enlarged system can generate the passive/outgoing branch needed for the final quadrupole normalization.
 
 That is the first point where the moving-throat PDE program can start touching the actual remaining 2.5PN/4PN bridge instead of only its conservative front end.
-
-=== moving_throat_pde_stage004_maxwell_mixed_response.md ===
-
+moving_throat_pde_stage004_maxwell_mixed_response.md
 # Moving-Throat PDE — Stage 4: Localized Maxwell + Mixed-Sector Reduction and the First Honest Outgoing Quadrupole Bridge
 
 ## Purpose
@@ -1517,9 +1509,7 @@ Instead:
 4. and then evaluate the outgoing quadrupole normalization product on the isotropic branch.
 
 That is the smallest next theorem target that directly attacks the remaining 2.5PN/4PN bottleneck rather than only reorganizing the conservative input data.
-
-=== moving_throat_pde_stage005_grouped_p2_normalization_bridge.md ===
-
+moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
 # Moving-Throat PDE — Stage 5: Grouped Real `P2` Bundle and the Normalized Outgoing-Quadrupole Bridge
 
 ## Purpose
@@ -1856,9 +1846,7 @@ Instead:
 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
 
 That is the smallest next theorem gate that directly attacks the remaining 2.5PN/4PN bottleneck.
-
-=== moving_throat_pde_stage006_full_grouped_bundle.md ===
-
+moving_throat_pde_stage006_full_grouped_bundle.md
 # Moving-Throat PDE — Stage 6: Full Grouped Real `P2` Bundle, Exact Projectors, and the Isotropic Normalization Test
 
 ## Purpose
@@ -2326,9 +2314,7 @@ Instead:
 against the universal target.
 
 That is now the smallest honest next theorem gate.
-
-=== moving_throat_pde_stage007_overlap_isotropy.md ===
-
+moving_throat_pde_stage007_overlap_isotropy.md
 # Moving-Throat PDE — Stage 7: Explicit Overlap Integrals, the `O(3)` Isotropy Theorem, and the First Axisymmetric Splitting Law
 
 ## Purpose
@@ -2702,9 +2688,7 @@ It is now:
 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-7 angular fingerprints.
 
 That is a real tightening of the theorem target.
-
-=== moving_throat_pde_stage008_minimal_isotropic_normalization.md ===
-
+moving_throat_pde_stage008_minimal_isotropic_normalization.md
 # Moving-Throat PDE — Stage 8: Minimal Isotropic Single-Mode Closure and the Explicit Normalization Formula
 
 ## Purpose
@@ -2943,9 +2927,7 @@ On the minimal isotropic branch, the remaining higher-order bridge is the one sc
 `mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.
 
 That is the sharpest reduced theorem target reached so far.
-
-=== moving_throat_pde_stage009_concrete_axial_overlaps.md ===
-
+moving_throat_pde_stage009_concrete_axial_overlaps.md
 # Moving-Throat PDE — Stage 9: Concrete Finite-Throat Axial Modes, Exact Overlap Constants, and the First Branch-Level Normalization Test
 
 ## Purpose
@@ -3242,9 +3224,7 @@ So the next honest step is no longer to “invent more overlap algebra.”
 It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether a different wall-profile family is forced by the full PDE.
 
 Either way, the theorem target is now much sharper than it was at the end of Stage 8.
-
-=== moving_throat_pde_stage010_nonconstant_axial_family.md ===
-
+moving_throat_pde_stage010_nonconstant_axial_family.md
 # Moving-Throat PDE — Stage 10: First Nonconstant Finite-Throat Wall/Brane Family, Exact Overlap Law, and the Profile-Selection Theorem Gate
 
 ## Purpose
@@ -3587,9 +3567,7 @@ The sharper question is now
 > what axial profile does the real moving-throat eigenproblem actually select, and does that profile keep enough overlap with the D/N support/mixed half-wave to satisfy the outgoing quadrupole normalization equation?
 
 The next honest derivation step is therefore to stop choosing the profile family by hand and solve the first actual axial wall eigenproblem with the matter/gauge loading included, so that the profile angle `theta` is no longer free but is an output of the reduced moving-throat operator itself.
-
-=== moving_throat_pde_stage011_loaded_profile_selection.md ===
-
+moving_throat_pde_stage011_loaded_profile_selection.md
 # Moving-Throat PDE — Stage 11: Loaded Axial Profile Selection, Exact 2x2 Eigenproblem, and Why the Blind-Angle Branch Is Dynamically Disfavored
 
 ## Purpose
@@ -3884,9 +3862,7 @@ So the next honest derivation step is now very sharply defined:
 
 At this point the roadmap is no longer “invent a PDE.”
 It is starting to look like a specific spectral problem.
-
-=== moving_throat_pde_stage012_dynamic_loading.md ===
-
+moving_throat_pde_stage012_dynamic_loading.md
 # Moving-Throat PDE — Stage 12: Exact Dynamic Loading from the Coupled Wall/BdG/Maxwell/Mixed Operator, and the First Selected-Mode Quadrupole Damping Coefficient
 
 ## Purpose
@@ -4218,9 +4194,7 @@ What remains is now much sharper:
 That is a much smaller theorem gap than we had before.
 It is no longer “derive some PDE loading somehow.”
 It is a specific spectral-transfer problem.
-
-=== moving_throat_pde_stage013_selected_mode_normalization.md ===
-
+moving_throat_pde_stage013_selected_mode_normalization.md
 # Moving-Throat PDE — Stage 13: Selected-Mode Normalized Response, Exact Static Prefactor, and the Selected-Branch Quadrupole Target
 
 ## Purpose
@@ -4469,9 +4443,7 @@ And the full selected-branch normalization theorem is simply
 That is the cleanest selected-mode formulation we have reached so far.
 The next honest step is no longer to invent another reduced parameter.
 It is to determine whether the physical stable branch can actually reach this target in a controlled way.
-
-=== moving_throat_pde_stage014_selected_branch_reachability.md ===
-
+moving_throat_pde_stage014_selected_branch_reachability.md
 # Moving-Throat PDE — Stage 14: Selected-Branch Reachability, Monotonicity, and the Stable-Side Normalization Window
 
 ## Purpose
@@ -4654,9 +4626,7 @@ It is now the following exact test:
 4. and check whether the resulting stable-side crossing sits on the natural passive/outgoing branch with `alpha_0 < alpha_crit`.
 
 So the theorem gap is now a controlled spectral-placement problem, not an algebraic unknown.
-
-=== moving_throat_pde_stage015_source_map_from_mode_integrals.md ===
-
+moving_throat_pde_stage015_source_map_from_mode_integrals.md
 # Moving-Throat PDE — Stage 15: Explicit Finite-Throat Mode Integrals, Kernel-Level Couplings, and Elimination of the Abstract Selected-Branch Source Map
 
 ## Purpose
@@ -4940,9 +4910,7 @@ but rather
 - “selected stiffness plus selected overlap plus the explicit mixed-sector transfer factor.”
 
 The next honest step is therefore to write the full selected-branch normalization equation directly in microscopic coupling language and see what exact stability and reachability constraints it imposes.
-
-=== moving_throat_pde_stage016_microscopic_normalization_equation.md ===
-
+moving_throat_pde_stage016_microscopic_normalization_equation.md
 # Moving-Throat PDE — Stage 16: Microscopic Selected-Branch Normalization Equation, Exact Stability Gate, and the First Coupling-Level Onset Criterion
 
 ## Purpose
@@ -5194,9 +5162,7 @@ The first explicit finite-throat kernel model has reduced the theorem gap to:
 
 So the open problem is no longer hidden in a free source map or a generic tuning story.
 It is an explicit coupling-level spectral-placement problem on the selected stable quadrupole branch.
-
-=== moving_throat_pde_stage017_softening_depth_normal_form.md ===
-
+moving_throat_pde_stage017_softening_depth_normal_form.md
 # Moving-Throat PDE — Stage 17: Softening-Depth Normal Form, Exact Secular Reduction, and Elimination of the Selected-Mode Eigenvector Algebra
 
 ## Purpose
@@ -5386,9 +5352,7 @@ Once that is known,
 
 So the remaining gap is no longer hidden in eigenvector algebra.
 It is a scalar branch-placement problem.
-
-=== moving_throat_pde_stage018_dimensionless_normalization_locus.md ===
-
+moving_throat_pde_stage018_dimensionless_normalization_locus.md
 # Moving-Throat PDE — Stage 18: Dimensionless D/N Shape Function, Unique Normalization Locus, and Exact Required Support Coupling
 
 ## Purpose
@@ -5605,9 +5569,7 @@ Once those are known,
 
 So the open problem is no longer a vague multi-parameter search.
 It is now a one-dimensional universal D/N branch-shape problem plus one exact support-coupling feasibility check.
-
-=== moving_throat_pde_stage019_support_feasibility_frontier.md ===
-
+moving_throat_pde_stage019_support_feasibility_frontier.md
 # Moving-Throat PDE — Stage 19: Dimensionless Support-Feasibility Frontier for the Selected Quadrupole Branch
 
 ## Purpose
@@ -5771,9 +5733,7 @@ not even “find the right branch stiffness,”
 but simply:
 
 > does the completed moving-throat PDE place the physical defect on the exact admissible region of the universal `(F,G)` branch geometry?
-
-=== moving_throat_pde_stage020_continuum_kernel_extraction.md ===
-
+moving_throat_pde_stage020_continuum_kernel_extraction.md
 # Moving-Throat PDE — Stage 20: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`
 
 ## Purpose
@@ -6089,9 +6049,7 @@ So the remaining task is no longer “invent microscopic inputs.”
 It is:
 
 > determine whether the completed moving-throat PDE places the actual defect on the admissible Stage-18/19 branch geometry generated by these continuum-kernel quantities.
-
-=== moving_throat_pde_stage021_dimensionless_continuum_placement.md ===
-
+moving_throat_pde_stage021_dimensionless_continuum_placement.md
 # Moving-Throat PDE — Stage 21: Dimensionless Continuum Placement Map, Exact Product Relation, and the Three-Lane Factorization of the Selected Quadrupole Branch
 
 ## Purpose
@@ -6320,9 +6278,7 @@ It is no longer:
 It is:
 
 > compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat PDE and check whether the resulting point lies inside the exact Stage-18/19 admissible region.
-
-=== moving_throat_pde_stage022_split_u_sector.md ===
-
+moving_throat_pde_stage022_split_u_sector.md
 # Moving-Throat PDE — Stage 22: First Non-Flat `U` Doublet, Exact Split Continuum Map, and the Direction-Splitting Theorem
 
 ## Purpose
@@ -6580,9 +6536,7 @@ The next theorem problem is:
 > how does the selected-branch normalization law deform when the source vector and the loading vector are no longer the same?
 
 That is the target of Stage 23.
-
-=== moving_throat_pde_stage023_generalized_selected_branch.md ===
-
+moving_throat_pde_stage023_generalized_selected_branch.md
 # Moving-Throat PDE — Stage 23: Generalized Selected-Branch Normalization with Source/Loading Mismatch
 
 ## Purpose
@@ -6811,9 +6765,7 @@ The next step is:
 > determine how the additional support/BdG loading enters the now noncollinear selected-branch geometry, and whether the physical support direction tracks the deformed loading vector or remains tied to the original source vector.
 
 That is the first place where the old Stage-19 support-feasibility theorem may need a true rank-2 extension.
-
-=== moving_throat_pde_stage024_rank2_support_completion.md ===
-
+moving_throat_pde_stage024_rank2_support_completion.md
 # Moving-Throat PDE — Stage 24: Rank-2 Support Completion and the Exact Support-Loading Theorem
 
 ## Purpose
@@ -7067,9 +7019,7 @@ If it aligns with `z`, the Stage-23 one-parameter deformation is already the who
 If it stays tied to `v`, the branch acquires a new exact rank-2 support-feasibility window.
 
 That is the next theorem gate the completed moving-throat operator has to decide.
-
-=== moving_throat_pde_stage025_rank2_selected_mode_normalization.md ===
-
+moving_throat_pde_stage025_rank2_selected_mode_normalization.md
 # Moving-Throat PDE — Stage 25: Selected-Mode Normalization Under Rank-2 Support Completion
 
 ## Purpose
@@ -7305,9 +7255,7 @@ The open PDE-side theorem question is therefore no longer diffuse:
 > compute the actual projected support/BdG loading direction from the moving-throat operator and determine whether the physical kernel lands on the tracking closure or the source-tied closure.
 
 That is now the sharp reduced theorem gate for the next stage.
-
-=== moving_throat_pde_stage026_support_direction_extraction.md ===
-
+moving_throat_pde_stage026_support_direction_extraction.md
 # Moving-Throat PDE — Stage 26: Continuum Extraction of the Actual Support/BdG Loading Direction
 
 ## Purpose
@@ -7559,9 +7507,7 @@ So the next theorem step is no longer “guess the support direction.”
 It is:
 
 > insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-24/25 selected-branch formulas and determine the physical selected branch.
-
-=== moving_throat_pde_stage027_continuum_selected_rank2_closure.md ===
-
+moving_throat_pde_stage027_continuum_selected_rank2_closure.md
 # Moving-Throat PDE — Stage 27: Continuum-Selected Rank-2 Closure and the Exact Quadratic Branch Equation
 
 ## Purpose
@@ -7831,9 +7777,7 @@ It is to evaluate the continuum-selected residual
 `R_target - F_cont(xi_phys)`
 
 on concrete kernel data from the moving-throat operator.
-
-=== moving_throat_pde_stage028_coherent_local_tracking.md ===
-
+moving_throat_pde_stage028_coherent_local_tracking.md
 # Moving-Throat PDE — Stage 28: Coherent Local D/N Support Kernel and the Exact Tracking Reduction
 
 ## Purpose
@@ -8082,9 +8026,7 @@ This is the first exact “concrete-kernel” form of the normalization test.
 The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
 
 So the next theorem step is no longer to resolve the rank-2 closure ambiguity. That is now done for the first concrete local kernel. The next step is to evaluate how this physical tracking branch compares with the old flat branch and whether the split-`U` deformation helps or hurts the normalization test.
-
-=== moving_throat_pde_stage029_tracking_branch_bounds.md ===
-
+moving_throat_pde_stage029_tracking_branch_bounds.md
 # Moving-Throat PDE — Stage 29: Exact Tracking-Branch Bounds, Monotonicity in `R_tr`, and the Residual Comparison Theorem
 
 ## Purpose
@@ -8305,9 +8247,7 @@ The constructive split-`U` deformation
 So the remaining theorem gap is now even sharper:
 
 > the completed moving-throat PDE must supply kernel data strong enough to overcome this exact tracking-branch deficit, not merely to match the old flat-branch heuristic.
-
-=== moving_throat_pde_stage030_coherent_kernel_map.md ===
-
+moving_throat_pde_stage030_coherent_kernel_map.md
 # Moving-Throat PDE — Stage 30: Exact Coherent-Kernel Dimensionless Map and the Support-Enhancement Factor
 
 ## Purpose
@@ -8542,9 +8482,7 @@ So the next honest question is no longer about closure choice.
 It is:
 
 > **how much coherent support enhancement is needed to overcome the exact tracking-branch deficit before the stable branch softens out?**
-
-=== moving_throat_pde_stage031_support_compensation_theorem.md ===
-
+moving_throat_pde_stage031_support_compensation_theorem.md
 # Moving-Throat PDE — Stage 31: Exact Support-Compensation Theorem on the Physical Tracking Branch
 
 ## Purpose
@@ -8789,9 +8727,7 @@ The remaining question is no longer whether compensation is possible in principl
 It is narrower:
 
 > **does the actual moving-throat PDE produce a physical support ratio `zeta` large enough to reach the exact required value `zeta_req` on the real branch?**
-
-=== moving_throat_pde_stage032_dn_overlap_zeta.md ===
-
+moving_throat_pde_stage032_dn_overlap_zeta.md
 # Moving-Throat PDE — Stage 32: Explicit D/N Overlap Extraction of the Physical Coherent Support Ratio `zeta`
 
 ## Purpose
@@ -9021,9 +8957,7 @@ It is:
 > **which explicit support harmonic is physically realized by the moving-throat PDE, and does its exact microscopic `zeta_n^(phys)` beat the exact Stage-31 threshold `zeta_req`?**
 
 That question is now concrete enough to answer branch by branch.
-
-=== moving_throat_pde_stage033_zeta_threshold_comparison.md ===
-
+moving_throat_pde_stage033_zeta_threshold_comparison.md
 # Moving-Throat PDE — Stage 33: Exact Comparison of the Physical Coherent `zeta` Against `zeta_req`
 
 ## Purpose
@@ -9239,9 +9173,7 @@ It also orders the entire support tower.
 So the next honest PDE question is now extremely narrow:
 
 > **does the completed moving-throat operator place the physical coherent support lane on the lowest twin branch with `zeta_req <= 1`, or does the real branch need non-twin asymmetry to overcome the exact support threshold?**
-
-=== moving_throat_pde_stage034_lowest_twin_criterion.md ===
-
+moving_throat_pde_stage034_lowest_twin_criterion.md
 # Moving-Throat PDE — Stage 34: Exact Lowest-Twin Sufficiency Criterion on the Physical Tracking Branch
 
 ## Purpose
@@ -9445,9 +9377,7 @@ So the next honest question is no longer “how do we parameterize support?”
 It is:
 
 > **does the completed moving-throat operator produce enough mixed baseline / radiative scale to satisfy the exact twin-sufficiency product test, or must the physical lowest support lane become non-twin before the normalization target can be met?**
-
-=== moving_throat_pde_stage035_nontwin_asymmetry_threshold.md ===
-
+moving_throat_pde_stage035_nontwin_asymmetry_threshold.md
 # Moving-Throat PDE — Stage 35: Exact Non-Twin Asymmetry Requirement Once the Symmetric Lowest Twin Fails
 
 ## Purpose
@@ -9666,9 +9596,7 @@ If it lands above that, then the missing theorem gap is no longer “find some b
 It is:
 
 > **derive from the completed moving-throat operator whether the lowest support lane acquires the exact overlap boost and/or stiffness softening required by the non-twin threshold formulas above.**
-
-=== moving_throat_pde_stage036_overlap_boost_window.md ===
-
+moving_throat_pde_stage036_overlap_boost_window.md
 # Moving-Throat PDE — Stage 36: Exact Overlap-Boost Window for the Lowest Support Lane
 
 ## Purpose
@@ -9867,9 +9795,7 @@ The moving-throat operator may indeed produce `Omega_0 > 1`, but even the most f
 So the remaining question is already sharper:
 
 > if the physical branch demands `zeta_req > pi^2/4`, then the lowest support lane must become softer as well; overlap enhancement alone cannot rescue it.
-
-=== moving_throat_pde_stage037_robin_softening_support_lane.md ===
-
+moving_throat_pde_stage037_robin_softening_support_lane.md
 # Moving-Throat PDE — Stage 37: Robin-Compliance Softening of the Lowest Support Lane
 
 ## Purpose
@@ -10108,9 +10034,7 @@ The lowest support lane can indeed become softer than the mixed D/N lane, but on
 So the remaining question is already narrower:
 
 > if the physical branch needs more than the Stage-36 overlap ceiling `pi^2/4`, does the moving-throat operator also supply enough Robin-type support softening to bridge the remaining gap?
-
-=== moving_throat_pde_stage038_explicit_lowest_lane_reachability.md ===
-
+moving_throat_pde_stage038_explicit_lowest_lane_reachability.md
 # Moving-Throat PDE — Stage 38: Explicit Reachability of the Non-Twin Lowest Support Lane
 
 ## Purpose
@@ -10313,9 +10237,7 @@ For the first explicit constructive moving-throat family, the non-twin lowest su
 So the remaining gap is now extremely narrow:
 
 > does the completed moving-throat PDE generate a physical lowest-lane deformation whose effective `x` and source-shape asymmetry place it inside the exact Stage-38 reachability window, or does the real branch require an even stronger non-twin mechanism than exponential overlap bias plus Robin-compliance softening?
-
-=== moving_throat_pde_stage039_transport_source_asymmetry.md ===
-
+moving_throat_pde_stage039_transport_source_asymmetry.md
 # Moving-Throat PDE — Stage 39: Transport Origin of the Lowest-Lane Source Asymmetry
 
 ## Purpose
@@ -10537,9 +10459,7 @@ It is the axial transport Peclet number of the lowest support-source channel.
 So one of the two Stage-38 “unknown physical inputs” has now been converted into a concrete moving-throat operator datum.
 
 The remaining operator-level task is to combine that transport bias with the physical support-compliance ratios, so that the whole lowest-lane reachability problem is written directly in terms of real throat operator parameters rather than the old abstract pair `(alpha,x)`.
-
-=== moving_throat_pde_stage040_physical_parameter_map.md ===
-
+moving_throat_pde_stage040_physical_parameter_map.md
 # Moving-Throat PDE — Stage 40: Physical `(Pe, kappa, eta)` Placement Map for the Lowest Support Lane
 
 ## Purpose
@@ -10860,9 +10780,7 @@ It has collapsed to three concrete moving-throat operator ratios:
 So the remaining gap is now as narrow as it can be without the full PDE:
 
 > compute the physical branch point `(Pe, eta, kappa)` from the completed moving-throat operator and check whether it satisfies the exact threshold `zeta_req <= zeta_max(kappa)` and the corresponding monotone placement inequalities above.
-
-=== moving_throat_pde_stage041_coupled_support_source_operator.md ===
-
+moving_throat_pde_stage041_coupled_support_source_operator.md
 # Moving-Throat PDE — Stage 41: Coupled Support/Source Operator and the Exact `Pe` Branch Equation
 
 ## Purpose
@@ -11189,9 +11107,7 @@ The open problem is no longer “what abstract `Pe` should we try?”
 It is:
 
 > for the real moving-throat operator, what is the actual coupling strength `Xi`, and where inside the exact interval `[Xi Delta_0, Xi Delta_inf]` does the selected branch point `Pe_*` land?
-
-=== moving_throat_pde_stage042_operator_branch_residual_bounds.md ===
-
+moving_throat_pde_stage042_operator_branch_residual_bounds.md
 # Moving-Throat PDE — Stage 42: Exact Residual Bounds on the Operator-Selected Branch
 
 ## Purpose
@@ -11461,9 +11377,7 @@ The remaining theorem gap is no longer “derive everything about the lowest sup
 It is now:
 
 > compute the real moving-throat coupling strength `Xi`, compare it to the exact interval `[Xi_fail, Xi_suff]`, and then solve the fixed-point root only if the real branch lands inside that already narrow intermediate window.
-
-=== moving_throat_pde_stage043_entropic_microclosure.md ===
-
+moving_throat_pde_stage043_entropic_microclosure.md
 # Moving-Throat PDE — Stage 43: Entropic Source Microclosure and the Microscopic Support/Source Gain
 
 ## Purpose
@@ -11742,9 +11656,7 @@ That is a much tighter result because:
 So the remaining theorem gap is now sharper again:
 
 > compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare it directly to the exact support thresholds from Stage 42.
-
-=== moving_throat_pde_stage044_microscopic_gain_thresholds.md ===
-
+moving_throat_pde_stage044_microscopic_gain_thresholds.md
 # Moving-Throat PDE — Stage 44: Microscopic Gain Thresholds and the Exact Operator Phase Diagram
 
 ## Purpose
@@ -12008,9 +11920,7 @@ The sharpest practical lesson is now clear:
 - and on the best-case compliant branch, success is controlled by whether `G_micro` can reach an order-`Pe_req` value.
 
 So the next honest step is to compute `G_micro = chi_sigma Lambda_phi^2/K_X` from a more explicit moving-throat branch and compare it directly to the exact threshold surfaces derived here.
-
-=== moving_throat_pde_stage045_parent_action_gain.md ===
-
+moving_throat_pde_stage045_parent_action_gain.md
 # Moving-Throat PDE — Stage 45: Parent-Action Projection of the Microscopic Support/Source Gain
 
 ## Purpose
@@ -12268,9 +12178,7 @@ is now determined by three parent-action ingredients only:
 - and the support tension/Robin geometry sector entering `(T_X,kappa,eta)`.
 
 That is the cleanest microscopic restatement yet of the support/source theorem gap.
-
-=== moving_throat_pde_stage046_parent_thresholds.md ===
-
+moving_throat_pde_stage046_parent_thresholds.md
 # Moving-Throat PDE — Stage 46: Parent-Overlap Threshold Theorem and Exact Microscopic Success/No-Go Tests
 
 ## Purpose
@@ -12527,9 +12435,7 @@ That is stronger than the Stage-44 statement because it pushes the support/sourc
 In other words, the unresolved PDE question is now no longer “is the microscopic gain big enough?” It is
 
 > does the completed moving-throat branch generate sufficient **parent confinement loading** and sufficient **source/support coherence** to cross the explicit fail/succeed surfaces above?
-
-=== moving_throat_pde_stage047_equilibrium_alignment.md ===
-
+moving_throat_pde_stage047_equilibrium_alignment.md
 # Moving-Throat PDE — Stage 47: Parent Equilibrium Source/Support Alignment and the Exact Matched-Layer Gain
 
 ## Purpose
@@ -12759,9 +12665,7 @@ The coherence factor is no longer free. It is a derived quantity,
 and it is automatically near 1 when the active wall layer is thin enough that `H(y)` is nearly constant there.
 
 That is the point where it becomes worthwhile to stop speaking abstractly about `g_phi` and evaluate it on a concrete parent confinement branch.
-
-=== moving_throat_pde_stage048_thin_wall_confinement.md ===
-
+moving_throat_pde_stage048_thin_wall_confinement.md
 # Moving-Throat PDE — Stage 48: Explicit Thin-Wall Confinement Branch and Parent Thresholds for the Wall Amplitude
 
 ## Purpose
@@ -13048,9 +12952,7 @@ The next honest step is therefore no longer another abstract overlap theorem. It
 - and the axial support functions,
 
 and test them against the explicit wall-amplitude fail/succeed surfaces derived here.
-
-=== moving_throat_pde_stage049_wall_figure_of_merit.md ===
-
+moving_throat_pde_stage049_wall_figure_of_merit.md
 # Moving-Throat PDE — Stage 49: Dimensionless Wall Figure of Merit for the First Explicit Parent Branch
 
 ## Purpose
@@ -13199,9 +13101,7 @@ The remaining work is no longer to invent more algebra. It is to compute the act
 - and the axial support functions `Delta_0`, `Delta_inf`,
 
 and then evaluate whether the real branch lands below, within, or above the exact wall-control window.
-
-=== moving_throat_pde_stage050_sech_gaussian_resonance.md ===
-
+moving_throat_pde_stage050_sech_gaussian_resonance.md
 
 # Moving-Throat PDE — Stage 50: Exact Sech–Gaussian Coherence Resonance Benchmark
 
@@ -13372,9 +13272,7 @@ So the user memo is mathematically useful — but the strongest justified conclu
 > the first explicit independent-profile family almost saturates the ideal matched source/support branch.
 
 The actual survival theorem still has to be stated in terms of the Stage-44/49 gain and wall-figure thresholds.
-
-=== moving_throat_pde_stage051_resonance_thresholds.md ===
-
+moving_throat_pde_stage051_resonance_thresholds.md
 
 # Moving-Throat PDE — Stage 51: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family
 
@@ -13539,9 +13437,7 @@ but it changes the Stage-49 theorem window only by the small factor
 
 So the dominant unresolved reduced-theorem question is still not transverse profile mismatch.
 It is the actual wall/axial branch data entering `W_wall`, `Delta_0`, and `Delta_inf`.
-
-=== moving_throat_pde_stage052_final_reduced_verdict.md ===
-
+moving_throat_pde_stage052_final_reduced_verdict.md
 
 # Moving-Throat PDE — Stage 52: Final Reduced Verdict for the Support/Source Program
 
@@ -13695,9 +13591,7 @@ The right expert reading is:
 What it really proves is that a natural explicit independent-profile family comes within `0.56%` of the ideal matched branch.
 
 That is exactly the kind of result that helps us finish the reduced phase cleanly.
-
-=== moving_throat_pde_stage053_gnls_wall_shell.md ===
-
+moving_throat_pde_stage053_gnls_wall_shell.md
 # Moving-Throat PDE — Stage 53: Explicit GNLS Wall-Shell Reduction for the First Support Branch
 
 ## Purpose
@@ -13886,9 +13780,7 @@ directly from the parent GNLS shell reduction.
 
 That means the next phase is no longer to invent more branch coefficients.
 It is to choose one concrete wall profile and one concrete mouth closure, and then evaluate the branch point in terms of a very small set of parent dimensionless ratios.
-
-=== moving_throat_pde_stage054_tanh_wall_branch.md ===
-
+moving_throat_pde_stage054_tanh_wall_branch.md
 # Moving-Throat PDE — Stage 54: Canonical Tanh-Wall Branch and Natural Local Mouth Closure
 
 ## Purpose
@@ -14030,9 +13922,7 @@ What remains now is not a symbolic branch ledger.
 What remains is an explicit three-parameter branch-placement problem.
 
 That is exactly the right form for the next step, because it means we can now compare the explicit branch directly to the exact Stage-49 / Stage-52 success window instead of still talking in abstract support/source language.
-
-=== moving_throat_pde_stage055_explicit_branch_thresholds.md ===
-
+moving_throat_pde_stage055_explicit_branch_thresholds.md
 # Moving-Throat PDE — Stage 55: Explicit Branch Placement Map and Threshold Surfaces
 
 ## Purpose
@@ -14186,9 +14076,7 @@ So the next phase is now sharply defined:
 > compute the actual moving-throat branch values of `chi_s`, `Lambda_ell`, and `Upsilon_w` on the real throat, and compare them directly to the explicit surfaces `Upsilon_fail`, `Upsilon_suff`.
 
 That is the first genuinely explicit branch-placement problem beyond the finished reduced support/source program.
-
-=== moving_throat_pde_stage056_family1_geometry_map.md ===
-
+moving_throat_pde_stage056_family1_geometry_map.md
 # Moving-Throat PDE — Stage 56: Family-1 Reference-Branch Geometry Map
 
 ## Purpose
@@ -14299,9 +14187,7 @@ and therefore also fixes the Robin support variable to
 `eta = 37.`
 
 That means the remaining actual branch uncertainty is now concentrated in the support/healing scale `chi_s` and the wall-loading amplitude `Upsilon_w`.
-
-=== moving_throat_pde_stage057_family1_healing_lock.md ===
-
+moving_throat_pde_stage057_family1_healing_lock.md
 # Moving-Throat PDE — Stage 57: Healing-Length Lock and the Actual Reference-Branch Support Scale
 
 ## Purpose
@@ -14436,9 +14322,7 @@ After Stages 56–57, the explicit Family-1 throat-support branch has fixed
 So the only remaining explicit-branch unknown from the Stage-55 triplet is the wall-loading amplitude `Upsilon_w`.
 
 That is a much sharper endpoint than the earlier symbolic branch map.
-
-=== moving_throat_pde_stage058_family1_threshold_window.md ===
-
+moving_throat_pde_stage058_family1_threshold_window.md
 # Moving-Throat PDE — Stage 58: Explicit Family-1 Threshold Window and the Last Remaining Wall-Amplitude Datum
 
 ## Purpose
@@ -14591,9 +14475,7 @@ That means the explicit-branch phase is now essentially finished.
 
 What remains is one last microscopic closure question on this branch:
 derive or estimate `Theta_w` from the real wall/throat PDE and compare it directly to the explicit threshold window above.
-
-=== moving_throat_pde_stage059_n5_wall_depth_lock.md ===
-
+moving_throat_pde_stage059_n5_wall_depth_lock.md
 # Moving-Throat PDE — Stage 59: Exact `n=5` Wall-Depth Lock for the Family-1 Branch
 
 ## Purpose
@@ -14723,9 +14605,7 @@ After this step, that datum is no longer opaque:
 in the normalized Family-1 wall variables.
 
 So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the active shell and compare the resulting `Theta_w` to the explicit Stage-58 threshold window.
-
-=== moving_throat_pde_stage060_family1_theta_extraction.md ===
-
+moving_throat_pde_stage060_family1_theta_extraction.md
 # Moving-Throat PDE — Stage 60: Shell-Weighted Extraction of `Theta_w` on the Explicit Family-1 Wall
 
 ## Purpose
@@ -14860,9 +14740,7 @@ So the final branch-level question is no longer “what is `Theta_w`?”
 It is now only:
 
 > where do these explicit branch values sit relative to the exact Stage-58 threshold window?
-
-=== moving_throat_pde_stage061_family1_branch_verdict.md ===
-
+moving_throat_pde_stage061_family1_branch_verdict.md
 # Moving-Throat PDE — Stage 61: Explicit Family-1 Branch Comparison and Closing Verdict for This Subprogram
 
 ## Purpose
@@ -14964,9 +14842,7 @@ The remaining serious problem is now the one the higher-order stack had already 
 > determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization branch and compare it to the explicit success/failure bands above.
 
 So from this point on, the real bottleneck is no longer the wall-depth amplitude. It is the final quadrupole normalization bridge.
-
-=== moving_throat_pde_stage062_family1_quadrupole_pe_map.md ===
-
+moving_throat_pde_stage062_family1_quadrupole_pe_map.md
 # Moving-Throat PDE — Stage 62: Exact Family-1 Map from Quadrupole Demand `zeta_req` to the Required Transport Bias `Pe_req`
 
 ## Purpose
@@ -15129,9 +15005,7 @@ with a hard ceiling
 So the remaining serious question is now much narrower:
 
 > does the final selected quadrupole branch demand a support ratio `zeta_req` that stays below this explicit Family-1 ceiling?
-
-=== moving_throat_pde_stage063_family1_zeta_thresholds.md ===
-
+moving_throat_pde_stage063_family1_zeta_thresholds.md
 # Moving-Throat PDE — Stage 63: Explicit Family-1 Conversion of the Stage-61 `Pe_req` Window into Quadrupole-Demand Thresholds `zeta_req`
 
 ## Purpose
@@ -15270,9 +15144,7 @@ After this step, the explicit branch verdict is fully phrased in the same suppor
 So the remaining serious theorem question is now extremely narrow:
 
 > does the final selected quadrupole branch require `zeta_req` below the explicit Family-1 support window `zeta_suff^(chi)(lambda_mu)` (or at least below the hard ceiling `zeta_max^(F1)`), or does it demand more than the explicit branch can ever supply?
-
-=== moving_throat_pde_stage064_family1_pi_thresholds.md ===
-
+moving_throat_pde_stage064_family1_pi_thresholds.md
 # Moving-Throat PDE — Stage 64: Final Explicit Family-1 Quadrupole-Demand Window in the Branch-Product Variable `Pi_tr`
 
 ## Purpose
@@ -15439,9 +15311,7 @@ So the remaining explicit theorem gap is now as narrow as it can be without solv
 > does the completed moving-throat quadrupole branch produce a selected product `Pi_tr` that stays below the explicit Family-1 ceiling `Pi_max^(F1)(eps_blk)` and, more sharply, below the natural success threshold `Pi_suff^(chi)(lambda_mu;eps_blk)`?
 
 That is the clean finish line for the present explicit-branch phase.
-
-=== moving_throat_pde_stage065_master_quadrupole_residual.md ===
-
+moving_throat_pde_stage065_master_quadrupole_residual.md
 # Moving-Throat PDE — Stage 65: Master Quadrupole Residual of the Full Reduced Moving-Throat PDE
 
 ## Purpose
@@ -15680,9 +15550,7 @@ The remaining unresolved problem is not another support/source reduction and not
 `R_quad(Pi_tr,C_mix,eps_blk ; Xi,eta,kappa).`
 
 Everything else in the reduced program now feeds this one object.
-
-=== moving_throat_pde_stage066_family1_direct_operator_window.md ===
-
+moving_throat_pde_stage066_family1_direct_operator_window.md
 # Moving-Throat PDE — Stage 66: Direct Operator-Selected Family-1 Window for the Surviving Quadrupole Branch
 
 ## Purpose
@@ -15881,9 +15749,7 @@ So the remaining reduced theorem gap is no longer on the explicit support/source
 It is entirely on the outgoing quadrupole-normalization side:
 
 > what value of `Pi_tr` does the actual passive/outgoing moving-throat quadrupole branch produce, and does it stay below the explicit Family-1 ceiling? 
-
-=== moving_throat_pde_stage067_full_reduced_pde_writeup.md ===
-
+moving_throat_pde_stage067_full_reduced_pde_writeup.md
 # Moving-Throat PDE — Stage 67: Full Reduced Moving-Throat PDE Write-Up Skeleton and the Final Remaining Theorem Gap
 
 ## Purpose
@@ -16084,9 +15950,7 @@ The next derivation is now as narrow as it can reasonably get:
 > derive the physical outgoing quadrupole product `Pi_tr` (and its accompanying `C_mix`, `eps_blk`) from the actual passive/outgoing moving-throat branch and evaluate the sign of `R_quad`.
 
 That is the remaining finish line for the present reduced moving-throat PDE program.
-
-=== moving_throat_pde_stage068_quadrupole_demand_cancellation.md ===
-
+moving_throat_pde_stage068_quadrupole_demand_cancellation.md
 # Moving-Throat PDE — Stage 68: Exact Cancellation of the Outgoing-Normalization Factors in the Selected Quadrupole-Demand Product
 
 ## Purpose
@@ -16274,9 +16138,7 @@ So the remaining support theorem gap is no longer “determine several separate 
 It is:
 
 > **determine the normalized selected-branch loading ratio `rho_alpha` of the actual passive/outgoing moving-throat quadrupole branch.**
-
-=== moving_throat_pde_stage069_family1_loading_ratio_window.md ===
-
+moving_throat_pde_stage069_family1_loading_ratio_window.md
 # Moving-Throat PDE — Stage 69: Exact Family-1 Success/Failure Window in the Pure Loading-Ratio Variable
 
 ## Purpose
@@ -16442,9 +16304,7 @@ So the explicit Family-1 theorem gap is no longer about the outgoing normalizati
 It is just this:
 
 > **does the actual passive/outgoing moving-throat quadrupole branch produce a normalized loading ratio `rho_alpha = alpha_req/alpha_mix` below about `3.4675`?**
-
-=== moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish.md ===
-
+moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish.md
 # Moving-Throat PDE — Stage 70: Final Reduced Finish-Line for the Explicit Family-1 Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16542,9 +16402,7 @@ The strongest honest statement is therefore:
 > **within the explicit Family-1 support/source branch, the reduced moving-throat PDE program is complete up to one final passive/outgoing quadrupole loading-ratio calculation.**
 
 That is as close as the reduced program can get to a full explicit write-up without solving the last outgoing branch itself.
-
-=== moving_throat_pde_stage071_loading_ratio_from_minimal_module.md ===
-
+moving_throat_pde_stage071_loading_ratio_from_minimal_module.md
 # Moving-Throat PDE — Stage 71: Loading-Ratio Extraction from the Minimal Isotropic Quadrupole Module
 
 ## Purpose
@@ -16721,9 +16579,7 @@ equivalently
 So the reduced moving-throat PDE has advanced from a vague outgoing-branch loading question to a sharp statement:
 
 > **if the actual passive/outgoing quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit support/source side is comfortably compatible with it.**
-
-=== moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md ===
-
+moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md
 # Moving-Throat PDE — Stage 72: Explicit Family-1 Verdict for the Minimal Isotropic Passive/Outgoing Quadrupole Branch
 
 ## Purpose
@@ -16871,9 +16727,7 @@ and therefore lies safely inside the exact Family-1 success region.
 So the explicit branch-level reduced theorem is now:
 
 > **if the actual passive/outgoing moving-throat quadrupole branch realizes the minimal isotropic conservative precursor in the natural contact-plus-pole way, then the explicit Family-1 support/source side already succeeds without requiring transport bias or non-twin asymmetry.**
-
-=== moving_throat_pde_stage073_updated_reduced_status.md ===
-
+moving_throat_pde_stage073_updated_reduced_status.md
 # Moving-Throat PDE — Stage 73: Updated Reduced Theorem Status After the Loading-Ratio Extraction
 
 ## Purpose
@@ -16935,9 +16789,7 @@ For the explicit Family-1 branch, the reduced moving-throat PDE program has adva
 - and the remaining reduced bottleneck is now the derivation of that minimal isotropic conservative quadrupole module from the actual grouped-`P2` / geometry throat branch.
 
 That is the right place for the next derivation phase.
-
-=== moving_throat_pde_stage074_grouped_p2_static_geometry_derivation.md ===
-
+moving_throat_pde_stage074_grouped_p2_static_geometry_derivation.md
 # Moving-Throat PDE — Stage 74: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2` + Geometry Split
 
 ## Purpose
@@ -17110,9 +16962,7 @@ So the remaining reduced theorem gap is now extremely sharp:
 - or the missing PDE must generate extra dynamic geometry moments or a richer isotropic grouped-`P2` pole structure.
 
 That is exactly the right question to carry into the next phase.
-
-=== moving_throat_pde_stage075_dynamic_geometry_obstruction.md ===
-
+moving_throat_pde_stage075_dynamic_geometry_obstruction.md
 # Moving-Throat PDE — Stage 75: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments
 
 ## Purpose
@@ -17260,9 +17110,7 @@ Stage 75 sharpens the remaining gap:
 
 If both vanish, the Stage-74 result is exact.
 If they do not, the contact/pole fractions are still fixed — but by the obstruction formula above rather than by the simple `3/4 + 1/4` split.
-
-=== moving_throat_pde_stage076_grouped_p2_status_update.md ===
-
+moving_throat_pde_stage076_grouped_p2_status_update.md
 # Moving-Throat PDE — Stage 76: Updated Status After the Direct Grouped-`P2` + Geometry Derivation
 
 ## Purpose
@@ -17330,9 +17178,7 @@ At this point the reduced program is in its sharpest state yet.
 - The only remaining reduced ambiguity is whether the real geometry lane is dynamically inert through `O(omega^4)` on the natural branch.
 
 So the next derivation phase should be aimed squarely at the geometry lane, not at reopening the already-solved support/source side.
-
-=== moving_throat_pde_stage077_isotropic_geometry_decoupling.md ===
-
+moving_throat_pde_stage077_isotropic_geometry_decoupling.md
 # Moving-Throat PDE — Stage 77: Isotropic Geometry-Decoupling Theorem
 
 ## Purpose
@@ -17494,9 +17340,7 @@ Therefore
 on the natural isotropic branch,
 
 and the Stage-74 `3/4 + 1/4` split is recovered exactly.
-
-=== moving_throat_pde_stage078_second_order_geometry_contamination.md ===
-
+moving_throat_pde_stage078_second_order_geometry_contamination.md
 # Moving-Throat PDE — Stage 78: First Nonzero Geometry Contamination Appears Only at Second Order in Anisotropy/Mixing
 
 ## Purpose
@@ -17638,9 +17482,7 @@ exactly on the isotropic branch, and for weak symmetry breaking
 `eps_2, eps_4 = O(chi^2)`.
 
 So the dynamic geometry obstruction is absent on the actual isotropic branch and only enters at second order once an explicit mixing mechanism is turned on.
-
-=== moving_throat_pde_stage079_geometry_lane_check_verdict.md ===
-
+moving_throat_pde_stage079_geometry_lane_check_verdict.md
 # Moving-Throat PDE — Stage 79: Actual Branch Verdict for the Geometry-Lane Check
 
 ## Purpose
@@ -17707,9 +17549,7 @@ The remaining serious open question is deeper and more physical:
 
 So the geometry-lane check is now finished at reduced level.
 The live gap is again the same narrow one isolated by the 2.5PN program: the final passive/outgoing quadrupole normalization on the true moving-throat branch.
-
-=== moving_throat_pde_stage080_single_normalization_defect.md ===
-
+moving_throat_pde_stage080_single_normalization_defect.md
 # Moving-Throat PDE — Stage 80: The Actual Isotropic Passive/Outgoing Branch Collapses to a Single Normalization Defect
 
 ## Purpose
@@ -17840,9 +17680,7 @@ The present stage shows that the second question is no longer a multi-parameter 
 Once the actual isotropic grouped-`P2` one-pole structure is accepted, it is only the one-number defect `N_Q`.
 
 That is as narrow a reduced theorem gate as one can reasonably ask for before solving the full moving-throat PDE.
-
-=== moving_throat_pde_stage081_family1_support_is_automatic.md ===
-
+moving_throat_pde_stage081_family1_support_is_automatic.md
 # Moving-Throat PDE — Stage 81: The Explicit Family-1 Support Test Is Automatic on the Actual Isotropic Branch
 
 ## Purpose
@@ -17956,9 +17794,7 @@ So the explicit Family-1 branch has now dropped out of the active uncertainty le
 The only remaining reduced theorem question is whether the completed moving-throat PDE gives
 
 `N_Q = 1`.
-
-=== moving_throat_pde_stage082_reduced_finish_line.md ===
-
+moving_throat_pde_stage082_reduced_finish_line.md
 # Moving-Throat PDE — Stage 82: The Reduced Finish Line After the Geometry-Lane Check
 
 ## Purpose
@@ -18048,9 +17884,7 @@ Inside the present reduced hierarchy, the moving-throat PDE program has reached 
 > the actual isotropic grouped-`P2` one-pole branch is conservatively clean, the explicit Family-1 support/source side is already sufficient, and the only remaining reduced theorem gap is the single passive/outgoing quadrupole normalization defect `N_Q - 1`.
 
 That is the narrowest and strongest honest carry-forward statement available before solving the full moving-throat PDE normalization problem.
-
-=== moving_throat_pde_stage083_outgoing_normalization_factorization.md ===
-
+moving_throat_pde_stage083_outgoing_normalization_factorization.md
 # Moving-Throat PDE — Stage 83: Exact Factorization of the Last 2.5PN Defect into Conservative and Outgoing Pieces
 
 ## Purpose
@@ -18164,9 +17998,7 @@ This stage refines that statement:
 `chi_Q`.
 
 So the problem is no longer “some unknown outgoing structure.” It is exactly the leading outgoing-normalization factor of the actual grouped-`P2` one-pole branch.
-
-=== moving_throat_pde_stage084_natural_source_map_reduction.md ===
-
+moving_throat_pde_stage084_natural_source_map_reduction.md
 # Moving-Throat PDE — Stage 84: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely Outgoing
 
 ## Purpose
@@ -18258,9 +18090,7 @@ What remains is no longer a broad question about conservative structure, support
 > does the actual passive/outgoing moving-throat quadrupole branch realize `chi_Q = 1`, or does it carry a nontrivial outgoing-normalization defect `Delta_Q`?
 
 That is the cleanest reduced 2.5PN finish line reached so far.
-
-=== moving_throat_pde_stage085_higher_odd_irrelevance.md ===
-
+moving_throat_pde_stage085_higher_odd_irrelevance.md
 # Moving-Throat PDE — Stage 85: At 2.5PN the Only Live Retarded Obstruction is the Leading `omega^5` Outgoing Normalization
 
 ## Purpose
@@ -18319,9 +18149,7 @@ Inside the present reduced hierarchy, the moving-throat PDE program is now reduc
 > does the actual passive/outgoing grouped-`P2` quadrupole branch have the canonical compact outgoing `omega^5` coefficient, i.e. `chi_Q = 1`?
 
 Everything else that could have obstructed the reduced 2.5PN theorem has either been fixed or pushed above the relevant order.
-
-=== moving_throat_pde_stage086_reduced_25pn_conditional_closure.md ===
-
+moving_throat_pde_stage086_reduced_25pn_conditional_closure.md
 # Moving-Throat PDE — Stage 86: Conditional Reduced 2.5PN Closure
 
 ## Statement
@@ -18351,9 +18179,7 @@ So the remaining PDE-facing problem is no longer “derive 2.5PN somehow.”
 It is:
 
 > compute the leading outgoing `omega^5` normalization of the actual passive/outgoing grouped-`P2` quadrupole branch and determine whether it equals the canonical compact outgoing value.
-
-=== moving_throat_pde_stage087_outgoing_dtn_fingerprint.md ===
-
+moving_throat_pde_stage087_outgoing_dtn_fingerprint.md
 # Moving-Throat PDE — Stage 87: Exact Outgoing `l=2` DtN Fingerprint
 
 ## Goal
@@ -18446,9 +18272,7 @@ The canonical outgoing coefficient is therefore not free. On the exact spherical
 \]
 
 So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity in the canonical outgoing `l=2` DtN model itself.
-
-=== moving_throat_pde_stage088_chiQ_fix_from_outgoing_dtn.md ===
-
+moving_throat_pde_stage088_chiQ_fix_from_outgoing_dtn.md
 # Moving-Throat PDE — Stage 88: Exact Fixing of `chi_Q`
 
 ## Goal
@@ -18547,9 +18371,7 @@ so
 \]
 
 That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
-
-=== moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md ===
-
+moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md
 # Moving-Throat PDE — Stage 89: Reduced 2.5PN Closure on the Canonical Outgoing DtN Branch
 
 ## Goal
@@ -18633,9 +18455,7 @@ What remains open is no longer a reduced PN bookkeeping problem. It is the deepe
 > Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN branch, rather than a deformed branch with \(\chi_Q\neq1\)?
 
 So the reduced theorem is now finished **conditional on actual branch realization**, not on any remaining reduced-sector normalization ambiguity.
-
-=== moving_throat_pde_stage090_general_dtn_deformation.md ===
-
+moving_throat_pde_stage090_general_dtn_deformation.md
 # Moving-Throat PDE — Stage 90: General Isotropic `l=2` DtN Deformation Algebra
 
 ## Goal
@@ -18760,9 +18580,7 @@ This is the first explicit moving-throat DtN deformation model for the last redu
 - odd `l=2` throat-core outlet `Sigma_5`.
 
 Overall scale `S` is not itself an independent obstruction; it only enters through the ratios above.
-
-=== moving_throat_pde_stage091_robustness_classes.md ===
-
+moving_throat_pde_stage091_robustness_classes.md
 # Moving-Throat PDE — Stage 91: Robustness Classes for `chi_Q`
 
 ## Goal
@@ -18870,9 +18688,7 @@ The canonical value `chi_Q = 1` is robust against:
 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
 
 It is shifted only by a genuine isotropic throat-core self-energy that is not on the exact preservation submanifold above.
-
-=== moving_throat_pde_stage092_linearized_branch_selection.md ===
-
+moving_throat_pde_stage092_linearized_branch_selection.md
 # Moving-Throat PDE — Stage 92: Linearized Branch-Selection Law Near the Canonical Outgoing Branch
 
 ## Goal
@@ -18954,9 +18770,7 @@ After the grouped-`P2` conservative split, geometry cleaning, and Family-1 suppo
 > compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact nonlinear condition of Stage 91, or at least the linearized condition above.
 
 So the remaining PDE-facing ambiguity is no longer an open-ended “deformed branch somehow.” It is a small explicit set of outgoing-branch deformation scalars.
-
-=== moving_throat_pde_stage093_robin_outlet_model.md ===
-
+moving_throat_pde_stage093_robin_outlet_model.md
 # Moving-Throat PDE — Stage 93: Explicit Isotropic Robin Outlet Model
 
 ## Goal
@@ -19034,9 +18848,7 @@ Therefore the linearized outgoing-normalization shift is
 ## Consequence
 
 A pure isotropic geometric Robin outlet is **not** automatically harmless. By itself it deforms both the canonical even fingerprint and the odd normalization. So if the already-fixed conservative grouped-`P_2` branch is to survive, a Robin core must either be negligible or be compensated by additional outlet structure.
-
-=== moving_throat_pde_stage094_mixed_sidechannel_pole.md ===
-
+moving_throat_pde_stage094_mixed_sidechannel_pole.md
 # Moving-Throat PDE — Stage 94: Explicit Mixed `A_w/F_{\mu w}`-Type Side-Channel Pole
 
 ## Goal
@@ -19119,9 +18931,7 @@ So the linearized branch-selection triple is
 ## Consequence
 
 A naive passive mixed `A_w/F_{\mu w}` side-channel pole is **too rigid**. It generically shifts the outgoing normalization and, more importantly, it cannot preserve the already-fixed canonical even `l=2` branch. If a mixed sector survives on the actual branch, it must appear in a more structured, compensated outlet law.
-
-=== moving_throat_pde_stage095_hybrid_robin_mixed_compensation.md ===
-
+moving_throat_pde_stage095_hybrid_robin_mixed_compensation.md
 # Moving-Throat PDE — Stage 95: Exact Robin–Mixed Compensation Law
 
 ## Goal
@@ -19232,9 +19042,7 @@ again giving
 ## Consequence
 
 This is the first explicit compensated moving-throat outlet model that preserves the canonical outgoing quadrupole branch. It shows that neither a pure geometric Robin core nor a naive hidden mixed pole is sufficient by itself, but a specific Robin–mixed balance law can reduce the whole deformation to a pure mouth renormalization, which is exactly the robust class already identified in Stages 90–92.
-
-=== moving_throat_pde_stage096_outlet_model_status.md ===
-
+moving_throat_pde_stage096_outlet_model_status.md
 # Moving-Throat PDE — Stage 96: Outlet-Model Status Update
 
 ## What is now explicit
@@ -19285,9 +19093,7 @@ The completed moving-throat PDE does **not** need to decide among an unlimited s
 - or a compensated Robin–mixed outlet of the exact type above.
 
 Pure Robin loading alone and a naive standalone hidden mixed pole are not enough.
-
-=== moving_throat_pde_stage097_concrete_core_schur.md ===
-
+moving_throat_pde_stage097_concrete_core_schur.md
 
 # Moving-Throat PDE — Stage 97: Concrete Two-Channel Core Outlet Model
 
@@ -19391,9 +19197,7 @@ This is already a significant narrowing. The outlet is no longer described by fo
 - plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.
 
 The next question is whether this concrete core model can *naturally* land on the compensated canonical branch found algebraically in Stage 95.
-
-=== moving_throat_pde_stage098_core_balance_compensation.md ===
-
+moving_throat_pde_stage098_core_balance_compensation.md
 
 # Moving-Throat PDE — Stage 98: Exact Core-Balance Compensation Theorem
 
@@ -19499,9 +19303,7 @@ This is the first explicit throat-core theorem in the outlet program:
 - the Stage-95 compensation law is not just an algebraic accident,
 - it is realized by a concrete two-channel core model,
 - and the surviving free data are sharply reduced to one coupling-balance surface plus one scale-deformed bare mixed outlet.
-
-=== moving_throat_pde_stage099_dn_mixed_tube_realization.md ===
-
+moving_throat_pde_stage099_dn_mixed_tube_realization.md
 
 # Moving-Throat PDE — Stage 99: Finite D/N Mixed-Tube Realization
 
@@ -19596,9 +19398,7 @@ A fully compensated canonical branch exists whenever:
 
 So the remaining PDE-side question is no longer “some unknown outlet deformation.”
 It is whether the actual moving-throat core realizes this specific D/N-tube + coupling-balance structure.
-
-=== moving_throat_pde_stage100_outlet_core_status.md ===
-
+moving_throat_pde_stage100_outlet_core_status.md
 
 # Moving-Throat PDE — Stage 100: Concrete Outlet-Core Status
 
@@ -19663,9 +19463,7 @@ It is much sharper:
 > Does the actual moving-throat core realize the concrete coupling-balance surface and the auxiliary D/N-tube normalization identified above?
 
 That is a genuinely microscopic throat-core question, not more reduced outlet algebra.
-
-=== moving_throat_pde_stage101_parent_core_extraction.md ===
-
+moving_throat_pde_stage101_parent_core_extraction.md
 
 # Moving-Throat PDE — Stage 101: Parent-Action Extraction of Core Parameters
 
@@ -19957,9 +19755,7 @@ g_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi}{\sqrt2\,L_W^{3/2}}.
 \]
 
 The next step is to rewrite the compensation surface entirely in terms of the parent overlap ratios these formulas define.
-
-=== moving_throat_pde_stage102_parent_balance_family.md ===
-
+moving_throat_pde_stage102_parent_balance_family.md
 
 # Moving-Throat PDE — Stage 102: One-Parameter Parent Compensation Family
 
@@ -20131,9 +19927,7 @@ The compensated canonical outlet has now been reduced to a **one-parameter paren
    \]
 
 So the remaining PDE-facing question is no longer a large outlet-coefficient search. It is whether the actual GNLS + localized-Maxwell throat core picks one of these parent-balance branches.
-
-=== moving_throat_pde_stage103_core_parameter_status.md ===
-
+moving_throat_pde_stage103_core_parameter_status.md
 
 # Moving-Throat PDE — Stage 103: Core-Parameter Extraction Status
 
@@ -20175,9 +19969,480 @@ It is now:
 > “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core select?”
 
 That is a substantially smaller target for the next derivation.
+moving_throat_pde_stage104_geometric_r_selection.md
+# Moving-Throat PDE — Stage 104: Geometric Selection of the Core Hybridization Ratio
 
-=== moving_throat_pde_stage108_positive_source_theorem.md ===
+## Goal
 
+Turn the normalized core-hybridization parameter
+\[
+\mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}}
+\]
+from a free reduced number into an explicit branch value.
+
+## Parent motivation
+
+The parent 4D stack already keeps the throat geometry explicit through the collective throat variables `(a,L)` in the confinement / geometry sector, while the localized-Maxwell/plasma papers keep the mixed channels
+\[
+A_w,\qquad F_{\mu w},\qquad J^w
+\]
+in the microscopic ontology outside the strict far-field brane limit. fileciteturn33file4 fileciteturn33file1turn33file3
+The carried constructive hierarchy also keeps the preferred aspect ratio
+\[
+L/a \approx 1.85.
+\]
+fileciteturn35file0
+
+So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 99 with the **actual throat axial span**:
+\[
+\boxed{L_W=L.}
+\]
+
+This is the simplest honest moving-throat core identification: the mixed side-channel is not a detached auxiliary cavity but the same axial throat corridor already selected by the carried geometry branch.
+
+## 1. Exact geometric branch law
+
+Stage 99 already fixed the compensation-selected D/N tube length to
+\[
+L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+\]
+Imposing \(L_W=L\) gives the exact geometric hybridization branch
+\[
+\boxed{
+\mathfrak r_{\rm geom}\!\left(\frac{L}{a}\right)
+=
+\sqrt{\frac{12}{\pi^2}\left(\frac{L}{a}\right)^2-1}.
+}
+\]
+
+So the normalized shell/mixed hybridization is no longer free once the mixed tube is identified with the actual throat length.
+
+The existence condition is
+\[
+\boxed{
+\frac{L}{a}\ge \frac{\pi}{2\sqrt3}\approx 0.9069,
+}
+\]
+which is comfortably satisfied on the carried throat branch.
+
+## 2. Family-1 / preferred-aspect-ratio value
+
+Using the carried preferred aspect ratio
+\[
+\frac{L}{a}=\frac{37}{20},
+\]
+the geometric branch value is
+\[
+\boxed{
+\mathfrak r_{F1}
+=
+\sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
+=
+\frac{\sqrt{4107-100\pi^2}}{10\pi}
+\approx 1.77799353547498.
+}
+\]
+
+Equivalently,
+\[
+\boxed{
+r_c^{F1}=\mathfrak r_{F1}^2\approx 3.16126101219081.
+}
+\]
+
+So the first concrete moving-throat core solve already fixes the static/mixed hybridization to an `O(1)` value rather than a tunable small parameter.
+
+## 3. Immediate mixed-tube consequence
+
+With \(L_W=L\), the auxiliary mixed-tube pole is simply
+\[
+\boxed{
+\Omega_W=\frac{\pi c_s}{2L},
+}
+\]
+the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real throat geometry, not to a detached bookkeeping cavity.
+
+## Result
+
+The surviving outlet-core problem has already shrunk:
+
+- before Stage 104, the normalized hybridization \(\mathfrak r\) was free;
+- after identifying the mixed D/N tube with the actual throat length, it is fixed to
+  \[
+  \mathfrak r_{F1}\approx 1.778
+  \]
+  on the preferred aspect-ratio branch.
+
+So the next question is no longer “what is \(\mathfrak r\)?” It is “what normalized mouth-coupling ratio \(\mathfrak g\) does the actual core pick at this geometrically fixed \(\mathfrak r\)?”
+moving_throat_pde_stage105_mouth_source_compensation_test.md
+# Moving-Throat PDE — Stage 105: Concrete Mouth-Source Branch and Compensation Test
+
+## Goal
+
+Compute the normalized mouth-coupling ratio
+\[
+\mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}
+\]
+on the first explicit local mouth-source branch, and test whether that branch already lands on the canonical compensation family.
+
+## 1. Natural equal-normalized local mouth source
+
+Take one local mouth source profile that couples to the shell and the mixed channel with equal strength **after normalization by their quadratic channel weights**:
+\[
+\boxed{
+g_s=g_m\sqrt{K_s},
+\qquad
+g_q=g_m\sqrt{K_q}.
+}
+\]
+This is the simplest concrete local branch with **no channel favoritism** at the mouth.
+
+Then
+\[
+\boxed{
+\mathfrak g_{\rm nat}=1.
+}
+\]
+
+This should be read as a concrete branch ansatz, not as a theorem of the full PDE: it is the cleanest “same mouth source, same normalized loading” core closure.
+
+## 2. Exact compensation family
+
+Stage 102 already showed that the compensated canonical outgoing branch requires
+\[
+1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
+\]
+equivalently
+\[
+\boxed{
+\mathfrak g_{\rm comp}^{\pm}(\mathfrak r)
+=
+\mathfrak r\pm\frac12\sqrt{1+\mathfrak r^2}.
+}
+\]
+
+Inserting the Stage-104 geometric value
+\[
+\mathfrak r=\mathfrak r_{F1}=\frac{\sqrt{4107-100\pi^2}}{10\pi}
+\]
+gives the two exact compensated mouth-coupling values
+\[
+\boxed{
+\mathfrak g_{\pm}^{F1}
+=
+\frac{2\sqrt{4107-100\pi^2}\pm 37\sqrt3}{20\pi}.
+}
+\]
+
+Numerically,
+\[
+\boxed{
+\mathfrak g_-^{F1}\approx 0.758035078944663,
+\qquad
+\mathfrak g_+^{F1}\approx 2.79795199200529.
+}
+\]
+
+## 3. Test of the natural branch
+
+The natural equal-normalized mouth branch gives
+\[
+\mathfrak g_{\rm nat}=1.
+\]
+That is **not** exactly on the compensation family at \(\mathfrak r=\mathfrak r_{F1}\), since
+\[
+1\neq \mathfrak g_-^{F1},
+\qquad
+1\neq \mathfrak g_+^{F1}.
+\]
+
+Equivalently, the exact compensation defect evaluated on the natural branch is
+\[
+\mathcal C_{\rm nat}
+:=
+1+\mathfrak r_{F1}^2-4(1-\mathfrak r_{F1})^2
+=
+\frac{-12321+80\pi\sqrt{4107-100\pi^2}}{100\pi^2}
+\approx 1.74016524722739,
+\]
+so the natural branch misses the compensated surface.
+
+## 4. How far away is the nearest compensated branch?
+
+The **near** compensated branch is the minus branch, since
+\[
+|\mathfrak g_{\rm nat}-\mathfrak g_-^{F1}|
+<
+|\mathfrak g_{\rm nat}-\mathfrak g_+^{F1}|.
+\]
+Numerically,
+\[
+\boxed{
+\Delta \mathfrak g_- = 1-\mathfrak g_-^{F1}\approx 0.241964921055337,
+}
+\]
+while
+\[
+\boxed{
+\Delta \mathfrak g_+ = \mathfrak g_+^{F1}-1\approx 1.79795199200529.
+}
+\]
+
+So the natural equal-normalized mouth source is **not** automatically compensated, but it is much closer to the lower compensated branch than to the upper one.
+
+## 5. Exact traction renormalization factors
+
+Since Stage 102 gave
+\[
+\mathfrak g \propto \frac{1}{\mathcal T_m},
+\]
+the traction amplitude required to move from the natural branch \((\mathfrak g=1)\) to the compensated branches is
+\[
+\boxed{
+\frac{\mathcal T_m^{(\pm)}}{\mathcal T_m^{\rm nat}}
+=
+\frac{1}{\mathfrak g_\pm^{F1}}.
+}
+\]
+
+Numerically,
+\[
+\boxed{
+\frac{\mathcal T_m^{(-)}}{\mathcal T_m^{\rm nat}}
+\approx 1.31920016339112,
+\qquad
+\frac{\mathcal T_m^{(+)}}{\mathcal T_m^{\rm nat}}
+\approx 0.357404273860789.
+}
+\]
+
+So the nearest compensated branch is reached by a **31.9% traction enhancement** relative to the simplest equal-normalized mouth-source branch.
+
+## Result
+
+The first truly concrete mouth-core test is now complete:
+
+- the actual throat geometry fixes
+  \[
+  \mathfrak r_{F1}\approx 1.778;
+  \]
+- the simplest equal-normalized local mouth source gives
+  \[
+  \mathfrak g_{\rm nat}=1;
+  \]
+- this does **not** lie exactly on the compensation surface;
+- but the nearest compensated branch is only a modest traction renormalization away.
+
+So the surviving ambiguity is no longer broad outlet algebra. It is whether the real moving-throat mouth source is exactly equal-normalized, or instead slightly biased toward the lower compensated branch.
+moving_throat_pde_stage106_parent_normalized_branch_values.md
+# Moving-Throat PDE — Stage 106: Parent-Normalized Branch Values on the Explicit Core Solve
+
+## Goal
+
+Translate the explicit branch data from Stages 104–105 into actual parent-level flow and traction requirements.
+
+## 1. Parent-normalized background-flow number
+
+Stage 102 gives
+\[
+\mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+\qquad
+\lambda=-q_*v_{w0}\mathcal I_{sq}.
+\]
+Using the healing-locked shell formulas from Stage 101 and identifying the mixed D/N tube with the actual throat length \(L_W=L\), define the parent-normalized mixed-flow number
+\[
+\boxed{
+\Xi_v
+:=
+\frac{q_*\,\sqrt{\mu_0 m_\psi\rho_w}\;aL^{3/2}\ell^{3/2}}
+{\hbar\sqrt{\mathcal Z_q}}\,
+\frac{v_{w0}}{c_s}.
+}
+\]
+Then the exact branch law is
+\[
+\boxed{
+\Xi_v
+=
+-\frac{3\sqrt{30}\,\pi^{3/2}}{160}\,\mathfrak r.
+}
+\]
+
+On the explicit Family-1 geometric branch,
+\[
+\boxed{
+\Xi_v^{F1}
+=
+-\frac{3\sqrt{30}\,\pi^{3/2}}{160}\,\mathfrak r_{F1}
+\approx -1.01675633282526.
+}
+\]
+
+So the actual mixed background flow required by the compensated throat-core branch is already `O(1)` in normalized parent variables.
+
+## 2. Parent-normalized traction number
+
+Stage 102 also gives
+\[
+\mathfrak g
+=
+\frac{\sqrt{2\mathcal Z_qK_s}}
+{\mathcal T_m J_s\,c_s\sqrt{\mu_0 L}}.
+\]
+Using the same healing-locked shell formulas, define the parent-normalized mouth-traction number
+\[
+\boxed{
+\Xi_T
+:=
+\mathcal T_m\,
+\frac{a\sqrt{\mu_0\rho_wL\ell}}
+{\sqrt{\mathcal Z_q m_\psi}}.
+}
+\]
+Then the exact branch law is
+\[
+\boxed{
+\Xi_T
+=
+\frac{3\sqrt{30}}{10\sqrt{\pi}}\,
+\frac{1}{\mathfrak g}.
+}
+\]
+
+So the natural equal-normalized mouth-source branch \(\mathfrak g_{\rm nat}=1\) gives
+\[
+\boxed{
+\Xi_T^{\rm nat}
+=
+\frac{3\sqrt{30}}{10\sqrt{\pi}}
+\approx 0.927058084855655.
+}
+\]
+
+On the two compensated branches,
+\[
+\boxed{
+\Xi_T^{(\pm)}
+=
+\frac{3\sqrt{30}}{10\sqrt{\pi}}\,
+\frac{1}{\mathfrak g_\pm^{F1}}.
+}
+\]
+Numerically,
+\[
+\boxed{
+\Xi_T^{(-)}\approx 1.22297517701464,
+\qquad
+\Xi_T^{(+)}\approx 0.331334521644609.
+}
+\]
+
+## 3. Interpretation
+
+These normalized branch values sharpen the outlet-core question a lot.
+
+The explicit moving-throat branch now says:
+
+- the geometry-selected normalized hybridization is
+  \[
+  \Xi_v^{F1}\approx -1.017;
+  \]
+- the naive equal-normalized mouth source would give
+  \[
+  \Xi_T^{\rm nat}\approx 0.927;
+  \]
+- the nearest compensated branch instead needs
+  \[
+  \Xi_T^{(-)}\approx 1.223
+  \]
+
+So the concrete throat-core problem is no longer “find some outlet coefficients.”
+It is the much smaller question:
+
+> Does the actual moving-throat core produce the normalized pair
+> \[
+> (\Xi_v,\Xi_T)\approx(-1.017,\;1.223)
+> \]
+> on the lower compensated branch, or does it remain on the naive equal-normalized source branch \((\Xi_T\approx0.927)\)?
+
+## 4. Exact parent formulas for the corresponding raw parameters
+
+If desired, these normalized values translate back to the raw parent parameters as
+\[
+\boxed{
+\frac{v_{w0}}{c_s}
+=
+\frac{\hbar\sqrt{\mathcal Z_q}}{q_*\sqrt{\mu_0 m_\psi\rho_w}\;aL^{3/2}\ell^{3/2}}
+\;\Xi_v,
+}
+\]
+\[
+\boxed{
+\mathcal T_m
+=
+\frac{\sqrt{\mathcal Z_q m_\psi}}{a\sqrt{\mu_0\rho_wL\ell}}
+\;\Xi_T.
+}
+\]
+
+So once a concrete GNLS + localized-Maxwell throat-core solution supplies
+\[
+(\rho_w,\ell,\mathcal Z_q,q_*),
+\]
+the required background mixed flow and mouth traction are determined immediately.
+
+## Result
+
+The explicit core problem is now reduced to a very small finite target:
+
+- one normalized background-flow number \(\Xi_v\),
+- one normalized mouth-traction number \(\Xi_T\),
+- and the choice between the naive equal-normalized source branch and the nearby lower compensated branch.
+
+That is the smallest parent-level outlet-core target reached so far.
+moving_throat_pde_stage107_core_branch_status.md
+# Moving-Throat PDE — Stage 107: Explicit Core-Solve Status After Geometric Branch Selection
+
+## What is now fixed
+
+After Stages 104–106, the explicit outlet-core branch is no longer described by a free \((\mathfrak r,\mathfrak g)\) pair.
+
+The first concrete moving-throat branch now gives:
+
+1. **Geometric hybridization**
+   \[
+   \mathfrak r_{F1}
+   =
+   \sqrt{\frac{12}{\pi^2}\left(\frac{L}{a}\right)^2-1}
+   \Bigg|_{L/a=37/20}
+   \approx 1.77799353547498.
+   \]
+
+2. **Natural equal-normalized mouth-source branch**
+   \[
+   \mathfrak g_{\rm nat}=1.
+   \]
+
+3. **Canonical compensation family at that same \(\mathfrak r\)**
+   \[
+   \mathfrak g_-^{F1}\approx 0.758035078944663,
+   \qquad
+   \mathfrak g_+^{F1}\approx 2.79795199200529.
+   \]
+
+4. **Nearest compensated branch**
+   the lower branch `(-)`, requiring only a `31.9%` traction enhancement relative to the natural equal-normalized source branch.
+
+## What this means
+
+The outlet-core ambiguity is no longer broad and diffuse.
+
+The remaining microscopic question is now simply:
+
+> does the actual GNLS + localized-Maxwell throat core pick the naive equal-normalized mouth branch, or does it shift by a modest amount onto the lower compensated branch that preserves the canonical outgoing quadrupole fingerprint?
+
+That is a much smaller and more concrete target than the one we had before Stage 104.
+moving_throat_pde_stage108_positive_source_theorem.md
 
 # Moving-Throat PDE — Stage 108: Positive Local Mouth-Source Theorem
 
@@ -20270,9 +20535,7 @@ The outlet-core ambiguity is no longer “which branch do we choose?” Within a
 - the lower compensated branch is the only canonical candidate.
 
 So the remaining question is not branch sign, but the **shape** of the positive source profile \(\sigma(z)\).
-
-=== moving_throat_pde_stage109_positive_source_families.md ===
-
+moving_throat_pde_stage109_positive_source_families.md
 
 # Moving-Throat PDE — Stage 109: Explicit Positive Source Families and the Family-1 Compensation Point
 
@@ -20388,9 +20651,7 @@ The explicit mouth-source bias is now much narrower than before:
 - and the true Family-1 compensated branch is reached by a small \(18.4\%\) broadening of that already-natural positive source law.
 
 So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of positive localized mouth sources.
-
-=== moving_throat_pde_stage110_penetration_families.md ===
-
+moving_throat_pde_stage110_penetration_families.md
 
 # Moving-Throat PDE — Stage 110: Geometric Mouth-Penetration Families
 
@@ -20488,9 +20749,7 @@ Combined with Stages 108–109, this means:
 - the upper compensated branch is excluded by positivity,
 - the lower compensated branch is the unique physical candidate,
 - and simple positive localized source laws reach it without requiring sign-changing or finely oscillatory mouth forcing.
-
-=== moving_throat_pde_stage111_mouth_source_bias_status.md ===
-
+moving_throat_pde_stage111_mouth_source_bias_status.md
 
 # Moving-Throat PDE — Stage 111: Mouth-Source Bias Status
 
@@ -20570,9 +20829,7 @@ It is now much sharper:
 \]
 
 So the remaining PDE-facing question is not branch sign. It is the detailed shape of the actual mouth source profile \(\sigma(z)\), or equivalently the exact amount of positive mouth broadening away from the point-source limit.
-
-=== moving_throat_pde_stage112_mouth_boundary_layer.md ===
-
+moving_throat_pde_stage112_mouth_boundary_layer.md
 
 # Moving-Throat PDE — Stage 112: Explicit GNLS + Localized-Maxwell Mouth Boundary Layer
 
@@ -20743,9 +21000,7 @@ So the next question is no longer “what source family should we try?” It is 
 \boxed{
 \text{what value of }\Pi_m\text{ does the actual moving-throat mouth layer select?}
 }
-
-=== moving_throat_pde_stage113_mouth_bias_map.md ===
-
+moving_throat_pde_stage113_mouth_bias_map.md
 
 # Moving-Throat PDE — Stage 113: Exact Mouth-Bias Map and Family-1 Compensation Point
 
@@ -20892,9 +21147,7 @@ So the remaining branch-selection ambiguity has collapsed to one explicit number
 \Pi_m \stackrel{?}{\approx} 1.50882951349.
 }
 \]
-
-=== moving_throat_pde_stage114_parent_mouth_threshold.md ===
-
+moving_throat_pde_stage114_parent_mouth_threshold.md
 
 # Moving-Throat PDE — Stage 114: Parent Micro-Threshold for Canonical Mouth Compensation
 
@@ -21027,9 +21280,7 @@ T_m-q_*A_0'
 \]
 
 That is a concrete microscopic threshold, not a broad qualitative criterion.
-
-=== moving_throat_pde_stage115_mouth_boundary_layer_status.md ===
-
+moving_throat_pde_stage115_mouth_boundary_layer_status.md
 
 # Moving-Throat PDE — Stage 115: Mouth Boundary-Layer Status After Explicit Source-Law Extraction
 
@@ -21100,9 +21351,7 @@ And the target value is moderate:
 \]
 
 So the remaining gap is now one clean microscopic bias law, not a diffuse branch-selection problem.
-
-=== moving_throat_pde_stage116_coupled_mouth_fixedpoint.md ===
-
+moving_throat_pde_stage116_coupled_mouth_fixedpoint.md
 
 # Moving-Throat PDE — Stage 116: Full Coupled Mouth-Layer Fixed-Point Law
 
@@ -21319,9 +21568,7 @@ M_+\mathcal S(\Pi,\kappa_+)+M_-\mathcal S(\Pi,\kappa_-).
 
 So the remaining ambiguity is now just a **small dimensionless gain/stiffness
 quadruple** \((M_+,M_-,\kappa_+,\kappa_-)\).
-
-=== moving_throat_pde_stage117_family1_mouth_fixedpoint.md ===
-
+moving_throat_pde_stage117_family1_mouth_fixedpoint.md
 
 # Moving-Throat PDE — Stage 117: Family-1 Shell + First Mixed D/N Tube Reduction
 
@@ -21467,9 +21714,7 @@ M_s \approx 1.50882951349316 - 0.658075937605429\,M_q.
 
 The remaining ambiguity is therefore no longer profile selection and no longer a
 free mouth slope: it is just the signed gain pair \((M_s,M_q)\).
-
-=== moving_throat_pde_stage118_outlet_consistent_mouth_closure.md ===
-
+moving_throat_pde_stage118_outlet_consistent_mouth_closure.md
 
 # Moving-Throat PDE — Stage 118: Outlet-Consistent Mouth Closure
 
@@ -21628,9 +21873,7 @@ and the canonical Family-1 branch is selected at
 
 So the remaining mouth-layer ambiguity is now one dimensionless gain amplitude,
 not an arbitrary source profile and not an arbitrary parent slope combination.
-
-=== moving_throat_pde_stage119_coupled_mouth_status.md ===
-
+moving_throat_pde_stage119_coupled_mouth_status.md
 
 # Moving-Throat PDE — Stage 119: Mouth-Layer Fixed-Point Status After the Coupled Solve
 
@@ -21695,9 +21938,7 @@ moving-throat mouth layer select?}
 
 So the open microscopic bias problem has collapsed from a free profile question to
 a small, explicit fixed-point law.
-
-=== moving_throat_pde_stage120_core_to_mouth_gain_map.md ===
-
+moving_throat_pde_stage120_core_to_mouth_gain_map.md
 # Moving-Throat PDE — Stage 120: Explicit Core-to-Mouth Gain Map
 
 ## Goal
@@ -21835,9 +22076,7 @@ M_q=
 
 So the mouth fixed-point ambiguity has now collapsed from an abstract gain pair to
 one explicit set of parent core quantities.
-
-=== moving_throat_pde_stage121_normalized_mouth_gain_family.md ===
-
+moving_throat_pde_stage121_normalized_mouth_gain_family.md
 # Moving-Throat PDE — Stage 121: Normalized Mouth-Gain Family and Compensation Ratio
 
 ## Goal
@@ -21944,9 +22183,7 @@ On the exact compensated branch this collapses to
 \boxed{R_q=\frac14,}
 \]
 so the outlet-consistent mouth closure is derived rather than assumed.
-
-=== moving_throat_pde_stage122_family1_actual_mouth_gains.md ===
-
+moving_throat_pde_stage122_family1_actual_mouth_gains.md
 # Moving-Throat PDE — Stage 122: Actual Family-1 Mouth Gains
 
 ## Goal
@@ -22108,9 +22345,7 @@ The actual Family-1 mouth gains are now explicit.
 
 So the remaining ambiguity is no longer “what are the gains?” It is only whether the real
 mouth core stays on the natural branch or shifts modestly toward the lower compensated one.
-
-=== moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md ===
-
+moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md
 # Moving-Throat PDE — Stage 123: Self-Matched Mouth Susceptibility Closure
 
 ## Goal
@@ -22257,9 +22492,7 @@ On the explicit Family-1 branch, the natural and exact-compensated mouth closure
 by only about `4%` in the normalized traction amplitude.
 
 That is the cleanest explicit parent-level narrowing of the mouth-gain problem so far.
-
-=== moving_throat_pde_stage124_mouth_gain_status.md ===
-
+moving_throat_pde_stage124_mouth_gain_status.md
 # Moving-Throat PDE — Stage 124: Mouth-Gain Status Update
 
 The coupled mouth-layer problem is now much tighter than it was at Stage 116.
@@ -22322,9 +22555,7 @@ It has shrunk to two very concrete microscopic questions:
 2. and does the actual mouth traction land at the corresponding `\widehat T_m` value?
 
 That is a much smaller target than the original abstract `\Pi_m` problem.
-
-=== moving_throat_pde_stage125_selfconsistent_mouth_branch.md ===
-
+moving_throat_pde_stage125_selfconsistent_mouth_branch.md
 # Moving-Throat PDE — Stage 125: Self-Consistent Mouth-Branch Law
 
 ## Goal
@@ -22465,9 +22696,7 @@ The mouth problem is now much sharper:
 Once this explicit positive mouth layer is assumed, the branch is governed by one scalar variable
 \(\Pi\), with a unique canonical compensation point at moderate finite bias and moderate
 finite traction inside that closure.
-
-=== moving_throat_pde_stage126_equal_normalized_singular_limit.md ===
-
+moving_throat_pde_stage126_equal_normalized_singular_limit.md
 # Moving-Throat PDE — Stage 126: Equal-Normalized Branch Is a Singular Limit
 
 ## Goal
@@ -22600,9 +22829,7 @@ The explicit positive exponential mouth-layer family proves that:
 
 So the naive equal-normalized mouth-source branch is **not** a regular finite branch of the
 explicit mouth-layer dynamics. Inside this explicit family it is a singular point-source limit.
-
-=== moving_throat_pde_stage127_unique_regular_canonical_branch.md ===
-
+moving_throat_pde_stage127_unique_regular_canonical_branch.md
 # Moving-Throat PDE — Stage 127: Unique Regular Canonical Mouth Branch
 
 ## Goal
@@ -22720,9 +22947,7 @@ This is a real narrowing.
 The remaining mouth ambiguity is no longer a branch-choice ambiguity at all.
 On the explicit Family-1 positive mouth-layer closure, the canonical outgoing-preserving
 branch is the only regular finite one.
-
-=== moving_throat_pde_stage128_mouth_branch_selection_status.md ===
-
+moving_throat_pde_stage128_mouth_branch_selection_status.md
 # Moving-Throat PDE — Stage 128: Mouth-Branch Selection Status
 
 Inside the explicit positive exponential mouth-family reduction, the mouth-source
@@ -22794,9 +23019,7 @@ It is now only this inside the explicit mouth-family reduction:
    \]
 
 That is a much smaller target than the earlier abstract branch ambiguity.
-
-=== moving_throat_pde_stage129_positive_deformation_expansion.md ===
-
+moving_throat_pde_stage129_positive_deformation_expansion.md
 
 # Moving-Throat PDE — Stage 129: First-Order Expansion for Positive Mouth-Layer Deformations
 
@@ -22941,9 +23164,7 @@ So the compensated mixed-channel response changes by
 \]
 
 This is the first non-exponential correction formula at `O(epsilon)`.
-
-=== moving_throat_pde_stage130_first_order_rigidity_kernel.md ===
-
+moving_throat_pde_stage130_first_order_rigidity_kernel.md
 
 # Moving-Throat PDE — Stage 130: First-Order Rigidity Kernel at the Canonical Family-1 Point
 
@@ -23071,9 +23292,7 @@ branch-choice ambiguity suggested:
 - and the remaining first-order traction shift is controlled by one explicit kernel.
 
 That is a strong reduction of the mouth-side uncertainty.
-
-=== moving_throat_pde_stage131_representative_positive_families.md ===
-
+moving_throat_pde_stage131_representative_positive_families.md
 
 # Moving-Throat PDE — Stage 131: Representative Non-Exponential Positive Mouth Families
 
@@ -23234,9 +23453,7 @@ For the two most natural explicit positive non-exponential mouth families:
 This is the best first-order evidence so far that the canonical Family-1 mouth branch is
 **rigid but not brittle**: moderate positive non-exponential corrections move it in a
 controlled, almost one-parameter way.
-
-=== moving_throat_pde_stage132_mouth_rigidity_status.md ===
-
+moving_throat_pde_stage132_mouth_rigidity_status.md
 
 # Moving-Throat PDE — Stage 132: Non-Exponential Mouth-Rigidity Status
 
@@ -23321,9 +23538,7 @@ So the remaining PDE-facing question is not “which mouth branch?” but rather
 \]
 
 That is a much smaller target than the earlier mouth-source ambiguity.
-
-=== moving_throat_pde_stage133_full_profile_residual.md ===
-
+moving_throat_pde_stage133_full_profile_residual.md
 # Moving-Throat PDE — Stage 133: Exact Full-Profile Mouth Potential and Curvature Residual
 
 ## Goal
@@ -23467,9 +23682,7 @@ The important point is not just that a correction exists. The important point is
 
 So the remaining mouth uncertainty is no longer a branch-choice issue.
 It is a finite profile correction around the already-selected lower compensated
-branch.
-=== moving_throat_pde_stage134_first_order_selected_correction.md ===
-
+branch.moving_throat_pde_stage134_first_order_selected_correction.md
 # Moving-Throat PDE — Stage 134: First-Order Source Correction Selected by the Full Mouth Profile
 
 ## Goal
@@ -23608,9 +23821,7 @@ bias retuning, and traction retuning follow automatically.
 
 So the next question is no longer “which positive family?”
 It is simply: what are the actual numerical covariances of \(R_*(x)\) on the
-explicit Family-1 branch?
-=== moving_throat_pde_stage135_family1_actual_correction.md ===
-
+explicit Family-1 branch?moving_throat_pde_stage135_family1_actual_correction.md
 # Moving-Throat PDE — Stage 135: Actual Family-1 Mouth Correction and One-Step Nonlinear Check
 
 ## Goal
@@ -23767,9 +23978,7 @@ Equivalently, the actual selected correction corresponds to a **broadening fract
 \]
 
 So the full mouth profile behaves much more like a moderate broadening toward
-uniformity than like a sharpening toward the self-matched derivative branch.
-=== moving_throat_pde_stage136_full_mouth_correction_status.md ===
-
+uniformity than like a sharpening toward the self-matched derivative branch.moving_throat_pde_stage136_full_mouth_correction_status.md
 # Moving-Throat PDE — Stage 136 / v58 Status
 
 ## New closure result
@@ -23862,9 +24071,7 @@ finite correction problem around a unique regular branch.
 The next PDE-facing step is to let the **core outlet coefficients and the mouth profile
 co-evolve** self-consistently, instead of holding the compensated core branch fixed while
 correcting only the mouth source law.
-
-=== moving_throat_pde_stage137_coevolving_core_mouth_map.md ===
-
+moving_throat_pde_stage137_coevolving_core_mouth_map.md
 # Moving-Throat PDE — Stage 137: Exact Co-Evolving Core–Mouth Fixed-Point Map
 
 ## Goal
@@ -24057,9 +24264,7 @@ Under the self-matched susceptibility closure from Stage 123,
 So the remaining ambiguity is now only the required **normalized mouth traction**
 \(\widehat T_m\) that makes the co-evolving fixed point land on
 \(\mathfrak g_*\).
-
-=== moving_throat_pde_stage138_frozen_traction_fixedpoint.md ===
-
+moving_throat_pde_stage138_frozen_traction_fixedpoint.md
 # Moving-Throat PDE — Stage 138: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction
 
 ## Goal
@@ -24214,9 +24419,7 @@ traction-dependent fixed point with
 
 That means exact preservation of the canonical outgoing quadrupole fingerprint now
 requires a **retuned traction**, not just the old canonical value.
-
-=== moving_throat_pde_stage139_renormalized_canonical_branch.md ===
-
+moving_throat_pde_stage139_renormalized_canonical_branch.md
 # Moving-Throat PDE — Stage 139: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution
 
 ## Goal
@@ -24373,9 +24576,7 @@ Inside the explicit Family-1 co-evolving closure on the analyzed positive branch
 So the mouth-side problem is no longer branch selection and no longer a broad
 profile ambiguity. It is now a quantitative renormalization problem for the
 unique regular canonical branch.
-
-=== moving_throat_pde_stage140_core_mouth_coevolution_status.md ===
-
+moving_throat_pde_stage140_core_mouth_coevolution_status.md
 # Moving-Throat PDE — Stage 140 / v59 Status
 
 ## New closure result
@@ -24464,9 +24665,7 @@ The next PDE-facing task is no longer branch selection. It is to derive the actu
 deviation of the moving-throat mouth/core system from this explicit Family-1
 co-evolving fixed point, and then translate that deviation into the remaining
 outgoing quadrupole-normalization defect.
-
-=== moving_throat_pde_stage141_linear_defect_transport.md ===
-
+moving_throat_pde_stage141_linear_defect_transport.md
 # Moving-Throat PDE — Stage 141: Linear Defect Transport from the Renormalized Family-1 Canonical Point
 
 ## Goal
@@ -24877,9 +25076,7 @@ The clean next derivation is now:
 The most economical first pass is to test the **compensated Robin–mixed branch**,
 because it is the only explicit isotropic outlet class already known to preserve the
 canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
-
-=== moving_throat_pde_stage142_hybrid_outlet_projection.md ===
-
+moving_throat_pde_stage142_hybrid_outlet_projection.md
 
 # Moving-Throat PDE — Stage 142: Linear Projection of the Co-Evolving Family-1 Defect onto the Compensated Robin–Mixed Outlet
 
@@ -25352,9 +25549,7 @@ projection. It is the much narrower DtN problem:
 > tangential co-evolving mouth deformation on the compensated hybrid outlet.
 
 That is now the exact next theorem gate.
-
-=== moving_throat_pde_stage143_bare_mixed_port_slippage.md ===
-
+moving_throat_pde_stage143_bare_mixed_port_slippage.md
 
 # Moving-Throat PDE — Stage 143: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate
 
@@ -25803,9 +25998,7 @@ The clean next derivation is now:
 4. and extract the coefficient `\Upsilon_\Pi`.
 
 That is the exact next theorem gate.
-
-=== moving_throat_pde_stage144_dn_similarity_slippage.md ===
-
+moving_throat_pde_stage144_dn_similarity_slippage.md
 # Moving-Throat PDE — Stage 144: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility
 
 ## Goal
@@ -26303,9 +26496,7 @@ So the next theorem gate is now as small as it can be without solving the true m
 > to first order, or produces a nonzero similarity-slippage scalar `\Xi_{\rm slip}`.
 
 That is the exact next microscopic closure question.
-
-=== moving_throat_pde_stage145_parent_compensation_rigidity.md ===
-
+moving_throat_pde_stage145_parent_compensation_rigidity.md
 # Moving-Throat PDE — Stage 145: Parent Compensation-Surface Rigidity and Automatic Similarity Preservation
 
 ## Goal
@@ -26557,9 +26748,7 @@ The remaining PDE-facing question is now even narrower:
 > does the true moving-throat co-evolving core stay on the exact parent compensation family to first order?
 
 If it does, the first-order reduced 2.5PN quadrupole-normalization defect vanishes automatically.
-
-=== moving_throat_pde_stage146_off_family_normal_coordinate.md ===
-
+moving_throat_pde_stage146_off_family_normal_coordinate.md
 # Moving-Throat PDE — Stage 146: Off-Family Normal Coordinate and Microscopic Compensation Defect
 
 ## Goal
@@ -26979,9 +27168,7 @@ It is the much smaller question:
 
 If that scalar vanishes, Stage 145 is recovered and the first-order reduced \(2.5\)PN obstruction disappears automatically.
 If it does not, the whole first-order defect ledger is already explicit.
-
-=== moving_throat_pde_stage147_microscopic_log_channels.md ===
-
+moving_throat_pde_stage147_microscopic_log_channels.md
 # Moving-Throat PDE — Stage 147: Explicit Microscopic Log-Imbalance Channels on the Linearized Wall/BdG/Maxwell/Mixed Branch
 
 ## Goal
@@ -27439,9 +27626,7 @@ It is only to determine the actual linearized values of these branch-variable dr
 If they satisfy the tangency law above, then \(\delta_\perp=0\) and the first-order reduced
 \(2.5\)PN obstruction disappears automatically.
 If they do not, the whole first-order off-family defect is now already explicit.
-
-=== moving_throat_pde_stage148_exact_branch_drifts.md ===
-
+moving_throat_pde_stage148_exact_branch_drifts.md
 # Moving-Throat PDE — Stage 148: Exact Lower-Branch Drift Laws for `L_W`, `v_{w0}`, and `\mathcal T_m`
 
 ## Goal
@@ -27876,9 +28061,7 @@ So the next PDE-facing question is now as small as it has ever been:
 > `L_W`, `v_{w0}`, `\mathcal T_m`, and `c_{s,w}` for us?
 
 That is a much sharper continuation target than Stage 147 left us with.
-
-=== moving_throat_pde_stage149_bundle_inversion_four_drifts.md ===
-
+moving_throat_pde_stage149_bundle_inversion_four_drifts.md
 # Moving-Throat PDE — Stage 149: Exact Bundle Inversion of the Last Four Irreducible Branch Drifts
 
 ## Purpose
@@ -28114,9 +28297,7 @@ So the remaining PDE-facing bottleneck is no longer the direct computation of fo
 4. and the isotropic outgoing normalization drift \(\delta\ln P_0\).
 
 Once those are known, the Stage-148 lower-branch transport is fully closed at first order.
-
-=== moving_throat_pde_stage150_bundle_transport_tangent_compensation.md ===
-
+moving_throat_pde_stage150_bundle_transport_tangent_compensation.md
 # Moving-Throat PDE — Stage 150: Bundle Transport of the Remaining Mouth Variables and the Tangent-Compensation Theorem
 
 ## Goal
@@ -28589,9 +28770,7 @@ The exact bundle-side transport laws are:
 
 So the first-order isotropic branch transport is no longer missing at all.
 What is missing is the first correction that escapes this closed bundle algebra.
-
-=== moving_throat_pde_stage151_off_bundle_slippage.md ===
-
+moving_throat_pde_stage151_off_bundle_slippage.md
 # Moving-Throat PDE — Stage 151: Exact Off-Bundle Slippage Decomposition
 
 ## Purpose
@@ -29049,9 +29228,7 @@ for example from:
 - or the first nonlinear correction to the explicit Family-1 co-evolving branch.
 
 That is the smallest next derivation step that can actually move the theorem forward.
-
-=== moving_throat_pde_stage152_no_linear_p2_scalar_slippage.md ===
-
+moving_throat_pde_stage152_no_linear_p2_scalar_slippage.md
 # Moving-Throat PDE — Stage 152: No Linear Grouped-`P2` Feed-Down into the Scalar Off-Bundle Slippages
 
 ## Purpose
@@ -29429,9 +29606,7 @@ The next honest gate is
 > \(\Xi_I^{(XY)}\).
 
 That is a genuine narrowing of the moving-throat PDE bottleneck.
-
-=== moving_throat_pde_stage153_linear_grouped_outlet_map.md ===
-
+moving_throat_pde_stage153_linear_grouped_outlet_map.md
 # Moving-Throat PDE — Stage 153: Exact Linear Grouped-`P2` Map into the Direct Outlet Coefficients `\delta\kappa_W` and `\delta\gamma_W`
 
 ## Purpose
@@ -29924,9 +30099,7 @@ The next gate is:
 > on the physical branch.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage154_microscopic_grouped_obstructions.md ===
-
+moving_throat_pde_stage154_microscopic_grouped_obstructions.md
 # Moving-Throat PDE — Stage 154: Exact Microscopic Decomposition of the Linear Grouped Outlet Obstructions
 
 ## Purpose
@@ -30455,9 +30628,7 @@ The next gate is:
 > \).
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage155_physical_slope_collapse.md ===
-
+moving_throat_pde_stage155_physical_slope_collapse.md
 
 
 # Moving-Throat PDE — Stage 155: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}` and `P_1`
@@ -30863,9 +31034,7 @@ So the next honest theorem gate is now much narrower than Stage 154 suggested:
 > compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) — and, on the even-preserving branch, just \(P_1/P_0\) — directly from the actual grouped moving-throat response.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage156_axisymmetric_loading_mismatch.md ===
-
+moving_throat_pde_stage156_axisymmetric_loading_mismatch.md
 # Moving-Throat PDE — Stage 156: Weak-Axisymmetric Transport of the Physical Slopes and Collapse to One Static Loading Mismatch
 
 ## Purpose
@@ -31314,9 +31483,7 @@ So the next honest theorem gate is now smaller than Stage 155 suggested:
 > compute the weak-axisymmetric static operator slope \(D_{01}/D_0\) and the weak-axisymmetric static outgoing-transfer slope \(N_{01}/N_0\) on the actual moving-throat branch — and, on the even-preserving branch, only their difference \(\Xi_{\rm load}\).
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage157_static_self_similarity.md ===
-
+moving_throat_pde_stage157_static_self_similarity.md
 # Moving-Throat PDE — Stage 157: Static Self-Similarity and Exact Collapse of the Remaining Linear Grouped Loading Defect
 
 ## Purpose
@@ -31752,9 +31919,7 @@ The next honest theorem gate is now:
 > on the actual weak-axisymmetric moving-throat branch.
 
 That will tell us whether the first linear grouped `2.5`PN defect comes from support non-self-similarity, conservative Maxwell/mixed non-self-similarity, or outgoing-transfer non-self-similarity.
-
-=== moving_throat_pde_stage158_wall_normalized_load_shape.md ===
-
+moving_throat_pde_stage158_wall_normalized_load_shape.md
 # Moving-Throat PDE — Stage 158: Wall-Normalized Port Shape Variables and the Outgoing-Load Theorem
 
 ## Purpose
@@ -32208,9 +32373,7 @@ The next theorem gate is now:
 > \]
 
 That is a real narrowing of the moving-throat PDE bottleneck.
-
-=== moving_throat_pde_stage159_outgoing_load_factorization.md ===
-
+moving_throat_pde_stage159_outgoing_load_factorization.md
 # Moving-Throat PDE — Stage 159: Outgoing Load-Factor Factorization and the Square-Root Mixed-Leg Law
 
 ## Purpose
@@ -32510,9 +32673,7 @@ It is:
 > on the actual moving-throat branch.
 
 Once those three microscopic slippages are known, the remaining linear grouped `2.5`PN defect is already explicit.
-
-=== moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage.md ===
-
+moving_throat_pde_stage160_weak_axisymmetric_outgoing_slippage.md
 # Moving-Throat PDE — Stage 160: Weak-Axisymmetric Collapse of the Outgoing-Slippage Bundle to One Scalar Amplitude
 
 ## Purpose
@@ -32906,9 +33067,7 @@ It is simply:
 > from the real moving-throat outgoing ports.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage161_outgoing_port_coloading_theorem.md ===
-
+moving_throat_pde_stage161_outgoing_port_coloading_theorem.md
 # Moving-Throat PDE — Stage 161: Outgoing-Port Co-Loading Theorem and Direct Portwise Formula for `\Xi_1`
 
 ## Purpose
@@ -33354,9 +33513,7 @@ It is simply:
 > of the real moving-throat outgoing ports, and check whether their outgoing-weighted average equals \(\kappa_1\).
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage162_transfer_shape_theorem.md ===
-
+moving_throat_pde_stage162_transfer_shape_theorem.md
 # Moving-Throat PDE — Stage 162: Wall-Normalized Transfer-Shape Theorem and the Final Collapse of the Port Co-Loading Gate
 
 ## Purpose
@@ -33806,9 +33963,7 @@ It is simply
 > compute the weak-axisymmetric transfer-shape slopes \(\tau_r\), and test whether their outgoing-weighted average vanishes.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage163_effective_transfer_shape_collapse.md ===
-
+moving_throat_pde_stage163_effective_transfer_shape_collapse.md
 # Moving-Throat PDE — Stage 163: Effective Transfer-Shape Collapse and the Actual Continuum-Kernel Slope Law
 
 ## Purpose
@@ -34223,9 +34378,7 @@ It is now:
 > determine whether the actual weak-axisymmetric moving-throat branch keeps this single continuum transfer shape rigid.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage164_coherent_tracking_defect.md ===
-
+moving_throat_pde_stage164_coherent_tracking_defect.md
 
 # Moving-Throat PDE — Stage 164: Coherent Tracking-Branch Weak-Axisymmetric Defect Law and the Support-Blindness Theorem
 
@@ -34649,9 +34802,7 @@ It is:
 > on the coherent moving-throat branch.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage165_microscopic_coherent_slippage.md ===
-
+moving_throat_pde_stage165_microscopic_coherent_slippage.md
 # Moving-Throat PDE — Stage 165: Microscopic Coherent-Kernel Slippage Decomposition and the Exact Tracking/Nontracking Split
 
 ## Purpose
@@ -35170,9 +35321,7 @@ It is now
 > on the actual moving-throat branch, and test whether the nontracking set vanishes.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage166_triangular_normal_form.md ===
-
+moving_throat_pde_stage166_triangular_normal_form.md
 
 # Moving-Throat PDE — Stage 166: Exact Triangular Normal Form of the Coherent Weak-Axisymmetric Defect
 
@@ -35569,9 +35718,7 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct next theorem gate.
-
-=== moving_throat_pde_stage167_branch_invariant_coordinates.md ===
-
+moving_throat_pde_stage167_branch_invariant_coordinates.md
 # Moving-Throat PDE — Stage 167: Exact Branch-Invariant Coordinates for the Coherent Weak-Axisymmetric Defect
 
 ## Purpose
@@ -36006,9 +36153,7 @@ It is now
 > on the actual moving-throat branch.
 
 That is the direct continuation point.
-
-=== moving_throat_pde_stage168_microscopic_monomials.md ===
-
+moving_throat_pde_stage168_microscopic_monomials.md
 
 # Moving-Throat PDE — Stage 168: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
 
@@ -36554,9 +36699,7 @@ So the continuation point is now smaller than Stage 167 left it:
 
 > determine whether the true grouped weak-axisymmetric branch is microscopically monomial-rigid, at this same first-order reference-branch level, in the three direct coordinates
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
-
-=== moving_throat_pde_stage169_similarity_orbit_closure.md ===
-
+moving_throat_pde_stage169_similarity_orbit_closure.md
 
 # Moving-Throat PDE — Stage 169: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
 
@@ -37001,9 +37144,7 @@ So the continuation point is now as small and as clean as it can be without the 
 > determine whether the true moving-throat grouped weak-axisymmetric branch is tangent to the exact monomial-preserving similarity orbit \(\mathcal G_*\).
 
 If it is, the coherent first-order grouped weak-axisymmetric defect vanishes automatically.
-
-=== moving_throat_pde_stage170_orbit_quotient_closure.md ===
-
+moving_throat_pde_stage170_orbit_quotient_closure.md
 # Moving-Throat PDE — Stage 170: Exact Orbit–Quotient Closure and the Finite Weak-Axisymmetric Defect Theorem
 
 ## Purpose
@@ -37505,9 +37646,7 @@ Therefore the reduced coherent weak-axisymmetric zero-defect theorem can now be 
 \]
 
 That is as far as the reduced theorem can be brought home without the completed moving-throat PDE itself. The remaining open question is still the dynamical branch-selection theorem: whether the true PDE branch preserves those invariants.
-
-=== moving_throat_pde_stage171_branch_observables_completion.md ===
-
+moving_throat_pde_stage171_branch_observables_completion.md
 # Moving-Throat PDE — Stage 171: Branch-Observable Completion and the Exact First-Order Observable Compiler
 
 ## Status
@@ -38015,9 +38154,7 @@ In particular, the next clean move is to keep the present Stage-171 observable p
 - and outgoing quadrupole normalization.
 
 So Stage 171 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.
-
-=== moving_throat_pde_stage172_transfer_shape_prefactor_compiler.md ===
-
+moving_throat_pde_stage172_transfer_shape_prefactor_compiler.md
 # Moving-Throat PDE — Stage 172: Transfer-Shape / Outgoing-Prefactor Compiler and the Exact Normalization Bridge
 
 ## Status
@@ -38678,9 +38815,7 @@ It is to separate, inside the transfer-shape language just compiled here,
 so that the microscopic slippages split into the exact direct-defect variables versus the exact dressing variable.
 
 That is the natural Stage-173 continuation.
-
-=== moving_throat_pde_stage173_direct_defect_vs_dressing_split.md ===
-
+moving_throat_pde_stage173_direct_defect_vs_dressing_split.md
 # Moving-Throat PDE — Stage 173: Direct Transfer-Shape Defect vs. Dressing Residual, Support-Blindness, and the Scalar No-Go Filters
 
 ## Status
@@ -39362,9 +39497,7 @@ The purpose of that next stage should be:
 3. and compile the **smallest exact finite PDE data packet** that still has to be computed on the actual moving-throat branch.
 
 So Stage 173 is the last structural-cleanup stage before the minimal PDE packet theorem gate.
-
-=== moving_throat_pde_stage174_minimal_pde_data_packet.md ===
-
+moving_throat_pde_stage174_minimal_pde_data_packet.md
 # Moving-Throat PDE — Stage 174: Minimal PDE Data Packet, Exact Branch/Orbit Residuals, and the Home-Stretch Theorem
 
 ## Status
@@ -39787,9 +39920,7 @@ Supporting files:
 
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py`
 - `moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt`
-
-=== moving_throat_pde_stage175_orbit_quotient_projectors.md ===
-
+moving_throat_pde_stage175_orbit_quotient_projectors.md
 # Moving-Throat PDE — Stage 175: Exact Orbit/Quotient Projectors and the Microscopic Orbit-Lock Split
 
 ## Status
@@ -40201,9 +40332,7 @@ Supporting files:
 
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py`
 - `moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt`
-
-=== moving_throat_pde_stage176_isotropic_grouped_p2_target_surface.md ===
-
+moving_throat_pde_stage176_isotropic_grouped_p2_target_surface.md
 # Moving-Throat PDE — Stage 176: Exact Isotropic Grouped-`P2` Target Surface and the Scalar/Geometry Firewall
 
 ## Status
@@ -40606,9 +40735,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py`
-
-=== moving_throat_pde_stage177_outgoing_l2_fingerprint_and_deformation_algebra.md ===
-
+moving_throat_pde_stage177_outgoing_l2_fingerprint_and_deformation_algebra.md
 # Moving-Throat PDE — Stage 177: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic Deformation Algebra
 
 ## Status
@@ -40980,9 +41107,7 @@ Instead:
    \]
 
 That is the smallest honest next theorem gate on the retarded side.
-
-=== moving_throat_pde_stage178_source_map_reduction_of_canonical_outgoing_branch.md ===
-
+moving_throat_pde_stage178_source_map_reduction_of_canonical_outgoing_branch.md
 # Moving-Throat PDE — Stage 178: Exact Source-Map Reduction of the Canonical Outgoing Branch, the Factorization `m_{\hat 0}^{\,2}\chi_Q N_Q=1`, and the Collapse of `\Delta_{\rm norm}`
 
 ## Status
@@ -41437,9 +41562,7 @@ Instead:
 3. and prove that any extra retarded structure first entering at `O(\omega^7)` or higher is irrelevant to the 2.5PN theorem.
 
 That is the natural next theorem gate after Stage 178.
-
-=== moving_throat_pde_stage179_higher_odd_irrelevance_theorem.md ===
-
+moving_throat_pde_stage179_higher_odd_irrelevance_theorem.md
 # Moving-Throat PDE — Stage 179: Exact Higher-Odd Irrelevance Theorem, Stability of `\chi_Q`, and the Collapse of the 2.5PN Retarded Finish Line to `\Delta_Q=\chi_Q-1`
 
 ## Status
@@ -41862,9 +41985,7 @@ The next clean continuation is now the exact conditional closure statement in th
    on the natural point-particle source-map branch.
 
 That is the natural successor to Stage 179.
-
-=== moving_throat_pde_stage180_conditional_packetA_closure_theorem.md ===
-
+moving_throat_pde_stage180_conditional_packetA_closure_theorem.md
 # Moving-Throat PDE — Stage 180: Exact Conditional Packet-A Closure Theorem, the Equivalence `\Delta_{\rm branch}=0 \iff \chi_Q=1`, and the Final Retarded Finish-Line Reduction
 
 ## Status
@@ -42258,9 +42379,7 @@ It is the actual realization question:
    \]
 
 That is the sharpest next theorem gate after Stage 180.
-
-=== moving_throat_pde_stage181_exact_finite_orbit_law.md ===
-
+moving_throat_pde_stage181_exact_finite_orbit_law.md
 # Moving-Throat PDE — Stage 181: Exact Finite Orbit Law for the Dependent Triple, Exact Mismatch Coordinates, and the Orbit-Restoration Theorem
 
 ## Status
@@ -42704,9 +42823,7 @@ The next clean continuation is now fully finite and microscopic:
    \]
 
 That is the sharpest direct orbit-lock test available after Stage 181.
-
-=== moving_throat_pde_stage182_pairwise_orbit_transport_law.md ===
-
+moving_throat_pde_stage182_pairwise_orbit_transport_law.md
 # Moving-Throat PDE — Stage 182: Exact Pairwise Orbit-Transport Law, Reference-Independent Mismatch Packet, and the Two-Point Orbit-Lock Theorem
 
 ## Status
@@ -43326,9 +43443,7 @@ The natural continuation is now the fully reference-free home-stretch theorem:
 3. and then feed the actual PDE-selected branch directly into that two-packet compiler.
 
 That is the sharpest next theorem gate after Stage 182.
-
-=== moving_throat_pde_stage183_reference_free_home_stretch_theorem.md ===
-
+moving_throat_pde_stage183_reference_free_home_stretch_theorem.md
 # Moving-Throat PDE — Stage 183: Exact Reference-Free Full Home-Stretch Theorem, Orbit-Representative Independence, and the Four-Scalar Final Verdict Packet
 
 ## Status
@@ -43773,9 +43888,7 @@ The natural continuation after Stage 183 is now procedural rather than algebraic
    \]
 
 That is the sharpest possible reduced theorem gate after Stage 183.
-
-=== moving_throat_pde_stage184_explicit_realization_compiler_and_canonical_orbit_projection.md ===
-
+moving_throat_pde_stage184_explicit_realization_compiler_and_canonical_orbit_projection.md
 # Moving-Throat PDE — Stage 184: Exact Realization Compiler, Canonical Orbit Projection, and the First Explicit Four-Scalar Audit
 
 ## Status
@@ -44344,9 +44457,7 @@ That means:
    to locate the unique same-free-quintuple point on the target orbit.
 
 That is the first truly explicit realization audit after Stage 184.
-
-=== moving_throat_pde_stage185_free_quintuple_target_graph.md ===
-
+moving_throat_pde_stage185_free_quintuple_target_graph.md
 # Moving-Throat PDE — Stage 185: Exact Free-Quintuple Target Graph, Same-Free-Quintuple Closure Surface, and the First Reduced-Family Test
 
 ## Status
@@ -44915,9 +45026,7 @@ The next clean continuation is now sharply defined:
 4. and then ask whether their vanishing reduces to a simpler one-parameter or low-rank crossing problem on that family.
 
 So Stage 186 should be the first exact **family crossing theorem** built on the Stage-185 target graph.
-
-=== moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md ===
-
+moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
 # Moving-Throat PDE — Stage 186: Free-Quintuple Scalar Closure Slice, Exact Graph-Family Tangency, and the One-Parameter Crossing Theorem
 
 ## Status
@@ -45482,9 +45591,7 @@ It needs to do one of two concrete things:
    \]
 
 That is the smallest clean family-level theorem gate reached so far.
-
-=== moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor.md ===
-
+moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor.md
 # Moving-Throat PDE — Stage 187: Explicit Free-Quintuple Log-Ray Sweep, Finite Graph Invariance, and the Scalar Root Predictor
 
 ## Status
@@ -46005,9 +46112,7 @@ It is to compute, on candidate free-quintuple rays,
 4. and then verify whether the actual scalarized branch crosses `1` uniquely before leaving the controlled branch.
 
 That is the sharpest explicit one-parameter continuation point reached so far.
-
-=== moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement.md ===
-
+moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement.md
 # Moving-Throat PDE — Stage 188: Directional Hessian, Exact Quadratic Log-Ray Refinement, and the Turning-Point Closure Test
 
 ## Status
@@ -46414,9 +46519,7 @@ The Packet-B orbit defect still vanishes identically on every graph-lifted ray, 
 
 So after Stage 188 the next honest continuation is no longer to invent a better local predictor by hand.
 It is to evaluate the actual Hessian data of `\(\widehat\chi_Q\)` on candidate base points and free directions, and then use the quadratic crossing / tangency theorem to rank which free-quintuple rays are genuinely promising for the final branch search.
-
-=== moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem.md ===
-
+moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem.md
 # Moving-Throat PDE — Stage 189: Curvature-Enveloped Ray Ranking, Certified Local Brackets, and the Search Sieve Theorem
 
 ## Status
@@ -46937,9 +47040,7 @@ Those three ingredients determine:
 
 So after Stage 189 the next honest continuation is no longer to invent another predictor.
 It is to evaluate the actual directional Hessian envelope of `\(\ln\widehat\chi_Q\)` on candidate free-quintuple rays and let the certified bracket/ranking theorem decide which rays are genuinely worth following in the final scalar branch search.
-
-=== moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table.md ===
-
+moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table.md
 # Moving-Throat PDE — Stage 190: Primitive-Ray Hessian Envelopes, Exact Certified Ray Table, and the Local Elimination Theorem
 
 ## Status
@@ -47376,9 +47477,7 @@ It is to move one step beyond them:
 > evaluate the first genuine two-coordinate mixed rays, where the off-diagonal Hessian entries of `\(\ln\widehat\chi_Q\)` can finally enter and possibly beat the primitive certified brackets.
 
 That is the natural Stage-191 gate.
-
-=== moving_throat_pde_stage191_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md ===
-
+moving_throat_pde_stage191_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
 # Moving-Throat PDE — Stage 191: Pairwise Mixed Rays, Exact Off-Diagonal Hessian Synergy, and the Canonical Two-Ray Audit
 
 ## Status
@@ -47870,9 +47969,7 @@ So the next honest continuation is now very sharply defined:
 > carry out the full one-parameter optimization over `\(r\)` on each surviving pairwise cone, and decide whether any mixed ray can beat both the primitive and canonical-screen rows.
 
 That is the natural Stage-192 theorem gate.
-
-=== moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md ===
-
+moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
 # Moving-Throat PDE — Stage 192: Exact Pairwise Ratio Optimizer, Finite Candidate Set, and the Mixed-Ray Winner Theorem
 
 ## Status
@@ -48338,9 +48435,7 @@ Stage 192 now finishes the pairwise part of that search:
 So the next theorem gate is no longer “what is the best pairwise mixed ray?”
 That question is now finite and exact.
 The next real question is whether any **three-coordinate** mixed branch can still beat the Stage-192 pairwise winner.
-
-=== moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit.md ===
-
+moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit.md
 # Moving-Throat PDE — Stage 193: Three-Coordinate Mixed-Simplex, Exact Interior Gradient/Curvature Synergy, and the Canonical Triple-Screen Audit
 
 ## Status
@@ -48905,9 +49000,7 @@ Stage 193 now shows what is genuinely new at the first three-coordinate level:
 So the next theorem gate is no longer “is there any three-coordinate effect at all?”
 There is.
 The next real question is whether the full two-parameter interior simplex optimizer can produce a certified winner that beats both canonical interior screens and all optimized pairwise edges.
-
-=== moving_throat_pde_stage194_full_interior_simplex_optimizer_and_finite_candidate_reduction.md ===
-
+moving_throat_pde_stage194_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
 # Moving-Throat PDE — Stage 194: Full Interior Triple-Simplex Optimizer, Exact Stationary Elimination, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -49426,9 +49519,7 @@ Stage 194 now closes the missing algebraic step:
 So the next theorem gate is no longer “how do we search the interior at all?”
 That problem is finished.
 The next question is which primitive triples, if any, actually produce certified interior winners once the real PDE-derived local packet is supplied.
-
-=== moving_throat_pde_stage195_full_primitive_triple_ranking_theorem.md ===
-
+moving_throat_pde_stage195_full_primitive_triple_ranking_theorem.md
 # Moving-Throat PDE — Stage 195: Full Primitive-Triple Ranking, Exact Boundary Splice, and the Up-to-Three-Coordinate Search Sieve
 
 ## Status
@@ -49948,9 +50039,7 @@ Stage 195 now closes the global ranking step.
 So the next theorem gate is no longer “is the three-coordinate search tractable?”
 That problem is finished.
 The next honest question is whether the first four-coordinate simplex can produce a certified interior winner that beats the now-finite up-to-three-coordinate ledger.
-
-=== moving_throat_pde_stage196_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md ===
-
+moving_throat_pde_stage196_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
 # Moving-Throat PDE — Stage 196: Four-Coordinate Mixed Simplex, Exact Face Reduction, and the Support-Cardinality-4 Theorem Gate
 
 ## Status
@@ -50653,9 +50742,7 @@ Stage 196 now shows what is genuinely new at the first four-coordinate level:
 So the next theorem gate is no longer “is there any four-coordinate effect at all?”
 There is.
 The next real question is whether the full three-parameter interior optimizer on a primitive four-simplex can produce a certified winner that beats both canonical interior screens and the now-finished support-`<=3` ledger.
-
-=== moving_throat_pde_stage197_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md ===
-
+moving_throat_pde_stage197_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
 # Moving-Throat PDE — Stage 197: Full Interior Four-Coordinate Simplex Optimizer, Exact Lifted Stationary System, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -51247,9 +51334,7 @@ So the next theorem gate is now completely sharp:
 > rank the five primitive four-coordinate simplices by their full certified interior minima and compare the winning support-cardinality-`4` candidate against the already-finished support-`<=3` ledger.
 
 That is the natural continuation point for Stage 198.
-
-=== moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem.md ===
-
+moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem.md
 # Moving-Throat PDE — Stage 198: Full Primitive-Quadruple Ranking, Exact Boundary Splice, and the Up-to-Four-Coordinate Search Sieve
 
 ## Status
@@ -51748,9 +51833,7 @@ Stage 198 now closes the global support-cardinality-`4` ranking step.
 So the next theorem gate is no longer “is the four-coordinate search tractable?”
 That problem is finished.
 The next honest question is whether the unique five-coordinate simplex can produce a certified interior winner that beats the now-finite support-`<=4` ledger.
-
-=== moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md ===
-
+moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate.md
 # Moving-Throat PDE — Stage 199: Unique Five-Coordinate Positive Simplex, Exact Face Reduction, and the Support-Cardinality-5 Theorem Gate
 
 ## Status
@@ -52276,9 +52359,7 @@ The next exact move is now completely sharp:
 4. and reduce the unique interior five-coordinate optimizer to a finite algebraic candidate set.
 
 That is exactly the Stage-200 task.
-
-=== moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md ===
-
+moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
 # Moving-Throat PDE — Stage 200: Unique Five-Coordinate Mixed Simplex, Exact Face Reduction, Full Interior Optimizer, and the Finite Algebraic Candidate Set
 
 ## Status
@@ -52916,9 +52997,7 @@ The support-cardinality-`5` problem is no longer a continuum search.
 - And the local improvement/non-improvement verdict against the full support-`<=4` ledger is now an exact interval comparison.
 
 That means the natural next move is Stage 201 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.
-
-=== moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md ===
-
+moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
 # Moving-Throat PDE — Stage 201: Full Support-`<=5` Completion, Exact Boundary Identification, and the Final Local Mixed-Ray Closure Theorem
 
 ## Status
@@ -53284,9 +53363,7 @@ The local mixed-ray sieve is now finished.
 
 So the natural continuation after Stage 201 is **not** another support-cardinality theorem.
 It is to begin inserting the actual PDE-derived Hessian-envelope and branch data into the completed search ledger — or, equivalently, to port this whole audited completion back into the compact PDE program master.
-
-=== moving_throat_pde_stage202_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md ===
-
+moving_throat_pde_stage202_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
 # Moving-Throat PDE — Stage 202: One-Port Mixed-Bundle Static Kernel and the Square-Law Suppression Test
 
 ## Status
@@ -53794,9 +53871,7 @@ The next honest continuation is now narrower.
 3. If the static corridor stays too weak, move to the genuinely time-dependent / non-adiabatic mixed-port audit.
 
 That is the cleanest continuation point after the static square-law suppression test.
-
-=== moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md ===
-
+moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
 # Moving-Throat PDE — Stage 203: Dynamic Mixed-Port Kernel, Phase-Lag No-Go, and the Resonant-Survival Gate
 
 ## Status
@@ -54409,9 +54484,7 @@ The next theorem gate is now very sharp.
 4. Ask whether any resonance window gives a materially larger conservative reshaping before absorptive loading takes over.
 
 That is the cleanest continuation point after the phase-lag no-go theorem and the first resonant-survival gate.
-
-=== moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md ===
-
+moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
 # Moving-Throat PDE — Stage 204: Resonance/Linewidth Tradeoff, the Dispersive No-Free-Lunch Theorem, and the Linear Survival Window
 
 ## Status
@@ -54998,9 +55071,7 @@ The continuation point is now very sharp.
    against the barrier-softening size demanded by the reduced same-charge problem.
 
 That is the smallest honest continuation point after the resonance/linewidth audit.
-
-=== moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md ===
-
+moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
 # Moving-Throat PDE — Stage 205: Concrete Finite-Throat Primitive Branch, Pole Census, and the Residue/Linewidth Survival Test
 
 ## Status
@@ -55472,9 +55543,7 @@ The next clean move is now even sharper than before.
 4. Then ask whether the resulting compatible branch still has a non-empty dynamic survival window.
 
 That is exactly the Stage-206 theorem gate.
-
-=== moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md ===
-
+moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
 
 # Moving-Throat PDE — Stage 206: `5`PN Isotropic Target Surface, Primitive-Branch Compatibility, and the Dynamic Survival Window
 
@@ -55953,9 +56022,7 @@ The accompanying audit script verifies:
 
 Supporting file:
 - `moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py`
-
-=== moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md ===
-
+moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
 # Moving-Throat PDE — Stage 207: PDE Branch-Packet Compiler, Weak-Axisymmetric Ceiling Transport, and the First Actual-Branch Kill Test
 
 ## Status
@@ -56392,9 +56459,7 @@ The accompanying audit script verifies:
 
 Supporting file:
 - `moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py`
-
-=== moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md ===
-
+moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
 # Moving-Throat PDE — Stage 208: Microscopic `\Xi_1` Compiler, First-Order Conservative Compensation Surface, and the Mixed-Sector Survival Sieve
 
 ## Status
@@ -56985,9 +57050,7 @@ The paired audit script verifies all of the following:
 
 Supporting file:
 - `moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py`
-
-=== moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md ===
-
+moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
 # Moving-Throat PDE — Stage 209: Strict `5`PN Even-Gate Package, the Surviving Mixed Corridor, and the Pure-Transfer Subcorridor
 
 ## Status
@@ -57465,9 +57528,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py`
-
-=== moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md ===
-
+moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
 # Moving-Throat PDE — Stage 210: Pure-Transfer Load Factor, Outgoing-Rigidity Sieve, and the First Co-Loading No-Go
 
 ## Status
@@ -57965,9 +58026,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py`
-
-=== moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md ===
-
+moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
 # Moving-Throat PDE — Stage 211: Numerator/Denominator Split of the Pure-Transfer Corridor and the First Actual Dynamic-Window Test
 
 ## Status
@@ -58465,9 +58524,7 @@ The next honest continuation is now very specific:
 4. and then compare that selected-branch signature against the concrete Stage-211 dynamic ceilings.
 
 That is the cleanest bridge into Stage 212.
-
-=== moving_throat_pde_stage212_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md ===
-
+moving_throat_pde_stage212_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
 # Moving-Throat PDE — Stage 212: Selected-Branch Numerator/Denominator Signature and the Softening-Depth Crossover Theorem
 
 ## Status
@@ -58961,9 +59018,7 @@ The next clean move is now well defined.
 4. Then compile that placement into the carried Stage-211 wall-like dynamic ceilings.
 
 That is the smallest next theorem gate that directly connects the selected-branch normalization geometry to the already-audited same-charge dynamic windows.
-
-=== moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md ===
-
+moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
 # Moving-Throat PDE — Stage 213: Selected-Branch Classifier-to-Dynamic-Window Compiler and the Static-First Theorem
 
 ## Status
@@ -59557,9 +59612,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py`
-
-=== moving_throat_pde_stage214_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md ===
-
+moving_throat_pde_stage214_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
 # Moving-Throat PDE — Stage 214: Continuum Placement Pullback of the Selected-Branch Dynamic-Class Map
 
 ## Status
@@ -60187,9 +60240,7 @@ The accompanying audit script verifies:
 - and the Stage-213 static-first inequalities after pullback.
 
 The note and script are therefore aligned: the stage is a clean compiler from the abstract selected-branch classifier to the actual continuum placement coordinates of the moving-throat branch.
-
-=== moving_throat_pde_stage215_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md ===
-
+moving_throat_pde_stage215_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
 
 # Moving-Throat PDE — Stage 215: Known 5PN Data Injection and Current Branch Verdict
 
@@ -60608,9 +60659,7 @@ The honest next theorem gate is now:
 3. and test whether the realized branch clears the already-carried static ceiling.
 
 That is where the present stack says the real answer now lives.
-
-=== moving_throat_pde_stage216_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md ===
-
+moving_throat_pde_stage216_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
 # Moving-Throat PDE — Stage 216: Rigid-Mouth Orbit-Lock Compiler and the Static Turbulence Gate
 
 ## Status
@@ -61048,9 +61097,7 @@ The honest next theorem gate is now:
 3. and test whether the realized branch clears the already-carried static ceiling.
 
 That is where the present stack says the real answer now lives.
-
-=== moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md ===
-
+moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
 # Moving-Throat PDE — Stage 217: Direct Branch-Observable Static Gate and the Two-Observable Kill Test
 
 ## Status
@@ -61488,9 +61535,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py`
-
-=== moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md ===
-
+moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
 # Moving-Throat PDE — Stage 218: Rigid-Mouth Packet Projectors, the Static-Blind Dressing Line, and the Codimension-Two Orbit-Lock Point
 
 ## Status
@@ -61899,9 +61944,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py`
-
-=== moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md ===
-
+moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
 # Moving-Throat PDE — Stage 219: Rigid-Mouth Microscopic Dependent-Plane Projectors, the Equal-Drift Dressing Ray, and the Static-Only Restoration Gap
 
 ## Status
@@ -62398,9 +62441,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py`
-
-=== moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md ===
-
+moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
 # Moving-Throat PDE — Stage 220: Actual-Branch Dressing Compiler, the Finite Static-Blind Curve, and the Support-Blind Post-Static Orbit-Lock Theorem
 
 ## Status
@@ -62835,9 +62876,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py`
-
-=== moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md ===
-
+moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
 # Moving-Throat PDE — Stage 221: Physical-Branch Transfer-Shape Compiler, Packet Factorization, and the Post-Static Dressing-Invariance Theorem
 
 ## Status
@@ -63211,9 +63250,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py`
-
-=== moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md ===
-
+moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
 # Moving-Throat PDE — Stage 222: Rigid-Mouth Physical Normal Form, Exact Physical-to-Microscopic Correction Compiler, and the Cartesian Orbit-Lock Theorem
 
 ## Status
@@ -63770,9 +63807,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py`
-
-=== moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md ===
-
+moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
 
 # Moving-Throat PDE — Stage 223: Selected-Branch Loading Ratio from the Minimal Isotropic Quadrupole Precursor
 
@@ -64339,9 +64374,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py`
-
-=== moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md ===
-
+moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
 # Moving-Throat PDE — Stage 224: Exact Primitive Ranking on the Selected Twin-Support Branch
 
 ## Status
@@ -65088,9 +65121,7 @@ The accompanying SymPy audit verifies:
 
 Supporting file:
 - `moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py`
-
-=== moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md ===
-
+moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
 # Moving-Throat PDE — Stage 225: Actual Twin-Support Placement and Coherent Orbit-Lock Compiler
 
 ## Status
@@ -65847,9 +65878,7 @@ The accompanying audit script verifies the exact algebra used here:
 
 Supporting file:
 - `moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py`
-
-=== moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md ===
-
+moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
 # Moving-Throat PDE — Stage 226: Relaxed-Constraint Branch Declaration and Short-Range Open-System Compiler
 
 ## Status
@@ -66591,9 +66620,7 @@ The accompanying audit script verifies all of the algebra used here:
 
 Supporting file:
 - `moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py`
-
-=== moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md ===
-
+moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
 # Moving-Throat PDE — Stage 227: Selected-Branch Leakage and Scalar-Photon Work Compiler
 
 ## Status
@@ -67257,9 +67284,7 @@ The accompanying audit script verifies all of the algebra used here:
 
 Supporting file:
 - `moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py`
-
-=== moving_throat_pde_stage228_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md ===
-
+moving_throat_pde_stage228_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
 # Moving-Throat PDE — Stage 228: Non-Rigid Mouth/Dressing Packet and `U/V` Drain Compiler
 
 ## Status
@@ -67843,9 +67868,7 @@ That means:
 3. and then feed those functionals together with the Stage-227 leakage/work lane and the Stage-228 non-rigid packet into the first honest reduced stationary barrier compiler.
 
 That is the natural continuation to Stage 229.
-
-=== moving_throat_pde_stage229_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md ===
-
+moving_throat_pde_stage229_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
 # Moving-Throat PDE — Stage 229: Compensated Multimode Source Compiler Beyond Positive Family-1
 
 ## Status
@@ -68461,9 +68484,650 @@ The next stage should now assemble the first honest reduced stationary barrier c
 3. Stage-229 compensated source packet.
 
 At that point the lowered barrier branch can be written as one explicit reduced stationary compiler rather than as three separate session-side ingredients.
+moving_throat_pde_stage230_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+# Moving-Throat PDE — Stage 230: Relaxed Stationary Barrier Compiler from One-Port Short-Range, Leakage, `U/V` Drain, and Compensated Source Packets
 
-=== moving_throat_pde_stage231_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md ===
+## Status
 
+**Exact within**
+
+1. the carried one-port static mixed-bundle theorem that restricts the admissible same-charge short-range families to
+   
+   
+\[
+   r^{-6},
+   \qquad
+   e^{-2\kappa r}/r^4,
+   \qquad
+   e^{-4\kappa r}/r^2,
+   \]
+2. the exact Stage-227 leakage / work compiler,
+3. the exact Stage-228 non-rigid `U/V` drain compiler,
+4. the exact Stage-229 compensated source packet,
+5. and the declared **stationary barrier-unit embedding** in which the exported, drained, and source-shifted scalars enter the reduced same-charge barrier with nonnegative weights.
+
+The **Session-I benchmark specialization** used below additionally sets the work-channel embedding to unit weight and reads the weighted `U/V` lowering directly from the recorded stationary run.
+
+This stage does **not** derive a new same-charge kernel class.
+It is the first honest downstream compiler that takes the already-proved one-port short-range audit and the three relaxed packets from Stages 227–229 and assembles them into one explicit stationary lowered-barrier law.
+
+---
+
+## Purpose
+
+Stage 227 compiled the open-system support-side packet
+\[
+(S_{\rm leak},\,\mathcal W_w),
+\]
+Stage 228 compiled the orbit-side non-rigid packet
+\[
+(U,\,V,\,\mathcal D_{UV}),
+\]
+and Stage 229 compiled the source-side compensated packet
+\[
+(\sigma_{\min},\,\mathfrak g[\sigma],\,\mathcal S[\sigma],\,\mathcal R[\sigma]).
+\]
+
+What was still missing was the **stationary compiler** that tells the derivation stack how these packets lower the reduced same-charge barrier **after** the one-port audit has already fixed the admissible short-range families.
+
+That is exactly what Stage 230 does.
+
+It has four jobs:
+
+1. restate the carried one-port short-range baseline in a form ready for barrier work,
+2. import the Stage-227 leakage / work packet into barrier units,
+3. import the Stage-228 weighted `U/V` drain and the Stage-229 compensated source response,
+4. assemble the minimal reduced stationary compiler and benchmark it against the recorded Session-I softening point.
+
+---
+
+## Provenance
+
+This stage sits directly after:
+
+- **Stage 227**, which attached leakage and scalar-photon work to the selected-support packet,
+- **Stage 228**, which attached a positive `U/V` drain to the non-rigid orbit-side packet,
+- **Stage 229**, which converted the sign-changing source branch into explicit mouth/source observables,
+- the one-port same-charge barrier audit, which already proved that the static mixed bundle does **not** generate a new long-range attractive family,
+- and the Session-I stationary relaxed-constraint run summarized in Appendix B.2 of the barrier write-up.
+
+So Stage 230 is the place where the three relaxed lanes stop floating as separate diagnostics and become one stationary reduced barrier law.
+
+---
+
+## 0. Why this stage is needed
+
+Before this step, the derivation stack had four disconnected pieces:
+
+1. a one-port short-range static baseline,
+2. an open-system support packet,
+3. an orbit-side non-rigid drain packet,
+4. a compensated sign-changing source packet.
+
+That was no longer enough.
+The barrier session had already shown a substantial stationary lowering,
+\[
+\frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}\approx 0.31446203,
+\]
+but there was not yet a single derivation-stack formula saying **how** the already-compiled packets combine to produce that lowered branch.
+
+Stage 230 closes that gap.
+
+---
+
+## 1. Carried one-port short-range baseline
+
+Let the reduced one-port static bundle be controlled by
+\[
+\Delta=\Omega_U^2\Omega_W^2-R_{\rm mix}^2,
+\]
+\[
+Q=G_U^2\Omega_W^2+2G_UG_WR_{\rm mix}+G_W^2\Omega_U^2,
+\]
+\[
+P=\Omega_U^2G_W+R_{\rm mix}G_U,
+\]
+\[
+D_0=K_* - \frac{Q}{\Delta}.
+\]
+
+The exact static susceptibilities are
+\[
+\chi_{qq}=\frac1{D_0},
+\qquad
+\chi_{qU}=\frac{P_U}{\Delta D_0},
+\qquad
+\chi_{qW}=\frac{P}{\Delta D_0},
+\]
+\[
+\chi_{UU}=\frac{K_*\Omega_W^2-G_W^2}{\Delta D_0},
+\qquad
+\chi_{UW}=\frac{K_*R_{\rm mix}+G_UG_W}{\Delta D_0},
+\qquad
+\chi_{WW}=\frac{K_*\Omega_U^2-G_U^2}{\Delta D_0},
+\]
+with
+\[
+P_U=G_U\Omega_W^2+R_{\rm mix}G_W.
+\]
+
+Using the primitive short-range source amplitudes
+\[
+\beta_Q,\qquad \beta_U,\qquad \beta_W,
+\]
+the exact one-port product-family coefficients are
+\[
+\mathcal C_6=\chi_{qq}\beta_Q^2,
+\]
+\[
+\mathcal C_4=\chi_{qU}\beta_Q\beta_U+\chi_{qW}\beta_Q\beta_W,
+\]
+\[
+\mathcal C_2=\chi_{UU}\beta_U^2+2\chi_{UW}\beta_U\beta_W+\chi_{WW}\beta_W^2.
+\]
+
+If the carried pre-existing core terms are written as
+\[
+-3\alpha_6 r^{-6},
+\qquad
+-\alpha_2 e^{-4\kappa r}/r^2,
+\]
+then the exact one-port short-range baseline may be collected as
+\[
+A_6=3\alpha_6+\frac12\mathcal C_6,
+\qquad
+A_4=\mathcal C_4,
+\qquad
+A_2=\alpha_2+\frac12\mathcal C_2,
+\]
+so that
+\[
+\boxed{
+V_{\rm short}^{(1p)}(r)
+=
+\frac1r\left(1+\frac12 e^{-2\kappa r}\right)
+-
+\frac{A_6}{r^6}
+-
+A_4\frac{e^{-2\kappa r}}{r^4}
+-
+A_2\frac{e^{-4\kappa r}}{r^2}.
+}
+\]
+
+This is the carried short-range baseline that Stage 230 lowers further.
+
+### Structural reading
+
+This formula is already under the barrier-audit firewall:
+
+- it contains the admissible one-port short-range families,
+- it does **not** contain a new attractive `1/r` law,
+- and it is already tied to the same denominator pair `(\Delta,D_0)` that also feeds the outgoing-normalization stack.
+
+So Stage 230 is downstream of the one-port verdict, not an attempt to reopen it.
+
+---
+
+## 2. Imported relaxed packets
+
+### 2.1 Stage-227 leakage and reduced Session-I work scalar
+
+For compactness, write
+\[
+\mathfrak L(r):=\Lambda(r)\varrho(r).
+\]
+Then Stage 227 gives the exact selected-branch support packet
+\[
+\boxed{
+S_{\rm leak}(r)
+=
+\frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+\,\mathfrak L(r),
+}
+\]
+\[
+\boxed{
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+\,\mathfrak L(r)^2.
+}
+\]
+
+This stage uses the **reduced Session-I work scalar** `\mathcal W_w^{\rm sess}` because that is the object actually tabulated in the Session-I stationary run under the label `J^wE_w`.
+
+### 2.2 Stage-228 weighted `U/V` lowering scalar
+
+Stage 228 gives the exact drain
+\[
+\mathcal D_{UV}(r)=\frac{\chi_{UV}(r)^2 a_V f_U(r)^2}{\Delta_{UV}(r)^2},
+\qquad
+\Delta_{UV}=a_Ua_V-\chi_{UV}^2.
+\]
+
+The natural stationary barrier-lowering scalar is its weighted version
+\[
+\boxed{
+\Delta E_{UV}(r):=\eta_{UV}\mathcal D_{UV}(r),
+}
+\]
+where `\eta_{UV}` is the same Session-I barrier-lowering weight carried in the stationary script.
+
+### 2.3 Stage-229 compensated source response
+
+For the transported compensated two-mode source
+\[
+\sigma(x;r)=1+a(r)\cos(\pi x)+b(r)\cos(2\pi x),
+\qquad
+a(r)=a_0 s(r),
+\qquad
+b(r)=b_0 s(r),
+\]
+with
+\[
+s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2},
+\]
+Stage 229 gives the exact mouth-bias and loading ratio. For the stationary compiler it is convenient to use the monotone source-response scalar
+\[
+\boxed{
+\mathcal M_\sigma(r):=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r)\bigr],
+}
+\]
+with
+\[
+\mathcal R(r)=\frac{(\mathfrak g(r)-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2},
+\qquad
+\mathfrak g(r)=\frac{2}{\pi}\left(1+\frac{a(r)}{3}-\frac{b(r)}{15}\right),
+\]
+\[
+\mathcal R_\infty=
+\frac{\left(\frac{2}{\pi}-\mathfrak r_{F1}\right)^2}{1+\mathfrak r_{F1}^2}.
+\]
+
+On the Session-I orientation
+\[
+a_0>0,
+\qquad
+b_0<0,
+\]
+one has
+\[
+\mathfrak g(r)\ge \frac{2}{\pi},
+\]
+and, throughout the sampled branch, still
+\[
+\mathfrak g(r)<\mathfrak r_{F1}.
+\]
+Hence `\mathcal R(r)` decreases below its far-field value, so
+\[
+\boxed{
+\mathcal M_\sigma(r)\ge 0
+\quad\text{on the Session-I compensated branch.}
+}
+\]
+
+This is the exact source-side lowering scalar used below.
+
+---
+
+## 3. Exact relaxed stationary barrier compiler
+
+The minimal stationary compiler is now
+\[
+\boxed{
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W \mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_\sigma(r).
+}
+\]
+
+Here:
+
+- `\lambda_L\ge 0` converts the open-subsystem leakage source into stationary barrier units,
+- `\lambda_W\ge 0` converts the reduced Session-I work scalar into stationary barrier units,
+- `\Delta E_{UV}` is already the weighted orbit-side drain scalar,
+- `\mathcal M_\sigma` is already the weighted source-response scalar.
+
+### 3.1 Exact lowering identity
+
+By direct subtraction,
+\[
+\boxed{
+V_{\rm short}^{(1p)}(r)-V_{\rm eff}^{(230)}(r)
+=
+\lambda_L S_{\rm leak}(r)
++
+\lambda_W \mathcal W_w^{\rm sess}(r)
++
+\Delta E_{UV}(r)
++
+\mathcal M_\sigma(r).
+}
+\]
+
+So if the imported packet scalars are nonnegative on the branch, then
+\[
+\boxed{
+V_{\rm eff}^{(230)}(r)\le V_{\rm short}^{(1p)}(r).
+}
+\]
+
+That is the exact stationary lowering theorem of the stage.
+
+### 3.2 Support / orbit / source split
+
+The compiler stays block-structured:
+
+- `V_{\rm short}^{(1p)}` is the carried one-port short-range baseline,
+- `(S_{\rm leak},\mathcal W_w^{\rm sess})` are support-side / open-system objects,
+- `\Delta E_{UV}` is the orbit-side non-rigid drain,
+- `\mathcal M_\sigma` is the source-side compensated mouth response.
+
+So Stage 230 does **not** mix the three relaxed lanes algebraically. It composes them downstream of the one-port theorem.
+
+### 3.3 No-new-kernel reading
+
+This is important enough to say plainly.
+
+The one-port audit already proved that the admissible static kernel families are exhausted by the short-range baseline `V_{\rm short}^{(1p)}`. The new imported terms in Stage 230 are **branch-local packet scalars**, not new convolution kernels. So the compiler lowers the barrier by:
+
+- exporting energy into the open-system leakage/work lane,
+- draining energy into the dressing leg,
+- and shifting the compensated mouth/source branch,
+
+but **not** by introducing any new attractive `1/r`-type law.
+
+So the live corridor remains a **short-range/open-system bypass**.
+
+---
+
+## 4. Session-I one-point benchmark at the strongest softening point
+
+Appendix B.2 of the barrier-session write-up records the strongest stationary softening point at
+\[
+r_{\rm soft}=0.18,
+\qquad
+V_{\rm eff}(r_{\rm soft})=1.74701126,
+\qquad
+V_{\rm Coul}(r_{\rm soft})=5.55555556,
+\]
+so that
+\[
+\frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}=0.31446203.
+\]
+
+Using the recorded one-port parameters
+\[
+K_*=4.0,
+\quad
+\Omega_U^2=9.0,
+\quad
+\Omega_W^2=16.0,
+\quad
+G_U=1.0,
+\quad
+G_W=1.25,
+\quad
+R_{\rm mix}=1.35,
+\]
+\[
+\beta_Q=0.03,
+\quad
+\beta_{U0}=0.15,
+\quad
+\beta_{W0}=0.20,
+\quad
+\kappa=1,
+\]
+and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-230 baseline gives
+\[
+\Delta=142.17750000,
+\qquad
+D_0=3.76481862,
+\]
+\[
+\boxed{
+V_{\rm short}^{(1p)}(r_{\rm soft})=3.74163698.
+}
+\]
+
+So the one-port short-range baseline alone lowers the Coulomb barrier to about
+\[
+\frac{V_{\rm short}^{(1p)}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}
+\approx 0.67349466,
+\]
+which is **not yet** the full Session-I softening.
+
+That remaining drop is exactly what the imported Stage-227/228/229 packets must supply.
+
+### 4.1 Imported packet values on the benchmark slice
+
+The Session-I table also records
+\[
+\mathcal W_w^{\rm sess}(r_{\rm soft})=1.51632107,
+\qquad
+\Delta E_{UV}(r_{\rm soft})=0.21064278.
+\]
+
+From the exact Stage-227 work law,
+\[
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+\,\mathfrak L(r)^2,
+\]
+with the Session-I parameters
+\[
+\lambda=1,
+\qquad
+\eta_{\rm leak}=0.03,
+\qquad
+\mu_w=0.8,
+\qquad
+q=1,
+\qquad
+\rho_0=1,
+\]
+one infers
+\[
+\boxed{
+\mathfrak L(r_{\rm soft})=\Lambda(r_{\rm soft})\varrho(r_{\rm soft})
+=20.01677473,
+}
+\]
+and therefore
+\[
+\boxed{
+S_{\rm leak}(r_{\rm soft})=0.31069599.
+}
+\]
+
+For the compensated source packet, using
+\[
+a_0=2.2,
+\qquad
+b_0=-0.6,
+\qquad
+r_\sigma=0.8,
+\qquad
+\xi_R=0.9,
+\qquad
+\mathfrak r_{F1}=1.77799353547498,
+\]
+one finds
+\[
+\boxed{
+\mathcal M_\sigma(r_{\rm soft})=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r_{\rm soft})\bigr]
+=0.18386120.
+}
+\]
+
+### 4.2 Exact benchmark decomposition
+
+Choose the natural Session-I work specialization
+\[
+\lambda_W=1.
+\]
+Then the Stage-230 compiler requires only one additional leakage embedding coefficient,
+\[
+\lambda_L,
+\]
+which is fixed exactly by the recorded softening point:
+\[
+\boxed{
+\lambda_L
+=
+\frac{V_{\rm short}^{(1p)}(r_{\rm soft})
+-
+\mathcal W_w^{\rm sess}(r_{\rm soft})
+-
+\Delta E_{UV}(r_{\rm soft})
+-
+\mathcal M_\sigma(r_{\rm soft})
+-
+V_{\rm eff}^{\rm sess}(r_{\rm soft})}
+{S_{\rm leak}(r_{\rm soft})}.
+}
+\]
+
+Numerically,
+\[
+\boxed{
+\lambda_L=0.26971918.
+}
+\]
+
+So the benchmark decomposition is
+\[
+3.74163698
+-
+0.26971918\times 0.31069599
+-
+1.51632107
+-
+0.21064278
+-
+0.18386120
+=
+1.74701126.
+\]
+
+This is the most useful concrete result of the stage:
+
+> once the one-port short-range baseline is fixed, the recorded Session-I stationary lowering can be decomposed exactly into
+> 
+> 1. a carried one-port short-range contribution,
+> 2. a reduced Session-I work contribution,
+> 3. a weighted `U/V` drain contribution,
+> 4. a compensated source-response contribution,
+> 5. and one remaining leakage-to-barrier embedding coefficient.
+
+### 4.3 Residual structure of the benchmark
+
+The benchmark also makes the packet split numerically transparent:
+\[
+V_{\rm short}^{(1p)}(r_{\rm soft})-
+\mathcal W_w^{\rm sess}(r_{\rm soft})-
+\Delta E_{UV}(r_{\rm soft})
+=2.01467313,
+\]
+so work plus orbit-side drain alone do **not** yet reach the recorded softening.
+After adding the compensated source packet,
+\[
+V_{\rm short}^{(1p)}(r_{\rm soft})-
+\mathcal W_w^{\rm sess}(r_{\rm soft})-
+\Delta E_{UV}(r_{\rm soft})-
+\mathcal M_\sigma(r_{\rm soft})
+=1.83081193,
+\]
+leaving a final gap of
+\[
+0.08380067,
+\]
+which is exactly what the leakage term closes when
+\[
+\lambda_L=0.26971918.
+\]
+
+So the stationary readback is now algebraically sharp.
+
+---
+
+## 5. What this stage achieves physically
+
+Stage 230 closes the first true stationary endgame gap on the relaxed same-charge branch.
+
+1. It keeps the one-port long-range firewall intact.
+   The short-range baseline remains the only carrier of admissible same-charge kernel families.
+2. It converts the Stage-227, Stage-228, and Stage-229 packets into one barrier-level compiler.
+3. It shows that the Session-I lowered branch can be decomposed into short-range, open-system, orbit-drain, and compensated-source pieces without inventing a new asymptotic attraction.
+4. It reduces the remaining stationary embedding freedom, on the benchmark slice, to a single leakage-to-barrier coefficient once the work channel is taken in the Session-I normalization.
+
+So the same-charge stationary corridor is no longer just “the barrier got lower in a script.”
+It is now a derivation-stack object with an explicit packet decomposition.
+
+---
+
+## 6. Result
+
+The first honest relaxed stationary barrier compiler is now in place.
+
+The exact formula is
+\[
+\boxed{
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W \mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_\sigma(r).
+}
+\]
+
+Its lowering identity is exact,
+\[
+V_{\rm short}^{(1p)}-V_{\rm eff}^{(230)}
+=
+\lambda_L S_{\rm leak}+\lambda_W\mathcal W_w^{\rm sess}+\Delta E_{UV}+\mathcal M_\sigma,
+\]
+and the Session-I strongest-softening point is reproduced by the concrete benchmark decomposition above.
+
+So Stage 230 gives the correct stationary continuation of the relaxed branch:
+
+- **one-port short-range baseline**,
+- **support-side open-system export**,
+- **orbit-side non-rigid drain**,
+- **source-side compensated mouth response**,
+- and **no new long-range same-charge law**.
+
+---
+
+## 7. Immediate next step
+
+The next stage should promote this stationary compiler into the dynamic event chain.
+
+That means:
+
+1. take `V_{\rm eff}^{(230)}(r)` as the lowered stationary front end,
+2. compute the peak, turning point, threshold speed, and WKB action on that lowered branch,
+3. then carry the same short-range/open-system discipline into the dynamic scattering problem.
+
+That is exactly the Stage-231 job.
+moving_throat_pde_stage231_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
 # Moving-Throat PDE — Stage 231: Dynamic Event-Chain Compiler from the Relaxed Stationary Barrier Front End, Turning Points, Threshold Speed, and WKB
 
 ## Status
@@ -69053,9 +69717,7 @@ That means:
 3. and test whether the preferred branch is the one that most effectively unloads unresolved repulsive structure while traversing the same lowered event chain.
 
 That is exactly the Stage-232 job.
-
-=== moving_throat_pde_stage232_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md ===
-
+moving_throat_pde_stage232_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
 # Moving-Throat PDE — Stage 232: Conditional Helicity-Export Diagnostic Compiler on the Dynamic Event Chain and the Aligned-vs-Anti-Aligned Mixed-Sector Closure
 
 ## Status
@@ -69652,9 +70314,7 @@ The right continuation is instead to ask how this hidden-channel export diagnost
 - and how does that preference feed into the crossing-vs-collapse / Goldilocks compiler that compares transit against dressing-leg failure?
 
 That is the correct bridge into the next stage.
-
-=== moving_throat_pde_stage233_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage231_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md ===
-
+moving_throat_pde_stage233_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage231_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
 # Moving-Throat PDE — Stage 233: Crossing-vs-Collapse / Goldilocks-Window Compiler from the Stage-231 Event Chain and the Relaxed Wall-Timescale Closure
 
 ## Status
@@ -70319,9 +70979,7 @@ Instead:
 4. and then recompile the cold-survival threshold without using an imposed envelope law.
 
 That is exactly the Stage-234 theorem gate.
-
-=== moving_throat_pde_stage234_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md ===
-
+moving_throat_pde_stage234_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
 # Moving-Throat PDE — Stage 234: Microscopic Damping/Export Kernel Replacing the Phenomenological `V`-Leg Envelope Law
 
 ## Status
@@ -70931,9 +71589,7 @@ The next stage is now well defined.
 3. Pull the microscopic coefficients into the condensed-matter map rather than using the Session-IV `3:1` partition.
 
 That is precisely the Stage-235 heat-partition / cold-survival compiler.
-
-=== moving_throat_pde_stage235_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md ===
-
+moving_throat_pde_stage235_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
 # Moving-Throat PDE — Stage 235: Vacuum-vs-Lattice Heat Partition and Cold-Survival Compiler from the Microscopic Export Kernel
 
 ## Status
@@ -71508,9 +72164,7 @@ Stage 236 is now sharply defined.
 3. Carry the same microscopic compiler into the harmonic-trap stiffness and Korringa-limited spin-survival maps.
 
 That is the right Stage-236 condensed-matter companion.
-
-=== moving_throat_pde_stage236_physical_calibration_and_material_threshold_companion_from_the_stage235_export_and_cold_survival_compiler_sympy_audit.md ===
-
+moving_throat_pde_stage236_physical_calibration_and_material_threshold_companion_from_the_stage235_export_and_cold_survival_compiler_sympy_audit.md
 # Moving-Throat PDE — Stage 236: Physical Calibration and Material-Threshold Companion from the Stage-235 Microscopic Export and Cold-Survival Compiler
 
 ## Status

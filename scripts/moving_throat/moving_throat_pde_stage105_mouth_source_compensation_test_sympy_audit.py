@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import sympy as sp
+
+def banner(s):
+    print("\n" + "="*88)
+    print(s)
+    print("="*88)
+
+def expect_zero(name, expr):
+    expr = sp.simplify(sp.expand(expr))
+    print(f"{name} = {expr}")
+    if expr != 0:
+        raise AssertionError(f"{name} is not zero")
+
+banner("STAGE 105 — NATURAL MOUTH-SOURCE BRANCH VS COMPENSATION FAMILY")
+
+R = sp.Rational(37,20)
+rF = sp.sqrt(12*R**2/sp.pi**2 - 1)
+gminus = sp.simplify(rF - sp.sqrt(1+rF**2)/2)
+gplus  = sp.simplify(rF + sp.sqrt(1+rF**2)/2)
+
+print("r_F1 =", rF)
+print("g_minus =", gminus)
+print("g_plus  =", gplus)
+
+# natural equal-normalized source branch
+g_nat = sp.Integer(1)
+
+comp_def = sp.simplify(1 + rF**2 - 4*(g_nat - rF)**2)
+print("compensation defect on natural branch =", comp_def)
+print("numeric defect =", sp.N(comp_def, 20))
+
+print("delta g_minus =", sp.N(g_nat - gminus, 20))
+print("delta g_plus  =", sp.N(gplus - g_nat, 20))
+
+T_ratio_minus = sp.simplify(1/gminus)
+T_ratio_plus  = sp.simplify(1/gplus)
+print("T_m(-)/T_m(nat) =", T_ratio_minus)
+print("T_m(+)/T_m(nat) =", T_ratio_plus)
+print("numeric T ratio (-) =", sp.N(T_ratio_minus, 20))
+print("numeric T ratio (+) =", sp.N(T_ratio_plus, 20))
+
+# exact closed forms
+gminus_exact = sp.simplify((2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi))
+gplus_exact = sp.simplify((2*sp.sqrt(4107 - 100*sp.pi**2) + 37*sp.sqrt(3)) / (20*sp.pi))
+expect_zero("gminus exact form", gminus - gminus_exact)
+expect_zero("gplus exact form", gplus - gplus_exact)

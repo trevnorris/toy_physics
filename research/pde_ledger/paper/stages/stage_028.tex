@@ -1,0 +1,47 @@
+\section[Stage 028]{Stage 028: Coherent Local D/N Support Kernel and Exact Tracking Reduction}
+\label{stage:028}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the first coherent local D/N kernel.}
+\stagefield{Purpose}{Stage~028 checks the first coherent local D/N support kernel and proves that it does not realize a generic rank--2 direction.  It forces exact tracking.}
+\stagefield{Inputs}{The continuum support kernel and rank--2 branch variables \(R_U\), \(R_\phi\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage028_coherent_local_tracking_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage028_coherent_local_tracking_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage028_coherent_local_tracking_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage028_coherent_local_tracking_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The coherent local D/N kernel enforces
+\begin{equation}
+\label{eq:app-stage028-coherent-condition}
+\boxed{
+g_Bg_R=g_Wg_S}.
+\end{equation}
+This condition lands on the tracking surface
+\begin{equation}
+\label{eq:app-stage028-tracking}
+\boxed{
+R_\phi=R_U=R_{\rm tr}}.
+\end{equation}
+The coherent tracking factor is
+\begin{equation}
+\label{eq:app-stage028-Rtr}
+\boxed{
+R_{\rm tr}=\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
+\qquad
+\frac{1}{1+\delta_U}<R_{\rm tr}<1
+}
+\end{equation}
+for the constructive split--\(U\) branch.
+
+Therefore the rank--2 support branch collapses to tracking laws
+\begin{equation}
+\label{eq:app-stage028-tracking-laws}
+\boxed{
+M_{\rm tr}=G_{\rm tr}(\xi,\delta;R_{\rm tr}),
+\qquad
+R_{\rm target}=F_{\rm tr}(\xi,\delta;R_{\rm tr})}.
+\end{equation}
+
+\stagefield{Output}{The exact tracking condition \eqref{eq:app-stage028-tracking} and coherent tracking factor \eqref{eq:app-stage028-Rtr}.}
+\stagefield{Downstream use}{Stages~029--031 prove that support compensation is still needed and derive the exact required support ratio.}
+

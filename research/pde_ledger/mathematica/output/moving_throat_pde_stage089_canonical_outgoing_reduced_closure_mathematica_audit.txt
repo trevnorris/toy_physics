@@ -1,0 +1,35 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage089_canonical_outgoing_reduced_closure_mathematica_audit.wl
+# Date: 2026-04-20T11:14:40-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+========================================================================================
+STAGE 089 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+========================================================================================
+Normalization constraint = chiQ*m0hat^2*NQ == 1
+N_Q on the general outgoing branch = 1/(chiQ*m0hat^2)
+N_Q on the canonical outgoing branch = m0hat^(-2)
+point-particle canonical branch gives N_Q = 1 = 0
+PASS: point-particle canonical branch gives N_Q = 1
+K0 = (54*cS^5*G)/(5*a^5*c^5*chiQ*m0hat^2)
+K2 = (6*cS^3*G)/(5*a^3*c^5*chiQ*m0hat^2)
+K4 = (8*cS*G)/(15*a*c^5*chiQ*m0hat^2)
+Gamma5 = (2*G)/(5*c^5*chiQ*m0hat^2)
+branch identity K4 - 4 K2^2 / K0 = 0
+PASS: branch identity K4 - 4 K2^2 / K0
+branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2) = 0
+PASS: branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2)
+canonical gamma_eff - target = 0
+PASS: canonical gamma_eff - target
+
+RESULT:
+  On the canonical outgoing branch, N_Q = 1/m0hat^2.
+  In the strict point-particle limit m0hat = 1, the reduced closure gives N_Q = 1.
+  The effective odd coefficient then reproduces 2 G / (5 c^5) exactly.
+
+EXIT_CODE: 0

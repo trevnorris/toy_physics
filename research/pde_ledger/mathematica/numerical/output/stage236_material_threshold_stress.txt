@@ -1,0 +1,110 @@
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage236_material_threshold_samples.json
+
+=== Stage 236: material-threshold stress ===
+
+micro_all_pass (micro): gamma_safe=65.720000000000, Upsilon=1.000000000000, lambda_min=58.678571428571
+  host inputs: lambda_ep*omega_D=79.216071428571, r_turn=0.537500000000, r_turn_phys=1.375000000000, |V'|=7.848837209302, k_eff=5.020661157025, T=1.028571428571
+  computed margins: Pi_ep=1.350000000000, Pi_chi=1.600000000000, Pi_k=1.250000000000, Pi_t=1.200000000000
+[PASS] micro_all_pass primitive admissibility: s0=6.900000000000, s_c=0.540000000000, f_lat=0.750000000000, mu_eta=1.000000000000, zeta_ep=0.800000000000, Upsilon=1.000000000000
+[PASS] micro_all_pass host-input positivity: lambda_ep*omega_D=79.216071428571, r_turn=0.537500000000, r_turn_phys=1.375000000000, |V'|=7.848837209302, k_eff=5.020661157025, T=1.028571428571
+[PASS] micro_all_pass turnover threshold positivity: gamma_safe=65.720000000000, lambda_min=58.678571428571, product_min=152.129629629630
+[PASS] micro_all_pass turning-radius dictionary: r_turn_phys=1.375000000000, expected=1.375000000000
+[PASS] micro_all_pass K_turn / Vprime consistency: K_turn_from_Vprime=2.700000000000, K_turn=2.700000000000
+[PASS] micro_all_pass stiffness compiler consistency: k_req_direct=4.016528925620, k_req_reduced=4.016528925620
+[PASS] micro_all_pass product-threshold factorization: product=152.129629629630, reduced=152.129629629630
+[PASS] micro_all_pass Pi_ep direct vs threshold ratio: direct=1.350000000000, ratio=1.350000000000
+[PASS] micro_all_pass Pi_chi physical vs reduced ratio: physical=1.600000000000, reduced=1.600000000000
+[PASS] micro_all_pass Pi_k direct vs reduced ratio: direct=1.250000000000, ratio=1.250000000000
+[PASS] micro_all_pass Pi_t direct vs Tmax ratio: direct=1.200000000000, ratio=1.200000000000
+[PASS] micro_all_pass screening classification: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+[PASS] micro_all_pass overall screen verdict: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+
+legacy_boundary_probe (legacy): gamma_safe=65.451939259611, Upsilon=13.648246952995, lambda_min=4.589119387560
+  host inputs: lambda_ep*omega_D=4.589119387560, r_turn=0.793089351852, r_turn_phys=2.592592592593, |V'|=11.841652809719, k_eff=2.934169414286, T=1.347394880715
+  computed margins: Pi_ep=1.000000000000, Pi_chi=1.080000000000, Pi_k=1.000000000000, Pi_t=1.000000000000
+[PASS] legacy_boundary_probe primitive admissibility: s0=6.943111670000, s_c=0.548938655106, f_lat=0.750000000000, mu_eta=1.000000000000, zeta_ep=0.950000000000, Upsilon=13.648246952995
+[PASS] legacy_boundary_probe host-input positivity: lambda_ep*omega_D=4.589119387560, r_turn=0.793089351852, r_turn_phys=2.592592592593, |V'|=11.841652809719, k_eff=2.934169414286, T=1.347394880715
+[PASS] legacy_boundary_probe turnover threshold positivity: gamma_safe=65.451939259611, lambda_min=4.589119387560, product_min=9.195984431701
+[PASS] legacy_boundary_probe turning-radius dictionary: r_turn_phys=2.592592592593, expected=2.592592592593
+[PASS] legacy_boundary_probe K_turn / Vprime consistency: K_turn_from_Vprime=2.738558120000, K_turn=2.738558120000
+[PASS] legacy_boundary_probe stiffness compiler consistency: k_req_direct=2.934169414286, k_req_reduced=2.934169414286
+[PASS] legacy_boundary_probe product-threshold factorization: product=9.195984431701, reduced=9.195984431701
+[PASS] legacy_boundary_probe Pi_ep direct vs threshold ratio: direct=1.000000000000, ratio=1.000000000000
+[PASS] legacy_boundary_probe Pi_chi physical vs reduced ratio: physical=1.080000000000, reduced=1.080000000000
+[PASS] legacy_boundary_probe Pi_k direct vs reduced ratio: direct=1.000000000000, ratio=1.000000000000
+[PASS] legacy_boundary_probe Pi_t direct vs Tmax ratio: direct=1.000000000000, ratio=1.000000000000
+[PASS] legacy_boundary_probe screening classification: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+[PASS] legacy_boundary_probe overall screen verdict: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+[PASS] legacy_boundary_probe legacy Upsilon recovery: Upsilon=13.648246952995, gamma_safe/gamma_legacy=13.648246952995
+[PASS] legacy_boundary_probe legacy lambda threshold: threshold=4.589119387560, legacy=4.589119387560
+[PASS] legacy_boundary_probe legacy product threshold: product=9.195984431701, legacy=9.195984431701
+
+ep_fail_host (custom): gamma_safe=41.805720000000, Upsilon=3.400000000000, lambda_min=9.318529746116
+  host inputs: lambda_ep*omega_D=8.107120879121, r_turn=0.721311475410, r_turn_phys=1.836065573770, |V'|=8.494783904620, k_eff=3.967825255102, T=1.140831453432
+  computed margins: Pi_ep=0.870000000000, Pi_chi=1.220000000000, Pi_k=1.180000000000, Pi_t=1.070000000000
+[PASS] ep_fail_host primitive admissibility: s0=6.000000000000, s_c=0.600000000000, f_lat=0.690000000000, mu_eta=1.020000000000, zeta_ep=0.910000000000, Upsilon=3.400000000000
+[PASS] ep_fail_host host-input positivity: lambda_ep*omega_D=8.107120879121, r_turn=0.721311475410, r_turn_phys=1.836065573770, |V'|=8.494783904620, k_eff=3.967825255102, T=1.140831453432
+[PASS] ep_fail_host turnover threshold positivity: gamma_safe=41.805720000000, lambda_min=9.318529746116, product_min=22.519780219780
+[PASS] ep_fail_host turning-radius dictionary: r_turn_phys=1.836065573770, expected=1.836065573770
+[PASS] ep_fail_host K_turn / Vprime consistency: K_turn_from_Vprime=2.280000000000, K_turn=2.280000000000
+[PASS] ep_fail_host stiffness compiler consistency: k_req_direct=3.362563775510, k_req_reduced=3.362563775510
+[PASS] ep_fail_host product-threshold factorization: product=22.519780219780, reduced=22.519780219780
+[PASS] ep_fail_host Pi_ep direct vs threshold ratio: direct=0.870000000000, ratio=0.870000000000
+[PASS] ep_fail_host Pi_chi physical vs reduced ratio: physical=1.220000000000, reduced=1.220000000000
+[PASS] ep_fail_host Pi_k direct vs reduced ratio: direct=1.180000000000, ratio=1.180000000000
+[PASS] ep_fail_host Pi_t direct vs Tmax ratio: direct=1.070000000000, ratio=1.070000000000
+[PASS] ep_fail_host screening classification: actual=<|"Pi_ep" -> False, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> False, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+[PASS] ep_fail_host overall screen verdict: actual=<|"Pi_ep" -> False, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> False, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> True|>
+
+thermal_fail_host (custom): gamma_safe=40.121272258065, Upsilon=5.500000000000, lambda_min=5.065817204301
+  host inputs: lambda_ep*omega_D=7.092144086022, r_turn=0.752000000000, r_turn_phys=2.000000000000, |V'|=7.489361702128, k_eff=3.076480000000, T=1.370426829268
+  computed margins: Pi_ep=1.400000000000, Pi_chi=1.250000000000, Pi_k=1.150000000000, Pi_t=0.820000000000
+[PASS] thermal_fail_host primitive admissibility: s0=5.800000000000, s_c=0.620000000000, f_lat=0.680000000000, mu_eta=1.100000000000, zeta_ep=0.900000000000, Upsilon=5.500000000000
+[PASS] thermal_fail_host host-input positivity: lambda_ep*omega_D=7.092144086022, r_turn=0.752000000000, r_turn_phys=2.000000000000, |V'|=7.489361702128, k_eff=3.076480000000, T=1.370426829268
+[PASS] thermal_fail_host turnover threshold positivity: gamma_safe=40.121272258065, lambda_min=5.065817204301, product_min=13.073076656261
+[PASS] thermal_fail_host turning-radius dictionary: r_turn_phys=2.000000000000, expected=2.000000000000
+[PASS] thermal_fail_host K_turn / Vprime consistency: K_turn_from_Vprime=2.200000000000, K_turn=2.200000000000
+[PASS] thermal_fail_host stiffness compiler consistency: k_req_direct=2.675200000000, k_req_reduced=2.675200000000
+[PASS] thermal_fail_host product-threshold factorization: product=13.073076656261, reduced=13.073076656261
+[PASS] thermal_fail_host Pi_ep direct vs threshold ratio: direct=1.400000000000, ratio=1.400000000000
+[PASS] thermal_fail_host Pi_chi physical vs reduced ratio: physical=1.250000000000, reduced=1.250000000000
+[PASS] thermal_fail_host Pi_k direct vs reduced ratio: direct=1.150000000000, ratio=1.150000000000
+[PASS] thermal_fail_host Pi_t direct vs Tmax ratio: direct=0.820000000000, ratio=0.820000000000
+[PASS] thermal_fail_host screening classification: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> False|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> False|>
+[PASS] thermal_fail_host overall screen verdict: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> False|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> True, "Pi_t" -> False|>
+
+geometry_fail_host (custom): gamma_safe=43.485417931034, Upsilon=2.200000000000, lambda_min=17.887872452092
+  host inputs: lambda_ep*omega_D=23.254234187719, r_turn=1.051282051282, r_turn_phys=2.692307692308, |V'|=15.322076297686, k_eff=5.288888888889, T=1.257342657343
+  computed margins: Pi_ep=1.300000000000, Pi_chi=0.780000000000, Pi_k=1.400000000000, Pi_t=1.100000000000
+[PASS] geometry_fail_host primitive admissibility: s0=6.100000000000, s_c=0.580000000000, f_lat=0.720000000000, mu_eta=0.950000000000, zeta_ep=0.850000000000, Upsilon=2.200000000000
+[PASS] geometry_fail_host host-input positivity: lambda_ep*omega_D=23.254234187719, r_turn=1.051282051282, r_turn_phys=2.692307692308, |V'|=15.322076297686, k_eff=5.288888888889, T=1.257342657343
+[PASS] geometry_fail_host turnover threshold positivity: gamma_safe=43.485417931034, lambda_min=17.887872452092, product_min=40.093507220205
+[PASS] geometry_fail_host turning-radius dictionary: r_turn_phys=2.692307692308, expected=2.692307692308
+[PASS] geometry_fail_host K_turn / Vprime consistency: K_turn_from_Vprime=2.450000000000, K_turn=2.450000000000
+[PASS] geometry_fail_host stiffness compiler consistency: k_req_direct=3.777777777778, k_req_reduced=3.777777777778
+[PASS] geometry_fail_host product-threshold factorization: product=40.093507220205, reduced=40.093507220205
+[PASS] geometry_fail_host Pi_ep direct vs threshold ratio: direct=1.300000000000, ratio=1.300000000000
+[PASS] geometry_fail_host Pi_chi physical vs reduced ratio: physical=0.780000000000, reduced=0.780000000000
+[PASS] geometry_fail_host Pi_k direct vs reduced ratio: direct=1.400000000000, ratio=1.400000000000
+[PASS] geometry_fail_host Pi_t direct vs Tmax ratio: direct=1.100000000000, ratio=1.100000000000
+[PASS] geometry_fail_host screening classification: actual=<|"Pi_ep" -> True, "Pi_chi" -> False, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> False, "Pi_k" -> True, "Pi_t" -> True|>
+[PASS] geometry_fail_host overall screen verdict: actual=<|"Pi_ep" -> True, "Pi_chi" -> False, "Pi_k" -> True, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> False, "Pi_k" -> True, "Pi_t" -> True|>
+
+stiffness_fail_host (micro): gamma_safe=52.397892105263, Upsilon=1.000000000000, lambda_min=39.695372807018
+  host inputs: lambda_ep*omega_D=49.619216008772, r_turn=0.692307692308, r_turn_phys=1.815384615385, |V'|=8.034188034188, k_eff=2.970410801494, T=1.013333333333
+  computed margins: Pi_ep=1.250000000000, Pi_chi=1.300000000000, Pi_k=0.880000000000, Pi_t=1.050000000000
+[PASS] stiffness_fail_host primitive admissibility: s0=6.400000000000, s_c=0.570000000000, f_lat=0.700000000000, mu_eta=1.050000000000, zeta_ep=0.880000000000, Upsilon=1.000000000000
+[PASS] stiffness_fail_host host-input positivity: lambda_ep*omega_D=49.619216008772, r_turn=0.692307692308, r_turn_phys=1.815384615385, |V'|=8.034188034188, k_eff=2.970410801494, T=1.013333333333
+[PASS] stiffness_fail_host turnover threshold positivity: gamma_safe=52.397892105263, lambda_min=39.695372807018, product_min=104.461507386888
+[PASS] stiffness_fail_host turning-radius dictionary: r_turn_phys=1.815384615385, expected=1.815384615385
+[PASS] stiffness_fail_host K_turn / Vprime consistency: K_turn_from_Vprime=2.350000000000, K_turn=2.350000000000
+[PASS] stiffness_fail_host stiffness compiler consistency: k_req_direct=3.375466819879, k_req_reduced=3.375466819879
+[PASS] stiffness_fail_host product-threshold factorization: product=104.461507386888, reduced=104.461507386888
+[PASS] stiffness_fail_host Pi_ep direct vs threshold ratio: direct=1.250000000000, ratio=1.250000000000
+[PASS] stiffness_fail_host Pi_chi physical vs reduced ratio: physical=1.300000000000, reduced=1.300000000000
+[PASS] stiffness_fail_host Pi_k direct vs reduced ratio: direct=0.880000000000, ratio=0.880000000000
+[PASS] stiffness_fail_host Pi_t direct vs Tmax ratio: direct=1.050000000000, ratio=1.050000000000
+[PASS] stiffness_fail_host screening classification: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> False, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> False, "Pi_t" -> True|>
+[PASS] stiffness_fail_host overall screen verdict: actual=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> False, "Pi_t" -> True|>, expected=<|"Pi_ep" -> True, "Pi_chi" -> True, "Pi_k" -> False, "Pi_t" -> True|>
+
+All Stage-236 numerical stress checks passed.

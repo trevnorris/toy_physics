@@ -1,0 +1,31 @@
+\section[Stage 049]{Stage 049: Dimensionless Wall Figure of Merit}
+\label{stage:049}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the matched thin-wall theorem.}
+\stagefield{Purpose}{Stage~049 collapses the matched support/source threshold to one dimensionless wall control.}
+\stagefield{Inputs}{The thin-wall branch of Stage~048 and the operator thresholds of Stage~042.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage049_wall_figure_of_merit_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage049_wall_figure_of_merit_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage049_wall_figure_of_merit_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage049_wall_figure_of_merit_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The dimensionless wall figure of merit is
+\begin{equation}
+\label{eq:app-stage049-Wwall}
+\boxed{
+W_{\rm wall}=\frac{4\pi a^2L^2J_1V_0^2}{T_X\ell}}.
+\end{equation}
+The exact matched-branch verdict is
+\begin{equation}
+\label{eq:app-stage049-Wwindow}
+\boxed{
+W_{\rm wall}\leq\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty}\Rightarrow\text{fail},
+\qquad
+W_{\rm wall}\geq\frac{\mathrm{Pe}_{\rm req}}{\Delta_0}\Rightarrow\text{succeed}}.
+\end{equation}
+Only the intermediate band requires solving the full operator branch.
+
+\stagefield{Output}{The wall control \eqref{eq:app-stage049-Wwall} and exact window \eqref{eq:app-stage049-Wwindow}.}
+\stagefield{Downstream use}{Stages~050--052 quantify how much profile mismatch can change this matched verdict.}
+

@@ -1,0 +1,27 @@
+
+========================================================================================
+STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
+========================================================================================
+chi_n(s) = sqrt(2)*sin(pi*s*(2*n + 1)/(2*L))/sqrt(L)
+k_n = pi*(2*n + 1)/(2*L)
+k_n - (n+1/2) pi / L = 0
+I_n from direct integral = 2*sqrt(2)*sqrt(L)/(pi*(2*n + 1))
+I_n closed form = 2*sqrt(2)*sqrt(L)/(pi*(2*n + 1))
+uniform overlap integral = 0
+I_0 = 2*sqrt(2)*sqrt(L)/pi
+I_n / I_0 = 1/(2*n + 1)
+overlap ratio hierarchy = 0
+zeta_n^(phys) = K_W_eff/(K_phi_eff*(2*n + 1)**2)
+microscopic coherent-support law = 0
+same-operator twin stiffness relation = 0
+x = 4*pi**2*T_X/(4*K_X*L**2 + pi**2*T_X)
+zeta_n^(twin) = (4*K_X*L**2 + pi**2*T_X)/((2*n + 1)**2*(4*K_X*L**2 + 4*pi**2*T_X*n*(n + 1) + pi**2*T_X))
+exact twin-lane support ratio = 0
+lowest twin half-wave = 0
+
+Carry-forward formulas:
+  I_n = sqrt(2L) / ((n+1/2) pi)
+  I_n / I_0 = 1 / (2n+1)
+  zeta_n^(phys) = (K_W_eff / K_phi,n_eff) (I_n / I_0)^2
+  zeta_n^(twin) = 1 / ((2n+1)^2 (1 + x n(n+1)))
+  zeta_0^(twin) = 1

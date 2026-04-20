@@ -1,0 +1,28 @@
+\section[Stage 096]{Stage 096: Outlet-Model Status Update}
+\label{stage:096}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~96 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+
+\begin{quote}
+Low-frequency outlet audit leaves pure scale/argument classes and the compensated Robin--mixed class as the viable routes.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check pure scale and pure argument deformations separately.
+\item Check Robin and standalone mixed-pole limits before imposing compensation.
+\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 97--107 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

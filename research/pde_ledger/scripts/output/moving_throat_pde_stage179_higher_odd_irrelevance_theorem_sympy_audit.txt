@@ -1,0 +1,186 @@
+
+========================================================================================
+STAGE 179 — EXACT HIGHER-ODD IRRELEVANCE THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Response-side higher-odd difference identity
+----------------------------------------------------------------------------------------
+sigma_Q^can =
+  9   
+──────
+     5
+8⋅Ω_Q 
+Yhat_Q^(ret,5) =
+      5         3  2             5 
+32⋅Ω_Q  - 24⋅Ω_Q ⋅ω  - 27⋅ⅈ⋅χ_Q⋅ω  
+───────────────────────────────────
+  ⎛     5        3  2            5⎞
+4⋅⎝8⋅Ω_Q  - 8⋅Ω_Q ⋅ω  - 9⋅ⅈ⋅χ_Q⋅ω ⎠
+Yhat_Q^(ret,>=7) =
+3                       1                    
+─ - ─────────────────────────────────────────
+4     ⎛                  ⎛                3⎞⎞
+      ⎜                2 ⎜   3   9⋅ⅈ⋅χ_Q⋅ω ⎟⎟
+      ⎜               ω ⋅⎜Ω_Q  + ──────────⎟⎟
+      ⎜   7              ⎝           8     ⎠⎟
+    4⋅⎜ⅈ⋅ω ⋅τ_Q - 1 + ──────────────────────⎟
+      ⎜                           5         ⎟
+      ⎝                        Ω_Q          ⎠
+exact response-side difference identity = 0
+Yhat_Q^(ret,5) series through O(omega^7) =
+       2        4              5      6              7
+      ω        ω      9⋅ⅈ⋅χ_Q⋅ω      ω      9⋅ⅈ⋅χ_Q⋅ω 
+1 + ────── + ────── + ────────── + ────── + ──────────
+         2        4          5          6          7  
+    4⋅Ω_Q    4⋅Ω_Q     32⋅Ω_Q      4⋅Ω_Q     16⋅Ω_Q   
+Yhat_Q^(ret,>=7) series through O(omega^7) =
+   7              2        4              5      6              7
+ⅈ⋅ω ⋅τ_Q         ω        ω      9⋅ⅈ⋅χ_Q⋅ω      ω      9⋅ⅈ⋅χ_Q⋅ω 
+──────── + 1 + ────── + ────── + ────────── + ────── + ──────────
+   4                2        4          5          6          7  
+               4⋅Ω_Q    4⋅Ω_Q     32⋅Ω_Q      4⋅Ω_Q     16⋅Ω_Q   
+difference series through O(omega^7) =
+   7    
+ⅈ⋅ω ⋅τ_Q
+────────
+   4    
+higher-odd difference through O(omega^5) = 0
+Yhat_Q^(ret,>=7) through O(omega^5) - canonical one-pole form = 0
+first higher-odd correction really starts at omega^7 = 0
+
+----------------------------------------------------------------------------------------
+II. DtN-side higher-odd difference identity
+----------------------------------------------------------------------------------------
+Yhat_2^(def,5) =
+             L₀             
+────────────────────────────
+         2       4         5
+L₀ + L₂⋅z  + L₄⋅z  + ⅈ⋅L₅⋅z 
+Yhat_2^(def,>=7) =
+                  L₀                  
+──────────────────────────────────────
+         2       4         5         7
+L₀ + L₂⋅z  + L₄⋅z  + ⅈ⋅L₅⋅z  + ⅈ⋅L₇⋅z 
+exact DtN-side difference identity = 0
+DtN higher-odd difference through O(z^5) = 0
+Yhat_2^(def,>=7) series through O(z^7) =
+        2       4         5         7     2  4            6              7     ↪
+    L₂⋅z    L₄⋅z    ⅈ⋅L₅⋅z    ⅈ⋅L₇⋅z    L₂ ⋅z    2⋅L₂⋅L₄⋅z    2⋅ⅈ⋅L₂⋅L₅⋅z    L ↪
+1 - ───── - ───── - ─────── - ─────── + ────── + ────────── + ──────────── - ─ ↪
+     L₀      L₀       L₀        L₀         2          2             2          ↪
+                                         L₀         L₀            L₀           ↪
+
+↪  3  6
+↪ ₂ ⋅z 
+↪ ─────
+↪   3  
+↪ L₀   
+DtN normalized response through O(z^5) = 0
+
+----------------------------------------------------------------------------------------
+III. Stage-177 canonical-even matching and chi_Q stability
+----------------------------------------------------------------------------------------
+Sigma_2 matching law =
+     2         
+  S⋅β    S   Σ₀
+- ──── + ─ - ──
+   3     3   9 
+Sigma_4 matching law =
+     4         
+  S⋅β    S   Σ₀
+- ──── + ─ - ──
+   9     9   27
+matched normalized DtN response through O(z^7) =
+            7              5  7              5  5               6              ↪
+  729⋅ⅈ⋅L₇⋅z       18⋅ⅈ⋅S⋅β ⋅z       81⋅ⅈ⋅S⋅β ⋅z          21⋅S⋅z           108 ↪
+─────────────── + ─────────────── + ─────────────── + ─────────────── + ────── ↪
+2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S ↪
+
+↪     4                 2                                   6                  ↪
+↪ ⋅S⋅z           243⋅S⋅z            2187⋅S            7⋅Σ₀⋅z           36⋅Σ₀⋅z ↪
+↪ ───────── + ─────────────── + ─────────────── - ─────────────── - ────────── ↪
+↪  - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 7 ↪
+
+↪ 4                 2                                     7                 5  ↪
+↪            81⋅Σ₀⋅z            729⋅Σ₀          162⋅ⅈ⋅Σ₅⋅z        729⋅ⅈ⋅Σ₅⋅z   ↪
+↪ ───── - ─────────────── - ─────────────── + ─────────────── + ────────────── ↪
+↪ 29⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ₀   2187⋅S - 729⋅Σ ↪
+
+↪  
+↪  
+↪ ─
+↪ ₀
+z^5 coefficient in the matched normalized DtN response =
+  ⎛   5     ⎞
+  ⎜S⋅β      ⎟
+ⅈ⋅⎜──── + Σ₅⎟
+  ⎝ 9       ⎠
+─────────────
+  3⋅S - Σ₀   
+chi_Q extracted from the matched z^5 coefficient =
+  ⎛   5       ⎞
+3⋅⎝S⋅β  + 9⋅Σ₅⎠
+───────────────
+   3⋅S - Σ₀    
+chi_Q from the matched Stage-177 deformation algebra =
+  ⎛   5       ⎞
+3⋅⎝S⋅β  + 9⋅Σ₅⎠
+───────────────
+   3⋅S - Σ₀    
+canonical-even plus chi_Q matching through O(z^5) = 0
+chi_Q extractor - deformation algebra formula = 0
+d chi_Q^(series extractor) / dL7 = 0
+
+----------------------------------------------------------------------------------------
+IV. Stage-178 source-map reduction is unchanged
+----------------------------------------------------------------------------------------
+N_Q on the natural point-particle source-map branch =
+      Σ₀   
+  S - ──   
+      3    
+───────────
+   5       
+S⋅β  + 9⋅Σ₅
+Delta_norm on the natural point-particle source-map branch =
+       5 ⎛       5                   ⎞
+18⋅G⋅cₛ ⋅⎝- 3⋅S⋅β  + 3⋅S - Σ₀ - 27⋅Σ₅⎠
+──────────────────────────────────────
+           5  5 ⎛   5       ⎞         
+        5⋅a ⋅c ⋅⎝S⋅β  + 9⋅Σ₅⎠         
+d N_Q / dL7 = 0
+d Delta_norm / dL7 = 0
+Delta_norm - P0_target*(1/chi_Q - 1) = 0
+
+----------------------------------------------------------------------------------------
+V. Representative first higher-odd coefficient
+----------------------------------------------------------------------------------------
+coefficient multiplying L7 at z^7 in the normalized DtN response =
+-ⅈ 
+───
+L₀ 
+L7 enters normalized response first at z^7 = 0
+
+========================================================================================
+STAGE 179 LEDGER
+========================================================================================
+1. For the generalized isotropic grouped-P2 retarded module
+      Yhat_Q^(ret,>=7) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2 - i chi_Q sigma_Q^can omega^5 - i T_{>=7}(omega))
+   with T_{>=7}(omega)=O(omega^7), one has the exact difference identity
+      Yhat_Q^(ret,>=7) - Yhat_Q^(ret,5) = H_Q/[4(1-X_Q)(1-X_Q-H_Q)] = O(omega^7).
+   So every coefficient through O(omega^5) is unchanged.
+2. At the DtN level, if
+      D_{>=7}(z) = L0 + L2 z^2 + L4 z^4 + i L5 z^5 + L_{>=7}(z),   L_{>=7}(z)=O(z^7),
+   then
+      Yhat_2^(def,>=7) - Yhat_2^(def,5) = -L0 L_{>=7}/(D5 D_{>=7}) = O(z^7).
+   So the normalized DtN response through O(z^5) depends only on (L0,L2,L4,L5).
+3. After imposing the Stage-177 canonical-even matching, the same exact formulas survive:
+      Sigma_2 = -(3 S beta^2 - 3 S + Sigma_0)/9,   Sigma_4 = -(3 S beta^4 - 3 S + Sigma_0)/27,
+      chi_Q = 3(S beta^5 + 9 Sigma_5)/(3 S - Sigma_0),
+   and chi_Q is completely independent of all higher odd DtN data beginning at O(z^7).
+4. Therefore the Stage-178 source-map-reduced Packet-A finish line is unchanged:
+      mhat_0^2 chi_Q N_Q = 1,   N_Q = 1/chi_Q on the natural point-particle branch,   Delta_norm = P0^target(1/chi_Q - 1).
+   No extra higher odd datum re-enters Delta_norm at 2.5PN order.
+5. The only live retarded obstruction at reduced point-particle 2.5PN order is therefore
+      Delta_Q = chi_Q - 1.
+   Any extra isotropic retarded structure beginning at O(omega^7) or higher lives beyond the theorem order.

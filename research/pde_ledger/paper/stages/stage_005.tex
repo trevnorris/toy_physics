@@ -1,0 +1,146 @@
+\section[Stage 005]{Stage 005: Grouped Real \(P_2\) Normalization Bridge}
+\label{stage:005}
+
+\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T3} and \resultanchor{MTDC-T4}.}
+\claimstatus{The bridge formulas are \StatusExactClosure{} inside the grouped response normalization convention.  The final equality to the universal normalization is a \StatusOpen{} branch-realization test.}
+
+\stagefield{Purpose}{Stage~005 translates the one-lane Stage~004 outgoing bridge into the grouped real \(P_2\) response language.  It converts conservative operator moments \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates the exact invariant product that must match the universal quadrupole normalization.}
+
+\stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing transfer factor \(N_A(\omega)\), the compact outgoing \(l=2\) fingerprint, and the grouped trace/anomaly map.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage005_grouped_p2_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage005_grouped_p2_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage005_grouped_p2_normalization_bridge_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage005_grouped_p2_normalization_bridge_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Conservative operator and normalized response.}
+For each grouped lane \(A\in\{20,21,22\}\), write
+\begin{equation}
+\label{eq:app-stage005-d-operator}
+D_A^{\rm cons}(\omega)=D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6).
+\end{equation}
+The normalized conservative response is
+\begin{equation}
+\label{eq:app-stage005-y-response}
+Y_A(\omega)=\frac{D_{A0}}{D_A^{\rm cons}(\omega)}
+=1+u_2^{(A)}\omega^2+u_4^{(A)}\omega^4+O(\omega^6).
+\end{equation}
+Expanding the inverse gives
+\begin{equation}
+\label{eq:app-stage005-u2u4}
+\boxed{
+u_2^{(A)}=-\frac{D_{A2}}{D_{A0}},
+\qquad
+u_4^{(A)}=\frac{D_{A2}^2-D_{A0}D_{A4}}{D_{A0}^2}}.
+\end{equation}
+Here the symbol \(u_n^{(A)}\) is used in the main ledger; the boxed formula records the same coefficients.  The key point is that the normalized response moments are not independent of the operator moments.
+
+\paragraph{2. Grouped inverse map.}
+For any grouped triple \(x_A=(x_{20},x_{21},x_{22})\), define
+\begin{equation}
+\label{eq:app-stage005-grouped-defs}
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\qquad
+a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+b_x=\frac{x_{21}-x_{22}}{2}.
+\end{equation}
+The inverse map is
+\begin{equation}
+\label{eq:app-stage005-grouped-inverse}
+\boxed{
+x_{20}=\bar x+4a_x,
+\qquad
+x_{21}=\bar x-a_x+b_x,
+\qquad
+x_{22}=\bar x-a_x-b_x}.
+\end{equation}
+The grouped isotropy gate is
+\begin{equation}
+\label{eq:app-stage005-isotropy-gate}
+a_2=b_2=a_4=b_4=0
+\end{equation}
+when applied to \(u_2^{(A)}\) and \(u_4^{(A)}\).
+
+\paragraph{3. Internal outgoing prefactor.}
+Let
+\begin{equation}
+\label{eq:app-stage005-n-transfer}
+N_A(\omega)=N_{A0}+N_{A2}\omega^2+N_{A4}\omega^4+O(\omega^6).
+\end{equation}
+To first order in the outgoing branch, the normalized response correction is controlled by
+\begin{equation}
+\label{eq:app-stage005-pref-def}
+{\rm Pref}_A(\omega)
+=\frac{D_{A0}N_A(\omega)}{\left(D_A^{\rm cons}(\omega)\right)^2}
+=P_{A0}+P_{A2}\omega^2+P_{A4}\omega^4+O(\omega^6).
+\end{equation}
+Direct expansion gives
+\begin{align}
+\label{eq:app-stage005-pref-coeffs}
+\boxed{P_{A0}}&=\boxed{\frac{N_{A0}}{D_{A0}}},\\
+\boxed{P_{A2}}&=\boxed{\frac{D_{A0}N_{A2}-2D_{A2}N_{A0}}{D_{A0}^2}},\\
+\boxed{P_{A4}}&=\boxed{\frac{D_{A0}^2N_{A4}-2D_{A0}(D_{A2}N_{A2}+D_{A4}N_{A0})+3D_{A2}^2N_{A0}}{D_{A0}^3}}.
+\end{align}
+These are the algebraic bridge from conservative internal data to outgoing-branch prefactor data.
+
+\paragraph{4. Multiplication by the compact outgoing fingerprint.}
+Write the compact outgoing branch as
+\begin{equation}
+\label{eq:app-stage005-outgoing-compact}
+\widehat Y_2^{\rm out}(\omega)
+=1+A\omega^2+B\omega^4+iG_5\omega^5+O(\omega^6),
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-stage005-abg}
+A=\frac{a^2}{9c_s^2},
+\qquad
+B=\frac{4a^4}{81c_s^4},
+\qquad
+G_5=\frac{a^5}{27c_s^5}.
+\end{equation}
+Then
+\begin{equation}
+\delta Y_A^{\rm out}(\omega)={\rm Pref}_A(\omega)\widehat Y_2^{\rm out}(\omega)
+=K_{A0}+K_{A2}\omega^2+K_{A4}\omega^4+i\Gamma_5^{(A)}\omega^5+\cdots,
+\end{equation}
+where
+\begin{align}
+\label{eq:app-stage005-k-gamma}
+K_{A0}&=P_{A0},\\
+K_{A2}&=P_{A2}+AP_{A0},\\
+K_{A4}&=P_{A4}+AP_{A2}+BP_{A0},\\
+\Gamma_5^{(A)}&=G_5P_{A0}.
+\end{align}
+Thus only the static prefactor \(P_{A0}\) enters the leading odd \(i\omega^5\) coefficient.
+
+\paragraph{5. Universal normalization product.}
+The GR quadrupole target is
+\begin{equation}
+\label{eq:app-stage005-gamma-gr}
+\gamma_{\rm GR}=\frac{2G}{5c^5}.
+\end{equation}
+Including the source-map factor \(\widehat m_0\), the invariant normalization condition is
+\begin{equation}
+\label{eq:app-stage005-invariant-normalization}
+\boxed{
+\widehat m_0^{\,2}P_0\frac{a^5}{27c_s^5}=\frac{2G}{5c^5}},
+\end{equation}
+or equivalently
+\begin{equation}
+\label{eq:app-stage005-p0-target}
+\boxed{
+\widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}}.
+\end{equation}
+On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+
+\stagefield{Output}{Stage~005 outputs the normalized response formulas \eqref{eq:app-stage005-u2u4}, the grouped inverse map \eqref{eq:app-stage005-grouped-inverse}, the prefactor coefficients \eqref{eq:app-stage005-pref-coeffs}, the odd coefficient \eqref{eq:app-stage005-k-gamma}, and the invariant normalization test \eqref{eq:app-stage005-p0-target}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The inverse expansion of \(D_{A0}/D_A\) gives \(u_2,u_4\) with the signs shown in \eqref{eq:app-stage005-u2u4}.
+\item The grouped inverse map \eqref{eq:app-stage005-grouped-inverse} reproduces \eqref{eq:app-stage005-grouped-defs} exactly.
+\item The first odd coefficient depends only on \(P_{A0}\), because \({\rm Pref}_A\) is even through the retained orders and the outgoing odd term first appears at \(\omega^5\).
+\item The final equality \eqref{eq:app-stage005-p0-target} is a branch test, not a proof of branch realization.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~006 uses the Stage~005 bridge to define \(P_0=N_0/D_0\) for the full grouped bundle.  The 2.5PN and 4PN bridge sections use \eqref{eq:app-stage005-p0-target} as the shared outgoing-normalization condition.  Later same-charge and weak-axisymmetric stages use the ratio \(P_1/P_0\) as the transported prefactor slope.}

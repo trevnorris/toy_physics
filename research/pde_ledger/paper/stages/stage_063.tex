@@ -1,0 +1,33 @@
+\section[Stage 063]{Stage 063: Family--1 Demand Thresholds in \texorpdfstring{$\zeta_{\rm req}$}{zeta req}}
+\label{stage:063}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the conversion of \(\mathrm{Pe}_{\rm req}\) windows to \(\zeta_{\rm req}\) windows.}
+\stagefield{Purpose}{Stage~063 expresses the explicit Family--1 wall-depth windows in the support-ratio demand variable.}
+\stagefield{Inputs}{The demand map \(\zeta_{\rm F1}=A_{\rm F1}\Omega_{\mathrm{Pe}}^2\) and the Stage~061 Peclet windows.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage063_family1_zeta_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage063_family1_zeta_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+At \(\lambda_\mu=1\), the natural shell-weighted thresholds are
+\begin{equation}
+\label{eq:app-stage063-zeta-chi}
+\boxed{
+\zeta_{\rm suff}^{(\chi)}\simeq2.46622291347846,
+\qquad
+\zeta_{\rm fail}^{(\chi)}\simeq2.46752913273870}.
+\end{equation}
+The conservative floor gives
+\begin{equation}
+\label{eq:app-stage063-zeta-J}
+\boxed{
+\zeta_{\rm suff}^{(J)}\simeq2.44257571477179,
+\qquad
+\zeta_{\rm fail}^{(J)}\simeq2.46752736855058}.
+\end{equation}
+Both are close to the hard Family--1 ceiling \eqref{eq:app-stage062-ceiling}; the natural branch nearly reaches the largest possible constructive support ratio in this family.
+
+\stagefield{Output}{Demand thresholds \eqref{eq:app-stage063-zeta-chi}--\eqref{eq:app-stage063-zeta-J}.}
+\stagefield{Downstream use}{Stage~064 rewrites the same window in \(\Pi_{\rm tr}\).}
+

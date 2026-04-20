@@ -1,0 +1,89 @@
+\section{Stage 231: Dynamic event-chain compiler}
+\label{sec:app-part08:dynamic-event-chain-compiler}
+\label{stage:231}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage231_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage231_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl}.}
+
+
+Stage 231 promotes \(V_{\rm eff}^{(230)}\) into a reduced scattering/event-chain compiler.  Write
+\begin{equation}
+\label{eq:app-part08-stage231-vdef}
+V(r):=V_{\rm eff}^{(230)}(r).
+\end{equation}
+The reduced radial equation is
+\begin{equation}
+\label{eq:app-part08-stage231-radial-eom}
+m_s\ddot r=-V'(r),
+\end{equation}
+with conserved energy \cref{eq:app-part08-intro-event-energy}.  If the branch has a single barrier peak
+\begin{equation}
+\label{eq:app-part08-stage231-peak}
+V'(r_{\rm peak})=0,
+\qquad
+V''(r_{\rm peak})<0,
+\qquad
+V_{\rm peak}=V(r_{\rm peak}),
+\end{equation}
+then the finite-radius threshold law is \cref{eq:app-part08-main-vcrit-new}.  The pure-Coulomb contact threshold is \cref{eq:app-part08-main-vcrit-coul}.  The classical comparison window is therefore
+\begin{equation}
+\label{eq:app-part08-stage231-classical-window}
+v_{\rm crit,new}<v_0<v_{\rm contact,Coul}.
+\end{equation}
+
+For subbarrier energy \(V(r_0)<E<V_{\rm peak}\), turning points solve
+\begin{equation}
+\label{eq:app-part08-stage231-turning-points}
+V(r_-(E))=E,
+\qquad
+V(r_+(E))=E,
+\qquad
+r_-(E)<r_+(E),
+\end{equation}
+and transport as
+\begin{equation}
+\label{eq:app-part08-stage231-turning-transport}
+\frac{dr_\pm}{dE}=\frac1{V'(r_\pm(E))}.
+\end{equation}
+The WKB action and transmission ratio are \cref{eq:app-part08-main-wkb-action,eq:app-part08-main-transmission-ratio}.  The pure-Coulomb outer turning point is exact,
+\begin{equation}
+\label{eq:app-part08-stage231-coul-turn}
+r_{\rm turn,Coul}(E)=\frac1E,
+\end{equation}
+and the Coulomb action closes as
+\begin{equation}
+\label{eq:app-part08-stage231-coul-action}
+I_{\rm Coul}(E)
+=
+\frac{\sqrt{2m_s}}{\hbar_{\rm eff}}
+\left[
+\frac{\pi}{2\sqrt E}
+-
+\sqrt{r_{\rm contact}(1-Er_{\rm contact})}
+-
+\frac{\arcsin\sqrt{Er_{\rm contact}}}{\sqrt E}
+\right]
+\end{equation}
+for \(Er_{\rm contact}<1\).
+
+Near the top, with
+\begin{equation}
+\label{eq:app-part08-stage231-near-top}
+V(r)=V_{\rm peak}-\frac{K_{\rm peak}}2(r-r_{\rm peak})^2+O((r-r_{\rm peak})^3),
+\qquad
+K_{\rm peak}=-V''(r_{\rm peak}),
+\end{equation}
+the leading top action is
+\begin{equation}
+\label{eq:app-part08-stage231-top-action}
+I_{\rm top}(E)=
+\frac{\pi(V_{\rm peak}-E)}{\hbar_{\rm eff}}
+\sqrt{\frac{m_s}{K_{\rm peak}}}
++O((V_{\rm peak}-E)^{3/2}).
+\end{equation}
+The dynamic diagnostics carried forward are
+\begin{equation}
+\label{eq:app-part08-stage231-diagnostics}
+\Xi_{\rm turn}(E)=\Xi_1(r_+(E)),
+\qquad
+\lambda_{\rm th}(E)=\left|\frac{E}{V'(r_+(E))}\right|.
+\end{equation}
+These tags are later used in the helicity and Goldilocks compilers; they do not alter the scalar event chain.

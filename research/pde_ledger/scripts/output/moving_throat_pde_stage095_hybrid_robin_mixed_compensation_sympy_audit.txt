@@ -1,0 +1,6 @@
+Lambda_hyb(z) = -I*gamma*sigma*z**5 - kappa**2*sigma*z**4 - kappa*sigma*z**2 + rho - sigma + I*z**5/9 + z**4/9 + z**2/3 - 3
+canonical-even solutions = [{kappa: 0, rho: sigma}, {kappa: 1/3, rho: 4*sigma}]
+chi_Q branch A = -9*gamma*sigma + 1
+chi_Q branch B = (9*gamma*sigma - 1)/(sigma - 1)
+scaled identity on branch B = 0
+stage95: PASS

@@ -1,0 +1,481 @@
+
+# Moving-Throat PDE — Stage 3: Minimal BdG–Wall Coupling and First Pole Shifts
+
+## Purpose
+
+This note is the first genuinely coupled continuation of the moving-throat PDE program.
+
+The earlier stages did three things already:
+
+1. lifted the old finite-dimensional geometry variables `(a,L)` into a distributed wall field,
+2. established the geometry-only modal structure and finite-throat D/N benchmark,
+3. and showed that the axisymmetric lowest-mode truncation reduces back to an `(a,L)`-type matrix system.
+
+The next missing step is to turn on the **matter support dynamics** in a form that is still honest enough to be useful and still simple enough to audit symbolically.
+
+So the goal here is not yet “solve the full coupled GNLS + localized Maxwell + moving-wall PDE.”
+The goal is narrower:
+
+- reduce the linearized GNLS/BdG sector to stable normal coordinates in the `l=0` and grouped real `l=2` branches,
+- couple those matter modes to the wall modes through the already-derived confinement variation,
+- integrate the matter modes out exactly at the reduced level,
+- and identify the first pole shifts and the first conservative grouped-`P2` isotropy/splitting diagnostics.
+
+This is the first point where the moving-throat PDE begins to produce the sort of quantities the 2PN/3PN/2.5PN stack still leaves open.
+
+---
+
+## 1. Parent-theory anchor and why this is the right next step
+
+The current stack already gives a fully action-based bulk parent with three sectors:
+
+- gauged 4D GNLS matter,
+- localized `4+1` Maxwell,
+- and explicit geometry variables `(a,L)` / confinement structure.
+
+That parent is strong enough to support reduced-sector work, but it is still **not** a fully solved moving-throat PDE theorem. The unresolved sectors still include the completed moving-throat dynamics and the dynamic derivation of the pole/compliance data. The 2PN and 3PN summaries make the bottleneck especially sharp: the remaining conservative-to-radiative bridge is no longer algebraic bookkeeping, but the microscopic derivation of the grouped real `P2` constitutive law and the geometry completion, followed by the narrow passive/outgoing quadrupole-normalization gap. See `atom_work.md`, `4d_2pn.tex`, `4d_3pn_summary.md`, and `4d_1pn_full_summary.md`. 
+
+What this means operationally is:
+
+- the geometry-only wall PDE is not enough,
+- the next live conservative data must come from **coupling wall motion to actual matter support modes**,
+- and the first useful reduced question is therefore:
+
+  > how do stable BdG modes renormalize the wall response, shift the pole data, and preserve or split the grouped real `P2` degeneracy?
+
+That is exactly what this stage computes.
+
+---
+
+## 2. Linearized coupling from the promoted confinement law
+
+From the previous stage we already have the promoted confinement lift
+\[
+V_{\rm conf}(X;\Sigma)=V_{\rm wall}\!\left(\frac{\Sigma(X,t)}{\ell_c}\right),
+\qquad
+\Sigma=r-R(\Omega,w,t),
+\]
+and its linearization around the stationary reference throat
+\[
+\delta V_{\rm conf}
+=
+-\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t).
+\]
+
+So the wall displacement enters the linearized GNLS/BdG problem as a direct source.
+Once the linearized matter sector is decomposed into normal modes, the wall–matter coupling is bilinear.
+
+On an isotropic reference throat, the angular dependence is diagonal in the spherical harmonic labels because the coupling is scalar in the angles and the grouped real harmonics are orthonormal. That means:
+
+- the axisymmetric wall sector couples only to axisymmetric matter modes,
+- each grouped real `l=2` wall channel couples only inside the real `l=2` matter bundle,
+- and no linear `l=0 <-> l=2` mixing appears on the isotropic background.
+
+This selection rule is one of the important reasons the present reduction is clean.
+
+---
+
+## 3. Stable-mode reduction of the linearized matter sector
+
+At the exact PDE level the linearized GNLS problem is BdG-like and first order in time.
+For the present step, we pass to the **stable normal-mode reduction** of that BdG system.
+
+That is a controlled reduced-sector move, not a full theorem of the unsolved PDE.
+But it is the natural one if we want the first conservative pole shifts and low-frequency response data.
+What matters for the present derivation is that this move introduces no fitted
+numerical data of its own: once the stable support spectrum and overlap matrices
+are fixed on the chosen branch, the wall self-energy is forced by the exact
+Schur complement.
+
+### 3.1 Axisymmetric scalar sector
+
+Let
+\[
+Q^A(t)=\bigl(\delta a(t),\delta L(t)\bigr),
+\qquad A\in\{a,L\},
+\]
+be the two lowest axisymmetric wall coordinates, and let
+\[
+X_\alpha(t)
+\]
+be stable scalar BdG normal coordinates with frequencies
+\[
+\varpi_{0\alpha}>0.
+\]
+
+The reduced quadratic Lagrangian is
+\[
+L^{(0)}_{\rm red}
+=
+\frac12 \dot Q^T M_0 \dot Q
+-\frac12 Q^T K_0 Q
++\frac12\sum_\alpha \left(\dot X_\alpha^2-\varpi_{0\alpha}^2 X_\alpha^2\right)
++\sum_{A,\alpha} C_{A\alpha} Q^A X_\alpha .
+\]
+
+Here:
+
+- `M_0` and `K_0` are the geometry-only axisymmetric inertia/stiffness matrices from the previous reduction,
+- `C_{A\alpha}` are wall–matter overlap integrals generated by the confinement variation and the BdG mode profiles.
+
+At this level, the scalar matter sector does not yet radiate or dissipate. It produces a conservative self-energy.
+
+### 3.2 Grouped real `P2` sector
+
+For each grouped real quadrupole channel
+\[
+A\in\{20,21,22\},
+\]
+let \(q_A(t)\) be the wall amplitude and let \(X_{A\alpha}(t)\) be stable BdG quadrupole coordinates with frequencies \(\varpi_{A\alpha}\).
+
+Then the reduced quadratic Lagrangian is
+\[
+L^{(2)}_{\rm red}
+=
+\sum_A
+\left[
+\frac12 M_A \dot q_A^2
+-\frac12 K_A q_A^2
++\frac12\sum_\alpha\left(\dot X_{A\alpha}^2-\varpi_{A\alpha}^2 X_{A\alpha}^2\right)
++\sum_\alpha g_{A\alpha} q_A X_{A\alpha}
+\right].
+\]
+
+On the isotropic reference branch one expects
+\[
+M_{20}=M_{21}=M_{22},
+\qquad
+K_{20}=K_{21}=K_{22},
+\]
+and, if the matter support is also isotropic,
+\[
+g_{20,\alpha}=g_{21,\alpha}=g_{22,\alpha},
+\qquad
+\varpi_{20,\alpha}=\varpi_{21,\alpha}=\varpi_{22,\alpha}.
+\]
+
+That is the precise reduced meaning of “grouped real `P2` degeneracy survives matter coupling on the isotropic branch.”
+
+---
+
+## 4. Exact elimination of the stable BdG modes
+
+The reduced matter modes can be integrated out exactly.
+
+## 4.1 Axisymmetric matrix kernel
+
+In frequency space, the scalar matter coordinates satisfy
+\[
+(\varpi_{0\alpha}^2-\omega^2)X_\alpha
+=
+C_{A\alpha} Q^A.
+\]
+So
+\[
+X_\alpha
+=
+\frac{C_{A\alpha}Q^A}{\varpi_{0\alpha}^2-\omega^2}.
+\]
+
+Substituting back into the wall equations gives the exact effective axisymmetric kernel
+\[
+\boxed{
+D^{\rm eff}_0(\omega)
+=
+K_0-\omega^2 M_0
+-
+C(\Omega_0^2-\omega^2 I)^{-1}C^T,
+}
+\]
+where \(C\) is the `2 x N` coupling matrix and
+\[
+\Omega_0^2=\mathrm{diag}(\varpi_{0\alpha}^2).
+\]
+
+This is the first explicit reduced formula in which matter support renormalizes the geometry lane.
+
+Its low-frequency expansion is
+\[
+D^{\rm eff}_0(\omega)
+=
+K^{\rm eff}_0
+-\omega^2 M^{\rm eff}_0
+-\omega^4 N^{\rm eff}_0
++O(\omega^6),
+\]
+with
+\[
+\boxed{
+K^{\rm eff}_0
+=
+K_0-C\Omega_0^{-2}C^T,
+}
+\]
+\[
+\boxed{
+M^{\rm eff}_0
+=
+M_0+C\Omega_0^{-4}C^T,
+}
+\]
+\[
+\boxed{
+N^{\rm eff}_0
+=
+C\Omega_0^{-6}C^T.
+}
+\]
+
+So the conservative scalar BdG support does three things immediately:
+
+1. it lowers the effective static stiffness,
+2. it increases the effective inertial coefficient,
+3. and it generates the next higher even coefficient automatically.
+
+This is already enough to see how the axisymmetric geometry-completion lane can become a real microscopic dynamical object rather than a symbolic leftover.
+
+## 4.2 Grouped real `P2` kernels
+
+Channel by channel,
+\[
+(\varpi_{A\alpha}^2-\omega^2)X_{A\alpha}
+=
+g_{A\alpha} q_A,
+\]
+so
+\[
+X_{A\alpha}
+=
+\frac{g_{A\alpha}}{\varpi_{A\alpha}^2-\omega^2}q_A.
+\]
+
+Substituting back gives the exact channelwise grouped-`P2` kernels
+\[
+\boxed{
+D_A^{\rm eff}(\omega)
+=
+K_A-M_A\omega^2
+-\sum_\alpha \frac{g_{A\alpha}^2}{\varpi_{A\alpha}^2-\omega^2},
+\qquad
+A\in\{20,21,22\}.
+}
+\]
+
+Expanding at low frequency,
+\[
+D_A^{\rm eff}(\omega)
+=
+d_{0A}^{\rm eff}
++d_{2A}^{\rm eff}\omega^2
++d_{4A}^{\rm eff}\omega^4
++O(\omega^6),
+\]
+with
+\[
+d_{0A}^{\rm eff}
+=
+K_A-\sum_\alpha \frac{g_{A\alpha}^2}{\varpi_{A\alpha}^2},
+\]
+\[
+d_{2A}^{\rm eff}
+=
+-\left(
+M_A+\sum_\alpha \frac{g_{A\alpha}^2}{\varpi_{A\alpha}^4}
+\right),
+\]
+\[
+d_{4A}^{\rm eff}
+=
+-\sum_\alpha \frac{g_{A\alpha}^2}{\varpi_{A\alpha}^6}.
+\]
+
+So stable BdG support automatically feeds the entire even low-frequency ladder of each grouped real `P2` channel.
+
+That is exactly the kind of mechanism the conservative 3PN and 2.5PN bridge has been waiting for.
+
+---
+
+## 5. First exact pole shift formula
+
+The simplest nontrivial example is one wall mode \(q\) coupled to one stable BdG mode \(X\):
+\[
+L
+=
+\frac12 M \dot q^2
+-\frac12 K q^2
++\frac12 \dot X^2
+-\frac12 \varpi^2 X^2
++g q X.
+\]
+
+The exact dispersion relation is
+\[
+(K-M\omega^2)(\varpi^2-\omega^2)-g^2=0.
+\]
+
+Writing the uncoupled wall frequency as
+\[
+\Omega_\eta^2=\frac{K}{M},
+\]
+the exact poles are
+\[
+\boxed{
+\omega_\pm^2
+=
+\frac{\Omega_\eta^2+\varpi^2
+\pm
+\sqrt{(\Omega_\eta^2-\varpi^2)^2+4g^2/M}}{2}.
+}
+\]
+
+If the matter mode is above the wall mode, \(\varpi^2>\Omega_\eta^2\), and the coupling is weak, then the wall-like pole shifts by
+\[
+\boxed{
+\delta\Omega_\eta^2
+=
+-\frac{g^2/M}{\varpi^2-\Omega_\eta^2}
++O(g^4),
+}
+\]
+while the matter-like pole shifts upward by
+\[
+\delta\varpi^2
+=
++\frac{g^2/M}{\varpi^2-\Omega_\eta^2}
++O(g^4).
+\]
+
+This is the first explicit closed formula for the way matter support shifts a wall pole.
+
+In the language of the earlier hierarchy, this is the reduced-sector prototype for how the open pole data are supposed to arise once the wall is no longer treated in isolation.
+
+---
+
+## 6. Grouped real `P2` isotropy diagnostics
+
+The 3PN grouped-`P2` summary already uses the standard grouped trace/anomaly variables
+\[
+\bar u_2=\frac{u_2^{(20)}+2u_2^{(21)}+2u_2^{(22)}}{5},
+\qquad
+a_2=\frac{2u_2^{(20)}-u_2^{(21)}-u_2^{(22)}}{10},
+\qquad
+b_2=\frac{u_2^{(21)}-u_2^{(22)}}{2}.
+\]
+
+At the present reduced level, the same algebra applies to any fixed normalization of the channelwise low-frequency coefficients. Using the `d_{2A}^{eff}` defined above,
+\[
+\bar d_2=\frac{d_{220}^{\rm eff}+2d_{221}^{\rm eff}+2d_{222}^{\rm eff}}{5},
+\]
+\[
+a_2=\frac{2d_{220}^{\rm eff}-d_{221}^{\rm eff}-d_{222}^{\rm eff}}{10},
+\qquad
+b_2=\frac{d_{221}^{\rm eff}-d_{222}^{\rm eff}}{2}.
+\]
+
+So the first conservative isotropy theorem on the matter-coupled branch is immediate:
+
+- if the wall parameters, matter frequencies, and couplings are channel-independent,
+  \[
+  K_{20}=K_{21}=K_{22},\quad
+  M_{20}=M_{21}=M_{22},\quad
+  g_{20,\alpha}=g_{21,\alpha}=g_{22,\alpha},\quad
+  \varpi_{20,\alpha}=\varpi_{21,\alpha}=\varpi_{22,\alpha},
+  \]
+  then
+  \[
+  \boxed{a_2=b_2=0.}
+  \]
+
+Conversely, any nonzero \(a_2\) or \(b_2\) must come from anisotropy in one or more of:
+
+- the wall baseline,
+- the matter support frequencies,
+- or the wall–matter overlap integrals.
+
+This is the first microscopic conservative criterion for the grouped real `P2` constitutive law.
+
+---
+
+## 7. What this stage achieves physically
+
+This stage does **not** yet solve the full moving-throat PDE.
+But it does something important and concrete.
+
+### 7.1 It gives the first microscopic origin of the open pole data
+
+The open 2PN dynamic pole scales were always telling us that the zero-frequency conservative ledger was not the full story.
+The present reduced kernels show how those pole shifts arise structurally once the wall is coupled to stable matter support modes.
+
+### 7.2 It makes the grouped real `P2` bundle dynamical rather than symbolic
+
+In the 3PN summary the grouped real `P2` sector is already the live conservative payload that still needs a microscopic derivation.
+The present coupled kernels show exactly how a grouped real `P2` bundle acquires low-frequency coefficients and isotropy/splitting data from actual support dynamics.
+
+### 7.3 It explains why the axisymmetric geometry lane can carry the geometry completion
+
+The axisymmetric scalar kernel is matrix-valued in `(a,L)` even before any further complication is added.
+Once matter support renormalizes that matrix, a separate geometry lane is no longer mysterious.
+It is the natural leftover after the low-dimensional wall sector is coupled back to scalar support modes.
+
+---
+
+## 8. What is still missing
+
+This note is intentionally only the **first matter-coupled step**.
+
+The following are still outside its scope:
+
+1. the localized Maxwell sector on the same footing,
+2. the mixed channels
+   \[
+   A_w,\qquad J^w,\qquad F_{\mu w},
+   \]
+   which remain part of the microscopic ontology outside the strict brane limit,
+3. the passive/outgoing completion of the coupled wall–matter system,
+4. and the final normalization step that converts the surviving quadrupole branch into the 2.5PN/4PN universal coefficient.
+
+So the right reading is:
+
+- geometry-only wall theory gave the baseline,
+- this stage adds the first conservative matter self-energy,
+- the next step is to add the localized Maxwell + mixed sector on the same reduced footing.
+
+---
+
+## 9. Script-backed status
+
+The accompanying script verifies:
+
+- the axisymmetric Euler–Lagrange reduction with wall coordinates coupled to stable scalar BdG modes,
+- exact elimination of the matter modes and the resulting effective matrix kernel,
+- the low-frequency renormalization formulas for the scalar/geometry lane,
+- the exact two-pole spectrum and perturbative wall-pole shift in the one-mode case,
+- the channelwise grouped-`P2` self-energies,
+- the grouped trace/anomaly formulas,
+- preservation of `a_2=b_2=0` on the isotropic matter-coupled branch,
+- and the harmonic selection rule enforcing the `l=0` / grouped `l=2` block structure.
+
+Supporting files:
+- `moving_throat_pde_stage003_bdg_sympy_audit.py`
+- `moving_throat_pde_stage003_bdg_mathematica_audit.wl`
+- `stage003_004_foundational_stress.py`
+- `stage003_004_foundational_stress.wl`
+- `stage003_004_foundational_samples.json`
+
+The symbolic theorem path is exact in both CAS layers. The shared numerical
+stress harness uses the JSON sample file only for probe cases that test root
+ordering, perturbative-validity breakdown, and the outgoing mixed-sector
+scaling laws; those numbers are not part of the derivation itself.
+
+---
+
+## 10. Immediate next derivation step
+
+The next clean move is now well defined:
+
+1. keep the present BdG–wall reduction,
+2. add the localized Maxwell and mixed-channel normal coordinates on the same footing,
+3. derive the enlarged effective kernel,
+4. and identify which part of that enlarged system can generate the passive/outgoing branch needed for the final quadrupole normalization.
+
+That is the first point where the moving-throat PDE program can start touching the actual remaining 2.5PN/4PN bridge instead of only its conservative front end.

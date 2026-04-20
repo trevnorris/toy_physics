@@ -1,0 +1,34 @@
+\section[Stage 030]{Stage 030: Coherent-Kernel Dimensionless Map and Support-Enhancement Factor}
+\label{stage:030}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the coherent tracking map.}
+\stagefield{Purpose}{Stage~030 introduces the coherent support ratio \(\zeta\) and shows that it changes the available loading but not the selected target ratio.}
+\stagefield{Inputs}{The coherent tracking branch, dimensionless split--\(U\) variables, and a support lane parallel to the tracked mixed direction.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage030_coherent_kernel_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage030_coherent_kernel_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage030_coherent_kernel_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage030_coherent_kernel_map_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The total tracking load factors as
+\begin{equation}
+\label{eq:app-stage030-Mtr}
+M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage030-S}
+\boxed{
+S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\epsilon\zeta}}.
+\end{equation}
+The coherent target ratio is
+\begin{equation}
+\label{eq:app-stage030-Rtarget}
+\boxed{
+R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}}.
+\end{equation}
+It contains no \(\zeta\).  Therefore the support lane only supplies loading; it does not move the target locus itself.
+
+\stagefield{Output}{Support enhancement factor \eqref{eq:app-stage030-S} and target independence \eqref{eq:app-stage030-Rtarget}.}
+\stagefield{Downstream use}{Stage~031 inverts \(S\) to obtain \(\zeta_{\rm req}\); Stages~032--033 compute whether physical D/N support can supply it.}
+

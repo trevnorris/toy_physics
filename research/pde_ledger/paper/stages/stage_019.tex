@@ -1,0 +1,123 @@
+\section[Stage 019]{Stage 019: Dimensionless Support-Feasibility Frontier}
+\label{stage:019}
+
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{The support frontier is \StatusExactClosure{} inside the D/N selected-branch normal form.  Actual physical placement on the admissible frontier is \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~019 isolates the support-feasibility condition that remains after the normalization locus has selected \(\xi_{\rm req}\).  The total loading must exceed the mixed-sector baseline by a nonnegative support/BdG contribution.  This requirement becomes the exact frontier \(M_{\rm mix}\leq G(\xi_{\rm req},\delta)\).}
+
+\stagefield{Inputs}{The inputs are the Stage~018 total loading \(\alpha_{\rm req}(\xi,
+\delta)\), the mixed-sector baseline \(\alpha_{\rm mix}=\mathcal X^2/(\Omega_U^2\Delta_0)\), and the dimensionless variables \(\xi,\delta\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage019_support_feasibility_frontier_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage019_support_feasibility_frontier_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage019_support_feasibility_frontier_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage019_support_feasibility_frontier_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Dimensionless mixed baseline and support function.}
+Split
+\begin{equation}
+\alpha_{\rm req}=\alpha_{\rm mix}+\frac{g_{B,{\rm req}}^2}{\varpi^2},
+\qquad
+\alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0}.
+\end{equation}
+Define
+\begin{equation}
+\label{eq:app-stage019-Mmix}
+\boxed{
+M_{\rm mix}:=\frac{8\alpha_{\rm mix}}{\pi^2A}
+=
+\frac{8\mathcal X^2}{\pi^2A\Omega_U^2\Delta_0}}.
+\end{equation}
+The dimensionless support-feasibility function is
+\begin{equation}
+\label{eq:app-stage019-G}
+\boxed{
+G(\xi,\delta):=\frac{8\alpha_{\rm req}}{\pi^2A}
+=
+\frac{9\xi(\xi+\delta)}{9\delta+11\xi}}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage019-gBreq}
+\boxed{
+\frac{g_{B,{\rm req}}^2}{\varpi^2}
+=\frac{\pi^2A}{8}\left[G(\xi_{\rm req},\delta)-M_{\rm mix}\right]}.
+\end{equation}
+The support/BdG sector is feasible exactly when
+\begin{equation}
+\label{eq:app-stage019-feasible}
+\boxed{
+M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+\end{equation}
+
+\paragraph{2. Monotonicity and endpoints.}
+The derivative is
+\begin{equation}
+\label{eq:app-stage019-G-derivative}
+\boxed{
+\frac{\partial G}{\partial\xi}
+=
+\frac{9(9\delta^2+18\delta\xi+11\xi^2)}{(9\delta+11\xi)^2}>0}.
+\end{equation}
+The endpoints are
+\begin{equation}
+\label{eq:app-stage019-G-endpoints}
+G(0,\delta)=0,
+\qquad
+G_{\max}(\delta)=\lim_{\xi\to1^-}G(\xi,\delta)
+=\frac{9(1+\delta)}{9\delta+11}.
+\end{equation}
+The maximum is the dimensionless form of the refined stability bound on the mixed-sector baseline.
+
+\paragraph{3. Parametric admissibility frontier.}
+Stages~018 and 019 together define the parametric stable frontier
+\begin{equation}
+\label{eq:app-stage019-param-frontier}
+\boxed{
+\xi\in[0,1)
+\longmapsto
+\left(F(\xi,\delta),G(\xi,\delta)\right)}.
+\end{equation}
+For fixed \(\delta\), the normalization target chooses \(\xi_{\rm req}\) by
+\begin{equation}
+\label{eq:app-stage019-Fselect}
+F(\xi_{\rm req},\delta)=R_{\rm target},
+\end{equation}
+and the support baseline must lie below the frontier at that same point.
+
+Near onset,
+\begin{equation}
+\label{eq:app-stage019-G-onset-expansion}
+G(\xi,
+\delta)=\xi-\frac{2\xi^2}{9\delta}+O(\xi^3).
+\end{equation}
+Combined with \eqref{eq:app-stage018-xi-near-onset},
+\begin{equation}
+M_{\rm crit}\simeq\frac{R_{\rm target}-1}{1+8/(9\delta)}
+\end{equation}
+for targets just above onset.
+
+\paragraph{4. Final admissibility test.}
+The final Stage~019 branch test is
+\begin{equation}
+\label{eq:app-stage019-final-test}
+\boxed{
+R_{\rm target}\geq1,
+\qquad
+F(\xi_{\rm req},\delta)=R_{\rm target},
+\qquad
+M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+\end{equation}
+If \(R_{\rm target}<1\), the branch cannot hit the target on the stable side.  If \(R_{\rm target}\geq1\) but \(M_{\rm mix}>G(\xi_{\rm req},\delta)\), the required support loading is negative and the physical branch is inadmissible in this reduced closure.
+
+\stagefield{Output}{Stage~019 outputs the dimensionless mixed baseline \eqref{eq:app-stage019-Mmix}, the support-feasibility function \eqref{eq:app-stage019-G}, the required support loading \eqref{eq:app-stage019-gBreq}, the monotonicity derivative \eqref{eq:app-stage019-G-derivative}, and the final admissibility test \eqref{eq:app-stage019-final-test}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Substituting \(\alpha_{\rm req}\) from Stage~018 into \(8\alpha_{\rm req}/(\pi^2A)\) gives \(G\).
+\item \(\partial_\xi G>0\) for \(\delta>0\) and \(0\leq\xi<1\).
+\item \(M_{\rm mix}\leq G\) is exactly the nonnegativity of \(g_{B,{\rm req}}^2\).
+\item The parametric map \((F,G)\) is one-dimensional at fixed \(\delta\), so the selected reduced branch has no remaining free hidden eigenvector parameter at this order.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Part~III begins by computing continuum-kernel placement data that feed \(A\), \(\Delta K_{\rm ax}\), \(\beta_0\), \(M_{\rm mix}\), and hence \(R_{\rm target}\), \(\delta\), and the exact frontier.  Later support-completion stages ask whether rank-two support and coherent D/N support can place the actual branch inside the admissible region.}
+

@@ -1,0 +1,43 @@
+\section[Stage 032]{Stage 032: Explicit D/N Overlap Extraction of the Physical Support Ratio}
+\label{stage:032}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the D/N support tower overlap calculation.}
+\stagefield{Purpose}{Stage~032 makes the coherent support ratio microscopic by evaluating the D/N support tower overlaps.}
+\stagefield{Inputs}{D/N support modes \(\chi_n(s)=\sqrt{2/L}\sin[(n+1/2)\pi s/L]\) and support-source overlaps \(I_n\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage032_dn_overlap_zeta_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage032_dn_overlap_zeta_mathematica_audit.wl}.}
+
+\subsection*{Derivation}
+
+The physical coherent support ratio is
+\begin{equation}
+\label{eq:app-stage032-zeta-phys}
+\boxed{
+\zeta_n^{\rm phys}
+=\frac{K_W^{\rm eff}}{K_{\phi,n}^{\rm eff}}
+\left(\frac{I_n}{I_0}\right)^2}.
+\end{equation}
+For a uniform local source density,
+\begin{equation}
+\label{eq:app-stage032-In-ratio}
+\boxed{
+\frac{I_n}{I_0}=\frac{1}{2n+1}}.
+\end{equation}
+For a same-operator twin family,
+\begin{equation}
+\label{eq:app-stage032-zeta-twin}
+\boxed{
+\zeta_n^{\rm twin}=\frac{1}{(2n+1)^2[1+xn(n+1)]},
+\qquad
+x=\frac{\pi^2T_X}{L^2K_W^{\rm eff}}}.
+\end{equation}
+The lowest twin value is
+\begin{equation}
+\label{eq:app-stage032-lowest-twin}
+\boxed{
+\zeta_0^{\rm twin}=1}.
+\end{equation}
+
+\stagefield{Output}{Microscopic D/N support ratios \eqref{eq:app-stage032-zeta-phys}--\eqref{eq:app-stage032-zeta-twin}.}
+\stagefield{Downstream use}{Stage~033 converts these ratios into explicit selection rules.}

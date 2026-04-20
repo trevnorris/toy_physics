@@ -1,0 +1,25 @@
+\section[Stage 070]{Stage 070: Final Reduced Finish Line for the Explicit Family--1 Outgoing Quadrupole Branch}
+\label{stage:070}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the reduction to a single ratio; \StatusOpen{} until the outgoing conservative module supplies that ratio.}
+\stagefield{Purpose}{Stage~070 records that the explicit Family--1 support/source side has been reduced to a single outgoing-branch loading ratio.}
+\stagefield{Inputs}{Stages~068--069.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The explicit support theorem now reads:
+\begin{equation}
+\label{eq:app-stage070-final-condition}
+\boxed{
+\rho_\alpha=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+\quad\text{is the only remaining support-side input from the outgoing branch.}
+}
+\end{equation}
+Given \(\rho_\alpha\), the Family--1 support/source verdict follows from Stage~069.  No separate dependence on \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), or \(\widehat m_-\) remains.
+
+\stagefield{Output}{The one-ratio finish line \eqref{eq:app-stage070-final-condition}.}
+\stagefield{Downstream use}{Stage~071 evaluates \(\rho_\alpha\) for the minimal isotropic contact-plus-pole quadrupole module.}
+

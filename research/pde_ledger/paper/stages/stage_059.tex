@@ -1,0 +1,23 @@
+\section[Stage 059]{Stage 059: Exact \texorpdfstring{$n=5$}{n=5} Wall-Depth Lock}
+\label{stage:059}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} inside the Family--1 normalization conventions and frozen \(n=5\) EOS.}
+\stagefield{Purpose}{Stage~059 expresses the remaining wall-depth datum \(\Theta_w\) in normalized Family--1 density variables.}
+\stagefield{Inputs}{The \(n=5\) identity \(h(\rho)=mc_s^2/4\), healing lock, and wall-density normalization.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage059_n5_wall_depth_lock_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage059_n5_wall_depth_lock_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage059_n5_wall_depth_lock_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage059_n5_wall_depth_lock_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The exact \(n=5\) relation and healing lock reduce the wall-depth datum to
+\begin{equation}
+\label{eq:app-stage059-theta}
+\boxed{
+\Theta_w=25\lambda_\mu^2\rho_w^2}.
+\end{equation}
+Thus only the effective wall density weighting remains to be extracted from the explicit wall profile.
+
+\stagefield{Output}{The wall-depth lock \eqref{eq:app-stage059-theta}.}
+\stagefield{Downstream use}{Stage~060 evaluates \(\rho_w^2\) with shell weights; Stage~061 uses it in the threshold comparison.}
+

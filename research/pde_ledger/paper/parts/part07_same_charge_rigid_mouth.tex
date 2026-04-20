@@ -1,0 +1,1378 @@
+\chapter[Same-Charge Sieve and Rigid-Mouth Orbit Lock]{One-Port Same-Charge Sieve, Actual-Branch Tests, and Rigid-Mouth Orbit Lock}
+\label{chap:part07_same_charge_rigid_mouth}
+
+\section*{Stage range: 202--225}
+\addcontentsline{toc}{section}{Stage range: 202--225}
+
+Part VI closed the local realization compiler: once a branch is expressed in the free-quintuple graph coordinates, the remaining local mixed-ray search is finite through support-cardinality five.  Part VII is the first use of that completed back end on the same-charge, same-sign, one-port mixed-sector problem.  Its job is not to add another algebraic search layer.  Its job is to insert actual one-port wall/BdG/Maxwell/mixed branch data into the compiler, decide what the same-charge mixed sector can and cannot do, and then translate the surviving branch tests into the rigid-mouth physical normal form.
+
+The conceptual outcome is simple but important.  The mixed sector remains real and necessary, but it does not supply a new long-range same-charge attraction.  The static one-port bundle produces only short-range product kernels.  The linear dynamic bundle produces no new spatial kernel class and its passive/outgoing correction is phase lag at first order.  What survives is a sharply constrained short-range/resonant corridor and, on the actual rigid-mouth branch, a two-coordinate orbit-lock packet.  The rigid-mouth same-charge problem is diagonal in the physical logarithmic chart
+\begin{equation}
+\label{eq:part07-intro-uv-chart}
+U:=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\qquad
+V:=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}},
+\end{equation}
+and the strict orbit-lock point is
+\begin{equation}
+\label{eq:part07-intro-orbit-lock}
+U=0,
+\qquad
+V=0.
+\end{equation}
+The selected passive/outgoing support side is also no longer a three-regime ambiguity: the minimal isotropic quadrupole precursor fixes
+\begin{equation}
+\label{eq:part07-intro-selected-twin-slice}
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13,
+\qquad
+\Pi_{\rm tr}=\frac43 C_{\rm mix},
+\end{equation}
+placing the selected branch on the symmetric lowest-twin support slice.
+
+\section*{Part VII at a glance}
+
+\begin{readermap}
+\item[Primary question] What survives when the finished realization compiler is applied to actual one-port same-charge branch data, and how should the surviving branch tests be read in physical variables?
+\item[Starting inputs] The Part VI realization compiler, the one-port wall/BdG/Maxwell/mixed closure, and the selected passive/outgoing branch data carried forward from earlier parts.
+\item[Delivers] The same-charge kernel firewall, the transported \((\Delta_{\rm norm},\Xi_1)\) ceilings, the rigid-mouth chart \((U,V)\), the orbit-lock theorem, and the selected twin-support placement packet.
+\item[Used by] Part VIII as the strict front end for the relaxed/open-system companion; later papers should cite this chapter for the strict same-charge verdict and its surviving branch packet.
+\item[Result anchors] \resultanchor{MTDC-T11}.
+\end{readermap}
+
+\paragraph{Stage packets.}
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}@{}}
+\toprule
+Stages & Packet & Status & Carry-forward output \\
+\midrule
+202--206 & One-port kernel firewall and primitive compatibility & \StatusExactClosure{} / \StatusNumerical{} & Fixes the short-range static and dynamic kernel classes, proves the phase-lag and resonance/linewidth constraints, and identifies the finite-throat compatibility surface where conservative and outgoing conditions can coexist. \\
+\addlinespace
+207--215 & Transported ceilings, \(\Xi_1\) mechanism sieve, and finite branch windows & \StatusExactClosure{} / \StatusReduced{} / \StatusNumerical{} / \StatusOpen{} & Compiles the actual-branch prefactor packet, imports the strict 5PN even gate, filters the surviving mixed-sector mechanisms, and narrows the unresolved gate to static placement and coherent orbit lock. \\
+\addlinespace
+216--222 & Rigid-mouth orbit-lock compiler and physical normal form & \StatusExactClosure{} / \StatusOpen{} & Pulls the surviving branch packet into direct observables, builds the packet projectors, computes the dressing compiler, and diagonalizes the strict branch test in the physical chart \((U,V)\) with orbit lock at \(U=V=0\). \\
+\addlinespace
+223--225 & Selected twin-support slice and final front-end packet & \StatusExactClosure{} / \StatusOpen{} & Fixes the symmetric lowest-twin support slice, ranks the primitive carriers on that branch, and defines the final strict front-end packet that later relaxed-branch work must inherit rather than overwrite. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\claimstatus{Part VII is mixed in status.  The static and dynamic one-port kernels, the projectors, the physical chart, and the selected support-ratio compilers are \StatusExactClosure{} inside the declared one-port, weak-axisymmetric, selected-branch, and rigid-mouth closures.  Numerical statements in Stages 205--206 and Stage 215 are \StatusNumerical{} insertions into exact formulas.  Any claim that the completed nonlinear moving-throat PDE actually realizes the winning static placement, dynamic window, rigid-mouth orbit-lock point, or selected twin-support point remains \StatusOpen{}.  No result in this part should be cited as a proof of a new same-charge long-range attraction.}
+
+\derivationfield{What this part proves}{Part VII applies the realization machinery to the one-port same-charge problem, rules out a new long-range same-charge attraction inside the linear one-port closure, and compiles the surviving strict branch conditions into the rigid-mouth \((U,V)\) chart and selected twin-support packet.}
+\derivationfield{What this part does not prove}{It does not prove that the completed PDE actually lands on the surviving static placement, dynamic window, rigid-mouth orbit-lock point, or selected twin-support point. Those remain actual-branch realization questions.}
+\derivationfield{Why later parts need it}{Part VIII starts from the strict front end extracted here and builds the relaxed/open-system extension around it without erasing the strict same-charge verdict.}
+
+\section{Block contract and theorem-level output}
+\label{sec:part07-block-contract}
+
+The contract of Part VII is to separate three questions that are easy to conflate.  First, there is the \emph{kernel-class question}: does the mixed sector create a new long-range same-charge attractive law?  Stages 202--204 answer no within the one-port linear closure.  Second, there is the \emph{window question}: can a short-range static or resonant dynamic corridor survive the exact transported ceilings?  Stages 205--215 reduce that question to finite branch inequalities and show that the support/source side is not the active bottleneck in the currently injected data.  Third, there is the \emph{actual branch question}: does the PDE-selected rigid-mouth branch land on the orbit-lock and selected-support packets?  Stages 216--225 compile that question into direct observables.
+
+The operational chain is
+\begin{equation}
+\label{eq:part07-operational-chain}
+\begin{aligned}
+\mathcal K_{\rm red}
+&\longrightarrow
+\mathfrak V_{\rm mix}(x,\omega)
+\longrightarrow
+(\Delta_{\rm norm},\Xi_1)
+\\
+&\longrightarrow
+(R_{\rm tr},\mathcal T^2,\epsilon_\eta)
+\longrightarrow
+(U,V)
+\\
+&\longrightarrow
+\text{selected twin-support placement packet}.
+\end{aligned}
+\end{equation}
+
+\begin{theorem}[Part VII same-charge and rigid-mouth selected-branch theorem]
+\label{thm:part07-main}
+Inside the declared one-port wall/BdG/Maxwell/mixed closure, weak-axisymmetric grouped response closure, rigid-mouth actual-branch closure, and selected twin-support closure, the following statements hold.
+\begin{enumerate}[leftmargin=2.2em]
+  \item The static same-charge one-port bundle is a positive quadratic response on the admissible side \(\Omega_U^2>0\), \(\Delta>0\), \(D_0>0\).  It produces only product kernels built from the primitive source profiles.  For the carried source pair \(x^{-3}\) and \(e^{-2\kappa x}/x\), the only static product families are
+  \begin{equation}
+  \label{eq:part07-main-static-families}
+  x^{-6},
+  \qquad
+  e^{-2\kappa x}x^{-4},
+  \qquad
+  e^{-4\kappa x}x^{-2}.
+  \end{equation}
+  \item The linear dynamic mixed bundle preserves the same spatial families.  A passive/outgoing correction at first order is pure phase lag and carries no real conservative barrier lowering off pole.
+  \item Near a simple conservative pole, every relevant susceptibility has the local form
+  \begin{equation}
+  \label{eq:part07-main-line-shape}
+  \chi_*(\omega)=\frac{A_*}{\delta-i\gamma_*},
+  \qquad
+  \delta=\omega-\omega_*,
+  \end{equation}
+  so
+  \begin{equation}
+  \label{eq:part07-main-line-ratio}
+  \frac{|\Re\chi_*|}{|\Im\chi_*|}=\frac{|\delta|}{\gamma_*}.
+  \end{equation}
+  The maximum conservative gain occurs exactly when conservative and absorptive magnitudes are equal.
+  \item On the explicit finite-throat primitive branch, the conservative one-pole condition and outgoing normalization condition are simultaneously compatible only on the exact surface
+  \begin{equation}
+  \label{eq:part07-main-compatibility-surface}
+  \frac{N_0}{P_{0,{\rm target}}}
+  =
+  \frac{3(M+B_2+Z_2)^2}{B_4+Z_4}.
+  \end{equation}
+  The transported dynamic window is finite on that surface.
+  \item The actual weak-axisymmetric branch test is the transported prefactor packet
+  \begin{equation}
+  \label{eq:part07-main-prefactor-packet}
+  \bigl(\Delta_{\rm norm},a_{P_0},b_{P_0}\bigr),
+  \qquad
+  b_{P_0}=3a_{P_0},
+  \qquad
+  \Xi_1=\frac{P_1}{P_0}.
+  \end{equation}
+  The robust one-scalar ceiling is
+  \begin{equation}
+  \label{eq:part07-main-xi-ceiling}
+  \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+  \bigl(1+|\varepsilon\Xi_1|\bigr)
+  \le P_{\rm crit},
+  \qquad
+  T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+  \end{equation}
+  \item On the rigid-mouth actual branch, the physical packet is diagonal in the variables \((U,V)\).  The microscopic dependent correction is
+  \begin{equation}
+  \label{eq:part07-main-dependent-correction}
+  (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V).
+  \end{equation}
+  Therefore the static-only correction changes only \(\mu_W\), while the post-static dressing correction is the equal \(K_\eta^{(\rm eff)}\)--\(\mu_W\) ray.
+  \item Rigid-mouth orbit lock is the codimension-two Cartesian condition
+  \begin{equation}
+  \label{eq:part07-main-cartesian-lock}
+  U=0,
+  \qquad
+  V=0,
+  \end{equation}
+  equivalently
+  \begin{equation}
+  \label{eq:part07-main-cartesian-lock-physical}
+  \mathcal T^2=\mathcal T_{\rm ref}^2,
+  \qquad
+  \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+  \end{equation}
+  \item The selected passive/outgoing support side lands exactly on the symmetric lowest-twin slice
+  \begin{equation}
+  \label{eq:part07-main-twin-slice}
+  \rho_\alpha=\frac43,
+  \qquad
+  \zeta_{\rm req}=\frac13,
+  \qquad
+  C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+  \end{equation}
+  \item The actual moving-throat front-end packet to evaluate is
+  \begin{equation}
+  \label{eq:part07-main-final-packet}
+  \left(
+  \epsilon,
+  \varrho_{\rm phys},
+  \sigma_{\rm phys},
+  \text{ranking region},
+  R_{\rm tr},
+  R_{\rm target},
+  \epsilon_\eta,
+  d\ln R_{\rm tr},
+  d\ln R_{\rm target},
+  d\ln\epsilon_\eta,
+  N_Q-1
+  \right).
+  \end{equation}
+\end{enumerate}
+Any failure of the actual branch to realize \cref{eq:part07-main-cartesian-lock,eq:part07-main-twin-slice,eq:part07-main-final-packet} is a branch-realization failure, not a failure of the algebraic compiler.
+\end{theorem}
+
+\section{One-port same-charge static kernel}
+\label{sec:part07_same_charge_rigid_mouth:one-port-same-charge-static-kernel}
+
+Stage 202 begins with the same isotropic one-port bundle already used by the grouped normalization chain.  After the stable BdG support mode is integrated out, the effective static wall stiffness is
+\begin{equation}
+\label{eq:part07-kstar}
+K_*:=K-\frac{C^2}{\varpi^2}.
+\end{equation}
+The one-port Maxwell/mixed block is controlled by
+\begin{equation}
+\label{eq:part07-static-delta-qp}
+\Delta:=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+Q:=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\qquad
+P:=\Omega_U^2G_W+RG_U,
+\end{equation}
+with static wall operator
+\begin{equation}
+\label{eq:part07-static-d0}
+D_0:=K_* - \frac{Q}{\Delta}.
+\end{equation}
+The same quantities control the outgoing prefactor:
+\begin{equation}
+\label{eq:part07-static-n0-p0}
+N_0=\frac{P^2}{\Delta^2},
+\qquad
+P_0=\frac{N_0}{D_0}.
+\end{equation}
+Thus the static same-charge audit is not independent of the quadrupole normalization program; it probes the same reduced bundle.
+
+The reduced static energy is
+\begin{equation}
+\label{eq:part07-static-energy}
+V_{\rm stat}(q,U,W;r)
+=
+\frac12K_*q^2+\frac12\Omega_U^2U^2+\frac12\Omega_W^2W^2
+-RUW-G_UqU-G_WqW-J_q(r)q-J_U(r)U-J_W(r)W.
+\end{equation}
+In matrix form,
+\begin{equation}
+\label{eq:part07-static-kred}
+V_{\rm stat}=\frac12X^T\mathcal K_{\rm red}X-J^TX,
+\qquad
+X=(q,U,W)^T,
+\end{equation}
+where
+\begin{equation}
+\label{eq:part07-static-kred-matrix}
+\mathcal K_{\rm red}
+=
+\begin{pmatrix}
+K_* & -G_U & -G_W \\
+-G_U & \Omega_U^2 & -R \\
+-G_W & -R & \Omega_W^2
+\end{pmatrix}.
+\end{equation}
+The determinant identity is
+\begin{equation}
+\label{eq:part07-static-det}
+\det\mathcal K_{\rm red}=\Delta D_0.
+\end{equation}
+The admissible static side is therefore
+\begin{equation}
+\label{eq:part07-static-admissible}
+\Omega_U^2>0,
+\qquad
+\Delta>0,
+\qquad
+D_0>0.
+\end{equation}
+On this side, minimization gives
+\begin{equation}
+\label{eq:part07-static-onshell}
+X_*(r)=\mathcal K_{\rm red}^{-1}J(r),
+\qquad
+\delta V_{\rm mix}(r)=-\frac12J(r)^T\mathcal K_{\rm red}^{-1}J(r)\le0.
+\end{equation}
+So the one-port static response is attractive or neutral at quadratic order.  But its spatial family is inherited from the source products, not newly generated.
+
+The wall--mixed cross susceptibility is especially important:
+\begin{equation}
+\label{eq:part07-static-chi-qw}
+\chi_{qW}:=(\mathcal K_{\rm red}^{-1})_{qW}
+=
+\frac{P}{\Delta D_0}.
+\end{equation}
+With \(\Lambda:=P/\Delta\), one has
+\begin{equation}
+\label{eq:part07-static-load-identities}
+N_0=\Lambda^2,
+\qquad
+P_0=\frac{\Lambda^2}{D_0},
+\qquad
+\chi_{qW}=\frac{\Lambda}{D_0},
+\qquad
+\chi_{qW}^2=\frac{P_0}{D_0}.
+\end{equation}
+So static mixed softening and outgoing quadrupole normalization are linked by the same load factor and denominator.
+
+For the primitive source profiles
+\begin{equation}
+\label{eq:part07-primitive-sources}
+\mathcal S_Q(x)=\frac1{x^3},
+\qquad
+\mathcal S_Y(x)=\frac{e^{-2\kappa x}}{x},
+\end{equation}
+and the source vector
+\begin{equation}
+\label{eq:part07-primitive-source-vector}
+J(x)=
+\begin{pmatrix}
+\beta_Q\mathcal S_Q(x)\\
+\beta_U\mathcal S_Y(x)\\
+\beta_W\mathcal S_Y(x)
+\end{pmatrix},
+\end{equation}
+the static correction is
+\begin{equation}
+\label{eq:part07-static-product-kernel}
+\widetilde{\delta V}_{\rm mix}(x)
+=-\frac12\left[
+\frac{\mathcal C_6}{x^6}
++2\mathcal C_4\frac{e^{-2\kappa x}}{x^4}
++\mathcal C_2\frac{e^{-4\kappa x}}{x^2}
+\right].
+\end{equation}
+The coefficients are susceptibility-weighted source products.  The key theorem is the family statement, not the coefficient details: no \(-1/x\), no \(-e^{-2\kappa x}/x\), and no longer-range static attraction appears inside this one-port static closure.
+
+\begin{theorem}[Static one-port square-law suppression]
+\label{thm:part07-static-square-law}
+Inside the admissible one-port static closure, the mixed bundle creates no new long-range same-charge attractive law.  For the primitive source pair \(x^{-3}\) and \(e^{-2\kappa x}/x\), it produces only the three product families in \cref{eq:part07-static-product-kernel}.  Static same-charge survival is therefore a coefficient-engineering or near-softening question on already-short-range families, not a new spatial-kernel theorem.
+\end{theorem}
+
+\claimstatus{Stage 202 is \StatusExactClosure{} within the isotropic one-port static closure.  The absence of a new long-range family is exact for the stated source families and bundle assumptions.  The magnitude of the coefficients and their realized branch values remain branch data.}
+
+\section{Linear dynamic mixed-bundle kernel}
+\label{sec:part07_same_charge_rigid_mouth:linear-dynamic-mixed-bundle-kernel}
+
+Stages 203--204 ask whether time dependence rescues what the static kernel does not provide.  The dynamic lift keeps the same three coordinates but replaces the static coefficients by
+\begin{equation}
+\label{eq:part07-dyn-coefficients}
+K_B(\omega):=K-M\omega^2-\frac{C^2}{\varpi^2-\omega^2},
+\qquad
+A(\omega):=\Omega_U^2-\omega^2,
+\qquad
+W(\omega):=\Omega_W^2-\omega^2-\Pi(\omega).
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part07-dyn-delta-q-d}
+\Delta_\Pi(\omega):=A(\omega)W(\omega)-R^2,
+\qquad
+Q_\Pi(\omega):=G_U^2W(\omega)+2G_UG_WR+G_W^2A(\omega),
+\end{equation}
+and
+\begin{equation}
+\label{eq:part07-dyn-dpi}
+D_\Pi(\omega):=K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)}.
+\end{equation}
+The dynamic stiffness matrix is
+\begin{equation}
+\label{eq:part07-dyn-kmatrix}
+\mathcal K_{\rm dyn}(\omega)=
+\begin{pmatrix}
+K_B(\omega) & -G_U & -G_W \\
+-G_U & A(\omega) & -R \\
+-G_W & -R & W(\omega)
+\end{pmatrix},
+\end{equation}
+with determinant
+\begin{equation}
+\label{eq:part07-dyn-det}
+\det\mathcal K_{\rm dyn}(\omega)=\Delta_\Pi(\omega)D_\Pi(\omega).
+\end{equation}
+The complex response functional is
+\begin{equation}
+\label{eq:part07-dyn-vmix}
+\mathfrak V_{\rm mix}(x,\omega)
+=-\frac12J(x,\omega)^T\mathcal K_{\rm dyn}(\omega)^{-1}J(x,\omega).
+\end{equation}
+Its real part is the in-phase barrier reshaping; its imaginary part is the quadrature pumping/leakage channel.
+
+For the same primitive source families as Stage 202, one gets the exact dynamic product-family theorem
+\begin{equation}
+\label{eq:part07-dyn-product-family}
+\mathfrak V_{\rm mix}(x,\omega)
+=-\frac12\left[
+\frac{\mathcal C_6(\omega)}{x^6}
++2\mathcal C_4(\omega)\frac{e^{-2\kappa x}}{x^4}
++\mathcal C_2(\omega)\frac{e^{-4\kappa x}}{x^2}
+\right].
+\end{equation}
+Thus linear monochromatic driving does not create a new radial family.  It promotes the same coefficients to complex susceptibilities.
+
+The outgoing port enters only through the \(WW\) slot.  With \(e_W=(0,0,1)^T\),
+\begin{equation}
+\label{eq:part07-outgoing-derivative}
+\partial_\Pi \mathcal K_{\rm dyn}^{-1}
+=
+\mathcal K_{\rm dyn}^{-1}e_We_W^T\mathcal K_{\rm dyn}^{-1},
+\end{equation}
+so
+\begin{equation}
+\label{eq:part07-vmix-pi-derivative}
+\partial_\Pi\mathfrak V_{\rm mix}
+=-\frac12\left[e_W^T\mathcal K_{\rm dyn}^{-1}J\right]^2.
+\end{equation}
+On the conservative off-pole branch the bracket is real.  Therefore, for a passive/outgoing port
+\begin{equation}
+\label{eq:part07-passive-pi}
+\Pi(\omega)=i\Gamma(\omega)+O(\Gamma^2),
+\qquad
+\Gamma(\omega)\ge0,
+\end{equation}
+the first correction is
+\begin{equation}
+\label{eq:part07-phase-lag-correction}
+\delta\mathfrak V_{\rm mix}^{(1)}(x,\omega)
+=-\frac{i}{2}\Gamma(\omega)\mathcal T_J(\omega)^2,
+\end{equation}
+where \(\mathcal T_J=e_W^T\mathcal K_{\rm cons}^{-1}J\).  Consequently
+\begin{equation}
+\label{eq:part07-phase-lag-no-real}
+\Re\delta\mathfrak V_{\rm mix}^{(1)}=0,
+\qquad
+\overline P_{\rm abs}^{(1)}(x,\omega)
+=\frac{\omega\Gamma(\omega)}{2}\mathcal T_J(\omega)^2\ge0.
+\end{equation}
+This is the phase-lag no-go: passive/outgoing dressing gives absorption at first order, not conservative lowering.
+
+Stage 204 then studies the only remaining dynamic escape hatch: resonant dispersive enhancement of the already-short-range families.  Near a simple conservative pole, write
+\begin{equation}
+\label{eq:part07-simple-pole-denominator}
+F_\Pi(\omega)=F_0'(\omega_*)\delta-\Pi(\omega_*)Z_*+O(\delta^2,\Pi\delta,\Pi^2),
+\qquad
+\delta=\omega-\omega_*.
+\end{equation}
+For \(\Pi(\omega_*)=i\Gamma_*\), the reduced susceptibility has the universal form
+\begin{equation}
+\label{eq:part07-breit-wigner}
+\chi_s(\omega)\approx\frac{A_*}{\delta-i\gamma_*},
+\qquad
+A_*:=\frac{\mathcal N_s(\omega_*)}{F_0'(\omega_*)},
+\qquad
+\gamma_*:=\frac{\Gamma_*Z_*}{|F_0'(\omega_*)|}.
+\end{equation}
+This gives
+\begin{equation}
+\label{eq:part07-re-im-ratio}
+|\Re\chi_*|=\frac{|A_*|}{\gamma_*}\frac{r}{1+r^2},
+\qquad
+|\Im\chi_*|=\frac{|A_*|}{\gamma_*}\frac1{1+r^2},
+\qquad
+r:=\frac{|\delta|}{\gamma_*}.
+\end{equation}
+The exact maximum of the conservative part occurs at \(r=1\), where \(|\Re\chi_*|=|\Im\chi_*|\).  If one demands a low-loss window
+\begin{equation}
+\label{eq:part07-low-loss-window}
+|\Im\chi_*|\le\eta|\Re\chi_*|,
+\qquad
+0<\eta\le1,
+\end{equation}
+then the best possible conservative magnitude is
+\begin{equation}
+\label{eq:part07-low-loss-bound}
+\sup_{|\Im\chi_*|\le\eta|\Re\chi_*|}|\Re\chi_*|
+=
+\frac{|A_*|}{\gamma_*}\frac{\eta}{1+\eta^2}.
+\end{equation}
+For a spatial family \(S_j(x)\), a necessary low-loss survival condition is
+\begin{equation}
+\label{eq:part07-linear-survival-window}
+\frac{|A_j|}{\gamma_*}\frac{\eta}{1+\eta^2}S_j(x)^2
+\ge
+2\Delta V_{\rm req}(x).
+\end{equation}
+
+\begin{theorem}[Linear dynamic no-free-lunch theorem]
+\label{thm:part07-dynamic-no-free-lunch}
+Inside the one-port linear dynamic closure, time dependence does not create a new same-charge spatial kernel.  Passive/outgoing dressing is pure phase lag at first order off pole.  Near a pole, useful conservative gain and absorptive loading obey the exact line-shape tradeoff \cref{eq:part07-re-im-ratio}.  Therefore any surviving linear dynamic corridor must be a high-quality, residue-to-linewidth enhancement of one of the already-known short-range families.
+\end{theorem}
+
+\claimstatus{Stages 203--204 are \StatusExactClosure{} for the dynamic bundle algebra, phase-lag identity, simple-pole normal form, and low-loss survival inequality.  Whether a completed branch supplies a useful pole with large enough residue-to-linewidth ratio remains \StatusOpen{}.}
+
+\section{Actual-branch prefactor ceiling}
+\label{sec:part07_same_charge_rigid_mouth:actual-branch-prefactor-ceiling}
+
+Stages 205--207 turn the general dynamic survival inequality into a concrete transported branch test.  Stage 205 chooses the finite interval \(s\in[0,L]\), the lowest N/N zero mode
+\begin{equation}
+\label{eq:part07-nn-zero-mode}
+u_0(s)=\frac1{\sqrt L},
+\end{equation}
+and the lowest D/N half-wave
+\begin{equation}
+\label{eq:part07-dn-half-wave}
+f_0(s)=\sqrt{\frac2L}\sin\frac{\pi s}{2L}.
+\end{equation}
+The overlap is
+\begin{equation}
+\label{eq:part07-primitive-kappa}
+\kappa=\int_0^Lu_0(s)f_0(s)\,ds=\frac{2\sqrt2}{\pi}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:part07-primitive-couplings}
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R.
+\end{equation}
+The conservative pole condition is a quartic in \(y=\omega^2\):
+\begin{equation}
+\label{eq:part07-quartic-pole}
+\begin{aligned}
+F(y)=&\left((K-My)(\varpi^2-y)-C^2\right)
+\left((\Omega_U^2-y)(\Omega_W^2-y)-R^2\right)\\
+&-(\varpi^2-y)
+\left(G_U^2(\Omega_W^2-y)+2G_UG_WR+G_W^2(\Omega_U^2-y)\right).
+\end{aligned}
+\end{equation}
+So the primitive finite-throat branch has four conservative poles in the generic admissible case.
+
+For a simple wall-like pole with the outgoing quadrupole port
+\begin{equation}
+\label{eq:part07-outgoing-gamma5}
+\Pi_{\rm out}(\omega)=i\Gamma_5\omega^5,
+\qquad
+\Gamma_5=\frac{a^5}{27c_s^5},
+\end{equation}
+the residue/linewidth figure for the pure quadrupolar same-charge family simplifies to
+\begin{equation}
+\label{eq:part07-residue-linewidth-primitive}
+\mathcal R_{Q,*}
+=
+\frac{|A_{Q,*}|}{\gamma_*}
+=
+\frac{27c_s^5}{a^5\omega_*^5N(\omega_*)}.
+\end{equation}
+The derivative of the pole cancels; the figure is controlled by the pole frequency and outgoing transfer factor.
+
+Stage 206 then imposes the isotropic one-pole target surface.  On the isotropic branch,
+\begin{equation}
+\label{eq:part07-d-coefficients-isotropic}
+D_0=K-B_0-Z_0,
+\qquad
+D_2=-(M+B_2+Z_2),
+\qquad
+D_4=-(B_4+Z_4).
+\end{equation}
+The one-pole identity and outgoing-normalization condition solve for the same wall stiffness.  Their equality is exactly
+\begin{equation}
+\label{eq:part07-compatibility-equation}
+\frac{N_0}{P_{0,{\rm target}}}
+=
+\frac{3(M+B_2+Z_2)^2}{B_4+Z_4}.
+\end{equation}
+Equivalently, the primitive branch induces the compatible target
+\begin{equation}
+\label{eq:part07-compatible-target}
+P_{0,{\rm target,compat}}
+=
+\frac{N_0(B_4+Z_4)}{3(M+B_2+Z_2)^2}.
+\end{equation}
+This is the exact compatibility surface from the conservative one-pole side to the outgoing-normalization side.
+
+Stage 207 transports the finite dynamic survival windows from the primitive compatibility family into the actual branch packet.  The final 5PN branch packet contains
+\begin{equation}
+\label{eq:part07-branch-packet-prefactor}
+\Delta_{\rm branch}
+=(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
+\end{equation}
+where
+\begin{equation}
+\label{eq:part07-delta-norm}
+\Delta_{\rm norm}=\hat m_0^{\,2}\bar P_0-T_{\rm quad},
+\qquad
+T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+\end{equation}
+Hence
+\begin{equation}
+\label{eq:part07-pbar-compiler}
+\bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}.
+\end{equation}
+The grouped inverse map gives
+\begin{equation}
+\label{eq:part07-prefactor-lanes}
+P_{20}=\bar P_0+4a_{P_0},
+\qquad
+P_{21}=\bar P_0-a_{P_0}+b_{P_0},
+\qquad
+P_{22}=\bar P_0-a_{P_0}-b_{P_0}.
+\end{equation}
+For a ceiling \(P_{\rm crit}\), the all-lane transported condition is
+\begin{equation}
+\label{eq:part07-max-prefactor-ceiling}
+\max\{P_{20},P_{21},P_{22}\}\le P_{\rm crit}.
+\end{equation}
+On the weak-axisymmetric branch,
+\begin{equation}
+\label{eq:part07-lambda-signature}
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1,
+\end{equation}
+and
+\begin{equation}
+\label{eq:part07-xi-prefactor-form}
+P_A=\bar P_0\bigl(1+\varepsilon\lambda_A\Xi_1\bigr),
+\qquad
+\Xi_1=\frac{P_1}{P_0}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:part07-ap0-bp0-xi}
+a_{P_0}=\frac{\varepsilon\bar P_0\Xi_1}{4},
+\qquad
+b_{P_0}=\frac{3\varepsilon\bar P_0\Xi_1}{4},
+\end{equation}
+and the all-lane ceiling collapses to
+\begin{equation}
+\label{eq:part07-xi-prefactor-ceiling}
+\bar P_0\bigl(1+|\varepsilon\Xi_1|\bigr)\le P_{\rm crit}.
+\end{equation}
+Substituting \cref{eq:part07-pbar-compiler} gives the actual-branch form already stated in \cref{eq:part07-main-xi-ceiling}.
+
+\begin{theorem}[Transported actual-branch prefactor ceiling]
+\label{thm:part07-actual-branch-ceiling}
+Inside the transported primitive-family window closure, an actual weak-axisymmetric branch clears the robust all-lane ceiling only if
+\begin{equation}
+\label{eq:part07-thm-ceiling}
+\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+\bigl(1+|\varepsilon\Xi_1|\bigr)
+\le P_{\rm crit}.
+\end{equation}
+If the branch is exactly calibrated, \(\Delta_{\rm norm}=0\), the same condition becomes a lower bound on the source-map factor,
+\begin{equation}
+\label{eq:part07-source-map-bound}
+\hat m_0^{\,2}
+\ge
+\frac{T_{\rm quad}(1+|\varepsilon\Xi_1|)}{P_{\rm crit}}.
+\end{equation}
+\end{theorem}
+
+\claimstatus{Stages 205--207 are exact for the primitive branch formulas, compatibility surface, and packet compiler.  Pole censuses, compatibility-point values, and numerical headroom budgets are \StatusNumerical{}.  The use of primitive-family ceilings as actual-branch sufficient conditions is a transported reduced test, not an unconditional theorem of the full PDE.}
+
+\section{Strict 5PN even-gate package}
+\label{sec:part07_same_charge_rigid_mouth:strict-5-pn-even-gate-package}
+
+Stages 208--209 insert the weak-axisymmetric prefactor into the stricter first-order 5PN package.  At first order write
+\begin{equation}
+\label{eq:part07-first-order-d-n}
+D_A=D_0+\varepsilon\lambda_A D_{01}+O(\varepsilon^2),
+\qquad
+N_A=N_0+\varepsilon\lambda_A N_{01}+O(\varepsilon^2).
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part07-xi-load}
+\Xi_{\rm load}
+=
+\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}
+=
+\frac{P_1}{P_0}
+=
+\Xi_1.
+\end{equation}
+The stricter imported first-order even gates are
+\begin{equation}
+\label{eq:part07-even-gates}
+K_1:=D_{21}+\frac{D_{01}}{9},
+\qquad
+H_{\rm even}:=D_{41}-\frac23D_{21}-\frac{D_{01}}{27}.
+\end{equation}
+Thus the same scalar \(\Xi_1\) that controls the same-charge prefactor ceiling is only one member of the strict first-order package.  A branch must also pass the conservative even gates if it is to remain on the imported 5PN one-pole/hidden-even structure.
+
+Stage 208 first imposes a weaker compensation surface that preserves the conservative grouped response on the explicit branch.  It then builds a primitive logarithmic-slope compiler from
+\begin{equation}
+\label{eq:part07-primitive-log-slopes}
+(x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
+\end{equation}
+to
+\begin{equation}
+\label{eq:part07-primitive-compiler-output}
+D_{01},
+\qquad
+D_{21},
+\qquad
+D_{41},
+\qquad
+N_{01},
+\qquad
+\Xi_1.
+\end{equation}
+The first sieve shows that wall-only and pure-BdG-only mechanisms do not supply the desired nontrivial same-charge load once the conservative compensation is enforced.  A mixed-sector family survives.
+
+Stage 209 imports \cref{eq:part07-even-gates} and tightens the survivor.  The sharpest surviving subcorridor has
+\begin{equation}
+\label{eq:part07-pure-transfer-corridor-basic}
+D_{01}=D_{21}=D_{41}=0,
+\qquad
+\Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0}.
+\end{equation}
+In words: after the strict even gates and conservative-shape preservation are imposed on the noncanonical compatibility branch, the remaining same-charge effect is not generic mixed anisotropy.  It is pure outgoing-transfer enhancement with the conservative one-pole bundle frozen at first order.
+
+\begin{theorem}[Strict first-order package and pure-transfer survivor]
+\label{thm:part07-strict-even-package}
+Inside the imported first-order 5PN package, the same-charge load scalar is exactly \(\Xi_{\rm load}=P_1/P_0\).  Passing the strict even gates requires controlling \(K_1\) and \(H_{\rm even}\) in addition to \(\Xi_{\rm load}\).  On the explicit compatibility branch with Stage-208 conservative-shape preservation, the sharp surviving subcorridor is the pure-transfer corridor \cref{eq:part07-pure-transfer-corridor-basic}.
+\end{theorem}
+
+\claimstatus{Stages 208--209 are \StatusExactClosure{} for the first-order compilers and even-gate identities.  The mechanism sieve is exact within the primitive slope space, while the actual PDE realization of the pure-transfer corridor is \StatusOpen{}.}
+
+\section{Pure-transfer corridor and co-loading no-go}
+\label{sec:part07_same_charge_rigid_mouth:pure-transfer-corridor-and-co-loading-no-go}
+
+Stages 210--211 analyze the pure-transfer survivor.  Define the outgoing-load factor
+\begin{equation}
+\label{eq:part07-load-factor-lambda}
+\Lambda:=\frac{P}{\Delta}.
+\end{equation}
+In the pure-transfer corridor,
+\begin{equation}
+\label{eq:part07-xi-lambda}
+\Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta}=2\delta\ln\Lambda.
+\end{equation}
+The one-port factorization is
+\begin{equation}
+\label{eq:part07-lambda-factorization}
+\Lambda
+=
+\frac{G_W}{\Omega_W^2}\frac{1+I}{1-H},
+\qquad
+I:=\frac{RG_U}{\Omega_U^2G_W},
+\qquad
+H:=\frac{R^2}{\Omega_U^2\Omega_W^2}.
+\end{equation}
+The three pieces are: the raw mixed leg \(G_W/\Omega_W^2\), the interference ratio \(I\), and the hybridization/blocking ratio \(H\).
+
+The outgoing-rigidity sieve asks which of those pieces can remain fixed while \(\Xi_1\) survives.  If both interference and hybridization are rigid,
+\begin{equation}
+\label{eq:part07-co-loading-no-go-hypothesis}
+\delta\ln I=0,
+\qquad
+\delta\ln H=0,
+\end{equation}
+then the simultaneous pure-transfer and conservative constraints leave only the trivial pure-transfer drift on the concrete branch.  This is the first co-loading no-go: the same-charge effect cannot be reduced to a naive mixed-leg slogan under both rigidities.
+
+Stage 211 then splits the pure-transfer slope into numerator and denominator pieces:
+\begin{equation}
+\label{eq:part07-numerator-denominator-split}
+\Xi_1=2(\pi_1-\delta_1),
+\qquad
+\pi_1:=\frac{P_{01}}{P},
+\qquad
+\delta_1:=\frac{\Delta_{01}}{\Delta}.
+\end{equation}
+The exact rigid-subcorridor theorem is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item pure-transfer plus \(\pi_1=0\) leaves a one-dimensional numerator-rigid survivor;
+  \item pure-transfer plus \(\delta_1=0\) leaves a one-dimensional denominator-rigid survivor;
+  \item imposing both \(\pi_1=0\) and \(\delta_1=0\) kills the corridor.
+\end{enumerate}
+Both one-dimensional survivors pass the first wall-like dynamic-window audit on the explicit compatibility point.  The first active ceiling remains the transported static \(|\varepsilon\Xi_1|\) budget, not the dynamic wall-like window.
+
+\begin{theorem}[Pure-transfer and rigidity sieve]
+\label{thm:part07-pure-transfer-sieve}
+Inside the strict pure-transfer corridor, the same-charge scalar is the logarithmic outgoing-load slope \(\Xi_1=2\delta\ln\Lambda\).  The factorization \cref{eq:part07-lambda-factorization} separates raw mixed-leg, interference, and hybridization contributions.  Simultaneous interference and hybridization rigidity kills the nontrivial pure-transfer drift on the concrete compatibility branch, while either numerator-rigid or denominator-rigid splitting alone leaves a one-dimensional survivor.
+\end{theorem}
+
+\claimstatus{Stages 210--211 are \StatusExactClosure{} for the pure-transfer identities and rigidity splits.  The branch-specific dynamic-window survival statements are \StatusNumerical{} insertions into exact ceiling formulas.}
+
+\section{Selected-branch dynamic-window compiler}
+\label{sec:part07_same_charge_rigid_mouth:selected-branch-dynamic-window-compiler}
+
+Stages 212--215 replace the free numerator/denominator split by the selected-branch softening-depth language and then pull the result back to physical continuum coordinates.
+
+The selected normalization product is
+\begin{equation}
+\label{eq:part07-selected-nminus}
+N_-(x)=\frac{\beta_0s_-(x)^2}{\kappa_0^2(A-x)},
+\qquad
+0\le x<A,
+\end{equation}
+with selected overlap
+\begin{equation}
+\label{eq:part07-selected-sminus}
+s_-(x)=
+\frac{\left[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\right]^2}
+{\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2}.
+\end{equation}
+With dimensionless variables
+\begin{equation}
+\label{eq:part07-xi-delta-selected}
+\xi:=\frac{x}{A},
+\qquad
+\delta:=\frac{\Delta K_{\rm ax}}{A},
+\end{equation}
+Stage 212 defines a log-slope classifier \(\mathcal R_{ND}\) that compares the numerator-like and denominator-like content of the selected branch.  The exact threshold
+\begin{equation}
+\label{eq:part07-delta-eight-ninths}
+\delta=\frac89
+\end{equation}
+separates always-denominator selected branches from branches that begin numerator-dominant.  The selected branch is never literally either rigid Stage-211 subcorridor; it is an exact co-loading product.  However it is always denominator-like near softening, and it is denominator-like on the entire stable branch for \(\delta\ge8/9\).
+
+Stage 213 uses the classifier to mix the carried numerator-rigid and denominator-rigid dynamic data.  The share weights are
+\begin{equation}
+\label{eq:part07-share-weights}
+w_{\rm num}=\frac{\mathcal R_{ND}}{1+\mathcal R_{ND}},
+\qquad
+w_{\rm den}=\frac{1}{1+\mathcal R_{ND}}.
+\end{equation}
+The dynamic sign theorem says the upper wall-like pole always worsens, while the lower wall-like pole flips sign only at one classifier threshold.  Most importantly, the selected-branch dynamic ceilings are everywhere weaker than the universal transported static ceilings.  Therefore the first kill condition remains the static \(|\varepsilon\Xi_1|\) budget.
+
+Stage 214 pulls \(\mathcal R_{ND}\) back through the continuum placement map.  The physical classifier is
+\begin{equation}
+\label{eq:part07-physical-classifier}
+\mathcal R_{\rm phys}(\delta,R_{\rm target})
+:=
+\mathcal R_{ND}\bigl(\xi_{\rm req}(\delta,R_{\rm target}),\delta\bigr),
+\end{equation}
+where \(\xi_{\rm req}\) is the stable solution of
+\begin{equation}
+\label{eq:part07-f-equals-rtarget}
+F(\xi,\delta)=R_{\rm target}.
+\end{equation}
+The monotonicity theorem is
+\begin{equation}
+\label{eq:part07-rphys-monotonic}
+\partial_{R_{\rm target}}\mathcal R_{\rm phys}<0.
+\end{equation}
+So larger normalization demand pushes the physical selected branch in the denominator-like and dynamically safer direction.  The static-first theorem survives the pullback.
+
+Stage 215 injects the known 5PN Family-1 support/source data.  The selected passive/outgoing branch requires
+\begin{equation}
+\label{eq:part07-zeta-req-rho-alpha}
+\zeta_{\rm req}=\frac13,
+\qquad
+\rho_{\alpha}^{\rm req}=\frac43.
+\end{equation}
+The numerically located Family-1 support/source branch returns \(\zeta_{\rm phys}\approx2.4675\) for the carried wall-depth extractions, so the support/source side overshoots the canonical demand by a large margin.  This does not prove same-charge success; it says the first active unresolved bottleneck stays at the actual PDE-selected static orbit-lock/coherent placement point.
+
+\begin{theorem}[Selected-branch static-first theorem]
+\label{thm:part07-selected-static-first}
+Inside the selected-branch dynamic-window compiler, the wall-like dynamic window does not become the first same-charge kill condition.  After continuum pullback and known support/source injection, the support/source side is non-bottlenecked in the carried data.  The live unresolved test remains the actual static orbit-lock/coherent placement packet.
+\end{theorem}
+
+\claimstatus{Stages 212--214 are \StatusExactClosure{} for the selected-branch classifier, share compiler, monotonic pullback, and static-first theorem.  Stage 215 is \StatusNumerical{} for the injected Family-1 support/source roots and margins.  The actual PDE-selected static placement remains \StatusOpen{}.}
+
+\section{Rigid-mouth orbit-lock compiler}
+\label{sec:part07_same_charge_rigid_mouth:rigid-mouth-orbit-lock-compiler}
+
+Stages 216--219 translate the surviving static placement problem into rigid-mouth packet language.  The first firewall is that mouth rigidity and operator rigidity are not the same statement.  Rigid-mouth or tracking lock is represented by
+\begin{equation}
+\label{eq:part07-tracking-lock}
+\delta\ln R_{\rm tr}=0,
+\end{equation}
+whereas \(D_{01}=0\) is the stronger algebraic statement that the effective grouped operator does not drift at first order.
+
+The direct finite branch observables are
+\begin{equation}
+\label{eq:part07-direct-observables}
+(R_{\rm tr},R_{\rm target},\epsilon_\eta).
+\end{equation}
+Relative to a reference branch, the finite quotient coordinates include
+\begin{equation}
+\label{eq:part07-qtr-qnt-qeta-finite}
+q_{\rm tr}=-C_*\ln\frac{R_{\rm tr}}{R_{\rm tr,ref}},
+\end{equation}
+\begin{equation}
+\label{eq:part07-qnt-finite}
+q_{\rm nt}=B_*\ln\frac{R_{\rm tr}}{R_{\rm tr,ref}}
++
+\ln\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}
+-
+\ln\frac{R_{\rm target}}{R_{\rm target,ref}},
+\end{equation}
+\begin{equation}
+\label{eq:part07-qeta-finite}
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+\end{equation}
+At first order, Stage 217 gives the direct compiler
+\begin{equation}
+\label{eq:part07-direct-first-order}
+\Theta_1=\delta\ln R_{\rm tr},
+\qquad
+\Xi_1=-\delta\ln R_{\rm target}-c_\eta\delta\ln\epsilon_\eta,
+\qquad
+\mathcal R_1=\delta\ln R_{\rm target},
+\end{equation}
+with
+\begin{equation}
+\label{eq:part07-ceta}
+c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+\end{equation}
+On the rigid-mouth slice, \(q_{\rm tr}=0\), so the static scalar is
+\begin{equation}
+\label{eq:part07-rigid-static-scalar}
+\Xi_1=-R_1-c_\eta E_1,
+\qquad
+R_1:=\delta\ln R_{\rm target},
+\qquad
+E_1:=\delta\ln\epsilon_\eta.
+\end{equation}
+The two-observable static gate is therefore a condition on \((R_1,E_1)\), not on support/source amplitude.
+
+Stage 218 makes the packet structure exact.  Define
+\begin{equation}
+\label{eq:part07-rigid-mouth-direct-vector}
+\mathbf x_{\rm rm}:=\begin{pmatrix}R_1\\E_1\end{pmatrix},
+\qquad
+\mathbf q_{\rm rm}:=\begin{pmatrix}q_{\rm nt}\\q_\eta\end{pmatrix}
+=\begin{pmatrix}\Xi_1\\E_1\end{pmatrix}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part07-mrm}
+\mathbf q_{\rm rm}=M_{\rm rm}\mathbf x_{\rm rm},
+\qquad
+M_{\rm rm}:=\begin{pmatrix}-1&-c_\eta\\0&1\end{pmatrix},
+\qquad
+M_{\rm rm}^2=I_2.
+\end{equation}
+The direct-space projectors are
+\begin{equation}
+\label{eq:part07-direct-projectors}
+P_{\rm nt}=\begin{pmatrix}1&c_\eta\\0&0\end{pmatrix},
+\qquad
+P_\eta=\begin{pmatrix}0&-c_\eta\\0&1\end{pmatrix}.
+\end{equation}
+The static strip \(\Xi_1=0\) is codimension one.  Full rigid-mouth orbit lock is codimension two:
+\begin{equation}
+\label{eq:part07-rm-codim-two}
+q_{\rm nt}=0,
+\qquad
+q_\eta=0
+\quad\Longleftrightarrow\quad
+R_1=0,
+\qquad
+E_1=0.
+\end{equation}
+The static-blind dressing line is
+\begin{equation}
+\label{eq:part07-static-blind-line}
+\Xi_1=0
+\quad\Longleftrightarrow\quad
+\mathbf x_{\rm rm}=\begin{pmatrix}-c_\eta q_\eta\\q_\eta\end{pmatrix}.
+\end{equation}
+Thus clearing the first static same-charge ceiling need not make the true orbit-failure amplitude small.
+
+Stage 219 identifies the microscopic carrier.  On the rigid-mouth slice the dependent correction is
+\begin{equation}
+\label{eq:part07-dependent-correction-q}
+\begin{pmatrix}\Delta_T^{(q)}\\\Delta_{K_\eta}^{(q)}\\\Delta_\mu^{(q)}\end{pmatrix}
+=
+\begin{pmatrix}0\\-q_\eta\\q_{\rm nt}-q_\eta\end{pmatrix}.
+\end{equation}
+The static-blind line \(q_{\rm nt}=0\) maps to the equal-drift ray
+\begin{equation}
+\label{eq:part07-equal-drift-ray}
+\begin{pmatrix}\Delta_T\\\Delta_{K_\eta}\\\Delta_\mu\end{pmatrix}
+=
+-q_\eta\begin{pmatrix}0\\1\\1\end{pmatrix}.
+\end{equation}
+So after the static strip is cleared, the remaining orbit defect is not generic throat motion.  It is one scalar equal-drift \(K_\eta^{(\rm eff)}\)--\(\mu_W\) dressing amplitude.
+
+\begin{theorem}[Rigid-mouth packet and dependent-plane theorem]
+\label{thm:part07-rigid-mouth-packet}
+On the rigid-mouth slice, the first static same-charge gate tests only \(q_{\rm nt}=\Xi_1\).  The dressing coordinate \(q_\eta\) is invisible to that gate and maps microscopically to the equal-drift ray \(-q_\eta(0,1,1)^T\) in the dependent triple.  Therefore the static gate is necessary but not sufficient for orbit lock.
+\end{theorem}
+
+\claimstatus{Stages 216--219 are \StatusExactClosure{} for the rigid-mouth packet compilers and projectors.  The physical assumption that the actual branch is rigid-mouth/track-locked, and the realized value of \(q_\eta\), remain \StatusOpen{} branch data.}
+
+\section{Physical logarithmic chart \texorpdfstring{\((U,V)\)}{(U,V)}}
+\label{sec:part07_same_charge_rigid_mouth:physical-logarithmic-chart-u-v}
+
+Stages 220--222 diagonalize the rigid-mouth packet in physical branch variables.  Stage 220 begins from the finite rigid-mouth packet
+\begin{equation}
+\label{eq:part07-rm-finite-packet}
+q_{\rm nt}=\ln\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}
+-
+\ln\frac{R_{\rm target}}{R_{\rm target,ref}},
+\qquad
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+\end{equation}
+The first static gate \(q_{\rm nt}=0\) is the finite curve
+\begin{equation}
+\label{eq:part07-static-blind-curve}
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
+\end{equation}
+Parameterizing by \(q_\eta\),
+\begin{equation}
+\label{eq:part07-static-blind-curve-qeta}
+\epsilon_\eta=\epsilon_{\eta,\rm ref}e^{q_\eta},
+\qquad
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^{q_\eta}}{1-\epsilon_{\eta,\rm ref}}.
+\end{equation}
+Conversely, once the static gate is cleared,
+\begin{equation}
+\label{eq:part07-qeta-from-rtarget}
+q_\eta=
+\ln\left(
+\frac{1-(1-\epsilon_{\eta,\rm ref})R_{\rm target}/R_{\rm target,ref}}
+{\epsilon_{\eta,\rm ref}}
+\right).
+\end{equation}
+The microscopic extractor is
+\begin{equation}
+\label{eq:part07-qeta-micro-finite}
+q_\eta
+=2\ln\frac{c_{\eta U}}{c_{\eta U,\rm ref}}
+-
+\ln\frac{K_U}{K_{U,\rm ref}}
+-
+\ln\frac{K_\eta^{(\rm eff)}}{K_{\eta,\rm ref}^{(\rm eff)}}.
+\end{equation}
+At first order,
+\begin{equation}
+\label{eq:part07-qeta-first-order}
+q_\eta=2c_1-\kappa_U-\kappa_\eta.
+\end{equation}
+The dressing coordinate is support-blind:
+\begin{equation}
+\label{eq:part07-qeta-support-blind}
+\partial_\zeta q_\eta=0,
+\qquad
+\partial_{M_{\rm tr}}q_\eta=0.
+\end{equation}
+
+Stage 221 then uses the coherent transfer-shape identity
+\begin{equation}
+\label{eq:part07-transfer-shape-identity}
+R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta).
+\end{equation}
+This converts the same-charge packet into physical variables.  Relative to a reference branch,
+\begin{equation}
+\label{eq:part07-qnt-transfer-shape}
+q_{\rm nt}+\frac{B_*}{C_*}q_{\rm tr}
+=
+\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}.
+\end{equation}
+On the rigid-mouth slice, \(q_{\rm tr}=0\), so
+\begin{equation}
+\label{eq:part07-rm-qnt-qeta-transfer}
+q_{\rm nt}=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\qquad
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+\end{equation}
+Thus the first static same-charge gate is exactly transfer-shape rigidity:
+\begin{equation}
+\label{eq:part07-transfer-shape-rigidity}
+q_{\rm nt}=0
+\quad\Longleftrightarrow\quad
+\mathcal T^2=\mathcal T_{\rm ref}^2.
+\end{equation}
+The post-static gate is dressing rigidity:
+\begin{equation}
+\label{eq:part07-dressing-rigidity}
+q_\eta=0
+\quad\Longleftrightarrow\quad
+\epsilon_\eta=\epsilon_{\eta,\rm ref}.
+\end{equation}
+
+Stage 222 packages this in the Cartesian variables
+\begin{equation}
+\label{eq:part07-uv-def}
+U:=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\qquad
+V:=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part07-rm-packet-uv}
+q_{\rm nt}=U,
+\qquad
+q_\eta=V.
+\end{equation}
+The target ratio factorizes as
+\begin{equation}
+\label{eq:part07-rtarget-uv}
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}e^{-U}.
+\end{equation}
+The dependent microscopic correction is
+\begin{equation}
+\label{eq:part07-uv-dependent-correction}
+\begin{pmatrix}\Delta_T\\\Delta_{K_\eta}\\\Delta_\mu\end{pmatrix}
+=
+\begin{pmatrix}0\\-V\\U-V\end{pmatrix}.
+\end{equation}
+A left inverse reads
+\begin{equation}
+\label{eq:part07-uv-left-inverse}
+U=\Delta_\mu-\Delta_{K_\eta},
+\qquad
+V=-\Delta_{K_\eta}.
+\end{equation}
+The pure transfer-shape axis has image
+\begin{equation}
+\label{eq:part07-pure-transfer-image}
+(U,0)
+\longmapsto
+(0,0,U),
+\end{equation}
+so clearing the static defect changes only \(\mu_W\).  The pure dressing axis has image
+\begin{equation}
+\label{eq:part07-pure-dressing-image}
+(0,V)
+\longmapsto
+-V(0,1,1),
+\end{equation}
+the equal \(K_\eta^{(\rm eff)}\)--\(\mu_W\) ray.  Therefore full orbit lock is
+\begin{equation}
+\label{eq:part07-uv-orbit-lock}
+U=0,
+\qquad
+V=0.
+\end{equation}
+At first order,
+\begin{equation}
+\label{eq:part07-uv-first-order-dependent}
+\begin{pmatrix}\Delta_T\\\Delta_{K_\eta}\\\Delta_\mu\end{pmatrix}^{(1)}
+=
+\begin{pmatrix}
+0\\
+-\delta\ln\epsilon_\eta\\
+\delta\ln\mathcal T^2-\delta\ln\epsilon_\eta
+\end{pmatrix}.
+\end{equation}
+
+\begin{theorem}[Rigid-mouth Cartesian orbit-lock theorem]
+\label{thm:part07-cartesian-orbit-lock}
+On the rigid-mouth actual branch, the physical logarithmic coordinates \((U,V)\) are the finite quotient packet.  The first static gate is \(U=0\).  The post-static dressing gate is \(V=0\).  The full orbit-lock point is the Cartesian codimension-two condition \((U,V)=(0,0)\), equivalently \(\mathcal T^2=\mathcal T_{\rm ref}^2\) and \(\epsilon_\eta=\epsilon_{\eta,\rm ref}\).
+\end{theorem}
+
+\claimstatus{Stages 220--222 are \StatusExactClosure{} for the finite static-blind curve, physical transfer-shape factorization, support-blindness, Cartesian chart, dependent correction, and orbit-lock theorem.  Whether the actual branch has \(U=V=0\) remains \StatusOpen{}.}
+
+\section{Selected twin-support branch and placement}
+\label{sec:part07_same_charge_rigid_mouth:selected-twin-support-branch-and-placement}
+
+Stages 223--225 close the selected support side and attach it to the actual branch packet.  Stage 223 begins with the selected product identities
+\begin{equation}
+\label{eq:part07-selected-product-identities}
+\Pi_{\rm tr}=\frac{N_Q^{(\rm target)}}{\beta_0}\alpha_{\rm req},
+\qquad
+C_{\rm mix}=\frac{N_Q^{(\rm target)}}{\beta_0}\alpha_{\rm mix}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:part07-rho-alpha-ratio}
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}
+=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+=:\rho_\alpha.
+\end{equation}
+For the minimal isotropic conservative quadrupole precursor
+\begin{equation}
+\label{eq:part07-minimal-quadrupole-precursor}
+Y_Q^{\rm cons}(\omega)
+=c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2},
+\qquad
+c_0=\frac34,
+\qquad
+c_1=\frac14,
+\qquad
+\Omega_Q=\frac{3c_s}{2a},
+\end{equation}
+the contact/pole inverse compiler gives
+\begin{equation}
+\label{eq:part07-rho-alpha-zeta-req}
+\rho_\alpha=\frac1{c_0}=\frac43,
+\qquad
+\zeta_{\rm req}:=\rho_\alpha-1=\frac13.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:part07-pi-tr-four-thirds}
+\Pi_{\rm tr}=\frac43 C_{\rm mix}.
+\end{equation}
+With
+\begin{equation}
+\label{eq:part07-varrho-selector}
+\varrho:=\frac{\pi^2\Pi_{\rm tr}}{16\Lambda},
+\qquad
+C_{\rm mix}=\frac{8\Lambda(1-\epsilon_*)}{\pi^2},
+\end{equation}
+this becomes
+\begin{equation}
+\label{eq:part07-varrho-selected}
+\varrho=\frac{2(1-\epsilon_*)}{3},
+\qquad
+S_{\rm req}=\frac43.
+\end{equation}
+Thus the selected branch lies strictly in the symmetric lowest-twin window:
+\begin{equation}
+\label{eq:part07-twin-window}
+C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+\end{equation}
+
+Stage 224 turns this into a primitive ranking phase diagram.  The selected curve is
+\begin{equation}
+\label{eq:part07-selected-curve}
+\epsilon_* = 1-\frac{3\varrho}{2},
+\qquad
+\sigma=\frac{4}{3\varrho}-2,
+\qquad
+0<\varrho<\frac23.
+\end{equation}
+For the constructive coherent parameter \(0<\beta<2/11\), only two crossover thresholds survive:
+\begin{equation}
+\label{eq:part07-ranking-thresholds}
+\varrho_{W\Lambda}
+=
+\frac{2(1+\beta^2)}{3(2+\beta^2)},
+\qquad
+\varrho_{U\Lambda}
+=
+\frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+\end{equation}
+They obey
+\begin{equation}
+\label{eq:part07-threshold-order}
+0<\varrho_{W\Lambda}<\varrho_{U\Lambda}<\frac23.
+\end{equation}
+The ranking theorem is
+\begin{equation}
+\label{eq:part07-ranking-region-i}
+0<\varrho<\varrho_{W\Lambda}
+\quad\Longrightarrow\quad
+q_\chi>q_Z>q_\Lambda>q_W>|q_U|,
+\end{equation}
+\begin{equation}
+\label{eq:part07-ranking-region-ii}
+\varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda}
+\quad\Longrightarrow\quad
+q_\chi>q_Z>q_W>q_\Lambda>|q_U|,
+\end{equation}
+\begin{equation}
+\label{eq:part07-ranking-region-iii}
+\varrho_{U\Lambda}<\varrho<\frac23
+\quad\Longrightarrow\quad
+q_\chi>q_Z>q_W>|q_U|>q_\Lambda.
+\end{equation}
+So the selected branch is dominated by interference/overlap/wall-blocking/outgoing-scale corrections, not by a large split-\(U\) correction.
+
+Stage 225 finally places the actual coherent branch on this curve.  The selected physical support coordinate is
+\begin{equation}
+\label{eq:part07-epsilon-physical}
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:part07-varrho-phys-sigma-phys}
+\varrho_{\rm phys}=\frac23(1-\epsilon),
+\qquad
+\sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}
+=\frac{4}{3\varrho_{\rm phys}}-2.
+\end{equation}
+The coherent placement observables are
+\begin{equation}
+\label{eq:part07-rtr-coherent}
+R_{\rm tr}
+=
+\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
+\end{equation}
+\begin{equation}
+\label{eq:part07-rtarget-coherent}
+R_{\rm target}
+=
+\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+\end{equation}
+together with \(\epsilon_\eta\).  The finite coherent orbit packet in physical placement variables is
+\begin{equation}
+\label{eq:part07-stage225-qtr}
+q_{\rm tr}
+=(1+\delta_{U,*})\ln\frac{\chi_0}{\chi_{0,\rm ref}}
++(1+\chi_{0,*})\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+\end{equation}
+\begin{equation}
+\label{eq:part07-stage225-qnt}
+q_{\rm nt}
+=
+\ln\frac{Z_W}{Z_{W,\rm ref}}
+-
+\ln\frac{\Lambda}{\Lambda_{\rm ref}}
++E_*\ln\frac{\epsilon_W}{\epsilon_{W,\rm ref}}
+-F_*\ln\frac{\delta_U}{\delta_{U,\rm ref}},
+\end{equation}
+\begin{equation}
+\label{eq:part07-stage225-qeta}
+q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}.
+\end{equation}
+The infinitesimal orbit-lock conditions are equivalently
+\begin{equation}
+\label{eq:part07-stage225-orbit-lock-inf}
+d\ln R_{\rm tr}=0,
+\qquad
+d\ln R_{\rm target}=0,
+\qquad
+d\ln\epsilon_\eta=0.
+\end{equation}
+The outgoing finish line is separate:
+\begin{equation}
+\label{eq:part07-stage225-nq}
+N_Q=1,
+\qquad
+\text{or equivalently }\chi_Q=1\text{ on the natural source-map branch.}
+\end{equation}
+The practical front-end packet to be returned by the completed PDE is \cref{eq:part07-main-final-packet}; if the support lane is tracked separately, the support packet is
+\begin{equation}
+\label{eq:part07-stage225-support-packet}
+\left(\zeta,
+M_{\rm mix},
+S(\zeta;\epsilon),
+M_{\rm tr}
+\right),
+\qquad
+S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}.
+\end{equation}
+The support variable \(\zeta\) affects the support baseline but not the orbit packet:
+\begin{equation}
+\label{eq:part07-zeta-orbit-blind}
+\partial_\zeta R_{\rm tr}
+=
+\partial_\zeta R_{\rm target}
+=
+\partial_\zeta\epsilon_\eta
+=
+\partial_\zeta q_{\rm tr}
+=
+\partial_\zeta q_{\rm nt}
+=
+\partial_\zeta q_\eta
+=0.
+\end{equation}
+
+\begin{theorem}[Selected twin-support placement and orbit-packet split]
+\label{thm:part07-selected-twin-placement}
+Inside the selected passive/outgoing branch, the support loading ratio is fixed to \(\rho_\alpha=4/3\), so the branch lies on the symmetric lowest-twin support slice.  The realized coordinate on that slice is \(\varrho_{\rm phys}=2(1-\epsilon)/3\).  The orbit-lock packet is determined by \((\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda)\) and is exactly blind to the support ratio \(\zeta\).  Therefore support compensation and orbit lock are separate tests that must both be passed by the same completed moving-throat branch.
+\end{theorem}
+
+\claimstatus{Stages 223--225 are \StatusExactClosure{} for the support-ratio extraction, selected curve, primitive ranking thresholds, placement formulas, and support/orbit split.  Actual placement of the nonlinear branch and the final value of \(N_Q-1\) remain \StatusOpen{} unless supplied by a completed PDE calculation.}
+
+\section{What Part VII does and does not prove}
+\label{sec:part07-what-it-does-not-prove}
+
+Part VII proves that the same-charge mixed sector has a much sharper reduced structure than the older placeholder language suggested.  It proves, within the stated closures, that the one-port static mixed bundle cannot be cited as a source of a new long-range attraction; that the linear dynamic mixed bundle cannot be cited as a new radial kernel class; that resonant help is constrained by an exact dispersive/absorptive tradeoff; that the actual weak-axisymmetric branch test is the transported scalar packet \((\Delta_{\rm norm},\Xi_1)\); that the rigid-mouth actual branch diagonalizes in the physical chart \((U,V)\); and that selected support lies on the symmetric lowest-twin slice.
+
+It does not prove that the completed nonlinear moving-throat PDE realizes the favorable point.  In particular, it does not prove any of the following:
+\begin{enumerate}[leftmargin=2.2em]
+  \item that the true branch has a new same-charge long-range attractive force;
+  \item that the true branch supplies a high-quality pole satisfying the dynamic survival window;
+  \item that the true branch lands within the transported static \(|\varepsilon\Xi_1|\) ceiling;
+  \item that the rigid-mouth assumptions are realized by the full PDE;
+  \item that \(U=V=0\) holds on the actual branch;
+  \item that selected twin-support placement and outgoing normalization \(N_Q=1\) both hold without additional branch data.
+\end{enumerate}
+
+The safe downstream citation is therefore:
+\begin{quote}
+Inside the declared one-port, weak-axisymmetric, rigid-mouth, and selected-support closures, the same-charge mixed sector reduces to short-range static product kernels, a resonance/linewidth dynamic window, a transported prefactor packet \((\Delta_{\rm norm},\Xi_1)\), the rigid-mouth Cartesian orbit-lock condition \(U=V=0\), and the selected lowest-twin support slice \(\rho_\alpha=4/3\).  Actual branch realization remains a separate PDE calculation.
+\end{quote}
+
+For later use, the practical audit recipe is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item compute the actual one-port bundle data \((D_0,N_0,P_0)\) and check the static product-kernel assumptions;
+  \item evaluate the branch-compatible target surface \cref{eq:part07-compatibility-equation};
+  \item form \((\Delta_{\rm norm},\Xi_1)\) and test the transported ceiling \cref{eq:part07-thm-ceiling};
+  \item if the branch is rigid-mouth, compute \((U,V)\) from \cref{eq:part07-uv-def};
+  \item test orbit lock by \(U=V=0\);
+  \item compute \(\epsilon\), \(\varrho_{\rm phys}\), the selected ranking region, the support packet, and \(N_Q-1\) using \cref{eq:part07-main-final-packet,eq:part07-stage225-support-packet}.
+\end{enumerate}
+This is exactly the point at which Part VIII can either preserve the strict front-end packet or declare a relaxed/open-system companion with an explicit recovery map back to the Stage-225 front end.

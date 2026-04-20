@@ -1,0 +1,27 @@
+\section[Stage 186]{Stage 186: Scalar graph-slice theorem}
+\label{stage:186}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.1}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~186 proves that once a branch is aligned with the target graph, the only remaining closure equation is the scalar condition \(\widehat\chi_Q(\mathbf y)=1\).}
+
+\stagefield{Inputs}{Imports the Stage~185 graph, the graph-error packet, and differentiable candidate families in the positive free-quintuple domain.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl}.}
+
+\stagefield{Derivation ledger}{The derivation composes \(\chi_Q\) with the target graph, proves graph-lifted tangents lie in \(\ker M_*\), separates graph-aligned and off-graph family packets, and applies the intermediate value theorem to one-parameter graph crossings.}
+
+\stagefield{Output}{Scalar graph slice \(\mathcal Z_*=\{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\}\), graph-family tangency, and one-parameter crossing theorem.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check target monomial ratios are formed against the declared target values before taking logarithms.
+\item Check the same-free-quintuple convention is used; changing the free/dependent split changes the projection chart.
+\item Check graph-aligned closure is not confused with actual PDE realization.
+\item Carry the \StatusExactClosure{} status tag whenever citing the compiler itself.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.1} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+

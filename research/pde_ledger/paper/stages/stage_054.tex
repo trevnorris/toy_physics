@@ -1,0 +1,59 @@
+\section[Stage 054]{Stage 054: Canonical Tanh-Wall Branch and Natural Local Mouth Closure}
+\label{stage:054}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the canonical wall-profile moments.}
+\stagefield{Purpose}{Stage~054 chooses the canonical tanh-wall shell and records the resulting branch controls.}
+\stagefield{Inputs}{Profile \(f(\xi)=(1+\tanh\xi)/2\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage054_tanh_wall_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage054_tanh_wall_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage054_tanh_wall_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage054_tanh_wall_branch_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+For
+\begin{equation}
+\label{eq:app-stage054-tanh}
+f(\xi)=\frac{1+\tanh\xi}{2},
+\qquad
+f'(\xi)=\frac12\operatorname{sech}^2\xi,
+\end{equation}
+the exact moments are
+\begin{equation}
+\label{eq:app-stage054-moments}
+\boxed{
+I_f=\frac13,
+\qquad
+I_g=\frac{4}{15},
+\qquad
+\frac{I_g}{I_f}=\frac45}.
+\end{equation}
+The natural local mouth closure is
+\begin{equation}
+\label{eq:app-stage054-mouth}
+K_m=\frac{T_X}{\ell},
+\qquad
+\eta=\frac{K_mL}{T_X}=\frac{L}{\ell}=\Lambda_\ell.
+\end{equation}
+Define
+\begin{equation}
+\label{eq:app-stage054-controls}
+\chi_s=\frac{mc_{s,w}L}{\hbar},
+\qquad
+\Lambda_\ell=\frac{L}{\ell},
+\qquad
+\Upsilon_w=\frac{4\rho_w^2V_0^2}{\hbar^2c_{s,w}^2}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage054-control-laws}
+\boxed{
+\kappa=4\chi_s^2+\frac45\Lambda_\ell^2,
+\qquad
+\eta=\Lambda_\ell,
+\qquad
+W_{\rm wall}=\Upsilon_w\Lambda_\ell^2}.
+\end{equation}
+
+\stagefield{Output}{Canonical branch controls \eqref{eq:app-stage054-control-laws}.}
+\stagefield{Downstream use}{Stages~056--057 fix \(\Lambda_\ell\), \(\eta\), \(\chi_s\), and \(\kappa\) for Family--1.}
+

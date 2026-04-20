@@ -1,0 +1,24 @@
+\section[Stage 055]{Stage 055: Explicit Branch Placement Map and Threshold Surfaces}
+\label{stage:055}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the branch-threshold map in \((\chi_s,\Lambda_\ell,\Upsilon_w)\).}
+\stagefield{Purpose}{Stage~055 expresses the support/source fail/succeed surfaces directly in terms of the canonical branch controls.}
+\stagefield{Inputs}{The canonical branch controls \(\chi_s\), \(\Lambda_\ell\), \(\Upsilon_w\) and the exact thresholds from Stage~052.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage055_explicit_branch_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage055_explicit_branch_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage055_explicit_branch_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage055_explicit_branch_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Using \eqref{eq:app-stage054-control-laws}, the support/source thresholds become surfaces in the three branch controls:
+\begin{equation}
+\label{eq:app-stage055-surfaces}
+\Upsilon_w\Lambda_\ell^2
+\lessgtr
+\frac{\mathrm{Pe}_{\rm req}}{\Delta_{\infty,0}(\kappa(\chi_s,\Lambda_\ell),\eta=\Lambda_\ell)}.
+\end{equation}
+This is the branch-level version of the wall figure of merit.  It is exact once \((\chi_s,\Lambda_\ell,\Upsilon_w)\) are selected.
+
+\stagefield{Output}{A threshold-surface map in the canonical branch variables.}
+\stagefield{Downstream use}{Stages~056--061 insert the Family--1 values and compare actual wall-depth data against the thresholds.}
+

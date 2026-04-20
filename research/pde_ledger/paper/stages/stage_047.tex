@@ -1,0 +1,58 @@
+\section[Stage 047]{Stage 047: Parent Equilibrium Source/Support Alignment}
+\label{stage:047}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} inside the same local compressional linearization used in Stages~043--046.}
+\stagefield{Purpose}{Stage~047 shows that the parent equilibrium equations tie the source profile to the support profile instead of leaving \(C_{\sigma\phi}\) arbitrary.}
+\stagefield{Inputs}{The local compressional stiffness \(H(y)=h'(\rho_*(y))\) and support profile \(\chi_\phi\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage047_equilibrium_alignment_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage047_equilibrium_alignment_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage047_equilibrium_alignment_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage047_equilibrium_alignment_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The equilibrium source profile is
+\begin{equation}
+\label{eq:app-stage047-source-profile}
+\boxed{
+\chi_\sigma(y)=\frac{g_\phi\chi_\phi(y)}{H(y)},
+\qquad
+H(y)=h'(\rho_*(y))}.
+\end{equation}
+Define
+\begin{equation}
+\label{eq:app-stage047-I1I2}
+I_1=\int d^3y\frac{\chi_\phi^2}{H},
+\qquad
+I_2=\int d^3y\frac{\chi_\phi^2}{H^2}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage047-overlaps}
+O_{\sigma\phi}=g_\phi I_1,
+\qquad
+N_{\sigma\sigma}=g_\phi^2I_2,
+\end{equation}
+and the coherence is
+\begin{equation}
+\label{eq:app-stage047-coherence}
+\boxed{
+C_{\sigma\phi}^2=\frac{I_1^2}{N_{\phi\phi}I_2}\leq1}.
+\end{equation}
+The eliminated-source support softening is
+\begin{equation}
+\label{eq:app-stage047-softening}
+\Delta K_X^{\rm eq}=g_\phi^2I_1,
+\qquad
+G_{\rm eq}=\frac{g_\phi^2I_1}{K_X}.
+\end{equation}
+In a thin active layer where \(H\) is nearly constant,
+\begin{equation}
+\label{eq:app-stage047-matched-layer}
+C_{\sigma\phi}^2=1,
+\qquad
+G_{\rm eq}=\frac{g_\phi^2N_{\phi\phi}}{K_XH_w}.
+\end{equation}
+
+\stagefield{Output}{Equilibrium source/support alignment \eqref{eq:app-stage047-source-profile} and matched-layer gain \eqref{eq:app-stage047-matched-layer}.}
+\stagefield{Downstream use}{Stages~048--049 insert an explicit thin-wall confinement and collapse the test to \(W_{\rm wall}\).}
+

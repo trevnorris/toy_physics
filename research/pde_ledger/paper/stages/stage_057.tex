@@ -1,0 +1,36 @@
+\section[Stage 057]{Stage 057: Healing-Length Lock and Reference-Branch Support Scale}
+\label{stage:057}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusReduced{} / \StatusExactClosure{} for the declared healing-width closure.}
+\stagefield{Purpose}{Stage~057 fixes the support scale of Family--1 through a healing-length lock.}
+\stagefield{Inputs}{The Family--1 geometry \(L/\ell=37\) and closure \(\ell=\hbar/(2mc_{s,w})\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage057_family1_healing_lock_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage057_family1_healing_lock_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage057_family1_healing_lock_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage057_family1_healing_lock_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The healing lock is
+\begin{equation}
+\label{eq:app-stage057-healing}
+\boxed{
+\ell=\frac{\hbar}{2mc_{s,w}}}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-stage057-chi}
+\boxed{
+\chi_s=\frac{mc_{s,w}L}{\hbar}=\frac{37}{2}}.
+\end{equation}
+Using \(\kappa=4\chi_s^2+(4/5)\Lambda_\ell^2\) gives
+\begin{equation}
+\label{eq:app-stage057-kappa}
+\boxed{
+\kappa=\frac95\Lambda_\ell^2=\frac{12321}{5},
+\qquad
+\alpha=\sqrt\kappa=\frac{111}{\sqrt5}}.
+\end{equation}
+
+\stagefield{Output}{Family--1 support values \(\chi_s=37/2\), \(\kappa=12321/5\), \(\eta=37\).}
+\stagefield{Downstream use}{Stage~058 evaluates the threshold window at these values.}
+

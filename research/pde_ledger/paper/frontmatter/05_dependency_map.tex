@@ -1,0 +1,567 @@
+\chapter{Dependency Map}
+\label{chap:dependency-map}
+
+This chapter records the dependency structure of the derivation companion.  The result-anchor map in \cref{chap:result-anchor-map} says what future papers should cite.  The dependency map says what each cited block is allowed to depend on, what it produces, and where a failure or branch assumption propagates.
+
+The map is deliberately more than a table of contents.  A table of contents tells a reader where material appears.  A dependency map tells a verifier which earlier result must be checked before a later result can be trusted.  This distinction is essential for a derivation ledger because the document contains exact identities, exact statements inside closures, controlled reductions, numerical placements, and open branch-realization tests in one archive.
+
+\begin{quote}
+A dependency arrow is not a proof and is not a status upgrade.  It is an audit instruction.  If a later theorem block depends on an earlier controlled reduction, then the later block inherits that reduction unless it explicitly replaces it with a stronger argument.
+\end{quote}
+
+Throughout this chapter, the result anchors \resultanchor{MTDC-T1}--\resultanchor{MTDC-T12} are the anchors defined in \cref{chap:result-anchor-map}.  The status labels are the labels fixed in \cref{chap:claim-status-firewall}.  The notation firewalls of \cref{chap:notation-firewall} remain active for every dependency in this chapter.
+
+\section{Arrow types}
+\label{sec:dependency-arrow-types}
+
+The ledger uses several kinds of dependency arrows.  They should not be conflated.
+
+\begin{longtable}{L{0.18\textwidth}L{0.26\textwidth}L{0.42\textwidth}}
+\caption{Dependency-arrow types used in this companion.}\label{tab:dependency-arrow-types}\\
+\toprule
+Arrow type & Meaning & Audit consequence \\
+\midrule
+\endfirsthead
+\toprule
+Arrow type & Meaning & Audit consequence \\
+\midrule
+\endhead
+Hard algebraic dependency & A formula, theorem, or map is used as an input to a later derivation. & The later derivation is invalid until the earlier algebraic object is established under its stated assumptions. \\
+\addlinespace
+Closure dependency & A later result is exact only inside an earlier declared closure, branch, ansatz, or reduced model. & The later result must carry the closure status forward.  It may not be cited as an unconditional parent-theory theorem. \\
+\addlinespace
+Normalization dependency & A later result requires a specific scalar normalization, prefactor, source-map factor, or transfer coefficient. & The algebraic structure may survive even if the numerical or branch normalization fails.  The realization gate must be checked separately. \\
+\addlinespace
+Branch-realization dependency & A later result requires the actual moving-throat branch to land on a particular target surface, quotient orbit, selected support state, or prefactor packet. & The previous compiler can be correct while the physical branch still fails.  This is a realization question, not an algebraic-compression question. \\
+\addlinespace
+Failure-mode dependency & A later branch or relaxed companion is introduced because a strict branch, simple support branch, or one-port branch failed or remained under-normalized. & The failure must be preserved as part of the derivation history.  A relaxed repair may not erase the strict verdict. \\
+\addlinespace
+Downstream-use dependency & A later paper needs only the exported formula or theorem, not the whole stage history. & The downstream paper should cite the result anchor and, if necessary, the local theorem/equation label rather than a raw stage range. \\
+\bottomrule
+\end{longtable}
+
+A fill-stage entry should identify all arrow types that apply.  For example, the outgoing quadrupole normalization depends algebraically on the compact outgoing \(l=2\) fingerprint, depends by closure on the reduced Maxwell/mixed transfer model, and depends by realization on the actual branch value of the invariant product \(\widehat m_0^{\,2}P_0\).
+
+\section{Global dependency spine}
+\label{sec:global-dependency-spine}
+
+The shortest faithful global spine is
+\[
+\begin{aligned}
+\text{exact parent }(4+1)\text{ theory}
+&\Longrightarrow
+\text{moving-surface lift}
+\\[0.35em]
+&\Longrightarrow
+\text{wall/support modal system}
+\\[0.35em]
+&\Longrightarrow
+\text{BdG and Maxwell/mixed Schur complements}
+\\[0.35em]
+&\Longrightarrow
+\text{grouped real }P_2\text{ response bundle}
+\\[0.35em]
+&\Longrightarrow
+\text{outgoing prefactor }P_0
+\\[0.35em]
+&\Longrightarrow
+\text{selected support and mouth/core branch tests}
+\\[0.35em]
+&\Longrightarrow
+\text{weak-axisymmetric transport and quotient orbit}
+\\[0.35em]
+&\Longrightarrow
+\text{realization compiler}
+\\[0.35em]
+&\Longrightarrow
+\text{actual strict branch verdict}
+\\[0.35em]
+&\Longrightarrow
+\text{relaxed open-system companion}.
+\end{aligned}
+\]
+
+The same spine, read as a verification instruction, is
+\[
+\begin{aligned}
+\text{definitions}
+&\Longrightarrow
+\text{operators}
+\Longrightarrow
+\text{low-frequency coefficients}
+\\[0.35em]
+&\Longrightarrow
+\text{normalized observables}
+\Longrightarrow
+\text{target surfaces}
+\Longrightarrow
+\text{branch-placement tests}
+\\[0.35em]
+&\Longrightarrow
+\text{orbit / quotient tests}
+\Longrightarrow
+\text{realization search}
+\Longrightarrow
+\text{strict or relaxed physical verdict}.
+\end{aligned}
+\]
+
+The most important negative spine is
+\[
+\begin{gathered}
+\text{algebraic compression success}
+\not\Rightarrow
+\text{actual branch realization},
+\\[0.35em]
+\text{isotropic grouped closure}
+\not\Rightarrow
+\text{weak-axisymmetric prefactor closure},
+\\[0.35em]
+\text{strict branch failure}
+\not\Rightarrow
+\text{relaxed branch success},
+\\[0.35em]
+\text{orbit-lock algebra}
+\not\Rightarrow
+\text{physical placement on the selected support curve}.
+\end{gathered}
+\]
+
+These negative arrows are logical guardrails rather than new theorem statements.  A compiler can be exact while the branch it compiles is not realized.
+
+\section{Top-level dependency table}
+\label{sec:top-level-dependency-table}
+
+\Cref{tab:top-level-dependencies} gives the top-level dependency map.  The table is intentionally conservative.  It lists the dependencies that should be presumed active unless a later theorem explicitly proves that a dependency has been eliminated.
+
+\begin{longtable}{L{0.11\textwidth}L{0.22\textwidth}L{0.25\textwidth}L{0.28\textwidth}}
+\caption{Top-level dependency map for the result anchors.}\label{tab:top-level-dependencies}\\
+\toprule
+Anchor & Required upstream blocks & Principal outputs & Downstream blocks that use it \\
+\midrule
+\endfirsthead
+\toprule
+Anchor & Required upstream blocks & Principal outputs & Downstream blocks that use it \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & Parent action and prior ontology corrections. & Exact field content, charge firewall, projection/reduction vocabulary, mixed-sector observables, and the first moving-throat target statement. & All later anchors.  In particular, \resultanchor{MTDC-T2}--\resultanchor{MTDC-T5} use the parent equations directly. \\
+\addlinespace
+\resultanchor{MTDC-T2} & \resultanchor{MTDC-T1}; working choice of shape field \(\Sigma=r-R(\Omega,w,t)\); declared wall-action closure. & Distributed wall field, recovery of \((a,L)\), scalar and grouped real \(P_2\) modal split, and geometry-only breathing reduction. & \resultanchor{MTDC-T3}, \resultanchor{MTDC-T4}, \resultanchor{MTDC-T5}, and every later branch that uses wall/support observables. \\
+\addlinespace
+\resultanchor{MTDC-T3} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T2}; stable BdG normal-mode reduction. & Schur-complement support kernels, pole shifts, scalar/geometry lane renormalization, grouped \(P_2\) conservative self-energies, and first isotropy diagnostics. & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, and the conservative front end of \resultanchor{MTDC-T9}. \\
+\addlinespace
+\resultanchor{MTDC-T4} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T3}; retained mixed sector; compact outgoing branch; 2.5PN/4PN quadrupole target. & Maxwell/mixed self-energy, outgoing transfer factor, compact \(l=2\) fingerprint, normalized grouped response language, and invariant target for \(\widehat m_0^{\,2}P_0\). & \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, \resultanchor{MTDC-T11}, and any future radiative or tail calculation. \\
+\addlinespace
+\resultanchor{MTDC-T5} & \resultanchor{MTDC-T2}--\resultanchor{MTDC-T4}; grouped metric and projector calculus; overlap model assumptions. & Full grouped real \(P_2\) bundle, exact projector/inverse maps, isotropy theorem, weak-axisymmetric splitting law, selected-mode front end, and early support-feasibility surfaces. & \resultanchor{MTDC-T6}, \resultanchor{MTDC-T7}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, and the selected-support part of \resultanchor{MTDC-T11}. \\
+\addlinespace
+\resultanchor{MTDC-T6} & \resultanchor{MTDC-T5}; continuum placement variables; split-\(U\) and support-kernel closure. & Continuum placement map, rank-2 closure, coherent D/N tracking branch, support-compensation theorem, explicit D/N support ratios, and lowest-twin sufficiency criteria. & \resultanchor{MTDC-T7}, \resultanchor{MTDC-T8}, and the selected support slice in \resultanchor{MTDC-T11}. \\
+\addlinespace
+\resultanchor{MTDC-T7} & \resultanchor{MTDC-T5}--\resultanchor{MTDC-T6}; lowest-lane and Family-1 branch assumptions. & Parent-overlap gain thresholds, Family-1 wall-shell data, quadrupole-demand windows, and the first reduced Family-1 verdict. & \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, and realization/actual-branch comparisons in \resultanchor{MTDC-T10}--\resultanchor{MTDC-T11}. \\
+\addlinespace
+\resultanchor{MTDC-T8} & \resultanchor{MTDC-T4}--\resultanchor{MTDC-T7}; outlet/core/mouth models; retarded closure assumptions. & Geometry-lane firewall, retarded collapse, outlet and mixed-core compensation attempts, mouth/core boundary-layer laws, co-evolving fixed points, and retarded-normalization residual localization. & \resultanchor{MTDC-T9}, \resultanchor{MTDC-T10}, \resultanchor{MTDC-T11}, and the relaxed companion \resultanchor{MTDC-T12}. \\
+\addlinespace
+\resultanchor{MTDC-T9} & \resultanchor{MTDC-T5} and \resultanchor{MTDC-T8}; weak-axisymmetric branch; coherent local-kernel normal form. & Prefactor packet, \(\Xi_1=P_1/P_0\), monomial quotient coordinates, similarity orbit, Packet-A closure, orbit projectors, and four-scalar final verdict packet. & \resultanchor{MTDC-T10}, \resultanchor{MTDC-T11}, \resultanchor{MTDC-T12}, and future papers using the weak-axisymmetric quotient theorem. \\
+\addlinespace
+\resultanchor{MTDC-T10} & \resultanchor{MTDC-T9}; realization graph; free-quintuple and mixed-ray search class. & Canonical orbit projection, graph-error realization form, log-ray and simplex search, Hessian/curvature ranking, finite support-cardinality sieve, and local mixed-ray closure. & \resultanchor{MTDC-T11}, \resultanchor{MTDC-T12}, and later realization audits. \\
+\addlinespace
+\resultanchor{MTDC-T11} & \resultanchor{MTDC-T9}--\resultanchor{MTDC-T10}; same-charge one-port audit; rigid-mouth branch; selected twin-support placement. & Same-charge static/dynamic kernel verdict, resonance/linewidth gates, rigid-mouth chart \((U,V)\), Cartesian orbit lock, selected twin-support branch, and actual placement compiler. & \resultanchor{MTDC-T12} and downstream papers that need the strict actual-branch verdict. \\
+\addlinespace
+\resultanchor{MTDC-T12} & \resultanchor{MTDC-T9}--\resultanchor{MTDC-T11}; strict-front-end verdict; relaxed leakage/non-rigid/source/export closures. & Codimension-three relaxed branch, strict recovery map, leakage/work compiler, relaxed barrier front end, dynamic event-chain continuations, export kernel, heat partition, and material-screening companion. & Future relaxed-branch, materials, and barrier/export papers. \\
+\bottomrule
+\end{longtable}
+
+\section{Lower-order import dependencies}
+\label{sec:lower-order-import-dependencies}
+
+This companion is not an isolated derivation tree.  It imports a frozen lower-order stack.  \Cref{tab:lower-order-imports} records what those imports are allowed to supply.
+
+\begin{longtable}{L{0.18\textwidth}L{0.38\textwidth}L{0.28\textwidth}}
+\caption{Imported lower-order dependencies.}\label{tab:lower-order-imports}\\
+\toprule
+Source family & Imported content & Used primarily by \\
+\midrule
+\endfirsthead
+\toprule
+Source family & Imported content & Used primarily by \\
+\midrule
+\endhead
+Parent \((4+1)\) action paper & Exact GNLS matter sector, localized Maxwell sector, projection/reduction distinction, leakage identity, Poisson-hook vocabulary, and corrected charge ontology. & \resultanchor{MTDC-T1}; indirectly all later anchors. \\
+\addlinespace
+Electromagnetic and plasma papers & Localized Maxwell reduction, canonical zero-mode charge normalization, mixed fields \(A_w,J^w,F_{\mu w},E_w,C_a\), and the rule that mixed channels are suppressed only in the far-field brane limit. & \resultanchor{MTDC-T1}, \resultanchor{MTDC-T4}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T12}. \\
+\addlinespace
+Conservative 1PN stack & Frozen lower-order constants such as \(\kappa_\rho=1\), \(n=5\), \(\kappa_{\rm add}=1/2\), \(\kappa_{\rm PV}=3/2\), and the closure-status discipline used by later PN assemblies. & \resultanchor{MTDC-T1}, branch interpretation in \resultanchor{MTDC-T5}--\resultanchor{MTDC-T8}. \\
+\addlinespace
+Conservative 2PN stack & The statement that the defect has a nontrivial \(P_0\oplus P_2\) mouth/support layer and a separate geometry-closure channel; carried static support data and open pole scales. & \resultanchor{MTDC-T3}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}. \\
+\addlinespace
+2.5PN quadrupole-normalization package & Narrowing of the universal retarded branch to the orbital/worldtube STF quadrupole; compact outgoing \(l=2\) low-frequency fingerprint; normalization target for the Burke--Thorne coefficient. & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}. \\
+\addlinespace
+Conservative 3PN stack & Grouped real \(P_2\) conservative payload, grouped trace/anomaly language, and the reason the higher-order bottleneck is no longer merely algebraic. & \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}. \\
+\addlinespace
+Conservative 4PN stack & Local/tail split and the theorem that the hereditary 4PN interface is controlled by the same outgoing STF quadrupole normalization already isolated at 2.5PN. & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}. \\
+\addlinespace
+5PN and weak-axisymmetric notes & Explicit overlap model, weak-axisymmetric transport, one-pole target surface, monomial quotient coordinates, similarity-orbit theorem, and conservative even-gate separation. & \resultanchor{MTDC-T5}, \resultanchor{MTDC-T9}, \resultanchor{MTDC-T10}, \resultanchor{MTDC-T11}. \\
+\addlinespace
+Same-charge, rigid-mouth, and relaxed-branch notes & One-port static/dynamic verdicts, actual-branch prefactor ceiling, rigid-mouth \((U,V)\) chart, selected twin-support slice, and relaxed leakage/export/material packets. & \resultanchor{MTDC-T11}, \resultanchor{MTDC-T12}. \\
+\bottomrule
+\end{longtable}
+
+These imports should be cited as background only where needed.  The derivation companion itself should still restate enough definitions that a verifier can follow the dependency chain without opening every earlier paper.
+
+\section{Formula gates}
+\label{sec:formula-gates}
+
+Some formulas are not merely useful equations; they are gates.  A later section cannot be filled correctly unless the relevant gate has already been stated, tagged, and checked.  \Cref{tab:formula-gates} lists the main gates that should be kept visible while the ledger is filled.
+
+\begin{longtable}{L{0.16\textwidth}L{0.38\textwidth}L{0.30\textwidth}}
+\caption{Main formula gates and their dependency roles.}\label{tab:formula-gates}\\
+\toprule
+Gate & Formula or object & Dependency role \\
+\midrule
+\endfirsthead
+\toprule
+Gate & Formula or object & Dependency role \\
+\midrule
+\endhead
+Geometry lift & \(\Sigma(\mathbf X,t)=r-R(\Omega,w,t)\). & Makes the grouped real \(P_2\) lanes literal wall/support modes and makes \((a,L)\) collective moments rather than fundamental variables. \\
+\addlinespace
+Wall modal split & \(\eta=\eta_0Y_{00}+\sum q_{2m}Y_{2m}^{\rm real}+\eta_{\ge3}\). & Separates scalar/geometry, grouped quadrupole, and higher-lane sectors before support and gauge couplings are added. \\
+\addlinespace
+BdG Schur complement & \(D_A(\omega)=K_A-M_A\omega^2-\sum_\alpha g_{A\alpha}^2/(\varpi_{A\alpha}^2-\omega^2)\). & Supplies conservative support softening, inertia renormalization, higher even moments, and pole shifts. \\
+\addlinespace
+Maxwell/mixed transfer & \(N_A(0)=[\Omega_{U,A}^{2}g_{W,A}+R_Ag_{U,A}]^2/[\Omega_{U,A}^{2}\Omega_{W,A}^{2}-R_A^2]^2\). & Transfers the passive/outgoing port into the wall operator with a nonnegative static factor. \\
+\addlinespace
+Normalized response & \(u_2^{(A)}=-D_{A2}/D_{A0}\), \(u_4^{(A)}=(D_{A2}^2-D_{A0}D_{A4})/D_{A0}^2\). & Converts conservative operator data into the grouped response language used by the PN bridge. \\
+\addlinespace
+Outgoing prefactor & \(P_{A0}=N_{A0}/D_{A0}\). & Identifies the only static internal quantity needed for the leading \(i\omega^5\) quadrupole coefficient. \\
+\addlinespace
+Universal normalization & \(\widehat m_0^{\,2}P_0=54Gc_s^5/(5a^5c^5)\). & Branch-realization gate for the universal 2.5PN/4PN quadrupole normalization. \\
+\addlinespace
+Grouped decomposition & \(x_{20}=\bar x+4a_x\), \(x_{21}=\bar x-a_x+b_x\), \(x_{22}=\bar x-a_x-b_x\). & Converts lane triples into isotropic and anisotropic components. \\
+\addlinespace
+Weak-axisymmetric signature & \((\lambda_{20},\lambda_{21},\lambda_{22})=(1,1/2,-1)\), equivalently \(b=3a\). & Distinguishes pure weak-axisymmetric quadrupole splitting from more general anisotropy. \\
+\addlinespace
+Selected support surface & \(F(\xi,\delta)=R_{\rm target}\), with support feasibility through \(G(\xi,\delta)\). & Converts support placement into a finite branch-placement problem. \\
+\addlinespace
+Prefactor slope & \(\Xi_1=P_1/P_0\). & Compresses weak-axisymmetric prefactor transport to a single observable scalar on the natural branch. \\
+\addlinespace
+Quotient coordinates & \((q_{\rm tr},q_{\rm nt},q_\eta)=\delta\ln(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\). & Separates true defect motion from similarity-orbit motion in the coherent local kernel. \\
+\addlinespace
+Final reduced packet & \(\Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\). & Carries the reduced back end into the realization compiler and actual-branch verdict. \\
+\addlinespace
+Rigid-mouth chart & \((U,V)=\bigl(\ln(\mathcal T^2/\mathcal T_{\rm ref}^2),\ln(\epsilon_\eta/\epsilon_{\eta,{\rm ref}})\bigr)\). & Diagonalizes the post-static same-charge branch; orbit lock is \(U=V=0\). \\
+\addlinespace
+Relaxed recovery map & \(\ell_w=f_U=a=b=0\). & Shows how the relaxed open-system companion recovers the strict selected front end. \\
+\bottomrule
+\end{longtable}
+
+When a section uses one of these gates, the section should either cite the gate's theorem/equation label or restate the local formula.  Silent use of a gate is one of the easiest ways for a derivation ledger to become unverifiable.
+
+\section{Block-local dependency maps}
+\label{sec:block-local-dependency-maps}
+
+This section gives the dependency map at the level at which the main body should eventually be written.  The tables below are deliberately broken into small blocks so that later fill work can be assigned section by section.
+
+\subsection{Part I dependency map: parent theory, geometry lift, and linearized backbone}
+\label{subsec:dep-part-i}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part I.}\label{tab:dep-part-i}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Parent import & Frozen parent action, corrected charge ontology, projection/reduction vocabulary. & Exact field-equation and notation base for the companion. \\
+\addlinespace
+Moving-throat need statement & Parent geometry still represented by finite \((a,L)\); lower PN stack needs grouped \(P_2\), geometry lane, and outgoing response. & Justification for promoting geometry to a distributed wall/shape field. \\
+\addlinespace
+Shape-field lift & Choice \(\Sigma=r-R(\Omega,w,t)\); stationary finite throat; mouth and bottom definitions. & Collective recovery of \(a,L\); mode variables \(\eta_0,q_{2m},\eta_{\ge3}\). \\
+\addlinespace
+Quadratic wall action & Effective wall inertia/stiffness functions and densitized axial convention. & Modal wall operator and baseline scalar/quadrupole splitting. \\
+\addlinespace
+Breathing reduction & Axisymmetric ansatz \(\eta_0\sim \alpha_a\delta a+\alpha_L\delta L\). & Effective \((\delta a,
+\delta L)\) mass/stiffness matrices and continuity with the old closure. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part II dependency map: conservative grouped response and normalization front end}
+\label{subsec:dep-part-ii}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part II.}\label{tab:dep-part-ii}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+BdG support coupling & Wall operator and promoted confinement coupling; stable BdG reduction. & Support Schur complement, pole shifts, and conservative grouped \(P_2\) moments. \\
+\addlinespace
+Maxwell/mixed coupling & Parent Maxwell sector; mixed-field firewall; one-lane reduced mixed model. & Conservative mixed self-energy and static outgoing-transfer factor. \\
+\addlinespace
+Outgoing fingerprint & Compact outgoing \(l=2\) branch from the 2.5PN package. & Leading \(i\omega^5\) bridge and the invariant normalization product. \\
+\addlinespace
+Full grouped bundle & Stage-3/4 coefficients; grouped metric \(\mathrm{diag}(1,2,2)\). & Projector calculus, isotropy defects, and exact formula \(P_0=N_0/D_0\). \\
+\addlinespace
+Overlap/isotropy theorem & Real STF harmonics, isotropic angular kernel, radial/axial overlap factorization. & Identity angular source map, \(O(3)\) grouped isotropy, and first weak-axisymmetric splitting law. \\
+\addlinespace
+Selected-mode front end & One-pole and constant-prefactor gates; finite-throat support profiles. & Early target surfaces for \(u_4=4u_2^2\), \(P_2=P_4=0\), and \(P_0\) normalization. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part III dependency map: support completion and Family-1 branch}
+\label{subsec:dep-part-iii}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part III.}\label{tab:dep-part-iii}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Continuum placement & Full-bundle target surface; dimensionless continuum ratios. & Placement coordinates \((\delta,M_{\rm mix},R_{\rm target})\) and product law. \\
+\addlinespace
+Split-\(U\) branch & Continuum kernel with non-flat internal \(U\) sector. & Direction splitting, tracking factor, and deformed selected-branch functions. \\
+\addlinespace
+Rank-2 support closure & Continuum support data and softening depth. & Quadratic placement equation, tracking branch laws, and support feasibility frontier. \\
+\addlinespace
+D/N support extraction & Finite-throat D/N support modes and overlap ratios. & Microscopic support ratio \(\zeta_{\rm phys}\), lowest-twin selection bias, and twin sufficiency test. \\
+\addlinespace
+Asymmetry and gain thresholds & Lowest-lane asymmetry, overlap boosts, Robin compliance, and gain windows. & Conditions for mixed-only, symmetric-twin, or non-twin rescue. \\
+\addlinespace
+Family-1 construction & Selected wall-shell and support-lane data. & Explicit Family-1 reduced branch, loading-ratio extraction, and first reduced verdict. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part IV dependency map: geometry lane, retarded closure, and mouth/core compensation}
+\label{subsec:dep-part-iv}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part IV.}\label{tab:dep-part-iv}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Geometry-lane firewall & Axisymmetric residual lane from the wall lift; grouped \(P_2\) projector rules. & Conditions under which geometry completion is separate from grouped \(P_2\) normalization. \\
+\addlinespace
+Retarded closure collapse & Outgoing \(l=2\) bridge; scalar/dipole danger audit; passive/outgoing sign conventions. & Reduction of the live odd branch to quadrupole normalization rather than a generic retarded ledger. \\
+\addlinespace
+Outlet and side-channel attempts & Robin outlet, mixed \(A_w/F_{\mu w}\) side channel, and compensation laws. & Location of under-normalization or over-softening residuals. \\
+\addlinespace
+Core-to-mouth compensation & Selected core and mouth variables; boundary-layer response. & Local mouth-source laws, positive compensation conditions, and co-evolving fixed-point equations. \\
+\addlinespace
+Final residual localization & Family-1 and mouth/core tests. & Identification of what remains a branch-realization problem rather than a missing algebraic compiler. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part V dependency map: weak-axisymmetric quotient and orbit closure}
+\label{subsec:dep-part-v}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part V.}\label{tab:dep-part-v}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Weak-axisymmetric transport & Grouped splitting law \((1,1/2,-1)\), full-bundle prefactor expansion, and branch slopes. & Loading mismatch \(\Xi_{\rm load}=P_1/P_0\) and weak-axisymmetric line \(b=3a\). \\
+\addlinespace
+Coherent-kernel normal form & Coherent local D/N kernel and microscopic slippage variables. & Triangular defect form for tracking, nontracking, and dressing channels. \\
+\addlinespace
+Monomial quotient & Direct microscopic monomials \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\). & Rank-three quotient map, five-dimensional similarity orbit, and orbit-preserving fibres. \\
+\addlinespace
+Packet-A and projector closure & Prefactor packet, orbit projectors, and grouped/selected branch residuals. & Four-scalar reduced verdict packet \(\Delta_{\rm full}\). \\
+\addlinespace
+Back-end reduction & Reduced graph-error form and scalar verdict coordinates. & Inputs for realization search and same-charge actual-branch tests. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part VI dependency map: realization compiler}
+\label{subsec:dep-part-vi}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part VI.}\label{tab:dep-part-vi}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Canonical orbit projection & Four-scalar verdict packet and similarity-orbit quotient. & Error coordinates in the physical quotient rather than in redundant microscopic variables. \\
+\addlinespace
+Free-quintuple graph & Local mixed-ray parameterization and graph-error realization form. & Finite algebraic realization problem. \\
+\addlinespace
+Search sieve & Log-ray, pairwise, simplex, and support-cardinality filters. & Finite support-cardinality \(\le5\) realization audit. \\
+\addlinespace
+Hessian and curvature ranking & Candidate local minima and graph curvature data. & Ranked branch candidates and exact places where realization remains numerical or open. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part VII dependency map: same-charge audit, rigid mouth, and selected branch}
+\label{subsec:dep-part-vii}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part VII.}\label{tab:dep-part-vii}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+One-port same-charge static audit & Mixed-kernel ontology and corrected charge firewall. & Verdict that the static bundle creates no new long-range attractive law. \\
+\addlinespace
+Dynamic same-charge audit & Linear dynamic mixed bundle, resonance/linewidth estimates, and short-range families. & Verdict that dynamics gives resonant dispersive enhancement, not a new kernel class. \\
+\addlinespace
+Actual-branch tests & Prefactor ceiling, support selection, and branch placement data. & Current strict actual-branch verdict. \\
+\addlinespace
+Rigid-mouth normal form & Physical logarithmic chart \((U,V)\). & Cartesian orbit lock \(U=V=0\) and direct observable gates. \\
+\addlinespace
+Selected twin-support branch & Lowest-twin support slice and actual placement curve. & Selected support/orbit split and coherent orbit-lock compiler. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Part VIII dependency map: relaxed open-system branch}
+\label{subsec:dep-part-viii}
+
+\begin{longtable}{L{0.18\textwidth}L{0.29\textwidth}L{0.35\textwidth}}
+\caption{Dependency map for Part VIII.}\label{tab:dep-part-viii}\\
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endfirsthead
+\toprule
+Local block & Inputs & Outputs \\
+\midrule
+\endhead
+Relaxed branch declaration & Strict selected front end and its residuals. & Codimension-three relaxed branch with exact strict recovery map. \\
+\addlinespace
+Leakage/work compiler & Open-system leakage, non-rigid mouth, and source/work packets. & Relaxed stationary front end and explicit terms in \(V_{\rm eff}^{(230)}\). \\
+\addlinespace
+Dynamic event chain & Barrier lowering, event thresholds, turning points, and WKB/Goldilocks continuations. & Dynamic relaxed-branch feasibility tests. \\
+\addlinespace
+Export and heat partition & Active-leg export kernel and material-screening dictionary. & Super-Ohmic export law, event-safe half-plane, channel-resolved heat partition, and materials companion. \\
+\bottomrule
+\end{longtable}
+
+\section{Failure-mode dependency map}
+\label{sec:failure-mode-dependency-map}
+
+The ledger must preserve failed or insufficient routes because later relaxed branches and actual-branch tests often depend on knowing what did \emph{not} work.
+
+\begin{longtable}{L{0.24\textwidth}L{0.35\textwidth}L{0.25\textwidth}}
+\caption{Failure-mode dependencies.}\label{tab:failure-mode-dependencies}\\
+\toprule
+Failure or limitation & What it means & What depends on it \\
+\midrule
+\endfirsthead
+\toprule
+Failure or limitation & What it means & What depends on it \\
+\midrule
+\endhead
+Finite-dimensional \((a,L)\) closure is insufficient for the full PDE problem. & It cannot expose grouped real \(P_2\), geometry-lane, and outgoing-response data as literal modes. & The geometry lift in \resultanchor{MTDC-T2}. \\
+\addlinespace
+Geometry-only wall theory is conservative and cannot itself supply the passive/outgoing odd branch. & Stable wall and BdG blocks can produce even moments and pole shifts, but not the required retarded \(i\omega^5\) fingerprint. & The Maxwell/mixed bridge in \resultanchor{MTDC-T4}. \\
+\addlinespace
+Angular isotropy does not fix radial/axial normalization. & The real STF source map can be identity while \(P_0\) still misses the universal target. & Support placement in \resultanchor{MTDC-T6} and compensation work in \resultanchor{MTDC-T8}. \\
+\addlinespace
+Mixed-only or flat-support branches may undershoot the selected normalization. & The algebraic compiler is correct, but the physical branch can still lack enough loading or support enhancement. & Lowest-twin and non-twin support tests in \resultanchor{MTDC-T6}--\resultanchor{MTDC-T7}. \\
+\addlinespace
+Weak-axisymmetric similarity-orbit closure kills \(\Xi_{\rm load}\) but not every conservative even gate. & The normalization defect and conservative even gates are separate constraints. & The realization and actual-branch tests in \resultanchor{MTDC-T10}--\resultanchor{MTDC-T11}. \\
+\addlinespace
+One-port same-charge static bundle creates no new long-range attractive law. & Same-charge rescue cannot be claimed from the static mixed kernel alone. & Rigid-mouth and relaxed branch work in \resultanchor{MTDC-T11}--\resultanchor{MTDC-T12}. \\
+\addlinespace
+Rigid-mouth orbit lock is a codimension-two condition, not an automatic branch property. & The chart \((U,V)\) diagonalizes the problem, but the actual branch still has to land at \(U=V=0\). & Actual-placement and relaxed-branch tests in \resultanchor{MTDC-T11}--\resultanchor{MTDC-T12}. \\
+\addlinespace
+Relaxed open-system branch does not retroactively prove the strict branch. & Leakage/work/source/export repair is a separate companion, with a recovery map back to the strict front end. & Part VIII and all future relaxed-branch citations. \\
+\bottomrule
+\end{longtable}
+
+When filling a section, do not remove a failure-mode dependency merely because a later branch repairs or bypasses it.  Instead, state exactly what the repair changes and what strict verdict remains frozen.
+
+\section{Status propagation rules}
+\label{sec:status-propagation-rules}
+
+The dependency map is also a status-propagation map.  The following rules should be applied while filling every theorem, proposition, and boxed formula.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Exact parent inputs stay exact only while no closure is added.}  Once the moving-wall ansatz, stable-mode reduction, one-port mixed model, selected support surface, or relaxed open-system closure is invoked, the result no longer has bare parent-exact status.
+  \item \textbf{Exact algebra inside a closure is still valuable.}  A Schur complement, projector inverse, quotient-rank proof, or finite search theorem can be exact even though the model class in which it lives is a closure.
+  \item \textbf{A target equation is not a realized theorem.}  Equations such as
+  \[
+    \widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}
+  \]
+  define a branch target.  They become realized-branch statements only after the actual branch data are shown to satisfy them.
+  \item \textbf{Numerical placement does not invalidate exact setup.}  If a root, Hessian packet, or branch coordinate is numerically located, then the definition and equations can remain exact while the realization value is \StatusNumerical.
+  \item \textbf{Relaxed branch results inherit relaxed assumptions.}  A leakage/work/export result should not be cited as a strict conservative result unless the recovery map has been applied and the relaxed variables have been set to their strict values.
+\end{enumerate}
+
+A useful local test is this: remove one upstream assumption and ask whether the downstream statement still follows.  If it does not, the downstream theorem must explicitly name that assumption.
+
+\section{Dependency checklist for every stage appendix}
+\label{sec:stage-appendix-dependency-checklist}
+
+Every stage appendix should eventually contain a dependency paragraph with the following fields.  This is the per-stage version of the map above.
+
+\begin{verificationchecklist}
+  \item \textbf{Required upstream result anchors.}  List the result anchors and local theorem/equation labels used by the stage.
+  \item \textbf{Required prior stage outputs.}  List the exact stage numbers, but only for provenance.  The result anchor remains the public citation handle.
+  \item \textbf{Imported lower-order paper results.}  Name the lower-order import if the stage uses a PN target, charge ontology, source map, or outgoing benchmark from outside the moving-throat stage tree.
+  \item \textbf{Closure assumptions.}  State whether the stage uses the shape-field lift, stable BdG reduction, one-port mixed model, isotropic kernel, weak-axisymmetric branch, selected support surface, rigid-mouth chart, or relaxed open-system variables.
+  \item \textbf{Local algebraic outputs.}  Identify the formulas that are proved locally and can be exported downstream.
+  \item \textbf{Branch-realization requirements.}  State whether the output is already realized by construction or whether the actual moving-throat branch still has to supply data.
+  \item \textbf{Downstream uses.}  List the later anchors, sections, or future-paper use cases that depend on the output.
+  \item \textbf{Failure propagation.}  If the stage finds a no-go, undershoot, over-softening, or missing-normalization result, state which later branch tries to repair or bypass it.
+\end{verificationchecklist}
+
+This checklist should make it possible to audit a single stage without rereading the whole companion.
+
+\section{Revision rules for this map}
+\label{sec:dependency-map-revision-rules}
+
+The dependency map should be stable, but it is allowed to evolve as the ledger is filled.  Revisions should follow these rules.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Do not delete an upstream dependency silently.}  If a later derivation removes a dependency, add a sentence explaining how the dependency was discharged.
+  \item \textbf{Do not replace a failure with a repair.}  Keep the failure and add the repair as a downstream dependency.
+  \item \textbf{Do not promote branch targets to branch theorems.}  A target surface is a theorem about what must be hit.  It is not a theorem that the branch hits it.
+  \item \textbf{Prefer subanchors over renumbering.}  If a block becomes too broad, add a result subanchor rather than changing the top-level anchor family.
+  \item \textbf{Keep formula gates synchronized with theorem labels.}  Once a formula gate receives a formal theorem or equation label, update \cref{tab:formula-gates} or the local prose to point to it.
+  \item \textbf{Separate strict and relaxed dependencies.}  If a result belongs only to the relaxed open-system companion, do not route it into the strict conservative spine without the recovery map.
+\end{enumerate}
+
+\section{Practical fill order implied by the dependency map}
+\label{sec:dependency-implied-fill-order}
+
+The map implies a practical fill order for the companion.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item Fill the parent import, geometry lift, and breathing reduction first.  These establish the objects used everywhere else.
+  \item Fill the BdG and Maxwell/mixed Schur-complement chapters next.  These create the conservative and outgoing operator language.
+  \item Fill the grouped projector, overlap, isotropy, and normalization front end before writing any branch-placement claims.
+  \item Fill support placement and Family-1 only after the normalization target surface is fully stated.
+  \item Fill retarded/mouth/core compensation after the strict selected-support residuals are visible.
+  \item Fill weak-axisymmetric quotient and orbit closure only after the grouped prefactor and axisymmetric splitting law are fixed.
+  \item Fill the realization compiler after the quotient packet is stable.
+  \item Fill same-charge, rigid-mouth, selected support, and relaxed branch material last, because these are verdict and repair layers rather than foundational algebra.
+\end{enumerate}
+
+This order is not mandatory for drafting, but it is the safest order for verification.  If the companion is written out of order, each section should still obey the dependencies listed in this chapter.

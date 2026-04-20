@@ -1,0 +1,84 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py
+# Date: 2026-04-21T01:28:37-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================================================
+1. Exact open-system leakage/work lane
+================================================================================
+Projector W(w)        = exp(-w**2)/sqrt(pi)
+Current   j^w(w)      = ell_w*j0*w*exp(-w**2)
+Field     E_w(w)      = E0*w*exp(-w**2)
+Boundary term         = 0
+S_leak                = -sqrt(2)*ell_w*j0/4
+Expected S_leak       = -sqrt(2)*ell_w*j0/4
+Work channel W_w      = sqrt(2)*sqrt(pi)*E0*ell_w*j0/8
+Expected work channel = sqrt(2)*sqrt(pi)*E0*ell_w*j0/8
+
+================================================================================
+2. Exact non-rigid U/V response and drain
+================================================================================
+Free energy F_UV      = U**2*k_U/2 - U*V*chi_lam - U*f_U + V**2*k_V/2
+Stationarity eqns     = [U*k_U - V*chi_lam - f_U, -U*chi_lam + V*k_V]
+U solution            = -f_U*k_V/(chi_lam**2 - k_U*k_V)
+Expected U            = -f_U*k_V/(chi_lam**2 - k_U*k_V)
+V solution            = -chi_lam*f_U/(chi_lam**2 - k_U*k_V)
+Expected V            = -chi_lam*f_U/(chi_lam**2 - k_U*k_V)
+det Hessian           = -chi_lam**2 + k_U*k_V
+V/U                   = chi_lam/k_V
+Drain chi*U*V         = chi_lam**2*f_U**2*k_V/(chi_lam**2 - k_U*k_V)**2
+Expected drain        = chi_lam**2*f_U**2*k_V/(chi_lam**2 - k_U*k_V)**2
+
+================================================================================
+3. Compensated sign-changing source profile
+================================================================================
+varsigma(z)           = a*cos(pi*z) + b*cos(2*pi*z) + 1
+Integral over [0,1]   = 1
+Quadratic rewrite     = a*y + 2*b*y**2 - b + 1
+Interior stationary y*= -a/(4*b)
+Vertex value          = -a**2/(8*b) - b + 1
+Boundary values       = a + b + 1 , -a + b + 1
+
+================================================================================
+4. Codimension-three recovery slice
+================================================================================
+Recovery substitutions= {ell_w: 0, f_U: 0, a: 0, b: 0}
+Recovered S_leak      = 0
+Recovered W_w         = 0
+Recovered U           = 0
+Recovered V           = 0
+Recovered drain       = 0
+Recovered varsigma    = 1
+
+================================================================================
+5. Short-range kernel invariant
+================================================================================
+S_Q(x)                = x**(-3)
+S_Y(x)                = exp(-2*kappa*x)/x
+QQ source product     = x**(-6)
+QY source product     = exp(-2*kappa*x)/x**4
+YY source product     = exp(-4*kappa*x)/x**2
+deltaV_stat(x)        = -C2*exp(-4*kappa*x)/(2*x**2) - C4*exp(-2*kappa*x)/x**4 - C6/(2*x**6)
+Re V_dyn(x,omega)     = -D2*exp(-4*kappa*x)/(2*x**2) - D4*exp(-2*kappa*x)/x**4 - D6/(2*x**6)
+lim x*QQ              = 0
+lim x*QY              = 0
+lim x*YY              = 0
+lim x*deltaV_stat     = 0
+lim x*Re V_dyn        = 0
+
+================================================================================
+Stage-226 audit result
+================================================================================
+All symbolic checks passed.
+Verified objects:
+- exact leakage/work lane on a concrete Gaussian projector profile,
+- exact non-rigid U/V response and positive drain,
+- exact compensated-source normalization and quadratic rewrite,
+- exact recovery slice back to the Stage-225 standard branch,
+- and strict short-range limits for the static and linear dynamic kernels.
+
+EXIT_CODE: 0

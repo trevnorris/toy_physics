@@ -1,0 +1,85 @@
+\section[Stage 235]{Stage 235: Vacuum/lattice heat partition}
+\label{stage:235}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage235_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+
+\subsection{Channel-resolved heat partition}
+\label{subsec:app-part08-stage235-heat-partition}
+
+Split the microscopic coefficients as
+\begin{equation}
+\label{eq:app-part08-stage235-split}
+\Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+\qquad
+\Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat},
+\qquad
+\Gamma_n^{\rm vac},\Gamma_n^{\rm lat}\ge0.
+\end{equation}
+For an event window \([0,T]\), define
+\begin{equation}
+\label{eq:app-part08-stage235-shape-integrals}
+\mathcal I_2(T)=\int_0^T\ddot V^{2}\,dt,
+\qquad
+\mathcal I_3(T)=\int_0^T\dddot V^{2}\,dt.
+\end{equation}
+The integrated energies are
+\begin{equation}
+\label{eq:app-part08-stage235-evac-elat}
+E_{\rm vac}=\Gamma_3^{\rm vac}\mathcal I_2+\Gamma_5^{\rm vac}\mathcal I_3,
+\qquad
+E_{\rm lat}=\Gamma_3^{\rm lat}\mathcal I_2+\Gamma_5^{\rm lat}\mathcal I_3.
+\end{equation}
+With \(\mathfrak r_V=\mathcal I_3/\mathcal I_2\), the fractions are
+\begin{equation}
+\label{eq:app-part08-stage235-fractions}
+f_{\rm vac}(\mathfrak r_V)=
+\frac{\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V},
+\qquad
+f_{\rm lat}(\mathfrak r_V)=
+\frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V}.
+\end{equation}
+The partition drift obeys
+\begin{equation}
+\label{eq:app-part08-stage235-fraction-drift}
+\frac{df_{\rm lat}}{d\mathfrak r_V}
+=
+\frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}{(\Gamma_3+\Gamma_5\mathfrak r_V)^2}.
+\end{equation}
+So slow events sample the cubic split, fast rough events sample the quintic split.
+
+For a single-growth cold event
+\begin{equation}
+\label{eq:app-part08-stage235-single-growth}
+V(t)=V_{\rm in}e^{st},
+\qquad
+0\le t\le T,
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage235-single-growth-integrals}
+\mathcal I_2=\frac{V_{\rm in}^{2}s^3}{2}(e^{2sT}-1),
+\qquad
+\mathcal I_3=s^2\mathcal I_2,
+\qquad
+\mathfrak r_V=s^2.
+\end{equation}
+The event-equivalent rates are
+\begin{equation}
+\label{eq:app-part08-stage235-equivalent-rates}
+\gamma_{\rm vac}^{\rm eq}(s)=\Gamma_3^{\rm vac}s^2+\Gamma_5^{\rm vac}s^4,
+\qquad
+\gamma_{\rm lat}^{\rm eq}(s)=\Gamma_3^{\rm lat}s^2+\Gamma_5^{\rm lat}s^4.
+\end{equation}
+At the safe edge, with \(T=1/s_c\) and \(\Gamma_3s_c^3+\Gamma_5s_c^5=\mu_\eta(s_0^2-s_c^2)\), the total minimum exported energy is \cref{eq:app-part08-main-safe-energy}, and the channel energies are obtained by multiplying by \(f_{\rm vac}(s_c)\) or \(f_{\rm lat}(s_c)\).
+
+The old Session-IV \(3:1\) heat split becomes a coefficient-surface condition:
+\begin{equation}
+\label{eq:app-part08-stage235-three-one-surface}
+f_{\rm lat}(s_c)=\frac34
+\iff
+\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}s_c^2
+=
+3\bigl(\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}s_c^2\bigr).
+\end{equation}
+It is speed-independent only on the special family where both cubic and quintic channels have the same lattice fraction.

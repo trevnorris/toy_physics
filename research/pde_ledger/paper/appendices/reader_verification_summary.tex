@@ -1,0 +1,95 @@
+\chapter{Reader Verification Summary}
+\label{app:reader-verification-summary}
+
+\def\ReaderPath#1{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+
+This appendix gives the reader build a compact view of the verification stack
+without embedding raw transcripts or a stage-by-stage file manifest.
+
+All repo paths below are relative to \ReaderPath{research/pde_ledger/}.
+
+\section{Current baseline}
+
+\begin{longtable}{L{0.33\textwidth}L{0.57\textwidth}}
+\toprule
+Metric & Current archive baseline \\
+\midrule
+\endhead
+Total stages & 236 \\
+\addlinespace
+Stages with SymPy symbolic audits & 220 \\
+\addlinespace
+Stages with Mathematica symbolic audits & 162 \\
+\addlinespace
+Stages with dedicated numerical-stress harnesses & 14 \\
+\addlinespace
+Stages with written review records & 175 \\
+\addlinespace
+Citation-support checkpoint trust status & 25 strong; 0 moderate; 0 weak \\
+\addlinespace
+Checkpoint stages with dedicated numerical-stress backing & 003, 168, 231, 236 \\
+\bottomrule
+\end{longtable}
+
+\section{Verification layers}
+
+\begin{longtable}{L{0.24\textwidth}L{0.26\textwidth}L{0.40\textwidth}}
+\toprule
+Layer & Repo location & Reader-build interpretation \\
+\midrule
+\endhead
+Canonical stage files & \ReaderPath{paper/stages/} and
+\ReaderPath{paper/appendices/stage_appendix_part*.tex} & Source archive and
+human-facing derivation ledger. \\
+\addlinespace
+Paper theorem blocks & \ReaderPath{paper/parts/} & Curated
+derivation and citation layer. \\
+\addlinespace
+SymPy audits & \ReaderPath{scripts/} & Stagewise symbolic
+checks and numerical stress harnesses. \\
+\addlinespace
+Mathematica audits & \ReaderPath{mathematica/}
+& Independent second-CAS replay layer. \\
+\addlinespace
+Verification trackers & repo-local control layer & Repo-level tracking of path
+inventory, trust, coverage, and cleanup sequencing. \\
+\bottomrule
+\end{longtable}
+
+\section{How to locate the audits}
+
+The stage number is the reader-facing lookup key.  Raw per-stage filenames are
+intentionally omitted from the printed stage cards so the derivation pages stay
+legible.
+
+\begin{itemize}[leftmargin=2.2em]
+  \item SymPy symbolic audits follow
+  \ReaderPath{moving_throat_pde_stageNNN_*_sympy_audit.py}.
+  \item Mathematica symbolic audits follow
+  \ReaderPath{moving_throat_pde_stageNNN_*_mathematica_audit.wl}.
+  \item Numerical stress harnesses usually follow
+  \ReaderPath{stageNNN*_stress.py} and \ReaderPath{stageNNN*_stress.wl}, with
+  occasional shared-range names such as \ReaderPath{stage003_004_*}.
+  \item The exact path inventory and current coverage state are maintained in
+  the control documents listed above rather than repeated inside every stage.
+\end{itemize}
+
+\section{What is intentionally omitted here}
+
+The reader build does not include:
+\begin{itemize}[leftmargin=2.2em]
+  \item raw script transcripts;
+  \item the full stage-by-stage audit registry;
+  \item the full reproducibility map;
+  \item the exact per-stage file-path inventory;
+  \item the full source-file index.
+\end{itemize}
+
+That omission is deliberate. The reader build is a navigation layer.  The
+archive build and repo control documents remain the full audit register.
+
+\section{Citation rule}
+
+Use the reader build to find the right theorem block and the right status
+language. Use the archive build and repo artifacts when the claim is
+load-bearing enough that a future paper or referee needs the full audit trail.

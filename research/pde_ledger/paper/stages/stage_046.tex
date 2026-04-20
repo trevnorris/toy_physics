@@ -1,0 +1,41 @@
+\section[Stage 046]{Stage 046: Parent-Overlap Threshold Theorem and Microscopic Success/No-Go Tests}
+\label{stage:046}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} after the Stage~045 parent-overlap projection.}
+\stagefield{Purpose}{Stage~046 turns the microscopic gain formula into exact fail/succeed surfaces for confinement-loading amplitude and source/support coherence.}
+\stagefield{Inputs}{The parent gain formula, \(G_{\rm fail}\), \(G_{\rm suff}\), and the Cauchy bound on \(C_{\sigma\phi}^2\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage046_parent_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage046_parent_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage046_parent_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage046_parent_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+At fixed profile shapes, the amplitude thresholds are
+\begin{equation}
+\label{eq:app-stage046-gphi-thresholds}
+\boxed{
+g_{\phi,{\rm fail}}^2
+=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm fail}}{\rho_*O_{\sigma\phi}^2},
+\qquad
+ g_{\phi,{\rm suff}}^2
+=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm suff}}{\rho_*O_{\sigma\phi}^2}}.
+\end{equation}
+At fixed \(g_\phi\), the coherence thresholds are
+\begin{equation}
+\label{eq:app-stage046-coherence-thresholds}
+\boxed{
+C_{\rm fail}^2=\frac{mc_{s,*}^2K_XG_{\rm fail}}{\rho_*g_\phi^2N_{\phi\phi}},
+\qquad
+C_{\rm suff}^2=\frac{mc_{s,*}^2K_XG_{\rm suff}}{\rho_*g_\phi^2N_{\phi\phi}}}.
+\end{equation}
+The Cauchy bound yields the no-go:
+\begin{equation}
+\label{eq:app-stage046-cauchy-nogo}
+C_{\rm fail}^2>1
+\quad\Longrightarrow\quad
+\text{no source profile in this support channel can reach even the fail threshold.}
+\end{equation}
+
+\stagefield{Output}{Amplitude thresholds \eqref{eq:app-stage046-gphi-thresholds}, coherence thresholds \eqref{eq:app-stage046-coherence-thresholds}, and Cauchy no-go \eqref{eq:app-stage046-cauchy-nogo}.}
+\stagefield{Downstream use}{Stage~047 shows that parent equilibrium tends toward matched source/support alignment; Stages~048--052 reduce the thresholds to a wall figure of merit.}
+

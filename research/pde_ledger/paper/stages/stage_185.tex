@@ -1,0 +1,28 @@
+\section[Stage 185]{Stage 185: Free-quintuple target graph}
+\label{stage:185}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.1}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~185 removes the abstract target-orbit language by solving the three monomial constraints explicitly as a graph over the five free microscopic coordinates.}
+
+\stagefield{Inputs}{Imports the direct monomials \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\), together with the free quintuple \(\mathbf y=(\lambda_W,c_{\eta U},\gamma,K_U,K_W^{(\rm eff)})\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage185_free_quintuple_target_graph_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation solves first for the split-\(U\) depth coordinate, then \(T_U^{\rm graph}\), then \(K_{\eta,*}^{\rm graph}\), and finally \(\mu_W^{\rm graph}\).  It then proves that every target-orbit point is exactly one such graph point.}
+
+\stagefield{Output}{Exact target graph \(\mathbf x_*^{\rm graph}(\mathbf y)\), graph errors \((E_T,E_K,E_\mu)\), and the first reduced-family test in graph-error coordinates.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check target monomial ratios are formed against the declared target values before taking logarithms.
+\item Check the same-free-quintuple convention is used; changing the free/dependent split changes the projection chart.
+\item Check graph-aligned closure is not confused with actual PDE realization.
+\item Carry the \StatusExactClosure{} status tag whenever citing the compiler itself.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.1} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

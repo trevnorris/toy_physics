@@ -1,0 +1,41 @@
+\section[Stage 027]{Stage 027: Continuum-Selected Rank--2 Closure and Quadratic Branch Equation}
+\label{stage:027}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} after the physical support-direction data are inserted.}
+\stagefield{Purpose}{Stage~027 turns the abstract rank--2 branch into a continuum-selected branch point.  The physical softening depth is no longer free; it is selected by an exact quadratic.}
+\stagefield{Inputs}{The Stage~026 replacements \(q=tR_U\), \(r=tR_\phi\), mixed baseline \(M_{\rm mix}\), and support loading \(M_{\rm supp}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage027_continuum_selected_rank2_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage027_continuum_selected_rank2_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage027_continuum_selected_rank2_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage027_continuum_selected_rank2_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The selected determinant becomes an equation for \(\xi\).  After collecting terms, the physical softening depth satisfies
+\begin{equation}
+\label{eq:app-stage027-quadratic}
+\boxed{
+\xi^2+B_{\rm cont}\xi+C_{\rm cont}=0},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage027-Bcont}
+B_{\rm cont}
+=\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
+\end{equation}
+\begin{equation}
+\label{eq:app-stage027-Ccont}
+C_{\rm cont}
+=-\delta(M_{\rm mix}+M_{\rm supp})
++t^2M_{\rm mix}M_{\rm supp}(R_U-R_\phi)^2.
+\end{equation}
+Once the physical root \(\xi_{\rm phys}\in(0,1)\) is selected, the normalization gate is
+\begin{equation}
+\label{eq:app-stage027-normalization-gate}
+\boxed{
+R_{\rm target}=F_{\rm cont}(\xi_{\rm phys})}.
+\end{equation}
+Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.
+
+\stagefield{Output}{The continuum-selected quadratic \eqref{eq:app-stage027-quadratic} and normalization gate \eqref{eq:app-stage027-normalization-gate}.}
+\stagefield{Downstream use}{Stage~028 shows the first coherent D/N kernel lands on the tracking surface; Stage~030 packages support enhancement on that surface.}
+

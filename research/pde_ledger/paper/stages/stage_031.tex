@@ -1,0 +1,33 @@
+\section[Stage 031]{Stage 031: Exact Support-Compensation Theorem on the Physical Tracking Branch}
+\label{stage:031}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the reduced support-compensation theorem; \StatusOpen{} for actual PDE placement of \(\zeta_{\rm phys}\).}
+\stagefield{Purpose}{Stage~031 proves that there is no reduced-level support no-go on the coherent tracking branch: if a finite support ratio above threshold exists, it reaches the target before the softening pole.}
+\stagefield{Inputs}{The support factor \(S(\zeta;\epsilon)\), mixed baseline \(M_{\rm mix}\), and tracking-branch required load \(M_{\rm req}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage031_support_compensation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage031_support_compensation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage031_support_compensation_theorem_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage031_support_compensation_theorem_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Define
+\begin{equation}
+\label{eq:app-stage031-Sreq}
+S_{\rm req}=\frac{M_{\rm req}}{M_{\rm mix}}.
+\end{equation}
+Solving \(S(\zeta;\epsilon)=S_{\rm req}\) gives the exact inverse
+\begin{equation}
+\label{eq:app-stage031-zeta-req}
+\boxed{
+\zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+\end{equation}
+On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds iff
+\begin{equation}
+\label{eq:app-stage031-success-iff}
+\boxed{
+\zeta_{\rm phys}\geq\zeta_{\rm req}}.
+\end{equation}
+
+\stagefield{Output}{The exact threshold \eqref{eq:app-stage031-zeta-req} and success condition \eqref{eq:app-stage031-success-iff}.}
+\stagefield{Downstream use}{Stages~032--040 derive \(\zeta_{\rm phys}\) from finite-throat support, overlap, Robin compliance, and transport bias.}
+

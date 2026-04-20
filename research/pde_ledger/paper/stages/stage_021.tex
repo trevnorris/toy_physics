@@ -1,0 +1,56 @@
+\section[Stage 021]{Stage 021: Dimensionless Continuum Placement Map and Product Law}
+\label{stage:021}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} once the Stage~020 kernel is declared.}
+\stagefield{Purpose}{Stage~021 compresses the raw continuum constants into dimensionless ratios and proves that the selected quadrupole placement splits into a geometry lane, a product lane, and a redistribution lane.}
+\stagefield{Inputs}{The Stage~020 formulas for \(A\), \(M_{\rm mix}\), \(\delta\), and the selected outgoing normalization target.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage021_dimensionless_continuum_placement_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage021_dimensionless_continuum_placement_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage021_dimensionless_continuum_placement_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage021_dimensionless_continuum_placement_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Define the dimensionless continuum ratios
+\begin{equation}
+\label{eq:app-stage021-ratios-a}
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{\rm eff}},
+\qquad
+\epsilon_W=\frac{c_{UW}^2\sigma}{K_UK_W^{\rm eff}},
+\qquad
+\rho=\frac{c_{UW}c_{\eta U}}{K_Uc_{\eta W}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage021-ratios-b}
+Z_W=\frac{c_{\eta W}^2}{K_\eta^{\rm eff}K_W^{\rm eff}},
+\qquad
+\delta_0=\frac{\pi^2T_w}{L^2K_\eta^{\rm eff}},
+\qquad
+\Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
+\end{equation}
+Substitution into Stage~020 gives the exact placement map
+\begin{equation}
+\label{eq:app-stage021-placement-map}
+\boxed{
+\delta=\frac{\delta_0}{1-\epsilon_\eta},
+\qquad
+M_{\rm mix}=\frac{8Z_W(1+\rho)^2}{\pi^2(1-\epsilon_\eta)(1-\epsilon_W)}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage021-Rtarget}
+\boxed{
+R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{Z_W(1+\rho)^2}}.
+\end{equation}
+Multiplying \eqref{eq:app-stage021-placement-map} and \eqref{eq:app-stage021-Rtarget} cancels the redistribution variables:
+\begin{equation}
+\label{eq:app-stage021-product-law}
+\boxed{
+R_{\rm target}M_{\rm mix}
+=\frac{8\Lambda(1-\epsilon_W)}{\pi^2}
+=\frac{54Gc_s^5K_W^{\rm eff}(1-\epsilon_W)}{5a^5c^5\mu_W}}.
+\end{equation}
+Thus \((\epsilon_W,\Lambda)\) fix the product scale, \(\epsilon_\eta\) fixes the geometry lane through \(\delta\), and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
+
+\stagefield{Output}{The placement map \eqref{eq:app-stage021-placement-map}--\eqref{eq:app-stage021-Rtarget} and product law \eqref{eq:app-stage021-product-law}.}
+\stagefield{Checks}{The product law must be invariant under redistributions of \(Z_W\), \(\rho\), and \(\epsilon_\eta\) that leave the product lane fixed.}
+\stagefield{Downstream use}{Stages~022--023 deform the placement map by adding a non-flat \(U\) doublet; Stage~064 and later rewrite the final Family--1 demand in branch-product variables.}
+

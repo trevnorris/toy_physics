@@ -1,0 +1,27 @@
+\section[Stage 156]{Stage 156: Weak-axisymmetric loading mismatch}
+\label{stage:156}
+
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.1}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~156 is the original-stage audit card for \emph{Weak-axisymmetric loading mismatch}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+
+\stagefield{Inputs}{This stage imports the Stage--146 off-family scalar, the lower compensated Family--1 branch, the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify the parent action or the charge/notation firewall.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage156_axisymmetric_loading_mismatch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage156_axisymmetric_loading_mismatch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage156_axisymmetric_loading_mismatch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage156_axisymmetric_loading_mismatch_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The derivation removes tangent-compensated isotropic motion, proves no linear grouped feed-down into scalar slippages, and reduces the direct grouped outlet map to the physical even-response and prefactor slopes.}
+
+\stagefield{Output}{On the even-preserving branch, the remaining grouped defect is the scalar \(\Xi_{\rm load}=N_{01}/N_0-D_{01}/D_0\).}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check that tangent-compensated isotropic drift is not counted as an off-family failure mode.
+\item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+\item Check that grouped real \(P_2\) anisotropy is not allowed to feed scalar slippages linearly.
+\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.1} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+

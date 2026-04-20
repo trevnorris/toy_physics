@@ -1,0 +1,98 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage183_reference_free_home_stretch_theorem_mathematica_audit.wl
+# Date: 2026-04-21T01:30:37-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 183 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact four-scalar Packet-B compiler from primitive monomial ratios
+----------------------------------------------------------------------------------------
+Ctr_2 / Ctr_1 =
+TraditionalForm[(rc*rg*rT*((rc*rg)/rU)^deltaUs*(rT/rU)^chi0s)/rU^2]
+Cnt_2 / Cnt_1 =
+TraditionalForm[(rla^2*(rg*rla)^(2*eStar)*rmu*(rU/rT)^fStar)/(rK*rW^2*(rU*rW)^eStar)]
+epsEta_2 / epsEta_1 =
+TraditionalForm[rc^2/(rK*rU)]
+q^(2<-1) from primitive monomial ratios =
+MatrixForm[{Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - (2 + chi0s + deltaUs)*DU, -DKeta + 2*Dl + Dmu - 2*DW + 2*(Dg + Dl)*eStar - (DU + DW)*eStar + (-DT + DU)*fStar, 2*Dc - DKeta - DU}]
+M_* derived from the monomial log-ratio Jacobian =
+MatrixForm[{{0, 1 + deltaUs, 1 + deltaUs, -2 - chi0s - deltaUs, 0, 0, 0, 1 + chi0s}, {2*(1 + eStar), 0, 2*eStar, -eStar + fStar, -1, -2 - eStar, 1, -fStar}, {0, 2, 0, -1, -1, 0, 0, 0}}]
+derived M_* - carried Stage-175 matrix =
+MatrixForm[{{{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}}]
+q^(2<-1) - M_* Delta x^(2<-1) =
+MatrixForm[{{0, 0, 0}}]
+
+----------------------------------------------------------------------------------------
+II. Exact target-orbit witness invariance from the carried orbit law
+----------------------------------------------------------------------------------------
+Log[Ctr(witness) / Ctr(*)] = 0
+PASS: Log[Ctr(witness) / Ctr(*)]
+Log[Cnt(witness) / Cnt(*)] = 0
+PASS: Log[Cnt(witness) / Cnt(*)]
+Log[epsEta(witness) / epsEta(*)] = 0
+PASS: Log[epsEta(witness) / epsEta(*)]
+Delta_H^int(x | O_*) =
+MatrixForm[{-1 + chiQx, -((1 + deltaUs)*Log[(cs*gs)/KUs]) + chi0s*Log[KUs] + deltaUs*Log[(cx*gx)/KUx] - chi0s*Log[KUx] - chi0s*Log[Ts] + chi0s*Log[Tx] + Log[(cx*gx*KUs*Tx)/(KUx^2*Ts)], 2*Log[KWs] - 2*Log[KWx] - 2*Log[lams] + 2*Log[lamx] + Log[(Ketas*mux)/(Ketax*mus)], -2*Log[cs] + 2*Log[cx] + Log[(Ketas*KUs)/(Ketax*KUx)]}]
+Delta_H^(x<-w) with an arbitrary target-orbit witness w =
+MatrixForm[{-1 + chiQx, -(deltaUs*Log[cs]) + deltaUs*Log[cx] - deltaUs*Log[gs] + deltaUs*Log[gx] + 2*Log[KUs] + chi0s*Log[KUs] + deltaUs*Log[KUs] - 2*Log[KUx] - chi0s*Log[KUx] - deltaUs*Log[KUx] - chi0s*Log[Ts] + chi0s*Log[Tx] + Log[(cx*gx*Tx)/(cs*gs*Ts)], 2*Log[KWs] - 2*Log[KWx] - 2*Log[lams] + 2*Log[lamx] + Log[(Ketas*mux)/(Ketax*mus)], -2*Log[cs] + 2*Log[cx] + Log[(Ketas*KUs)/(Ketax*KUx)]}]
+pairwise witness packet - intrinsic orbit packet =
+MatrixForm[{{0, 0, 0, 0}}]
+
+----------------------------------------------------------------------------------------
+III. Exact mismatch chart from the dependent-triple orbit solve
+----------------------------------------------------------------------------------------
+Log[Ctr(actual) / Ctr_*] - (1+chi0_*) Log[m_T] = 0
+PASS: Log[Ctr(actual) / Ctr_*] - (1+chi0_*) Log[m_T]
+Log[Cnt(actual) / Cnt_*] - (Log[m_mu] - Log[m_K] - F_* Log[m_T]) = 0
+PASS: Log[Cnt(actual) / Cnt_*] - (Log[m_mu] - Log[m_K] - F_* Log[m_T])
+Log[epsEta(actual) / epsEta_*] + Log[m_K] = 0
+PASS: Log[epsEta(actual) / epsEta_*] + Log[m_K]
+q(mismatch) =
+MatrixForm[{(1 + chi0s)*Log[mT], -Log[mK] + Log[mMu] - fStar*Log[mT], -Log[mK]}]
+q(mismatch) - carried chart =
+MatrixForm[{{0, 0, 0}}]
+M_* Delta x_mis - q(mismatch) =
+MatrixForm[{{0, 0, 0}}]
+
+----------------------------------------------------------------------------------------
+IV. Exact cocycle law from microscopic ratio composition
+----------------------------------------------------------------------------------------
+Delta x^31 - Delta x^32 - Delta x^21 =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+q^(31) - q^(32) - q^(21) =
+MatrixForm[{{0, 0, 0}}]
+
+----------------------------------------------------------------------------------------
+V. Exact Packet-A linearization and assembled full compiler
+----------------------------------------------------------------------------------------
+Delta_Q^lin - eps(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S) = 0
+PASS: Delta_Q^lin - eps(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S)
+Delta_H^lin =
+MatrixForm[{(eps*(dSigma0 + 27*dSigma5 + 15*epsBeta*S))/(3*S), Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - 2*DU - chi0s*DU - deltaUs*DU, -DKeta + Dmu - 2*DW + 2*Dg*eStar - DU*eStar - DW*eStar + 2*Dl*(1 + eStar) - DT*fStar + DU*fStar, 2*Dc - DKeta - DU}]
+
+========================================================================================
+STAGE 183 LEDGER
+========================================================================================
+1. The Packet-B quotient coordinates are derived from the primitive coherent monomials
+      (C_tr, C_nt, eps_eta)
+   and their logarithmic Jacobian reproduces the carried Stage-175 matrix M_*.
+2. The target-orbit witness packet is genuinely witness-independent because the
+   finite similarity-orbit law preserves the three coherent monomials exactly.
+3. The mismatch chart q = ((1+chi0_*) ln m_T, ln m_mu - ln m_K - F_* ln m_T, -ln m_K)
+   is re-derived from the exact dependent-triple orbit solve rather than posited.
+4. The pairwise cocycle law is inherited from microscopic ratio composition
+      Delta x^(31) = Delta x^(32) + Delta x^(21),
+   followed by the monomial compiler q = M_* Delta x.
+5. The full linearized home-stretch compiler is
+      Delta_HS^lin = (Delta_Q^lin, M_* delta x),
+   where Delta_Q^lin is carried from the exact Packet-A closure law and the
+   remaining three rows come from the monomial log-ratio Jacobian.
+
+EXIT_CODE: 0

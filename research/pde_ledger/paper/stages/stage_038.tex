@@ -1,0 +1,31 @@
+\section[Stage 038]{Stage 038: Explicit Reachability of the Non-Twin Lowest Support Lane}
+\label{stage:038}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the combined overlap/compliance reachability window.}
+\stagefield{Purpose}{Stage~038 combines the overlap boost and Robin softening into a single lowest-lane reachability test.}
+\stagefield{Inputs}{The overlap ceiling from Stage~036 and the Robin softening factor from Stage~037.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage038_explicit_reachability_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage038_explicit_reachability_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage038_explicit_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage038_explicit_reachability_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The physical lowest-lane support ratio factors as
+\begin{equation}
+\label{eq:app-stage038-zeta-factor}
+\zeta_0^{\rm phys}=A_K(\eta)\Omega_0^2.
+\end{equation}
+Using Stages~036--037,
+\begin{equation}
+\label{eq:app-stage038-reachability-window}
+\boxed{
+1\leq \zeta_0^{\rm phys}
+\leq
+\frac{\pi^2}{4}\frac{4}{4-x}
+}
+\end{equation}
+inside the explicit non-twin lowest-lane family.  Thus every non-twin support rescue must pass through a finite overlap-plus-compliance window.  Demands above this window cannot be reached by this family, regardless of transport bias.
+
+\stagefield{Output}{Combined reachability window \eqref{eq:app-stage038-reachability-window}.}
+\stagefield{Downstream use}{Stages~039--042 derive how transport selects a point inside this reachability window.}
+

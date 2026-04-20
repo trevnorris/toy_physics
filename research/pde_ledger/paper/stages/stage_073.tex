@@ -1,0 +1,25 @@
+\section[Stage 073]{Stage 073: Updated Reduced Theorem Status After Loading-Ratio Extraction}
+\label{stage:073}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the support/source verdict under the minimal module; \StatusOpen{} for derivation of that minimal module from the actual moving-throat grouped \(P_2\)/geometry branch.}
+\stagefield{Purpose}{Stage~073 records the clean status update after Stages~071--072.}
+\stagefield{Inputs}{The explicit Family--1 support/source side and the minimal isotropic contact-plus-pole conservative precursor.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage073_updated_reduced_status_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage073_updated_reduced_status_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage073_updated_reduced_status_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Inside the reduced Family--1 branch, the following are settled:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the explicit Family--1 support/source branch has a hard constructive ceiling;
+  \item outgoing normalization factors cancel from the support theorem;
+  \item the support theorem depends only on \(\rho_\alpha=\alpha_{\rm req}/\alpha_{\rm mix}\);
+  \item the natural contact-plus-pole reading gives \(\rho_\alpha=4/3\);
+  \item this lies strictly inside the Family--1 success region;
+  \item the explicit branch succeeds at zero transport bias.
+\end{enumerate}
+The remaining reduced question is not whether the Family--1 support/source side can meet the minimal module.  It is whether the actual grouped real \(P_2\)/geometry throat branch realizes that minimal isotropic conservative quadrupole module.
+
+\stagefield{Output}{The support/source side is finished under the minimal module.  The next theorem gate is derivation of the module itself.}
+\stagefield{Downstream use}{Part~IV begins with the grouped \(P_2\)+geometry derivation of the \(3/4+1/4\) conservative quadrupole module.}

@@ -1,0 +1,39 @@
+\section[Stage 044]{Stage 044: Microscopic Gain Thresholds and Operator Phase Diagram}
+\label{stage:044}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the gain-threshold phase diagram.}
+\stagefield{Purpose}{Stage~044 rewrites the support/source verdict in terms of the microscopic gain rather than an abstract operator strength.}
+\stagefield{Inputs}{The thresholds \(\Xi_{\rm fail}\), \(\Xi_{\rm suff}\), the support geometry parameter \(\kappa\), and the relation between \(\Xi\) and \(G_{\rm micro}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage044_microscopic_gain_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage044_microscopic_gain_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage044_microscopic_gain_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage044_microscopic_gain_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The fixed-point strength is written as
+\begin{equation}
+\label{eq:app-stage044-Xi-micro}
+\Xi_{\rm micro}=\kappa G_{\rm micro}.
+\end{equation}
+Consequently, the gain thresholds are
+\begin{equation}
+\label{eq:app-stage044-G-thresholds}
+\boxed{
+G_{\rm fail}=\frac{\Xi_{\rm fail}}{\kappa},
+\qquad
+G_{\rm suff}=\frac{\Xi_{\rm suff}}{\kappa}}.
+\end{equation}
+The reduced phase diagram is
+\begin{equation}
+\label{eq:app-stage044-phase-diagram}
+\boxed{
+\begin{array}{lll}
+G_{\rm micro}<G_{\rm fail} &\Rightarrow& \text{fail},\\[0.25em]
+G_{\rm micro}>G_{\rm suff} &\Rightarrow& \text{succeed},\\[0.25em]
+G_{\rm fail}\leq G_{\rm micro}\leq G_{\rm suff} &\Rightarrow& \text{root-sensitive}.
+\end{array}}
+\end{equation}
+
+\stagefield{Output}{The microscopic gain phase diagram \eqref{eq:app-stage044-G-thresholds}--\eqref{eq:app-stage044-phase-diagram}.}
+\stagefield{Downstream use}{Stages~045--046 express \(G_{\rm micro}\) in parent GNLS overlap data and derive no-go/success thresholds.}
+

@@ -1,0 +1,28 @@
+\section[Stage 198]{Stage 198: Up-to-four-coordinate search sieve}
+\label{stage:198}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~198 splices all primitive quadruple interiors into the imported support-\(\le3\) boundary ledger.}
+
+\stagefield{Inputs}{Imports Stage~195 boundary packets, Stage~197 quadruple interior packets, and the \(\binom54=5\) primitive quadruple family.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage198_full_primitive_quadruple_ranking_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation proves boundary splicing for quadruples, classifies quadruple packets, ranks certified primitive quadruples, and defines the support-\(\le4\) interval by taking the minimum of the support-\(\le3\) and genuine quadruple interior ledgers.}
+
+\stagefield{Output}{Support-\(\le4\) finite search ledger, primitive-quadruple winner theorem, global support-cardinality-four improvement/no-improvement theorem, and preferred cumulative budget \(1140\).}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+\item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+\item Check support-cardinality closure is limited to the declared five free coordinates.
+\item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.4} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

@@ -1,0 +1,21 @@
+
+========================================================================================
+STAGE 42 — OPERATOR-SELECTED RESIDUAL BOUNDS
+========================================================================================
+zeta_- = (kappa + pi**2/4)*Omega(Delta0*Xi)**2/(kappa + y**2)
+zeta_+ = (kappa + pi**2/4)*Omega(DeltaInf*Xi)**2/(kappa + y**2)
+R_- = (zeta_req*(kappa + y**2) - (4*kappa + pi**2)*Omega(DeltaInf*Xi)**2/4)/(kappa + y**2)
+R_+ = (zeta_req*(kappa + y**2) - (4*kappa + pi**2)*Omega(Delta0*Xi)**2/4)/(kappa + y**2)
+residual bracket center identity = 0
+Xi_fail = Pe_req/DeltaInf
+Xi_suff = Pe_req/Delta0
+Xi_suff - Xi_fail on the ordered branch = Pe_req*delta_gap/(Delta0*(Delta0 + delta_gap))
+Pe_req - Xi_fail Delta_0 = Pe_req*delta_gap/(Delta0 + delta_gap)
+Xi_suff Delta_inf - Pe_req = Pe_req*delta_gap/Delta0
+Omega_Pe^2 small-Pe series = Pe*(-1 + 4/pi) + 1
+Omega^2 linear coefficient = 0
+nsolve Xi_fail saturation diff = 1.8111358153436545557726029292036153940857054793194291826217826759839897427142433E-72
+nsolve Xi_suff saturation diff = 6.0371193865872881078881144088817661238730220659400895518796437632955184140691064E-72
+weak-coupling zeta_phys = 4*Delta0*Xi*kappa/(pi*kappa + pi*y**2) - Delta0*Xi*kappa/(kappa + y**2) - pi**2*Delta0*Xi/(4*kappa + 4*y**2) + pi*Delta0*Xi/(kappa + y**2) + kappa/(kappa + y**2) + pi**2/(4*kappa + 4*y**2)
+
+Stage 42 audit passed.

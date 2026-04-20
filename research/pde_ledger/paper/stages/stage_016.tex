@@ -1,0 +1,122 @@
+\section[Stage 016]{Stage 016: Microscopic Normalization Equation and Stability Gate}
+\label{stage:016}
+
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{The coupling-level equations are \StatusExactClosure{} inside the first finite-throat kernel closure.  Realization by the actual branch is \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~016 writes the selected target in microscopic coupling variables and states the stability and onset gates.  This is the last form of the branch test before the eigenvalue variables are eliminated in favor of the softening depth.}
+
+\stagefield{Inputs}{The inputs are \(A=K_0-g_U^2/\Omega_U^2\), the mixed determinant \(\Delta_0\), the transfer numerator \(\mathcal X\), and the selected product \(N_-\) from Stage~015.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage016_microscopic_normalization_equation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage016_microscopic_normalization_equation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage016_microscopic_normalization_equation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage016_microscopic_normalization_equation_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Microscopic coupling variables.}
+Define
+\begin{equation}
+\label{eq:app-stage016-defs}
+\boxed{
+A=K_0-\frac{g_U^2}{\Omega_U^2},
+\qquad
+\Delta_0=\Omega_U^2\Omega_W^2-g_R^2\sigma,
+\qquad
+\mathcal X=\Omega_U^2g_W+g_Rg_U}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage016-alpha-beta}
+\boxed{
+\beta_0=\frac{\mathcal X^2}{\Delta_0^2},
+\qquad
+\alpha_0=\frac{g_B^2}{\varpi^2}+\frac{\mathcal X^2}{\Omega_U^2\Delta_0}}.
+\end{equation}
+The stability gate is
+\begin{equation}
+\label{eq:app-stage016-stability}
+\boxed{
+\Delta_0>0,
+\qquad
+A>0,
+\qquad
+\alpha_0<\alpha_{\rm crit}}.
+\end{equation}
+Using \(\kappa_0^2=8/\pi^2\) and \(\kappa_1^2=16/(9\pi^2)\),
+\begin{equation}
+\label{eq:app-stage016-alpha-crit}
+\boxed{
+\alpha_{\rm crit}=\frac{9\pi^2A(A+\Delta K_{\rm ax})}{8(11A+9\Delta K_{\rm ax})}}.
+\end{equation}
+In coupling form,
+\begin{equation}
+\label{eq:app-stage016-coupling-stability}
+\frac{g_B^2}{\varpi^2}+\frac{\mathcal X^2}{\Omega_U^2\Delta_0}
+<
+\frac{9\pi^2A(A+\Delta K_{\rm ax})}{8(11A+9\Delta K_{\rm ax})}.
+\end{equation}
+
+\paragraph{2. Microscopic selected target.}
+The selected target is
+\begin{equation}
+\label{eq:app-stage016-micro-target}
+\boxed{
+\frac{\mathcal X^2}{\Delta_0^2}\frac{s_-(\alpha_0)^2}{\kappa_0^2\lambda_-(\alpha_0)}=N_Q^{\rm target},
+\qquad
+\alpha_0=\frac{g_B^2}{\varpi^2}+\frac{\mathcal X^2}{\Omega_U^2\Delta_0}}.
+\end{equation}
+
+\paragraph{3. Onset condition.}
+At \(\alpha_0=0\),
+\begin{equation}
+s_-(0)=\kappa_0^2,
+\qquad
+\lambda_-(0)=A,
+\end{equation}
+so
+\begin{equation}
+\label{eq:app-stage016-Nzero}
+\boxed{
+N_-(0)=\frac{\beta_0\kappa_0^2}{A}
+=\frac{\mathcal X^2\kappa_0^2}{A\Delta_0^2}}.
+\end{equation}
+Because \(N_-\) increases on the positive-loading branch, a necessary condition for a hit is
+\begin{equation}
+\label{eq:app-stage016-onset}
+\boxed{
+N_-(0)\leq N_Q^{\rm target},
+\qquad
+\text{equivalently}\qquad
+\mathcal X^2\leq\frac{N_Q^{\rm target}A\Delta_0^2}{\kappa_0^2}}.
+\end{equation}
+If this fails, the selected branch starts above the target and cannot cross it.
+
+\paragraph{4. Weak-loading expansion.}
+For small \(\alpha_0\),
+\begin{equation}
+\label{eq:app-stage016-weak-loading}
+N_-(\alpha_0)=
+\frac{\beta_0\kappa_0^2}{A}
++\alpha_0\frac{\beta_0\kappa_0^2(4A\kappa_1^2+\Delta K_{\rm ax}\kappa_0^2)}{A^2\Delta K_{\rm ax}}
++O(\alpha_0^2).
+\end{equation}
+With the exact D/N constants,
+\begin{equation}
+\label{eq:app-stage016-weak-loading-DN}
+N_-(\alpha_0)=
+\frac{8\beta_0}{\pi^2A}
++\alpha_0\frac{64\beta_0(8A+9\Delta K_{\rm ax})}{9\pi^4A^2\Delta K_{\rm ax}}
++O(\alpha_0^2).
+\end{equation}
+
+\stagefield{Output}{Stage~016 outputs the coupling-level definitions \eqref{eq:app-stage016-defs}, the stability gate \eqref{eq:app-stage016-stability}, the microscopic target \eqref{eq:app-stage016-micro-target}, the onset condition \eqref{eq:app-stage016-onset}, and the weak-loading expansion \eqref{eq:app-stage016-weak-loading}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The stability condition separates internal mixed-block stability \(\Delta_0>0\), scalar-wall stability \(A>0\), and selected lower-mode stability \(\alpha_0<\alpha_{\rm crit}\).
+\item The onset condition follows from monotonicity of \(N_-\).
+\item The weak-loading coefficient is positive for positive \(A\), \(\Delta K_{\rm ax}\), and \(\beta_0\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~017 replaces \(\alpha_0\), \(s_-\), and \(\lambda_-\) by the softening depth \(x\).  Stages~018--019 non-dimensionalize the same target and feasibility data.}
+
+\clearpage
+

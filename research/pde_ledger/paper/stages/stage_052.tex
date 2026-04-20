@@ -1,0 +1,27 @@
+\section[Stage 052]{Stage 052: Final Reduced Verdict for the Support/Source Program}
+\label{stage:052}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the reduced verdict; \StatusOpen{} for actual branch placement outside the matched/prototyped families.}
+\stagefield{Purpose}{Stage~052 summarizes the support/source program before inserting the explicit Family--1 wall branch.}
+\stagefield{Inputs}{The matched wall theorem, profile penalty benchmark, and operator-selected support/source thresholds.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The reduced support/source side has three regimes:
+\begin{equation}
+\label{eq:app-stage052-three-zone}
+\boxed{
+\begin{array}{lll}
+W_{\rm wall}<\mathrm{Pe}_{\rm req}/\Delta_\infty &\Rightarrow& \text{universal fail},\\[0.25em]
+W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
+\mathrm{Pe}_{\rm req}/\Delta_\infty\leq W_{\rm wall}\leq \mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{profile-sensitive band}.
+\end{array}}
+\end{equation}
+The sech--Gaussian benchmark shows that realistic smooth mismatch need not significantly enlarge the middle band, but the actual PDE branch still has to supply its own profiles.
+
+\stagefield{Output}{The final pre-Family--1 support/source verdict \eqref{eq:app-stage052-three-zone}.}
+\stagefield{Downstream use}{Stages~053--061 evaluate \(W_{\rm wall}\), \(\kappa\), and \(\eta\) for the explicit Family--1 branch.}
+

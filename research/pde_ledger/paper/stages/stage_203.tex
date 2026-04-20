@@ -1,0 +1,28 @@
+\section[Stage 203]{Stage 203: Dynamic mixed-port kernel and phase-lag no-go}
+\label{stage:203}
+
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~203 promotes the one-port bundle to finite frequency and tests whether linear dynamic driving changes the same-charge kernel class.}
+
+\stagefield{Inputs}{Imports Stage~202, frequency-dependent BdG and Maxwell/mixed denominators, the outgoing dressing $\Pi_{\rm out}(\omega)$, and the off-pole conditions $\varpi^2-\omega^2\ne0$, $\Delta_\Pi\ne0$, $D_\Pi\ne0$.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
+
+\stagefield{Output}{Dynamic product-family theorem and phase-lag no-go: linear dynamic mixing preserves the static spatial families, and the first-order passive/outgoing insertion is a phase-lag term rather than a new real barrier-lowering kernel off resonance.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+
+

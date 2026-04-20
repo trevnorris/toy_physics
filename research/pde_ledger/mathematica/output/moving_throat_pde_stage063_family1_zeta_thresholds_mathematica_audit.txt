@@ -1,0 +1,26 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.wl
+# Date: 2026-04-20T23:05:33-06:00
+# Elapsed: 8s
+# Exit code: 1
+# Status: FAIL
+#
+
+
+========================================================================================
+STAGE 063 — FAMILY-1 ZETA THRESHOLDS
+========================================================================================
+zeta_max^(F1) = 2.46752922945601223332958450157053542039162629715527606086985963108009345061713`50.
+zeta_suff^(chi)(lambda_mu) = zeta_F1(96.5285247264386 lambda_mu^2)
+zeta_fail^(chi)(lambda_mu) = zeta_F1(11220.5441626259 lambda_mu^2)
+zeta_suff^(J)(lambda_mu) = zeta_F1(22.0062226330754 lambda_mu^2)
+zeta_fail^(J)(lambda_mu) = zeta_F1(2558.01892349205 lambda_mu^2)
+zeta_suff^(chi)(1) = 2.46622291347846457779490723407968432995`22.40437919545844
+zeta_fail^(chi)(1) = 2.46752913273870334015752087181193653052`20.347848685572895
+zeta_suff^(J)(1) = 2.44257571477179109710270578705863567229`23.01770789580542
+zeta_fail^(J)(1) = 2.46752736855057822496084091079947544931`20.98969683313605
+zeta_suff^(chi)(1) numeric check diff = 6.7989490723407968432995`6.843688096675833*^-16
+FAIL: zeta_suff^(chi)(1) numeric check
+  residual -> 6.7989490723407968432995`6.843688096675833*^-16
+
+EXIT_CODE: 1

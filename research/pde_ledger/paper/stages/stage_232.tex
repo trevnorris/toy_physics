@@ -1,0 +1,79 @@
+\section{Stage 232: Helicity export diagnostic}
+\label{sec:app-part08:helicity-export-diagnostic}
+\label{stage:232}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage232_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 232 attaches a hidden-channel export diagnostic to the Stage-231 event chain.  It is diagnostic rather than constitutive.  The parent projected helicity ledger gives the exact subscale helicity
+\begin{equation}
+\label{eq:app-part08-stage232-hsub}
+h_{\rm sub}
+=
+\overline h-h_{\rm res}
+=
+\overline{\mathbf A'\cdot\mathbf B'},
+\end{equation}
+with transfer equation
+\begin{equation}
+\label{eq:app-part08-stage232-hsub-eq}
+\partial_th_{\rm sub}+\nabla_3\cdot\mathbf F_{h,{\rm sub}}
+=
+-2\overline{\mathbf E'\cdot\mathbf B'}.
+\end{equation}
+On a reduced brane control volume,
+\begin{equation}
+\label{eq:app-part08-stage232-hdot}
+\frac{dH_{\rm sub}}{dt}
+=
+-\Phi_h(t;E)-2\mathcal C_h(t;E),
+\end{equation}
+where \(\Phi_h\) is the unresolved-helicity flux through the control boundary and \(\mathcal C_h\) is the unresolved covariance source.
+
+The minimal orientation closure introduces \(\sigma=+1\) for aligned and \(\sigma=-1\) for anti-aligned, with
+\begin{equation}
+\label{eq:app-part08-stage232-orientation-closure}
+\Phi_{h,\sigma}=\Phi_{h,0}+\sigma\Phi_{h,1},
+\qquad
+\mathcal C_{h,\sigma}=\mathcal C_{h,0}+\sigma\mathcal C_{h,1}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-part08-stage232-export-rate}
+\dot H_{{\rm sub},\sigma}
+=\Gamma_0+\sigma\Gamma_1
+=\Gamma_0(1+\sigma\alpha_h),
+\qquad
+\alpha_h=\frac{\Gamma_1}{\Gamma_0}.
+\end{equation}
+The instantaneous ratio and inverse are
+\begin{equation}
+\label{eq:app-part08-stage232-instant-ratio}
+R_{\rm inst}=\frac{\dot H_{{\rm sub},+}}{\dot H_{{\rm sub},-}}
+=\frac{1+\alpha_h}{1-\alpha_h},
+\qquad
+\alpha_h=\frac{R_{\rm inst}-1}{R_{\rm inst}+1}.
+\end{equation}
+Over a common interval,
+\begin{equation}
+\label{eq:app-part08-stage232-integrated-ratio}
+R_{\rm int}
+=\frac{\mathcal H_+}{\mathcal H_-}
+=\frac{1+\bar\alpha_h}{1-\bar\alpha_h},
+\qquad
+\bar\alpha_h=\frac{R_{\rm int}-1}{R_{\rm int}+1}.
+\end{equation}
+Any common export scale cancels from these ratios.
+
+The benchmark packet is
+\begin{equation}
+\label{eq:app-part08-stage232-benchmark-packet}
+\begin{aligned}
+(\Xi_{\rm turn},\lambda_{\rm th},R_{\rm pk})
+&=
+(0.34437471,0.42826825,4.94653917),\\
+(R_{\rm int},\alpha_{\rm pk},\bar\alpha_h)
+&=
+(4.10920923,0.66366992,0.60854999).
+\end{aligned}
+\end{equation}
+The status is deliberately limited: this proves a hidden-channel unloading preference inside the declared closure, not intrinsic spin or a Pauli-sector theorem.

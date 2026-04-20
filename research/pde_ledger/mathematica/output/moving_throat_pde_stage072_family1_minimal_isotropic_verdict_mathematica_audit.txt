@@ -1,0 +1,34 @@
+
+========================================================================================
+STAGE 072 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
+========================================================================================
+Stage-62 zeta_max = A_F1 pi^2/4 diff = 0``49.306707698469
+PASS: Stage-62 zeta_max = A_F1 pi^2/4
+Stage-69 Q(zeta;0) = 1 + zeta on rho_suff diff = 0``36.711316871363366
+PASS: Stage-69 Q(zeta;0) = 1 + zeta on rho_suff
+Stage-69 Q(zeta;0) = 1 + zeta on rho_fail diff = 0``34.65455640106412
+PASS: Stage-69 Q(zeta;0) = 1 + zeta on rho_fail
+Stage-69 Q(zeta;0) = 1 + zeta on rho_max diff = 0``49.226574998991126
+PASS: Stage-69 Q(zeta;0) = 1 + zeta on rho_max
+rho_min = 1.33333333333333333333333333333333333333`25.
+rho_suff = 3.466222913478464577913281378192430301006895863955935177813`37.55220335586706
+rho_fail = 3.4675291327387033401575181822704184888115733988968249816175`35.4956065152505
+rho_max = 3.46752922945601223332958450157053542039162629715527606086985887514340038664202`50.
+zeta_min = 0.33333333333333333333333333333333333333`25.
+zeta_max = 2.46752922945601223332958450157053542039162629715527606086985887514340038664202`50.
+A_F1 = 1.00005192880219532865933408371398718122205389006779903584296765222242786096149`50.
+Delta_suff = 2.13288958014513124457994804485909696767`25.
+Delta_fail = 2.13419579940537000682418484893708515548`25.
+Delta_max = 2.13419589612267889999625116823720208706`25.
+Delta_zeta = 2.13419589612267889999625116823720208706`25.
+Delta_AF1 = 0.66671859546886199532600075038065384789`25.
+Family-1 loading-ratio ordering = True
+PASS: Family-1 loading-ratio ordering
+minimal isotropic branch stays in the symmetric-lowest-twin regime = True
+PASS: minimal isotropic branch stays in the symmetric-lowest-twin regime
+minimal isotropic branch succeeds at zero transport bias = True
+PASS: minimal isotropic branch succeeds at zero transport bias
+minimal isotropic branch stays below the Family-1 ceiling = True
+PASS: minimal isotropic branch stays below the Family-1 ceiling
+
+Stage 072 Mathematica audit passed.

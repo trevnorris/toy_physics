@@ -1,0 +1,113 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+# Date: 2026-04-21T01:28:24-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 201 — FULL SUPPORT-<=5 COMPLETION AND LOCAL MIXED-RAY SEARCH CLOSURE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact boundary-identification via imported Stage-198 face packets
+----------------------------------------------------------------------------------------
+primitive axes = ('lambda', 'c', 'gamma', 'U', 'W')
+imported Stage-198 boundary packets = ('support_le3', 'omit_lambda', 'omit_c', 'omit_gamma', 'omit_U', 'omit_W')
+quadruple face supports = (('c', 'gamma', 'U', 'W'), ('lambda', 'gamma', 'U', 'W'), ('lambda', 'c', 'U', 'W'), ('lambda', 'c', 'gamma', 'W'), ('lambda', 'c', 'gamma', 'U'))
+#proper nonempty support strata = 30
+primitive axes - 5 = 0
+imported quadruple packet count - 5 = 0
+imported quadruple supports match the five simplex facets = True
+support-cardinality ceiling 5 - #axes = 0
+boundary coverage incidence ('lambda',) -> ['omit_c', 'omit_gamma', 'omit_U', 'omit_W']
+boundary coverage incidence ('c',) -> ['omit_lambda', 'omit_gamma', 'omit_U', 'omit_W']
+boundary coverage incidence ('gamma',) -> ['omit_lambda', 'omit_c', 'omit_U', 'omit_W']
+boundary coverage incidence ('U',) -> ['omit_lambda', 'omit_c', 'omit_gamma', 'omit_W']
+boundary coverage incidence ('W',) -> ['omit_lambda', 'omit_c', 'omit_gamma', 'omit_U']
+boundary coverage incidence ('lambda', 'c') -> ['omit_gamma', 'omit_U', 'omit_W']
+boundary coverage incidence ('lambda', 'gamma') -> ['omit_c', 'omit_U', 'omit_W']
+boundary coverage incidence ('lambda', 'U') -> ['omit_c', 'omit_gamma', 'omit_W']
+boundary coverage incidence ('lambda', 'W') -> ['omit_c', 'omit_gamma', 'omit_U']
+boundary coverage incidence ('c', 'gamma') -> ['omit_lambda', 'omit_U', 'omit_W']
+boundary coverage incidence ('c', 'U') -> ['omit_lambda', 'omit_gamma', 'omit_W']
+boundary coverage incidence ('c', 'W') -> ['omit_lambda', 'omit_gamma', 'omit_U']
+boundary coverage incidence ('gamma', 'U') -> ['omit_lambda', 'omit_c', 'omit_W']
+boundary coverage incidence ('gamma', 'W') -> ['omit_lambda', 'omit_c', 'omit_U']
+boundary coverage incidence ('U', 'W') -> ['omit_lambda', 'omit_c', 'omit_gamma']
+boundary coverage incidence ('lambda', 'c', 'gamma') -> ['omit_U', 'omit_W']
+boundary coverage incidence ('lambda', 'c', 'U') -> ['omit_gamma', 'omit_W']
+boundary coverage incidence ('lambda', 'c', 'W') -> ['omit_gamma', 'omit_U']
+boundary coverage incidence ('lambda', 'gamma', 'U') -> ['omit_c', 'omit_W']
+boundary coverage incidence ('lambda', 'gamma', 'W') -> ['omit_c', 'omit_U']
+boundary coverage incidence ('lambda', 'U', 'W') -> ['omit_c', 'omit_gamma']
+boundary coverage incidence ('c', 'gamma', 'U') -> ['omit_lambda', 'omit_W']
+boundary coverage incidence ('c', 'gamma', 'W') -> ['omit_lambda', 'omit_U']
+boundary coverage incidence ('c', 'U', 'W') -> ['omit_lambda', 'omit_gamma']
+boundary coverage incidence ('gamma', 'U', 'W') -> ['omit_lambda', 'omit_c']
+boundary coverage incidence ('lambda', 'c', 'gamma', 'U') -> ['omit_W']
+boundary coverage incidence ('lambda', 'c', 'gamma', 'W') -> ['omit_U']
+boundary coverage incidence ('lambda', 'c', 'U', 'W') -> ['omit_gamma']
+boundary coverage incidence ('lambda', 'gamma', 'U', 'W') -> ['omit_c']
+boundary coverage incidence ('c', 'gamma', 'U', 'W') -> ['omit_lambda']
+
+----------------------------------------------------------------------------------------
+II. Exact imported support-<=4 and support-<=5 ledger splice
+----------------------------------------------------------------------------------------
+tau_{<=4,*}^{best} =
+Min(tau_face_U_best, tau_face_W_best, tau_face_c_best, tau_face_gamma_best, ta ↪
+
+↪ u_face_lambda_best, tau_le3_best)
+tau_{<=5,*}^{best} =
+Min(tau_5_best_int, tau_face_U_best, tau_face_W_best, tau_face_c_best, tau_fac ↪
+
+↪ e_gamma_best, tau_face_lambda_best, tau_le3_best)
+tau_{<=5,lo} =
+Min(tau_5_lo_int, tau_face_U_lo, tau_face_W_lo, tau_face_c_lo, tau_face_gamma_ ↪
+
+↪ lo, tau_face_lambda_lo, tau_le3_lo)
+tau_{<=5,hi} =
+Min(tau_5_hi_int, tau_face_U_hi, tau_face_W_hi, tau_face_c_hi, tau_face_gamma_ ↪
+
+↪ hi, tau_face_lambda_hi, tau_le3_hi)
+support<=5 best flattening over imported packets = 0
+support<=5 lower splice over imported packets = 0
+support<=5 upper splice over imported packets = 0
+
+----------------------------------------------------------------------------------------
+III. Exact improvement / no-improvement / overlap families on the actual finite ledger
+----------------------------------------------------------------------------------------
+genuine support-5 improvement family exhaustive outcomes = {'support5': 192, 'boundary': 0, 'tie': 0}
+support-5 improvement family boundary wins = 0
+support-5 improvement family ties = 0
+support-5 improvement family interior wins exist = True
+support-5 no-improvement family exhaustive outcomes = {'support5': 0, 'boundary': 192, 'tie': 0}
+support-5 no-improvement family interior wins = 0
+support-5 no-improvement family ties = 0
+support-5 no-improvement family boundary wins exist = True
+support-5 overlap family exhaustive outcomes = {'support5': 64, 'boundary': 64, 'tie': 0}
+support-5 overlap family retains boundary winners = True
+support-5 overlap family retains interior winners = True
+
+----------------------------------------------------------------------------------------
+IV. Exact support-five candidate filters and final budget ledger
+----------------------------------------------------------------------------------------
+support-five canonical screens = ('gradient-optimal', 'equal-mix')
+preferred lifted degree pattern = (3, 3, 3, 3, 2)
+fallback projected degree pattern = (5, 5, 5, 6)
+support-five canonical screen count - 2 = 0
+lifted compiler bound - 162 = 0
+projected compiler bound - 750 = 0
+support<=3 imported budget = 600
+support<=4 rebuilt budget = 1140
+preferred full support<=5 budget = 1464
+fallback full support<=5 budget = 2640
+support<=4 rebuilt budget - 1140 = 0
+preferred full support<=5 budget - 1464 = 0
+fallback full support<=5 budget - 2640 = 0
+
+All Stage-201 imported ledger, splice, classification, and budget checks verified.
+
+EXIT_CODE: 0

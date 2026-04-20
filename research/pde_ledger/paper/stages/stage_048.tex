@@ -1,0 +1,22 @@
+\section[Stage 048]{Stage 048: Explicit Thin-Wall Confinement Branch}
+\label{stage:048}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} / \StatusReduced{} for the declared thin-wall confinement branch.}
+\stagefield{Purpose}{Stage~048 translates the parent gain thresholds into wall-amplitude thresholds for a concrete confinement profile.}
+\stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage048_thin_wall_confinement_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage048_thin_wall_confinement_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage048_thin_wall_confinement_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage048_thin_wall_confinement_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The wall-loading amplitude is
+\begin{equation}
+\label{eq:app-stage048-gphi}
+g_\phi=\frac{V_0}{\ell}.
+\end{equation}
+Inserting this into the matched-layer gain yields thresholds directly in terms of \(V_0\), \(\ell\), support stiffness, and wall geometry.  Stage~049 packages those quantities into the dimensionless wall figure of merit.
+
+\stagefield{Output}{A physical wall-amplitude interpretation of \(g_\phi\).}
+\stagefield{Downstream use}{Stage~049 defines \(W_{\rm wall}\), the scalar control of the matched support/source theorem.}
+

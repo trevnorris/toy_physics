@@ -1,0 +1,75 @@
+# SymPy Numerical Stress Output
+# Script: stage089_canonical_outgoing_stress.py
+# Date: 2026-04-21T02:42:35-06:00
+# Elapsed: 0s
+# Exit code: 0
+#
+
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage089_canonical_outgoing_samples.json
+=== Stage 089: canonical outgoing closure stress ===
+source-map model: mhat0 = 1 + (a_over_r)^2
+
+point_particle_1e-4 (interior): a/r=0.0001, mhat0=1.00000001
+  N_Q=0.99999998, point-particle approx=0.99999998, gamma_eff ratio=1
+[PASS] point_particle_1e-4 canonical branch keeps N_Q <= 1: N_Q=0.99999998
+[PASS] point_particle_1e-4 canonical gamma_eff stays on target: gamma_eff/target=1
+[PASS] point_particle_1e-4 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=5.55111512313e-16
+[PASS] point_particle_1e-4 point-particle remainder stays below floating-point noise: N_Q - [1 - 2(a/r)^2]=5.55111512313e-16
+
+point_particle_1e-3 (interior): a/r=0.001, mhat0=1.000001
+  N_Q=0.999998000003, point-particle approx=0.999998, gamma_eff ratio=1
+[PASS] point_particle_1e-3 canonical branch keeps N_Q <= 1: N_Q=0.999998000003
+[PASS] point_particle_1e-3 canonical gamma_eff stays on target: gamma_eff/target=1
+[PASS] point_particle_1e-3 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=3.00004465714e-12
+[PASS] point_particle_1e-3 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=3.00004465714
+
+transitional_5e-2 (transitional): a/r=0.05, mhat0=1.0025
+  N_Q=0.995018687695, point-particle approx=0.995, gamma_eff ratio=1
+[PASS] transitional_5e-2 canonical branch keeps N_Q <= 1: N_Q=0.995018687695
+[PASS] transitional_5e-2 canonical gamma_eff stays on target: gamma_eff/target=1
+[PASS] transitional_5e-2 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=1.86876947283e-05
+[PASS] transitional_5e-2 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=2.99003115654
+
+transitional_1e-1 (transitional): a/r=0.1, mhat0=1.01
+  N_Q=0.980296049407, point-particle approx=0.98, gamma_eff ratio=1
+[PASS] transitional_1e-1 canonical branch keeps N_Q <= 1: N_Q=0.980296049407
+[PASS] transitional_1e-1 canonical gamma_eff stays on target: gamma_eff/target=1
+[PASS] transitional_1e-1 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=0.000296049406921
+[PASS] transitional_1e-1 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=2.96049406921
+[PASS] point_particle_1e-4 is closer to target than point_particle_1e-3: |N_Q-1|(0.0001)=1.99999994344e-08, |N_Q-1|(0.001)=1.9999969999e-06
+[PASS] point_particle_1e-3 is closer to target than transitional_5e-2: |N_Q-1|(0.001)=1.9999969999e-06, |N_Q-1|(0.05)=0.00498131230527
+[PASS] transitional_5e-2 is closer to target than transitional_1e-1: |N_Q-1|(0.05)=0.00498131230527, |N_Q-1|(0.1)=0.0197039505931
+
+near_canonical_positive_shift (stress): a/r=0.0001, mhat0=1.00000001, chi_Q=1.05
+  N_Q=0.952380933333, canonical N_Q=0.99999998, gamma_eff ratio=0.952380952381
+[PASS] near_canonical_positive_shift positive chi_Q shift lowers N_Q: N_Q=0.952380933333, canonical=0.99999998
+[PASS] near_canonical_positive_shift positive chi_Q shift lowers gamma_eff: gamma_eff/target=0.952380952381
+
+near_canonical_negative_shift (stress): a/r=0.0001, mhat0=1.00000001, chi_Q=0.95
+  N_Q=1.05263155789, canonical N_Q=0.99999998, gamma_eff ratio=1.05263157895
+[PASS] near_canonical_negative_shift negative chi_Q shift raises N_Q: N_Q=1.05263155789, canonical=0.99999998
+[PASS] near_canonical_negative_shift negative chi_Q shift raises gamma_eff: gamma_eff/target=1.05263157895
+
+transitional_positive_shift (stress): a/r=0.05, mhat0=1.0025, chi_Q=1.1
+  N_Q=0.904562443359, canonical N_Q=0.995018687695, gamma_eff ratio=0.909090909091
+[PASS] transitional_positive_shift positive chi_Q shift lowers N_Q: N_Q=0.904562443359, canonical=0.995018687695
+[PASS] transitional_positive_shift positive chi_Q shift lowers gamma_eff: gamma_eff/target=0.909090909091
+
+transitional_negative_shift (stress): a/r=0.05, mhat0=1.0025, chi_Q=0.9
+  N_Q=1.10557631966, canonical N_Q=0.995018687695, gamma_eff ratio=1.11111111111
+[PASS] transitional_negative_shift negative chi_Q shift raises N_Q: N_Q=1.10557631966, canonical=0.995018687695
+[PASS] transitional_negative_shift negative chi_Q shift raises gamma_eff: gamma_eff/target=1.11111111111
+[PASS] a/r=0.0001 symmetric branch slope at chi_Q=1 is negative: slope=-1.00250626566
+[PASS] a/r=0.0001 symmetric branch slope stays close to -1: slope=-1.00250626566
+[PASS] a/r=0.0001 reciprocal branch response is convex: gamma_+ + gamma_- - 2=0.00501253132832
+[PASS] a/r=0.0001 symmetric chi_Q shifts separate the outgoing coefficient: |gamma_+-1|=0.047619047619, |gamma_--1|=0.0526315789474
+[PASS] a/r=0.0001 symmetric chi_Q shifts separate the conservative coefficient: N_Q(chi_-)-N_Q(chi_+)=0.100250624561
+[PASS] a/r=0.05 symmetric branch slope at chi_Q=1 is negative: slope=-1.0101010101
+[PASS] a/r=0.05 symmetric branch slope stays close to -1: slope=-1.0101010101
+[PASS] a/r=0.05 reciprocal branch response is convex: gamma_+ + gamma_- - 2=0.020202020202
+[PASS] a/r=0.05 symmetric chi_Q shifts separate the outgoing coefficient: |gamma_+-1|=0.0909090909091, |gamma_--1|=0.111111111111
+[PASS] a/r=0.05 symmetric chi_Q shifts separate the conservative coefficient: N_Q(chi_-)-N_Q(chi_+)=0.201013876302
+
+All stage-089 canonical outgoing stress checks passed.
+
+EXIT_CODE: 0

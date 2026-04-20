@@ -1,0 +1,32 @@
+\documentclass[11pt,oneside]{book}
+
+\input{document_setup}
+
+\title{\ProjectName\\[0.5em]\large Reader Ledger}
+\author{Trevor Norris}
+\date{\today}
+
+\begin{document}
+
+\frontmatter
+\hypersetup{pageanchor=false}
+\maketitle
+\hypersetup{pageanchor=true}
+
+\input{frontmatter/reader_00_overview}
+\input{frontmatter/reader_01_reading_guide}
+\input{frontmatter/reader_02_status_anchor_summary}
+
+\setcounter{tocdepth}{0}
+\tableofcontents
+
+\mainmatter
+
+\input{main_parts}
+
+\appendix
+
+\input{appendices/reader_provenance_summary}
+\input{appendices/reader_verification_summary}
+
+\end{document}

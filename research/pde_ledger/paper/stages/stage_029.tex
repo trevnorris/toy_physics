@@ -1,0 +1,38 @@
+\section[Stage 029]{Stage 029: Tracking-Branch Bounds and Residual Comparison}
+\label{stage:029}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the monotonicity and residual comparison on the tracking branch.}
+\stagefield{Purpose}{Stage~029 determines whether the first coherent tracking deformation helps or hurts the selected normalization target.}
+\stagefield{Inputs}{The tracking functions \(F_{\rm tr}\), \(G_{\rm tr}\) and the constructive inequality \(R_{\rm tr}<1\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage029_tracking_branch_bounds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage029_tracking_branch_bounds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage029_tracking_branch_bounds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage029_tracking_branch_bounds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The tracking functions obey
+\begin{equation}
+\label{eq:app-stage029-monotonicity}
+\boxed{
+\frac{\partial G_{\rm tr}}{\partial R}<0,
+\qquad
+\frac{\partial F_{\rm tr}}{\partial R}>0}.
+\end{equation}
+Because the constructive split--\(U\) branch has \(R_{\rm tr}<1\), one finds
+\begin{equation}
+\label{eq:app-stage029-inequalities}
+G_{\rm tr}>G_{\rm flat},
+\qquad
+F_{\rm tr}<F_{\rm flat}
+\end{equation}
+at fixed \((\xi,\delta)\).  The exact residual comparison can be written as
+\begin{equation}
+\label{eq:app-stage029-residual}
+\boxed{
+E_{\rm tr}-E_{\rm flat}=F_{\rm flat}-F_{\rm tr}>0}.
+\end{equation}
+Thus the first coherent local D/N kernel worsens the selected normalization relative to the flat branch.  Support enhancement must compensate this deficit.
+
+\stagefield{Output}{Monotonicity \eqref{eq:app-stage029-monotonicity} and residual theorem \eqref{eq:app-stage029-residual}.}
+\stagefield{Downstream use}{Stage~030 introduces support enhancement; Stage~031 proves the compensation theorem.}
+

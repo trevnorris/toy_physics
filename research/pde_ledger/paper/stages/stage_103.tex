@@ -1,0 +1,28 @@
+\section[Stage 103]{Stage 103: Core-Parameter Extraction Status}
+\label{stage:103}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~103 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+
+\begin{quote}
+Records the surviving finite parent-level target after overlap extraction.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the Schur complement signs in the two-channel core model.
+\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+\item Check parent overlap ratios before interpreting them as actual branch values.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 108--122 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

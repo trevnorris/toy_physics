@@ -1,0 +1,28 @@
+\section[Stage 199]{Stage 199: Unique five-coordinate simplex gate}
+\label{stage:199}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~199 observes that the five-dimensional free log space has exactly one positive support-five simplex and that all of its faces are support-\(\le4\) searches.}
+
+\stagefield{Inputs}{Imports the support-\(\le4\) ledger, the five primitive axes \(\{\lambda,c,\gamma,U,W\}\), and the unique positive five-simplex.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage199_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation identifies the boundary faces with Stage~198 quadruple closed simplices, derives the five-coordinate gradient-synergy and ten-way cross-leverage laws, states the five-way canonical screens, and proves the support-cardinality ceiling.}
+
+\stagefield{Output}{Unique five-coordinate simplex, exact face reduction to support-\(\le4\), support-cardinality-five gate, and proof that no higher-support local search exists.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+\item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+\item Check support-cardinality closure is limited to the declared five free coordinates.
+\item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.4} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

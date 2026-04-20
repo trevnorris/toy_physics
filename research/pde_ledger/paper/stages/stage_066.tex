@@ -1,0 +1,23 @@
+\section[Stage 066]{Stage 066: Direct Operator-Selected Family--1 Window}
+\label{stage:066}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} / \StatusNumerical{} for direct evaluation of the operator-selected Family--1 branch.}
+\stagefield{Purpose}{Stage~066 evaluates the Family--1 support window directly through the operator-selected branch rather than only through endpoint bounds.}
+\stagefield{Inputs}{The Family--1 parameters, \(\Xi_{\rm F1}\), and the fixed-point equation for \(\mathrm{Pe}_*\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage066_family1_direct_operator_window_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage066_family1_direct_operator_window_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage066_family1_direct_operator_window_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage066_family1_direct_operator_window_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The direct operator-selected support supply is
+\begin{equation}
+\label{eq:app-stage066-zeta-direct}
+\zeta_{\rm F1}^{\rm op}=
+\zeta_{\rm phys}(\mathrm{Pe}_*(\Xi_{\rm F1},37,12321/5),37;12321/5).
+\end{equation}
+The direct window agrees with the endpoint logic: the branch has a hard constructive ceiling and a narrow endpoint-sensitive band near that ceiling.  This calculation is a numerical placement of exact functions, not an independent fit.
+
+\stagefield{Output}{Direct operator-selected support window for Family--1.}
+\stagefield{Downstream use}{Stage~067 records the reduced write-up skeleton and final remaining theorem gap.}
+

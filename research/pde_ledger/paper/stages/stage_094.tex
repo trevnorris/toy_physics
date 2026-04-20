@@ -1,0 +1,28 @@
+\section[Stage 094]{Stage 094: Explicit Mixed A-w/F-mu w-Type Side-Channel Pole}
+\label{stage:094}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~94 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage094_mixed_sidechannel_pole_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage094_mixed_sidechannel_pole_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage094_mixed_sidechannel_pole_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage094_mixed_sidechannel_pole_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+
+\begin{quote}
+A standalone hidden mixed pole cannot preserve the canonical even branch unless it is absent.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check pure scale and pure argument deformations separately.
+\item Check Robin and standalone mixed-pole limits before imposing compensation.
+\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 97--107 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

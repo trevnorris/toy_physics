@@ -1,0 +1,45 @@
+\section[Stage 037]{Stage 037: Robin-Compliance Softening of the Lowest Support Lane}
+\label{stage:037}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the Robin support eigenvalue and softening factor.}
+\stagefield{Purpose}{Stage~037 computes the support-stiffness reduction from replacing the Dirichlet mouth by a Robin compliance.}
+\stagefield{Inputs}{Lowest support lane on \([0,L]\) with Robin parameter \(\eta=hL\) and support stiffness ratio \(x\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage037_robin_softening_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage037_robin_softening_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage037_robin_softening_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage037_robin_softening_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The lowest Robin root satisfies
+\begin{equation}
+\label{eq:app-stage037-robin-root}
+\boxed{
+y\tan y=\eta,
+\qquad
+0<y<\frac{\pi}{2}}.
+\end{equation}
+Let
+\begin{equation}
+\label{eq:app-stage037-x}
+x=\frac{\pi^2T_X}{L^2K_W^{\rm eff}},
+\qquad
+0<x<4.
+\end{equation}
+Then the support-softening factor is
+\begin{equation}
+\label{eq:app-stage037-AK}
+\boxed{
+A_K(\eta)=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}
+=\frac{1}{1-x/4+xy^2/\pi^2}}.
+\end{equation}
+The endpoint window is
+\begin{equation}
+\label{eq:app-stage037-AK-window}
+\boxed{
+1\leq A_K\leq\frac{4}{4-x}}.
+\end{equation}
+Pure support softening alone can rescue the Stage~035 threshold only if \(\zeta_{\rm req}\leq4/(4-x)\).
+
+\stagefield{Output}{Robin root \eqref{eq:app-stage037-robin-root}, softening factor \eqref{eq:app-stage037-AK}, and ceiling \eqref{eq:app-stage037-AK-window}.}
+\stagefield{Downstream use}{Stage~038 combines this with overlap boost; Stage~040 uses \(y(\eta)\) in the physical support ratio.}
+

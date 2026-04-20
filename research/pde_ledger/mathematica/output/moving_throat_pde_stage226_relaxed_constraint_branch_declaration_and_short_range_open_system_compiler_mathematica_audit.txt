@@ -1,0 +1,106 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_mathematica_audit.wl
+# Date: 2026-04-21T01:31:58-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 226 — RELAXED-CONSTRAINT BRANCH DECLARATION AND SHORT-RANGE OPEN-SYSTEM COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact open-system leakage/work lane
+----------------------------------------------------------------------------------------
+boundary term = 0
+PASS: boundary term
+exact leakage scalar = 0
+PASS: exact leakage scalar
+exact work scalar = 0
+PASS: exact work scalar
+S_leak vanishes on ell_w = 0 = 0
+PASS: S_leak vanishes on ell_w = 0
+W_work vanishes on ell_w = 0 = 0
+PASS: W_work vanishes on ell_w = 0
+
+----------------------------------------------------------------------------------------
+II. Exact non-rigid U/V response and drain
+----------------------------------------------------------------------------------------
+U solution = 0
+PASS: U solution
+V solution = 0
+PASS: V solution
+det Hessian = 0
+PASS: det Hessian
+V/U ratio = 0
+PASS: V/U ratio
+positive drain compiler = 0
+PASS: positive drain compiler
+U vanishes on f_U = 0 = 0
+PASS: U vanishes on f_U = 0
+V vanishes on f_U = 0 = 0
+PASS: V vanishes on f_U = 0
+V vanishes on chi = 0 = 0
+PASS: V vanishes on chi = 0
+U reduces to f_U / k_U on chi = 0 = 0
+PASS: U reduces to f_U / k_U on chi = 0
+
+----------------------------------------------------------------------------------------
+III. Compensated sign-changing source profile
+----------------------------------------------------------------------------------------
+unit-mean source normalization = 0
+PASS: unit-mean source normalization
+trivial source slice = 0
+PASS: trivial source slice
+quadratic source rewrite = 0
+PASS: quadratic source rewrite
+interior stationary point = 0
+PASS: interior stationary point
+vertex value = 0
+PASS: vertex value
+left boundary value = 0
+PASS: left boundary value
+right boundary value = 0
+PASS: right boundary value
+
+----------------------------------------------------------------------------------------
+IV. Codimension-three recovery slice
+----------------------------------------------------------------------------------------
+recovered S_leak = 0
+PASS: recovered S_leak
+recovered W_work = 0
+PASS: recovered W_work
+recovered U = 0
+PASS: recovered U
+recovered V = 0
+PASS: recovered V
+recovered drain = 0
+PASS: recovered drain
+recovered varsigma = 0
+PASS: recovered varsigma
+
+----------------------------------------------------------------------------------------
+V. Short-range kernel invariant
+----------------------------------------------------------------------------------------
+QQ source product = 0
+PASS: QQ source product
+QY source product = 0
+PASS: QY source product
+YY source product = 0
+PASS: YY source product
+lim x QQ = 0
+PASS: lim x QQ
+lim x QY = 0
+PASS: lim x QY
+lim x YY = 0
+PASS: lim x YY
+lim x deltaV_stat = 0
+PASS: lim x deltaV_stat
+lim x Re V_dyn = 0
+PASS: lim x Re V_dyn
+
+All Stage-226 symbolic checks passed.
+
+EXIT_CODE: 0

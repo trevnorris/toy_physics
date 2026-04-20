@@ -1,0 +1,119 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+# Date: 2026-04-21T01:28:15-06:00
+# Elapsed: 20s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION I — MONOPOLE NORMALIZATION BRIDGE
+========================================================================================
+Y00 mouth average - 1/(2 sqrt(pi)) = 0
+norm(Y00) - 1 = 0
+mouth average from q00 Y00 - q00/(2 sqrt(pi)) = 0
+Identifying the physical mouth-average shift with delta_a then gives q00 = 2 sqrt(pi) delta_a.
+angular prefactor from (2 sqrt(pi) Y00)^2 - 4 pi = 0
+
+========================================================================================
+SECTION II — AXISYMMETRIC TWO-MODE REDUCTION FROM THE STAGE 001 ACTION
+========================================================================================
+reduced Lagrangian density from the action - target overlap form = 0
+formal reduced Lagrangian - boxed matrix form = 0
+Recovered overlap matrices:
+⎡   w_R                                                          ⎤
+⎢    ⌠                            w_R                            ⎥
+⎢    ⎮        2                    ⌠                             ⎥
+⎢    ⎮  4⋅π⋅αₐ (w)⋅μₑₜₐ(w) dw      ⎮  4⋅π⋅α_L(w)⋅αₐ(w)⋅μₑₜₐ(w) dw⎥
+⎢    ⌡                             ⌡                             ⎥
+⎢   w_L                           w_L                            ⎥
+⎢                                                                ⎥
+⎢                                   w_R                          ⎥
+⎢w_R                                 ⌠                           ⎥
+⎢ ⌠                                  ⎮         2                 ⎥
+⎢ ⎮  4⋅π⋅α_L(w)⋅αₐ(w)⋅μₑₜₐ(w) dw     ⎮  4⋅π⋅α_L (w)⋅μₑₜₐ(w) dw   ⎥
+⎢ ⌡                                  ⌡                           ⎥
+⎣w_L                                w_L                          ⎦
+⎡       w_R                                                                    ↪
+⎢        ⌠                                                      w_R            ↪
+⎢        ⎮      ⎛                                 2⎞             ⌠             ↪
+⎢        ⎮      ⎜        2             ⎛d        ⎞ ⎟             ⎮      ⎛      ↪
+⎢        ⎮  4⋅π⋅⎜K₀(w)⋅αₐ (w) + T_w(w)⋅⎜──(αₐ(w))⎟ ⎟ dw          ⎮  4⋅π⋅⎜K₀(w) ↪
+⎢        ⎮      ⎝                      ⎝dw       ⎠ ⎠             ⎮      ⎝      ↪
+⎢        ⌡                                                       ⌡             ↪
+⎢       w_L                                                     w_L            ↪
+⎢                                                                              ↪
+⎢                                                                     w_R      ↪
+⎢w_R                                                                   ⌠       ↪
+⎢ ⌠                                                                    ⎮       ↪
+⎢ ⎮      ⎛                            d          d        ⎞            ⎮       ↪
+⎢ ⎮  4⋅π⋅⎜K₀(w)⋅α_L(w)⋅αₐ(w) + T_w(w)⋅──(α_L(w))⋅──(αₐ(w))⎟ dw         ⎮  4⋅π⋅ ↪
+⎢ ⎮      ⎝                            dw         dw       ⎠            ⎮       ↪
+⎢ ⌡                                                                    ⌡       ↪
+⎣w_L                                                                  w_L      ↪
+
+↪                                                ⎤
+↪                                                ⎥
+↪                                                ⎥
+↪                        d          d        ⎞   ⎥
+↪ ⋅α_L(w)⋅αₐ(w) + T_w(w)⋅──(α_L(w))⋅──(αₐ(w))⎟ dw⎥
+↪                        dw         dw       ⎠   ⎥
+↪                                                ⎥
+↪                                                ⎥
+↪                                                ⎥
+↪                                                ⎥
+↪                                                ⎥
+↪ ⎛                                   2⎞         ⎥
+↪ ⎜         2             ⎛d         ⎞ ⎟         ⎥
+↪ ⎜K₀(w)⋅α_L (w) + T_w(w)⋅⎜──(α_L(w))⎟ ⎟ dw      ⎥
+↪ ⎝                       ⎝dw        ⎠ ⎠         ⎥
+↪                                                ⎥
+↪                                                ⎦
+Euler-Lagrange equation for q_a = 0
+Euler-Lagrange equation for q_L = 0
+
+========================================================================================
+SECTION III — GROUPED REAL P2 ORTHONORMALITY AND DEGENERACY
+========================================================================================
+real P2 norm matrix - identity =
+⎡0  0  0  0  0⎤
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎣0  0  0  0  0⎦
+real P2 angular stiffness matrix - 6 identity =
+⎡0  0  0  0  0⎤
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎢0  0  0  0  0⎥
+⎢             ⎥
+⎣0  0  0  0  0⎦
+-Delta_S2 basis[0] - 6 basis[0] = 0
+-Delta_S2 basis[1] - 6 basis[1] = 0
+-Delta_S2 basis[2] - 6 basis[2] = 0
+-Delta_S2 basis[3] - 6 basis[3] = 0
+-Delta_S2 basis[4] - 6 basis[4] = 0
+grouped real P2 reduced density - degenerate five-component form = 0
+single-component P2 Euler-Lagrange equation = 0
+
+========================================================================================
+STAGE 002 SUMMARY
+========================================================================================
+Verified with SymPy:
+  • the Y00 normalization bridge behind q00 = 2 sqrt(pi) delta a;
+  • insertion of the two-mode ansatz into the Stage 001 wall action, producing
+    the boxed overlap-integral formulas for M_AB and K_AB;
+  • the conservative breathing-reduction matrix system M_AB Qdd^B + K_AB Q^B
+    using those overlap integrals as coefficients;
+  • real P2 orthonormality, common angular stiffness 6, and the resulting
+    isotropic grouped-real P2 degeneracy before coupling.
+
+EXIT_CODE: 0

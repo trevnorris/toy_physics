@@ -1,0 +1,1360 @@
+\chapter{Stage Appendix: Part VI -- Realization Compiler and Finite Mixed-Ray Search}
+\label{app:stage-part-6}
+
+\section*{Stage range: 184--201}
+\addcontentsline{toc}{section}{Stage range: 184--201}
+
+This appendix expands the Part VI theorem-block chapter into a verification ledger.  The main-body Part VI chapter states the realization compiler and the finite mixed-ray result in citation-ready form; the present appendix keeps the algebraic chain visible stage by stage.  The distinction is important: Part VI proves that the declared local realization search is finite and auditable, while this appendix records how each compiler, graph map, ray bracket, simplex optimizer, boundary splice, and support-cardinality theorem is obtained.
+
+
+Part V ended with the reduced home-stretch theorem in its most compact form:
+\begin{equation}
+\label{eq:app-part06-intro-full-packet}
+\Delta_{\rm full}=0
+\quad\Longleftrightarrow\quad
+\chi_Q=1,
+\qquad
+q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+\end{equation}
+That theorem identifies the final reduced packet, but it does not by itself say how a completed moving-throat branch should be audited in practice.  Part VI is the operational answer.  It turns the final quotient packet into an explicit realization compiler, rewrites the target orbit as a graph over five free microscopic coordinates, reduces graph-aligned branch searches to a scalar closure function, and then proves that the local mixed-ray search over those five free coordinates is finite through support-cardinality five.
+
+The result anchor served by this appendix is \resultanchor{MTDC-T10}.  This anchor should be cited when a downstream document needs the detailed derivation of the realization compiler, the canonical same-free-quintuple orbit projection, the free-quintuple target graph, graph-error coordinates, scalar graph-slice closure, log-ray predictors, Hessian-certified ray ranking, pairwise and simplex mixed-ray optimizers, or the final support-cardinality-five local mixed-ray closure theorem.
+
+\begin{longtable}{@{}L{0.075\textwidth}L{0.34\textwidth}L{0.20\textwidth}L{0.33\textwidth}@{}}
+\caption{Part VI source and status map.}\label{tab:app-part06-source-status-map}\\
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endhead
+184 & Realization compiler and canonical orbit projection & \StatusExactClosure{} & Intrinsic four-scalar packet, canonical dependent-triple repair vector, canonical target-orbit projection, and same-free-quintuple uniqueness theorem. \\
+\addlinespace
+185 & Free-quintuple target graph & \StatusExactClosure{} & Solves the target orbit as a graph over \((\lambda_W,c_{\eta U},\gamma,K_U,K_W^{\rm eff})\), defines graph errors \((E_T,E_K,E_\mu)\), and gives the first reduced-family closure surface. \\
+\addlinespace
+186 & Scalar graph-slice theorem & \StatusExactClosure{} & Reduces graph-aligned realization to the single scalar \(\widehat\chi_Q(\mathbf y)=1\), proves graph tangency to \(\ker M_*\), and gives the one-parameter crossing theorem. \\
+\addlinespace
+187 & Explicit free-quintuple log-ray sweep & \StatusExactClosure{} & Builds \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), gives the finite graph lift and primitive-direction table, and reduces closure to a one-variable scalar root. \\
+\addlinespace
+188 & Directional Hessian and quadratic predictors & \StatusExactClosure{} & Adds directional Hessian data, quadratic affine/log predictors, discriminant tests, and turning-point/tangency criteria. \\
+\addlinespace
+189 & Curvature-envelope ray ranking & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Turns local curvature envelopes into certified root brackets, bracket-width laws, pairwise ray ordering, and the local search sieve. \\
+\addlinespace
+190 & Primitive-ray certified table & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Specializes the sieve to the five primitive free directions; proves only diagonal Hessian restrictions are needed for primitive certification. \\
+\addlinespace
+191 & Pairwise mixed-ray audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Introduces pairwise cones, gradient synergy, off-diagonal Hessian leverage, canonical gradient/equal-mix screens, and pairwise promotion rules. \\
+\addlinespace
+192 & Pairwise ratio optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces each pairwise ratio search to a finite quartic candidate set and defines optimized pairwise brackets. \\
+\addlinespace
+193 & Three-coordinate simplex audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces triple boundaries to pairwise cones, gives gradient and equal-mix interior screens, and defines the canonical triple-screen packet. \\
+\addlinespace
+194 & Triple-simplex interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the two-parameter triple interior optimizer to quartic/sextic algebraic candidate sets with finite interior brackets. \\
+\addlinespace
+195 & Up-to-three-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices triple interiors to pairwise boundaries, ranks all primitive triples, and proves the support-\(\le3\) finite ledger. \\
+\addlinespace
+196 & Four-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces four-simplex faces to triple packets and introduces four-way gradient/equal-mix canonical screens. \\
+\addlinespace
+197 & Four-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Lifts the three-parameter four-simplex stationary system to a finite polynomial candidate set with preferred bound \(54\) per envelope. \\
+\addlinespace
+198 & Up-to-four-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices quadruple interiors to triple-face boundaries, ranks all primitive quadruples, and proves the support-\(\le4\) finite ledger. \\
+\addlinespace
+199 & Unique five-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Identifies the unique five-simplex, reduces its boundary to the support-\(\le4\) ledger, and proves the support-cardinality ceiling. \\
+\addlinespace
+200 & Five-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the four-parameter five-simplex interior optimizer to a lifted finite polynomial candidate set with preferred bound \(162\) per envelope. \\
+\addlinespace
+201 & Final local mixed-ray closure theorem & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{} & Splices the unique support-5 interior packet to the support-\(\le4\) boundary ledger and closes the local mixed-ray search with preferred budget \(1464\). \\
+\bottomrule
+\end{longtable}
+
+\claimstatus{Part VI is predominantly \StatusExactClosure{} inside the declared realization/orbit/free-quintuple graph and local Hessian-envelope search hierarchy.  The algebraic compilers, graph maps, stationary systems, candidate-set reductions, and support-cardinality closure theorems are exact once the reduced packet and local envelope data are supplied.  Any claim that the completed nonlinear moving-throat PDE actually supplies the required free-quintuple branch, Hessian envelopes, validity intervals, or winning candidate remains \StatusOpen{}.  Any row that depends on numerical insertion of local envelope values or candidate evaluation is marked \StatusNumerical{} at the realization stage, not at the algebraic compiler stage.}
+
+\section{Block contract and theorem-level output}
+\label{sec:app-part06-block-contract}
+
+The contract of Part VI is different from the contract of the previous grouped-response chapters.  Parts III--V constructed the reduced branch and quotient packets.  Part VI assumes those packets exist and asks how they are to be realized by actual branch data.  The operational chain is
+\begin{equation}
+\label{eq:app-part06-operational-chain}
+\Delta_{\rm full}
+\longrightarrow
+\Delta_{\rm real}^{\rm int}
+\longrightarrow
+\Pi_{\mathcal O_*}^{\rm can}
+\longrightarrow
+\mathbf x_*^{\rm graph}(\mathbf y)
+\longrightarrow
+\widehat\chi_Q(\mathbf y)-1
+\longrightarrow
+\text{finite mixed-ray search.}
+\end{equation}
+The first arrow turns the theorem packet into an intrinsic audit packet.  The second and third arrows replace the abstract target orbit by an explicit graph.  The fourth arrow reduces graph-aligned closure to one scalar.  The last arrow proves that the local free-quintuple search is finite through the full support-cardinality ceiling.
+
+The positive microscopic state carried throughout this part is
+\begin{equation}
+\label{eq:app-part06-state-x}
+\mathbf x=
+\left(
+\lambda_W,
+ c_{\eta U},
+ \gamma,
+ K_U,
+ K_\eta^{(\mathrm{eff})},
+ K_W^{(\mathrm{eff})},
+ \mu_W,
+ T_U
+\right),
+\end{equation}
+and the free quintuple is
+\begin{equation}
+\label{eq:app-part06-free-quintuple}
+\mathbf y=
+\left(
+\lambda_W,
+ c_{\eta U},
+ \gamma,
+ K_U,
+ K_W^{(\mathrm{eff})}
+\right).
+\end{equation}
+The dependent triple is
+\begin{equation}
+\label{eq:app-part06-dependent-triple}
+(T_U,
+ K_\eta^{(\mathrm{eff})},
+ \mu_W).
+\end{equation}
+This split is not a new physical assumption.  It is the canonical section of the Stage-175 quotient map used to make the same-free-quintuple projection explicit.
+
+\begin{theorem}[Part VI realization compiler and finite mixed-ray closure theorem]
+\label{thm:app-part06-main}
+Inside the carried realization hierarchy for Stages 184--201, the following theorem chain holds.
+\begin{enumerate}[leftmargin=2.2em]
+  \item The final four-scalar verdict packet can be written intrinsically as
+  \begin{equation}
+  \label{eq:app-part06-main-intrinsic-packet}
+  \Delta_{\rm real}^{\rm int}(\mathbf x\mid\mathcal Z_*)
+  =
+  \bigl(
+  \chi_Q(\mathbf x)-1,
+  q_{\rm tr}(\mathbf x),
+  q_{\rm nt}(\mathbf x),
+  q_\eta(\mathbf x)
+  \bigr),
+  \end{equation}
+  where the three quotient coordinates are logarithmic ratios of the three target monomials.
+  \item The canonical repair vector is supported only on the dependent triple,
+  \begin{equation}
+  \label{eq:app-part06-main-repair-vector}
+  \Delta\mathbf x_{\rm rep}=
+  \begin{pmatrix}
+  0&0&0&0&q_\eta&0&-q_{\rm nt}+q_\eta-\dfrac{F_*}{1+\chi_{0,*}}q_{\rm tr}&-\dfrac{q_{\rm tr}}{1+\chi_{0,*}}
+  \end{pmatrix}^{T},
+  \end{equation}
+  and exponentiating it gives the canonical target-orbit projection \(\Pi_{\mathcal O_*}^{\rm can}\).
+  \item The target orbit \(\mathcal O_*\) is exactly the graph of three dependent target functions over the free quintuple \(\mathbf y\):
+  \begin{equation}
+  \label{eq:app-part06-main-target-graph}
+  \mathcal O_*
+  =
+  \bigl\{\mathbf x_*^{\rm graph}(\mathbf y):\mathbf y\in(\mathbb R_{>0})^5\bigr\}.
+  \end{equation}
+  \item The graph errors
+  \begin{equation}
+  \label{eq:app-part06-main-graph-errors}
+  (E_T,E_K,E_\mu)
+  =
+  \left(
+  \ln\frac{T_U}{T_U^{\rm graph}},
+  \ln\frac{K_\eta^{(\rm eff)}}{K_{\eta,*}^{\rm graph}},
+  \ln\frac{\mu_W}{\mu_W^{\rm graph}}
+  \right)
+  \end{equation}
+  are exactly equivalent to the quotient packet:
+  \begin{equation}
+  \label{eq:app-part06-main-graph-quotient}
+  E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+  \qquad
+  E_K=-q_\eta,
+  \qquad
+  E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}.
+  \end{equation}
+  \item On the target graph, Packet B vanishes identically and the full closure set is the scalar graph slice
+  \begin{equation}
+  \label{eq:app-part06-main-graph-slice}
+  \mathcal Z_*
+  =
+  \bigl\{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\bigr\},
+  \qquad
+  \widehat\chi_Q(\mathbf y):=\chi_Q(\mathbf x_*^{\rm graph}(\mathbf y)).
+  \end{equation}
+  \item Every smooth graph-aligned branch is locally represented by a free-quintuple log ray
+  \begin{equation}
+  \label{eq:app-part06-main-logray}
+  \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+  \end{equation}
+  and closure along that ray is the scalar root problem
+  \begin{equation}
+  \label{eq:app-part06-main-scalar-root}
+  \Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))=1.
+  \end{equation}
+  \item The first- and second-order local data of the ray are
+  \begin{equation}
+  \label{eq:app-part06-main-hessian-data}
+  \Phi_0,
+  \quad
+  \Phi_1=(\mathcal D_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ),
+  \quad
+  \Phi_2=(\mathcal D_{\mathbf s}^2\widehat\chi_Q)(\mathbf y_\circ),
+  \end{equation}
+  or, equivalently, logarithmic data \((H_0,K_0,\underline K_1,\overline K_1)\) after orientation.  These data determine certified local brackets whenever the Stage-189 admissibility hypotheses hold.
+  \item The primitive, pairwise, triple, quadruple, and five-coordinate searches are finite certified algebraic ledgers.  The support-cardinality ceiling is five because the free space has exactly five primitive axes.
+  \item The final local mixed-ray search on the positive free-quintuple simplex is reduced to the splice
+  \begin{equation}
+  \label{eq:app-part06-main-final-splice}
+  \tau_{\le5,\min}^{\rm lo}
+  =
+  \min(\tau_{\le4,\min}^{\rm lo},\tau_{5,\min}^{\rm lo,int}),
+  \qquad
+  \tau_{\le5,\min}^{\rm hi}
+  =
+  \min(\tau_{\le4,\min}^{\rm hi},\tau_{5,\min}^{\rm hi,int}),
+  \end{equation}
+  with
+  \begin{equation}
+  \label{eq:app-part06-main-final-bound}
+  \tau_{\le5,\min}^{\rm lo}
+  \le
+  \tau_{\le5,*}^{\rm best}
+  \le
+  \tau_{\le5,\min}^{\rm hi}.
+  \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof structure]
+Stages 184--185 convert the reference-free four-scalar packet into an intrinsic monomial-ratio audit, a canonical same-free-quintuple projection, and an explicit target graph.  Stage 186 proves that graph-aligned families lie in the kernel of the quotient map and hence reduce to the scalar closure function \(\widehat\chi_Q-1\).  Stages 187--190 build the log-ray, Hessian, curvature-envelope, and primitive certified-ray compilers.  Stages 191--192 add pairwise mixed cones and reduce the one-parameter ratio optimization to finite quartic candidate sets.  Stages 193--195 do the same for genuine three-coordinate simplex interiors and then splice them into the pairwise boundary ledger.  Stages 196--198 repeat the construction for four-coordinate interiors and splice the result into the support-\(\le3\) ledger.  Stages 199--201 identify the unique five-coordinate simplex, reduce its interior optimizer to a finite lifted algebraic candidate set, and finally prove that its boundary is exactly the already-solved support-\(\le4\) search set.
+\end{proof}
+
+\section{Exact realization compiler and target graph}
+\label{sec:app-part06-realization-compiler-and-target-graph}
+
+\subsection{Intrinsic realization packet}
+\label{subsec:app-part06-intrinsic-realization-packet}
+
+Stage 184 begins from the three target monomials already isolated by the orbit/quotient theorem,
+\begin{equation}
+\label{eq:app-part06-target-monomials}
+\mathfrak C_{{\rm tr},*}(\mathbf x),
+\qquad
+\mathfrak C_{{\rm nt},*}(\mathbf x),
+\qquad
+\epsilon_\eta(\mathbf x).
+\end{equation}
+Fix target values
+\begin{equation}
+\label{eq:app-part06-target-values}
+\mathfrak C_{{\rm tr},*}^{\rm target},
+\qquad
+\mathfrak C_{{\rm nt},*}^{\rm target},
+\qquad
+\epsilon_{\eta,*}^{\rm target}.
+\end{equation}
+The target orbit is then
+\begin{equation}
+\label{eq:app-part06-target-orbit-def}
+\mathcal O_*
+=
+\left\{
+\mathbf x>0:
+\mathfrak C_{{\rm tr},*}=\mathfrak C_{{\rm tr},*}^{\rm target},
+\quad
+\mathfrak C_{{\rm nt},*}=\mathfrak C_{{\rm nt},*}^{\rm target},
+\quad
+\epsilon_\eta=\epsilon_{\eta,*}^{\rm target}
+\right\}.
+\end{equation}
+The intrinsic ratios are
+\begin{equation}
+\label{eq:app-part06-intrinsic-ratios}
+\mathfrak R_{\rm tr}:=\frac{\mathfrak C_{{\rm tr},*}}{\mathfrak C_{{\rm tr},*}^{\rm target}},
+\qquad
+\mathfrak R_{\rm nt}:=\frac{\mathfrak C_{{\rm nt},*}}{\mathfrak C_{{\rm nt},*}^{\rm target}},
+\qquad
+\mathfrak R_\eta:=\frac{\epsilon_\eta}{\epsilon_{\eta,*}^{\rm target}},
+\end{equation}
+and the logarithmic quotient coordinates are
+\begin{equation}
+\label{eq:app-part06-q-defs}
+q_{\rm tr}:=\ln\mathfrak R_{\rm tr},
+\qquad
+q_{\rm nt}:=\ln\mathfrak R_{\rm nt},
+\qquad
+q_\eta:=\ln\mathfrak R_\eta.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-part06-target-orbit-iff}
+\mathbf x\in\mathcal O_*
+\quad\Longleftrightarrow\quad
+q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+\end{equation}
+The fully closed target set is
+\begin{equation}
+\label{eq:app-part06-Zstar-def}
+\mathcal Z_*:=\{\mathbf x\in\mathcal O_*:\chi_Q(\mathbf x)=1\}.
+\end{equation}
+Consequently the intrinsic realization packet is exactly
+\begin{equation}
+\label{eq:app-part06-intrinsic-realization-packet}
+\Delta_{\rm real}^{\rm int}(\mathbf x\mid\mathcal Z_*)
+=
+\left(
+\chi_Q(\mathbf x)-1,
+q_{\rm tr}(\mathbf x),
+q_{\rm nt}(\mathbf x),
+q_\eta(\mathbf x)
+\right).
+\end{equation}
+This is the operational version of Part V's reference-free packet.
+
+\subsection{Canonical same-free-quintuple projection}
+\label{subsec:app-part06-canonical-same-free-quintuple-projection}
+
+The Stage-175 quotient map is carried in the linearized form
+\begin{equation}
+\label{eq:app-part06-Mstar-map}
+\mathbf q=M_*\Delta\mathbf x,
+\qquad
+\mathbf q=(q_{\rm tr},q_{\rm nt},q_\eta)^T.
+\end{equation}
+The canonical section chooses the dependent triple \((T_U,K_\eta^{\rm eff},\mu_W)\).  The exact repair vector is
+\begin{equation}
+\label{eq:app-part06-repair-vector}
+\Delta\mathbf x_{\rm rep}
+=
+\begin{pmatrix}
+0\\
+0\\
+0\\
+0\\
+q_\eta\\
+0\\
+-q_{\rm nt}+q_\eta-\dfrac{F_*}{1+\chi_{0,*}}q_{\rm tr}\\[6pt]
+-\dfrac{q_{\rm tr}}{1+\chi_{0,*}}
+\end{pmatrix}.
+\end{equation}
+It satisfies
+\begin{equation}
+\label{eq:app-part06-repair-cancels-q}
+M_*\Delta\mathbf x_{\rm rep}=-\mathbf q.
+\end{equation}
+Exponentiating \eqref{eq:app-part06-repair-vector} gives the canonical projection
+\begin{equation}
+\label{eq:app-part06-canonical-projection}
+\begin{aligned}
+\Pi_{\mathcal O_*}^{\rm can}(\mathbf x)
+=\bigl(&
+\lambda_W,
+ c_{\eta U},
+ \gamma,
+ K_U,
+ K_\eta^{(\mathrm{eff})}\mathfrak R_\eta,
+ K_W^{(\mathrm{eff})},\\
+&\mu_W\mathfrak R_{\rm nt}^{-1}\mathfrak R_\eta\mathfrak R_{\rm tr}^{-F_* /(1+\chi_{0,*})},
+ T_U\mathfrak R_{\rm tr}^{-1/(1+\chi_{0,*})}
+\bigr).
+\end{aligned}
+\end{equation}
+The projection lands on the target orbit, preserves the free quintuple \eqref{eq:app-part06-free-quintuple}, and is the unique point of \(\mathcal O_*\) with that free quintuple.
+
+\begin{proposition}[Canonical fixed-point audit]
+\label{prop:app-part06-canonical-fixed-point-audit}
+For any positive microscopic state \(\mathbf x\),
+\begin{equation}
+\label{eq:app-part06-canonical-fixed-point}
+\mathbf x\in\mathcal Z_*
+\quad\Longleftrightarrow\quad
+\chi_Q(\mathbf x)=1
+\quad\text{and}\quad
+\Pi_{\mathcal O_*}^{\rm can}(\mathbf x)=\mathbf x.
+\end{equation}
+\end{proposition}
+
+\subsection{Direct microscopic target graph}
+\label{subsec:app-part06-direct-target-graph}
+
+Stage 185 removes the remaining abstractness by solving the orbit constraints directly.  The carried monomials are
+\begin{equation}
+\label{eq:app-part06-Ctr-direct}
+\mathfrak C_{{\rm tr},*}
+=
+\left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-Cnt-direct}
+\mathfrak C_{{\rm nt},*}
+=
+\frac{\lambda_W^2\mu_W}{K_\eta^{(\mathrm{eff})}(K_W^{(\mathrm{eff})})^2}
+\left(\frac{\gamma^2\lambda_W^2\sigma}{K_UK_W^{(\mathrm{eff})}}\right)^{E_*}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{-F_*},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-epsilon-eta-direct}
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{(\mathrm{eff})}}.
+\end{equation}
+Solving \eqref{eq:app-part06-Ctr-direct}--\eqref{eq:app-part06-epsilon-eta-direct} at fixed \(\mathbf y\) gives
+\begin{equation}
+\label{eq:app-part06-deltaU-graph}
+\delta_{U,*}^{\rm graph}(\mathbf y)
+:=
+\left[
+\frac{\mathfrak C_{{\rm tr},*}^{\rm target}}
+{\left(\dfrac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}}
+\right]^{1/(1+\chi_{0,*})},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-TU-graph}
+T_U^{\rm graph}(\mathbf y)
+=
+\frac{L^2K_U}{\pi^2}\,\delta_{U,*}^{\rm graph}(\mathbf y),
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-Keta-graph}
+K_{\eta,*}^{\rm graph}(\mathbf y)
+=
+\frac{c_{\eta U}^2}{K_U\epsilon_{\eta,*}^{\rm target}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-muW-graph}
+\mu_W^{\rm graph}(\mathbf y)
+=
+\frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,c_{\eta U}^2(K_W^{(\mathrm{eff})})^2}
+{\epsilon_{\eta,*}^{\rm target}K_U\lambda_W^2}
+\left(\frac{\gamma^2\lambda_W^2\sigma}{K_UK_W^{(\mathrm{eff})}}\right)^{-E_*}
+\left(\delta_{U,*}^{\rm graph}(\mathbf y)\right)^{F_*}.
+\end{equation}
+The graph point is
+\begin{equation}
+\label{eq:app-part06-x-graph-def}
+\mathbf x_*^{\rm graph}(\mathbf y)
+=
+\left(
+\lambda_W,
+ c_{\eta U},
+ \gamma,
+ K_U,
+ K_{\eta,*}^{\rm graph}(\mathbf y),
+ K_W^{(\mathrm{eff})},
+ \mu_W^{\rm graph}(\mathbf y),
+ T_U^{\rm graph}(\mathbf y)
+\right).
+\end{equation}
+Substitution shows
+\begin{equation}
+\label{eq:app-part06-Ostar-graph}
+\mathcal O_*=
+\left\{
+\mathbf x_*^{\rm graph}(\mathbf y):\mathbf y\in(\mathbb R_{>0})^5
+\right\}.
+\end{equation}
+Thus the canonical projection and the graph projection coincide:
+\begin{equation}
+\label{eq:app-part06-can-equals-graph}
+\Pi_{\mathcal O_*}^{\rm can}(\mathbf x)
+=
+\mathbf x_*^{\rm graph}(\pi_{\rm free}\mathbf x).
+\end{equation}
+
+\subsection{Graph-error realization coordinates}
+\label{subsec:app-part06-graph-error-realization-coordinates}
+
+For a same-free-quintuple candidate state, define
+\begin{equation}
+\label{eq:app-part06-graph-errors-def}
+E_T:=\ln\frac{T_U}{T_U^{\rm graph}},
+\qquad
+E_K:=\ln\frac{K_\eta^{(\mathrm{eff})}}{K_{\eta,*}^{\rm graph}},
+\qquad
+E_\mu:=\ln\frac{\mu_W}{\mu_W^{\rm graph}}.
+\end{equation}
+The exact relations to the quotient packet are \eqref{eq:app-part06-main-graph-quotient}.  The reduced-family audit packet becomes
+\begin{equation}
+\label{eq:app-part06-graph-family-packet}
+\Delta_{\rm fam}^{\rm graph}(\mathbf y)
+=
+\left(
+\chi_Q(\mathbf x_{\rm cand}(\mathbf y))-1,
+E_T,
+E_K,
+E_\mu
+\right),
+\end{equation}
+and the closure criterion is
+\begin{equation}
+\label{eq:app-part06-graph-family-zero}
+\Delta_{\rm fam}^{\rm graph}(\mathbf y)=0
+\quad\Longleftrightarrow\quad
+\mathbf x_{\rm cand}(\mathbf y)\in\mathcal Z_*.
+\end{equation}
+
+\claimstatus{Stages 184--185 are \StatusExactClosure{}.  They are exact consequences of the already-declared monomial quotient map, target-orbit definition, and canonical dependent-triple section.  They do not prove that the actual PDE branch is graph-aligned; they provide the exact coordinates in which that claim can be tested.}
+
+\section{Scalar graph-slice and log-ray compiler}
+\label{sec:app-part06-scalar-graph-slice-and-log-ray-compiler}
+
+\subsection{Graph closure scalar}
+\label{subsec:app-part06-graph-closure-scalar}
+
+Stage 186 defines
+\begin{equation}
+\label{eq:app-part06-chi-hat-def}
+\widehat\chi_Q(\mathbf y):=
+\chi_Q\bigl(\mathbf x_*^{\rm graph}(\mathbf y)\bigr),
+\qquad
+\widehat\Delta_Q(\mathbf y):=\widehat\chi_Q(\mathbf y)-1.
+\end{equation}
+Since every graph point already lies on \(\mathcal O_*\), the closed set is exactly
+\begin{equation}
+\label{eq:app-part06-Zstar-graph-slice}
+\mathcal Z_*
+=
+\left\{
+\mathbf x_*^{\rm graph}(\mathbf y):\widehat\Delta_Q(\mathbf y)=0
+\right\}.
+\end{equation}
+This is the scalar graph-slice theorem.  Its importance is that the realization problem drops from four scalar equations to one scalar equation as soon as the candidate family is graph-aligned.
+
+\subsection{Graph tangent identities}
+\label{subsec:app-part06-graph-tangent-identities}
+
+Let \(\mathbf y(\tau)\) be a smooth free-quintuple family and define free log-tangent components
+\begin{equation}
+\label{eq:app-part06-free-log-tangent}
+(\lambda_1,c_1,\gamma_1,\kappa_U,\kappa_W)
+=
+\left(
+\frac{d\ln\lambda_W}{d\tau},
+\frac{d\ln c_{\eta U}}{d\tau},
+\frac{d\ln\gamma}{d\tau},
+\frac{d\ln K_U}{d\tau},
+\frac{d\ln K_W^{(\rm eff)}}{d\tau}
+\right).
+\end{equation}
+Then the dependent graph log tangents are
+\begin{equation}
+\label{eq:app-part06-delta-graph-tangent}
+\frac{d\ln\delta_{U,*}^{\rm graph}}{d\tau}
+=-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U),
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-T-graph-tangent}
+\tau_1^{\rm graph}
+=\kappa_U
+-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U),
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-Keta-graph-tangent}
+\kappa_\eta^{\rm graph}=2c_1-\kappa_U,
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-mu-graph-tangent}
+\begin{aligned}
+\mu_1^{\rm graph}={}&
+2c_1-\kappa_U+2\kappa_W-2\lambda_1
+-E_*(2\gamma_1+2\lambda_1-\kappa_U-\kappa_W)\\
+&-F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U).
+\end{aligned}
+\end{equation}
+Substitution into the monomial-drift matrix gives
+\begin{equation}
+\label{eq:app-part06-graph-tangent-kernel}
+M_*\dot{\Delta\mathbf x}_{\rm graph}=0.
+\end{equation}
+So graph-lifted families are tangent to the similarity orbit at every point, and Packet B vanishes identically on the graph.
+
+\subsection{One-parameter crossing theorem}
+\label{subsec:app-part06-one-parameter-crossing-theorem}
+
+Let \(\mathbf y:[\tau_-,\tau_+]\to(\mathbb R_{>0})^5\) be continuous and graph-lift it.  If
+\begin{equation}
+\label{eq:app-part06-IVT-crossing-condition}
+\widehat\Delta_Q(\tau_-)\,\widehat\Delta_Q(\tau_+)<0,
+\end{equation}
+then there exists \(\tau_*\in(\tau_-,\tau_+)\) with
+\begin{equation}
+\label{eq:app-part06-IVT-crossing-result}
+\widehat\Delta_Q(\tau_*)=0,
+\qquad
+\mathbf x_*^{\rm graph}(\mathbf y(\tau_*))\in\mathcal Z_*.
+\end{equation}
+This is not a numerical method by itself.  It is the exact existence theorem that justifies the later scalar log-ray search.
+
+\subsection{Free-quintuple log rays}
+\label{subsec:app-part06-free-quintuple-log-rays}
+
+Stage 187 chooses the canonical local family
+\begin{equation}
+\label{eq:app-part06-log-ray}
+\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+\qquad
+\mathbf s=(s_\lambda,s_c,s_\gamma,s_U,s_W).
+\end{equation}
+Every smooth positive free-quintuple path has this form to first order at any point, with \(\mathbf s=d\ln\mathbf y/d\tau\).  Along the log ray define
+\begin{equation}
+\label{eq:app-part06-a-star}
+\mathfrak a_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-sigma-delta}
+\sigma_\delta=-\mathfrak a_*(s_\gamma+s_c-s_U),
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-sigma-T-K}
+\sigma_T=s_U+\sigma_\delta,
+\qquad
+\sigma_{K_\eta}=2s_c-s_U,
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-sigma-mu}
+\sigma_\mu
+=2s_c-s_U+2s_W-2s_\lambda
+-E_*(2s_\gamma+2s_\lambda-s_U-s_W)
++F_*\sigma_\delta.
+\end{equation}
+The graph-lifted ray is therefore
+\begin{equation}
+\label{eq:app-part06-graph-lifted-ray}
+\begin{aligned}
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)=
+(&\lambda_{W,\circ}e^{s_\lambda\tau},
+ c_{\eta U,\circ}e^{s_c\tau},
+ \gamma_\circ e^{s_\gamma\tau},
+ K_{U,\circ}e^{s_U\tau},
+ K_{\eta,\circ}^{\rm graph}e^{\sigma_{K_\eta}\tau},\\
+&K_{W,\circ}^{(\rm eff)}e^{s_W\tau},
+ \mu_{W,\circ}^{\rm graph}e^{\sigma_\mu\tau},
+ T_{U,\circ}^{\rm graph}e^{\sigma_T\tau}).
+\end{aligned}
+\end{equation}
+The three target monomials are invariant for all \(\tau\) on this lift.  Hence the scalarized closure function
+\begin{equation}
+\label{eq:app-part06-Phi-ray-def}
+\Phi_{\mathbf s}(\tau):=
+\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))
+\end{equation}
+contains the entire graph-aligned realization question:
+\begin{equation}
+\label{eq:app-part06-ray-closure}
+\mathbf x_{\mathbf s}^{\rm graph}(\tau)\in\mathcal Z_*
+\quad\Longleftrightarrow\quad
+\Phi_{\mathbf s}(\tau)=1.
+\end{equation}
+
+\subsection{First-order and second-order root predictors}
+\label{subsec:app-part06-root-predictors}
+
+Let
+\begin{equation}
+\label{eq:app-part06-Phi012}
+\Phi_0:=\Phi_{\mathbf s}(0),
+\qquad
+\Phi_1:=\Phi_{\mathbf s}'(0),
+\qquad
+\Phi_2:=\Phi_{\mathbf s}''(0).
+\end{equation}
+The first-order predictors are
+\begin{equation}
+\label{eq:app-part06-aff-log-predictors}
+\tau_{\rm aff}=\frac{1-\Phi_0}{\Phi_1},
+\qquad
+\tau_{\log}=-\frac{\ln\Phi_0}{L_0},
+\qquad
+L_0:=\frac{\Phi_1}{\Phi_0}.
+\end{equation}
+Stage 188 introduces free log coordinates
+\begin{equation}
+\label{eq:app-part06-free-log-coords}
+\boldsymbol\ell=(\ln\lambda_W,\ln c_{\eta U},\ln\gamma,\ln K_U,\ln K_W^{(\rm eff)}),
+\end{equation}
+and the directional operators
+\begin{equation}
+\label{eq:app-part06-directional-operators}
+\mathcal D_{\mathbf s}=\sum_i s_i\partial_{\ell_i},
+\qquad
+\mathcal H_{\mathbf s}=\mathcal D_{\mathbf s}^2.
+\end{equation}
+Assuming \(\Phi_0>0\), define
+\begin{equation}
+\label{eq:app-part06-log-curvature}
+L_1:=\left.\frac{d^2}{d\tau^2}\ln\Phi_{\mathbf s}(\tau)\right|_{0}
+=\frac{\Phi_2}{\Phi_0}-\left(\frac{\Phi_1}{\Phi_0}\right)^2.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-part06-Phi-log-identity}
+\Phi_2=\Phi_0(L_1+L_0^2).
+\end{equation}
+The quadratic affine and logarithmic discriminants are
+\begin{equation}
+\label{eq:app-part06-quadratic-discriminants}
+\Delta_{\rm aff}=\Phi_1^2-2\Phi_2(\Phi_0-1),
+\qquad
+\Delta_{\log}=L_0^2-2L_1\ln\Phi_0.
+\end{equation}
+When the appropriate discriminant is nonnegative, the continuous-branch predictors are
+\begin{equation}
+\label{eq:app-part06-quadratic-affine-predictor}
+\tau_{\rm quad}=
+\frac{2(1-\Phi_0)}{\Phi_1+\operatorname{sgn}(\Phi_1)\sqrt{\Delta_{\rm aff}}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part06-quadratic-log-predictor}
+\tau_{\log,2}=
+-\frac{2\ln\Phi_0}{L_0+\operatorname{sgn}(L_0)\sqrt{\Delta_{\log}}}.
+\end{equation}
+If \(\Phi_1=0\) but \(\Phi_0\neq1\), the quadratic turning-point criterion is
+\begin{equation}
+\label{eq:app-part06-turning-criterion}
+(1-\Phi_0)\Phi_2>0,
+\end{equation}
+with local predictors
+\begin{equation}
+\label{eq:app-part06-turning-predictors}
+\tau_\pm=\pm\sqrt{\frac{2(1-\Phi_0)}{\Phi_2}}.
+\end{equation}
+These are the local predictor tools used by the certified search sieve.
+
+\claimstatus{Stages 186--188 are \StatusExactClosure{} once \(\widehat\chi_Q\) is a differentiable scalar on the target graph.  The actual values of the derivatives and Hessians are PDE-returned or candidate-family data; the predictor formulas themselves are exact.}
+
+\section{Certified ray sieve: primitive and pairwise searches}
+\label{sec:app-part06-certified-ray-sieve-primitive-pairwise}
+
+\subsection{Curvature-envelope brackets}
+\label{subsec:app-part06-curvature-envelope-brackets}
+
+Stage 189 orients the log residual.  Let
+\begin{equation}
+\label{eq:app-part06-oriented-H}
+H_{\mathbf s}(\tau):=
+\operatorname{sgn}(\ln\Phi_{\mathbf s}(0))\ln\Phi_{\mathbf s}(\tau),
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part06-H0-K0}
+H_0:=H_{\mathbf s}(0)>0,
+\qquad
+K_0:=H_{\mathbf s}'(0)<0.
+\end{equation}
+Assume a curvature envelope on \([0,T]\):
+\begin{equation}
+\label{eq:app-part06-curvature-envelope}
+\underline K_1\le H_{\mathbf s}''(\tau)\le\overline K_1.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part06-comparison-functions}
+H_-(\tau)=H_0+K_0\tau+\frac12\underline K_1\tau^2,
+\qquad
+H_+(\tau)=H_0+K_0\tau+\frac12\overline K_1\tau^2
+\end{equation}
+sandwich the true residual.  Define
+\begin{equation}
+\label{eq:app-part06-root-map}
+\mathcal T(H_0,K_0;c)
+:=-\frac{2H_0}{K_0+\operatorname{sgn}(K_0)\sqrt{K_0^2-2cH_0}}.
+\end{equation}
+For \(K_0<0\), the certified bracket is
+\begin{equation}
+\label{eq:app-part06-certified-bracket}
+\tau_{\rm lo}=\mathcal T(H_0,K_0;\underline K_1),
+\qquad
+\tau_{\rm hi}=\mathcal T(H_0,K_0;\overline K_1),
+\end{equation}
+provided both discriminants are real and \(\tau_{\rm hi}\le T\).  The true local root is then unique in \([\tau_{\rm lo},\tau_{\rm hi}]\).  For a turning ray \(K_0=0\), strict negative curvature gives
+\begin{equation}
+\label{eq:app-part06-turning-bracket}
+\tau_{\rm lo}^{\rm(tp)}=\sqrt{-\frac{2H_0}{\underline K_1}},
+\qquad
+\tau_{\rm hi}^{\rm(tp)}=\sqrt{-\frac{2H_0}{\overline K_1}}.
+\end{equation}
+
+\subsection{Primitive certified table}
+\label{subsec:app-part06-primitive-certified-table}
+
+The primitive free axes are
+\begin{equation}
+\label{eq:app-part06-primitive-axes}
+\mathfrak I_5=\{\lambda,c,\gamma,U,W\}.
+\end{equation}
+Let
+\begin{equation}
+\label{eq:app-part06-h-log-def}
+h(\boldsymbol\ell):=\ln\widehat\chi_Q(\boldsymbol\ell),
+\qquad
+\sigma_0:=\operatorname{sgn}(h(\boldsymbol\ell_\circ)).
+\end{equation}
+The oriented primitive gradients are
+\begin{equation}
+\label{eq:app-part06-Gamma-i}
+\Gamma_i:=\sigma_0\partial_{\ell_i}h(\boldsymbol\ell_\circ).
+\end{equation}
+If \(\Gamma_i\neq0\), the canonical forward primitive direction is
+\begin{equation}
+\label{eq:app-part06-primitive-orientation}
+\widehat{\mathbf e}_i:=\varepsilon_i\mathbf e_i,
+\qquad
+\varepsilon_i:=-\operatorname{sgn}(\Gamma_i),
+\qquad
+k_i:=|\Gamma_i|.
+\end{equation}
+The primitive curvature uses only the diagonal Hessian restriction:
+\begin{equation}
+\label{eq:app-part06-primitive-diagonal-Hessian}
+H_1^{(i)}(\tau)
+=
+\sigma_0\partial_{\ell_i\ell_i}h(\boldsymbol\ell_\circ+\tau\widehat{\mathbf e}_i).
+\end{equation}
+Thus primitive certification needs no off-diagonal Hessian data.  Each primitive row is decided by
+\begin{equation}
+\label{eq:app-part06-primitive-row-data}
+\mathcal R_i^{\rm prim}:=(H_0,\Gamma_i,\underline\kappa_i,\overline\kappa_i,T_i).
+\end{equation}
+For monotone rows, the certified interval is
+\begin{equation}
+\label{eq:app-part06-primitive-interval}
+\tau_{i,\rm lo}=\mathcal T(H_0,-k_i;\underline\kappa_i),
+\qquad
+\tau_{i,\rm hi}=\mathcal T(H_0,-k_i;\overline\kappa_i),
+\end{equation}
+with the same discriminant and validity checks as Stage 189.
+
+\subsection{Pairwise mixed rays}
+\label{subsec:app-part06-pairwise-mixed-rays}
+
+For a monotone pair \((i,j)\), Stage 191 introduces
+\begin{equation}
+\label{eq:app-part06-pairwise-cone}
+\widehat{\mathbf s}_{ij}(r)=
+\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
+\qquad
+r\ge0.
+\end{equation}
+The slope magnitude is
+\begin{equation}
+\label{eq:app-part06-pairwise-slope}
+k_{ij}(r)=\frac{k_i+rk_j}{\sqrt{1+r^2}},
+\end{equation}
+with unique gradient-optimal ratio
+\begin{equation}
+\label{eq:app-part06-pairwise-gradient-ratio}
+r_{ij}^{\rm grad}=\frac{k_j}{k_i},
+\qquad
+k_{ij}^{\rm grad}=\sqrt{k_i^2+k_j^2}.
+\end{equation}
+The pairwise curvature is
+\begin{equation}
+\label{eq:app-part06-pairwise-curvature}
+H_{1,ij}(r;\tau)
+=
+\frac{h_{ii}+2rh_{ij}+r^2h_{jj}}{1+r^2},
+\end{equation}
+so the off-diagonal Hessian enters with cross weight
+\begin{equation}
+\label{eq:app-part06-pairwise-cross-weight}
+w_\times(r)=\frac{2r}{1+r^2},
+\end{equation}
+maximized at the equal-mix ray \(r=1\).  Thus the two canonical pair screens are
+\begin{equation}
+\label{eq:app-part06-pairwise-canonical-screens}
+\widehat{\mathbf s}_{ij}^{\rm grad}
+=\frac{k_i\widehat{\mathbf e}_i+k_j\widehat{\mathbf e}_j}{\sqrt{k_i^2+k_j^2}},
+\qquad
+\widehat{\mathbf s}_{ij}^{\rm eq}
+=\frac{\widehat{\mathbf e}_i+\widehat{\mathbf e}_j}{\sqrt2}.
+\end{equation}
+
+\subsection{Pairwise ratio optimizer}
+\label{subsec:app-part06-pairwise-ratio-optimizer}
+
+Stage 192 closes the full one-parameter pair search.  On a compact ratio window \([0,R_{ij}]\), for envelope label \(\star\in\{\rm lo,hi\}\), define
+\begin{equation}
+\label{eq:app-part06-pairwise-ABC}
+A_\star=k_i^2-2H_0u_\star,
+\qquad
+B_\star=2k_ik_j-4H_0v_\star,
+\qquad
+C_\star=k_j^2-2H_0w_\star.
+\end{equation}
+The discriminant numerator is
+\begin{equation}
+\label{eq:app-part06-pairwise-discriminant-numerator}
+\Delta_{ij,\star}^{\sharp}(r)=A_\star+B_\star r+C_\star r^2.
+\end{equation}
+The certified root function is
+\begin{equation}
+\label{eq:app-part06-pairwise-root-function}
+\tau_{ij,\star}(r)=
+\frac{2H_0\sqrt{1+r^2}}
+{k_i+rk_j+\sqrt{A_\star+B_\star r+C_\star r^2}}.
+\end{equation}
+Interior optimizers satisfy the stationary numerator equation
+\begin{equation}
+\label{eq:app-part06-pairwise-stationary-numerator}
+\mathcal N_{ij,\star}(r)=
+2(k_j-k_ir)\sqrt{A_\star+B_\star r+C_\star r^2}
++B_\star+2(C_\star-A_\star)r-B_\star r^2=0.
+\end{equation}
+Eliminating the square root gives the quartic condition
+\begin{equation}
+\label{eq:app-part06-pairwise-quartic}
+\mathcal Q_{ij,\star}(r)=
+\left[B_\star+2(C_\star-A_\star)r-B_\star r^2\right]^2
+-4(k_j-k_ir)^2(A_\star+B_\star r+C_\star r^2)=0.
+\end{equation}
+After filtering extraneous roots, each envelope optimizer is found in a finite set containing admissible endpoints and at most four admissible quartic roots.  Therefore one pair requires at most twelve exact candidate evaluations across the lower and upper envelopes.
+
+\claimstatus{Stages 189--192 are \StatusExactClosure{} once the local gradient, Hessian-envelope, and validity data are supplied.  If those inputs come from numerical PDE evaluation, the final ray rankings are \StatusNumerical{} insertions into exact certified formulas.}
+
+\section{Three- and four-coordinate simplex sieves}
+\label{sec:app-part06-three-four-coordinate-simplex-sieves}
+
+\subsection{Three-coordinate simplex and boundary reduction}
+\label{subsec:app-part06-three-simplex-boundary-reduction}
+
+For a monotone primitive triple \((i,j,k)\), the positive spherical simplex is
+\begin{equation}
+\label{eq:app-part06-triple-simplex}
+\Delta_{ijk}^{+}
+=
+\left\{(a_i,a_j,a_k)\in\mathbb R_{\ge0}^{3}:a_i^2+a_j^2+a_k^2=1\right\}.
+\end{equation}
+The ray is
+\begin{equation}
+\label{eq:app-part06-triple-ray}
+\widehat{\mathbf s}_{ijk}=a_i\widehat{\mathbf e}_i+a_j\widehat{\mathbf e}_j+a_k\widehat{\mathbf e}_k.
+\end{equation}
+Each boundary edge is exactly one Stage-192 pairwise cone.  Hence only the interior of \(\Delta_{ijk}^{+}\) is new at support-cardinality three.
+
+The gradient-optimal point is
+\begin{equation}
+\label{eq:app-part06-triple-grad-point}
+\mathbf a_{ijk}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k)}{\sqrt{k_i^2+k_j^2+k_k^2}},
+\end{equation}
+and the equal-mix barycenter is
+\begin{equation}
+\label{eq:app-part06-triple-eq-point}
+\mathbf a_{ijk}^{\rm eq}=\frac{(1,1,1)}{\sqrt3}.
+\end{equation}
+The total off-diagonal leverage weight is
+\begin{equation}
+\label{eq:app-part06-triple-cross-leverage}
+w_\Sigma(\bf a)=2(a_ia_j+a_ia_k+a_ja_k)=(a_i+a_j+a_k)^2-1\le2,
+\end{equation}
+with equality at \eqref{eq:app-part06-triple-eq-point}.  Thus the gradient screen maximizes first-order descent, while the equal-mix screen maximizes three-way cross-Hessian leverage.
+
+\subsection{Triple interior optimizer}
+\label{subsec:app-part06-triple-interior-optimizer}
+
+On the interior patch \(a_i>0\), write
+\begin{equation}
+\label{eq:app-part06-triple-ratio-coords}
+(a_i,a_j,a_k)=\frac{(1,r,s)}{\sqrt{1+r^2+s^2}}.
+\end{equation}
+For either envelope label \(\star\), define the quadratic discriminant numerator
+\begin{equation}
+\label{eq:app-part06-triple-discriminant}
+\Delta_{ijk,\star}^{\sharp}(r,s)=
+A_\star+B_\star r+C_\star s+D_\star r^2+E_\star rs+F_\star s^2.
+\end{equation}
+The certified root is
+\begin{equation}
+\label{eq:app-part06-triple-root}
+\tau_{ijk,\star}(r,s)
+=
+\frac{2H_0\sqrt{1+r^2+s^2}}
+{k_i+rk_j+sk_k+\sqrt{\Delta_{ijk,\star}^{\sharp}(r,s)}}.
+\end{equation}
+The stationary equations can be written as two square-root numerator equations.  Eliminating the square root gives a quartic cross-consistency polynomial and sextic square conditions.  The finite pre-candidate set has at most
+\begin{equation}
+\label{eq:app-part06-triple-bezout}
+4\cdot 6=24
+\end{equation}
+complex roots counting multiplicity when the intersection is zero-dimensional.  After filtering for admissibility and unsquared stationarity, the interior optimizer is finite.
+
+\subsection{Up-to-three-coordinate splice}
+\label{subsec:app-part06-up-to-three-coordinate-splice}
+
+There are \(\binom52=10\) primitive pairs and \(\binom53=10\) primitive triples.  Stage 195 imports every optimized pairwise interval
+\begin{equation}
+\label{eq:app-part06-pairwise-interval-import}
+\tau_{ij,\min}^{\rm lo}\le\tau_{ij,*}^{\rm best}\le\tau_{ij,\min}^{\rm hi}
+\end{equation}
+and every triple interior interval
+\begin{equation}
+\label{eq:app-part06-triple-interior-interval-import}
+\tau_{ijk,\min}^{\rm lo,int}\le\tau_{ijk,*}^{\rm best,int}\le\tau_{ijk,\min}^{\rm hi,int}.
+\end{equation}
+For a triple \(T=(i,j,k)\), the boundary minima are
+\begin{equation}
+\label{eq:app-part06-triple-boundary-minima}
+\beta_T^{\rm lo}:=\min(\tau_{ij,\min}^{\rm lo},\tau_{ik,\min}^{\rm lo},\tau_{jk,\min}^{\rm lo}),
+\quad
+\beta_T^{\rm hi}:=\min(\tau_{ij,\min}^{\rm hi},\tau_{ik,\min}^{\rm hi},\tau_{jk,\min}^{\rm hi}).
+\end{equation}
+The closed-triple interval is
+\begin{equation}
+\label{eq:app-part06-triple-closed-interval}
+\tau_{T,\min}^{\rm lo,\triangle}=\min(\beta_T^{\rm lo},\tau_{ijk,\min}^{\rm lo,int}),
+\qquad
+\tau_{T,\min}^{\rm hi,\triangle}=\min(\beta_T^{\rm hi},\tau_{ijk,\min}^{\rm hi,int}).
+\end{equation}
+The full support-\(\le3\) search is therefore bounded by
+\begin{equation}
+\label{eq:app-part06-support-le3-interval}
+\tau_{\le3,\min}^{\rm lo}:=\min(\tau_{2,\min}^{\rm lo},\tau_{3,\min}^{\rm lo,int}),
+\qquad
+\tau_{\le3,\min}^{\rm hi}:=\min(\tau_{2,\min}^{\rm hi},\tau_{3,\min}^{\rm hi,int}).
+\end{equation}
+The exact evaluation budget through three active coordinates is at most
+\begin{equation}
+\label{eq:app-part06-budget-le3}
+10\times12+10\times48=600
+\end{equation}
+candidate evaluations.
+
+\subsection{Four-coordinate simplex and boundary reduction}
+\label{subsec:app-part06-four-simplex-boundary-reduction}
+
+For a primitive quadruple \(Q=(i,j,k,l)\),
+\begin{equation}
+\label{eq:app-part06-four-simplex}
+\Delta_{ijkl}^{+}
+=
+\left\{(a_i,a_j,a_k,a_l)\in\mathbb R_{\ge0}^{4}:a_i^2+a_j^2+a_k^2+a_l^2=1\right\}.
+\end{equation}
+Every codimension-one face is one of the Stage-195 closed triple simplices.  The gradient-optimal interior point is
+\begin{equation}
+\label{eq:app-part06-four-grad}
+\mathbf a_{ijkl}^{\rm grad}
+=
+\frac{(k_i,k_j,k_k,k_l)}{\sqrt{k_i^2+k_j^2+k_k^2+k_l^2}},
+\end{equation}
+and the equal-mix point is
+\begin{equation}
+\label{eq:app-part06-four-eq}
+\mathbf a_{ijkl}^{\rm eq}=\frac{(1,1,1,1)}{2}.
+\end{equation}
+The total off-diagonal leverage is
+\begin{equation}
+\label{eq:app-part06-four-cross-leverage}
+w_\Sigma(\mathbf a)=2\sum_{p<q}a_pa_q=\left(\sum_pa_p\right)^2-1\le3,
+\end{equation}
+with equality at \eqref{eq:app-part06-four-eq}.  The support-cardinality-four gate asks whether either canonical interior screen, or later the full interior optimizer, beats the imported triple-face boundary ledger.
+
+\subsection{Four-coordinate interior optimizer and up-to-four splice}
+\label{subsec:app-part06-four-interior-and-splice}
+
+On an interior chart, Stage 197 introduces three ratio coordinates \((r,s,t)\), one auxiliary square-root variable \(y\), and a lifted stationary system with degree pattern
+\begin{equation}
+\label{eq:app-part06-four-degree-pattern}
+(3,3,3,2).
+\end{equation}
+Thus the preferred lifted candidate bound is
+\begin{equation}
+\label{eq:app-part06-four-bezout}
+3\cdot3\cdot3\cdot2=54
+\end{equation}
+per envelope.  Stage 198 then splices the four-coordinate interior intervals to the imported support-\(\le3\) ledger.  There are \(\binom54=5\) primitive quadruples, so the four-coordinate interior budget is
+\begin{equation}
+\label{eq:app-part06-four-budget}
+5\times2\times54=540.
+\end{equation}
+Together with \eqref{eq:app-part06-budget-le3}, the support-\(\le4\) search budget is
+\begin{equation}
+\label{eq:app-part06-budget-le4}
+600+540=1140.
+\end{equation}
+The certified support-\(\le4\) interval is
+\begin{equation}
+\label{eq:app-part06-le4-interval}
+\tau_{\le4,\min}^{\rm lo}
+:=\min(\tau_{\le3,\min}^{\rm lo},\tau_{4,\min}^{\rm lo,int}),
+\qquad
+\tau_{\le4,\min}^{\rm hi}
+:=\min(\tau_{\le3,\min}^{\rm hi},\tau_{4,\min}^{\rm hi,int}).
+\end{equation}
+
+\claimstatus{Stages 193--198 are \StatusExactClosure{} for the simplex algebra and \StatusNumerical{} only when actual local packet values are inserted.  Boundary reduction is exact because each simplex face is one of the previously closed lower-support searches.}
+
+\section{Unique five-coordinate simplex and final local closure}
+\label{sec:app-part06-unique-five-simplex-final-local-closure}
+
+\subsection{The unique five-coordinate positive simplex}
+\label{subsec:app-part06-unique-five-coordinate-simplex}
+
+Stage 199 observes that, because the free space is the five-coordinate log space
+\begin{equation}
+\label{eq:app-part06-five-axis-set}
+\mathfrak I_5=\{\lambda,c,\gamma,U,W\},
+\end{equation}
+there is only one support-cardinality-five simplex:
+\begin{equation}
+\label{eq:app-part06-five-simplex}
+\Delta_5^+
+=
+\left\{
+\mathbf a=(a_\lambda,a_c,a_\gamma,a_U,a_W)\in\mathbb R_{\ge0}^{5}:
+\sum_{p\in\mathfrak I_5}a_p^2=1
+\right\}.
+\end{equation}
+Its boundary faces are precisely the five Stage-198 primitive quadruple closed simplices.  If the imported face intervals are denoted by \(\mathcal I_{\widehat p}^{\square}\), then
+\begin{equation}
+\label{eq:app-part06-five-boundary-minima}
+\beta_5^{\rm lo}:=\min_{p\in\mathfrak I_5}\tau_{\widehat p,\min}^{\rm lo,\square},
+\qquad
+\beta_5^{\rm hi}:=\min_{p\in\mathfrak I_5}\tau_{\widehat p,\min}^{\rm hi,\square}.
+\end{equation}
+Equivalently,
+\begin{equation}
+\label{eq:app-part06-five-boundary-equals-le4}
+\beta_5^{\rm lo}=\tau_{\le4,\min}^{\rm lo},
+\qquad
+\beta_5^{\rm hi}=\tau_{\le4,\min}^{\rm hi}.
+\end{equation}
+
+\subsection{Five-way canonical screens}
+\label{subsec:app-part06-five-way-canonical-screens}
+
+The five-coordinate slope magnitude is
+\begin{equation}
+\label{eq:app-part06-five-slope}
+k_5(\mathbf a)=\sum_{p\in\mathfrak I_5}a_pk_p.
+\end{equation}
+The unique gradient-optimal interior point is
+\begin{equation}
+\label{eq:app-part06-five-grad}
+\mathbf a_5^{\rm grad}
+=
+\frac{(k_\lambda,k_c,k_\gamma,k_U,k_W)}{\sqrt{k_\lambda^2+k_c^2+k_\gamma^2+k_U^2+k_W^2}},
+\end{equation}
+and the equal-mix barycenter is
+\begin{equation}
+\label{eq:app-part06-five-eq}
+\mathbf a_5^{\rm eq}=\frac{(1,1,1,1,1)}{\sqrt5}.
+\end{equation}
+The total ten-way cross leverage is
+\begin{equation}
+\label{eq:app-part06-five-cross-leverage}
+w_\Sigma(\mathbf a)=2\sum_{p<q}a_pa_q=\left(\sum_pa_p\right)^2-1\le4,
+\end{equation}
+with equality at \eqref{eq:app-part06-five-eq}.  These two screens are the exact five-way analogues of the lower-cardinality gradient and equal-mix screens.  They are not the full search; they are the final pre-optimizer gate.
+
+\subsection{Five-coordinate interior optimizer}
+\label{subsec:app-part06-five-coordinate-interior-optimizer}
+
+Stage 200 solves the last continuum problem.  On the chart \(a_\lambda>0\), write
+\begin{equation}
+\label{eq:app-part06-five-ratio-coords}
+(a_\lambda,a_c,a_\gamma,a_U,a_W)
+=
+\frac{(1,r,s,t,u)}{\sqrt{1+r^2+s^2+t^2+u^2}}.
+\end{equation}
+The certified root function has the same form as before:
+\begin{equation}
+\label{eq:app-part06-five-root}
+\tau_\star(r,s,t,u)
+=
+\frac{2H_0\sqrt{1+r^2+s^2+t^2+u^2}}
+{k_\lambda+rk_c+sk_\gamma+tk_U+uk_W+\sqrt{\Delta_\star^\sharp(r,s,t,u)}}.
+\end{equation}
+The stationary conditions are four square-root numerator equations.  Introducing
+\begin{equation}
+\label{eq:app-part06-five-y-def}
+y:=\sqrt{\Delta_\star^\sharp(r,s,t,u)}
+\end{equation}
+gives the lifted polynomial system
+\begin{equation}
+\label{eq:app-part06-five-lifted-system}
+\mathcal F_{r,\star}=0,
+\quad
+\mathcal F_{s,\star}=0,
+\quad
+\mathcal F_{t,\star}=0,
+\quad
+\mathcal F_{u,\star}=0,
+\quad
+\mathcal F_{\Delta,\star}=0,
+\end{equation}
+with degree pattern
+\begin{equation}
+\label{eq:app-part06-five-degree-pattern}
+(3,3,3,3,2).
+\end{equation}
+Therefore the preferred lifted B\'ezout candidate bound is
+\begin{equation}
+\label{eq:app-part06-five-bezout}
+3^4\cdot2=162
+\end{equation}
+per envelope.  Across lower and upper envelopes the support-five interior contributes at most
+\begin{equation}
+\label{eq:app-part06-five-budget}
+2\times162=324
+\end{equation}
+preferred candidate evaluations.  A fallback square-root-free projected chart gives bound \(750\) per envelope, hence fallback support-five budget \(1500\).
+
+\subsection{Boundary identification and support ceiling}
+\label{subsec:app-part06-boundary-identification-support-ceiling}
+
+Stage 201 proves that the boundary of \(\Delta_5^+\) is exactly the already-solved support-\(\le4\) search set.  The proper nonempty support strata have counts
+\begin{equation}
+\label{eq:app-part06-boundary-strata-counts}
+5\text{ facets}+10\text{ ridges}+10\text{ edges}+5\text{ vertices}=30=2^5-2.
+\end{equation}
+Every proper support subset is contained in at least one quadruple face, and the faces are carried as closed simplices.  Thus
+\begin{equation}
+\label{eq:app-part06-boundary-identification}
+\partial\Delta_5^+=\mathcal S_{\le4}^{\rm loc}.
+\end{equation}
+There is also no higher-support local search, because the free log space has only five primitive axes:
+\begin{equation}
+\label{eq:app-part06-support-ceiling}
+1\le \#\operatorname{supp}(\mathbf a)\le5.
+\end{equation}
+The true best local closure time is therefore
+\begin{equation}
+\label{eq:app-part06-best-le5-true}
+\tau_{\le5,*}^{\rm best}
+=
+\min(\tau_{\le4,*}^{\rm best},\tau_{5,*}^{\rm best,int}).
+\end{equation}
+
+\subsection{Final splice and evaluation budget}
+\label{subsec:app-part06-final-splice-evaluation-budget}
+
+Combining the imported support-\(\le4\) interval with the support-five interior interval gives the final certified interval
+\begin{equation}
+\label{eq:app-part06-final-splice}
+\tau_{\le5,\min}^{\rm lo}
+=
+\min(\tau_{\le4,\min}^{\rm lo},\tau_{5,\min}^{\rm lo,int}),
+\qquad
+\tau_{\le5,\min}^{\rm hi}
+=
+\min(\tau_{\le4,\min}^{\rm hi},\tau_{5,\min}^{\rm hi,int}).
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part06-final-splice-bound}
+\tau_{\le5,\min}^{\rm lo}
+\le
+\tau_{\le5,*}^{\rm best}
+\le
+\tau_{\le5,\min}^{\rm hi}.
+\end{equation}
+The preferred exact total evaluation budget is
+\begin{equation}
+\label{eq:app-part06-final-budget}
+1140+324=1464.
+\end{equation}
+The fallback projected-chart budget is
+\begin{equation}
+\label{eq:app-part06-fallback-budget}
+1140+1500=2640.
+\end{equation}
+Thus even the fallback full local search is finite.
+
+\begin{theorem}[Final local mixed-ray closure]
+\label{thm:app-part06-final-local-mixed-ray-closure}
+Within the declared local free-quintuple mixed-ray class, the full positive-support search is exhausted by the support-\(\le4\) boundary ledger and the unique support-five interior packet.  There are no support-cardinality families beyond five.  Any remaining ambiguity after Stage 201 is finite-candidate ambiguity inside the already-enumerated algebraic candidate sets, not a new continuum search.
+\end{theorem}
+
+\claimstatus{Stages 199--201 are \StatusExactClosure{} for the boundary identification, support ceiling, lifted finite candidate compiler, splice theorem, and evaluation budget.  The realized winning ray, if any, remains \StatusNumerical{} or \StatusOpen{} until actual PDE-derived envelope and validity data are inserted and evaluated.}
+
+\section{What Part VI does and does not prove}
+\label{sec:app-part06-what-it-does-not-prove}
+
+Part VI proves that the local realization search has a finite, auditable structure.  It does not prove that the actual nonlinear moving-throat PDE returns a branch on \(\mathcal Z_*\).  It also does not prove that the Hessian envelopes, validity maps, or candidate brackets take any particular numerical values.  Those are branch data.
+
+The safe downstream citation is therefore:
+\begin{quote}
+Inside the declared free-quintuple graph and local mixed-ray search class, the realization problem reduces to the exact graph-error packet \((\chi_Q-1,E_T,E_K,E_\mu)\) and the finite support-cardinality-five mixed-ray sieve.  Actual branch realization remains a separate calculation.
+\end{quote}
+
+For later use, the practical audit recipe is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item compute the PDE-returned free quintuple and dependent triple;
+  \item evaluate the graph target \((T_U^{\rm graph},K_{\eta,*}^{\rm graph},\mu_W^{\rm graph})\);
+  \item form \((\chi_Q-1,E_T,E_K,E_\mu)\);
+  \item if the branch is graph-aligned, evaluate \(\widehat\chi_Q\) and its local log-gradient/Hessian envelopes;
+  \item insert those data into the completed support-\(\le5\) finite ledger.
+\end{enumerate}
+This is exactly the point at which Part VII can start inserting same-charge and rigid-mouth actual-branch data without reopening the realization compiler.
+
+
+
+\section{Citation anchors and unsafe-citation guardrails}
+\label{sec:app-part06-citation-anchors-guardrails}
+
+For downstream citation, use the following subanchors rather than citing the whole appendix when a narrower result is intended:
+\begin{itemize}[leftmargin=2.2em]
+  \item \resultanchor{MTDC-T10.1}: cite for the intrinsic realization packet, canonical orbit projection, free-quintuple target graph, graph-error coordinates, scalar graph-slice theorem, and one-parameter crossing theorem.
+  \item \resultanchor{MTDC-T10.2}: cite for the log-ray compiler, directional Hessian formulas, quadratic predictors, curvature-envelope brackets, certified ray ranking, primitive-ray table, and primitive elimination theorem.
+  \item \resultanchor{MTDC-T10.3}: cite for pairwise mixed-ray optimization, finite quartic candidate sets, triple-simplex interior optimization, boundary splicing, and the support-\(\le3\) finite search ledger.
+  \item \resultanchor{MTDC-T10.4}: cite for four- and five-coordinate simplex gates, lifted finite candidate sets, boundary identification, support-cardinality ceiling, and the final support-\(\le5\) closure theorem.
+\end{itemize}
+
+The unsafe citation to avoid is: ``the moving-throat PDE has been solved by the realization compiler.''  The safe statement is: inside the declared local free-quintuple graph and mixed-ray search class, the realization problem has an exact finite support-cardinality-\(5\) sieve; actual nonlinear branch realization remains a separate \StatusOpen{} or \StatusNumerical{} question until branch data are inserted.
+
+
+
+\section{Original-stage verification cards}
+\label{sec:app-part06-original-stage-verification-cards}
+
+The preceding sections prove the Part VI compiler in theorem-block form.  The following cards restore the original stage order from the working derivation.  Each card records the stage purpose, imported assumptions, proof move, output, and audit checks.  The cards are intentionally shorter than the theorem-block derivation above; their role is provenance and citation hygiene.
+
+
+\paragraph{Source layout.}
+Stages~184--201 are now sourced from the canonical files \StageFile{stages/stage_184.tex} through \StageFile{stages/stage_201.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+
+\begingroup
+\let\clearpage\relax
+\input{stages/stage_184}
+\clearpage
+\input{stages/stage_185}
+\clearpage
+\input{stages/stage_186}
+\clearpage
+\input{stages/stage_187}
+\clearpage
+\input{stages/stage_188}
+\clearpage
+\input{stages/stage_189}
+\clearpage
+\input{stages/stage_190}
+\clearpage
+\input{stages/stage_191}
+\clearpage
+\input{stages/stage_192}
+\clearpage
+\input{stages/stage_193}
+\clearpage
+\input{stages/stage_194}
+\clearpage
+\input{stages/stage_195}
+\clearpage
+\input{stages/stage_196}
+\clearpage
+\input{stages/stage_197}
+\clearpage
+\input{stages/stage_198}
+\clearpage
+\input{stages/stage_199}
+\clearpage
+\input{stages/stage_200}
+\clearpage
+\input{stages/stage_201}
+\endgroup

@@ -1,0 +1,32 @@
+
+========================================================================================
+STAGE 88 — EXACT FIXING OF chi_Q
+========================================================================================
+Omega_Q = 3*c_s/(2*a)
+sigma_Q^can = 4*a**5/(27*c_s**5)
+sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+
+Y_Q^ret(omega) =
+   5      5      4  4    2  2    
+ⅈ⋅a ⋅χ_Q⋅ω    4⋅a ⋅ω    a ⋅ω     
+─────────── + ─────── + ───── + 1
+       5           4        2    
+  27⋅cₛ       81⋅cₛ     9⋅cₛ     
+omega^2 coefficient = 0
+omega^4 coefficient = 0
+imag omega^5 coefficient = 0
+
+chi_Q from exact outgoing match = 1
+
+Deformed DtN normalized branch =
+       5      4    2    
+ⅈ⋅ξ_Q⋅z    4⋅z    z     
+──────── + ──── + ── + 1
+   27       81    9     
+deformed z^2 coefficient = 0
+deformed z^4 coefficient = 0
+deformed imag z^5 coefficient = 0
+
+RESULT:
+  On the canonical compact passive/outgoing grouped-P2 branch, chi_Q = 1 exactly.
+  More generally, chi_Q is just the leading imaginary DtN deformation coefficient xi_Q.

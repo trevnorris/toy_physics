@@ -1,0 +1,22 @@
+\section[Stage 043]{Stage 043: Entropic Source Microclosure and Microscopic Gain}
+\label{stage:043}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} inside the positive-density Onsager/free-energy closure.}
+\stagefield{Purpose}{Stage~043 shows that the drift-diffusion source branch can be obtained from a positive local source thermodynamics rather than imposed as a shape family.}
+\stagefield{Inputs}{A positive source density, an Onsager mobility, and a free-energy gradient producing drift and diffusion.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage043_entropic_microclosure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage043_entropic_microclosure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage043_entropic_microclosure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage043_entropic_microclosure_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The source transport equation of Stage~039 is reproduced by an Onsager form
+\begin{equation}
+\label{eq:app-stage043-onsager}
+J=-\mathcal M(\sigma)\partial_s\frac{\delta\mathcal F}{\delta\sigma},
+\end{equation}
+with a strictly positive mobility and a convex local entropy contribution.  The resulting stationary zero-flux state is the same exponential branch.  The microscopic source/support coupling is then summarized by a dimensionless gain \(G_{\rm micro}\), later projected explicitly from the parent action.
+
+\stagefield{Output}{A positive-density microclosure for the transport source family and the definition of the microscopic gain variable.}
+\stagefield{Downstream use}{Stage~044 uses this gain to build a phase diagram; Stage~045 derives the gain from GNLS parent-action overlaps.}
+

@@ -1,0 +1,28 @@
+\section[Stage 213]{Stage 213: Dynamic-window classifier and static-first theorem}
+\label{stage:213}
+
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~213 translates the selected-branch classifier into a dynamic-window decision rule.}
+
+\stagefield{Inputs}{Imports Stage~212 classifier data, the rigid-split shares, and the survival-window inequality from the resonance theorem.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation computes the dynamic sign of the selected numerator/denominator split, relates the classifier region to linewidth demand, and compares this with the static prefactor ceiling.}
+
+\stagefield{Output}{Static-first theorem: the static $\Xi_1$ budget is the first kill condition; the dynamic corridor can be checked only after the static transported ceiling is satisfied.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.4} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+
+

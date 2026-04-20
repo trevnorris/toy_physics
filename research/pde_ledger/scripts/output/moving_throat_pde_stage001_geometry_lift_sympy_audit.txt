@@ -1,0 +1,96 @@
+
+========================================================================================
+SECTION I — REAL-HARMONIC BOOKKEEPING
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I.1 — Norms and zero averages
+----------------------------------------------------------------------------------------
+Y00: average = 2*sqrt(pi), norm = 1
+Y20: average = 0, norm = 1
+Y21c: average = 0, norm = 1
+Y21s: average = 0, norm = 1
+Y22c: average = 0, norm = 1
+Y22s: average = 0, norm = 1
+average(Y20) = 0
+average(Y21c) = 0
+average(Y21s) = 0
+average(Y22c) = 0
+average(Y22s) = 0
+norm(Y00)-1 = 0
+norm(Y20)-1 = 0
+cross(Y00,Y20) = 0
+
+----------------------------------------------------------------------------------------
+I.2 — Mouth-average extraction
+----------------------------------------------------------------------------------------
+mouth average - q00/(2 sqrt(pi)) = 0
+Therefore the physical mouth-average shift delta a satisfies q00 = 2 sqrt(pi) delta a.
+
+----------------------------------------------------------------------------------------
+I.3 — Spherical Laplacian eigenvalues
+----------------------------------------------------------------------------------------
+-Delta_S2 Y00 = 0
+-Delta_S2 Y20 - 6 Y20 = 0
+-Delta_S2 Y21c - 6 Y21c = 0
+-Delta_S2 Y21s - 6 Y21s = 0
+-Delta_S2 Y22c - 6 Y22c = 0
+-Delta_S2 Y22s - 6 Y22s = 0
+
+========================================================================================
+SECTION II — LEVEL-SET CONFINEMENT LINEARIZATION
+========================================================================================
+First variation d/dε Vwall((Sigma0 - ε eta)/ell_c)|_{ε=0} =
+   ⎛ d            ⎞│         
+-η⋅⎜───(Vwall(ξ₁))⎟│    Σ₀   
+   ⎝dξ₁           ⎠│ξ₁=───── 
+                       ell_c 
+─────────────────────────────
+            ell_c            
+linearized confinement variation = 0
+Equivalent note form: delta V_conf = -(V'_wall(Sigma0/ell_c) / ell_c) eta
+
+========================================================================================
+SECTION III — MODAL WALL ACTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+III.1 — Densitized convention used by the ledger
+----------------------------------------------------------------------------------------
+densitized Euler-Lagrange equation = 0
+
+----------------------------------------------------------------------------------------
+III.2 — Weighted surface form before densitization
+----------------------------------------------------------------------------------------
+weighted Euler-Lagrange equation = 0
+Dividing by g(w) gives the extra first-derivative term that disappears in the densitized convention.
+
+----------------------------------------------------------------------------------------
+III.3 — Grouped real P2 restoring shift
+----------------------------------------------------------------------------------------
+K_l at ell=0 = 0
+K_l at ell=2 = 0
+The constant 6 is not an unexplained literal; it is the specialization ell(ell+1) at ell = 2.
+
+----------------------------------------------------------------------------------------
+III.4 — Explicit source forcing on the modal wall equation
+----------------------------------------------------------------------------------------
+sourced densitized Euler-Lagrange equation = 0
+
+========================================================================================
+SECTION IV — REPRESENTATIVE LOCALIZED-MAXWELL LINEARIZATION
+========================================================================================
+localized-Maxwell x-component = 0
+localized-Maxwell w-component = 0
+
+========================================================================================
+STAGE 001 SUMMARY
+========================================================================================
+Verified with SymPy:
+  • normalized real-harmonic bookkeeping for the monopole and grouped real P2 basis;
+  • the mouth-average extraction rule q00 = 2 sqrt(pi) delta a;
+  • the confinement-chain-rule sign delta V_conf = -(V'_wall/ell_c) eta;
+  • the Stage 001 modal wall equation in the densitized convention used by the ledger;
+  • the sourced modal-wall RHS forcing S_lm^(psi,A) + f_lm^ext;
+  • the weighted-surface variant that explains the previously noted surface-measure caveat;
+  • and representative localized-Maxwell component equations with gauge-fixing and source current.

@@ -1,0 +1,706 @@
+\chapter{Result Anchor Map}
+\label{chap:result-anchor-map}
+
+This chapter is the stable citation registry for the derivation companion.  The stage numbers preserve provenance.  The result anchors define what future papers should cite.  A stage number answers the historical question ``where did this calculation first appear?''  A result anchor answers the citation question ``which verified result is being used downstream?''
+
+The distinction matters because the ledger is intentionally large.  A future paper should not have to cite a raw chain such as ``Stages 147--183'' every time it needs the weak-axisymmetric quotient theorem.  It should be able to cite a stable result anchor, then use local theorem and equation labels inside that anchor only when it needs a precise formula.  The result anchor is therefore the public citation handle; the stage range is the audit trail.
+
+\begin{quote}
+A result anchor is not a status upgrade.  It only groups a result family.  Every result cited under an anchor still inherits the status tags and assumptions fixed in \cref{chap:claim-status-firewall} and the notation rules fixed in \cref{chap:notation-firewall}.
+\end{quote}
+
+\section{How result anchors are used}
+\label{sec:anchor-use-rules}
+
+A result anchor has three jobs.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Stable citation.}  It gives future papers a durable target even if theorem numbering changes while this companion is filled in.
+  \item \textbf{Status grouping.}  It groups exact identities, closure-exact reductions, controlled reductions, numerical placements, and open realization targets without flattening their status.
+  \item \textbf{Audit routing.}  It tells a verifier which stage range, appendix entries, symbolic scripts, and source files contain the detailed algebra.
+\end{enumerate}
+
+A result anchor should be cited in downstream prose when the downstream argument needs a whole verified block.  A theorem label should be cited when the downstream argument needs a specific formal statement.  An equation label should be cited when the downstream argument needs a specific formula.  A stage number should be cited when the downstream argument is about provenance, historical development, or a failed route that was later superseded.
+
+\section{Anchor naming convention}
+\label{sec:anchor-naming-convention}
+
+The top-level anchors use the form
+\[
+  \texttt{MTDC-T}\,n,
+\]
+where \texttt{MTDC} abbreviates \emph{Moving-Throat Derivation Companion}.  The letter \texttt{T} marks a theorem-block family, not necessarily a single theorem.  Fine-grained subanchors use the form
+\[
+  \texttt{MTDC-T}\,n\texttt{.}m.
+\]
+These subanchors are stable handles for chapter-sized result blocks inside the larger theorem family.
+
+When a result is written formally in the main text, use an ordinary LaTeX theorem label in addition to the anchor.  The recommended label pattern is
+\[
+  \texttt{thm:mtdc-t}\,n\texttt{-short-name}.
+\]
+For equations, use
+\[
+  \texttt{eq:mtdc-t}\,n\texttt{-short-name}.
+\]
+For tables, use
+\[
+  \texttt{tab:mtdc-t}\,n\texttt{-short-name}.
+\]
+The result anchor remains the external citation handle; the theorem, equation, and table labels are internal precision handles.
+
+\section{Top-level result anchors}
+\label{sec:top-level-result-anchors}
+
+\Cref{tab:top-level-anchor-map} is the public-facing anchor map.  The ``default status'' column gives the strongest safe default reading of the anchor as a whole.  Individual results under an anchor may have a stronger or weaker status; when that happens, the local theorem statement must say so explicitly.
+
+\begin{longtable}{L{0.13\textwidth}L{0.14\textwidth}L{0.18\textwidth}L{0.37\textwidth}}
+\caption{Top-level result anchors.}\label{tab:top-level-anchor-map}\\
+\toprule
+Anchor & Stages & Default status & Citation target \\
+\midrule
+\endfirsthead
+\toprule
+Anchor & Stages & Default status & Citation target \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & Parent + 1 & Mixed: \StatusExact, \StatusReduced, \StatusEffective & Parent \((4+1)\) action import, exact GNLS/Maxwell equations, projection/reduction language, charge and mixed-sector firewall, and the first statement of the moving-throat geometry problem. \\
+\addlinespace
+\resultanchor{MTDC-T2} & 1--2 & Mixed: \StatusEffective, \StatusExactClosure & Moving-surface geometry lift, collective recovery of \(a,L\), distributed wall action, densitized convention, and axisymmetric breathing reduction back to the old \((a,L)\) closure. \\
+\addlinespace
+\resultanchor{MTDC-T3} & 3 & Mixed: \StatusReduced, \StatusExactClosure & Wall/BdG stable-mode reduction, Schur-complement support kernel, low-frequency conservative moments, grouped \(P_2\) support self-energies, and first pole-shift formulas. \\
+\addlinespace
+\resultanchor{MTDC-T4} & 4--5 & Mixed: \StatusReduced, \StatusExactClosure, \StatusOpen & Localized Maxwell/mixed-sector reduction, gauge-invariant mixed variables, outgoing-transfer factor, compact \(l=2\) fingerprint, grouped response normalization, and the first invariant outgoing-normalization product. \\
+\addlinespace
+\resultanchor{MTDC-T5} & 6--19 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Full grouped real \(P_2\) projector calculus, isotropy defects, overlap-integral theorem, weak-axisymmetric splitting law, selected-mode normal form, and support-feasibility frontier. \\
+\addlinespace
+\resultanchor{MTDC-T6} & 20--34 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Continuum placement map, split-\(U\) branch, rank-2 support completion, coherent D/N tracking branch, support-compensation theorem, and lowest-twin sufficiency criterion. \\
+\addlinespace
+\resultanchor{MTDC-T7} & 35--73 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Lowest-lane asymmetry, gain thresholds, parent-overlap tests, explicit Family-1 wall-shell branch, quadrupole-demand windows, loading-ratio extraction, and the first reduced Family-1 verdict. \\
+\addlinespace
+\resultanchor{MTDC-T8} & 74--146 & Mixed: \StatusExactClosure, \StatusReduced, \StatusNumerical, \StatusOpen & Geometry-lane firewall, retarded closure, outlet/core/mouth compensation, boundary-layer laws, co-evolving mouth/core fixed points, and final retarded normalization residual localization. \\
+\addlinespace
+\resultanchor{MTDC-T9} & 147--183 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Weak-axisymmetric transport, prefactor packet, transfer-shape slope \(\Xi_1\), monomial quotient coordinates, similarity orbit, Packet-A closure, orbit projectors, and four-scalar final verdict packet. \\
+\addlinespace
+\resultanchor{MTDC-T10} & 184--201 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Realization compiler, canonical orbit projection, free-quintuple graph, log-ray and simplex search, Hessian/curvature ranking, finite support-cardinality sieve, and local mixed-ray closure. \\
+\addlinespace
+\resultanchor{MTDC-T11} & 202--225 & Mixed: \StatusExactClosure, \StatusReduced, \StatusNumerical, \StatusOpen & One-port same-charge static/dynamic audit, resonance/linewidth gates, actual-branch tests, rigid-mouth physical chart, Cartesian orbit lock, selected twin-support branch, and actual placement compiler. \\
+\addlinespace
+\resultanchor{MTDC-T12} & 226--236 & Mixed: \StatusExactClosure, \StatusReduced, \StatusEffective, \StatusNumerical, \StatusOpen & Relaxed open-system branch, strict-front-end recovery map, leakage/work compiler, non-rigid mouth and \(U/V\) drain packet, relaxed barrier compiler, dynamic event chain, export kernel, heat partition, and materials companion. \\
+\bottomrule
+\end{longtable}
+
+This top-level map is intentionally aligned with the master stage ledger.  Do not renumber these anchors unless the stage ledger is updated at the same time.  If a top-level block becomes too broad while the ledger is being filled, add a subanchor rather than moving the whole block.
+
+\section{Fine-grained subanchor registry}
+\label{sec:fine-grained-subanchors}
+
+This section gives the fill-level anchor registry.  Each subanchor should eventually receive at least one theorem, proposition, definition, equation cluster, or result table in the main text.  The final column states what a downstream paper is allowed to use the subanchor for.
+
+\subsection{MTDC-T1: parent theory and first geometry target}
+\label{subsec:anchors-t1}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T1}.}\label{tab:anchors-t1}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1.1} & Parent import & \StatusExact & Exact field content, coordinates, gauge/matter variables, charge ontology, parent GNLS equation, localized Maxwell equation, current conservation, and mixed-sector gauge invariants. \\
+\addlinespace
+\resultanchor{MTDC-T1.2} & Parent import & \StatusReduced & Projection versus reduction vocabulary, exact projected continuity with leakage, Poisson-hook language, and controlled zero-mode Maxwell reduction. \\
+\addlinespace
+\resultanchor{MTDC-T1.3} & 1 & \StatusEffective & The reason a distributed geometry variable is needed: old \((a,L)\) closure is not enough for the grouped \(P_2\), geometry-lane, and outgoing-response problem. \\
+\addlinespace
+\resultanchor{MTDC-T1.4} & 1 & \StatusEffective & Hybrid level-set / shape-field representation \(\Sigma=r-R(\Omega,w,t)\) as the working moving-throat geometry lift. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T2: moving surface, wall field, and breathing reduction}
+\label{subsec:anchors-t2}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T2}.}\label{tab:anchors-t2}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T2.1} & 1 & \StatusExactClosure & Recovery of the old collective variables \(a(t),L(t)\) as monopole moments of the distributed wall field. \\
+\addlinespace
+\resultanchor{MTDC-T2.2} & 1 & \StatusExactClosure & Promoted confinement law, moving-wall coupling \(\delta V_{\rm conf}\), real-harmonic decomposition, and grouped real \(P_2\) lane as literal wall/support mode. \\
+\addlinespace
+\resultanchor{MTDC-T2.3} & 1 & \StatusEffective & Minimal distributed wall action, densitized one-dimensional convention, scalar versus quadrupole modal operator, and geometry-lane split. \\
+\addlinespace
+\resultanchor{MTDC-T2.4} & 2 & \StatusExactClosure & Axisymmetric two-mode reduction to effective mass and stiffness matrices for \((\delta a,\delta L)\). \\
+\addlinespace
+\resultanchor{MTDC-T2.5} & 2 & \StatusExactClosure & Geometry-only grouped real \(P_2\) degeneracy and the baseline one-mode quadrupole wall operator. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T3: BdG--wall Schur complement}
+\label{subsec:anchors-t3}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T3}.}\label{tab:anchors-t3}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T3.1} & 3 & \StatusReduced & Stable BdG normal-mode reduction and harmonic selection rule on an isotropic reference throat. \\
+\addlinespace
+\resultanchor{MTDC-T3.2} & 3 & \StatusExactClosure & Axisymmetric matrix Schur-complement kernel and low-frequency renormalizations of stiffness, inertia, and higher even moments. \\
+\addlinespace
+\resultanchor{MTDC-T3.3} & 3 & \StatusExactClosure & Channelwise grouped real \(P_2\) support kernels and lane-by-lane conservative low-frequency coefficients. \\
+\addlinespace
+\resultanchor{MTDC-T3.4} & 3 & \StatusExactClosure & First pole-shift formula for one wall mode coupled to one stable BdG support mode. \\
+\addlinespace
+\resultanchor{MTDC-T3.5} & 3 & \StatusExactClosure & First grouped \(P_2\) isotropy diagnostic: anisotropy only from wall parameters, support frequencies, or overlap integrals. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T4: Maxwell/mixed response and outgoing-normalization bridge}
+\label{subsec:anchors-t4}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T4}.}\label{tab:anchors-t4}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T4.1} & 4 & \StatusExact & Gauge invariance of the mixed fields \(E_w\) and \(C_a\) under the parent gauge transformation. \\
+\addlinespace
+\resultanchor{MTDC-T4.2} & 4 & \StatusReduced & Minimal reduced Maxwell/mixed one-lane model and conservative mixed self-energy. \\
+\addlinespace
+\resultanchor{MTDC-T4.3} & 4 & \StatusExactClosure & Outgoing-port dressing of the mixed coordinate, nonnegative transfer factor, and sign convention for passive damping. \\
+\addlinespace
+\resultanchor{MTDC-T4.4} & 4 & \StatusExactClosure & Compact outgoing \(l=2\) fingerprint and wall-level leading odd quadrupole coefficient. \\
+\addlinespace
+\resultanchor{MTDC-T4.5} & 5 & \StatusExactClosure & Conversion from conservative operator moments \(D_{A0},D_{A2},D_{A4}\) to normalized grouped-response moments \(u_2^{(A)},u_4^{(A)}\). \\
+\addlinespace
+\resultanchor{MTDC-T4.6} & 5 & \StatusExactClosure & Prefactor expansion \(P_{A0},P_{A2},P_{A4}\), leading \(\Gamma_5^{(A)}\), and invariant normalization target for \(m_{\hat 0}^{2}P_0\). \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T5: full grouped bundle, overlap theorem, and selected front end}
+\label{subsec:anchors-t5}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T5}.}\label{tab:anchors-t5}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T5.1} & 6 & \StatusExactClosure & Weighted grouped metric, projectors, full-bundle coefficients \(D_{A,n}\), \(N_{A,n}\), and exact isotropic normalization ratio \(P_0=N_0/D_0\). \\
+\addlinespace
+\resultanchor{MTDC-T5.2} & 6 & \StatusExactClosure & First-order anisotropy transport laws for response moments and outgoing prefactor. \\
+\addlinespace
+\resultanchor{MTDC-T5.3} & 7 & \StatusExactClosure & Normalized real STF harmonics, angular source-map identity, and \(O(3)\) isotropy theorem for grouped lanes. \\
+\addlinespace
+\resultanchor{MTDC-T5.4} & 7 & \StatusExactClosure & Weak axisymmetric quadrupole splitting law with grouped signature \((1,1/2,-1)\) and defect line \(b=3a\). \\
+\addlinespace
+\resultanchor{MTDC-T5.5} & 8--10 & \StatusReduced & Minimal isotropic single-mode closure, concrete finite-throat axial modes, exact overlap constants, and nonconstant profile selection. \\
+\addlinespace
+\resultanchor{MTDC-T5.6} & 11--13 & \StatusReduced & Loaded axial profile selection, dynamic loading, selected-mode response, static prefactor, and selected-branch quadrupole target. \\
+\addlinespace
+\resultanchor{MTDC-T5.7} & 14--16 & \StatusExactClosure & Reachability, stability windows, finite-throat mode integrals, microscopic normalization equation, and coupling-level onset criterion. \\
+\addlinespace
+\resultanchor{MTDC-T5.8} & 17--19 & \StatusExactClosure & Softening-depth normal form, dimensionless D/N shape function, unique normalization locus, and support-feasibility frontier. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T6: continuum placement and support completion}
+\label{subsec:anchors-t6}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T6}.}\label{tab:anchors-t6}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T6.1} & 20--23 & \StatusExactClosure & Continuum-kernel extraction, placement map, product relation, split-\(U\) direction-splitting, and generalized source/loading mismatch. \\
+\addlinespace
+\resultanchor{MTDC-T6.2} & 24--27 & \StatusExactClosure & Rank-2 support completion, exact support-loading theorem, actual support-direction extraction, and quadratic branch equation. \\
+\addlinespace
+\resultanchor{MTDC-T6.3} & 28--31 & \StatusExactClosure & Coherent local D/N tracking kernel, tracking-branch bounds, residual comparison, support-enhancement factor, and support-compensation theorem. \\
+\addlinespace
+\resultanchor{MTDC-T6.4} & 32--34 & \StatusExactClosure & Physical coherent support ratio \(\zeta\), lowest-twin sufficiency, and exact comparison against \(\zeta_{\rm req}\). \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T7: lowest-lane asymmetry, gain thresholds, and Family-1 branch}
+\label{subsec:anchors-t7}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T7}.}\label{tab:anchors-t7}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T7.1} & 35--38 & \StatusExactClosure & Non-twin asymmetry requirement, overlap-boost window, Robin-compliance softening, and reachability of the non-twin lowest support lane. \\
+\addlinespace
+\resultanchor{MTDC-T7.2} & 39--52 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Transport origin of source asymmetry, parent-action projection of gain, parent-overlap threshold theorem, coherence-resonance benchmark, and reduced support/source verdict. \\
+\addlinespace
+\resultanchor{MTDC-T7.3} & 53--58 & \StatusReduced & GNLS wall-shell reduction, canonical tanh-wall branch, explicit placement map, healing-length lock, and support-scale window. \\
+\addlinespace
+\resultanchor{MTDC-T7.4} & 59--61 & \StatusExactClosure & \(n=5\) wall-depth lock, shell-weighted extraction of \(\Theta_w\), and explicit Family-1 branch comparison. \\
+\addlinespace
+\resultanchor{MTDC-T7.5} & 62--64 & \StatusExactClosure & Map from \(\zeta_{\rm req}\) to \(Pe_{\rm req}\), quadrupole-demand thresholds, and branch-product window. \\
+\addlinespace
+\resultanchor{MTDC-T7.6} & 65--70 & Mixed: \StatusExactClosure, \StatusOpen & Master quadrupole residual, operator-selected Family-1 window, selected product cancellation, loading-ratio window, and reduced finish line. \\
+\addlinespace
+\resultanchor{MTDC-T7.7} & 71--73 & Mixed: \StatusExactClosure, \StatusOpen & Loading-ratio extraction from the minimal isotropic quadrupole module, explicit branch verdict, and updated reduced theorem status. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T8: geometry lane, retarded closure, and mouth/core compensation}
+\label{subsec:anchors-t8}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T8}.}\label{tab:anchors-t8}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T8.1} & 74--80 & \StatusExactClosure & Grouped-\(P_2\) plus geometry split, dynamic-geometry obstruction formula, geometry-decoupling theorem, and collapse of the isotropic passive/outgoing branch to one normalization defect. \\
+\addlinespace
+\resultanchor{MTDC-T8.2} & 81--89 & Mixed: \StatusExactClosure, \StatusReduced & Retarded \(2.5\)PN collapse, scalar/dipole filtering, outgoing \(l=2\) normalization bridge, and reduction of the live odd term to the quadrupole prefactor. \\
+\addlinespace
+\resultanchor{MTDC-T8.3} & 90--104 & Mixed: \StatusExactClosure, \StatusOpen & Outlet DtN, Robin outlet tests, side-channel pole tests, and mixed core/outlet realization attempts. \\
+\addlinespace
+\resultanchor{MTDC-T8.4} & 105--122 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Core-to-mouth compensation laws, mouth local source positivity, mouth boundary-layer closures, and selected compensation surfaces. \\
+\addlinespace
+\resultanchor{MTDC-T8.5} & 123--146 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Co-evolving core/mouth fixed points, linear defect transport, branch deficits, and reduced compensation verdicts. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T9: weak-axisymmetric quotient and orbit closure}
+\label{subsec:anchors-t9}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T9}.}\label{tab:anchors-t9}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T9.1} & 147--156 & \StatusExactClosure & Weak-axisymmetric grouped signature, conservative even-gate transport, loading mismatch \(\Xi_{\rm load}\), and hidden-even relation. \\
+\addlinespace
+\resultanchor{MTDC-T9.2} & 157--164 & \StatusExactClosure & Self-similarity theorem, outgoing-load theorem, square-root mixed-leg law, port co-loading, effective transfer-shape collapse, and support-blindness. \\
+\addlinespace
+\resultanchor{MTDC-T9.3} & 165--170 & \StatusExactClosure & Microscopic slippage decomposition, triangular normal form, branch-invariant monomials, similarity orbit, quotient closure, and finite weak-axisymmetric defect theorem. \\
+\addlinespace
+\resultanchor{MTDC-T9.4} & 171--174 & \StatusExactClosure & Branch-observable compiler, transfer-shape / outgoing-prefactor compiler, scalar no-go filters, minimal PDE data packet, and home-stretch theorem. \\
+\addlinespace
+\resultanchor{MTDC-T9.5} & 175--180 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Orbit/quotient projectors, isotropic grouped target surface, outgoing \(l=2\) DtN fingerprint, source-map reduction, higher-odd irrelevance, Packet-A closure, and \(\Delta_Q=\chi_Q-1\). \\
+\addlinespace
+\resultanchor{MTDC-T9.6} & 181--183 & \StatusExactClosure & Finite orbit law, mismatch coordinates, reference-independent two-point orbit-lock theorem, and the four-scalar final verdict packet \(\Delta_{\rm full}\). \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T10: realization compiler and finite mixed-ray search}
+\label{subsec:anchors-t10}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T10}.}\label{tab:anchors-t10}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T10.1} & 184--186 & \StatusExactClosure & Exact realization compiler, orbit projection, four-scalar audit, free-quintuple graph, scalar closure slice, and one-parameter crossing theorem. \\
+\addlinespace
+\resultanchor{MTDC-T10.2} & 187--190 & Mixed: \StatusExactClosure, \StatusNumerical & Log-ray sweep, finite graph invariance, Hessian refinement, curvature-enveloped ranking, certified brackets, and primitive-ray elimination theorem. \\
+\addlinespace
+\resultanchor{MTDC-T10.3} & 191--195 & Mixed: \StatusExactClosure, \StatusNumerical & Pairwise mixed rays, ratio optimizer, triple-simplex optimizer, boundary splice, and up-to-three-coordinate search sieve. \\
+\addlinespace
+\resultanchor{MTDC-T10.4} & 196--201 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Four- and five-coordinate mixed-simplex optimizers, finite algebraic candidate sets, boundary identification, support-cardinality-5 completion, and final local mixed-ray closure theorem. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T11: one-port same-charge audit and rigid-mouth selected branch}
+\label{subsec:anchors-t11}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T11}.}\label{tab:anchors-t11}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T11.1} & 202--204 & \StatusExactClosure & One-port mixed-bundle static kernel, square-law suppression, dynamic mixed-port kernel, phase-lag no-go, resonance/linewidth tradeoff, and linear survival window. \\
+\addlinespace
+\resultanchor{MTDC-T11.2} & 205--207 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Concrete finite-throat primitive branch, pole census, residue/linewidth survival test, isotropic target compatibility, and actual-branch kill test. \\
+\addlinespace
+\resultanchor{MTDC-T11.3} & 208--211 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Microscopic \(\Xi_1\) compiler, conservative compensation surface, strict 5PN even-gate package, pure-transfer corridor, co-loading no-go, and actual dynamic-window test. \\
+\addlinespace
+\resultanchor{MTDC-T11.4} & 212--215 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Selected-branch numerator/denominator signature, softening-depth crossover, dynamic-window classifier, continuum placement pullback, known-data injection, and current branch verdict. \\
+\addlinespace
+\resultanchor{MTDC-T11.5} & 216--217 & Mixed: \StatusExactClosure, \StatusOpen & Rigid-mouth orbit-lock compiler, static turbulence gate, direct branch-observable static gate, and two-observable kill test. \\
+\addlinespace
+\resultanchor{MTDC-T11.6} & 218--222 & \StatusExactClosure & Rigid-mouth packet projectors, static-blind dressing line, dependent-plane projectors, finite static-blind curve, physical transfer-shape compiler, physical logarithmic chart \((U,V)\), and Cartesian orbit-lock theorem. \\
+\addlinespace
+\resultanchor{MTDC-T11.7} & 223--225 & Mixed: \StatusExactClosure, \StatusNumerical, \StatusOpen & Selected-branch loading ratio, primitive ranking on the selected twin-support branch, actual twin-support placement, and coherent orbit-lock compiler. \\
+\bottomrule
+\end{longtable}
+
+\subsection{MTDC-T12: relaxed branch, barrier compiler, export kernel, and materials}
+\label{subsec:anchors-t12}
+
+\begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
+\caption{Subanchors for \resultanchor{MTDC-T12}.}\label{tab:anchors-t12}\\
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endfirsthead
+\toprule
+Subanchor & Stages & Primary status & Downstream citation use \\
+\midrule
+\endhead
+\resultanchor{MTDC-T12.1} & 226 & \StatusEffective & Relaxed-constraint branch declaration, strict-front-end recovery map, and short-range open-system compiler. \\
+\addlinespace
+\resultanchor{MTDC-T12.2} & 227--229 & Mixed: \StatusExactClosure, \StatusEffective & Selected-branch leakage, scalar-photon work compiler, non-rigid mouth/dressing packet, \(U/V\) drain compiler, and compensated multimode source compiler. \\
+\addlinespace
+\resultanchor{MTDC-T12.3} & 230--231 & Mixed: \StatusExactClosure, \StatusReduced, \StatusEffective & Relaxed stationary barrier front end, dynamic event-chain compiler, turning points, threshold speed, WKB, and crossing/collapse conditions. \\
+\addlinespace
+\resultanchor{MTDC-T12.4} & 232--234 & Mixed: \StatusExactClosure, \StatusEffective, \StatusOpen & Helicity-export diagnostic, aligned versus anti-aligned mixed-sector closure, Goldilocks window, and dynamic continuation diagnostics. \\
+\addlinespace
+\resultanchor{MTDC-T12.5} & 235--236 & Mixed: \StatusExactClosure, \StatusEffective, \StatusNumerical, \StatusOpen & Microscopic export kernel, vacuum/lattice heat partition, calibration dictionary, screening ratios, and material-threshold companion. \\
+\bottomrule
+\end{longtable}
+
+\section{Audit anchors outside the theorem map}
+\label{sec:audit-anchors}
+
+The top-level \texttt{MTDC-T} anchors are theorem-block anchors.  The appendices also need stable audit handles, but those handles should not be confused with theorem claims.  Use the following non-theorem audit anchors when a downstream document needs to refer to the archive mechanics rather than to a physics result.
+
+\begin{longtable}{L{0.18\textwidth}L{0.26\textwidth}L{0.46\textwidth}}
+\caption{Non-theorem audit anchors.}\label{tab:audit-anchors}\\
+\toprule
+Audit anchor & Location & Use \\
+\midrule
+\endfirsthead
+\toprule
+Audit anchor & Location & Use \\
+\midrule
+\endhead
+\resultanchor{MTDC-AUDIT-1} & Master stage ledger & Complete stage-to-anchor crosswalk and provenance map. \\
+\addlinespace
+\resultanchor{MTDC-AUDIT-2} & Reproducibility map & Symbolic-audit, numerical-audit, and script-backed verification registry. \\
+\addlinespace
+\resultanchor{MTDC-AUDIT-3} & Source-file index & Source-file provenance, compact-master links, and full-output links. \\
+\addlinespace
+\resultanchor{MTDC-AUDIT-4} & Fill workflow & Procedure for filling theorem blocks and stage entries without breaking claim-status or notation discipline. \\
+\bottomrule
+\end{longtable}
+
+\section{High-value formulas and packets by anchor}
+\label{sec:anchor-formula-packets}
+
+This section records the formula families that should receive stable equation labels when the main body is filled.  The formulas listed here are not rederived in the anchor map.  They are listed so that future sections know which equations should become citation-grade.
+
+\begin{longtable}{L{0.14\textwidth}L{0.30\textwidth}L{0.46\textwidth}}
+\caption{Formula packets that should be promoted to equation labels.}\label{tab:anchor-formula-packets}\\
+\toprule
+Anchor & Formula family & Labeling target \\
+\midrule
+\endfirsthead
+\toprule
+Anchor & Formula family & Labeling target \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & Parent equations & GNLS equation, localized Maxwell equation, current conservation, projected continuity with leakage, longitudinal identity, and zero-mode Maxwell reduction. \\
+\addlinespace
+\resultanchor{MTDC-T2} & Geometry lift and wall modes & \(\Sigma=r-R(\Omega,w,t)\), recovery of \(a(t)\) and \(L(t)\), wall action, modal wall operator, and breathing-reduction matrices. \\
+\addlinespace
+\resultanchor{MTDC-T3} & BdG Schur complement & Axisymmetric matrix kernel, grouped channelwise support kernels, low-frequency BdG moments, and pole-shift formula. \\
+\addlinespace
+\resultanchor{MTDC-T4} & Maxwell/mixed and outgoing bridge & Conservative mixed self-energy, outgoing-transfer factor, compact \(l=2\) fingerprint, prefactor moments, and invariant product \(m_{\hat 0}^{2}P_0\). \\
+\addlinespace
+\resultanchor{MTDC-T5} & Grouped bundle and selected front end & Weighted projectors, \(u_2^{(A)}\), \(u_4^{(A)}\), \(P_{A0}\), \(P_{A2}\), \(P_{A4}\), \(O(3)\) isotropy, weak-axisymmetric line \(b=3a\), and support-feasibility functions. \\
+\addlinespace
+\resultanchor{MTDC-T6} & Continuum placement & Dimensionless continuum ratios, selected-branch product law, rank-2 support equations, tracking functions, support enhancement \(S(\zeta;\epsilon)\), and \(\zeta_{\rm req}\). \\
+\addlinespace
+\resultanchor{MTDC-T7} & Family-1 verdict & Family-1 geometry map, wall-depth lock, branch-product window, loading-ratio extraction, and reduced residual packet. \\
+\addlinespace
+\resultanchor{MTDC-T8} & Retarded and compensation packets & Geometry contamination order, retarded normalization defect, outlet/core/mouth compensation laws, boundary-layer fixed-point equations, and co-evolving transport formulas. \\
+\addlinespace
+\resultanchor{MTDC-T9} & Quotient and orbit packets & \(\Xi_1=P_1/P_0\), monomials \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), \(\epsilon_\eta\), similarity-orbit map, \(\Delta_Q\), and \(\Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\). \\
+\addlinespace
+\resultanchor{MTDC-T10} & Realization compiler & Graph-error form, scalar closure slice, Hessian envelope, simplex optimizers, finite candidate sets, and support-cardinality-\(5\) closure statement. \\
+\addlinespace
+\resultanchor{MTDC-T11} & Same-charge and rigid-mouth packets & Static kernel suppression, dynamic mixed-port kernel, resonance/linewidth survival window, \((U,V)\) chart, \(U=V=0\) orbit lock, and selected twin-support placement. \\
+\addlinespace
+\resultanchor{MTDC-T12} & Relaxed branch & Recovery map \(\ell_w=f_U=a=b=0\), relaxed potential \(V_{\rm eff}^{(230)}\), event-chain conditions, export kernel \(K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5\), and material screening ratios. \\
+\bottomrule
+\end{longtable}
+
+\section{Downstream citation crosswalk}
+\label{sec:downstream-citation-crosswalk}
+
+The result anchors are meant to be reused by future papers with consistent wording.  \Cref{tab:downstream-anchor-crosswalk} gives the intended crosswalk.
+
+\begin{longtable}{L{0.24\textwidth}L{0.30\textwidth}L{0.36\textwidth}}
+\caption{Which anchors future papers should cite.}\label{tab:downstream-anchor-crosswalk}\\
+\toprule
+Downstream use & Primary anchors & Recommended wording \\
+\midrule
+\endfirsthead
+\toprule
+Downstream use & Primary anchors & Recommended wording \\
+\midrule
+\endhead
+Framework paper / \StageFile{pde.tex} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T5}, \resultanchor{MTDC-T9} & ``The derivation companion constructs the parent-theory import, geometry lift, grouped real \(P_2\) response compiler, and weak-axisymmetric quotient packet.'' \\
+\addlinespace
+Conservative PN summaries & \resultanchor{MTDC-T1}, \resultanchor{MTDC-T3}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9} & ``The moving-throat companion supplies the microscopic response and orbit-quotient derivation used to interpret the grouped \(P_2\) closure.'' \\
+\addlinespace
+\(2.5\)PN / retarded quadrupole papers & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9} & ``The surviving retarded branch reduces to the outgoing \(l=2\) normalization packet and its prefactor/orbit conditions.'' \\
+\addlinespace
+\(4\)PN / tail-interface papers & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9} & ``The hereditary coefficient is controlled by the same passive/outgoing STF quadrupole normalization isolated in the derivation companion.'' \\
+\addlinespace
+Same-charge branch audits & \resultanchor{MTDC-T9}, \resultanchor{MTDC-T11} & ``The same-charge mixed sector is reduced to the transported prefactor packet, selected dynamic-window tests, and rigid-mouth orbit-lock packet.'' \\
+\addlinespace
+Realization-search papers & \resultanchor{MTDC-T9}, \resultanchor{MTDC-T10}, \resultanchor{MTDC-T11} & ``The compiler is exact inside the declared quotient/realization class; actual branch realization remains a separate status claim.'' \\
+\addlinespace
+Relaxed/open-system companions & \resultanchor{MTDC-T12} & ``The relaxed branch is a companion extension with its own recovery map to the strict front end, not a proof of the strict branch by itself.'' \\
+\addlinespace
+Atomic, lepton, or anomaly notes & \resultanchor{MTDC-T1}, \resultanchor{MTDC-T9}, \resultanchor{MTDC-T11}, \resultanchor{MTDC-T12} & ``The downstream reduced-sector use inherits the parent ontology, quotient variables, orbit-lock language, and relaxed/export status limits from the derivation companion.'' \\
+\bottomrule
+\end{longtable}
+
+\section{What not to cite from each anchor}
+\label{sec:what-not-to-cite}
+
+The following table is intentionally defensive.  It lists common overclaims that the anchor map should prevent.
+
+\begin{longtable}{L{0.16\textwidth}L{0.74\textwidth}}
+\caption{Unsafe citation uses.}\label{tab:unsafe-anchor-uses}\\
+\toprule
+Anchor & Do not cite this anchor for \\
+\midrule
+\endfirsthead
+\toprule
+Anchor & Do not cite this anchor for \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & A claim that the far-field zero-mode brane reduction removes mixed channels from the microscopic theory.  It suppresses them only inside a controlled brane limit. \\
+\addlinespace
+\resultanchor{MTDC-T2} & A claim that the effective wall action is the unique possible geometry lift of the parent action.  It is the working lift used by the derivation. \\
+\addlinespace
+\resultanchor{MTDC-T3} & A claim that BdG support alone supplies the outgoing quadrupole branch.  The Stage-3 block is conservative and must be supplemented by Maxwell/mixed outgoing structure. \\
+\addlinespace
+\resultanchor{MTDC-T4} & A claim that the actual moving-throat branch realizes the universal outgoing normalization.  This anchor defines the reduced bridge and prefactor, not final realization. \\
+\addlinespace
+\resultanchor{MTDC-T5} & A claim that all anisotropy is impossible.  The \(O(3)\) theorem forbids anisotropy only on the isotropic reduced kernel; weak-axisymmetric splitting is explicitly allowed. \\
+\addlinespace
+\resultanchor{MTDC-T6} & A claim that the physical support ratio is automatically large enough.  The support-compensation theorem gives feasibility conditions and thresholds. \\
+\addlinespace
+\resultanchor{MTDC-T7} & A claim that Family-1 completes the whole program.  Family-1 supplies a reduced explicit branch and verdict; later stages refine and partly supersede it. \\
+\addlinespace
+\resultanchor{MTDC-T8} & A claim that all scalar or geometry dangers are unconditionally absent in the full PDE.  The anchor records reduced contamination checks and compensation/closure tests. \\
+\addlinespace
+\resultanchor{MTDC-T9} & A claim that \(\Delta_{\rm full}=0\) is realized by the actual branch.  The anchor defines the quotient packet and orbit theorem; realization is separate. \\
+\addlinespace
+\resultanchor{MTDC-T10} & A claim that the finite mixed-ray sieve searches all conceivable PDE branches.  It searches the declared local free-quintuple / mixed-ray class. \\
+\addlinespace
+\resultanchor{MTDC-T11} & A claim that the same-charge mixed sector supplies a new long-range attraction, or that orbit lock follows without the rigid-mouth selected-branch assumptions. \\
+\addlinespace
+\resultanchor{MTDC-T12} & A claim that the relaxed barrier companion proves the strict conservative theorem.  It is a relaxed/open-system companion with an exact recovery map to the strict front end. \\
+\bottomrule
+\end{longtable}
+
+\section{Anchor status inheritance}
+\label{sec:anchor-status-inheritance}
+
+An anchor inherits the weakest status required for the downstream claim.  For example, the formula
+\[
+  P_0=\frac{N_0}{D_0}
+\]
+is \StatusExactClosure\ inside the reduced grouped-bundle closure.  The statement that the actual moving-throat branch realizes the target value
+\[
+  m_{\hat 0}^{2}P_0=\frac{54Gc_s^5}{5a^5c^5}
+\]
+remains \StatusOpen\ until the actual branch calculation returns that value.  A future paper may cite \resultanchor{MTDC-T4} or \resultanchor{MTDC-T5} for the compiler, but it must cite the later realization result, or explicitly mark the realization as open, if it needs the target to be attained.
+
+The same rule applies to the orbit and realization blocks.  The quotient theorem may be exact inside the coherent reduced branch.  The finite search may be complete inside the declared mixed-ray class.  The actual branch may still fail the target.  The anchor map keeps these together for navigation but does not merge their statuses.
+
+\section{Supersession and stability rules}
+\label{sec:anchor-supersession-rules}
+
+The derivation is long enough that some early prototypes are expected to be superseded by later normal forms.  Supersession should be handled as follows.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Do not delete the old stage.}  The stage remains part of the audit trail.
+  \item \textbf{Do not move the top-level anchor unless the logical block changes.}  A refined theorem usually lives under the same anchor.
+  \item \textbf{Add a supersession note.}  The stage entry should state which later theorem or subanchor replaces the earlier working formulation.
+  \item \textbf{Promote later normal forms to the main citation target.}  Future papers should cite the latest normal form unless they are discussing historical development.
+  \item \textbf{Demote unsafe wording.}  If an early stage used stronger wording than the later audit allows, the main text should use the later status and the appendix should record the wording change.
+\end{enumerate}
+
+Important supersession lanes already visible in the present stage tree include:
+\begin{itemize}[leftmargin=2.2em]
+  \item early one-lane outgoing-transfer formulas superseded by the full grouped-bundle prefactor formulas;
+  \item Family-1 reduced branch tests superseded by later actual-branch and orbit-lock packets;
+  \item weak-axisymmetric load-defect formulas superseded by the monomial quotient and transfer-shape normal forms;
+  \item same-charge generic mixed-sector placeholders superseded by the one-port same-charge static/dynamic audit;
+  \item strict front-end selected-branch tests supplemented, but not replaced, by the relaxed/open-system branch.
+\end{itemize}
+
+\section{Result-card template for main-text sections}
+\label{sec:result-card-template}
+
+Every major theorem block in the main text should begin or end with a short result card.  The following template is the preferred form.
+
+\begin{quote}
+\textbf{Result anchor.}  \resultanchor{MTDC-T\(n.m\)}.\\
+\textbf{Stage provenance.}  Stages [range].\\
+\textbf{Status split.}  Algebra: [status].  Closure: [status and name].  Realization: [status].\\
+\textbf{Inputs.}  [Prior anchors, formulas, branch assumptions.]\\
+\textbf{Output.}  [The theorem, packet, formula, or verdict produced.]\\
+\textbf{Do not use for.}  [The most likely overclaim.]\\
+\textbf{Downstream use.}  [Which later anchors or papers depend on it.]
+\end{quote}
+
+This template is deliberately compact.  The stage appendix entry can carry the longer proof audit; the result card tells downstream readers what they are allowed to cite.
+
+\section{Citation wording examples}
+\label{sec:anchor-citation-wording-examples}
+
+The following examples show the intended level of precision.
+
+\subsection{Outgoing quadrupole bridge}
+\label{subsec:citation-wording-outgoing-bridge}
+
+Safe wording:
+\begin{quote}
+The derivation companion shows that, inside the reduced wall/BdG/Maxwell/mixed grouped-bundle closure, the leading odd quadrupole coefficient is controlled by the isotropic static prefactor \(P_0=N_0/D_0\); actual realization of the universal value is a separate branch condition.  See \resultanchor{MTDC-T4} and \resultanchor{MTDC-T5}.
+\end{quote}
+
+Unsafe wording:
+\begin{quote}
+The moving-throat PDE proves the GR quadrupole normalization.
+\end{quote}
+The unsafe version erases the difference between the compiler and actual branch realization.
+
+\subsection{Weak-axisymmetric quotient}
+\label{subsec:citation-wording-quotient}
+
+Safe wording:
+\begin{quote}
+The weak-axisymmetric prefactor defect is organized by the quotient packet, with \(\Xi_1=P_1/P_0\) on the weak-axisymmetric line and with the final reduced back end summarized by \(\Delta_{\rm full}\).  See \resultanchor{MTDC-T9}.
+\end{quote}
+
+Unsafe wording:
+\begin{quote}
+The branch is therefore automatically orbit-locked.
+\end{quote}
+The unsafe version confuses quotient coordinates with realized orbit lock.
+
+\subsection{Finite mixed-ray realization search}
+\label{subsec:citation-wording-realization-search}
+
+Safe wording:
+\begin{quote}
+Within the declared local free-quintuple mixed-ray class, the realization search is reduced to a finite support-cardinality-\(5\) sieve.  See \resultanchor{MTDC-T10}.
+\end{quote}
+
+Unsafe wording:
+\begin{quote}
+All possible moving-throat branches have been searched.
+\end{quote}
+The unsafe version expands the search class beyond what the theorem covers.
+
+\subsection{Rigid-mouth orbit lock}
+\label{subsec:citation-wording-rigid-mouth}
+
+Safe wording:
+\begin{quote}
+On the rigid-mouth selected branch, the post-static same-charge problem is diagonal in the physical logarithmic chart \((U,V)\), and orbit lock is the codimension-two condition \(U=V=0\).  See \resultanchor{MTDC-T11}.
+\end{quote}
+
+Unsafe wording:
+\begin{quote}
+The same-charge branch is solved in general.
+\end{quote}
+The unsafe version drops the rigid-mouth and selected-branch restrictions.
+
+\subsection{Relaxed branch}
+\label{subsec:citation-wording-relaxed-branch}
+
+Safe wording:
+\begin{quote}
+The relaxed companion introduces leakage, non-rigid mouth, source, barrier, export, and material-screening packets around the strict front end, with recovery map \(\ell_w=f_U=a=b=0\).  See \resultanchor{MTDC-T12}.
+\end{quote}
+
+Unsafe wording:
+\begin{quote}
+The relaxed branch proves the strict branch.
+\end{quote}
+The unsafe version reverses the direction of the recovery map.
+
+\section{Checklist for maintaining the anchor map}
+\label{sec:anchor-maintenance-checklist}
+
+Before finalizing any future revision of this companion, check the following.
+
+\begin{verificationchecklist}
+  \item Every top-level anchor in \cref{tab:top-level-anchor-map} has at least one main-text theorem block.
+  \item Every subanchor in \cref{sec:fine-grained-subanchors} has a corresponding theorem, proposition, definition, table, or explicitly marked appendix-only result.
+  \item Every anchor has a status split compatible with \cref{chap:claim-status-firewall}.
+  \item Every anchor respects the notation rules in \cref{chap:notation-firewall}.
+  \item Every open realization target is still marked open unless a later actual-branch theorem closes it.
+  \item Every numerical placement has a source, script, or stage appendix entry.
+  \item Every no-go anchor names the search class or branch family it excludes.
+  \item Every superseded prototype points to the later subanchor that should be cited instead.
+  \item The stage ledger and this anchor map agree on stage ranges.
+  \item Downstream papers cite result anchors for result families and theorem/equation labels only for local precision.
+\end{verificationchecklist}
+
+\section{Summary}
+\label{sec:anchor-map-summary}
+
+The result-anchor map turns the 236-stage derivation into a citation system.  The anchors are not replacements for proofs, equations, or stage entries.  They are the route map connecting them.  The stable rule is:
+\begin{quote}
+Cite anchors for result families, theorem labels for formal statements, equation labels for formulas, and stage numbers for provenance.
+\end{quote}
+Following that rule will let later papers cite this companion without turning every citation into a long historical stage chain, while still allowing any reader to audit the full derivation stage by stage.

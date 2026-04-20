@@ -1,0 +1,653 @@
+# PDE Ledger Paper Cleanup Tracker
+
+## Purpose
+
+This document is the working tracker for turning `research/pde_ledger/paper/`
+from a generated monolithic derivation dump into a usable internal ledger and a
+clean source base for future publishable papers.
+
+The archive is not disposable scaffolding. It is the master reference for the
+derivations accumulated during the moving-throat PDE exploration and is meant
+to let future papers cite the completed derivation chain without re-deriving
+the same material from scratch.
+
+It is not a proof-status ledger for the mathematics itself.  It is a
+document/product tracker for:
+
+- readability,
+- structure,
+- provenance,
+- build layout,
+- and editorial cleanup.
+
+Use this file as the master checklist for paper cleanup decisions and status.
+
+## Authorial Charter
+
+Clarified on `2026-04-20`:
+
+1. `paper/pde_ledger.tex` is the authoritative master document for the PDE
+   derivation program.
+2. Its primary role is to preserve the derivation chain and make it citable by
+   future papers.
+3. Readability work should improve navigation without damaging archive value or
+   provenance.
+4. The verification stack is part of the product, not an optional sidecar:
+   notes, SymPy audits, Mathematica audits, and saved outputs all contribute to
+   trust in the master document.
+5. Cleanup should therefore optimize for:
+   - archival stability,
+   - human navigation,
+   - provenance clarity,
+   - and verification traceability.
+
+## Repo Snapshot
+
+Snapshot taken on `2026-04-20`.
+
+Observed facts:
+
+| Item | Path | Observed state |
+|---|---|---|
+| Main TeX entry | `research/pde_ledger/paper/pde_ledger.tex` | `book` document with `frontmatter`, `mainmatter`, and appendices |
+| Archive PDF size | `research/pde_ledger/paper/pde_ledger.pdf` | 682 pages |
+| Reader PDF size | `research/pde_ledger/paper/pde_ledger_reader.pdf` | 170 pages |
+| Frontmatter source size | `paper/frontmatter/*.tex` | 4,427 lines |
+| Main parts source size | `paper/parts/*.tex` | 11,638 lines |
+| Appendix source size | `paper/appendices/*.tex` | 19,186 lines |
+| Stage file source size | `paper/stages/*.tex` | 6,372 lines across 236 files |
+| Notes corpus | `research/pde_ledger/notes/` | master notes plus stage notes plus review docs |
+| Verification scripts | `research/pde_ledger/scripts/` | stage SymPy audits plus numerical stress scripts |
+| Mathematica mirror | `research/pde_ledger/mathematica/` | existing second-CAS audit layer plus saved outputs |
+
+## Immediate Interpretations
+
+1. This is not currently a conventional paper.
+2. It is a mixed artifact: authoritative derivation ledger, provenance archive,
+   verification index, and publication wrapper all at once.
+3. The `.md` files in `notes/` are source artifacts, not reader-facing prose.
+4. The `scripts/` tree is part of the verification archive, not the narrative.
+5. The `paper/stages/` directory appears to be generated template inventory,
+   not the canonical stage narrative currently used by the build.
+6. The canonical built stage narrative currently lives in
+   `paper/appendices/stage_appendix_part*.tex`.
+
+## Why Chapter 1 Looks Like It Starts "Late"
+
+The current document uses:
+
+- `\frontmatter`
+- `\mainmatter`
+- `\appendix`
+
+So Chapter 1 starts on printed page `1`, but only after a very large frontmatter
+block with Roman numeral pages.  In a PDF viewer this makes Chapter 1 appear
+far into the file even though the chapter numbering resets correctly.
+
+This is a product-design problem, not a LaTeX bug.
+
+## Working Diagnosis
+
+The main cleanup problem splits into three tracks:
+
+| Track | Question |
+|---|---|
+| Product definition | What document are we actually trying to ship? |
+| Editorial structure | What should a human read in the PDF, and what should be archived elsewhere? |
+| Provenance and audit | How do notes, scripts, outputs, and stage claims map cleanly to the ledger? |
+
+We should not continue making local prose edits until the product definition is
+stable enough to guide them.
+
+## Product Hierarchy
+
+The master archive remains the top-level product. Other outputs should be
+derived from it rather than replacing it.
+
+| Product | Role |
+|---|---|
+| Master archive ledger | authoritative derivation reference for future papers |
+| Reader ledger | human-usable navigation layer over the same derivation program |
+| Future papers | narrow downstream papers that cite the master archive |
+
+The cleanup program should preserve this hierarchy.
+
+## Verification Baseline
+
+The master document is only as trustworthy as the verification apparatus
+attached to it, so cleanup planning has to account for the actual audit state.
+
+Current observed verification layers:
+
+| Layer | Path | Observed state |
+|---|---|---|
+| Derivation notes | `research/pde_ledger/notes/` | canonical source/archive inputs |
+| SymPy audits | `research/pde_ledger/scripts/` | broad stagewise audit corpus |
+| Mathematica audits | `research/pde_ledger/mathematica/` | large existing mirror, not a greenfield task |
+| Numerical stress | `research/pde_ledger/scripts/numerical/` and `research/pde_ledger/mathematica/numerical/` | existing stress infrastructure |
+
+Observed Mathematica state on `2026-04-20`:
+
+- `research/pde_ledger/mathematica/` already exists,
+- it contains a large set of stagewise `.wl` audits,
+- it has runner scripts and saved outputs,
+- and `research/pde_ledger/mathematica/output/_summary.txt` currently reports
+  `TOTAL: 150  PASS: 150  FAIL: 0  SKIPPED: 0`.
+
+This changes the practical roadmap:
+
+- we do not need to invent the Mathematica layer from scratch,
+- we do need to audit its scope, trust model, and coverage relative to the
+  notes and SymPy layers,
+- and paper-side provenance should reflect that dual-CAS state cleanly.
+- the detailed stage-coverage inventory is intentionally deferred until the
+  archive/reader paper cleanup baseline is in place.
+
+## Target Outputs
+
+We likely need three distinct outputs, even if they share sources.
+
+| Output | Audience | Purpose | Status |
+|---|---|---|---|
+| Archive ledger | internal and future-author use | preserve the authoritative derivation and audit trail | canonical |
+| Reader ledger | internal collaborators | readable theorem/provenance companion | needed |
+| Future papers | external | narrow, publication-scale claims | needed |
+
+The current `pde_ledger.tex` is the archive ledger, but it is also carrying too
+much reader-onboarding and publication-shaping burden.
+
+## Recommended Product Decision
+
+Default recommendation:
+
+1. Keep `pde_ledger.tex` as the full authoritative archive build.
+2. Create one slimmer reader build.
+3. Treat future papers as separate downstream products, not edited versions of
+   the 700+ page archive.
+
+This avoids destroying provenance while still giving us something humans can
+actually work with.
+
+## Workstreams
+
+### 1. Define the Canonical Role of Each Tree
+
+Goal:
+decide which directories are source-of-truth, generated artifacts, or archival.
+
+Required decisions:
+
+- `notes/`: canonical derivation source, or raw AI output archive?
+- `scripts/`: canonical verification layer, or one audit implementation among several?
+- `paper/parts/`: canonical human-readable theorem narrative?
+- `paper/appendices/stage_appendix_part*.tex`: canonical per-stage ledger?
+- `paper/stages/`: keep, regenerate, repurpose, or retire?
+
+Acceptance criteria:
+
+- every top-level subtree has one clear role,
+- no file class is maintained in two places without explicit generation rules,
+- redundant generated stubs are either retired or explicitly marked as such.
+
+### 2. Split Archive Build from Reader Build
+
+Goal:
+stop forcing one PDF to satisfy incompatible use cases.
+
+Recommended direction:
+
+- keep `pde_ledger.tex` as the archive build,
+- create a second entry point for a reader-oriented build.
+
+Reader build should likely include:
+
+- title page,
+- short purpose/scope note,
+- concise reading guide,
+- parts 1--8,
+- a short provenance appendix,
+- a short reproducibility appendix.
+
+Reader build should likely exclude:
+
+- full stage ledger tables,
+- full stage appendices,
+- fill workflow,
+- source file index,
+- raw inventory-style audit material that is only useful for archival tracing.
+
+Acceptance criteria:
+
+- one PDF is readable end-to-end by a human collaborator,
+- one PDF preserves the full archival record,
+- both compile from the same repo without ad hoc editing.
+
+### 3. Compress the Frontmatter Aggressively
+
+Goal:
+reduce frontmatter from a mini-book to an onboarding layer.
+
+Current problem:
+
+- the frontmatter is long enough to dominate the start of the PDF,
+- much of it repeats policy that could live in an editorial guide instead.
+
+Recommended actions:
+
+- collapse duplicated reading-policy material,
+- move detailed citation/status doctrine to an appendix or editorial guide,
+- keep only the minimum required to orient a reader.
+
+Acceptance criteria:
+
+- reader build reaches Chapter 1 quickly,
+- frontmatter introduces the ledger without exhausting the reader,
+- rules remain available somewhere, but not all in the first block of pages.
+
+### 4. Make the Main Parts Read Like Human Prose
+
+Goal:
+turn the main body into a navigable theorem ledger rather than a raw model dump.
+
+Required improvements:
+
+- add one short abstract at the start of each part,
+- add a "what this part proves / does not prove" block,
+- add a dependency summary at the top of each part,
+- reduce repeated status language inside theorem exposition,
+- move repetitive stage history back to appendices.
+
+Acceptance criteria:
+
+- a reader can skim the part openings and understand the global flow,
+- theorem blocks are not buried under repeated policy prose,
+- the main parts can be read without treating the document as a database dump.
+
+### 5. Reframe Notes and Script References
+
+Goal:
+stop exposing raw AI-oriented filenames as if they were reader-facing sources.
+
+Current problem:
+
+- the paper references `.md` and script artifacts whose names are only useful to
+  the machine-generation pipeline,
+- this makes the document feel like an internal export log rather than a curated ledger.
+
+Recommended actions:
+
+- keep raw filenames in provenance tables only,
+- in the main text, refer to curated source classes and stage IDs,
+- create one human-readable source/provenance map that translates:
+  stage ID -> note file -> script file -> output file -> paper section.
+
+Acceptance criteria:
+
+- the main text references stable human concepts,
+- raw artifact names remain available for audit,
+- provenance can be followed without cluttering narrative sections.
+
+### 6. Decide What to Do with `paper/stages/`
+
+Goal:
+remove ambiguity around the 236 generated stage `.tex` files.
+
+Current observed state:
+
+- sampled stage files are template stubs,
+- the main build does not include them,
+- the active stage narrative already exists in `appendices/stage_appendix_part*.tex`.
+
+Likely options:
+
+- archive them as generated templates and stop editing them,
+- use them as a future machine-readable source layer,
+- or regenerate stage appendices from them and make that pipeline explicit.
+
+Default recommendation:
+
+- do not manually maintain both `paper/stages/` and stage appendices,
+- treat `paper/stages/` as archival/generated until a real generation pipeline exists.
+
+Acceptance criteria:
+
+- there is one clear canonical stage narrative layer,
+- dead or redundant stage files are not mistaken for active source.
+
+### 7. Clean Up Provenance and Verification Metadata
+
+Goal:
+make the audit apparatus useful rather than overwhelming.
+
+Required improvements:
+
+- unify source-file references,
+- normalize stage status language,
+- maintain one reproducibility map,
+- maintain one dependency ledger,
+- maintain one assumption ledger.
+
+Related existing docs worth reusing:
+
+- `notes/review/ASSUMPTION_LEDGER.md`
+- `notes/review/DEPENDENCY_LEDGER.md`
+- `notes/review/PROOF_HARDENING_PLAN.md`
+
+Acceptance criteria:
+
+- provenance is centralized,
+- verification docs complement the paper rather than spilling into it,
+- stage status is consistent across the repo.
+
+### 8. Verification Governance
+
+Goal:
+tie the paper cleanup plan to the actual trust model of the derivation program.
+
+Required improvements:
+
+- define what counts as the canonical claim for a stage:
+  note, TeX ledger, SymPy audit, or Mathematica audit,
+- inventory mismatches between note coverage, SymPy coverage, and Mathematica coverage,
+- identify which stages are load-bearing for future papers,
+- prioritize secondary audit review for stages whose scripts may be correct
+  syntactically but weak epistemically,
+- make saved audit outputs citable from the archive without flooding the main narrative.
+
+Acceptance criteria:
+
+- every load-bearing stage has an explicit verification status,
+- SymPy and Mathematica coverage can be compared from one place,
+- weak or tautological audits are discoverable,
+- the master ledger can cite verification evidence without embedding raw transcripts.
+
+### 9. Build Hygiene and Navigation
+
+Goal:
+make the build predictable and the PDF easier to navigate.
+
+Needed items:
+
+- standardize on `latexmk` for normal builds,
+- decide whether the archive PDF should include bookmarks only or also deep TOC,
+- add a short build note describing archive vs reader builds,
+- keep unresolved refs and duplicate labels at zero.
+
+Acceptance criteria:
+
+- normal build path is documented,
+- PDF navigation is usable,
+- log is clean enough that new real problems are visible.
+
+## Priority Queue
+
+### Phase 0: Decision Pass
+
+Status: `not started`
+
+Tasks:
+
+- decide whether `pde_ledger.tex` remains the archive build,
+- record explicitly that the archive build is the authoritative master reference,
+- decide whether we want a second reader build now,
+- decide whether `paper/stages/` is active or archival,
+- decide whether raw note/script filenames belong only in provenance appendices.
+
+### Phase 1: Structural Refactor
+
+Status: `in progress`
+
+Tasks:
+
+- create reader build entry point,
+- trim frontmatter for reader build,
+- move heavy provenance material out of the reader main path,
+- preserve archive build unchanged except for hygiene fixes.
+
+### Phase 2: Narrative Cleanup
+
+Status: `in progress`
+
+Tasks:
+
+- add per-part abstracts,
+- add dependency and claim-scope summaries,
+- remove repetitive policy text from theorem flow,
+- improve chapter openers and transitions.
+
+Current note:
+
+- Part I now uses the pilot opener format: short archive-facing introduction,
+  explicit reader map, and grouped stage packets.
+- Part II now uses the same opener pattern, replacing the row-by-row stage dump
+  with grouped stage packets and a short reader map.
+- Parts III--IV now use the same opener pattern, replacing large stage tables
+  with grouped packets and short reader maps.
+- Parts V--VIII now use the same opener pattern, replacing the generated
+  source/status longtables with grouped packets and short reader maps.
+- Next readability passes should remove repeated policy text from theorem flow
+  and tighten transitions without compressing mathematical content.
+
+### Phase 3: Provenance Cleanup
+
+Status: `in progress`
+
+Tasks:
+
+- create a human-readable source map,
+- standardize stage/source/script naming references,
+- centralize audit references.
+
+Current note:
+
+- Part I is now the pilot for canonical stage sourcing: the appendix assembles
+  `paper/stages/stage_001.tex` through `stage_006.tex` instead of carrying the
+  derivations inline.
+- Part II now uses the same pattern: the appendix assembles
+  `paper/stages/stage_007.tex` through `stage_019.tex` instead of carrying the
+  derivations inline.
+- Part III now uses the same pattern: the appendix assembles
+  `paper/stages/stage_020.tex` through `stage_073.tex` instead of carrying the
+  derivations inline.
+- Part IV now uses the same pattern for its stage cards: the appendix assembles
+  `paper/stages/stage_074.tex` through `stage_146.tex` while keeping the
+  audit-path derivation sections inline above the canonical stage cards.
+- Part V now uses the same pattern for its stage cards: the appendix assembles
+  `paper/stages/stage_147.tex` through `stage_183.tex` while keeping the
+  audit-path derivation sections inline above the canonical stage cards.
+- Part VI now uses the same pattern for its stage cards: the appendix assembles
+  `paper/stages/stage_184.tex` through `stage_201.tex` while keeping the
+  theorem-path derivation sections inline above the canonical stage cards.
+- Part VII now uses the same pattern for its stage cards: the appendix assembles
+  `paper/stages/stage_202.tex` through `stage_225.tex` while keeping the
+  theorem-path derivation sections inline above the canonical stage cards.
+- Part VIII now sources `paper/stages/stage_226.tex` through
+  `stage_236.tex`; unlike Parts I--VII, those stage files carry the full
+  derivation sections rather than compact stage cards.
+- The raw note provenance for migrated stages now lives in
+  `STAGE_PROVENANCE_INDEX.md`, while the stage files themselves carry only the
+  executable verification references needed for human review.
+- Format normalization is now decided: keep the mixed model. Parts I--VII use
+  compact stage cards, while Part VIII uses full derivation-stage files.
+- Verification coverage is now tracked in `STAGE_VERIFICATION_COVERAGE.md`,
+  which gives the audit baseline without pushing raw artifact names back into
+  the PDF.
+
+### Phase 4: Verification Reconciliation
+
+Status: `in progress`
+
+Tasks:
+
+- inventory stage coverage across notes, SymPy, and Mathematica,
+- classify which existing audits are load-bearing vs routine,
+- audit constant provenance and prohibit unexplained literals in verification scripts,
+- identify weak, tautological, or stale audit implementations,
+- decide how the archive ledger should expose verification status.
+
+Current note:
+
+- The mixed stage-source model is now intentional rather than provisional.
+- The stage coverage baseline is now recorded in
+  `STAGE_VERIFICATION_COVERAGE.md`.
+- The future-paper citation-support subset is now defined in
+  `CITATION_SUPPORT_SET.md`.
+- Stages `001--002` now have dedicated SymPy audits and an initial
+  constant-provenance log in `CHECKPOINT_CONSTANT_PROVENANCE.md`.
+- Stages `073` and `079` now also have dedicated SymPy checkpoint audits, so
+  the support-set Mathematica-only outliers are gone.
+- Stage `183` now has a Mathematica mirror and a first review note, so the
+  late-stage support frontier has narrowed again.
+- Stage `186` now has a Mathematica mirror and a first review note too.
+- Stage `201` now also has a Mathematica mirror and a first review note.
+- Stage `204` now also has a Mathematica mirror and a first review note.
+- Stage `222` now also has a Mathematica mirror and a first review note.
+- Stage `225` now also has a Mathematica mirror and a first review note.
+- Stage `226` now also has a Mathematica mirror and a first review note.
+- Stage `231` now also has a Mathematica mirror and a first review note.
+- Stage `236` now also has a Mathematica mirror and a first review note, so the
+  late-stage support frontier is now closed.
+- Stages `001--002` now also have Mathematica parity, so the checkpoint
+  support set has full symbolic parity and review coverage.
+- The checkpoint trust baseline now lives in `CHECKPOINT_TRUST_AUDIT.md`:
+  `25` `strong`, `0` `moderate`, `0` `weak`.
+- The next verification work is no longer parity; the checkpoint support set is
+  symbolically closed and `231` / `236` now also have dedicated numerical
+  stress.
+- The paper-side verification surface is now exposed compactly through the
+  frontmatter and reader verification summary, while raw per-stage script
+  manifests are intentionally omitted from printed stage cards.
+
+### Phase 5: Visual and Typographic Cleanup
+
+Status: `not started`
+
+Tasks:
+
+- reduce overfull boxes where materially harmful,
+- clean hyperref title warnings,
+- review heading density,
+- review table density and page-breaking strategy.
+
+## Task Board
+
+| ID | Task | Category | Status | Notes |
+|---|---|---|---|---|
+| P0-00 | Record archive charter in paper-side docs | product | open | authoritative master reference |
+| P0-01 | Define archive vs reader build split | product | done | archive is authoritative; reader build added |
+| P0-02 | Decide canonical status of `paper/stages/` | structure | done | all Parts I--VIII now source canonical stage files |
+| P0-03 | Decide whether raw artifact names stay out of main narrative | editorial | done | migrated Stages 001--236 keep raw note names out of the PDF and in the repo-local provenance index |
+| P1-01 | Add second TeX entry point for reader build | build | done | `pde_ledger_reader.tex` added |
+| P1-02 | Compress frontmatter for reader build | editorial | done | reader build uses short orientation frontmatter |
+| P1-03 | Keep archival appendices only in archive build | build | done | reader build keeps compact summary appendices only |
+| P2-00 | Add per-part claim-scope summaries | readability | done | all Parts I--VIII now open with proves / does-not-prove / later-parts-need-it summaries |
+| P2-01 | Tighten per-part opener prose into explicit abstract blocks | readability | done | all Parts I--VIII now use the short opener/readermap format |
+| P2-02 | Add per-part dependency blocks | readability | done | reader-map format now covers Parts I--VIII |
+| P2-03 | Remove repetitive policy text from theorem flow | readability | open | move repeated status doctrine out of chapter interiors |
+| P2-04 | Remove per-stage forced page breaks from archive appendices | layout | done | Parts I--VII now neutralize stage-card `\clearpage` calls locally so derivations flow continuously without rewriting every canonical stage file |
+| P3-01 | Create source/provenance map | provenance | done | `STAGE_PROVENANCE_INDEX.md` now covers Stages 001--236 |
+| P3-02 | Normalize stage/source references | provenance | open | avoid raw filenames in prose |
+| P4-01 | Inventory note/SymPy/Mathematica coverage | verification | done | baseline inventory now lives in `STAGE_VERIFICATION_COVERAGE.md` |
+| P4-02 | Define verification status schema for load-bearing stages | verification | done | checkpoint trust baseline now lives in `CHECKPOINT_TRUST_AUDIT.md` |
+| P4-03 | Audit constant provenance for load-bearing stages | verification | open | every constant must be derived, source-anchored, or probe-only |
+| P4-04 | Define future-paper citation support subset | verification | done | control subset now lives in `CITATION_SUPPORT_SET.md` |
+| P4-05 | Promote foundational checkpoints to dedicated audits | verification | done | Stages `001--002` now have dedicated SymPy scripts and provenance entries |
+| P4-06 | Reconcile checkpoint Mathematica-only outliers | verification | done | Stages `073` and `079` now have dedicated SymPy mirrors and checkpoint provenance entries |
+| P4-07 | Harden first late-stage support checkpoint | verification | done | Stage `183` now has a Mathematica mirror, provenance entry, and review note |
+| P4-08 | Harden second late-stage support checkpoint | verification | done | Stage `186` now has a Mathematica mirror, provenance entry, and review note |
+| P4-09 | Harden third late-stage support checkpoint | verification | done | Stage `201` now has a Mathematica mirror, provenance entry, and review note |
+| P4-10 | Harden fourth late-stage support checkpoint | verification | done | Stage `204` now has a Mathematica mirror, provenance entry, and review note |
+| P4-11 | Harden fifth late-stage support checkpoint | verification | done | Stage `222` now has a Mathematica mirror, provenance entry, and review note |
+| P4-12 | Harden sixth late-stage support checkpoint | verification | done | Stage `225` now has a Mathematica mirror, provenance entry, and review note |
+| P4-13 | Harden seventh late-stage support checkpoint | verification | done | Stage `226` now has a Mathematica mirror, provenance entry, and review note |
+| P4-14 | Harden eighth late-stage support checkpoint | verification | done | Stage `231` now has a Mathematica mirror, provenance entry, and review note |
+| P4-15 | Harden ninth late-stage support checkpoint | verification | done | Stage `236` now has a Mathematica mirror, provenance entry, and review note |
+| P4-16 | Add Mathematica parity to foundational checkpoints | verification | done | Stages `001--002` now have Mathematica mirrors and refreshed review records |
+| P4-17 | Baseline checkpoint trust audit | verification | done | stage-level checkpoint tiers now live in `CHECKPOINT_TRUST_AUDIT.md` |
+| P4-18 | Repair Stage 168 trust defect | verification | done | Stage `168` now rebuilds the monomial laws from primitive-ratio compilers in both CAS layers and has a current PASS review |
+| P4-19 | Resolve Stage 001/002 convention caveat | verification | done | canonical Stage `001--002` cards now state the densitized convention explicitly and the current review status is PASS |
+| P4-20 | Repair Stage 003 checkpoint drift | verification | done | shared numerical-stress harness now resolves the repo-local sample path, the note/review bookkeeping is current, and Stage `003` is promoted to `strong` |
+| P4-21 | Reconcile Stage 005 round-trip drift | verification | done | existing `N0/N2/N4` round-trip checks were confirmed in both CAS layers, the stale review caveat was removed, and Stage `005` is promoted to `strong` |
+| P4-22 | Reconcile Stage 006 assembly drift | verification | done | existing one-port `Z_n/N_n` reconstruction checks were confirmed in both CAS layers, the stale assembled-input caveat was removed, and Stage `006` is promoted to `strong` |
+| P4-23 | Reconcile Stage 007 overlap drift | verification | done | the explicit `H_r` rename note and existing unequal-lane witness checks were confirmed in both CAS layers, the stale review caveats were removed, and Stage `007` is promoted to `strong` |
+| P4-24 | Reconcile Stage 019 boundary drift | verification | done | the live `xi >= 0` / `0 <= xi < 1` boundary assumptions were confirmed in both CAS layers, the stale onset-boundary caveat was removed, and Stage `019` is promoted to `strong` |
+| P4-25 | Reclassify Stage 072 explicit verdict | verification | done | the explicit Family-1 verdict was confirmed in both CAS layers as a closed arithmetic theorem conditional on the upstream minimal module, and its carried-threshold provenance is now logged |
+| P4-26 | Reclassify Stage 073 status boundary | verification | done | the reduced theorem-status boundary is now treated as a narrow but citation-grade checkpoint because its carried inputs are explicit, source-anchored, and replayed in both CAS layers |
+| P4-27 | Reclassify Stage 146 off-family transport packet | verification | done | the theorem path was confirmed symbolic in both CAS layers, the Family-1 readbacks were isolated as explanatory outputs only, and Stage `146` is promoted to `strong` |
+| P4-28 | Add numerical stress to Stages 231 and 236 | verification | done | shared JSON-driven Python + Mathematica stress harnesses now cover both late-stage checkpoints without adding committed output artifacts |
+| P4-29 | Add paper-side verification routing summary | verification | done | the archive frontmatter and reader verification appendix now summarize the naming convention/baseline compactly, and printed stage cards omit raw verification filename manifests |
+| P5-01 | Typography and overflow cleanup pass | formatting | open | after structure stabilizes |
+
+## Questions That Must Be Answered Early
+
+1. Is the primary goal an internal archive, a collaborator-readable companion,
+   or something close to a preprint?
+2. Do we want to preserve the full stage-by-stage material in the main PDF, or
+   is it enough to preserve it in a separate archive build?
+3. Are the `.md` notes canonical source material, or should the canonical human
+   source move into the TeX files?
+4. Is there any real consumer for the `paper/stages/` template files today?
+5. Do we want one unified provenance map in the paper, or do we want the paper
+   to link out to a repo-local audit document instead?
+6. How should the archive expose verification status for a stage when the note,
+   SymPy audit, and Mathematica audit do not all have the same strength?
+
+## Recommended First Concrete Editing Pass
+
+Recommended next implementation sequence:
+
+1. keep the chosen mixed model: compact stage cards in Parts I--VII and full
+   derivation-stage files in Part VIII,
+2. continue provenance cleanup so stage files carry only the executable
+   verification attachments intended for human review,
+3. use `CITATION_SUPPORT_SET.md` as the hardening target for future-paper
+   support,
+4. audit constant provenance and no-magic-numbers compliance in that subset,
+5. then audit SymPy and Mathematica trust strength against that subset.
+
+This keeps the archive usable while moving it toward a single-source,
+referee-checkable stage ledger.
+
+## Change Log
+
+| Date | Change |
+|---|---|
+| 2026-04-20 | Initial tracker created from repo survey and current build audit. |
+| 2026-04-20 | Added separate reader build with compact frontmatter and summary appendices; archive build remains authoritative. |
+| 2026-04-20 | Added reader-facing claim-scope summaries to all eight main parts and recompiled both archive and reader PDFs successfully. |
+| 2026-04-20 | Reworked the Part I opener into a reusable reader-map and grouped stage-packet format, then recompiled both archive and reader PDFs successfully. |
+| 2026-04-20 | Propagated the same opener pattern to Part II and recompiled both archive and reader PDFs successfully. |
+| 2026-04-20 | Migrated Part V stage cards into canonical `paper/stages/stage_147.tex` through `stage_183.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the audit-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VI stage cards into canonical `paper/stages/stage_184.tex` through `stage_201.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VII stage cards into canonical `paper/stages/stage_202.tex` through `stage_225.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VIII into canonical `paper/stages/stage_226.tex` through `stage_236.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the appendix as an assembler over full derivation-stage files plus downstream guardrails. |
+| 2026-04-20 | Propagated the same opener pattern to Parts III--IV; archive and reader builds now stand at 707 and 176 pages respectively. |
+| 2026-04-20 | Promoted Part I Stages 001--006 into canonical `paper/stages/` files, converted the Part I appendix into an aggregator, attached stage-level audit references, and recompiled both archive and reader PDFs successfully. |
+| 2026-04-20 | Propagated the same opener pattern to Parts V--VIII, removed the generated source/status longtables from those chapter heads, and kept the mathematical derivations intact. |
+| 2026-04-20 | Promoted Part II Stages 007--019 into canonical `paper/stages/` files, converted the Part II appendix into an aggregator, removed raw note filenames from migrated stage pages, and added the repo-local `STAGE_PROVENANCE_INDEX.md` for Stages 001--019. |
+| 2026-04-20 | Promoted Part III Stages 020--073 into canonical `paper/stages/` files, converted the Part III appendix into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 073. |
+| 2026-04-20 | Promoted Part IV Stages 074--146 into canonical `paper/stages/` files, converted the Part IV stage-card block into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 146. |
+| 2026-04-20 | Chose the mixed canonical stage model intentionally: Parts I--VII remain compact stage cards, Part VIII remains full derivation-stage files, and the audit baseline now lives in `STAGE_VERIFICATION_COVERAGE.md`. |
+| 2026-04-20 | Added the constant-provenance / no-magic-numbers rule to the paper-side verification queue so future audit work must justify every carry-forward constant. |
+| 2026-04-20 | Added `CITATION_SUPPORT_SET.md` to define the future-paper support subset and focus the next audit wave on its checkpoint stages. |
+| 2026-04-20 | Added dedicated SymPy audits for Stages `001--002`, updated their provenance/verification fields, and logged the first checkpoint constant-provenance findings. |
+| 2026-04-20 | Added dedicated SymPy audits for Stages `073` and `079`, removed the last support-set Mathematica-only checkpoint gaps, and extended the checkpoint constant-provenance log accordingly. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `183`, updated the coverage/provenance baselines, and narrowed the late-stage support-set frontier to `186`, `201`, `204`, `222`, `225`, `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `186`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `201`, `204`, `222`, `225`, `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `201`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `204`, `222`, `225`, `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `204`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `222`, `225`, `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `222`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `225`, `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `225`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `226`, `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `226`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `231`, `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `231`, kept the Session-II numerics isolated as benchmark-only specialization inputs, and narrowed the late-stage support-set frontier to `236`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `236`, kept the physical-calibration numerics isolated as benchmark-only readbacks, and closed the late-stage support-set frontier. |
+| 2026-04-20 | Added shared JSON-driven Python + Mathematica numerical-stress harnesses for Stages `231` and `236`, updated the checkpoint review/provenance baselines, and moved the late-stage support set past its last explicit numerical-hardening gap. |
+| 2026-04-20 | Added Mathematica mirrors for Stages `001--002`, refreshed the foundational review records, and closed symbolic parity across the checkpoint support set. |
+| 2026-04-20 | Reconciled Stage `006` review drift by confirming the existing one-port `Z_n/N_n` reconstruction checks in both CAS layers, logging its grouped-bundle constants, and promoting Stage `006` from `moderate` to `strong`. |
+| 2026-04-20 | Reconciled Stage `007` review drift by confirming the explicit `H_r` rename note and the existing unequal-lane witness checks in both CAS layers, logging its exact overlap constants, and promoting Stage `007` from `moderate` to `strong`. |
+| 2026-04-20 | Reconciled Stage `019` review drift by confirming the live `xi >= 0` / `0 <= xi < 1` boundary assumptions in both CAS layers, logging its support-frontier constants, and promoting Stage `019` from `moderate` to `strong`. |
+| 2026-04-20 | Reclassified Stage `072` as `strong` after confirming in both CAS layers that the explicit Family-1 verdict is a closed arithmetic theorem once the minimal-isotropic module is accepted, and logged its carried-threshold provenance. |
+| 2026-04-20 | Reclassified Stage `073` as `strong` after making the narrow status-boundary rule explicit, confirming the dual-CAS replay of the carried threshold verdict, and extending its provenance record to the Mathematica mirror. |
+| 2026-04-20 | Reclassified Stage `146` as `strong` after confirming in both CAS layers that the off-family normal-coordinate theorem packet is symbolic end-to-end and that the Family-1 coefficient readbacks are explanatory outputs rather than proof-critical inputs. |
+| 2026-04-20 | Added the compact paper-side verification routing summary to the archive frontmatter and reader appendix, suppressed raw verification filename manifests in printed stage cards, and rebuilt both PDFs successfully. |
+| 2026-04-20 | Removed the archive's per-stage forced page-break policy by locally neutralizing stage-card `\clearpage` calls in Parts I--VII, reducing the archive PDF from 736 pages to 682 pages while keeping the reader build at 170 pages. |

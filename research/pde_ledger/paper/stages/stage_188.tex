@@ -1,0 +1,28 @@
+\section[Stage 188]{Stage 188: Directional Hessian and quadratic predictors}
+\label{stage:188}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~188 adds second-order local information to the Stage~187 scalar root problem and treats the turning case where the first derivative vanishes.}
+
+\stagefield{Inputs}{Imports \(\Phi_{\mathbf s}\), free log coordinates \(\boldsymbol\ell\), directional derivative \(\mathcal D_{\mathbf s}\), and directional Hessian \(\mathcal H_{\mathbf s}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage188_directional_hessian_and_quadratic_root_refinement_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation computes \((\Phi_0,\Phi_1,\Phi_2)\), translates between affine and logarithmic quadratic data, derives discriminants, obtains continuous-branch quadratic predictors, and isolates the turning-point criterion \((1-\Phi_0)\Phi_2>0\).}
+
+\stagefield{Output}{Affine and logarithmic quadratic predictors, discriminant tests, curvature-corrected local expansions, and turning-point/tangency theorem.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
+\item Check the log-ray validity interval before using a local bracket.
+\item Check curvature-envelope hypotheses before reporting a certified interval.
+\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

@@ -1,0 +1,65 @@
+\chapter{Stage Appendix: Part I -- Parent Theory, Geometry Lift, and Linearized PDE Backbone}
+\label{app:stage-part-1}
+
+\section*{Stages 001--006; anchors MTDC-T1--T4}
+\addcontentsline{toc}{section}{Stages 001--006; anchors MTDC-T1--T4}
+
+This appendix is the detailed verification ledger for the first theorem block of the moving-throat derivation.  The corresponding main-text chapter, \cref{chap:part01_parent_geometry}, explains the role of the block in the larger paper.  The job of this appendix is narrower and more mechanical: it records, stage by stage, the definitions, reductions, algebraic transforms, branch tests, and audit checks that turn the exact parent model into the first usable wall/support/outgoing response bundle.
+
+The six stages here should be read as a single construction.  Stage~001 promotes the old collective geometry variables to a distributed moving-surface field and introduces the scalar, grouped real \(P_2\), and higher-harmonic lanes.  Stage~002 verifies that this distributed wall theory reduces back to the old \((a,L)\) closure in the lowest axisymmetric sector.  Stage~003 couples the wall to stable BdG matter support modes and derives the first conservative Schur-complement kernels.  Stage~004 adds the localized Maxwell/mixed sector and shows how a passive outgoing channel transfers the compact \(l=2\) odd fingerprint into the wall response.  Stage~005 translates the one-lane outgoing bridge into the normalized grouped-response language used by the retarded quadrupole program.  Stage~006 writes the full grouped \(20/21/22\) bundle, its weighted projectors, its microscopic coefficient ledger, and the isotropic normalization test.
+
+\paragraph{Source layout.}
+Stages~001--006 are now sourced from the canonical files \StageFile{stages/stage_001.tex} through \StageFile{stages/stage_006.tex}.  The raw Markdown notes and other provenance artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy, Mathematica, and numerical-stress references when they exist.
+
+\begin{longtable}{@{}L{0.10\textwidth}L{0.27\textwidth}L{0.22\textwidth}L{0.34\textwidth}@{}}
+\caption{Part I stage-audit map.}\label{tab:app-part01-stage-map}\\
+\toprule
+Stage & Source stage & Primary status & Verification output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Source stage & Primary status & Verification output \\
+\midrule
+\endhead
+001 & Geometry lift and linearized PDE skeleton & \StatusEffective{} / \StatusExactClosure{} & Distributed shape field \(R(\Omega,w,t)\), promoted confinement coupling, modal split, and first linearized GNLS/Maxwell/wall system. \\
+\addlinespace
+002 & Breathing reduction back to \((a,L)\) & \StatusExactClosure{} & Two-mode axisymmetric reduction, effective \((\delta a,\delta L)\) mass/stiffness matrices, and uncoupled grouped \(P_2\) degeneracy. \\
+\addlinespace
+003 & Minimal BdG--wall coupling & \StatusReduced{} / \StatusExactClosure{} & Stable-mode Schur complement, low-frequency wall moments, pole shift formula, and conservative grouped-isotropy diagnostic. \\
+\addlinespace
+004 & Localized Maxwell/mixed response & \StatusReduced{} / \StatusExactClosure{} & Conservative Maxwell/mixed self-energy, outgoing transfer factor, compact \(l=2\) fingerprint, and scalar-compatibility criterion. \\
+\addlinespace
+005 & Grouped normalization bridge & \StatusExactClosure{} / \StatusOpen{} & Conversion from operator moments to normalized response moments and invariant outgoing-normalization product. \\
+\addlinespace
+006 & Full grouped bundle and projectors & \StatusExactClosure{} / \StatusOpen{} & Weighted grouped projectors, full \(D,N,P\) coefficient ledger, isotropic branch test, and first-order anisotropy transport laws. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Audit philosophy.}
+The derivations below preserve the status distinction used throughout the ledger.  Algebraic eliminations, projector identities, low-frequency expansions, and grouped inverse maps are exact once the declared reduced variables are adopted.  The adoption of a distributed wall closure, a stable BdG normal-mode reduction, and a compact outgoing port are reduced or effective moves.  The final equality of the outgoing-normalization product with the universal quadrupole target is not proved in this appendix; it is formulated here as the branch test that later stages attempt to realize.
+
+\paragraph{Notation warning.}
+The grouped symbols \(20,21,22\) are grouped real \(P_2\) lanes, not spacetime indices.  The \(21\) and \(22\) labels each abbreviate a cosine/sine real pair when the full five-dimensional real STF representation is being discussed.  The mixed gauge variables \(A_w,J^w,F_{\mu w},E_w,C_a\) are retained as microscopic channels; they are suppressed only in the strict far-field brane reduction.
+
+\begingroup
+\let\clearpage\relax
+\clearpage
+\input{stages/stage_001}
+\clearpage
+\input{stages/stage_002}
+\clearpage
+\input{stages/stage_003}
+\clearpage
+\input{stages/stage_004}
+\clearpage
+\input{stages/stage_005}
+\clearpage
+\input{stages/stage_006}
+\endgroup
+
+\section{Part I appendix closure and handoff to Part II}
+\label{sec:app-part01-closure}
+
+Stages~001--006 complete the first verification block.  They do not solve the nonlinear moving-throat PDE, but they remove the main algebraic ambiguity that existed before the ledger began.  The reduced response variables used later are not arbitrary symbols: they are the low-frequency coefficients of a coupled wall/BdG/Maxwell/mixed Schur-complement system, organized by exact grouped projectors and normalized by a definite outgoing \(l=2\) fingerprint.
+
+The handoff to Part~II is therefore precise.  What remains to be checked next is not the abstract existence of grouped \(P_2\) lanes.  They now exist inside the reduced moving-throat construction.  The next question is whether explicit radial/axial overlap integrals on an isotropic branch force the three grouped lanes to agree, and how the first controlled anisotropy enters when the branch is weakly axisymmetric.  That is the job of Stages~007--019.

@@ -1,0 +1,274 @@
+
+========================================================================================
+STAGE 183 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact four-scalar Packet-B compiler from primitive monomial ratios
+----------------------------------------------------------------------------------------
+Ctr_2 / Ctr_1 =
+                χ₀ ₛₜₐᵣ         deltaUₛₜₐᵣ
+           ⎛r_T⎞        ⎛r_c⋅rᵧ⎞          
+r_T⋅r_c⋅rᵧ⋅⎜───⎟       ⋅⎜──────⎟          
+           ⎝r_U⎠        ⎝ r_U  ⎠          
+──────────────────────────────────────────
+                      2                   
+                   r_U                    
+Cnt_2 / Cnt_1 =
+                              Eₛₜₐᵣ
+              Fₛₜₐᵣ ⎛  2    2⎞     
+   2     ⎛r_U⎞      ⎜rᵧ ⋅r_λ ⎟     
+r_λ ⋅rₘᵤ⋅⎜───⎟     ⋅⎜────────⎟     
+         ⎝r_T⎠      ⎝r_U⋅r_W ⎠     
+───────────────────────────────────
+                    2              
+             r_K⋅r_W               
+epsEta_2 / epsEta_1 =
+    2  
+ r_c   
+───────
+r_K⋅r_U
+q^(2<-1) from primitive monomial ratios =
+⎡    Δ_T - 2⋅Δ_U + Δ_c + Δᵧ + χ₀ ₛₜₐᵣ⋅(Δ_T - Δ_U) + deltaUₛₜₐᵣ⋅(-Δ_U + Δ_c + Δ ↪
+⎢                                                                              ↪
+⎢-Δ_Keta - 2⋅Δ_W + 2⋅Δ_λ + Δₘᵤ - Eₛₜₐᵣ⋅(Δ_U + Δ_W - 2⋅Δᵧ - 2⋅Δ_λ) - Fₛₜₐᵣ⋅(Δ_T ↪
+⎢                                                                              ↪
+⎣                               -Δ_Keta - Δ_U + 2⋅Δ_c                          ↪
+
+↪ ᵧ)     ⎤
+↪        ⎥
+↪  - Δ_U)⎥
+↪        ⎥
+↪        ⎦
+M_* derived from the monomial log-ratio Jacobian =
+⎡     0       deltaUₛₜₐᵣ + 1  deltaUₛₜₐᵣ + 1  -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2  0     ↪
+⎢                                                                              ↪
+⎢2⋅Eₛₜₐᵣ + 2        0            2⋅Eₛₜₐᵣ           -Eₛₜₐᵣ + Fₛₜₐᵣ        -1  - ↪
+⎢                                                                              ↪
+⎣     0             2               0                    -1              -1    ↪
+
+↪    0       0  χ₀ ₛₜₐᵣ + 1⎤
+↪                          ⎥
+↪ Eₛₜₐᵣ - 2  1    -Fₛₜₐᵣ   ⎥
+↪                          ⎥
+↪    0       0       0     ⎦
+derived M_* - carried Stage-175 matrix =
+⎡0  0  0  0  0  0  0  0⎤
+⎢                      ⎥
+⎢0  0  0  0  0  0  0  0⎥
+⎢                      ⎥
+⎣0  0  0  0  0  0  0  0⎦
+q^(2<-1) - M_* Delta x^(2<-1) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+II. Exact target-orbit witness invariance from the carried orbit law
+----------------------------------------------------------------------------------------
+ln[Ctr(witness) / Ctr(*)] = 0
+ln[Cnt(witness) / Cnt(*)] = 0
+ln[epsEta(witness) / epsEta(*)] = 0
+Delta_H^int(x | O_*) =
+⎡                                                                              ↪
+⎢                                                                              ↪
+⎢   ⎛      χ₀ ₛₜₐᵣ + deltaUₛₜₐᵣ + 2    -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2      -χ₀ ₛₜₐᵣ ↪
+⎢log⎝KUₛₜₐᵣ                        ⋅KUₓ                         ⋅Tₛₜₐᵣ         ↪
+⎢                                                                              ↪
+⎢             ⎛      Eₛₜₐᵣ - Fₛₜₐᵣ    -Eₛₜₐᵣ + Fₛₜₐᵣ       Eₛₜₐᵣ + 2    -Eₛₜₐᵣ ↪
+⎢             ⎜KUₛₜₐᵣ             ⋅KUₓ              ⋅KWₛₜₐᵣ         ⋅KWₓ       ↪
+⎢          log⎜─────────────────────────────────────────────────────────────── ↪
+⎢             ⎝                                                                ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                            l ↪
+⎢                                                                              ↪
+⎣                                                                              ↪
+
+↪         chiQₓ - 1                                                            ↪
+↪                                                                              ↪
+↪  - 1   χ₀ ₛₜₐᵣ + 1          -deltaUₛₜₐᵣ - 1       deltaUₛₜₐᵣ + 1      -delta ↪
+↪     ⋅Tₓ           ⋅cEtaUₛₜₐᵣ               ⋅cEtaUₓ              ⋅γₛₜₐᵣ       ↪
+↪                                                                              ↪
+↪  - 2               Fₛₜₐᵣ   -Fₛₜₐᵣ      -2⋅Eₛₜₐᵣ   2⋅Eₛₜₐᵣ      -2⋅Eₛₜₐᵣ - 2  ↪
+↪     ⋅Ketaₛₜₐᵣ⋅Tₛₜₐᵣ     ⋅Tₓ      ⋅γₛₜₐᵣ        ⋅γₓ       ⋅λₛₜₐᵣ            ⋅ ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪          Ketaₓ⋅μₛₜₐᵣ                                                         ↪
+↪                                                                              ↪
+↪   ⎛                      2⎞                                                  ↪
+↪   ⎜KUₛₜₐᵣ⋅Ketaₛₜₐᵣ⋅cEtaUₓ ⎟                                                  ↪
+↪ og⎜───────────────────────⎟                                                  ↪
+↪   ⎜                    2  ⎟                                                  ↪
+↪   ⎝ KUₓ⋅Ketaₓ⋅cEtaUₛₜₐᵣ   ⎠                                                  ↪
+
+↪                            ⎤
+↪                            ⎥
+↪ Uₛₜₐᵣ - 1   deltaUₛₜₐᵣ + 1⎞⎥
+↪          ⋅γₓ              ⎠⎥
+↪                            ⎥
+↪   2⋅Eₛₜₐᵣ + 2   ⎞          ⎥
+↪ λₓ           ⋅μₓ⎟          ⎥
+↪ ────────────────⎟          ⎥
+↪                 ⎠          ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎦
+Delta_H^(x<-w) with an arbitrary target-orbit witness w =
+⎡                                                                              ↪
+⎢                                                                              ↪
+⎢   ⎛      χ₀ ₛₜₐᵣ + deltaUₛₜₐᵣ + 2    -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2      -χ₀ ₛₜₐᵣ ↪
+⎢log⎝KUₛₜₐᵣ                        ⋅KUₓ                         ⋅Tₛₜₐᵣ         ↪
+⎢                                                                              ↪
+⎢             ⎛      Eₛₜₐᵣ - Fₛₜₐᵣ    -Eₛₜₐᵣ + Fₛₜₐᵣ       Eₛₜₐᵣ + 2    -Eₛₜₐᵣ ↪
+⎢             ⎜KUₛₜₐᵣ             ⋅KUₓ              ⋅KWₛₜₐᵣ         ⋅KWₓ       ↪
+⎢          log⎜─────────────────────────────────────────────────────────────── ↪
+⎢             ⎝                                                                ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                            l ↪
+⎢                                                                              ↪
+⎣                                                                              ↪
+
+↪         chiQₓ - 1                                                            ↪
+↪                                                                              ↪
+↪  - 1   χ₀ ₛₜₐᵣ + 1          -deltaUₛₜₐᵣ - 1       deltaUₛₜₐᵣ + 1      -delta ↪
+↪     ⋅Tₓ           ⋅cEtaUₛₜₐᵣ               ⋅cEtaUₓ              ⋅γₛₜₐᵣ       ↪
+↪                                                                              ↪
+↪  - 2               Fₛₜₐᵣ   -Fₛₜₐᵣ      -2⋅Eₛₜₐᵣ   2⋅Eₛₜₐᵣ      -2⋅Eₛₜₐᵣ - 2  ↪
+↪     ⋅Ketaₛₜₐᵣ⋅Tₛₜₐᵣ     ⋅Tₓ      ⋅γₛₜₐᵣ        ⋅γₓ       ⋅λₛₜₐᵣ            ⋅ ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪          Ketaₓ⋅μₛₜₐᵣ                                                         ↪
+↪                                                                              ↪
+↪   ⎛                      2⎞                                                  ↪
+↪   ⎜KUₛₜₐᵣ⋅Ketaₛₜₐᵣ⋅cEtaUₓ ⎟                                                  ↪
+↪ og⎜───────────────────────⎟                                                  ↪
+↪   ⎜                    2  ⎟                                                  ↪
+↪   ⎝ KUₓ⋅Ketaₓ⋅cEtaUₛₜₐᵣ   ⎠                                                  ↪
+
+↪                            ⎤
+↪                            ⎥
+↪ Uₛₜₐᵣ - 1   deltaUₛₜₐᵣ + 1⎞⎥
+↪          ⋅γₓ              ⎠⎥
+↪                            ⎥
+↪   2⋅Eₛₜₐᵣ + 2   ⎞          ⎥
+↪ λₓ           ⋅μₓ⎟          ⎥
+↪ ────────────────⎟          ⎥
+↪                 ⎠          ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎥
+↪                            ⎦
+pairwise witness packet - intrinsic orbit packet =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+III. Exact mismatch chart from the dependent-triple orbit solve
+----------------------------------------------------------------------------------------
+Ctr(actual) / Ctr_* - m_T^(1+chi0_*) = 0
+Cnt(actual) / Cnt_* - m_mu/(m_K m_T^F_*) = 0
+epsEta(actual) / epsEta_* - 1/m_K = 0
+q(mismatch) =
+⎡(χ₀ ₛₜₐᵣ + 1)⋅log(m_T)⎤
+⎢                      ⎥
+⎢     ⎛   -Fₛₜₐᵣ    ⎞  ⎥
+⎢     ⎜m_T      ⋅mₘᵤ⎟  ⎥
+⎢  log⎜─────────────⎟  ⎥
+⎢     ⎝     m_K     ⎠  ⎥
+⎢                      ⎥
+⎣      -log(m_K)       ⎦
+q(mismatch) - carried chart =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+M_* Delta x_mis - q(mismatch) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+IV. Exact cocycle law from microscopic ratio composition
+----------------------------------------------------------------------------------------
+Delta x^31 - Delta x^32 - Delta x^21 =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+q^(31) - q^(32) - q^(21) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+V. Exact Packet-A linearization and assembled full compiler
+----------------------------------------------------------------------------------------
+Delta_Q^lin - eps(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S) = 0
+Delta_H^lin =
+⎡                              eps⋅(15⋅S⋅epsᵦ + dSigma₀ + 27⋅dSigma₅)          ↪
+⎢                              ──────────────────────────────────────          ↪
+⎢                                               3⋅S                            ↪
+⎢                                                                              ↪
+⎢ Δ_T⋅(χ₀ ₛₜₐᵣ + 1) - Δ_U⋅(χ₀ ₛₜₐᵣ + deltaUₛₜₐᵣ + 2) + Δ_c⋅(deltaUₛₜₐᵣ + 1) +  ↪
+⎢                                                                              ↪
+⎢-Δ_Keta - Δ_T⋅Fₛₜₐᵣ - Δ_U⋅(Eₛₜₐᵣ - Fₛₜₐᵣ) - Δ_W⋅(Eₛₜₐᵣ + 2) + 2⋅Δᵧ⋅Eₛₜₐᵣ + 2⋅ ↪
+⎢                                                                              ↪
+⎣                                      -Δ_Keta - Δ_U + 2⋅Δ_c                   ↪
+
+↪                      ⎤
+↪                      ⎥
+↪                      ⎥
+↪                      ⎥
+↪ Δᵧ⋅(deltaUₛₜₐᵣ + 1)  ⎥
+↪                      ⎥
+↪ Δ_λ⋅(Eₛₜₐᵣ + 1) + Δₘᵤ⎥
+↪                      ⎥
+↪                      ⎦
+
+========================================================================================
+STAGE 183 LEDGER
+========================================================================================
+1. The Packet-B quotient coordinates are derived from the primitive coherent monomials
+      (C_tr, C_nt, eps_eta)
+   and their logarithmic Jacobian reproduces the carried Stage-175 matrix M_*.
+2. The target-orbit witness packet is genuinely witness-independent because the
+   finite similarity-orbit law preserves the three coherent monomials exactly.
+3. The mismatch chart q = ((1+chi0_*) ln m_T, ln m_mu - ln m_K - F_* ln m_T, -ln m_K)
+   is re-derived from the exact dependent-triple orbit solve rather than posited.
+4. The pairwise cocycle law is inherited from microscopic ratio composition
+      Delta x^(31) = Delta x^(32) + Delta x^(21),
+   followed by the monomial compiler q = M_* Delta x.
+5. The full linearized home-stretch compiler is
+      Delta_HS^lin = (Delta_Q^lin, M_* delta x),
+   where Delta_Q^lin is carried from the exact Packet-A closure law and the
+   remaining three rows come from the monomial log-ratio Jacobian.

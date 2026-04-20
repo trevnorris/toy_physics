@@ -1,0 +1,26 @@
+\section[Stage 201]{Stage 201: Final local mixed-ray closure theorem}
+\label{stage:201}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~201 splices the unique support-five interior packet to the support-\(\le4\) boundary ledger and closes the declared local mixed-ray search.}
+
+\stagefield{Inputs}{Imports the support-\(\le4\) global ledger, the support-five interior packet, and the unique five-simplex boundary stratification.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage201_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl}.}
+
+\stagefield{Derivation ledger}{The derivation proves the boundary-identification theorem \(\partial\Delta_5^+=\mathcal S_{\le4}^{\rm loc}\), proves the support ceiling, splices the support-five interior and support-\(\le4\) intervals, classifies support-five outcomes, and records the exact evaluation budget.}
+
+\stagefield{Output}{Final local mixed-ray closure theorem, certified support-\(\le5\) splice interval, preferred total budget \(1464\), fallback budget \(2640\), and finite-candidate status of any remaining ambiguity.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+\item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+\item Check support-cardinality closure is limited to the declared five free coordinates.
+\item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.4} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}

@@ -1,0 +1,90 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.wl
+# Date: 2026-04-20T23:09:00-06:00
+# Elapsed: 8s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 204 — RESONANCE / LINEWIDTH TRADEOFF
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Generic simple-pole normal form
+----------------------------------------------------------------------------------------
+chi_lin - chi_BW = 0
+PASS: chi_lin - chi_BW
+passive simple-pole normal form = 0
+PASS: passive simple-pole normal form
+chi(omega) = Numstar/(delta*Fprime - I*GammaOut*Zstar)
+A_* = Numstar/Fprime
+gamma_* = (GammaOut*Zstar)/Fprime
+
+----------------------------------------------------------------------------------------
+II. Exact Stage-203 derivative identity
+----------------------------------------------------------------------------------------
+dD_Pi/dPi + N(omega) = 0
+PASS: dD_Pi/dPi + N(omega)
+
+----------------------------------------------------------------------------------------
+III. Wall-like pole specialization
+----------------------------------------------------------------------------------------
+wall-like pole specialization = 0
+PASS: wall-like pole specialization
+chi_qq(omega) = (D0prime*delta - I*GammaOut*Nstar)^(-1)
+gamma_wall = (GammaOut*Nstar)/D0prime
+
+----------------------------------------------------------------------------------------
+IV. Exact line-shape algebra
+----------------------------------------------------------------------------------------
+Re chi - expected = 0
+PASS: Re chi - expected
+Im chi - expected = 0
+PASS: Im chi - expected
+|Re|/|Im| - r = 0
+PASS: |Re|/|Im| - r
+maximum identity = 0
+PASS: maximum identity
+low-loss identity = 0
+PASS: low-loss identity
+
+----------------------------------------------------------------------------------------
+V. Barrier / absorbed-power ratio
+----------------------------------------------------------------------------------------
+P_abs / (omega |U_disp|) - 1/r = 0
+PASS: P_abs / (omega |U_disp|) - 1/r
+U_disp = -1/2*(Aabs*r*Sfam^2)/(gamma + gamma*r^2)
+P_abs = (Aabs*omegaDrive*Sfam^2)/(2*gamma + 2*gamma*r^2)
+P_abs / (omega |U_disp|) = r^(-1)
+
+----------------------------------------------------------------------------------------
+VI. Quality-factor detuning and linear survival window
+----------------------------------------------------------------------------------------
+detuning fraction - r/(2 Q_*) = 0
+PASS: detuning fraction - r/(2 Q_*)
+low-loss detuning boundary = 0
+PASS: low-loss detuning boundary
+survival left side - 2 |U_disp|_max = 0
+PASS: survival left side - 2 |U_disp|_max
+residue requirement saturates the survival window = 0
+PASS: residue requirement saturates the survival window
+|U_disp|_max in the low-loss window = (Aabs*eta*Sfam^2)/(2*gamma + 2*eta^2*gamma)
+Necessary residue/linewidth ratio >= (2*DeltaVreq*(1 + eta^2))/(eta*Sfam^2)
+
+----------------------------------------------------------------------------------------
+VII. Probe-only numerical slice
+----------------------------------------------------------------------------------------
+Re chi = 1.05
+Im chi = 0.35
+|Re|/|Im| = 3.
+|U_disp| = 13.125
+P_abs = 48.125
+P_abs/(omega|U|) = 0.3333333333333333
+low-loss |U|_max = 10.294117647058824
+required |A|/gamma = 0.204
+
+All Stage-204 identities, derivative formulas, tradeoff laws, and survival-window relations verified.
+
+EXIT_CODE: 0

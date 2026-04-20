@@ -1,0 +1,32 @@
+
+========================================================================================
+STAGE 042 — OPERATOR BRANCH RESIDUAL BOUNDS
+========================================================================================
+zeta_- = ((kappa + Pi^2/4)*Omega[capitalXi*delta0]^2)/(kappa + y^2)
+zeta_+ = ((kappa + Pi^2/4)*Omega[capitalXi*deltaInf]^2)/(kappa + y^2)
+R_- = zetaReq - ((4*kappa + Pi^2)*Omega[capitalXi*deltaInf]^2)/(4*(kappa + y^2))
+R_+ = zetaReq - ((4*kappa + Pi^2)*Omega[capitalXi*delta0]^2)/(4*(kappa + y^2))
+Xi_fail = peReq/deltaInf
+Xi_suff = peReq/delta0
+residual bracket center identity = 0
+PASS: residual bracket center identity
+Xi_suff - Xi_fail on the ordered branch = (deltaGap*peReq)/(delta0*(delta0 + deltaGap))
+PASS: Xi_suff - Xi_fail on the ordered branch
+Pe_req - Xi_fail Delta_0 = (deltaGap*peReq)/(delta0 + deltaGap)
+PASS: Pe_req - Xi_fail Delta_0
+Xi_suff Delta_inf - Pe_req = (deltaGap*peReq)/delta0
+PASS: Xi_suff Delta_inf - Pe_req
+nsolve-style Xi_fail root stayed positive = 0.7`70.
+PASS: nsolve-style Xi_fail root stayed positive
+nsolve-style Xi_suff root stayed positive = 1.166666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667`70.
+PASS: nsolve-style Xi_suff root stayed positive
+FindRoot Xi_fail saturation solver diff = 0``49.85387196432176
+PASS: FindRoot Xi_fail saturation solver
+FindRoot Xi_suff saturation solver diff = 0``49.632023214705406
+PASS: FindRoot Xi_suff saturation solver
+Omega_Pe^2 small-Pe series = 1 + pe*(-1 + 4/Pi)
+weak-coupling zeta_phys = kappa/(kappa + y^2) - (capitalXi*delta0*kappa)/(kappa + y^2) + (4*capitalXi*delta0*kappa)/(Pi*(kappa + y^2)) + (capitalXi*delta0*Pi)/(kappa + y^2) + Pi^2/(4*(kappa + y^2)) - (capitalXi*delta0*Pi^2)/(4*(kappa + y^2))
+Omega^2 linear coefficient = 0
+PASS: Omega^2 linear coefficient
+
+Stage 042 Mathematica audit passed.

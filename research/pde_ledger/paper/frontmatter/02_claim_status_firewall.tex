@@ -1,0 +1,675 @@
+\chapter{Claim-Status Firewall}
+\label{chap:claim-status-firewall}
+
+This chapter fixes the claim-status rules for the entire derivation ledger.  The moving-throat program contains several different kinds of mathematical statements: exact identities of the declared parent theory, exact algebra inside reduced closures, controlled reductions, effective closure choices, numerical placements, and open branch-realization targets.  These categories are not interchangeable.  The purpose of the claim-status firewall is to make that separation visible everywhere the ledger states a result.
+
+The firewall should be read as part of the mathematics of the document, not as editorial decoration.  A theorem that is exact only inside a closure is not an exact theorem of the full nonlinear moving-throat PDE.  A compiler that reduces a branch test to finite observables is not the same thing as a proof that the actual branch realizes those observables.  A numerically located point is not a closed-form value merely because the equations defining it are exact.  An open target remains open even if all algebra leading to the target is exact.
+
+\begin{quote}
+The status tag attached to a result states the strongest honest way that result may be cited.
+\end{quote}
+
+Every theorem, proposition, lemma, boxed equation, branch verdict, no-go statement, finite search result, and stage output in this companion must carry one of the status tags defined below.
+
+\section{The six allowed status tags}
+\label{sec:six-status-tags}
+
+The ledger uses exactly six status tags.  These tags are intentionally coarse.  The goal is not to encode every nuance in the tag itself; the goal is to prevent the most dangerous mistakes: treating reduced results as exact, treating closures as solved PDE branches, treating numerical locations as closed-form derivations, or treating open branch targets as completed theorems.
+
+\begin{longtable}{L{0.23\textwidth}L{0.68\textwidth}}
+\toprule
+Status tag & Meaning \\
+\midrule
+\endhead
+\StatusExact & The statement follows directly from the declared parent action, exact definitions, exact identities, exact variational equations, or exact algebra with no additional branch ansatz beyond the stated definitions. \\
+\addlinespace
+\StatusExactClosure & The statement is exact inside a stated reduced closure family, branch, hierarchy, search class, or ansatz.  The algebra inside the closure is exact, but the closure itself is not thereby promoted to an unconditional theorem of the completed PDE. \\
+\addlinespace
+\StatusReduced & The statement follows after a controlled reduction, such as a projection, zero-mode limit, low-frequency expansion, small-body/worldtube approximation, finite-mode truncation, selected-branch restriction, isotropic branch assumption, passive/outgoing reduction, or asymptotic regime. \\
+\addlinespace
+\StatusEffective & The statement uses a physically motivated closure choice, modeling ansatz, constitutive packet, or branch prescription that is useful and internally coherent but not yet uniquely forced by the completed moving-throat PDE. \\
+\addlinespace
+\StatusNumerical & The defining equations are exact or closure-exact, but the reported value, branch point, candidate, finite placement, or search output is currently known through numerical solve, numerical scan, or numerical localization rather than closed-form derivation. \\
+\addlinespace
+\StatusOpen & The statement still depends on actual branch realization, a PDE-side existence or uniqueness theorem, a not-yet-computed overlap, a not-yet-verified normalization, or another result not completed in the current ledger. \\
+\bottomrule
+\end{longtable}
+
+These tags are mutually exclusive for a single atomic claim.  A paragraph may contain several claims with different statuses; in that case the paragraph must either split the claims or explicitly state the status of each part.
+
+\section{Atomic claims and composite claims}
+\label{sec:atomic-composite-claims}
+
+A status tag applies to an atomic claim, not automatically to an entire paragraph, theorem, or chapter.  The following distinction is essential.
+
+\subsection{Atomic claim}
+\label{subsec:atomic-claim}
+
+An atomic claim is a single assertion whose assumptions are uniform.  For example:
+\begin{itemize}[leftmargin=2.2em]
+  \item the exact parent Maxwell equation follows from varying the localized Maxwell action;
+  \item the grouped real \(P_2\) inverse map follows from exact linear algebra;
+  \item the outgoing \(l=2\) low-frequency fingerprint follows from the declared compact outgoing partial-wave branch;
+  \item a Family-1 mouth point is located numerically by solving a stated reduced equation;
+  \item the actual moving-throat branch has not yet been proved to hit a target scalar.
+\end{itemize}
+Each of these may receive one status tag.
+
+\subsection{Composite claim}
+\label{subsec:composite-claim}
+
+A composite claim combines several atomic claims.  Its usable status is the weakest status among the parts needed for the conclusion.  For example, the algebraic bridge
+\[
+P_0=\frac{N_0}{D_0}
+\]
+may be exact inside the reduced grouped-bundle closure, while the assertion that the actual branch realizes the target value of \(P_0\) may remain open.  The composite statement ``the branch realizes the outgoing normalization'' therefore cannot be cited as exact merely because the formula defining \(P_0\) is exact inside the closure.
+
+When a theorem contains both exact algebra and an open realization target, split it as follows:
+\begin{enumerate}[leftmargin=2.2em]
+  \item an exact or closure-exact theorem deriving the formula or compiler;
+  \item a branch-realization corollary marked \StatusOpen, \StatusNumerical, or \StatusReduced, as appropriate.
+\end{enumerate}
+
+\section{Status label definitions in detail}
+\label{sec:status-labels-detail}
+
+\subsection{\StatusExact}
+\label{subsec:status-exact}
+
+Use \StatusExact\ only for statements that follow from the declared parent theory, definitions, or algebra without additional physical closure.  This includes exact variational equations, exact conservation laws, exact gauge-invariant definitions, exact projection identities once the projection kernel is declared, and exact algebraic transformations.
+
+Typical examples in this companion include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the gauged GNLS equation obtained by varying the declared matter action;
+  \item the exact bulk continuity equation;
+  \item the localized Maxwell equation obtained by varying the declared localized Maxwell action;
+  \item the Bianchi identity;
+  \item the exact mixed-field gauge invariants \(E_w=F_{w0}\) and \(C_a=F_{aw}\);
+  \item the exact projected continuity identity once \(W(w)\) is declared;
+  \item exact finite-dimensional linear algebra, such as grouped projector identities or exact inverse maps.
+\end{enumerate}
+
+A result should not receive \StatusExact\ merely because its algebra is exact after a closure has been chosen.  If a wall action, branch ansatz, support family, selected slice, or finite search class is required, the result is not \StatusExact\ unless that closure has itself been proved as an exact consequence of the parent PDE.
+
+\subsection{\StatusExactClosure}
+\label{subsec:status-exact-closure}
+
+Use \StatusExactClosure\ when the derivation is exact inside a named closure, branch, hierarchy, or search class.  This tag is the most common tag in the moving-throat ledger.  It honors the fact that many of the program's important results are not approximations once their closure assumptions are accepted, while still preventing those results from being misread as unconditional parent-theory theorems.
+
+A closure-exact statement must name its closure.  Examples of acceptable closure names include:
+\begin{itemize}[leftmargin=2.2em]
+  \item the distributed wall/shape-field closure;
+  \item the stable BdG normal-mode reduction;
+  \item the one-lane Maxwell/mixed prototype;
+  \item the full grouped real \(P_2\) reduced bundle;
+  \item the isotropic passive/outgoing branch;
+  \item the coherent local D/N support hierarchy;
+  \item the weak-axisymmetric branch;
+  \item the rigid-mouth branch;
+  \item the selected twin-support branch;
+  \item the finite local mixed-ray search class;
+  \item the relaxed/open-system branch with its declared recovery map.
+\end{itemize}
+
+The phrase ``exact inside the closure'' means the derivation is algebraically forced by the closure inputs.  It does not mean the closure has been uniquely realized by the full nonlinear PDE.
+
+\subsection{\StatusReduced}
+\label{subsec:status-reduced}
+
+Use \StatusReduced\ for results that require a controlled reduction or asymptotic restriction.  These results may be highly reliable inside their regimes, but their validity depends on the reduction assumptions.
+
+Typical reduction assumptions include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item zero-mode Maxwell reduction with \(A_w\approx0\), \(\partial_wA_\mu\approx0\), \(J^w\approx0\), and \(F_{\mu w}\approx0\);
+  \item quasi-static or low-frequency expansion;
+  \item small-body/worldtube reduction;
+  \item isotropic point-particle limit;
+  \item finite support-cardinality restriction;
+  \item selected-branch projection;
+  \item truncation to a finite family of support modes;
+  \item compact passive/outgoing partial-wave completion;
+  \item regime statements such as ``higher odd channels are irrelevant through this order.''
+\end{enumerate}
+
+A controlled reduction should state what is neglected, suppressed, projected out, or assumed small.  The reduction should also state what would have to be checked before the result could be used outside the declared regime.
+
+\subsection{\StatusEffective}
+\label{subsec:status-effective}
+
+Use \StatusEffective\ for a physically motivated closure choice that is useful for theorem work but not yet uniquely selected by the completed moving-throat PDE.  This tag is appropriate for modeling decisions that organize the derivation without pretending to be final microscopic consequences.
+
+Examples include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item choosing the hybrid level-set/shape-field representation \(\Sigma=r-R(\Omega,w,t)\) as the working moving-throat lift;
+  \item introducing the minimal quadratic distributed wall action as the first passive local wall model;
+  \item selecting a low-dimensional prototype before proving the full branch realizes it;
+  \item using a closure hierarchy as a constructive compiler rather than as an already solved PDE theorem.
+\end{enumerate}
+
+An effective closure can later be promoted if the ledger adds a proof that the completed PDE selects it.  Until then, future papers must cite it as an effective closure, not as an exact theorem.
+
+\subsection{\StatusNumerical}
+\label{subsec:status-numerical}
+
+Use \StatusNumerical\ when the equations defining the object are exact, but the reported value is presently obtained by numerical solve, numerical localization, numerical search, or numerical continuation.  The exactness of the defining equations does not make the numerical value exact in closed form.
+
+A numerically located result should record:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the equation or system solved;
+  \item the branch or interval searched;
+  \item the numerical value and precision actually justified;
+  \item whether uniqueness was proved or only observed;
+  \item the script, notebook, or audit file supporting the value;
+  \item whether the value is used as an input to later exact algebra or only as an illustrative branch point.
+\end{enumerate}
+
+If a later closed-form derivation is added, the result may be promoted.  Until then, the numerical status must remain visible.
+
+\subsection{\StatusOpen}
+\label{subsec:status-open}
+
+Use \StatusOpen\ for statements that still depend on the completed moving-throat PDE branch or another missing theorem.  Open status is not a failure of the ledger.  It is the honest marker of what remains to be proved or computed.
+
+Typical open objects include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item actual branch realization of the canonical outgoing normalization;
+  \item actual realization of \(N_Q=1\) or \(\chi_Q=1\) on the full branch;
+  \item actual weak-axisymmetric prefactor slope \(\Xi_1=P_1/P_0\) on the physical branch;
+  \item actual rigid-mouth orbit-lock data when the rigid-mouth assumptions have not yet been verified by the branch;
+  \item actual selected twin-support placement data;
+  \item realized leakage, non-rigid, source, export, calibration, or material-screening coefficients on a relaxed branch;
+  \item any existence, uniqueness, stability, or regularity theorem for a branch not yet proved.
+\end{enumerate}
+
+Open status should be used even when all surrounding algebra is complete.  A formula can be exact, a compiler can be exact within closure, and the actual branch target can still be open.
+
+\section{The weakest-link rule}
+\label{sec:weakest-link-rule}
+
+When a result depends on multiple ingredients, its citation status is determined by the weakest ingredient required for the conclusion.  This is the ledger's weakest-link rule.
+
+\begin{longtable}{L{0.31\textwidth}L{0.61\textwidth}}
+\toprule
+Ingredients required by conclusion & Resulting usable status \\
+\midrule
+\endhead
+Exact parent identity only & \StatusExact \\
+\addlinespace
+Exact parent identity plus a named closure whose internal algebra is exact & \StatusExactClosure \\
+\addlinespace
+Exact or closure-exact algebra plus a projection, low-frequency limit, small-body limit, or selected asymptotic regime & \StatusReduced \\
+\addlinespace
+Exact algebra plus a physically motivated but not uniquely derived model choice & \StatusEffective, unless the theorem is explicitly restricted to that model and marked \StatusExactClosure \\
+\addlinespace
+Exact equations plus numerical root, numerical placement, numerical branch point, or numerical finite search output & \StatusNumerical \\
+\addlinespace
+Any ingredient requiring actual branch realization not yet completed & \StatusOpen \\
+\bottomrule
+\end{longtable}
+
+A theorem may contain a high-status subclaim and a low-status conclusion.  For instance, the exact formula
+\[
+\Gamma_5=P_0\frac{a^5}{27c_s^5}
+\]
+inside the normalized outgoing bridge may be closure-exact, while the assertion that the actual branch realizes the target value of \(P_0\) is open.  The theorem should therefore be split into a closure-exact bridge and an open realization condition.
+
+\section{Compiler success, realization success, and closure success}
+\label{sec:compiler-realization-closure-success}
+
+The moving-throat program repeatedly separates three kinds of success.  The firewall requires that all three remain distinct.
+
+\subsection{Compiler success}
+
+Compiler success means the derivation reduces a branch test to explicit observables or scalar packets.  Examples include:
+\begin{itemize}[leftmargin=2.2em]
+  \item reducing the outgoing quadrupole test to \(\widehat m_0^{\,2}P_0\);
+  \item reducing grouped real \(P_2\) isotropy to trace/anomaly variables;
+  \item reducing the weak-axisymmetric prefactor problem to \(\Xi_1=P_1/P_0\);
+  \item reducing a branch verdict to \(\Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\);
+  \item reducing rigid-mouth orbit lock to \((U,V)=(0,0)\).
+\end{itemize}
+Compiler success is usually \StatusExactClosure\ or \StatusReduced.  It does not imply that the actual branch passes the test.
+
+\subsection{Realization success}
+
+Realization success means the actual moving-throat branch returns the observables required by the compiler.  For example, once the compiler says the branch must satisfy
+\[
+\widehat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5},
+\]
+realization success is the separate claim that the actual branch has that value.  Unless the full branch computation proves it, this remains \StatusOpen\ or \StatusNumerical.
+
+\subsection{Closure success}
+
+Closure success means the actual branch satisfies the assumptions under which the compiler was derived.  A branch may hit a scalar target numerically while failing isotropy, passivity, support selection, or rigid-mouth assumptions.  In that case the scalar hit is not enough to cite the closure theorem as realized.
+
+For every branch theorem, the ledger should state:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the compiler packet;
+  \item the realization packet;
+  \item the closure assumptions that must be checked.
+\end{enumerate}
+
+\section{Promotion, demotion, and supersession}
+\label{sec:promotion-demotion-supersession}
+
+Status tags are allowed to change as the ledger matures, but only by explicit audit.
+
+\subsection{Promotion rule}
+\label{subsec:promotion-rule}
+
+A result may be promoted only if the missing assumption that caused the lower status has itself been proved or removed.  Examples:
+\begin{itemize}[leftmargin=2.2em]
+  \item A \StatusNumerical\ branch point may be promoted if a closed-form solution and uniqueness proof are added.
+  \item A \StatusEffective\ closure may be promoted to \StatusExactClosure\ if the document restricts the theorem explicitly to that closure and proves the algebra inside it.
+  \item A \StatusOpen\ realization condition may be promoted only after the actual branch computation verifies the condition and the closure assumptions.
+\end{itemize}
+
+Promotion must name the new proof or computation.  A result is not promoted merely because later prose relies on it.
+
+\subsection{Demotion rule}
+\label{subsec:demotion-rule}
+
+A result must be demoted when a missing assumption, branch failure, inconsistency, stale notation, unverified numerical step, or unsupported generalization is found.  Demotion should preserve the useful part of the result when possible.  For example, a failed branch may still be a valid no-go theorem inside its search class.
+
+The demoted statement should be rewritten as one of the following:
+\begin{itemize}[leftmargin=2.2em]
+  \item exact algebra inside a narrower closure;
+  \item a controlled reduction rather than an unconditional theorem;
+  \item a numerical observation rather than a closed-form theorem;
+  \item an open branch target rather than a realized branch result;
+  \item a no-go result limited to its tested class.
+\end{itemize}
+
+\subsection{Supersession rule}
+\label{subsec:supersession-rule}
+
+When a later stage replaces an earlier prototype with a cleaner normal form, the earlier result should not simply disappear.  It should be marked as superseded, with a pointer to the later result.  This matters because future readers may encounter old stage numbers in notes or scripts.
+
+A superseded result may still be useful as:
+\begin{enumerate}[leftmargin=2.2em]
+  \item a motivating prototype;
+  \item a failed branch;
+  \item a special case of a later theorem;
+  \item an intermediate algebraic check;
+  \item a warning about a notation convention that later changed.
+\end{enumerate}
+
+\section{Status inheritance by document layer}
+\label{sec:status-inheritance-layer}
+
+The same formula can appear in different document layers with different status roles.  The ledger should be explicit about which role is active.
+
+\subsection{Front matter}
+\label{subsec:frontmatter-status-role}
+
+The front matter states rules, vocabulary, and document contract.  It should not introduce new physical theorems except by summarizing their status.  If the front matter mentions a result such as \(\Xi_1=P_1/P_0\), it is describing the status system and citation map, not proving the result.
+
+\subsection{Main theorem blocks}
+\label{subsec:main-theorem-block-status-role}
+
+The main body is the primary layer for stable theorem statements.  Each theorem block must include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item a result anchor or theorem label;
+  \item a status tag;
+  \item a stage range;
+  \item assumptions and closure conditions;
+  \item proof skeleton;
+  \item downstream use;
+  \item open residue, if any.
+\end{enumerate}
+
+\subsection{Stage appendices}
+\label{subsec:stage-appendix-status-role}
+
+The stage appendices preserve derivation history.  A stage output may be provisional, superseded, or later demoted.  The appendix entry should record the local status at the time of the derivation and the current status after later stages, when different.
+
+A useful appendix pattern is:
+\begin{quote}
+\textbf{Local output.}  What the stage established locally.  \quad
+\textbf{Current status.}  How the result should now be cited after later stages.
+\end{quote}
+
+\subsection{Reproducibility appendix}
+\label{subsec:repro-status-role}
+
+The reproducibility appendix certifies algebraic, symbolic, or numerical checks.  A script-backed algebraic identity may support \StatusExactClosure; a numerical search supports \StatusNumerical; a failed search supports a no-go claim only inside the declared search class.
+
+\section{No-go and negative-result statuses}
+\label{sec:no-go-statuses}
+
+A no-go theorem is not automatically an \StatusOpen\ statement.  A no-go result can be exact, closure-exact, reduced, or numerical depending on the search class and proof method.
+
+\begin{longtable}{L{0.28\textwidth}L{0.64\textwidth}}
+\toprule
+No-go type & Appropriate status \\
+\midrule
+\endhead
+Exact algebraic contradiction from definitions & \StatusExact \\
+\addlinespace
+No-go inside a declared reduced closure or one-port model & \StatusExactClosure \\
+\addlinespace
+No-go inside a finite truncation, low-frequency regime, or selected branch class & \StatusReduced \\
+\addlinespace
+No solution found by exhaustive numerical search over an exactly declared finite set & \StatusNumerical, unless the exhaustive enumeration is itself exact and all arithmetic has been certified \\
+\addlinespace
+No-go suspected but not proved for the actual PDE branch & \StatusOpen \\
+\bottomrule
+\end{longtable}
+
+Every no-go result must state its domain.  A statement such as ``the mixed sector cannot help'' is not acceptable unless the mixed sector, coupling class, frequency regime, and branch assumptions are named.  A correct statement might be: ``inside the one-port static same-charge closure, the static mixed bundle creates no new long-range attractive law.''
+
+\section{Numerical values and search outputs}
+\label{sec:numerical-values-search-outputs}
+
+Numerical values are useful, but they are also common sources of accidental overclaiming.  The firewall requires the following discipline.
+
+\subsection{Numerical branch points}
+\label{subsec:numerical-branch-points}
+
+A numerically located branch point should be written in a form such as:
+\begin{quote}
+The point \((\Pi_*,\widehat T_{m,*})\) is \StatusNumerical\ as presently recorded: it is defined by the exact reduced branch equations, but the quoted values are numerical localizations.
+\end{quote}
+
+Do not write ``exactly equals'' before a decimal value unless the decimal is a representation of a closed-form expression already proved.
+
+\subsection{Finite searches}
+\label{subsec:finite-searches}
+
+A finite search result should name:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the search space;
+  \item the support-cardinality or basis bound;
+  \item whether the enumeration is exact or numerical;
+  \item the acceptance criteria;
+  \item the rejected classes;
+  \item the surviving candidates;
+  \item the role of the search in later theorem blocks.
+\end{enumerate}
+
+If the search is exact through support-cardinality \(\leq5\), say exactly that.  Do not imply it exhausts all possible PDE branches unless that stronger theorem has been proved.
+
+\subsection{Numerical residuals}
+\label{subsec:numerical-residuals}
+
+Numerical residuals should be quoted with enough context to determine their meaning.  The residual may be:
+\begin{itemize}[leftmargin=2.2em]
+  \item a mismatch against a target;
+  \item a graph error;
+  \item a branch-realization deficit;
+  \item a search residual;
+  \item a numerical precision artifact.
+\end{itemize}
+The status of the residual follows the status of the computation that produced it.
+
+\section{Common moving-throat packets and their default status}
+\label{sec:common-packets-default-status}
+
+This section records the default status reading for common packets used throughout the companion.  Later chapters may refine these statuses, but they should not silently weaken or strengthen them.
+
+\begin{longtable}{L{0.31\textwidth}L{0.18\textwidth}L{0.41\textwidth}}
+\toprule
+Object or packet & Default status & Reading rule \\
+\midrule
+\endhead
+Parent GNLS, localized Maxwell, continuity, mixed gauge invariants & \StatusExact & Exact statements of the declared parent theory. \\
+\addlinespace
+Projection identity and leakage formula after declaring \(W(w)\) & \StatusExact & Projection is an operational definition; later brane reductions are separate. \\
+\addlinespace
+Zero-mode brane Maxwell reduction & \StatusReduced & Controlled far-field brane reduction; mixed core channels are suppressed, not removed. \\
+\addlinespace
+Shape-field lift \(\Sigma=r-R(\Omega,w,t)\) & \StatusEffective & Working moving-throat lift unless and until derived uniquely from the completed PDE. \\
+\addlinespace
+Distributed quadratic wall action and modal wall PDE & \StatusExactClosure & Exact inside the declared distributed wall closure; the closure itself is a modeling layer. \\
+\addlinespace
+BdG Schur-complement self-energy formulas & \StatusExactClosure & Exact after stable BdG normal-mode reduction and declared coupling data. \\
+\addlinespace
+Maxwell/mixed one-lane transfer factor & \StatusExactClosure & Exact inside the reduced one-lane Maxwell/mixed model. \\
+\addlinespace
+Grouped real \(P_2\) projector calculus & \StatusExact & Exact finite-dimensional linear algebra once grouped convention is declared. \\
+\addlinespace
+Full grouped bundle coefficients \(D_{A,n},N_{A,n}\) & \StatusExactClosure & Exact inside the reduced grouped wall/BdG/Maxwell/mixed bundle. \\
+\addlinespace
+Outgoing \(l=2\) compact fingerprint & \StatusReduced & Controlled outgoing partial-wave branch and low-frequency expansion. \\
+\addlinespace
+Normalization target involving \(\widehat m_0^{\,2}P_0\) & \StatusReduced & Exact bridge inside the isotropic passive/outgoing point-particle reduction; actual realization remains separate. \\
+\addlinespace
+Actual realization of \(N_Q=1\), \(\chi_Q=1\), or \(\Delta_Q=0\) & \StatusOpen & Open unless the actual moving-throat branch computation verifies it. \\
+\addlinespace
+Weak-axisymmetric relation \(b=3a\) for pure axisymmetric quadrupole splitting & \StatusExactClosure & Exact inside the weak-axisymmetric angular splitting closure. \\
+\addlinespace
+Weak-axisymmetric prefactor slope \(\Xi_1=P_1/P_0\) & \StatusExactClosure\ for the compiler; \StatusOpen\ for actual branch value & The identity can be exact in the reduced compiler while the physical value is open. \\
+\addlinespace
+Finite local mixed-ray search through support-cardinality \(\leq5\) & \StatusExactClosure\ or \StatusNumerical, depending on implementation & Exact if the enumeration and arithmetic are certified; numerical if candidate placement is numerical. \\
+\addlinespace
+Rigid-mouth chart \((U,V)\) and orbit-lock condition \(U=V=0\) & \StatusExactClosure\ for the chart; \StatusOpen\ for actual lock & The compiler is closure-exact; actual branch lock is a realization claim. \\
+\addlinespace
+Selected twin-support slice \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\) & \StatusExactClosure & Exact inside the selected twin-support branch and ranking assumptions. \\
+\addlinespace
+Relaxed recovery map \(\ell_w=f_U=a=b=0\) & \StatusExactClosure & Exact inside the declared relaxed branch; use of the relaxed branch remains distinct from strict-branch proof. \\
+\addlinespace
+Relaxed leakage/work/export/material coefficients & \StatusOpen\ unless numerically or analytically realized & The relaxed compiler may be exact, while the actual material/calibration data remain branch-realization inputs. \\
+\bottomrule
+\end{longtable}
+
+\section{How theorem statements should display status}
+\label{sec:how-theorems-display-status}
+
+Every theorem-like statement should include a status line near the statement, before the proof or derivation.  The recommended format is:
+\begin{quote}
+\textbf{Status.} \StatusExactClosure\ inside the isotropic grouped wall/BdG/Maxwell/mixed reduced bundle.  Actual branch realization of the target scalar is \StatusOpen.
+\end{quote}
+
+If a theorem has multiple layers, list them explicitly.  For example:
+\begin{quote}
+\textbf{Status.}  The projector identity is \StatusExact.  The full grouped-bundle coefficient formulas are \StatusExactClosure.  The use of the isotropic passive/outgoing point-particle branch is \StatusReduced.  The actual branch value of \(P_0\) is \StatusOpen.
+\end{quote}
+
+This style prevents a reader from mistaking the highest-status subclaim for the status of the entire theorem.
+
+\section{How stage entries should display status}
+\label{sec:how-stage-entries-display-status}
+
+Every stage appendix entry should include a \textbf{Claim status} field.  A recommended template is:
+\begin{quote}
+\textbf{Claim status.}  Local derivation: \StatusExactClosure\ inside the one-port reduced model.  Current citation status: superseded by the full grouped-bundle theorem, where the corresponding identity is \StatusExactClosure\ and actual branch realization is \StatusOpen.
+\end{quote}
+
+When a stage contains a failed route, the status field should say whether the failure is exact in the tested class, numerical, or open.  For example:
+\begin{quote}
+\textbf{Claim status.}  \StatusExactClosure\ no-go inside the wall-only weak-axisymmetric primitive deformation class.  This does not rule out mixed-sector or relaxed-branch deformations.
+\end{quote}
+
+\section{Branch assumptions that must appear beside status tags}
+\label{sec:branch-assumptions-beside-status}
+
+Status tags are not enough by themselves.  Many closure-exact and reduced statements are valid only with branch assumptions.  When any of the following assumptions is used, it must be named beside the status tag.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Isotropy.}  The grouped real \(P_2\) channels share common coefficients and the anisotropy defects vanish.
+  \item \textbf{Weak-axisymmetry.}  The grouped splitting has the \((20,21,22)\sim(1,1/2,-1)\) signature or equivalently \(b=3a\).
+  \item \textbf{Passivity/outgoing condition.}  The odd response is carried by a passive outgoing branch with the declared sign convention.
+  \item \textbf{Point-particle or small-body limit.}  Source-map corrections beyond the retained order are suppressed.
+  \item \textbf{One-port or finite-port restriction.}  Only the declared port class is included.
+  \item \textbf{Stable support spectrum.}  The BdG or support modes integrated out have the declared stable spectrum.
+  \item \textbf{Rigid-mouth condition.}  The mouth variables obey the rigid-mouth normal form used to define \((U,V)\).
+  \item \textbf{Selected support branch.}  The branch lies on the selected twin-support or selected support curve being used.
+  \item \textbf{Relaxed branch recovery.}  The relaxed branch variables and the recovery map are stated.
+  \item \textbf{Finite search class.}  The graph, mixed-ray, support-cardinality, or search-basis restrictions are stated.
+\end{enumerate}
+
+If the assumption is not present, the result should either be demoted or rewritten as a conditional statement.
+
+\section{Status examples for recurring formulas}
+\label{sec:status-examples-recurring-formulas}
+
+The following examples illustrate how to cite recurring formulas without overclaiming.
+
+\subsection{Projected continuity}
+\label{subsec:status-projected-continuity}
+
+The identity
+\[
+\partial_t\rho_{\rm brane}+\nabla_3\cdot\mathbf j_{\rm brane}=S_{\rm leak}
+\]
+with the declared projection kernel \(W(w)\) is \StatusExact.  Any later statement that this leakage term is small, stationary, compensating, material-screened, or dynamically harmless requires a further reduction or branch assumption.
+
+\subsection{Zero-mode Maxwell limit}
+\label{subsec:status-zero-mode-maxwell}
+
+The reduction to effective brane Maxwell theory with
+\[
+\mu_0^{\rm eff}=\frac{\mu_0}{Z_{\rm int}}
+\]
+is \StatusReduced.  The mixed channels \(A_w,J^w,F_{\mu w},E_w,C_a\) are suppressed only inside that controlled far-field limit.  They remain microscopic variables in the moving-throat PDE.
+
+\subsection{Grouped real \texorpdfstring{\(P_2\)}{P2} projectors}
+\label{subsec:status-p2-projectors}
+
+The grouped projector calculus with grouped metric \(G_{\rm grp}=\mathrm{diag}(1,2,2)\) is \StatusExact\ finite-dimensional algebra once the grouped convention is declared.  However, the statement that a physical branch is isotropic in these projectors is a separate branch claim.
+
+\subsection{Outgoing normalization product}
+\label{subsec:status-outgoing-normalization-product}
+
+The bridge
+\[
+\widehat m_0^{\,2}P_0
+=
+\frac{54Gc_s^5}{5a^5c^5}
+\]
+is \StatusReduced\ as an isotropic passive/outgoing point-particle normalization condition.  The derivation of \(P_0=N_0/D_0\) is \StatusExactClosure\ inside the grouped reduced bundle.  The claim that the actual branch realizes the equation is \StatusOpen\ until the branch data are computed.
+
+\subsection{Weak-axisymmetric prefactor slope}
+\label{subsec:status-xi1}
+
+The identity
+\[
+\Xi_1=\frac{P_1}{P_0}
+\]
+is a closure-exact compiler identity inside the weak-axisymmetric prefactor-transport framework.  The numerical or physical value of \(\Xi_1\) on the actual branch is a realization question and should be marked \StatusOpen\ or \StatusNumerical\ depending on the available computation.
+
+\subsection{Rigid-mouth orbit lock}
+\label{subsec:status-rigid-mouth-orbit-lock}
+
+The chart
+\[
+(U,V)=\left(
+\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}
+\right)
+\]
+and the orbit-lock condition \(U=V=0\) are \StatusExactClosure\ inside the rigid-mouth normal form.  The assertion that the actual branch is orbit-locked is a separate realization claim.
+
+\subsection{Relaxed branch recovery}
+\label{subsec:status-relaxed-recovery}
+
+The recovery map
+\[
+\ell_w=f_U=a=b=0
+\]
+is \StatusExactClosure\ inside the declared relaxed branch.  It should not be used to claim that the relaxed branch proves the strict branch.  It states how the relaxed branch returns to the strict front end when the relaxed variables are shut off.
+
+\section{Status-aware citation language}
+\label{sec:status-aware-citation-language}
+
+Future papers should use language compatible with the status tag.  The following wording conventions are recommended.
+
+\begin{longtable}{L{0.24\textwidth}L{0.64\textwidth}}
+\toprule
+Status & Safe citation language \\
+\midrule
+\endhead
+\StatusExact & ``follows from the declared parent action''; ``is an exact identity''; ``is exact finite-dimensional algebra.'' \\
+\addlinespace
+\StatusExactClosure & ``is exact inside the stated closure''; ``within the coherent reduced branch''; ``for the one-port model''; ``under the rigid-mouth normal form.'' \\
+\addlinespace
+\StatusReduced & ``in the controlled zero-mode reduction''; ``in the low-frequency point-particle branch''; ``after the selected-branch reduction.'' \\
+\addlinespace
+\StatusEffective & ``we use the effective closure''; ``this is the working wall model''; ``this branch prescription is not yet uniquely derived from the completed PDE.'' \\
+\addlinespace
+\StatusNumerical & ``the branch point is numerically located''; ``the scan finds''; ``the current numerical solution gives.'' \\
+\addlinespace
+\StatusOpen & ``the remaining target is''; ``actual branch realization remains open''; ``the PDE must still return''; ``this has not yet been proved on the full branch.'' \\
+\bottomrule
+\end{longtable}
+
+Unsafe language includes:
+\begin{itemize}[leftmargin=2.2em]
+  \item saying ``proved by the PDE'' when only a reduced closure was proved;
+  \item saying ``exact value'' for a decimal branch point;
+  \item saying ``ruled out'' without naming the search class;
+  \item saying ``realized'' when only the compiler exists;
+  \item saying ``Maxwell reduction removes mixed channels'' rather than ``suppresses mixed channels in the strict far-field limit.''
+\end{itemize}
+
+\section{Status checklist for authors}
+\label{sec:status-checklist-authors}
+
+Before finalizing any section of this ledger, apply the following checklist.
+
+\begin{verificationchecklist}
+  \item Every theorem, proposition, lemma, boxed result, and branch verdict has a visible status tag.
+  \item Every closure-exact statement names the closure.
+  \item Every controlled reduction names the regime or approximation.
+  \item Every numerical value is marked numerical unless a closed form is provided.
+  \item Every open target is marked open even if the surrounding algebra is complete.
+  \item Every no-go result states its search class.
+  \item Every mixed-status theorem splits compiler, realization, and closure assumptions.
+  \item Every superseded prototype points to the later theorem or normal form.
+  \item Every result anchor has a status compatible with the strongest claim future papers are expected to cite.
+  \item No result uses the notation firewall to hide a status change.
+\end{verificationchecklist}
+
+\section{Status checklist for readers and referees}
+\label{sec:status-checklist-readers}
+
+When verifying a result, a reader should ask:
+\begin{enumerate}[leftmargin=2.2em]
+  \item Is the cited result an exact identity, closure-exact theorem, controlled reduction, effective closure, numerical placement, or open target?
+  \item Does the proof use assumptions not visible in the theorem statement?
+  \item Is the formula being used as a compiler or as a realized branch fact?
+  \item Does the downstream paper cite the result at the correct status level?
+  \item Is a no-go claim being applied outside its tested class?
+  \item Has a numerical search been mistaken for a closed-form theorem?
+  \item Has a relaxed branch result been used as if it proved the strict branch?
+  \item Has an early stage been superseded by a later normal form?
+\end{enumerate}
+
+If any answer is unclear, follow the result anchor to the stage appendix and check the local inputs, assumptions, checks, and downstream-use field.
+
+\section{Minimal status statement template}
+\label{sec:minimal-status-template}
+
+When filling the remaining chapters, use the following minimal template for major results:
+\begin{quote}
+\textbf{Status.}  [One of \StatusExact, \StatusExactClosure, \StatusReduced, \StatusEffective, \StatusNumerical, \StatusOpen.]  Exact/valid under [named assumptions].  The compiler part is [status].  Actual branch realization is [status].
+\end{quote}
+
+A more detailed theorem may use:
+\begin{quote}
+\textbf{Status split.}
+\begin{enumerate}[leftmargin=2.2em]
+  \item Algebraic identity: [status].
+  \item Closure assumptions: [closure and status].
+  \item Reduction assumptions: [regime and status].
+  \item Numerical placement: [value and status, if any].
+  \item Actual branch realization: [status].
+\end{enumerate}
+\end{quote}
+
+This template is intentionally repetitive.  Repetition is preferable to ambiguity in a derivation ledger.
+
+\section{Summary of the firewall}
+\label{sec:claim-status-summary}
+
+The claim-status firewall can be summarized in five rules.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item Use \StatusExact\ only for parent-theory identities, exact definitions, and exact algebra that do not depend on a further branch closure.
+  \item Use \StatusExactClosure\ for exact algebra inside a named closure, and always name the closure.
+  \item Use \StatusReduced\ when a projection, limit, truncation, low-frequency expansion, small-body approximation, or selected branch is required.
+  \item Use \StatusNumerical\ for numerical branch data and \StatusOpen\ for branch-realization targets not yet proved by the completed PDE.
+  \item When a result contains several layers, cite it at the weakest status needed for the conclusion.
+\end{enumerate}
+
+The status tag is not a formality.  It is the guardrail that lets this companion be useful as a long-term derivation archive.  Future papers can cite this ledger safely only if the firewall remains intact.

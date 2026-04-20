@@ -1,0 +1,28 @@
+\section[Stage 207]{Stage 207: Branch-packet compiler and actual-branch kill test}
+\label{stage:207}
+
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.2}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~207 converts the primitive-branch compatibility result into the actual weak-axisymmetric branch packet that the moving-throat PDE must return.}
+
+\stagefield{Inputs}{Imports the normalized prefactor packet $(\Delta_{\rm norm},a_{P_0},b_{P_0})$, the weak-axisymmetric signature $(1,1/2,-1)$, the line $b_{P_0}=3a_{P_0}$, and the target scale $T_{\rm quad}=54Gc_s^5/(5a^5c^5)$.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation maps grouped lane prefactors into trace/anomaly coordinates, rewrites the anisotropic packet in terms of $\Xi_1=P_1/P_0$, and transports the static normalization margin through the one-scalar weak-axisymmetric ceiling.}
+
+\stagefield{Output}{Actual-branch kill test: the branch survives only if the transported quantity $(\Delta_{\rm norm}+T_{\rm quad})(1+|\varepsilon\Xi_1|)/\hat m_0^2$ stays below the critical prefactor budget.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+
+

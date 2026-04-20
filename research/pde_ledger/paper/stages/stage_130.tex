@@ -1,0 +1,28 @@
+\section[Stage 130]{Stage 130: First-Order Rigidity Kernel at the Canonical Family-1 Point}
+\label{stage:130}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~130 is a finite mouth-profile corrections ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the regular canonical mouth branch, positive deformations of the source profile, the first-order rigidity kernel, and the full mouth potential.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage130_first_order_rigidity_kernel_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage130_first_order_rigidity_kernel_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage130_first_order_rigidity_kernel_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage130_first_order_rigidity_kernel_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Finite mouth-profile corrections} block.  The computation isolates the finite first-order/nonlinear correction to \((\Pi,\widehat T_m)\) and the decision to co-evolve core and mouth.}
+
+\begin{quote}
+Traction shift is one kernel projection with coefficients \(A_T\approx-4.27264\), \(B_T\approx0.134875\).
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check that first-order profile deformations are centered before covariance formulas are used.
+\item Check that the rigidity kernel, not branch ambiguity, controls non-exponential corrections.
+\item Check the one-step nonlinear correction remains within the reduced mouth-layer regime.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 137--146 and the linearized defect transport.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

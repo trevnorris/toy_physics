@@ -1,0 +1,46 @@
+\section[Stage 033]{Stage 033: Exact Comparison of Physical \texorpdfstring{$\zeta$}{zeta} Against the Required Threshold}
+\label{stage:033}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the support-tower selection rules.}
+\stagefield{Purpose}{Stage~033 compares \(\zeta_n^{\rm phys}\) against \(\zeta_{\rm req}\) and proves that the lowest symmetric twin is the natural first support branch.}
+\stagefield{Inputs}{The Stage~031 threshold \(\zeta_{\rm req}\) and Stage~032 D/N support tower.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage033_zeta_threshold_comparison_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage033_zeta_threshold_comparison_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage033_zeta_threshold_comparison_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage033_zeta_threshold_comparison_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The lowest symmetric twin lane has \(\zeta_0=1\).  Therefore its enhancement factor is
+\begin{equation}
+\label{eq:app-stage033-S0}
+\boxed{
+S_0=S(1;\epsilon)=2}.
+\end{equation}
+It succeeds iff
+\begin{equation}
+\label{eq:app-stage033-lowest-success}
+\boxed{
+\zeta_{\rm req}\leq1
+\quad\Longleftrightarrow\quad
+S_{\rm req}\leq2}.
+\end{equation}
+For higher harmonics, the immediate exclusion test is
+\begin{equation}
+\label{eq:app-stage033-higher-bound}
+\boxed{
+\zeta_{\rm req}>\frac{1}{(2n+1)^2}
+\quad\Longrightarrow\quad
+\text{the }n\text{th same-operator twin lane cannot reach the threshold.}
+}
+\end{equation}
+When the immediate exclusion test does not apply, the support softness must satisfy
+\begin{equation}
+\label{eq:app-stage033-xmax}
+\boxed{
+x\leq x_{\max}(n;\zeta_{\rm req})
+=\frac{1}{n(n+1)}\left[\frac{1}{(2n+1)^2\zeta_{\rm req}}-1\right]}.
+\end{equation}
+
+\stagefield{Output}{Lowest-twin sufficiency \eqref{eq:app-stage033-lowest-success} and higher-harmonic exclusion/softness thresholds.}
+\stagefield{Downstream use}{Stage~034 rewrites the lowest-twin criterion in branch-product variables; Stage~035 defines the non-twin regime.}
+

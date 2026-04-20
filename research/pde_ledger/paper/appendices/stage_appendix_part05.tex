@@ -1,0 +1,1578 @@
+\chapter{Stage Appendix: Part V -- Weak-Axisymmetric Transport, Quotient Coordinates, and Orbit Closure}
+\label{app:stage-part-5}
+
+\section*{Stage range: 147--183}
+\addcontentsline{toc}{section}{Stage range: 147--183}
+
+This appendix records the fifth theorem block of the moving-throat derivation ledger.  Part IV ended with the co-evolving core--mouth branch reduced to a first-order off-family normal coordinate.  Part V starts from that coordinate and asks a sharper question: after the Family--1 mouth/core compensation machinery is already in place, which microscopic grouped weak-axisymmetric motions still survive as genuine reduced defects, and which motions are only similarity-orbit relabelings of the same coherent branch?
+
+The answer is that the apparent many-variable weak-axisymmetric problem collapses to two levels.  On the branch side, the grouped real \(P_2\) carrier reduces to a single transported prefactor slope,
+\begin{equation}
+\label{eq:app-part05-intro-xi1}
+\Xi_1=\frac{P_1}{P_0},
+\end{equation}
+with the weak-axisymmetric grouped signature
+\begin{equation}
+\label{eq:app-part05-intro-lambda-signature}
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1.
+\end{equation}
+Equivalently, the grouped anisotropy lies on the fixed line
+\begin{equation}
+\label{eq:app-part05-intro-b3a}
+b_{P_0}=3a_{P_0}.
+\end{equation}
+On the orbit side, the coherent local branch reduces to three exact quotient coordinates,
+\begin{equation}
+\label{eq:app-part05-intro-quotient-coordinates}
+\mathfrak C_{{\rm tr},*},
+\qquad
+\mathfrak C_{{\rm nt},*},
+\qquad
+\epsilon_\eta,
+\end{equation}
+whose finite level sets are exactly the five-parameter microscopic similarity orbits.  The final reduced verdict after this part is therefore not an eight-slot branch residual plus an ambiguous orbit condition.  It is the exact four-scalar packet
+\begin{equation}
+\label{eq:app-part05-intro-final-packet}
+\Delta_{\rm full}
+=
+(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta),
+\qquad
+\Delta_Q:=\chi_Q-1.
+\end{equation}
+
+The result anchor served by this appendix is \resultanchor{MTDC-T9}.  This anchor should be cited when a downstream paper needs the derivation of the weak-axisymmetric loading mismatch, the transfer-shape scalar \(\Xi_1=P_1/P_0\), the coherent tracking/nontracking/dressing normal form, the monomial quotient coordinates, the similarity-orbit theorem, the exact Packet-A finish line \(\Delta_Q=\chi_Q-1\), or the final reference-free verdict packet \(\Delta_{\rm full}\).
+
+\begin{longtable}{@{}L{0.075\textwidth}L{0.34\textwidth}L{0.20\textwidth}L{0.33\textwidth}@{}}
+\caption{Part V source and status map.}\label{tab:app-part05-source-status-map}\\
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endhead
+147 & Microscopic log-imbalance channels & \StatusExactClosure{} & Rewrites the Stage-146 off-family scalar in explicit branch-variable drifts of \((\mathcal Z_q,\rho_w,c_{s,w},c_s,\mathcal T_m,v_{w0},a,L_W)\). \\
+\addlinespace
+148 & Lower-branch drift laws & \StatusExactClosure{} & Shows \(\delta\ln L_W=\delta\ln a\) and reduces the lower compensated branch to four irreducible drifts \((\delta\ln\mathcal Z_q,\delta\ln\rho_w,\delta\ln c_s,\delta\ln a)\). \\
+\addlinespace
+149 & Bundle inversion of the last four drifts & \StatusExactClosure{} & Inverts the four observables \((\Theta_w,K_s,K_q,P_0)\) to determine the four remaining microscopic drifts. \\
+\addlinespace
+150 & Bundle transport and tangent compensation & \StatusExactClosure{} & Proves arbitrary first-order isotropic bundle drift is tangent to the exact compensated parent family. \\
+\addlinespace
+151 & Off-bundle slippage decomposition & \StatusExactClosure{} & Reduces the first true off-bundle defect to axial-length, mixed-speed, and mouth-traction slippages. \\
+\addlinespace
+152 & No linear grouped feed-down into scalar slippages & \StatusExactClosure{} & Pure grouped real \(P_2\) anisotropy cannot linearly source the scalar off-bundle slippages; scalar feed-down starts quadratically. \\
+\addlinespace
+153 & Linear grouped outlet map & \StatusExactClosure{} & Reduces the direct outlet deformations to \(\mathcal K_A=\delta D_{A,2}+\delta D_{A,0}/9\) and \(\mathcal G_A=\delta N_{A,0}-P_0\delta D_{A,0}\). \\
+\addlinespace
+154 & Microscopic grouped obstructions & \StatusExactClosure{} & Decomposes \(\mathcal K_A\) and \(\mathcal G_A\) into wall, BdG, Maxwell/mixed, and outgoing-transfer defect bundles. \\
+\addlinespace
+155 & Physical slope collapse & \StatusExactClosure{} & Identifies \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), reducing the linear grouped outlet problem to physical slopes. \\
+\addlinespace
+156 & Weak-axisymmetric loading mismatch & \StatusExactClosure{} & On the even-preserving branch, the remaining grouped defect is the scalar \(\Xi_{\rm load}=N_{01}/N_0-D_{01}/D_0\). \\
+\addlinespace
+157 & Static self-similarity & \StatusExactClosure{} & Expresses \(\Xi_{\rm load}\) as weighted failure of static self-similarity between wall, BdG, conservative port, and outgoing port slopes. \\
+\addlinespace
+158 & Wall-normalized outgoing-load theorem & \StatusExactClosure{} & Factors the remaining defect into wall-normalized shape/load variables and proves conservative-shape preservation leaves only outgoing load slippage. \\
+\addlinespace
+159 & Square-root mixed-leg law & \StatusExactClosure{} & Factors the outgoing load into mixed-leg, interference, and hybridization slippages; under rigidity, zero defect requires \(G_W/\Omega_W^2\propto\sqrt K\). \\
+\addlinespace
+160 & One scalar outgoing-slippage amplitude & \StatusExactClosure{} & Shows all weak-axisymmetric outgoing slippages inherit the same grouped signature and collapse to \(\Xi_1=P_1/P_0\). \\
+\addlinespace
+161 & Outgoing-port co-loading theorem & \StatusExactClosure{} & Rewrites \(\Xi_1\) as the weighted mismatch between actual static outgoing-port loading and wall-baseline loading. \\
+\addlinespace
+162 & Transfer-shape theorem & \StatusExactClosure{} & Factors each outgoing port as \(N_{A,0}^{(r)}=K_A\mathcal T_{A,r}^2\) and gives \(\Xi_1=2\sum_r\rho_r^{(N)}\tau_r\). \\
+\addlinespace
+163 & Effective transfer-shape collapse & \StatusExactClosure{} & Collapses many ports to \(\mathcal T_{{\rm eff},A}^2=N_{A,0}/K_A\) and gives the actual one-port continuum formula. \\
+\addlinespace
+164 & Coherent tracking-branch defect law & \StatusExactClosure{} & On the coherent local D/N tracking branch, \(\Xi_1\) is carried only by mixed/outgoing placement variables; coherent support ratio \(\zeta\) drops out. \\
+\addlinespace
+165 & Microscopic coherent-kernel slippages & \StatusExactClosure{} & Reduces the defect to \((\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta)\) plus dressing slippage \(\Sigma_\eta\), and isolates \(\Sigma_{\rm tr}\). \\
+\addlinespace
+166 & Triangular normal form & \StatusExactClosure{} & Compresses the coherent weak-axisymmetric problem to \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) with triangular map to \((\Theta_1,\Xi_1,\mathcal R_1)\). \\
+\addlinespace
+167 & Branch-invariant coordinates & \StatusExactClosure{} & Identifies exact branch composites \(\mathfrak T_*\), \(\mathfrak N_*\), and \(\epsilon_\eta\) whose logarithmic drifts are the three normal-form coordinates. \\
+\addlinespace
+168 & Microscopic monomial coordinates & \StatusExactClosure{} & Pushes the branch composites to direct monomials \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\). \\
+\addlinespace
+169 & Similarity-orbit tangent theorem & \StatusExactClosure{} & Shows the zero-defect equations are the tangent equations of a five-parameter monomial-preserving similarity orbit \(\mathcal G_*\). \\
+\addlinespace
+170 & Orbit--quotient closure & \StatusExactClosure{} & Proves finite level sets of \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\) are exactly \(\mathcal G_*\)-orbits. \\
+\addlinespace
+171 & Branch-observable compiler & \StatusExactClosure{} & Compiles direct branch observables to \((\Theta_1,\Xi_1,\mathcal R_1)\) and records equivalent observable packets. \\
+\addlinespace
+172 & Transfer-shape / outgoing-prefactor compiler & \StatusExactClosure{} & Equates \(\Xi_1\) with the logarithmic transfer-shape and outgoing-prefactor slope, including corrected nontracking form. \\
+\addlinespace
+173 & Direct defect, dressing residual, and no-go filters & \StatusExactClosure{} & Separates direct transfer-shape drift from selected-branch dressing residual and records scalar no-go filters. \\
+\addlinespace
+174 & Minimal PDE data packet & \StatusExactClosure{} & Defines Packet A, Packet B, \(\Delta_{\rm branch}\), \(\Delta_{\rm orbit}\), and the exact two-packet home-stretch theorem. \\
+\addlinespace
+175 & Orbit/quotient projectors & \StatusExactClosure{} & Builds exact projectors \(Q_{\rm quot}\), \(O_{\rm orb}\), showing quotient failure lives only on \((T_U,K_\eta^{\rm eff},\mu_W)\). \\
+\addlinespace
+176 & Isotropic grouped target surface & \StatusExactClosure{} & Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry lane enters the grouped carrier only at quadratic anisotropy order. \\
+\addlinespace
+177 & Outgoing \(l=2\) fingerprint & \StatusExactClosure{} & Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical compact branch. \\
+\addlinespace
+178 & Source-map reduction & \StatusExactClosure{} / \StatusReduced{} & Factorizes the observable odd closure as \(\widehat m_0^{2}\chi_QN_Q=1\) and collapses \(\Delta_{\rm norm}\). \\
+\addlinespace
+179 & Higher-odd irrelevance & \StatusExactClosure{} & Proves all extra isotropic odd tails beginning at \(O(\omega^7)\) are invisible to the point-particle \(2.5\)PN theorem. \\
+\addlinespace
+180 & Conditional Packet-A closure & \StatusExactClosure{} & Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole Packet-A scalar. \\
+\addlinespace
+181 & Finite orbit law & \StatusExactClosure{} & Solves the dependent triple exactly, defines mismatch coordinates, and proves finite single-orbit lock. \\
+\addlinespace
+182 & Pairwise orbit transport & \StatusExactClosure{} & Removes representative privilege by giving exact two-point transport, mismatch, cocycle, and orbit-lock laws. \\
+\addlinespace
+183 & Reference-free home-stretch theorem & \StatusExactClosure{} & Combines Packet A and Packet B into the four-scalar final verdict packet \((\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\). \\
+\bottomrule
+\end{longtable}
+
+\claimstatus{Mixed but predominantly \StatusExactClosure{}.  Stages 147--183 are exact algebra inside the declared co-evolving Family--1, grouped real \(P_2\), coherent local D/N, outgoing-prefactor, Packet-A, and Packet-B reduced hierarchies.  The natural point-particle source-map use in Stage 178 is a \StatusReduced{} import.  The actual nonlinear moving-throat PDE still has to return branch data that land on the final packet; realization by that branch remains \StatusOpen{} even though the compilers and quotient/orbit theorems are exact within closure.}
+
+\section{Block contract and theorem-level output}
+\label{sec:app-part05-block-contract}
+
+The contract of Part V is to turn the remaining first-order weak-axisymmetric and retarded branch checks into explicit finite packets.  It is not trying to prove that the completed nonlinear PDE realizes those packets.  Instead it proves that, once a candidate moving-throat solution gives the required reduced branch data, the verdict can be computed by exact formulas with no remaining interpretation freedom.
+
+The block has two sides.  The first side is the weak-axisymmetric branch transport:
+\begin{equation}
+\label{eq:app-part05-chain-branch-side}
+\delta_\perp
+\longrightarrow
+(\mathcal K_A,\mathcal G_A)
+\longrightarrow
+(u_2^{(1)},P_1/P_0)
+\longrightarrow
+\Xi_{\rm load}
+\longrightarrow
+\Xi_1.
+\end{equation}
+The second side is the coherent orbit quotient:
+\begin{equation}
+\label{eq:app-part05-chain-orbit-side}
+(\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)
+\longrightarrow
+(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)
+\longrightarrow
+\mathcal M_+/\mathcal G_*
+\longrightarrow
+(q_{\rm tr},q_{\rm nt},q_\eta).
+\end{equation}
+The final theorem joins these with the retarded Packet-A scalar \(\Delta_Q=\chi_Q-1\).
+
+\begin{theorem}[Part V weak-axisymmetric quotient and orbit-closure theorem]
+\label{thm:app-part05-main}
+Inside the carried moving-throat reduced hierarchy for Stages 147--183, the following theorem chain holds.
+\begin{enumerate}[leftmargin=2.2em]
+  \item The first off-family Family--1 normal coordinate is an explicit logarithmic transport law in the moving-throat wall/BdG/Maxwell/mixed branch variables.  Arbitrary first-order isotropic bundle drift is tangent to the compensated parent family; true off-bundle motion first enters through three scalar slippages.
+  \item A pure grouped real \(P_2\) anisotropy cannot linearly feed the scalar slippage channel.  Its linear effect enters the direct outlet coefficients only through
+  \begin{equation}
+  \label{eq:app-part05-theorem-KG}
+  \mathcal K_A:=\delta D_{A,2}+\frac19\delta D_{A,0},
+  \qquad
+  \mathcal G_A:=\delta N_{A,0}-P_0\delta D_{A,0}.
+  \end{equation}
+  \item On the canonical compensated branch, these outlet coefficients are exactly the physical grouped slopes,
+  \begin{equation}
+  \label{eq:app-part05-theorem-physical-slopes}
+  \mathfrak K_1=-D_0u_2^{(1)},
+  \qquad
+  \mathfrak G_1=D_0P_1.
+  \end{equation}
+  \item On the even-preserving weak-axisymmetric branch, all conservative grouped transport is controlled by one static operator slope, and the sole remaining linear grouped normalization defect is
+  \begin{equation}
+  \label{eq:app-part05-theorem-xiload}
+  \Xi_{\rm load}
+  :=
+  \frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+  \end{equation}
+  \item The same scalar is the weighted failure of static self-similarity and, after wall-normalized outgoing-port factorization, the logarithmic slope of the effective transfer shape:
+  \begin{equation}
+  \label{eq:app-part05-theorem-xi1-transfer}
+  \Xi_1
+  =
+  \frac{P_1}{P_0}
+  =
+  \frac{\delta\ln\mathcal T_{{\rm eff},A}^{2}}{\epsilon\lambda_A}.
+  \end{equation}
+  \item On the coherent local D/N branch, the weak-axisymmetric observable drifts obey the triangular normal form
+  \begin{equation}
+  \label{eq:app-part05-theorem-triangular}
+  \Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+  \qquad
+  \Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+  \qquad
+  \mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+  \end{equation}
+  \item The three normal-form coordinates are exactly the logarithmic drifts of three direct microscopic monomials,
+  \begin{equation}
+  \label{eq:app-part05-theorem-monomials}
+  \delta\ln\mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
+  \qquad
+  \delta\ln\mathfrak C_{{\rm nt},*}=\Sigma_{\rm nt},
+  \qquad
+  \delta\ln\epsilon_\eta=\Sigma_\eta.
+  \end{equation}
+  \item The finite level sets of these three monomials are exactly the five-parameter similarity orbits \(\mathcal G_*\), so
+  \begin{equation}
+  \label{eq:app-part05-theorem-quotient}
+  \mathcal M_+/\mathcal G_*
+  \cong
+  (\mathbb R_{>0})^3,
+  \qquad
+  (\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)
+  \text{ are quotient coordinates.}
+  \end{equation}
+  \item The branch-side Packet A collapses to one scalar finish line,
+  \begin{equation}
+  \label{eq:app-part05-theorem-packetA}
+  \Delta_{\rm branch}=0
+  \iff
+  \chi_Q=1
+  \iff
+  \Delta_Q:=\chi_Q-1=0.
+  \end{equation}
+  \item The full reference-free reduced verdict is therefore the four-scalar packet
+  \begin{equation}
+  \label{eq:app-part05-theorem-finalpacket}
+  \Delta_{\rm full}^{(x\mid\mathcal O_*)}
+  :=
+  \bigl(
+  \Delta_Q(x),
+  q_{\rm tr}^{(x\leftarrow\mathcal O_*)},
+  q_{\rm nt}^{(x\leftarrow\mathcal O_*)},
+  q_\eta^{(x\leftarrow\mathcal O_*)}
+  \bigr),
+  \end{equation}
+  with
+  \begin{equation}
+  \label{eq:app-part05-theorem-finalzero}
+  \Delta_{\rm full}^{(x\mid\mathcal O_*)}=0
+  \iff
+  \Delta_{\rm branch}(x)=0
+  \text{ and }
+  x\in\mathcal O_*.
+  \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof structure]
+Stages 147--151 translate the first off-family normal coordinate into explicit microscopic transport variables and then separate on-bundle tangent motion from off-bundle slippage.  Stages 152--156 prove that grouped real \(P_2\) anisotropy does not linearly feed scalar slippage, derive the direct outlet map, and collapse the even-preserving grouped defect to \(\Xi_{\rm load}\).  Stages 157--163 factor \(\Xi_{\rm load}\) through wall-referenced self-similarity, outgoing-load factors, port co-loading, and the effective transfer shape, giving \(\Xi_1=P_1/P_0\).  Stages 164--168 pass from physical coherent-kernel variables to the triangular normal form and then to direct microscopic monomials.  Stages 169--170 prove the finite orbit--fibre theorem.  Stages 171--175 build the observable, transfer-shape, finite-packet, and projector compilers.  Stages 176--180 close the branch-side Packet-A finish line to \(\Delta_Q=\chi_Q-1\).  Stages 181--183 remove the orbit representative and combine Packet A and Packet B into \eqref{eq:app-part05-theorem-finalpacket}.
+\end{proof}
+
+\section{Weak-axisymmetric grouped signature}
+\label{sec:app-part05_weak_axisymmetric_orbit:weak-axisymmetric-grouped-signature}
+
+\subsection{Local goal}
+The first job in Part V is to connect the co-evolving Family--1 off-family scalar from Part IV to the grouped real \(P_2\) transport language.  Stage 146 had left the first true normal coordinate in the form
+\begin{equation}
+\label{eq:app-part05-delta-perp-original}
+\delta_\perp
+=
+\mathfrak g_*
+\delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
++
+\frac{1}{4\sqrt{1+\mathfrak r_*^2}}
+\delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right).
+\end{equation}
+Stage 147 shows that this is not an abstract parent-coordinate expression.  With
+\begin{equation}
+\label{eq:app-part05-rg-defs}
+\mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+\qquad
+\mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}},
+\qquad
+r_c=\frac{\lambda^2}{K_sK_q}=\mathfrak r^2,
+\end{equation}
+the two channels are exactly
+\begin{equation}
+\label{eq:app-part05-log-channels-rg}
+\delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+=
+\delta\ln\!\left(\frac{\mathfrak g}{\mathfrak r}\right),
+\qquad
+\delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right)
+=-\delta\ln r_c.
+\end{equation}
+Thus \(\delta_\perp\) measures relative mouth-coupling drift and hybridization drift.
+
+\subsection{Explicit branch-variable form}
+On the healing-locked wall/BdG/Maxwell/mixed branch, the same scalar becomes
+\begin{equation}
+\label{eq:app-part05-delta-perp-explicit}
+\begin{aligned}
+\delta_\perp={}&
+A_*\,\delta\ln\!\left(\frac{\mathcal Z_q}{\rho_w}\right)
++3A_*\,\delta\ln c_{s,w}
++B_*\,\delta\ln c_s
+-\mathfrak g_*\,\delta\ln\mathcal T_m \\
+&-(\mathfrak g_*+B_*)\delta\ln v_{w0}
+-2A_*\,\delta\ln a
+-C_*\,\delta\ln L_W,
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part05-ABC-defs}
+A_*:=\mathfrak g_*+\frac{1}{4\sqrt{1+\mathfrak r_*^2}},
+\qquad
+B_*:=\frac{1}{2\sqrt{1+\mathfrak r_*^2}},
+\qquad
+C_*:=2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}.
+\end{equation}
+The exact tangency condition \(\delta_\perp=0\) is therefore a co-transport law for \(\mathcal T_m\) relative to
+\(
+(\mathcal Z_q,\allowbreak \rho_w,\allowbreak c_{s,w},\allowbreak c_s,\allowbreak v_{w0},\allowbreak a,\allowbreak L_W)
+\),
+not a free adjustment.
+
+Stages 148--150 then show that the explicit lower compensated branch is even more constrained.  The D/N tube length co-transports with the mouth radius,
+\begin{equation}
+\label{eq:app-part05-LW-co-transport}
+\delta\ln L_W=\delta\ln a,
+\end{equation}
+and the exact branch laws reduce the apparent branch drift problem to four irreducible variables.  Stage 149 chooses the four bundle observables
+\begin{equation}
+\label{eq:app-part05-bundle-observables}
+\Theta_w,
+\qquad
+K_s,
+\qquad
+K_q,
+\qquad
+P_0=\frac{N_0}{D_0}
+\end{equation}
+as the right variables to invert.  Stage 150 proves that arbitrary first-order drift of these four bundle observables leaves the compensation ratios tangent to the parent family:
+\begin{equation}
+\label{eq:app-part05-tangent-parent-family}
+\delta\ln r_c=0,
+\qquad
+\delta\ln\mathfrak r=0,
+\qquad
+\delta\ln\mathfrak g=0
+\quad
+\text{for pure bundle drift.}
+\end{equation}
+Consequently, any first-order failure after Stage 150 must be genuinely off-bundle.
+
+\subsection{Off-bundle slippages and grouped signature}
+Stage 151 introduces the three scalar slippages
+\begin{equation}
+\label{eq:app-part05-slippage-names}
+\varepsilon_L,
+\qquad
+\varepsilon_v,
+\qquad
+\varepsilon_T,
+\end{equation}
+which measure failure of the exact lower-branch laws for axial length, mixed background speed, and mouth traction.  Stage 152 then proves a key firewall: a pure weak grouped real \(P_2\) anisotropy cannot linearly source these scalar slippages.  The reason is angular.  The weak grouped perturbation has zero weighted trace at first order; scalar feed-down can only be built from quadratic grouped invariants such as
+\begin{equation}
+\label{eq:app-part05-grouped-invariant}
+\mathcal I[x,y]
+=
+\frac15\delta x^T G_{\rm grp}\delta y
+=
+4a_xa_y+\frac45 b_xb_y,
+\qquad
+G_{\rm grp}=\operatorname{diag}(1,2,2).
+\end{equation}
+Thus linear grouped real \(P_2\) transport enters the direct outlet coefficients rather than the scalar off-bundle slippage channel.
+
+The grouped weak-axisymmetric signature is inherited from the first axisymmetric quadrupole perturbation:
+\begin{equation}
+\label{eq:app-part05-weak-axisymmetric-signature}
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1.
+\end{equation}
+For any first-order grouped quantity
+\begin{equation}
+\label{eq:app-part05-lambda-expansion-general}
+x_A=x_0+\epsilon\lambda_Ax_1+O(\epsilon^2),
+\end{equation}
+the weighted grouped anomalies obey
+\begin{equation}
+\label{eq:app-part05-b-equals-3a-general}
+a_x=\frac{\epsilon}{4}x_1,
+\qquad
+b_x=\frac{3\epsilon}{4}x_1,
+\qquad
+b_x=3a_x.
+\end{equation}
+This fixed line is the weak-axisymmetric branch signature used throughout the rest of Part V.
+
+\claimstatus{Stages 147--152 are \StatusExactClosure{} inside the explicit co-evolving Family--1 throat-core closure and the grouped real \(P_2\) weak-axisymmetric expansion.  They do not prove that the actual nonlinear PDE produces a particular slippage; they identify the exact variables through which such slippage would appear.}
+
+\section{Even-preserving and hidden-even gates}
+\label{sec:app-part05_weak_axisymmetric_orbit:even-preserving-and-hidden-even-gates}
+
+\subsection{Direct outlet map}
+Stages 153--154 move the linear grouped problem from scalar slippage to direct outlet data.  For each grouped lane \(A\), define
+\begin{equation}
+\label{eq:app-part05-KG-defs-section}
+\mathcal K_A:=\delta D_{A,2}+\frac19\delta D_{A,0},
+\qquad
+\mathcal G_A:=\delta N_{A,0}-P_0\delta D_{A,0}.
+\end{equation}
+The hidden even deformation and hidden odd normalization deformation are then
+\begin{equation}
+\label{eq:app-part05-dk-dg-outlet}
+\delta\kappa_W^{(A)}
+=
+\frac{3(1-\sigma_*)}{\sigma_*D_0}\mathcal K_A,
+\qquad
+\delta\gamma_W^{(A)}
+=-\frac{1-\sigma_*}{9\sigma_*N_0}\mathcal G_A.
+\end{equation}
+Stage 154 decomposes these into microscopic sectors:
+\begin{equation}
+\label{eq:app-part05-K-decomp}
+\mathcal K_A
+=
+\mathcal W_A-\mathcal B_A-\mathcal Z_A,
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part05-WBZ-defs}
+\mathcal W_A:=\frac19\delta K_A-\delta M_A,
+\qquad
+\mathcal B_A:=\delta B_{A,2}+\frac19\delta B_{A,0},
+\qquad
+\mathcal Z_A:=\delta Z_{A,2}+\frac19\delta Z_{A,0},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part05-G-decomp}
+\mathcal G_A
+=
+-P_0\delta K_A+P_0\delta B_{A,0}+\mathcal N_A,
+\qquad
+\mathcal N_A:=\delta N_{A,0}+P_0\delta Z_{A,0}.
+\end{equation}
+This identifies the only four microscopic bundles that can generate a linear grouped outlet obstruction: wall baseline, BdG support, conservative Maxwell/mixed, and outgoing-transfer loading.
+
+\subsection{Physical slope collapse}
+Stage 155 rewrites the same obstruction in physical grouped-response variables.  For each grouped lane,
+\begin{equation}
+\label{eq:app-part05-u2-u4-P0-defs}
+u_2^{(A)}=-\frac{D_{A,2}}{D_{A,0}},
+\qquad
+u_4^{(A)}=\frac{D_{A,2}^2-D_{A,0}D_{A,4}}{D_{A,0}^2},
+\qquad
+P_0^{(A)}=\frac{N_{A,0}}{D_{A,0}}.
+\end{equation}
+On the canonical compensated branch, the two microscopic amplitudes are simply
+\begin{equation}
+\label{eq:app-part05-KG-physical}
+\mathfrak K_1=-D_0u_2^{(1)},
+\qquad
+\mathfrak G_1=D_0P_1.
+\end{equation}
+Equivalently,
+\begin{equation}
+\label{eq:app-part05-dk-dg-physical}
+\delta\kappa_W^{(A)}
+=-\frac{3(1-\sigma_*)}{\sigma_*}\delta u_2^{(A)},
+\qquad
+\delta\gamma_W^{(A)}
+=-\frac{1-\sigma_*}{9\sigma_*}\frac{\delta P_0^{(A)}}{P_0}.
+\end{equation}
+So the full linear grouped outlet problem is now measurable by \(u_2^{(1)}\) and \(P_1/P_0\).
+
+\subsection{Even-preserving branch}
+Stage 156 then computes those physical slopes directly from the weak-axisymmetric grouped operator expansion
+\begin{equation}
+\label{eq:app-part05-DN-expansion}
+D_{A,0}=D_0+\epsilon\lambda_AD_{01}+O(\epsilon^2),
+\quad
+D_{A,2}=D_2+\epsilon\lambda_AD_{21}+O(\epsilon^2),
+\quad
+D_{A,4}=D_4+\epsilon\lambda_AD_{41}+O(\epsilon^2),
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-N-expansion}
+N_{A,0}=N_0+\epsilon\lambda_AN_{01}+O(\epsilon^2).
+\end{equation}
+The exact slope formulas are
+\begin{equation}
+\label{eq:app-part05-physical-slopes-stage156}
+u_2^{(1)}=-\frac{D_{21}+u_2D_{01}}{D_0},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-u4-slope-stage156}
+u_4^{(1)}
+=-\frac{5D_{01}+18D_{21}+81D_{41}}{81D_0}
+\quad
+\text{on }(u_2,u_4)=\left(\frac19,\frac{4}{81}\right),
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part05-P1P0-stage156}
+\frac{P_1}{P_0}
+=
+\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\end{equation}
+If the canonical conservative even fingerprint is preserved at first order, then
+\begin{equation}
+\label{eq:app-part05-even-preserving-D21}
+D_{21}=-\frac{D_{01}}{9}.
+\end{equation}
+The hidden-even consistency relation \(u_4^{(1)}=(8/9)u_2^{(1)}\) is exactly
+\begin{equation}
+\label{eq:app-part05-hidden-even-D41-general}
+D_{41}=\frac23D_{21}+\frac{1}{27}D_{01},
+\end{equation}
+and therefore on the even-preserving branch
+\begin{equation}
+\label{eq:app-part05-even-preserving-D41}
+D_{41}=-\frac{D_{01}}{27}.
+\end{equation}
+Thus the conservative grouped response is frozen to canonical order, and the only surviving linear grouped defect is the static loading mismatch
+\begin{equation}
+\label{eq:app-part05-Xiload-def}
+\Xi_{\rm load}
+:=
+\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+\end{equation}
+Its lane form is
+\begin{equation}
+\label{eq:app-part05-Xiload-lanes}
+\Delta_Q^{(20)}=\epsilon\Xi_{\rm load},
+\qquad
+\Delta_Q^{(21)}=\frac{\epsilon}{2}\Xi_{\rm load},
+\qquad
+\Delta_Q^{(22)}=-\epsilon\Xi_{\rm load}.
+\end{equation}
+
+\claimstatus{Stages 153--156 are \StatusExactClosure{} in the grouped low-frequency bundle.  The even-preserving condition is a branch restriction, not an unconditional statement that the completed PDE must satisfy it.}
+
+\section{Outgoing-load scalar \texorpdfstring{\((\Xi_1=P_1/P_0)\)}{(Xi1=P1/P0)}}
+\label{sec:app-part05_weak_axisymmetric_orbit:outgoing-load-scalar-xi-1-p-1-p-0}
+
+\subsection{Self-similarity form of the loading mismatch}
+Stage 157 rewrites the mismatch \eqref{eq:app-part05-Xiload-def} as failure of static self-similarity.  Let
+\begin{equation}
+\label{eq:app-part05-static-slope-defs}
+\delta_K:=\frac{K_1}{K},
+\qquad
+\delta_B:=\frac{B_0^{(1)}}{B_0},
+\qquad
+\delta_Z:=\frac{Z_0^{(1)}}{Z_0},
+\qquad
+\delta_N:=\frac{N_1}{N_0},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part05-weights-static}
+\omega_B:=\frac{B_0}{D_0},
+\qquad
+\omega_Z:=\frac{Z_0}{D_0},
+\qquad
+D_0=K-B_0-Z_0.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part05-Xiload-selfsimilarity}
+\Xi_{\rm load}
+=
+(\delta_N-\delta_K)
++\omega_B(\delta_B-\delta_K)
++\omega_Z(\delta_Z-\delta_K).
+\end{equation}
+Define the wall-referenced self-similarity defect fields
+\begin{equation}
+\label{eq:app-part05-Sigma-self-fields}
+\Sigma_\alpha^{(B)}:=2\delta\ln\!\left(\frac{c_\alpha}{\varpi_\alpha}\right)-\delta_K,
+\quad
+\Sigma_r^{(Z)}:=\delta\ln\!\left(\frac{Q_r}{\Delta_r}\right)-\delta_K,
+\quad
+\Sigma_r^{(N)}:=2\delta\ln\!\left(\frac{P_r}{\Delta_r}\right)-\delta_K.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part05-Xiload-Sigma-fields}
+\Xi_{\rm load}
+=
+\sum_r\rho_r^{(N)}\Sigma_r^{(N)}
++
+\omega_B\sum_\alpha\rho_\alpha^{(B)}\Sigma_\alpha^{(B)}
++
+\omega_Z\sum_r\rho_r^{(Z)}\Sigma_r^{(Z)}.
+\end{equation}
+Static self-similarity is the sufficient condition that all three defect families vanish.  On the even-preserving branch it implies \(\Xi_{\rm load}=0\) and hence no first-order grouped normalization defect.
+
+\subsection{Outgoing-load theorem and mixed-leg law}
+Stages 158--159 factor the port objects relative to the wall baseline.  The remaining defect is controlled by the outgoing load factor
+\begin{equation}
+\label{eq:app-part05-load-factor-Lambda}
+\Lambda_r:=\frac{P_r}{\Delta_r}.
+\end{equation}
+On conservative-shape-preserving branches the full remaining defect is carried only by the outgoing load slope relative to the wall.  Stage 159 factors that load into a mixed leg, an interference ratio, and a hybridization ratio.  In the notation of the reduced one-port block,
+\begin{equation}
+\label{eq:app-part05-load-factor-factorization}
+\frac{\Lambda_r^2}{K}
+=
+\mathcal M_r^2
+\frac{(1+\mathcal I_r)^2}{(1-\mathcal H_r)^2}.
+\end{equation}
+Consequently
+\begin{equation}
+\label{eq:app-part05-SigmaN-factorized}
+\Sigma_r^{(N)}
+=
+2\delta\ln\mathcal M_r
++
+\frac{2\mathcal I_r}{1+\mathcal I_r}\delta\ln\mathcal I_r
++
+\frac{2\mathcal H_r}{1-\mathcal H_r}\delta\ln\mathcal H_r.
+\end{equation}
+If the interference and hybridization ratios are rigid, the whole outgoing defect is the raw mixed-leg drift.  The zero-defect condition becomes the square-root mixed-leg law
+\begin{equation}
+\label{eq:app-part05-square-root-mixed-leg}
+\frac{G_W}{\Omega_W^2}\propto\sqrt K.
+\end{equation}
+This is useful because it identifies a concrete microscopic path to zero defect rather than just a cancellation among compiled coefficients.
+
+\subsection{Collapse to one scalar amplitude}
+Stage 160 applies the weak-axisymmetric signature \eqref{eq:app-part05-weak-axisymmetric-signature}.  Every microscopic outgoing slippage inherits the same lane pattern, so the full remaining grouped defect is one scalar amplitude:
+\begin{equation}
+\label{eq:app-part05-Xi1-definition}
+\Xi_{\rm load}^{(A)}=\epsilon\lambda_A\Xi_1.
+\end{equation}
+The same scalar is the physical outgoing-prefactor slope:
+\begin{equation}
+\label{eq:app-part05-Xi1-P1P0}
+\Xi_1=\frac{P_1}{P_0}.
+\end{equation}
+Stage 161 rewrites it portwise.  For
+\begin{equation}
+\label{eq:app-part05-port-N-static}
+N_{A,0}^{(r)}=\frac{P_{A,r}^2}{\Delta_{A,r}^2},
+\end{equation}
+define the port slope \(\nu_r\) by
+\begin{equation}
+\label{eq:app-part05-nu-r-def}
+\delta\ln N_{A,0}^{(r)}=\epsilon\lambda_A\nu_r.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part05-Xi1-port-coloading}
+\Xi_1=\bar\nu_N-\kappa_1,
+\end{equation}
+where \(\kappa_1\) is the wall-baseline static slope and \(\bar\nu_N\) is the outgoing-weighted average.  Thus zero defect is exact co-loading of outgoing transfer with the wall baseline.
+
+Stages 162--163 put the same statement into transfer-shape language.  Each port factors as
+\begin{equation}
+\label{eq:app-part05-port-transfer-shape}
+N_{A,0}^{(r)}=K_A\mathcal T_{A,r}^2,
+\qquad
+\mathcal T_{A,r}
+=
+\frac{\widehat G_{W,A,r}+\widehat R_{A,r}\widehat G_{U,A,r}}{1-\widehat R_{A,r}^2}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-part05-Xi1-transfer-shape-sum}
+\Xi_1=2\sum_r\rho_r^{(N)}\tau_r,
+\qquad
+\tau_r:=\frac{\delta\ln\mathcal T_{A,r}}{\epsilon\lambda_A}.
+\end{equation}
+Equivalently, all ports collapse to one effective transfer shape,
+\begin{equation}
+\label{eq:app-part05-Teff-def}
+\mathcal T_{{\rm eff},A}^2
+:=
+\sum_r\mathcal T_{A,r}^2
+=
+\frac{N_{A,0}}{K_A},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part05-Xi1-Teff}
+\Xi_1
+=
+\frac{\delta\ln\mathcal T_{{\rm eff},A}^2}{\epsilon\lambda_A}.
+\end{equation}
+On the actual minimal one-port continuum branch,
+\begin{equation}
+\label{eq:app-part05-T-one-port-continuum}
+\mathcal T_A^2
+=
+\frac{Z_{W,A}(1+\rho_A)^2}{\Omega_{W,A}^2(1-\epsilon_{W,A})^2}
+=
+\frac{27\pi^2Gc_s^5}{20a^5c^5}
+\frac{1-\epsilon_{\eta,A}}{R_{{\rm target},A}}.
+\end{equation}
+So the remaining theorem gate is to determine whether the actual weak-axisymmetric branch keeps \(\mathcal T_{{\rm eff}}\) rigid.
+
+\claimstatus{Stages 157--163 are \StatusExactClosure{} inside the weak-axisymmetric grouped bundle and the declared outgoing-port factorization.  The square-root mixed-leg law is a sufficient zero-defect branch condition under interference/hybridization rigidity; actual realization is not assumed.}
+
+\section{Coherent-kernel slippages}
+\label{sec:app-part05_weak_axisymmetric_orbit:coherent-kernel-slippages}
+
+\subsection{Actual coherent local D/N branch}
+Stage 164 inserts the coherent local D/N tracking branch into \eqref{eq:app-part05-T-one-port-continuum}.  On that branch,
+\begin{equation}
+\label{eq:app-part05-coherent-T}
+\mathcal T^2
+=
+\frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+=
+\frac{27\pi^2Gc_s^5}{20a^5c^5}\frac{1-\epsilon_\eta}{R_{\rm target}},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part05-epsilon-split}
+\epsilon
+=
+\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+\end{equation}
+The weak-axisymmetric defect is
+\begin{equation}
+\label{eq:app-part05-Xi1-coherent-physical}
+\Xi_1
+=
+\zeta_Z-\omega_W
++
+\frac{2\chi_1}{1+\chi_0}
++
+\frac{2\epsilon_1}{1-\epsilon},
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part05-epsilon1-coherent}
+\epsilon_1
+=
+\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+-
+\frac{2\epsilon_W}{11(1+\delta_U)^2}\delta_{U,1}.
+\end{equation}
+The support enhancement ratio \(\zeta\) drops out identically:
+\begin{equation}
+\label{eq:app-part05-support-blindness}
+\partial_\zeta\ln\mathcal T^2=0,
+\qquad
+\partial_\zeta\ln R_{\rm target}=0,
+\qquad
+\partial_\zeta\Xi_1=0.
+\end{equation}
+Thus coherent support can help the steady normalization load, but it cannot repair the weak-axisymmetric prefactor slope at first order.
+
+\subsection{Microscopic slippage decomposition}
+Stage 165 pushes \eqref{eq:app-part05-Xi1-coherent-physical} down to microscopic coherent-kernel slippages.  The direct grouped defect depends on four slippages,
+\begin{equation}
+\label{eq:app-part05-slippage-four}
+\Sigma_Z,
+\qquad
+\Sigma_\chi,
+\qquad
+\Sigma_\epsilon,
+\qquad
+\Sigma_\delta,
+\end{equation}
+and selected-branch dressing introduces one more,
+\begin{equation}
+\label{eq:app-part05-slippage-eta}
+\Sigma_\eta.
+\end{equation}
+The direct defect law is
+\begin{equation}
+\label{eq:app-part05-Xi1-slippage-law}
+\Xi_1
+=
+\Sigma_Z
++
+\frac{2\chi_0}{1+\chi_0}\Sigma_\chi
++
+\frac{2\epsilon_W}{1-\epsilon}
+\left[
+\frac{11+9\delta_U}{11(1+\delta_U)}\Sigma_\epsilon
+-
+\frac{2\delta_U}{11(1+\delta_U)^2}\Sigma_\delta
+\right].
+\end{equation}
+The tracking drift is the special combination
+\begin{equation}
+\label{eq:app-part05-Sigma-tr-def}
+\Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi,
+\end{equation}
+which controls the tracking observable
+\begin{equation}
+\label{eq:app-part05-Theta-Sigma-tr}
+\Theta_1
+=
+-
+\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}
+\Sigma_{\rm tr}.
+\end{equation}
+So exact tracking rigidity means \(\Sigma_{\rm tr}=0\), but that alone does not generally force \(\Xi_1=0\); a genuine nontracking transfer-shape slippage can remain.
+
+\claimstatus{Stages 164--165 are \StatusExactClosure{} for the coherent local D/N tracking branch.  The support-blindness statement is exact inside that branch; it does not assert that support is irrelevant to all other branch tests.}
+
+\section{Triangular normal form}
+\label{sec:app-part05_weak_axisymmetric_orbit:triangular-normal-form}
+
+\subsection{Normal-form coordinates}
+Stage 166 packages the five slippages into three branch-adapted coordinates.  The nontracking transfer-shape slippage is defined by
+\begin{equation}
+\label{eq:app-part05-Sigma-nt-def}
+\begin{aligned}
+\Sigma_{\rm nt}:={}&
+\Sigma_Z
++
+\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\Sigma_\epsilon \\
+&-
+\left[
+\frac{2\chi_0}{1+\delta_U}
++
+\frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+\right]\Sigma_\delta.
+\end{aligned}
+\end{equation}
+The three branch-adapted coordinates are therefore
+\begin{equation}
+\label{eq:app-part05-normal-form-coordinates}
+(\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta).
+\end{equation}
+In these coordinates the observable drifts have the exact triangular form
+\begin{equation}
+\label{eq:app-part05-triangular-normal-form}
+\Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta,
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part05-Ctr-Atr-defs}
+C_{\rm tr}
+=
+\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)},
+\qquad
+A_{\rm tr}
+=
+\frac{2\chi_0}{(1+\chi_0)(1+\delta_U)}.
+\end{equation}
+This is the first exact three-scalar normal form of the weak-axisymmetric coherent branch.
+
+\subsection{Inversion and interpretation}
+The triangular structure makes the three physical failure modes transparent.
+\begin{enumerate}[leftmargin=2.2em]
+  \item \(\Sigma_{\rm tr}\) is tracking failure.  It is measured directly by \(\Theta_1\).
+  \item \(\Sigma_{\rm nt}\) is nontracking transfer-shape failure.  It is the residual part of \(\Xi_1\) after subtracting tracking feed-through.
+  \item \(\Sigma_\eta\) is dressing failure.  It measures the mismatch between direct transfer-shape drift and selected-branch demand through \(\mathcal R_1+\Xi_1\).
+\end{enumerate}
+Zero defect in this normal form is
+\begin{equation}
+\label{eq:app-part05-zero-normal-form}
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0.
+\end{equation}
+
+\subsection{Branch-observable coordinates}
+Stage 167 identifies exact branch composites whose logarithmic drifts are the same three coordinates.  The tracking factor is
+\begin{equation}
+\label{eq:app-part05-Rtr-def}
+R_{\rm tr}
+=
+\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0}
+=
+\frac{1+\chi_0+\delta_U}{(1+\chi_0)(1+\delta_U)}.
+\end{equation}
+The corrected nontracking composite is
+\begin{equation}
+\label{eq:app-part05-Nstar-def}
+\mathfrak N_*:=\mathcal T^2R_{\rm tr}^{B_*},
+\qquad
+B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
+\end{equation}
+After a harmless positive normalization of the tracking factor,
+\begin{equation}
+\label{eq:app-part05-Tstar-def}
+\mathfrak T_*:=R_{\rm tr}^{-C_*},
+\qquad
+C_*:=\frac{(1+\chi_{0,*})(1+\delta_{U,*})(1+\chi_{0,*}+\delta_{U,*})}{\chi_{0,*}\delta_{U,*}},
+\end{equation}
+the branch-coordinate laws are
+\begin{equation}
+\label{eq:app-part05-branch-coordinate-laws}
+\delta\ln\mathfrak T_* = \Sigma_{\rm tr},
+\qquad
+\delta\ln\mathfrak N_* = \Sigma_{\rm nt},
+\qquad
+\delta\ln\epsilon_\eta=\Sigma_\eta.
+\end{equation}
+So the next continuation point is no longer a list of microscopic slippages; it is drift of three exact branch composites.
+
+\claimstatus{Stages 166--167 are \StatusExactClosure{} inside the coherent local D/N branch.  The normal form is a compiler from reduced coherent variables to observables; it does not assert that the completed PDE has zero coordinates.}
+
+\section{Microscopic monomial invariants}
+\label{sec:app-part05_weak_axisymmetric_orbit:microscopic-monomial-invariants}
+
+\subsection{Direct monomial coordinates}
+Stage 168 pushes the three branch composites to direct microscopic monomials.  At reference-branch order,
+\begin{equation}
+\label{eq:app-part05-monomial-drift-laws}
+\delta\ln\mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
+\qquad
+\delta\ln\mathfrak C_{{\rm nt},*}=\Sigma_{\rm nt},
+\qquad
+\delta\ln\epsilon_\eta=\Sigma_\eta.
+\end{equation}
+The tracking monomial is
+\begin{equation}
+\label{eq:app-part05-Ctr-monomial-simple}
+\mathfrak C_{{\rm tr},*}
+:=
+\chi_0^{1+\delta_{U,*}}\delta_U^{1+\chi_{0,*}},
+\end{equation}
+and the nontracking monomial is
+\begin{equation}
+\label{eq:app-part05-Cnt-monomial-simple}
+\mathfrak C_{{\rm nt},*}
+:=
+\frac{Z_W}{\Omega_W^2}\epsilon_W^{E_*}\delta_U^{-F_*},
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part05-EF-defs}
+E_*=
+\frac{2\epsilon_{W,*}}{1-\epsilon_*}\frac{11+9\delta_{U,*}}{11(1+\delta_{U,*})},
+\qquad
+F_*=
+\frac{2\chi_{0,*}}{1+\delta_{U,*}}
++
+\frac{4\epsilon_{W,*}\delta_{U,*}}{11(1-\epsilon_*)(1+\delta_{U,*})^2}.
+\end{equation}
+Using the coherent definitions, these become direct microscopic monomials in the positive variables
+\begin{equation}
+\label{eq:app-part05-micro-state-vector}
+\mathbf x
+=
+(\lambda_W,
+ c_{\eta U},
+ \gamma,
+ K_U,
+ K_\eta^{({\rm eff})},
+ K_W^{({\rm eff})},
+ \mu_W,
+ T_U).
+\end{equation}
+Explicitly,
+\begin{equation}
+\label{eq:app-part05-Ctr-micro}
+\mathfrak C_{{\rm tr},*}
+=
+\left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-Cnt-micro}
+\mathfrak C_{{\rm nt},*}
+=
+\left(\frac{\lambda_W^2\mu_W}{K_\eta^{({\rm eff})}(K_W^{({\rm eff})})^2}\right)
+\left(\frac{\gamma^2\lambda_W^2\sigma}{K_UK_W^{({\rm eff})}}\right)^{E_*}
+\left(\frac{\pi^2T_U}{L^2K_U}\right)^{-F_*},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part05-epsilon-eta-monomial}
+\epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{({\rm eff})}}.
+\end{equation}
+
+\subsection{Linear monomial-drift map}
+Introduce the grouped weak-axisymmetric logarithmic drift vector
+\begin{equation}
+\label{eq:app-part05-drift-vector}
+\delta\mathbf x
+=
+\begin{pmatrix}
+\lambda_1\\ c_1\\ \gamma_1\\ \kappa_U\\ \kappa_\eta\\ \kappa_W\\ \mu_1\\ \tau_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+\delta\ln\lambda_W\\
+\delta\ln c_{\eta U}\\
+\delta\ln\gamma\\
+\delta\ln K_U\\
+\delta\ln K_\eta^{({\rm eff})}\\
+\delta\ln K_W^{({\rm eff})}\\
+\delta\ln\mu_W\\
+\delta\ln T_U
+\end{pmatrix}_{\rm grp}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part05-Mstar-drift-map}
+\begin{pmatrix}
+\delta\ln\mathfrak C_{{\rm tr},*}\\[2pt]
+\delta\ln\mathfrak C_{{\rm nt},*}\\[2pt]
+\delta\ln\epsilon_\eta
+\end{pmatrix}
+=
+M_*\delta\mathbf x,
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part05-Mstar-matrix}
+M_*=
+\begin{pmatrix}
+0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+2(1+E_*) & 0 & 2E_* & F_*-E_* & -1 & -(2+E_*) & 1 & -F_*\\[4pt]
+0 & 2 & 0 & -1 & -1 & 0 & 0 & 0
+\end{pmatrix}.
+\end{equation}
+A convenient dependent minor has determinant
+\begin{equation}
+\label{eq:app-part05-Mstar-minor}
+\det M_*^{(\tau,\kappa_\eta,\mu_1)}=1+\chi_{0,*}>0.
+\end{equation}
+Therefore \(M_*\) has rank three and a five-dimensional kernel.  The zero-defect condition is
+\begin{equation}
+\label{eq:app-part05-zero-defect-Mstar}
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+M_*\delta\mathbf x=0.
+\end{equation}
+
+\claimstatus{Stage 168 is \StatusExactClosure{} in the reference coherent branch.  The monomial exponents are fixed by the branch normal form, and \(M_*\) is an exact exponent matrix.}
+
+\section{Similarity-orbit theorem}
+\label{sec:app-part05_weak_axisymmetric_orbit:similarity-orbit-theorem}
+
+\subsection{Finite similarity family}
+Stage 169 integrates the tangent kernel of \(M_*\) to a finite five-parameter similarity family.  Let
+\begin{equation}
+\label{eq:app-part05-free-log-scalings}
+(\Lambda,C,\Gamma,U,W)
+\end{equation}
+be free logarithmic co-scalings of
+\((\lambda_W,c_{\eta U},\gamma,K_U,K_W^{({\rm eff})})\).  Monomial preservation fixes the dependent scalings:
+\begin{equation}
+\label{eq:app-part05-Keta-orbit-law}
+K_\eta^{({\rm eff})}\mapsto e^{2C-U}K_\eta^{({\rm eff})},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-TU-orbit-law}
+T_U\mapsto
+\exp\!\left[
+U-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Gamma+C-U)
+\right]T_U,
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-muW-orbit-law}
+\mu_W\mapsto e^{M(\Lambda,C,\Gamma,U,W)}\mu_W,
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part05-M-exponent-orbit-law}
+\begin{aligned}
+M(\Lambda,C,\Gamma,U,W)={}&
+2C-U+2W-2\Lambda
+-E_*(2\Gamma+2\Lambda-U-W)\\
+&-F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Gamma+C-U).
+\end{aligned}
+\end{equation}
+Call this family \(\mathcal G_*\).  It preserves \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\) exactly.
+
+\subsection{Orbit--quotient closure}
+Stage 170 proves the converse.  On the positive microscopic state space
+\begin{equation}
+\label{eq:app-part05-positive-state-space}
+\mathcal M_+
+=
+\{(\lambda_W,c_{\eta U},\gamma,K_U,K_\eta^{({\rm eff})},K_W^{({\rm eff})},\mu_W,T_U)>0\},
+\end{equation}
+define
+\begin{equation}
+\label{eq:app-part05-invariant-map}
+\mathcal I(x)
+=
+(\mathfrak C_{{\rm tr},*}(x),\mathfrak C_{{\rm nt},*}(x),\epsilon_\eta(x)).
+\end{equation}
+For two positive states \(x,\widetilde x\), equality of the three invariants is exactly
+\begin{equation}
+\label{eq:app-part05-finite-fibre-equations}
+M_*\Delta\mathbf x=0,
+\qquad
+\Delta\mathbf x:=\ln(\widetilde x/x).
+\end{equation}
+Solving these finite equations gives precisely the dependent transformations \eqref{eq:app-part05-Keta-orbit-law}--\eqref{eq:app-part05-muW-orbit-law}.  Hence
+\begin{equation}
+\label{eq:app-part05-orbit-fibre-theorem}
+\mathcal I(\widetilde x)=\mathcal I(x)
+\iff
+\widetilde x\in\mathcal G_*\cdot x.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-part05-quotient-space}
+\mathcal M_+/\mathcal G_*
+\cong
+(\mathbb R_{>0})^3,
+\end{equation}
+with quotient coordinates \eqref{eq:app-part05-intro-quotient-coordinates}.  The first grouped weak-axisymmetric observables are the infinitesimal motion in these quotient coordinates:
+\begin{equation}
+\label{eq:app-part05-observables-quotient}
+\Theta_1=-C_{\rm tr}\delta\ln\mathfrak C_{{\rm tr},*},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-Xi-quotient}
+\Xi_1=A_{\rm tr}\delta\ln\mathfrak C_{{\rm tr},*}+\delta\ln\mathfrak C_{{\rm nt},*},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-R-quotient}
+\mathcal R_1+\Xi_1
+=-\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\delta\ln\epsilon_\eta.
+\end{equation}
+
+\subsection{Projector calculus}
+Stages 174--175 then turn the quotient coordinates into an exact finite packet and an exact microscopic projector split.  With the finite log-ratio vector ordered as
+\begin{equation}
+\label{eq:app-part05-finite-log-ratio-vector}
+\Delta\mathbf x
+=
+(\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T,
+\end{equation}
+the quotient packet is
+\begin{equation}
+\label{eq:app-part05-q-packet}
+\mathbf q
+=
+(q_{\rm tr},q_{\rm nt},q_\eta)^T
+=M_*\Delta\mathbf x.
+\end{equation}
+Choosing the dependent triple \((T_U,K_\eta^{({\rm eff})},\mu_W)\), the exact pivot block is
+\begin{equation}
+\label{eq:app-part05-pivot-block}
+P_{(T,K_\eta,\mu)}
+=
+\begin{pmatrix}
+1+\chi_{0,*} & 0 & 0\\[4pt]
+-F_* & -1 & 1\\[4pt]
+0 & -1 & 0
+\end{pmatrix},
+\qquad
+\det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+\end{equation}
+The canonical section \(S_{(T,K_\eta,\mu)}\) is the right inverse satisfying \(M_*S_{(T,K_\eta,\mu)}=I_3\).  The exact projectors are
+\begin{equation}
+\label{eq:app-part05-projectors}
+Q_{\rm quot}:=S_{(T,K_\eta,\mu)}M_*,
+\qquad
+O_{\rm orb}:=I_8-Q_{\rm quot}.
+\end{equation}
+They obey
+\begin{equation}
+\label{eq:app-part05-projector-identities}
+Q_{\rm quot}^2=Q_{\rm quot},
+\qquad
+O_{\rm orb}^2=O_{\rm orb},
+\qquad
+M_*O_{\rm orb}=0,
+\qquad
+M_*Q_{\rm quot}=M_*.
+\end{equation}
+The quotient-failure piece is supported only on the dependent triple:
+\begin{equation}
+\label{eq:app-part05-failure-components}
+(\Delta_T)_{\rm fail}=\frac{q_{\rm tr}}{1+\chi_{0,*}},
+\qquad
+(\Delta_{K_\eta})_{\rm fail}=-q_\eta,
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-failure-mu-component}
+(\Delta_\mu)_{\rm fail}
+=
+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-part05-orbit-lock-projector}
+\mathbf q=0
+\iff
+M_*\Delta\mathbf x=0
+\iff
+Q_{\rm quot}\Delta\mathbf x=0
+\iff
+\Delta\mathbf x\in\ker M_*.
+\end{equation}
+
+\claimstatus{Stages 169--175 are \StatusExactClosure{} for the positive coherent reduced state space.  The word ``orbit'' here means a finite reduced monomial-preserving similarity class, not a fundamental gauge symmetry of the unreduced parent PDE.}
+
+\section{Four-scalar packet \texorpdfstring{\((\Delta_{\rm full})\)}{(Deltafull)}}
+\label{sec:app-part05_weak_axisymmetric_orbit:four-scalar-packet-delta-m-full}
+
+\subsection{Packet A: conservative target and outgoing finish line}
+Stages 176--180 sharpen the branch-side Packet A.  Start from the Stage-174 branch residual
+\begin{equation}
+\label{eq:app-part05-Delta-branch-full}
+\Delta_{\rm branch}
+=
+(a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+\end{equation}
+Stage 176 freezes the conservative target surface
+\begin{equation}
+\label{eq:app-part05-conservative-target-surface}
+a_2=b_2=a_4=b_4=0,
+\qquad
+\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}=0.
+\end{equation}
+On the isotropic branch this is equivalent to
+\begin{equation}
+\label{eq:app-part05-one-pole-surface-D}
+D_0D_4+3D_2^2=0,
+\end{equation}
+or, in bundle variables,
+\begin{equation}
+\label{eq:app-part05-one-pole-surface-bundle}
+D_0(B_4+Z_4)=3(M+B_2+Z_2)^2.
+\end{equation}
+The resulting conservative carrier is
+\begin{equation}
+\label{eq:app-part05-conservative-one-pole-module}
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\end{equation}
+Stage 176 also proves the scalar/geometry firewall: if weak anisotropy induces the first \(l=0\leftrightarrow l=2\) mixing, then Schur completion gives
+\begin{equation}
+\label{eq:app-part05-geometry-firewall-schur}
+\mathcal D_{2,{\rm eff}}(\omega,\chi)
+=
+\mathcal D_2(\omega)I_3
+-
+\chi^2 C(\omega)\mathcal D_0(\omega)^{-1}C(\omega)^T,
+\end{equation}
+so
+\begin{equation}
+\label{eq:app-part05-geometry-firewall-result}
+\partial_\chi\mathcal D_{2,{\rm eff}}(\omega,\chi)|_{\chi=0}=0.
+\end{equation}
+The scalar/geometry lane cannot linearly contaminate the grouped \(l=2\) conservative carrier.
+
+Stage 177 attaches the outgoing \(l=2\) DtN fingerprint.  With
+\begin{equation}
+\label{eq:app-part05-z-def}
+z:=\frac{a\omega}{c_s},
+\end{equation}
+the exact outgoing operator is
+\begin{equation}
+\label{eq:app-part05-Lambda-out}
+\Lambda_2^{\rm out}(z)
+=
+z\frac{d}{dz}\ln h_2^{(1)}(z),
+\end{equation}
+with normalized response
+\begin{equation}
+\label{eq:app-part05-Y2-out-fingerprint}
+\widehat Y_2^{\rm out}(z)
+=
+1+\frac{z^2}{9}+\frac{4z^4}{81}+i\frac{z^5}{27}+O(z^6).
+\end{equation}
+Matching this to the retarded grouped module fixes
+\begin{equation}
+\label{eq:app-part05-chiQ-canonical}
+\chi_Q=1
+\end{equation}
+on the canonical compact passive/outgoing branch.  More generally, for the isotropic deformation
+\begin{equation}
+\label{eq:app-part05-DtN-deformation}
+\Lambda_2^{\rm def}(z)
+=
+S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5+O(z^6),
+\end{equation}
+canonical even matching forces \(\Sigma_2\) and \(\Sigma_4\), while the outgoing scalar is
+\begin{equation}
+\label{eq:app-part05-chiQ-deformation}
+\chi_Q
+=
+\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0},
+\qquad
+\chi_Q-1=
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
+\end{equation}
+Thus the only isotropic DtN data that can move \(\chi_Q\), while preserving the canonical even moments, are \(\beta\), \(\Sigma_0\), and \(\Sigma_5\).
+
+Stage 178 factorizes the observable odd closure:
+\begin{equation}
+\label{eq:app-part05-source-outgoing-factorization}
+\widehat m_0^{\,2}\chi_QN_Q=1.
+\end{equation}
+On the natural point-particle source map,
+\begin{equation}
+\label{eq:app-part05-natural-source-map}
+\widehat m_0\to1,
+\qquad
+N_Q=\chi_Q^{-1}.
+\end{equation}
+Stage 179 proves that additional isotropic retarded tails beginning at \(O(\omega^7)\) do not alter any coefficient through the point-particle \(2.5\)PN order.  Stage 180 therefore gives the exact Packet-A finish line
+\begin{equation}
+\label{eq:app-part05-packetA-finish-line}
+\Delta_{\rm branch}=0
+\iff
+\chi_Q=1
+\iff
+\Delta_Q:=\chi_Q-1=0.
+\end{equation}
+
+\subsection{Packet B: finite and pairwise orbit lock}
+Stages 181--182 complete the orbit side.  With the same positive microscopic state vector \eqref{eq:app-part05-micro-state-vector}, keep the free coordinates
+\begin{equation}
+\label{eq:app-part05-free-coords}
+(\lambda_W,c_{\eta U},\gamma,K_U,K_W^{({\rm eff})})
+\end{equation}
+and the dependent triple
+\begin{equation}
+\label{eq:app-part05-dependent-triple}
+(T_U,K_\eta^{({\rm eff})},\mu_W).
+\end{equation}
+For a fixed invariant triple \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_{\eta,*})\), Stage 181 solves the exact dependent orbit law and defines mismatch ratios
+\begin{equation}
+\label{eq:app-part05-mismatch-triple}
+(m_T,m_K,m_\mu).
+\end{equation}
+The logarithmic quotient chart is
+\begin{equation}
+\label{eq:app-part05-log-chart-mismatches}
+q_{\rm tr}=(1+\chi_{0,*})\ln m_T,
+\qquad
+q_\eta=-\ln m_K,
+\qquad
+q_{\rm nt}=\ln m_\mu-\ln m_K-F_*\ln m_T.
+\end{equation}
+Orbit lock is
+\begin{equation}
+\label{eq:app-part05-single-orbit-lock}
+\Delta_{\rm orbit}=0
+\iff
+m_T=m_K=m_\mu=1
+\iff
+q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+\end{equation}
+
+Stage 182 removes reference-point privilege.  For two states \(x^{(1)},x^{(2)}\), define
+\begin{equation}
+\label{eq:app-part05-pairwise-q}
+\Delta_{\rm orbit}^{(2\leftarrow1)}
+=
+(q_{\rm tr}^{(2\leftarrow1)},q_{\rm nt}^{(2\leftarrow1)},q_\eta^{(2\leftarrow1)}).
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part05-two-point-orbit-lock}
+x^{(2)}\in\mathcal G_*\cdot x^{(1)}
+\iff
+q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
+\end{equation}
+The packet is an exact additive two-point cocycle, while the multiplicative mismatch and invariant-ratio packets obey the corresponding multiplicative cocycle laws.  Thus Packet B can be attached to an orbit rather than to a selected representative.
+
+\subsection{Reference-free full verdict packet}
+Let
+\begin{equation}
+\label{eq:app-part05-target-orbit}
+\mathcal O_*:=\mathcal G_*\cdot x_*
+\end{equation}
+be the target similarity orbit.  Stage 183 defines the additive full packet
+\begin{equation}
+\label{eq:app-part05-full-packet-additive}
+\Delta_{\rm full}^{(x\mid\mathcal O_*)}
+:=
+\left(
+\Delta_Q(x),
+q_{\rm tr}^{(x\leftarrow\mathcal O_*)},
+q_{\rm nt}^{(x\leftarrow\mathcal O_*)},
+q_\eta^{(x\leftarrow\mathcal O_*)}
+\right),
+\qquad
+\Delta_Q(x):=\chi_Q(x)-1.
+\end{equation}
+The multiplicative form is
+\begin{equation}
+\label{eq:app-part05-full-packet-multiplicative}
+\mathcal V_{\rm full}^{(x\mid\mathcal O_*)}
+:=
+\left(
+\chi_Q(x),
+\mathfrak R_{\rm tr}^{(x\leftarrow\mathcal O_*)},
+\mathfrak R_{\rm nt}^{(x\leftarrow\mathcal O_*)},
+\mathfrak R_\eta^{(x\leftarrow\mathcal O_*)}
+\right),
+\end{equation}
+and the mismatch form is
+\begin{equation}
+\label{eq:app-part05-full-packet-mismatch}
+\mathcal M_{\rm full}^{(x\mid\mathcal O_*)}
+:=
+\left(
+\chi_Q(x),
+ m_T^{(x\leftarrow\mathcal O_*)},
+ m_K^{(x\leftarrow\mathcal O_*)},
+ m_\mu^{(x\leftarrow\mathcal O_*)}
+\right).
+\end{equation}
+The exact chart conversions are
+\begin{equation}
+\label{eq:app-part05-chart-conversions-1}
+\mathfrak R_{\rm tr}=e^{q_{\rm tr}}=(m_T)^{1+\chi_{0,*}},
+\qquad
+\mathfrak R_\eta=e^{q_\eta}=\frac{1}{m_K},
+\end{equation}
+\begin{equation}
+\label{eq:app-part05-chart-conversions-2}
+\mathfrak R_{\rm nt}=e^{q_{\rm nt}}=\frac{m_\mu}{m_Km_T^{F_*}}.
+\end{equation}
+Therefore the additive, multiplicative, and mismatch packets are exact reparameterizations of the same verdict.
+
+The final reference-free theorem is
+\begin{equation}
+\label{eq:app-part05-reference-free-home-stretch}
+\Delta_{\rm full}^{(x\mid\mathcal O_*)}=0
+\iff
+\Delta_{\rm branch}(x)=0
+\text{ and }
+x\in\mathcal O_*.
+\end{equation}
+Using the sharpened Packet-A and Packet-B forms, this is equivalently
+\begin{equation}
+\label{eq:app-part05-reference-free-expanded}
+\Delta_{\rm full}^{(x\mid\mathcal O_*)}=0
+\iff
+\chi_Q(x)=1,
+\qquad
+q_{\rm tr}^{(x\leftarrow\mathcal O_*)}=q_{\rm nt}^{(x\leftarrow\mathcal O_*)}=q_\eta^{(x\leftarrow\mathcal O_*)}=0.
+\end{equation}
+This is the endpoint of Part V.  The reduced compiler algebra is finished; what remains is branch realization of the four scalar conditions.
+
+\claimstatus{Stages 176--183 are \StatusExactClosure{} once the Packet-A isotropic grouped one-pole front end, the natural point-particle source-map reduction, and the coherent orbit quotient hierarchy are adopted.  The actual PDE may still fail any of the four final scalar conditions.  That failure would be a realization failure, not an algebraic incompleteness of the ledger.}
+
+\section{Verification outputs and downstream use}
+\label{sec:app-part05-verification-outputs}
+
+The usable downstream citation packet from this appendix is as follows.
+\begin{enumerate}[leftmargin=2.2em]
+\item \resultanchor{MTDC-T9.1}: cite for the lower-branch drift laws, tangent-compensation theorem, weak-axisymmetric grouped signature, direct outlet map, hidden-even relation, and the loading mismatch \(\Xi_{\rm load}=N_{01}/N_0-D_{01}/D_0\).
+\item \resultanchor{MTDC-T9.2}: cite for the static self-similarity theorem, wall-normalized outgoing-load theorem, square-root mixed-leg law, port co-loading theorem, effective transfer-shape collapse, and coherent support-blindness.
+\item \resultanchor{MTDC-T9.3}: cite for the microscopic slippage decomposition, triangular normal form, branch-invariant monomials, rank-three drift map, similarity orbit \(\mathcal G_*\), and finite orbit--quotient closure.
+\item \resultanchor{MTDC-T9.4}: cite for the branch-observable compiler, transfer-shape/outgoing-prefactor compiler, scalar no-go filters, minimal Packet A/Packet B data, and two-packet home-stretch theorem.
+\item \resultanchor{MTDC-T9.5}: cite for the exact orbit/quotient projectors, isotropic grouped target surface, outgoing \(l=2\) DtN fingerprint, source-map reduction, higher-odd irrelevance, and Packet-A closure \(\Delta_{\rm branch}=0\iff\chi_Q=1\).
+\item \resultanchor{MTDC-T9.6}: cite for the finite orbit law, pairwise orbit transport, orbit-representative independence, and final four-scalar verdict packet \(\Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\).
+\end{enumerate}
+
+\begin{verificationchecklist}
+\item The off-family scalar \(\delta_\perp\) is used only as the first post-Part-IV normal coordinate; after tangent compensation, first-order isotropic bundle drift is not counted as an independent failure mode.
+\item The lower compensated Family--1 drift laws are applied only under the D/N tube selection, healing-lock shell closure, and frozen \(n=5\) wall-EOS reduction.
+\item The four-bundle inversion through \((\Theta_w,K_s,K_q,P_0)\) is kept distinct from a direct microscopic PDE solve; it is an algebraic compiler once those observables are known.
+\item The weak-axisymmetric signature \((1,1/2,-1)\) is not confused with arbitrary grouped anisotropy.  It fixes the line \(b=3a\).
+\item The no-feed-down result is first order only: grouped real \(P_2\) anisotropy can enter scalar ledgers through quadratic grouped invariants.
+\item The even-preserving branch is invoked before reducing the linear grouped problem to \(\Xi_{\rm load}\).
+\item Static self-similarity is stated in wall-referenced variables.  Frozen port shapes do not by themselves imply zero outgoing defect when the wall baseline moves.
+\item The square-root mixed-leg law is a reduced sufficient condition under interference/hybridization rigidity, not an unconditional PDE theorem.
+\item The scalar \(\Xi_1=P_1/P_0\) is the physical outgoing-prefactor slope and effective transfer-shape slope; it is not introduced as a fit parameter.
+\item Coherent support-blindness applies to the direct transfer-shape defect, not to all support-dependent selected-branch quantities.
+\item The triangular normal form is used with branch-adapted variables \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\); raw microscopic slopes require the stated compiler before interpretation.
+\item The monomial coordinates \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\) are exact quotient coordinates of the reduced coherent hierarchy, not fundamental gauge invariants of the unsolved parent PDE.
+\item The similarity orbit \(\mathcal G_*\) identifies reduced co-scaling fibres in the positive microscopic state space \(\mathcal M_+\); branch realization still has to be checked against the actual PDE output.
+\item Packet A and Packet B are kept separate until the Stage-183 theorem: Packet A is the branch-side outgoing scalar; Packet B is the orbit-side quotient triple.
+\item The equivalence \(N_Q=\chi_Q^{-1}\) is tied to the natural source-map reduction.  It should not be used when the source-map factor \(m_{\hat0}\) is still nontrivial.
+\item Higher odd retarded terms are irrelevant only to the reduced point-particle \(2.5\)PN finish line; later higher-order retarded diagnostics may need them.
+\item The final verdict \(\Delta_{\rm full}=0\) is an exact reduced compiler condition.  It is not an assertion that the completed moving-throat PDE has already realized the condition.
+\end{verificationchecklist}
+
+Future papers should cite Part V when replacing a long weak-axisymmetric or retarded endgame by the compact packet \((\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\).  They should separately state whether the actual branch has returned \(\Delta_Q=0\) and \((q_{\rm tr},q_{\rm nt},q_\eta)=(0,0,0)\), or whether those realization conditions remain open.
+
+\begingroup
+\let\clearpage\relax
+\clearpage
+\section{Stage-by-stage verification cards}
+\label{sec:app-part05-stage-cards}
+
+The preceding sections collect the derivation by audit path.  The following cards restore the original stage order for Stages 147--183.  Each card records the source stage, local status, imported assumptions, primary output, verification checks, and downstream use.  The cards are intentionally compact: long algebraic identities are not repeated when they already appear in the audit-path sections above.
+
+
+\paragraph{Source layout.}
+Stages~147--183 are now sourced from the canonical files \StageFile{stages/stage_147.tex} through \StageFile{stages/stage_183.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+
+\input{stages/stage_147}
+\clearpage
+\input{stages/stage_148}
+\clearpage
+\input{stages/stage_149}
+\clearpage
+\input{stages/stage_150}
+\clearpage
+\input{stages/stage_151}
+\clearpage
+\input{stages/stage_152}
+\clearpage
+\input{stages/stage_153}
+\clearpage
+\input{stages/stage_154}
+\clearpage
+\input{stages/stage_155}
+\clearpage
+\input{stages/stage_156}
+\clearpage
+\input{stages/stage_157}
+\clearpage
+\input{stages/stage_158}
+\clearpage
+\input{stages/stage_159}
+\clearpage
+\input{stages/stage_160}
+\clearpage
+\input{stages/stage_161}
+\clearpage
+\input{stages/stage_162}
+\clearpage
+\input{stages/stage_163}
+\clearpage
+\input{stages/stage_164}
+\clearpage
+\input{stages/stage_165}
+\clearpage
+\input{stages/stage_166}
+\clearpage
+\input{stages/stage_167}
+\clearpage
+\input{stages/stage_168}
+\clearpage
+\input{stages/stage_169}
+\clearpage
+\input{stages/stage_170}
+\clearpage
+\input{stages/stage_171}
+\clearpage
+\input{stages/stage_172}
+\clearpage
+\input{stages/stage_173}
+\clearpage
+\input{stages/stage_174}
+\clearpage
+\input{stages/stage_175}
+\clearpage
+\input{stages/stage_176}
+\clearpage
+\input{stages/stage_177}
+\clearpage
+\input{stages/stage_178}
+\clearpage
+\input{stages/stage_179}
+\clearpage
+\input{stages/stage_180}
+\clearpage
+\input{stages/stage_181}
+\clearpage
+\input{stages/stage_182}
+\clearpage
+\input{stages/stage_183}
+\endgroup

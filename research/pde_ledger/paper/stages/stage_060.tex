@@ -1,0 +1,37 @@
+\section[Stage 060]{Stage 060: Shell-Weighted Extraction of \texorpdfstring{$\Theta_w$}{Theta w} on Family--1}
+\label{stage:060}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusReduced{} / \StatusNumerical{} for the shell-weighted profile extraction.}
+\stagefield{Purpose}{Stage~060 evaluates the natural wall-density weighting and a conservative lower envelope.}
+\stagefield{Inputs}{The explicit radial wall profile and the canonical support weighting.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage060_family1_theta_extraction_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage060_family1_theta_extraction_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage060_family1_theta_extraction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage060_family1_theta_extraction_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The shell-weighted profile extraction gives
+\begin{equation}
+\label{eq:app-stage060-rho-weights}
+\langle\rho_r\rangle_\chi\simeq0.192619005556493,
+\qquad
+\langle\rho_r^2\rangle_\chi\simeq0.162745294003265.
+\end{equation}
+Using \eqref{eq:app-stage059-theta}, the natural shell-weighted datum is
+\begin{equation}
+\label{eq:app-stage060-theta-chi}
+\boxed{
+\Theta_w^{(\chi)}=25\lambda_\mu^2\langle\rho_r^2\rangle_\chi
+\simeq4.06863235008162\lambda_\mu^2}.
+\end{equation}
+The conservative lower envelope is
+\begin{equation}
+\label{eq:app-stage060-theta-J}
+\boxed{
+\Theta_w^{(J)}=25\lambda_\mu^2\langle\rho_r\rangle_\chi^2
+\simeq0.927552032539308\lambda_\mu^2}.
+\end{equation}
+
+\stagefield{Output}{Natural and conservative Family--1 wall-depth data \eqref{eq:app-stage060-theta-chi}--\eqref{eq:app-stage060-theta-J}.}
+\stagefield{Downstream use}{Stage~061 compares these against the exact threshold window.}
+

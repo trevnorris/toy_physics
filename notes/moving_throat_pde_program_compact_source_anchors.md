@@ -38,5 +38,5 @@ Use these as the canonical entry points when continuing the program.
 
 - Numerical and dual-CAS verification anchors:
   [scripts/moving_throat/numerical/output](/var/projects/toy_physics/scripts/moving_throat/numerical/output),
-  [mathematica/moving_throat/numerical/output](/var/projects/toy_physics/mathematica/moving_throat/numerical/output),
-  [mathematica/moving_throat/output/_summary.txt](/var/projects/toy_physics/mathematica/moving_throat/output/_summary.txt).
+  [research/pde_ledger/mathematica/moving_throat/numerical/output](/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat/numerical/output),
+  [research/pde_ledger/mathematica/moving_throat/output/_summary.txt](/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat/output/_summary.txt).

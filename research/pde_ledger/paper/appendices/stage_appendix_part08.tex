@@ -1,0 +1,389 @@
+\chapter{Stage Appendix: Part VIII -- Relaxed Open-System Branch, Barrier Compiler, Export Kernel, and Material Thresholds}
+\label{app:stage-part-8}
+
+\section*{Stage range: 226--236}
+\addcontentsline{toc}{section}{Stage range: 226--236}
+
+This appendix expands the Part VIII theorem-block chapter into a stage-by-stage verification ledger.  The main-body chapter states the relaxed/open-system branch in citation-ready form; the present appendix preserves the derivational path from Stage~226 through Stage~236 and records the exact algebraic objects that a reader must check to audit the branch.
+
+The result anchor served by this appendix is \resultanchor{MTDC-T12}.  Downstream documents should cite this anchor when they need the derivation of the relaxed-constraint branch declaration, the recovery map back to the strict front end, the selected leakage/work compiler, the non-rigid mouth and dressing packet, the compensated multimode source compiler, the relaxed stationary barrier law, the dynamic event-chain compiler, the helicity-export diagnostic, the crossing-versus-collapse window, the microscopic cubic/quintic export kernel, the vacuum/lattice heat partition, or the material-threshold companion.
+
+The conceptual firewall is the most important part of this appendix.  The relaxed branch does \emph{not} undo the same-charge verdict from Part VII.  It does not produce a new long-range same-charge attraction, and it does not introduce a new linear dynamic kernel class.  The relaxed branch is a codimension-three lift of the strict selected-support/orbit packet.  Its standard-recovery slice is
+\begin{equation}
+\label{eq:app-part08-intro-recovery-slice}
+\ell_w=0,
+\qquad
+f_U=0,
+\qquad
+a=b=0,
+\end{equation}
+which implies
+\begin{equation}
+\label{eq:app-part08-intro-recovery-observables}
+S_{\rm leak}=0,
+\qquad
+\mathcal W_w=0,
+\qquad
+U=0,
+\qquad
+V=0,
+\qquad
+\mathcal D_{UV}=0,
+\qquad
+\varsigma\equiv 1.
+\end{equation}
+Away from this slice, the relaxed branch can reshape a near-contact barrier by leakage, scalar-photon work, non-rigid dressing drain, and compensated source response.  Those are branch-local open-system or support/dressing/source effects.  They do not alter the long-range kernel firewall.
+
+The central stationary object of this part is the lowered front end
+\begin{equation}
+\label{eq:app-part08-intro-veff230}
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W\mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_{\sigma}(r).
+\end{equation}
+The central dynamic object is the event-chain energy law
+\begin{equation}
+\label{eq:app-part08-intro-event-energy}
+E=\frac{m_s}{2}\dot r^{\,2}+V_{\rm eff}^{(230)}(r).
+\end{equation}
+The central microscopic export object is the super-Ohmic active-leg kernel
+\begin{equation}
+\label{eq:app-part08-intro-export-kernel}
+K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5.
+\end{equation}
+The central materials companion is the four-ratio screen
+\begin{equation}
+\label{eq:app-part08-intro-material-screen}
+\Pi_{\rm ep}\ge 1,
+\qquad
+\Pi_{\chi}\ge 1,
+\qquad
+\Pi_k\ge 1,
+\qquad
+\Pi_T(T)\ge 1.
+\end{equation}
+
+\begin{longtable}{@{}L{0.075\textwidth}L{0.35\textwidth}L{0.20\textwidth}L{0.325\textwidth}@{}}
+\caption{Part VIII appendix source and status map.}\label{tab:app-part08-source-status-map}\\
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Working title & Primary status & Main output \\
+\midrule
+\endhead
+226 & Relaxed-constraint branch declaration & Mixed: \StatusEffective{}, \StatusExactClosure{} & Codimension-three lift of the Stage-225 front end, exact recovery map \((\ell_w,f_U,a,b)=(0,0,0,0)\), leakage/work lane, non-rigid \((U,V)\) lane, compensated source lane, and strict short-range kernel-span theorem. \\
+\addlinespace
+227 & Selected leakage and scalar-photon work compiler & \StatusExactClosure{} & Exact Gaussian one-mode leakage law, exact bulk and session work scalars, selected-support pullback through \(\Pi_{\rm tr}\), support/orbit split, and orientation parity. \\
+\addlinespace
+228 & Non-rigid mouth and \(U/V\) drain packet & \StatusExactClosure{} & Exact finite compiler for \(\mathcal T^2\), \(\epsilon_\eta\), and \(R_{\rm target}\); non-rigid determinant \(\Delta_{UV}\); dependent microscopic correction; positive \(U/V\) drain; and first-order packet \((\Xi_1,\mathcal R_1)\). \\
+\addlinespace
+229 & Compensated multimode source compiler & \StatusExactClosure{} & Mean-preserving two-mode source family, exact sign-change test, mouth-bias and shell-loading moments, invertible two-moment source map, mixed-to-shell loading ratio, and transported Session-I readback. \\
+\addlinespace
+230 & Relaxed stationary barrier front end & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & One-port short-range baseline, relaxed lowering identity, stationary barrier compiler \(V_{\rm eff}^{(230)}\), and one-point Session-I benchmark decomposition. \\
+\addlinespace
+231 & Dynamic event-chain compiler & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusNumerical{} & Energy integral, peak and threshold-speed compiler, turning points, WKB action, transmission ratio, dynamic diagnostics, and Session-II crossing/tunneling benchmark. \\
+\addlinespace
+232 & Helicity-export diagnostic & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & Exact projected subscale-helicity identity, aligned/anti-aligned orientation closure, peak and integrated ratio compilers, and Session-II hidden-channel export packet. \\
+\addlinespace
+233 & Crossing-vs-collapse Goldilocks window & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & Event-chain transit time, characteristic crossing time, dressing-leg collapse time, survival ratio, lower safe edge, speed-space compiler, heavy-throat scaling, and trigger-width sensitivity. \\
+\addlinespace
+234 & Microscopic damping/export kernel & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusOpen{} & Derivative-coupled scalar cubic export, selected quadrupole quintic export, active-leg kernel \(K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5\), exact event-safe half-plane, and channel-resolved power split. \\
+\addlinespace
+235 & Vacuum/lattice heat partition & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{}, \StatusOpen{} & Exact vacuum/lattice exported energies, one-scalar event-shape quotient, single-growth cold-event specialization, safe-edge exported-energy theorem, and event-equivalent export rates. \\
+\addlinespace
+236 & Physical calibration and material thresholds & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusOpen{} & Physical calibration dictionary, coarse lattice-turnover projection factor, electron-phonon threshold, force-matched stiffness, Korringa ceiling, and four material-screening ratios. \\
+\bottomrule
+\end{longtable}
+
+\claimstatus{Part VIII is a relaxed/open-system companion.  Its algebraic compilers are \StatusExactClosure{} inside the declared branch, one-mode, characteristic-timescale, single-growth, and physical-calibration closures.  The stationary and dynamic readbacks that use Session-I through Session-V benchmark numbers are \StatusNumerical{} insertions into exact formulas.  The branch declaration itself is an \StatusEffective{} extension around the strict Stage-225 front end, and any claim that the completed nonlinear moving-throat PDE actually realizes the relaxed packet, the microscopic export coefficients, or the physical material thresholds remains \StatusOpen{}.  No result in this part should be cited as a proof of a new same-charge long-range attraction or as a proof that the relaxed branch validates the strict conservative branch.}
+
+\section{How to audit this appendix}
+\label{sec:app-part08-audit-method}
+
+A reader can verify the Part VIII branch by following four audit paths.
+\begin{verificationchecklist}
+  \item Check the recovery slice: impose \(\ell_w=f_U=a=b=0\) and verify that the lifted leakage, work, non-rigid, and source observables reduce to the strict Stage~225 values.
+  \item Check the kernel firewall: verify that the one-port static and linear dynamic same-charge corrections stay in the short-range product span and never acquire a new \(1/r\) component.
+  \item Check the compiler chain: insert the Stage~227 leakage/work packet, the Stage~228 \((U,V)\) packet, and the Stage~229 source packet into the Stage~230 stationary barrier, then pass that barrier through the Stage~231 event-chain and Stage~233 crossing/collapse tests.
+  \item Check the physical companion: use Stage~234 to replace the phenomenological export envelope by \(K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5\), use Stage~235 to split the exported energy into vacuum and lattice channels, and use Stage~236 to map the lattice channel into material-screening ratios.
+\end{verificationchecklist}
+
+
+\section{Block contract and theorem-level output}
+\label{sec:app-part08-block-contract}
+
+The contract of Part VIII is to keep three layers separate.  The first layer is the strict front end from Part VII: selected twin-support placement, rigid-mouth orbit lock, and the outgoing normalization packet.  The second layer is the relaxed branch around that front end: leakage, non-rigid mouth response, and compensated source shape.  The third layer is the physical companion: event-chain survival, export, heat partition, and material screening.  The chapter is useful only if those layers remain visibly separated.
+
+The operational chain is
+\begin{equation}
+\label{eq:app-part08-operational-chain}
+\begin{aligned}
+\mathcal P_{225}
+&\longrightarrow
+\mathfrak B_{226}^{\rm relax}
+\longrightarrow
+(S_{\rm leak},\mathcal W_w,U,V,\mathcal M_\sigma)
+\\
+&\longrightarrow
+V_{\rm eff}^{(230)}
+\longrightarrow
+(r_\pm,I_{\rm new},t_{\rm cross})
+\\
+&\longrightarrow
+K_{\rm exp}(s)
+\longrightarrow
+(\Pi_{\rm ep},\Pi_\chi,\Pi_k,\Pi_T).
+\end{aligned}
+\end{equation}
+The strict branch can be recovered from this chain by imposing \cref{eq:app-part08-intro-recovery-slice}.  The relaxed branch cannot be used to infer that the strict branch succeeds; it can only be used to analyze the open-system bypass companion.
+
+\begin{theorem}[Part VIII relaxed-branch and export-companion theorem]
+\label{thm:app-part08-main}
+Inside the declared relaxed-constraint branch, the one-mode leakage/work closure, the non-rigid mouth/dressing closure, the compensated two-mode source closure, the reduced one-dimensional event-chain closure, the characteristic crossing/collapse closure, the microscopic cubic/quintic export closure, and the physical-calibration companion, the following statements hold.
+\begin{enumerate}[leftmargin=2.2em]
+  \item The relaxed branch is a codimension-three lift of the Stage-225 front end with exact recovery map
+  \begin{equation}
+  \label{eq:app-part08-main-recovery-map}
+  \ell_w=0,
+  \qquad
+  f_U=0,
+  \qquad
+  a=b=0.
+  \end{equation}
+  On this slice all lifted leakage, work, non-rigid, and compensated-source observables reduce to the strict standard-recovery values.
+  \item The same-charge static and linear dynamic kernel span remains short-ranged:
+  \begin{equation}
+  \label{eq:app-part08-main-short-range-span}
+  \mathcal K_{\rm SR}
+  =
+  \operatorname{span}\left\{
+  r^{-6},
+  \frac{e^{-2\kappa r}}{r^4},
+  \frac{e^{-4\kappa r}}{r^2}
+  \right\}.
+  \end{equation}
+  In particular,
+  \begin{equation}
+  \label{eq:app-part08-main-short-range-limits}
+  \lim_{r\to\infty}r\,\delta V_{\rm stat}(r)=0,
+  \qquad
+  \lim_{r\to\infty}r\,\Re\mathfrak V_{\rm dyn}(r,\omega)=0.
+  \end{equation}
+  \item On the selected-support branch, the leakage/work lane is explicit and support-side:
+  \begin{equation}
+  \label{eq:app-part08-main-leak-support}
+  S_{\rm leak}(r)
+  =
+  \frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+  \Lambda(r)\varrho(r),
+  \end{equation}
+  \begin{equation}
+  \label{eq:app-part08-main-work-support}
+  \mathcal W_w^{\rm sess}(r)
+  =
+  \frac{512\,\eta_{\rm leak}^{2}\mu_w q\rho_0}{\pi^4\lambda^2}
+  \Lambda(r)^2\varrho(r)^2.
+  \end{equation}
+  These quantities are independent of the orbit-lock variables \((R_{\rm tr},R_{\rm target},\epsilon_\eta)\) within the declared pullback.
+  \item The non-rigid mouth packet is exact in the physical logarithmic chart
+  \begin{equation}
+  \label{eq:app-part08-main-uv-chart}
+  U=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+  \qquad
+  V=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}.
+  \end{equation}
+  With
+  \begin{equation}
+  \label{eq:app-part08-main-delta-uv}
+  \Delta_{UV}=a_Ua_V-\chi_{UV}^{2},
+  \end{equation}
+  the stationary point is
+  \begin{equation}
+  \label{eq:app-part08-main-uv-stationary}
+  U=\frac{a_Vf_U}{\Delta_{UV}},
+  \qquad
+  V=\frac{\chi_{UV}f_U}{\Delta_{UV}},
+  \qquad
+  \Delta_{UV}>0.
+  \end{equation}
+  The corresponding drain is nonnegative:
+  \begin{equation}
+  \label{eq:app-part08-main-uv-drain}
+  \mathcal D_{UV}=\frac{\chi_{UV}^{2}a_Vf_U^2}{\Delta_{UV}^{2}}\ge 0.
+  \end{equation}
+  \item The first compensated two-mode source family is an exact two-moment compiler:
+  \begin{equation}
+  \label{eq:app-part08-main-source-family}
+  \sigma_{a,b}(x)=1+a\cos(\pi x)+b\cos(2\pi x),
+  \qquad
+  \int_0^1\sigma_{a,b}(x)\,dx=1,
+  \end{equation}
+  with
+  \begin{equation}
+  \label{eq:app-part08-main-source-moments}
+  \mathfrak g(a,b)=\frac{2}{\pi}\left(1+\frac{a}{3}-\frac{b}{15}\right),
+  \qquad
+  \mathcal S(a,b)=\frac{2\tanh(\pi/2)}{\pi}\left(1+\frac{a}{5}+\frac{b}{17}\right).
+  \end{equation}
+  Its normalized two-moment map has determinant \(14/425>0\), so the first compensated source family spans the two carried source moments exactly.
+  \item The relaxed stationary barrier is exactly \cref{eq:app-part08-intro-veff230}, and the lowering identity is
+  \begin{equation}
+  \label{eq:app-part08-main-lowering-identity}
+  V_{\rm short}^{(1p)}(r)-V_{\rm eff}^{(230)}(r)
+  =
+  \lambda_LS_{\rm leak}(r)
+  +\lambda_W\mathcal W_w^{\rm sess}(r)
+  +\Delta E_{UV}(r)
+  +\mathcal M_\sigma(r).
+  \end{equation}
+  Hence, when the imported packet scalars and weights are nonnegative, \(V_{\rm eff}^{(230)}\le V_{\rm short}^{(1p)}\) pointwise.
+  \item The dynamic event chain is determined by the conserved energy \cref{eq:app-part08-intro-event-energy}.  The lowered-branch classical threshold speed is
+  \begin{equation}
+  \label{eq:app-part08-main-vcrit-new}
+  v_{\rm crit,new}=\sqrt{\frac{2}{m_s}\bigl(V_{\rm peak}-V(r_0)\bigr)},
+  \end{equation}
+  while the pure-Coulomb contact threshold is
+  \begin{equation}
+  \label{eq:app-part08-main-vcrit-coul}
+  v_{\rm contact,Coul}
+  =
+  \sqrt{\frac{2}{m_s}\left(\frac1{r_{\rm contact}}-\frac1{r_0}\right)}.
+  \end{equation}
+  If \(v_{\rm crit,new}<v_0<v_{\rm contact,Coul}\), the lowered branch reaches contact while the pure Coulomb branch still turns back.
+  \item The subbarrier WKB action is
+  \begin{equation}
+  \label{eq:app-part08-main-wkb-action}
+  I_{\rm new}(E)=
+  \frac{1}{\hbar_{\rm eff}}
+  \int_{r_-(E)}^{r_+(E)}
+  \sqrt{2m_s\bigl(V(r)-E\bigr)}\,dr,
+  \end{equation}
+  and the transmission ratio relative to Coulomb is
+  \begin{equation}
+  \label{eq:app-part08-main-transmission-ratio}
+  \frac{T_{\rm new}(E)}{T_{\rm Coul}(E)}
+  =
+  \exp\bigl[-2\bigl(I_{\rm new}(E)-I_{\rm Coul}(E)\bigr)\bigr].
+  \end{equation}
+  \item The helicity-export comparison is diagnostic.  With orientation label \(\sigma=\pm1\), the reduced closure gives
+  \begin{equation}
+  \label{eq:app-part08-main-helicity-rate}
+  \dot H_{{\rm sub},\sigma}=\Gamma_0(1+\sigma\alpha_h),
+  \qquad
+  |\alpha_h|<1
+  \end{equation}
+  for positive export in both branches.  The aligned branch dominates whenever \(\alpha_h>0\), but this does not by itself prove a microscopic spin sector.
+  \item The crossing-versus-collapse safe edge is
+  \begin{equation}
+  \label{eq:app-part08-main-goldilocks-edge}
+  E_{\rm edge}=V_{\rm peak}
+  +
+  \frac{m_s}{\mu_\eta}
+  \frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2},
+  \end{equation}
+  equivalently
+  \begin{equation}
+  \label{eq:app-part08-main-goldilocks-speed}
+  v_{\rm safe,min}^{2}
+  =
+  v_{\rm crit,new}^{2}
+  +
+  \frac{\lambda_{\rm eff}^{2}g_{UV}\chi_{\rm peak}}{\mu_\eta}.
+  \end{equation}
+  Under the declared characteristic closure this is a one-sided lower edge.
+  \item The microscopic active-leg export kernel is super-Ohmic:
+  \begin{equation}
+  \label{eq:app-part08-main-kexp}
+  K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5,
+  \qquad
+  \Gamma_3,\Gamma_5\ge0.
+  \end{equation}
+  The positive growth root is reduced but not eliminated by any finite passive \((\Gamma_3,\Gamma_5)\) in this minimal closure.  The exact event-safe condition is
+  \begin{equation}
+  \label{eq:app-part08-main-safe-half-plane}
+  \widehat\Gamma_3+s_c^2\widehat\Gamma_5
+  \ge
+  \frac{s_0^2-s_c^2}{s_c^3},
+  \qquad
+  \widehat\Gamma_n:=\Gamma_n/\mu_\eta.
+  \end{equation}
+  \item The heat partition is channel-resolved.  For event-shape quotient \(\mathfrak r_V=\mathcal I_3/\mathcal I_2\),
+  \begin{equation}
+  \label{eq:app-part08-main-heat-fraction}
+  f_{\rm lat}(\mathfrak r_V)=
+  \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V},
+  \end{equation}
+  and on a single-growth cold event \(\mathfrak r_V=s^2\).  At the safe edge, the total minimum exported energy is
+  \begin{equation}
+  \label{eq:app-part08-main-safe-energy}
+  E_{\rm exp,min}^{\rm safe}
+  =
+  \frac{V_{\rm in}^{2}}{2}(e^2-1)\mu_\eta(s_0^2-s_c^2).
+  \end{equation}
+  \item The physical-material companion is an exact calibration image of the Stage-235 event-equivalent rate.  With calibration factor \(\Upsilon_{\rm lat}>0\),
+  \begin{equation}
+  \label{eq:app-part08-main-ep-threshold}
+  (\lambda_{\rm ep}\omega_D)_{\min}^{(236)}
+  =
+  \frac{f_{\rm lat}(s_c)\mu_\eta(s_0^2-s_c^2)}
+  {\Upsilon_{\rm lat}\zeta_{\rm ep}s_ct_*}.
+  \end{equation}
+  Candidate hosts are screened by \cref{eq:app-part08-intro-material-screen}.
+\end{enumerate}
+Every item involving actual branch data, microscopic coefficients, physical units, or candidate material constants remains a realization or calibration question beyond the algebraic compiler.
+\end{theorem}
+
+
+\paragraph{Source layout.}
+Stages~226--236 are now sourced from the canonical files \StageFile{stages/stage_226.tex} through \StageFile{stages/stage_236.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  Part VIII differs from Parts I--VII: these stage files carry the full derivation sections rather than compact stage cards.
+
+\input{stages/stage_226}
+
+\input{stages/stage_227}
+
+\input{stages/stage_228}
+
+\input{stages/stage_229}
+
+\input{stages/stage_230}
+
+\input{stages/stage_231}
+
+\input{stages/stage_232}
+
+\input{stages/stage_233}
+
+\input{stages/stage_234}
+
+\paragraph{Stage-pair note.}
+Stages 235 and 236 form the physical companion to the export kernel. Stage 235 keeps the reduced microscopic language; Stage 236 maps it into physical threshold variables.
+
+\input{stages/stage_235}
+
+\input{stages/stage_236}
+
+\section{Citation and downstream-use guardrails}
+\label{sec:app-part08-downstream-guardrails}
+
+Part VIII is useful because it lets downstream papers talk about the relaxed branch without contaminating the strict branch.  The safe citation language is:
+\begin{quote}
+The relaxed/open-system companion is a codimension-three lift of the strict selected-support/orbit front end.  It has an exact recovery map to the strict slice, preserves the no-new-long-range same-charge verdict, and supplies separate leakage/work, non-rigid dressing, compensated-source, barrier, dynamic-event, export-kernel, heat-partition, and material-screening compilers.
+\end{quote}
+
+The unsafe citation language is:
+\begin{quote}
+The relaxed barrier branch proves the strict selected same-charge branch, or supplies a new long-range attraction.
+\end{quote}
+That statement is false under the status discipline of this ledger.  The relaxed branch is a companion extension around the strict front end.  It is valuable precisely because it states what can change when open-system and non-rigid effects are allowed while preserving what cannot change: the same-charge long-range kernel verdict.
+
+The active open tasks after this part are also explicit.  The completed moving-throat PDE still has to realize or reject the strict selected support/orbit/outgoing packet from Part VII.  If the relaxed companion is used, the actual branch must additionally return the leakage amplitude, non-rigid \((U,V)\) packet, compensated source packet, microscopic export coefficients \((\Gamma_3,\Gamma_5)\) and their vacuum/lattice split, the unit map \((t_*,\lambda_{\rm phys},E_*)\), and the coarse transport factor \(\Upsilon_{\rm lat}\).  Without those realized data, Part VIII remains an exact compiler rather than a completed physical-branch theorem.

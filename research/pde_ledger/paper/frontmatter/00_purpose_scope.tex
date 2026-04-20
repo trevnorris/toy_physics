@@ -1,0 +1,451 @@
+\chapter{Purpose and Scope}
+\label{chap:purpose-scope}
+
+This document is the verification companion for the moving-throat PDE program.  Its job is not to replace the shorter framework paper, and it is not meant to read like a conventional journal article.  It is a derivation ledger: a structured, auditable record of how the moving-throat response framework is built from the parent theory, how the reduced branch tests are obtained, which claims are exact, which claims depend on declared closures, and which quantities still have to be supplied by an actual branch of the moving-throat PDE.
+
+The central promise of this ledger is simple:
+\begin{quote}
+Every formula that future papers are expected to cite should have a visible derivation path, a visible status tag, a visible provenance stage, and a visible downstream use.
+\end{quote}
+
+The ledger is therefore written for readers who need to verify the mathematics, not merely for readers who want the shortest usable statement of the final framework.  A future paper may cite the framework paper for the operational branch test; it should cite this companion when it needs the derivation of that test, the exact algebra behind a closure, the location of a no-go result, or the status of a remaining realization gap.
+
+\section{The role of this companion}
+
+The moving-throat program has two different textual needs.  The first is an operational paper: a compact framework that tells a reader what the moving-throat PDE response package is, what branch data must be supplied, and how those data are converted into observables or theorem gates.  The second is an archive-level verification document: a place where the full derivation is preserved in enough detail that a skeptical reader can reproduce the logic stage by stage.
+
+This document serves the second need.  Its purpose is to turn the canonical
+stage files and theorem-block chapters of this companion into a stable
+mathematical ledger.  The theorem-level map, the current status firewall, and
+the end-state vocabulary now live in the frontmatter and part structure of this
+\TeX{} project.  The long audit trail lives in the canonical
+\StageFile{paper/stages/stage_NNN.tex} files assembled by the stage appendices.
+The executable verification layer lives in the SymPy and Mathematica audit
+scripts.  This companion binds those layers into a citeable structure.
+
+The result should be read as a verification monograph rather than as a new phenomenology paper.  Its job is to show how the moving-throat machinery was derived, how its internal reductions fit together, and where the remaining branch-realization questions sit.  It should not silently upgrade a reduced result into an unconditional theorem of the full nonlinear PDE.
+
+\section{Primary source hierarchy}
+
+The source hierarchy used by this companion is fixed as follows.
+
+\begin{longtable}{L{0.25\textwidth}L{0.68\textwidth}}
+\toprule
+Source layer & Role in this ledger \\
+\midrule
+\endhead
+Parent-theory papers & Provide the exact declared-action backbone: gauged bulk GNLS matter, localized Maxwell theory, brane projection, zero-mode Maxwell reduction, corrected charge ontology, and the lower-order conservative closure hierarchy. \\
+\addlinespace
+Post-Newtonian assembly papers & Provide the Newtonian, 1PN, 2PN, 2.5PN, 3PN, 4PN, and later carry-forward targets that motivate the grouped real \(P_2\), outgoing quadrupole, weak-axisymmetric, and realization-compiler gates. \\
+\addlinespace
+\StageFile{paper/stages/stage_NNN.tex} & The canonical per-stage derivation files.  The stage numbers in this companion are provenance markers for this source layer. \\
+\addlinespace
+\StageFile{paper/appendices/stage_appendix_part*.tex} & The stage-ordered archive assembler.  These files preserve derivation order while pulling from the canonical stage files. \\
+\addlinespace
+\StageFile{paper/parts/*.tex} plus frontmatter & The theorem map, status firewall, notation discipline, and stable result-anchor language. \\
+\addlinespace
+\StageFile{scripts/} and \StageFile{mathematica/} & The executable audit layer: symbolic verification, numerical stress harnesses, and second-CAS replay. \\
+\addlinespace
+\StageFile{pde.tex} & The operational framework paper.  It should remain the concise reference for using the branch tests, while this companion supplies the long derivation behind those tests. \\
+\bottomrule
+\end{longtable}
+
+When these layers disagree in tone, the ledger should preserve the strongest cautious interpretation: exact parent identities remain exact; reduced branch results remain reduced; numerical placements remain numerical; and open branch-realization questions remain open.
+
+\section{Document contract}
+
+The contract of this companion is stricter than the contract of an ordinary exposition.  Each major result should satisfy the following requirements.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Provenance.}  The result must be traceable to one or more stages in the original derivation sequence.
+  \item \textbf{Inputs.}  The result must state which prior identities, branch assumptions, reductions, or closure choices it uses.
+  \item \textbf{Claim status.}  The result must carry one of the ledger status tags: \StatusExact, \StatusExactClosure, \StatusReduced, \StatusEffective, \StatusNumerical, or \StatusOpen.
+  \item \textbf{Derivation path.}  The main algebraic steps must be visible either in the theorem-block chapter or in the corresponding stage appendix.
+  \item \textbf{Checks.}  The result must identify the relevant consistency checks: dimensional checks, sign checks, limiting cases, projector checks, isotropy checks, symbolic-audit checks, or numerical-location checks.
+  \item \textbf{Downstream use.}  The result must say what later theorem block, branch test, paper, or realization compiler uses it.
+\end{enumerate}
+
+A result that cannot satisfy this contract may still be discussed, but it should not be promoted to a stable citation anchor.
+
+\section{What this document is}
+
+This companion is four things at once.
+
+\subsection{A theorem-block derivation}
+
+The main body organizes the full stage tree into coherent theorem blocks.  The reader should not have to read all 236 stages linearly to understand the logic of the program.  Instead, the main text groups the derivation into larger mathematical units: parent theory and geometry lift, conservative response kernels, support completion, retarded quadrupole closure, weak-axisymmetric orbit structure, realization compiler, same-charge and rigid-mouth branch tests, and the relaxed open-system extension.
+
+The theorem-block layer is the preferred citation layer.  Future papers should normally cite stable anchors such as \resultanchor{MTDC-T1}, \resultanchor{MTDC-T8}, or \resultanchor{MTDC-T12}, then point to the corresponding stage range only when the detailed provenance matters.
+
+\subsection{A stage-by-stage audit trail}
+
+The appendices preserve the original stage order.  Stage numbers are not merely decorative; they are the audit trail.  A future reader should be able to move from a theorem statement in the main body to the exact stage or stage range where the raw calculation was introduced, tested, corrected, or closed.
+
+The stage appendices should not be optimized for literary flow.  They should be optimized for verification.  Each stage entry should make clear what was assumed, what was computed, what was checked, what failed, and what became input for later stages.
+
+\subsection{A status firewall}
+
+The moving-throat program contains exact identities, controlled reductions, closure-dependent algebra, numerical placements, and open branch-realization claims.  Those categories must not be blurred.  This companion therefore treats claim status as part of the mathematics.
+
+A formula can be algebraically exact inside a declared reduced model while still not being an unconditional theorem of the full moving-throat PDE.  A branch test can be completely derived while the actual branch still fails that test.  A no-go result can be exact inside a specified search class while saying nothing about a larger class that was not searched.  The status firewall exists to keep these distinctions visible.
+
+\subsection{A future citation map}
+
+The final version of this companion should make later writing easier.  When future papers need to cite the grouped real \(P_2\) projector calculus, the outgoing quadrupole normalization bridge, the weak-axisymmetric quotient coordinates, the finite mixed-ray realization sieve, or the rigid-mouth orbit-lock packet, they should be able to cite a stable theorem anchor in this document instead of reconstructing the derivation from session notes.
+
+\section{What this document is not}
+
+This companion is not a replacement for the framework paper.  It is longer, more explicit, and more cautious.  The framework paper should remain the document that a reader uses to apply the response package.  This companion should be the document that a reader uses to verify it.
+
+This companion is also not a claim that the full nonlinear moving-throat PDE has already been solved.  The stage sequence derives a large reduced response framework and many exact compilers inside declared closures.  It also narrows several open questions to precise branch-realization packets.  The distinction between a completed compiler and a realized branch is part of the result.
+
+Finally, this companion is not a place to hide new assumptions.  If a step requires a finite-throat mode ansatz, a stable-mode reduction, an isotropic branch restriction, a passive/outgoing condition, a rigid-mouth assumption, a selected-support slice, or a relaxed open-system packet, that assumption must be named in the result status and repeated in the local derivation.
+
+\section{Scope of the mathematical derivation}
+
+The ledger covers Stages 001--236 of the moving-throat derivation.  The stage tree is grouped into eight main parts.
+
+\begin{longtable}{L{0.13\textwidth}L{0.14\textwidth}L{0.26\textwidth}L{0.38\textwidth}}
+\toprule
+Part & Stages & Short name & Scope \\
+\midrule
+\endhead
+I & 001--006 & Parent, geometry, and linear response backbone & Imports the exact parent theory, promotes the finite throat variables to a distributed shape field, recovers \(a(t)\) and \(L(t)\) as collective moments, introduces the grouped real \(P_2\) lane, and derives the first wall/BdG/Maxwell/mixed response kernels. \\
+\addlinespace
+II & 007--019 & Conservative response and normalization language & Builds the explicit overlap, isotropy, finite-throat, selected-mode, and normalized-response machinery needed to state the grouped real \(P_2\) conservative and outgoing normalization tests. \\
+\addlinespace
+III & 020--073 & Support completion and Family-1 branch & Develops continuum placement, rank-2 support completion, support/source gain thresholds, and the explicit Family-1 reduced branch tests, including the first reduced success/failure windows. \\
+\addlinespace
+IV & 074--146 & Geometry lane, retarded closure, and mouth/core compensation & Separates the grouped \(P_2\) and geometry lanes, narrows the retarded problem to the outgoing quadrupole normalization, and analyzes outlet, mixed side-channel, core-to-mouth, mouth-layer, and co-evolving corrections. \\
+\addlinespace
+V & 147--183 & Weak-axisymmetric transport and quotient/orbit closure & Reduces the weak-axisymmetric defect to transported prefactor data, identifies \(\Xi_1=P_1/P_0\), derives branch-invariant monomial coordinates, and states the exact orbit/quotient packet ending in the four-scalar verdict. \\
+\addlinespace
+VI & 184--201 & Realization compiler and finite mixed-ray search & Converts the reduced branch packet into an explicit graph-error realization problem and completes the finite local mixed-ray sieve through support-cardinality \(\leq 5\). \\
+\addlinespace
+VII & 202--225 & Same-charge, rigid-mouth, and selected twin-support branch & Audits the one-port same-charge mixed bundle, separates static and dynamic kernel verdicts, derives the rigid-mouth physical normal form, states orbit lock in Cartesian variables, and records the selected twin-support placement. \\
+\addlinespace
+VIII & 226--236 & Relaxed open-system branch and material/export companion & Adds the relaxed codimension-three open-system branch, leakage/work and non-rigid mouth/dressing compilers, lowered barrier and event-chain analysis, microscopic export kernel, heat partition, and material-threshold companion. \\
+\bottomrule
+\end{longtable}
+
+The stage ranges are part of the document contract.  If later edits move material between chapters for readability, the original stage provenance should still be retained in the stage appendices and result-anchor map.
+
+\section{The central objects tracked by the ledger}
+
+The derivation follows a small number of recurring mathematical objects.  The reader should treat these as the backbone of the companion.
+
+\subsection{The moving-throat shape field}
+
+The old finite-dimensional geometry variables \(a(t)\) and \(L(t)\) are not discarded.  They are reinterpreted as collective moments of a distributed moving-throat field.  The basic lift is
+\[
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\qquad
+r=\sqrt{x^2+y^2+z^2},
+\qquad
+\Omega\in S^2.
+\]
+This lift is the geometric starting point for the ledger.  It makes the scalar lane, the residual geometry lane, the grouped real \(P_2\) lane, and the higher multipoles visible within one field-theoretic description.
+
+\subsection{The grouped real \texorpdfstring{\(P_2\)}{P2} bundle}
+
+The grouped labels \(20/21/22\) are real quadrupole lanes, not spacetime indices.  The grouped real \(P_2\) bundle is the conservative front end of the response problem and the source of the later weak-axisymmetric and outgoing-normalization packets.  The ledger tracks its conservative operator moments,
+\[
+D_A(\omega)=D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+\cdots,
+\qquad A\in\{20,21,22\},
+\]
+its normalized response moments,
+\[
+Y_A(\omega)=\frac{D_{A0}}{D_A(\omega)}
+=1+u_2^{(A)}\omega^2+u_4^{(A)}\omega^4+\cdots,
+\]
+and its grouped trace/anomaly coordinates.
+
+\subsection{The outgoing quadrupole prefactor}
+
+The retarded bridge is organized around the outgoing \(\ell=2\) fingerprint and the internal prefactor carried by the moving-throat branch.  At the point-particle quadrupole normalization level, the key scalar is the invariant product
+\[
+\widehat m_0^{\,2}P_0,
+\]
+with target condition
+\[
+\widehat m_0^{\,2}P_0
+=
+\frac{54G c_s^5}{5a^5c^5}.
+\]
+One purpose of the ledger is to show how the many earlier conservative and mixed-sector formulas narrow to this scalar on the isotropic passive/outgoing branch.
+
+\subsection{The weak-axisymmetric quotient packet}
+
+The weak-axisymmetric obstruction is not treated as an arbitrary collection of microscopic slopes.  It is reduced to branch-invariant coordinates and their transported prefactor packet.  In its compact form, the live scalar is
+\[
+\Xi_1=\frac{P_1}{P_0},
+\]
+with the weak-axisymmetric line
+\[
+b_{P_0}=3a_{P_0}.
+\]
+The later orbit/quotient theorem organizes the reduced back end into the four-scalar packet
+\[
+\Delta_{\rm full}
+=\left(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta\right).
+\]
+This companion must make clear which pieces of this packet are exact algebra, which are branch observables, and which are still actual-branch realization questions.
+
+\subsection{The rigid-mouth and selected-support packets}
+
+On the rigid-mouth actual branch, the post-static same-charge problem is written in the physical logarithmic chart
+\[
+(U,V)=
+\left(
+\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}
+\right),
+\]
+with orbit lock given by the Cartesian codimension-two condition
+\[
+U=0,
+\qquad
+V=0.
+\]
+The selected twin-support slice is tracked separately, including the exact lowest-twin reference values
+\[
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13.
+\]
+These are branch-organization results.  The ledger should distinguish their algebraic derivation from the question of whether a concrete branch realizes the selected placement.
+
+\subsection{The relaxed open-system extension}
+
+The post-225 extension introduces a relaxed branch rather than replacing the strict branch.  The recovery map back to the strict front end is
+\[
+\ell_w=f_U=a=b=0.
+\]
+On the relaxed branch, the stationary front end is organized by the effective potential packet
+\[
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_L S_{\rm leak}(r)
+-
+\lambda_W\mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_{\sigma,{\rm red}}(r),
+\]
+while the microscopic active-leg export law is
+\[
+K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5.
+\]
+The relaxed branch should be labeled as a companion extension.  It should not be silently folded into the strict conservative theorem chain.
+
+\section{Framework success, realization success, and closure failure}
+
+This companion repeatedly separates three ideas that are easy to confuse.
+
+\subsection{Framework success}
+
+A framework succeeds when the derivation reduces a complicated PDE branch question to a finite, explicit packet of branch observables.  For example, reducing the retarded quadrupole finish line to \(\widehat m_0^{\,2}P_0\), or reducing the weak-axisymmetric obstruction to \(\Xi_1=P_1/P_0\), is a framework success even before an actual branch has returned the target value.
+
+\subsection{Realization success}
+
+A branch realizes the framework when the actual moving-throat solution lands on the target packet.  For example, a branch may have the correct algebraic response framework but still fail the normalization condition, the orbit-lock condition, the selected-support condition, or a same-charge admissibility gate.  That failure is a realization failure, not a failure of the algebraic compiler.
+
+\subsection{Closure failure}
+
+A closure fails when the assumptions under which a result was derived are not satisfied.  For example, a formula derived on an isotropic grouped real \(P_2\) branch cannot be applied unchanged to an anisotropic branch without carrying the anisotropy defects.  A rigid-mouth theorem does not automatically apply to a non-rigid mouth branch.  A strict conservative result does not automatically include leakage, work, or export terms from the relaxed open-system extension.
+
+These distinctions are not rhetorical.  They determine how future papers are allowed to cite this companion.
+
+\section{Claim-status discipline}
+
+The status tags used throughout the ledger have the following purpose in this chapter.
+
+\begin{longtable}{L{0.25\textwidth}L{0.68\textwidth}}
+\toprule
+Status tag & Meaning for the purpose and scope of this document \\
+\midrule
+\endhead
+\StatusExact & The claim follows from the declared parent action, an exact definition, an exact identity, or exact algebra once the variables and conventions are fixed. \\
+\addlinespace
+\StatusExactClosure & The claim is exact inside a stated closure family, branch class, gauge convention, search class, or reduced hierarchy.  It is not thereby an unconditional theorem of the full PDE. \\
+\addlinespace
+\StatusReduced & The claim requires a controlled reduction, low-frequency expansion, normal-mode truncation, projection, selected branch, small-body limit, or other declared ansatz. \\
+\addlinespace
+\StatusEffective & The claim uses a physically motivated closure that has not yet been uniquely derived from the completed moving-throat PDE. \\
+\addlinespace
+\StatusNumerical & The object is defined sharply but the currently known placement or value is obtained by numerical solve or numerical search rather than by closed-form expression. \\
+\addlinespace
+\StatusOpen & The claim depends on actual branch realization or on a PDE-side datum not yet derived or verified in the completed branch. \\
+\bottomrule
+\end{longtable}
+
+Every theorem block in the final ledger should state its status before the proof is read.  The status tag is part of the claim.
+
+\section{What counts as verification}
+
+Verification in this ledger does not mean that every line is independently re-derived from the parent action in every chapter.  It means that the chain of dependency is explicit enough that a reader can audit it.
+
+A verified stage should provide at least one of the following forms of support.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Direct variation or algebra.}  The result follows by varying the declared action, eliminating a quadratic block, projecting a mode equation, expanding a rational response, or performing an exact symbolic manipulation shown in the text.
+  \item \textbf{Controlled reduction with stated assumptions.}  The result follows after a declared low-frequency, finite-throat, small-body, stable-mode, isotropic, passive/outgoing, rigid-mouth, or selected-support reduction.
+  \item \textbf{Symbolic audit.}  The result is backed by a script that checks identities, projectors, expansions, ranks, nullspaces, roots, or finite candidate sets.
+  \item \textbf{Numerical location with exact target.}  The target equation or optimization problem is exact, while the realized value is numerical.
+  \item \textbf{No-go by exhaustion inside a declared class.}  The result rules out a branch, mechanism, or search class only after the class has been explicitly defined.
+\end{enumerate}
+
+The ledger should not use the word ``verified'' for an intuition, analogy, or desired branch behavior that has not passed one of these tests.
+
+\subsection{Verification routing}
+
+The stage number is the paper-facing verification handle.  To keep the archive
+readable, the PDF does not print the full script filename inventory inside every
+stage card.
+
+All paths below are relative to \nolinkurl{research/pde_ledger/}.  The audit
+layer is routed by naming convention.
+\begin{itemize}[leftmargin=2.2em]
+  \item SymPy symbolic audits live under \nolinkurl{scripts/} and follow the
+  pattern
+  \nolinkurl{moving_throat_pde_stageNNN_*_sympy_audit.py}.
+  \item Mathematica symbolic audits live under
+  \nolinkurl{mathematica/} and follow the pattern
+  \nolinkurl{moving_throat_pde_stageNNN_*_mathematica_audit.wl}.
+  \item Numerical stress harnesses live under \nolinkurl{scripts/numerical/}
+  and \nolinkurl{mathematica/numerical/}, usually with names of
+  the form \nolinkurl{stageNNN*_stress.py} and
+  \nolinkurl{stageNNN*_stress.wl}.  Shared harnesses may cover short ranges as
+  \nolinkurl{stage003_004_*}.
+  \item The exact path inventory, coverage counts, and trust classification are
+  maintained in repo-level verification trackers rather than repeated inside the
+  paper.
+\end{itemize}
+
+\section{How this companion should be used by future papers}
+
+Future papers should cite this companion in two different ways.
+
+\subsection{Citing a theorem anchor}
+
+When a future paper needs a stable mathematical result, it should cite the theorem anchor.  Examples include:
+\begin{itemize}[leftmargin=2.2em]
+  \item the moving-surface lift and collective recovery of \(a,L\),
+  \item the grouped real \(P_2\) projector calculus,
+  \item the outgoing quadrupole normalization bridge,
+  \item the weak-axisymmetric orbit/quotient theorem,
+  \item the finite mixed-ray realization sieve,
+  \item the rigid-mouth Cartesian orbit-lock theorem,
+  \item the relaxed barrier/export compiler.
+\end{itemize}
+
+The theorem anchor should carry the claim status and the stage range.
+
+\subsection{Citing a provenance stage}
+
+When a future paper needs to show where an intermediate formula came from, it should cite the stage or stage range.  Stage citations are especially appropriate for long overlap calculations, symbolic-audit outputs, no-go filters, numerical placements, or branch-specific construction details.
+
+\subsection{Citing an open gap}
+
+When a future paper relies on a still-open branch datum, it should cite the relevant open packet directly rather than burying it in prose.  For example, it should say that it assumes or tests the actual branch value of \(\widehat m_0^{\,2}P_0\), \(\Xi_1\), the rigid-mouth \((U,V)\) packet, the selected twin-support coordinate, or the relaxed leakage/export packet, as appropriate.
+
+\section{Scope boundaries}
+
+The ledger includes the derivation of the moving-throat response framework and the stage sequence through the relaxed open-system extension.  It does not attempt to do all future work at once.  The following boundaries are intentional.
+
+\subsection{No replacement of the parent papers}
+
+This document imports the parent action, corrected charge ontology, projection/reduction distinction, and lower-order PN assembly results.  It does not rewrite those papers from scratch.  Where a parent identity is needed, this companion should restate only the amount required to make the moving-throat derivation self-contained.
+
+\subsection{No assumption-free claim of a solved nonlinear PDE}
+
+The ledger derives the response machinery and branch tests.  It does not claim that the full nonlinear moving-throat PDE has been solved in closed form.  Actual branch realization remains a separate task whenever the status tag says \StatusOpen, \StatusNumerical, \StatusEffective, or \StatusExactClosure.
+
+\subsection{No hiding of branch restrictions}
+
+The ledger should not state an isotropic result as if it were anisotropic, a rigid-mouth result as if it were non-rigid, a selected-support result as if it were generic, or a strict conservative result as if it already contained the relaxed leakage/work/export extension.
+
+\subsection{No silent notational reuse}
+
+The notation firewall is part of the document scope.  Electric charge is not circulation.  The gravity-side \(\kappa_\rho=1\) is not electric charge.  The grouped labels \(20/21/22\) are real \(P_2\) lanes.  Mixed fields suppressed in the far-field brane Maxwell limit remain microscopic degrees of freedom in the moving-throat PDE.
+
+\section{Main-text versus appendix responsibilities}
+
+The ledger has two complementary layers.
+
+\subsection{Main-text responsibilities}
+
+The main text should do the following.
+\begin{enumerate}[leftmargin=2.2em]
+  \item Define the objects used by each theorem block.
+  \item State the theorem, proposition, or branch verdict in a citeable form.
+  \item Identify the status tag and stage range.
+  \item Give the proof skeleton and the essential algebraic bridge.
+  \item Explain the downstream role of the result.
+  \item State what remains open, if anything.
+\end{enumerate}
+
+The main text should not include every raw polynomial, every repeated expansion, or every intermediate script table unless that material is needed for understanding the theorem.
+
+\subsection{Appendix responsibilities}
+
+The appendices should do the following.
+\begin{enumerate}[leftmargin=2.2em]
+  \item Preserve all 236 stages in original order.
+  \item Record the inputs, assumptions, derivation, output, checks, and downstream use for each stage.
+  \item Preserve long algebraic identities and exact script-backed expansions.
+  \item Store numerical search results and finite candidate sets.
+  \item Make it possible to audit a theorem anchor by following its stage range.
+\end{enumerate}
+
+The appendices are allowed to be repetitive when repetition helps verification.  The main text should be more selective.
+
+\section{Completeness criterion for the final ledger}
+
+The final version of this companion should be considered complete only when the following conditions are met.
+
+\begin{verificationchecklist}
+  \item Every stage from 001 through 236 has a filled appendix entry.
+  \item Every major result in the main text has a status tag.
+  \item Every theorem anchor has a stage range and downstream-use statement.
+  \item Every closure-dependent result names the closure.
+  \item Every open branch-realization claim is explicitly marked open.
+  \item Every symbolic-audit claim has a reproducibility entry or script reference.
+  \item The notation firewall is obeyed throughout.
+  \item Future papers can cite theorem anchors without needing to cite informal session notes.
+\end{verificationchecklist}
+
+This completeness criterion is intentionally stricter than the standard for a normal paper.  The purpose of the document is long-term verifiability.
+
+\section{Editorial principles}
+
+The final ledger should follow three editorial principles.
+
+\subsection{Preserve the original derivation, but do not worship chronology}
+
+The stage order is provenance, not necessarily exposition.  The main text should group related stages into coherent theorem blocks even when the original derivation found those results in a more exploratory order.  The appendices preserve chronology; the chapters should preserve understanding.
+
+\subsection{Name failures as carefully as successes}
+
+The moving-throat derivation contains no-go tests, failed branches, worsened residuals, finite windows, and branch ceilings.  These should be documented with the same care as successful closures.  A failed branch is often the reason a later branch is narrow enough to be meaningful.
+
+\subsection{Prefer invariant packets to informal descriptions}
+
+Whenever possible, the ledger should express branch status in invariant packets rather than prose.  For example, use \(\widehat m_0^{\,2}P_0\), \(\Xi_1\), \(\Delta_{\rm full}\), \((U,V)\), and the relaxed branch packet instead of vague descriptions such as ``the normalization looks right'' or ``the orbit is nearly locked.''
+
+\section{End state of the companion}
+
+At the end of this project, the companion should allow a reader to answer five questions without consulting informal notes.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item How does the exact parent theory lead to the moving-throat shape-field PDE and its grouped real \(P_2\) response lanes?
+  \item How do the conservative response kernels, Maxwell/mixed outgoing bridge, and normalized prefactor formulas reduce the retarded quadrupole problem to a finite scalar target?
+  \item How do support completion, Family-1, mouth/core compensation, and selected-support branches narrow the actual realization problem?
+  \item How does the weak-axisymmetric problem collapse to quotient/orbit coordinates and the four-scalar verdict packet?
+  \item How do the same-charge, rigid-mouth, selected twin-support, and relaxed open-system extensions fit into the strict derivation without erasing the status boundaries?
+\end{enumerate}
+
+If the final ledger answers those questions and preserves the full stage audit trail, then future papers can safely treat it as the derivation archive for the moving-throat PDE response framework.

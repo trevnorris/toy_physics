@@ -1,0 +1,33 @@
+\section[Stage 042]{Stage 042: Exact Residual Bounds on the Operator-Selected Branch}
+\label{stage:042}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the residual thresholds.}
+\stagefield{Purpose}{Stage~042 converts the fixed-point bracket into a useful branch verdict.}
+\stagefield{Inputs}{Required Peclet bias \(\mathrm{Pe}_{\rm req}\), endpoint functions \(\Delta_0,\Delta_\infty\), and gain \(\Xi\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage042_operator_branch_residual_bounds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage042_operator_branch_residual_bounds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage042_operator_branch_residual_bounds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage042_operator_branch_residual_bounds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
+\begin{equation}
+\label{eq:app-stage042-Xi-thresholds}
+\boxed{
+\Xi_{\rm fail}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty(\kappa,\eta)},
+\qquad
+\Xi_{\rm suff}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_0(\kappa,\eta)}}.
+\end{equation}
+Hence
+\begin{equation}
+\label{eq:app-stage042-verdict}
+\boxed{
+\Xi<\Xi_{\rm fail}\Rightarrow\text{fail},
+\qquad
+\Xi>\Xi_{\rm suff}\Rightarrow\text{succeed}}.
+\end{equation}
+The band \(\Xi_{\rm fail}\leq\Xi\leq\Xi_{\rm suff}\) is profile-sensitive and requires the full fixed-point root.
+
+\stagefield{Output}{The exact gain thresholds \eqref{eq:app-stage042-Xi-thresholds}.}
+\stagefield{Downstream use}{Stages~043--049 identify \(\Xi\) with a microscopic parent-action gain and a wall figure of merit.}
+

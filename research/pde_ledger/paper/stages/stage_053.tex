@@ -1,0 +1,52 @@
+\section[Stage 053]{Stage 053: Explicit GNLS Wall-Shell Reduction for the First Support Branch}
+\label{stage:053}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} / \StatusReduced{} for the thin GNLS shell support reduction.}
+\stagefield{Purpose}{Stage~053 begins the explicit Family--1 construction by deriving support stiffness and gradient energy from the parent GNLS shell.}
+\stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and frozen \(n=5\) compressional stiffness.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage053_gnls_wall_shell_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage053_gnls_wall_shell_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage053_gnls_wall_shell_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage053_gnls_wall_shell_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The quadratic support energy is
+\begin{equation}
+\label{eq:app-stage053-E2}
+E^{(2)}[q]=\frac12\int_0^L ds\,[T_Xq'(s)^2+K_Xq(s)^2].
+\end{equation}
+The coefficients are
+\begin{equation}
+\label{eq:app-stage053-TX-KX}
+\boxed{
+T_X=\frac{\hbar^2}{4m\rho_w}N_{\phi\phi},
+\qquad
+K_X=H_wN_{\phi\phi}+\frac{\hbar^2}{4m\rho_w}G_{\phi\phi},
+\qquad
+H_w=\frac{mc_{s,w}^2}{\rho_w}}.
+\end{equation}
+For a thin shell with moments \(I_f=\int f'^2d\xi\) and \(I_g=\int f''^2d\xi\),
+\begin{equation}
+\label{eq:app-stage053-thin-TK}
+\boxed{
+T_X=\frac{\pi a^2\ell I_f\hbar^2}{m\rho_w},
+\qquad
+K_X=4\pi a^2\ell I_fH_w+\frac{\pi a^2I_g\hbar^2}{m\rho_w\ell}}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-stage053-kappa}
+\boxed{
+\kappa=\frac{K_XL^2}{T_X}
+=4\left(\frac{mc_{s,w}L}{\hbar}\right)^2+\frac{I_g}{I_f}\left(\frac{L}{\ell}\right)^2}.
+\end{equation}
+The matched wall control is
+\begin{equation}
+\label{eq:app-stage053-Wwall-Xi}
+\boxed{
+W_{\rm wall}=\Xi=\frac{4\rho_w^2V_0^2L^2}{\hbar^2c_{s,w}^2\ell^2}}.
+\end{equation}
+
+\stagefield{Output}{The parent-shell coefficients \eqref{eq:app-stage053-TX-KX}--\eqref{eq:app-stage053-Wwall-Xi}.}
+\stagefield{Downstream use}{Stage~054 evaluates these for the canonical tanh wall; Stages~056--057 fix the Family--1 geometry and healing lock.}
+

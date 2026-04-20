@@ -1,0 +1,28 @@
+\section[Stage 193]{Stage 193: Three-coordinate simplex audit}
+\label{stage:193}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.3}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~193 promotes the search to genuine three-coordinate positive simplices and proves that their boundaries are already the Stage~192 pairwise ledgers.}
+
+\stagefield{Inputs}{Imports primitive triples, the positive spherical simplex \(a_i^2+a_j^2+a_k^2=1\), pairwise edge packets, and local gradient/Hessian data.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage193_three_coordinate_mixed_simplex_audit_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation reduces every boundary edge to an imported pairwise search, proves the three-coordinate gradient-synergy law, computes total cross leverage, defines fixed-simplex brackets, and gives canonical gradient/equal-mix triple screens.}
+
+\stagefield{Output}{Boundary reduction for triples, three-coordinate gradient and curvature synergy, canonical triple-screen audit, interior-screen dominance criterion, and non-improvement filter.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check all pairwise and triple boundary faces are imported from already-certified lower-support ledgers.
+\item Check admissibility windows before including stationary candidates.
+\item Check interval comparison uses certified lower/upper endpoints, not just central predictor values.
+\item Mark candidate evaluation as \StatusNumerical{} when actual local packet values are inserted.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.3} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

@@ -1,0 +1,232 @@
+\section[Stage 001]{Stage 001: Geometry Lift and Linearized PDE Skeleton}
+\label{stage:001}
+
+\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T1}, \resultanchor{MTDC-T2}, and \resultanchor{MTDC-T4}.}
+\claimstatus{The parent-field import is \StatusExact{} inside the declared parent model.  The shape-field lift and minimal quadratic wall action are \StatusEffective{}.  The modal split and the linearized equations are \StatusExactClosure{} once that lift is adopted.}
+
+\stagefield{Purpose}{Stage~001 replaces the old finite-dimensional geometry variables \(a(t)\) and \(L(t)\) by a distributed throat geometry variable, while preserving those variables as collective moments.  The stage also introduces the first linearized matter/gauge/geometry system and the harmonic decomposition in which the scalar lane, grouped real \(P_2\) lane, geometry lane, and higher modes become explicit.}
+
+\stagefield{Inputs}{The stage imports the exact \((4+1)\)-dimensional parent theory: gauged GNLS matter, localized Maxwell field, corrected charge ontology, and confinement potential.  It also imports the lower-order requirement that the moving-throat PDE expose the already-visible \(P_0\oplus P_2\) support sector, the separate geometry-completion channel, and the mixed Maxwell channels retained outside the strict zero-mode brane limit.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage001_geometry_lift_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl}.  The audits check the monopole/\(P_2\) harmonic bookkeeping, the confinement chain-rule sign, and the densitized-versus-weighted wall-action convention used by the ledger.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Shape-field lift.}
+Let
+\begin{equation}
+\label{eq:app-stage001-sigma}
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+\qquad
+r=\sqrt{x^2+y^2+z^2},
+\qquad
+\Omega=\mathbf x/r\in S^2.
+\end{equation}
+The finite throat surface is the level set
+\begin{equation}
+\label{eq:app-stage001-surface}
+\Sigma(\mathbf X,t)=0.
+\end{equation}
+The working sign convention is
+\begin{equation}
+\Sigma>0\quad\text{outside the throat},
+\qquad
+\Sigma<0\quad\text{inside the support/interior region}.
+\end{equation}
+This choice keeps the level-set coupling to the bulk fields while making the mouth-sphere harmonics explicit.  It is the minimum lift needed to avoid treating the grouped real \(P_2\) coefficients as purely symbolic residuals.
+
+\paragraph{2. Reference stationary branch.}
+Take a stationary reference surface
+\begin{equation}
+\label{eq:app-stage001-reference}
+\Sigma_0(\mathbf X)=r-R_0(w)=0,
+\end{equation}
+with mouth at \(w=0\), finite depth \(0\le w\le L_0\), mouth radius
+\begin{equation}
+\label{eq:app-stage001-a0}
+a_0=R_0(0),
+\end{equation}
+and a bottom closure such as \(R_0(L_0)=0\) or an equivalent regularity condition.  The old collective variables are recovered as lowest moments:
+\begin{equation}
+\label{eq:app-stage001-a-moment}
+a(t)=\frac{1}{4\pi}\int_{S^2}R(\Omega,0,t)\,d\Omega,
+\end{equation}
+and, if \(W_b(\Omega,t)\) is defined implicitly by
+\begin{equation}
+R(\Omega,W_b(\Omega,t),t)=0,
+\end{equation}
+then
+\begin{equation}
+\label{eq:app-stage001-l-moment}
+L(t)=\frac{1}{4\pi}\int_{S^2}W_b(\Omega,t)\,d\Omega.
+\end{equation}
+Thus the old closure survives as a moment projection of the distributed wall field.
+
+\paragraph{3. Promoted confinement coupling.}
+The old confinement dependence \(V_{\rm conf}(\mathbf X;a,L)\) is promoted to a moving-surface dependence
+\begin{equation}
+\label{eq:app-stage001-promoted-conf}
+V_{\rm conf}(\mathbf X;\Sigma)=V_{\rm wall}\!\left(\frac{\Sigma(\mathbf X,t)}{\ell_c}\right),
+\end{equation}
+where \(\ell_c\) is the wall thickness.  Around the reference branch,
+\begin{equation}
+V_0(\mathbf X)=V_{\rm wall}\!\left(\frac{\Sigma_0(\mathbf X)}{\ell_c}\right).
+\end{equation}
+The first variation is
+\begin{equation}
+\label{eq:app-stage001-delta-v-general}
+\delta V_{\rm conf}
+=\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\delta\Sigma.
+\end{equation}
+Since \(\Sigma=r-R\), a wall perturbation \(R=R_0+\eta\) gives
+\begin{equation}
+\label{eq:app-stage001-delta-sigma}
+\delta\Sigma=-\eta(\Omega,w,t),
+\end{equation}
+and therefore
+\begin{equation}
+\label{eq:app-stage001-delta-v}
+\boxed{
+\delta V_{\rm conf}
+=-\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t)}.
+\end{equation}
+This is the first direct wall-to-BdG coupling used later.
+
+\paragraph{4. Harmonic decomposition.}
+Write
+\begin{equation}
+\label{eq:app-stage001-wall-perturbation}
+R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t).
+\end{equation}
+Expand \(\eta\) in real spherical harmonics:
+\begin{equation}
+\label{eq:app-stage001-harmonic-expansion}
+\eta(\Omega,w,t)
+=\eta_0(w,t)Y_{00}(\Omega)
++\sum_{m\in P_2({\rm real})}q_{2m}(w,t)Y^{\rm real}_{2m}(\Omega)
++\eta_{\ge3}(\Omega,w,t).
+\end{equation}
+The real \(P_2\) set is
+\begin{equation}
+\label{eq:app-stage001-p2-set}
+P_2({\rm real})=\{20,21c,21s,22c,22s\}.
+\end{equation}
+With the normalized monopole
+\begin{equation}
+Y_{00}=\frac{1}{2\sqrt\pi},
+\qquad
+\int_{S^2}Y_{00}^2\,d\Omega=1,
+\end{equation}
+we have
+\begin{equation}
+\frac{1}{4\pi}\int_{S^2}Y_{00}\,d\Omega=\frac{1}{2\sqrt\pi}.
+\end{equation}
+Therefore the normalized monopole coefficient and the physical mouth-average shift are related by
+\begin{equation}
+\label{eq:app-stage001-q00-da}
+q_{00}(0,t)=2\sqrt\pi\,\delta a(t).
+\end{equation}
+A useful axisymmetric split is
+\begin{equation}
+\label{eq:app-stage001-axisymmetric-split}
+\eta_0(w,t)=\alpha_a(w)\delta a(t)+\alpha_L(w)\delta L(t)+g(w,t),
+\end{equation}
+where \(g\) is the residual axisymmetric geometry lane orthogonal to the \((a,L)\) collective moments.
+
+\paragraph{5. Minimal distributed wall action.}
+The working passive quadratic wall action is
+\begin{equation}
+\label{eq:app-stage001-wall-action}
+S_{\eta}^{(2)}
+=\frac12\int dt\,dw\,d\Omega\,\sqrt{\gamma_0}
+\left[
+\mu_\eta(w)(\partial_t\eta)^2
+-T_w(w)(\partial_w\eta)^2
+-T_\Omega(w)\eta(-\Delta_{S^2})\eta
+-K_\eta(w)\eta^2
+\right].
+\end{equation}
+The coefficients \(\mu_\eta,T_w,T_\Omega,K_\eta\) are branch constitutive functions.  From this point onward the ledger adopts the densitized one-dimensional convention: the background surface weight \(\sqrt{\gamma_0}\) is absorbed into the effective axial coefficients and mode profiles, so the reduced formulas are written with respect to \(dw\).  The weighted surface form is still legitimate, but then the Euler--Lagrange operator carries the extra first-derivative term coming from \(\partial_w\sqrt{\gamma_0}\); the SymPy and Mathematica audits check both forms explicitly.
+
+Projecting onto a harmonic \(Y_{lm}\), using
+\begin{equation}
+-\Delta_{S^2}Y_{lm}=l(l+1)Y_{lm},
+\end{equation}
+gives the modal wall operator
+\begin{equation}
+\label{eq:app-stage001-modal-wall-pde}
+\boxed{
+\mu_\eta\,\partial_t^2q_{lm}
+-\partial_w\!\bigl(T_w\partial_wq_{lm}\bigr)
++\bigl[K_\eta+l(l+1)T_\Omega\bigr]q_{lm}
+=S_{lm}^{(\psi,A)}+f_{lm}^{\rm ext}}.
+\end{equation}
+The scalar lane \(l=0\) and the grouped real quadrupole lane \(l=2\) are therefore separated before any additional closure.
+
+\paragraph{6. Linearized matter and gauge sectors.}
+Choose stationary background fields
+\begin{equation}
+\psi=e^{-i\mu_0t/\hbar}\psi_0(\mathbf X),
+\qquad
+A_M=A_{M0}(\mathbf X),
+\qquad
+R=R_0(w).
+\end{equation}
+Let
+\begin{equation}
+\psi=e^{-i\mu_0t/\hbar}\bigl(\psi_0+\delta\psi\bigr),
+\qquad
+A_M=A_{M0}+\delta A_M.
+\end{equation}
+The matter perturbation satisfies a BdG-type system
+\begin{equation}
+\label{eq:app-stage001-bdg-schematic}
+i\hbar\partial_t
+\begin{pmatrix}\delta\psi\\ \delta\psi^*\end{pmatrix}
+=\mathcal L_{\rm BdG}
+\begin{pmatrix}\delta\psi\\ \delta\psi^*\end{pmatrix}
++\mathcal C_A[\delta A_M]
++\mathcal C_\eta[\eta],
+\end{equation}
+where \(\mathcal C_\eta\) contains the coupling \eqref{eq:app-stage001-delta-v}.  The localized Maxwell equation linearizes to
+\begin{equation}
+\label{eq:app-stage001-linear-maxwell}
+\boxed{
+\partial_M\bigl(Z(w)\delta F^{MN}\bigr)
++\frac1\xi\partial^N(\partial\!\cdot\!\delta A)
+=\mu_0\delta J^N}.
+\end{equation}
+At this stage the mixed variables
+\begin{equation}
+\delta A_w,
+\qquad
+\delta J^w,
+\qquad
+\delta F_{\mu w}
+\end{equation}
+are retained.  Their later suppression in the far-field brane limit is a reduction, not an ontology deletion.
+
+\paragraph{7. Mouth/worldtube response operator.}
+At the mouth \(w=0\), choose the real port basis
+\begin{equation}
+P_{00}=Y_{00},
+\qquad
+P_{20},P_{21c},P_{21s},P_{22c},P_{22s}.
+\end{equation}
+Let \(u_B(\omega)\) denote projected effort variables and \(j_A(\omega)\) the corresponding generalized fluxes or tractions.  The reduced response operator is written
+\begin{equation}
+\label{eq:app-stage001-response-operator}
+j_A(\omega)=\sum_B Z_{{\rm eff},AB}(\omega)u_B(\omega).
+\end{equation}
+On an isotropic reference throat, this operator block-diagonalizes into scalar/geometry, grouped real \(P_2\), and higher-\(l\) sectors.
+
+\stagefield{Output}{The stage outputs the shape-field closure \eqref{eq:app-stage001-sigma}, the confinement variation \eqref{eq:app-stage001-delta-v}, the harmonic split \eqref{eq:app-stage001-harmonic-expansion}, the modal wall PDE \eqref{eq:app-stage001-modal-wall-pde}, and the response-operator target \eqref{eq:app-stage001-response-operator}.  These are the definitions without which later grouped response coefficients have no PDE-side interpretation.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The moment check follows from the normalized monopole integral and gives \(q_{00}=2\sqrt\pi\,\delta a\).
+\item The sign check for \(\delta V_{\rm conf}\) follows from \(\delta\Sigma=-\eta\).
+\item The harmonic selection check follows from orthogonality on \(S^2\), so the isotropic linear problem has no \(l=0\leftrightarrow l=2\) mixing.
+\item The ontology check keeps \(A_w,J^w,F_{\mu w}\) alive before any far-field brane reduction.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~002 uses the same wall action to recover \((a,L)\).  Stage~003 uses \eqref{eq:app-stage001-delta-v} as the wall--BdG coupling.  Stage~004 uses the retained mixed variables as the port-active gauge sector.  Stages~005--006 use the grouped real \(P_2\) response operator to formulate the outgoing-normalization product.}

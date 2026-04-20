@@ -1,0 +1,45 @@
+\section[Stage 036]{Stage 036: Exact Overlap-Boost Window for the Lowest Support Lane}
+\label{stage:036}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the exponential source family and its overlap ceiling.}
+\stagefield{Purpose}{Stage~036 computes the maximum possible overlap boost supplied by the first exponential lowest-lane source family.}
+\stagefield{Inputs}{Lowest D/N support mode \(\chi_0(s)=\sqrt{2/L}\sin(\pi s/2L)\) and normalized exponential source \(\sigma_\alpha\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage036_overlap_boost_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage036_overlap_boost_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage036_overlap_boost_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage036_overlap_boost_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The normalized exponential source family is
+\begin{equation}
+\label{eq:app-stage036-sigma}
+\sigma_\alpha(s)=\frac{\alpha e^{\alpha s/L}}{e^\alpha-1},
+\qquad
+\int_0^L\sigma_\alpha(s)\,ds=L.
+\end{equation}
+The exact overlap boost relative to the uniform source is
+\begin{equation}
+\label{eq:app-stage036-Omega-exp}
+\boxed{
+\Omega_{\exp}(\alpha)
+=\frac{\pi\alpha(2\alpha e^\alpha+\pi)}{(4\alpha^2+\pi^2)(e^\alpha-1)}}.
+\end{equation}
+The endpoint values are
+\begin{equation}
+\label{eq:app-stage036-Omega-window}
+\boxed{
+\Omega_{\exp}(0)=1,
+\qquad
+\lim_{\alpha\to+\infty}\Omega_{\exp}(\alpha)=\frac{\pi}{2}}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage036-overlap-ceiling}
+\boxed{
+\Omega_0^2\leq\frac{\pi^2}{4}}.
+\end{equation}
+Pure overlap rescue alone is possible only if \(\zeta_{\rm req}\leq\pi^2/4\).
+
+\stagefield{Output}{Overlap boost formula \eqref{eq:app-stage036-Omega-exp} and ceiling \eqref{eq:app-stage036-overlap-ceiling}.}
+\stagefield{Downstream use}{Stage~039 identifies \(\alpha\) with a Peclet number; Stage~040 combines it with Robin softening.}
+

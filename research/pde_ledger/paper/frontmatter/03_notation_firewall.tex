@@ -1,0 +1,1109 @@
+\chapter{Notation Firewall}
+\label{chap:notation-firewall}
+
+This chapter fixes the notation rules for the entire derivation ledger.  Its purpose is not to introduce new physics.  Its purpose is to prevent category mistakes while the document moves between the exact parent theory, the lifted moving-throat geometry, the grouped real \(P_2\) response bundle, the outgoing-normalization bridge, the weak-axisymmetric quotient variables, the realization compiler, and the relaxed open-system extension.
+
+The moving-throat derivation uses several symbols that are easy to confuse if their layer is not stated.  The symbol \(q\), for example, can refer in older notes to a gravity-side scalar coefficient, in the parent gauge theory to electric charge, in the wall geometry to a harmonic amplitude, in the weak-axisymmetric quotient to a log-drift coordinate, and in post-Newtonian residual algebra to a coefficient in a finite basis.  These are different objects.  The notation firewall below says which meanings are allowed in this ledger and which meanings must be avoided.
+
+\begin{quote}
+A symbol is never promoted across layers by notation alone.  A parent-theory variable, a reduced-closure coefficient, a branch observable, and a realization target must remain visibly distinct.
+\end{quote}
+
+This chapter should be read together with \cref{chap:claim-status-firewall}.  The claim-status firewall says how strong a statement is.  The notation firewall says what the symbols in that statement are allowed to mean.
+
+\section{Global anti-ambiguity rules}
+\label{sec:notation-global-rules}
+
+The following rules apply everywhere in this companion.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{No silent reuse across layers.}  A symbol used in the exact parent theory may be reused in a reduced branch only when the text explicitly states the new local meaning.  Otherwise the parent-theory meaning remains active.
+  \item \textbf{No hidden summation over grouped labels.}  The grouped labels \(20\), \(21\), and \(22\) are lane labels, not tensor indices.  They are summed only when a summation sign, a grouped trace, or an explicit weighted average is written.
+  \item \textbf{No charge from circulation.}  Electric charge sign is never inferred from circulation, throat radius, breathing amplitude, or wall harmonic data.
+  \item \textbf{No deletion of mixed channels.}  A strict brane Maxwell reduction may suppress \(A_w\), \(J^w\), and \(F_{\mu w}\), but it does not remove those channels from the microscopic ontology.
+  \item \textbf{No branch realization by notation.}  Writing a target such as \(P_0\), \(\Xi_1\), \(U=V=0\), or \(\Delta_{\rm full}=0\) does not prove that the actual moving-throat branch realizes it.
+  \item \textbf{Subscripts must be local.}  Subscripts \(0,2,4\) often label powers in a low-frequency expansion.  They are not automatically PN orders, not automatically harmonic degrees, and not automatically branch numbers.
+  \item \textbf{Acronyms and packets must be expanded locally.}  The first time a chapter uses a packet such as \(\Delta_{\rm full}\), \(\mathfrak C_{{\rm tr},*}\), or \(K_{\rm exp}\), it should remind the reader which layer that packet belongs to.
+\end{enumerate}
+
+These rules are especially important in the stage appendices, where the notation sometimes reflects the historical path of discovery.  When an older stage used a symbol in a way that later became unsafe, the appendix entry should record both the original local meaning and the current ledger meaning.
+
+\section{Coordinate, index, and operator conventions}
+\label{sec:notation-coordinates-indices}
+
+The fundamental arena is a \((4+1)\)-dimensional spacetime.  Coordinates are written
+\begin{equation}
+  x^M=(t,x,y,z,w),
+  \qquad
+  M,N,L\in\{0,1,2,3,4\},
+  \qquad
+  x^0=t,
+  \quad
+  x^4=w.
+  \label{eq:notation-bulk-coordinates}
+\end{equation}
+The bulk spatial coordinate is
+\begin{equation}
+  \mathbf X=(x,y,z,w)\in\mathbb R^4,
+\end{equation}
+while the brane spatial coordinate is
+\begin{equation}
+  \mathbf x=(x,y,z)\in\mathbb R^3.
+\end{equation}
+The brane radius and brane angular direction are
+\begin{equation}
+  r=|\mathbf x|=\sqrt{x^2+y^2+z^2},
+  \qquad
+  \Omega=\frac{\mathbf x}{r}\in S^2.
+\end{equation}
+
+The preferred index sets are listed in \cref{tab:notation-index-sets}.
+
+\begin{longtable}{L{0.22\textwidth}L{0.27\textwidth}L{0.42\textwidth}}
+\caption{Index conventions used by the derivation ledger.}\label{tab:notation-index-sets}\\
+\toprule
+Index symbol & Range & Use \\
+\midrule
+\endfirsthead
+\toprule
+Index symbol & Range & Use \\
+\midrule
+\endhead
+\(M,N,L\) & \(0,1,2,3,4\) & Bulk spacetime indices. \\
+\addlinespace
+\(\mu,\nu,\lambda\) & \(0,1,2,3\) & Brane spacetime indices. \\
+\addlinespace
+\(i,j,k\) & \(x,y,z,w\) & Bulk spatial indices. \\
+\addlinespace
+\(a,b,c\) & \(x,y,z\) & Brane spatial indices.  Do not confuse these with the throat radius \(a(t)\), grouped anomaly variables \(a_x,b_x\), or relaxed-branch coordinates named \(a,b\). \\
+\addlinespace
+\(A,B\) & Context-dependent & Avoid for spacetime indices in this ledger.  When used in grouped response sections, \(A,B\in\{20,21,22\}\) are grouped lane labels. \\
+\addlinespace
+\(\alpha,r,n\) & Local & Mode, port, or expansion labels.  Their meaning must be stated in the local section. \\
+\bottomrule
+\end{longtable}
+
+The bulk metric convention is
+\begin{equation}
+  \eta_{MN}=\operatorname{diag}(-1,+1,+1,+1,+1).
+\end{equation}
+The bulk d'Alembertian is
+\begin{equation}
+  \Box_5=-\partial_t^2+\nabla_3^2+\partial_w^2.
+\end{equation}
+The three- and four-spatial gradients are
+\begin{equation}
+  \nabla_3=(\partial_x,\partial_y,\partial_z),
+  \qquad
+  \nabla_4=(\partial_x,\partial_y,\partial_z,\partial_w).
+\end{equation}
+
+In the moving-throat chapters, \(w\) is the bulk axial coordinate.  A finite-throat axial coordinate such as \(s\) or \(z\) may be introduced for one-dimensional reduced support calculations; when this happens, the text must state whether \(s\) or \(z\) is identical to \(w\), a rescaled version of \(w\), or a local coordinate along the throat.
+
+\section{Projection versus reduction}
+\label{sec:notation-projection-reduction}
+
+Projection and reduction are different operations and use different symbols.
+
+\subsection{Projection}
+\label{subsec:notation-projection}
+
+Projection defines what a brane observer measures.  A normalized projection kernel is written
+\begin{equation}
+  W(w),
+  \qquad
+  \int_{-\infty}^{+\infty} W(w)\,dw=1.
+\end{equation}
+For a bulk field \(Q(t,\mathbf x,w)\), the projected brane observable is
+\begin{equation}
+  \overline Q(t,\mathbf x)
+  =\int_{-\infty}^{+\infty}W(w)Q(t,\mathbf x,w)\,dw.
+  \label{eq:notation-projected-Q}
+\end{equation}
+Projection is a measurement definition once \(W\) is declared.  It does not by itself eliminate the extra coordinate dynamically.
+
+\subsection{Reduction}
+\label{subsec:notation-reduction}
+
+Reduction integrates out or suppresses variables under a stated ansatz, limit, branch restriction, or asymptotic regime.  Examples include the far-field zero-mode Maxwell reduction, the stable BdG normal-mode reduction, a finite-throat support-mode truncation, a low-frequency expansion, an isotropic branch restriction, or a selected-support slice.
+
+The localization profile in the Maxwell action is written
+\begin{equation}
+  Z(w),
+  \qquad
+  Z_{\rm int}=\int_{-\infty}^{+\infty}Z(w)\,dw.
+\end{equation}
+The symbol \(Z(w)\) controls bulk gauge dynamics.  The symbol \(W(w)\) controls brane observation.  Even if a matched choice \(W=Z/Z_{\rm int}\) is later useful, the two symbols must remain distinct.
+
+The controlled zero-mode Maxwell reduction may use assumptions of the form
+\begin{equation}
+  A_w\approx0,
+  \qquad
+  \partial_wA_\mu\approx0,
+  \qquad
+  J^w\approx0,
+  \qquad
+  F_{\mu w}\approx0.
+  \label{eq:notation-zero-mode-suppression}
+\end{equation}
+Equation~\eqref{eq:notation-zero-mode-suppression} is a reduction statement, not an ontology statement.  It says which mixed quantities are suppressed in one far-field brane regime.  It does not say that those quantities are absent from the parent theory or from the moving-throat PDE.
+
+\section{Parent field variables}
+\label{sec:notation-parent-fields}
+
+The exact parent theory uses three core field layers: matter, gauge, and geometry.
+
+\subsection{Matter and hydrodynamic variables}
+\label{subsec:notation-matter}
+
+The matter/order parameter is
+\begin{equation}
+  \psi(\mathbf X,t),
+  \qquad
+  \rho=|\psi|^2.
+\end{equation}
+The bulk number current is written
+\begin{equation}
+  j^i=\frac{\hbar}{m}\,\operatorname{Im}(\psi^*D_i\psi),
+\end{equation}
+with exact continuity
+\begin{equation}
+  \partial_t\rho+\partial_i j^i=0.
+\end{equation}
+When \(\rho>0\), the bulk velocity is defined by
+\begin{equation}
+  j^i=\rho v^i.
+\end{equation}
+The gauge-invariant Madelung velocity is
+\begin{equation}
+  v_i=\frac{\hbar}{m}\partial_i\theta-\frac{q_\star}{m}A_i,
+  \qquad
+  \psi=\sqrt\rho\,e^{i\theta}.
+\end{equation}
+The quantum potential is
+\begin{equation}
+  Q(\rho)=-\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt\rho}{\sqrt\rho}.
+\end{equation}
+
+The pressure law is denoted
+\begin{equation}
+  P(\rho)=K_{\rm EOS}\rho^5.
+\end{equation}
+The symbol \(P(\rho)\) is pressure.  It is not the outgoing prefactor \(P_0\), \(P_1\), \(P_2\), or \(P_4\).  The EOS coefficient should be written \(K_{\rm EOS}\) whenever there is any risk of confusion with wall stiffnesses such as \(K_\eta\), \(K_A\), \(K_U\), or \(K_W^{\rm eff}\).
+
+\subsection{Gauge variables and currents}
+\label{subsec:notation-gauge}
+
+The gauge potential is
+\begin{equation}
+  A_M=(A_0,A_i),
+\end{equation}
+with field strength
+\begin{equation}
+  F_{MN}=\partial_MA_N-\partial_NA_M.
+\end{equation}
+The localized Maxwell equation uses a total current
+\begin{equation}
+  J_{\rm tot}^M=J_\psi^M+J_{\rm ext}^M.
+\end{equation}
+Here \(J_\psi^M\) is the dynamical matter current produced by minimal coupling, while \(J_{\rm ext}^M\) denotes external or background sources.  The lower-case \(j^i\) is the matter number current.  The upper-case \(J^M\) is an electromagnetic source current.  These should not be interchanged.
+
+The moving-throat and PN notes sometimes contain a finite vector called \(J\), for example a support-source or throat-response vector in a reduced basis.  Such a vector is not an electromagnetic current unless the local section explicitly says so.  In this ledger, any finite response vector should be named \(J_{\rm resp}\), \(J_{\rm src}\), or another decorated symbol when possible.
+
+\subsection{Mixed-sector observables}
+\label{subsec:notation-mixed-sector}
+
+The mixed variables are structural:
+\begin{equation}
+  A_w,
+  \qquad
+  J^w,
+  \qquad
+  F_{\mu w},
+  \qquad
+  E_w,
+  \qquad
+  C_a.
+\end{equation}
+The exact mixed-field gauge invariants are
+\begin{equation}
+  E_w=F_{w0}=-\partial_t A_w-\partial_wA_0,
+  \qquad
+  C_a=F_{aw}=\partial_aA_w-\partial_wA_a.
+  \label{eq:notation-mixed-invariants}
+\end{equation}
+They are suppressed only in strict brane reductions of the form \eqref{eq:notation-zero-mode-suppression}.  They remain available in the microscopic response theory and are required for the honest passive/outgoing bridge.
+
+The letter \(C_a\) in \eqref{eq:notation-mixed-invariants} is a mixed electromagnetic field component.  It should not be confused with grouped anomaly variables \(a_x\), BdG coupling matrices \(C\), or constants named \(C\) in local algebra.
+
+\section{Charge, circulation, and mass-dressing firewall}
+\label{sec:charge-circulation-firewall}
+
+The corrected electric-charge dictionary is
+\begin{equation}
+  \eta_Q\in\{+1,-1\},
+  \qquad
+  e_\star>0,
+  \qquad
+  q_\star=\eta_Qe_\star,
+\end{equation}
+with brane-observed coupling
+\begin{equation}
+  q_{\rm eff}=\frac{q_\star}{\sqrt{Z_{\rm int}}}
+  =\eta_Qe_{\rm eff}.
+\end{equation}
+The sign is carried by \(\eta_Q\).  The microscopic branch magnitude is \(e_\star\).  The brane-observed magnitude is controlled by localization through \(Z_{\rm int}\).
+
+Circulation, winding, and vortex labels should be written with symbols such as
+\begin{equation}
+  \Gamma,
+  \qquad
+  n_\Gamma,
+\end{equation}
+or with an explicitly declared magnetic/vortical label.  These symbols do not define \(\eta_Q\), \(q_\star\), or \(q_{\rm eff}\).
+
+The historical gravity-side scalar coefficient once written as a bare \(q=1\) is, in this companion,
+\begin{equation}
+  \kappa_\rho=1.
+\end{equation}
+It is a mass-dressing/Newtonian scalar coefficient, not electric charge.
+
+The following table records common collision risks.
+
+\begin{longtable}{L{0.18\textwidth}L{0.34\textwidth}L{0.38\textwidth}}
+\toprule
+Symbol & Allowed meaning & Forbidden reading \\
+\midrule
+\endhead
+\(q_\star\) & Signed microscopic electric branch coupling \(\eta_Qe_\star\). & Throat radius, circulation, scalar mass-dressing coefficient, or quotient coordinate. \\
+\addlinespace
+\(q_{\rm eff}\) & Canonically normalized brane electric coupling. & Bare microscopic charge or circulation. \\
+\addlinespace
+\(q_{\rm tr},q_{\rm nt},q_\eta\) & Coherent quotient/orbit coordinates. & Electric charges. \\
+\addlinespace
+\(q_1,\ldots,q_7\) & Residual-basis coefficients when locally declared in PN algebra. & Electric charges. \\
+\addlinespace
+\(\kappa_\rho\) & Gravity-side mass-dressing coefficient. & Electric charge. \\
+\addlinespace
+\(\Gamma\), \(n_\Gamma\) & Circulation/winding or magnetic/vortical data. & Electric charge sign. \\
+\bottomrule
+\end{longtable}
+
+\section{Moving-throat geometry notation}
+\label{sec:geometry-notation}
+
+The moving throat is represented by the level-set/shape-field pair
+\begin{equation}
+  \Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+  \qquad
+  \Sigma=0 \quad \text{on the throat surface}.
+\end{equation}
+The reference throat is
+\begin{equation}
+  \Sigma_0(\mathbf X)=r-R_0(w),
+\end{equation}
+and the wall displacement is
+\begin{equation}
+  R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t).
+\end{equation}
+The old collective variables
+\begin{equation}
+  a(t),
+  \qquad
+  L(t)
+\end{equation}
+are collective moments of the distributed shape field.  They are not the fundamental moving-throat variables in this ledger.  The mouth-average radius convention is
+\begin{equation}
+  a(t)=\frac{1}{4\pi}\int_{S^2}R(\Omega,0,t)\,d\Omega.
+\end{equation}
+If \(W_b(\Omega,t)\) denotes the bottom location determined by \(R(\Omega,W_b,t)=0\), then the average throat depth is
+\begin{equation}
+  L(t)=\frac{1}{4\pi}\int_{S^2}W_b(\Omega,t)\,d\Omega.
+\end{equation}
+
+The promoted confinement coupling is written
+\begin{equation}
+  V_{\rm conf}(\mathbf X;\Sigma)=V_{\rm wall}\!\left(\frac{\Sigma}{\ell_c}\right),
+\end{equation}
+with linear variation
+\begin{equation}
+  \delta V_{\rm conf}
+  =
+  -\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta.
+\end{equation}
+
+The minimal distributed wall coefficients are
+\begin{equation}
+  \mu_\eta(w),
+  \qquad
+  T_w(w),
+  \qquad
+  T_\Omega(w),
+  \qquad
+  K_\eta(w).
+\end{equation}
+They are branch data.  They should not be retuned stage by stage to rescue a normalization target unless the local section explicitly introduces a new branch or closure.
+
+The wall action and reduced modal equations in this ledger use the densitized convention: the background surface measure has been absorbed into the effective one-dimensional coefficients and fields.  If a section reintroduces an explicit surface weight, it must also rederive the corresponding axial operator and first-derivative terms.
+
+\section{Harmonics and grouped real \texorpdfstring{\(P_2\)}{P2} lanes}
+\label{sec:harmonic-p2-notation}
+
+The wall displacement is expanded as
+\begin{equation}
+  \eta(\Omega,w,t)
+  =
+  \eta_0(w,t)Y_{00}(\Omega)
+  +
+  \sum_{m\in P_2({\rm real})}q_{2m}(w,t)Y_{2m}^{\rm real}(\Omega)
+  +
+  \eta_{\ge3}(\Omega,w,t).
+\end{equation}
+The normalized scalar harmonic is
+\begin{equation}
+  Y_{00}=\frac{1}{2\sqrt\pi},
+  \qquad
+  \int_{S^2}Y_{00}^2\,d\Omega=1.
+\end{equation}
+Thus a physical mouth-average radius shift \(\delta a\) corresponds to
+\begin{equation}
+  q_{00}(0,t)=2\sqrt\pi\,\delta a(t).
+\end{equation}
+
+The full real quadrupole bundle contains five real modes:
+\begin{equation}
+  20,
+  \qquad
+  21c,
+  \qquad
+  21s,
+  \qquad
+  22c,
+  \qquad
+  22s.
+\end{equation}
+Many reduced stages use the grouped triplet
+\begin{equation}
+  A\in\{20,21,22\},
+\end{equation}
+where \(21\) groups the \(21c,21s\) pair and \(22\) groups the \(22c,22s\) pair.  The grouped metric is
+\begin{equation}
+  G_{\rm grp}=\operatorname{diag}(1,2,2).
+\end{equation}
+For any grouped triple
+\begin{equation}
+  x=(x_{20},x_{21},x_{22}),
+\end{equation}
+the weighted trace and anomaly variables are
+\begin{equation}
+  \bar x=\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\end{equation}
+\begin{equation}
+  a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+  \qquad
+  b_x=\frac{x_{21}-x_{22}}{2}.
+\end{equation}
+The inverse map is
+\begin{equation}
+  x_{20}=\bar x+4a_x,
+  \qquad
+  x_{21}=\bar x-a_x+b_x,
+  \qquad
+  x_{22}=\bar x-a_x-b_x.
+\end{equation}
+
+A useful \(G_{\rm grp}\)-orthogonal basis is
+\begin{equation}
+  e_{\bar x}=(1,1,1),
+  \qquad
+  e_a=(4,-1,-1),
+  \qquad
+  e_b=(0,1,-1),
+\end{equation}
+with squared norms \(5\), \(20\), and \(4\), respectively.  The exact projectors are
+\begin{equation}
+  P_{\bar x}=\frac15
+  \begin{pmatrix}
+  1&2&2\\
+  1&2&2\\
+  1&2&2
+  \end{pmatrix},
+\end{equation}
+\begin{equation}
+  P_a=\frac1{20}
+  \begin{pmatrix}
+  16&-8&-8\\
+  -4&2&2\\
+  -4&2&2
+  \end{pmatrix},
+  \qquad
+  P_b=\frac14
+  \begin{pmatrix}
+  0&0&0\\
+  0&2&-2\\
+  0&-2&2
+  \end{pmatrix}.
+\end{equation}
+They satisfy
+\begin{equation}
+  P_{\bar x}+P_a+P_b=I_3,
+  \qquad
+  P_iP_j=\delta_{ij}P_i.
+\end{equation}
+The isotropy condition for a grouped triple is
+\begin{equation}
+  a_x=b_x=0.
+\end{equation}
+
+The weak axisymmetric quadrupole splitting signature is
+\begin{equation}
+  \lambda_{20}=1,
+  \qquad
+  \lambda_{21}=\frac12,
+  \qquad
+  \lambda_{22}=-1,
+\end{equation}
+which implies the grouped anomaly line
+\begin{equation}
+  b_x=3a_x.
+\end{equation}
+This relation is a symmetry fingerprint, not a definition of all possible anisotropy.
+
+\section{Wall/support/gauge response notation}
+\label{sec:response-notation}
+
+For each grouped lane \(A\in\{20,21,22\}\), the conservative wall/worldtube operator is written
+\begin{equation}
+  D_A^{\rm(cons)}(\omega)
+  =
+  D_{A,0}+D_{A,2}\omega^2+D_{A,4}\omega^4+O(\omega^6).
+\end{equation}
+The normalized conservative response is
+\begin{equation}
+  Y_A(\omega)
+  =
+  \frac{D_{A,0}}{D_A^{\rm(cons)}(\omega)}
+  =
+  1+u_2^{(A)}\omega^2+u_4^{(A)}\omega^4+O(\omega^6),
+\end{equation}
+with exact conversion
+\begin{equation}
+  u_2^{(A)}=-\frac{D_{A,2}}{D_{A,0}},
+  \qquad
+  u_4^{(A)}=\frac{D_{A,2}^2-D_{A,0}D_{A,4}}{D_{A,0}^2}.
+\end{equation}
+On an isotropic branch, the lane label may be suppressed:
+\begin{equation}
+  D_{A,n}=D_n,
+  \qquad
+  N_{A,n}=N_n.
+\end{equation}
+
+The full coupled reduced coefficients are decomposed as
+\begin{equation}
+  D_{A,0}=K_A-B_{A,0}-Z_{A,0},
+\end{equation}
+\begin{equation}
+  D_{A,2}=-(M_A+B_{A,2}+Z_{A,2}),
+\end{equation}
+\begin{equation}
+  D_{A,4}=-(B_{A,4}+Z_{A,4}).
+\end{equation}
+Here:
+\begin{itemize}[leftmargin=2.2em]
+  \item \(K_A,M_A\) are wall baseline stiffness and inertia data;
+  \item \(B_{A,n}\) are stable BdG support moments;
+  \item \(Z_{A,n}\) are conservative localized-Maxwell/mixed moments;
+  \item \(N_{A,n}\) are outgoing-transfer moments.
+\end{itemize}
+
+The outgoing prefactor expansion is
+\begin{equation}
+  P_{A,0}=\frac{N_{A,0}}{D_{A,0}},
+\end{equation}
+\begin{equation}
+  P_{A,2}=\frac{D_{A,0}N_{A,2}-2D_{A,2}N_{A,0}}{D_{A,0}^2},
+\end{equation}
+\begin{equation}
+  P_{A,4}=\frac{D_{A,0}^2N_{A,4}-2D_{A,0}(D_{A,2}N_{A,2}+D_{A,4}N_{A,0})+3D_{A,2}^2N_{A,0}}{D_{A,0}^3}.
+\end{equation}
+On an isotropic branch, write these as \(P_0,P_2,P_4\).  In this context \(P_0\) is an outgoing prefactor, not a pressure, not a harmonic, and not a projection operator.
+
+The leading weak-axisymmetric outgoing-prefactor slope is
+\begin{equation}
+  \Xi_1=\frac{P_1}{P_0}.
+\end{equation}
+Here \(P_1\) is the first weak-axisymmetric correction to the outgoing prefactor, not the \(l=1\) harmonic and not a first post-Newtonian order.
+
+\section{Outgoing and retarded-port notation}
+\label{sec:outgoing-notation}
+
+The exterior passive/outgoing port attached to a lane \(l\) is written
+\begin{equation}
+  \Pi_l^{\rm(out)}(\omega).
+\end{equation}
+For a compact outgoing quadrupole branch, the normalized \(l=2\) fingerprint is
+\begin{equation}
+  \widehat Y_2^{\rm(out)}(\omega)
+  =
+  1+\frac{a^2\omega^2}{9c_s^2}
+  +\frac{4a^4\omega^4}{81c_s^4}
+  +i\frac{a^5\omega^5}{27c_s^5}
+  +O(\omega^6).
+\end{equation}
+The outgoing port coefficient is therefore
+\begin{equation}
+  \Gamma_2^{\rm(port)}=\frac{a^5}{27c_s^5}.
+\end{equation}
+The universal quadrupole target is
+\begin{equation}
+  \gamma_{\rm GR}=\frac{2G}{5c^5}.
+\end{equation}
+The invariant normalization condition is written
+\begin{equation}
+  \hat m_0^{\,2}P_0\frac{a^5}{27c_s^5}=\frac{2G}{5c^5},
+\end{equation}
+or equivalently
+\begin{equation}
+  \hat m_0^{\,2}P_0=\frac{54Gc_s^5}{5a^5c^5}.
+\end{equation}
+The quantity \(\hat m_0\) is a source-map factor.  It is not a mass unless the local section explicitly defines a mass-normalized source map.
+
+The sign convention in the wall-operator language is
+\begin{equation}
+  D_l=K_l-M_l\omega^2-\Sigma_l(\omega).
+\end{equation}
+Therefore a positive-imaginary outgoing port contributes as a passive damping term with the corresponding sign in \(D_l\).  If a section switches to admittance or response notation, it must state the sign conversion.
+
+\section{Family-1 mouth/core notation}
+\label{sec:family1-notation}
+
+The Family-1 mouth/core block uses
+\begin{equation}
+  K_s,
+  \qquad
+  K_q,
+  \qquad
+  \lambda,
+  \qquad
+  g_s,
+  \qquad
+  g_q.
+\end{equation}
+Its normalized ratios are
+\begin{equation}
+  \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+  \qquad
+  \mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}.
+\end{equation}
+The mouth/core control variables are
+\begin{equation}
+  \Sigma_0=\frac{20}{9}\widehat T_m^2,
+\end{equation}
+\begin{equation}
+  \mathcal R=\frac{(\mathfrak g-\mathfrak r)^2}{1+\mathfrak r^2},
+\end{equation}
+\begin{equation}
+  \mathcal S[\Sigma]=\int_0^1K_q(x)\Sigma(x)\,dx,
+  \qquad
+  \Pi=\Sigma_0[1-\mathcal R\mathcal S].
+\end{equation}
+The symbol \(\Sigma_0\) in this block is a mouth/core scalar, not the level-set background \(\Sigma_0(\mathbf X)=r-R_0(w)\).  When both appear nearby, write \(\Sigma_{\rm geom,0}\) for the level-set background or rename the mouth scalar locally.
+
+The symbol \(\Pi\) in this block is a mouth slope/bias variable.  It is not the outgoing port \(\Pi_l^{\rm(out)}\).
+
+\section{Coherent local-kernel notation}
+\label{sec:coherent-kernel-notation}
+
+The coherent reduced hierarchy uses the following dimensionless variables:
+\begin{equation}
+  \epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{(\mathrm{eff})}},
+  \qquad
+  \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_UK_W^{(\mathrm{eff})}},
+\end{equation}
+\begin{equation}
+  Z_W=\frac{\lambda_W^2}{K_\eta^{(\mathrm{eff})}K_W^{(\mathrm{eff})}},
+  \qquad
+  \delta_U=\frac{\pi^2T_U}{L^2K_U},
+\end{equation}
+\begin{equation}
+  \chi_0=\frac{\gamma c_{\eta U}}{K_U},
+  \qquad
+  \zeta=\frac{\lambda_\phi^2K_W^{(\mathrm{eff})}}{\lambda_W^2K_\phi^{(\mathrm{eff})}}.
+\end{equation}
+The coherent tracking factor is
+\begin{equation}
+  R_{\rm tr}=\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0}.
+\end{equation}
+The support-enhancement factor is
+\begin{equation}
+  S(\zeta;\epsilon)
+  =
+  1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon},
+  \qquad
+  \epsilon=\epsilon_W\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right).
+\end{equation}
+
+The exact lowest-twin slice is
+\begin{equation}
+  \rho_\alpha=\frac43,
+  \qquad
+  \zeta_{\rm req}=\frac13.
+\end{equation}
+These numbers belong to the selected twin-support placement problem.  They should not be reused as generic density or support variables outside that context.
+
+\section{Microscopic defect, quotient, and orbit notation}
+\label{sec:quotient-orbit-notation}
+
+The positive coherent microscopic state is
+\begin{equation}
+  x=(\lambda_W,c_{\eta U},\gamma,K_U,K_\eta^{(\mathrm{eff})},K_W^{(\mathrm{eff})},\mu_W,T_U).
+\end{equation}
+Its grouped weak-axisymmetric log-drift vector is
+\begin{equation}
+  \delta\mathbf x
+  =
+  (\lambda_1,c_1,\gamma_1,\kappa_U,\kappa_\eta,\kappa_W,\mu_1,\tau_1)^T.
+\end{equation}
+The log-drift components are infinitesimal drift coordinates.  They are not electric charges, not PN coefficients, and not generic fit parameters.
+
+The direct microscopic slippages are
+\begin{equation}
+  \Sigma_Z=\delta\ln\!\left(\frac{Z_W}{\Omega_W^2}\right),
+  \qquad
+  \Sigma_\chi=\delta\ln\chi_0,
+  \qquad
+  \Sigma_\eta=\delta\ln\epsilon_\eta,
+\end{equation}
+\begin{equation}
+  \Sigma_\epsilon=\delta\ln\epsilon_W,
+  \qquad
+  \Sigma_\delta=\delta\ln\delta_U.
+\end{equation}
+These \(\Sigma\)-symbols are slippage variables, not the throat level-set \(\Sigma\).  If both occur in one local derivation, the level-set should be written as \(\Sigma(\mathbf X,t)\) and the slippages should retain their subscripts.
+
+The branch-adapted coordinates are
+\begin{equation}
+  \Sigma_{\rm tr}=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi,
+\end{equation}
+\begin{equation}
+  \Sigma_{\rm nt}
+  =
+  \Sigma_Z
+  +
+  \frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\Sigma_\epsilon
+  -
+  \left[
+  \frac{2\chi_0}{1+\delta_U}
+  +
+  \frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+  \right]\Sigma_\delta.
+\end{equation}
+The observable defect variables are
+\begin{equation}
+  \Theta_1,
+  \qquad
+  \Xi_1,
+  \qquad
+  \mathcal R_1,
+\end{equation}
+where \(\Theta_1\) is the tracking-factor drift, \(\Xi_1\) is the grouped transfer-shape drift, and \(\mathcal R_1\) is the selected-branch demand-ratio drift.  They satisfy the triangular normal-form reading
+\begin{equation}
+  \Theta_1\leftrightarrow\Sigma_{\rm tr},
+  \qquad
+  \Xi_1\leftrightarrow\Sigma_{\rm nt},
+  \qquad
+  \mathcal R_1+\Xi_1\leftrightarrow\Sigma_\eta.
+\end{equation}
+
+The final reduced coherent invariant coordinates are
+\begin{equation}
+  \mathfrak C_{{\rm tr},*}
+  =
+  \chi_0^{1+\delta_{U,*}}\delta_U^{1+\chi_{0,*}},
+\end{equation}
+\begin{equation}
+  \mathfrak C_{{\rm nt},*}
+  =
+  \frac{Z_W}{\Omega_W^2}\epsilon_W^{E_*}\delta_U^{-F_*},
+\end{equation}
+\begin{equation}
+  \epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{(\mathrm{eff})}}.
+\end{equation}
+The additive orbit packet is
+\begin{equation}
+  (q_{\rm tr},q_{\rm nt},q_\eta),
+\end{equation}
+and the multiplicative orbit packet is
+\begin{equation}
+  (\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta),
+  \qquad
+  \mathfrak R_i=e^{q_i}.
+\end{equation}
+Important firewall:
+\begin{equation}
+  R_{\rm tr}
+  \quad\text{is the coherent tracking factor, while}\quad
+  \mathfrak R_{\rm tr}
+  \quad\text{is a finite orbit/invariant ratio.}
+\end{equation}
+They must not be interchanged.
+
+On the actual coherent placement branch,
+\begin{equation}
+  q_{\rm tr}
+  =
+  (1+\delta_{U,*})\ln\frac{\chi_0}{\chi_{0,{\rm ref}}}
+  +
+  (1+\chi_{0,*})\ln\frac{\delta_U}{\delta_{U,{\rm ref}}},
+\end{equation}
+\begin{equation}
+  q_{\rm nt}
+  =
+  \ln\frac{Z_W}{Z_{W,{\rm ref}}}
+  -
+  \ln\frac{\Lambda}{\Lambda_{\rm ref}}
+  +
+  E_*\ln\frac{\epsilon_W}{\epsilon_{W,{\rm ref}}}
+  -
+  F_*\ln\frac{\delta_U}{\delta_{U,{\rm ref}}},
+\end{equation}
+\begin{equation}
+  q_\eta=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}.
+\end{equation}
+The coherent orbit-lock condition is
+\begin{equation}
+  q_{\rm tr}=q_{\rm nt}=q_\eta=0.
+\end{equation}
+
+\section{Transfer-shape and rigid-mouth physical packet}
+\label{sec:rigid-mouth-notation}
+
+The transfer-shape variables are
+\begin{equation}
+  \mathcal T^2,
+  \qquad
+  R_{\rm target},
+  \qquad
+  1-\epsilon_\eta,
+\end{equation}
+with
+\begin{equation}
+  \mathcal T^2
+  =
+  \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+\end{equation}
+\begin{equation}
+  R_{\rm target}\mathcal T^2
+  =
+  \Lambda_0(1-\epsilon_\eta),
+  \qquad
+  \Lambda_0=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+\end{equation}
+At first grouped weak-axisymmetric order,
+\begin{equation}
+  \delta\ln\mathcal T^2=\Xi_1,
+  \qquad
+  \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+  \qquad
+  \delta\ln R_{\rm target}=\mathcal R_1.
+\end{equation}
+
+On the rigid-mouth slice, the physical logarithmic chart is
+\begin{equation}
+  U=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+  \qquad
+  V=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}\right).
+\end{equation}
+The orbit-lock condition is the Cartesian codimension-two condition
+\begin{equation}
+  U=V=0.
+\end{equation}
+In this section, \(U\) and \(V\) are rigid-mouth physical chart coordinates.  They are not the Newtonian potential \(U\), not a support coordinate \(U_{A,r}\), and not a generic energy.  If those objects appear together, rename the Newtonian potential as \(U_{\rm N}\) and the support coordinate as \(U_{\rm port}\) or \(U_{A,r}\).
+
+\section{Packet-A normalization and same-charge ceiling notation}
+\label{sec:packet-a-notation}
+
+The isotropic one-pole grouped-real \(P_2\) conservative front end is
+\begin{equation}
+  a_2=b_2=a_4=b_4=0,
+  \qquad
+  \Delta_{\rm pole}=\bar u_4-4\bar u_2^{\,2}=0.
+\end{equation}
+The common conservative carrier is
+\begin{equation}
+  \widehat Y_Q^{\rm cons}(\omega)
+  =
+  \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\end{equation}
+The exact outgoing scalar is
+\begin{equation}
+  \chi_Q=\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
+\end{equation}
+On the natural point-particle source-map branch,
+\begin{equation}
+  N_Q=\chi_Q^{-1},
+  \qquad
+  \hat m_0^{\,2}\chi_QN_Q=1.
+\end{equation}
+The Packet-A finish-line scalar is
+\begin{equation}
+  \Delta_Q=\chi_Q-1.
+\end{equation}
+Equivalently,
+\begin{equation}
+  \Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1),
+  \qquad
+  P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5}.
+\end{equation}
+
+On the actual weak-axisymmetric branch, the first same-charge ceiling is carried by
+\begin{equation}
+  (\Delta_{\rm norm},a_{P_0},b_{P_0}),
+\end{equation}
+or equivalently by
+\begin{equation}
+  (\Delta_{\rm norm},\Xi_1),
+  \qquad
+  \Xi_1=\frac{P_1}{P_0}.
+\end{equation}
+The grouped weak-axisymmetric packet obeys
+\begin{equation}
+  a_{P_0}=\frac{\epsilon\bar P_0\Xi_1}{4},
+  \qquad
+  b_{P_0}=\frac{3\epsilon\bar P_0\Xi_1}{4}.
+\end{equation}
+The robust all-lane ceiling is
+\begin{equation}
+  \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+  \bigl(1+|\epsilon\Xi_1|\bigr)
+  \le
+  P_{\rm crit}.
+\end{equation}
+The small parameter \(\epsilon\) in this packet is the weak-axisymmetric bookkeeping parameter.  It is not \(\epsilon_\eta\), \(\epsilon_W\), or the support-enhancement denominator \(\epsilon\) unless the local section explicitly identifies them.
+
+\section{Packet-B graph and realization-compiler notation}
+\label{sec:packet-b-realization-notation}
+
+The free quintuple is
+\begin{equation}
+  \mathbf y=(\lambda_W,c_{\eta U},\gamma,K_U,K_W^{(\mathrm{eff})}).
+\end{equation}
+The target orbit is the exact graph
+\begin{equation}
+  \mathcal O_*
+  =
+  \{\mathbf x_*^{\rm graph}(\mathbf y):\mathbf y\in(\mathbb R_{>0})^5\}.
+\end{equation}
+The graph-closure scalar is
+\begin{equation}
+  \widehat\chi_Q(\mathbf y)=\chi_Q(\mathbf x_*^{\rm graph}(\mathbf y)).
+\end{equation}
+The reduced graph slice is
+\begin{equation}
+  \mathcal Z_*
+  =
+  \{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\}.
+\end{equation}
+The one-parameter log-ray compiler is
+\begin{equation}
+  \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+  \qquad
+  \Phi_{\mathbf s}(\tau)=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)).
+\end{equation}
+Its local directional packet is
+\begin{equation}
+  \Phi_0,
+  \qquad
+  L_0=\frac{d}{d\tau}\ln\Phi_{\mathbf s}\bigg|_0,
+  \qquad
+  L_1=\frac{d^2}{d\tau^2}\ln\Phi_{\mathbf s}\bigg|_0.
+\end{equation}
+
+The finite local mixed-ray search is organized by support-cardinality on the five primitive axes
+\begin{equation}
+  \{\lambda,c,\gamma,U,W\}.
+\end{equation}
+In this search context, \(U\) and \(W\) are primitive axes inherited from the free quintuple notation, not the rigid-mouth chart coordinate \(U\) and not the bulk coordinate \(w\).
+
+\section{Relaxed/open-system branch notation}
+\label{sec:relaxed-branch-notation}
+
+The post-225 relaxed branch is organized by three lifted lanes:
+\begin{equation}
+  L_w=(S_{\rm leak},\mathcal W_w),
+  \qquad
+  L_{UV}=(U,V,\mathcal D_{UV}),
+  \qquad
+  L_\varsigma=(\varsigma,\varsigma_{\min},\operatorname{signchg}).
+\end{equation}
+The exact recovery map to the strict branch is
+\begin{equation}
+  \ell_w=f_U=a=b=0.
+\end{equation}
+The selected-support leakage/work compiler uses
+\begin{equation}
+  \Pi_{\rm tr},
+  \qquad
+  \eta_{\rm leak},
+  \qquad
+  S_{\rm leak},
+  \qquad
+  \mathcal W_w^{\rm bulk},
+  \qquad
+  \mathcal W_w^{\rm sess}.
+\end{equation}
+The orbit-side non-rigid packet uses
+\begin{equation}
+  a_U,
+  \qquad
+  a_V,
+  \qquad
+  \chi_{UV},
+  \qquad
+  \Delta_{UV}=a_Ua_V-\chi_{UV}^2,
+\end{equation}
+\begin{equation}
+  U=\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+  \qquad
+  V=\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}},
+  \qquad
+  \mathcal D_{UV}=\chi_{UV}UV.
+\end{equation}
+The compensated source packet uses
+\begin{equation}
+  \varsigma(x;r)=1+a(r)\cos(\pi x)+b(r)\cos(2\pi x),
+\end{equation}
+\begin{equation}
+  \mathfrak g[\varsigma],
+  \qquad
+  \mathcal S[\varsigma],
+  \qquad
+  \mathcal R[\varsigma],
+  \qquad
+  \mathcal M_\sigma^{\rm pack}(r).
+\end{equation}
+The lowered stationary front end is
+\begin{equation}
+  V_{\rm eff}^{(230)}(r)
+  =
+  V_{\rm short}^{(1p)}(r)
+  -\lambda_LS_{\rm leak}(r)
+  -\lambda_W\mathcal W_w^{\rm sess}(r)
+  -\Delta E_{UV}(r)
+  -\mathcal M_{\sigma,{\rm red}}(r).
+\end{equation}
+The microscopic active-leg export law is
+\begin{equation}
+  K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5.
+\end{equation}
+Here \(s\) is the export coordinate used by the active-leg kernel.  It should not be assumed to equal the finite-throat axial coordinate unless the local section says so.  The coefficients \(\Gamma_3,\Gamma_5\) are export-kernel coefficients, not circulation.
+
+In the relaxed-branch section, bare \(a\) and \(b\) in \(\varsigma=1+a\cos(\pi x)+b\cos(2\pi x)\) are source-shape amplitudes.  They are not the throat radius and not grouped anomaly coordinates.  When this section is expanded, use \(a_\varsigma,b_\varsigma\) if the formula appears near \(a(t)\) or \(a_x,b_x\).
+
+\section{High-risk symbol collision table}
+\label{sec:high-risk-symbol-table}
+
+\begin{longtable}{L{0.13\textwidth}L{0.37\textwidth}L{0.41\textwidth}}
+\caption{Symbols requiring special care.}\label{tab:high-risk-symbols}\\
+\toprule
+Symbol & Safe meanings & Common mistakes to avoid \\
+\midrule
+\endfirsthead
+\toprule
+Symbol & Safe meanings & Common mistakes to avoid \\
+\midrule
+\endhead
+\(q\) & \(q_\star\), \(q_{\rm eff}\), \(q_{2m}\), \(q_{\rm tr}\), \(q_{\rm nt}\), \(q_\eta\), locally declared residual coefficients. & Do not treat every \(q\) as electric charge.  Do not revive bare \(q=1\); write \(\kappa_\rho=1\). \\
+\addlinespace
+\(P\) & Pressure \(P(\rho)\), outgoing prefactors \(P_0,P_1,P_2,P_4\), grouped real \(P_2\) label. & Do not confuse pressure with \(P_0\), and do not confuse grouped real \(P_2\) with a scalar prefactor. \\
+\addlinespace
+\(G\) & Newton's constant \(G\), support couplings \(G_U,G_W\), selected-branch function \(G(\xi,\delta)\). & Do not mix Newton's constant with support couplings or branch functions. \\
+\addlinespace
+\(K\) & EOS normalization \(K_{\rm EOS}\), wall stiffness \(K_\eta,K_A\), support stiffness \(K_U,K_W^{\rm eff}\). & Avoid bare \(K\) unless a local model has declared it. \\
+\addlinespace
+\(R\) & Shape field \(R(\Omega,w,t)\), internal mixing \(R_r\), target ratio \(R_{\rm target}\), tracking factor \(R_{\rm tr}\), orbit ratio \(\mathfrak R_{\rm tr}\). & Do not identify geometric shape data with reduced transfer ratios. \\
+\addlinespace
+\(\rho\) & Bulk density \(\rho=|\psi|^2\), support ratio \(\rho_\alpha\), local loading ratios. & When density and a ratio occur together, write \(\rho_{\rm bulk}\) and \(\rho_{\rm ratio}\). \\
+\addlinespace
+\(\eta\) & Wall displacement \(\eta(\Omega,w,t)\), charge sign \(\eta_Q\), geometry ratio \(\epsilon_\eta\), leakage efficiency \(\eta_{\rm leak}\). & Do not confuse wall displacement with electric charge sign. \\
+\addlinespace
+\(\epsilon\) & Small expansion parameter; ratios \(\epsilon_\eta\), \(\epsilon_W\), support denominator variable. & State which \(\epsilon\) is being expanded in. \\
+\addlinespace
+\(\lambda\) & Localization or coupling scale; weak-axisymmetric signature \(\lambda_A\); mixed coupling \(\lambda_W\). & Do not infer a common physical meaning from the letter. \\
+\addlinespace
+\(\Gamma\) & Circulation label; outgoing/export coefficients \(\Gamma_2^{\rm port}\), \(\Gamma_3\), \(\Gamma_5\). & Do not read export or outgoing coefficients as circulation. \\
+\addlinespace
+\(A\) & Gauge potential \(A_M\); grouped lane label \(A\in\{20,21,22\}\). & Do not treat grouped lane labels as gauge-field indices. \\
+\addlinespace
+\(J\) & Maxwell current \(J^M\); finite response/source vector in reduced ledgers. & Do not interpret every vector named \(J\) as electromagnetic current. \\
+\addlinespace
+\(\Delta\) & Stability denominators \(\Delta_{A,r}\), \(\Delta_{UV}\); defects \(\Delta_Q\), \(\Delta_{\rm norm}\), \(\Delta_{\rm full}\). & Bare \(\Delta\) is allowed only in local algebra.  Carry the subscript in theorem statements. \\
+\addlinespace
+\(U,V\) & Self-interaction \(U(\rho)\), Newtonian potential \(U\), support coordinate \(U_{A,r}\), rigid-mouth chart \((U,V)\), potentials \(V_{\rm conf},V_{\rm eff}\). & Decorate when more than one layer appears. \\
+\addlinespace
+\(a,b\) & Throat radius \(a(t)\), grouped anomalies \(a_x,b_x\), relaxed/source-shape amplitudes \(a,b\). & Prefer \(a_{\rm mouth}\), \(a_x,b_x\), or \(a_\varsigma,b_\varsigma\) in mixed contexts. \\
+\bottomrule
+\end{longtable}
+
+\section{Typographic conventions}
+\label{sec:typographic-notation}
+
+Use roman subscripts for semantic labels:
+\[
+  {\rm eff},
+  \quad
+  {\rm int},
+  \quad
+  {\rm target},
+  \quad
+  {\rm tr},
+  \quad
+  {\rm nt},
+  \quad
+  {\rm geom},
+  \quad
+  {\rm mix},
+  \quad
+  {\rm out}.
+\]
+This makes branch labels visually distinct from algebraic variables.
+
+Use \(\star\) in \(q_\star,e_\star\) for the microscopic charge branch.  Use a subscript \(*\) for selected/reference branch values such as \(C_{{\rm tr},*}\), \(\chi_{0,*}\), or \(\epsilon_{\eta,*}\).  Thus
+\[
+  q_\star
+  \quad \text{is a charge-branch coupling, while} \quad
+  X_*
+  \quad \text{is a reference or selected-branch value.}
+\]
+
+Use hats for source-map or normalized effective quantities, for example \(\hat m_0\).  Use bars for grouped traces or averages, for example \(\bar u_2\).  If a bar denotes a projected brane observable instead, the projection kernel should be visible, as in \(\overline Q=\mathcal P_W[Q]\).
+
+Use bold symbols for physical vectors in brane or bulk space, such as \(\mathbf x\), \(\mathbf X\), and \(\mathbf n\).  If the quotient vector is collected as
+\[
+  \mathbf q=(q_{\rm tr},q_{\rm nt},q_\eta)^T,
+\]
+then the text must say explicitly that this is a quotient vector, not a brane spatial vector.
+
+\section{Notation checklist for stage write-ups}
+\label{sec:notation-stage-checklist}
+
+Before a section is treated as stable, check the following items.
+
+\begin{verificationchecklist}
+  \item Electric charge uses only \(\eta_Q\), \(q_\star\), \(q_{\rm eff}\), \(e_\star\), or \(e_{\rm eff}\).
+  \item The gravity-side scalar coefficient is written \(\kappa_\rho\), not bare \(q\).
+  \item Circulation and winding labels are not used as electric-charge definitions.
+  \item \(Z(w)\) and \(W(w)\) are not interchanged.
+  \item A strict brane reduction does not erase the microscopic mixed sector.
+  \item Grouped labels \(20/21/22\) are treated as lane labels, not indices.
+  \item The grouped metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\) is used whenever grouped traces are computed.
+  \item Operator coefficients \(D_{A,n}\), response moments \(u_n^{(A)}\), transfer moments \(N_{A,n}\), and prefactor moments \(P_{A,n}\) remain distinct.
+  \item \(P(\rho)\) as pressure is not confused with \(P_0,P_1,P_2,P_4\) as outgoing-prefactor coefficients.
+  \item Quotient drifts \(q_{\rm tr},q_{\rm nt},q_\eta\) are not described as charges.
+  \item Rigid-mouth variables \((U,V)\) are not confused with parent energy or potential symbols.
+  \item Local relaxed-branch variables named \(a\) or \(b\) are decorated if they appear near the throat radius \(a(t)\) or grouped anomalies \((a_x,b_x)\).
+  \item Every branch target is separated from the formula that compiles the target.
+\end{verificationchecklist}
+
+This checklist is not optional cleanup.  It is what allows future papers to cite this ledger without importing stale notation or accidentally upgrading a reduced branch convention into an exact parent-theory statement.

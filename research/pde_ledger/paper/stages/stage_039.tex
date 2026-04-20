@@ -1,0 +1,41 @@
+\section[Stage 039]{Stage 039: Transport Origin of Lowest-Lane Source Asymmetry}
+\label{stage:039}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the drift-diffusion zero-flux source family.}
+\stagefield{Purpose}{Stage~039 gives the exponential source profile a physical transport origin rather than treating it as a free shape ansatz.}
+\stagefield{Inputs}{A one-dimensional source density \(\sigma(s)\) on the finite throat and a drift-diffusion current.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage039_transport_source_asymmetry_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage039_transport_source_asymmetry_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage039_transport_source_asymmetry_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage039_transport_source_asymmetry_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Take
+\begin{equation}
+\label{eq:app-stage039-transport}
+\partial_t\sigma+\partial_sJ=0,
+\qquad
+J=-D_\sigma\partial_s\sigma+v_\sigma\sigma.
+\end{equation}
+The stationary zero-flux equation \(J=0\) gives
+\begin{equation}
+\label{eq:app-stage039-exp-profile}
+\sigma(s)\propto e^{v_\sigma s/D_\sigma}.
+\end{equation}
+With
+\begin{equation}
+\label{eq:app-stage039-Pe}
+\boxed{
+\mathrm{Pe}=\frac{v_\sigma L}{D_\sigma}},
+\end{equation}
+the normalized stationary family is exactly the Stage~036 exponential source with \(\alpha=\mathrm{Pe}\).  Therefore
+\begin{equation}
+\label{eq:app-stage039-Omega-Pe}
+\boxed{
+\Omega_{\mathrm{Pe}}
+=\frac{\pi\mathrm{Pe}(2\mathrm{Pe}e^{\mathrm{Pe}}+\pi)}{(4\mathrm{Pe}^2+\pi^2)(e^{\mathrm{Pe}}-1)}}.
+\end{equation}
+
+\stagefield{Output}{Transport interpretation \eqref{eq:app-stage039-Pe} and physical overlap factor \eqref{eq:app-stage039-Omega-Pe}.}
+\stagefield{Downstream use}{Stage~040 uses \(\mathrm{Pe}\) as the physical transport coordinate of \(\zeta_0\).}
+

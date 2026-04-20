@@ -1,0 +1,28 @@
+\section[Stage 089]{Stage 089: Reduced 2.5PN Closure on the Canonical Outgoing DtN Branch}
+\label{stage:089}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~89 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage089_canonical_outgoing_reduced_closure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage089_canonical_outgoing_reduced_closure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage089_canonical_outgoing_reduced_closure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage089_canonical_outgoing_reduced_closure_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+
+\begin{quote}
+Lists the canonical invariant coefficients and marks actual branch realization as the remaining open theorem.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
+\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 90--96, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

@@ -1,0 +1,28 @@
+\section[Stage 214]{Stage 214: Continuum-placement pullback}
+\label{stage:214}
+
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.4}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~214 rewrites the selected-branch dynamic-class map in the physical continuum-placement variables.}
+
+\stagefield{Inputs}{Imports the placement coordinates $(\epsilon_\eta,\epsilon_W,\rho,Z_W,\delta_0,\Lambda)$, $R_{\rm target}$, and the selected-branch classifier.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage214_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation pulls the classifier through the exact placement map, proves monotonicity in $R_{\rm target}$, and separates geometry, mixed-stability/product, and redistribution lanes.}
+
+\stagefield{Output}{Continuum-placement version of the static-first verdict: the branch decision can be made directly from the physical placement packet, with $R_{\rm target}$ controlling the selected-class motion monotonically.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.4} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+
+

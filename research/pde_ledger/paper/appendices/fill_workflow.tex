@@ -1,0 +1,890 @@
+\chapter{Fill Workflow and Editorial Rules}
+\label{app:fill-workflow}
+
+\providecommand{\WorkflowFile}[1]{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+\providecommand{\WorkflowGate}[1]{\textbf{#1}}
+
+\section{Purpose of this appendix}
+\label{sec:fill-workflow-purpose}
+
+This appendix is the operating manual for completing the derivation companion.  The companion is intentionally not a normal narrative paper.  It is a verification ledger: a document whose job is to let a reader trace every reusable moving-throat formula from its source stage, through its assumptions, to its status label, to its final citation anchor.  The workflow below is therefore stricter than ordinary drafting workflow.  It is designed to prevent three common failures:
+
+\begin{enumerate}[leftmargin=2.4em]
+\item turning an open branch-realization target into a completed theorem by accident;
+\item losing the provenance of a formula when it is promoted from a stage note to a theorem block;
+\item creating future papers that cite a convenient equation without carrying the hypotheses, status label, or realization caveat that make the equation true.
+\end{enumerate}
+
+The appendix should be used whenever a new section, stage entry, theorem block, source card, reproducibility card, or downstream citation is added.  It is also the maintenance checklist for freezing a stable release of the companion.
+
+The workflow assumes the document structure already fixed in the front matter: the theorem-block chapters in Parts I--VIII give the readable derivation path; the stage appendices preserve the 236-stage verification trail; the result-anchor map gives citation handles; the source-file index records provenance; and the reproducibility map records what kind of evidence supports each claim.  The central rule is that no fill operation is complete until all of those layers agree.
+
+\section{What ``filled'' means}
+\label{sec:fill-definition}
+
+A section is filled only when it is usable in three different ways.  A reader should be able to read it for understanding, audit it for correctness, and cite it safely.  These are different requirements.
+
+\begin{description}[leftmargin=2.9em]
+\item[Readable.] The section states what problem it solves, which stages it covers, which assumptions are active, and what the result means in the larger derivation.
+\item[Auditable.] The section gives enough displayed algebra, references to detailed stage entries, and checks for a reader to verify the result without relying on hidden reasoning.
+\item[Citable.] The section carries a stable result anchor, a claim-status label, explicit hypotheses, and a clear boundary between framework success, realization success, and closure success.
+\end{description}
+
+A stage appendix entry is filled only when it contains purpose, inputs, status, derivation, output, checks, and downstream use.  A theorem-block subsection is filled only when it states the result in reusable form and points to the stage entries where the detailed derivation is audited.  A result anchor is filled only when the anchor map, stage ledger, theorem block, and reproducibility map all point to the same stage range and status ceiling.
+
+The companion should not try to hide open work.  A stage or theorem block may be complete while still carrying \StatusOpen{} or \StatusNumerical{} status.  Completeness means the claim is honestly bounded and auditable, not that every branch has been realized.
+
+\section{Governing maps used during filling}
+\label{sec:fill-governing-maps}
+
+The workflow relies on the governance layers listed in \cref{tab:fill-governing-maps}.  These maps should be treated as active editorial controls rather than as front-matter decoration.
+
+\begin{longtable}{@{}L{0.30\textwidth}L{0.36\textwidth}L{0.24\textwidth}@{}}
+\caption{Governance layers used during fill work.}\label{tab:fill-governing-maps}\\
+\toprule
+Governance layer & What it controls & Fill-workflow use \\
+\midrule
+\endfirsthead
+\toprule
+Governance layer & What it controls & Fill-workflow use \\
+\midrule
+\endhead
+Claim-status firewall & The six permitted claim levels and the weakest-essential-input rule. & Assign the strongest safe status for each result, then demote if any essential input has weaker status. \\
+\addlinespace
+Notation firewall & Charge ontology, grouped-lane labels, mixed-sector variables, response symbols, quotient coordinates, orbit-lock variables, and relaxed-branch notation. & Check every filled section for symbol drift, especially around charge, circulation, grouped labels, and prefactors. \\
+\addlinespace
+Result anchor map & Public citation handles such as \resultanchor{MTDC-T1}--\resultanchor{MTDC-T12}. & Decide which results deserve theorem-level citation anchors and which should remain stage-local provenance. \\
+\addlinespace
+Dependency map & Upstream and downstream theorem dependencies. & Prevent silent use of formula gates and keep the fill order aligned with actual dependency order. \\
+\addlinespace
+Stage ledger & Consolidated Stage 001--236 map. & Verify that every filled theorem block points to the right stages and that every stage entry exports the correct result. \\
+\addlinespace
+Reproducibility map & Script, search, symbolic, numerical, and repository-freeze evidence. & Decide whether a derivation is hand-checkable, script-backed, numerically located, or still open. \\
+\addlinespace
+Source-file index & Canonical source hierarchy and precedence rules. & Resolve conflicts between summaries, full notes, compact masters, generated \TeX{} files, and scripts. \\
+\bottomrule
+\end{longtable}
+
+This appendix should be read as the procedural layer on top of those maps.  It does not reassign the mathematical status of any theorem.  It tells the author how to fill, check, revise, and eventually freeze the theorem and stage entries without accidentally overstating them.
+
+\section{The four-layer fill model}
+\label{sec:fill-four-layer-model}
+
+Every reusable result should pass through four layers.  This is the safest way to preserve both readability and provenance.
+
+\begin{longtable}{@{}L{0.18\textwidth}L{0.29\textwidth}L{0.36\textwidth}L{0.10\textwidth}@{}}
+\caption{Four-layer fill model.}\label{tab:four-layer-fill-model}\\
+\toprule
+Layer & Fill target & Required content & Main file type \\
+\midrule
+\endfirsthead
+\toprule
+Layer & Fill target & Required content & Main file type \\
+\midrule
+\endhead
+Source layer & Identify where the result came from. & Source file, stage number, original local claim, local assumptions, and any script/output artifact mentioned by the source. & Source index; stage ledger. \\
+\addlinespace
+Stage-audit layer & Preserve the derivation in verifiable order. & Inputs, status, derivation, boxed output, checks, downstream use, and provenance notes. & Stage appendices. \\
+\addlinespace
+Synthesis layer & Turn many stages into a readable theorem block. & Definitions, hypotheses, theorem/proposition statement, proof sketch, interpretation, failure modes, and citation anchor. & Parts I--VIII. \\
+\addlinespace
+Citation layer & Make the result safe for future papers. & Result anchor, equation labels, status wording, citation guardrails, and downstream crosswalk entry. & Result-anchor map; future papers. \\
+\bottomrule
+\end{longtable}
+
+The fill order should normally be source layer, then stage-audit layer, then synthesis layer, then citation layer.  The only exception is when a theorem block is needed as a planning device.  In that case, write the theorem block as a provisional synthesis, then immediately backfill the corresponding stage-audit entries before the result is treated as stable.
+
+\section{Repository roles}
+\label{sec:fill-repository-roles}
+
+The generated companion is split into files so that each fill operation has a natural target.  The roles in \cref{tab:fill-file-roles} should be preserved when the repository is maintained.
+
+\begin{longtable}{@{}L{0.28\textwidth}L{0.42\textwidth}L{0.22\textwidth}@{}}
+\caption{File roles during fill work.}\label{tab:fill-file-roles}\\
+\toprule
+File family & Role & Fill cadence \\
+\midrule
+\endfirsthead
+\toprule
+File family & Role & Fill cadence \\
+\midrule
+\endhead
+\WorkflowFile{frontmatter/00_purpose_scope.tex} through \WorkflowFile{frontmatter/05_dependency_map.tex} & Defines purpose, reading rules, status firewall, notation firewall, result anchors, and dependency map.  These files set the rules for the rest of the document. & Stabilize early; edit rarely after Part I is filled. \\
+\addlinespace
+\WorkflowFile{parts/part01_*.tex} through \WorkflowFile{parts/part08_*.tex} & Readable theorem-block chapters.  These files explain the derivation by result families rather than by raw stage order. & Fill after corresponding stage range has been extracted. \\
+\addlinespace
+\WorkflowFile{appendices/stage_ledger.tex} & One-line registry of every stage, status, output, anchor, and source range. & Update whenever a stage status, title, output, or anchor changes. \\
+\addlinespace
+\WorkflowFile{appendices/stage_appendix_part*.tex} & Detailed verification trail for Stages 001--236.  This is the audit spine of the companion. & Fill stage by stage; revise when theorem-block wording exposes missing assumptions. \\
+\addlinespace
+\WorkflowFile{appendices/reproducibility_map.tex} & Evidence and audit registry: symbolic scripts, hand checks, numerical searches, branch-realization gates, and freeze protocol. & Update whenever a result becomes script-backed, numerically located, or branch-realization dependent. \\
+\addlinespace
+\WorkflowFile{appendices/source_file_index.tex} & Provenance index for source files and generated companion files. & Update when a source file is added, superseded, or demoted. \\
+\addlinespace
+\WorkflowFile{appendices/fill_workflow.tex} & Editorial workflow and maintenance protocol. & Edit only when the ledger process itself changes. \\
+\bottomrule
+\end{longtable}
+
+The front matter is allowed to define rules.  The theorem-block chapters are allowed to synthesize.  The stage appendices are allowed to be long.  The source and reproducibility appendices are allowed to be operational.  Mixing these roles is the main way a derivation ledger becomes hard to audit.
+
+\section{Recommended global fill order}
+\label{sec:fill-global-order}
+
+The safest fill order is deliberately conservative.  It avoids polishing a theorem block before the associated stage entries are stable, but it also avoids burying the reader in 236 raw entries before the citation structure exists.
+
+\begin{enumerate}[leftmargin=2.5em]
+\item \textbf{Freeze the front-matter rules.}  Confirm that the purpose, reading rules, status firewall, notation firewall, result anchors, and dependency map are internally consistent.
+\item \textbf{Fill one complete pilot block.}  Use Part I and Stages 001--006 as the pilot because those stages define the parent lift, reduced wall variables, first BdG coupling, Maxwell/mixed bridge, grouped normalization bridge, and full grouped bundle.
+\item \textbf{Audit the pilot block end to end.}  Check that the theorem statements, stage entries, equation labels, result anchors, source entries, and reproducibility notes agree.
+\item \textbf{Fill the remaining parts by stage range.}  Work through Parts II--VIII in order, always keeping the corresponding stage appendix ahead of or tied with the theorem-block prose.
+\item \textbf{Update the consolidated stage ledger after each part.}  Do not wait until the end to reconcile stage statuses and outputs.
+\item \textbf{Promote stable formulas to equation labels.}  Only formulas that downstream papers will cite should receive stable equation labels.  Intermediate scratch algebra should remain unpromoted.
+\item \textbf{Run the status audit.}  Every theorem, proposition, boxed formula, and result anchor must inherit the weakest essential status among its inputs.
+\item \textbf{Run the notation audit.}  Check high-risk symbols against the notation firewall, especially charge labels, grouped real lanes, quotient coordinates, support variables, and relaxed-branch symbols.
+\item \textbf{Run the reproducibility audit.}  Confirm that every script-backed, numerical, search-based, or branch-realization claim has the required artifact card or open-gate entry.
+\item \textbf{Freeze a release manifest.}  Only after the ledger builds cleanly and the status audit passes should downstream framework and application papers be revised to cite the companion.
+\end{enumerate}
+
+This order is not meant to slow down writing.  It is meant to keep later corrections local.  If a status demotion is discovered in Stage 154, the demotion should affect the corresponding theorem block, result anchor, and downstream wording immediately rather than being discovered after future papers have already cited the stronger claim.
+
+\section{Unit of work}
+\label{sec:fill-unit-of-work}
+
+The most useful unit of work is not a page count.  It is a result packet.  A result packet is the smallest derivation unit that can be stated, audited, and cited without importing unrelated stages.  Typical result packets are:
+
+\begin{enumerate}[leftmargin=2.5em]
+\item a single exact algebraic identity, such as a projector inverse map;
+\item a reduced compiler, such as the bridge from operator moments to response moments;
+\item a branch-test packet, such as an outgoing normalization ratio;
+\item a finite search verdict, such as a support-cardinality sieve;
+\item an open gate, such as actual branch realization of a target packet;
+\item a relaxed-branch extension, such as a barrier or export kernel companion.
+\end{enumerate}
+
+A good writing session fills one or a few result packets completely.  It should not partially polish every chapter at once.
+
+\section{Single-section workflow}
+\label{sec:single-section-workflow}
+
+When filling one section or subsection of a theorem-block chapter, use the following workflow.
+
+\subsection{Step 1: identify the source packet}
+\label{subsec:workflow-identify-source-packet}
+
+Before writing prose, identify the source material that controls the section.  The minimum source packet is:
+\[
+\mathcal S
+=
+(\text{source file},\ \text{stage range},\ \text{prior anchors},\ \text{script artifacts},\ \text{status ceiling}).
+\]
+For example, a section in Part V may draw from Stages 147--183, from the weak-axisymmetric transport results, from the exact quotient/orbit theorem, and from the compact program status summary.  The section should not begin by restating every stage.  It should begin by deciding which result it is trying to make citable.
+
+\subsection{Step 2: write the hypothesis box first}
+\label{subsec:workflow-hypothesis-box-first}
+
+Every theorem-level section should have an explicit hypothesis paragraph before any final result is stated.  The hypothesis paragraph should answer four questions:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item Which branch, closure, or reduction is being used?
+\item Which quantities are treated as already fixed inputs?
+\item Which quantities are being solved, transported, or tested?
+\item Which realization question remains outside the claim?
+\end{enumerate}
+
+A good hypothesis paragraph prevents later citation misuse.  It should be written in plain prose and should not hide assumptions inside notation.
+
+\subsection{Step 3: state the result at the right strength}
+\label{subsec:workflow-state-right-strength}
+
+State the result with its status in the title line or immediately before the statement.  Suitable forms include:
+\[
+\text{Theorem: Exact within the reduced one-port branch.}
+\]
+\[
+\text{Proposition: Controlled weak-axisymmetric transport law.}
+\]
+\[
+\text{Open branch gate: Actual realization of } \Xi_1.
+\]
+Avoid status-neutral wording such as ``we have shown'' unless the exact scope is obvious from the same paragraph.
+
+\subsection{Step 4: separate proof sketch from audit trail}
+\label{subsec:workflow-proof-sketch-vs-audit-trail}
+
+The main text should give a proof sketch.  The appendix should give the audit trail.  The distinction is:
+
+\begin{longtable}{@{}L{0.24\textwidth}L{0.35\textwidth}L{0.31\textwidth}@{}}
+\caption{Division of labor between main text and stage appendix.}\label{tab:main-vs-appendix-fill}\\
+\toprule
+Layer & Main-text theorem block & Stage appendix \\
+\midrule
+\endfirsthead
+\toprule
+Layer & Main-text theorem block & Stage appendix \\
+\midrule
+\endhead
+Purpose & Explain why this result matters and what bottleneck it resolves. & Record the stage-local purpose and how it connects to adjacent stages. \\
+\addlinespace
+Inputs & List only the essential inputs. & List all local inputs, inherited assumptions, source equations, and prior stage dependencies. \\
+\addlinespace
+Derivation & Show the core transformation or two to five decisive equations. & Show the full algebraic chain, including sign conventions, substitutions, and reductions. \\
+\addlinespace
+Checks & Mention the decisive checks. & Record all available checks: dimensional, sign, limiting, isotropy, script-backed, numerical residual, and branch-domain checks. \\
+\addlinespace
+Output & Name the citable theorem or formula packet. & Box the exact stage output and state downstream uses. \\
+\addlinespace
+Status & Give the final status tag. & Explain why that tag is justified and what would be needed to upgrade it. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Step 5: close the packet with a downstream-use sentence}
+\label{subsec:workflow-downstream-use-sentence}
+
+Every filled subsection should end, or nearly end, with a sentence of the form:
+\[
+\text{This result is used downstream to \ldots}
+\]
+or
+\[
+\text{The remaining branch-realization gate is \ldots}
+\]
+That sentence is not filler.  It is the local citation map.  It tells future papers whether they are allowed to cite the result as a completed derivation, a reduced compiler, a numerical placement, or an open test condition.
+
+\section{Stage appendix fill protocol}
+\label{sec:stage-appendix-fill-protocol}
+
+The stage appendices are the verification backbone of the companion.  Each stage entry should preserve the stage number and local result even when the theorem-block chapters reorganize the narrative.
+
+\subsection{Canonical stage-entry template}
+\label{subsec:canonical-stage-entry-template}
+
+Use the following template unless a stage is purely tabular or purely numerical.
+
+\begin{enumerate}[leftmargin=2.0em]
+\item \textbf{Stage title and source.}  Preserve the original stage number and title.  Name the controlling source file.
+\item \textbf{Purpose.}  State the stage-local problem in one paragraph.
+\item \textbf{Inputs.}  List prior stage outputs, branch assumptions, variables, and status ceilings.
+\item \textbf{Claim status.}  Assign one of the companion status tags and explain the limiting assumption.
+\item \textbf{Derivation.}  Give the algebra in enough detail that a reader can reproduce it.
+\item \textbf{Output.}  Box only the result that survives downstream.
+\item \textbf{Checks.}  Record symbolic scripts, limiting cases, sign checks, dimensional checks, or numerical residuals.
+\item \textbf{Downstream use.}  State where the result is used later.
+\end{enumerate}
+
+\subsection{Stage-entry completion checklist}
+\label{subsec:stage-entry-completion-checklist}
+
+A stage entry is complete only when the following checklist is satisfied.
+
+\begin{verificationchecklist}
+\item The stage number and title match the stage ledger.
+\item The source file is identified.
+\item The status tag is present and justified.
+\item All nonlocal assumptions are named rather than implied.
+\item Every symbol that changes meaning from earlier sections is redefined or explicitly inherited.
+\item The final output is visually distinguishable from intermediate algebra.
+\item Script-backed claims name the script or output artifact.
+\item Numerical claims include the target equation, branch domain, and residual or tolerance.
+\item Open branch-realization targets are not written as achieved results.
+\item The downstream-use line points to a part, theorem anchor, later stage, or future-paper citation use.
+\end{verificationchecklist}
+
+\section{Theorem-block fill protocol}
+\label{sec:theorem-block-fill-protocol}
+
+Theorem-block chapters are not chronological transcripts.  They are the readable synthesis of the stage ledger.  Each theorem block should be organized around what a future paper needs to cite.
+
+\subsection{Theorem-block skeleton}
+\label{subsec:theorem-block-skeleton}
+
+A filled theorem block should normally contain:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item a short orientation paragraph;
+\item a branch or closure declaration;
+\item definitions of the local variables and observable packet;
+\item one or more named lemmas or propositions;
+\item a main theorem or result statement;
+\item a proof sketch with stage-appendix pointers;
+\item a status and non-claim paragraph;
+\item a downstream citation paragraph.
+\end{enumerate}
+
+The orientation paragraph should not retell the whole program.  It should answer the local question: what bottleneck does this theorem block remove?
+
+\subsection{When to promote a result to a theorem}
+\label{subsec:when-promote-result-theorem}
+
+Promote a result to a theorem only when it satisfies all of the following conditions:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item It is reused by later stages, later parts, or future papers.
+\item Its assumptions can be stated in a compact hypothesis list.
+\item Its status can be assigned without ambiguity.
+\item Its proof can be located in one or more stage appendices.
+\item Its conclusion can be stated without referencing the chronological accident of how it was discovered.
+\end{enumerate}
+
+If a result is important but not yet stable, use a proposition, lemma, or open gate instead.  The label ``theorem'' should be reserved for results whose citation behavior is clear.
+
+\section{Result-anchor promotion protocol}
+\label{sec:result-anchor-promotion-protocol}
+
+Result anchors are citation tools.  They should not be created merely because a formula looks important.  The correct promotion chain is:
+\[
+\begin{aligned}
+\text{stage output}
+&\longrightarrow
+\text{appendix boxed formula}
+\longrightarrow
+\text{main-text theorem}
+\\
+&\longrightarrow
+\text{result anchor}
+\longrightarrow
+\text{downstream citation}.
+\end{aligned}
+\]
+
+\subsection{Anchor-card requirements}
+\label{subsec:anchor-card-requirements}
+
+Each promoted result should have a result card containing:
+
+\begin{longtable}{@{}L{0.22\textwidth}L{0.68\textwidth}@{}}
+\caption{Minimum contents of a result-anchor card.}\label{tab:anchor-card-requirements}\\
+\toprule
+Field & Required content \\
+\midrule
+\endfirsthead
+\toprule
+Field & Required content \\
+\midrule
+\endhead
+Anchor ID & Stable identifier, for example \resultanchor{MTDC-T8}. \\
+\addlinespace
+Short name & Human-readable result name. \\
+\addlinespace
+Status & One of the companion status tags. \\
+\addlinespace
+Stage range & The source stage interval. \\
+\addlinespace
+Main location & The theorem-block section where the result is synthesized. \\
+\addlinespace
+Appendix location & The stage appendix entry or entries containing the detailed derivation. \\
+\addlinespace
+Hypotheses & Branch, closure, reduction, search class, or numerical-domain assumptions. \\
+\addlinespace
+Exported formulas & The exact equations future papers are allowed to cite. \\
+\addlinespace
+Non-claims & Nearby stronger statements that are not supported. \\
+\addlinespace
+Downstream use & Papers, sections, or result packets that should cite the anchor. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Anchor stability rule}
+\label{subsec:anchor-stability-rule}
+
+Once a result anchor is introduced, its meaning should not drift.  If a later pass strengthens, weakens, or changes the result, do not silently reuse the same anchor.  Either revise the anchor card explicitly or create a subanchor.  Stage numbers are provenance markers; result anchors are citation commitments.
+
+\section{Boxing and equation-label rules}
+\label{sec:boxing-and-equation-label-rules}
+
+Boxed equations should be scarce.  A boxed equation tells the reader, ``this is an exported result.''  It should therefore be used only for:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item final stage outputs;
+\item theorem conclusions;
+\item branch-test packets;
+\item exact realization or obstruction conditions;
+\item open target equations that future branch work must hit.
+\end{enumerate}
+
+Intermediate algebra should receive ordinary equation labels only when it is referenced later.  If a formula is used only in the local derivation, leave it unboxed and usually unlabeled.
+
+\subsection{Equation-label naming convention}
+\label{subsec:equation-label-naming-convention}
+
+Use stable semantic labels rather than line-number-like labels.  Examples:
+\[
+\begin{aligned}
+\texttt{eq:stage005-p0-normalization-target},\\
+\texttt{eq:weak-axisymmetric-b-equals-3a},\\
+\texttt{eq:rigid-mouth-uv-lock}.
+\end{aligned}
+\]
+Avoid labels such as \texttt{eq:important}, \texttt{eq:main}, or \texttt{eq:formula7}.  They will become meaningless once the document grows.
+
+\section{Source-handling protocol}
+\label{sec:source-handling-protocol}
+
+The source-file index defines the provenance hierarchy.  During filling, use the following precedence rules.
+
+\begin{longtable}{@{}L{0.25\textwidth}L{0.38\textwidth}L{0.27\textwidth}@{}}
+\caption{Source precedence during the fill process.}\label{tab:fill-source-precedence}\\
+\toprule
+Question & Preferred source & Use rule \\
+\midrule
+\endfirsthead
+\toprule
+Question & Preferred source & Use rule \\
+\midrule
+\endhead
+What did a stage derive? & Canonical stage files plus stage appendices & Treat the per-stage \TeX{} files and their assembled appendices as the canonical chronological stage source. \\
+\addlinespace
+What is the current global theorem-status reading? & Frontmatter firewall plus theorem-block chapters & Use for present bottleneck, status firewall, strict/relaxed split, and final packet language. \\
+\addlinespace
+How is the framework meant to be used? & \WorkflowFile{pde.tex} & Use for operational branch-test language and future-paper citation style. \\
+\addlinespace
+What exact parent equations are inherited? & Parent action and Maxwell/plasma summaries. & Use for exact field equations, projection/reduction distinction, and charge/mixed-sector ontology. \\
+\addlinespace
+What lower-order target is being matched? & PN summary and full PN files. & Use for target ledgers, carry-forward constants, and PN-specific status. \\
+\addlinespace
+How should application papers cite this material? & Reduced-sector companion files. & Use only after the derivation companion status is fixed. \\
+\bottomrule
+\end{longtable}
+
+When two sources appear to disagree, do not harmonize by prose smoothing.  Add an explicit reconciliation note that says which file controls which layer.  For example, the full stage archive may control the chronological derivation, while the compact master controls the current status interpretation after later stages changed the endgame.
+
+\section{Notation audit protocol}
+\label{sec:notation-audit-protocol}
+
+Notation drift is one of the main risks in this ledger.  The notation firewall should be rechecked whenever a packet is filled.
+
+\subsection{Symbols that require special care}
+\label{subsec:symbols-special-care-fill}
+
+The following symbols and symbol families require explicit checking:
+
+\begin{longtable}{@{}L{0.18\textwidth}L{0.35\textwidth}L{0.34\textwidth}@{}}
+\caption{High-risk notation during filling.}\label{tab:high-risk-notation-fill}\\
+\toprule
+Symbol family & Risk & Fill rule \\
+\midrule
+\endfirsthead
+\toprule
+Symbol family & Risk & Fill rule \\
+\midrule
+\endhead
+\(q\), \(Q\), \(q_\star\), \(q_{\rm eff}\) & Confusion between electric charge, scalar coefficients, grouped coordinates, and quotient drifts. & Electric charge must use \(\eta_Q,q_\star,q_{\rm eff}\).  Gravity-side mass dressing is \(\kappa_\rho\), not electric charge. \\
+\addlinespace
+\(20/21/22\) & Mistaken as spacetime indices. & Always state that these are grouped real \(P_2\) lanes when first used in a section. \\
+\addlinespace
+\(A_w,J^w,F_{\mu w},\)\newline \(E_w,C_a\) & Accidental deletion by zero-mode Maxwell language. & Say they are suppressed only in strict brane reductions, not removed from the microscopic ontology. \\
+\addlinespace
+\(P_0,P_1,\Xi_1,N_Q,\chi_Q\) & Confusion between normalization, prefactor, and transported slope. & Define the local packet before using any of these quantities in a theorem statement. \\
+\addlinespace
+\(U,V\) & Confusion between potentials and rigid-mouth log chart. & In Part VII and later, declare the physical logarithmic chart explicitly. \\
+\addlinespace
+\(\epsilon_\eta,\epsilon_W,\zeta,\rho_\alpha\) & Different branch-placement roles in strict and relaxed sectors. & State whether the packet is strict selected support, weak-axisymmetric, rigid-mouth, or relaxed/open-system. \\
+\addlinespace
+\(\Delta\) packets & Many unrelated deficits and verdict packets. & Give the full subscripted packet name and avoid bare \(\Delta\) in exported results. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Notation-audit checklist}
+\label{subsec:notation-audit-checklist}
+
+\begin{verificationchecklist}
+\item No electric-charge statement uses circulation, throat radius, or breathing variables as the charge definition.
+\item No gravity-side scalar coefficient is written as bare electric charge.
+\item Grouped real \(P_2\) lanes are distinguished from tensor or spacetime indices.
+\item Mixed-sector variables are not erased by a brane-limit statement.
+\item Strict branch, rigid-mouth branch, selected support branch, and relaxed branch variables are not interchanged.
+\item Reused letters such as \(K\), \(G\), \(P\), \(N\), \(R\), and \(\Delta\) are locally disambiguated.
+\end{verificationchecklist}
+
+\section{Status-audit protocol}
+\label{sec:status-audit-protocol}
+
+After each packet is filled, perform a status audit.  The status audit asks whether the written section accidentally upgraded any result.
+
+\subsection{Status-upgrade tests}
+\label{subsec:status-upgrade-tests}
+
+Use the following tests.
+
+\begin{longtable}{@{}L{0.26\textwidth}L{0.38\textwidth}L{0.26\textwidth}@{}}
+\caption{Tests for accidental status upgrades.}\label{tab:status-upgrade-tests}\\
+\toprule
+Question & If yes & Required action \\
+\midrule
+\endfirsthead
+\toprule
+Question & If yes & Required action \\
+\midrule
+\endhead
+Does the proof assume a branch ansatz, finite-dimensional reduction, or low-frequency expansion? & It is not unrestricted \StatusExact{}. & Mark as \StatusExactClosure{} or \StatusReduced{}. \\
+\addlinespace
+Does the result depend on an actual branch landing on a target value? & The branch realization is not automatic. & Mark the target or landing as \StatusOpen{} unless realized. \\
+\addlinespace
+Does the result use a numerical root, ranking, or placement? & The location is not closed form. & Mark as \StatusNumerical{} and record tolerances/residuals. \\
+\addlinespace
+Does the result use a physically motivated but not uniquely derived constitutive law? & It is a closure choice. & Mark as \StatusEffective{} or \StatusExactClosure{} inside that closure. \\
+\addlinespace
+Does a script verify only a finite symbolic model? & The verification scope is finite. & State the model and search class. \\
+\addlinespace
+Does a theorem require a later relaxation or open-system extension? & Strict and relaxed claims differ. & Split the statement into strict-front-end and relaxed-branch pieces. \\
+\bottomrule
+\end{longtable}
+
+\section{Reproducibility fill protocol}
+\label{sec:reproducibility-fill-protocol}
+
+Whenever a stage or theorem depends on a script, numerical solve, finite search, or generated output, the reproducibility map must contain enough information for a future reader to reconstruct the evidence trail.
+
+\subsection{Artifact-card template}
+\label{subsec:artifact-card-template-fill}
+
+Use this template for script-backed or numerical packets:
+
+\begin{longtable}{@{}L{0.23\textwidth}L{0.67\textwidth}@{}}
+\caption{Artifact-card template for reproducibility entries.}\label{tab:artifact-card-fill-template}\\
+\toprule
+Field & Content \\
+\midrule
+\endfirsthead
+\toprule
+Field & Content \\
+\midrule
+\endhead
+Artifact name & Script, notebook, output transcript, or generated table basename. \\
+\addlinespace
+Stage range & Stages certified by the artifact. \\
+\addlinespace
+Mathematical object & Projector, Schur complement, polynomial identity, search sieve, branch solve, Hessian, etc. \\
+\addlinespace
+Inputs & Symbolic assumptions, numerical parameters, branch constraints, search class, tolerances. \\
+\addlinespace
+Outputs & Equations, candidate list, roots, residuals, rankings, or theorem gates certified. \\
+\addlinespace
+Status ceiling & Exact symbolic, exact within closure, numerical location, or open branch test. \\
+\addlinespace
+Independent checks & Limiting cases, dimension checks, duplicate script, residual evaluation, hand derivation, or sanity check. \\
+\addlinespace
+Failure modes & What the artifact does not prove. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Script-backed result wording}
+\label{subsec:script-backed-result-wording}
+
+Use precise wording for script-backed results.  Prefer:
+\[
+\text{The accompanying symbolic audit verifies the stated identity inside the declared finite model.}
+\]
+Avoid:
+\[
+\text{The script proves the full PDE theorem.}
+\]
+unless the script really implements the full PDE theorem, including all branch-realization hypotheses.
+
+\section{Numerical-location protocol}
+\label{sec:numerical-location-protocol}
+
+Numerically located results must be written so that a future reader can tell the difference between an exact target equation and the numerical point currently found on it.
+
+A numerical-location paragraph should contain:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item the exact equation being solved;
+\item the branch domain or admissible interval;
+\item the numerical value reported;
+\item the residual or tolerance;
+\item the script/output artifact;
+\item whether uniqueness in the domain was checked;
+\item whether the result is used as an input or only as a diagnostic.
+\end{enumerate}
+
+If uniqueness is not checked, do not write ``the'' branch point without qualification.  Write ``the located branch point in the searched domain'' or give the domain explicitly.
+
+\section{Open-gate protocol}
+\label{sec:open-gate-protocol}
+
+Open gates are valuable results.  They turn vague missing work into explicit branch tests.  They should be written with the same care as completed theorems.
+
+\subsection{Open-gate template}
+\label{subsec:open-gate-template}
+
+An open gate should contain:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item the exact observable packet to be returned by the actual branch;
+\item the target value or target condition;
+\item the branch assumptions under which the target is meaningful;
+\item the formulas that reduce the branch data to the observable packet;
+\item the reason the previous algebra is complete but branch realization remains open;
+\item the downstream consequence of success or failure.
+\end{enumerate}
+
+For example, the outgoing quadrupole normalization gate should be written as an explicit condition on the relevant prefactor or normalization packet, not as a vague instruction to ``solve radiation reaction.''
+
+\section{Strict versus relaxed branch workflow}
+\label{sec:strict-versus-relaxed-workflow}
+
+The strict branch and relaxed/open-system branch should be filled as related but distinct ledgers.
+
+\begin{longtable}{@{}L{0.23\textwidth}L{0.35\textwidth}L{0.32\textwidth}@{}}
+\caption{Strict and relaxed branch separation during filling.}\label{tab:strict-relaxed-fill-separation}\\
+\toprule
+Layer & Strict branch & Relaxed/open-system branch \\
+\midrule
+\endfirsthead
+\toprule
+Layer & Strict branch & Relaxed/open-system branch \\
+\midrule
+\endhead
+Purpose & Tests whether the selected support/orbit/outgoing packet is realized without added leakage/work/source repair. & Studies the codimension-three extension around the strict front end. \\
+\addlinespace
+Recovery map & The strict packet itself. & Must state the recovery map back to the strict front end. \\
+\addlinespace
+Same-charge verdict & Frozen by the strict one-port audit unless explicitly reopened. & Should not create a new long-range same-charge attraction by wording drift. \\
+\addlinespace
+Barrier/export quantities & Usually absent or only target-side. & Leakage, work, non-rigid mouth, compensated source, event chain, export kernel, and heat partition are active. \\
+\addlinespace
+Citation style & Cite as strict branch theorem or strict branch open gate. & Cite as relaxed branch companion, not as proof of strict branch realization. \\
+\bottomrule
+\end{longtable}
+
+When a relaxed result reduces to the strict branch under a recovery map, state the recovery map explicitly.  Do not let the relaxed branch silently backfill a missing strict-branch theorem.
+
+\section{Local consistency pass}
+\label{sec:local-consistency-pass}
+
+After filling any packet, perform a local consistency pass before moving on.
+
+\begin{verificationchecklist}
+\item Stage numbers match the stage ledger.
+\item Result anchors match the result-anchor map.
+\item All referenced sections, equations, and appendices exist.
+\item No equation label is duplicated.
+\item No status tag appears without a reason.
+\item No boxed equation lacks downstream use.
+\item Every open target is labeled as open.
+\item Every branch-dependent result states the branch.
+\item The notation firewall is obeyed.
+\item The source-file index supports the provenance claim.
+\end{verificationchecklist}
+
+\section{Global consistency pass}
+\label{sec:global-consistency-pass}
+
+The global consistency pass should be done after all packets in a part are filled, and again after the full document is filled.
+
+\subsection{Global pass A: status consistency}
+\label{subsec:global-pass-status-consistency}
+
+Search the whole document for every instance of \StatusExact{}, \StatusExactClosure{}, \StatusReduced{}, \StatusEffective{}, \StatusNumerical{}, and \StatusOpen{}.  Confirm that each use is consistent with the claim-status firewall.  If a result appears with two different statuses in different chapters, either harmonize the status or explain that one is a local subclaim and the other is a global branch-realization claim.
+
+\subsection{Global pass B: anchor consistency}
+\label{subsec:global-pass-anchor-consistency}
+
+For each \resultanchor{MTDC-T} result, verify that:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item the anchor appears in the result-anchor map;
+\item the theorem-block location exists;
+\item the stage appendix location exists;
+\item the stage ledger agrees with the stage range;
+\item the status tag agrees across all appearances;
+\item downstream papers would know exactly what can be cited.
+\end{enumerate}
+
+\subsection{Global pass C: formula-packet consistency}
+\label{subsec:global-pass-formula-packet-consistency}
+
+Some quantities appear in multiple parts of the companion.  For those, verify that the definitions are identical or that the change of meaning is explicit.  High-priority packets include:
+\[
+P_0,\quad P_1,\quad \Xi_1,\quad N_Q,\quad \chi_Q,
+\quad \Delta_{\rm full},\quad q_{\rm tr},\quad q_{\rm nt},\quad q_\eta,
+\quad U,V.
+\]
+
+\section{Suggested packet sizes for future writing sessions}
+\label{sec:suggested-packet-sizes}
+
+Because the document is large, future writing sessions should use packet sizes that are small enough to audit.  The recommended sizes are:
+
+\begin{longtable}{@{}L{0.26\textwidth}L{0.31\textwidth}L{0.32\textwidth}@{}}
+\caption{Recommended packet sizes for filling sessions.}\label{tab:suggested-packet-sizes}\\
+\toprule
+Task type & Recommended size & Reason \\
+\midrule
+\endfirsthead
+\toprule
+Task type & Recommended size & Reason \\
+\midrule
+\endhead
+Main-text theorem block & One section or subsection. & Keeps assumptions and proof sketch focused. \\
+\addlinespace
+Stage appendix & One stage for long stages, or three to five short consecutive stages. & Preserves chronological provenance without losing local algebra. \\
+\addlinespace
+Ledger table update & One part at a time. & Avoids mismatched stage ranges and anchor IDs. \\
+\addlinespace
+Result-anchor pass & One anchor family at a time. & Prevents anchor drift. \\
+\addlinespace
+Reproducibility pass & One script family or theorem block. & Keeps evidence trails complete. \\
+\addlinespace
+Downstream-paper retrofit & One paper and one result family. & Prevents broad citation rewrites before the ledger is stable. \\
+\bottomrule
+\end{longtable}
+
+This is also the recommended collaboration protocol: fill one packet, audit it, then move to the next.  Large unreviewed rewrites should be avoided.
+
+\section{Downstream-paper retrofit protocol}
+\label{sec:downstream-paper-retrofit-protocol}
+
+After the ledger is stable, future papers should be revised to cite this companion rather than raw working notes.  The retrofit should happen in this order:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item identify claims currently citing raw notes, compact masters, old framework text, or informal derivations;
+\item map each claim to a companion result anchor and, when needed, a stage appendix range;
+\item check whether the downstream wording matches the companion status;
+\item replace raw-note citations with theorem/result-anchor citations;
+\item preserve raw source references only when the paper is discussing archive provenance rather than using a theorem.
+\end{enumerate}
+
+A downstream paper should not cite the derivation companion as a blanket proof of the whole program.  It should cite the specific anchor that proves or audits the specific claim being used.
+
+\subsection{Safe downstream wording}
+\label{subsec:fill-safe-downstream-wording}
+
+Use status-aware language.  Examples:
+
+\begin{quote}
+The grouped outgoing-normalization compiler is derived in \resultanchor{MTDC-T3}; actual branch realization is tested by the scalar packet stated there.
+\end{quote}
+
+\begin{quote}
+The weak-axisymmetric quotient reduction to \(\Xi_1=P_1/P_0\) is given in \resultanchor{MTDC-T8} under the declared grouped-lane assumptions.
+\end{quote}
+
+\begin{quote}
+The relaxed barrier/export companion uses the recovery map stated in \resultanchor{MTDC-T12}; it is not part of the strict conservative branch proof.
+\end{quote}
+
+Unsafe wording would remove the status condition, for example by saying that the actual PDE has been solved merely because the compiler is exact.
+
+\section{Release-freeze workflow}
+\label{sec:fill-release-freeze-workflow}
+
+A release freeze is a repository event, not just a typesetting event.  A frozen release should include:
+
+\begin{enumerate}[leftmargin=2.4em]
+\item a clean full-project build;
+\item a source-file manifest;
+\item script and output artifact manifest;
+\item status-audit notes for each result anchor;
+\item list of open branch-realization gates;
+\item list of superseded or failed branches preserved in the ledger;
+\item hash or version identifier for the release;
+\item downstream papers whose citations have been updated to the release.
+\end{enumerate}
+
+The release manifest should not change the mathematical status of a result.  It only makes the status reproducible.
+
+\section{Maintenance rules}
+\label{sec:fill-maintenance-rules}
+
+The following rules should govern future edits.
+
+\begin{enumerate}[leftmargin=2.4em]
+\item \textbf{Do not weaken provenance for readability.}  A theorem block may be readable, but the stage appendix must remain detailed enough to audit.
+\item \textbf{Do not strengthen status for convenience.}  A useful target equation remains a target equation until branch realization is proven.
+\item \textbf{Do not merge strict and relaxed branches.}  Use the recovery map when moving between them.
+\item \textbf{Do not cite a source file as a theorem.}  Cite result anchors and stage appendices; use source files for provenance.
+\item \textbf{Do not hide failed routes.}  Failed branches should be preserved with their domain and obstruction.
+\item \textbf{Do not change notation silently.}  If a symbol changes meaning, update the notation firewall and the local definitions.
+\item \textbf{Do not promote equations casually.}  Stable labels and boxes create future citation obligations.
+\item \textbf{Do not leave a status change local.}  Update theorem block, stage ledger, anchor map, and reproducibility map together.
+\end{enumerate}
+
+\section{Minimal templates}
+\label{sec:fill-minimal-templates}
+
+The following templates are not placeholders in the document; they are forms to copy when adding new material.
+
+\subsection{Stage-entry template}
+\label{subsec:fill-stage-entry-template}
+
+\begin{quote}
+\textbf{Stage NNN: local title.}
+
+\textbf{Purpose.}  State the local problem and why it matters.
+
+\textbf{Inputs.}  List prior equations, assumptions, branch restrictions, and source-stage provenance.
+
+\textbf{Claim status.}  State the local status and the reason for that status.
+
+\textbf{Derivation.}  Show the algebra, reduction, or search logic.
+
+\textbf{Output.}  Box only the final reusable formulas or verdicts.
+
+\textbf{Checks.}  State symbolic, numerical, limiting, sign, dimensional, or symmetry checks.
+
+\textbf{Downstream use.}  Name later stages, result anchors, and future citation uses.
+\end{quote}
+
+\subsection{Theorem-block template}
+\label{subsec:fill-theorem-template}
+
+\begin{quote}
+\textbf{Local setup.}  Define variables and active branch class.
+
+\textbf{Status.}  State exact, exact-within-closure, reduced, effective, numerical, or open status.
+
+\textbf{Theorem or proposition.}  State the reusable result with hypotheses.
+
+\textbf{Proof sketch.}  Identify the stage outputs used and show the essential algebra.
+
+\textbf{Interpretation.}  Explain what the result means for the moving-throat program.
+
+\textbf{Failure modes.}  State when the result does not apply.
+
+\textbf{Citation target.}  Identify result anchor, equation labels, and stage appendix range.
+\end{quote}
+
+\subsection{Open-gate template}
+\label{subsec:fill-open-gate-template}
+
+\begin{quote}
+\textbf{Open branch gate.}  The compiler reduces the problem to observable packet \(X\).  The remaining realization question is whether the actual moving-throat branch in class \(B\) returns \(X\) satisfying target condition \(Y\).  Until that branch construction is supplied, the compiler result is \StatusExactClosure{} while the realized-branch claim is \StatusOpen{}.
+\end{quote}
+
+\section{Minimal build and static-check workflow}
+\label{sec:minimal-build-static-check-workflow}
+
+A useful local build workflow is:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item Run a static scan for duplicate labels, unmatched braces, unmatched environments, literal control-character corruption, and accidental placeholder markers.
+\item Compile the edited file in a minimal harness if the full project is large.
+\item Compile the full project at least once after each major packet group.
+\item Compile twice before a release candidate so cross-references stabilize.
+\item Inspect warnings about undefined references, overfull boxes in long equations, and missing citations or anchors.
+\end{enumerate}
+
+The build check is not a mathematical proof.  It is a source-integrity check.  A file can compile and still overstate a theorem; conversely, a mathematically correct packet can fail to compile because of a label or macro issue.  Both kinds of checks are required.
+
+\section{Recommended handoff note after each filled packet}
+\label{sec:recommended-handoff-note}
+
+After a packet is filled, leave a short handoff note in the working discussion or project log with the following fields:
+
+\begin{enumerate}[leftmargin=2.0em]
+\item file edited;
+\item stage or result range covered;
+\item strongest new citable result;
+\item status tag;
+\item open gates left behind;
+\item checks performed;
+\item files that should be updated next.
+\end{enumerate}
+
+The handoff note is not part of the final paper, but it prevents future sessions from losing track of what was completed and what merely looked complete.
+
+\section{Closing rule}
+\label{sec:fill-closing-rule}
+
+The derivation companion is allowed to be large, but it should never be vague.  Every filled section should answer four questions: what is being proved or audited, under what assumptions, with what evidence, and how future papers may cite it.  If those four questions are answered locally and consistently across the stage ledger, theorem blocks, result anchors, source index, and reproducibility map, then the ledger is doing its job.

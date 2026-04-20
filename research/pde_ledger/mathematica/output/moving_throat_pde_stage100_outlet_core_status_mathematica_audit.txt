@@ -1,0 +1,74 @@
+
+========================================================================================
+STAGE 100 — CONCRETE OUTLET-CORE STATUS
+========================================================================================
+
+========================================================================================
+1. Harmless scale/argument class
+========================================================================================
+scale/argument solutions = {{beta -> -1}, {beta -> 1}}
+positive harmless branch has beta = 1 and chi_Q = 1 = 0
+PASS: positive harmless branch has beta = 1 and chi_Q = 1
+
+========================================================================================
+2. Pure Robin class
+========================================================================================
+pure Robin canonical-even solutions = {{rho -> 0}}
+pure Robin odd norm is trivial on rho = 0 = 0
+PASS: pure Robin odd norm is trivial on rho = 0
+
+========================================================================================
+3. Standalone mixed-pole class
+========================================================================================
+standalone mixed-pole kappa match = -1/9
+standalone mixed-pole sigma match = 0
+formal even-match forces kappa = -1/9 = 0
+PASS: formal even-match forces kappa = -1/9
+standalone mixed pole disappears on the canonical branch = 0
+PASS: standalone mixed pole disappears on the canonical branch
+odd norm is then trivial = 0
+PASS: odd norm is then trivial
+
+========================================================================================
+4. Hybrid outlet class split
+========================================================================================
+hybrid canonical-even branches = {{rho -> sigma, kappa -> 0}, {rho -> 4*sigma, kappa -> 1/3}}
+hybrid cancellation branch odd norm = 0
+PASS: hybrid cancellation branch odd norm
+hybrid cancellation branch is trivial when gamma = 0 = 0
+PASS: hybrid cancellation branch is trivial when gamma = 0
+compensated branch odd norm = 0
+PASS: compensated branch odd norm
+compensated branch collapses to a pure scale deformation = 0
+PASS: compensated branch collapses to a pure scale deformation
+
+========================================================================================
+5. Concrete core realization of the compensated class
+========================================================================================
+core-balance surface branches = {{gq -> (gs*lam)/ks - Sqrt[gs^2*kq*ks + gs^2*lam^2]/(2*ks)}, {gq -> (gs*lam)/ks + Sqrt[gs^2*kq*ks + gs^2*lam^2]/(2*ks)}}
+both core-balance branches give the same sigma_* = 0
+PASS: both core-balance branches give the same sigma_*
+core-balance sigma_* value = 0
+PASS: core-balance sigma_* value
+D/N tube fixes kappa_c = 1/3 = 0
+PASS: D/N tube fixes kappa_c = 1/3
+bare mixed normalization fixes gamma_c = 1/9 = 0
+PASS: bare mixed normalization fixes gamma_c = 1/9
+concrete core collapses to the compensated hybrid class = 0
+PASS: concrete core collapses to the compensated hybrid class
+
+========================================================================================
+6. Classification capstone
+========================================================================================
+{scale/argument, True, True, False, harmless beta = 1 pure-scale branch}
+{pure Robin, False, False, False, rho_R = 0 only}
+{standalone mixed pole, False, False, False, sigma_W = 0 only (formal kappa = -1/9)}
+{hybrid cancellation, True, True, False, gamma_W = 0 reduces to exact cancellation}
+{compensated Robin-mixed core realization, True, True, True, balance surface + D/N tube normalization}
+
+Open microscopic question:
+  The explicit low-frequency classification is closed at the reduced-model level,
+  but the actual moving-throat core still has to realize the balance surface and
+  D/N tube normalization. This script does not assert that realization.
+
+Stage 100 Mathematica audit passed.

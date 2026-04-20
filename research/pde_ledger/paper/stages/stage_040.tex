@@ -1,0 +1,31 @@
+\section[Stage 040]{Stage 040: Physical \texorpdfstring{$(\mathrm{Pe},\kappa,\eta)$}{(Pe,kappa,eta)} Placement Map}
+\label{stage:040}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the lowest-lane physical support map.}
+\stagefield{Purpose}{Stage~040 combines transport-driven overlap and Robin compliance into the physical support ratio used by the operator-selected branch.}
+\stagefield{Inputs}{Peclet overlap \(\Omega_{\mathrm{Pe}}\), Robin root \(y(\eta)\), and stiffness parameter \(\kappa\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage040_physical_parameter_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage040_physical_parameter_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage040_physical_parameter_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage040_physical_parameter_map_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The physical lowest-lane support ratio is
+\begin{equation}
+\label{eq:app-stage040-zeta}
+\boxed{
+\zeta_0(\mathrm{Pe},\eta;\kappa)
+=\Omega_{\mathrm{Pe}}^2
+\frac{\kappa+\pi^2/4}{\kappa+y(\eta)^2},
+\qquad
+ y(\eta)\tan y(\eta)=\eta}.
+\end{equation}
+It is monotone in the constructive Peclet direction, with zero-bias value
+\begin{equation}
+\label{eq:app-stage040-zero-bias}
+\zeta_0(0,\eta;\kappa)=\frac{\kappa+\pi^2/4}{\kappa+y(\eta)^2}.
+\end{equation}
+
+\stagefield{Output}{The physical support map \eqref{eq:app-stage040-zeta}.}
+\stagefield{Downstream use}{Stages~041--042 determine how the support/source operator selects \(\mathrm{Pe}_*\); Stages~062--066 specialize \eqref{eq:app-stage040-zeta} to Family--1.}
+

@@ -1,0 +1,27 @@
+\section[Stage 146]{Stage 146: Off-Family Normal Coordinate and Microscopic Compensation Defect}
+\label{stage:146}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+
+\stagefield{Purpose}{Stage~146 is a co-evolving core--mouth transport ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point, and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage146_off_family_normal_coordinate_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage146_off_family_normal_coordinate_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage146_off_family_normal_coordinate_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage146_off_family_normal_coordinate_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate \(\delta_\perp\).}
+
+\begin{quote}
+The first true off-family drift is the scalar \(\delta_\perp\), with explicit microscopic parent-action formula.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check deviations are taken about the renormalized co-evolving canonical point.
+\item Check even-preservation constraints are imposed before reading the remaining odd defect.
+\item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Part V and downstream branch-realization, orbit-lock, and same-charge audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}

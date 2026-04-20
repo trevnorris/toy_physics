@@ -1,0 +1,52 @@
+\chapter{Reader Provenance Summary}
+\label{app:reader-provenance-summary}
+
+\def\ReaderPath#1{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+
+This appendix records where the reader build fits inside the larger derivation
+archive. It is intentionally compact; the full source registry remains in the
+archive build.
+
+\section{Canonical source layers}
+
+\begin{longtable}{L{0.26\textwidth}L{0.25\textwidth}L{0.39\textwidth}}
+\toprule
+Layer & Repo location & Role \\
+\midrule
+\endhead
+Archive paper build & \ReaderPath{research/pde_ledger/paper/pde_ledger.tex} &
+Authoritative master ledger with full frontmatter and stage appendices. \\
+\addlinespace
+Reader paper build & \ReaderPath{research/pde_ledger/paper/pde_ledger_reader.tex}
+& Readable theorem-block path through Parts I--VIII plus compact provenance and
+verification notes. \\
+\addlinespace
+Canonical stage files & \ReaderPath{paper/stages/stage_NNN.tex} &
+Authoritative per-stage derivation source. \\
+\addlinespace
+Stage appendices & \ReaderPath{paper/appendices/stage_appendix_part*.tex} &
+Stage-ordered archive assembly over the canonical stage files. \\
+\addlinespace
+SymPy audits & \ReaderPath{research/pde_ledger/scripts/} & Primary symbolic
+verification corpus and numerical stress harnesses. \\
+\addlinespace
+Mathematica audits & \ReaderPath{research/pde_ledger/mathematica/}
+& Secondary CAS replay layer and saved audit outputs. \\
+\bottomrule
+\end{longtable}
+
+\section{Current stage-source rule}
+
+The canonical narrative source is now the per-stage \TeX{} tree under
+\ReaderPath{paper/stages/}.  The archive appendices assemble those stage files
+in stage order, while the main parts provide the theorem-block synthesis layer.
+
+\section{Escalation path}
+
+When a chapter in the reader build is not enough, the escalation path is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item reader chapter and its stage range;
+  \item archive stage appendices for the matching part;
+  \item canonical stage file plus the matching SymPy/Mathematica audit scripts;
+  \item verification trackers for cross-layer audit status.
+\end{enumerate}

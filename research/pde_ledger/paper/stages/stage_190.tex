@@ -1,0 +1,28 @@
+\section[Stage 190]{Stage 190: Primitive-ray certified table}
+\label{stage:190}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~190 specializes the Stage~189 certified ray sieve to the five primitive axes of the free-quintuple log space.}
+
+\stagefield{Inputs}{Imports \(h=\ln\widehat\chi_Q\), the oriented primitive gradients \(\Gamma_i\), diagonal Hessian envelopes on each primitive axis, and local validity radii \(T_i\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage190_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation orients each primitive axis by the sign of its gradient, proves primitive rows need only diagonal Hessian restrictions, classifies monotone and turning primitive rows, and ranks the certified primitive intervals.}
+
+\stagefield{Output}{Exact primitive Hessian-envelope theorem, sign-adapted primitive drift table, certified primitive ray table, primitive elimination theorem, and primitive winner theorem.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
+\item Check the log-ray validity interval before using a local bracket.
+\item Check curvature-envelope hypotheses before reporting a certified interval.
+\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

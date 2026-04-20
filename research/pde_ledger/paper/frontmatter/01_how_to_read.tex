@@ -1,0 +1,958 @@
+\chapter{How to Read This Ledger}
+\label{chap:how-to-read}
+
+This companion is intentionally larger and more mechanical than a normal paper.  It is designed to let a reader move in both directions: forward from the parent theory to the final reduced branch tests, and backward from any quoted result to the exact stage sequence that produced it.  The right way to read it is therefore not to start at Stage 001 and continue linearly until Stage 236.  The right way is to choose the level of verification one needs, then follow the relevant theorem anchor, stage range, status tag, and source trail.
+
+The guiding rule is:
+\begin{quote}
+Use the main body to understand the derivation.  Use the stage appendices to audit it.  Use the result anchors to cite it.  Use the status tags to decide what kind of claim has actually been proved.
+\end{quote}
+
+The ledger has two simultaneous jobs.  It should be readable enough that a new collaborator can understand why the moving-throat response package has the shape it does.  It should also be explicit enough that a skeptical reader can check the algebra, assumptions, branch restrictions, and remaining open realization gaps without relying on informal session memory.
+
+\section{The two-layer structure}
+\label{sec:how-to-read-two-layers}
+
+This document is organized in two layers: a theorem-block layer and a stage-ledger layer.  The two layers are meant to be used together, but they do different work.
+
+\subsection{Layer 1: theorem-block derivation}
+\label{subsec:theorem-block-layer}
+
+The main body is the theorem-block derivation.  It groups the 236-stage derivation into larger mathematical units: parent theory, geometry lift, conservative response, support completion, retarded quadrupole bridge, weak-axisymmetric quotient structure, realization compiler, rigid-mouth selected branch, and relaxed open-system extension.
+
+This layer should answer the conceptual questions:
+\begin{enumerate}[leftmargin=2.2em]
+  \item What is being derived?
+  \item What inputs are assumed?
+  \item What is exact and what is closure-dependent?
+  \item Which object becomes the stable citation target?
+  \item What does the result let later papers do?
+\end{enumerate}
+
+The theorem-block layer is where final theorem statements, proposition statements, named definitions, compact proof sketches, and interpretation should live.  A future paper should usually cite this layer first, because it is the layer that gives stable result anchors such as \resultanchor{MTDC-T5}, \resultanchor{MTDC-T9}, or \resultanchor{MTDC-T12}.
+
+The theorem-block layer is not required to reproduce every long polynomial, every symbolic expansion, every numerical placement table, or every failed side path.  It should give enough algebra to make the result intelligible and enough references to the stage appendices to make the result auditable.
+
+\subsection{Layer 2: stage-by-stage verification}
+\label{subsec:stage-ledger-layer}
+
+The appendices are the stage-ledger layer.  They preserve the derivation order
+through the canonical \StageFile{paper/stages/stage_NNN.tex} files assembled by
+the stage appendices.  Each stage entry should record the local purpose,
+inputs, assumptions, derivation, output, checks, and downstream use.
+
+This layer should answer the audit questions:
+\begin{enumerate}[leftmargin=2.2em]
+  \item Where did this formula first enter?
+  \item Which prior stages does it depend on?
+  \item Was it later corrected, demoted, generalized, or superseded?
+  \item What algebraic checks or scripts support it?
+  \item Does it produce a final theorem, a no-go result, a branch condition, or an open target?
+\end{enumerate}
+
+The stage-ledger layer is allowed to be repetitive.  Verification documents are not optimized the same way narrative papers are.  If a formula is used repeatedly, the stage entry may repeat the needed local definitions so the reader can audit the stage without reconstructing half the book.
+
+\subsection{Why the layers should not be merged}
+\label{subsec:why-not-merge-layers}
+
+A single chronological document would be difficult to cite and difficult to read.  A single polished theorem narrative would hide too much of the derivation trail.  The two-layer structure avoids both problems.
+
+The main body says, for example, that the grouped real \(P_2\) normalization problem reduces on the isotropic passive/outgoing branch to a scalar prefactor condition.  The appendices show how the response operator, projector calculus, outgoing transfer factor, normalized response expansion, and source-map normalization were derived stage by stage.  Both claims are necessary.  The first is the useful theorem-level statement; the second is the audit trail.
+
+\section{Recommended reading paths}
+\label{sec:recommended-reading-paths}
+
+Readers will come to this companion with different goals.  The ledger is organized so that they do not all have to read it in the same order.
+
+\subsection{Path A: operational reader}
+\label{subsec:path-operational}
+
+An operational reader wants to know what data a moving-throat branch must return and how those data are used.  This reader should start with the front matter, then read the theorem statements and summary boxes in the main parts.  The appendices can be used only when a formula needs verification.
+
+For this reader, the most important documents are:
+\begin{enumerate}[leftmargin=2.2em]
+  \item the Purpose and Scope chapter;
+  \item this How to Read chapter;
+  \item the Claim-Status Firewall;
+  \item the Notation Firewall;
+  \item the Result Anchor Map;
+  \item the opening summary of each main part.
+\end{enumerate}
+
+The operational reader should not treat the stage appendices as the primary exposition.  The stage appendices are the audit trail behind the exposition.
+
+\subsection{Path B: theorem verifier}
+\label{subsec:path-theorem-verifier}
+
+A theorem verifier wants to check a particular result.  This reader should begin with the result anchor, then follow the stated stage range, then inspect the stage entries and reproducibility map.
+
+The recommended procedure is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item Identify the result anchor, such as \resultanchor{MTDC-T5} for the grouped real \(P_2\) projector and normalization gate.
+  \item Read the theorem statement and proof sketch in the main body.
+  \item Record the claim-status tag.
+  \item Read the listed stage entries in the appendices.
+  \item Check whether the relevant formulas are exact identities, closure-level identities, controlled reductions, numerical placements, or open branch targets.
+  \item Follow any script-backed or symbolic-audit references in the reproducibility map.
+\end{enumerate}
+
+This path is the intended route for referees or collaborators who need to decide whether a future paper can safely cite a result.
+
+\subsection{Path C: provenance auditor}
+\label{subsec:path-provenance-auditor}
+
+A provenance auditor wants to know how a result evolved across the stage sequence.  This reader should start with the stage ledger rather than with the theorem block.  This is especially useful when an early reduced branch failed, when an old notation was corrected, or when an earlier broad gap was narrowed to a sharper branch-realization condition.
+
+The provenance auditor should pay special attention to:
+\begin{enumerate}[leftmargin=2.2em]
+  \item stages where a branch first appears;
+  \item stages where a no-go or obstruction is recorded;
+  \item stages where an obstruction is narrowed but not fully eliminated;
+  \item stages where a symbolic residual becomes a finite scalar packet;
+  \item stages where a result is superseded by a later cleaner normal form.
+\end{enumerate}
+
+A result may have a long provenance even if its final theorem statement is compact.  For example, a final scalar such as \(\Xi_1=P_1/P_0\) may depend on many earlier transformations: grouped-lane projectors, weak-axisymmetric splitting, prefactor transport, monomial quotient coordinates, and orbit-lock conditions.
+
+\subsection{Path D: branch-realization reader}
+\label{subsec:path-branch-realization-reader}
+
+A branch-realization reader wants to know whether the actual moving-throat PDE branch lands on the derived target.  This is a different question from whether the target was derived correctly.
+
+This reader should separate three questions:
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Compiler question.}  Has the algebra reduced the branch test to explicit observables?
+  \item \textbf{Realization question.}  Does the actual branch return those observables with the required values?
+  \item \textbf{Closure question.}  Are the branch assumptions used in the compiler actually satisfied by the branch being tested?
+\end{enumerate}
+
+This distinction is essential throughout the companion.  A compiler can be correct while the branch fails the target.  A branch can satisfy one packet and fail another.  A later relaxed branch can repair one obstruction only if it preserves the status and recovery conditions stated for that relaxed branch.
+
+\subsection{Path E: author filling the ledger}
+\label{subsec:path-author-filling-ledger}
+
+An author filling this ledger should not try to write every stage with equal length.  Some stages are a one-page algebraic identity; others are theorem-level pivots.  What must remain uniform is the metadata: purpose, inputs, status, output, checks, and downstream use.
+
+For every section or subsection that is filled later, the author should ask:
+\begin{enumerate}[leftmargin=2.2em]
+  \item What stage or stage range is this section responsible for?
+  \item What exact statement should future papers cite?
+  \item What assumptions does the statement require?
+  \item What is the strongest honest status tag?
+  \item What would falsify, demote, or limit the statement?
+  \item Where does the raw algebra appear?
+\end{enumerate}
+
+The goal is not to make the ledger short.  The goal is to make it difficult to misuse.
+
+\section{Citation discipline}
+\label{sec:citation-discipline}
+
+The ledger distinguishes result anchors, theorem labels, equation labels, and stage numbers.  Each serves a different purpose.
+
+\subsection{Result anchors are the stable citation targets}
+\label{subsec:result-anchors}
+
+Result anchors such as \resultanchor{MTDC-T1}--\resultanchor{MTDC-T12} are stable citation targets for future papers.  They identify durable mathematical packets rather than individual derivation steps.
+
+A future paper should cite a result anchor when it needs a claim such as:
+\begin{quote}
+The full grouped real \(P_2\) projector calculus and isotropic normalization gate are derived in \resultanchor{MTDC-T5}.
+\end{quote}
+
+or:
+\begin{quote}
+The weak-axisymmetric transport packet, quotient coordinates, and orbit closure are derived in \resultanchor{MTDC-T9}.
+\end{quote}
+
+The exact theorem and equation labels under each anchor will be filled as the main parts are written.  The anchor map should remain stable even if theorem numbering changes.
+
+\subsection{Theorem labels are local proof handles}
+\label{subsec:theorem-labels}
+
+Theorem, proposition, lemma, and definition labels are local proof handles.  They should be used when a later section inside this companion depends on a specific formal statement.
+
+A theorem label should not replace a result anchor in future-paper prose unless the future paper needs a very specific local statement.  Result anchors are more robust under later editing.
+
+\subsection{Equation labels are for formulas, not claims}
+\label{subsec:equation-labels}
+
+Equation labels should be used for formulas that need to be referenced precisely.  They should not be used as the only citation target for a claim.  A formula without its status tag and assumptions can be misleading.
+
+For example, the condition
+\[
+\widehat m_0^{\,2}P_0
+=
+\frac{54G c_s^5}{5a^5c^5}
+\]
+should not be cited merely as an equation.  It should be cited as part of the outgoing quadrupole normalization theorem, with its isotropic passive/outgoing and point-particle assumptions visible.
+
+\subsection{Stage numbers are provenance markers}
+\label{subsec:stage-numbers-provenance}
+
+Stage numbers preserve provenance.  They answer the question ``where did this come from?'' rather than the question ``what should I cite as the final theorem?''
+
+Use stage numbers when:
+\begin{enumerate}[leftmargin=2.2em]
+  \item tracing how a formula was derived;
+  \item identifying where a branch failed or was repaired;
+  \item checking a script-backed algebraic result;
+  \item comparing an early prototype with a later theorem-level normal form;
+  \item documenting that a later result supersedes an earlier provisional formulation.
+\end{enumerate}
+
+For example:
+\begin{quote}
+The normalized outgoing-prefactor bridge is part of \resultanchor{MTDC-T4}; its first one-lane prototype appears in Stage 004 and its grouped response formulation appears in Stage 005.
+\end{quote}
+
+This is better than citing Stage 004 alone, because the final claim lives in the theorem block while Stage 004 gives provenance.
+
+\subsection{Do not cite open branch targets as completed branch theorems}
+\label{subsec:do-not-cite-open-as-complete}
+
+Many parts of the moving-throat program end with a sharp target rather than a completed branch realization.  Such a target is valuable: it turns a vague problem into a finite branch test.  But it is not the same thing as a successful branch.
+
+When citing such a result, future papers should use language like:
+\begin{quote}
+The derivation companion reduces the remaining outgoing-normalization condition to the invariant product \(\widehat m_0^{\,2}P_0\), but actual branch realization remains a separate test.
+\end{quote}
+
+They should not write:
+\begin{quote}
+The companion proves that the actual branch realizes the outgoing normalization.
+\end{quote}
+
+unless the branch-realization theorem has actually been added and tagged accordingly.
+
+\section{Status tags: how to interpret claims}
+\label{sec:how-to-read-status-tags}
+
+Every theorem, proposition, boxed result, and major stage output should be read through its status tag.  The status tag is not a rhetorical note.  It is part of the mathematical content of the ledger.
+
+\begin{longtable}{L{0.24\textwidth}L{0.69\textwidth}}
+\toprule
+Status tag & How to read it \\
+\midrule
+\endhead
+\StatusExact & The result follows from the declared parent action, definitions, exact identities, or exact algebra.  It does not require an additional branch ansatz beyond the definitions stated in the result. \\
+\addlinespace
+\StatusExactClosure & The result is exact inside a declared closure family, branch, finite reduction, or response hierarchy.  The algebra is exact once that local closure is accepted, but the closure itself is not being claimed as the unique consequence of the full PDE. \\
+\addlinespace
+\StatusReduced & The result follows after a controlled reduction such as a low-frequency expansion, small-body/worldtube limit, far-field brane reduction, selected-mode truncation, isotropic branch restriction, or asymptotic regime. \\
+\addlinespace
+\StatusEffective & The result uses a physically motivated closure choice that organizes the problem but has not yet been uniquely derived from the completed moving-throat PDE. \\
+\addlinespace
+\StatusNumerical & The object is defined exactly, but the relevant point, branch value, threshold, or placement is presently obtained by numerical solve or numerical search. \\
+\addlinespace
+\StatusOpen & The statement depends on actual branch realization or on a PDE result not yet completed.  It may be a sharply defined target, but it is not a completed theorem. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Exact algebra inside a closure is not the same as an exact parent-theory theorem}
+\label{subsec:exact-in-closure-not-parent-exact}
+
+A common source of confusion is the phrase ``exact formula.''  A formula may be exact inside a reduced model while the reduced model itself is a closure.  For example, a Schur complement, projector identity, determinant, or finite mixed-ray search can be exact once the finite reduced system is declared.  That does not automatically make the result an unconditional theorem of the full nonlinear moving-throat PDE.
+
+The ledger should therefore say both things when both are true:
+\begin{quote}
+The algebraic reduction is exact within the declared finite mixed-ray search class.  Whether the actual branch lies in that class is a separate realization question.
+\end{quote}
+
+\subsection{A no-go result has a domain}
+\label{subsec:nogo-domain}
+
+A no-go result is only as broad as the class it searched.  If a stage rules out a wall-only anisotropy, a pure BdG anisotropy, a one-port static same-charge law, or a rigid-mouth branch placement, that no-go should be cited with its search class visible.
+
+A correct no-go citation has the form:
+\begin{quote}
+The wall-only weak-axisymmetric primitive branch is ruled out inside the primitive deformation class tested in the ledger.
+\end{quote}
+
+An unsafe no-go citation has the form:
+\begin{quote}
+Weak-axisymmetric deformation is impossible.
+\end{quote}
+
+The second sentence is stronger than the result unless the ledger has actually proved the larger statement.
+
+\subsection{A numerical placement is not a symbolic theorem}
+\label{subsec:numerical-placement}
+
+Some branch values are exactly defined but located numerically.  Such results should be treated as \StatusNumerical until either a closed-form derivation is supplied or the theorem is restated purely as an existence/uniqueness result independent of the numerical value.
+
+A numerical value can be useful and citeable.  It should simply not be disguised as a symbolic identity.
+
+\section{The main distinction: compiler, realization, and closure}
+\label{sec:compiler-realization-closure}
+
+The most important reading discipline in the entire companion is the separation among compiler success, realization success, and closure success.
+
+\subsection{Compiler success}
+\label{subsec:compiler-success}
+
+A compiler result reduces a complicated branch problem to a finite set of explicit observables.  For example, a long response calculation may reduce the outgoing quadrupole bridge to a scalar prefactor condition, or a weak-axisymmetric branch may reduce to \(\Xi_1=P_1/P_0\) together with a finite quotient packet.
+
+Compiler success means:
+\begin{quote}
+If the branch supplies these quantities and satisfies these assumptions, then the derived observable or target follows by the stated formulas.
+\end{quote}
+
+Compiler success does not imply that the branch actually supplies the desired values.
+
+\subsection{Realization success}
+\label{subsec:realization-success}
+
+Realization success is stronger.  It means the actual moving-throat branch has been shown to land on the compiler target.
+
+For example, if the compiler target is
+\[
+\widehat m_0^{\,2}P_0
+=
+\frac{54G c_s^5}{5a^5c^5},
+\]
+then realization success means the actual branch returns a value satisfying this condition under the assumptions of the theorem.  Merely deriving the condition is not realization success.
+
+\subsection{Closure success}
+\label{subsec:closure-success}
+
+Closure success means the assumptions used to produce a reduced theorem are themselves justified for the branch or regime being cited.  A reduced result can fail to apply if the branch violates isotropy, passivity, source-map normalization, support placement, rigid-mouth conditions, or the selected open-system recovery map.
+
+A future paper should not cite a reduced theorem without checking that its closure conditions match the branch being used.
+
+\subsection{Why this distinction matters}
+\label{subsec:why-compiler-realization-matters}
+
+Many important achievements in the moving-throat program are compiler achievements.  They narrow a broad missing-PDE problem to a finite target packet.  That is a real result.  But the ledger must preserve the difference between ``we know exactly what the branch must do'' and ``we have proved the branch does it.''
+
+When filling later sections, use phrases like:
+\begin{quote}
+This stage completes the algebraic compiler for the selected branch.
+\end{quote}
+
+or:
+\begin{quote}
+This stage identifies the actual-branch realization gap as the remaining open datum.
+\end{quote}
+
+Do not replace those with:
+\begin{quote}
+This stage proves the full physical branch.
+\end{quote}
+
+unless the stage really does.
+
+\section{How to read the stage entries}
+\label{sec:how-to-read-stage-entries}
+
+Each stage appendix entry should follow a common structure.  The goal is not aesthetic uniformity; the goal is auditability.
+
+\subsection{Purpose}
+\label{subsec:stage-purpose}
+
+The purpose paragraph says why the stage exists.  It should name the local problem, not merely summarize the algebra.
+
+Good purpose statements have the form:
+\begin{quote}
+This stage lifts the one-lane outgoing transfer factor to the full grouped real \(20/21/22\) bundle and identifies the static prefactor that controls the leading \(i\omega^5\) term.
+\end{quote}
+
+Weak purpose statements have the form:
+\begin{quote}
+This stage continues the calculation.
+\end{quote}
+
+The reader should know what theorem gate the stage is trying to open, close, narrow, or rule out.
+
+\subsection{Inputs}
+\label{subsec:stage-inputs}
+
+The inputs paragraph lists the prior formulas, assumptions, and branch conditions used by the stage.  It should include both mathematical inputs and status inputs.
+
+Examples of input categories include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item parent action identities;
+  \item moving-throat geometry definitions;
+  \item previous stage kernels or response operators;
+  \item low-frequency or small-body reductions;
+  \item isotropic or weak-axisymmetric branch restrictions;
+  \item finite-mode or one-port closure choices;
+  \item script-backed algebraic identities;
+  \item target values imported from lower-order PN ledgers.
+\end{enumerate}
+
+If an input is not exact, the stage should not pretend that it is.
+
+\subsection{Claim status}
+\label{subsec:stage-claim-status}
+
+The claim-status field states the strongest honest status for the stage output.  If a stage contains several outputs with different statuses, the entry should either split them or list the statuses separately.
+
+For example, a stage may contain:
+\begin{enumerate}[leftmargin=2.2em]
+  \item an exact projector identity;
+  \item a reduced isotropic-branch theorem;
+  \item a numerical placement point;
+  \item an open actual-branch realization condition.
+\end{enumerate}
+
+Those should not be collapsed into one global status unless that global status is the weakest one needed for every claim.
+
+\subsection{Derivation}
+\label{subsec:stage-derivation}
+
+The derivation field should show the mathematical steps that matter.  It does not need to reproduce every line of a symbolic script, but it must expose the transitions that a human reader could otherwise not verify.
+
+A good derivation section includes:
+\begin{enumerate}[leftmargin=2.2em]
+  \item definitions of local variables;
+  \item the equation being transformed;
+  \item the algebraic or variational step used;
+  \item the resulting formula;
+  \item the assumptions used at each narrowing step.
+\end{enumerate}
+
+If the result comes from a script, the derivation should still state the mathematical identity the script checks.  The script is supporting evidence, not a substitute for a statement of what was proved.
+
+\subsection{Output}
+\label{subsec:stage-output}
+
+The output field should state the stage result in a form that can be used later.  Boxed equations are appropriate for final local outputs, but the box should not imply a stronger status than the stage carries.
+
+Typical output types include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item a new definition;
+  \item an exact identity;
+  \item a reduced theorem;
+  \item a compatibility condition;
+  \item a no-go result inside a declared class;
+  \item a branch target;
+  \item a numerical placement;
+  \item a downstream input packet.
+\end{enumerate}
+
+\subsection{Checks}
+\label{subsec:stage-checks}
+
+The checks field records why the stage result is trustworthy.  Different results require different checks.
+
+Useful check categories include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item dimensional consistency;
+  \item sign and passivity checks;
+  \item limiting cases;
+  \item isotropic-collapse checks;
+  \item grouped-projector checks;
+  \item branch-recovery checks;
+  \item exact symbolic audits;
+  \item numerical reproduction checks;
+  \item comparison with a known lower-order target.
+\end{enumerate}
+
+The checks field is especially important when a stage introduces a narrow target after a long reduction.  It tells future readers whether the target is constrained by multiple independent paths or only by one formal transformation.
+
+\subsection{Downstream use}
+\label{subsec:stage-downstream-use}
+
+The downstream-use field says what later stage, theorem block, branch test, or paper uses the result.  This field turns the appendix into a dependency map.
+
+A result that has no downstream use may still belong in the archive, but it should not be promoted to a main theorem anchor unless it resolves, constrains, or explains something that later parts depend on.
+
+\section{How to read formulas with grouped real \texorpdfstring{\(P_2\)}{P2} labels}
+\label{sec:how-to-read-grouped-p2}
+
+The grouped real \(P_2\) notation is one of the most common places for reader error.  The labels
+\[
+20,
+\qquad
+21,
+\qquad
+22
+\]
+are grouped real quadrupole lanes.  They are not spacetime indices.  They package the five real \(l=2\) components into a weighted three-lane notation in which the \(21\) and \(22\) entries each represent a cosine/sine pair.
+
+\subsection{The grouped metric}
+\label{subsec:grouped-metric}
+
+The natural grouped metric is
+\[
+G_{\rm grp}=\mathrm{diag}(1,2,2).
+\]
+
+Therefore grouped traces use the weights \((1,2,2)\).  For a grouped triple
+\[
+x=(x_{20},x_{21},x_{22}),
+\]
+the isotropic trace and two anisotropy coordinates are
+\[
+\bar x
+=
+\frac{x_{20}+2x_{21}+2x_{22}}{5},
+\]
+\[
+a_x
+=
+\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+b_x
+=
+\frac{x_{21}-x_{22}}{2}.
+\]
+The inverse map is
+\[
+x_{20}=\bar x+4a_x,
+\qquad
+x_{21}=\bar x-a_x+b_x,
+\qquad
+x_{22}=\bar x-a_x-b_x.
+\]
+
+The isotropic branch is not merely the branch where an ordinary unweighted average is simple.  It is the branch where the grouped anisotropy coordinates vanish:
+\[
+a_x=0,
+\qquad
+b_x=0.
+\]
+
+\subsection{The weak-axisymmetric line}
+\label{subsec:weak-axisymmetric-line}
+
+A weak axisymmetric quadrupole splitting has the grouped signature
+\[
+(20,21,22)\sim \left(1,\frac12,-1\right).
+\]
+In grouped anomaly coordinates this implies the line
+\[
+b=3a.
+\]
+
+When the ledger says that a weak-axisymmetric prefactor packet lies on the line
+\[
+b_{P_0}=3a_{P_0},
+\]
+it is referring to this specific grouped-lane signature.  A branch with arbitrary grouped defects is not automatically a weak-axisymmetric branch.
+
+\subsection{The meaning of \texorpdfstring{\(\Xi_1\)}{Xi1}}
+\label{subsec:meaning-of-xi1}
+
+The scalar
+\[
+\Xi_1=\frac{P_1}{P_0}
+\]
+should be read as the normalized weak-axisymmetric slope of the outgoing prefactor.  In the later quotient language it is not an arbitrary residual; it is the transported prefactor defect that remains after the grouped response has been compressed to branch-invariant coordinates.
+
+When citing \(\Xi_1\), state which branch is being used: raw coherent defect, corrected nontracking coordinate, rigid-mouth chart, selected support branch, or relaxed branch.
+
+\section{How to read the outgoing quadrupole bridge}
+\label{sec:how-to-read-outgoing-bridge}
+
+The outgoing quadrupole bridge is a central result of the moving-throat program.  It is also a place where the reader must distinguish the universal outgoing fingerprint from the internal branch prefactor.
+
+\subsection{Universal outgoing fingerprint}
+\label{subsec:universal-outgoing-fingerprint}
+
+The compact outgoing \(l=2\) branch has a low-frequency fingerprint of the form
+\[
+\widehat Y_2^{\rm out}(\omega)
+=
+1+\frac{a^2}{9c_s^2}\omega^2
++\frac{4a^4}{81c_s^4}\omega^4
++i\frac{a^5}{27c_s^5}\omega^5
++O(\omega^6).
+\]
+The important point is that the leading odd term appears at \(i\omega^5\), as expected for the quadrupole route.
+
+This fingerprint is not the whole theorem.  The moving-throat branch must still supply the internal prefactor that transfers this outgoing port into the wall/worldtube response.
+
+\subsection{Internal prefactor}
+\label{subsec:internal-prefactor}
+
+The reduced branch carries an internal prefactor, often denoted \(P_0\) at leading order.  On the isotropic branch, the leading normalization condition is
+\[
+\widehat m_0^{\,2}P_0
+=
+\frac{54G c_s^5}{5a^5c^5}.
+\]
+
+This equation is best read as a target condition.  The derivation shows why this is the scalar the branch must hit.  Actual branch realization is the separate question of whether the computed moving-throat branch returns this value.
+
+\subsection{Constant-prefactor branch}
+\label{subsec:constant-prefactor-branch}
+
+A particularly simple branch is the constant-prefactor branch, where higher prefactor moments vanish or are correlated so that
+\[
+P_2=0,
+\qquad
+P_4=0
+\]
+through the retained order.  The ledger derives exact algebraic conditions for this branch in terms of the conservative operator moments and outgoing-transfer moments.  Those algebraic conditions should not be replaced by the stronger and usually false statement that the raw transfer moments themselves vanish.
+
+\section{How to read orbit and quotient results}
+\label{sec:how-to-read-orbit-quotient}
+
+The later weak-axisymmetric derivation compresses a large microscopic drift space into quotient coordinates.  This is one of the strongest structural simplifications in the program, but it must be read carefully.
+
+\subsection{Microscopic drifts versus quotient drifts}
+\label{subsec:microscopic-vs-quotient-drifts}
+
+A microscopic drift vector may contain many entries: stiffness drifts, coupling drifts, frequency drifts, support drifts, transfer-shape drifts, and dressing drifts.  Not every microscopic drift is a physical defect motion.  Some directions are similarity-orbit directions that preserve the branch invariants.
+
+The quotient coordinates identify the physical motion left after those similarity directions are removed.  In the coherent weak-axisymmetric packet, the branch-adapted coordinates include objects such as
+\[
+q_{\rm tr},
+\qquad
+q_{\rm nt},
+\qquad
+q_\eta,
+\]
+and the final reduced packet includes
+\[
+\Delta_{\rm full}
+=
+(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta).
+\]
+
+When the ledger says that a branch lies on a similarity orbit, it means the invariant monomial coordinates are preserved.  It does not mean every microscopic coefficient is unchanged.
+
+\subsection{Orbit lock}
+\label{subsec:orbit-lock}
+
+On the rigid-mouth actual branch, the physical logarithmic chart is
+\[
+(U,V)=
+\left(
+\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},
+\ln\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}
+\right).
+\]
+Orbit lock is the Cartesian codimension-two condition
+\[
+U=0,
+\qquad
+V=0.
+\]
+
+This is a branch condition, not a general identity.  It is the correct condition to use only when the rigid-mouth assumptions and selected physical chart apply.
+
+\subsection{Support selection versus orbit lock}
+\label{subsec:support-selection-vs-orbit-lock}
+
+Selected support placement and orbit lock are related but distinct.  A branch can satisfy a support-selection threshold while still failing an orbit-lock condition, or vice versa.  The selected twin-support slice records one exact support-placement packet, including
+\[
+\rho_\alpha=\frac43,
+\qquad
+\zeta_{\rm req}=\frac13.
+\]
+This should not be conflated with the rigid-mouth condition \(U=V=0\).
+
+\section{How to read the relaxed open-system extension}
+\label{sec:how-to-read-relaxed-extension}
+
+The relaxed extension after Stage 225 should be read as a companion branch around the strict front end, not as a silent replacement of the strict theorem packet.
+
+\subsection{Recovery map}
+\label{subsec:relaxed-recovery-map}
+
+The relaxed branch has an exact recovery map back to the strict Stage-225 front end:
+\[
+\ell_w=f_U=a=b=0.
+\]
+Any claim made on the relaxed branch should state whether it survives this recovery limit, vanishes in the recovery limit, or modifies a strict-branch packet before the limit is taken.
+
+\subsection{Stationary and dynamic pieces}
+\label{subsec:relaxed-stationary-dynamic}
+
+The relaxed extension contains both a stationary lowered front end and dynamic continuations.  The stationary front end is organized by an effective potential of the form
+\[
+V_{\rm eff}^{(230)}(r)
+=
+V_{\rm short}^{(1p)}(r)
+-
+\lambda_LS_{\rm leak}(r)
+-
+\lambda_W\mathcal W_w^{\rm sess}(r)
+-
+\Delta E_{UV}(r)
+-
+\mathcal M_{\sigma,\rm red}(r).
+\]
+The dynamic continuation includes event-chain, turning-point, WKB, Goldilocks, export-kernel, and material-screening packets.  These should be cited under the relaxed-branch anchor, not under the strict branch unless the recovery map has been explicitly applied.
+
+\section{How to handle apparent contradictions}
+\label{sec:apparent-contradictions}
+
+A long derivation ledger will contain provisional branches, failed routes, renamed quantities, and later normal forms that supersede earlier descriptions.  Apparent contradictions should be resolved using the rules below.
+
+\subsection{Later theorem-level normal forms supersede earlier prototypes}
+\label{subsec:later-normal-forms}
+
+Early stages often introduce a one-lane prototype or a simplified branch to expose a mechanism.  Later stages may lift that prototype to the full grouped bundle, quotient it by similarity directions, or replace it with a cleaner invariant packet.
+
+The early stage remains valuable as provenance.  The later theorem-level form is the preferred citation target.
+
+\subsection{A failed branch can still be part of the proof}
+\label{subsec:failed-branch-proof}
+
+Some stages are important precisely because they fail.  A no-go result, obstruction, or undershoot can narrow the search class and force the next theorem gate.
+
+Do not delete failed branches from the ledger merely because they are not part of the final successful route.  Instead, mark their status, search class, and downstream role.
+
+\subsection{Notation updates should be made explicit}
+\label{subsec:notation-updates}
+
+The project has a strict notation firewall.  If an earlier file used a symbol in a way that later corrections changed, the ledger should say so explicitly.  In particular:
+\begin{enumerate}[leftmargin=2.2em]
+  \item electric charge is carried by \(\eta_Q,q_\star,q_{\rm eff}\), not by circulation;
+  \item the historical gravity-side bare \(q=1\) is \(\kappa_\rho=1\), not electric charge;
+  \item grouped \(20/21/22\) labels are real \(P_2\) lanes, not spacetime indices;
+  \item mixed channels are suppressed only in strict far-field brane reductions, not removed from the microscopic ontology.
+\end{enumerate}
+
+When a notation update affects a derivation, preserve the old provenance but write the final theorem in the corrected notation.
+
+\section{Verification standards}
+\label{sec:verification-standards}
+
+A derivation ledger should make verification possible at several levels.
+
+\subsection{Human algebra verification}
+\label{subsec:human-algebra-verification}
+
+The text should show enough algebra that a reader can reproduce the essential steps by hand.  This is especially important for:
+\begin{enumerate}[leftmargin=2.2em]
+  \item variational reductions;
+  \item Schur complements;
+  \item low-frequency expansions;
+  \item projector decompositions;
+  \item normalization-product derivations;
+  \item quotient-coordinate maps;
+  \item finite search reductions.
+\end{enumerate}
+
+If a formula is too long to derive in the main body, the main body should give the structure and the appendix should carry the details.
+
+\subsection{Symbolic audit verification}
+\label{subsec:symbolic-audit-verification}
+
+When a result was checked by a symbolic script, the ledger should identify what the script checked.  Merely naming a script is not enough.  The text should say, for example, that the script verified projector idempotence, exact inverse maps, low-frequency coefficient expansions, rank, nullity, determinant nonvanishing, or residual cancellation.
+
+The reproducibility map should collect these scripts and their corresponding mathematical claims.
+
+\subsection{Numerical verification}
+\label{subsec:numerical-verification}
+
+Numerical solves should report the exact problem being solved, the branch conditions, the variables, the target residual, and any stability or uniqueness checks.  A numerical value without its defining equations is not sufficient for this ledger.
+
+If a numerical result is later replaced by a closed form, the stage appendix should preserve the numerical result as provenance and the main theorem should be promoted only if the closed-form derivation supports the promotion.
+
+\subsection{Limiting-case verification}
+\label{subsec:limiting-case-verification}
+
+Whenever possible, reduced formulas should be checked in limits where the answer is known.  Examples include:
+\begin{enumerate}[leftmargin=2.2em]
+  \item isotropic limit: grouped anisotropy defects vanish;
+  \item zero-coupling limit: Schur-complement self-energies disappear;
+  \item no-mixed-channel limit: outgoing transfer factors vanish or reduce to the stated conservative form;
+  \item strict-branch recovery: relaxed variables set to zero reproduce the strict packet;
+  \item point-particle limit: source-map corrections reduce to the leading invariant target.
+\end{enumerate}
+
+These checks are not decorative.  They are how the reader sees that a long formula has the right structure.
+
+\section{Suggested local structure for future filled sections}
+\label{sec:suggested-local-structure}
+
+As the empty sections and stage templates are filled, use the following local structure unless a section clearly needs a different one.
+
+\subsection{For theorem-block sections}
+\label{subsec:theorem-block-template}
+
+A theorem-block section should usually contain:
+\begin{enumerate}[leftmargin=2.2em]
+  \item \textbf{Stage range and result anchor.}  State which stages the section covers and which result anchor it supports.
+  \item \textbf{Problem statement.}  Explain the mathematical bottleneck being closed or narrowed.
+  \item \textbf{Inputs and assumptions.}  List the parent identities, previous theorem anchors, and branch restrictions.
+  \item \textbf{Definitions.}  Introduce the local variables and normalizations.
+  \item \textbf{Main result.}  State theorem/proposition/lemma with status tag.
+  \item \textbf{Proof or derivation.}  Give the essential algebra.
+  \item \textbf{Checks.}  Record consistency and symbolic-audit checks.
+  \item \textbf{Downstream use.}  State which later result or future paper uses the result.
+  \item \textbf{Remaining gap.}  If applicable, identify what remains open after the section.
+\end{enumerate}
+
+\subsection{For stage appendix entries}
+\label{subsec:stage-entry-template}
+
+A stage appendix entry should usually contain:
+\begin{enumerate}[leftmargin=2.2em]
+  \item Purpose;
+  \item Source file and stage provenance;
+  \item Inputs;
+  \item Claim status;
+  \item Derivation;
+  \item Output;
+  \item Checks;
+  \item Downstream use;
+  \item Notes on supersession or demotion, if any.
+\end{enumerate}
+
+This template should be used even for short stages.  Empty fields reveal missing audit information.
+
+\section{Practical examples of safe wording}
+\label{sec:safe-wording-examples}
+
+The same mathematical result can be described safely or unsafely depending on wording.  The examples below are meant to guide future writing.
+
+\subsection{Outgoing quadrupole normalization}
+\label{subsec:safe-wording-outgoing}
+
+Safe:
+\begin{quote}
+The derivation reduces the passive/outgoing quadrupole normalization to the invariant scalar product \(\widehat m_0^{\,2}P_0\) on the isotropic branch.  Actual realization of the target value is a branch test.
+\end{quote}
+
+Unsafe unless a later branch theorem is added:
+\begin{quote}
+The moving-throat PDE realizes the GR quadrupole normalization.
+\end{quote}
+
+\subsection{Finite realization search}
+\label{subsec:safe-wording-realization-search}
+
+Safe:
+\begin{quote}
+The local mixed-ray realization search is finite through the declared support-cardinality bound and closes inside that search class.
+\end{quote}
+
+Unsafe:
+\begin{quote}
+All possible realizations are exhausted.
+\end{quote}
+
+\subsection{Rigid-mouth branch}
+\label{subsec:safe-wording-rigid-mouth}
+
+Safe:
+\begin{quote}
+On the rigid-mouth actual branch, the post-static same-charge packet is diagonal in the physical logarithmic chart \((U,V)\), and orbit lock is \(U=V=0\).
+\end{quote}
+
+Unsafe:
+\begin{quote}
+The same-charge problem is solved generally by \(U=V=0\).
+\end{quote}
+
+\subsection{Relaxed branch}
+\label{subsec:safe-wording-relaxed-branch}
+
+Safe:
+\begin{quote}
+The relaxed open-system extension is a codimension-three branch around the strict Stage-225 front end, with recovery map \(\ell_w=f_U=a=b=0\).
+\end{quote}
+
+Unsafe:
+\begin{quote}
+The relaxed branch replaces the strict branch.
+\end{quote}
+
+\section{What to do when filling reveals a gap}
+\label{sec:what-to-do-with-gaps}
+
+A derivation ledger is useful because it exposes gaps.  If filling a section reveals that a result is less complete than expected, do not hide the gap.
+
+Use one of the following actions.
+
+\subsection{Demote the status}
+\label{subsec:demote-status}
+
+If a result was previously described as exact but depends on a closure, change the status to \StatusExactClosure{} or \StatusReduced{}.  If actual branch realization is missing, mark the realization as \StatusOpen{} even if the compiler is exact.
+
+\subsection{Split the result}
+\label{subsec:split-result}
+
+If part of a result is exact and part is open, split it.  For example:
+\begin{enumerate}[leftmargin=2.2em]
+  \item The projector identity is \StatusExact.
+  \item The isotropic branch reduction is \StatusReduced.
+  \item The actual branch hitting the target is \StatusOpen.
+\end{enumerate}
+
+This is usually better than assigning one ambiguous tag to a mixed statement.
+
+\subsection{Add a branch condition}
+\label{subsec:add-branch-condition}
+
+If a formula is correct only under isotropy, passivity, finite support, selected twin placement, rigid-mouth closure, or relaxed recovery, add the condition to the theorem statement and the local proof.
+
+\subsection{Preserve the failed route}
+\label{subsec:preserve-failed-route}
+
+If a stage fails, keep it if it narrows the search.  Mark it as a no-go inside its declared class and state what it rules out.  Failed routes are part of the derivation, especially in a ledger meant for future citation and verification.
+
+\section{Relationship to other papers in the program}
+\label{sec:relationship-to-other-papers}
+
+This companion is not isolated.  It is the derivation backbone that future papers should use when citing moving-throat response results.
+
+\subsection{Framework paper}
+\label{subsec:relationship-framework-paper}
+
+The framework paper should be cited when a reader needs the compact operational branch test.  This companion should be cited when a reader needs the derivation of that branch test.
+
+In practical terms:
+\begin{quote}
+Use \StageFile{pde.tex} for how to apply the response framework.  Use this companion for why the response framework has that form.
+\end{quote}
+
+\subsection{Parent 4D papers}
+\label{subsec:relationship-parent-papers}
+
+The parent 4D papers provide exact action-level and controlled-reduction inputs: gauged GNLS matter, localized Maxwell theory, projection versus reduction, corrected charge ontology, and the lower-order conservative hierarchy.  This companion imports those inputs; it does not need to re-prove every parent result unless the moving-throat derivation uses it in a new way.
+
+\subsection{PN assembly papers}
+\label{subsec:relationship-pn-papers}
+
+The PN assembly papers provide targets and carry-forward packets that motivate the moving-throat response program.  For example, the 2.5PN and 4PN packages narrow the retarded problem to the outgoing STF quadrupole normalization, while the 3PN and 5PN continuations motivate grouped real \(P_2\), weak-axisymmetric, and finite realization compiler structures.
+
+This companion should show how the moving-throat derivation responds to those targets.  It should not silently import a target as if it were already a moving-throat theorem.
+
+\subsection{Atomic, lepton, and material companions}
+\label{subsec:relationship-downstream-companions}
+
+Downstream atomic, lepton, anomaly, export, and material notes may use the moving-throat quotient and branch packets.  When they do, they should cite the relevant result anchor here and state whether they are using a strict branch, a rigid-mouth branch, a selected-support branch, or a relaxed open-system branch.
+
+\section{Checklist before citing a result from this companion}
+\label{sec:checklist-before-citing}
+
+Before citing a result from this companion in another paper, check the following.
+
+\begin{verificationchecklist}
+  \item The result has a stable result anchor or theorem label.
+  \item The status tag is compatible with the way the result is being used.
+  \item The branch assumptions are stated in the citing paper.
+  \item The notation matches the corrected notation firewall.
+  \item The cited result is not merely an early prototype superseded by a later normal form.
+  \item Any numerical value is identified as numerical unless a closed form has been added.
+  \item Any no-go result is cited with its search class.
+  \item Any open branch-realization target is not described as a completed branch theorem.
+  \item If the relaxed branch is used, the recovery map and relaxed variables are stated.
+  \item If grouped real \(P_2\) data are used, the grouped metric and anisotropy convention are respected.
+\end{verificationchecklist}
+
+\section{Summary of reader rules}
+\label{sec:summary-reader-rules}
+
+The ledger can be summarized by eight reader rules.
+
+\begin{enumerate}[leftmargin=2.2em]
+  \item Read theorem anchors for stable claims and stage numbers for provenance.
+  \item Read every major result through its status tag.
+  \item Do not confuse compiler success with branch-realization success.
+  \item Do not treat closure-level algebra as an unconditional parent-theory theorem.
+  \item Do not cite a no-go result outside its declared search class.
+  \item Treat grouped \(20/21/22\) labels as real \(P_2\) lanes with grouped metric \(\mathrm{diag}(1,2,2)\).
+  \item Keep strict, rigid-mouth, selected-support, and relaxed branches distinct.
+  \item When in doubt, follow the result anchor to the stage appendix and check the inputs, status, checks, and downstream use.
+\end{enumerate}
+
+These rules are deliberately conservative.  The point of the derivation companion is not to make the moving-throat program look simpler than it is.  The point is to make its derivation, assumptions, accomplishments, and remaining branch-realization gaps visible enough that future papers can cite it without rebuilding the entire stage tree.

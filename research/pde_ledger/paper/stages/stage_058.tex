@@ -1,0 +1,40 @@
+\section[Stage 058]{Stage 058: Explicit Family--1 Threshold Window}
+\label{stage:058}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the numerical evaluation of the exact threshold functions.}
+\stagefield{Purpose}{Stage~058 evaluates the operator thresholds for the fixed Family--1 geometry and support scale.}
+\stagefield{Inputs}{\(\kappa=12321/5\), \(\eta=37\), and \(\Upsilon_w=100\Theta_w\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage058_family1_threshold_window_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage058_family1_threshold_window_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage058_family1_threshold_window_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage058_family1_threshold_window_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The endpoint functions evaluate to
+\begin{equation}
+\label{eq:app-stage058-Delta0}
+\Delta_0\left(\frac{12321}{5},37\right)
+\simeq1.73302079021525\times10^{-4},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage058-Deltainf}
+\Delta_\infty\left(\frac{12321}{5},37\right)
+\simeq2.01447565540522\times10^{-2}.
+\end{equation}
+With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), and \(\Upsilon_w=100\Theta_w\), the Family--1 threshold window is
+\begin{equation}
+\label{eq:app-stage058-fail}
+\boxed{
+\Theta_w\leq3.62605617972939\times10^{-4}\,\mathrm{Pe}_{\rm req}
+\Rightarrow\text{fail}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage058-succeed}
+\boxed{
+\Theta_w\geq4.21495341569977\times10^{-2}\,\mathrm{Pe}_{\rm req}
+\Rightarrow\text{succeed}}.
+\end{equation}
+
+\stagefield{Output}{The explicit Family--1 wall-depth window \eqref{eq:app-stage058-fail}--\eqref{eq:app-stage058-succeed}.}
+\stagefield{Downstream use}{Stages~059--060 compute \(\Theta_w\) from the wall profile; Stage~061 compares it to the window.}
+

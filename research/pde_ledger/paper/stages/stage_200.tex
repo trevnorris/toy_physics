@@ -1,0 +1,28 @@
+\section[Stage 200]{Stage 200: Five-coordinate interior optimizer}
+\label{stage:200}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~200 solves the last genuine continuum optimization problem: the interior of the unique support-five simplex.}
+
+\stagefield{Inputs}{Imports the support-five ratio chart, certified root objectives, compact admissible windows, and the Stage~199 boundary ledger.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage200_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation writes the four stationary numerator equations, lifts by one auxiliary square-root variable, obtains degree pattern \((3,3,3,3,2)\), proves the preferred \(162\)-candidate bound per envelope, and gives a square-root-free fallback bound.}
+
+\stagefield{Output}{Finite support-five interior candidate set, preferred budget \(324\), fallback budget \(1500\), and support-five interior improvement/non-improvement theorem.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+\item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+\item Check support-cardinality closure is limited to the declared five free coordinates.
+\item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.4} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

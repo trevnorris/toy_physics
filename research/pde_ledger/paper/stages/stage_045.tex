@@ -1,0 +1,50 @@
+\section[Stage 045]{Stage 045: Parent-Action Projection of the Microscopic Support/Source Gain}
+\label{stage:045}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExact{} for the parent GNLS compressional identities; \StatusReduced{} for the projected support/source ansatz.}
+\stagefield{Purpose}{Stage~045 projects the microscopic gain back into parent-action variables: confinement loading, compressional stiffness, and source/support overlap.}
+\stagefield{Inputs}{GNLS compressional stiffness for the frozen \(n=5\) EOS and support/source profiles \(\chi_\phi\), \(\chi_\sigma\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage045_parent_action_gain_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage045_parent_action_gain_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage045_parent_action_gain_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage045_parent_action_gain_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+Take
+\begin{equation}
+\label{eq:app-stage045-dV}
+\delta V_{\rm conf}(s,y)=-g_\phi\chi_\phi(y)\phi(s).
+\end{equation}
+For the frozen \(n=5\) EOS,
+\begin{equation}
+\label{eq:app-stage045-hprime}
+h'(\rho_*)=5K\rho_*^3=\frac{mc_{s,*}^2}{\rho_*}.
+\end{equation}
+Define profile overlaps
+\begin{equation}
+\label{eq:app-stage045-overlaps}
+N_{\sigma\sigma}=\int d^3y\,\chi_\sigma^2,
+\qquad
+N_{\phi\phi}=\int d^3y\,\chi_\phi^2,
+\qquad
+O_{\sigma\phi}=\int d^3y\,\chi_\sigma\chi_\phi.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage045-Gmicro}
+\boxed{
+G_{\rm micro}
+=\frac{\rho_*g_\phi^2O_{\sigma\phi}^2}{mc_{s,*}^2K_XN_{\sigma\sigma}}
+=\frac{\rho_*g_\phi^2N_{\phi\phi}}{mc_{s,*}^2K_X}C_{\sigma\phi}^2},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage045-Csigma}
+C_{\sigma\phi}^2=\frac{O_{\sigma\phi}^2}{N_{\sigma\sigma}N_{\phi\phi}},
+\qquad
+0\leq C_{\sigma\phi}^2\leq1.
+\end{equation}
+
+\stagefield{Output}{Parent-action gain formula \eqref{eq:app-stage045-Gmicro}.}
+\stagefield{Downstream use}{Stage~046 converts this into amplitude/coherence thresholds; Stage~047 derives the equilibrium source profile.}
+

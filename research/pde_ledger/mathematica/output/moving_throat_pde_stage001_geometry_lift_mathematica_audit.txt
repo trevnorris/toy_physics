@@ -1,0 +1,87 @@
+
+========================================================================================
+STAGE 001 — GEOMETRY LIFT AND LINEARIZED PDE SKELETON
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Real-harmonic bookkeeping
+----------------------------------------------------------------------------------------
+Y00: average = 2*Sqrt[Pi], norm = 1
+Y20: average = 0, norm = 1
+Y21c: average = 0, norm = 1
+Y21s: average = 0, norm = 1
+Y22c: average = 0, norm = 1
+Y22s: average = 0, norm = 1
+average(Y20) = 0
+PASS: average(Y20)
+average(Y21c) = 0
+PASS: average(Y21c)
+average(Y21s) = 0
+PASS: average(Y21s)
+average(Y22c) = 0
+PASS: average(Y22c)
+average(Y22s) = 0
+PASS: average(Y22s)
+norm(Y00)-1 = 0
+PASS: norm(Y00)-1
+norm(Y20)-1 = 0
+PASS: norm(Y20)-1
+cross(Y00,Y20) = 0
+PASS: cross(Y00,Y20)
+
+----------------------------------------------------------------------------------------
+I.2 Mouth-average extraction
+----------------------------------------------------------------------------------------
+mouth average - q00/(2 sqrt(pi)) = 0
+PASS: mouth average - q00/(2 sqrt(pi))
+
+----------------------------------------------------------------------------------------
+I.3 Spherical Laplacian eigenvalues
+----------------------------------------------------------------------------------------
+-Delta_S2 Y00 = 0
+PASS: -Delta_S2 Y00
+-Delta_S2 Y20 - 6 Y20 = 0
+PASS: -Delta_S2 Y20 - 6 Y20
+-Delta_S2 Y21c - 6 Y21c = 0
+PASS: -Delta_S2 Y21c - 6 Y21c
+-Delta_S2 Y21s - 6 Y21s = 0
+PASS: -Delta_S2 Y21s - 6 Y21s
+-Delta_S2 Y22c - 6 Y22c = 0
+PASS: -Delta_S2 Y22c - 6 Y22c
+-Delta_S2 Y22s - 6 Y22s = 0
+PASS: -Delta_S2 Y22s - 6 Y22s
+
+----------------------------------------------------------------------------------------
+II. Level-set confinement linearization
+----------------------------------------------------------------------------------------
+First variation = -((etaMode*Derivative[1][Vwall][sigma0/ellc])/ellc)
+linearized confinement variation = 0
+PASS: linearized confinement variation
+
+----------------------------------------------------------------------------------------
+III. Modal wall action
+----------------------------------------------------------------------------------------
+densitized Euler-Lagrange equation = 0
+PASS: densitized Euler-Lagrange equation
+weighted Euler-Lagrange equation = 0
+PASS: weighted Euler-Lagrange equation
+K_l at ell = 0 = 0
+PASS: K_l at ell = 0
+K_l at ell = 2 = 0
+PASS: K_l at ell = 2
+
+----------------------------------------------------------------------------------------
+III.4 Sourced modal wall equation
+----------------------------------------------------------------------------------------
+sourced densitized Euler-Lagrange equation = 0
+PASS: sourced densitized Euler-Lagrange equation
+
+----------------------------------------------------------------------------------------
+IV. Representative localized-Maxwell linearization
+----------------------------------------------------------------------------------------
+localized-Maxwell x-component = 0
+PASS: localized-Maxwell x-component
+localized-Maxwell w-component = 0
+PASS: localized-Maxwell w-component
+
+All Stage-001 symbolic checks passed.

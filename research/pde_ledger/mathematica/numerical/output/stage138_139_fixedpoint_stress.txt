@@ -1,0 +1,140 @@
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage138_139_fixedpoint_samples.json
+
+=== frozen_canonical_traction (interior) ===
+sigma0 = 1.805941110956
+assumptions:
+  - explicit Family-1 co-evolving fixed-point map
+  - positive normalized source profiles
+  - same analyzed branch window as stages 138-139
+seed canonical_exponential: iterations=16, max_residual=0.000000000000, g=0.693352419668, S=0.621601316751, R=0.282713904908, Pi=1.488573443830
+seed uniform: iterations=16, max_residual=0.000000000000, g=0.693352419668, S=0.621601316751, R=0.282713904908, Pi=1.488573443830
+seed derivative_match: iterations=16, max_residual=0.000000000000, g=0.693352419668, S=0.621601316751, R=0.282713904908, Pi=1.488573443830
+seed broad_mixture: iterations=15, max_residual=0.000000000000, g=0.693352419668, S=0.621601316751, R=0.282713904908, Pi=1.488573443830
+[PASS] profile agreement vs canonical_exponential for uniform: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for uniform: g=0.693352419668, ref=0.693352419668
+[PASS] S agreement vs canonical_exponential for uniform: S=0.621601316751, ref=0.621601316751
+[PASS] R agreement vs canonical_exponential for uniform: R=0.282713904908, ref=0.282713904908
+[PASS] Pi agreement vs canonical_exponential for uniform: Pi=1.488573443830, ref=1.488573443830
+[PASS] profile agreement vs canonical_exponential for derivative_match: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for derivative_match: g=0.693352419668, ref=0.693352419668
+[PASS] S agreement vs canonical_exponential for derivative_match: S=0.621601316751, ref=0.621601316751
+[PASS] R agreement vs canonical_exponential for derivative_match: R=0.282713904908, ref=0.282713904908
+[PASS] Pi agreement vs canonical_exponential for derivative_match: Pi=1.488573443830, ref=1.488573443830
+[PASS] profile agreement vs canonical_exponential for broad_mixture: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for broad_mixture: g=0.693352419668, ref=0.693352419668
+[PASS] S agreement vs canonical_exponential for broad_mixture: S=0.621601316751, ref=0.621601316751
+[PASS] R agreement vs canonical_exponential for broad_mixture: R=0.282713904908, ref=0.282713904908
+[PASS] Pi agreement vs canonical_exponential for broad_mixture: Pi=1.488573443830, ref=1.488573443830
+[PASS] Stage-138 transport-law consistency: pred=0.032713904908, direct=0.032713904908
+
+=== low_sigma_scan_point (interior) ===
+sigma0 = 3.000000000000
+assumptions:
+  - positive fixed-point branch
+  - seed-independence test below renormalized root
+seed canonical_exponential: iterations=21, max_residual=0.000000000000, g=0.723749622539, S=0.643673840876, R=0.267089765508, Pi=2.484243914331
+seed uniform: iterations=22, max_residual=0.000000000000, g=0.723749622539, S=0.643673840876, R=0.267089765508, Pi=2.484243914331
+seed derivative_match: iterations=22, max_residual=0.000000000000, g=0.723749622539, S=0.643673840876, R=0.267089765508, Pi=2.484243914331
+seed broad_mixture: iterations=22, max_residual=0.000000000000, g=0.723749622539, S=0.643673840876, R=0.267089765508, Pi=2.484243914331
+[PASS] profile agreement vs canonical_exponential for uniform: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for uniform: g=0.723749622539, ref=0.723749622539
+[PASS] S agreement vs canonical_exponential for uniform: S=0.643673840876, ref=0.643673840876
+[PASS] R agreement vs canonical_exponential for uniform: R=0.267089765508, ref=0.267089765508
+[PASS] Pi agreement vs canonical_exponential for uniform: Pi=2.484243914331, ref=2.484243914331
+[PASS] profile agreement vs canonical_exponential for derivative_match: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for derivative_match: g=0.723749622539, ref=0.723749622539
+[PASS] S agreement vs canonical_exponential for derivative_match: S=0.643673840876, ref=0.643673840876
+[PASS] R agreement vs canonical_exponential for derivative_match: R=0.267089765508, ref=0.267089765508
+[PASS] Pi agreement vs canonical_exponential for derivative_match: Pi=2.484243914331, ref=2.484243914331
+[PASS] profile agreement vs canonical_exponential for broad_mixture: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for broad_mixture: g=0.723749622539, ref=0.723749622539
+[PASS] S agreement vs canonical_exponential for broad_mixture: S=0.643673840876, ref=0.643673840876
+[PASS] R agreement vs canonical_exponential for broad_mixture: R=0.267089765508, ref=0.267089765508
+[PASS] Pi agreement vs canonical_exponential for broad_mixture: Pi=2.484243914331, ref=2.484243914331
+
+=== near_renormalized_branch (interior) ===
+sigma0 = 4.651033550169
+assumptions:
+  - positive fixed-point branch
+  - seed-independence test at the numerically located compensation root
+seed canonical_exponential: iterations=30, max_residual=0.000000000000, g=0.758035078945, S=0.670362115673, R=0.250000000000, Pi=3.871564377479
+seed uniform: iterations=32, max_residual=0.000000000000, g=0.758035078945, S=0.670362115673, R=0.250000000000, Pi=3.871564377479
+seed derivative_match: iterations=29, max_residual=0.000000000000, g=0.758035078945, S=0.670362115673, R=0.250000000000, Pi=3.871564377479
+seed broad_mixture: iterations=32, max_residual=0.000000000000, g=0.758035078945, S=0.670362115673, R=0.250000000000, Pi=3.871564377479
+[PASS] profile agreement vs canonical_exponential for uniform: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for uniform: g=0.758035078945, ref=0.758035078945
+[PASS] S agreement vs canonical_exponential for uniform: S=0.670362115673, ref=0.670362115673
+[PASS] R agreement vs canonical_exponential for uniform: R=0.250000000000, ref=0.250000000000
+[PASS] Pi agreement vs canonical_exponential for uniform: Pi=3.871564377479, ref=3.871564377479
+[PASS] profile agreement vs canonical_exponential for derivative_match: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for derivative_match: g=0.758035078945, ref=0.758035078945
+[PASS] S agreement vs canonical_exponential for derivative_match: S=0.670362115673, ref=0.670362115673
+[PASS] R agreement vs canonical_exponential for derivative_match: R=0.250000000000, ref=0.250000000000
+[PASS] Pi agreement vs canonical_exponential for derivative_match: Pi=3.871564377479, ref=3.871564377479
+[PASS] profile agreement vs canonical_exponential for broad_mixture: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for broad_mixture: g=0.758035078945, ref=0.758035078945
+[PASS] S agreement vs canonical_exponential for broad_mixture: S=0.670362115673, ref=0.670362115673
+[PASS] R agreement vs canonical_exponential for broad_mixture: R=0.250000000000, ref=0.250000000000
+[PASS] Pi agreement vs canonical_exponential for broad_mixture: Pi=3.871564377479, ref=3.871564377479
+
+=== high_sigma_scan_point (interior) ===
+sigma0 = 6.000000000000
+assumptions:
+  - positive fixed-point branch
+  - seed-independence test above renormalized root
+seed canonical_exponential: iterations=41, max_residual=0.000000000000, g=0.780730557015, S=0.689210013917, R=0.238998093437, Pi=5.011680724177
+seed uniform: iterations=42, max_residual=0.000000000000, g=0.780730557015, S=0.689210013917, R=0.238998093437, Pi=5.011680724177
+seed derivative_match: iterations=41, max_residual=0.000000000000, g=0.780730557015, S=0.689210013917, R=0.238998093437, Pi=5.011680724177
+seed broad_mixture: iterations=42, max_residual=0.000000000000, g=0.780730557015, S=0.689210013917, R=0.238998093437, Pi=5.011680724177
+[PASS] profile agreement vs canonical_exponential for uniform: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for uniform: g=0.780730557015, ref=0.780730557015
+[PASS] S agreement vs canonical_exponential for uniform: S=0.689210013917, ref=0.689210013917
+[PASS] R agreement vs canonical_exponential for uniform: R=0.238998093437, ref=0.238998093437
+[PASS] Pi agreement vs canonical_exponential for uniform: Pi=5.011680724177, ref=5.011680724177
+[PASS] profile agreement vs canonical_exponential for derivative_match: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for derivative_match: g=0.780730557015, ref=0.780730557015
+[PASS] S agreement vs canonical_exponential for derivative_match: S=0.689210013917, ref=0.689210013917
+[PASS] R agreement vs canonical_exponential for derivative_match: R=0.238998093437, ref=0.238998093437
+[PASS] Pi agreement vs canonical_exponential for derivative_match: Pi=5.011680724177, ref=5.011680724177
+[PASS] profile agreement vs canonical_exponential for broad_mixture: L_inf=0.000000000000
+[PASS] g agreement vs canonical_exponential for broad_mixture: g=0.780730557015, ref=0.780730557015
+[PASS] S agreement vs canonical_exponential for broad_mixture: S=0.689210013917, ref=0.689210013917
+[PASS] R agreement vs canonical_exponential for broad_mixture: R=0.238998093437, ref=0.238998093437
+[PASS] Pi agreement vs canonical_exponential for broad_mixture: Pi=5.011680724177, ref=5.011680724177
+
+=== stage139_scan_and_root ===
+scan sigma0=3.000000000000 -> g_fp=0.723749622539
+scan sigma0=3.500000000000 -> g_fp=0.735000425781
+scan sigma0=4.000000000000 -> g_fp=0.745470660221
+scan sigma0=4.500000000000 -> g_fp=0.755221959776
+scan sigma0=5.000000000000 -> g_fp=0.764313050356
+scan sigma0=5.500000000000 -> g_fp=0.772798942021
+scan sigma0=6.000000000000 -> g_fp=0.780730557015
+[PASS] monotone increase on analyzed scan grid: min diff=0.007931614994
+[PASS] root bracket sign change: [3.000000000000, 6.000000000000] -> flo=-0.034285456406, fhi=0.022695478070
+root from bracket [3.000000000000, 6.000000000000] = 4.651033550169
+[PASS] root bracket sign change: [4.000000000000, 5.000000000000] -> flo=-0.012564418723, fhi=0.006277971411
+root from bracket [4.000000000000, 5.000000000000] = 4.651033550169
+[PASS] root bracket sign change: [4.600000000000, 4.700000000000] -> flo=-0.000943901580, fhi=0.000899372694
+root from bracket [4.600000000000, 4.700000000000] = 4.651033550169
+[PASS] root consistency vs bracket 0 for bracket 1: root=4.651033550169, ref=4.651033550169
+[PASS] root consistency vs bracket 0 for bracket 2: root=4.651033550169, ref=4.651033550169
+[PASS] g(root) = g_star: g=0.758035078945, g_star=0.758035078945
+[PASS] R(root) = 1/4: R=0.250000000000
+[PASS] Sigma0_can matches expected audit value: root=4.651033550169, expected=4.651033550169
+[PASS] S_can matches expected audit value: S=0.670362115673, expected=0.670362115673
+[PASS] Pi_can matches expected audit value: Pi=3.871564377479, expected=3.871564377479
+[PASS] T_hat_can matches expected audit value: T_hat=1.446708366457, expected=1.446708366457
+Sigma0_can = 4.651033550169
+g_can      = 0.758035078945
+S_can      = 0.670362115673
+R_can      = 0.250000000000
+Pi_can     = 3.871564377479
+T_hat_can  = 1.446708366457
+
+Relative shifts from original canonical point:
+Sigma0 ratio - 1 = 1.575407094922
+Pi ratio - 1     = 1.565938923421
+T_hat ratio - 1  = 0.604807494662
+
+All stage-138/139 fixed-point stress checks passed.

@@ -1,0 +1,54 @@
+\section[Stage 035]{Stage 035: Exact Non-Twin Asymmetry Requirement}
+\label{stage:035}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the support-regime split.}
+\stagefield{Purpose}{Stage~035 identifies when mixed baseline, symmetric lowest twin support, or non-twin support asymmetry is required.}
+\stagefield{Inputs}{The branch product \(\Pi_{\rm tr}\), the mixed product scale \(C_{\rm mix}\), and the blocking factor \(\epsilon\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage035_nontwin_asymmetry_threshold_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage035_nontwin_asymmetry_threshold_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage035_nontwin_asymmetry_threshold_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage035_nontwin_asymmetry_threshold_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The required support ratio in product variables is
+\begin{equation}
+\label{eq:app-stage035-zeta-req}
+\boxed{
+\zeta_{\rm req}
+=\frac{\Pi_{\rm tr}-C_{\rm mix}}
+{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+\end{equation}
+It is monotone in \(\Pi_{\rm tr}\):
+\begin{equation}
+\label{eq:app-stage035-zeta-derivative}
+\frac{d\zeta_{\rm req}}{d\Pi_{\rm tr}}
+=\frac{C_{\rm mix}(1-\epsilon)}{[C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})]^2}>0.
+\end{equation}
+The exact regime split is
+\begin{equation}
+\label{eq:app-stage035-regimes}
+\boxed{
+\begin{array}{lll}
+\Pi_{\rm tr}\leq C_{\rm mix} &\Rightarrow& \text{mixed-only enough},\\[0.25em]
+C_{\rm mix}<\Pi_{\rm tr}\leq2C_{\rm mix} &\Rightarrow& \text{symmetric lowest twin enough},\\[0.25em]
+\Pi_{\rm tr}>2C_{\rm mix} &\Rightarrow& \text{non-twin asymmetry required}.
+\end{array}}
+\end{equation}
+The excess beyond the symmetric twin branch is
+\begin{equation}
+\label{eq:app-stage035-Dzeta}
+\boxed{
+\Delta_\zeta=\zeta_{\rm req}-1
+=\frac{(1-\epsilon)(\Pi_{\rm tr}-2C_{\rm mix})}
+{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+\end{equation}
+For a general lowest lane,
+\begin{equation}
+\label{eq:app-stage035-zeta0-general}
+\zeta_0^{\rm phys}=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}\Omega_0^2.
+\end{equation}
+Thus the two resources for non-twin rescue are overlap boost \(\Omega_0^2\) and support softening \(K_W^{\rm eff}/K_{\phi,0}^{\rm eff}\).
+
+\stagefield{Output}{Regime split \eqref{eq:app-stage035-regimes}, excess formula \eqref{eq:app-stage035-Dzeta}, and resource factorization \eqref{eq:app-stage035-zeta0-general}.}
+\stagefield{Downstream use}{Stages~036--040 quantify the two resources and attach them to transport/Robin physics.}
+

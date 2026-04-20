@@ -1,0 +1,111 @@
+{
+  "schema": "moving_throat_numerical_stage231_v2",
+  "tolerances": {
+    "action_rel_tol": 1e-10,
+    "derivative_rel_tol": 1e-7,
+    "transport_rel_tol": 5e-4,
+    "near_top_rel_tol": 1e-10
+  },
+  "barrier_cases": [
+    {
+      "name": "wide_corridor_success",
+      "expected_status": "success",
+      "m_s": 1.0,
+      "hbar_eff": 1.0,
+      "r0": 5.0,
+      "r_contact": 0.42,
+      "lowering_strength": 7.0,
+      "lowering_scale": 0.30,
+      "energy_margin_fraction": 0.15,
+      "v_cross_fraction": 0.25,
+      "xi_floor": 0.10,
+      "xi_amp": 0.85,
+      "xi_scale": 1.20
+    },
+    {
+      "name": "narrow_corridor_success",
+      "expected_status": "success",
+      "m_s": 1.3,
+      "hbar_eff": 0.9,
+      "r0": 4.6,
+      "r_contact": 0.40,
+      "lowering_strength": 8.0,
+      "lowering_scale": 0.24,
+      "energy_margin_fraction": 0.15,
+      "v_cross_fraction": 0.65,
+      "xi_floor": 0.14,
+      "xi_amp": 0.72,
+      "xi_scale": 0.90
+    },
+    {
+      "name": "near_top_success",
+      "expected_status": "success",
+      "m_s": 0.9,
+      "hbar_eff": 1.1,
+      "r0": 5.4,
+      "r_contact": 0.44,
+      "lowering_strength": 7.0,
+      "lowering_scale": 0.28,
+      "energy_margin_fraction": 0.50,
+      "v_cross_fraction": 0.45,
+      "xi_floor": 0.12,
+      "xi_amp": 0.68,
+      "xi_scale": 1.05
+    },
+    {
+      "name": "weak_lowering_fail",
+      "expected_status": "failure",
+      "expected_reason": "no_peak",
+      "m_s": 1.0,
+      "hbar_eff": 1.0,
+      "r0": 5.0,
+      "r_contact": 0.25,
+      "lowering_strength": 4.0,
+      "lowering_scale": 0.12,
+      "energy_margin_fraction": 0.30,
+      "v_cross_fraction": 0.50,
+      "xi_floor": 0.10,
+      "xi_amp": 0.80,
+      "xi_scale": 1.00
+    },
+    {
+      "name": "double_stationary_fail",
+      "expected_status": "failure",
+      "expected_reason": "multiple_stationary_points",
+      "m_s": 1.0,
+      "hbar_eff": 1.0,
+      "r0": 5.0,
+      "r_contact": 0.34,
+      "lowering_strength": 8.0,
+      "lowering_scale": 0.24,
+      "energy_margin_fraction": 0.20,
+      "v_cross_fraction": 0.50,
+      "xi_floor": 0.10,
+      "xi_amp": 0.80,
+      "xi_scale": 1.00
+    }
+  ],
+  "near_top_cases": [
+    {
+      "name": "soft_cap_probe",
+      "m_s": 1.0,
+      "hbar_eff": 1.0,
+      "DeltaE": 0.4,
+      "Kpeak": 2.2
+    },
+    {
+      "name": "steep_cap_probe",
+      "m_s": 1.6,
+      "hbar_eff": 0.75,
+      "DeltaE": 0.9,
+      "Kpeak": 5.0
+    },
+    {
+      "name": "shallow_cap_probe",
+      "m_s": 0.85,
+      "hbar_eff": 1.2,
+      "DeltaE": 0.25,
+      "Kpeak": 1.3
+    }
+  ]
+}

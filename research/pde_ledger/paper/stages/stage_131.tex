@@ -1,0 +1,28 @@
+\section[Stage 131]{Stage 131: Representative Non-Exponential Positive Mouth Families}
+\label{stage:131}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~131 is a finite mouth-profile corrections ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the regular canonical mouth branch, positive deformations of the source profile, the first-order rigidity kernel, and the full mouth potential.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage131_representative_positive_families_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage131_representative_positive_families_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage131_representative_positive_families_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage131_representative_positive_families_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Finite mouth-profile corrections} block.  The computation isolates the finite first-order/nonlinear correction to \((\Pi,\widehat T_m)\) and the decision to co-evolve core and mouth.}
+
+\begin{quote}
+Uniform and self-matched derivative families bracket the first-order correction; interpolation reproduces the earlier compensation fraction.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check that first-order profile deformations are centered before covariance formulas are used.
+\item Check that the rigidity kernel, not branch ambiguity, controls non-exponential corrections.
+\item Check the one-step nonlinear correction remains within the reduced mouth-layer regime.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 137--146 and the linearized defect transport.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

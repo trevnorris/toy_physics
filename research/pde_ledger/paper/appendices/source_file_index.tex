@@ -1,0 +1,558 @@
+\chapter{Source File Index}
+\label{app:source-file-index}
+
+\providecommand{\SrcFile}[1]{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+\providecommand{\SrcPath}[1]{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+
+\section{Purpose of this appendix}
+\label{sec:source-index-purpose}
+
+This appendix is the internal provenance index for the derivation companion.  It is not a bibliography, and it is not a substitute for the stage ledger or the reproducibility map.  Its purpose is to record which source files carry which pieces of the program, what kind of evidence each file supplies, and how those files may safely be used when a later paper cites this companion.
+
+The most important rule is that a source file is a \emph{provenance handle}, not a claim-status label.  A formula appearing in a source file does not become an unrestricted theorem merely because the file is central to the archive.  The reusable status of a result is determined by the claim-status firewall in the front matter, the local stage appendix, the theorem-block hypotheses, and the reproducibility layer attached to that result.  The source file only identifies where the derivation, convention, or audit record came from.
+
+This appendix therefore answers four practical questions.
+
+\begin{enumerate}[leftmargin=2.4em]
+\item Which files are the canonical sources for the moving-throat derivation companion?
+\item Which lower-order and companion files are imported as background rather than as new results of this document?
+\item Which generated \TeX{} files form the companion itself, and what role does each file play in the repository?
+\item What citation and maintenance rules prevent later papers from overclaiming, double-counting, or citing the wrong layer of the derivation?
+\end{enumerate}
+
+The companion should be cited through result anchors and stage appendices.  This appendix should be used when a reader or maintainer needs to know which archive file supports a given section of the ledger.
+
+\section{Reading rules}
+\label{sec:source-index-reading-rules}
+
+\subsection{Source files versus citation targets}
+\label{subsec:source-files-vs-citation-targets}
+
+A source file and a citation target serve different functions.  Source files record provenance.  Citation targets state reusable results.  The preferred downstream citation object is therefore a theorem/result anchor such as \resultanchor{MTDC-T1}, \resultanchor{MTDC-T8}, or \resultanchor{MTDC-T12}, together with the relevant stage appendix when detailed algebra is needed.
+
+For example, the canonical staged derivation archive now lives in the
+\SrcPath{paper/stages/stage_NNN.tex} files assembled by the archive appendices.
+A later paper should not cite a raw source artifact as if it were a polished
+theorem.  It should cite the companion theorem block and, if necessary, the
+detailed stage appendix.  The source layer remains the provenance record behind
+that appendix.
+
+\subsection{Status ceiling rule}
+\label{subsec:source-status-ceiling-rule}
+
+Every file in this index has a status ceiling.  The ceiling is the strongest kind of claim that may be imported from that file without additional proof in this companion.  A source can always be used more weakly than its ceiling, but it cannot be used more strongly without adding the missing proof or branch realization.
+
+For instance, a parent-action source may support \StatusExact{} field equations, while a moving-throat reduced normal-coordinate source may support only \StatusExactClosure{} under its declared closure.  A numerical search transcript may support \StatusNumerical{}, not an exact branch-realization theorem.  A target condition can be fully defined while its actual moving-throat realization remains \StatusOpen{}.
+
+\subsection{Summary files and full files}
+\label{subsec:summary-files-and-full-files}
+
+Several sources come in summary/full pairs.  The summary file records the carry-forward theorem structure, headline constants, and claim taxonomy.  The full file or detailed stage archive records the derivation path.  When they are both present, use them together:
+
+\begin{itemize}[leftmargin=2.2em]
+\item use the summary for the current status, terminology, and safe downstream statement;
+\item use the full file for detailed formulas, derivation order, and audit trail;
+\item use the companion appendix as the stable citation target after the ledger is complete.
+\end{itemize}
+
+If a summary and a full file disagree in wording, the status firewall governs the claim strength.  If they disagree in algebra, the detailed derivation plus its script/audit evidence must be checked before the result is reused.
+
+\subsection{Corrected-ontology precedence}
+\label{subsec:corrected-ontology-precedence}
+
+The corrected ontology has precedence over older terminology.  In particular:
+
+\begin{enumerate}[leftmargin=2.4em]
+\item Electric charge sign is carried by \(\eta_Q\), with microscopic branch coupling \(q_\star=\eta_Q e_\star\), not by circulation.
+\item The brane-observed charge strength is controlled by localization, for example \(q_{\rm eff}=q_\star/\sqrt{Z_{\rm int}}\).
+\item Circulation belongs to the magnetic/vortical sector.
+\item The historical gravity-side scalar coefficient once written as a bare \(q=1\) is \(\kappa_\rho=1\), not electric charge.
+\item Mixed channels such as \(A_w\), \(J^w\), \(F_{\mu w}\), \(E_w\), and \(C_a\) are suppressed only in strict far-field brane reductions; they remain microscopic degrees of freedom.
+\end{enumerate}
+
+Any imported file that uses older shorthand must be read through this corrected dictionary before it is used in the derivation companion.
+
+\section{Source classes}
+\label{sec:source-classes}
+
+\begin{longtable}{@{}L{0.14\textwidth}L{0.22\textwidth}L{0.39\textwidth}L{0.18\textwidth}@{}}
+\caption{Source classes used by the derivation companion.}\label{tab:source-classes}\\
+\toprule
+Class & Role & Typical use & Status ceiling \\
+\midrule
+\endfirsthead
+\toprule
+Class & Role & Typical use & Status ceiling \\
+\midrule
+\endhead
+Primary staged archive & Canonical derivation provenance for the 236 moving-throat stages. & Stage titles, assumptions, staged outputs, formula provenance, local script references, and chronological dependency. & Local stage status only; mixed across the archive. \\
+\addlinespace
+Compact theorem master & Current theorem-structure and bottleneck summary. & Claim-status firewall, endgame packet language, current strict/relaxed branch split, and safe carry-forward summary. & Same as the local theorem block it summarizes. \\
+\addlinespace
+Framework paper & Operational framework for branch tests. & Definitions of branch observables, operational workflow, finite packet language, and connection to future papers. & Usually \StatusReduced{} or \StatusExactClosure{} within declared framework assumptions. \\
+\addlinespace
+Parent-action sources & Exact lower-level field theory and controlled brane reductions. & Parent equations, charge ontology, projection/reduction distinction, Maxwell localization, mixed-sector observables. & \StatusExact{} for parent identities; \StatusReduced{} for brane reductions. \\
+\addlinespace
+Conservative PN assembly sources & Lower-order and higher-order conservative two-body ledgers. & Carry-forward constants, grouped support needs, static/dynamic response slots, and target packets inherited by the moving-throat PDE program. & \StatusExactClosure{} or \StatusReduced{} inside each declared PN hierarchy. \\
+\addlinespace
+Retarded/\newline radiative bridge\newline sources & Odd-channel and outgoing-quadrupole narrowing. & Scalar/dipole demotion, STF quadrupole branch, compact outgoing fingerprint, passive/outgoing normalization target. & \StatusExactClosure{} for algebraic bridge; \StatusOpen{} for actual PDE normalization realization. \\
+\addlinespace
+Continuation and application notes & Reduced-sector follow-on work. & Motivation, cross-checks, anomaly/atomic/lepton companion targets, and optional downstream applications. & Never stronger than \StatusReduced{} or \StatusExactClosure{} unless separately promoted. \\
+\addlinespace
+Generated companion files & The present \TeX{} ledger. & Stable citation anchors, readable theorem blocks, detailed stage appendices, reproducibility and source maps. & Determined by the content and status tags inside each file. \\
+\addlinespace
+Script/output artifacts & Symbolic, numerical, or finite-search evidence. & Verifying Schur complements, projectors, finite compilers, searches, roots, residuals, and branch-placement tests. & \StatusExactClosure{} for exact symbolic audits; \StatusNumerical{} for numerical locations. \\
+\bottomrule
+\end{longtable}
+
+\section{Canonical moving-throat source files}
+\label{sec:canonical-moving-throat-source-files}
+
+\begin{longtable}{@{}L{0.28\textwidth}L{0.25\textwidth}L{0.31\textwidth}L{0.10\textwidth}@{}}
+\caption{Canonical moving-throat source files.}\label{tab:canonical-moving-throat-source-files}\\
+\toprule
+File & Archive role & Imported content & Safe status ceiling \\
+\midrule
+\endfirsthead
+\toprule
+File & Archive role & Imported content & Safe status ceiling \\
+\midrule
+\endhead
+\SrcPath{paper/stages/stage_NNN.tex} & Primary full derivation archive for Stages 001--236. & Stage-by-stage derivation text, staged theorem moves, formula provenance, executable-audit routing, local assumptions, and chronological dependencies. & Local stage status; mixed. \\
+\addlinespace
+\SrcPath{paper/parts/*.tex} plus frontmatter & Compact theorem and status master through the strict and relaxed endgame. & Reading rules, claim-status tags, notation firewall, current theorem-status summary, final packet language, same-charge verdict, rigid-mouth chart, selected twin-support slice, relaxed branch, barrier/export/material packets. & Mixed; status summary only. \\
+\addlinespace
+\SrcPath{paper/appendices/stage_appendix_part*.tex} & Stage-ordered archive assembly over the canonical stage files. & Part-by-part audit order, stage numbering, local handoff notes, and the stage-ledger reading path used by the archive build. & Same as the assembled stage content. \\
+\addlinespace
+\SrcPath{scripts/} plus \SrcPath{mathematica/} & Executable verification layer. & Symbolic replay, numerical stress harnesses, second-CAS cross-checks, and stagewise audit routing by stage number. & Matches the local script model and recorded status. \\
+\addlinespace
+\SrcFile{pde.tex} & Compact-to-framework bridge. & The division between framework use and derivation verification, finite observable-packet language, and operational branch-testing workflow. & \StatusReduced{} / \StatusExactClosure{} inside framework assumptions. \\
+\addlinespace
+\SrcFile{pde.tex} & Core paper\newline source. & Clean operational statement of the moving-throat PDE response framework, branch-test quantities, finite observable packets, and the reason this companion is needed as a derivation ledger. & Core use\newline only. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Use rule.}
+The primary moving-throat source for detailed stage provenance is the canonical
+stage-file tree under \SrcPath{paper/stages/}, assembled by the stage
+appendices.  The primary source for the current global theorem-status reading is
+the theorem/status layer in the frontmatter and main parts.  The primary source
+for operational branch-use language is \SrcFile{pde.tex}.  A downstream citation
+should normally pass through this companion rather than directly through a raw
+source artifact.
+
+\section{Parent-action and brane-reduction source files}
+\label{sec:parent-action-source-files}
+
+\begin{longtable}{@{}L{0.28\textwidth}L{0.24\textwidth}L{0.32\textwidth}L{0.10\textwidth}@{}}
+\caption{Parent-action and brane-reduction source files.}\label{tab:parent-action-source-files}\\
+\toprule
+File & Role & Imported content & Safe status ceiling \\
+\midrule
+\endfirsthead
+\toprule
+File & Role & Imported content & Safe status ceiling \\
+\midrule
+\endhead
+Parent-action source summaries & Parent action summary. & Fully action-based \((4+1)\)-dimensional bulk theory, gauged GNLS matter sector, localized Maxwell sector, geometry variables, projection/reduction distinction, leakage identity, and corrected charge ontology. & \StatusExact{} for parent identities; \StatusReduced{} for reductions. \\
+\addlinespace
+\SrcFile{4d.tex} & Full parent action paper source, when available in the archive. & Detailed parent equations, action variation, brane projection definitions, and controlled Poisson/Maxwell hooks. & Same as local section status. \\
+\addlinespace
+Localized electromagnetic source summaries & Localized electromagnetic sector summary. & Inhomogeneous Maxwell equation from localized \((4+1)\)-dimensional action, zero-mode Maxwell reduction, thickness-controlled brane charge strength, KK corrections, retarded propagation, and source consistency. & \StatusExact{} / \StatusReduced{}. \\
+\addlinespace
+Plasma and open-system source summaries & Plasma and open-system projection summary. & Multi-species charged medium, projection kernel \(W(w)\), leakage terms, mixed fields \(E_w\) and \(C_a\), finite-localization transverse modes, and conservative brane-bulk exchange interpretation. & \StatusExact{} for balance identities; \StatusReduced{} for brane limits. \\
+\addlinespace
+1PN bridge source summaries & Bridge from parent action to 1PN coefficient logic. & Topology discriminator \(\kappa_{\rm add}=1/2\), EOS exponent \(n=5\), EIH cross-sector constants, wave-supported kinematics, and explicit adiabatic closure data. & Mixed: \StatusReduced{} / \StatusExactClosure{}. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Use rule.}
+The parent-action files establish the exact field-theory arena and the controlled brane-reduction hooks.  They do not by themselves prove the completed moving-throat response branch.  When this companion imports parent equations, it should preserve whether the statement is exact in the parent theory or only true after a brane reduction.
+
+\section{Conservative post-Newtonian and radiative bridge sources}
+\label{sec:pn-source-files}
+
+\begin{longtable}{@{}L{0.29\textwidth}L{0.24\textwidth}L{0.31\textwidth}L{0.10\textwidth}@{}}
+\caption{Conservative PN and radiative bridge source files.}\label{tab:pn-source-files}\\
+\toprule
+File & Role & Imported content & Safe status ceiling \\
+\midrule
+\endfirsthead
+\toprule
+File & Role & Imported content & Safe status ceiling \\
+\midrule
+\endhead
+\begingroup\footnotesize\texttt{1PN full conservative assembly sources}\endgroup{} & Full conservative Newtonian/1PN assembly summary. & Exact EIH equality inside the declared hierarchy, 1PN claim taxonomy, carry-forward constants \(\kappa_\rho=1\), \(n=5\), \(\kappa_{\rm add}=1/2\), \(\kappa_{\rm PV}=3/2\), and \(\beta_{\rm 1PN}=3\). & \StatusExactClosure{} / \StatusReduced{}. \\
+\addlinespace
+2PN source stack & Full conservative 2PN assembly. & 2PN self/static seed, residual solve, even support layer, grouped \(P_0\oplus P_2\) response structure, geometry completion, and dynamic pole-scale openings. & \StatusExactClosure{} inside the declared 2PN hierarchy. \\
+\addlinespace
+2.5PN retarded source stack & 2.5PN retarded theorem audit. & Burke--Thorne/Iyer--Will bridge, odd-channel hierarchy, scalar/dipole demotion, real-STF quadrupole route, compact outgoing \(l=2\) fingerprint, and passive/outgoing normalization gap. & \StatusExactClosure{} for audit algebra; \StatusOpen{} for final PDE-side normalization. \\
+\addlinespace
+3PN source stack & Full conservative 3PN assembly. & Grouped real \(P_2\) middle-block closure, fixed-chart ordinary/Hamiltonian compiler, exact 3PN assembly inside the hierarchy, and the need for a microscopic grouped-\(P_2\) constitutive law. & \StatusExactClosure{} / \StatusReduced{}. \\
+\addlinespace
+4PN source stack & Full conservative 4PN and tail-interface assembly. & Local/tail split, one-body 4PN gate, quartic compiler, exact local instantaneous closure, and reduction of the tail coefficient to the same outgoing \(P_0\)\newline gap. & \StatusExactClosure{} local algebra; \StatusOpen{} branch realization. \\
+\addlinespace
+5PN and continuation source stack & Higher-order continuation and weak-axisymmetric transport notes. & Explicit finite-throat overlap model, weak-axisymmetric line \(b=3a\), \(\Xi_1=P_1/P_0\), monomial quotient coordinates, similarity-orbit theorem, support-compensation thresholds, and target-surface sharpening. & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{}. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Use rule.}
+The PN sources define why the moving-throat response problem matters.  They supply the lower-order constants, target packets, and normalization gates that the PDE companion must derive or test.  They should not be cited as completed nonlinear moving-throat branch realizations unless this companion or a later branch paper supplies that realization.
+
+\section{Reduced-sector companion and application files}
+\label{sec:reduced-sector-source-files}
+
+\begin{longtable}{@{}L{0.29\textwidth}L{0.26\textwidth}L{0.31\textwidth}L{0.08\textwidth}@{}}
+\caption{Reduced-sector companion and application files.}\label{tab:reduced-sector-source-files}\\
+\toprule
+File & Role & Imported content & Use ceiling \\
+\midrule
+\endfirsthead
+\toprule
+File & Role & Imported content & Use ceiling \\
+\midrule
+\endhead
+Atomic reduced-sector\newline companion sources & Atomic reduced-sector companion. & Hydrogenic reduction, finite-size response logic, and reduced-sector applications of the localized Maxwell and defect-response framework. & Guide\newline only. \\
+\addlinespace
+Lepton / electron\newline companion sources & Lepton / electron companion notes. & Corrected charge ontology, same-charge mixed-sector rotor corridor, Berry/holonomy route, and conditional lepton-like closure discussion. & Context\newline only. \\
+\addlinespace
+Isolated-electron mass and D/N support sources & Isolated-electron mass and D/N support notes. & Reduced rest-energy partition, support-wave mass theorem, finite-throat D/N ladder, and scale-fixing obstruction. & \StatusExactClosure{} inside its reduced ansatz; otherwise motivation. \\
+\addlinespace
+Anomaly and quotient-transport\newline continuation sources & Anomaly and quotient-transport continuation. & Exact local anomaly baseline, quotient variables, common transport layer, \(\Xi_1\) / outgoing-prefactor bridge, and microscopic slope conditions. & Limited\newline use only. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Use rule.}
+These files are useful because they show how the moving-throat response language is expected to be used in later physics-facing papers.  They are not primary proof sources for this derivation companion.  When the companion and an application note differ, the companion controls the moving-throat derivation status.
+
+\section{Generated derivation-companion files}
+\label{sec:generated-companion-files}
+
+The files in this section are part of the present \TeX{} project.  They are not external evidence.  Their role is to make the source evidence readable, auditable, and citable.
+
+\subsection{Front matter files}
+\label{subsec:frontmatter-files}
+
+\begin{longtable}{@{}L{0.36\textwidth}L{0.52\textwidth}@{}}
+\caption{Front matter files in the derivation companion.}\label{tab:frontmatter-files}\\
+\toprule
+File & Role in the companion \\
+\midrule
+\endfirsthead
+\toprule
+File & Role in the companion \\
+\midrule
+\endhead
+\SrcPath{frontmatter/00_purpose_scope.tex} & Defines the document as a derivation companion / verification ledger rather than a normal paper, and separates framework use from derivation verification. \\
+\addlinespace
+\SrcPath{frontmatter/01_how_to_read.tex} & Gives the reading protocol: theorem blocks first, stage appendices second, status tags always. \\
+\addlinespace
+\SrcPath{frontmatter/02_claim_status_firewall.tex} & Defines the status classes and the rules for safe downstream citation. \\
+\addlinespace
+\SrcPath{frontmatter/03_notation_firewall.tex} & Freezes the charge, circulation, grouped-\(P_2\), mixed-sector, and branch-packet notation rules. \\
+\addlinespace
+\SrcPath{frontmatter/04_result_anchor_map.tex} & Registers top-level result anchors, subanchors, formula packets, citation crosswalks, and unsafe-citation guardrails. \\
+\addlinespace
+\SrcPath{frontmatter/05_dependency_map.tex} & Gives the dependency graph, stage-range flow, and result-block dependency discipline. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Main theorem-block files}
+\label{subsec:part-files}
+
+\begin{longtable}{@{}L{0.36\textwidth}L{0.12\textwidth}L{0.42\textwidth}@{}}
+\caption{Main theorem-block files.}\label{tab:part-files}\\
+\toprule
+File & Stages & Role in the companion \\
+\midrule
+\endfirsthead
+\toprule
+File & Stages & Role in the companion \\
+\midrule
+\endhead
+\SrcPath{parts/part01_parent_geometry.tex} & 001--006 & Parent import, geometry lift, breathing reduction, BdG coupling, Maxwell/mixed bridge, and full grouped-bundle front end. \\
+\addlinespace
+\SrcPath{parts/part02_conservative_response.tex} & 007--019 & Overlap/isotropy, weak-axisymmetric signature, minimal isotropic closure, finite-throat selected-mode normalization, and support-feasibility frontier. \\
+\addlinespace
+\SrcPath{parts/part03_support_family1.tex} & 020--073 & Continuum placement, split-\(U\) support, rank-2 completion, support compensation, parent thresholds, Family-1 branch, and reduced verdict. \\
+\addlinespace
+\SrcPath{parts/part04_geometry_retarded_mouth.tex} & 074--146 & Geometry-lane firewall, retarded normalization collapse, outlet/core compensation, mouth boundary layer, co-evolving core--mouth fixed point, and off-family normal coordinate. \\
+\addlinespace
+\SrcPath{parts/part05_weak_axisymmetric_orbit.tex} & 147--183 & Weak-axisymmetric transport, \(\Xi_1\), monomial quotient coordinates, similarity orbit, Packet-A closure, and four-scalar verdict packet. \\
+\addlinespace
+\SrcPath{parts/part06_realization_compiler.tex} & 184--201 & Realization compiler, target graph, Hessian/log-ray search, pairwise/simplex closure, and finite mixed-ray sieve. \\
+\addlinespace
+\SrcPath{parts/part07_same_charge_rigid_mouth.tex} & 202--225 & Same-charge one-port audit, dynamic/resonant corridor, rigid-mouth \((U,V)\) chart, orbit lock, selected twin-support placement, and actual-branch packet. \\
+\addlinespace
+\SrcPath{parts/part08_relaxed_branch.tex} & 226--236 & Relaxed open-system branch, leakage/work and non-rigid packets, compensated source compiler, lowered barrier, event chain, export kernel, heat partition, and material thresholds. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Appendix files}
+\label{subsec:appendix-files}
+
+\begin{longtable}{@{}L{0.38\textwidth}L{0.50\textwidth}@{}}
+\caption{Appendix files in the derivation companion.}\label{tab:appendix-files}\\
+\toprule
+File & Role in the companion \\
+\midrule
+\endfirsthead
+\toprule
+File & Role in the companion \\
+\midrule
+\endhead
+\SrcPath{appendices/stage_ledger.tex} & Consolidated stage-range map, complete Stage 001--236 ledger, source-file provenance table, and citation/audit guardrails. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part01.tex} & Detailed verification appendix for Stages 001--006. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part02.tex} & Detailed verification appendix for Stages 007--019. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part03.tex} & Detailed verification appendix for Stages 020--073. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part04.tex} & Detailed verification appendix for Stages 074--146. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part05.tex} & Detailed verification appendix for Stages 147--183. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part06.tex} & Detailed verification appendix for Stages 184--201. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part07.tex} & Detailed verification appendix for Stages 202--225. \\
+\addlinespace
+\SrcPath{appendices/stage_appendix_part08.tex} & Detailed verification appendix for Stages 226--236. \\
+\addlinespace
+\SrcPath{appendices/reproducibility_map.tex} & Audit classes, artifact-card template, stage-to-script map, symbolic/numerical/search discipline, branch-solver requirements, and safe citation language. \\
+\addlinespace
+\SrcPath{appendices/source_file_index.tex} & This provenance index: source classes, source roles, import rules, generated-file map, stage-range source map, conflict resolution, and maintenance policy. \\
+\addlinespace
+\SrcPath{appendices/fill_workflow.tex} & Workflow for filling, reviewing, freezing, and later updating the ledger. \\
+\bottomrule
+\end{longtable}
+
+\section{Stage-range source map}
+\label{sec:stage-range-source-map}
+
+This table records the minimal source families that support each stage range.  The detailed algebra belongs in the corresponding stage appendix.  The table is meant to help maintainers trace an imported claim back to the right source family quickly.
+
+\begin{longtable}{@{}L{0.10\textwidth}L{0.22\textwidth}L{0.32\textwidth}L{0.25\textwidth}@{}}
+\caption{Stage-range source map.}\label{tab:stage-range-source-map}\\
+\toprule
+Stages & Companion location & Primary source family & Background source family \\
+\midrule
+\endfirsthead
+\toprule
+Stages & Companion location & Primary source family & Background source family \\
+\midrule
+\endhead
+001--006 & Part I and Appendix Part I & Canonical stage files; theorem/status frontmatter; framework paper. & Parent action, Maxwell, plasma, 2PN/3PN/2.5PN grouped-response sources. \\
+\addlinespace
+007--019 & Part II and Appendix Part II & Canonical stage files; overlap/isotropy synthesis; weak-axisymmetric continuation material. & 2.5PN grouped-STF bridge, 3PN grouped \(P_2\) source language, 5PN weak-axisymmetric notes. \\
+\addlinespace
+020--073 & Part III and Appendix Part III & Canonical stage files; continuum placement and support-compensation synthesis. & Finite-throat D/N support material, 5PN placement and support-threshold notes. \\
+\addlinespace
+074--146 & Part IV and Appendix Part IV & Canonical stage files;\newline geometry, retarded, outlet, and mouth-core synthesis. & 2.5PN outgoing normalization audit, 4PN tail-interface summary, mixed-sector parent ontology. \\
+\addlinespace
+147--183 & Part V and Appendix Part V & Canonical stage files; weak-axisymmetric orbit and quotient continuation material. & 5PN monomial/orbit notes and anomaly quotient bridge material where used only for interpretation. \\
+\addlinespace
+184--201 & Part VI and Appendix Part VI & Canonical stage files; realization-compiler and mixed-ray search records. & Reproducibility-map search discipline and theorem-block endgame summary. \\
+\addlinespace
+202--225 & Part VII and Appendix Part VII & Canonical stage files; one-port same-charge and rigid-mouth actual-branch records. & Theorem/status summary, mixed-sector ontology, selected support placement notes. \\
+\addlinespace
+226--236 & Part VIII and Appendix Part VIII & Canonical stage files; relaxed/open-system extension as integrated in the theorem/status layer. & Plasma/open-system projection sources, leakage/work language, export/kernel and materials companion notes. \\
+\bottomrule
+\end{longtable}
+
+\section{Script and output artifact indexing}
+\label{sec:script-output-indexing}
+
+The derivation source files repeatedly refer to script-backed audits.  Some scripts are part of the working archive; some are represented in the staged text by script basenames and output transcripts.  This appendix does not reproduce those scripts.  It defines how they should be indexed when the repository is frozen.
+
+\subsection{Script artifact card}
+\label{subsec:script-artifact-card}
+
+Every script used as evidence should have an artifact card with the following fields:
+
+\begin{longtable}{@{}L{0.24\textwidth}L{0.64\textwidth}@{}}
+\caption{Required fields for script and output artifact cards.}\label{tab:script-artifact-card}\\
+\toprule
+Field & Required content \\
+\midrule
+\endfirsthead
+\toprule
+Field & Required content \\
+\midrule
+\endhead
+Script basename & Exact script file name, including extension. \\
+\addlinespace
+Output basename & Exact output transcript file name, if separate. \\
+\addlinespace
+Stage range & Stage number or range whose claims the script checks. \\
+\addlinespace
+Claim checked & The exact identity, projector relation, search result, root location, residual, or branch condition certified by the script. \\
+\addlinespace
+Input assumptions & Closure family, branch restrictions, symbolic variables, positivity assumptions, numerical constants, or search-domain bounds. \\
+\addlinespace
+Arithmetic mode & Exact rational/symbolic arithmetic, high-precision numerical arithmetic, floating point, interval/bracketed solve, or mixed mode. \\
+\addlinespace
+Failure mode & What would count as a failed check: nonzero residual, wrong rank, missing root, failed inequality, nontermination, unstable optimum, or out-of-domain branch. \\
+\addlinespace
+Repository hash & Hash of the script and transcript at the release freeze. \\
+\addlinespace
+Reusable status & \StatusExactClosure{} for exact symbolic verification; \StatusNumerical{} for located roots/searches; \StatusOpen{} when the script defines a target not yet realized by the PDE. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Known script families}
+\label{subsec:known-script-families}
+
+The stage archive and reproducibility map mention several recurring script families.  The following labels should be used when the repository freeze turns those references into formal artifact cards.
+
+\begin{longtable}{@{}L{0.30\textwidth}L{0.18\textwidth}L{0.40\textwidth}@{}}
+\caption{Known script families to preserve in the archive.}\label{tab:known-script-families}\\
+\toprule
+Script family or basename pattern & Stage region & Verification role \\
+\midrule
+\endfirsthead
+\toprule
+Script family or basename pattern & Stage region & Verification role \\
+\midrule
+\endhead
+\SrcFile{moving_throat_pde_master_sympy_audit.py} & 001--002 & Harmonic normalization, mouth-average extraction, two-mode wall reduction, and grouped-\(P_2\) one-mode reduction. \\
+\addlinespace
+\SrcFile{moving_throat_pde_stage003_bdg_sympy_audit.py} & 003 & BdG--wall Schur complement, low-frequency expansion, pole shifts, grouped isotropy diagnostics, and selection rules. \\
+\addlinespace
+\SrcFile{2_5pn_master_sympy_audit.py} and \SrcFile{2_5pn_master_session_sympy_audit.py} & 2.5PN background / Stages 004--006 & Burke--Thorne/Iyer--Will bridge, odd-channel hierarchy, grouped-STF formulas, and outgoing-quadrupole normalization relations. \\
+\addlinespace
+\SrcFile{5pn_stage*_*.py} & 007--183 background and continuation & Explicit finite-throat overlap models, weak-axisymmetric transport, primitive deformation, monomial quotient maps, target surfaces, support-compensation thresholds, and even-gate intersections. \\
+\addlinespace
+Realization-compiler search scripts & 184--201 & Graph-error realization form, log-ray sweep, Hessian/curvature ranking, pairwise/simplex search, and finite support-cardinality sieve. \\
+\addlinespace
+Rigid-mouth and selected-support scripts & 202--225 & Actual-branch packet evaluation, orbit-lock normal form, selected twin-support placement, support-versus-orbit split, and final coherent branch-evaluation packet. \\
+\addlinespace
+Relaxed-branch and event-chain scripts & 226--236 & Leakage/work compiler, non-rigid mouth packet, compensated source moments, barrier lowering, turning points, WKB/event-chain quantities, export kernel, heat partition, and material-threshold screens. \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Use rule.}
+A script family listed here is not evidence by itself.  Evidence requires the specific script, inputs, output transcript, and residual or exact-check statement.  The reproducibility map gives the stronger rule for turning a script reference into a reusable claim.
+
+\section{Files that should not be cited as mathematical sources}
+\label{sec:non-citable-files}
+
+The repository will contain generated files that are useful for building or reviewing the project but should not be used as mathematical evidence.
+
+\begin{longtable}{@{}L{0.24\textwidth}L{0.56\textwidth}L{0.14\textwidth}@{}}
+\caption{Non-citable generated or operational files.}\label{tab:non-citable-files}\\
+\toprule
+File type & Why it is not a mathematical source & Allowed use \\
+\midrule
+\endfirsthead
+\toprule
+File type & Why it is not a mathematical source & Allowed use \\
+\midrule
+\endhead
+\SrcFile{*.aux}, \SrcFile{*.out}, \SrcFile{*.toc} & Intermediate \LaTeX{} state; does not contain independent derivation evidence. & Build diagnostics only. \\
+\addlinespace
+\SrcFile{*.log} & Compile logs can identify errors or overfull boxes but do not certify mathematical content. & Build troubleshooting only. \\
+\addlinespace
+Generated \SrcFile{*.pdf} files & Rendered outputs of the \TeX{} source; useful for reading but not a separate provenance layer. & Human review and final distribution. \\
+\addlinespace
+Temporary smoke-test harnesses & Minimal compile wrappers created only to test a single file. & Local quality control; not part of the archive. \\
+\addlinespace
+Backup files such as \SrcFile{*.bak.tex} & Intermediate drafts that may disagree with the stable source. & Recovery only; do not cite. \\
+\bottomrule
+\end{longtable}
+
+\section{Precedence and conflict-resolution rules}
+\label{sec:source-precedence-rules}
+
+\begin{enumerate}[leftmargin=2.4em]
+\item \textbf{Status precedence.}  The claim-status firewall controls the reusable strength of a result, even if an older source states the result in stronger language.
+\item \textbf{Ontology precedence.}  The corrected charge/mixed-sector notation firewall controls all imported files.  Older circulation-charge shorthand must be translated before use.
+\item \textbf{Derivation precedence.}  For detailed formulas, prefer the full derivation archive or stage appendix over a compact summary.  Use the compact master for current theorem-status language.
+\item \textbf{Framework precedence.}  Use \SrcFile{pde.tex} for how a future paper should operate the branch test, but use this derivation companion for why the formulas in that test are justified.
+\item \textbf{Script precedence.}  If a printed identity and a script transcript disagree, neither should be cited until the discrepancy is resolved and the corrected artifact is frozen.
+\item \textbf{Realization precedence.}  A finite compiler, target equation, or normalization condition does not imply that the actual moving-throat PDE realizes that condition.  Actual branch realization requires a branch theorem, a verified solve, or an explicitly labeled numerical placement.
+\item \textbf{Application precedence.}  Atomic, lepton, anomaly, and material companion notes may motivate or test the framework, but they do not override the moving-throat derivation status.
+\end{enumerate}
+
+\section{Safe source-use language}
+\label{sec:safe-source-use-language}
+
+The following examples are safe patterns for future papers.
+
+\begin{longtable}{@{}L{0.44\textwidth}L{0.45\textwidth}@{}}
+\caption{Safe and unsafe source-use language.}\label{tab:safe-source-use-language}\\
+\toprule
+Safe language & Unsafe language \\
+\midrule
+\endfirsthead
+\toprule
+Safe language & Unsafe language \\
+\midrule
+\endhead
+``The full staged derivation of the grouped-response compiler is given in the derivation companion, MTDC-T5 and Appendix Stages 001--007.'' & ``The raw moving-throat notes prove the grouped response.'' \\
+\addlinespace
+``Within the declared reduced bundle, the outgoing prefactor is \(P_0=N_0/D_0\); actual branch realization of the target value is a separate condition.'' & ``The moving-throat PDE automatically has the GR quadrupole normalization.'' \\
+\addlinespace
+``The one-port same-charge audit rules out a new long-range static attractive law in the audited class.'' & ``The model proves every same-charge interaction is impossible.'' \\
+\addlinespace
+``The relaxed branch lowers the local barrier through leakage/work/dressing/source packets while preserving the same long-range kernel verdict.'' & ``The relaxed branch creates a new long-range force.'' \\
+\addlinespace
+``The finite mixed-ray search is complete through the declared support-cardinality bound.'' & ``All possible microscopic realizations have been searched.'' \\
+\addlinespace
+``The parent action supplies exact bulk equations; the brane Maxwell law is a controlled zero-mode reduction.'' & ``The parent action directly equals ordinary brane Maxwell theory without assumptions.'' \\
+\bottomrule
+\end{longtable}
+
+\section{Repository-freeze recommendations}
+\label{sec:repository-freeze-recommendations}
+
+At the first public or internal release freeze of the derivation companion, the repository should include a manifest with the following fields for every source file listed in this appendix:
+
+\begin{enumerate}[leftmargin=2.4em]
+\item file path relative to the repository root;
+\item file size;
+\item content hash;
+\item date of freeze;
+\item source class from \cref{tab:source-classes};
+\item primary companion sections or appendices that use the file;
+\item claim-status ceiling;
+\item supersession notes, if the file replaces or corrects older notation.
+\end{enumerate}
+
+The manifest does not need to be printed in this paper unless journal or archive practice requires it.  It should, however, exist alongside the source repository so that future papers can cite a stable release rather than a moving working directory.
+
+\section{Minimal release manifest}
+\label{sec:minimal-release-manifest}
+
+For convenience, \cref{tab:minimal-release-manifest} gives the minimal release manifest that should be preserved even if the full artifact-card registry is deferred.
+
+\begin{longtable}{@{}L{0.34\textwidth}L{0.18\textwidth}L{0.38\textwidth}@{}}
+\caption{Minimal release manifest for this derivation companion.}\label{tab:minimal-release-manifest}\\
+\toprule
+Source family & Required files & Reason they must be frozen together \\
+\midrule
+\endfirsthead
+\toprule
+Source family & Required files & Reason they must be frozen together \\
+\midrule
+\endhead
+Primary moving-throat archive & \SrcPath{paper/stages/}; \SrcPath{paper/appendices/stage_appendix_part*.tex}; \SrcPath{paper/parts/}; \SrcFile{pde.tex}. & These files define the stage provenance, theorem/status master, and operational framework split. \\
+\addlinespace
+Parent action and EM/plasma stack & Parent-action, EM, and plasma source summaries plus full \TeX{} sources where present. & These files define the exact parent theory, charge ontology, zero-mode Maxwell reduction, mixed-sector firewall, projection/leakage language, and open-system interpretation. \\
+\addlinespace
+Conservative and retarded PN stack & 1PN through 5PN source summaries plus full sources where present. & These files define the target packets and lower-order results that the moving-throat PDE companion is designed to verify or realize. \\
+\addlinespace
+Continuation notes & Historical continuation sources and selected application notes. & These files record intermediate continuation logic, quotient/orbit machinery, and application-facing consistency checks. \\
+\addlinespace
+Derivation companion \TeX{} source & \SrcPath{main.tex}; \SrcPath{macros.tex}; all files under \SrcPath{frontmatter/}, \SrcPath{parts/}, and \SrcPath{appendices/}. & These files are the stable readable ledger and citation layer. \\
+\addlinespace
+Script and output artifacts & All exact symbolic-audit scripts, numerical-location scripts, search scripts, and output transcripts referenced by the stage appendices. & These files certify the symbolic, numerical, and finite-search claims in the reproducibility map. \\
+\bottomrule
+\end{longtable}
+
+\section{Closing rule}
+\label{sec:source-index-closing-rule}
+
+This source index should be updated only when the archive itself changes: a source is added, a file is renamed, a script transcript is frozen, a summary/full pair is replaced, or a result is promoted to a stronger status by new evidence.  Ordinary edits to exposition inside the theorem-block chapters should not change this appendix unless they change the provenance trail.
+
+The companion is intended to become the stable citation layer for future papers.  Once it is frozen, later papers should cite the result anchors and appendix sections in this document, while the files listed here remain the traceable archive behind those citations.

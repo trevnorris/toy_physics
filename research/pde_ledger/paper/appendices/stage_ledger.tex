@@ -1,0 +1,819 @@
+\chapter{Master Stage Ledger}
+\label{app:stage-ledger}
+
+\section{Purpose of this appendix}
+\label{sec:stage-ledger-purpose}
+
+This appendix is the navigational ledger for the full moving-throat derivation companion.  It is not a substitute for the stage appendices.  Its job is to let a reader audit the archive at three levels: first by theorem block, then by individual stage, and finally by source-file provenance.  Each row records the role of a stage, the claim-status boundary under which that row may be cited, the main output that later derivations are allowed to reuse, and the top-level result anchor served by the stage.
+
+The stage number is a provenance handle.  The result anchor is the citation handle.  A downstream paper should normally cite the relevant \resultanchor{MTDC-T\(n\)} theorem block, and should cite a stage number only when it needs the detailed algebra or audit trail for that particular derivation move.
+
+\section{Ledger conventions}
+\label{sec:stage-ledger-conventions}
+
+\begin{enumerate}[leftmargin=2.4em]
+\item The \emph{stage link} points to the corresponding detailed stage appendix section, when that section is included in the full project.
+\item The \emph{primary status} is the strongest safe claim class for the row as a reusable result.  When the row says ``Mixed,'' the user must preserve all listed status boundaries.
+\item \StatusExactClosure{} means exact after the stated reduced closure, branch, normal-coordinate model, or search class has been declared.  It does not mean exact for every possible nonlinear moving-throat PDE branch.
+\item \StatusOpen{} in a row usually means that the algebraic compiler is defined, but the actual moving-throat branch has not yet been shown to realize the required target value.
+\item The ``main output'' column is intentionally terse.  The full derivation, assumptions, checks, and downstream-use paragraphs belong in the corresponding stage appendix.
+\end{enumerate}
+
+\section{Top-level stage-range map}
+\label{sec:stage-ledger-range-map}
+
+{\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}L{0.08\textwidth}L{0.14\textwidth}L{0.17\textwidth}L{0.35\textwidth}L{0.20\textwidth}@{}}
+\caption{Stage-range map for the derivation companion.}\label{tab:stage-ledger-range-map}\\
+\toprule
+Part & Stages & Result anchor(s) & Ledger role & Status envelope \\
+\midrule
+\endfirsthead
+\toprule
+Part & Stages & Result anchor(s) & Ledger role & Status envelope \\
+\midrule
+\endhead
+I & 001--006 & \resultanchor{MTDC-T1--T5} & Parent import, moving-surface lift, breathing reduction, BdG Schur complement, Maxwell/mixed outgoing bridge, and full grouped-bundle front end. & Mixed: \StatusExact{}, \StatusEffective{}, \StatusReduced{}, \StatusExactClosure{}, \StatusOpen{} \\
+\addlinespace
+II & 007--019 & \resultanchor{MTDC-T5} & Overlap/isotropy theorem, weak-axisymmetric signature, selected-mode normal form, finite-throat D/N branch, and support-feasibility frontier. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusOpen{} \\
+\addlinespace
+III & 020--073 & \resultanchor{MTDC-T6--T7} & Continuum placement, split-\(U\) map, rank-2 support completion, coherent support compensation, parent threshold tests, Family-1 branch, and reduced verdict. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusEffective{}, \StatusOpen{} \\
+\addlinespace
+IV & 074--146 & \resultanchor{MTDC-T8} & Geometry-lane firewall, retarded/outlet collapse, side-channel and mouth/core compensation, boundary-layer fixed points, and final residual transport. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusEffective{}, \StatusNumerical{}, \StatusOpen{} \\
+\addlinespace
+V & 147--183 & \resultanchor{MTDC-T9} & Weak-axisymmetric transport, \(\Xi_1=P_1/P_0\), monomial quotient coordinates, similarity orbit, Packet-A closure, and four-scalar verdict packet. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusOpen{} \\
+\addlinespace
+VI & 184--201 & \resultanchor{MTDC-T10} & Realization compiler, target graph, log-ray/Hessian search, pairwise/simplex optimizers, and finite support-cardinality-\(5\) mixed-ray sieve. & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{} \\
+\addlinespace
+VII & 202--225 & \resultanchor{MTDC-T11} & One-port same-charge audit, resonance/linewidth gates, actual-branch tests, rigid-mouth \(U,V\) chart, orbit lock, and selected twin-support placement. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusNumerical{}, \StatusOpen{} \\
+\addlinespace
+VIII & 226--236 & \resultanchor{MTDC-T12} & Relaxed open-system branch, leakage/work and \(U/V\) drain packets, relaxed barrier, event chain, export kernel, heat partition, and material-threshold companion. & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusEffective{}, \StatusNumerical{}, \StatusOpen{} \\
+\addlinespace
+\bottomrule
+\end{longtable}
+}
+
+\section{Complete consolidated stage ledger}
+\label{sec:stage-ledger-consolidated}
+
+\scriptsize
+{\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}L{0.055\textwidth}L{0.075\textwidth}L{0.145\textwidth}L{0.235\textwidth}L{0.43\textwidth}@{}}
+\caption{Complete stage ledger.  The stage number is linked to the detailed stage appendix; the anchor is the preferred downstream citation handle.}\label{tab:complete-stage-ledger}\\
+\toprule
+Stage & Part & Anchor & Primary status & Working title and main output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Part & Anchor & Primary status & Working title and main output \\
+\midrule
+\endhead
+\hyperref[stage:001]{001} & I & \resultanchor{MTDC-T1--T2} & \StatusEffective{} / \StatusExactClosure{} & \textbf{Geometry lift and linearized PDE skeleton.} Shape field \(R(\Omega,w,t)\), promoted confinement coupling, and modal split into scalar, grouped real \(P_2\), and higher-lane sectors. \\
+\addlinespace
+\hyperref[stage:002]{002} & I & \resultanchor{MTDC-T2} & \StatusExactClosure{} & \textbf{Breathing reduction back to old \((a,L)\) closure.} Two-mode axisymmetric reduction with effective mass and stiffness matrices for \((\delta a,\delta L)\). \\
+\addlinespace
+\hyperref[stage:003]{003} & I & \resultanchor{MTDC-T3} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Minimal BdG--wall coupling and first pole shifts.} Stable-mode Schur complement, low-frequency conservative moments, pole shifts, and grouped \(P_2\) isotropy diagnostics. \\
+\addlinespace
+\hyperref[stage:004]{004} & I & \resultanchor{MTDC-T4} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Localized Maxwell/mixed response and outgoing bridge.} Mixed-sector self-energy, outgoing-transfer factor, compact outgoing \(l=2\) fingerprint, and scalar-compatibility check. \\
+\addlinespace
+\hyperref[stage:005]{005} & I & \resultanchor{MTDC-T4} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Grouped real \(P_2\) normalization bridge.} Conversion from conservative operator moments to normalized response moments and the invariant outgoing-normalization product. \\
+\addlinespace
+\hyperref[stage:006]{006} & I & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Full grouped bundle and isotropic normalization test.} Weighted grouped projectors, full \(D,N,P\) coefficient bundle, isotropic normalization ratio, and anisotropy transport laws. \\
+\addlinespace
+\hyperref[stage:007]{007} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Explicit overlap integrals, \(O(3)\) isotropy, and first axisymmetric splitting.} Orthonormal real-STF angular basis, exact angular source-map identity, isotropy collapse, and weak-axisymmetric signature \(b=3a\). \\
+\addlinespace
+\hyperref[stage:008]{008} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Minimal isotropic single-mode closure.} Explicit minimal normalization ratio in terms of one BdG mode and one Maxwell/mixed pair. \\
+\addlinespace
+\hyperref[stage:009]{009} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Concrete finite-throat axial modes.} D/N overlap constant \(\kappa=2\sqrt2/\pi\), first branch-level normalization equation, and required wall-stiffness formula. \\
+\addlinespace
+\hyperref[stage:010]{010} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{First nonconstant finite-throat wall/brane family.} Profile overlap \(\kappa(\theta)\), blind-angle no-go, max-coupling angle, and profile-dressed normalization gate. \\
+\addlinespace
+\hyperref[stage:011]{011} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Loaded axial profile selection.} Rank-one loaded \(2\times2\) wall eigenproblem, selected angle law, and softening threshold. \\
+\addlinespace
+\hyperref[stage:012]{012} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Dynamic loading from coupled wall/BdG/Maxwell/mixed operator.} Schur-complement split \(\Sigma_{\rm wall}=\Xi I_2+\alpha vv^T\) and selected-mode odd quadrupole coefficient. \\
+\addlinespace
+\hyperref[stage:013]{013} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Selected-mode normalized response.} Selected prefactor \(P_{0,-}=\beta_0s_-/\lambda_-\) and selected-branch quadrupole target. \\
+\addlinespace
+\hyperref[stage:014]{014} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Reachability and stable-side monotonicity.} Strict monotonicity of \(P_{0,-}\) on the stable branch and unique crossing theorem. \\
+\addlinespace
+\hyperref[stage:015]{015} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Explicit source map from finite-throat mode integrals.} Natural D/N source map \(\widehat m_-^2=s_-/\kappa_0^2\), eliminating the abstract source-map factor. \\
+\addlinespace
+\hyperref[stage:016]{016} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Microscopic normalization equation and stability gate.} Coupling-level normalization equation, stability inequalities, and onset criterion. \\
+\addlinespace
+\hyperref[stage:017]{017} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Softening-depth normal form.} Scalar softening-depth variable \(x=A-\lambda_-\), exact \(\alpha_0(x)\), \(s_-(x)\), and \(N_-(x)\). \\
+\addlinespace
+\hyperref[stage:018]{018} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} & \textbf{Dimensionless D/N shape function.} Monotone normalization shape function \(F(\xi,\delta)\), unique stable normalization locus, and required support coupling. \\
+\addlinespace
+\hyperref[stage:019]{019} & II & \resultanchor{MTDC-T5} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Support-feasibility frontier.} Monotone support frontier \(G(\xi,\delta)\) and final two-condition admissibility test. \\
+\addlinespace
+\hyperref[stage:020]{020} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Continuum-kernel extraction.} Closed formulas for \(A\), \(\Delta K_{\rm ax}\), \(\alpha_{\rm mix}\), \(\beta_0\), \(M_{\rm mix}\), and \(\delta\) from the first finite-throat continuum operator. \\
+\addlinespace
+\hyperref[stage:021]{021} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Dimensionless continuum placement map.} Kernel ratios \((\epsilon_\eta,\epsilon_W,\rho,Z_W,\delta_0,\Lambda)\), exact placement formulas, and the product law \(R_{\rm target}M_{\rm mix}=8\Lambda(1-\epsilon_W)/\pi^2\). \\
+\addlinespace
+\hyperref[stage:022]{022} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{First non-flat \(U\) doublet.} Split-\(U\) correction, direction-splitting invariant, and proof that scalar placement survives while source/loading collinearity generically fails. \\
+\addlinespace
+\hyperref[stage:023]{023} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Generalized source/loading mismatch.} General selected-branch functions \(F_{q,\eta}\), \(G_q\), and split-\(U\) deformation \((F_U,G_U)\) governed by \(R_U\). \\
+\addlinespace
+\hyperref[stage:024]{024} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Rank-2 support completion.} Exact two-direction determinant, support-loading theorem \(n_{\rm req}\), monotonicity in mixed baseline, and tracking/source-tied alternatives. \\
+\addlinespace
+\hyperref[stage:025]{025} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Rank-2 selected-mode normalization.} Three-direction normalization law involving outgoing, support, and source directions. \\
+\addlinespace
+\hyperref[stage:026]{026} & III & \resultanchor{MTDC-T6} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Actual support/BdG loading direction.} Continuum extraction of the physical support direction needed to decide tracking versus source-tied completion. \\
+\addlinespace
+\hyperref[stage:027]{027} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Continuum-selected rank-2 closure.} Physical softening depth fixed by an exact quadratic and the continuum-selected normalization gate \(R_{\rm target}=F_{\rm cont}(\xi_{\rm phys})\). \\
+\addlinespace
+\hyperref[stage:028]{028} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Coherent local D/N support kernel.} Coherent D/N constraint forcing tracking, \(R_\phi=R_U=R_{\rm tr}\), and collapse to one-parameter tracking laws. \\
+\addlinespace
+\hyperref[stage:029]{029} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Tracking-branch bounds.} Monotonicity in \(R_{\rm tr}\) and the residual comparison showing that the first split-\(U\) tracking deformation worsens the normalization target. \\
+\addlinespace
+\hyperref[stage:030]{030} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Coherent-kernel dimensionless map.} Support enhancement factor \(S(\zeta;\epsilon)\) and coherent tracking map in the reduced continuum variables. \\
+\addlinespace
+\hyperref[stage:031]{031} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Support-compensation theorem.} Exact \(\zeta_{\rm req}\), unique support-ratio threshold, and no reduced-level support no-go before actual PDE placement. \\
+\addlinespace
+\hyperref[stage:032]{032} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{D/N overlap extraction of \(\zeta\).} Microscopic support ratio \(\zeta_n^{\rm phys}\), uniform-source overlap \((2n+1)^{-1}\), and same-operator twin family. \\
+\addlinespace
+\hyperref[stage:033]{033} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Physical \(\zeta\) threshold comparison.} Lowest symmetric twin lane has \(\zeta_0=1\), hence exact doubling \(S_0=2\), while higher D/N harmonics are strongly suppressed. \\
+\addlinespace
+\hyperref[stage:034]{034} & III & \resultanchor{MTDC-T6} & \StatusExactClosure{} & \textbf{Lowest-twin sufficiency criterion.} Branch-product criterion deciding whether the symmetric lowest twin already supplies the physical tracking branch. \\
+\addlinespace
+\hyperref[stage:035]{035} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Non-twin asymmetry requirement.} Exact three-regime split: mixed-only, symmetric-lowest-twin, or non-twin support asymmetry. \\
+\addlinespace
+\hyperref[stage:036]{036} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Overlap-boost window.} Exponential source family, exact overlap boost, and ceiling \(\Omega_0^2\leq \pi^2/4\). \\
+\addlinespace
+\hyperref[stage:037]{037} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Robin-compliance softening.} Lowest-lane Robin root \(y\tan y=\eta\), support-softening factor, and softening ceiling. \\
+\addlinespace
+\hyperref[stage:038]{038} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Non-twin reachability.} Combined overlap-plus-compliance reachability window for the first explicit non-twin lowest-lane family. \\
+\addlinespace
+\hyperref[stage:039]{039} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Transport origin of source asymmetry.} The exponential source family is the stationary zero-flux branch of a drift-diffusion operator, with bias identified as a Peclet number. \\
+\addlinespace
+\hyperref[stage:040]{040} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Physical \((\mathrm{Pe},\kappa,\eta)\) map.} Lowest-lane physical support ratio \(\zeta_0(\mathrm{Pe},\eta;\kappa)\) and exact constructive-branch threshold surfaces. \\
+\addlinespace
+\hyperref[stage:041]{041} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Coupled support/source operator.} Operator-selected branch equation \(\mathrm{Pe}_*=\Xi\Delta(\mathrm{Pe}_*;\kappa,\eta)\) and exact root bracket. \\
+\addlinespace
+\hyperref[stage:042]{042} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Residual bounds.} Residual envelope and exact coupling thresholds \(\Xi_{\rm fail}\), \(\Xi_{\rm suff}\). \\
+\addlinespace
+\hyperref[stage:043]{043} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Entropic source microclosure.} Positive-density Onsager/free-energy closure reproducing the drift-diffusion source family. \\
+\addlinespace
+\hyperref[stage:044]{044} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Microscopic gain phase diagram.} Dimensionless gain \(G_{\rm micro}\), fail/succeed thresholds, and geometry-controlled phase diagram. \\
+\addlinespace
+\hyperref[stage:045]{045} & III & \resultanchor{MTDC-T7} & \StatusExact{} / \StatusReduced{} & \textbf{Parent-action projection of gain.} Projection of the GNLS compressional sector gives \(G_{\rm micro}\) in parent-action overlap variables. \\
+\addlinespace
+\hyperref[stage:046]{046} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Parent-overlap thresholds.} Exact amplitude and coherence thresholds, including a Cauchy no-go when even perfect source/support alignment is insufficient. \\
+\addlinespace
+\hyperref[stage:047]{047} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Parent equilibrium alignment.} Equilibrium source profile \(\chi_\sigma\propto \chi_\phi/H\), coherence formula, and matched-layer gain. \\
+\addlinespace
+\hyperref[stage:048]{048} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Thin-wall confinement branch.} Physical wall-amplitude thresholds from \(V_{\rm conf}=V_0 f((r-a)/\ell)\). \\
+\addlinespace
+\hyperref[stage:049]{049} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Wall figure of merit.} One-number wall control \(W_{\rm wall}\) and exact fail/succeed window. \\
+\addlinespace
+\hyperref[stage:050]{050} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Sech--Gaussian resonance benchmark.} Self-dual profile resonance \(w_g/w_f=\sqrt\pi\), near-perfect coherence, and penalty factor. \\
+\addlinespace
+\hyperref[stage:051]{051} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Resonance-corrected thresholds.} The sech--Gaussian benchmark modifies the matched thresholds only by \(P_{\rm res}\simeq1.005612\). \\
+\addlinespace
+\hyperref[stage:052]{052} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Final support/source verdict.} Three-zone reduced verdict: universal fail, universal matched success, and a narrow profile-sensitive band. \\
+\addlinespace
+\hyperref[stage:053]{053} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusReduced{} & \textbf{GNLS wall-shell reduction.} Parent shell formulas for \(T_X\), \(K_X\), \(\kappa\), \(J_1\), and \(W_{\rm wall}=\Xi\). \\
+\addlinespace
+\hyperref[stage:054]{054} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Canonical tanh-wall branch.} Exact moments \(I_f=1/3\), \(I_g=4/15\), natural local mouth closure, and three branch controls. \\
+\addlinespace
+\hyperref[stage:055]{055} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Explicit branch placement surfaces.} Fail/succeed surfaces in \((\chi_s,\Lambda_\ell,\Upsilon_w)\). \\
+\addlinespace
+\hyperref[stage:056]{056} & III & \resultanchor{MTDC-T7} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Family--1 geometry map.} Reference branch values \(L/a=37/20\), \(\ell/a=1/20\), hence \(\Lambda_\ell=\eta=37\). \\
+\addlinespace
+\hyperref[stage:057]{057} & III & \resultanchor{MTDC-T7} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Healing-length lock.} Closure \(\ell=\hbar/(2mc_{s,w})\), hence \(\chi_s=37/2\), \(\kappa=12321/5\). \\
+\addlinespace
+\hyperref[stage:058]{058} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Family--1 threshold window.} Explicit \(\Theta_w\) fail/succeed window after all geometry/support scales are fixed. \\
+\addlinespace
+\hyperref[stage:059]{059} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{\(n=5\) wall-depth lock.} Wall datum reduces to \(\Theta_w=25\lambda_\mu^2\rho_w^2\) in normalized Family--1 variables. \\
+\addlinespace
+\hyperref[stage:060]{060} & III & \resultanchor{MTDC-T7} & \StatusReduced{} / \StatusNumerical{} & \textbf{Shell-weighted extraction of \(\Theta_w\).} Natural value \(\Theta_w^{(\chi)}\simeq4.068632\lambda_\mu^2\) and conservative floor \(\Theta_w^{(J)}\simeq0.927552\lambda_\mu^2\). \\
+\addlinespace
+\hyperref[stage:061]{061} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Explicit Family--1 branch verdict.} The explicit wall-depth datum is not the bottleneck unless the quadrupole demand is anomalously large. \\
+\addlinespace
+\hyperref[stage:062]{062} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Demand-to-transport map.} Exact Family--1 map \(\zeta_{\rm F1}(\mathrm{Pe})=A_{\rm F1}\Omega_{\mathrm{Pe}}^2\) and hard ceiling \(\zeta_{\max}^{\rm F1}\). \\
+\addlinespace
+\hyperref[stage:063]{063} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Demand thresholds in \(\zeta_{\rm req}\).} Converts Family--1 wall-depth windows into support-ratio demand windows. \\
+\addlinespace
+\hyperref[stage:064]{064} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Branch-product demand window.} Converts the same thresholds into \(\Pi_{\rm tr}\) product form with blocking parameter. \\
+\addlinespace
+\hyperref[stage:065]{065} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Master quadrupole residual.} Full reduced residual \(R_{\rm quad}=\zeta_{\rm req}-\zeta_{\rm phys}\). \\
+\addlinespace
+\hyperref[stage:066]{066} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Direct operator-selected Family--1 window.} Evaluates the operator-selected Family--1 support window directly. \\
+\addlinespace
+\hyperref[stage:067]{067} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Reduced PDE write-up skeleton.} Organizes the completed reduced hierarchy and isolates the final outgoing quadrupole product as the remaining gap. \\
+\addlinespace
+\hyperref[stage:068]{068} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Normalization-factor cancellation.} Shows the support theorem depends only on \(\rho_\alpha=\alpha_{\rm req}/\alpha_{\rm mix}\). \\
+\addlinespace
+\hyperref[stage:069]{069} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Family--1 ratio window.} Pure loading-ratio success/failure window and hard Family--1 ceiling. \\
+\addlinespace
+\hyperref[stage:070]{070} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Final reduced Family--1 finish line.} Reduces the remaining Family--1 support/source gap to one outgoing-branch loading ratio. \\
+\addlinespace
+\hyperref[stage:071]{071} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Loading ratio from minimal module.} Natural contact-plus-pole precursor gives \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), \(\Pi_{\rm tr}=(4/3)C_{\rm mix}\). \\
+\addlinespace
+\hyperref[stage:072]{072} & III & \resultanchor{MTDC-T7} & \StatusExactClosure{} & \textbf{Explicit Family--1 verdict for minimal isotropic branch.} Minimal isotropic branch lies safely inside the Family--1 success region and succeeds at zero transport bias. \\
+\addlinespace
+\hyperref[stage:073]{073} & III & \resultanchor{MTDC-T7} & \StatusOpen{} / \StatusExactClosure{} & \textbf{Updated reduced theorem status.} Support/source side is finished under the minimal module; remaining gap is deriving that module from the actual grouped \(P_2\)/geometry branch. \\
+\addlinespace
+\hyperref[stage:074]{074} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Grouped \(P_2\) plus geometry split.} Static-geometry plus one-pole grouped carrier forces the \(3/4+1/4\) conservative quadrupole module and hence \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\). \\
+\addlinespace
+\hyperref[stage:075]{075} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Dynamic geometry obstruction.} If geometry carries dynamic even moments, the pole fraction becomes \((1+\epsilon_4)/[4(1+\epsilon_2)^2]\). \\
+\addlinespace
+\hyperref[stage:076]{076} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Grouped \(P_2\) status update.} Declares the remaining question: whether actual isotropic geometry is dynamically inert or supplies \((\epsilon_2,\epsilon_4)\). \\
+\addlinespace
+\hyperref[stage:077]{077} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Isotropic geometry-decoupling theorem.} Orthogonality of \(l=0\) geometry and grouped \(l=2\) wall modes gives \(K_{g,2}=K_{g,4}=0\) on the isotropic branch. \\
+\addlinespace
+\hyperref[stage:078]{078} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Second-order geometry contamination.} Weak \(l=0\leftrightarrow l=2\) mixing contaminates the grouped module only at \(O(\chi^2)\). \\
+\addlinespace
+\hyperref[stage:079]{079} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Geometry-lane actual-branch verdict.} The natural isotropic branch is conservatively clean; only genuine symmetry breaking or a second dynamic \(l=2\) geometry pole can reopen the issue. \\
+\addlinespace
+\hyperref[stage:080]{080} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Single normalization defect.} The isotropic passive/outgoing one-pole branch reduces to \(N_Q=\overline K_0/\overline K_0^{\rm target}\). \\
+\addlinespace
+\hyperref[stage:081]{081} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Family--1 support automaticity.} With \(\rho_\alpha=4/3\), any branch with \(\zeta_{\max}>1\) passes the support test; Family--1 does. \\
+\addlinespace
+\hyperref[stage:082]{082} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Reduced finish line after geometry check.} The only remaining reduced theorem gate is \(N_Q=1\), equivalently actual passive/outgoing quadrupole normalization. \\
+\addlinespace
+\hyperref[stage:083]{083} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Factorized \(2.5\)PN defect.} Full odd normalization factorizes as \(\widehat m_0^{\,2}\chi_Q N_Q=1\). \\
+\addlinespace
+\hyperref[stage:084]{084} & IV & \resultanchor{MTDC-T8} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Natural source-map reduction.} On the natural point-particle source map, \(\widehat m_0\to1\), so the last obstruction is purely \(\chi_Q\). \\
+\addlinespace
+\hyperref[stage:085]{085} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Higher-odd irrelevance.} Retarded terms beginning at \(O(\omega^7)\) do not affect the point-particle \(2.5\)PN theorem. \\
+\addlinespace
+\hyperref[stage:086]{086} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Conditional reduced \(2.5\)PN closure.} Reduced theorem closes iff the actual passive/outgoing branch has \(\chi_Q=1\). \\
+\addlinespace
+\hyperref[stage:087]{087} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Exact outgoing \(l=2\) DtN fingerprint.} Spherical Hankel DtN expansion gives \(\widehat Y_2^{\rm out}=1+z^2/9+4z^4/81+iz^5/27+\cdots\). \\
+\addlinespace
+\hyperref[stage:088]{088} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Exact fixing of \(\chi_Q\).} Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\). \\
+\addlinespace
+\hyperref[stage:089]{089} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Canonical outgoing reduced closure.} Lists the canonical invariant coefficients and marks actual branch realization as the remaining open theorem. \\
+\addlinespace
+\hyperref[stage:090]{090} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{General isotropic DtN deformation algebra.} Deformed branch \(S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5\) gives explicit \(\chi_Q\). \\
+\addlinespace
+\hyperref[stage:091]{091} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Robustness classes for \(\chi_Q\).} Pure scale is harmless; pure argument shift is harmless only if even moments remain canonical; additive throat-core data can move \(\chi_Q\). \\
+\addlinespace
+\hyperref[stage:092]{092} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Linearized branch-selection law.} First-order outgoing defect is \(\Delta_Q=5b+a_0/3+9a_5\). \\
+\addlinespace
+\hyperref[stage:093]{093} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Isotropic Robin outlet.} Pure Robin shift gives \(\chi_Q^{\rm R}=3/(3-\rho_R)\) and generically spoils the branch. \\
+\addlinespace
+\hyperref[stage:094]{094} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Mixed side-channel pole.} A standalone hidden mixed pole cannot preserve the canonical even branch unless it is absent. \\
+\addlinespace
+\hyperref[stage:095]{095} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Robin--mixed compensation law.} Nontrivial compensated branch has \(\rho_R=4\sigma_W\), \(\kappa_W=1/3\), and preserves odd normalization iff \(\gamma_W=1/9\). \\
+\addlinespace
+\hyperref[stage:096]{096} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Outlet-model status.} Low-frequency outlet audit leaves pure scale/argument classes and the compensated Robin--mixed class as the viable routes. \\
+\addlinespace
+\hyperref[stage:097]{097} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Two-channel core outlet model.} Concrete shell/mixed core Schur complement reproduces the reduced Robin--mixed outlet. \\
+\addlinespace
+\hyperref[stage:098]{098} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Core-balance compensation theorem.} Coupling balance \(g_s^2(K_sK_q+\lambda^2)=4(K_sg_q-\lambda g_s)^2\) realizes the compensated branch. \\
+\addlinespace
+\hyperref[stage:099]{099} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Finite D/N mixed-tube realization.} First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale. \\
+\addlinespace
+\hyperref[stage:100]{100} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Outlet-core status.} The microscopic question is whether the real core lands on the coupling-balance surface and D/N tube normalization. \\
+\addlinespace
+\hyperref[stage:101]{101} & IV & \resultanchor{MTDC-T8} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Parent-action core-parameter extraction.} Gives overlap formulas for \(K_s,K_q,\lambda,g_s,g_q\) from a GNLS plus localized-Maxwell throat-core ansatz. \\
+\addlinespace
+\hyperref[stage:102]{102} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{One-parameter parent compensation family.} Normalized ratios \((\mathfrak r,\mathfrak g)\) obey \(1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2\). \\
+\addlinespace
+\hyperref[stage:103]{103} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Core-parameter extraction status.} Records the surviving finite parent-level target after overlap extraction. \\
+\addlinespace
+\hyperref[stage:104]{104} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Geometric hybridization selection.} Identifying the mixed D/N tube with the throat span gives \(\mathfrak r_{\rm geom}(L/a)=\sqrt{12(L/a)^2/\pi^2-1}\). \\
+\addlinespace
+\hyperref[stage:105]{105} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Concrete mouth-source compensation test.} Equal-normalized mouth source misses the lower compensated branch but only by a modest traction renormalization. \\
+\addlinespace
+\hyperref[stage:106]{106} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Parent-normalized branch values.} Converts the Family--1 compensated target to normalized parent flow and traction numbers \((\Xi_v,\Xi_T)\). \\
+\addlinespace
+\hyperref[stage:107]{107} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Core-solve status after geometry selection.} Remaining question is whether the real core chooses the naive or lower compensated mouth branch. \\
+\addlinespace
+\hyperref[stage:108]{108} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Positive local mouth-source theorem.} Positive normalized sources satisfy \(0\le\mathfrak g[\sigma]\le1\), ruling out the upper compensated branch. \\
+\addlinespace
+\hyperref[stage:109]{109} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Positive source families.} Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch. \\
+\addlinespace
+\hyperref[stage:110]{110} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Geometric mouth-penetration families.} Slab and truncated-exponential families reach the lower branch at moderate penetration depths. \\
+\addlinespace
+\hyperref[stage:111]{111} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Mouth-source bias status.} Branch sign is fixed; the open datum is the actual positive mouth-source shape. \\
+\addlinespace
+\hyperref[stage:112]{112} & IV & \resultanchor{MTDC-T8} & \StatusReduced{} / \StatusExactClosure{} & \textbf{GNLS plus localized-Maxwell mouth layer.} Electrochemical zero-flux law yields the exponential source profile \(\sigma_\Pi\). \\
+\addlinespace
+\hyperref[stage:113]{113} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Mouth-bias map.} Exact \(\mathfrak g_\Pi\), monotonicity, and unique Family--1 point \(\Pi_*\approx1.5088295\). \\
+\addlinespace
+\hyperref[stage:114]{114} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Parent micro-threshold.} Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\). \\
+\addlinespace
+\hyperref[stage:115]{115} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Mouth boundary-layer status.} The source-shape ambiguity is reduced to the selected bias \(\Pi_m\). \\
+\addlinespace
+\hyperref[stage:116]{116} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Coupled mouth fixed-point law.} Two-channel D/N boundary layer gives \(\Pi=\sum_{\alpha=\pm}M_\alpha\mathcal S(\Pi,\kappa_\alpha)\). \\
+\addlinespace
+\hyperref[stage:117]{117} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Family--1 shell plus mixed tube.} First explicit reduction gives \(\Pi=M_s+M_q\mathcal S_q(\Pi)\). \\
+\addlinespace
+\hyperref[stage:118]{118} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Outlet-consistent mouth closure.} Inheriting the compensated outlet ratio gives \(M_s=4\Sigma_m\), \(M_q=-\Sigma_m\), and \(\Sigma_m^*\approx0.451485\). \\
+\addlinespace
+\hyperref[stage:119]{119} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Coupled mouth status.} The mouth-layer problem is reduced to a gain pair, or one gain under outlet consistency. \\
+\addlinespace
+\hyperref[stage:120]{120} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Core-to-mouth gain map.} Explicit gains are \(M_s=Lg_s^2/(K_s\Theta_\sigma)\), \(M_q=-L(K_sg_q-\lambda g_s)^2/[K_s(K_sK_q+\lambda^2)\Theta_\sigma]\). \\
+\addlinespace
+\hyperref[stage:121]{121} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Normalized mouth-gain family.} Gain ratio \(R_q=(\mathfrak g_c-\mathfrak r)^2/(1+\mathfrak r^2)\); exact compensation gives \(R_q=1/4\). \\
+\addlinespace
+\hyperref[stage:122]{122} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Actual Family--1 mouth gains.} Natural and exact-compensated gain pairs are evaluated on the Family--1 branch. \\
+\addlinespace
+\hyperref[stage:123]{123} & IV & \resultanchor{MTDC-T8} & \StatusReduced{} / \StatusExactClosure{} & \textbf{Self-matched mouth susceptibility.} Same-layer susceptibility gives \(\Sigma_0=M_s=(20/9)\widehat T_m^2\). \\
+\addlinespace
+\hyperref[stage:124]{124} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Mouth-gain status.} Records the narrowed gain-scale problem after self-matched susceptibility. \\
+\addlinespace
+\hyperref[stage:125]{125} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Self-consistent mouth-branch law.} Identifying \(\mathfrak g_c=\mathfrak g_\Pi\) gives \(\Pi=\Sigma_0[1-R_q(\Pi)\mathcal S_q(\Pi)]\). \\
+\addlinespace
+\hyperref[stage:126]{126} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Equal-normalized singular limit.} \(\mathfrak g_\Pi<1\) for all finite \(\Pi>0\); equal-normalized branch requires \(\Pi\to\infty\) and divergent traction. \\
+\addlinespace
+\hyperref[stage:127]{127} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Unique regular canonical mouth branch.} Lower compensated branch is the unique finite-bias, finite-traction branch in the explicit positive exponential closure. \\
+\addlinespace
+\hyperref[stage:128]{128} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Mouth-branch selection status.} Branch choice is settled inside the explicit closure; finite corrections around \((\Pi_*,\widehat T_{m,*})\) remain. \\
+\addlinespace
+\hyperref[stage:129]{129} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Positive mouth-layer deformations.} First-order deformations depend only on \((\bar g_\varsigma,\bar S_\varsigma)\) and retune \(\Pi\). \\
+\addlinespace
+\hyperref[stage:130]{130} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{First-order rigidity kernel.} Traction shift is one kernel projection with coefficients \(A_T\approx-4.27264\), \(B_T\approx0.134875\). \\
+\addlinespace
+\hyperref[stage:131]{131} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Representative positive families.} Uniform and self-matched derivative families bracket the first-order correction; interpolation reproduces the earlier compensation fraction. \\
+\addlinespace
+\hyperref[stage:132]{132} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Non-exponential mouth-rigidity status.} Mouth corrections are controlled by a finite rigidity kernel, not by branch ambiguity. \\
+\addlinespace
+\hyperref[stage:133]{133} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Full-profile mouth potential.} Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth. \\
+\addlinespace
+\hyperref[stage:134]{134} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Full-profile source correction.} Actual selected deformation is the centered residual \(R_*\); correction is fixed by two covariances. \\
+\addlinespace
+\hyperref[stage:135]{135} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusNumerical{} & \textbf{Family--1 mouth correction.} Full mouth profile broadens the source and shifts the point to \((\Pi_{\rm corr},\widehat T_{m,{\rm corr}})\). \\
+\addlinespace
+\hyperref[stage:136]{136} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Mouth correction status.} Branch ambiguity is gone; finite mouth-only correction motivates full co-evolution. \\
+\addlinespace
+\hyperref[stage:137]{137} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Co-evolving core--mouth map.} Nonlinear fixed-point map \(\Sigma\propto e^{-\Phi_{\Sigma_0}[\Sigma]}\), with \(\mathcal R[\Sigma]=(\mathfrak g[\Sigma]-\mathfrak r_{F1})^2/(1+\mathfrak r_{F1}^2)\). \\
+\addlinespace
+\hyperref[stage:138]{138} & IV & \resultanchor{MTDC-T8} & \StatusNumerical{} / \StatusExactClosure{} & \textbf{Frozen-traction co-evolving fixed point.} At old traction, fixed point survives but moves off exact compensation: \(\mathcal R_{\rm fp}\approx0.282714\). \\
+\addlinespace
+\hyperref[stage:139]{139} & IV & \resultanchor{MTDC-T8} & \StatusNumerical{} / \StatusExactClosure{} & \textbf{Renormalized co-evolving canonical branch.} Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\). \\
+\addlinespace
+\hyperref[stage:140]{140} & IV & \resultanchor{MTDC-T8} & \StatusNumerical{} / \StatusOpen{} & \textbf{Co-evolution status.} Identifies the reduced co-evolving target and leaves the deviation-to-normalization map as the next task. \\
+\addlinespace
+\hyperref[stage:141]{141} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Linear defect transport.} Linearizes \((\delta\Sigma_0,\delta\mathfrak g,\delta\mathcal S)\) into \((\delta M_s,\delta M_q,\delta\Pi)\). \\
+\addlinespace
+\hyperref[stage:142]{142} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Projection onto compensated outlet.} Even preservation forces \(\delta\mathfrak g=0\), \(\delta\kappa_W=0\), leaving \(\Delta_Q=-9\sigma_*\delta\gamma_W/(1-\sigma_*)\). \\
+\addlinespace
+\hyperref[stage:143]{143} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Bare mixed-port slippage.} \(\delta\gamma_W=(\delta\gamma_0-\delta\kappa_0/3)/(1+\mathfrak r_{F1}^2)\). \\
+\addlinespace
+\hyperref[stage:144]{144} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{D/N similarity decomposition.} Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\). \\
+\addlinespace
+\hyperref[stage:145]{145} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} & \textbf{Parent compensation-surface rigidity.} Staying on the exact parent compensation family gives automatic D/N similarity preservation and \(\Delta_Q=0\) at first order. \\
+\addlinespace
+\hyperref[stage:146]{146} & IV & \resultanchor{MTDC-T8} & \StatusExactClosure{} / \StatusOpen{} & \textbf{Off-family normal coordinate.} The first true off-family drift is the scalar \(\delta_\perp\), with explicit microscopic parent-action formula. \\
+\addlinespace
+\hyperref[stage:147]{147} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Microscopic log-imbalance channels.} Rewrites the Stage-146 off-family scalar in explicit branch-variable drifts of \((\mathcal Z_q,\rho_w,c_{s,w},c_s,\mathcal T_m,v_{w0},a,L_W)\). \\
+\addlinespace
+\hyperref[stage:148]{148} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Lower-branch drift laws.} Shows \(\delta\ln L_W=\delta\ln a\) and reduces the lower compensated branch to four irreducible drifts \((\delta\ln\mathcal Z_q,\delta\ln\rho_w,\delta\ln c_s,\delta\ln a)\). \\
+\addlinespace
+\hyperref[stage:149]{149} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Bundle inversion of the last four drifts.} Inverts the four observables \((\Theta_w,K_s,K_q,P_0)\) to determine the four remaining microscopic drifts. \\
+\addlinespace
+\hyperref[stage:150]{150} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Bundle transport and tangent compensation.} Proves arbitrary first-order isotropic bundle drift is tangent to the exact compensated parent family. \\
+\addlinespace
+\hyperref[stage:151]{151} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Off-bundle slippage decomposition.} Reduces the first true off-bundle defect to axial-length, mixed-speed, and mouth-traction slippages. \\
+\addlinespace
+\hyperref[stage:152]{152} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{No linear grouped feed-down into scalar slippages.} Pure grouped real \(P_2\) anisotropy cannot linearly source the scalar off-bundle slippages; scalar feed-down starts quadratically. \\
+\addlinespace
+\hyperref[stage:153]{153} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Linear grouped outlet map.} Reduces the direct outlet deformations to \(\mathcal K_A=\delta D_{A,2}+\delta D_{A,0}/9\) and \(\mathcal G_A=\delta N_{A,0}-P_0\delta D_{A,0}\). \\
+\addlinespace
+\hyperref[stage:154]{154} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Microscopic grouped obstructions.} Decomposes \(\mathcal K_A\) and \(\mathcal G_A\) into wall, BdG, Maxwell/mixed, and outgoing-transfer defect bundles. \\
+\addlinespace
+\hyperref[stage:155]{155} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Physical slope collapse.} Identifies \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), reducing the linear grouped outlet problem to physical slopes. \\
+\addlinespace
+\hyperref[stage:156]{156} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Weak-axisymmetric loading mismatch.} On the even-preserving branch, the remaining grouped defect is the scalar \(\Xi_{\rm load}=N_{01}/N_0-D_{01}/D_0\). \\
+\addlinespace
+\hyperref[stage:157]{157} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Static self-similarity.} Expresses \(\Xi_{\rm load}\) as weighted failure of static self-similarity between wall, BdG, conservative port, and outgoing port slopes. \\
+\addlinespace
+\hyperref[stage:158]{158} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Wall-normalized outgoing-load theorem.} Factors the remaining defect into wall-normalized shape/load variables and proves conservative-shape preservation leaves only outgoing load slippage. \\
+\addlinespace
+\hyperref[stage:159]{159} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Square-root mixed-leg law.} Factors the outgoing load into mixed-leg, interference, and hybridization slippages; under rigidity, zero defect requires \(G_W/\Omega_W^2\propto\sqrt K\). \\
+\addlinespace
+\hyperref[stage:160]{160} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{One scalar outgoing-slippage amplitude.} Shows all weak-axisymmetric outgoing slippages inherit the same grouped signature and collapse to \(\Xi_1=P_1/P_0\). \\
+\addlinespace
+\hyperref[stage:161]{161} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Outgoing-port co-loading theorem.} Rewrites \(\Xi_1\) as the weighted mismatch between actual static outgoing-port loading and wall-baseline loading. \\
+\addlinespace
+\hyperref[stage:162]{162} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Transfer-shape theorem.} Factors each outgoing port as \(N_{A,0}^{(r)}=K_A\mathcal T_{A,r}^2\) and gives \(\Xi_1=2\sum_r\rho_r^{(N)}\tau_r\). \\
+\addlinespace
+\hyperref[stage:163]{163} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Effective transfer-shape collapse.} Collapses many ports to \(\mathcal T_{{\rm eff},A}^2=N_{A,0}/K_A\) and gives the actual one-port continuum formula. \\
+\addlinespace
+\hyperref[stage:164]{164} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Coherent tracking-branch defect law.} On the coherent local D/N tracking branch, \(\Xi_1\) is carried only by mixed/outgoing placement variables; coherent support ratio \(\zeta\) drops out. \\
+\addlinespace
+\hyperref[stage:165]{165} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Microscopic coherent-kernel slippages.} Reduces the defect to \((\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta)\) plus dressing slippage \(\Sigma_\eta\), and isolates \(\Sigma_{\rm tr}\). \\
+\addlinespace
+\hyperref[stage:166]{166} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Triangular normal form.} Compresses the coherent weak-axisymmetric problem to \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) with triangular map to \((\Theta_1,\Xi_1,\mathcal R_1)\). \\
+\addlinespace
+\hyperref[stage:167]{167} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Branch-invariant coordinates.} Identifies exact branch composites \(\mathfrak T_*\), \(\mathfrak N_*\), and \(\epsilon_\eta\) whose logarithmic drifts are the three normal-form coordinates. \\
+\addlinespace
+\hyperref[stage:168]{168} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Microscopic monomial coordinates.} Pushes the branch composites to direct monomials \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\). \\
+\addlinespace
+\hyperref[stage:169]{169} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Similarity-orbit tangent theorem.} Shows the zero-defect equations are the tangent equations of a five-parameter monomial-preserving similarity orbit \(\mathcal G_*\). \\
+\addlinespace
+\hyperref[stage:170]{170} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Orbit--quotient closure.} Proves finite level sets of \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\) are exactly \(\mathcal G_*\)-orbits. \\
+\addlinespace
+\hyperref[stage:171]{171} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Branch-observable compiler.} Compiles direct branch observables to \((\Theta_1,\Xi_1,\mathcal R_1)\) and records equivalent observable packets. \\
+\addlinespace
+\hyperref[stage:172]{172} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Transfer-shape / outgoing-prefactor compiler.} Equates \(\Xi_1\) with the logarithmic transfer-shape and outgoing-prefactor slope, including corrected nontracking form. \\
+\addlinespace
+\hyperref[stage:173]{173} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Direct defect, dressing residual, and no-go filters.} Separates direct transfer-shape drift from selected-branch dressing residual and records scalar no-go filters. \\
+\addlinespace
+\hyperref[stage:174]{174} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Minimal PDE data packet.} Defines Packet A, Packet B, \(\Delta_{\rm branch}\), \(\Delta_{\rm orbit}\), and the exact two-packet home-stretch theorem. \\
+\addlinespace
+\hyperref[stage:175]{175} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Orbit/quotient projectors.} Builds exact projectors \(Q_{\rm quot}\), \(O_{\rm orb}\), showing quotient failure lives only on \((T_U,K_\eta^{\rm eff},\mu_W)\). \\
+\addlinespace
+\hyperref[stage:176]{176} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Isotropic grouped target surface.} Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry lane enters the grouped carrier only at quadratic anisotropy order. \\
+\addlinespace
+\hyperref[stage:177]{177} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Outgoing \(l=2\) fingerprint.} Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical compact branch. \\
+\addlinespace
+\hyperref[stage:178]{178} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} / \StatusReduced{} & \textbf{Source-map reduction.} Factorizes the observable odd closure as \(\widehat m_0^{2}\chi_QN_Q=1\) and collapses \(\Delta_{\rm norm}\). \\
+\addlinespace
+\hyperref[stage:179]{179} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Higher-odd irrelevance.} Proves all extra isotropic odd tails beginning at \(O(\omega^7)\) are invisible to the point-particle \(2.5\)PN theorem. \\
+\addlinespace
+\hyperref[stage:180]{180} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Conditional Packet-A closure.} Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole Packet-A scalar. \\
+\addlinespace
+\hyperref[stage:181]{181} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Finite orbit law.} Solves the dependent triple exactly, defines mismatch coordinates, and proves finite single-orbit lock. \\
+\addlinespace
+\hyperref[stage:182]{182} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Pairwise orbit transport.} Removes representative privilege by giving exact two-point transport, mismatch, cocycle, and orbit-lock laws. \\
+\addlinespace
+\hyperref[stage:183]{183} & V & \resultanchor{MTDC-T9} & \StatusExactClosure{} & \textbf{Reference-free home-stretch theorem.} Combines Packet A and Packet B into the four-scalar final verdict packet \((\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta)\). \\
+\addlinespace
+\hyperref[stage:184]{184} & VI & \resultanchor{MTDC-T10} & \StatusExactClosure{} & \textbf{Realization compiler and canonical orbit projection.} Intrinsic four-scalar packet, canonical dependent-triple repair vector, canonical target-orbit projection, and same-free-quintuple uniqueness theorem. \\
+\addlinespace
+\hyperref[stage:185]{185} & VI & \resultanchor{MTDC-T10} & \StatusExactClosure{} & \textbf{Free-quintuple target graph.} Solves the target orbit as a graph over \((\lambda_W,c_{\eta U},\gamma,K_U,K_W^{\rm eff})\), defines graph errors \((E_T,E_K,E_\mu)\), and gives the first reduced-family closure surface. \\
+\addlinespace
+\hyperref[stage:186]{186} & VI & \resultanchor{MTDC-T10} & \StatusExactClosure{} & \textbf{Scalar graph-slice theorem.} Reduces graph-aligned realization to the single scalar \(\widehat\chi_Q(\mathbf y)=1\), proves graph tangency to \(\ker M_*\), and gives the one-parameter crossing theorem. \\
+\addlinespace
+\hyperref[stage:187]{187} & VI & \resultanchor{MTDC-T10} & \StatusExactClosure{} & \textbf{Explicit free-quintuple log-ray sweep.} Builds \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), gives the finite graph lift and primitive-direction table, and reduces closure to a one-variable scalar root. \\
+\addlinespace
+\hyperref[stage:188]{188} & VI & \resultanchor{MTDC-T10} & \StatusExactClosure{} & \textbf{Directional Hessian and quadratic predictors.} Adds directional Hessian data, quadratic affine/log predictors, discriminant tests, and turning-point/tangency criteria. \\
+\addlinespace
+\hyperref[stage:189]{189} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Curvature-envelope ray ranking.} Turns local curvature envelopes into certified root brackets, bracket-width laws, pairwise ray ordering, and the local search sieve. \\
+\addlinespace
+\hyperref[stage:190]{190} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Primitive-ray certified table.} Specializes the sieve to the five primitive free directions; proves only diagonal Hessian restrictions are needed for primitive certification. \\
+\addlinespace
+\hyperref[stage:191]{191} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Pairwise mixed-ray audit.} Introduces pairwise cones, gradient synergy, off-diagonal Hessian leverage, canonical gradient/equal-mix screens, and pairwise promotion rules. \\
+\addlinespace
+\hyperref[stage:192]{192} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Pairwise ratio optimizer.} Reduces each pairwise ratio search to a finite quartic candidate set and defines optimized pairwise brackets. \\
+\addlinespace
+\hyperref[stage:193]{193} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Three-coordinate simplex audit.} Reduces triple boundaries to pairwise cones, gives gradient and equal-mix interior screens, and defines the canonical triple-screen packet. \\
+\addlinespace
+\hyperref[stage:194]{194} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Triple-simplex interior optimizer.} Reduces the two-parameter triple interior optimizer to quartic/sextic algebraic candidate sets with finite interior brackets. \\
+\addlinespace
+\hyperref[stage:195]{195} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Up-to-three-coordinate search sieve.} Splices triple interiors to pairwise boundaries, ranks all primitive triples, and proves the support-\(\le3\) finite ledger. \\
+\addlinespace
+\hyperref[stage:196]{196} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Four-coordinate simplex gate.} Reduces four-simplex faces to triple packets and introduces four-way gradient/equal-mix canonical screens. \\
+\addlinespace
+\hyperref[stage:197]{197} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Four-coordinate interior optimizer.} Lifts the three-parameter four-simplex stationary system to a finite polynomial candidate set with preferred bound \(54\) per envelope. \\
+\addlinespace
+\hyperref[stage:198]{198} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Up-to-four-coordinate search sieve.} Splices quadruple interiors to triple-face boundaries, ranks all primitive quadruples, and proves the support-\(\le4\) finite ledger. \\
+\addlinespace
+\hyperref[stage:199]{199} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Unique five-coordinate simplex gate.} Identifies the unique five-simplex, reduces its boundary to the support-\(\le4\) ledger, and proves the support-cardinality ceiling. \\
+\addlinespace
+\hyperref[stage:200]{200} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Five-coordinate interior optimizer.} Reduces the four-parameter five-simplex interior optimizer to a lifted finite polynomial candidate set with preferred bound \(162\) per envelope. \\
+\addlinespace
+\hyperref[stage:201]{201} & VI & \resultanchor{MTDC-T10} & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{} & \textbf{Final local mixed-ray closure theorem.} Splices the unique support-5 interior packet to the support-\(\le4\) boundary ledger and closes the local mixed-ray search with preferred budget \(1464\). \\
+\addlinespace
+\hyperref[stage:202]{202} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{One-port mixed-bundle static kernel.} Exact static \(3\times3\) bundle, determinant \(\det\mathcal K_{\rm red}=\Delta D_0\), susceptibility kernel, outgoing-prefactor bridge, and square-law suppression verdict. \\
+\addlinespace
+\hyperref[stage:203]{203} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Dynamic mixed-port kernel and phase-lag no-go.} Dynamic \(3\times3\) bundle, determinant \(\Delta_\Pi D_\Pi\), dynamic product-family theorem, outgoing-port derivative identity, and first-order phase-lag/no-barrier theorem. \\
+\addlinespace
+\hyperref[stage:204]{204} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Resonance/linewidth tradeoff.} Simple-pole Breit--Wigner normal form, dispersive/absorptive no-free-lunch theorem, low-loss bound, and linear survival window. \\
+\addlinespace
+\hyperref[stage:205]{205} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Concrete finite-throat primitive branch.} Lowest N/N and D/N primitive branch, quartic pole polynomial, pole census, residue/linewidth figure, and first branch-level dynamic survival test. \\
+\addlinespace
+\hyperref[stage:206]{206} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Isotropic target surface and primitive compatibility.} Exact compatibility equation between the conservative one-pole condition and outgoing normalization, compatibility branch, and finite dynamic survival windows. \\
+\addlinespace
+\hyperref[stage:207]{207} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusOpen{} & \textbf{Branch-packet compiler and actual-branch kill test.} Compiler from \((\Delta_{\rm norm},a_{P_0},b_{P_0})\) to lane prefactors, weak-axisymmetric law \(b_{P_0}=3a_{P_0}\), and transported ceiling in \((\Delta_{\rm norm},\Xi_1)\). \\
+\addlinespace
+\hyperref[stage:208]{208} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusOpen{} & \textbf{Microscopic \(\Xi_1\) compiler and first compensation surface.} First-order formulas for \(u_2^{(1)},u_4^{(1)},\Xi_1\), primitive logarithmic-slope compiler, mechanism sieve, and first surviving mixed-sector family. \\
+\addlinespace
+\hyperref[stage:209]{209} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusReduced{} & \textbf{Strict 5PN even-gate package.} Imports \(\Xi_{\rm load},K_1,H_{\rm even}\), proves \(\Xi_{\rm load}=\Xi_1\), and narrows the survivor to a pure outgoing-transfer corridor with the conservative bundle frozen. \\
+\addlinespace
+\hyperref[stage:210]{210} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Pure-transfer load factor and co-loading no-go.} Exact factorization \(\Lambda=P/\Delta\), identity \(\Xi_1=2\delta\ln\Lambda\), outgoing-rigidity sieve, and co-loading no-go under simultaneous interference and hybridization rigidity. \\
+\addlinespace
+\hyperref[stage:211]{211} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Numerator/denominator split and dynamic-window test.} Split \(\Xi_1=2(\pi_1-\delta_1)\), numerator-rigid and denominator-rigid survivors, and first wall-like dynamic-window audit. \\
+\addlinespace
+\hyperref[stage:212]{212} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Selected-branch numerator/denominator signature.} Selected softening-depth factorization, classifier map, threshold \(\delta=8/9\), and denominator-like near-softening theorem. \\
+\addlinespace
+\hyperref[stage:213]{213} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusNumerical{} & \textbf{Dynamic-window classifier and static-first theorem.} Rigid-split share compiler, dynamic sign theorem, classifier threshold, and proof that the static \(\Xi_1\) budget remains the first kill condition. \\
+\addlinespace
+\hyperref[stage:214]{214} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Continuum-placement pullback.} Pulls the selected-branch classifier back to \((\epsilon_\eta,\epsilon_W,\rho,Z_W,\delta_0,\Lambda)\), proves monotonicity in \(R_{\rm target}\), and keeps the static-first verdict on the physical placement map. \\
+\addlinespace
+\hyperref[stage:215]{215} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusNumerical{}, \StatusOpen{} & \textbf{Known 5PN data injection.} Injects numerically located Family-1 support/source data, shows the support/source side is safe by a large margin, and leaves the unresolved gate at static orbit-lock/coherent placement. \\
+\addlinespace
+\hyperref[stage:216]{216} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusOpen{} & \textbf{Rigid-mouth orbit-lock compiler.} Distinguishes mouth tracking from operator rigidity, shows \(\delta\ln R_{\rm tr}=0\Rightarrow\Xi_1=\delta\ln\mathfrak N_*\), and reads the static ceiling as an internal transfer/turbulence gate. \\
+\addlinespace
+\hyperref[stage:217]{217} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Direct branch-observable static gate.} Finite chart in \((R_{\rm tr},R_{\rm target},\epsilon_\eta)\), two cancellations, rigid-mouth reduction, and two-observable kill test for \(R_{\rm target}\) and \(\epsilon_\eta\). \\
+\addlinespace
+\hyperref[stage:218]{218} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Rigid-mouth packet projectors.} Involutive direct-packet map, projectors \(P_{\rm nt},P_\eta\), static-blind dressing line, and codimension-two orbit-lock theorem. \\
+\addlinespace
+\hyperref[stage:219]{219} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Microscopic dependent-plane projectors.} Dependent-plane compiler, projectors \(P_{\rm nt}^{\rm dep},P_\eta^{\rm dep}\), equal-drift dressing ray, and static-only restoration gap. \\
+\addlinespace
+\hyperref[stage:220]{220} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Actual-branch dressing compiler.} Finite static-blind curve, direct computation of \(q_\eta\), microscopic extractor \(q_\eta=2c_1-\kappa_U-\kappa_\eta\), and support-blindness theorem. \\
+\addlinespace
+\hyperref[stage:221]{221} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Physical transfer-shape compiler.} Coherent identity \(R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)\), packet factorization, and three-gate theorem: tracking, transfer-shape, dressing. \\
+\addlinespace
+\hyperref[stage:222]{222} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Rigid-mouth physical normal form.} Cartesian chart \((U,V)\), physical-to-microscopic compiler \((\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V)\), and orbit-lock theorem \(U=V=0\). \\
+\addlinespace
+\hyperref[stage:223]{223} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Selected-branch loading ratio.} Exact loading ratio \(\rho_\alpha=4/3\), required support excess \(\zeta_{\rm req}=1/3\), and selection of the symmetric lowest-twin support slice. \\
+\addlinespace
+\hyperref[stage:224]{224} & VII & \resultanchor{MTDC-T11} & \StatusExactClosure{} & \textbf{Primitive ranking on selected twin-support branch.} Exact selected curve \(\epsilon_*=1-3\varrho/2\), threshold pair \((\varrho_{W\Lambda},\varrho_{U\Lambda})\), and primitive carrier ranking phase diagram. \\
+\addlinespace
+\hyperref[stage:225]{225} & VII & \resultanchor{MTDC-T11} & Mixed: \StatusExactClosure{}, \StatusOpen{} & \textbf{Actual twin-support placement and coherent orbit-lock compiler.} Actual placement coordinate \(\varrho_{\rm phys}=2(1-\epsilon)/3\), support/orbit packet split, and final front-end branch-evaluation packet. \\
+\addlinespace
+\hyperref[stage:226]{226} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusEffective{}, \StatusExactClosure{} & \textbf{Relaxed-constraint branch declaration.} Codimension-three lift of the Stage-225 front end, exact recovery map \((\ell_w,f_U,a,b)=(0,0,0,0)\), leakage/work lane, non-rigid \((U,V)\) lane, compensated source lane, and strict short-range kernel-span theorem. \\
+\addlinespace
+\hyperref[stage:227]{227} & VIII & \resultanchor{MTDC-T12} & \StatusExactClosure{} & \textbf{Selected leakage and scalar-photon work compiler.} Exact Gaussian one-mode leakage law, exact bulk and session work scalars, selected-support pullback through \(\Pi_{\rm tr}\), support/orbit split, and orientation parity. \\
+\addlinespace
+\hyperref[stage:228]{228} & VIII & \resultanchor{MTDC-T12} & \StatusExactClosure{} & \textbf{Non-rigid mouth and \(U/V\) drain packet.} Exact finite compiler for \(\mathcal T^2\), \(\epsilon_\eta\), and \(R_{\rm target}\); non-rigid determinant \(\Delta_{UV}\); dependent microscopic correction; positive \(U/V\) drain; and first-order packet \((\Xi_1,\mathcal R_1)\). \\
+\addlinespace
+\hyperref[stage:229]{229} & VIII & \resultanchor{MTDC-T12} & \StatusExactClosure{} & \textbf{Compensated multimode source compiler.} Mean-preserving two-mode source family, exact sign-change test, mouth-bias and shell-loading moments, invertible two-moment source map, mixed-to-shell loading ratio, and transported Session-I readback. \\
+\addlinespace
+\hyperref[stage:230]{230} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & \textbf{Relaxed stationary barrier front end.} One-port short-range baseline, relaxed lowering identity, stationary barrier compiler \(V_{\rm eff}^{(230)}\), and one-point Session-I benchmark decomposition. \\
+\addlinespace
+\hyperref[stage:231]{231} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusNumerical{} & \textbf{Dynamic event-chain compiler.} Energy integral, peak and threshold-speed compiler, turning points, WKB action, transmission ratio, dynamic diagnostics, and Session-II crossing/tunneling benchmark. \\
+\addlinespace
+\hyperref[stage:232]{232} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & \textbf{Helicity-export diagnostic.} Exact projected subscale-helicity identity, aligned/anti-aligned orientation closure, peak and integrated ratio compilers, and Session-II hidden-channel export packet. \\
+\addlinespace
+\hyperref[stage:233]{233} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{} & \textbf{Crossing-vs-collapse Goldilocks window.} Event-chain transit time, characteristic crossing time, dressing-leg collapse time, survival ratio, lower safe edge, speed-space compiler, heavy-throat scaling, and trigger-width sensitivity. \\
+\addlinespace
+\hyperref[stage:234]{234} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusReduced{}, \StatusOpen{} & \textbf{Microscopic damping/export kernel.} Derivative-coupled scalar cubic export, selected quadrupole quintic export, active-leg kernel \(K_{\rm exp}(s)=\Gamma_3s^3+\Gamma_5s^5\), exact event-safe half-plane, and channel-resolved power split. \\
+\addlinespace
+\hyperref[stage:235]{235} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusNumerical{}, \StatusOpen{} & \textbf{Vacuum/lattice heat partition.} Exact vacuum/lattice exported energies, one-scalar event-shape quotient, single-growth cold-event specialization, safe-edge exported-energy theorem, and event-equivalent export rates. \\
+\addlinespace
+\hyperref[stage:236]{236} & VIII & \resultanchor{MTDC-T12} & Mixed: \StatusExactClosure{}, \StatusEffective{}, \StatusOpen{} & \textbf{Physical calibration and material thresholds.} Physical calibration dictionary, coarse lattice-turnover projection factor, electron-phonon threshold, force-matched stiffness, Korringa ceiling, and four material-screening ratios. \\
+\addlinespace
+\bottomrule
+\end{longtable}
+}
+\normalsize
+
+\section{Stage source-file ledger}
+\label{sec:stage-ledger-source-files}
+
+The source-file ledger records the raw derivation artifact that each detailed stage appendix is meant to audit.  These pointers are provenance handles, not citation claims.  If a stage file has already been expanded into a polished appendix section, the polished section controls presentation; the source pointer still identifies the original derivation record.
+
+\scriptsize
+\begin{longtable}{@{}L{0.07\textwidth}L{0.16\textwidth}L{0.73\textwidth}@{}}
+\caption{Source-file provenance for Stages 001--236.}\label{tab:stage-source-file-ledger}\\
+\toprule
+Stage & Part & Source file \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Part & Source file \\
+\midrule
+\endhead
+\hyperref[stage:001]{001} & I & \path{stages/stage_001.tex} \\
+\hyperref[stage:002]{002} & I & \path{stages/stage_002.tex} \\
+\hyperref[stage:003]{003} & I & \path{stages/stage_003.tex} \\
+\hyperref[stage:004]{004} & I & \path{stages/stage_004.tex} \\
+\hyperref[stage:005]{005} & I & \path{stages/stage_005.tex} \\
+\hyperref[stage:006]{006} & I & \path{stages/stage_006.tex} \\
+\hyperref[stage:007]{007} & II & \path{stages/stage_007.tex} \\
+\hyperref[stage:008]{008} & II & \path{stages/stage_008.tex} \\
+\hyperref[stage:009]{009} & II & \path{stages/stage_009.tex} \\
+\hyperref[stage:010]{010} & II & \path{stages/stage_010.tex} \\
+\hyperref[stage:011]{011} & II & \path{stages/stage_011.tex} \\
+\hyperref[stage:012]{012} & II & \path{stages/stage_012.tex} \\
+\hyperref[stage:013]{013} & II & \path{stages/stage_013.tex} \\
+\hyperref[stage:014]{014} & II & \path{stages/stage_014.tex} \\
+\hyperref[stage:015]{015} & II & \path{stages/stage_015.tex} \\
+\hyperref[stage:016]{016} & II & \path{stages/stage_016.tex} \\
+\hyperref[stage:017]{017} & II & \path{stages/stage_017.tex} \\
+\hyperref[stage:018]{018} & II & \path{stages/stage_018.tex} \\
+\hyperref[stage:019]{019} & II & \path{stages/stage_019.tex} \\
+\hyperref[stage:020]{020} & III & \path{stages/stage_020.tex} \\
+\hyperref[stage:021]{021} & III & \path{stages/stage_021.tex} \\
+\hyperref[stage:022]{022} & III & \path{stages/stage_022.tex} \\
+\hyperref[stage:023]{023} & III & \path{stages/stage_023.tex} \\
+\hyperref[stage:024]{024} & III & \path{stages/stage_024.tex} \\
+\hyperref[stage:025]{025} & III & \path{stages/stage_025.tex} \\
+\hyperref[stage:026]{026} & III & \path{stages/stage_026.tex} \\
+\hyperref[stage:027]{027} & III & \path{stages/stage_027.tex} \\
+\hyperref[stage:028]{028} & III & \path{stages/stage_028.tex} \\
+\hyperref[stage:029]{029} & III & \path{stages/stage_029.tex} \\
+\hyperref[stage:030]{030} & III & \path{stages/stage_030.tex} \\
+\hyperref[stage:031]{031} & III & \path{stages/stage_031.tex} \\
+\hyperref[stage:032]{032} & III & \path{stages/stage_032.tex} \\
+\hyperref[stage:033]{033} & III & \path{stages/stage_033.tex} \\
+\hyperref[stage:034]{034} & III & \path{stages/stage_034.tex} \\
+\hyperref[stage:035]{035} & III & \path{stages/stage_035.tex} \\
+\hyperref[stage:036]{036} & III & \path{stages/stage_036.tex} \\
+\hyperref[stage:037]{037} & III & \path{stages/stage_037.tex} \\
+\hyperref[stage:038]{038} & III & \path{stages/stage_038.tex} \\
+\hyperref[stage:039]{039} & III & \path{stages/stage_039.tex} \\
+\hyperref[stage:040]{040} & III & \path{stages/stage_040.tex} \\
+\hyperref[stage:041]{041} & III & \path{stages/stage_041.tex} \\
+\hyperref[stage:042]{042} & III & \path{stages/stage_042.tex} \\
+\hyperref[stage:043]{043} & III & \path{stages/stage_043.tex} \\
+\hyperref[stage:044]{044} & III & \path{stages/stage_044.tex} \\
+\hyperref[stage:045]{045} & III & \path{stages/stage_045.tex} \\
+\hyperref[stage:046]{046} & III & \path{stages/stage_046.tex} \\
+\hyperref[stage:047]{047} & III & \path{stages/stage_047.tex} \\
+\hyperref[stage:048]{048} & III & \path{stages/stage_048.tex} \\
+\hyperref[stage:049]{049} & III & \path{stages/stage_049.tex} \\
+\hyperref[stage:050]{050} & III & \path{stages/stage_050.tex} \\
+\hyperref[stage:051]{051} & III & \path{stages/stage_051.tex} \\
+\hyperref[stage:052]{052} & III & \path{stages/stage_052.tex} \\
+\hyperref[stage:053]{053} & III & \path{stages/stage_053.tex} \\
+\hyperref[stage:054]{054} & III & \path{stages/stage_054.tex} \\
+\hyperref[stage:055]{055} & III & \path{stages/stage_055.tex} \\
+\hyperref[stage:056]{056} & III & \path{stages/stage_056.tex} \\
+\hyperref[stage:057]{057} & III & \path{stages/stage_057.tex} \\
+\hyperref[stage:058]{058} & III & \path{stages/stage_058.tex} \\
+\hyperref[stage:059]{059} & III & \path{stages/stage_059.tex} \\
+\hyperref[stage:060]{060} & III & \path{stages/stage_060.tex} \\
+\hyperref[stage:061]{061} & III & \path{stages/stage_061.tex} \\
+\hyperref[stage:062]{062} & III & \path{stages/stage_062.tex} \\
+\hyperref[stage:063]{063} & III & \path{stages/stage_063.tex} \\
+\hyperref[stage:064]{064} & III & \path{stages/stage_064.tex} \\
+\hyperref[stage:065]{065} & III & \path{stages/stage_065.tex} \\
+\hyperref[stage:066]{066} & III & \path{stages/stage_066.tex} \\
+\hyperref[stage:067]{067} & III & \path{stages/stage_067.tex} \\
+\hyperref[stage:068]{068} & III & \path{stages/stage_068.tex} \\
+\hyperref[stage:069]{069} & III & \path{stages/stage_069.tex} \\
+\hyperref[stage:070]{070} & III & \path{stages/stage_070.tex} \\
+\hyperref[stage:071]{071} & III & \path{stages/stage_071.tex} \\
+\hyperref[stage:072]{072} & III & \path{stages/stage_072.tex} \\
+\hyperref[stage:073]{073} & III & \path{stages/stage_073.tex} \\
+\hyperref[stage:074]{074} & IV & \path{stages/stage_074.tex} \\
+\hyperref[stage:075]{075} & IV & \path{stages/stage_075.tex} \\
+\hyperref[stage:076]{076} & IV & \path{stages/stage_076.tex} \\
+\hyperref[stage:077]{077} & IV & \path{stages/stage_077.tex} \\
+\hyperref[stage:078]{078} & IV & \path{stages/stage_078.tex} \\
+\hyperref[stage:079]{079} & IV & \path{stages/stage_079.tex} \\
+\hyperref[stage:080]{080} & IV & \path{stages/stage_080.tex} \\
+\hyperref[stage:081]{081} & IV & \path{stages/stage_081.tex} \\
+\hyperref[stage:082]{082} & IV & \path{stages/stage_082.tex} \\
+\hyperref[stage:083]{083} & IV & \path{stages/stage_083.tex} \\
+\hyperref[stage:084]{084} & IV & \path{stages/stage_084.tex} \\
+\hyperref[stage:085]{085} & IV & \path{stages/stage_085.tex} \\
+\hyperref[stage:086]{086} & IV & \path{stages/stage_086.tex} \\
+\hyperref[stage:087]{087} & IV & \path{stages/stage_087.tex} \\
+\hyperref[stage:088]{088} & IV & \path{stages/stage_088.tex} \\
+\hyperref[stage:089]{089} & IV & \path{stages/stage_089.tex} \\
+\hyperref[stage:090]{090} & IV & \path{stages/stage_090.tex} \\
+\hyperref[stage:091]{091} & IV & \path{stages/stage_091.tex} \\
+\hyperref[stage:092]{092} & IV & \path{stages/stage_092.tex} \\
+\hyperref[stage:093]{093} & IV & \path{stages/stage_093.tex} \\
+\hyperref[stage:094]{094} & IV & \path{stages/stage_094.tex} \\
+\hyperref[stage:095]{095} & IV & \path{stages/stage_095.tex} \\
+\hyperref[stage:096]{096} & IV & \path{stages/stage_096.tex} \\
+\hyperref[stage:097]{097} & IV & \path{stages/stage_097.tex} \\
+\hyperref[stage:098]{098} & IV & \path{stages/stage_098.tex} \\
+\hyperref[stage:099]{099} & IV & \path{stages/stage_099.tex} \\
+\hyperref[stage:100]{100} & IV & \path{stages/stage_100.tex} \\
+\hyperref[stage:101]{101} & IV & \path{stages/stage_101.tex} \\
+\hyperref[stage:102]{102} & IV & \path{stages/stage_102.tex} \\
+\hyperref[stage:103]{103} & IV & \path{stages/stage_103.tex} \\
+\hyperref[stage:104]{104} & IV & \path{stages/stage_104.tex} \\
+\hyperref[stage:105]{105} & IV & \path{stages/stage_105.tex} \\
+\hyperref[stage:106]{106} & IV & \path{stages/stage_106.tex} \\
+\hyperref[stage:107]{107} & IV & \path{stages/stage_107.tex} \\
+\hyperref[stage:108]{108} & IV & \path{stages/stage_108.tex} \\
+\hyperref[stage:109]{109} & IV & \path{stages/stage_109.tex} \\
+\hyperref[stage:110]{110} & IV & \path{stages/stage_110.tex} \\
+\hyperref[stage:111]{111} & IV & \path{stages/stage_111.tex} \\
+\hyperref[stage:112]{112} & IV & \path{stages/stage_112.tex} \\
+\hyperref[stage:113]{113} & IV & \path{stages/stage_113.tex} \\
+\hyperref[stage:114]{114} & IV & \path{stages/stage_114.tex} \\
+\hyperref[stage:115]{115} & IV & \path{stages/stage_115.tex} \\
+\hyperref[stage:116]{116} & IV & \path{stages/stage_116.tex} \\
+\hyperref[stage:117]{117} & IV & \path{stages/stage_117.tex} \\
+\hyperref[stage:118]{118} & IV & \path{stages/stage_118.tex} \\
+\hyperref[stage:119]{119} & IV & \path{stages/stage_119.tex} \\
+\hyperref[stage:120]{120} & IV & \path{stages/stage_120.tex} \\
+\hyperref[stage:121]{121} & IV & \path{stages/stage_121.tex} \\
+\hyperref[stage:122]{122} & IV & \path{stages/stage_122.tex} \\
+\hyperref[stage:123]{123} & IV & \path{stages/stage_123.tex} \\
+\hyperref[stage:124]{124} & IV & \path{stages/stage_124.tex} \\
+\hyperref[stage:125]{125} & IV & \path{stages/stage_125.tex} \\
+\hyperref[stage:126]{126} & IV & \path{stages/stage_126.tex} \\
+\hyperref[stage:127]{127} & IV & \path{stages/stage_127.tex} \\
+\hyperref[stage:128]{128} & IV & \path{stages/stage_128.tex} \\
+\hyperref[stage:129]{129} & IV & \path{stages/stage_129.tex} \\
+\hyperref[stage:130]{130} & IV & \path{stages/stage_130.tex} \\
+\hyperref[stage:131]{131} & IV & \path{stages/stage_131.tex} \\
+\hyperref[stage:132]{132} & IV & \path{stages/stage_132.tex} \\
+\hyperref[stage:133]{133} & IV & \path{stages/stage_133.tex} \\
+\hyperref[stage:134]{134} & IV & \path{stages/stage_134.tex} \\
+\hyperref[stage:135]{135} & IV & \path{stages/stage_135.tex} \\
+\hyperref[stage:136]{136} & IV & \path{stages/stage_136.tex} \\
+\hyperref[stage:137]{137} & IV & \path{stages/stage_137.tex} \\
+\hyperref[stage:138]{138} & IV & \path{stages/stage_138.tex} \\
+\hyperref[stage:139]{139} & IV & \path{stages/stage_139.tex} \\
+\hyperref[stage:140]{140} & IV & \path{stages/stage_140.tex} \\
+\hyperref[stage:141]{141} & IV & \path{stages/stage_141.tex} \\
+\hyperref[stage:142]{142} & IV & \path{stages/stage_142.tex} \\
+\hyperref[stage:143]{143} & IV & \path{stages/stage_143.tex} \\
+\hyperref[stage:144]{144} & IV & \path{stages/stage_144.tex} \\
+\hyperref[stage:145]{145} & IV & \path{stages/stage_145.tex} \\
+\hyperref[stage:146]{146} & IV & \path{stages/stage_146.tex} \\
+\hyperref[stage:147]{147} & V & \path{stages/stage_147.tex} \\
+\hyperref[stage:148]{148} & V & \path{stages/stage_148.tex} \\
+\hyperref[stage:149]{149} & V & \path{stages/stage_149.tex} \\
+\hyperref[stage:150]{150} & V & \path{stages/stage_150.tex} \\
+\hyperref[stage:151]{151} & V & \path{stages/stage_151.tex} \\
+\hyperref[stage:152]{152} & V & \path{stages/stage_152.tex} \\
+\hyperref[stage:153]{153} & V & \path{stages/stage_153.tex} \\
+\hyperref[stage:154]{154} & V & \path{stages/stage_154.tex} \\
+\hyperref[stage:155]{155} & V & \path{stages/stage_155.tex} \\
+\hyperref[stage:156]{156} & V & \path{stages/stage_156.tex} \\
+\hyperref[stage:157]{157} & V & \path{stages/stage_157.tex} \\
+\hyperref[stage:158]{158} & V & \path{stages/stage_158.tex} \\
+\hyperref[stage:159]{159} & V & \path{stages/stage_159.tex} \\
+\hyperref[stage:160]{160} & V & \path{stages/stage_160.tex} \\
+\hyperref[stage:161]{161} & V & \path{stages/stage_161.tex} \\
+\hyperref[stage:162]{162} & V & \path{stages/stage_162.tex} \\
+\hyperref[stage:163]{163} & V & \path{stages/stage_163.tex} \\
+\hyperref[stage:164]{164} & V & \path{stages/stage_164.tex} \\
+\hyperref[stage:165]{165} & V & \path{stages/stage_165.tex} \\
+\hyperref[stage:166]{166} & V & \path{stages/stage_166.tex} \\
+\hyperref[stage:167]{167} & V & \path{stages/stage_167.tex} \\
+\hyperref[stage:168]{168} & V & \path{stages/stage_168.tex} \\
+\hyperref[stage:169]{169} & V & \path{stages/stage_169.tex} \\
+\hyperref[stage:170]{170} & V & \path{stages/stage_170.tex} \\
+\hyperref[stage:171]{171} & V & \path{stages/stage_171.tex} \\
+\hyperref[stage:172]{172} & V & \path{stages/stage_172.tex} \\
+\hyperref[stage:173]{173} & V & \path{stages/stage_173.tex} \\
+\hyperref[stage:174]{174} & V & \path{stages/stage_174.tex} \\
+\hyperref[stage:175]{175} & V & \path{stages/stage_175.tex} \\
+\hyperref[stage:176]{176} & V & \path{stages/stage_176.tex} \\
+\hyperref[stage:177]{177} & V & \path{stages/stage_177.tex} \\
+\hyperref[stage:178]{178} & V & \path{stages/stage_178.tex} \\
+\hyperref[stage:179]{179} & V & \path{stages/stage_179.tex} \\
+\hyperref[stage:180]{180} & V & \path{stages/stage_180.tex} \\
+\hyperref[stage:181]{181} & V & \path{stages/stage_181.tex} \\
+\hyperref[stage:182]{182} & V & \path{stages/stage_182.tex} \\
+\hyperref[stage:183]{183} & V & \path{stages/stage_183.tex} \\
+\hyperref[stage:184]{184} & VI & \path{stages/stage_184.tex} \\
+\hyperref[stage:185]{185} & VI & \path{stages/stage_185.tex} \\
+\hyperref[stage:186]{186} & VI & \path{stages/stage_186.tex} \\
+\hyperref[stage:187]{187} & VI & \path{stages/stage_187.tex} \\
+\hyperref[stage:188]{188} & VI & \path{stages/stage_188.tex} \\
+\hyperref[stage:189]{189} & VI & \path{stages/stage_189.tex} \\
+\hyperref[stage:190]{190} & VI & \path{stages/stage_190.tex} \\
+\hyperref[stage:191]{191} & VI & \path{stages/stage_191.tex} \\
+\hyperref[stage:192]{192} & VI & \path{stages/stage_192.tex} \\
+\hyperref[stage:193]{193} & VI & \path{stages/stage_193.tex} \\
+\hyperref[stage:194]{194} & VI & \path{stages/stage_194.tex} \\
+\hyperref[stage:195]{195} & VI & \path{stages/stage_195.tex} \\
+\hyperref[stage:196]{196} & VI & \path{stages/stage_196.tex} \\
+\hyperref[stage:197]{197} & VI & \path{stages/stage_197.tex} \\
+\hyperref[stage:198]{198} & VI & \path{stages/stage_198.tex} \\
+\hyperref[stage:199]{199} & VI & \path{stages/stage_199.tex} \\
+\hyperref[stage:200]{200} & VI & \path{stages/stage_200.tex} \\
+\hyperref[stage:201]{201} & VI & \path{stages/stage_201.tex} \\
+\hyperref[stage:202]{202} & VII & \path{stages/stage_202.tex} \\
+\hyperref[stage:203]{203} & VII & \path{stages/stage_203.tex} \\
+\hyperref[stage:204]{204} & VII & \path{stages/stage_204.tex} \\
+\hyperref[stage:205]{205} & VII & \path{stages/stage_205.tex} \\
+\hyperref[stage:206]{206} & VII & \path{stages/stage_206.tex} \\
+\hyperref[stage:207]{207} & VII & \path{stages/stage_207.tex} \\
+\hyperref[stage:208]{208} & VII & \path{stages/stage_208.tex} \\
+\hyperref[stage:209]{209} & VII & \path{stages/stage_209.tex} \\
+\hyperref[stage:210]{210} & VII & \path{stages/stage_210.tex} \\
+\hyperref[stage:211]{211} & VII & \path{stages/stage_211.tex} \\
+\hyperref[stage:212]{212} & VII & \path{stages/stage_212.tex} \\
+\hyperref[stage:213]{213} & VII & \path{stages/stage_213.tex} \\
+\hyperref[stage:214]{214} & VII & \path{stages/stage_214.tex} \\
+\hyperref[stage:215]{215} & VII & \path{stages/stage_215.tex} \\
+\hyperref[stage:216]{216} & VII & \path{stages/stage_216.tex} \\
+\hyperref[stage:217]{217} & VII & \path{stages/stage_217.tex} \\
+\hyperref[stage:218]{218} & VII & \path{stages/stage_218.tex} \\
+\hyperref[stage:219]{219} & VII & \path{stages/stage_219.tex} \\
+\hyperref[stage:220]{220} & VII & \path{stages/stage_220.tex} \\
+\hyperref[stage:221]{221} & VII & \path{stages/stage_221.tex} \\
+\hyperref[stage:222]{222} & VII & \path{stages/stage_222.tex} \\
+\hyperref[stage:223]{223} & VII & \path{stages/stage_223.tex} \\
+\hyperref[stage:224]{224} & VII & \path{stages/stage_224.tex} \\
+\hyperref[stage:225]{225} & VII & \path{stages/stage_225.tex} \\
+\hyperref[stage:226]{226} & VIII & \path{stages/stage_226.tex} \\
+\hyperref[stage:227]{227} & VIII & \path{stages/stage_227.tex} \\
+\hyperref[stage:228]{228} & VIII & \path{stages/stage_228.tex} \\
+\hyperref[stage:229]{229} & VIII & \path{stages/stage_229.tex} \\
+\hyperref[stage:230]{230} & VIII & \path{stages/stage_230.tex} \\
+\hyperref[stage:231]{231} & VIII & \path{stages/stage_231.tex} \\
+\hyperref[stage:232]{232} & VIII & \path{stages/stage_232.tex} \\
+\hyperref[stage:233]{233} & VIII & \path{stages/stage_233.tex} \\
+\hyperref[stage:234]{234} & VIII & \path{stages/stage_234.tex} \\
+\hyperref[stage:235]{235} & VIII & \path{stages/stage_235.tex} \\
+\hyperref[stage:236]{236} & VIII & \path{stages/stage_236.tex} \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Citation and audit guardrails}
+\label{sec:stage-ledger-guardrails}
+
+\begin{enumerate}[leftmargin=2.4em]
+\item Cite \resultanchor{MTDC-T4} or \resultanchor{MTDC-T5} for the derivation of the outgoing \(l=2\) prefactor compiler; do not cite those anchors as proof that the actual branch realizes the universal normalization unless the realization row being used is also marked closed.
+\item Cite \resultanchor{MTDC-T8} for geometry-lane, retarded, outlet, core, and mouth-compensation reductions; do not use it as an unconditional no-go theorem for all scalar or geometry contamination.
+\item Cite \resultanchor{MTDC-T9} for the weak-axisymmetric quotient packet, similarity orbit, and four-scalar verdict packet; do not treat \(\Delta_{\rm full}=0\) as realized unless a later branch-realization stage supplies that fact.
+\item Cite \resultanchor{MTDC-T10} for the finite local free-quintuple/mixed-ray search class; do not cite it as a global proof over every possible PDE branch outside that declared class.
+\item Cite \resultanchor{MTDC-T11} for the same-charge audit, rigid-mouth chart, and selected twin-support placement; do not infer a new long-range same-charge attraction from the static one-port mixed bundle.
+\item Cite \resultanchor{MTDC-T12} for the relaxed/open-system companion and its recovery map; do not use the relaxed branch as a proof of the strict conservative branch without explicitly applying the recovery map.
+\end{enumerate}
+
+\section{What remains open after the ledger}
+\label{sec:stage-ledger-open-items}
+
+The ledger is complete as an audit index, but it does not convert open realization claims into closed theorems.  The recurring open item is actual branch realization: the completed moving-throat PDE must return the required grouped \(P_2\) carrier, outgoing normalization, weak-axisymmetric prefactor slope, rigid-mouth orbit-lock packet, selected twin-support placement, or relaxed leakage/export packet, depending on which downstream result is being invoked.  The stage ledger should therefore be read as a map from derivation provenance to claim status, not as permission to erase the status firewall.

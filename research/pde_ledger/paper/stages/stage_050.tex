@@ -1,0 +1,34 @@
+\section[Stage 050]{Stage 050: Exact Sech--Gaussian Coherence Resonance Benchmark}
+\label{stage:050}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the benchmark family; \StatusNumerical{} for the quoted coherence value.}
+\stagefield{Purpose}{Stage~050 tests how sensitive the matched theorem is to independent source/support shapes by using a sech--Gaussian benchmark family.}
+\stagefield{Inputs}{Source profile \(\chi_\sigma=\operatorname{sech}(y/w_f)\) and support profile \(\chi_\phi=e^{-y^2/w_g^2}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage050_sech_gaussian_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage050_sech_gaussian_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage050_sech_gaussian_resonance_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage050_sech_gaussian_resonance_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The exact self-dual stationary point of the shape family is
+\begin{equation}
+\label{eq:app-stage050-self-dual}
+\boxed{
+\frac{w_g}{w_f}=\sqrt\pi}.
+\end{equation}
+At this point the coherence is
+\begin{equation}
+\label{eq:app-stage050-Cres}
+\boxed{
+C_{\rm res}^2\simeq0.994418836451529}.
+\end{equation}
+The corresponding penalty factor is
+\begin{equation}
+\label{eq:app-stage050-Pres}
+\boxed{
+P_{\rm res}=\frac{1}{C_{\rm res}^2}\simeq1.005612487760576}.
+\end{equation}
+
+\stagefield{Output}{The near-perfect benchmark coherence \eqref{eq:app-stage050-Cres} and penalty \eqref{eq:app-stage050-Pres}.}
+\stagefield{Downstream use}{Stage~051 applies \(P_{\rm res}\) to the matched thresholds; Stage~052 gives the final support/source verdict.}
+

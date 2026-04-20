@@ -1,0 +1,28 @@
+\section[Stage 090]{Stage 090: General Isotropic l=2 DtN Deformation Algebra}
+\label{stage:090}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~90 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage090_general_dtn_deformation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage090_general_dtn_deformation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage090_general_dtn_deformation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage090_general_dtn_deformation_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+
+\begin{quote}
+Deformed branch \(S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5\) gives explicit \(\chi_Q\).
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check pure scale and pure argument deformations separately.
+\item Check Robin and standalone mixed-pole limits before imposing compensation.
+\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 97--107 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+

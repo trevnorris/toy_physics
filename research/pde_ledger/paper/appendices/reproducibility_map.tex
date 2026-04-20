@@ -1,0 +1,463 @@
+\chapter{Reproducibility Map}
+\label{app:reproducibility-map}
+\def\ReproFile#1{\begingroup\footnotesize\nolinkurl{#1}\endgroup}
+
+\section{Purpose of this appendix}
+\label{sec:reproducibility-purpose}
+
+This appendix specifies how the derivation companion is to be checked.  The companion is not a single proof written in one style.  It is a layered verification record: some statements are exact identities of the parent action, some are exact algebra inside a declared closure, some are controlled reductions, some are finite search or numerical-location statements, and some remain open branch-realization targets.  The purpose of this map is to keep those layers auditable without weakening or overstating any claim.
+
+The central rule is simple: a result may be cited only at the strongest status level supported by its evidence trail.  A symbolic Schur complement, a finite-dimensional search sieve, and an actual nonlinear moving-throat branch realization are different kinds of evidence.  They should not be collapsed into the same proof label merely because they appear in the same derivation chain.
+
+\section{Reproducibility layers}
+\label{sec:reproducibility-layers}
+
+\begin{longtable}{@{}L{0.17\textwidth}L{0.23\textwidth}L{0.36\textwidth}L{0.16\textwidth}@{}}
+\caption{Reproducibility layers used by this ledger.}\label{tab:reproducibility-layers}\\
+\toprule
+Layer & What it controls & Minimum evidence required & Reusable claim status \\
+\midrule
+\endfirsthead
+\toprule
+Layer & What it controls & Minimum evidence required & Reusable claim status \\
+\midrule
+\endhead
+Parent-source layer & Exact imported field content, equations, charge ontology, projection/reduction language, and mixed-sector firewall. & A cited source section in the parent action stack or the framework paper, plus a consistent notation-firewall entry in this companion. & Usually \StatusExact{} or \StatusReduced{} for declared reductions. \\
+\addlinespace
+Stage-source layer & The 236-stage derivation record preserved in the moving-throat output archive. & Stage number, source-stage title, local assumptions, and a link to the corresponding stage appendix entry. & Whatever the stage appendix declares locally. \\
+\addlinespace
+Synthesis layer & The theorem-block chapters in Parts I--VIII. & A theorem/result anchor, a status tag, explicit hypotheses, and pointers to stage appendices. & The status of the weakest essential input. \\
+\addlinespace
+Hand-algebra layer & Identities short enough to audit directly from the printed equations. & The derivation shown in the appendix, sign conventions, limiting checks, and dimensional or symmetry checks where relevant. & \StatusExact{} or \StatusExactClosure{} when hypotheses are closed. \\
+\addlinespace
+Symbolic-audit layer & Polynomial identities, Schur complements, projectors, finite-dimensional compilers, and exact simplifications. & Script basename, output transcript, input assumptions, exact arithmetic mode, and a statement of what the script verifies. & \StatusExactClosure{} for the declared symbolic model. \\
+\addlinespace
+Numerical-location layer & Roots, optima, branch placements, ranking tables, and finite candidate reductions. & Source script, deterministic input file, tolerances, brackets or candidate set, output transcript, and independent rerun or residual check. & \StatusNumerical{} unless converted to closed form. \\
+\addlinespace
+Branch-realization layer & Whether the actual moving-throat PDE lands on the required ratios, slopes, orbit locks, support placements, or relaxed packets. & An explicit branch construction, PDE solve or analytic branch theorem, and evaluation of the declared observable packet. & \StatusOpen{} until that construction is supplied. \\
+\addlinespace
+Repository-freeze layer & Reproducibility of the document itself. & Source commit or archive hash, script hashes, dependency versions, build command, and generated-output hashes. & Does not change mathematical status; it makes the status auditable. \\
+\bottomrule
+\end{longtable}
+
+\section{Claim-status evidence rule}
+\label{sec:claim-status-evidence-rule}
+
+\begin{longtable}{@{}L{0.18\textwidth}L{0.32\textwidth}L{0.38\textwidth}@{}}
+\caption{Evidence required before a result can be cited at a given status.}\label{tab:claim-status-evidence}\\
+\toprule
+Status & Evidence required & What must not be claimed \\
+\midrule
+\endfirsthead
+\toprule
+Status & Evidence required & What must not be claimed \\
+\midrule
+\endhead
+\StatusExact{} & Direct derivation from the declared parent action, exact definitions, exact calculus, exact algebra, or exact pair counting. & Do not attach this status to a result that assumes a branch ansatz, a low-frequency truncation, or a fitted realization parameter. \\
+\addlinespace
+\StatusExactClosure{} & Exact derivation after all closure hypotheses, finite-dimensional variables, branch restrictions, and search class boundaries are declared. & Do not cite it as an unrestricted theorem of the full nonlinear moving-throat PDE. \\
+\addlinespace
+\StatusReduced{} & Explicit reduction assumptions such as zero-mode, small-body, passive/outgoing, near-zone, weak-axisymmetric, finite-throat, or low-frequency hypotheses. & Do not omit the reduction conditions in downstream papers. \\
+\addlinespace
+\StatusEffective{} & A physically motivated closure or constitutive choice that organizes the derivation but has not been uniquely derived from the completed PDE. & Do not call the closure unique or microscopic unless a later branch theorem supplies that result. \\
+\addlinespace
+\StatusNumerical{} & Exact problem definition plus numerical location, residual checks, deterministic candidate list, or scripted search transcript. & Do not treat an observed numerical placement as a closed-form theorem unless the algebraic proof is added. \\
+\addlinespace
+\StatusOpen{} & Defined observable, target, or branch packet whose realization remains to be shown. & Do not cite the target as realized; cite it only as the remaining theorem gate or test condition. \\
+\bottomrule
+\end{longtable}
+
+\section{Canonical source registry}
+\label{sec:canonical-source-registry}
+
+The source registry in \cref{tab:canonical-source-registry} is not a bibliography.  It is the internal provenance map for the ledger.  The source-file index gives a fuller list of files; this table records the role each source plays in reproducibility.
+
+\begin{longtable}{@{}L{0.29\textwidth}L{0.29\textwidth}L{0.33\textwidth}@{}}
+\caption{Canonical source artifacts and their verification roles.}\label{tab:canonical-source-registry}\\
+\toprule
+Source artifact & Verification role & Safe use inside this companion \\
+\midrule
+\endfirsthead
+\toprule
+Source artifact & Verification role & Safe use inside this companion \\
+\midrule
+\endhead
+\ReproFile{paper/stages/stage_NNN.tex} & Canonical 236-stage derivation archive. & Primary provenance source for the stage appendices, stage titles, staged assumptions, stage-local formula outputs, and script-backed status notes. \\
+\addlinespace
+\ReproFile{paper/parts/*.tex} plus frontmatter & Compact theorem-structure master through Stages 202--236. & Source for the global status firewall, current bottleneck summary, final packet language, same-charge verdict, rigid-mouth normal form, relaxed branch, export kernel, and materials companion. \\
+\addlinespace
+\ReproFile{pde.tex} & Framework paper already built from the compact program. & Source for operational branch-test language, finite observable packets, and the division between framework use and derivation verification. \\
+\addlinespace
+\begingroup\footnotesize\texttt{parent-action source summaries}\endgroup{} and \ReproFile{4d.tex} & Exact parent action and projection/reduction backbone. & Parent GNLS/Maxwell equations, charge ontology, brane projection, leakage identity, Poisson hook, and geometry-sector inheritance. \\
+\addlinespace
+\begingroup\footnotesize\texttt{localized electromagnetic source summaries}\endgroup{} & Localized Maxwell derivation. & Gauge-sector equations, zero-mode brane Maxwell reduction, thickness-controlled charge strength, KK/retarded structure, and mixed-sector caveats. \\
+\addlinespace
+\begingroup\footnotesize\texttt{plasma and open-system source summaries}\endgroup{} & Plasma and open-system projection companion. & Mixed-sector fields, brane-bulk leakage, projection noncommutation, and beyond-MHD open-subsystem interpretation. \\
+\addlinespace
+\begingroup\footnotesize\texttt{1PN bridge and assembly sources}\endgroup{} & Lower-order conservative bridge and full 1PN assembly. & Carry-forward constants, closure taxonomy, EIH target matching, topology/inertia data, and the distinction between exact assembly and protocol closure. \\
+\addlinespace
+\begingroup\footnotesize\texttt{2PN source stack}\endgroup{} and \ReproFile{4d_2pn.tex} & Full conservative 2PN assembly. & First appearance of the even support layer, grouped support data, geometry deficit language, and lower-order response slots imported into the moving-throat program. \\
+\addlinespace
+\begingroup\footnotesize\texttt{2.5PN retarded source stack}\endgroup{} & Retarded quadrupole audit. & Odd-channel hierarchy, scalar/dipole demotion logic, STF quadrupole route, outgoing \(l=2\) fingerprint, and passive/outgoing normalization gap. \\
+\addlinespace
+\begingroup\footnotesize\texttt{3PN source stack}\endgroup{} and \ReproFile{4d_3pn.tex} & Full conservative 3PN assembly. & Grouped real \(P_2\) conservative payload, fixed chart logic, and the separation between algebraic closure and moving-throat constitutive derivation. \\
+\addlinespace
+\begingroup\footnotesize\texttt{4PN source stack}\endgroup{} & Conservative 4PN and tail-interface summary. & Local/tail split, quartic compiler, local 4PN closure, and the fact that the 4PN tail uses the same quadrupole normalization gap isolated at 2.5PN. \\
+\addlinespace
+\begingroup\footnotesize\texttt{5PN and continuation source stack}\endgroup{} & Weak-axisymmetric and higher-order continuation notes. & Explicit overlap models, weak-axisymmetric transport, monomial/orbit quotient machinery, support-compensation thresholds, and target-surface sharpening. \\
+\addlinespace
+\begingroup\footnotesize\texttt{companion reduced-sector source stack}\endgroup{} & Companion reduced-sector applications. & Should be cited only for downstream motivation or cross-check packets.  They do not override the claim-status firewall of this derivation companion. \\
+\bottomrule
+\end{longtable}
+
+\section{Result-anchor audit map}
+\label{sec:result-anchor-audit-map}
+
+\begin{longtable}{@{}L{0.12\textwidth}L{0.15\textwidth}L{0.24\textwidth}L{0.34\textwidth}@{}}
+\caption{Minimum audit trail for top-level result anchors.}\label{tab:result-anchor-audit-map}\\
+\toprule
+Anchor & Stages & Minimum audit trail & What must be checked before downstream citation \\
+\midrule
+\endfirsthead
+\toprule
+Anchor & Stages & Minimum audit trail & What must be checked before downstream citation \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & Parent + 001 & Parent source registry; Stage 001 source; notation firewall. & Exact parent equations must be separated from the effective geometry lift.  Mixed channels may be suppressed only under the zero-mode reduction, not erased. \\
+\addlinespace
+\resultanchor{MTDC-T2} & 001--002 & Stage 001--002 appendices; harmonic normalization; wall-action reduction. & The densitized convention, \(Y_{00}\) normalization, \(a,L\) moment recovery, and grouped \(P_2\) degeneracy must be explicit. \\
+\addlinespace
+\resultanchor{MTDC-T3} & 003 & Stage 003 appendix; BdG Schur-complement audit. & Stable-mode reduction must be declared; exact self-energy, low-frequency coefficients, and pole-shift formulas must agree with the script-backed algebra. \\
+\addlinespace
+\resultanchor{MTDC-T4} & 004--005 & Stage 004--005 appendices; mixed-sector transfer algebra; outgoing fingerprint. & Gauge-invariant mixed variables, passive/outgoing sign convention, \(l=2\) \(i\omega^5\) coefficient, and normalized prefactor product must be preserved. \\
+\addlinespace
+\resultanchor{MTDC-T5} & 006--019 & Stage 006--019 appendices; projector and overlap checks. & Weighted grouped projectors, isotropy defects, weak-axisymmetric \(b=3a\) law, selected-mode normalization, and support frontier must be internally consistent. \\
+\addlinespace
+\resultanchor{MTDC-T6} & 020--034 & Stage 020--034 appendix; continuum and support-placement ledger. & Dimensionless placement variables, rank-2 closure, tracking branch, support-compensation law, and lowest-twin sufficiency must keep their branch assumptions. \\
+\addlinespace
+\resultanchor{MTDC-T7} & 035--073 & Stage 035--073 appendix; Family-1 branch audit. & Gain thresholds, parent-overlap tests, wall-shell branch extraction, loading windows, and updated Stage-073 verdict must distinguish support-side success from remaining precursor derivation. \\
+\addlinespace
+\resultanchor{MTDC-T8} & 074--146 & Stage 074--146 appendix; retarded/outlet/mouth compensation ledger. & Geometry-lane contamination, outgoing-normalization collapse, outlet/core compensation, mouth-layer fixed points, and final off-family normal coordinate must not be cited as completed branch realization unless the branch values are supplied. \\
+\addlinespace
+\resultanchor{MTDC-T9} & 147--183 & Stage 147--183 appendix; monomial/orbit quotient scripts where available. & \(\Xi_1=P_1/P_0\), weak-axisymmetric line, monomial quotient coordinates, similarity orbit, Packet-A closure, and four-scalar verdict packet must be kept as quotient statements, not arbitrary drift claims. \\
+\addlinespace
+\resultanchor{MTDC-T10} & 184--201 & Stage 184--201 appendix; realization compiler scripts; finite search transcript. & Free-quintuple graph, log-ray roots, Hessian ranking, pairwise/simplex searches, and support-cardinality-5 closure must be tied to the declared local mixed-ray search class. \\
+\addlinespace
+\resultanchor{MTDC-T11} & 202--225 & Stage 202--225 appendix; late same-charge and rigid-mouth audit scripts. & Static no-new-long-range verdict, dynamic resonance corridor, actual-branch packet, rigid-mouth \((U,V)\) chart, orbit lock, and selected twin-support placement must preserve their actual-branch status. \\
+\addlinespace
+\resultanchor{MTDC-T12} & 226--236 & Stage 226--236 appendix; relaxed branch audit scripts. & Relaxed constraints, leakage/work, non-rigid \(U/V\) drain, barrier/event-chain compilers, export kernel, heat partition, and material thresholds must be labeled as relaxed/open-system branch data, not strict conservative proof. \\
+\bottomrule
+\end{longtable}
+
+\section{Primary symbolic-audit registry}
+\label{sec:primary-symbolic-audit-registry}
+
+The stage source contains several explicit audit basenames.  When the repository is frozen, each audit basename should be represented by the script, its output transcript, and the corresponding stage-source note.  If a script is renamed, the stage appendix should record the renamed artifact and preserve the original basename as a provenance alias.
+
+\subsection{Early and middle symbolic audits}
+\label{subsec:early-middle-symbolic-audits}
+
+\begin{longtable}{@{}L{0.11\textwidth}L{0.29\textwidth}L{0.25\textwidth}L{0.25\textwidth}@{}}
+\caption{Early and middle symbolic audit artifacts.}\label{tab:early-middle-symbolic-audits}\\
+\toprule
+Stages & Audit artifact & Certifies & Required output record \\
+\midrule
+\endfirsthead
+\toprule
+Stages & Audit artifact & Certifies & Required output record \\
+\midrule
+\endhead
+001--002 & \ReproFile{moving_throat_pde_master_sympy_audit.py} & Harmonic normalization, mouth-average extraction, two-mode Euler--Lagrange matrix form, and one-mode grouped \(P_2\) reduction. & Script transcript or notebook output showing exact symbolic simplifications to zero residual. \\
+\addlinespace
+003 & \ReproFile{moving_throat_pde_stage003_bdg_sympy_audit.py} & BdG--wall Schur complement, low-frequency moment expansion, two-pole spectrum, perturbative pole shift, and grouped trace/anomaly formulas. & \ReproFile{moving_throat_pde_stage003_bdg_sympy_output.txt} or equivalent exact transcript. \\
+\addlinespace
+174 & \ReproFile{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py} & Minimal PDE data packet and graph-error realization form used by the late quotient/back-end compiler. & \ReproFile{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt}. \\
+\addlinespace
+175 & \ReproFile{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py} & Orbit/quotient projectors and branch-invariant projection algebra. & \ReproFile{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt}. \\
+\addlinespace
+176 & \ReproFile{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py} & Isotropic grouped \(P_2\) target surface and the exact one-pole / outgoing-normalization surface. & Output transcript with the target-surface residuals simplified. \\
+\addlinespace
+185 & \ReproFile{moving_throat_pde_stage185_free_quintuple_target_graph_sympy_audit.py} & Free-quintuple target graph and scalar closure slice at the start of the realization compiler. & \ReproFile{moving_throat_pde_stage185_free_quintuple_target_graph_sympy_audit_output.txt}. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Late same-charge, rigid-mouth, and relaxed-branch audit registry}
+\label{subsec:late-audit-registry}
+
+\scriptsize
+\begin{longtable}{@{}L{0.045\textwidth}L{0.21\textwidth}L{0.38\textwidth}L{0.30\textwidth}@{}}
+\caption{Stage 202--236 audit registry.  Each basename should be archived as an executable script artifact, with a written review record when available.}\label{tab:late-audit-registry}\\
+\toprule
+Stage & Audit role & Basename / artifact & What the verifier should confirm \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Audit role & Basename / artifact & What the verifier should confirm \\
+\midrule
+\endhead
+202 & one-port static same-charge kernel & \ReproFile{moving_throat_pde_stage202_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+203 & dynamic mixed-port phase-lag/no-go gate & \ReproFile{moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+204 & resonance linewidth tradeoff & \ReproFile{moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+205 & finite-throat primitive pole census & \ReproFile{moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+206 & primitive-branch compatibility and survival window & \ReproFile{moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+207 & weak-axisymmetric ceiling transport & \ReproFile{moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+208 & microscopic \(\Xi_1\) compiler and survival sieve & \ReproFile{moving_throat_pde_stage208_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+209 & strict even-gate package and mixed corridor & \ReproFile{moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+210 & pure-transfer load-factor rigidity sieve & \ReproFile{moving_throat_pde_stage210_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+211 & pure-transfer numerator/denominator split & \ReproFile{moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+212 & selected-branch signature and crossover theorem & \ReproFile{moving_throat_pde_stage212_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+213 & dynamic-window classifier and static-first theorem & \ReproFile{moving_throat_pde_stage213_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+214 & continuum-placement pullback of class map & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+215 & known-data injection and branch verdict & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+216 & rigid-mouth orbit-lock compiler & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+217 & direct-branch observable static gates & \ReproFile{moving_throat_pde_stage217_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+218 & rigid-mouth packet projectors & \ReproFile{moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+219 & rigid-mouth microscopic dependent plane & \ReproFile{moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+220 & actual-branch dressing compiler & \ReproFile{moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+221 & physical transfer-shape compiler & \ReproFile{moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+222 & rigid-mouth physical normal form & \ReproFile{moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+223 & selected-branch loading ratio & \ReproFile{moving_throat_pde_stage223_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+224 & selected twin-support primitive ranking & \ReproFile{moving_throat_pde_stage224_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+225 & actual twin-support placement & \ReproFile{moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+226 & relaxed branch declaration and short-range compiler & \ReproFile{moving_throat_pde_stage226_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+227 & leakage and scalar-photon work compiler & \ReproFile{moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py}; stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+228 & non-rigid mouth dressing and \(U/V\) drain & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+229 & compensated multimode source compiler & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+230 & relaxed stationary barrier compiler & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+231 & dynamic event-chain compiler & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+232 & conditional helicity export diagnostic & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+233 & crossing/collapse Goldilocks window & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+234 & microscopic damping export kernel & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+235 & vacuum/lattice heat partition & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+236 & physical calibration and materials threshold & stage-local written review record & Listed stage-local audit artifact; any executable companion should have a captured output transcript archived with the same basename and an \ReproFile{_output.txt} suffix. \\
+\addlinespace
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Hand-audit and displayed-algebra registry}
+\label{sec:hand-audit-registry}
+
+Not every valid derivation stage requires a script.  Many stages are more useful when audited as displayed algebra with explicit assumptions.  The hand-audit registry in \cref{tab:hand-audit-registry} identifies the checks that should be visible in the text itself.
+
+\begin{longtable}{@{}L{0.13\textwidth}L{0.27\textwidth}L{0.42\textwidth}L{0.10\textwidth}@{}}
+\caption{Displayed-algebra and hand-audit requirements.}\label{tab:hand-audit-registry}\\
+\toprule
+Stages & Derivation family & Required visible checks & Status envelope \\
+\midrule
+\endfirsthead
+\toprule
+Stages & Derivation family & Required visible checks & Status envelope \\
+\midrule
+\endhead
+001--007 & Geometry lift, reduced wall action, source-map identity, and isotropy theorem. & Harmonic normalization, zero-average checks, sign of \(\delta V_{\rm conf}\), dimensional consistency of wall coefficients, and exact angular orthogonality. & Mixed \\
+\addlinespace
+008--019 & Minimal isotropic normalization and selected-mode support frontier. & Low-frequency expansion check, positivity/stability domain, monotonicity of branch functions, support-feasibility inequalities, and source-map normalization. & Mixed \\
+\addlinespace
+020--034 & Continuum placement and support compensation. & Dimensionless-variable definitions, product laws, split-\(U\) limiting cases, rank-2 determinant checks, lowest-twin limit, and threshold monotonicity. & Mixed \\
+\addlinespace
+035--052 & Non-twin rescue mechanisms and parent-gain thresholds. & Endpoint inequalities, overlap-boost ceilings, Robin-compliance windows, parent-action gain definitions, and no-go/rescue threshold consistency. & Mixed \\
+\addlinespace
+053--073 & Family-1 explicit reduced branch. & Wall-shell profile normalization, threshold-window extraction, quadrupole demand cancellation, loading-ratio window, and final reduced verdict separation between source/support success and precursor realization. & Mixed \\
+\addlinespace
+074--089 & Geometry-lane and retarded/outgoing closure. & Geometry contamination expansion order, scalar/dipole demotion assumptions, outgoing DtN fingerprint, \(\chi_Q\) normalization relation, and higher-odd irrelevance conditions. & Mixed \\
+\addlinespace
+090--146 & Outlet, core, mouth, and co-evolving compensation. & Robin and mixed-side-channel signs, core-to-mouth gain consistency, positive-source condition, boundary-layer fixed-point equations, and final off-family normal coordinate. & Mixed \\
+\addlinespace
+147--183 & Weak-axisymmetric quotient and Packet-A finish line. & Grouped signature \((1,1/2,-1)\), \(b=3a\), \(\Xi_1=P_1/P_0\), triangular normal form, monomial rank/nullity, finite orbit law, and four-scalar packet assembly. & Mixed \\
+\addlinespace
+184--201 & Realization compiler and finite mixed-ray search. & Target graph definition, root brackets, Hessian signs, candidate ranking, simplex reduction, support-cardinality proof, and search-class boundary. & Mixed \\
+\addlinespace
+202--225 & Same-charge and rigid-mouth selected branch. & Static square-law suppression, resonant linewidth gate, actual-branch observable gates, \((U,V)\) normal form, orbit-lock codimension, support-versus-orbit split, and twin-support placement. & Mixed \\
+\addlinespace
+226--236 & Relaxed open-system branch. & Strict recovery map, leakage/work sign conventions, barrier lowering, event-chain thresholds, WKB conditions, export-kernel half-plane, heat partition, and materials-screening ratios. & Mixed \\
+\bottomrule
+\end{longtable}
+
+\section{Numerical and finite-search reproducibility}
+\label{sec:numerical-finite-search-reproducibility}
+
+A finite search or numerical location may be completely deterministic and still not be an exact theorem.  The following metadata must accompany every numerical or finite-search claim before it is cited as \StatusNumerical{} or as \StatusExactClosure{} inside a finite search class.
+
+\begin{enumerate}[leftmargin=2.4em]
+\item \textbf{Problem statement.}  State the exact equations or objective function, the variables, the admissible domain, and the branch/status assumptions.
+\item \textbf{Exact preprocessing.}  Record symbolic eliminations, nondimensionalizations, quotient projections, and any symmetry reductions used before numerical work begins.
+\item \textbf{Search class.}  For realization searches, state the support cardinality, allowed primitive coordinates, positivity assumptions, and whether the search is local or global.
+\item \textbf{Deterministic run record.}  Record script name, command line, dependency versions, random seed if any, tolerance, bracket endpoints, and stopping rule.
+\item \textbf{Residual certificate.}  Record the final residuals in every constraint, not only the objective value.
+\item \textbf{Exclusion certificate.}  For no-go or finite-candidate claims, record how excluded rays, pairs, triples, quadruples, or quintuples were bounded.
+\item \textbf{Independent check.}  Re-evaluate the winning candidate or branch point in a separate script or exact-substitution cell whenever practical.
+\end{enumerate}
+
+\begin{longtable}{@{}L{0.16\textwidth}L{0.28\textwidth}L{0.42\textwidth}@{}}
+\caption{Numerical/search claims that require explicit run metadata.}\label{tab:numerical-search-metadata}\\
+\toprule
+Stage range & Claim family & Metadata that must be present \\
+\midrule
+\endfirsthead
+\toprule
+Stage range & Claim family & Metadata that must be present \\
+\midrule
+\endhead
+187--190 & Log-ray sweep, scalar-root predictor, Hessian ranking, and certified local bracketing. & Ray definitions, root brackets, Hessian formula, ranking criterion, and local residuals for each certified ray. \\
+\addlinespace
+191--195 & Pairwise and triple mixed-ray/simplex optimizers. & Candidate list, pair/triple domains, off-diagonal Hessian terms, optimizer transcript, and proof that the finite candidate reduction did not discard the winner. \\
+\addlinespace
+196--201 & Support-cardinality 4 and 5 gates. & Simplex coordinates, positivity constraints, finite-candidate reduction, final rank/order comparison, and the closure statement for support-cardinality \(\leq5\). \\
+\addlinespace
+205--215 & Primitive branch pole census, dynamic survival window, branch-kill tests, and known-data injection. & Pole/residue definitions, linewidth windows, observed branch values, target residuals, and the exact gate that fails or survives. \\
+\addlinespace
+223--225 & Selected twin-support placement and ranking. & Selected-branch ratio, primitive ranking table, support-placement coordinate, coherent orbit-lock packet, and actual branch residuals. \\
+\addlinespace
+231--236 & Dynamic event chain, Goldilocks window, export kernel, heat partition, and material thresholds. & Barrier parameters, turning-point conditions, WKB exponent, export coefficients \(\Gamma_3,\Gamma_5\), heat-channel fractions, and material calibration dictionary. \\
+\bottomrule
+\end{longtable}
+
+\section{Open branch-realization gates}
+\label{sec:open-branch-realization-gates}
+
+The following quantities are defined by the derivation but are not automatically realized by the algebra.  They are branch tests.  A future paper may cite this companion for their definitions and for the proof that they are the relevant tests, but not for their realized values unless the corresponding branch construction has been added.
+
+\begin{longtable}{@{}L{0.23\textwidth}L{0.34\textwidth}L{0.31\textwidth}@{}}
+\caption{Open or branch-realization gates.}\label{tab:open-branch-realization-gates}\\
+\toprule
+Gate & Required branch output & What counts as closure \\
+\midrule
+\endfirsthead
+\toprule
+Gate & Required branch output & What counts as closure \\
+\midrule
+\endhead
+Isotropic outgoing-normalization gate & The actual isotropic value of
+\[
+ \widehat m_0^2\frac{N_0}{K-B_0-Z_0}
+\]
+given the completed wall/BdG/Maxwell/mixed branch. & Equality to \(54Gc_s^5/(5a^5c^5)\) within the declared branch, with all source-map factors specified. \\
+\addlinespace
+Constant-prefactor gate & Correlated moments satisfying
+\[
+P_2=0,
+\qquad
+P_4=0.
+\]
+ & Exact moment relations or a controlled demonstration that the nonconstant terms are beyond the order being cited. \\
+\addlinespace
+Weak-axisymmetric prefactor gate & The physical slope
+\[
+\Xi_1=\frac{P_1}{P_0}
+\]
+ on the actual weak-axisymmetric branch. & A branch calculation of \(D_{01}\) and \(N_{01}\), or an equivalent transfer-shape calculation, with the grouped signature \((1,1/2,-1)\). \\
+\addlinespace
+Rigid-mouth orbit-lock gate & Physical logarithmic coordinates
+\[
+(U,V)=\left(\ln\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2},\ln\frac{\epsilon_\eta}{\epsilon_{\eta,{\rm ref}}}\right).
+\]
+ & Actual branch placement at \(U=V=0\), or an explicit residual packet when the branch misses. \\
+\addlinespace
+Selected twin-support placement gate & The selected twin-support coordinate, including \(\rho_\alpha=4/3\) and \(\zeta_{\rm req}=1/3\) where the strict selected slice applies. & A branch-side support placement matching the selected slice and the coherent orbit-lock compiler. \\
+\addlinespace
+Full reduced back-end packet &
+\[
+\Delta_{\rm full}=(\Delta_Q,q_{\rm tr},q_{\rm nt},q_\eta).
+\]
+ & Either zero packet on the selected strict branch or a realized graph-error packet routed through the realization compiler. \\
+\addlinespace
+Relaxed open-system packet & Leakage, work, non-rigid \(U/V\) drain, compensated source, barrier, event-chain, export, heat, and material-calibration data. & A realized relaxed branch that recovers the strict front end when \(\ell_w=f_U=a=b=0\), with all relaxed packet observables evaluated. \\
+\bottomrule
+\end{longtable}
+
+\section{Repository freeze protocol}
+\label{sec:repository-freeze-protocol}
+
+The derivation companion can be read without a repository freeze, but it cannot be used as a reproducible archive until the source and script state is frozen.  The freeze record should be stored outside this \TeX{} file, but every freeze should satisfy the following protocol.
+
+\begin{enumerate}[leftmargin=2.4em]
+\item \textbf{Source freeze.}  Record the commit hash or archive hash for the canonical stage files, the theorem/status \TeX{} layer, the lower-order source stack, and this \TeX{} project.
+\item \textbf{Script freeze.}  Record the path and hash of every symbolic or numerical audit script listed in this appendix.
+\item \textbf{Dependency freeze.}  Record Python version, SymPy version, numerical libraries, and any exact-arithmetic settings.  If notebooks are used, store an executed notebook and a plain-script export.
+\item \textbf{Run freeze.}  For each audit script, record the command, working directory, input files, output transcript, and output hash.
+\item \textbf{Document freeze.}  Record the LaTeX engine, build command, generated PDF hash, and whether the build was made from a clean tree.
+\item \textbf{Diff discipline.}  Any later change to a source stage, script, or theorem statement must update the affected row of the stage ledger, result-anchor map, and this reproducibility map.
+\end{enumerate}
+
+\section{Result-card reproducibility template}
+\label{sec:app-repro-result-card-template}
+
+Every theorem-block result should be reducible to the following card.  The card does not have to appear in the main text for every result, but the information should be recoverable from the surrounding prose, tables, or appendices.
+
+\begin{longtable}{@{}L{0.23\textwidth}L{0.67\textwidth}@{}}
+\caption{Reproducibility card template.}\label{tab:reproducibility-card-template}\\
+\toprule
+Field & Required content \\
+\midrule
+\endfirsthead
+\toprule
+Field & Required content \\
+\midrule
+\endhead
+Result anchor & Top-level anchor and subanchor, for example \resultanchor{MTDC-T9.4}. \\
+Stage provenance & Stage number range, source-stage filenames, and appendix section. \\
+Claim status & One of the firewall statuses, or a mixed status with the exact local split. \\
+Inputs & Parent equations, lower-order constants, branch hypotheses, reduction assumptions, and symbolic variables. \\
+Derivation type & Hand algebra, symbolic script, numerical search, branch solve, or mixed. \\
+Audit artifact & Script basename, output transcript, displayed algebra, or independent check. \\
+Output packet & Boxed formula, theorem statement, target surface, verdict packet, or branch observable. \\
+Failure mode & What would falsify the result or move it to a weaker status. \\
+Downstream use & What a future paper may cite the result for. \\
+\bottomrule
+\end{longtable}
+
+\section{Verifier checklist}
+\label{sec:verifier-checklist}
+
+\begin{verificationchecklist}
+\item Confirm that every cited result has a result anchor and a local status tag.
+\item Confirm that every \StatusExact{} statement is either a parent-action identity, a definition, or exact displayed algebra independent of branch closure.
+\item Confirm that every \StatusExactClosure{} statement names the closure family or search class.
+\item Confirm that every grouped \(P_2\) result preserves the weighted \((1,2,2)\) grouped metric and does not treat \(20/21/22\) as spacetime indices.
+\item Confirm that every use of electric charge respects the \((\eta_Q,q_\star,q_{\rm eff})\) ontology and does not resurrect circulation as charge.
+\item Confirm that every zero-mode Maxwell statement says which mixed channels are suppressed and that they remain present in the microscopic ontology.
+\item Confirm that every symbolic audit has a script, output transcript, and a statement of what residuals were checked.
+\item Confirm that every numerical or finite-search result has brackets, tolerances, candidate set, residuals, and a deterministic run record.
+\item Confirm that every open branch-realization gate is cited as a test condition unless actual branch data are supplied.
+\item Confirm that any future paper citing this companion points to the result anchor first and to stage numbers only when detailed provenance is needed.
+\end{verificationchecklist}
+
+\section{Summary}
+\label{sec:reproducibility-summary}
+
+The reproducibility standard for this companion is intentionally stricter than ordinary narrative exposition.  The document is useful only if a reader can tell which formula is an exact identity, which formula is exact inside a finite closure, which formula was numerically located, and which formula is still a target for the completed moving-throat branch.  This appendix supplies the routing layer: source files, stage ranges, result anchors, audit scripts, search metadata, and open realization gates all have distinct roles.  Keeping those roles separate is what makes the derivation ledger citable without turning it into an overclaim.

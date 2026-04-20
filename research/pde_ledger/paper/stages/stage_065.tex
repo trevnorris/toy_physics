@@ -1,0 +1,51 @@
+\section[Stage 065]{Stage 065: Master Quadrupole Residual of the Full Reduced Moving-Throat PDE}
+\label{stage:065}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the residual definition; \StatusOpen{} for the actual PDE branch values inserted into it.}
+\stagefield{Purpose}{Stage~065 defines the master scalar residual that compares support demand against physical support supply.}
+\stagefield{Inputs}{The support-demand function \(\zeta_{\rm req}\), physical support map \(\zeta_{\rm phys}\), and operator-selected bias \(\mathrm{Pe}_*\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage065_master_quadrupole_residual_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage065_master_quadrupole_residual_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage065_master_quadrupole_residual_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage065_master_quadrupole_residual_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The demand is
+\begin{equation}
+\label{eq:app-stage065-zeta-req}
+\zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+=\frac{\Pi_{\rm tr}-C_{\rm mix}}
+{C_{\rm mix}-\epsilon_{\rm blk}(2C_{\rm mix}-\Pi_{\rm tr})}.
+\end{equation}
+The physical supply is
+\begin{equation}
+\label{eq:app-stage065-zeta-phys}
+\zeta_{\rm phys}(\mathrm{Pe},\eta;\kappa)
+=\Omega_{\mathrm{Pe}}^2\frac{\kappa+\pi^2/4}{\kappa+y(\eta)^2}.
+\end{equation}
+With \(\mathrm{Pe}_*\) selected by Stage~041, define
+\begin{equation}
+\label{eq:app-stage065-Rquad}
+\boxed{
+R_{\rm quad}
+=\zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+-\zeta_{\rm phys}(\mathrm{Pe}_*(\Xi,\eta,\kappa),\eta;\kappa)}.
+\end{equation}
+The sign convention is
+\begin{equation}
+\label{eq:app-stage065-sign}
+R_{\rm quad}<0\Rightarrow\text{support exceeds demand},
+\quad
+R_{\rm quad}=0\Rightarrow\text{saturation},
+\quad
+R_{\rm quad}>0\Rightarrow\text{support failure}.
+\end{equation}
+The Family--1 specialization is obtained by setting \((\eta,\kappa)=(37,12321/5)\) and
+\begin{equation}
+\label{eq:app-stage065-XiF1}
+\Xi_{\rm F1}=W_{\rm wall}=1369\Upsilon_w=136900\Theta_w.
+\end{equation}
+
+\stagefield{Output}{The master residual \eqref{eq:app-stage065-Rquad}.}
+\stagefield{Downstream use}{Stages~066--070 narrow the Family--1 residual to one loading ratio from the outgoing branch.}
+

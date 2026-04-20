@@ -1,0 +1,121 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage236_physical_calibration_and_material_threshold_companion_from_the_stage235_export_and_cold_survival_compiler_mathematica_audit.wl
+# Date: 2026-04-20T23:11:09-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 236 — PHYSICAL CALIBRATION AND MATERIAL-THRESHOLD COMPANION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact lattice-turnover compiler
+----------------------------------------------------------------------------------------
+gamma_lat,safe^eq = (fLat*muEta*(s0 - sc)*(s0 + sc))/sc
+t_cross^phys = tStar/sc
+gamma_lat,turn^phys = (fLat*muEta*(s0 - sc)*(s0 + sc))/(sc*tStar*UpsilonLat)
+(lambda_ep omega_D)_min = (fLat*muEta*(s0 - sc)*(s0 + sc))/(sc*tStar*UpsilonLat*zetaEp)
+product threshold = (fLat*muEta*(s0 - sc)*(s0 + sc))/(sc^2*UpsilonLat*zetaEp)
+lambda-threshold compiler = 0
+PASS: lambda-threshold compiler
+product-threshold compiler = 0
+PASS: product-threshold compiler
+product-threshold reduced form = 0
+PASS: product-threshold reduced form
+
+----------------------------------------------------------------------------------------
+II. Legacy Session-V slice recovery
+----------------------------------------------------------------------------------------
+Upsilon_lat^(sess) = (fLat*muEta*(s0 - sc)*(s0 + sc))/(gammaLatticeLegacy*sc)
+legacy lambda threshold = gammaLatticeLegacy/(tStar*zetaEp)
+legacy product threshold = gammaLatticeLegacy/(sc*zetaEp)
+legacy lambda-threshold recovery = 0
+PASS: legacy lambda-threshold recovery
+legacy product-threshold recovery = 0
+PASS: legacy product-threshold recovery
+
+----------------------------------------------------------------------------------------
+III. Harmonic trigger and force-matched stiffness compiler
+----------------------------------------------------------------------------------------
+r_turn^phys = (lambdaPhys*rTurn)/lambdaRef
+chi_lambda,lattice = (2*lambdaRef)/rTurn
+k_eff,req = (EStar*lambdaRef^2*VprimeTurnAbs)/(lambdaPhys^2*rTurn)
+K_turn = (lambdaRef^2*VprimeTurnAbs)/rTurn
+k_eff,req(K_turn) = (EStar*KTurnSym)/lambdaPhys^2
+k_eff,req(a_int/2) = (4*EStar*KTurnSym)/aInt^2
+turning-point radius map = 0
+PASS: turning-point radius map
+chi_lambda geometry ratio = 0
+PASS: chi_lambda geometry ratio
+force-matched stiffness compiler = 0
+PASS: force-matched stiffness compiler
+K_turn definition = 0
+PASS: K_turn definition
+K_turn stiffness rewrite = 0
+PASS: K_turn stiffness rewrite
+a_int stiffness rewrite = 0
+PASS: a_int stiffness rewrite
+
+----------------------------------------------------------------------------------------
+IV. Korringa-limited temperature ceiling
+----------------------------------------------------------------------------------------
+T_max = (KCorr*sc)/tStar
+Pi_T = (KCorr*sc)/(T*tStar)
+Korringa ceiling = 0
+PASS: Korringa ceiling
+thermal screening ratio = 0
+PASS: thermal screening ratio
+
+----------------------------------------------------------------------------------------
+V. Exact screening ratios
+----------------------------------------------------------------------------------------
+Pi_ep = (lambdaEpOmegaD*sc*tStar*UpsilonLat*zetaEp)/(fLat*muEta*s0^2 - fLat*muEta*sc^2)
+Pi_chi = (2*lambdaRef)/rTurn
+Pi_k = (kEff*lambdaPhys^2)/(EStar*KTurnSym)
+Pi_T = (KCorr*sc)/(T*tStar)
+Pi_ep threshold ratio = 0
+PASS: Pi_ep threshold ratio
+Pi_chi reduced ratio = 0
+PASS: Pi_chi reduced ratio
+Pi_k stiffness ratio = 0
+PASS: Pi_k stiffness ratio
+
+----------------------------------------------------------------------------------------
+VI. Stage-235 / Session-V benchmark-only specialization
+----------------------------------------------------------------------------------------
+s_c benchmark = 0.5489386551062235
+gamma_lat,safe^eq = 65.45193925961132
+Upsilon_lat^(sess) = 13.64824695299483
+micro product threshold = 119.23361317476522 / zeta_ep
+legacy product threshold = 8.736185210116076 / zeta_ep
+r_turn^phys coefficient = 0.9128891530016525 * lambda_phys
+chi_lambda benchmark = 2.1908464937104797
+K_turn benchmark = 2.73855812
+a_int stiffness coefficient = 10.95423248
+T_max coefficient = 0.5489386551062235 * K_corr / t_*
+|V'_red|(r_turn) = 5.837462857946154
+gamma_lat,safe^eq(session) diff = 0. (tol = 1/1000000000)
+PASS: gamma_lat,safe^eq(session)
+Upsilon_lat^(sess) diff = 0. (tol = 1/1000000000)
+PASS: Upsilon_lat^(sess)
+micro product threshold diff = 1.4210854715202004*^-14 (tol = 1/1000000000)
+PASS: micro product threshold
+legacy product threshold diff = 1.7763568394002505*^-15 (tol = 1/1000000000)
+PASS: legacy product threshold
+r_turn^phys coefficient diff = 0. (tol = 1/1000000000000)
+PASS: r_turn^phys coefficient
+chi_lambda benchmark diff = 0. (tol = 1/1000000000000)
+PASS: chi_lambda benchmark
+a_int stiffness coefficient diff = 0. (tol = 1/1000000000000)
+PASS: a_int stiffness coefficient
+T_max coefficient diff = 0. (tol = 1/1000000000000000)
+PASS: T_max coefficient
+|V'_red|(r_turn) diff = 0. (tol = 1/1000000000000)
+PASS: |V'_red|(r_turn)
+
+All Stage-236 symbolic and benchmark-specialization checks passed.
+
+EXIT_CODE: 0

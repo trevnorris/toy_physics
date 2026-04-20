@@ -1,0 +1,28 @@
+\section[Stage 187]{Stage 187: Free-quintuple log-ray sweep}
+\label{stage:187}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~187 turns graph-aligned realization into an explicit local family compiler by sweeping logarithmic rays in the five free coordinates.}
+
+\stagefield{Inputs}{Imports the Stage~186 scalar graph slice, base free quintuple \(\mathbf y_\circ\), and log-ray direction \(\mathbf s=(s_\lambda,s_c,s_\gamma,s_U,s_W)\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage187_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation constructs \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), lifts it through the graph, proves finite monomial invariance along the lift, lists primitive directions, and defines the scalar root function \(\Phi_{\mathbf s}(\tau)=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))\).}
+
+\stagefield{Output}{Graph-invariant log-ray family, primitive free-direction table, scalar root equation \(\Phi_{\mathbf s}(\tau)=1\), monotone-ray uniqueness theorem, and first local root predictors.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
+\item Check the log-ray validity interval before using a local bracket.
+\item Check curvature-envelope hypotheses before reporting a certified interval.
+\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

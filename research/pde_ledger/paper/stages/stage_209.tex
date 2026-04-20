@@ -1,0 +1,28 @@
+\section[Stage 209]{Stage 209: Strict 5PN even-gate package}
+\label{stage:209}
+
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.3}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusReduced{}.}
+
+\stagefield{Purpose}{Stage~209 imports the strict first-order conservative gates and separates the normalization defect from the even-response defects.}
+
+\stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, and the conservative-shape-preserving branch used by the grouped outlet package.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage209_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation proves $\Xi_{\rm load}=\Xi_1=P_1/P_0$, shows that monomial/orbit rigidity kills the load defect but not the even gates, and narrows the viable same-charge corridor to a pure outgoing-transfer deformation with the conservative front end frozen.}
+
+\stagefield{Output}{Strict first-order packet: $\Xi_1$ is the prefactor slope, while $K_1$ and $H_{\rm even}$ are separate conservative gates; the survivor is a pure-transfer corridor rather than arbitrary grouped anisotropy.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.3} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+
+

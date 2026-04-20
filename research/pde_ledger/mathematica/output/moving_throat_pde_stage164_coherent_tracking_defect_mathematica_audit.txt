@@ -1,0 +1,47 @@
+
+========================================================================================
+STAGE 164 — COHERENT TRACKING-BRANCH DEFECT LAW
+========================================================================================
+direct-selected transfer-shape identity = 0
+PASS: direct-selected transfer-shape identity
+support-loaded R_target reconstruction = 0
+PASS: support-loaded R_target reconstruction
+support-loaded T^2 reconstruction = 0
+PASS: support-loaded T^2 reconstruction
+support-loaded branch product law = 0
+PASS: support-loaded branch product law
+d/dzeta ln T^2 (support-loaded route) = 0
+PASS: d/dzeta ln T^2 (support-loaded route)
+d/dzeta ln R_target (support-loaded route) = 0
+PASS: d/dzeta ln R_target (support-loaded route)
+
+========================================================================================
+Weak-axisymmetric drift transport
+========================================================================================
+split-blocking drift eps_1 = 0
+PASS: split-blocking drift eps_1
+selected-branch identity = 0
+PASS: selected-branch identity
+Xi_1 = (2*chi1)/(1 + chi0) + (4*deltaU1*epsW - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) - omegaW + zetaZ
+R_1  = (-2*chi1)/(1 + chi0) + (-4*deltaU1*epsW + 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + eta1/(-1 + epsEta) + omegaW - zetaZ
+
+========================================================================================
+Tracking-factor drift
+========================================================================================
+tracking-factor drift = 0
+PASS: tracking-factor drift
+Theta_1 = -((chi1*deltaU*(1 + deltaU) + chi0*(1 + chi0)*deltaU1)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)))
+
+========================================================================================
+Support-blindness consequence
+========================================================================================
+Xi_1 with chi1=deltaU1=0 = (-2*(11 + 9*deltaU)*epsW1)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW) - omegaW + zetaZ
+Theta_1 with chi1=deltaU1=0 = 0
+
+Conclusion:
+  The coherent support ratio zeta drops out identically from T^2 and R_target.
+  The grouped weak-axisymmetric defect is carried only by
+  Z_W, Omega_W^2, chi_0, eps_W, and delta_U.
+  Exact tracking-factor rigidity is not sufficient to kill Xi_1.
+
+Stage 164 Mathematica audit passed.

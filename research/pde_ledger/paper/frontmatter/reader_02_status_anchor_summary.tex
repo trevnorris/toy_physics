@@ -1,0 +1,106 @@
+\chapter{Status and Anchor Summary}
+\label{chap:reader-status-anchor-summary}
+
+This chapter keeps only the minimum global navigation state needed for the
+reader build: the six status tags and the top-level result-anchor families.
+
+\section{Status tags}
+
+\begin{longtable}{L{0.25\textwidth}L{0.67\textwidth}}
+\toprule
+Status tag & Reader-build meaning \\
+\midrule
+\endhead
+\StatusExact & Direct consequence of the declared parent theory, exact
+definitions, or exact algebra with no extra closure step. \\
+\addlinespace
+\StatusExactClosure & Exact once a named closure, branch family, or search
+class has been declared. \\
+\addlinespace
+\StatusReduced & Valid only after a controlled reduction, asymptotic regime, or
+selected branch restriction. \\
+\addlinespace
+\StatusEffective & Organized by a useful model choice or closure that is not yet
+uniquely forced by the full PDE. \\
+\addlinespace
+\StatusNumerical & Defined by exact equations but currently located or checked
+numerically. \\
+\addlinespace
+\StatusOpen & Still depends on actual branch realization or another missing
+theorem gate. \\
+\bottomrule
+\end{longtable}
+
+\section{Top-level result-anchor families}
+
+\begin{longtable}{L{0.13\textwidth}L{0.14\textwidth}L{0.62\textwidth}}
+\toprule
+Anchor & Stages & Main role in the derivation program \\
+\midrule
+\endhead
+\resultanchor{MTDC-T1} & Parent + 1 & Parent-theory import, projection and
+reduction language, mixed-sector firewall, and first moving-throat target
+statement. \\
+\addlinespace
+\resultanchor{MTDC-T2} & 1--2 & Moving-surface lift, recovery of \((a,L)\), and
+distributed wall geometry closure. \\
+\addlinespace
+\resultanchor{MTDC-T3} & 3 & Stable BdG reduction, Schur-complement support
+kernels, and first grouped \(P_2\) conservative diagnostics. \\
+\addlinespace
+\resultanchor{MTDC-T4} & 4--5 & Maxwell/mixed reduction, outgoing bridge, and
+the invariant outgoing-normalization product. \\
+\addlinespace
+\resultanchor{MTDC-T5} & 6--19 & Full grouped bundle, overlap and isotropy
+machinery, selected-mode normalization language, and support-feasibility front
+end. \\
+\addlinespace
+\resultanchor{MTDC-T6} & 20--34 & Continuum placement, split-\(U\) branch,
+rank-2 support completion, and coherent tracking front end. \\
+\addlinespace
+\resultanchor{MTDC-T7} & 35--73 & Gain thresholds, Family-1 branch windows, and
+the first reduced Family-1 verdict chain. \\
+\addlinespace
+\resultanchor{MTDC-T8} & 74--146 & Geometry-lane firewall, retarded closure,
+outlet/core/mouth compensation, and renormalized normalization residuals. \\
+\addlinespace
+\resultanchor{MTDC-T9} & 147--183 & Weak-axisymmetric transport, quotient
+coordinates, orbit closure, and the four-scalar verdict packet. \\
+\addlinespace
+\resultanchor{MTDC-T10} & 184--201 & Realization compiler, graph-error form,
+finite search sieve, and local mixed-ray closure. \\
+\addlinespace
+\resultanchor{MTDC-T11} & 202--225 & Same-charge audit, rigid-mouth chart,
+selected twin-support placement, and strict actual-branch packet. \\
+\addlinespace
+\resultanchor{MTDC-T12} & 226--236 & Relaxed open-system branch, recovery map,
+barrier/export companions, and material-threshold layer. \\
+\bottomrule
+\end{longtable}
+
+\section{Status discipline}
+
+The reader build uses the same weakest-link rule as the archive build: a result
+may only be cited at the strongest level supported by its weakest essential
+input. When in doubt, the archive build and the verification trackers control
+the stronger interpretation.
+
+\section{Verification routing}
+
+The stage number is the reader-facing audit handle.  This build intentionally
+omits the full verification filename block from each stage page and uses a
+shared naming convention instead.
+
+All paths below are relative to \nolinkurl{research/pde_ledger/}.
+
+\begin{itemize}[leftmargin=2.2em]
+  \item SymPy symbolic audits follow
+  \nolinkurl{moving_throat_pde_stageNNN_*_sympy_audit.py}.
+  \item Mathematica symbolic audits follow
+  \nolinkurl{moving_throat_pde_stageNNN_*_mathematica_audit.wl}.
+  \item Numerical stress harnesses usually follow
+  \nolinkurl{stageNNN*_stress.py} and \nolinkurl{stageNNN*_stress.wl}, with
+  occasional shared-range names such as \nolinkurl{stage003_004_*}.
+  \item Exact path inventory and trust status live in the repo verification
+  trackers rather than in each printed stage.
+\end{itemize}

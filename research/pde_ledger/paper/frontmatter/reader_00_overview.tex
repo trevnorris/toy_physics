@@ -1,0 +1,52 @@
+\chapter{Reader Build Overview}
+\label{chap:reader-overview}
+
+This build is the collaborator-facing version of the moving-throat PDE
+derivation ledger. It is meant to be read as a navigation companion to the
+main derivation, not as a replacement for the full archive.
+
+The authoritative master document remains the archive build,
+\StageFile{pde_ledger.tex}. That build preserves the full frontmatter
+firewalls, the stage ledger, the stage-by-stage appendices, the source-file
+index, and the internal fill workflow. This reader build keeps only the
+orientation material needed to move through Parts I--VIII without carrying the
+full archive wrapper in front of them.
+
+\section{What this build is for}
+
+Use this PDF when the goal is to understand the derivation program at theorem
+block scale:
+\begin{itemize}[leftmargin=2.2em]
+  \item read the main argument from Part I through Part VIII;
+  \item identify which stage range supports a chapter;
+  \item locate the right result-anchor family for future citations;
+  \item decide whether a claim is exact, reduced, numerical, or still open.
+\end{itemize}
+
+\section{What this build leaves out}
+
+The reader build deliberately excludes the heaviest archival layers:
+\begin{itemize}[leftmargin=2.2em]
+  \item the full frontmatter firewalls and long governance chapters;
+  \item the stage ledger and Stage 001--236 appendix walk-throughs;
+  \item the full reproducibility registry and source-file index;
+  \item the fill-workflow operating manual.
+\end{itemize}
+
+Those layers still matter. They are simply reserved for the archive build, where
+they are useful for audit rather than for first-pass reading.
+
+\section{How to move between builds}
+
+The intended workflow is:
+\begin{enumerate}[leftmargin=2.2em]
+  \item use this reader build to identify the part, theorem block, and stage
+  range you care about;
+  \item switch to the archive build when you need stage-by-stage provenance,
+  raw appendix detail, or audit infrastructure;
+  \item switch to the repo artifacts when you need source notes, SymPy scripts,
+  Mathematica scripts, or saved outputs.
+\end{enumerate}
+
+This keeps the readable path and the archival path separate without weakening
+the provenance chain.

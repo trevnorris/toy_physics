@@ -1,0 +1,118 @@
+\section[Stage 002]{Stage 002: Breathing Reduction Back to the Old \((a,L)\) Closure}
+\label{stage:002}
+
+\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T1}, \resultanchor{MTDC-T2}, and \resultanchor{MTDC-T4}.}
+\claimstatus{\StatusExactClosure{} inside the Stage~001 quadratic wall closure.  Damping and open-system completion are not derived here.}
+
+\stagefield{Purpose}{Stage~002 verifies that the distributed wall lift is a true lift of the old geometry sector rather than a replacement unrelated to it.  The axisymmetric lowest-mode truncation reproduces a two-coordinate \((\delta a,\delta L)\) matrix system, while the grouped real \(P_2\) modes appear as the next harmonic family of the same wall PDE.}
+
+\stagefield{Inputs}{The inputs are the normalized monopole harmonic, the Stage~001 wall action, the axisymmetric split of \(\eta\), and the grouped real \(P_2\) harmonic eigenvalue \(-\Delta_{S^2}Y_{2m}=6Y_{2m}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl}.  The audits check the \(Y_{00}\) normalization bridge, the derived \(4\pi\) overlap factor, the conservative \((\delta a,\delta L)\) matrix reduction, and the uncoupled grouped real \(P_2\) degeneracy.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Axisymmetric two-mode ansatz.}
+Using
+\begin{equation}
+Y_{00}=\frac{1}{2\sqrt\pi},
+\qquad
+\int_{S^2}Y_{00}^2\,d\Omega=1,
+\qquad
+\frac{1}{4\pi}\int_{S^2}Y_{00}\,d\Omega=\frac{1}{2\sqrt\pi},
+\end{equation}
+the axisymmetric perturbation is truncated as
+\begin{equation}
+\label{eq:app-stage002-two-mode-ansatz}
+\eta_0(w,t)=2\sqrt\pi\left[\alpha_a(w)\delta a(t)+\alpha_L(w)\delta L(t)\right].
+\end{equation}
+Set
+\begin{equation}
+Q^A=(\delta a,\delta L),
+\qquad
+A\in\{a,L\}.
+\end{equation}
+
+\paragraph{2. Reduction of the quadratic wall action.}
+On the axisymmetric branch, the angular-stiffness term vanishes because \(l=0\).  In the densitized one-dimensional convention inherited from Stage~001, the background surface weight has already been absorbed into the effective axial coefficients and profiles, so the reduction is written with respect to \(dw\) rather than \(\sqrt{\gamma_0}\,dw\).  The action therefore reduces to a Lagrangian
+\begin{equation}
+\label{eq:app-stage002-lred}
+L_{\rm red}^{(0)}
+=\frac12 M_{AB}\dot Q^A\dot Q^B
+-\frac12 K_{AB}Q^AQ^B,
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage002-mass-matrix}
+\boxed{
+M_{AB}=4\pi\int dw\,\mu_\eta(w)\alpha_A(w)\alpha_B(w)},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-stage002-stiffness-matrix}
+\boxed{
+K_{AB}=4\pi\int dw\left[
+T_w(w)\alpha_A'(w)\alpha_B'(w)+K_0(w)\alpha_A(w)\alpha_B(w)
+\right]}.
+\end{equation}
+Here \(K_0(w)=K_\eta(w)\) on the scalar branch.
+
+\paragraph{3. Euler--Lagrange equations.}
+Varying \eqref{eq:app-stage002-lred} gives
+\begin{equation}
+\label{eq:app-stage002-el}
+\boxed{
+M_{AB}\ddot Q^B+K_{AB}Q^B=0}.
+\end{equation}
+This is the conservative linear version of the old two-coordinate geometry closure.  The old schematic form
+\begin{equation}
+M_{AB}\ddot Q^B+\Gamma_{AB}\dot Q^B=-\frac{\partial H_{\rm tot}}{\partial Q^A}
+\end{equation}
+is recovered only after adding open-system or effective damping data.  Stage~002 derives the conservative part, not the damping matrix.
+
+\paragraph{4. Grouped real \(P_2\) one-mode reduction.}
+For one real quadrupole component take
+\begin{equation}
+\label{eq:app-stage002-p2-ansatz}
+\eta_{2m}(\Omega,w,t)=\beta_2(w)q_{2m}(t)Y_{2m}^{\rm real}(\Omega),
+\qquad
+-\Delta_{S^2}Y_{2m}^{\rm real}=6Y_{2m}^{\rm real}.
+\end{equation}
+Inserting into the same wall action gives
+\begin{equation}
+\label{eq:app-stage002-l2m}
+L_{2m}=\frac12 M_2\dot q_{2m}^{\,2}-\frac12K_2q_{2m}^{\,2},
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-stage002-m2}
+\boxed{
+M_2=\int dw\,\mu_\eta(w)\beta_2(w)^2},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-stage002-k2}
+\boxed{
+K_2=\int dw\left[
+T_w(w)\beta_2'(w)^2+\bigl(K_\eta(w)+6T_\Omega(w)\bigr)\beta_2(w)^2
+\right]}.
+\end{equation}
+Thus, before matter/gauge coupling or explicit anisotropy,
+\begin{equation}
+\label{eq:app-stage002-p2-eom}
+\boxed{
+M_2\ddot q_{2m}+K_2q_{2m}=0
+}
+\end{equation}
+for every real \(P_2\) component.  This is the first degeneracy theorem for the grouped real quadrupole lane.
+
+\stagefield{Output}{The stage outputs the \((\delta a,\delta L)\) matrix system \eqref{eq:app-stage002-el}, the effective matrices \eqref{eq:app-stage002-mass-matrix}--\eqref{eq:app-stage002-stiffness-matrix}, and the uncoupled grouped \(P_2\) mass/stiffness pair \eqref{eq:app-stage002-m2}--\eqref{eq:app-stage002-k2}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The factor \(4\pi\) in \eqref{eq:app-stage002-mass-matrix} and \eqref{eq:app-stage002-stiffness-matrix} follows from the \(2\sqrt\pi\) normalization in \eqref{eq:app-stage002-two-mode-ansatz}.
+\item The \(l=2\) angular stiffness shift is \(l(l+1)T_\Omega=6T_\Omega\).
+\item The grouped \(P_2\) degeneracy follows because \(K_2\) and \(M_2\) do not depend on the real component label on an isotropic reference throat.
+\item The reduction preserves the old \((a,L)\) closure but does not derive the old damping matrix.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~003 couples the Stage~002 wall modes to stable BdG support modes.  Stage~006 uses the same wall baseline as the \(K_A,M_A\) entries of the full grouped bundle.  Later geometry-contamination stages use the distinction between collective scalar geometry and grouped \(P_2\) wall modes.}

@@ -1,0 +1,33 @@
+\section[Stage 061]{Stage 061: Explicit Family--1 Branch Comparison and Closing Verdict for This Subprogram}
+\label{stage:061}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the comparison of extracted Family--1 data against the threshold window.}
+\stagefield{Purpose}{Stage~061 decides whether the explicit Family--1 wall-depth datum is the bottleneck.}
+\stagefield{Inputs}{The threshold window of Stage~058 and the extracted \(\Theta_w\) data from Stage~060.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage061_family1_branch_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage061_family1_branch_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage061_family1_branch_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage061_family1_branch_verdict_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+For the natural shell-weighted datum,
+\begin{equation}
+\label{eq:app-stage061-Pe-chi}
+\boxed{
+\mathrm{Pe}_{\rm suff}^{(\chi)}\simeq96.5285247264386\lambda_\mu^2,
+\qquad
+\mathrm{Pe}_{\rm fail}^{(\chi)}\simeq11220.5441626259\lambda_\mu^2}.
+\end{equation}
+For the conservative floor,
+\begin{equation}
+\label{eq:app-stage061-Pe-J}
+\boxed{
+\mathrm{Pe}_{\rm suff}^{(J)}\simeq22.0062226330754\lambda_\mu^2,
+\qquad
+\mathrm{Pe}_{\rm fail}^{(J)}\simeq2558.01892349205\lambda_\mu^2}.
+\end{equation}
+The Family--1 branch is therefore not wall-depth starved except if the quadrupole-side demand requires an anomalously large transport bias.
+
+\stagefield{Output}{The first explicit Family--1 support/source verdict: wall-depth is not the leading bottleneck for moderate demand.}
+\stagefield{Downstream use}{Stages~062--070 translate quadrupole demand into the remaining loading ratio.}
+

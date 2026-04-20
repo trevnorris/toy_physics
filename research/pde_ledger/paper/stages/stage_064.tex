@@ -1,0 +1,27 @@
+\section[Stage 064]{Stage 064: Family--1 Demand Window in the Branch-Product Variable}
+\label{stage:064}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the branch-product translation.}
+\stagefield{Purpose}{Stage~064 expresses the Family--1 demand thresholds in the branch-product variable \(\Pi_{\rm tr}\), including blocking.}
+\stagefield{Inputs}{The support-ratio threshold formula and blocking parameter \(\epsilon_{\rm blk}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage064_family1_pi_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage064_family1_pi_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage064_family1_pi_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage064_family1_pi_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The branch-product demand is related to \(\zeta_{\rm req}\) by
+\begin{equation}
+\label{eq:app-stage064-Pi-zeta}
+\zeta_{\rm req}=\frac{\Pi_{\rm tr}-C_{\rm mix}}{C_{\rm mix}-\epsilon_{\rm blk}(2C_{\rm mix}-\Pi_{\rm tr})}.
+\end{equation}
+Solving for \(\Pi_{\rm tr}\) gives the equivalent product threshold.  In the unblocked limit, \(\epsilon_{\rm blk}=0\), this reduces to
+\begin{equation}
+\label{eq:app-stage064-unblocked}
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}=1+\zeta_{\rm req}.
+\end{equation}
+Thus the \(\zeta\)-windows of Stage~063 can be read directly as product-ratio windows.
+
+\stagefield{Output}{Product-variable conversion \eqref{eq:app-stage064-Pi-zeta}--\eqref{eq:app-stage064-unblocked}.}
+\stagefield{Downstream use}{Stage~065 packages the full reduced branch into a master residual.}
+

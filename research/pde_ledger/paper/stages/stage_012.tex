@@ -1,0 +1,117 @@
+\section[Stage 012]{Stage 012: Coupled Response Operator}
+\label{stage:012}
+
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{The Schur-complement split is \StatusExactClosure{} inside the declared two-mode wall and one-support/one-mixed reduced operator.  The stable normal-mode and local outgoing-port representation are \StatusReduced{}.}
+
+\stagefield{Purpose}{Stage~012 gives the loading coefficient \(\alpha\) a microscopic origin.  The coupled response Schur complement splits into an isotropic softening \(\Xi I_2\) and a directional load \(\alpha vv^T\).  That same load carries the outgoing \(i\omega^5\) branch into the selected mode.}
+
+\stagefield{Inputs}{The inputs are the Stage~011 two-mode wall profile, the D/N overlap vector \(v\), one stable support mode, one brane-like internal coordinate, one mixed coordinate, and the compact outgoing \(l=2\) port.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage012_dynamic_loading_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage012_dynamic_loading_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage012_dynamic_loading_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage012_dynamic_loading_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+\paragraph{1. Dynamic operator.}
+Let
+\begin{equation}
+\label{eq:app-stage012-D-bare}
+D_\eta^{\rm bare}(\omega)=\operatorname{diag}(K_0-M_0\omega^2,K_1-M_1\omega^2).
+\end{equation}
+Define
+\begin{equation}
+\label{eq:app-stage012-AphiAUAW}
+A_\phi(\omega)=\varpi^2-\omega^2,
+\qquad
+A_U(\omega)=\Omega_U^2-\omega^2,
+\qquad
+A_W(\omega)=\Omega_W^2-\omega^2-\Pi_{\rm out}(\omega).
+\end{equation}
+The mixed determinant is
+\begin{equation}
+\label{eq:app-stage012-DeltaUW}
+\Delta_{UW}(\omega)=A_U(\omega)A_W(\omega)-\lambda_R^2\sigma,
+\qquad
+\sigma=v\cdot v=\kappa_0^2+
+\kappa_1^2=\frac{88}{9\pi^2}.
+\end{equation}
+
+\paragraph{2. Exact Schur-complement split.}
+Eliminating the internal variables gives
+\begin{equation}
+\label{eq:app-stage012-schur-split}
+\boxed{
+\Sigma_{\rm wall}(\omega)=\Xi(\omega)I_2+\alpha(\omega)vv^T},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage012-Xi-alpha}
+\boxed{
+\Xi(\omega)=\frac{\lambda_U^2}{A_U(\omega)},
+\qquad
+\alpha(\omega)=\frac{\lambda_B^2}{A_\phi(\omega)}+
+\frac{\bigl(A_U(\omega)\lambda_W+\lambda_R\lambda_U\bigr)^2}{A_U(\omega)\Delta_{UW}(\omega)}}.
+\end{equation}
+At zero frequency, on the conservative branch,
+\begin{equation}
+\label{eq:app-stage012-static-data}
+\boxed{
+\Xi_0=\frac{\lambda_U^2}{\Omega_U^2},
+\qquad
+\Delta_0=\Omega_U^2\Omega_W^2-\lambda_R^2\sigma,
+\qquad
+\alpha_0=\frac{\lambda_B^2}{\varpi^2}+
+\frac{(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}{\Omega_U^2\Delta_0}}.
+\end{equation}
+Thus the static matrix is
+\begin{equation}
+\label{eq:app-stage012-static-wall-matrix}
+K_{\rm eff}^{(0)}=
+\begin{pmatrix}K_0-\Xi_0&0\\0&K_1-\Xi_0\end{pmatrix}-\alpha_0vv^T.
+\end{equation}
+
+\paragraph{3. Outgoing dressing.}
+To first order in the outgoing port,
+\begin{equation}
+\label{eq:app-stage012-alpha-out}
+\alpha(\omega)=\alpha_{\rm cons}(\omega)+\beta(\omega)\Pi_{\rm out}(\omega)+O(\Pi_{\rm out}^2),
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-stage012-beta}
+\boxed{
+\beta(\omega)=
+\frac{\bigl(A_U(\omega)\lambda_W+\lambda_R\lambda_U\bigr)^2}{\Delta_{\rm cons}(\omega)^2},
+\qquad
+\Delta_{\rm cons}(\omega)=A_U(\omega)(\Omega_W^2-\omega^2)-\lambda_R^2\sigma}.
+\end{equation}
+At zero frequency,
+\begin{equation}
+\label{eq:app-stage012-beta0}
+\boxed{
+\beta_0=\frac{(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}{\Delta_0^2}\geq0}.
+\end{equation}
+For
+\begin{equation}
+\Pi_{\rm out}(\omega)=+i\frac{a^5}{27c_s^5}\omega^5+O(\omega^7),
+\end{equation}
+and selected eigenvector \(e_-\), the projected odd coefficient is
+\begin{equation}
+\label{eq:app-stage012-selected-odd}
+\boxed{
+\delta D_-^{\rm odd}(\omega)
+=-i\frac{a^5}{27c_s^5}\,\beta_0\,(v\cdot e_-)^2\,\omega^5+O(\omega^7)}.
+\end{equation}
+
+\stagefield{Output}{Stage~012 outputs the Schur-complement split \eqref{eq:app-stage012-schur-split}, the static branch data \eqref{eq:app-stage012-static-data}, the outgoing transfer coefficient \eqref{eq:app-stage012-beta0}, and the selected odd coefficient \eqref{eq:app-stage012-selected-odd}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The scalar \(U\)-sector contribution is proportional to \(I_2\), while the D/N support and mixed branch are proportional to \(vv^T\).
+\item The static directional load \(\alpha_0\) is positive if the stable denominators are positive.
+\item The outgoing transfer coefficient \(\beta_0\) is a square over a squared determinant.
+\item Projection onto \(e_-\) inserts \((v\cdot e_-)^2\), giving the selected-mode odd coefficient.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~013 normalizes the selected operator and defines \(P_{0,-}=\beta_0s_-/\lambda_-\).  Stage~016 rewrites \(\beta_0\) and \(\alpha_0\) in microscopic coupling variables.  Later retarded stages reuse the fact that the outgoing bridge is carried by the same selected directional load.}
+
+\clearpage

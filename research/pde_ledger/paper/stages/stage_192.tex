@@ -1,0 +1,28 @@
+\section[Stage 192]{Stage 192: Pairwise ratio optimizer}
+\label{stage:192}
+
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.3}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+
+\stagefield{Purpose}{Stage~192 solves the pairwise mixed-ray ratio problem as a finite algebraic optimization over a compact ratio window.}
+
+\stagefield{Inputs}{Imports the pairwise cone, compact ratio coordinate, upper/lower certified objectives, admissibility inequalities, and Stage~189 bracket logic.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage192_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation writes each certified objective as an algebraic function of the ratio, differentiates it, clears radicals and denominators, reduces stationary candidates to quartic equations, and splices those candidates with endpoints and admissibility boundaries.}
+
+\stagefield{Output}{Finite pairwise candidate set, optimized pairwise bracket, special diagonal-neutral and pair-symmetric reductions, pairwise promotion theorem, and mixed-pair winner theorem.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check all pairwise and triple boundary faces are imported from already-certified lower-support ledgers.
+\item Check admissibility windows before including stationary candidates.
+\item Check interval comparison uses certified lower/upper endpoints, not just central predictor values.
+\item Mark candidate evaluation as \StatusNumerical{} when actual local packet values are inserted.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.3} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+
+

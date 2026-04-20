@@ -1,0 +1,37 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage062_family1_quadrupole_pe_map_mathematica_audit.wl
+# Date: 2026-04-20T23:05:15-06:00
+# Elapsed: 8s
+# Exit code: 1
+# Status: FAIL
+#
+
+
+========================================================================================
+STAGE 062 — FAMILY-1 QUADRUPOLE-DEMAND / PE MAP
+========================================================================================
+y_F1 = 1.5294824837146996499271076224024730256136350231989369098174`30.
+A_F1 = 1.00005192880219532865933408371398718122205389006779903584296795859202986062768`50.
+kappa_F1 = 12321/5
+eta_F1 = 37
+Robin residual diff = 2.27450722001540018137746456432194007864412`22.20818001608649*^-55
+PASS: Robin residual
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+Omega(Pe) = (pe*Pi*(2*E^pe*pe + Pi))/((-1 + E^pe)*(4*pe^2 + Pi^2))
+Omega(0+) = 1
+Omega(inf) = Pi/2
+Omega(0+) - 1 = 0
+PASS: Omega(0+) - 1
+Omega(inf) - Pi/2 = 0
+PASS: Omega(inf) - Pi/2
+zeta_F1(Pe) = A_F1 Omega(Pe)^2
+zeta_F1(0+) = 1.00005192880219532865933408371398718122205389006779903584296795859202986062768`50.
+zeta_F1(inf) = 2.46752922945601223332958450157053542039162629715527606086985963108009345061713`50.
+zeta_F1(0+) numeric check diff = 4.046118627643739871812220538900677990358429`14.607016059840094*^-16
+FAIL: zeta_F1(0+) numeric check
+  residual -> 4.046118627643739871812220538900677990358429`14.607016059840094*^-16
+
+EXIT_CODE: 1

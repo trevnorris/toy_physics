@@ -1,0 +1,32 @@
+\section[Stage 056]{Stage 056: Family--1 Reference-Branch Geometry Map}
+\label{stage:056}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusReduced{} / \StatusExactClosure{} for the declared Family--1 reference geometry.}
+\stagefield{Purpose}{Stage~056 fixes the geometry ratios of the first explicit Family--1 branch.}
+\stagefield{Inputs}{The reference finite-throat geometry selected earlier in the program.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage056_family1_geometry_map_sympy_audit_refresh.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage056_family1_geometry_map_sympy_audit_refresh.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage056_family1_geometry_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage056_family1_geometry_map_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The Family--1 reference ratios are
+\begin{equation}
+\label{eq:app-stage056-family1-ratios}
+\boxed{
+\frac{L}{a}=\frac{37}{20},
+\qquad
+\frac{\ell}{a}=\frac{1}{20}}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage056-Lambda-eta}
+\boxed{
+\Lambda_\ell=\frac{L}{\ell}=37,
+\qquad
+\eta=37}.
+\end{equation}
+
+\stagefield{Output}{The Family--1 geometry values \eqref{eq:app-stage056-Lambda-eta}.}
+\stagefield{Downstream use}{Stage~057 uses the healing lock to fix \(\chi_s\) and \(\kappa\).}
+

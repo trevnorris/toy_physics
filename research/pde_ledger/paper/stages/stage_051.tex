@@ -1,0 +1,22 @@
+\section[Stage 051]{Stage 051: Resonance-Corrected Thresholds for the Sech--Gaussian Benchmark}
+\label{stage:051}
+
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} after inserting the benchmark coherence penalty.}
+\stagefield{Purpose}{Stage~051 shows that the first independent-profile benchmark changes the matched thresholds only mildly.}
+\stagefield{Inputs}{The matched window \eqref{eq:app-stage049-Wwindow} and penalty factor \(P_{\rm res}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage051_resonance_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage051_resonance_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage051_resonance_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage051_resonance_thresholds_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The resonance-corrected matched thresholds are multiplied by
+\begin{equation}
+\label{eq:app-stage051-Pres}
+P_{\rm res}\simeq1.005612487760576.
+\end{equation}
+Thus the independent-profile benchmark raises the required wall figure of merit by about \(0.56\%\), not by an order-one factor.
+
+\stagefield{Output}{Threshold correction factor \(P_{\rm res}\).}
+\stagefield{Downstream use}{Stage~052 uses this to state a three-zone support/source verdict.}
+

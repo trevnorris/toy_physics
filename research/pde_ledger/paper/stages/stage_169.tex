@@ -1,0 +1,27 @@
+\section[Stage 169]{Stage 169: Similarity-orbit tangent theorem}
+\label{stage:169}
+
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.3}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~169 is the original-stage audit card for \emph{Similarity-orbit tangent theorem}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+
+\stagefield{Inputs}{This stage imports the coherent local D/N tracking branch, the transfer-shape slope \(\Xi_1\), and the microscopic coherent-kernel variables.  It assumes the positive-coupling state space used for the quotient/orbit theorem.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage169_similarity_orbit_closure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage169_similarity_orbit_closure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage169_similarity_orbit_closure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage169_similarity_orbit_closure_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The derivation changes variables from raw microscopic slippages to tracking, nontracking, and dressing coordinates; integrates them to monomial quotient coordinates; and identifies the zero-defect tangent and finite similarity orbits.}
+
+\stagefield{Output}{Shows the zero-defect equations are the tangent equations of a five-parameter monomial-preserving similarity orbit \(\mathcal G_*\).}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before interpretation.
+\item Check the positive-coupling state-space assumption before invoking the finite orbit theorem.
+\item Check that quotient motion is distinguished from the five-dimensional similarity orbit.
+\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.3} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+

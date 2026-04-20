@@ -1,0 +1,276 @@
+
+========================================================================================
+SECTION I — WEIGHTED GROUPED-METRIC PROJECTOR CALCULUS
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I.1 — Ggrp-orthogonality and norms
+----------------------------------------------------------------------------------------
+ebar^T G ea = 0
+ebar^T G eb = 0
+ea^T G eb = 0
+||ebar||_G^2 - 5 = 0
+||ea||_G^2 - 20 = 0
+||eb||_G^2 - 4 = 0
+
+----------------------------------------------------------------------------------------
+I.2 — Exact projectors
+----------------------------------------------------------------------------------------
+Pbar =
+⎡1/5  2/5  2/5⎤
+⎢             ⎥
+⎢1/5  2/5  2/5⎥
+⎢             ⎥
+⎣1/5  2/5  2/5⎦
+Pa =
+⎡4/5   -2/5  -2/5⎤
+⎢                ⎥
+⎢-1/5  1/10  1/10⎥
+⎢                ⎥
+⎣-1/5  1/10  1/10⎦
+Pb =
+⎡0   0     0  ⎤
+⎢             ⎥
+⎢0  1/2   -1/2⎥
+⎢             ⎥
+⎣0  -1/2  1/2 ⎦
+Pbar^2 - Pbar =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pa^2 - Pa =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pb^2 - Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar Pa =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pa Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar + Pa + Pb - I =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+
+----------------------------------------------------------------------------------------
+I.3 — Exact decomposition of an arbitrary grouped vector
+----------------------------------------------------------------------------------------
+Pbar*x - xbar*ebar =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+Pa*x - ax*ea =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+Pb*x - bx*eb =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+x - (xbar ebar + ax ea + bx eb) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+========================================================================================
+SECTION II — FULL COUPLED BUNDLE COEFFICIENT ASSEMBLY
+========================================================================================
+
+----------------------------------------------------------------------------------------
+II.0 — Representative one-port derivation of Z_n and N_n
+----------------------------------------------------------------------------------------
+Z0 one-port formula = 0
+Z2 one-port formula = 0
+Z4 one-port formula = 0
+N0 one-port formula = 0
+N2 one-port formula = 0
+N4 one-port formula = 0
+
+----------------------------------------------------------------------------------------
+II.1 — Exact grouped decomposition of the coupled conservative coefficients
+----------------------------------------------------------------------------------------
+Dbar0 - (Kbar - Bbar0 - Zbar0) = 0
+aD0 - (aK - aB0 - aZ0) = 0
+bD0 - (bK - bB0 - bZ0) = 0
+Dbar2 + (Mbar + Bbar2 + Zbar2) = 0
+aD2 + (aM + aB2 + aZ2) = 0
+bD2 + (bM + bB2 + bZ2) = 0
+Dbar4 + (Bbar4 + Zbar4) = 0
+aD4 + (aB4 + aZ4) = 0
+bD4 + (bB4 + bZ4) = 0
+
+----------------------------------------------------------------------------------------
+II.2 — The same grouped decomposition applies directly to the outgoing transfer bundle
+----------------------------------------------------------------------------------------
+Nbar0 formula = 0
+aN0 formula = 0
+bN0 formula = 0
+
+========================================================================================
+SECTION III — ISOTROPIC BRANCH, PREFACTORS, AND NORMALIZATION TARGET
+========================================================================================
+
+----------------------------------------------------------------------------------------
+III.1 — Exact isotropic formulas
+----------------------------------------------------------------------------------------
+u2 + D2/D0 = 0
+u4 - (D2^2 - D0 D4)/D0^2 = 0
+P0 - N0/D0 = 0
+P2 - (D0 N2 - 2 D2 N0)/D0^2 = 0
+P4 - exact formula = 0
+
+----------------------------------------------------------------------------------------
+III.2 — Constant-prefactor branch conditions
+----------------------------------------------------------------------------------------
+If P2 = 0, then N2 =
+2⋅D₂⋅N₀
+───────
+  D₀   
+If P2 = P4 = 0, then N4 =
+   ⎛            2⎞
+N₀⋅⎝2⋅D₀⋅D₄ + D₂ ⎠
+──────────────────
+         2        
+       D₀         
+P2 under N2_target = 0
+P4 under N2_target,N4_target = 0
+
+----------------------------------------------------------------------------------------
+III.3 — Universal normalization product
+----------------------------------------------------------------------------------------
+P0 normalization target = 0
+Stage-5 Gamma5_port anchor = 0
+Gamma5_port =
+   5  
+  a   
+──────
+     5
+27⋅cₛ 
+Required mhat^2 * P0 =
+        5 
+ 54⋅G⋅cₛ  
+──────────
+   5  5  2
+5⋅a ⋅c ⋅m̂ 
+ratio target at mhat=1 = 0
+
+========================================================================================
+SECTION IV — FIRST-ORDER ANISOTROPY TRANSPORT LAWS
+========================================================================================
+
+----------------------------------------------------------------------------------------
+IV.1 — Generic first-order formulas
+----------------------------------------------------------------------------------------
+du2 + (dD2 + u2 dD0)/D0 = 0
+dP0 - (dN0 - P0 dD0)/D0 = 0
+du2 =
+-D₀⋅dD₂ + D₂⋅dD₀
+────────────────
+        2       
+      D₀        
+dP0 =
+D₀⋅dN₀ - N₀⋅dD₀
+───────────────
+        2      
+      D₀       
+
+----------------------------------------------------------------------------------------
+IV.2 — Grouped-defect form
+----------------------------------------------------------------------------------------
+a_u2 formula = 0
+b_u2 formula = 0
+a_P0 formula = 0
+b_P0 formula = 0
+
+========================================================================================
+SECTION V — MONOTONICITY DERIVATIVES OF THE ISOTROPIC NORMALIZATION RATIO
+========================================================================================
+
+----------------------------------------------------------------------------------------
+V.1 — Exact derivatives
+----------------------------------------------------------------------------------------
+dP0/dN0 =
+    -1     
+───────────
+B₀ - K + Z₀
+dP0/dB0 =
+      N₀      
+──────────────
+             2
+(B₀ - K + Z₀) 
+dP0/dZ0 =
+      N₀      
+──────────────
+             2
+(B₀ - K + Z₀) 
+dP0/dK  =
+     -N₀      
+──────────────
+             2
+(B₀ - K + Z₀) 
+dP0/dN0 - 1/D0 = 0
+dP0/dB0 - N0/D0^2 = 0
+dP0/dZ0 - N0/D0^2 = 0
+dP0/dK + N0/D0^2 = 0
+
+========================================================================================
+FINAL STAGE-6 LEDGER
+========================================================================================
+Verified with SymPy:
+  • the grouped real P2 bundle has a natural weighted metric Ggrp = diag(1,2,2)
+    with exact orthogonal projectors Pbar, Pa, Pb;
+  • any grouped coefficient vector decomposes exactly as
+    x = xbar ebar + a_x ea + b_x eb;
+  • the full coupled bundle coefficients are
+    D_A0 = K_A - B_A0 - Z_A0,
+    D_A2 = -(M_A + B_A2 + Z_A2),
+    D_A4 = -(B_A4 + Z_A4),
+    with an independent outgoing-transfer bundle N_An;
+  • the grouped trace/anomaly parts of D_An and N_An inherit linearly from the
+    microscopic wall, BdG, and Maxwell/mixed sectors;
+  • on the isotropic branch the Stage-5 formulas reduce exactly to
+    u2 = -D2/D0, u4 = (D2^2 - D0 D4)/D0^2, P0 = N0/D0,
+    and the universal normalization test is
+    mhat_0^2 P0 = 54 G c_s^5 / (5 a^5 c^5);
+  • the constant-prefactor branch conditions are
+    N2 = 2 D2 N0 / D0 and
+    N4 = [2 D0(D2 N2 + D4 N0) - 3 D2^2 N0]/D0^2;
+  • to first order around isotropy,
+    delta u2 = -(delta D2 + u2 delta D0)/D0,
+    delta P0 = (delta N0 - P0 delta D0)/D0,
+    so conservative or transfer anisotropy can be tracked separately;
+  • and on a stable isotropic branch, increasing N0 or increasing the conservative
+    support softening B0,Z0 raises P0, while increasing K lowers it.

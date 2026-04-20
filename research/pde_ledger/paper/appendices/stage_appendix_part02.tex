@@ -1,0 +1,152 @@
+\chapter{Stage Appendix: Part II -- Conservative Response Kernels and Grouped \texorpdfstring{$P_2$}{P2} Normalization Language}
+\label{app:stage-part-2}
+
+\section*{Stages 007--019; anchor MTDC-T5}
+\addcontentsline{toc}{section}{Stages 007--019; anchor MTDC-T5}
+
+This appendix is the detailed verification ledger for the second theorem block of the moving-throat derivation.  The corresponding main-text chapter, \cref{chap:part02_conservative_response}, explains why this block is needed in the larger derivation.  The job here is more mechanical: to preserve the exact reduced algebra, the branch assumptions, the finite-throat overlap calculations, the selected-mode normalization formulas, and the final admissibility frontier that Stages~007--019 derive.
+
+Part~I ended with a full grouped real \(P_2\) wall/BdG/Maxwell/mixed bundle.  In that bundle the isotropic outgoing-normalization question had already collapsed to the ratio
+\begin{equation}
+\label{eq:app-part02-entry-ratio}
+\widehat m_0^{\,2}\frac{N_0}{K-B_0-Z_0}
+=
+\frac{54G c_s^5}{5a^5c^5}.
+\end{equation}
+Part~II asks what this ratio means once the grouped coefficients are no longer left as formal packets.  The stages here introduce explicit angular and axial overlaps, prove the \(O(3)\) isotropy collapse, identify the first weak-axisymmetric splitting law, select a finite-throat wall profile by a rank-one Schur complement, eliminate the abstract source-map factor on the natural D/N branch, and reduce the first selected quadrupole branch to the exact two-function admissibility test
+\begin{equation}
+\label{eq:app-part02-final-FG-preview}
+F(\xi_{\rm req},\delta)=R_{\rm target},
+\qquad
+M_{\rm mix}\leq G(\xi_{\rm req},\delta).
+\end{equation}
+
+
+\paragraph{Source layout.}
+Stages~007--019 are now sourced from the canonical files \StageFile{stages/stage_007.tex} through \StageFile{stages/stage_019.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+
+\begin{longtable}{@{}L{0.10\textwidth}L{0.29\textwidth}L{0.22\textwidth}L{0.33\textwidth}@{}}
+\caption{Part II stage-audit map.}\label{tab:app-part02-stage-map}\\
+\toprule
+Stage & Source stage & Primary status & Verification output \\
+\midrule
+\endfirsthead
+\toprule
+Stage & Source stage & Primary status & Verification output \\
+\midrule
+\endhead
+007 & Overlap integrals, \(O(3)\) isotropy, and first axisymmetric splitting & \StatusExactClosure{} / \StatusReduced{} & Canonical real-STF basis, angular source-map identity, isotropic grouped collapse, and weak-axisymmetric signature \(b=3a\). \\
+\addlinespace
+008 & Minimal isotropic single-mode closure & \StatusExactClosure{} / \StatusOpen{} & Explicit one-BdG/one-mixed-pair normalization ratio and stability gate. \\
+\addlinespace
+009 & Concrete finite-throat axial modes & \StatusExactClosure{} & D/N overlap \(\kappa=2\sqrt2/\pi\), branch-level normalization law, and required stiffness formula. \\
+\addlinespace
+010 & First nonconstant finite-throat wall/brane family & \StatusExactClosure{} & Profile overlap \(\kappa(\theta)\), blind-angle no-go, max-coupling angle, and dressed stiffness equation. \\
+\addlinespace
+011 & Loaded axial profile selection & \StatusExactClosure{} & Rank-one loaded wall eigenproblem, lower-mode angle law, and softening threshold. \\
+\addlinespace
+012 & Dynamic loading from coupled wall/BdG/Maxwell/mixed operator & \StatusExactClosure{} / \StatusReduced{} & Schur-complement split \(\Sigma_{\rm wall}=\Xi I_2+\alpha vv^T\) and selected odd quadrupole coefficient. \\
+\addlinespace
+013 & Selected-mode normalized response & \StatusExactClosure{} & Selected prefactor \(P_{0,-}=\beta_0s_-/\lambda_-\) and selected target. \\
+\addlinespace
+014 & Reachability and stable-side monotonicity & \StatusExactClosure{} & Strict monotonicity of \(P_{0,-}\) and unique stable crossing. \\
+\addlinespace
+015 & Source map from finite-throat mode integrals & \StatusExactClosure{} & Natural D/N source map \(\widehat m_-^2=s_-/\kappa_0^2\). \\
+\addlinespace
+016 & Microscopic normalization equation and stability gate & \StatusExactClosure{} / \StatusOpen{} & Coupling-level selected target, stability inequalities, onset criterion, and weak-loading expansion. \\
+\addlinespace
+017 & Softening-depth normal form & \StatusExactClosure{} & Scalar branch variable \(x=A-\lambda_-\), exact \(\alpha_0(x)\), \(s_-(x)\), \(N_-(x)\), and support-loading formula. \\
+\addlinespace
+018 & Dimensionless D/N normalization locus & \StatusExactClosure{} & Shape function \(F(\xi,\delta)\), monotonicity, endpoint theorem, and total loading. \\
+\addlinespace
+019 & Dimensionless support-feasibility frontier & \StatusExactClosure{} / \StatusOpen{} & Shape function \(G(\xi,\delta)\), monotonicity, and final admissibility region in \((R_{\rm target},M_{\rm mix})\). \\
+\bottomrule
+\end{longtable}
+
+\paragraph{Audit philosophy.}
+The calculations in this appendix are exact inside the declared reduced closure.  In particular, angular identities, overlap integrals, Schur complements, eigenvalue formulas, monotonicity derivatives, source-map reductions, and dimensionless branch functions are not fitted.  The closure assumptions are still visible: finite-throat axial profiles, stable normal-mode reduction, one selected D/N family, and a local bilinear wall/support/outgoing operator are reduced descriptions of the full moving-throat PDE.  The final placement of the actual nonlinear branch on the admissible \((F,G)\) frontier remains open.
+
+\paragraph{Notation warning.}
+The labels \(20,21,22\) are grouped real \(P_2\) lanes, not spacetime indices.  The labels \(21\) and \(22\) each abbreviate a real cosine/sine pair when the full five-component real STF basis is being described.  The symbol \(G\) appears both as Newton's constant and as a support-feasibility function; the context or subscript distinguishes them.  For the support-feasibility function, this appendix always writes \(G(\xi,\delta)\).
+
+\begin{definition}[Quadrupole target used throughout Part II]
+\label{def:app-part02-NQ-target}
+The universal scalar target carried by the reduced outgoing quadrupole branch is
+\begin{equation}
+\label{eq:app-part02-NQ-target}
+\boxed{
+N_Q^{\rm target}:=\frac{54G c_s^5}{5a^5c^5}}.
+\end{equation}
+Thus the isotropic Part-I target is \(\widehat m_0^{\,2}P_0=N_Q^{\rm target}\), and the selected D/N target below is \(\widehat m_-^{\,2}P_{0,-}=N_Q^{\rm target}\).
+\end{definition}
+
+\begingroup
+\let\clearpage\relax
+\clearpage
+\input{stages/stage_007}
+\clearpage
+\input{stages/stage_008}
+\clearpage
+\input{stages/stage_009}
+\clearpage
+\input{stages/stage_010}
+\clearpage
+\input{stages/stage_011}
+\clearpage
+\input{stages/stage_012}
+\clearpage
+\input{stages/stage_013}
+\clearpage
+\input{stages/stage_014}
+\clearpage
+\input{stages/stage_015}
+\clearpage
+\input{stages/stage_016}
+\clearpage
+\input{stages/stage_017}
+\clearpage
+\input{stages/stage_018}
+\clearpage
+\input{stages/stage_019}
+\endgroup
+
+\section{Part II appendix closure and handoff to Part III}
+\label{sec:app-part02-closure}
+
+Stages~007--019 close the second verification block.  The block does not prove that the full nonlinear moving-throat PDE realizes the desired outgoing-normalization value.  It proves something narrower and necessary: inside the declared finite-throat selected-branch closure, the normalization problem is no longer a vague choice of prefactors.  It is a controlled branch-placement problem with exact angular normalization, exact finite-throat D/N overlap constants, exact selected-mode spectral formulas, and exact dimensionless frontier functions.
+
+The stable outputs are:
+\begin{enumerate}[leftmargin=2.2em]
+\item The canonical real-STF angular source map has \(\widehat m_{\rm ang}=1\).
+\item Any \(O(3)\)-invariant reduced kernel collapses the grouped real \(20/21/22\) lanes to a common \(D_n,N_n\) packet.
+\item The first weak-axisymmetric quadrupole splitting has signature \((1,1/2,-1)\), so grouped defects satisfy \(b=3a\).
+\item The minimal isotropic one-mode branch has an explicit target ratio and stability gate.
+\item The concrete finite-throat D/N branch has \(\kappa=2\sqrt2/\pi\).
+\item The first nonconstant N/N wall family has an exact blind-angle no-go and a max-coupling angle with \(\sin^2\theta_{\max}=2/11\).
+\item The support/mixed load selects the wall profile dynamically through a rank-one matrix \(K_{\rm bare}-\alpha vv^T\).
+\item The dynamic wall/BdG/Maxwell/mixed Schur complement splits as \(\Xi I_2+\alpha vv^T\).
+\item The selected outgoing prefactor is \(P_{0,-}=\beta_0s_-/\lambda_-\), and the natural D/N source map changes the invariant product to \(N_-=\beta_0s_-^2/(\kappa_0^2\lambda_-)\).
+\item The selected branch is exactly parameterized by the softening depth \(x=A-\lambda_-\).
+\item The final reduced admissibility problem is the two-condition frontier
+\begin{equation}
+F(\xi_{\rm req},\delta)=R_{\rm target},
+\qquad
+M_{\rm mix}\leq G(\xi_{\rm req},\delta).
+\end{equation}
+\end{enumerate}
+
+The handoff to Part~III is therefore precise.  The next block must compute the continuum-kernel quantities
+\begin{equation}
+A,
+\qquad
+\Delta K_{\rm ax},
+\qquad
+\beta_0,
+\qquad
+M_{\rm mix},
+\qquad
+R_{\rm target},
+\qquad
+\delta,
+\end{equation}
+and then ask whether the actual support-completed branch lands in the admissible region.  Part~II has supplied the frontier; Part~III begins the placement problem.

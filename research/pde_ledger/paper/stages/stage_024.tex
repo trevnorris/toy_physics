@@ -1,0 +1,66 @@
+\section[Stage 024]{Stage 024: Rank--2 Support Completion and Exact Support-Loading Theorem}
+\label{stage:024}
+
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the two-rank selected-mode determinant.}
+\stagefield{Purpose}{Stage~024 adds a second loading direction for physical support and proves that the selected-branch determinant remains linear in the support loading.}
+\stagefield{Inputs}{Mixed baseline \(m\), mixed direction \((1,q)\), support loading \(n\), support direction \((1,r)\), and selected lower depth \(\xi\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage024_rank2_support_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage024_rank2_support_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage024_rank2_support_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage024_rank2_support_mathematica_audit.txt}.}
+
+\subsection*{Derivation}
+
+The two-direction loaded stiffness matrix is
+\begin{equation}
+\label{eq:app-stage024-loaded-matrix}
+\frac{K_{\rm loaded}}{A_0}
+=\operatorname{diag}(1,1+\delta)
+-m(1,q)^T(1,q)
+-n(1,r)^T(1,r).
+\end{equation}
+The determinant condition at \(\lambda_-=A_0(1-\xi)\) is
+\begin{equation}
+\label{eq:app-stage024-Dsel}
+D_{\rm sel}
+=\xi(\delta+\xi)
+-m[\delta+(1+q^2)\xi]
+-n[\delta+(1+r^2)\xi]
++mn(q-r)^2.
+\end{equation}
+Solving the linear equation \(D_{\rm sel}=0\) for \(n\) gives
+\begin{equation}
+\label{eq:app-stage024-nreq}
+\boxed{
+ n_{\rm req}(\xi,\delta;m,q,r)
+=\frac{\xi(\delta+\xi)-m[\delta+(1+q^2)\xi]}
+{\delta+(1+r^2)\xi-m(q-r)^2}}.
+\end{equation}
+Differentiating yields the exact monotonicity law
+\begin{equation}
+\label{eq:app-stage024-nreq-derivative}
+\boxed{
+\frac{\partial n_{\rm req}}{\partial m}
+=-\frac{[\delta+(1+qr)\xi]^2}
+{[\delta+(1+r^2)\xi-m(q-r)^2]^2}<0
+}
+\end{equation}
+on every regular branch.  Additional mixed baseline always lowers the support loading needed to reach the same selected depth.
+
+Two special closures are important:
+\begin{equation}
+\label{eq:app-stage024-tracking}
+r=q
+\quad\Longrightarrow\quad
+n_{\rm req}=G_q(\xi,\delta)-m,
+\end{equation}
+and, with source-tied support and \(q=tR_U\),
+\begin{equation}
+\label{eq:app-stage024-source-tied}
+ n_{\rm req}^{\rm src}
+=\frac{\xi(\delta+\xi)-m[\delta+(1+\lambda_0R_U^2)\xi]}
+{\delta+(1+\lambda_0)\xi-m\lambda_0(R_U-1)^2}.
+\end{equation}
+
+\stagefield{Output}{The support-loading theorem \eqref{eq:app-stage024-nreq}, its monotonicity \eqref{eq:app-stage024-nreq-derivative}, and the tracking/source-tied alternatives.}
+\stagefield{Downstream use}{Stage~025 computes normalization with three distinct directions; Stage~028 shows the first coherent D/N kernel lands on the tracking surface.}
+

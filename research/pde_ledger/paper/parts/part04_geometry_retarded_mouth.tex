@@ -1,0 +1,1214 @@
+
+\chapter{Geometry Lane, Retarded Closure, Outlet/Core/Mouth Compensation}
+\label{chap:part04_geometry_retarded_mouth}
+
+\section*{Stage range: 074--146}
+\addcontentsline{toc}{section}{Stage range: 074--146}
+
+Part IV starts after the support/source side is no longer the dominant reduced uncertainty.  Parts I--III built the parent wall/BdG/Maxwell/mixed response compiler, the grouped real \(P_2\) normalization language, the selected finite-throat support front end, and the first explicit Family--1 support verdict.  The question here is what still prevents the reduced passive/outgoing quadrupole branch from becoming a usable retarded branch.
+
+The answer is progressively narrowed across Stages 74--146.  First, the geometry lane is shown not to contaminate the isotropic grouped \(P_2\) carrier at linear order, so the conservative quadrupole module collapses to the forced contact-plus-pole split
+\begin{equation}
+\label{eq:part04-intro-3quarter-module}
+\widehat Y_Q^{\rm cons}(\omega)
+=
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+\end{equation}
+The endpoint is again a reduced obstruction packet, not a finished nonlinear branch.  The remaining \(2.5\)PN ambiguity collapses to the outgoing normalization factor \(\chi_Q\); outlet and core models isolate the viable compensated branch; mouth-source and co-evolving corrections then compress the last first-order obstruction to one microscopic normal coordinate.
+
+\section*{Part IV at a glance}
+
+\begin{readermap}
+\item[Primary question] Once support/source closure is no longer the bottleneck, what reduced datum still blocks a usable retarded quadrupole branch?
+\item[Starting inputs] The Part III Family--1 support verdict, the grouped passive/outgoing quadrupole packet, and the reduced outlet/core/mouth closures.
+\item[Delivers] The geometry-lane firewall, the factorization to \(\chi_Q\), the compensated outlet and core conditions, the canonical mouth branch, and the final off-family defect scalar.
+\item[Used by] Part V as the source of the surviving off-family normal coordinate and by all later realization work as the origin of the outgoing-normalization and branch-defect language.
+\item[Result anchors] \resultanchor{MTDC-T8}.
+\end{readermap}
+
+\paragraph{Stage packets.}
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.38\textwidth}@{}}
+\toprule
+Stages & Packet & Status & Carry-forward output \\
+\midrule
+074--089 & Geometry firewall and reduced retarded finish line & \StatusExactClosure{} / \StatusOpen{} & Isotropic geometry decoupling, the forced \(3/4+1/4\) conservative module, factorization of the \(2.5\)PN condition, exact outgoing \(l=2\) DtN fingerprint, and the canonical statement \(\chi_Q=1\) within reduced closure. \\
+\addlinespace
+090--103 & Outlet deformation and compensated core outlet & \StatusExactClosure{} / \StatusReduced{} & General \(\chi_Q\) deformation algebra, Robin and mixed outlet audit, compensated Robin--mixed branch, two-channel core realization, and the surviving parent-level core-balance target. \\
+\addlinespace
+104--128 & Mouth-source selection and canonical mouth branch & \StatusExactClosure{} / \StatusReduced{} / \StatusNumerical{} & Geometric mouth selection, positive mouth-source families, boundary-layer and gain laws, self-consistent mouth closure, and the unique finite-bias canonical mouth branch. \\
+\addlinespace
+129--146 & Co-evolving corrections and final defect scalar & \StatusExactClosure{} / \StatusNumerical{} / \StatusOpen{} & Mouth rigidity corrections, full-profile Family--1 mouth correction, renormalized co-evolving canonical point, defect transport onto the compensated outlet, D/N similarity law, and the off-family normal coordinate \(\delta_\perp\). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\claimstatus{Mixed.  The algebraic split, obstruction formulas, harmonic decoupling, outgoing DtN expansion, deformation laws, Schur complements, compensation surfaces, fixed-point laws, and first-order transport maps are \StatusExactClosure{} once their declared reduced models are adopted.  Stable normal-mode reductions, finite D/N tube identifications, Family--1 geometry choices, positive mouth-layer ansatz, self-matched susceptibility closure, and co-evolving fixed-point branch are \StatusReduced{} or \StatusEffective{} where explicitly stated.  The numerically located co-evolving canonical point and representative correction values are \StatusNumerical{}.  Actual realization by the completed nonlinear moving-throat PDE remains \StatusOpen{}.}
+
+\derivationfield{What this part proves}{Part IV shows that the isotropic geometry lane is not the linear obstruction, collapses the \(2.5\)PN retarded issue to the outgoing normalization factor, and then drives the outlet/core/mouth program to a first-order off-family defect scalar.}
+\derivationfield{What this part does not prove}{It does not prove that the actual branch lands on the canonical or renormalized compensated point everywhere needed for full realization. The retarded compiler is narrowed sharply, but the physical branch packet is still not closed here.}
+\derivationfield{Why later parts need it}{Part V starts from the surviving off-family normal coordinate, and all later realization work inherits the outgoing-normalization, mouth/core, and branch-defect language established in this chapter.}
+
+\section{Block contract and citation boundary}
+\label{sec:part04-block-contract}
+
+The contract of Part IV is to prevent the retarded quadrupole branch from being overclaimed.  It does not assert that the full nonlinear PDE has been solved.  It proves that, inside the declared reduced closure sequence, the active uncertainty can be compressed from many apparent degrees of freedom to one scalar branch-realization question at a time.
+
+The chain of compression is
+\begin{equation}
+\label{eq:part04-compression-chain}
+\text{geometry lane}
+\longrightarrow
+(\epsilon_2,\epsilon_4)
+\longrightarrow
+N_Q
+\longrightarrow
+\chi_Q
+\longrightarrow
+\Delta_Q
+\longrightarrow
+\delta\gamma_W
+\longrightarrow
+\Xi_{\rm slip}
+\longrightarrow
+\delta_\perp .
+\end{equation}
+Each arrow is a theorem inside a reduced block, not a statement that the final scalar is already zero on the actual branch.
+
+\begin{theorem}[Part IV reduced retarded-compression theorem]
+\label{thm:part04-reduced-retarded-compression}
+Inside the declared grouped-\(P_2\), static-geometry, passive/outgoing, compensated outlet, and co-evolving Family--1 mouth/core closures, the retarded quadrupole verification problem admits the following nested reductions.
+\begin{enumerate}[leftmargin=2.2em]
+\item The isotropic geometry lane contributes no dynamic \(O(\omega^2)\) or \(O(\omega^4)\) contamination to the grouped real \(P_2\) carrier at linear order.
+\item The conservative quadrupole module is therefore \eqref{eq:part04-intro-3quarter-module}.
+\item The point-particle \(2.5\)PN normalization condition factorizes as
+\begin{equation}
+\label{eq:part04-main-factorization}
+\widehat m_0^{\,2}\chi_Q N_Q=1.
+\end{equation}
+On the natural source-map branch, the remaining retarded obstruction is \(\Delta_Q=\chi_Q-1\).
+\item The canonical outgoing \(l=2\) DtN branch has \(\chi_Q=1\).
+\item In the explicit compensated Robin--mixed outlet class, first-order even preservation forces \(\delta\mathfrak g=0\) and \(\delta\kappa_W=0\), so the remaining first-order defect is purely odd.
+\item In the concrete D/N mixed-tube realization, that odd defect is zero whenever the tangential deformation preserves the D/N similarity law.
+\item The first off-family deviation from the exact parent compensation family is measured by a single normal coordinate \(\delta_\perp\).
+\end{enumerate}
+Thus the end of Part IV is not a broad family of remaining outlet defects.  It is the concrete microscopic question whether the true branch has \(\delta_\perp=0\), or if not, what value that scalar takes.
+\end{theorem}
+
+\begin{proof}
+Stages 74--82 prove the geometry and conservative-normalization reductions.  Stages 83--89 prove the retarded factorization and canonical DtN coefficient.  Stages 90--100 classify admissible low-frequency outlet deformations and identify the compensated Robin--mixed class.  Stages 101--122 derive parent and mouth-layer parameters for that class.  Stages 123--140 select and renormalize the regular Family--1 co-evolving branch.  Stages 141--146 linearize the remaining defect and show that the outlet, D/N similarity, and parent compensation defects are all images of the same off-family normal coordinate.
+\end{proof}
+
+\section{Geometry-lane firewall}
+\label{sec:part04_geometry_retarded_mouth:geometry-lane-firewall}
+
+\subsection{Why the geometry lane had to be checked}
+\label{subsec:part04-geometry-why}
+
+The conservative side enters Part IV with two facts already frozen.  First, the higher conservative quadrupole payload lives in the grouped real \(P_2\) bundle.  Second, the conservative PN assembly also contains a geometry completion.  If the geometry completion were dynamically active through \(O(\omega^4)\), then the clean one-pole grouped branch used in the retarded bridge could be contaminated before the outgoing branch was even tested.
+
+The check therefore begins with the most general reduced isotropic ansatz needed at this order:
+\begin{equation}
+\label{eq:part04-dynamic-geometry-ansatz}
+K_Q^{\rm cons}(\omega)
+=
+K_g(\omega)+K_{P2}(\omega),
+\qquad
+K_{P2}(\omega)=\frac{K_{\rm pole}}{1-\omega^2/\Omega_Q^2},
+\end{equation}
+where
+\begin{equation}
+\label{eq:part04-geometry-even-expansion}
+K_g(\omega)=K_{g,0}+K_{g,2}\omega^2+K_{g,4}\omega^4+O(\omega^6).
+\end{equation}
+The minimal isotropic branch identity is
+\begin{equation}
+\label{eq:part04-minimal-branch-identity}
+K_0K_4=4K_2^2.
+\end{equation}
+If \(K_{g,2}=K_{g,4}=0\), inserting \eqref{eq:part04-dynamic-geometry-ansatz} into \eqref{eq:part04-minimal-branch-identity} gives
+\begin{equation}
+\label{eq:part04-geometry-static-split}
+K_{g,0}=3K_{\rm pole},
+\qquad
+K_{\rm pole}=\frac{K_0}{4},
+\qquad
+K_{g,0}=\frac{3K_0}{4},
+\end{equation}
+which is exactly the conservative split in \eqref{eq:part04-intro-3quarter-module}.
+
+\subsection{Exact obstruction if geometry is dynamic}
+\label{subsec:part04-dynamic-geometry-obstruction}
+
+If the geometry lane carries dynamic even moments, the simple split is replaced by an exact obstruction formula.  Define
+\begin{equation}
+\label{eq:part04-eps2-eps4}
+\epsilon_2:=\frac{\Omega_Q^2K_{g,2}}{K_{\rm pole}},
+\qquad
+\epsilon_4:=\frac{\Omega_Q^4K_{g,4}}{K_{\rm pole}}.
+\end{equation}
+Then the static pole fraction becomes
+\begin{equation}
+\label{eq:part04-cpole-dynamic-geometry}
+c_{\rm pole}
+=
+\frac{K_{\rm pole}}{K_0}
+=
+\frac{1+\epsilon_4}{4(1+\epsilon_2)^2}.
+\end{equation}
+For small contamination,
+\begin{equation}
+\label{eq:part04-cpole-small-expansion}
+c_{\rm pole}
+=
+\frac14\left(1+\epsilon_4-2\epsilon_2+O(\epsilon^2)\right).
+\end{equation}
+Thus the static-geometry hypothesis is not a cosmetic simplification.  It is the exact condition under which the pole fraction is \(1/4\).
+
+\subsection{Isotropic decoupling}
+\label{subsec:part04-isotropic-decoupling}
+
+The distributed wall action on an isotropic reference throat is block diagonal in angular momentum.  With
+\begin{equation}
+\eta(\Omega,w,t)
+=
+g(w,t)Y_{00}(\Omega)+\sum_A q_A(w,t)Y_{2A}(\Omega)+\cdots,
+\end{equation}
+where \(A\) ranges over the real quadrupole harmonics, every possible quadratic cross term between \(g\) and \(q_A\) is proportional to one of
+\begin{equation}
+\int_{S^2}Y_{00}Y_{2A}\,d\Omega,
+\qquad
+\int_{S^2}\nabla_{S^2}Y_{00}\cdot\nabla_{S^2}Y_{2A}\,d\Omega,
+\qquad
+\int_{S^2}Y_{00}(-\Delta_{S^2})Y_{2A}\,d\Omega.
+\end{equation}
+All three vanish.  Therefore
+\begin{equation}
+\label{eq:part04-l0-l2-block-zero}
+M_{0\leftrightarrow2}=0
+\end{equation}
+inside the isotropic quadratic wall theory, and the geometry contamination parameters vanish:
+\begin{equation}
+\label{eq:part04-eps-zero-isotropic}
+K_{g,2}=K_{g,4}=0,
+\qquad
+\epsilon_2=\epsilon_4=0.
+\end{equation}
+
+\begin{proposition}[Second-order onset of geometry contamination]
+\label{prop:part04-second-order-geometry-contamination}
+If weak anisotropy or operator noncommutation generates a bilinear mixing term \(\chi M_0qg\) between one grouped quadrupole coordinate and one scalar geometry coordinate, then after eliminating \(g\), the first dynamic geometry contamination is quadratic in \(\chi\).
+\end{proposition}
+
+\begin{proof}
+Let
+\begin{equation}
+D_q(\omega)=K_{\rm stat}+\frac{K_{\rm pole}}{1-\omega^2/\Omega_Q^2},
+\qquad
+D_g(\omega)=G_0+G_2\omega^2+G_4\omega^4+O(\omega^6).
+\end{equation}
+The Schur complement is
+\begin{equation}
+D_{\rm eff}(\omega)=D_q(\omega)-\frac{\chi^2M_0^2}{D_g(\omega)}.
+\end{equation}
+Expanding \(D_g^{-1}\) gives
+\begin{equation}
+K_{g,2}^{\rm eff}=\frac{\chi^2M_0^2G_2}{G_0^2},
+\qquad
+K_{g,4}^{\rm eff}=\frac{\chi^2M_0^2(G_0G_4-G_2^2)}{G_0^3}.
+\end{equation}
+Therefore \(\epsilon_2,\epsilon_4=O(\chi^2)\).
+\end{proof}
+
+The geometry-lane firewall is therefore an exact reduced selection rule: on the isotropic branch the geometry lane is dynamically inert through the relevant even orders, while weak contamination is second order in the explicit mixing source.
+
+\section{Retarded \texorpdfstring{$2.5$}{2.5}PN collapse}
+\label{sec:part04_geometry_retarded_mouth:retarded-2-5-pn-collapse}
+
+\subsection{From conservative module to one scalar defect}
+\label{subsec:part04-retarded-one-scalar}
+
+With the geometry-lane check complete, the actual isotropic conservative quadrupole response can be written as
+\begin{equation}
+\label{eq:part04-kbar-cons}
+\overline K_Q^{\rm cons}(\omega)
+=
+\overline K_0
+\left[
+\frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+\right].
+\end{equation}
+Its even moments are
+\begin{equation}
+\label{eq:part04-kbar-even-moments}
+\overline K_2=\frac{\overline K_0}{4\Omega_Q^2},
+\qquad
+\overline K_4=\frac{\overline K_0}{4\Omega_Q^4}.
+\end{equation}
+The target static normalization is
+\begin{equation}
+\label{eq:part04-kbar0-target}
+\overline K_0^{\rm target}
+=
+\frac{64G\Omega_Q^5}{45c^5}
+=
+\frac{54G c_s^5}{5a^5c^5},
+\qquad
+\Omega_Q=\frac{3c_s}{2a}.
+\end{equation}
+Thus the conservative defect is the scalar
+\begin{equation}
+\label{eq:part04-NQ-def}
+N_Q:=\frac{\overline K_0}{\overline K_0^{\rm target}}.
+\end{equation}
+All even ratios scale by the same \(N_Q\).  The Family--1 support side is automatic on this actual isotropic branch because the forced branch value \(\rho_\alpha=4/3\) gives
+\begin{equation}
+\label{eq:part04-blocked-zeta-req}
+\zeta_{\rm req}^{\rm act}(\epsilon_{\rm blk})
+=
+\frac{1}{3-2\epsilon_{\rm blk}},
+\end{equation}
+which is below the Family--1 constructive support ceiling throughout the admissible blocked regime.
+
+\subsection{Retarded factorization}
+\label{subsec:part04-retarded-factorization}
+
+The retarded one-pole grouped branch is written
+\begin{equation}
+\label{eq:part04-retarded-one-pole}
+\widehat Y_Q^{\rm ret}(\omega)
+=
+\frac34+\frac14
+\frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5}
++O(\omega^6),
+\end{equation}
+where
+\begin{equation}
+\label{eq:part04-sigmaQcan}
+\sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+\end{equation}
+The odd coefficient is
+\begin{equation}
+\label{eq:part04-gamma5-chiN}
+\overline\Gamma_5
+=\chi_Q\frac{9\overline K_0}{32\Omega_Q^5}.
+\end{equation}
+Consequently
+\begin{equation}
+\label{eq:part04-factorized-defect-again}
+\frac{\overline\Gamma_5}{2G/(5c^5)}=\chi_Q N_Q,
+\qquad
+\widehat m_0^{\,2}\chi_Q N_Q=1.
+\end{equation}
+On the natural point-particle source-map branch, \(\widehat m_0=1+O(a^2/r^2)\), so in the strict point-particle limit the remaining obstruction is
+\begin{equation}
+\label{eq:part04-DeltaQ-def}
+\Delta_Q:=\chi_Q-1.
+\end{equation}
+Higher odd denominator terms beginning at \(O(\omega^7)\) are invisible to the point-particle \(2.5\)PN coefficient.
+
+\subsection{Canonical outgoing DtN branch}
+\label{subsec:part04-canonical-dtn}
+
+Let
+\begin{equation}
+\label{eq:part04-z-def}
+z:=\frac{a\omega}{c_s}.
+\end{equation}
+The exact outgoing spherical \(l=2\) DtN operator is
+\begin{equation}
+\label{eq:part04-Lambda-out-dtn}
+\Lambda_2^{\rm out}(z)
+=
+z\frac{d}{dz}\ln h_2^{(1)}(z)
+=
+-3+\frac{z^2}{3}+\frac{z^4}{9}+i\frac{z^5}{9}+O(z^6).
+\end{equation}
+Normalizing by the static slot gives
+\begin{equation}
+\label{eq:part04-Yout-dtn}
+\widehat Y_2^{\rm out}(z)
+=
+\frac{-3}{\Lambda_2^{\rm out}(z)}
+=
+1+\frac{z^2}{9}+\frac{4z^4}{81}+i\frac{z^5}{27}+O(z^6).
+\end{equation}
+Comparison with \eqref{eq:part04-retarded-one-pole} fixes
+\begin{equation}
+\label{eq:part04-chiQ-equals-one}
+\chi_Q=1
+\end{equation}
+for the canonical compact passive/outgoing DtN branch.  The canonical invariant coefficients are then
+\begin{equation}
+\label{eq:part04-canonical-invariant-coeffs}
+\overline K_0=\frac{54Gc_s^5}{5a^5c^5},
+\qquad
+\overline K_2=\frac{6Gc_s^3}{5a^3c^5},
+\qquad
+\overline K_4=\frac{8Gc_s}{15ac^5},
+\qquad
+\overline\Gamma_5=\frac{2G}{5c^5}.
+\end{equation}
+
+\begin{theorem}[Conditional reduced \(2.5\)PN closure]
+\label{thm:part04-conditional-25pn-closure}
+Within the reduced isotropic grouped-\(P_2\) hierarchy, the nonspinning point-particle \(2.5\)PN branch closes if the actual passive/outgoing moving-throat branch realizes the canonical outgoing DtN coefficient \(\chi_Q=1\) and the natural source-map limit \(\widehat m_0\to1\).  If the actual branch has \(\chi_Q\neq1\), the entire reduced failure is measured by \(\Delta_Q=\chi_Q-1\) at leading order.
+\end{theorem}
+
+\section{Outlet DtN and Robin outlet tests}
+\label{sec:part04_geometry_retarded_mouth:outlet-dtn-and-robin-outlet-tests}
+
+\subsection{General isotropic deformation algebra}
+\label{subsec:part04-general-dtn-algebra}
+
+The remaining branch-selection issue is whether the true moving-throat outlet is the canonical branch or a deformed one.  The first explicit deformation family is
+\begin{equation}
+\label{eq:part04-general-dtn-deformation}
+\Lambda_2^{\rm def}(z)
+=
+S\Lambda_2^{\rm out}(\beta z)
++\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5+O(z^6).
+\end{equation}
+Writing the expansion coefficients as \(L_0,L_2,L_4,L_5\), the normalized response is
+\begin{equation}
+\label{eq:part04-Ydef-expanded}
+\widehat Y_2^{\rm def}(z)
+=
+1-\frac{L_2}{L_0}z^2+
+\left(\frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}\right)z^4
+-i\frac{L_5}{L_0}z^5+O(z^6).
+\end{equation}
+After imposing the canonical even fingerprint, the exact odd normalization is
+\begin{equation}
+\label{eq:part04-chiQ-general}
+\chi_Q
+=
+\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0},
+\end{equation}
+so
+\begin{equation}
+\label{eq:part04-chiQ-minus-one-general}
+\chi_Q-1
+=
+\frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
+\end{equation}
+Linearizing with
+\begin{equation}
+S=1+\varepsilon s,
+\qquad
+\beta=1+\varepsilon b,
+\qquad
+\Sigma_0=\varepsilon a_0,
+\qquad
+\Sigma_5=\varepsilon a_5,
+\end{equation}
+while keeping the even slots canonical gives
+\begin{equation}
+\label{eq:part04-linear-DeltaQ-triple}
+\Delta_Q=5b+\frac{a_0}{3}+9a_5+O(\varepsilon^2).
+\end{equation}
+Pure overall scaling drops out.  Pure argument rescaling cannot move \(\chi_Q\) without also moving the even fingerprint unless \(\beta=1\).  Additive throat-core slots are therefore the first genuinely dangerous outlet data.
+
+\subsection{Robin and mixed-pole tests}
+\label{subsec:part04-robin-mixed-tests}
+
+A pure isotropic Robin outlet is
+\begin{equation}
+\label{eq:part04-robin-outlet}
+\Lambda_2^{\rm R}(z)=\Lambda_2^{\rm out}(z)+\rho_R.
+\end{equation}
+It gives
+\begin{equation}
+\label{eq:part04-chi-robin}
+\chi_Q^{\rm R}=\frac{3}{3-\rho_R},
+\end{equation}
+so it generically shifts the canonical branch.
+
+A standalone hidden mixed side-channel pole is
+\begin{equation}
+\label{eq:part04-mixed-pole-outlet}
+\Lambda_2^{\rm mix}(z)
+=
+\Lambda_2^{\rm out}(z)
+-
+\frac{\sigma_W}{1-\kappa_Wz^2-i\gamma_Wz^5}+O(z^6).
+\end{equation}
+The canonical even conditions force \(\kappa_W=-1/9\), and then \(\sigma_W=0\).  Thus a naive standalone passive hidden pole cannot be the actual branch if the conservative even fingerprint is already fixed.
+
+\subsection{Compensated Robin--mixed outlet}
+\label{subsec:part04-compensated-robin-mixed}
+
+The combined outlet is
+\begin{equation}
+\label{eq:part04-hybrid-outlet}
+\Lambda_2^{\rm hyb}(z)
+=
+\Lambda_2^{\rm out}(z)+\rho_R
+-
+\frac{\sigma_W}{1-\kappa_Wz^2-i\gamma_Wz^5}+O(z^6).
+\end{equation}
+The exact canonical-even conditions have two solutions:
+\begin{equation}
+\label{eq:part04-hybrid-even-solutions}
+(\rho_R,\kappa_W)=(\sigma_W,0),
+\qquad
+(\rho_R,\kappa_W)=(4\sigma_W,1/3).
+\end{equation}
+The first is a trivial static cancellation.  The second is the nontrivial compensated branch.  On it,
+\begin{equation}
+\label{eq:part04-hybrid-chiQ}
+\chi_Q^{\rm hyb}
+=
+\frac{1-9\sigma_W\gamma_W}{1-\sigma_W},
+\end{equation}
+so the canonical outgoing value is preserved iff
+\begin{equation}
+\label{eq:part04-gammaW-canonical}
+\gamma_W=\frac19.
+\end{equation}
+With \eqref{eq:part04-gammaW-canonical}, the hybrid outlet collapses to a harmless pure scale deformation through the retained order.
+
+\section{Mixed side-channel pole realization}
+\label{sec:part04_geometry_retarded_mouth:mixed-side-channel-pole-realization}
+
+\subsection{Concrete two-channel core model}
+\label{subsec:part04-two-channel-core}
+
+The reduced hybrid outlet is realized by a concrete shell/mixed core.  Let \(u(\omega)\) be the isotropic \(l=2\) mouth amplitude, and introduce a static shell coordinate \(s\) and a mixed side-channel coordinate \(q\).  The core equations are
+\begin{equation}
+\label{eq:part04-core-matrix}
+\begin{pmatrix}
+K_s & \lambda\\
+\lambda & -K_qD_W^{\rm bare}(z)
+\end{pmatrix}
+\binom{s}{q}
+=
+u
+\binom{g_s}{g_q},
+\qquad
+D_W^{\rm bare}(z)=1-\kappa_0z^2-i\gamma_0z^5+O(z^6).
+\end{equation}
+Eliminating \((s,q)\) gives
+\begin{equation}
+\label{eq:part04-core-schur}
+\delta\Lambda_{\rm core}(z)
+=
+\frac{g_s^2}{K_s}
+-
+\frac{(K_sg_q-\lambda g_s)^2}{K_s\bigl(K_sK_qD_W^{\rm bare}(z)+\lambda^2\bigr)}.
+\end{equation}
+With
+\begin{equation}
+\label{eq:part04-rc-def}
+r_c:=\frac{\lambda^2}{K_sK_q},
+\end{equation}
+this has the reduced form
+\begin{equation}
+\label{eq:part04-core-reduced-rho-sigma}
+\delta\Lambda_{\rm core}(z)
+=
+\rho_c-\frac{\sigma_c}{1-\kappa_cz^2-i\gamma_cz^5}+O(z^6),
+\end{equation}
+where
+\begin{equation}
+\label{eq:part04-core-identifications}
+\rho_c=\frac{g_s^2}{K_s},
+\qquad
+\sigma_c=\frac{(K_sg_q-\lambda g_s)^2}{K_s^2K_q(1+r_c)},
+\qquad
+\kappa_c=\frac{\kappa_0}{1+r_c},
+\qquad
+\gamma_c=\frac{\gamma_0}{1+r_c}.
+\end{equation}
+
+\subsection{Core-balance theorem and D/N tube}
+\label{subsec:part04-core-balance}
+
+The nontrivial compensated branch requires
+\begin{equation}
+\label{eq:part04-core-canonical-conditions}
+\rho_c=4\sigma_c,
+\qquad
+\kappa_c=\frac13,
+\qquad
+\gamma_c=\frac19.
+\end{equation}
+The static balance condition is exactly
+\begin{equation}
+\label{eq:part04-core-coupling-balance}
+g_s^2(K_sK_q+\lambda^2)
+=
+4(K_sg_q-\lambda g_s)^2.
+\end{equation}
+Equivalently, defining
+\begin{equation}
+\label{eq:part04-r-g-parent-ratios}
+\mathfrak r:=\frac{\lambda}{\sqrt{K_sK_q}},
+\qquad
+\mathfrak g:=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}},
+\end{equation}
+one obtains the parent compensation family
+\begin{equation}
+\label{eq:part04-parent-compensation-family}
+1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
+\qquad
+\mathfrak g_\pm(\mathfrak r)=\mathfrak r\pm\frac12\sqrt{1+\mathfrak r^2}.
+\end{equation}
+The finite D/N mixed-tube realization gives
+\begin{equation}
+\label{eq:part04-LW-compensation}
+L_W=\frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}}
+=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+\end{equation}
+Identifying this tube with the actual throat span \(L\) fixes the branch value
+\begin{equation}
+\label{eq:part04-r-geom}
+\mathfrak r_{\rm geom}\left(\frac La\right)
+=
+\sqrt{\frac{12}{\pi^2}\left(\frac La\right)^2-1}.
+\end{equation}
+On the Family--1 preferred aspect ratio \(L/a=37/20\),
+\begin{equation}
+\label{eq:part04-rF1}
+\mathfrak r_{F1}
+=
+\frac{\sqrt{4107-100\pi^2}}{10\pi}
+\approx1.77799353547498.
+\end{equation}
+The lower compensated mouth-coupling branch is then
+\begin{equation}
+\label{eq:part04-gminus-F1}
+\mathfrak g_-^{F1}
+=
+\mathfrak r_{F1}-\frac12\sqrt{1+\mathfrak r_{F1}^2}
+\approx0.758035078944663.
+\end{equation}
+The upper branch is \(\mathfrak g_+^{F1}\approx2.79795199200529\).
+
+\subsection{Parent-action overlap extraction}
+\label{subsec:part04-parent-overlap-extraction}
+
+The abstract core parameters are tied to parent-action overlaps.  In the first GNLS plus localized-Maxwell throat-core closure,
+\begin{equation}
+\label{eq:part04-Ks-parent}
+K_s=4\pi a^2\left(\frac{H_w\ell}{3}+\frac{\hbar^2}{15m_\psi\rho_w\ell}\right),
+\qquad
+K_s=\frac{3\pi a^2\hbar^2}{5m_\psi\rho_w\ell}
+\quad\text{on the healing-locked branch},
+\end{equation}
+\begin{equation}
+\label{eq:part04-Kq-parent}
+K_q=\frac{\mathcal Z_q}{\mu_0}\frac{\pi^2c_s^2}{4L_W^2},
+\end{equation}
+\begin{equation}
+\label{eq:part04-lambda-parent}
+\lambda=-q_*v_{w0}\mathcal I_{sq},
+\end{equation}
+and
+\begin{equation}
+\label{eq:part04-gs-gq-parent}
+g_s=\mathcal T_m\frac{4\pi a^2\ell}{3},
+\qquad
+g_q=\frac{\mathcal Z_q}{\mu_0}\frac{\pi}{\sqrt2\,L_W^{3/2}}.
+\end{equation}
+These formulas are the parent-action path by which a future full branch calculation must decide whether \eqref{eq:part04-parent-compensation-family} is actually realized.
+
+\section{Core-to-mouth compensation law}
+\label{sec:part04_geometry_retarded_mouth:core-to-mouth-compensation-law}
+
+\subsection{Positive mouth-source selection}
+\label{subsec:part04-positive-mouth-selection}
+
+The core compensation family selects a mouth-coupling ratio.  The first physical filter is positivity of the localized mouth source.  For a positive normalized axial source \(\sigma(z)\) on \([0,L]\), the normalized mouth-bias factor is
+\begin{equation}
+\label{eq:part04-gsigma-def}
+\mathfrak g[\sigma]
+=
+\int_0^L\sigma(z)\cos\left(\frac{\pi z}{2L}\right)\,dz.
+\end{equation}
+Since the cosine lies between \(0\) and \(1\) on the interval,
+\begin{equation}
+\label{eq:part04-positive-source-bound}
+0\le\mathfrak g[\sigma]\le1.
+\end{equation}
+Therefore the upper Family--1 branch is impossible under positive localized mouth sourcing, while the lower branch \eqref{eq:part04-gminus-F1} is admissible.
+
+The self-matched derivative source \(\sigma_{\rm match}(z)=k\cos(kz)\), with \(k=\pi/(2L)\), gives
+\begin{equation}
+\label{eq:part04-g-match}
+\mathfrak g_{\rm match}=\frac{\pi}{4}\approx0.785398163397448,
+\end{equation}
+only about \(3.61\%\) in traction away from the lower compensated value.  A convex positive family interpolating between this derivative profile and the uniform profile reaches the exact lower branch at a modest broadening fraction.
+
+\subsection{Electrochemical boundary layer}
+\label{subsec:part04-electrochemical-boundary-layer}
+
+The positive exponential source family is not an arbitrary fit.  It follows from a local mouth free energy and zero-flux Onsager law.  Linearizing the parent mouth potential as
+\begin{equation}
+\label{eq:part04-V1-def}
+V_m(z)\approx V_1z,
+\qquad
+V_1=\left.\partial_z\delta V_{\rm conf}\right|_{\rm m}-q_*\left.\partial_zA_0\right|_{\rm m},
+\end{equation}
+the electrochemical potential is
+\begin{equation}
+\mu_\sigma^{\rm chem}(z)=\Theta_\sigma\ln\frac{\sigma}{\sigma_*}+V_1z.
+\end{equation}
+The zero-flux stationary solution is
+\begin{equation}
+\label{eq:part04-sigmaPi}
+\sigma_\Pi(z)
+=
+\frac{\Pi e^{-\Pi z/L}}{L(1-e^{-\Pi})},
+\qquad
+\Pi:=\frac{V_1L}{\Theta_\sigma}>0.
+\end{equation}
+The exact bias map is
+\begin{equation}
+\label{eq:part04-gPi}
+\mathfrak g_\Pi
+=
+\frac{2\Pi(2\Pi e^\Pi+\pi)}{(4\Pi^2+\pi^2)(e^\Pi-1)}.
+\end{equation}
+It is strictly increasing from \(2/\pi\) to \(1\), and the Family--1 lower branch is reached at
+\begin{equation}
+\label{eq:part04-Pi-star}
+\Pi_*\approx1.50882951349316.
+\end{equation}
+Equivalently, the parent threshold is
+\begin{equation}
+\label{eq:part04-parent-mouth-threshold}
+\left.\partial_z\delta V_{\rm conf}\right|_{\rm m}
+-q_*\left.\partial_zA_0\right|_{\rm m}
+=
+\Pi_*\frac{\Theta_\sigma}{L}.
+\end{equation}
+
+\subsection{Coupled mouth-layer fixed point}
+\label{subsec:part04-coupled-mouth-layer-fixed-point}
+
+The effective bias \(\Pi\) is then replaced by a coupled boundary-layer solve.  For a two-component field \(\mathbf U=(U_s,U_q)^T\),
+\begin{equation}
+\label{eq:part04-coupled-mouth-pde}
+\left[-\partial_x^2\mathbf I+\mathbf K\right]\mathbf U(x)
+=\Sigma_\Pi(x)\mathbf G,
+\qquad
+\mathbf U(0)=0,
+\qquad
+\mathbf U'(1)=0.
+\end{equation}
+After diagonalizing \(\mathbf K\), the scalar D/N response kernel is
+\begin{equation}
+\label{eq:part04-S-kernel}
+\mathcal S(\Pi,\kappa)
+=
+\frac{\Pi\left[\kappa\tanh\kappa+
+\Pi\left(e^{-\Pi}\operatorname{sech}\kappa-1\right)\right]}
+{(1-e^{-\Pi})(\kappa^2-\Pi^2)}.
+\end{equation}
+The full fixed-point law is
+\begin{equation}
+\label{eq:part04-general-mouth-fixedpoint}
+\Pi=\sum_{\alpha=\pm}M_\alpha\mathcal S(\Pi,\kappa_\alpha).
+\end{equation}
+On the first Family--1 shell plus mixed D/N branch,
+\begin{equation}
+\label{eq:part04-F1-mouth-fixedpoint}
+\Pi=M_s+M_q\mathcal S_q(\Pi),
+\qquad
+\mathcal S_q(\Pi):=\mathcal S\left(\Pi,\frac{\pi}{2}\right).
+\end{equation}
+Inheriting the compensated outlet ratio gives
+\begin{equation}
+\label{eq:part04-outlet-consistent-gains}
+M_s=4\Sigma_m,
+\qquad
+M_q=-\Sigma_m,
+\end{equation}
+so
+\begin{equation}
+\label{eq:part04-one-gain-mouth-law}
+\Pi=\Sigma_m\left[4-\mathcal S_q(\Pi)\right].
+\end{equation}
+At the canonical point,
+\begin{equation}
+\label{eq:part04-Sigmam-star}
+\Sigma_m^*=\frac{\Pi_*}{4-\mathcal S_q(\Pi_*)}
+\approx0.451485277739090.
+\end{equation}
+
+\section{Mouth boundary-layer source theorem}
+\label{sec:part04_geometry_retarded_mouth:mouth-boundary-layer-source-theorem}
+
+\subsection{From gains to parent core quantities}
+\label{subsec:part04-gains-parent-quantities}
+
+Embedding the same core Schur-complement weights into the mouth electrochemical free energy gives explicit gains
+\begin{equation}
+\label{eq:part04-Ms-Mq-parent}
+M_s=\frac{Lg_s^2}{K_s\Theta_\sigma},
+\qquad
+M_q=-\frac{L(K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+\end{equation}
+In normalized variables,
+\begin{equation}
+\label{eq:part04-Rq-def}
+R_q:=-\frac{M_q}{M_s}
+=\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2},
+\qquad
+M_s=\Sigma_0.
+\end{equation}
+On the exact compensation family, \(R_q=1/4\).  Under the self-matched mouth susceptibility closure,
+\begin{equation}
+\label{eq:part04-Sigma0-That}
+\Sigma_0=M_s=\frac{20}{9}\widehat T_m^2.
+\end{equation}
+
+The self-consistent Family--1 mouth branch identifies the core mouth ratio with the source bias:
+\begin{equation}
+\label{eq:part04-gc-equals-gPi}
+\mathfrak g_c=\mathfrak g_\Pi,
+\qquad
+R_q(\Pi)=\frac{(\mathfrak g_\Pi-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
+\end{equation}
+The scalar branch law becomes
+\begin{equation}
+\label{eq:part04-selfconsistent-Pi-law}
+\Pi=\Sigma_0\left[1-R_q(\Pi)\mathcal S_q(\Pi)\right],
+\qquad
+\Sigma_0(\Pi)=\frac{\Pi}{1-R_q(\Pi)\mathcal S_q(\Pi)}.
+\end{equation}
+At \(\Pi_*\),
+\begin{equation}
+\label{eq:part04-canonical-mouth-values}
+R_q(\Pi_*)=\frac14,
+\qquad
+\Sigma_0(\Pi_*)\approx1.80594111095636,
+\qquad
+\widehat T_m(\Pi_*)\approx0.901484054174205.
+\end{equation}
+
+\subsection{Regularity theorem}
+\label{subsec:part04-regularity-theorem}
+
+The explicit exponential mouth family has
+\begin{equation}
+0<\mathfrak g_\Pi<1\qquad(\Pi>0),
+\end{equation}
+and \(\mathfrak g_\Pi\to1\) only as \(\Pi\to\infty\).  The equal-normalized branch \(\mathfrak g_c=1\) is therefore a singular point-source limit.  Since \(\widehat T_m\sim C\Pi^{1/2}\) in that limit, it is not a regular finite-traction mouth state.
+
+\begin{theorem}[Unique regular Family--1 canonical mouth branch]
+\label{thm:part04-unique-regular-mouth-branch}
+Inside the explicit Family--1 positive exponential mouth-layer closure, the upper compensated branch is excluded by positivity, the equal-normalized branch is singular, and the lower compensated branch is the unique regular finite-bias, finite-traction branch preserving the canonical outgoing quadrupole fingerprint.
+\end{theorem}
+
+\section{Family-1 mouth correction}
+\label{sec:part04_geometry_retarded_mouth:family-1-mouth-correction}
+
+\subsection{First-order positive deformations}
+\label{subsec:part04-positive-deformations}
+
+After branch selection, the remaining mouth-side uncertainty is finite correction around the unique regular branch.  Let
+\begin{equation}
+\Sigma_*(x)=\frac{\Pi_*e^{-\Pi_*x}}{1-e^{-\Pi_*}}
+\end{equation}
+and consider a positive normalized deformation
+\begin{equation}
+\label{eq:part04-positive-deformation-family}
+\Sigma_\epsilon(x)=(1-\epsilon)\Sigma_*(x)+\epsilon\varsigma(x),
+\qquad
+\varsigma\ge0,
+\qquad
+\int_0^1\varsigma(x)\,dx=1.
+\end{equation}
+Only two moments matter at first order:
+\begin{equation}
+\label{eq:part04-gbar-Sbar}
+\bar g[\sigma]=\int_0^1\sigma(x)c(x)\,dx,
+\qquad
+\bar S[\sigma]=\int_0^1\sigma(x)K_q(x)\,dx,
+\end{equation}
+with
+\begin{equation}
+\label{eq:part04-c-Kq}
+c(x)=\cos\frac{\pi x}{2},
+\qquad
+K_q(x)=\frac{\cosh\left(\frac{\pi}{2}(1-x)\right)}{\cosh(\pi/2)}.
+\end{equation}
+Retuning \(\Pi\) to stay on the canonical lower branch gives
+\begin{equation}
+\label{eq:part04-deltaPi-firstorder}
+\delta\Pi
+=-\epsilon\frac{\bar g_\varsigma-\mathfrak g_*}{\mathfrak g'_*},
+\qquad
+\mathfrak g'_*\approx0.0714453558083195.
+\end{equation}
+The traction shift is
+\begin{equation}
+\label{eq:part04-deltaT-firstorder}
+\delta\widehat T_m
+=
+\epsilon\left[
+A_T(\bar g_\varsigma-\mathfrak g_*)
++B_T(\bar S_\varsigma-\mathcal S_*)
+\right],
+\end{equation}
+where
+\begin{equation}
+\label{eq:part04-AT-BT-values}
+A_T\approx-4.27263956256927,
+\qquad
+B_T\approx0.134875005736706.
+\end{equation}
+Equivalently, all first-order source-shape sensitivity is the projection against one centered rigidity kernel.
+
+\subsection{Full-profile residual}
+\label{subsec:part04-full-profile-residual}
+
+The actual full mouth potential generated by the shell plus mixed D/N channels is \(\Phi_*(x)\).  Define the tangent-subtracted residual
+\begin{equation}
+\label{eq:part04-Rstar-def}
+R_*(x):=\Phi_*(x)-\Pi_*x.
+\end{equation}
+It satisfies
+\begin{equation}
+\label{eq:part04-Rstar-curvature}
+R_*(0)=R_*'(0)=0,
+\qquad
+R_*''(0)<0,
+\end{equation}
+so the full source is broader than the tangent exponential near the mouth.  Expanding
+\begin{equation}
+\label{eq:part04-Sigma-act}
+\Sigma_{\rm act}(x)
+=
+\Sigma_*(x)\left[1-\widetilde R_*(x)\right]+O(R_*^2),
+\qquad
+\widetilde R_*=R_*-\langle R_*\rangle_*,
+\end{equation}
+gives the selected moment shifts
+\begin{equation}
+\label{eq:part04-covariance-shifts}
+\delta\mathfrak g_{\rm act}=-\operatorname{Cov}_*(c,R_*),
+\qquad
+\delta\mathcal S_{\rm act}=-\operatorname{Cov}_*(K_q,R_*).
+\end{equation}
+On the explicit Family--1 branch,
+\begin{equation}
+\label{eq:part04-actual-mouth-covariances}
+\operatorname{Cov}_*(c,R_*)\approx0.0648069687666328,
+\qquad
+\operatorname{Cov}_*(K_q,R_*)\approx0.0388718368650403.
+\end{equation}
+Thus the first-order correction broadens the source and shifts the mouth-only canonical point upward:
+\begin{equation}
+\label{eq:part04-mouth-only-corrected-point}
+\Pi_{\rm corr}\approx2.41591392833607,
+\qquad
+\widehat T_{m,{\rm corr}}\approx1.17313803363654.
+\end{equation}
+A one-step nonlinear iterate gives a slightly stronger but directionally consistent shift.
+
+\section{Co-evolving core-mouth fixed point}
+\label{sec:part04_geometry_retarded_mouth:co-evolving-core-mouth-fixed-point}
+
+\subsection{Exact co-evolving map}
+\label{subsec:part04-coevolving-map}
+
+The fixed-core mouth correction is then replaced by a co-evolving map.  For any positive normalized \(\Sigma\), define
+\begin{equation}
+\label{eq:part04-gS-functionals}
+\mathfrak g[\Sigma]=\int_0^1\Sigma(x)c(x)\,dx,
+\qquad
+\mathcal S[\Sigma]=\int_0^1\Sigma(x)K_q(x)\,dx.
+\end{equation}
+The core loading ratio is
+\begin{equation}
+\label{eq:part04-R-Sigma}
+\mathcal R[\Sigma]
+=
+\frac{(\mathfrak g[\Sigma]-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
+\end{equation}
+With the shell and mixed Green operators \(\mathcal T_s\) and \(\mathcal T_q\), the full potential is
+\begin{equation}
+\label{eq:part04-Phi-Sigma}
+\Phi_{\Sigma_0}[\Sigma](x)
+=
+\Sigma_0\left[
+\mathcal T_s[\Sigma](x)-\mathcal R[\Sigma]\mathcal T_q[\Sigma](x)
+\right].
+\end{equation}
+The nonlinear fixed-point equation is
+\begin{equation}
+\label{eq:part04-coevolving-fixedpoint}
+\Sigma(x)=\frac{e^{-\Phi_{\Sigma_0}[\Sigma](x)}}{\int_0^1e^{-\Phi_{\Sigma_0}[\Sigma](y)}\,dy}.
+\end{equation}
+The canonical compensation condition is
+\begin{equation}
+\label{eq:part04-coevolving-canonical-condition}
+\mathfrak g[\Sigma]=\mathfrak g_*,
+\qquad
+\mathcal R[\Sigma]=\frac14.
+\end{equation}
+
+\subsection{Renormalized canonical point}
+\label{subsec:part04-renormalized-canonical-point}
+
+At the old canonical traction, the co-evolving fixed point remains positive but moves off exact compensation:
+\begin{equation}
+\label{eq:part04-frozen-traction-values}
+\mathfrak g_{\rm fp}\approx0.693352419668063,
+\qquad
+\mathcal S_{\rm fp}\approx0.621601316751401,
+\qquad
+\mathcal R_{\rm fp}\approx0.282713904908238.
+\end{equation}
+Restoring exact lower compensation requires a numerically located renormalized gain
+\begin{equation}
+\label{eq:part04-renormalized-Sigma0}
+\Sigma_0^{\rm can}\approx4.651033550168876,
+\qquad
+\widehat T_{m,{\rm can}}\approx1.446708366456762,
+\end{equation}
+with
+\begin{equation}
+\label{eq:part04-renormalized-canonical-values}
+\mathfrak g_{\rm can}=\mathfrak g_*,
+\qquad
+\mathcal R_{\rm can}=\frac14,
+\qquad
+\mathcal S_{\rm can}\approx0.670362115673462,
+\qquad
+\Pi_{\rm can}\approx3.871564377479009.
+\end{equation}
+This is a \StatusNumerical{} placement inside the exact co-evolving map, not a closed-form theorem of the full PDE.
+
+\section{Linear defect transport}
+\label{sec:part04_geometry_retarded_mouth:linear-defect-transport}
+
+\subsection{Mouth/core transport around the renormalized point}
+\label{subsec:part04-linear-mouth-core-transport}
+
+Linearizing the exact Family--1 loading ratio gives
+\begin{equation}
+\label{eq:part04-deltaR-deltag}
+\delta\mathcal R
+=-\frac{\delta\mathfrak g}{\sqrt{1+\mathfrak r_{F1}^2}}+O(\delta\mathfrak g^2)
+\approx -0.490216044387626\,\delta\mathfrak g.
+\end{equation}
+The gains transport as
+\begin{equation}
+\label{eq:part04-deltaMsMq}
+\delta M_s=\delta\Sigma_0,
+\qquad
+\delta M_q=-\frac14\delta\Sigma_0+\frac{\Sigma_0^{\rm can}}{\sqrt{1+\mathfrak r_{F1}^2}}\delta\mathfrak g.
+\end{equation}
+The mouth-bias transport is
+\begin{equation}
+\label{eq:part04-deltaPi-transport}
+\delta\Pi
+=
+\left(1-\frac14\mathcal S_{\rm can}\right)\delta\Sigma_0
+-\frac{\Sigma_0^{\rm can}}{4}\delta\mathcal S
++
+\frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_{F1}^2}}\delta\mathfrak g,
+\end{equation}
+or numerically
+\begin{equation}
+\label{eq:part04-deltaPi-numeric}
+\delta\Pi
+\approx
+0.832409471081635\,\delta\Sigma_0
+-1.16275838754222\,\delta\mathcal S
++1.52843317823248\,\delta\mathfrak g.
+\end{equation}
+
+\subsection{Projection into the compensated outlet}
+\label{subsec:part04-projection-compensated-outlet}
+
+The compensated outlet loads are
+\begin{equation}
+\rho_R=\Xi M_s,
+\qquad
+\sigma_W=-\Xi M_q,
+\qquad
+\Xi=\frac{\Theta_\sigma}{L}.
+\end{equation}
+Define the off-compensation scalar
+\begin{equation}
+\label{eq:part04-deltaC-def}
+\delta\mathcal C:=\delta\rho_R-4\delta\sigma_W.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part04-deltaC-deltag}
+\delta\mathcal C
+=
+\frac{16\sigma_*}{\sqrt{1+\mathfrak r_{F1}^2}}\delta\mathfrak g.
+\end{equation}
+Linearizing the hybrid outlet gives
+\begin{equation}
+\label{eq:part04-outlet-defects-linear}
+\delta E_2=\frac{\delta\mathcal C-9\sigma_*\delta\kappa_W}{27(1-\sigma_*)},
+\qquad
+\delta E_4=\frac{5\delta\mathcal C-72\sigma_*\delta\kappa_W}{243(1-\sigma_*)},
+\end{equation}
+\begin{equation}
+\label{eq:part04-DeltaQ-hybrid-linear}
+\Delta_Q=\frac{\delta\mathcal C-27\sigma_*\delta\gamma_W}{3(1-\sigma_*)}.
+\end{equation}
+Canonical even preservation \(\delta E_2=\delta E_4=0\) forces
+\begin{equation}
+\label{eq:part04-even-gate-forces}
+\delta\mathcal C=0,
+\qquad
+\delta\kappa_W=0,
+\qquad
+\delta\mathfrak g=0.
+\end{equation}
+The remaining first-order defect is therefore
+\begin{equation}
+\label{eq:part04-DeltaQ-deltagammaW}
+\Delta_Q=-\frac{9\sigma_*}{1-\sigma_*}\delta\gamma_W,
+\qquad
+N_Q-1=\frac{9\sigma_*}{1-\sigma_*}\delta\gamma_W.
+\end{equation}
+
+\subsection{Bare mixed-port slippage and D/N similarity}
+\label{subsec:part04-bare-slippage}
+
+The concrete core identities give
+\begin{equation}
+\kappa_W=\frac{\kappa_0}{1+r_c},
+\qquad
+\gamma_W=\frac{\gamma_0}{1+r_c}.
+\end{equation}
+On the compensated branch,
+\begin{equation}
+\kappa_0=\frac{1+r_c}{3},
+\qquad
+\gamma_0=\frac{1+r_c}{9}.
+\end{equation}
+Under the canonical-even gate \(\delta\kappa_W=0\), the odd defect is
+\begin{equation}
+\label{eq:part04-delta-gammaW-bare-slippage}
+\delta\gamma_W
+=
+\frac{1}{1+\mathfrak r_{F1}^2}
+\left(\delta\gamma_0-\frac13\delta\kappa_0\right).
+\end{equation}
+Thus a pure-scale bare mixed-port deformation is harmless.
+
+The D/N tube gives
+\begin{equation}
+\label{eq:part04-kappa0-LW}
+\kappa_0=\frac{4L_W^2}{\pi^2a^2}.
+\end{equation}
+The first-order bare slippage is equivalently the D/N similarity mismatch
+\begin{equation}
+\label{eq:part04-Xislip-def}
+\Xi_{\rm slip}:=\Xi_\gamma-2\Xi_L,
+\qquad
+\Xi_\gamma=\frac{\delta\ln\gamma_0}{\delta\Pi_{\rm tan}},
+\qquad
+\Xi_L=\frac{\delta\ln(L_W/a)}{\delta\Pi_{\rm tan}}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:part04-DeltaQ-Xislip}
+\Delta_Q
+=-\frac{\sigma_*}{1-\sigma_*}\Xi_{\rm slip}\,\delta\Pi_{\rm tan},
+\qquad
+N_Q-1
+=\frac{\sigma_*}{1-\sigma_*}\Xi_{\rm slip}\,\delta\Pi_{\rm tan}.
+\end{equation}
+Here
+\begin{equation}
+\label{eq:part04-deltaPi-tan}
+\delta\Pi_{\rm tan}
+=0.832409471081635\,\delta\Sigma_0
+-1.16275838754222\,\delta\mathcal S
+\end{equation}
+when \(\delta\mathfrak g=0\).
+
+\subsection{Parent compensation-surface rigidity and off-family normal coordinate}
+\label{subsec:part04-off-family-normal-coordinate}
+
+On the exact parent compensation family, both the D/N tube ratio and the bare odd normalization are functions of \(\mathfrak r\):
+\begin{equation}
+\label{eq:part04-parent-family-LW-gamma}
+\frac{L_W}{a}=\frac{\pi}{2}\sqrt{\frac{1+\mathfrak r^2}{3}},
+\qquad
+\gamma_0=\frac{1+\mathfrak r^2}{9}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:part04-Xislip-zero-parent-family}
+\delta\ln\gamma_0-2\delta\ln\left(\frac{L_W}{a}\right)=0,
+\qquad
+\Xi_{\rm slip}=0.
+\end{equation}
+Furthermore, on the lower branch, the canonical-even gate \(\delta\mathfrak g=0\) forces \(\delta\mathfrak r=0\) because \(d\mathfrak g_-/d\mathfrak r>0\).  Thus \(\Delta_Q=0\) at first order for tangential motion inside the exact parent compensation family.
+
+The normal coordinate measuring departure from that family is
+\begin{equation}
+\label{eq:part04-deltaperp-def}
+\delta_\perp
+:=
+\delta\mathfrak g
+-
+\mathfrak g_-'(\mathfrak r_*)\delta\mathfrak r.
+\end{equation}
+It is equivalently the normalized first-order parent compensation defect, since
+\begin{equation}
+\label{eq:part04-deltaF-deltaperp}
+\mathcal F(\mathfrak g,\mathfrak r)=1+\mathfrak r^2-4(\mathfrak g-\mathfrak r)^2,
+\qquad
+\delta\mathcal F=4\sqrt{1+\mathfrak r_*^2}\,\delta_\perp.
+\end{equation}
+In microscopic parent variables,
+\begin{equation}
+\label{eq:part04-deltaperp-microscopic}
+\boxed{
+\delta_\perp
+=
+\mathfrak g_*
+\delta\ln\left(\frac{g_qK_s}{g_s\lambda}\right)
++
+\frac{1}{4\sqrt{1+\mathfrak r_*^2}}
+\delta\ln\left(\frac{K_sK_q}{\lambda^2}\right)}.
+\end{equation}
+This is the final output of Part IV.  The last first-order reduced defect is not a diffuse outlet problem.  It is the question of whether the true moving-throat branch has \(\delta_\perp=0\), or what value \eqref{eq:part04-deltaperp-microscopic} takes if it leaves the compensation family.
+
+\section{Verification outputs and downstream use}
+\label{sec:part04-verification-outputs}
+
+The usable downstream citation packet from this chapter is as follows.
+\begin{enumerate}[leftmargin=2.2em]
+\item \resultanchor{MTDC-T8.1}: cite for the geometry-lane firewall, the obstruction variables \((\epsilon_2,\epsilon_4)\), and the forced \(3/4+1/4\) module.
+\item \resultanchor{MTDC-T8.2}: cite for the reduction of the retarded \(2.5\)PN problem to \(\widehat m_0^{\,2}\chi_QN_Q=1\), the outgoing DtN fingerprint, and \(\chi_Q=1\) on the canonical branch.
+\item \resultanchor{MTDC-T8.3}: cite for the low-frequency outlet deformation algebra, the Robin and hidden-pole no-go results, and the compensated Robin--mixed branch.
+\item \resultanchor{MTDC-T8.4}: cite for the positive mouth-source theorem, the exponential boundary-layer law, the Family--1 bias point \(\Pi_*\), and the coupled mouth fixed-point equations.
+\item \resultanchor{MTDC-T8.5}: cite for the co-evolving core--mouth canonical point, linear defect transport, D/N similarity preservation, and the final off-family scalar \(\delta_\perp\).
+\end{enumerate}
+
+
+\begin{verificationchecklist}
+\item The grouped \(P_2\) carrier is kept distinct from the axisymmetric geometry lane until the isotropic decoupling theorem is invoked.
+\item The \(3/4+1/4\) conservative module is cited only under the static-geometry or geometry-decoupled hypothesis; dynamic geometry contamination is tracked by \((\epsilon_2,\epsilon_4)\).
+\item The Family--1 support success statement is conditioned on the minimal isotropic precursor \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), not on an arbitrary support branch.
+\item The retarded \(2.5\)PN gate is stated as the factorized product \(\widehat m_0^{\,2}\chi_QN_Q=1\), with source-map, conservative-normalization, and outgoing-normalization factors separated.
+\item The exact outgoing \(l=2\) DtN fingerprint is used only after the passive/outgoing compact branch has been selected.
+\item Pure Robin and standalone mixed-pole outlet deformations are recorded as no-go or noncanonical branches unless the compensated Robin--mixed constraints are imposed.
+\item The shell/mixed core Schur complement is treated as a reduced core model; parent-action realization still requires the corresponding overlap data.
+\item The finite D/N tube normalization is tied to the geometric throat ratio before it is used in the compensation surface.
+\item Positive mouth-source selection is kept separate from arbitrary signed source fitting; the lower compensated branch is selected by the positivity theorem.
+\item The exponential mouth-layer law is read as the zero-flux GNLS/localized-Maxwell boundary-layer solution, not as a free curve fit.
+\item Numerically located mouth and co-evolving fixed points are marked as exact equations solved numerically, not as closed-form constants.
+\item Linear defect transport is applied only after expanding about the renormalized co-evolving canonical point.
+\item The final first-order obstruction is reported as \(\delta_\perp\), so future uses of \(\Delta_Q=0\) must either assume or verify tangent motion on the parent compensation family.
+\item Branch-realization status remains explicit whenever Part IV is cited for downstream PN, anomaly, or same-charge work.
+\end{verificationchecklist}
+
+The claim firewall is especially important for this chapter.  Equations such as \eqref{eq:part04-chiQ-equals-one}, \eqref{eq:part04-DeltaQ-Xislip}, and \eqref{eq:part04-deltaperp-microscopic} are exact inside their declared reduced closures.  They are not, by themselves, proof that the full moving-throat PDE has realized the canonical branch.  Future papers should cite Part IV for the reduction and should separately state the branch-realization status whenever they need \(\Delta_Q=0\), \(N_Q=1\), \(\Xi_{\rm slip}=0\), or \(\delta_\perp=0\).

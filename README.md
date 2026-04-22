@@ -31,6 +31,8 @@ Papers currently in `research/`:
 - `4d_4pn` — Conditional full conservative 4PN sector
 - `4d_em_fields` — 4D electromagnetic sector
 - `4d_plasma` — Plasma dynamics in the 4D model
+- `pde` — Moving-throat PDE paper: geometry lift, reduced wall-support-gauge dynamics, quadrupole response (draft)
+- `pde_ledger` — Moving-throat PDE derivation companion archive ledger
 
 ### Work in progress (not yet published)
 Files for ongoing work that doesn't have a paper yet remain in the original directories:
@@ -62,34 +64,30 @@ Both use CuPy on GPU if installed; otherwise CPU.
 The `.wl` files in each `research/<paper>/mathematica/` directory are runnable scripts. Each file's output is stored as a final comment block within the file itself, so you can inspect results without re-running.
 
 ## Papers List
-```
-Norris, T. (2026). A Conditional Full Conservative Derivation of the Two-Body 4PN Sector from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19561056
 
-Norris, T. (2026). A Full Conservative Derivation of the Two-Body 3PN Sector from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19501724
+All papers are archived on Zenodo under author Norris, T. (2026). Within each section, papers are listed in reading order (foundations first, extensions later).
 
-Norris, T. (2026). A Conditional Derivation of the Point-Particle 2.5PN Sector from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19492270
+### Derivation archive
 
-Norris, T. (2026). A Controlled Derivation of the Full Conservative Second Post-Newtonian Sector from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19450284
+- *Moving-Throat PDE Derivation Companion Archive Ledger.* [10.5281/zenodo.19699523](https://doi.org/10.5281/zenodo.19699523)
 
-Norris, T. (2026). A Controlled Derivation of the Full First Post-Newtonian Sector from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19450102
+### Unified 4D Toy Model series
 
-Norris, T. (2026). Plasma Dynamics from the Unified 4D Toy Model: A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Corrections. Zenodo. https://doi.org/10.5281/zenodo.19449935
+- *4D Toy Model — Action, Projections, and Controlled Brane Limits.* [10.5281/zenodo.19449589](https://doi.org/10.5281/zenodo.19449589)
+- *Deriving Key Post-Newtonian Coefficients from the Unified 4D Toy Model.* [10.5281/zenodo.19449653](https://doi.org/10.5281/zenodo.19449653)
+- *Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections.* [10.5281/zenodo.19449834](https://doi.org/10.5281/zenodo.19449834)
+- *Plasma Dynamics from the Unified 4D Toy Model: A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Corrections.* [10.5281/zenodo.19449935](https://doi.org/10.5281/zenodo.19449935)
+- *A Controlled Derivation of the Full First Post-Newtonian Sector from the Unified 4D Toy Model.* [10.5281/zenodo.19450102](https://doi.org/10.5281/zenodo.19450102)
+- *A Controlled Derivation of the Full Conservative Second Post-Newtonian Sector from the Unified 4D Toy Model.* [10.5281/zenodo.19450284](https://doi.org/10.5281/zenodo.19450284)
+- *A Conditional Derivation of the Point-Particle 2.5PN Sector from the Unified 4D Toy Model.* [10.5281/zenodo.19492270](https://doi.org/10.5281/zenodo.19492270)
+- *A Full Conservative Derivation of the Two-Body 3PN Sector from the Unified 4D Toy Model.* [10.5281/zenodo.19501724](https://doi.org/10.5281/zenodo.19501724)
+- *A Conditional Full Conservative Derivation of the Two-Body 4PN Sector from the Unified 4D Toy Model.* [10.5281/zenodo.19561056](https://doi.org/10.5281/zenodo.19561056)
 
-Norris, T. (2026). Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections. Zenodo. https://doi.org/10.5281/zenodo.19449834
+### Superfluid Defect Toy Model series
 
-Norris, T. (2026). Deriving Key Post-Newtonian Coefficients from the Unified 4D Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449653
-
-Norris, T. (2026). 4D Toy Model - Action, Projections, and Controlled Brane Limits. Zenodo. https://doi.org/10.5281/zenodo.19449589
-
-Norris, T. (2026). Hybrid 1PN Dynamics and the Acoustic Horizon in a Superfluid Defect Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449512
-
-Norris, T. (2026). Brane-Bulk Throat Ontology for a Superfluid Defect Toy Universe. Zenodo. https://doi.org/10.5281/zenodo.19449422
-
-Norris, T. (2026). Electromagnetic Fields and Charged Defects in a Superfluid Defect Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449355
-
-Norris, T. (2026). Spin, Vorticity, and N-Body Dynamics in a Superfluid Defect Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449261
-
-Norris, T. (2026). Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449182
-
-Norris, T. (2026). Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model. Zenodo. https://doi.org/10.5281/zenodo.19449058
-```
+- *Newtonian and 1PN Orbital Dynamics from a Superfluid Defect Toy Model.* [10.5281/zenodo.19449058](https://doi.org/10.5281/zenodo.19449058)
+- *Gravitational Optics and Soliton Geodesics in a Superfluid Defect Toy Model.* [10.5281/zenodo.19449182](https://doi.org/10.5281/zenodo.19449182)
+- *Spin, Vorticity, and N-Body Dynamics in a Superfluid Defect Toy Model.* [10.5281/zenodo.19449261](https://doi.org/10.5281/zenodo.19449261)
+- *Electromagnetic Fields and Charged Defects in a Superfluid Defect Toy Model.* [10.5281/zenodo.19449355](https://doi.org/10.5281/zenodo.19449355)
+- *Brane-Bulk Throat Ontology for a Superfluid Defect Toy Universe.* [10.5281/zenodo.19449422](https://doi.org/10.5281/zenodo.19449422)
+- *Hybrid 1PN Dynamics and the Acoustic Horizon in a Superfluid Defect Toy Model.* [10.5281/zenodo.19449512](https://doi.org/10.5281/zenodo.19449512)

@@ -87,7 +87,7 @@ Geometry Lift, Reduced Wall--Support--Gauge Dynamics, and Quadrupole Response Ex
 \maketitle
 
 \begin{abstract}
-We formulate a moving-throat partial differential equation framework for brane--bulk defects starting from the exact action-based $(4+1)$ parent theory with gauged matter, localized Maxwell dynamics, and explicit confinement geometry. The throat is lifted from the finite-dimensional variables $(a,L)$ to a distributed moving surface $\Sigma(\mathbf X,t)=r-R(\Omega,w,t)$, so that the wall, stable matter-support, localized Maxwell, and mixed $A_w/F_{\mu w}/J^w$ channels can be treated in one coupled response problem. This lift makes the grouped real $P_2$ bundle literal rather than symbolic and yields a reduced wall--support--gauge system whose low-frequency data are the conservative operator moments, outgoing-transfer moments, and grouped isotropy defects.
+We formulate a moving-throat partial differential equation framework for treating a finite brane--bulk defect throat as a coupled response problem rather than as a point source with fitted higher-multipole coefficients. Starting from the exact action-based $(4+1)$ parent theory with gauged matter, localized Maxwell dynamics, and explicit confinement geometry, the throat is lifted from the finite-dimensional variables $(a,L)$ to a distributed moving surface $\Sigma(\mathbf X,t)=r-R(\Omega,w,t)$, so that the wall, stable matter-support, localized Maxwell, and mixed $A_w/F_{\mu w}/J^w$ channels can be treated in one coupled response problem. This lift makes the grouped real $P_2$ bundle literal rather than symbolic and yields a reduced wall--support--gauge system whose low-frequency data are the conservative operator moments, outgoing-transfer moments, and grouped isotropy defects.
 
 On the natural isotropic branch, the angular source map is canonical and the universal outgoing quadrupole bridge collapses to the invariant normalization test $\hat m_0^{\,2}P_0=54Gc_s^5/(5a^5c^5)$. Around that branch, the first admissible weak-axisymmetric departure is not a generic three-lane deformation: it is transported by the fixed grouped signature $(1,\tfrac12,-1)$ and is measured by the single prefactor slope $\Xi_1=P_1/P_0$. The paper therefore serves two purposes at once. It states the framework in a form that makes clear what is exact, what belongs only to controlled reduction, and what observables a realized branch must compute; and it provides an operational guide for extracting overlap data, testing grouped isotropy, and evaluating the isotropic and weak-axisymmetric quadrupole-response targets. It does not claim a full nonlinear branch solution or a completed proof that the passive/outgoing quadrupole branch has already been realized.
 \end{abstract}
@@ -99,13 +99,13 @@ On the natural isotropic branch, the angular source map is canonical and the uni
 
 \subsection{Why a moving-throat PDE is needed}
 
-The action-based $(4+1)$ parent theory already fixes three pieces of the program at a level that is no longer heuristic: a gauged bulk matter sector, a localized Maxwell sector, and an explicit defect geometry carried through confinement. That parent theory was strong enough to support the reduced brane-facing hierarchy and the conservative post-Newtonian construction, but it also exposed its own limit. As the hierarchy is pushed beyond the monopole approximation, the defect ceases to look like a point source with a few adjustable coefficients and instead begins to look like a small response system with internal structure. By the time one reaches the higher conservative and retarded bridges, the reduced data already require a carried wake sector, a genuine mouth/support layer, a separate geometry-completion channel, and a grouped real $\Ptwo$ response bundle. The unresolved problem is therefore no longer another round of coefficient matching. It is the missing moving-throat PDE that must produce those coefficients as response data of an actual branch.
+The action-based $(4+1)$ parent theory already fixes three pieces of the program at a level that is no longer heuristic: a gauged bulk matter sector, a localized Maxwell sector, and an explicit defect geometry carried through confinement \cite{Norris2026Parent4D,Norris2026Maxwell4D}. That parent theory was strong enough to support the reduced brane-facing hierarchy and the conservative and retarded post-Newtonian bridges \cite{Norris2026TwoPN,Norris2026TwoPointFivePN,Norris2026ThreePN,Norris2026FourPN}, but it also exposed its own limit. As the hierarchy is pushed beyond the monopole approximation, the defect ceases to look like a point source with a few adjustable coefficients and instead begins to look like a small response system with internal structure. By the time one reaches the higher conservative and retarded bridges, the reduced data already require a carried wake sector, a genuine mouth/support layer, a separate geometry-completion channel, and a grouped real $\Ptwo$ response bundle. The unresolved problem is therefore no longer another round of coefficient matching. It is the missing moving-throat PDE that must produce those coefficients as response data of an actual branch.
 
 The older finite-dimensional throat variables $(a,L)$ remain useful, but only as the lowest collective moments of a more distributed object. They can encode breathing motion, but they cannot by themselves make the grouped real $\Ptwo$ modes literal wall/support degrees of freedom, they cannot keep the mixed-core channels
 \[
 A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a
 \]
-alive inside the microscopic response problem, and they cannot determine the mouth/worldtube operator whose outgoing quadrupole normalization remains open. A genuine moving-throat formulation therefore has to do at least four things at once: promote the throat to a distributed geometry field, couple that geometry honestly to the bulk matter and gauge sectors, retain the mixed channels that the strict far-field brane reduction suppresses, and organize the resulting response in the grouped real $\Ptwo$ language required by the higher-order bridge.
+alive inside the microscopic response problem, and they cannot determine the mouth/worldtube operator whose outgoing quadrupole normalization had previously entered only as reduced branch data rather than as a solved moving-throat response problem. A genuine moving-throat formulation therefore has to do at least four things at once: promote the throat to a distributed geometry field, couple that geometry honestly to the bulk matter and gauge sectors, retain the mixed channels that the strict far-field brane reduction suppresses, and organize the resulting response in the grouped real $\Ptwo$ language required by the higher-order bridge. The completed derivation ledger now isolates the exact compact-DtN matching statement as a separate framework-facing theorem packet rather than leaving it buried in the old finite-dimensional closure \cite{Norris2026PDELedger}.
 
 A second motivation is methodological. The current program contains statements of several different types: exact consequences of the declared action, exact theorems inside fixed reduced hierarchies, controlled reductions, effective closures, and genuinely open branch-realization questions. If those statuses are not kept separate, then a reader cannot tell what has actually been derived from the parent theory and what still depends on the realized moving-throat branch. The present paper is meant to prevent that blur. Its purpose is to formulate the PDE framework in the right variables, isolate the observables that any successful branch must determine, and make the remaining theorem gap explicit rather than diffuse.
 
@@ -133,7 +133,7 @@ Its third contribution is a reduced but honest wall--support--gauge system. Star
 
 Its fourth contribution is operational rather than purely formal. The paper shows how the reader should use the PDE once a candidate branch is specified. On the isotropic line, the grouped real bundle collapses to a common lane and the angular source map becomes canonical, so the normalization problem reduces to a radial/axial question. Around that branch, the first allowed weak-axisymmetric splitting is not arbitrary; it is transported through the grouped response and outgoing prefactor in a tightly constrained way. In other words, the paper is meant to serve as a user guide to the PDE as much as a conceptual reformulation of the defect.
 
-Viewed this way, the manuscript is designed to bridge two audiences at once. A reader coming from the parent-theory side should be able to see exactly how the moving throat is coupled to the bulk fields without stepping immediately into the entire derivation companion. A reader coming from the post-Newtonian side should be able to identify the specific quantities the PDE must determine in order for the grouped $\Ptwo$ conservative and outgoing bridges to close.
+Viewed this way, the manuscript is designed to bridge two audiences at once. A reader coming from the parent-theory side should be able to see exactly how the moving throat is coupled to the bulk fields without stepping immediately into the entire derivation companion \cite{Norris2026PDELedger}. A reader coming from the post-Newtonian side should be able to identify the specific quantities the PDE must determine in order for the grouped $\Ptwo$ conservative and outgoing bridges to close.
 
 \subsection{What this paper does \emph{not} claim}
 
@@ -146,6 +146,30 @@ A_w,\qquad J^w,\qquad F_{\mu w}
 in the zero-mode brane limit is a reduction statement, not an erasure of the mixed sector. The present paper keeps those channels alive wherever the response problem requires them. That distinction is essential, because the outgoing quadrupole bridge and the weak-axisymmetric transport problem both pass through structures that would be invisible in a purely brane-zero-mode description.
 
 The claim one should attach to this paper is therefore narrower and stronger at the same time. Narrower, because it does not pretend to have solved the final branch-realization question. Stronger, because it makes precise what the moving-throat PDE must compute, what counts as exact from the declared action, what belongs only to controlled reduction, and what remains open. In that sense the paper is intended to be a stable front end for both the technical derivation companion and any later numerical or branch-construction work.
+
+\subsection{Key symbols at a glance}
+
+Table~\ref{tab:key-symbols} collects the small set of symbols that carry most of the operational load in the main text. The appendices remain the full notation reference; the purpose here is only to give the reader a front-end map before the grouped-lane reductions and Schur-complement eliminations begin.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}L{0.24\linewidth}L{0.69\linewidth}@{}}
+\toprule
+Symbol & Role in the paper \\
+\midrule
+\(\Sigma(\mathbf X,t)=r-R(\Omega,w,t)\) & Moving-throat level-set geometry that replaces the old finite-dimensional throat description as the fundamental PDE variable. \\
+\(A\in\{20,21,22\}\) & Grouped real \(\Ptwo\) lane label for the quadrupole wall/support bundle. \\
+\((\bar x,a_x,b_x)\) & Weighted trace and anisotropy variables for any grouped triple; isotropy is the gate \(a_x=b_x=0\). \\
+\((B_{A,n},Z_{A,n},N_{A,n})\) & Low-frequency moment families: stable BdG support, conservative localized-Maxwell/mixed, and outgoing-transfer data. \\
+\((D_{A,0},D_{A,2},D_{A,4})\) & Reduced conservative denominator coefficients assembled from the wall baseline together with the support and gauge/mixed moments. \\
+\(P_0=N_0/D_0\) & Isotropic outgoing prefactor that enters the main normalization test. \\
+\(\mhat\) and \(\chi_Q\) & Source-map factor and outgoing-normalization factor; the canonical compact branch has \(\chi_Q=1\). \\
+\(\XiOne=P_1/P_0\) & First weak-axisymmetric prefactor slope, i.e. the one-scalar diagnostic of the first grouped anisotropic departure. \\
+\bottomrule
+\end{tabular}
+\caption{Quick-reference symbols for the operational core of the framework paper.}
+\label{tab:key-symbols}
+\end{table}
 
 \subsection{Structure of the paper}
 
@@ -291,7 +315,7 @@ This separation matters for the rest of the paper. The grouped real \(P_2\) resp
 
 \subsection{Exact parent action}
 
-The exact parent theory presently frozen by the program is an action-based bulk matter--gauge system in which geometry is carried through the confinement term. The total action is
+The exact parent theory presently frozen by the program is an action-based bulk matter--gauge system in which geometry is carried through the confinement term \cite{Norris2026Parent4D,Norris2026Maxwell4D}. The total action is
 \[
 S=\int \mathrm dt\,\mathrm d^4X\,\bigl(\mathcal L_\psi+\mathcal L_{\mathrm{EM}}\bigr),
 \]
@@ -1968,6 +1992,7 @@ The dimensionless factor $\chi_Q$ is the only retained outgoing-normalization fr
 \chi_Q=1.
 \label{eq:canonical-chiQ}
 \end{equation}
+In the finished derivation companion this exact compact-DtN matching statement is carried by the framework-facing anchor \texttt{MTDC-T8.2} \cite{Norris2026PDELedger}.
 When the actual passive/outgoing branch is still being treated as branch data rather than as a solved DtN theorem, it is useful to keep $\chi_Q$ explicit; all outgoing uncertainty that survives to 2.5PN order is then localized in that one scalar.
 
 \subsection{Static outgoing prefactor \texorpdfstring{$P_0=N_0/D_0$}{P0=N0/D0}}
@@ -2043,7 +2068,7 @@ while $P_2$ and $P_4$ enter only the even branch bookkeeping through $\cO(\omega
 Insert \eqref{eq:outgoing-fingerprint} into \eqref{eq:outgoing-bridge-product} and expand through $\cO(\omega^5)$. The odd term in \eqref{eq:outgoing-fingerprint} first appears at order $\omega^5$, so the coefficients $P_2$ and $P_4$ can only contribute to even orders at the same accuracy. If one uses the canonical compact outgoing branch, then \eqref{eq:outgoing-Gamma5} is obtained by setting $\chi_Q=1$.
 \end{proof}
 
-Equation~\eqref{eq:outgoing-Gamma5} is the first central reduction of the section. At the universal point-particle 2.5PN level, the full internal moving-throat bundle enters the odd quadrupole bridge only through the static ratio $P_0=N_0/D_0$, together with the optional outgoing-normalization scalar $\chi_Q$ if the branch is not yet fixed to the canonical compact DtN completion.
+Equation~\eqref{eq:outgoing-Gamma5} is the first central reduction of the section. At the universal point-particle 2.5PN level \cite{Norris2026TwoPointFivePN}, the full internal moving-throat bundle enters the odd quadrupole bridge only through the static ratio $P_0=N_0/D_0$, together with the optional outgoing-normalization scalar $\chi_Q$ if the branch is not yet fixed to the canonical compact DtN completion.
 
 \subsection{Invariant normalization condition}
 
@@ -2434,7 +2459,56 @@ A useful way to read the present framework is as a one-way map
 \longrightarrow
 (P_0,\XiOne).
 \]
+Figure~\ref{fig:workflow-map} packages the same sequence as a compact diagnostic pipeline.
 If the branch data are well defined, the remaining question is no longer algebraic compression. It is whether the realized branch lands on the isotropic normalization target and, if not, how the miss is organized.
+
+\begin{figure}[t]
+\centering
+\small
+\setlength{\fboxsep}{6pt}
+\fbox{\begin{minipage}{0.84\linewidth}\centering
+\textbf{1. Candidate branch}\\[0.2em]
+Specify a stationary background \((R_0,\psi_0,A_{M0})\) together with the wall constitutive data and the support/gauge spectra.
+\end{minipage}}
+
+\vspace{0.45em}
+\(\Downarrow\)
+
+\vspace{0.45em}
+\fbox{\begin{minipage}{0.84\linewidth}\centering
+\textbf{2. Reduced overlap data}\\[0.2em]
+Compute the radial/axial overlap integrals and the induced couplings \(C_\alpha\), \(G_{U,r}\), \(G_{W,r}\), and \(R_r\).
+\end{minipage}}
+
+\vspace{0.45em}
+\(\Downarrow\)
+
+\vspace{0.45em}
+\fbox{\begin{minipage}{0.84\linewidth}\centering
+\textbf{3. Grouped bundle moments}\\[0.2em]
+Assemble the moment families \(B_{A,n}\), \(Z_{A,n}\), and \(N_{A,n}\), then form the reduced denominator coefficients \(D_{A,0}\), \(D_{A,2}\), and \(D_{A,4}\).
+\end{minipage}}
+
+\vspace{0.45em}
+\(\Downarrow\)
+
+\vspace{0.45em}
+\fbox{\begin{minipage}{0.84\linewidth}\centering
+\textbf{4. Symmetry and normalization diagnostics}\\[0.2em]
+Project to \((\bar x,a_x,b_x)\), test isotropy or the weak-axisymmetric line \(b=3a\), and extract \(P_0\) together with \(\XiOne\) when needed.
+\end{minipage}}
+
+\vspace{0.45em}
+\(\Downarrow\)
+
+\vspace{0.45em}
+\fbox{\begin{minipage}{0.84\linewidth}\centering
+\textbf{5. Outcome}\\[0.2em]
+Compare \(\mhat^{2}P_0\) or \(\mhat^{2}\chi_QP_0\) to \(54Gc_s^5/(5a^5c^5)\) and classify framework success versus realization gap.
+\end{minipage}}
+\caption{Operational workflow for using the moving-throat PDE framework.}
+\label{fig:workflow-map}
+\end{figure}
 
 \subsection{Inputs required from a candidate branch}
 
@@ -2772,7 +2846,7 @@ and is therefore governed by the one scalar \(\XiOne\). So even the first anisot
 
 What remains branch-dependent is not the form of the reduced map but the data that feed it. The unresolved objects are the actual stationary throat profile, the wall constitutive functions on that profile, the stable support spectrum, the wall--support and wall--gauge overlap integrals, and the outgoing DtN data of the selected passive/outgoing branch. In the notation of Section~\ref{sec:how-to-use}, the open problem is therefore the realization of the branch data set \(\mathfrak B\), not the derivation of another abstract reduction formula.
 
-At the isotropic level this branch dependence can be stated even more sharply. The present paper shows that the universal odd bridge depends only on the static outgoing prefactor \(P_0\), or equivalently on \(N_Q\). Later reduced continuation of the same program narrows that statement further: on the natural isotropic grouped-\(\Ptwo\) carrier, the conservative branch can be geometry-clean, the explicit support/source side can become automatic, and the remaining reduced obstruction collapses to the single normalization defect \(N_Q-1\), or equivalently to the outgoing-normalization factor \(\chi_Q-1\) when the natural point-particle source map is used. In that sharper language, what remains genuinely PDE-facing is whether the actual moving-throat solution realizes the canonical outgoing branch and, if not, which isotropic DtN deformation data move it away from that branch.
+At the isotropic level this branch dependence can be stated even more sharply. The present paper shows that the universal odd bridge depends only on the static outgoing prefactor \(P_0\), or equivalently on \(N_Q\). Later reduced continuation of the same program, recorded across the companion ledger \cite{Norris2026PDELedger}, narrows that statement further inside the carried isotropic closure: once the geometry-clean carrier, the source-map reduction, and the explicit support/source side are imposed, the remaining reduced obstruction collapses to the single normalization defect \(N_Q-1\), or equivalently to the outgoing-normalization factor \(\chi_Q-1\) when the natural point-particle source map is used. In that sharper language, what remains genuinely PDE-facing is whether the actual moving-throat solution realizes the canonical outgoing branch and, if not, which isotropic DtN deformation data move it away from that branch.
 
 At first weak-axisymmetric order the same lesson reappears. The framework does not leave an arbitrary anisotropic packet to be solved. It leaves one branch-dependent slope,
 \[
@@ -2784,7 +2858,7 @@ which measures the mismatch between the static outgoing-transfer loading and the
 
 Methodologically, the most important change produced by the moving-throat program is that the live bottleneck has shifted away from algebra. The earlier program had to keep reopening new coefficient ledgers because the correct microscopic carrier had not yet been isolated. That is no longer the situation here. The grouped real \(\Ptwo\) bundle, the isotropic prefactor \(P_0\), and the weak-axisymmetric slope \(\XiOne\) already give a closed reduced packet for the part of the theory that matters first.
 
-This is clearest on the isotropic branch. Once the conservative grouped-\(\Ptwo\)/geometry carrier is organized in the one-pole contact-plus-pole language, the reduced normalization problem becomes one-dimensional. In the later reduced continuation, the canonical compact outgoing DtN branch even fixes
+This is clearest on the isotropic branch. Once the conservative grouped-\(\Ptwo\)/geometry carrier is organized in the one-pole contact-plus-pole language, the reduced normalization problem becomes one-dimensional. In the later reduced continuation recorded at anchor \texttt{MTDC-T8.2} of the companion ledger \cite{Norris2026PDELedger}, the canonical compact outgoing DtN branch even fixes
 \[
 \chi_Q=1,
 \]
@@ -2794,13 +2868,28 @@ That shift is scientifically healthy. It makes the program falsifiable in a narr
 
 \subsection{Relation to the companion derivation paper}
 
-The companion derivation paper should be read as the proof archive for the claims used here. Its job is not to change the framework paper's story, but to justify each load-bearing step in the order the framework paper uses it: the geometry lift, the breathing reduction back to \((a,L)\), the BdG Schur complement, the localized-Maxwell/mixed self-energy, the grouped projector calculus, the isotropic normalization bridge, and the weak-axisymmetric transport laws. Put differently, the present paper tells the reader what the PDE means and how to use it; the companion should show why the reduction formulas are correct.
+The companion derivation paper, published as the \emph{Moving-Throat PDE Derivation Companion Archive Ledger} \cite{Norris2026PDELedger}, should be read as the proof archive for the claims used here. Its job is not to change the framework paper's story, but to justify each load-bearing step in the order the framework paper uses it: the geometry lift, the breathing reduction back to \((a,L)\), the BdG Schur complement, the localized-Maxwell/mixed self-energy, the grouped projector calculus, the isotropic normalization bridge, and the weak-axisymmetric transport laws. Put differently, the present paper tells the reader what the PDE means and how to use it; the companion should show why the reduction formulas are correct.
+
+For downstream citation hygiene, the framework-facing surface of that ledger is the stable anchor set \texttt{MTDC-T1}, \texttt{MTDC-T2}, \texttt{MTDC-T3}, \texttt{MTDC-T4}, \texttt{MTDC-T5}, and \texttt{MTDC-T8.2}; stage numbers remain provenance handles rather than the preferred public citation targets \cite{Norris2026PDELedger}.
 
 That division of labor is also the right place to house the symbolic verification archive. The SymPy and Mathematica scripts are valuable because they check the projector algebra, the low-frequency expansions, the Schur complements, the grouped inverse maps, and the normalization identities mechanically. But those checks should support the paper rather than overwhelm it. The main text should remain readable as a framework document, while the companion and script bundle provide the referee-facing proof path.
 
 The same scope discipline applies to downstream program packets. Later same-charge, rigid-mouth, selected-support, and relaxed/open-system continuations may eventually be central to the broader research program, but they are downstream of the framework developed here. The present paper should end one layer earlier: with the moving-throat PDE, the grouped real \(\Ptwo\) carrier, the isotropic normalization test, and the first weak-axisymmetric observable. Only after those pieces are stable on an actual realized branch does it make sense to ask the more specialized downstream questions.
 
 For that reason, the right immediate continuation after this paper is not another round of formal compression. It is branch construction and branch testing. One should locate or compute candidate stationary moving-throat branches, extract the overlap data of Section~\ref{sec:how-to-use}, and test, in order, grouped isotropy, the isotropic normalization ratio, and the weak-axisymmetric slope \(\XiOne\). If those tests fail, the framework fails for a sharply identifiable reason. If they succeed, the later program has a real microscopic base rather than a purely algebraic one.
+
+\section*{Acknowledgments}
+This work was carried out by an independent researcher.
+Generative-AI tools were used during the development of the manuscript to help
+translate conceptual ideas into mathematical form, assist with symbolic
+manipulations, prototype and revise companion Mathematica and SymPy
+verification scripts, and improve the exposition.
+The conceptual direction, hypotheses, and overall structure of the work were
+directed by the author.
+The resulting arguments and calculations were checked for internal consistency
+using the accompanying symbolic scripts, but the work should be regarded as
+exploratory and would benefit from review by subject-matter experts.
+Any errors, omissions, or misunderstandings remain the author's.
 
 \appendix
 
@@ -3719,7 +3808,7 @@ If the prototype already fails badly, the issue is not hidden in grouped bookkee
 
 This appendix explains how the algebra in the framework paper can be audited. The paper itself is analytic rather than computational, so the scripts are not presented as black-box generators of the claims. Their role is narrower and easier to referee: they provide a deterministic archive of symbolic reductions, overlap compilers, grouped-projector identities, Schur-complement eliminations, weak-axisymmetric transport laws, and packet-level consistency checks. In other words, they verify that the formulas carried in the main text reduce exactly as claimed \emph{within the stated closure hierarchy}. They do not, by themselves, upgrade the framework paper into an assumption-free theorem of the fully solved moving-throat branch.
 
-The released verification bundle is naturally split into two parts. The first part is the framework-paper archive proper: small SymPy audits that mirror the section-level algebra used in the present manuscript. The second part is the broader derivation archive: explicit isotropic overlap-model scripts, weak-axisymmetric transport scripts, and later packet or corridor compilers that are not needed to read the framework paper but make the discussion of the open realization gap auditable. The distributed Wolfram Language notebooks for the full derivation companion play the same referee role for the longer symbolic ledgers that the SymPy audits play here for the reader-facing framework paper.
+The released verification bundle is naturally split into two parts. The first part is the framework-paper archive proper: small SymPy audits that mirror the section-level algebra used in the present manuscript. The second part is the broader derivation archive: explicit isotropic overlap-model scripts, weak-axisymmetric transport scripts, and later packet or corridor compilers that are not needed to read the framework paper but make the discussion of the open realization gap auditable. The distributed Wolfram Language notebooks for the full derivation companion play the same referee role for the longer symbolic ledgers that the SymPy audits play here for the reader-facing framework paper. The companion ledger is the citation-facing wrapper for that material: future papers should cite its theorem-block anchors first and use the artifact names below only for audit-level routing \cite{Norris2026PDELedger}. In the repository, the authoritative provenance lives in \nolinkurl{research/pde_ledger/}; the auxiliary \nolinkurl{scripts/5pn/} programs mentioned below are retained as explicit prototype checks, not as independent citation targets.
 
 \subsection{Verification principles}
 
@@ -3741,13 +3830,13 @@ Third, the archive is organized around load-bearing formulas rather than around 
 \toprule
 Layer & Main purpose & Representative artifacts \\
 \midrule
-Geometry and conservative reduction & Checks the moving-throat geometry lift, the breathing reduction back to $(a,L)$, and the first conservative BdG-wall Schur complements. & \nolinkurl{moving_throat_pde_master_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} \\
+Geometry and conservative reduction & Checks the moving-throat geometry lift, the breathing reduction back to $(a,L)$, and the first conservative BdG-wall Schur complements. & \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_master_sympy_audit.py}; \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py} \\
 
-Isotropic overlap and grouped normalization & Builds explicit finite-throat overlap models, computes the low-frequency moments $(B_n,Z_n,N_n)$, and tests the isotropic grouped-real $\Ptwo$ normalization surface. & \nolinkurl{5pn_stage3_isotropic_overlap_model.py}; \nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py} \\
+Isotropic overlap and grouped normalization & Builds explicit finite-throat overlap models, computes the low-frequency moments $(B_n,Z_n,N_n)$, and tests the isotropic grouped-real $\Ptwo$ normalization surface. & \nolinkurl{scripts/5pn/5pn_stage3_isotropic_overlap_model.py}; \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py} \\
 
-Weak-axisymmetric transport & Carries the grouped signature $(1,\tfrac12,-1)$ through the conservative and prefactor compilers, isolates $\XiOne=P_1/P_0$, and tests compensation conditions. & \nolinkurl{5pn_stage4_axisymmetric_transport.py}; \nolinkurl{5pn_stage5_primitive_deformation_compensation.py} \\
+Weak-axisymmetric transport & Carries the grouped signature $(1,\tfrac12,-1)$ through the conservative and prefactor compilers, isolates $\XiOne=P_1/P_0$, and tests compensation conditions. & \nolinkurl{scripts/5pn/5pn_stage4_axisymmetric_transport.py}; \nolinkurl{scripts/5pn/5pn_stage5_primitive_deformation_compensation.py} \\
 
-Packet and realization-side compilers & Converts the section-level coefficients into branch packets, orbit-lock variables, target-surface tests, and actual-branch ceiling checks used in the discussion. & \nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}; \nolinkurl{moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py} \\
+Packet and realization-side compilers & Converts the section-level coefficients into branch packets, orbit-lock variables, target-surface tests, and actual-branch ceiling checks used in the discussion. & \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}; \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}; \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}; \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py} \\
 \bottomrule
 \end{tabular}
 \caption{Verification layers for the framework paper and its immediate realization-side audit.}
@@ -3757,12 +3846,11 @@ Packet and realization-side compilers & Converts the section-level coefficients 
 \subsection{Named artifacts and what they certify}
 
 \paragraph{(i) Geometry lift and breathing reduction.}
-The core geometry audit is \nolinkurl{moving_throat_pde_master_sympy_audit.py}. It checks the real-harmonic normalization facts, the mouth-average extraction rule, the reduction of the distributed wall field back to the two-coordinate $(a,L)$ sector, and the one-mode grouped-$\Ptwo$ reduction. This is the executable referee companion to the geometry-lift and breathing-reduction portions of the paper.
+The core geometry audit is \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_master_sympy_audit.py}. It checks the real-harmonic normalization facts, the mouth-average extraction rule, the reduction of the distributed wall field back to the two-coordinate $(a,L)$ sector, and the one-mode grouped-$\Ptwo$ reduction. This is the executable referee companion to the geometry-lift and breathing-reduction portions of the paper.
 
 \paragraph{(ii) Stable BdG support elimination.}
-The pair
-\nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} and
-\nolinkurl{moving_throat_pde_stage003_bdg_sympy_output.txt}
+The audit
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py}
 checks the first coupled Schur-complement step. In particular it verifies the exact elimination of the stable support modes, the resulting scalar matrix kernel,
 \[
  D_0^{\eff}(\omega)=K_0-\omega^2 M_0-C(\Omega_0^2-\omega^2 I)^{-1}C^T,
@@ -3770,9 +3858,8 @@ checks the first coupled Schur-complement step. In particular it verifies the ex
 the grouped-lane self-energies, the explicit two-pole formula in the one-mode prototype, and preservation of grouped isotropy on an isotropic matter-coupled branch.
 
 \paragraph{(iii) Explicit isotropic overlap model.}
-The pair
-\nolinkurl{5pn_stage3_isotropic_overlap_model.py} and
-\nolinkurl{5pn_stage3_isotropic_overlap_model_output.txt}
+The script
+\nolinkurl{scripts/5pn/5pn_stage3_isotropic_overlap_model.py}
 provides the first concrete finite-throat overlap realization of the reduced bundle. It constructs the moments $(B_0,B_2,B_4)$, $(Z_0,Z_2,Z_4)$, $(N_0,N_2,N_4)$, the conservative coefficients $(D_0,D_2,D_4)$, the normalized response coefficients $(u_2,u_4)$, and the prefactor coefficients $(P_0,P_2,P_4)$. It also checks exact grouped isotropy when the three grouped lanes share the same radial/axial data, and it exhibits the prototype compatibility identity
 \[
  \frac{N_0}{P_{0,\mathrm{target}}}
@@ -3782,9 +3869,8 @@ provides the first concrete finite-throat overlap realization of the reduced bun
 which is the simplest explicit version of the isotropic normalization surface.
 
 \paragraph{(iv) Weak-axisymmetric grouped transport.}
-The pair
-\nolinkurl{5pn_stage4_axisymmetric_transport.py} and
-\nolinkurl{5pn_stage4_axisymmetric_transport_output.txt}
+The script
+\nolinkurl{scripts/5pn/5pn_stage4_axisymmetric_transport.py}
 checks the first weak-axisymmetric grouped signature
 \[
  \lambda_{20}=1,
@@ -3806,9 +3892,8 @@ as well as the grouped weak-axisymmetric law
 This is the main executable audit behind the weak-axisymmetric departures section.
 
 \paragraph{(v) Primitive compensation surfaces.}
-The pair
-\nolinkurl{5pn_stage5_primitive_deformation_compensation.py} and
-\nolinkurl{5pn_stage5_primitive_deformation_compensation_output.txt}
+The script
+\nolinkurl{scripts/5pn/5pn_stage5_primitive_deformation_compensation.py}
 tests primitive anisotropy mechanisms against the three first nontrivial reduced conditions: the even-preserving relation
 \[
  K_1=D_{21}+\frac{D_{01}}{9}=0,
@@ -3824,18 +3909,16 @@ and the hidden-even residual
 For the framework paper, the main value of this script is not that it proves the full PDE branch, but that it shows exactly which low-order anisotropy channels must be controlled before the simple isotropic narrative can be trusted.
 
 \paragraph{(vi) Packet compilers and grouped projectors.}
-The pair
-\nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py} and
-\nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit_output.txt}
+The audit
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}
 checks the exact response and prefactor compilers from
-\((D_0,D_2,D_4,N_0,N_2,N_4)\), the grouped trace/anomaly inverse formulas, isotropic collapse of the grouped coordinates, and the exact interconversion of the orbit-lock packet representations. The pair
-\nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py} and
-\nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit_output.txt}
+\((D_0,D_2,D_4,N_0,N_2,N_4)\), the grouped trace/anomaly inverse formulas, isotropic collapse of the grouped coordinates, and the exact interconversion of the orbit-lock packet representations. The audit
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}
 then upgrades that finite packet to an exact quotient-projector calculus on the microscopic drift space. These artifacts are the executable companion to the notation appendix and to the discussion of what remains genuinely branch-dependent.
 
 \paragraph{(vii) Isotropic grouped-target surface.}
 The audit
-\nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}
 checks the exact conservative isotropic carrier of the grouped real $\Ptwo$ bundle: the vanishing of grouped anomalies on the common-lane branch, the one-pole identity
 \[
  \Delta_{\mathrm{pole}}=-\frac{3D_2^2+D_0D_4}{D_0^2},
@@ -3848,9 +3931,9 @@ It also verifies the scalar/geometry firewall showing that contamination of the 
 
 \paragraph{(viii) Realization-side compatibility and actual-branch transport.}
 Two later scripts are not needed to follow the reader-facing derivation, but they make the discussion section auditable. The first,
-\nolinkurl{moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py},
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage206_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py},
 checks the primitive compatibility identity, the compatibility-branch specialization, and the finite survival window on that primitive family. The second,
-\nolinkurl{moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py},
+\nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage207_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py},
 transports the final branch packet to the observable prefactor variables, verifies the exact compiler for
 \[
  \bar P_0,
@@ -3868,14 +3951,14 @@ and checks the isotropic and weak-axisymmetric ceiling inequalities used in the 
 A referee-style rerun is short and hierarchical.
 
 \begin{enumerate}
-    \item Rerun the geometry audit \nolinkurl{moving_throat_pde_master_sympy_audit.py} to verify the wall-field conventions and the reduction back to $(a,L)$.
-    \item Rerun the coupled BdG audit \nolinkurl{moving_throat_pde_stage003_bdg_sympy_audit.py} and compare its transcript against the reduced wall-support formulas used in the main text.
-    \item Rerun the explicit isotropic overlap model and weak-axisymmetric transport scripts, namely \nolinkurl{5pn_stage3_isotropic_overlap_model.py}, \nolinkurl{5pn_stage4_axisymmetric_transport.py}, and \nolinkurl{5pn_stage5_primitive_deformation_compensation.py}. These scripts reproduce the low-frequency moments, the isotropic normalization surface, the grouped weak-axisymmetric law, and the first primitive compensation tests.
-    \item Rerun the packet and projector compilers \nolinkurl{moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}, \nolinkurl{moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}, and \nolinkurl{moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}. These are the shortest route from the section-level coefficients to the packet language used in the endgame discussion.
+    \item Rerun the geometry audit \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_master_sympy_audit.py} to verify the wall-field conventions and the reduction back to $(a,L)$.
+    \item Rerun the coupled BdG audit \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py} and compare its algebraic checks against the reduced wall-support formulas used in the main text.
+    \item Rerun the explicit isotropic overlap model and weak-axisymmetric transport scripts, namely \nolinkurl{scripts/5pn/5pn_stage3_isotropic_overlap_model.py}, \nolinkurl{scripts/5pn/5pn_stage4_axisymmetric_transport.py}, and \nolinkurl{scripts/5pn/5pn_stage5_primitive_deformation_compensation.py}. These scripts reproduce the low-frequency moments, the isotropic normalization surface, the grouped weak-axisymmetric law, and the first primitive compensation tests.
+    \item Rerun the packet and projector compilers \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage174_minimal_pde_data_packet_sympy_audit.py}, \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage175_orbit_quotient_projectors_sympy_audit.py}, and \nolinkurl{research/pde_ledger/scripts/moving_throat_pde_stage176_isotropic_grouped_p2_target_surface_sympy_audit.py}. These are the shortest route from the section-level coefficients to the packet language used in the endgame discussion.
     \item If one wants to audit the discussion section's realization-side statements rather than only the main framework derivation, rerun the Stage-206 and Stage-207 compilers as well.
 \end{enumerate}
 
-A clean rerun should reproduce exact zero residuals for the symbolic identities and the same benchmark values recorded in the corresponding output transcripts for the explicit prototype branches. No rerun, however, eliminates the distinction between algebraic verification and physical branch realization.
+A clean rerun should reproduce exact zero residuals for the symbolic identities and the same benchmark values returned by the explicit prototype branches. No rerun, however, eliminates the distinction between algebraic verification and physical branch realization.
 
 \subsection{Interpretive boundary}
 
@@ -3926,6 +4009,12 @@ T.~Norris,
 \emph{A Conditional Full Conservative Derivation of the Two-Body 4PN Sector from the Unified 4D Toy Model},
 Zenodo (2026).
 DOI: 10.5281/zenodo.19561056.
+
+\bibitem{Norris2026PDELedger}
+T.~Norris,
+\emph{Moving-Throat PDE Derivation Companion Archive Ledger},
+Zenodo (2026).
+DOI: 10.5281/zenodo.19699523.
 
 \end{thebibliography}
 

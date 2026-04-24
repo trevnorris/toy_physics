@@ -1,43 +1,45 @@
-# Moving-Throat PDE Program Compact
+# Moving-Throat PDE Program Compact — V2 Full
 
 ## 0. Purpose
 
-This document is the primary compact working master for the moving-throat PDE
-program. It is meant to support new sessions and new derivation work without
-requiring a full walk through the entire stage tree.
+This document is the **V2-full compact working master** for the moving-throat
+PDE program. It is meant for AI consumption: a new session should be able to
+work across the parent field theory, moving-throat PDE scaffold, reduced
+support/mouth/core machinery, grouped real `P2` finish line, same-charge and
+relaxed/open-system extensions, and the new V2 branch-realization audit without
+re-reading the full derivation logs.
 
-It is now updated through the post-`201` extension carried in
-`moving_throat_latest_full.md` and the relaxed/open-system extension carried in
-`moving_throat_extension.md`, i.e. through Stages `202-236`. The stable
-backbone from the earlier compact master is preserved, but the endgame is now
-rewritten around the actual theorem structure that the later same-charge,
-rigid-mouth, selected-branch, and relaxed-constraint work fixed:
+This version deliberately keeps the broad mathematical coverage of the original
+compact master while integrating the V2 audit corrections. The earlier V2
+rewrite was useful as a short field guide, but it was too aggressive as the sole
+memory document. This V2-full version restores the older math cards and branch
+compiler material, then adds the audit-corrected parent-action, gauge, boundary,
+target-surface, branch-freeze, and solver-pipeline layers.
 
-- the exact parent `4+1` theory,
-- the moving-throat geometry and reduced wall/support/outgoing stack,
-- the Family-1 mouth/core and co-evolving branches,
-- the full grouped real `P2` conservative and retarded finish line,
-- the coherent local-kernel / invariant / orbit structure,
-- the explicit free-quintuple realization compiler and finite local mixed-ray sieve,
-- the one-port same-charge mixed-kernel verdict and the actual-branch prefactor ceiling,
-- the rigid-mouth physical normal form and Cartesian orbit-lock packet,
-- the selected twin-support placement / ranking / support-versus-orbit split,
-- the codimension-three relaxed open-system branch
-  \[
-  (J^w,\ U/V,\ 
-arsigma)
-  \]
-  around the strict Stage-225 front end,
-- the selected-branch leakage/work compiler, the non-rigid mouth/dressing packet,
-  and the compensated multimode source compiler,
-- the lowered stationary barrier front end and its dynamic event-chain,
-  turning-point, WKB, and Goldilocks continuations,
-- and the microscopic cubic/quintic export kernel, channel-resolved heat
-  partition, and material-screening companion.
+The document is therefore organized as a **single compact ledger** for future
+work on:
 
+- the exact parent `4+1` GNLS/Maxwell theory and projection/reduction hooks,
+- the corrected status of the moving wall as either an effective closure or a
+  promoted throat action,
+- the Maxwell gauge-localization safety patch,
+- the open finite-radius throat boundary protocol,
+- finite-throat support, D/N AC impedance, and mouth DtN data,
+- wall/BdG/Maxwell/mixed Schur complements and stability gates,
+- Family-1 mouth/core and co-evolving mouth/core branches,
+- grouped real `P2` conservative and outgoing quadrupole finish lines,
+- coherent local-kernel monomials, similarity orbit, free-quintuple search, and
+  selected-support/orbit-lock packets,
+- relaxed/open-system leakage, work, non-rigid mouth, export, heat-partition,
+  and material-screening companions,
+- the reduced 5PN / actual-branch finish-line packet,
+- the V2-19 through V2-23 executable branch-realization protocol and first
+  target-blind open-throat residual extraction.
 
-This is **not** a paper draft.
-It is a compact program ledger.
+This is **not** a paper draft. It is not a claim that the full nonlinear
+moving-throat PDE has been solved. It is a compact program ledger whose job is
+to preserve the exact/reduced/effective/open status of every ingredient while
+keeping enough formulas available for future derivation work.
 
 The extension is integrated thematically rather than as a new stage-by-stage
 appendix. Stage numbers remain useful provenance markers, but the document is
@@ -175,6 +177,114 @@ selected twin-support placement state, and—if one needs the back-end repair
 audit rather than the front-end branch test—the local Hessian packets required
 by the now-completed search sieve.
 
+
+### 1.4 V2 audit overlay: status corrections and branch-realization discipline
+
+The V2 audit is an **overlay** on the older compact master. It does not delete
+the legacy compilers. It corrects their status and makes the branch-realization
+workflow executable.
+
+#### Parent-action status correction
+
+The current strict parent action is GNLS plus localized Maxwell, with geometry
+entering through the confinement argument:
+\[
+S_{\rm current}=S_\psi[\psi,A;\Sigma]+S_{\rm EM}[A].
+\]
+In that action, \(\Sigma/R\) is parent-level as a **confinement-coupling
+argument**, but it is not yet parent-level as an autonomous dynamical throat
+field. Varying \(V_{\rm conf}(\mathbf X;\Sigma)\) supplies a wall force/source;
+it does not by itself produce a wall PDE with \(\eta_{tt}\),
+\(\partial_w(T_w\eta_w)\), or \(\Delta_{S^2}\eta\).
+
+A parent-complete moving-throat statement must instead be
+\[
+\boxed{
+S_{\rm total}=S_\psi[\psi,A,\Sigma]+S_{\rm EM}[A]+S_\Sigma[\Sigma;\mathcal C_\Sigma].
+}
+\]
+At quadratic order around a stationary branch,
+\[
+S_\Sigma\to S_\eta^{(2)}+O(\eta^3).
+\]
+Until this promotion is made, the distributed wall PDE should be labeled an
+**effective linear wall closure**, not an already-derived strict parent field.
+
+#### Maxwell gauge-localization correction
+
+The unweighted Lorenz gauge-fixing term is safe as a formal bulk gauge device,
+but unsafe for naive noncompact zero-mode action reduction. Two safe readings
+are allowed:
+
+1. keep the unweighted term in the bulk, impose \(\partial\!\cdot A=0\) before
+   zero-mode reduction, and choose any convenient 3+1 gauge fixing afterward;
+2. localize the gauge fixing with finite \(H_{\rm loc}(w)\), preferably
+   \(H_{\rm loc}=Z\), so that
+   \[
+   \mathcal L_{\rm gf}^{\rm loc}
+   =-\frac{H_{\rm loc}(w)}{2\xi\mu_0}(\partial\!\cdot A)^2.
+   \]
+
+The general gauge-fixed equation is
+\[
+\boxed{
+\partial_M(ZF^{MN})+\frac{1}{\xi}\partial^N(H\,\partial\!\cdot A)=\mu_0J^N.
+}
+\]
+For \(H=Z\), the zero-mode gauge-fixed action is finite and \(\xi_4=\xi\). The
+mixed observables \(E_w\) and \(C_a\) remain exact gauge invariants and are not
+artifacts of the gauge choice.
+
+#### Open-throat endpoint correction
+
+The actual branch-realization geometry is an **open finite-radius conduit**:
+\[
+\boxed{R(0)=a,
+\qquad R(L)>0.}
+\]
+The old hard-cap statement \(R(L)=0\) should be treated as an obsolete toy
+idealization unless explicitly declared as such. The D/N half-ladder survives
+as an AC support-coordinate impedance/reflection result:
+\[
+q(0)=0,
+\qquad T_wq_w(L,\omega)+Y_L(\omega)q(L,\omega)=0,
+\]
+with the Neumann end recovered when \(Y_L\to0\). DC/background throughput exits
+through the open finite-radius junction and is tracked by leakage/work terms.
+
+#### Branch-freeze rule
+
+Before target residuals are evaluated, freeze:
+
+- parent action and gauge convention,
+- wall/interface action status,
+- open-exit boundary protocol,
+- projection/source map,
+- support family,
+- mode/port list,
+- stability/passivity gates,
+- extraction formulas,
+- solver/output schema.
+
+No post-residual refit is allowed. A stable open branch that fails the target
+packet is falsification data, not a pipeline error.
+
+#### V2 target-realization status
+
+The symbolic grouped-`P2`/outgoing-quadrupole compiler is no longer the main
+gap. The active V2 PDE question is whether a frozen, target-blind, open-throat
+branch can output stable non-dark full-bundle data satisfying the isotropic
+residual packet
+\[
+R_{\rm pole}=R_{\rm norm}=R_{P2}=R_{P4}=0,
+\]
+and, when included, the tail gate
+\[
+R_{\rm tail}=0.
+\]
+The first V2-23 reduced open-throat branch is a useful negative control: it
+passes open/stability/outgoing-transfer gates but fails the target packet.
+
 ---
 
 ## 2. Parent Theory and Exact Bulk Equations
@@ -221,17 +331,18 @@ with d'Alembertian
 \Box_5=-\partial_t^2+\nabla_3^2+\partial_w^2.
 \]
 
-### 2.2 Core fields
+### 2.2 Core fields and corrected dynamical status
 
-**Status:** `Exact`
+**Status:** `Exact` for \(\psi,A_M\); `Exact confinement argument / Effective or promoted dynamical field` for \(\Sigma/R\)
 
-The core dynamical variables are
+The strict parent dynamical fields already present in the declared action are
 \[
-\psi(\mathbf X,t),\qquad A_M(x),\qquad \Sigma(\mathbf X,t),
+\psi(\mathbf X,t),\qquad A_M(x).
 \]
-or equivalently the shape field
+The throat geometry enters the exact parent matter sector through the
+confinement argument
 \[
-R(\Omega,w,t)\quad\text{with}\quad \Sigma=r-R(\Omega,w,t),
+\Sigma(\mathbf X,t)=r-R(\Omega,w,t),
 \]
 where
 \[
@@ -239,6 +350,12 @@ r=\sqrt{x^2+y^2+z^2},
 \qquad
 \Omega=\mathbf x/r\in S^2.
 \]
+
+The shape field \(R(\Omega,w,t)\) is therefore already exact as the argument of
+\(V_{\rm conf}(\mathbf X;\Sigma)\). It becomes an autonomous parent dynamical
+field only if a throat action \(S_\Sigma\), or its quadratic approximation
+\(S_\eta^{(2)}\), is included in \(S_{\rm total}\). Without that promotion, the
+moving-wall PDE is an effective closure sourced by the exact parent fields.
 
 The bulk density is
 \[
@@ -287,18 +404,32 @@ The firewall is:
 - circulation belongs to the magnetic/vortical sector,
 - the historical gravity-side `q=1` is really \(\kappa_\rho=1\).
 
-### 2.4 Exact parent action
+### 2.4 Exact parent action and promoted-throat option
 
-**Status:** `Exact`
+**Status:** `Exact` for GNLS + localized Maxwell; `Effective Closure` for wall dynamics unless \(S_\Sigma\) is included
 
-The exact parent theory presently fixed by the program is
+The strict parent theory currently fixed by the program is
 \[
-S=\int dtd^4X\,(\mathcal L_\psi+\mathcal L_{\rm EM}),
+S_{\rm current}=\int dt\,d^4X\,(\mathcal L_\psi+\mathcal L_{\rm EM}),
 \]
-with the geometry sector encoded through the confinement coupling
+with geometry encoded through the confinement coupling
 \[
 V_{\rm conf}(\mathbf X;\Sigma).
 \]
+
+This action gives exact matter and Maxwell equations plus a wall force from
+\(V_{\rm conf}\). It does **not** by itself give autonomous wall inertia or
+stiffness. The parent-complete moving-throat action, when promoted, is
+\[
+\boxed{
+S_{\rm total}=S_\psi[\psi,A,\Sigma]+S_{\rm EM}[A]+S_\Sigma[\Sigma;\mathcal C_\Sigma].
+}
+\]
+The quadratic wall action used later should be read as
+\[
+S_\Sigma\to S_\eta^{(2)}+O(\eta^3)
+\]
+unless and until a nonlinear \(S_\Sigma\) is declared.
 
 #### 2.4.1 Matter sector: gauged GNLS
 
@@ -334,8 +465,17 @@ The corresponding bulk sound speed is
 c_s^2(\rho)=\frac{1}{m}\frac{dP}{d\rho}=\frac{5K}{m}\rho^4.
 \]
 
-#### 2.4.2 Localized Maxwell sector
+#### 2.4.2 Localized Maxwell sector and gauge-fixing status
 
+The localized Maxwell kinetic term is
+\[
+-\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}.
+\]
+The historically displayed gauge-fixing term is unweighted:
+\[
+-\frac{1}{2\xi\mu_0}(\partial\!\cdot\!A)^2.
+\]
+So the current compact action may still be written as
 \[
 \boxed{
 \mathcal L_{\rm EM}
@@ -345,6 +485,17 @@ c_s^2(\rho)=\frac{1}{m}\frac{dP}{d\rho}=\frac{5K}{m}\rho^4.
 -A_MJ_{\rm ext}^M.
 }
 \]
+with the following safety rule: the unweighted Lorenz term is a bulk gauge
+fixing device and should not be naively integrated over a noncompact zero mode.
+For parent-clean gauge-fixed PDE work, use the weighted form
+\[
+\boxed{
+\mathcal L_{\rm gf}
+=-\frac{H(w)}{2\xi\mu_0}(\partial\!\cdot A)^2,
+\qquad H_{\rm int}=\int H(w)dw<\infty,
+}
+\]
+with the preferred structural choice \(H=Z\). Then \(\xi_4=\xi Z_{\rm int}/H_{\rm int}\), and for \(H=Z\), \(\xi_4=\xi\).
 
 The full source entering Maxwell's equation is
 \[
@@ -400,23 +551,36 @@ j^i=\rho v^i.
 
 #### 2.5.3 Exact localized Maxwell equation
 
-**Status:** `Exact`
+**Status:** `Exact`, with gauge-fixing convention explicit
 
-Variation with respect to \(A_N\) gives
+With a general gauge-fixing weight \(H(w)\), variation with respect to \(A_N\)
+gives
 \[
 \boxed{
 \partial_M\!\left(Z(w)F^{MN}\right)
-+\frac{1}{\xi}\partial^N(\partial\!\cdot\!A)
++\frac{1}{\xi}\partial^N\!\left(H(w)\,\partial\!\cdot\!A\right)
 =
 \mu_0 J_{\rm tot}^N.
 }
 \]
+The legacy displayed equation is the special case \(H=1\). The localized
+parent-clean option is \(H=Z\).
 
 The Bianchi identities are
 \[
 \partial_{[L}F_{MN]}=0.
 \]
 
+Because \(ZF^{MN}\) is antisymmetric,
+\[
+\partial_N\partial_M(ZF^{MN})=0,
+\]
+so the divergence consistency equation is
+\[
+\boxed{
+\frac{1}{\xi}\Box_5\big(H\,\partial\!\cdot A\big)=\mu_0\partial_NJ_{\rm tot}^N.
+}
+\]
 Gauge invariance requires current conservation:
 \[
 \partial_MJ_{\rm tot}^M=0.
@@ -581,17 +745,28 @@ This is a controlled reduction, not a denial of the mixed-core structure. It is
 the short cold-start bridge between the exact parent theory and the reduced brane
 language used later in the document.
 
+Gauge-fixing caution: if the five-dimensional gauge-fixing term is unweighted
+\((H=1)\), impose Lorenz gauge before zero-mode reduction and choose any desired
+finite 3+1 gauge fixing afterward. If \(H=Z\), the zero-mode gauge-fixed action
+reduces directly with the same \(Z_{\rm int}\) normalization as the kinetic
+term. In both readings, the gauge-invariant mixed-core fields are suppressed
+only by the far-field ansatz, not removed from the microscopic theory.
+
+
 ### 2.6 What is fixed and what is not at this level
 
 **Fixed at this level**
 
-- the parent field content,
+- the strict parent field content \(\psi,A_M\),
+- \(\Sigma/R\) as a confinement-coupling argument,
 - the exact gauged GNLS plus localized Maxwell action,
 - the exact bulk equations and exact mixed-sector observables,
-- the corrected charge ontology.
+- the corrected charge ontology,
+- the Maxwell gauge-localization safety rule.
 
 **Not fixed at this level**
 
+- autonomous throat dynamics unless \(S_\Sigma\) is promoted,
 - the detailed moving-throat branch geometry,
 - the reduced wall/support/outgoing hierarchy,
 - the actual outgoing quadrupole normalization branch,
@@ -639,7 +814,7 @@ It is the smallest effective geometry choice that:
 
 ### 3.2 Reference stationary throat and recovery of \((a,L)\)
 
-**Status:** `Exact Within Closure`
+**Status:** `Exact Within Closure`, with V2 open-endpoint correction
 
 The reference stationary throat is
 \[
@@ -653,24 +828,29 @@ with:
   \[
   a_0=R_0(0),
   \]
-- bottom closure through
+- open finite-radius exit
   \[
-  R_0(L_0)=0
+  \boxed{R_0(L_0)>0.}
   \]
-  or an equivalent regular bottom condition.
+
+The old hard-cap phrase \(R_0(L_0)=0\) is no longer the physical branch-realization
+geometry. It may be used only as an explicitly declared toy cap. The V2 branch
+geometry is an open conduit: DC/background transport can exit the finite-radius
+junction, while AC support coordinates may still reflect through an impedance
+mismatch.
 
 The old collective variables are recovered as geometry moments:
 \[
 a(t)=\frac{1}{4\pi}\int_{S^2}R(\Omega,0,t)\,d\Omega.
 \]
 
-If \(W_b(\Omega,t)\) is defined by \(R(\Omega,W_b(\Omega,t),t)=0\), then
+If \(L(\Omega,t)\) denotes the chosen open-exit section of the conduit, then
 \[
-L(t)=\frac{1}{4\pi}\int_{S^2}W_b(\Omega,t)\,d\Omega.
+L(t)=\frac{1}{4\pi}\int_{S^2}L(\Omega,t)\,d\Omega.
 \]
 
 So the old \((a,L)\) closure survives as the lowest geometry moments of the
-distributed throat field.
+distributed open-throat field.
 
 ### 3.3 Promoted confinement coupling
 
@@ -825,7 +1005,10 @@ with frequencies
 \]
 
 This is the exact trapped-support ladder used downstream inside the chosen
-finite-throat D/N closure.
+finite-throat D/N closure. V2 status: this ladder is an AC support-coordinate
+impedance/reflection result, not evidence for a hard geometric cap. The open
+finite-radius conduit remains \(R(L)>0\); DC/background throughput exits and is
+tracked by leakage/work terms.
 
 ### 4.2 Mouth DtN operator and trapped round-trip closure
 
@@ -862,12 +1045,23 @@ R_{\rm rt}=1,
 \]
 
 This is the trapped-support closure currently carried into the reduced program.
+With the open-exit patch, the Neumann end is equivalently the low-impedance AC
+limit of
+\[
+T_w q_w(L,\omega)+Y_L(\omega)q(L,\omega)=0,
+\]
+while the physical throat exit remains finite-radius and open.
 
 ### 4.3 Minimal distributed wall action
 
 **Status:** `Effective Closure`
 
-The minimal passive distributed wall action presently used is
+The minimal passive distributed wall action presently used is the quadratic
+effective closure
+\(S_\eta^{(2)}\). It is parent-complete only if promoted as the leading
+expansion of a throat action \(S_\Sigma\). In its current status, it supplies a
+consistent linear wall PDE and branch data, but its coefficients are not to be
+post-hoc refit. The action is
 \[
 \boxed{
 S_\eta^{(2)}
@@ -2156,6 +2350,317 @@ The exact isotropic DtN realization gate may be written as
 \]
 So Packet A is now completely localized: the whole branch-side retarded finish
 line is one scalar equation.
+
+
+## 7A. V2 Full-Bundle Target Surface, 5PN Finish Line, and Executable Branch Pipeline
+
+This section is the V2 audit layer that should be used whenever a future PDE
+branch or solver export is being evaluated. It does not replace the older
+Packet-A/Packet-B and coherent-kernel machinery; it gives the frozen residual
+surface and extraction protocol that the actual branch must satisfy.
+
+### 7A.1 Isotropic full-bundle target card
+
+On the isotropic grouped real `P2` branch, define
+\[
+D(\omega)=D_0+D_2\omega^2+D_4\omega^4+O(\omega^6),
+\]
+\[
+N(\omega)=N_0+N_2\omega^2+N_4\omega^4+O(\omega^6),
+\]
+with
+\[
+\boxed{D_0=K-B_0-Z_0,}
+\qquad
+\boxed{D_2=-(M+B_2+Z_2),}
+\qquad
+\boxed{D_4=-(B_4+Z_4).}
+\]
+The normalized conservative response and outgoing prefactor are
+\[
+\boxed{u_2=-D_2/D_0,}
+\qquad
+\boxed{u_4=(D_2^2-D_0D_4)/D_0^2,}
+\]
+\[
+\boxed{P_0=N_0/D_0,}
+\]
+\[
+\boxed{P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},}
+\]
+\[
+\boxed{
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+}
+\]
+
+The one-pole conservative gate is
+\[
+\boxed{
+R_{\rm pole}:=D_0(B_4+Z_4)-3(M+B_2+Z_2)^2=0.
+}
+\]
+The constant-prefactor outgoing gate is
+\[
+\boxed{P_2=0,
+\qquad P_4=0,}
+\]
+equivalently
+\[
+\boxed{N_2=2D_2N_0/D_0,}
+\]
+\[
+\boxed{N_4=N_0(D_2^2+2D_0D_4)/D_0^2.}
+\]
+The universal quadrupole normalization is
+\[
+\boxed{
+R_{\rm norm}:=\widehat m_0^{\,2}\mathcal S_{\rm port}\frac{N_0}{D_0}
+-\frac{54Gc_s^5}{5a^5c^5}=0.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\gamma_{\rm quad}^{\rm eff}
+=\widehat m_0^{\,2}\mathcal S_{\rm port}P_0\frac{a^5}{27c_s^5}
+=\frac{2G}{5c^5}.
+}
+\]
+If the 4PN tail scalar has not already been derived independently, include
+\[
+\boxed{R_{\rm tail}:=\Theta_{\rm tail}(c/c_s)^3-1=0.}
+\]
+
+### 7A.2 Local target-sheet formulas
+
+On the target sheet,
+\[
+\boxed{D_0=\frac{3(B_2+M+Z_2)^2}{B_4+Z_4},}
+\]
+\[
+\boxed{K=B_0+Z_0+\frac{3(B_2+M+Z_2)^2}{B_4+Z_4},}
+\]
+\[
+\boxed{P_0^{\rm target}=\frac{54Gc_s^5}{5\mathcal S_{\rm port}a^5c^5\widehat m_0^{\,2}},}
+\]
+\[
+\boxed{
+N_0=\frac{162Gc_s^5(B_2+M+Z_2)^2}
+{5\mathcal S_{\rm port}a^5c^5\widehat m_0^{\,2}(B_4+Z_4)},
+}
+\]
+\[
+\boxed{
+N_2=-\frac{108Gc_s^5(B_2+M+Z_2)}
+{5\mathcal S_{\rm port}a^5c^5\widehat m_0^{\,2}},
+}
+\]
+\[
+\boxed{
+N_4=-\frac{18Gc_s^5(B_4+Z_4)}
+{\mathcal S_{\rm port}a^5c^5\widehat m_0^{\,2}}.
+}
+\]
+The target packet is locally codimension five in the output slots
+\((K,N_0,N_2,N_4,\Theta_{\rm tail})\), so the branch-freeze rule is essential.
+
+### 7A.3 Grouped projectors and angular source-map memory card
+
+The grouped metric is
+\[
+G_{\rm grp}=\mathrm{diag}(1,2,2).
+\]
+For a grouped triple \(x=(x_{20},x_{21},x_{22})\),
+\[
+\boxed{x=\bar x(1,1,1)+a_x(4,-1,-1)+b_x(0,1,-1),}
+\]
+where
+\[
+\bar x=\frac{x_{20}+2x_{21}+2x_{22}}5,
+\qquad
+a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+\qquad
+b_x=\frac{x_{21}-x_{22}}2.
+\]
+The grouped anisotropy norm is
+\[
+\boxed{A_x^2=4a_x^2+\frac45b_x^2.}
+\]
+A weak axisymmetric quadrupole perturbation has fixed signature
+\[
+(20,21,22)\sim\left(1,\frac12,-1\right),
+\qquad
+\boxed{b=3a.}
+\]
+The canonical real-STF angular source map is identity on the isotropic branch:
+\[
+\boxed{\widehat m_{\rm ang}=1.}
+\]
+Thus the remaining normalization gap is radial/axial, source-amplitude,
+denominator \(D_0\), port factor \(\mathcal S_{\rm port}\), or mixed-transfer
+\(N_0\), not an angular STF-basis mismatch.
+
+### 7A.4 Stability, passivity, and non-dark-port gates
+
+The branch must pass at least these reduced gates before target residuals are
+scientifically meaningful:
+
+- open finite-radius exit: \(R(L)>0\), no hard cap;
+- wall positivity: \(\mu_\eta>0\), \(T_w>0\), \(K_\eta+6T_\Omega\ge0\) in the grouped lane;
+- BdG support positivity: retained BdG modes have positive stable frequencies;
+- Schur static stability: \(D_0=K-B_0-Z_0>0\);
+- Maxwell/mixed block positivity:
+  \[
+  \boxed{\Delta=\Omega_U^2\Omega_W^2-R^2>0;}
+  \]
+- outgoing transfer non-darkness: \(N_0\ne0\), preferably \(N_0>0\);
+- no ghost/Krein contamination in the retained positive-energy reduction;
+- target-blind pre-freeze: no post-residual retuning of \(K,M,B_n,Z_n,N_n\).
+
+### 7A.5 Reduced 5PN / actual-branch finish-line card
+
+The reduced 5PN package is not a standard full conservative 5PN two-body
+assembly. It is the carry-forward finish-line compression of the 5PN / 2.5PN /
+4PN moving-throat branch problem.
+
+On the actual coherent branch, the reduced finish line is
+\[
+\boxed{
+ d\ln R_{\rm tr}=0,
+ \qquad
+ d\ln R_{\rm target}=0,
+ \qquad
+ d\ln\epsilon_\eta=0,
+ \qquad
+ N_Q=1.
+}
+\]
+On the natural source-map branch,
+\[
+\boxed{N_Q=\chi_Q^{-1},
+\qquad N_Q=1\iff \chi_Q=1.}
+\]
+The weak-axisymmetric grouped normalization defect is
+\[
+\boxed{\Xi_1=\frac{P_1}{P_0}.}
+\]
+The exact coherent normal form uses branch-adapted monomial drifts
+\[
+\Sigma_{\rm tr}=\delta\ln\mathfrak C_{{\rm tr},*},
+\qquad
+\Sigma_{\rm nt}=\delta\ln\mathfrak C_{{\rm nt},*},
+\qquad
+\Sigma_\eta=\delta\ln\epsilon_\eta,
+\]
+with triangular observable structure
+\[
+\Theta_1=-C_{\rm tr}\Sigma_{\rm tr},
+\qquad
+\Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt},
+\qquad
+\mathcal R_1+\Xi_1=-\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+\]
+The exact similarity-orbit theorem says that zero weak-axisymmetric defect is
+equivalent to tangent motion along the monomial-preserving similarity orbit:
+\[
+\Theta_1=\Xi_1=\mathcal R_1=0
+\iff
+\delta\mathbf x\in T_{\rm id}\mathcal G_*.
+\]
+So the reduced 5PN continuation point is not another coefficient search. It is
+whether the actual moving-throat branch lands on the isotropic state, the
+weak-axisymmetric orbit-lock tangent, and the outgoing normalization condition
+on one and the same branch.
+
+### 7A.6 Solver/extraction pipeline card
+
+The executable V2 chain is:
+\[
+\boxed{
+\text{solver export}
+\to
+\text{V2-22B validation}
+\to
+\text{V2-22A profile adapter}
+\to
+\text{V2-21 grouped observable extraction}
+\to
+\text{residual/tolerance report}.
+}
+\]
+
+Required frozen solver metadata:
+
+```text
+pre_target_freeze = true
+target_blind = true
+no_post_residual_refit = true
+boundary_class = open_impedance
+R_exit > 0
+no_hard_cap = true
+at_least_one_mixed_Aw_port = true
+```
+
+Required extracted data:
+
+```text
+K, M
+B0, B2, B4
+Z0, Z2, Z4
+N0, N2, N4
+mhat0
+S_port
+Theta_tail    # if tail gate is active
+```
+
+Failure classes:
+
+1. handoff/validation failure;
+2. open-throat/stability failure;
+3. target-realization failure.
+
+A stable branch may fail the target packet. That is useful negative data, not a
+pipeline error.
+
+### 7A.7 V2-23 first target-blind open-throat branch result
+
+The first reduced open-throat branch is a frozen one-dimensional branch:
+
+```text
+branch_id: v2_23_minimal_open_throat_frozen_demo
+pre_target_freeze: true
+target_blind: true
+no_post_residual_refit: true
+boundary_class: open_impedance
+boundary_protocol: open_impedance_AC_reflecting_DC_leaking
+```
+
+It solves an open finite-radius throat with
+\[
+R(0)=a,
+\qquad
+R(L)>0,
+\]
+and reports
+\[
+R_{\rm mouth}=1,
+\qquad
+R_{\rm exit}=0.452938042901,
+\qquad
+R_{\rm min}=0.452938042901.
+\]
+The branch passes open/stability/outgoing-transfer mechanics, but fails the
+full target packet:
+
+```text
+target_packet_pass: false
+P0 / P0_target = 0.00183195525067
+one_pole_ratio = 0.0147641804366
+```
+
+Interpretation: the branch is a useful reduced negative control and solver
+fixture. It is not a PDE realization of the universal quadrupole target.
 
 
 ## 8. Coherent Local-Kernel Reduction, Realization Compiler, and Finite Local Search
@@ -4077,7 +4582,7 @@ v_{\rm crit,new}
 
 For the pure Coulomb comparison,
 \[
-V_{\rm Coul}(r)=\frac1r,
+V_{\rm Coul}(r)=\frac{1}{r},
 \]
 the contact threshold at the same launch radius is
 \[
@@ -4721,11 +5226,15 @@ rather than more missing symbolic compilers.
 
 **Status:** `Exact`
 
-- The bulk arena, fields, charge ontology, parent action, GNLS equation,
-  continuity law, Maxwell equation, Madelung rewrite, and mixed gauge-invariant
-  identities in Sections `2-4` are the exact starting theory of this program.
-- Nothing in the later reduced hierarchy changes those parent equations; all
-  later reductions are branch-specific or closure-specific consequences.
+- The bulk arena, strict parent fields `psi,A_M`, charge ontology, GNLS action,
+  localized Maxwell action, GNLS equation, continuity law, Maxwell equation,
+  Madelung rewrite, and mixed gauge-invariant identities in Section `2` are the
+  exact starting theory of this program.
+- `Sigma/R` is exact as a confinement-coupling argument. It becomes an
+  autonomous parent dynamical field only after `S_Sigma` is included; otherwise
+  the wall PDE in Sections `3-4` is an effective closure.
+- Nothing in the later reduced hierarchy changes the strict parent equations;
+  all later reductions are branch-specific or closure-specific consequences.
 
 ### 10.2 Exact results within explicit reduced closures
 
@@ -5043,7 +5552,7 @@ rather than more missing symbolic compilers.
   \quad
   f_U,\chi_{UV},
   \quad
-  (a,b)\ 	ext{or}\ (\mathfrak g,\mathcal S,\mathcal R),
+  (a,b)\ \text{or}\ (\mathfrak g,\mathcal S,\mathcal R),
   \quad
   \Gamma_3,\Gamma_5,
   \]
@@ -5082,12 +5591,12 @@ The remaining gap is now concentrated and explicit.
   \qquad
   f_U,\ \chi_{UV},
   \qquad
-  (a,b)\ 	ext{or}\ (\mathfrak g,\mathcal S,\mathcal R),
+  (a,b)\ \text{or}\ (\mathfrak g,\mathcal S,\mathcal R),
   \]
   together with the resulting lowered front end
   \[
   V_{\rm eff}^{(230)}(r)
-  \quad	ext{and its dynamic tags}\quad
+  \quad\text{and its dynamic tags}\quad
   (r_{\rm peak},V_{\rm peak},r_\pm,I_{\rm new},\Xi_{\rm turn},\lambda_{\rm th}).
   \]
 - The realized microscopic export coefficients and their physical split remain open:
@@ -5165,6 +5674,111 @@ The remaining gap is now concentrated and explicit.
   inside explicit closures, numerically located reduced branches, exact verdict /
   graph / projector compilers, a finite local search ledger, and an explicitly
   isolated realization gap.
+
+
+## 11A. V2 Branch-Extraction Working Protocol
+
+This section is the practical AI protocol for using the V2-full compact when a
+candidate branch, numerical output, or analytic reduced profile is supplied.
+
+### 11A.1 Branch-freeze checklist
+
+Before computing any target residuals, require a manifest containing:
+
+```text
+parent_action_status        # strict current action or promoted S_Sigma
+gauge_fixing_convention     # H=1 pre-Lorenz or localized H=Z
+boundary_class              # must be open_impedance for V2 branch tests
+R_exit                      # must be > 0
+projection_source_map       # mhat0 and S_port convention
+support_family              # D/N AC support, Robin/impedance, etc.
+mode_port_list              # wall, BdG, U/W mixed ports
+stability_gates             # wall positivity, BdG positivity, Delta>0, D0>0
+extraction_formulas         # definitions of K,M,B,Z,N,P,u
+pre_target_freeze=true
+target_blind=true
+no_post_residual_refit=true
+```
+
+If any of these are missing, the branch is not ready for target-realization
+judgment.
+
+### 11A.2 Observable extraction steps
+
+1. Validate open geometry and profile arrays.
+2. Normalize or explicitly record the axial/radial profile measures.
+3. Extract wall coefficients \(K,M\).
+4. Extract BdG moments \(B_0,B_2,B_4\) from positive stable modes.
+5. Extract Maxwell/mixed conservative moments \(Z_0,Z_2,Z_4\).
+6. Extract outgoing-transfer moments \(N_0,N_2,N_4\).
+7. Compute
+   \[
+   D_0=K-B_0-Z_0,
+   \quad
+   D_2=-(M+B_2+Z_2),
+   \quad
+   D_4=-(B_4+Z_4).
+   \]
+8. Compute \(u_2,u_4,P_0,P_2,P_4\) and grouped trace/anomaly data.
+9. Evaluate residuals \(R_{\rm pole},R_{\rm norm},R_{P2},R_{P4}\), plus
+   \(R_{\rm tail}\) when active.
+10. Report pass/fail without changing branch data.
+
+### 11A.3 Common wrong moves to avoid
+
+- Do not treat \(\Sigma/R\) as a strict parent dynamical field unless
+  \(S_\Sigma\) has been included.
+- Do not integrate the unweighted five-dimensional gauge-fixing term over the
+  noncompact zero mode.
+- Do not use a hard cap \(R(L)=0\) for branch-realization tests.
+- Do not erase \(A_w,J^w,F_{\mu w},E_w,C_a\) because the far-field brane limit
+  suppresses them.
+- Do not tune \(K,N_0,N_2,N_4,\Theta_{\rm tail}\) after seeing target residuals.
+- Do not call a stable target-failing branch a pipeline failure.
+- Do not treat grouped-lane anisotropy as arbitrary if the perturbation is weak
+  axisymmetric: it must obey \(b=3a\).
+
+### 11A.4 Minimal branch-output schema
+
+```yaml
+branch_id: string
+branch_freeze_hash: string
+pre_target_freeze: true
+target_blind: true
+no_post_residual_refit: true
+boundary_class: open_impedance
+R_mouth: number
+R_exit: number    # > 0
+wall:
+  K: number
+  M: number
+  positivity_pass: bool
+bdg:
+  modes:
+    - coupling: number
+      varpi: number   # > 0
+maxwell_mixed:
+  ports:
+    - Omega_U: number
+      Omega_W: number
+      R: number
+      g_U: number
+      g_W: number
+      Delta: number   # > 0
+source_map:
+  mhat0: number
+  S_port: number
+constants:
+  G: number
+  c: number
+  c_s: number
+  a: number
+optional_tail:
+  Theta_tail: number
+```
+
+The compact formulas above are enough to turn this schema into the V2 residual
+packet.
 
 
 ## 12. Quick Translation Dictionary
@@ -5824,3 +6438,84 @@ E_*,\qquad
 \Pi_k,\qquad
 \Pi_T(T).
 \]
+
+
+---
+
+## 13. Ultra-Compact Recovery Cards
+
+These cards are intentionally redundant. They are the fastest way for a new AI
+session to recover the working state without searching the document.
+
+### 13.1 Parent / gauge / boundary card
+
+```text
+Strict parent: S_current = S_psi[psi,A;Sigma] + S_EM[A]
+Wall PDE strict parent status: requires + S_Sigma[Sigma]
+Quadratic wall closure: S_eta^(2), effective unless promoted
+Gauge H=1: impose Lorenz before zero-mode reduction
+Gauge H=Z: finite localized gauge fixing, xi_4 = xi
+Physical branch endpoint: R(L) > 0
+D/N ladder: AC impedance/reflection, not a hard cap
+Mixed channels: A_w, J^w, F_{mu w}, E_w, C_a stay alive
+```
+
+### 13.2 Full-bundle coefficient card
+
+\[
+D_0=K-B_0-Z_0,
+\quad
+D_2=-(M+B_2+Z_2),
+\quad
+D_4=-(B_4+Z_4).
+\]
+\[
+u_2=-D_2/D_0,
+\qquad
+u_4=(D_2^2-D_0D_4)/D_0^2.
+\]
+\[
+P_0=N_0/D_0,
+\quad
+P_2=(D_0N_2-2D_2N_0)/D_0^2.
+\]
+\[
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\]
+
+### 13.3 V2 target card
+
+\[
+R_{\rm pole}=D_0(B_4+Z_4)-3(M+B_2+Z_2)^2=0.
+\]
+\[
+R_{\rm norm}=\widehat m_0^{\,2}\mathcal S_{\rm port}N_0/D_0
+-54Gc_s^5/(5a^5c^5)=0.
+\]
+\[
+P_2=P_4=0.
+\]
+\[
+R_{\rm tail}=\Theta_{\rm tail}(c/c_s)^3-1=0\quad\text{if active}.
+\]
+
+### 13.4 5PN actual-branch card
+
+\[
+d\ln R_{\rm tr}=d\ln R_{\rm target}=d\ln\epsilon_\eta=0,
+\qquad
+N_Q=1.
+\]
+\[
+\Xi_1=P_1/P_0,
+\qquad
+b=3a\quad\text{for weak axisymmetric grouped anisotropy}.
+\]
+
+### 13.5 Solver card
+
+```text
+freeze -> validate -> profile adapter -> observable extraction -> residual packet
+mechanical pass does not imply target realization
+first V2-23 reduced open branch: stable/open but target-failing
+```

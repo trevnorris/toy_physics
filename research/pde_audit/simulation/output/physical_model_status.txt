@@ -1,0 +1,17 @@
+PDE audit physical nonlinear model guard
+===========================================
+pass: True
+checks_passed: 5/5
+strict_parent_dynamic_wall_pass: False
+effective_wall_closure_available: True
+physical_export_permitted: False
+packets_emitted: False
+target_residuals_computed: False
+blocker_count: 4
+status_hash: 5902cca810120510f74f07da68a79466bf8cdc32aebc75b5acee975dfa6bcfca
+report_hash: 7e9fde0f1fe566e9227706a473f6ddb4fca7b2584f4ade60f2c41e9ea568f5ed
+PASS  source_import_boundary
+PASS  status_hash
+PASS  physical_export_boundary
+PASS  ledger_inventory_and_blockers
+PASS  no_physical_packets_emitted

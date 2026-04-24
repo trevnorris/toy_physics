@@ -1,0 +1,13 @@
+PDE audit nonlinear readiness
+====================================
+pass: True
+checks_passed: 5/5
+packets_emitted: False
+target_residuals_computed: False
+protocol_hash: e1394d23b185d629cfecb05aaa31884517d5fd6a137610ed9cb0e2bea54f89a7
+report_hash: 4df7478b78f6e053127051e750213efd4904865b904446f5c87a05f988b105e9
+PASS  source_import_boundary
+PASS  protocol_and_freeze_hashes
+PASS  jacobian_directional_consistency
+PASS  manufactured_nonlinear_mesh_convergence
+PASS  continuation_beta_sequence

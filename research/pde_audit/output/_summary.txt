@@ -2,8 +2,21 @@ PASS  fixture_manifest  (0s)
 PASS  mathematica_audits  (26s)
 PASS  python_audits  (45s)
 PASS  root_json_clean  (0s)
+PASS  simulation  (64s)
 
 PYTHON: 28/28 passed, 0 failed
+SIMULATION: 14/14 passed, 0 failed; 0/192 target-passing frozen candidates
+SIMULATION_SCORE: min 3.2433255817471953, median 5.669944404634075, max 210507.21264228775
+SIMULATION_REDUCED_FEM: pass True, failed 0
+SIMULATION_NONLINEAR_READINESS: pass True, failed 0, packets_emitted False
+SIMULATION_PHYSICAL_MODEL: pass True, export_permitted False, blockers 4, packets_emitted False
+SIMULATION_NONLINEAR_EXPORT: 0/3 target-passing frozen candidates, guard True
+SIMULATION_TARGET_BLIND_GUARD: pass True, issues 0, packets 192
+SIMULATION_OPEN_STABLE_ONE_POLE_RATIO: min 0.0033775383274364888, median 0.06134471930726503, max 0.1353664855760648
+SIMULATION_OPEN_STABLE_NEAR_ONE_POLE: 0 candidates within |ratio - 1| < 0.1
+SIMULATION_REQUIRED_DEFORMATION: C_multiplier_min 7.387352901601946, C_multiplier_median 16.30132163440465, P0_multiplier_median 171.65261223353198, local_continuation False
+SIMULATION_NONLINEAR_REQUIRED_DEFORMATION: C_multiplier_min 60.81133778677986, C_multiplier_median 64.36671541084209, local_continuation False
+SIMULATION_MECHANISM_GAP: pass True, primary one_pole_support, reduced_gap large_one_pole_support_deficit, nonlinear_gap large_one_pole_support_deficit, local_continuation False
 MATHEMATICA: 10/10 passed, 0 failed
 ROOT_JSON_FILES: 0
 REFEREE_PASS: True

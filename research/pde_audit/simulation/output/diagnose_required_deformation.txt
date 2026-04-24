@@ -1,0 +1,26 @@
+# PDE Audit Simulation Output
+# Script: diagnose_required_deformation
+# Date: 2026-04-24T14:22:51-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+PDE audit required deformation report
+=============================================
+candidate_count: 192
+target_pass_count: 0
+open_stable_count: 189
+dominant_score_component_counts: {'R_pole_abs': 172, 'R_P4_abs': 20}
+open_stable_one_pole_ratio_max: 0.1353664855760648
+open_stable_required_C_multiplier_min: 7.387352901601946
+open_stable_required_C_multiplier_median: 16.30132163440465
+open_stable_required_P0_multiplier_median: 171.65261223353198
+local_continuation_looks_promising: False
+best_score_branch_id: sim_reduced_open_throat_133_short_high_tension__weak_internal_couplings__baseline_operator
+best_score: 3.24332558175
+best_score_required_C_multiplier: 115.603029441
+best_score_required_P0_multiplier: 1586.43149751
+report_hash: b35f10f35f1ded0e5a4ec86e01d6c03704abb1a86179f662a256d52c9cdc1856
+
+EXIT_CODE: 0

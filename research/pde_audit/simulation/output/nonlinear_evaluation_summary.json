@@ -1,0 +1,257 @@
+{
+  "best_post_hoc_candidate": {
+    "D0_bar": 3.325980358023897,
+    "P0_bar": 0.006897730339076513,
+    "adapter_diagnostics_hash": "dafa5713a8c0ff39df9036f9500f3fc55cbbfa7a36fd2aac438482c2fd57f7ff",
+    "branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+    "candidate_freeze_hash": "fe99ae8f5296a8c23533726fb03dcf0fc43b27f9fc6e5b1aded5f5bb87d02aba",
+    "detail_hash": "f7d865ec70f4226c4b9d802631d214123632a4d56647a9e6b3f26ebccdb4175d",
+    "detail_report": "nonlinear_candidate_reports/sim_nonlinear_open_throat_001_baseline_open_nonlinear.json",
+    "dominant_score_component": "R_pole_abs",
+    "open_gate_pass": true,
+    "packet_content_hash": "740e5a8c76d8205e5548e1e2c54f638fb296ee28d37f828629fa5aee75cf9fac",
+    "packet_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_packets/sim_nonlinear_open_throat_001_baseline_open_nonlinear.json",
+    "packet_sha256": "d368874b6b8a31601e9db78aad743a3abe2d5e41247e0549cc8576693b24ac0e",
+    "pass_flags": {
+      "constant_prefactor_P2_pass": false,
+      "constant_prefactor_P4_pass": false,
+      "isotropic_D0_pass": true,
+      "isotropic_N0_pass": true,
+      "normalization_pass": false,
+      "one_pole_pass": false,
+      "open_gate_pass": true,
+      "stability_gate_pass": true,
+      "tail_transport_pass": true,
+      "target_packet_pass": false
+    },
+    "profile_manifest_hash": "7f978714a45508b1e46a717d183abbbbff1996c97ef634bbe916db17369635f9",
+    "profile_manifest_validation_pass": true,
+    "residuals": {
+      "R_P2": 0.008433439066486007,
+      "R_P4": 0.00652791704163067,
+      "R_norm": -10.793102269660924,
+      "R_pole": -3.2539130425395713,
+      "R_tail": 0.0,
+      "gamma_eff_minus_gamma_GR": -0.39974452850596015
+    },
+    "score": 3.2539130425395713,
+    "score_components": {
+      "R_P2_abs": 0.008433439066486007,
+      "R_P4_abs": 0.00652791704163067,
+      "R_norm_over_P0_target": 0.9993613212649003,
+      "R_pole_abs": 3.2539130425395713,
+      "R_tail_abs": 0.0
+    },
+    "stability_gate_pass": true,
+    "target_packet_pass": false,
+    "target_values": {
+      "P0_target": 10.8,
+      "gamma_GR": 0.4,
+      "gamma_eff": 0.00025547149403987087
+    },
+    "v21_manifest_hash": "53c6628fcd2a76a62e05cbccb6e5f88794b537bb66ab7c742715006339f1502e",
+    "validation_error_count": 0,
+    "validation_issue_paths": [],
+    "validation_pass": true,
+    "validation_warning_count": 0
+  },
+  "candidate_count": 3,
+  "dominant_score_component_counts": {
+    "R_pole_abs": 3
+  },
+  "evaluation_protocol": {
+    "no_post_residual_refit": true,
+    "post_hoc_ranking_only": true,
+    "target_residuals_used_to_generate_candidates": false,
+    "tolerance": 1e-09
+  },
+  "manifest_hash": "6201ffcf4f0ef285723dbe97d971484c0127809f182974c8265ddd104598278d",
+  "manifest_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_manifest.json",
+  "open_stable_count": 3,
+  "pass_flag_counts": {
+    "isotropic_D0_pass": 3,
+    "isotropic_N0_pass": 3,
+    "open_gate_pass": 3,
+    "stability_gate_pass": 3,
+    "tail_transport_pass": 3
+  },
+  "results": [
+    {
+      "D0_bar": 3.325980358023897,
+      "P0_bar": 0.006897730339076513,
+      "adapter_diagnostics_hash": "dafa5713a8c0ff39df9036f9500f3fc55cbbfa7a36fd2aac438482c2fd57f7ff",
+      "branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "candidate_freeze_hash": "fe99ae8f5296a8c23533726fb03dcf0fc43b27f9fc6e5b1aded5f5bb87d02aba",
+      "detail_hash": "f7d865ec70f4226c4b9d802631d214123632a4d56647a9e6b3f26ebccdb4175d",
+      "detail_report": "nonlinear_candidate_reports/sim_nonlinear_open_throat_001_baseline_open_nonlinear.json",
+      "dominant_score_component": "R_pole_abs",
+      "open_gate_pass": true,
+      "packet_content_hash": "740e5a8c76d8205e5548e1e2c54f638fb296ee28d37f828629fa5aee75cf9fac",
+      "packet_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_packets/sim_nonlinear_open_throat_001_baseline_open_nonlinear.json",
+      "packet_sha256": "d368874b6b8a31601e9db78aad743a3abe2d5e41247e0549cc8576693b24ac0e",
+      "pass_flags": {
+        "constant_prefactor_P2_pass": false,
+        "constant_prefactor_P4_pass": false,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": false,
+        "one_pole_pass": false,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": false
+      },
+      "profile_manifest_hash": "7f978714a45508b1e46a717d183abbbbff1996c97ef634bbe916db17369635f9",
+      "profile_manifest_validation_pass": true,
+      "residuals": {
+        "R_P2": 0.008433439066486007,
+        "R_P4": 0.00652791704163067,
+        "R_norm": -10.793102269660924,
+        "R_pole": -3.2539130425395713,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": -0.39974452850596015
+      },
+      "score": 3.2539130425395713,
+      "score_components": {
+        "R_P2_abs": 0.008433439066486007,
+        "R_P4_abs": 0.00652791704163067,
+        "R_norm_over_P0_target": 0.9993613212649003,
+        "R_pole_abs": 3.2539130425395713,
+        "R_tail_abs": 0.0
+      },
+      "stability_gate_pass": true,
+      "target_packet_pass": false,
+      "target_values": {
+        "P0_target": 10.8,
+        "gamma_GR": 0.4,
+        "gamma_eff": 0.00025547149403987087
+      },
+      "v21_manifest_hash": "53c6628fcd2a76a62e05cbccb6e5f88794b537bb66ab7c742715006339f1502e",
+      "validation_error_count": 0,
+      "validation_issue_paths": [],
+      "validation_pass": true,
+      "validation_warning_count": 0
+    },
+    {
+      "D0_bar": 4.073323233725404,
+      "P0_bar": 0.00554728849131265,
+      "adapter_diagnostics_hash": "24f158137499216a465be2d0b4e98f4e3d4609aa13e0961715ce0758147bdb34",
+      "branch_id": "sim_nonlinear_open_throat_002_stiffer_reaction_open",
+      "candidate_freeze_hash": "106a685ae5ab10c390710162f513fdc68deef57f6027eacb6188fdad21f7bcc9",
+      "detail_hash": "63912dab1ceeac463c23968050485bdfbae007f0f857db3843ee2e70f608da0f",
+      "detail_report": "nonlinear_candidate_reports/sim_nonlinear_open_throat_002_stiffer_reaction_open.json",
+      "dominant_score_component": "R_pole_abs",
+      "open_gate_pass": true,
+      "packet_content_hash": "09d63f0fff4653386d2d0f58affa672d0b74c250b6bc7f2d0311eec8174e04e2",
+      "packet_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_packets/sim_nonlinear_open_throat_002_stiffer_reaction_open.json",
+      "packet_sha256": "93bd0663f45c3ea49f516011939d858110a11b2658dd857ee62686be773794e0",
+      "pass_flags": {
+        "constant_prefactor_P2_pass": false,
+        "constant_prefactor_P4_pass": false,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": false,
+        "one_pole_pass": false,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": false
+      },
+      "profile_manifest_hash": "df8fed3659b3d380df1a98a2d8247801432fe5623fa9bd2171afb6ff38e80ebf",
+      "profile_manifest_validation_pass": true,
+      "residuals": {
+        "R_P2": 0.005519587562438593,
+        "R_P4": 0.003481759199879082,
+        "R_norm": -10.794452711508688,
+        "R_pole": -3.2686550127679332,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": -0.39979454487069216
+      },
+      "score": 3.2686550127679332,
+      "score_components": {
+        "R_P2_abs": 0.005519587562438593,
+        "R_P4_abs": 0.003481759199879082,
+        "R_norm_over_P0_target": 0.9994863621767304,
+        "R_pole_abs": 3.2686550127679332,
+        "R_tail_abs": 0.0
+      },
+      "stability_gate_pass": true,
+      "target_packet_pass": false,
+      "target_values": {
+        "P0_target": 10.8,
+        "gamma_GR": 0.4,
+        "gamma_eff": 0.00020545512930787593
+      },
+      "v21_manifest_hash": "fdd310f094e84780bdef058dcb633c19a2bd0e6797d7f8352200111bbb5eb61a",
+      "validation_error_count": 0,
+      "validation_issue_paths": [],
+      "validation_pass": true,
+      "validation_warning_count": 0
+    },
+    {
+      "D0_bar": 2.811242673754078,
+      "P0_bar": 0.008583023732921,
+      "adapter_diagnostics_hash": "e34cb07ff618f44cf349e8ee62cb261169aeca48b639d5413cba2f9521488c69",
+      "branch_id": "sim_nonlinear_open_throat_003_soft_reaction_open",
+      "candidate_freeze_hash": "c74b7389d2f47f1c51a5187c1d561f28d5eebc1e0bd9195ff882772b811b5d41",
+      "detail_hash": "e539e0290a6800dfca1fe739b1b7f2f322e74a85ca9903ee00ffb2d135f036bb",
+      "detail_report": "nonlinear_candidate_reports/sim_nonlinear_open_throat_003_soft_reaction_open.json",
+      "dominant_score_component": "R_pole_abs",
+      "open_gate_pass": true,
+      "packet_content_hash": "910b01bfa539dd0b41f1017a3815680e9e23e4eae56ff7c377c0b0d2b49cae99",
+      "packet_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_packets/sim_nonlinear_open_throat_003_soft_reaction_open.json",
+      "packet_sha256": "44274ae16b83f6d7b478756dc461ecd2ed371d68e893008aeaf4b91c2bc4081a",
+      "pass_flags": {
+        "constant_prefactor_P2_pass": false,
+        "constant_prefactor_P4_pass": false,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": false,
+        "one_pole_pass": false,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": false
+      },
+      "profile_manifest_hash": "ca577e2ec9322df15a3d2d912c6394972ace0d908193bb03df4920871c67ba1c",
+      "profile_manifest_validation_pass": true,
+      "residuals": {
+        "R_P2": 0.012406180457661226,
+        "R_P4": 0.011344278437085704,
+        "R_norm": -10.79141697626708,
+        "R_pole": -3.25781843259849,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": -0.3996821102321141
+      },
+      "score": 3.25781843259849,
+      "score_components": {
+        "R_P2_abs": 0.012406180457661226,
+        "R_P4_abs": 0.011344278437085704,
+        "R_norm_over_P0_target": 0.999205275580285,
+        "R_pole_abs": 3.25781843259849,
+        "R_tail_abs": 0.0
+      },
+      "stability_gate_pass": true,
+      "target_packet_pass": false,
+      "target_values": {
+        "P0_target": 10.8,
+        "gamma_GR": 0.4,
+        "gamma_eff": 0.00031788976788596295
+      },
+      "v21_manifest_hash": "1dc9ac4944c4d861e1a102fd0c2976730981f5903f9b14a3bf0a9c3ea05b8c3e",
+      "validation_error_count": 0,
+      "validation_issue_paths": [],
+      "validation_pass": true,
+      "validation_warning_count": 0
+    }
+  ],
+  "schema": "pde_audit_simulation_evaluation_summary/v1",
+  "score_distribution": {
+    "max": 3.2686550127679332,
+    "median": 3.25781843259849,
+    "min": 3.2539130425395713
+  },
+  "summary_hash": "31c1385ef0df2d36c520de85dd2522bde90f937e869c5d7162bc5f498db711f5",
+  "target_pass_count": 0,
+  "validation_pass_count": 3
+}

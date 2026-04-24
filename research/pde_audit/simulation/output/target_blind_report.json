@@ -1,0 +1,70 @@
+{
+  "issue_count": 0,
+  "manifest_and_packets": {
+    "details": {
+      "computed_manifest_hash": "22e2e9cf5fcbc5407799bb60230dec818bd92531df32e3ed57fed133d58dc5d0",
+      "manifest_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/manifest.json",
+      "packet_count": 192,
+      "packet_issue_count": 0,
+      "stored_manifest_hash": "22e2e9cf5fcbc5407799bb60230dec818bd92531df32e3ed57fed133d58dc5d0",
+      "unique_branch_id_count": 192
+    },
+    "issues": [],
+    "pass": true
+  },
+  "manifest_name": "manifest.json",
+  "mode": "reduced",
+  "pass": true,
+  "report_hash": "0745fd8bcb142f4bfc5ea2ef76cf41bfb537c55fee38e5334e4fd5b506104ee2",
+  "schema": "pde_audit_simulation_target_blind_guard/v1",
+  "source_imports": {
+    "details": {
+      "generate_reduced_sweep.py": {
+        "allowed_imports": [
+          "__future__",
+          "argparse",
+          "hashlib",
+          "json",
+          "math",
+          "numpy",
+          "pathlib",
+          "reduced_fem",
+          "typing"
+        ],
+        "banned_imports": [],
+        "imports": [
+          "__future__",
+          "argparse",
+          "hashlib",
+          "json",
+          "math",
+          "numpy",
+          "pathlib",
+          "reduced_fem",
+          "typing"
+        ],
+        "unexpected_imports": []
+      },
+      "reduced_fem.py": {
+        "allowed_imports": [
+          "__future__",
+          "math",
+          "numpy",
+          "scipy",
+          "typing"
+        ],
+        "banned_imports": [],
+        "imports": [
+          "__future__",
+          "math",
+          "numpy",
+          "scipy",
+          "typing"
+        ],
+        "unexpected_imports": []
+      }
+    },
+    "issues": [],
+    "pass": true
+  }
+}

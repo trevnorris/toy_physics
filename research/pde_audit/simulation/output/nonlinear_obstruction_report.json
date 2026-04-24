@@ -1,0 +1,292 @@
+{
+  "C_shortfall_distribution": {
+    "max": 1.1588535073879138,
+    "median": 0.9783320080918506,
+    "min": 0.8024541204353349,
+    "q25": 0.8903930642635928,
+    "q75": 1.0685927577398822
+  },
+  "P0_over_target_distribution": {
+    "max": 0.0007947244197149074,
+    "median": 0.000638678735099677,
+    "min": 0.0005136378232696898,
+    "q25": 0.0005761582791846834,
+    "q75": 0.0007167015774072923
+  },
+  "all_C_shortfalls_positive": true,
+  "all_candidates": {
+    "C_shortfall_distribution": {
+      "max": 1.1588535073879138,
+      "median": 0.9783320080918506,
+      "min": 0.8024541204353349,
+      "q25": 0.8903930642635928,
+      "q75": 1.0685927577398822
+    },
+    "P0_over_target_distribution": {
+      "max": 0.0007947244197149074,
+      "median": 0.000638678735099677,
+      "min": 0.0005136378232696898,
+      "q25": 0.0005761582791846834,
+      "q75": 0.0007167015774072923
+    },
+    "all_C_shortfalls_positive": true,
+    "all_one_pole_ratios_below_one": true,
+    "candidate_count": 3,
+    "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+    "one_pole_ratio_distribution": {
+      "max": 0.016444301940967923,
+      "median": 0.01553597994890939,
+      "min": 0.015444526265927972,
+      "q25": 0.01549025310741868,
+      "q75": 0.015990140944938655
+    },
+    "target_pass_count": 0
+  },
+  "all_one_pole_ratios_below_one": true,
+  "best_by_one_pole_ratio": [
+    {
+      "A_MplusB2plusZ2": 1.0525056507097363,
+      "C_B4plusZ4": 0.013416421536933119,
+      "C_shortfall_for_one_pole": 0.8024541204353349,
+      "D0": 4.073323233725404,
+      "P0": 0.00554728849131265,
+      "P0_over_target": 0.0005136378232696898,
+      "P0_target": 10.8,
+      "R_P2": 0.005519587562438593,
+      "R_P4": 0.003481759199879082,
+      "R_norm": -10.794452711508688,
+      "R_pole": -3.2686550127679332,
+      "branch_id": "sim_nonlinear_open_throat_002_stiffer_reaction_open",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "stiffer_reaction_open",
+      "one_pole_ratio_D0C_over_3A2": 0.016444301940967923,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 0.815870541972268,
+      "score": 3.2686550127679332,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    },
+    {
+      "A_MplusB2plusZ2": 1.0496449480325103,
+      "C_B4plusZ4": 0.015439209713629203,
+      "C_shortfall_for_one_pole": 0.9783320080918506,
+      "D0": 3.325980358023897,
+      "P0": 0.006897730339076513,
+      "P0_over_target": 0.000638678735099677,
+      "P0_target": 10.8,
+      "R_P2": 0.008433439066486007,
+      "R_P4": 0.00652791704163067,
+      "R_norm": -10.793102269660924,
+      "R_pole": -3.2539130425395713,
+      "branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "baseline_open_nonlinear",
+      "one_pole_ratio_D0C_over_3A2": 0.01553597994890939,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 0.9937712178054798,
+      "score": 3.2539130425395713,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    },
+    {
+      "A_MplusB2plusZ2": 1.050225877866256,
+      "C_B4plusZ4": 0.018178704918814577,
+      "C_shortfall_for_one_pole": 1.1588535073879138,
+      "D0": 2.811242673754078,
+      "P0": 0.008583023732921,
+      "P0_over_target": 0.0007947244197149074,
+      "P0_target": 10.8,
+      "R_P2": 0.012406180457661226,
+      "R_P4": 0.011344278437085704,
+      "R_norm": -10.79141697626708,
+      "R_pole": -3.25781843259849,
+      "branch_id": "sim_nonlinear_open_throat_003_soft_reaction_open",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "soft_reaction_open",
+      "one_pole_ratio_D0C_over_3A2": 0.015444526265927972,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 1.1770322123067285,
+      "score": 3.25781843259849,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    }
+  ],
+  "best_by_score": [
+    {
+      "A_MplusB2plusZ2": 1.0496449480325103,
+      "C_B4plusZ4": 0.015439209713629203,
+      "C_shortfall_for_one_pole": 0.9783320080918506,
+      "D0": 3.325980358023897,
+      "P0": 0.006897730339076513,
+      "P0_over_target": 0.000638678735099677,
+      "P0_target": 10.8,
+      "R_P2": 0.008433439066486007,
+      "R_P4": 0.00652791704163067,
+      "R_norm": -10.793102269660924,
+      "R_pole": -3.2539130425395713,
+      "branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "baseline_open_nonlinear",
+      "one_pole_ratio_D0C_over_3A2": 0.01553597994890939,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 0.9937712178054798,
+      "score": 3.2539130425395713,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    },
+    {
+      "A_MplusB2plusZ2": 1.050225877866256,
+      "C_B4plusZ4": 0.018178704918814577,
+      "C_shortfall_for_one_pole": 1.1588535073879138,
+      "D0": 2.811242673754078,
+      "P0": 0.008583023732921,
+      "P0_over_target": 0.0007947244197149074,
+      "P0_target": 10.8,
+      "R_P2": 0.012406180457661226,
+      "R_P4": 0.011344278437085704,
+      "R_norm": -10.79141697626708,
+      "R_pole": -3.25781843259849,
+      "branch_id": "sim_nonlinear_open_throat_003_soft_reaction_open",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "soft_reaction_open",
+      "one_pole_ratio_D0C_over_3A2": 0.015444526265927972,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 1.1770322123067285,
+      "score": 3.25781843259849,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    },
+    {
+      "A_MplusB2plusZ2": 1.0525056507097363,
+      "C_B4plusZ4": 0.013416421536933119,
+      "C_shortfall_for_one_pole": 0.8024541204353349,
+      "D0": 4.073323233725404,
+      "P0": 0.00554728849131265,
+      "P0_over_target": 0.0005136378232696898,
+      "P0_target": 10.8,
+      "R_P2": 0.005519587562438593,
+      "R_P4": 0.003481759199879082,
+      "R_norm": -10.794452711508688,
+      "R_pole": -3.2686550127679332,
+      "branch_id": "sim_nonlinear_open_throat_002_stiffer_reaction_open",
+      "couplings": "",
+      "dominant_score_component": "R_pole_abs",
+      "geometry": "stiffer_reaction_open",
+      "one_pole_ratio_D0C_over_3A2": 0.016444301940967923,
+      "open_gate_pass": true,
+      "operator": "",
+      "required_C_for_one_pole": 0.815870541972268,
+      "score": 3.2686550127679332,
+      "stability_gate_pass": true,
+      "target_packet_pass": false
+    }
+  ],
+  "by_couplings": {
+    "": {
+      "best_C_shortfall": 0.9783320080918506,
+      "best_branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "best_one_pole_ratio": 0.01553597994890939,
+      "best_score": 3.2539130425395713,
+      "count": 3,
+      "open_stable_count": 3,
+      "target_pass_count": 0
+    }
+  },
+  "by_geometry": {
+    "baseline_open_nonlinear": {
+      "best_C_shortfall": 0.9783320080918506,
+      "best_branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "best_one_pole_ratio": 0.01553597994890939,
+      "best_score": 3.2539130425395713,
+      "count": 1,
+      "open_stable_count": 1,
+      "target_pass_count": 0
+    },
+    "soft_reaction_open": {
+      "best_C_shortfall": 1.1588535073879138,
+      "best_branch_id": "sim_nonlinear_open_throat_003_soft_reaction_open",
+      "best_one_pole_ratio": 0.015444526265927972,
+      "best_score": 3.25781843259849,
+      "count": 1,
+      "open_stable_count": 1,
+      "target_pass_count": 0
+    },
+    "stiffer_reaction_open": {
+      "best_C_shortfall": 0.8024541204353349,
+      "best_branch_id": "sim_nonlinear_open_throat_002_stiffer_reaction_open",
+      "best_one_pole_ratio": 0.016444301940967923,
+      "best_score": 3.2686550127679332,
+      "count": 1,
+      "open_stable_count": 1,
+      "target_pass_count": 0
+    }
+  },
+  "by_operator": {
+    "": {
+      "best_C_shortfall": 0.9783320080918506,
+      "best_branch_id": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "best_one_pole_ratio": 0.01553597994890939,
+      "best_score": 3.2539130425395713,
+      "count": 3,
+      "open_stable_count": 3,
+      "target_pass_count": 0
+    }
+  },
+  "candidate_count": 3,
+  "interpretation": {
+    "C_shortfall_meaning": "Positive C_shortfall means the branch needs a larger quartic reservoir C at fixed D0 and A.",
+    "one_pole_surface": "R_pole = D0*C - 3*A^2, where A=M+B2+Z2 and C=B4+Z4.",
+    "post_hoc_only": "This report classifies frozen candidates and does not generate or mutate candidates.",
+    "ratio_meaning": "D0*C/(3*A^2)=1 is required for the one-pole condition."
+  },
+  "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+  "one_pole_ratio_distribution": {
+    "max": 0.016444301940967923,
+    "median": 0.01553597994890939,
+    "min": 0.015444526265927972,
+    "q25": 0.01549025310741868,
+    "q75": 0.015990140944938655
+  },
+  "open_stable_candidates": {
+    "C_shortfall_distribution": {
+      "max": 1.1588535073879138,
+      "median": 0.9783320080918506,
+      "min": 0.8024541204353349,
+      "q25": 0.8903930642635928,
+      "q75": 1.0685927577398822
+    },
+    "P0_over_target_distribution": {
+      "max": 0.0007947244197149074,
+      "median": 0.000638678735099677,
+      "min": 0.0005136378232696898,
+      "q25": 0.0005761582791846834,
+      "q75": 0.0007167015774072923
+    },
+    "all_C_shortfalls_positive": true,
+    "all_one_pole_ratios_below_one": true,
+    "candidate_count": 3,
+    "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+    "one_pole_ratio_distribution": {
+      "max": 0.016444301940967923,
+      "median": 0.01553597994890939,
+      "min": 0.015444526265927972,
+      "q25": 0.01549025310741868,
+      "q75": 0.015990140944938655
+    },
+    "target_pass_count": 0
+  },
+  "open_stable_count": 3,
+  "report_hash": "c59ab9369da120f8358468946a848ba6bfd75b930d390ac07aa4f9904bf15bfb",
+  "schema": "pde_audit_simulation_obstruction_report/v1",
+  "target_pass_count": 0
+}

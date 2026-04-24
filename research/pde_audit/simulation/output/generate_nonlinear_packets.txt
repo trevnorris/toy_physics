@@ -1,0 +1,21 @@
+# PDE Audit Simulation Output
+# Script: generate_nonlinear_packets
+# Date: 2026-04-24T14:21:48-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+PDE audit nonlinear packet exporter
+================================================
+output_dir: /var/projects/toy_physics/research/pde_audit/simulation/output
+protocol_hash: e1394d23b185d629cfecb05aaa31884517d5fd6a137610ed9cb0e2bea54f89a7
+grid_points: 161
+WROTE sim_nonlinear_open_throat_001_baseline_open_nonlinear.json  residual=2.173e-11
+WROTE sim_nonlinear_open_throat_002_stiffer_reaction_open.json  residual=2.120e-11
+WROTE sim_nonlinear_open_throat_003_soft_reaction_open.json  residual=1.486e-11
+
+candidate_count: 3
+manifest_hash: 6201ffcf4f0ef285723dbe97d971484c0127809f182974c8265ddd104598278d
+
+EXIT_CODE: 0

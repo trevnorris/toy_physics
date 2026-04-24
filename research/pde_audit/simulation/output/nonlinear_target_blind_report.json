@@ -1,0 +1,98 @@
+{
+  "issue_count": 0,
+  "manifest_and_packets": {
+    "details": {
+      "computed_manifest_hash": "6201ffcf4f0ef285723dbe97d971484c0127809f182974c8265ddd104598278d",
+      "manifest_path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_manifest.json",
+      "packet_count": 3,
+      "packet_issue_count": 0,
+      "stored_manifest_hash": "6201ffcf4f0ef285723dbe97d971484c0127809f182974c8265ddd104598278d",
+      "unique_branch_id_count": 3
+    },
+    "issues": [],
+    "pass": true
+  },
+  "manifest_name": "nonlinear_manifest.json",
+  "mode": "nonlinear",
+  "pass": true,
+  "report_hash": "1d362ed9b961d2ba7dc85cc98319e346f46567a2ef4a17ba25a2d4e3117495b7",
+  "schema": "pde_audit_simulation_target_blind_guard/v1",
+  "source_imports": {
+    "details": {
+      "generate_nonlinear_packets.py": {
+        "allowed_imports": [
+          "__future__",
+          "argparse",
+          "hashlib",
+          "json",
+          "math",
+          "nonlinear_protocol",
+          "numpy",
+          "pathlib",
+          "typing",
+          "verify_nonlinear_solver"
+        ],
+        "banned_imports": [],
+        "imports": [
+          "__future__",
+          "argparse",
+          "hashlib",
+          "json",
+          "math",
+          "nonlinear_protocol",
+          "numpy",
+          "pathlib",
+          "typing",
+          "verify_nonlinear_solver"
+        ],
+        "unexpected_imports": []
+      },
+      "nonlinear_protocol.py": {
+        "allowed_imports": [
+          "__future__",
+          "hashlib",
+          "json",
+          "typing"
+        ],
+        "banned_imports": [],
+        "imports": [
+          "__future__",
+          "hashlib",
+          "json",
+          "typing"
+        ],
+        "unexpected_imports": []
+      },
+      "verify_nonlinear_solver.py": {
+        "allowed_imports": [
+          "__future__",
+          "argparse",
+          "ast",
+          "hashlib",
+          "json",
+          "math",
+          "nonlinear_protocol",
+          "numpy",
+          "pathlib",
+          "typing"
+        ],
+        "banned_imports": [],
+        "imports": [
+          "__future__",
+          "argparse",
+          "ast",
+          "hashlib",
+          "json",
+          "math",
+          "nonlinear_protocol",
+          "numpy",
+          "pathlib",
+          "typing"
+        ],
+        "unexpected_imports": []
+      }
+    },
+    "issues": [],
+    "pass": true
+  }
+}

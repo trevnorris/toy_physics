@@ -75,6 +75,8 @@ run_top_check fixture_manifest python3 "$AUDIT_DIR/scripts/verify_fixtures.py" \
 
 run_top_check python_audits bash "$AUDIT_DIR/scripts/run_all_audits.sh" || overall_status=1
 
+run_top_check simulation bash "$AUDIT_DIR/simulation/run_all.sh" || overall_status=1
+
 run_top_check root_json_clean check_root_json_clean || overall_status=1
 
 run_top_check mathematica_audits bash "$AUDIT_DIR/mathematica/run_all_audits.sh" || overall_status=1

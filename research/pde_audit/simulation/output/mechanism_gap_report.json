@@ -1,0 +1,90 @@
+{
+  "candidate_generation_mutated": false,
+  "input_reports": {
+    "evaluation_summary": {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/evaluation_summary.json",
+      "sha256": "3080514d4ef0d6bb3337cebe29bb8d0bf7fc711651dd92d6cf7efd46ec6963d7"
+    },
+    "nonlinear_evaluation_summary": {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_evaluation_summary.json",
+      "sha256": "362981c6431454164f2a2e9556913c3aeef5b57d426ae565e403d0fdcf4b5210"
+    },
+    "nonlinear_required_deformation": {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/nonlinear_required_deformation_report.json",
+      "sha256": "8635eefe6866ed6fe919e371fd6aa9931c09374e19c5bd6d0d9b168a7a051b6a"
+    },
+    "physical_model_status": {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/physical_model_status.json",
+      "sha256": "c194ab42a0fcd000092d200e063a6fc527e338e12b6701ebb88585b7fb8f45d6"
+    },
+    "required_deformation": {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/required_deformation_report.json",
+      "sha256": "bd99ec316618f99363582c782050d6d8bee7950cee543fa2977dcf8bd3d2a65c"
+    }
+  },
+  "mechanism_conclusion": {
+    "coefficient_surface": "D0*C/(3*A^2)=1, with A=M+B2+Z2 and C=B4+Z4.",
+    "next_physical_requirements": [
+      "Promote and freeze parent S_eta/S_Sigma dynamics or explicitly declare an effective physical closure.",
+      "Specify coupled nonlinear residual equations for wall geometry, stable BdG support, Maxwell/mixed modes, and outgoing port normalization.",
+      "Demonstrate a target-blind mechanism that materially increases C or D0 relative to A before target residuals are evaluated.",
+      "Keep the existing freeze hash, target-blind guard, evaluation chain, obstruction report, and deformation map unchanged for the next exporter."
+    ],
+    "primary_missing_channel": "one_pole_support",
+    "why_algebra_can_pass_while_simulation_fails": "The symbolic audit verifies the target surface and adapters. The simulation asks whether frozen branch families land on that surface. The current families under-supply the one-pole C/D0 channel.",
+    "why_not_retune_current_candidates": "The reports are post-hoc classifications of frozen target-blind packets; using them to mutate the same packet family would violate the freeze/no-refit protocol."
+  },
+  "nonlinear_manufactured_gap": {
+    "candidate_count": 3,
+    "dominant_score_component_counts": {
+      "R_pole_abs": 3
+    },
+    "gap_class": "large_one_pole_support_deficit",
+    "local_continuation_looks_promising": false,
+    "name": "nonlinear_manufactured_readiness",
+    "open_stable_count": 3,
+    "open_stable_one_pole_ratio_max": 0.016444301940967923,
+    "open_stable_required_C_or_D0_multiplier_median": 64.36671541084209,
+    "open_stable_required_C_or_D0_multiplier_min": 60.81133778677986,
+    "open_stable_required_P0_multiplier_median": 1565.7324176354994,
+    "primary_obstruction": "one_pole_gap",
+    "target_pass_count": 0
+  },
+  "overall": {
+    "any_target_pass": false,
+    "local_continuation_recommended": false,
+    "nonlinear_target_pass_count": 0,
+    "physical_export_blocker_count": 4,
+    "physical_export_blockers": [
+      "strict_parent_dynamic_wall_not_promoted",
+      "full_stationary_branch_equations_not_frozen",
+      "bdg_support_spectrum_branch_conditional",
+      "maxwell_mixed_outgoing_not_unique_parent_theorem"
+    ],
+    "physical_export_permitted": false,
+    "reduced_target_pass_count": 0,
+    "referee_harness_interpretation": "The algebraic target checks and handoff pipeline pass, but the frozen simulated families do not realize the target surface."
+  },
+  "pass": true,
+  "post_hoc_only": true,
+  "reduced_gap": {
+    "candidate_count": 192,
+    "dominant_score_component_counts": {
+      "R_P4_abs": 20,
+      "R_pole_abs": 172
+    },
+    "gap_class": "large_one_pole_support_deficit",
+    "local_continuation_looks_promising": false,
+    "name": "reduced_operator_v1",
+    "open_stable_count": 189,
+    "open_stable_one_pole_ratio_max": 0.1353664855760648,
+    "open_stable_required_C_or_D0_multiplier_median": 16.30132163440465,
+    "open_stable_required_C_or_D0_multiplier_min": 7.387352901601946,
+    "open_stable_required_P0_multiplier_median": 171.65261223353198,
+    "primary_obstruction": "one_pole_gap",
+    "target_pass_count": 0
+  },
+  "report_hash": "e268c87b3099afee554bb5a8328ce476969cc71f0d4f74321905845f13ea523c",
+  "schema": "pde_audit_simulation_mechanism_gap_report/v1",
+  "target_residuals_used_to_generate_candidates": false
+}

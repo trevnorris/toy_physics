@@ -1,0 +1,17 @@
+PDE audit simulation obstruction report
+====================================================
+candidate_count: 192
+target_pass_count: 0
+open_stable_count: 189
+all_candidates_one_pole_ratios_below_one: True
+open_stable_one_pole_ratios_below_one: True
+open_stable_C_shortfalls_positive: True
+open_stable_near_one_pole_count_abs_ratio_minus_1_lt_0p1: 0
+open_stable_one_pole_ratio_min: 0.00337753832744
+open_stable_one_pole_ratio_median: 0.0613447193073
+open_stable_one_pole_ratio_max: 0.135366485576
+best_score_branch_id: sim_reduced_open_throat_133_short_high_tension__weak_internal_couplings__baseline_operator
+best_score: 3.24332558175
+best_one_pole_ratio: 0.00865029233953
+best_C_shortfall: 1.235723515
+report_hash: 2abcbe33af830fb5c34734daf88e6edfbd90bd261bb7779227af03c175fc0ee3

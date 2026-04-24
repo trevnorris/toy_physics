@@ -10,7 +10,7 @@
     },
     "mathematica_environment_output": {
       "path": "/var/projects/toy_physics/research/pde_audit/mathematica/output/_environment.txt",
-      "sha256": "73c8b228bdc62e742894c2b5efdbe5ead3d2e0040ab70307c85fa59f449058c0"
+      "sha256": "648f759d0bb65affc3950bab3dea09e3fc25830a7f8321e6c3bc9f42fc41626d"
     },
     "platform": "Linux-6.17.9-76061709-generic-x86_64-with-glibc2.35",
     "python": "3.10.12",
@@ -41,49 +41,418 @@
   "referee_pass": true,
   "root_json_files": [],
   "schema": "pde_audit_referee_summary/v1",
+  "simulation_summary": {
+    "best_post_hoc_candidate": "sim_reduced_open_throat_133_short_high_tension__weak_internal_couplings__baseline_operator",
+    "best_post_hoc_score": 3.2433255817471953,
+    "candidate_count": 192,
+    "dominant_score_component_counts": {
+      "R_P4_abs": 20,
+      "R_pole_abs": 172
+    },
+    "failed": 0,
+    "mechanism_gap": {
+      "candidate_generation_mutated": false,
+      "local_continuation_recommended": false,
+      "next_physical_requirements": [
+        "Promote and freeze parent S_eta/S_Sigma dynamics or explicitly declare an effective physical closure.",
+        "Specify coupled nonlinear residual equations for wall geometry, stable BdG support, Maxwell/mixed modes, and outgoing port normalization.",
+        "Demonstrate a target-blind mechanism that materially increases C or D0 relative to A before target residuals are evaluated.",
+        "Keep the existing freeze hash, target-blind guard, evaluation chain, obstruction report, and deformation map unchanged for the next exporter."
+      ],
+      "nonlinear_C_or_D0_multiplier_min": 60.81133778677986,
+      "nonlinear_gap_class": "large_one_pole_support_deficit",
+      "pass": true,
+      "physical_export_permitted": false,
+      "post_hoc_only": true,
+      "primary_missing_channel": "one_pole_support",
+      "reduced_C_or_D0_multiplier_median": 16.30132163440465,
+      "reduced_C_or_D0_multiplier_min": 7.387352901601946,
+      "reduced_gap_class": "large_one_pole_support_deficit",
+      "report_hash": "e268c87b3099afee554bb5a8328ce476969cc71f0d4f74321905845f13ea523c",
+      "target_residuals_used_to_generate_candidates": false
+    },
+    "nonlinear_export": {
+      "best_post_hoc_candidate": "sim_nonlinear_open_throat_001_baseline_open_nonlinear",
+      "best_post_hoc_score": 3.2539130425395713,
+      "candidate_count": 3,
+      "dominant_score_component_counts": {
+        "R_pole_abs": 3
+      },
+      "obstruction": {
+        "open_stable_C_shortfalls_positive": true,
+        "open_stable_near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+        "open_stable_one_pole_ratio_distribution": {
+          "max": 0.016444301940967923,
+          "median": 0.01553597994890939,
+          "min": 0.015444526265927972,
+          "q25": 0.01549025310741868,
+          "q75": 0.015990140944938655
+        },
+        "open_stable_one_pole_ratios_below_one": true,
+        "report_hash": "c59ab9369da120f8358468946a848ba6bfd75b930d390ac07aa4f9904bf15bfb"
+      },
+      "open_stable_count": 3,
+      "pass_flag_counts": {
+        "isotropic_D0_pass": 3,
+        "isotropic_N0_pass": 3,
+        "open_gate_pass": 3,
+        "stability_gate_pass": 3,
+        "tail_transport_pass": 3
+      },
+      "required_deformation": {
+        "candidate_count": 3,
+        "dominant_score_component_counts": {
+          "R_pole_abs": 3
+        },
+        "local_continuation_looks_promising": false,
+        "open_stable_count": 3,
+        "open_stable_one_pole_ratio_distribution": {
+          "max": 0.016444301940967923,
+          "median": 0.01553597994890939,
+          "min": 0.015444526265927972,
+          "q25": 0.01549025310741868,
+          "q75": 0.015990140944938655
+        },
+        "open_stable_required_C_multiplier_distribution": {
+          "max": 64.74785841803973,
+          "median": 64.36671541084209,
+          "min": 60.81133778677986,
+          "q25": 62.589026598810975,
+          "q75": 64.55728691444091
+        },
+        "open_stable_required_P0_multiplier_distribution": {
+          "max": 1946.897122245107,
+          "median": 1565.7324176354994,
+          "min": 1258.2978139248967,
+          "q25": 1412.015115780198,
+          "q75": 1756.3147699403032
+        },
+        "report_hash": "7516bfb94de8cdcf9489dbcc7156ff883057bb6fb4cc5c2f985030a64fdbe944",
+        "suggested_missing_mechanism": "new physical support that increases C or D0 by order required_C_multiplier, plus an outgoing/mixed-sector normalization mechanism if required_P0_multiplier remains large",
+        "target_pass_count": 0
+      },
+      "score_distribution": {
+        "max": 3.2686550127679332,
+        "median": 3.25781843259849,
+        "min": 3.2539130425395713
+      },
+      "summary_hash": "31c1385ef0df2d36c520de85dd2522bde90f937e869c5d7162bc5f498db711f5",
+      "target_blind_guard": {
+        "issue_count": 0,
+        "manifest_and_packets_pass": true,
+        "packet_count": 3,
+        "pass": true,
+        "report_hash": "1d362ed9b961d2ba7dc85cc98319e346f46567a2ef4a17ba25a2d4e3117495b7",
+        "source_imports_pass": true
+      },
+      "target_pass_count": 0,
+      "validation_pass_count": 3
+    },
+    "nonlinear_readiness": {
+      "checks": [
+        {
+          "name": "source_import_boundary",
+          "pass": true
+        },
+        {
+          "name": "protocol_and_freeze_hashes",
+          "pass": true
+        },
+        {
+          "name": "jacobian_directional_consistency",
+          "pass": true
+        },
+        {
+          "name": "manufactured_nonlinear_mesh_convergence",
+          "pass": true
+        },
+        {
+          "name": "continuation_beta_sequence",
+          "pass": true
+        }
+      ],
+      "failed_checks": [],
+      "packets_emitted": false,
+      "pass": true,
+      "protocol_hash": "e1394d23b185d629cfecb05aaa31884517d5fd6a137610ed9cb0e2bea54f89a7",
+      "report_hash": "4df7478b78f6e053127051e750213efd4904865b904446f5c87a05f988b105e9",
+      "target_residuals_computed": false
+    },
+    "obstruction": {
+      "C_shortfall_distribution": {
+        "max": 503.60848497949627,
+        "median": 3.067532643673516,
+        "min": -355.73210218314284,
+        "q25": 2.102707852434091,
+        "q75": 5.377388329778551
+      },
+      "P0_over_target_distribution": {
+        "max": 1.7733148554852822,
+        "median": 0.005690876649198139,
+        "min": -1.199782145809598,
+        "q25": 0.002479598263153462,
+        "q75": 0.014304064467786188
+      },
+      "all_C_shortfalls_positive": false,
+      "all_candidates": {
+        "C_shortfall_distribution": {
+          "max": 503.60848497949627,
+          "median": 3.067532643673516,
+          "min": -355.73210218314284,
+          "q25": 2.102707852434091,
+          "q75": 5.377388329778551
+        },
+        "P0_over_target_distribution": {
+          "max": 1.7733148554852822,
+          "median": 0.005690876649198139,
+          "min": -1.199782145809598,
+          "q25": 0.002479598263153462,
+          "q75": 0.014304064467786188
+        },
+        "all_C_shortfalls_positive": false,
+        "all_one_pole_ratios_below_one": true,
+        "candidate_count": 192,
+        "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+        "one_pole_ratio_distribution": {
+          "max": 0.1353664855760648,
+          "median": 0.06099056886147151,
+          "min": -0.0331487418777297,
+          "q25": 0.022748826507556136,
+          "q75": 0.08203834907652162
+        },
+        "target_pass_count": 0
+      },
+      "all_one_pole_ratios_below_one": true,
+      "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+      "one_pole_ratio_distribution": {
+        "max": 0.1353664855760648,
+        "median": 0.06099056886147151,
+        "min": -0.0331487418777297,
+        "q25": 0.022748826507556136,
+        "q75": 0.08203834907652162
+      },
+      "open_stable_C_shortfall_distribution": {
+        "max": 503.60848497949627,
+        "median": 3.1428754831865318,
+        "min": 1.0654613177731649,
+        "q25": 2.154847352991705,
+        "q75": 5.418126510337321
+      },
+      "open_stable_C_shortfalls_positive": true,
+      "open_stable_P0_over_target_distribution": {
+        "max": 1.7733148554852822,
+        "median": 0.005825719672937503,
+        "min": 0.0003703672807320844,
+        "q25": 0.0026785741982337653,
+        "q75": 0.014530606214474355
+      },
+      "open_stable_candidates": {
+        "C_shortfall_distribution": {
+          "max": 503.60848497949627,
+          "median": 3.1428754831865318,
+          "min": 1.0654613177731649,
+          "q25": 2.154847352991705,
+          "q75": 5.418126510337321
+        },
+        "P0_over_target_distribution": {
+          "max": 1.7733148554852822,
+          "median": 0.005825719672937503,
+          "min": 0.0003703672807320844,
+          "q25": 0.0026785741982337653,
+          "q75": 0.014530606214474355
+        },
+        "all_C_shortfalls_positive": true,
+        "all_one_pole_ratios_below_one": true,
+        "candidate_count": 189,
+        "near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+        "one_pole_ratio_distribution": {
+          "max": 0.1353664855760648,
+          "median": 0.06134471930726503,
+          "min": 0.0033775383274364888,
+          "q25": 0.022996900838140728,
+          "q75": 0.08212691328880145
+        },
+        "target_pass_count": 0
+      },
+      "open_stable_near_one_pole_count_abs_ratio_minus_1_lt_0p1": 0,
+      "open_stable_one_pole_ratio_distribution": {
+        "max": 0.1353664855760648,
+        "median": 0.06134471930726503,
+        "min": 0.0033775383274364888,
+        "q25": 0.022996900838140728,
+        "q75": 0.08212691328880145
+      },
+      "open_stable_one_pole_ratios_below_one": true,
+      "report_hash": "2abcbe33af830fb5c34734daf88e6edfbd90bd261bb7779227af03c175fc0ee3"
+    },
+    "open_stable_count": 189,
+    "pass_flag_counts": {
+      "isotropic_D0_pass": 192,
+      "isotropic_N0_pass": 192,
+      "open_gate_pass": 192,
+      "stability_gate_pass": 189,
+      "tail_transport_pass": 192
+    },
+    "passed": 14,
+    "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/_summary.json",
+    "physical_model_status": {
+      "blocker_count": 4,
+      "checks": [
+        {
+          "name": "source_import_boundary",
+          "pass": true
+        },
+        {
+          "name": "status_hash",
+          "pass": true
+        },
+        {
+          "name": "physical_export_boundary",
+          "pass": true
+        },
+        {
+          "name": "ledger_inventory_and_blockers",
+          "pass": true
+        },
+        {
+          "name": "no_physical_packets_emitted",
+          "pass": true
+        }
+      ],
+      "effective_wall_closure_available": true,
+      "failed_checks": [],
+      "packets_emitted": false,
+      "pass": true,
+      "physical_export_permitted": false,
+      "report_hash": "7e9fde0f1fe566e9227706a473f6ddb4fca7b2584f4ade60f2c41e9ea568f5ed",
+      "required_before_physical_export_count": 5,
+      "status_hash": "5902cca810120510f74f07da68a79466bf8cdc32aebc75b5acee975dfa6bcfca",
+      "strict_parent_dynamic_wall_pass": false,
+      "target_residuals_computed": false
+    },
+    "reduced_fem_verification": {
+      "checks": [
+        {
+          "name": "matrix_structure",
+          "pass": true
+        },
+        {
+          "name": "manufactured_DN_halfwave",
+          "pass": true
+        },
+        {
+          "name": "open_shape_profile_smoke",
+          "pass": true
+        }
+      ],
+      "failed_checks": [],
+      "pass": true,
+      "report_hash": "e1f697cdcc366dcbd4a873b3568cc9125cb854d39ea0bac7a273d5a252e71a38"
+    },
+    "required_deformation": {
+      "candidate_count": 192,
+      "dominant_score_component_counts": {
+        "R_P4_abs": 20,
+        "R_pole_abs": 172
+      },
+      "local_continuation_looks_promising": false,
+      "open_stable_count": 189,
+      "open_stable_one_pole_ratio_distribution": {
+        "max": 0.1353664855760648,
+        "median": 0.06134471930726503,
+        "min": 0.0033775383274364888,
+        "q25": 0.022996900838140728,
+        "q75": 0.08212691328880145
+      },
+      "open_stable_required_C_multiplier_distribution": {
+        "max": 296.0736202093635,
+        "median": 16.30132163440465,
+        "min": 7.387352901601946,
+        "q25": 12.176276447691073,
+        "q75": 43.48412018812048
+      },
+      "open_stable_required_P0_multiplier_distribution": {
+        "max": 2700.0225236509973,
+        "median": 171.65261223353198,
+        "min": 0.5639156503464477,
+        "q25": 68.82025328054594,
+        "q75": 373.33294730435085
+      },
+      "report_hash": "b35f10f35f1ded0e5a4ec86e01d6c03704abb1a86179f662a256d52c9cdc1856",
+      "suggested_missing_mechanism": "new physical support that increases C or D0 by order required_C_multiplier, plus an outgoing/mixed-sector normalization mechanism if required_P0_multiplier remains large",
+      "target_pass_count": 0
+    },
+    "score_distribution": {
+      "max": 210507.21264228775,
+      "median": 5.669944404634075,
+      "min": 3.2433255817471953
+    },
+    "target_blind_guard": {
+      "issue_count": 0,
+      "manifest_and_packets_pass": true,
+      "packet_count": 192,
+      "pass": true,
+      "report_hash": "0745fd8bcb142f4bfc5ea2ef76cf41bfb537c55fee38e5334e4fd5b506104ee2",
+      "source_imports_pass": true
+    },
+    "target_pass_count": 0,
+    "total": 14,
+    "validation_pass_count": 192
+  },
   "top_level_checks": [
     {
-      "date": "2026-04-24T10:43:48-06:00",
+      "date": "2026-04-24T14:21:02-06:00",
       "elapsed": "0s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "fixture_manifest",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/fixture_manifest.txt",
-      "output_sha256": "d3807a0591ef564f311c723f885609fe4b12deca79b51cc2ffc031585518b34d",
+      "output_sha256": "5b21720acbc89ce659ede3afda3ff7437b99706befe5b586682c5128c7dbac47",
       "script": "fixture_manifest",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T10:44:59-06:00",
+      "date": "2026-04-24T14:23:17-06:00",
       "elapsed": "26s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "mathematica_audits",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/mathematica_audits.txt",
-      "output_sha256": "0ef6fa16406de6daf7ed6a3454c1493aa413a598fa15dfbf8fb6e78438a6b370",
+      "output_sha256": "a66441b19eac67d601395250fb677e8cd0786fac8747b4555e37faf50decce74",
       "script": "mathematica_audits",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T10:44:33-06:00",
+      "date": "2026-04-24T14:21:47-06:00",
       "elapsed": "45s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "python_audits",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/python_audits.txt",
-      "output_sha256": "798c3d6ce401824d9f648026f63b584bad3c06d07c6be7d1a629bb75c39d4ad1",
+      "output_sha256": "654ecbd561491edbf9f872951d073dcf0d2c5f725b832751d2ac559ee3935c87",
       "script": "python_audits",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T10:44:33-06:00",
+      "date": "2026-04-24T14:22:51-06:00",
       "elapsed": "0s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "root_json_clean",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/root_json_clean.txt",
-      "output_sha256": "facfeffe73d324e5b201fef23f0f928b5314a9826ae02c52a3345c0e37b4ec99",
+      "output_sha256": "c5d53256b0c118ddf57a2948a49af6647a95d4de09c04e466e3694a3a3eceb3c",
       "script": "root_json_clean",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T14:22:51-06:00",
+      "elapsed": "64s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "simulation",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/output/simulation.txt",
+      "output_sha256": "58239948029bc7f1c056c23ce66b0d52aba8758faa1dc61e332d2c881153c515",
+      "script": "simulation",
       "status": "PASS"
     }
   ]

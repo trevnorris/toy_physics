@@ -1,0 +1,37 @@
+# Mathematica Audit Output
+# Script: stage_v2_22c_end_to_end_smoke_pipeline_mathematica_audit.wl
+# Date: 2026-04-24T10:44:57-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-22C end-to-end smoke-pipeline Mathematica audit
+==============================================================================
+
+------------------------------------------------------------------------------
+Fixture controls
+------------------------------------------------------------------------------
+PASS: valid packet hash
+PASS: invalid packet hash
+PASS: valid open branch
+PASS: invalid hard-cap branch
+PASS: valid target blind
+PASS: valid solver metadata present
+
+------------------------------------------------------------------------------
+Orchestration formula audit
+------------------------------------------------------------------------------
+PASS: group inverse 20
+PASS: group inverse 21
+PASS: group inverse 22
+PASS: axisymmetric b equals 3a
+PASS: constant P2
+PASS: constant P4
+PASS: target gamma equivalence
+All Stage V2-22C Mathematica checks passed.
+
+EXIT_CODE: 0

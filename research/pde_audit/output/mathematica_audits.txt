@@ -1,0 +1,31 @@
+# PDE Audit Top-Level Output
+# Script: mathematica_audits
+# Date: 2026-04-24T10:44:59-06:00
+# Elapsed: 26s
+# Exit code: 0
+# Status: PASS
+#
+
+PDE V2 Mathematica Audit Runner
+===============================
+Output dir: /var/projects/toy_physics/research/pde_audit/mathematica/output
+
+  RUN   mathematica_environment_probe ... PASS (2s)
+  RUN   stage_v2_04_open_junction_impedance_mathematica_audit ... PASS (1s)
+  RUN   stage_v2_13_grouped_normalization_ratio_mathematica_audit ... PASS (2s)
+  RUN   stage_v2_16_branch_freeze_no_refit_mathematica_audit ... PASS (2s)
+  RUN   stage_v2_17_weak_axisymmetric_splitting_mathematica_audit ... PASS (2s)
+  RUN   stage_v2_19_isotropic_full_bundle_target_surface_mathematica_audit ... PASS (2s)
+  RUN   stage_v2_21_branch_extraction_fixture_mathematica_audit ... PASS (3s)
+  RUN   stage_v2_22a_profile_to_coefficient_adapter_mathematica_audit ... PASS (3s)
+  RUN   stage_v2_22b_solver_handoff_validator_mathematica_audit ... PASS (4s)
+  RUN   stage_v2_22c_end_to_end_smoke_pipeline_mathematica_audit ... PASS (3s)
+  RUN   stage_v2_23_formula_mathematica_audit ... PASS (2s)
+Wrote /var/projects/toy_physics/research/pde_audit/mathematica/output/_summary.json
+TOTAL: 10  PASS: 10  FAIL: 0
+
+===============================
+Total: 10  |  Pass: 10  |  Fail: 0  |  Skipped: 0
+Summary written to: /var/projects/toy_physics/research/pde_audit/mathematica/output/_summary.txt
+
+EXIT_CODE: 0

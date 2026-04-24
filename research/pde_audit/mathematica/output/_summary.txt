@@ -1,0 +1,12 @@
+PASS  stage_v2_04_open_junction_impedance_mathematica_audit  (1s)
+PASS  stage_v2_13_grouped_normalization_ratio_mathematica_audit  (2s)
+PASS  stage_v2_16_branch_freeze_no_refit_mathematica_audit  (2s)
+PASS  stage_v2_17_weak_axisymmetric_splitting_mathematica_audit  (2s)
+PASS  stage_v2_19_isotropic_full_bundle_target_surface_mathematica_audit  (2s)
+PASS  stage_v2_21_branch_extraction_fixture_mathematica_audit  (3s)
+PASS  stage_v2_22a_profile_to_coefficient_adapter_mathematica_audit  (3s)
+PASS  stage_v2_22b_solver_handoff_validator_mathematica_audit  (4s)
+PASS  stage_v2_22c_end_to_end_smoke_pipeline_mathematica_audit  (3s)
+PASS  stage_v2_23_formula_mathematica_audit  (2s)
+
+TOTAL: 10  PASS: 10  FAIL: 0  SKIPPED: 0

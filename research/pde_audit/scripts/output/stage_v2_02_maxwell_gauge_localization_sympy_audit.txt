@@ -1,0 +1,82 @@
+# Python Audit Output
+# Script: stage_v2_02_maxwell_gauge_localization_sympy_audit.py
+# Date: 2026-04-24T10:43:50-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1. Localization integrals and zero-mode gauge-fixing norm
+========================================================================================
+Z(w) = exp(-w**2/lambda**2)
+Z_int = ∫ Z dw = sqrt(pi)*lambda
+H_int[unweighted; -R,R] = 2*R
+H_int[weighted H=Z] = sqrt(pi)*lambda
+H_unweighted/Z_int = 2*R/(sqrt(pi)*lambda)
+limit_{R->oo} H_unweighted/Z_int = oo
+H_weighted/Z_int = 1
+
+For a finite gauge-fixing weight H_int, matching
+    -H_int/(2 xi mu0) (∂·a)^2 = -Z_int/(2 xi_4 mu0) (∂·a)^2
+gives xi_4 = xi Z_int/H_int.
+xi_4[unweighted box -R,R] = sqrt(pi)*lambda*xi/(2*R)
+limit_{R->oo} xi_4[unweighted] = 0
+xi_4[weighted H=Z] = xi
+
+========================================================================================
+2. Antisymmetry check: divergence of ∂_M(Z F^{MN})
+========================================================================================
+∂_N∂_M(Z F^{MN}) in an antisymmetric 2D subblock: 0
+
+========================================================================================
+3. General gauge-fixing weight H(w): divergence identity
+========================================================================================
+□(H B) - [H □B + 2 H' B_w + H'' B]: 0
+General weighted gauge-fixing EOM term:
+    +(1/xi) ∂^N[H(w) B],  where B = ∂·A
+General divergence consistency condition:
+    (1/xi) □[H(w) B] = mu0 ∂_N J^N
+For H=1, this reduces to (1/xi) □B = mu0 ∂·J.
+For H=Z, the equation is (1/xi) □[Z B] = mu0 ∂·J.
+H=1 specialization extra H' terms: 0
+For Gaussian H=Z, extra w-localization terms in □(ZB) are: 2*(-2*lambda**2*w*Derivative(B(t, x, w), w) - (lambda**2 - 2*w**2)*B(t, x, w))*exp(-w**2/lambda**2)/lambda**4
+
+========================================================================================
+4. Zero-mode action audit
+========================================================================================
+Zero-mode kinetic density coefficient: -sqrt(pi)*f2*lambda/(4*mu0)
+Zero-mode unweighted gauge-fixing coefficient on [-R,R]: -R*b**2/(mu0*xi)
+Zero-mode weighted H=Z gauge-fixing coefficient: -sqrt(pi)*b**2*lambda/(2*mu0*xi)
+Noncompact verdict:
+    H=1 gives a divergent gauge-fixing action for any zero mode with b=∂_mu a^mu != 0.
+    H=1 is finite only if Lorenz gauge b=0 is imposed before reduction, or if the w-line is regulated.
+    H=Z gives a finite localized gauge-fixed zero-mode action with the same Z_int normalization as the Maxwell kinetic term.
+general 4D gauge parameter match H_int/xi = Z_int/xi_4: 0
+
+========================================================================================
+5. Gauge invariance of mixed-sector observables
+========================================================================================
+delta E_w: 0
+delta C_a: 0
+
+========================================================================================
+6. Stage V2-02 verdict
+========================================================================================
+Bulk EOM with H=1 as written: PASS as a formal gauge-fixed bulk equation
+Divergence consistency for H=1: PASS if the total current is conserved and B obeys □B=0 / Lorenz gauge is imposed
+Noncompact zero-mode gauge-fixed action with H=1: FAIL unless ∂_mu a^mu=0 is imposed before reduction or the w-line is regulated
+Clean gauge-fixed brane reduction with H=1: CONDITIONAL: impose Lorenz gauge before reduction, then choose any 3+1 gauge fixing afterward
+Weighted localized gauge fixing H=Z: PASS for finite zero-mode normalization; modifies the gauge-condition propagation to □(ZB)=0
+Mixed-sector gauge invariants E_w, C_a: PASS; they are exact gauge-invariant observables
+
+Recommended Volume-2 patch:
+    Either (A) keep the current H=1 term only as a bulk gauge-fixing device and
+        state explicitly that Lorenz gauge is imposed before the zero-mode reduction,
+        with 3+1 gauge fixing chosen only after reduction; or
+    (B) replace it in the parent ledger by a localized gauge-fixing functional
+        H(w)=Z(w) or another finite profile H_loc(w), so the gauge-fixed
+        zero-mode action is finite without a pre-reduction Lorenz constraint.
+
+EXIT_CODE: 0

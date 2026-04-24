@@ -1,0 +1,74 @@
+# Python Audit Output
+# Script: stage_v2_11_grouped_p2_projectors_sympy_audit.py
+# Date: 2026-04-24T10:44:00-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-11 grouped real P2 projector calculus audit
+========================================================================
+checks_total: 41
+checks_passed: 41
+checks_failed: 0
+
+PASS  group_metric_from_five_lane_embedding
+PASS  G_orthogonality_bar_a
+PASS  G_orthogonality_bar_b
+PASS  G_orthogonality_a_bar
+PASS  G_orthogonality_a_b
+PASS  G_orthogonality_b_bar
+PASS  G_orthogonality_b_a
+PASS  norm_e_bar
+PASS  norm_e_a
+PASS  norm_e_b
+PASS  P_bar_formula
+PASS  P_a_formula
+PASS  P_b_formula
+PASS  projector_sum_identity
+PASS  P_bar_idempotent
+PASS  P_bar_G_self_adjoint
+PASS  P_a_idempotent
+PASS  P_a_G_self_adjoint
+PASS  P_b_idempotent
+PASS  P_b_G_self_adjoint
+PASS  P_bar_P_a_orthogonal
+PASS  P_bar_P_b_orthogonal
+PASS  P_a_P_bar_orthogonal
+PASS  P_a_P_b_orthogonal
+PASS  P_b_P_bar_orthogonal
+PASS  P_b_P_a_orthogonal
+PASS  xbar_formula
+PASS  a_x_formula
+PASS  b_x_formula
+PASS  inverse_reconstruction
+PASS  weighted_norm_decomposition
+PASS  normalized_anisotropy_norm
+PASS  isotropy_relations_from_a_b
+PASS  axisymmetric_lambda_trace_zero
+PASS  axisymmetric_lambda_a
+PASS  axisymmetric_lambda_b
+PASS  axisymmetric_b_equals_3a
+PASS  first_order_u2_transport
+PASS  first_order_P0_transport
+PASS  axisymmetric_u_b_equals_3_u_a
+PASS  axisymmetric_P_b_equals_3_P_a
+
+Key exact outputs
+------------------------------------------------------------------------
+G = Matrix([[1, 0, 0], [0, 2, 0], [0, 0, 2]])
+P_bar = Matrix([[1/5, 2/5, 2/5], [1/5, 2/5, 2/5], [1/5, 2/5, 2/5]])
+P_a = Matrix([[4/5, -2/5, -2/5], [-1/5, 1/10, 1/10], [-1/5, 1/10, 1/10]])
+P_b = Matrix([[0, 0, 0], [0, 1/2, -1/2], [0, -1/2, 1/2]])
+xbar = (x20 + 2*x21 + 2*x22)/5
+a_x = (2*x20 - x21 - x22)/10
+b_x = (x21 - x22)/2
+x = xbar*(1,1,1) + a_x*(4,-1,-1) + b_x*(0,1,-1)
+x^T G x = x20**2 + 2*x21**2 + 2*x22**2
+A_x^2 = 2*(2*x20**2 - 2*x20*x21 - 2*x20*x22 + 3*x21**2 - 4*x21*x22 + 3*x22**2)/25
+axisymmetric lambda = (1, 1/2, -1)
+lambda trace/a/b = (0, 1/4, 3/4)
+u2 first-order slope = -(D0*dD2 - D2*dD0)/D0**2
+P0 first-order slope = (D0*dN0 - N0*dD0)/D0**2
+
+EXIT_CODE: 0

@@ -1,0 +1,90 @@
+{
+  "audit_dir": "/var/projects/toy_physics/research/pde_audit",
+  "mathematica_environment": {
+    "mathematica": {
+      "MachineName": "pop-os",
+      "MathematicaKernelVersion": "14.3.0 for Linux x86 (64-bit) (July 8, 2025)",
+      "MathematicaVersionNumber": "14.3",
+      "ProcessorType": "x86-64",
+      "SystemID": "Linux-x86-64"
+    },
+    "mathematica_environment_output": {
+      "path": "/var/projects/toy_physics/research/pde_audit/mathematica/output/_environment.txt",
+      "sha256": "73c8b228bdc62e742894c2b5efdbe5ead3d2e0040ab70307c85fa59f449058c0"
+    },
+    "platform": "Linux-6.17.9-76061709-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "suite": "mathematica"
+  },
+  "mathematica_summary": {
+    "failed": 0,
+    "passed": 10,
+    "path": "/var/projects/toy_physics/research/pde_audit/mathematica/output/_summary.json",
+    "total": 10
+  },
+  "python_environment": {
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "sympy": "1.14.0"
+    },
+    "platform": "Linux-6.17.9-76061709-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "suite": "python"
+  },
+  "python_summary": {
+    "failed": 0,
+    "passed": 28,
+    "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/_summary.json",
+    "total": 28
+  },
+  "referee_pass": true,
+  "root_json_files": [],
+  "schema": "pde_audit_referee_summary/v1",
+  "top_level_checks": [
+    {
+      "date": "2026-04-24T10:43:48-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "fixture_manifest",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/output/fixture_manifest.txt",
+      "output_sha256": "d3807a0591ef564f311c723f885609fe4b12deca79b51cc2ffc031585518b34d",
+      "script": "fixture_manifest",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:59-06:00",
+      "elapsed": "26s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "mathematica_audits",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/output/mathematica_audits.txt",
+      "output_sha256": "0ef6fa16406de6daf7ed6a3454c1493aa413a598fa15dfbf8fb6e78438a6b370",
+      "script": "mathematica_audits",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:33-06:00",
+      "elapsed": "45s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "python_audits",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/output/python_audits.txt",
+      "output_sha256": "798c3d6ce401824d9f648026f63b584bad3c06d07c6be7d1a629bb75c39d4ad1",
+      "script": "python_audits",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:33-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "root_json_clean",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/output/root_json_clean.txt",
+      "output_sha256": "facfeffe73d324e5b201fef23f0f928b5314a9826ae02c52a3345c0e37b4ec99",
+      "script": "root_json_clean",
+      "status": "PASS"
+    }
+  ]
+}

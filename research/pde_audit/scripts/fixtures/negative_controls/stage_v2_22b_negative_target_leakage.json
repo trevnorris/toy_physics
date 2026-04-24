@@ -1,0 +1,75 @@
+{
+  "schema": "stage_v2_22b_solver_handoff/v1",
+  "branch_id": "negative_target_leakage",
+  "freeze": {
+    "pre_target_freeze": true,
+    "target_blind": true,
+    "parent_action": "GNLS + localized Maxwell + effective wall closure",
+    "gauge_convention": "localized_or_constrained_lorenz_declared",
+    "boundary_protocol": "open_impedance_AC_reflecting_DC_leaking"
+  },
+  "geometry": {
+    "L": 1.0,
+    "R_mouth": 1.0,
+    "R_exit": 0.35,
+    "boundary_class": "open_impedance",
+    "Y_L_limit": 0.0,
+    "exit_model": "organ_pipe_low_impedance_expansion"
+  },
+  "constants": {
+    "G": 1.0,
+    "c_s": 1.0,
+    "c": 1.0,
+    "a": 1.0,
+    "mhat0": 1.0,
+    "S_port": 1.0,
+    "theta_tail": 1.0
+  },
+  "grid": {
+    "coordinate": "s",
+    "points": [0.0, 0.5, 1.0]
+  },
+  "wall": {
+    "K": 1.6,
+    "M": 0.9
+  },
+  "profiles": {
+    "weight": [1.0, 1.0, 1.0],
+    "wall_chi_eta": [0.0, 1.4142135623730951, 0.0]
+  },
+  "bdg_modes": [
+    {
+      "name": "bdg_halfwave",
+      "lambda_B": 0.42,
+      "varpi": 2.7,
+      "profile_values": [0.0, 1.0, 1.4142135623730951]
+    }
+  ],
+  "mixed_ports": [
+    {
+      "name": "one_mixed_port",
+      "lambda_U": 0.28,
+      "Omega_U": 3.0,
+      "u_values": [0.0, 1.4142135623730951, 0.0],
+      "lambda_W": 0.52,
+      "Omega_W": 4.0,
+      "w_values": [0.0, 1.0, 1.4142135623730951],
+      "lambda_R": 0.65
+    }
+  ],
+  "solver_metadata": {
+    "exporter": "negative_fixture",
+    "mesh_points": 3,
+    "nonlinear_residual_norm": 0.0,
+    "coefficient_family": "compact_negative_control_v1",
+    "source_commit": "fixture-only",
+    "export_timestamp": "2026-04-24T00:00:00Z"
+  },
+  "target_values": {
+    "P0_target": 10.8
+  },
+  "normalization_tolerances": {
+    "profile_norm_tol": 0.01,
+    "Delta_tol": 1e-12
+  }
+}

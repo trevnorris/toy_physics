@@ -1,0 +1,49 @@
+# PDE Audit Top-Level Output
+# Script: python_audits
+# Date: 2026-04-24T10:44:33-06:00
+# Elapsed: 45s
+# Exit code: 0
+# Status: PASS
+#
+
+PDE V2 Python Audit Runner
+==========================
+Output dir: /var/projects/toy_physics/research/pde_audit/scripts/output
+Fixture dir: /var/projects/toy_physics/research/pde_audit/scripts/fixtures
+
+  RUN   stage_v2_01_parent_wall_action_sympy_audit ... PASS (1s)
+  RUN   stage_v2_02_maxwell_gauge_localization_sympy_audit ... PASS (1s)
+  RUN   stage_v2_03_dimension_ledger_sympy_audit ... PASS (1s)
+  RUN   stage_v2_04_open_junction_impedance_sympy_audit ... PASS (0s)
+  RUN   stage_v2_06_07_poisson_newtonian_sympy_audit ... PASS (0s)
+  RUN   stage_v2_08_bdg_wall_schur_stability_sympy_audit ... PASS (1s)
+  RUN   stage_v2_09_maxwell_mixed_kernel_sympy_audit ... PASS (4s)
+  RUN   stage_v2_10_hamiltonian_stability_sympy_audit ... PASS (2s)
+  RUN   stage_v2_11_grouped_p2_projectors_sympy_audit ... PASS (1s)
+  RUN   stage_v2_12_stf_angular_source_map_sympy_audit ... PASS (7s)
+  RUN   stage_v2_13_grouped_normalization_ratio_sympy_audit ... PASS (0s)
+  RUN   stage_v2_14_outgoing_l2_fingerprint_sympy_audit ... PASS (2s)
+  RUN   stage_v2_15_25pn_4pn_interface_sympy_audit ... PASS (0s)
+  RUN   stage_v2_16_branch_freeze_no_refit_sympy_audit ... PASS (2s)
+  RUN   stage_v2_17_weak_axisymmetric_splitting_sympy_audit ... PASS (2s)
+  RUN   stage_v2_18_monomial_quotient_similarity_orbit_sympy_audit ... PASS (1s)
+  RUN   stage_v2_19_isotropic_full_bundle_target_surface_sympy_audit ... PASS (5s)
+  RUN   stage_v2_20_weak_form_branch_extraction_sympy_audit ... PASS (3s)
+  RUN   stage_v2_21_branch_extraction_fixture ... PASS (0s)
+  RUN   stage_v2_22a_profile_to_coefficient_adapter ... PASS (2s)
+  RUN   stage_v2_22b_solver_handoff_validator ... PASS (1s)
+  RUN   stage_v2_22c_end_to_end_smoke_pipeline ... PASS (0s)
+  RUN   stage_v2_22c_formula_sympy_audit ... PASS (1s)
+  RUN   stage_v2_23_formula_sympy_audit ... PASS (0s)
+  RUN   stage_v2_23_mesh_convergence_audit ... PASS (4s)
+  RUN   stage_v2_23_minimal_open_throat_branch_solver ... PASS (1s)
+  RUN   stage_v2_24_negative_controls ... PASS (1s)
+  RUN   stage_v2_22b_solver_handoff_validator_invalid_hardcap ... PASS (1s)
+Wrote /var/projects/toy_physics/research/pde_audit/scripts/output/_summary.json
+TOTAL: 28  PASS: 28  FAIL: 0
+
+==========================
+Total: 28  |  Pass: 28  |  Fail: 0  |  Skipped: 0
+Summary written to: /var/projects/toy_physics/research/pde_audit/scripts/output/_summary.txt
+
+EXIT_CODE: 0

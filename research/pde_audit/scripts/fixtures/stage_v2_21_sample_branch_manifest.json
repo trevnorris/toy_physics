@@ -1,0 +1,162 @@
+{
+  "branches": [
+    {
+      "geometry": {
+        "R_exit": 1.0,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "direct_coefficients": {
+            "B0": 0.0,
+            "B2": 0.0,
+            "B4": 3.0,
+            "K": 1.0,
+            "M": 1.0,
+            "N0": 10.8,
+            "N2": -21.6,
+            "N4": -54.0,
+            "Z0": 0.0,
+            "Z2": 0.0,
+            "Z4": 0.0
+          }
+        },
+        "21": {
+          "direct_coefficients": {
+            "B0": 0.0,
+            "B2": 0.0,
+            "B4": 3.0,
+            "K": 1.0,
+            "M": 1.0,
+            "N0": 10.8,
+            "N2": -21.6,
+            "N4": -54.0,
+            "Z0": 0.0,
+            "Z2": 0.0,
+            "Z4": 0.0
+          }
+        },
+        "22": {
+          "direct_coefficients": {
+            "B0": 0.0,
+            "B2": 0.0,
+            "B4": 3.0,
+            "K": 1.0,
+            "M": 1.0,
+            "N0": 10.8,
+            "N2": -21.6,
+            "N4": -54.0,
+            "Z0": 0.0,
+            "Z2": 0.0,
+            "Z4": 0.0
+          }
+        }
+      },
+      "name": "calibrated_direct_coefficient_fixture",
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    },
+    {
+      "geometry": {
+        "R_exit": 0.35,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.42,
+              "varpi": 2.7
+            },
+            {
+              "coupling": 0.18,
+              "varpi": 4.1
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.65,
+              "g_U": 0.28,
+              "g_W": 0.52
+            }
+          ]
+        },
+        "21": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.42,
+              "varpi": 2.7
+            },
+            {
+              "coupling": 0.18,
+              "varpi": 4.1
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.65,
+              "g_U": 0.28,
+              "g_W": 0.52
+            }
+          ]
+        },
+        "22": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.42,
+              "varpi": 2.7
+            },
+            {
+              "coupling": 0.18,
+              "varpi": 4.1
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.65,
+              "g_U": 0.28,
+              "g_W": 0.52
+            }
+          ]
+        }
+      },
+      "name": "primitive_open_throat_demo_branch",
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    }
+  ],
+  "description": "Built-in V2-21 manifest with one calibrated direct-coefficient test and one primitive open-throat demo branch.",
+  "schema": "stage_v2_21_branch_extraction_fixture/v1"
+}

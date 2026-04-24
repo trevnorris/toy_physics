@@ -1,0 +1,85 @@
+{
+  "calibrated_control_budget": {
+    "absolute_residuals": {
+      "R_P2": 0.0,
+      "R_P4": 1.4210854715202004e-14,
+      "R_norm": 0.0,
+      "R_pole": 0.0,
+      "R_tail": 0.0,
+      "gamma_eff_minus_gamma_GR": 0.0
+    },
+    "branch": "calibrated_direct_coefficient_fixture",
+    "open_gate_pass": true,
+    "pass_flags": {
+      "constant_prefactor_P2_pass": true,
+      "constant_prefactor_P4_pass": true,
+      "isotropic_D0_pass": true,
+      "isotropic_N0_pass": true,
+      "normalization_pass": true,
+      "one_pole_pass": true,
+      "open_gate_pass": true,
+      "stability_gate_pass": true,
+      "tail_transport_pass": true,
+      "target_packet_pass": true
+    },
+    "scaled_residuals": {
+      "D0_anisotropy_norm_sq_over_tol": 0.0,
+      "P0_anisotropy_norm_sq_over_tol": 0.0,
+      "R_P2_over_tol": 0.0,
+      "R_P4_over_tol": 1.4210854715202002e-05,
+      "R_norm_over_P0_target": 0.0,
+      "R_norm_over_tol": 0.0,
+      "R_pole_over_tol": 0.0,
+      "R_tail_over_tol": 0.0
+    },
+    "stability_gate_pass": true,
+    "target_packet_pass": true,
+    "tolerance": 1e-09
+  },
+  "extraction_residual_tol": 1e-09,
+  "interpretation": {
+    "branch_target_packet_pass": "Whether the actual tested solver branch hits the one-pole, normalization, constant-prefactor, and tail residuals within extraction_residual_tol.",
+    "mechanical_pipeline_pass": "Validation, conversion, extraction, open-throat gates, stability gates, calibrated-control target pass, and invalid hard-cap rejection all passed.",
+    "target_failure_is_not_pipeline_failure": "A stable open branch may legitimately fail target residuals; that is the point of the extraction fixture."
+  },
+  "schema": "stage_v2_22c_tolerance_budget/v1",
+  "smoke_branch_budget": {
+    "absolute_residuals": {
+      "R_P2": 0.0006833291043178326,
+      "R_P4": 0.0006221198975181069,
+      "R_norm": -10.79947147591165,
+      "R_pole": -2.452467306741504,
+      "R_tail": 0.0,
+      "gamma_eff_minus_gamma_GR": -0.39998042503376485
+    },
+    "branch": "sample_open_DN_solver_export",
+    "open_gate_pass": true,
+    "pass_flags": {
+      "constant_prefactor_P2_pass": false,
+      "constant_prefactor_P4_pass": false,
+      "isotropic_D0_pass": true,
+      "isotropic_N0_pass": true,
+      "normalization_pass": false,
+      "one_pole_pass": false,
+      "open_gate_pass": true,
+      "stability_gate_pass": true,
+      "tail_transport_pass": true,
+      "target_packet_pass": false
+    },
+    "scaled_residuals": {
+      "D0_anisotropy_norm_sq_over_tol": 0.0,
+      "P0_anisotropy_norm_sq_over_tol": 0.0,
+      "R_P2_over_tol": 683329.1043178325,
+      "R_P4_over_tol": 622119.8975181069,
+      "R_norm_over_P0_target": 0.999951062584412,
+      "R_norm_over_tol": 10799471475.91165,
+      "R_pole_over_tol": 2452467306.741504,
+      "R_tail_over_tol": 0.0
+    },
+    "stability_gate_pass": true,
+    "target_packet_pass": false,
+    "tolerance": 1e-09
+  },
+  "validator_Delta_tol": 1e-12,
+  "validator_profile_norm_tol": 0.005
+}

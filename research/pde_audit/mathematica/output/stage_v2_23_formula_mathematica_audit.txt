@@ -1,0 +1,39 @@
+# Mathematica Audit Output
+# Script: stage_v2_23_formula_mathematica_audit.wl
+# Date: 2026-04-24T10:44:59-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-23 formula and solver-packet Mathematica audit
+==============================================================================
+
+------------------------------------------------------------------------------
+Formula audit
+------------------------------------------------------------------------------
+PASS: response u2
+PASS: response u4
+PASS: prefactor P0
+PASS: prefactor P2
+PASS: prefactor P4
+PASS: one-pole equivalence
+PASS: constant P2
+PASS: constant P4
+PASS: normalization equivalence
+
+------------------------------------------------------------------------------
+Solver residual packet
+------------------------------------------------------------------------------
+PASS: tolerance report schema
+PASS: observable packet schema
+PASS: open gate passes
+PASS: stability gate passes
+PASS: target packet honestly fails
+PASS: dominant residual recorded
+All Stage V2-23 Mathematica checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,156 @@
+{
+  "checks_failed": 0,
+  "checks_passed": 12,
+  "checks_total": 12,
+  "fixture_dir": "/var/projects/toy_physics/research/pde_audit/scripts/fixtures/negative_controls",
+  "results": [
+    {
+      "control_type": "negative",
+      "error_count": 2,
+      "expected_rejection_path": "grid.points",
+      "issue_paths": [
+        "grid.points",
+        "grid.points[-1]",
+        "profiles.wall_chi_eta",
+        "bdg_modes[0].profile_values"
+      ],
+      "name": "v22b_nonmonotone_grid",
+      "packet_hash": "9f6e735cffce8ac70f81e6dc14d3131e3cd969d4660f287b4eb067c27a8c25cd",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "profiles.wall_chi_eta",
+      "issue_paths": [
+        "profiles.wall_chi_eta"
+      ],
+      "name": "v22b_profile_length_mismatch",
+      "packet_hash": "2d781cf5a70e496a1b05b82511757847dad75d0846c255ea07f85c8377bbcd14",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "freeze.pre_target_freeze",
+      "issue_paths": [
+        "freeze.pre_target_freeze"
+      ],
+      "name": "v22b_pre_target_freeze_false",
+      "packet_hash": "ecbe6ceaa35e43068a74d0981d43c3c5110f970e963376a87ec8810ca56855cc",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "freeze.target_blind",
+      "issue_paths": [
+        "freeze.target_blind"
+      ],
+      "name": "v22b_target_blind_false",
+      "packet_hash": "8fbc2a70d1d92d882b79f1441c00a6d51457944d244e8dd1c5010df66c0d06e0",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "mixed_ports[0].Delta_eff",
+      "issue_paths": [
+        "mixed_ports[0].Delta_eff"
+      ],
+      "name": "v22b_nonpositive_delta",
+      "packet_hash": "711e20e5c29cc4c4ecce6102e05c37f41076dd0ed2c4b927d4308c588251d488",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "freeze.gauge_convention",
+      "issue_paths": [
+        "freeze.gauge_convention"
+      ],
+      "name": "v22b_missing_gauge_convention",
+      "packet_hash": "4e54abb1e60fb69390fa502ad33696bf6c4500958f347126250ff197ba85b67c",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "freeze.boundary_protocol",
+      "issue_paths": [
+        "freeze.boundary_protocol"
+      ],
+      "name": "v22b_bad_boundary_protocol",
+      "packet_hash": "c60cc7c2887012dc9346cac581709b17cdcd5ad46d20865a927b02feee76ced8",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "solver_metadata.nonlinear_residual_norm",
+      "issue_paths": [
+        "solver_metadata.nonlinear_residual_norm"
+      ],
+      "name": "v22b_nonfinite_solver_residual",
+      "packet_hash": "2406ab50a18534fe05a3b72da0a1b6225fcc5f5f277feeadcabec6700b96e1e9",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 2,
+      "expected_rejection_path": "target_values",
+      "issue_paths": [
+        "target_values",
+        "target_values.P0_target"
+      ],
+      "name": "v22b_target_leakage",
+      "packet_hash": "bf2c9571abc5e0f2f2c3535ec89111b457a397566b78498262486fdb6378546d",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "negative",
+      "error_count": 1,
+      "expected_rejection_path": "branches[0].profiles.wall.kind",
+      "issue_paths": [
+        "branches[0].profiles.wall.kind"
+      ],
+      "name": "v22a_strict_rejects_expr_profile",
+      "pass": true,
+      "validation_pass": false
+    },
+    {
+      "control_type": "positive_guard",
+      "error_count": 0,
+      "issue_paths": [],
+      "name": "v22a_permissive_keeps_trusted_local_expr_profile",
+      "pass": true,
+      "validation_pass": true
+    },
+    {
+      "D0_bar": -0.1,
+      "control_type": "negative",
+      "name": "v21_unstable_direct_D0_negative_control",
+      "open_gate_pass": true,
+      "pass": true,
+      "stability": {
+        "C_positive": true,
+        "D0_positive": false,
+        "N0_nonzero": true,
+        "all_Delta_positive": true,
+        "wall_M_positive": true
+      },
+      "stability_gate_pass": false,
+      "target_packet_pass": false
+    }
+  ],
+  "schema": "stage_v2_24_negative_controls_report/v1"
+}

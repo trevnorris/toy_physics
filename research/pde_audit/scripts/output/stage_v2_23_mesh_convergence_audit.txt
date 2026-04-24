@@ -1,0 +1,29 @@
+# Python Audit Output
+# Script: stage_v2_23_mesh_convergence_audit.py
+# Date: 2026-04-24T10:44:30-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-23: mesh-convergence audit
+========================================================
+formula_sympy_audit: 9/9 checks passed
+grids: 91, 121, 181, 241
+finest_pair: 181 -> 241
+finest_pair_max_relative_delta: 7.314e-06
+finest_pair_rel_tol: 1.000e-04
+residual_max: 4.846e-11
+residual_tol: 1.000e-08
+observed_order_min: 3.58 (lambda_U)
+observed_order_max: 3.97 (lambda_bdg)
+formula_pass: True
+finite_values: True
+all_open_stable_transfer_and_target_failing: True
+freeze_hash_stable_across_grids: True
+pairwise_max_delta_decreases: True
+finest_pair_converged: True
+residuals_below_tolerance: True
+mesh_convergence_pass: True
+
+EXIT_CODE: 0

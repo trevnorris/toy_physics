@@ -1,0 +1,421 @@
+{
+  "branches": [
+    {
+      "geometry": {
+        "R_exit": 0.35,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.35650707252584557,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517371360519039,
+              "g_U": 0.28,
+              "g_W": 0.4413897088415231,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        },
+        "21": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.35650707252584557,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517371360519039,
+              "g_U": 0.28,
+              "g_W": 0.4413897088415231,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        },
+        "22": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.35650707252584557,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517371360519039,
+              "g_U": 0.28,
+              "g_W": 0.4413897088415231,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        }
+      },
+      "name": "analytic_isotropic_DN_profile_demo",
+      "profile_adapter": {
+        "overlap_summary": {
+          "I_eta_phi::bdg_halfwave": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          },
+          "I_eta_u::one_mixed_port": {
+            "exact": "1",
+            "method": "analytic_sympy",
+            "value": 1.0
+          },
+          "I_eta_w::one_mixed_port": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          },
+          "I_u_w::one_mixed_port": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          }
+        },
+        "source_branch_hash": "e7dadfe8e1a6efe08c062ba3ab72bdff12b26baafea2571b2473a560732c2298",
+        "weak_axisymmetric": null
+      },
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    },
+    {
+      "geometry": {
+        "R_exit": 0.35,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.3565065090027917,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488250214352183,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517362639328919,
+              "g_U": 0.2799993091285802,
+              "g_W": 0.4413890111463135,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 0.999997532602072,
+              "overlap_I_eta_w": 0.8488250214352183,
+              "overlap_I_u_w": 0.8488250214352183
+            }
+          ]
+        },
+        "21": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.3565065090027917,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488250214352183,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517362639328919,
+              "g_U": 0.2799993091285802,
+              "g_W": 0.4413890111463135,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 0.999997532602072,
+              "overlap_I_eta_w": 0.8488250214352183,
+              "overlap_I_u_w": 0.8488250214352183
+            }
+          ]
+        },
+        "22": {
+          "K": 1.6,
+          "M": 0.9,
+          "bdg_modes": [
+            {
+              "coupling": 0.3565065090027917,
+              "lambda_B_eff": 0.42,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488250214352183,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0,
+              "Omega_W": 4.0,
+              "R": 0.5517362639328919,
+              "g_U": 0.2799993091285802,
+              "g_W": 0.4413890111463135,
+              "lambda_R_eff": 0.65,
+              "lambda_U_eff": 0.28,
+              "lambda_W_eff": 0.52,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 0.999997532602072,
+              "overlap_I_eta_w": 0.8488250214352183,
+              "overlap_I_u_w": 0.8488250214352183
+            }
+          ]
+        }
+      },
+      "name": "sampled_isotropic_DN_profile_demo",
+      "profile_adapter": {
+        "overlap_summary": {
+          "I_eta_phi::bdg_halfwave": {
+            "grid_points": 4001,
+            "method": "trapezoid",
+            "value": 0.8488250214352183
+          },
+          "I_eta_u::one_mixed_port": {
+            "grid_points": 4001,
+            "method": "trapezoid",
+            "value": 0.999997532602072
+          },
+          "I_eta_w::one_mixed_port": {
+            "grid_points": 4001,
+            "method": "trapezoid",
+            "value": 0.8488250214352183
+          },
+          "I_u_w::one_mixed_port": {
+            "grid_points": 4001,
+            "method": "trapezoid",
+            "value": 0.8488250214352183
+          }
+        },
+        "source_branch_hash": "dc1c7a13ae3d9a8720b63e1522a906e42582f243c3b6ffb7050295ebbf43488d",
+        "weak_axisymmetric": null
+      },
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    },
+    {
+      "geometry": {
+        "R_exit": 0.35,
+        "Y_L_limit": 0.0,
+        "boundary_class": "open_impedance"
+      },
+      "lanes": {
+        "20": {
+          "K": 1.6016,
+          "M": 0.8996400000000001,
+          "bdg_modes": [
+            {
+              "coupling": 0.3566140246476033,
+              "lambda_B_eff": 0.42012599999999994,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0003,
+              "Omega_W": 3.9994,
+              "R": 0.5518474834791143,
+              "g_U": 0.279944,
+              "g_W": 0.4416104036959438,
+              "lambda_R_eff": 0.65013,
+              "lambda_U_eff": 0.279944,
+              "lambda_W_eff": 0.52026,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        },
+        "21": {
+          "K": 1.6008,
+          "M": 0.8998200000000001,
+          "bdg_modes": [
+            {
+              "coupling": 0.3565605485867245,
+              "lambda_B_eff": 0.420063,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 3.0001500000000005,
+              "Omega_W": 3.9997,
+              "R": 0.5517923097655091,
+              "g_U": 0.27997200000000005,
+              "g_W": 0.44150005626873357,
+              "lambda_R_eff": 0.650065,
+              "lambda_U_eff": 0.27997200000000005,
+              "lambda_W_eff": 0.5201300000000001,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        },
+        "22": {
+          "K": 1.5984,
+          "M": 0.9003599999999999,
+          "bdg_modes": [
+            {
+              "coupling": 0.35640012040408786,
+              "lambda_B_eff": 0.419874,
+              "name": "bdg_halfwave",
+              "overlap_I_eta_phi": 0.8488263631567752,
+              "varpi": 2.7
+            }
+          ],
+          "mixed_ports": [
+            {
+              "Omega_U": 2.9997,
+              "Omega_W": 4.0006,
+              "R": 0.5516267886246935,
+              "g_U": 0.280056,
+              "g_W": 0.4411690139871024,
+              "lambda_R_eff": 0.6498700000000001,
+              "lambda_U_eff": 0.280056,
+              "lambda_W_eff": 0.5197400000000001,
+              "name": "one_mixed_port",
+              "overlap_I_eta_u": 1.0,
+              "overlap_I_eta_w": 0.8488263631567752,
+              "overlap_I_u_w": 0.8488263631567752
+            }
+          ]
+        }
+      },
+      "name": "weak_axisymmetric_profile_slope_demo",
+      "profile_adapter": {
+        "overlap_summary": {
+          "I_eta_phi::bdg_halfwave": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          },
+          "I_eta_u::one_mixed_port": {
+            "exact": "1",
+            "method": "analytic_sympy",
+            "value": 1.0
+          },
+          "I_eta_w::one_mixed_port": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          },
+          "I_u_w::one_mixed_port": {
+            "exact": "8/(3*pi)",
+            "method": "analytic_sympy",
+            "value": 0.8488263631567752
+          }
+        },
+        "source_branch_hash": "282a7ba830726a648fb080be835662225d78339a8ec10535f009a49a69ae1e92",
+        "weak_axisymmetric": {
+          "epsilon": 0.01,
+          "slopes": {
+            "K": 0.1,
+            "M": -0.04,
+            "Omega_U": 0.01,
+            "Omega_W": -0.015,
+            "lambda_B": 0.03,
+            "lambda_R": 0.02,
+            "lambda_U": -0.02,
+            "lambda_W": 0.05
+          }
+        }
+      },
+      "target": {
+        "constants": {
+          "G": 1.0,
+          "S_port": 1.0,
+          "a": 1.0,
+          "c": 1.0,
+          "c_s": 1.0,
+          "mhat0": 1.0,
+          "theta_tail": 1.0
+        }
+      }
+    }
+  ],
+  "description": "Generated by stage_v2_22a_profile_to_coefficient_adapter.py from profile overlap data.",
+  "schema": "stage_v2_21_branch_extraction_fixture/v1",
+  "source_profile_manifest_hash": "de2d8b07f80207cf6ba20579d13c271edcb549a29b7de5176ea157ef838aa8ff"
+}

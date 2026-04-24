@@ -1,0 +1,37 @@
+# Mathematica Audit Output
+# Script: stage_v2_21_branch_extraction_fixture_mathematica_audit.wl
+# Date: 2026-04-24T10:44:47-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-21 branch-extraction fixture Mathematica audit
+==============================================================================
+PASS: fixture schema
+PASS: fixture branch count
+PASS: fixture hash
+
+------------------------------------------------------------------------------
+Calibrated direct-coefficient branch
+------------------------------------------------------------------------------
+PASS: calibrated open boundary
+PASS: calibrated D0 positive
+PASS: calibrated one-pole
+PASS: calibrated normalization
+PASS: calibrated P2
+PASS: calibrated P4
+
+------------------------------------------------------------------------------
+Primitive open-throat demo branch
+------------------------------------------------------------------------------
+PASS: demo open boundary
+PASS: demo is not direct-coefficient target fixture
+PASS: demo has BdG modes
+PASS: demo has mixed port
+All Stage V2-21 Mathematica fixture checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,108 @@
+# Python Audit Output
+# Script: stage_v2_16_branch_freeze_no_refit_sympy_audit.py
+# Date: 2026-04-24T10:44:11-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-16 — Branch-freeze / no-refit protocol audit
+========================================================================
+PASS  protocol_dag_is_topologically_ordered
+      All allowed arrows point from frozen/earlier choices to later evaluation.
+PASS  no_target_to_branch_feedback_path
+      No residual/decision node can reach a branch-definition node.
+PASS  bad_refit_edge_is_detected
+      Adding residual_evaluation -> support_profile_family breaks the freeze order.
+PASS  one_pole_identity
+      (u4 - 4u2^2)D0^2 equals D0(B4+Z4)-3(M+B2+Z2)^2.
+PASS  constant_prefactor_P2_condition
+      P2=0 iff N2=2D2N0/D0.
+PASS  constant_prefactor_P4_condition
+      P4=0 iff the displayed N4 relation holds.
+PASS  normalization_equivalence_to_gamma_GR
+      R_norm=0 is equivalent to gamma_eff=2G/(5c^5).
+PASS  tail_transport_gate
+      With gamma_eff=gamma_GR and Theta_tail*(c/c_s)^3=1, the toy tail coefficient equals the GR tail coefficient.
+PASS  post_fit_rank_warning_jacobian_nonzero
+      The target residuals have a full-rank post-fit sub-Jacobian under generic nonzero/stable conditions.
+PASS  post_fit_rank_is_five
+      Without branch freeze, five algebraic knobs can generically tune five residuals.
+
+Protocol nodes in frozen topological order:
+  00: parent_action
+  01: gauge_convention
+  02: wall_action_and_geometry
+  03: open_boundary_protocol
+  04: projection_and_source_map
+  05: support_profile_family
+  06: branch_solve
+  07: coefficient_extraction
+  08: target_residual_evaluation
+  09: target_decision
+
+Forbidden feedback paths:
+  target_decision                -> branch_solve                  : BLOCKED
+  target_decision                -> support_profile_family        : BLOCKED
+  target_residual_evaluation     -> branch_solve                  : BLOCKED
+  target_residual_evaluation     -> wall_action_and_geometry      : BLOCKED
+  target_residual_evaluation     -> open_boundary_protocol        : BLOCKED
+
+Residual definitions:
+  R_one_pole = -B0*B4 - B0*Z4 - 3*B2**2 - 6*B2*M - 6*B2*Z2 + B4*K - B4*Z0 + K*Z4 - 3*M**2 - 6*M*Z2 - Z0*Z4 - 3*Z2**2
+  R_P2 = -(B0*N2 - 2*B2*N0 - K*N2 - 2*M*N0 - 2*N0*Z2 + N2*Z0)/(B0 - K + Z0)**2
+  R_P4 = -(B0**2*N4 - 2*B0*B2*N2 - 2*B0*B4*N0 - 2*B0*K*N4 - 2*B0*M*N2 - 2*B0*N0*Z4 - 2*B0*N2*Z2 + 2*B0*N4*Z0 + 3*B2**2*N0 + 2*B2*K*N2 + 6*B2*M*N0 + 6*B2*N0*Z2 - 2*B2*N2*Z0 + 2*B4*K*N0 - 2*B4*N0*Z0 + K**2*N4 + 2*K*M*N2 + 2*K*N0*Z4 + 2*K*N2*Z2 - 2*K*N4*Z0 + 3*M**2*N0 + 6*M*N0*Z2 - 2*M*N2*Z0 - 2*N0*Z0*Z4 + 3*N0*Z2**2 - 2*N2*Z0*Z2 + N4*Z0**2)/(B0 - K + Z0)**3
+  R_norm = -(54*B0*G*c_s**5 - 54*G*K*c_s**5 + 54*G*Z0*c_s**5 + 5*N0*Sport*a**5*c**5*mhat0**2)/(5*a**5*c**5*(B0 - K + Z0))
+  R_tail = (Theta_tail*c**3 - c_s**3)/c_s**3
+
+Incidence matrix rows=[R_one_pole,R_P2,R_P4,R_norm,R_tail]
+columns=[K,M,B0,B2,B4,Z0,Z2,Z4,N0,N2,N4,mhat0,Sport,a,c_s,Theta_tail]
+Matrix([[1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]])
+
+Post-fit warning:
+  post_fit_knobs = ['K', 'N2', 'N4', 'N0', 'Theta_tail']
+  det(d residuals / d post_fit_knobs) = -Sport*c**3*mhat0**2*(B4 + Z4)/(c_s**3*(B0 - K + Z0)**3)
+  Generic nonzero conditions: D0!=0, B4+Z4!=0, mhat0*Sport!=0, c/c_s!=0.
+  Therefore a no-refit freeze certificate is mandatory; algebra alone gives too many ways to tune.
+
+Freeze packet SHA256:
+  822012664a88cea70f06dd256b9f47f3b6a799345da804955746e53b25949c6e
+
+Freeze packet JSON:
+{
+  "forbidden_after_evaluation": [
+    "changing support-cardinality",
+    "changing boundary condition class",
+    "changing gauge convention",
+    "changing port/source normalization convention",
+    "dropping dark or unstable branches only after target miss unless this was predeclared",
+    "adding compensating modes because a target residual is nonzero"
+  ],
+  "may_evaluate_only_after_freeze": [
+    "one-pole residual",
+    "constant-prefactor residuals",
+    "universal quadrupole normalization",
+    "tail-transport scalar",
+    "weak-axisymmetric prefactor slope Xi_1"
+  ],
+  "must_freeze_before_target_evaluation": [
+    "parent action and current bookkeeping",
+    "gauge-fixing convention",
+    "wall/throat action or effective interface action",
+    "open-exit impedance boundary protocol",
+    "projection/source-map convention",
+    "support profile family and number of modes/ports",
+    "stability acceptance gates",
+    "coefficient extraction formulas"
+  ],
+  "protocol": "branch_freeze_no_refit",
+  "stage": "V2-16"
+}
+
+Summary:
+  checks_total = 10
+  checks_passed = 10
+  checks_failed = 0
+  all checks passed
+
+EXIT_CODE: 0

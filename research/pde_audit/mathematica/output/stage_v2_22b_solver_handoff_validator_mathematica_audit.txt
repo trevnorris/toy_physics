@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: stage_v2_22b_solver_handoff_validator_mathematica_audit.wl
+# Date: 2026-04-24T10:44:54-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-22B solver-handoff validator Mathematica audit
+==============================================================================
+PASS: schema fixture hash
+PASS: valid fixture hash
+PASS: invalid fixture hash
+
+------------------------------------------------------------------------------
+Schema and valid packet
+------------------------------------------------------------------------------
+PASS: schema declares required fields
+PASS: schema requires solver metadata
+PASS: valid schema
+PASS: valid pre-target freeze
+PASS: valid target blind
+PASS: valid open boundary
+PASS: valid monotone grid endpoints
+PASS: valid profile lengths match grid
+PASS: valid metadata mesh length
+PASS: valid metadata provenance strings
+PASS: valid metadata residual finite
+PASS: valid mixed block Delta positive
+
+------------------------------------------------------------------------------
+Invalid hard-cap negative control
+------------------------------------------------------------------------------
+PASS: invalid schema
+PASS: invalid hard cap is present
+PASS: invalid exit radius rejected
+All Stage V2-22B Mathematica fixture checks passed.
+
+EXIT_CODE: 0

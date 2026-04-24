@@ -1,0 +1,24 @@
+# Python Audit Output
+# Script: stage_v2_22b_solver_handoff_validator.py
+# Scenario: stage_v2_22b_solver_handoff_validator_invalid_hardcap
+# Date: 2026-04-24T10:44:33-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-22B solver handoff validator
+symbolic_checks: 9/9 passed
+branch_id: invalid_hardcap_solver_export
+packet_hash: 44a09c1df6dbea0f15b118836c3bd89d69d1a82f2bd5a960611ad5cfedd91683
+validation_pass: False
+error_count: 4
+warning_count: 0
+generated_profile_manifest_hash: <not generated due to validation failure>
+issues:
+  - error freeze.boundary_protocol: must declare open impedance AC/DC split
+  - error geometry.boundary_class: boundary_class must be open_impedance
+  - error geometry.R_exit: R_exit must be strictly positive; hard cap is forbidden
+  - error geometry.boundary_class: hard_cap geometry is forbidden by V2-04 patch
+
+EXIT_CODE: 0

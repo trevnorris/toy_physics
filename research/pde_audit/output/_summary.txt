@@ -1,0 +1,9 @@
+PASS  fixture_manifest  (0s)
+PASS  mathematica_audits  (26s)
+PASS  python_audits  (45s)
+PASS  root_json_clean  (0s)
+
+PYTHON: 28/28 passed, 0 failed
+MATHEMATICA: 10/10 passed, 0 failed
+ROOT_JSON_FILES: 0
+REFEREE_PASS: True

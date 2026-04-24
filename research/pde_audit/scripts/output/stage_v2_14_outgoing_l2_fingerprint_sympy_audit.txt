@@ -1,0 +1,64 @@
+# Python Audit Output
+# Script: stage_v2_14_outgoing_l2_fingerprint_sympy_audit.py
+# Date: 2026-04-24T10:44:09-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+STAGE V2-14: OUTGOING l=2 FINGERPRINT AUDIT
+========================================================================
+
+Frequency convention: exp(-i omega t)
+Dimensionless frequency z = k a = a*omega/c_s
+
+Exact spherical Hankel h_2^(1)(z):
+  h2 = I*(z**2 + 3*I*z - 3)*exp(I*z)/z**3
+
+Static-normalized outgoing amplitude h2 / (-3 i/z^3):
+   (-z**2/3 - I*z + 1)*exp(I*z)
+  series = 1 + z**2/6 + z**4/24 + I*z**5/45 - z**6/144 - I*z**7/630 + O(z**8)
+
+Raw normalized outgoing DtN:
+  Dhat_raw = - z/3 * h2'(z)/h2(z)
+  Dhat_raw = -I*(z**3 + 4*I*z**2 - 9*z - 9*I)/(3*(z**2 + 3*I*z - 3))
+  series = 1 - z**2/9 - z**4/27 - I*z**5/27 + 2*z**6/81 + I*z**7/81 + O(z**8)
+
+Normalized outgoing compliance / inverse DtN:
+  Yhat = -3*h2/(z*h2')
+  Yhat = 3*I*(z**2 + 3*I*z - 3)/(z**3 + 4*I*z**2 - 9*z - 9*I)
+  series = 1 + z**2/9 + 4*z**4/81 + I*z**5/27 - 11*z**6/729 - I*z**7/243 + O(z**8)
+
+Target through O(z^5):
+  1 + z^2/9 + 4*z^4/81 + i*z^5/27 + O(z^6)
+
+Substituting z=a*omega/c_s gives the leading odd coefficient:
+  Im coefficient Gamma5 = a**5/(27*c_s**5)
+
+Dimensional/channel discriminator:
+  leading absorptive power in d spatial dimensions = 2*l + d - 2
+  for d=3, l=2: 5
+  for d=4, l=2: 6
+
+CHECKS
+------------------------------------------------------------------------
+PASS | Yhat equals inverse normalized raw DtN
+PASS | Yhat equals direct compliance formula
+PASS | static-normalized outgoing amplitude tends to 1
+PASS | raw normalized DtN tends to 1
+PASS | normalized compliance tends to 1
+PASS | Yhat matches target through O(z^5)
+PASS | z^1 coefficient vanishes
+PASS | z^2 coefficient is 1/9
+PASS | z^3 coefficient vanishes
+PASS | z^4 coefficient is 4/81
+PASS | z^5 coefficient is i/27
+PASS | Gamma5 equals a^5/(27 c_s^5)
+PASS | 3D spatial l=2 absorptive power is 5
+PASS | 4D spatial l=2 absorptive power is 6
+------------------------------------------------------------------------
+checks_total: 14
+checks_passed: 14
+checks_failed: 0
+
+EXIT_CODE: 0

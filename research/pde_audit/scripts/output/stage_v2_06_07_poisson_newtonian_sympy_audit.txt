@@ -1,0 +1,83 @@
+# Python Audit Output
+# Script: stage_v2_06_07_poisson_newtonian_sympy_audit.py
+# Date: 2026-04-24T10:43:52-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+V2-06/V2-07: projected continuity, Poisson hook, Newtonian universality
+========================================================================================
+
+========================================================================================
+1. Exact projected continuity and leakage split
+========================================================================================
+local leakage integration-by-parts identity: PASS
+Finite-window leakage form:
+  S_leak = -[W j^w]_{w1}^{w2} + Integral(W'(w) j^w(w), (w,w1,w2))
+Infinite-window fast-decay limit:
+  S_leak = Integral(W'(w) j^w(w), (w,-oo,oo))
+
+========================================================================================
+2. Exact longitudinal identity after Helmholtz split
+========================================================================================
+div(rho*(grad phi + vT)) expansion: PASS
+longitudinal identity modulo continuity and div(vT)=0: PASS
+Longitudinal identity when div(v_T)=0 and continuity holds:
+  rho_br * Laplacian(phi_br) = S_leak - d_t rho_br - grad(rho_br)·(grad(phi_br)+v_T)
+
+========================================================================================
+3. Controlled Poisson hook and inverse-square Green function
+========================================================================================
+radial Laplacian(-S0/(4*pi*rho0*R)) for R>0: PASS
+sphere flux normalization: PASS
+Distributional reading:
+  Laplacian[-S0/(4*pi*rho0*r)] = (S0/rho0) delta^3(x)
+Controlled reduction conditions used:
+  rho_br ≈ rho0, d_t rho_br subleading, grad rho_br subleading, transverse/advection subleading
+
+========================================================================================
+4. Newtonian source normalization and pair-counting
+========================================================================================
+source-normalization solution: PASS
+Required source amplitude per unit mass: eta = 4*pi*G*rho0/lambda_phi
+Effective symmetric pair coefficient G_AB = lambda_phi*(eta_A + eta_B)/(8*pi*rho0)
+eta_A universality: PASS
+eta_B universality: PASS
+pair coefficient becomes universal G: PASS
+Newtonian two-body block after the universality gate:
+  L0 = G*m_A*m_B/r_AB + m_A*v_A2/2 + m_B*v_B2/2
+
+========================================================================================
+5. Response-mass universality gate
+========================================================================================
+Acceleration difference for identical location/field: -gradPhi*(kappa_A - kappa_B)
+Equivalence-principle gate: kappa_A = kappa_B = kappa_rho. Newtonian matching chooses kappa_rho = 1 after normalization.
+response universality if kappa_A=kappa_B: PASS
+
+========================================================================================
+6. Same-G ledger for PN and quadrupole sectors
+========================================================================================
+P0 target mismatch if sectors use different Gs: -54*c_s**5*(G_N - G_Q)/(5*a**5*c**5)
+quadrupole target uses the Newtonian G when G_Q=G_N: PASS
+
+========================================================================================
+Final audit status
+========================================================================================
+symbolic_checks: 11
+symbolic_passes: 11
+
+Gate verdicts:
+  EXACT_PROJECTED_CONTINUITY: PASS
+  EXACT_LONGITUDINAL_IDENTITY: PASS
+  CONTROLLED_POISSON_HOOK: PASS under stated quasi-static / weak-correction assumptions
+  INVERSE_SQUARE_GREEN_FUNCTION: PASS
+  NEWTONIAN_SOURCE_LAW: CONDITIONAL PASS
+    Required: S_eff for each compact defect is proportional to inertial mass with one universal coefficient.
+    Required: scalar response mass equals inertial mass up to one universal normalization kappa_rho, fixed to 1 in the Newtonian ledger.
+  STRICT_PARENT_DERIVATION_OF_UNIVERSAL_SOURCE_STRENGTH: NOT PROVEN BY THIS IDENTITY
+  SAME_G_LEDGER: PASS as a bookkeeping gate; not independently derived by the Poisson identity.
+
+EXIT_CODE: 0

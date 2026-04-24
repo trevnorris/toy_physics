@@ -1,0 +1,72 @@
+{
+  "bdg_modes_each_required": [
+    "name",
+    "lambda_B",
+    "varpi",
+    "profile_values"
+  ],
+  "forbidden": {
+    "any target residual": "must not be used to edit this solver output after validation",
+    "freeze.pre_target_freeze": false,
+    "geometry.R_exit": "0 or negative",
+    "geometry.boundary_class": "hard_cap"
+  },
+  "freeze_required": {
+    "boundary_protocol": "open_impedance_AC_reflecting_DC_leaking",
+    "gauge_convention": "localized/constrained Lorenz or other declared convention",
+    "parent_action": "description of GNLS + localized Maxwell + S_eta or effective wall closure",
+    "pre_target_freeze": true,
+    "target_blind": true
+  },
+  "geometry_required": {
+    "L": "positive throat length",
+    "R_exit": "strictly positive open exit radius",
+    "R_mouth": "positive mouth radius",
+    "Y_L_limit": "finite load-admittance parameter; zero gives AC Neumann limit",
+    "boundary_class": "must be open_impedance",
+    "exit_model": "description of impedance mismatch / organ-pipe opening"
+  },
+  "grid_required": {
+    "coordinate": "s",
+    "points": "strictly increasing list from 0 to L"
+  },
+  "mixed_ports_each_required": [
+    "name",
+    "lambda_U",
+    "Omega_U",
+    "u_values",
+    "lambda_W",
+    "Omega_W",
+    "w_values",
+    "lambda_R"
+  ],
+  "optional": {
+    "normalization_tolerances": "norm and overlap tolerances used by the validator",
+    "weak_axisymmetric": "epsilon and primitive slopes with grouped signature (20,21,22)=(1,1/2,-1)"
+  },
+  "profiles_required": {
+    "wall_chi_eta": "wall/support profile values on grid",
+    "weight": "mu_s values on grid"
+  },
+  "required_top_level_keys": [
+    "schema",
+    "branch_id",
+    "freeze",
+    "geometry",
+    "constants",
+    "grid",
+    "wall",
+    "profiles",
+    "bdg_modes",
+    "mixed_ports",
+    "solver_metadata"
+  ],
+  "solver_metadata_required": {
+    "coefficient_family": "declared reduced-coefficient family",
+    "exporter": "solver/exporter name",
+    "mesh_points": "integer number of axial grid points exported",
+    "nonlinear_residual_norm": "finite nonnegative frozen solver residual norm",
+    "source_commit": "solver source revision, fixture-only tag, or equivalent provenance id"
+  },
+  "schema": "stage_v2_22b_solver_handoff_schema/v1"
+}

@@ -1,0 +1,67 @@
+# Python Audit Output
+# Script: stage_v2_03_dimension_ledger_sympy_audit.py
+# Date: 2026-04-24T10:43:51-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage V2-03 Dimension Ledger ===
+[PASS] P0_target and Lambda0 have same units: M^-1 L^-2 T^-2 == M^-1 L^-2 T^-2
+[PASS] Gamma_GR equals P0_target * a^5 / c_s^5: M^-1 L^-2 T^3 == M^-1 L^-2 T^3
+[PASS] Kbar0_target same as P0_target: M^-1 L^-2 T^-2 == M^-1 L^-2 T^-2
+[PASS] A_out * omega^2: 1
+[PASS] B_out * omega^4: 1
+[PASS] G5_out * omega^5: 1
+[PASS] u2 = -D2/D0: T^2 == T^2
+[PASS] u4 = (D2^2-D0D4)/D0^2: T^4 == T^4
+[PASS] D0*D4 term in u4: T^4 == T^4
+[PASS] one-pole identity u4 ~ u2^2: T^4 == T^4
+[PASS] P0 = N0/D0: M^-1 L^-2 T^-2 == M^-1 L^-2 T^-2
+[PASS] P2 formula term D0*N2/D0^2: M^-1 L^-2 == M^-1 L^-2
+[PASS] P2 formula term D2*N0/D0^2: M^-1 L^-2 == M^-1 L^-2
+[PASS] P4 formula term D0^2*N4/D0^3: M^-1 L^-2 T^2 == M^-1 L^-2 T^2
+[PASS] P4 formula term D0*D2*N2/D0^3: M^-1 L^-2 T^2 == M^-1 L^-2 T^2
+[PASS] P4 formula term D0*D4*N0/D0^3: M^-1 L^-2 T^2 == M^-1 L^-2 T^2
+[PASS] P4 formula term D2^2*N0/D0^3: M^-1 L^-2 T^2 == M^-1 L^-2 T^2
+[PASS] constant-prefactor N2 condition: M^-1 L^-2 O == M^-1 L^-2 O
+[PASS] constant-prefactor N4 first term: M^-1 L^-2 T^2 O == M^-1 L^-2 T^2 O
+[PASS] constant-prefactor N4 second term: M^-1 L^-2 T^2 O == M^-1 L^-2 T^2 O
+[PASS] constant-prefactor N4 third term: M^-1 L^-2 T^2 O == M^-1 L^-2 T^2 O
+[PASS] isotropic one-pole surface dimensions: T^4 O^2 == T^4 O^2
+[PASS] mu0_5d/Z_int gives mu0_eff_4d: M L Q^-2 == M L Q^-2
+[PASS] q_star/sqrt(Z_int) gives q_eff: Q == Q
+[PASS] support frequency c_s/a: T^-1 == T^-1
+[PASS] hbar*omega_support is energy: M L^2 T^-2 == M L^2 T^-2
+[PASS] raw canonical mixed N0 has D_mech*T^2: M == M
+[PASS] raw canonical mixed P0 has T^2: T^2 == T^2
+[PASS] bridge scale maps raw P0 to gravitational P0: M^-1 L^-2 T^-2 == M^-1 L^-2 T^-2
+
+=== SymPy identity checks ===
+[PASS] SymPy response u2 coefficient
+[PASS] SymPy response u4 coefficient
+[PASS] SymPy prefactor P0 coefficient
+[PASS] SymPy prefactor P2 coefficient
+[PASS] SymPy prefactor P4 coefficient
+[PASS] SymPy mixed transfer N0 coefficient
+[PASS] SymPy mixed transfer N2 coefficient
+[PASS] SymPy mixed transfer N4 coefficient
+
+=== Summary ===
+{
+  "stage": "V2-03 dimension ledger and normalization audit",
+  "sympy_version": "1.14.0",
+  "dimension_checks": 29,
+  "dimension_passes": 29,
+  "sympy_identity_checks": 8,
+  "sympy_identity_passes": 8,
+  "P0_target_dim": "M^-1 L^-2 T^-2",
+  "Gamma_GR_dim": "M^-1 L^-2 T^3",
+  "D0_dim": "O",
+  "N0_normalized_dim": "M^-1 L^-2 T^-2 O",
+  "raw_mixed_P0_dim": "T^2",
+  "required_raw_to_grav_bridge_scale_dim": "M^-1 L^-2 T^-4",
+  "verdict": "PASS for published target identities and response-moment algebra; WARN that the raw canonical Maxwell/mixed transfer factor is a mechanical T^2 object and must be multiplied by an explicit port/source normalization scale to become the gravitational P0 used in the 2.5PN/4PN target."
+}
+
+EXIT_CODE: 0

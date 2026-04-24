@@ -1,0 +1,67 @@
+# Python Audit Output
+# Script: stage_v2_23_minimal_open_throat_branch_solver.py
+# Date: 2026-04-24T10:44:31-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-23: minimal open-throat branch solver
+================================================================
+formula_sympy_audit: 9/9 checks passed
+branch_freeze_hash: 0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae
+observable_packet_hash: f3a10303f8ed9582cea474ce200c1d353b1318194312aa868c4eb16ace85f762
+
+Geometry / open-throat gate
+  boundary_class: open_impedance
+  R_mouth: 1
+  R_exit: 0.452938042901
+  R_min: 0.452938042901
+  shape_stationary_residual_relative: 5.634e-14
+  open_gate_pass: True
+
+Mode eigenvalues
+  lambda_wall_l2 K: 2.23931807791
+  lambda_bdg varpi^2: 3.16919632622
+  lambda_U Omega_U^2: 3.78509395487
+  lambda_W Omega_W^2: 4.05724378719
+
+Overlap integrals
+  I_eta_phi: 0.999946613757
+  I_eta_u: 0.999180452256
+  I_eta_w: 0.994783990782
+  I_uw: 0.998096444041
+
+Reduced coefficients
+  B0,B2,B4: 0.113581339204, 0.0358391615767, 0.0113085962142
+  Z0,Z2,Z4: 0.231247651583, 0.0624311105071, 0.0168919128153
+  N0,N2,N4: 0.0374826876894, 0.0195499205428, 0.0076719447807
+  D0,D2,D4: 1.89448908712, -1.09827027208, -0.0282005090295
+
+Response / prefactor
+  u2: 0.579718447337
+  u4: 0.350959026599
+  P0: 0.0197851167073
+  P2: 0.0332589572512
+  P4: 0.0365510452458
+
+Target residuals
+  P0_target: 10.8
+  R_pole: -3.56516721502
+  R_norm: -10.7802148833
+  R_P2: 0.0332589572512
+  R_P4: 0.0365510452458
+  R_tail: 0
+  gamma_eff: 0.000732782100271
+  gamma_GR: 0.4
+
+Gate verdict
+  stability_gate_pass: True
+  outgoing_transfer_gate_pass: True
+  target_packet_pass: False
+  dominant_residual: R_pole_rel
+  P0/P0_target: 0.00183195525068
+  D0C/(3A^2): 0.0147641804368
+
+
+EXIT_CODE: 0

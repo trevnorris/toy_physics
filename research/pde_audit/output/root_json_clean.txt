@@ -1,0 +1,11 @@
+# PDE Audit Top-Level Output
+# Script: root_json_clean
+# Date: 2026-04-24T10:44:33-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+PASS: no root-level JSON files in /var/projects/toy_physics/research/pde_audit
+
+EXIT_CODE: 0

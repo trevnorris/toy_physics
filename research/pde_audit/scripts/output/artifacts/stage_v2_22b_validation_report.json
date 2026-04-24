@@ -1,0 +1,85 @@
+{
+  "branch_id": "sample_open_DN_solver_export",
+  "diagnostics": {
+    "bdg_profiles": [
+      {
+        "name": "bdg_halfwave",
+        "profile_norm": 1.0
+      }
+    ],
+    "mixed_ports": [
+      {
+        "Delta_eff": 143.6955867195068,
+        "I_u_w": 0.8488255450333204,
+        "R_eff": 0.5517366042716583,
+        "name": "one_mixed_port"
+      }
+    ],
+    "solver_metadata": {
+      "coefficient_family": "sampled_finite_throat_DN_validation_fixture_v1",
+      "exporter": "stage_v2_22b_builtin_sample",
+      "mesh_points": 801,
+      "source_commit": "fixture-only"
+    },
+    "wall_norm": 1.0000000000000002
+  },
+  "error_count": 0,
+  "generated_profile_manifest_hash": "32b603c66a36836dceada2d1da1f81a149d43e5b4962da8987f70652af6c03ad",
+  "issues": [],
+  "packet_hash": "d2d7e721c19005ebd255e32bc090b3e2bc0d9d03ff5248c95a9fcf66595e02dc",
+  "schema": "stage_v2_22b_validation_report/v1",
+  "symbolic_audit": {
+    "checks_failed": 0,
+    "checks_passed": 9,
+    "checks_total": 9,
+    "details": [
+      {
+        "name": "mouth_Dirichlet_q0",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "bottom_Neumann_halfwave",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "open_impedance_robin_to_neumann",
+        "note": "T*q_wL",
+        "pass": true
+      },
+      {
+        "name": "chi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "phi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "DN_overlap",
+        "note": "8/(3*pi)",
+        "pass": true
+      },
+      {
+        "name": "axisym_trace_unchanged",
+        "note": "x0",
+        "pass": true
+      },
+      {
+        "name": "axisym_b_equals_3a",
+        "note": "a=eps*x1/4, b=3*eps*x1/4",
+        "pass": true
+      },
+      {
+        "name": "N0_perfect_square_over_Delta2",
+        "note": "(OU**2*gW + R*gU)**2/(OU**2*OW**2 - R**2)**2",
+        "pass": true
+      }
+    ]
+  },
+  "validation_pass": true,
+  "warning_count": 0
+}

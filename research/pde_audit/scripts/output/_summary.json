@@ -1,0 +1,545 @@
+{
+  "artifacts": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_21_branch_extraction_packet.json",
+      "sha256": "da8b2decbc25452f886bec31e97480b5dad91cb26d63604e2126c47e6aade7bf"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22a_generated_v21_manifest.json",
+      "sha256": "82626a552ea1b9e2ec969f6d41a35c01e88e9e11beccaa5700d76687d2ae7020"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22a_observable_packet.json",
+      "sha256": "1ab2d507b159569aeb2f58c1ede0800c251abd4e327f12462a33b5c091c7d103"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22b_generated_profile_manifest.json",
+      "sha256": "e6736c8afdfe1453e7858affbd6e8b09941b7268cbee825b87e3e9ff5899daa9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22b_invalid_hardcap_validation_report.json",
+      "sha256": "752ce39629f963ff94a92831f899ff9df9edcc0b015f89048e5981f9f8377be0"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22b_validation_report.json",
+      "sha256": "f3c858173347d9ea9dbf5b9988ba027c9f8bbb0b0a412328afd6f08087ad23c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_generated_profile_manifest.json",
+      "sha256": "e6736c8afdfe1453e7858affbd6e8b09941b7268cbee825b87e3e9ff5899daa9"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_generated_v21_manifest.json",
+      "sha256": "0fc17b70418e1032fd0fb79c88afeeaed47931ff095bc6d13819a7a0e961cc5c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_invalid_hardcap_solver_packet.json",
+      "sha256": "ad201aed93c9d1146e14b27b2e079ab2890276e5990ec00e95cafc0b6c9af388"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_observable_packet.json",
+      "sha256": "403ac98924594f5da31f0cfaeceab1363e765e2f9270a54887081dddddca0ae1"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_pipeline_report.json",
+      "sha256": "28eeebacb0abcc5147ad96959122fdb0e403505730e6c72983da24d434bd7dcd"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_tolerance_budget.json",
+      "sha256": "6ff1ada408176553884758d85444cfb8919737d5bc8a2154ce7081d7766eef8b"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_22c_valid_solver_packet.json",
+      "sha256": "80f61c507179f044732af2f3e72f93843a5de9a7c3aeb2ea36336606482c34e0"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_23_generated_v21_manifest.json",
+      "sha256": "6d05a1abf336bdfd634810e1322926322a30c3bb1579b7fa11d559e0d6c207c5"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_23_mesh_convergence_report.json",
+      "sha256": "5e4094057e45f3d8e26438d4a6b49c539a45ec114560b49513b43584bf8dc3c1"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_23_observable_packet.json",
+      "sha256": "5f092e0b56e0550589b4f93effcdc89bb822155254c70c1fbe32bec1f00e928f"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_23_reduced_solver_branch_manifest.json",
+      "sha256": "0d7c79257b3425704b1123eb7385978deb39ab286beda63813e5bd71b921fab0"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_23_tolerance_report.json",
+      "sha256": "549801c83c93d4bc22935af61d42ccd587b5737fcd4e20a8140a67b5dd4f404e"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/scripts/output/artifacts/stage_v2_24_negative_controls_report.json",
+      "sha256": "85c2099c0123a49cd754ed7f557cbbbbcadd99d98b9b72c9f74393d029720507"
+    }
+  ],
+  "environment": {
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "sympy": "1.14.0"
+    },
+    "platform": "Linux-6.17.9-76061709-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "suite": "python"
+  },
+  "failed": 0,
+  "fixture_manifest": {
+    "description": "File-backed fixtures and controls used by the PDE V2 audit runners. These are scripted fixtures, not claimed physical branch-discovery outputs.",
+    "fixtures": [
+      {
+        "control_type": "mixed",
+        "filename": "stage_v2_21_sample_branch_manifest.json",
+        "role": "positive and target-failing branch extraction controls",
+        "schema": "stage_v2_21_branch_extraction_fixture/v1",
+        "sha256": "5aff3aac38f31841c1d089c5383c2da809667cba2ac36ad39948fc95cc9ee7c2",
+        "stage": "V2-21"
+      },
+      {
+        "control_type": "positive",
+        "filename": "stage_v2_22a_profile_input_manifest.json",
+        "role": "profile-to-coefficient adapter controls",
+        "schema": "stage_v2_22a_profile_adapter/v1",
+        "sha256": "ecbd9f008bde0621cad62361ce98708041c4c98ebfd8b4ecdd8b04b579d0aacd",
+        "stage": "V2-22A"
+      },
+      {
+        "control_type": "schema",
+        "filename": "stage_v2_22b_solver_output_schema.json",
+        "role": "solver-output schema contract",
+        "schema": "stage_v2_22b_solver_handoff_schema/v1",
+        "sha256": "d3714c84920027a1432b6b510c434fca801020e99cda04fcc0e8b6c2dd3849ca",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "positive",
+        "filename": "stage_v2_22b_sample_solver_output_valid.json",
+        "role": "valid open-throat solver-output fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "c15682194fafb3d129027780b67ca4ba62c16bd03bfb7e54283044799a353fad",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "stage_v2_22b_sample_solver_output_invalid_hardcap.json",
+        "role": "hard-cap rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "2c194f20f56f1cbfddcf3190079dc81025f966a5f99c20d82d32ffa3bacba121",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_nonmonotone_grid.json",
+        "role": "non-monotone grid rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "266fab8b172bd05704513e0d08598914b946febfb12a68a1d0dd6da44dbb9e8b",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_profile_length_mismatch.json",
+        "role": "profile/grid length mismatch rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "d6f5c95b1c3b623ef0e1cdac5527fa8177883a17f66c77ca2d9e36a3619e0d70",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_pre_target_freeze_false.json",
+        "role": "missing pre-target freeze rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "eb756d9f7b20f7b1527e3adc179e9f4fb420e1446f63683f5b4aea903510e713",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_target_blind_false.json",
+        "role": "target-blind protocol rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "29bdc961394e87c630357880b3f42711d6b44d21b9cddd6c8ff318b893a93400",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_nonpositive_delta.json",
+        "role": "nonpositive mixed-block Delta rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "925f7701fb324f983574f77acd8d123077961c5548c08d3cc63f3b5645c4f601",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_missing_gauge_convention.json",
+        "role": "missing gauge-convention rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "e7479147edd15d7f813c4bc4b6616efec023928c10aaf1dfb7843f71f2e9e229",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_bad_boundary_protocol.json",
+        "role": "bad boundary-protocol rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "1b0269a1189bce1cfecc85aec9bd70eb3cadc5a026e44104a29c19f2531224fa",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_nonfinite_solver_residual.json",
+        "role": "non-finite solver residual metadata rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "3af2bce072429438b4a130c6e9ed53189781b381d484701f26f16d8f025fb2a4",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "negative",
+        "filename": "negative_controls/stage_v2_22b_negative_target_leakage.json",
+        "role": "target-output leakage rejection fixture",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "6c50bc15c692d1144ec1a0bc4bce5a37db564025079b76afc9ff13d44b1de0b3",
+        "stage": "V2-22B"
+      },
+      {
+        "control_type": "positive",
+        "filename": "stage_v2_22c_valid_solver_packet.json",
+        "role": "valid open-throat solver packet for end-to-end smoke pipeline",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "c15682194fafb3d129027780b67ca4ba62c16bd03bfb7e54283044799a353fad",
+        "stage": "V2-22C"
+      },
+      {
+        "control_type": "negative",
+        "filename": "stage_v2_22c_invalid_hardcap_solver_packet.json",
+        "role": "hard-cap rejection packet for end-to-end smoke pipeline",
+        "schema": "stage_v2_22b_solver_handoff/v1",
+        "sha256": "2c194f20f56f1cbfddcf3190079dc81025f966a5f99c20d82d32ffa3bacba121",
+        "stage": "V2-22C"
+      }
+    ],
+    "manifest_path": "/var/projects/toy_physics/research/pde_audit/scripts/fixtures/MANIFEST.json",
+    "manifest_sha256": "4aba3ff6883755f83efaa625055ea1ec7c7e0a30aafda4b003dd421bdffdb933",
+    "schema": "pde_audit_fixture_manifest/v1",
+    "snapshot_date": "2026-04-24"
+  },
+  "git_head": "411aa17",
+  "output_dir": "/var/projects/toy_physics/research/pde_audit/scripts/output",
+  "outputs": [
+    {
+      "date": "2026-04-24T10:43:49-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_01_parent_wall_action_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_01_parent_wall_action_sympy_audit.txt",
+      "output_sha256": "ae5a263bdca44adab5197a25ccdcf70943be307be500019702640967244a588f",
+      "script": "stage_v2_01_parent_wall_action_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:50-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_02_maxwell_gauge_localization_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_02_maxwell_gauge_localization_sympy_audit.txt",
+      "output_sha256": "7cb155d86bef9f6f4573bc1d6e02e533a853103665e8f4c008cb0dd8c6a4b3f2",
+      "script": "stage_v2_02_maxwell_gauge_localization_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:51-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_03_dimension_ledger_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_03_dimension_ledger_sympy_audit.txt",
+      "output_sha256": "5ed14f96e47beb9a031a8d1da7a68228f756c00a75f9706f86b7e6ffcabe5d97",
+      "script": "stage_v2_03_dimension_ledger_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:51-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_04_open_junction_impedance_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_04_open_junction_impedance_sympy_audit.txt",
+      "output_sha256": "2195b07f00f67419795bbee7da26b5bb182f0894c0997996308cb6a258afa054",
+      "script": "stage_v2_04_open_junction_impedance_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:52-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_06_07_poisson_newtonian_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_06_07_poisson_newtonian_sympy_audit.txt",
+      "output_sha256": "abf0334b8ed997e1183d385fd5517f5a5e5b30b2a6a786565c761bb51eade31d",
+      "script": "stage_v2_06_07_poisson_newtonian_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:53-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_08_bdg_wall_schur_stability_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_08_bdg_wall_schur_stability_sympy_audit.txt",
+      "output_sha256": "ba4eb2c9b68ef13ed38395342c69846e1175fdb664fd7f08f449dd9cc60c7818",
+      "script": "stage_v2_08_bdg_wall_schur_stability_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:57-06:00",
+      "elapsed": "4s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_09_maxwell_mixed_kernel_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_09_maxwell_mixed_kernel_sympy_audit.txt",
+      "output_sha256": "0d4524033fd2bc85b0149b1daf924f0065698f520910848dc889689bbb6ed360",
+      "script": "stage_v2_09_maxwell_mixed_kernel_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:43:59-06:00",
+      "elapsed": "2s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_10_hamiltonian_stability_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_10_hamiltonian_stability_sympy_audit.txt",
+      "output_sha256": "3599c5f41ded25e9a4e96e72ec2d73cb5763dd7c3b885d57276d0f43c9915cf9",
+      "script": "stage_v2_10_hamiltonian_stability_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:00-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_11_grouped_p2_projectors_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_11_grouped_p2_projectors_sympy_audit.txt",
+      "output_sha256": "d0aa9b91c9e9938c7a46e3a0b0c00bc03e220f9df97887f8a8956c284c4c5cdb",
+      "script": "stage_v2_11_grouped_p2_projectors_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:07-06:00",
+      "elapsed": "7s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_12_stf_angular_source_map_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_12_stf_angular_source_map_sympy_audit.txt",
+      "output_sha256": "fd042c6e118f96f077dbea14ebe3228eea3ec31707bae27f87b68abb6a6a71c2",
+      "script": "stage_v2_12_stf_angular_source_map_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:07-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_13_grouped_normalization_ratio_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_13_grouped_normalization_ratio_sympy_audit.txt",
+      "output_sha256": "47a38366531737f2f57f5db6a2a305232fc900c0996541e666dd864c03b3be4e",
+      "script": "stage_v2_13_grouped_normalization_ratio_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:09-06:00",
+      "elapsed": "2s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_14_outgoing_l2_fingerprint_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_14_outgoing_l2_fingerprint_sympy_audit.txt",
+      "output_sha256": "2616dc664dc9a6a67e9deffe588bdc254e05a2fdbcbdaddecda71108965f9786",
+      "script": "stage_v2_14_outgoing_l2_fingerprint_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:09-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_15_25pn_4pn_interface_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_15_25pn_4pn_interface_sympy_audit.txt",
+      "output_sha256": "f0f7c02c34a97496a1ecd5f6ec954e5005db6fc2a9417d4bee0599e041685f63",
+      "script": "stage_v2_15_25pn_4pn_interface_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:11-06:00",
+      "elapsed": "2s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_16_branch_freeze_no_refit_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_16_branch_freeze_no_refit_sympy_audit.txt",
+      "output_sha256": "935dc05991d99b9e7d3685aa9150decdd80423c6e8ab811abcc0b7513f652d06",
+      "script": "stage_v2_16_branch_freeze_no_refit_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:13-06:00",
+      "elapsed": "2s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_17_weak_axisymmetric_splitting_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_17_weak_axisymmetric_splitting_sympy_audit.txt",
+      "output_sha256": "c71e571038bab0133244f41f60f84066968debb57050b89b8c2fe3d6cc28770b",
+      "script": "stage_v2_17_weak_axisymmetric_splitting_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:14-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_18_monomial_quotient_similarity_orbit_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_18_monomial_quotient_similarity_orbit_sympy_audit.txt",
+      "output_sha256": "738da369b497a09001da984ad4605b9259f593dc7c91b3a53c371793c70863b3",
+      "script": "stage_v2_18_monomial_quotient_similarity_orbit_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:19-06:00",
+      "elapsed": "5s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_19_isotropic_full_bundle_target_surface_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_19_isotropic_full_bundle_target_surface_sympy_audit.txt",
+      "output_sha256": "1a7b71f543c1ff831b67b8d3c44c1ef08ce59795d14824cdcfe4425e6d438998",
+      "script": "stage_v2_19_isotropic_full_bundle_target_surface_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:22-06:00",
+      "elapsed": "3s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_20_weak_form_branch_extraction_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_20_weak_form_branch_extraction_sympy_audit.txt",
+      "output_sha256": "e222efba364a0ff4126ee0d3660cf2b32fb7d5b93eceebe9fc04fe08ac3a8fdc",
+      "script": "stage_v2_20_weak_form_branch_extraction_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:22-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_21_branch_extraction_fixture",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_21_branch_extraction_fixture.txt",
+      "output_sha256": "ab9ebdbaedc1c2e304506e0627707d5c9b39a27bbde9f44fa71e9d014959c028",
+      "script": "stage_v2_21_branch_extraction_fixture.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:24-06:00",
+      "elapsed": "2s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_22a_profile_to_coefficient_adapter",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_22a_profile_to_coefficient_adapter.txt",
+      "output_sha256": "8254f292526bcd583ce014ee51502e01819ba7bfc3c91fec8315f4e5784a9c9e",
+      "script": "stage_v2_22a_profile_to_coefficient_adapter.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:25-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_22b_solver_handoff_validator",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_22b_solver_handoff_validator.txt",
+      "output_sha256": "b142eeefb89f499c95e2f635b993d01d645eaf208fe36cdc2506f259add09815",
+      "script": "stage_v2_22b_solver_handoff_validator.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:33-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_22b_solver_handoff_validator_invalid_hardcap",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_22b_solver_handoff_validator_invalid_hardcap.txt",
+      "output_sha256": "badb997c6b297d9771fea479278f06cd22298af0bf831b4a25083fdf8aa2bac6",
+      "scenario": "stage_v2_22b_solver_handoff_validator_invalid_hardcap",
+      "script": "stage_v2_22b_solver_handoff_validator.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:25-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_22c_end_to_end_smoke_pipeline",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_22c_end_to_end_smoke_pipeline.txt",
+      "output_sha256": "f4dab3c4889944c9b57d2b2b14fcd09e3c2a14f4c94ff694056193e54c35f4c4",
+      "script": "stage_v2_22c_end_to_end_smoke_pipeline.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:26-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_22c_formula_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_22c_formula_sympy_audit.txt",
+      "output_sha256": "641ab70fd67647bdd05dd28cf4a07c53ad0ad79c6bf12b83464c30d85db6d046",
+      "script": "stage_v2_22c_formula_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:26-06:00",
+      "elapsed": "0s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_23_formula_sympy_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_23_formula_sympy_audit.txt",
+      "output_sha256": "2ca89b4add35bfc215906159f715cb4956eb8528dd7c04bf2c56c8e1e405d9de",
+      "script": "stage_v2_23_formula_sympy_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:30-06:00",
+      "elapsed": "4s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_23_mesh_convergence_audit",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_23_mesh_convergence_audit.txt",
+      "output_sha256": "64fa05aeb6326523c0f566118e2146e6c4d5bf57af81ef5032c91aba8ae54f9b",
+      "script": "stage_v2_23_mesh_convergence_audit.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:31-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_23_minimal_open_throat_branch_solver",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_23_minimal_open_throat_branch_solver.txt",
+      "output_sha256": "f4cee3ddcc069634dd2a24dfb7c172053af7cfe50f2b567f2d41810aa8bee360",
+      "script": "stage_v2_23_minimal_open_throat_branch_solver.py",
+      "status": "PASS"
+    },
+    {
+      "date": "2026-04-24T10:44:32-06:00",
+      "elapsed": "1s",
+      "exit_code": 0,
+      "exit_code_trailer": 0,
+      "name": "stage_v2_24_negative_controls",
+      "output_file": "/var/projects/toy_physics/research/pde_audit/scripts/output/stage_v2_24_negative_controls.txt",
+      "output_sha256": "4eb91f4052ddea99cdb4d09bce8c00d5f52eaaabf9ecbc2bd00e9fb7d44e1736",
+      "script": "stage_v2_24_negative_controls.py",
+      "status": "PASS"
+    }
+  ],
+  "passed": 28,
+  "schema": "pde_audit_summary/v1",
+  "suite": "python",
+  "total": 28
+}

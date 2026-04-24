@@ -1,0 +1,30 @@
+# Mathematica Audit Output
+# Script: stage_v2_17_weak_axisymmetric_splitting_mathematica_audit.wl
+# Date: 2026-04-24T10:44:42-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-17 weak-axisymmetric splitting Mathematica audit
+==============================================================================
+
+------------------------------------------------------------------------------
+Grouped P2 axisymmetric line
+------------------------------------------------------------------------------
+PASS: trace unchanged
+PASS: axisymmetric b equals 3a
+
+------------------------------------------------------------------------------
+Hidden-even response condition
+------------------------------------------------------------------------------
+PASS: hidden-even residual formula
+PASS: hidden-even condition
+u2_slope = -1/9*((D01 + 9*D21)*lam)/D0
+u4_slope = (-5*D01*lam - 18*D21*lam - 81*D41*lam)/(81*D0)
+All Stage V2-17 Mathematica checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,108 @@
+{
+  "schema": "stage_v2_23_observable_packet/v1",
+  "source_branch_id": "v2_23_minimal_open_throat_frozen_demo",
+  "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+  "coefficients": {
+    "overlaps": {
+      "I_eta_phi": 0.9999466137566677,
+      "I_eta_u": 0.9991804522556261,
+      "I_eta_w": 0.9947839907818694,
+      "I_uw": 0.9980964440411206
+    },
+    "reduced_couplings": {
+      "c_B": 0.5999679682540006,
+      "g_U": 0.5495492487405944,
+      "g_W": 0.7460879930864021,
+      "R_mix": 0.24952411101028016
+    },
+    "wall": {
+      "K": 2.2393180779077304,
+      "M": 1.0
+    },
+    "bdg": {
+      "varpi2": 3.169196326216523,
+      "B0": 0.11358133920360997,
+      "B2": 0.03583916157671639,
+      "B4": 0.01130859621420242
+    },
+    "mixed": {
+      "Omega_U2": 3.785093954865555,
+      "Omega_W2": 4.0572437871931095,
+      "Delta": 15.294786650344998,
+      "S": 7.842337742058664,
+      "Q": 3.536883494350418,
+      "H": 0.8586516702190469,
+      "Pproto": 2.9611389401774786,
+      "Z0": 0.23124765158268082,
+      "Z2": 0.062431110507102386,
+      "Z4": 0.01689191281527132,
+      "N0": 0.03748268768941463,
+      "N2": 0.019549920542830536,
+      "N4": 0.007671944780695816
+    },
+    "operator": {
+      "D0": 1.8944890871214395,
+      "D2": -1.0982702720838189,
+      "D4": -0.02820050902947374
+    },
+    "response": {
+      "u2": 0.5797184473374685,
+      "u4": 0.3509590265991244
+    },
+    "prefactor": {
+      "P0": 0.019785116707305653,
+      "P2": 0.03325895725124173,
+      "P4": 0.03655104524580064
+    },
+    "targets": {
+      "P0_target": 10.8,
+      "gamma_eff": 0.0007327821002705798,
+      "gamma_GR": 0.4,
+      "R_pole": -3.5651672150215887,
+      "R_norm": -10.780214883292695,
+      "R_P2": 0.03325895725124173,
+      "R_P4": 0.03655104524580064,
+      "R_tail": 0.0
+    }
+  },
+  "gates": {
+    "tolerances": {
+      "geometry_exit_min": 1e-08,
+      "stability_abs_min": 1e-10,
+      "target_rel_tol": 1e-06,
+      "formula_abs_tol": 1e-08
+    },
+    "open_gate_pass": true,
+    "stability_gate_pass": true,
+    "outgoing_transfer_gate_pass": true,
+    "target_packet_pass": false,
+    "relative_residuals": {
+      "R_pole_rel": 3.5651672150215887,
+      "R_norm_rel": 0.9981680447493235,
+      "R_P2_abs": 0.03325895725124173,
+      "R_P4_abs": 0.03655104524580064,
+      "R_tail_abs": 0.0
+    },
+    "failure_diagnosis": {
+      "dominant_residual": "R_pole_rel",
+      "normalization_ratio_P0_over_target": 0.0018319552506764493,
+      "one_pole_ratio_D0C_over_3A2": 0.014764180436792802
+    }
+  },
+  "formula_audit": {
+    "checks": {
+      "response_u2": true,
+      "response_u4": true,
+      "prefactor_P0": true,
+      "prefactor_P2": true,
+      "prefactor_P4": true,
+      "one_pole_residual_identity": true,
+      "constant_prefactor_P2": true,
+      "constant_prefactor_P4": true,
+      "normalization_equivalence": true
+    },
+    "passed": 9,
+    "total": 9
+  },
+  "packet_hash": "f3a10303f8ed9582cea474ce200c1d353b1318194312aa868c4eb16ace85f762"
+}

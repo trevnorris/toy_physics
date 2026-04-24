@@ -1,0 +1,133 @@
+# Python Audit Output
+# Script: stage_v2_20_weak_form_branch_extraction_sympy_audit.py
+# Date: 2026-04-24T10:44:22-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-20 weak-form / branch-extraction audit
+========================================================================
+PASS  weak_form_integration_by_parts_identity: T q_w phi_w - d_w(T q_w phi) = -d_w(T q_w) phi
+PASS  open_exit_robin_boundary_sign: free exit condition is T q_w(L)+Y_load q(L)=0 with the chosen weak-form sign
+PASS  DN_mouth_Dirichlet
+PASS  DN_open_exit_Neumann_limit
+PASS  Galerkin_mass_matrix_symmetric
+PASS  Galerkin_stiffness_matrix_symmetric
+PASS  Galerkin_basis_mouth_Dirichlet
+PASS  Galerkin_mass_det_positive_form: det(M)=L**2*mu**2/240
+PASS  Galerkin_stiffness_numeric_positive_trace: Matrix([[55/6, 89/12], [89/12, 623/90]])
+PASS  Galerkin_stiffness_numeric_positive_det: det=3649/432
+PASS  BdG_low_frequency_moments
+PASS  BdG_Hankel_moment_positivity_identity
+PASS  Maxwell_mixed_conservative_Z_moments
+PASS  Maxwell_mixed_outgoing_N_moments
+PASS  mixed_internal_stability_symbol: strict gate is Delta0>0
+PASS  outgoing_transfer_nonnegative_symbolic_square
+PASS  one_pole_surface_identity
+PASS  constant_prefactor_P2_zero
+PASS  constant_prefactor_P4_zero
+PASS  quadrupole_gamma_target_equivalence
+PASS  tail_gate_scalar_form
+PASS  grouped_projector_completeness
+PASS  grouped_projector_idempotence
+PASS  weak_axisymmetric_trace_unchanged
+PASS  weak_axisymmetric_b_equals_3a
+PASS  manifest_required_extraction_slots_present
+PASS  manifest_open_exit_no_hard_cap
+PASS  manifest_freeze_rule_present
+========================================================================
+checks_total: 28
+checks_passed: 28
+checks_failed: 0
+
+Toy Galerkin mass matrix M:
+Matrix([
+[L*mu/3, L*mu/4],
+[L*mu/4, L*mu/5]])
+
+Toy Galerkin stiffness matrix K:
+Matrix([
+[L*V/3 + Yload + T/L,       L*V/4 + Yload + T/L],
+[L*V/4 + Yload + T/L, L*V/5 + Yload + 4*T/(3*L)]])
+
+Main extracted isotropic formulas:
+D0 = -B0 + K - Z0
+D2 = -B2 - M - Z2
+D4 = -B4 - Z4
+u2 = (B2 + M + Z2)/(-B0 + K - Z0)
+u4 = (-(-B4 - Z4)*(-B0 + K - Z0) + (-B2 - M - Z2)**2)/(-B0 + K - Z0)**2
+P0 = N0/(-B0 + K - Z0)
+P2 = (-N0*(-2*B2 - 2*M - 2*Z2) + N2*(-B0 + K - Z0))/(-B0 + K - Z0)**2
+P4 = (3*N0*(-B2 - M - Z2)**2 + N4*(-B0 + K - Z0)**2 - (N0*(-B4 - Z4) + N2*(-B2 - M - Z2))*(-2*B0 + 2*K - 2*Z0))/(-B0 + K - Z0)**3
+
+Target residual packet:
+R_pole = D0*(B4+Z4)-3*(M+B2+Z2)^2
+R_norm = mhat0^2*S_port*N0/D0 - 54*G*c_s^5/(5*a^5*c^5)
+R_P2 = P2
+R_P4 = P4
+R_tail = Theta_tail*(c/c_s)^3 - 1
+
+Extraction manifest hash:
+067c626bb61456fad945f5b3f7fa4d10c19e38f9083bd835896e1d052261e390
+
+Extraction manifest:
+{
+  "extraction_slots": [
+    "K",
+    "M",
+    "B0",
+    "B2",
+    "B4",
+    "Z0",
+    "Z2",
+    "Z4",
+    "N0",
+    "N2",
+    "N4",
+    "D0",
+    "D2",
+    "D4",
+    "u2",
+    "u4",
+    "P0",
+    "P2",
+    "P4",
+    "mhat0",
+    "S_port",
+    "Theta_tail"
+  ],
+  "freeze_rule": "all primitive profiles, basis choices, port list, gauge convention, and boundary class are fixed before target residual evaluation",
+  "geometry": {
+    "R_L_positive_required": true,
+    "dc_flow_policy": "baseline_current_may_exit; support_AC_modes_are_extracted_separately",
+    "exit_bc": "impedance_Robin_with_Neumann_AC_support_limit",
+    "forbidden_condition": "R(L)=0_hard_cap",
+    "mouth_bc": "Dirichlet_or_prescribed_worldtube_drive",
+    "throat_exit": "open_finite_radius"
+  },
+  "stability_gates": [
+    "mu_eta>0",
+    "T_w>0",
+    "internal_BdG_positive_energy",
+    "Delta_r>0 for every mixed port",
+    "D0>0",
+    "no_dark_port_if_N0_needed",
+    "Ceff=B4+Z4>0 on one-pole stable branch"
+  ],
+  "target_residuals": [
+    "R_pole=D0*(B4+Z4)-3*(M+B2+Z2)^2",
+    "R_norm=mhat0^2*S_port*N0/D0-54*G*c_s^5/(5*a^5*c^5)",
+    "R_P2=P2",
+    "R_P4=P4",
+    "R_tail=Theta_tail*(c/c_s)^3-1"
+  ],
+  "weak_form": {
+    "boundary_load_symbol": "Y_load(omega)",
+    "densitized_measure": "dw; background surface weight absorbed into coefficients",
+    "test_space": "mouth-compatible; free/Robin at open exit",
+    "wall_operator": "mu q_tt - d_w(T q_w) + (K_eta+l(l+1)T_Omega)q"
+  }
+}
+
+EXIT_CODE: 0

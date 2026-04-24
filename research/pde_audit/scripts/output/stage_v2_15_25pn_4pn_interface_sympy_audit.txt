@@ -1,0 +1,52 @@
+# Python Audit Output
+# Script: stage_v2_15_25pn_4pn_interface_sympy_audit.py
+# Date: 2026-04-24T10:44:09-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-15: 2.5PN / 4PN interface audit
+==============================================================
+
+Definitions
+gamma_GR = 2*G/(5*c**5)
+P_eff_target = 54*G*c_s**5/(5*a**5*c**5)
+Gamma5_port = a**5/(27*c_s**5)
+gamma_eff = P_eff*a**5/(27*c_s**5)
+2.5PN target converts P_eff into gamma_GR: PASS
+GR tail coefficient equals (GM/2c^3)*gamma_GR: PASS
+toy/GR tail ratio factorizes into tail transport times quadrupole ratio: PASS
+on c_s=c, Theta_tail=1, and 2.5PN target, toy tail equals GR tail: PASS
+required Theta_tail condition after 2.5PN target: PASS
+leading i*omega^5 coefficient ignores P2 and P4: PASS
+tail interface ignores P2: PASS
+tail interface ignores P4: PASS
+fractional 4PN residual = delta_Q + delta_tail + delta_Q*delta_tail: PASS
+
+Dimension ledger, exponent order (M,L,T)
+gamma_GR_dim: M^-1 L^-2 T^3
+C_tail_GR_dim: M^-1 L^-2 T^4
+P_eff_target_dim: M^-1 L^-2 T^-2
+gamma_eff_from_target_dim: M^-1 L^-2 T^3
+bridge_dim_(GM/2c^3)*gamma: M^-1 L^-2 T^4
+dimension gamma_eff == gamma_GR: PASS
+dimension bridge == C_tail: PASS
+dimension GM/c^3 is time: PASS
+
+Key symbolic consequences
+C_tail_GR = G**2*M/(5*c**8)
+C_tail_toy = G*M*P_eff*Theta_tail*a**5/(54*c_s**8)
+C_tail_toy / C_tail_GR = 5*P_eff*Theta_tail*a**5*c**8/(54*G*c_s**8)
+target_ratio after P_eff target = Theta_tail*c**3/c_s**3
+Theta_tail required after P_eff target = c_s**3/c**3
+omega^5 odd coefficient of Pref*Yout = P0*a**5/(27*c_s**5)
+
+Summary
+symbolic_checks_total: 9
+symbolic_checks_passed: 9
+dimension_checks_total: 3
+dimension_checks_passed: 3
+FINAL_STATUS: PASS with one explicit tail-transport gate Theta_tail*(c/c_s)^3 = 1
+
+EXIT_CODE: 0

@@ -1,0 +1,262 @@
+{
+  "checks": {
+    "all_open_stable_transfer_and_target_failing": true,
+    "finest_pair_converged": true,
+    "finite_values": true,
+    "formula_pass": true,
+    "freeze_hash_stable_across_grids": true,
+    "pairwise_max_delta_decreases": true,
+    "residuals_below_tolerance": true
+  },
+  "formula": {
+    "checks": {
+      "constant_prefactor_P2": true,
+      "constant_prefactor_P4": true,
+      "normalization_equivalence": true,
+      "one_pole_residual_identity": true,
+      "prefactor_P0": true,
+      "prefactor_P2": true,
+      "prefactor_P4": true,
+      "response_u2": true,
+      "response_u4": true
+    },
+    "passed": 9,
+    "total": 9
+  },
+  "grids": [
+    91,
+    121,
+    181,
+    241
+  ],
+  "keys": [
+    "lambda_wall_l2",
+    "lambda_bdg",
+    "lambda_U",
+    "lambda_W",
+    "I_eta_phi",
+    "I_eta_u",
+    "I_eta_w",
+    "I_uw",
+    "P0",
+    "P2",
+    "P4",
+    "R_pole",
+    "R_norm"
+  ],
+  "observed_orders_from_last_two_pairs": {
+    "I_eta_phi": 3.6703375247300913,
+    "I_eta_u": 3.658092114142804,
+    "I_eta_w": 3.6545944061827504,
+    "I_uw": 3.6511889618534443,
+    "P0": 3.630649721213491,
+    "P2": 3.6303274446616176,
+    "P4": 3.629962424410221,
+    "R_norm": 3.6306362077989967,
+    "R_pole": 3.6035095425627683,
+    "lambda_U": 3.5768614598920037,
+    "lambda_W": 3.6367175580808637,
+    "lambda_bdg": 3.967954818578059,
+    "lambda_wall_l2": 3.630925550483312
+  },
+  "pairwise_deltas": [
+    {
+      "from_grid": 91,
+      "max_relative_delta": 2.8883527635097358e-05,
+      "relative_deltas": {
+        "I_eta_phi": 2.2078382024771366e-08,
+        "I_eta_u": 1.7439867435689832e-07,
+        "I_eta_w": 9.008724588702413e-07,
+        "I_uw": 2.771141759994138e-07,
+        "P0": 1.5272450025556973e-05,
+        "P2": 2.2002908492477963e-05,
+        "P4": 2.8883527635097358e-05,
+        "R_norm": 2.8029485080792575e-08,
+        "R_pole": 6.547175555312872e-07,
+        "lambda_U": 1.2010253203786809e-06,
+        "lambda_W": 4.7706139268722055e-06,
+        "lambda_bdg": 3.807068865732964e-07,
+        "lambda_wall_l2": 5.984971714888816e-06
+      },
+      "to_grid": 121
+    },
+    {
+      "from_grid": 121,
+      "max_relative_delta": 2.078058280008747e-05,
+      "relative_deltas": {
+        "I_eta_phi": 1.5653362925584458e-08,
+        "I_eta_u": 1.2418362800509614e-07,
+        "I_eta_w": 6.422722259205352e-07,
+        "I_uw": 1.9780493530607082e-07,
+        "P0": 1.0985353514688789e-05,
+        "P2": 1.5828221117260046e-05,
+        "P4": 2.078058280008747e-05,
+        "R_norm": 2.0161610845071987e-08,
+        "R_pole": 4.7580936245572595e-07,
+        "lambda_U": 8.818561378042564e-07,
+        "lambda_W": 3.4239049645796536e-06,
+        "lambda_bdg": 2.4444418136121954e-07,
+        "lambda_wall_l2": 4.304166323644825e-06
+      },
+      "to_grid": 181
+    },
+    {
+      "from_grid": 181,
+      "max_relative_delta": 7.31366062786341e-06,
+      "relative_deltas": {
+        "I_eta_phi": 5.44553208541865e-09,
+        "I_eta_u": 4.335377670219356e-08,
+        "I_eta_w": 2.2444954745535596e-07,
+        "I_uw": 6.919300421882836e-08,
+        "P0": 3.865496176937909e-06,
+        "P2": 5.570107594132958e-06,
+        "P4": 7.31366062786341e-06,
+        "R_norm": 7.094440112010688e-09,
+        "R_pole": 1.6873883787912814e-07,
+        "lambda_U": 3.151441067576146e-07,
+        "lambda_W": 1.2026930590670071e-06,
+        "lambda_bdg": 7.805998114101982e-08,
+        "lambda_wall_l2": 1.5144181091341753e-06
+      },
+      "to_grid": 241
+    }
+  ],
+  "pass": true,
+  "report_hash": "f460a868332a9be3f1ff1b25bd49c46fcf58d78a96dcdd44f311bf97ac6e2d42",
+  "residual_max": 4.8460925245254196e-11,
+  "runs": [
+    {
+      "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+      "gates": {
+        "open_gate_pass": true,
+        "outgoing_transfer_gate_pass": true,
+        "stability_gate_pass": true,
+        "target_packet_pass": false
+      },
+      "grid_points": 91,
+      "mode_residuals": {
+        "U": 3.0711627535926518e-12,
+        "W": 2.253884647681198e-12,
+        "bdg": 4.199163392047917e-12,
+        "shape_stationarity": 1.8679685044007068e-14,
+        "wall_l2": 7.143028847758902e-12
+      },
+      "values": {
+        "I_eta_phi": 0.9999466514863994,
+        "I_eta_u": 0.9991807505932935,
+        "I_eta_w": 0.9947855258792906,
+        "I_uw": 0.9980969180563672,
+        "P0": 0.019784597196917546,
+        "P2": 0.033257699038902265,
+        "P4": 0.036549229992591574,
+        "R_norm": -10.780215402803083,
+        "R_pole": -3.5651631845051956,
+        "lambda_U": 3.7851018387799833,
+        "lambda_W": 4.057277034560145,
+        "lambda_bdg": 3.16919434499035,
+        "lambda_wall_l2": 2.2393411187399304
+      }
+    },
+    {
+      "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+      "gates": {
+        "open_gate_pass": true,
+        "outgoing_transfer_gate_pass": true,
+        "stability_gate_pass": true,
+        "target_packet_pass": false
+      },
+      "grid_points": 121,
+      "mode_residuals": {
+        "U": 6.089311714105671e-12,
+        "W": 4.646198484382152e-12,
+        "bdg": 7.103840759387188e-12,
+        "shape_stationarity": 2.926149672710756e-14,
+        "wall_l2": 1.1128025151330462e-11
+      },
+      "values": {
+        "I_eta_phi": 0.9999466294091952,
+        "I_eta_u": 0.9991805763374951,
+        "I_eta_w": 0.9947846297044078,
+        "I_uw": 0.9980966414695622,
+        "P0": 0.019784899360804294,
+        "P2": 0.033258430821112225,
+        "P4": 0.03655028569377848,
+        "R_norm": -10.780215100639197,
+        "R_pole": -3.565165518681649,
+        "lambda_U": 3.7850972927768347,
+        "lambda_W": 4.057257678857819,
+        "lambda_bdg": 3.1691955515249215,
+        "lambda_wall_l2": 2.2393277163466747
+      }
+    },
+    {
+      "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+      "gates": {
+        "open_gate_pass": true,
+        "outgoing_transfer_gate_pass": true,
+        "stability_gate_pass": true,
+        "target_packet_pass": false
+      },
+      "grid_points": 181,
+      "mode_residuals": {
+        "U": 1.903469962436463e-11,
+        "W": 1.4509687913891787e-11,
+        "bdg": 1.7047331638835638e-11,
+        "shape_stationarity": 5.6336261378917447e-14,
+        "wall_l2": 2.4378864038230424e-11
+      },
+      "values": {
+        "I_eta_phi": 0.9999466137566677,
+        "I_eta_u": 0.9991804522556261,
+        "I_eta_w": 0.9947839907818694,
+        "I_uw": 0.9980964440411206,
+        "P0": 0.019785116707305653,
+        "P2": 0.03325895725124173,
+        "P4": 0.03655104524580064,
+        "R_norm": -10.780214883292695,
+        "R_pole": -3.5651672150215887,
+        "lambda_U": 3.785093954865555,
+        "lambda_W": 4.0572437871931095,
+        "lambda_bdg": 3.169196326216523,
+        "lambda_wall_l2": 2.2393180779077304
+      }
+    },
+    {
+      "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+      "gates": {
+        "open_gate_pass": true,
+        "outgoing_transfer_gate_pass": true,
+        "stability_gate_pass": true,
+        "target_packet_pass": false
+      },
+      "grid_points": 241,
+      "mode_residuals": {
+        "U": 2.746639513222614e-11,
+        "W": 2.1748779809630062e-11,
+        "bdg": 3.328359629172213e-11,
+        "shape_stationarity": 9.44972477173459e-14,
+        "wall_l2": 4.8460925245254196e-11
+      },
+      "values": {
+        "I_eta_phi": 0.9999466083114263,
+        "I_eta_u": 0.9991804089373799,
+        "I_eta_w": 0.9947837675030529,
+        "I_uw": 0.9980963749798292,
+        "P0": 0.019785193186894277,
+        "P2": 0.03325914250824399,
+        "P4": 0.03655131256969628,
+        "R_norm": -10.780214806813106,
+        "R_pole": -3.565167816603863,
+        "lambda_U": 3.7850927620155015,
+        "lambda_W": 4.057238907574168,
+        "lambda_bdg": 3.169196573603948,
+        "lambda_wall_l2": 2.239314686643881
+      }
+    }
+  ],
+  "schema": "stage_v2_23_mesh_convergence_report/v1",
+  "tolerances": {
+    "finest_pair_rel_tol": 0.0001,
+    "residual_tol": 1e-08
+  }
+}

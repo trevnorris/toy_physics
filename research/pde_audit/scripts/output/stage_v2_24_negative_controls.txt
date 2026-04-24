@@ -1,0 +1,46 @@
+# Python Audit Output
+# Script: stage_v2_24_negative_controls.py
+# Date: 2026-04-24T10:44:32-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-24: negative controls
+================================================
+PASS  v22b_nonmonotone_grid
+  expected_rejection_path: grid.points
+  issue_paths: grid.points, grid.points[-1], profiles.wall_chi_eta, bdg_modes[0].profile_values
+PASS  v22b_profile_length_mismatch
+  expected_rejection_path: profiles.wall_chi_eta
+  issue_paths: profiles.wall_chi_eta
+PASS  v22b_pre_target_freeze_false
+  expected_rejection_path: freeze.pre_target_freeze
+  issue_paths: freeze.pre_target_freeze
+PASS  v22b_target_blind_false
+  expected_rejection_path: freeze.target_blind
+  issue_paths: freeze.target_blind
+PASS  v22b_nonpositive_delta
+  expected_rejection_path: mixed_ports[0].Delta_eff
+  issue_paths: mixed_ports[0].Delta_eff
+PASS  v22b_missing_gauge_convention
+  expected_rejection_path: freeze.gauge_convention
+  issue_paths: freeze.gauge_convention
+PASS  v22b_bad_boundary_protocol
+  expected_rejection_path: freeze.boundary_protocol
+  issue_paths: freeze.boundary_protocol
+PASS  v22b_nonfinite_solver_residual
+  expected_rejection_path: solver_metadata.nonlinear_residual_norm
+  issue_paths: solver_metadata.nonlinear_residual_norm
+PASS  v22b_target_leakage
+  expected_rejection_path: target_values
+  issue_paths: target_values, target_values.P0_target
+PASS  v22a_strict_rejects_expr_profile
+  expected_rejection_path: branches[0].profiles.wall.kind
+  issue_paths: branches[0].profiles.wall.kind
+PASS  v22a_permissive_keeps_trusted_local_expr_profile
+PASS  v21_unstable_direct_D0_negative_control
+
+negative_control_checks: 12/12 passed
+
+EXIT_CODE: 0

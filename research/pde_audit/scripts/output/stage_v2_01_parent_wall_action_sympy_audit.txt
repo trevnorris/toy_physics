@@ -1,0 +1,31 @@
+# Python Audit Output
+# Script: stage_v2_01_parent_wall_action_sympy_audit.py
+# Date: 2026-04-24T10:43:49-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+PASS: V_conf-only Euler derivative is the algebraic source
+PASS: V_conf-only source contains no eta derivatives
+PASS: S_eta Euler-Lagrange equation gives modal wall PDE
+PASS: l=0 modal specialization
+PASS: l=2 modal specialization
+PASS: canonical wall momentum
+PASS: w-boundary variation momentum
+PASS: free-end natural condition is T_w*q_w=0; fixed mouth data means delta q=0
+PASS: source-free quadratic wall Hamiltonian density
+PASS: positivity gate is mu_eta>0, T_w>0, K_eta+ell(ell+1)T_Omega>=0
+PASS: axisymmetric M_aa integrand
+PASS: axisymmetric M_aL integrand
+PASS: axisymmetric K_aa integrand
+PASS: axisymmetric K_aL integrand
+PASS: P2 one-mode M2 integrand
+PASS: P2 one-mode K2 integrand
+
+FINAL VERDICT
+STRICT_PARENT_DYNAMIC_WALL: FAIL unless S_eta/S_Sigma is included in S_total.
+EFFECTIVE_LINEAR_WALL_CLOSURE: PASS; S_eta^(2) supplies a consistent linear wall PDE.
+PATCH_REQUIRED: promote S_eta to parent status or relabel the moving wall as an effective closure.
+
+EXIT_CODE: 0

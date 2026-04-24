@@ -1,0 +1,77 @@
+# Python Audit Output
+# Script: stage_v2_22a_profile_to_coefficient_adapter.py
+# Date: 2026-04-24T10:44:24-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+STAGE V2-22A PROFILE-TO-COEFFICIENT ADAPTER
+symbolic_checks: 10/10 passed
+profile_manifest_hash: de2d8b07f80207cf6ba20579d13c271edcb549a29b7de5176ea157ef838aa8ff
+generated_v21_manifest_hash: 2fc14130fbb4391d322ecdb5c18e07d1932e0ec28945dbe1630c83c38a4aef0a
+---
+profile_branch: analytic_isotropic_DN_profile_demo
+I_eta_phi::bdg_halfwave: 0.8488263631567752  exact=8/(3*pi)
+I_eta_u::one_mixed_port: 1  exact=1
+I_eta_w::one_mixed_port: 0.8488263631567752  exact=8/(3*pi)
+I_u_w::one_mixed_port: 0.8488263631567752  exact=8/(3*pi)
+---
+profile_branch: sampled_isotropic_DN_profile_demo
+I_eta_phi::bdg_halfwave: 0.8488250214352183  method=trapezoid
+I_eta_u::one_mixed_port: 0.999997532602072  method=trapezoid
+I_eta_w::one_mixed_port: 0.8488250214352183  method=trapezoid
+I_u_w::one_mixed_port: 0.8488250214352183  method=trapezoid
+---
+profile_branch: weak_axisymmetric_profile_slope_demo
+I_eta_phi::bdg_halfwave: 0.8488263631567752  exact=8/(3*pi)
+I_eta_u::one_mixed_port: 1  exact=1
+I_eta_w::one_mixed_port: 0.8488263631567752  exact=8/(3*pi)
+I_u_w::one_mixed_port: 0.8488263631567752  exact=8/(3*pi)
+---
+branch: analytic_isotropic_DN_profile_demo
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: False
+D0_bar: 1.560684541862752
+N0_bar: 0.0008248610026844818
+P0_bar: 0.0005285251314785051
+P0_target: 10.8
+R_pole: -2.45246734045587
+R_norm: -10.79947147486852
+R_P2: 0.0006833304812588467
+R_P4: 0.0006221211785235433
+P0_anisotropy_norm_sq: 0
+P0_axisymmetric_b_minus_3a: 0
+---
+branch: sampled_isotropic_DN_profile_demo
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: False
+D0_bar: 1.560684684122441
+N0_bar: 0.0008248582315860404
+P0_bar: 0.0005285233077364701
+P0_target: 10.8
+R_pole: -2.452467257795561
+R_norm: -10.79947147669226
+R_P2: 0.0006833280451681528
+R_P4: 0.0006221188896432426
+P0_anisotropy_norm_sq: 0
+P0_axisymmetric_b_minus_3a: 0
+---
+branch: weak_axisymmetric_profile_slope_demo
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: False
+D0_bar: 1.560684534529879
+N0_bar: 0.0008248615922017705
+P0_bar: 0.0005285253102844222
+P0_target: 10.8
+R_pole: -2.452467345395367
+R_norm: -10.79947147468972
+R_P2: 0.0006833310120961025
+R_P4: 0.0006221226646805934
+P0_anisotropy_norm_sq: 5.666182926653727e-14
+P0_axisymmetric_b_minus_3a: -1.532472626228142e-10
+
+EXIT_CODE: 0

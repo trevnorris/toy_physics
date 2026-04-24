@@ -1,0 +1,47 @@
+# Python Audit Output
+# Script: stage_v2_21_branch_extraction_fixture.py
+# Date: 2026-04-24T10:44:22-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+STAGE V2-21 BRANCH EXTRACTION FIXTURE
+symbolic_checks: 13/13 passed
+manifest_hash: 95ba98672c6678be4d4635cd5b00b691deadeb8e06fc91a8bd8b269a86f174f2
+---
+branch: calibrated_direct_coefficient_fixture
+input_hash: 7893c4d175c9dceac06b024231b38e213f7dfccf43c6af655c34f59c06d697a7
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: True
+D0_bar: 1
+N0_bar: 10.8
+P0_bar: 10.8
+P0_target: 10.8
+R_pole: 0
+R_norm: 0
+R_P2: 0
+R_P4: 1.4210854715202e-14
+R_tail: 0
+D0_anisotropy_norm_sq: 0
+P0_anisotropy_norm_sq: 0
+---
+branch: primitive_open_throat_demo_branch
+input_hash: b4a11e5174addaaed6a926d697716aa208957ee9f613e003b569cc49e11db9e8
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: False
+D0_bar: 1.546870256628791
+N0_bar: 0.001146719334105218
+P0_bar: 0.0007413157821033734
+P0_target: 10.8
+R_pole: -2.459877868885326
+R_norm: -10.7992586842179
+R_P2: 0.0009676829082644174
+R_P4: 0.0008900366908790024
+R_tail: 0
+D0_anisotropy_norm_sq: 0
+P0_anisotropy_norm_sq: 0
+
+EXIT_CODE: 0

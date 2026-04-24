@@ -1,0 +1,339 @@
+{
+  "branch_count": 1,
+  "branches": [
+    {
+      "grouped": {
+        "B0": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.017434437278594856
+        },
+        "B2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.002391555182248951
+        },
+        "B4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.00032805969578174907
+        },
+        "D0": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 1.5606846009112185
+        },
+        "D2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": -0.9042969689252157
+        },
+        "D4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": -0.000507288455355644
+        },
+        "K": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 1.6
+        },
+        "M": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.9
+        },
+        "N0": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0008248594058984478
+        },
+        "N2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.00011057574826560452
+        },
+        "N4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 1.146297831091587e-05
+        },
+        "P0": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0005285240883499759
+        },
+        "P2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0006833291043178326
+        },
+        "P4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0006221198975181069
+        },
+        "R_pole": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": -2.4524673067415046
+        },
+        "Z0": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.021880961810186804
+        },
+        "Z2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0019054137429666822
+        },
+        "Z4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.0001792287595738949
+        },
+        "u2": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.5794232661725724
+        },
+        "u4": {
+          "a": 0.0,
+          "anisotropy_norm_sq": 0.0,
+          "axisymmetric_b_minus_3a": 0.0,
+          "b": 0.0,
+          "bar": 0.33605636364563374
+        }
+      },
+      "input_hash": "b4d4065d381cc302c1451222d1b53b0a6d5aed44f87dc97fea9888635b111b89",
+      "lane_packets": {
+        "20": {
+          "A_MplusB2plusZ2": 0.9042969689252157,
+          "B0": 0.017434437278594856,
+          "B2": 0.002391555182248951,
+          "B4": 0.00032805969578174907,
+          "C_B4plusZ4": 0.000507288455355644,
+          "D0": 1.5606846009112185,
+          "D2": -0.9042969689252157,
+          "D4": -0.000507288455355644,
+          "K": 1.6,
+          "M": 0.9,
+          "N0": 0.0008248594058984478,
+          "N2": 0.00011057574826560454,
+          "N4": 1.1462978310915871e-05,
+          "P0": 0.0005285240883499759,
+          "P2": 0.0006833291043178326,
+          "P4": 0.0006221198975181068,
+          "R_pole": -2.452467306741504,
+          "Z0": 0.021880961810186807,
+          "Z2": 0.001905413742966682,
+          "Z4": 0.0001792287595738949,
+          "constant_prefactor_N2_residual": 0.0010664612104632968,
+          "constant_prefactor_N4_residual": -0.0002649319316490224,
+          "port_diagnostics": [
+            {
+              "Delta": 143.6955867195068,
+              "H": 0.2732244995156613,
+              "N0": 0.0008248594058984478,
+              "N2": 0.00011057574826560454,
+              "N4": 1.1462978310915871e-05,
+              "P": 4.126989799952006,
+              "Q": 3.1441976453019147,
+              "S": 25.0,
+              "Z0": 0.021880961810186807,
+              "Z2": 0.001905413742966682,
+              "Z4": 0.0001792287595738949,
+              "port_index": 0.0
+            }
+          ],
+          "stability": {
+            "C_positive": true,
+            "D0_positive": true,
+            "N0_nonzero": true,
+            "all_Delta_positive": true,
+            "wall_M_positive": true
+          },
+          "u2": 0.5794232661725723,
+          "u4": 0.33605636364563374
+        },
+        "21": {
+          "A_MplusB2plusZ2": 0.9042969689252157,
+          "B0": 0.017434437278594856,
+          "B2": 0.002391555182248951,
+          "B4": 0.00032805969578174907,
+          "C_B4plusZ4": 0.000507288455355644,
+          "D0": 1.5606846009112185,
+          "D2": -0.9042969689252157,
+          "D4": -0.000507288455355644,
+          "K": 1.6,
+          "M": 0.9,
+          "N0": 0.0008248594058984478,
+          "N2": 0.00011057574826560454,
+          "N4": 1.1462978310915871e-05,
+          "P0": 0.0005285240883499759,
+          "P2": 0.0006833291043178326,
+          "P4": 0.0006221198975181068,
+          "R_pole": -2.452467306741504,
+          "Z0": 0.021880961810186807,
+          "Z2": 0.001905413742966682,
+          "Z4": 0.0001792287595738949,
+          "constant_prefactor_N2_residual": 0.0010664612104632968,
+          "constant_prefactor_N4_residual": -0.0002649319316490224,
+          "port_diagnostics": [
+            {
+              "Delta": 143.6955867195068,
+              "H": 0.2732244995156613,
+              "N0": 0.0008248594058984478,
+              "N2": 0.00011057574826560454,
+              "N4": 1.1462978310915871e-05,
+              "P": 4.126989799952006,
+              "Q": 3.1441976453019147,
+              "S": 25.0,
+              "Z0": 0.021880961810186807,
+              "Z2": 0.001905413742966682,
+              "Z4": 0.0001792287595738949,
+              "port_index": 0.0
+            }
+          ],
+          "stability": {
+            "C_positive": true,
+            "D0_positive": true,
+            "N0_nonzero": true,
+            "all_Delta_positive": true,
+            "wall_M_positive": true
+          },
+          "u2": 0.5794232661725723,
+          "u4": 0.33605636364563374
+        },
+        "22": {
+          "A_MplusB2plusZ2": 0.9042969689252157,
+          "B0": 0.017434437278594856,
+          "B2": 0.002391555182248951,
+          "B4": 0.00032805969578174907,
+          "C_B4plusZ4": 0.000507288455355644,
+          "D0": 1.5606846009112185,
+          "D2": -0.9042969689252157,
+          "D4": -0.000507288455355644,
+          "K": 1.6,
+          "M": 0.9,
+          "N0": 0.0008248594058984478,
+          "N2": 0.00011057574826560454,
+          "N4": 1.1462978310915871e-05,
+          "P0": 0.0005285240883499759,
+          "P2": 0.0006833291043178326,
+          "P4": 0.0006221198975181068,
+          "R_pole": -2.452467306741504,
+          "Z0": 0.021880961810186807,
+          "Z2": 0.001905413742966682,
+          "Z4": 0.0001792287595738949,
+          "constant_prefactor_N2_residual": 0.0010664612104632968,
+          "constant_prefactor_N4_residual": -0.0002649319316490224,
+          "port_diagnostics": [
+            {
+              "Delta": 143.6955867195068,
+              "H": 0.2732244995156613,
+              "N0": 0.0008248594058984478,
+              "N2": 0.00011057574826560454,
+              "N4": 1.1462978310915871e-05,
+              "P": 4.126989799952006,
+              "Q": 3.1441976453019147,
+              "S": 25.0,
+              "Z0": 0.021880961810186807,
+              "Z2": 0.001905413742966682,
+              "Z4": 0.0001792287595738949,
+              "port_index": 0.0
+            }
+          ],
+          "stability": {
+            "C_positive": true,
+            "D0_positive": true,
+            "N0_nonzero": true,
+            "all_Delta_positive": true,
+            "wall_M_positive": true
+          },
+          "u2": 0.5794232661725723,
+          "u4": 0.33605636364563374
+        }
+      },
+      "name": "sample_open_DN_solver_export",
+      "open_gate": {
+        "R_exit_positive": true,
+        "boundary_class_open_impedance": true,
+        "hard_cap_forbidden": true
+      },
+      "pass_flags": {
+        "constant_prefactor_P2_pass": false,
+        "constant_prefactor_P4_pass": false,
+        "isotropic_D0_pass": true,
+        "isotropic_N0_pass": true,
+        "normalization_pass": false,
+        "one_pole_pass": false,
+        "open_gate_pass": true,
+        "stability_gate_pass": true,
+        "tail_transport_pass": true,
+        "target_packet_pass": false
+      },
+      "residuals": {
+        "R_P2": 0.0006833291043178326,
+        "R_P4": 0.0006221198975181069,
+        "R_norm": -10.79947147591165,
+        "R_pole": -2.452467306741504,
+        "R_tail": 0.0,
+        "gamma_eff_minus_gamma_GR": -0.39998042503376485
+      },
+      "stability": {
+        "C_positive": true,
+        "D0_positive": true,
+        "N0_nonzero": true,
+        "all_Delta_positive": true,
+        "wall_M_positive": true
+      },
+      "target_values": {
+        "P0_target": 10.8,
+        "gamma_GR": 0.4,
+        "gamma_eff": 1.9574966235184293e-05
+      }
+    }
+  ],
+  "schema": "stage_v2_22c_observable_packet/v1",
+  "source_v21_manifest_hash": "9a27c9c52284599c3a00d14637afe01d2174534dbb047751f28743e53524f60e"
+}

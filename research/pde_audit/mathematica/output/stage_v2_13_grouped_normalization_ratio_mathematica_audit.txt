@@ -1,0 +1,41 @@
+# Mathematica Audit Output
+# Script: stage_v2_13_grouped_normalization_ratio_mathematica_audit.wl
+# Date: 2026-04-24T10:44:38-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-13 grouped normalization-ratio Mathematica audit
+==============================================================================
+
+------------------------------------------------------------------------------
+Response and prefactor series
+------------------------------------------------------------------------------
+PASS: response u2
+PASS: response u4
+PASS: prefactor P0
+PASS: prefactor P2
+PASS: prefactor P4
+
+------------------------------------------------------------------------------
+Constant-prefactor branch
+------------------------------------------------------------------------------
+PASS: constant P2
+PASS: constant P4
+
+------------------------------------------------------------------------------
+Isotropic one-pole target surface
+------------------------------------------------------------------------------
+PASS: one-pole equivalence
+
+------------------------------------------------------------------------------
+Quadrupole normalization
+------------------------------------------------------------------------------
+PASS: gamma equivalence with unit angular/port normalization
+All Stage V2-13 Mathematica checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,39 @@
+# Python Audit Output
+# Script: stage_v2_22c_end_to_end_smoke_pipeline.py
+# Date: 2026-04-24T10:44:25-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+STAGE V2-22C END-TO-END SMOKE PIPELINE
+V2-22C orchestration identities: 8/8 formula checks passed
+valid_solver_validation_pass: True
+invalid_hardcap_rejection_pass: True
+profile_manifest_hash: 32b603c66a36836dceada2d1da1f81a149d43e5b4962da8987f70652af6c03ad
+v21_manifest_hash: 9a27c9c52284599c3a00d14637afe01d2174534dbb047751f28743e53524f60e
+observable_packet_hash: a1dc9244b9721a6ee20379916f42ad82648dc9783e78b5a9b523cfaca63928a4
+--- smoke branch ---
+branch: sample_open_DN_solver_export
+open_gate_pass: True
+stability_gate_pass: True
+target_packet_pass: False
+D0_bar: 1.560684600911219
+N0_bar: 0.0008248594058984478
+P0_bar: 0.0005285240883499759
+P0_target: 10.8
+R_pole: -2.452467306741504
+R_norm: -10.79947147591165
+R_P2: 0.0006833291043178326
+R_P4: 0.0006221198975181069
+R_tail: 0
+--- calibrated direct-coefficient control ---
+target_packet_pass: True
+R_pole: 0
+R_norm: 0
+R_P2: 0
+R_P4: 1.4210854715202e-14
+mechanical_pipeline_pass: True
+branch_target_realization_claimed: False
+
+EXIT_CODE: 0

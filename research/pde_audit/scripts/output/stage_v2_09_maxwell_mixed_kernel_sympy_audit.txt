@@ -1,0 +1,59 @@
+# Python Audit Output
+# Script: stage_v2_09_maxwell_mixed_kernel_sympy_audit.py
+# Date: 2026-04-24T10:43:57-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-09 Maxwell/mixed-sector kernel audit
+========================================================================
+MIXED_GAUGE_INVARIANCE_Ew: PASS
+MIXED_GAUGE_INVARIANCE_Ca: PASS
+CONSERVATIVE_SELF_ENERGY_NUMERATOR: PASS
+CONSERVATIVE_SELF_ENERGY_DENOMINATOR: PASS
+SIGMA_LOW_FREQ_COEFF_0: PASS
+SIGMA_LOW_FREQ_COEFF_1: PASS
+SIGMA_LOW_FREQ_COEFF_2: PASS
+OUTGOING_TRANSFER_FACTOR_NUMERATOR: PASS
+TRANSFER_LOW_FREQ_COEFF_0: PASS
+TRANSFER_LOW_FREQ_COEFF_1: PASS
+TRANSFER_LOW_FREQ_COEFF_2: PASS
+FULL_STATIC_DETERMINANT_SCHUR: PASS
+L2_WALL_OPERATOR_ODD_COEFFICIENT: PASS
+SCALAR_DERIVATIVE_TRANSFER_STARTS_AT_OMEGA2: PASS
+SCALAR_DERIVATIVE_ODD_DEMOTED_TO_OMEGA3: PASS
+
+Key symbolic formulas
+------------------------------------------------------------------------
+Delta0 = Omega_U2*Omega_W2 - R**2
+Sigma_cons = (Q0 - G2*omega^2)/(Delta0 - S2*omega^2 + omega^4)
+Q0 = Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W
+G2 = g_U**2 + g_W**2
+z0 = (Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W)/(Omega_U2*Omega_W2 - R**2)
+z2 = ((Omega_U2 + Omega_W2)*(Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W) - (g_U**2 + g_W**2)*(Omega_U2*Omega_W2 - R**2))/(Omega_U2*Omega_W2 - R**2)**2
+z4 = (-(Omega_U2 + Omega_W2)*(g_U**2 + g_W**2)*(Omega_U2*Omega_W2 - R**2) + (-Omega_U2*Omega_W2 + R**2 + (Omega_U2 + Omega_W2)**2)*(Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W))/(Omega_U2*Omega_W2 - R**2)**3
+N_transfer = (A(omega)*g_W + R*g_U)^2 / Delta(omega)^2
+P = Omega_U2*g_W + R*g_U
+N0 = (Omega_U2*g_W + R*g_U)**2/(Omega_U2*Omega_W2 - R**2)**2
+N2 = (2*Omega_U2*g_W + 2*R*g_U)*(-g_W*(Omega_U2*Omega_W2 - R**2) + (Omega_U2 + Omega_W2)*(Omega_U2*g_W + R*g_U))/(Omega_U2*Omega_W2 - R**2)**3
+N4 = (g_W**2*(Omega_U2*Omega_W2 - R**2)**2 - g_W*(Omega_U2 + Omega_W2)*(4*Omega_U2*Omega_W2 - 4*R**2)*(Omega_U2*g_W + R*g_U) + 3*(Omega_U2 + Omega_W2)**2*(Omega_U2*g_W + R*g_U)**2 - (2*Omega_U2*Omega_W2 - 2*R**2)*(Omega_U2*g_W + R*g_U)**2)/(Omega_U2*Omega_W2 - R**2)**4
+deltaD_l=2_odd = -I*a**5*omega**5*(Omega_U2*g_W + R*g_U)**2/(27*c_s**5*(Omega_U2*Omega_W2 - R**2)**2)
+scalar derivative leading N/omega^2 = Omega_U2**2*eta**2/(Omega_U2*Omega_W2 - R**2)**2
+direct scalar dark-port condition:  Omega_U2*g_W + R*g_U = 0
+
+Pass/fail ledger
+------------------------------------------------------------------------
+identity_checks: 15
+identity_passes: 15
+
+Conditional verdict
+------------------------------------------------------------------------
+MAXWELL_MIXED_KERNEL: PASS within the declared one-lane reduced closure.
+OUTGOING_TRANSFER: PASS; transfer factor is a perfect square over Delta^2.
+L2_ODD_BRANCH: PASS; wall operator inherits -i*N0*a^5/(27*c_s^5)*omega^5.
+STABILITY_GATE: REQUIRE Delta0>0 and K-Sigma0>0, equivalently Delta0>0 and K*Delta0-Q0>0.
+DARK_PORT_WARNING: if Omega_U2*g_W + R*g_U = 0, then N0=0 and the port does not radiate at leading l=2 order.
+SCALAR_OHMIC_WARNING: direct non-derivative scalar port coupling gives N0 != 0 generically; derivative coupling demotes the leading scalar odd term to omega^3.
+
+EXIT_CODE: 0

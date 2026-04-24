@@ -1,0 +1,38 @@
+# Python Audit Output
+# Script: stage_v2_08_bdg_wall_schur_stability_sympy_audit.py
+# Date: 2026-04-24T10:43:53-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-08 — BdG-wall Schur complement and stability/softening audit
+==============================================================================
+one_mode_low_frequency_expansion: PASS
+static_potential_square_completion: PASS
+static_schur_complement_identity: PASS
+pole_root_sum: PASS
+pole_root_product: PASS
+weak_coupling_wall_pole_shift: PASS
+ghost_static_determinant_sigma_minus_one: -K*varpi**2 - g**2
+ghost_static_positivity_gate: FAIL for K>0,varpi>0,g^2>=0 because determinant is negative
+matrix_low_frequency_schur_expansion: PASS
+two_mode_hankel_moment_gap_B0B4_minus_B2sq: w1*w2*(lambda1 - lambda2)**2/(lambda1**3*lambda2**3)
+two_mode_hankel_gap_identity: PASS
+moment_inequality_gate: PASS for positive weights and positive frequencies; equality only for one effective support scale
+grouped_P2_a2_isotropy: PASS
+grouped_P2_b2_isotropy: PASS
+grouped_P2_trace_is_common_value: PASS
+softening_margin_identity: PASS
+softening_stability_gate: D0 = K*(1-epsilon_B) > 0, so epsilon_B < 1
+==============================================================================
+SUMMARY
+PASS: Schur-complement formulas are exact for positive stable modes.
+PASS: Stable support lowers static stiffness, raises effective inertia, and adds positive higher even moments.
+PASS: Static and dynamic one-mode stability reduce to K*varpi^2 - g^2 > 0.
+PASS: Grouped P2 isotropy is preserved when all lane data are identical.
+WARN: Negative-Krein/ghost support modes make the static Hessian indefinite and are outside this closure.
+WARN: BdG moments obey Stieltjes/Hankel positivity constraints, so B0,B2,B4 cannot be freely fitted.
+WARN: Near-softening can amplify P0 downstream but must keep epsilon_B < 1.
+
+EXIT_CODE: 0

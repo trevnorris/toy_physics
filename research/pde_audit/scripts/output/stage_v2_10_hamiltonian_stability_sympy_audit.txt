@@ -1,0 +1,72 @@
+# Python Audit Output
+# Script: stage_v2_10_hamiltonian_stability_sympy_audit.py
+# Date: 2026-04-24T10:43:59-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-10 — Hamiltonian / stability audit
+========================================================================
+
+Conservative one-lane variables: q, X_BdG, U_Maxwell, W_mixed
+
+Definitions:
+  Delta = Omega_U2*Omega_W2 - R**2
+  Q     = Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W
+  B0    = c_B**2/varpi2
+  Z0    = (Omega_U2*g_W**2 + Omega_W2*g_U**2 + 2*R*g_U*g_W)/(Omega_U2*Omega_W2 - R**2)
+  D0    = (K*Omega_U2*Omega_W2*varpi2 - K*R**2*varpi2 - Omega_U2*Omega_W2*c_B**2 - Omega_U2*g_W**2*varpi2 - Omega_W2*g_U**2*varpi2 + R**2*c_B**2 - 2*R*g_U*g_W*varpi2)/(varpi2*(Omega_U2*Omega_W2 - R**2))
+  D2    = -(M*Omega_U2**2*Omega_W2**2*varpi2**2 - 2*M*Omega_U2*Omega_W2*R**2*varpi2**2 + M*R**4*varpi2**2 + Omega_U2**2*Omega_W2**2*c_B**2 + Omega_U2**2*g_W**2*varpi2**2 - 2*Omega_U2*Omega_W2*R**2*c_B**2 + 2*Omega_U2*R*g_U*g_W*varpi2**2 + Omega_W2**2*g_U**2*varpi2**2 + 2*Omega_W2*R*g_U*g_W*varpi2**2 + R**4*c_B**2 + R**2*g_U**2*varpi2**2 + R**2*g_W**2*varpi2**2)/(varpi2**2*(Omega_U2*Omega_W2 - R**2)**2)
+  D4    = -(Omega_U2**3*Omega_W2**3*c_B**2 + Omega_U2**3*g_W**2*varpi2**3 - 3*Omega_U2**2*Omega_W2**2*R**2*c_B**2 + 2*Omega_U2**2*R*g_U*g_W*varpi2**3 + 3*Omega_U2*Omega_W2*R**4*c_B**2 + 2*Omega_U2*Omega_W2*R*g_U*g_W*varpi2**3 + Omega_U2*R**2*g_U**2*varpi2**3 + 2*Omega_U2*R**2*g_W**2*varpi2**3 + Omega_W2**3*g_U**2*varpi2**3 + 2*Omega_W2**2*R*g_U*g_W*varpi2**3 + 2*Omega_W2*R**2*g_U**2*varpi2**3 + Omega_W2*R**2*g_W**2*varpi2**3 - R**6*c_B**2 + 2*R**3*g_U*g_W*varpi2**3)/(varpi2**3*(Omega_U2*Omega_W2 - R**2)**3)
+
+Symbolic checks:
+  PASS: static Schur complement equals D0
+  PASS: det(P_hess) equals varpi2*Delta*D0
+  PASS: Z0 equals g^T A_mix^{-1} g
+  PASS: Z2 equals g^T A_mix^{-2} g
+  PASS: Z4 equals g^T A_mix^{-3} g
+  PASS: low-frequency self-energy through omega^4
+  PASS: N0 transfer factor
+  PASS: gamma_wall = N0*a^5/(27*c_s^5)
+  PASS: qdot*q^(5) = d(Schott)/dt + (q^(3))^2
+
+Passed 9/9 symbolic checks.
+
+Positive-energy conservative gates:
+  1. M > 0
+  2. varpi2 > 0
+  3. Omega_U2 > 0 and Omega_W2 > 0
+  4. Delta = Omega_U2*Omega_W2 - R^2 > 0
+  5. D0 = K - c_B^2/varpi2 - Q/Delta > 0
+
+If these hold, the kinetic matrix is positive and the potential
+Hessian is positive by Schur complement, so the conservative
+linearized Hamiltonian is positive definite.
+
+Numerical stable example:
+  D0 = 9.5615231599886
+  Delta = 391.00000000000
+  generalized omega^2 eigenvalues = [9.110597203408 - 2.3985102460035e-28*I, 4.6491465126818 + 1.2227045692313e-28*I, 25.91177656752 - 1.7536930480384e-29*I, 15.32847971639 + 1.351174981576e-28*I]
+
+Numerical static-softening failure example:
+  D0 = -0.33847684001137
+  generalized omega^2 eigenvalues = [9.0531373812758 - 1.3767142699289e-28*I, -0.16645634386596 + 3.7562664882182e-29*I, 25.911109820372 - 2.573144258096e-29*I, 15.252209142219 + 1.2584020469167e-28*I]
+
+Numerical mixed-block failure example:
+  Delta = -3.0000000000000   (negative => U/W block indefinite)
+
+Passive outgoing l=2 gate:
+  N0 = (Omega_U2*g_W + R*g_U)**2/(Omega_U2*Omega_W2 - R**2)**2
+  gamma_wall = N0*a^5/(27*c_s^5) = a**5*(Omega_U2*g_W + R*g_U)**2/(27*c_s**5*(Omega_U2*Omega_W2 - R**2)**2)
+  Since N0 is a square over Delta^2 and a,c_s > 0, gamma_wall >= 0.
+  With exp(-i omega t), delta D_odd = -i*gamma_wall*omega^5
+  is the time-domain term + gamma_wall*q^(5).
+  The checked identity qdot*q^(5)=d(Schott)/dt+(q^(3))^2
+  gives nonnegative Schott-subtracted dissipation.
+
+Verdict:
+  PASS within the declared positive-energy reduced closure.
+  Required branch gates: M>0, internal block positive, D0>0, and no ghost/Krein modes.
+
+EXIT_CODE: 0

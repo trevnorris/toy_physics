@@ -1,0 +1,78 @@
+# Python Audit Output
+# Script: stage_v2_12_stf_angular_source_map_sympy_audit.py
+# Date: 2026-04-24T10:44:07-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-12 STF angular source-map audit
+========================================================================
+
+Canonical real STF labels: ['20', '21c', '21s', '22c', '22s']
+
+STF trace checks:
+  Tr(E_20) = 0
+  Tr(E_21c) = 0
+  Tr(E_21s) = 0
+  Tr(E_22c) = 0
+  Tr(E_22s) = 0
+
+STF tensor Gram matrix Tr(E_A E_B):
+Matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+
+Angular Gram matrix from fourth-moment identity:
+Matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+
+Direct theta/phi angular Gram matrix:
+Matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+
+Source-map residual int Y_A sum_B S_B Y_B - S_A:
+Matrix([[0], [0], [0], [0], [0]])
+
+Orbital/worldtube STF quadrupole coefficients Q_A = Tr(E_A Q):
+  Q_20 = -sqrt(6)*mu*(x**2 + y**2 - 2*z**2)/6
+  Q_21c = sqrt(2)*mu*x*z
+  Q_21s = sqrt(2)*mu*y*z
+  Q_22c = sqrt(2)*mu*(x - y)*(x + y)/2
+  Q_22s = sqrt(2)*mu*x*y
+
+Q reconstruction residual Q_rec - Q:
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+Angular function reconstruction residual:
+0
+
+Source norm:
+  int S(n)^2 dOmega = S20**2 + S21c**2 + S21s**2 + S22c**2 + S22s**2
+  expected          = S20**2 + S21c**2 + S21s**2 + S22c**2 + S22s**2
+  residual          = 0
+
+Grouped metric check:
+  full five-mode norm with pair representatives = x20**2 + 2*x21**2 + 2*x22**2
+  grouped metric norm x^T diag(1,2,2) x        = x20**2 + 2*x21**2 + 2*x22**2
+  residual                                      = 0
+
+Pi-to-q convention map:
+  B = diag(sqrt(2/3), 1, 1, 2, 2)
+  det(B) = 4*sqrt(6)/3
+  rank(B) = 5
+
+Checks:
+  all_STF_traces_zero: PASS
+  STF_basis_orthonormal: PASS
+  angular_gram_from_moments_identity: PASS
+  direct_angular_gram_identity: PASS
+  source_projection_identity: PASS
+  orbital_STF_reconstructs_exactly: PASS
+  angular_function_reconstructs_exactly: PASS
+  source_norm_identity: PASS
+  grouped_metric_matches_full_pair_norm: PASS
+  Pi_to_q_map_invertible: PASS
+
+Summary verdict:
+  PASS: The STF angular source-map has no angular normalization defect.
+  PASS: mhat_ang = 1 in the canonical normalized real-STF basis.
+  PASS: Remaining quadrupole normalization is radial/axial/port-amplitude data.
+
+EXIT_CODE: 0

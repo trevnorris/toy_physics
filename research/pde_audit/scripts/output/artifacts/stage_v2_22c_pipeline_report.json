@@ -1,0 +1,459 @@
+{
+  "adapter_diagnostics": {
+    "branch_diagnostics": [
+      {
+        "overlaps": {
+          "I_eta_phi::bdg_halfwave": {
+            "grid_points": 801,
+            "method": "trapezoid",
+            "value": 0.8488255450333207
+          },
+          "I_eta_u::one_mixed_port": {
+            "grid_points": 801,
+            "method": "trapezoid",
+            "value": 1.0000000000000002
+          },
+          "I_eta_w::one_mixed_port": {
+            "grid_points": 801,
+            "method": "trapezoid",
+            "value": 0.8488255450333207
+          },
+          "I_u_w::one_mixed_port": {
+            "grid_points": 801,
+            "method": "trapezoid",
+            "value": 0.8488255450333207
+          }
+        },
+        "source_branch": "sample_open_DN_solver_export",
+        "source_branch_hash": "73e1214783ceee4bf00b47df8327d101198d3aed0e3ee7bc38a6910b23107966",
+        "v21_branch_hash": "36fa32f7a16076fc2eb42ca38b5833e90cb5ef2ec1d4d41d8771dcc4ab8d2c91"
+      }
+    ],
+    "profile_manifest_hash": "32b603c66a36836dceada2d1da1f81a149d43e5b4962da8987f70652af6c03ad",
+    "v21_manifest_hash": "9a27c9c52284599c3a00d14637afe01d2174534dbb047751f28743e53524f60e"
+  },
+  "branch_target_realization_claimed": false,
+  "calibrated_control": {
+    "grouped": {
+      "B0": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "B2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "B4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 3.0
+      },
+      "D0": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 1.0
+      },
+      "D2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": -1.0
+      },
+      "D4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": -3.0
+      },
+      "K": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 1.0
+      },
+      "M": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 1.0
+      },
+      "N0": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 10.8
+      },
+      "N2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": -21.6
+      },
+      "N4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": -54.0
+      },
+      "P0": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 10.8
+      },
+      "P2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "P4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 1.4210854715202004e-14
+      },
+      "R_pole": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "Z0": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "Z2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "Z4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 0.0
+      },
+      "u2": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 1.0
+      },
+      "u4": {
+        "a": 0.0,
+        "anisotropy_norm_sq": 0.0,
+        "axisymmetric_b_minus_3a": 0.0,
+        "b": 0.0,
+        "bar": 4.0
+      }
+    },
+    "input_hash": "7893c4d175c9dceac06b024231b38e213f7dfccf43c6af655c34f59c06d697a7",
+    "lane_packets": {
+      "20": {
+        "A_MplusB2plusZ2": 1.0,
+        "B0": 0.0,
+        "B2": 0.0,
+        "B4": 3.0,
+        "C_B4plusZ4": 3.0,
+        "D0": 1.0,
+        "D2": -1.0,
+        "D4": -3.0,
+        "K": 1.0,
+        "M": 1.0,
+        "N0": 10.8,
+        "N2": -21.6,
+        "N4": -54.0,
+        "P0": 10.8,
+        "P2": 0.0,
+        "P4": 1.4210854715202004e-14,
+        "R_pole": 0.0,
+        "Z0": 0.0,
+        "Z2": 0.0,
+        "Z4": 0.0,
+        "constant_prefactor_N2_residual": 0.0,
+        "constant_prefactor_N4_residual": 0.0,
+        "port_diagnostics": [],
+        "stability": {
+          "C_positive": true,
+          "D0_positive": true,
+          "N0_nonzero": true,
+          "all_Delta_positive": true,
+          "wall_M_positive": true
+        },
+        "u2": 1.0,
+        "u4": 4.0
+      },
+      "21": {
+        "A_MplusB2plusZ2": 1.0,
+        "B0": 0.0,
+        "B2": 0.0,
+        "B4": 3.0,
+        "C_B4plusZ4": 3.0,
+        "D0": 1.0,
+        "D2": -1.0,
+        "D4": -3.0,
+        "K": 1.0,
+        "M": 1.0,
+        "N0": 10.8,
+        "N2": -21.6,
+        "N4": -54.0,
+        "P0": 10.8,
+        "P2": 0.0,
+        "P4": 1.4210854715202004e-14,
+        "R_pole": 0.0,
+        "Z0": 0.0,
+        "Z2": 0.0,
+        "Z4": 0.0,
+        "constant_prefactor_N2_residual": 0.0,
+        "constant_prefactor_N4_residual": 0.0,
+        "port_diagnostics": [],
+        "stability": {
+          "C_positive": true,
+          "D0_positive": true,
+          "N0_nonzero": true,
+          "all_Delta_positive": true,
+          "wall_M_positive": true
+        },
+        "u2": 1.0,
+        "u4": 4.0
+      },
+      "22": {
+        "A_MplusB2plusZ2": 1.0,
+        "B0": 0.0,
+        "B2": 0.0,
+        "B4": 3.0,
+        "C_B4plusZ4": 3.0,
+        "D0": 1.0,
+        "D2": -1.0,
+        "D4": -3.0,
+        "K": 1.0,
+        "M": 1.0,
+        "N0": 10.8,
+        "N2": -21.6,
+        "N4": -54.0,
+        "P0": 10.8,
+        "P2": 0.0,
+        "P4": 1.4210854715202004e-14,
+        "R_pole": 0.0,
+        "Z0": 0.0,
+        "Z2": 0.0,
+        "Z4": 0.0,
+        "constant_prefactor_N2_residual": 0.0,
+        "constant_prefactor_N4_residual": 0.0,
+        "port_diagnostics": [],
+        "stability": {
+          "C_positive": true,
+          "D0_positive": true,
+          "N0_nonzero": true,
+          "all_Delta_positive": true,
+          "wall_M_positive": true
+        },
+        "u2": 1.0,
+        "u4": 4.0
+      }
+    },
+    "name": "calibrated_direct_coefficient_fixture",
+    "open_gate": {
+      "R_exit_positive": true,
+      "boundary_class_open_impedance": true,
+      "hard_cap_forbidden": true
+    },
+    "pass_flags": {
+      "constant_prefactor_P2_pass": true,
+      "constant_prefactor_P4_pass": true,
+      "isotropic_D0_pass": true,
+      "isotropic_N0_pass": true,
+      "normalization_pass": true,
+      "one_pole_pass": true,
+      "open_gate_pass": true,
+      "stability_gate_pass": true,
+      "tail_transport_pass": true,
+      "target_packet_pass": true
+    },
+    "residuals": {
+      "R_P2": 0.0,
+      "R_P4": 1.4210854715202004e-14,
+      "R_norm": 0.0,
+      "R_pole": 0.0,
+      "R_tail": 0.0,
+      "gamma_eff_minus_gamma_GR": 0.0
+    },
+    "stability": {
+      "C_positive": true,
+      "D0_positive": true,
+      "N0_nonzero": true,
+      "all_Delta_positive": true,
+      "wall_M_positive": true
+    },
+    "target_values": {
+      "P0_target": 10.8,
+      "gamma_GR": 0.4,
+      "gamma_eff": 0.4
+    }
+  },
+  "component_audits": [
+    {
+      "checks_failed": 0,
+      "checks_passed": 8,
+      "checks_total": 8,
+      "name": "V2-22C orchestration identities",
+      "pass": true
+    }
+  ],
+  "component_script_hashes": {
+    "V2-21_branch_extraction_script": "3163ee3b55331d4733d8428bd12091e2fb1c168f5bbe7666aae8b301bba774eb",
+    "V2-22A_profile_adapter_script": "0171c0ece83d662f799f2762e32048cc7503f6f9e91c9b0899326892ed19eff8",
+    "V2-22B_solver_handoff_script": "02e97853e7154600aeec12d9dd23b9ad000880d91df2f9271fb88fd5b5f2c0b9"
+  },
+  "formula_pass": true,
+  "hardcap_rejection_pass": true,
+  "hashes": {
+    "invalid_solver_packet_hash": "44a09c1df6dbea0f15b118836c3bd89d69d1a82f2bd5a960611ad5cfedd91683",
+    "observable_packet_hash": "a1dc9244b9721a6ee20379916f42ad82648dc9783e78b5a9b523cfaca63928a4",
+    "profile_manifest_hash": "32b603c66a36836dceada2d1da1f81a149d43e5b4962da8987f70652af6c03ad",
+    "solver_packet_hash": "d2d7e721c19005ebd255e32bc090b3e2bc0d9d03ff5248c95a9fcf66595e02dc",
+    "tolerance_budget_hash": "86ffde5f7c40ce91d61a2db0e721282979f695039af47017943a55a832a19070",
+    "v21_manifest_hash": "9a27c9c52284599c3a00d14637afe01d2174534dbb047751f28743e53524f60e"
+  },
+  "invalid_hardcap_validation": {
+    "branch_id": "invalid_hardcap_solver_export",
+    "diagnostics": {
+      "bdg_profiles": [
+        {
+          "name": "bdg_halfwave",
+          "profile_norm": 1.0
+        }
+      ],
+      "mixed_ports": [
+        {
+          "Delta_eff": 143.6955867195068,
+          "I_u_w": 0.8488255450333204,
+          "R_eff": 0.5517366042716583,
+          "name": "one_mixed_port"
+        }
+      ],
+      "solver_metadata": {
+        "coefficient_family": "sampled_finite_throat_DN_validation_fixture_v1",
+        "exporter": "stage_v2_22b_builtin_sample",
+        "mesh_points": 801,
+        "source_commit": "fixture-only"
+      },
+      "wall_norm": 1.0000000000000002
+    },
+    "error_count": 4,
+    "issues": [
+      {
+        "message": "must declare open impedance AC/DC split",
+        "path": "freeze.boundary_protocol",
+        "severity": "error"
+      },
+      {
+        "message": "boundary_class must be open_impedance",
+        "path": "geometry.boundary_class",
+        "severity": "error"
+      },
+      {
+        "message": "R_exit must be strictly positive; hard cap is forbidden",
+        "path": "geometry.R_exit",
+        "severity": "error"
+      },
+      {
+        "message": "hard_cap geometry is forbidden by V2-04 patch",
+        "path": "geometry.boundary_class",
+        "severity": "error"
+      }
+    ],
+    "packet_hash": "44a09c1df6dbea0f15b118836c3bd89d69d1a82f2bd5a960611ad5cfedd91683",
+    "schema": "stage_v2_22b_validation_report/v1",
+    "validation_pass": false,
+    "warning_count": 0
+  },
+  "mechanical_pipeline_pass": true,
+  "notes": [
+    "The smoke branch is expected to be open/stable but target-failing unless an actual calibrated PDE branch is supplied.",
+    "The calibrated direct-coefficient control exists only to prove that the target gates can pass when the algebraic surface is satisfied.",
+    "The hard-cap sample is intentionally rejected to enforce the V2-04 open-organ-pipe patch."
+  ],
+  "observable_packet_hash": "a1dc9244b9721a6ee20379916f42ad82648dc9783e78b5a9b523cfaca63928a4",
+  "profile_manifest_hash": "32b603c66a36836dceada2d1da1f81a149d43e5b4962da8987f70652af6c03ad",
+  "purpose": "End-to-end target-blind smoke pipeline from solver export to grouped-P2 observable packet.",
+  "schema": "stage_v2_22c_pipeline_report/v1",
+  "smoke_branch_summary": {
+    "D0_bar": 1.5606846009112185,
+    "N0_bar": 0.0008248594058984478,
+    "P0_bar": 0.0005285240883499759,
+    "P0_target": 10.8,
+    "R_P2": 0.0006833291043178326,
+    "R_P4": 0.0006221198975181069,
+    "R_norm": -10.79947147591165,
+    "R_pole": -2.452467306741504,
+    "R_tail": 0.0,
+    "branch_name": "sample_open_DN_solver_export",
+    "open_gate_pass": true,
+    "stability_gate_pass": true,
+    "target_packet_pass": false
+  },
+  "stage": "V2-22C",
+  "v21_manifest_hash": "9a27c9c52284599c3a00d14637afe01d2174534dbb047751f28743e53524f60e",
+  "valid_solver_validation": {
+    "branch_id": "sample_open_DN_solver_export",
+    "diagnostics": {
+      "bdg_profiles": [
+        {
+          "name": "bdg_halfwave",
+          "profile_norm": 1.0
+        }
+      ],
+      "mixed_ports": [
+        {
+          "Delta_eff": 143.6955867195068,
+          "I_u_w": 0.8488255450333204,
+          "R_eff": 0.5517366042716583,
+          "name": "one_mixed_port"
+        }
+      ],
+      "solver_metadata": {
+        "coefficient_family": "sampled_finite_throat_DN_validation_fixture_v1",
+        "exporter": "stage_v2_22b_builtin_sample",
+        "mesh_points": 801,
+        "source_commit": "fixture-only"
+      },
+      "wall_norm": 1.0000000000000002
+    },
+    "error_count": 0,
+    "issues": [],
+    "packet_hash": "d2d7e721c19005ebd255e32bc090b3e2bc0d9d03ff5248c95a9fcf66595e02dc",
+    "schema": "stage_v2_22b_validation_report/v1",
+    "validation_pass": true,
+    "warning_count": 0
+  }
+}

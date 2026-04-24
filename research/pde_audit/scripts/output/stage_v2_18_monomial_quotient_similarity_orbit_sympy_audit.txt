@@ -1,0 +1,56 @@
+# Python Audit Output
+# Script: stage_v2_18_monomial_quotient_similarity_orbit_sympy_audit.py
+# Date: 2026-04-24T10:44:14-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+PASS: original M_* has quoted nonzero minor det(T_U,K_eta,mu_W)=1+chi
+      minor=chi + 1
+PASS: rank(M_*) = 3 under physical condition 1+chi != 0
+      a nonzero 3x3 minor proves rank at least 3; matrix has only 3 rows
+PASS: dim ker(M_*) = 5
+      nullity=5
+PASS: exact normal basis satisfies M_* N = I_3
+      M_*N=Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+PASS: normal projector is idempotent
+PASS: orbit projector is idempotent
+PASS: M_* annihilates orbit projector
+PASS: generic split x = x_orbit + N q
+PASS: x_orbit lies in ker(M_*)
+PASS: normal part carries the original quotient q
+PASS: normalized monomial-drift matrix matches exponent rows
+PASS: normalized M has nonzero rank-3 minor under physical conditions
+      minor=2*(E + 2)*(chi + 1)
+PASS: triangular normalized zero-defect solve gives M_norm v = 0
+PASS: extended BdG columns are exactly support-blind zero columns
+PASS: extended support-blind monomial kernel has dimension 7
+PASS: defect compiler determinant is nonzero on physical branch
+      det=-C_tr*eps_eta/(eps_eta - 1)
+PASS: Theta_1 = -C_tr q_tr
+      Theta=-C_tr*q_tr
+PASS: Xi_1 = A_tr q_tr + q_nt
+      Xi=A_tr*q_tr + q_nt
+PASS: R_1 = -Xi_1 - eps/(1-eps) q_eta
+      R=(eps_eta*q_eta - (eps_eta - 1)*(A_tr*q_tr + q_nt))/(eps_eta - 1)
+PASS: defect compiler inverse formulas recover q
+PASS: zero quotient residuals imply zero physical defects
+PASS: zero physical defects imply zero quotient residuals when det != 0
+      symbolic determinant C_tr*eps/(1-eps) is nonzero under C_tr!=0, eps!=0, eps!=1
+PASS: Xi_load = P1/P0
+      Xi_load=N01/N0 - D01/D0
+PASS: Xi_1=0 condition is q_nt = -A_tr q_tr
+
+SUMMARY
+original_Mstar_shape: (3, 8)
+original_rank_witness_minor: chi + 1
+original_kernel_dimension: 5
+normalized_M_shape: (3, 8)
+normalized_rank_witness_minor: 2*(E + 2)*(chi + 1)
+normalized_extended_kernel_dimension_with_BdG_blind_columns: 7
+defect_compiler_det: -C_tr*eps_eta/(eps_eta - 1)
+Xi_load: N01/N0 - D01/D0
+verdict: PASS — quotient variables separate similarity-orbit motion from physical weak-axisymmetric defects.
+
+EXIT_CODE: 0

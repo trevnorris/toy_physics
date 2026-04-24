@@ -1,0 +1,118 @@
+# Python Audit Output
+# Script: stage_v2_04_open_junction_impedance_sympy_audit.py
+# Date: 2026-04-24T10:43:51-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+Stage V2-04 open-junction impedance audit
+========================================================================================
+
+Architectural patch under test: replace hard cap R(L)=0 by finite open exit R(L)>0.
+The open exit is modeled as a 1D tube coupled to unconfined 4D spatial bulk.
+
+========================================================================================
+1. Variable-area scalar wave equation
+========================================================================================
+
+From the action S = 1/2 ∫ A(x)[psi_t^2/c_s^2 - psi_x^2] dx dt:
+  Euler-Lagrange equation: Eq(-A(x)*Derivative(psi(x, t), (x, 2)) - Derivative(A(x), x)*Derivative(psi(x, t), x) + A(x)*Derivative(psi(x, t), (t, 2))/c_s**2, 0)
+Tube side: A(x)=A_t = constant -> psi_tt = c_s^2 psi_xx.
+4D spatial bulk radial side: A_bulk(r)=S_3 r^3 = S_3*r**3.
+  4D radial wave equation: Eq(-S_3*r**3*Derivative(Psi(r, t), (r, 2)) - 3*S_3*r**2*Derivative(Psi(r, t), r) + S_3*r**3*Derivative(Psi(r, t), (t, 2))/c_s**2, 0)
+  Divided form: Eq(Derivative(Psi(r, t), (t, 2))/c_s**2 - (S_3*r**3*Derivative(Psi(r, t), (r, 2)) + 3*S_3*r**2*Derivative(Psi(r, t), r))/(S_3*r**3), 0)
+Interface conditions for a pressure/potential-like scalar are continuity of psi and A*psi_normal.
+
+========================================================================================
+2. Reflection/transmission from a load impedance
+========================================================================================
+
+For pressure p and volume flow Q at the tube end:
+  p = p_in + p_ref,
+  Q = (p_in/Z_t) - (p_ref/Z_t),
+  p = Z_L Q.
+Let eps = Z_L/Z_t. Sudden expansion / low acoustic load has eps << 1.
+  Pressure/potential amplitude reflection R_p(eps) = (eps - 1)/(eps + 1)
+  Pressure/potential amplitude transmission T_p=1+R_p = 2*eps/(eps + 1)
+  Flow/displacement amplitude reflection R_q=-R_p = (1 - eps)/(eps + 1)
+  Flow/displacement amplitude transmission T_q=1+R_q = 2/(eps + 1)
+  Energy reflection coefficient |R|^2 = (eps - 1)**2/(eps + 1)**2
+  Energy transmission coefficient = 4*eps/(eps + 1)**2
+
+Low-load / sudden-expansion series eps -> 0:
+  R_p: -1 + 2*eps - 2*eps**2 + 2*eps**3 + O(eps**4)
+  T_p: 2*eps - 2*eps**2 + 2*eps**3 + O(eps**4)
+  R_q: 1 - 2*eps + 2*eps**2 - 2*eps**3 + O(eps**4)
+  T_q: 2 - 2*eps + 2*eps**2 - 2*eps**3 + O(eps**4)
+  E_ref: 1 - 4*eps + 8*eps**2 - 12*eps**3 + O(eps**4)
+  E_trans: 4*eps - 8*eps**2 + 12*eps**3 + O(eps**4)
+
+Area-expansion model: chi = A_eff/A_t >> 1, eps ~= 1/chi.
+  R_p(chi) = (1 - chi)/(chi + 1)
+  R_q(chi) = (chi - 1)/(chi + 1)
+  T_energy(chi) = 4*chi/(chi + 1)**2
+  R_p large-chi via delta=1/chi: -1 + 2*delta - 2*delta**2 + 2*delta**3 + O(delta**4)
+  R_q large-chi via delta=1/chi: 1 - 2*delta + 2*delta**2 - 2*delta**3 + O(delta**4)
+  T_energy large-chi via delta=1/chi: 4*delta - 8*delta**2 + 12*delta**3 + O(delta**4)
+
+========================================================================================
+3. D/N validation: boundary derivative ratios
+========================================================================================
+
+For a scalar field f = exp(ik(w-L)) + R exp(-ik(w-L)) at the exit:
+  f_w/f at L = i k (1-R)/(1+R).
+Pressure/potential-like scalar: f_w/f = I*k/eps
+Flow/displacement-like scalar:    f_w/f = I*eps*k
+Pressure/potential boundary amplitude 1+R_p = 2*eps/(eps + 1)
+Flow/displacement boundary amplitude    1+R_q = 2/(eps + 1)
+
+Limits eps -> 0:
+  lim R_p = -1  (phase pi, Dirichlet-like for p/psi)
+  lim R_q = 1  (phase 0, Neumann-like for q/u)
+  lim (pressure amplitude 1+R_p) = 0
+  lim (flow derivative ratio) = 0
+
+Interpretation:
+  * Sudden expansion validates Neumann only for the dual flow/displacement variable.
+  * The same junction gives a Dirichlet-like condition for a pressure/potential-like scalar.
+
+If the support variable is the flow/displacement variable with q(0)=0 and q_w(L)=0:
+  D/N ladder: k_j = pi*(j + 1/2)/L
+If instead the scalar is pressure/potential-like and both ends are Dirichlet:
+  D/D ladder: k_j = pi*(j + 1)/L for j=0,1,2,...
+
+========================================================================================
+4. DC leakage / continuity check
+========================================================================================
+
+4D bulk radial area A_bulk(r)=S3*r^3 = 2*pi**2*r**3
+Steady flux density J_r(r)=Phi/A_bulk(r) = Phi/(2*pi**2*r**3)
+Radial continuity check (1/A)d(A J_r)/dr = 0
+Finite 3D-ball tube exit area A_exit=(4/3)pi a_exit^3 = 4*pi*a_exit**3/3
+Tube DC flux density at finite exit = 3*Phi/(4*pi*a_exit**3)
+Hard-cap limit Phi/A_exit as A_exit->0+ = oo
+
+Interpretation:
+  * A finite open exit R(L)>0 supports nonzero DC throughput without singular flux density.
+  * A hard cap / zero exit area is incompatible with fixed nonzero Phi.
+
+========================================================================================
+5. Pass/fail summary
+========================================================================================
+
+HARD_CAP_WITH_NONZERO_DC_FLUX: FAIL
+  Reason: Phi/A_exit -> infinity as A_exit -> 0+.
+OPEN_FINITE_EXIT_DC_LEAKAGE: PASS
+  Reason: J_tube=Phi/A_exit finite and J_bulk=Phi/(2*pi^2*r^3) satisfies radial continuity.
+AC_STRONG_REFLECTION_FROM_SUDDEN_EXPANSION: PASS
+  Reason: energy transmission = 4 eps/(1+eps)^2 = O(eps) for eps=Z_L/Z_t << 1.
+GENERIC_SCALAR_NEUMANN_FROM_OPEN_BOUNDARY: FAIL
+  Reason: pressure/potential-like scalar has R_p -> -1 and boundary amplitude -> 0.
+FLOW_OR_DISPLACEMENT_NEUMANN_FROM_OPEN_BOUNDARY: PASS
+  Reason: dual variable has R_q -> +1 and q_w/q = i k eps -> 0.
+REQUIRED_PATCH_FOR_DN_SUPPORT: identify the D/N support field as the free-end flow/displacement variable, or add an impedance-transforming neck/stub if the support field is pressure/potential-like.
+
+EXIT_CODE: 0

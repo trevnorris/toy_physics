@@ -1,0 +1,105 @@
+{
+  "branch_id": "invalid_hardcap_solver_export",
+  "diagnostics": {
+    "bdg_profiles": [
+      {
+        "name": "bdg_halfwave",
+        "profile_norm": 1.0
+      }
+    ],
+    "mixed_ports": [
+      {
+        "Delta_eff": 143.6955867195068,
+        "I_u_w": 0.8488255450333204,
+        "R_eff": 0.5517366042716583,
+        "name": "one_mixed_port"
+      }
+    ],
+    "solver_metadata": {
+      "coefficient_family": "sampled_finite_throat_DN_validation_fixture_v1",
+      "exporter": "stage_v2_22b_builtin_sample",
+      "mesh_points": 801,
+      "source_commit": "fixture-only"
+    },
+    "wall_norm": 1.0000000000000002
+  },
+  "error_count": 4,
+  "issues": [
+    {
+      "message": "must declare open impedance AC/DC split",
+      "path": "freeze.boundary_protocol",
+      "severity": "error"
+    },
+    {
+      "message": "boundary_class must be open_impedance",
+      "path": "geometry.boundary_class",
+      "severity": "error"
+    },
+    {
+      "message": "R_exit must be strictly positive; hard cap is forbidden",
+      "path": "geometry.R_exit",
+      "severity": "error"
+    },
+    {
+      "message": "hard_cap geometry is forbidden by V2-04 patch",
+      "path": "geometry.boundary_class",
+      "severity": "error"
+    }
+  ],
+  "packet_hash": "44a09c1df6dbea0f15b118836c3bd89d69d1a82f2bd5a960611ad5cfedd91683",
+  "schema": "stage_v2_22b_validation_report/v1",
+  "symbolic_audit": {
+    "checks_failed": 0,
+    "checks_passed": 9,
+    "checks_total": 9,
+    "details": [
+      {
+        "name": "mouth_Dirichlet_q0",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "bottom_Neumann_halfwave",
+        "note": "0",
+        "pass": true
+      },
+      {
+        "name": "open_impedance_robin_to_neumann",
+        "note": "T*q_wL",
+        "pass": true
+      },
+      {
+        "name": "chi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "phi_norm",
+        "note": "1",
+        "pass": true
+      },
+      {
+        "name": "DN_overlap",
+        "note": "8/(3*pi)",
+        "pass": true
+      },
+      {
+        "name": "axisym_trace_unchanged",
+        "note": "x0",
+        "pass": true
+      },
+      {
+        "name": "axisym_b_equals_3a",
+        "note": "a=eps*x1/4, b=3*eps*x1/4",
+        "pass": true
+      },
+      {
+        "name": "N0_perfect_square_over_Delta2",
+        "note": "(OU**2*gW + R*gU)**2/(OU**2*OW**2 - R**2)**2",
+        "pass": true
+      }
+    ]
+  },
+  "validation_pass": false,
+  "warning_count": 0
+}

@@ -1,0 +1,31 @@
+# PDE Audit Top-Level Output
+# Script: fixture_manifest
+# Date: 2026-04-24T10:43:48-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+PDE audit fixture manifest verification
+================================================
+manifest: /var/projects/toy_physics/research/pde_audit/scripts/fixtures/MANIFEST.json
+PASS  negative_controls/stage_v2_22b_negative_bad_boundary_protocol.json  1b0269a1189bce1cfecc85aec9bd70eb3cadc5a026e44104a29c19f2531224fa
+PASS  negative_controls/stage_v2_22b_negative_missing_gauge_convention.json  e7479147edd15d7f813c4bc4b6616efec023928c10aaf1dfb7843f71f2e9e229
+PASS  negative_controls/stage_v2_22b_negative_nonfinite_solver_residual.json  3af2bce072429438b4a130c6e9ed53189781b381d484701f26f16d8f025fb2a4
+PASS  negative_controls/stage_v2_22b_negative_nonmonotone_grid.json  266fab8b172bd05704513e0d08598914b946febfb12a68a1d0dd6da44dbb9e8b
+PASS  negative_controls/stage_v2_22b_negative_nonpositive_delta.json  925f7701fb324f983574f77acd8d123077961c5548c08d3cc63f3b5645c4f601
+PASS  negative_controls/stage_v2_22b_negative_pre_target_freeze_false.json  eb756d9f7b20f7b1527e3adc179e9f4fb420e1446f63683f5b4aea903510e713
+PASS  negative_controls/stage_v2_22b_negative_profile_length_mismatch.json  d6f5c95b1c3b623ef0e1cdac5527fa8177883a17f66c77ca2d9e36a3619e0d70
+PASS  negative_controls/stage_v2_22b_negative_target_blind_false.json  29bdc961394e87c630357880b3f42711d6b44d21b9cddd6c8ff318b893a93400
+PASS  negative_controls/stage_v2_22b_negative_target_leakage.json  6c50bc15c692d1144ec1a0bc4bce5a37db564025079b76afc9ff13d44b1de0b3
+PASS  stage_v2_21_sample_branch_manifest.json  5aff3aac38f31841c1d089c5383c2da809667cba2ac36ad39948fc95cc9ee7c2
+PASS  stage_v2_22a_profile_input_manifest.json  ecbd9f008bde0621cad62361ce98708041c4c98ebfd8b4ecdd8b04b579d0aacd
+PASS  stage_v2_22b_sample_solver_output_invalid_hardcap.json  2c194f20f56f1cbfddcf3190079dc81025f966a5f99c20d82d32ffa3bacba121
+PASS  stage_v2_22b_sample_solver_output_valid.json  c15682194fafb3d129027780b67ca4ba62c16bd03bfb7e54283044799a353fad
+PASS  stage_v2_22b_solver_output_schema.json  d3714c84920027a1432b6b510c434fca801020e99cda04fcc0e8b6c2dd3849ca
+PASS  stage_v2_22c_invalid_hardcap_solver_packet.json  2c194f20f56f1cbfddcf3190079dc81025f966a5f99c20d82d32ffa3bacba121
+PASS  stage_v2_22c_valid_solver_packet.json  c15682194fafb3d129027780b67ca4ba62c16bd03bfb7e54283044799a353fad
+
+fixture_manifest_pass: True
+
+EXIT_CODE: 0

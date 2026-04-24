@@ -1,0 +1,24 @@
+# Python Audit Output
+# Script: stage_v2_23_formula_sympy_audit.py
+# Date: 2026-04-24T10:44:26-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage V2-23 formula-only SymPy audit
+================================================
+response_u2: PASS
+response_u4: PASS
+prefactor_P0: PASS
+prefactor_P2: PASS
+prefactor_P4: PASS
+one_pole_equivalence: PASS
+constant_prefactor_P2: PASS
+constant_prefactor_P4: PASS
+normalization_equivalence: PASS
+checks_passed: 9
+checks_total: 9
+
+
+EXIT_CODE: 0

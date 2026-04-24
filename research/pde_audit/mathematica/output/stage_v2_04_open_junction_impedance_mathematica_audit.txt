@@ -1,0 +1,52 @@
+# Mathematica Audit Output
+# Script: stage_v2_04_open_junction_impedance_mathematica_audit.wl
+# Date: 2026-04-24T10:44:36-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+OMP: Warning #179: Function Can't set size of SHM failed:
+
+==============================================================================
+Stage V2-04 open-junction impedance Mathematica audit
+==============================================================================
+
+------------------------------------------------------------------------------
+Reflection and transmission
+------------------------------------------------------------------------------
+PASS: pressure reflection
+PASS: pressure transmission
+PASS: dual flow reflection
+PASS: dual flow transmission
+PASS: energy reflection plus transmission
+PASS: large area pressure reflection
+PASS: large area flow reflection
+
+------------------------------------------------------------------------------
+Boundary limits
+------------------------------------------------------------------------------
+PASS: pressure derivative ratio
+PASS: flow derivative ratio
+PASS: low load pressure limit
+PASS: low load flow limit
+PASS: low load pressure amplitude
+PASS: low load flow derivative ratio
+
+------------------------------------------------------------------------------
+DC leakage
+------------------------------------------------------------------------------
+PASS: bulk radial continuity
+PASS: finite exit flux density
+PASS: hard cap flux singularity
+
+------------------------------------------------------------------------------
+Support ladders
+------------------------------------------------------------------------------
+PASS: DN first wavenumber
+PASS: DD first wavenumber
+
+EXPECTED NEGATIVE CONTROLS: hard cap with nonzero DC flux and generic pressure-scalar Neumann are rejected.
+All Stage V2-04 Mathematica checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,37 @@
+{
+  "schema": "stage_v2_23_tolerance_report/v1",
+  "branch_id": "v2_23_minimal_open_throat_frozen_demo",
+  "branch_freeze_hash": "0feee821ffec9b23f79d80bb4e176139f01fbffb3f1358607dad6597032592ae",
+  "mode_residuals": {
+    "wall_l2": 2.4378864038230424e-11,
+    "bdg": 1.7047331638835638e-11,
+    "U": 1.903469962436463e-11,
+    "W": 1.4509687913891787e-11,
+    "shape_stationarity": 5.6336261378917447e-14
+  },
+  "gates": {
+    "tolerances": {
+      "geometry_exit_min": 1e-08,
+      "stability_abs_min": 1e-10,
+      "target_rel_tol": 1e-06,
+      "formula_abs_tol": 1e-08
+    },
+    "open_gate_pass": true,
+    "stability_gate_pass": true,
+    "outgoing_transfer_gate_pass": true,
+    "target_packet_pass": false,
+    "relative_residuals": {
+      "R_pole_rel": 3.5651672150215887,
+      "R_norm_rel": 0.9981680447493235,
+      "R_P2_abs": 0.03325895725124173,
+      "R_P4_abs": 0.03655104524580064,
+      "R_tail_abs": 0.0
+    },
+    "failure_diagnosis": {
+      "dominant_residual": "R_pole_rel",
+      "normalization_ratio_P0_over_target": 0.0018319552506764493,
+      "one_pole_ratio_D0C_over_3A2": 0.014764180436792802
+    }
+  },
+  "report_hash": "e17facf0040abb172e48b8acff918fd4792970d0c31c20261aa4e7be456c4594"
+}

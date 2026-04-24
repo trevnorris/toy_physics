@@ -1,0 +1,62 @@
+# Python Audit Output
+# Script: stage_v2_17_weak_axisymmetric_splitting_sympy_audit.py
+# Date: 2026-04-24T10:44:13-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+STAGE V2-17 WEAK-AXISYMMETRIC SPLITTING AUDIT
+========================================================================
+total_checks: 54
+passed_checks: 54
+failed_checks: 0
+
+Angular triple-overlap values int Y_A Y20 Y_A dOmega:
+   20: sqrt(5)/(7*sqrt(pi)) = (1) * sqrt(5)/(7*sqrt(pi))
+  21c: sqrt(5)/(14*sqrt(pi)) = (1/2) * sqrt(5)/(7*sqrt(pi))
+  21s: sqrt(5)/(14*sqrt(pi)) = (1/2) * sqrt(5)/(7*sqrt(pi))
+  22c: -sqrt(5)/(7*sqrt(pi)) = (-1) * sqrt(5)/(7*sqrt(pi))
+  22s: -sqrt(5)/(7*sqrt(pi)) = (-1) * sqrt(5)/(7*sqrt(pi))
+
+Grouped weak-axisymmetric signature:
+  lambda = (1, 1/2, -1)
+  trace(lambda) = 0
+  a_lambda = 1/4
+  b_lambda = 3/4
+  b_lambda / a_lambda = 3
+
+Generic weak split x_A = x0 + eps lambda_A x1:
+  xbar = x0
+  a_x  = eps*x1/4
+  b_x  = 3*eps*x1/4
+
+Conservative-response transport:
+  u2 = -D2/D0
+  u2^(1) = -(D0*D21 - D01*D2)/D0**2
+
+Outgoing-prefactor transport:
+  P0 = N0/D0
+  P1 = (D0*N01 - D01*N0)/D0**2
+  Xi_1 = P1/P0 = (D0*N01 - D01*N0)/(D0*N0)
+
+Canonical hidden-even branch:
+  Baseline constraints: D2 = -D0/9, D4 = -D0/27
+  u2_base = 1/9
+  u4_base = 4/81
+  u2^(1) = -(D01 + 9*D21)/(9*D0)
+  u4^(1) = -(5*D01 + 18*D21 + 81*D41)/(81*D0)
+  u4^(1) - (8/9)u2^(1) = (D01 + 18*D21 - 27*D41)/(27*D0)
+  hidden-even condition = -(D01 + 18*D21 - 27*D41)/27
+  so hidden-even is equivalent to D41 = (2/3)D21 + D01/27
+
+Even-preserving compensated branch:
+  u2^(1)=0  <=>  D21 = -D01/9
+  hidden-even then requires D41 = -D01/27
+  remaining prefactor defect Xi_1 = (D0*N01 - D01*N0)/(D0*N0)
+
+FINAL STATUS: PASS
+Interpretation: weak axisymmetric l=2 splitting is one-dimensional, obeys b=3a,
+and leaves one transported outgoing-prefactor scalar Xi_1=P1/P0 after even compensation.
+
+EXIT_CODE: 0

@@ -16,28 +16,38 @@ The workflow is deliberately split into two phases:
    correctly reports that physical export is not yet permitted and that no
    physical packets were emitted.  The check also verifies source hashes and
    evidence phrases for every cited blocker and equation inventory item.
-4. `generate_nonlinear_packets.py` exports a small target-blind nonlinear
+4. `diagnose_notes_intake.py` checks the unincorporated 5PN, barrier,
+   atom/lepton, and `P22` note anchors.  It records that the notes support an
+   actual-branch extraction protocol, not post-hoc retuning of the current
+   frozen packets.  `ACTUAL_BRANCH_PROTOCOL_V1.md` is the resulting handoff
+   checklist for a future physical exporter.
+5. `generate_nonlinear_packets.py` exports a small target-blind nonlinear
    manufactured packet set under `output/nonlinear_packets/`, then the shared
    target-blind guard, evaluator, and obstruction diagnostic classify those
    frozen packets post-hoc.
-5. `generate_reduced_sweep.py` builds frozen V2-22B solver packets from a
+6. `generate_reduced_sweep.py` builds frozen V2-22B solver packets from a
    predeclared reduced open-throat FEM sweep.  It uses only the local
    `reduced_fem.py` primitives and does not import the V2-21, V2-22A, V2-22B,
    or V2-23 target-evaluation modules.
-6. `verify_target_blind.py` checks that the generator import boundary is still
+7. `verify_target_blind.py` checks that the generator import boundary is still
    target-blind and that frozen packets do not contain target-output fields.
-7. `evaluate_frozen_sweep.py` reads those frozen packets and runs the existing
+8. `evaluate_frozen_sweep.py` reads those frozen packets and runs the existing
    V2-22B -> V2-22A -> V2-21 audit chain.  Any target ranking in this phase is
    post-hoc classification only.
-8. `diagnose_obstruction.py` performs post-hoc one-pole obstruction accounting
+9. `diagnose_obstruction.py` performs post-hoc one-pole obstruction accounting
    on already-evaluated candidate reports.
-9. `diagnose_required_deformation.py` maps the frozen failures to required
+10. `diagnose_required_deformation.py` maps the frozen failures to required
    coefficient changes, including one-pole `C`/`D0` multipliers, `A`
    reductions, and normalization multipliers.  This is post-hoc only and does
    not generate or retune candidates.
-10. `diagnose_mechanism_gap.py` combines the deformation reports with the
+11. `diagnose_mechanism_gap.py` combines the deformation reports with the
     physical-model guard to state the current mechanism gap and the requirements
     for a future physical nonlinear exporter.
+12. `diagnose_projection_stress.py` runs post-hoc algebraic projection stress
+    tests.  It confirms that one-pole support alone and uniform outgoing
+    amplitude scaling are not enough, and that any zero-residual projection
+    would require independent outgoing moment-shape control.  It does not claim
+    a target-blind hit.
 
 Run:
 

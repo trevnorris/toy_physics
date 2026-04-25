@@ -2,7 +2,7 @@
   "artifacts": [
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/_summary.json",
-      "sha256": "091ba2ce723f005866bbc6742685f9c2a63df5aad26fcaa07fe8cb292f02f519"
+      "sha256": "dbcb0b09d413ca50a6a6da796cde9ee66237c47e5404cd61cc1b1bb573a4d778"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/candidate_reports/sim_reduced_open_throat_001_baseline_geometry__baseline_couplings__baseline_operator.json",
@@ -837,6 +837,10 @@
       "sha256": "ec5e575c088d0d7a00a235918c4b033706a1e32968112190a4e779a9dbf4da86"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/notes_intake_report.json",
+      "sha256": "d046e6163d0c9fd264370f9065a158c56177dec3c0448842e7107d22612e2f97"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/obstruction_report.json",
       "sha256": "e3a0928b126e3cd1211d4a27102593b6941b0aac23059c1c6ed676b44f88165d"
     },
@@ -1613,6 +1617,10 @@
       "sha256": "c194ab42a0fcd000092d200e063a6fc527e338e12b6701ebb88585b7fb8f45d6"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/projection_stress_report.json",
+      "sha256": "f72baf619a7e9873ae30115d173eaa425721421d708549a556f6e71c446f58c5"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/protocol.json",
       "sha256": "241513c6dd5cbfb4e34f09bd0f9ec684f1cc85616f014611385b7445c764ab9e"
     },
@@ -1783,6 +1791,45 @@
     "report_hash": "4df7478b78f6e053127051e750213efd4904865b904446f5c87a05f988b105e9",
     "target_residuals_computed": false
   },
+  "notes_intake": {
+    "actual_branch_packet_required": true,
+    "anchor_count": 16,
+    "atom_lepton_notes_are_ready_exporter": false,
+    "atom_lepton_notes_are_useful": true,
+    "failed_anchor_count": 0,
+    "outgoing_moment_shape_control_required": true,
+    "pass": true,
+    "primary_next_artifact": "actual_branch_protocol_v1",
+    "promotable_reduced_lanes": [
+      {
+        "name": "leakage_work",
+        "source_anchor": "leakage_work_support_side"
+      },
+      {
+        "name": "uv_dressing",
+        "source_anchor": "uv_dressing_candidate"
+      },
+      {
+        "name": "microscopic_export_kernel",
+        "source_anchor": "microscopic_export_kernel_candidate"
+      },
+      {
+        "name": "atomic_finite_throat_p22",
+        "source_anchor": "atomic_p22_finite_throat_shape_source"
+      },
+      {
+        "name": "radiative_scalar_p0_flux",
+        "source_anchor": "lepton_radiative_p0_flux_hook"
+      },
+      {
+        "name": "intrinsic_p22_bracing",
+        "source_anchor": "atom_work_intrinsic_p22_bracing"
+      }
+    ],
+    "report_hash": "eeb4e53412b0d5ec55b0660308e1764bbc3f09441549a14912e4aa166ba5d332",
+    "retune_current_candidates_allowed": false,
+    "support_source_bottleneck_active": false
+  },
   "obstruction": {
     "C_shortfall_distribution": {
       "max": 503.60848497949627,
@@ -1894,31 +1941,39 @@
   "outputs": [
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_mechanism_gap.txt",
-      "sha256": "f7ad6e526863acc9a52642256ca140b3d62e57930cfe1dc93815958ec62682ae"
+      "sha256": "d87dc3051c75b0a65294058ca9e4e6f8751a2b341562b693341de7d4f6d33dc8"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_nonlinear_obstruction.txt",
-      "sha256": "166735486601cf223354897792143b3c45a3774eb595c227ae798204ccaf43cd"
+      "sha256": "4a5f6a9471cfc7305eb1c77b5f64bcbfeb67d9f0bc3552b12a6fca1729dbdd2f"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_nonlinear_required_deformation.txt",
-      "sha256": "2a44dbc399678e465df73d5b003716d8cc4f1791a12d4e3e2e00ddefb5ddc893"
+      "sha256": "f8e708f9812052fcd00d452466ec65cc8ada38d5888b48c9b5b4db050d1e5865"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_notes_intake.txt",
+      "sha256": "a448888d6cb4edf63425875ee35157ac8b1312d9af4d44b813a837d9357973d2"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_obstruction.txt",
-      "sha256": "6ad5a4aebf36ba7902098dcfd1a3e44c32833d2b13e63070d0bc051c21951265"
+      "sha256": "17797190f677a37b352987c89cd1281b4c9103388f510f7097f59c5dde3539e2"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_projection_stress.txt",
+      "sha256": "7331708007ecda7974efdeb46a480b6046b31dfae14ab1910140ad0af6ed5785"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/diagnose_required_deformation.txt",
-      "sha256": "9d2f89a15c9a53e7ae29856b246865b312d017d4bfa1f5cd803aca0a242f7c16"
+      "sha256": "598d5539aca788e0867535301739e2fdaa26bb224095089d9f5694feec1a4c71"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/evaluate_frozen_sweep.txt",
-      "sha256": "1e18f6f37e81f2155d668c81933d8141e88e5a6150b6f39785b9fd060a602bff"
+      "sha256": "03aee92a76bcf86d4855f0d488045f5b84f4c2db0595e9f53f49e4ab3bd907f4"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/evaluate_nonlinear_frozen_sweep.txt",
-      "sha256": "1dc39ddf071ab85223c49fc681494b996496870b38120e48d0e93dec8700898a"
+      "sha256": "9b6082e097775457b8d23254444fb68267f185d02d114691064ffc0bc88f83c4"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/evaluation_summary.txt",
@@ -1926,11 +1981,11 @@
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/generate_nonlinear_packets.txt",
-      "sha256": "ccfa03bd4a09c6a432497d74fcc43f3725785ce75a6febbde9de80d25c388469"
+      "sha256": "f4a54bfb3d80099b1013340c2cc619b614c4902d33952b48df4a3611465342b6"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/generate_reduced_sweep.txt",
-      "sha256": "ea390bd572ed00e6b57c04749cb514321ff939cbcefb2000b85765675044d83f"
+      "sha256": "dd92ff2fcefc9c721c2db0bf293fe441a051ed4744b4b651a9374592c888746e"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/mechanism_gap_report.txt",
@@ -1957,12 +2012,20 @@
       "sha256": "6de6e3142bd06e31d2a8dae4176d5b90735d67005cad536ba84cca66fdaae017"
     },
     {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/notes_intake_report.txt",
+      "sha256": "e523f0348cb20bde41a49d9004c200f1612cf79d35699fabcb774426075a980a"
+    },
+    {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/obstruction_report.txt",
       "sha256": "3edc1045a3ae2315a39e4350bc8399b8ec880c386cf0e590794217ca83105689"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/physical_model_status.txt",
       "sha256": "9f4e97f8bf67a7f2be72c82a501c2dadcef422096b1a85fc1ee74e147021934c"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/projection_stress_report.txt",
+      "sha256": "dd61c9e959f006e60ea94c96bd93ca677d39aac83b5805126dd1afe129efa724"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/reduced_fem_verification.txt",
@@ -1978,26 +2041,26 @@
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/verify_nonlinear_solver.txt",
-      "sha256": "bcfe732e494b72d8be92609b180bf4e12d7501cf314c04d45a048b62d63dc065"
+      "sha256": "ea3ba65d10d3c064870357ab2e19a06de3d5513803606f389a756986b773847a"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/verify_nonlinear_target_blind.txt",
-      "sha256": "ee15b9910167ffdce6e0d1f766da21fced6b9b4d5f074a33f0aae6c7aeb0e03e"
+      "sha256": "3efd3184bd56e6bc412bfb8a06e8916547ac6cc9217862db6c54a2950916e827"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/verify_physical_model.txt",
-      "sha256": "98ed693616be270ee7766bea6f0614a3eb762d3b60f2bc35195a073313a7f585"
+      "sha256": "47c106082148c7d053587dc6b6047212944fa0d5cab2d0d6c62010396fbe8ea8"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/verify_reduced_fem.txt",
-      "sha256": "f5f090c3aed5a5e7e4c0c3649b6393c65cc916b72ffab939cbc73475c06cfa16"
+      "sha256": "f90f4a8b3da3145aa7760ac53fbcaabd1c97d22e146c116d6b3d960d2fb4af4e"
     },
     {
       "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/verify_target_blind.txt",
-      "sha256": "e2fc539ed92ee7333d2f526ac2fc0efa2e7ac6c8818d5df12024f7176b76de2c"
+      "sha256": "b7370557aec3579d606c903ad82d71c8a51979e8ddcc9428be3a4cee65f9e9b5"
     }
   ],
-  "passed": 14,
+  "passed": 16,
   "physical_model_status": {
     "blocker_count": 4,
     "checks": [
@@ -2032,6 +2095,19 @@
     "status_hash": "5902cca810120510f74f07da68a79466bf8cdc32aebc75b5acee975dfa6bcfca",
     "strict_parent_dynamic_wall_pass": false,
     "target_residuals_computed": false
+  },
+  "projection_stress": {
+    "candidate_generation_mutated": false,
+    "nonlinear_one_pole_only_best_score": 0.9993613212649003,
+    "nonlinear_uniform_outgoing_scale_best_score": 13.204508938550804,
+    "one_pole_support_alone_is_insufficient": true,
+    "pass": true,
+    "post_hoc_only": true,
+    "reduced_one_pole_only_best_score": 0.9993696544719584,
+    "reduced_uniform_outgoing_scale_best_score": 13.427497545278147,
+    "report_hash": "8dbffbead60206fd376421612257349308d0eaff9b8ab265c9b7233f7207c614",
+    "target_blind_hit_claimed": false,
+    "uniform_outgoing_amplitude_scale_is_insufficient": true
   },
   "reduced_fem_verification": {
     "checks": [
@@ -2094,5 +2170,5 @@
     "report_hash": "0745fd8bcb142f4bfc5ea2ef76cf41bfb537c55fee38e5334e4fd5b506104ee2",
     "source_imports_pass": true
   },
-  "total": 14
+  "total": 16
 }

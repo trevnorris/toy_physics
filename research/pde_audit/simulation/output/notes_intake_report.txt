@@ -1,0 +1,28 @@
+PDE audit notes-intake report
+==================================
+pass: True
+anchor_count: 16
+failed_anchor_count: 0
+does_more_derivation_help: True
+actual_branch_packet_required: True
+support_source_bottleneck_active: False
+retune_current_candidates_allowed: False
+outgoing_moment_shape_control_required: True
+primary_next_artifact: actual_branch_protocol_v1
+report_hash: eeb4e53412b0d5ec55b0660308e1764bbc3f09441549a14912e4aa166ba5d332
+PASS  fivepn_computational_handoff
+PASS  fivepn_final_packet_shape
+PASS  family1_support_non_bottleneck
+PASS  barrier_actual_branch_finish_line
+PASS  strict_parent_wall_status
+PASS  no_refit_status_firewall
+PASS  uv_dressing_candidate
+PASS  microscopic_export_kernel_candidate
+PASS  constant_prefactor_target_equations
+PASS  outgoing_support_blind_split
+PASS  leakage_work_support_side
+PASS  atomic_p22_finite_throat_shape_source
+PASS  lepton_radiative_p0_flux_hook
+PASS  lepton_scalar_hammer_p22_veto
+PASS  atom_work_intrinsic_p22_bracing
+PASS  simulation_coefficient_map

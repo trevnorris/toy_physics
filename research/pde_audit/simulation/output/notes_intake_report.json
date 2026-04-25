@@ -1,0 +1,634 @@
+{
+  "actual_branch_finish_line": {
+    "constant_prefactor_shape_equations": [
+      "N_2 = 2 D_2 N_0 / D_0",
+      "N_4 = (2 D_0 (D_2 N_2 + D_4 N_0) - 3 D_2^2 N_0) / D_0^2"
+    ],
+    "finish_line_conditions": [
+      "dln_R_tr = 0",
+      "dln_R_target = 0",
+      "dln_epsilon_eta = 0",
+      "N_Q = 1"
+    ],
+    "packet_A_fields": [
+      "D_A0",
+      "D_A2",
+      "D_A4",
+      "N_A0",
+      "N_A2",
+      "N_A4",
+      "mhat_0"
+    ],
+    "packet_B_alternatives": [
+      [
+        "m_T",
+        "m_K",
+        "m_mu"
+      ],
+      [
+        "R_tr",
+        "R_nt",
+        "R_eta"
+      ],
+      [
+        "q_tr",
+        "q_nt",
+        "q_eta"
+      ]
+    ],
+    "simulation_aliases": {
+      "A": "-D_2 = M + B2 + Z2",
+      "C": "-D_4 = B4 + Z4",
+      "D0": "K - B0 - Z0",
+      "P0": "N0/D0",
+      "P2": "(D0*N2 + 2*A*N0)/D0^2",
+      "P4": "(D0^2*N4 + 2*D0*(A*N2 + C*N0) + 3*A^2*N0)/D0^3",
+      "one_pole_surface": "D0*C/(3*A^2) = 1"
+    }
+  },
+  "anchor_count": 16,
+  "anchors": [
+    {
+      "exists": true,
+      "id": "fivepn_computational_handoff",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 5,
+          "pattern": "The reduced theorem side is now essentially closed."
+        },
+        {
+          "found": true,
+          "line": 7,
+          "pattern": "The current chain has already reduced the problem to four finish-line conditions on the actual PDE-selected branch:"
+        },
+        {
+          "found": true,
+          "line": 12,
+          "pattern": "`N_Q = 1`"
+        },
+        {
+          "found": true,
+          "line": 16,
+          "pattern": "What is still missing is the **actual PDE-selected orbit-lock point**"
+        },
+        {
+          "found": true,
+          "line": 357,
+          "pattern": "Do **not** manually project it back onto the canonical outgoing branch just to make the theorem pass."
+        },
+        {
+          "found": true,
+          "line": 361,
+          "pattern": "Because `zeta` drops out of the orbit packet exactly"
+        }
+      ],
+      "role": "Defines the remaining actual-branch computation after reduced algebra.",
+      "source": "notes/5pn/5pn_stage354_355_computational_handoff.md",
+      "source_sha256": "ba1f85bd98c9e283b9ce7b8de6b39c70b13307d730d494881b22e09ee82ed0ba"
+    },
+    {
+      "exists": true,
+      "id": "fivepn_final_packet_shape",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 154,
+          "pattern": "Compute **Packet A** from the actual moving-throat branch:"
+        },
+        {
+          "found": true,
+          "line": 159,
+          "pattern": "together with `mhat_0`."
+        },
+        {
+          "found": true,
+          "line": 161,
+          "pattern": "Compute **Packet B** from the actual branch:"
+        },
+        {
+          "found": true,
+          "line": 185,
+          "pattern": "The symbolic stage is finished."
+        }
+      ],
+      "role": "Freezes Packet A/Packet B as the next actual-branch payloads.",
+      "source": "notes/5pn/5pn_final_wrap_up.md",
+      "source_sha256": "1555d251740ad47cfc9a4e0062003e1147754ab0e53628ba2386c3eaf623bf76"
+    },
+    {
+      "exists": true,
+      "id": "family1_support_non_bottleneck",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 120,
+          "pattern": "So the support/source side is no longer just"
+        },
+        {
+          "found": true,
+          "line": 128,
+          "pattern": "on the canonical compact passive/outgoing branch one still has"
+        },
+        {
+          "found": true,
+          "line": 134,
+          "pattern": "What is **still not numerically present in the files** is a completed PDE-selected point"
+        }
+      ],
+      "role": "Shows the explicit support/source branch is not the active bottleneck.",
+      "source": "notes/5pn/5pn_stage350_351_family1_branch_location.md",
+      "source_sha256": "bd6c4c4393376f3c33f985eefab83555a7c112fc77a9a481401df7fc4a6b64d4"
+    },
+    {
+      "exists": true,
+      "id": "barrier_actual_branch_finish_line",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 103,
+          "pattern": "support/source enhancement is already strong enough;"
+        },
+        {
+          "found": true,
+          "line": 105,
+          "pattern": "the remaining unresolved kill test is the actual coherent placement / orbit packet together with outgoing normalization."
+        },
+        {
+          "found": true,
+          "line": 107,
+          "pattern": "So the final answer depends on the actual moving-throat branch data, not on another broad unresolved coefficient family."
+        }
+      ],
+      "role": "Separates reduced corridor survival from final actual-branch verdict.",
+      "source": "notes/summaries/barrier_audit_summary.md",
+      "source_sha256": "830991914529af6b0020365583051b76620249859133db0b31eeff7142eab2e0"
+    },
+    {
+      "exists": true,
+      "id": "strict_parent_wall_status",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 5235,
+          "pattern": "the wall PDE in Sections `3-4` is an effective closure."
+        },
+        {
+          "found": true,
+          "line": 6454,
+          "pattern": "Wall PDE strict parent status: requires + S_Sigma[Sigma]"
+        },
+        {
+          "found": true,
+          "line": 5729,
+          "pattern": "Do not treat"
+        }
+      ],
+      "role": "Preserves the strict-parent versus effective-wall firewall.",
+      "source": "notes/moving_throat_pde_program_compact.md",
+      "source_sha256": "27b4cf014adffc3c681d334fc18e058e67364b90b1982072a4440adfdaba602d"
+    },
+    {
+      "exists": true,
+      "id": "no_refit_status_firewall",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 5877,
+          "pattern": "Define the parent action, gauge convention, wall/interface action, open-exit boundary protocol, projection/source map, support-profile family, number of modes/ports, stability gates, and extraction formulas **before** evaluating any target residual."
+        },
+        {
+          "found": true,
+          "line": 6216,
+          "pattern": "A branch may be accepted only if the frozen pre-target packet produces stable coefficients satisfying the target residuals."
+        },
+        {
+          "found": true,
+          "line": 6216,
+          "pattern": "A branch may not be rescued by changing mode support"
+        }
+      ],
+      "role": "Requires pre-target branch freeze and forbids post-hoc rescues.",
+      "source": "notes/pde_audit_full.md",
+      "source_sha256": "d9796deaa1c5d1c7e00875827ae760e9ae5e4e7af6b332b7af174b36c49f7f00"
+    },
+    {
+      "exists": true,
+      "id": "uv_dressing_candidate",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 128,
+          "pattern": "Reduced non-rigid mouth/dressing free energy"
+        },
+        {
+          "found": true,
+          "line": 200,
+          "pattern": "The stationarity equations are linear:"
+        },
+        {
+          "found": true,
+          "line": 216,
+          "pattern": "Then the exact stationary packet is"
+        },
+        {
+          "found": true,
+          "line": 194,
+          "pattern": "So the dressing activation is a genuinely non-rigid effect rather than a rephrasing of the old transfer leg."
+        }
+      ],
+      "role": "Promotable reduced U/V dressing lane for a future physical exporter.",
+      "source": "research/pde_ledger/notes/stages/moving_throat_pde_stage228_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md",
+      "source_sha256": "8b371a170a7eba8a456c752942e26e806d87f67c75178f4284fee21a99559655"
+    },
+    {
+      "exists": true,
+      "id": "microscopic_export_kernel_candidate",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 168,
+          "pattern": "Selected mixed quadrupole outlet"
+        },
+        {
+          "found": true,
+          "line": 195,
+          "pattern": "First microscopic export kernel"
+        },
+        {
+          "found": true,
+          "line": 210,
+          "pattern": "The first microscopic law is **super-Ohmic**"
+        },
+        {
+          "found": true,
+          "line": 224,
+          "pattern": "the first microscopic active-leg equation is"
+        }
+      ],
+      "role": "Promotable odd passive/export kernel, but not an even N2/N4 shape controller by itself.",
+      "source": "research/pde_ledger/notes/stages/moving_throat_pde_stage234_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md",
+      "source_sha256": "9d2905db71c541463a5ff8434b3a9c3c93c150609ad4c1fcbfba594ce7b42087"
+    },
+    {
+      "exists": true,
+      "id": "constant_prefactor_target_equations",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 326,
+          "pattern": "`P_2 = 0`,"
+        },
+        {
+          "found": true,
+          "line": 328,
+          "pattern": "`P_4 = 0`."
+        },
+        {
+          "found": true,
+          "line": 332,
+          "pattern": "`N_2 = 2 D_2 N_0 / D_0`,"
+        },
+        {
+          "found": true,
+          "line": 336,
+          "pattern": "outgoing-transfer moments `N_2,N_4` to be correlated"
+        }
+      ],
+      "role": "Defines the exact N2/N4 correlation target for outgoing moment shape.",
+      "source": "research/pde_ledger/notes/stages/moving_throat_pde_stage006_full_grouped_bundle.md",
+      "source_sha256": "e8b5dc6c49adc24a367396fbb6da9ab2a63e131bd704352efc4866665c125f8f"
+    },
+    {
+      "exists": true,
+      "id": "outgoing_support_blind_split",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 130,
+          "pattern": "Exact support-blind theorem for the outgoing-transfer bundle"
+        },
+        {
+          "found": true,
+          "line": 151,
+          "pattern": "is **exactly support-blind** in the explicit BdG pair"
+        },
+        {
+          "found": true,
+          "line": 163,
+          "pattern": "the **outgoing transfer side** is support-blind"
+        },
+        {
+          "found": true,
+          "line": 164,
+          "pattern": "the **conservative wall operator** is not."
+        }
+      ],
+      "role": "Shows support tuning alone cannot control the outgoing transfer moments.",
+      "source": "notes/5pn/5pn_stage205_normalized_packet_bridge.md",
+      "source_sha256": "edde151bc4f249ad9ec35a8e1012cde70ae93a5e2107b6004953ee2f28a4b643"
+    },
+    {
+      "exists": true,
+      "id": "leakage_work_support_side",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 34,
+          "pattern": "proves that the whole leakage/work lane is **support-side**, not orbit-side."
+        },
+        {
+          "found": true,
+          "line": 441,
+          "pattern": "This proves that Stage 227 is a **selected-support compiler**, not an orbit-lock compiler."
+        },
+        {
+          "found": true,
+          "line": 561,
+          "pattern": "The leakage/work lane depends only on the support-side variables"
+        }
+      ],
+      "role": "Promotable leakage/work lane, explicitly support-side rather than orbit-side.",
+      "source": "research/pde_ledger/notes/stages/moving_throat_pde_stage227_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md",
+      "source_sha256": "e945c9118e5a46af7973700ec910ddccc5713a5cb5c4a8d1839fe19d0b5f2981"
+    },
+    {
+      "exists": true,
+      "id": "atomic_p22_finite_throat_shape_source",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 562,
+          "pattern": "the first shape-sensitive atomic load is not the raw Coulomb depth itself"
+        },
+        {
+          "found": true,
+          "line": 627,
+          "pattern": "the first shape-sensitive external loading on a defect is governed by the partner-field Hessian"
+        },
+        {
+          "found": true,
+          "line": 647,
+          "pattern": "which is precisely the reduced atomic realization of the already inherited \\(P_0\\oplus P_2\\) support hierarchy."
+        },
+        {
+          "found": true,
+          "line": 721,
+          "pattern": "pure Coulomb loading excites the quadrupolar $P_2$ response channel"
+        },
+        {
+          "found": true,
+          "line": 945,
+          "pattern": "The finite-throat kernel therefore matches the point-source tide in the far field but softens to zero at overlap"
+        }
+      ],
+      "role": "Concrete finite-throat P0/P2 mouth source and P22 shape-response physics.",
+      "source": "notes/atomic_p22_bridge/paper/atomic_p22_bridge.tex",
+      "source_sha256": "d75d1a9134e1e21306f4f3618b4fce3d613072345f4fa7dcf5cf9d9dbf84e531"
+    },
+    {
+      "exists": true,
+      "id": "lepton_radiative_p0_flux_hook",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 1104,
+          "pattern": "The exact mouth operator on the D/N branch is"
+        },
+        {
+          "found": true,
+          "line": 1125,
+          "pattern": "Exact quantum-geometric hammer stress"
+        },
+        {
+          "found": true,
+          "line": 1605,
+          "pattern": "a nonzero DC mouth source exists only on an explicitly open / radiative branch."
+        },
+        {
+          "found": true,
+          "line": 1629,
+          "pattern": "\\dot M_{\\rm mouth}^{\\rm(dc,rad)}"
+        }
+      ],
+      "role": "Concrete open/radiative scalar mouth-flux hook for future P0 normalization work.",
+      "source": "notes/lepton_mass_notes.md",
+      "source_sha256": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06"
+    },
+    {
+      "exists": true,
+      "id": "lepton_scalar_hammer_p22_veto",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 2701,
+          "pattern": "The first is a symmetry veto: the exact scalar mouth hammer does **not** linearly drive the area-preserving \\(P_{22}\\) ellipse."
+        },
+        {
+          "found": true,
+          "line": 2729,
+          "pattern": "The scalar \\(P_0\\) hammer does zero linear work on the \\(P_{22}\\) mouth mode"
+        },
+        {
+          "found": true,
+          "line": 2755,
+          "pattern": "\\boxed{P_0\\text{ hammer} \\not\\to P_{22}\\text{ oscillator at linear order.}}"
+        }
+      ],
+      "role": "Rules out using scalar P0 hammering as direct P22/N2/N4 moment-shape control.",
+      "source": "notes/lepton_mass_notes.md",
+      "source_sha256": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06"
+    },
+    {
+      "exists": true,
+      "id": "atom_work_intrinsic_p22_bracing",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 1533,
+          "pattern": "Intrinsic core stress as a permanent quadrupole bracer"
+        },
+        {
+          "found": true,
+          "line": 1580,
+          "pattern": "So the atomic tide no longer has to create \\(P_{22}\\) from nothing."
+        },
+        {
+          "found": true,
+          "line": 1803,
+          "pattern": "So the intrinsic \\(P_{22}\\) source is no longer a placeholder."
+        },
+        {
+          "found": true,
+          "line": 1800,
+          "pattern": "\\boxed{h_\\alpha>0.}"
+        }
+      ],
+      "role": "Concrete intrinsic P22 bracing source conditional on half-flux/mixed-sector closure.",
+      "source": "notes/atom_work.md",
+      "source_sha256": "af46afa135316af44a058b107bcc41e924248aff27e50100a38904c8b1140d9a"
+    },
+    {
+      "exists": true,
+      "id": "simulation_coefficient_map",
+      "issues": [],
+      "pass": true,
+      "patterns": [
+        {
+          "found": true,
+          "line": 22,
+          "pattern": "## 1. Isotropic full-bundle definitions"
+        },
+        {
+          "found": true,
+          "line": 71,
+          "pattern": "The outgoing prefactor is defined by"
+        },
+        {
+          "found": true,
+          "line": 121,
+          "pattern": "so the exact one-pole surface is"
+        },
+        {
+          "found": true,
+          "line": 272,
+          "pattern": "The constant-prefactor branch requires"
+        },
+        {
+          "found": true,
+          "line": 312,
+          "pattern": "On the one-pole surface `D_0C=3A^2`, this simplifies to"
+        }
+      ],
+      "role": "Maps simulation A/C/D0 and outgoing prefactor residuals to reduced D/N moments.",
+      "source": "research/pde_audit/notes/stage_v2_19_isotropic_full_bundle_target_surface_derivation.md",
+      "source_sha256": "afa480b95d1eca432c990db6291feecf29668e371d8a1e5cd782d1b408dd6f04"
+    }
+  ],
+  "candidate_generation_mutated": false,
+  "conclusion": {
+    "actual_branch_packet_required": true,
+    "atom_lepton_gap": "The atom/lepton notes provide finite-throat P0/P2 forcing, scalar radiative P0 flux hooks, and intrinsic P22 bracing. They do not yet provide a calibrated actual-branch map into D0, C, P0, N2, and N4.",
+    "atom_lepton_notes_are_ready_exporter": false,
+    "atom_lepton_notes_are_useful": true,
+    "does_it_license_retuning_current_candidates": false,
+    "does_more_derivation_help": true,
+    "how_it_helps": "The notes narrow the next simulation task to an actual moving-throat branch extraction with frozen parent/action, support, outgoing, and orbit-lock packets.",
+    "missing_physics_interpretation": "The current exporter lacks the physical branch equations needed to select Packet A/Packet B and outgoing moment shape.  That is missing branch-realization physics in the simulation layer, not a proof that the symbolic target surface is inconsistent.",
+    "one_pole_support_alone_is_not_enough": true,
+    "outgoing_moment_shape_control_required": true,
+    "primary_next_artifact": "actual_branch_protocol_v1",
+    "retuning_reason": "The notes repeatedly require pre-target freeze and warn against projecting realized branches back onto canonical outgoing or support surfaces after residuals are known.",
+    "strict_parent_or_effective_closure_must_be_declared": true,
+    "support_source_bottleneck_active": false,
+    "uniform_outgoing_scale_alone_is_not_enough": true
+  },
+  "failed_anchor_count": 0,
+  "failed_anchors": [],
+  "pass": true,
+  "post_hoc_only": true,
+  "promotable_reduced_lanes": [
+    {
+      "caveat": "not an orbit-lock compiler",
+      "name": "leakage_work",
+      "recommended_use": "support-side source/work accounting only",
+      "source_anchor": "leakage_work_support_side"
+    },
+    {
+      "caveat": "must be frozen before target residuals and coupled to a real branch exporter",
+      "name": "uv_dressing",
+      "recommended_use": "non-rigid mouth/dressing branch component",
+      "source_anchor": "uv_dressing_candidate"
+    },
+    {
+      "caveat": "does not by itself supply independent even N2/N4 outgoing moment-shape control",
+      "name": "microscopic_export_kernel",
+      "recommended_use": "odd passive/export term in the active V equation",
+      "source_anchor": "microscopic_export_kernel_candidate"
+    },
+    {
+      "caveat": "static shape/source physics, not a calibrated outgoing N2/N4 transfer law",
+      "name": "atomic_finite_throat_p22",
+      "recommended_use": "replace point-source forcing with finite-throat P0/P2 and P22 response sources",
+      "source_anchor": "atomic_p22_finite_throat_shape_source"
+    },
+    {
+      "caveat": "constitutive response coefficient and coupling to exporter P0 remain unresolved",
+      "name": "radiative_scalar_p0_flux",
+      "recommended_use": "candidate scalar P0 normalization hook on an explicitly open/radiative branch",
+      "source_anchor": "lepton_radiative_p0_flux_hook"
+    },
+    {
+      "caveat": "conditional on half-flux/mixed-sector closure and still not an outgoing N2/N4 law",
+      "name": "intrinsic_p22_bracing",
+      "recommended_use": "candidate intrinsic P22 mouth-shape source for future branch equations",
+      "source_anchor": "atom_work_intrinsic_p22_bracing"
+    }
+  ],
+  "recommended_work_packages": [
+    {
+      "id": "WP0",
+      "name": "freeze_protocol",
+      "requirement": "Declare parent action or effective closure, gauge, boundary class, support basis, ports, stability gates, and extraction formulas before target evaluation."
+    },
+    {
+      "id": "WP1",
+      "name": "stationary_isotropic_branch",
+      "requirement": "Solve or continue the completed stationary branch without target feedback."
+    },
+    {
+      "id": "WP2",
+      "name": "packet_A_and_outgoing_export",
+      "requirement": "Extract D/N moments, mhat_0, N_Q or chi_Q, and source hashes from the realized branch."
+    },
+    {
+      "id": "WP3",
+      "name": "weak_axisymmetric_tangent",
+      "requirement": "Extract the first tangent needed for orbit-lock diagnostics on the same branch."
+    },
+    {
+      "id": "WP4",
+      "name": "orbit_lock_packet",
+      "requirement": "Evaluate dln_R_tr, dln_R_target, and dln_epsilon_eta without mixing in support enhancement."
+    },
+    {
+      "id": "WP5",
+      "name": "frozen_verdict",
+      "requirement": "Run the existing target-blind guard and post-hoc evaluator against the frozen actual-branch packet."
+    }
+  ],
+  "report_hash": "eeb4e53412b0d5ec55b0660308e1764bbc3f09441549a14912e4aa166ba5d332",
+  "schema": "pde_audit_simulation_notes_intake_report/v1",
+  "target_blind_hit_claimed": false,
+  "target_residuals_used_to_generate_candidates": false
+}

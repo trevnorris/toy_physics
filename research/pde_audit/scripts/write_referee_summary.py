@@ -79,11 +79,13 @@ def main() -> int:
             "reduced_fem_verification": simulation_summary.get("reduced_fem_verification"),
             "nonlinear_readiness": simulation_summary.get("nonlinear_readiness"),
             "physical_model_status": simulation_summary.get("physical_model_status"),
+            "notes_intake": simulation_summary.get("notes_intake"),
             "nonlinear_export": simulation_summary.get("nonlinear_export"),
             "target_blind_guard": simulation_summary.get("target_blind_guard"),
             "obstruction": simulation_summary.get("obstruction"),
             "required_deformation": simulation_summary.get("required_deformation"),
             "mechanism_gap": simulation_summary.get("mechanism_gap"),
+            "projection_stress": simulation_summary.get("projection_stress"),
         },
         "mathematica_summary": {
             "path": str(audit_dir / "mathematica" / "output" / "_summary.json"),
@@ -147,6 +149,17 @@ def main() -> int:
                 f"blockers {physical_model.get('blocker_count')}, "
                 f"packets_emitted {physical_model.get('packets_emitted')}\n"
             )
+        notes_intake = simulation_summary.get("notes_intake") or {}
+        if notes_intake:
+            f.write(
+                "SIMULATION_NOTES_INTAKE: "
+                f"pass {notes_intake.get('pass')}, "
+                f"anchors {notes_intake.get('anchor_count')}, "
+                f"failed {notes_intake.get('failed_anchor_count')}, "
+                f"actual_branch_packet {notes_intake.get('actual_branch_packet_required')}, "
+                f"retune_allowed {notes_intake.get('retune_current_candidates_allowed')}, "
+                f"moment_shape_required {notes_intake.get('outgoing_moment_shape_control_required')}\n"
+            )
         nonlinear_export = simulation_summary.get("nonlinear_export") or {}
         if nonlinear_export:
             f.write(
@@ -207,6 +220,15 @@ def main() -> int:
                 f"reduced_gap {mechanism_gap.get('reduced_gap_class')}, "
                 f"nonlinear_gap {mechanism_gap.get('nonlinear_gap_class')}, "
                 f"local_continuation {mechanism_gap.get('local_continuation_recommended')}\n"
+            )
+        projection = simulation_summary.get("projection_stress") or {}
+        if projection:
+            f.write(
+                "SIMULATION_PROJECTION_STRESS: "
+                f"pass {projection.get('pass')}, "
+                f"hit_claimed {projection.get('target_blind_hit_claimed')}, "
+                f"one_pole_only_best {projection.get('reduced_one_pole_only_best_score')}, "
+                f"uniform_scale_best {projection.get('reduced_uniform_outgoing_scale_best_score')}\n"
             )
         f.write(
             "MATHEMATICA: "

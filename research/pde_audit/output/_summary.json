@@ -10,7 +10,7 @@
     },
     "mathematica_environment_output": {
       "path": "/var/projects/toy_physics/research/pde_audit/mathematica/output/_environment.txt",
-      "sha256": "648f759d0bb65affc3950bab3dea09e3fc25830a7f8321e6c3bc9f42fc41626d"
+      "sha256": "ce1566e2b75fdedc161d863ecf10d40ab8e37b20f5bdb73bc5c7b950241710ab"
     },
     "platform": "Linux-6.17.9-76061709-generic-x86_64-with-glibc2.35",
     "python": "3.10.12",
@@ -178,6 +178,45 @@
       "report_hash": "4df7478b78f6e053127051e750213efd4904865b904446f5c87a05f988b105e9",
       "target_residuals_computed": false
     },
+    "notes_intake": {
+      "actual_branch_packet_required": true,
+      "anchor_count": 16,
+      "atom_lepton_notes_are_ready_exporter": false,
+      "atom_lepton_notes_are_useful": true,
+      "failed_anchor_count": 0,
+      "outgoing_moment_shape_control_required": true,
+      "pass": true,
+      "primary_next_artifact": "actual_branch_protocol_v1",
+      "promotable_reduced_lanes": [
+        {
+          "name": "leakage_work",
+          "source_anchor": "leakage_work_support_side"
+        },
+        {
+          "name": "uv_dressing",
+          "source_anchor": "uv_dressing_candidate"
+        },
+        {
+          "name": "microscopic_export_kernel",
+          "source_anchor": "microscopic_export_kernel_candidate"
+        },
+        {
+          "name": "atomic_finite_throat_p22",
+          "source_anchor": "atomic_p22_finite_throat_shape_source"
+        },
+        {
+          "name": "radiative_scalar_p0_flux",
+          "source_anchor": "lepton_radiative_p0_flux_hook"
+        },
+        {
+          "name": "intrinsic_p22_bracing",
+          "source_anchor": "atom_work_intrinsic_p22_bracing"
+        }
+      ],
+      "report_hash": "eeb4e53412b0d5ec55b0660308e1764bbc3f09441549a14912e4aa166ba5d332",
+      "retune_current_candidates_allowed": false,
+      "support_source_bottleneck_active": false
+    },
     "obstruction": {
       "C_shortfall_distribution": {
         "max": 503.60848497949627,
@@ -293,7 +332,7 @@
       "stability_gate_pass": 189,
       "tail_transport_pass": 192
     },
-    "passed": 14,
+    "passed": 16,
     "path": "/var/projects/toy_physics/research/pde_audit/simulation/output/_summary.json",
     "physical_model_status": {
       "blocker_count": 4,
@@ -329,6 +368,19 @@
       "status_hash": "5902cca810120510f74f07da68a79466bf8cdc32aebc75b5acee975dfa6bcfca",
       "strict_parent_dynamic_wall_pass": false,
       "target_residuals_computed": false
+    },
+    "projection_stress": {
+      "candidate_generation_mutated": false,
+      "nonlinear_one_pole_only_best_score": 0.9993613212649003,
+      "nonlinear_uniform_outgoing_scale_best_score": 13.204508938550804,
+      "one_pole_support_alone_is_insufficient": true,
+      "pass": true,
+      "post_hoc_only": true,
+      "reduced_one_pole_only_best_score": 0.9993696544719584,
+      "reduced_uniform_outgoing_scale_best_score": 13.427497545278147,
+      "report_hash": "8dbffbead60206fd376421612257349308d0eaff9b8ab265c9b7233f7207c614",
+      "target_blind_hit_claimed": false,
+      "uniform_outgoing_amplitude_scale_is_insufficient": true
     },
     "reduced_fem_verification": {
       "checks": [
@@ -396,62 +448,62 @@
       "source_imports_pass": true
     },
     "target_pass_count": 0,
-    "total": 14,
+    "total": 16,
     "validation_pass_count": 192
   },
   "top_level_checks": [
     {
-      "date": "2026-04-24T14:21:02-06:00",
+      "date": "2026-04-24T15:30:40-06:00",
       "elapsed": "0s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "fixture_manifest",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/fixture_manifest.txt",
-      "output_sha256": "5b21720acbc89ce659ede3afda3ff7437b99706befe5b586682c5128c7dbac47",
+      "output_sha256": "7cfef0241f6a366403ed25162e54d1e25074b692397c6bca4901be483374c2b0",
       "script": "fixture_manifest",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T14:23:17-06:00",
+      "date": "2026-04-24T15:32:52-06:00",
       "elapsed": "26s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "mathematica_audits",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/mathematica_audits.txt",
-      "output_sha256": "a66441b19eac67d601395250fb677e8cd0786fac8747b4555e37faf50decce74",
+      "output_sha256": "1a9d00c71357ec562429f6f7d25a950a924a2e6c8ba19b661fb6cb7b7723c271",
       "script": "mathematica_audits",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T14:21:47-06:00",
-      "elapsed": "45s",
+      "date": "2026-04-24T15:31:24-06:00",
+      "elapsed": "44s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "python_audits",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/python_audits.txt",
-      "output_sha256": "654ecbd561491edbf9f872951d073dcf0d2c5f725b832751d2ac559ee3935c87",
+      "output_sha256": "b4351331d5422d12466ae2b9293f23e9e886ad15d0f781eb4c7724a6976158a6",
       "script": "python_audits",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T14:22:51-06:00",
+      "date": "2026-04-24T15:32:26-06:00",
       "elapsed": "0s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "root_json_clean",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/root_json_clean.txt",
-      "output_sha256": "c5d53256b0c118ddf57a2948a49af6647a95d4de09c04e466e3694a3a3eceb3c",
+      "output_sha256": "6a2410b62d8aa7db9d9c8ecc57eba570e7f16f666f2f43c686c994f1fc6bb684",
       "script": "root_json_clean",
       "status": "PASS"
     },
     {
-      "date": "2026-04-24T14:22:51-06:00",
-      "elapsed": "64s",
+      "date": "2026-04-24T15:32:26-06:00",
+      "elapsed": "62s",
       "exit_code": 0,
       "exit_code_trailer": 0,
       "name": "simulation",
       "output_file": "/var/projects/toy_physics/research/pde_audit/output/simulation.txt",
-      "output_sha256": "58239948029bc7f1c056c23ce66b0d52aba8758faa1dc61e332d2c881153c515",
+      "output_sha256": "8a4ded5b39995a6c90bb3e07a6be85372d98c23437bf0c135d9350731e0d0839",
       "script": "simulation",
       "status": "PASS"
     }

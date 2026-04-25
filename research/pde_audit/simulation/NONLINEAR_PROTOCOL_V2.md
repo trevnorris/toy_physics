@@ -89,6 +89,7 @@ evaluate_frozen_sweep.py
 diagnose_obstruction.py
 diagnose_required_deformation.py
 diagnose_mechanism_gap.py
+diagnose_projection_stress.py
 ```
 
 The current reduced FEM results should remain in the bundle as a negative

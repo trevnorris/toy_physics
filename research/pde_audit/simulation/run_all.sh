@@ -77,6 +77,9 @@ run_capture verify_nonlinear_solver python3 "$SIM_DIR/verify_nonlinear_solver.py
 run_capture verify_physical_model python3 "$SIM_DIR/verify_physical_model.py" \
   --output-dir "$OUTPUT_DIR" || overall_status=1
 
+run_capture diagnose_notes_intake python3 "$SIM_DIR/diagnose_notes_intake.py" \
+  --output-dir "$OUTPUT_DIR" || overall_status=1
+
 run_capture generate_nonlinear_packets python3 "$SIM_DIR/generate_nonlinear_packets.py" \
   --output-dir "$OUTPUT_DIR" || overall_status=1
 
@@ -118,6 +121,9 @@ run_capture diagnose_required_deformation python3 "$SIM_DIR/diagnose_required_de
   --output-dir "$OUTPUT_DIR" || overall_status=1
 
 run_capture diagnose_mechanism_gap python3 "$SIM_DIR/diagnose_mechanism_gap.py" \
+  --output-dir "$OUTPUT_DIR" || overall_status=1
+
+run_capture diagnose_projection_stress python3 "$SIM_DIR/diagnose_projection_stress.py" \
   --output-dir "$OUTPUT_DIR" || overall_status=1
 
 echo "" >> "$summary_file"
@@ -179,6 +185,10 @@ mechanism_gap_path = output_dir / "mechanism_gap_report.json"
 mechanism_gap = {}
 if mechanism_gap_path.exists():
     mechanism_gap = json.loads(mechanism_gap_path.read_text(encoding="utf-8"))
+projection_stress_path = output_dir / "projection_stress_report.json"
+projection_stress = {}
+if projection_stress_path.exists():
+    projection_stress = json.loads(projection_stress_path.read_text(encoding="utf-8"))
 target_blind_path = output_dir / "target_blind_report.json"
 target_blind = {}
 if target_blind_path.exists():
@@ -199,6 +209,10 @@ physical_model_path = output_dir / "physical_model_status.json"
 physical_model = {}
 if physical_model_path.exists():
     physical_model = json.loads(physical_model_path.read_text(encoding="utf-8"))
+notes_intake_path = output_dir / "notes_intake_report.json"
+notes_intake = {}
+if notes_intake_path.exists():
+    notes_intake = json.loads(notes_intake_path.read_text(encoding="utf-8"))
 
 summary = {
     "schema": "pde_audit_simulation_runner_summary/v1",
@@ -256,6 +270,23 @@ summary = {
         "checks": [
             {"name": item.get("name"), "pass": item.get("pass")}
             for item in physical_model.get("checks", [])
+        ],
+    },
+    "notes_intake": {
+        "pass": notes_intake.get("pass"),
+        "report_hash": notes_intake.get("report_hash"),
+        "anchor_count": notes_intake.get("anchor_count"),
+        "failed_anchor_count": notes_intake.get("failed_anchor_count"),
+        "actual_branch_packet_required": (notes_intake.get("conclusion") or {}).get("actual_branch_packet_required"),
+        "support_source_bottleneck_active": (notes_intake.get("conclusion") or {}).get("support_source_bottleneck_active"),
+        "retune_current_candidates_allowed": (notes_intake.get("conclusion") or {}).get("does_it_license_retuning_current_candidates"),
+        "outgoing_moment_shape_control_required": (notes_intake.get("conclusion") or {}).get("outgoing_moment_shape_control_required"),
+        "atom_lepton_notes_are_useful": (notes_intake.get("conclusion") or {}).get("atom_lepton_notes_are_useful"),
+        "atom_lepton_notes_are_ready_exporter": (notes_intake.get("conclusion") or {}).get("atom_lepton_notes_are_ready_exporter"),
+        "primary_next_artifact": (notes_intake.get("conclusion") or {}).get("primary_next_artifact"),
+        "promotable_reduced_lanes": [
+            {"name": item.get("name"), "source_anchor": item.get("source_anchor")}
+            for item in notes_intake.get("promotable_reduced_lanes", [])
         ],
     },
     "nonlinear_export": {
@@ -349,6 +380,19 @@ summary = {
         "nonlinear_gap_class": (mechanism_gap.get("nonlinear_manufactured_gap") or {}).get("gap_class"),
         "nonlinear_C_or_D0_multiplier_min": (mechanism_gap.get("nonlinear_manufactured_gap") or {}).get("open_stable_required_C_or_D0_multiplier_min"),
         "next_physical_requirements": (mechanism_gap.get("mechanism_conclusion") or {}).get("next_physical_requirements"),
+    },
+    "projection_stress": {
+        "pass": projection_stress.get("pass"),
+        "report_hash": projection_stress.get("report_hash"),
+        "post_hoc_only": projection_stress.get("post_hoc_only"),
+        "candidate_generation_mutated": projection_stress.get("candidate_generation_mutated"),
+        "target_blind_hit_claimed": projection_stress.get("target_blind_hit_claimed"),
+        "one_pole_support_alone_is_insufficient": (projection_stress.get("conclusion") or {}).get("one_pole_support_alone_is_insufficient"),
+        "uniform_outgoing_amplitude_scale_is_insufficient": (projection_stress.get("conclusion") or {}).get("uniform_outgoing_amplitude_scale_is_insufficient"),
+        "reduced_one_pole_only_best_score": ((projection_stress.get("reduced_projection_stress") or {}).get("best_score_row") or {}).get("one_pole_only_projection_score"),
+        "reduced_uniform_outgoing_scale_best_score": ((projection_stress.get("reduced_projection_stress") or {}).get("best_score_row") or {}).get("one_pole_plus_uniform_outgoing_scale_score"),
+        "nonlinear_one_pole_only_best_score": ((projection_stress.get("nonlinear_projection_stress") or {}).get("best_score_row") or {}).get("one_pole_only_projection_score"),
+        "nonlinear_uniform_outgoing_scale_best_score": ((projection_stress.get("nonlinear_projection_stress") or {}).get("best_score_row") or {}).get("one_pole_plus_uniform_outgoing_scale_score"),
     },
 }
 (output_dir / "_summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")

@@ -17,6 +17,15 @@ equations.  `verify_physical_model.py` records that boundary and confirms that
 no physical branch packets are emitted.  The report also hashes the cited
 source notes and checks the supporting phrases used for each blocker.
 
+`diagnose_notes_intake.py` extends that boundary to the unincorporated 5PN,
+barrier, atom/lepton, and `P22` notes.  The result is useful but not a rescue:
+those notes support a stricter actual-branch extraction protocol, not post-hoc
+retuning of the current frozen packets.  They add candidate physics for
+finite-throat `P0/P2` forcing, scalar open/radiative `P0` flux, `U/V` dressing,
+microscopic odd export, leakage/work accounting, and intrinsic `P22` bracing.
+They still do not provide a calibrated actual-branch map into `D0`, `C`, `P0`,
+`N2`, and `N4`.
+
 The default `operator_v1` protocol freezes 192 V2-22B-compatible solver packets
 before target evaluation.  The evaluator then classifies those frozen packets
 through the existing V2-22B -> V2-22A -> V2-21 chain.
@@ -25,6 +34,8 @@ Current referee-run result:
 
 - The nonlinear readiness checks pass 5/5.
 - The physical model guard passes with strict physical export still blocked.
+- The notes-intake guard passes 16/16 source-anchor checks and identifies
+  `actual_branch_protocol_v1` as the next artifact.
 - The nonlinear manufactured exporter freezes 3 V2-22B-compatible packets.
 - 3/3 nonlinear packets validate against the V2-22B handoff schema.
 - 3/3 nonlinear packets pass the open and stability gates.
@@ -58,3 +69,11 @@ deficit: the current frozen families under-supply the `C`/`D0` channel relative
 to `A`, local continuation is not recommended, and strict physical export
 remains blocked until the parent wall dynamics and coupled residual equations
 are frozen.
+
+`projection_stress_report.json` adds a post-hoc sanity check on possible
+coefficient fixes.  Removing the one-pole residual alone leaves a best reduced
+score near `0.9993696544719584` from normalization.  Uniformly scaling the
+outgoing amplitude to fix normalization worsens the best reduced projected
+score to `13.427497545278147` because `P2`/`P4` scale with it.  A future
+physical mechanism therefore needs outgoing moment-shape control, not just a
+single amplitude multiplier.

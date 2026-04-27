@@ -451,6 +451,10 @@ def normalize_tex_expression(expression: str) -> str:
         start = index
         while index < len(expression):
             token_char = expression[index]
+            if index > start and token_char.isupper() and expression[index - 1].islower():
+                break
+            if index > start and expression[start].isdigit() and token_char.isalpha() and not token_char.isupper():
+                break
             if token_char.isalnum() or token_char in "'′":
                 index += 1
                 continue
@@ -468,7 +472,31 @@ def normalize_tex_expression(expression: str) -> str:
 
 def expand_math_shorthand(expression: str) -> str:
     text = expression.translate(MATH_UNICODE_TRANSLATION)
+    text = text.replace("μ0_eff", r"\mu_{0,\mathrm{eff}}")
+    text = text.replace("μ0", r"\mu_0")
+    text = text.replace("μ", r"\mu")
+    text = text.replace("ν", r"\nu")
+    text = text.replace("η", r"\eta")
+    text = text.replace("Ω", r"\Omega")
+    text = text.replace("Ξ", r"\Xi")
+    text = text.replace("Λ", r"\Lambda")
+    text = text.replace("α", r"\alpha")
+    text = text.replace("ε", r"\epsilon")
+    text = text.replace("λ", r"\lambda")
+    text = text.replace("∈", r"\in")
+    text = text.replace("≈", r"\approx")
+    text = text.replace("∂", r"\partial")
     text = text.replace("Ŷ", r"\hat{Y}")
+    text = text.replace("δx", r"\delta x")
+    text = text.replace("δln", r"\delta\ln")
+    text = re.sub(r"(?<=\\in )Z\b", r"\\mathbb{Z}", text)
+    text = re.sub(r"\bq_lm,([A-Za-z]+)", r"q_{\\ell m,\1}", text)
+    text = re.sub(r"\b([qS])_lm\b", r"\1_{\\ell m}", text)
+    text = text.replace("l(l+1)", r"\ell(\ell+1)")
+    text = re.sub(r"sqrt\(([^()]+)\)", r"\\sqrt{\1}", text)
+    text = re.sub(r"(?<=_)psi\b", r"\\psi", text)
+    text = re.sub(r"(?<![A-Za-z_\\])psi(?![A-Za-z])", r"\\psi", text)
+    text = re.sub(r"(?<![A-Za-z_\\])Sigma(?![A-Za-z])", r"\\Sigma", text)
     text = re.sub(r"\s+~\s+", lambda _: r" \sim ", text)
     text = re.sub(r",\s*equivalently\s+", lambda _: r",\;\mathrm{equivalently}\; ", text)
     text = re.sub(r"(?<!\\)\brank(?=\s*\()", r"\\operatorname{rank}", text)

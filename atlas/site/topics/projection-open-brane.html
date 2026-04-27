@@ -25,35 +25,44 @@
   <div class="breadcrumb"><a href="../index.html">Reader</a> / Projection versus reduction: why the brane is an open subsystem</div>
   <article class="topic-page">
     <header class="topic-header">
-      <p class="eyebrow">Foundations · generated 2026-04-27T20:20:12Z</p>
+      <p class="eyebrow">Foundations · generated 2026-04-27T23:04:30Z</p>
       <h1>Projection versus reduction: why the brane is an open subsystem</h1>
       <p class="lede">Projection defines what a brane observer measures; reduction is an extra controlled dynamical simplification and cannot be silently identified with projection.</p>
       <p>
         <span class="badge published_backed">paper-backed</span>
-        <span class="muted">7 selected graph nodes · 2 paper-pending source entries</span>
+        <span class="muted">9 selected graph nodes · 3 paper-pending source entries</span>
       </p>
     </header>
 
     <section>
       <h2>Physical Picture</h2>
-      <p>A brane observer sees projected quantities, not the entire bulk state. The brane sector is therefore open: information, support, and boundary data can live outside the reduced brane description.</p>
-<p>This is the conceptual reason later readouts must be treated carefully. A response packet is a measured or compressed output, not automatically a new physical throat object.</p>
+      <p>This page explains the first operation after the parent model is declared. A brane observer does not inspect the entire bulk field configuration; the observer accesses a weighted projection across the transverse direction.</p>
+<p>Because the observation is projected, the brane sector is open. Bulk support, leakage, boundary data, and interior throat structure can enter the projected balance laws even when the full parent continuity law remains conservative.</p>
+<p>Reduction is a different operation. A reduced 3+1 law is obtained only after imposing extra assumptions such as zero-mode behavior, far-field limits, axial simplifications, or a chosen localization regime.</p>
+<p>This distinction is why later response packets must be described carefully. A packet is exported or measured branch data; it is not automatically a new physical throat object and it is not automatically a closed brane-only law.</p>
+<p>The reader should carry this rule forward: projection says what the brane observer measures, while reduction says what dynamical simplification has been adopted for a particular calculation.</p>
     </section>
 
     <section>
       <h2>Mathematical Core</h2>
-      <p>The projection kernel gives an exact measurement definition. A zero-mode or brane-localized reduction is a separate approximation step with its own assumptions.</p>
+      <p>The projection kernel W(w) is an exact measurement definition. For a bulk quantity Q, the brane observable is a W-weighted quantity, and that operation is distinct from any localization profile appearing in an action.</p>
+<p>Projecting the parent continuity law produces an exact brane balance with a leakage/source term. That leakage term is not an error; it is the mathematical sign that the brane is an open subsystem of the bulk arena.</p>
+<p>The longitudinal identity contains the Poisson-hook Laplacian, but it becomes the familiar Poisson-like reading only in a controlled quasi-static and longitudinal regime.</p>
+<p>Zero-mode Maxwell is therefore a controlled reduction, not the definition of projection itself. Mixed core channels may be suppressed in that limit, but they have not been erased from the parent theory.</p>
 <p>Public explanations should preserve this order: parent fields first, projection second, controlled reduction third, downstream claims last.</p>
     </section>
 
     <section>
       <h2>Status</h2>
-      <p>The graph contains an explicit firewall blocking the invalid shortcut &quot;projection equals reduction.&quot; Public pages should keep that warning visible.</p>
+      <p>This topic is paper-backed by the 4D parent, Maxwell, and plasma papers. Some downstream moving-throat uses of the projection language remain notes-backed, so those appear in the paper-pending source list.</p>
+<p>The graph contains an explicit firewall blocking the invalid shortcut &quot;projection equals reduction.&quot; Public pages should keep that warning visible because it prevents several later overclaims.</p>
+<p>Safe summary: W(w) defines observed brane quantities exactly; any closed 3+1 effective law requires additional reduction assumptions.</p>
     </section>
 
     <section>
       <h2>Key Equations</h2>
-      <div class="evidence-grid"><p class="muted">No equation anchors selected for this topic yet.</p></div>
+      <div class="evidence-grid"><article class="evidence-card"><h3>Projected brane continuity with leakage</h3><p class="node-id">EQ_PROJECTED_CONTINUITY · exact_after_projection_definition</p><div class="math-block">\[\partial_t ρ_{\mathrm{brane}} + ∇_3·j_{\mathrm{brane}} = S_{\mathrm{leak}}\]</div><p>Projection with W(w) turns conservative bulk continuity into open-system brane continuity.</p></article>
+<article class="evidence-card"><h3>Exact longitudinal identity</h3><p class="node-id">EQ_LONGITUDINAL_IDENTITY · exact</p><div class="math-block">\[ρ_{\mathrm{brane}} ∇_3^{2} φ = S_{\mathrm{leak}} - \partial_t ρ_{\mathrm{brane}} - (∇_3ρ_{\mathrm{brane}})·(∇_3φ+v_T)\]</div><p>Exact projected identity that contains the Poisson-hook Laplacian.</p></article></div>
     </section>
 
     <section>
@@ -98,13 +107,14 @@
 <h3>Paper pending sources</h3><ul class="source-list pending">
 <li><span class="badge pending-badge">paper pending</span> <code>notes/atom_work.md</code><p>No formal paper source is recorded yet.</p></li>
 <li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_pde_program_compact.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md</code><p>No formal paper source is recorded yet.</p></li>
 </ul>
     </section>
 
     <section>
       <h2>Source Anchor Nodes</h2>
       <details class="provenance-details">
-        <summary>Show graph source-anchor nodes (18)</summary>
+        <summary>Show graph source-anchor nodes (19)</summary>
         <ul class="node-list">
 <li><code>BACKLINK_4D_PARENT</code> <strong>Parent action, projection/reduction, charge ontology, and cold-start hooks</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects the exact parent GNLS/Maxwell action, projection map, leakage identity, Poisson hook, zero-mode Maxwell reduction, and corrected charge ontology to the atlas backbone.</p></li>
 <li><code>BACKLINK_ATOM_WORK</code> <strong>Atomic reduced-sector derivations and hydrogen zero-mode branch</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the controlled zero-mode Maxwell/Coulomb reduction, thickness-controlled charge, and reduced-sector hydrogenic consequence.</p></li>
@@ -112,6 +122,7 @@
 <li><code>BACKLINK_PLASMA</code> <strong>Projection, leakage, mixed fields, and beyond-MHD channel</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Links the plasma/MHD branch to Z versus W, projected leakage, mixed fields, and brane-open-system status.</p></li>
 <li><code>FILE_4D_PARENT</code> <strong>4d_summary.md / 4d.tex</strong> <span class="badge small">core_anchor</span><p>Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.</p></li>
 <li><code>FILE_EM_FIELDS</code> <strong>4d_em_fields_summary.md / 4d_em_fields.tex</strong> <span class="badge small">core_em_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_PDE_AUDIT</code> <strong>pde_audit_full.md</strong> <span class="badge small">audit_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>FILE_PLASMA</code> <strong>4d_plasma_summary.md / 4d_plasma.tex</strong> <span class="badge small">plasma_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>SEC_1PN_BRIDGE_DICTIONARY</code> <strong>2) Minimal dictionary of the unified 4D model used by this paper</strong> <span class="badge small">v06_section_anchor</span><p>Bridge paper carries corrected charge ontology, GNLS, geometry variables, and reduction language.</p></li>
 <li><code>SEC_4D_POISSON_HOOK</code> <strong>7) Longitudinal identity and the “Poisson hook”</strong> <span class="badge small">v05_first_section_anchor</span><p>Poisson hook from longitudinal identity.</p></li>

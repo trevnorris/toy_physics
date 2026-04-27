@@ -21,4 +21,44 @@ cases:
 
   - name: named_operator
     input: '(q_tr,q_nt,q_eta)^T = M_* δx,    rank(M_*)=3'
-    expected: '(q_{\mathrm{tr}},q_{\mathrm{nt}},q_{\mathrm{eta}})^T = M_* δx,    \operatorname{rank}(M_*)=3'
+    expected: '(q_{\mathrm{tr}},q_{\mathrm{nt}},q_{\mathrm{eta}})^T = M_* \delta x,    \operatorname{rank}(M_*)=3'
+
+  - name: adjacent_indexed_operators
+    input: 'iℏ D_t ψ = [-(ℏ²/2m)D_iD_i + V_conf(X;Σ)+h(ρ)]ψ'
+    expected: 'iℏ D_t ψ = [-(ℏ^{2}/2m)D_iD_i + V_{\mathrm{conf}}(X;Σ)+h(ρ)]ψ'
+
+  - name: parent_action_greek_names
+    input: 'S_current = ∫ dt d^4X [L_psi(psi,A;Sigma)+L_EM(A)]'
+    expected: 'S_{\mathrm{current}} = ∫ dt d^{4}X [L_\psi(\psi,A;\Sigma)+L_{\mathrm{EM}}(A)]'
+
+  - name: projected_continuity
+    input: '∂_t ρ_brane + ∇_3·j_brane = S_leak'
+    expected: '\partial_t ρ_{\mathrm{brane}} + ∇_3·j_{\mathrm{brane}} = S_{\mathrm{leak}}'
+
+  - name: longitudinal_identity
+    input: 'ρ_brane ∇_3² φ = S_leak - ∂_t ρ_brane - (∇_3ρ_brane)·(∇_3φ+v_T)'
+    expected: 'ρ_{\mathrm{brane}} ∇_3^{2} φ = S_{\mathrm{leak}} - \partial_t ρ_{\mathrm{brane}} - (∇_3ρ_{\mathrm{brane}})·(∇_3φ+v_T)'
+
+  - name: zero_mode_maxwell
+    input: '∂_μ F^{μν} = μ0_eff J_eff^ν,    μ0_eff = μ0/Z_int'
+    expected: '\partial_\mu F^{\mu\nu} = \mu_{0,\mathrm{eff}} J_{\mathrm{eff}}^\nu,    \mu_{0,\mathrm{eff}} = \mu_0/Z_{\mathrm{int}}'
+
+  - name: qeff_normalization
+    input: 'q_eff = q_*/sqrt(Z_int) = η_Q e_eff'
+    expected: 'q_{\mathrm{eff}} = q_*/\sqrt{Z_{\mathrm{int}}} = \eta_Q e_{\mathrm{eff}}'
+
+  - name: wall_modal_pde
+    input: 'μ_η q_lm,tt - ∂_w(T_w q_lm,w) + [K_η+l(l+1)T_Ω]q_lm = S_lm'
+    expected: '\mu_\eta q_{\ell m,tt} - \partial_w(T_w q_{\ell m,w}) + [K_\eta+\ell(\ell+1)T_\Omega]q_{\ell m} = S_{\ell m}'
+
+  - name: weak_axisymmetric_prefactor_slope
+    input: 'Ξ₁ = P₁/P₀ = δln(T_eff²)/(ελ_A)'
+    expected: '\Xi_{1} = P_{1}/P_{0} = \delta\ln(T_{\mathrm{eff}}^{2})/(\epsilon\lambda_A)'
+
+  - name: lepton_half_integer
+    input: 'α ∈ Z + 1/2'
+    expected: '\alpha \in \mathbb{Z} + 1/2'
+
+  - name: g2_common_tangent
+    input: 'Λ_1 ≈ 0.279605891931464'
+    expected: '\Lambda_1 \approx 0.279605891931464'

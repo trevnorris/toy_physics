@@ -24,7 +24,7 @@ SITE_DIR = ATLAS_DIR / "site"
 EXPORT_DIR = ATLAS_DIR / "exports"
 HREF_RE = re.compile(r'href="([^"]+)"')
 MATH_BLOCK_RE = re.compile(r"\\\[(.*?)\\\]", re.S)
-BARE_GROUP_RE = re.compile(r"[_^](?![{\\])(?:[A-Za-z0-9]{2,}|\([^)]+\))")
+BARE_GROUP_RE = re.compile(r"[_^](?![{\\])(?:(?![a-z][A-Z])[A-Za-z0-9]{2,}|\([^)]+\))")
 BAD_MATH_SHORTHAND_RE = re.compile(r"\bmhat(?:[_A-Za-z0-9]|\b)")
 UNICODE_SUBSUP_RE = re.compile(r"[⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉ᵀ]")
 BARE_MATH_TEXT_RE = re.compile(r"(?<![{A-Za-z\\])(?:equivalently|rank)(?![A-Za-z])")

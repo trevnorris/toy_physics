@@ -25,35 +25,42 @@
   <div class="breadcrumb"><a href="../index.html">Reader</a> / Electromagnetism and charge bookkeeping</div>
   <article class="topic-page">
     <header class="topic-header">
-      <p class="eyebrow">Fields · generated 2026-04-27T20:20:12Z</p>
+      <p class="eyebrow">Fields · generated 2026-04-27T23:04:30Z</p>
       <h1>Electromagnetism and charge bookkeeping</h1>
       <p class="lede">The electromagnetic sector has a controlled zero-mode Maxwell limit, but charge sign and coupling bookkeeping are not derived from throat circulation or geometry alone.</p>
       <p>
         <span class="badge published_backed">paper-backed</span>
-        <span class="muted">11 selected graph nodes · 5 paper-pending source entries</span>
+        <span class="muted">14 selected graph nodes · 5 paper-pending source entries</span>
       </p>
     </header>
 
     <section>
       <h2>Physical Picture</h2>
-      <p>The EM story is intentionally split into a localized parent sector, a brane zero-mode limit, and charge-branch bookkeeping. That prevents older shorthand symbols from being mistaken for physical electric charge.</p>
-<p>Magnetic or vortical circulation can be real structure without being the definition of electric charge sign.</p>
+      <p>The electromagnetic sector is not introduced as an isolated 3+1 Maxwell theory. It starts as a localized 4+1 gauge field with a transverse localization profile, then admits an ordinary brane Maxwell reading only after a controlled zero-mode reduction.</p>
+<p>That split matters for charge. Electric sign is carried by an oriented charge branch label, while the observed brane coupling is dressed by localization. The public page should therefore distinguish the microscopic branch charge, the effective brane charge, and any magnetic or vortical circulation data.</p>
+<p>Magnetic or vortical circulation can be real structure in the model without being the definition of electric charge sign. Treating circulation as charge would collapse two different physical sectors and would corrupt later atom, lepton, and response-packet claims.</p>
+<p>The mixed brane-bulk EM core is also retained in the parent theory. In a strict zero-mode brane reduction those channels are suppressed, but the research reader should not present them as nonexistent.</p>
     </section>
 
     <section>
       <h2>Mathematical Core</h2>
-      <p>The safe public statement is a controlled Maxwell reduction in the zero-mode brane limit. Beyond that limit, mixed and transverse components must be tracked rather than erased.</p>
-<p>The graph carries separate firewalls for charge sign, q_eff/q_star bookkeeping, and kappa_rho notation.</p>
+      <p>The localized Maxwell sector uses a localization profile Z(w). Its integral controls the effective brane coupling, which is why the same parent charge branch can appear with a dressed brane strength after canonical normalization.</p>
+<p>The zero-mode Maxwell equation is the safe public reduction: under axial, zero-mode, and far-field assumptions it gives an effective 3+1 Maxwell law with a localization-dressed coupling.</p>
+<p>The charge-normalization equation records the bookkeeping rule. The microscopic branch charge q_star and the observed q_eff are related by the localization integral, while eta_Q carries the electric sign label.</p>
+<p>Beyond the zero-mode limit, mixed and transverse components such as A_w, J^w, and F_{mu w} must be tracked rather than erased. Those channels are exactly why this topic links forward to the moving-throat and response-packet pages.</p>
+<p>The graph carries separate firewalls for charge sign, q_eff/q_star bookkeeping, and kappa_rho notation because each blocks a different tempting shortcut.</p>
     </section>
 
     <section>
       <h2>Status</h2>
-      <p>This topic is mostly paper-backed, but some mixed-sector moving-throat plumbing remains open and is handled in later pending topics.</p>
+      <p>This topic is mostly paper-backed by the 4D parent, Maxwell, and plasma papers. The mixed-sector moving-throat plumbing is still partly notes-backed and should remain visible as paper pending.</p>
+<p>Safe summary: brane Maxwell is a controlled zero-mode reduction; electric charge sign is eta_Q; observed charge strength is localization-dressed; magnetic/vortical circulation is not electric charge.</p>
     </section>
 
     <section>
       <h2>Key Equations</h2>
-      <div class="evidence-grid"><article class="evidence-card"><h3>Zero-mode brane Maxwell reduction</h3><p class="node-id">EQ_ZERO_MODE_MAXWELL · controlled_reduction</p><div class="math-block">\[∂_μ F^{μν} = μ0_{\mathrm{eff}} J_{\mathrm{eff}}^ν,    μ0_{\mathrm{eff}} = μ0/Z_{\mathrm{int}}\]</div><p>Controlled far-field brane reduction of localized 4+1 Maxwell.</p></article></div>
+      <div class="evidence-grid"><article class="evidence-card"><h3>Zero-mode brane Maxwell reduction</h3><p class="node-id">EQ_ZERO_MODE_MAXWELL · controlled_reduction</p><div class="math-block">\[\partial_\mu F^{\mu\nu} = \mu_{0,\mathrm{eff}} J_{\mathrm{eff}}^\nu,    \mu_{0,\mathrm{eff}} = \mu_0/Z_{\mathrm{int}}\]</div><p>Controlled far-field brane reduction of localized 4+1 Maxwell.</p></article>
+<article class="evidence-card"><h3>Thickness-controlled brane charge</h3><p class="node-id">EQ_QEFF_NORMALIZATION · exact_within_zero_mode_normalization</p><div class="math-block">\[q_{\mathrm{eff}} = q_*/\sqrt{Z_{\mathrm{int}}} = \eta_Q e_{\mathrm{eff}}\]</div><p>Observable brane charge strength after canonical zero-mode normalization.</p></article></div>
     </section>
 
     <section>
@@ -63,9 +70,11 @@
 <li><code>PHYS_LOCALIZED_EM_SECTOR</code> <strong>Localized electromagnetic sector</strong> <span class="badge small">exact_declared_parent</span><p>A genuine localized 4+1 Maxwell field with transverse localization weight.</p></li>
 <li><code>PHYS_CHARGE_BRANCH</code> <strong>Electric charge branch</strong> <span class="badge small">exact_bookkeeping</span><p>Electric sign is an oriented puncture/branch label; observed charge is localization-dressed.</p></li>
 <li><code>PHYS_MAGNETIC_VORTICAL_CIRCULATION</code> <strong>Magnetic/vortical circulation sector</strong> <span class="badge small">exact_identity_and_open_plumbing</span><p>Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.</p></li>
+<li><code>PHYS_MIXED_EM_CORE</code> <strong>Mixed brane-bulk EM core</strong> <span class="badge small">exact_parent_observables_reduced_open</span><p>Hidden brane-bulk EM transport channels retained microscopically outside strict zero-mode brane reduction.</p></li>
 </ul></div>
         <div><h3>Math objects</h3><ul class="node-list">
 <li><code>MATH_LOCALIZED_MAXWELL_AM</code> <strong>Localized 4+1 Maxwell field</strong> <span class="badge small">exact</span><p>Gauge field sector with localization weight and source consistency.</p></li>
+<li><code>MATH_Z_PROFILE</code> <strong>Localization profile Z(w)</strong> <span class="badge small">exact_input_profile</span><p>Controls EM localization and effective brane coupling.</p></li>
 </ul></div>
       </div>
     </section>
@@ -83,6 +92,7 @@
       <div class="split">
         <div><h3>Open or conditional gates</h3><ul class="node-list">
 <li><code>PHYS_MAGNETIC_VORTICAL_CIRCULATION</code> <strong>Magnetic/vortical circulation sector</strong> <span class="badge small">exact_identity_and_open_plumbing</span><p>Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.</p></li>
+<li><code>PHYS_MIXED_EM_CORE</code> <strong>Mixed brane-bulk EM core</strong> <span class="badge small">exact_parent_observables_reduced_open</span><p>Hidden brane-bulk EM transport channels retained microscopically outside strict zero-mode brane reduction.</p></li>
 </ul></div>
         <div><h3>Firewalls</h3><ul class="node-list">
 <li><code>FIREWALL_CHARGE_NOT_CIRCULATION</code> <strong>Do not identify circulation, throat geometry, or magnetic/vortical winding with electric charge sign.</strong> <span class="badge small">active_v07</span><p>No. Electric charge sign is eta_Q; circulation belongs to the magnetic/vortical sector.</p></li>
@@ -114,13 +124,14 @@
     <section>
       <h2>Source Anchor Nodes</h2>
       <details class="provenance-details">
-        <summary>Show graph source-anchor nodes (22)</summary>
+        <summary>Show graph source-anchor nodes (23)</summary>
         <ul class="node-list">
 <li><code>BACKLINK_1PN_BRIDGE</code> <strong>Bridge constants and coefficient-freezing layer</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects topology, optics n=5, added-mass, wake constants, and adiabatic breathing closure to the 1PN closure hierarchy.</p></li>
 <li><code>BACKLINK_4D_PARENT</code> <strong>Parent action, projection/reduction, charge ontology, and cold-start hooks</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects the exact parent GNLS/Maxwell action, projection map, leakage identity, Poisson hook, zero-mode Maxwell reduction, and corrected charge ontology to the atlas backbone.</p></li>
 <li><code>BACKLINK_ATOM_WORK</code> <strong>Atomic reduced-sector derivations and hydrogen zero-mode branch</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the controlled zero-mode Maxwell/Coulomb reduction, thickness-controlled charge, and reduced-sector hydrogenic consequence.</p></li>
 <li><code>BACKLINK_EM_FIELDS</code> <strong>Localized 4+1 Maxwell sector and charge/localization firewall</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the localized Maxwell action, zero-mode brane reduction, q_eff normalization, KK/deviation hooks, and mixed-core firewall.</p></li>
 <li><code>BACKLINK_LEPTON_WORK</code> <strong>Lepton half-integer mixed-sector route</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the same-charge mixed-sector rotor corridor, half-integer conditional theorem, and the required spin discretizer / recirculation closure.</p></li>
+<li><code>BACKLINK_PLASMA</code> <strong>Projection, leakage, mixed fields, and beyond-MHD channel</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Links the plasma/MHD branch to Z versus W, projected leakage, mixed fields, and brane-open-system status.</p></li>
 <li><code>FILE_1PN_FULL</code> <strong>4d_1pn_full_summary.md</strong> <span class="badge small">paper_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>FILE_2PN_FULL</code> <strong>4d_2pn_summary.md / 4d_2pn.tex</strong> <span class="badge small">paper_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>FILE_4D_PARENT</code> <strong>4d_summary.md / 4d.tex</strong> <span class="badge small">core_anchor</span><p>Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.</p></li>

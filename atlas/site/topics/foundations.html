@@ -25,35 +25,43 @@
   <div class="breadcrumb"><a href="../index.html">Reader</a> / Foundations: superfluid medium, bulk arena, and throat defects</div>
   <article class="topic-page">
     <header class="topic-header">
-      <p class="eyebrow">Foundations · generated 2026-04-27T20:20:12Z</p>
+      <p class="eyebrow">Foundations · generated 2026-04-27T23:04:30Z</p>
       <h1>Foundations: superfluid medium, bulk arena, and throat defects</h1>
       <p class="lede">The model starts with a declared bulk superfluid arena, finite brane-bulk throat defects, and a parent action that fixes the fields used downstream.</p>
       <p>
         <span class="badge published_backed">paper-backed</span>
-        <span class="muted">6 selected graph nodes · 7 paper-pending source entries</span>
+        <span class="muted">8 selected graph nodes · 7 paper-pending source entries</span>
       </p>
     </header>
 
     <section>
       <h2>Physical Picture</h2>
-      <p>The reader should begin with the physical objects rather than the PN outputs. The bulk is the ambient dynamical medium, the brane is the observed sector, and a particle is modeled as a finite throat-like defect connecting brane and bulk support structure.</p>
-<p>This topic separates what is declared in the parent model from what is later obtained by projection or reduction. That distinction matters because many later results are exact only after a specified closure or controlled limit.</p>
+      <p>This page fixes the base vocabulary used by the rest of the research reader. The later PN, electromagnetic, particle-sector, and moving-throat pages all depend on the same distinction between declared parent objects, projected observables, and reduced effective descriptions.</p>
+<p>The bulk is the ambient 4+1 arena carrying the superfluid or GNLS medium. The brane is the observed sector inside that arena, not a separate closed universe. A brane observer therefore sees projected quantities and boundary data rather than the entire bulk state.</p>
+<p>A particle-like object is modeled as a finite brane-bulk throat defect. In the atlas language that means an open conduit or puncture through the brane with interior support structure, not a small surface dent and not a capped pocket. The finite radius matters because later response channels can couple to mouth shape, wall support, and outgoing-port data.</p>
+<p>The interior support region is where later moving-throat work adds wall, BdG, Maxwell/mixed, and outgoing response degrees of freedom. Those additions are downstream of the parent vocabulary; they should not be retroactively treated as claims already frozen into the earliest 4D parent paper.</p>
+<p>The practical reading rule is to start with physical objects before reading coefficient matches. A PN equality, charge reduction, or anomaly corridor is only meaningful once the page says which parent object, projection, closure, or branch export supplied it.</p>
     </section>
 
     <section>
       <h2>Mathematical Core</h2>
-      <p>The parent level uses a GNLS-type bulk sector together with localized electromagnetic degrees of freedom. The graph records this as the current declared parent action, not yet as the promoted moving-wall action.</p>
-<p>The important reader-level invariant is provenance. Every later claim should say which parent object, projection, closure, or branch computation it depends on.</p>
+      <p>The current parent action is the declared GNLS matter sector plus localized Maxwell sector, with geometry entering through the confinement data. The graph records this as the current parent action, not as the later promoted moving-wall action.</p>
+<p>The bulk matter equation is the gauged GNLS equation obtained from that parent stack. It carries the wavefunction, density, equation-of-state, and confinement dependence used by downstream reductions.</p>
+<p>The reader-facing invariant is provenance. Every later result should be traceable back to a parent object, a projection map, a controlled reduction, a closure hierarchy, or an actual branch computation.</p>
+<p>This is why the site keeps source anchors and graph IDs visible below the prose. They are not meant to be the first reading layer, but they make the research claims auditable when a page compresses several papers into one topic.</p>
     </section>
 
     <section>
       <h2>Status</h2>
-      <p>This page is backed by published 4D and ontology papers where available. Any moving-throat wall dynamics introduced later remains additive and must not be read back into the frozen parent paper unless a later paper explicitly adds it.</p>
+      <p>The parent-action and brane-observer parts of this page are paper-backed by the 4D model and related field-sector papers. Some finite-throat and interior-support language is currently notes-backed or inherited from the moving-throat program, so the page deliberately marks those sources as paper pending.</p>
+<p>Future papers can add sharper throat dynamics, wall laws, or branch exporters, but they should be added as later developments. The public site should not rewrite the frozen parent paper into saying more than it originally established.</p>
+<p>When this topic is cited from another page, the safe summary is: exact declared parent stack first; projection and reduction second; moving-throat branch dynamics only where a later source supports it.</p>
     </section>
 
     <section>
       <h2>Key Equations</h2>
-      <div class="evidence-grid"><p class="muted">No equation anchors selected for this topic yet.</p></div>
+      <div class="evidence-grid"><article class="evidence-card"><h3>Current parent action</h3><p class="node-id">EQ_PARENT_ACTION_CURRENT · exact_declared_parent_with_geometry_argument</p><div class="math-block">\[S_{\mathrm{current}} = ∫ dt d^{4}X [L_\psi(\psi,A;\Sigma)+L_{\mathrm{EM}}(A)]\]</div><p>Current declared parent has GNLS + localized Maxwell, with geometry through V_conf(X;Sigma).</p></article>
+<article class="evidence-card"><h3>Bulk gauged GNLS equation</h3><p class="node-id">EQ_GNLS_BULK · exact</p><div class="math-block">\[iℏ D_t ψ = [-(ℏ^{2}/2m)D_iD_i + V_{\mathrm{conf}}(X;Σ)+h(ρ)]ψ\]</div><p>Exact matter equation from the parent action.</p></article></div>
     </section>
 
     <section>
@@ -109,7 +117,7 @@
     <section>
       <h2>Source Anchor Nodes</h2>
       <details class="provenance-details">
-        <summary>Show graph source-anchor nodes (12)</summary>
+        <summary>Show graph source-anchor nodes (14)</summary>
         <ul class="node-list">
 <li><code>BACKLINK_1PN_BRIDGE</code> <strong>Bridge constants and coefficient-freezing layer</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects topology, optics n=5, added-mass, wake constants, and adiabatic breathing closure to the 1PN closure hierarchy.</p></li>
 <li><code>BACKLINK_1PN_FULL</code> <strong>Full conservative 1PN / EIH assembly</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the full 1PN EIH equality, claim taxonomy, coefficient ledger, and fixed-vs-symbolic discipline.</p></li>
@@ -117,6 +125,8 @@
 <li><code>BACKLINK_LEPTON_MASS</code> <strong>Reduced lepton mass ledger</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks reduced rest-energy partition, D/N support clock, and open absolute scale/branch data.</p></li>
 <li><code>FILE_4D_PARENT</code> <strong>4d_summary.md / 4d.tex</strong> <span class="badge small">core_anchor</span><p>Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.</p></li>
 <li><code>FILE_EM_FIELDS</code> <strong>4d_em_fields_summary.md / 4d_em_fields.tex</strong> <span class="badge small">core_em_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_MOVING_THROAT_COMPACT</code> <strong>moving_throat_pde_program_compact.md</strong> <span class="badge small">master_anchor</span><p>Compact master ledger for moving-throat PDE program and current active bottlenecks.</p></li>
+<li><code>FILE_PDE_AUDIT</code> <strong>pde_audit_full.md</strong> <span class="badge small">audit_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>FILE_PLASMA</code> <strong>4d_plasma_summary.md / 4d_plasma.tex</strong> <span class="badge small">plasma_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
 <li><code>SEC_4D_EXACT_EQUATIONS</code> <strong>5) Exact Euler–Lagrange equations and hydrodynamic identities</strong> <span class="badge small">v05_first_section_anchor</span><p>Exact E-L and hydrodynamic identities.</p></li>
 <li><code>SEC_4D_PARENT_ACTION</code> <strong>4) Full model specification (the action)</strong> <span class="badge small">v05_first_section_anchor</span><p>Parent action and sectors.</p></li>

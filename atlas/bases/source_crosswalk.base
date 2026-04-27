@@ -1,0 +1,14 @@
+filters:
+  and:
+  - file.inFolder("nodes/sources")
+views:
+- type: table
+  name: Source crosswalk
+  order:
+  - file.name
+  - source_kind
+  - status
+  - summary_short
+  - source_links
+  - source_files
+  - tex_anchor

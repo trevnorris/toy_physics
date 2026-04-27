@@ -18,3 +18,9 @@ __pycache__
 *.vrb
 *.out
 *.zip
+
+# Obsidian vault volatile state
+atlas/.obsidian/workspace.json
+atlas/.obsidian/workspace-mobile.json
+atlas/.obsidian/cache/
+atlas/.obsidian/plugins/*/data.json

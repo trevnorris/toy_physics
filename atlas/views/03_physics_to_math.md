@@ -1,0 +1,79 @@
+# Physics To Math
+
+<!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
+
+- [[MT_V2_28_ONTOLOGY_CHECKLIST]] — `paper_facing` — Defines finite brane-bulk throat/puncture picture and misreadings to avoid.
+- [[MT_V2_30_EM_ONTOLOGY]] — `paper_facing` — Records localized Maxwell/mixed sector and charge/circulation firewall.
+- [[PHYS_BRANCH_EXPORTER]] — `open` — The missing physical map that takes a solved stationary open-throat branch to K,M,B_n,Z_n,N_n and the froze...
+- [[PHYS_BRANE_BULK_THROAT_DEFECT]] — `physical_ontology` — Particle-like object is a finite-radius puncture/open conduit through the brane into a bulk throat, not a d...
+- [[PHYS_BRANE_OBSERVER]] — `exact_definition` — A 3D observer accesses projected quantities, not the full bulk state.
+- [[PHYS_BULK_ARENA]] — `exact_declared_parent` — Fundamental spacetime arena with brane coordinates plus transverse/bulk coordinate w.
+- [[PHYS_CHARGE_BRANCH]] — `exact_bookkeeping` — Electric sign is an oriented puncture/branch label; observed charge is localization-dressed.
+- [[PHYS_FINITE_MOUTH_SHAPE]] — `reduced_conditional` — Finite throat size makes Hessian/tidal mouth loading and headless P22 shape physics relevant.
+- [[PHYS_GROUPED_P2_SHAPE_RESPONSE]] — `reduced_controlled` — The first serious finite-mouth/throat quadrupole support-response bundle.
+- [[PHYS_INTERIOR_SUPPORT]] — `physical_ontology` — Axial/cavity support structure extending into w and carrying wall, BdG, Maxwell/mixed, and outgoing-port de...
+- [[PHYS_LOCALIZED_EM_SECTOR]] — `exact_declared_parent` — A genuine localized 4+1 Maxwell field with transverse localization weight.
+- [[PHYS_MAGNETIC_VORTICAL_CIRCULATION]] — `exact_identity_and_open_plumbing` — Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.
+- [[PHYS_MATERIAL_CLOSURE]] — `open` — Branch-level determination of density, EOS, sound speed, effective light-speed behavior, and flux feedback.
+- [[PHYS_MIXED_EM_CORE]] — `exact_parent_observables_reduced_open` — Hidden brane-bulk EM transport channels retained microscopically outside strict zero-mode brane reduction.
+- [[PHYS_MOUTH_CROSS_SECTION]] — `physical_ontology` — The brane entrance cross-section of the throat; not the entire defect.
+- [[PHYS_MOUTH_INTERIOR_FIREWALL]] — `paper_facing_required` — The brane-side mouth is only the entrance cross-section; internal support, throughput, transfer, and outgoi...
+- [[PHYS_OPEN_CONDUIT]] — `effective_branch_condition` — Physical branch is an open finite-radius throat/outlet; hard cap is obsolete toy idealization unless declar...
+- [[PHYS_OPEN_FINITE_EXIT]] — `effective_branch_condition` — The physically preferred throat branch has a finite exit into the bulk/reservoir side, R(L)>0, not a hard c...
+- [[PHYS_OUTGOING_QUADRUPOLE_PORT]] — `open_actual_branch_data` — Surviving universal dissipative/tail bridge after scalar and dipole demotion; requires actual branch normal...
+- [[PHYS_RESPONSE_READOUTS]] — `not_physical_object` — D0, C, P0, N2, N4 are low-order projected response readouts of the throat branch, not the throat itself.
+- [[PHYS_SUPERFLUID_INTAKE_OUTPUT]] — `open_physical_closure` — Open throat has flux-like intake/output channels that must not be identified by fiat; they feed leakage, wo...
+- [[PHYS_SUPERFLUID_MEDIUM]] — `exact_declared_parent` — The substrate carrying density, current, EOS, sound speed, and support dynamics.
+- [[PHYS_TARGET_BLIND_BRANCH_SELECTION]] — `mandatory` — The actual branch must be frozen before target evaluation; post-hoc fitting to GR/PN residuals is prohibite...
+- [[MATH_BDG_SCHUR_COMPLEMENT]] — `exact_within_stable_mode_reduction` — Stable BdG modes lower static stiffness, increase inertia, and generate even response moments by Schur comp...
+- [[MATH_COMPACT_L2_OUTGOING_FINGERPRINT]] — `exact_reduced` — Outgoing l=2 normalized response has even coefficients plus the leading i omega^5 fingerprint.
+- [[MATH_FLUXOID]] — `exact_identity_open_plumbing` — Topological magnetic/vortical class; not electric charge definition.
+- [[MATH_FULL_BUNDLE_TARGET_SURFACE]] — `exact_within_reduced_bundle` — Combined surface for one-pole conservative response, universal quadrupole normalization, and constant-prefa...
+- [[MATH_GNLS_PSI]] — `exact` — Bulk matter/order parameter sector with exact current and continuity.
+- [[MATH_GROUPED_PROJECTORS_GGRP]] — `exact` — Weighted grouped-real P2 trace/anomaly decomposition with metric diag(1,2,2).
+- [[MATH_LOCALIZED_MAXWELL_AM]] — `exact` — Gauge field sector with localization weight and source consistency.
+- [[MATH_LONGITUDINAL_IDENTITY]] — `exact` — Exact brane scalar-potential identity containing a 3D Laplacian.
+- [[MATH_MAXWELL_MIXED_KERNEL]] — `exact_within_reduced_bundle` — Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+- [[MATH_MAXWELL_WEIGHTED_GAUGE_FIXING]] — `safe_interpretation_or_patch` — General H(w)-weighted gauge-fixing audit for localized Maxwell theory; H=1 is a bulk gauge device, H=Z is l...
+- [[MATH_MIXED_FIELDS_EW_CA]] — `exact` — Gauge-invariant mixed slots used for brane-bulk EM exchange and outgoing bridge.
+- [[MATH_MONOMIAL_QUOTIENT]] — `exact_within_coherent_branch` — Three exact quotient coordinates separate physical branch motion from the five-dimensional similarity orbit.
+- [[MATH_PARENT_ACTION_CURRENT]] — `exact_declared_parent_with_geometry_argument` — Exact parent action currently includes matter and Maxwell sectors; geometry enters through V_conf(Sigma).
+- [[MATH_PARENT_ACTION_PROMOTED]] — `open_patch_required` — Parent-complete formulation needed for autonomous moving-throat PDE claim.
+- [[MATH_PROJECTED_CONTINUITY]] — `exact_after_projection_definition` — Bulk conservation becomes open-system brane balance under projection.
+- [[MATH_QSTAR_QEFF]] — `exact_bookkeeping` — Separates branch sign, microscopic charge, and brane-observed localized charge.
+- [[MATH_SIGMA_R_FIELD]] — `effective_closure_unless_Sigma_action_promoted` — Distributed throat shape variable replacing pure a,L closure.
+- [[MATH_STF_SOURCE_MAP]] — `exact_angular` — Canonical real STF angular basis maps orbital/worldtube quadrupole sources to grouped P2 ports with mhat_an...
+- [[MATH_WALL_ACTION_S_ETA]] — `effective_linear_wall_closure_passed` — Consistent reduced wall action that generates scalar and P2 wall PDEs, but must be promoted for strict pare...
+- [[MATH_WALL_BOUNDARY_TRACTION]] — `exact_if_S_eta_included` — Variational boundary momentum for wall modes; driven mouth/worldtube ports must use the correct traction sign.
+- [[MATH_WALL_ENERGY_POSITIVITY]] — `exact_if_S_eta_included` — Local quadratic positivity conditions for the effective wall closure.
+- [[MATH_WALL_MODAL_PDE]] — `exact_if_S_eta_included` — The l-mode equation supplied by the quadratic wall action, with l=0 scalar and l=2 grouped P2 specialization.
+- [[MATH_WEAK_AXISYM_SPLITTING]] — `exact_angular_first_order` — Pure weak-axisymmetric l=2 perturbation forces grouped signature (20,21,22)~(1,1/2,-1), equivalently b=3a.
+- [[MATH_WEAK_FORM_BRANCH_EXTRACTOR]] — `prepared_open` — Galerkin/weak-form extraction protocol for branch data K,M,B_n,Z_n,N_n, grouped projectors, residual packet...
+- [[MATH_W_PROJECTION]] — `exact_measurement_definition` — Defines what brane observer measures; distinct from localization profile Z.
+- [[MATH_XI1_PREF_SLOPE]] — `exact_within_reduced_branch` — The weak-axisymmetric normalization defect equals the outgoing-prefactor slope P1/P0 and raw transfer-shape...
+- [[MATH_Z_PROFILE]] — `exact_input_profile` — Controls EM localization and effective brane coupling.
+- [[EQ_1PN_EIH_EQUALITY]] — `full_assembly_within_closure` — Full conservative two-body 1PN assembly equals EIH inside declared closure hierarchy.
+- [[EQ_2PN_ADM_EQUALITY]] — `full_assembly_within_closure` — Conservative 2PN Lagrangian Legendre-transforms exactly to generic-frame ADM target inside declared hierarchy.
+- [[EQ_3PN_SPLIT]] — `full_assembly_within_closure` — 3PN fixed ADM-chart split into pure-kinetic image, grouped P2 middle block, and geometry completion.
+- [[EQ_4PN_TAIL_BRIDGE]] — `conditional_on_quadrupole_normalization` — 4PN hereditary coefficient is not new; it is fixed by the same quadrupole normalization as 2.5PN.
+- [[EQ_BDG_SCHUR_KERNEL]] — `exact_within_stable_mode_reduction` — Stable BdG support renormalizes wall stiffness/inertia and generates even moments.
+- [[EQ_BULK_CONTINUITY]] — `exact` — Exact number continuity in the 4D spatial bulk.
+- [[EQ_COMPACT_L2_FINGERPRINT]] — `exact_reduced` — Universal outgoing quadrupole low-frequency fingerprint in normalized response language.
+- [[EQ_FULL_BUNDLE_TARGET_SURFACE]] — `exact_within_reduced_bundle` — Combined one-pole and quadrupole-normalization target surface.
+- [[EQ_G2_COMMON_TANGENT]] — `conditional_open` — First tangent projection required by the minimal common quotient correction to match the residual.
+- [[EQ_GNLS_BULK]] — `exact` — Exact matter equation from the parent action.
+- [[EQ_GROUPED_RESPONSE_MOMENTS]] — `exact_within_reduced_bundle` — Bridge from conservative operator moments to normalized grouped response moments.
+- [[EQ_LEPTON_HALF_INTEGER]] — `conditional_open` — Half-integer same-charge quantizer under selective tau subbundle and autonomous standing-wave soliton closure.
+- [[EQ_LEPTON_MASS_PARTITION]] — `conditional_reduced_theorem` — Reduced isolated-defect rest-energy partition under declared closure.
+- [[EQ_LONGITUDINAL_IDENTITY]] — `exact` — Exact projected identity that contains the Poisson-hook Laplacian.
+- [[EQ_MAXWELL_MIXED_TRANSFER]] — `exact_within_reduced_bundle` — Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+- [[EQ_MONOMIAL_QUOTIENT]] — `exact_within_coherent_branch` — Separates true branch motion from five-dimensional similarity-orbit motion.
+- [[EQ_P0_TARGET]] — `open_actual_branch_data` — Central remaining 2.5PN/4PN moving-throat normalization target.
+- [[EQ_PARENT_ACTION_CURRENT]] — `exact_declared_parent_with_geometry_argument` — Current declared parent has GNLS + localized Maxwell, with geometry through V_conf(X;Sigma).
+- [[EQ_PROJECTED_CONTINUITY]] — `exact_after_projection_definition` — Projection with W(w) turns conservative bulk continuity into open-system brane continuity.
+- [[EQ_QEFF_NORMALIZATION]] — `exact_within_zero_mode_normalization` — Observable brane charge strength after canonical zero-mode normalization.
+- [[EQ_WALL_MODAL_PDE]] — `effective_linear_wall_closure` — Autonomous wall/modal PDE exists only when S_eta/S_Sigma is included.
+- [[EQ_WALL_P2_STIFFNESS]] — `effective_linear_wall_closure` — Shows grouped real P2 is next harmonic family of the wall action.
+- [[EQ_WEAK_AXISYM_SIGNATURE]] — `exact_angular_first_order` — Diagnostic first-order splitting law for a weak axisymmetric quadrupole perturbation.
+- [[EQ_XI1_PREF_SLOPE]] — `exact_within_reduced_branch` — The weak-axisymmetric defect also measures outgoing-prefactor / transfer-shape slope.
+- [[EQ_ZERO_MODE_MAXWELL]] — `controlled_reduction` — Controlled far-field brane reduction of localized 4+1 Maxwell.

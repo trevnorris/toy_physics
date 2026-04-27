@@ -1,0 +1,448 @@
+{
+  "nodes": [
+    {
+      "id": "FILE_1PN_FULL",
+      "type": "file",
+      "file": "nodes/sources/FILE_1PN_FULL.md",
+      "x": 0,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "PHYS_MOUTH_INTERIOR_FIREWALL",
+      "type": "file",
+      "file": "nodes/status_firewalls/PHYS_MOUTH_INTERIOR_FIREWALL.md",
+      "x": 380,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_25PN_CONDITIONAL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_25PN_CONDITIONAL.md",
+      "x": 760,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_4PN_LOCAL_NOT_FULL_TAIL.md",
+      "x": 760,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_ANGULAR_NOT_RADIAL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_ANGULAR_NOT_RADIAL.md",
+      "x": 760,
+      "y": 480,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_ATOM_REDUCED_SECTOR",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_ATOM_REDUCED_SECTOR.md",
+      "x": 760,
+      "y": 720,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_CHARGE_NOT_CIRCULATION",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_CHARGE_NOT_CIRCULATION.md",
+      "x": 760,
+      "y": 960,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_G2_COMMON_CONDITIONAL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_G2_COMMON_CONDITIONAL.md",
+      "x": 760,
+      "y": 1200,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_KAPPARHO_NOT_CHARGE",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_KAPPARHO_NOT_CHARGE.md",
+      "x": 760,
+      "y": 1440,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_LEPTON_CONDITIONAL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_LEPTON_CONDITIONAL.md",
+      "x": 760,
+      "y": 1680,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED.md",
+      "x": 760,
+      "y": 1920,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_PARENT_WALL_NOT_STRICT",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_PARENT_WALL_NOT_STRICT.md",
+      "x": 760,
+      "y": 2160,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_PROJECTION_NOT_REDUCTION",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_PROJECTION_NOT_REDUCTION.md",
+      "x": 760,
+      "y": 2400,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_QEFF_THICKNESS_NOT_BREATHING",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_QEFF_THICKNESS_NOT_BREATHING.md",
+      "x": 760,
+      "y": 2640,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_READOUTS_NOT_THROAT",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_READOUTS_NOT_THROAT.md",
+      "x": 760,
+      "y": 2880,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_SIMILARITY_NOT_FULL_5PN",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_SIMILARITY_NOT_FULL_5PN.md",
+      "x": 760,
+      "y": 3120,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_WALL_COEFFS_BRANCH_DATA",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_WALL_COEFFS_BRANCH_DATA.md",
+      "x": 760,
+      "y": 3360,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE.md",
+      "x": 760,
+      "y": 3600,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_25PN_UNCONDITIONAL_THEOREM",
+      "type": "file",
+      "file": "nodes/audits/INVALID_25PN_UNCONDITIONAL_THEOREM.md",
+      "x": 760,
+      "y": 3840,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL",
+      "type": "file",
+      "file": "nodes/audits/INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL.md",
+      "x": 760,
+      "y": 4080,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_CHARGE_FROM_CIRCULATION",
+      "type": "file",
+      "file": "nodes/audits/INVALID_CHARGE_FROM_CIRCULATION.md",
+      "x": 760,
+      "y": 4320,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE",
+      "type": "file",
+      "file": "nodes/audits/INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE.md",
+      "x": 760,
+      "y": 4560,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_G2_COMMON_LAYER_CLOSED",
+      "type": "file",
+      "file": "nodes/audits/INVALID_G2_COMMON_LAYER_CLOSED.md",
+      "x": 760,
+      "y": 4800,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED",
+      "type": "file",
+      "file": "nodes/audits/INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED.md",
+      "x": 760,
+      "y": 5040,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_HYDROGEN_FULL_PDE_THEOREM",
+      "type": "file",
+      "file": "nodes/audits/INVALID_HYDROGEN_FULL_PDE_THEOREM.md",
+      "x": 760,
+      "y": 5280,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_KAPPARHO_ELECTRIC_CHARGE",
+      "type": "file",
+      "file": "nodes/audits/INVALID_KAPPARHO_ELECTRIC_CHARGE.md",
+      "x": 760,
+      "y": 5520,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_LEPTON_HALF_INTEGER_PROVED",
+      "type": "file",
+      "file": "nodes/audits/INVALID_LEPTON_HALF_INTEGER_PROVED.md",
+      "x": 760,
+      "y": 5760,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_PROJECTION_EQUALS_REDUCTION",
+      "type": "file",
+      "file": "nodes/audits/INVALID_PROJECTION_EQUALS_REDUCTION.md",
+      "x": 760,
+      "y": 6000,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_QEFF_FROM_GEOMETRY_BREATHING",
+      "type": "file",
+      "file": "nodes/audits/INVALID_QEFF_FROM_GEOMETRY_BREATHING.md",
+      "x": 760,
+      "y": 6240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_READOUTS_ARE_PHYSICAL_THROAT",
+      "type": "file",
+      "file": "nodes/audits/INVALID_READOUTS_ARE_PHYSICAL_THROAT.md",
+      "x": 760,
+      "y": 6480,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN",
+      "type": "file",
+      "file": "nodes/audits/INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN.md",
+      "x": 760,
+      "y": 6720,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM",
+      "type": "file",
+      "file": "nodes/audits/INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM.md",
+      "x": 760,
+      "y": 6960,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_WALL_COEFFS_POSTHOC_FITS",
+      "type": "file",
+      "file": "nodes/audits/INVALID_WALL_COEFFS_POSTHOC_FITS.md",
+      "x": 760,
+      "y": 7200,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "INVALID_ZERO_MODE_REMOVES_MIXED",
+      "type": "file",
+      "file": "nodes/audits/INVALID_ZERO_MODE_REMOVES_MIXED.md",
+      "x": 760,
+      "y": 7440,
+      "width": 330,
+      "height": 190
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "fromNode": "FIREWALL_CHARGE_NOT_CIRCULATION",
+      "fromSide": "right",
+      "toNode": "INVALID_CHARGE_FROM_CIRCULATION",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e1",
+      "fromNode": "FIREWALL_QEFF_THICKNESS_NOT_BREATHING",
+      "fromSide": "right",
+      "toNode": "INVALID_QEFF_FROM_GEOMETRY_BREATHING",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e2",
+      "fromNode": "FIREWALL_KAPPARHO_NOT_CHARGE",
+      "fromSide": "right",
+      "toNode": "INVALID_KAPPARHO_ELECTRIC_CHARGE",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e3",
+      "fromNode": "FIREWALL_KAPPARHO_NOT_CHARGE",
+      "fromSide": "right",
+      "toNode": "FILE_1PN_FULL",
+      "toSide": "left",
+      "label": "ANCHORED_IN"
+    },
+    {
+      "id": "e4",
+      "fromNode": "FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE",
+      "fromSide": "right",
+      "toNode": "INVALID_ZERO_MODE_REMOVES_MIXED",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e5",
+      "fromNode": "FIREWALL_PROJECTION_NOT_REDUCTION",
+      "fromSide": "right",
+      "toNode": "INVALID_PROJECTION_EQUALS_REDUCTION",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e6",
+      "fromNode": "FIREWALL_PARENT_WALL_NOT_STRICT",
+      "fromSide": "right",
+      "toNode": "INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e7",
+      "fromNode": "FIREWALL_WALL_COEFFS_BRANCH_DATA",
+      "fromSide": "right",
+      "toNode": "INVALID_WALL_COEFFS_POSTHOC_FITS",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e8",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e9",
+      "fromNode": "FIREWALL_25PN_CONDITIONAL",
+      "fromSide": "right",
+      "toNode": "INVALID_25PN_UNCONDITIONAL_THEOREM",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e10",
+      "fromNode": "FIREWALL_ANGULAR_NOT_RADIAL",
+      "fromSide": "right",
+      "toNode": "INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e11",
+      "fromNode": "FIREWALL_READOUTS_NOT_THROAT",
+      "fromSide": "right",
+      "toNode": "INVALID_READOUTS_ARE_PHYSICAL_THROAT",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e12",
+      "fromNode": "FIREWALL_ATOM_REDUCED_SECTOR",
+      "fromSide": "right",
+      "toNode": "INVALID_HYDROGEN_FULL_PDE_THEOREM",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e13",
+      "fromNode": "FIREWALL_LEPTON_CONDITIONAL",
+      "fromSide": "right",
+      "toNode": "INVALID_LEPTON_HALF_INTEGER_PROVED",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e14",
+      "fromNode": "FIREWALL_SIMILARITY_NOT_FULL_5PN",
+      "fromSide": "right",
+      "toNode": "INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e15",
+      "fromNode": "FIREWALL_G2_COMMON_CONDITIONAL",
+      "fromSide": "right",
+      "toNode": "INVALID_G2_COMMON_LAYER_CLOSED",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    },
+    {
+      "id": "e16",
+      "fromNode": "FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED",
+      "fromSide": "right",
+      "toNode": "INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED",
+      "toSide": "left",
+      "label": "GUARDS_AGAINST"
+    }
+  ]
+}

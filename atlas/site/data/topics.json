@@ -1,0 +1,442 @@
+{
+  "topics": [
+    {
+      "slug": "foundations",
+      "title": "Foundations: superfluid medium, bulk arena, and throat defects",
+      "track": "Foundations",
+      "summary": "The model starts with a declared bulk superfluid arena, finite brane-bulk throat defects, and a parent action that fixes the fields used downstream.",
+      "status": "published_backed",
+      "node_ids": [
+        "PHYS_SUPERFLUID_MEDIUM",
+        "PHYS_BULK_ARENA",
+        "PHYS_BRANE_BULK_THROAT_DEFECT",
+        "PHYS_INTERIOR_SUPPORT",
+        "MATH_PARENT_ACTION_CURRENT",
+        "CLAIM_PARENT_ACTION_CURRENT_EXACT"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The reader should begin with the physical objects rather than the PN outputs. The bulk is the ambient dynamical medium, the brane is the observed sector, and a particle is modeled as a finite throat-like defect connecting brane and bulk support structure.",
+          "This topic separates what is declared in the parent model from what is later obtained by projection or reduction. That distinction matters because many later results are exact only after a specified closure or controlled limit."
+        ],
+        "mathematical_core": [
+          "The parent level uses a GNLS-type bulk sector together with localized electromagnetic degrees of freedom. The graph records this as the current declared parent action, not yet as the promoted moving-wall action.",
+          "The important reader-level invariant is provenance. Every later claim should say which parent object, projection, closure, or branch computation it depends on."
+        ],
+        "status_note": [
+          "This page is backed by published 4D and ontology papers where available. Any moving-throat wall dynamics introduced later remains additive and must not be read back into the frozen parent paper unless a later paper explicitly adds it."
+        ]
+      },
+      "related_topics": [
+        "projection-open-brane",
+        "charge-em",
+        "moving-throat-pde"
+      ]
+    },
+    {
+      "slug": "projection-open-brane",
+      "title": "Projection versus reduction: why the brane is an open subsystem",
+      "track": "Foundations",
+      "summary": "Projection defines what a brane observer measures; reduction is an extra controlled dynamical simplification and cannot be silently identified with projection.",
+      "status": "published_backed",
+      "node_ids": [
+        "CLAIM_PROJECTION_OPEN_BRANE_SYSTEM",
+        "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
+        "MATH_W_PROJECTION",
+        "PHYS_BRANE_OBSERVER",
+        "PHYS_REG_OBSERVER_PROJECTION",
+        "FIREWALL_PROJECTION_NOT_REDUCTION",
+        "NEG_QUERY_PROJECTION_EQUALS_REDUCTION"
+      ],
+      "sections": {
+        "physical_picture": [
+          "A brane observer sees projected quantities, not the entire bulk state. The brane sector is therefore open: information, support, and boundary data can live outside the reduced brane description.",
+          "This is the conceptual reason later readouts must be treated carefully. A response packet is a measured or compressed output, not automatically a new physical throat object."
+        ],
+        "mathematical_core": [
+          "The projection kernel gives an exact measurement definition. A zero-mode or brane-localized reduction is a separate approximation step with its own assumptions.",
+          "Public explanations should preserve this order: parent fields first, projection second, controlled reduction third, downstream claims last."
+        ],
+        "status_note": [
+          "The graph contains an explicit firewall blocking the invalid shortcut \"projection equals reduction.\" Public pages should keep that warning visible."
+        ]
+      },
+      "related_topics": [
+        "foundations",
+        "charge-em",
+        "status-firewalls"
+      ]
+    },
+    {
+      "slug": "charge-em",
+      "title": "Electromagnetism and charge bookkeeping",
+      "track": "Fields",
+      "summary": "The electromagnetic sector has a controlled zero-mode Maxwell limit, but charge sign and coupling bookkeeping are not derived from throat circulation or geometry alone.",
+      "status": "published_backed",
+      "node_ids": [
+        "PHYS_LOCALIZED_EM_SECTOR",
+        "PHYS_CHARGE_BRANCH",
+        "PHYS_MAGNETIC_VORTICAL_CIRCULATION",
+        "MATH_LOCALIZED_MAXWELL_AM",
+        "MATH_ZERO_MODE_MAXWELL",
+        "EQ_ZERO_MODE_MAXWELL",
+        "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
+        "CLAIM_CHARGE_ONTOLOGY_FIREWALL",
+        "FIREWALL_CHARGE_NOT_CIRCULATION",
+        "FIREWALL_QEFF_THICKNESS_NOT_BREATHING",
+        "FIREWALL_KAPPARHO_NOT_CHARGE"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The EM story is intentionally split into a localized parent sector, a brane zero-mode limit, and charge-branch bookkeeping. That prevents older shorthand symbols from being mistaken for physical electric charge.",
+          "Magnetic or vortical circulation can be real structure without being the definition of electric charge sign."
+        ],
+        "mathematical_core": [
+          "The safe public statement is a controlled Maxwell reduction in the zero-mode brane limit. Beyond that limit, mixed and transverse components must be tracked rather than erased.",
+          "The graph carries separate firewalls for charge sign, q_eff/q_star bookkeeping, and kappa_rho notation."
+        ],
+        "status_note": [
+          "This topic is mostly paper-backed, but some mixed-sector moving-throat plumbing remains open and is handled in later pending topics."
+        ]
+      },
+      "related_topics": [
+        "projection-open-brane",
+        "moving-throat-pde",
+        "status-firewalls"
+      ]
+    },
+    {
+      "slug": "pn-ladder",
+      "title": "Post-Newtonian ladder: 1PN through 4PN",
+      "track": "PN Chain",
+      "summary": "The published PN chain records exact 1PN, 2PN, and 3PN assemblies within declared closures, while 4PN is local/conditional because the inherited tail normalization remains open.",
+      "status": "published_backed",
+      "node_ids": [
+        "CLAIM_1PN_EIH_WITHIN_HIERARCHY",
+        "EQ_1PN_EIH_EQUALITY",
+        "CLAIM_2PN_ADM_WITHIN_HIERARCHY",
+        "EQ_2PN_ADM_EQUALITY",
+        "CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY",
+        "EQ_3PN_SPLIT",
+        "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+        "EQ_4PN_TAIL_BRIDGE",
+        "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The PN ladder is best read as a sequence of increasingly strict matching claims. Lower-order conservative sectors are exact within their declared closure hierarchy; higher-order dissipative and tail sectors expose branch-output requirements.",
+          "This framing helps readers avoid an overclaim: a local algebraic match is not always the same as a solved physical branch."
+        ],
+        "mathematical_core": [
+          "The key public math is the equality of the model's effective two-body Lagrangian with standard PN targets at each controlled stage.",
+          "The 4PN page should always point readers back to the 2.5PN quadrupole normalization gate, because that inherited gate is what blocks an unconditional full-tail theorem."
+        ],
+        "status_note": [
+          "The frozen papers should remain fixed. If later work closes an open gate, the website should add a later-development section rather than rewrite the original PN status."
+        ]
+      },
+      "related_topics": [
+        "quadrupole-radiation",
+        "response-packets",
+        "status-firewalls"
+      ]
+    },
+    {
+      "slug": "quadrupole-radiation",
+      "title": "Quadrupole radiation and the 2.5PN normalization gate",
+      "track": "PN Chain",
+      "summary": "The 2.5PN sector narrows the dissipative problem to an outgoing quadrupole normalization target, but the actual branch data must still supply the normalization.",
+      "status": "mixed_published_and_open",
+      "node_ids": [
+        "CLAIM_25PN_QUAD_NARROWING",
+        "PN_2_5_QUAD_NARROWING",
+        "PHYS_OUTGOING_QUADRUPOLE_PORT",
+        "EQ_COMPACT_L2_FINGERPRINT",
+        "EQ_P0_TARGET",
+        "OPEN_QUAD_NORMALIZATION",
+        "OPEN_SOURCE_PORT_NORMALIZATION",
+        "FIREWALL_25PN_CONDITIONAL",
+        "FIREWALL_ANGULAR_NOT_RADIAL"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The quadrupole sector is where a reader sees the difference between narrowing a target and solving the physical branch. The outgoing port must deliver the right passive quadrupole response.",
+          "The model has strong structure here, but the status remains conditional until the same branch exports the normalization data without target fitting."
+        ],
+        "mathematical_core": [
+          "The central target is an invariant product involving the source scale and outgoing response coefficient. The graph records it as EQ_P0_TARGET and protects it with open-gate status.",
+          "Exact angular source-map facts should not be upgraded into radial or axial normalization closure. That is why the angular-not-radial firewall belongs on the public page."
+        ],
+        "status_note": [
+          "Published papers describe the conditional narrowing. Future work should add a closure paper or branch computation rather than mutate this status."
+        ]
+      },
+      "related_topics": [
+        "pn-ladder",
+        "response-packets",
+        "moving-throat-pde"
+      ]
+    },
+    {
+      "slug": "moving-throat-pde",
+      "title": "Moving-throat PDE program",
+      "track": "Moving Throat",
+      "summary": "The moving-throat program studies wall/support dynamics, branch selection, and response export, but some parts are currently notes-backed rather than formal paper-backed.",
+      "status": "notes_backed_pending_papers",
+      "node_ids": [
+        "MATH_WALL_MODAL_PDE",
+        "EQ_WALL_MODAL_PDE",
+        "CLAIM_PARENT_WALL_STATUS_SPLIT",
+        "MATH_PARENT_ACTION_PROMOTED",
+        "OPEN_PARENT_PROMOTION_S_SIGMA",
+        "OPEN_NONLINEAR_S_SIGMA",
+        "PHYS_BRANCH_EXPORTER",
+        "OPEN_ACTUAL_BRANCH_EXPORTER",
+        "OPEN_EXECUTABLE_BRANCH_SOLVER",
+        "FILE_PDE_AUDIT"
+      ],
+      "sections": {
+        "physical_picture": [
+          "This is the active bridge from a static or reduced throat picture to an executable physical branch. It asks which wall variables, material laws, and boundary packets the same branch must export.",
+          "The public page should be candid: much of this is organized and audited, but not all of it has a frozen formal paper yet."
+        ],
+        "mathematical_core": [
+          "The wall PDE is exact only relative to the action that contains the wall term. The current parent action and the promoted parent action therefore need separate labels.",
+          "The branch exporter is the mathematical object that should eventually connect PDE solutions to PN and anomaly response packets."
+        ],
+        "status_note": [
+          "Tag all notes-backed material here as paper pending. Once a PDE paper or ledger section is published, the source links can be backfilled without rewriting the topic's earlier claims."
+        ]
+      },
+      "related_topics": [
+        "response-packets",
+        "quadrupole-radiation",
+        "future-paper-worklist"
+      ]
+    },
+    {
+      "slug": "response-packets",
+      "title": "Branch response packets and target-blind export",
+      "track": "Moving Throat",
+      "summary": "The model needs branch data exported before comparison to PN or anomaly targets; response packets must be target-blind and downstream of the physical branch.",
+      "status": "notes_backed_pending_papers",
+      "node_ids": [
+        "CLAIM_BRANCH_EXPORTER_REQUIRED",
+        "PHYS_TARGET_BLIND_BRANCH_SELECTION",
+        "PHYS_RESPONSE_READOUTS",
+        "READOUT_D0_C_P0_N2_N4",
+        "MATH_WEAK_FORM_BRANCH_EXTRACTOR",
+        "MT_V2_20_WEAK_FORM_EXTRACTOR",
+        "TARGET_PACKET_A",
+        "TARGET_PACKET_B",
+        "OPEN_N2_N4_MOMENT_SHAPE",
+        "FIREWALL_READOUTS_NOT_THROAT"
+      ],
+      "sections": {
+        "physical_picture": [
+          "A response packet is the branch's exported data, not a physical object in its own right. That distinction keeps the comparison to target coefficients honest.",
+          "Packet A carries conservative/outgoing normalization data; Packet B carries orbit-lock or weak-axisymmetric data where relevant."
+        ],
+        "mathematical_core": [
+          "The weak-form branch extractor is the planned interface between solved profiles and invariant packet data. It should output quantities such as K, M, B_n, Z_n, N_n, and grouped projectors without reading the target first.",
+          "This page should be treated as the public checklist for future executable branch solvers."
+        ],
+        "status_note": [
+          "Most details are pending formal publication. The generated backfill list records exactly which note sources need replacement or citation once papers exist."
+        ]
+      },
+      "related_topics": [
+        "moving-throat-pde",
+        "quadrupole-radiation",
+        "five-pn-continuation"
+      ]
+    },
+    {
+      "slug": "five-pn-continuation",
+      "title": "5PN continuation and full-bundle surface",
+      "track": "PN Chain",
+      "summary": "The 5PN continuation organizes full-bundle targets, monomial quotients, and weak-axisymmetric transport, but it is presently a future-paper area.",
+      "status": "notes_backed_pending_papers",
+      "node_ids": [
+        "CLAIM_5PN_FULL_BUNDLE_SURFACE",
+        "PN_5_FULL_BUNDLE_SURFACE",
+        "EQ_FULL_BUNDLE_TARGET_SURFACE",
+        "EQ_MONOMIAL_QUOTIENT",
+        "EQ_WEAK_AXISYM_SIGNATURE",
+        "EQ_XI1_PREF_SLOPE",
+        "OPEN_5PN_EVEN_GATES",
+        "OPEN_WEAK_AXISYM_ORBIT_LOCK",
+        "FIREWALL_SIMILARITY_NOT_FULL_5PN",
+        "FILE_5PN_FULL"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The 5PN material is a continuation layer, not a frozen published endpoint. It packages a reduced full-bundle surface and identifies which branch-placement and even-gate conditions remain.",
+          "The reader should see this as a map of precise targets for future branch computation."
+        ],
+        "mathematical_core": [
+          "The monomial quotient and Xi-style prefactor slope organize higher-order response structure. Those coordinates are useful, but they do not by themselves solve the full conservative even gates.",
+          "Public pages should keep the similarity/orbit theorem separate from full 5PN closure."
+        ],
+        "status_note": [
+          "This page should be marked paper pending until the 5PN derivation is promoted from notes to a formal paper."
+        ]
+      },
+      "related_topics": [
+        "pn-ladder",
+        "response-packets",
+        "anomaly-g2"
+      ]
+    },
+    {
+      "slug": "lepton-atom-sectors",
+      "title": "Lepton and atom reduced sectors",
+      "track": "Matter",
+      "summary": "Atom and lepton constructions currently live in reduced-sector and conditional corridors, with several pieces still awaiting formal papers.",
+      "status": "notes_backed_pending_papers",
+      "node_ids": [
+        "ATOM_HYDROGEN_ZERO_MODE",
+        "CLAIM_ATOMIC_HYDROGEN_ZERO_MODE",
+        "ATOM_FINITE_SIZE_P22",
+        "LEPTON_MASS_REDUCED_LEDGER",
+        "CLAIM_LEPTON_MASS_REDUCED_LEDGER",
+        "LEPTON_MIXED_BERRY_ROTOR",
+        "LEPTON_HALF_INTEGER_CONDITIONAL",
+        "CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL",
+        "OPEN_LEPTON_SPIN_DISCRETIZER",
+        "FIREWALL_ATOM_REDUCED_SECTOR",
+        "FIREWALL_LEPTON_CONDITIONAL"
+      ],
+      "sections": {
+        "physical_picture": [
+          "These sectors explain how the existing 4D action can be read in reduced atomic and lepton-like regimes. They should not be presented as completed full moving-throat PDE theorems.",
+          "Hydrogenic structure is a controlled zero-mode consequence; lepton half-integer structure remains conditional on a selective mixed-sector route and autonomous closure."
+        ],
+        "mathematical_core": [
+          "The useful public split is reduced-sector theorem, conditional theorem, and open spin/discretizer gate. That split makes the pending work visible without hiding the structured progress.",
+          "Mass ledgers and Berry-rotor corridors should cite notes until a particle-sector paper exists."
+        ],
+        "status_note": [
+          "This topic should produce backfill tags for atom, lepton, and lepton-mass note sources."
+        ]
+      },
+      "related_topics": [
+        "charge-em",
+        "anomaly-g2",
+        "future-paper-worklist"
+      ]
+    },
+    {
+      "slug": "anomaly-g2",
+      "title": "Anomaly and g-2 common quotient corridor",
+      "track": "Matter",
+      "summary": "The current anomaly story separates a staggered baseline from a conditional common quotient or prefactor-slope layer that still requires branch data.",
+      "status": "notes_backed_pending_papers",
+      "node_ids": [
+        "ANOMALY_G2_STAGGERED_BASELINE",
+        "ANOMALY_G2_COMMON_QUOTIENT",
+        "CLAIM_G2_COMMON_QUOTIENT",
+        "EQ_G2_COMMON_TANGENT",
+        "EQ_XI1_PREF_SLOPE",
+        "OPEN_G2_COMMON_LAYER",
+        "FIREWALL_G2_COMMON_CONDITIONAL",
+        "FILE_G2_OUTPUT"
+      ],
+      "sections": {
+        "physical_picture": [
+          "The anomaly material should be presented as a sharp corridor, not as a closed prediction. The model identifies a common charge-inertia transport layer that would need the same branch machinery as other response packets.",
+          "That makes the g-2 page a useful reader bridge between particle-sector notes and the moving-throat branch exporter."
+        ],
+        "mathematical_core": [
+          "The quotient coordinates and Xi1/P1/P0 bridge define the target language. They should be linked to the 5PN continuation and weak-axisymmetric packet pages.",
+          "The graph firewall prevents the common layer from being advertised as closed before the actual branch tangent is computed."
+        ],
+        "status_note": [
+          "Treat this as notes-backed until the g-2 derivation ledger becomes a formal paper."
+        ]
+      },
+      "related_topics": [
+        "five-pn-continuation",
+        "lepton-atom-sectors",
+        "response-packets"
+      ]
+    },
+    {
+      "slug": "status-firewalls",
+      "title": "Status firewalls: what the site must not overclaim",
+      "track": "Method",
+      "summary": "Status firewalls are public guardrails that block invalid upgrades such as projection equals reduction, local 4PN equals full tail closure, or g-2 already closed.",
+      "status": "graph_backed",
+      "node_ids": [
+        "STATUS_FIREWALL_REGISTER_V07",
+        "FIREWALL_PROJECTION_NOT_REDUCTION",
+        "FIREWALL_CHARGE_NOT_CIRCULATION",
+        "FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE",
+        "FIREWALL_PARENT_WALL_NOT_STRICT",
+        "FIREWALL_25PN_CONDITIONAL",
+        "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+        "FIREWALL_SIMILARITY_NOT_FULL_5PN",
+        "FIREWALL_G2_COMMON_CONDITIONAL",
+        "FIREWALL_ATOM_REDUCED_SECTOR",
+        "FIREWALL_LEPTON_CONDITIONAL",
+        "CLAIM_RESPONSE_READOUT_DISCIPLINE"
+      ],
+      "sections": {
+        "physical_picture": [
+          "Firewalls are not bureaucracy. They are how the public site stays honest while summarizing a large derivation program.",
+          "A reader should be able to tell immediately which results are exact, which are conditional, and which are open branch targets."
+        ],
+        "mathematical_core": [
+          "The graph represents invalid inferences as explicit nodes and negative queries. Public topic pages should surface the relevant firewall wherever a tempting shortcut exists.",
+          "This also gives future papers a checklist: closing a gate means changing graph status with source support, not editing prose alone."
+        ],
+        "status_note": [
+          "This page is generated from graph status metadata and should be regenerated whenever the status register changes."
+        ]
+      },
+      "related_topics": [
+        "projection-open-brane",
+        "pn-ladder",
+        "future-paper-worklist"
+      ]
+    },
+    {
+      "slug": "future-paper-worklist",
+      "title": "Future paper worklist",
+      "track": "Method",
+      "summary": "Notes-only material is intentionally visible and tagged so it can be backfilled with formal paper citations once new papers are published.",
+      "status": "generated_backfill",
+      "node_ids": [
+        "FILE_5PN_FULL",
+        "FILE_PDE_AUDIT",
+        "FILE_ATOM_WORK",
+        "FILE_LEPTON_WORK",
+        "FILE_LEPTON_MASS",
+        "FILE_G2_OUTPUT",
+        "OPEN_MATERIAL_CLOSURE",
+        "OPEN_MIXED_RECIRCULATION",
+        "OPEN_ACTUAL_BRANCH_EXPORTER",
+        "OPEN_EXECUTABLE_BRANCH_SOLVER"
+      ],
+      "sections": {
+        "physical_picture": [
+          "This page is the maintenance bridge between the reader website and the research queue. It is acceptable for public pages to discuss notes-backed material if they clearly say that no formal paper exists yet.",
+          "When a new paper is published, the source graph should be updated first; then this site can regenerate and remove or shrink the pending badge automatically."
+        ],
+        "mathematical_core": [
+          "A pending source is any graph source marked `future_paper_needed`, `future_paper_note`, or located only under `notes/` without a research paper DOI.",
+          "The generator exports `atlas/exports/future_paper_backfill.yaml` so Codex can find every topic and node that needs citation cleanup after publication."
+        ],
+        "status_note": [
+          "This page is generated from graph and topic metadata. It should not be manually edited as a to-do list."
+        ]
+      },
+      "related_topics": [
+        "moving-throat-pde",
+        "five-pn-continuation",
+        "lepton-atom-sectors"
+      ]
+    }
+  ],
+  "generated_utc": "2026-04-27T20:20:12Z"
+}

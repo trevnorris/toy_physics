@@ -1,0 +1,14 @@
+filters:
+  and:
+  - file.inFolder("nodes/claims")
+views:
+- type: table
+  name: Claims
+  order:
+  - file.name
+  - layer
+  - status
+  - claim_strength
+  - summary_short
+  - source_links
+  - source_files

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electromagnetism and charge bookkeeping</title>
+  <link rel="stylesheet" href="../assets/reader.css">
+  <script defer src="../assets/reader.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Fluid Universe Reader</a>
+    <nav>
+      <a href="../index.html#topics">Topics</a>
+      <a href="../future-paper-worklist.html">Paper Backfill</a>
+      <a href="../data/topics.json">Data</a>
+    </nav>
+  </header>
+  
+<main>
+  <div class="breadcrumb"><a href="../index.html">Reader</a> / Electromagnetism and charge bookkeeping</div>
+  <article class="topic-page">
+    <header class="topic-header">
+      <p class="eyebrow">Fields · generated 2026-04-27T20:20:12Z</p>
+      <h1>Electromagnetism and charge bookkeeping</h1>
+      <p class="lede">The electromagnetic sector has a controlled zero-mode Maxwell limit, but charge sign and coupling bookkeeping are not derived from throat circulation or geometry alone.</p>
+      <p>
+        <span class="badge published_backed">paper-backed</span>
+        <span class="muted">11 selected graph nodes · 5 paper-pending source entries</span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Physical Picture</h2>
+      <p>The EM story is intentionally split into a localized parent sector, a brane zero-mode limit, and charge-branch bookkeeping. That prevents older shorthand symbols from being mistaken for physical electric charge.</p>
+<p>Magnetic or vortical circulation can be real structure without being the definition of electric charge sign.</p>
+    </section>
+
+    <section>
+      <h2>Mathematical Core</h2>
+      <p>The safe public statement is a controlled Maxwell reduction in the zero-mode brane limit. Beyond that limit, mixed and transverse components must be tracked rather than erased.</p>
+<p>The graph carries separate firewalls for charge sign, q_eff/q_star bookkeeping, and kappa_rho notation.</p>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>This topic is mostly paper-backed, but some mixed-sector moving-throat plumbing remains open and is handled in later pending topics.</p>
+    </section>
+
+    <section>
+      <h2>Key Equations</h2>
+      <div class="evidence-grid"><article class="evidence-card"><h3>Zero-mode brane Maxwell reduction</h3><p class="node-id">EQ_ZERO_MODE_MAXWELL · controlled_reduction</p><div class="math-block">\[∂_μ F^{μν} = μ0_{\mathrm{eff}} J_{\mathrm{eff}}^ν,    μ0_{\mathrm{eff}} = μ0/Z_{\mathrm{int}}\]</div><p>Controlled far-field brane reduction of localized 4+1 Maxwell.</p></article></div>
+    </section>
+
+    <section>
+      <h2>Physical and Math Objects</h2>
+      <div class="split">
+        <div><h3>Physical objects</h3><ul class="node-list">
+<li><code>PHYS_LOCALIZED_EM_SECTOR</code> <strong>Localized electromagnetic sector</strong> <span class="badge small">exact_declared_parent</span><p>A genuine localized 4+1 Maxwell field with transverse localization weight.</p></li>
+<li><code>PHYS_CHARGE_BRANCH</code> <strong>Electric charge branch</strong> <span class="badge small">exact_bookkeeping</span><p>Electric sign is an oriented puncture/branch label; observed charge is localization-dressed.</p></li>
+<li><code>PHYS_MAGNETIC_VORTICAL_CIRCULATION</code> <strong>Magnetic/vortical circulation sector</strong> <span class="badge small">exact_identity_and_open_plumbing</span><p>Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.</p></li>
+</ul></div>
+        <div><h3>Math objects</h3><ul class="node-list">
+<li><code>MATH_LOCALIZED_MAXWELL_AM</code> <strong>Localized 4+1 Maxwell field</strong> <span class="badge small">exact</span><p>Gauge field sector with localization weight and source consistency.</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claims</h2>
+      <ul class="node-list">
+<li><code>CLAIM_ZERO_MODE_MAXWELL_REDUCTION</code> <strong>Zero-mode localized Maxwell gives brane Maxwell only as a controlled limit</strong> <span class="badge small">controlled_reduction</span><p>The localized 4+1 Maxwell action reduces to ordinary 3+1 Maxwell with mu0_eff=mu0/Z_int only under axial/zero-mode/far-field assumptions; mixed core channels are suppressed, not erased.</p></li>
+<li><code>CLAIM_CHARGE_ONTOLOGY_FIREWALL</code> <strong>Corrected electric-charge ontology firewall</strong> <span class="badge small">exact_bookkeeping_firewall</span><p>Electric sign is eta_Q, microscopic branch charge is q_star, brane charge is q_eff=q_star/sqrt(Z_int), and circulation is magnetic/vortical rather than electric charge.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Open Gates and Firewalls</h2>
+      <div class="split">
+        <div><h3>Open or conditional gates</h3><ul class="node-list">
+<li><code>PHYS_MAGNETIC_VORTICAL_CIRCULATION</code> <strong>Magnetic/vortical circulation sector</strong> <span class="badge small">exact_identity_and_open_plumbing</span><p>Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.</p></li>
+</ul></div>
+        <div><h3>Firewalls</h3><ul class="node-list">
+<li><code>FIREWALL_CHARGE_NOT_CIRCULATION</code> <strong>Do not identify circulation, throat geometry, or magnetic/vortical winding with electric charge sign.</strong> <span class="badge small">active_v07</span><p>No. Electric charge sign is eta_Q; circulation belongs to the magnetic/vortical sector.</p></li>
+<li><code>FIREWALL_QEFF_THICKNESS_NOT_BREATHING</code> <strong>Keep microscopic branch charge q_star and observed brane coupling q_eff separate from throat radius/length dynamics.</strong> <span class="badge small">active_v07</span><p>No. q_eff is thickness-controlled through Z_int after zero-mode normalization.</p></li>
+<li><code>FIREWALL_KAPPARHO_NOT_CHARGE</code> <strong>Do not recycle the historical gravity-side q=1 notation as electromagnetic charge.</strong> <span class="badge small">active_v07</span><p>No. kappa_rho is a mass-dressing/Newtonian scalar coefficient, not the EM charge label.</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <h3>Published sources</h3><ul class="source-list">
+<li><strong>4D Toy Model — Action, Projections, and Controlled Brane Limits</strong> <a href="https://doi.org/10.5281/zenodo.19449589">10.5281/zenodo.19449589</a><br><code>research/4d/paper/4d.tex</code></li>
+<li><strong>Deriving Key Post-Newtonian Coefficients from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19449653">10.5281/zenodo.19449653</a><br><code>research/4d_1pn_bridge/paper/4d_1pn_bridge.tex</code></li>
+<li><strong>A Controlled Derivation of the Full First Post-Newtonian Sector from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19450102">10.5281/zenodo.19450102</a><br><code>research/4d_1pn_full/paper/4d_1pn_full.tex</code></li>
+<li><strong>A Controlled Derivation of the Full Conservative Second Post-Newtonian Sector from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19450284">10.5281/zenodo.19450284</a><br><code>research/4d_2pn/paper/4d_2pn.tex</code></li>
+<li><strong>Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449834">10.5281/zenodo.19449834</a><br><code>research/4d_em_fields/paper/4d_em_fields.tex</code></li>
+<li><strong>Plasma Dynamics from the Unified 4D Toy Model: A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449935">10.5281/zenodo.19449935</a><br><code>research/4d_plasma/paper/4d_plasma.tex</code></li>
+</ul>
+<h3>Paper pending sources</h3><ul class="source-list pending">
+<li><span class="badge pending-badge">paper pending</span> <code>notes/atom_work.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/lepton_work.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_pde_program_compact.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-02</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-30</code><p>No formal paper source is recorded yet.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Source Anchor Nodes</h2>
+      <details class="provenance-details">
+        <summary>Show graph source-anchor nodes (22)</summary>
+        <ul class="node-list">
+<li><code>BACKLINK_1PN_BRIDGE</code> <strong>Bridge constants and coefficient-freezing layer</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects topology, optics n=5, added-mass, wake constants, and adiabatic breathing closure to the 1PN closure hierarchy.</p></li>
+<li><code>BACKLINK_4D_PARENT</code> <strong>Parent action, projection/reduction, charge ontology, and cold-start hooks</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects the exact parent GNLS/Maxwell action, projection map, leakage identity, Poisson hook, zero-mode Maxwell reduction, and corrected charge ontology to the atlas backbone.</p></li>
+<li><code>BACKLINK_ATOM_WORK</code> <strong>Atomic reduced-sector derivations and hydrogen zero-mode branch</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the controlled zero-mode Maxwell/Coulomb reduction, thickness-controlled charge, and reduced-sector hydrogenic consequence.</p></li>
+<li><code>BACKLINK_EM_FIELDS</code> <strong>Localized 4+1 Maxwell sector and charge/localization firewall</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the localized Maxwell action, zero-mode brane reduction, q_eff normalization, KK/deviation hooks, and mixed-core firewall.</p></li>
+<li><code>BACKLINK_LEPTON_WORK</code> <strong>Lepton half-integer mixed-sector route</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the same-charge mixed-sector rotor corridor, half-integer conditional theorem, and the required spin discretizer / recirculation closure.</p></li>
+<li><code>FILE_1PN_FULL</code> <strong>4d_1pn_full_summary.md</strong> <span class="badge small">paper_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_2PN_FULL</code> <strong>4d_2pn_summary.md / 4d_2pn.tex</strong> <span class="badge small">paper_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_4D_PARENT</code> <strong>4d_summary.md / 4d.tex</strong> <span class="badge small">core_anchor</span><p>Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.</p></li>
+<li><code>FILE_ATOM_WORK</code> <strong>atom_work.md</strong> <span class="badge small">reduced_sector_anchor</span><p>Atomic/hydrogenic reduced-sector derivations from the 4D action and zero-mode Maxwell sector.</p></li>
+<li><code>FILE_EM_FIELDS</code> <strong>4d_em_fields_summary.md / 4d_em_fields.tex</strong> <span class="badge small">core_em_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_LEPTON_WORK</code> <strong>lepton_work.md</strong> <span class="badge small">particle_identity_anchor</span><p>Lepton/spin/mixed-sector reduced work and conditional same-charge corridor.</p></li>
+<li><code>FILE_PLASMA</code> <strong>4d_plasma_summary.md / 4d_plasma.tex</strong> <span class="badge small">plasma_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>SEC_1PN_BRIDGE_DICTIONARY</code> <strong>2) Minimal dictionary of the unified 4D model used by this paper</strong> <span class="badge small">v06_section_anchor</span><p>Bridge paper carries corrected charge ontology, GNLS, geometry variables, and reduction language.</p></li>
+<li><code>SEC_4D_CHARGE_BOOKKEEPING</code> <strong>Minimal coupling (covariant derivatives)</strong> <span class="badge small">v05_first_section_anchor</span><p>q-star/effective charge notation.</p></li>
+<li><code>SEC_4D_ZERO_MODE_MAXWELL</code> <strong>8) Controlled EM localization reduction to an effective brane Maxwell theory</strong> <span class="badge small">v05_first_section_anchor</span><p>Controlled EM zero-mode reduction.</p></li>
+<li><code>SEC_ATOM_FOUNDATIONS</code> <strong>Part I — Foundations</strong> <span class="badge small">v05_first_section_anchor</span><p>Atomic/lepton foundations.</p></li>
+<li><code>SEC_EM_CHARGE_ONTOLOGY</code> <strong>1.1 Charge ontology update</strong> <span class="badge small">v05_first_section_anchor</span><p>Charge sign and q_eff update.</p></li>
+<li><code>SEC_EM_LOCALIZED_ACTION</code> <strong>3) Full localized 4+1 Maxwell sector (the action)</strong> <span class="badge small">v05_first_section_anchor</span><p>Maxwell action anchor.</p></li>
+<li><code>SEC_EM_QEFF</code> <strong>6.5 Canonical normalization and thickness-controlled charge strength</strong> <span class="badge small">v05_first_section_anchor</span><p>Thickness-controlled charge.</p></li>
+<li><code>SEC_EM_ZERO_MODE</code> <strong>6.4 Zero-mode (Maxwell) limit and \(\mu_0^{\rm eff}\)</strong> <span class="badge small">v05_first_section_anchor</span><p>Zero-mode Maxwell limit.</p></li>
+<li><code>SEC_MT_PROJECTION_ZERO_MODE</code> <strong>2.5.7 Cold-start projection and zero-mode reduction hooks</strong> <span class="badge small">v05_first_section_anchor</span><p>Projection and zero-mode hooks.</p></li>
+<li><code>SEC_PLASMA_Z_VS_W</code> <strong>3) Localization vs projection (two distinct kernels)</strong> <span class="badge small">v05_first_section_anchor</span><p>Z controls action; W controls observation.</p></li>
+</ul>
+      </details>
+    </section>
+
+    <section>
+      <h2>Related Topics</h2>
+      <p><a class="pill-link" href="../topics/projection-open-brane.html">Projection versus reduction: why the brane is an open subsystem</a> <a class="pill-link" href="../topics/moving-throat-pde.html">Moving-throat PDE program</a> <a class="pill-link" href="../topics/status-firewalls.html">Status firewalls: what the site must not overclaim</a></p>
+    </section>
+  </article>
+</main>
+
+  <footer class="site-footer">
+    <p>Generated from atlas/topics.yaml and graph/fluid_universe_derivation_atlas_graph.yaml. Reader pages are additive commentary; published research papers remain the frozen references.</p>
+  </footer>
+</body>
+</html>

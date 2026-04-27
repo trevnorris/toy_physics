@@ -1,0 +1,617 @@
+{
+  "nodes": [
+    {
+      "id": "VIEW_CLAIM_LAYER",
+      "type": "file",
+      "file": "nodes/meta/VIEW_CLAIM_LAYER.md",
+      "x": 0,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "VIEW_PAPER_BACKLINK_LAYER_V06",
+      "type": "file",
+      "file": "nodes/meta/VIEW_PAPER_BACKLINK_LAYER_V06.md",
+      "x": 0,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "CLAIM_25PN_QUAD_NARROWING",
+      "type": "file",
+      "file": "nodes/claims/CLAIM_25PN_QUAD_NARROWING.md",
+      "x": 380,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "type": "file",
+      "file": "nodes/claims/CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL.md",
+      "x": 380,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "CLAIM_STAGE5_P0_TARGET",
+      "type": "file",
+      "file": "nodes/claims/CLAIM_STAGE5_P0_TARGET.md",
+      "x": 380,
+      "y": 480,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "PN_4_LOCAL_TAIL",
+      "type": "file",
+      "file": "nodes/derivations/PN_4_LOCAL_TAIL.md",
+      "x": 760,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "EQ_4PN_TAIL_BRIDGE",
+      "type": "file",
+      "file": "nodes/equations/EQ_4PN_TAIL_BRIDGE.md",
+      "x": 1140,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "EQ_P0_TARGET",
+      "type": "file",
+      "file": "nodes/equations/EQ_P0_TARGET.md",
+      "x": 1140,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FILE_4PN_FULL",
+      "type": "file",
+      "file": "nodes/sources/FILE_4PN_FULL.md",
+      "x": 1520,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "OPEN_QUAD_NORMALIZATION",
+      "type": "file",
+      "file": "nodes/open_gates/OPEN_QUAD_NORMALIZATION.md",
+      "x": 1900,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "BACKLINK_4PN_FULL",
+      "type": "file",
+      "file": "nodes/meta/BACKLINK_4PN_FULL.md",
+      "x": 2280,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "type": "file",
+      "file": "nodes/physical/PHYS_OUTGOING_QUADRUPOLE_PORT.md",
+      "x": 2660,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL",
+      "type": "file",
+      "file": "nodes/audits/NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL.md",
+      "x": 3040,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "QUERY_4PN_TAIL_BLOCKER",
+      "type": "file",
+      "file": "nodes/audits/QUERY_4PN_TAIL_BLOCKER.md",
+      "x": 3040,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "SEC_4PN_FINAL_THEOREM",
+      "type": "file",
+      "file": "nodes/sources/SEC_4PN_FINAL_THEOREM.md",
+      "x": 3420,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "SEC_4PN_NO_NEW_GAP",
+      "type": "file",
+      "file": "nodes/sources/SEC_4PN_NO_NEW_GAP.md",
+      "x": 3420,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "SEC_4PN_TAIL_BRIDGE",
+      "type": "file",
+      "file": "nodes/sources/SEC_4PN_TAIL_BRIDGE.md",
+      "x": 3420,
+      "y": 480,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "type": "file",
+      "file": "nodes/status_firewalls/FIREWALL_4PN_LOCAL_NOT_FULL_TAIL.md",
+      "x": 3800,
+      "y": 0,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "STATUS_LADDER_EXACT_TO_OPEN",
+      "type": "file",
+      "file": "nodes/audits/STATUS_LADDER_EXACT_TO_OPEN.md",
+      "x": 3800,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0",
+      "fromNode": "CLAIM_25PN_QUAD_NARROWING",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "SUPPLIES_TAIL_GATE_FOR"
+    },
+    {
+      "id": "e1",
+      "fromNode": "CLAIM_25PN_QUAD_NARROWING",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e2",
+      "fromNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e3",
+      "fromNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "fromSide": "right",
+      "toNode": "PN_4_LOCAL_TAIL",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e4",
+      "fromNode": "CLAIM_STAGE5_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e5",
+      "fromNode": "EQ_4PN_TAIL_BRIDGE",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "SUPPORTS_CLAIM"
+    },
+    {
+      "id": "e6",
+      "fromNode": "EQ_4PN_TAIL_BRIDGE",
+      "fromSide": "right",
+      "toNode": "PN_4_LOCAL_TAIL",
+      "toSide": "left",
+      "label": "ANCHORS"
+    },
+    {
+      "id": "e7",
+      "fromNode": "EQ_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "CLAIM_25PN_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "SUPPORTS_CLAIM"
+    },
+    {
+      "id": "e8",
+      "fromNode": "EQ_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "SUPPORTS_CLAIM"
+    },
+    {
+      "id": "e9",
+      "fromNode": "EQ_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "SUPPORTS_CLAIM"
+    },
+    {
+      "id": "e10",
+      "fromNode": "EQ_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "EQ_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "REQUIRED_BY"
+    },
+    {
+      "id": "e11",
+      "fromNode": "EQ_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "ANCHORS"
+    },
+    {
+      "id": "e12",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "OWNS_OR_ANCHORS_CLAIM"
+    },
+    {
+      "id": "e13",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "OWNS_OR_ANCHORS_CLAIM"
+    },
+    {
+      "id": "e14",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "EQ_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "CONTAINS_EQUATION"
+    },
+    {
+      "id": "e15",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "EQ_P0_TARGET",
+      "toSide": "left",
+      "label": "CONTAINS_EQUATION"
+    },
+    {
+      "id": "e16",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "PN_4_LOCAL_TAIL",
+      "toSide": "left",
+      "label": "DOCUMENTS"
+    },
+    {
+      "id": "e17",
+      "fromNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "fromSide": "right",
+      "toNode": "CLAIM_25PN_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e18",
+      "fromNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e19",
+      "fromNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e20",
+      "fromNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "REQUIRES"
+    },
+    {
+      "id": "e21",
+      "fromNode": "PN_4_LOCAL_TAIL",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "INHERITS_GATE"
+    },
+    {
+      "id": "e22",
+      "fromNode": "PN_4_LOCAL_TAIL",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "REQUIRES"
+    },
+    {
+      "id": "e23",
+      "fromNode": "STATUS_LADDER_EXACT_TO_OPEN",
+      "fromSide": "right",
+      "toNode": "CLAIM_25PN_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "CLASSIFIES"
+    },
+    {
+      "id": "e24",
+      "fromNode": "STATUS_LADDER_EXACT_TO_OPEN",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "CLASSIFIES"
+    },
+    {
+      "id": "e25",
+      "fromNode": "STATUS_LADDER_EXACT_TO_OPEN",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "CLASSIFIES"
+    },
+    {
+      "id": "e26",
+      "fromNode": "VIEW_CLAIM_LAYER",
+      "fromSide": "right",
+      "toNode": "CLAIM_25PN_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "CONTAINS_CLAIM"
+    },
+    {
+      "id": "e27",
+      "fromNode": "VIEW_CLAIM_LAYER",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "CONTAINS_CLAIM"
+    },
+    {
+      "id": "e28",
+      "fromNode": "VIEW_CLAIM_LAYER",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "CONTAINS_CLAIM"
+    },
+    {
+      "id": "e29",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "HAS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e30",
+      "fromNode": "SEC_4PN_TAIL_BRIDGE",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "ANCHORS_CLAIM_SECTION"
+    },
+    {
+      "id": "e31",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_NO_NEW_GAP",
+      "toSide": "left",
+      "label": "HAS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e32",
+      "fromNode": "SEC_4PN_NO_NEW_GAP",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "ANCHORS_CLAIM_SECTION"
+    },
+    {
+      "id": "e33",
+      "fromNode": "SEC_4PN_NO_NEW_GAP",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "ANCHORS_CLAIM_SECTION"
+    },
+    {
+      "id": "e34",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_FINAL_THEOREM",
+      "toSide": "left",
+      "label": "HAS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e35",
+      "fromNode": "SEC_4PN_FINAL_THEOREM",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "ANCHORS_CLAIM_SECTION"
+    },
+    {
+      "id": "e36",
+      "fromNode": "FILE_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "BACKLINK_4PN_FULL",
+      "toSide": "left",
+      "label": "HAS_PAPER_BACKLINK_BLOCK"
+    },
+    {
+      "id": "e37",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "BACKLINKS_ATLAS_NODE"
+    },
+    {
+      "id": "e38",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "EQ_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "BACKLINKS_ATLAS_NODE"
+    },
+    {
+      "id": "e39",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toSide": "left",
+      "label": "BACKLINKS_ATLAS_NODE"
+    },
+    {
+      "id": "e40",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
+      "toSide": "left",
+      "label": "BACKLINKS_ATLAS_NODE"
+    },
+    {
+      "id": "e41",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "BACKLINKS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e42",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_NO_NEW_GAP",
+      "toSide": "left",
+      "label": "BACKLINKS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e43",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_FINAL_THEOREM",
+      "toSide": "left",
+      "label": "BACKLINKS_SECTION_ANCHOR"
+    },
+    {
+      "id": "e44",
+      "fromNode": "BACKLINK_4PN_FULL",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "FLAGS_OPEN_GATE"
+    },
+    {
+      "id": "e45",
+      "fromNode": "VIEW_PAPER_BACKLINK_LAYER_V06",
+      "fromSide": "right",
+      "toNode": "BACKLINK_4PN_FULL",
+      "toSide": "left",
+      "label": "CONTAINS_BACKLINK_BLOCK"
+    },
+    {
+      "id": "e46",
+      "fromNode": "QUERY_4PN_TAIL_BLOCKER",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "STARTS_AT"
+    },
+    {
+      "id": "e47",
+      "fromNode": "QUERY_4PN_TAIL_BLOCKER",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "EXPECTS_TARGET"
+    },
+    {
+      "id": "e48",
+      "fromNode": "NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "STARTS_AT"
+    },
+    {
+      "id": "e49",
+      "fromNode": "NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "toSide": "left",
+      "label": "PROTECTED_BY"
+    },
+    {
+      "id": "e50",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
+      "toSide": "left",
+      "label": "PROTECTS_STATUS_OF"
+    },
+    {
+      "id": "e51",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "OPEN_QUAD_NORMALIZATION",
+      "toSide": "left",
+      "label": "PROTECTS_STATUS_OF"
+    },
+    {
+      "id": "e52",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "EQ_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "PROTECTS_STATUS_OF"
+    },
+    {
+      "id": "e53",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "FILE_4PN_FULL",
+      "toSide": "left",
+      "label": "ANCHORED_IN"
+    },
+    {
+      "id": "e54",
+      "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
+      "fromSide": "right",
+      "toNode": "SEC_4PN_TAIL_BRIDGE",
+      "toSide": "left",
+      "label": "ANCHORED_IN"
+    }
+  ]
+}

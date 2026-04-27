@@ -1,0 +1,94 @@
+# Open Gates
+
+<!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
+
+![[open_gates.base]]
+
+- [[ANOMALY_G2_COMMON_QUOTIENT]] — `conditional_open` — Common correction organized by q_tr,q_nt,q_eta monomial quotient; Xi1/P1/P0 bridge supplies microscopic tar...
+- [[ATOM_FINITE_SIZE_P22]] — `reduced_sector_open` — Finite-mouth/shape response corridor for atomic finite-size corrections and P22 support effects.
+- [[CLAIM_25PN_QUAD_NARROWING]] — `conditional_theorem_open_normalization` — The 2.5PN audit demotes scalar/dipole dangers on the natural branch and narrows the universal point-particl...
+- [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] — `exact_within_reduced_bundle_open_branch` — The 5PN/moving-throat continuation gives exact isotropic full-bundle target surfaces and weak-axisymmetric ...
+- [[CLAIM_BRANCH_EXPORTER_REQUIRED]] — `open_actual_branch` — The program must produce target-blind branch data before comparison; executable fixtures and smoke tests do...
+- [[CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL]] — `conditional_open` — A same-charge mixed-sector Berry rotor can force half-integer quantization only if the selective tau-subbun...
+- [[CLAIM_LEPTON_MASS_REDUCED_LEDGER]] — `reduced_closure_theorem_open_scale` — The isolated lepton mass ledger fixes the 11:2:5 partition and total/rest-energy relation within the reduce...
+- [[CLAIM_MATERIAL_CLOSURE_GAP]] — `open` — Density, sound speed, effective light cone, flux feedback, and material screening must be exported on the s...
+- [[CLAIM_MIXED_RECIRCULATION_OPEN]] — `open` — The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport...
+- [[CLAIM_PACKET_A_PACKET_B_SPLIT]] — `open_branch_packets` — Current moving-throat finish line separates conservative/outgoing grouped target data (Packet A) from orbit...
+- [[EQ_G2_COMMON_TANGENT]] — `conditional_open` — First tangent projection required by the minimal common quotient correction to match the residual.
+- [[EQ_LEPTON_HALF_INTEGER]] — `conditional_open` — Half-integer same-charge quantizer under selective tau subbundle and autonomous standing-wave soliton closure.
+- [[EQ_P0_TARGET]] — `open_actual_branch_data` — Central remaining 2.5PN/4PN moving-throat normalization target.
+- [[FILE_5PN_FULL]] — `continuation_anchor` — 5PN continuation, full-bundle surface, weak-axisymmetric transport, monomial quotient/orbit-lock machinery.
+- [[FILE_ATOM_WORK]] — `reduced_sector_anchor` — Atomic/hydrogenic reduced-sector derivations from the 4D action and zero-mode Maxwell sector.
+- [[FILE_G2_OUTPUT]] — `anomaly_anchor` — Anomaly/g-2 output, staggered baseline, common quotient path, and outgoing-prefactor bridge.
+- [[FILE_LEPTON_MASS]] — `particle_mass_anchor` — Reduced isolated-lepton/electron mass ledger and D/N support branch notes.
+- [[FILE_LEPTON_WORK]] — `particle_identity_anchor` — Lepton/spin/mixed-sector reduced work and conditional same-charge corridor.
+- [[FILE_MOVING_THROAT_COMPACT]] — `master_anchor` — Compact master ledger for moving-throat PDE program and current active bottlenecks.
+- [[FILE_MOVING_THROAT_OUTPUT]] — `long_derivation_anchor` — Long moving-throat derivation output containing dynamic mixed-sector, barrier, and exporter extensions.
+- [[FILE_PDE_AUDIT]] — `audit_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[LEPTON_HALF_INTEGER_CONDITIONAL]] — `conditional_open` — Half-integer quantizer follows only if selective tau subbundle, central-sign holonomy, and autonomous stand...
+- [[MATH_FLUXOID]] — `exact_identity_open_plumbing` — Topological magnetic/vortical class; not electric charge definition.
+- [[MATH_PARENT_ACTION_PROMOTED]] — `open_patch_required` — Parent-complete formulation needed for autonomous moving-throat PDE claim.
+- [[MATH_WEAK_FORM_BRANCH_EXTRACTOR]] — `prepared_open` — Galerkin/weak-form extraction protocol for branch data K,M,B_n,Z_n,N_n, grouped projectors, residual packet...
+- [[MT_V2_25_ACTUAL_BRANCH_PROTOCOL]] — `open_actual_branch` — Defines post-miss coefficient map, outgoing prefactor, moment-shape conditions, Packet A/B, notes intake, a...
+- [[MT_V2_29_MATERIAL_GAP]] — `open` — Density, sound speed, effective light speed, and flux feedback must be solved on same branch as response pa...
+- [[OPEN_ACTUAL_BRANCH_EXPORTER]] — `open` — Need target-blind physical branch that exports required response packets before comparison.
+- [[OPEN_EXECUTABLE_BRANCH_SOLVER]] — `open` — Numerically or analytically solve the actual open-throat branch and export frozen profile/response data.
+- [[OPEN_LEPTON_SPIN_DISCRETIZER]] — `conditional_open` — Need intrinsic two-state/spin-like package distinct from orbital circulation; mixed-sector Berry route rema...
+- [[OPEN_MATERIAL_CLOSURE]] — `open` — Must derive density, sound speed, effective light cone if density-dependent, and flux feedback alongside re...
+- [[OPEN_MIXED_RECIRCULATION]] — `open` — Need closed law connecting circulation, throat intake, mixed transport, brane magnetic fields, and current ...
+- [[OPEN_N2_N4_MOMENT_SHAPE]] — `open` — Derive independent outgoing N2 and N4 moment-shape controls on the same frozen branch.
+- [[OPEN_NONLINEAR_S_SIGMA]] — `open_patch_required` — Promote or derive nonlinear throat action whose quadratic limit is S_eta^(2).
+- [[OPEN_PARENT_PROMOTION_S_SIGMA]] — `open_patch_required` — Needed before saying moving throat is autonomous parent-level dynamical field.
+- [[OPEN_QUAD_NORMALIZATION]] — `open_actual_branch_data` — Remaining 2.5PN/4PN bridge target; now a concrete P0/N0/D0 branch-output condition.
+- [[OPEN_SOURCE_PORT_NORMALIZATION]] — `open` — Derive mhat and P0 as branch data rather than fitted scales.
+- [[OPEN_WEAK_AXISYM_ORBIT_LOCK]] — `open` — Derive weak-axisymmetric tangent, Xi1, q_tr/q_nt/q_eta packet, and orbit-lock conditions on the actual branch.
+- [[PHYS_BRANCH_EXPORTER]] — `open` — The missing physical map that takes a solved stationary open-throat branch to K,M,B_n,Z_n,N_n and the froze...
+- [[PHYS_MAGNETIC_VORTICAL_CIRCULATION]] — `exact_identity_and_open_plumbing` — Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.
+- [[PHYS_MATERIAL_CLOSURE]] — `open` — Branch-level determination of density, EOS, sound speed, effective light-speed behavior, and flux feedback.
+- [[PHYS_MIXED_EM_CORE]] — `exact_parent_observables_reduced_open` — Hidden brane-bulk EM transport channels retained microscopically outside strict zero-mode brane reduction.
+- [[PHYS_OUTGOING_QUADRUPOLE_PORT]] — `open_actual_branch_data` — Surviving universal dissipative/tail bridge after scalar and dipole demotion; requires actual branch normal...
+- [[PHYS_SUPERFLUID_INTAKE_OUTPUT]] — `open_physical_closure` — Open throat has flux-like intake/output channels that must not be identified by fiat; they feed leakage, wo...
+- [[PN_2_5_QUAD_NARROWING]] — `conditional_theorem_open_normalization` — Demotes scalar/dipole dangers and isolates orbital/worldtube STF quadrupole branch plus normalization gap.
+- [[PN_5_FULL_BUNDLE_SURFACE]] — `reduced_target_surface_open_realization` — Later reduced stack sharpens isotropic full-bundle target and weak-axisymmetric prefactor slope/orbit-lock ...
+- [[SEC_5PN_STAGE11_MONOMIALS]] — `v05_first_section_anchor` — Monomial invariants and similarity-orbit closure.
+- [[SEC_5PN_STAGE15_XI]] — `v05_first_section_anchor` — Xi_load bridge to prefactor slope.
+- [[SEC_5PN_STAGE18_SURFACE]] — `v05_first_section_anchor` — Exact isotropic full-bundle target surface.
+- [[SEC_5PN_STAGE20_EVEN_GATES]] — `v05_first_section_anchor` — Full even-gate solve with reinstated Z-sector.
+- [[SEC_5PN_STAGE24_26_PLACEMENT]] — `v05_first_section_anchor` — Continuum-kernel extraction and placement map.
+- [[SEC_5PN_STAGE31_SUPPORT]] — `v05_first_section_anchor` — Support-compensation theorem.
+- [[SEC_5PN_SUMMARY_BOTTOM_LINE]] — `v06_section_anchor` — Final 5PN status: support/source safe in reduced hierarchy; actual branch placement remains the executable ...
+- [[SEC_5PN_SUMMARY_CLAIMS]] — `v06_section_anchor` — 5PN theorem status: reduced hierarchy safe; actual PDE-selected branch still open.
+- [[SEC_5PN_SUMMARY_MONOMIALS]] — `v06_section_anchor` — Coherent quotient/monomial coordinates for weak-axisymmetric branch and g-2/anomaly extensions.
+- [[SEC_5PN_SUMMARY_SCOPE]] — `v06_section_anchor` — 5PN summary compresses later moving-throat finish line into actual-branch conditions.
+- [[SEC_ATOM_FOUNDATIONS]] — `v05_first_section_anchor` — Atomic/lepton foundations.
+- [[SEC_ATOM_HYDROGEN]] — `v05_first_section_anchor` — Hydrogenic reduction.
+- [[SEC_G2_PREF_SLOPE]] — `v05_first_section_anchor` — Xi1/P1/P0 bridge.
+- [[SEC_G2_QUOTIENT]] — `v05_first_section_anchor` — Quotient bridge.
+- [[SEC_LEPTON_MASS_THEOREM]] — `v05_first_section_anchor` — Mass partition theorem.
+- [[SEC_LEPTON_MIXED_ROTOR]] — `v05_first_section_anchor` — Mixed-sector Berry rotor.
+- [[SEC_LEPTON_VERDICT]] — `v05_first_section_anchor` — Conditional lepton verdict.
+- [[SEC_MT_MIXED_INVARIANTS]] — `v05_first_section_anchor` — Mixed fields and gauge invariance.
+- [[SEC_MT_PARENT_FIELDS]] — `v05_first_section_anchor` — Parent/moving-throat fields.
+- [[SEC_MT_PROJECTION_ZERO_MODE]] — `v05_first_section_anchor` — Projection and zero-mode hooks.
+- [[SEC_MT_READING_RULES]] — `v05_first_section_anchor` — Status firewall.
+- [[SEC_MT_THEOREM_STATUS]] — `v05_first_section_anchor` — Current bottleneck summary.
+- [[SEC_PDE_ACTUAL_BRANCH_PACKETS]] — `v05_first_section_anchor` — Packet A/B actual branch protocol.
+- [[SEC_PDE_BDG_AUDIT]] — `v05_first_section_anchor` — BdG-wall Schur complement and softening audit.
+- [[SEC_PDE_BRANCH_FIXTURE]] — `v05_first_section_anchor` — Observable packet fixture and extraction formulas.
+- [[SEC_PDE_BRANCH_FREEZE]] — `v05_first_section_anchor` — No-refit branch freeze protocol.
+- [[SEC_PDE_EM_STATUS]] — `v05_first_section_anchor` — EM ontology and recirculation/plumbing status.
+- [[SEC_PDE_MATERIAL_GAP]] — `v05_first_section_anchor` — Material closure gap.
+- [[SEC_PDE_MAXWELL_GAUGE]] — `v05_first_section_anchor` — Gauge localization audit.
+- [[SEC_PDE_MIXED_KERNEL]] — `v05_first_section_anchor` — Mixed kernel audit.
+- [[SEC_PDE_NORM_RATIO]] — `v05_first_section_anchor` — P0/N0/D0 normalization audit.
+- [[SEC_PDE_P2_PROJECTORS]] — `v05_first_section_anchor` — Grouped P2 projectors.
+- [[SEC_PDE_PARENT_WALL_EXEC]] — `v05_first_section_anchor` — Parent wall status split.
+- [[SEC_PDE_PHYSICAL_ONTOLOGY]] — `v05_first_section_anchor` — Physical picture and ontology checklist.
+- [[SEC_PDE_STF_SOURCE]] — `v05_first_section_anchor` — STF angular source-map theorem.
+- [[SEC_PDE_WALL_VARIATION]] — `v05_first_section_anchor` — S_eta gives wall PDE.
+- [[SEC_PDE_WEAK_FORM_EXPORTER]] — `v05_first_section_anchor` — Weak-form branch extraction preparation.
+- [[TARGET_PACKET_A]] — `open_branch_realization` — Actual branch must export K,M,B_n,Z_n,N_n satisfying one-pole and normalization conditions.
+- [[TARGET_PACKET_B]] — `open_branch_realization` — Actual branch must satisfy orbit-lock and weak-axisymmetric prefactor conditions where relevant.
+- [[OPEN_5PN_EVEN_GATES]] — `open_actual_branch_data` — The monomial/similarity orbit kills Xi_load but does not by itself close the conservative even gates K1 and...
+- [[OPEN_G2_COMMON_LAYER]] — `conditional_open` — The common quotient/prefactor slope supplies a sharp residual target, not an already completed anomaly theo...
+- [[FILE_MOVING_THROAT_STAGES]] — `moving_throat_stage_anchor` — Alias file anchor added for v0.7 firewall references.

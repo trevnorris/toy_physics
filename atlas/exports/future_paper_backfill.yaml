@@ -1,0 +1,441 @@
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_BRANE_BULK_THROAT_DEFECT
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/lepton_mass_notes.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_LEPTON_MASS
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/moving_throat_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_INTERIOR_SUPPORT
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_BULK_ARENA
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_SUPERFLUID_MEDIUM
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/pde_audit_full.md:V2-01
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_PARENT_ACTION_CURRENT
+  tag: future_paper_needed
+- topic_slug: foundations
+  topic_title: 'Foundations: superfluid medium, bulk arena, and throat defects'
+  source: notes/pde_audit_full.md:V2-28
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_BRANE_BULK_THROAT_DEFECT
+  tag: future_paper_needed
+- topic_slug: projection-open-brane
+  topic_title: 'Projection versus reduction: why the brane is an open subsystem'
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_ATOM_WORK
+  tag: future_paper_needed
+- topic_slug: projection-open-brane
+  topic_title: 'Projection versus reduction: why the brane is an open subsystem'
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - SEC_MT_PROJECTION_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_ATOM_WORK
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/lepton_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_LEPTON_WORK
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - SEC_MT_PROJECTION_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/pde_audit_full.md:V2-02
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_LOCALIZED_MAXWELL_AM
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/pde_audit_full.md:V2-30
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_LOCALIZED_EM_SECTOR
+  tag: future_paper_needed
+- topic_slug: quadrupole-radiation
+  topic_title: Quadrupole radiation and the 2.5PN normalization gate
+  source: notes/moving_throat_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_QUAD_NORMALIZATION
+  tag: future_paper_needed
+- topic_slug: quadrupole-radiation
+  topic_title: Quadrupole radiation and the 2.5PN normalization gate
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_SOURCE_PORT_NORMALIZATION
+  tag: future_paper_needed
+- topic_slug: quadrupole-radiation
+  topic_title: Quadrupole radiation and the 2.5PN normalization gate
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_OUTGOING_QUADRUPOLE_PORT
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_5PN_FULL
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/lepton_mass_notes.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_LEPTON_MASS
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/moving_throat_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_MOVING_THROAT_OUTPUT
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_WALL_MODAL_PDE
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_WALL_MODAL_PDE
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/pde_audit_full.md:V2-01
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_PARENT_ACTION_PROMOTED
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/pde_audit_full.md:V2-25
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_ACTUAL_BRANCH_EXPORTER
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/pde_audit_full.md:V2-26
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_ACTUAL_BRANCH_EXPORTER
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - TARGET_PACKET_B
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MATH_WEAK_FORM_BRANCH_EXTRACTOR
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_TARGET_BLIND_BRANCH_SELECTION
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/pde_audit_full.md:V2-20
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - MT_V2_20_WEAK_FORM_EXTRACTOR
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/pde_audit_full.md:V2-26
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - READOUT_D0_C_P0_N2_N4
+  tag: future_paper_needed
+- topic_slug: response-packets
+  topic_title: Branch response packets and target-blind export
+  source: notes/pde_audit_full.md:V2-28
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - READOUT_D0_C_P0_N2_N4
+  tag: future_paper_needed
+- topic_slug: five-pn-continuation
+  topic_title: 5PN continuation and full-bundle surface
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PN_5_FULL_BUNDLE_SURFACE
+  tag: future_paper_needed
+- topic_slug: five-pn-continuation
+  topic_title: 5PN continuation and full-bundle surface
+  source: notes/g2/g2_full_output.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - EQ_MONOMIAL_QUOTIENT
+  tag: future_paper_needed
+- topic_slug: five-pn-continuation
+  topic_title: 5PN continuation and full-bundle surface
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_WEAK_AXISYM_ORBIT_LOCK
+  tag: future_paper_needed
+- topic_slug: five-pn-continuation
+  topic_title: 5PN continuation and full-bundle surface
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - EQ_FULL_BUNDLE_TARGET_SURFACE
+  tag: future_paper_needed
+- topic_slug: five-pn-continuation
+  topic_title: 5PN continuation and full-bundle surface
+  source: notes/pde_audit_full.md:V2-19
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PN_5_FULL_BUNDLE_SURFACE
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ATOM_HYDROGEN_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
+  source: notes/g2/g2_full_output.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ATOM_HYDROGEN_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
+  source: notes/lepton_mass_notes.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ATOM_HYDROGEN_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
+  source: notes/lepton_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ATOM_HYDROGEN_ZERO_MODE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - EQ_XI1_PREF_SLOPE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ANOMALY_G2_STAGGERED_BASELINE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/g2/g2_full_output.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ANOMALY_G2_STAGGERED_BASELINE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/lepton_mass_notes.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ANOMALY_G2_STAGGERED_BASELINE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/lepton_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - ANOMALY_G2_STAGGERED_BASELINE
+  tag: future_paper_needed
+- topic_slug: anomaly-g2
+  topic_title: Anomaly and g-2 common quotient corridor
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - EQ_XI1_PREF_SLOPE
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_5PN_FULL
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_ATOM_WORK
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/g2/g2_full_output.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_G2_OUTPUT
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/lepton_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_LEPTON_WORK
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_MOVING_THROAT_COMPACT
+  tag: future_paper_needed
+- topic_slug: status-firewalls
+  topic_title: 'Status firewalls: what the site must not overclaim'
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - BACKLINK_PDE_AUDIT
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/5pn/5pn_notes_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_5PN_FULL
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/atom_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_ATOM_WORK
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/g2/g2_full_output.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_G2_OUTPUT
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/lepton_mass_notes.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_LEPTON_MASS
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/lepton_work.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_LEPTON_WORK
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/moving_throat_pde_program_compact.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_EXECUTABLE_BRANCH_SOLVER
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/pde_audit_full.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - FILE_PDE_AUDIT
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/pde_audit_full.md:V2-25
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_ACTUAL_BRANCH_EXPORTER
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/pde_audit_full.md:V2-26
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_ACTUAL_BRANCH_EXPORTER
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/pde_audit_full.md:V2-29
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MATERIAL_CLOSURE
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/pde_audit_full.md:V2-30
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
+  tag: future_paper_needed

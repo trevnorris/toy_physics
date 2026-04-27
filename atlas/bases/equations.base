@@ -1,0 +1,14 @@
+filters:
+  and:
+  - file.inFolder("nodes/equations")
+views:
+- type: table
+  name: Equations
+  order:
+  - file.name
+  - status
+  - summary_short
+  - claim_ids
+  - source_links
+  - source_files
+  - tex_anchor

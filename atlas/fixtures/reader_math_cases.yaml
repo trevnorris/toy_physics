@@ -1,0 +1,24 @@
+cases:
+  - name: pn_multicharacter_groups
+    input: 'L_1PN^derived = L_1PN^EIH'
+    expected: 'L_{\mathrm{1PN}}^{\mathrm{derived}} = L_{\mathrm{1PN}}^{\mathrm{EIH}}'
+
+  - name: quadrupole_hat_and_unicode_powers
+    input: 'mhat_0² P_0 = 54 G c_s⁵/(5 a⁵ c⁵)'
+    expected: '\hat{m}_0^{2} P_0 = 54 G c_s^{5}/(5 a^{5} c^{5})'
+
+  - name: compact_hat_product
+    input: 'mhat0^2P0=54 G c_s^5/(5a^5c^5)'
+    expected: '\hat{m}_0^{2}P_0=54 G c_s^{5}/(5a^{5}c^{5})'
+
+  - name: prose_connector_inside_math
+    input: '(20,21,22) ~ (1, 1/2, -1), equivalently b=3a'
+    expected: '(20,21,22) \sim (1, 1/2, -1),\;\mathrm{equivalently}\; b=3a'
+
+  - name: semicolon_separated_target_surface
+    input: 'D0(B4+Z4)=3(M+B2+Z2)²;  mhat0²N0/D0=54Gc_s⁵/(5a⁵c⁵)'
+    expected: '\begin{aligned}D_0(B_4+Z_4) &= 3(M+B_2+Z_2)^{2} \\ \hat{m}_0^{2}N_0/D_0 &= 54Gc_s^{5}/(5a^{5}c^{5})\end{aligned}'
+
+  - name: named_operator
+    input: '(q_tr,q_nt,q_eta)^T = M_* δx,    rank(M_*)=3'
+    expected: '(q_{\mathrm{tr}},q_{\mathrm{nt}},q_{\mathrm{eta}})^T = M_* δx,    \operatorname{rank}(M_*)=3'

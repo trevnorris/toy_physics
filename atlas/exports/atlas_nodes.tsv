@@ -1,0 +1,374 @@
+id	label	layer	type	status	note	source_kind	tex_file	tex_line
+ANOMALY_G2_COMMON_QUOTIENT	g-2 common quotient correction	derivation	anomaly_reduction	conditional_open	nodes/derivations/ANOMALY_G2_COMMON_QUOTIENT.md			
+ANOMALY_G2_STAGGERED_BASELINE	g-2 staggered local baseline	derivation	anomaly_reduction	reduced_exact_baseline	nodes/derivations/ANOMALY_G2_STAGGERED_BASELINE.md			
+ATLAS_CURRENT_READINESS_V05	Current readiness: usable working atlas, not v1.0 complete	atlas_meta	atlas_meta	usable_not_complete	nodes/meta/ATLAS_CURRENT_READINESS_V05.md			
+ATLAS_CURRENT_READINESS_V06	Atlas readiness after v0.6	atlas_meta	completion_status	usable_working_base_plus_backlink_register	nodes/meta/ATLAS_CURRENT_READINESS_V06.md			
+ATLAS_PHASE_1_CURATED_GRAPH	Pass 1: curated dependency graph	atlas_completion_phase	atlas_completion_phase	complete	nodes/meta/ATLAS_PHASE_1_CURATED_GRAPH.md			
+ATLAS_PHASE_2_STATUS_GATES	Pass 2: status gates and open problems	atlas_completion_phase	atlas_completion_phase	complete	nodes/meta/ATLAS_PHASE_2_STATUS_GATES.md			
+ATLAS_PHASE_3_EQUATION_ANCHORS	Pass 3: first equation anchors	atlas_completion_phase	atlas_completion_phase	substantially_complete	nodes/meta/ATLAS_PHASE_3_EQUATION_ANCHORS.md			
+ATLAS_PHASE_4_CLAIM_LAYER	Pass 4: named claim/theorem layer	atlas_completion_phase	atlas_completion_phase	complete	nodes/meta/ATLAS_PHASE_4_CLAIM_LAYER.md			
+ATLAS_PHASE_5_SECTION_ANCHORS	Pass 5: first source-section anchor pass	atlas_completion_phase	atlas_completion_phase	partial_current_v05	nodes/meta/ATLAS_PHASE_5_SECTION_ANCHORS.md			
+ATLAS_PHASE_6_PAPER_BACKLINKS	Pass 6: bidirectional paper backlinks	atlas_completion_phase	atlas_completion_phase	not_started	nodes/meta/ATLAS_PHASE_6_PAPER_BACKLINKS.md			
+ATLAS_PHASE_7_QUERY_VALIDATION	Pass 7: query/use-case validation suite	atlas_completion_phase	atlas_completion_phase	not_started	nodes/meta/ATLAS_PHASE_7_QUERY_VALIDATION.md			
+ATLAS_RULE_PHYS_TO_MATH	Atlas rule: every equation has physical meaning	atlas_meta	graph_rule	active	nodes/meta/ATLAS_RULE_PHYS_TO_MATH.md			
+ATLAS_V05_STATUS_DASHBOARD	Atlas v0.5 status/completion dashboard	atlas_meta	atlas_meta	complete	nodes/meta/ATLAS_V05_STATUS_DASHBOARD.md			
+ATLAS_V1_COMPLETION_CRITERIA	Atlas v1.0 completion criteria	atlas_meta	atlas_meta	defined	nodes/meta/ATLAS_V1_COMPLETION_CRITERIA.md			
+ATOM_FINITE_SIZE_P22	Atomic finite-size / P22 response	derivation	atomic_reduction	reduced_sector_open	nodes/derivations/ATOM_FINITE_SIZE_P22.md			
+ATOM_HYDROGEN_ZERO_MODE	Hydrogenic zero-mode sector	derivation	atomic_reduction	reduced_sector_consequence	nodes/derivations/ATOM_HYDROGEN_ZERO_MODE.md			
+BACKLINK_1PN_BRIDGE	Bridge constants and coefficient-freezing layer	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_1PN_BRIDGE.md		research/4d_1pn_bridge/paper/4d_1pn_bridge.tex	2311
+BACKLINK_1PN_FULL	Full conservative 1PN / EIH assembly	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_1PN_FULL.md		research/4d_1pn_full/paper/4d_1pn_full.tex	2799
+BACKLINK_25PN	2.5PN quadrupole narrowing and outgoing normalization gate	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_25PN.md		research/4d_2_5pn/paper/4d_2_5pn.tex	2544
+BACKLINK_2PN_FULL	Full conservative 2PN / ADM assembly and first P0/P2 support layer	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_2PN_FULL.md		research/4d_2pn/paper/4d_2pn.tex	5158
+BACKLINK_3PN_FULL	Conservative 3PN closure and grouped real P2 payload	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_3PN_FULL.md		research/4d_3pn/paper/4d_3pn.tex	3226
+BACKLINK_4D_PARENT	Parent action, projection/reduction, charge ontology, and cold-start hooks	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_4D_PARENT.md		research/4d/paper/4d.tex	250
+BACKLINK_4PN_FULL	4PN local closure and inherited tail normalization	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_4PN_FULL.md		research/4d_4pn/paper/4d_4pn.tex	2453
+BACKLINK_5PN_FULL	5PN full-bundle surface, monomial/orbit packet, and actual-branch finish line	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_5PN_FULL.md			
+BACKLINK_ATOM_WORK	Atomic reduced-sector derivations and hydrogen zero-mode branch	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_ATOM_WORK.md			
+BACKLINK_EM_FIELDS	Localized 4+1 Maxwell sector and charge/localization firewall	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_EM_FIELDS.md		research/4d_em_fields/paper/4d_em_fields.tex	1348
+BACKLINK_G2_OUTPUT	g-2 common quotient and outgoing-prefactor slope	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_G2_OUTPUT.md			
+BACKLINK_LEPTON_MASS	Reduced lepton mass ledger	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_LEPTON_MASS.md			
+BACKLINK_LEPTON_WORK	Lepton half-integer mixed-sector route	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_LEPTON_WORK.md			
+BACKLINK_MOVING_THROAT_COMPACT	Moving-throat compact master and theorem-status firewall	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_MOVING_THROAT_COMPACT.md			
+BACKLINK_PDE_AUDIT	PDE audit, parent-wall correction, branch packets, and physical ontology	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_PDE_AUDIT.md			
+BACKLINK_PLASMA	Projection, leakage, mixed fields, and beyond-MHD channel	paper_backlink	paper_backlink_block	v06_backlink_ready_not_inserted	nodes/meta/BACKLINK_PLASMA.md		research/4d_plasma/paper/4d_plasma.tex	1773
+CLAIM_1PN_EIH_WITHIN_HIERARCHY	1PN EIH equality within declared hierarchy	claim_theorem	claim	exact_assembly_within_closure	nodes/claims/CLAIM_1PN_EIH_WITHIN_HIERARCHY.md		research/4d_1pn_full/paper/4d_1pn_full.tex	153
+CLAIM_25PN_QUAD_NARROWING	2.5PN conditional quadrupole narrowing	claim_theorem	claim	conditional_theorem_open_normalization	nodes/claims/CLAIM_25PN_QUAD_NARROWING.md		research/4d_2_5pn/paper/4d_2_5pn.tex	151
+CLAIM_2PN_ADM_WITHIN_HIERARCHY	2PN ADM equality within declared hierarchy	claim_theorem	claim	exact_assembly_within_closure	nodes/claims/CLAIM_2PN_ADM_WITHIN_HIERARCHY.md		research/4d_2pn/paper/4d_2pn.tex	179
+CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY	3PN grouped real P2 conservative closure	claim_theorem	claim	exact_assembly_within_closure	nodes/claims/CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY.md		research/4d_3pn/paper/4d_3pn.tex	826
+CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL	4PN local sector closed; tail inherits quadrupole gate	claim_theorem	claim	local_closed_tail_conditional	nodes/claims/CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL.md		research/4d_4pn/paper/4d_4pn.tex	2161
+CLAIM_5PN_FULL_BUNDLE_SURFACE	5PN full-bundle surface and weak-axisymmetric continuation	claim_theorem	claim	exact_within_reduced_bundle_open_branch	nodes/claims/CLAIM_5PN_FULL_BUNDLE_SURFACE.md			
+CLAIM_ATOMIC_HYDROGEN_ZERO_MODE	Hydrogenic sector as reduced zero-mode consequence	claim_theorem	claim	reduced_sector_consequence	nodes/claims/CLAIM_ATOMIC_HYDROGEN_ZERO_MODE.md			
+CLAIM_BRANCH_EXPORTER_REQUIRED	Actual target-blind branch exporter required	claim_theorem	claim	open_actual_branch	nodes/claims/CLAIM_BRANCH_EXPORTER_REQUIRED.md			
+CLAIM_CHARGE_ONTOLOGY_FIREWALL	Corrected electric-charge ontology firewall	claim_theorem	claim	exact_bookkeeping_firewall	nodes/claims/CLAIM_CHARGE_ONTOLOGY_FIREWALL.md		research/4d/paper/4d.tex	250
+CLAIM_G2_COMMON_QUOTIENT	g-2 common correction through quotient/prefactor slope	claim_theorem	claim	conditional_reduced_residual	nodes/claims/CLAIM_G2_COMMON_QUOTIENT.md			
+CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL	Lepton half-integer mixed-sector route is conditional	claim_theorem	claim	conditional_open	nodes/claims/CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL.md			
+CLAIM_LEPTON_MASS_REDUCED_LEDGER	Lepton mass partition as reduced defect-energy theorem	claim_theorem	claim	reduced_closure_theorem_open_scale	nodes/claims/CLAIM_LEPTON_MASS_REDUCED_LEDGER.md			
+CLAIM_MATERIAL_CLOSURE_GAP	Material closure must be solved on same branch	claim_theorem	claim	open	nodes/claims/CLAIM_MATERIAL_CLOSURE_GAP.md			
+CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH	Maxwell gauge-fixing localization patch	claim_theorem	claim	safe_interpretation_or_structural_patch	nodes/claims/CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH.md			
+CLAIM_MIXED_RECIRCULATION_OPEN	Mixed recirculation/plumbing law remains open	claim_theorem	claim	open	nodes/claims/CLAIM_MIXED_RECIRCULATION_OPEN.md			
+CLAIM_MIXED_SECTOR_MICROSCOPIC	Mixed EM sector is microscopic ontology, not gauge artifact	claim_theorem	claim	exact_gauge_invariant_with_reduced_uses	nodes/claims/CLAIM_MIXED_SECTOR_MICROSCOPIC.md		research/4d_em_fields/paper/4d_em_fields.tex	1348
+CLAIM_PACKET_A_PACKET_B_SPLIT	Packet A / Packet B target split	claim_theorem	claim	open_branch_packets	nodes/claims/CLAIM_PACKET_A_PACKET_B_SPLIT.md			
+CLAIM_PARENT_ACTION_CURRENT_EXACT	Current parent action and exact bulk equations	claim_theorem	claim	exact_parent_current	nodes/claims/CLAIM_PARENT_ACTION_CURRENT_EXACT.md		research/4d_em_fields/paper/4d_em_fields.tex	245
+CLAIM_PARENT_WALL_STATUS_SPLIT	Parent wall status split: force yes, autonomous PDE no	claim_theorem	claim	strict_parent_fail_effective_wall_pass	nodes/claims/CLAIM_PARENT_WALL_STATUS_SPLIT.md			
+CLAIM_PROJECTION_OPEN_BRANE_SYSTEM	Projection makes the brane an open subsystem	claim_theorem	claim	exact_projection_plus_controlled_hook	nodes/claims/CLAIM_PROJECTION_OPEN_BRANE_SYSTEM.md		research/4d_plasma/paper/4d_plasma.tex	252
+CLAIM_RESPONSE_READOUT_DISCIPLINE	D0/C/P0/N2/N4 are response readouts, not the throat itself	claim_theorem	claim	paper_facing_ontology_discipline	nodes/claims/CLAIM_RESPONSE_READOUT_DISCIPLINE.md			
+CLAIM_STAGE1_GEOMETRY_LIFT	Distributed Sigma/R geometry lift	claim_theorem	claim	effective_geometry_lift	nodes/claims/CLAIM_STAGE1_GEOMETRY_LIFT.md			
+CLAIM_STAGE2_AL_RECOVERY	Old a,L closure recovered as lowest wall truncation	claim_theorem	claim	exact_within_wall_action	nodes/claims/CLAIM_STAGE2_AL_RECOVERY.md			
+CLAIM_STAGE3_BDG_SCHUR	BdG-wall Schur complement gives even support ladder	claim_theorem	claim	exact_within_reduced_stable_modes	nodes/claims/CLAIM_STAGE3_BDG_SCHUR.md			
+CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER	Localized Maxwell/mixed block carries first honest outgoing bridge	claim_theorem	claim	exact_within_reduced_mixed_kernel	nodes/claims/CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.md			
+CLAIM_STAGE5_P0_TARGET	Grouped P2 bridge isolates P0 target	claim_theorem	claim	exact_within_grouped_bridge	nodes/claims/CLAIM_STAGE5_P0_TARGET.md		research/4d_2_5pn/paper/4d_2_5pn.tex	4995
+CLAIM_STAGE6_FULL_BUNDLE_RATIO	Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)	claim_theorem	claim	exact_within_reduced_bundle	nodes/claims/CLAIM_STAGE6_FULL_BUNDLE_RATIO.md			
+CLAIM_STAGE7_O3_ISOTROPY	O(3) isotropy and weak-axisymmetric splitting theorem	claim_theorem	claim	exact_angular_reduced	nodes/claims/CLAIM_STAGE7_O3_ISOTROPY.md		research/4d_2_5pn/paper/4d_2_5pn.tex	2248
+CLAIM_STAGE8_TO_14_SELECTED_BRANCH	Selected-mode spectral reachability packet	claim_theorem	claim	exact_within_selected_reduced_branch	nodes/claims/CLAIM_STAGE8_TO_14_SELECTED_BRANCH.md			
+CLAIM_ZERO_MODE_MAXWELL_REDUCTION	Zero-mode localized Maxwell gives brane Maxwell only as a controlled limit	claim_theorem	claim	controlled_reduction	nodes/claims/CLAIM_ZERO_MODE_MAXWELL_REDUCTION.md		research/4d_em_fields/paper/4d_em_fields.tex	245
+EQ_1PN_EIH_EQUALITY	1PN EIH equality	equation_anchor	equation	full_assembly_within_closure	nodes/equations/EQ_1PN_EIH_EQUALITY.md		research/4d_1pn_full/paper/4d_1pn_full.tex	2403
+EQ_2PN_ADM_EQUALITY	2PN ADM equality	equation_anchor	equation	full_assembly_within_closure	nodes/equations/EQ_2PN_ADM_EQUALITY.md		research/4d_2pn/paper/4d_2pn.tex	1215
+EQ_3PN_SPLIT	3PN conservative split	equation_anchor	equation	full_assembly_within_closure	nodes/equations/EQ_3PN_SPLIT.md		research/4d_3pn/paper/4d_3pn.tex	2962
+EQ_4PN_TAIL_BRIDGE	4PN tail coefficient bridge	equation_anchor	equation	conditional_on_quadrupole_normalization	nodes/equations/EQ_4PN_TAIL_BRIDGE.md		research/4d_4pn/paper/4d_4pn.tex	7473
+EQ_BDG_SCHUR_KERNEL	BdG Schur-complement kernel	equation_anchor	equation	exact_within_stable_mode_reduction	nodes/equations/EQ_BDG_SCHUR_KERNEL.md			
+EQ_BULK_CONTINUITY	Exact bulk continuity	equation_anchor	equation	exact	nodes/equations/EQ_BULK_CONTINUITY.md		research/4d/paper/4d.tex	592
+EQ_COMPACT_L2_FINGERPRINT	Compact outgoing l=2 fingerprint	equation_anchor	equation	exact_reduced	nodes/equations/EQ_COMPACT_L2_FINGERPRINT.md		research/pde_ledger/paper/stages/stage_004.tex	113
+EQ_FULL_BUNDLE_TARGET_SURFACE	Isotropic full-bundle target surface	equation_anchor	equation	exact_within_reduced_bundle	nodes/equations/EQ_FULL_BUNDLE_TARGET_SURFACE.md			
+EQ_G2_COMMON_TANGENT	g-2 common tangent target	equation_anchor	equation	conditional_open	nodes/equations/EQ_G2_COMMON_TANGENT.md			
+EQ_GNLS_BULK	Bulk gauged GNLS equation	equation_anchor	equation	exact	nodes/equations/EQ_GNLS_BULK.md		research/4d/paper/4d.tex	1860
+EQ_GROUPED_RESPONSE_MOMENTS	Grouped response moment conversion	equation_anchor	equation	exact_within_reduced_bundle	nodes/equations/EQ_GROUPED_RESPONSE_MOMENTS.md		research/pde_ledger/paper/stages/stage_005.tex	15
+EQ_LEPTON_HALF_INTEGER	Conditional half-integer Berry quantizer	equation_anchor	equation	conditional_open	nodes/equations/EQ_LEPTON_HALF_INTEGER.md			
+EQ_LEPTON_MASS_PARTITION	Reduced lepton mass partition	equation_anchor	equation	conditional_reduced_theorem	nodes/equations/EQ_LEPTON_MASS_PARTITION.md			
+EQ_LONGITUDINAL_IDENTITY	Exact longitudinal identity	equation_anchor	equation	exact	nodes/equations/EQ_LONGITUDINAL_IDENTITY.md		research/4d/paper/4d.tex	907
+EQ_MAXWELL_MIXED_TRANSFER	Maxwell/mixed outgoing transfer factor	equation_anchor	equation	exact_within_reduced_bundle	nodes/equations/EQ_MAXWELL_MIXED_TRANSFER.md		research/pde_ledger/paper/stages/stage_004.tex	88
+EQ_MONOMIAL_QUOTIENT	Monomial quotient drift map	equation_anchor	equation	exact_within_coherent_branch	nodes/equations/EQ_MONOMIAL_QUOTIENT.md			
+EQ_P0_TARGET	Invariant quadrupole normalization target	equation_anchor	equation	open_actual_branch_data	nodes/equations/EQ_P0_TARGET.md		research/4d_2_5pn/paper/4d_2_5pn.tex	4995
+EQ_PARENT_ACTION_CURRENT	Current parent action	equation_anchor	equation	exact_declared_parent_with_geometry_argument	nodes/equations/EQ_PARENT_ACTION_CURRENT.md		research/4d/paper/4d.tex	1860
+EQ_PROJECTED_CONTINUITY	Projected brane continuity with leakage	equation_anchor	equation	exact_after_projection_definition	nodes/equations/EQ_PROJECTED_CONTINUITY.md		research/4d_plasma/paper/4d_plasma.tex	933
+EQ_QEFF_NORMALIZATION	Thickness-controlled brane charge	equation_anchor	equation	exact_within_zero_mode_normalization	nodes/equations/EQ_QEFF_NORMALIZATION.md		research/4d_em_fields/paper/4d_em_fields.tex	822
+EQ_WALL_MODAL_PDE	Wall modal PDE from S_eta	equation_anchor	equation	effective_linear_wall_closure	nodes/equations/EQ_WALL_MODAL_PDE.md			
+EQ_WALL_P2_STIFFNESS	Grouped P2 stiffness gate	equation_anchor	equation	effective_linear_wall_closure	nodes/equations/EQ_WALL_P2_STIFFNESS.md			
+EQ_WEAK_AXISYM_SIGNATURE	Weak-axisymmetric grouped signature	equation_anchor	equation	exact_angular_first_order	nodes/equations/EQ_WEAK_AXISYM_SIGNATURE.md		research/pde_ledger/paper/stages/stage_007.tex	149
+EQ_XI1_PREF_SLOPE	Weak-axisymmetric prefactor slope	equation_anchor	equation	exact_within_reduced_branch	nodes/equations/EQ_XI1_PREF_SLOPE.md			
+EQ_ZERO_MODE_MAXWELL	Zero-mode brane Maxwell reduction	equation_anchor	equation	controlled_reduction	nodes/equations/EQ_ZERO_MODE_MAXWELL.md		research/4d/paper/4d.tex	1995
+FILE_1PN_BRIDGE	4d_1pn_bridge_summary.md	file_anchor	source_file	carry_forward_anchor	nodes/sources/FILE_1PN_BRIDGE.md	paper	research/4d_1pn_bridge/paper/4d_1pn_bridge.tex	95
+FILE_1PN_FULL	4d_1pn_full_summary.md	file_anchor	source_file	paper_anchor	nodes/sources/FILE_1PN_FULL.md	paper	research/4d_1pn_full/paper/4d_1pn_full.tex	78
+FILE_2PN_FULL	4d_2pn_summary.md / 4d_2pn.tex	file_anchor	source_file	paper_anchor	nodes/sources/FILE_2PN_FULL.md	paper	research/4d_2pn/paper/4d_2pn.tex	81
+FILE_2_5PN	4d_2_5pn_summary.md	file_anchor	source_file	bridge_anchor	nodes/sources/FILE_2_5PN.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	63
+FILE_3PN_FULL	4d_3pn_summary.md / 4d_3pn.tex	file_anchor	source_file	paper_anchor	nodes/sources/FILE_3PN_FULL.md	paper	research/4d_3pn/paper/4d_3pn.tex	53
+FILE_4D_PARENT	4d_summary.md / 4d.tex	file_anchor	source_file	core_anchor	nodes/sources/FILE_4D_PARENT.md	paper	research/4d/paper/4d.tex	78
+FILE_4PN_FULL	4d_4pn_summary.md / 4d_4pn_full_notes.md	file_anchor	source_file	paper_anchor	nodes/sources/FILE_4PN_FULL.md	paper	research/4d_4pn/paper/4d_4pn.tex	52
+FILE_5PN_FULL	4d_5pn_summary.md / 5pn_notes_full.md	file_anchor	source_file	continuation_anchor	nodes/sources/FILE_5PN_FULL.md	future_paper_note		
+FILE_ATOM_WORK	atom_work.md	file_anchor	source_file	reduced_sector_anchor	nodes/sources/FILE_ATOM_WORK.md	future_paper_note		
+FILE_EM_FIELDS	4d_em_fields_summary.md / 4d_em_fields.tex	file_anchor	source_file	core_em_anchor	nodes/sources/FILE_EM_FIELDS.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	124
+FILE_G2_OUTPUT	g2_full_output.md	file_anchor	source_file	anomaly_anchor	nodes/sources/FILE_G2_OUTPUT.md	future_paper_note		
+FILE_LEPTON_MASS	lepton_mass_notes.md	file_anchor	source_file	particle_mass_anchor	nodes/sources/FILE_LEPTON_MASS.md	future_paper_note		
+FILE_LEPTON_WORK	lepton_work.md	file_anchor	source_file	particle_identity_anchor	nodes/sources/FILE_LEPTON_WORK.md	future_paper_note		
+FILE_MOVING_THROAT_COMPACT	moving_throat_pde_program_compact.md	file_anchor	source_file	master_anchor	nodes/sources/FILE_MOVING_THROAT_COMPACT.md	future_paper_note		
+FILE_MOVING_THROAT_OUTPUT	moving_throat_output_full.md	file_anchor	source_file	long_derivation_anchor	nodes/sources/FILE_MOVING_THROAT_OUTPUT.md	future_paper_note		
+FILE_PDE_AUDIT	pde_audit_full.md	file_anchor	source_file	audit_anchor	nodes/sources/FILE_PDE_AUDIT.md	future_paper_note		
+FILE_PLASMA	4d_plasma_summary.md / 4d_plasma.tex	file_anchor	source_file	plasma_anchor	nodes/sources/FILE_PLASMA.md	paper	research/4d_plasma/paper/4d_plasma.tex	107
+LEPTON_HALF_INTEGER_CONDITIONAL	Conditional half-integer discretizer	derivation	particle_identity_gate	conditional_open	nodes/derivations/LEPTON_HALF_INTEGER_CONDITIONAL.md			
+LEPTON_MASS_REDUCED_LEDGER	Reduced isolated lepton mass ledger	derivation	particle_mass_reduction	conditional_reduced_theorem	nodes/derivations/LEPTON_MASS_REDUCED_LEDGER.md			
+LEPTON_MIXED_BERRY_ROTOR	Mixed-sector Berry rotor	derivation	particle_identity_corridor	conditional_live_corridor	nodes/derivations/LEPTON_MIXED_BERRY_ROTOR.md			
+MATH_BDG_SCHUR_COMPLEMENT	BdG-wall Schur complement	math_object	reduced_kernel	exact_within_stable_mode_reduction	nodes/math/MATH_BDG_SCHUR_COMPLEMENT.md			
+MATH_COMPACT_L2_OUTGOING_FINGERPRINT	Compact outgoing l=2 fingerprint	math_object	outgoing_fingerprint	exact_reduced	nodes/math/MATH_COMPACT_L2_OUTGOING_FINGERPRINT.md			
+MATH_FLUXOID	Fluxoid/circulation law	math_object	topological_identity	exact_identity_open_plumbing	nodes/math/MATH_FLUXOID.md		research/4d/paper/4d.tex	725
+MATH_FULL_BUNDLE_TARGET_SURFACE	Isotropic full-bundle target surface	math_object	target_surface	exact_within_reduced_bundle	nodes/math/MATH_FULL_BUNDLE_TARGET_SURFACE.md			
+MATH_GNLS_PSI	Gauged 4D GNLS field	math_object	field_equation	exact	nodes/math/MATH_GNLS_PSI.md		research/4d/paper/4d.tex	365
+MATH_GROUPED_PROJECTORS_GGRP	Grouped P2 weighted projectors	math_object	projector_calculus	exact	nodes/math/MATH_GROUPED_PROJECTORS_GGRP.md			
+MATH_LOCALIZED_MAXWELL_AM	Localized 4+1 Maxwell field	math_object	field_equation	exact	nodes/math/MATH_LOCALIZED_MAXWELL_AM.md			
+MATH_LONGITUDINAL_IDENTITY	Exact longitudinal identity	math_object	identity	exact	nodes/math/MATH_LONGITUDINAL_IDENTITY.md		research/4d/paper/4d.tex	907
+MATH_MAXWELL_MIXED_KERNEL	Maxwell/mixed kernel	math_object	reduced_kernel	exact_within_reduced_bundle	nodes/math/MATH_MAXWELL_MIXED_KERNEL.md			
+MATH_MAXWELL_WEIGHTED_GAUGE_FIXING	Weighted Maxwell gauge fixing	math_object	gauge_fixing_audit	safe_interpretation_or_patch	nodes/math/MATH_MAXWELL_WEIGHTED_GAUGE_FIXING.md			
+MATH_MIXED_FIELDS_EW_CA	Mixed gauge invariants	math_object	gauge_invariant_fields	exact	nodes/math/MATH_MIXED_FIELDS_EW_CA.md			
+MATH_MONOMIAL_QUOTIENT	Monomial quotient coordinates	math_object	quotient_map	exact_within_coherent_branch	nodes/math/MATH_MONOMIAL_QUOTIENT.md			
+MATH_PARENT_ACTION_CURRENT	Current parent action: GNLS + localized Maxwell	math_object	action	exact_declared_parent_with_geometry_argument	nodes/math/MATH_PARENT_ACTION_CURRENT.md			
+MATH_PARENT_ACTION_PROMOTED	Promoted parent action with S_Sigma	math_object	action_target	open_patch_required	nodes/math/MATH_PARENT_ACTION_PROMOTED.md			
+MATH_POISSON_HOOK	Controlled Poisson hook	derivation	controlled_reduction	controlled_reduction	nodes/derivations/MATH_POISSON_HOOK.md		research/4d_1pn_full/paper/4d_1pn_full.tex	514
+MATH_PROJECTED_CONTINUITY	Projected continuity with leakage	math_object	identity	exact_after_projection_definition	nodes/math/MATH_PROJECTED_CONTINUITY.md		research/4d_plasma/paper/4d_plasma.tex	933
+MATH_QSTAR_QEFF	Corrected charge dictionary	math_object	ontology_dictionary	exact_bookkeeping	nodes/math/MATH_QSTAR_QEFF.md			
+MATH_SIGMA_R_FIELD	Moving surface field Sigma/R	math_object	geometry_field	effective_closure_unless_Sigma_action_promoted	nodes/math/MATH_SIGMA_R_FIELD.md			
+MATH_STF_SOURCE_MAP	STF source-map theorem	math_object	source_map	exact_angular	nodes/math/MATH_STF_SOURCE_MAP.md			
+MATH_WALL_ACTION_S_ETA	Quadratic wall action S_eta^(2)	math_object	effective_action	effective_linear_wall_closure_passed	nodes/math/MATH_WALL_ACTION_S_ETA.md			
+MATH_WALL_BOUNDARY_TRACTION	Wall boundary traction	math_object	boundary_term	exact_if_S_eta_included	nodes/math/MATH_WALL_BOUNDARY_TRACTION.md			
+MATH_WALL_ENERGY_POSITIVITY	Wall energy positivity gate	math_object	stability_gate	exact_if_S_eta_included	nodes/math/MATH_WALL_ENERGY_POSITIVITY.md			
+MATH_WALL_MODAL_PDE	Wall modal PDE	math_object	modal_equation	exact_if_S_eta_included	nodes/math/MATH_WALL_MODAL_PDE.md			
+MATH_WEAK_AXISYM_SPLITTING	Weak-axisymmetric splitting law	math_object	anisotropy_fingerprint	exact_angular_first_order	nodes/math/MATH_WEAK_AXISYM_SPLITTING.md			
+MATH_WEAK_FORM_BRANCH_EXTRACTOR	Weak-form branch extractor	math_object	solver_schema	prepared_open	nodes/math/MATH_WEAK_FORM_BRANCH_EXTRACTOR.md			
+MATH_W_PROJECTION	Projection kernel W(w)	math_object	kernel	exact_measurement_definition	nodes/math/MATH_W_PROJECTION.md		research/4d/paper/4d.tex	1457
+MATH_XI1_PREF_SLOPE	Weak-axisymmetric prefactor slope Xi1	math_object	prefactor_slope	exact_within_reduced_branch	nodes/math/MATH_XI1_PREF_SLOPE.md			
+MATH_ZERO_MODE_MAXWELL	Zero-mode brane Maxwell reduction	derivation	controlled_reduction	controlled_reduction	nodes/derivations/MATH_ZERO_MODE_MAXWELL.md		research/4d_plasma/paper/4d_plasma.tex	600
+MATH_Z_PROFILE	Localization profile Z(w)	math_object	kernel	exact_input_profile	nodes/math/MATH_Z_PROFILE.md		research/4d_plasma/paper/4d_plasma.tex	263
+MT_STAGE1_GEOMETRY_LIFT	Stage 1 geometry lift	derivation	moving_throat_stage	effective_closure_scaffold	nodes/derivations/MT_STAGE1_GEOMETRY_LIFT.md		research/pde_ledger/paper/stages/stage_001.tex	1
+MT_STAGE2_BREATHING_REDUCTION	Stage 2 breathing reduction	derivation	moving_throat_stage	exact_within_wall_closure	nodes/derivations/MT_STAGE2_BREATHING_REDUCTION.md			
+MT_STAGE3_BDG_COUPLING	Stage 3 BdG-wall coupling	derivation	moving_throat_stage	reduced_controlled	nodes/derivations/MT_STAGE3_BDG_COUPLING.md			
+MT_STAGE4_MAXWELL_MIXED	Stage 4 Maxwell/mixed outgoing bridge	derivation	moving_throat_stage	reduced_controlled	nodes/derivations/MT_STAGE4_MAXWELL_MIXED.md			
+MT_STAGE5_GROUPED_P2_BRIDGE	Stage 5 grouped P2 normalization bridge	derivation	moving_throat_stage	exact_within_reduced_bundle	nodes/derivations/MT_STAGE5_GROUPED_P2_BRIDGE.md			
+MT_STAGE6_FULL_GROUPED_BUNDLE	Stage 6 full grouped bundle	derivation	moving_throat_stage	exact_within_reduced_bundle	nodes/derivations/MT_STAGE6_FULL_GROUPED_BUNDLE.md			
+MT_STAGE7_OVERLAP_ISOTROPY	Stage 7 overlap isotropy theorem	derivation	moving_throat_stage	exact_within_O3_reduced_kernel	nodes/derivations/MT_STAGE7_OVERLAP_ISOTROPY.md			
+MT_STAGE8_MINIMAL_NORMALIZATION	Stage 8 minimal isotropic normalization	derivation	moving_throat_stage	reduced_model	nodes/derivations/MT_STAGE8_MINIMAL_NORMALIZATION.md			
+MT_V2_01_PARENT_WALL_AUDIT	V2-01 parent/wall action audit	status_audit	audit_gate	strict_parent_fail_effective_closure_pass	nodes/audits/MT_V2_01_PARENT_WALL_AUDIT.md			
+MT_V2_02_MAXWELL_GAUGE_AUDIT	V2-02 Maxwell gauge-localization audit	status_audit	audit_gate	patch_required_or_safe_interpretation	nodes/audits/MT_V2_02_MAXWELL_GAUGE_AUDIT.md			
+MT_V2_03_DIMENSION_LEDGER	V2-03 dimension/normalization audit	status_audit	audit_gate	passed_with_patch	nodes/audits/MT_V2_03_DIMENSION_LEDGER.md			
+MT_V2_04_OPEN_JUNCTION	V2-04 open-junction impedance audit	status_audit	audit_gate	architecture_patch	nodes/audits/MT_V2_04_OPEN_JUNCTION.md			
+MT_V2_06_07_NEWTONIAN_UNIVERSALITY	V2-06/V2-07 projected continuity and Newtonian universality	status_audit	audit_gate	controlled_reduction_pass	nodes/audits/MT_V2_06_07_NEWTONIAN_UNIVERSALITY.md			
+MT_V2_08_BDG_SCHUR	V2-08 BdG-wall Schur complement audit	status_audit	audit_gate	passed_with_stability_gates	nodes/audits/MT_V2_08_BDG_SCHUR.md			
+MT_V2_09_MAXWELL_MIXED_KERNEL	V2-09 Maxwell/mixed-sector kernel audit	status_audit	audit_gate	passed_with_gates	nodes/audits/MT_V2_09_MAXWELL_MIXED_KERNEL.md			
+MT_V2_10_HAMILTONIAN_STABILITY	V2-10 Hamiltonian/stability audit	status_audit	audit_gate	mandatory_gates	nodes/audits/MT_V2_10_HAMILTONIAN_STABILITY.md			
+MT_V2_11_GROUPED_PROJECTORS	V2-11 grouped P2 projector calculus	status_audit	audit_gate	exact	nodes/audits/MT_V2_11_GROUPED_PROJECTORS.md			
+MT_V2_12_STF_SOURCE_MAP	V2-12 STF angular source-map theorem	status_audit	audit_gate	exact_angular	nodes/audits/MT_V2_12_STF_SOURCE_MAP.md			
+MT_V2_13_GROUPED_NORMALIZATION	V2-13 grouped normalization ratio audit	status_audit	audit_gate	exact_within_bundle	nodes/audits/MT_V2_13_GROUPED_NORMALIZATION.md			
+MT_V2_14_L2_OUTGOING	V2-14 compact outgoing l=2 fingerprint	status_audit	audit_gate	exact_reduced	nodes/audits/MT_V2_14_L2_OUTGOING.md			
+MT_V2_15_25PN_4PN_INTERFACE	V2-15 2.5PN/4PN interface audit	status_audit	interface_gate	conditional_on_quadrupole_normalization	nodes/audits/MT_V2_15_25PN_4PN_INTERFACE.md			
+MT_V2_16_NO_REFIT	V2-16 branch-freeze/no-refit protocol	status_audit	protocol_gate	mandatory	nodes/audits/MT_V2_16_NO_REFIT.md			
+MT_V2_17_WEAK_AXISYM	V2-17 weak-axisymmetric P2 splitting audit	status_audit	audit_gate	exact_first_order	nodes/audits/MT_V2_17_WEAK_AXISYM.md			
+MT_V2_18_MONOMIAL_ORBIT	V2-18 monomial quotient and similarity-orbit audit	status_audit	audit_gate	exact_within_coherent_branch	nodes/audits/MT_V2_18_MONOMIAL_ORBIT.md			
+MT_V2_19_TARGET_SURFACE	V2-19 isotropic full-bundle target surface	status_audit	target_gate	exact_within_reduced_bundle	nodes/audits/MT_V2_19_TARGET_SURFACE.md			
+MT_V2_20_WEAK_FORM_EXTRACTOR	V2-20 weak-form branch extractor	derivation	solver_preparation	prepared	nodes/derivations/MT_V2_20_WEAK_FORM_EXTRACTOR.md			
+MT_V2_21_BRANCH_FIXTURE	V2-21 branch-extraction fixture	status_audit	fixture_gate	implemented	nodes/audits/MT_V2_21_BRANCH_FIXTURE.md			
+MT_V2_22A_PROFILE_ADAPTER	V2-22A profile-to-coefficient adapter	status_audit	adapter_gate	implemented	nodes/audits/MT_V2_22A_PROFILE_ADAPTER.md			
+MT_V2_22B_SOLVER_SCHEMA	V2-22B numerical branch profile schema	status_audit	solver_schema_gate	implemented	nodes/audits/MT_V2_22B_SOLVER_SCHEMA.md			
+MT_V2_22C_SMOKE_PIPELINE	V2-22C branch-realization smoke pipeline	status_audit	pipeline_gate	implemented_control_and_smoke	nodes/audits/MT_V2_22C_SMOKE_PIPELINE.md			
+MT_V2_23_OPEN_BRANCH_SOLVER	V2-23 minimal open-throat branch solver	status_audit	simulation_gate	target_miss	nodes/audits/MT_V2_23_OPEN_BRANCH_SOLVER.md			
+MT_V2_25_ACTUAL_BRANCH_PROTOCOL	V2-25 actual branch protocol	status_audit	protocol_gate	open_actual_branch	nodes/audits/MT_V2_25_ACTUAL_BRANCH_PROTOCOL.md			
+MT_V2_26_STATUS	V2-26 post-audit program status	status_audit	status_summary	boundary_set	nodes/audits/MT_V2_26_STATUS.md			
+MT_V2_27_EXECUTABLE_AUDIT	V2-27 executable audit implementation	status_audit	reproducibility_gate	referee_harness_pass	nodes/audits/MT_V2_27_EXECUTABLE_AUDIT.md			
+MT_V2_28_ONTOLOGY_CHECKLIST	V2-28 physical picture checklist	physical_ontology	ontology_status	paper_facing	nodes/physical/MT_V2_28_ONTOLOGY_CHECKLIST.md			
+MT_V2_29_MATERIAL_GAP	V2-29 superfluid material closure gap	open_gate	material_gate	open	nodes/open_gates/MT_V2_29_MATERIAL_GAP.md			
+MT_V2_30_EM_ONTOLOGY	V2-30 EM ontology/status	physical_ontology	ontology_status	paper_facing	nodes/physical/MT_V2_30_EM_ONTOLOGY.md			
+OPEN_ACTUAL_BRANCH_EXPORTER	Open gate: actual moving-throat branch exporter	open_gate	branch_realization_gate	open	nodes/open_gates/OPEN_ACTUAL_BRANCH_EXPORTER.md			
+OPEN_EXECUTABLE_BRANCH_SOLVER	Executable physical branch solver	open_gate	solver_gate	open	nodes/open_gates/OPEN_EXECUTABLE_BRANCH_SOLVER.md			
+OPEN_LEPTON_SPIN_DISCRETIZER	Open gate: lepton spin/same-charge discretizer	open_gate	particle_identity_gate	conditional_open	nodes/open_gates/OPEN_LEPTON_SPIN_DISCRETIZER.md			
+OPEN_MATERIAL_CLOSURE	Open gate: material closure on same branch	open_gate	material_gate	open	nodes/open_gates/OPEN_MATERIAL_CLOSURE.md			
+OPEN_MIXED_RECIRCULATION	Open gate: mixed recirculation/plumbing law	open_gate	EM_plumbing_gate	open	nodes/open_gates/OPEN_MIXED_RECIRCULATION.md			
+OPEN_N2_N4_MOMENT_SHAPE	Outgoing moment-shape control	open_gate	moment_shape_gate	open	nodes/open_gates/OPEN_N2_N4_MOMENT_SHAPE.md			
+OPEN_NONLINEAR_S_SIGMA	Nonlinear throat action S_Sigma	open_gate	parent_action_gate	open_patch_required	nodes/open_gates/OPEN_NONLINEAR_S_SIGMA.md			
+OPEN_PARENT_PROMOTION_S_SIGMA	Open gate: promote S_Sigma	open_gate	parent_status_gate	open_patch_required	nodes/open_gates/OPEN_PARENT_PROMOTION_S_SIGMA.md			
+OPEN_QUAD_NORMALIZATION	Open gate: passive/outgoing quadrupole normalization	open_gate	normalization_gate	open_actual_branch_data	nodes/open_gates/OPEN_QUAD_NORMALIZATION.md		research/4d_2_5pn/paper/4d_2_5pn.tex	2544
+OPEN_SOURCE_PORT_NORMALIZATION	Source/port normalization law	open_gate	normalization_gate	open	nodes/open_gates/OPEN_SOURCE_PORT_NORMALIZATION.md			
+OPEN_WEAK_AXISYM_ORBIT_LOCK	Weak-axisymmetric tangent and orbit-lock packet	open_gate	orbit_lock_gate	open	nodes/open_gates/OPEN_WEAK_AXISYM_ORBIT_LOCK.md			
+PHYS_BRANCH_EXPORTER	Actual branch exporter	physical_ontology	exporter_requirement	open	nodes/physical/PHYS_BRANCH_EXPORTER.md			
+PHYS_BRANE_BULK_THROAT_DEFECT	Finite brane-bulk throat defect	physical_ontology	defect	physical_ontology	nodes/physical/PHYS_BRANE_BULK_THROAT_DEFECT.md			
+PHYS_BRANE_OBSERVER	Operational brane observer	physical_ontology	observer	exact_definition	nodes/physical/PHYS_BRANE_OBSERVER.md		research/4d_plasma/paper/4d_plasma.tex	279
+PHYS_BULK_ARENA	4+1 bulk arena	physical_ontology	arena	exact_declared_parent	nodes/physical/PHYS_BULK_ARENA.md			
+PHYS_CHARGE_BRANCH	Electric charge branch	physical_ontology	charge_ontology	exact_bookkeeping	nodes/physical/PHYS_CHARGE_BRANCH.md			
+PHYS_FINITE_MOUTH_SHAPE	Finite-mouth shape physics	physical_ontology	geometry_response	reduced_conditional	nodes/physical/PHYS_FINITE_MOUTH_SHAPE.md			
+PHYS_GROUPED_P2_SHAPE_RESPONSE	Grouped real P2 shape/support response	physical_ontology	response_sector	reduced_controlled	nodes/physical/PHYS_GROUPED_P2_SHAPE_RESPONSE.md			
+PHYS_INTERIOR_SUPPORT	Interior throat/support region	physical_ontology	geometry_feature	physical_ontology	nodes/physical/PHYS_INTERIOR_SUPPORT.md			
+PHYS_LOCALIZED_EM_SECTOR	Localized electromagnetic sector	physical_ontology	field_sector	exact_declared_parent	nodes/physical/PHYS_LOCALIZED_EM_SECTOR.md			
+PHYS_MAGNETIC_VORTICAL_CIRCULATION	Magnetic/vortical circulation sector	physical_ontology	topological_sector	exact_identity_and_open_plumbing	nodes/physical/PHYS_MAGNETIC_VORTICAL_CIRCULATION.md			
+PHYS_MATERIAL_CLOSURE	Superfluid material closure	physical_ontology	material_sector	open	nodes/physical/PHYS_MATERIAL_CLOSURE.md			
+PHYS_MIXED_EM_CORE	Mixed brane-bulk EM core	physical_ontology	field_sector	exact_parent_observables_reduced_open	nodes/physical/PHYS_MIXED_EM_CORE.md			
+PHYS_MOUTH_CROSS_SECTION	Brane-side mouth	physical_ontology	geometry_feature	physical_ontology	nodes/physical/PHYS_MOUTH_CROSS_SECTION.md			
+PHYS_MOUTH_INTERIOR_FIREWALL	Mouth/interior distinction	physical_ontology	ontology_firewall	paper_facing_required	nodes/status_firewalls/PHYS_MOUTH_INTERIOR_FIREWALL.md			
+PHYS_OPEN_CONDUIT	Open finite-radius conduit	physical_ontology	boundary_condition	effective_branch_condition	nodes/physical/PHYS_OPEN_CONDUIT.md			
+PHYS_OPEN_FINITE_EXIT	Open finite-radius exit	physical_ontology	geometry_boundary	effective_branch_condition	nodes/physical/PHYS_OPEN_FINITE_EXIT.md			
+PHYS_OUTGOING_QUADRUPOLE_PORT	Passive/outgoing quadrupole port	physical_ontology	radiative_port	open_actual_branch_data	nodes/physical/PHYS_OUTGOING_QUADRUPOLE_PORT.md			
+PHYS_REG_BRANCH_EXPORT	Actual branch physical spine	physical_register	register	active	nodes/physical/PHYS_REG_BRANCH_EXPORT.md			
+PHYS_REG_CHARGE_EM	Charge/EM physical spine	physical_register	register	active	nodes/physical/PHYS_REG_CHARGE_EM.md			
+PHYS_REG_OBSERVER_PROJECTION	Observer/projection physical spine	physical_register	register	active	nodes/physical/PHYS_REG_OBSERVER_PROJECTION.md			
+PHYS_REG_OUTGOING_PORT	Outgoing port physical spine	physical_register	register	active	nodes/physical/PHYS_REG_OUTGOING_PORT.md			
+PHYS_REG_P2_QUAD	Grouped P2/quadrupole physical spine	physical_register	register	active	nodes/physical/PHYS_REG_P2_QUAD.md			
+PHYS_REG_PARTICLE_THROAT	Particle/throat physical spine	physical_register	register	active	nodes/physical/PHYS_REG_PARTICLE_THROAT.md			
+PHYS_RESPONSE_READOUTS	Compressed response readouts	physical_ontology	readout_interpretation	not_physical_object	nodes/physical/PHYS_RESPONSE_READOUTS.md			
+PHYS_SUPERFLUID_INTAKE_OUTPUT	Superfluid intake/output channels	physical_ontology	open_system_flux	open_physical_closure	nodes/physical/PHYS_SUPERFLUID_INTAKE_OUTPUT.md			
+PHYS_SUPERFLUID_MEDIUM	Bulk superfluid/GNLS medium	physical_ontology	medium	exact_declared_parent	nodes/physical/PHYS_SUPERFLUID_MEDIUM.md			
+PHYS_TARGET_BLIND_BRANCH_SELECTION	Target-blind branch selection	physical_ontology	protocol_principle	mandatory	nodes/physical/PHYS_TARGET_BLIND_BRANCH_SELECTION.md			
+PN_0_NEWTONIAN_HOOK	Newtonian / 0PN inverse-square hook	derivation	PN_backbone	controlled_reduction	nodes/derivations/PN_0_NEWTONIAN_HOOK.md		research/4d_1pn_full/paper/4d_1pn_full.tex	575
+PN_1_EIH_FULL	Full conservative 1PN EIH assembly	derivation	PN_backbone	full_assembly_within_closure	nodes/derivations/PN_1_EIH_FULL.md		research/4d_1pn_full/paper/4d_1pn_full.tex	2920
+PN_2_5_QUAD_NARROWING	2.5PN quadrupole-normalization narrowing	derivation	PN_bridge	conditional_theorem_open_normalization	nodes/derivations/PN_2_5_QUAD_NARROWING.md		research/4d_2_5pn/paper/4d_2_5pn.tex	4995
+PN_2_ADM_FULL	Full conservative 2PN ADM assembly	derivation	PN_backbone	full_assembly_within_closure	nodes/derivations/PN_2_ADM_FULL.md		research/4d_2pn/paper/4d_2pn.tex	3380
+PN_3_GROUPED_P2_FULL	Conservative 3PN grouped P2 assembly	derivation	PN_backbone	full_assembly_within_closure	nodes/derivations/PN_3_GROUPED_P2_FULL.md		research/4d_3pn/paper/4d_3pn.tex	3248
+PN_4_LOCAL_TAIL	4PN local + tail split	derivation	PN_bridge	local_closed_tail_conditional	nodes/derivations/PN_4_LOCAL_TAIL.md		research/4d_4pn/paper/4d_4pn.tex	4891
+PN_5_FULL_BUNDLE_SURFACE	5PN / full-bundle target surface	derivation	PN_bridge	reduced_target_surface_open_realization	nodes/derivations/PN_5_FULL_BUNDLE_SURFACE.md			
+QUERY_4PN_TAIL_BLOCKER	What blocks full 4PN tail completion?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_4PN_TAIL_BLOCKER.md			
+QUERY_G2_XI1	How does the anomaly branch connect to the moving-throat quotient?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_G2_XI1.md			
+QUERY_MATERIAL_CLOSURE	What remains open about material closure?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_MATERIAL_CLOSURE.md			
+QUERY_MIXED_SECTOR	Why can the outgoing bridge use the mixed sector?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_MIXED_SECTOR.md			
+QUERY_P2_BECOMES_PHYSICAL	Where does grouped P2 become physical geometry?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_P2_BECOMES_PHYSICAL.md			
+QUERY_PARENT_WALL_STATUS	What changes if S_eta or S_Sigma is not promoted?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_PARENT_WALL_STATUS.md			
+QUERY_READOUT_DISCIPLINE	Are D0, C, P0, N2, N4 physical throat objects?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_READOUT_DISCIPLINE.md			
+QUERY_ZERO_MODE_DOWNSTREAM	What depends on zero-mode Maxwell?	query_validation	query_test	v06_seed_query	nodes/audits/QUERY_ZERO_MODE_DOWNSTREAM.md			
+READOUT_D0_C_P0_N2_N4	Reduced response readout packet	status_audit	readout_packet	compressed_target_readouts	nodes/audits/READOUT_D0_C_P0_N2_N4.md			
+SEC_1PN_BRIDGE_DICTIONARY	2) Minimal dictionary of the unified 4D model used by this paper	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_1PN_BRIDGE_DICTIONARY.md	paper	research/4d_1pn_bridge/paper/4d_1pn_bridge.tex	1084
+SEC_1PN_BRIDGE_DOWNSTREAM	12) Takeaway for downstream reasoning	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_1PN_BRIDGE_DOWNSTREAM.md	paper	research/4d_1pn_bridge/paper/4d_1pn_bridge.tex	2311
+SEC_1PN_BRIDGE_HEADLINE	1) Headline derived values (carry-forward constants)	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_1PN_BRIDGE_HEADLINE.md	paper	research/4d_1pn_bridge/paper/4d_1pn_bridge.tex	200
+SEC_1PN_FIXED_SYMBOLIC	12) Fixed versus symbolic quantities	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_1PN_FIXED_SYMBOLIC.md	paper	research/4d_1pn_full/paper/4d_1pn_full.tex	2799
+SEC_1PN_FULL_LAGRANGIAN	10) Full two-body 1PN Lagrangian and exact EIH match	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_1PN_FULL_LAGRANGIAN.md	paper	research/4d_1pn_full/paper/4d_1pn_full.tex	2270
+SEC_1PN_HEADLINE	2) Headline outputs / carry-forward constants	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_1PN_HEADLINE.md	paper	research/4d_1pn_full/paper/4d_1pn_full.tex	186
+SEC_1PN_TAXONOMY	1) Claim taxonomy (important for later use)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_1PN_TAXONOMY.md	paper	research/4d_1pn_full/paper/4d_1pn_full.tex	153
+SEC_25PN_CLAIMS	2) What this package claims — and what it does not claim	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_25PN_CLAIMS.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	151
+SEC_25PN_NORM_STACK	4.6 Quadrupole normalization stack	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_25PN_NORM_STACK.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	4995
+SEC_25PN_OPEN	7.3 Still genuinely open	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_25PN_OPEN.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	2544
+SEC_25PN_QUAD_LEDGER	4.5 Quadrupole structural ledger	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_25PN_QUAD_LEDGER.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	2023
+SEC_25PN_STF_MAP	3.5 Canonical orbital quadrupole and grouped \(P_2\) basis map	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_25PN_STF_MAP.md	paper	research/4d_2_5pn/paper/4d_2_5pn.tex	2248
+SEC_2PN_CLAIMS	2) What the paper claims — and what it does not claim	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_2PN_CLAIMS.md	paper	research/4d_2pn/paper/4d_2pn.tex	179
+SEC_2PN_MAIN_THEOREM	4.7 Main theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_2PN_MAIN_THEOREM.md	paper	research/4d_2pn/paper/4d_2pn.tex	1514
+SEC_2PN_OPEN_DYNAMIC	7.3 Still genuinely open	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_2PN_OPEN_DYNAMIC.md	paper	research/4d_2pn/paper/4d_2pn.tex	2621
+SEC_2PN_P0P2_APPENDIX	8.7 \(P_0\oplus P_2\) mouth-port rebuild and support-minus-closure EFT appendix	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_2PN_P0P2_APPENDIX.md	paper	research/4d_2pn/paper/4d_2pn.tex	5158
+SEC_3PN_GROUPED_MODULE	3.2 Why the 2.5PN notes narrow the next conservative target to the grouped real \(P_2\) bundle	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_3PN_GROUPED_MODULE.md	paper	research/4d_3pn/paper/4d_3pn.tex	826
+SEC_3PN_INTERFACE	10) Interface to the 2.5PN program	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_3PN_INTERFACE.md	paper	research/4d_3pn/paper/4d_3pn.tex	3226
+SEC_3PN_MAIN_THEOREM	9) Final conservative 3PN theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_3PN_MAIN_THEOREM.md	paper	research/4d_3pn/paper/4d_3pn.tex	2962
+SEC_4D_CHARGE_BOOKKEEPING	Minimal coupling (covariant derivatives)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_CHARGE_BOOKKEEPING.md	paper	research/4d/paper/4d.tex	250
+SEC_4D_EXACT_EQUATIONS	5) Exact Euler–Lagrange equations and hydrodynamic identities	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_EXACT_EQUATIONS.md	paper	research/4d/paper/4d.tex	546
+SEC_4D_PARENT_ACTION	4) Full model specification (the action)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_PARENT_ACTION.md	paper	research/4d/paper/4d.tex	360
+SEC_4D_POISSON_HOOK	7) Longitudinal identity and the “Poisson hook”	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_POISSON_HOOK.md	paper	research/4d/paper/4d.tex	875
+SEC_4D_PROJECTED_CONTINUITY	6.2 Projected continuity with leakage (exact)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_PROJECTED_CONTINUITY.md	paper	research/4d/paper/4d.tex	784
+SEC_4D_PROJECTION_REDUCTION	3) Critical distinction: “projection” vs “reduction”	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_PROJECTION_REDUCTION.md	paper	research/4d/paper/4d.tex	298
+SEC_4D_ZERO_MODE_MAXWELL	8) Controlled EM localization reduction to an effective brane Maxwell theory	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4D_ZERO_MODE_MAXWELL.md	paper	research/4d/paper/4d.tex	1013
+SEC_4PN_FINAL_THEOREM	7) Final conditional conservative 4PN theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4PN_FINAL_THEOREM.md	paper	research/4d_4pn/paper/4d_4pn.tex	2453
+SEC_4PN_NO_NEW_GAP	6.4 No new 4PN-specific normalization gap	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4PN_NO_NEW_GAP.md	paper	research/4d_4pn/paper/4d_4pn.tex	2572
+SEC_4PN_TAIL_BRIDGE	6) Tail / hereditary 4PN bridge	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_4PN_TAIL_BRIDGE.md	paper	research/4d_4pn/paper/4d_4pn.tex	2161
+SEC_5PN_STAGE11_MONOMIALS	Stage 11 — direct microscopic monomials, similarity orbit, and quotient closure	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE11_MONOMIALS.md	future_paper_note		
+SEC_5PN_STAGE15_XI	Stage 15 — the exact `Xi_load` bridge	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE15_XI.md	future_paper_note		
+SEC_5PN_STAGE18_SURFACE	Stage 18 — exact isotropic full-bundle target surface	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE18_SURFACE.md	future_paper_note		
+SEC_5PN_STAGE20_EVEN_GATES	Stage 20 — full even-gate solve on the constructive branch	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE20_EVEN_GATES.md	future_paper_note		
+SEC_5PN_STAGE24_26_PLACEMENT	Continuation past Stage 26: Stages 27–29	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE24_26_PLACEMENT.md	future_paper_note		
+SEC_5PN_STAGE31_SUPPORT	Stage 31 — Support-compensation theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_5PN_STAGE31_SUPPORT.md	future_paper_note		
+SEC_5PN_SUMMARY_BOTTOM_LINE	10) Bottom-line interpretation	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_5PN_SUMMARY_BOTTOM_LINE.md	future_paper_note		
+SEC_5PN_SUMMARY_CLAIMS	2) What this package claims — and what it does not claim	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_5PN_SUMMARY_CLAIMS.md	future_paper_note		
+SEC_5PN_SUMMARY_MONOMIALS	4.5 Coherent normal form and exact monomial coordinates	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_5PN_SUMMARY_MONOMIALS.md	future_paper_note		
+SEC_5PN_SUMMARY_SCOPE	0) What this package is doing	source_section_anchor	section_anchor	v06_section_anchor	nodes/sources/SEC_5PN_SUMMARY_SCOPE.md	future_paper_note		
+SEC_ATOM_FOUNDATIONS	Part I — Foundations	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_ATOM_FOUNDATIONS.md	future_paper_note		
+SEC_ATOM_HYDROGEN	Part II — Hydrogen from the Existing 4D Action	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_ATOM_HYDROGEN.md	future_paper_note		
+SEC_EM_BULK_EQUATIONS	4.1 Bulk Maxwell equations (with localization + gauge fixing)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_BULK_EQUATIONS.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	245
+SEC_EM_CHARGE_ONTOLOGY	1.1 Charge ontology update	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_CHARGE_ONTOLOGY.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	1742
+SEC_EM_DEVIATIONS	6.7 What causes deviations from 3+1 Maxwell?	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_DEVIATIONS.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	1348
+SEC_EM_LOCALIZED_ACTION	3) Full localized 4+1 Maxwell sector (the action)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_LOCALIZED_ACTION.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	245
+SEC_EM_QEFF	6.5 Canonical normalization and thickness-controlled charge strength	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_QEFF.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	822
+SEC_EM_ZERO_MODE	6.4 Zero-mode (Maxwell) limit and \(\mu_0^{\rm eff}\)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_EM_ZERO_MODE.md	paper	research/4d_em_fields/paper/4d_em_fields.tex	812
+SEC_G2_PREF_SLOPE	Step 4 — Exact transfer-shape / outgoing-prefactor bridge	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_G2_PREF_SLOPE.md	future_paper_note		
+SEC_G2_QUOTIENT	Step 1 — Exact moving-throat quotient bridge and staggered anomaly benchmark	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_G2_QUOTIENT.md	future_paper_note		
+SEC_LEPTON_MASS_THEOREM	2. Core isolated-electron mass theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_LEPTON_MASS_THEOREM.md	future_paper_note		
+SEC_LEPTON_MIXED_ROTOR	4. Corrected same-charge mixed-sector rotor	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_LEPTON_MIXED_ROTOR.md	future_paper_note		
+SEC_LEPTON_VERDICT	1.3 Final conditional verdict	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_LEPTON_VERDICT.md	future_paper_note		
+SEC_MT_MIXED_INVARIANTS	2.5.6 Exact mixed-sector gauge invariants	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_MT_MIXED_INVARIANTS.md	future_paper_note		
+SEC_MT_PARENT_FIELDS	2. Parent Theory and Exact Bulk Equations	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_MT_PARENT_FIELDS.md	future_paper_note		
+SEC_MT_PROJECTION_ZERO_MODE	2.5.7 Cold-start projection and zero-mode reduction hooks	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_MT_PROJECTION_ZERO_MODE.md	future_paper_note		
+SEC_MT_READING_RULES	1. Reading Rules and Status Firewall	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_MT_READING_RULES.md	future_paper_note		
+SEC_MT_THEOREM_STATUS	1.3 Present theorem-status summary	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_MT_THEOREM_STATUS.md	future_paper_note		
+SEC_PDE_ACTUAL_BRANCH_PACKETS	4. Actual branch packets	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_ACTUAL_BRANCH_PACKETS.md	future_paper_note		
+SEC_PDE_BDG_AUDIT	Stage V2-08 — BdG–Wall Schur Complement and Stability/Softening Audit	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_BDG_AUDIT.md	future_paper_note		
+SEC_PDE_BRANCH_FIXTURE	Stage V2-21 — Branch-Extraction Fixture and Observable Packet	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_BRANCH_FIXTURE.md	future_paper_note		
+SEC_PDE_BRANCH_FREEZE	Stage V2-16 — Branch-freeze / no-refit protocol	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_BRANCH_FREEZE.md	future_paper_note		
+SEC_PDE_EM_STATUS	Stage V2-30 - Electromagnetic Ontology and Status	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_EM_STATUS.md	future_paper_note		
+SEC_PDE_MATERIAL_GAP	Stage V2-29 - Superfluid Material Closure Gap	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_MATERIAL_GAP.md	future_paper_note		
+SEC_PDE_MAXWELL_GAUGE	Stage V2-02 — Maxwell Gauge-Localization Audit	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_MAXWELL_GAUGE.md	future_paper_note		
+SEC_PDE_MIXED_KERNEL	Stage V2-09 — Maxwell/mixed-sector kernel audit	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_MIXED_KERNEL.md	future_paper_note		
+SEC_PDE_NORM_RATIO	Stage V2-13 — Grouped Normalization Ratio Audit	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_NORM_RATIO.md	future_paper_note		
+SEC_PDE_P2_PROJECTORS	8. Grouped real \(P_2\) isotropy	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_P2_PROJECTORS.md	future_paper_note		
+SEC_PDE_PARENT_WALL_EXEC	Executive result	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_PARENT_WALL_EXEC.md	future_paper_note		
+SEC_PDE_PHYSICAL_ONTOLOGY	Stage V2-28 - Physical Picture and Ontology Checklist	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_PHYSICAL_ONTOLOGY.md	future_paper_note		
+SEC_PDE_STF_SOURCE	Stage V2-12 — STF Angular Source-Map Theorem	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_STF_SOURCE.md	future_paper_note		
+SEC_PDE_WALL_VARIATION	3. Variation after adding the quadratic wall action	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_WALL_VARIATION.md	future_paper_note		
+SEC_PDE_WEAK_FORM_EXPORTER	Stage V2-20 — Weak-form and numerical branch-extraction preparation	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PDE_WEAK_FORM_EXPORTER.md	future_paper_note		
+SEC_PLASMA_AW_ROLE	Physical role of \(A_w\)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PLASMA_AW_ROLE.md	paper	research/4d_plasma/paper/4d_plasma.tex	1773
+SEC_PLASMA_LEAKAGE	5) Exact projected balance laws and leakage (open-system brane identities)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PLASMA_LEAKAGE.md	paper	research/4d_plasma/paper/4d_plasma.tex	372
+SEC_PLASMA_MIXED_FIELDS	Mixed-sector fields (absent in strict 3+1 Maxwell)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PLASMA_MIXED_FIELDS.md	paper	research/4d_plasma/paper/4d_plasma.tex	4617
+SEC_PLASMA_Z_VS_W	3) Localization vs projection (two distinct kernels)	source_section_anchor	section_anchor	v05_first_section_anchor	nodes/sources/SEC_PLASMA_Z_VS_W.md	paper	research/4d_plasma/paper/4d_plasma.tex	252
+STATUS_LADDER_EXACT_TO_OPEN	Claim status ladder	status_audit	status_taxonomy	active	nodes/audits/STATUS_LADDER_EXACT_TO_OPEN.md			
+TARGET_PACKET_A	Packet A: conservative/outgoing grouped target	open_gate	target_packet	open_branch_realization	nodes/open_gates/TARGET_PACKET_A.md			
+TARGET_PACKET_B	Packet B: orbit-lock / weak-axisymmetric packet	open_gate	target_packet	open_branch_realization	nodes/open_gates/TARGET_PACKET_B.md			
+VIEW_CLAIM_LAYER	Claim/theorem layer view	atlas_meta	view	active	nodes/meta/VIEW_CLAIM_LAYER.md			
+VIEW_EXTENSION_WORKBENCH	Future-extension workbench view	atlas_meta	view	active	nodes/meta/VIEW_EXTENSION_WORKBENCH.md			
+VIEW_PAPER_BACKLINK_LAYER_V06	Paper backlink layer v0.6	atlas_meta	view	v06_complete_as_register	nodes/meta/VIEW_PAPER_BACKLINK_LAYER_V06.md			
+WORKFLOW_STEP_1_PHYSICAL_OBJECT	1. Identify physical object	extension_workflow_step	workflow_step	active	nodes/extensions/WORKFLOW_STEP_1_PHYSICAL_OBJECT.md			
+WORKFLOW_STEP_2_MATH_REPRESENTATION	2. Identify math representation	extension_workflow_step	workflow_step	active	nodes/extensions/WORKFLOW_STEP_2_MATH_REPRESENTATION.md			
+WORKFLOW_STEP_3_STATUS_CHECK	3. Check claim status	extension_workflow_step	workflow_step	active	nodes/extensions/WORKFLOW_STEP_3_STATUS_CHECK.md			
+WORKFLOW_STEP_4_OPEN_GATES	4. Traverse open gates	extension_workflow_step	workflow_step	active	nodes/extensions/WORKFLOW_STEP_4_OPEN_GATES.md			
+WORKFLOW_STEP_5_ADD_CLAIM	5. Add claim node and anchors	extension_workflow_step	workflow_step	active	nodes/extensions/WORKFLOW_STEP_5_ADD_CLAIM.md			
+OPEN_5PN_EVEN_GATES	Open gate: 5PN conservative even gates K1 and H_even	open_gate	continuation_gate	open_actual_branch_data	nodes/open_gates/OPEN_5PN_EVEN_GATES.md			
+OPEN_G2_COMMON_LAYER	Open gate: g-2 common charge–inertia quotient layer	open_gate	anomaly_gate	conditional_open	nodes/open_gates/OPEN_G2_COMMON_LAYER.md			
+FILE_MOVING_THROAT_STAGES	moving_throat_output_full.md / moving_throat_notes_full.md	file_anchor	source_file	moving_throat_stage_anchor	nodes/sources/FILE_MOVING_THROAT_STAGES.md	future_paper_note		
+INVALID_CHARGE_FROM_CIRCULATION	Invalid inference: electric charge sign comes from circulation	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_CHARGE_FROM_CIRCULATION.md			
+FIREWALL_CHARGE_NOT_CIRCULATION	Do not identify circulation, throat geometry, or magnetic/vortical winding with electric charge sign.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_CHARGE_NOT_CIRCULATION.md			
+NEG_QUERY_CHARGE_FROM_CIRCULATION	Can electric charge sign be derived from circulation or magnetic/vortical winding?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_CHARGE_FROM_CIRCULATION.md			
+INVALID_QEFF_FROM_GEOMETRY_BREATHING	Invalid inference: q_eff is a throat-breathing/geometric variable	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_QEFF_FROM_GEOMETRY_BREATHING.md			
+FIREWALL_QEFF_THICKNESS_NOT_BREATHING	Keep microscopic branch charge q_star and observed brane coupling q_eff separate from throat radius/length dynamics.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_QEFF_THICKNESS_NOT_BREATHING.md			
+NEG_QUERY_QEFF_FROM_THROAT_GEOMETRY	Can q_eff be inferred from throat radius, length, or breathing variables?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_QEFF_FROM_THROAT_GEOMETRY.md			
+INVALID_KAPPARHO_ELECTRIC_CHARGE	Invalid inference: kappa_rho=1 is electric charge	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_KAPPARHO_ELECTRIC_CHARGE.md			
+FIREWALL_KAPPARHO_NOT_CHARGE	Do not recycle the historical gravity-side q=1 notation as electromagnetic charge.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_KAPPARHO_NOT_CHARGE.md			
+NEG_QUERY_KAPPARHO_AS_ELECTRIC_CHARGE	Can the gravity-side coefficient kappa_rho=1 be read as electric charge?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_KAPPARHO_AS_ELECTRIC_CHARGE.md			
+INVALID_ZERO_MODE_REMOVES_MIXED	Invalid inference: zero-mode Maxwell erases mixed core fields	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_ZERO_MODE_REMOVES_MIXED.md			
+FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE	Treat A_w, J^w, F_{mu w}, E_w, and C_a as suppressed in the brane limit, not deleted.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE.md			
+NEG_QUERY_ZERO_MODE_ERASES_MIXED_CORE	Does the zero-mode Maxwell reduction remove A_w, J^w, and F_mu w from the microscopic ontology?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_ZERO_MODE_ERASES_MIXED_CORE.md			
+INVALID_PROJECTION_EQUALS_REDUCTION	Invalid inference: projection equals reduction	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_PROJECTION_EQUALS_REDUCTION.md			
+FIREWALL_PROJECTION_NOT_REDUCTION	Projection is an exact measurement definition; reduction is a controlled dynamical simplification.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_PROJECTION_NOT_REDUCTION.md			
+NEG_QUERY_PROJECTION_EQUALS_REDUCTION	Are brane projection and brane reduction the same operation?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_PROJECTION_EQUALS_REDUCTION.md			
+INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE	Invalid inference: current parent action already has autonomous wall dynamics	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE.md			
+FIREWALL_PARENT_WALL_NOT_STRICT	Do not upgrade the moving-wall PDE to strict parent-level status unless S_eta/S_Sigma is included.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_PARENT_WALL_NOT_STRICT.md			
+NEG_QUERY_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE	Does the current confinement-only parent action already produce an autonomous moving-wall PDE?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE.md			
+INVALID_WALL_COEFFS_POSTHOC_FITS	Invalid inference: wall coefficients are arbitrary post-hoc fit parameters	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_WALL_COEFFS_POSTHOC_FITS.md			
+FIREWALL_WALL_COEFFS_BRANCH_DATA	Treat wall constitutive coefficients as computed/constrained branch data, not as adjustable rescue parameters.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_WALL_COEFFS_BRANCH_DATA.md			
+NEG_QUERY_WALL_COEFFS_ARE_FIT_KNOBS	Can wall-action coefficients be freely refit stage by stage to rescue normalization?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_WALL_COEFFS_ARE_FIT_KNOBS.md			
+INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL	Invalid inference: local 4PN closure proves full tail normalization	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL.md			
+FIREWALL_4PN_LOCAL_NOT_FULL_TAIL	Keep local instantaneous 4PN closure separate from the inherited passive/outgoing quadrupole normalization gate.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_4PN_LOCAL_NOT_FULL_TAIL.md			
+NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL	Does exact local instantaneous 4PN assembly by itself close the full 4PN tail theorem?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_LOCAL_4PN_CLOSES_FULL_TAIL.md			
+INVALID_25PN_UNCONDITIONAL_THEOREM	Invalid inference: 2.5PN theorem is unconditional and complete	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_25PN_UNCONDITIONAL_THEOREM.md			
+FIREWALL_25PN_CONDITIONAL	Preserve the conditional theorem status of 2.5PN until actual branch normalization is realized.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_25PN_CONDITIONAL.md			
+NEG_QUERY_25PN_UNCONDITIONAL	Is the 2.5PN package an unconditional solved moving-throat PDE theorem?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_25PN_UNCONDITIONAL.md			
+INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM	Invalid inference: angular STF identity closes radial/axial normalization	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM.md			
+FIREWALL_ANGULAR_NOT_RADIAL	Do not convert the exact angular identity mhat_ang=1 into a solved radial/axial normalization theorem.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_ANGULAR_NOT_RADIAL.md			
+NEG_QUERY_STF_ANGULAR_MAP_CLOSES_RADIAL_NORMALIZATION	Does mhat_ang=1 close the full quadrupole normalization?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_STF_ANGULAR_MAP_CLOSES_RADIAL_NORMALIZATION.md			
+INVALID_READOUTS_ARE_PHYSICAL_THROAT	Invalid inference: response readouts are the physical throat object	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_READOUTS_ARE_PHYSICAL_THROAT.md			
+FIREWALL_READOUTS_NOT_THROAT	Keep response packets downstream of the physical throat, mouth, support, mixed, and outgoing branch data.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_READOUTS_NOT_THROAT.md			
+NEG_QUERY_READOUTS_ARE_PHYSICAL_THROAT	Are D0, C, P0, N2, and N4 themselves the physical throat?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_READOUTS_ARE_PHYSICAL_THROAT.md			
+INVALID_HYDROGEN_FULL_PDE_THEOREM	Invalid inference: hydrogenic sector is a completed full moving-throat theorem	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_HYDROGEN_FULL_PDE_THEOREM.md			
+FIREWALL_ATOM_REDUCED_SECTOR	Label atomic hydrogen as a reduced-sector consequence, not a completed full-defect PDE theorem.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_ATOM_REDUCED_SECTOR.md			
+NEG_QUERY_HYDROGEN_FULL_MOVING_THROAT_THEOREM	Does the hydrogenic zero-mode reduction prove full atomic structure from the solved moving-throat PDE?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_HYDROGEN_FULL_MOVING_THROAT_THEOREM.md			
+INVALID_LEPTON_HALF_INTEGER_PROVED	Invalid inference: lepton half-integer quantizer is fully proved unconditionally	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_LEPTON_HALF_INTEGER_PROVED.md			
+FIREWALL_LEPTON_CONDITIONAL	Keep the lepton same-charge quantizer as a conditional theorem until the autonomous/recirculation closure is file-grounded.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_LEPTON_CONDITIONAL.md			
+NEG_QUERY_LEPTON_HALF_INTEGER_PROVED	Is the half-integer lepton route already proved by the frozen files alone?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_LEPTON_HALF_INTEGER_PROVED.md			
+INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN	Invalid inference: similarity-orbit rigidity closes full 5PN	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN.md			
+FIREWALL_SIMILARITY_NOT_FULL_5PN	Treat the similarity/orbit theorem as a normalization-defect theorem, not as closure of the separate conservative even gates.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_SIMILARITY_NOT_FULL_5PN.md			
+NEG_QUERY_SIMILARITY_ORBIT_SOLVES_FULL_5PN	Does the monomial/similarity-orbit theorem solve the full 5PN continuation?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_SIMILARITY_ORBIT_SOLVES_FULL_5PN.md			
+INVALID_G2_COMMON_LAYER_CLOSED	Invalid inference: g-2 common quotient layer is already fully closed	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_G2_COMMON_LAYER_CLOSED.md			
+FIREWALL_G2_COMMON_CONDITIONAL	Preserve the common-layer status as a sharp conditional target until the actual moving-throat branch tangent is computed.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_G2_COMMON_CONDITIONAL.md			
+NEG_QUERY_G2_COMMON_LAYER_CLOSED	Does the g-2 common quotient layer already close the anomaly residual?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_G2_COMMON_LAYER_CLOSED.md			
+INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED	Invalid inference: Maxwell gauge localization audit can be ignored	status_audit	invalid_inference	forbidden_by_v07_firewall	nodes/audits/INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED.md			
+FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED	Carry the weighted-gauge-fixing caveat/patch in any derivation that uses localized Maxwell equations beyond the safe zero-mode reading.	status_audit	status_firewall_rule	active_v07	nodes/status_firewalls/FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED.md			
+NEG_QUERY_GAUGE_FIXING_LOCALIZATION_IGNORED	Can the unlocalized Maxwell gauge-fixing term be ignored without a safe interpretation or patch?	query_validation	negative_query_test	v07_negative_query	nodes/audits/NEG_QUERY_GAUGE_FIXING_LOCALIZATION_IGNORED.md			
+ATLAS_PHASE_7_NEGATIVE_VALIDATION	Pass 7: negative/failure-mode validation	atlas_completion_phase	atlas_completion_phase	complete_v07	nodes/meta/ATLAS_PHASE_7_NEGATIVE_VALIDATION.md			
+ATLAS_V1_CANDIDATE_GATE	v1.0 candidate gate	atlas_meta	release_gate	candidate_if_backlink_register_is_canonical	nodes/meta/ATLAS_V1_CANDIDATE_GATE.md			
+ATLAS_CODEX_BACKLINK_SWEEP_V08	Codex backlink sweep v0.8	atlas_meta	repo_operation	handoff_ready	nodes/meta/ATLAS_CODEX_BACKLINK_SWEEP_V08.md			
+ATLAS_PAPER_INSERTION_MANIFEST_V08	Paper insertion manifest v0.8	atlas_meta	manifest	generated	nodes/meta/ATLAS_PAPER_INSERTION_MANIFEST_V08.md			
+ATLAS_CODEX_APPLICATION_REPORT	Codex application report	atlas_meta	repo_report	expected_output	nodes/meta/ATLAS_CODEX_APPLICATION_REPORT.md			
+ATLAS_FULL_PAPER_DRAFTS_EXTERNAL	Full maintained paper drafts external to assistant workspace	atlas_meta	external_source_set	not_available_in_workspace	nodes/meta/ATLAS_FULL_PAPER_DRAFTS_EXTERNAL.md			
+BACKLINK_REGISTER_V06	Paper backlink register v0.6	atlas_meta	register_artifact	canonical_register	nodes/meta/BACKLINK_REGISTER_V06.md			
+STATUS_FIREWALL_REGISTER_V07	Status firewall register v0.7	atlas_meta	register_artifact	canonical_register	nodes/meta/STATUS_FIREWALL_REGISTER_V07.md			

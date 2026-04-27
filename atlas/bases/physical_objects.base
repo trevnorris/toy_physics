@@ -1,0 +1,13 @@
+filters:
+  and:
+  - file.inFolder("nodes/physical")
+views:
+- type: table
+  name: Physical objects
+  order:
+  - file.name
+  - type
+  - status
+  - summary_short
+  - math_ids
+  - equation_ids

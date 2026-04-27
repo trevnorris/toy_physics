@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moving-throat PDE program</title>
+  <link rel="stylesheet" href="../assets/reader.css">
+  <script defer src="../assets/reader.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Fluid Universe Reader</a>
+    <nav>
+      <a href="../index.html#topics">Topics</a>
+      <a href="../future-paper-worklist.html">Paper Backfill</a>
+      <a href="../data/topics.json">Data</a>
+    </nav>
+  </header>
+  
+<main>
+  <div class="breadcrumb"><a href="../index.html">Reader</a> / Moving-throat PDE program</div>
+  <article class="topic-page">
+    <header class="topic-header">
+      <p class="eyebrow">Moving Throat · generated 2026-04-27T20:20:12Z</p>
+      <h1>Moving-throat PDE program</h1>
+      <p class="lede">The moving-throat program studies wall/support dynamics, branch selection, and response export, but some parts are currently notes-backed rather than formal paper-backed.</p>
+      <p>
+        <span class="badge notes_backed_pending_papers">paper pending</span>
+        <span class="muted">10 selected graph nodes · 8 paper-pending source entries</span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Physical Picture</h2>
+      <p>This is the active bridge from a static or reduced throat picture to an executable physical branch. It asks which wall variables, material laws, and boundary packets the same branch must export.</p>
+<p>The public page should be candid: much of this is organized and audited, but not all of it has a frozen formal paper yet.</p>
+    </section>
+
+    <section>
+      <h2>Mathematical Core</h2>
+      <p>The wall PDE is exact only relative to the action that contains the wall term. The current parent action and the promoted parent action therefore need separate labels.</p>
+<p>The branch exporter is the mathematical object that should eventually connect PDE solutions to PN and anomaly response packets.</p>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>Tag all notes-backed material here as paper pending. Once a PDE paper or ledger section is published, the source links can be backfilled without rewriting the topic&#x27;s earlier claims.</p>
+    </section>
+
+    <section>
+      <h2>Key Equations</h2>
+      <div class="evidence-grid"><article class="evidence-card"><h3>Wall modal PDE from S_eta</h3><p class="node-id">EQ_WALL_MODAL_PDE · effective_linear_wall_closure</p><div class="math-block">\[μ_η q_{\mathrm{lm}},tt - ∂_w(T_w q_{\mathrm{lm}},w) + [K_η+l(l+1)T_Ω]q_{\mathrm{lm}} = S_{\mathrm{lm}}\]</div><p>Autonomous wall/modal PDE exists only when S_eta/S_Sigma is included.</p></article></div>
+    </section>
+
+    <section>
+      <h2>Physical and Math Objects</h2>
+      <div class="split">
+        <div><h3>Physical objects</h3><ul class="node-list">
+<li><code>PHYS_BRANCH_EXPORTER</code> <strong>Actual branch exporter</strong> <span class="badge small">open</span><p>The missing physical map that takes a solved stationary open-throat branch to K,M,B_n,Z_n,N_n and the frozen response packet.</p></li>
+</ul></div>
+        <div><h3>Math objects</h3><ul class="node-list">
+<li><code>MATH_WALL_MODAL_PDE</code> <strong>Wall modal PDE</strong> <span class="badge small">exact_if_S_eta_included</span><p>The l-mode equation supplied by the quadratic wall action, with l=0 scalar and l=2 grouped P2 specialization.</p></li>
+<li><code>MATH_PARENT_ACTION_PROMOTED</code> <strong>Promoted parent action with S_Sigma</strong> <span class="badge small">open_patch_required</span><p>Parent-complete formulation needed for autonomous moving-throat PDE claim.</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claims</h2>
+      <ul class="node-list">
+<li><code>CLAIM_PARENT_WALL_STATUS_SPLIT</code> <strong>Parent wall status split: force yes, autonomous PDE no</strong> <span class="badge small">strict_parent_fail_effective_wall_pass</span><p>The confinement-only parent supplies a wall force/source but no autonomous wall PDE; S_eta^(2) is a consistent linear effective closure and must be promoted to S_Sigma for parent-level dynamics.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Open Gates and Firewalls</h2>
+      <div class="split">
+        <div><h3>Open or conditional gates</h3><ul class="node-list">
+<li><code>MATH_PARENT_ACTION_PROMOTED</code> <strong>Promoted parent action with S_Sigma</strong> <span class="badge small">open_patch_required</span><p>Parent-complete formulation needed for autonomous moving-throat PDE claim.</p></li>
+<li><code>OPEN_PARENT_PROMOTION_S_SIGMA</code> <strong>Open gate: promote S_Sigma</strong> <span class="badge small">open_patch_required</span><p>Needed before saying moving throat is autonomous parent-level dynamical field.</p></li>
+<li><code>OPEN_NONLINEAR_S_SIGMA</code> <strong>Nonlinear throat action S_Sigma</strong> <span class="badge small">open_patch_required</span><p>Promote or derive nonlinear throat action whose quadratic limit is S_eta^(2).</p></li>
+<li><code>PHYS_BRANCH_EXPORTER</code> <strong>Actual branch exporter</strong> <span class="badge small">open</span><p>The missing physical map that takes a solved stationary open-throat branch to K,M,B_n,Z_n,N_n and the frozen response packet.</p></li>
+<li><code>OPEN_ACTUAL_BRANCH_EXPORTER</code> <strong>Open gate: actual moving-throat branch exporter</strong> <span class="badge small">open</span><p>Need target-blind physical branch that exports required response packets before comparison.</p></li>
+<li><code>OPEN_EXECUTABLE_BRANCH_SOLVER</code> <strong>Executable physical branch solver</strong> <span class="badge small">open</span><p>Numerically or analytically solve the actual open-throat branch and export frozen profile/response data.</p></li>
+</ul></div>
+        <div><h3>Firewalls</h3><p class="muted">No firewalls selected for this topic.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <h3>Published sources</h3><ul class="source-list">
+<li><strong>A Controlled Derivation of the Full Conservative Second Post-Newtonian Sector from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19450284">10.5281/zenodo.19450284</a><br><code>research/4d_2pn/paper/4d_2pn.tex</code></li>
+<li><strong>A Full Conservative Derivation of the Two-Body 3PN Sector from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19501724">10.5281/zenodo.19501724</a><br><code>research/4d_3pn/paper/4d_3pn.tex</code></li>
+<li><strong>Moving-Throat PDE Derivation Companion Archive Ledger</strong> <a href="https://doi.org/10.5281/zenodo.19699523">10.5281/zenodo.19699523</a><br><code>research/pde_ledger/paper/stages/stage_001.tex</code></li>
+</ul>
+<h3>Paper pending sources</h3><ul class="source-list pending">
+<li><span class="badge pending-badge">paper pending</span> <code>notes/5pn/5pn_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/lepton_mass_notes.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_pde_program_compact.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-01</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-25</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-26</code><p>No formal paper source is recorded yet.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Source Anchor Nodes</h2>
+      <details class="provenance-details">
+        <summary>Show graph source-anchor nodes (24)</summary>
+        <ul class="node-list">
+<li><code>BACKLINK_2PN_FULL</code> <strong>Full conservative 2PN / ADM assembly and first P0/P2 support layer</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Links exact-within-hierarchy 2PN ADM closure to the structural emergence of P0/P2 mouth/support and the still-open dynamic throat-response data.</p></li>
+<li><code>BACKLINK_3PN_FULL</code> <strong>Conservative 3PN closure and grouped real P2 payload</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Links 3PN conservative closure to grouped real P2 constitutive data and the later moving-throat grouped-bundle target.</p></li>
+<li><code>BACKLINK_5PN_FULL</code> <strong>5PN full-bundle surface, monomial/orbit packet, and actual-branch finish line</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 prefactor slope, support/source theorem, and actual PDE-selected branch conditions.</p></li>
+<li><code>BACKLINK_LEPTON_MASS</code> <strong>Reduced lepton mass ledger</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks reduced rest-energy partition, D/N support clock, and open absolute scale/branch data.</p></li>
+<li><code>BACKLINK_MOVING_THROAT_COMPACT</code> <strong>Moving-throat compact master and theorem-status firewall</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks, Packet A/B discipline, selected branch, and actual branch exporter.</p></li>
+<li><code>BACKLINK_PDE_AUDIT</code> <strong>PDE audit, parent-wall correction, branch packets, and physical ontology</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks audit corrections: parent wall action split, Maxwell gauge-localization patch, BdG and mixed kernels, grouped projectors, STF map, normalization ratio, branch exporter, physical picture, and material closure...</p></li>
+<li><code>FILE_MOVING_THROAT_COMPACT</code> <strong>moving_throat_pde_program_compact.md</strong> <span class="badge small">master_anchor</span><p>Compact master ledger for moving-throat PDE program and current active bottlenecks.</p></li>
+<li><code>FILE_MOVING_THROAT_OUTPUT</code> <strong>moving_throat_output_full.md</strong> <span class="badge small">long_derivation_anchor</span><p>Long moving-throat derivation output containing dynamic mixed-sector, barrier, and exporter extensions.</p></li>
+<li><code>SEC_5PN_SUMMARY_CLAIMS</code> <strong>2) What this package claims — and what it does not claim</strong> <span class="badge small">v06_section_anchor</span><p>5PN theorem status: reduced hierarchy safe; actual PDE-selected branch still open.</p></li>
+<li><code>SEC_PDE_ACTUAL_BRANCH_PACKETS</code> <strong>4. Actual branch packets</strong> <span class="badge small">v05_first_section_anchor</span><p>Packet A/B actual branch protocol.</p></li>
+<li><code>SEC_PDE_BDG_AUDIT</code> <strong>Stage V2-08 — BdG–Wall Schur Complement and Stability/Softening Audit</strong> <span class="badge small">v05_first_section_anchor</span><p>BdG-wall Schur complement and softening audit.</p></li>
+<li><code>SEC_PDE_BRANCH_FIXTURE</code> <strong>Stage V2-21 — Branch-Extraction Fixture and Observable Packet</strong> <span class="badge small">v05_first_section_anchor</span><p>Observable packet fixture and extraction formulas.</p></li>
+<li><code>SEC_PDE_BRANCH_FREEZE</code> <strong>Stage V2-16 — Branch-freeze / no-refit protocol</strong> <span class="badge small">v05_first_section_anchor</span><p>No-refit branch freeze protocol.</p></li>
+<li><code>SEC_PDE_EM_STATUS</code> <strong>Stage V2-30 - Electromagnetic Ontology and Status</strong> <span class="badge small">v05_first_section_anchor</span><p>EM ontology and recirculation/plumbing status.</p></li>
+<li><code>SEC_PDE_MATERIAL_GAP</code> <strong>Stage V2-29 - Superfluid Material Closure Gap</strong> <span class="badge small">v05_first_section_anchor</span><p>Material closure gap.</p></li>
+<li><code>SEC_PDE_MAXWELL_GAUGE</code> <strong>Stage V2-02 — Maxwell Gauge-Localization Audit</strong> <span class="badge small">v05_first_section_anchor</span><p>Gauge localization audit.</p></li>
+<li><code>SEC_PDE_MIXED_KERNEL</code> <strong>Stage V2-09 — Maxwell/mixed-sector kernel audit</strong> <span class="badge small">v05_first_section_anchor</span><p>Mixed kernel audit.</p></li>
+<li><code>SEC_PDE_NORM_RATIO</code> <strong>Stage V2-13 — Grouped Normalization Ratio Audit</strong> <span class="badge small">v05_first_section_anchor</span><p>P0/N0/D0 normalization audit.</p></li>
+<li><code>SEC_PDE_P2_PROJECTORS</code> <strong>8. Grouped real \(P_2\) isotropy</strong> <span class="badge small">v05_first_section_anchor</span><p>Grouped P2 projectors.</p></li>
+<li><code>SEC_PDE_PARENT_WALL_EXEC</code> <strong>Executive result</strong> <span class="badge small">v05_first_section_anchor</span><p>Parent wall status split.</p></li>
+<li><code>SEC_PDE_PHYSICAL_ONTOLOGY</code> <strong>Stage V2-28 - Physical Picture and Ontology Checklist</strong> <span class="badge small">v05_first_section_anchor</span><p>Physical picture and ontology checklist.</p></li>
+<li><code>SEC_PDE_STF_SOURCE</code> <strong>Stage V2-12 — STF Angular Source-Map Theorem</strong> <span class="badge small">v05_first_section_anchor</span><p>STF angular source-map theorem.</p></li>
+<li><code>SEC_PDE_WALL_VARIATION</code> <strong>3. Variation after adding the quadratic wall action</strong> <span class="badge small">v05_first_section_anchor</span><p>S_eta gives wall PDE.</p></li>
+<li><code>SEC_PDE_WEAK_FORM_EXPORTER</code> <strong>Stage V2-20 — Weak-form and numerical branch-extraction preparation</strong> <span class="badge small">v05_first_section_anchor</span><p>Weak-form branch extraction preparation.</p></li>
+</ul>
+      </details>
+    </section>
+
+    <section>
+      <h2>Related Topics</h2>
+      <p><a class="pill-link" href="../topics/response-packets.html">Branch response packets and target-blind export</a> <a class="pill-link" href="../topics/quadrupole-radiation.html">Quadrupole radiation and the 2.5PN normalization gate</a> <a class="pill-link" href="../topics/future-paper-worklist.html">Future paper worklist</a></p>
+    </section>
+  </article>
+</main>
+
+  <footer class="site-footer">
+    <p>Generated from atlas/topics.yaml and graph/fluid_universe_derivation_atlas_graph.yaml. Reader pages are additive commentary; published research papers remain the frozen references.</p>
+  </footer>
+</body>
+</html>

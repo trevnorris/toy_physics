@@ -1,0 +1,14 @@
+filters:
+  and:
+  - file.inFolder("nodes/status_firewalls")
+views:
+- type: table
+  name: Status firewalls
+  order:
+  - file.name
+  - status
+  - summary_short
+  - source_links
+  - source_files
+  - claim_ids
+  - open_gate_ids

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Branch response packets and target-blind export</title>
+  <link rel="stylesheet" href="../assets/reader.css">
+  <script defer src="../assets/reader.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Fluid Universe Reader</a>
+    <nav>
+      <a href="../index.html#topics">Topics</a>
+      <a href="../future-paper-worklist.html">Paper Backfill</a>
+      <a href="../data/topics.json">Data</a>
+    </nav>
+  </header>
+  
+<main>
+  <div class="breadcrumb"><a href="../index.html">Reader</a> / Branch response packets and target-blind export</div>
+  <article class="topic-page">
+    <header class="topic-header">
+      <p class="eyebrow">Moving Throat · generated 2026-04-27T20:20:12Z</p>
+      <h1>Branch response packets and target-blind export</h1>
+      <p class="lede">The model needs branch data exported before comparison to PN or anomaly targets; response packets must be target-blind and downstream of the physical branch.</p>
+      <p>
+        <span class="badge notes_backed_pending_papers">paper pending</span>
+        <span class="muted">10 selected graph nodes · 6 paper-pending source entries</span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Physical Picture</h2>
+      <p>A response packet is the branch&#x27;s exported data, not a physical object in its own right. That distinction keeps the comparison to target coefficients honest.</p>
+<p>Packet A carries conservative/outgoing normalization data; Packet B carries orbit-lock or weak-axisymmetric data where relevant.</p>
+    </section>
+
+    <section>
+      <h2>Mathematical Core</h2>
+      <p>The weak-form branch extractor is the planned interface between solved profiles and invariant packet data. It should output quantities such as K, M, B_n, Z_n, N_n, and grouped projectors without reading the target first.</p>
+<p>This page should be treated as the public checklist for future executable branch solvers.</p>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>Most details are pending formal publication. The generated backfill list records exactly which note sources need replacement or citation once papers exist.</p>
+    </section>
+
+    <section>
+      <h2>Key Equations</h2>
+      <div class="evidence-grid"><p class="muted">No equation anchors selected for this topic yet.</p></div>
+    </section>
+
+    <section>
+      <h2>Physical and Math Objects</h2>
+      <div class="split">
+        <div><h3>Physical objects</h3><ul class="node-list">
+<li><code>PHYS_TARGET_BLIND_BRANCH_SELECTION</code> <strong>Target-blind branch selection</strong> <span class="badge small">mandatory</span><p>The actual branch must be frozen before target evaluation; post-hoc fitting to GR/PN residuals is prohibited by the audit.</p></li>
+<li><code>PHYS_RESPONSE_READOUTS</code> <strong>Compressed response readouts</strong> <span class="badge small">not_physical_object</span><p>D0, C, P0, N2, N4 are low-order projected response readouts of the throat branch, not the throat itself.</p></li>
+</ul></div>
+        <div><h3>Math objects</h3><ul class="node-list">
+<li><code>MATH_WEAK_FORM_BRANCH_EXTRACTOR</code> <strong>Weak-form branch extractor</strong> <span class="badge small">prepared_open</span><p>Galerkin/weak-form extraction protocol for branch data K,M,B_n,Z_n,N_n, grouped projectors, residual packet, and stability gates.</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claims</h2>
+      <ul class="node-list">
+<li><code>CLAIM_BRANCH_EXPORTER_REQUIRED</code> <strong>Actual target-blind branch exporter required</strong> <span class="badge small">open_actual_branch</span><p>The program must produce target-blind branch data before comparison; executable fixtures and smoke tests do not close the theorem without a physical branch exporter.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Open Gates and Firewalls</h2>
+      <div class="split">
+        <div><h3>Open or conditional gates</h3><ul class="node-list">
+<li><code>CLAIM_BRANCH_EXPORTER_REQUIRED</code> <strong>Actual target-blind branch exporter required</strong> <span class="badge small">open_actual_branch</span><p>The program must produce target-blind branch data before comparison; executable fixtures and smoke tests do not close the theorem without a physical branch exporter.</p></li>
+<li><code>MATH_WEAK_FORM_BRANCH_EXTRACTOR</code> <strong>Weak-form branch extractor</strong> <span class="badge small">prepared_open</span><p>Galerkin/weak-form extraction protocol for branch data K,M,B_n,Z_n,N_n, grouped projectors, residual packet, and stability gates.</p></li>
+<li><code>TARGET_PACKET_A</code> <strong>Packet A: conservative/outgoing grouped target</strong> <span class="badge small">open_branch_realization</span><p>Actual branch must export K,M,B_n,Z_n,N_n satisfying one-pole and normalization conditions.</p></li>
+<li><code>TARGET_PACKET_B</code> <strong>Packet B: orbit-lock / weak-axisymmetric packet</strong> <span class="badge small">open_branch_realization</span><p>Actual branch must satisfy orbit-lock and weak-axisymmetric prefactor conditions where relevant.</p></li>
+<li><code>OPEN_N2_N4_MOMENT_SHAPE</code> <strong>Outgoing moment-shape control</strong> <span class="badge small">open</span><p>Derive independent outgoing N2 and N4 moment-shape controls on the same frozen branch.</p></li>
+</ul></div>
+        <div><h3>Firewalls</h3><ul class="node-list">
+<li><code>FIREWALL_READOUTS_NOT_THROAT</code> <strong>Keep response packets downstream of the physical throat, mouth, support, mixed, and outgoing branch data.</strong> <span class="badge small">active_v07</span><p>No. They are compressed response readouts produced by the physical mouth/interior/support/mixed branch.</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <h3>Paper pending sources</h3><ul class="source-list pending">
+<li><span class="badge pending-badge">paper pending</span> <code>notes/5pn/5pn_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_pde_program_compact.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-20</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-26</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-28</code><p>No formal paper source is recorded yet.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Source Anchor Nodes</h2>
+      <details class="provenance-details">
+        <summary>Show graph source-anchor nodes (14)</summary>
+        <ul class="node-list">
+<li><code>BACKLINK_MOVING_THROAT_COMPACT</code> <strong>Moving-throat compact master and theorem-status firewall</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks, Packet A/B discipline, selected branch, and actual branch exporter.</p></li>
+<li><code>BACKLINK_PDE_AUDIT</code> <strong>PDE audit, parent-wall correction, branch packets, and physical ontology</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks audit corrections: parent wall action split, Maxwell gauge-localization patch, BdG and mixed kernels, grouped projectors, STF map, normalization ratio, branch exporter, physical picture, and material closure...</p></li>
+<li><code>FILE_MOVING_THROAT_COMPACT</code> <strong>moving_throat_pde_program_compact.md</strong> <span class="badge small">master_anchor</span><p>Compact master ledger for moving-throat PDE program and current active bottlenecks.</p></li>
+<li><code>FILE_PDE_AUDIT</code> <strong>pde_audit_full.md</strong> <span class="badge small">audit_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>SEC_5PN_STAGE24_26_PLACEMENT</code> <strong>Continuation past Stage 26: Stages 27–29</strong> <span class="badge small">v05_first_section_anchor</span><p>Continuum-kernel extraction and placement map.</p></li>
+<li><code>SEC_5PN_SUMMARY_BOTTOM_LINE</code> <strong>10) Bottom-line interpretation</strong> <span class="badge small">v06_section_anchor</span><p>Final 5PN status: support/source safe in reduced hierarchy; actual branch placement remains the executable task.</p></li>
+<li><code>SEC_5PN_SUMMARY_SCOPE</code> <strong>0) What this package is doing</strong> <span class="badge small">v06_section_anchor</span><p>5PN summary compresses later moving-throat finish line into actual-branch conditions.</p></li>
+<li><code>SEC_MT_READING_RULES</code> <strong>1. Reading Rules and Status Firewall</strong> <span class="badge small">v05_first_section_anchor</span><p>Status firewall.</p></li>
+<li><code>SEC_MT_THEOREM_STATUS</code> <strong>1.3 Present theorem-status summary</strong> <span class="badge small">v05_first_section_anchor</span><p>Current bottleneck summary.</p></li>
+<li><code>SEC_PDE_ACTUAL_BRANCH_PACKETS</code> <strong>4. Actual branch packets</strong> <span class="badge small">v05_first_section_anchor</span><p>Packet A/B actual branch protocol.</p></li>
+<li><code>SEC_PDE_BRANCH_FIXTURE</code> <strong>Stage V2-21 — Branch-Extraction Fixture and Observable Packet</strong> <span class="badge small">v05_first_section_anchor</span><p>Observable packet fixture and extraction formulas.</p></li>
+<li><code>SEC_PDE_BRANCH_FREEZE</code> <strong>Stage V2-16 — Branch-freeze / no-refit protocol</strong> <span class="badge small">v05_first_section_anchor</span><p>No-refit branch freeze protocol.</p></li>
+<li><code>SEC_PDE_PHYSICAL_ONTOLOGY</code> <strong>Stage V2-28 - Physical Picture and Ontology Checklist</strong> <span class="badge small">v05_first_section_anchor</span><p>Physical picture and ontology checklist.</p></li>
+<li><code>SEC_PDE_WEAK_FORM_EXPORTER</code> <strong>Stage V2-20 — Weak-form and numerical branch-extraction preparation</strong> <span class="badge small">v05_first_section_anchor</span><p>Weak-form branch extraction preparation.</p></li>
+</ul>
+      </details>
+    </section>
+
+    <section>
+      <h2>Related Topics</h2>
+      <p><a class="pill-link" href="../topics/moving-throat-pde.html">Moving-throat PDE program</a> <a class="pill-link" href="../topics/quadrupole-radiation.html">Quadrupole radiation and the 2.5PN normalization gate</a> <a class="pill-link" href="../topics/five-pn-continuation.html">5PN continuation and full-bundle surface</a></p>
+    </section>
+  </article>
+</main>
+
+  <footer class="site-footer">
+    <p>Generated from atlas/topics.yaml and graph/fluid_universe_derivation_atlas_graph.yaml. Reader pages are additive commentary; published research papers remain the frozen references.</p>
+  </footer>
+</body>
+</html>

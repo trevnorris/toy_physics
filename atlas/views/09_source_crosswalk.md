@@ -1,0 +1,100 @@
+# Source Crosswalk
+
+<!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
+
+![[source_crosswalk.base]]
+
+- [[FILE_1PN_BRIDGE]] — `carry_forward_anchor` — Bridge paper fixing topology, optics, wake parameters, and protocol response slots.
+- [[FILE_1PN_FULL]] — `paper_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[FILE_2PN_FULL]] — `paper_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[FILE_2_5PN]] — `bridge_anchor` — 2.5PN audit narrowing radiation reaction to the orbital/worldtube STF quadrupole normalization.
+- [[FILE_3PN_FULL]] — `paper_anchor` — Full conservative 3PN assembly with grouped real P2 closure and geometry completion.
+- [[FILE_4D_PARENT]] — `core_anchor` — Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.
+- [[FILE_4PN_FULL]] — `paper_anchor` — 4PN local instantaneous assembly and tail interface back to the same quadrupole normalization.
+- [[FILE_5PN_FULL]] — `continuation_anchor` — 5PN continuation, full-bundle surface, weak-axisymmetric transport, monomial quotient/orbit-lock machinery.
+- [[FILE_ATOM_WORK]] — `reduced_sector_anchor` — Atomic/hydrogenic reduced-sector derivations from the 4D action and zero-mode Maxwell sector.
+- [[FILE_EM_FIELDS]] — `core_em_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[FILE_G2_OUTPUT]] — `anomaly_anchor` — Anomaly/g-2 output, staggered baseline, common quotient path, and outgoing-prefactor bridge.
+- [[FILE_LEPTON_MASS]] — `particle_mass_anchor` — Reduced isolated-lepton/electron mass ledger and D/N support branch notes.
+- [[FILE_LEPTON_WORK]] — `particle_identity_anchor` — Lepton/spin/mixed-sector reduced work and conditional same-charge corridor.
+- [[FILE_MOVING_THROAT_COMPACT]] — `master_anchor` — Compact master ledger for moving-throat PDE program and current active bottlenecks.
+- [[FILE_MOVING_THROAT_OUTPUT]] — `long_derivation_anchor` — Long moving-throat derivation output containing dynamic mixed-sector, barrier, and exporter extensions.
+- [[FILE_PDE_AUDIT]] — `audit_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[FILE_PLASMA]] — `plasma_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[SEC_1PN_BRIDGE_DICTIONARY]] — `v06_section_anchor` — Bridge paper carries corrected charge ontology, GNLS, geometry variables, and reduction language.
+- [[SEC_1PN_BRIDGE_DOWNSTREAM]] — `v06_section_anchor` — Bridge coefficients are carry-forward constraints for later PN and throat-response work.
+- [[SEC_1PN_BRIDGE_HEADLINE]] — `v06_section_anchor` — Bridge paper fixed coefficients: topology, optics, wake constants, wave-supported kinematics.
+- [[SEC_1PN_FIXED_SYMBOLIC]] — `v05_first_section_anchor` — Scope limits.
+- [[SEC_1PN_FULL_LAGRANGIAN]] — `v05_first_section_anchor` — Final EIH match.
+- [[SEC_1PN_HEADLINE]] — `v05_first_section_anchor` — Carry-forward constants.
+- [[SEC_1PN_TAXONOMY]] — `v05_first_section_anchor` — Claim status taxonomy.
+- [[SEC_25PN_CLAIMS]] — `v05_first_section_anchor` — 2.5PN claims/non-claims.
+- [[SEC_25PN_NORM_STACK]] — `v05_first_section_anchor` — Passive/outgoing normalization.
+- [[SEC_25PN_OPEN]] — `v05_first_section_anchor` — Remaining narrow gap.
+- [[SEC_25PN_QUAD_LEDGER]] — `v05_first_section_anchor` — Surviving quadrupole branch.
+- [[SEC_25PN_STF_MAP]] — `v05_first_section_anchor` — STF/source map.
+- [[SEC_2PN_CLAIMS]] — `v05_first_section_anchor` — 2PN claims and non-claims.
+- [[SEC_2PN_MAIN_THEOREM]] — `v05_first_section_anchor` — 2PN exact ADM match.
+- [[SEC_2PN_OPEN_DYNAMIC]] — `v05_first_section_anchor` — Open moving-throat dynamics.
+- [[SEC_2PN_P0P2_APPENDIX]] — `v05_first_section_anchor` — P0/P2 response structure.
+- [[SEC_3PN_GROUPED_MODULE]] — `v05_first_section_anchor` — Grouped real P2 module.
+- [[SEC_3PN_INTERFACE]] — `v05_first_section_anchor` — Interface to outgoing bridge.
+- [[SEC_3PN_MAIN_THEOREM]] — `v05_first_section_anchor` — 3PN exact assembly.
+- [[SEC_4D_CHARGE_BOOKKEEPING]] — `v05_first_section_anchor` — q-star/effective charge notation.
+- [[SEC_4D_EXACT_EQUATIONS]] — `v05_first_section_anchor` — Exact E-L and hydrodynamic identities.
+- [[SEC_4D_PARENT_ACTION]] — `v05_first_section_anchor` — Parent action and sectors.
+- [[SEC_4D_POISSON_HOOK]] — `v05_first_section_anchor` — Poisson hook from longitudinal identity.
+- [[SEC_4D_PROJECTED_CONTINUITY]] — `v05_first_section_anchor` — Exact leakage identity.
+- [[SEC_4D_PROJECTION_REDUCTION]] — `v05_first_section_anchor` — Projection vs reduction firewall.
+- [[SEC_4D_ZERO_MODE_MAXWELL]] — `v05_first_section_anchor` — Controlled EM zero-mode reduction.
+- [[SEC_4PN_FINAL_THEOREM]] — `v05_first_section_anchor` — Final 4PN theorem split.
+- [[SEC_4PN_NO_NEW_GAP]] — `v05_first_section_anchor` — 4PN inherits 2.5PN normalization.
+- [[SEC_4PN_TAIL_BRIDGE]] — `v05_first_section_anchor` — 4PN tail interface.
+- [[SEC_5PN_STAGE11_MONOMIALS]] — `v05_first_section_anchor` — Monomial invariants and similarity-orbit closure.
+- [[SEC_5PN_STAGE15_XI]] — `v05_first_section_anchor` — Xi_load bridge to prefactor slope.
+- [[SEC_5PN_STAGE18_SURFACE]] — `v05_first_section_anchor` — Exact isotropic full-bundle target surface.
+- [[SEC_5PN_STAGE20_EVEN_GATES]] — `v05_first_section_anchor` — Full even-gate solve with reinstated Z-sector.
+- [[SEC_5PN_STAGE24_26_PLACEMENT]] — `v05_first_section_anchor` — Continuum-kernel extraction and placement map.
+- [[SEC_5PN_STAGE31_SUPPORT]] — `v05_first_section_anchor` — Support-compensation theorem.
+- [[SEC_5PN_SUMMARY_BOTTOM_LINE]] — `v06_section_anchor` — Final 5PN status: support/source safe in reduced hierarchy; actual branch placement remains the executable ...
+- [[SEC_5PN_SUMMARY_CLAIMS]] — `v06_section_anchor` — 5PN theorem status: reduced hierarchy safe; actual PDE-selected branch still open.
+- [[SEC_5PN_SUMMARY_MONOMIALS]] — `v06_section_anchor` — Coherent quotient/monomial coordinates for weak-axisymmetric branch and g-2/anomaly extensions.
+- [[SEC_5PN_SUMMARY_SCOPE]] — `v06_section_anchor` — 5PN summary compresses later moving-throat finish line into actual-branch conditions.
+- [[SEC_ATOM_FOUNDATIONS]] — `v05_first_section_anchor` — Atomic/lepton foundations.
+- [[SEC_ATOM_HYDROGEN]] — `v05_first_section_anchor` — Hydrogenic reduction.
+- [[SEC_EM_BULK_EQUATIONS]] — `v05_first_section_anchor` — Localized Maxwell E-L.
+- [[SEC_EM_CHARGE_ONTOLOGY]] — `v05_first_section_anchor` — Charge sign and q_eff update.
+- [[SEC_EM_DEVIATIONS]] — `v05_first_section_anchor` — Mixed/KK deviations from 3+1 Maxwell.
+- [[SEC_EM_LOCALIZED_ACTION]] — `v05_first_section_anchor` — Maxwell action anchor.
+- [[SEC_EM_QEFF]] — `v05_first_section_anchor` — Thickness-controlled charge.
+- [[SEC_EM_ZERO_MODE]] — `v05_first_section_anchor` — Zero-mode Maxwell limit.
+- [[SEC_G2_PREF_SLOPE]] — `v05_first_section_anchor` — Xi1/P1/P0 bridge.
+- [[SEC_G2_QUOTIENT]] — `v05_first_section_anchor` — Quotient bridge.
+- [[SEC_LEPTON_MASS_THEOREM]] — `v05_first_section_anchor` — Mass partition theorem.
+- [[SEC_LEPTON_MIXED_ROTOR]] — `v05_first_section_anchor` — Mixed-sector Berry rotor.
+- [[SEC_LEPTON_VERDICT]] — `v05_first_section_anchor` — Conditional lepton verdict.
+- [[SEC_MT_MIXED_INVARIANTS]] — `v05_first_section_anchor` — Mixed fields and gauge invariance.
+- [[SEC_MT_PARENT_FIELDS]] — `v05_first_section_anchor` — Parent/moving-throat fields.
+- [[SEC_MT_PROJECTION_ZERO_MODE]] — `v05_first_section_anchor` — Projection and zero-mode hooks.
+- [[SEC_MT_READING_RULES]] — `v05_first_section_anchor` — Status firewall.
+- [[SEC_MT_THEOREM_STATUS]] — `v05_first_section_anchor` — Current bottleneck summary.
+- [[SEC_PDE_ACTUAL_BRANCH_PACKETS]] — `v05_first_section_anchor` — Packet A/B actual branch protocol.
+- [[SEC_PDE_BDG_AUDIT]] — `v05_first_section_anchor` — BdG-wall Schur complement and softening audit.
+- [[SEC_PDE_BRANCH_FIXTURE]] — `v05_first_section_anchor` — Observable packet fixture and extraction formulas.
+- [[SEC_PDE_BRANCH_FREEZE]] — `v05_first_section_anchor` — No-refit branch freeze protocol.
+- [[SEC_PDE_EM_STATUS]] — `v05_first_section_anchor` — EM ontology and recirculation/plumbing status.
+- [[SEC_PDE_MATERIAL_GAP]] — `v05_first_section_anchor` — Material closure gap.
+- [[SEC_PDE_MAXWELL_GAUGE]] — `v05_first_section_anchor` — Gauge localization audit.
+- [[SEC_PDE_MIXED_KERNEL]] — `v05_first_section_anchor` — Mixed kernel audit.
+- [[SEC_PDE_NORM_RATIO]] — `v05_first_section_anchor` — P0/N0/D0 normalization audit.
+- [[SEC_PDE_P2_PROJECTORS]] — `v05_first_section_anchor` — Grouped P2 projectors.
+- [[SEC_PDE_PARENT_WALL_EXEC]] — `v05_first_section_anchor` — Parent wall status split.
+- [[SEC_PDE_PHYSICAL_ONTOLOGY]] — `v05_first_section_anchor` — Physical picture and ontology checklist.
+- [[SEC_PDE_STF_SOURCE]] — `v05_first_section_anchor` — STF angular source-map theorem.
+- [[SEC_PDE_WALL_VARIATION]] — `v05_first_section_anchor` — S_eta gives wall PDE.
+- [[SEC_PDE_WEAK_FORM_EXPORTER]] — `v05_first_section_anchor` — Weak-form branch extraction preparation.
+- [[SEC_PLASMA_AW_ROLE]] — `v05_first_section_anchor` — A_w role in beyond-MHD channels.
+- [[SEC_PLASMA_LEAKAGE]] — `v05_first_section_anchor` — Open-system brane identities.
+- [[SEC_PLASMA_MIXED_FIELDS]] — `v05_first_section_anchor` — E_w and C_a definitions.
+- [[SEC_PLASMA_Z_VS_W]] — `v05_first_section_anchor` — Z controls action; W controls observation.
+- [[FILE_MOVING_THROAT_STAGES]] — `moving_throat_stage_anchor` — Alias file anchor added for v0.7 firewall references.

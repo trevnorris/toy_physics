@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foundations: superfluid medium, bulk arena, and throat defects</title>
+  <link rel="stylesheet" href="../assets/reader.css">
+  <script defer src="../assets/reader.js"></script>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Fluid Universe Reader</a>
+    <nav>
+      <a href="../index.html#topics">Topics</a>
+      <a href="../future-paper-worklist.html">Paper Backfill</a>
+      <a href="../data/topics.json">Data</a>
+    </nav>
+  </header>
+  
+<main>
+  <div class="breadcrumb"><a href="../index.html">Reader</a> / Foundations: superfluid medium, bulk arena, and throat defects</div>
+  <article class="topic-page">
+    <header class="topic-header">
+      <p class="eyebrow">Foundations · generated 2026-04-27T20:20:12Z</p>
+      <h1>Foundations: superfluid medium, bulk arena, and throat defects</h1>
+      <p class="lede">The model starts with a declared bulk superfluid arena, finite brane-bulk throat defects, and a parent action that fixes the fields used downstream.</p>
+      <p>
+        <span class="badge published_backed">paper-backed</span>
+        <span class="muted">6 selected graph nodes · 7 paper-pending source entries</span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Physical Picture</h2>
+      <p>The reader should begin with the physical objects rather than the PN outputs. The bulk is the ambient dynamical medium, the brane is the observed sector, and a particle is modeled as a finite throat-like defect connecting brane and bulk support structure.</p>
+<p>This topic separates what is declared in the parent model from what is later obtained by projection or reduction. That distinction matters because many later results are exact only after a specified closure or controlled limit.</p>
+    </section>
+
+    <section>
+      <h2>Mathematical Core</h2>
+      <p>The parent level uses a GNLS-type bulk sector together with localized electromagnetic degrees of freedom. The graph records this as the current declared parent action, not yet as the promoted moving-wall action.</p>
+<p>The important reader-level invariant is provenance. Every later claim should say which parent object, projection, closure, or branch computation it depends on.</p>
+    </section>
+
+    <section>
+      <h2>Status</h2>
+      <p>This page is backed by published 4D and ontology papers where available. Any moving-throat wall dynamics introduced later remains additive and must not be read back into the frozen parent paper unless a later paper explicitly adds it.</p>
+    </section>
+
+    <section>
+      <h2>Key Equations</h2>
+      <div class="evidence-grid"><p class="muted">No equation anchors selected for this topic yet.</p></div>
+    </section>
+
+    <section>
+      <h2>Physical and Math Objects</h2>
+      <div class="split">
+        <div><h3>Physical objects</h3><ul class="node-list">
+<li><code>PHYS_SUPERFLUID_MEDIUM</code> <strong>Bulk superfluid/GNLS medium</strong> <span class="badge small">exact_declared_parent</span><p>The substrate carrying density, current, EOS, sound speed, and support dynamics.</p></li>
+<li><code>PHYS_BULK_ARENA</code> <strong>4+1 bulk arena</strong> <span class="badge small">exact_declared_parent</span><p>Fundamental spacetime arena with brane coordinates plus transverse/bulk coordinate w.</p></li>
+<li><code>PHYS_BRANE_BULK_THROAT_DEFECT</code> <strong>Finite brane-bulk throat defect</strong> <span class="badge small">physical_ontology</span><p>Particle-like object is a finite-radius puncture/open conduit through the brane into a bulk throat, not a dimple or capped pocket.</p></li>
+<li><code>PHYS_INTERIOR_SUPPORT</code> <strong>Interior throat/support region</strong> <span class="badge small">physical_ontology</span><p>Axial/cavity support structure extending into w and carrying wall, BdG, Maxwell/mixed, and outgoing-port degrees of freedom.</p></li>
+</ul></div>
+        <div><h3>Math objects</h3><ul class="node-list">
+<li><code>MATH_PARENT_ACTION_CURRENT</code> <strong>Current parent action: GNLS + localized Maxwell</strong> <span class="badge small">exact_declared_parent_with_geometry_argument</span><p>Exact parent action currently includes matter and Maxwell sectors; geometry enters through V_conf(Sigma).</p></li>
+</ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Claims</h2>
+      <ul class="node-list">
+<li><code>CLAIM_PARENT_ACTION_CURRENT_EXACT</code> <strong>Current parent action and exact bulk equations</strong> <span class="badge small">exact_parent_current</span><p>The declared 4+1 parent stack supplies gauged GNLS matter, localized Maxwell, exact bulk current/continuity, and mixed-sector observables, with Sigma/R currently entering through confinement.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Open Gates and Firewalls</h2>
+      <div class="split">
+        <div><h3>Open or conditional gates</h3><p class="muted">No open gates selected for this topic.</p></div>
+        <div><h3>Firewalls</h3><p class="muted">No firewalls selected for this topic.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sources</h2>
+      <h3>Published sources</h3><ul class="source-list">
+<li><strong>4D Toy Model — Action, Projections, and Controlled Brane Limits</strong> <a href="https://doi.org/10.5281/zenodo.19449589">10.5281/zenodo.19449589</a><br><code>research/4d/paper/4d.tex</code></li>
+<li><strong>Deriving Key Post-Newtonian Coefficients from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19449653">10.5281/zenodo.19449653</a><br><code>research/4d_1pn_bridge/paper/4d_1pn_bridge.tex</code></li>
+<li><strong>A Controlled Derivation of the Full First Post-Newtonian Sector from the Unified 4D Toy Model</strong> <a href="https://doi.org/10.5281/zenodo.19450102">10.5281/zenodo.19450102</a><br><code>research/4d_1pn_full/paper/4d_1pn_full.tex</code></li>
+<li><strong>Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449834">10.5281/zenodo.19449834</a><br><code>research/4d_em_fields/paper/4d_em_fields.tex</code></li>
+<li><strong>Plasma Dynamics from the Unified 4D Toy Model: A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449935">10.5281/zenodo.19449935</a><br><code>research/4d_plasma/paper/4d_plasma.tex</code></li>
+</ul>
+<h3>Paper pending sources</h3><ul class="source-list pending">
+<li><span class="badge pending-badge">paper pending</span> <code>notes/atom_work.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/lepton_mass_notes.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_pde_program_compact.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-01</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/pde_audit_full.md:V2-28</code><p>No formal paper source is recorded yet.</p></li>
+</ul>
+    </section>
+
+    <section>
+      <h2>Source Anchor Nodes</h2>
+      <details class="provenance-details">
+        <summary>Show graph source-anchor nodes (12)</summary>
+        <ul class="node-list">
+<li><code>BACKLINK_1PN_BRIDGE</code> <strong>Bridge constants and coefficient-freezing layer</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects topology, optics n=5, added-mass, wake constants, and adiabatic breathing closure to the 1PN closure hierarchy.</p></li>
+<li><code>BACKLINK_1PN_FULL</code> <strong>Full conservative 1PN / EIH assembly</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks the full 1PN EIH equality, claim taxonomy, coefficient ledger, and fixed-vs-symbolic discipline.</p></li>
+<li><code>BACKLINK_4D_PARENT</code> <strong>Parent action, projection/reduction, charge ontology, and cold-start hooks</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Connects the exact parent GNLS/Maxwell action, projection map, leakage identity, Poisson hook, zero-mode Maxwell reduction, and corrected charge ontology to the atlas backbone.</p></li>
+<li><code>BACKLINK_LEPTON_MASS</code> <strong>Reduced lepton mass ledger</strong> <span class="badge small">v06_backlink_ready_not_inserted</span><p>Backlinks reduced rest-energy partition, D/N support clock, and open absolute scale/branch data.</p></li>
+<li><code>FILE_4D_PARENT</code> <strong>4d_summary.md / 4d.tex</strong> <span class="badge small">core_anchor</span><p>Parent action, projection/reduction distinction, exact continuity, longitudinal identity, charge ontology.</p></li>
+<li><code>FILE_EM_FIELDS</code> <strong>4d_em_fields_summary.md / 4d_em_fields.tex</strong> <span class="badge small">core_em_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>FILE_PLASMA</code> <strong>4d_plasma_summary.md / 4d_plasma.tex</strong> <span class="badge small">plasma_anchor</span><p>Alias file anchor added for v0.7 firewall references.</p></li>
+<li><code>SEC_4D_EXACT_EQUATIONS</code> <strong>5) Exact Euler–Lagrange equations and hydrodynamic identities</strong> <span class="badge small">v05_first_section_anchor</span><p>Exact E-L and hydrodynamic identities.</p></li>
+<li><code>SEC_4D_PARENT_ACTION</code> <strong>4) Full model specification (the action)</strong> <span class="badge small">v05_first_section_anchor</span><p>Parent action and sectors.</p></li>
+<li><code>SEC_EM_BULK_EQUATIONS</code> <strong>4.1 Bulk Maxwell equations (with localization + gauge fixing)</strong> <span class="badge small">v05_first_section_anchor</span><p>Localized Maxwell E-L.</p></li>
+<li><code>SEC_EM_LOCALIZED_ACTION</code> <strong>3) Full localized 4+1 Maxwell sector (the action)</strong> <span class="badge small">v05_first_section_anchor</span><p>Maxwell action anchor.</p></li>
+<li><code>SEC_MT_PARENT_FIELDS</code> <strong>2. Parent Theory and Exact Bulk Equations</strong> <span class="badge small">v05_first_section_anchor</span><p>Parent/moving-throat fields.</p></li>
+</ul>
+      </details>
+    </section>
+
+    <section>
+      <h2>Related Topics</h2>
+      <p><a class="pill-link" href="../topics/projection-open-brane.html">Projection versus reduction: why the brane is an open subsystem</a> <a class="pill-link" href="../topics/charge-em.html">Electromagnetism and charge bookkeeping</a> <a class="pill-link" href="../topics/moving-throat-pde.html">Moving-throat PDE program</a></p>
+    </section>
+  </article>
+</main>
+
+  <footer class="site-footer">
+    <p>Generated from atlas/topics.yaml and graph/fluid_universe_derivation_atlas_graph.yaml. Reader pages are additive commentary; published research papers remain the frozen references.</p>
+  </footer>
+</body>
+</html>

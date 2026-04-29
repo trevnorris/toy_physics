@@ -1161,17 +1161,112 @@ nodes:
   layer: claim_theorem
   type: claim
   status: open
-  meaning: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+  meaning: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective current coefficient Lambda_A.
   claim_class: open_gate
   source_files:
   - FILE_PDE_AUDIT
   - FILE_MOVING_THROAT_COMPACT
+  - FILE_CIRCULATION_PACKAGE
   equation_anchors:
   - EQ_MAXWELL_MIXED_TRANSFER
   physical_anchors:
   - PHYS_MIXED_EM_CORE
   - PHYS_MAGNETIC_VORTICAL_CIRCULATION
   - PHYS_OPEN_CONDUIT
+  outputs:
+  - OPEN_MIXED_RECIRCULATION
+- id: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  label: Fluxoid integer winding from single-valued psi
+  layer: claim_theorem
+  type: claim
+  status: exact_identity_audit
+  meaning: The circulation package derives Delta_theta in 2*pi*Z from psi(2*pi)=psi(0), verifies single-valued chi contributes zero loop winding, and preserves eta_Q as a separate electric branch label.
+  claim_class: topological_identity_audit
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - MATH_FLUXOID
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  outputs:
+  - MATH_FLUXOID
+  - FIREWALL_CHARGE_NOT_CIRCULATION
+- id: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  label: Fluxoid alone gives no universal 3D radial force sign
+  layer: claim_theorem
+  type: claim
+  status: exact_negative_within_3d_closure_analysis
+  meaning: The circulation package shows that n fixes holonomy but not the current/plumbing coefficient, orientation sign, mutual-inductance closure, or ensemble, so no universal attraction/repulsion sign follows from n1*n2 alone in 3D.
+  claim_class: negative_scope_theorem
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - MATH_FLUXOID
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  - PHYS_MIXED_EM_CORE
+  outputs:
+  - CLAIM_MIXED_RECIRCULATION_OPEN
+  - OPEN_MIXED_RECIRCULATION
+- id: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  label: Coaxial current-loop mutual inductance finite-mouth expansion
+  layer: derivation
+  type: symbolic_audit
+  status: exact_within_fixed_current_far_field_closure
+  meaning: Step 03 derives the reduced Neumann integral from 3-vector loop parameterizations and symbolically expands the coaxial fixed-current mutual inductance and force through the displayed finite-mouth terms.
+  math:
+  - M(d)=mu0*pi*R1^2*R2^2/(2*d^3)*(1-3*(R1^2+R2^2)/(2*d^2)+15*(R1^4+3*R1^2*R2^2+R2^4)/(8*d^4)+...)
+  - F_d=-3*mu0*pi*I1*I2*R1^2*R2^2/(2*d^4)*(1-5*(R1^2+R2^2)/(2*d^2)+35*(R1^4+3*R1^2*R2^2+R2^4)/(8*d^4)+...)
+  sources:
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance.md
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_sympy.py
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_output.txt
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+- id: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  label: Facing-mouth opposite local swirl attraction is closure-conditional
+  layer: claim_theorem
+  type: claim
+  status: exact_within_fixed_current_orientation_closure
+  meaning: With a fixed-current/current-like coaxial closure, a real tangential swirl circulation, and oriented area vectors, facing local normals give sigma1*sigma2=-1, so opposite local swirl labels attract; this is not a fluxoid-only theorem.
+  claim_class: conditional_orientation_sign_rule
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  outputs:
+  - CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+- id: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  label: Vector dipole orientation law and coaxial recovery
+  layer: derivation
+  type: symbolic_audit
+  status: exact_dipole_far_field_crosscheck
+  meaning: Step 05 builds m_A=pi*R_A^2*I_A*s_A as actual 3-vectors, computes m1.m2 and m_i.dhat from components, recovers the Step-03 coaxial leading force, and treats finite-size terms as asymptotic.
+  math:
+  - U=-mu0/(4*pi*d^3)*(3*(m1.dhat)*(m2.dhat)-m1.m2)
+  - F_d=-dU/dd
+  sources:
+  - notes/circulation/step_05_3d_orientation_and_finite_size.md
+  - notes/circulation/step_05_3d_orientation_and_finite_size_sympy.py
+  - notes/circulation/step_05_3d_orientation_and_finite_size_output.txt
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+- id: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  label: Mixed-sector circulation force sign remains Lambda_A-conditional
+  layer: claim_theorem
+  type: claim
+  status: conditional_open_plumbing
+  meaning: Step 06 verifies that N0 is a nonnegative square-over-square transfer magnitude and includes it in the force, but Lambda_A remains real/open; facing-mouth opposite local swirl attraction requires Lambda1*Lambda2*N0>0.
+  claim_class: conditional_mixed_plumbing_status
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - EQ_MAXWELL_MIXED_TRANSFER
+  physical_anchors:
+  - PHYS_MIXED_EM_CORE
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
   outputs:
   - OPEN_MIXED_RECIRCULATION
 - id: CLAIM_MIXED_SECTOR_MICROSCOPIC
@@ -2477,6 +2572,35 @@ nodes:
   source_kind: future_paper_note
   future_paper_needed: true
   resolution_note: Current canonical source is a note/ledger; replace with a maintained TeX paper when written.
+- id: FILE_CIRCULATION_PACKAGE
+  label: notes/circulation derivation package
+  layer: file_anchor
+  type: source_file
+  status: note_audit_package
+  meaning: Six-step circulation pair-force audit package covering fluxoid winding, no-universal-force status, coaxial current-loop closure, facing-mouth swirl labels, vector dipole orientation, and mixed-sector plumbing status.
+  files:
+  - notes/circulation/README.md
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
+  - notes/circulation/step_01_fluxoid_firewall_output.txt
+  - notes/circulation/step_02_no_universal_force.md
+  - notes/circulation/step_02_no_universal_force_sympy.py
+  - notes/circulation/step_02_no_universal_force_output.txt
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance.md
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_sympy.py
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_output.txt
+  - notes/circulation/step_04_facing_mouth_swirl_sign.md
+  - notes/circulation/step_04_facing_mouth_swirl_sign_sympy.py
+  - notes/circulation/step_04_facing_mouth_swirl_sign_output.txt
+  - notes/circulation/step_05_3d_orientation_and_finite_size.md
+  - notes/circulation/step_05_3d_orientation_and_finite_size_sympy.py
+  - notes/circulation/step_05_3d_orientation_and_finite_size_output.txt
+  - notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_output.txt
+  source_kind: future_paper_note
+  future_paper_needed: true
+  resolution_note: Current canonical source is a note/audit package; promote only status-disciplined claims into a maintained paper.
 - id: FILE_PLASMA
   label: 4d_plasma_summary.md / 4d_plasma.tex
   layer: file_anchor
@@ -2589,6 +2713,8 @@ nodes:
   sources:
   - research/4d/paper/4d.tex
   - notes/pde_audit_full.md:V2-30
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
   legacy_sources:
   - 4d_summary.md
   - pde_audit_full.md:V2-30
@@ -3603,9 +3729,12 @@ nodes:
   - J^M source
   - A_w/F_muw/J^w transport
   - fluxoid
+  - Lambda_A sign/plumbing map
   sources:
   - notes/pde_audit_full.md:V2-30
   - notes/lepton_work.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
   legacy_sources:
   - pde_audit_full.md:V2-30
   - lepton_work.md
@@ -3864,6 +3993,8 @@ nodes:
   sources:
   - research/4d/paper/4d.tex
   - notes/pde_audit_full.md:V2-30
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
   legacy_sources:
   - 4d_summary.md
   - pde_audit_full.md:V2-30
@@ -7093,6 +7224,81 @@ edges:
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: open
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  target: MATH_FLUXOID
+  relation: SUPPORTS
+  note: Circulation package derives integer phase winding from single-valued psi and supports the fluxoid/circulation law.
+  status: exact_identity_audit
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  target: FIREWALL_CHARGE_NOT_CIRCULATION
+  relation: REINFORCES_FIREWALL
+  note: Audit keeps eta_Q/q_* bookkeeping separate from the circulation integer.
+  status: exact_identity_audit
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  target: MATH_FLUXOID
+  relation: LIMITS_SCOPE_OF
+  note: Fluxoid holonomy alone is not a 3D radial-force law.
+  status: exact_negative_within_3d_closure_analysis
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  target: CLAIM_MIXED_RECIRCULATION_OPEN
+  relation: PRESERVES_OPEN_GATE
+  note: Current/plumbing coefficients and mixed-sector transport remain external closure data.
+  status: exact_negative_within_3d_closure_analysis
+- source: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: SUPPLIES_CLOSURE_EXAMPLE
+  note: Fixed-current loop law is a named closure, not a consequence of fluxoid alone.
+  status: exact_within_fixed_current_far_field_closure
+- source: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: SUPPLIES_FIXED_CURRENT_FORCE
+  note: Facing-mouth sign table imports the fixed-current coaxial force sign.
+  status: exact_within_fixed_current_far_field_closure
+- source: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  target: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  relation: RECOVERS_COAXIAL_LIMIT
+  note: Vector dipole audit recovers the Step-03 leading coaxial force.
+  status: exact_dipole_far_field_crosscheck
+- source: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: SUPPLIES_ORIENTATION_LAW
+  note: 3D vector dipole orientation law supplies the geometric sign rule.
+  status: exact_dipole_far_field_crosscheck
+- source: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  target: PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  relation: MAPS_LOCAL_LABEL_TO_GLOBAL_AXIS
+  note: Oriented loop area maps local swirl labels to the global current/dipole axis.
+  status: exact_within_fixed_current_orientation_closure
+- source: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: RESPECTS_SCOPE_LIMIT
+  note: Facing-mouth attraction statement remains closure-conditional and does not override the no-universal-force result.
+  status: exact_within_fixed_current_orientation_closure
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: IMPORTS_SIGN_TABLE_CONDITIONALLY
+  note: Mixed-sector statement imports the facing-mouth sign rule only after a current-like plumbing map is assumed.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: CLAIM_MIXED_RECIRCULATION_OPEN
+  relation: PRESERVES_OPEN_GATE
+  note: Lambda_A sign remains an open plumbing-law datum.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: OPEN_MIXED_RECIRCULATION
+  relation: FEEDS_OR_STATUS_OF
+  note: Circulation package refines the open gate to include Lambda_A sign and N0 magnitude status.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: PHYS_MIXED_EM_CORE
+  relation: DEPENDS_ON
+  note: Plumbing condition lives in the mixed brane-bulk EM channels.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: MATH_FLUXOID
+  relation: IMPORTS
+  note: Effective current map starts from the fluxoid/circulation integer but does not derive from it alone.
+  status: conditional_open_plumbing
 - source: CLAIM_MIXED_SECTOR_MICROSCOPIC
   target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
   relation: ENABLES
@@ -8553,6 +8759,36 @@ edges:
   relation: DOCUMENTS
   note: File anchor documents this node.
   status: source_anchor
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 01 anchors this quantized phase-winding audit.
+  status: exact_identity_audit
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 02 anchors the no-universal-force scope result.
+  status: exact_negative_within_3d_closure_analysis
+- source: FILE_CIRCULATION_PACKAGE
+  target: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  relation: DOCUMENTS
+  note: Circulation package Step 03 documents the fixed-current Neumann loop derivation.
+  status: exact_within_fixed_current_far_field_closure
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 04 anchors the facing-mouth local-swirl sign rule.
+  status: exact_within_fixed_current_orientation_closure
+- source: FILE_CIRCULATION_PACKAGE
+  target: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  relation: DOCUMENTS
+  note: Circulation package Step 05 documents the vector dipole orientation cross-check.
+  status: exact_dipole_far_field_crosscheck
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 06 anchors the Lambda_A-conditional mixed plumbing status.
+  status: conditional_open_plumbing
 - source: FILE_PLASMA
   target: CLAIM_MIXED_SECTOR_MICROSCOPIC
   relation: OWNS_OR_ANCHORS_CLAIM
@@ -13463,8 +13699,8 @@ edges:
 - source: ATLAS_CODEX_BACKLINK_SWEEP_V08
   target: STATUS_FIREWALL_REGISTER_V07
   relation: PRESERVES
-node_count: 373
-edge_count: 1325
+node_count: 380
+edge_count: 1346
 v06_additions:
   added_backlink_blocks: 16
   added_section_anchors: 7
@@ -13629,6 +13865,11 @@ source_resolution:
   source_kind: future_paper_note
   future_paper_needed: true
   note: g-2 derivation ledger still needs a paper.
+- legacy_ref: notes/circulation/
+  canonical_ref: notes/circulation/README.md
+  source_kind: future_paper_note
+  future_paper_needed: true
+  note: Six-step circulation pair-force audit package; keep conditional status until a maintained paper section exists.
 - legacy_ref: derived_from_current_task
   canonical_ref: derived_from_current_task
   source_kind: synthetic_provenance

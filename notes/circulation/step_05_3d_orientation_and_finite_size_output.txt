@@ -1,0 +1,34 @@
+STEP 5: 3D VECTOR DIPOLE LAW AND FINITE-SIZE EXPANSION
+Dipoles are m_A = pi R_A^2 I_A s_A.
+Fixed-current potential:
+U = -mu0/(4*pi*d^3) * [3(m1.dhat)(m2.dhat) - m1.m2]
+F_d = -dU/dd, with F_d < 0 attraction
+
+coaxial aligned             :
+  orientation numerator = 2*pi**2*I1*I2*R1**2*R2**2
+  U = -pi*I1*I2*R1**2*R2**2*mu0/(2*d**3)
+  F_d = -3*pi*I1*I2*R1**2*R2**2*mu0/(2*d**4)  -> attraction
+coaxial anti-aligned        :
+  orientation numerator = -2*pi**2*I1*I2*R1**2*R2**2
+  U = pi*I1*I2*R1**2*R2**2*mu0/(2*d**3)
+  F_d = 3*pi*I1*I2*R1**2*R2**2*mu0/(2*d**4)  -> repulsion
+side-by-side parallel       :
+  orientation numerator = -pi**2*I1*I2*R1**2*R2**2
+  U = pi*I1*I2*R1**2*R2**2*mu0/(4*d**3)
+  F_d = 3*pi*I1*I2*R1**2*R2**2*mu0/(4*d**4)  -> repulsion
+side-by-side anti-parallel  :
+  orientation numerator = pi**2*I1*I2*R1**2*R2**2
+  U = -pi*I1*I2*R1**2*R2**2*mu0/(4*d**3)
+  F_d = -3*pi*I1*I2*R1**2*R2**2*mu0/(4*d**4)  -> attraction
+one axial one transverse    :
+  orientation numerator = 0
+  U = 0
+  F_d = 0  -> zero at leading dipole order
+
+Coaxial aligned force exactly matches Step-3 leading term:
+F_leading = -3*pi*I1*I2*R1**2*R2**2*mu0/(2*d**4)
+
+Coaxial finite-size force ratio through the next asymptotic term:
+F/F_leading = (35*R1**4 + 105*R1**2*R2**2 - 20*R1**2*d**2 + 35*R2**4 - 20*R2**2*d**2 + 8*d**4)/(8*d**4)
+small far-field parameter = (R1**2 + R2**2)/d**2
+This is an asymptotic d >> R_A check, not a near-contact convergence proof.

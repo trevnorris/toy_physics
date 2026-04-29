@@ -1,0 +1,19 @@
+STEP 3: FIXED-CURRENT CURRENT-LOOP CLOSURE
+Double-line Neumann pieces:
+dl1.dt dot dl2.dt = R1*R2*cos(t1 - t2)
+|r1-r2|^2 = R1**2 - 2*R1*R2*cos(t1 - t2) + R2**2 + d**2
+After u=t1-t2, kernel = cos(u)/sqrt(R1**2 - 2*R1*R2*cos(u) + R2**2 + d**2)
+Translation symmetry turns double integral into 2*pi times the u integral.
+
+Neumann mutual inductance expansion for coaxial loops:
+M(d) = pi*R1**2*R2**2*mu0*(15*R1**4 + 45*R1**2*R2**2 - 12*R1**2*d**2 + 15*R2**4 - 12*R2**2*d**2 + 8*d**4)/(16*d**7)
+
+Fixed-current mechanical potential:
+U_I(d) = -pi*I1*I2*R1**2*R2**2*mu0*(15*R1**4 + 45*R1**2*R2**2 - 12*R1**2*d**2 + 15*R2**4 - 12*R2**2*d**2 + 8*d**4)/(16*d**7)
+
+Radial force F_d = -dU/dd, with F_d < 0 attraction:
+F_d = -3*pi*I1*I2*R1**2*R2**2*mu0*(35*R1**4 + 105*R1**2*R2**2 - 20*R1**2*d**2 + 35*R2**4 - 20*R2**2*d**2 + 8*d**4)/(16*d**8)
+
+Leading force = -3*pi*I1*I2*R1**2*R2**2*mu0/(2*d**4)
+Finite-size force ratio = (35*R1**4 + 105*R1**2*R2**2 - 20*R1**2*d**2 + 35*R2**4 - 20*R2**2*d**2 + 8*d**4)/(8*d**4)
+Verdict: for d >> R_A, I1*I2 > 0 attracts; I1*I2 < 0 repels.

@@ -1,0 +1,18 @@
+STEP 1: FLUXOID LOOP AUDIT
+Gauge-invariant loop integrand P_i = dtheta - q_*/hbar A_i
+Gauge residual P_i' - P_i = 0
+
+Single-valued chi(t) = chi0 + chi_c*cos(t) + chi_s*sin(t)
+Integral d chi around loop = 0
+psi single-valued equations: cos(Delta_theta)=1 and sin(Delta_theta)=0
+Allowed Delta_theta set = ImageSet(Lambda(_n, 2*_n*pi), Integers)
+Pure-gauge loop integrand after cancellation P_t = Delta_theta/(2*pi)
+Fluxoid integral before quantization = Delta_theta
+Fluxoid integral after Delta_theta=2*pi*n = 2*pi*n
+Hydrodynamic circulation Gamma_n = 2*pi*hbar*n/m
+kappa = 2*pi*hbar/m
+
+Large/non-single-valued chi_w t winding would be 2*pi*chi_w
+q_* = e_star*eta_Q
+q_eff bookkeeping label = e_star*eta_Q/sqrt(Z_int)
+Verdict: single-valued psi gives integer phase winding; single-valued chi adds no winding.

@@ -1,0 +1,22 @@
+STEP 4: LOCAL SWIRL VERSUS GLOBAL CURRENT SIGN
+Positive local swirl about +z:
+  circulation integral ∮v_phi.dl per unit label = Gamma0
+  area/current-axis vector = Matrix([[0, 0, pi*R**2]])
+  sigma = area.dhat/(pi R^2) = 1
+Positive local swirl about -z:
+  circulation integral ∮v_phi.dl per unit label = Gamma0
+  area/current-axis vector = Matrix([[0, 0, -pi*R**2]])
+  sigma = area.dhat/(pi R^2) = -1
+
+Derived leading force: F_d = -K*n1*n2*sigma1*sigma2/d**4
+F_d < 0 means attraction.
+
+Parallel-local-normal geometry:
+  same local n:       -K/d**4   attraction
+  opposite local n:   K/d**4   repulsion
+
+Facing-mouth geometry (local normals opposite):
+  same local n:       K/d**4   repulsion
+  opposite local n:   -K/d**4   attraction
+
+Verdict: the facing-mouth sigma product follows from oriented loop geometry.

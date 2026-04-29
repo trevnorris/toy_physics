@@ -1,0 +1,28 @@
+STEP 2: NO UNIVERSAL RADIAL FORCE FROM FLUXOID ALONE
+Closure currents:
+I1 = alpha1*n1*sigma1
+I2 = alpha2*n2*sigma2
+M(d) = B/d**3
+Derived fixed-current potential U_I = -B*alpha1*alpha2*n1*n2*sigma1*sigma2/d**3
+Derived force F_d = -dU_I/dd = -3*B*alpha1*alpha2*n1*n2*sigma1*sigma2/d**4
+F_d < 0 means attraction.
+
+Same n1=n2=+1 attracts with alpha1*alpha2>0: -3*B/d**4
+Same n1=n2=+1 repels with alpha1*alpha2<0: 3*B/d**4
+
+Inductance matrix L = Matrix([[L1, M], [M, L2]])
+Field energy at fixed current coordinates E_B = I1*(I1*L1 + I2*M)/2 + I2*(I1*M + I2*L2)/2
+Fluxes Phi = L I = Matrix([[I1*L1 + I2*M], [I1*M + I2*L2]])
+Legendre fixed-current potential G_I = E_B - I.Phi = -I1*(I1*L1 + I2*M)/2 - I2*(I1*M + I2*L2)/2
+cross coefficient in E_B = M
+cross coefficient in G_I = -M
+Force from G_I with M(d)=B/d^3 = -3*B*I1*I2/d**4
+Naively using E_B as a potential would give 3*B*I1*I2/d**4
+
+Fixed-flux energy U_Phi = 1/2 Phi^T L^-1 Phi = (Phi1*(L2*Phi1 - M*Phi2) + Phi2*(L1*Phi2 - M*Phi1))/(2*(L1*L2 - M**2))
+weak-coupling dU_Phi/dM at M=0 = -Phi1*Phi2/(L1*L2)
+weak-coupling fixed-flux force = -3*B*Phi1*Phi2/(L1*L2*d**4)
+exact fixed-flux force with M(d)=B/d^3 = -3*B*d**2*(-B*Phi1 + L1*Phi2*d**3)*(-B*Phi2 + L2*Phi1*d**3)/(-B**2 + L1*L2*d**6)**2
+fixed-flux force series through B^2 = B**2*(3*Phi2**2/(L1*L2**2*d**7) + 3*Phi1**2/(L1**2*L2*d**7)) - 3*B*Phi1*Phi2/(L1*L2*d**4)
+At weak coupling the fixed-flux leading sign matches fixed current after I ~= L^-1 Phi.
+Verdict: fluxoid n fixes holonomy; force sign requires a closure and stated ensemble.

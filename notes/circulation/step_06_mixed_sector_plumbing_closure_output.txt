@@ -1,0 +1,18 @@
+STEP 6: MIXED-SECTOR PLUMBING CLOSURE
+Stage-4-style static transfer factor:
+N_0 = (Omega_U**2*g_W + R_mix*g_U)**2/((Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+Numerator base/exponent = Omega_U**2*g_W + R_mix*g_U 2
+Denominator base/exponent = (Omega_U*Omega_W - R_mix)*(Omega_U*Omega_W + R_mix) 2
+N_0 square base = (Omega_U**2*g_W + R_mix*g_U)/(Omega_U**2*Omega_W**2 - R_mix**2)
+Symbolic square certificate: tau real => tau^2 nonnegative is True
+For real nonzero Delta, N_0 is nonnegative.
+
+Minimal mixed/current closure force with transfer magnitude included:
+F_d = -K*Lambda1*Lambda2*n1*n2*sigma1*sigma2*(Omega_U**2*g_W + R_mix*g_U)**2/(d**4*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+
+Facing-mouth identical passive branch:
+  opposite local swirl: F_d = -K*Lambda1*Lambda2*(Omega_U**2*g_W + R_mix*g_U)**2/(d**4*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+  same local swirl:     F_d = K*Lambda1*Lambda2*(Omega_U**2*g_W + R_mix*g_U)**2/(d**4*(Omega_U*Omega_W - R_mix)**2*(Omega_U*Omega_W + R_mix)**2)
+
+Attraction for opposite local swirl requires Lambda1*Lambda2*N_0 > 0.
+Verdict: Lambda_A signs remain a plumbing-law assumption, not a SymPy assumption.

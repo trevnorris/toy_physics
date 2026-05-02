@@ -167,6 +167,61 @@ def _stop_or_none(stop: int):
     return None if stop == 0 else stop
 
 
+def save_projected_snapshot(
+    path,
+    *,
+    rho,
+    mx,
+    my,
+    mz,
+    W,
+    dt_rho,
+    N,
+    L,
+    dx,
+    g,
+    Mdot,
+    lam,
+    rho0,
+    P0,
+    n,
+    a,
+    t_sim,
+    step,
+):
+    """Write a projected 3D monitor snapshot for cfd_snapshot_adapters.py."""
+    sl = slice(g, -g)
+    x = (np.arange(N, dtype=np.float64) + 0.5) * dx
+    W_cpu = cp.asnumpy(W).astype(np.float64, copy=False)
+    V_domain = float(L) ** 3
+    S_rho = (-float(Mdot)) * W_cpu + (float(lam) * float(Mdot) / V_domain)
+
+    payload = {
+        "rho": cp.asnumpy(rho[sl, sl, sl]).astype(np.float32, copy=False),
+        "mx": cp.asnumpy(mx[sl, sl, sl]).astype(np.float32, copy=False),
+        "my": cp.asnumpy(my[sl, sl, sl]).astype(np.float32, copy=False),
+        "mz": cp.asnumpy(mz[sl, sl, sl]).astype(np.float32, copy=False),
+        "S_rho": S_rho.astype(np.float32, copy=False),
+        "W": W_cpu.astype(np.float32, copy=False),
+        "x": x,
+        "y": x.copy(),
+        "z": x.copy(),
+        "Mdot": np.array(float(Mdot), dtype=np.float64),
+        "lambda_bulk": np.array(float(lam), dtype=np.float64),
+        "V_domain": np.array(V_domain, dtype=np.float64),
+        "rho0": np.array(float(rho0), dtype=np.float64),
+        "P0": np.array(float(P0), dtype=np.float64),
+        "n": np.array(float(n), dtype=np.float64),
+        "a": np.array(float(a), dtype=np.float64),
+        "dx": np.array(float(dx), dtype=np.float64),
+        "t": np.array(float(t_sim), dtype=np.float64),
+        "step": np.array(int(step), dtype=np.int64),
+    }
+    if dt_rho is not None:
+        payload["dt_rho"] = cp.asnumpy(dt_rho).astype(np.float32, copy=False)
+    np.savez_compressed(path, **payload)
+
+
 # -----------------------------
 # Rusanov flux divergence
 # -----------------------------
@@ -403,6 +458,7 @@ def main():
     ap.add_argument("--fit_rmin_factor", type=float, default=6.0, help="Fit window r_min = factor*a.")
     ap.add_argument("--fit_rmax_frac", type=float, default=0.35, help="Fit window r_max = frac*L.")
     ap.add_argument("--nu_drag", type=float, default=0.0, help="Linear momentum drag rate (1/time).")
+    ap.add_argument("--snapshot_out", default=None, help="Write final projected 3D state as an NPZ for the runtime monitor.")
     args = ap.parse_args()
 
     N = args.N
@@ -676,6 +732,35 @@ def main():
                 "wall_s": float(time.time() - wall0),
             }
             print(json.dumps(out))
+
+    if args.snapshot_out:
+        enforce_reservoir_bc(rho, mx, my, mz, rho0=rho0, g=g)
+        rho = cp.maximum(rho, rho_floor)
+        dt_rho_snapshot = None
+        if steps > 0:
+            dt_rho_snapshot, _, _, _ = rhs(rho, mx, my, mz, t_sim)
+        save_projected_snapshot(
+            args.snapshot_out,
+            rho=rho,
+            mx=mx,
+            my=my,
+            mz=mz,
+            W=W,
+            dt_rho=dt_rho_snapshot,
+            N=N,
+            L=L,
+            dx=dx,
+            g=g,
+            Mdot=Mdot if steps > 0 else 0.0,
+            lam=lam,
+            rho0=rho0,
+            P0=P0,
+            n=n,
+            a=a,
+            t_sim=t_sim,
+            step=max(steps - 1, 0),
+        )
+        print(json.dumps({"event": "snapshot", "path": args.snapshot_out, "step": int(max(steps - 1, 0)), "t": float(t_sim)}))
 
     print(json.dumps({"event": "done", "wall_s": float(time.time() - wall0), "t_final": float(t_sim)}))
 

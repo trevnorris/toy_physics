@@ -136,6 +136,16 @@ def main() -> None:
         "primitive transported-target compatibility shift",
         dCompat_transport - (-6 * S * z2 / T + 3 * S**2 * z4 / T**2),
     )
+    z0_probe = sp.symbols("z0_probe")
+    K_norm_probe = B0 + Z0slot + ell * z0_probe + (N0base + ell * n0) / Ptarget
+    K_one_probe = B0 + Z0slot + ell * z0_probe + 3 * (S + ell * z2) ** 2 / (T + ell * z4)
+    K_norm_transport_probe = B0 + Z0slot + ell * z0_probe + D0target
+    assert_zero("primitive fixed-target compatibility z0 cancellation", sp.diff(K_norm_probe - K_one_probe, z0_probe))
+    assert_zero(
+        "primitive transported-target compatibility z0 cancellation",
+        sp.diff(K_norm_transport_probe - K_one_probe, z0_probe),
+    )
+    assert_nonzero("primitive normalization K surface still carries z0", sp.diff(K_norm_probe, z0_probe))
     assert_nonzero(
         "mutated primitive compatibility transport should fail",
         dCompat_direct - (n0 / Ptarget - 6 * S * z2 / T - 3 * S**2 * z4 / T**2),
@@ -196,6 +206,8 @@ def main() -> None:
         "Because delta Compat depends on z2, z4, and n0 only, the primitive contributors that matter here are\n"
         "  q1, s1, h1, d1, p1,\n"
         "while the Gw slope g1 first appears only through n2 and n4, i.e. in the constant-prefactor transport.\n"
+        "The script also checks that z0 cancels from both the fixed-target and transported-target compatibility shifts,\n"
+        "even though the normalization K surface still carries z0 before compatibility elimination.\n"
     )
 
     lines.append(banner("6) Practical reading"))

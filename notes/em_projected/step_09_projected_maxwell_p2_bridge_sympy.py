@@ -153,6 +153,9 @@ def main() -> None:
         "transported-target compatibility first variation",
         d_compat_transport - (-6 * S * z2 / T + 3 * S**2 * z4 / T**2),
     )
+    assert_zero("fixed-target compatibility z0 cancellation", sp.diff(d_compat_direct, z0))
+    assert_zero("transported-target compatibility z0 cancellation", sp.diff(d_compat_transport, z0))
+    assert_nonzero("normalization K surface still carries z0", sp.diff(dK_norm, z0))
     assert_nonzero(
         "mutated compatibility transport should fail",
         d_compat_direct - (n0 / Ptarget - 6 * S * z2 / T - 3 * S**2 * z4 / T**2),
@@ -253,6 +256,7 @@ def main() -> None:
         "  z0 drops out of delta Compat after exact elimination of K and D0.\n"
         "So a projected-Maxwell shift of the static conservative denominator D0 changes P0 directly,\n"
         "but does NOT move the isotropic compatibility equation between one-pole and normalization.\n"
+        "The script explicitly checks this both for a fixed target and for the transported target.\n"
     )
 
     lines.append(banner("4) Constant-prefactor branch: exact linearized transport"))

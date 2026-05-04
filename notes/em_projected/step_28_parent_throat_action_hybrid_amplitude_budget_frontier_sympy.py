@@ -92,9 +92,9 @@ def main() -> None:
 
     assert_close("best Q at sigma<=4", best_q_by_budget[0][1].q_iso, 0.26705543084121786, 1e-9)
     assert_close("best Q at sigma<=1999", best_q_by_budget[-1][1].q_iso, 0.26705543084121786, 1e-9)
-    assert_close("best mhat q<=1 at sigma<=4", best_mhat_q1_by_budget[0][1].mhat0_req, 87.03141955826572, 1e-6)
-    assert_close("best mhat q<=1 at sigma<=19", best_mhat_q1_by_budget[1][1].mhat0_req, 43.51570977913286, 1e-6)
-    assert_close("best mhat q<=1 at sigma<=1999", best_mhat_q1_by_budget[-1][1].mhat0_req, 4.351570977913287, 1e-6)
+    assert_close("best mhat q<=1 at sigma<=4", best_mhat_q1_by_budget[0][1].mhat0_req, 87.03141955817699, 1e-6)
+    assert_close("best mhat q<=1 at sigma<=19", best_mhat_q1_by_budget[1][1].mhat0_req, 43.515709779088496, 1e-6)
+    assert_close("best mhat q<=1 at sigma<=1999", best_mhat_q1_by_budget[-1][1].mhat0_req, 4.3515709779088505, 1e-6)
     assert_close("best q<=1 qiso at sigma<=4", best_mhat_q1_by_budget[0][1].q_iso, 0.4513189656743675, 1e-9)
     assert_close("best q<=1 qiso at sigma<=1999", best_mhat_q1_by_budget[-1][1].q_iso, 0.618690285150578, 1e-9)
 

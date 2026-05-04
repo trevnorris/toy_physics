@@ -75,12 +75,25 @@ def main() -> None:
         -Afun * etaf * sp.diff(etaf, w_ibp) - (sp.diff(-quad_boundary_density, w_ibp) + quad_bulk_density),
     )
     Bfun_concrete = (1 + w_ibp**2) * sp.exp(-w_ibp**2)
+    Bfun_lorentz = sp.exp(-w_ibp**2)
+    Bfun_lorentz_endpoint = w_ibp * sp.sqrt(1 + w_ibp**2)
     Afun_concrete = (1 + w_ibp**2 / 2) * sp.exp(-w_ibp**2)
     eta_concrete = sp.exp(-w_ibp**2 / 2)
+    eta_lorentz = 1 / (1 + w_ibp**2)
+    nonzero_boundary_probe = boundary_value(sp.atan(w_ibp), w_ibp)
+    assert_nonzero('boundary operator detects nonzero endpoint discharge', nonzero_boundary_probe)
     linear_boundary_concrete = boundary_value(-Bfun_concrete * eta_concrete, w_ibp)
+    linear_lorentz_density = sp.together(-Bfun_lorentz * eta_lorentz)
+    linear_boundary_lorentz = boundary_value(linear_lorentz_density, w_ibp)
+    assert_nonzero(
+        'lorentzian linear probe keeps nontrivial denominator',
+        sp.together(linear_lorentz_density).as_numer_denom()[1] - 1,
+    )
+    linear_boundary_lorentz_endpoint = boundary_value(-Bfun_lorentz_endpoint * eta_lorentz, w_ibp)
     linear_cross_concrete = sp.integrate(-Bfun_concrete * sp.diff(eta_concrete, w_ibp), (w_ibp, -sp.oo, sp.oo))
     linear_bulk_concrete = sp.integrate(sp.diff(Bfun_concrete, w_ibp) * eta_concrete, (w_ibp, -sp.oo, sp.oo))
     quad_boundary_concrete = boundary_value(-Afun_concrete * eta_concrete**2 / 2, w_ibp)
+    quad_boundary_lorentz = boundary_value(-Afun_concrete * eta_lorentz**2 / 2, w_ibp)
     quad_cross_concrete = sp.integrate(
         -Afun_concrete * eta_concrete * sp.diff(eta_concrete, w_ibp),
         (w_ibp, -sp.oo, sp.oo),
@@ -90,8 +103,11 @@ def main() -> None:
         (w_ibp, -sp.oo, sp.oo),
     )
     assert_zero('concrete linear IBP boundary discharge', linear_boundary_concrete)
+    assert_zero('lorentzian-profile linear IBP boundary discharge', linear_boundary_lorentz)
+    assert_zero('lorentzian finite-endpoint boundary discharge', linear_boundary_lorentz_endpoint + 2)
     assert_zero('concrete linear IBP with boundary', linear_cross_concrete - (linear_boundary_concrete + linear_bulk_concrete))
     assert_zero('concrete quadratic IBP boundary discharge', quad_boundary_concrete)
+    assert_zero('lorentzian-profile quadratic IBP boundary discharge', quad_boundary_lorentz)
     assert_zero('concrete quadratic IBP with boundary', quad_cross_concrete - (quad_boundary_concrete + quad_bulk_concrete))
 
     # Small symbolic model for the minimal gauge-fixed nonlinear throat action
@@ -221,6 +237,10 @@ def main() -> None:
     lines.append("\n")
     lines.append("The carried quadratic boundary term is\n")
     lines.append("  [-1/2 T_{w,R}(R0,w) R0' eta^2]_{boundary}.\n")
+    lines.append("The boundary operator is also checked on atan(w), whose endpoint discharge is nonzero.\n")
+    lines.append("The linear and quadratic boundary discharges also vanish on a second decaying Lorentzian eta profile.\n")
+    lines.append("The Lorentzian linear probe keeps a nontrivial rational denominator.\n")
+    lines.append("A Lorentzian finite-endpoint probe gives boundary discharge -2, so nonzero finite limits are distinguished.\n")
     lines.append("Quadratic density after integrating -T_{w,R}(R0,w) R0' eta eta_w by parts:\n")
     lines.append(f"  L2 = {sp.sstr(L2_ibp)}\n")
     lines.append("\n")

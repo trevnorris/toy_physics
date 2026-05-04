@@ -55,6 +55,11 @@ K=B_0+Z_0+\varepsilon z_0+D_{0,\mathrm{target}},
 so both \(z_0\) and \(n_0\) cancel from the resulting compatibility transport,
 leaving only the geometric pair \(z_2,z_4\).
 
+The audit now pins this as an explicit guard: differentiating the fixed-target
+and transported-target compatibility shifts with respect to \(z_0\) gives zero,
+while differentiating the normalization \(K\)-surface still gives a nonzero
+\(z_0\) dependence before compatibility elimination.
+
 ## 2. Primitive one-port bridge
 
 File:

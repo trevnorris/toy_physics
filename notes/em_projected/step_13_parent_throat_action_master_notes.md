@@ -65,8 +65,11 @@ The updated SymPy audit now carries the relevant linear and quadratic
 integration-by-parts boundary terms explicitly before reading off the bulk
 background equation and \(K_\eta\), and it discharges the corresponding
 boundary densities on a concrete decaying Gaussian example by explicit
-`sp.limit` evaluation. So the quadratic recovery no longer hides the
-decay/compact-support step.
+`sp.limit` evaluation. The same boundary operator is also tested on
+\(\arctan w\), whose endpoint discharge is nonzero, so the zero-boundary
+Gaussian checks are not just a broken boundary reader returning zero for
+everything. So the quadratic recovery no longer hides the decay/compact-support
+step.
 
 So the moving-wall PDE can be promoted from effective closure to parent status
 without breaking the existing reduction stack.
@@ -109,6 +112,15 @@ before specializing the gates, so the obstruction is explicitly tied to wall
 kernel data instead of only to abstract slope symbols. It is still an
 obstruction in this truncated system rather than a deeper standalone no-go
 theorem.
+
+The wall-only obstruction check is now mutation-guarded at the solve level:
+the script perturbs the \(K_1\) gate before solving the two wall-only equations
+and verifies that the resulting \((\delta K,\delta M)\) solution is no longer
+the zero pair. This tests the gate solve itself rather than only substituting
+the already-solved zero result back into the equations. It also perturbs the
+\(dK\) coefficient in the wall-only \(K_1\) gate and verifies that the
+two-equation determinant shifts, so the guard is not only an RHS
+invertibility check.
 
 So promoting `S_\Sigma` is **necessary** for parent completeness, but it is not
 by itself the whole theorem. The support and Maxwell/mixed sectors still have

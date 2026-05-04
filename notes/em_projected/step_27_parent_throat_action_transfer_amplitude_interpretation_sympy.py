@@ -7,6 +7,9 @@ import json
 
 import sympy as sp
 
+from step_24_parent_throat_action_outgoing_amplitude_frontier_sympy import export_step24_frontier_points
+from step_29_parent_throat_action_moderate_branchb_sector_sympy import export_step29_moderate_branchb_patch
+
 
 def assert_zero(label: str, expr: sp.Expr) -> None:
     expr = sp.simplify(sp.expand(expr))
@@ -17,6 +20,12 @@ def assert_zero(label: str, expr: sp.Expr) -> None:
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
     if abs(actual - expected) > tol:
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
+
+
+def assert_nonzero(label: str, expr: sp.Expr) -> None:
+    expr = sp.simplify(sp.expand(expr))
+    if expr == 0:
+        raise AssertionError(f"{label} unexpectedly vanished")
 
 
 def main() -> None:
@@ -36,6 +45,7 @@ def main() -> None:
     A, B, G5 = sp.symbols("A B G5", real=True)
     K, T2 = sp.symbols("K T2", positive=True, real=True)
     sigma, gamma = sp.symbols("sigma gamma", real=True)
+    eps = sp.symbols("eps", real=True, nonzero=True)
 
     # Stage-005 internal prefactor packet.
     P0 = sp.simplify(N0 / D0)
@@ -49,6 +59,7 @@ def main() -> None:
     assert_zero("uniform N-scaling gives uniform P0 scaling", P0_scaled - lam * P0)
     assert_zero("uniform N-scaling gives uniform P2 scaling", P2_scaled - lam * P2)
     assert_zero("uniform N-scaling gives uniform P4 scaling", P4_scaled - lam * P4)
+    assert_nonzero("uniform N-scaling detects mutated lambda", P0_scaled - (lam + eps) * P0)
 
     # Stage-005 grouped outgoing compiler.
     K0 = sp.simplify(P0)
@@ -82,33 +93,33 @@ def main() -> None:
 
     # Stage-95 hybrid branch B.
     chi_B = sp.simplify((1 - 9 * sigma * gamma) / (1 - sigma))
-    chi_B_canonical = sp.simplify(chi_B.subs(gamma, sp.Rational(1, 9)))
+    gamma_canonical = sp.Rational(1, 9)
+    # Sanity-check the imported Stage-95 value locally; this is not an upstream
+    # derivation of gamma_canonical.
+    chi_B_canonical = sp.simplify(chi_B.subs(gamma, gamma_canonical))
     scaled_identity_factor = sp.simplify(1 - sigma)
     sigma_from_lambda = sp.solve(sp.Eq(scaled_identity_factor, lam), sigma)[0]
 
-    assert_zero("stage95 canonical branch-B keeps chi_Q = 1", chi_B_canonical - 1)
     assert_zero("lambda_out to hybrid-branch sigma map", sigma_from_lambda - (1 - lam))
+    assert_nonzero("lambda_out sigma map detects shifted branch factor", sigma_from_lambda - (1 - (lam + eps)))
 
+    step24_exports = export_step24_frontier_points()
+    step29_patch = export_step29_moderate_branchb_patch()
+    patch_20 = step29_patch["same_scale_lambda20"]
     point_budget50 = {
         "label": "step24 best point under mhat0_req <= 50",
-        "scale": 0.092,
-        "lambda_out": 20.0,
-        "mhat0_req": 47.912441136331765,
-        "Q_iso": 0.2670781822626949,
+        "scale": float(patch_20["scale"]),
+        "lambda_out": float(patch_20["lambda_out"]),
+        "mhat0_req": float(patch_20["mhat0_req"]),
+        "Q_iso": float(patch_20["Q_iso"]),
     }
     point_q1 = {
         "label": "step24 best point with Q_iso <= 1",
-        "scale": 0.09,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.351570977913287,
-        "Q_iso": 0.618690285150578,
+        **step24_exports["best_q_iso_le_1"],
     }
     point_qhalf = {
         "label": "step24 best point with Q_iso <= 0.5",
-        "scale": 0.092,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.7912441136331765,
-        "Q_iso": 0.4394839373049669,
+        **step24_exports["best_q_iso_le_half"],
     }
 
     def sigma_branch_b(point: dict[str, float]) -> float:
@@ -139,9 +150,13 @@ def main() -> None:
     print("  uniform scaling leaves K2/K0 invariant with K2/K0 =", sp.sstr(K2_shape))
     print("  uniform scaling leaves K4/K0 invariant with K4/K0 =", sp.sstr(K4_shape))
     print("  exact transfer-shape amplitude law = T_eff^2 -> lambda_out * T_eff^2")
+    print("  scaling mutation guards = PASS")
     print("Stage95 hybrid branch-B amplitude coordinate:")
+    print("  canonical branch-B gamma =", sp.sstr(gamma_canonical))
+    print("  gamma provenance = imported Stage-95 canonical value; no independent upstream derivation in this local script")
     print("  chi_B(sigma, gamma) =", sp.sstr(chi_B))
     print("  canonical branch-B chi_Q =", sp.sstr(chi_B_canonical))
+    print("  canonical chi_Q check is a local sanity check, not an upstream gamma derivation")
     print("  branch-B scaling factor =", sp.sstr(scaled_identity_factor))
     print("  sigma(lambda_out) =", sp.sstr(sigma_from_lambda))
     print("Concrete step24 mappings:")

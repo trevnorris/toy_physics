@@ -8,6 +8,18 @@ import numpy as np
 import sympy as sp
 
 
+STEP19_FOUR_MODE_RESIDUAL_EXPORT = (
+    -13.134593938872369,
+    -10.33719584868593,
+    0.3700984456976848,
+    0.8889149882257383,
+)
+
+
+def export_step19_four_mode_residuals() -> tuple[float, float, float, float]:
+    return STEP19_FOUR_MODE_RESIDUAL_EXPORT
+
+
 def assert_zero(label: str, expr: sp.Expr) -> None:
     residue = sp.factor(sp.together(sp.simplify(expr)))
     if residue != 0:
@@ -488,6 +500,8 @@ def main() -> None:
     residues_3 = numeric_target_residues(export_packet)
     residues_4 = numeric_target_residues(export_packet_4)
     residues_5 = numeric_target_residues(export_packet_5)
+    for actual, expected in zip(residues_4, STEP19_FOUR_MODE_RESIDUAL_EXPORT):
+        assert_numeric_small("exported 4-mode residual contract", actual - expected, 1e-8)
     assert_numeric_small_nonzero("one-pole residue drift 3-to-4", residues_4[0] - residues_3[0], 2e-4)
     assert_numeric_small_nonzero("static residue drift 3-to-4", residues_4[1] - residues_3[1], 2e-4)
     assert_numeric_small_nonzero("P2 residue drift 3-to-4", residues_4[2] - residues_3[2], 2e-4)

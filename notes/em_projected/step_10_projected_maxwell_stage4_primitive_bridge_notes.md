@@ -179,6 +179,9 @@ ways after primitive substitution:
 The script verifies that these two routes agree exactly at first order. Since
 the eliminated surface itself carries no \(z_0\) slot, the loss of the \(z_0\)
 channel is now a genuine algebraic cancellation rather than an omitted symbol.
+It also introduces an independent \(z_0\) probe and checks that both
+compatibility shifts are insensitive to that probe, while the normalization
+\(K\)-surface remains explicitly sensitive before compatibility elimination.
 
 It now also checks the stronger ratio-form target transport
 \[

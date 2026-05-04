@@ -51,6 +51,12 @@ The sampled ray is frozen in advance:
 \text{scale}\in\{0,\ 0.03,\ 0.05,\ 0.08,\ 0.088,\ 0.09,\ 0.092\}.
 \]
 
+Before scanning that ray, the script checks the imported least-squares direction
+as a mutation guard: the linearized packet must close along the reported
+direction, and the sign-flipped direction must increase the residual norm
+relative to the baseline. This is a direction-orientation guard, not a claim
+that the sampled grid is physically derived.
+
 At each sample point the script records:
 
 - the isotropic packet
@@ -78,12 +84,12 @@ At each sample point the script records:
 The baseline point is
 
 \[
-\widehat m_0^{\rm req}\approx 4.8307354536946585,
+\widehat m_0^{\rm req}\approx 4.830735453694662,
 \qquad
-Q_{\rm iso}\approx 13.169840570593973,
+Q_{\rm iso}\approx 13.169840570593985,
 \]
 \[
-\|R\|_2\approx 16.742231591665213.
+\|R\|_2\approx 16.74223159166522.
 \]
 
 The frozen sampled ray then gives:
@@ -91,61 +97,61 @@ The frozen sampled ray then gives:
 ### Scale `0.03`
 
 \[
-\widehat m_0^{\rm req}\approx 10.612856360546363,
+\widehat m_0^{\rm req}\approx 10.612856360542194,
 \qquad
-Q_{\rm iso}\approx 12.057319412929672,
+Q_{\rm iso}\approx 12.057319412927914,
 \qquad
-\|R\|_2\approx 16.123181731091783.
+\|R\|_2\approx 16.12318173109042.
 \]
 
 ### Scale `0.05`
 
 \[
-\widehat m_0^{\rm req}\approx 27.467490672562466,
+\widehat m_0^{\rm req}\approx 27.467490672545335,
 \qquad
-Q_{\rm iso}\approx 10.043783258330908,
+Q_{\rm iso}\approx 10.043783258328745,
 \qquad
-\|R\|_2\approx 14.73799806685835.
+\|R\|_2\approx 14.73799806685686.
 \]
 
 ### Scale `0.08`
 
 \[
-\widehat m_0^{\rm req}\approx 119.94850420735051,
+\widehat m_0^{\rm req}\approx 119.94850420724003,
 \qquad
-Q_{\rm iso}\approx 3.6635530969600296,
+Q_{\rm iso}\approx 3.6635530969641583,
 \qquad
-\|R\|_2\approx 11.40374534724855.
+\|R\|_2\approx 11.40374534724988.
 \]
 
 ### Scale `0.088`
 
 \[
-\widehat m_0^{\rm req}\approx 176.7200985570496,
+\widehat m_0^{\rm req}\approx 176.72009855687244,
 \qquad
-Q_{\rm iso}\approx 1.1434078630513964,
+Q_{\rm iso}\approx 1.1434078630587274,
 \qquad
-\|R\|_2\approx 10.860014360884977.
+\|R\|_2\approx 10.860014360885746.
 \]
 
 ### Scale `0.09`
 
 \[
-\widehat m_0^{\rm req}\approx 194.6081703105869,
+\widehat m_0^{\rm req}\approx 194.60817031038846,
 \qquad
-Q_{\rm iso}\approx 0.4513177752288337,
+Q_{\rm iso}\approx 0.4513177752371879,
 \qquad
-\|R\|_2\approx 10.809140954536216.
+\|R\|_2\approx 10.809140954536565.
 \]
 
 ### Scale `0.092`
 
 \[
-\widehat m_0^{\rm req}\approx 214.2709506975902,
+\widehat m_0^{\rm req}\approx 214.27095069736797,
 \qquad
-Q_{\rm iso}\approx 0.26705543084121786,
+Q_{\rm iso}\approx 0.2670554308318671,
 \qquad
-\|R\|_2\approx 10.803066122095556.
+\|R\|_2\approx 10.803066122095323.
 \]
 
 Every sampled point lies on the Pareto frontier of the frozen ray: moving
@@ -168,9 +174,9 @@ is
 \[
 \text{scale}=0.09,
 \qquad
-\widehat m_0^{\rm req}\approx 194.6081703105869,
+\widehat m_0^{\rm req}\approx 194.60817031038846,
 \qquad
-Q_{\rm iso}\approx 0.4513177752288337.
+Q_{\rm iso}\approx 0.4513177752371879.
 \]
 
 Second, the **best** sampled `Q_iso` value is
@@ -178,9 +184,9 @@ Second, the **best** sampled `Q_iso` value is
 \[
 \text{scale}=0.092,
 \qquad
-\widehat m_0^{\rm req}\approx 214.2709506975902,
+\widehat m_0^{\rm req}\approx 214.27095069736797,
 \qquad
-Q_{\rm iso}\approx 0.26705543084121786.
+Q_{\rm iso}\approx 0.2670554308318671.
 \]
 
 So on this target-blind outgoing-family ray:

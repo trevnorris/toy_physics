@@ -6,9 +6,9 @@ import hashlib
 import json
 import math
 
-import mpmath as mp
 import numpy as np
 import sympy as sp
+from scipy import integrate as scipy_integrate
 
 
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
@@ -16,9 +16,16 @@ def assert_close(label: str, actual: float, expected: float, tol: float) -> None
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
 
 
+def assert_greater(label: str, actual: float, threshold: float) -> None:
+    if not actual > threshold:
+        raise AssertionError(f"{label} failed: {actual} <= {threshold}")
+
+
 w = sp.symbols("w", real=True)
 MODES = (0, 2, 4, 6)
-mp.mp.dps = 50
+# The basis/profile packets are Gaussian in the sampled range; finite bounds
+# avoid unstable exp(+w^2) * exp(-w^2) cancellation probes at infinity.
+QUAD_BOUND = 12.0
 
 
 def basis_mode(n: int) -> sp.Expr:
@@ -29,12 +36,13 @@ def basis_mode(n: int) -> sp.Expr:
 
 BASIS = [basis_mode(n) for n in MODES]
 BASIS_PRIME = [sp.diff(expr, w) for expr in BASIS]
-BASIS_F = [sp.lambdify(w, expr, "mpmath") for expr in BASIS]
-BASIS_PRIME_F = [sp.lambdify(w, expr, "mpmath") for expr in BASIS_PRIME]
+BASIS_F = [sp.lambdify(w, expr, "numpy") for expr in BASIS]
+BASIS_PRIME_F = [sp.lambdify(w, expr, "numpy") for expr in BASIS_PRIME]
 
 
-def quad_inf(func) -> float:
-    return float(mp.quad(func, [-mp.inf, mp.inf]))
+def quad_inf(func, bound: float = QUAD_BOUND) -> float:
+    value, _ = scipy_integrate.quad(func, -bound, bound, epsabs=1e-10, epsrel=1e-10, limit=200)
+    return float(value)
 
 
 def symmetric_matrix(size: int, entry_fn) -> np.ndarray:
@@ -58,7 +66,13 @@ def low_series_packet(mass_matrix: np.ndarray, stiff_matrix: np.ndarray, coeffs:
     return float(coeffs @ a0), float(coeffs @ a2), float(coeffs @ a4)
 
 
-def evaluate_branch(log_amp: float, log_r_width: float, log_beta_width: float, outgoing_delta: float) -> tuple[float, float, float, float]:
+def evaluate_branch(
+    log_amp: float,
+    log_r_width: float,
+    log_beta_width: float,
+    outgoing_delta: float,
+    quad_bound: float = QUAD_BOUND,
+) -> tuple[float, float, float, float]:
     amp = math.exp(log_amp)
     r_width = math.exp(log_r_width)
     beta_width = math.exp(log_beta_width)
@@ -75,39 +89,40 @@ def evaluate_branch(log_amp: float, log_r_width: float, log_beta_width: float, o
     U_scale = sp.simplify((sp.diff(T_w * R0p, w) - tw_shape * R0p**2 / 2) / R0)
     K_eta = sp.simplify(U_scale - sp.diff(tw_shape * R0p, w))
 
-    mu_f = sp.lambdify(w, mu_eta, "mpmath")
-    tw_f = sp.lambdify(w, T_w, "mpmath")
-    to_f = sp.lambdify(w, T_omega, "mpmath")
-    keta_f = sp.lambdify(w, K_eta, "mpmath")
-    beta_f = sp.lambdify(w, beta, "mpmath")
-    beta_prime_f = sp.lambdify(w, sp.diff(beta, w), "mpmath")
-    phi_B_f = sp.lambdify(w, beta, "mpmath")
-    phi_Z_f = sp.lambdify(w, R0 * beta, "mpmath")
-    phi_N_f = sp.lambdify(w, (1 + outgoing_weight * w**2) * beta, "mpmath")
+    mu_f = sp.lambdify(w, mu_eta, "numpy")
+    tw_f = sp.lambdify(w, T_w, "numpy")
+    to_f = sp.lambdify(w, T_omega, "numpy")
+    keta_f = sp.lambdify(w, K_eta, "numpy")
+    beta_f = sp.lambdify(w, beta, "numpy")
+    beta_prime_f = sp.lambdify(w, sp.diff(beta, w), "numpy")
+    phi_B_f = sp.lambdify(w, beta, "numpy")
+    phi_Z_f = sp.lambdify(w, R0 * beta, "numpy")
+    phi_N_f = sp.lambdify(w, (1 + outgoing_weight * w**2) * beta, "numpy")
+    q = lambda func: quad_inf(func, bound=quad_bound)
 
     size = len(MODES)
     mass_matrix = symmetric_matrix(
         size,
-        lambda i, j: quad_inf(lambda x: mu_f(x) * BASIS_F[i](x) * BASIS_F[j](x)),
+        lambda i, j: q(lambda x: mu_f(x) * BASIS_F[i](x) * BASIS_F[j](x)),
     )
     stiff_matrix = symmetric_matrix(
         size,
-        lambda i, j: quad_inf(
+        lambda i, j: q(
             lambda x: tw_f(x) * BASIS_PRIME_F[i](x) * BASIS_PRIME_F[j](x)
             + (keta_f(x) + 6.0 * to_f(x)) * BASIS_F[i](x) * BASIS_F[j](x)
         ),
     )
 
-    coeffs_B = source_vector(size, lambda i: quad_inf(lambda x: BASIS_F[i](x) * phi_B_f(x)))
-    coeffs_Z = source_vector(size, lambda i: quad_inf(lambda x: BASIS_F[i](x) * phi_Z_f(x)))
-    coeffs_N = source_vector(size, lambda i: quad_inf(lambda x: BASIS_F[i](x) * phi_N_f(x)))
+    coeffs_B = source_vector(size, lambda i: q(lambda x: BASIS_F[i](x) * phi_B_f(x)))
+    coeffs_Z = source_vector(size, lambda i: q(lambda x: BASIS_F[i](x) * phi_Z_f(x)))
+    coeffs_N = source_vector(size, lambda i: q(lambda x: BASIS_F[i](x) * phi_N_f(x)))
 
     B0, B2, B4 = low_series_packet(mass_matrix, stiff_matrix, coeffs_B)
     Z0, Z2, Z4 = low_series_packet(mass_matrix, stiff_matrix, coeffs_Z)
     N0, N2, N4 = low_series_packet(mass_matrix, stiff_matrix, coeffs_N)
 
-    M_sigma = quad_inf(lambda x: mu_f(x) * beta_f(x) ** 2)
-    K_sigma = quad_inf(lambda x: tw_f(x) * beta_prime_f(x) ** 2 + (keta_f(x) + 6.0 * to_f(x)) * beta_f(x) ** 2)
+    M_sigma = q(lambda x: mu_f(x) * beta_f(x) ** 2)
+    K_sigma = q(lambda x: tw_f(x) * beta_prime_f(x) ** 2 + (keta_f(x) + 6.0 * to_f(x)) * beta_f(x) ** 2)
 
     D0 = K_sigma - B0 - Z0
     D2 = -(M_sigma + B2 + Z2)
@@ -153,9 +168,22 @@ def main() -> None:
     base_coords = np.zeros(4, dtype=float)
     h = 0.02
     baseline = evaluate_branch(*base_coords)
+    quad_bound_packets = np.array([evaluate_branch(*base_coords, quad_bound=bound) for bound in (10.0, 12.0, 14.0)], dtype=float)
+    quad_bound_packet_spread = float(np.max(np.ptp(quad_bound_packets, axis=0)))
+    if not quad_bound_packet_spread < 1.0e-9:
+        raise AssertionError(f"quadrature-bound sensitivity too large: {quad_bound_packet_spread}")
     baseline_vec = np.array([baseline[0], baseline[1] - 54.0 / 5.0, baseline[2], baseline[3]], dtype=float)
     jac = central_jacobian(base_coords, h)
-    delta_ls, _, _, _ = np.linalg.lstsq(jac, -baseline_vec, rcond=None)
+    delta_ls, _, jac_rank, jac_singular_values = np.linalg.lstsq(jac, -baseline_vec, rcond=None)
+    if jac_rank != jac.shape[1]:
+        raise AssertionError(f"linearized packet Jacobian is rank deficient: rank={jac_rank}, singular values={jac_singular_values}")
+    jac_condition_number = float(jac_singular_values[0] / jac_singular_values[-1])
+    if not jac_condition_number < 1.0e4:
+        raise AssertionError(f"linearized packet Jacobian is poorly conditioned: {jac_condition_number}")
+    linear_baseline_norm = float(np.linalg.norm(baseline_vec))
+    linear_correct_norm = float(np.linalg.norm(baseline_vec + jac @ delta_ls))
+    linear_sign_flip_norm = float(np.linalg.norm(baseline_vec - jac @ delta_ls))
+    assert_greater("sign-flipped outgoing direction worsens linearized packet", linear_sign_flip_norm, linear_baseline_norm)
 
     lo = 0.09
     hi = 0.092
@@ -200,8 +228,12 @@ def main() -> None:
     print("  geometry_status =", branch_metadata["geometry_status"])
     print("Baseline residual packet from the underlying target-blind family:")
     print("  (R_pole, R_norm, R_P2, R_P4) =", tuple(float(x) for x in baseline_vec))
+    print("  quadrature-bound packet spread =", quad_bound_packet_spread)
+    print("  QUAD_BOUND insensitivity guard = PASS")
     print("Step-21 least-squares outgoing-family direction:")
     print("  delta =", [round(float(x), 12) for x in delta_ls.tolist()])
+    print("  jacobian condition number =", jac_condition_number)
+    print("  sign-flipped linearized direction guard = PASS")
     print("One-pole root bracket on the static-normalized slice:")
     print("  bracket = (0.09, 0.092)")
     print("  root scale =", scale)

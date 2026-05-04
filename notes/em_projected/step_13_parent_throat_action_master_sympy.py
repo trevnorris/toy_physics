@@ -55,6 +55,8 @@ def main() -> None:
     )
     A_concrete = sp.exp(-w_ibp**2)
     eta_concrete = sp.exp(-w_ibp**2 / 2)
+    nonzero_boundary_probe = boundary_value(sp.atan(w_ibp), w_ibp)
+    assert_nonzero("boundary operator detects nonzero endpoint discharge", nonzero_boundary_probe)
     quad_boundary_concrete = boundary_value((-A_concrete * eta_concrete**2 / 2), w_ibp)
     quad_cross_concrete = sp.integrate(
         -A_concrete * eta_concrete * sp.diff(eta_concrete, w_ibp),
@@ -142,6 +144,22 @@ def main() -> None:
     wall_even_solve = sp.solve([sp.Eq(K1_wall, 0), sp.Eq(H_even_wall, 0)], [dK, dM], dict=True)[0]
     assert_zero("wall-only dK closed form", wall_even_solve[dK])
     assert_zero("wall-only dM closed form", wall_even_solve[dM])
+    wall_even_solve_perturbed = sp.solve([sp.Eq(K1_wall + eps, 0), sp.Eq(H_even_wall, 0)], [dK, dM], dict=True)[0]
+    assert_nonzero("wall-only solve detects perturbed K1 gate in dK", wall_even_solve_perturbed[dK])
+    assert_nonzero("wall-only solve detects perturbed K1 gate in dM", wall_even_solve_perturbed[dM])
+    gate_coeff = sp.symbols("gate_coeff", real=True)
+    K1_wall_param = -dM + gate_coeff * dK
+    wall_matrix_param = sp.Matrix(
+        [
+            [sp.diff(K1_wall_param, dK), sp.diff(K1_wall_param, dM)],
+            [sp.diff(H_even_wall, dK), sp.diff(H_even_wall, dM)],
+        ]
+    )
+    wall_det_shift = sp.simplify(
+        wall_matrix_param.det().subs(gate_coeff, sp.Rational(1, 9) + eps)
+        - wall_matrix_param.det().subs(gate_coeff, sp.Rational(1, 9))
+    )
+    assert_nonzero("wall-only determinant detects perturbed K1 coefficient", wall_det_shift)
 
     lam20 = real_y20_square_ratio(0)
     lam21 = real_y20_square_ratio(1)
@@ -160,6 +178,9 @@ def main() -> None:
 
     print("STEP 13 PARENT THROAT ACTION MASTER AUDIT")
     print("Checked promoted-action quadratic limit, concrete boundary discharge, K_eta formula, grouped signature, and wall-only gate obstruction as the zero-support/zero-mixed specialization of the full even gates.")
+    print("Boundary operator nonzero sanity check = PASS")
+    print("Wall-only perturbed-gate solve guard = PASS")
+    print("Wall-only coefficient determinant guard = PASS")
     print("STATUS: PASS")
 
 

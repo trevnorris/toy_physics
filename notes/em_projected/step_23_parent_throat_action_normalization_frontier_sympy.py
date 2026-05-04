@@ -7,14 +7,19 @@ import json
 import math
 from dataclasses import dataclass
 
-import mpmath as mp
 import numpy as np
 import sympy as sp
+from scipy import integrate as scipy_integrate
 
 
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
     if abs(actual - expected) > tol:
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
+
+
+def assert_greater(label: str, actual: float, threshold: float) -> None:
+    if not actual > threshold:
+        raise AssertionError(f"{label} failed: {actual} <= {threshold}")
 
 
 @dataclass(frozen=True)
@@ -29,7 +34,9 @@ class SamplePoint:
 
 w = sp.symbols("w", real=True)
 MODES = (0, 2, 4, 6)
-mp.mp.dps = 50
+# The basis/profile packets are Gaussian in the sampled range; finite bounds
+# avoid unstable exp(+w^2) * exp(-w^2) cancellation probes at infinity.
+QUAD_BOUND = 12.0
 
 
 def basis_mode(n: int) -> sp.Expr:
@@ -40,12 +47,13 @@ def basis_mode(n: int) -> sp.Expr:
 
 BASIS = [basis_mode(n) for n in MODES]
 BASIS_PRIME = [sp.diff(expr, w) for expr in BASIS]
-BASIS_F = [sp.lambdify(w, expr, "mpmath") for expr in BASIS]
-BASIS_PRIME_F = [sp.lambdify(w, expr, "mpmath") for expr in BASIS_PRIME]
+BASIS_F = [sp.lambdify(w, expr, "numpy") for expr in BASIS]
+BASIS_PRIME_F = [sp.lambdify(w, expr, "numpy") for expr in BASIS_PRIME]
 
 
 def quad_inf(func) -> float:
-    return float(mp.quad(func, [-mp.inf, mp.inf]))
+    value, _ = scipy_integrate.quad(func, -QUAD_BOUND, QUAD_BOUND, epsabs=1e-10, epsrel=1e-10, limit=200)
+    return float(value)
 
 
 def symmetric_matrix(size: int, entry_fn) -> np.ndarray:
@@ -86,15 +94,15 @@ def evaluate_branch(log_amp: float, log_r_width: float, log_beta_width: float, o
     U_scale = sp.simplify((sp.diff(T_w * R0p, w) - tw_shape * R0p**2 / 2) / R0)
     K_eta = sp.simplify(U_scale - sp.diff(tw_shape * R0p, w))
 
-    mu_f = sp.lambdify(w, mu_eta, "mpmath")
-    tw_f = sp.lambdify(w, T_w, "mpmath")
-    to_f = sp.lambdify(w, T_omega, "mpmath")
-    keta_f = sp.lambdify(w, K_eta, "mpmath")
-    beta_f = sp.lambdify(w, beta, "mpmath")
-    beta_prime_f = sp.lambdify(w, sp.diff(beta, w), "mpmath")
-    phi_B_f = sp.lambdify(w, beta, "mpmath")
-    phi_Z_f = sp.lambdify(w, R0 * beta, "mpmath")
-    phi_N_f = sp.lambdify(w, (1 + outgoing_weight * w**2) * beta, "mpmath")
+    mu_f = sp.lambdify(w, mu_eta, "numpy")
+    tw_f = sp.lambdify(w, T_w, "numpy")
+    to_f = sp.lambdify(w, T_omega, "numpy")
+    keta_f = sp.lambdify(w, K_eta, "numpy")
+    beta_f = sp.lambdify(w, beta, "numpy")
+    beta_prime_f = sp.lambdify(w, sp.diff(beta, w), "numpy")
+    phi_B_f = sp.lambdify(w, beta, "numpy")
+    phi_Z_f = sp.lambdify(w, R0 * beta, "numpy")
+    phi_N_f = sp.lambdify(w, (1 + outgoing_weight * w**2) * beta, "numpy")
 
     size = len(MODES)
     mass_matrix = symmetric_matrix(
@@ -167,6 +175,12 @@ def main() -> None:
     h = 0.02
     baseline_vec, jac = central_jacobian(base_coords, h)
     delta_ls, _, _, _ = np.linalg.lstsq(jac, -baseline_vec, rcond=None)
+    linear_baseline_norm = float(np.linalg.norm(baseline_vec))
+    linear_correct_norm = float(np.linalg.norm(baseline_vec + jac @ delta_ls))
+    linear_sign_flip_norm = float(np.linalg.norm(baseline_vec - jac @ delta_ls))
+    if not linear_correct_norm < 1e-8:
+        raise AssertionError(f"least-squares direction no longer closes the linearized packet: {linear_correct_norm}")
+    assert_greater("sign-flipped outgoing direction worsens linearized packet", linear_sign_flip_norm, linear_baseline_norm)
 
     assert_close("baseline R_pole", baseline_vec[0], -13.134593938872369, 1e-8)
     assert_close("step21 outgoing delta[3]", float(delta_ls[3]), 74.190514652389, 1e-8)
@@ -215,7 +229,7 @@ def main() -> None:
     best_qiso = min(sample_points, key=lambda point: point.q_iso)
 
     assert_close("first subunit-qiso scale", first_subunit.scale, 0.09, 1e-12)
-    assert_close("first subunit-qiso mhat0", first_subunit.mhat0_req, 194.6081703105869, 1e-6)
+    assert_close("first subunit-qiso mhat0", first_subunit.mhat0_req, 194.60817031038846, 1e-6)
     assert_close("best sampled qiso scale", best_qiso.scale, 0.092, 1e-12)
     assert_close("best sampled qiso", best_qiso.q_iso, 0.26705543084121786, 1e-9)
 
@@ -231,6 +245,7 @@ def main() -> None:
     print("  geometry_status =", branch_metadata["geometry_status"])
     print("Underlying step-21 least-squares direction:")
     print("  delta =", [round(float(x), 12) for x in delta_ls.tolist()])
+    print("  sign-flipped linearized direction guard = PASS")
     print("Frozen sample ray:")
     print("  sample_scales =", branch_metadata["sample_scales"])
     print("Sampled normalization frontier points:")

@@ -42,7 +42,8 @@ Verdict rules:
 
 - `FAIL`: slope targets missed or flow is too compressible
 - `INCOMPLETE`: not enough fit support, no diagnostics, or malformed JSONL
-  lines were encountered without a harder failure
+  lines were encountered without a harder failure. These are reported as
+  `incomplete_reasons`, separate from warnings.
 - `PASS`: all checks satisfied
 
 This is deliberately weaker than the full snapshot-based runtime monitor.

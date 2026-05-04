@@ -8,7 +8,10 @@ notes rely on most heavily.
 from __future__ import annotations
 
 import argparse
+import ast
+import math
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -18,6 +21,7 @@ DEFAULT_OUT_DIR = pathlib.Path("/tmp/em_projected_verify")
 EXPECTATIONS: dict[str, list[str]] = {
     "step_04_projection_reduction_comparison_sympy.py": [
         "STATUS: PASS",
+        "Concrete smooth-profile projection residual checks pass, including a w-dependent-field mutation guard.",
         "observer-dependent effective laws unless extra closure conditions are imposed.",
     ],
     "step_03_projected_maxwell_vector_sympy.py": [
@@ -27,6 +31,15 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_08_projected_maxwell_push_bundle_master_sympy.py": [
         "STATUS: PASS",
         "z0 cancellation from compatibility",
+        "Target-transport z0 cancellation guards = PASS",
+    ],
+    "step_09_projected_maxwell_p2_bridge_sympy.py": [
+        "STATUS: PASS",
+        "The script explicitly checks this both for a fixed target and for the transported target.",
+    ],
+    "step_10_projected_maxwell_stage4_primitive_bridge_sympy.py": [
+        "STATUS: PASS",
+        "The script also checks that z0 cancels from both the fixed-target and transported-target compatibility shifts,",
     ],
     "step_11_projected_maxwell_mouth_taylor_master_sympy.py": [
         "STATUS: PASS",
@@ -39,9 +52,16 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_13_parent_throat_action_master_sympy.py": [
         "STATUS: PASS",
         "zero-support/zero-mixed specialization of the full even gates",
+        "Boundary operator nonzero sanity check = PASS",
+        "Wall-only perturbed-gate solve guard = PASS",
+        "Wall-only coefficient determinant guard = PASS",
     ],
     "step_14_parent_throat_action_candidate_sympy.py": [
         "STATUS: PASS",
+        "The boundary operator is also checked on atan(w), whose endpoint discharge is nonzero.",
+        "The linear and quadratic boundary discharges also vanish on a second decaying Lorentzian eta profile.",
+        "The Lorentzian linear probe keeps a nontrivial rational denominator.",
+        "A Lorentzian finite-endpoint probe gives boundary discharge -2",
         "Y20 modal EL is recovered from the genuine S^2 reduction.",
     ],
     "step_15_parent_throat_action_weak_axisym_sympy.py": [
@@ -54,6 +74,13 @@ EXPECTATIONS: dict[str, list[str]] = {
     ],
     "step_17_parent_throat_action_isotropic_bundle_sympy.py": [
         "STATUS: PASS",
+        "constant-prefactor mutation guards = PASS",
+        "positive-root numeric u2 =",
+        "negative-root numeric u2 = -",
+        "multi-sample response-sign guard count = 3",
+        "small-D0 large-tail: D0=2, B4+Z4=20",
+        "large-D0 small-tail: D0=100, B4+Z4=1",
+        "one-pole numerical response-sign guard = PASS",
         "only the positive root gives u2>0; the negative root gives u2<0.",
     ],
     "step_19_parent_throat_action_actual_branch_export_sympy.py": [
@@ -75,10 +102,12 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_20_parent_throat_action_branch_family_scan_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_reduced_family_scan",
+        "branch_freeze_hash = 74152b0cef38e0ec",
         "residual packet (R_pole, R_norm, R_P2, R_P4) = (-13.134593938872369, -10.33719584868593, 0.3700984456976848, 0.8889149882257383)",
         "singular values = [71.044210206226, 1.376398462469, 0.14131229158]",
         "irreducible linearized norm = 10.108287522271972",
         "best actual residual norm = 15.828401363791917",
+        "mu_eta sign-flip residual-packet delta = 13.139644483637701",
     ],
     "step_21_parent_throat_action_outgoing_family_scan_sympy.py": [
         "STATUS: PASS",
@@ -91,26 +120,21 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_22_parent_throat_action_static_normalized_slice_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_static_normalized_slice",
-        "root scale = 0.091265380859375",
-        "mhat0_static = 206.8317356734255",
-        "packet norm = 0.0002055057029418912",
+        "sign-flipped linearized direction guard = PASS",
+        "QUAD_BOUND insensitivity guard = PASS",
         "not a realized-branch success verdict",
     ],
     "step_23_parent_throat_action_normalization_frontier_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_normalization_frontier_scan",
-        "sample_scales = [0.0, 0.03, 0.05, 0.08, 0.088, 0.09, 0.092]",
-        "first sampled point with Q_iso < 1 = (0.09, 194.6081703105869, 0.4513177752288337)",
-        "best sampled Q_iso point = (0.092, 214.2709506975902, 0.26705543084121786)",
+        "sign-flipped linearized direction guard = PASS",
         "Q_iso first drops below 1 only once mhat0_req is already about 1.95e2.",
     ],
     "step_24_parent_throat_action_outgoing_amplitude_frontier_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_outgoing_amplitude_frontier_scan",
-        "sample_lambda_out = [1, 5, 20, 50, 100, 200, 500, 1000, 2000]",
-        "mhat0_req <= 5   -> (0.092, 2000.0, 4.7912441136331765, 0.4394839373049669)",
-        "Q_iso <= 1.0 -> (0.09, 2000.0, 4.351570977913287, 0.618690285150578)",
-        "Q_iso <= 0.5 -> (0.092, 2000.0, 4.7912441136331765, 0.4394839373049669)",
+        "sign-flipped linearized direction guard = PASS",
+        "inverse lambda scaling mutation residual =",
         "static normalization no longer looks structurally fatal if this outgoing-amplitude family is physically admissible.",
     ],
     "step_25_parent_throat_action_outgoing_amplitude_admissibility_sympy.py": [
@@ -120,7 +144,7 @@ EXPECTATIONS: dict[str, list[str]] = {
         "chi_Q = P0_base/P0_target",
         "N_Q   = P0_target/(P0_base*mhat0**2)",
         "elimination Jacobian determinant = P0_target",
-        "inferred chi_Q = 2.6404494712422554e-05",
+        "inferred chi_Q = 2.6404494712476408e-05",
         "outgoing finish-line defect N_Q - 1 = 1999.0",
         "lambda_out mutation residual (1999 instead of 2000) = -0.000500000000000056",
         "step-24 improvement does not rescue outgoing admissibility.",
@@ -129,18 +153,24 @@ EXPECTATIONS: dict[str, list[str]] = {
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_natural_source_burden",
         "natural-source N_Q burden = lambda_out*mhat0_req**2",
+        "upstream P0_target mutation residual =",
         "minimal Robin rho(N_Q) = 3 - 3*N_Q_nat",
-        "natural-source N_Q burden = 37872.3399516344",
-        "natural-source N_Q burden = 45912.04031284913",
-        "minimal Robin rho = -113614.01985490319",
-        "minimal Robin rho = -137733.1209385474",
+        "q<=1 lambda mutation burden residual = -18.936169975779194",
+        "natural-source N_Q burden = 37872.33995155716",
+        "natural-source N_Q burden = 45912.04031275389",
+        "minimal Robin rho = -113614.01985467147",
+        "minimal Robin rho = -137733.12093826168",
         "At fixed frozen scale it only redistributes that burden between lambda_out and mhat0_req.",
     ],
     "step_27_parent_throat_action_transfer_amplitude_interpretation_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_transfer_amplitude_interpretation",
         "exact transfer-shape amplitude law = T_eff^2 -> lambda_out * T_eff^2",
+        "scaling mutation guards = PASS",
+        "canonical branch-B gamma = 1/9",
+        "gamma provenance = imported Stage-95 canonical value; no independent upstream derivation in this local script",
         "canonical branch-B chi_Q = 1",
+        "canonical chi_Q check is a local sanity check, not an upstream gamma derivation",
         "sigma(lambda_out) = 1 - lambda_out",
         "hybrid branch-B sigma = -19.0",
         "hybrid branch-B sigma = -1999.0",
@@ -149,12 +179,6 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_28_parent_throat_action_hybrid_amplitude_budget_frontier_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_hybrid_amplitude_budget_frontier",
-        "sigma_budgets = [4, 19, 49, 199, 1999]",
-        "|sigma| <= 4 -> (0.092, 1.0, 0.0, 214.2709506975902, 0.26705543084121786)",
-        "|sigma| <= 19 -> (0.092, 1.0, 0.0, 214.2709506975902, 0.26705543084121786)",
-        "|sigma| <= 4 -> (0.09, 5.0, -4.0, 87.03141955826572, 0.4513189656743675)",
-        "|sigma| <= 19 -> (0.09, 20.0, -19.0, 43.51570977913286, 0.45133756597801233)",
-        "|sigma| <= 1999 -> (0.09, 2000.0, -1999.0, 4.351570977913287, 0.618690285150578)",
         "The best-Q frontier measures how much isotropic defect reduction is available at each amplitude budget.",
     ],
     "step_29_parent_throat_action_moderate_branchb_sector_sympy.py": [
@@ -162,11 +186,14 @@ EXPECTATIONS: dict[str, list[str]] = {
         "branch_id = v2_local_parent_background_moderate_branchb_sector",
         "sigma_budgets = [19, 49]",
         "q_sector_cap = 1.5",
-        "(0.092, 20.0, -19.0, 47.912441136331765, 0.2670781822626949, 2.995732273553991)",
-        "(0.092, 50.0, -49.0, 30.302488449910886, 0.26719789465663646, 3.912023005428146)",
-        "q increase = 2.2751421477",
+        "sign-flipped linearized direction guard = PASS",
+        "sigma sign-flip mutation residuals =",
+        "inverse lambda scaling mutation residuals =",
+        "(0.092, 20.0, -19.0, 47.91244113628207, 0.2670781822533451, 2.995732273553991)",
+        "(0.092, 50.0, -49.0, 30.302488449879455, 0.26719789464729127, 3.912023005428146)",
+        "q increase = 2.2751421478",
         "normalization drop factor = 4.47213595499958",
-        "q increase = 0.0001424638154186",
+        "q increase = 0.0001424638154241542",
         "normalization drop factor = 7.071067811865475",
         "it is the moderate sigma = -19 to -49 corridor.",
     ],
@@ -178,6 +205,7 @@ EXPECTATIONS: dict[str, list[str]] = {
         "canonical gamma = 1/9",
         "branch-B rho = -76.0",
         "branch-B rho = -196.0",
+        "rho sign-flip mutation residuals = (152.0, 392.0)",
         "natural-source Robin burden ratio = 1494.9213138803052",
         "natural-source Robin burden ratio = 702.7200047885071",
         "it is quantitatively much cheaper at the outlet-parameter level.",
@@ -185,15 +213,17 @@ EXPECTATIONS: dict[str, list[str]] = {
     "step_31_parent_throat_action_electron_fast_falsification_sympy.py": [
         "STATUS: PASS",
         "branch_id = v2_local_parent_background_electron_fast_falsification",
-        "P0_base = 0.00023523241237827255",
-        "lambda_out = 50 -> P0 = 0.011761620618913627 mhat0 = 30.302488449910886 mhat0^2 P0 = 10.8",
+        "P0_base = 0.00023523241237876055",
+        "lambda_out = 50 -> P0 = 0.011761620618938028 mhat0 = 30.302488449879455 mhat0^2 P0 = 10.800000000000002",
         "S_port * (mhat0^2 lambda_out P0_base) = 54 G c_s^5 / (5 r_e^5 c^5)",
         "c_s = 9.159491211330665e-05",
         "Omega_Q = 48756308603.324455",
         "Omega_Q / omega_Compton = 6.280244857660478e-11",
         "required K = 1.1054545016851398e+52",
-        "required S_port = 1.0235689830417961e+51",
-        "lambda load guard = 50.00000000000001",
+        "required S_port = 1.023568983041796e+51",
+        "lambda load guard = 50.0",
+        "direct S_port mutation residual = -10.80000000000003",
+        "Compton S_port mutation residual = -1.1054545016851435e+50",
         "the naive direct electron identification is falsified quickly",
     ],
     "step_32_parent_throat_action_dimensional_port_map_sympy.py": [
@@ -228,6 +258,10 @@ EXPECTATIONS: dict[str, list[str]] = {
         "Concrete-flow monitor exhibit:",
         "periodic max |R_Pois_exact| = 0.0",
         "Bad-optics alpha_fit tail = 1.4",
+        "1/r^2 impostor Q_r tail cv = 0.10349929749560405",
+        "log impostor Q_r tail cv = 0.10301948878406167",
+        "1/r^2 impostor classifier verdict = FAIL",
+        "log impostor classifier verdict = FAIL",
         "The decisive hard falsifiers are Yukawa-like screening in the exterior field and the wrong weak-field optical coefficient.",
     ],
     "step_34_parent_throat_action_cfd_runtime_postprocessor_sympy.py": [
@@ -252,16 +286,28 @@ EXPECTATIONS: dict[str, list[str]] = {
         "mu_eff2_tail_abs_max = 0.25",
         "alpha_fit_tail_error_max = 0.1",
         "alpha_fit_tail_std_max = 0.1",
+        "q_tail_cv_max(tail_n_points=200) =",
         "Newton-like exterior = PASS",
         "Yukawa exterior = FAIL",
         "Bad optics exterior = FAIL",
         "Projection-broken snapshot = FAIL",
         "Missing optics snapshot = INCOMPLETE",
         "Near-zero source snapshot = INCOMPLETE",
+        "Default source-free exterior = INCOMPLETE",
+        "Q_r threshold-boundary snapshot = PASS",
+        "Q_r just-outside-threshold snapshot = FAIL",
+        "mu_eff2 threshold-boundary snapshot = PASS",
+        "mu_eff2 just-outside-threshold snapshot = FAIL",
+        "resolution-derived Q_r boundary snapshot = PASS",
+        "resolution-derived Q_r just-outside snapshot = FAIL",
+        "CLI Q_r threshold conflict guard = PASS",
         "Yukawa: exterior Q_r plateau is too noisy: 0.254275; effective exterior mass scale is too large: 1.95429",
         "Bad optics: alpha_fit mean is not close to 2: 1.4",
         "Projection break: continuity residual too large: 0.3; exact Poisson residual too large: 0.3; exterior Q_r plateau is too noisy: 2.33516",
         "Near-zero source: source scale is near zero; projection residuals are not load-bearing",
+        "Q_r just outside: exterior Q_r plateau is too noisy: 0.0501",
+        "mu_eff2 just outside: effective exterior mass scale is too large: 0.2501",
+        "classify with resolution Q_r threshold = add --q-tail-cv-max-from-resolution",
         "classify    = python cfd_runtime_failfast.py summary.json --output-json verdict.json",
     ],
     "step_36_parent_throat_action_snapshot_adapter_sympy.py": [
@@ -279,6 +325,8 @@ EXPECTATIONS: dict[str, list[str]] = {
         "max |R_Pois_exact| = 0.0",
         "reconstructed source rel error = 0.0",
         "missing W without --allow-uniform-W = rejected",
+        "uniform W opt-in integral error = 0.0",
+        "uniform W opt-in nonunit-span value error = 0.0",
         "reconstructed monopole source without lambda = rejected",
         "wavefunction -> python cfd_snapshot_adapters.py wavefunction-4d raw_wave.npz runtime_snapshot.npz",
         "wavefunction fallback W -> add --allow-uniform-W explicitly",
@@ -298,10 +346,114 @@ EXPECTATIONS: dict[str, list[str]] = {
         "just-outside-threshold log = FAIL",
         "malformed JSONL log = INCOMPLETE",
         "bad log: dP slope misses -1 target: -0.32; g_eff slope misses -2 target: -1.11; flow is too compressible for weak-field screen: mach_max=0.84",
-        "weak log warnings: insufficient dP fit points: 4; insufficient geff fit points: 5",
-        "malformed log warnings: malformed JSONL line 2",
+        "weak log incomplete reasons: insufficient dP fit points: 4; insufficient geff fit points: 5",
+        "malformed log incomplete reasons: malformed JSONL line 2",
         "python single_throat_monopole_jsonl_fastscreen.py monopole.log --output-json monopole_verdict.json",
     ],
+}
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise RuntimeError(message)
+
+
+def line_payload(output: str, prefix: str) -> str:
+    for line in output.splitlines():
+        stripped = line.strip()
+        if stripped.startswith(prefix):
+            return stripped[len(prefix):].strip()
+    raise RuntimeError(f"missing output line starting with {prefix!r}")
+
+
+def parse_literal_payload(output: str, prefix: str):
+    return ast.literal_eval(line_payload(output, prefix))
+
+
+def parse_float_payload(output: str, prefix: str) -> float:
+    return float(line_payload(output, prefix))
+
+
+def require_increasing(values: list[float], label: str) -> None:
+    require(all(math.isfinite(float(value)) for value in values), f"{label} contains non-finite values: {values}")
+    require(all(float(a) < float(b) for a, b in zip(values, values[1:])), f"{label} is not strictly increasing: {values}")
+
+
+def check_step22_static_slice(output: str) -> None:
+    root_scale = parse_float_payload(output, "root scale =")
+    mhat0_static = parse_float_payload(output, "mhat0_static =")
+    packet_norm = parse_float_payload(output, "packet norm =")
+    require(0.0 < root_scale <= 0.1, f"root scale outside frozen small-scan range: {root_scale}")
+    require(100.0 < mhat0_static < 300.0, f"mhat0_static outside expected structural range: {mhat0_static}")
+    require(0.0 <= packet_norm < 1.0e-3, f"packet norm is not small: {packet_norm}")
+
+
+def check_step23_frontier_grid(output: str) -> None:
+    sample_scales = parse_literal_payload(output, "sample_scales =")
+    require(len(sample_scales) == 7, f"sample_scales length changed: {sample_scales}")
+    require(abs(float(sample_scales[0])) < 1.0e-15, f"sample_scales must start at 0.0: {sample_scales}")
+    require(float(sample_scales[-1]) <= 0.1, f"sample_scales must stay in the small-scan range: {sample_scales}")
+    require_increasing([float(x) for x in sample_scales], "sample_scales")
+
+    first_q1 = parse_literal_payload(output, "first sampled point with Q_iso < 1 =")
+    best_q = parse_literal_payload(output, "best sampled Q_iso point =")
+    require(len(first_q1) == 3 and len(best_q) == 3, f"unexpected frontier tuple shapes: {first_q1}, {best_q}")
+    require(0.0 <= float(first_q1[0]) <= 0.1, f"first Q_iso<1 scale outside scan: {first_q1}")
+    require(float(first_q1[1]) > 100.0, f"first Q_iso<1 mhat0 is not in the large-normalization regime: {first_q1}")
+    require(float(first_q1[2]) < 1.0, f"first Q_iso<1 tuple does not satisfy Q_iso<1: {first_q1}")
+    require(0.0 <= float(best_q[0]) <= 0.1, f"best-Q scale outside scan: {best_q}")
+    require(float(best_q[1]) > 100.0, f"best-Q mhat0 is not in the large-normalization regime: {best_q}")
+    require(float(best_q[2]) <= float(first_q1[2]), f"best-Q point is not at least as good as first-Q point: {best_q} vs {first_q1}")
+
+
+def check_step24_outgoing_grid(output: str) -> None:
+    lambda_grid = parse_literal_payload(output, "sample_lambda_out =")
+    require(len(lambda_grid) >= 5, f"lambda grid is too sparse: {lambda_grid}")
+    require(float(lambda_grid[0]) == 1.0, f"lambda grid must start at 1: {lambda_grid}")
+    require(float(lambda_grid[-1]) >= 1000.0, f"lambda grid no longer reaches the large-amplitude regime: {lambda_grid}")
+    require_increasing([float(x) for x in lambda_grid], "sample_lambda_out")
+
+    mhat5 = parse_literal_payload(output, "mhat0_req <= 5   ->")
+    q1 = parse_literal_payload(output, "Q_iso <= 1.0 ->")
+    qhalf = parse_literal_payload(output, "Q_iso <= 0.5 ->")
+    for label, point in (("mhat0<=5", mhat5), ("Q_iso<=1", q1), ("Q_iso<=0.5", qhalf)):
+        require(len(point) == 4, f"{label} tuple shape changed: {point}")
+        scale, lambda_out, mhat0_req, q_iso = map(float, point)
+        require(0.0 <= scale <= 0.1, f"{label} scale outside scan: {point}")
+        require(lambda_out >= 1.0, f"{label} lambda_out below baseline: {point}")
+        require(mhat0_req > 0.0 and q_iso > 0.0, f"{label} contains nonpositive metric: {point}")
+    require(float(mhat5[2]) <= 5.0, f"mhat0<=5 frontier violates its budget: {mhat5}")
+    require(float(q1[3]) <= 1.0, f"Q_iso<=1 frontier violates its threshold: {q1}")
+    require(float(qhalf[3]) <= 0.5, f"Q_iso<=0.5 frontier violates its threshold: {qhalf}")
+
+
+def check_step28_sigma_frontier(output: str) -> None:
+    sigma_budgets = parse_literal_payload(output, "sigma_budgets =")
+    require(len(sigma_budgets) >= 5, f"sigma budget grid is too sparse: {sigma_budgets}")
+    require(float(sigma_budgets[0]) <= 4.0, f"sigma budget grid lost the moderate endpoint: {sigma_budgets}")
+    require(float(sigma_budgets[-1]) >= 1999.0, f"sigma budget grid lost the large endpoint: {sigma_budgets}")
+    require_increasing([float(x) for x in sigma_budgets], "sigma_budgets")
+
+    budget_lines = [line.strip() for line in output.splitlines() if line.strip().startswith("|sigma| <=") and "->" in line]
+    require(len(budget_lines) >= 5, f"too few sigma frontier lines: {budget_lines}")
+    for line in budget_lines:
+        budget_match = re.match(r"\|sigma\| <= ([0-9.]+) -> (.+)", line)
+        require(budget_match is not None, f"could not parse sigma frontier line: {line}")
+        budget = float(budget_match.group(1))
+        point = ast.literal_eval(budget_match.group(2))
+        require(len(point) == 5, f"sigma frontier tuple shape changed: {point}")
+        scale, lambda_out, sigma, mhat0_req, q_iso = map(float, point)
+        require(0.0 <= scale <= 0.1, f"sigma frontier scale outside scan: {point}")
+        require(lambda_out >= 1.0, f"sigma frontier lambda_out below baseline: {point}")
+        require(abs(sigma) <= budget + 1.0e-12, f"sigma frontier violates budget {budget}: {point}")
+        require(mhat0_req > 0.0 and q_iso > 0.0, f"sigma frontier contains nonpositive metric: {point}")
+
+
+STRUCTURAL_CHECKS = {
+    "step_22_parent_throat_action_static_normalized_slice_sympy.py": [check_step22_static_slice],
+    "step_23_parent_throat_action_normalization_frontier_sympy.py": [check_step23_frontier_grid],
+    "step_24_parent_throat_action_outgoing_amplitude_frontier_sympy.py": [check_step24_outgoing_grid],
+    "step_28_parent_throat_action_hybrid_amplitude_budget_frontier_sympy.py": [check_step28_sigma_frontier],
 }
 
 
@@ -342,6 +494,8 @@ def main() -> int:
         for needle in EXPECTATIONS.get(path.name, []):
             if needle not in output:
                 raise RuntimeError(f"{path.name} missing expected output fragment:\n{needle}")
+        for check in STRUCTURAL_CHECKS.get(path.name, []):
+            check(output)
         print(f"OK {path.name}")
 
     print(f"Wrote logs to {out_dir}")

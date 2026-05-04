@@ -17,6 +17,10 @@ This step answers that by mapping the corridor into the exact Stage-95
 branch-B parameters and comparing them against the forbidden natural-source
 Robin burdens from `step_26`.
 
+The moderate corridor records are imported from `step_29`, so this comparison
+does not keep a second local copy of the \(\lambda_{\rm out}=20,50\) patch
+points.
+
 ---
 
 ## 1. Exact branch-B parameter map
@@ -45,6 +49,11 @@ So the moderate corridor points from `step_29` map to
 These are still significant deformations, but they are not remotely comparable
 to the natural-source burdens that appeared when `lambda_out` was interpreted as
 \(N_Q\).
+
+The script also checks that the sign of the \(\rho=4\sigma\) map is
+load-bearing. Flipping it would move the two moderate-corridor \(\rho\) values
+by residuals \(152\) and \(392\), so that sign convention cannot silently
+regress.
 
 ---
 

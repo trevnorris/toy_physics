@@ -118,6 +118,22 @@ def main() -> None:
     except KeyError as exc:
         if "--allow-uniform-W" not in str(exc):
             raise
+    wave_missing_W_nonunit = dict(wave_missing_W)
+    wave_missing_W_nonunit["w"] = np.linspace(-1.0, 1.0, wave_missing_W["w"].size)
+    wave_uniform_payload = adapt_wavefunction_4d(
+        wave_missing_W_nonunit,
+        mass=1.0,
+        hbar=1.0,
+        periodic_xyz=True,
+        periodic_w=False,
+        allow_uniform_weight=True,
+    )
+    w_axis = wave_uniform_payload["w"]
+    uniform_W_integral_error = abs(float(np.trapz(wave_uniform_payload["W"], x=w_axis)) - 1.0)
+    assert_small("uniform W opt-in normalization", uniform_W_integral_error, 1e-15)
+    uniform_W_expected_value = 1.0 / float(w_axis[-1] - w_axis[0])
+    uniform_W_value_error = abs(float(wave_uniform_payload["W"][0]) - uniform_W_expected_value)
+    assert_small("uniform W opt-in nonunit-span value", uniform_W_value_error, 1e-15)
 
     dx, dy, dz = spacings
     V_domain = float(exact_source.size) * dx * dy * dz
@@ -172,6 +188,8 @@ def main() -> None:
             "rel_jz": wave_jz_rel,
             "max_abs_R_cont": wave_summary["max_abs_R_cont"],
             "alpha_fit_tail_mean": wave_summary["alpha_fit_tail_mean"],
+            "uniform_W_integral_error": uniform_W_integral_error,
+            "uniform_W_value_error": uniform_W_value_error,
         },
         "monopole_metrics": {
             "max_abs_R_cont": mono_summary["max_abs_R_cont"],
@@ -211,6 +229,8 @@ def main() -> None:
     print("  reconstructed source rel error =", reconstruct_rel)
     print("Adapter guardrails:")
     print("  missing W without --allow-uniform-W = rejected")
+    print("  uniform W opt-in integral error =", uniform_W_integral_error)
+    print("  uniform W opt-in nonunit-span value error =", uniform_W_value_error)
     print("  reconstructed monopole source without lambda = rejected")
     print("CLI:")
     print("  wavefunction -> python cfd_snapshot_adapters.py wavefunction-4d raw_wave.npz runtime_snapshot.npz")

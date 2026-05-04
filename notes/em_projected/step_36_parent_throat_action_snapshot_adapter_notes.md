@@ -105,10 +105,14 @@ checks both paths:
    - verifies the same residual closure,
    - separately exercises the reconstructed monopole source law.
 
-The self-test also checks two guardrails:
+The self-test also checks these guardrails:
 
 - a wavefunction snapshot without `W` is rejected unless
   `--allow-uniform-W` is used;
+- using `--allow-uniform-W` produces a projection weight whose trapezoidal
+  integral over the \(w\) axis is `1.0`;
+- the uniform-`W` fallback is tested on a non-unit \(w\)-span, so dropping the
+  `1/span` normalization factor would no longer be invisible;
 - a reconstructed monopole source without `lambda` is rejected.
 
 The wavefunction path intentionally does **not** claim machine-zero exact

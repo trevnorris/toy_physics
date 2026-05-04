@@ -187,6 +187,10 @@ they agree:
 
 Because the eliminated surface itself has no \(z_0\) slot, the loss of
 \(z_0\) is now a genuine algebraic consequence of the compatibility reduction.
+The script explicitly guards both routes by checking that the fixed-target and
+transported-target compatibility variations have zero \(z_0\) derivative,
+while the normalization \(K\)-surface still has a nonzero \(z_0\) derivative
+before elimination.
 
 The script now checks one stronger variant as well: impose the ratio-form
 transported target

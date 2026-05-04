@@ -26,6 +26,7 @@ def main() -> None:
     B0, B2, B4, Z0, Z2, Z4 = sp.symbols('B0 B2 B4 Z0 Z2 Z4', nonzero=True)
     N0, N2, N4 = sp.symbols('N0 N2 N4', nonzero=True)
     mhat0, G, cs, a, c = sp.symbols('mhat0 G cs a c', nonzero=True)
+    eps = sp.symbols('eps', nonzero=True)
 
     D0 = KSigma - B0 - Z0
     D2 = -(MSigma + B2 + Z2)
@@ -88,6 +89,14 @@ def main() -> None:
     assert_zero('constant-prefactor P4 factorization', P4.subs(N2, N2_const_closed) - (N4 - N4_const_closed) / D0)
     assert_zero('constant-prefactor N2 solve', const_prefactor_solution[N2] - N2_const_closed)
     assert_zero('constant-prefactor N4 solve', const_prefactor_solution[N4] - N4_const_closed)
+    assert_nonzero(
+        'constant-prefactor P2 factorization detects mutated N2 closure',
+        P2 - (N2 - (N2_const_closed + eps)) / D0,
+    )
+    assert_nonzero(
+        'constant-prefactor P4 factorization detects mutated N4 closure',
+        P4.subs(N2, N2_const_closed) - (N4 - (N4_const_closed + eps)) / D0,
+    )
     N4_md_one_pole = -5 * (MSigma + B2 + Z2)**2 * N0 / (KSigma - B0 - Z0)**2
     assert_zero('N4 one-pole md form', N4_const.subs(KSigma, K_from_one_pole) - N4_md_one_pole.subs(KSigma, K_from_one_pole))
 
@@ -108,16 +117,61 @@ def main() -> None:
     u2_root_negative = sp.simplify(u2.subs(MSigma, M_root_negative))
     assert_zero('u2 on positive M root', u2_root_positive - root_gap / D0)
     assert_zero('u2 on negative M root', u2_root_negative + root_gap / D0)
-    D0stable, Tstable = sp.symbols('D0stable Tstable', positive=True)
-    stable_u2_positive = sp.simplify(sp.sqrt(D0stable * Tstable / 3) / D0stable)
-    stable_u2_negative = sp.simplify(-sp.sqrt(D0stable * Tstable / 3) / D0stable)
-    if stable_u2_positive.is_positive is not True:
-        raise AssertionError(f'Positive one-pole root should give positive u2 under D0>0 and B4+Z4>0: {stable_u2_positive}')
-    if stable_u2_negative.is_negative is not True:
-        raise AssertionError(f'Negative one-pole root should give negative u2 under D0>0 and B4+Z4>0: {stable_u2_negative}')
     assert_nonzero('stable response discriminates the two M roots', u2_root_positive - u2_root_negative)
     if len(M_roots) != 2:
         raise AssertionError(f'Expected two algebraic M roots, got {M_roots}')
+    stable_samples = [
+        (
+            'baseline',
+            {
+                B0: sp.Integer(1),
+                Z0: sp.Integer(2),
+                KSigma: sp.Integer(13),
+                B2: sp.Integer(3),
+                Z2: sp.Integer(4),
+                B4: sp.Integer(5),
+                Z4: sp.Integer(7),
+            },
+        ),
+        (
+            'small-D0 large-tail',
+            {
+                B0: sp.Integer(1),
+                Z0: sp.Integer(1),
+                KSigma: sp.Integer(4),
+                B2: sp.Integer(2),
+                Z2: sp.Integer(5),
+                B4: sp.Integer(9),
+                Z4: sp.Integer(11),
+            },
+        ),
+        (
+            'large-D0 small-tail',
+            {
+                B0: sp.Integer(2),
+                Z0: sp.Integer(3),
+                KSigma: sp.Integer(105),
+                B2: sp.Integer(-4),
+                Z2: sp.Integer(9),
+                B4: sp.Integer(1),
+                Z4: sp.Integer(0),
+            },
+        ),
+    ]
+    stable_sample_results = []
+    for sample_label, sample_subs in stable_samples:
+        D0_value = sp.simplify(D0.subs(sample_subs))
+        tail_value = sp.simplify((B4 + Z4).subs(sample_subs))
+        if not (D0_value > 0 and tail_value > 0):
+            raise AssertionError(f'Expected stable-pole positive sample {sample_label}, got D0={D0_value}, B4+Z4={tail_value}')
+        u2_positive_value = sp.simplify(u2_root_positive.subs(sample_subs))
+        u2_negative_value = sp.simplify(u2_root_negative.subs(sample_subs))
+        if not (float(u2_positive_value) > 0.0):
+            raise AssertionError(f'Positive one-pole branch did not give u2>0 for {sample_label}: {u2_positive_value}')
+        if not (float(u2_negative_value) < 0.0):
+            raise AssertionError(f'Negative one-pole branch did not give u2<0 for {sample_label}: {u2_negative_value}')
+        stable_sample_results.append((sample_label, D0_value, tail_value, u2_positive_value, u2_negative_value))
+    _, D0_sample, tail_sample, u2_positive_sample, u2_negative_sample = stable_sample_results[0]
 
     w = sp.symbols('w', real=True)
     beta = sp.exp(-w**2 / 2)
@@ -152,8 +206,20 @@ def main() -> None:
     lines.append(f'N4_on_constant_prefactor_branch = {N4_const}')
     lines.append(f'N4_on_one_pole_plus_constant_prefactor = {sp.factor(sp.together(N4_one_pole))}')
     lines.append(f'N4_md_equivalent_on_one_pole = {sp.factor(sp.together(N4_md_one_pole.subs(KSigma, K_from_one_pole)))}')
+    lines.append('constant-prefactor mutation guards = PASS')
     lines.append(f'u2_on_positive_root = {sp.sstr(u2_root_positive)}')
     lines.append(f'u2_on_negative_root = {sp.sstr(u2_root_negative)}')
+    lines.append(f'numeric stable-pole sample D0 = {sp.sstr(D0_sample)}, B4+Z4 = {sp.sstr(tail_sample)}')
+    lines.append(f'positive-root numeric u2 = {float(u2_positive_sample)}')
+    lines.append(f'negative-root numeric u2 = {float(u2_negative_sample)}')
+    lines.append(f'multi-sample response-sign guard count = {len(stable_sample_results)}')
+    for sample_label, D0_value, tail_value, u2_positive_value, u2_negative_value in stable_sample_results:
+        lines.append(
+            '  '
+            + f'{sample_label}: D0={sp.sstr(D0_value)}, B4+Z4={sp.sstr(tail_value)}, '
+            + f'u2+={float(u2_positive_value)}, u2-={float(u2_negative_value)}'
+        )
+    lines.append('one-pole numerical response-sign guard = PASS')
     lines.append(f'Concrete wall-integral example: MSigma={sp.sstr(MSigma_example)}, KSigma={sp.sstr(KSigma_example)}')
     lines.append('The one-pole algebra leaves two M roots, but under the stable-pole sign convention D0>0 and B4+Z4>0')
     lines.append('only the positive root gives u2>0; the negative root gives u2<0.')

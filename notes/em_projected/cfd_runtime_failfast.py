@@ -19,14 +19,32 @@ DEFAULT_THRESHOLDS = {
 }
 
 
+def q_tail_cv_max_from_resolution(summary: dict[str, Any]) -> float:
+    """Estimate a Q_r plateau CV threshold from the number of tail shells."""
+    raw_tail_n = summary.get("tail_n_points", summary.get("Q_r_tail_n_points"))
+    if raw_tail_n is None:
+        raise KeyError("summary missing tail_n_points for resolution-derived Q_r threshold")
+    tail_n = int(raw_tail_n)
+    if tail_n <= 0:
+        raise ValueError(f"tail_n_points must be positive, got {tail_n}")
+    return math.sqrt(2.0 / max(tail_n, 4))
+
+
 def load_summary(path: pathlib.Path) -> dict[str, Any]:
     return json.loads(path.read_text())
 
 
-def classify_summary(summary: dict[str, Any], thresholds: dict[str, float] | None = None) -> dict[str, Any]:
+def classify_summary(
+    summary: dict[str, Any],
+    thresholds: dict[str, float] | None = None,
+    *,
+    q_tail_cv_from_resolution: bool = False,
+) -> dict[str, Any]:
     limits = dict(DEFAULT_THRESHOLDS)
     if thresholds:
         limits.update(thresholds)
+    if q_tail_cv_from_resolution:
+        limits["q_tail_cv_max"] = q_tail_cv_max_from_resolution(summary)
 
     failures: list[str] = []
     warnings: list[str] = []
@@ -98,9 +116,38 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("summary_json", help="JSON file produced by cfd_runtime_monitor_postprocess.py")
     parser.add_argument("--output-json", help="write verdict JSON to this path")
+    parser.add_argument("--continuity-rel-max", type=float, default=None, help="maximum rms(R_cont)/rms(S_rho)")
+    parser.add_argument("--poisson-rel-max", type=float, default=None, help="maximum rms(R_Pois_exact)/rms(S_rho)")
+    parser.add_argument("--q-tail-cv-max", type=float, default=None, help="maximum exterior Q_r tail coefficient of variation")
+    parser.add_argument(
+        "--q-tail-cv-max-from-resolution",
+        action="store_true",
+        help="set q_tail_cv_max = sqrt(2/max(tail_n_points, 4)) from the summary tail-shell count",
+    )
+    parser.add_argument("--mu-eff2-tail-abs-max", type=float, default=None, help="maximum absolute exterior mu_eff^2 tail median")
+    parser.add_argument("--alpha-fit-tail-error-max", type=float, default=None, help="maximum |mean(alpha_fit)-2| on the tail")
+    parser.add_argument("--alpha-fit-tail-std-max", type=float, default=None, help="maximum tail standard deviation of alpha_fit")
     args = parser.parse_args()
+    if args.q_tail_cv_max is not None and args.q_tail_cv_max_from_resolution:
+        parser.error("--q-tail-cv-max and --q-tail-cv-max-from-resolution are mutually exclusive")
 
-    verdict = classify_summary(load_summary(pathlib.Path(args.summary_json)))
+    threshold_overrides = {
+        key: value
+        for key, value in {
+            "continuity_rel_max": args.continuity_rel_max,
+            "poisson_rel_max": args.poisson_rel_max,
+            "q_tail_cv_max": args.q_tail_cv_max,
+            "mu_eff2_tail_abs_max": args.mu_eff2_tail_abs_max,
+            "alpha_fit_tail_error_max": args.alpha_fit_tail_error_max,
+            "alpha_fit_tail_std_max": args.alpha_fit_tail_std_max,
+        }.items()
+        if value is not None
+    }
+    verdict = classify_summary(
+        load_summary(pathlib.Path(args.summary_json)),
+        thresholds=threshold_overrides,
+        q_tail_cv_from_resolution=args.q_tail_cv_max_from_resolution,
+    )
     print("CFD FAIL-FAST VERDICT")
     print("  status           =", verdict["status"])
     for key, value in verdict["metrics"].items():

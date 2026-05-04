@@ -80,8 +80,8 @@ def main() -> None:
         malformed_verdict = classify_events(load_events(malformed_path))
         if malformed_verdict["status"] != "INCOMPLETE":
             raise AssertionError(f"malformed JSONL should be INCOMPLETE, got {malformed_verdict}")
-        if not any("malformed JSONL line" in warning for warning in malformed_verdict["warnings"]):
-            raise AssertionError(f"malformed JSONL warning missing: {malformed_verdict}")
+        if not any("malformed JSONL line" in reason for reason in malformed_verdict["incomplete_reasons"]):
+            raise AssertionError(f"malformed JSONL incomplete reason missing: {malformed_verdict}")
 
     branch_freeze_payload = {
         "metadata": branch_metadata,
@@ -121,8 +121,8 @@ def main() -> None:
     print("  malformed JSONL log =", malformed_verdict["status"])
     print("Representative failure reasons:")
     print("  bad log:", "; ".join(bad_verdict["failures"]))
-    print("  weak log warnings:", "; ".join(weak_verdict["warnings"]))
-    print("  malformed log warnings:", "; ".join(malformed_verdict["warnings"]))
+    print("  weak log incomplete reasons:", "; ".join(weak_verdict["incomplete_reasons"]))
+    print("  malformed log incomplete reasons:", "; ".join(malformed_verdict["incomplete_reasons"]))
     print("CLI:")
     print("  python single_throat_monopole_jsonl_fastscreen.py monopole.log --output-json monopole_verdict.json")
     print("Interpretation:")

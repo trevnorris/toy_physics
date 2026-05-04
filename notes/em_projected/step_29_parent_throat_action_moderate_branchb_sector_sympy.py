@@ -17,6 +17,11 @@ def assert_close(label: str, actual: float, expected: float, tol: float) -> None
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
 
 
+def assert_greater(label: str, actual: float, threshold: float) -> None:
+    if not actual > threshold:
+        raise AssertionError(f"{label} failed: {actual} <= {threshold}")
+
+
 @dataclass(frozen=True)
 class Point:
     scale: float
@@ -25,6 +30,35 @@ class Point:
     mhat0_req: float
     q_iso: float
     delta_ln_t2: float
+
+
+STEP29_MODERATE_BRANCHB_EXPORTS = {
+    "P0_base": 0.00023523241237876055,
+    "same_scale_lambda20": {
+        "scale": 0.092,
+        "lambda_out": 20.0,
+        "sigma": -19.0,
+        "mhat0_req": 47.91244113628207,
+        "Q_iso": 0.2670781822533451,
+        "delta_ln_t2": 2.995732273553991,
+    },
+    "same_scale_lambda50": {
+        "scale": 0.092,
+        "lambda_out": 50.0,
+        "sigma": -49.0,
+        "mhat0_req": 30.302488449879455,
+        "Q_iso": 0.26719789464729127,
+        "delta_ln_t2": 3.912023005428146,
+    },
+}
+
+
+def export_step29_moderate_branchb_patch() -> dict[str, object]:
+    return {
+        "P0_base": STEP29_MODERATE_BRANCHB_EXPORTS["P0_base"],
+        "same_scale_lambda20": dict(STEP29_MODERATE_BRANCHB_EXPORTS["same_scale_lambda20"]),
+        "same_scale_lambda50": dict(STEP29_MODERATE_BRANCHB_EXPORTS["same_scale_lambda50"]),
+    }
 
 
 def pareto_frontier(points: list[Point]) -> list[Point]:
@@ -62,6 +96,12 @@ def main() -> None:
     base_coords = np.zeros(4, dtype=float)
     baseline_vec, jac = step23.central_jacobian(base_coords, 0.02)
     delta_ls, _, _, _ = np.linalg.lstsq(jac, -baseline_vec, rcond=None)
+    linear_baseline_norm = float(np.linalg.norm(baseline_vec))
+    linear_correct_norm = float(np.linalg.norm(baseline_vec + jac @ delta_ls))
+    linear_sign_flip_norm = float(np.linalg.norm(baseline_vec - jac @ delta_ls))
+    if not linear_correct_norm < 1e-8:
+        raise AssertionError(f"least-squares direction no longer closes the linearized packet: {linear_correct_norm}")
+    assert_greater("sign-flipped outgoing direction worsens linearized packet", linear_sign_flip_norm, linear_baseline_norm)
 
     all_points: list[Point] = []
     for scale in branch_metadata["sample_scales"]:
@@ -103,6 +143,9 @@ def main() -> None:
     lam20_same_scale = next(point for point in frontiers[19] if point.scale == 0.092 and point.lambda_out == 20.0)
     lam20_shifted = next(point for point in frontiers[19] if point.scale == 0.09 and point.lambda_out == 20.0)
     lam50_same_scale = next(point for point in frontiers[49] if point.scale == 0.092 and point.lambda_out == 50.0)
+    export_20 = STEP29_MODERATE_BRANCHB_EXPORTS["same_scale_lambda20"]
+    export_50 = STEP29_MODERATE_BRANCHB_EXPORTS["same_scale_lambda50"]
+    p0_base_export = STEP29_MODERATE_BRANCHB_EXPORTS["P0_base"]
 
     q_delta_20_same = lam20_same_scale.q_iso - baseline.q_iso
     q_rel_20_same = q_delta_20_same / baseline.q_iso
@@ -111,24 +154,44 @@ def main() -> None:
     q_delta_50_same = lam50_same_scale.q_iso - baseline.q_iso
     q_rel_50_same = q_delta_50_same / baseline.q_iso
     norm_drop_50_same = baseline.mhat0_req / lam50_same_scale.mhat0_req
+    p0_base_from_20 = (54.0 / 5.0) / (lam20_same_scale.mhat0_req**2 * lam20_same_scale.lambda_out)
+    p0_base_from_50 = (54.0 / 5.0) / (lam50_same_scale.mhat0_req**2 * lam50_same_scale.lambda_out)
 
-    assert_close("baseline q", baseline.q_iso, 0.26705543084121786, 1e-9)
-    assert_close("same-scale lambda20 q", lam20_same_scale.q_iso, 0.2670781822626949, 1e-9)
-    assert_close("same-scale lambda20 mhat", lam20_same_scale.mhat0_req, 47.912441136331765, 1e-6)
-    assert_close("same-scale lambda20 q delta", q_delta_20_same, 2.2751421477039345e-05, 1e-12)
-    assert_close("same-scale lambda20 q relative", q_rel_20_same, 8.519362967229909e-05, 1e-12)
+    assert_close("baseline q", baseline.q_iso, 0.2670554308318671, 1e-9)
+    assert_close("exported P0_base from lambda20", p0_base_from_20, p0_base_export, 1e-18)
+    assert_close("exported P0_base from lambda50", p0_base_from_50, p0_base_export, 1e-18)
+    assert_close("same-scale lambda20 scale", lam20_same_scale.scale, export_20["scale"], 1e-12)
+    assert_close("same-scale lambda20 lambda", lam20_same_scale.lambda_out, export_20["lambda_out"], 1e-12)
+    assert_close("same-scale lambda20 sigma", lam20_same_scale.sigma, export_20["sigma"], 1e-12)
+    assert_close("same-scale lambda20 q", lam20_same_scale.q_iso, export_20["Q_iso"], 1e-9)
+    assert_close("same-scale lambda20 mhat", lam20_same_scale.mhat0_req, export_20["mhat0_req"], 1e-6)
+    assert_close("same-scale lambda20 q delta", q_delta_20_same, 2.2751421478006684e-05, 1e-12)
+    assert_close("same-scale lambda20 q relative", q_rel_20_same, 8.519362967881576e-05, 1e-12)
     assert_close("same-scale lambda20 normalization drop", norm_drop_20_same, math.sqrt(20.0), 1e-12)
-    assert_close("same-scale lambda20 log amplitude", lam20_same_scale.delta_ln_t2, 2.995732273553991, 1e-12)
+    assert_close("same-scale lambda20 log amplitude", lam20_same_scale.delta_ln_t2, export_20["delta_ln_t2"], 1e-12)
+    sigma_sign_flip_residual_20 = abs(lam20_same_scale.sigma - (lam20_same_scale.lambda_out - 1.0))
+    inverse_lambda_mutation_residual_20 = abs((lam20_same_scale.mhat0_req / baseline.mhat0_req) ** 2 - lam20_same_scale.lambda_out)
+    assert_close("lambda20 branch-B sigma law", lam20_same_scale.sigma, 1.0 - lam20_same_scale.lambda_out, 1e-12)
+    assert_greater("lambda20 sigma sign-flip mutation residual", sigma_sign_flip_residual_20, 10.0)
+    assert_greater("lambda20 inverse lambda scaling mutation residual", inverse_lambda_mutation_residual_20, 10.0)
 
-    assert_close("shifted lambda20 q", lam20_shifted.q_iso, 0.45133756597801233, 1e-9)
-    assert_close("shifted lambda20 mhat", lam20_shifted.mhat0_req, 43.51570977913286, 1e-6)
+    assert_close("shifted lambda20 q", lam20_shifted.q_iso, 0.4513375659863663, 1e-9)
+    assert_close("shifted lambda20 mhat", lam20_shifted.mhat0_req, 43.51570977908849, 1e-6)
 
-    assert_close("same-scale lambda50 q", lam50_same_scale.q_iso, 0.26719789465663646, 1e-9)
-    assert_close("same-scale lambda50 mhat", lam50_same_scale.mhat0_req, 30.302488449910886, 1e-6)
-    assert_close("same-scale lambda50 q delta", q_delta_50_same, 0.00014246381541860577, 1e-12)
-    assert_close("same-scale lambda50 q relative", q_rel_50_same, 0.0005334615924860456, 1e-12)
+    assert_close("same-scale lambda50 scale", lam50_same_scale.scale, export_50["scale"], 1e-12)
+    assert_close("same-scale lambda50 lambda", lam50_same_scale.lambda_out, export_50["lambda_out"], 1e-12)
+    assert_close("same-scale lambda50 sigma", lam50_same_scale.sigma, export_50["sigma"], 1e-12)
+    assert_close("same-scale lambda50 q", lam50_same_scale.q_iso, export_50["Q_iso"], 1e-9)
+    assert_close("same-scale lambda50 mhat", lam50_same_scale.mhat0_req, export_50["mhat0_req"], 1e-6)
+    assert_close("same-scale lambda50 q delta", q_delta_50_same, 0.0001424638154241542, 1e-12)
+    assert_close("same-scale lambda50 q relative", q_rel_50_same, 0.0005334615925255107, 1e-12)
     assert_close("same-scale lambda50 normalization drop", norm_drop_50_same, math.sqrt(50.0), 1e-12)
-    assert_close("same-scale lambda50 log amplitude", lam50_same_scale.delta_ln_t2, 3.912023005428146, 1e-12)
+    assert_close("same-scale lambda50 log amplitude", lam50_same_scale.delta_ln_t2, export_50["delta_ln_t2"], 1e-12)
+    sigma_sign_flip_residual_50 = abs(lam50_same_scale.sigma - (lam50_same_scale.lambda_out - 1.0))
+    inverse_lambda_mutation_residual_50 = abs((lam50_same_scale.mhat0_req / baseline.mhat0_req) ** 2 - lam50_same_scale.lambda_out)
+    assert_close("lambda50 branch-B sigma law", lam50_same_scale.sigma, 1.0 - lam50_same_scale.lambda_out, 1e-12)
+    assert_greater("lambda50 sigma sign-flip mutation residual", sigma_sign_flip_residual_50, 50.0)
+    assert_greater("lambda50 inverse lambda scaling mutation residual", inverse_lambda_mutation_residual_50, 25.0)
 
     print("STEP 29 MODERATE BRANCH-B SECTOR AUDIT")
     print("Extracted the sampled low-defect Pareto sector for moderate exact Stage95 branch-B amplitude budgets.")
@@ -148,6 +211,10 @@ def main() -> None:
     print("Low-defect Pareto frontier for |sigma| <= 49:")
     for point in frontiers[49]:
         print(" ", (point.scale, point.lambda_out, point.sigma, point.mhat0_req, point.q_iso, point.delta_ln_t2))
+    print("Direction and amplitude mutation guards:")
+    print("  sign-flipped linearized direction guard = PASS")
+    print("  sigma sign-flip mutation residuals =", (sigma_sign_flip_residual_20, sigma_sign_flip_residual_50))
+    print("  inverse lambda scaling mutation residuals =", (inverse_lambda_mutation_residual_20, inverse_lambda_mutation_residual_50))
     print("Key moderate-sector diagnostics:")
     print("  baseline point =", (baseline.scale, baseline.lambda_out, baseline.mhat0_req, baseline.q_iso))
     print("  same-scale lambda_out = 20 point =", (lam20_same_scale.scale, lam20_same_scale.lambda_out, lam20_same_scale.mhat0_req, lam20_same_scale.q_iso))

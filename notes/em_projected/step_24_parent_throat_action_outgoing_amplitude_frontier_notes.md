@@ -65,6 +65,11 @@ At fixed scale, this coordinate rescales
 while \(R_{\rm pole}\) is unchanged.
 
 So it is an upstream outgoing-family coordinate, not a post-target repair.
+The script now guards both pieces of that setup: the imported Step-21 ray must
+close the linearized packet while its sign-flipped version worsens the
+baseline, and the fixed-scale normalization ratio must recover
+\(\lambda_{\rm out}\). The inverse-\(\lambda_{\rm out}\) scaling is checked as
+a nonzero mutation residual.
 
 ---
 
@@ -80,9 +85,9 @@ normalization budgets are:
 =(0.092,\ 20),
 \]
 \[
-\widehat m_0^{\rm req}\approx 47.912441136331765,
+\widehat m_0^{\rm req}\approx 47.91244113628207,
 \qquad
-Q_{\rm iso}\approx 0.2670781822626949.
+Q_{\rm iso}\approx 0.2670781822533451.
 \]
 
 \[
@@ -92,9 +97,9 @@ Q_{\rm iso}\approx 0.2670781822626949.
 =(0.092,\ 200),
 \]
 \[
-\widehat m_0^{\rm req}\approx 15.151244224955443,
+\widehat m_0^{\rm req}\approx 15.151244224939727,
 \qquad
-Q_{\rm iso}\approx 0.2693266571833183.
+Q_{\rm iso}\approx 0.2693266571740554.
 \]
 
 \[
@@ -104,9 +109,9 @@ Q_{\rm iso}\approx 0.2693266571833183.
 =(0.092,\ 500),
 \]
 \[
-\widehat m_0^{\rm req}\approx 9.582488227266353,
+\widehat m_0^{\rm req}\approx 9.582488227256414,
 \qquad
-Q_{\rm iso}\approx 0.28094980884298526.
+Q_{\rm iso}\approx 0.28094980883415077.
 \]
 
 \[
@@ -116,9 +121,9 @@ Q_{\rm iso}\approx 0.28094980884298526.
 =(0.092,\ 2000),
 \]
 \[
-\widehat m_0^{\rm req}\approx 4.7912441136331765,
+\widehat m_0^{\rm req}\approx 4.791244113628207,
 \qquad
-Q_{\rm iso}\approx 0.4394839373049669.
+Q_{\rm iso}\approx 0.43948393729983487.
 \]
 
 So even with a very small required normalization, the isotropic defect on this
@@ -137,9 +142,9 @@ Q_{\rm iso}\le 1
 =(0.09,\ 2000),
 \]
 \[
-\widehat m_0^{\rm req}\approx 4.351570977913287,
+\widehat m_0^{\rm req}\approx 4.3515709779088505,
 \qquad
-Q_{\rm iso}\approx 0.618690285150578.
+Q_{\rm iso}\approx 0.6186902851572366.
 \]
 
 \[
@@ -149,9 +154,9 @@ Q_{\rm iso}\le 0.5
 =(0.092,\ 2000),
 \]
 \[
-\widehat m_0^{\rm req}\approx 4.7912441136331765,
+\widehat m_0^{\rm req}\approx 4.791244113628207,
 \qquad
-Q_{\rm iso}\approx 0.4394839373049669.
+Q_{\rm iso}\approx 0.43948393729983487.
 \]
 
 This is a major change relative to the one-coordinate frontier in `step_23`,

@@ -60,6 +60,26 @@ So the two agree only if
 \frac{I_{WS}}{I_{WZ}}=\frac{1}{Z_{\rm int}}.
 \]
 
+The audit script no longer treats this as a bare factorization claim. It also
+checks a concrete smooth projected residual with
+
+\[
+f(x)=\sin(kx)+x^2,\qquad j(x)=\cos(kx)+x,
+\]
+
+Gaussian observer/source profiles, and the same Gaussian localizer \(Z(w)\).
+It verifies directly that
+
+\[
+\int W\left(Z\,\partial_x f-\mu_0 S\,j\right)dw
+=
+I_{WZ}\partial_x f-\mu_0 I_{WS}j.
+\]
+
+Then it mutates the assumptions by adding \(w^2\)-dependent field and source
+pieces. Those mutations produce nonzero extra projected moments, so the
+zero-mode/factorized-source reduction fails as it should.
+
 ## Gaussian Matched-Kernel Example
 
 Take

@@ -113,7 +113,13 @@ The Stage-95 hybrid Robin/mixed branch gives the exact branch-B law
 \chi_B(\sigma,\gamma)=\frac{1-9\sigma\gamma}{1-\sigma}.
 \]
 
-On the canonical quintic branch \(\gamma=\frac19\), this collapses to
+Treating the canonical value as the imported Stage-95 branch-B value,
+
+\[
+\gamma=\frac19.
+\]
+
+the local script checks that \(\chi_B\) collapses to
 
 \[
 \chi_B=1.
@@ -134,6 +140,13 @@ coordinate:
 \qquad
 \chi_Q=1.
 \]
+
+The script pairs these identities with mutation guards: shifting the uniform
+outgoing scale by \(\epsilon\) or shifting the
+\(\sigma(\lambda_{\rm out})\) map must make the corresponding residual
+nonzero. The canonical \(\gamma=1/9\) is treated here as an imported Stage-95
+branch-B value; this local step checks its consequences but does not
+independently derive that upstream constant.
 
 This is the clean escape hatch that survives `step_25` and `step_26`.
 

@@ -197,6 +197,17 @@ positive branch is exactly the one with \(u_2>0\), while the negative branch
 gives \(u_2<0\). The script still verifies the full factorization and Vieta
 identities for the two algebraic roots, but the branch choice is now tied to a
 stated response-sign criterion rather than left as an unexamined convention.
+It also evaluates the two branches at a pinned stable-pole sample,
+\(D_0=10\) and \(B_4+Z_4=12\), giving
+\[
+u_2^{(+)}\approx 0.6324555320336759,
+\qquad
+u_2^{(-)}\approx -0.6324555320336759.
+\]
+The self-test repeats the same sign check on three stable-pole samples,
+including small-\(D_0\)/large-tail and large-\(D_0\)/small-tail regimes. That
+numerical sign check is the load-bearing branch-sign guard; the symbolic
+factorization and Vieta identities remain supporting algebra.
 
 ---
 
@@ -313,6 +324,12 @@ then substituting that same solution back into \(P_2,P_4\). Instead it shows:
 
 so the branch formulas are now structural factorizations of the outgoing
 conditions rather than a solve-and-reinsert tautology.
+
+The script also mutates the constant-prefactor closures by replacing
+\(N_2^{\rm branch}\) and \(N_4^{\rm branch}\) with
+\(N_2^{\rm branch}+\epsilon\) and \(N_4^{\rm branch}+\epsilon\). Both mutated
+factorizations are required to become nonzero, so the zero checks are
+load-bearing rather than decorative.
 
 The audit script also includes a concrete wall-integral sanity check with
 \(\beta_2(w)=e^{-w^2/2}\), \(\mu_\eta=1\), \(T_w=1\), \(T_\Omega=1/6\), and

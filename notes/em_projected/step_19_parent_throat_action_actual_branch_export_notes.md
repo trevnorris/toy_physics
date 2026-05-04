@@ -375,6 +375,7 @@ no longer tied only to the raw Hermite trial basis.
 
 More importantly, the untuned isotropic target residues themselves are stable
 under this basis growth. On the 4-mode packet the script finds
+
 \[
 \text{one-pole}\approx -13.134593938872376,
 \qquad
@@ -385,6 +386,11 @@ P_2\approx 0.37009844569768474,
 \qquad
 P_4\approx 0.8889149882257381,
 \]
+The 4-mode residual tuple is also exposed as
+`export_step19_four_mode_residuals()` so downstream branch-family scans can
+consume the owner step's pinned packet instead of maintaining separate local
+literals.
+
 while on the adapted 5-mode packet it finds
 \[
 \text{one-pole}\approx -13.134428427110006,

@@ -11,6 +11,8 @@ import mpmath as mp
 import numpy as np
 import sympy as sp
 
+from step_19_parent_throat_action_actual_branch_export_sympy import export_step19_four_mode_residuals
+
 
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
     if abs(actual - expected) > tol:
@@ -20,6 +22,11 @@ def assert_close(label: str, actual: float, expected: float, tol: float) -> None
 def assert_small(label: str, value: float, tol: float) -> None:
     if abs(value) > tol:
         raise AssertionError(f"{label} failed: |value|={abs(value)} > {tol}")
+
+
+def assert_greater(label: str, actual: float, floor: float) -> None:
+    if actual <= floor:
+        raise AssertionError(f"{label} failed: {actual} <= {floor}")
 
 
 @dataclass(frozen=True)
@@ -54,7 +61,13 @@ def quad_inf(func) -> float:
     return float(mp.quad(func, [-mp.inf, mp.inf]))
 
 
-def build_numeric_functions(log_amp: float, log_r_width: float, log_beta_width: float) -> dict[str, object]:
+def build_numeric_functions(
+    log_amp: float,
+    log_r_width: float,
+    log_beta_width: float,
+    *,
+    mu_eta_profile_sign: float = 1.0,
+) -> dict[str, object]:
     amp = math.exp(log_amp)
     r_width = math.exp(log_r_width)
     beta_width = math.exp(log_beta_width)
@@ -63,7 +76,7 @@ def build_numeric_functions(log_amp: float, log_r_width: float, log_beta_width: 
     beta = amp * sp.exp(-beta_width * w**2 / 2)
     R0p = sp.diff(R0, w)
     tw_shape = 1 + w**2 / 6
-    mu_eta = 1 + (1 + w**2 / 4) * R0
+    mu_eta = 1 + mu_eta_profile_sign * (1 + w**2 / 4) * R0
     T_w = 1 + tw_shape * R0
     T_omega = (1 + (1 + w**2 / 8) * R0) / 6
     U_scale = sp.simplify((sp.diff(T_w * R0p, w) - tw_shape * R0p**2 / 2) / R0)
@@ -110,8 +123,19 @@ def low_series_packet(
     return float(coeffs @ a0), float(coeffs @ a2), float(coeffs @ a4)
 
 
-def evaluate_branch(log_amp: float, log_r_width: float, log_beta_width: float) -> BranchEval:
-    funcs = build_numeric_functions(log_amp, log_r_width, log_beta_width)
+def evaluate_branch(
+    log_amp: float,
+    log_r_width: float,
+    log_beta_width: float,
+    *,
+    mu_eta_profile_sign: float = 1.0,
+) -> BranchEval:
+    funcs = build_numeric_functions(
+        log_amp,
+        log_r_width,
+        log_beta_width,
+        mu_eta_profile_sign=mu_eta_profile_sign,
+    )
     mu_f = funcs["mu_eta"]
     tw_f = funcs["T_w"]
     to_f = funcs["T_omega"]
@@ -199,7 +223,7 @@ def main() -> None:
     expected_B = (0.7816273402373896, -0.6449331985854891, 0.5321531025367578)
     expected_Z = (0.5083076399936368, -0.4143227047792866, 0.3408544970748318)
     expected_N = (1.311690146078847, -1.062371646707426, 0.8725297055800806)
-    expected_residuals = (-13.134593938872376, -10.33719584868593, 0.37009844569768474, 0.8889149882257381)
+    expected_residuals = export_step19_four_mode_residuals()
 
     for idx, expected in enumerate(expected_B):
         assert_close(f"baseline B{2*idx}", baseline.B[idx], expected, 1e-8)
@@ -227,11 +251,16 @@ def main() -> None:
         trial_eval = evaluate_branch(*(base_coords + scale * delta_ls))
         trial_results.append((scale, trial_eval))
     best_scale, best_eval = min(trial_results, key=lambda item: item[1].norm)
+    mu_eta_sign_flip = evaluate_branch(0.0, 0.0, 0.0, mu_eta_profile_sign=-1.0)
+    mu_eta_sign_flip_delta_norm = float(
+        np.linalg.norm(np.array(mu_eta_sign_flip.residuals, dtype=float) - np.array(baseline.residuals, dtype=float))
+    )
 
     if rank != 3:
         raise AssertionError(f"expected full 3-column numerical rank, got {rank}")
     assert_close("smallest singular value", float(svals[-1]), 0.14131229158, 1e-9)
     assert_small("baseline-vs-step19 4-mode norm drift", baseline.norm - float(np.linalg.norm(expected_residuals)), 1e-8)
+    assert_greater("mu_eta sign-flip residual-packet delta", mu_eta_sign_flip_delta_norm, 1.0)
 
     branch_freeze_payload = {
         "metadata": branch_metadata,
@@ -240,6 +269,8 @@ def main() -> None:
         "rank": rank,
         "irreducible_linearized_norm": irreducible_linear_norm,
         "best_actual_residual_norm": best_eval.norm,
+        "mu_eta_sign_flip_residual_norm": mu_eta_sign_flip.norm,
+        "mu_eta_sign_flip_delta_norm": mu_eta_sign_flip_delta_norm,
     }
     branch_freeze_hash = hashlib.sha256(json.dumps(branch_freeze_payload, sort_keys=True).encode("utf-8")).hexdigest()[:16]
 
@@ -287,6 +318,10 @@ def main() -> None:
     print("  best actual trial scale =", best_scale)
     print("  best actual residual norm =", best_eval.norm)
     print("  best actual residual packet =", best_eval.residuals)
+    print("Sign-flip mutation guard:")
+    print("  mu_eta sign-flip residual norm =", mu_eta_sign_flip.norm)
+    print("  mu_eta sign-flip norm separation =", mu_eta_sign_flip.norm - baseline.norm)
+    print("  mu_eta sign-flip residual-packet delta =", mu_eta_sign_flip_delta_norm)
     print("Interpretation:")
     print("  This scan is diagnostic only: it varies upstream reduced branch coordinates before the target check.")
     print("  A nonzero irreducible linearized norm means this 3-parameter family cannot cancel all four isotropic residuals at first order near the frozen branch.")

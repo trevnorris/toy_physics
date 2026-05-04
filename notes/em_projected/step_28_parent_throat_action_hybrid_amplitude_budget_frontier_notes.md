@@ -68,9 +68,9 @@ same undeformed point:
 =(0.092,1,0),
 \]
 \[
-\widehat m_0^{\rm req}\approx 214.2709506975902,
+\widehat m_0^{\rm req}\approx 214.27095069736797,
 \qquad
-Q_{\rm iso}\approx 0.26705543084121786.
+Q_{\rm iso}\approx 0.2670554308318671.
 \]
 
 So on this sampled grid, the exact Stage-95 branch-B amplitude channel does
@@ -93,9 +93,9 @@ The best sampled normalization among points satisfying \(Q_{\rm iso}\le 1\) is:
 (\text{scale},\lambda_{\rm out},\sigma)=(0.09,5,-4),
 \]
 \[
-\widehat m_0^{\rm req}\approx 87.03141955826572,
+\widehat m_0^{\rm req}\approx 87.03141955817699,
 \qquad
-Q_{\rm iso}\approx 0.4513189656743675.
+Q_{\rm iso}\approx 0.4513189656827217.
 \]
 
 \[
@@ -104,9 +104,9 @@ Q_{\rm iso}\approx 0.4513189656743675.
 (\text{scale},\lambda_{\rm out},\sigma)=(0.09,20,-19),
 \]
 \[
-\widehat m_0^{\rm req}\approx 43.51570977913286,
+\widehat m_0^{\rm req}\approx 43.515709779088496,
 \qquad
-Q_{\rm iso}\approx 0.45133756597801233.
+Q_{\rm iso}\approx 0.4513375659863663.
 \]
 
 \[
@@ -115,9 +115,9 @@ Q_{\rm iso}\approx 0.45133756597801233.
 (\text{scale},\lambda_{\rm out},\sigma)=(0.09,50,-49),
 \]
 \[
-\widehat m_0^{\rm req}\approx 27.521751380184508,
+\widehat m_0^{\rm req}\approx 27.52175138015645,
 \qquad
-Q_{\rm iso}\approx 0.4514417135159099.
+Q_{\rm iso}\approx 0.4514417135242623.
 \]
 
 \[
@@ -126,9 +126,9 @@ Q_{\rm iso}\approx 0.4514417135159099.
 (\text{scale},\lambda_{\rm out},\sigma)=(0.09,200,-199),
 \]
 \[
-\widehat m_0^{\rm req}\approx 13.760875690092254,
+\widehat m_0^{\rm req}\approx 13.760875690078224,
 \qquad
-Q_{\rm iso}\approx 0.45329746222514433.
+Q_{\rm iso}\approx 0.4532974622334698.
 \]
 
 \[
@@ -137,9 +137,9 @@ Q_{\rm iso}\approx 0.45329746222514433.
 (\text{scale},\lambda_{\rm out},\sigma)=(0.09,2000,-1999),
 \]
 \[
-\widehat m_0^{\rm req}\approx 4.351570977913287,
+\widehat m_0^{\rm req}\approx 4.3515709779088505,
 \qquad
-Q_{\rm iso}\approx 0.618690285150578.
+Q_{\rm iso}\approx 0.6186902851572366.
 \]
 
 So the exact branch-B amplitude channel buys normalization relief steadily, and

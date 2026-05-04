@@ -8,6 +8,7 @@ import json
 import numpy as np
 import sympy as sp
 
+from cfd_runtime_failfast import classify_summary
 from cfd_runtime_monitor_postprocess import analyze_snapshot
 from step_34_parent_throat_action_cfd_runtime_postprocessor_sympy import (
     make_periodic_consistency_snapshot,
@@ -37,6 +38,25 @@ def assert_large(label: str, value: float, floor: float) -> None:
         raise AssertionError(f"{label} failed: {value} < {floor}")
 
 
+def make_impostor_snapshot(kind: str) -> dict[str, np.ndarray]:
+    snapshot = make_radial_snapshot(mu=None)
+    x = snapshot["x"]
+    y = snapshot["y"]
+    z = snapshot["z"]
+    X, Y, Z = np.meshgrid(x, y, z, indexing="ij")
+    r_soft = np.sqrt(X * X + Y * Y + Z * Z + 0.08**2)
+    if kind == "power":
+        phi = -1.0 / (r_soft * r_soft)
+    elif kind == "log":
+        phi = np.log(r_soft)
+    else:
+        raise ValueError(f"unknown impostor kind {kind}")
+    snapshot["phi3"] = phi
+    snapshot["Phi_eff"] = phi
+    snapshot["N_probe"] = 1.0 - 2.0 * phi
+    return snapshot
+
+
 def main() -> None:
     branch_metadata = {
         "branch_id": "v2_local_parent_background_runtime_monitor_falsifier",
@@ -63,14 +83,22 @@ def main() -> None:
     R_cont = sp.simplify(dt_rho + divJ - S_rho)
     div_v_expected = sp.simplify((S_rho - dt_rho) / rho_brane - J_dot_grad_rho / rho_brane**2)
     R_div = sp.simplify(div_v - div_v_expected)
+    eps = sp.symbols("eps", real=True, nonzero=True)
     assert_zero("continuity residual identity at the exact source", R_cont.subs(divJ, S_rho - dt_rho))
+    assert_nonzero("continuity residual detects mutated divergence", R_cont.subs(divJ, S_rho - dt_rho + eps))
     assert_zero("divergence identity", R_div.subs(div_v, div_v_expected))
+    assert_nonzero("divergence residual detects mutated longitudinal divergence", R_div.subs(div_v, div_v_expected + eps))
 
     # Exact longitudinal identity and quasi-static Poisson candidate.
     R_pois_exact = sp.simplify(rho_brane * lap_phi - S_rho + dt_rho + grad_rho_dot_v)
     R_pois_lin = sp.simplify(rho0 * lap_phi - S_rho)
     assert_zero("exact longitudinal identity", R_pois_exact.subs(lap_phi, (S_rho - dt_rho - grad_rho_dot_v) / rho_brane))
+    assert_nonzero(
+        "exact longitudinal identity detects mutated laplacian",
+        R_pois_exact.subs(lap_phi, (S_rho - dt_rho - grad_rho_dot_v) / rho_brane + eps),
+    )
     assert_zero("linearized quasi-static Poisson identity", R_pois_lin.subs(lap_phi, S_rho / rho0))
+    assert_nonzero("linearized Poisson identity detects mutated laplacian", R_pois_lin.subs(lap_phi, S_rho / rho0 + eps))
 
     # Massive-scalar / Yukawa exterior diagnostic.
     phi_newton = -A / r
@@ -106,6 +134,7 @@ def main() -> None:
     assert_zero("n=5 deflection coefficient", Delta_theta - 4 * G * M_eff / (b * c_probe**2))
     assert_zero("n=5 Shapiro coefficient", Delta_shapiro - 2 * G * M_eff / c_probe**3)
     assert_zero("optical coefficient fit identity", R_opt.subs(N_probe, N_probe_target))
+    assert_nonzero("optical coefficient fit detects mutated lapse", R_opt.subs(N_probe, N_probe_target + eps))
     assert_nonzero("wrong optical coefficient mutation", alpha_n - alpha_wrong)
 
     # Tail scalar from the compact packet.
@@ -144,6 +173,28 @@ def main() -> None:
         periodic_xyz=False,
         center=(0.0, 0.0, 0.0),
     )
+    power_summary = analyze_snapshot(
+        make_impostor_snapshot("power"),
+        c_probe=1.0,
+        bins=26,
+        tail_fraction=0.3,
+        periodic_xyz=False,
+        center=(0.0, 0.0, 0.0),
+    )
+    log_summary = analyze_snapshot(
+        make_impostor_snapshot("log"),
+        c_probe=1.0,
+        bins=26,
+        tail_fraction=0.3,
+        periodic_xyz=False,
+        center=(0.0, 0.0, 0.0),
+    )
+    power_classifier_summary = dict(power_summary)
+    power_classifier_summary["require_projection_source"] = False
+    log_classifier_summary = dict(log_summary)
+    log_classifier_summary["require_projection_source"] = False
+    power_verdict = classify_summary(power_classifier_summary)
+    log_verdict = classify_summary(log_classifier_summary)
 
     assert_small("concrete periodic continuity residual", periodic_summary["max_abs_R_cont"], 1e-11)
     assert_small("concrete periodic exact Poisson residual", periodic_summary["max_abs_R_pois_exact"], 1e-11)
@@ -154,6 +205,14 @@ def main() -> None:
     assert_large("concrete Yukawa exterior massive-scalar signature", yukawa_summary["mu_eff2_tail_median"], 1.0)
     assert_small("concrete Newton optics coefficient", newton_summary["alpha_fit_tail_mean"] - 2.0, 3e-2)
     assert_large("concrete bad-optics alpha mismatch", bad_optics_summary["alpha_fit_tail_mean"] - 2.0, 0.3)
+    assert_large("concrete 1/r^2 impostor flux non-plateau", power_summary["Q_r_tail_cv"], 0.05)
+    assert_large("concrete log impostor flux non-plateau", log_summary["Q_r_tail_cv"], 0.05)
+    assert_large("concrete 1/r^2 impostor effective mass", power_summary["mu_eff2_tail_median"], 0.1)
+    assert_large("concrete log impostor effective mass", log_summary["mu_eff2_tail_median"], 0.1)
+    if power_verdict["status"] != "FAIL":
+        raise AssertionError(f"1/r^2 impostor should fail the classifier, got {power_verdict}")
+    if log_verdict["status"] != "FAIL":
+        raise AssertionError(f"log impostor should fail the classifier, got {log_verdict}")
 
     branch_freeze_payload = {
         "metadata": branch_metadata,
@@ -172,6 +231,10 @@ def main() -> None:
             "yukawa_Q_r_tail_cv": yukawa_summary["Q_r_tail_cv"],
             "yukawa_mu_eff2_tail_median": yukawa_summary["mu_eff2_tail_median"],
             "bad_optics_alpha_fit_tail_mean": bad_optics_summary["alpha_fit_tail_mean"],
+            "power_Q_r_tail_cv": power_summary["Q_r_tail_cv"],
+            "log_Q_r_tail_cv": log_summary["Q_r_tail_cv"],
+            "power_classifier_status": power_verdict["status"],
+            "log_classifier_status": log_verdict["status"],
         },
     }
     branch_freeze_hash = hashlib.sha256(json.dumps(branch_freeze_payload, sort_keys=True).encode("utf-8")).hexdigest()[:16]
@@ -224,6 +287,12 @@ def main() -> None:
     print("  Yukawa Q_r tail cv =", yukawa_summary["Q_r_tail_cv"])
     print("  Yukawa mu_eff^2 tail median =", yukawa_summary["mu_eff2_tail_median"])
     print("  Bad-optics alpha_fit tail =", bad_optics_summary["alpha_fit_tail_mean"])
+    print("  1/r^2 impostor Q_r tail cv =", power_summary["Q_r_tail_cv"])
+    print("  1/r^2 impostor mu_eff^2 tail median =", power_summary["mu_eff2_tail_median"])
+    print("  log impostor Q_r tail cv =", log_summary["Q_r_tail_cv"])
+    print("  log impostor mu_eff^2 tail median =", log_summary["mu_eff2_tail_median"])
+    print("  1/r^2 impostor classifier verdict =", power_verdict["status"])
+    print("  log impostor classifier verdict =", log_verdict["status"])
     print("Hard fail criteria:")
     print("  1. Continuity / projection failure: R_cont, R_div, or R_Pois_exact do not stay small.")
     print("  2. Massive-scalar failure: Q_r(r) fails to plateau or mu_eff^2(r) tends to a nonzero exterior constant.")

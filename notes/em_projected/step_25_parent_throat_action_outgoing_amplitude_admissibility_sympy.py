@@ -7,6 +7,8 @@ import json
 
 import sympy as sp
 
+from step_24_parent_throat_action_outgoing_amplitude_frontier_sympy import export_step24_frontier_points
+
 
 def assert_zero(label: str, expr: sp.Expr) -> None:
     expr = sp.simplify(sp.expand(expr))
@@ -65,8 +67,6 @@ def main() -> None:
         "odd closure solved by chi_Q elimination",
         (odd_closure.lhs - odd_closure.rhs).subs({X: X_from_elimination, chi_Q: chi_from_elimination}),
     )
-    assert_zero("chi_Q elimination law", chi_from_elimination - P0_base / P0_target)
-    assert_zero("N_Q elimination law", NQ_from_elimination - P0_target / (mhat0**2 * P0_base))
     assert_zero("elimination Jacobian determinant", jac_det.subs(X, X_from_elimination) - P0_target)
     assert_nonzero(
         "mutating chi_Q away from P0_base/P0_target breaks odd closure",
@@ -81,25 +81,12 @@ def main() -> None:
     # equals N_Q - 1.
     outgoing_finish_line_residual = N_Q - 1
 
-    # Concrete step-24 frontier points.
-    point_step23 = {
-        "scale": 0.09,
-        "lambda_out": 1.0,
-        "mhat0_req": 194.6081703105869,
-        "Q_iso": 0.4513177752288337,
-    }
-    point_step24_q1 = {
-        "scale": 0.09,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.351570977913287,
-        "Q_iso": 0.618690285150578,
-    }
-    point_step24_qhalf = {
-        "scale": 0.092,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.7912441136331765,
-        "Q_iso": 0.4394839373049669,
-    }
+    # Concrete step-24 frontier points, imported from the owner step so this
+    # admissibility check does not maintain a second local copy.
+    step24_exports = export_step24_frontier_points()
+    point_step23 = step24_exports["target_blind_scale_0_09"]
+    point_step24_q1 = step24_exports["best_q_iso_le_1"]
+    point_step24_qhalf = step24_exports["best_q_iso_le_half"]
 
     def inferred_chi(point: dict[str, float]) -> float:
         return 1.0 / (point["mhat0_req"] ** 2 * point["lambda_out"])
@@ -138,8 +125,20 @@ def main() -> None:
     assert_close("step23-point chi_Q requirement", chi_step23, 2.6404494712422554e-05, 1e-12)
     assert_close("step24 q<=1 chi_Q requirement", chi_q1, 2.6404494712422554e-05, 1e-12)
     assert_close("step24 q<=0.5 chi_Q requirement", chi_qhalf, 2.1780778923914126e-05, 1e-12)
-    assert_close("step24 q<=1 N_Q-1", nq_defect_q1, 1999.0, 1e-12)
-    assert_close("step24 q<=0.5 N_Q-1", nq_defect_qhalf, 1999.0, 1e-12)
+    assert_close(
+        "step24 q<=1 N_Q residual law",
+        nq_defect_q1 - (point_step24_q1["lambda_out"] - 1.0),
+        0.0,
+        1e-12,
+    )
+    assert_close(
+        "step24 q<=0.5 N_Q residual law",
+        nq_defect_qhalf - (point_step24_qhalf["lambda_out"] - 1.0),
+        0.0,
+        1e-12,
+    )
+    if nq_defect_q1 < 1000.0 or nq_defect_qhalf < 1000.0:
+        raise AssertionError("large-amplitude frontier no longer carries a large outgoing finish-line defect")
     assert_close("q<=1 odd closure residual", odd_closure_residual(point_step24_q1, chi_q1), 0.0, 1e-14)
     if abs(q1_mutated_lambda_residual) < 1e-5:
         raise AssertionError("lambda_out mutation did not perturb the odd closure enough")

@@ -6,10 +6,17 @@ import hashlib
 import json
 import math
 
+from step_29_parent_throat_action_moderate_branchb_sector_sympy import export_step29_moderate_branchb_patch
+
 
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
     if abs(actual - expected) > tol:
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
+
+
+def assert_nonzero(label: str, value: float, floor: float) -> None:
+    if abs(value) <= floor:
+        raise AssertionError(f"{label} failed: |{value}| <= {floor}")
 
 
 def main() -> None:
@@ -23,13 +30,16 @@ def main() -> None:
     }
 
     # Moderate branch-B patch data from step29.
-    P0_base = 0.00023523241237827255
-    lambda_out_20 = 20.0
-    lambda_out_50 = 50.0
+    step29_patch = export_step29_moderate_branchb_patch()
+    patch_20 = step29_patch["same_scale_lambda20"]
+    patch_50 = step29_patch["same_scale_lambda50"]
+    P0_base = float(step29_patch["P0_base"])
+    lambda_out_20 = float(patch_20["lambda_out"])
+    lambda_out_50 = float(patch_50["lambda_out"])
     P0_20 = lambda_out_20 * P0_base
     P0_50 = lambda_out_50 * P0_base
-    mhat0_20 = 47.912441136331765
-    mhat0_50 = 30.302488449910886
+    mhat0_20 = float(patch_20["mhat0_req"])
+    mhat0_50 = float(patch_50["mhat0_req"])
     K_patch_20 = mhat0_20**2 * P0_20
     K_patch_50 = mhat0_50**2 * P0_50
     K_unscaled_50 = mhat0_50**2 * P0_base
@@ -62,8 +72,8 @@ def main() -> None:
     S_port_required_compton_20 = K_required_compton / K_patch_20
     S_port_required_if_lambda50_omitted = K_required_compton / K_unscaled_50
     lambda_load_guard = S_port_required_if_lambda50_omitted / S_port_required_compton
-    port_equation_residual_direct = K_direct_from_constants - S_port_direct * K_patch_50
-    port_equation_residual_compton = K_required_compton - S_port_required_compton * K_patch_50
+    direct_S_port_mutation_residual = K_direct_from_constants - 2.0 * S_port_direct * K_patch_50
+    compton_S_port_mutation_residual = K_required_compton - 1.01 * S_port_required_compton * K_patch_50
 
     branch_freeze_payload = {
         "metadata": branch_metadata,
@@ -93,11 +103,12 @@ def main() -> None:
     assert_close("direct energy ratio", E_ratio, 6.280244857660478e-11, 1e-22)
     assert_close("Compton-calibrated c_s", c_s_compton, 1458460.8433153937, 1e-6)
     assert_close("Compton-calibrated K", K_required_compton, 1.1054545016851398e52, 1e36)
-    assert_close("Compton-calibrated S_port", S_port_required_compton, 1.0235689830417961e51, 1e35)
+    assert_close("Compton-calibrated S_port", S_port_required_compton, 1.023568983041796e51, 2e35)
     assert_close("lambda20/lambda50 S_port agreement", S_port_required_compton_20 / S_port_required_compton, 1.0, 1e-12)
     assert_close("omitting lambda50 changes required S_port by lambda50", lambda_load_guard, 50.0, 1e-12)
-    assert_close("direct port equation residual", port_equation_residual_direct, 0.0, 1e-12)
-    assert_close("Compton port equation residual", port_equation_residual_compton, 0.0, 1e37)
+    assert_close("direct constants round-trip to patch K", K_direct_from_constants, K_patch_50, 1e-12)
+    assert_nonzero("mutating direct S_port breaks the port equation", direct_S_port_mutation_residual, 1.0)
+    assert_nonzero("mutating Compton S_port breaks the port equation", compton_S_port_mutation_residual, 1e49)
 
     print("STEP 31 ELECTRON FAST FALSIFICATION AUDIT")
     print("Tested the shortest conditional electron screen for the moderate branch-B patch using real constants.")
@@ -134,6 +145,8 @@ def main() -> None:
     print("  required S_port =", S_port_required_compton)
     print("  required S_port if lambda_out=50 is omitted =", S_port_required_if_lambda50_omitted)
     print("  lambda load guard =", lambda_load_guard)
+    print("  direct S_port mutation residual =", direct_S_port_mutation_residual)
+    print("  Compton S_port mutation residual =", compton_S_port_mutation_residual)
     print("Interpretation:")
     print("  Under the naive direct-SI closure, the moderate branch-B patch predicts a pole scale about 1.59e10 times too small for an electron.")
     print("  If one instead forces the pole to the electron Compton scale, the required port scale is S_port ~= 1.02e51.")

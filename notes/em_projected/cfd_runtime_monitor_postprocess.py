@@ -282,6 +282,8 @@ def analyze_snapshot(
         "rms_R_pois_lin": rms(R_pois_lin),
         "Q_r_tail_mean": float(np.mean(tail_Q)) if tail_Q.size else float("nan"),
         "Q_r_tail_cv": q_plateau_cv,
+        "Q_r_tail_n_points": int(tail_Q.size),
+        "tail_n_points": int(tail_Q.size),
         "mu_eff2_tail_median": mu_tail_median,
         "shell_Q_r": shell_Q,
         "shell_mu_eff2": shell_mu,

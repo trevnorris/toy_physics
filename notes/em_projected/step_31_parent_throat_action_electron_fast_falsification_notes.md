@@ -33,10 +33,11 @@ physical target.
 This is the simplest map you would try if you wanted to turn the moderate
 branch-B patch directly into an electron analog.
 
-The moderate patch data from `step_29` are
+The moderate patch data are imported from `step_29`'s exported corridor records
+rather than duplicated inside this script. The values are
 
 \[
-P_0^{\rm base}=0.00023523241237827255.
+P_0^{\rm base}=0.00023523241237876055.
 \]
 
 For the moderate corridor:
@@ -44,17 +45,17 @@ For the moderate corridor:
 \[
 \lambda_{\rm out}=20
 \quad\Rightarrow\quad
-P_0=0.004704648247565451,
+P_0=0.004704648247575211,
 \quad
-\widehat m_0\approx 47.912441136331765,
+\widehat m_0\approx 47.91244113628207,
 \]
 
 \[
 \lambda_{\rm out}=50
 \quad\Rightarrow\quad
-P_0=0.011761620618913627,
+P_0=0.011761620618938028,
 \quad
-\widehat m_0\approx 30.302488449910886.
+\widehat m_0\approx 30.302488449879455.
 \]
 
 Both satisfy
@@ -70,6 +71,12 @@ in reduced units.
 The script treats these `step_29` values as load-bearing data. As a mutation
 guard, omitting the \(\lambda_{\rm out}=50\) factor changes the required
 \(S_{\rm port}\) by a factor of exactly `50`.
+
+The script also mutates the port scale itself. Replacing the direct
+\(S_{\rm port}=1\) by \(2\) leaves a residual of about `-10.8`, and replacing
+the Compton-calibrated \(S_{\rm port}\) by `1.01*S_port` leaves a residual of
+about `-1.1054545016851435e+50`. These mutations make the dimensional port
+factor load-bearing rather than a decorative label.
 
 ---
 
@@ -157,7 +164,7 @@ Compared to the reduced branch value \(54/5\), the required port scale is
 \[
 S_{\rm port}
 =\frac{K_{\rm required}}{54/5}
-\approx 1.0235689830417961\times 10^{51}.
+\approx 1.023568983041796\times 10^{51}.
 \]
 
 So if you force the pole scale to match the electron, the dimensional port map

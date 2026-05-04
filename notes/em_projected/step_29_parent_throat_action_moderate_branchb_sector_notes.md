@@ -45,6 +45,14 @@ with
 \lambda_{\rm out}=1-\sigma.
 \]
 
+The script now includes local mutation guards for this setup. It checks that
+the imported Step-21 direction closes the linearized packet and that the
+sign-flipped direction worsens it. It also verifies the exact
+\(\sigma=1-\lambda_{\rm out}\) branch-B law and the
+\(\widehat m_0\propto\lambda_{\rm out}^{-1/2}\) scaling, then checks that the
+opposite sigma sign and inverse lambda scaling produce large nonzero
+residuals.
+
 The frontiers confirm that the most useful moderate points sit on the
 high-scale edge `scale = 0.092`.
 
@@ -59,9 +67,9 @@ The undeformed low-defect baseline is
 =(0.092,1,0),
 \]
 \[
-\widehat m_0^{\rm req}\approx 214.2709506975902,
+\widehat m_0^{\rm req}\approx 214.27095069736797,
 \qquad
-Q_{\rm iso}\approx 0.26705543084121786.
+Q_{\rm iso}\approx 0.2670554308318671.
 \]
 
 The same-scale moderate branch-B point is
@@ -71,9 +79,9 @@ The same-scale moderate branch-B point is
 =(0.092,20,-19),
 \]
 \[
-\widehat m_0^{\rm req}\approx 47.912441136331765,
+\widehat m_0^{\rm req}\approx 47.91244113628207,
 \qquad
-Q_{\rm iso}\approx 0.2670781822626949.
+Q_{\rm iso}\approx 0.2670781822533451.
 \]
 
 So:
@@ -87,11 +95,11 @@ while
 
 \[
 \Delta Q_{\rm iso}
-\approx 2.2751421477039345\times 10^{-5},
+\approx 2.2751421478006684\times 10^{-5},
 \]
 \[
 \frac{\Delta Q_{\rm iso}}{Q_{\rm iso}^{\rm base}}
-\approx 8.519643312775214\times 10^{-5}.
+\approx 8.519362967881576\times 10^{-5}.
 \]
 
 So in this sampled reduced family, \(\sigma=-19\) cuts the normalization burden
@@ -115,9 +123,9 @@ The next moderate point on the same high-scale edge is
 =(0.092,50,-49),
 \]
 \[
-\widehat m_0^{\rm req}\approx 30.302488449910886,
+\widehat m_0^{\rm req}\approx 30.302488449879455,
 \qquad
-Q_{\rm iso}\approx 0.26719789465663646.
+Q_{\rm iso}\approx 0.26719789464729127.
 \]
 
 Now
@@ -131,11 +139,11 @@ while
 
 \[
 \Delta Q_{\rm iso}
-\approx 1.4246381541860577\times 10^{-4},
+\approx 1.424638154241542\times 10^{-4},
 \]
 \[
 \frac{\Delta Q_{\rm iso}}{Q_{\rm iso}^{\rm base}}
-\approx 5.334557393551715\times 10^{-4}.
+\approx 5.334615925255107\times 10^{-4}.
 \]
 
 So even `sigma = -49` still leaves the sampled isotropic defect nearly

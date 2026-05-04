@@ -63,19 +63,51 @@ print("  mu0_eff^(red)  = mu0 / Z_int")
 print()
 print("These coincide only if I_WS / I_WZ = 1 / Z_int.")
 
-brane_operator, j = sp.symbols("brane_operator j")
-W_generic = sp.Function("W")(w)
-S_generic = sp.Function("S")(w)
-projected_zero_mode_lhs = sp.Integral(W_generic * Z * brane_operator, (w, -sp.oo, sp.oo))
-projected_zero_mode_rhs = sp.Integral(W_generic * mu0 * S_generic * j, (w, -sp.oo, sp.oo))
-assert_zero(
-    "zero-mode projection factors brane operator",
-    projected_zero_mode_lhs - brane_operator * sp.Integral(W_generic * Z, (w, -sp.oo, sp.oo)),
+x, k = sp.symbols("x k", real=True)
+sigma, tau = sp.symbols("sigma tau", positive=True)
+eta = sp.symbols("eta", real=True, nonzero=True)
+f_test = sp.sin(k * x) + x**2
+j_test = sp.cos(k * x) + x
+df_test = sp.diff(f_test, x)
+W_smooth = sp.exp(-w**2 / sigma**2) / (sp.sqrt(sp.pi) * sigma)
+S_smooth = sp.exp(-w**2 / tau**2) / (sp.sqrt(sp.pi) * tau)
+I_WZ_smooth = sp.simplify(sp.integrate(W_smooth * Z, (w, -sp.oo, sp.oo)))
+I_WS_smooth = sp.simplify(sp.integrate(W_smooth * S_smooth, (w, -sp.oo, sp.oo)))
+projected_zero_mode_residual = sp.simplify(
+    sp.integrate(W_smooth * (Z * df_test - mu0 * S_smooth * j_test), (w, -sp.oo, sp.oo))
 )
 assert_zero(
-    "zero-mode projection factors brane source",
-    projected_zero_mode_rhs - mu0 * j * sp.Integral(W_generic * S_generic, (w, -sp.oo, sp.oo)),
+    "smooth I_WZ overlap",
+    I_WZ_smooth - lam / sp.sqrt(lam**2 + sigma**2),
 )
+assert_zero(
+    "smooth I_WS overlap",
+    I_WS_smooth - 1 / (sp.sqrt(sp.pi) * sp.sqrt(sigma**2 + tau**2)),
+)
+assert_zero(
+    "smooth zero-mode projected residual",
+    projected_zero_mode_residual - (I_WZ_smooth * df_test - mu0 * I_WS_smooth * j_test),
+)
+
+F_w_dependent = f_test + eta * x * w**2
+field_mutation_lhs = sp.simplify(sp.integrate(W_smooth * Z * sp.diff(F_w_dependent, x), (w, -sp.oo, sp.oo)))
+field_mutation_delta = sp.simplify(field_mutation_lhs - I_WZ_smooth * df_test)
+assert_zero(
+    "w-dependent field mutation amplitude",
+    field_mutation_delta - eta * lam**3 * sigma**2 / (2 * (lam**2 + sigma**2) ** sp.Rational(3, 2)),
+)
+assert_nonzero("w-dependent field mutation breaks zero-mode projection", field_mutation_delta)
+
+J_w_dependent = S_smooth * j_test + eta * x * w**2 * S_smooth
+source_mutation_rhs = sp.simplify(sp.integrate(W_smooth * mu0 * J_w_dependent, (w, -sp.oo, sp.oo)))
+source_mutation_delta = sp.simplify(source_mutation_rhs - mu0 * I_WS_smooth * j_test)
+assert_zero(
+    "w-dependent source mutation amplitude",
+    source_mutation_delta
+    - eta * mu0 * x * sigma**2 * tau**2 / (2 * sp.sqrt(sp.pi) * (sigma**2 + tau**2) ** sp.Rational(3, 2)),
+)
+assert_nonzero("w-dependent source mutation breaks factorized source projection", source_mutation_delta)
+print("Concrete smooth-profile projection residual checks pass, including a w-dependent-field mutation guard.")
 
 line("2) Gaussian localization data")
 print("Take Z(w) = exp(-w^2/lambda^2).")

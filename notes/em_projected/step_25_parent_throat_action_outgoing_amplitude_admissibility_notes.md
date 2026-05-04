@@ -48,20 +48,22 @@ branch and is **independent** of the outgoing amplitude bookkeeping parameter.
 
 ## 2. Concrete frontier points
 
-The script reuses three already-audited frontier points:
+The script imports three already-audited frontier records from `step_24`, so
+this admissibility check no longer carries a separate local copy of the same
+numbers:
 
 - the `step_23` target-blind ray point with
   \[
   (\text{scale},\lambda_{\rm out},\widehat m_0^{\rm req})
-  =(0.09,1,194.6081703105869),
+  =(0.09,1,194.60817031038846),
   \]
 - the `step_24` best sampled point with \(Q_{\rm iso}\le 1\),
   \[
-  (0.09,2000,4.351570977913287),
+  (0.09,2000,4.3515709779088505),
   \]
 - the `step_24` best sampled point with \(Q_{\rm iso}\le 0.5\),
   \[
-  (0.092,2000,4.7912441136331765).
+  (0.092,2000,4.791244113628207).
   \]
 
 From these, the inferred outgoing scalar is
@@ -76,14 +78,14 @@ The first two points lie at the same frozen scale, and the script verifies
 \chi_Q(0.09,\lambda_{\rm out}=1)
 =
 \chi_Q(0.09,\lambda_{\rm out}=2000)
-\approx 2.6404494712422554\times 10^{-5}.
+\approx 2.6404494712476408\times 10^{-5}.
 \]
 
 At the smaller sampled defect point one gets
 
 \[
 \chi_Q(0.092,\lambda_{\rm out}=2000)
-\approx 2.1780778923914126\times 10^{-5}.
+\approx 2.1780778923959307\times 10^{-5}.
 \]
 
 If \(\lambda_{\rm out}\) is identified with \(N_Q\), then the outgoing

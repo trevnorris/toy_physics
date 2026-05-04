@@ -17,15 +17,15 @@ the full moving-throat PDE branch exists or fails.
 
 ## 1. Frozen baseline
 
-The script uses the same reduced parent-background packet as the live 4-mode
-checkpoint inside `step_19` and declares the V2-style audit metadata
+The script imports the reduced parent-background residual packet from the live
+4-mode checkpoint owner in `step_19` and declares the V2-style audit metadata
 
 - `branch_id = v2_local_parent_background_reduced_family_scan`,
 - `pre_target_freeze = true`,
 - `target_blind = true`,
 - `no_post_residual_refit = true`,
 - `boundary_class = open_impedance_demo`,
-- `branch_freeze_hash = f8a52dadb6413208`.
+- `branch_freeze_hash = 74152b0cef38e0ec`.
 
 The frozen baseline packet agrees numerically with the `step_19` 4-mode export:
 
@@ -218,7 +218,39 @@ local window.
 
 ---
 
-## 6. Interpretation
+## 6. Sign-Flip Mutation Guard
+
+The script also mutates the parent wall measure sign,
+
+\[
+\mu_\eta(w)=1+\left(1+\frac{w^2}{4}\right)R_0(w)
+\quad\longrightarrow\quad
+\mu_\eta^{\rm flip}(w)=1-\left(1+\frac{w^2}{4}\right)R_0(w).
+\]
+
+This is not treated as a physical branch. It is a sign-convention guard for the
+mass-weighted reduced operator. The flipped packet has
+
+\[
+\|R_{\rm flip}\|_2 \approx 10.337242025167106,
+\]
+
+which is smaller than the baseline scalar norm, so the test deliberately does
+not assert that the wrong sign must make the norm worse. Instead it checks the
+packet movement itself:
+
+\[
+\|R_{\rm flip}-R_{\rm base}\|_2
+\approx 13.139644483637701.
+\]
+
+That residual-packet separation is the relevant guard: flipping the
+\(\mu_\eta\) contribution is not inert, and future edits cannot silently erase
+that sign dependence.
+
+---
+
+## 7. Interpretation
 
 The strongest honest reading is:
 

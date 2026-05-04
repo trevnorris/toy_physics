@@ -281,6 +281,16 @@ postprocessor self-test:
   - `mu_eff^2` tail median `= 1.954292666547206`
 - bad-optics exterior:
   - `alpha_fit tail = 1.4`
+- `1/r^2` impostor exterior:
+  - `Q_r` tail coefficient of variation
+    `= 0.10349929749560405`
+  - `mu_eff^2` tail median `= 0.3602269975484812`
+  - fail-fast classifier verdict: `FAIL`
+- `log r` impostor exterior:
+  - `Q_r` tail coefficient of variation
+    `= 0.10301948878406167`
+  - `mu_eff^2` tail median `= 0.21968065668811232`
+  - fail-fast classifier verdict: `FAIL`
 
 This makes the runtime monitor test more than a set of definition
 substitutions: it exercises the same numerical path that will be used on CFD

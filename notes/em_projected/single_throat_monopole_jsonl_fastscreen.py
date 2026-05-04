@@ -43,11 +43,14 @@ def classify_events(events: list[dict[str, Any]], thresholds: dict[str, float] |
     parse_errors = [event for event in events if event.get("event") == "parse_error"]
 
     if not diag_events:
+        incomplete_reasons = ["no diagnostic events found"] + [
+            f"malformed JSONL line {event['line']}: {event['message']}" for event in parse_errors
+        ]
         return {
             "status": "INCOMPLETE",
             "failures": [],
-            "warnings": ["no diagnostic events found"]
-            + [f"malformed JSONL line {event['line']}: {event['message']}" for event in parse_errors],
+            "warnings": [],
+            "incomplete_reasons": incomplete_reasons,
             "latest_diag": None,
             "init": init_event,
             "done": done_event,
@@ -56,7 +59,10 @@ def classify_events(events: list[dict[str, Any]], thresholds: dict[str, float] |
 
     latest = diag_events[-1]
     failures: list[str] = []
-    warnings: list[str] = [
+    # Kept as an output field for schema compatibility; data-quality blockers
+    # belong in incomplete_reasons.
+    warnings: list[str] = []
+    incomplete_reasons: list[str] = [
         f"malformed JSONL line {event['line']}: {event['message']}" for event in parse_errors
     ]
 
@@ -68,12 +74,12 @@ def classify_events(events: list[dict[str, Any]], thresholds: dict[str, float] |
     geff_npts = int(fits.get("geff_npts", 0))
 
     if dP_npts < limits["min_fit_points"]:
-        warnings.append(f"insufficient dP fit points: {dP_npts}")
+        incomplete_reasons.append(f"insufficient dP fit points: {dP_npts}")
     elif abs(dP_slope - limits["dP_slope_target"]) > limits["dP_slope_tol"] + FLOAT_EDGE_EPS:
         failures.append(f"dP slope misses -1 target: {dP_slope:.6g}")
 
     if geff_npts < limits["min_fit_points"]:
-        warnings.append(f"insufficient geff fit points: {geff_npts}")
+        incomplete_reasons.append(f"insufficient geff fit points: {geff_npts}")
     elif abs(geff_slope - limits["geff_slope_target"]) > limits["geff_slope_tol"] + FLOAT_EDGE_EPS:
         failures.append(f"g_eff slope misses -2 target: {geff_slope:.6g}")
 
@@ -82,7 +88,7 @@ def classify_events(events: list[dict[str, Any]], thresholds: dict[str, float] |
 
     if failures:
         status = "FAIL"
-    elif warnings:
+    elif incomplete_reasons:
         status = "INCOMPLETE"
     else:
         status = "PASS"
@@ -91,6 +97,7 @@ def classify_events(events: list[dict[str, Any]], thresholds: dict[str, float] |
         "status": status,
         "failures": failures,
         "warnings": warnings,
+        "incomplete_reasons": incomplete_reasons,
         "latest_diag": latest,
         "init": init_event,
         "done": done_event,
@@ -122,6 +129,10 @@ def main() -> int:
     if verdict["warnings"]:
         print("  warnings:")
         for item in verdict["warnings"]:
+            print("   -", item)
+    if verdict.get("incomplete_reasons"):
+        print("  incomplete reasons:")
+        for item in verdict["incomplete_reasons"]:
             print("   -", item)
     if args.output_json:
         pathlib.Path(args.output_json).write_text(json.dumps(verdict, indent=2, sort_keys=True))

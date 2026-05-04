@@ -66,6 +66,19 @@ The underlying target-blind baseline packet is still
 0.8889149882257383).
 \]
 
+The script now guards the imported outgoing direction before using it: the
+linearized packet Jacobian must be full rank with a controlled condition
+number, and flipping the sign of the least-squares direction must make the
+linearized packet norm worse than the baseline. That catches sign, ordering, or
+rank-deficiency mistakes in the direction before the later non-target-blind
+slice is evaluated.
+
+Because this script now uses finite `scipy.integrate.quad` bounds for the
+Gaussian packet integrals, it also recomputes the baseline packet with
+`QUAD_BOUND` values \(10,12,14\) and requires the packet spread to stay below
+\(10^{-9}\). The finite-bound choice is therefore tested as a numerical
+approximation, not just assumed.
+
 ---
 
 ## 3. Static-normalized root
@@ -86,7 +99,7 @@ After bisection, it finds
 At that point the required static-normalizing source factor is
 
 \[
-\widehat m_0^{\rm static}\approx 206.8317356734255.
+\widehat m_0^{\rm static}\approx 206.83173567321197.
 \]
 
 The resulting isotropic packet on this declared slice is
@@ -94,13 +107,13 @@ The resulting isotropic packet on this declared slice is
 \[
 (R_{\rm pole},R_{\rm norm},R_{P2},R_{P4})
 \approx
-(8.45325692733212\times10^{-5},\ 0,\ -1.5242626961102732\times10^{-4},\ 1.0887180997006705\times10^{-4}),
+(8.453256033291723\times10^{-5},\ 0,\ -1.5242626961133187\times10^{-4},\ 1.0887180997027804\times10^{-4}),
 \]
 
 with total packet norm
 
 \[
-\|R\|_2 \approx 2.055057029418912\times10^{-4}.
+\|R\|_2 \approx 2.0550569926468961\times10^{-4}.
 \]
 
 So on this declared slice the isotropic packet can be made numerically tiny.

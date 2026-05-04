@@ -7,6 +7,8 @@ import json
 
 import sympy as sp
 
+from step_24_parent_throat_action_outgoing_amplitude_frontier_sympy import export_step24_frontier_points
+
 
 def assert_zero(label: str, expr: sp.Expr) -> None:
     expr = sp.simplify(sp.expand(expr))
@@ -17,6 +19,12 @@ def assert_zero(label: str, expr: sp.Expr) -> None:
 def assert_close(label: str, actual: float, expected: float, tol: float) -> None:
     if abs(actual - expected) > tol:
         raise AssertionError(f"{label} failed: {actual} vs {expected} (tol={tol})")
+
+
+def assert_nonzero(label: str, expr: sp.Expr) -> None:
+    expr = sp.simplify(sp.expand(expr))
+    if expr == 0:
+        raise AssertionError(f"{label} unexpectedly vanished")
 
 
 def main() -> None:
@@ -34,6 +42,7 @@ def main() -> None:
     mhat0_req, lambda_out = sp.symbols("mhat0_req lambda_out", positive=True, real=True)
     chi_Q, N_Q_nat = sp.symbols("chi_Q N_Q_nat", positive=True, real=True)
     rho = sp.symbols("rho", real=True)
+    eps = sp.symbols("eps", real=True, nonzero=True)
 
     # Reduced static-normalized frontier law from step 24.
     static_scaled = sp.Eq(mhat0_req**2 * lambda_out * P0_base, P0_target)
@@ -45,37 +54,42 @@ def main() -> None:
     chi_from_static = sp.solve(sp.expand(static_scaled.lhs - static_scaled.rhs), P0_base)[0] / P0_target
     chi_from_static = sp.simplify(chi_from_static)
     NQ_from_static = sp.simplify(1 / chi_from_static)
+    static_scaled_mutated_target = sp.Eq(mhat0_req**2 * lambda_out * P0_base, P0_target + eps)
+    chi_from_mutated_target = sp.solve(
+        sp.expand(static_scaled_mutated_target.lhs - static_scaled_mutated_target.rhs),
+        P0_base,
+    )[0] / P0_target
+    chi_from_mutated_target = sp.simplify(chi_from_mutated_target)
+    NQ_from_mutated_target = sp.simplify(1 / chi_from_mutated_target)
+    target_mutation_residual = sp.factor(sp.together(NQ_from_mutated_target - NQ_from_static))
 
     assert_zero("chi_Q from static-normalized scaled packet", chi_from_static - 1 / (lambda_out * mhat0_req**2))
     assert_zero("natural-source N_Q burden", NQ_from_static - lambda_out * mhat0_req**2)
     assert_zero("natural-source map identity", sp.simplify(natural_source_map.lhs - natural_source_map.rhs).subs(N_Q_nat, 1 / chi_Q))
+    assert_nonzero(
+        "natural-source N_Q burden detects upstream P0_target mutation",
+        target_mutation_residual,
+    )
 
     # Minimal Robin outlet model from PDE stage 93:
     #   chi_Q^R = 3 / (3 - rho)
     chi_robin = sp.simplify(3 / (3 - rho))
     rho_from_NQ = sp.solve(sp.Eq(1 / chi_robin, N_Q_nat), rho)[0]
     assert_zero("Robin outlet inversion", rho_from_NQ - (3 - 3 * N_Q_nat))
+    assert_nonzero("Robin outlet inversion detects mutated slope", rho_from_NQ - (3 - (3 + eps) * N_Q_nat))
 
+    step24_exports = export_step24_frontier_points()
     point_step23 = {
         "label": "step23 target-blind ray point",
-        "scale": 0.09,
-        "lambda_out": 1.0,
-        "mhat0_req": 194.6081703105869,
-        "Q_iso": 0.4513177752288337,
+        **step24_exports["target_blind_scale_0_09"],
     }
     point_step24_q1 = {
         "label": "step24 best point with Q_iso <= 1",
-        "scale": 0.09,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.351570977913287,
-        "Q_iso": 0.618690285150578,
+        **step24_exports["best_q_iso_le_1"],
     }
     point_step24_qhalf = {
         "label": "step24 best point with Q_iso <= 0.5",
-        "scale": 0.092,
-        "lambda_out": 2000.0,
-        "mhat0_req": 4.7912441136331765,
-        "Q_iso": 0.4394839373049669,
+        **step24_exports["best_q_iso_le_half"],
     }
 
     def natural_nq(point: dict[str, float]) -> float:
@@ -96,15 +110,18 @@ def main() -> None:
     rho_step23 = robin_rho(point_step23)
     rho_q1 = robin_rho(point_step24_q1)
     rho_qhalf = robin_rho(point_step24_qhalf)
+    q1_lambda_mutation_residual = natural_nq({**point_step24_q1, "lambda_out": point_step24_q1["lambda_out"] - 1.0}) - nq_q1
 
     assert_close("same-scale natural N_Q burden is lambda-invariant", nq_step23, nq_q1, 1e-9)
     assert_close("same-scale natural chi is lambda-invariant", chi_step23, chi_q1, 1e-15)
-    assert_close("step23 natural N_Q burden", nq_step23, 37872.3399516344, 1e-6)
-    assert_close("step24 q<=0.5 natural N_Q burden", nq_qhalf, 45912.04031284913, 1e-6)
+    assert_close("step23 natural N_Q burden", nq_step23, 37872.33995155716, 1e-6)
+    assert_close("step24 q<=0.5 natural N_Q burden", nq_qhalf, 45912.04031275389, 1e-6)
     assert_close("step23 natural chi", chi_step23, 2.6404494712422554e-05, 1e-12)
     assert_close("step24 q<=0.5 natural chi", chi_qhalf, 2.1780778923914126e-05, 1e-12)
     assert_close("step23 minimal Robin rho", rho_step23, -113614.01985490319, 1e-6)
     assert_close("step24 q<=0.5 minimal Robin rho", rho_qhalf, -137733.1209385474, 1e-6)
+    if abs(q1_lambda_mutation_residual) < 1.0:
+        raise AssertionError("lambda_out mutation did not perturb the natural-source burden enough")
 
     print("STEP 26 NATURAL-SOURCE OUTGOING BURDEN AUDIT")
     print("Tested whether the step-24 outgoing-amplitude frontier improves the exact PDE natural-source outgoing burden.")
@@ -119,7 +136,9 @@ def main() -> None:
     print("Exact PDE bridge:")
     print("  chi_Q from the static-normalized scaled packet =", sp.sstr(chi_from_static))
     print("  natural-source N_Q burden =", sp.sstr(NQ_from_static))
+    print("  upstream P0_target mutation residual =", sp.sstr(target_mutation_residual))
     print("  minimal Robin rho(N_Q) =", sp.sstr(rho_from_NQ))
+    print("  q<=1 lambda mutation burden residual =", q1_lambda_mutation_residual)
     print("Concrete points:")
     for point, nq, chi, rho_value in (
         (point_step23, nq_step23, chi_step23, rho_step23),

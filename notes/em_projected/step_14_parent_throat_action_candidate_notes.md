@@ -223,7 +223,19 @@ so the quadratic boundary term
 \]
 is also tracked explicitly before the bulk \(K_\eta\) formula is read off, and
 the script again checks its vanishing on a concrete decaying profile by
-explicit `sp.limit`.
+explicit `sp.limit`. The boundary-value helper is separately checked on
+\(\arctan w\), where the endpoint discharge is nonzero, so these vanishing
+boundary claims are tied to the chosen decaying profiles rather than to a
+degenerate boundary operator. The script also repeats the linear and quadratic
+boundary-discharge checks on a second non-Gaussian decaying profile
+\(\eta(w)=1/(1+w^2)\). For the linear check it uses a separate
+\(B(w)=e^{-w^2}\) coefficient so the Lorentzian denominator is not cancelled;
+for the quadratic check the rational decay is retained against the audited
+\(A(w)\) coefficient. The script also tests a finite-endpoint Lorentzian probe
+with boundary discharge \(-2\), so the boundary operator distinguishes
+nonzero finite limits instead of only returning zero on decaying profiles. The
+boundary discharge is therefore not supported only by one Gaussian test
+function.
 
 So the audited linear closure
 

@@ -67,12 +67,15 @@ The script compares two already-audited points at the same frozen scale
 
 - the `step_23` point
   \[
-  (\lambda_{\rm out},\widehat m_0^{\rm req})=(1,194.6081703105869),
+  (\lambda_{\rm out},\widehat m_0^{\rm req})=(1,194.60817031038846),
   \]
 - the `step_24` best point with \(Q_{\rm iso}\le 1\)
   \[
-  (\lambda_{\rm out},\widehat m_0^{\rm req})=(2000,4.351570977913287).
+  (\lambda_{\rm out},\widehat m_0^{\rm req})=(2000,4.3515709779088505).
   \]
+
+These records are imported from `step_24`, so this burden check does not keep
+its own independent copy of the frontier points.
 
 Despite the dramatic change in the reduced bookkeeping variables, the exact
 natural-source burden is identical:
@@ -80,24 +83,47 @@ natural-source burden is identical:
 \[
 N_Q^{\rm nat}
 =\lambda_{\rm out}\widehat m_0^{\,2}
-\approx 37872.3399516344.
+\approx 37872.33995155716.
 \]
 
 Equivalently,
 
 \[
-\chi_Q^{\rm nat}\approx 2.6404494712422554\times 10^{-5}.
+\chi_Q^{\rm nat}\approx 2.6404494712476408\times 10^{-5}.
 \]
 
 So the `step_24` outgoing-amplitude win does **not** reduce the exact
 natural-source outgoing burden at that scale. It only repartitions it.
 
+As a mutation guard, lowering the \(Q_{\rm iso}\le 1\) point from
+\(\lambda_{\rm out}=2000\) to \(1999\) changes the natural-source burden by
+about \(-18.936169975779194\), so the outgoing load is active in the check.
+The symbolic guard is upstream of that concrete point check: the script
+perturbs the static-normalized target equation
+\[
+\widehat m_0^{\,2}\lambda_{\rm out}P_0^{\rm base}=P_0^{\rm target}
+\]
+to
+\[
+\widehat m_0^{\,2}\lambda_{\rm out}P_0^{\rm base}
+=P_0^{\rm target}+\epsilon,
+\]
+re-solves for \(P_0^{\rm base}\), rebuilds \(\chi_Q\), and then rebuilds
+\(N_Q^{\rm nat}\). The resulting residual is
+\[
+\Delta N_Q
+=-\frac{\epsilon\,\lambda_{\rm out}\widehat m_0^{\,2}}
+{P_0^{\rm target}+\epsilon},
+\]
+so the check probes the upstream solve rather than a cosmetic rearrangement of
+\(N_Q=\lambda_{\rm out}\widehat m_0^2\).
+
 At the `step_24` best sampled point with \(Q_{\rm iso}\le 0.5\),
 
 \[
-N_Q^{\rm nat}\approx 45912.04031284913,
+N_Q^{\rm nat}\approx 45912.04031275389,
 \qquad
-\chi_Q^{\rm nat}\approx 2.1780778923914126\times 10^{-5}.
+\chi_Q^{\rm nat}\approx 2.1780778923959307\times 10^{-5}.
 \]
 
 That is worse, not better.
@@ -117,13 +143,13 @@ The PDE ledger’s minimal Robin outlet model gives
 Feeding in the natural-source burdens above yields
 
 \[
-\rho\approx -113614.01985490319
+\rho\approx -113614.01985467147
 \]
 
 for the scale-\(0.09\) points, and
 
 \[
-\rho\approx -137733.1209385474
+\rho\approx -137733.12093826168
 \]
 
 for the best sampled \(Q_{\rm iso}\le 0.5\) point.

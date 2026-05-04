@@ -105,6 +105,9 @@ def main() -> None:
         "transported-target compatibility first variation",
         dcompat_transport - (-6 * S * z2 / T + 3 * S**2 * z4 / T**2),
     )
+    assert_zero("fixed-target compatibility z0 cancellation", sp.diff(dcompat_direct, z0))
+    assert_zero("transported-target compatibility z0 cancellation", sp.diff(dcompat_transport, z0))
+    assert_nonzero("normalization K surface still carries z0", sp.diff(dK_norm, z0) - 0)
     assert_nonzero(
         "mutated compatibility transport should fail",
         dcompat_direct - (n0 / Ptarget - 6 * S * z2 / T - 3 * S**2 * z4 / T**2),
@@ -146,6 +149,7 @@ def main() -> None:
 
     print("STEP 08 PROJECTED MAXWELL PUSH MASTER AUDIT")
     print("Checked bundle perturbation slots, z0 cancellation from compatibility, grouped signature, and primitive static dependencies.")
+    print("Target-transport z0 cancellation guards = PASS")
     print("STATUS: PASS")
 
 

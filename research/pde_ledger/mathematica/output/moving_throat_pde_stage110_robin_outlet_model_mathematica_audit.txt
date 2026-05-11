@@ -1,0 +1,32 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage110_robin_outlet_model_mathematica_audit.wl
+# Date: 2026-05-11T13:07:47-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 093 — EXPLICIT ISOTROPIC ROBIN OUTLET MODEL
+========================================================================================
+Y_R(z) = 1 + z^2/(9 - 3*rho) + (4*z^4)/(9*(-3 + rho)^2) - (rho*z^4)/(9*(-3 + rho)^2) - ((I/9)*z^5)/(-3 + rho)
+c2 = (9 - 3*rho)^(-1)
+c4 = -1/9*(-4 + rho)/(-3 + rho)^2
+c5 = (27 - 9*rho)^(-1)
+chi_Q^R = -3/(-3 + rho)
+chi_Q^R linearized = 1 + rho/3 + rho^2/9
+c2 - 1/(9 - 3 rho) = 0
+PASS: c2 - 1/(9 - 3 rho)
+c4 - (4 - rho)/(9 (3 - rho)^2) = 0
+PASS: c4 - (4 - rho)/(9 (3 - rho)^2)
+c5 - 1/(27 - 9 rho) = 0
+PASS: c5 - 1/(27 - 9 rho)
+chi_Q^R - 3/(3 - rho) = 0
+PASS: chi_Q^R - 3/(3 - rho)
+chi_Q^R linearized - (1 + rho/3 + rho^2/9) = 0
+PASS: chi_Q^R linearized - (1 + rho/3 + rho^2/9)
+
+Stage 110 Mathematica audit passed.
+
+EXIT_CODE: 0

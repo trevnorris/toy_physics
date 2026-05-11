@@ -1,0 +1,24 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage127_penetration_families_sympy_audit.py
+# Date: 2026-05-11T12:45:33-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES
+========================================================================================
+g_slab(x) = 2*sin(pi*x/2)/(pi*x)
+g_exp(x) = (2*pi*x + 4*exp(1/x))/((pi**2*x**2 + 4)*(exp(1/x) - 1))
+
+g_-^F1 = 0.758035078944662826919680890414
+x_*^slab = 0.79783936090456440508490881279972941789601018958900271741142733512870884256665312
+x_*^exp  = 0.66276540262316140251258875013529026617855113761165291470424652438625727951066625
+residual slab = -2.66696092767403190071722842020e-83
+residual exp  = -9.67012424716328641076781154243e-82
+
+Conclusion: moderate positive source penetration reaches the unique lower compensated branch.
+
+EXIT_CODE: 0

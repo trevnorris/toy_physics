@@ -1,34 +1,24 @@
-\section[Stage 072]{Stage 072: Explicit Family--1 Verdict for the Minimal Isotropic Passive/Outgoing Branch}
+\section[Stage 072]{Stage 072: Explicit Branch Placement Map and Threshold Surfaces}
 \label{stage:072}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} given the Stage~071 minimal isotropic precursor.}
-\stagefield{Purpose}{Stage~072 evaluates the minimal isotropic demand on the explicit Family--1 support/source branch.}
-\stagefield{Inputs}{\(\zeta_{\rm req}=1/3\) and the zero-bias Family--1 value \(A_{\rm F1}\simeq1.00005192880220\).}
+\claimstatus{\StatusExactClosure{} for the branch-threshold map in \((\chi_s,\Lambda_\ell,\Upsilon_w)\).}
+\stagefield{Purpose}{Stage~072 expresses the support/source fail/succeed surfaces directly in terms of the canonical branch controls.}
+\stagefield{Inputs}{The canonical branch controls \(\chi_s\), \(\Lambda_\ell\), \(\Upsilon_w\) and the exact thresholds from Stage~069.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage072_explicit_branch_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage072_explicit_branch_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage072_explicit_branch_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage072_explicit_branch_thresholds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-At zero transport bias, \(\Omega_{\mathrm{Pe}=0}=1\), so Family--1 supplies
+Using \eqref{eq:app-stage071-control-laws}, the support/source thresholds become surfaces in the three branch controls:
 \begin{equation}
-\label{eq:app-stage072-zero-bias-supply}
-\zeta_{\rm F1}(0)=A_{\rm F1}\simeq1.00005192880220.
+\label{eq:app-stage072-surfaces}
+\Upsilon_w\Lambda_\ell^2
+\lessgtr
+\frac{\mathrm{Pe}_{\rm req}}{\Delta_{\infty,0}(\kappa(\chi_s,\Lambda_\ell),\eta=\Lambda_\ell)}.
 \end{equation}
-Since
-\begin{equation}
-\label{eq:app-stage072-success}
-\boxed{
-\zeta_{\rm req}^{\rm min}=\frac13<A_{\rm F1}},
-\end{equation}
-the required transport bias is
-\begin{equation}
-\label{eq:app-stage072-Pe-zero}
-\boxed{
-\mathrm{Pe}_{\rm req}=0}.
-\end{equation}
-The explicit Family--1 support/source branch therefore supports the minimal isotropic passive/outgoing quadrupole demand before any transport-driven overlap boost is turned on.
+This is the branch-level version of the wall figure of merit.  It is exact once \((\chi_s,\Lambda_\ell,\Upsilon_w)\) are selected.
 
-\stagefield{Output}{The zero-bias Family--1 success theorem \eqref{eq:app-stage072-Pe-zero}.}
-\stagefield{Downstream use}{Stage~073 records the updated reduced theorem status and hands the problem to the grouped \(P_2\)/geometry derivation of Part~IV.}
+\stagefield{Output}{A threshold-surface map in the canonical branch variables.}
+\stagefield{Downstream use}{Stages~073--078 insert the Family--1 values and compare actual wall-depth data against the thresholds.}
 

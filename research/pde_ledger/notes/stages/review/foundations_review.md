@@ -17,7 +17,7 @@
 - Are the frozen parent equations in phase0_spec self-consistent?
 - Does the linearized scaffold correctly specialize the parent equations?
 - Is the unit-test benchmark correctly derived from the finite-throat limit?
-- Do these documents provide a sound foundation for the 152-stage derivation?
+- Do these documents provide a sound foundation for the 169-stage derivation?
 
 ## Agent Reviews
 

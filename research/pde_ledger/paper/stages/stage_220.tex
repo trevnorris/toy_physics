@@ -1,18 +1,18 @@
-\section[Stage 220]{Stage 220: Actual-branch dressing compiler}
+\section[Stage 220]{Stage 220: Dynamic mixed-port kernel and phase-lag no-go}
 \label{stage:220}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.6}.}
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~220 computes the dressing coordinate directly on the actual rigid-mouth branch.}
+\stagefield{Purpose}{Stage~220 promotes the one-port bundle to finite frequency and tests whether linear dynamic driving changes the same-charge kernel class.}
 
-\stagefield{Inputs}{Imports the finite static-blind curve, microscopic log drifts $(c_1,\kappa_U,\kappa_\eta)$, and the support-sector variables.}
+\stagefield{Inputs}{Imports Stage~219, frequency-dependent BdG and Maxwell/mixed denominators, the outgoing dressing $\Pi_{\rm out}(\omega)$, and the off-pole conditions $\varpi^2-\omega^2\ne0$, $\Delta_\Pi\ne0$, $D_\Pi\ne0$.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage220_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation derives $q_\eta=2c_1-\kappa_U-\kappa_\eta$, shows the finite static-blind curve is support-blind, and identifies the post-static orbit-lock correction.}
+\stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
 
-\stagefield{Output}{Actual-branch dressing compiler and support-blindness theorem: explicit support-sector shifts do not by themselves fix the dressing coordinate.}
+\stagefield{Output}{Dynamic product-family theorem and phase-lag no-go: linear dynamic mixing preserves the static spatial families, and the first-order passive/outgoing insertion is a phase-lag term rather than a new real barrier-lowering kernel off resonance.}
 
 \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
 
@@ -23,6 +23,6 @@
 \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.6} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
 
 

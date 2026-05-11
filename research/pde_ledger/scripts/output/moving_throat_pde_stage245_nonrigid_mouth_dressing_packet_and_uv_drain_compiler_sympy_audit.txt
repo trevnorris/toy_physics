@@ -1,0 +1,114 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+# Date: 2026-05-11T12:52:13-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================================================
+1. Exact stationary non-rigid packet
+================================================================================
+F_nr(U,V)             = U**2*a_U/2 - U*V*chi_UV - U*f_U + V**2*a_V/2
+dF/dU                 = U*a_U - V*chi_UV - f_U
+dF/dV                 = -U*chi_UV + V*a_V
+Delta_UV              = a_U*a_V - chi_UV**2
+U_sol                 = a_V*f_U/(a_U*a_V - chi_UV**2)
+V_sol                 = chi_UV*f_U/(a_U*a_V - chi_UV**2)
+V/U                   = chi_UV/a_V
+Hessian               =
+⎡ a_U   -χ_UV⎤
+⎢            ⎥
+⎣-χ_UV   a_V ⎦
+det(H)                = a_U*a_V - chi_UV**2
+
+================================================================================
+2. Positive U/V drain
+================================================================================
+D_UV                  = a_V*chi_UV**2*f_U**2/(a_U*a_V - chi_UV**2)**2
+Expected D_UV         = a_V*chi_UV**2*f_U**2/(a_U*a_V - chi_UV**2)**2
+
+================================================================================
+3. Exact finite physical compiler
+================================================================================
+T^2 / T^2_ref         = exp(a_V*f_U/(a_U*a_V - chi_UV**2))
+epsilon_eta / eps_ref = exp(chi_UV*f_U/(a_U*a_V - chi_UV**2))
+R_target / R_ref      = (eps_eta_ref*exp(chi_UV*f_U/(a_U*a_V - chi_UV**2)) - 1)*exp(-a_V*f_U/(a_U*a_V - chi_UV**2))/(eps_eta_ref - 1)
+Exact multiplicative check = 0
+
+================================================================================
+4. Exact dependent microscopic correction
+================================================================================
+y_dep(U,V)            =
+⎡                0                ⎤
+⎢                                 ⎥
+⎢           -χ_UV⋅f_U             ⎥
+⎢         ───────────────         ⎥
+⎢                       2         ⎥
+⎢         a_U⋅a_V - χ_UV          ⎥
+⎢                                 ⎥
+⎢    a_V⋅f_U          χ_UV⋅f_U    ⎥
+⎢─────────────── - ───────────────⎥
+⎢              2                 2⎥
+⎣a_U⋅a_V - χ_UV    a_U⋅a_V - χ_UV ⎦
+
+================================================================================
+5. Weak-axisymmetric first-order packet
+================================================================================
+Xi1_nr                = u1
+R1 + Xi1              = eps_eta_ref*v1/(eps_eta_ref - 1)
+R1_nr                 = -eps_eta_ref*u1/(eps_eta_ref - 1) + eps_eta_ref*v1/(eps_eta_ref - 1) + u1/(eps_eta_ref - 1)
+
+================================================================================
+6. Orbit-side / support-blind split
+================================================================================
+d/dLam    U_sol = 0
+d/dvarrho U_sol = 0
+d/dLam    V_sol = 0
+d/dvarrho V_sol = 0
+d/dLam    eps_eta = 0
+d/dvarrho eps_eta = 0
+d/dLam    R_ratio = 0
+d/dvarrho R_ratio = 0
+d/dLam    D_UV = 0
+d/dvarrho D_UV = 0
+d/dLam    Delta_Keta = 0
+d/dvarrho Delta_Keta = 0
+d/dLam    Delta_mu = 0
+d/dvarrho Delta_mu = 0
+
+================================================================================
+7. Session-I readback
+================================================================================
+epsilon_eta(obs)      = 0.2893348201239260
+R_target/R_ref(obs)   = 0.8798414919352429
+y_dep(obs)            =
+⎡    0     ⎤
+⎢          ⎥
+⎢0.03619791⎥
+⎢          ⎥
+⎣0.17933249⎦
+chi_UV inferred       = -0.7586827026704518
+chi_lambda inferred   = -0.7986133712320546
+Delta_UV inferred     = 6.924400556668659
+f_U inferred          = 0.3303737218101783
+U rebuilt             = 0.1431345800000000
+V rebuilt             = -0.03619791000000000
+R1_obs                = -0.1276211900000000
+
+================================================================================
+Stage 245 audit result
+================================================================================
+All symbolic checks passed.
+Verified objects:
+- exact stationary U/V packet on the non-rigid mouth/dressing branch,
+- exact admissibility determinant and signed V/U response ratio,
+- exact positive U/V drain,
+- exact finite physical compiler for T^2, epsilon_eta, and R_target,
+- exact weak-axisymmetric packet (Xi_1, R_1),
+- exact dependent microscopic correction,
+- orbit-side / support-blind separation from the selected-support packet,
+- and a consistent Session-I readback of the reported U/V point.
+
+EXIT_CODE: 0

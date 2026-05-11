@@ -1,0 +1,239 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+# Date: 2026-05-11T12:49:24-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 194 — FULL INTERIOR SIMPLEX OPTIMIZER AND FINITE ALGEBRAIC CANDIDATE REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact interior ratio objective and stationary numerators
+----------------------------------------------------------------------------------------
+Phi(r,s) =
+                       _____________________________________
+                      ╱                    2              2 
+kᵢ + k_j⋅r + kₖ⋅s + ╲╱  A + B⋅r + C⋅s + D⋅r  + E⋅r⋅s + F⋅s  
+────────────────────────────────────────────────────────────
+                         _____________                      
+                        ╱  2    2                           
+                      ╲╱  r  + s  + 1                       
+tau(r,s) =
+                           _____________                    
+                          ╱  2    2                         
+                   2⋅H₀⋅╲╱  r  + s  + 1                     
+────────────────────────────────────────────────────────────
+                       _____________________________________
+                      ╱                    2              2 
+kᵢ + k_j⋅r + kₖ⋅s + ╲╱  A + B⋅r + C⋅s + D⋅r  + E⋅r⋅s + F⋅s  
+M_r =
+             2               
+-kᵢ⋅r + k_j⋅s  + k_j - kₖ⋅r⋅s
+M_s =
+                      2     
+-kᵢ⋅s - k_j⋅r⋅s + kₖ⋅r  + kₖ
+L_r =
+      ⎛                   2              2⎞                     ⎛ 2    2    ⎞
+- 2⋅r⋅⎝A + B⋅r + C⋅s + D⋅r  + E⋅r⋅s + F⋅s ⎠ + (B + 2⋅D⋅r + E⋅s)⋅⎝r  + s  + 1⎠
+L_s =
+      ⎛                   2              2⎞                     ⎛ 2    2    ⎞
+- 2⋅s⋅⎝A + B⋅r + C⋅s + D⋅r  + E⋅r⋅s + F⋅s ⎠ + (C + E⋅r + 2⋅F⋅s)⋅⎝r  + s  + 1⎠
+exact dPhi/dr compiler = 0
+exact dPhi/ds compiler = 0
+
+----------------------------------------------------------------------------------------
+II. Exact quartic-sextic elimination system and degree counts
+----------------------------------------------------------------------------------------
+C_cross(r,s) =
+         2              3                       3             2                ↪
+2⋅A⋅k_j⋅r ⋅s + 2⋅A⋅k_j⋅s  + 2⋅A⋅k_j⋅s - 2⋅A⋅kₖ⋅r  - 2⋅A⋅kₖ⋅r⋅s  - 2⋅A⋅kₖ⋅r - B ↪
+
+↪      2           3                   3              3                     4  ↪
+↪ ⋅kᵢ⋅r ⋅s - B⋅kᵢ⋅s  - B⋅kᵢ⋅s + B⋅k_j⋅r ⋅s + B⋅k_j⋅r⋅s  + B⋅k_j⋅r⋅s - B⋅kₖ⋅r   ↪
+
+↪         2  2         2                3           2                   2  2   ↪
+↪ - B⋅kₖ⋅r ⋅s  + B⋅kₖ⋅s  + B⋅kₖ + C⋅kᵢ⋅r  + C⋅kᵢ⋅r⋅s  + C⋅kᵢ⋅r + C⋅k_j⋅r ⋅s  - ↪
+
+↪         2          4                 3             3                      3  ↪
+↪  C⋅k_j⋅r  + C⋅k_j⋅s  - C⋅k_j - C⋅kₖ⋅r ⋅s - C⋅kₖ⋅r⋅s  - C⋅kₖ⋅r⋅s - 2⋅D⋅kᵢ⋅r ⋅ ↪
+
+↪               3                        3             2                    4  ↪
+↪ s - 2⋅D⋅kᵢ⋅r⋅s  - 2⋅D⋅kᵢ⋅r⋅s + 2⋅D⋅kₖ⋅r  + 2⋅D⋅kₖ⋅r⋅s  + 2⋅D⋅kₖ⋅r + E⋅kᵢ⋅r   ↪
+
+↪         2         4         2          3            2                   2    ↪
+↪ + E⋅kᵢ⋅r  - E⋅kᵢ⋅s  - E⋅kᵢ⋅s  - E⋅k_j⋅r  - E⋅k_j⋅r⋅s  - E⋅k_j⋅r + E⋅kₖ⋅r ⋅s  ↪
+
+↪         3                    3               3                         2     ↪
+↪ + E⋅kₖ⋅s  + E⋅kₖ⋅s + 2⋅F⋅kᵢ⋅r ⋅s + 2⋅F⋅kᵢ⋅r⋅s  + 2⋅F⋅kᵢ⋅r⋅s - 2⋅F⋅k_j⋅r ⋅s - ↪
+
+↪           3            
+↪  2⋅F⋅k_j⋅s  - 2⋅F⋅k_j⋅s
+S_r(r,s) =
+   2  2          3            2                    2            2  2           ↪
+4⋅A ⋅r  + 4⋅A⋅B⋅r  - 4⋅A⋅B⋅r⋅s  - 4⋅A⋅B⋅r + 8⋅A⋅C⋅r ⋅s - 8⋅A⋅D⋅r ⋅s  - 8⋅A⋅D⋅r ↪
+
+↪ 2          3              3                      2  2         2  2           ↪
+↪   + 4⋅A⋅E⋅r ⋅s - 4⋅A⋅E⋅r⋅s  - 4⋅A⋅E⋅r⋅s + 8⋅A⋅F⋅r ⋅s  - 4⋅A⋅kᵢ ⋅r  + 8⋅A⋅kᵢ⋅ ↪
+
+↪        2                             2            2  4          2  2         ↪
+↪ k_j⋅r⋅s  + 8⋅A⋅kᵢ⋅k_j⋅r - 8⋅A⋅kᵢ⋅kₖ⋅r ⋅s - 4⋅A⋅k_j ⋅s  - 8⋅A⋅k_j ⋅s  - 4⋅A⋅k ↪
+
+↪   2                 3                          2  2  2    2  4      2  2  2  ↪
+↪ _j  + 8⋅A⋅k_j⋅kₖ⋅r⋅s  + 8⋅A⋅k_j⋅kₖ⋅r⋅s - 4⋅A⋅kₖ ⋅r ⋅s  + B ⋅r  - 2⋅B ⋅r ⋅s   ↪
+
+↪      2  2    2  4      2  2    2          3              3                   ↪
+↪ - 2⋅B ⋅r  + B ⋅s  + 2⋅B ⋅s  + B  + 4⋅B⋅C⋅r ⋅s - 4⋅B⋅C⋅r⋅s  - 4⋅B⋅C⋅r⋅s - 4⋅B ↪
+
+↪     3  2          3            4            2                    4           ↪
+↪ ⋅D⋅r ⋅s  - 4⋅B⋅D⋅r  + 4⋅B⋅D⋅r⋅s  + 8⋅B⋅D⋅r⋅s  + 4⋅B⋅D⋅r + 2⋅B⋅E⋅r ⋅s - 4⋅B⋅E ↪
+
+↪   2  3          2            5          3                    3  2            ↪
+↪ ⋅r ⋅s  - 4⋅B⋅E⋅r ⋅s + 2⋅B⋅E⋅s  + 4⋅B⋅E⋅s  + 2⋅B⋅E⋅s + 4⋅B⋅F⋅r ⋅s  - 4⋅B⋅F⋅r⋅ ↪
+
+↪  4            2         2  3               2  2               2              ↪
+↪ s  - 4⋅B⋅F⋅r⋅s  - 4⋅B⋅kᵢ ⋅r  + 8⋅B⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅B⋅kᵢ⋅k_j⋅r  - 8⋅B⋅kᵢ⋅kₖ⋅ ↪
+
+↪  3            2    4          2    2          2                 2  3         ↪
+↪ r ⋅s - 4⋅B⋅k_j ⋅r⋅s  - 8⋅B⋅k_j ⋅r⋅s  - 4⋅B⋅k_j ⋅r + 8⋅B⋅k_j⋅kₖ⋅r ⋅s  + 8⋅B⋅k ↪
+
+↪        2           2  3  2      2  2  2          2  3          2             ↪
+↪ _j⋅kₖ⋅r ⋅s - 4⋅B⋅kₖ ⋅r ⋅s  + 4⋅C ⋅r ⋅s  - 8⋅C⋅D⋅r ⋅s  - 8⋅C⋅D⋅r ⋅s + 4⋅C⋅E⋅r ↪
+
+↪ 3  2            4            2          2  3         2  2                    ↪
+↪  ⋅s  - 4⋅C⋅E⋅r⋅s  - 4⋅C⋅E⋅r⋅s  + 8⋅C⋅F⋅r ⋅s  - 4⋅C⋅kᵢ ⋅r ⋅s + 8⋅C⋅kᵢ⋅k_j⋅r⋅s ↪
+
+↪ 3                               2  2          2  5          2  3          2  ↪
+↪   + 8⋅C⋅kᵢ⋅k_j⋅r⋅s - 8⋅C⋅kᵢ⋅kₖ⋅r ⋅s  - 4⋅C⋅k_j ⋅s  - 8⋅C⋅k_j ⋅s  - 4⋅C⋅k_j ⋅ ↪
+
+↪                   4                 2         2  2  3      2  2  4      2  2 ↪
+↪ s + 8⋅C⋅k_j⋅kₖ⋅r⋅s  + 8⋅C⋅k_j⋅kₖ⋅r⋅s  - 4⋅C⋅kₖ ⋅r ⋅s  + 4⋅D ⋅r ⋅s  + 8⋅D ⋅r  ↪
+
+↪   2      2  2          3  3          3              5            3           ↪
+↪ ⋅s  + 4⋅D ⋅r  - 4⋅D⋅E⋅r ⋅s  - 4⋅D⋅E⋅r ⋅s + 4⋅D⋅E⋅r⋅s  + 8⋅D⋅E⋅r⋅s  + 4⋅D⋅E⋅r ↪
+
+↪             2  4          2  2         2  4               3  2               ↪
+↪ ⋅s - 8⋅D⋅F⋅r ⋅s  - 8⋅D⋅F⋅r ⋅s  - 4⋅D⋅kᵢ ⋅r  + 8⋅D⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅D⋅kᵢ⋅k_j⋅ ↪
+
+↪  3              4            2  2  4          2  2  2          2  2          ↪
+↪ r  - 8⋅D⋅kᵢ⋅kₖ⋅r ⋅s - 4⋅D⋅k_j ⋅r ⋅s  - 8⋅D⋅k_j ⋅r ⋅s  - 4⋅D⋅k_j ⋅r  + 8⋅D⋅k_ ↪
+
+↪       3  3               3           2  4  2    2  4  2      2  2  4      2  ↪
+↪ j⋅kₖ⋅r ⋅s  + 8⋅D⋅k_j⋅kₖ⋅r ⋅s - 4⋅D⋅kₖ ⋅r ⋅s  + E ⋅r ⋅s  - 2⋅E ⋅r ⋅s  - 2⋅E ⋅ ↪
+
+↪  2  2    2  6      2  4    2  2          3  3            5            3      ↪
+↪ r ⋅s  + E ⋅s  + 2⋅E ⋅s  + E ⋅s  + 4⋅E⋅F⋅r ⋅s  - 4⋅E⋅F⋅r⋅s  - 4⋅E⋅F⋅r⋅s  - 4⋅ ↪
+
+↪     2  3                 2  3               2                3  2          2 ↪
+↪ E⋅kᵢ ⋅r ⋅s + 8⋅E⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅E⋅kᵢ⋅k_j⋅r ⋅s - 8⋅E⋅kᵢ⋅kₖ⋅r ⋅s  - 4⋅E⋅k_j  ↪
+
+↪     5          2    3          2                   2  4               2  2   ↪
+↪ ⋅r⋅s  - 8⋅E⋅k_j ⋅r⋅s  - 4⋅E⋅k_j ⋅r⋅s + 8⋅E⋅k_j⋅kₖ⋅r ⋅s  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s  - ↪
+
+↪        2  3  3      2  2  4         2  2  2                 4                ↪
+↪  4⋅E⋅kₖ ⋅r ⋅s  + 4⋅F ⋅r ⋅s  - 4⋅F⋅kᵢ ⋅r ⋅s  + 8⋅F⋅kᵢ⋅k_j⋅r⋅s  + 8⋅F⋅kᵢ⋅k_j⋅r ↪
+
+↪   2              2  3          2  6          2  4          2  2              ↪
+↪ ⋅s  - 8⋅F⋅kᵢ⋅kₖ⋅r ⋅s  - 4⋅F⋅k_j ⋅s  - 8⋅F⋅k_j ⋅s  - 4⋅F⋅k_j ⋅s  + 8⋅F⋅k_j⋅kₖ ↪
+
+↪     5                 3         2  2  4
+↪ ⋅r⋅s  + 8⋅F⋅k_j⋅kₖ⋅r⋅s  - 4⋅F⋅kₖ ⋅r ⋅s 
+S_s(r,s) =
+   2  2            2          2            3                    2  2           ↪
+4⋅A ⋅s  + 8⋅A⋅B⋅r⋅s  - 4⋅A⋅C⋅r ⋅s + 4⋅A⋅C⋅s  - 4⋅A⋅C⋅s + 8⋅A⋅D⋅r ⋅s  - 4⋅A⋅E⋅r ↪
+
+↪ 3              3                      2  2          2         2  2           ↪
+↪  ⋅s + 4⋅A⋅E⋅r⋅s  - 4⋅A⋅E⋅r⋅s - 8⋅A⋅F⋅r ⋅s  - 8⋅A⋅F⋅s  - 4⋅A⋅kᵢ ⋅s  - 8⋅A⋅kᵢ⋅ ↪
+
+↪        2              2                          2  2  2               3     ↪
+↪ k_j⋅r⋅s  + 8⋅A⋅kᵢ⋅kₖ⋅r ⋅s + 8⋅A⋅kᵢ⋅kₖ⋅s - 4⋅A⋅k_j ⋅r ⋅s  + 8⋅A⋅k_j⋅kₖ⋅r ⋅s + ↪
+
+↪                         2  4         2  2         2      2  2  2          3  ↪
+↪  8⋅A⋅k_j⋅kₖ⋅r⋅s - 4⋅A⋅kₖ ⋅r  - 8⋅A⋅kₖ ⋅r  - 4⋅A⋅kₖ  + 4⋅B ⋅r ⋅s  - 4⋅B⋅C⋅r ⋅ ↪
+
+↪              3                      3  2          4            2  3          ↪
+↪ s + 4⋅B⋅C⋅r⋅s  - 4⋅B⋅C⋅r⋅s + 8⋅B⋅D⋅r ⋅s  - 4⋅B⋅E⋅r ⋅s + 4⋅B⋅E⋅r ⋅s  - 4⋅B⋅E⋅ ↪
+
+↪  2            3  2            2         2    2               2  2            ↪
+↪ r ⋅s - 8⋅B⋅F⋅r ⋅s  - 8⋅B⋅F⋅r⋅s  - 4⋅B⋅kᵢ ⋅r⋅s  - 8⋅B⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅B⋅kᵢ⋅k ↪
+
+↪    3                            2  3  2               4                 2    ↪
+↪ ₖ⋅r ⋅s + 8⋅B⋅kᵢ⋅kₖ⋅r⋅s - 4⋅B⋅k_j ⋅r ⋅s  + 8⋅B⋅k_j⋅kₖ⋅r ⋅s + 8⋅B⋅k_j⋅kₖ⋅r ⋅s  ↪
+
+↪         2  5         2  3         2      2  4      2  2  2      2  2    2  4 ↪
+↪ - 4⋅B⋅kₖ ⋅r  - 8⋅B⋅kₖ ⋅r  - 4⋅B⋅kₖ ⋅r + C ⋅r  - 2⋅C ⋅r ⋅s  + 2⋅C ⋅r  + C ⋅s  ↪
+
+↪       2  2    2          4            2  3          2            5           ↪
+↪  - 2⋅C ⋅s  + C  - 4⋅C⋅D⋅r ⋅s + 4⋅C⋅D⋅r ⋅s  - 4⋅C⋅D⋅r ⋅s + 2⋅C⋅E⋅r  - 4⋅C⋅E⋅r ↪
+
+↪ 3  2          3            4            2                    4            2  ↪
+↪  ⋅s  + 4⋅C⋅E⋅r  + 2⋅C⋅E⋅r⋅s  - 4⋅C⋅E⋅r⋅s  + 2⋅C⋅E⋅r + 4⋅C⋅F⋅r ⋅s - 4⋅C⋅F⋅r ⋅ ↪
+
+↪  3          2            3                   2  3                 3          ↪
+↪ s  + 8⋅C⋅F⋅r ⋅s - 4⋅C⋅F⋅s  + 4⋅C⋅F⋅s - 4⋅C⋅kᵢ ⋅s  - 8⋅C⋅kᵢ⋅k_j⋅r⋅s  + 8⋅C⋅kᵢ ↪
+
+↪      2  2              2          2  2  3               3  2                 ↪
+↪ ⋅kₖ⋅r ⋅s  + 8⋅C⋅kᵢ⋅kₖ⋅s  - 4⋅C⋅k_j ⋅r ⋅s  + 8⋅C⋅k_j⋅kₖ⋅r ⋅s  + 8⋅C⋅k_j⋅kₖ⋅r⋅ ↪
+
+↪  2         2  4           2  2           2        2  4  2          5         ↪
+↪ s  - 4⋅C⋅kₖ ⋅r ⋅s - 8⋅C⋅kₖ ⋅r ⋅s - 4⋅C⋅kₖ ⋅s + 4⋅D ⋅r ⋅s  - 4⋅D⋅E⋅r ⋅s + 4⋅D ↪
+
+↪     3  3          3            4  2          2  2         2  2  2            ↪
+↪ ⋅E⋅r ⋅s  - 4⋅D⋅E⋅r ⋅s - 8⋅D⋅F⋅r ⋅s  - 8⋅D⋅F⋅r ⋅s  - 4⋅D⋅kᵢ ⋅r ⋅s  - 8⋅D⋅kᵢ⋅k ↪
+
+↪     3  2              4                2            2  4  2               5  ↪
+↪ _j⋅r ⋅s  + 8⋅D⋅kᵢ⋅kₖ⋅r ⋅s + 8⋅D⋅kᵢ⋅kₖ⋅r ⋅s - 4⋅D⋅k_j ⋅r ⋅s  + 8⋅D⋅k_j⋅kₖ⋅r ⋅ ↪
+
+↪                 3           2  6         2  4         2  2    2  6      2  4 ↪
+↪ s + 8⋅D⋅k_j⋅kₖ⋅r ⋅s - 4⋅D⋅kₖ ⋅r  - 8⋅D⋅kₖ ⋅r  - 4⋅D⋅kₖ ⋅r  + E ⋅r  - 2⋅E ⋅r  ↪
+
+↪   2      2  4    2  2  4      2  2  2    2  2          5            3  3     ↪
+↪ ⋅s  + 2⋅E ⋅r  + E ⋅r ⋅s  - 2⋅E ⋅r ⋅s  + E ⋅r  + 4⋅E⋅F⋅r ⋅s - 4⋅E⋅F⋅r ⋅s  + 8 ↪
+
+↪       3              3                     2    3               2  3         ↪
+↪ ⋅E⋅F⋅r ⋅s - 4⋅E⋅F⋅r⋅s  + 4⋅E⋅F⋅r⋅s - 4⋅E⋅kᵢ ⋅r⋅s  - 8⋅E⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅E⋅k ↪
+
+↪       3  2                2          2  3  3               4  2              ↪
+↪ ᵢ⋅kₖ⋅r ⋅s  + 8⋅E⋅kᵢ⋅kₖ⋅r⋅s  - 4⋅E⋅k_j ⋅r ⋅s  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s  + 8⋅E⋅k_j⋅kₖ ↪
+
+↪   2  2         2  5           2  3           2          2  4  2      2  2  2 ↪
+↪ ⋅r ⋅s  - 4⋅E⋅kₖ ⋅r ⋅s - 8⋅E⋅kₖ ⋅r ⋅s - 4⋅E⋅kₖ ⋅r⋅s + 4⋅F ⋅r ⋅s  + 8⋅F ⋅r ⋅s  ↪
+
+↪       2  2         2  4                 4              2  3              3   ↪
+↪  + 4⋅F ⋅s  - 4⋅F⋅kᵢ ⋅s  - 8⋅F⋅kᵢ⋅k_j⋅r⋅s  + 8⋅F⋅kᵢ⋅kₖ⋅r ⋅s  + 8⋅F⋅kᵢ⋅kₖ⋅s  - ↪
+
+↪         2  2  4               3  3                 3         2  4  2         ↪
+↪  4⋅F⋅k_j ⋅r ⋅s  + 8⋅F⋅k_j⋅kₖ⋅r ⋅s  + 8⋅F⋅k_j⋅kₖ⋅r⋅s  - 4⋅F⋅kₖ ⋅r ⋅s  - 8⋅F⋅k ↪
+
+↪  2  2  2         2  2
+↪ ₖ ⋅r ⋅s  - 4⋅F⋅kₖ ⋅s 
+cross-elimination identity = 0
+square elimination identity (r) = 0
+square elimination identity (s) = 0
+deg C_cross = 4
+deg S_r = 6
+deg S_s = 6
+
+----------------------------------------------------------------------------------------
+III. Diagonal-isotropic curvature reduction
+----------------------------------------------------------------------------------------
+Delta_iso reduction = 0
+tau_iso depends only on k_rs = 0
+
+----------------------------------------------------------------------------------------
+IV. Full triple-symmetry reduction and the equal-mix barycenter
+----------------------------------------------------------------------------------------
+equal-mix stationary numerator Nr(1,1) = 0
+equal-mix stationary numerator Ns(1,1) = 0
+
+----------------------------------------------------------------------------------------
+V. Algebraic candidate-count bound
+----------------------------------------------------------------------------------------
+Bezout bound from (quartic, sextic) system = 24
+
+All Stage 211 identities verified.
+
+EXIT_CODE: 0

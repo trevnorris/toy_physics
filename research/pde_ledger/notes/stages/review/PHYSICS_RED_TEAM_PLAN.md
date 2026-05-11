@@ -163,7 +163,7 @@ the algebra and still object that the model has not yet justified the reduction.
 
 ---
 
-## 2. Mouth Thermodynamics: Stages `112-123`
+## 2. Mouth Thermodynamics: Stages `129-140`
 
 ### Main concern
 
@@ -172,18 +172,18 @@ physicist will ask whether the electrochemical mouth law is derived or posited.
 
 ### Specific red-team issues
 
-- **Stage `112`**
+- **Stage `129`**
   The positive source-density free energy and Onsager current produce the
   truncated exponential law cleanly, but the choice of free-energy functional,
   mobility law, and zero-flux stationary branch still needs to be defended as
   the right reduction of the parent GNLS + localized-Maxwell mouth physics.
 
-- **Stage `112`**
+- **Stage `129`**
   The variable normalized to one total mouth source is mathematically useful,
   but a referee may ask what conserved quantity is actually being normalized and
   whether the interval `[0,L]` carries the correct physical measure.
 
-- **Stage `123`**
+- **Stage `140`**
   The self-matched susceptibility closure `Theta_sigma = H_w J_s` is a sharp and
   useful simplification, but it is a closure choice. A referee can reasonably
   ask why the source susceptibility must equal the shell-layer susceptibility,
@@ -202,7 +202,7 @@ physicist will ask whether the electrochemical mouth law is derived or posited.
 
 ---
 
-## 3. Core-Mouth Fixed Point: Stages `137-140`
+## 3. Core-Mouth Fixed Point: Stages `154-157`
 
 ### Main concern
 
@@ -230,7 +230,7 @@ remaining question is physical realization.
 
 ---
 
-## 4. Microscopic Invariant Closure: Stages `168-170`
+## 4. Microscopic Invariant Closure: Stages `185-187`
 
 ### Main concern
 
@@ -239,9 +239,9 @@ say: this classifies a reduced coherent sector, not the realized PDE branch.
 
 ### Specific red-team issues
 
-- Stage `168` is linearized/reference-branch rigidity.
-- Stage `169` is tangent-space orbit structure.
-- Stage `170` is a finite invariant-fibre theorem inside the positive coherent
+- Stage `185` is linearized/reference-branch rigidity.
+- Stage `186` is tangent-space orbit structure.
+- Stage `187` is a finite invariant-fibre theorem inside the positive coherent
   microscopic sector.
 
 None of those by themselves prove that the actual moving-throat PDE preserves the
@@ -271,14 +271,14 @@ These are the objections I would expect before simple algebra complaints.
    are they the right physical ones?”**
    In this project that should be read more narrowly as:
    why are they legitimate effective closures rather than hidden tuning knobs?
-   This is a real pressure point in Stages `001` and `123`.
+   This is a real pressure point in Stages `001` and `140`.
 
 3. **“Where do you prove the outgoing reduced port is the actual radiation
    channel of the microscopic model?”**
    This is the key Stage `004` objection.
 
 4. **“Where do you prove the actual PDE realizes the selected reduced branch?”**
-   This is the key Stage `137-140` and `168-170` objection.
+   This is the key Stage `154-157` and `185-187` objection.
 
 5. **“Where are the conservation/passivity checks that tie the reduced equations
    back to the parent action or free energy?”**
@@ -389,11 +389,11 @@ If this physical-principle audit starts now, the best order is:
 
 1. Stage `001-004`: identify exactly which ingredients are effective-theory
    ansatz versus parent-theory derivation.
-2. Stage `112-123`: audit the thermodynamic mouth law and susceptibility
+2. Stage `129-140`: audit the thermodynamic mouth law and susceptibility
    closure.
-3. Stage `137-140`: audit whether reduced fixed-point language outruns the
+3. Stage `154-157`: audit whether reduced fixed-point language outruns the
    realized physics.
-4. Stage `168-170`: audit invariant-structure theorem versus actual PDE branch
+4. Stage `185-187`: audit invariant-structure theorem versus actual PDE branch
    theorem.
 
 That sequence attacks the most likely referee objections first.

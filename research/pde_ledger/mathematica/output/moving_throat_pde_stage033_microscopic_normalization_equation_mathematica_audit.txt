@@ -1,0 +1,47 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl
+# Date: 2026-05-11T12:47:12-06:00
+# Elapsed: 10s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 016 — MICROSCOPIC NORMALIZATION EQUATION
+========================================================================================
+lambda_- = A + DeltaK/2 - (88*alpha0 + Sqrt[7744*alpha0^2 + 1008*alpha0*DeltaK*Pi^2 + 81*DeltaK^2*Pi^4])/(18*Pi^2)
+s_-(alpha0) = (4*(11 + (968*alpha0 + 63*DeltaK*Pi^2)/Sqrt[7744*alpha0^2 + 1008*alpha0*DeltaK*Pi^2 + 81*DeltaK^2*Pi^4]))/(9*Pi^2)
+N_-(alpha0) = (-4*beta0*(11 + (968*alpha0 + 63*DeltaK*Pi^2)/Sqrt[7744*alpha0^2 + 1008*alpha0*DeltaK*Pi^2 + 81*DeltaK^2*Pi^4])^2)/(9*(88*alpha0 - 9*(2*A + DeltaK)*Pi^2 + Sqrt[7744*alpha0^2 + 1008*alpha0*DeltaK*Pi^2 + 81*DeltaK^2*Pi^4]))
+dN/dalpha - monotonicity formula = 0
+PASS: dN/dalpha - monotonicity formula
+alpha_crit = (9*A*(A + DeltaK)*Pi^2)/(88*A + 72*DeltaK)
+alpha_crit - finite-throat closed form = 0
+PASS: alpha_crit - finite-throat closed form
+N_-(0) = (8*beta0)/(A*Pi^2)
+N_-(0) - beta0 kappa0^2 / A = 0
+PASS: N_-(0) - beta0 kappa0^2 / A
+weak-loading coefficient = (64*beta0*(8*A + 9*DeltaK))/(9*A^2*DeltaK*Pi^4)
+first derivative coefficient - generic form = 0
+PASS: first derivative coefficient - generic form
+first derivative coefficient - closed form = 0
+PASS: first derivative coefficient - closed form
+A = K0 - gU^2/OmegaU^2
+Delta0 = OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2)
+Chi = gR*gU + gW*OmegaU^2
+beta0 = (gR*gU + gW*OmegaU^2)^2/(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))^2
+alpha0 = (gR*gU + gW*OmegaU^2)^2/(OmegaU^2*(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))) + gB^2/varpi^2
+N_-(0) = (8*(gR*gU + gW*OmegaU^2)^2)/((K0 - gU^2/OmegaU^2)*((-88*gR^2)/(9*Pi) + OmegaU^2*OmegaW^2*Pi)^2)
+K0_onset = gU^2/OmegaU^2 + (648*(gR*gU + gW*OmegaU^2)^2*Pi^2)/(NQ*(88*gR^2 - 9*OmegaU^2*OmegaW^2*Pi^2)^2)
+N_-(0) at K0_onset - NQ = 0
+PASS: N_-(0) at K0_onset - NQ
+K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)] = 0
+PASS: K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]
+gate denominator = 8*(9*DeltaK + 11*(K0 - gU^2/OmegaU^2))*OmegaU^2*(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))*varpi^2
+gate numerator = (8*gB^2*(11*gU^2 - (9*DeltaK + 11*K0)*OmegaU^2)*(-88*gR^2 + 9*OmegaU^2*OmegaW^2*Pi^2))/(9*Pi^2) + (88*(2*gR*gU*gW + gR^2*K0 + gW^2*OmegaU^2)*(gU^2 - K0*OmegaU^2) + 8*DeltaK*(2*gR^2*gU^2 - gR*(18*gU*gW + 11*gR*K0)*OmegaU^2 - 9*gW^2*OmegaU^4) + 9*(gU^2 - K0*OmegaU^2)*(gU^2 - (DeltaK + K0)*OmegaU^2)*OmegaW^2*Pi^2)*varpi^2
+alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den = 0
+PASS: alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den
+
+Stage 033 Mathematica audit passed.
+
+EXIT_CODE: 0

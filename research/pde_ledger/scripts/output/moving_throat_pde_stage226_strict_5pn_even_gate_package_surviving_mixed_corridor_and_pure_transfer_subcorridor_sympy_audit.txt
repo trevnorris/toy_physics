@@ -1,0 +1,60 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+# Date: 2026-05-11T12:50:50-06:00
+# Elapsed: 11s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 226 SymPy audit: strict 5PN even-gate package and pure-transfer subcorridor ===
+
+Verified exact bridge and strict-even formulas:
+Xi_load = Xi1 = N01/N0 - D01/D0
+K1 on compensation surface = D01/9 + D01*D2/D0
+H_even on compensation surface = D01*(-D0 - 18*D2 + 27*D4)/(27*D0)
+H_even on one-pole branch = D01*(-81*U2**2 + 18*U2 - 1)/27
+
+Verified Stage 223 compatibility branch:
+K_compat = 24.47375487929098
+D0       = 24.23730998862225
+D2       = -1.185620468581895
+D4       = -0.1739915728494907
+u2       = 0.04891716403918018
+u4       = 0.009571555750544252
+P0       = 0.00206979231806288270
+
+Verified compensation-vs-strict-even comparison on the sample branch:
+K1 = 0.06219394707193093 * D01
+H_even = -0.01160426115715844 * D01
+
+Verified strict mixed-sector even-gate corridor:
+Matrix =
+⎡-0.255028994532   -0.132167046465   -0.0678757633489  0.568483003085  0.30037 ↪
+⎢                                                                              ↪
+⎣-0.0868014099241  -0.0104802677138  -0.0457592512982  0.510038362482  0.13145 ↪
+
+↪ 5205864⎤
+↪        ⎥
+↪ 5867026⎦
+rank   = 2  nullity = 3
+w1     = [-0.6064549721360895, 0.6566526282123765, 1.0, 0.0, 0.0]
+w2     = [6.983614208602705, -9.174307357026912, 0.0, 1.0, 0.0]
+w3     = [1.6166939867422119, -0.8468724923183332, 0.0, 0.0, 1.0]
+Xi1(w) = [1.336918413767915, -13.994440056681027, -5.021635000668134]
+sigma_even = 2.67386816837172775
+
+Verified pure-transfer subcorridor:
+rank   = 3  nullity = 2
+t1     = [-4.359222794717644, 3.107402039105293, 18.703510605854177, 1.0, 0.0]
+t2     = [1.9092566556867514, -1.1636512381543045, -0.48241449470528536, 0.0, 1.0]
+Xi1(t) = [11.010627674388918, -5.666583821708174]
+N01(t) = [0.5523613282924894, -0.2842709661248418]
+sigma_transfer = 2.31561904386055442
+
+Verified transported ceiling budgets:
+strict even-gate corridor  = [0.13760226956765037, 0.27586216567660315, 1.102857609777782, 1.7334641918944984]
+pure-transfer subcorridor = [0.15889069899824274, 0.3185407658554289, 1.2734805687705, 2.001648214117054]
+
+All Stage 226 checks passed.
+
+EXIT_CODE: 0

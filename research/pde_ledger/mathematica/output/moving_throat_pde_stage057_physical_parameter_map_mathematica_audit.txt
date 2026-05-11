@@ -1,0 +1,50 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage057_physical_parameter_map_mathematica_audit.wl
+# Date: 2026-05-11T12:53:30-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 040 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP
+========================================================================================
+x(kappa) = (4*Pi^2)/(4*kappa + Pi^2)
+A_K(eta;kappa) = (4*kappa + Pi^2)/(4*(kappa + y^2))
+zeta_0^(Pe+R) = (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(4*kappa + Pi^2))/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2))
+A_K - (kappa+Pi^2/4)/(kappa+y^2) = 0
+PASS: A_K - (kappa+Pi^2/4)/(kappa+y^2)
+zeta_phys - Omega_Pe^2*(kappa+Pi^2/4)/(kappa+y^2) = 0
+PASS: zeta_phys - Omega_Pe^2*(kappa+Pi^2/4)/(kappa+y^2)
+partial_kappa zeta = -1/4*(pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(Pi^2 - 4*y^2))/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2)^2)
+partial_y zeta = -1/2*(pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(4*kappa + Pi^2)*y)/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2)^2)
+partial_kappa identity = 0
+PASS: partial_kappa identity
+partial_y identity = 0
+PASS: partial_y identity
+zeta_max(kappa) = (4*kappa*Pi^2 + Pi^4)/(16*kappa)
+kappa_max(zeta_req) = -1/4*Pi^4/(Pi^2 - 4*zetaReq)
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+zeta_max - limit(Pe->inf, y->0) = 0
+PASS: zeta_max - limit(Pe->inf, y->0)
+kappa_max identity = 0
+PASS: kappa_max identity
+zeta_max(kappa_max) - zeta_req = 0
+PASS: zeta_max(kappa_max) - zeta_req
+Omega_req^2 = (4*(kappa + y^2)*zetaReq)/(4*kappa + Pi^2)
+y_req^2 = -kappa + (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(kappa + Pi^2/4))/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*zetaReq)
+kappa_req = ((pe^2*Pi^4*(2*E^pe*pe + Pi)^2)/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2) - y^2*zetaReq)/(-((pe^2*Pi^2*(2*E^pe*pe + Pi)^2)/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2)) + zetaReq)
+kappa_req defining equation = 0
+PASS: kappa_req defining equation
+kappa_req identity = 0
+PASS: kappa_req identity
+y_req identity = 0
+PASS: y_req identity
+
+Stage 057 Mathematica audit passed.
+
+EXIT_CODE: 0

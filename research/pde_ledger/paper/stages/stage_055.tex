@@ -1,24 +1,31 @@
-\section[Stage 055]{Stage 055: Explicit Branch Placement Map and Threshold Surfaces}
+\section[Stage 055]{Stage 055: Explicit Reachability of the Non-Twin Lowest Support Lane}
 \label{stage:055}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the branch-threshold map in \((\chi_s,\Lambda_\ell,\Upsilon_w)\).}
-\stagefield{Purpose}{Stage~055 expresses the support/source fail/succeed surfaces directly in terms of the canonical branch controls.}
-\stagefield{Inputs}{The canonical branch controls \(\chi_s\), \(\Lambda_\ell\), \(\Upsilon_w\) and the exact thresholds from Stage~052.}
+\claimstatus{\StatusExactClosure{} for the combined overlap/compliance reachability window.}
+\stagefield{Purpose}{Stage~055 combines the overlap boost and Robin softening into a single lowest-lane reachability test.}
+\stagefield{Inputs}{The overlap ceiling from Stage~053 and the Robin softening factor from Stage~054.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage055_explicit_branch_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage055_explicit_branch_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage055_explicit_branch_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage055_explicit_branch_thresholds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage055_explicit_reachability_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage055_explicit_reachability_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Using \eqref{eq:app-stage054-control-laws}, the support/source thresholds become surfaces in the three branch controls:
+The physical lowest-lane support ratio factors as
 \begin{equation}
-\label{eq:app-stage055-surfaces}
-\Upsilon_w\Lambda_\ell^2
-\lessgtr
-\frac{\mathrm{Pe}_{\rm req}}{\Delta_{\infty,0}(\kappa(\chi_s,\Lambda_\ell),\eta=\Lambda_\ell)}.
+\label{eq:app-stage055-zeta-factor}
+\zeta_0^{\rm phys}=A_K(\eta)\Omega_0^2.
 \end{equation}
-This is the branch-level version of the wall figure of merit.  It is exact once \((\chi_s,\Lambda_\ell,\Upsilon_w)\) are selected.
+Using Stages~053--054,
+\begin{equation}
+\label{eq:app-stage055-reachability-window}
+\boxed{
+1\leq \zeta_0^{\rm phys}
+\leq
+\frac{\pi^2}{4}\frac{4}{4-x}
+}
+\end{equation}
+inside the explicit non-twin lowest-lane family.  Thus every non-twin support rescue must pass through a finite overlap-plus-compliance window.  Demands above this window cannot be reached by this family, regardless of transport bias.
 
-\stagefield{Output}{A threshold-surface map in the canonical branch variables.}
-\stagefield{Downstream use}{Stages~056--061 insert the Family--1 values and compare actual wall-depth data against the thresholds.}
+\stagefield{Output}{Combined reachability window \eqref{eq:app-stage055-reachability-window}.}
+\stagefield{Downstream use}{Stages~056--059 derive how transport selects a point inside this reachability window.}
 

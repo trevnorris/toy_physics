@@ -1,12 +1,12 @@
-# Review: Stage 031 — Support compensation theorem
+# Review: Stage 031 — Selected branch reachability
 
-**Batch:** 6 — Support & Threshold Analysis
-**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage031_support_compensation_theorem.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage031_support_compensation_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage031_selected_branch_reachability.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,46 +40,49 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** G_tr formula matches Stage 30. dG_tr/dxi numerator manifestly positive (sum of positive terms). M_crit = G_tr(xi=1) = 9(1+delta)/(9 delta+9+2R^2) correct. M_crit - G_tr gap formula confirmed positive for 0 < xi < 1. S(zeta;eps) and dS/dzeta standard. Inverse map zeta_req = (S_req-1)/(1+eps(S_req-2)) verified by substitution. Pole margin and branch margin formulas confirmed.
+1. **Equation-level correctness.** All formulas verified. Overlap derivative ds_-/d alpha_0 = 2 DK^2 KP/R^3 confirmed by explicit differentiation (difference-of-products identity yields 4 KP DK^2, factor of 1/2 gives result). Sign/positivity confirmed (all factors positive). Prefactor derivative dP/dalpha = beta_0(ds/dalpha * lambda_- + s_-^2)/lambda_-^2 > 0 on stable branch. Initial values at alpha_0=0: lambda_-(0)=A, s_-(0)=x0=kappa_0^2, P_{0,-}(0)=beta_0*kappa_0^2/(K_0-Xi_0). Softening threshold alpha_crit correct. Crossing theorem follows from IVT: continuous, strictly increasing, finite start, divergent endpoint.
 
-2. **Logical flow.** Clean: tracking branch critical load → enhancement factor → IVT existence on F_tr → compensation theorem (two cases) → monotone softening response.
+2. **Logical flow.** Clean: overlap derivative → prefactor monotonicity → starting value → divergence → crossing theorem. Main result follows from constituent lemmas.
 
-3. **Assumptions.** All inherited from Stage 30: 0 < eps < 1, delta > 0, R > 0, xi in (0,1).
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0. Continuity on [0, alpha_crit) follows from lambda_- > 0 there.
 
-4. **Physical interpretation.** Sound: every finite target can be reached before softening. Correctly avoids overclaiming about whether physical PDE produces large enough zeta.
+4. **Completeness.** Edge case P_target <= P_{0,-}(0) correctly handled by conditional statement.
+
+5. **Notation consistency.** Matches Stages 12-13.
+
+6. **Physical interpretation.** Clear: normalization is a one-dimensional ordered crossing problem on the stable branch.
 
 **Script Review:**
 
-**B.1-B.7.** 11 nontrivial symbolic checks: G_tr derivative, F_tr endpoints, M_crit gap, S properties, inverse map, pole/branch margins, implicit derivative. No tautologies. All pass (exit code 0).
+**B.1 Faithful.** Eigenvalue, overlap, prefactor, derivative, initial values, threshold, divergence factorization all implemented.
+**B.2 No bugs.** Abstract function approach for quotient-rule check is clean.
+**B.3 Hardcoded values.** Line 88 has expanded polynomial for radcrit — would be cleaner computed symbolically, but the check (verifying perfect-square form) is valid and passes.
+**B.4 No tautologies.** Overlap derivative: SymPy diff vs closed form. Quotient/HF identity: abstract functions with substitution. Initial values: alpha=0 substitution. Divergence factorization: non-trivial algebraic identity.
+**B.5 Symbol assumptions correct.** Same as Stage 13.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Overlap derivative, prefactor monotonicity, initial values, threshold, determinant factorization, divergence factorization all covered.
 
-**Issues Found:**
-
-1. **(MINOR)** F_tr contains a factor (9 delta+(9+2R)xi) with bare R instead of R^2 — consistent between notes and script, endpoints verified, but asymmetry with R^2 elsewhere worth confirming as intentional.
+**Issues Found:** None.
 
 ---
 
 ### Agent: GPT-5 Codex — 2026-04-03
-**Verdict:** MINOR
+**Verdict:** PASS
 
 **Notes Derivation Review:**
 
-- The compensation theorem is mathematically coherent. `G_tr` is strictly increasing on `0 < xi < 1`, the critical load `M_crit = G_tr(1^-)` is correct, and the exact gap formula `M_crit - G_tr > 0` shows every stable selected-branch point lies below softening.
-- The support-enhancement factor behaves exactly as claimed. I checked the inverse map
-  `zeta_req = (S_req - 1)/(1 + eps (S_req - 2))`
-  and the margin formulas against direct algebra, and they reduce cleanly.
-- The existence argument is also sound at the reduced level: `F_tr(0,delta;R)=1`, `F_tr -> +infinity` as `xi -> 1^-`, so every finite `R_target > 1` has at least one stable-side root `xi_req`.
-- The final implicit derivative
-  `dxi_phys/dzeta = M_mix (dS/dzeta)/(dG_tr/dxi) > 0`
-  is correct, so coherent support enhancement always pushes the physical branch deeper into the tracking family.
+1. The monotonicity chain is correct. I independently rechecked the overlap derivative, the quotient-rule identity for `dP_{0,-}/d alpha_0`, the zero-loading start value, and the softening-threshold factorization.
+2. The crossing theorem follows cleanly from the exact symbolic structure: on the stable branch `P_{0,-}` is continuous, strictly increasing, finite at the origin, and divergent at the threshold.
+3. The stage stays aligned with Stage 13 notation and with the saved audit output. No hidden sign or factor error showed up in the symbolic checks.
 
 **Script Review:**
 
-- The script faithfully checks the tracking derivative, the critical-load gap, the enhancement inverse map, the pole and branch margins, and the implicit derivative formula. The saved output matches the note.
-- I did find one small assumption gap: the note states `lim_{zeta -> 1/eps^-} S = +infinity`, but the script leaves `eps` only as `positive=True`, so SymPy prints the more generic `-oo*sign(eps - 1)` rather than proving the physical-branch `+infinity` limit directly. The theorem is still correct on the stated window `0 < eps < 1`; the script just does not encode that interval sharply enough.
+1. The script is faithful to the note. It proves the derivative formula directly, checks the quotient/Hellmann-Feynman identity, and verifies the threshold factorization and stable-side divergence form.
+2. The output matches the claims and does not rely on a trivial identity.
 
 **Issues Found:**
 
-- **(MINOR)** The audit does not encode the full physical assumption `0 < eps < 1`, so the endpoint divergence of `S(zeta;eps)` is not asserted in the exact form used in the note.
+None.
 
 **Questions:**
 

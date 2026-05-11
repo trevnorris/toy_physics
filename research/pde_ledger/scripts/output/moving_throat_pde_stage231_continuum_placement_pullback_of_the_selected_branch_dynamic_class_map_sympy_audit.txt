@@ -1,0 +1,58 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+# Date: 2026-05-11T12:51:53-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 231 SymPy audit: continuum pullback of the selected-branch dynamic-class map ===
+Verified universal selected-branch geometry:
+F(xi,delta) = -(9*delta + 11*xi)**4/(81*(xi - 1)*(9*delta**2 + 18*delta*xi + 11*xi**2)**2)
+G(xi,delta) = 9*xi*(delta + xi)/(9*delta + 11*xi)
+R_ND(xi,delta) = 72*delta**2*(1 - xi)/((9*delta + 11*xi)*(9*delta**2 + 18*delta*xi + 11*xi**2))
+dF/dxi = (9*delta + 11*xi)**3*(81*delta**3 + 189*delta**2*xi + 72*delta**2 + 297*delta*xi**2 + 121*xi**3)/(81*(xi - 1)**2*(9*delta**2 + 18*delta*xi + 11*xi**2)**3)
+dG/dxi = 9*(9*delta**2 + 18*delta*xi + 11*xi**2)/(9*delta + 11*xi)**2
+dR_ND/dxi = 72*delta**2*(2*(9*delta + 11*xi)**2*(xi - 1) - (9*delta + 11*xi)*(9*delta**2 + 18*delta*xi + 11*xi**2) + 11*(xi - 1)*(9*delta**2 + 18*delta*xi + 11*xi**2))/((9*delta + 11*xi)**2*(9*delta**2 + 18*delta*xi + 11*xi**2)**2)
+F(0,delta) = 1
+G(0,delta) = 0
+R_ND(0,delta) = 8/(9*delta)
+
+Implicit pullback compiler:
+dxi_req/dR_target = 81*(xi - 1)**2*(9*delta**2 + 18*delta*xi + 11*xi**2)**3/((9*delta + 11*xi)**3*(81*delta**3 + 189*delta**2*xi + 72*delta**2 + 297*delta*xi**2 + 121*xi**3))
+dR_phys/dR_target = 5832*delta**2*(xi - 1)**2*(9*delta**2 + 18*delta*xi + 11*xi**2)*(2*(9*delta + 11*xi)**2*(xi - 1) - (9*delta + 11*xi)*(9*delta**2 + 18*delta*xi + 11*xi**2) + 11*(xi - 1)*(9*delta**2 + 18*delta*xi + 11*xi**2))/((9*delta + 11*xi)**5*(81*delta**3 + 189*delta**2*xi + 72*delta**2 + 297*delta*xi**2 + 121*xi**3))
+Verified derivative signs on a representative stable-branch grid.
+
+Verified generic threshold compiler:
+P_c(xi,delta) = 81*c*delta**3 + 261*c*delta**2*xi + 297*c*delta*xi**2 + 121*c*xi**3 + 72*delta**2*xi - 72*delta**2
+dP_c/dxi = 3*(87*c*delta**2 + 198*c*delta*xi + 121*c*xi**2 + 24*delta**2)
+P_c(0,delta) = 9*delta**2*(9*c*delta - 8)
+delta_c = 8/(9*c)
+
+Pulled-back dynamic thresholds:
+R_* = 1.22925543846333598788938878199
+delta_dyn_* = 0.723111617875019116300604645303
+delta_den = 0.888888888888888888888888888889
+
+Sample pulled-back thresholds:
+delta = 0.25   xi_flip = 0.087442106   R_flip = 1.330868539   xi_den = 0.107223051   R_den = 1.393832566
+delta = 0.50   xi_flip = 0.051428579   R_flip = 1.139956630   xi_den = 0.081847938   R_den = 1.221087062
+delta = 0.75   xi_flip = 0.000000000   R_flip = 1.000000000   xi_den = 0.032505121   R_den = 1.071471867
+Verified threshold collapse to onset above the onset-delta surfaces.
+
+Verified continuum placement map:
+delta = -delta0/(eps_eta - 1)
+M_mix = 8*Z_W*(rho + 1)**2/(pi**2*(eps_W - 1)*(eps_eta - 1))
+R_target = -Lam*(eps_W - 1)**2*(eps_eta - 1)/(Z_W*(rho + 1)**2)
+R_target * M_mix = 8*Lam*(1 - eps_W)/pi**2
+Equivalent positive-ratio translators:
+Z_W (1+rho)^2 <=  -Lam*(eps_W - 1)**2*(eps_eta - 1)/R_cap_symbol
+M_mix <=  8*Lam*(1 - eps_W)/(pi**2*R_cap_symbol)
+
+Static-first theorem after pullback:
+inf B_dyn^(both)     = 0.967282389363822 > B_stat^(both)     = 0.367930328492646
+inf B_dyn^(nonempty) = 0.990581810705233 > B_stat^(nonempty) = 0.737619063660757
+
+All Stage 231 symbolic and numerical audits passed.
+
+EXIT_CODE: 0

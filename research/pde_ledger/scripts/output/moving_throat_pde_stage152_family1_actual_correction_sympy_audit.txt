@@ -1,0 +1,38 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+# Date: 2026-05-11T12:47:00-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+ACTUAL FAMILY-1 MOUTH CORRECTION
+========================================================================================
+R'(0) forward diff at h=1.0e-6 : -1.31184872573368e-6
+R'(0) forward diff at h=1.0e-5 : -1.31200054609803e-5
+R(0) = 0.0
+R(1) = -0.904851403905196
+Cov_*(c,R_*)      = 0.0648069687666328
+Cov_*(K_q,R_*)    = 0.0388718368650403
+delta g_act       = -0.0648069687666328
+delta S_act       = -0.0388718368650403
+delta Pi_act      = 0.907084414842908
+delta Tm_act      = 0.271653979462338
+Pi_corr           = 2.41591392833607
+T_corr            = 1.17313803363654
+g_1               = 0.684423574065325
+S_1               = 0.616333130570251
+Pi_1              = 2.53914847609768
+T_1               = 1.21036942084359
+lambda_eff^(Pi)   = 0.380487632771111
+lambda_eff^(T)    = 0.378939241176339
+delta g from sigma1-linearized covariance check = -0.0648069687666327   (target -0.0648069687666328, diff 1.11022302462516e-16)
+
+Conclusion:
+  The full compensated mouth potential broadens the source relative to the tangent exponential,
+  shifts the canonical Family-1 point upward, and is well approximated by a moderate positive
+  broadening toward the uniform family (lambda_eff ≈ 0.38).
+
+EXIT_CODE: 0

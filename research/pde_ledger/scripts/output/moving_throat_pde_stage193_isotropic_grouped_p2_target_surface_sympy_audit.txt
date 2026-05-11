@@ -1,0 +1,141 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+# Date: 2026-05-11T12:48:43-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 176 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact grouped conservative trace/anomaly map
+----------------------------------------------------------------------------------------
+xbar =
+x₂₀   2⋅x₂₁   2⋅x₂₂
+─── + ───── + ─────
+ 5      5       5  
+a_x =
+x₂₀   x₂₁   x₂₂
+─── - ─── - ───
+ 5    10    10 
+b_x =
+x₂₁   x₂₂
+─── - ───
+ 2     2 
+inverse x20 = 0
+inverse x21 = 0
+inverse x22 = 0
+a2 on isotropic common-lane branch = 0
+b2 on isotropic common-lane branch = 0
+a4 on isotropic common-lane branch = 0
+b4 on isotropic common-lane branch = 0
+
+----------------------------------------------------------------------------------------
+II. Exact one-pole conservative identity
+----------------------------------------------------------------------------------------
+nu2 =
+-D₂ 
+────
+ D₀ 
+nu4 =
+           2
+-D₀⋅D₄ + D₂ 
+────────────
+      2     
+    D₀      
+Delta_pole =
+             2
+-D₀⋅D₄ - 3⋅D₂ 
+──────────────
+       2      
+     D₀       
+Delta_pole + (3 D2^2 + D0 D4)/D0^2 = 0
+one-pole surface equivalence = 0
+
+----------------------------------------------------------------------------------------
+III. Exact one-parameter conservative carrier
+----------------------------------------------------------------------------------------
+Omega_Q^2 =
+-D₀ 
+────
+4⋅D₂
+Y_pole(omega) =
+           2
+D₀ + 3⋅D₂⋅ω 
+────────────
+           2
+D₀ + 4⋅D₂⋅ω 
+pole carrier series - expected one-pole series = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact scalar/geometry firewall
+----------------------------------------------------------------------------------------
+D_eff,l=2(chi) =
+⎡        2  2            2             2 ⎤
+⎢     c₂₀ ⋅χ   -c₂₀⋅c₂₁⋅χ    -c₂₀⋅c₂₂⋅χ  ⎥
+⎢D₀ - ───────  ────────────  ────────────⎥
+⎢       K₀          K₀            K₀     ⎥
+⎢                                        ⎥
+⎢          2           2  2            2 ⎥
+⎢-c₂₀⋅c₂₁⋅χ         c₂₁ ⋅χ   -c₂₁⋅c₂₂⋅χ  ⎥
+⎢────────────  D₀ - ───────  ────────────⎥
+⎢     K₀              K₀          K₀     ⎥
+⎢                                        ⎥
+⎢          2             2           2  2⎥
+⎢-c₂₀⋅c₂₂⋅χ    -c₂₁⋅c₂₂⋅χ         c₂₂ ⋅χ ⎥
+⎢────────────  ────────────  D₀ - ───────⎥
+⎣     K₀            K₀              K₀   ⎦
+Delta_geom = D_eff - D0 I =
+⎡     2  2               2             2 ⎤
+⎢ -c₂₀ ⋅χ      -c₂₀⋅c₂₁⋅χ    -c₂₀⋅c₂₂⋅χ  ⎥
+⎢ ─────────    ────────────  ────────────⎥
+⎢    K₀             K₀            K₀     ⎥
+⎢                                        ⎥
+⎢          2        2  2               2 ⎥
+⎢-c₂₀⋅c₂₁⋅χ     -c₂₁ ⋅χ      -c₂₁⋅c₂₂⋅χ  ⎥
+⎢────────────   ─────────    ────────────⎥
+⎢     K₀           K₀             K₀     ⎥
+⎢                                        ⎥
+⎢          2             2        2  2   ⎥
+⎢-c₂₀⋅c₂₂⋅χ    -c₂₁⋅c₂₂⋅χ     -c₂₂ ⋅χ    ⎥
+⎢────────────  ────────────   ─────────  ⎥
+⎣     K₀            K₀           K₀      ⎦
+Delta_geom / chi^2 - expected coefficient =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+d/dchi D_eff at chi=0 =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+D_eff at chi=0 - D0 I =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+
+========================================================================================
+STAGE 176 LEDGER
+========================================================================================
+1. The exact grouped trace/anomaly map shows that the isotropic common-lane branch
+   is equivalent to a2 = b2 = a4 = b4 = 0 on the conservative grouped bundle.
+2. On that isotropic branch the one-pole defect is exactly
+      Delta_pole = -(3 D2^2 + D0 D4)/D0^2, so the one-pole surface is D0 D4 + 3 D2^2 = 0.
+3. Therefore the isotropic one-pole conservative carrier is exactly the one-parameter
+      3/4 + 1/4 * (1 - omega^2/Omega_Q^2)^(-1) module through O(omega^4), with Omega_Q^2 = -D0/(4 D2).
+4. The scalar/geometry firewall is exact: if l=0 <-> l=2 mixing enters as chi C,
+   then the Schur-complement correction to the grouped l=2 block is quadratic,
+      D_eff,l=2 = D0 I - chi^2 C^T C / K0, so there is no O(chi) contamination from the l=0 geometry lane.
+5. Stage 193 therefore freezes the first new audited theorem target after Stage 192:
+      a2 = b2 = a4 = b4 = 0,   Delta_pole = 0, together with the exact scalar/geometry firewall.
+
+EXIT_CODE: 0

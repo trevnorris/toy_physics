@@ -1,0 +1,45 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+# Date: 2026-05-11T12:51:55-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 234 SymPy audit: direct branch-observable static gate and the two-observable kill test ===
+
+Exact finite quotient chart:
+q_tr = -C_star*log(Rtr/Rtr_ref)
+q_nt = B_star*log(Rtr/Rtr_ref) - log(Rtarget/Rtarget_ref) + log((1 - eps_eta)/(1 - eps_eta_ref))
+q_eta = log(eps_eta/eps_eta_ref)
+Inverse map verified exactly.
+
+First-order direct observable drifts:
+q_tr^(1) = -C_star*r1
+q_nt^(1) = B_star*r1 - E1*eps_eta_star/(1 - eps_eta_star) - R1
+q_eta^(1) = E1
+
+Triangular direct-branch map:
+Theta1 = r1
+Xi1 = -E1*eps_eta_star/(1 - eps_eta_star) - R1
+R1 = R1
+Inverse drift map verified.
+
+Exact cancellations:
+d Xi1 / d(ln R_tr) = 0
+Rigid-mouth finite q_nt = -log(Rtarget/Rtarget_ref) + log((1 - eps_eta)/(1 - eps_eta_ref))
+Rigid-mouth first-order Xi1 = q_nt^(1) = (E1*eps_eta_star - R1*(eps_eta_star - 1))/(eps_eta_star - 1)
+
+Two-observable static strip:
+Xi1 = -E1*eps_eta_star/(1 - eps_eta_star) - R1
+Robust strip:   R1 in [ -E1*eps_eta_star/(1 - eps_eta_star) - 0.367930328492646/Abs(vareps) , -E1*eps_eta_star/(1 - eps_eta_star) + 0.367930328492646/Abs(vareps) ]
+Nonempty strip: R1 in [ -E1*eps_eta_star/(1 - eps_eta_star) - 0.737619063660757/Abs(vareps) , -E1*eps_eta_star/(1 - eps_eta_star) + 0.737619063660757/Abs(vareps) ]
+
+Canonical direct-branch families:
+Pure target drift:    (R1, E1) = (-xi, 0)
+Pure dressing drift:  (R1, E1) = (0, -xi*(1 - eps_eta_star)/eps_eta_star)
+Balanced minimal norm: (R1, E1) = (-xi/(eps_eta_star**2/(1 - eps_eta_star)**2 + 1), -eps_eta_star*xi/((1 - eps_eta_star)*(eps_eta_star**2/(1 - eps_eta_star)**2 + 1)))
+
+All Stage 234 symbolic checks passed.
+
+EXIT_CODE: 0

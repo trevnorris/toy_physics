@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_mathematica_audit.wl
+# Date: 2026-05-11T13:02:32-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 074 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION
+========================================================================================
+K_Q^cons(omega) = kGeom + kPole/(1 - omega^2/omegaQ^2)
+Series = kGeom + kPole + (kPole*omega^4)/omegaQ^4 + (kPole*omega^2)/omegaQ^2
+K0 = kGeom + kPole
+K2 = kPole/omegaQ^2
+K4 = kPole/omegaQ^4
+K0 - (Kgeom + Kpole) = 0
+PASS: K0 - (Kgeom + Kpole)
+K2 - Kpole/OmegaQ^2 = 0
+PASS: K2 - Kpole/OmegaQ^2
+K4 - Kpole/OmegaQ^4 = 0
+PASS: K4 - Kpole/OmegaQ^4
+Branch identity K0*K4 - 4*K2^2 = ((kGeom - 3*kPole)*kPole)/omegaQ^4
+K_geom forced by branch identity = 3*kPole
+K_geom - 3*K_pole = 0
+PASS: K_geom - 3*K_pole
+K0 - 4*K_pole on branch = 0
+PASS: K0 - 4*K_pole on branch
+Normalized module on branch = (3 + (1 - omega^2/omegaQ^2)^(-1))/4
+Yhat - [3/4 + 1/4/(1-omega^2/OmegaQ^2)] = 0
+PASS: Yhat - [3/4 + 1/4/(1-omega^2/OmegaQ^2)]
+rho_alpha = 4/3
+zeta_req = 1/3
+rho_alpha - 4/3 = 0
+PASS: rho_alpha - 4/3
+zeta_req - 1/3 = 0
+PASS: zeta_req - 1/3
+
+Stage 091 Mathematica audit passed.
+
+EXIT_CODE: 0

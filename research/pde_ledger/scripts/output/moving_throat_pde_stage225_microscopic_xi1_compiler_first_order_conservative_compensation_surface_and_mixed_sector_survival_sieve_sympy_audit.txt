@@ -1,0 +1,69 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+# Date: 2026-05-11T12:50:39-06:00
+# Elapsed: 14s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 225 SymPy audit: microscopic Xi1 compiler and conservative compensation surface ===
+
+Verified arbitrary-base first-order formulas:
+u2^(1) = (-D0*D21 + D01*D2)/D0**2
+u4^(1) = (D0*(-D0*D41 - D01*D4 + 2*D2*D21) + 2*D01*(D0*D4 - D2**2))/D0**3
+Xi1    = N01/N0 - D01/D0
+
+Verified exact first-order conservative compensation surface:
+D21 = D01*D2/D0
+D41 = D01*D4/D0
+On a one-pole base branch: D41 = -3*D01*D2**2/D0**2
+
+Verified primitive logarithmic-slope compiler.
+
+Verified concrete Stage 223 compatibility point:
+K_compat               = 24.47375487929098
+D0                     = 24.23730998862225
+D2                     = -1.185620468581895
+D4                     = -0.1739915728494907
+u2                     = 0.04891716403918018
+u4                     = 0.009571555750544252
+P0_target,compat       = 0.00206979231806288270
+
+Concrete Xi1 compiler at the compatibility point:
+  coeff[xK] = -1.0097554097702972
+  coeff[xM] = 0.0
+  coeff[xLB] = 0.004180380730778337
+  coeff[xV] = -0.004180380730778337
+  coeff[xLU] = 0.32446402021676624
+  coeff[xLW] = 1.6908664185930498
+  coeff[xLR] = 0.4233793543824631
+  coeff[xOU] = -0.7478433745992293
+  coeff[xOW] = -4.114245772975513
+
+Wall-only family:
+  compensation solutions = [{xK: 0, xM: 0}]
+
+Pure BdG family determinant:
+  Delta_BdG = -B0g*B2g*D4g/D0g - 2*B0g*B4g*u2g - B2g*B4g
+  Sample-point Delta_BdG = -5.118869961200109e-05
+
+Mixed/U family compensation matrix:
+Matrix([[-0.241952861865934, -0.122133861432532, -0.0656784156312263, 0.553209522700447, 0.288144673113677], [-0.250543086743604, -0.0937748521387244, -0.0899548469020231, 0.881694465041011, 0.325834311088034]])
+Null-basis vectors:
+  v1 = [-0.610255553634424, 0.6711870162680955, 1, 0, 0]
+  v2 = [7.054698424965218, -9.446151438176646, 0, 1, 0]
+  v3 = [1.6148605311391062, -0.8398608928485842, 0, 0, 1]
+Xi1 on basis:
+  Xi1(v1) = 1.3602609704940192
+  Xi1(v2) = -14.431027813975458
+  Xi1(v3) = -5.010374212959982
+
+Transported headroom on the first surviving mixed family:
+  both_10: |eps t| <= 0.27048510283950966
+  one_10: |eps t| <= 0.5422629037080059
+  both_30: |eps t| <= 2.1678897807090363
+  one_30: |eps t| <= 3.4074746127837234
+
+All Stage 225 symbolic and numerical checks passed.
+
+EXIT_CODE: 0

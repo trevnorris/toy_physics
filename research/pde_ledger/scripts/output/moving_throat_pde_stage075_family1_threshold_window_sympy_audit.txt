@@ -1,0 +1,47 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+# Date: 2026-05-11T12:44:44-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 58 — EXPLICIT FAMILY-1 THRESHOLD WINDOW
+========================================================================================
+Lambda_ell = 37
+eta = 37
+kappa = 12321/5
+alpha = sqrt(kappa) = 111*sqrt(5)/5
+Delta_0 = -(37 - 37*cosh(111*sqrt(5)/5))/(455877*cosh(111*sqrt(5)/5)/5 + 1367631*sqrt(5)*sinh(111*sqrt(5)/5)/25)
+Delta_inf = (-1 + sqrt(5)*sinh(111*sqrt(5)/5)/3 + cosh(111*sqrt(5)/5))/(37*cosh(111*sqrt(5)/5) + 111*sqrt(5)*sinh(111*sqrt(5)/5)/5)
+Delta_0 (numeric) = 0.00017330207902152514906
+Delta_inf (numeric) = 0.020144756554052159427
+
+Upsilon_fail = Pe_req*(37*cosh(111*sqrt(5)/5) + 111*sqrt(5)*sinh(111*sqrt(5)/5)/5)/(1369*(-1 + sqrt(5)*sinh(111*sqrt(5)/5)/3 + cosh(111*sqrt(5)/5)))
+Upsilon_suff = -(45*Pe_req*cosh(111*sqrt(5)/5) + 27*sqrt(5)*Pe_req*sinh(111*sqrt(5)/5))/(25 - 25*cosh(111*sqrt(5)/5))
+Xi_fail = Pe_req*(37*cosh(111*sqrt(5)/5) + 111*sqrt(5)*sinh(111*sqrt(5)/5)/5)/(-1 + sqrt(5)*sinh(111*sqrt(5)/5)/3 + cosh(111*sqrt(5)/5))
+Xi_suff = -(61605*Pe_req*cosh(111*sqrt(5)/5) + 36963*sqrt(5)*Pe_req*sinh(111*sqrt(5)/5))/(25 - 25*cosh(111*sqrt(5)/5))
+Theta_fail = Pe_req*(37*cosh(111*sqrt(5)/5) + 111*sqrt(5)*sinh(111*sqrt(5)/5)/5)/(136900*(-1 + sqrt(5)*sinh(111*sqrt(5)/5)/3 + cosh(111*sqrt(5)/5)))
+Theta_suff = -(45*Pe_req*cosh(111*sqrt(5)/5) + 27*sqrt(5)*Pe_req*sinh(111*sqrt(5)/5))/(2500 - 2500*cosh(111*sqrt(5)/5))
+
+Numerics (coefficients multiplying Pe_req):
+Upsilon_fail / Pe_req = 0.036260561797293886969
+Upsilon_suff / Pe_req = 4.2149534156997728721
+Xi_fail / Pe_req = 49.640709100495331260
+Xi_suff / Pe_req = 5770.2712260929890619
+Theta_fail / Pe_req = 0.00036260561797293886969
+Theta_suff / Pe_req = 0.042149534156997728721
+
+Upsilon_w(reference) = 100*Theta_w
+
+Final ledger:
+  Delta_0   ~ 0.0001733020790215251
+  Delta_inf ~ 0.02014475655405216
+  Upsilon_fail ~ 0.03626056179729389 * Pe_req
+  Upsilon_suff ~ 4.214953415699773 * Pe_req
+  Theta_fail ~ 0.0003626056179729389 * Pe_req
+  Theta_suff ~ 0.04214953415699773 * Pe_req
+
+EXIT_CODE: 0

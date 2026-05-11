@@ -1,0 +1,64 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py
+# Date: 2026-05-11T12:49:51-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 219 SymPy audit: one-port mixed-bundle static kernel ===
+
+Bundle invariants:
+Delta = Omega_U**2*Omega_W**2 - R**2
+Q     = G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2
+P     = G_U*R + G_W*Omega_U**2
+P_U   = G_U*Omega_W**2 + G_W*R
+D0    = (-G_U**2*Omega_W**2 - 2*G_U*G_W*R - G_W**2*Omega_U**2 + K_star*(Omega_U**2*Omega_W**2 - R**2))/(Omega_U**2*Omega_W**2 - R**2)
+
+Determinant of K_red:
+-G_U**2*Omega_W**2 - 2*G_U*G_W*R - G_W**2*Omega_U**2 + K_star*Omega_U**2*Omega_W**2 - K_star*R**2
+
+Internal block determinant:
+(Omega_U*Omega_W - R)*(Omega_U*Omega_W + R)
+Schur complement of the internal (U,W) block:
+-(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*Omega_U**2*Omega_W**2 + K_star*R**2)/((Omega_U*Omega_W - R)*(Omega_U*Omega_W + R))
+
+Exact inverse entries:
+chi_qq = (-Omega_U**2*Omega_W**2 + R**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+chi_qU = (-G_U*Omega_W**2 - G_W*R)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+chi_qW = (-G_U*R - G_W*Omega_U**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+chi_UU = (G_W**2 - K_star*Omega_W**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+chi_UW = (-G_U*G_W - K_star*R)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+chi_WW = (G_U**2 - K_star*Omega_U**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+
+General on-shell static energy shift delta_V_mix:
+(J_U*(-J_U*(G_W**2 - K_star*Omega_W**2) + J_W*(G_U*G_W + K_star*R) + J_q*(G_U*Omega_W**2 + G_W*R))/2 + J_W*(J_U*(G_U*G_W + K_star*R) - J_W*(G_U**2 - K_star*Omega_U**2) + J_q*(G_U*R + G_W*Omega_U**2))/2 + J_q*(J_U*(G_U*Omega_W**2 + G_W*R) + J_W*(G_U*R + G_W*Omega_U**2) + J_q*(Omega_U**2*Omega_W**2 - R**2))/2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*Omega_U**2*Omega_W**2 + K_star*R**2)
+
+Collinear-source theorem:
+chi_s = (G_U**2*s_W**2 - 2*G_U*G_W*s_U*s_W - 2*G_U*Omega_W**2*s_U*s_q - 2*G_U*R*s_W*s_q + G_W**2*s_U**2 - 2*G_W*Omega_U**2*s_W*s_q - 2*G_W*R*s_U*s_q - K_star*Omega_U**2*s_W**2 - K_star*Omega_W**2*s_U**2 - 2*K_star*R*s_U*s_W - Omega_U**2*Omega_W**2*s_q**2 + R**2*s_q**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+delta_V_mix(collinear) = S**2*(-G_U**2*s_W**2/2 + G_U*G_W*s_U*s_W + G_U*Omega_W**2*s_U*s_q + G_U*R*s_W*s_q - G_W**2*s_U**2/2 + G_W*Omega_U**2*s_W*s_q + G_W*R*s_U*s_q + K_star*Omega_U**2*s_W**2/2 + K_star*Omega_W**2*s_U**2/2 + K_star*R*s_U*s_W + Omega_U**2*Omega_W**2*s_q**2/2 - R**2*s_q**2/2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+
+Outgoing-prefactor bridge:
+Lambda = (G_U*R + G_W*Omega_U**2)/(Omega_U**2*Omega_W**2 - R**2)
+N0     = (G_U*R + G_W*Omega_U**2)**2/(Omega_U**2*Omega_W**2 - R**2)**2
+P0     = -(G_U*R + G_W*Omega_U**2)**2/((Omega_U**2*Omega_W**2 - R**2)*(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2)))
+chi_qW = (-G_U*R - G_W*Omega_U**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*Omega_U**2*Omega_W**2 + K_star*R**2)
+Verified: chi_qW = Lambda / D0 and chi_qW^2 = P0 / D0
+
+Primitive-source product-kernel theorem:
+C6 = beta_Q**2*(-Omega_U**2*Omega_W**2 + R**2)/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+C4 = beta_Q*(-beta_U*(G_U*Omega_W**2 + G_W*R) - beta_W*(G_U*R + G_W*Omega_U**2))/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+C2 = (beta_U**2*(G_W**2 - K_star*Omega_W**2) - 2*beta_U*beta_W*(G_U*G_W + K_star*R) + beta_W**2*(G_U**2 - K_star*Omega_U**2))/(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2))
+delta_V_mix(primitive) =
+(beta_Q**2*(Omega_U**2*Omega_W**2 - R**2)*exp(4*kappa*x) + 2*beta_Q*x**2*(beta_U*(G_U*Omega_W**2 + G_W*R) + beta_W*(G_U*R + G_W*Omega_U**2))*exp(2*kappa*x) + x**4*(beta_U**2*(-G_W**2 + K_star*Omega_W**2) + 2*beta_U*beta_W*(G_U*G_W + K_star*R) + beta_W**2*(-G_U**2 + K_star*Omega_U**2)))*exp(-4*kappa*x)/(2*x**6*(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2 - K_star*(Omega_U**2*Omega_W**2 - R**2)))
+
+Constructive admissible slice (for sanity check):
+Delta(sample) = 140
+D0(sample)    = 74/7
+det(sample)   = 1480
+leading principal minors(sample) = 11 98 1480
+eigenvalues(sample, numeric) = [(17.01876810868923-1.3552527156068805e-20j), (7.727387371872917-5.293955920339377e-23j), (11.253844519437855+1.0587911840678754e-22j)]
+
+All Stage 219 symbolic checks passed.
+
+EXIT_CODE: 0

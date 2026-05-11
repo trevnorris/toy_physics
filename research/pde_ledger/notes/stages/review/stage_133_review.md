@@ -1,12 +1,12 @@
-# Review: Stage 133 — Full profile residual
+# Review: Stage 133 — Selected branch reachability
 
-**Batch:** 17 — Rigidity & Corrections
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage133_full_profile_residual.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage133_full_profile_residual_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage031_selected_branch_reachability.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py`
 
 ## Review Checklist
 
@@ -37,23 +37,55 @@
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
-**Notes Derivation Review:** T_s(x) shell profile satisfies T_s(0)=0, T_s'(0)=1. T_q(x) D/N profile with C_q, A_q coefficients correct. Fixed-point Pi=Sigma_m(4-S_q). Full potential Phi_* = 4 Sigma_m T_s - Sigma_m T_q. Residual R_*(x) = Phi_* - Pi x. Tangent matching: R_*(0)=0, R_*'(0)=0 verified by explicit cancellation (4-S_q-(4-S_q)=0). Curvature R_*''(0) = -3 Sigma_m Pi/(1-e^{-Pi}) verified — factor 3 from shell/mixed ratio 4-1. Negative curvature → source broader than exponential tangent.
-**Script Review:** All profiles, derivatives, evaluations. Six expect_zero checks (T_s(0), T_q(0), T_s'(0)-1, R(0), R'(0), R''(0)-target). All genuine. All pass (exit code 0).
+
+**Notes Derivation Review:**
+
+1. **Equation-level correctness.** All formulas verified. Overlap derivative ds_-/d alpha_0 = 2 DK^2 KP/R^3 confirmed by explicit differentiation (difference-of-products identity yields 4 KP DK^2, factor of 1/2 gives result). Sign/positivity confirmed (all factors positive). Prefactor derivative dP/dalpha = beta_0(ds/dalpha * lambda_- + s_-^2)/lambda_-^2 > 0 on stable branch. Initial values at alpha_0=0: lambda_-(0)=A, s_-(0)=x0=kappa_0^2, P_{0,-}(0)=beta_0*kappa_0^2/(K_0-Xi_0). Softening threshold alpha_crit correct. Crossing theorem follows from IVT: continuous, strictly increasing, finite start, divergent endpoint.
+
+2. **Logical flow.** Clean: overlap derivative → prefactor monotonicity → starting value → divergence → crossing theorem. Main result follows from constituent lemmas.
+
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0. Continuity on [0, alpha_crit) follows from lambda_- > 0 there.
+
+4. **Completeness.** Edge case P_target <= P_{0,-}(0) correctly handled by conditional statement.
+
+5. **Notation consistency.** Matches Stages 12-13.
+
+6. **Physical interpretation.** Clear: normalization is a one-dimensional ordered crossing problem on the stable branch.
+
+**Script Review:**
+
+**B.1 Faithful.** Eigenvalue, overlap, prefactor, derivative, initial values, threshold, divergence factorization all implemented.
+**B.2 No bugs.** Abstract function approach for quotient-rule check is clean.
+**B.3 Hardcoded values.** Line 88 has expanded polynomial for radcrit — would be cleaner computed symbolically, but the check (verifying perfect-square form) is valid and passes.
+**B.4 No tautologies.** Overlap derivative: SymPy diff vs closed form. Quotient/HF identity: abstract functions with substitution. Initial values: alpha=0 substitution. Divergence factorization: non-trivial algebraic identity.
+**B.5 Symbol assumptions correct.** Same as Stage 13.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Overlap derivative, prefactor monotonicity, initial values, threshold, determinant factorization, divergence factorization all covered.
+
 **Issues Found:** None.
 
-### Agent: GPT-5 — 2026-04-03
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The full-profile shell and mixed channel profiles satisfy the mouth boundary conditions and tangent-matching identities exactly.
-2. The curvature residual `R_*''(0)` has the correct negative sign and matches the stated `-3 Sigma_m Pi_*/(1-e^{-Pi_*})` formula.
-3. The stage correctly upgrades the problem from branch choice to a finite profile-correction issue around the selected lower compensated branch.
+1. The monotonicity chain is correct. I independently rechecked the overlap derivative, the quotient-rule identity for `dP_{0,-}/d alpha_0`, the zero-loading start value, and the softening-threshold factorization.
+2. The crossing theorem follows cleanly from the exact symbolic structure: on the stable branch `P_{0,-}` is continuous, strictly increasing, finite at the origin, and divergent at the threshold.
+3. The stage stays aligned with Stage 13 notation and with the saved audit output. No hidden sign or factor error showed up in the symbolic checks.
 
 **Script Review:**
 
-The audit script checks the boundary values, first derivatives, and second derivative target directly. I independently verified the curvature target algebra, and it matches the saved output.
+1. The script is faithful to the note. It proves the derivative formula directly, checks the quotient/Hellmann-Feynman identity, and verifies the threshold factorization and stable-side divergence form.
+2. The output matches the claims and does not rely on a trivial identity.
 
-**Issues Found:** None.
+**Issues Found:**
+
+None.
+
+**Questions:**
+
+None.
 
 ---

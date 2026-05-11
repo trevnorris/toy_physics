@@ -1,14 +1,12 @@
-# Review: Stage 030 — Coherent kernel map
+# Review: Stage 030 — Selected mode normalization
 
-**Batch:** 5 — Coherent Kernel Map [CP]
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
-
-**This is a CHECKPOINT stage.** Also verify cross-stage consistency (Protocol C).
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage030_coherent_kernel_map.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage030_coherent_kernel_map_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage030_selected_mode_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -42,27 +40,27 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Coherent-kernel coupling pattern (shared gamma ratio) correctly forces rho_0 = sigma_0 = chi_0, eps_phi = zeta eps_W, Z_phi = zeta Z_W. All verified by hand-substituting coherent couplings into Stage-021/026 definitions. Support-enhancement factor S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps) algebraically correct — verified M_supp/M_mix ratio. Monotonicity dS/dzeta = (1-eps)/(1-zeta eps)^2 > 0 correct. Product law R_target * M_tr = 8 Lambda(1-eps)/pi^2 * S verified — Z_W, (1+chi_0)^2, (1-eps_eta) cancel. R_target independent of zeta correct.
+1. **Equation-level correctness.** All formulas verified. Eigenvalue formula for 2×2 loaded wall block correct (signs checked via diagonal difference and off-diagonal elements). Hellmann-Feynman overlap s_- = -d lambda_-/d alpha_0 verified. Closed form for s_- matches direct differentiation. Weak-loading limit s_-(0) = kappa_0^2 and strong-loading limit s_- → sigma both verified. Normalized response expansion u2, u4, Gamma5 follow from standard geometric series. Prefactor algebra Gamma_{5,-} = Gamma_2^{port} * P_{0,-} correct. Target equation mhat^2 * P0 = 54 G c_s^5/(5 a^5 c^5) verified. Determinant identity via matrix determinant lemma correct. Critical threshold alpha_crit = AB/(B*x0 + A*x1) correct.
 
-2. **Logical flow.** Clean: coherent coupling → ratio collapse → split data → enhancement factor → product law → physical interpretation.
+2. **Logical flow.** Clean chain: eigenvalue → overlap → normalization → prefactor → target → determinant. Connects Stage 12 operator-level results to Stage 022 normalized-response language.
 
-3. **Assumptions.** All explicit: coherent local kernel hypothesis, split-U structure from Stage 022, tracking from Stage 028.
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0 on stable branch.
 
-4. **Notation consistent** with Stages 021-029. Evolution from rho → chi_0 clearly motivated.
+4. **Completeness.** O(omega^6) remainder not addressed, consistent with project convention.
+
+5. **Notation consistency.** Matches Stages 12 and 5. New symbols P_{0,-}, D_{-0}, N_Q^{target} well-defined.
+
+6. **Physical interpretation.** Sound: normalization reduces to spectral ratio — sensitivity of selected eigenvalue to loading.
 
 **Script Review:**
 
-**B.1-B.7.** Faithful implementation. Coherent identities from microscopic couplings (not assumed). Proportionality checks use microscopic zeta_def, not abstract zeta. M_tr = M_mix*S check is non-tautological (assembled from different starting points). Product law independently constructed. All pass (exit code 0). Coverage: coherent collapse, proportionality, S factor, product law, R_target independence, dS/dzeta, S(0)=1.
-
-**Cross-Stage Consistency:**
-
-- **Stage 021:** Product law correctly generalized with support enhancement factor S.
-- **Stage 022:** delta and eps_W^{split} formulas match exactly.
-- **Stage 026:** Tracking condition (sigma_0 = rho_0) explicitly derived as automatic for coherent kernel, not silently assumed.
-- **Stage 028:** R_tr formula, M_mix, M_supp baselines all match exactly.
-- **Stage 029:** Split-U deficit not contradicted — Stage 030 correctly frames support lane as addressing the follow-up question.
-- **Lambda and all effective stiffness definitions consistent across all stages.**
-- **No silently papered-over issues.**
+**B.1 Faithful.** Same 2×2 block, eigenvalues, overlap, prefactor, determinant identity, target equivalence.
+**B.2 No bugs.** Series expansion, im() extraction, expect_zero all correct.
+**B.3 No problematic hardcoding.** Constants 27, 54 are derived (2×27=54).
+**B.4 No tautologies.** HF vs closed-form overlap is two independent computations. Determinant identity expands product and compares. Normalization equivalence verifies two condition forms are proportional.
+**B.5 Symbol assumptions correct.** A, DK positive; alpha nonneg; x0, x1 positive; beta0, G5 positive.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Complete. Strong-loading limit not in script but verified analytically.
 
 **Issues Found:** None.
 
@@ -73,53 +71,21 @@
 
 **Notes Derivation Review:**
 
-1. The coherent-kernel compression is algebraically correct. Imposing the shared local source density forces the coherent identities `rho_0 = sigma_0 = chi_0`, `eps_phi = zeta eps_W`, and `Z_phi = zeta Z_W` exactly as stated.
-2. The mixed/support baseline split is clean. Rewriting the support contribution in terms of `zeta` and the split blocking `eps` gives
-   `M_tr = M_mix + M_supp = M_mix S(zeta;eps)`
-   with
-   `S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps)`.
-   I independently checked both the ratio identity and the derivative formula `dS/dzeta = (1-eps)/(1-zeta eps)^2`.
-3. The checkpoint product law is also correct:
-   `R_target M_tr = 8 Lambda (1-eps)/pi^2 * S(zeta;eps)`.
-   This preserves the Stage-21/22 scalar placement structure while isolating the support lane as a pure baseline enhancer.
-4. Physically, the stage does the right consolidation work: it shows that coherent support does not alter `R_target` directly, only the total baseline that must overcome the tracking-branch deficit.
+1. The selected-mode normalization chain is internally consistent. The generic response expansion gives the expected `u2`, `u4`, and odd `Gamma5` coefficients, and the selected lower eigenvalue / overlap formulas match the loaded `2x2` wall block exactly.
+2. The selected static prefactor `P_{0,-} = beta_0 s_- / lambda_-` is correctly translated into the normalized-response language, and the `mhat_-^2 P_{0,-}` target is algebraically equivalent to the quadrupole normalization condition.
+3. The determinant identity and the spectral rewrite are both correct. I independently checked the core normalization identities with SymPy, and the results reduced to zero.
 
 **Script Review:**
 
-1. The script faithfully derives the coherent identities from microscopic couplings, checks the support/mixed proportionality, verifies `M_tr = M_mix S`, the product law, `dR_target/dzeta = 0`, the monotonicity of `S`, and `S(0)=1`.
-2. The saved output matches the note and I did not find a tautological check or code bug.
+1. The script faithfully implements the note structure: series expansion, exact eigenvalues, Hellmann-Feynman overlap, prefactor identity, determinant identity, and target equivalence.
+2. The saved output matches the note claims, and the checks are nontrivial rather than tautological.
 
-**Cross-Stage Consistency (Checkpoint):**
+**Issues Found:**
 
-1. **Stage 021:** The original product law survives with the expected coherent support multiplier `S(zeta;eps)`.
-2. **Stage 022:** The split quantities `eps = eps_W^(split)` and `delta` are carried over unchanged.
-3. **Stages 028-029:** The tracking factor `R_tr` and the coherent local D/N framing are used consistently; Stage 30 is a support-lane continuation of that branch rather than a redefinition of it.
-4. I did not find any place where Stage 30 silently drops a prior condition or changes the meaning of the placement variables.
+None.
 
-**Issues Found:** None.
+**Questions:**
 
-**Questions:** None.
+None.
 
 ---
-
-### Agent: GPT-5 Codex — 2026-04-21
-**Verdict:** PASS (HARDENED)
-
-**Notes Derivation Review:**
-
-The stage claim is unchanged: coherent support alters the total baseline through
-`S(zeta;eps)` but leaves `R_target` itself unchanged.
-
-**Script Review:**
-
-The original `dR_target/dzeta = 0` check was too close to omission because it
-acted only on the already collapsed zeta-free closed form. The script now
-reconstructs `R_target` from the support-loaded product law
-`R_target = [8 Lambda (1-eps) S(zeta;eps)/pi^2] / M_tr`, verifies that this
-route collapses back to the closed form, and only then checks the zero
-`zeta`-derivative / equal-value property. SymPy and Mathematica both rerun
-successfully.
-
-**Issues Found:** None.
-
-**Questions:** None.

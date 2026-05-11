@@ -1,67 +1,26 @@
-\section{Stage 233: Crossing-vs-collapse Goldilocks window}
-\label{sec:app-part08:crossing-vs-collapse-goldilocks-window}
+\section[Stage 233]{Stage 233: Rigid-mouth orbit-lock compiler}
 \label{stage:233}
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage233_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage231_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py}.  Mathematica audit: none yet.}
 
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.5}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusOpen{}.}
 
-Stage 233 turns the dynamic branch into a survival inequality.  The exact path-time integral from the Stage-231 energy law is
-\begin{equation}
-\label{eq:app-part08-stage233-path-time}
-T_{\rm traj}(E;r_a\to r_b)
-=
-\sqrt{\frac{m_s}{2}}
-\int_{r_b}^{r_a}\frac{dr}{\sqrt{E-V(r)}}.
-\end{equation}
-The characteristic-width closure used by Session III compresses the active barrier region to
-\begin{equation}
-\label{eq:app-part08-stage233-cross-time}
-t_{\rm cross}(E)
-=
-\lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
-\end{equation}
-This is a reduced timescale closure, not a replacement for the exact path integral.
+\stagefield{Purpose}{Stage~233 begins the actual-branch rigid-mouth compiler and separates mouth tracking from operator rigidity.}
 
-The active dressing leg uses the local unstable normal form
-\begin{equation}
-\label{eq:app-part08-stage233-v-leg}
-\mu_\eta\ddot V=g_{UV}\chi_{\rm peak}V.
-\end{equation}
-Hence
-\begin{equation}
-\label{eq:app-part08-stage233-collapse-time}
-t_{\rm collapse}=
-\sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
-\end{equation}
-The survival ratio is
-\begin{equation}
-\label{eq:app-part08-stage233-survival-ratio}
-\mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}}
-=
-\lambda_{\rm eff}
-\sqrt{\frac{m_sg_{UV}\chi_{\rm peak}}{2\mu_\eta(E-V_{\rm peak})}}.
-\end{equation}
-The lower safe edge is \cref{eq:app-part08-main-goldilocks-edge}, and the speed-space identity is \cref{eq:app-part08-main-goldilocks-speed}.
+\stagefield{Inputs}{Imports $R_{\rm tr}$, the coherent nontracking invariant $\mathfrak N_*$, the transfer shape $\mathcal T^2$, and the transported static ceiling.}
 
-If \(\mu_\eta=\alpha m_s\), the edge becomes
-\begin{equation}
-\label{eq:app-part08-stage233-heavy-edge}
-E_{\rm edge}=V_{\rm peak}+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2\alpha},
-\end{equation}
-so simultaneous scaling of particle mass and wall inertia cancels out of the edge.  The real control packet is
-\begin{equation}
-\label{eq:app-part08-stage233-control-packet}
-(\lambda_{\rm eff},\chi_{\rm peak},g_{UV},\mu_\eta/m_s).
-\end{equation}
-With the trigger-width specialization,
-\begin{equation}
-\label{eq:app-part08-stage233-trigger-width}
-\lambda_{\rm eff}=\lambda_{\rm th}(r_{\rm turn})=
-\left|\frac{V(r_{\rm turn})}{V'(r_{\rm turn})}\right|.
-\end{equation}
-The benchmark edge and sensitivity statements are therefore direct consequences of the dependence
-\begin{equation}
-\label{eq:app-part08-stage233-edge-sensitivity}
-E_{\rm edge}-V_{\rm peak}\propto\lambda_{\rm eff}^{2}\chi_{\rm peak}.
-\end{equation}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py}.  Mathematica audit: none yet.}
 
-Within this closure the safe window is one-sided because \(t_{\rm collapse}\) is energy-independent and \(t_{\rm cross}(E)\) decreases monotonically.  Any upper edge requires an additional high-energy failure mechanism outside Stage 233.
+\stagefield{Derivation ledger}{The derivation proves that rigid mouth tracking $\delta\ln R_{\rm tr}=0$ implies $\Xi_1=\delta\ln\mathfrak N_*$, interprets the static ceiling as an internal transfer/turbulence gate, and identifies the remaining finite packet.}
+
+\stagefield{Output}{Rigid-mouth compiler: mouth tracking alone is not enough; the actual branch must control the transfer-shape/nontracking packet that carries $\Xi_1$.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.5} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

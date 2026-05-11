@@ -1,28 +1,28 @@
-\section[Stage 211]{Stage 211: Numerator/denominator split and dynamic-window test}
+\section[Stage 211]{Stage 211: Triple-simplex interior optimizer}
 \label{stage:211}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.3}.}
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.3}.}
 \claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
 
-\stagefield{Purpose}{Stage~211 tests the pure-transfer corridor against the dynamic-window machinery.}
+\stagefield{Purpose}{Stage~211 solves the two-parameter interior optimization problem for a primitive triple.}
 
-\stagefield{Inputs}{Imports the split $\Xi_1=2(\pi_1-\delta_1)$, numerator-rigid and denominator-rigid subcorridors, and the wall-like branch data from the finite-throat primitive slice.}
+\stagefield{Inputs}{Imports the interior ratio chart for a triple, certified upper/lower root objectives, and compact admissible windows.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage211_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation separates numerator and denominator drift carriers, identifies which subcorridors survive the static constraint, and evaluates the first dynamic-window inequality for the wall-like branch.}
+\stagefield{Derivation ledger}{The derivation forms the two stationary numerator equations, eliminates square roots through quartic cross-consistency and sextic square conditions, constructs a finite algebraic candidate set, and compares interior brackets against optimized pairwise boundaries.}
 
-\stagefield{Output}{Numerator/denominator split, dynamic-window audit, and first branch-level comparison between the static $\Xi_1$ budget and resonant dynamic survival.}
+\stagefield{Output}{Finite triple-interior candidate set, exact interior winner/non-improvement theorems, and special diagonal-isotropic and full-triple-symmetry reductions.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
-\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
-\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
-\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\item Check all pairwise and triple boundary faces are imported from already-certified lower-support ledgers.
+\item Check admissibility windows before including stationary candidates.
+\item Check interval comparison uses certified lower/upper endpoints, not just central predictor values.
+\item Mark candidate evaluation as \StatusNumerical{} when actual local packet values are inserted.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.3} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.3} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
 
 

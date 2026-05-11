@@ -1,0 +1,78 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+# Date: 2026-05-11T12:52:12-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================================================
+1. Exact Gaussian leakage compiler
+================================================================================
+W_lambda(w)           = exp(-w**2/lam**2)/(sqrt(pi)*lam)
+phi_lambda(w)         = 2*w*exp(-w**2/lam**2)/(sqrt(pi)*lam**3)
+E_w(w;r)              = -2*E0*w*exp(-w**2/lam**2)/(sqrt(pi)*lam**3)
+j^w(w;r)              = -2*E0*mu_w*rho0*w*exp(-w**2/lam**2)/(sqrt(pi)*lam**3)
+Boundary term         = 0
+S_leak                = sqrt(2)*E0*mu_w*rho0/(2*sqrt(pi)*lam**3)
+Expected S_leak       = sqrt(2)*E0*mu_w*rho0/(2*sqrt(pi)*lam**3)
+
+================================================================================
+2. Bulk work scalar and reduced Session-I scalar
+================================================================================
+W_bulk                = sqrt(2)*E0**2*mu_w*q*rho0/(2*sqrt(pi)*lam**3)
+Expected W_bulk       = sqrt(2)*E0**2*mu_w*q*rho0/(2*sqrt(pi)*lam**3)
+q E0 S_leak           = sqrt(2)*E0**2*mu_w*q*rho0/(2*sqrt(pi)*lam**3)
+W_sess                = 2*E0**2*mu_w*q*rho0/lam**2
+Expected W_sess       = 2*E0**2*mu_w*q*rho0/lam**2
+W_sess(S_leak)        = 2*E0**2*mu_w*q*rho0/lam**2
+
+================================================================================
+3. Selected-support pullback
+================================================================================
+C_mix                 = 8*Lam*(1 - eps)/pi**2
+Pi_tr                 = 32*Lam*(1 - eps)/(3*pi**2)
+Pi_tr(varrho)         = 16*Lam*varrho/pi**2
+E0 pullback           = 32*Lam*eta_leak*(1 - eps)/(3*pi**2)
+S_leak pullback       = 16*sqrt(2)*Lam*eta_leak*mu_w*rho0*(1 - eps)/(3*pi**(5/2)*lam**3)
+W_bulk pullback       = 512*sqrt(2)*Lam**2*eta_leak**2*mu_w*q*rho0*(eps - 1)**2/(9*pi**(9/2)*lam**3)
+W_sess pullback       = 2048*Lam**2*eta_leak**2*mu_w*q*rho0*(eps - 1)**2/(9*pi**4*lam**2)
+
+================================================================================
+4. Support-versus-orbit split and recovery slice
+================================================================================
+d/dR_tr    S_leak = 0
+d/dR_targetS_leak = 0
+d/deps_eta S_leak = 0
+d/dR_tr    W_bulk = 0
+d/dR_targetW_bulk = 0
+d/deps_eta W_bulk = 0
+d/dR_tr    W_sess = 0
+d/dR_targetW_sess = 0
+d/deps_eta W_sess = 0
+Recovery eta_leak=0: S_leak = 0
+Recovery eta_leak=0: W_bulk = 0
+Recovery eta_leak=0: W_sess = 0
+
+================================================================================
+5. Transport-orientation parity
+================================================================================
+S_leak(-eta)          = -8*sqrt(2)*Lam*eta_leak*mu_w*rho0*varrho/(pi**(5/2)*lam**3)
+-S_leak(eta)          = -8*sqrt(2)*Lam*eta_leak*mu_w*rho0*varrho/(pi**(5/2)*lam**3)
+W_bulk(-eta)          = 128*sqrt(2)*Lam**2*eta_leak**2*mu_w*q*rho0*varrho**2/(pi**(9/2)*lam**3)
+W_sess(-eta)          = 512*Lam**2*eta_leak**2*mu_w*q*rho0*varrho**2/(pi**4*lam**2)
+
+================================================================================
+Stage 244 audit result
+================================================================================
+All symbolic checks passed.
+Verified objects:
+- exact projected leakage source on the odd Gaussian scalar-photon lane,
+- exact one-mode bulk work scalar and its reduced Session-I form,
+- exact pullback through the Stage 242 selected-support demand Pi_tr,
+- exact support-versus-orbit separation of the compiled leakage/work lane,
+- exact orientation parity,
+- and exact recovery of the closed standard slice at eta_leak = 0.
+
+EXIT_CODE: 0

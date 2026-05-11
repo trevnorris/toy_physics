@@ -1,0 +1,38 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage104_outgoing_dtn_fingerprint_mathematica_audit.wl
+# Date: 2026-05-11T13:06:19-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 087 — EXACT OUTGOING l=2 DTN FINGERPRINT
+========================================================================================
+h_2^(1)(z) = SphericalHankelH1[2, z]
+Lambda_2^out(z) = -3 + z^2/3 + z^4/9 + (I/9)*z^5 - (2*z^6)/27 - (I/27)*z^7
+Y_2^out(z) = 1 + z^2/9 + (4*z^4)/81 + (I/27)*z^5 - (11*z^6)/729 - (I/243)*z^7
+static DtN slot = 0
+PASS: static DtN slot
+Y z^2 coefficient = 0
+PASS: Y z^2 coefficient
+Y z^4 coefficient = 0
+PASS: Y z^4 coefficient
+Y imag z^5 coefficient = 0
+PASS: Y imag z^5 coefficient
+Y z^6 coefficient = 0
+PASS: Y z^6 coefficient
+Y imag z^7 coefficient = 0
+PASS: Y imag z^7 coefficient
+Y_2^out(omega) through O(omega^5) = 1 + (aThroat^2*omega^2)/(9*cSound^2) + (4*aThroat^4*omega^4)/(81*cSound^4) + ((I/27)*aThroat^5*omega^5)/cSound^5
+omega^2 coefficient = 0
+PASS: omega^2 coefficient
+omega^4 coefficient = 0
+PASS: omega^4 coefficient
+imag omega^5 coefficient = 0
+PASS: imag omega^5 coefficient
+
+Stage 104 Mathematica audit passed.
+
+EXIT_CODE: 0

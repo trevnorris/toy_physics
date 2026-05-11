@@ -1,37 +1,144 @@
-\section[Stage 026]{Stage 026: Continuum Extraction of the Actual Support/BdG Loading Direction}
+\section[Stage 026]{Stage 026: Concrete Finite-Throat Axial Modes}
 \label{stage:026}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusReduced{} for the continuum support extraction; \StatusExactClosure{} for the resulting direction algebra.}
-\stagefield{Purpose}{Stage~026 identifies the physical support/BdG loading direction that must be inserted into the rank--2 theorem.}
-\stagefield{Inputs}{The split--\(U\) continuum branch, the support profile, and the rank--2 selected-mode formulas of Stages~024--025.}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the finite-interval D/N axial-mode closure.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage026_support_direction_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage026_support_direction_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage026_support_direction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage026_support_direction_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~026 evaluates the first concrete axial overlap model.  It chooses a finite interval, a constant N/N wall/brane profile, and the lowest D/N half-wave for support and mixed channels.  The result is the exact overlap \(\kappa=2\sqrt2/\pi\) and the first finite-throat branch-level normalization equation.}
+
+\stagefield{Inputs}{The inputs are the Stage~025 one-mode closure and the finite interval \(s\in[0,L]\) with N/N and D/N axial profiles.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage026_concrete_axial_overlaps_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage026_concrete_axial_overlaps_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The reduced rank--2 formalism contains an abstract support direction \(r\).  The continuum support extraction evaluates this direction from the actual support/BdG overlap data.  In the notation used later, the physical direction is written in terms of a source-side ratio \(R_\phi\), while the mixed direction is governed by \(R_U\).  Thus the support completion problem is not merely whether additional support load exists; it is whether
+\paragraph{1. Axial basis.}
+Use the normalized constant N/N profile
 \begin{equation}
-\label{eq:app-stage026-direction-question}
-R_\phi=R_U
-\qquad\text{or}\qquad
-R_\phi\ne R_U.
+\label{eq:app-stage026-u0}
+\nu_0(s)=\frac1{\sqrt L},
+\qquad\nu_0'(0)=\nu_0'(L)=0.
 \end{equation}
-The first case collapses to tracking and the one-direction selected geometry.  The second case gives a genuinely new rank--2 branch.
-
-The exact continuum-selected determinant remains the Stage~024 determinant, but with the physical replacements
+The D/N ladder is
 \begin{equation}
-\label{eq:app-stage026-replacements}
-q=tR_U,
+\label{eq:app-stage026-DN-ladder}
+f_n(s)=\sqrt{\frac2L}\sin\!\left(\frac{(n+1/2)\pi s}{L}\right),
 \qquad
-r=tR_\phi,
+f_n(0)=0,
 \qquad
-m=M_{\rm mix},
-\qquad
-n=M_{\rm supp},
+f_n'(L)=0,
 \end{equation}
-where \(t=\kappa_1/\kappa_0\).
+with
+\begin{equation}
+\label{eq:app-stage026-kn}
+k_n=\frac{(n+1/2)\pi}{L}.
+\end{equation}
+The minimal branch keeps \(n=0\).  The exact overlap is
+\begin{equation}
+\label{eq:app-stage026-kappa-n}
+\kappa_n=\int_0^L \nu_0(s)f_n(s)\,ds
+=\frac{\sqrt2}{(n+1/2)\pi},
+\end{equation}
+so
+\begin{equation}
+\label{eq:app-stage026-kappa0}
+\boxed{
+\kappa:=\kappa_0=\frac{2\sqrt2}{\pi}}.
+\end{equation}
 
-\stagefield{Output}{A physical support-direction insertion rule \eqref{eq:app-stage026-replacements}.}
-\stagefield{Downstream use}{Stage~027 uses it to derive the continuum-selected quadratic.  Stage~028 then proves that the first coherent local D/N kernel forces the tracking case.}
+\paragraph{2. Branch-level coupling constants.}
+Take
+\begin{equation}
+\label{eq:app-stage026-profile-choice}
+\chi_\eta=\nu_0,
+\qquad
+\phi=f_0,
+\qquad
+u=\nu_0,
+\qquad
+w=f_0.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage026-overlaps}
+I_{\eta\phi}=\kappa,
+\qquad
+I_{\eta u}=1,
+\qquad
+I_{\eta w}=\kappa,
+\qquad
+I_{uw}=\kappa.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-stage026-couplings}
+\boxed{
+C=\kappa\lambda_B,
+\qquad
+G_U=\lambda_U,
+\qquad
+G_W=\kappa\lambda_W,
+\qquad
+R=\kappa\lambda_R}.
+\end{equation}
+Substituting into Stage~025 gives
+\begin{equation}
+\label{eq:app-stage026-DeltaQP}
+\boxed{
+\begin{aligned}
+\Delta&=\Omega_U^2\Omega_W^2-\kappa^2\lambda_R^2,\\
+Q&=\lambda_U^2\Omega_W^2+2\kappa^2\lambda_U\lambda_W\lambda_R+\kappa^2\lambda_W^2\Omega_U^2,\\
+\mathcal P&=\kappa(\Omega_U^2\lambda_W+\lambda_R\lambda_U).
+\end{aligned}
+}
+\end{equation}
+The BdG softening is
+\begin{equation}
+\label{eq:app-stage026-X}
+X=\frac{\kappa^2\lambda_B^2}{\varpi^2}.
+\end{equation}
+
+\paragraph{3. First finite-throat target and stiffness form.}
+The target becomes
+\begin{equation}
+\label{eq:app-stage026-normalization}
+\boxed{
+\widehat m_{\rm rad}^{\,2}
+\frac{\kappa^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}
+{\Delta\left(K\Delta-\Delta\kappa^2\lambda_B^2/\varpi^2-Q\right)}
+=N_Q^{\rm target}}.
+\end{equation}
+Solving for the required wall stiffness gives
+\begin{equation}
+\label{eq:app-stage026-Kreq}
+\boxed{
+K_{\rm req}
+=\frac{\kappa^2\lambda_B^2}{\varpi^2}
++\frac{Q}{\Delta}
++\frac{\widehat m_{\rm rad}^{\,2}\kappa^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}
+{N_Q^{\rm target}\Delta^2}}.
+\end{equation}
+For the constant wall profile,
+\begin{equation}
+\label{eq:app-stage026-Kgeo}
+K=K_\eta+6T_\Omega.
+\end{equation}
+Thus the first concrete branch condition is
+\begin{equation}
+\label{eq:app-stage026-branch-condition}
+K_\eta+6T_\Omega=K_{\rm req}.
+\end{equation}
+
+\stagefield{Output}{Stage~026 outputs the finite-throat D/N overlap \eqref{eq:app-stage026-kappa0}, the concrete couplings \eqref{eq:app-stage026-couplings}, the finite-throat normalization law \eqref{eq:app-stage026-normalization}, and the required stiffness formula \eqref{eq:app-stage026-Kreq}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Direct integration of \(\nu_0f_n\) gives \(\kappa_n=\sqrt2/[(n+1/2)\pi]\).
+\item The lowest D/N mode is dominant because \(|\kappa_n|\) decreases as \((n+1/2)^{-1}\).
+\item The support/mixed coupling vanishes if \(\kappa=0\), but the D/N lowest mode has \(\kappa>0\).
+\item Solving \eqref{eq:app-stage026-normalization} for \(K\) gives \eqref{eq:app-stage026-Kreq}.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~027 tests nonconstant wall/brane profiles.  Stage~032 reuses the same finite-throat D/N source overlap to fix \(\widehat m_-\).  Stages~035--036 use the exact D/N constants derived from this branch.}
+
+\clearpage
 

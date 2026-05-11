@@ -1,8 +1,8 @@
 \chapter{Stage Appendix: Part VI -- Realization Compiler and Finite Mixed-Ray Search}
 \label{app:stage-part-6}
 
-\section*{Stage range: 184--201}
-\addcontentsline{toc}{section}{Stage range: 184--201}
+\section*{Stage range: 201--218}
+\addcontentsline{toc}{section}{Stage range: 201--218}
 
 This appendix expands the Part VI theorem-block chapter into a verification ledger.  The main-body Part VI chapter states the realization compiler and the finite mixed-ray result in citation-ready form; the present appendix keeps the algebraic chain visible stage by stage.  The distinction is important: Part VI proves that the declared local realization search is finite and auditable, while this appendix records how each compiler, graph map, ray bracket, simplex optimizer, boundary splice, and support-cardinality theorem is obtained.
 
@@ -30,41 +30,41 @@ Stage & Working title & Primary status & Main output \\
 Stage & Working title & Primary status & Main output \\
 \midrule
 \endhead
-184 & Realization compiler and canonical orbit projection & \StatusExactClosure{} & Intrinsic four-scalar packet, canonical dependent-triple repair vector, canonical target-orbit projection, and same-free-quintuple uniqueness theorem. \\
+201 & Realization compiler and canonical orbit projection & \StatusExactClosure{} & Intrinsic four-scalar packet, canonical dependent-triple repair vector, canonical target-orbit projection, and same-free-quintuple uniqueness theorem. \\
 \addlinespace
-185 & Free-quintuple target graph & \StatusExactClosure{} & Solves the target orbit as a graph over \((\lambda_W,c_{\eta U},\gamma,K_U,K_W^{\rm eff})\), defines graph errors \((E_T,E_K,E_\mu)\), and gives the first reduced-family closure surface. \\
+202 & Free-quintuple target graph & \StatusExactClosure{} & Solves the target orbit as a graph over \((\lambda_W,c_{\eta U},\gamma,K_U,K_W^{\rm eff})\), defines graph errors \((E_T,E_K,E_\mu)\), and gives the first reduced-family closure surface. \\
 \addlinespace
-186 & Scalar graph-slice theorem & \StatusExactClosure{} & Reduces graph-aligned realization to the single scalar \(\widehat\chi_Q(\mathbf y)=1\), proves graph tangency to \(\ker M_*\), and gives the one-parameter crossing theorem. \\
+203 & Scalar graph-slice theorem & \StatusExactClosure{} & Reduces graph-aligned realization to the single scalar \(\widehat\chi_Q(\mathbf y)=1\), proves graph tangency to \(\ker M_*\), and gives the one-parameter crossing theorem. \\
 \addlinespace
-187 & Explicit free-quintuple log-ray sweep & \StatusExactClosure{} & Builds \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), gives the finite graph lift and primitive-direction table, and reduces closure to a one-variable scalar root. \\
+204 & Explicit free-quintuple log-ray sweep & \StatusExactClosure{} & Builds \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), gives the finite graph lift and primitive-direction table, and reduces closure to a one-variable scalar root. \\
 \addlinespace
-188 & Directional Hessian and quadratic predictors & \StatusExactClosure{} & Adds directional Hessian data, quadratic affine/log predictors, discriminant tests, and turning-point/tangency criteria. \\
+205 & Directional Hessian and quadratic predictors & \StatusExactClosure{} & Adds directional Hessian data, quadratic affine/log predictors, discriminant tests, and turning-point/tangency criteria. \\
 \addlinespace
-189 & Curvature-envelope ray ranking & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Turns local curvature envelopes into certified root brackets, bracket-width laws, pairwise ray ordering, and the local search sieve. \\
+206 & Curvature-envelope ray ranking & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Turns local curvature envelopes into certified root brackets, bracket-width laws, pairwise ray ordering, and the local search sieve. \\
 \addlinespace
-190 & Primitive-ray certified table & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Specializes the sieve to the five primitive free directions; proves only diagonal Hessian restrictions are needed for primitive certification. \\
+207 & Primitive-ray certified table & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Specializes the sieve to the five primitive free directions; proves only diagonal Hessian restrictions are needed for primitive certification. \\
 \addlinespace
-191 & Pairwise mixed-ray audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Introduces pairwise cones, gradient synergy, off-diagonal Hessian leverage, canonical gradient/equal-mix screens, and pairwise promotion rules. \\
+208 & Pairwise mixed-ray audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Introduces pairwise cones, gradient synergy, off-diagonal Hessian leverage, canonical gradient/equal-mix screens, and pairwise promotion rules. \\
 \addlinespace
-192 & Pairwise ratio optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces each pairwise ratio search to a finite quartic candidate set and defines optimized pairwise brackets. \\
+209 & Pairwise ratio optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces each pairwise ratio search to a finite quartic candidate set and defines optimized pairwise brackets. \\
 \addlinespace
-193 & Three-coordinate simplex audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces triple boundaries to pairwise cones, gives gradient and equal-mix interior screens, and defines the canonical triple-screen packet. \\
+210 & Three-coordinate simplex audit & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces triple boundaries to pairwise cones, gives gradient and equal-mix interior screens, and defines the canonical triple-screen packet. \\
 \addlinespace
-194 & Triple-simplex interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the two-parameter triple interior optimizer to quartic/sextic algebraic candidate sets with finite interior brackets. \\
+211 & Triple-simplex interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the two-parameter triple interior optimizer to quartic/sextic algebraic candidate sets with finite interior brackets. \\
 \addlinespace
-195 & Up-to-three-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices triple interiors to pairwise boundaries, ranks all primitive triples, and proves the support-\(\le3\) finite ledger. \\
+212 & Up-to-three-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices triple interiors to pairwise boundaries, ranks all primitive triples, and proves the support-\(\le3\) finite ledger. \\
 \addlinespace
-196 & Four-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces four-simplex faces to triple packets and introduces four-way gradient/equal-mix canonical screens. \\
+213 & Four-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces four-simplex faces to triple packets and introduces four-way gradient/equal-mix canonical screens. \\
 \addlinespace
-197 & Four-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Lifts the three-parameter four-simplex stationary system to a finite polynomial candidate set with preferred bound \(54\) per envelope. \\
+214 & Four-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Lifts the three-parameter four-simplex stationary system to a finite polynomial candidate set with preferred bound \(54\) per envelope. \\
 \addlinespace
-198 & Up-to-four-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices quadruple interiors to triple-face boundaries, ranks all primitive quadruples, and proves the support-\(\le4\) finite ledger. \\
+215 & Up-to-four-coordinate search sieve & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Splices quadruple interiors to triple-face boundaries, ranks all primitive quadruples, and proves the support-\(\le4\) finite ledger. \\
 \addlinespace
-199 & Unique five-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Identifies the unique five-simplex, reduces its boundary to the support-\(\le4\) ledger, and proves the support-cardinality ceiling. \\
+216 & Unique five-coordinate simplex gate & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Identifies the unique five-simplex, reduces its boundary to the support-\(\le4\) ledger, and proves the support-cardinality ceiling. \\
 \addlinespace
-200 & Five-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the four-parameter five-simplex interior optimizer to a lifted finite polynomial candidate set with preferred bound \(162\) per envelope. \\
+217 & Five-coordinate interior optimizer & Mixed: \StatusExactClosure{}, \StatusNumerical{} & Reduces the four-parameter five-simplex interior optimizer to a lifted finite polynomial candidate set with preferred bound \(179\) per envelope. \\
 \addlinespace
-201 & Final local mixed-ray closure theorem & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{} & Splices the unique support-5 interior packet to the support-\(\le4\) boundary ledger and closes the local mixed-ray search with preferred budget \(1464\). \\
+218 & Final local mixed-ray closure theorem & Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{} & Splices the unique support-5 interior packet to the support-\(\le4\) boundary ledger and closes the local mixed-ray search with preferred budget \(1464\). \\
 \bottomrule
 \end{longtable}
 
@@ -124,11 +124,11 @@ The dependent triple is
  K_\eta^{(\mathrm{eff})},
  \mu_W).
 \end{equation}
-This split is not a new physical assumption.  It is the canonical section of the Stage-175 quotient map used to make the same-free-quintuple projection explicit.
+This split is not a new physical assumption.  It is the canonical section of the Stage 192 quotient map used to make the same-free-quintuple projection explicit.
 
 \begin{theorem}[Part VI realization compiler and finite mixed-ray closure theorem]
 \label{thm:app-part06-main}
-Inside the carried realization hierarchy for Stages 184--201, the following theorem chain holds.
+Inside the carried realization hierarchy for Stages 201--218, the following theorem chain holds.
 \begin{enumerate}[leftmargin=2.2em]
   \item The final four-scalar verdict packet can be written intrinsically as
   \begin{equation}
@@ -207,7 +207,7 @@ Inside the carried realization hierarchy for Stages 184--201, the following theo
   \quad
   \Phi_2=(\mathcal D_{\mathbf s}^2\widehat\chi_Q)(\mathbf y_\circ),
   \end{equation}
-  or, equivalently, logarithmic data \((H_0,K_0,\underline K_1,\overline K_1)\) after orientation.  These data determine certified local brackets whenever the Stage-189 admissibility hypotheses hold.
+  or, equivalently, logarithmic data \((H_0,K_0,\underline K_1,\overline K_1)\) after orientation.  These data determine certified local brackets whenever the Stage 206 admissibility hypotheses hold.
   \item The primitive, pairwise, triple, quadruple, and five-coordinate searches are finite certified algebraic ledgers.  The support-cardinality ceiling is five because the free space has exactly five primitive axes.
   \item The final local mixed-ray search on the positive free-quintuple simplex is reduced to the splice
   \begin{equation}
@@ -233,7 +233,7 @@ Inside the carried realization hierarchy for Stages 184--201, the following theo
 \end{theorem}
 
 \begin{proof}[Proof structure]
-Stages 184--185 convert the reference-free four-scalar packet into an intrinsic monomial-ratio audit, a canonical same-free-quintuple projection, and an explicit target graph.  Stage 186 proves that graph-aligned families lie in the kernel of the quotient map and hence reduce to the scalar closure function \(\widehat\chi_Q-1\).  Stages 187--190 build the log-ray, Hessian, curvature-envelope, and primitive certified-ray compilers.  Stages 191--192 add pairwise mixed cones and reduce the one-parameter ratio optimization to finite quartic candidate sets.  Stages 193--195 do the same for genuine three-coordinate simplex interiors and then splice them into the pairwise boundary ledger.  Stages 196--198 repeat the construction for four-coordinate interiors and splice the result into the support-\(\le3\) ledger.  Stages 199--201 identify the unique five-coordinate simplex, reduce its interior optimizer to a finite lifted algebraic candidate set, and finally prove that its boundary is exactly the already-solved support-\(\le4\) search set.
+Stages 201--202 convert the reference-free four-scalar packet into an intrinsic monomial-ratio audit, a canonical same-free-quintuple projection, and an explicit target graph.  Stage 203 proves that graph-aligned families lie in the kernel of the quotient map and hence reduce to the scalar closure function \(\widehat\chi_Q-1\).  Stages 204--207 build the log-ray, Hessian, curvature-envelope, and primitive certified-ray compilers.  Stages 208--209 add pairwise mixed cones and reduce the one-parameter ratio optimization to finite quartic candidate sets.  Stages 210--212 do the same for genuine three-coordinate simplex interiors and then splice them into the pairwise boundary ledger.  Stages 213--215 repeat the construction for four-coordinate interiors and splice the result into the support-\(\le3\) ledger.  Stages 216--218 identify the unique five-coordinate simplex, reduce its interior optimizer to a finite lifted algebraic candidate set, and finally prove that its boundary is exactly the already-solved support-\(\le4\) search set.
 \end{proof}
 
 \section{Exact realization compiler and target graph}
@@ -242,7 +242,7 @@ Stages 184--185 convert the reference-free four-scalar packet into an intrinsic 
 \subsection{Intrinsic realization packet}
 \label{subsec:app-part06-intrinsic-realization-packet}
 
-Stage 184 begins from the three target monomials already isolated by the orbit/quotient theorem,
+Stage 201 begins from the three target monomials already isolated by the orbit/quotient theorem,
 \begin{equation}
 \label{eq:app-part06-target-monomials}
 \mathfrak C_{{\rm tr},*}(\mathbf x),
@@ -321,7 +321,7 @@ This is the operational version of Part V's reference-free packet.
 \subsection{Canonical same-free-quintuple projection}
 \label{subsec:app-part06-canonical-same-free-quintuple-projection}
 
-The Stage-175 quotient map is carried in the linearized form
+The Stage 192 quotient map is carried in the linearized form
 \begin{equation}
 \label{eq:app-part06-Mstar-map}
 \mathbf q=M_*\Delta\mathbf x,
@@ -384,7 +384,7 @@ For any positive microscopic state \(\mathbf x\),
 \subsection{Direct microscopic target graph}
 \label{subsec:app-part06-direct-target-graph}
 
-Stage 185 removes the remaining abstractness by solving the orbit constraints directly.  The carried monomials are
+Stage 202 removes the remaining abstractness by solving the orbit constraints directly.  The carried monomials are
 \begin{equation}
 \label{eq:app-part06-Ctr-direct}
 \mathfrak C_{{\rm tr},*}
@@ -499,7 +499,7 @@ and the closure criterion is
 \mathbf x_{\rm cand}(\mathbf y)\in\mathcal Z_*.
 \end{equation}
 
-\claimstatus{Stages 184--185 are \StatusExactClosure{}.  They are exact consequences of the already-declared monomial quotient map, target-orbit definition, and canonical dependent-triple section.  They do not prove that the actual PDE branch is graph-aligned; they provide the exact coordinates in which that claim can be tested.}
+\claimstatus{Stages 201--202 are \StatusExactClosure{}.  They are exact consequences of the already-declared monomial quotient map, target-orbit definition, and canonical dependent-triple section.  They do not prove that the actual PDE branch is graph-aligned; they provide the exact coordinates in which that claim can be tested.}
 
 \section{Scalar graph-slice and log-ray compiler}
 \label{sec:app-part06-scalar-graph-slice-and-log-ray-compiler}
@@ -507,7 +507,7 @@ and the closure criterion is
 \subsection{Graph closure scalar}
 \label{subsec:app-part06-graph-closure-scalar}
 
-Stage 186 defines
+Stage 203 defines
 \begin{equation}
 \label{eq:app-part06-chi-hat-def}
 \widehat\chi_Q(\mathbf y):=
@@ -594,7 +594,7 @@ This is not a numerical method by itself.  It is the exact existence theorem tha
 \subsection{Free-quintuple log rays}
 \label{subsec:app-part06-free-quintuple-log-rays}
 
-Stage 187 chooses the canonical local family
+Stage 204 chooses the canonical local family
 \begin{equation}
 \label{eq:app-part06-log-ray}
 \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
@@ -673,7 +673,7 @@ The first-order predictors are
 \qquad
 L_0:=\frac{\Phi_1}{\Phi_0}.
 \end{equation}
-Stage 188 introduces free log coordinates
+Stage 205 introduces free log coordinates
 \begin{equation}
 \label{eq:app-part06-free-log-coords}
 \boldsymbol\ell=(\ln\lambda_W,\ln c_{\eta U},\ln\gamma,\ln K_U,\ln K_W^{(\rm eff)}),
@@ -726,7 +726,7 @@ with local predictors
 \end{equation}
 These are the local predictor tools used by the certified search sieve.
 
-\claimstatus{Stages 186--188 are \StatusExactClosure{} once \(\widehat\chi_Q\) is a differentiable scalar on the target graph.  The actual values of the derivatives and Hessians are PDE-returned or candidate-family data; the predictor formulas themselves are exact.}
+\claimstatus{Stages 203--205 are \StatusExactClosure{} once \(\widehat\chi_Q\) is a differentiable scalar on the target graph.  The actual values of the derivatives and Hessians are PDE-returned or candidate-family data; the predictor formulas themselves are exact.}
 
 \section{Certified ray sieve: primitive and pairwise searches}
 \label{sec:app-part06-certified-ray-sieve-primitive-pairwise}
@@ -734,7 +734,7 @@ These are the local predictor tools used by the certified search sieve.
 \subsection{Curvature-envelope brackets}
 \label{subsec:app-part06-curvature-envelope-brackets}
 
-Stage 189 orients the log residual.  Let
+Stage 206 orients the log residual.  Let
 \begin{equation}
 \label{eq:app-part06-oriented-H}
 H_{\mathbf s}(\tau):=
@@ -828,12 +828,12 @@ For monotone rows, the certified interval is
 \qquad
 \tau_{i,\rm hi}=\mathcal T(H_0,-k_i;\overline\kappa_i),
 \end{equation}
-with the same discriminant and validity checks as Stage 189.
+with the same discriminant and validity checks as Stage 206.
 
 \subsection{Pairwise mixed rays}
 \label{subsec:app-part06-pairwise-mixed-rays}
 
-For a monotone pair \((i,j)\), Stage 191 introduces
+For a monotone pair \((i,j)\), Stage 208 introduces
 \begin{equation}
 \label{eq:app-part06-pairwise-cone}
 \widehat{\mathbf s}_{ij}(r)=
@@ -878,7 +878,7 @@ maximized at the equal-mix ray \(r=1\).  Thus the two canonical pair screens are
 \subsection{Pairwise ratio optimizer}
 \label{subsec:app-part06-pairwise-ratio-optimizer}
 
-Stage 192 closes the full one-parameter pair search.  On a compact ratio window \([0,R_{ij}]\), for envelope label \(\star\in\{\rm lo,hi\}\), define
+Stage 209 closes the full one-parameter pair search.  On a compact ratio window \([0,R_{ij}]\), for envelope label \(\star\in\{\rm lo,hi\}\), define
 \begin{equation}
 \label{eq:app-part06-pairwise-ABC}
 A_\star=k_i^2-2H_0u_\star,
@@ -915,7 +915,7 @@ Eliminating the square root gives the quartic condition
 \end{equation}
 After filtering extraneous roots, each envelope optimizer is found in a finite set containing admissible endpoints and at most four admissible quartic roots.  Therefore one pair requires at most twelve exact candidate evaluations across the lower and upper envelopes.
 
-\claimstatus{Stages 189--192 are \StatusExactClosure{} once the local gradient, Hessian-envelope, and validity data are supplied.  If those inputs come from numerical PDE evaluation, the final ray rankings are \StatusNumerical{} insertions into exact certified formulas.}
+\claimstatus{Stages 206--209 are \StatusExactClosure{} once the local gradient, Hessian-envelope, and validity data are supplied.  If those inputs come from numerical PDE evaluation, the final ray rankings are \StatusNumerical{} insertions into exact certified formulas.}
 
 \section{Three- and four-coordinate simplex sieves}
 \label{sec:app-part06-three-four-coordinate-simplex-sieves}
@@ -935,7 +935,7 @@ The ray is
 \label{eq:app-part06-triple-ray}
 \widehat{\mathbf s}_{ijk}=a_i\widehat{\mathbf e}_i+a_j\widehat{\mathbf e}_j+a_k\widehat{\mathbf e}_k.
 \end{equation}
-Each boundary edge is exactly one Stage-192 pairwise cone.  Hence only the interior of \(\Delta_{ijk}^{+}\) is new at support-cardinality three.
+Each boundary edge is exactly one Stage 209 pairwise cone.  Hence only the interior of \(\Delta_{ijk}^{+}\) is new at support-cardinality three.
 
 The gradient-optimal point is
 \begin{equation}
@@ -988,7 +988,7 @@ complex roots counting multiplicity when the intersection is zero-dimensional.  
 \subsection{Up-to-three-coordinate splice}
 \label{subsec:app-part06-up-to-three-coordinate-splice}
 
-There are \(\binom52=10\) primitive pairs and \(\binom53=10\) primitive triples.  Stage 195 imports every optimized pairwise interval
+There are \(\binom52=10\) primitive pairs and \(\binom53=10\) primitive triples.  Stage 212 imports every optimized pairwise interval
 \begin{equation}
 \label{eq:app-part06-pairwise-interval-import}
 \tau_{ij,\min}^{\rm lo}\le\tau_{ij,*}^{\rm best}\le\tau_{ij,\min}^{\rm hi}
@@ -1036,7 +1036,7 @@ For a primitive quadruple \(Q=(i,j,k,l)\),
 =
 \left\{(a_i,a_j,a_k,a_l)\in\mathbb R_{\ge0}^{4}:a_i^2+a_j^2+a_k^2+a_l^2=1\right\}.
 \end{equation}
-Every codimension-one face is one of the Stage-195 closed triple simplices.  The gradient-optimal interior point is
+Every codimension-one face is one of the Stage 212 closed triple simplices.  The gradient-optimal interior point is
 \begin{equation}
 \label{eq:app-part06-four-grad}
 \mathbf a_{ijkl}^{\rm grad}
@@ -1058,7 +1058,7 @@ with equality at \eqref{eq:app-part06-four-eq}.  The support-cardinality-four ga
 \subsection{Four-coordinate interior optimizer and up-to-four splice}
 \label{subsec:app-part06-four-interior-and-splice}
 
-On an interior chart, Stage 197 introduces three ratio coordinates \((r,s,t)\), one auxiliary square-root variable \(y\), and a lifted stationary system with degree pattern
+On an interior chart, Stage 214 introduces three ratio coordinates \((r,s,t)\), one auxiliary square-root variable \(y\), and a lifted stationary system with degree pattern
 \begin{equation}
 \label{eq:app-part06-four-degree-pattern}
 (3,3,3,2).
@@ -1068,7 +1068,7 @@ Thus the preferred lifted candidate bound is
 \label{eq:app-part06-four-bezout}
 3\cdot3\cdot3\cdot2=54
 \end{equation}
-per envelope.  Stage 198 then splices the four-coordinate interior intervals to the imported support-\(\le3\) ledger.  There are \(\binom54=5\) primitive quadruples, so the four-coordinate interior budget is
+per envelope.  Stage 215 then splices the four-coordinate interior intervals to the imported support-\(\le3\) ledger.  There are \(\binom54=5\) primitive quadruples, so the four-coordinate interior budget is
 \begin{equation}
 \label{eq:app-part06-four-budget}
 5\times2\times54=540.
@@ -1088,7 +1088,7 @@ The certified support-\(\le4\) interval is
 :=\min(\tau_{\le3,\min}^{\rm hi},\tau_{4,\min}^{\rm hi,int}).
 \end{equation}
 
-\claimstatus{Stages 193--198 are \StatusExactClosure{} for the simplex algebra and \StatusNumerical{} only when actual local packet values are inserted.  Boundary reduction is exact because each simplex face is one of the previously closed lower-support searches.}
+\claimstatus{Stages 210--215 are \StatusExactClosure{} for the simplex algebra and \StatusNumerical{} only when actual local packet values are inserted.  Boundary reduction is exact because each simplex face is one of the previously closed lower-support searches.}
 
 \section{Unique five-coordinate simplex and final local closure}
 \label{sec:app-part06-unique-five-simplex-final-local-closure}
@@ -1096,7 +1096,7 @@ The certified support-\(\le4\) interval is
 \subsection{The unique five-coordinate positive simplex}
 \label{subsec:app-part06-unique-five-coordinate-simplex}
 
-Stage 199 observes that, because the free space is the five-coordinate log space
+Stage 216 observes that, because the free space is the five-coordinate log space
 \begin{equation}
 \label{eq:app-part06-five-axis-set}
 \mathfrak I_5=\{\lambda,c,\gamma,U,W\},
@@ -1111,7 +1111,7 @@ there is only one support-cardinality-five simplex:
 \sum_{p\in\mathfrak I_5}a_p^2=1
 \right\}.
 \end{equation}
-Its boundary faces are precisely the five Stage-198 primitive quadruple closed simplices.  If the imported face intervals are denoted by \(\mathcal I_{\widehat p}^{\square}\), then
+Its boundary faces are precisely the five Stage 215 primitive quadruple closed simplices.  If the imported face intervals are denoted by \(\mathcal I_{\widehat p}^{\square}\), then
 \begin{equation}
 \label{eq:app-part06-five-boundary-minima}
 \beta_5^{\rm lo}:=\min_{p\in\mathfrak I_5}\tau_{\widehat p,\min}^{\rm lo,\square},
@@ -1156,7 +1156,7 @@ with equality at \eqref{eq:app-part06-five-eq}.  These two screens are the exact
 \subsection{Five-coordinate interior optimizer}
 \label{subsec:app-part06-five-coordinate-interior-optimizer}
 
-Stage 200 solves the last continuum problem.  On the chart \(a_\lambda>0\), write
+Stage 217 solves the last continuum problem.  On the chart \(a_\lambda>0\), write
 \begin{equation}
 \label{eq:app-part06-five-ratio-coords}
 (a_\lambda,a_c,a_\gamma,a_U,a_W)
@@ -1197,7 +1197,7 @@ with degree pattern
 Therefore the preferred lifted B\'ezout candidate bound is
 \begin{equation}
 \label{eq:app-part06-five-bezout}
-3^4\cdot2=162
+3^4\cdot2=179
 \end{equation}
 per envelope.  Across lower and upper envelopes the support-five interior contributes at most
 \begin{equation}
@@ -1209,7 +1209,7 @@ preferred candidate evaluations.  A fallback square-root-free projected chart gi
 \subsection{Boundary identification and support ceiling}
 \label{subsec:app-part06-boundary-identification-support-ceiling}
 
-Stage 201 proves that the boundary of \(\Delta_5^+\) is exactly the already-solved support-\(\le4\) search set.  The proper nonempty support strata have counts
+Stage 218 proves that the boundary of \(\Delta_5^+\) is exactly the already-solved support-\(\le4\) search set.  The proper nonempty support strata have counts
 \begin{equation}
 \label{eq:app-part06-boundary-strata-counts}
 5\text{ facets}+10\text{ ridges}+10\text{ edges}+5\text{ vertices}=30=2^5-2.
@@ -1269,10 +1269,10 @@ Thus even the fallback full local search is finite.
 
 \begin{theorem}[Final local mixed-ray closure]
 \label{thm:app-part06-final-local-mixed-ray-closure}
-Within the declared local free-quintuple mixed-ray class, the full positive-support search is exhausted by the support-\(\le4\) boundary ledger and the unique support-five interior packet.  There are no support-cardinality families beyond five.  Any remaining ambiguity after Stage 201 is finite-candidate ambiguity inside the already-enumerated algebraic candidate sets, not a new continuum search.
+Within the declared local free-quintuple mixed-ray class, the full positive-support search is exhausted by the support-\(\le4\) boundary ledger and the unique support-five interior packet.  There are no support-cardinality families beyond five.  Any remaining ambiguity after Stage 218 is finite-candidate ambiguity inside the already-enumerated algebraic candidate sets, not a new continuum search.
 \end{theorem}
 
-\claimstatus{Stages 199--201 are \StatusExactClosure{} for the boundary identification, support ceiling, lifted finite candidate compiler, splice theorem, and evaluation budget.  The realized winning ray, if any, remains \StatusNumerical{} or \StatusOpen{} until actual PDE-derived envelope and validity data are inserted and evaluated.}
+\claimstatus{Stages 216--218 are \StatusExactClosure{} for the boundary identification, support ceiling, lifted finite candidate compiler, splice theorem, and evaluation budget.  The realized winning ray, if any, remains \StatusNumerical{} or \StatusOpen{} until actual PDE-derived envelope and validity data are inserted and evaluated.}
 
 \section{What Part VI does and does not prove}
 \label{sec:app-part06-what-it-does-not-prove}
@@ -1318,43 +1318,43 @@ The preceding sections prove the Part VI compiler in theorem-block form.  The fo
 
 
 \paragraph{Source layout.}
-Stages~184--201 are now sourced from the canonical files \StageFile{stages/stage_184.tex} through \StageFile{stages/stage_201.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+Stages~201--218 are now sourced from the canonical files \StageFile{stages/stage_201.tex} through \StageFile{stages/stage_218.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
 
 \begingroup
 \let\clearpage\relax
-\input{stages/stage_184}
-\clearpage
-\input{stages/stage_185}
-\clearpage
-\input{stages/stage_186}
-\clearpage
-\input{stages/stage_187}
-\clearpage
-\input{stages/stage_188}
-\clearpage
-\input{stages/stage_189}
-\clearpage
-\input{stages/stage_190}
-\clearpage
-\input{stages/stage_191}
-\clearpage
-\input{stages/stage_192}
-\clearpage
-\input{stages/stage_193}
-\clearpage
-\input{stages/stage_194}
-\clearpage
-\input{stages/stage_195}
-\clearpage
-\input{stages/stage_196}
-\clearpage
-\input{stages/stage_197}
-\clearpage
-\input{stages/stage_198}
-\clearpage
-\input{stages/stage_199}
-\clearpage
-\input{stages/stage_200}
-\clearpage
 \input{stages/stage_201}
+\clearpage
+\input{stages/stage_202}
+\clearpage
+\input{stages/stage_203}
+\clearpage
+\input{stages/stage_204}
+\clearpage
+\input{stages/stage_205}
+\clearpage
+\input{stages/stage_206}
+\clearpage
+\input{stages/stage_207}
+\clearpage
+\input{stages/stage_208}
+\clearpage
+\input{stages/stage_209}
+\clearpage
+\input{stages/stage_210}
+\clearpage
+\input{stages/stage_211}
+\clearpage
+\input{stages/stage_212}
+\clearpage
+\input{stages/stage_213}
+\clearpage
+\input{stages/stage_214}
+\clearpage
+\input{stages/stage_215}
+\clearpage
+\input{stages/stage_216}
+\clearpage
+\input{stages/stage_217}
+\clearpage
+\input{stages/stage_218}
 \endgroup

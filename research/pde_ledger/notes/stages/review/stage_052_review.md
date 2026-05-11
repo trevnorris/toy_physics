@@ -1,188 +1,87 @@
-# Review: Stage 052 — Final reduced verdict
+# Review: Stage 052 — Dimensionless normalization locus
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** PASS after regime-ordering hardening (2026-04-21)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat_pde_stage052_final_reduced_verdict.md`
-- **SymPy:** `scripts/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py`
-- **Mathematica:** `mathematica/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.wl`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage035_dimensionless_normalization_locus.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py`
 
 ## Review Checklist
 
-- [x] Equation-level correctness (signs, factors, indices, limits)
-- [x] Logical flow from prior stage(s)
-- [x] Assumptions stated and justified
-- [x] Notation consistent with prior stages
-- [x] Physical interpretation sensible
-- [x] SymPy script faithfully implements notes
-- [x] Mathematica script faithfully implements notes
-- [x] Scripts run without error
-- [x] Script output matches notes claims
-- [x] No missing edge cases or branches
+- [ ] Equation-level correctness (signs, factors, indices, limits)
+- [ ] Logical flow from prior stage(s)
+- [ ] Assumptions stated and justified
+- [ ] Notation consistent with prior stages
+- [ ] Physical interpretation sensible
+- [ ] SymPy script faithfully implements notes
+- [ ] Script runs without error
+- [ ] Script output matches notes claims
+- [ ] No missing edge cases or branches
 
-## Hardening Summary
+## Agent Reviews
 
-The earlier Stage `052` audits were too weak for the theorem they were supposed
-to support. Their only hard checks were the identities
+<!-- Agents: append your review below this line using the template:
 
-- `(P_res X - X)/X = P_res - 1`,
-
-applied once to the failure threshold and once to the success threshold. Those
-equalities are true for any symbolic `X`, so the old scripts did not actually
-audit the three-zone verdict.
-
-That gap is now closed.
-
-## What the hardened scripts now prove
-
-### 1. The matched Stage-49 window is carried explicitly
-
-Both CAS layers now rebuild the matched-branch theorem window directly as
-
-- `W_fail^match = Pe_req / Delta_inf`,
-- `W_suff^match = Pe_req / Delta_0`,
-
-and verify the exact matched-window width
-
-`W_suff^match - W_fail^match = Pe_req (Delta_inf - Delta_0)/(Delta_0 Delta_inf)`.
-
-This is the actual three-zone skeleton in the paper, not a resonance-side
-summary artifact.
-
-### 2. The Stage-51 resonance thresholds are derived from `P_res = 1/C_res^2`
-
-Rather than treating `P_res` as a free shift factor, the hardened scripts derive
-the resonance-family thresholds from
-
-`P_res = 1 / C_res^2`,
-
-giving
-
-- `W_fail^res = Pe_req / (C_res^2 Delta_inf)`,
-- `W_suff^res = Pe_req / (C_res^2 Delta_0)`.
-
-That is the exact Stage-51 refinement of the matched Stage-49 window.
-
-### 3. The profile-sensitive side-bands are audited directly
-
-The scripts now derive the actual side-band widths:
-
-- `delta_fail = W_fail^res - W_fail^match`,
-- `delta_succ = W_suff^res - W_suff^match`,
-
-and verify
-
-- `delta_fail = Pe_req (1 - C_res^2)/(C_res^2 Delta_inf)`,
-- `delta_succ = Pe_req (1 - C_res^2)/(C_res^2 Delta_0)`,
-- `delta_fail / W_fail^match = P_res - 1`,
-- `delta_succ / W_suff^match = P_res - 1`.
-
-This is now a theorem-aligned derivation of the narrow profile-sensitive bands,
-not the earlier algebraic replay.
-
-### 4. The two profile-sensitive regimes are represented explicitly
-
-Both CAS layers define symbolic interior points in the two side-bands:
-
-- a failure-side probe between `W_fail^match` and `W_fail^res`,
-- a success-side probe between `W_suff^match` and `W_suff^res`.
-
-They verify exactly that those probe points sit between the matched edge and the
-resonance edge. This encodes the actual Stage-052 verdict structure:
-
-- the matched three-zone theorem remains the main reduced result,
-- the explicit profile-family refinement only enlarges the boundary regions by
-  the small resonance penalty.
-
-## Verification Outcome
-
-Both hardened scripts passed on `2026-04-21`:
-
-- `python3 research/pde_ledger/scripts/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py`
-- `math -script research/pde_ledger/mathematica/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.wl`
-
-## Verdict
-
-**PASS**
-
-Stage `052` is no longer just checking width tautologies. The dual-CAS audit now
-supports the actual matched-branch window, the exact resonance-corrected
-thresholds, and the two narrow profile-sensitive side-bands that refine the
-reduced verdict. That is strong enough for this synthesis stage.
-
-### Agent: Codex GPT-5 — 2026-04-21 (follow-up review)
-**Verdict:** ISSUE
+### Agent: [Model Name] — [Date]
+**Verdict:** [PASS | MINOR | ISSUE | BLOCK]
 
 **Notes Derivation Review:**
 
-The earlier hardening pass improved Stage `052` materially, but the follow-up
-review is correct that it did not fully close the theorem-structure defect.
-The scripts now pin the exact matched-window width, the resonance-shifted
-thresholds, and the side-band widths, but they still do not assert the regime
-ordering that makes the paper's three-zone verdict falsifiable.
-
 **Script Review:**
-
-I agree with the remaining open issues:
-
-1. the `u_fail` / `u_succ` band-probe block is still definitional
-   `X - X == 0` checking rather than an independent regime assertion;
-2. the two relative-width checks remain universal tautologies once the widths
-   are divided by the matched thresholds; and
-3. the script still never asserts `Delta_0 < Delta_inf` or `C_res^2 < 1`, so
-   a sign flip in the upstream ordering could still pass.
-
-So the scripts are better than the original version, but they still do not meet
-the strict acceptance criterion "verify the actual fail / success /
-profile-sensitive regime structure against the reduced thresholds."
 
 **Issues Found:**
 
-Stage `052` should remain open until the regime ordering is asserted directly
-and at least one verdict check would actually fail under an upstream sign flip.
+**Questions:**
 
-### Agent: Codex GPT-5 — 2026-04-21 (regime-ordering hardening)
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The reopened defect is now actually closed. The scripts no longer treat the
-window ordering as free symbolic data; they parameterize the theorem with
-explicit positive gaps:
+1. **Equation-level correctness.** All verified: eta = kappa_1^2/kappa_0^2 = 2/9 correct. Shape function F(xi,delta) = (9d+11xi)^4/[81(1-xi)(9d^2+18dxi+11xi^2)^2] derived from Stage 17 N_-(x) by substituting D/N constants and factoring N_-(0). F(0,delta) = 1 verified. F→∞ as xi→1 correct. Softening constant C(delta) = (9d+11)^4/[81(9d^2+18d+11)^2] correct. Monotonicity: dF/dxi numerator polynomial has all positive coefficients for d>0, xi>0. Required loading alpha_req = 9 pi^2 A xi(xi+d)/[8(9d+11xi)] verified. Near-onset F = 1 + (1+8/(9d))xi + O(xi^2) confirmed. Near-softening 1-xi_req ~ C(delta)/R_target correct.
 
-- `Delta_inf = Delta_0 + Delta_gap`, with `Delta_gap > 0`,
-- `P_res = 1 + Pres_gap`, hence `C_res^2 = 1/P_res < 1`,
-- and interior band probes written with positive fractions
-  `u = v/(1+v)`.
+2. **Logical flow.** Clean: D/N constants → dimensionless variables → shape function → monotonicity → uniqueness theorem → asymptotics.
 
-That encodes the regime structure the paper claims instead of merely replaying
-width identities.
+3. **Assumptions.** D/N constants from earlier stages. delta > 0 stated.
+
+4. **Completeness.** Three R_target cases handled. Both near-onset and near-softening limits given.
+
+5. **Notation consistent.** New symbols (xi, delta, F, R_target, C) cleanly introduced.
+
+6. **Physical interpretation.** Sound: shape function encodes universal branch geometry.
 
 **Script Review:**
 
-The final Stage `052` audits now do the right checks:
-
-1. they still verify the exact matched and resonance thresholds in closed form;
-2. they now assert `Delta_inf - Delta_0 > 0`, so the matched fail/success
-   thresholds are ordered correctly;
-3. they now assert `1 - C_res^2 > 0` and `P_res - 1 > 0`, so the
-   profile-sensitive widths are genuinely positive;
-4. they replace the old `X - X == 0` band probes with strict inequalities
-   proving the failure-side and success-side interior points lie strictly
-   between the matched edge and the resonance edge.
-
-Those checks would fail under the exact upstream sign flips that the follow-up
-review identified, which is the right acceptance criterion here.
-
-**Verification Outcome:**
-
-Both updated scripts passed on `2026-04-21`:
-
-- `python3 research/pde_ledger/scripts/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py`
-- `math -script research/pde_ledger/mathematica/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.wl`
+**B.1-B.7.** Faithful: F derived from Stage 17 formulas with D/N constants (genuine derivation check, not restatement). Monotonicity derivative checked via sp.diff. Limits verified. Series expansions via sp.series. 8 expect_zero checks, all pass. No tautologies. D/N constants as exact rationals. Minor: xi declared positive=True (excludes xi=0) but F(0) check works via explicit substitution. Near-softening asymptotic not tested (trivial consequence).
 
 **Issues Found:**
 
-None after the regime-ordering hardening pass.
+1. **(MINOR, script)** Near-softening asymptotic (Sec 6.2) not explicitly tested. Trivial consequence of verified C(delta).
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+1. The reduction is algebraically exact. I independently rechecked the substitution of the D/N constants into the Stage 17 normal form and got the same closed form for `F(xi,delta)`, the same monotone derivative, and the same `R_target` normalization ratio.
+2. The endpoint and asymptotic statements are consistent with the closed form: `F(0,delta)=1`, `F -> +infinity` as `xi -> 1^-`, and `lim (1-xi)F = C(delta)` matches the stated softening constant.
+3. The required total loading and support-loading formulas are consistent with the earlier split `alpha_0 = alpha_mix + g_B^2/varpi^2`. The stage is doing the right reduction work and cleanly isolates the uniqueness condition `R_target > 1`.
+
+**Script Review:**
+
+1. The audit script faithfully derives `F`, `dF/dxi`, `alpha_req`, `alpha_crit`, the support-loading formula, and the near-onset series from symbolic definitions. The saved output matches the note exactly on those checks.
+2. I also ran a small independent SymPy verification of the closed-form `F - F_target` identity and the manifestly positive derivative form; both reduced to zero.
+
+**Issues Found:**
+
+- **[MINOR] The branch parameter `xi` is declared `positive=True` even though the note’s stable branch includes the boundary `xi = 0`.** The script still checks `F(0,delta)` explicitly, so the result is not wrong, but the symbol assumptions should be relaxed to `nonnegative=True` or the boundary convention should be stated explicitly.
+
+**Questions:**
+
+None.
+
+---

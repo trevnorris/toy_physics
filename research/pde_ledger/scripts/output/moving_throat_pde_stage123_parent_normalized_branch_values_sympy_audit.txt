@@ -1,0 +1,22 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+# Date: 2026-05-11T12:45:31-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 106 — PARENT-NORMALIZED BRANCH VALUES
+========================================================================================
+Xi_v(r) = -3*sqrt(30)*pi**(3/2)*r/160
+Xi_T(g) = 3*sqrt(30)/(10*sqrt(pi)*g)
+Xi_v law = 0
+Xi_T law = 0
+Xi_v(F1) = -3*sqrt(30)*sqrt(pi)*sqrt(4107 - 100*pi**2)/1600 ≈ -1.0167563328252594644
+Xi_T(nat) = 3*sqrt(30)/(10*sqrt(pi)) ≈ 0.92705808485565499282
+Xi_T(-) = -6*sqrt(30)*sqrt(pi)/(-2*sqrt(4107 - 100*pi**2) + 37*sqrt(3)) ≈ 1.2229751770146391627
+Xi_T(+) = 6*sqrt(30)*sqrt(pi)/(37*sqrt(3) + 2*sqrt(4107 - 100*pi**2)) ≈ 0.33133452164460908424
+
+EXIT_CODE: 0

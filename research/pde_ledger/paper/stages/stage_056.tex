@@ -1,32 +1,41 @@
-\section[Stage 056]{Stage 056: Family--1 Reference-Branch Geometry Map}
+\section[Stage 056]{Stage 056: Transport Origin of Lowest-Lane Source Asymmetry}
 \label{stage:056}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusReduced{} / \StatusExactClosure{} for the declared Family--1 reference geometry.}
-\stagefield{Purpose}{Stage~056 fixes the geometry ratios of the first explicit Family--1 branch.}
-\stagefield{Inputs}{The reference finite-throat geometry selected earlier in the program.}
+\claimstatus{\StatusExactClosure{} for the drift-diffusion zero-flux source family.}
+\stagefield{Purpose}{Stage~056 gives the exponential source profile a physical transport origin rather than treating it as a free shape ansatz.}
+\stagefield{Inputs}{A one-dimensional source density \(\sigma(s)\) on the finite throat and a drift-diffusion current.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage056_family1_geometry_map_sympy_audit_refresh.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage056_family1_geometry_map_sympy_audit_refresh.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage056_family1_geometry_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage056_family1_geometry_map_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage056_transport_source_asymmetry_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage056_transport_source_asymmetry_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The Family--1 reference ratios are
+Take
 \begin{equation}
-\label{eq:app-stage056-family1-ratios}
-\boxed{
-\frac{L}{a}=\frac{37}{20},
+\label{eq:app-stage056-transport}
+\partial_t\sigma+\partial_sJ=0,
 \qquad
-\frac{\ell}{a}=\frac{1}{20}}.
+J=-D_\sigma\partial_s\sigma+v_\sigma\sigma.
 \end{equation}
-Therefore
+The stationary zero-flux equation \(J=0\) gives
 \begin{equation}
-\label{eq:app-stage056-Lambda-eta}
+\label{eq:app-stage056-exp-profile}
+\sigma(s)\propto e^{v_\sigma s/D_\sigma}.
+\end{equation}
+With
+\begin{equation}
+\label{eq:app-stage056-Pe}
 \boxed{
-\Lambda_\ell=\frac{L}{\ell}=37,
-\qquad
-\eta=37}.
+\mathrm{Pe}=\frac{v_\sigma L}{D_\sigma}},
+\end{equation}
+the normalized stationary family is exactly the Stage~053 exponential source with \(\alpha=\mathrm{Pe}\).  Therefore
+\begin{equation}
+\label{eq:app-stage056-Omega-Pe}
+\boxed{
+\Omega_{\mathrm{Pe}}
+=\frac{\pi\mathrm{Pe}(2\mathrm{Pe}e^{\mathrm{Pe}}+\pi)}{(4\mathrm{Pe}^2+\pi^2)(e^{\mathrm{Pe}}-1)}}.
 \end{equation}
 
-\stagefield{Output}{The Family--1 geometry values \eqref{eq:app-stage056-Lambda-eta}.}
-\stagefield{Downstream use}{Stage~057 uses the healing lock to fix \(\chi_s\) and \(\kappa\).}
+\stagefield{Output}{Transport interpretation \eqref{eq:app-stage056-Pe} and physical overlap factor \eqref{eq:app-stage056-Omega-Pe}.}
+\stagefield{Downstream use}{Stage~057 uses \(\mathrm{Pe}\) as the physical transport coordinate of \(\zeta_0\).}
 

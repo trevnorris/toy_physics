@@ -29,19 +29,19 @@ It means the chain currently survives an aggressive effective-model red-team pas
 - The real limitations are scope limitations:
   effective closure, stable-sector assumptions, reduced outgoing-channel representation.
 
-### Mouth law and susceptibility `112`, `120-124`
+### Mouth law and susceptibility `129`, `137-141`
 
 - The mouth boundary layer is standard positive drift-diffusion / Onsager physics.
 - The self-matched susceptibility is a same-layer closure that removes freedom rather than adding a fit knob.
 - No hidden tuning showed up there.
 
-### Self-consistent and co-evolving mouth/core branch `125-127`, `137`, `139-140`
+### Self-consistent and co-evolving mouth/core branch `142-144`, `154`, `156-157`
 
 - This tranche gives some of the strongest anti-tuning evidence in the project.
 - The old canonical point does **not** survive automatically once backreaction is turned on.
 - Exact compensation is recovered only after a substantial renormalization cost, independently reproduced numerically.
 
-### Realization / invariant bridge `108`, `153`, `168-170`
+### Realization / invariant bridge `125`, `170`, `185-187`
 
 - The positivity selection theorem is physically clean inside its one-lane positive-source closure.
 - The grouped outlet map is a sensible linear-response compression on the compensated isotropic branch.

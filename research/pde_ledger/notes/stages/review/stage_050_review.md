@@ -1,12 +1,12 @@
-# Review: Stage 050 — Sech gaussian resonance
+# Review: Stage 050 — Microscopic normalization equation
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage050_sech_gaussian_resonance.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage050_sech_gaussian_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,57 +40,38 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Norms N_ss = 2 w_f, N_pp = w_g sqrt(pi/2) correct. Coherence C^2(r) = I(r)^2/(r sqrt(2pi)) verified. Duality law I(r) = (r/sqrt(pi)) I(pi/r) from Parseval on FT of sech correct. Self-duality gives C^2(r) = C^2(pi/r) — verified by substitution. Stationary point at r_* = sqrt(pi) from chain rule: C^2'(r) = -C^2'(r) → C^2'(r) = 0. Numerical C_res^2 = 0.994418836... consistent with 0.56% deficit.
+1. **Equation-level correctness.** All verified: microscopic abbreviations (A, Delta_0, Chi, beta_0, alpha_0) correctly transcribed from Stage 15. N_- = beta_0 s_-^2/(kappa_0^2 lambda_-) correct. Three-part stability gate: Delta_0 > 0, A > 0, alpha_crit = 9 pi^2 A(A+DK)/[8(11A+9DK)] verified by substituting D/N constants. Monotonicity dN_-/dalpha_0 > 0 from quotient rule + Hellmann-Feynman (all factors positive). Zero-loading onset N_-(0) = beta_0 kappa_0^2/A. Weak-loading first-order coefficient 64(8A+9DK)/(9 pi^4 A^2 DK) verified term by term.
 
-2. **Logical flow.** Excellent: norms → coherence → duality → symmetry → stationary point → numerical evaluation.
+2. **Logical flow.** Clean: abbreviations → normalization equation → stability gate → onset criterion → weak-loading expansion → summary.
 
-3. **Physical interpretation.** Appropriately cautious: benchmark is real and sharp but does not alone prove threshold survival.
+3. **Assumptions.** Three stability conditions explicit. Zero-loading start standard. Local isotropic kernel from Stage 15.
 
-**Script Review:** Mixed symbolic/numeric audit. Duality verified algebraically and numerically (5 sample points at 60-digit mpmath precision, differences < 1e-40). Overlap integral via mp.quad. Monotonicity scan. Stationary point identity. All pass (exit code 0). Strongest script in the batch.
+4. **Completeness.** Gate complete for 2×2 conservative wall problem. Four microscopic "lanes" correctly identified.
 
-**Issues Found:** None.
+5. **Notation consistent** with Stages 13-15. Chi newly introduced, clearly defined.
 
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-1. The exact norms, overlap normalization, and coherence formula are consistent: `N_ss = 2 w_f`, `N_pp = w_g sqrt(pi/2)`, and `C^2(r) = I(r)^2 / [r sqrt(2 pi)]`.
-2. The duality statement `I(r) = (r/sqrt(pi)) I(pi/r)` correctly implies `C^2(r) = C^2(pi/r)`, so the self-dual point `r = sqrt(pi)` is a valid stationary point. The numerical maximum `C_res^2` and penalty `P_res` match the notes.
-3. The interpretation is appropriately constrained: this benchmark nearly saturates the matched branch, but it does not by itself prove threshold survival.
+6. **Physical interpretation.** Sound: onset criterion = necessary condition, four lanes control different aspects.
 
 **Script Review:**
 
-The script faithfully implements the notes at the right level of abstraction. It checks the algebraic duality implication, evaluates the non-elementary overlap numerically, and runs a monotonicity scan showing the sampled constructive branch rises to the self-dual point and then falls. Output matches the saved audit file.
+**B.1-B.7.** Faithful: 5 blocks covering normalization product, monotonicity formula (genuine diff check), alpha_crit simplification, zero-loading onset, weak-loading series, microscopic coupling rewrite with onset stiffness (sp.solve). No bugs. D/N constants as exact symbolic expressions. No tautologies (monotonicity check compares sp.diff output against closed form; onset stiffness uses sp.solve). All pass. Complete coverage.
 
 **Issues Found:** None.
-
-**Questions:** None.
 
 ---
 
-### Agent: GPT-5 Codex — 2026-04-21
-**Verdict:** PASS (HARDENED)
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-The stage theorem is unchanged: the explicit sech-Gaussian benchmark has exact
-duality, an exact stationary point at `r_* = sqrt(pi)`, and the same numerical
-maximum.
+- The microscopic abbreviations are consistent with Stage 15 and the saved audit output: `A`, `Delta_0`, `Chi`, `beta_0`, and `alpha_0` are all carried through correctly.
+- I independently rechecked the key algebraic steps. The zero-loading limit gives `N_-(0) = 8 beta_0/(pi^2 A)`, the closed-form stability threshold reduces to `9 pi^2 A(A + DeltaK)/(8(11A + 9DeltaK))`, and the weak-loading coefficient matches the stated `64 beta_0 (8A + 9DeltaK)/(9 pi^4 A^2 DeltaK)`.
+- The monotonicity identity is also sound: differentiating the selected-branch product gives the exact formula used in the note, and the positivity assumptions on the factors are sufficient for the intended branch-admissibility argument.
+- Physically, the stage does what it claims: it turns the selected-branch normalization problem into one explicit microscopic equation plus a stability gate and an onset test, rather than leaving the source-map factor abstract.
 
-**Script Review:**
+**Issues Found:**
 
-The old stationary-point check was too weak because it reduced to a same-slot
-`F' - F'` identity. The SymPy audit now differentiates the exact overlap
-duality with distinct tangent slots, recovers the self-dual slope relation
-`I'(r_*) = I(r_*)/(2 sqrt(pi))`, and then verifies `dC^2/dr |_(r_*) = 0` from
-that derived relation. The Mathematica mirror now uses a different route: it
-works directly with the symmetry `C^2(r) = C^2(pi/r)`, differentiates that
-abstract functional equation, and solves the resulting self-dual tangent
-equation for the stationary slope. The numerical benchmark / duality /
-monotonicity checks are unchanged. SymPy and Mathematica both rerun
-successfully.
+- **[MINOR] The fully substituted branch-admissibility inequality is not independently checked.** The note states the exact microscopic gate `alpha_0 = g_B^2/varpi^2 + Chi^2/(Omega_U^2 Delta_0) < alpha_crit`, but the audit script only verifies the closed form for `alpha_crit` and the onset rearrangement. That is enough for the algebraic formulae, but it leaves the final inequality as a documented assumption rather than a directly validated microscopic bound.
 
-**Issues Found:** None.
-
-**Questions:** None.
+---

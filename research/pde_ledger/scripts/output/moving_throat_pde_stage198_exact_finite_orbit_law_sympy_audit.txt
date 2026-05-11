@@ -1,0 +1,230 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+# Date: 2026-05-11T12:48:54-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 181 — EXACT FINITE ORBIT LAW FOR THE DEPENDENT TRIPLE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact coherent monomials
+----------------------------------------------------------------------------------------
+Ctr =
+                                 χ₀ ₛₜₐᵣ + 1
+          deltaUₛₜₐᵣ + 1 ⎛ 2    ⎞           
+⎛c_etaU⋅γ⎞               ⎜π ⋅T_U⎟           
+⎜────────⎟              ⋅⎜──────⎟           
+⎝  K_U   ⎠               ⎜     2⎟           
+                         ⎝K_U⋅L ⎠           
+Cnt =
+                 Fₛₜₐᵣ              Eₛₜₐᵣ
+         ⎛     2⎞      ⎛  2    2   ⎞     
+   2     ⎜K_U⋅L ⎟      ⎜ γ ⋅λ_W ⋅σ ⎟     
+λ_W ⋅μ_W⋅⎜──────⎟     ⋅⎜───────────⎟     
+         ⎜ 2    ⎟      ⎝K_U⋅K_W_eff⎠     
+         ⎝π ⋅T_U⎠                        
+─────────────────────────────────────────
+                   2                     
+            K_W_eff ⋅K_η_eff             
+epsEta =
+        2  
+  c_etaU   
+───────────
+K_U⋅K_η_eff
+
+----------------------------------------------------------------------------------------
+II. Exact finite orbit solve for (T_U, K_eta, mu_W)
+----------------------------------------------------------------------------------------
+K_eta^(orbit) =
+         2    
+   c_etaU     
+──────────────
+K_U⋅epsEtaₛₜₐᵣ
+T_U^(orbit) =
+                                       1                deltaUₛₜₐᵣ + 1
+                                  ───────────           ──────────────
+                                  χ₀ ₛₜₐᵣ + 1            χ₀ ₛₜₐᵣ + 1  
+     2 ⎛           deltaUₛₜₐᵣ + 1⎞            ⎛   1    ⎞              
+K_U⋅L ⋅⎝Ctrₛₜₐᵣ⋅K_U              ⎠           ⋅⎜────────⎟              
+                                              ⎝c_etaU⋅γ⎠              
+──────────────────────────────────────────────────────────────────────
+                                   2                                  
+                                  π                                   
+mu_W^(orbit) =
+                                                       Fₛₜₐᵣ              Fₛₜₐ ↪
+                                                    ───────────           ──── ↪
+                                                    χ₀ ₛₜₐᵣ + 1                ↪
+               2       2 ⎛           deltaUₛₜₐᵣ + 1⎞            ⎛   1    ⎞     ↪
+Cntₛₜₐᵣ⋅K_W_eff ⋅c_etaU ⋅⎝Ctrₛₜₐᵣ⋅K_U              ⎠           ⋅⎜────────⎟     ↪
+                                                                ⎝c_etaU⋅γ⎠     ↪
+                                                                               ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                                  2            ↪
+                                                K_U⋅epsEtaₛₜₐᵣ⋅λ_W             ↪
+
+↪ ᵣ⋅(deltaUₛₜₐᵣ + 1)                   
+↪ ──────────────────                   
+↪  χ₀ ₛₜₐᵣ + 1                    Eₛₜₐᵣ
+↪                    ⎛K_U⋅K_W_eff⎞     
+↪                   ⋅⎜───────────⎟     
+↪                    ⎜  2    2   ⎟     
+↪                    ⎝ γ ⋅λ_W ⋅σ ⎠     
+↪ ─────────────────────────────────────
+↪                                      
+↪                                      
+epsEta(Keta_orbit) / epsEta_star - 1 = 0
+Ctr(TU_orbit) / Ctr_star - 1 = 0
+Cnt(muW_orbit,Keta_orbit,TU_orbit) / Cnt_star - 1 = 0
+
+----------------------------------------------------------------------------------------
+III. Exact dependent residual mismatch ratios
+----------------------------------------------------------------------------------------
+Ctr(actual) / Ctr(orbit) =
+   χ₀ ₛₜₐᵣ + 1
+m_T           
+epsEta(actual) / epsEta_star =
+ 1 
+───
+m_K
+Cnt(actual) / Cnt(orbit) =
+   -Fₛₜₐᵣ    
+m_T      ⋅mₘᵤ
+─────────────
+     m_K     
+Ctr ratio - m_T^(1+chi0_*) = 0
+epsEta ratio - 1/m_K = 0
+Cnt ratio - m_mu/(m_K m_T^F_*) = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact logarithmic chart and agreement with the Stage 192 drift map
+----------------------------------------------------------------------------------------
+q_tr =
+τ⋅(χ₀ ₛₜₐᵣ + 1)
+q_nt =
+-Fₛₜₐᵣ⋅τ - κ + μ
+q_eta =
+-κ
+M_* Delta x_mis =
+⎡τ⋅(χ₀ ₛₜₐᵣ + 1) ⎤
+⎢                ⎥
+⎢-Fₛₜₐᵣ⋅τ - κ + μ⎥
+⎢                ⎥
+⎣       -κ       ⎦
+M_* Delta x_mis - (q_tr,q_nt,q_eta) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+V. Exact restoration map
+----------------------------------------------------------------------------------------
+T_U^(restore) =
+                                       1                deltaUₛₜₐᵣ + 1
+                                  ───────────           ──────────────
+                                  χ₀ ₛₜₐᵣ + 1            χ₀ ₛₜₐᵣ + 1  
+     2 ⎛           deltaUₛₜₐᵣ + 1⎞            ⎛   1    ⎞              
+K_U⋅L ⋅⎝Ctrₛₜₐᵣ⋅K_U              ⎠           ⋅⎜────────⎟              
+                                              ⎝c_etaU⋅γ⎠              
+──────────────────────────────────────────────────────────────────────
+                                   2                                  
+                                  π                                   
+K_eta^(restore) =
+         2    
+   c_etaU     
+──────────────
+K_U⋅epsEtaₛₜₐᵣ
+mu_W^(restore) =
+                                                       Fₛₜₐᵣ              Fₛₜₐ ↪
+                                                    ───────────           ──── ↪
+                                                    χ₀ ₛₜₐᵣ + 1                ↪
+               2       2 ⎛           deltaUₛₜₐᵣ + 1⎞            ⎛   1    ⎞     ↪
+Cntₛₜₐᵣ⋅K_W_eff ⋅c_etaU ⋅⎝Ctrₛₜₐᵣ⋅K_U              ⎠           ⋅⎜────────⎟     ↪
+                                                                ⎝c_etaU⋅γ⎠     ↪
+                                                                               ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                                  2            ↪
+                                                K_U⋅epsEtaₛₜₐᵣ⋅λ_W             ↪
+
+↪ ᵣ⋅(deltaUₛₜₐᵣ + 1)                   
+↪ ──────────────────                   
+↪  χ₀ ₛₜₐᵣ + 1                    Eₛₜₐᵣ
+↪                    ⎛K_U⋅K_W_eff⎞     
+↪                   ⋅⎜───────────⎟     
+↪                    ⎜  2    2   ⎟     
+↪                    ⎝ γ ⋅λ_W ⋅σ ⎠     
+↪ ─────────────────────────────────────
+↪                                      
+↪                                      
+T_restore - T_orbit = 0
+K_restore - K_orbit = 0
+mu_restore - mu_orbit = 0
+
+----------------------------------------------------------------------------------------
+VI. Exact inverse chart and finite orbit-lock criterion
+----------------------------------------------------------------------------------------
+tau(q) =
+    qₜᵣ    
+───────────
+χ₀ ₛₜₐᵣ + 1
+kappa(q) =
+-qₑₜₐ
+mu(q) =
+Fₛₜₐᵣ⋅qₜᵣ + (χ₀ ₛₜₐᵣ + 1)⋅(-qₑₜₐ + qₙₜ)
+───────────────────────────────────────
+              χ₀ ₛₜₐᵣ + 1              
+direct/inverse chart consistency for q_tr = 0
+direct/inverse chart consistency for q_eta = 0
+direct/inverse chart consistency for q_nt = 0
+m_T(q) =
+     qₜᵣ    
+ ───────────
+ χ₀ ₛₜₐᵣ + 1
+ℯ           
+m_K(q) =
+ -qₑₜₐ
+ℯ     
+m_mu(q) =
+ Fₛₜₐᵣ⋅qₜᵣ - (χ₀ ₛₜₐᵣ + 1)⋅(qₑₜₐ - qₙₜ)
+ ──────────────────────────────────────
+              χ₀ ₛₜₐᵣ + 1              
+ℯ                                      
+m_T at q=0 - 1 = 0
+m_K at q=0 - 1 = 0
+m_mu at q=0 - 1 = 0
+
+========================================================================================
+STAGE 181 LEDGER
+========================================================================================
+1. The exact coherent monomials are triangular in the dependent microscopic triple
+      (T_U, K_eta^(eff), mu_W),
+   so for fixed free microscopic coordinates and fixed invariant triple
+      (Ctr_*, Cnt_*, epsEta_*),
+   the dependent triple is determined uniquely by
+      K_eta^(orbit) = c_etaU^2 / (K_U epsEta_*),
+      T_U^(orbit)   = (L^2 K_U / pi^2) [Ctr_* / (gamma c_etaU / K_U)^(1+deltaU_*)]^(1/(1+chi0_*)),
+      mu_W^(orbit)  = Cnt_* K_eta^(orbit) K_W^2 / lambda_W^2 * (gamma^2 lambda_W^2 sigma / (K_U K_W))^(-E_*) * (pi^2 T_U^(orbit)/(L^2 K_U))^(F_*).
+2. A candidate branch with the same five free microscopic coordinates is therefore compared to the orbit point by the exact dependent residual mismatch ratios
+      T_U = m_T T_U^(orbit),   K_eta^(eff) = m_K K_eta^(orbit),   mu_W = m_mu mu_W^(orbit).
+3. The invariant ratios are exactly
+      Ctr(actual)/Ctr(orbit) = m_T^(1+chi0_*),
+      epsEta(actual)/epsEta_* = 1/m_K,
+      Cnt(actual)/Cnt(orbit) = m_mu / (m_K m_T^(F_*)).
+4. Writing tau = ln m_T, kappa = ln m_K, mu = ln m_mu, the Packet-B quotient coordinates are exactly
+      q_tr = (1+chi0_*) tau,   q_eta = -kappa,   q_nt = mu - kappa - F_* tau.
+   Applying the Stage 192 drift compiler M_* to a pure dependent mismatch vector reproduces this chart exactly.
+5. Restoration to the same orbit changes only the dependent triple:
+      T_U^(restore)   = T_U exp[-q_tr/(1+chi0_*)],
+      K_eta^(restore) = K_eta exp[q_eta],
+      mu_W^(restore)  = mu_W exp[-q_nt + q_eta - F_* q_tr/(1+chi0_*)].
+6. Therefore the finite orbit-lock condition is exactly
+      m_T = m_K = m_mu = 1  <=>  q_tr = q_nt = q_eta = 0.
+   This is the exact Packet-B complement of the Stage 197 Packet-A finish-line theorem.
+
+EXIT_CODE: 0

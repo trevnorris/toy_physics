@@ -1,14 +1,12 @@
-# Review: Stage 067 — Full reduced pde writeup
+# Review: Stage 067 — Microscopic normalization equation
 
-**Batch:** 10 — Full Reduced PDE Write-Up [CP]
-**Status:** Verified (2× MINOR, 2026-04-03)
-
-**This is a CHECKPOINT stage.** Also verify cross-stage consistency (Protocol C).
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage067_full_reduced_pde_writeup.md`
-- **Script:** None (status/consolidation stage)
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py`
 
 ## Review Checklist
 
@@ -38,41 +36,42 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** MINOR
+**Verdict:** PASS
 
 **Notes Derivation Review:**
 
-**Cross-stage consistency of formulas:** All reproduced formulas exactly match their source stages: coupled operator (Stage 041/065), zeta_phys (Stages 039-040/065), zeta_req (Stages 034-035/065), master residual R_quad (Stage 065), fixed-point law and bracket (Stage 041), Family-1 data (kappa_F1=12321/5, eta_F1=37, Xi_F1=136900 Theta_w) consistent with Stages 056-058/065-066.
+1. **Equation-level correctness.** All verified: microscopic abbreviations (A, Delta_0, Chi, beta_0, alpha_0) correctly transcribed from Stage 15. N_- = beta_0 s_-^2/(kappa_0^2 lambda_-) correct. Three-part stability gate: Delta_0 > 0, A > 0, alpha_crit = 9 pi^2 A(A+DK)/[8(11A+9DK)] verified by substituting D/N constants. Monotonicity dN_-/dalpha_0 > 0 from quotient rule + Hellmann-Feynman (all factors positive). Zero-loading onset N_-(0) = beta_0 kappa_0^2/A. Weak-loading first-order coefficient 64(8A+9DK)/(9 pi^4 A^2 DK) verified term by term.
 
-**Cross-stage consistency of numerical values:** Three zeta values at lambda_mu=1 match Stage 066 digit-for-digit.
+2. **Logical flow.** Clean: abbreviations → normalization equation → stability gate → onset criterion → weak-loading expansion → summary.
 
-**Structural faithfulness:** Claim that support/source side is "no longer the serious unresolved issue" well-supported by Stages 061/066. Identification of outgoing quadrupole normalization as remaining gap consistent with Stages 061/065/066. No unsupported claims. No silently papered-over issues.
+3. **Assumptions.** Three stability conditions explicit. Zero-loading start standard. Local isotropic kernel from Stage 15.
 
-**Issues Found:**
+4. **Completeness.** Gate complete for 2×2 conservative wall problem. Four microscopic "lanes" correctly identified.
 
-1. **(MINOR)** Omega_Pe used but not defined in Section 1.3. The explicit formula from Stage 039/065 should be included or cited.
+5. **Notation consistent** with Stages 13-15. Chi newly introduced, clearly defined.
 
-2. **(MINOR)** Conservative-floor (J) branch values mentioned in prose but only shell-weighted (chi) values actually presented. Either narrow prose or include (J) window.
-
-3. **(MINOR)** No specific stage citations — only "Stages 1-66" collectively. Individual provenance for each major result would strengthen traceability.
-
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** MINOR
-
-**Notes Derivation Review:**
-
-1. The consolidated formulas are consistent with the reviewed source stages. I spot-checked the Stage-41 fixed-point law and brackets, the Stage-65 residual definition and `Q` inversion, and the Stage-66 Family-1 values and `zeta` window quoted here; they line up.
-2. The structural summary is also accurate: by this point the support/source side has been reduced to an operator-selected scalar supply, and the remaining unresolved object is the outgoing quadrupole-normalization branch that fixes `Pi_tr`, `C_mix`, and `eps_blk`.
-3. As a checkpoint write-up skeleton, though, this note is still a summary layer rather than a self-contained theorem statement, so the main weaknesses are presentation and provenance rather than algebra.
+6. **Physical interpretation.** Sound: onset criterion = necessary condition, four lanes control different aspects.
 
 **Script Review:**
 
-No script is expected for this consolidation stage.
+**B.1-B.7.** Faithful: 5 blocks covering normalization product, monotonicity formula (genuine diff check), alpha_crit simplification, zero-loading onset, weak-loading series, microscopic coupling rewrite with onset stiffness (sp.solve). No bugs. D/N constants as exact symbolic expressions. No tautologies (monotonicity check compares sp.diff output against closed form; onset stiffness uses sp.solve). All pass. Complete coverage.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+- The microscopic abbreviations are consistent with Stage 15 and the saved audit output: `A`, `Delta_0`, `Chi`, `beta_0`, and `alpha_0` are all carried through correctly.
+- I independently rechecked the key algebraic steps. The zero-loading limit gives `N_-(0) = 8 beta_0/(pi^2 A)`, the closed-form stability threshold reduces to `9 pi^2 A(A + DeltaK)/(8(11A + 9DeltaK))`, and the weak-loading coefficient matches the stated `64 beta_0 (8A + 9DeltaK)/(9 pi^4 A^2 DeltaK)`.
+- The monotonicity identity is also sound: differentiating the selected-branch product gives the exact formula used in the note, and the positivity assumptions on the factors are sufficient for the intended branch-admissibility argument.
+- Physically, the stage does what it claims: it turns the selected-branch normalization problem into one explicit microscopic equation plus a stability gate and an onset test, rather than leaving the source-map factor abstract.
 
 **Issues Found:**
 
-1. **(MINOR)** `Omega_Pe` is used in Section 1.3 without giving its explicit formula or an immediate stage citation, even though the checkpoint is supposed to function as a write-up skeleton.
-2. **(MINOR)** Section 3 says both the shell-weighted and conservative-floor Family-1 branches produce direct operator windows, but the note only prints the shell-weighted numeric window. The prose should be narrowed or the missing numbers added.
-3. **(MINOR)** The checkpoint still lacks fine-grained provenance. Reproduced formulas are correct, but without per-result stage citations the review trail is weaker than it should be at a checkpoint.
+- **[MINOR] The fully substituted branch-admissibility inequality is not independently checked.** The note states the exact microscopic gate `alpha_0 = g_B^2/varpi^2 + Chi^2/(Omega_U^2 Delta_0) < alpha_crit`, but the audit script only verifies the closed form for `alpha_crit` and the onset rearrangement. That is enough for the algebraic formulae, but it leaves the final inequality as a documented assumption rather than a directly validated microscopic bound.
 
 ---

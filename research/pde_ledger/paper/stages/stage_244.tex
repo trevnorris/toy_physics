@@ -1,0 +1,122 @@
+\section{Stage 244: Selected leakage and scalar-photon work compiler}
+\label{sec:app-part08:selected-leakage-and-scalar-photon-work-compiler}
+\label{stage:244}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 244 takes the declared \(J^w\neq0\) lane and attaches it to the selected-support packet.  The parent theory supplies both exact identities needed for the compiler: projected continuity gives \cref{eq:app-part08-stage243-leakage-identity}, and the localized Maxwell energy ledger gives
+\begin{equation}
+\label{eq:app-part08-stage244-em-energy}
+\partial_tu_{\rm EM}+\partial_AS_{\rm EM}^{A}
+=
+-J^AE_A
+=-(J^aE_a+J^wE_w).
+\end{equation}
+Thus \(S_{\rm leak}\) and \(J^wE_w\) are legitimate reduced observables once the mixed lane is opened.
+
+\subsection{Gaussian one-mode leakage law}
+\label{subsec:app-part08-stage244-gaussian-leakage}
+
+The Stage 244 one-mode closure uses
+\begin{equation}
+\label{eq:app-part08-stage244-wlambda}
+W_\lambda(w)=\frac{e^{-w^2/\lambda^2}}{\lambda\sqrt\pi},
+\qquad
+\phi_\lambda(w)=\frac{2w}{\sqrt\pi\lambda^3}e^{-w^2/\lambda^2},
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-part08-stage244-ew-jw}
+E_w(w;r)=-\mathcal E_0(r)\phi_\lambda(w),
+\qquad
+j^w(w;r)=\mu_w\rho_0E_w(w;r),
+\qquad
+J^w=qj^w.
+\end{equation}
+The exact projected leakage is
+\begin{equation}
+\label{eq:app-part08-stage244-sleak-e0}
+S_{\rm leak}(r)
+=
+\frac{\sqrt2\mu_w\rho_0}{2\sqrt\pi\lambda^3}\mathcal E_0(r).
+\end{equation}
+The exact one-mode bulk work scalar is
+\begin{equation}
+\label{eq:app-part08-stage244-bulk-work}
+\mathcal W_w^{\rm bulk}(r)
+=
+q\int j^wE_w\,dw
+=
+\frac{\sqrt2\mu_wq\rho_0}{2\sqrt\pi\lambda^3}\mathcal E_0(r)^2,
+\end{equation}
+so
+\begin{equation}
+\label{eq:app-part08-stage244-work-leak-relation}
+\mathcal W_w^{\rm bulk}(r)=q\mathcal E_0(r)S_{\rm leak}(r).
+\end{equation}
+The Session-I scalar-photon work variable is the rescaled scalar
+\begin{equation}
+\label{eq:app-part08-stage244-session-work}
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{2\mu_wq\rho_0}{\lambda^2}\mathcal E_0(r)^2
+=
+2\sqrt{2\pi}\lambda\,\mathcal W_w^{\rm bulk}(r),
+\end{equation}
+or equivalently
+\begin{equation}
+\label{eq:app-part08-stage244-quadratic-law}
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{4\pi q\lambda^4}{\mu_w\rho_0}S_{\rm leak}(r)^2.
+\end{equation}
+
+\subsection{Selected-support pullback}
+\label{subsec:app-part08-stage244-selected-pullback}
+
+The selected-support demand from Stage 242 is
+\begin{equation}
+\label{eq:app-part08-stage244-pitr}
+\Pi_{\rm tr}
+=
+\frac43C_{\rm mix}
+=
+\frac{32\Lambda(1-
+\epsilon)}{3\pi^2}
+=
+\frac{16}{\pi^2}\Lambda\varrho,
+\qquad
+\varrho=\frac23(1-\epsilon).
+\end{equation}
+Stage 244 chooses the simplest amplitude pullback
+\begin{equation}
+\label{eq:app-part08-stage244-e0-pullback}
+\mathcal E_0(r)=\eta_{\rm leak}\Pi_{\rm tr}(r).
+\end{equation}
+Substitution gives the selected-branch leakage law \cref{eq:app-part08-main-leak-support} and the selected-branch work law \cref{eq:app-part08-main-work-support}.  In the \((\Lambda,\epsilon)\) notation the same work law is
+\begin{equation}
+\label{eq:app-part08-stage244-work-epsilon}
+\mathcal W_w^{\rm sess}(r)
+=
+\frac{2048\eta_{\rm leak}^{2}\mu_wq\rho_0}{9\pi^4\lambda^2}
+\Lambda(r)^2(1-\epsilon(r))^2.
+\end{equation}
+The formulas depend only on selected-support variables.  Therefore,
+\begin{equation}
+\label{eq:app-part08-stage244-support-orbit-split}
+\partial_{R_{\rm tr}}S_{\rm leak}
+=
+\partial_{R_{\rm target}}S_{\rm leak}
+=
+\partial_{\epsilon_\eta}S_{\rm leak}=0,
+\end{equation}
+and the same statement holds for both work scalars within the declared pullback.
+
+The orientation parity is exact:
+\begin{equation}
+\label{eq:app-part08-stage244-parity}
+S_{\rm leak}(-\eta_{\rm leak})=-S_{\rm leak}(\eta_{\rm leak}),
+\qquad
+\mathcal W_w(-\eta_{\rm leak})=\mathcal W_w(\eta_{\rm leak}).
+\end{equation}
+Thus the leakage sign is orientation-sensitive, but the exported-work magnitude is not.

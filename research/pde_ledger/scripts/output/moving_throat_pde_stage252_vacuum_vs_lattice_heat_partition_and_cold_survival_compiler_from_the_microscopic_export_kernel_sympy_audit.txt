@@ -1,0 +1,82 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+# Date: 2026-05-11T12:52:52-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1. Exact channel-resolved energy ledger
+========================================================================================
+E_vac                 = Gamma3_vac*I2 + Gamma5_vac*I3
+E_lat                 = Gamma3_lat*I2 + Gamma5_lat*I3
+E_tot                 = Gamma3_lat*I2 + Gamma3_vac*I2 + Gamma5_lat*I3 + Gamma5_vac*I3
+f_vac(r_V)            = (Gamma3_vac + Gamma5_vac*r_V)/(Gamma3_lat + Gamma3_vac + Gamma5_lat*r_V + Gamma5_vac*r_V)
+f_lat(r_V)            = (Gamma3_lat + Gamma5_lat*r_V)/(Gamma3_lat + Gamma3_vac + Gamma5_lat*r_V + Gamma5_vac*r_V)
+f_vac + f_lat         = 1
+
+========================================================================================
+2. Exact speed-drift law and endpoint limits
+========================================================================================
+d f_lat / d r_V       = -Gamma3_lat*Gamma5_vac/(Gamma3_lat + Gamma3_vac + Gamma5_lat*r_V + Gamma5_vac*r_V)**2 + Gamma3_vac*Gamma5_lat/(Gamma3_lat + Gamma3_vac + Gamma5_lat*r_V + Gamma5_vac*r_V)**2
+endpoint r_V -> 0     = Gamma3_lat/(Gamma3_lat + Gamma3_vac)
+endpoint r_V -> oo    = Gamma5_lat/(Gamma5_lat + Gamma5_vac)
+
+========================================================================================
+3. Exponential-event specialization
+========================================================================================
+I1_exp                = V_in**2*s*(exp(2*T*s) - 1)/2
+I2_exp                = V_in**2*s**3*(exp(2*T*s) - 1)/2
+I3_exp                = V_in**2*s**5*(exp(2*T*s) - 1)/2
+I3_exp / I2_exp       = s**2
+gamma_vac^eq(s)       = s**2*(Gamma3_vac + Gamma5_vac*s**2)
+gamma_lat^eq(s)       = s**2*(Gamma3_lat + Gamma5_lat*s**2)
+gamma_eff^eq(s)       = s**2*(Gamma3_lat + Gamma3_vac + s**2*(Gamma5_lat + Gamma5_vac))
+
+========================================================================================
+4. Safe-edge compiler
+========================================================================================
+safe equality         = Eq(s_c**5*(Gamma5_lat + Gamma5_vac) + s_c**3*(Gamma3_lat + Gamma3_vac), mu_eta*(s_0**2 - s_c**2))
+I1_safe               = -V_in**2*s_c*(1 - exp(2))/2
+E_safe before reduce  = -V_in**2*s_c**3*(1 - exp(2))*(Gamma3_lat + Gamma3_vac + s_c**2*(Gamma5_lat + Gamma5_vac))/2
+E_safe reduced        = -V_in**2*mu_eta*(1 - exp(2))*(s_0**2 - s_c**2)/2
+gamma_eq_safe         = mu_eta*(s_0**2 - s_c**2)/s_c
+f_vac(s_c)            = (Gamma3_vac + Gamma5_vac*s_c**2)/(Gamma3_lat + Gamma3_vac + Gamma5_lat*s_c**2 + Gamma5_vac*s_c**2)
+f_lat(s_c)            = (Gamma3_lat + Gamma5_lat*s_c**2)/(Gamma3_lat + Gamma3_vac + Gamma5_lat*s_c**2 + Gamma5_vac*s_c**2)
+
+========================================================================================
+5. Session-IV 3:1 split as microscopic coefficient surface
+========================================================================================
+split surface         = Gamma3_lat - 3*Gamma3_vac + Gamma5_lat*s_c**2 - 3*Gamma5_vac*s_c**2
+speed-independent phi = phi
+
+========================================================================================
+6. Session-IV benchmark specialization
+========================================================================================
+s_c                   = 0.5489386551062235
+s_c^2                 = 0.3013336470698294
+gamma_eff^eq,safe     = 87.26925234614843
+gamma_vac^eq,safe     = 21.81731308653711
+gamma_lat^eq,safe     = 65.45193925961132
+safe energy prefactor = 153.03535490769042
+V_in match            = 0.008217712598897912
+E_vac benchmark       = 0.00258365
+E_lat benchmark       = 0.0077509499999999995
+
+========================================================================================
+Stage 252 audit result
+========================================================================================
+All symbolic and numerical checks passed.
+Verified objects:
+- exact vacuum/lattice exported-energy ledger from the Stage 251 kernel,
+- one-scalar partition quotient r_V = I3/I2,
+- exact speed-drift law of the lattice fraction,
+- exponential-event specialization r_V = s^2,
+- event-equivalent damping rates gamma_vac^eq and gamma_lat^eq,
+- exact safe-edge exported-energy theorem,
+- the microscopic coefficient surface corresponding to the Session-IV 3:1 split,
+- and the Session-IV benchmark calibration check.
+
+EXIT_CODE: 0

@@ -1,41 +1,56 @@
-\section[Stage 039]{Stage 039: Transport Origin of Lowest-Lane Source Asymmetry}
+\section[Stage 039]{Stage 039: First Non-Flat \texorpdfstring{$U$}{U} Doublet and Direction Splitting}
 \label{stage:039}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the drift-diffusion zero-flux source family.}
-\stagefield{Purpose}{Stage~039 gives the exponential source profile a physical transport origin rather than treating it as a free shape ansatz.}
-\stagefield{Inputs}{A one-dimensional source density \(\sigma(s)\) on the finite throat and a drift-diffusion current.}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} inside the first split--\(U\) continuum extension.}
+\stagefield{Purpose}{Stage~039 tests the simplifying assumption that the source, support, and loading directions are collinear.  The first non-flat \(U\) doublet preserves scalar placement but generically breaks direction collinearity.}
+\stagefield{Inputs}{The Stage~038 flat--\(U\) placement map and the first axial excitation of the internal \(U\) sector.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage039_transport_source_asymmetry_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage039_transport_source_asymmetry_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage039_transport_source_asymmetry_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage039_transport_source_asymmetry_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage039_split_u_sector_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage039_split_u_sector_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Take
+Introduce
 \begin{equation}
-\label{eq:app-stage039-transport}
-\partial_t\sigma+\partial_sJ=0,
+\label{eq:app-stage039-U-doublet}
+K_{U0}=K_U,
 \qquad
-J=-D_\sigma\partial_s\sigma+v_\sigma\sigma.
+K_{U1}=K_U(1+\delta_U),
+\qquad
+\delta_U=\frac{\pi^2T_U}{L^2K_U}.
 \end{equation}
-The stationary zero-flux equation \(J=0\) gives
+The scalar placement data become
 \begin{equation}
-\label{eq:app-stage039-exp-profile}
-\sigma(s)\propto e^{v_\sigma s/D_\sigma}.
-\end{equation}
-With
-\begin{equation}
-\label{eq:app-stage039-Pe}
+\label{eq:app-stage039-split-placement}
 \boxed{
-\mathrm{Pe}=\frac{v_\sigma L}{D_\sigma}},
+\delta_{\rm split}
+=\frac{\delta_0+\epsilon_\eta\delta_U/(1+\delta_U)}{1-\epsilon_\eta},
+\qquad
+\epsilon_{W,{\rm split}}
+=\epsilon_W\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right]}.
 \end{equation}
-the normalized stationary family is exactly the Stage~036 exponential source with \(\alpha=\mathrm{Pe}\).  Therefore
+The directional deformation is carried by
 \begin{equation}
-\label{eq:app-stage039-Omega-Pe}
+\label{eq:app-stage039-RU}
 \boxed{
-\Omega_{\mathrm{Pe}}
-=\frac{\pi\mathrm{Pe}(2\mathrm{Pe}e^{\mathrm{Pe}}+\pi)}{(4\mathrm{Pe}^2+\pi^2)(e^{\mathrm{Pe}}-1)}}.
+R_U=\frac{1+\rho_0/(1+\delta_U)}{1+\rho_0}}.
 \end{equation}
+The exact direction-splitting invariant is
+\begin{equation}
+\label{eq:app-stage039-Ddir}
+\boxed{
+D_{\rm dir}=-\frac{\kappa_0\kappa_1g_W\rho_0\delta_U}{1+\delta_U}}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage039-collinearity}
+\boxed{
+D_{\rm dir}=0
+\iff
+\delta_U=0\ \text{or}\ \rho_0=0}.
+\end{equation}
+On the constructive branch, \(\rho_0>0\) and \(\delta_U>0\) imply a genuine direction split.
 
-\stagefield{Output}{Transport interpretation \eqref{eq:app-stage039-Pe} and physical overlap factor \eqref{eq:app-stage039-Omega-Pe}.}
-\stagefield{Downstream use}{Stage~040 uses \(\mathrm{Pe}\) as the physical transport coordinate of \(\zeta_0\).}
+\stagefield{Output}{The split placement law \eqref{eq:app-stage039-split-placement}, the direction factor \eqref{eq:app-stage039-RU}, and the collinearity theorem \eqref{eq:app-stage039-collinearity}.}
+\stagefield{Downstream use}{Stage~040 packages this direction split into generalized selected-branch functions; Stages~044--046 test whether the resulting branch can still satisfy the target.}
 

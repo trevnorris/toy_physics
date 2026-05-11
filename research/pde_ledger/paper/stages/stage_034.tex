@@ -1,35 +1,105 @@
-\section[Stage 034]{Stage 034: Exact Lowest-Twin Sufficiency Criterion on the Tracking Branch}
+\section[Stage 034]{Stage 034: Softening-Depth Normal Form}
 \label{stage:034}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the branch-product form.}
-\stagefield{Purpose}{Stage~034 expresses the lowest-twin support test in the same branch-product variables used by the continuum placement map.}
-\stagefield{Inputs}{The tracking-branch product \(\Pi_{\rm tr}=F_{\rm tr}G_{\rm tr}\) and \(C_{\rm mix}=8\Lambda(1-\epsilon)/\pi^2\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the rank-one selected D/N branch.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage034_lowest_twin_criterion_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage034_lowest_twin_criterion_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage034_lowest_twin_criterion_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage034_lowest_twin_criterion_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~034 eliminates the selected eigenvector variables by introducing a scalar softening depth \(x=A-\lambda_-\).  In this variable, the total loading, selected source overlap, invariant normalization product, and required support contribution all become explicit rational functions.}
+
+\stagefield{Inputs}{The inputs are the rank-one two-level secular equation and the selected product \(N_-\) from Stage~032.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage034_softening_depth_normal_form_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage034_softening_depth_normal_form_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
+\paragraph{1. Softening-depth variable and secular equation.}
 Define
 \begin{equation}
-\label{eq:app-stage034-Cmix}
-C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+\label{eq:app-stage034-x}
+\boxed{x:=A-\lambda_-}.
 \end{equation}
-The required enhancement is \(S_{\rm req}=\Pi_{\rm tr}/C_{\rm mix}\).  Since the lowest twin gives \(S_0=2\), it is sufficient iff
+On the stable branch,
 \begin{equation}
-\label{eq:app-stage034-twin-criterion}
-\boxed{
-\Pi_{\rm tr}\leq2C_{\rm mix}
-=\frac{16\Lambda(1-\epsilon)}{\pi^2}}.
-\end{equation}
-Equivalently, the threshold scales can be written as
-\begin{equation}
-\label{eq:app-stage034-Lambda-threshold}
-\Lambda_{\rm twin,req}=\frac{\pi^2}{16(1-\epsilon)}\Pi_{\rm tr},
+0\leq x<A,
 \qquad
-M_{\rm mix}^{({\rm twin,req})}=\frac{G_{\rm tr}}{2}.
+\lambda_-=A-x.
+\end{equation}
+The rank-one secular equation is
+\begin{equation}
+\label{eq:app-stage034-secular}
+1=\alpha_0\left(\frac{\kappa_0^2}{x}+\frac{\kappa_1^2}{x+\Delta K_{\rm ax}}\right).
+\end{equation}
+Solving for total loading gives
+\begin{equation}
+\label{eq:app-stage034-alpha-x}
+\boxed{
+\alpha_0(x)=
+\frac{x(x+\Delta K_{\rm ax})}{\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x}}.
 \end{equation}
 
-\stagefield{Output}{The lowest-twin branch-product criterion \eqref{eq:app-stage034-twin-criterion}.}
-\stagefield{Downstream use}{Stage~035 uses this criterion to split the support problem into mixed-only, lowest-twin, and non-twin regimes.}
+\paragraph{2. Selected overlap and invariant product.}
+The selected overlap can be written as \(s_-=dx/d\alpha_0\), giving
+\begin{equation}
+\label{eq:app-stage034-s-x}
+\boxed{
+s_-(x)=
+\frac{\left[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\right]^2}
+{\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2}}.
+\end{equation}
+The invariant selected product is
+\begin{equation}
+\label{eq:app-stage034-N-x}
+\boxed{
+N_-(x)=
+\frac{\beta_0\left[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\right]^4}
+{\kappa_0^2(A-x)\left[\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2\right]^2}}.
+\end{equation}
+The target is
+\begin{equation}
+\label{eq:app-stage034-N-target}
+\boxed{
+N_-(x)=N_Q^{\rm target},
+\qquad
+0\leq x<A}.
+\end{equation}
+
+\paragraph{3. Monotone loading and required support.}
+Differentiating \eqref{eq:app-stage034-alpha-x} gives
+\begin{equation}
+\label{eq:app-stage034-dalpha-dx}
+\boxed{
+\frac{d\alpha_0}{dx}=
+\frac{\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2}
+{\left[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\right]^2}>0}.
+\end{equation}
+Thus \(x\) is a one-to-one stable branch coordinate.  Splitting
+\begin{equation}
+\alpha_0=\frac{g_B^2}{\varpi^2}+\alpha_{\rm mix},
+\qquad
+\alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0},
+\end{equation}
+the required support loading is
+\begin{equation}
+\label{eq:app-stage034-support-req}
+\boxed{
+\frac{g_{B,{\rm req}}^2}{\varpi^2}
+=
+\frac{x(x+\Delta K_{\rm ax})}{\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x}
+-
+\frac{\mathcal X^2}{\Omega_U^2\Delta_0}}.
+\end{equation}
+The nonnegativity of this expression is the support-feasibility condition.
+
+\stagefield{Output}{Stage~034 outputs the softening-depth variable \eqref{eq:app-stage034-x}, the loading law \eqref{eq:app-stage034-alpha-x}, the selected overlap \eqref{eq:app-stage034-s-x}, the normalization product \eqref{eq:app-stage034-N-x}, and the required support formula \eqref{eq:app-stage034-support-req}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The secular equation follows from the rank-one determinant lemma.
+\item The identity \(s_-=dx/d\alpha_0\) follows because \(x=A-\lambda_-\) and \(s_-=-d\lambda_-/d\alpha_0\).
+\item \(d\alpha_0/dx>0\) proves that \(x\) is a good branch coordinate.
+\item The support requirement is obtained by subtracting the mixed baseline from the required total load.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~035 introduces \(\xi=x/A\) and \(\delta=\Delta K_{\rm ax}/A\), producing the dimensionless normalization shape function \(F\).  Stage~036 uses the same loading law to define \(G\).}
+
+\clearpage
 

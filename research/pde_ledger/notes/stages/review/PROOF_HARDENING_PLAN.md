@@ -7,10 +7,10 @@ review and the complete SymPy/Mathematica dual-audit buildout.
 
 The current state is strong:
 
-- derivation review is complete through Stage `170`,
+- derivation review is complete through Stage `187`,
 - the SymPy audit stack has been reviewed and cleaned up,
 - the Mathematica verification layer now covers every SymPy stage audit,
-- the current Mathematica summary is `150/150 PASS`.
+- the current Mathematica summary is `167/167 PASS`.
 
 That does **not** mean the proof is beyond further improvement.
 It means the dominant remaining risk is no longer algebra-engine failure.
@@ -30,7 +30,7 @@ This plan is for hardening against those risks.
 
 As of `2026-04-04`:
 
-- review coverage: foundations plus Stages `001-170`
+- review coverage: foundations plus Stages `001-187`
 - SymPy audit coverage: complete for all existing audit stages
 - Mathematica audit coverage: complete for all SymPy audit stages
 - ledger status: no known blocker in the present derivation chain
@@ -199,7 +199,7 @@ Stress-test the critical formulas at representative and near-boundary parameter 
 
 ### Deliverables
 
-- `scripts/moving_throat/numerical/` for SymPy/Python spot checks
+- `research/pde_ledger/scripts/numerical/` for Python numerical spot checks
 - `research/pde_ledger/mathematica/numerical/` for Mathematica spot checks
 - `notes/moving_throat/review/NUMERICAL_STRESS_PLAN.md`
 
@@ -222,18 +222,18 @@ This is the best remaining defense against branch and boundary mistakes.
 ## 5. Choke-Point Re-Derivation
 
 ### Goal
-Do not re-review all `170` stages uniformly again. Re-derive the load-bearing joints from scratch enough to test whether the global chain would fail if one of them were wrong.
+Do not re-review all `187` stages uniformly again. Re-derive the load-bearing joints from scratch enough to test whether the global chain would fail if one of them were wrong.
 
 ### Priority stages
 
 - `003-004`
-- `020-031`
-- `041`
-- `089`
-- `108`
-- `125-140`
-- `153`
-- `168-170`
+- `037-048`
+- `058`
+- `106`
+- `125`
+- `142-157`
+- `170`
+- `185-187`
 
 ### What "re-derive" means here
 
@@ -296,23 +296,23 @@ Re-check the non-script status stages specifically as theorem-summary documents 
 
 ### Focus stages
 
-- `032`
-- `067`
-- `073`
-- `076`
-- `079`
-- `086`
+- `049`
+- `084`
+- `090`
+- `093`
 - `096`
-- `100`
 - `103`
-- `111`
-- `115`
-- `119`
-- `124`
+- `113`
+- `117`
+- `120`
 - `128`
 - `132`
 - `136`
-- `140`
+- `141`
+- `145`
+- `149`
+- `153`
+- `157`
 
 ### What to check
 
@@ -360,13 +360,13 @@ If we want to start immediately with the highest-value work, the first batch sho
 1. Build `ASSUMPTION_LEDGER.md`
    Start with stages:
    - `003-004`
-   - `020-031`
-   - `041`
-   - `089`
-   - `108`
-   - `125-140`
-   - `153`
-   - `168-170`
+   - `037-048`
+   - `058`
+   - `106`
+   - `125`
+   - `142-157`
+   - `170`
+   - `185-187`
 
 2. Build `DEPENDENCY_LEDGER.md`
    At minimum for the same choke-point block.

@@ -35,7 +35,7 @@ Those distinctions should stay visible in the note prose.
 
 ## 2. Continuum/coherent support chain
 
-### Stages `020-027`
+### Stages `037-044`
 
 - Keep “exact” attached to the reduced continuum operator and selected-branch
   formulas, not to the completed PDE.
@@ -45,7 +45,7 @@ Those distinctions should stay visible in the note prose.
 - Avoid wording that suggests the PDE has already been proved to realize that
   reduced branch.
 
-### Stage `028`
+### Stage `045`
 
 - Keep the main theorem explicitly tied to the coherent local-kernel hypothesis.
 - Prefer:
@@ -55,19 +55,19 @@ Those distinctions should stay visible in the note prose.
   `the moving-throat PDE lands exactly on tracking`, unless the PDE hypothesis
   is restated right there.
 
-### Stage `029`
+### Stage `046`
 
 - Keep the ordering theorem on the constructive split-`U` tracking branch.
 - Avoid global comparisons that suppress the domain
   `0 < R < 1`, `0 < xi < 1`, `delta > 0`.
 
-### Stage `030`
+### Stage `047`
 
 - Keep `R_target` independence of `zeta` tied to the coherent tracking branch.
 - Avoid wording that makes this independence sound generic for the unrestricted
   rank-2 closure.
 
-### Stage `031`
+### Stage `048`
 
 - Keep the compensation theorem as a reduced-level existence statement.
 - Preferred wording:
@@ -77,7 +77,7 @@ Those distinctions should stay visible in the note prose.
 
 ## 3. Coupled source/support fixed point
 
-### Stage `041`
+### Stage `058`
 
 - Phrase the main theorem as existence plus interval bounds, with a small-`Xi`
   asymptotic.
@@ -86,7 +86,7 @@ Those distinctions should stay visible in the note prose.
 
 ## 4. Canonical outgoing closure
 
-### Stage `089`
+### Stage `106`
 
 - Keep the GR-target statement conditional on the canonical outgoing DtN branch
   and the strict point-particle limit.
@@ -95,14 +95,14 @@ Those distinctions should stay visible in the note prose.
 
 ## 5. Positive-source and explicit Family-1 mouth closure
 
-### Stage `108`
+### Stage `125`
 
 - Keep the positive-source theorem tied to a positive normalized localized mouth
   source on the first D/N interval.
 - Avoid reading the exclusion of `g_+^F1` as a theorem for arbitrary sign-changing
   or nonlocalized mouth data.
 
-### Stages `125-127`
+### Stages `142-144`
 
 - Keep “unique regular branch” explicitly inside the explicit Family-1
   positive-mouth closure.
@@ -110,49 +110,49 @@ Those distinctions should stay visible in the note prose.
   `inside the explicit exponential positive-mouth family`.
 - Avoid shorthand that sounds like the full PDE has a unique mouth branch.
 
-### Stage `128`
+### Stage `145`
 
 - Keep the stage marked as consolidation/status, not as a new theorem.
 
 ## 6. Mouth deformations and rigidity
 
-### Stages `129-130`
+### Stages `146-147`
 
 - Keep all deformation formulas marked first-order or perturbative.
 - Avoid the word `exact` for `delta Pi`, `delta S_q`, or the rigidity kernel
   unless explicitly qualified as `exact at first order`.
 
-### Stage `131`
+### Stage `148`
 
 - Keep the two-family evaluation as evidence/example, not as exhaustive
   classification of positive mouth deformations.
 
-### Stage `132`
+### Stage `149`
 
 - Keep the stage marked as status/consolidation.
 - Avoid implying that mouth rigidity has been proved for all positive profiles.
 
-### Stages `133-135`
+### Stages `150-152`
 
-- Keep Stage `133` exact only for the explicit canonical branch data.
-- Keep Stages `134-135` marked as first-order and mouth-only.
-- Keep the Stage-`135` Picard update labeled as a consistency check or one-step
+- Keep Stage `150` exact only for the explicit canonical branch data.
+- Keep Stages `151-152` marked as first-order and mouth-only.
+- Keep the Stage-`152` Picard update labeled as a consistency check or one-step
   nonlinear probe, not a convergence theorem.
 
-### Stage `136`
+### Stage `153`
 
 - Keep the stage marked as status.
 
 ## 7. Co-evolving core-mouth fixed point
 
-### Stage `137`
+### Stage `154`
 
 - Keep the co-evolving map exact, but distinguish that the defect transport law
   is first-order near the canonical branch.
 - Avoid wording that sounds like the compensated branch has already been solved
   again at this stage.
 
-### Stage `138`
+### Stage `155`
 
 - Keep the fixed-point statement tied to the frozen-traction slice
   `Sigma0 = Sigma0^*`.
@@ -160,7 +160,7 @@ Those distinctions should stay visible in the note prose.
   `the solved positive fixed point on the analyzed branch/window is unique`.
 - Avoid unqualified global uniqueness claims unless separately proved.
 
-### Stage `139`
+### Stage `156`
 
 - Keep the condition `g_fp(Sigma0) = g_*` exact, but keep the realized branch
   values explicitly numerical.
@@ -169,21 +169,21 @@ Those distinctions should stay visible in the note prose.
   branch at ...`.
 - Avoid language implying a closed-form formula for the renormalized point.
 
-### Stage `140`
+### Stage `157`
 
 - Keep the stage marked as status/consolidation.
-- Make sure quoted summary numerics match `138-139` exactly.
+- Make sure quoted summary numerics match `155-156` exactly.
 
 ## 8. Linear grouped anisotropy and microscopic orbit structure
 
-### Stage `153`
+### Stage `170`
 
 - Keep the result as a linear grouped outlet map on the compensated isotropic
   branch.
 - Avoid wording that sounds like the actual physical anisotropies are already
   solved.
 
-### Stage `168`
+### Stage `185`
 
 - Keep the monomial statement explicitly linearized/reference-branch.
 - Preferred wording:
@@ -192,20 +192,20 @@ Those distinctions should stay visible in the note prose.
 - Avoid wording that sounds like finite nonlinear monomial preservation has
   already been proved.
 
-### Stage `169`
+### Stage `186`
 
 - Keep the theorem explicitly tangent-space / infinitesimal.
 - Avoid prose that makes the finite orbit statement sound already complete at
-  Stage `169`; that belongs to Stage `170`.
+  Stage `186`; that belongs to Stage `187`.
 
-### Stage `170`
+### Stage `187`
 
 - Keep the quotient theorem explicitly inside the positive coherent microscopic
   sector.
 - Keep visible that the remaining open question is dynamical branch selection:
   whether the actual PDE branch preserves those invariants and stays on a single
   similarity orbit.
-- Avoid treating Stage `170` as the final PDE branch theorem. It is the final
+- Avoid treating Stage `187` as the final PDE branch theorem. It is the final
   invariant-structure theorem currently proved.
 
 ## Phrase Replacements
@@ -222,8 +222,8 @@ Those distinctions should stay visible in the note prose.
 
 ## Suggested Edit Order
 
-1. Tighten branch scope in `028-031`, `089`, `108`, `125-127`, `168-170`.
-2. Tighten perturbative wording in `129-135`.
-3. Tighten numerical fixed-point wording in `138-140`.
-4. Then do a final read-through of the status stages `128`, `132`, `136`, `140`
+1. Tighten branch scope in `045-048`, `106`, `125`, `142-144`, `185-187`.
+2. Tighten perturbative wording in `146-152`.
+3. Tighten numerical fixed-point wording in `155-157`.
+4. Then do a final read-through of the status stages `145`, `149`, `153`, `157`
    so the summaries match the tightened theorem scope exactly.

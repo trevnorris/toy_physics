@@ -1,0 +1,52 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+# Date: 2026-05-11T12:44:24-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT
+========================================================================================
+Matched-branch fail threshold       = Pe_req/(Delta_0 + Delta_gap)
+Matched-branch success threshold    = Pe_req/Delta_0
+Resonance-family fail threshold     = Pe_req*(Pres_gap + 1)/(Delta_0 + Delta_gap)
+Resonance-family success threshold  = Pe_req*(Pres_gap + 1)/Delta_0
+P_res - 1/C_res^2 = 0
+matched window width = 0
+Delta_inf - Delta_0 > 0  -> Delta_gap
+matched success threshold - matched fail threshold > 0  -> Delta_gap*Pe_req/(Delta_0*(Delta_0 + Delta_gap))
+resonance fail threshold - Pe_req/(C_res^2 Delta_inf) = 0
+resonance success threshold - Pe_req/(C_res^2 Delta_0) = 0
+1 - C_res^2 > 0  -> Pres_gap/(Pres_gap + 1)
+P_res - 1 > 0  -> Pres_gap
+Failure-side profile-sensitive width = Pe_req*Pres_gap/(Delta_0 + Delta_gap)
+Success-side profile-sensitive width = Pe_req*Pres_gap/Delta_0
+failure-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_inf) = 0
+success-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_0) = 0
+P_res - 1 - (1-C_res^2)/C_res^2 = 0
+failure-side width > 0  -> Pe_req*Pres_gap/(Delta_0 + Delta_gap)
+success-side width > 0  -> Pe_req*Pres_gap/Delta_0
+failure-band point - matched fail edge > 0  -> Pe_req*Pres_gap*v_fail/((Delta_0 + Delta_gap)*(v_fail + 1))
+resonance fail edge - failure-band point > 0  -> Pe_req*Pres_gap/((Delta_0 + Delta_gap)*(v_fail + 1))
+success-band point - matched success edge > 0  -> Pe_req*Pres_gap*v_succ/(Delta_0*(v_succ + 1))
+resonance success edge - success-band point > 0  -> Pe_req*Pres_gap/(Delta_0*(v_succ + 1))
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Stage-49 matched branch:
+  Universal fail   : W_wall <= Pe_req / Delta_inf
+  Universal succeed: W_wall >= Pe_req / Delta_0
+Stage-51 resonance family:
+  Fail threshold   : W_wall <= Pe_req / (C_res^2 Delta_inf)
+  Success threshold: W_wall >= Pe_req / (C_res^2 Delta_0)
+Therefore the only profile-sensitive regions are the exact side-bands
+  Pe_req/Delta_inf < W_wall < Pe_req/(C_res^2 Delta_inf)
+and
+  Pe_req/Delta_0 < W_wall < Pe_req/(C_res^2 Delta_0),
+whose relative widths are both P_res - 1 = (1 - C_res^2)/C_res^2.
+
+EXIT_CODE: 0

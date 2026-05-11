@@ -1,0 +1,37 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py
+# Date: 2026-05-11T12:51:59-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+[ok] coherent-branch transfer-shape identity
+[ok] finite packet factorization via transfer-shape ratio
+[ok] rigid-mouth reduction of q_nt
+[ok] finite dressing ratio q_eta
+[ok] first-order compiler for delta ln R_tr
+[ok] first-order compiler for delta ln T^2
+[ok] first-order compiler for delta ln R_target
+[ok] first-order packet factorization
+[ok] rigid-mouth first-order dressing compiler
+[ok] rigid-mouth first-order transfer-shape compiler
+[ok] support-blindness of R_tr with respect to zeta
+[ok] support-blindness of T^2 with respect to zeta
+[ok] support-blindness of eps_eta with respect to zeta
+[ok] support-blindness of R_tr with respect to M_mix
+[ok] support-blindness of T^2 with respect to M_mix
+[ok] support-blindness of eps_eta with respect to M_mix
+[ok] support-blindness of q_tr with respect to zeta
+[ok] support-blindness of q_nt with respect to zeta
+[ok] support-blindness of q_eta with respect to zeta
+[ok] support-blindness of q_tr with respect to M_mix
+[ok] support-blindness of q_nt with respect to M_mix
+[ok] support-blindness of q_eta with respect to M_mix
+[ok] tracking gate compiler
+[ok] finite transfer-shape gate
+[ok] finite dressing gate
+
+All Stage 238 symbolic checks passed.
+
+EXIT_CODE: 0

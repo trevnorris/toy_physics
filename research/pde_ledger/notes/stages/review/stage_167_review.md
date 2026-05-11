@@ -1,93 +1,91 @@
-# Review: Stage 167 — Branch invariant coordinates
+# Review: Stage 167 — Selected branch reachability
 
-**Batch:** Batch 19 — Grouped Outlet & Similarity Closure
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage167_branch_invariant_coordinates.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage167_branch_invariant_coordinates_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage031_selected_branch_reachability.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py`
 
 ## Review Checklist
 
-- [x] Equation-level correctness (signs, factors, indices, limits)
-- [x] Logical flow from prior stage(s)
-- [x] Assumptions stated and justified
-- [x] Notation consistent with prior stages
-- [x] Physical interpretation sensible
-- [x] SymPy script faithfully implements notes
-- [x] Script runs without error
-- [x] Script output matches notes claims
-- [x] No missing edge cases or branches
+- [ ] Equation-level correctness (signs, factors, indices, limits)
+- [ ] Logical flow from prior stage(s)
+- [ ] Assumptions stated and justified
+- [ ] Notation consistent with prior stages
+- [ ] Physical interpretation sensible
+- [ ] SymPy script faithfully implements notes
+- [ ] Script runs without error
+- [ ] Script output matches notes claims
+- [ ] No missing edge cases or branches
 
 ## Agent Reviews
 
-### Agent: Claude Opus 4.6 (1M context) — 2026-04-03
+<!-- Agents: append your review below this line using the template:
+
+### Agent: [Model Name] — [Date]
+**Verdict:** [PASS | MINOR | ISSUE | BLOCK]
+
+**Notes Derivation Review:**
+
+**Script Review:**
+
+**Issues Found:**
+
+**Questions:**
+
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The stage is a clean repackaging step that takes the three branch-adapted scalars (Sigma_tr, Sigma_nt, Sigma_eta) from Stage 166 and promotes them to exact logarithmic drifts of three branch composites. Verified the following:
+1. **Equation-level correctness.** All formulas verified. Overlap derivative ds_-/d alpha_0 = 2 DK^2 KP/R^3 confirmed by explicit differentiation (difference-of-products identity yields 4 KP DK^2, factor of 1/2 gives result). Sign/positivity confirmed (all factors positive). Prefactor derivative dP/dalpha = beta_0(ds/dalpha * lambda_- + s_-^2)/lambda_-^2 > 0 on stable branch. Initial values at alpha_0=0: lambda_-(0)=A, s_-(0)=x0=kappa_0^2, P_{0,-}(0)=beta_0*kappa_0^2/(K_0-Xi_0). Softening threshold alpha_crit correct. Crossing theorem follows from IVT: continuous, strictly increasing, finite start, divergent endpoint.
 
-1. **R_tr definition and algebra (Section 1.1).** The two forms of R_tr are algebraically equivalent:
-   (1 + chi0/(1+deltaU)) / (1+chi0) = (1+chi0+deltaU) / ((1+chi0)(1+deltaU)).
-   Multiply numerator and denominator of the left form by (1+deltaU) to get the right form. Correct.
+2. **Logical flow.** Clean: overlap derivative → prefactor monotonicity → starting value → divergence → crossing theorem. Main result follows from constituent lemmas.
 
-2. **C_* definition and tracking invariant (Section 2).** Stage 166 gave Sigma_tr = -[(1+chi0)(1+deltaU)(1+chi0+deltaU)/(chi0*deltaU)] * Theta1. The notes define C_* as the magnitude of this prefactor, then T_* = R_tr^{-C_*}, so delta ln T_* = -C_* * delta ln R_tr = -C_* * Theta1 = Sigma_tr. The sign chain is correct: the negative exponent times Theta1 yields the negated product, which matches the Stage-166 inverse formula.
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0. Continuity on [0, alpha_crit) follows from lambda_- > 0 there.
 
-3. **B_* definition and nontracking composite (Section 3).** Stage 166 gave Sigma_nt = Xi1 + [2(1+chi0+deltaU)/deltaU]*Theta1. The notes define B_* = 2(1+chi0+deltaU)/deltaU and N_* = T^2 * R_tr^{B_*}, so delta ln N_* = Xi1 + B_*Theta1 = Sigma_nt. This matches the Stage-166 reconstruction formula at line 238 exactly.
+4. **Completeness.** Edge case P_target <= P_{0,-}(0) correctly handled by conditional statement.
 
-4. **Dressing coordinate (Section 4).** delta ln eps_eta = Sigma_eta is inherited directly from Stage 166. The selected-branch complement identity R_target*T^2/Lambda0 = 1-eps_eta leads to delta ln(1-eps_eta) = -(eps_eta/(1-eps_eta))*Sigma_eta, matching the Stage-166 dressing relation at line 173-183.
+5. **Notation consistency.** Matches Stages 12-13.
 
-5. **Equivalence chain (Section 5).** The three zero-defect conditions in the Sigma variables are equivalent to the three observable-drift conditions by the Stage-166 triangular normal form, now re-expressed as invariance of (R_tr, N_*, eps_eta). The chain of biconditionals is valid because C_* > 0 on the constructive branch (chi0 > 0, deltaU > 0).
-
-6. **Minor typo (Section 6, line 393).** The notes contain "\rac{2..." which is missing a backslash -- should read "\frac{2...". This is cosmetic only and does not affect any derivation.
-
-7. **Assumptions.** The positivity conditions chi0 > 0, deltaU > 0, 0 < eps_eta < 1 are inherited from Stage 166 and stated where needed. No new assumptions are introduced.
-
-8. **Notation.** Consistent with Stage 166 throughout. The new symbols (T_*, N_*, D, E, B_*, C_*) are all cleanly defined at first use with boxed equations.
+6. **Physical interpretation.** Clear: normalization is a one-dimensional ordered crossing problem on the stable branch.
 
 **Script Review:**
 
-1. **Faithful implementation.** The script constructs B_* and C_* symbolically from (chi0, deltaU) matching the notes definitions. It defines SigmaTr = -C_* * Theta1 and SigmaNT = Xi1 + B_* * Theta1, matching the Stage-166 formulas that Stage 167 inherits.
+**B.1 Faithful.** Eigenvalue, overlap, prefactor, derivative, initial values, threshold, divergence factorization all implemented.
+**B.2 No bugs.** Abstract function approach for quotient-rule check is clean.
+**B.3 Hardcoded values.** Line 88 has expanded polynomial for radcrit — would be cleaner computed symbolically, but the check (verifying perfect-square form) is valid and passes.
+**B.4 No tautologies.** Overlap derivative: SymPy diff vs closed form. Quotient/HF identity: abstract functions with substitution. Initial values: alpha=0 substitution. Divergence factorization: non-trivial algebraic identity.
+**B.5 Symbol assumptions correct.** Same as Stage 13.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Overlap derivative, prefactor monotonicity, initial values, threshold, determinant factorization, divergence factorization all covered.
 
-2. **No hardcoded values.** B_* and C_* are computed from the symbolic variables, not hardcoded numerically. All checks use the symbolic expressions.
+**Issues Found:** None.
 
-3. **No tautological checks.** The script constructs T_* = R_tr^{-C_*} from the exponential parametrization R_tr = Rtr0*exp(small*Theta1), takes the series expansion of the logarithm, and compares the coefficient against SigmaTr. This is a genuine computation -- the series expansion and simplification are non-trivial. Similarly for N_* and the dressing coordinate.
+---
 
-4. **Symbol assumptions correct.** chi0, deltaU, eps_eta are declared positive=True (appropriate for the constructive branch). Theta1, Xi1, SigmaEta are declared real=True. The expansion parameter "small" is declared real=True. These are all correct.
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
 
-5. **Coverage.** The script tests:
-   - The exact product identity R_target*T^2 = Lambda0*(1-eps_eta) [Section 1.3]
-   - delta ln T_* = Sigma_tr [Section 2]
-   - delta ln N_* = Sigma_nt [Section 3]
-   - delta ln eps_eta = Sigma_eta [Section 4]
-   - The selected-branch complement identity delta ln E = -(eps_eta/(1-eps_eta))*Sigma_eta [Section 4]
-   - The zero-map forward direction (setting Theta1=0, Xi1=0, SigmaEta=0 kills the respective drifts) [Section 5]
+**Notes Derivation Review:**
 
-6. **Potential gap: inverse direction of equivalence.** The script tests the forward zero map (setting observables to zero kills the branch-invariant drifts), but does not test the reverse direction (setting the Sigma coordinates to zero forces the observables to zero). However, this reverse direction was already established in Stage 166 and is algebraically obvious from the definitions, so this is not a blocking gap.
+1. The monotonicity chain is correct. I independently rechecked the overlap derivative, the quotient-rule identity for `dP_{0,-}/d alpha_0`, the zero-loading start value, and the softening-threshold factorization.
+2. The crossing theorem follows cleanly from the exact symbolic structure: on the stable branch `P_{0,-}` is continuous, strictly increasing, finite at the origin, and divergent at the threshold.
+3. The stage stays aligned with Stage 13 notation and with the saved audit output. No hidden sign or factor error showed up in the symbolic checks.
 
-7. **eps_eta linearization model.** The script models eps_eta_var = eps_eta*(1 + small*SigmaEta), which is a first-order multiplicative perturbation. This correctly represents delta ln eps_eta = SigmaEta at first order. No issue.
+**Script Review:**
 
-8. **Output agreement.** All expect_zero calls return 0. Exit code is 0. The printed intermediate expressions (B_*, C_*, delta ln T_*, delta ln N_*, delta ln eps_eta, delta ln E) are all consistent with the notes.
+1. The script is faithful to the note. It proves the derivative formula directly, checks the quotient/Hellmann-Feynman identity, and verifies the threshold factorization and stable-side divergence form.
+2. The output matches the claims and does not rely on a trivial identity.
 
 **Issues Found:**
 
-1. **COSMETIC (notes line 393):** "\rac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}" is missing the leading backslash on \frac. Should be "\frac{2...}". Does not affect correctness.
-
-No blocking or substantive issues found.
+None.
 
 **Questions:**
 
-None. The stage is a clean repackaging of Stage-166 results into exact branch-invariant coordinates. No new physical content is introduced; the gain is purely organizational.
-
-### Agent: Codex GPT-5 — 2026-04-03
-**Verdict:** PASS
-
-**Notes Derivation Review:** The branch-invariant coordinates are correctly derived from Stage 166. I independently verified the R_tr algebra and the exact first-order log-drift identities for T_*, N_*, and eps_eta. The selected-branch complement relation is consistent with the same branch assumptions.
-
-**Script Review:** The saved SymPy output matches the notes, and the series-based checks are genuine rather than mechanical. The only discrepancy I saw is the cosmetic `\rac` typo in the note text, which does not change the math.
-
-**Issues Found:** None substantive.
+None.
 
 ---

@@ -1,34 +1,46 @@
-\section[Stage 050]{Stage 050: Exact Sech--Gaussian Coherence Resonance Benchmark}
+\section[Stage 050]{Stage 050: Exact Comparison of Physical \texorpdfstring{$\zeta$}{zeta} Against the Required Threshold}
 \label{stage:050}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the benchmark family; \StatusNumerical{} for the quoted coherence value.}
-\stagefield{Purpose}{Stage~050 tests how sensitive the matched theorem is to independent source/support shapes by using a sech--Gaussian benchmark family.}
-\stagefield{Inputs}{Source profile \(\chi_\sigma=\operatorname{sech}(y/w_f)\) and support profile \(\chi_\phi=e^{-y^2/w_g^2}\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the support-tower selection rules.}
+\stagefield{Purpose}{Stage~050 compares \(\zeta_n^{\rm phys}\) against \(\zeta_{\rm req}\) and proves that the lowest symmetric twin is the natural first support branch.}
+\stagefield{Inputs}{The Stage~048 threshold \(\zeta_{\rm req}\) and Stage~049 D/N support tower.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage050_sech_gaussian_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage050_sech_gaussian_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage050_sech_gaussian_resonance_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage050_sech_gaussian_resonance_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage050_zeta_threshold_comparison_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage050_zeta_threshold_comparison_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage050_zeta_threshold_comparison_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage050_zeta_threshold_comparison_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The exact self-dual stationary point of the shape family is
+The lowest symmetric twin lane has \(\zeta_0=1\).  Therefore its enhancement factor is
 \begin{equation}
-\label{eq:app-stage050-self-dual}
+\label{eq:app-stage050-S0}
 \boxed{
-\frac{w_g}{w_f}=\sqrt\pi}.
+S_0=S(1;\epsilon)=2}.
 \end{equation}
-At this point the coherence is
+It succeeds iff
 \begin{equation}
-\label{eq:app-stage050-Cres}
+\label{eq:app-stage050-lowest-success}
 \boxed{
-C_{\rm res}^2\simeq0.994418836451529}.
+\zeta_{\rm req}\leq1
+\quad\Longleftrightarrow\quad
+S_{\rm req}\leq2}.
 \end{equation}
-The corresponding penalty factor is
+For higher harmonics, the immediate exclusion test is
 \begin{equation}
-\label{eq:app-stage050-Pres}
+\label{eq:app-stage050-higher-bound}
 \boxed{
-P_{\rm res}=\frac{1}{C_{\rm res}^2}\simeq1.005612487760576}.
+\zeta_{\rm req}>\frac{1}{(2n+1)^2}
+\quad\Longrightarrow\quad
+\text{the }n\text{th same-operator twin lane cannot reach the threshold.}
+}
+\end{equation}
+When the immediate exclusion test does not apply, the support softness must satisfy
+\begin{equation}
+\label{eq:app-stage050-xmax}
+\boxed{
+x\leq x_{\max}(n;\zeta_{\rm req})
+=\frac{1}{n(n+1)}\left[\frac{1}{(2n+1)^2\zeta_{\rm req}}-1\right]}.
 \end{equation}
 
-\stagefield{Output}{The near-perfect benchmark coherence \eqref{eq:app-stage050-Cres} and penalty \eqref{eq:app-stage050-Pres}.}
-\stagefield{Downstream use}{Stage~051 applies \(P_{\rm res}\) to the matched thresholds; Stage~052 gives the final support/source verdict.}
+\stagefield{Output}{Lowest-twin sufficiency \eqref{eq:app-stage050-lowest-success} and higher-harmonic exclusion/softness thresholds.}
+\stagefield{Downstream use}{Stage~051 rewrites the lowest-twin criterion in branch-product variables; Stage~052 defines the non-twin regime.}
 

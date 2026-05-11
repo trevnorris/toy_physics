@@ -1,12 +1,12 @@
-# Review: Stage 162 — Transfer shape theorem
+# Review: Stage 162 — Concrete axial overlaps
 
-**Batch:** Batch 19 — Grouped Outlet & Similarity Closure
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (2× MINOR, 2026-04-02)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage162_transfer_shape_theorem.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage162_transfer_shape_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage026_concrete_axial_overlaps.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py`
 
 ## Review Checklist
 
@@ -35,57 +35,75 @@
 
 **Questions:**
 
-### Agent: Claude Opus 4.6 — 2026-04-03
-**Verdict:** PASS
+### Agent: Claude Opus 4.6 — 2026-04-02
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** All algebraic steps verified by hand against the primitive definitions and confirmed by SymPy.
+**1. Equation-level correctness.** All formulas verified:
 
-   - *Wall-normalized variable definitions (Section 1).* GW_hat = GW/(OW^2 sqrt(K)), GU_hat = GU/(OU OW sqrt(K)), R_hat = R/(OU OW). Substituting back into P_r = OU^2 GW + R GU reproduces P_r = sqrt(K) OU^2 OW^2 (GW_hat + R_hat GU_hat). Similarly Delta_r = OU^2 OW^2 (1 - R_hat^2). The ratio N0/K = T^2 follows immediately. All signs and factors correct.
+- u_0(s) = 1/sqrt(L) with int u_0^2 = 1. Correct.
+- D/N modes f_n = sqrt(2/L) sin((n+1/2)pi s/L), k_n = (n+1/2)pi/L. Normalization verified.
+- Overlap kappa_n = sqrt(2)/((n+1/2)pi). kappa_0 = 2 sqrt(2)/pi ≈ 0.900316. Verified by integration.
+- All four overlap assignments (I_{eta,phi}, I_{eta,u}, I_{eta,w}, I_{u,w}) correctly traced through mode definitions.
+- All Stage 8 substitutions (C, G_U, G_W, R, Delta, Q, P, N_0, B_0, Z_0, D_0, P_0) correctly computed with kappa factors.
+- K_req solution from target equation algebraically correct.
 
-   - *Weak-axisymmetric slopes (Section 2).* Taking log-derivatives of each wall-normalized variable: w = gW - oW - kappa1/2, u = gU - oU/2 - oW/2 - kappa1/2, c = rr - oU/2 - oW/2. Each correctly accounts for all denominator factors in the respective definitions. Verified by direct differentiation.
+**2. Logical flow.** Clean progression: concrete modes → overlap computation → Stage 8 substitution → K_req solution.
 
-   - *Transfer-shape slope tau (Section 3).* The logarithmic derivative of T = numerator/denominator splits into an alpha-weighted wall-leg slope, a beta-weighted mixed-leg slope, and the 2R_hat^2/(1-R_hat^2) coupling term from the denominator. The identity nu_r = kappa1 + 2 tau_r follows from N0 = K T^2 by the chain rule. This is the central identity, and it is correct.
+**3. Assumptions.** All stated: flat axial measure, N/N zero mode for wall, D/N half-wave for support/mixed, minimal branch n=0.
 
-   - *Defect collapse (Section 4).* Substituting nu_r = kappa1 + 2 tau_r into Xi_1 = sum rho_r (nu_r - kappa1) with sum rho_r = 1 gives Xi_1 = 2 sum rho_r tau_r. Pure algebra, correct.
+**4. Completeness.** Eight undetermined branch parameters clearly enumerated. Hierarchy kappa_n ~ 1/(n+1/2) correct.
 
-   - *Equivalence to Stage 159/160/161 (Section 5).* Verified: M_r = GW_hat, I_r = R_hat GU_hat / GW_hat, H_r = R_hat^2. Slope identities m = w, i = (u+c) - w, h = 2c all checked against Stage 161 definitions. The slippage form tau = m + I/(1+I) i + H/(1-H) h recovers exactly from the alpha/beta form. sigma_r = 2 tau_r is consistent with Stage 160's sigma_r = nu_r - kappa1.
+**5. Notation consistency.** Consistent with Stage 8 and Stage 7. Minor dual use of u_0 (Neumann zero mode function and brane-like profile) ultimately unambiguous in context.
 
-   - *Corollaries (Section 7).* Dominant-port limit, square-root mixed-leg recovery (u=c=0 implies tau=w), and common-leg co-scaling (c=0, u=w implies tau=w) are all straightforward specializations of the general formula. No errors.
-
-2. **Logical flow.** Clean linear progression: recall Stage 161 data, introduce wall normalization, derive factorization, compute slopes, collapse defect, prove equivalence to prior stages, state corollaries. Each section depends only on what precedes it plus the Stage 161 results.
-
-3. **Assumptions.** Same conservative-shape-preserving branch as Stages 158-161. The factorization N0 = K T^2 is exact (no approximation); the weak-axisymmetric expansion is first-order in epsilon as throughout the chain. No new assumptions introduced.
-
-4. **Notation.** Consistent with prior stages. The hat notation (GW_hat, etc.) for wall-normalized variables is new to this stage and clearly defined. The fraktur slopes (w, u, c) are new compact names for the wall-normalized counterparts of the primitive slopes; their relations to the prior fraktur slopes (m, i, h, gW, etc.) are explicitly given.
-
-5. **Physical interpretation.** Sound. The wall-normalized transfer shape T_r is a dimensionless object measuring how the outgoing port deviates from what the wall baseline alone would predict. The remaining theorem gate is cleanly recast: "are the transfer shapes rigid?" This is a genuine sharpening of the Stage 161 gate.
+**6. Physical interpretation.** Sound. Higher D/N levels axially suppressed. K_req as balance condition well-motivated.
 
 **Script Review:**
 
-1. **Faithful implementation.** The script builds the primitive port data (P, Delta, N0) from generic symbolic variables, constructs the wall-normalized variables (GWh, GUh, Rh, T) from the same definitions as the notes, and verifies N0/K = T^2 symbolically. The weak-axisymmetric perturbation is implemented via multiplicative (1 + eps lam slope) factors applied to each primitive, matching the notes' convention. The slopes w, u, c are constructed from the explicit formulas in Section 2. The tau formula uses the alpha/beta weights built from the hatted variables. All definitions match the notes.
+**B.1 Faithful.** All mode definitions, overlaps, substitutions, and K_req solution implemented.
 
-2. **No hardcoded values or tautologies.** The central check (line 91) compares nu_direct -- obtained independently by Taylor-expanding log(N0A) in epsilon to first order -- against kappa1 + 2 tau, where tau is assembled from the wall-normalized slope formulas. These two expressions are built by independent code paths (series expansion of a ratio of polynomials vs. algebraic combination of named slopes), so the check is non-tautological. The slippage equivalence check (lines 101-103) similarly builds tau_slippage from a separate formula involving I, H, m, i, h and compares it to the alpha/beta form of tau. The weighted defect check (lines 107-112) uses three generic ports with symbolic rho values summing to 1.
+**B.2 No bugs.** Integration limits, mode expressions, algebraic substitutions all correct.
 
-3. **Symbol assumptions.** K, OU2, OW2, GW, GU are declared positive+real. R is real (allowing negative coupling, appropriate). eps, lam, kappa1, and all slopes are real. No inappropriate constraints. The positivity of K, OU2, OW2 is physically motivated and avoids sign ambiguities in sqrt.
+**B.3 Hardcoded values.** Factor 6 in `K = K_eta + 6 T_Omega` (line 234) used in print statement but not verified by script. Minor gap.
 
-4. **Coverage.** The script tests four distinct claims from the notes: (a) exact factorization N0/K = T^2; (b) slope identity nu = kappa1 + 2 tau via independent series expansion; (c) equivalence to Stage 159/160/161 slippage form; (d) weighted defect identity Xi_1 = 2 sum rho tau. This covers Sections 1, 3, 4, and 5 of the notes. Section 2 (slope definitions) is implicitly verified through the slope identity check. The corollaries in Section 7 are simple specializations and do not need separate script coverage.
+**B.4 No tautologies.** Normalization and overlap checks are genuine SymPy integrals. Branch substitution checks compare SymPy-computed overlaps against hand-derived compact forms.
 
-5. **Output agreement.** All four expect_zero checks print "= 0" and the script exits with code 0. No warnings or errors.
+**B.5 Symbol assumptions correct.** s,L positive; coupling constants real; frequencies positive.
 
-6. **Minor observation.** The script does not independently verify the per-port rigidity sufficient condition (Section 6, tau_r = 0 for all r implies Xi_1 = 0), but this follows trivially from the weighted defect identity already tested and does not need a separate check.
+**B.6 Output agreement.** All expect_zero pass (exit code 0). kappa = 2*sqrt(2)/pi matches notes.
 
-**Issues Found:** None.
+**B.7 Coverage.** Mode normalization, overlap law, all substituted quantities, K_req verified. Gap: K = K_eta + 6 T_Omega decomposition not verified.
+
+**Issues Found:**
+
+1. **(MINOR)** The `K = K_eta + 6 T_Omega` wall stiffness decomposition (notes Sec. 5, script line 234-235) is stated without derivation or cross-reference to the specific earlier stage where this is established. The script prints it but does not verify the factor of 6. This feeds into the interpretation of K_req. A cross-reference or brief derivation would improve traceability.
 
 ---
--->
 
-### Agent: Codex GPT-5 — 2026-04-03
-**Verdict:** PASS
+### Agent: GPT-5 — 2026-04-03
+**Verdict:** MINOR
 
-**Notes Derivation Review:** The wall-normalized transfer-shape theorem is correct. The factorization `N0/K = T^2`, the weak-axisymmetric slope identity `nu_r = kappa_1 + 2 tau_r`, the slippage-form equivalence, and the weighted defect collapse `Xi_1 = 2 sum_r rho_r tau_r` all line up with the note.
+**Notes Derivation Review:**
 
-**Script Review:** The audit script independently rebuilds the wall-normalized variables, checks the `N0/K = T^2` factorization, differentiates the perturbed `N0` directly, verifies the slippage-form identity, and confirms the weighted defect law. The saved output matches the note.
+1. **Equation-level correctness.** The concrete finite-throat mode choice is consistent: `u_0 = 1/sqrt(L)` is correctly normalized, the D/N ladder `f_n = sqrt(2/L) sin((n+1/2) pi s/L)` satisfies the stated boundary conditions, and the overlap law `kappa_n = sqrt(2)/((n+1/2) pi)` is exact. Substituting the branch overlaps into the Stage 8 scalars produces the quoted `Delta`, `Q`, `P`, `B_0`, `Z_0`, `N_0`, and the branch-level normalization equation without algebraic mismatch.
 
-**Issues Found:** None.
+2. **Logical flow.** The stage is a clean continuation of Stage 8: it replaces formal overlap integrals with a concrete finite-throat family, then propagates those constants into the final normalization test. The hierarchy statement that higher D/N levels are axially suppressed follows directly from the `kappa_n ~ 1/(n+1/2)` scaling.
+
+3. **Assumptions.** The branch assumptions are explicit and sufficient for the calculation: flat axial measure, constant N/N zero mode for the wall/brane-like sector, D/N half-wave support/mixed sector, and the `n = 0` truncation on the minimal branch.
+
+4. **Notation consistency.** The reuse of `u_0` for both the wall profile and the brane-like zero mode is acceptable here because the stage states they are intentionally the same constant mode. The reduced couplings and frequencies carry through Stage 8 consistently.
+
+5. **Physical interpretation.** The branch interpretation is sound. The mode selection makes the constant overlap `kappa = 2 sqrt(2) / pi` the only nontrivial axial constant, and the final `K_req` equation is a sensible balance among support softening, Maxwell/mixed self-load, and outgoing normalization.
+
+**Script Review:**
+
+The script faithfully mirrors the notes and the saved output agrees with every checked identity. The normalization integrals, the general `kappa_n` formula, the branch substitutions, and the exact `K_req` solve are all computed symbolically rather than hardcoded. My independent spot-check of the overlap integral also reproduces `kappa_n` exactly when the integer assumption on `n` is used.
+
+**Issues Found:**
+
+1. The final wall-stiffness identification `K = K_eta + 6 T_Omega` is carried through from prior reduction but is only printed here, not rederived or checked by the script. That does not affect the algebra in this stage, but it leaves a small traceability gap in the branch interpretation.
+
+**Questions:** None.
+
+---

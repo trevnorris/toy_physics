@@ -1,27 +1,27 @@
-\section[Stage 168]{Stage 168: Microscopic monomial coordinates}
+\section[Stage 168]{Stage 168: Off-bundle slippage decomposition}
 \label{stage:168}
 
-\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.3}.}
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.1}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~168 is the original-stage audit card for \emph{Microscopic monomial coordinates}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+\stagefield{Purpose}{Stage~168 is the original-stage audit card for \emph{Off-bundle slippage decomposition}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
 
-\stagefield{Inputs}{This stage imports the coherent local D/N tracking branch, the transfer-shape slope \(\Xi_1\), and the microscopic coherent-kernel variables.  It assumes the positive-coupling state space used for the quotient/orbit theorem.}
+\stagefield{Inputs}{This stage imports the Stage~163 off-family scalar, the lower compensated Family--1 branch, the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify the parent action or the charge/notation firewall.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage168_microscopic_monomials_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage168_microscopic_monomials_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage168_microscopic_monomials_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage168_microscopic_monomials_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The derivation changes variables from raw microscopic slippages to tracking, nontracking, and dressing coordinates; integrates them to monomial quotient coordinates; and identifies the zero-defect tangent and finite similarity orbits.}
+\stagefield{Derivation ledger}{The derivation removes tangent-compensated isotropic motion, proves no linear grouped feed-down into scalar slippages, and reduces the direct grouped outlet map to the physical even-response and prefactor slopes.}
 
-\stagefield{Output}{Pushes the branch composites to direct monomials \((\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)\).}
+\stagefield{Output}{Reduces the first true off-bundle defect to axial-length, mixed-speed, and mouth-traction slippages.}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before interpretation.
-\item Check the positive-coupling state-space assumption before invoking the finite orbit theorem.
-\item Check that quotient motion is distinguished from the five-dimensional similarity orbit.
+\item Check that tangent-compensated isotropic drift is not counted as an off-family failure mode.
+\item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+\item Check that grouped real \(P_2\) anisotropy is not allowed to feed scalar slippages linearly.
 \item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.3} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.1} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
 

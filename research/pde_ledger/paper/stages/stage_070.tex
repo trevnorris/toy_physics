@@ -1,25 +1,52 @@
-\section[Stage 070]{Stage 070: Final Reduced Finish Line for the Explicit Family--1 Outgoing Quadrupole Branch}
+\section[Stage 070]{Stage 070: Explicit GNLS Wall-Shell Reduction for the First Support Branch}
 \label{stage:070}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the reduction to a single ratio; \StatusOpen{} until the outgoing conservative module supplies that ratio.}
-\stagefield{Purpose}{Stage~070 records that the explicit Family--1 support/source side has been reduced to a single outgoing-branch loading ratio.}
-\stagefield{Inputs}{Stages~068--069.}
+\claimstatus{\StatusExactClosure{} / \StatusReduced{} for the thin GNLS shell support reduction.}
+\stagefield{Purpose}{Stage~070 begins the explicit Family--1 construction by deriving support stiffness and gradient energy from the parent GNLS shell.}
+\stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and frozen \(n=5\) compressional stiffness.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage070_outgoing_branch_loading_ratio_finish_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage070_gnls_wall_shell_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage070_gnls_wall_shell_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The explicit support theorem now reads:
+The quadratic support energy is
 \begin{equation}
-\label{eq:app-stage070-final-condition}
-\boxed{
-\rho_\alpha=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
-\quad\text{is the only remaining support-side input from the outgoing branch.}
-}
+\label{eq:app-stage070-E2}
+E^{(2)}[q]=\frac12\int_0^L ds\,[T_Xq'(s)^2+K_Xq(s)^2].
 \end{equation}
-Given \(\rho_\alpha\), the Family--1 support/source verdict follows from Stage~069.  No separate dependence on \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), or \(\widehat m_-\) remains.
+The coefficients are
+\begin{equation}
+\label{eq:app-stage070-TX-KX}
+\boxed{
+T_X=\frac{\hbar^2}{4m\rho_w}N_{\phi\phi},
+\qquad
+K_X=H_wN_{\phi\phi}+\frac{\hbar^2}{4m\rho_w}G_{\phi\phi},
+\qquad
+H_w=\frac{mc_{s,w}^2}{\rho_w}}.
+\end{equation}
+For a thin shell with moments \(I_f=\int f'^2d\xi\) and \(I_g=\int f''^2d\xi\),
+\begin{equation}
+\label{eq:app-stage070-thin-TK}
+\boxed{
+T_X=\frac{\pi a^2\ell I_f\hbar^2}{m\rho_w},
+\qquad
+K_X=4\pi a^2\ell I_fH_w+\frac{\pi a^2I_g\hbar^2}{m\rho_w\ell}}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-stage070-kappa}
+\boxed{
+\kappa=\frac{K_XL^2}{T_X}
+=4\left(\frac{mc_{s,w}L}{\hbar}\right)^2+\frac{I_g}{I_f}\left(\frac{L}{\ell}\right)^2}.
+\end{equation}
+The matched wall control is
+\begin{equation}
+\label{eq:app-stage070-Wwall-Xi}
+\boxed{
+W_{\rm wall}=\Xi=\frac{4\rho_w^2V_0^2L^2}{\hbar^2c_{s,w}^2\ell^2}}.
+\end{equation}
 
-\stagefield{Output}{The one-ratio finish line \eqref{eq:app-stage070-final-condition}.}
-\stagefield{Downstream use}{Stage~071 evaluates \(\rho_\alpha\) for the minimal isotropic contact-plus-pole quadrupole module.}
+\stagefield{Output}{The parent-shell coefficients \eqref{eq:app-stage070-TX-KX}--\eqref{eq:app-stage070-Wwall-Xi}.}
+\stagefield{Downstream use}{Stage~071 evaluates these for the canonical tanh wall; Stages~073--074 fix the Family--1 geometry and healing lock.}
 

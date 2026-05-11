@@ -1,0 +1,28 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py
+# Date: 2026-05-11T12:44:36-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 56 — FAMILY-1 GEOMETRY MAP
+========================================================================================
+epsilon_r = 1/20
+ell/a     = 1/20
+L/a       = 37/20
+Lambda_ell = L/ell = 37
+Lambda_ell - 37 = 0
+eta under K_m = T_X/ell -> L/ell
+eta - L/ell = 0
+eta(reference) - 37 = 0
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Lambda_ell = 37
+eta        = 37
+
+EXIT_CODE: 0

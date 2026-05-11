@@ -1,27 +1,27 @@
-\section[Stage 181]{Stage 181: Finite orbit law}
+\section[Stage 181]{Stage 181: Coherent tracking-branch defect law}
 \label{stage:181}
 
-\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.6}.}
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.2}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~181 is the original-stage audit card for \emph{Finite orbit law}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+\stagefield{Purpose}{Stage~181 is the original-stage audit card for \emph{Coherent tracking-branch defect law}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
 
-\stagefield{Inputs}{This stage imports Packet A, the coherent orbit quotient, and the finite similarity-orbit law.  It packages the final verdict in additive, multiplicative, and mismatch charts.}
+\stagefield{Inputs}{This stage imports the even-preserving grouped branch, the loading mismatch \(\Xi_{\rm load}\), and the wall-normalized Maxwell/mixed transfer factors.  It works inside the conservative-shape-preserving and weak-axisymmetric reduced branch.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage181_exact_finite_orbit_law_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage181_coherent_tracking_defect_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage181_coherent_tracking_defect_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The derivation solves the finite orbit law, proves pairwise orbit transport and cocycle rules, and combines Packet A with the orbit quotient triple into a reference-free four-scalar verdict.}
+\stagefield{Derivation ledger}{The derivation rewrites the loading defect as failure of self-similar wall-referenced loading, factors the outgoing port into mixed-leg/interference/hybridization pieces, and collapses all weak-axisymmetric port slippages to one scalar.}
 
-\stagefield{Output}{Solves the dependent triple exactly, defines mismatch coordinates, and proves finite single-orbit lock.}
+\stagefield{Output}{On the coherent local D/N tracking branch, \(\Xi_1\) is carried only by mixed/outgoing placement variables; coherent support ratio \(\zeta\) drops out.}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check finite orbit lock in the chosen chart before declaring Packet B zero.
-\item Check pairwise packets obey the additive or multiplicative cocycle law appropriate to the chart used.
-\item Check the final zero packet is read as a reduced compiler condition, not as proof of actual PDE realization.
+\item Check that self-similarity is defined relative to the wall baseline, not by freezing every port shape.
+\item Check the conservative-shape-preserving hypothesis before using \(\Xi_1=P_1/P_0\).
+\item Check any square-root mixed-leg use carries the interference/hybridization rigidity assumptions.
 \item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.6} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.2} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
 

@@ -1,0 +1,62 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+# Date: 2026-05-11T12:48:19-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES
+========================================================================================
+B_* = 2*(chi0 + deltaU + 1)/deltaU
+C_* = (chi0 + 1)*(deltaU + 1)*(chi0 + deltaU + 1)/(chi0*deltaU)
+
+========================================================================================
+Exact branch identities
+========================================================================================
+R_target * T^2 - Lambda0 * (1 - eps_eta) = 0
+
+========================================================================================
+Tracking invariant
+========================================================================================
+delta ln T_* = Theta_1*(-chi0**2*deltaU - chi0**2 - chi0*deltaU**2 - 3*chi0*deltaU - 2*chi0 - deltaU**2 - 2*deltaU - 1)/(chi0*deltaU)
+delta ln T_* - Sigma_tr = 0
+
+========================================================================================
+Corrected nontracking composite
+========================================================================================
+delta ln N_* = 2*Theta_1*chi0/deltaU + 2*Theta_1 + 2*Theta_1/deltaU + Xi_1
+delta ln N_* - Sigma_nt = 0
+
+========================================================================================
+Dressing coordinate and selected-branch complement
+========================================================================================
+delta ln eps_eta = Sigma_eta
+delta ln eps_eta - Sigma_eta = 0
+delta ln[(R_target T^2)/Lambda0] = Sigma_eta*eps_eta/(eps_eta - 1)
+selected-branch complement identity = 0
+
+========================================================================================
+Composite zero-defect theorem
+========================================================================================
+Sigma_tr as branch-invariant log drift = 0
+Sigma_nt as branch-invariant log drift = 0
+Sigma_eta as branch-invariant log drift = 0
+delta ln T_* | Theta1=0 = 0
+delta ln N_* | Theta1=Xi1=0 = 0
+delta ln eps_eta | Sigma_eta=0 = 0
+
+Carry-forward formulas:
+  T_*  = R_tr^(-C_*)
+  N_*  = T^2 R_tr^(B_*)
+  D_*  = eps_eta
+  delta ln T_* = Sigma_tr
+  delta ln N_* = Sigma_nt
+  delta ln D_* = Sigma_eta
+  (R_target T^2)/Lambda0 = 1 - eps_eta
+  delta ln[(R_target T^2)/Lambda0] = -(eps_eta/(1-eps_eta)) Sigma_eta
+  Full zero-defect theorem: invariance of (R_tr, N_*, eps_eta) at first grouped order.
+
+EXIT_CODE: 0

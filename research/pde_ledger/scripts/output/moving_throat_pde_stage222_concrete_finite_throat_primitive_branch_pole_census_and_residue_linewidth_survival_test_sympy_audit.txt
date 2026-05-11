@@ -1,0 +1,67 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+# Date: 2026-05-11T12:50:06-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 222 SymPy audit: primitive finite-throat pole census ===
+
+Verified primitive finite-throat overlap constant:
+kappa = 2*sqrt(2)/pi
+
+Primitive branch invariants:
+K_B(omega) = K - M*omega**2 - kap**2*lam_B**2/(-omega**2 + varpi**2)
+Delta(omega) = -kap**2*lam_R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)
+Q(omega) = 2*kap**2*lam_R*lam_U*lam_W + kap**2*lam_W**2*(Omega_U**2 - omega**2) + lam_U**2*(Omega_W**2 - omega**2)
+D(omega) = (K*(-omega**2 + varpi**2)*(-kap**2*lam_R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)) - M*omega**2*(-omega**2 + varpi**2)*(-kap**2*lam_R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)) - kap**2*lam_B**2*(-kap**2*lam_R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)) - (-omega**2 + varpi**2)*(2*kap**2*lam_R*lam_U*lam_W + kap**2*lam_W**2*(Omega_U**2 - omega**2) + lam_U**2*(Omega_W**2 - omega**2)))/((-omega**2 + varpi**2)*(-kap**2*lam_R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)))
+
+Verified exact quartic pole polynomial:
+F(y) = K*Omega_U**2*Omega_W**2*varpi**2 - K*Omega_U**2*Omega_W**2*y - K*Omega_U**2*varpi**2*y + K*Omega_U**2*y**2 - K*Omega_W**2*varpi**2*y + K*Omega_W**2*y**2 - K*kap**2*lam_R**2*varpi**2 + K*kap**2*lam_R**2*y + K*varpi**2*y**2 - K*y**3 - M*Omega_U**2*Omega_W**2*varpi**2*y + M*Omega_U**2*Omega_W**2*y**2 + M*Omega_U**2*varpi**2*y**2 - M*Omega_U**2*y**3 + M*Omega_W**2*varpi**2*y**2 - M*Omega_W**2*y**3 + M*kap**2*lam_R**2*varpi**2*y - M*kap**2*lam_R**2*y**2 - M*varpi**2*y**3 + M*y**4 - Omega_U**2*Omega_W**2*kap**2*lam_B**2 + Omega_U**2*kap**2*lam_B**2*y - Omega_U**2*kap**2*lam_W**2*varpi**2 + Omega_U**2*kap**2*lam_W**2*y + Omega_W**2*kap**2*lam_B**2*y - Omega_W**2*lam_U**2*varpi**2 + Omega_W**2*lam_U**2*y + kap**4*lam_B**2*lam_R**2 - kap**2*lam_B**2*y**2 - 2*kap**2*lam_R*lam_U*lam_W*varpi**2 + 2*kap**2*lam_R*lam_U*lam_W*y + kap**2*lam_W**2*varpi**2*y - kap**2*lam_W**2*y**2 + lam_U**2*varpi**2*y - lam_U**2*y**2
+with D(omega) = F(omega^2)/((varpi^2-omega^2) Delta(omega))
+
+Verified residue / linewidth cancellation:
+R_Q,* = 27*c_s**5/(N_star*a**5*omega_star**5)
+
+Low-loss survival formulas:
+|Re V_Q|_max = 27*c_s**5*eta/(2*N_star*a**5*omega_star**5*x**6*(eta**2 + 1))
+Required R_Q,* >= 2*DeltaV_req*x**6*(eta**2 + 1)/eta
+
+Static sample-slice data:
+C      = 0.450158158078553035
+G_U    = 0.300000000000000000
+G_W    = 0.360126526462842428
+R      = 0.225079079039276517
+Delta0 = 1.90933940817883111
+D0     = 2.76355510933127364
+N0     = 0.0501661980249591089
+P0     = 0.0181527764203328476
+
+Uncoupled wall/BdG roots: [1.6814318259147836, 2.0427400751933362]
+Uncoupled internal U/W roots: [0.9746017237463136, 1.417798109771174]
+Full coupled pole census: [0.9382727417467537, 1.3914108765380409, 1.7204537104800286, 2.045399487836587]
+
+Pure-Q residue / linewidth figures:
+omega_* = 0.938272741746754 (internal-like),   R_Q,* = 18.706928782830563
+omega_* = 1.391410876538041 (internal-like),   R_Q,* = 0.380740659074116
+omega_* = 1.720453710480029 (wall-like),   R_Q,* = 16.025033022617869
+omega_* = 2.045399487836587 (wall-like),   R_Q,* = 32.002548108846490
+
+Illustrative low-loss thresholds at x = 1:
+eta = 0.1 -> R_Q,* >= 21.854566296358396
+eta = 0.3 -> R_Q,* >= 7.8618736841685335
+
+Outgoing-leg scan (lambda_W, P0, D0, upper wall omega_*, upper wall R_Q,*):
+(0.2, 0.005947405317693074, 2.8272344215844973, 2.04402272302752, 145.4838586578641)
+(0.4, 0.018152776420332847, 2.7635551093312736, 2.045399487836587, 32.00254810884649)
+(0.6, 0.03800016314040507, 2.665913497209664, 2.04793277506821, 13.688535635680836)
+(0.8, 0.06717078268091271, 2.5343095852196678, 2.0519066888921147, 7.580971267465815)
+(1.0, 0.10847330811047598, 2.368743373361286, 2.0577833903550973, 4.827389255647022)
+
+Verified static/dynamic tension on the explicit primitive family:
+P0 increases monotonically with lambda_W, while the upper-wall R_Q,* decreases monotonically.
+
+All Stage 222 symbolic and numerical checks passed.
+
+EXIT_CODE: 0

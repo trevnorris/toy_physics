@@ -1,27 +1,58 @@
-\section[Stage 064]{Stage 064: Family--1 Demand Window in the Branch-Product Variable}
+\section[Stage 064]{Stage 064: Parent Equilibrium Source/Support Alignment}
 \label{stage:064}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the branch-product translation.}
-\stagefield{Purpose}{Stage~064 expresses the Family--1 demand thresholds in the branch-product variable \(\Pi_{\rm tr}\), including blocking.}
-\stagefield{Inputs}{The support-ratio threshold formula and blocking parameter \(\epsilon_{\rm blk}\).}
+\claimstatus{\StatusExactClosure{} inside the same local compressional linearization used in Stages~060--063.}
+\stagefield{Purpose}{Stage~064 shows that the parent equilibrium equations tie the source profile to the support profile instead of leaving \(C_{\sigma\phi}\) arbitrary.}
+\stagefield{Inputs}{The local compressional stiffness \(H(y)=h'(\rho_*(y))\) and support profile \(\chi_\phi\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage064_family1_pi_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage064_family1_pi_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage064_family1_pi_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage064_family1_pi_thresholds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The branch-product demand is related to \(\zeta_{\rm req}\) by
+The equilibrium source profile is
 \begin{equation}
-\label{eq:app-stage064-Pi-zeta}
-\zeta_{\rm req}=\frac{\Pi_{\rm tr}-C_{\rm mix}}{C_{\rm mix}-\epsilon_{\rm blk}(2C_{\rm mix}-\Pi_{\rm tr})}.
+\label{eq:app-stage064-source-profile}
+\boxed{
+\chi_\sigma(y)=\frac{g_\phi\chi_\phi(y)}{H(y)},
+\qquad
+H(y)=h'(\rho_*(y))}.
 \end{equation}
-Solving for \(\Pi_{\rm tr}\) gives the equivalent product threshold.  In the unblocked limit, \(\epsilon_{\rm blk}=0\), this reduces to
+Define
 \begin{equation}
-\label{eq:app-stage064-unblocked}
-\frac{\Pi_{\rm tr}}{C_{\rm mix}}=1+\zeta_{\rm req}.
+\label{eq:app-stage064-I1I2}
+I_1=\int d^3y\frac{\chi_\phi^2}{H},
+\qquad
+I_2=\int d^3y\frac{\chi_\phi^2}{H^2}.
 \end{equation}
-Thus the \(\zeta\)-windows of Stage~063 can be read directly as product-ratio windows.
+Then
+\begin{equation}
+\label{eq:app-stage064-overlaps}
+O_{\sigma\phi}=g_\phi I_1,
+\qquad
+N_{\sigma\sigma}=g_\phi^2I_2,
+\end{equation}
+and the coherence is
+\begin{equation}
+\label{eq:app-stage064-coherence}
+\boxed{
+C_{\sigma\phi}^2=\frac{I_1^2}{N_{\phi\phi}I_2}\leq1}.
+\end{equation}
+The eliminated-source support softening is
+\begin{equation}
+\label{eq:app-stage064-softening}
+\Delta K_X^{\rm eq}=g_\phi^2I_1,
+\qquad
+G_{\rm eq}=\frac{g_\phi^2I_1}{K_X}.
+\end{equation}
+In a thin active layer where \(H\) is nearly constant,
+\begin{equation}
+\label{eq:app-stage064-matched-layer}
+C_{\sigma\phi}^2=1,
+\qquad
+G_{\rm eq}=\frac{g_\phi^2N_{\phi\phi}}{K_XH_w}.
+\end{equation}
 
-\stagefield{Output}{Product-variable conversion \eqref{eq:app-stage064-Pi-zeta}--\eqref{eq:app-stage064-unblocked}.}
-\stagefield{Downstream use}{Stage~065 packages the full reduced branch into a master residual.}
+\stagefield{Output}{Equilibrium source/support alignment \eqref{eq:app-stage064-source-profile} and matched-layer gain \eqref{eq:app-stage064-matched-layer}.}
+\stagefield{Downstream use}{Stages~065--066 insert an explicit thin-wall confinement and collapse the test to \(W_{\rm wall}\).}
 

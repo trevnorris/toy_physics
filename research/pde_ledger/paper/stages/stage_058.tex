@@ -1,40 +1,40 @@
-\section[Stage 058]{Stage 058: Explicit Family--1 Threshold Window}
+\section[Stage 058]{Stage 058: Coupled Support/Source Operator and Exact Peclet Branch Equation}
 \label{stage:058}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the numerical evaluation of the exact threshold functions.}
-\stagefield{Purpose}{Stage~058 evaluates the operator thresholds for the fixed Family--1 geometry and support scale.}
-\stagefield{Inputs}{\(\kappa=12321/5\), \(\eta=37\), and \(\Upsilon_w=100\Theta_w\).}
+\claimstatus{\StatusExactClosure{} for the operator-selected fixed point.}
+\stagefield{Purpose}{Stage~058 closes the support/source system by letting support loading generate the transport bias that selects \(\mathrm{Pe}_*\).}
+\stagefield{Inputs}{The physical support ratio map and the source/support response kernel parameterized by \((\kappa,\eta)\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage058_family1_threshold_window_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage058_family1_threshold_window_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage058_family1_threshold_window_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage058_family1_threshold_window_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage058_coupled_support_source_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage058_coupled_support_source_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage058_coupled_support_source_operator_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage058_coupled_support_source_operator_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The endpoint functions evaluate to
+The self-consistent branch equation is
+\begin{equation}
+\label{eq:app-stage058-Pe-fixed}
+\boxed{
+\mathrm{Pe}_*=\Xi\Delta(\mathrm{Pe}_*;\kappa,\eta)}.
+\end{equation}
+The exact endpoint bracket is
+\begin{equation}
+\label{eq:app-stage058-bracket}
+\boxed{
+\Xi\Delta_0(\kappa,\eta)\leq \mathrm{Pe}_*\leq \Xi\Delta_\infty(\kappa,\eta)}.
+\end{equation}
+Writing \(\alpha=\sqrt\kappa\), the endpoint functions are
 \begin{equation}
 \label{eq:app-stage058-Delta0}
-\Delta_0\left(\frac{12321}{5},37\right)
-\simeq1.73302079021525\times10^{-4},
+\Delta_0
+=\frac{\eta(\cosh\alpha-1)}{\alpha^2(\alpha\sinh\alpha+\eta\cosh\alpha)},
 \end{equation}
 \begin{equation}
-\label{eq:app-stage058-Deltainf}
-\Delta_\infty\left(\frac{12321}{5},37\right)
-\simeq2.01447565540522\times10^{-2}.
-\end{equation}
-With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), and \(\Upsilon_w=100\Theta_w\), the Family--1 threshold window is
-\begin{equation}
-\label{eq:app-stage058-fail}
-\boxed{
-\Theta_w\leq3.62605617972939\times10^{-4}\,\mathrm{Pe}_{\rm req}
-\Rightarrow\text{fail}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage058-succeed}
-\boxed{
-\Theta_w\geq4.21495341569977\times10^{-2}\,\mathrm{Pe}_{\rm req}
-\Rightarrow\text{succeed}}.
+\label{eq:app-stage058-Deltainfty}
+\Delta_\infty
+=\frac{\cosh\alpha+(\eta/\alpha)\sinh\alpha-1}
+{\alpha\sinh\alpha+\eta\cosh\alpha}.
 \end{equation}
 
-\stagefield{Output}{The explicit Family--1 wall-depth window \eqref{eq:app-stage058-fail}--\eqref{eq:app-stage058-succeed}.}
-\stagefield{Downstream use}{Stages~059--060 compute \(\Theta_w\) from the wall profile; Stage~061 compares it to the window.}
+\stagefield{Output}{Fixed-point equation \eqref{eq:app-stage058-Pe-fixed} and bracket \eqref{eq:app-stage058-bracket}.}
+\stagefield{Downstream use}{Stage~059 turns the bracket into exact fail/succeed thresholds.}
 

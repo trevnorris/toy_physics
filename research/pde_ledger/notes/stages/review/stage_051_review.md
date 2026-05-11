@@ -1,12 +1,12 @@
-# Review: Stage 051 — Resonance thresholds
+# Review: Stage 051 — Softening depth normal form
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage051_resonance_thresholds.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage051_resonance_thresholds_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage034_softening_depth_normal_form.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,31 +40,39 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** G_res = C^2 * G_match, W_res = C^2 * W_wall correct. Threshold translation: requiring C^2 W_wall >= Pe_req/Delta_0 gives W_wall >= Pe_req/(C^2 Delta_0). At resonance C^2 = 1/P_res, thresholds become P_res-scaled. Band widths: profile-sensitive zone relative width P_res - 1 ~ 0.56%. All correct.
+1. **Equation-level correctness.** All verified: x := A - lambda_- substitution correct. Secular equation in x-form: alpha_0 = x(x+DK)/[kappa_0^2(x+DK) + kappa_1^2 x] verified. Overlap s_- = D^2/[kappa_0^2(x+DK)^2 + kappa_1^2 x^2] derived from 1/(dalpha/dx) with dalpha/dx = [kappa_0^2(x+DK)^2 + kappa_1^2 x^2]/D^2 verified by quotient rule. Normalization product in x-form correct. Monotonicity dalpha/dx manifestly positive (ratio of positive quantities). Loading decomposition direct from Stage 16.
 
-2. **Logical flow.** Clean: resonance-corrected gain → threshold translation → penalty at resonance → band width.
+2. **Logical flow.** Clean: variable substitution → differentiation → composition → Stage-16 rewrite.
 
-3. **Physical interpretation.** Correctly notes that resonance family has C^2 < 1 so fail zone is slightly wider. Section 4 handles this properly.
+3. **Assumptions.** All inherited from prior stages. Hellmann-Feynman from Stage 13.
 
-**Script Review:** Symbolic threshold formulas, P_res substitution, band width, relative width checks. All pass (exit code 0). Algebraically lightweight but appropriate for a repackaging stage.
+4. **Completeness.** Edge cases x=0 (unloaded) and x→A (softening) addressed.
 
-**Issues Found:** None.
+5. **Notation consistent** with Stage 16.
 
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-1. The threshold translation is correct: replacing the matched-branch factor by `C^2(r)` gives `W_res(r) = C^2(r) W_wall`, so the fail/succeed bounds scale by `1 / C^2(r)`.
-2. At the resonance point, using `P_res = 1 / C_res^2` correctly yields the `P_res`-shifted thresholds and the narrow `P_res - 1` profile-sensitive band. The stated `0.56%` width is consistent with the benchmark values from Stage 50.
-3. The stage does not overclaim: it treats the sech-Gaussian family as a refinement of the existing theorem window, not a replacement for it.
+6. **Physical interpretation.** Correct: trades eigenvector data for single scalar deformation coordinate.
 
 **Script Review:**
 
-The script is faithful and non-tautological for a synthesis stage. It derives the resonance-corrected thresholds symbolically, substitutes `P_res` cleanly, and computes the success/failure band widths exactly. The saved output agrees with the notes.
+**B.1-B.7.** Faithful. No bugs. No hardcoded values (all symbolic). Checks: substitution equivalence (genuine), monotonicity derivative (sp.diff vs closed form — genuine), loading decomposition. All pass. Minor: check 17.3 (alpha_mix + gBreq - alpha_x = 0) is mildly tautological by construction, and no explicit s_- = 1/diff(alpha_x, x) check, but substitution check implicitly covers this.
 
-**Issues Found:** None.
+**Issues Found:**
 
-**Questions:** None.
+1. **(MINOR, script)** Check 17.3 is tautological by construction (gBreq := alpha_x - alpha_mix). Does not add verification power.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+- The softening-depth reparameterization is correct: substituting `x = A - lambda_-` turns the selected-branch secular equation into the rational form shown in the note, and the resulting `alpha_0(x)` and `N_-(x)` expressions match the saved audit output.
+- I independently rechecked the monotonicity identity with SymPy. `d alpha_0 / dx` reduces to the manifestly positive rational form in the note, so the branch remains one-to-one in the stable interval.
+- The support-loading rewrite is also algebraically consistent: once `alpha_mix` is separated out, the remaining required support term is exactly the difference `alpha_x - alpha_mix`.
+
+**Issues Found:**
+
+- **[MINOR] The final support-loading check is still self-referential.** The script defines `g_B,req^2/varpi^2 := alpha_x - alpha_mix` and then verifies `alpha_mix + g_B,req^2/varpi^2 - alpha_x = 0`, so the last assertion does not independently test the formula. That matches the existing audit gap and is acceptable only as a coverage limitation, not as a separate derivation check.
 
 ---

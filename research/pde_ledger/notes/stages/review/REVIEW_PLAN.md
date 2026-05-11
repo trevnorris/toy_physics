@@ -19,14 +19,14 @@ is treated as settled.
 | Item | Path | Count |
 |------|------|-------|
 | Foundation docs | `notes/moving_throat/moving_throat_pde_{roadmap,phase0_spec,phase1_linearized_scaffold,unit_test_dn_branch}.md` | 4 |
-| Stage notes | `notes/moving_throat/moving_throat_pde_stageNNN_*.md` | 166 (stages 001-103, 108-170; gap at 104-107) |
-| SymPy audit scripts | `scripts/moving_throat/moving_throat_pde_stageNNN_*_sympy_audit.py` | 147 |
+| Stage notes | `notes/moving_throat/moving_throat_pde_stageNNN_*.md` | 183 (stages 001-120, 125-187; gap at 121-124) |
+| SymPy audit scripts | `scripts/moving_throat/moving_throat_pde_stageNNN_*_sympy_audit.py` | 164 |
 | Master audit script | `scripts/moving_throat/moving_throat_pde_master_sympy_audit.py` | 1 |
 | Reference summaries | `notes/summaries/*.md` | 9 |
 
 ### Stage numbering note
-Stages 104-107 do not exist in the repository.  The derivation jumps from
-stage 103 (core parameter status) directly to stage 108 (positive source
+Stages 121-124 do not exist in the repository.  The derivation jumps from
+stage 120 (core parameter status) directly to stage 125 (positive source
 theorem).
 
 ### Stages without a dedicated SymPy script
@@ -36,8 +36,8 @@ and correct summarization of prior results.
 
 Foundations (no script expected): roadmap, phase0_spec, phase1_scaffold, unit_test  
 Setup stages: 001, 002  
-Status/consolidation stages: 032, 067, 073, 076, 079, 086, 096, 100, 103,
-111, 115, 119, 124, 128, 132, 136, 140
+Status/consolidation stages: 049, 084, 090, 093, 096, 103, 113, 117, 120,
+128, 132, 136, 141, 145, 149, 153, 157
 
 ---
 
@@ -152,247 +152,247 @@ load-bearing joints where errors would propagate furthest.
 | — | `moving_throat_pde_phase1_linearized_scaffold.md` | — | Linearized problem setup |
 | — | `moving_throat_pde_unit_test_dn_branch.md` | — | Finite-throat benchmark |
 
-### Batch 1 — Geometry Lift & Coupling (001-009)
+### Batch 1 — Geometry Lift & Coupling (001-026)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
 | 001 | Geometry lift and linearized PDE skeleton | No |
 | 002 | Breathing reduction back to (a,L) closure | No |
 | 003 | Minimal BdG-wall coupling and first pole shifts | Yes |
 | 004 | Localized Maxwell + mixed-sector reduction | Yes |
-| 005 | Grouped real P2 bundle and outgoing-quadrupole bridge | Yes |
-| 006 | Full grouped real P2 bundle, exact projectors | Yes |
-| 007 | Explicit overlap integrals, O(3) isotropy theorem | Yes |
-| 008 | Minimal isotropic normalization | Yes |
-| 009 | Concrete axial overlaps | Yes |
+| 022 | Grouped real P2 bundle and outgoing-quadrupole bridge | Yes |
+| 023 | Full grouped real P2 bundle, exact projectors | Yes |
+| 024 | Explicit overlap integrals, O(3) isotropy theorem | Yes |
+| 025 | Minimal isotropic normalization | Yes |
+| 026 | Concrete axial overlaps | Yes |
 
-### Batch 2 — Wall Profiles & Loading (010-019)
+### Batch 2 — Wall Profiles & Loading (027-036)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 010 | First nonconstant finite-throat wall/brane family | Yes |
-| 011 | Loaded profile selection | Yes |
-| 012 | Dynamic loading | Yes |
-| 013 | Selected mode normalization | Yes |
-| 014 | Selected branch reachability | Yes |
-| 015 | Source map from mode integrals | Yes |
-| 016 | Microscopic normalization equation | Yes |
-| 017 | Softening depth normal form | Yes |
-| 018 | Dimensionless normalization locus | Yes |
-| 019 | Support feasibility frontier | Yes |
+| 027 | First nonconstant finite-throat wall/brane family | Yes |
+| 028 | Loaded profile selection | Yes |
+| 029 | Dynamic loading | Yes |
+| 030 | Selected mode normalization | Yes |
+| 031 | Selected branch reachability | Yes |
+| 032 | Source map from mode integrals | Yes |
+| 033 | Microscopic normalization equation | Yes |
+| 034 | Softening depth normal form | Yes |
+| 035 | Dimensionless normalization locus | Yes |
+| 036 | Support feasibility frontier | Yes |
 
-### Batch 3 — Continuum Kernel Extraction **[CP]** (020)
+### Batch 3 — Continuum Kernel Extraction **[CP]** (037)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| **020** | **Exact continuum-kernel extraction of A, DeltaK_ax, beta_0, M_mix** | **Yes** |
+| **037** | **Exact continuum-kernel extraction of A, DeltaK_ax, beta_0, M_mix** | **Yes** |
 
-### Batch 4 — Kernel Continuation (021-029)
+### Batch 4 — Kernel Continuation (038-046)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 021 | Dimensionless continuum placement | Yes |
-| 022 | Split u sector | Yes |
-| 023 | Generalized selected branch | Yes |
-| 024 | Rank-2 support completion | Yes |
-| 025 | Rank-2 selected mode normalization | Yes |
-| 026 | Support direction extraction | Yes |
-| 027 | Continuum selected rank-2 closure | Yes |
-| 028 | Coherent local tracking | Yes |
-| 029 | Tracking branch bounds | Yes |
+| 038 | Dimensionless continuum placement | Yes |
+| 039 | Split u sector | Yes |
+| 040 | Generalized selected branch | Yes |
+| 041 | Rank-2 support completion | Yes |
+| 042 | Rank-2 selected mode normalization | Yes |
+| 043 | Support direction extraction | Yes |
+| 044 | Continuum selected rank-2 closure | Yes |
+| 045 | Coherent local tracking | Yes |
+| 046 | Tracking branch bounds | Yes |
 
-### Batch 5 — Coherent Kernel Map **[CP]** (030)
+### Batch 5 — Coherent Kernel Map **[CP]** (047)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| **030** | **Coherent-kernel dimensionless map and support-enhancement factor** | **Yes** |
+| **047** | **Coherent-kernel dimensionless map and support-enhancement factor** | **Yes** |
 
-### Batch 6 — Support & Threshold Analysis (031-039)
+### Batch 6 — Support & Threshold Analysis (048-056)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 031 | Support compensation theorem | Yes |
-| 032 | DtN overlap zeta | No (status) |
-| 033 | Zeta threshold comparison | Yes |
-| 034 | Lowest twin criterion | Yes |
-| 035 | Non-twin asymmetry threshold | Yes |
-| 036 | Overlap boost window | Yes |
-| 037 | Robin softening support lane | Yes |
-| 038 | Explicit lowest lane reachability | Yes |
-| 039 | Transport source asymmetry | Yes |
+| 048 | Support compensation theorem | Yes |
+| 049 | DtN overlap zeta | No (status) |
+| 050 | Zeta threshold comparison | Yes |
+| 051 | Lowest twin criterion | Yes |
+| 052 | Non-twin asymmetry threshold | Yes |
+| 053 | Overlap boost window | Yes |
+| 054 | Robin softening support lane | Yes |
+| 055 | Explicit lowest lane reachability | Yes |
+| 056 | Transport source asymmetry | Yes |
 
-### Batch 7 — Physical Parameter Placement **[CP]** (040)
+### Batch 7 — Physical Parameter Placement **[CP]** (057)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| **040** | **Physical (Pe, kappa, eta) placement map for lowest support lane** | **Yes** |
+| **057** | **Physical (Pe, kappa, eta) placement map for lowest support lane** | **Yes** |
 
-### Batch 8 — Operator & Gain Analysis (041-052)
+### Batch 8 — Operator & Gain Analysis (058-069)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 041 | Coupled support-source operator | Yes |
-| 042 | Operator branch residual bounds | Yes |
-| 043 | Entropic microclosure | Yes |
-| 044 | Microscopic gain thresholds | Yes |
-| 045 | Parent action gain | Yes |
-| 046 | Parent thresholds | Yes |
-| 047 | Equilibrium alignment | Yes |
-| 048 | Thin wall confinement | Yes |
-| 049 | Wall figure of merit | Yes |
-| 050 | Sech-Gaussian resonance | Yes |
-| 051 | Resonance thresholds | Yes |
-| 052 | Final reduced verdict | Yes |
+| 058 | Coupled support-source operator | Yes |
+| 059 | Operator branch residual bounds | Yes |
+| 060 | Entropic microclosure | Yes |
+| 061 | Microscopic gain thresholds | Yes |
+| 062 | Parent action gain | Yes |
+| 063 | Parent thresholds | Yes |
+| 064 | Equilibrium alignment | Yes |
+| 065 | Thin wall confinement | Yes |
+| 066 | Wall figure of merit | Yes |
+| 067 | Sech-Gaussian resonance | Yes |
+| 068 | Resonance thresholds | Yes |
+| 069 | Final reduced verdict | Yes |
 
-### Batch 9 — Wall Branch & Family-1 Geometry (053-066)
+### Batch 9 — Wall Branch & Family-1 Geometry (070-083)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 053 | GNLS wall shell | Yes |
-| 054 | Tanh wall branch | Yes |
-| 055 | Explicit branch thresholds | Yes |
-| 056 | Family-1 geometry map | Yes (refresh) |
-| 057 | Family-1 healing lock | Yes |
-| 058 | Family-1 threshold window | Yes |
-| 059 | N=5 wall depth lock | Yes |
-| 060 | Family-1 theta extraction | Yes |
-| 061 | Family-1 branch verdict | Yes |
-| 062 | Family-1 quadrupole PE map | Yes |
-| 063 | Family-1 zeta thresholds | Yes |
-| 064 | Family-1 pi thresholds | Yes |
-| 065 | Master quadrupole residual | Yes |
-| 066 | Family-1 direct operator window | Yes |
+| 070 | GNLS wall shell | Yes |
+| 071 | Tanh wall branch | Yes |
+| 072 | Explicit branch thresholds | Yes |
+| 073 | Family-1 geometry map | Yes (refresh) |
+| 074 | Family-1 healing lock | Yes |
+| 075 | Family-1 threshold window | Yes |
+| 076 | N=5 wall depth lock | Yes |
+| 077 | Family-1 theta extraction | Yes |
+| 078 | Family-1 branch verdict | Yes |
+| 079 | Family-1 quadrupole PE map | Yes |
+| 080 | Family-1 zeta thresholds | Yes |
+| 081 | Family-1 pi thresholds | Yes |
+| 082 | Master quadrupole residual | Yes |
+| 083 | Family-1 direct operator window | Yes |
 
-### Batch 10 — Full Reduced PDE Write-Up **[CP]** (067)
+### Batch 10 — Full Reduced PDE Write-Up **[CP]** (084)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| **067** | **Full reduced moving-throat PDE write-up skeleton** | **No** (consolidation) |
+| **084** | **Full reduced moving-throat PDE write-up skeleton** | **No** (consolidation) |
 
-### Batch 11 — Loading Ratio & Isotropic Verdict (068-072)
+### Batch 11 — Loading Ratio & Isotropic Verdict (085-089)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 068 | Quadrupole demand cancellation | Yes |
-| 069 | Family-1 loading ratio window | Yes |
-| 070 | Outgoing branch loading ratio finish | Yes |
-| 071 | Loading ratio from minimal module | Yes |
-| 072 | Family-1 minimal isotropic verdict | Yes |
+| 085 | Quadrupole demand cancellation | Yes |
+| 086 | Family-1 loading ratio window | Yes |
+| 087 | Outgoing branch loading ratio finish | Yes |
+| 088 | Loading ratio from minimal module | Yes |
+| 089 | Family-1 minimal isotropic verdict | Yes |
 
-### Batch 12 — Geometry Lane (073-082)
+### Batch 12 — Geometry Lane (090-099)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 073 | Updated reduced status | No (status) |
-| 074 | Grouped P2 static geometry derivation | Yes |
-| 075 | Dynamic geometry obstruction | Yes |
-| 076 | Grouped P2 status update | No (status) |
-| 077 | Isotropic geometry decoupling | Yes |
-| 078 | Second-order geometry contamination | Yes |
-| 079 | Geometry lane check verdict | No (status) |
-| 080 | Single normalization defect | Yes |
-| 081 | Family-1 support is automatic | Yes |
-| **082** | **Reduced finish line** | **Yes** **[CP]** |
+| 090 | Updated reduced status | No (status) |
+| 091 | Grouped P2 static geometry derivation | Yes |
+| 092 | Dynamic geometry obstruction | Yes |
+| 093 | Grouped P2 status update | No (status) |
+| 094 | Isotropic geometry decoupling | Yes |
+| 095 | Second-order geometry contamination | Yes |
+| 096 | Geometry lane check verdict | No (status) |
+| 097 | Single normalization defect | Yes |
+| 098 | Family-1 support is automatic | Yes |
+| **099** | **Reduced finish line** | **Yes** **[CP]** |
 
-### Batch 13 — Outgoing DtN (083-089)
+### Batch 13 — Outgoing DtN (100-106)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 083 | Outgoing normalization factorization | Yes |
-| 084 | Natural source map reduction | Yes |
-| 085 | Higher odd irrelevance | Yes |
-| 086 | Reduced 2.5PN conditional closure | No (status) |
-| 087 | Outgoing DtN fingerprint | Yes |
-| 088 | chiQ fix from outgoing DtN | Yes |
-| **089** | **Canonical outgoing reduced closure** | **Yes** **[CP]** |
+| 100 | Outgoing normalization factorization | Yes |
+| 101 | Natural source map reduction | Yes |
+| 102 | Higher odd irrelevance | Yes |
+| 103 | Reduced 2.5PN conditional closure | No (status) |
+| 104 | Outgoing DtN fingerprint | Yes |
+| 105 | chiQ fix from outgoing DtN | Yes |
+| **106** | **Canonical outgoing reduced closure** | **Yes** **[CP]** |
 
-### Batch 14 — General DtN & Core Extraction (090-103)
+### Batch 14 — General DtN & Core Extraction (107-120)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 090 | General DtN deformation | Yes |
-| 091 | Robustness classes | Yes |
-| 092 | Linearized branch selection | Yes |
-| 093 | Robin outlet model | Yes |
-| 094 | Mixed sidechannel pole | Yes |
-| 095 | Hybrid Robin-mixed compensation | Yes |
-| 096 | Outlet model status | No (status) |
-| 097 | Concrete core Schur | Yes |
-| 098 | Core balance compensation | Yes |
-| 099 | DtN mixed tube realization | Yes |
-| **100** | **Outlet core status** | **No** (status) **[CP]** |
-| 101 | Parent core extraction | Yes |
-| 102 | Parent balance family | Yes |
-| 103 | Core parameter status | No (status) |
+| 107 | General DtN deformation | Yes |
+| 108 | Robustness classes | Yes |
+| 109 | Linearized branch selection | Yes |
+| 110 | Robin outlet model | Yes |
+| 111 | Mixed sidechannel pole | Yes |
+| 112 | Hybrid Robin-mixed compensation | Yes |
+| 113 | Outlet model status | No (status) |
+| 114 | Concrete core Schur | Yes |
+| 115 | Core balance compensation | Yes |
+| 116 | DtN mixed tube realization | Yes |
+| **117** | **Outlet core status** | **No** (status) **[CP]** |
+| 118 | Parent core extraction | Yes |
+| 119 | Parent balance family | Yes |
+| 120 | Core parameter status | No (status) |
 
-### Batch 15 — Positive Source & Mouth Dynamics (108-119)
+### Batch 15 — Positive Source & Mouth Dynamics (125-136)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 108 | Positive source theorem | Yes |
-| 109 | Positive source families | Yes |
-| 110 | Penetration families | Yes |
-| 111 | Mouth source bias status | No (status) |
-| 112 | Mouth boundary layer | Yes |
-| 113 | Mouth bias map | Yes |
-| 114 | Parent mouth threshold | Yes |
-| 115 | Mouth boundary layer status | No (status) |
-| 116 | Coupled mouth fixedpoint | Yes |
-| 117 | Family-1 mouth fixedpoint | Yes |
-| 118 | Outlet consistent mouth closure | Yes |
-| 119 | Coupled mouth status | No (status) |
+| 125 | Positive source theorem | Yes |
+| 126 | Positive source families | Yes |
+| 127 | Penetration families | Yes |
+| 128 | Mouth source bias status | No (status) |
+| 129 | Mouth boundary layer | Yes |
+| 130 | Mouth bias map | Yes |
+| 131 | Parent mouth threshold | Yes |
+| 132 | Mouth boundary layer status | No (status) |
+| 133 | Coupled mouth fixedpoint | Yes |
+| 134 | Family-1 mouth fixedpoint | Yes |
+| 135 | Outlet consistent mouth closure | Yes |
+| 136 | Coupled mouth status | No (status) |
 
-### Batch 16 — Core-to-Mouth Gain (120-128)
+### Batch 16 — Core-to-Mouth Gain (137-145)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 120 | Core-to-mouth gain map | Yes |
-| 121 | Normalized mouth gain family | Yes |
-| 122 | Family-1 actual mouth gains | Yes |
-| 123 | Self-matched mouth susceptibility | Yes |
-| 124 | Mouth gain status | No (status) |
-| 125 | Self-consistent mouth branch | Yes |
-| 126 | Equal normalized singular limit | Yes |
-| 127 | Unique regular canonical branch | Yes |
-| 128 | Mouth branch selection status | No (status) |
+| 137 | Core-to-mouth gain map | Yes |
+| 138 | Normalized mouth gain family | Yes |
+| 139 | Family-1 actual mouth gains | Yes |
+| 140 | Self-matched mouth susceptibility | Yes |
+| 141 | Mouth gain status | No (status) |
+| 142 | Self-consistent mouth branch | Yes |
+| 143 | Equal normalized singular limit | Yes |
+| 144 | Unique regular canonical branch | Yes |
+| 145 | Mouth branch selection status | No (status) |
 
-### Batch 17 — Rigidity & Corrections (129-140)
+### Batch 17 — Rigidity & Corrections (146-157)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 129 | Positive deformation expansion | Yes |
-| **130** | **First-order rigidity kernel at canonical family-1 point** | **Yes** **[CP]** |
-| 131 | Representative positive families | Yes |
-| 132 | Mouth rigidity status | No (status) |
-| 133 | Full profile residual | Yes |
-| 134 | First-order selected correction | Yes |
-| 135 | Family-1 actual correction | Yes |
-| 136 | Full mouth correction status | No (status) |
-| 137 | Coevolving core-mouth map | Yes |
-| 138 | Frozen traction fixedpoint | Yes |
-| 139 | Renormalized canonical branch | Yes |
-| 140 | Core-mouth coevolution status | No (status) |
+| 146 | Positive deformation expansion | Yes |
+| **147** | **First-order rigidity kernel at canonical family-1 point** | **Yes** **[CP]** |
+| 148 | Representative positive families | Yes |
+| 149 | Mouth rigidity status | No (status) |
+| 150 | Full profile residual | Yes |
+| 151 | First-order selected correction | Yes |
+| 152 | Family-1 actual correction | Yes |
+| 153 | Full mouth correction status | No (status) |
+| 154 | Coevolving core-mouth map | Yes |
+| 155 | Frozen traction fixedpoint | Yes |
+| 156 | Renormalized canonical branch | Yes |
+| 157 | Core-mouth coevolution status | No (status) |
 
-### Batch 18 — Linear Defect Transport & Final Result (141-152)
+### Batch 18 — Linear Defect Transport & Final Result (158-169)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 141 | Linear defect transport | Yes |
-| 142 | Hybrid outlet projection | Yes |
-| 143 | Bare mixed port slippage | Yes |
-| 144 | DtN similarity slippage | Yes |
-| 145 | Parent compensation rigidity | Yes |
-| 146 | Off-family normal coordinate | Yes |
-| 147 | Microscopic log channels | Yes |
-| 148 | Exact branch drifts | Yes |
-| 149 | Bundle inversion four drifts | Yes |
-| **150** | **Bundle transport tangent-compensation theorem** | **Yes** **[CP]** |
-| 151 | Off-bundle slippage | Yes |
-| 152 | No linear grouped-P2 feed-down into scalar off-bundle slippages | Yes |
+| 158 | Linear defect transport | Yes |
+| 159 | Hybrid outlet projection | Yes |
+| 160 | Bare mixed port slippage | Yes |
+| 161 | DtN similarity slippage | Yes |
+| 162 | Parent compensation rigidity | Yes |
+| 163 | Off-family normal coordinate | Yes |
+| 164 | Microscopic log channels | Yes |
+| 165 | Exact branch drifts | Yes |
+| 166 | Bundle inversion four drifts | Yes |
+| **167** | **Bundle transport tangent-compensation theorem** | **Yes** **[CP]** |
+| 168 | Off-bundle slippage | Yes |
+| 169 | No linear grouped-P2 feed-down into scalar off-bundle slippages | Yes |
 
-### Batch 19 — Grouped Outlet & Similarity Closure (153-169)
+### Batch 19 — Grouped Outlet & Similarity Closure (170-186)
 | Stage | Topic | Has Script |
 |-------|-------|------------|
-| 153 | Linear grouped outlet map | Yes |
-| 154 | Microscopic grouped obstructions | Yes |
-| 155 | Physical slope collapse | Yes |
-| 156 | Axisymmetric loading mismatch | Yes |
-| 157 | Static self-similarity | Yes |
-| 158 | Wall-normalized load shape | Yes |
-| 159 | Outgoing load factorization | Yes |
-| 160 | Weak axisymmetric outgoing slippage | Yes |
-| 161 | Outgoing port co-loading theorem | Yes |
-| 162 | Transfer shape theorem | Yes |
-| 163 | Effective transfer shape collapse | Yes |
-| 164 | Coherent tracking defect | Yes |
-| 165 | Microscopic coherent slippage | Yes |
-| 166 | Triangular normal form | Yes |
-| 167 | Branch invariant coordinates | Yes |
-| 168 | Microscopic monomials | Yes |
-| 169 | Similarity orbit closure | Yes |
-| **170** | **Orbit quotient closure** | **Yes** **[FINAL]** |
+| 170 | Linear grouped outlet map | Yes |
+| 171 | Microscopic grouped obstructions | Yes |
+| 172 | Physical slope collapse | Yes |
+| 173 | Axisymmetric loading mismatch | Yes |
+| 174 | Static self-similarity | Yes |
+| 175 | Wall-normalized load shape | Yes |
+| 176 | Outgoing load factorization | Yes |
+| 177 | Weak axisymmetric outgoing slippage | Yes |
+| 178 | Outgoing port co-loading theorem | Yes |
+| 179 | Transfer shape theorem | Yes |
+| 180 | Effective transfer shape collapse | Yes |
+| 181 | Coherent tracking defect | Yes |
+| 182 | Microscopic coherent slippage | Yes |
+| 183 | Triangular normal form | Yes |
+| 184 | Branch invariant coordinates | Yes |
+| 185 | Microscopic monomials | Yes |
+| 186 | Similarity orbit closure | Yes |
+| **187** | **Orbit quotient closure** | **Yes** **[FINAL]** |
 
 ---
 
@@ -401,7 +401,7 @@ load-bearing joints where errors would propagate furthest.
 Each stage has a review file in this folder:
 
 ```
-review/stage_NNN_review.md       (e.g. stage_020_review.md)
+review/stage_NNN_review.md       (e.g. stage_037_review.md)
 review/foundations_review.md     (for the 4 foundation docs)
 ```
 
@@ -512,7 +512,7 @@ already have a review stub, and creates missing ones.
 
 ### Adding new batches
 
-If new stages extend beyond the current batch 18 range (stages 141-152),
+If new stages extend beyond the current batch 18 range (stages 158-169),
 or if a new logical phase begins:
 
 1. Add a new `### Batch NN` section to the table above.
@@ -521,8 +521,8 @@ or if a new logical phase begins:
 
 ### Renumbering / inserting stages
 
-If stages are inserted between existing ones (e.g., stage 152a), use a
-suffix convention for the review file: `stage_152a_review.md`.  The helper
+If stages are inserted between existing ones (e.g., stage 169a), use a
+suffix convention for the review file: `stage_169a_review.md`.  The helper
 script handles this.
 
 ### Key principle

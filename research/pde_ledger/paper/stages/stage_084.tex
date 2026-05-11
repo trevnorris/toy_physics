@@ -1,28 +1,32 @@
-\section[Stage 084]{Stage 084: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely Outgoing}
+\section[Stage 084]{Stage 084: Full Reduced Moving-Throat PDE Write-Up Skeleton and Remaining Theorem Gap}
 \label{stage:084}
 
-\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusReduced{} / \StatusExactClosure{}.}
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the reduced hierarchy organization; \StatusOpen{} for final actual-branch realization.}
+\stagefield{Purpose}{Stage~084 organizes the completed reduced hierarchy into a write-up-ready theorem chain and isolates the final outgoing quadrupole product as the remaining gap.}
+\stagefield{Inputs}{Stages~037--083.}
 
-\stagefield{Purpose}{Stage~84 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage084_full_reduced_pde_writeup_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage084_full_reduced_pde_writeup_mathematica_audit.txt}.}
 
-\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\subsection*{Derivation}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage084_natural_source_map_reduction_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage084_natural_source_map_reduction_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage084_natural_source_map_reduction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage084_natural_source_map_reduction_mathematica_audit.txt}.}
+The reduced PDE chain is now
+\begin{equation}
+\label{eq:app-stage084-chain}
+\begin{aligned}
+\text{continuum placement}
+&\rightarrow
+\text{support completion}
+\rightarrow
+\text{transport/parent gain}
+\\
+&\rightarrow
+\text{Family--1 support map}
+\rightarrow
+R_{\rm quad}.
+\end{aligned}
+\end{equation}
+The remaining open datum is the outgoing branch's demand side, i.e. the conservative quadrupole module and its loading ratio.  The support/source machinery can be cited as completed within the declared reduced Family--1 closure once that ratio is supplied.
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-
-\begin{quote}
-On the natural point-particle source map, \(\widehat m_0\to1\), so the last obstruction is purely \(\chi_Q\).
-\end{quote}
-
-\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
-\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
-\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{This stage feeds Stages 90--96, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
-
+\stagefield{Output}{A structured reduced-PDE theorem chain and handoff to the outgoing-branch loading-ratio problem.}
+\stagefield{Downstream use}{Stages~085--090 finish the support side by showing that the natural minimal module supplies a small ratio.}

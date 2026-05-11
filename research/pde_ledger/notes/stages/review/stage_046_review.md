@@ -1,12 +1,12 @@
-# Review: Stage 046 — Parent thresholds
+# Review: Stage 046 — Dynamic loading
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage046_parent_thresholds.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage046_parent_thresholds_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage029_dynamic_loading.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,26 +40,59 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Parent amplitude thresholds: g_{phi,fail}^2 from inverting G_micro = G_fail. Coherence-factor form: N_ss cancels when O_sp^2 = C^2 N_ss N_pp substituted. Coherence thresholds C_fail^2, C_suff^2 correct. Cauchy no-go: C^2 <= 1 gives G_max = rho_* g_phi^2 N_pp/(m c_s^2 K_X), rigorous. Expanded thresholds with kappa: K_X cancels — amplitude threshold is tension/compressibility-controlled. Ordering C_fail^2 <= C_suff^2 from G_fail <= G_suff. Matched-profile special case (C^2=1, N_ss=N_pp=O_sp=1) collapses correctly.
+1. **Equation-level correctness.** All equations consistent. Overlap constants kappa_0 = 2sqrt(2)/pi, kappa_1 = -4/(3pi), sigma = 88/(9pi^2) match Stage 10. Schur complement decomposes correctly into Xi(omega) I_2 + alpha(omega) v v^T (confirmed symbolically by script). Conservative static limits Xi_0, Delta_0, alpha_0 follow by direct substitution. Isotropic shift cancellation K1 - Xi_0 - (K0 - Xi_0) = DeltaK_ax is trivially correct and verified. tan(2 theta) formula consistent with Stage 11 after substitution. Refined softening threshold correctly uses shifted stiffnesses.
 
-2. **Logical flow.** Clean: amplitude thresholds → coherence thresholds → Cauchy no-go → expanded forms → special case.
+2. **Logical flow.** Clean progression: coupled operator setup → Schur complement → conservative static specialization → outgoing dressing → transfer factor → selected-mode projection. Each step builds on prior stages.
 
-**Script Review:** Overlap-form thresholds, coherence substitution, coherence thresholds and ratio, best-case gain, kappa insertion with K_X cancellation in 4 forms. All genuine, all pass (exit code 0).
+3. **Assumptions.** All stated: minimal internal block, sign convention for U-W cross coupling, passive/outgoing dressing, compact outgoing l=2 branch law.
 
-**Issues Found:** None.
+4. **Completeness.** Conservative static, general dynamic, first-order outgoing, and selected-mode projection all covered. Refined softening threshold included. No missing branches.
 
-### Agent: Codex GPT-5 — 2026-04-03
-**Verdict:** PASS
+5. **Notation consistency.** Consistent with Stages 10-11. New symbols (Xi, alpha(omega), Delta_UW, beta, beta_5, P_0) cleanly introduced.
 
-**Notes Derivation Review:**
-
-The parent-threshold algebra is consistent throughout: the `g_phi^2` fail/succeed surfaces follow directly from the Stage-45 gain, the coherence-factor rewrite is exact, and the Cauchy no-go statement is the correct `C^2 <= 1` consequence. The `kappa`-substituted forms also cancel `K_X` in the same way the notes claim.
+6. **Physical interpretation.** Sound. Isotropic shift (from U doublet) vs directional rank-1 load (from BdG + mixed) has clear physical meaning. beta_0 >= 0 (ratio of squares) ensures nonnegative transfer factor.
 
 **Script Review:**
 
-The script matches the notes and the saved output. It independently checks the overlap-threshold identities, the coherence-floor formulas, the best-case `G_max` factorization, and the `kappa = K_X L^2/T_X` substitutions without relying on hardcoded final answers.
+**B.1 Faithful.** Internal block Mint and coupling C match notes Section 1. K1 = K0 + DeltaK_ax (recent fix) ensures K1 > K0.
+
+**B.2 No bugs.** Matrix inversions, differentiation, series expansion, limits all correct. Exit code 0.
+
+**B.3 Hardcoded values.** Only kappa_0 = 2sqrt(2)/pi and kappa_1 = -4/(3pi) — exact analytical values derived and verified in Stage 10.
+
+**B.4 Tautological checks.** None. Sigma computed by C^T Mint^{-1} C vs. closed-form Xi*I + alpha*vv^T — independent computations. Beta check compares SymPy derivative vs hand-constructed rational expression. Hellmann-Feynman limits are non-trivial.
+
+**B.5 Symbol assumptions.** All correct: omega real, stiffness/mass/frequency positive, coupling constants real (signs not fixed), Pi unconstrained (can be complex from outgoing port).
+
+**B.6 Output agreement.** All expect_zero pass. All notes claims confirmed.
+
+**B.7 Coverage.** Complete: Schur complement, conservative static data, angle law, softening threshold, outgoing dressing, transfer factor, selected-mode projection with limits.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+- The main structural claim checks out. Using the reduced internal block `(u, W, phi)`, the wall self-energy does decompose exactly as `Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`; I independently recomputed the Schur complement and got zero difference from that closed form.
+- The conservative static limits `Xi_0`, `Delta_0`, and `alpha_0` are consistent with the Stage 11 loaded-angle law, and the isotropic shift cancels out of the wall-level splitting exactly as claimed.
+- The outgoing transfer factor is also consistent with the earlier `P/Delta` structure. An independent SymPy check confirms that the `i omega^5` coefficient of the outgoing-substituted `alpha(omega)` is exactly the stated
+  `beta_5 = Gamma_2^(port) (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2`.
+- The selected-mode projection formula `delta D_-^(odd)(omega) = - i beta_5 kappa(theta_-)^2 omega^5 + O(omega^7)` is the correct rank-1 projection of the odd part onto the conservative lower wall mode.
+
+**Script Review:**
+
+- The script correctly verifies the Schur decomposition, the conservative profile-selection law, the refined softening threshold, and the selected-mode Hellmann-Feynman overlap formula. The saved output is consistent with the notes.
+- I did find one coverage gap: after substituting the outgoing port law, the script prints `alpha_out(omega)` and `beta_5`, but it does not explicitly assert that the extracted imaginary `omega^5` coefficient equals the stated `beta_5`. That identity is true, but it is only displayed, not checked.
 
 **Issues Found:**
+
+- **(MINOR)** Missing explicit assertion for the final outgoing-series coefficient. The audit should isolate the `i omega^5` term of `alpha_out(omega)` and compare it programmatically to `beta_5` instead of only printing both objects.
+
+**Questions:**
 
 None.
 

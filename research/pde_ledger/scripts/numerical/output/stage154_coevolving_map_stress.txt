@@ -1,0 +1,288 @@
+=== Stage 154: representative profile checks ===
+[PASS] loaded g_* matches the exact compensation formula: g_*=0.758035078945, expected=0.758035078945
+[PASS] canonical_exponential_profile T_s'(0) at h=0.002: slope=0.999979227395
+[PASS] canonical_exponential_profile T_q'(0)=S at h=0.002: slope=0.658053066823, S=0.658075994872
+[PASS] canonical_exponential_profile Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50880232963, expected=1.50882949206
+[PASS] canonical_exponential_profile T_s'(0) at h=0.001: slope=0.99993176106
+[PASS] canonical_exponential_profile T_q'(0)=S at h=0.001: slope=0.65800721588, S=0.658075994872
+[PASS] canonical_exponential_profile Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50873730925, expected=1.50882949206
+[PASS] canonical_exponential_profile T_s'(0) at h=0.0005: slope=0.999932436776
+[PASS] canonical_exponential_profile T_q'(0)=S at h=0.0005: slope=0.658008296486, S=0.658075994872
+[PASS] canonical_exponential_profile Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50873804168, expected=1.50882949206
+[PASS] canonical_exponential_profile forward-slope self-consistency: avg slope=1.50875922685, expected=1.50882949206
+
+=== canonical_exponential_profile (explicit_canonical) ===
+sigma0 = 1.80594111096
+assumptions:
+  - positive normalized canonical exponential source
+  - canonical lower-compensated Family-1 branch
+g=0.75803508653, S=0.658075994872, R=0.249999996282, Pi_direct=1.50875922685, T_hat=0.901484054174
+[PASS] canonical_exponential_profile normalization: integral=1
+[PASS] canonical_exponential_profile positivity: min sigma=0.428470008749
+[PASS] canonical_exponential_profile cosine moment stays in the positive-source range: g=0.75803508653
+[PASS] canonical_exponential_profile expected g: g=0.75803508653, expected=0.758035078945
+[PASS] canonical_exponential_profile expected S: S=0.658075994872, expected=0.658075937605
+[PASS] canonical_exponential_profile expected Pi: Pi=1.50875922685, expected=1.50882951349
+[PASS] canonical_exponential_profile hits g_*: g=0.75803508653, g_*=0.758035078945
+[PASS] canonical_exponential_profile hits R=1/4: R=0.249999996282
+[PASS] derivative_match_reference_profile T_s'(0) at h=0.002: slope=0.999986356802
+[PASS] derivative_match_reference_profile T_q'(0)=S at h=0.002: slope=0.657828817824, S=0.657844617499
+[PASS] derivative_match_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.52463832706, expected=1.52465621016
+[PASS] derivative_match_reference_profile T_s'(0) at h=0.001: slope=0.999945457524
+[PASS] derivative_match_reference_profile T_q'(0)=S at h=0.001: slope=0.657789534937, S=0.657844617499
+[PASS] derivative_match_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.52458126217, expected=1.52465621016
+[PASS] derivative_match_reference_profile T_s'(0) at h=0.0005: slope=0.99994545833
+[PASS] derivative_match_reference_profile T_q'(0)=S at h=0.0005: slope=0.657789940687, S=0.657844617499
+[PASS] derivative_match_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.52458109013, expected=1.52465621016
+[PASS] derivative_match_reference_profile forward-slope self-consistency: avg slope=1.52460022645, expected=1.52465621016
+
+=== derivative_match_reference_profile (derivative_match) ===
+sigma0 = 1.80594111096
+assumptions:
+  - positive normalized reference profile
+  - not assumed to solve the co-evolving fixed-point equation
+g=0.785398191434, S=0.657844617499, R=0.23676609425, Pi_direct=1.52460022645, T_hat=0.901484054174
+[PASS] derivative_match_reference_profile normalization: integral=1
+[PASS] derivative_match_reference_profile positivity: min sigma=9.61835381196e-17
+[PASS] derivative_match_reference_profile cosine moment stays in the positive-source range: g=0.785398191434
+[PASS] broad_mixture_reference_profile T_s'(0) at h=0.002: slope=0.999989433641
+[PASS] broad_mixture_reference_profile T_q'(0)=S at h=0.002: slope=0.611972326158, S=0.611984899869
+[PASS] broad_mixture_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.002: slope=3.84600260757, expected=3.84603521274
+[PASS] broad_mixture_reference_profile T_s'(0) at h=0.001: slope=0.999957746082
+[PASS] broad_mixture_reference_profile T_q'(0)=S at h=0.001: slope=0.611942143364, S=0.611984899869
+[PASS] broad_mixture_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.001: slope=3.84589492979, expected=3.84603521274
+[PASS] broad_mixture_reference_profile T_s'(0) at h=0.0005: slope=0.999957746388
+[PASS] broad_mixture_reference_profile T_q'(0)=S at h=0.0005: slope=0.611942520516, S=0.611984899869
+[PASS] broad_mixture_reference_profile Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=3.84589443511, expected=3.84603521274
+[PASS] broad_mixture_reference_profile forward-slope self-consistency: avg slope=3.84593065749, expected=3.84603521274
+
+=== broad_mixture_reference_profile (convex_blend) ===
+sigma0 = 4.65103355017
+assumptions:
+  - positive convex blend of uniform and derivative-match profiles
+  - not assumed to be compensated or fixed-point
+g=0.693155556272, S=0.611984899869, R=0.282816539908, Pi_direct=3.84593065749, T_hat=1.44670836646
+[PASS] broad_mixture_reference_profile normalization: integral=1
+[PASS] broad_mixture_reference_profile positivity: min sigma=0.62000000841
+[PASS] broad_mixture_reference_profile cosine moment stays in the positive-source range: g=0.693155556272
+[PASS] frozen_canonical_fixed_point T_s'(0) at h=0.002: slope=0.999983331117
+[PASS] frozen_canonical_fixed_point T_q'(0)=S at h=0.002: slope=0.621582610559, S=0.621601316751
+[PASS] frozen_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.48855289153, expected=1.48857344383
+[PASS] frozen_canonical_fixed_point T_s'(0) at h=0.001: slope=0.999945090268
+[PASS] frozen_canonical_fixed_point T_q'(0)=S at h=0.001: slope=0.621545896734, S=0.621601316751
+[PASS] frozen_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.48850257559, expected=1.48857344383
+[PASS] frozen_canonical_fixed_point T_s'(0) at h=0.0005: slope=0.999945626046
+[PASS] frozen_canonical_fixed_point T_q'(0)=S at h=0.0005: slope=0.621546815106, S=0.621601316751
+[PASS] frozen_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.48850307428, expected=1.48857344383
+[PASS] frozen_canonical_fixed_point forward-slope self-consistency: avg slope=1.4885195138, expected=1.48857344383
+
+=== frozen_canonical_fixed_point (fixed_point) ===
+sigma0 = 1.80594111096
+assumptions:
+  - positive co-evolving fixed point on the frozen canonical traction slice
+g=0.693352419668, S=0.621601316751, R=0.282713904908, Pi_direct=1.4885195138, T_hat=0.901484054174
+[PASS] frozen_canonical_fixed_point normalization: integral=1
+[PASS] frozen_canonical_fixed_point positivity: min sigma=0.783322966392
+[PASS] frozen_canonical_fixed_point cosine moment stays in the positive-source range: g=0.693352419668
+[PASS] frozen_canonical_fixed_point expected g: g=0.693352419668, expected=0.693352419668
+[PASS] frozen_canonical_fixed_point expected S: S=0.621601316751, expected=0.621601316751
+[PASS] frozen_canonical_fixed_point expected R: R=0.282713904908, expected=0.282713904908
+[PASS] frozen_canonical_fixed_point expected Pi: Pi=1.4885195138, expected=1.48857344383
+[PASS] frozen_canonical_fixed_point fixed-point residual: L_inf residual=6.88338275268e-15
+[PASS] renormalized_canonical_fixed_point T_s'(0) at h=0.002: slope=0.999964083981
+[PASS] renormalized_canonical_fixed_point T_q'(0)=S at h=0.002: slope=0.670324006966, S=0.670362115673
+[PASS] renormalized_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.002: slope=3.87144164209, expected=3.87156437748
+[PASS] renormalized_canonical_fixed_point T_s'(0) at h=0.001: slope=0.999906848347
+[PASS] renormalized_canonical_fixed_point T_q'(0)=S at h=0.001: slope=0.670268414263, S=0.670362115673
+[PASS] renormalized_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.001: slope=3.87124007812, expected=3.87156437748
+[PASS] renormalized_canonical_fixed_point T_s'(0) at h=0.0005: slope=0.999909153408
+[PASS] renormalized_canonical_fixed_point T_q'(0)=S at h=0.0005: slope=0.670271131443, S=0.670362115673
+[PASS] renormalized_canonical_fixed_point Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=3.87124763961, expected=3.87156437748
+[PASS] renormalized_canonical_fixed_point forward-slope self-consistency: avg slope=3.8713097866, expected=3.87156437748
+
+=== renormalized_canonical_fixed_point (fixed_point) ===
+sigma0 = 4.65103355017
+assumptions:
+  - positive co-evolving fixed point at the numerically located renormalized canonical traction
+g=0.758035078945, S=0.670362115673, R=0.25, Pi_direct=3.8713097866, T_hat=1.44670836646
+[PASS] renormalized_canonical_fixed_point normalization: integral=1
+[PASS] renormalized_canonical_fixed_point positivity: min sigma=0.567207141386
+[PASS] renormalized_canonical_fixed_point cosine moment stays in the positive-source range: g=0.758035078945
+[PASS] renormalized_canonical_fixed_point expected g: g=0.758035078945, expected=0.758035078945
+[PASS] renormalized_canonical_fixed_point expected S: S=0.670362115673, expected=0.670362115673
+[PASS] renormalized_canonical_fixed_point expected R: R=0.25, expected=0.25
+[PASS] renormalized_canonical_fixed_point expected Pi: Pi=3.8713097866, expected=3.87156437748
+[PASS] renormalized_canonical_fixed_point hits g_*: g=0.758035078945, g_*=0.758035078945
+[PASS] renormalized_canonical_fixed_point hits R=1/4: R=0.25
+[PASS] renormalized_canonical_fixed_point fixed-point residual: L_inf residual=1.82076576039e-14
+
+=== Stage 154: first-order transport from the canonical branch ===
+[PASS] canonical_transport_base T_s'(0) at h=0.002: slope=0.999979227395
+[PASS] canonical_transport_base T_q'(0)=S at h=0.002: slope=0.658053066823, S=0.658075994872
+[PASS] canonical_transport_base Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50880232963, expected=1.50882949206
+[PASS] canonical_transport_base T_s'(0) at h=0.001: slope=0.99993176106
+[PASS] canonical_transport_base T_q'(0)=S at h=0.001: slope=0.65800721588, S=0.658075994872
+[PASS] canonical_transport_base Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50873730925, expected=1.50882949206
+[PASS] canonical_transport_base T_s'(0) at h=0.0005: slope=0.999932436776
+[PASS] canonical_transport_base T_q'(0)=S at h=0.0005: slope=0.658008296486, S=0.658075994872
+[PASS] canonical_transport_base Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50873804168, expected=1.50882949206
+[PASS] canonical_transport_base forward-slope self-consistency: avg slope=1.50875922685, expected=1.50882949206
+[PASS] canonical transport base Pi matches Pi_*: Pi_direct=1.50875922685, Pi_*=1.50882951349
+
+=== uniform_broadening_direction (toward_uniform) ===
+lambda = 0
+direction rates: dg/dε=-0.121415329303, dS/dε=-0.0741986056037, dR/dε=0.0595197424588, dPi/dε=-0.0372364449913
+[PASS] uniform_broadening_direction ε=0.01 T_s'(0) at h=0.002: slope=0.999979348316
+[PASS] uniform_broadening_direction ε=0.01 T_q'(0)=S at h=0.002: slope=0.65731120351, S=0.657334008243
+[PASS] uniform_broadening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50843052957, expected=1.50845750477
+[PASS] uniform_broadening_direction ε=0.01 T_s'(0) at h=0.001: slope=0.999932096227
+[PASS] uniform_broadening_direction ε=0.01 T_q'(0)=S at h=0.001: slope=0.657265565023, S=0.657334008243
+[PASS] uniform_broadening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50836584927, expected=1.50845750477
+[PASS] uniform_broadening_direction ε=0.01 T_s'(0) at h=0.0005: slope=0.999932765186
+[PASS] uniform_broadening_direction ε=0.01 T_q'(0)=S at h=0.0005: slope=0.657266638419, S=0.657334008243
+[PASS] uniform_broadening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.5083665716, expected=1.50845750477
+[PASS] uniform_broadening_direction ε=0.01 forward-slope self-consistency: avg slope=1.50838765015, expected=1.50845750477
+epsilon = 0.01
+  g=0.756820933161, S=0.657334008243, R=0.250595547999, deltaPi_exact=-0.000371576705005, deltaPi_linear=-0.000372364449913
+[PASS] uniform_broadening_direction ε=0.01 normalization: integral=1
+[PASS] uniform_broadening_direction ε=0.01 positivity: min sigma=0.434185308662
+[PASS] uniform_broadening_direction ε=0.01 cosine moment stays in the positive-source range: g=0.756820933161
+[PASS] uniform_broadening_direction ε=0.01 first-order deltaPi envelope: relative error=0.00211552125307, envelope=0.02
+[PASS] uniform_broadening_direction ε=0.02 T_s'(0) at h=0.002: slope=0.999979469236
+[PASS] uniform_broadening_direction ε=0.02 T_q'(0)=S at h=0.002: slope=0.656569340196, S=0.656592021614
+[PASS] uniform_broadening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.5080594852, expected=1.50808627341
+[PASS] uniform_broadening_direction ε=0.02 T_s'(0) at h=0.001: slope=0.999932431394
+[PASS] uniform_broadening_direction ε=0.02 T_q'(0)=S at h=0.001: slope=0.656523914166, S=0.656592021614
+[PASS] uniform_broadening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50799514458, expected=1.50808627341
+[PASS] uniform_broadening_direction ε=0.02 T_s'(0) at h=0.0005: slope=0.999933093596
+[PASS] uniform_broadening_direction ε=0.02 T_q'(0)=S at h=0.0005: slope=0.656524980353, S=0.656592021614
+[PASS] uniform_broadening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50799585682, expected=1.50808627341
+[PASS] uniform_broadening_direction ε=0.02 forward-slope self-consistency: avg slope=1.50801682887, expected=1.50808627341
+epsilon = 0.02
+  g=0.755606779792, S=0.656592021614, R=0.251191808236, deltaPi_exact=-0.000742397987066, deltaPi_linear=-0.000744728899826
+[PASS] uniform_broadening_direction ε=0.02 normalization: integral=1
+[PASS] uniform_broadening_direction ε=0.02 positivity: min sigma=0.439900608574
+[PASS] uniform_broadening_direction ε=0.02 cosine moment stays in the positive-source range: g=0.755606779792
+[PASS] uniform_broadening_direction ε=0.02 first-order deltaPi envelope: relative error=0.00312988090161, envelope=0.04
+[PASS] uniform_broadening_direction ε=0.05 T_s'(0) at h=0.002: slope=0.999979831998
+[PASS] uniform_broadening_direction ε=0.05 T_q'(0)=S at h=0.002: slope=0.654343750257, S=0.654366061728
+[PASS] uniform_broadening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50695091466, expected=1.50697714331
+[PASS] uniform_broadening_direction ε=0.05 T_s'(0) at h=0.001: slope=0.999933436896
+[PASS] uniform_broadening_direction ε=0.05 T_q'(0)=S at h=0.001: slope=0.654298961595, S=0.654366061728
+[PASS] uniform_broadening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50688759069, expected=1.50697714331
+[PASS] uniform_broadening_direction ε=0.05 T_s'(0) at h=0.0005: slope=0.999934078826
+[PASS] uniform_broadening_direction ε=0.05 T_q'(0)=S at h=0.0005: slope=0.654300006152, S=0.654366061728
+[PASS] uniform_broadening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50688827275, expected=1.50697714331
+[PASS] uniform_broadening_direction ε=0.05 forward-slope self-consistency: avg slope=1.50690892603, expected=1.50697714331
+epsilon = 0.05
+  g=0.751964319686, S=0.654366061728, R=0.252984840069, deltaPi_exact=-0.00185030082348, deltaPi_linear=-0.00186182224957
+[PASS] uniform_broadening_direction ε=0.05 normalization: integral=1
+[PASS] uniform_broadening_direction ε=0.05 positivity: min sigma=0.457046508312
+[PASS] uniform_broadening_direction ε=0.05 cosine moment stays in the positive-source range: g=0.751964319686
+[PASS] uniform_broadening_direction ε=0.05 first-order deltaPi envelope: relative error=0.00618825244161, envelope=0.1
+
+=== midpoint_interpolation_direction (midpoint) ===
+lambda = 0.5
+direction rates: dg/dε=-0.0470261097344, dS/dε=-0.037214963515, dR/dε=0.0230529534969, dPi/dε=-0.0105951912203
+[PASS] midpoint_interpolation_direction ε=0.01 T_s'(0) at h=0.002: slope=0.999979323502
+[PASS] midpoint_interpolation_direction ε=0.01 T_q'(0)=S at h=0.002: slope=0.657681013915, S=0.657703844664
+[PASS] midpoint_interpolation_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50869660886, expected=1.50872363215
+[PASS] midpoint_interpolation_direction ε=0.01 T_s'(0) at h=0.001: slope=0.999931997126
+[PASS] midpoint_interpolation_direction ε=0.01 T_q'(0)=S at h=0.001: slope=0.65763530204, S=0.657703844664
+[PASS] midpoint_interpolation_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50863179749, expected=1.50872363215
+[PASS] midpoint_interpolation_direction ε=0.01 T_s'(0) at h=0.0005: slope=0.999932666089
+[PASS] midpoint_interpolation_direction ε=0.01 T_q'(0)=S at h=0.0005: slope=0.657636375667, S=0.657703844664
+[PASS] midpoint_interpolation_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50863252042, expected=1.50872363215
+[PASS] midpoint_interpolation_direction ε=0.01 forward-slope self-consistency: avg slope=1.50865364226, expected=1.50872363215
+epsilon = 0.01
+  g=0.757564825357, S=0.657703844664, R=0.250230578996, deltaPi_exact=-0.000105584595832, deltaPi_linear=-0.000105951912203
+[PASS] midpoint_interpolation_direction ε=0.01 normalization: integral=1
+[PASS] midpoint_interpolation_direction ε=0.01 positivity: min sigma=0.429185308751
+[PASS] midpoint_interpolation_direction ε=0.01 cosine moment stays in the positive-source range: g=0.757564825357
+[PASS] midpoint_interpolation_direction ε=0.01 first-order deltaPi envelope: relative error=0.00346682153503, envelope=0.02
+[PASS] midpoint_interpolation_direction ε=0.02 T_s'(0) at h=0.002: slope=0.99997941961
+[PASS] midpoint_interpolation_direction ε=0.02 T_q'(0)=S at h=0.002: slope=0.657308961006, S=0.657331694456
+[PASS] midpoint_interpolation_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50859107179, expected=1.508617956
+[PASS] midpoint_interpolation_direction ε=0.02 T_s'(0) at h=0.001: slope=0.999932233192
+[PASS] midpoint_interpolation_direction ε=0.02 T_q'(0)=S at h=0.001: slope=0.6572633882, S=0.657331694456
+[PASS] midpoint_interpolation_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50852646931, expected=1.508617956
+[PASS] midpoint_interpolation_direction ε=0.02 T_s'(0) at h=0.0005: slope=0.999932895402
+[PASS] midpoint_interpolation_direction ε=0.02 T_q'(0)=S at h=0.0005: slope=0.657264454848, S=0.657331694456
+[PASS] midpoint_interpolation_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50852718276, expected=1.508617956
+[PASS] midpoint_interpolation_direction ε=0.02 forward-slope self-consistency: avg slope=1.50854824128, expected=1.508617956
+epsilon = 0.02
+  g=0.757094564184, S=0.657331694456, R=0.250461267998, deltaPi_exact=-0.000210985571615, deltaPi_linear=-0.000211903824405
+[PASS] midpoint_interpolation_direction ε=0.02 normalization: integral=1
+[PASS] midpoint_interpolation_direction ε=0.02 positivity: min sigma=0.429900608753
+[PASS] midpoint_interpolation_direction ε=0.02 cosine moment stays in the positive-source range: g=0.757094564184
+[PASS] midpoint_interpolation_direction ε=0.02 first-order deltaPi envelope: relative error=0.00433334694691, envelope=0.04
+[PASS] midpoint_interpolation_direction ε=0.05 T_s'(0) at h=0.002: slope=0.999979707932
+[PASS] midpoint_interpolation_direction ε=0.05 T_q'(0)=S at h=0.002: slope=0.656192802282, S=0.656215243833
+[PASS] midpoint_interpolation_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50827556483, expected=1.50830203231
+[PASS] midpoint_interpolation_direction ε=0.05 T_s'(0) at h=0.001: slope=0.99993294139
+[PASS] midpoint_interpolation_direction ε=0.05 T_q'(0)=S at h=0.001: slope=0.656147646681, S=0.656215243833
+[PASS] midpoint_interpolation_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.5082115884, expected=1.50830203231
+[PASS] midpoint_interpolation_direction ε=0.05 T_s'(0) at h=0.0005: slope=0.99993358334
+[PASS] midpoint_interpolation_direction ε=0.05 T_q'(0)=S at h=0.0005: slope=0.656148692391, S=0.656215243833
+[PASS] midpoint_interpolation_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50821227342, expected=1.50830203231
+[PASS] midpoint_interpolation_direction ε=0.05 forward-slope self-consistency: avg slope=1.50823314222, expected=1.50830203231
+epsilon = 0.05
+  g=0.755683780664, S=0.656215243833, R=0.251153972731, deltaPi_exact=-0.000526084636739, deltaPi_linear=-0.000529759561013
+[PASS] midpoint_interpolation_direction ε=0.05 normalization: integral=1
+[PASS] midpoint_interpolation_direction ε=0.05 positivity: min sigma=0.432046508758
+[PASS] midpoint_interpolation_direction ε=0.05 cosine moment stays in the positive-source range: g=0.755683780664
+[PASS] midpoint_interpolation_direction ε=0.05 first-order deltaPi envelope: relative error=0.00693696639995, envelope=0.1
+
+=== derivative_sharpening_direction (toward_derivative_match) ===
+lambda = 1
+direction rates: dg/dε=0.0273631124894, dS/dε=-0.000231320106084, dR/dε=-0.0134138367667, dPi/dε=0.0160460635018
+[PASS] derivative_sharpening_direction ε=0.01 T_s'(0) at h=0.002: slope=0.999979298689
+[PASS] derivative_sharpening_direction ε=0.01 T_q'(0)=S at h=0.002: slope=0.658050824333, S=0.658073681098
+[PASS] derivative_sharpening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50896285958, expected=1.50898993098
+[PASS] derivative_sharpening_direction ε=0.01 T_s'(0) at h=0.001: slope=0.999931898025
+[PASS] derivative_sharpening_direction ε=0.01 T_q'(0)=S at h=0.001: slope=0.658005039071, S=0.658073681098
+[PASS] derivative_sharpening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50889791706, expected=1.50898993098
+[PASS] derivative_sharpening_direction ε=0.01 T_s'(0) at h=0.0005: slope=0.999932566992
+[PASS] derivative_sharpening_direction ε=0.01 T_q'(0)=S at h=0.0005: slope=0.658006112928, S=0.658073681098
+[PASS] derivative_sharpening_direction ε=0.01 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.5088986406, expected=1.50898993098
+[PASS] derivative_sharpening_direction ε=0.01 forward-slope self-consistency: avg slope=1.50891980575, expected=1.50898993098
+epsilon = 0.01
+  g=0.758308717579, S=0.658073681098, R=0.249865875945, deltaPi_exact=0.000160578892799, deltaPi_linear=0.000160460635018
+[PASS] derivative_sharpening_direction ε=0.01 normalization: integral=1
+[PASS] derivative_sharpening_direction ε=0.01 positivity: min sigma=0.424185308662
+[PASS] derivative_sharpening_direction ε=0.01 cosine moment stays in the positive-source range: g=0.758308717579
+[PASS] derivative_sharpening_direction ε=0.01 first-order deltaPi envelope: relative error=0.000736989364437, envelope=0.02
+[PASS] derivative_sharpening_direction ε=0.02 T_s'(0) at h=0.002: slope=0.999979369983
+[PASS] derivative_sharpening_direction ε=0.02 T_q'(0)=S at h=0.002: slope=0.658048581843, S=0.658071367324
+[PASS] derivative_sharpening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50912334568, expected=1.509150326
+[PASS] derivative_sharpening_direction ε=0.02 T_s'(0) at h=0.001: slope=0.999932034989
+[PASS] derivative_sharpening_direction ε=0.02 T_q'(0)=S at h=0.001: slope=0.658002862261, S=0.658071367324
+[PASS] derivative_sharpening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.50905848104, expected=1.509150326
+[PASS] derivative_sharpening_direction ε=0.02 T_s'(0) at h=0.0005: slope=0.999932697208
+[PASS] derivative_sharpening_direction ε=0.02 T_q'(0)=S at h=0.0005: slope=0.65800392937, S=0.658071367324
+[PASS] derivative_sharpening_direction ε=0.02 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.5090591957, expected=1.509150326
+[PASS] derivative_sharpening_direction ε=0.02 forward-slope self-consistency: avg slope=1.50908034081, expected=1.509150326
+epsilon = 0.02
+  g=0.758582348628, S=0.658071367324, R=0.249731791595, deltaPi_exact=0.000321113955484, deltaPi_linear=0.000320921270036
+[PASS] derivative_sharpening_direction ε=0.02 normalization: integral=1
+[PASS] derivative_sharpening_direction ε=0.02 positivity: min sigma=0.419900608574
+[PASS] derivative_sharpening_direction ε=0.02 cosine moment stays in the positive-source range: g=0.758582348628
+[PASS] derivative_sharpening_direction ε=0.02 first-order deltaPi envelope: relative error=0.000600413454645, envelope=0.04
+[PASS] derivative_sharpening_direction ε=0.05 T_s'(0) at h=0.002: slope=0.999979583865
+[PASS] derivative_sharpening_direction ε=0.05 T_q'(0)=S at h=0.002: slope=0.658041854373, S=0.658064426003
+[PASS] derivative_sharpening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.002: slope=1.50960454087, expected=1.50963124777
+[PASS] derivative_sharpening_direction ε=0.05 T_s'(0) at h=0.001: slope=0.999932445883
+[PASS] derivative_sharpening_direction ε=0.05 T_q'(0)=S at h=0.001: slope=0.657996331833, S=0.658064426003
+[PASS] derivative_sharpening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.001: slope=1.5095399101, expected=1.50963124777
+[PASS] derivative_sharpening_direction ε=0.05 T_s'(0) at h=0.0005: slope=0.999933087854
+[PASS] derivative_sharpening_direction ε=0.05 T_q'(0)=S at h=0.0005: slope=0.657997378696, S=0.658064426003
+[PASS] derivative_sharpening_direction ε=0.05 Phi'(0)=Sigma0(1-RS) at h=0.0005: slope=1.50954059809, expected=1.50963124777
+[PASS] derivative_sharpening_direction ε=0.05 forward-slope self-consistency: avg slope=1.50956168302, expected=1.50963124777
+epsilon = 0.05
+  g=0.759403241775, S=0.658064426003, R=0.249329754461, deltaPi_exact=0.000802456167141, deltaPi_linear=0.00080230317509
+[PASS] derivative_sharpening_direction ε=0.05 normalization: integral=1
+[PASS] derivative_sharpening_direction ε=0.05 positivity: min sigma=0.407046508312
+[PASS] derivative_sharpening_direction ε=0.05 cosine moment stays in the positive-source range: g=0.759403241775
+[PASS] derivative_sharpening_direction ε=0.05 first-order deltaPi envelope: relative error=0.000190691069761, envelope=0.1
+
+Stage 154 co-evolving map stress harness passed.

@@ -1,28 +1,28 @@
-\section[Stage 115]{Stage 115: Mouth Boundary-Layer Status After Explicit Source-Law Extraction}
+\section[Stage~132]{Stage~132: Exact Core-Balance Compensation Theorem}
 \label{stage:115}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~115 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~115 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage115_core_balance_compensation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage115_core_balance_compensation_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
 
 \begin{quote}
-The source-shape ambiguity is reduced to the selected bias \(\Pi_m\).
+Coupling balance \(g_s^2(K_sK_q+\lambda^2)=4(K_sg_q-\lambda g_s)^2\) realizes the compensated branch.
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
-\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
-\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+\item Check the Schur complement signs in the two-channel core model.
+\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+\item Check parent overlap ratios before interpreting them as actual branch values.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Stages 116--128 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
 

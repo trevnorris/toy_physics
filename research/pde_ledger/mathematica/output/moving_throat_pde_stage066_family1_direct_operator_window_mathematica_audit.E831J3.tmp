@@ -1,7 +1,0 @@
-
-========================================================================================
-STAGE 066 — DIRECT FAMILY-1 OPERATOR WINDOW
-========================================================================================
-dPe_*/dXi = delta[pe[xi]]/(1 - xi*Derivative[1][delta][pe[xi]])
-implicit fixed-point derivative = 0
-PASS: implicit fixed-point derivative

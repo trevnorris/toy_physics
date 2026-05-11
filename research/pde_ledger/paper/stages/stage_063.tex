@@ -1,33 +1,41 @@
-\section[Stage 063]{Stage 063: Family--1 Demand Thresholds in \texorpdfstring{$\zeta_{\rm req}$}{zeta req}}
+\section[Stage 063]{Stage 063: Parent-Overlap Threshold Theorem and Microscopic Success/No-Go Tests}
 \label{stage:063}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the conversion of \(\mathrm{Pe}_{\rm req}\) windows to \(\zeta_{\rm req}\) windows.}
-\stagefield{Purpose}{Stage~063 expresses the explicit Family--1 wall-depth windows in the support-ratio demand variable.}
-\stagefield{Inputs}{The demand map \(\zeta_{\rm F1}=A_{\rm F1}\Omega_{\mathrm{Pe}}^2\) and the Stage~061 Peclet windows.}
+\claimstatus{\StatusExactClosure{} after the Stage~062 parent-overlap projection.}
+\stagefield{Purpose}{Stage~063 turns the microscopic gain formula into exact fail/succeed surfaces for confinement-loading amplitude and source/support coherence.}
+\stagefield{Inputs}{The parent gain formula, \(G_{\rm fail}\), \(G_{\rm suff}\), and the Cauchy bound on \(C_{\sigma\phi}^2\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage063_family1_zeta_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage063_family1_zeta_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage063_family1_zeta_thresholds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage063_parent_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage063_parent_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage063_parent_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage063_parent_thresholds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-At \(\lambda_\mu=1\), the natural shell-weighted thresholds are
+At fixed profile shapes, the amplitude thresholds are
 \begin{equation}
-\label{eq:app-stage063-zeta-chi}
+\label{eq:app-stage063-gphi-thresholds}
 \boxed{
-\zeta_{\rm suff}^{(\chi)}\simeq2.46622291347846,
+g_{\phi,{\rm fail}}^2
+=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm fail}}{\rho_*O_{\sigma\phi}^2},
 \qquad
-\zeta_{\rm fail}^{(\chi)}\simeq2.46752913273870}.
+ g_{\phi,{\rm suff}}^2
+=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm suff}}{\rho_*O_{\sigma\phi}^2}}.
 \end{equation}
-The conservative floor gives
+At fixed \(g_\phi\), the coherence thresholds are
 \begin{equation}
-\label{eq:app-stage063-zeta-J}
+\label{eq:app-stage063-coherence-thresholds}
 \boxed{
-\zeta_{\rm suff}^{(J)}\simeq2.44257571477179,
+C_{\rm fail}^2=\frac{mc_{s,*}^2K_XG_{\rm fail}}{\rho_*g_\phi^2N_{\phi\phi}},
 \qquad
-\zeta_{\rm fail}^{(J)}\simeq2.46752736855058}.
+C_{\rm suff}^2=\frac{mc_{s,*}^2K_XG_{\rm suff}}{\rho_*g_\phi^2N_{\phi\phi}}}.
 \end{equation}
-Both are close to the hard Family--1 ceiling \eqref{eq:app-stage062-ceiling}; the natural branch nearly reaches the largest possible constructive support ratio in this family.
+The Cauchy bound yields the no-go:
+\begin{equation}
+\label{eq:app-stage063-cauchy-nogo}
+C_{\rm fail}^2>1
+\quad\Longrightarrow\quad
+\text{no source profile in this support channel can reach even the fail threshold.}
+\end{equation}
 
-\stagefield{Output}{Demand thresholds \eqref{eq:app-stage063-zeta-chi}--\eqref{eq:app-stage063-zeta-J}.}
-\stagefield{Downstream use}{Stage~064 rewrites the same window in \(\Pi_{\rm tr}\).}
+\stagefield{Output}{Amplitude thresholds \eqref{eq:app-stage063-gphi-thresholds}, coherence thresholds \eqref{eq:app-stage063-coherence-thresholds}, and Cauchy no-go \eqref{eq:app-stage063-cauchy-nogo}.}
+\stagefield{Downstream use}{Stage~064 shows that parent equilibrium tends toward matched source/support alignment; Stages~065--069 reduce the thresholds to a wall figure of merit.}
 

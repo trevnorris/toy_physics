@@ -1,0 +1,30 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+# Date: 2026-05-11T12:44:14-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================================================
+STAGE 45 — PARENT-ACTION PROJECTION OF THE MICROSCOPIC GAIN
+================================================================================
+U(rho) = K*rho**5/4
+h(rho) = 5*K*rho**4/4
+h'(rho) = 5*K*rho**3
+c_s^2(rho) = 5*K*rho**4/m
+h'(rho) - m c_s^2 / rho = 0
+Theta_sigma = N_ss*cs_star_sq*m/rho_star
+Lambda_phi = O_sp*g_phi
+chi_sigma^(eff) = rho_star/(N_ss*cs_star_sq*m)
+G_micro = O_sp**2*g_phi**2*rho_star/(K_X*N_ss*cs_star_sq*m)
+G_micro - expected parent formula = 0
+C_(sigma phi)^2 definition = O_sp**2/(N_pp*N_ss)
+coherence-factor decomposition = 0
+Xi_micro = O_sp**2*g_phi**2*kappa*rho_star/(K_X*N_ss*cs_star_sq*m)
+Xi_micro - parent projected formula = 0
+
+All Stage 45 symbolic checks passed.
+
+EXIT_CODE: 0

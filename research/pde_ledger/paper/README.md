@@ -50,4 +50,4 @@ The canonical stage narrative currently lives in
 as template inventory unless and until an explicit generation pipeline is put
 back in charge of the appendix text.
 
-Generated stage count: 236.
+Generated stage count: 253.

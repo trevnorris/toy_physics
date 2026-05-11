@@ -2,25 +2,25 @@
 
 ## 2026-04-21 Status Update
 
-- `028-031`: hardened in both CAS layers. The numerical check now evaluates
+- `045-048`: hardened in both CAS layers. The numerical check now evaluates
   `R_target(zeta)` at distinct `zeta` values instead of comparing a shared
   scalar placeholder to itself, and the support-load branch checks are now
   phrased as real threshold / pre-threshold assertions rather than a misleading
   signed residual print.
-- `089`: hardened in both CAS layers. The old reciprocal-then-multiply
+- `106`: hardened in both CAS layers. The old reciprocal-then-multiply
   tautology is gone. The stress layer now checks the exact canonical
   coefficient against the point-particle truncation, verifies the
   `O((a/r)^4)` remainder, and uses symmetric `chi_Q` perturbations to confirm
   the expected monotone and convex branch response.
-- `137`: hardened in both CAS layers. The tautological per-profile
+- `154`: hardened in both CAS layers. The tautological per-profile
   `R(g)`-shift identity was removed; the harness now checks the loaded
   compensation moment `g_*` against its exact closed form and keeps the
   genuinely nonlinear fixed-point / transport checks.
-- `138-139` plain harness: retired. The exploratory plain harness was weaker
+- `155-156` plain harness: retired. The exploratory plain harness was weaker
   than the fixed-point harness and had drifted out of maintenance. Both plain
   entry points now delegate to the authoritative fixed-point stress harness so
   the stale logic cannot silently pass as an independent check. The old
-  `stage138_139_config.json` file has been removed so the repo no longer keeps
+  `stage155_156_config.json` file has been removed so the repo no longer keeps
   a dead scan grid with the known root embedded in it.
 
 ## Purpose
@@ -38,12 +38,12 @@ This plan defines the first adversarial numerical pass.
 
 ## Priority Order
 
-1. `028-031`
-2. `089`
-3. `108`
-4. `125-140`
-5. `168-170`
-6. `003-004`, `041`, `153`
+1. `045-048`
+2. `106`
+3. `125`
+4. `142-157`
+5. `185-187`
+6. `003-004`, `058`, `170`
 
 That order follows risk, not chronology.
 
@@ -62,7 +62,7 @@ That order follows risk, not chronology.
 
 ## Test Families
 
-## 1. Coherent support chain: Stages `028-031`
+## 1. Coherent support chain: Stages `045-048`
 
 ### Purpose
 
@@ -83,13 +83,13 @@ Stress the constructive coherent branch and the support-compensation theorem.
 
 ### Required checks
 
-- Stage `028`: direct numerical equality `rho0 = sigma0` and
+- Stage `045`: direct numerical equality `rho0 = sigma0` and
   `R_tr = R_U = R_phi`.
-- Stage `029`: sign of `dG_tr/dR`, `dF_tr/dR`, and residual ordering
+- Stage `046`: sign of `dG_tr/dR`, `dF_tr/dR`, and residual ordering
   `E_tr > E_flat`.
-- Stage `030`: independence of `R_target` from `zeta` by direct numerical
+- Stage `047`: independence of `R_target` from `zeta` by direct numerical
   variation.
-- Stage `031`: verify `zeta_req < zeta_crit < 1/eps` and that the target is
+- Stage `048`: verify `zeta_req < zeta_crit < 1/eps` and that the target is
   reached before softening.
 
 ### Failure modes to watch
@@ -98,7 +98,7 @@ Stress the constructive coherent branch and the support-compensation theorem.
 - numerical branch switching near `xi -> 1`,
 - apparent compensation failure caused only by evaluating outside `0 < eps < 1`.
 
-## 2. Canonical outgoing closure: Stage `089`
+## 2. Canonical outgoing closure: Stage `106`
 
 ### Purpose
 
@@ -127,7 +127,7 @@ of an overconstrained symbolic normalization.
 - accidental numerical insensitivity masking a real branch choice,
 - apparent agreement only at symbolic normalization points.
 
-## 3. Positive-source mouth theorem: Stage `108`
+## 3. Positive-source mouth theorem: Stage `125`
 
 ### Purpose
 
@@ -153,7 +153,7 @@ localized positive sources.
 - numerical quadrature artifacts near endpoint-localized sources,
 - accidental drift outside positivity due to basis truncation.
 
-## 4. Mouth/core closure and co-evolution: Stages `125-140`
+## 4. Mouth/core closure and co-evolution: Stages `142-157`
 
 ### Purpose
 
@@ -170,29 +170,29 @@ co-evolving fixed-point continuation.
   `1 - R_q S_q -> 0+`
 - Frozen-traction slice:
   `Sigma0 = Sigma0^*`
-- Renormalized compensation bracket around the Stage-`139` root
+- Renormalized compensation bracket around the Stage-`156` root
 
 ### Required checks
 
-- Stage `125`: direct residual of the self-consistent mouth/core equations.
-- Stage `126`: confirm `g_Pi < 1` for finite `Pi` and singular growth of
+- Stage `142`: direct residual of the self-consistent mouth/core equations.
+- Stage `143`: confirm `g_Pi < 1` for finite `Pi` and singular growth of
   `Tmhat`.
-- Stage `127`: numerical exclusion of upper/equal-normalized branches inside the
+- Stage `144`: numerical exclusion of upper/equal-normalized branches inside the
   explicit family.
-- Stages `129-130`: compare first-order predictions against finite but small
+- Stages `146-147`: compare first-order predictions against finite but small
   `eps` solves.
-- Stages `133-135`: compare covariance-based first-order corrections with direct
+- Stages `150-152`: compare covariance-based first-order corrections with direct
   numerical profile integration.
-- Stages `138-139`: solve the fixed-point map from multiple seeds and record
+- Stages `155-156`: solve the fixed-point map from multiple seeds and record
   whether all interior seeds converge to the same branch on the analyzed window.
 
 ### Failure modes to watch
 
 - hidden branch hopping near `1 - R_q S_q = 0`,
 - first-order formulas breaking earlier than expected,
-- apparent uniqueness in `138-139` caused only by a narrow seed choice.
+- apparent uniqueness in `155-156` caused only by a narrow seed choice.
 
-## 5. Microscopic invariant/quotient chain: Stages `168-170`
+## 5. Microscopic invariant/quotient chain: Stages `185-187`
 
 ### Purpose
 
@@ -211,10 +211,10 @@ near the boundary of the positive coherent sector.
 
 ### Required checks
 
-- Stage `168`: compare direct observable defect with monomial-drift residual.
-- Stage `169`: numerically verify that tangent directions in `T_id G_*` lie in
+- Stage `185`: compare direct observable defect with monomial-drift residual.
+- Stage `186`: numerically verify that tangent directions in `T_id G_*` lie in
   `ker(M_*)`.
-- Stage `170`: pick pairs of positive microscopic states with identical
+- Stage `187`: pick pairs of positive microscopic states with identical
   invariant triples and verify that the solved finite log-ratio laws map one to
   the other.
 
@@ -224,7 +224,7 @@ near the boundary of the positive coherent sector.
 - numerically ill-conditioned monomial comparisons due to logarithmic scaling,
 - false positives from comparing nearly equal large products instead of logs.
 
-## 6. Foundational spot checks: Stages `003-004`, `041`, `153`
+## 6. Foundational spot checks: Stages `003-004`, `058`, `170`
 
 ### Purpose
 
@@ -238,10 +238,10 @@ points and deserve a small adversarial pass.
   resonance boundary.
 - Stage `004`: compare the outgoing odd term with direct numerical evaluation of
   the reduced transfer factor on small `omega`.
-- Stage `041`: solve `Pe = Xi Delta(Pe; kappa, eta)` numerically for small,
+- Stage `058`: solve `Pe = Xi Delta(Pe; kappa, eta)` numerically for small,
   moderate, and larger `Xi`, then compare with the bracket
   `Xi Delta_0 <= Pe_* <= Xi Delta_inf`.
-- Stage `153`: numerically reconstruct `(K_A, G_A)` from grouped lane data and
+- Stage `170`: numerically reconstruct `(K_A, G_A)` from grouped lane data and
   verify the hidden-even consistency law.
 
 ## Artifact Layout
@@ -255,11 +255,11 @@ points and deserve a small adversarial pass.
 
 Suggested file naming:
 
-- `stage028_031_tracking_stress.py`
-- `stage089_canonical_outgoing_stress.py`
-- `stage108_positive_source_stress.py`
-- `stage125_140_mouth_core_stress.py`
-- `stage168_170_orbit_stress.py`
+- `stage045_048_tracking_stress.py`
+- `stage106_canonical_outgoing_stress.py`
+- `stage125_positive_source_stress.py`
+- `stage142_140_mouth_core_stress.py`
+- `stage185_187_orbit_stress.py`
 
 and corresponding `.wl` files under the Mathematica numerical directory.
 
@@ -281,9 +281,9 @@ and corresponding `.wl` files under the Mathematica numerical directory.
 ## Recommended First Implementation Slice
 
 1. Build the shared sample-table format.
-2. Implement the `028-031` stress harness in Python and Mathematica.
-3. Implement the `138-139` multi-seed fixed-point stress check.
-4. Implement the `168-170` invariant/quotient conditioning check.
+2. Implement the `045-048` stress harness in Python and Mathematica.
+3. Implement the `155-156` multi-seed fixed-point stress check.
+4. Implement the `185-187` invariant/quotient conditioning check.
 
 That gives the best coverage of the remaining conceptual-risk surface with the
 least additional symbolic work.

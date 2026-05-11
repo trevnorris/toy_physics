@@ -8,8 +8,8 @@
 - **Notes:** `notes/moving_throat_pde_stage003_bdg_coupling.md`
 - **SymPy:** `scripts/moving_throat_pde_stage003_bdg_sympy_audit.py`
 - **Mathematica:** `mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl`
-- **Numerical stress:** `scripts/numerical/stage003_004_foundational_stress.py`
-- **Numerical stress (Mathematica):** `mathematica/numerical/stage003_004_foundational_stress.wl`
+- **Numerical stress:** `scripts/numerical/stage003_021_foundational_stress.py`
+- **Numerical stress (Mathematica):** `mathematica/numerical/stage003_021_foundational_stress.wl`
 
 ## Review Checklist
 

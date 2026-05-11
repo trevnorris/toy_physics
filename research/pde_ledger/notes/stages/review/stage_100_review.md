@@ -1,15 +1,12 @@
-# Review: Stage 100 — Outlet core status
+# Review: Stage 100 — Source map from mode integrals
 
-**Batch:** 14 — General DtN & Core Extraction
-**Status:** Verified (3× PASS, 2026-04-21)
-
-**This is a CHECKPOINT stage.** Also verify cross-stage consistency (Protocol C).
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat_pde_stage100_outlet_core_status.md`
-- **SymPy script:** `scripts/moving_throat_pde_stage100_outlet_core_status_sympy_audit.py`
-- **Mathematica script:** `mathematica/moving_throat_pde_stage100_outlet_core_status_mathematica_audit.wl`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage032_source_map_from_mode_integrals.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,60 +37,49 @@
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
-**Notes Derivation Review:** Faithful synthesis of Stages 097-099. All formulas verbatim from source stages. Compensation conditions correctly quoted. Remaining question honestly framed as microscopic throat-core realization.
-**Cross-Stage Consistency:** Stage 089→096→097-099→100 thread verified. Canonical chi_Q=1 and fingerprint Y-hat consistent. Four outlet coefficients map correctly between abstract (Stage 096) and concrete (Stage 097). Compensation values match throughout. No issues papered over. First concrete core model correctly not claimed as unique.
-**Issues Found:** None.
-
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The status note is a faithful consolidation of Stages 097-099: the concrete outlet-core model, the compensation surface, and the auxiliary D/N tube length are all carried forward correctly.
-2. The stage does not overclaim. It correctly treats the concrete throat-core realization as the remaining microscopic question rather than pretending the reduced closure is unique.
-3. The cross-stage logic is consistent with the canonical outgoing branch established earlier in Batch 13.
+1. **Equation-level correctness.** All verified: overlap integrals match prior stages, sigma/kappa_0^2 = 11/9 correct. Reduced coupling structure follows from mode expansions. Schur complement Sigma_wall = Xi I_2 + alpha v v^T correct (Xi from diagonal U-U, alpha from BdG + mixed). Source coupling and projection J_- = g_Q Q_STF (v.e_-) correct. Source map mhat_-^2 = s_-/kappa_0^2. Bound 1 <= mhat_-^2 < 11/9 from monotonic s_- growth. Elimination mhat_-^2 * P_{0,-} = beta_0 s_-^2/(kappa_0^2 lambda_-) by direct substitution.
+
+2. **Logical flow.** Clean: basis → reduced couplings → Schur elimination → source map → bound → elimination.
+
+3. **Assumptions.** All explicit: local isotropic couplings, D/N source branch, same finite-throat basis.
+
+4. **Completeness.** Both bound endpoints handled. Upper bound correctly noted unreachable on stable branch.
+
+5. **Notation consistent** with Stages 12-14.
+
+6. **Physical interpretation.** Sound: source amplification modest (~22%), normalization burden on lambda_- and beta_0.
 
 **Script Review:**
 
-No script is attached for this consolidation stage, which is appropriate. The note itself is the object under review, and it accurately summarizes the earlier derived relations without introducing new algebra.
+**B.1-B.7.** Faithful: 5 test blocks covering overlaps, mode reductions, 4×4 Schur complement (genuine matrix inversion), source-map endpoints, elimination identity. No bugs. No hardcoded values (constants derived by integration). No tautologies (4×4 inversion is substantive). All pass (exit code 0). Coverage complete.
 
 **Issues Found:** None.
-
-**Questions:** None.
 
 ---
 
-### Agent: GPT-5 Codex — 2026-04-21
-**Verdict:** PASS
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-The stage remains a checkpoint-style consolidation, but it is now backed by an
-explicit case split rather than only prose carry-forward.
+1. The finite-throat axial integrals are correct: the `N/N` basis is orthonormal, the `D/N` half-wave overlaps give `kappa_0 = 2 sqrt(2)/pi` and `kappa_1 = -4/(3 pi)`, and the squared ratio `sigma/kappa_0^2 = 11/9` is right.
+2. The local-kernel reduction, Schur-complement decomposition, and source projection all line up with the note. I independently checked the overlap integrals and the exact matrix reduction with SymPy.
+3. The elimination of the abstract source-map factor is also correct: `mhat_-^2 P_{0,-} = beta_0 s_-^2 / (kappa_0^2 lambda_-)` follows directly from the Stage 13 prefactor formula and the natural source-branch map.
 
 **Script Review:**
 
-1. The new dual-CAS audits enumerate the reduced low-frequency outlet-core
-   classes actually carried into this capstone: harmless scale/argument,
-   pure Robin, standalone mixed pole, hybrid cancellation, and the
-   compensated Robin-mixed core realization.
-2. They verify that pure Robin preserves the canonical branch only at
-   `rho_R = 0`, and that the standalone mixed pole cannot preserve the
-   canonical even branch except by disappearing.
-3. They separate the two hybrid branches cleanly:
-   the `rho = sigma, kappa = 0` branch is trivial cancellation,
-   while the `rho = 4 sigma, kappa = 1/3, gamma = 1/9` branch is the unique
-   nontrivial compensated survivor.
-4. They then close Stage `098` and Stage `099` into that classification by
-   showing that the concrete two-channel core plus the D/N mixed-tube
-   normalization reproduces the compensated hybrid branch exactly.
-5. The scripts explicitly keep the microscopic realization question open: they
-   classify the reduced explicit outlet models, but they do not assert that the
-   completed moving-throat core has already realized the required balance
-   surface.
+1. The audit script is faithful and the saved output matches the stage claims in each block.
+2. The matrix inversion in the Schur complement is substantive, and the source-map limit checks are nontrivial.
 
-**Issues Found:** None.
+**Issues Found:**
 
-**Questions:** None.
+- **[MINOR] The opening summary is slightly too strong about the source-map bound.** The stage later states the exact stable-branch window as `1 <= mhat_-^2 < 11/9`, but the purpose section phrases it as `1 <= mhat_-^2 <= 11/9`. The strict upper bound is the mathematically precise statement for the branch analyzed here; if the non-strict form is intentional, it should be labeled as a supremum rather than an attained endpoint.
+
+**Questions:**
+
+None.
 
 ---

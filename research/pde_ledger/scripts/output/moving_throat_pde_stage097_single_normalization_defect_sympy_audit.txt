@@ -1,0 +1,22 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+# Date: 2026-05-11T12:45:11-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+K2 = K0/(4*Omega**2)
+K4 = K0/(4*Omega**4)
+Gamma5 = 9*K0/(32*Omega**5)
+K0_target = 64*G*Omega**5/(45*c**5)
+K0_target (Omega=3 c_s/(2a)) = 54*G*c_s**5/(5*a**5*c**5)
+Gamma5_target = 2*G/(5*c**5)
+R0 = N_Q - 1
+R2 = N_Q - 1
+R4 = N_Q - 1
+R5 = N_Q - 1
+
+STAGE 80 AUDIT PASSED
+
+EXIT_CODE: 0

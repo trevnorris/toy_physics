@@ -1,0 +1,68 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl
+# Date: 2026-05-11T13:19:58-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 151 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION
+========================================================================================
+delta_perp = -2*a*g + 3*csw*g - 2*g*lW - a/(2*s) + cs/(2*s) + (3*csw)/(4*s) - (3*lW)/(4*s) - g*tM - g*vw0 - vw0/(2*s) + g*xi + xi/(4*s)
+
+========================================================================================
+Stage 165 lower-branch transport laws
+========================================================================================
+Tm_br  = (-3*a)/2 - cs + (3*csw)/2 + xi/2
+vw0_br = (-5*a)/2 + cs + (3*csw)/2 + xi/2
+LW_br  = a
+bundle tangency (delta_perp on exact lower branch) = 0
+PASS: bundle tangency (delta_perp on exact lower branch)
+
+========================================================================================
+Introduce the three off-bundle slippages
+========================================================================================
+delta_perp with slippages = -2*epsL*g - epsT*g - epsv*g - (3*epsL)/(4*s) - epsv/(2*s)
+delta_perp + eps_perp = 0
+PASS: delta_perp + eps_perp
+
+========================================================================================
+Mouth-bias transport
+========================================================================================
+deltaPi transport identity = 0
+PASS: deltaPi transport identity
+
+========================================================================================
+Outlet defects
+========================================================================================
+dC + 16 sigma eps_perp / s = 0
+PASS: dC + 16 sigma eps_perp / s
+dE2 - sigma(-16 eps_perp/s - 9 dKappaW)/(27(1-sigma)) = 0
+PASS: dE2 - sigma(-16 eps_perp/s - 9 dKappaW)/(27(1-sigma))
+dE4 - sigma(-80 eps_perp/s - 72 dKappaW)/(243(1-sigma)) = 0
+PASS: dE4 - sigma(-80 eps_perp/s - 72 dKappaW)/(243(1-sigma))
+DeltaQ - sigma(-16 eps_perp/s - 27 dGammaW)/(3(1-sigma)) = 0
+PASS: DeltaQ - sigma(-16 eps_perp/s - 27 dGammaW)/(3(1-sigma))
+
+========================================================================================
+Numeric Family-1 coefficients
+========================================================================================
+coeff epsT in delta_perp = -0.75803507894466304328773276210995391011`20.
+coeff epsv in delta_perp = -1.00314310113847606205906701623170262804`20.
+coeff epsL in delta_perp = -1.88373219118004561473246690540253089711`20.
+coeff epsT in deltaPi = -1.15860596492310296159921117548381316755`20.
+coeff epsv in deltaPi = -1.53323719829507072642123158798104454281`20.
+coeff epsL in deltaPi = -2.87915877990415757043145296971347339799`20.
+
+Carry-forward formulas:
+  eps_L := d ln L_W - d ln a
+  eps_v := d ln v_w0 - [1/2 d ln(Z_q/rho_w) + 3/2 d ln c_sw + d ln c_s - 5/2 d ln a]
+  eps_T := d ln T_m - [1/2 d ln(Z_q/rho_w) + 3/2 d ln c_sw - d ln c_s - 3/2 d ln a]
+  delta_perp = -[ g_* eps_T + (g_* + 1/(2 sqrt(1+r_*^2))) eps_v + (2 g_* + 3/(4 sqrt(1+r_*^2))) eps_L ]
+  All first-order off-bundle conservative-even defects depend only on eps_perp.
+
+Stage 168 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,232 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+# Date: 2026-05-11T12:49:10-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 187 — EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact free-quintuple log ray
+----------------------------------------------------------------------------------------
+lambda_W(tau) =
+    s_λ⋅τ
+λ₀⋅ℯ     
+c_etaU(tau) =
+    s_c⋅τ
+c₀⋅ℯ     
+gamma(tau) =
+    sᵧ⋅τ
+γ₀⋅ℯ    
+K_U(tau) =
+     s_U⋅τ
+KU₀⋅ℯ     
+K_W(tau) =
+     s_W⋅τ
+KW₀⋅ℯ     
+d/dtau ln lambda_W - s_lambda = 0
+d/dtau ln c_etaU - s_c = 0
+d/dtau ln gamma - s_gamma = 0
+d/dtau ln K_U - s_U = 0
+d/dtau ln K_W - s_W = 0
+
+----------------------------------------------------------------------------------------
+II. Exact finite graph lift along the log ray
+----------------------------------------------------------------------------------------
+delta_U^graph(0) =
+                                   1             deltaUₛₜₐᵣ + 1
+                              ───────────        ──────────────
+                              χ₀ ₛₜₐᵣ + 1         χ₀ ₛₜₐᵣ + 1  
+⎛              deltaUₛₜₐᵣ + 1⎞            ⎛  1  ⎞              
+⎝Ctr_target⋅KU₀              ⎠           ⋅⎜─────⎟              
+                                          ⎝c₀⋅γ₀⎠              
+sigma_delta =
+-(deltaUₛₜₐᵣ + 1)⋅(-s_U + s_c + sᵧ) 
+────────────────────────────────────
+            χ₀ ₛₜₐᵣ + 1             
+delta_U^graph(tau) [direct] =
+                                            1                      deltaUₛₜₐᵣ  ↪
+                                       ───────────                 ─────────── ↪
+                                       χ₀ ₛₜₐᵣ + 1                  χ₀ ₛₜₐᵣ +  ↪
+⎛                       deltaUₛₜₐᵣ + 1⎞            ⎛ -τ⋅(s_c + sᵧ)⎞            ↪
+⎜           ⎛     s_U⋅τ⎞              ⎟            ⎜ℯ             ⎟            ↪
+⎝Ctr_target⋅⎝KU₀⋅ℯ     ⎠              ⎠           ⋅⎜──────────────⎟            ↪
+                                                   ⎝    c₀⋅γ₀     ⎠            ↪
+
+↪ + 1
+↪ ───
+↪ 1  
+↪    
+↪    
+↪    
+↪    
+delta_U^graph(tau) [exp form] =
+                                   1             deltaUₛₜₐᵣ + 1                ↪
+                              ───────────        ──────────────  -τ⋅(deltaUₛₜₐ ↪
+                              χ₀ ₛₜₐᵣ + 1         χ₀ ₛₜₐᵣ + 1    ───────────── ↪
+⎛              deltaUₛₜₐᵣ + 1⎞            ⎛  1  ⎞                              ↪
+⎝Ctr_target⋅KU₀              ⎠           ⋅⎜─────⎟              ⋅ℯ              ↪
+                                          ⎝c₀⋅γ₀⎠                              ↪
+
+↪                          
+↪ ᵣ + 1)⋅(-s_U + s_c + sᵧ) 
+↪ ─────────────────────────
+↪ χ₀ ₛₜₐᵣ + 1              
+↪                          
+↪                          
+delta_U^graph direct - exp form = 0
+sigma_T =
+s_U⋅(χ₀ ₛₜₐᵣ + 1) - (deltaUₛₜₐᵣ + 1)⋅(-s_U + s_c + sᵧ)
+──────────────────────────────────────────────────────
+                     χ₀ ₛₜₐᵣ + 1                      
+T_U^graph direct - exp form = 0
+sigma_Keta =
+-s_U + 2⋅s_c
+K_eta^graph direct - exp form = 0
+sigma_mu =
+-Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ + 1)⋅(-s_U + s_c + sᵧ) + (χ₀ ₛₜₐᵣ + 1)⋅(Eₛₜₐᵣ⋅(s_U + s_W -  ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                       χ₀ ₛₜₐᵣ + 1             ↪
+
+↪ 2⋅sᵧ - 2⋅s_λ) - s_U + 2⋅s_W + 2⋅s_c - 2⋅s_λ)
+↪ ────────────────────────────────────────────
+↪                                             
+mu_W^graph direct - exp form = 0
+
+----------------------------------------------------------------------------------------
+III. Exact finite monomial invariance on the graph ray
+----------------------------------------------------------------------------------------
+Ctr(tau) =
+Ctr_target
+Cnt(tau) =
+Cnt_target
+eps_eta(tau) =
+epsEta_target
+Ctr(tau) - Ctr_target = 0
+Cnt(tau) - Cnt_target = 0
+eps_eta(tau) - epsEta_target = 0
+
+----------------------------------------------------------------------------------------
+IV. Stage 192 quotient map annihilates the constant ray tangent
+----------------------------------------------------------------------------------------
+M_* =
+⎡     0       deltaUₛₜₐᵣ + 1  deltaUₛₜₐᵣ + 1  -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2  0     ↪
+⎢                                                                              ↪
+⎢2⋅Eₛₜₐᵣ + 2        0            2⋅Eₛₜₐᵣ           -Eₛₜₐᵣ + Fₛₜₐᵣ        -1  - ↪
+⎢                                                                              ↪
+⎣     0             2               0                    -1              -1    ↪
+
+↪    0       0  χ₀ ₛₜₐᵣ + 1⎤
+↪                          ⎥
+↪ Eₛₜₐᵣ - 2  1    -Fₛₜₐᵣ   ⎥
+↪                          ⎥
+↪    0       0       0     ⎦
+dot(Delta x)_ray =
+⎡                                                           s_λ                ↪
+⎢                                                                              ↪
+⎢                                                           s_c                ↪
+⎢                                                                              ↪
+⎢                                                            sᵧ                ↪
+⎢                                                                              ↪
+⎢                                                           s_U                ↪
+⎢                                                                              ↪
+⎢                                                       -s_U + 2⋅s_c           ↪
+⎢                                                                              ↪
+⎢                                                           s_W                ↪
+⎢                                                                              ↪
+⎢-Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ + 1)⋅(-s_U + s_c + sᵧ) + (χ₀ ₛₜₐᵣ + 1)⋅(Eₛₜₐᵣ⋅(s_U + s_W - ↪
+⎢───────────────────────────────────────────────────────────────────────────── ↪
+⎢                                                       χ₀ ₛₜₐᵣ + 1            ↪
+⎢                                                                              ↪
+⎢                                  s_U⋅(χ₀ ₛₜₐᵣ + 1) - (deltaUₛₜₐᵣ + 1)⋅(-s_U  ↪
+⎢                                  ─────────────────────────────────────────── ↪
+⎣                                                       χ₀ ₛₜₐᵣ + 1            ↪
+
+↪                                              ⎤
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪                                              ⎥
+↪  2⋅sᵧ - 2⋅s_λ) - s_U + 2⋅s_W + 2⋅s_c - 2⋅s_λ)⎥
+↪ ─────────────────────────────────────────────⎥
+↪                                              ⎥
+↪                                              ⎥
+↪ + s_c + sᵧ)                                  ⎥
+↪ ───────────                                  ⎥
+↪                                              ⎦
+M_* dot(Delta x)_ray =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+V. Primitive direction table
+----------------------------------------------------------------------------------------
+e_lambda exponents = (0, 0, 0, -2*E_star - 2)
+e_lambda exponent 1 = 0
+e_lambda exponent 2 = 0
+e_lambda exponent 3 = 0
+e_lambda exponent 4 = 0
+e_c exponents = ((-deltaU_star - 1)/(chi0_star + 1), (-deltaU_star - 1)/(chi0_star + 1), 2, (-F_star*(deltaU_star + 1) + 2*chi0_star + 2)/(chi0_star + 1))
+e_c exponent 1 = 0
+e_c exponent 2 = 0
+e_c exponent 3 = 0
+e_c exponent 4 = 0
+e_gamma exponents = ((-deltaU_star - 1)/(chi0_star + 1), (-deltaU_star - 1)/(chi0_star + 1), 0, (-2*E_star*(chi0_star + 1) - F_star*(deltaU_star + 1))/(chi0_star + 1))
+e_gamma exponent 1 = 0
+e_gamma exponent 2 = 0
+e_gamma exponent 3 = 0
+e_gamma exponent 4 = 0
+e_U exponents = ((deltaU_star + 1)/(chi0_star + 1), (chi0_star + deltaU_star + 2)/(chi0_star + 1), -1, (F_star*(deltaU_star + 1) + (E_star - 1)*(chi0_star + 1))/(chi0_star + 1))
+e_U exponent 1 = 0
+e_U exponent 2 = 0
+e_U exponent 3 = 0
+e_U exponent 4 = 0
+e_W exponents = (0, 0, 0, E_star + 2)
+e_W exponent 1 = 0
+e_W exponent 2 = 0
+e_W exponent 3 = 0
+e_W exponent 4 = 0
+
+----------------------------------------------------------------------------------------
+VI. Log-ray library is first-order complete
+----------------------------------------------------------------------------------------
+first-order local ray match = 0
+
+----------------------------------------------------------------------------------------
+VII. Exact affine and log-linear root predictors
+----------------------------------------------------------------------------------------
+tau_aff =
+   -eps     
+────────────
+L₀⋅(eps + 1)
+tau_log =
+-log(eps + 1) 
+──────────────
+      L₀      
+series[tau_log - tau_aff] =
+     3      2
+2⋅eps    eps 
+────── - ────
+ 3⋅L₀    2⋅L₀
+predictor difference starts at quadratic order = 0
+
+========================================================================================
+STAGE 187 SYMPY AUDIT PASSED
+========================================================================================
+
+EXIT_CODE: 0

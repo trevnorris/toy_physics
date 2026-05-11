@@ -1,33 +1,43 @@
-\section[Stage 042]{Stage 042: Exact Residual Bounds on the Operator-Selected Branch}
+\section[Stage 042]{Stage 042: Selected-Mode Normalization Under Rank--2 Support Completion}
 \label{stage:042}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the residual thresholds.}
-\stagefield{Purpose}{Stage~042 converts the fixed-point bracket into a useful branch verdict.}
-\stagefield{Inputs}{Required Peclet bias \(\mathrm{Pe}_{\rm req}\), endpoint functions \(\Delta_0,\Delta_\infty\), and gain \(\Xi\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the selected eigenvector and overlap algebra.}
+\stagefield{Purpose}{Stage~042 shows that once support and mixed loading directions differ, normalization depends separately on outgoing, support, and source directions.}
+\stagefield{Inputs}{The Stage~041 selected branch with \(n=n_{\rm req}\), mixed direction \(q\), support direction \(r\), and source direction \(t\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage042_operator_branch_residual_bounds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage042_operator_branch_residual_bounds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage042_operator_branch_residual_bounds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage042_operator_branch_residual_bounds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage042_rank2_selected_mode_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage042_rank2_selected_mode_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
+With \(n=n_{\rm req}\), the selected eigenvector ratio is
 \begin{equation}
-\label{eq:app-stage042-Xi-thresholds}
+\label{eq:app-stage042-evec-rank2}
 \boxed{
-\Xi_{\rm fail}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty(\kappa,\eta)},
-\qquad
-\Xi_{\rm suff}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_0(\kappa,\eta)}}.
+\frac{e_1}{e_0}
+=\frac{m(q-r)+r\xi}{\delta+\xi-mq(q-r)}}.
 \end{equation}
-Hence
+Define
 \begin{equation}
-\label{eq:app-stage042-verdict}
-\boxed{
-\Xi<\Xi_{\rm fail}\Rightarrow\text{fail},
-\qquad
-\Xi>\Xi_{\rm suff}\Rightarrow\text{succeed}}.
+\label{eq:app-stage042-Dqr}
+D_{q,r}(\xi,\delta;m)
+=[\delta+\xi-mq(q-r)]^2+[m(q-r)+r\xi]^2.
 \end{equation}
-The band \(\Xi_{\rm fail}\leq\Xi\leq\Xi_{\rm suff}\) is profile-sensitive and requires the full fixed-point root.
+The loading and source overlaps are
+\begin{equation}
+\label{eq:app-stage042-z-overlap}
+\boxed{
+\frac{(z\cdot e_-)^2}{z_0^2}
+=\frac{[\delta+(1+qr)\xi]^2}{D_{q,r}(\xi,\delta;m)}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage042-s-overlap}
+\boxed{
+\frac{(s\cdot e_-)^2}{s_0^2}
+=\frac{[\delta+(1+rt)\xi-m(q-r)(q-t)]^2}{D_{q,r}(\xi,\delta;m)}}.
+\end{equation}
+The one-vector result is recovered only when \(r=q\).  Otherwise, the selected-mode normalization sees a three-direction geometry.
 
-\stagefield{Output}{The exact gain thresholds \eqref{eq:app-stage042-Xi-thresholds}.}
-\stagefield{Downstream use}{Stages~043--049 identify \(\Xi\) with a microscopic parent-action gain and a wall figure of merit.}
+\stagefield{Output}{The rank--2 eigenvector \eqref{eq:app-stage042-evec-rank2} and overlap formulas \eqref{eq:app-stage042-z-overlap}--\eqref{eq:app-stage042-s-overlap}.}
+\stagefield{Downstream use}{Stage~044 inserts the actual support direction and converts this algebra into a continuum-selected branch point.}
 

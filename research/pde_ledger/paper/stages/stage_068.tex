@@ -1,40 +1,22 @@
-\section[Stage 068]{Stage 068: Exact Cancellation of Outgoing-Normalization Factors in the Selected Demand Product}
+\section[Stage 068]{Stage 068: Resonance-Corrected Thresholds for the Sech--Gaussian Benchmark}
 \label{stage:068}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the selected-branch cancellation.}
-\stagefield{Purpose}{Stage~068 proves that after the selected outgoing quadrupole branch is normalized, the support theorem depends only on a loading ratio, not on the absolute outgoing normalization factors.}
-\stagefield{Inputs}{Selected outgoing normalization, \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), and selected support loading.}
+\claimstatus{\StatusExactClosure{} after inserting the benchmark coherence penalty.}
+\stagefield{Purpose}{Stage~068 shows that the first independent-profile benchmark changes the matched thresholds only mildly.}
+\stagefield{Inputs}{The matched window \eqref{eq:app-stage066-Wwindow} and penalty factor \(P_{\rm res}\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage068_quadrupole_demand_cancellation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage068_quadrupole_demand_cancellation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage068_quadrupole_demand_cancellation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage068_quadrupole_demand_cancellation_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The selected product and mixed product are
+The resonance-corrected matched thresholds are multiplied by
 \begin{equation}
-\label{eq:app-stage068-products}
-\boxed{
-\Pi_{\rm tr}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm req},
-\qquad
-C_{\rm mix}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm mix}}.
+\label{eq:app-stage068-Pres}
+P_{\rm res}\simeq1.005612487760576.
 \end{equation}
-Therefore the absolute factors cancel:
-\begin{equation}
-\label{eq:app-stage068-ratio}
-\boxed{
-\frac{\Pi_{\rm tr}}{C_{\rm mix}}
-=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
-=:\rho_\alpha}.
-\end{equation}
-The support demand becomes
-\begin{equation}
-\label{eq:app-stage068-zeta-rho}
-\boxed{
-\zeta_{\rm req}(\rho_\alpha,\epsilon_{\rm blk})
-=\frac{\rho_\alpha-1}{1-\epsilon_{\rm blk}(2-\rho_\alpha)}}.
-\end{equation}
-In the unblocked limit, \(\zeta_{\rm req}=\rho_\alpha-1\).
+Thus the independent-profile benchmark raises the required wall figure of merit by about \(0.56\%\), not by an order-one factor.
 
-\stagefield{Output}{The cancellation theorem \eqref{eq:app-stage068-ratio} and reduced demand formula \eqref{eq:app-stage068-zeta-rho}.}
-\stagefield{Downstream use}{Stages~069--070 express the Family--1 support window entirely in \(\rho_\alpha\); Stage~071 computes \(\rho_\alpha\) from the minimal module.}
+\stagefield{Output}{Threshold correction factor \(P_{\rm res}\).}
+\stagefield{Downstream use}{Stage~069 uses this to state a three-zone support/source verdict.}
 

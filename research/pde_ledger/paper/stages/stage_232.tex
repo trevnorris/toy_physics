@@ -1,79 +1,26 @@
-\section{Stage 232: Helicity export diagnostic}
-\label{sec:app-part08:helicity-export-diagnostic}
+\section[Stage 232]{Stage 232: Known 5PN data injection}
 \label{stage:232}
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage232_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py}.  Mathematica audit: none yet.}
 
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.4}.}
+\claimstatus{Mixed: \StatusNumerical{}, \StatusOpen{}.}
 
-Stage 232 attaches a hidden-channel export diagnostic to the Stage-231 event chain.  It is diagnostic rather than constitutive.  The parent projected helicity ledger gives the exact subscale helicity
-\begin{equation}
-\label{eq:app-part08-stage232-hsub}
-h_{\rm sub}
-=
-\overline h-h_{\rm res}
-=
-\overline{\mathbf A'\cdot\mathbf B'},
-\end{equation}
-with transfer equation
-\begin{equation}
-\label{eq:app-part08-stage232-hsub-eq}
-\partial_th_{\rm sub}+\nabla_3\cdot\mathbf F_{h,{\rm sub}}
-=
--2\overline{\mathbf E'\cdot\mathbf B'}.
-\end{equation}
-On a reduced brane control volume,
-\begin{equation}
-\label{eq:app-part08-stage232-hdot}
-\frac{dH_{\rm sub}}{dt}
-=
--\Phi_h(t;E)-2\mathcal C_h(t;E),
-\end{equation}
-where \(\Phi_h\) is the unresolved-helicity flux through the control boundary and \(\mathcal C_h\) is the unresolved covariance source.
+\stagefield{Purpose}{Stage~232 injects the current known Family-1 and 5PN support/source data into the selected-branch inequalities.}
 
-The minimal orientation closure introduces \(\sigma=+1\) for aligned and \(\sigma=-1\) for anti-aligned, with
-\begin{equation}
-\label{eq:app-part08-stage232-orientation-closure}
-\Phi_{h,\sigma}=\Phi_{h,0}+\sigma\Phi_{h,1},
-\qquad
-\mathcal C_{h,\sigma}=\mathcal C_{h,0}+\sigma\mathcal C_{h,1}.
-\end{equation}
-Thus
-\begin{equation}
-\label{eq:app-part08-stage232-export-rate}
-\dot H_{{\rm sub},\sigma}
-=\Gamma_0+\sigma\Gamma_1
-=\Gamma_0(1+\sigma\alpha_h),
-\qquad
-\alpha_h=\frac{\Gamma_1}{\Gamma_0}.
-\end{equation}
-The instantaneous ratio and inverse are
-\begin{equation}
-\label{eq:app-part08-stage232-instant-ratio}
-R_{\rm inst}=\frac{\dot H_{{\rm sub},+}}{\dot H_{{\rm sub},-}}
-=\frac{1+\alpha_h}{1-\alpha_h},
-\qquad
-\alpha_h=\frac{R_{\rm inst}-1}{R_{\rm inst}+1}.
-\end{equation}
-Over a common interval,
-\begin{equation}
-\label{eq:app-part08-stage232-integrated-ratio}
-R_{\rm int}
-=\frac{\mathcal H_+}{\mathcal H_-}
-=\frac{1+\bar\alpha_h}{1-\bar\alpha_h},
-\qquad
-\bar\alpha_h=\frac{R_{\rm int}-1}{R_{\rm int}+1}.
-\end{equation}
-Any common export scale cancels from these ratios.
+\stagefield{Inputs}{Imports the numerically located support/source packets, the exact selected classifier, and the static-first ceiling.}
 
-The benchmark packet is
-\begin{equation}
-\label{eq:app-part08-stage232-benchmark-packet}
-\begin{aligned}
-(\Xi_{\rm turn},\lambda_{\rm th},R_{\rm pk})
-&=
-(0.34437471,0.42826825,4.94653917),\\
-(R_{\rm int},\alpha_{\rm pk},\bar\alpha_h)
-&=
-(4.10920923,0.66366992,0.60854999).
-\end{aligned}
-\end{equation}
-The status is deliberately limited: this proves a hidden-channel unloading preference inside the declared closure, not intrinsic spin or a Pauli-sector theorem.
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation evaluates the support/source side of the inequalities, compares it with the selected threshold windows, and identifies which gate remains unresolved.}
+
+\stagefield{Output}{Current branch verdict: the support/source side is safe by a large margin in the injected data; the active unresolved gate is static orbit-lock/coherent placement rather than support starvation.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.4} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

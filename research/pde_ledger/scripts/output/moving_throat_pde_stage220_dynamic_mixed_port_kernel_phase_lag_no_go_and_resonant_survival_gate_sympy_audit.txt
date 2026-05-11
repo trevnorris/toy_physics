@@ -1,0 +1,67 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+# Date: 2026-05-11T12:50:03-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 220 SymPy audit: dynamic mixed-port kernel ===
+
+Static carried data:
+K_*   = -C**2/varpi**2 + K
+Delta = Omega_U**2*Omega_W**2 - R**2
+Q     = G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2
+P     = G_U*R + G_W*Omega_U**2
+D0    = (-C**2*(Omega_U**2*Omega_W**2 - R**2) + K*varpi**2*(Omega_U**2*Omega_W**2 - R**2) - varpi**2*(G_U**2*Omega_W**2 + 2*G_U*G_W*R + G_W**2*Omega_U**2))/(varpi**2*(Omega_U**2*Omega_W**2 - R**2))
+
+Dynamic bundle invariants:
+K_B(omega)   = -C**2/(-omega**2 + varpi**2) + K - M*omega**2
+A(omega)     = Omega_U**2 - omega**2
+W(omega)     = Omega_W**2 - Pi - omega**2
+Delta_Pi     = -R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)
+Q_Pi         = G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)
+D_Pi         = (-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))/((-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2))
+
+Verified determinant identity: det(K_dyn) = Delta_Pi * D_Pi
+Verified static reduction back to the Stage 219 one-port bundle
+
+Exact inverse entries:
+chi_qq = (-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2)/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+chi_qU = (-omega**2 + varpi**2)*(G_U*(Omega_W**2 - Pi - omega**2) + G_W*R)/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+chi_qW = (-omega**2 + varpi**2)*(G_U*R + G_W*(Omega_U**2 - omega**2))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+chi_UU = (-G_W**2 + (Omega_W**2 - Pi - omega**2)*(-C**2/(-omega**2 + varpi**2) + K - M*omega**2))*(-omega**2 + varpi**2)/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+chi_UW = (-omega**2 + varpi**2)*(G_U*G_W + R*(-C**2/(-omega**2 + varpi**2) + K - M*omega**2))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+chi_WW = (-G_U**2 + (Omega_U**2 - omega**2)*(-C**2/(-omega**2 + varpi**2) + K - M*omega**2))*(-omega**2 + varpi**2)/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+
+Verified dynamic susceptibility law:
+V_mix(x,omega) = -1/2 J^T K_dyn^{-1} J
+
+Verified collinear-source theorem:
+chi_s = (s_U**2*(-G_W**2*(-omega**2 + varpi**2) + (-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))*(Omega_W**2 - Pi - omega**2)) + 2*s_U*s_W*(G_U*G_W*(-omega**2 + varpi**2) + R*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + 2*s_U*s_q*(-omega**2 + varpi**2)*(G_U*(Omega_W**2 - Pi - omega**2) + G_W*R) + s_W**2*(-G_U**2*(-omega**2 + varpi**2) + (Omega_U**2 - omega**2)*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + 2*s_W*s_q*(-omega**2 + varpi**2)*(G_U*R + G_W*(Omega_U**2 - omega**2)) + s_q**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+
+Verified primitive-source product-family theorem:
+C6(omega) = beta_Q**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2)/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+C4(omega) = beta_Q*(-omega**2 + varpi**2)*(beta_U*(G_U*(Omega_W**2 - Pi - omega**2) + G_W*R) + beta_W*(G_U*R + G_W*(Omega_U**2 - omega**2)))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+C2(omega) = (beta_U**2*(-G_W**2*(-omega**2 + varpi**2) + (-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))*(Omega_W**2 - Pi - omega**2)) + 2*beta_U*beta_W*(G_U*G_W*(-omega**2 + varpi**2) + R*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + beta_W**2*(-G_U**2*(-omega**2 + varpi**2) + (Omega_U**2 - omega**2)*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+
+Verified outgoing-port derivative identity:
+dV_mix/dPi = -1/2 * T_J^2
+T_J = (J_U*(G_U*G_W*(-omega**2 + varpi**2) + R*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_W*(-G_U**2*(-omega**2 + varpi**2) + (Omega_U**2 - omega**2)*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_q*(-omega**2 + varpi**2)*(G_U*R + G_W*(Omega_U**2 - omega**2)))/(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - Pi - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - Pi - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))
+
+Phase-lag / pumping theorem:
+deltaV_linear = -I*Gamma*(J_U*(G_U*G_W*(-omega**2 + varpi**2) + R*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_W*(-G_U**2*(-omega**2 + varpi**2) + (Omega_U**2 - omega**2)*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_q*(-omega**2 + varpi**2)*(G_U*R + G_W*(Omega_U**2 - omega**2)))**2/(2*(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))**2)
+Re(deltaV_linear) = 0
+Im(deltaV_linear) = -Gamma*(J_U*(G_U*G_W*(-omega**2 + varpi**2) + R*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_W*(-G_U**2*(-omega**2 + varpi**2) + (Omega_U**2 - omega**2)*(-C**2 + K*(-omega**2 + varpi**2) - M*omega**2*(-omega**2 + varpi**2))) + J_q*(-omega**2 + varpi**2)*(G_U*R + G_W*(Omega_U**2 - omega**2)))**2/(2*(-C**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2)) + K*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2))*(-omega**2 + varpi**2) - M*omega**2*(-R**2 + (Omega_U**2 - omega**2)*(Omega_W**2 - omega**2))*(-omega**2 + varpi**2) - (-omega**2 + varpi**2)*(G_U**2*(Omega_W**2 - omega**2) + 2*G_U*G_W*R + G_W**2*(Omega_U**2 - omega**2)))**2)
+P_abs = -omega * Im(deltaV_linear) = Gamma*omega*(C**2*J_U*R + C**2*J_W*Omega_U**2 - C**2*J_W*omega**2 - G_U**2*J_W*omega**2 + G_U**2*J_W*varpi**2 + G_U*G_W*J_U*omega**2 - G_U*G_W*J_U*varpi**2 + G_U*J_q*R*omega**2 - G_U*J_q*R*varpi**2 + G_W*J_q*Omega_U**2*omega**2 - G_W*J_q*Omega_U**2*varpi**2 - G_W*J_q*omega**4 + G_W*J_q*omega**2*varpi**2 + J_U*K*R*omega**2 - J_U*K*R*varpi**2 - J_U*M*R*omega**4 + J_U*M*R*omega**2*varpi**2 + J_W*K*Omega_U**2*omega**2 - J_W*K*Omega_U**2*varpi**2 - J_W*K*omega**4 + J_W*K*omega**2*varpi**2 - J_W*M*Omega_U**2*omega**4 + J_W*M*Omega_U**2*omega**2*varpi**2 + J_W*M*omega**6 - J_W*M*omega**4*varpi**2)**2/(2*(C**2*Omega_U**2*Omega_W**2 - C**2*Omega_U**2*omega**2 - C**2*Omega_W**2*omega**2 - C**2*R**2 + C**2*omega**4 - G_U**2*Omega_W**2*omega**2 + G_U**2*Omega_W**2*varpi**2 + G_U**2*omega**4 - G_U**2*omega**2*varpi**2 - 2*G_U*G_W*R*omega**2 + 2*G_U*G_W*R*varpi**2 - G_W**2*Omega_U**2*omega**2 + G_W**2*Omega_U**2*varpi**2 + G_W**2*omega**4 - G_W**2*omega**2*varpi**2 + K*Omega_U**2*Omega_W**2*omega**2 - K*Omega_U**2*Omega_W**2*varpi**2 - K*Omega_U**2*omega**4 + K*Omega_U**2*omega**2*varpi**2 - K*Omega_W**2*omega**4 + K*Omega_W**2*omega**2*varpi**2 - K*R**2*omega**2 + K*R**2*varpi**2 + K*omega**6 - K*omega**4*varpi**2 - M*Omega_U**2*Omega_W**2*omega**4 + M*Omega_U**2*Omega_W**2*omega**2*varpi**2 + M*Omega_U**2*omega**6 - M*Omega_U**2*omega**4*varpi**2 + M*Omega_W**2*omega**6 - M*Omega_W**2*omega**4*varpi**2 + M*R**2*omega**4 - M*R**2*omega**2*varpi**2 - M*omega**8 + M*omega**6*varpi**2)**2)
+
+Constructive off-pole slice:
+Delta_Pi(sample, Pi=0) = 133.812500000000
+D_Pi(sample, Pi=0)     = 10.0205487853783
+V_mix(sample, Pi=0)    = -0.401590577536006
+deltaV_linear(sample)  = -0.000675557190642495*I
+P_abs(sample)          = 0.000337778595321247
+
+All Stage 220 symbolic checks passed.
+
+EXIT_CODE: 0

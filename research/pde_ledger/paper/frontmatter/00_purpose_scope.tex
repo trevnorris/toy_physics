@@ -73,7 +73,7 @@ This companion is four things at once.
 
 \subsection{A theorem-block derivation}
 
-The main body organizes the full stage tree into coherent theorem blocks.  The reader should not have to read all 236 stages linearly to understand the logic of the program.  Instead, the main text groups the derivation into larger mathematical units: parent theory and geometry lift, conservative response kernels, support completion, retarded quadrupole closure, weak-axisymmetric orbit structure, realization compiler, same-charge and rigid-mouth branch tests, and the relaxed open-system extension.
+The main body organizes the full stage tree into coherent theorem blocks.  The reader should not have to read all 253 stages linearly to understand the logic of the program.  Instead, the main text groups the derivation into larger mathematical units: parent theory and geometry lift, conservative response kernels, support completion, retarded quadrupole closure, weak-axisymmetric orbit structure, realization compiler, same-charge and rigid-mouth branch tests, and the relaxed open-system extension.
 
 The theorem-block layer is the preferred citation layer.  Future papers should normally cite stable anchors such as \resultanchor{MTDC-T1}, \resultanchor{MTDC-T8}, or \resultanchor{MTDC-T12}, then point to the corresponding stage range only when the detailed provenance matters.
 
@@ -103,28 +103,28 @@ Finally, this companion is not a place to hide new assumptions.  If a step requi
 
 \section{Scope of the mathematical derivation}
 
-The ledger covers Stages 001--236 of the moving-throat derivation.  The stage tree is grouped into eight main parts.
+The ledger covers Stages 001--253 of the moving-throat derivation.  The stage tree is grouped into eight main parts.
 
 \begin{longtable}{L{0.13\textwidth}L{0.14\textwidth}L{0.26\textwidth}L{0.38\textwidth}}
 \toprule
 Part & Stages & Short name & Scope \\
 \midrule
 \endhead
-I & 001--006 & Parent, geometry, and linear response backbone & Imports the exact parent theory, promotes the finite throat variables to a distributed shape field, recovers \(a(t)\) and \(L(t)\) as collective moments, introduces the grouped real \(P_2\) lane, and derives the first wall/BdG/Maxwell/mixed response kernels. \\
+I & 001--023 & Parent, geometry, and linear response backbone & Imports the exact parent theory, promotes the finite throat variables to a distributed shape field, recovers \(a(t)\) and \(L(t)\) as collective moments, introduces the grouped real \(P_2\) lane, and derives the first wall/BdG/Maxwell/mixed response kernels. \\
 \addlinespace
-II & 007--019 & Conservative response and normalization language & Builds the explicit overlap, isotropy, finite-throat, selected-mode, and normalized-response machinery needed to state the grouped real \(P_2\) conservative and outgoing normalization tests. \\
+II & 024--036 & Conservative response and normalization language & Builds the explicit overlap, isotropy, finite-throat, selected-mode, and normalized-response machinery needed to state the grouped real \(P_2\) conservative and outgoing normalization tests. \\
 \addlinespace
-III & 020--073 & Support completion and Family-1 branch & Develops continuum placement, rank-2 support completion, support/source gain thresholds, and the explicit Family-1 reduced branch tests, including the first reduced success/failure windows. \\
+III & 037--090 & Support completion and Family-1 branch & Develops continuum placement, rank-2 support completion, support/source gain thresholds, and the explicit Family-1 reduced branch tests, including the first reduced success/failure windows. \\
 \addlinespace
-IV & 074--146 & Geometry lane, retarded closure, and mouth/core compensation & Separates the grouped \(P_2\) and geometry lanes, narrows the retarded problem to the outgoing quadrupole normalization, and analyzes outlet, mixed side-channel, core-to-mouth, mouth-layer, and co-evolving corrections. \\
+IV & 091--163 & Geometry lane, retarded closure, and mouth/core compensation & Separates the grouped \(P_2\) and geometry lanes, narrows the retarded problem to the outgoing quadrupole normalization, and analyzes outlet, mixed side-channel, core-to-mouth, mouth-layer, and co-evolving corrections. \\
 \addlinespace
-V & 147--183 & Weak-axisymmetric transport and quotient/orbit closure & Reduces the weak-axisymmetric defect to transported prefactor data, identifies \(\Xi_1=P_1/P_0\), derives branch-invariant monomial coordinates, and states the exact orbit/quotient packet ending in the four-scalar verdict. \\
+V & 164--200 & Weak-axisymmetric transport and quotient/orbit closure & Reduces the weak-axisymmetric defect to transported prefactor data, identifies \(\Xi_1=P_1/P_0\), derives branch-invariant monomial coordinates, and states the exact orbit/quotient packet ending in the four-scalar verdict. \\
 \addlinespace
-VI & 184--201 & Realization compiler and finite mixed-ray search & Converts the reduced branch packet into an explicit graph-error realization problem and completes the finite local mixed-ray sieve through support-cardinality \(\leq 5\). \\
+VI & 201--218 & Realization compiler and finite mixed-ray search & Converts the reduced branch packet into an explicit graph-error realization problem and completes the finite local mixed-ray sieve through support-cardinality \(\leq 5\). \\
 \addlinespace
-VII & 202--225 & Same-charge, rigid-mouth, and selected twin-support branch & Audits the one-port same-charge mixed bundle, separates static and dynamic kernel verdicts, derives the rigid-mouth physical normal form, states orbit lock in Cartesian variables, and records the selected twin-support placement. \\
+VII & 219--242 & Same-charge, rigid-mouth, and selected twin-support branch & Audits the one-port same-charge mixed bundle, separates static and dynamic kernel verdicts, derives the rigid-mouth physical normal form, states orbit lock in Cartesian variables, and records the selected twin-support placement. \\
 \addlinespace
-VIII & 226--236 & Relaxed open-system branch and material/export companion & Adds the relaxed codimension-three open-system branch, leakage/work and non-rigid mouth/dressing compilers, lowered barrier and event-chain analysis, microscopic export kernel, heat partition, and material-threshold companion. \\
+VIII & 243--253 & Relaxed open-system branch and material/export companion & Adds the relaxed codimension-three open-system branch, leakage/work and non-rigid mouth/dressing compilers, lowered barrier and event-chain analysis, microscopic export kernel, heat partition, and material-threshold companion. \\
 \bottomrule
 \end{longtable}
 
@@ -217,13 +217,13 @@ These are branch-organization results.  The ledger should distinguish their alge
 
 \subsection{The relaxed open-system extension}
 
-The post-225 extension introduces a relaxed branch rather than replacing the strict branch.  The recovery map back to the strict front end is
+The post-242 extension introduces a relaxed branch rather than replacing the strict branch.  The recovery map back to the strict front end is
 \[
 \ell_w=f_U=a=b=0.
 \]
 On the relaxed branch, the stationary front end is organized by the effective potential packet
 \[
-V_{\rm eff}^{(230)}(r)
+V_{\rm eff}^{(247)}(r)
 =
 V_{\rm short}^{(1p)}(r)
 -
@@ -319,7 +319,7 @@ layer is routed by naming convention.
   and \nolinkurl{mathematica/numerical/}, usually with names of
   the form \nolinkurl{stageNNN*_stress.py} and
   \nolinkurl{stageNNN*_stress.wl}.  Shared harnesses may cover short ranges as
-  \nolinkurl{stage003_004_*}.
+  \nolinkurl{stage003_021_*}.
   \item The exact path inventory, coverage counts, and trust classification are
   maintained in repo-level verification trackers rather than repeated inside the
   paper.
@@ -394,7 +394,7 @@ The main text should not include every raw polynomial, every repeated expansion,
 
 The appendices should do the following.
 \begin{enumerate}[leftmargin=2.2em]
-  \item Preserve all 236 stages in original order.
+  \item Preserve all 253 stages in original order.
   \item Record the inputs, assumptions, derivation, output, checks, and downstream use for each stage.
   \item Preserve long algebraic identities and exact script-backed expansions.
   \item Store numerical search results and finite candidate sets.
@@ -408,7 +408,7 @@ The appendices are allowed to be repetitive when repetition helps verification. 
 The final version of this companion should be considered complete only when the following conditions are met.
 
 \begin{verificationchecklist}
-  \item Every stage from 001 through 236 has a filled appendix entry.
+  \item Every stage from 001 through 253 has a filled appendix entry.
   \item Every major result in the main text has a status tag.
   \item Every theorem anchor has a stage range and downstream-use statement.
   \item Every closure-dependent result names the closure.

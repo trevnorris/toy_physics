@@ -1,0 +1,161 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+# Date: 2026-05-11T12:48:47-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 178 — EXACT SOURCE-MAP REDUCTION OF THE CANONICAL OUTGOING BRANCH
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Carry-forward isotropic retarded invariant tuple
+----------------------------------------------------------------------------------------
+Omega_Q =
+3⋅cₛ
+────
+2⋅a 
+P0_target =
+       5
+54⋅G⋅cₛ 
+────────
+   5  5 
+5⋅a ⋅c  
+Gamma5_target =
+2⋅G 
+────
+   5
+5⋅c 
+Gamma5 =
+    5    
+P₀⋅a ⋅χ_Q
+─────────
+      5  
+ 27⋅cₛ   
+Gamma5 - chi_Q*9*P0/(32 Omega_Q^5) = 0
+N_Q definition = 0
+Gamma5/Gamma5_target - chi_Q*N_Q = 0
+
+----------------------------------------------------------------------------------------
+II. Exact odd-closure factorization and Packet-A normalization collapse
+----------------------------------------------------------------------------------------
+Delta_norm =
+       5 ⎛      2    ⎞
+54⋅G⋅cₛ ⋅⎝N_Q⋅m̂₀  - 1⎠
+──────────────────────
+          5  5        
+       5⋅a ⋅c         
+odd closure =
+          2    
+N_Q⋅χ_Q⋅m̂₀  - 1
+N_Q from odd closure =
+   1   
+───────
+      2
+χ_Q⋅m̂₀ 
+Delta_norm after imposing odd closure =
+       5          
+54⋅G⋅cₛ ⋅(1 - χ_Q)
+──────────────────
+      5  5        
+   5⋅a ⋅c ⋅χ_Q    
+Delta_norm - P0_target*(mhat0^2 N_Q - 1) = 0
+odd closure factorization = 0
+Delta_norm from odd closure - P0_target*(1/chi_Q - 1) = 0
+Delta_norm in terms of Delta_Q = 0
+
+----------------------------------------------------------------------------------------
+III. Natural source-map reduction
+----------------------------------------------------------------------------------------
+N_Q on the natural point-particle source-map branch =
+ 1 
+───
+χ_Q
+Delta_norm on the natural point-particle source-map branch =
+       5          
+54⋅G⋅cₛ ⋅(1 - χ_Q)
+──────────────────
+      5  5        
+   5⋅a ⋅c ⋅χ_Q    
+N_Q(point-particle) - 1/chi_Q = 0
+Delta_norm(point-particle) - P0_target*(1/chi_Q - 1) = 0
+N_Q(point-particle)-1 in terms of Delta_Q = 0
+
+----------------------------------------------------------------------------------------
+IV. Stage 194 deformation algebra after source-map reduction
+----------------------------------------------------------------------------------------
+chi_Q from Stage 194 DtN deformation algebra =
+  ⎛   5       ⎞
+3⋅⎝S⋅β  + 9⋅Σ₅⎠
+───────────────
+   3⋅S - Σ₀    
+N_Q after natural source-map reduction =
+      Σ₀   
+  S - ──   
+      3    
+───────────
+   5       
+S⋅β  + 9⋅Σ₅
+Delta_norm(point-particle) after inserting DtN deformation algebra =
+       5 ⎛       5                   ⎞
+18⋅G⋅cₛ ⋅⎝- 3⋅S⋅β  + 3⋅S - Σ₀ - 27⋅Σ₅⎠
+──────────────────────────────────────
+           5  5 ⎛   5       ⎞         
+        5⋅a ⋅c ⋅⎝S⋅β  + 9⋅Σ₅⎠         
+N_Q deformation law = 0
+Delta_norm deformation law = 0
+linearized N_Q - 1 =
+          dSigma₀   9⋅dSigma₅
+-5⋅epsᵦ - ─────── - ─────────
+            3⋅S         S    
+linearized Delta_norm(point-particle) =
+         5               5                   5        
+  54⋅G⋅cₛ ⋅epsᵦ   18⋅G⋅cₛ ⋅dSigma₀   486⋅G⋅cₛ ⋅dSigma₅
+- ───────────── - ──────────────── - ─────────────────
+       5  5               5  5                5  5    
+      a ⋅c           5⋅S⋅a ⋅c            5⋅S⋅a ⋅c     
+linearized N_Q - 1 = 0
+linearized Delta_norm(point-particle) = 0
+
+----------------------------------------------------------------------------------------
+V. Canonical compact outgoing branch
+----------------------------------------------------------------------------------------
+chi_Q(canonical) - 1 = 0
+N_Q(canonical) - 1 = 0
+Delta_norm(canonical) = 0
+P0(canonical source-map-reduced) - P0_target = 0
+
+========================================================================================
+STAGE 178 LEDGER
+========================================================================================
+1. The isotropic retarded grouped-P2 one-pole branch carries the exact odd ratio
+      Gammabar_5 / Gammabar_5^target = chi_Q N_Q,
+   where N_Q := Pbar_0 / P0^target and P0^target = 54 G c_s^5/(5 a^5 c^5).
+2. The observable odd closure therefore factorizes exactly as
+      mhat_0^2 chi_Q N_Q = 1.
+3. The Packet-A normalization residual satisfies
+      Delta_norm = P0^target (mhat_0^2 N_Q - 1),
+   and after imposing the observable odd closure it collapses exactly to
+      Delta_norm = P0^target (1/chi_Q - 1).
+4. On the natural point-particle source-map branch mhat_0 -> 1, the conservative
+   carrier ratio itself reduces to
+      N_Q = 1/chi_Q,
+   so the last reduced isotropic defect is purely outgoing.
+5. Inserting the Stage 194 isotropic DtN deformation algebra gives
+      chi_Q = 3 (S beta^5 + 9 Sigma_5)/(3 S - Sigma_0),
+      N_Q = (3 S - Sigma_0)/(3 (S beta^5 + 9 Sigma_5)),
+      Delta_norm^(pt) = -P0^target [3 S(beta^5-1)+Sigma_0+27 Sigma_5]/[3(S beta^5+9 Sigma_5)].
+6. Linearized about the canonical compact passive/outgoing branch,
+      N_Q - 1 = -5 eps_beta - dSigma_0/(3 S) - 9 dSigma_5/S + O(2).
+7. On the canonical compact outgoing branch itself (beta=1, Sigma_0=Sigma_5=0, hence chi_Q=1),
+   one gets exactly
+      N_Q = 1,   Delta_norm = 0.
+8. Stage 195 therefore removes the last source-map ambiguity from the isotropic retarded
+   finish line: once the odd observable closure is imposed, the remaining Packet-A normalization
+   defect is already the purely outgoing scalar chi_Q-1, and on the natural source-map branch
+   the conservative carrier ratio itself is N_Q = 1/chi_Q.
+
+EXIT_CODE: 0

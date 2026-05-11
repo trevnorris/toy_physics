@@ -1,0 +1,92 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+# Date: 2026-05-11T12:52:51-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1. Scalar derivative-coupled cubic outlet
+========================================================================================
+A0(omega)             = Omega_U0**2 - omega**2
+W0(omega)             = Omega_W0**2 - omega**2
+Delta0                = Omega_U0**2*Omega_W0**2 - R0**2
+N0_scalar(omega)      = eta_0**2*omega**2*(Omega_U0**2 - omega**2)**2/(R0**2 - (Omega_U0**2 - omega**2)*(Omega_W0**2 - omega**2))**2
+series N0_scalar      = Omega_U0**4*eta_0**2*omega**2/(-Omega_U0**2*Omega_W0**2 + R0**2)**2 + omega**4*(Omega_U0**4*eta_0**2*(-2*Omega_U0**2/(-Omega_U0**2*Omega_W0**2 + R0**2) - 2*Omega_W0**2/(-Omega_U0**2*Omega_W0**2 + R0**2))/(-Omega_U0**2*Omega_W0**2 + R0**2)**2 - 2*Omega_U0**2*eta_0**2/(-Omega_U0**2*Omega_W0**2 + R0**2)**2)
+coeff omega^2         = Omega_U0**4*eta_0**2/(Omega_U0**2*Omega_W0**2 - R0**2)**2
+Gamma_{3,0}           = Omega_U0**4*eta_0**2*gamma_1/(Omega_U0**2*Omega_W0**2 - R0**2)**2
+
+========================================================================================
+2. Selected mixed quadrupole quintic outlet
+========================================================================================
+P0_minus              = beta_0*s_-/lambda_-
+Gamma_2^(port)        = a**5/(27*c_s**5)
+Gamma_{5,-}           = a**5*beta_0*s_-/(27*c_s**5*lambda_-)
+Gamma_3               = Omega_U0**4*Pi_V0**2*eta_0**2*gamma_1/(Omega_U0**2*Omega_W0**2 - R0**2)**2
+Gamma_5               = Pi_V-**2*a**5*beta_0*s_-/(27*c_s**5*lambda_-)
+
+========================================================================================
+3. Projected active-leg export kernel
+========================================================================================
+Sigma_exp(omega)      = -I*Omega_U0**4*Pi_V0**2*eta_0**2*gamma_1*omega**3/(Omega_U0**2*Omega_W0**2 - R0**2)**2 - I*Pi_V-**2*a**5*beta_0*omega**5*s_-/(27*c_s**5*lambda_-)
+
+========================================================================================
+4. Exact Schott power identities
+========================================================================================
+F_odd                 = Gamma_3*Derivative(V(t), (t, 3)) - Gamma_5*Derivative(V(t), (t, 5))
+Schott term           = Gamma_3*Derivative(V(t), t)*Derivative(V(t), (t, 2)) - Gamma_5*(Derivative(V(t), t)*Derivative(V(t), (t, 4)) - Derivative(V(t), (t, 2))*Derivative(V(t), (t, 3)))
+power - dSchott/dt    = -Gamma_3*Derivative(V(t), (t, 2))**2 - Gamma_5*Derivative(V(t), (t, 3))**2
+
+========================================================================================
+5. Characteristic polynomial and safe surface
+========================================================================================
+F(s)                  = Gamma_3*s**3 + Gamma_5*s**5 - kappa_V + mu_eta*s**2
+F'(s)                 = s*(3*Gamma_3*s + 5*Gamma_5*s**3 + 2*mu_eta)
+F(sc)                 = Gamma_3*s_c**3 + Gamma_5*s_c**5 - mu_eta*s_0**2 + mu_eta*s_c**2
+G3_safe(sc,G5)        = -Gamma_5*s_c**2 + mu_eta*s_0**2/s_c**3 - mu_eta/s_c
+G3_safe/mu_eta        = -Gamma_5*s_c**2/mu_eta + s_0**2/s_c**3 - 1/s_c
+G3hat_safe (G5=0)     = (s_0**2 - s_c**2)/s_c**3
+G5hat_safe (G3=0)     = (s_0**2 - s_c**2)/s_c**5
+delta s (weak export) = s_0**2*(-Gamma_3 - Gamma_5*s_0**2)/(2*mu_eta)
+
+========================================================================================
+6. Normalized half-plane
+========================================================================================
+safe half-plane       = Eq(G3hat + G5hat*s_c**2, (s_0**2 - s_c**2)/s_c**3)
+dimensionless rhs     = s_0**2/s_c**2 - 1
+
+========================================================================================
+7. Session-IV benchmark specialization
+========================================================================================
+s_c                   = 0.5489386551062235
+s_0 from tcollapse    = 6.943111752716353
+s_0 from gamma_crit   = 6.94311167
+safe half-plane rhs   = 289.61004917557426
+weight sc^2           = 0.3013336470698294
+G3hat_safe            = 289.61004917557426
+G5hat_safe            = 961.094295282802
+dimensionless rhs     = 158.978150899687
+
+========================================================================================
+8. Root checks on the safe surface
+========================================================================================
+positive roots (cubic)= [0.5489386551062235]
+positive roots (quint)= [0.5489386551062235]
+
+========================================================================================
+Stage 251 audit result
+========================================================================================
+All symbolic and numerical checks passed.
+Verified objects:
+- exact cubic coefficient from the derivative-coupled scalar mixed outlet,
+- exact quintic coefficient imported from the selected outgoing quadrupole lane,
+- projected active-leg odd export kernel Sigma_exp(omega),
+- exact Schott power identities for the cubic/quintic passive export law,
+- exact characteristic polynomial and strict monotonicity on s>0,
+- absence of a finite microscopic unconditional threshold on the minimal kernel,
+- exact event-safe half-plane replacing gamma_safe,
+- and the Session-IV cold-event benchmark specialization.
+
+EXIT_CODE: 0

@@ -1,0 +1,83 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.wl
+# Date: 2026-05-11T13:19:00-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 147 — MICROSCOPIC LOG-IMBALANCE CHANNELS
+========================================================================================
+g/r - (g_q K_s)/(g_s lam) = 0
+PASS: g/r - (g_q K_s)/(g_s lam)
+1/r_c - (K_s K_q)/lam^2 = 0
+PASS: 1/r_c - (K_s K_q)/lam^2
+
+========================================================================================
+General Stage 118 formulas
+========================================================================================
+general first product = -((ks*Pi*zq)/(Sqrt[2]*isq*js*lw^(3/2)*mu0*qstar*tm*vw0))
+general second product = (cs^2*ks*Pi^2*zq)/(4*isq^2*lw^2*mu0*qstar^2*vw0^2)
+
+========================================================================================
+Uniform-overlap + D/N simplification
+========================================================================================
+uniform-overlap first product = (-9*ks*zq)/(64*a^4*ell^2*lw^2*mu0*qstar*tm*vw0)
+uniform-overlap second product = (9*cs^2*ks*Pi^2*zq)/(512*a^4*ell^2*lw^3*mu0*qstar^2*vw0^2)
+uniform first product = 0
+PASS: uniform first product
+uniform second product = 0
+PASS: uniform second product
+
+========================================================================================
+Healing-locked shell branch
+========================================================================================
+healing-locked first product = (-27*csw^3*mpsi^2*Pi*zq)/(40*a^2*hbar*lw^2*mu0*qstar*rhoW*tm*vw0)
+healing-locked second product = (27*cs^2*csw^3*mpsi^2*Pi^3*zq)/(320*a^2*hbar*lw^3*mu0*qstar^2*rhoW*vw0^2)
+healing first product exact formula = 0
+PASS: healing first product exact formula
+healing second product exact formula = 0
+PASS: healing second product exact formula
+
+========================================================================================
+delta_perp on the healing-locked branch
+========================================================================================
+delta_perp compressed form = 0
+PASS: delta_perp compressed form
+delta_perp = -2*dlna*gstar + 3*dlncsw*gstar - 2*dlnLw*gstar - dlnrho*gstar - dlnTm*gstar - dlnv*gstar + dlnZ*gstar - dlna/(2*Sqrt[1 + rstar^2]) + dlncs/(2*Sqrt[1 + rstar^2]) + (3*dlncsw)/(4*Sqrt[1 + rstar^2]) - (3*dlnLw)/(4*Sqrt[1 + rstar^2]) - dlnrho/(4*Sqrt[1 + rstar^2]) - dlnv/(2*Sqrt[1 + rstar^2]) + dlnZ/(4*Sqrt[1 + rstar^2])
+tangency-law dln T_m = (2*dlncs + 3*dlncsw - 3*dlnLw - dlnrho - 2*dlnv + dlnZ - 2*(dlna + 4*dlna*gstar*Sqrt[1 + rstar^2] + 2*(-3*dlncsw + 2*dlnLw + dlnrho + dlnv - dlnZ)*gstar*Sqrt[1 + rstar^2]))/(4*gstar*Sqrt[1 + rstar^2])
+
+========================================================================================
+Family-1 numerical coefficients
+========================================================================================
+g_* = 0.758035078944663
+1/(4 sqrt(1+r_*^2)) = 0.12255401109690651
+A_* = g_* + 1/(4 sqrt(...)) = 0.8805890900415696
+B_* = 1/(2 sqrt(1+r_*^2)) = 0.24510802219381303
+coeff[ln(Z_q/rho_w)] = 0.8805890900415696
+coeff[ln(c_sw)]      = 2.641767270124709
+coeff[ln(c_s)]       = 0.24510802219381303
+coeff[ln(T_m)]       = -0.758035078944663
+coeff[ln(v_w0)]      = -1.0031431011384762
+coeff[ln(a)]         = -1.7611781800831392
+coeff[ln(L_W)]       = -1.8837321911800458
+A_* numeric check diff = 1.1102230246251565*^-16
+PASS: A_* numeric check
+B_* numeric check diff = 0.
+PASS: B_* numeric check
+c_sw coefficient numeric check diff = 4.440892098500626*^-16
+PASS: c_sw coefficient numeric check
+v_w0 coefficient numeric check diff = 2.220446049250313*^-16
+PASS: v_w0 coefficient numeric check
+L_W coefficient numeric check diff = 2.220446049250313*^-16
+PASS: L_W coefficient numeric check
+
+Carry-forward formulas:
+  dln[(g_q K_s)/(g_s lam)] = dln(g/r)
+  dln[(K_s K_q)/lam^2] = - dln(r_c)
+  On the healing-locked branch the two channels reduce to direct microscopic drifts.
+  delta_perp is the weighted sum of those two channels.
+
+EXIT_CODE: 0

@@ -1,34 +1,109 @@
-\section[Stage 030]{Stage 030: Coherent-Kernel Dimensionless Map and Support-Enhancement Factor}
+\section[Stage 030]{Stage 030: Selected-Mode Normalized Response}
 \label{stage:030}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the coherent tracking map.}
-\stagefield{Purpose}{Stage~030 introduces the coherent support ratio \(\zeta\) and shows that it changes the available loading but not the selected target ratio.}
-\stagefield{Inputs}{The coherent tracking branch, dimensionless split--\(U\) variables, and a support lane parallel to the tracked mixed direction.}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the selected lower-mode eigenbranch.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage030_coherent_kernel_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage030_coherent_kernel_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage030_coherent_kernel_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage030_coherent_kernel_map_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~030 translates the selected lower eigenvalue and odd coefficient into normalized-response language.  The stage defines the selected static prefactor \(P_{0,-}\), relates it to the Hellmann--Feynman derivative of the eigenvalue, and states the selected quadrupole target.}
+
+\stagefield{Inputs}{The inputs are the static selected matrix from Stage~029, the lower eigenvalue \(\lambda_-\), the selected eigenvector \(e_-\), and the overlap \(s_-=(v\cdot e_-)^2\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage030_selected_mode_normalization_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage030_selected_mode_normalization_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The total tracking load factors as
+\paragraph{1. Static selected eigenvalue.}
+Set
 \begin{equation}
-\label{eq:app-stage030-Mtr}
-M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
+\label{eq:app-stage030-AB}
+A=K_0-\Xi_0,
+\qquad
+B=K_1-\Xi_0=A+\Delta K_{\rm ax}.
 \end{equation}
-where
+Define
 \begin{equation}
-\label{eq:app-stage030-S}
+\delta_\kappa=\kappa_0^2-\kappa_1^2,
+\qquad
+\Pi_\kappa=\kappa_0^2\kappa_1^2,
+\qquad
+\sigma=\kappa_0^2+\kappa_1^2.
+\end{equation}
+The lower eigenvalue is
+\begin{equation}
+\label{eq:app-stage030-lambda-minus}
 \boxed{
-S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\epsilon\zeta}}.
+\lambda_-=\frac{A+B-\alpha_0\sigma-
+\sqrt{(\Delta K_{\rm ax}+\alpha_0\delta_\kappa)^2+4\alpha_0^2\Pi_\kappa}}{2}}.
 \end{equation}
-The coherent target ratio is
+Let
 \begin{equation}
-\label{eq:app-stage030-Rtarget}
-\boxed{
-R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}}.
+R_\lambda=\sqrt{(\Delta K_{\rm ax}+\alpha_0\delta_\kappa)^2+4\alpha_0^2\Pi_\kappa}.
 \end{equation}
-It contains no \(\zeta\).  Therefore the support lane only supplies loading; it does not move the target locus itself.
+The selected overlap is
+\begin{equation}
+\label{eq:app-stage030-s-minus}
+\boxed{
+s_-=(v\cdot e_-)^2
+=\frac12\left[
+\sigma+\frac{(\Delta K_{\rm ax}+\alpha_0\delta_\kappa)\delta_\kappa+4\alpha_0\Pi_\kappa}{R_\lambda}
+\right]}.
+\end{equation}
+Equivalently, by Hellmann--Feynman,
+\begin{equation}
+\label{eq:app-stage030-HF}
+\boxed{
+s_-=-\frac{d\lambda_-}{d\alpha_0}}.
+\end{equation}
 
-\stagefield{Output}{Support enhancement factor \eqref{eq:app-stage030-S} and target independence \eqref{eq:app-stage030-Rtarget}.}
-\stagefield{Downstream use}{Stage~031 inverts \(S\) to obtain \(\zeta_{\rm req}\); Stages~032--033 compute whether physical D/N support can supply it.}
+\paragraph{2. Normalized selected response.}
+Write
+\begin{equation}
+D_-(\omega)=D_{-0}+D_{-2}\omega^2+D_{-4}\omega^4-iC_{5,-}\omega^5+O(\omega^6),
+\qquad
+D_{-0}=\lambda_-.
+\end{equation}
+Then
+\begin{equation}
+Y_-(\omega)=\frac{D_{-0}}{D_-(\omega)}
+=1+u_{2,-}\omega^2+u_{4,-}\omega^4+i\Gamma_{5,-}\omega^5+O(\omega^6),
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-stage030-selected-even}
+\boxed{u_{2,-}=-\frac{D_{-2}}{D_{-0}},
+\qquad
+u_{4,-}=\frac{D_{-2}^2-D_{-0}D_{-4}}{D_{-0}^2},
+\qquad
+\Gamma_{5,-}=\frac{C_{5,-}}{D_{-0}}}.
+\end{equation}
+The Stage~029 odd coefficient gives
+\begin{equation}
+\label{eq:app-stage030-Gamma-selected}
+\Gamma_{5,-}=\frac{a^5}{27c_s^5}\frac{\beta_0s_-}{\lambda_-}.
+\end{equation}
+Therefore define
+\begin{equation}
+\label{eq:app-stage030-P0minus}
+\boxed{
+P_{0,-}=\frac{\beta_0s_-}{\lambda_-}
+=-\beta_0\frac{d\ln\lambda_-}{d\alpha_0}}.
+\end{equation}
+The selected-branch target is
+\begin{equation}
+\label{eq:app-stage030-selected-target}
+\boxed{
+\widehat m_-^{\,2}P_{0,-}=N_Q^{\rm target}}.
+\end{equation}
+
+\stagefield{Output}{Stage~030 outputs the lower eigenvalue \eqref{eq:app-stage030-lambda-minus}, the selected overlap \eqref{eq:app-stage030-s-minus}, the Hellmann--Feynman identity \eqref{eq:app-stage030-HF}, the selected prefactor \eqref{eq:app-stage030-P0minus}, and the target \eqref{eq:app-stage030-selected-target}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Differentiating the eigenvalue with respect to \(\alpha_0\) gives \(d\lambda_-/d\alpha_0=-e_-^Tvv^Te_-=-s_-\).
+\item Normalizing \(D_-/D_{-0}\) gives the response coefficients as quotients by \(\lambda_-\).
+\item The outgoing coefficient contains only \(\beta_0s_-/\lambda_-\), matching the selected projection of Stage~029.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~031 proves that \(P_{0,-}\) is monotone on the stable branch.  Stage~032 replaces the abstract \(\widehat m_-\) by the natural D/N source-map factor.  Stage~034 uses \(\lambda_-\) and \(s_-\) to build the softening-depth normal form.}
+
+\clearpage
 

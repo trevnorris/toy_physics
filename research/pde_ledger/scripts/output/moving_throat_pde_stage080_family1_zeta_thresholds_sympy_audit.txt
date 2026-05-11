@@ -1,0 +1,35 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+# Date: 2026-05-11T12:44:51-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 63 — FAMILY-1 ZETA THRESHOLDS
+========================================================================================
+zeta_max^(F1) = 2.4675292294560112350
+zeta_suff^(chi)(lambda_mu) = zeta_F1(96.5285247264386 lambda_mu^2)
+zeta_fail^(chi)(lambda_mu) = zeta_F1(11220.5441626259 lambda_mu^2)
+zeta_suff^(J)(lambda_mu)   = zeta_F1(22.0062226330754 lambda_mu^2)
+zeta_fail^(J)(lambda_mu)   = zeta_F1(2558.01892349205 lambda_mu^2)
+zeta_suff^(chi)(1) = 2.4662229134784638979
+zeta_fail^(chi)(1) = 2.4675291327387028754
+zeta_suff^(J)(1) = 2.4425757147717912819
+zeta_fail^(J)(1) = 2.4675273685505776147
+limit zeta_suff^(chi) = 2.4675292294560041530
+limit zeta_fail^(chi) = 2.4675292294560115151
+limit zeta_suff^(J) = 2.4675292294560123182
+limit zeta_fail^(J) = 2.4675292294560120347
+
+========================================================================================
+FINAL LEDGER
+========================================================================================
+Guaranteed success: zeta_req <= zeta_suff^(chi)(lambda_mu)
+Guaranteed failure: zeta_req >= zeta_fail^(chi)(lambda_mu)
+Conservative floor success/failure obtained by replacing (chi) with (J)
+For lambda_mu = 1 the natural Family-1 branch already reaches zeta_req ≈ 2.46622 before the indeterminate band.
+
+EXIT_CODE: 0

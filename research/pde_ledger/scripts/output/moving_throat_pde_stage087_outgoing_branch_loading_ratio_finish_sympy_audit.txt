@@ -1,0 +1,28 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+# Date: 2026-05-11T12:44:56-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 70 — FINAL REDUCED FINISH-LINE IN THE LOADING-RATIO VARIABLE
+========================================================================================
+zeta_req(rho_alpha,eps_blk) = (1 - rho_alpha)/(-eps_blk*(rho_alpha - 2) - 1)
+d zeta_req / d rho_alpha = (eps_blk*(rho_alpha - 2) - eps_blk*(rho_alpha - 1) + 1)/(eps_blk*(rho_alpha - 2) + 1)**2
+unblocked zeta_req = 0
+zeta at success ratio = 2.466222913478460121439184
+zeta at failure ratio = 2.467529132738699892968270
+zeta at max ratio     = 2.467529229456010053667114
+zeta_suff - 2.46622291347846 = 0
+zeta_fail - 2.46752913273870 = 0
+zeta_max - 2.46752922945601 = 0
+
+FINAL LEDGER
+The reduced explicit Family-1 theorem is completely equivalent to a one-number test:
+  rho_alpha = alpha_req/alpha_mix
+with success/failure determined by the Stage-69 ratio window.
+
+EXIT_CODE: 0

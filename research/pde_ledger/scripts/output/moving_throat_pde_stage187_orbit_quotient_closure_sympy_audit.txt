@@ -1,0 +1,55 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+# Date: 2026-05-11T12:48:33-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 170 — EXACT ORBIT–QUOTIENT CLOSURE
+========================================================================================
+Exact finite log-ratio equations:
+row_tr  = (Delta_T - Delta_U)*(chi0_star + 1) + (deltaU_star + 1)*(-Delta_U + Delta_c + Delta_gamma)
+row_nt  = -Delta_T*F_star + Delta_U*(-E_star + F_star) - Delta_W*(E_star + 2) - Delta_eta + 2*Delta_gamma*E_star + Delta_lambda*(2*E_star + 2) + Delta_mu
+row_eta = -Delta_U + 2*Delta_c - Delta_eta
+matrix row 1 - exact row_tr = 0
+matrix row 2 - exact row_nt = 0
+matrix row 3 - exact row_eta = 0
+det selected minor (Delta_eta, Delta_mu, Delta_T) = chi0_star + 1
+
+Exact finite fibre solution:
+Delta_eta = -Delta_U + 2*Delta_c
+Delta_T = (Delta_U*chi0_star + Delta_U*deltaU_star + 2*Delta_U - Delta_c*deltaU_star - Delta_c - Delta_gamma*deltaU_star - Delta_gamma)/(chi0_star + 1)
+Delta_mu = (Delta_U*E_star*chi0_star + Delta_U*E_star + Delta_U*F_star*deltaU_star + Delta_U*F_star - Delta_U*chi0_star - Delta_U + Delta_W*E_star*chi0_star + Delta_W*E_star + 2*Delta_W*chi0_star + 2*Delta_W - Delta_c*F_star*deltaU_star - Delta_c*F_star + 2*Delta_c*chi0_star + 2*Delta_c - 2*Delta_gamma*E_star*chi0_star - 2*Delta_gamma*E_star - Delta_gamma*F_star*deltaU_star - Delta_gamma*F_star - 2*Delta_lambda*E_star*chi0_star - 2*Delta_lambda*E_star - 2*Delta_lambda*chi0_star - 2*Delta_lambda)/(chi0_star + 1)
+Delta_eta finite law = 0
+Delta_T finite law = 0
+Delta_mu finite law = 0
+row_tr after solve = 0
+row_nt after solve = 0
+row_eta after solve = 0
+
+========================================================================================
+Finite orbit interpretation
+========================================================================================
+The three monomial equalities reduce exactly to the same rank-3 matrix condition
+M_* Delta x = 0, but now Delta x is a finite log-ratio vector rather than an
+infinitesimal drift. Therefore the Stage 186 similarity orbit integrates exactly:
+its fibres are the full level sets of (C_tr, C_nt, epsilon_eta).
+
+========================================================================================
+Carry-forward formulas
+========================================================================================
+  Delta_eta = 2 Delta_c - Delta_U
+  Delta_T   = Delta_U - ((1+deltaU_*)/(1+chi_*))(Delta_gamma + Delta_c - Delta_U)
+  Delta_mu  = 2 Delta_c - Delta_U + 2 Delta_W - 2 Delta_lambda
+              - E_*(2 Delta_gamma + 2 Delta_lambda - Delta_U - Delta_W)
+              - F_*((1+deltaU_*)/(1+chi_*))(Delta_gamma + Delta_c - Delta_U)
+
+Conclusion:
+  Equal values of (C_tr, C_nt, epsilon_eta) are exactly equivalent to lying on
+  the same finite similarity orbit G_*. The weak-axisymmetric defect therefore
+  lives in the exact three-dimensional orbit quotient.
+
+EXIT_CODE: 0

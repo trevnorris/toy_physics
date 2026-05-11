@@ -1,0 +1,17 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+# Date: 2026-05-11T12:45:48-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+rho_c = g_s**2/K_s
+sigma_c = (K_s*g_q - g_s*lam)**2/(K_s*(K_q*K_s + lam**2))
+M_s = L*g_s**2/(K_s*Theta)
+M_q = -L*(K_s*g_q - g_s*lam)**2/(K_s*Theta*(K_q*K_s + lam**2))
+sigma_c (r_c form) = (K_s*g_q - g_s*lam)**2/(K_s*(K_q*K_s + lam**2))
+
+Final explicit gain map verified.
+
+EXIT_CODE: 0

@@ -1,0 +1,57 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+# Date: 2026-05-11T12:47:21-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 156 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT
+========================================================================================
+u2^(1) general = (-D0*D21 + D01*D2)/D0**2
+u4^(1) general = (-D0**2*D41 + D0*(D01*D4 + 2*D2*D21) - 2*D01*D2**2)/D0**3
+P1 general     = (D0*N01 - D01*N0)/D0**2
+u2 slope identity = 0
+
+========================================================================================
+Canonical branch formulas
+========================================================================================
+u2^(1) canonical = (-D01/9 - D21)/D0
+u4^(1) canonical = (-5*D01 - 18*D21 - 81*D41)/(81*D0)
+P1/P0            = N01/N0 - D01/D0
+u4 canonical formula = 0
+P1/P0 formula = 0
+
+========================================================================================
+Hidden-even operator identity
+========================================================================================
+hidden-even residual = 0
+D41 from hidden-even relation = D01/27 + 2*D21/3
+
+========================================================================================
+Even-preserving collapse
+========================================================================================
+D21 from u2^(1)=0 = -D01/9
+D41 on even-preserving branch = -D01/27
+D21 + D01/9 = 0
+D41 + D01/27 = 0
+
+========================================================================================
+Single static loading mismatch
+========================================================================================
+Xi_load = N01/N0 - D01/D0
+Delta_Q^(20)/eps = N01/N0 - D01/D0
+Delta_Q^(21)/eps = N01/(2*N0) - D01/(2*D0)
+Delta_Q^(22)/eps = -N01/N0 + D01/D0
+
+Carry-forward formulas:
+  u2^(1) = -(D21 + u2 D01)/D0
+  u4^(1) = -(5 D01 + 18 D21 + 81 D41)/(81 D0) on the canonical branch
+  P1/P0  = N01/N0 - D01/D0
+  hidden-even  <=>  D41 = 2 D21/3 + D01/27
+  if u2^(1)=0, then D21 = -D01/9 and D41 = -D01/27
+  remaining defect Xi_load = N01/N0 - D01/D0
+
+EXIT_CODE: 0

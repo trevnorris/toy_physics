@@ -1,12 +1,12 @@
-# Review: Stage 149 — Bundle inversion four drifts
+# Review: Stage 149 — Selected mode normalization
 
-**Batch:** 18 — Linear Defect Transport & Final
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage149_bundle_inversion_four_drifts.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage149_bundle_inversion_four_drifts_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage030_selected_mode_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -35,24 +35,56 @@
 
 **Questions:**
 
-### Agent: Claude Opus 4.6 — 2026-04-03
-**Verdict:** PASS
-**Notes Derivation Review:** 4×4 forward transport laws verified: dTheta=2drho, dKs=2da+drho, dKq=dZ+2dcs-2da, dP=5(dcs-da). Inversion by forward substitution: drho=dTheta/2, da=dKs/2-dTheta/4, dcs=dKs/2-dTheta/4+dP/5, dZ=dKq-2dP/5. All correct. Bundle form with dP=dN0-dD0 correct. Frozen-wall (dTheta=0) simplifies correctly. rho_w^{chi} = sqrt(4.069/25) ~ 0.4034 verified.
-**Script Review:** sp.solve for 4×4 system. Forward verification, bundle form, frozen-wall all compared against independently typed targets. Numerical rho_w from Stage 60 datum. All pass (exit code 0).
-**Issues Found:** None.
-
-### Agent: Codex GPT-5 — 2026-04-03
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The bundle inversion is correct. The four observable laws invert exactly to the four remaining drifts, the bundle form with `P_0 = N_0/D_0` matches, and the frozen-wall corollary reduces the remaining freedom exactly as claimed.
+1. **Equation-level correctness.** All formulas verified. Eigenvalue formula for 2×2 loaded wall block correct (signs checked via diagonal difference and off-diagonal elements). Hellmann-Feynman overlap s_- = -d lambda_-/d alpha_0 verified. Closed form for s_- matches direct differentiation. Weak-loading limit s_-(0) = kappa_0^2 and strong-loading limit s_- → sigma both verified. Normalized response expansion u2, u4, Gamma5 follow from standard geometric series. Prefactor algebra Gamma_{5,-} = Gamma_2^{port} * P_{0,-} correct. Target equation mhat^2 * P0 = 54 G c_s^5/(5 a^5 c^5) verified. Determinant identity via matrix determinant lemma correct. Critical threshold alpha_crit = AB/(B*x0 + A*x1) correct.
+
+2. **Logical flow.** Clean chain: eigenvalue → overlap → normalization → prefactor → target → determinant. Connects Stage 12 operator-level results to Stage 022 normalized-response language.
+
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0 on stable branch.
+
+4. **Completeness.** O(omega^6) remainder not addressed, consistent with project convention.
+
+5. **Notation consistency.** Matches Stages 12 and 5. New symbols P_{0,-}, D_{-0}, N_Q^{target} well-defined.
+
+6. **Physical interpretation.** Sound: normalization reduces to spectral ratio — sensitivity of selected eigenvalue to loading.
 
 **Script Review:**
 
-The script solves the 4×4 linear system, verifies the forward substitutions, checks the bundle identities, and confirms the frozen-wall simplification. The saved output matches the note.
+**B.1 Faithful.** Same 2×2 block, eigenvalues, overlap, prefactor, determinant identity, target equivalence.
+**B.2 No bugs.** Series expansion, im() extraction, expect_zero all correct.
+**B.3 No problematic hardcoding.** Constants 27, 54 are derived (2×27=54).
+**B.4 No tautologies.** HF vs closed-form overlap is two independent computations. Determinant identity expands product and compares. Normalization equivalence verifies two condition forms are proportional.
+**B.5 Symbol assumptions correct.** A, DK positive; alpha nonneg; x0, x1 positive; beta0, G5 positive.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Complete. Strong-loading limit not in script but verified analytically.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The selected-mode normalization chain is internally consistent. The generic response expansion gives the expected `u2`, `u4`, and odd `Gamma5` coefficients, and the selected lower eigenvalue / overlap formulas match the loaded `2x2` wall block exactly.
+2. The selected static prefactor `P_{0,-} = beta_0 s_- / lambda_-` is correctly translated into the normalized-response language, and the `mhat_-^2 P_{0,-}` target is algebraically equivalent to the quadrupole normalization condition.
+3. The determinant identity and the spectral rewrite are both correct. I independently checked the core normalization identities with SymPy, and the results reduced to zero.
+
+**Script Review:**
+
+1. The script faithfully implements the note structure: series expansion, exact eigenvalues, Hellmann-Feynman overlap, prefactor identity, determinant identity, and target equivalence.
+2. The saved output matches the note claims, and the checks are nontrivial rather than tautological.
 
 **Issues Found:**
+
+None.
+
+**Questions:**
 
 None.
 

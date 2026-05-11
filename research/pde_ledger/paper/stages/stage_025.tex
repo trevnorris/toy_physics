@@ -1,43 +1,100 @@
-\section[Stage 025]{Stage 025: Selected-Mode Normalization Under Rank--2 Support Completion}
+\section[Stage 025]{Stage 025: Minimal Isotropic Single-Mode Closure}
 \label{stage:025}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the selected eigenvector and overlap algebra.}
-\stagefield{Purpose}{Stage~025 shows that once support and mixed loading directions differ, normalization depends separately on outgoing, support, and source directions.}
-\stagefield{Inputs}{The Stage~024 selected branch with \(n=n_{\rm req}\), mixed direction \(q\), support direction \(r\), and source direction \(t\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{The one-mode formula is \StatusExactClosure{} inside the one-BdG/one-Maxwell-mixed-pair isotropic closure.  Whether the actual branch realizes the formula at the required value is \StatusOpen{}.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage025_rank2_selected_mode_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage025_rank2_selected_mode_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage025_rank2_selected_mode_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage025_rank2_selected_mode_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~025 strips the isotropic branch to the smallest radial/axial module that can carry the outgoing quadrupole normalization: one stable BdG support mode, one brane-like internal gauge coordinate, and one mixed port-active coordinate.  The stage turns the formal ratio \(N_0/D_0\) into an explicit scalar expression.}
+
+\stagefield{Inputs}{The inputs are the Stage~024 isotropic angular collapse, the Stage~023 definitions of \(D_0\) and \(N_0\), and the one-mode reduced couplings \(C,G_U,G_W,R\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage025_minimal_isotropic_normalization_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage025_minimal_isotropic_normalization_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-With \(n=n_{\rm req}\), the selected eigenvector ratio is
+\paragraph{1. Minimal one-mode variables.}
+Define the radial/axial couplings
 \begin{equation}
-\label{eq:app-stage025-evec-rank2}
+\label{eq:app-stage025-couplings}
+C=\lambda_BI_{\eta\phi},
+\qquad
+G_U=\lambda_UI_{\eta u},
+\qquad
+G_W=\lambda_WI_{\eta w},
+\qquad
+R=\lambda_RI_{uw}.
+\end{equation}
+Let the frequencies be \(\varpi\), \(\Omega_U\), and \(\Omega_W\).  The Maxwell/mixed invariants are
+\begin{equation}
+\label{eq:app-stage025-invariants}
 \boxed{
-\frac{e_1}{e_0}
-=\frac{m(q-r)+r\xi}{\delta+\xi-mq(q-r)}}.
+\Delta=\Omega_U^2\Omega_W^2-R^2,
+\qquad
+Q=G_U^2\Omega_W^2+2G_UG_WR+G_W^2\Omega_U^2,
+\qquad
+\mathcal P=\Omega_U^2G_W+RG_U}.
 \end{equation}
-Define
+The BdG static softening is
 \begin{equation}
-\label{eq:app-stage025-Dqr}
-D_{q,r}(\xi,\delta;m)
-=[\delta+\xi-mq(q-r)]^2+[m(q-r)+r\xi]^2.
+\label{eq:app-stage025-X}
+X=\frac{C^2}{\varpi^2}.
 \end{equation}
-The loading and source overlaps are
+Therefore
 \begin{equation}
-\label{eq:app-stage025-z-overlap}
-\boxed{
-\frac{(z\cdot e_-)^2}{z_0^2}
-=\frac{[\delta+(1+qr)\xi]^2}{D_{q,r}(\xi,\delta;m)}},
+\label{eq:app-stage025-D0-N0}
+D_0=K-X-\frac{Q}{\Delta},
+\qquad
+N_0=\frac{\mathcal P^2}{\Delta^2}.
 \end{equation}
-\begin{equation}
-\label{eq:app-stage025-s-overlap}
-\boxed{
-\frac{(s\cdot e_-)^2}{s_0^2}
-=\frac{[\delta+(1+rt)\xi-m(q-r)(q-t)]^2}{D_{q,r}(\xi,\delta;m)}}.
-\end{equation}
-The one-vector result is recovered only when \(r=q\).  Otherwise, the selected-mode normalization sees a three-direction geometry.
 
-\stagefield{Output}{The rank--2 eigenvector \eqref{eq:app-stage025-evec-rank2} and overlap formulas \eqref{eq:app-stage025-z-overlap}--\eqref{eq:app-stage025-s-overlap}.}
-\stagefield{Downstream use}{Stage~027 inserts the actual support direction and converts this algebra into a continuum-selected branch point.}
+\paragraph{2. Minimal outgoing prefactor.}
+The static prefactor is
+\begin{equation}
+\label{eq:app-stage025-P0}
+\boxed{
+P_0=\frac{N_0}{D_0}
+=
+\frac{\mathcal P^2}{\Delta^2\left(K-C^2/\varpi^2-Q/\Delta\right)}
+=
+\frac{\mathcal P^2}{\Delta\left(K\Delta-\Delta C^2/\varpi^2-Q\right)}}.
+\end{equation}
+Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
+\begin{equation}
+\label{eq:app-stage025-normalization-target}
+\boxed{
+\widehat m_{\rm rad}^{\,2}
+\frac{\mathcal P^2}{\Delta\left(K\Delta-\Delta C^2/\varpi^2-Q\right)}
+=N_Q^{\rm target}}.
+\end{equation}
+
+\paragraph{3. Stability and monotonicity.}
+The internal mixed block and dressed wall lane are stable only if
+\begin{equation}
+\label{eq:app-stage025-stability}
+\boxed{
+\Delta>0,
+\qquad
+D_0=K-\frac{C^2}{\varpi^2}-\frac{Q}{\Delta}>0}.
+\end{equation}
+On the stable side,
+\begin{equation}
+\label{eq:app-stage025-monotonicity}
+\frac{\partial P_0}{\partial K}=-\frac{N_0}{D_0^2}<0,
+\qquad
+\frac{\partial P_0}{\partial X}=+\frac{N_0}{D_0^2}>0.
+\end{equation}
+Bare wall stiffening suppresses the outgoing prefactor, while conservative softening enhances it.
+
+\stagefield{Output}{Stage~025 outputs the explicit one-mode target \eqref{eq:app-stage025-normalization-target}, the stability gate \eqref{eq:app-stage025-stability}, and the first monotonicity signs \eqref{eq:app-stage025-monotonicity}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Substitution of \(D_0\) and \(N_0\) into \(P_0=N_0/D_0\) gives \eqref{eq:app-stage025-P0}.
+\item The angular source map does not appear because Stage~024 already fixed \(\widehat m_{\rm ang}=1\).
+\item The sign of \(\partial_KP_0\) and \(\partial_XP_0\) follows from \(N_0>0\) and \(D_0>0\).
+\item If \(\mathcal P=0\), then \(N_0=0\) and a positive quadrupole target cannot be reached.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~026 evaluates the overlaps \(I_{\eta\phi},I_{\eta u},I_{\eta w},I_{uw}\) on a concrete finite-throat D/N branch.  Stage~033 later rewrites the same one-mode variables as \(g_U,g_W,g_R,g_B\) in the microscopic selected-branch test.}
+
+\clearpage
 

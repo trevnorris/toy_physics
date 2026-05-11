@@ -1,41 +1,143 @@
-\section[Stage 027]{Stage 027: Continuum-Selected Rank--2 Closure and Quadratic Branch Equation}
+\section[Stage 027]{Stage 027: First Nonconstant Finite-Throat Wall/Brane Family}
 \label{stage:027}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} after the physical support-direction data are inserted.}
-\stagefield{Purpose}{Stage~027 turns the abstract rank--2 branch into a continuum-selected branch point.  The physical softening depth is no longer free; it is selected by an exact quadratic.}
-\stagefield{Inputs}{The Stage~026 replacements \(q=tR_U\), \(r=tR_\phi\), mixed baseline \(M_{\rm mix}\), and support loading \(M_{\rm supp}\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the first two-mode N/N wall/brane axial family.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage027_continuum_selected_rank2_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage027_continuum_selected_rank2_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage027_continuum_selected_rank2_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage027_continuum_selected_rank2_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~027 checks whether the Stage~026 constant axial profile is too restrictive.  It introduces the first nonconstant N/N profile, computes the profile-dependent D/N overlap \(\kappa(\theta)\), identifies an exact blind-angle no-go, and derives the profile-dressed normalization gate.}
+
+\stagefield{Inputs}{The inputs are the constant N/N profile, the first N/N excitation, and the lowest D/N half-wave from Stage~026.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage027_nonconstant_axial_family_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage027_nonconstant_axial_family_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The selected determinant becomes an equation for \(\xi\).  After collecting terms, the physical softening depth satisfies
+\paragraph{1. Two-mode N/N family.}
+The first nonconstant N/N profile is
 \begin{equation}
-\label{eq:app-stage027-quadratic}
+\label{eq:app-stage027-u1}
+\nu_1(s)=\sqrt{\frac2L}\cos\!\left(\frac{\pi s}{L}\right),
+\qquad
+-\nu_1''=\frac{\pi^2}{L^2}\nu_1.
+\end{equation}
+Use the coherent family
+\begin{equation}
+\label{eq:app-stage027-chi-theta}
+\chi_\theta(s)=\cos\theta\,\nu_0(s)+\sin\theta\,\nu_1(s),
+\end{equation}
+for both the wall profile and the brane-like internal coordinate:
+\begin{equation}
+\chi_\eta=\chi_\theta,
+\qquad
+u=\chi_\theta,
+\qquad
+\phi=w=f_0.
+\end{equation}
+Since \(\nu_0,\nu_1\) are orthonormal, \(\int_0^L\chi_\theta^2ds=1\).
+
+\paragraph{2. Profile overlap.}
+The D/N overlap is
+\begin{equation}
+\label{eq:app-stage027-kappa-theta}
 \boxed{
-\xi^2+B_{\rm cont}\xi+C_{\rm cont}=0},
+\kappa(\theta)=\int_0^L\chi_\theta(s)f_0(s)\,ds
+=\kappa_0\cos\theta+\kappa_1\sin\theta},
 \end{equation}
 where
 \begin{equation}
-\label{eq:app-stage027-Bcont}
-B_{\rm cont}
-=\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
-\end{equation}
-\begin{equation}
-\label{eq:app-stage027-Ccont}
-C_{\rm cont}
-=-\delta(M_{\rm mix}+M_{\rm supp})
-+t^2M_{\rm mix}M_{\rm supp}(R_U-R_\phi)^2.
-\end{equation}
-Once the physical root \(\xi_{\rm phys}\in(0,1)\) is selected, the normalization gate is
-\begin{equation}
-\label{eq:app-stage027-normalization-gate}
+\label{eq:app-stage027-kappa0-kappa1}
 \boxed{
-R_{\rm target}=F_{\rm cont}(\xi_{\rm phys})}.
+\kappa_0=\frac{2\sqrt2}{\pi},
+\qquad
+\kappa_1=-\frac{4}{3\pi}}.
 \end{equation}
-Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.
+Equivalently,
+\begin{equation}
+\label{eq:app-stage027-kappa-explicit}
+\kappa(\theta)=\frac{2(-2\sin\theta+3\sqrt2\cos\theta)}{3\pi}.
+\end{equation}
+The maximum overlap magnitude is
+\begin{equation}
+\label{eq:app-stage027-kappa-max}
+\boxed{
+|\kappa|_{\max}=\sqrt{\kappa_0^2+\kappa_1^2}=\frac{2\sqrt{22}}{3\pi}}.
+\end{equation}
 
-\stagefield{Output}{The continuum-selected quadratic \eqref{eq:app-stage027-quadratic} and normalization gate \eqref{eq:app-stage027-normalization-gate}.}
-\stagefield{Downstream use}{Stage~028 shows the first coherent D/N kernel lands on the tracking surface; Stage~030 packages support enhancement on that surface.}
+\paragraph{3. Blind angle and max-coupling angle.}
+The blind angle satisfies \(\kappa(\theta)=0\), hence
+\begin{equation}
+\label{eq:app-stage027-blind-angle}
+\boxed{
+\tan\theta_{\rm blind}=\frac{3\sqrt2}{2}}.
+\end{equation}
+At this angle, the D/N-coupled data vanish:
+\begin{equation}
+C=0,
+\qquad
+G_W=0,
+\qquad
+R=0,
+\qquad
+\mathcal P=0,
+\qquad
+N_0=0.
+\end{equation}
+A positive quadrupole target is therefore impossible on the blind-angle branch.
+
+The positive-overlap maximum occurs at
+\begin{equation}
+\label{eq:app-stage027-theta-max}
+\boxed{
+\tan\theta_{\max}=\frac{\kappa_1}{\kappa_0}=-\frac{\sqrt2}{3},
+\qquad
+\sin^2\theta_{\max}=\frac{2}{11}}.
+\end{equation}
+This is a small negative admixture of \(\nu_1\).
+
+\paragraph{4. Profile-dressed wall stiffness.}
+For the quadrupole wall operator
+\begin{equation}
+G_\eta=-T_w\frac{d^2}{ds^2}+K_\eta+6T_\Omega,
+\end{equation}
+the coherent profile has
+\begin{equation}
+\label{eq:app-stage027-Kgeo}
+\boxed{
+K_{\rm geo}(\theta)=K_\eta+6T_\Omega+\frac{\pi^2T_w}{L^2}\sin^2\theta}.
+\end{equation}
+The profile-dressed normalization gate is
+\begin{equation}
+\label{eq:app-stage027-Kgate}
+\boxed{
+K_{\rm geo}(\theta)=K_{\rm req}(\theta)},
+\end{equation}
+where Stage~026's required stiffness is evaluated with \(\kappa\to\kappa(\theta)\):
+\begin{equation}
+\label{eq:app-stage027-Kreq}
+K_{\rm req}(\theta)
+=
+\frac{\lambda_B^2\kappa(\theta)^2}{\varpi^2}
++\frac{Q(\theta)}{\Delta(\theta)}
++\frac{\widehat m_{\rm rad}^{\,2}\kappa(\theta)^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}{N_Q^{\rm target}\Delta(\theta)^2},
+\end{equation}
+with
+\begin{equation}
+\Delta(\theta)=\Omega_U^2\Omega_W^2-\lambda_R^2\kappa(\theta)^2,
+\end{equation}
+\begin{equation}
+Q(\theta)=\lambda_U^2\Omega_W^2+2\lambda_U\lambda_W\lambda_R\kappa(\theta)^2+\lambda_W^2\Omega_U^2\kappa(\theta)^2.
+\end{equation}
+
+\stagefield{Output}{Stage~027 outputs \(\kappa(\theta)\), the blind-angle no-go \eqref{eq:app-stage027-blind-angle}, the max-coupling angle \eqref{eq:app-stage027-theta-max}, and the profile-dressed branch equation \eqref{eq:app-stage027-Kgate}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The profile remains normalized because \(\nu_0\) and \(\nu_1\) are orthonormal.
+\item The blind angle gives \(\kappa=0\), so every D/N-mediated outgoing numerator vanishes.
+\item The max-coupling angle follows from aligning \((\cos\theta,\sin\theta)\) with \((\kappa_0,\kappa_1)\).
+\item The wall stiffness picks up only the \(\nu_1\) axial-gradient cost, giving \(\Delta K_{\rm ax}\sin^2\theta\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~028 derives \(\theta\) dynamically rather than selecting it by hand.  The exact value \(\sin^2\theta_{\max}=2/11\) is later echoed in the D/N branch constants used by the selected-mode formulas.}
+
+\clearpage
 

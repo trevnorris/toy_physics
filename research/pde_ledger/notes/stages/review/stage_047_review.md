@@ -1,12 +1,12 @@
-# Review: Stage 047 — Equilibrium alignment
+# Review: Stage 047 — Selected mode normalization
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage047_equilibrium_alignment.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage047_equilibrium_alignment_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage030_selected_mode_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,29 +40,52 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Equilibrium response chi_sigma = g_phi chi_phi/H(y) from static linearization. Overlaps: O_sp = g_phi I_1, N_ss = g_phi^2 I_2 correct. Coherence C^2 = I_1^2/(N_pp I_2) — g_phi^2 cancels. Cauchy-Schwarz I_1^2 <= N_pp I_2 verified (apply CS with measure chi_phi^2 d^3y). Equality iff 1/H constant on supp(chi_phi). Constant-compressibility: I_1 = N_pp/H_w, I_2 = N_pp/H_w^2 → C^2 = 1. Structural identity Theta_eq = Lambda_eq = g_phi^2 I_1 on equilibrium branch verified. G_eq = g_phi^2 I_1/K_X. Contact with Stage 45: matches G_micro at C^2=1, rho_*=rho_w.
+1. **Equation-level correctness.** All formulas verified. Eigenvalue formula for 2×2 loaded wall block correct (signs checked via diagonal difference and off-diagonal elements). Hellmann-Feynman overlap s_- = -d lambda_-/d alpha_0 verified. Closed form for s_- matches direct differentiation. Weak-loading limit s_-(0) = kappa_0^2 and strong-loading limit s_- → sigma both verified. Normalized response expansion u2, u4, Gamma5 follow from standard geometric series. Prefactor algebra Gamma_{5,-} = Gamma_2^{port} * P_{0,-} correct. Target equation mhat^2 * P0 = 54 G c_s^5/(5 a^5 c^5) verified. Determinant identity via matrix determinant lemma correct. Critical threshold alpha_crit = AB/(B*x0 + A*x1) correct.
 
-2. **Logical flow.** Clean: equilibrium response → overlaps → coherence → Cauchy → constant-H → softening → contact.
+2. **Logical flow.** Clean chain: eigenvalue → overlap → normalization → prefactor → target → determinant. Connects Stage 12 operator-level results to Stage 022 normalized-response language.
 
-3. **Physical interpretation.** Key insight: source profile is fixed by parent equilibrium, not a free choice.
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0 on stable branch.
 
-**Script Review:** Overlap invariants, constant-H limit, discrete two-point Cauchy gap, eliminated-source softening. Minor: Theta_eq and Lambda_eq defined identically in script (lines 113-118), making ratio check partially tautological. All other checks genuine. All pass (exit code 0).
+4. **Completeness.** O(omega^6) remainder not addressed, consistent with project convention.
 
-**Issues Found:** None (minor tautology noted but non-blocking).
+5. **Notation consistency.** Matches Stages 12 and 5. New symbols P_{0,-}, D_{-0}, N_Q^{target} well-defined.
 
-### Agent: Codex GPT-5 — 2026-04-03
-**Verdict:** MINOR
-
-**Notes Derivation Review:**
-
-The equilibrium-alignment derivation is correct: the source profile is fixed by `1/H(y)`, the overlap invariants reduce as claimed, and the constant-compressibility limit gives `C^2 = 1` and the matched-layer gain used to connect back to Stages 45-46. The discrete two-point Cauchy check is a good independent sanity test.
+6. **Physical interpretation.** Sound: normalization reduces to spectral ratio — sensitivity of selected eigenvalue to loading.
 
 **Script Review:**
 
-The script is mostly faithful and the saved output matches the notes, but the final eliminated-source softening check is partly tautological because `Theta_eq` and `Lambda_eq` are both assigned the same constant-layer expression before the `Lambda^2/Theta` comparison. Earlier checks do verify the real overlap structure, so this is a coverage issue rather than a mathematical blocker.
+**B.1 Faithful.** Same 2×2 block, eigenvalues, overlap, prefactor, determinant identity, target equivalence.
+**B.2 No bugs.** Series expansion, im() extraction, expect_zero all correct.
+**B.3 No problematic hardcoding.** Constants 27, 54 are derived (2×27=54).
+**B.4 No tautologies.** HF vs closed-form overlap is two independent computations. Determinant identity expands product and compares. Normalization equivalence verifies two condition forms are proportional.
+**B.5 Symbol assumptions correct.** A, DK positive; alpha nonneg; x0, x1 positive; beta0, G5 positive.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Complete. Strong-loading limit not in script but verified analytically.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The selected-mode normalization chain is internally consistent. The generic response expansion gives the expected `u2`, `u4`, and odd `Gamma5` coefficients, and the selected lower eigenvalue / overlap formulas match the loaded `2x2` wall block exactly.
+2. The selected static prefactor `P_{0,-} = beta_0 s_- / lambda_-` is correctly translated into the normalized-response language, and the `mhat_-^2 P_{0,-}` target is algebraically equivalent to the quadrupole normalization condition.
+3. The determinant identity and the spectral rewrite are both correct. I independently checked the core normalization identities with SymPy, and the results reduced to zero.
+
+**Script Review:**
+
+1. The script faithfully implements the note structure: series expansion, exact eigenvalues, Hellmann-Feynman overlap, prefactor identity, determinant identity, and target equivalence.
+2. The saved output matches the note claims, and the checks are nontrivial rather than tautological.
 
 **Issues Found:**
 
-Minor script-faithfulness gap in the final softening check.
+None.
+
+**Questions:**
+
+None.
 
 ---

@@ -1,27 +1,54 @@
-\section[Stage 052]{Stage 052: Final Reduced Verdict for the Support/Source Program}
+\section[Stage 052]{Stage 052: Exact Non-Twin Asymmetry Requirement}
 \label{stage:052}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the reduced verdict; \StatusOpen{} for actual branch placement outside the matched/prototyped families.}
-\stagefield{Purpose}{Stage~052 summarizes the support/source program before inserting the explicit Family--1 wall branch.}
-\stagefield{Inputs}{The matched wall theorem, profile penalty benchmark, and operator-selected support/source thresholds.}
+\claimstatus{\StatusExactClosure{} for the support-regime split.}
+\stagefield{Purpose}{Stage~052 identifies when mixed baseline, symmetric lowest twin support, or non-twin support asymmetry is required.}
+\stagefield{Inputs}{The branch product \(\Pi_{\rm tr}\), the mixed product scale \(C_{\rm mix}\), and the blocking factor \(\epsilon\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage052_final_reduced_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage052_final_reduced_verdict_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage052_nontwin_asymmetry_threshold_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage052_nontwin_asymmetry_threshold_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage052_nontwin_asymmetry_threshold_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage052_nontwin_asymmetry_threshold_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The reduced support/source side has three regimes:
+The required support ratio in product variables is
 \begin{equation}
-\label{eq:app-stage052-three-zone}
+\label{eq:app-stage052-zeta-req}
+\boxed{
+\zeta_{\rm req}
+=\frac{\Pi_{\rm tr}-C_{\rm mix}}
+{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+\end{equation}
+It is monotone in \(\Pi_{\rm tr}\):
+\begin{equation}
+\label{eq:app-stage052-zeta-derivative}
+\frac{d\zeta_{\rm req}}{d\Pi_{\rm tr}}
+=\frac{C_{\rm mix}(1-\epsilon)}{[C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})]^2}>0.
+\end{equation}
+The exact regime split is
+\begin{equation}
+\label{eq:app-stage052-regimes}
 \boxed{
 \begin{array}{lll}
-W_{\rm wall}<\mathrm{Pe}_{\rm req}/\Delta_\infty &\Rightarrow& \text{universal fail},\\[0.25em]
-W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
-\mathrm{Pe}_{\rm req}/\Delta_\infty\leq W_{\rm wall}\leq \mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{profile-sensitive band}.
+\Pi_{\rm tr}\leq C_{\rm mix} &\Rightarrow& \text{mixed-only enough},\\[0.25em]
+C_{\rm mix}<\Pi_{\rm tr}\leq2C_{\rm mix} &\Rightarrow& \text{symmetric lowest twin enough},\\[0.25em]
+\Pi_{\rm tr}>2C_{\rm mix} &\Rightarrow& \text{non-twin asymmetry required}.
 \end{array}}
 \end{equation}
-The sech--Gaussian benchmark shows that realistic smooth mismatch need not significantly enlarge the middle band, but the actual PDE branch still has to supply its own profiles.
+The excess beyond the symmetric twin branch is
+\begin{equation}
+\label{eq:app-stage052-Dzeta}
+\boxed{
+\Delta_\zeta=\zeta_{\rm req}-1
+=\frac{(1-\epsilon)(\Pi_{\rm tr}-2C_{\rm mix})}
+{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+\end{equation}
+For a general lowest lane,
+\begin{equation}
+\label{eq:app-stage052-zeta0-general}
+\zeta_0^{\rm phys}=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}\Omega_0^2.
+\end{equation}
+Thus the two resources for non-twin rescue are overlap boost \(\Omega_0^2\) and support softening \(K_W^{\rm eff}/K_{\phi,0}^{\rm eff}\).
 
-\stagefield{Output}{The final pre-Family--1 support/source verdict \eqref{eq:app-stage052-three-zone}.}
-\stagefield{Downstream use}{Stages~053--061 evaluate \(W_{\rm wall}\), \(\kappa\), and \(\eta\) for the explicit Family--1 branch.}
+\stagefield{Output}{Regime split \eqref{eq:app-stage052-regimes}, excess formula \eqref{eq:app-stage052-Dzeta}, and resource factorization \eqref{eq:app-stage052-zeta0-general}.}
+\stagefield{Downstream use}{Stages~053--057 quantify the two resources and attach them to transport/Robin physics.}
 

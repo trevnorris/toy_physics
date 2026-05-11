@@ -1,0 +1,68 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage170_linear_grouped_outlet_map_mathematica_audit.wl
+# Date: 2026-05-11T13:20:30-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 153 — LINEAR GROUPED-P2 DIRECT OUTLET MAP
+========================================================================================
+
+========================================================================================
+Linear grouped conservative/output transport
+========================================================================================
+delta u2 + (dD2 + dD0/9)/D0 = 0
+PASS: delta u2 + (dD2 + dD0/9)/D0
+delta u4 + (dD4 + 2 dD2/9 + 5 dD0/81)/D0 = 0
+PASS: delta u4 + (dD4 + 2 dD2/9 + 5 dD0/81)/D0
+delta P0 - (dN0 - P0 dD0)/D0 = 0
+PASS: delta P0 - (dN0 - P0 dD0)/D0
+
+========================================================================================
+Direct outlet coefficients
+========================================================================================
+delta kappa_W - 3(1-sigma)(dD2 + dD0/9)/(sigma D0) = 0
+PASS: delta kappa_W - 3(1-sigma)(dD2 + dD0/9)/(sigma D0)
+delta gamma_W + (1-sigma)(dN0 - P0 dD0)/(9 sigma N0) = 0
+PASS: delta gamma_W + (1-sigma)(dN0 - P0 dD0)/(9 sigma N0)
+
+========================================================================================
+Even one-parameter consistency
+========================================================================================
+delta u4 - (8/9) delta u2 = 0
+PASS: delta u4 - (8/9) delta u2
+delta D4 - (2/3) delta D2 - dD0/27 = 0
+PASS: delta D4 - (2/3) delta D2 - dD0/27
+
+========================================================================================
+Grouped trace/anomaly transport
+========================================================================================
+a_kappa = -1/3*((aD0 + 9*aD2)*(-1 + sigma))/(D0*sigma)
+b_kappa = -1/3*((bD0 + 9*bD2)*(-1 + sigma))/(D0*sigma)
+a_gamma = ((aN0 - aD0*P0)*(-1 + sigma))/(9*N0*sigma)
+b_gamma = ((bN0 - bD0*P0)*(-1 + sigma))/(9*N0*sigma)
+a_kappa from map = -1/3*((aD0 + 9*aD2)*(-1 + sigma))/(D0*sigma)
+b_kappa from map = -1/3*((bD0 + 9*bD2)*(-1 + sigma))/(D0*sigma)
+a_gamma from map = ((aN0 - aD0*P0)*(-1 + sigma))/(9*D0*P0*sigma)
+b_gamma from map = ((bN0 - bD0*P0)*(-1 + sigma))/(9*D0*P0*sigma)
+trace kappa coefficient = 0
+PASS: trace kappa coefficient
+anomaly kappa coefficient = 0
+PASS: anomaly kappa coefficient
+trace gamma coefficient = 0
+PASS: trace gamma coefficient
+anomaly gamma coefficient = 0
+PASS: anomaly gamma coefficient
+
+Carry-forward formulas:
+  delta kappa_W^(A) = 3(1-sigma_*) [delta D_(A,2) + delta D_(A,0)/9] / (sigma_* D0)
+  delta gamma_W^(A) = -(1-sigma_*) [delta N_(A,0) - P0 delta D_(A,0)] / (9 sigma_* N0)
+  direct even-pole consistency: delta D_(A,4) = (2/3) delta D_(A,2) + delta D_(A,0)/27
+  so the full linear grouped-anisotropy outlet problem collapses to the pair
+      K_A := delta D_(A,2) + delta D_(A,0)/9
+      G_A := delta N_(A,0) - P0 delta D_(A,0)
+
+EXIT_CODE: 0

@@ -3,8 +3,8 @@
 # Run one Mathematica moving-throat audit script and save its output.
 #
 # Usage:
-#   bash research/pde_ledger/mathematica/run_one_audit.sh stage118
-#   bash research/pde_ledger/mathematica/run_one_audit.sh moving_throat_pde_stage118_outlet_consistent_mouth_closure_mathematica_audit
+#   bash research/pde_ledger/mathematica/run_one_audit.sh stage135
+#   bash research/pde_ledger/mathematica/run_one_audit.sh moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit
 #   bash research/pde_ledger/mathematica/run_one_audit.sh /abs/path/to/script.wl
 
 set -euo pipefail

@@ -1,45 +1,104 @@
-\section[Stage 037]{Stage 037: Robin-Compliance Softening of the Lowest Support Lane}
+\section[Stage 037]{Stage 037: Exact Continuum-Kernel Extraction of the Selected-Branch Data}
 \label{stage:037}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the Robin support eigenvalue and softening factor.}
-\stagefield{Purpose}{Stage~037 computes the support-stiffness reduction from replacing the Dirichlet mouth by a Robin compliance.}
-\stagefield{Inputs}{Lowest support lane on \([0,L]\) with Robin parameter \(\eta=hL\) and support stiffness ratio \(x\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} inside the declared finite-throat continuum kernel; \StatusReduced{} as a representation of the full moving-throat PDE.}
+\stagefield{Purpose}{Stage~037 replaces the abstract selected-mode data from Part~II by closed formulas obtained from a concrete continuum kernel.  It extracts the baseline scalar stiffness \(A\), axial gap \(\Delta K_{\rm ax}\), mixed loading \(\alpha_{\rm mix}\), outgoing normalization numerator \(\beta_0\), dimensionless mixed baseline \(M_{\rm mix}\), and anisotropy ratio \(\delta\).}
+\stagefield{Inputs}{The selected D/N finite-throat geometry from Part~II, the lowest two wall amplitudes, a flat internal \(U\) block, a mixed \(W\) lane, and the normalized overlap vector \(v=(\kappa_0,\kappa_1)^T\) with \(\kappa_0=2\sqrt2/\pi\), \(\kappa_1=-4/(3\pi)\), \(\sigma=\kappa_0^2+\kappa_1^2=88/(9\pi^2)\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage037_robin_softening_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage037_robin_softening_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage037_robin_softening_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage037_robin_softening_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage037_continuum_kernel_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage037_continuum_kernel_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage037_continuum_kernel_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The lowest Robin root satisfies
+The mass-normalized internal frequencies and couplings are
 \begin{equation}
-\label{eq:app-stage037-robin-root}
-\boxed{
-y\tan y=\eta,
+\label{eq:app-stage037-frequencies}
+\Omega_U^2=\frac{K_U}{\mu_U},
 \qquad
-0<y<\frac{\pi}{2}}.
-\end{equation}
-Let
-\begin{equation}
-\label{eq:app-stage037-x}
-x=\frac{\pi^2T_X}{L^2K_W^{\rm eff}},
+\Omega_W^2=\frac{K_W^{\rm eff}}{\mu_W},
 \qquad
-0<x<4.
+K_W^{\rm eff}=K_W+\frac{\pi^2T_W}{4L^2},
 \end{equation}
-Then the support-softening factor is
 \begin{equation}
-\label{eq:app-stage037-AK}
-\boxed{
-A_K(\eta)=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}
-=\frac{1}{1-x/4+xy^2/\pi^2}}.
+\label{eq:app-stage037-couplings}
+g_U=\frac{c_{\eta U}}{\sqrt{\mu_\eta\mu_U}},
+\qquad
+g_W=\frac{c_{\eta W}}{\sqrt{\mu_\eta\mu_W}},
+\qquad
+g_R=\frac{c_{UW}}{\sqrt{\mu_U\mu_W}}.
 \end{equation}
-The endpoint window is
+Eliminating the flat \(U/W\) block gives a rank-one wall loading of the same structural form used in the selected-mode derivation:
 \begin{equation}
-\label{eq:app-stage037-AK-window}
-\boxed{
-1\leq A_K\leq\frac{4}{4-x}}.
+\label{eq:app-stage037-schur-form}
+\Sigma_{\rm wall}(\omega)=\Xi(\omega)I_2+\alpha(\omega)vv^T,
+\qquad
+v=(\kappa_0,\kappa_1)^T.
 \end{equation}
-Pure support softening alone can rescue the Stage~035 threshold only if \(\zeta_{\rm req}\leq4/(4-x)\).
+On the static conservative branch define
+\begin{equation}
+\label{eq:app-stage037-Delta-X}
+\Delta_0=\Omega_U^2\Omega_W^2-g_R^2\sigma,
+\qquad
+\mathcal X=\Omega_U^2g_W+g_Rg_U.
+\end{equation}
+The selected-branch data are then
+\begin{equation}
+\label{eq:app-stage037-normalized-data}
+\boxed{
+A=K_0-\frac{g_U^2}{\Omega_U^2},
+\qquad
+\alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0},
+\qquad
+\beta_0=\frac{\mathcal X^2}{\Delta_0^2}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage037-Mdelta}
+\boxed{
+M_{\rm mix}=\frac{8\alpha_{\rm mix}}{\pi^2A},
+\qquad
+\delta=\frac{\Delta K_{\rm ax}}{A}}.
+\end{equation}
+In unnormalized continuum variables, with \(K_\eta^{\rm eff}=K_\eta+6T_\Omega\), these become
+\begin{equation}
+\label{eq:app-stage037-A-DK-continuum}
+\boxed{
+A=\frac{K_UK_\eta^{\rm eff}-c_{\eta U}^2}{\mu_\eta K_U},
+\qquad
+\Delta K_{\rm ax}=\frac{\pi^2T_w}{\mu_\eta L^2}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage037-alpha-beta-continuum}
+\boxed{
+\alpha_{\rm mix}
+=\frac{(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
+{\mu_\eta K_U\left(K_UK_W^{\rm eff}-c_{UW}^2\sigma\right)}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage037-beta-continuum}
+\boxed{
+\beta_0
+=\frac{\mu_W}{\mu_\eta}
+\frac{(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
+{\left(K_UK_W^{\rm eff}-c_{UW}^2\sigma\right)^2}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage037-M-delta-continuum}
+\boxed{
+M_{\rm mix}
+=\frac{8(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
+{\pi^2(K_UK_\eta^{\rm eff}-c_{\eta U}^2)(K_UK_W^{\rm eff}-c_{UW}^2\sigma)},
+\quad
+\delta=\frac{\pi^2T_wK_U}{L^2(K_UK_\eta^{\rm eff}-c_{\eta U}^2)}}.
+\end{equation}
+The stability inequalities are
+\begin{equation}
+\label{eq:app-stage037-stability}
+\boxed{
+K_UK_\eta^{\rm eff}>c_{\eta U}^2,
+\qquad
+K_UK_W^{\rm eff}>c_{UW}^2\sigma}.
+\end{equation}
 
-\stagefield{Output}{Robin root \eqref{eq:app-stage037-robin-root}, softening factor \eqref{eq:app-stage037-AK}, and ceiling \eqref{eq:app-stage037-AK-window}.}
-\stagefield{Downstream use}{Stage~038 combines this with overlap boost; Stage~040 uses \(y(\eta)\) in the physical support ratio.}
+\stagefield{Output}{Closed continuum formulas \eqref{eq:app-stage037-A-DK-continuum}--\eqref{eq:app-stage037-M-delta-continuum} and the stability gate \eqref{eq:app-stage037-stability}.}
+\stagefield{Downstream use}{Stage~038 nondimensionalizes these formulas; Stages~044--090 reuse them as the placement data of the explicit branch.}
 

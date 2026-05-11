@@ -1,14 +1,12 @@
-# Review: Stage 140 — Core mouth coevolution status
+# Review: Stage 140 — Dimensionless continuum placement
 
-**Batch:** 17 — Rigidity & Corrections
-**Status:** Verified after hardening (2026-04-21)
+**Batch:** 4 — Kernel Continuation
+**Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat_pde_stage140_core_mouth_coevolution_status.md`
-- **SymPy script:** `scripts/moving_throat_pde_stage140_core_mouth_coevolution_status_sympy_audit.py`
-- **Mathematica script:** `mathematica/moving_throat_pde_stage140_core_mouth_coevolution_status_mathematica_audit.wl`
-- **Numerical harness:** `scripts/numerical/stage140_core_mouth_coevolution_status_stress.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py`
 
 ## Review Checklist
 
@@ -38,61 +36,45 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** MINOR
-**Notes Derivation Review:** Qualitative content correct: consolidates stages 137-139. Branch structure claims (upper impossible, equal-normalized singular, lower uniquely regular, renormalized fixed point) all traceable. Formulas reproduced correctly. Forward framing appropriate.
-**Issues Found:**
-1. **(MINOR)** Frozen-traction fixed-point values (g_fp, R_fp, Pi_fp) differ from Stage 138 at 5th-7th significant figure. Status stage should quote prior values exactly.
-2. **(MINOR)** Renormalized canonical branch values (Sigma_0^can, T_hat, Pi_can) differ from Stage 139 at 5th significant figure. Possibly from different iteration parameters — should be reconciled or noted.
-3. **(MINOR)** No explicit stage citations for quoted numerical values.
-
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** MINOR
-
-**Notes Derivation Review:**
-
-1. The consolidation narrative is correct: the stage properly states that full co-evolution yields a renormalized finite branch rather than preserving the original canonical point.
-2. The quoted values are internally consistent as a standalone summary, but they do not exactly match the more precise values reported in Stages 138-139, and the note does not explain that discrepancy.
-3. The open question is still framed properly. The remaining issue is numerical consolidation and citation, not a broken derivation.
-
-**Script Review:**
-
-No script is attached for this consolidation note, which is acceptable. The issue is not missing computation in this file but the fact that its quoted numbers shift slightly relative to the earlier stage outputs without explicit explanation.
-
-**Issues Found:**
-
-1. **MINOR:** The summary numbers for the frozen and renormalized branches differ slightly from Stages 138-139 and are not cited or reconciled.
-
-**Questions:** None.
-
----
-
-### Agent: GPT-5 Codex — 2026-04-21
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The status note is now numerically aligned with the carried Stage-138/139
-values. The frozen and renormalized branch numbers have been reconciled to the
-current fixed-point baseline.
+1. **Equation-level correctness.** Five dimensionless ratios (eps_eta, eps_W, rho, Z_W, delta_0) plus Lambda correctly defined from Stage-20 continuum formulas. Placement formulas verified: delta = delta_0/(1-eps_eta), M_mix = 8 Z_W(1+rho)^2/(pi^2(1-eps_eta)(1-eps_W)). Product relation R_target * M_mix = 8 Lambda(1-eps_W)/pi^2 verified — Z_W, (1+rho)^2, (1-eps_eta) cancel exactly. All nine derivative factorizations verified by hand.
+
+2. **Logical flow.** Clean: dimensionless ratios → placement formulas → product relation → parameter tendencies → three-lane factorization.
+
+3. **Notation consistent** with Stages 18-20.
+
+**Script Review:** Builds Stage-20 microscopic expressions from scratch, applies dimensionless substitutions via ordered pattern matching. No tautologies. All pass (exit code 0). Complete coverage of placement formulas, product relation, and all 9 derivatives.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+- The dimensionless reduction is algebraically correct. Substituting the Stage 20 continuum formulas into `delta`, `M_mix`, and `R_target` gives exactly the stated five-ratio map in `(eps_eta, eps_W, rho, Z_W, delta_0)` plus `Lambda`.
+- I independently rechecked the load-bearing identity of the stage:
+  `R_target M_mix = 8 Lambda (1 - eps_W)/pi^2`,
+  and it reduces to zero directly. That confirms the claimed separation between product-setting variables `(eps_W, Lambda)` and redistribution variables `(eps_eta, Z_W, rho)`.
+- The one-way tendencies are also correct. The derivative factorizations have the expected signs on the physical branch `0 < eps_eta, eps_W < 1` and `1 + rho > 0`, so the narrative about how each kernel ratio moves the physical point in `(delta, M_mix, R_target)` space is consistent.
+- The beta-factor rewrite is compatible with the Stage 20 kernel formulas: only the mass ratio `mu_W/mu_eta` survives in `beta_0`, while the placement variables themselves are pure stiffness/coupling ratios.
 
 **Script Review:**
 
-1. The new dual-CAS capstone audits verify the exact structural statements that
-   Stage `140` is supposed to summarize:
-   `g = g_* <=> R = 1/4`,
-   the self-matched traction law `Sigma0 = 20 T_hat^2 / 9`,
-   the carried renormalized tuple, and the tangent-on-family handoff to
-   Stage `141`.
-2. The new numerical harness reuses the Stage-138/139 fixed-point grid and
-   confirms the two referee-facing points that matter here:
-   frozen canonical traction does *not* keep the branch compensated, and the
-   renormalized compensation root is unique on the analyzed monotone window.
-3. The scripts keep the stage conditional, which is the right framing:
-   the reduced co-evolving status point is executable, but actual microscopic
-   realization by the full moving-throat PDE remains open.
+- The script faithfully reconstructs the Stage 20 formulas, applies the dimensionless substitutions in a nontrivial way, verifies the exact placement map, the product relation, and all nine derivative identities.
+- The saved output matches the notes and I did not find a tautological check or coding bug.
 
-**Issues Found:** None after hardening.
+**Issues Found:**
 
-**Questions:** None.
+None.
+
+**Questions:**
+
+None.
 
 ---

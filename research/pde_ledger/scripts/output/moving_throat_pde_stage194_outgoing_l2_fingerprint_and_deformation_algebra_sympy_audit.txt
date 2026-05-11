@@ -1,0 +1,179 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+# Date: 2026-05-11T12:48:46-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 177 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact outgoing spherical l=2 DtN fingerprint
+----------------------------------------------------------------------------------------
+h_2^(1)(z) =
+              ⎛     2⎞            ⎛              ⎛ 2    ⎞       ⎞
+-3⋅z⋅cos(z) + ⎝3 - z ⎠⋅sin(z) + ⅈ⋅⎝-3⋅z⋅sin(z) + ⎝z  - 3⎠⋅cos(z)⎠
+─────────────────────────────────────────────────────────────────
+                                3                                
+                               z                                 
+Lambda_2^out(z) =
+   3      2            
+ⅈ⋅z  - 4⋅z  - 9⋅ⅈ⋅z + 9
+───────────────────────
+     2                 
+    z  + 3⋅ⅈ⋅z - 3     
+Yhat_2^out(z) =
+   ⎛   2            ⎞  
+ 3⋅⎝- z  - 3⋅ⅈ⋅z + 3⎠  
+───────────────────────
+   3      2            
+ⅈ⋅z  - 4⋅z  - 9⋅ⅈ⋅z + 9
+Lambda_out series - expected = 0
+Yhat_out series - expected = 0
+static DtN slot + 3 = 0
+
+----------------------------------------------------------------------------------------
+II. Exact matching to the retarded grouped-P2 one-pole module
+----------------------------------------------------------------------------------------
+Omega_Q =
+3⋅cₛ
+────
+2⋅a 
+sigma_Q^can =
+    5 
+ 4⋅a  
+──────
+     5
+27⋅cₛ 
+Y_Q^ret(omega) =
+  ⎛   5      5      2   3  2       5⎞
+3⋅⎝ⅈ⋅a ⋅χ_Q⋅ω  + 3⋅a ⋅cₛ ⋅ω  - 9⋅cₛ ⎠
+─────────────────────────────────────
+     5      5       2   3  2        5
+4⋅ⅈ⋅a ⋅χ_Q⋅ω  + 12⋅a ⋅cₛ ⋅ω  - 27⋅cₛ 
+sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+Yret series - expected low-frequency form = 0
+retarded module matches outgoing DtN branch when chi_Q = 1 = 0
+odd coefficient of retarded module =
+   5    
+ⅈ⋅a ⋅χ_Q
+────────
+      5 
+ 27⋅cₛ  
+odd coefficient of outgoing DtN branch =
+    5 
+ ⅈ⋅a  
+──────
+     5
+27⋅cₛ 
+odd-coefficient matching fixes chi_Q - 1 = 0
+
+----------------------------------------------------------------------------------------
+III. Exact isotropic DtN deformation algebra
+----------------------------------------------------------------------------------------
+L0 =
+-3⋅S + Σ₀
+L2 =
+   2     
+S⋅β      
+──── + Σ₂
+ 3       
+L4 =
+   4     
+S⋅β      
+──── + Σ₄
+ 9       
+L5 =
+   5     
+S⋅β      
+──── + Σ₅
+ 9       
+Yhat_2^def(z) =
+                              9⋅(-3⋅S + Σ₀)                              
+─────────────────────────────────────────────────────────────────────────
+                  5 ⎛   5       ⎞    4 ⎛   4       ⎞      2 ⎛   2       ⎞
+-27⋅S + 9⋅Σ₀ + ⅈ⋅z ⋅⎝S⋅β  + 9⋅Σ₅⎠ + z ⋅⎝S⋅β  + 9⋅Σ₄⎠ + 3⋅z ⋅⎝S⋅β  + 3⋅Σ₂⎠
+Ydef series - exact compiler = 0
+Sigma_2 (canonical-even match) =
+ ⎛     2           ⎞ 
+-⎝3⋅S⋅β  - 3⋅S + Σ₀⎠ 
+─────────────────────
+          9          
+Sigma_4 (canonical-even match) =
+ ⎛     4           ⎞ 
+-⎝3⋅S⋅β  - 3⋅S + Σ₀⎠ 
+─────────────────────
+         27          
+Sigma_2 formula = 0
+Sigma_4 formula = 0
+chi_Q from deformed DtN branch =
+  ⎛   5       ⎞
+3⋅⎝S⋅β  + 9⋅Σ₅⎠
+───────────────
+   3⋅S - Σ₀    
+chi_Q deformation law = 0
+chi_Q - 1 deformation law = 0
+
+----------------------------------------------------------------------------------------
+IV. Carry-forward corollary: canonical invariant tuple
+----------------------------------------------------------------------------------------
+Kbar_0 =
+       5
+54⋅G⋅cₛ 
+────────
+   5  5 
+5⋅a ⋅c  
+Kbar_2 =
+      3
+6⋅G⋅cₛ 
+───────
+   3  5
+5⋅a ⋅c 
+Kbar_4 =
+8⋅G⋅cₛ 
+───────
+      5
+15⋅a⋅c 
+Gammabar_5 =
+2⋅G 
+────
+   5
+5⋅c 
+Kbar_2 - 6 G c_s^3/(5 a^3 c^5) = 0
+Kbar_4 - 8 G c_s/(15 a c^5) = 0
+Gammabar_5 - 2 G/(5 c^5) = 0
+
+========================================================================================
+STAGE 177 LEDGER
+========================================================================================
+1. The exact outgoing spherical l=2 DtN operator has the small-z fingerprint
+      Lambda_2^out = -3 + z^2/3 + z^4/9 + i z^5/9 - 2 z^6/27 - i z^7/27 + ...
+   and the normalized outgoing branch therefore has
+      Yhat_2^out = 1 + z^2/9 + 4 z^4/81 + i z^5/27 - 11 z^6/729 - i z^7/243 + ...
+2. Matching the carried retarded grouped-P2 one-pole module to that exact outgoing DtN
+   fingerprint fixes the last canonical outgoing scalar exactly:
+      chi_Q = 1.
+3. The first explicit isotropic DtN deformation family
+      Lambda_2^def = S Lambda_2^out(beta z) + Sigma_0 + Sigma_2 z^2 + Sigma_4 z^4 + i Sigma_5 z^5 + ...
+   preserves the canonical even moments iff
+      Sigma_2 = -(3 S beta^2 - 3 S + Sigma_0)/9,
+      Sigma_4 = -(3 S beta^4 - 3 S + Sigma_0)/27,
+   and then the exact outgoing-normalization factor is
+      chi_Q = 3 (S beta^5 + 9 Sigma_5) / (3 S - Sigma_0).
+4. Therefore the only isotropic DtN-side data that can move chi_Q while keeping the
+   canonical even fingerprint fixed are beta, Sigma_0, and Sigma_5.
+5. If one also carries the natural point-particle source-map branch, the canonical outgoing
+   branch returns the invariant tuple
+      Kbar_0 = 54 G c_s^5/(5 a^5 c^5),
+      Kbar_2 = 6 G c_s^3/(5 a^3 c^5),
+      Kbar_4 = 8 G c_s/(15 a c^5),
+      Gammabar_5 = 2 G/(5 c^5).
+6. Stage 194 therefore freezes the retarded successor to the Stage 193 conservative surface:
+   the canonical compact passive/outgoing branch has chi_Q = 1, and any remaining isotropic
+   PDE-facing defect is an explicit DtN deformation problem in (beta, Sigma_0, Sigma_5).
+
+EXIT_CODE: 0

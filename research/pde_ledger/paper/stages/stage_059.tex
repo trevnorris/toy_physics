@@ -1,23 +1,33 @@
-\section[Stage 059]{Stage 059: Exact \texorpdfstring{$n=5$}{n=5} Wall-Depth Lock}
+\section[Stage 059]{Stage 059: Exact Residual Bounds on the Operator-Selected Branch}
 \label{stage:059}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} inside the Family--1 normalization conventions and frozen \(n=5\) EOS.}
-\stagefield{Purpose}{Stage~059 expresses the remaining wall-depth datum \(\Theta_w\) in normalized Family--1 density variables.}
-\stagefield{Inputs}{The \(n=5\) identity \(h(\rho)=mc_s^2/4\), healing lock, and wall-density normalization.}
+\claimstatus{\StatusExactClosure{} for the residual thresholds.}
+\stagefield{Purpose}{Stage~059 converts the fixed-point bracket into a useful branch verdict.}
+\stagefield{Inputs}{Required Peclet bias \(\mathrm{Pe}_{\rm req}\), endpoint functions \(\Delta_0,\Delta_\infty\), and gain \(\Xi\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage059_n5_wall_depth_lock_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage059_n5_wall_depth_lock_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage059_n5_wall_depth_lock_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage059_n5_wall_depth_lock_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage059_operator_branch_residual_bounds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage059_operator_branch_residual_bounds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage059_operator_branch_residual_bounds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage059_operator_branch_residual_bounds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The exact \(n=5\) relation and healing lock reduce the wall-depth datum to
+If \(\mathrm{Pe}_{\rm req}\) is the bias needed to meet \(\zeta_{\rm req}\), then the exact thresholds are
 \begin{equation}
-\label{eq:app-stage059-theta}
+\label{eq:app-stage059-Xi-thresholds}
 \boxed{
-\Theta_w=25\lambda_\mu^2\rho_w^2}.
+\Xi_{\rm fail}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty(\kappa,\eta)},
+\qquad
+\Xi_{\rm suff}=\frac{\mathrm{Pe}_{\rm req}}{\Delta_0(\kappa,\eta)}}.
 \end{equation}
-Thus only the effective wall density weighting remains to be extracted from the explicit wall profile.
+Hence
+\begin{equation}
+\label{eq:app-stage059-verdict}
+\boxed{
+\Xi<\Xi_{\rm fail}\Rightarrow\text{fail},
+\qquad
+\Xi>\Xi_{\rm suff}\Rightarrow\text{succeed}}.
+\end{equation}
+The band \(\Xi_{\rm fail}\leq\Xi\leq\Xi_{\rm suff}\) is profile-sensitive and requires the full fixed-point root.
 
-\stagefield{Output}{The wall-depth lock \eqref{eq:app-stage059-theta}.}
-\stagefield{Downstream use}{Stage~060 evaluates \(\rho_w^2\) with shell weights; Stage~061 uses it in the threshold comparison.}
+\stagefield{Output}{The exact gain thresholds \eqref{eq:app-stage059-Xi-thresholds}.}
+\stagefield{Downstream use}{Stages~060--066 identify \(\Xi\) with a microscopic parent-action gain and a wall figure of merit.}
 

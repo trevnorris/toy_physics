@@ -1,97 +1,26 @@
-\section{Stage 234: Microscopic export kernel}
-\label{sec:app-part08:microscopic-export-kernel}
+\section[Stage 234]{Stage 234: Direct branch-observable static gate}
 \label{stage:234}
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage234_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py}.  Mathematica audit: none yet.}
 
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.5}.}
+\claimstatus{\StatusExactClosure{}.}
 
-Stage 234 replaces the phenomenological \(\gamma_{\rm tot}\dot V\) envelope law by the first microscopic odd export operator seen by the active dressing leg.  Project
-\begin{equation}
-\label{eq:app-part08-stage234-v-projection}
-V(t)=\Pi_{V0}q_0(t)+\Pi_{V-}q_-(t)+\cdots,
-\end{equation}
-where \(q_0\) is the derivative-coupled scalar outlet and \(q_-\) is the selected mixed quadrupole outlet.
+\stagefield{Purpose}{Stage~234 converts the rigid-mouth static gate to direct branch observables.}
 
-For the scalar lane, take
-\begin{equation}
-\label{eq:app-part08-stage234-scalar-coupling}
-g_{W,0}(\omega)=\eta_0\omega,
-\qquad
-g_{A,0}(\omega)=0,
-\qquad
-\Pi_0^{\rm out}(\omega)=i\gamma_1\omega+O(\omega^3).
-\end{equation}
-With
-\begin{equation}
-\label{eq:app-part08-stage234-delta0}
-\Delta_0=\Omega_{U,0}^2\Omega_{W,0}^2-R_0^2,
-\end{equation}
-the scalar outgoing factor gives
-\begin{equation}
-\label{eq:app-part08-stage234-gamma30}
-\Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
-\qquad
-\Gamma_3=\Pi_{V0}^{2}\Gamma_{3,0}.
-\end{equation}
-For the selected quadrupole outlet,
-\begin{equation}
-\label{eq:app-part08-stage234-gamma5}
-\Gamma_{5,-}=\frac{a^5}{27c_s^5}P_{0,-},
-\qquad
-P_{0,-}=\frac{\beta_0s_-}{\lambda_-},
-\qquad
-\Gamma_5=\Pi_{V-}^{2}\Gamma_{5,-}.
-\end{equation}
-Thus the microscopic kernel is \cref{eq:app-part08-main-kexp}.
+\stagefield{Inputs}{Imports the finite chart $(R_{\rm tr},R_{\rm target},\epsilon_\eta)$ and the rigid-mouth reduction of the transfer-shape identities.}
 
-The active-leg equation is
-\begin{equation}
-\label{eq:app-part08-stage234-active-equation}
-\mu_\eta\ddot V-\kappa_VV+
-\Gamma_3V^{(3)}-
-\Gamma_5V^{(5)}=
-\mathcal S_V(t),
-\qquad
-\kappa_V=g_{UV}\chi_{\rm peak}.
-\end{equation}
-In Laplace form,
-\begin{equation}
-\label{eq:app-part08-stage234-laplace-d}
-\mathcal D_V(s)=\mu_\eta s^2-\kappa_V+\Gamma_3s^3+\Gamma_5s^5.
-\end{equation}
-The passive power identity is
-\begin{equation}
-\label{eq:app-part08-stage234-power-identity}
-\dot V(\Gamma_3V^{(3)}-\Gamma_5V^{(5)})
-=
-\frac{d}{dt}\mathcal S_{\rm odd}
--
-\Gamma_3\ddot V^{2}
--
-\Gamma_5\dddot V^{2},
-\end{equation}
-so the exported power is
-\begin{equation}
-\label{eq:app-part08-stage234-export-power}
-\mathcal P_{\rm exp}=\Gamma_3\ddot V^{2}+\Gamma_5\dddot V^{2}\ge0.
-\end{equation}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py}.  Mathematica audit: none yet.}
 
-For homogeneous growth \(V=V_0e^{st}\), the characteristic polynomial is
-\begin{equation}
-\label{eq:app-part08-stage234-characteristic}
-F(s)=\Gamma_5s^5+\Gamma_3s^3+\mu_\eta s^2-\kappa_V.
-\end{equation}
-For positive \((\Gamma_3,\Gamma_5,\mu_\eta,\kappa_V)\), \(F(0)<0\), \(F(s)\to+\infty\), and \(F'(s)>0\) for \(s>0\).  Therefore there is exactly one positive growth root.  The small-kernel slowdown is
-\begin{equation}
-\label{eq:app-part08-stage234-small-kernel}
-s_+=s_0-\frac{\Gamma_3s_0^2+\Gamma_5s_0^4}{2\mu_\eta}+O(\Gamma^2),
-\qquad
-s_0=\sqrt{\kappa_V/\mu_\eta}.
-\end{equation}
-Thus finite passive cubic/quintic export slows but does not remove the unstable root in the minimal closure.
+\stagefield{Derivation ledger}{The derivation shows two cancellations, reduces the static gate to $R_{\rm target}$ and $\epsilon_\eta$, and states the two-observable kill test.}
 
-For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
-\begin{equation}
-\label{eq:app-part08-stage234-benchmark-half-plane}
-\widehat\Gamma_3+0.3013336471\widehat\Gamma_5\ge 289.61004918.
-\end{equation}
-This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.
+\stagefield{Output}{Direct static gate: on the rigid-mouth branch, the static same-charge test is decided by the realized pair $(R_{\rm target},\epsilon_\eta)$, with tracking data factored out.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.5} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

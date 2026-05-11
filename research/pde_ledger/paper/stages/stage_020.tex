@@ -1,104 +1,55 @@
-\section[Stage 020]{Stage 020: Exact Continuum-Kernel Extraction of the Selected-Branch Data}
+\section[Stage 020]{Stage 020: Parent throat action weak-axisymmetric packet}
 \label{stage:020}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} inside the declared finite-throat continuum kernel; \StatusReduced{} as a representation of the full moving-throat PDE.}
-\stagefield{Purpose}{Stage~020 replaces the abstract selected-mode data from Part~II by closed formulas obtained from a concrete continuum kernel.  It extracts the baseline scalar stiffness \(A\), axial gap \(\Delta K_{\rm ax}\), mixed loading \(\alpha_{\rm mix}\), outgoing normalization numerator \(\beta_0\), dimensionless mixed baseline \(M_{\rm mix}\), and anisotropy ratio \(\delta\).}
-\stagefield{Inputs}{The selected D/N finite-throat geometry from Part~II, the lowest two wall amplitudes, a flat internal \(U\) block, a mixed \(W\) lane, and the normalized overlap vector \(v=(\kappa_0,\kappa_1)^T\) with \(\kappa_0=2\sqrt2/\pi\), \(\kappa_1=-4/(3\pi)\), \(\sigma=\kappa_0^2+\kappa_1^2=88/(9\pi^2)\).}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+\claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel closure, parent-action packet, or one-port normal form.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage020_continuum_kernel_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage020_continuum_kernel_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage020_continuum_kernel_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage020_continuum_kernel_mathematica_audit.txt}.}
+\paragraph{Source and audit.}
+This stage corresponds to
+\StageFile{scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py}.
+It solves the first-order even gates in parent-wall slope variables.
 
-\subsection*{Derivation}
-
-The mass-normalized internal frequencies and couplings are
+\paragraph{Slope packet.}
+Let
 \begin{equation}
-\label{eq:app-stage020-frequencies}
-\Omega_U^2=\frac{K_U}{\mu_U},
-\qquad
-\Omega_W^2=\frac{K_W^{\rm eff}}{\mu_W},
-\qquad
-K_W^{\rm eff}=K_W+\frac{\pi^2T_W}{4L^2},
+\label{eq:stage020-wall-slopes}
+\delta M_\Sigma=\int dw\,\delta\mu_\eta\,\beta_2^2,\qquad
+\delta K_\Sigma=\int dw\,\Bigl[\delta T_w(\beta_2')^2+
+(\delta K_\eta+6\delta T_\Omega)\beta_2^2\Bigr].
+\end{equation}
+Then
+\begin{equation}
+\label{eq:stage020-denominator-slopes}
+D_{01}=\delta K_\Sigma-B_{01}-Z_{01},\quad
+D_{21}=-(\delta M_\Sigma+B_{21}+Z_{21}),\quad
+D_{41}=-(B_{41}+Z_{41}).
+\end{equation}
+The live gates are
+\begin{equation}
+\label{eq:stage020-gates}
+K_1=D_{21}+\frac{D_{01}}9,\qquad
+H_{\rm even}=D_{41}-\frac23D_{21}-\frac{D_{01}}{27},
 \end{equation}
 \begin{equation}
-\label{eq:app-stage020-couplings}
-g_U=\frac{c_{\eta U}}{\sqrt{\mu_\eta\mu_U}},
-\qquad
-g_W=\frac{c_{\eta W}}{\sqrt{\mu_\eta\mu_W}},
-\qquad
-g_R=\frac{c_{UW}}{\sqrt{\mu_U\mu_W}}.
-\end{equation}
-Eliminating the flat \(U/W\) block gives a rank-one wall loading of the same structural form used in the selected-mode derivation:
-\begin{equation}
-\label{eq:app-stage020-schur-form}
-\Sigma_{\rm wall}(\omega)=\Xi(\omega)I_2+\alpha(\omega)vv^T,
-\qquad
-v=(\kappa_0,\kappa_1)^T.
-\end{equation}
-On the static conservative branch define
-\begin{equation}
-\label{eq:app-stage020-Delta-X}
-\Delta_0=\Omega_U^2\Omega_W^2-g_R^2\sigma,
-\qquad
-\mathcal X=\Omega_U^2g_W+g_Rg_U.
-\end{equation}
-The selected-branch data are then
-\begin{equation}
-\label{eq:app-stage020-normalized-data}
-\boxed{
-A=K_0-\frac{g_U^2}{\Omega_U^2},
-\qquad
-\alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0},
-\qquad
-\beta_0=\frac{\mathcal X^2}{\Delta_0^2}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage020-Mdelta}
-\boxed{
-M_{\rm mix}=\frac{8\alpha_{\rm mix}}{\pi^2A},
-\qquad
-\delta=\frac{\Delta K_{\rm ax}}{A}}.
-\end{equation}
-In unnormalized continuum variables, with \(K_\eta^{\rm eff}=K_\eta+6T_\Omega\), these become
-\begin{equation}
-\label{eq:app-stage020-A-DK-continuum}
-\boxed{
-A=\frac{K_UK_\eta^{\rm eff}-c_{\eta U}^2}{\mu_\eta K_U},
-\qquad
-\Delta K_{\rm ax}=\frac{\pi^2T_w}{\mu_\eta L^2}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage020-alpha-beta-continuum}
-\boxed{
-\alpha_{\rm mix}
-=\frac{(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
-{\mu_\eta K_U\left(K_UK_W^{\rm eff}-c_{UW}^2\sigma\right)}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage020-beta-continuum}
-\boxed{
-\beta_0
-=\frac{\mu_W}{\mu_\eta}
-\frac{(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
-{\left(K_UK_W^{\rm eff}-c_{UW}^2\sigma\right)^2}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage020-M-delta-continuum}
-\boxed{
-M_{\rm mix}
-=\frac{8(K_Uc_{\eta W}+c_{UW}c_{\eta U})^2}
-{\pi^2(K_UK_\eta^{\rm eff}-c_{\eta U}^2)(K_UK_W^{\rm eff}-c_{UW}^2\sigma)},
-\quad
-\delta=\frac{\pi^2T_wK_U}{L^2(K_UK_\eta^{\rm eff}-c_{\eta U}^2)}}.
-\end{equation}
-The stability inequalities are
-\begin{equation}
-\label{eq:app-stage020-stability}
-\boxed{
-K_UK_\eta^{\rm eff}>c_{\eta U}^2,
-\qquad
-K_UK_W^{\rm eff}>c_{UW}^2\sigma}.
+\label{eq:stage020-xi}
+\Xi_1=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
 \end{equation}
 
-\stagefield{Output}{Closed continuum formulas \eqref{eq:app-stage020-A-DK-continuum}--\eqref{eq:app-stage020-M-delta-continuum} and the stability gate \eqref{eq:app-stage020-stability}.}
-\stagefield{Downstream use}{Stage~021 nondimensionalizes these formulas; Stages~027--073 reuse them as the placement data of the explicit branch.}
+\paragraph{Even compensation.}
+The exact wall-slope solve is
+\begin{equation}
+\label{eq:stage020-wall-slope-solve}
+\delta K_\Sigma=B_{01}+Z_{01}+27(B_{41}+Z_{41}),
+\qquad
+\delta M_\Sigma=-(B_{21}+Z_{21})+3(B_{41}+Z_{41}).
+\end{equation}
+After this solve, the residual prefactor obstruction is
+\begin{equation}
+\label{eq:stage020-residual-xi}
+\Xi_1=\frac{N_{01}}{N_0}
+-\frac{27(B_{41}+Z_{41})}{K_\Sigma-B_0-Z_0}.
+\end{equation}
 
+\paragraph{Output.}
+Stage~020 exports the weak-axisymmetric parent packet
+\eqref{eq:stage020-wall-slopes}--\eqref{eq:stage020-residual-xi}.

@@ -1,25 +1,31 @@
-\section[Stage 073]{Stage 073: Updated Reduced Theorem Status After Loading-Ratio Extraction}
+\section[Stage 073]{Stage 073: Family--1 Reference-Branch Geometry Map}
 \label{stage:073}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the support/source verdict under the minimal module; \StatusOpen{} for derivation of that minimal module from the actual moving-throat grouped \(P_2\)/geometry branch.}
-\stagefield{Purpose}{Stage~073 records the clean status update after Stages~071--072.}
-\stagefield{Inputs}{The explicit Family--1 support/source side and the minimal isotropic contact-plus-pole conservative precursor.}
+\claimstatus{\StatusReduced{} / \StatusExactClosure{} for the declared Family--1 reference geometry.}
+\stagefield{Purpose}{Stage~073 fixes the geometry ratios of the first explicit Family--1 branch.}
+\stagefield{Inputs}{The reference finite-throat geometry selected earlier in the program.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage073_updated_reduced_status_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage073_updated_reduced_status_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage073_updated_reduced_status_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Inside the reduced Family--1 branch, the following are settled:
-\begin{enumerate}[leftmargin=2.2em]
-  \item the explicit Family--1 support/source branch has a hard constructive ceiling;
-  \item outgoing normalization factors cancel from the support theorem;
-  \item the support theorem depends only on \(\rho_\alpha=\alpha_{\rm req}/\alpha_{\rm mix}\);
-  \item the natural contact-plus-pole reading gives \(\rho_\alpha=4/3\);
-  \item this lies strictly inside the Family--1 success region;
-  \item the explicit branch succeeds at zero transport bias.
-\end{enumerate}
-The remaining reduced question is not whether the Family--1 support/source side can meet the minimal module.  It is whether the actual grouped real \(P_2\)/geometry throat branch realizes that minimal isotropic conservative quadrupole module.
+The Family--1 reference ratios are
+\begin{equation}
+\label{eq:app-stage073-family1-ratios}
+\boxed{
+\frac{L}{a}=\frac{37}{20},
+\qquad
+\frac{\ell}{a}=\frac{1}{20}}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage073-Lambda-eta}
+\boxed{
+\Lambda_\ell=\frac{L}{\ell}=37,
+\qquad
+\eta=37}.
+\end{equation}
 
-\stagefield{Output}{The support/source side is finished under the minimal module.  The next theorem gate is derivation of the module itself.}
-\stagefield{Downstream use}{Part~IV begins with the grouped \(P_2\)+geometry derivation of the \(3/4+1/4\) conservative quadrupole module.}
+\stagefield{Output}{The Family--1 geometry values \eqref{eq:app-stage073-Lambda-eta}.}
+\stagefield{Downstream use}{Stage~074 uses the healing lock to fix \(\chi_s\) and \(\kappa\).}

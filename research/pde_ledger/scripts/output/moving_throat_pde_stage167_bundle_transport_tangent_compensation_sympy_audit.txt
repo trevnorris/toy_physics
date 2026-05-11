@@ -1,0 +1,54 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage167_bundle_transport_tangent_compensation_sympy_audit.py
+# Date: 2026-05-11T12:47:16-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 150 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION
+========================================================================================
+delta ln rho_w  = dTheta/2
+delta ln a      = dKs/2 - dTheta/4
+delta ln c_s    = dKs/2 + dP/5 - dTheta/4
+delta ln Z_q    = dKq - 2*dP/5
+delta ln c_s,w  = dTheta
+delta ln ell    = -dTheta
+delta ln L_W    = dKs/2 - dTheta/4
+
+delta ln v_w0   = dKq/2 - 3*dKs/4 + 13*dTheta/8
+delta ln T_m    = dKq/2 - 5*dKs/4 - 2*dP/5 + 15*dTheta/8
+delta ln(v/T)   = dKs/2 + 2*dP/5 - dTheta/4
+delta ln(v*T)   = dKq - 2*dKs - 2*dP/5 + 7*dTheta/2
+
+delta ln g_q    = dKq - 3*dKs/4 - 2*dP/5 + 3*dTheta/8
+delta ln g_s    = dKq/2 - dKs/4 - 2*dP/5 + 3*dTheta/8
+delta ln I_sq   = 5*dKs/4 - 13*dTheta/8
+delta ln lambda = dKq/2 + dKs/2
+
+========================================================================================
+Parent invariants
+========================================================================================
+delta ln r_c = 0
+delta ln frak r = 0
+delta ln frak g = 0
+
+========================================================================================
+Stage 163 off-family channels
+========================================================================================
+delta ln(g_q K_s/(g_s lambda)) = 0
+delta ln(K_s K_q/lambda^2) = 0
+delta_perp = 0
+
+Carry-forward formulas:
+  delta ln v_w0   = -3/4 delta ln K_s + 1/2 delta ln K_q + 13/8 delta ln Theta_w
+  delta ln T_m    = -5/4 delta ln K_s + 1/2 delta ln K_q + 15/8 delta ln Theta_w - 2/5 delta ln P_0
+  delta ln g_s    = -1/4 delta ln K_s + 1/2 delta ln K_q + 3/8 delta ln Theta_w - 2/5 delta ln P_0
+  delta ln g_q    = -3/4 delta ln K_s + delta ln K_q + 3/8 delta ln Theta_w - 2/5 delta ln P_0
+  delta ln lambda = 1/2 (delta ln K_s + delta ln K_q)
+  delta ln r_c    = delta ln frak r = delta ln frak g = 0
+  delta_perp      = 0
+
+EXIT_CODE: 0

@@ -1,0 +1,189 @@
+\section{Stage 243: Relaxed constraint branch declaration}
+\label{sec:app-part08:relaxed-constraint-branch-declaration}
+\label{stage:243}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_mathematica_audit.wl}.}
+
+
+Stage 243 declares the relaxed branch without yet assembling a barrier.  Its purpose is to make the Session-I relaxations legal inside the derivation tree while preserving the same-charge short-range verdict.  The inherited base object is the Stage 242 front-end packet
+\begin{equation}
+\label{eq:app-part08-p225-packet}
+\mathcal P_{242}
+=
+\Bigl(
+\epsilon,
+\varrho_{\rm phys},
+\sigma_{\rm phys},
+\text{ranking region},
+R_{\rm tr},
+R_{\rm target},
+\epsilon_\eta,
+ d\ln R_{\rm tr},
+ d\ln R_{\rm target},
+ d\ln\epsilon_\eta,
+ N_Q-1
+\Bigr),
+\end{equation}
+with selected-support packet
+\begin{equation}
+\label{eq:app-part08-s225-packet}
+\mathcal S_{242}=(\zeta,M_{\rm mix},S(\zeta;\epsilon),M_{\rm tr}).
+\end{equation}
+The strict slice is
+\begin{equation}
+\label{eq:app-part08-std-branch-slice}
+\mathfrak B_{\rm std}
+=
+\left\{
+J^w=0,
+\;U=0,
+\;V=0,
+\;\varsigma(z)\equiv 1
+\right\}
+\subset(\mathcal P_{242},\mathcal S_{242}).
+\end{equation}
+This definition is useful because it names exactly what is being relaxed: transverse-current suppression, rigid-mouth orbit lock, and positive-source Family-1 closure.
+
+\subsection{Open-system leakage/work lane}
+\label{subsec:app-part08-open-lane}
+
+The open-system lift begins with the exact projected-continuity leakage identity
+\begin{equation}
+\label{eq:app-part08-stage243-leakage-identity}
+S_{\rm leak}
+=
+-\bigl[W(w)j^w\bigr]_{-\infty}^{+\infty}
++
+\int_{-\infty}^{+\infty}W'(w)j^w(w)\,dw.
+\end{equation}
+For the declaration-level Gaussian closure,
+\begin{equation}
+\label{eq:app-part08-stage243-gaussian-profile}
+W(w)=\frac{e^{-w^2}}{\sqrt\pi},
+\qquad
+j^w(w)=\ell_w j_0\,w e^{-w^2},
+\qquad
+E_w(w)=E_0we^{-w^2},
+\end{equation}
+so the boundary term vanishes and
+\begin{equation}
+\label{eq:app-part08-stage243-leak-work}
+S_{\rm leak}=-\frac{\sqrt2}{4}\ell_wj_0,
+\qquad
+\mathcal W_w=\frac{\sqrt{2\pi}}{8}\ell_wj_0E_0.
+\end{equation}
+The declaration packet for this lane is
+\begin{equation}
+\label{eq:app-part08-stage243-lw}
+L_w=(S_{\rm leak},\mathcal W_w).
+\end{equation}
+Both components vanish on \(\ell_w=0\).
+
+\subsection{Non-rigid mouth/dressing lane}
+\label{subsec:app-part08-uv-lane}
+
+The non-rigid lift uses the minimal free energy
+\begin{equation}
+\label{eq:app-part08-stage243-fuv}
+\mathcal F_{UV}(U,V)
+=
+\frac12k_UU^2+\frac12k_VV^2-\chi_\lambda UV-f_UU.
+\end{equation}
+Stationarity gives
+\begin{equation}
+\label{eq:app-part08-stage243-uv-solution}
+U=\frac{k_Vf_U}{k_Uk_V-\chi_\lambda^2},
+\qquad
+V=\frac{\chi_\lambda f_U}{k_Uk_V-\chi_\lambda^2},
+\qquad
+\frac{V}{U}=\frac{\chi_\lambda}{k_V}.
+\end{equation}
+The branch is admissible when
+\begin{equation}
+\label{eq:app-part08-stage243-uv-stability}
+k_Uk_V-\chi_\lambda^2>0,
+\end{equation}
+and the drain is
+\begin{equation}
+\label{eq:app-part08-stage243-duv}
+\mathcal D_{UV}=\chi_\lambda UV
+=
+\frac{\chi_\lambda^2k_Vf_U^2}{(k_Uk_V-\chi_\lambda^2)^2}\ge0.
+\end{equation}
+This lane is the finite relaxed continuation of the earlier weak-axisymmetric transfer-shape scalar: at infinitesimal order, \(\Xi_1=\delta U\).
+
+\subsection{Compensated sign-changing source lane}
+\label{subsec:app-part08-compensated-source-lane}
+
+The compensated source lift is
+\begin{equation}
+\label{eq:app-part08-stage243-varsigma}
+\varsigma(z)=1+a\cos(\pi z)+b\cos(2\pi z),
+\qquad
+z\in[0,1],
+\end{equation}
+with exact unit mean.  Setting \(y=\cos(\pi z)\),
+\begin{equation}
+\label{eq:app-part08-stage243-varsigma-quadratic}
+\varsigma(y)=1-b+ay+2by^2,
+\qquad
+-1\le y\le 1.
+\end{equation}
+The interior stationary point and value are
+\begin{equation}
+\label{eq:app-part08-stage243-varsigma-min}
+y_*=-\frac{a}{4b},
+\qquad
+\varsigma(y_*)=1-b-\frac{a^2}{8b},
+\end{equation}
+with the boundary candidates \(1+a+b\) and \(1-a+b\).  Thus the first source relaxation is not a vague sign-changing profile; it is an exact mean-preserving quadratic problem.
+
+The full declaration packet is
+\begin{equation}
+\label{eq:app-part08-stage243-relaxed-branch}
+\mathfrak B_{243}^{\rm relax}
+=
+\left\{(\mathcal P_{242},\mathcal S_{242});\;L_w,\;L_{UV},\;L_\varsigma\right\},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part08-stage243-lanes}
+L_w=(S_{\rm leak},\mathcal W_w),
+\quad
+L_{UV}=(U,V,\mathcal D_{UV}),
+\quad
+L_\varsigma=(\varsigma,\varsigma_{\min},\mathrm{signchg}).
+\end{equation}
+
+\subsection{Short-range theorem for the lifted branch}
+\label{subsec:app-part08-short-range-theorem}
+
+The most important Stage 243 output is the short-range firewall.  With primitive profiles
+\begin{equation}
+\label{eq:app-part08-stage243-source-profiles}
+\mathcal S_Q(r)=r^{-3},
+\qquad
+\mathcal S_Y(r)=\frac{e^{-2\kappa r}}{r},
+\end{equation}
+the static one-port correction is
+\begin{equation}
+\label{eq:app-part08-stage243-static-correction}
+\delta V_{\rm stat}(r)
+=
+-\frac12\left[
+\frac{\mathcal C_6}{r^6}
++2\mathcal C_4\frac{e^{-2\kappa r}}{r^4}
++\mathcal C_2\frac{e^{-4\kappa r}}{r^2}
+\right],
+\end{equation}
+and the linear monochromatic dynamic bundle has the same spatial span:
+\begin{equation}
+\label{eq:app-part08-stage243-dynamic-correction}
+\Re\mathfrak V_{\rm dyn}(r,\omega)
+=
+-\frac12\left[
+\frac{\mathcal C_6(\omega)}{r^6}
++2\mathcal C_4(\omega)\frac{e^{-2\kappa r}}{r^4}
++\mathcal C_2(\omega)\frac{e^{-4\kappa r}}{r^2}
+\right].
+\end{equation}
+Thus the relaxed branch is a short-range/open-system bypass branch.  It can reshape near-contact energetics, but it cannot be cited as a new long-range same-charge force.

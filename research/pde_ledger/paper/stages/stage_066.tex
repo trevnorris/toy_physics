@@ -1,23 +1,31 @@
-\section[Stage 066]{Stage 066: Direct Operator-Selected Family--1 Window}
+\section[Stage 066]{Stage 066: Dimensionless Wall Figure of Merit}
 \label{stage:066}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} / \StatusNumerical{} for direct evaluation of the operator-selected Family--1 branch.}
-\stagefield{Purpose}{Stage~066 evaluates the Family--1 support window directly through the operator-selected branch rather than only through endpoint bounds.}
-\stagefield{Inputs}{The Family--1 parameters, \(\Xi_{\rm F1}\), and the fixed-point equation for \(\mathrm{Pe}_*\).}
+\claimstatus{\StatusExactClosure{} for the matched thin-wall theorem.}
+\stagefield{Purpose}{Stage~066 collapses the matched support/source threshold to one dimensionless wall control.}
+\stagefield{Inputs}{The thin-wall branch of Stage~065 and the operator thresholds of Stage~059.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage066_family1_direct_operator_window_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage066_family1_direct_operator_window_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage066_family1_direct_operator_window_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage066_family1_direct_operator_window_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage066_wall_figure_of_merit_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage066_wall_figure_of_merit_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The direct operator-selected support supply is
+The dimensionless wall figure of merit is
 \begin{equation}
-\label{eq:app-stage066-zeta-direct}
-\zeta_{\rm F1}^{\rm op}=
-\zeta_{\rm phys}(\mathrm{Pe}_*(\Xi_{\rm F1},37,12321/5),37;12321/5).
+\label{eq:app-stage066-Wwall}
+\boxed{
+W_{\rm wall}=\frac{4\pi a^2L^2J_1V_0^2}{T_X\ell}}.
 \end{equation}
-The direct window agrees with the endpoint logic: the branch has a hard constructive ceiling and a narrow endpoint-sensitive band near that ceiling.  This calculation is a numerical placement of exact functions, not an independent fit.
+The exact matched-branch verdict is
+\begin{equation}
+\label{eq:app-stage066-Wwindow}
+\boxed{
+W_{\rm wall}\leq\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty}\Rightarrow\text{fail},
+\qquad
+W_{\rm wall}\geq\frac{\mathrm{Pe}_{\rm req}}{\Delta_0}\Rightarrow\text{succeed}}.
+\end{equation}
+Only the intermediate band requires solving the full operator branch.
 
-\stagefield{Output}{Direct operator-selected support window for Family--1.}
-\stagefield{Downstream use}{Stage~067 records the reduced write-up skeleton and final remaining theorem gap.}
+\stagefield{Output}{The wall control \eqref{eq:app-stage066-Wwall} and exact window \eqref{eq:app-stage066-Wwindow}.}
+\stagefield{Downstream use}{Stages~067--069 quantify how much profile mismatch can change this matched verdict.}
 

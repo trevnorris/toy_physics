@@ -1,52 +1,45 @@
-\section[Stage 053]{Stage 053: Explicit GNLS Wall-Shell Reduction for the First Support Branch}
+\section[Stage 053]{Stage 053: Exact Overlap-Boost Window for the Lowest Support Lane}
 \label{stage:053}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} / \StatusReduced{} for the thin GNLS shell support reduction.}
-\stagefield{Purpose}{Stage~053 begins the explicit Family--1 construction by deriving support stiffness and gradient energy from the parent GNLS shell.}
-\stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and frozen \(n=5\) compressional stiffness.}
+\claimstatus{\StatusExactClosure{} for the exponential source family and its overlap ceiling.}
+\stagefield{Purpose}{Stage~053 computes the maximum possible overlap boost supplied by the first exponential lowest-lane source family.}
+\stagefield{Inputs}{Lowest D/N support mode \(\chi_0(s)=\sqrt{2/L}\sin(\pi s/2L)\) and normalized exponential source \(\sigma_\alpha\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage053_gnls_wall_shell_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage053_gnls_wall_shell_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage053_gnls_wall_shell_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage053_gnls_wall_shell_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage053_overlap_boost_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage053_overlap_boost_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage053_overlap_boost_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The quadratic support energy is
+The normalized exponential source family is
 \begin{equation}
-\label{eq:app-stage053-E2}
-E^{(2)}[q]=\frac12\int_0^L ds\,[T_Xq'(s)^2+K_Xq(s)^2].
-\end{equation}
-The coefficients are
-\begin{equation}
-\label{eq:app-stage053-TX-KX}
-\boxed{
-T_X=\frac{\hbar^2}{4m\rho_w}N_{\phi\phi},
+\label{eq:app-stage053-sigma}
+\sigma_\alpha(s)=\frac{\alpha e^{\alpha s/L}}{e^\alpha-1},
 \qquad
-K_X=H_wN_{\phi\phi}+\frac{\hbar^2}{4m\rho_w}G_{\phi\phi},
+\int_0^L\sigma_\alpha(s)\,ds=L.
+\end{equation}
+The exact overlap boost relative to the uniform source is
+\begin{equation}
+\label{eq:app-stage053-Omega-exp}
+\boxed{
+\Omega_{\exp}(\alpha)
+=\frac{\pi\alpha(2\alpha e^\alpha+\pi)}{(4\alpha^2+\pi^2)(e^\alpha-1)}}.
+\end{equation}
+The endpoint values are
+\begin{equation}
+\label{eq:app-stage053-Omega-window}
+\boxed{
+\Omega_{\exp}(0)=1,
 \qquad
-H_w=\frac{mc_{s,w}^2}{\rho_w}}.
+\lim_{\alpha\to+\infty}\Omega_{\exp}(\alpha)=\frac{\pi}{2}}.
 \end{equation}
-For a thin shell with moments \(I_f=\int f'^2d\xi\) and \(I_g=\int f''^2d\xi\),
+Therefore
 \begin{equation}
-\label{eq:app-stage053-thin-TK}
+\label{eq:app-stage053-overlap-ceiling}
 \boxed{
-T_X=\frac{\pi a^2\ell I_f\hbar^2}{m\rho_w},
-\qquad
-K_X=4\pi a^2\ell I_fH_w+\frac{\pi a^2I_g\hbar^2}{m\rho_w\ell}}.
+\Omega_0^2\leq\frac{\pi^2}{4}}.
 \end{equation}
-Thus
-\begin{equation}
-\label{eq:app-stage053-kappa}
-\boxed{
-\kappa=\frac{K_XL^2}{T_X}
-=4\left(\frac{mc_{s,w}L}{\hbar}\right)^2+\frac{I_g}{I_f}\left(\frac{L}{\ell}\right)^2}.
-\end{equation}
-The matched wall control is
-\begin{equation}
-\label{eq:app-stage053-Wwall-Xi}
-\boxed{
-W_{\rm wall}=\Xi=\frac{4\rho_w^2V_0^2L^2}{\hbar^2c_{s,w}^2\ell^2}}.
-\end{equation}
+Pure overlap rescue alone is possible only if \(\zeta_{\rm req}\leq\pi^2/4\).
 
-\stagefield{Output}{The parent-shell coefficients \eqref{eq:app-stage053-TX-KX}--\eqref{eq:app-stage053-Wwall-Xi}.}
-\stagefield{Downstream use}{Stage~054 evaluates these for the canonical tanh wall; Stages~056--057 fix the Family--1 geometry and healing lock.}
+\stagefield{Output}{Overlap boost formula \eqref{eq:app-stage053-Omega-exp} and ceiling \eqref{eq:app-stage053-overlap-ceiling}.}
+\stagefield{Downstream use}{Stage~056 identifies \(\alpha\) with a Peclet number; Stage~057 combines it with Robin softening.}
 

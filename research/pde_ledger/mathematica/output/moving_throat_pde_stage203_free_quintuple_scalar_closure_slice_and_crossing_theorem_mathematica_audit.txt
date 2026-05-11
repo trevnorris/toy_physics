@@ -1,0 +1,116 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl
+# Date: 2026-05-11T13:25:40-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 186 — FREE-QUINTUPLE SCALAR CLOSURE SLICE AND CROSSING THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Stage 192 dependent pivot block and exact canonical section
+----------------------------------------------------------------------------------------
+M_* =
+MatrixForm[{{0, 1 + deltaUs, 1 + deltaUs, -2 - chi0s - deltaUs, 0, 0, 0, 1 + chi0s}, {2*(1 + Estar), 0, 2*Estar, -Estar + Fstar, -1, -2 - Estar, 1, -Fstar}, {0, 2, 0, -1, -1, 0, 0, 0}}]
+P_(T,K_eta,mu) =
+MatrixForm[{{1 + chi0s, 0, 0}, {-Fstar, -1, 1}, {0, -1, 0}}]
+P_(T,K_eta,mu)^(-1) =
+MatrixForm[{{(1 + chi0s)^(-1), 0, 0}, {0, 0, -1}, {Fstar/(1 + chi0s), 1, -1}}]
+S_(T,K_eta,mu) =
+MatrixForm[{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, -1}, {0, 0, 0}, {Fstar/(1 + chi0s), 1, -1}, {(1 + chi0s)^(-1), 0, 0}}]
+M_* S - I_3 =
+MatrixForm[{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}]
+PASS: M_* S - I_3
+
+----------------------------------------------------------------------------------------
+II. Exact graph-family tangent formulas from the Stage 202 target graph
+----------------------------------------------------------------------------------------
+d ln delta_U^graph / d tau = -(((1 + deltaUs)*(c1 + gam1 - kapU))/(1 + chi0s))
+tau_1^graph = (-(c1*(1 + deltaUs)) - (1 + deltaUs)*gam1 + (2 + chi0s + deltaUs)*kapU)/(1 + chi0s)
+kappa_eta^graph = 2*c1 - kapU
+mu_1^graph = -((c1*(-2 - 2*chi0s + Fstar + deltaUs*Fstar) + Fstar*gam1 + deltaUs*Fstar*gam1 + kapU + chi0s*kapU - Fstar*kapU - deltaUs*Fstar*kapU - 2*kapW - 2*chi0s*kapW + 2*lam1 + 2*chi0s*lam1 + (1 + chi0s)*Estar*(2*gam1 - kapU - kapW + 2*lam1))/(1 + chi0s))
+dln delta_U^graph - carried formula = 0
+PASS: dln delta_U^graph - carried formula
+tau_1^graph - carried formula = 0
+PASS: tau_1^graph - carried formula
+kappa_eta^graph - (2 c1 - kappa_U) = 0
+PASS: kappa_eta^graph - (2 c1 - kappa_U)
+mu_1^graph - carried formula = 0
+PASS: mu_1^graph - carried formula
+
+----------------------------------------------------------------------------------------
+III. Exact graph-family orbit-kernel theorem
+----------------------------------------------------------------------------------------
+dot(Delta x)_graph =
+MatrixForm[{{lam1, c1, gam1, kapU, 2*c1 - kapU, kapW, -((c1*(-2 - 2*chi0s + Fstar + deltaUs*Fstar) + Fstar*gam1 + deltaUs*Fstar*gam1 + kapU + chi0s*kapU - Fstar*kapU - deltaUs*Fstar*kapU - 2*kapW - 2*chi0s*kapW + 2*lam1 + 2*chi0s*lam1 + (1 + chi0s)*Estar*(2*gam1 - kapU - kapW + 2*lam1))/(1 + chi0s)), (-(c1*(1 + deltaUs)) - (1 + deltaUs)*gam1 + (2 + chi0s + deltaUs)*kapU)/(1 + chi0s)}}]
+M_* dot(Delta x)_graph =
+MatrixForm[{{0, 0, 0}}]
+PASS: M_* dot(Delta x)_graph
+
+----------------------------------------------------------------------------------------
+IV. Exact graph-error packet from the direct monomials
+----------------------------------------------------------------------------------------
+q_tr = (1 + chi0s)*ET
+q_nt = -EK + Emu - ET*Fstar
+q_eta = -EK
+q_tr - (1+chi0_*) E_T = 0
+PASS: q_tr - (1+chi0_*) E_T
+q_nt - (E_mu - E_K - F_* E_T) = 0
+PASS: q_nt - (E_mu - E_K - F_* E_T)
+q_eta + E_K = 0
+PASS: q_eta + E_K
+
+----------------------------------------------------------------------------------------
+V. Exact inverse compiler and repair vector
+----------------------------------------------------------------------------------------
+Inverse compiler solution =
+{ET -> qtrs/(1 + chi0s), EK -> -qetas, Emu -> -qetas + qnts + (Fstar*qtrs)/(1 + chi0s)}
+inverse E_T = 0
+PASS: inverse E_T
+inverse E_K = 0
+PASS: inverse E_K
+inverse E_mu = 0
+PASS: inverse E_mu
+Delta x_rep =
+MatrixForm[{{0, 0, 0, 0, -EK, 0, -Emu, -ET}}]
+repair vector from graph errors =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: repair vector from graph errors
+M_* Delta x_rep + q(E) =
+MatrixForm[{{0, 0, 0}}]
+PASS: M_* Delta x_rep + q(E)
+
+----------------------------------------------------------------------------------------
+VI. Stage 197 scalar closure composed with an explicit Stage 202 graph path
+----------------------------------------------------------------------------------------
+Explicit free-quintuple graph path y(tau) =
+MatrixForm[{{lamBar, cetaUBar, (gammaBar + 2*gammaBar*rho*tau)/(1 + rho), KUBar, KWBar}}]
+beta_path(tau) = (1 + 2*rho*tau)/(1 + rho)
+widehat chi_Q(y(tau)) from the carried Stage 197 closure algebra = (1 + 2*rho*tau)^5/(1 + rho)^5
+widehat Delta_Q(tau) = (rho*(-5 + 10*tau + 10*rho*(-1 + 4*tau^2) + 10*rho^2*(-1 + 8*tau^3) + rho^3*(-5 + 80*tau^4) + rho^4*(-1 + 32*tau^5)))/(1 + rho)^5
+beta_path - gamma(tau)/gamma_bar = 0
+PASS: beta_path - gamma(tau)/gamma_bar
+Stage 197 closure numerator identity on the graph path = 0
+PASS: Stage 197 closure numerator identity on the graph path
+graph residual denominator > 0  -> (1 + rho)^5
+PASS: graph residual denominator
+widehat Delta_Q(0) = -((rho*(5 + 10*rho + 10*rho^2 + 5*rho^3 + rho^4))/(1 + rho)^5)
+widehat Delta_Q(1) = (rho*(5 + 30*rho + 70*rho^2 + 75*rho^3 + 31*rho^4))/(1 + rho)^5
+real crossing set = 2*tau == 1
+graph residual at tau_- = 0 < 0  -> -((rho*(5 + 10*rho + 10*rho^2 + 5*rho^3 + rho^4))/(1 + rho)^5)
+PASS: graph residual at tau_- = 0
+graph residual at tau_+ = 1 > 0  -> (rho*(5 + 30*rho + 70*rho^2 + 75*rho^3 + 31*rho^4))/(1 + rho)^5
+PASS: graph residual at tau_+ = 1
+graph residual at tau_* = 1/2 = 0
+PASS: graph residual at tau_* = 1/2
+PASS: real crossing set
+
+========================================================================================
+STAGE 186 MATHEMATICA AUDIT PASSED
+========================================================================================
+
+EXIT_CODE: 0

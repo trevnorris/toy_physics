@@ -1,31 +1,62 @@
-\section[Stage 040]{Stage 040: Physical \texorpdfstring{$(\mathrm{Pe},\kappa,\eta)$}{(Pe,kappa,eta)} Placement Map}
+\section[Stage 040]{Stage 040: Generalized Selected-Branch Normalization with Source/Loading Mismatch}
 \label{stage:040}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the lowest-lane physical support map.}
-\stagefield{Purpose}{Stage~040 combines transport-driven overlap and Robin compliance into the physical support ratio used by the operator-selected branch.}
-\stagefield{Inputs}{Peclet overlap \(\Omega_{\mathrm{Pe}}\), Robin root \(y(\eta)\), and stiffness parameter \(\kappa\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the rank-one selected-mode algebra with distinct source and loading directions.}
+\stagefield{Purpose}{Stage~040 replaces the flat one-vector selected branch by a source/loading mismatch law.  It derives deformed branch functions \(F_{q,\eta_s}\) and \(G_q\), then specializes them to the split--\(U\) continuum through \(R_U\).}
+\stagefield{Inputs}{The selected lower eigenvalue \(\lambda_-=A_0(1-\xi)\), loading vector \(z=z_0(1,q)^T\), and source vector \(s=s_0(1,t)^T\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage040_physical_parameter_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage040_physical_parameter_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage040_physical_parameter_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage040_physical_parameter_map_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The physical lowest-lane support ratio is
+For a single rank-one loading, the required loading is
 \begin{equation}
-\label{eq:app-stage040-zeta}
-\boxed{
-\zeta_0(\mathrm{Pe},\eta;\kappa)
-=\Omega_{\mathrm{Pe}}^2
-\frac{\kappa+\pi^2/4}{\kappa+y(\eta)^2},
+\label{eq:app-stage040-alpha-req}
+\alpha_{\rm req}=\frac{A_0\xi(\xi+\delta)}{z_0^2[\delta+(1+q^2)\xi]},
 \qquad
- y(\eta)\tan y(\eta)=\eta}.
+0\leq\xi<1.
 \end{equation}
-It is monotone in the constructive Peclet direction, with zero-bias value
+The selected eigenvector has ratio
 \begin{equation}
-\label{eq:app-stage040-zero-bias}
-\zeta_0(0,\eta;\kappa)=\frac{\kappa+\pi^2/4}{\kappa+y(\eta)^2}.
+\label{eq:app-stage040-evec}
+\frac{e_1}{e_0}=\frac{q\xi}{\delta+\xi}.
 \end{equation}
+With \(\eta_s=s_1z_1/(s_0z_0)\), the generalized normalization and baseline loading functions are
+\begin{equation}
+\label{eq:app-stage040-Fqeta}
+\boxed{
+F_{q,\eta_s}(\xi,\delta)
+=\frac{[\delta+(1+q^2)\xi]^2[\delta+(1+\eta_s)\xi]^2}
+{(1-\xi)[(\delta+\xi)^2+q^2\xi^2]^2}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage040-Gq}
+\boxed{
+G_q(\xi,\delta)=\frac{\xi(\xi+\delta)}{\delta+(1+q^2)\xi}}.
+\end{equation}
+For the split--\(U\) continuum, using \(\lambda_0=\kappa_1^2/\kappa_0^2=2/9\),
+\begin{equation}
+\label{eq:app-stage040-qeta-RU}
+q=-\frac{\sqrt2}{3}R_U,
+\qquad
+\eta_s=\frac{2}{9}R_U.
+\end{equation}
+Therefore the one-parameter split--\(U\) functions are
+\begin{equation}
+\label{eq:app-stage040-FU}
+\boxed{
+F_U(\xi,\delta;R_U)=
+\frac{[9\delta+(9+2R_U^2)\xi]^2[9\delta+(9+2R_U)\xi]^2}
+{81(1-\xi)[9\delta^2+18\delta\xi+(9+2R_U^2)\xi^2]^2}},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage040-GU}
+\boxed{
+G_U(\xi,\delta;R_U)=\frac{9\xi(\xi+\delta)}{9\delta+(9+2R_U^2)\xi}}.
+\end{equation}
+The flat branch is recovered at \(R_U=1\).
 
-\stagefield{Output}{The physical support map \eqref{eq:app-stage040-zeta}.}
-\stagefield{Downstream use}{Stages~041--042 determine how the support/source operator selects \(\mathrm{Pe}_*\); Stages~062--066 specialize \eqref{eq:app-stage040-zeta} to Family--1.}
+\stagefield{Output}{The generalized selected functions \eqref{eq:app-stage040-Fqeta}--\eqref{eq:app-stage040-Gq} and their split--\(U\) specialization \eqref{eq:app-stage040-FU}--\eqref{eq:app-stage040-GU}.}
+\stagefield{Downstream use}{Stages~041--044 add a second support direction and determine the actual softening depth.}
 

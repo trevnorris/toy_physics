@@ -1,12 +1,12 @@
-# Review: Stage 025 — Rank2 selected mode normalization
+# Review: Stage 025 — Minimal isotropic normalization
 
-**Batch:** 4 — Kernel Continuation
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (2× PASS, 2026-04-02)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage025_rank2_selected_mode_normalization.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage025_rank2_selected_mode_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,41 +40,43 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Eigenvector ratio e_1/e_0 verified from both rows of null-space condition (script confirms agreement). Overlap formulas for outgoing/mixed and source channels correct — numerator structures verified by expanding (1 + q*e_1/e_0) type expressions. Generalized normalization F_{q,r,t} four-factor rational form correct. Tracking collapse r=q kills m-dependence, recovers Stage-23. Source-tied specialization with q=sqrt(lam0)*R_U, r=t=sqrt(lam0) verified both by construction and substitution. Flat-U recovery at R_U=1 matches Stage-18/19. First-order deformation H_n^{src} and H_F^{src} verified by series expansion.
+**1. Equation-level correctness.** All formulas verified:
 
-2. **Logical flow.** Clean arc from eigenvector → overlaps → normalization → specializations → deformation.
+- Sec. 1 definitions of Delta, Q, P match Stage 7 exactly (single-mode truncation). B_0 = C^2/varpi^2, Z_0 = Q/Delta, N_0 = P^2/Delta^2, D_0 = K - B_0 - Z_0 all correct.
+- P_0 = N_0/D_0 = P^2/[Delta^2(K - C^2/varpi^2 - Q/Delta)]. Algebra verified by multiplying through by Delta.
+- Target equation mhat_rad^2 * P_0 = 54 G c_s^5/(5 a^5 c^5) follows from Stage 7 with mhat_ang = 1.
+- Stability/positivity (Sec. 3): Delta > 0 (stable 2×2 block), D_0 > 0 (stiffness > softening), N_0 = P^2/Delta^2 >= 0 (perfect square). P_0 > 0 when P != 0. All correct.
+- Monotonicity (Sec. 4): partial_K P_0 = -N_0/D_0^2 and partial_X P_0 = +N_0/D_0^2 verified by direct differentiation. Sum = 0. Correct.
 
-3. **Notation consistent** with Stages 22-24.
+**2-6.** Logical flow clean from Stage 7. All assumptions explicit. Five undetermined quantities correctly identified. Notation consistent. Physical interpretation (balance between port transfer and wall self-loading) sound.
 
 **Script Review:**
 
-**B.1-B.7.** All 6 sub-checks faithful. Eigenvector from both matrix rows. Overlaps from eigenvector formula vs closed forms. Source-tied by both construction and substitution. Linearization by sp.series. No tautologies. All pass (exit code 0, 109s runtime from high-degree rational simplification). Complete coverage.
+**B.1-B.7.** Faithful implementation of all formulas. No bugs, no hardcoded values, no tautological checks. Symbol assumptions correct (K/varpi positive, couplings real, X nonneg). All expect_zero checks pass. Coverage includes coefficient definitions, compact P0 equivalence, stability identities, monotonicity derivatives.
 
 **Issues Found:** None.
 
 ---
 
-### Agent: GPT-5 Codex — 2026-04-03
+### Agent: GPT-5 — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The selected-mode geometry is correct. Using the exact Stage-24 support load, both null-space rows give the same eigenvector ratio, and the closed form `e_1/e_0 = [m(q-r) + r xi] / [delta + xi - m q(q-r)]` matches the symbolic reduction.
-2. The generalized normalization function is also correct. The overlapping factors for the loading direction and the source direction combine into the stated three-direction function `F_(q,r,t)(xi,delta;m)`, with the exact denominator `D_(q,r)` controlling the deformation.
-3. The stage’s two special reductions are faithful. Tracking support (`r=q`) collapses back to the Stage-23 geometry, and the source-tied split-`U` specialization gives the exact `F_src` with the expected flat-`U` recovery at `R_U = 1`.
-4. The first-order deformation formulas in `R_U - 1` are consistent with the exact rational expressions and the natural constructive branch sign choice.
+1. **Equation-level correctness.** The single-mode reduction is algebraically consistent. `Delta = Omega_U^2 Omega_W^2 - R^2`, `Q = G_U^2 Omega_W^2 + 2 G_U G_W R + G_W^2 Omega_U^2`, `P = Omega_U^2 G_W + R G_U`, and the derived coefficients `B_0`, `Z_0`, `N_0`, `D_0` all match the Stage 7 definitions after truncation. The normalization rewrite `P_0 = P^2 / [Delta (K Delta - Delta C^2 / varpi^2 - Q)]` is correct.
+
+2. **Logical flow.** The stage cleanly narrows the problem from the isotropic angular theorem to the remaining radial/axial scalar. The jump from `mhat_ang = 1` to `mhat_0 = mhat_rad` is justified by the prior stage and the target equation is the right reduced form.
+
+3. **Assumptions.** The stable-branch assumptions `Delta > 0` and `D_0 > 0` are stated explicitly and are the right admissibility conditions for the denominator. The support-softening variable `X = C^2 / varpi^2` is introduced consistently.
+
+4. **Notation consistency.** The notation is consistent with Stage 7 and with the Stage 8 script. The reuse of `P_0` for the normalization prefactor is unambiguous in context.
+
+5. **Physical interpretation.** The interpretation is sensible: stronger bare wall stiffness lowers the prefactor, while stronger support softening raises it. The stage correctly isolates the remaining unknowns to `X`, `Delta`, `Q`, `P`, and `mhat_rad`.
 
 **Script Review:**
 
-1. The script checks both row equations for the eigenvector ratio, builds the generalized normalization law from the exact overlap formulas, verifies the tracking collapse, and then specializes to the source-tied split-`U` case.
-2. The saved output matches the note claims, and the linearized deformation checks are nontrivial.
+The audit script faithfully implements the notes. It recomputes the zero-frequency coefficients, proves the compact form of `P_0`, checks the stability identity `Delta*D_0 = K*Delta - Delta*C^2/varpi^2 - Q`, and differentiates with respect to `K` and `X`. The saved output matches the claims, and my independent SymPy spot-check of `P_0 - P_0_compact` also reduced to zero.
 
-**Issues Found:**
+**Issues Found:** None.
 
-None.
-
-**Questions:**
-
-None.
-
----
+**Questions:** None.

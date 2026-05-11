@@ -1,0 +1,107 @@
+\section{Stage 245: Non-rigid mouth and \texorpdfstring{\((U,V)\)}{(U,V)} drain packet}
+\label{sec:app-part08:non-rigid-mouth-and-u-v-drain-packet}
+\label{stage:245}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 245 compiles the abstract non-rigid lane into the actual finite physical variables used by the rigid-mouth chart.  The carried chart is \cref{eq:app-part08-main-uv-chart}; hence
+\begin{equation}
+\label{eq:app-part08-stage245-direct-observables}
+\mathcal T^2=\mathcal T_{\rm ref}^{2}e^U,
+\qquad
+\epsilon_\eta=\epsilon_{\eta,{\rm ref}}e^V.
+\end{equation}
+The selected-branch identity
+\begin{equation}
+\label{eq:app-part08-stage245-selected-identity}
+R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+\end{equation}
+then gives
+\begin{equation}
+\label{eq:app-part08-stage245-rtarget-finite}
+\frac{R_{\rm target}}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,{\rm ref}}e^V}{1-\epsilon_{\eta,{\rm ref}}}e^{-U}.
+\end{equation}
+So the finite non-rigid packet has two independent legs: transfer shape and dressing.
+
+The reduced free energy in session notation is
+\begin{equation}
+\label{eq:app-part08-stage245-fnr}
+\mathcal F_{\rm nr}(U,V;r)
+=
+\frac12a_UU^2+\frac12a_VV^2-\chi_{UV}(r)UV-f_U(r)U.
+\end{equation}
+The stationary solution is \cref{eq:app-part08-main-uv-stationary}, with \(\Delta_{UV}\) given by \cref{eq:app-part08-main-delta-uv}.  In finite physical variables,
+\begin{equation}
+\label{eq:app-part08-stage245-finite-t}
+\mathcal T^2(r)
+=
+\mathcal T_{\rm ref}^2\exp\left(\frac{a_Vf_U(r)}{\Delta_{UV}(r)}\right),
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage245-finite-epseta}
+\epsilon_\eta(r)
+=
+\epsilon_{\eta,{\rm ref}}\exp\left(\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)}\right),
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage245-finite-rtarget}
+\frac{R_{\rm target}(r)}{R_{\rm target,ref}}
+=
+\frac{1-\epsilon_{\eta,{\rm ref}}\exp(\chi_{UV}f_U/\Delta_{UV})}{1-\epsilon_{\eta,{\rm ref}}}
+\exp(-a_Vf_U/\Delta_{UV}).
+\end{equation}
+
+The dependent microscopic correction inherited from the rigid-mouth plane is
+\begin{equation}
+\label{eq:app-part08-stage245-dependent-plane}
+(\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+=(0,-V,U-V),
+\end{equation}
+so the non-rigid stationary packet induces
+\begin{equation}
+\label{eq:app-part08-stage245-dependent-nr}
+\mathbf y_{\rm nr}^{\rm dep}(r)
+=
+\begin{pmatrix}
+0\\[2pt]
+-\chi_{UV}f_U/\Delta_{UV}\\[2pt]
+(a_V-\chi_{UV})f_U/\Delta_{UV}
+\end{pmatrix}.
+\end{equation}
+The drain \(\mathcal D_{UV}\) is given by \cref{eq:app-part08-main-uv-drain}; it is nonnegative even when \(U\) and \(V\) have opposite signs.
+
+At weak-axisymmetric order, write
+\begin{equation}
+\label{eq:app-part08-stage245-first-order-uv}
+U=\varepsilon u_1+O(\varepsilon^2),
+\qquad
+V=\varepsilon v_1+O(\varepsilon^2).
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-part08-stage245-xi-r-first}
+\Xi_1^{\rm nr}=u_1,
+\qquad
+\mathcal R_1^{\rm nr}+\Xi_1^{\rm nr}
+=-\frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1,
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage245-r-first}
+\mathcal R_1^{\rm nr}
+=
+-u_1-
+\frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1.
+\end{equation}
+Thus the direct outgoing-prefactor scalar remains the \(U\) leg, while active dressing adds an independent selected-branch residual.
+
+Within the declared closure, this packet is orbit-side/support-blind:
+\begin{equation}
+\label{eq:app-part08-stage245-support-blind}
+\partial_\Lambda U=
+\partial_\varrho U=
+\partial_\Lambda V=
+\partial_\varrho V=0,
+\end{equation}
+provided \(f_U\) and \(\chi_{UV}\) are treated as orbit-side data rather than support-placement coordinates.  This complements the support-side result from Stage 244.

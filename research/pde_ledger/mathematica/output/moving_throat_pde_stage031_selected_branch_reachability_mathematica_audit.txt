@@ -1,0 +1,65 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl
+# Date: 2026-05-11T12:46:30-06:00
+# Elapsed: 12s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+PART I — EXACT SELECTED OVERLAP DERIVATIVE
+========================================================================================
+ds_-/dalpha exact formula = 0
+PASS: ds_-/dalpha exact formula
+ds_-/dalpha = (2*dK^2*x0*x1)/((dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1)^(3/2)
+
+========================================================================================
+PART II — EXACT PREFATOR MONOTONICITY IDENTITY
+========================================================================================
+exact monotonicity identity = 0
+PASS: exact monotonicity identity
+dP0_-/dalpha = (4*beta0*((dK^2*x0*x1*(2*a + dK - alpha*(x0 + x1) - Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1]))/((dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1)^(3/2) + (x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])^2/4))/(-2*a - dK + alpha*x0 + alpha*x1 + Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])^2
+
+========================================================================================
+PART III — INITIAL VALUES
+========================================================================================
+lambda_-(0) = 0
+PASS: lambda_-(0)
+s_-(0) = 0
+PASS: s_-(0)
+P0_-(0) = 0
+PASS: P0_-(0)
+
+========================================================================================
+PART IV — EXACT SOFTENING THRESHOLD
+========================================================================================
+det factorization = 0
+PASS: det factorization
+alpha_crit condition = 0
+PASS: alpha_crit condition
+threshold radical square identity = 0
+PASS: threshold radical square identity
+alpha_crit = (a*(a + dK))/(dK*x0 + a*(x0 + x1))
+lambda_+^(crit) = ((a + dK)^2*x0 + a^2*x1)/(dK*x0 + a*(x0 + x1))
+
+========================================================================================
+PART V — STABLE-SIDE DIVERGENCE STRUCTURE
+========================================================================================
+lambda_- * lambda_+ - T0*(alpha_crit-alpha) = 0
+PASS: lambda_- * lambda_+ - T0*(alpha_crit-alpha)
+P0_- factorization = 0
+PASS: P0_- factorization
+P0_- = (beta0*(2*a + dK - alpha*(x0 + x1) + Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])*(x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1]))/(4*((a + dK)*(a - alpha*x0) - a*alpha*x1))
+
+========================================================================================
+STAGE 14 AUDIT COMPLETE
+========================================================================================
+Verified:
+  exact overlap derivative ds_-/dalpha = 2 DK^2 kappa0^2 kappa1^2 / R^3
+  exact monotonicity identity for dP0_-/dalpha
+  exact initial-value formulas at alpha = 0
+  exact softening threshold alpha_crit and determinant factorization
+  exact stable-side factorization P0_- = beta0 s_- lambda_+ / [T0 (alpha_crit-alpha)]
+
+EXIT_CODE: 0

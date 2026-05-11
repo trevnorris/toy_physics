@@ -1,76 +1,33 @@
-\section[Stage 014]{Stage 014: Reachability and Stable-Side Monotonicity}
+\section[Stage 014]{Stage 014: Mouth-Taylor gate bridge}
 \label{stage:014}
 
-\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
-\claimstatus{\StatusExactClosure{} inside the selected lower-mode branch.}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+\claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel closure, parent-action packet, or one-port normal form.}
 
-\stagefield{Purpose}{Stage~014 proves that the selected prefactor is strictly increasing as the rank-one loading approaches the softening threshold.  This turns selected normalization into a one-dimensional reachability theorem.}
+\paragraph{Source and audit.}
+This stage corresponds to
+\StageFile{scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py}.
+It turns the mouth-Taylor primitive map into a gate-level compensation test.
 
-\stagefield{Inputs}{The stage uses \(\lambda_-(\alpha_0)\), \(s_-(\alpha_0)\), \(P_{0,-}=\beta_0s_-/\lambda_-\), and the stable interval \(0\leq\alpha_0<\alpha_{\rm crit}\).}
-
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage014_selected_branch_reachability_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage014_selected_branch_reachability_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage014_selected_branch_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage014_selected_branch_reachability_mathematica_audit.txt}.}
-
-\subsection*{Derivation}
-
-\paragraph{1. Derivative of the selected overlap.}
-The exact derivative is
+\paragraph{Even gates.}
+The conservative mouth shifts enter
 \begin{equation}
-\label{eq:app-stage014-ds-dalpha}
-\boxed{
-\frac{ds_-}{d\alpha_0}=
-\frac{2(\Delta K_{\rm ax})^2\Pi_\kappa}{R_\lambda^3}>0}.
+\label{eq:stage014-k1}
+K_1=-z_2-\frac{z_0}{9},
 \end{equation}
-Using \(d\lambda_-/d\alpha_0=-s_-\), one obtains
 \begin{equation}
-\label{eq:app-stage014-dP-dalpha}
-\boxed{
-\frac{dP_{0,-}}{d\alpha_0}
-=\beta_0\frac{(ds_-/d\alpha_0)\lambda_-+s_-^2}{\lambda_-^2}>0
-}
+\label{eq:stage014-heven}
+H_{\rm even}=-z_4+\frac23z_2-\frac{z_0}{27}.
 \end{equation}
-whenever \(\lambda_->0\) and \(\beta_0>0\).
-
-\paragraph{2. Endpoints.}
-At zero loading,
+Solving the pair of even gates against the primitive derivative slots gives a
+nontrivial compensation denominator.  In the primitive notation of the audit,
+the determinant is proportional to
 \begin{equation}
-\label{eq:app-stage014-P-zero}
-P_{0,-}(0)=\frac{\beta_0\kappa_0^2}{A}.
-\end{equation}
-The refined threshold, now with the isotropic \(U\)-softening absorbed into \(A,B\), is
-\begin{equation}
-\label{eq:app-stage014-alpha-crit}
-\boxed{
-\alpha_{\rm crit}=\frac{AB}{B\kappa_0^2+A\kappa_1^2}}.
-\end{equation}
-As \(\alpha_0\to\alpha_{\rm crit}^-\), \(\lambda_-\to0^+\) while \(s_-\) remains positive, so
-\begin{equation}
-P_{0,-}\to+\infty.
-\end{equation}
-Thus the stable branch spans
-\begin{equation}
-\label{eq:app-stage014-range}
-P_{0,-}(0)\leq P_{0,-}<+\infty.
+\label{eq:stage007-compensation-denominator}
+Q\,S_2-\Delta H_{\rm port}.
 \end{equation}
 
-\paragraph{3. Unique crossing.}
-Because \(P_{0,-}\) is continuous and strictly increasing on the stable interval, every target satisfying
-\begin{equation}
-P_{\rm target}>P_{0,-}(0)
-\end{equation}
-has a unique \(\alpha_*\in(0,\alpha_{\rm crit})\) such that \(P_{0,-}(\alpha_*)=P_{\rm target}\).  For the quadrupole target,
-\begin{equation}
-P_{\rm target}=\frac{N_Q^{\rm target}}{\widehat m_-^{\,2}}.
-\end{equation}
-
-\stagefield{Output}{Stage~014 outputs the derivative identities \eqref{eq:app-stage014-ds-dalpha}--\eqref{eq:app-stage014-dP-dalpha}, the refined threshold \eqref{eq:app-stage014-alpha-crit}, and the unique stable crossing theorem.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item The positivity of \(ds_-/d\alpha_0\) follows from \((\Delta K_{\rm ax})^2\Pi_\kappa>0\) and \(R_\lambda>0\).
-\item The derivative of \(P_{0,-}\) is positive because both terms in the numerator are nonnegative and \(s_-^2>0\).
-\item The divergence at softening follows from \(\lambda_-\to0^+\) with \(s_->0\).
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{Stage~015 modifies the target by fixing \(\widehat m_-\).  Stage~018 upgrades the reachability statement into the explicit monotone shape function \(F(\xi,\delta)\).}
-
-\clearpage
-
+\paragraph{Output.}
+Stage~014 exports the mechanism sieve: projected EM mouth data can tune
+the even gates only away from the degeneracy
+\eqref{eq:stage007-compensation-denominator}.

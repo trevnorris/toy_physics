@@ -1,12 +1,13 @@
-# Review: Stage 022 — Split u sector
+# Review: Stage 022 — Grouped p2 normalization bridge
 
-**Batch:** 4 — Kernel Continuation
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (current PASS after round-trip replay, 2026-04-20)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage022_split_u_sector.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage022_split_u_sector_sympy_audit.py`
+- **Notes:** `notes/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md`
+- **SymPy:** `scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py`
+- **Mathematica:** `mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl`
 
 ## Review Checklist
 
@@ -40,44 +41,129 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** U-mode splitting K_{U0}=K_U, K_{U1}=K_U(1+delta_U) correct. Split softening delta_split = (delta_0 + eps_eta delta_U/(1+delta_U))/(1-eps_eta) verified by expanding A_1/A_0 - 1. Mixed blocking eps_W_split = eps_W(9 delta_U+11)/(11(1+delta_U)) verified via S_U computation — alternate form 1-(2/11)delta_U/(1+delta_U) confirmed. Direction-splitting invariant D_dir = -kappa_0 kappa_1 g_W rho_0 delta_U/(1+delta_U) verified by direct algebra; collinearity iff delta_U=0 or rho_0=0. Split placement map maintains same structure with eps_W → eps_W_split.
+**1. Equation-level correctness.** All formulas verified:
 
-2. **Logical flow.** Clean: U splitting → direct softening → mixed blocking → direction splitting → placement map.
+- **Response coefficients (Sec. 2):** u2 = -D_{A2}/D_{A0} and u4 = (D_{A2}^2 - D_{A0} D_{A4})/D_{A0}^2 from geometric series expansion of D_{A0}/(D_{A0} + D_{A2} omega^2 + D_{A4} omega^4). Verified.
 
-3. **Physical interpretation.** Sound: scalar placement survives but directional collinearity breaks.
+- **Grouped inverse map (Sec. 3):** Standard 5-dimensional real P2 trace/anomaly decomposition with multiplicities (1,2,2). Round-trip identities verified by direct substitution. Anisotropy norm A^2 = 4a_x^2 + (4/5)b_x^2 consistent. Correct.
 
-**Script Review:** Constructs all quantities from mode data. No tautologies. All pass (exit code 0). Comprehensive coverage including series expansions.
+- **Prefactor Taylor coefficients (Sec. 4):** P0, P2, P4 from series expansion of ratio of polynomials. P4 formula verified by tracing series arithmetic. Correct.
 
-**Issues Found:** None.
+- **Branch coefficients (Sec. 5):** K0=P0, K2=P2+A*P0, K4=P4+A*P2+B*P0, Gamma5=G5*P0 from truncated power series product. Only P0 enters leading odd coefficient. Physically significant and correctly derived.
 
----
+- **Prototype transfer factor (Sec. 6):** N(omega) = (P0_proto - gW omega^2)^2 / (Delta0 - S2 omega^2 + omega^4)^2 matches Stage 021 after substitutions. N0, N2 verified by direct differentiation. N4 verified through SymPy audit.
 
-### Agent: GPT-5 Codex — 2026-04-03
-**Verdict:** PASS
+- **Normalization algebra (Sec. 8):** mhat^2 P0 = 54 G c_s^5 / (5 a^5 c^5). K2 and K4 target values at mhat=1 verified arithmetically: 54/(9×5) = 6/5 and 54×4/(81×5) = 8/15. All correct.
 
-**Notes Derivation Review:**
+**2. Logical flow.** Cleanly builds on Stages 3-4: conservative BdG self-energy, Maxwell/mixed sector, then this stage converts operator moments to response moments, defines internal prefactor, lifts to grouped P2 bundle, isolates normalization product.
 
-- The split-`U` continuation is consistent with Stage 21. Turning on `T_U` gives the expected internal-mode split `K_(U1) = K_U (1 + delta_U)`, and the direct wall softening then yields the shifted anisotropy
-  `delta_split = [delta_0 + eps_eta delta_U/(1 + delta_U)]/(1 - eps_eta)`.
-- The mixed blocking correction is also correct. Recomputing the overlap-weighted inverse kernel `S_U` gives the stated
-  `eps_W_split = eps_W [1 - (2/11) delta_U/(1 + delta_U)]`,
-  so the first axial `U` structure lowers the effective mixed blocking relative to the flat-doublet case.
-- I independently checked the load-bearing directional statement:
-  `D_dir = kappa_0 z_1 - kappa_1 z_0 = - kappa_0 kappa_1 g_W rho_0 delta_U/(1 + delta_U)`,
-  and the difference reduces to zero. That confirms the key theorem that scalar placement survives while source/loading collinearity generically fails once both `delta_U` and `rho_0` are nonzero.
-- The split placement map and product law remain algebraically consistent, so the stage cleanly separates “scalar placement” from “directional geometry.”
+**3. Assumptions.** All explicit: conservative front-end frozen from Stages 3-4, first-order outgoing expansion, lane-by-lane grouped P2, isotropic branch requires channel-independent coefficients.
+
+**4. Completeness.** Does not overclaim. Correctly identifies remaining task (computing mhat^2 P0 on true moving-throat branch).
+
+**5. Notation consistency.** Consistent with Stages 3-4 and Phase 1 scaffold.
+
+**6. Physical interpretation.** Sound. Leading 2.5PN odd coefficient depends only on static prefactor P0 — clean consequence, not additional assumption.
 
 **Script Review:**
 
-- The script faithfully checks the split wall softening, the mixed blocking ratio, the rotated loading vector, the direction-splitting invariant, the split placement formulas, and the small-`delta_U` expansions.
-- The saved output matches the note and I did not find a coding error or a tautological assertion.
+**B.1 Faithful implementation.** All five note sections covered: response moments, prefactor/branch coefficients, grouped P2 inverse map, Stage-021 prototype N0/N2/N4, quadrupole normalization.
+
+**B.2 Correctness of code.** No bugs. `sp.series` with `.removeO()` and `.coeff()` used correctly throughout.
+
+**B.3 Hardcoded values.** Numeric constants (27, 5, 54, 9, 81, 6, 8, 15) are exact rational coefficients verified by the script's own expect_zero checks.
+
+**B.4 Tautological checks.** None found. Series expansions computed from generating functions, not hand-built. Inverse-map round-trip substitutes forward definitions into inverse formulas. All checks have genuine content.
+
+**B.5 Symbol assumptions.** All correct: omega real, D0/D2/D4 nonzero+real, N0/N2/N4 real, Delta0/S2/P0_proto nonzero+real, G/c/c_s/a/mhat positive.
+
+**B.6 Output agreement.** All 18 expect_zero checks pass (exit code 0). Formulas match notes.
+
+**B.7 Coverage.** Comprehensive. Minor gap: Sec. IV.2 dictionary printed but not round-trip tested via expect_zero.
 
 **Issues Found:**
 
-None.
+1. **(MINOR)** Section IV.2 dictionary `{Delta0: OA^2*OW^2 - R^2, ...}` is printed but not substituted back into N0/N2/N4 to confirm consistency with Stage 021 forms. Low risk (definitional mapping) but a round-trip check would strengthen the audit.
+
+### Agent: GPT-5 — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+1. The algebraic bridge is correct end to end. `u2`/`u4` match the normalized-response expansion, the grouped `P2` inverse map is consistent with the `(1,2,2)` weighting, the outgoing prefactor coefficients `P0/P2/P4` are correct, and the Stage-021 prototype transfer series reproduces the stated `N0/N2/N4` coefficients.
+2. The final normalization relation `mhat_0^2 P_0 = 54 G c_s^5 / (5 a^5 c^5)` and its constant-prefactor consequences for `K2` and `K4` are consistent with the stated `Gamma_5 = P_0 a^5/(27 c_s^5)` bridge.
+
+**Script Review:**
+
+1. The script faithfully covers the five note sections and the cached output matches every `expect_zero` check.
+2. The Stage-021 prototype expansion is independently computed from a generating function, not hardcoded, and the `N4` coefficient matches a separate SymPy spot-check.
+
+**Issues Found:**
+
+1. **(MINOR)** The `Omega_A/Omega_W/R/g_A` back-substitution is only printed, not round-tripped through the prototype coefficients. That leaves one small coverage gap in an otherwise clean audit.
 
 **Questions:**
 
 None.
 
 ---
+
+### Agent: GPT-5 — 2026-04-20
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The checkpoint claim is still the exact grouped-`P_2` normalization bridge:
+   operator-to-response moments, exact prefactor coefficients, compact outgoing
+   branch multiplication, the Stage-021 one-port `N0/N2/N4` prototype, and the
+   universal normalization product. I did not find a mathematical mismatch
+   between the note and the current audit outputs.
+2. The earlier “minor gap” was stale. The current SymPy audit already performs
+   the Stage-021 dictionary back-substitution as explicit `expect_zero` checks
+   for `N0`, `N2`, and `N4`.
+
+**Script Review:**
+
+1. The SymPy audit passes and includes the exact round-trip checks the older
+   review note said were missing.
+2. The Mathematica mirror passes and independently replays the same bridge:
+   operator/response moments, prefactor coefficients, grouped inverse map,
+   Stage-021 prototype coefficients, and the normalization product.
+3. I did not find a remaining tautology or coverage defect at the checkpoint
+   level. The remaining open issue is only that this checkpoint still has no
+   dedicated numerical-stress layer, which is not a trust defect for the
+   symbolic bridge itself.
+
+**Issues Found:**
+
+- None. The previous back-substitution caveat is now closed in the live audit
+  surface.
+
+**Questions:**
+
+- None.
+
+### Agent: GPT-5 — 2026-04-21
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The live concern about the outgoing `l=2` coefficients being silently
+   retyped is now closed. The audit re-anchors `A`, `B`, and `G_5` to the exact
+   Stage-021 DtN fingerprint before using them in the Stage-022 normalization
+   product.
+2. That means the final `mhat^2 P_0 Gamma_5 = 2G/(5 c^5)` bridge now depends on
+   the carried Stage-021 fingerprint algebra rather than on a local copy of the
+   `9 / 81 / 27` denominators.
+
+**Script Review:**
+
+1. SymPy now reconstructs the Stage-021 outgoing `l=2` fingerprint inside Section
+   V and explicitly checks `A = a^2/(9 c_s^2)`, `B = 4 a^4/(81 c_s^4)`, and
+   `G_5 = a^5/(27 c_s^5)` before solving the normalization target.
+2. Mathematica now does the same anchor pass before computing the final
+   quadrupole product targets.
+
+**Issues Found:** None.
+
+**Questions:** None.

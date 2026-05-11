@@ -1,0 +1,36 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl
+# Date: 2026-05-11T13:12:20-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 116 — SCALAR D/N RESPONSE KERNEL
+========================================================================================
+u(x) = (gSrc*piM*(-(E^piM*kappa) + E^(piM*x)*Sech[kappa]*(E^piM*kappa*Cosh[kappa - kappa*x] - piM*Sinh[kappa*x])))/(E^(piM*x)*(-1 + E^piM)*kappa*(-kappa^2 + piM^2))
+ODE residual = 0
+PASS: ODE residual
+u(0) = 0
+PASS: u(0)
+u'(1) = 0
+PASS: u'(1)
+mouth derivative kernel = 0
+PASS: mouth derivative kernel
+S(Pi,0) = 1
+static-shell limit = 0
+PASS: static-shell limit
+
+========================================================================================
+STAGE 116 — GENERAL TWO-CHANNEL FIXED-POINT LAW
+========================================================================================
+Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)
+with
+  S(Pi,kappa) =
+  (piM*(-(piM*Sech[kappa]) + E^piM*(piM - kappa*Tanh[kappa])))/((-1 + E^piM)*(-kappa^2 + piM^2))
+
+Stage 133 Mathematica audit passed.
+
+EXIT_CODE: 0

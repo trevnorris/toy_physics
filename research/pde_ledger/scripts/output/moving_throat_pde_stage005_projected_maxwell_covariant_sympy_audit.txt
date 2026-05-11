@@ -1,0 +1,88 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage005_projected_maxwell_covariant_sympy_audit.py
+# Date: 2026-05-11T12:38:32-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1) Projection identities
+========================================================================================
+Projection commutes with t,x,y,z derivatives because W depends only on w:
+   Proj_W[partial_t Q] = partial_t Proj_W[Q]
+   Proj_W[partial_x Q] = partial_x Proj_W[Q]
+   Proj_W[partial_y Q] = partial_y Proj_W[Q]
+   Proj_W[partial_z Q] = partial_z Proj_W[Q]
+
+Projection does NOT commute with the transverse derivative:
+   Eq(Integral(W(w)*Derivative(Q(t, x, y, z, w), w), (w, -oo, oo)), -Integral(Q(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)) + Integral(Q(t, x, y, z, w)*Derivative(W(w), w) + W(w)*Derivative(Q(t, x, y, z, w), w), (w, -oo, oo)))
+
+If boundary terms vanish at |w| -> infinity, this reduces to:
+   Eq(Integral(W(w)*Derivative(Q(t, x, y, z, w), w), (w, -oo, oo)), -Integral(Q(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)))
+
+========================================================================================
+2) Exact projected inhomogeneous Maxwell law for a generic brane component nu
+========================================================================================
+Bulk equation written in generic projected-brane notation:
+   Eq(Gamma_nu(t, x, y, z, w) + Derivative(G0_nu(t, x, y, z, w), t) + Derivative(Gw_nu(t, x, y, z, w), w) + Derivative(Gx_nu(t, x, y, z, w), x) + Derivative(Gy_nu(t, x, y, z, w), y) + Derivative(Gz_nu(t, x, y, z, w), z), mu0*J_nu(t, x, y, z, w))
+
+Project with W(w):
+   Eq(Integral((Gamma_nu(t, x, y, z, w) + Derivative(G0_nu(t, x, y, z, w), t) + Derivative(Gw_nu(t, x, y, z, w), w) + Derivative(Gx_nu(t, x, y, z, w), x) + Derivative(Gy_nu(t, x, y, z, w), y) + Derivative(Gz_nu(t, x, y, z, w), z))*W(w), (w, -oo, oo)), Integral(mu0*J_nu(t, x, y, z, w)*W(w), (w, -oo, oo)))
+
+After commuting brane derivatives and integrating the w-derivative by parts:
+   Eq(Integral(Gamma_nu(t, x, y, z, w)*W(w), (w, -oo, oo)) - Integral(Gw_nu(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)) + Integral(W(w)*Derivative(G0_nu(t, x, y, z, w), t), (w, -oo, oo)) + Integral(W(w)*Derivative(Gx_nu(t, x, y, z, w), x), (w, -oo, oo)) + Integral(W(w)*Derivative(Gy_nu(t, x, y, z, w), y), (w, -oo, oo)) + Integral(W(w)*Derivative(Gz_nu(t, x, y, z, w), z), (w, -oo, oo)) + Integral(Gw_nu(t, x, y, z, w)*Derivative(W(w), w) + W(w)*Derivative(Gw_nu(t, x, y, z, w), w), (w, -oo, oo)), mu0*Integral(J_nu(t, x, y, z, w)*W(w), (w, -oo, oo)))
+
+Under boundary decay / compact support in w:
+   Eq(Integral(Gamma_nu(t, x, y, z, w)*W(w), (w, -oo, oo)) - Integral(Gw_nu(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)) + Integral(W(w)*Derivative(G0_nu(t, x, y, z, w), t), (w, -oo, oo)) + Integral(W(w)*Derivative(Gx_nu(t, x, y, z, w), x), (w, -oo, oo)) + Integral(W(w)*Derivative(Gy_nu(t, x, y, z, w), y), (w, -oo, oo)) + Integral(W(w)*Derivative(Gz_nu(t, x, y, z, w), z), (w, -oo, oo)), mu0*Integral(J_nu(t, x, y, z, w)*W(w), (w, -oo, oo)))
+
+Dictionary back to the localized Maxwell theory:
+  G^M_nu  := Z(w) F^{M nu}
+  Gamma_nu := (1/xi) partial^nu (partial · A)  [or weighted-gauge variant]
+  J_nu     := bulk source current component J^nu
+
+So the exact projected brane equation is:
+  partial_mu Proj_W[ Z F^{mu nu} ]
+  + Boundary[ W Z F^{w nu} ] - Proj_{W'}[ Z F^{w nu} ]
+  + Proj_W[ (1/xi) partial^nu (partial · A) ]
+  = mu0 Proj_W[ J^nu ]
+
+This is the precise place where projection differs from reduction:
+  - the brane sees an explicit transverse leakage term from Z F^{w nu},
+  - the source-coupled flux is Proj_W[ Z F^{mu nu} ], not simply Proj_W[F^{mu nu}],
+  - and the gauge-fixing contribution survives as a projected gauge-driver term.
+
+========================================================================================
+3) Projected charge continuity (open-system charge law)
+========================================================================================
+Bulk current conservation:
+   Eq(Derivative(J0(t, x, y, z, w), t) + Derivative(Jw(t, x, y, z, w), w) + Derivative(Jx(t, x, y, z, w), x) + Derivative(Jy(t, x, y, z, w), y) + Derivative(Jz(t, x, y, z, w), z), 0)
+
+Projected exact continuity law:
+   Eq(-Integral(Jw(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)) + Integral(W(w)*Derivative(J0(t, x, y, z, w), t), (w, -oo, oo)) + Integral(W(w)*Derivative(Jx(t, x, y, z, w), x), (w, -oo, oo)) + Integral(W(w)*Derivative(Jy(t, x, y, z, w), y), (w, -oo, oo)) + Integral(W(w)*Derivative(Jz(t, x, y, z, w), z), (w, -oo, oo)) + Integral(Jw(t, x, y, z, w)*Derivative(W(w), w) + W(w)*Derivative(Jw(t, x, y, z, w), w), (w, -oo, oo)), 0)
+
+If the boundary term vanishes, the projected charge law becomes:
+   Eq(Integral(W(w)*Derivative(J0(t, x, y, z, w), t), (w, -oo, oo)) + Integral(W(w)*Derivative(Jx(t, x, y, z, w), x), (w, -oo, oo)) + Integral(W(w)*Derivative(Jy(t, x, y, z, w), y), (w, -oo, oo)) + Integral(W(w)*Derivative(Jz(t, x, y, z, w), z), (w, -oo, oo)), Integral(Jw(t, x, y, z, w)*Derivative(W(w), w), (w, -oo, oo)))
+
+Interpretation: apparent brane charge nonconservation is generated by transverse current J^w.
+
+========================================================================================
+4) Compact summary
+========================================================================================
+Exact projected inhomogeneous law (boundary-decay form):
+  partial_mu Proj_W[Z F^{mu nu}] - Proj_{W'}[Z F^{w nu}] + Proj_W[Gamma^nu] = mu0 Proj_W[J^nu]
+where Gamma^nu is the gauge term and Proj_{W'}[·] := int W'(w) (·) dw.
+
+Exact projected charge continuity (boundary-decay form):
+  partial_t Proj_W[J^0] + partial_a Proj_W[J^a] = Proj_{W'}[J^w]
+
+So a projected Maxwell theory is naturally an open-system electrodynamics, not a closed copy of 3+1 Maxwell.
+
+========================================================================================
+5) Concrete symbolic audit
+========================================================================================
+Concrete Gaussian-kernel checks: commutation, explicit boundary discharge, nonzero leakage, and projected continuity all pass.
+STATUS: PASS
+
+EXIT_CODE: 0

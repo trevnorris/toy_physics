@@ -1,0 +1,93 @@
+\section{Stage 247: Relaxed stationary barrier front end}
+\label{sec:app-part08:relaxed-stationary-barrier-front-end}
+\label{stage:247}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 247 assembles the first stationary lowered barrier from the one-port short-range baseline and the three relaxed packets.  The one-port static bundle is controlled by
+\begin{equation}
+\label{eq:app-part08-stage247-delta-q-p}
+\Delta=\Omega_U^2\Omega_W^2-R_{\rm mix}^{2},
+\qquad
+Q=G_U^2\Omega_W^2+2G_UG_WR_{\rm mix}+G_W^2\Omega_U^2,
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage247-p-d0}
+P=\Omega_U^2G_W+R_{\rm mix}G_U,
+\qquad
+D_0=K_*-\frac{Q}{\Delta}.
+\end{equation}
+With primitive short-range source amplitudes \(\beta_Q,\beta_U,\beta_W\), the product-family coefficients are
+\begin{equation}
+\label{eq:app-part08-stage247-c6c4c2}
+\mathcal C_6=\chi_{qq}\beta_Q^2,
+\qquad
+\mathcal C_4=\chi_{qU}\beta_Q\beta_U+\chi_{qW}\beta_Q\beta_W,
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage247-c2}
+\mathcal C_2=\chi_{UU}\beta_U^2+2\chi_{UW}\beta_U\beta_W+\chi_{WW}\beta_W^2.
+\end{equation}
+The collected baseline is
+\begin{equation}
+\label{eq:app-part08-stage247-vshort}
+V_{\rm short}^{(1p)}(r)
+=
+\frac1r\left(1+\frac12e^{-2\kappa r}\right)
+-
+\frac{A_6}{r^6}
+-
+A_4\frac{e^{-2\kappa r}}{r^4}
+-
+A_2\frac{e^{-4\kappa r}}{r^2},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part08-stage247-a6a4a2}
+A_6=3\alpha_6+\frac12\mathcal C_6,
+\qquad
+A_4=\mathcal C_4,
+\qquad
+A_2=\alpha_2+\frac12\mathcal C_2.
+\end{equation}
+This baseline inherits the same short-range firewall from Stages 219--243.
+
+The imported relaxed scalars are
+\begin{equation}
+\label{eq:app-part08-stage247-lag-l}
+\mathfrak L(r):=\Lambda(r)\varrho(r),
+\qquad
+S_{\rm leak}=\frac{8\sqrt2\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}\mathfrak L,
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage247-work}
+\mathcal W_w^{\rm sess}
+=
+\frac{512\eta_{\rm leak}^{2}\mu_wq\rho_0}{\pi^4\lambda^2}\mathfrak L^2,
+\qquad
+\Delta E_{UV}=\eta_{UV}\mathcal D_{UV},
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage247-source-lowering}
+\mathcal M_\sigma(r)=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r)\bigr],
+\qquad
+\mathcal R_\infty=\frac{(2/\pi-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
+\end{equation}
+The stationary compiler is \cref{eq:app-part08-intro-veff230}; the lowering identity is \cref{eq:app-part08-main-lowering-identity}.
+
+The Session-I benchmark is useful as an audit point, not as a general theorem.  At the strongest softening point, the Stage 247 decomposition reads
+\begin{equation}
+\label{eq:app-part08-stage247-benchmark-decomposition}
+3.74163698
+-
+0.26971918\times0.31069599
+-
+1.51632107
+-
+0.21064278
+-
+0.18386120
+=
+1.74701126.
+\end{equation}
+This shows that, once the one-port baseline is fixed, the recorded stationary lowering can be decomposed into work, \(U/V\) drain, compensated source response, and one remaining leakage-to-barrier embedding coefficient.  It does not change the short-range kernel class.

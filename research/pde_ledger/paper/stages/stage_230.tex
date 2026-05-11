@@ -1,93 +1,26 @@
-\section{Stage 230: Relaxed stationary barrier front end}
-\label{sec:app-part08:relaxed-stationary-barrier-front-end}
+\section[Stage 230]{Stage 230: Dynamic-window classifier and static-first theorem}
 \label{stage:230}
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage230_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py}.  Mathematica audit: none yet.}
 
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
 
-Stage 230 assembles the first stationary lowered barrier from the one-port short-range baseline and the three relaxed packets.  The one-port static bundle is controlled by
-\begin{equation}
-\label{eq:app-part08-stage230-delta-q-p}
-\Delta=\Omega_U^2\Omega_W^2-R_{\rm mix}^{2},
-\qquad
-Q=G_U^2\Omega_W^2+2G_UG_WR_{\rm mix}+G_W^2\Omega_U^2,
-\end{equation}
-\begin{equation}
-\label{eq:app-part08-stage230-p-d0}
-P=\Omega_U^2G_W+R_{\rm mix}G_U,
-\qquad
-D_0=K_*-\frac{Q}{\Delta}.
-\end{equation}
-With primitive short-range source amplitudes \(\beta_Q,\beta_U,\beta_W\), the product-family coefficients are
-\begin{equation}
-\label{eq:app-part08-stage230-c6c4c2}
-\mathcal C_6=\chi_{qq}\beta_Q^2,
-\qquad
-\mathcal C_4=\chi_{qU}\beta_Q\beta_U+\chi_{qW}\beta_Q\beta_W,
-\end{equation}
-\begin{equation}
-\label{eq:app-part08-stage230-c2}
-\mathcal C_2=\chi_{UU}\beta_U^2+2\chi_{UW}\beta_U\beta_W+\chi_{WW}\beta_W^2.
-\end{equation}
-The collected baseline is
-\begin{equation}
-\label{eq:app-part08-stage230-vshort}
-V_{\rm short}^{(1p)}(r)
-=
-\frac1r\left(1+\frac12e^{-2\kappa r}\right)
--
-\frac{A_6}{r^6}
--
-A_4\frac{e^{-2\kappa r}}{r^4}
--
-A_2\frac{e^{-4\kappa r}}{r^2},
-\end{equation}
-where
-\begin{equation}
-\label{eq:app-part08-stage230-a6a4a2}
-A_6=3\alpha_6+\frac12\mathcal C_6,
-\qquad
-A_4=\mathcal C_4,
-\qquad
-A_2=\alpha_2+\frac12\mathcal C_2.
-\end{equation}
-This baseline inherits the same short-range firewall from Stages 202--226.
+\stagefield{Purpose}{Stage~230 translates the selected-branch classifier into a dynamic-window decision rule.}
 
-The imported relaxed scalars are
-\begin{equation}
-\label{eq:app-part08-stage230-lag-l}
-\mathfrak L(r):=\Lambda(r)\varrho(r),
-\qquad
-S_{\rm leak}=\frac{8\sqrt2\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}\mathfrak L,
-\end{equation}
-\begin{equation}
-\label{eq:app-part08-stage230-work}
-\mathcal W_w^{\rm sess}
-=
-\frac{512\eta_{\rm leak}^{2}\mu_wq\rho_0}{\pi^4\lambda^2}\mathfrak L^2,
-\qquad
-\Delta E_{UV}=\eta_{UV}\mathcal D_{UV},
-\end{equation}
-\begin{equation}
-\label{eq:app-part08-stage230-source-lowering}
-\mathcal M_\sigma(r)=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r)\bigr],
-\qquad
-\mathcal R_\infty=\frac{(2/\pi-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2}.
-\end{equation}
-The stationary compiler is \cref{eq:app-part08-intro-veff230}; the lowering identity is \cref{eq:app-part08-main-lowering-identity}.
+\stagefield{Inputs}{Imports Stage~229 classifier data, the rigid-split shares, and the survival-window inequality from the resonance theorem.}
 
-The Session-I benchmark is useful as an audit point, not as a general theorem.  At the strongest softening point, the Stage-230 decomposition reads
-\begin{equation}
-\label{eq:app-part08-stage230-benchmark-decomposition}
-3.74163698
--
-0.26971918\times0.31069599
--
-1.51632107
--
-0.21064278
--
-0.18386120
-=
-1.74701126.
-\end{equation}
-This shows that, once the one-port baseline is fixed, the recorded stationary lowering can be decomposed into work, \(U/V\) drain, compensated source response, and one remaining leakage-to-barrier embedding coefficient.  It does not change the short-range kernel class.
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The derivation computes the dynamic sign of the selected numerator/denominator split, relates the classifier region to linewidth demand, and compares this with the static prefactor ceiling.}
+
+\stagefield{Output}{Static-first theorem: the static $\Xi_1$ budget is the first kill condition; the dynamic corridor can be checked only after the static transported ceiling is satisfied.}
+
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
+\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
+\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
+\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.4} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

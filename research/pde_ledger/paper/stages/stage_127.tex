@@ -1,28 +1,28 @@
-\section[Stage 127]{Stage 127: Unique Regular Canonical Mouth Branch}
+\section[Stage 127]{Stage 127: Geometric Mouth-Penetration Families}
 \label{stage:127}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusNumerical{}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~127 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~127 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage127_unique_regular_canonical_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage127_unique_regular_canonical_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage127_unique_regular_canonical_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage127_unique_regular_canonical_branch_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage127_penetration_families_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage127_penetration_families_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
 
 \begin{quote}
-Lower compensated branch is the unique finite-bias, finite-traction branch in the explicit positive exponential closure.
+Slab and truncated-exponential families reach the lower branch at moderate penetration depths.
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
-\item Check the self-matched susceptibility closure before using the one-scalar branch law.
-\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
+\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Stages 129--136 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
 

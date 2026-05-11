@@ -1,0 +1,52 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage041_rank2_support_mathematica_audit.wl
+# Date: 2026-05-11T12:49:12-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 024 — RANK-2 SUPPORT COMPLETION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Exact rank-2 determinant and support-loading theorem
+----------------------------------------------------------------------------------------
+det(M - (1-xi)I) = -(delta*m) - delta*n + m*n*q^2 - 2*m*n*q*r + m*n*r^2 + delta*xi - m*xi - n*xi - m*q^2*xi - n*r^2*xi + xi^2
+determinant decomposition = 0
+PASS: determinant decomposition
+n_req = (delta*(-m + xi) + xi*(-(m*(1 + q^2)) + xi))/(delta - m*(q - r)^2 + xi + r^2*xi)
+n_req - expected = 0
+PASS: n_req - expected
+
+----------------------------------------------------------------------------------------
+2. Exact monotonicity with respect to mixed baseline loading
+----------------------------------------------------------------------------------------
+d n_req / d m = -((delta + xi + q*r*xi)^2/(delta - m*(q - r)^2 + xi + r^2*xi)^2)
+dn/dm - expected = 0
+PASS: dn/dm - expected
+
+----------------------------------------------------------------------------------------
+3. Tracking theorem: support follows the mixed direction
+----------------------------------------------------------------------------------------
+n_req(r=q) = -m + (xi*(delta + xi))/(delta + xi + q^2*xi)
+tracking collapse = 0
+PASS: tracking collapse
+
+----------------------------------------------------------------------------------------
+4. Source-tied theorem: support remains aligned with the original source vector
+----------------------------------------------------------------------------------------
+n_req^(src) = (xi*(delta + xi) - m*(delta + xi + (2*rU^2*xi)/9))/(delta - (2*m*(-1 + rU)^2)/9 + (11*xi)/9)
+source-tied formula = 0
+PASS: source-tied formula
+mixed-loading pole threshold = (9*delta + 11*xi)/(2*(-1 + rU)^2)
+mixed-loading ceiling from n_req >= 0 = (xi*(delta + xi))/(delta + xi + (2*rU^2*xi)/9)
+d n_req^(src) / d m = -((9*delta + (9 + 2*rU)*xi)^2/(9*delta - 2*m*(-1 + rU)^2 + 11*xi)^2)
+source-tied dn/dm = 0
+PASS: source-tied dn/dm
+
+Stage 041 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,167 @@
+{
+  "schema": "moving_throat_numerical_stage146_148_v1",
+  "tolerances": {
+    "value_tol": 1e-10,
+    "integral_tol": 1e-9,
+    "compensation_residual_tol": 1e-20
+  },
+  "constants": {
+    "Pi_star_expected": 1.50882951349316,
+    "g_star_expected": 0.758035078944663,
+    "S_star_expected": 0.658075937605429,
+    "gprime_star_expected": 0.0714453558083195,
+    "Sprime_star_expected": 0.0483709542125041,
+    "T_hat_star_expected": 0.901484054174205,
+    "A_T_expected": -4.27263956256927,
+    "B_T_expected": 0.134875005736706,
+    "lambda_pi_zero_expected": 0.816081594488460,
+    "lambda_T_zero_expected": 0.813099276577333
+  },
+  "cases": [
+    {
+      "name": "uniform_broadening",
+      "kind": "perturbative",
+      "lambda": 0.0,
+      "assumptions": [
+        "exact convex family (1-eps) Sigma_Pi + eps varsigma_lambda",
+        "varsigma_lambda taken from the Stage 148 uniform/derivative interpolation"
+      ],
+      "samples": [
+        {
+          "epsilon": 0.01,
+          "deltaPi_rel_envelope": 0.02,
+          "deltaS_rel_envelope": 0.02,
+          "deltaT_rel_envelope": 0.02
+        },
+        {
+          "epsilon": 0.05,
+          "deltaPi_rel_envelope": 0.07,
+          "deltaS_rel_envelope": 0.07,
+          "deltaT_rel_envelope": 0.07
+        },
+        {
+          "epsilon": 0.1,
+          "deltaPi_rel_envelope": 0.14,
+          "deltaS_rel_envelope": 0.14,
+          "deltaT_rel_envelope": 0.14
+        }
+      ]
+    },
+    {
+      "name": "midpoint_interpolation",
+      "kind": "perturbative",
+      "lambda": 0.5,
+      "assumptions": [
+        "exact convex family (1-eps) Sigma_Pi + eps varsigma_lambda",
+        "lambda = 1/2 midpoint between the broad and derivative-positive families"
+      ],
+      "samples": [
+        {
+          "epsilon": 0.01,
+          "deltaPi_rel_envelope": 0.02,
+          "deltaS_rel_envelope": 0.02,
+          "deltaT_rel_envelope": 0.02
+        },
+        {
+          "epsilon": 0.05,
+          "deltaPi_rel_envelope": 0.07,
+          "deltaS_rel_envelope": 0.07,
+          "deltaT_rel_envelope": 0.07
+        },
+        {
+          "epsilon": 0.1,
+          "deltaPi_rel_envelope": 0.14,
+          "deltaS_rel_envelope": 0.14,
+          "deltaT_rel_envelope": 0.14
+        }
+      ]
+    },
+    {
+      "name": "derivative_sharpening",
+      "kind": "perturbative",
+      "lambda": 1.0,
+      "assumptions": [
+        "exact convex family (1-eps) Sigma_Pi + eps varsigma_lambda",
+        "lambda = 1 derivative-profile endpoint of the positive interpolation"
+      ],
+      "samples": [
+        {
+          "epsilon": 0.01,
+          "deltaPi_rel_envelope": 0.02,
+          "deltaS_rel_envelope": 0.02,
+          "deltaT_rel_envelope": 0.02
+        },
+        {
+          "epsilon": 0.05,
+          "deltaPi_rel_envelope": 0.07,
+          "deltaS_rel_envelope": 0.07,
+          "deltaT_rel_envelope": 0.07
+        },
+        {
+          "epsilon": 0.1,
+          "deltaPi_rel_envelope": 0.14,
+          "deltaS_rel_envelope": 0.14,
+          "deltaT_rel_envelope": 0.14
+        }
+      ]
+    },
+    {
+      "name": "bias_neutral_direction",
+      "kind": "near-neutral",
+      "lambda": 0.81608159448846,
+      "assumptions": [
+        "lambda chosen so the Stage 148 first-order bias shift vanishes",
+        "exact compensation solve should keep Pi at Pi_* to numerical precision"
+      ],
+      "samples": [
+        {
+          "epsilon": 0.01,
+          "deltaPi_abs_tol": 1e-15,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_rel_envelope": 0.001
+        },
+        {
+          "epsilon": 0.05,
+          "deltaPi_abs_tol": 1e-15,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_rel_envelope": 0.001
+        },
+        {
+          "epsilon": 0.1,
+          "deltaPi_abs_tol": 1e-15,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_rel_envelope": 0.001
+        }
+      ]
+    },
+    {
+      "name": "traction_neutral_direction",
+      "kind": "near-neutral",
+      "lambda": 0.813099276577333,
+      "assumptions": [
+        "lambda chosen so the Stage 148 first-order traction shift vanishes",
+        "exact traction shift should remain quadratic-small in eps"
+      ],
+      "samples": [
+        {
+          "epsilon": 0.01,
+          "deltaPi_rel_envelope": 0.02,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_quadratic_coeff_max": 0.0025
+        },
+        {
+          "epsilon": 0.05,
+          "deltaPi_rel_envelope": 0.07,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_quadratic_coeff_max": 0.0025
+        },
+        {
+          "epsilon": 0.1,
+          "deltaPi_rel_envelope": 0.14,
+          "deltaS_rel_envelope": 0.001,
+          "deltaT_quadratic_coeff_max": 0.0025
+        }
+      ]
+    }
+  ]
+}

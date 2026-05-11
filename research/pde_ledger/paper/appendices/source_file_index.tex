@@ -85,7 +85,7 @@ Class & Role & Typical use & Status ceiling \\
 Class & Role & Typical use & Status ceiling \\
 \midrule
 \endhead
-Primary staged archive & Canonical derivation provenance for the 236 moving-throat stages. & Stage titles, assumptions, staged outputs, formula provenance, local script references, and chronological dependency. & Local stage status only; mixed across the archive. \\
+Primary staged archive & Canonical derivation provenance for the 253 moving-throat stages. & Stage titles, assumptions, staged outputs, formula provenance, local script references, and chronological dependency. & Local stage status only; mixed across the archive. \\
 \addlinespace
 Compact theorem master & Current theorem-structure and bottleneck summary. & Claim-status firewall, endgame packet language, current strict/relaxed branch split, and safe carry-forward summary. & Same as the local theorem block it summarizes. \\
 \addlinespace
@@ -118,7 +118,7 @@ File & Archive role & Imported content & Safe status ceiling \\
 File & Archive role & Imported content & Safe status ceiling \\
 \midrule
 \endhead
-\SrcPath{paper/stages/stage_NNN.tex} & Primary full derivation archive for Stages 001--236. & Stage-by-stage derivation text, staged theorem moves, formula provenance, executable-audit routing, local assumptions, and chronological dependencies. & Local stage status; mixed. \\
+\SrcPath{paper/stages/stage_NNN.tex} & Primary full derivation archive for Stages 001--253. & Stage-by-stage derivation text, staged theorem moves, formula provenance, executable-audit routing, local assumptions, and chronological dependencies. & Local stage status; mixed. \\
 \addlinespace
 \SrcPath{paper/parts/*.tex} plus frontmatter & Compact theorem and status master through the strict and relaxed endgame. & Reading rules, claim-status tags, notation firewall, current theorem-status summary, final packet language, same-charge verdict, rigid-mouth chart, selected twin-support slice, relaxed branch, barrier/export/material packets. & Mixed; status summary only. \\
 \addlinespace
@@ -160,7 +160,7 @@ Parent-action source summaries & Parent action summary. & Fully action-based \((
 \addlinespace
 Localized electromagnetic source summaries & Localized electromagnetic sector summary. & Inhomogeneous Maxwell equation from localized \((4+1)\)-dimensional action, zero-mode Maxwell reduction, thickness-controlled brane charge strength, KK corrections, retarded propagation, and source consistency. & \StatusExact{} / \StatusReduced{}. \\
 \addlinespace
-\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_001_projected_maxwell_readme_sympy_audit.py}--\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_017_parent_throat_action_weak_axisym_packet_sympy_audit.py} & Projected Maxwell and parent-action derivation bundle copied into the ledger script order. & Projection-first localized Maxwell law, measured-field/source-flux split, matched projection/reduction channel, near-mouth projected bundle bridge, mouth-Taylor gate sieve, parent throat action promotion, and weak-axisymmetric parent packet. & \StatusExact{} for projection identities; \StatusReduced{} / \StatusExactClosure{} for matched and bundle closures. \\
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py}--\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py} & Projected Maxwell and parent-action derivation bundle copied into the ledger script order. & Projection-first localized Maxwell law, measured-field/source-flux split, matched projection/reduction channel, near-mouth projected bundle bridge, mouth-Taylor gate sieve, parent throat action promotion, and weak-axisymmetric parent packet. & \StatusExact{} for projection identities; \StatusReduced{} / \StatusExactClosure{} for matched and bundle closures. \\
 \addlinespace
 Plasma and open-system source summaries & Plasma and open-system projection summary. & Multi-species charged medium, projection kernel \(W(w)\), leakage terms, mixed fields \(E_w\) and \(C_a\), finite-localization transverse modes, and conservative brane-bulk exchange interpretation. & \StatusExact{} for balance identities; \StatusReduced{} for brane limits. \\
 \addlinespace
@@ -173,18 +173,18 @@ The parent-action files establish the exact field-theory arena and the controlle
 
 \paragraph{Projected-Maxwell scope rule.}
 Only the root ledger audits
-\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_001_*}
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_*}
 through
-\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_017_*}
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage020_*}
 are file-for-file imported projected-EM derivation sources for the present
-companion; \SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_018_reduced_one_port_normal_form_sympy_audit.py}
+companion; \SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py}
 is the retained reduced one-port normal-form adapter.  The
 \SrcPath{notes/em_projected/step_19*} branch-export packet and the later
 \SrcPath{notes/em_projected/step_20*} and following files are computational or
 branch-diagnostic material: branch-family scans, frontiers, runtime monitors,
 CFD adapters, fail-fast classifiers, and falsification tools.  They may be
 useful private diagnostics, but they are deliberately excluded from the paper
-derivation, result anchors, and Stage~004 verification claims.
+derivation, result anchors, and Stages~004--021 verification claims.
 
 \section{Conservative post-Newtonian and radiative bridge sources}
 \label{sec:pn-source-files}
@@ -287,21 +287,21 @@ File & Stages & Role in the companion \\
 File & Stages & Role in the companion \\
 \midrule
 \endhead
-\SrcPath{parts/part01_parent_geometry.tex} & 001--006 & Parent import, geometry lift, breathing reduction, BdG coupling, Maxwell/mixed bridge, and full grouped-bundle front end. \\
+\SrcPath{parts/part01_parent_geometry.tex} & 001--023 & Parent import, geometry lift, breathing reduction, BdG coupling, Maxwell/mixed bridge, and full grouped-bundle front end. \\
 \addlinespace
-\SrcPath{parts/part02_conservative_response.tex} & 007--019 & Overlap/isotropy, weak-axisymmetric signature, minimal isotropic closure, finite-throat selected-mode normalization, and support-feasibility frontier. \\
+\SrcPath{parts/part02_conservative_response.tex} & 024--036 & Overlap/isotropy, weak-axisymmetric signature, minimal isotropic closure, finite-throat selected-mode normalization, and support-feasibility frontier. \\
 \addlinespace
-\SrcPath{parts/part03_support_family1.tex} & 020--073 & Continuum placement, split-\(U\) support, rank-2 completion, support compensation, parent thresholds, Family-1 branch, and reduced verdict. \\
+\SrcPath{parts/part03_support_family1.tex} & 037--090 & Continuum placement, split-\(U\) support, rank-2 completion, support compensation, parent thresholds, Family-1 branch, and reduced verdict. \\
 \addlinespace
-\SrcPath{parts/part04_geometry_retarded_mouth.tex} & 074--146 & Geometry-lane firewall, retarded normalization collapse, outlet/core compensation, mouth boundary layer, co-evolving core--mouth fixed point, and off-family normal coordinate. \\
+\SrcPath{parts/part04_geometry_retarded_mouth.tex} & 091--163 & Geometry-lane firewall, retarded normalization collapse, outlet/core compensation, mouth boundary layer, co-evolving core--mouth fixed point, and off-family normal coordinate. \\
 \addlinespace
-\SrcPath{parts/part05_weak_axisymmetric_orbit.tex} & 147--183 & Weak-axisymmetric transport, \(\Xi_1\), monomial quotient coordinates, similarity orbit, Packet-A closure, and four-scalar verdict packet. \\
+\SrcPath{parts/part05_weak_axisymmetric_orbit.tex} & 164--200 & Weak-axisymmetric transport, \(\Xi_1\), monomial quotient coordinates, similarity orbit, Packet-A closure, and four-scalar verdict packet. \\
 \addlinespace
-\SrcPath{parts/part06_realization_compiler.tex} & 184--201 & Realization compiler, target graph, Hessian/log-ray search, pairwise/simplex closure, and finite mixed-ray sieve. \\
+\SrcPath{parts/part06_realization_compiler.tex} & 201--218 & Realization compiler, target graph, Hessian/log-ray search, pairwise/simplex closure, and finite mixed-ray sieve. \\
 \addlinespace
-\SrcPath{parts/part07_same_charge_rigid_mouth.tex} & 202--225 & Same-charge one-port audit, dynamic/resonant corridor, rigid-mouth \((U,V)\) chart, orbit lock, selected twin-support placement, and actual-branch packet. \\
+\SrcPath{parts/part07_same_charge_rigid_mouth.tex} & 219--242 & Same-charge one-port audit, dynamic/resonant corridor, rigid-mouth \((U,V)\) chart, orbit lock, selected twin-support placement, and actual-branch packet. \\
 \addlinespace
-\SrcPath{parts/part08_relaxed_branch.tex} & 226--236 & Relaxed open-system branch, leakage/work and non-rigid packets, compensated source compiler, lowered barrier, event chain, export kernel, heat partition, and material thresholds. \\
+\SrcPath{parts/part08_relaxed_branch.tex} & 243--253 & Relaxed open-system branch, leakage/work and non-rigid packets, compensated source compiler, lowered barrier, event chain, export kernel, heat partition, and material thresholds. \\
 \bottomrule
 \end{longtable}
 
@@ -318,23 +318,23 @@ File & Role in the companion \\
 File & Role in the companion \\
 \midrule
 \endhead
-\SrcPath{appendices/stage_ledger.tex} & Consolidated stage-range map, complete Stage 001--236 ledger, source-file provenance table, and citation/audit guardrails. \\
+\SrcPath{appendices/stage_ledger.tex} & Consolidated stage-range map, complete Stage 001--253 ledger, source-file provenance table, and citation/audit guardrails. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part01.tex} & Detailed verification appendix for Stages 001--006. \\
+\SrcPath{appendices/stage_appendix_part01.tex} & Detailed verification appendix for Stages 001--023. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part02.tex} & Detailed verification appendix for Stages 007--019. \\
+\SrcPath{appendices/stage_appendix_part02.tex} & Detailed verification appendix for Stages 024--036. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part03.tex} & Detailed verification appendix for Stages 020--073. \\
+\SrcPath{appendices/stage_appendix_part03.tex} & Detailed verification appendix for Stages 037--090. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part04.tex} & Detailed verification appendix for Stages 074--146. \\
+\SrcPath{appendices/stage_appendix_part04.tex} & Detailed verification appendix for Stages 091--163. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part05.tex} & Detailed verification appendix for Stages 147--183. \\
+\SrcPath{appendices/stage_appendix_part05.tex} & Detailed verification appendix for Stages 164--200. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part06.tex} & Detailed verification appendix for Stages 184--201. \\
+\SrcPath{appendices/stage_appendix_part06.tex} & Detailed verification appendix for Stages 201--218. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part07.tex} & Detailed verification appendix for Stages 202--225. \\
+\SrcPath{appendices/stage_appendix_part07.tex} & Detailed verification appendix for Stages 219--242. \\
 \addlinespace
-\SrcPath{appendices/stage_appendix_part08.tex} & Detailed verification appendix for Stages 226--236. \\
+\SrcPath{appendices/stage_appendix_part08.tex} & Detailed verification appendix for Stages 243--253. \\
 \addlinespace
 \SrcPath{appendices/reproducibility_map.tex} & Audit classes, artifact-card template, stage-to-script map, symbolic/numerical/search discipline, branch-solver requirements, and safe citation language. \\
 \addlinespace
@@ -359,21 +359,21 @@ Stages & Companion location & Primary source family & Background source family \
 Stages & Companion location & Primary source family & Background source family \\
 \midrule
 \endhead
-001--006 & Part I and Appendix Part I & Canonical stage files; theorem/status frontmatter; framework paper. & Parent action, Maxwell, plasma, 2PN/3PN/2.5PN grouped-response sources. \\
+001--023 & Part I and Appendix Part I & Canonical stage files; theorem/status frontmatter; framework paper. & Parent action, Maxwell, plasma, 2PN/3PN/2.5PN grouped-response sources. \\
 \addlinespace
-007--019 & Part II and Appendix Part II & Canonical stage files; overlap/isotropy synthesis; weak-axisymmetric continuation material. & 2.5PN grouped-STF bridge, 3PN grouped \(P_2\) source language, 5PN weak-axisymmetric notes. \\
+024--036 & Part II and Appendix Part II & Canonical stage files; overlap/isotropy synthesis; weak-axisymmetric continuation material. & 2.5PN grouped-STF bridge, 3PN grouped \(P_2\) source language, 5PN weak-axisymmetric notes. \\
 \addlinespace
-020--073 & Part III and Appendix Part III & Canonical stage files; continuum placement and support-compensation synthesis. & Finite-throat D/N support material, 5PN placement and support-threshold notes. \\
+037--090 & Part III and Appendix Part III & Canonical stage files; continuum placement and support-compensation synthesis. & Finite-throat D/N support material, 5PN placement and support-threshold notes. \\
 \addlinespace
-074--146 & Part IV and Appendix Part IV & Canonical stage files;\newline geometry, retarded, outlet, and mouth-core synthesis. & 2.5PN outgoing normalization audit, 4PN tail-interface summary, mixed-sector parent ontology. \\
+091--163 & Part IV and Appendix Part IV & Canonical stage files;\newline geometry, retarded, outlet, and mouth-core synthesis. & 2.5PN outgoing normalization audit, 4PN tail-interface summary, mixed-sector parent ontology. \\
 \addlinespace
-147--183 & Part V and Appendix Part V & Canonical stage files; weak-axisymmetric orbit and quotient continuation material. & 5PN monomial/orbit notes and anomaly quotient bridge material where used only for interpretation. \\
+164--200 & Part V and Appendix Part V & Canonical stage files; weak-axisymmetric orbit and quotient continuation material. & 5PN monomial/orbit notes and anomaly quotient bridge material where used only for interpretation. \\
 \addlinespace
-184--201 & Part VI and Appendix Part VI & Canonical stage files; realization-compiler and mixed-ray search records. & Reproducibility-map search discipline and theorem-block endgame summary. \\
+201--218 & Part VI and Appendix Part VI & Canonical stage files; realization-compiler and mixed-ray search records. & Reproducibility-map search discipline and theorem-block endgame summary. \\
 \addlinespace
-202--225 & Part VII and Appendix Part VII & Canonical stage files; one-port same-charge and rigid-mouth actual-branch records. & Theorem/status summary, mixed-sector ontology, selected support placement notes. \\
+219--242 & Part VII and Appendix Part VII & Canonical stage files; one-port same-charge and rigid-mouth actual-branch records. & Theorem/status summary, mixed-sector ontology, selected support placement notes. \\
 \addlinespace
-226--236 & Part VIII and Appendix Part VIII & Canonical stage files; relaxed/open-system extension as integrated in the theorem/status layer. & Plasma/open-system projection sources, leakage/work language, export/kernel and materials companion notes. \\
+243--253 & Part VIII and Appendix Part VIII & Canonical stage files; relaxed/open-system extension as integrated in the theorem/status layer. & Plasma/open-system projection sources, leakage/work language, export/kernel and materials companion notes. \\
 \bottomrule
 \end{longtable}
 
@@ -436,15 +436,15 @@ Script family or basename pattern & Stage region & Verification role \\
 \addlinespace
 \SrcFile{moving_throat_pde_stage003_bdg_sympy_audit.py} & 003 & BdG--wall Schur complement, low-frequency expansion, pole shifts, grouped isotropy diagnostics, and selection rules. \\
 \addlinespace
-\SrcFile{2_5pn_master_sympy_audit.py} and \SrcFile{2_5pn_master_session_sympy_audit.py} & 2.5PN background / Stages 004--006 & Burke--Thorne/Iyer--Will bridge, odd-channel hierarchy, grouped-STF formulas, and outgoing-quadrupole normalization relations. \\
+\SrcFile{2_5pn_master_sympy_audit.py} and \SrcFile{2_5pn_master_session_sympy_audit.py} & 2.5PN background / Stages 004--023 & Burke--Thorne/Iyer--Will bridge, odd-channel hierarchy, grouped-STF formulas, and outgoing-quadrupole normalization relations. \\
 \addlinespace
-\SrcFile{5pn_stage*_*.py} & 007--183 background and continuation & Explicit finite-throat overlap models, weak-axisymmetric transport, primitive deformation, monomial quotient maps, target surfaces, support-compensation thresholds, and even-gate intersections. \\
+\SrcFile{5pn_stage*_*.py} & 024--200 background and continuation & Explicit finite-throat overlap models, weak-axisymmetric transport, primitive deformation, monomial quotient maps, target surfaces, support-compensation thresholds, and even-gate intersections. \\
 \addlinespace
-Realization-compiler search scripts & 184--201 & Graph-error realization form, log-ray sweep, Hessian/curvature ranking, pairwise/simplex search, and finite support-cardinality sieve. \\
+Realization-compiler search scripts & 201--218 & Graph-error realization form, log-ray sweep, Hessian/curvature ranking, pairwise/simplex search, and finite support-cardinality sieve. \\
 \addlinespace
-Rigid-mouth and selected-support scripts & 202--225 & Actual-branch packet evaluation, orbit-lock normal form, selected twin-support placement, support-versus-orbit split, and final coherent branch-evaluation packet. \\
+Rigid-mouth and selected-support scripts & 219--242 & Actual-branch packet evaluation, orbit-lock normal form, selected twin-support placement, support-versus-orbit split, and final coherent branch-evaluation packet. \\
 \addlinespace
-Relaxed-branch and event-chain scripts & 226--236 & Leakage/work compiler, non-rigid mouth packet, compensated source moments, barrier lowering, turning points, WKB/event-chain quantities, export kernel, heat partition, and material-threshold screens. \\
+Relaxed-branch and event-chain scripts & 243--253 & Leakage/work compiler, non-rigid mouth packet, compensated source moments, barrier lowering, turning points, WKB/event-chain quantities, export kernel, heat partition, and material-threshold screens. \\
 \bottomrule
 \end{longtable}
 
@@ -506,7 +506,7 @@ Safe language & Unsafe language \\
 Safe language & Unsafe language \\
 \midrule
 \endhead
-``The full staged derivation of the grouped-response compiler is given in the derivation companion, MTDC-T5 and Appendix Stages 001--007.'' & ``The raw moving-throat notes prove the grouped response.'' \\
+``The full staged derivation of the grouped-response compiler is given in the derivation companion, MTDC-T5 and Appendix Stages 001--024.'' & ``The raw moving-throat notes prove the grouped response.'' \\
 \addlinespace
 ``Within the declared reduced bundle, the outgoing prefactor is \(P_0=N_0/D_0\); actual branch realization of the target value is a separate condition.'' & ``The moving-throat PDE automatically has the GR quadrupole normalization.'' \\
 \addlinespace

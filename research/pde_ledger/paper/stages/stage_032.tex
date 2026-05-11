@@ -1,43 +1,75 @@
-\section[Stage 032]{Stage 032: Explicit D/N Overlap Extraction of the Physical Support Ratio}
+\section[Stage 032]{Stage 032: Source Map from Finite-Throat Mode Integrals}
 \label{stage:032}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the D/N support tower overlap calculation.}
-\stagefield{Purpose}{Stage~032 makes the coherent support ratio microscopic by evaluating the D/N support tower overlaps.}
-\stagefield{Inputs}{D/N support modes \(\chi_n(s)=\sqrt{2/L}\sin[(n+1/2)\pi s/L]\) and support-source overlaps \(I_n\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the natural D/N source-map closure.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage032_dn_overlap_zeta_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage032_dn_overlap_zeta_mathematica_audit.wl}.}
+\stagefield{Purpose}{Stage~032 removes the abstract selected source-map factor on the natural D/N branch.  The same finite-throat D/N load that drives the selected wall profile also couples the orbital/worldtube source to the selected mode, giving \(\widehat m_-^2=s_-/\kappa_0^2\).}
+
+\stagefield{Inputs}{The inputs are the selected eigenvector \(e_-\), the overlap vector \(v\), and a source coupled through the D/N load profile.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage032_source_map_from_mode_integrals_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage032_source_map_from_mode_integrals_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The physical coherent support ratio is
+\paragraph{1. Natural D/N source coupling.}
+Use
 \begin{equation}
-\label{eq:app-stage032-zeta-phys}
-\boxed{
-\zeta_n^{\rm phys}
-=\frac{K_W^{\rm eff}}{K_{\phi,n}^{\rm eff}}
-\left(\frac{I_n}{I_0}\right)^2}.
+\label{eq:app-stage032-source-L}
+L_{\rm src}=g_QQ_{\rm STF}\int_0^L\eta(s)f_0(s)\,ds.
 \end{equation}
-For a uniform local source density,
+For \(\eta=q_0\nu_0+q_1\nu_1\), this gives source vector proportional to
 \begin{equation}
-\label{eq:app-stage032-In-ratio}
-\boxed{
-\frac{I_n}{I_0}=\frac{1}{2n+1}}.
+v=(\kappa_0,\kappa_1)^T.
 \end{equation}
-For a same-operator twin family,
+Projection on the selected eigenvector gives
 \begin{equation}
-\label{eq:app-stage032-zeta-twin}
+\label{eq:app-stage032-Jminus}
+J_-=g_QQ_{\rm STF}(v\cdot e_-).
+\end{equation}
+At zero loading, the selected mode is the constant branch and
+\begin{equation}
+J_-(0)=g_QQ_{\rm STF}\kappa_0.
+\end{equation}
+Thus the selected source-map factor is
+\begin{equation}
+\label{eq:app-stage032-mhat-minus}
 \boxed{
-\zeta_n^{\rm twin}=\frac{1}{(2n+1)^2[1+xn(n+1)]},
+\widehat m_-=\frac{v\cdot e_-}{\kappa_0},
 \qquad
-x=\frac{\pi^2T_X}{L^2K_W^{\rm eff}}}.
+\widehat m_-^{\,2}=\frac{s_-}{\kappa_0^2}}.
 \end{equation}
-The lowest twin value is
+Since \(s_-\) increases from \(\kappa_0^2\) toward \(\sigma=\kappa_0^2+\kappa_1^2\),
 \begin{equation}
-\label{eq:app-stage032-lowest-twin}
+\label{eq:app-stage032-mhat-bound}
 \boxed{
-\zeta_0^{\rm twin}=1}.
+1\leq\widehat m_-^{\,2}<\frac{\sigma}{\kappa_0^2}=\frac{11}{9}}.
+\end{equation}
+The natural source-map factor is modest and cannot absorb arbitrary normalization error.
+
+\paragraph{2. Source-map-corrected selected product.}
+Combining \(P_{0,-}=\beta_0s_-/\lambda_-\) with \eqref{eq:app-stage032-mhat-minus} gives
+\begin{equation}
+\label{eq:app-stage032-Nminus}
+\boxed{
+N_-(\alpha_0):=\widehat m_-^{\,2}P_{0,-}
+=\frac{\beta_0s_-^2}{\kappa_0^2\lambda_-}}.
+\end{equation}
+The selected target is
+\begin{equation}
+\label{eq:app-stage032-Nminus-target}
+\boxed{
+N_-(\alpha_0)=N_Q^{\rm target}}.
 \end{equation}
 
-\stagefield{Output}{Microscopic D/N support ratios \eqref{eq:app-stage032-zeta-phys}--\eqref{eq:app-stage032-zeta-twin}.}
-\stagefield{Downstream use}{Stage~033 converts these ratios into explicit selection rules.}
+\stagefield{Output}{Stage~032 outputs the source-map factor \eqref{eq:app-stage032-mhat-minus}, the bound \eqref{eq:app-stage032-mhat-bound}, and the invariant selected product \eqref{eq:app-stage032-Nminus}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The source vector is proportional to the same overlap vector \(v\) because the source uses the same D/N load profile.
+\item At zero loading the normalization denominator is \(\kappa_0\), giving \(\widehat m_-=1\) at onset.
+\item The upper bound \(11/9\) follows from \(\sigma/\kappa_0^2=(\kappa_0^2+\kappa_1^2)/\kappa_0^2=1+2/9\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~033 uses \(N_-\) to write the microscopic target.  Stage~034 rewrites \(N_-\) in softening-depth form.  The source-map result is the point where the selected branch stops hiding behind an unspecified \(\widehat m_-\).}
+
+\clearpage

@@ -51,11 +51,11 @@ Observed facts:
 |---|---|---|
 | Main TeX entry | `research/pde_ledger/paper/pde_ledger.tex` | `book` document with `frontmatter`, `mainmatter`, and appendices |
 | Archive PDF size | `research/pde_ledger/paper/pde_ledger.pdf` | 682 pages |
-| Reader PDF size | `research/pde_ledger/paper/pde_ledger_reader.pdf` | 170 pages |
+| Reader PDF size | `research/pde_ledger/paper/pde_ledger_reader.pdf` | 187 pages |
 | Frontmatter source size | `paper/frontmatter/*.tex` | 4,427 lines |
 | Main parts source size | `paper/parts/*.tex` | 11,638 lines |
-| Appendix source size | `paper/appendices/*.tex` | 19,186 lines |
-| Stage file source size | `paper/stages/*.tex` | 6,372 lines across 236 files |
+| Appendix source size | `paper/appendices/*.tex` | 19,203 lines |
+| Stage file source size | `paper/stages/*.tex` | 6,372 lines across 253 files |
 | Notes corpus | `research/pde_ledger/notes/` | master notes plus stage notes plus review docs |
 | Verification scripts | `research/pde_ledger/scripts/` | stage SymPy audits plus numerical stress scripts |
 | Mathematica mirror | `research/pde_ledger/mathematica/` | existing second-CAS audit layer plus saved outputs |
@@ -132,7 +132,7 @@ Observed Mathematica state on `2026-04-20`:
 - it contains a large set of stagewise `.wl` audits,
 - it has runner scripts and saved outputs,
 - and `research/pde_ledger/mathematica/output/_summary.txt` currently reports
-  `TOTAL: 150  PASS: 150  FAIL: 0  SKIPPED: 0`.
+  `TOTAL: 167  PASS: 167  FAIL: 0  SKIPPED: 0`.
 
 This changes the practical roadmap:
 
@@ -290,7 +290,7 @@ Acceptance criteria:
 ### 6. Decide What to Do with `paper/stages/`
 
 Goal:
-remove ambiguity around the 236 generated stage `.tex` files.
+remove ambiguity around the 253 generated stage `.tex` files.
 
 Current observed state:
 
@@ -441,28 +441,28 @@ Tasks:
 Current note:
 
 - Part I is now the pilot for canonical stage sourcing: the appendix assembles
-  `paper/stages/stage_001.tex` through `stage_006.tex` instead of carrying the
+  `paper/stages/stage_001.tex` through `stage_023.tex` instead of carrying the
   derivations inline.
 - Part II now uses the same pattern: the appendix assembles
-  `paper/stages/stage_007.tex` through `stage_019.tex` instead of carrying the
+  `paper/stages/stage_024.tex` through `stage_036.tex` instead of carrying the
   derivations inline.
 - Part III now uses the same pattern: the appendix assembles
-  `paper/stages/stage_020.tex` through `stage_073.tex` instead of carrying the
+  `paper/stages/stage_037.tex` through `stage_090.tex` instead of carrying the
   derivations inline.
 - Part IV now uses the same pattern for its stage cards: the appendix assembles
-  `paper/stages/stage_074.tex` through `stage_146.tex` while keeping the
+  `paper/stages/stage_091.tex` through `stage_163.tex` while keeping the
   audit-path derivation sections inline above the canonical stage cards.
 - Part V now uses the same pattern for its stage cards: the appendix assembles
-  `paper/stages/stage_147.tex` through `stage_183.tex` while keeping the
+  `paper/stages/stage_164.tex` through `stage_200.tex` while keeping the
   audit-path derivation sections inline above the canonical stage cards.
 - Part VI now uses the same pattern for its stage cards: the appendix assembles
-  `paper/stages/stage_184.tex` through `stage_201.tex` while keeping the
+  `paper/stages/stage_201.tex` through `stage_218.tex` while keeping the
   theorem-path derivation sections inline above the canonical stage cards.
 - Part VII now uses the same pattern for its stage cards: the appendix assembles
-  `paper/stages/stage_202.tex` through `stage_225.tex` while keeping the
+  `paper/stages/stage_219.tex` through `stage_242.tex` while keeping the
   theorem-path derivation sections inline above the canonical stage cards.
-- Part VIII now sources `paper/stages/stage_226.tex` through
-  `stage_236.tex`; unlike Parts I--VII, those stage files carry the full
+- Part VIII now sources `paper/stages/stage_243.tex` through
+  `stage_253.tex`; unlike Parts I--VII, those stage files carry the full
   derivation sections rather than compact stage cards.
 - The raw note provenance for migrated stages now lives in
   `STAGE_PROVENANCE_INDEX.md`, while the stage files themselves carry only the
@@ -494,25 +494,25 @@ Current note:
   `CITATION_SUPPORT_SET.md`.
 - Stages `001--002` now have dedicated SymPy audits and an initial
   constant-provenance log in `CHECKPOINT_CONSTANT_PROVENANCE.md`.
-- Stages `073` and `079` now also have dedicated SymPy checkpoint audits, so
+- Stages `090` and `096` now also have dedicated SymPy checkpoint audits, so
   the support-set Mathematica-only outliers are gone.
-- Stage `183` now has a Mathematica mirror and a first review note, so the
+- Stage `200` now has a Mathematica mirror and a first review note, so the
   late-stage support frontier has narrowed again.
-- Stage `186` now has a Mathematica mirror and a first review note too.
-- Stage `201` now also has a Mathematica mirror and a first review note.
-- Stage `204` now also has a Mathematica mirror and a first review note.
-- Stage `222` now also has a Mathematica mirror and a first review note.
-- Stage `225` now also has a Mathematica mirror and a first review note.
-- Stage `226` now also has a Mathematica mirror and a first review note.
-- Stage `231` now also has a Mathematica mirror and a first review note.
-- Stage `236` now also has a Mathematica mirror and a first review note, so the
+- Stage `203` now has a Mathematica mirror and a first review note too.
+- Stage `218` now also has a Mathematica mirror and a first review note.
+- Stage `221` now also has a Mathematica mirror and a first review note.
+- Stage `239` now also has a Mathematica mirror and a first review note.
+- Stage `242` now also has a Mathematica mirror and a first review note.
+- Stage `243` now also has a Mathematica mirror and a first review note.
+- Stage `248` now also has a Mathematica mirror and a first review note.
+- Stage `253` now also has a Mathematica mirror and a first review note, so the
   late-stage support frontier is now closed.
 - Stages `001--002` now also have Mathematica parity, so the checkpoint
   support set has full symbolic parity and review coverage.
 - The checkpoint trust baseline now lives in `CHECKPOINT_TRUST_AUDIT.md`:
   `25` `strong`, `0` `moderate`, `0` `weak`.
 - The next verification work is no longer parity; the checkpoint support set is
-  symbolically closed and `231` / `236` now also have dedicated numerical
+  symbolically closed and `248` / `253` now also have dedicated numerical
   stress.
 - The paper-side verification surface is now exposed compactly through the
   frontmatter and reader verification summary, while raw per-stage script
@@ -536,7 +536,7 @@ Tasks:
 | P0-00 | Record archive charter in paper-side docs | product | open | authoritative master reference |
 | P0-01 | Define archive vs reader build split | product | done | archive is authoritative; reader build added |
 | P0-02 | Decide canonical status of `paper/stages/` | structure | done | all Parts I--VIII now source canonical stage files |
-| P0-03 | Decide whether raw artifact names stay out of main narrative | editorial | done | migrated Stages 001--236 keep raw note names out of the PDF and in the repo-local provenance index |
+| P0-03 | Decide whether raw artifact names stay out of main narrative | editorial | done | migrated Stages 001--253 keep raw note names out of the PDF and in the repo-local provenance index |
 | P1-01 | Add second TeX entry point for reader build | build | done | `pde_ledger_reader.tex` added |
 | P1-02 | Compress frontmatter for reader build | editorial | done | reader build uses short orientation frontmatter |
 | P1-03 | Keep archival appendices only in archive build | build | done | reader build keeps compact summary appendices only |
@@ -545,36 +545,36 @@ Tasks:
 | P2-02 | Add per-part dependency blocks | readability | done | reader-map format now covers Parts I--VIII |
 | P2-03 | Remove repetitive policy text from theorem flow | readability | open | move repeated status doctrine out of chapter interiors |
 | P2-04 | Remove per-stage forced page breaks from archive appendices | layout | done | Parts I--VII now neutralize stage-card `\clearpage` calls locally so derivations flow continuously without rewriting every canonical stage file |
-| P3-01 | Create source/provenance map | provenance | done | `STAGE_PROVENANCE_INDEX.md` now covers Stages 001--236 |
+| P3-01 | Create source/provenance map | provenance | done | `STAGE_PROVENANCE_INDEX.md` now covers Stages 001--253 |
 | P3-02 | Normalize stage/source references | provenance | open | avoid raw filenames in prose |
 | P4-01 | Inventory note/SymPy/Mathematica coverage | verification | done | baseline inventory now lives in `STAGE_VERIFICATION_COVERAGE.md` |
 | P4-02 | Define verification status schema for load-bearing stages | verification | done | checkpoint trust baseline now lives in `CHECKPOINT_TRUST_AUDIT.md` |
 | P4-03 | Audit constant provenance for load-bearing stages | verification | open | every constant must be derived, source-anchored, or probe-only |
 | P4-04 | Define future-paper citation support subset | verification | done | control subset now lives in `CITATION_SUPPORT_SET.md` |
 | P4-05 | Promote foundational checkpoints to dedicated audits | verification | done | Stages `001--002` now have dedicated SymPy scripts and provenance entries |
-| P4-06 | Reconcile checkpoint Mathematica-only outliers | verification | done | Stages `073` and `079` now have dedicated SymPy mirrors and checkpoint provenance entries |
-| P4-07 | Harden first late-stage support checkpoint | verification | done | Stage `183` now has a Mathematica mirror, provenance entry, and review note |
-| P4-08 | Harden second late-stage support checkpoint | verification | done | Stage `186` now has a Mathematica mirror, provenance entry, and review note |
-| P4-09 | Harden third late-stage support checkpoint | verification | done | Stage `201` now has a Mathematica mirror, provenance entry, and review note |
-| P4-10 | Harden fourth late-stage support checkpoint | verification | done | Stage `204` now has a Mathematica mirror, provenance entry, and review note |
-| P4-11 | Harden fifth late-stage support checkpoint | verification | done | Stage `222` now has a Mathematica mirror, provenance entry, and review note |
-| P4-12 | Harden sixth late-stage support checkpoint | verification | done | Stage `225` now has a Mathematica mirror, provenance entry, and review note |
-| P4-13 | Harden seventh late-stage support checkpoint | verification | done | Stage `226` now has a Mathematica mirror, provenance entry, and review note |
-| P4-14 | Harden eighth late-stage support checkpoint | verification | done | Stage `231` now has a Mathematica mirror, provenance entry, and review note |
-| P4-15 | Harden ninth late-stage support checkpoint | verification | done | Stage `236` now has a Mathematica mirror, provenance entry, and review note |
+| P4-06 | Reconcile checkpoint Mathematica-only outliers | verification | done | Stages `090` and `096` now have dedicated SymPy mirrors and checkpoint provenance entries |
+| P4-07 | Harden first late-stage support checkpoint | verification | done | Stage `200` now has a Mathematica mirror, provenance entry, and review note |
+| P4-08 | Harden second late-stage support checkpoint | verification | done | Stage `203` now has a Mathematica mirror, provenance entry, and review note |
+| P4-09 | Harden third late-stage support checkpoint | verification | done | Stage `218` now has a Mathematica mirror, provenance entry, and review note |
+| P4-10 | Harden fourth late-stage support checkpoint | verification | done | Stage `221` now has a Mathematica mirror, provenance entry, and review note |
+| P4-11 | Harden fifth late-stage support checkpoint | verification | done | Stage `239` now has a Mathematica mirror, provenance entry, and review note |
+| P4-12 | Harden sixth late-stage support checkpoint | verification | done | Stage `242` now has a Mathematica mirror, provenance entry, and review note |
+| P4-13 | Harden seventh late-stage support checkpoint | verification | done | Stage `243` now has a Mathematica mirror, provenance entry, and review note |
+| P4-14 | Harden eighth late-stage support checkpoint | verification | done | Stage `248` now has a Mathematica mirror, provenance entry, and review note |
+| P4-15 | Harden ninth late-stage support checkpoint | verification | done | Stage `253` now has a Mathematica mirror, provenance entry, and review note |
 | P4-16 | Add Mathematica parity to foundational checkpoints | verification | done | Stages `001--002` now have Mathematica mirrors and refreshed review records |
 | P4-17 | Baseline checkpoint trust audit | verification | done | stage-level checkpoint tiers now live in `CHECKPOINT_TRUST_AUDIT.md` |
-| P4-18 | Repair Stage 168 trust defect | verification | done | Stage `168` now rebuilds the monomial laws from primitive-ratio compilers in both CAS layers and has a current PASS review |
+| P4-18 | Repair Stage 185 trust defect | verification | done | Stage `185` now rebuilds the monomial laws from primitive-ratio compilers in both CAS layers and has a current PASS review |
 | P4-19 | Resolve Stage 001/002 convention caveat | verification | done | canonical Stage `001--002` cards now state the densitized convention explicitly and the current review status is PASS |
 | P4-20 | Repair Stage 003 checkpoint drift | verification | done | shared numerical-stress harness now resolves the repo-local sample path, the note/review bookkeeping is current, and Stage `003` is promoted to `strong` |
-| P4-21 | Reconcile Stage 005 round-trip drift | verification | done | existing `N0/N2/N4` round-trip checks were confirmed in both CAS layers, the stale review caveat was removed, and Stage `005` is promoted to `strong` |
-| P4-22 | Reconcile Stage 006 assembly drift | verification | done | existing one-port `Z_n/N_n` reconstruction checks were confirmed in both CAS layers, the stale assembled-input caveat was removed, and Stage `006` is promoted to `strong` |
-| P4-23 | Reconcile Stage 007 overlap drift | verification | done | the explicit `H_r` rename note and existing unequal-lane witness checks were confirmed in both CAS layers, the stale review caveats were removed, and Stage `007` is promoted to `strong` |
-| P4-24 | Reconcile Stage 019 boundary drift | verification | done | the live `xi >= 0` / `0 <= xi < 1` boundary assumptions were confirmed in both CAS layers, the stale onset-boundary caveat was removed, and Stage `019` is promoted to `strong` |
-| P4-25 | Reclassify Stage 072 explicit verdict | verification | done | the explicit Family-1 verdict was confirmed in both CAS layers as a closed arithmetic theorem conditional on the upstream minimal module, and its carried-threshold provenance is now logged |
-| P4-26 | Reclassify Stage 073 status boundary | verification | done | the reduced theorem-status boundary is now treated as a narrow but citation-grade checkpoint because its carried inputs are explicit, source-anchored, and replayed in both CAS layers |
-| P4-27 | Reclassify Stage 146 off-family transport packet | verification | done | the theorem path was confirmed symbolic in both CAS layers, the Family-1 readbacks were isolated as explanatory outputs only, and Stage `146` is promoted to `strong` |
-| P4-28 | Add numerical stress to Stages 231 and 236 | verification | done | shared JSON-driven Python + Mathematica stress harnesses now cover both late-stage checkpoints without adding committed output artifacts |
+| P4-21 | Reconcile Stage 022 round-trip drift | verification | done | existing `N0/N2/N4` round-trip checks were confirmed in both CAS layers, the stale review caveat was removed, and Stage `022` is promoted to `strong` |
+| P4-22 | Reconcile Stage 023 assembly drift | verification | done | existing one-port `Z_n/N_n` reconstruction checks were confirmed in both CAS layers, the stale assembled-input caveat was removed, and Stage `023` is promoted to `strong` |
+| P4-23 | Reconcile Stage 024 overlap drift | verification | done | the explicit `H_r` rename note and existing unequal-lane witness checks were confirmed in both CAS layers, the stale review caveats were removed, and Stage `024` is promoted to `strong` |
+| P4-24 | Reconcile Stage 036 boundary drift | verification | done | the live `xi >= 0` / `0 <= xi < 1` boundary assumptions were confirmed in both CAS layers, the stale onset-boundary caveat was removed, and Stage `036` is promoted to `strong` |
+| P4-25 | Reclassify Stage 089 explicit verdict | verification | done | the explicit Family-1 verdict was confirmed in both CAS layers as a closed arithmetic theorem conditional on the upstream minimal module, and its carried-threshold provenance is now logged |
+| P4-26 | Reclassify Stage 090 status boundary | verification | done | the reduced theorem-status boundary is now treated as a narrow but citation-grade checkpoint because its carried inputs are explicit, source-anchored, and replayed in both CAS layers |
+| P4-27 | Reclassify Stage 163 off-family transport packet | verification | done | the theorem path was confirmed symbolic in both CAS layers, the Family-1 readbacks were isolated as explanatory outputs only, and Stage `163` is promoted to `strong` |
+| P4-28 | Add numerical stress to Stages 248 and 253 | verification | done | shared JSON-driven Python + Mathematica stress harnesses now cover both late-stage checkpoints without adding committed output artifacts |
 | P4-29 | Add paper-side verification routing summary | verification | done | the archive frontmatter and reader verification appendix now summarize the naming convention/baseline compactly, and printed stage cards omit raw verification filename manifests |
 | P5-01 | Typography and overflow cleanup pass | formatting | open | after structure stabilizes |
 
@@ -617,37 +617,37 @@ referee-checkable stage ledger.
 | 2026-04-20 | Added reader-facing claim-scope summaries to all eight main parts and recompiled both archive and reader PDFs successfully. |
 | 2026-04-20 | Reworked the Part I opener into a reusable reader-map and grouped stage-packet format, then recompiled both archive and reader PDFs successfully. |
 | 2026-04-20 | Propagated the same opener pattern to Part II and recompiled both archive and reader PDFs successfully. |
-| 2026-04-20 | Migrated Part V stage cards into canonical `paper/stages/stage_147.tex` through `stage_183.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the audit-path derivation sections inline above the canonical cards. |
-| 2026-04-20 | Migrated Part VI stage cards into canonical `paper/stages/stage_184.tex` through `stage_201.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
-| 2026-04-20 | Migrated Part VII stage cards into canonical `paper/stages/stage_202.tex` through `stage_225.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
-| 2026-04-20 | Migrated Part VIII into canonical `paper/stages/stage_226.tex` through `stage_236.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the appendix as an assembler over full derivation-stage files plus downstream guardrails. |
-| 2026-04-20 | Propagated the same opener pattern to Parts III--IV; archive and reader builds now stand at 707 and 176 pages respectively. |
-| 2026-04-20 | Promoted Part I Stages 001--006 into canonical `paper/stages/` files, converted the Part I appendix into an aggregator, attached stage-level audit references, and recompiled both archive and reader PDFs successfully. |
+| 2026-04-20 | Migrated Part V stage cards into canonical `paper/stages/stage_164.tex` through `stage_200.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the audit-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VI stage cards into canonical `paper/stages/stage_201.tex` through `stage_218.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VII stage cards into canonical `paper/stages/stage_219.tex` through `stage_242.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the theorem-path derivation sections inline above the canonical cards. |
+| 2026-04-20 | Migrated Part VIII into canonical `paper/stages/stage_243.tex` through `stage_253.tex`, moved raw note provenance into `STAGE_PROVENANCE_INDEX.md`, and kept the appendix as an assembler over full derivation-stage files plus downstream guardrails. |
+| 2026-04-20 | Propagated the same opener pattern to Parts III--IV; archive and reader builds now stand at 707 and 193 pages respectively. |
+| 2026-04-20 | Promoted Part I Stages 001--023 into canonical `paper/stages/` files, converted the Part I appendix into an aggregator, attached stage-level audit references, and recompiled both archive and reader PDFs successfully. |
 | 2026-04-20 | Propagated the same opener pattern to Parts V--VIII, removed the generated source/status longtables from those chapter heads, and kept the mathematical derivations intact. |
-| 2026-04-20 | Promoted Part II Stages 007--019 into canonical `paper/stages/` files, converted the Part II appendix into an aggregator, removed raw note filenames from migrated stage pages, and added the repo-local `STAGE_PROVENANCE_INDEX.md` for Stages 001--019. |
-| 2026-04-20 | Promoted Part III Stages 020--073 into canonical `paper/stages/` files, converted the Part III appendix into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 073. |
-| 2026-04-20 | Promoted Part IV Stages 074--146 into canonical `paper/stages/` files, converted the Part IV stage-card block into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 146. |
+| 2026-04-20 | Promoted Part II Stages 024--036 into canonical `paper/stages/` files, converted the Part II appendix into an aggregator, removed raw note filenames from migrated stage pages, and added the repo-local `STAGE_PROVENANCE_INDEX.md` for Stages 001--036. |
+| 2026-04-20 | Promoted Part III Stages 037--090 into canonical `paper/stages/` files, converted the Part III appendix into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 090. |
+| 2026-04-20 | Promoted Part IV Stages 091--163 into canonical `paper/stages/` files, converted the Part IV stage-card block into an aggregator, removed raw note filenames from migrated stage pages, and extended `STAGE_PROVENANCE_INDEX.md` through Stage 163. |
 | 2026-04-20 | Chose the mixed canonical stage model intentionally: Parts I--VII remain compact stage cards, Part VIII remains full derivation-stage files, and the audit baseline now lives in `STAGE_VERIFICATION_COVERAGE.md`. |
 | 2026-04-20 | Added the constant-provenance / no-magic-numbers rule to the paper-side verification queue so future audit work must justify every carry-forward constant. |
 | 2026-04-20 | Added `CITATION_SUPPORT_SET.md` to define the future-paper support subset and focus the next audit wave on its checkpoint stages. |
 | 2026-04-20 | Added dedicated SymPy audits for Stages `001--002`, updated their provenance/verification fields, and logged the first checkpoint constant-provenance findings. |
-| 2026-04-20 | Added dedicated SymPy audits for Stages `073` and `079`, removed the last support-set Mathematica-only checkpoint gaps, and extended the checkpoint constant-provenance log accordingly. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `183`, updated the coverage/provenance baselines, and narrowed the late-stage support-set frontier to `186`, `201`, `204`, `222`, `225`, `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `186`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `201`, `204`, `222`, `225`, `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `201`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `204`, `222`, `225`, `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `204`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `222`, `225`, `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `222`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `225`, `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `225`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `226`, `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `226`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `231`, `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `231`, kept the Session-II numerics isolated as benchmark-only specialization inputs, and narrowed the late-stage support-set frontier to `236`. |
-| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `236`, kept the physical-calibration numerics isolated as benchmark-only readbacks, and closed the late-stage support-set frontier. |
-| 2026-04-20 | Added shared JSON-driven Python + Mathematica numerical-stress harnesses for Stages `231` and `236`, updated the checkpoint review/provenance baselines, and moved the late-stage support set past its last explicit numerical-hardening gap. |
+| 2026-04-20 | Added dedicated SymPy audits for Stages `090` and `096`, removed the last support-set Mathematica-only checkpoint gaps, and extended the checkpoint constant-provenance log accordingly. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `200`, updated the coverage/provenance baselines, and narrowed the late-stage support-set frontier to `203`, `218`, `221`, `239`, `242`, `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `203`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `218`, `221`, `239`, `242`, `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `218`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `221`, `239`, `242`, `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `221`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `239`, `242`, `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `239`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `242`, `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `242`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `243`, `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `243`, updated the coverage/provenance baselines again, and narrowed the late-stage support-set frontier to `248`, `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `248`, kept the Session-II numerics isolated as benchmark-only specialization inputs, and narrowed the late-stage support-set frontier to `253`. |
+| 2026-04-20 | Added a Mathematica mirror and first review note for Stage `253`, kept the physical-calibration numerics isolated as benchmark-only readbacks, and closed the late-stage support-set frontier. |
+| 2026-04-20 | Added shared JSON-driven Python + Mathematica numerical-stress harnesses for Stages `248` and `253`, updated the checkpoint review/provenance baselines, and moved the late-stage support set past its last explicit numerical-hardening gap. |
 | 2026-04-20 | Added Mathematica mirrors for Stages `001--002`, refreshed the foundational review records, and closed symbolic parity across the checkpoint support set. |
-| 2026-04-20 | Reconciled Stage `006` review drift by confirming the existing one-port `Z_n/N_n` reconstruction checks in both CAS layers, logging its grouped-bundle constants, and promoting Stage `006` from `moderate` to `strong`. |
-| 2026-04-20 | Reconciled Stage `007` review drift by confirming the explicit `H_r` rename note and the existing unequal-lane witness checks in both CAS layers, logging its exact overlap constants, and promoting Stage `007` from `moderate` to `strong`. |
-| 2026-04-20 | Reconciled Stage `019` review drift by confirming the live `xi >= 0` / `0 <= xi < 1` boundary assumptions in both CAS layers, logging its support-frontier constants, and promoting Stage `019` from `moderate` to `strong`. |
-| 2026-04-20 | Reclassified Stage `072` as `strong` after confirming in both CAS layers that the explicit Family-1 verdict is a closed arithmetic theorem once the minimal-isotropic module is accepted, and logged its carried-threshold provenance. |
-| 2026-04-20 | Reclassified Stage `073` as `strong` after making the narrow status-boundary rule explicit, confirming the dual-CAS replay of the carried threshold verdict, and extending its provenance record to the Mathematica mirror. |
-| 2026-04-20 | Reclassified Stage `146` as `strong` after confirming in both CAS layers that the off-family normal-coordinate theorem packet is symbolic end-to-end and that the Family-1 coefficient readbacks are explanatory outputs rather than proof-critical inputs. |
+| 2026-04-20 | Reconciled Stage `023` review drift by confirming the existing one-port `Z_n/N_n` reconstruction checks in both CAS layers, logging its grouped-bundle constants, and promoting Stage `023` from `moderate` to `strong`. |
+| 2026-04-20 | Reconciled Stage `024` review drift by confirming the explicit `H_r` rename note and the existing unequal-lane witness checks in both CAS layers, logging its exact overlap constants, and promoting Stage `024` from `moderate` to `strong`. |
+| 2026-04-20 | Reconciled Stage `036` review drift by confirming the live `xi >= 0` / `0 <= xi < 1` boundary assumptions in both CAS layers, logging its support-frontier constants, and promoting Stage `036` from `moderate` to `strong`. |
+| 2026-04-20 | Reclassified Stage `089` as `strong` after confirming in both CAS layers that the explicit Family-1 verdict is a closed arithmetic theorem once the minimal-isotropic module is accepted, and logged its carried-threshold provenance. |
+| 2026-04-20 | Reclassified Stage `090` as `strong` after making the narrow status-boundary rule explicit, confirming the dual-CAS replay of the carried threshold verdict, and extending its provenance record to the Mathematica mirror. |
+| 2026-04-20 | Reclassified Stage `163` as `strong` after confirming in both CAS layers that the off-family normal-coordinate theorem packet is symbolic end-to-end and that the Family-1 coefficient readbacks are explanatory outputs rather than proof-critical inputs. |
 | 2026-04-20 | Added the compact paper-side verification routing summary to the archive frontmatter and reader appendix, suppressed raw verification filename manifests in printed stage cards, and rebuilt both PDFs successfully. |
-| 2026-04-20 | Removed the archive's per-stage forced page-break policy by locally neutralizing stage-card `\clearpage` calls in Parts I--VII, reducing the archive PDF from 736 pages to 682 pages while keeping the reader build at 170 pages. |
+| 2026-04-20 | Removed the archive's per-stage forced page-break policy by locally neutralizing stage-card `\clearpage` calls in Parts I--VII, reducing the archive PDF from 736 pages to 682 pages while keeping the reader build at 187 pages. |

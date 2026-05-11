@@ -1,0 +1,40 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage055_explicit_reachability_mathematica_audit.wl
+# Date: 2026-05-11T12:52:53-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 038 — EXPLICIT LOWEST-LANE REACHABILITY
+========================================================================================
+Omega_exp(alpha) = (alpha*Pi*(2*alpha*E^alpha + Pi))/((-1 + E^alpha)*(4*alpha^2 + Pi^2))
+A_K(y,x) = (1 + x*(-1/4 + y^2/Pi^2))^(-1)
+zeta_family(alpha,y;x) = (alpha^2*Pi^2*(2*alpha*E^alpha + Pi)^2)/((-1 + E^alpha)^2*(4*alpha^2 + Pi^2)^2*(1 + x*(-1/4 + y^2/Pi^2)))
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+General::stop: Further output of Limit::alimv will be suppressed during this calculation.
+symmetric twin point = 1
+closure maximum = Pi^2/(4 - x)
+x floor from zeta_max = zeta_req = 4 - Pi^2/zetaReq
+twin value = 0
+PASS: twin value
+closure maximum = 0
+PASS: closure maximum
+x floor = 4 - Pi^2/zeta_req = 0
+PASS: x floor = 4 - Pi^2/zeta_req
+zeta_max(x_floor) - zeta_req = 0
+PASS: zeta_max(x_floor) - zeta_req
+KX/KW equivalence = 0
+PASS: KX/KW equivalence
+
+Stage 055 Mathematica audit passed.
+
+EXIT_CODE: 0

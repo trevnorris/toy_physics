@@ -1,0 +1,27 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.wl
+# Date: 2026-05-11T13:07:32-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 092 — LINEARIZED BRANCH-SELECTION LAW
+========================================================================================
+chi_Q series = 1 + (a0*eps)/3 + 9*a5*eps + 5*b*eps
+linearized chi law = 0
+PASS: linearized chi law
+first-order defect coefficient = a0/3 + 9*a5 + 5*b
+overall scale cancels = 0
+PASS: overall scale cancels
+a5 preservation condition = -1/27*a0 - (5*b)/9
+a5 preservation condition + 5 b/9 + a0/27 = 0
+PASS: a5 preservation condition + 5 b/9 + a0/27
+preservation substitution = 0
+PASS: preservation substitution
+
+Stage 109 Mathematica audit passed.
+
+EXIT_CODE: 0

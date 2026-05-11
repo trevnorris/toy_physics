@@ -5,7 +5,7 @@
 # Usage:
 #   bash research/pde_ledger/mathematica/run_all_audits.sh
 #   bash research/pde_ledger/mathematica/run_all_audits.sh --force
-#   bash research/pde_ledger/mathematica/run_all_audits.sh stage089
+#   bash research/pde_ledger/mathematica/run_all_audits.sh stage106
 
 set -euo pipefail
 

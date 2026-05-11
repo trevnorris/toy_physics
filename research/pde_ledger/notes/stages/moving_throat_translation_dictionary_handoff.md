@@ -716,7 +716,7 @@ So:
 
 ## 12. Intermediate exact branch composites
 
-Stage 167 packaged the same three directions into exact branch composites.
+Stage 184 packaged the same three directions into exact branch composites.
 
 Define
 \[
@@ -983,14 +983,14 @@ All algebraic compression is finished. The only remaining unknown is the true br
 This dictionary was distilled from the final moving-throat stages anchored by
 
 - `moving_throat_pde_full.md`
-- `moving_throat_pde_stage147_microscopic_log_channels.md`
-- `moving_throat_pde_stage148_exact_branch_drifts.md`
-- `moving_throat_pde_stage165_microscopic_coherent_slippage.md`
-- `moving_throat_pde_stage166_triangular_normal_form.md`
-- `moving_throat_pde_stage167_branch_invariant_coordinates.md`
-- `moving_throat_pde_stage168_microscopic_monomials.md`
-- `moving_throat_pde_stage169_similarity_orbit_closure.md`
-- `moving_throat_pde_stage170_orbit_quotient_closure.md`
+- `moving_throat_pde_stage164_microscopic_log_channels.md`
+- `moving_throat_pde_stage165_exact_branch_drifts.md`
+- `moving_throat_pde_stage182_microscopic_coherent_slippage.md`
+- `moving_throat_pde_stage183_triangular_normal_form.md`
+- `moving_throat_pde_stage184_branch_invariant_coordinates.md`
+- `moving_throat_pde_stage185_microscopic_monomials.md`
+- `moving_throat_pde_stage186_similarity_orbit_closure.md`
+- `moving_throat_pde_stage187_orbit_quotient_closure.md`
 
 The intended rule is:
 

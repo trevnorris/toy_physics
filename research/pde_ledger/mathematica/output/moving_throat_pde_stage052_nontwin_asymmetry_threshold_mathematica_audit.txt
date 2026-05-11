@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage052_nontwin_asymmetry_threshold_mathematica_audit.wl
+# Date: 2026-05-11T12:52:07-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 035 — NON-TWIN ASYMMETRY THRESHOLD
+========================================================================================
+S_req = piTr/cMix
+zeta_req = -((cMix - piTr)/(cMix - 2*cMix*eps + eps*piTr))
+zeta_req at Pi_tr = C_mix = 0
+PASS: zeta_req at Pi_tr = C_mix
+zeta_req at Pi_tr = 2 C_mix minus 1 = 0
+PASS: zeta_req at Pi_tr = 2 C_mix minus 1
+d zeta_req / d Pi_tr = (cMix - cMix*eps)/(cMix - 2*cMix*eps + eps*piTr)^2
+dzeta_req/dPi - expected = 0
+PASS: dzeta_req/dPi - expected
+Delta_zeta = -1 - (cMix - piTr)/(cMix - 2*cMix*eps + eps*piTr)
+Delta_zeta - expected = 0
+PASS: Delta_zeta - expected
+zeta_0^(phys) = (kW*omega0^2)/kPhi0
+Omega_(0,req)^2 = -((kPhi0*(cMix - piTr))/(kW*(cMix - 2*cMix*eps + eps*piTr)))
+K_(phi,0)^(req) = -((kW*omega0^2*(cMix - 2*cMix*eps + eps*piTr))/(cMix - piTr))
+threshold equality at fixed stiffness = 0
+PASS: threshold equality at fixed stiffness
+threshold equality at fixed overlap = 0
+PASS: threshold equality at fixed overlap
+zeta_0^(twin) - 1 = 0
+PASS: zeta_0^(twin) - 1
+Required overlap boost at equal stiffness = Sqrt[-((cMix - piTr)/(cMix - 2*cMix*eps + eps*piTr))]
+Required softened stiffness at equal overlap = -((kW*(cMix - 2*cMix*eps + eps*piTr))/(cMix - piTr))
+Exact softening fraction = 1 + (cMix - 2*cMix*eps + eps*piTr)/(cMix - piTr)
+softening fraction - expected = 0
+PASS: softening fraction - expected
+
+Stage 052 Mathematica audit passed.
+
+EXIT_CODE: 0

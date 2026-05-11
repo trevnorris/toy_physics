@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.wl
+# Date: 2026-05-11T12:50:35-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 029 — TRACKING-BRANCH BOUNDS
+========================================================================================
+G_tr = (9*xi*(delta + xi))/(9*delta + (9 + 2*r^2)*xi)
+F_tr = -1/81*((9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi)^2)/((-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2)
+G_flat = (9*xi*(delta + xi))/(9*delta + 11*xi)
+F_flat = -1/81*(9*delta + 11*xi)^4/((-1 + xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)^2)
+strong-split endpoint for G = 0
+PASS: strong-split endpoint for G
+strong-split endpoint for F = 0
+PASS: strong-split endpoint for F
+dG_tr/dR = (-36*r*xi^2*(delta + xi))/(9*delta + 9*xi + 2*r^2*xi)^2
+dF_tr/dR = (-4*xi*(9*delta + 9*xi + 2*r*xi)*(9*delta + 9*xi + 2*r^2*xi)*(81*delta^3 + 162*delta^3*r + 243*delta^2*xi + 324*delta^2*r*xi + 54*delta^2*r^2*xi + 243*delta*xi^2 + 162*delta*r*xi^2 + 90*delta*r^2*xi^2 + 81*xi^3 + 36*r^2*xi^3 + 4*r^4*xi^3))/(81*(-1 + xi)*(9*delta^2 + 18*delta*xi + 9*xi^2 + 2*r^2*xi^2)^3)
+dG_tr/dR formula = 0
+PASS: dG_tr/dR formula
+dF_tr/dR formula = 0
+PASS: dF_tr/dR formula
+P_R coefficients = {4, 54, 90, 36, 162, 324, 162, 81, 243, 243, 81}
+PASS: P_R
+G_tr - G_flat = (-18*(-1 + r)*(1 + r)*xi^2*(delta + xi))/((9*delta + 11*xi)*(9*delta + 9*xi + 2*r^2*xi))
+F_flat - F_tr = (4*(-1 + r)*xi*(162*delta^3 + 81*delta^3*r + 423*delta^2*xi + 180*delta^2*r*xi + 18*delta^2*r^2*xi + 360*delta*xi^2 + 99*delta*r*xi^2 + 36*delta*r^2*xi^2 + 99*xi^3 + 22*r^2*xi^3)*(729*delta^4 + 3078*delta^3*xi + 81*delta^3*r*xi + 81*delta^3*r^2*xi + 4959*delta^2*xi^2 + 243*delta^2*r*xi^2 + 324*delta^2*r^2*xi^2 + 18*delta^2*r^3*xi^2 + 3600*delta*xi^3 + 261*delta*r*xi^3 + 459*delta*r^2*xi^3 + 36*delta*r^3*xi^3 + 990*xi^4 + 99*r*xi^4 + 220*r^2*xi^4 + 22*r^3*xi^4))/(81*(-1 + xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)^2*(9*delta^2 + 18*delta*xi + 9*xi^2 + 2*r^2*xi^2)^2)
+G_tr - G_flat formula = 0
+PASS: G_tr - G_flat formula
+F_flat - F_tr formula = 0
+PASS: F_flat - F_tr formula
+P1 coefficients = {18, 36, 22, 81, 180, 99, 162, 423, 360, 99}
+PASS: P1
+P2 coefficients = {18, 36, 22, 81, 324, 459, 220, 81, 243, 261, 99, 729, 3078, 4959, 3600, 990}
+PASS: P2
+
+Stage 046 Mathematica audit passed.
+
+EXIT_CODE: 0

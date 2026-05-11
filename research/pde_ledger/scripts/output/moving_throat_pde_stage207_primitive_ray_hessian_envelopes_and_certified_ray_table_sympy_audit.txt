@@ -1,0 +1,245 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+# Date: 2026-05-11T12:49:16-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 190 — PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact primitive directional Hessian reduction
+----------------------------------------------------------------------------------------
+primitive curvature entry for lambda =
+Hll
++e_lambda diagonal reduction = 0
+-e_lambda diagonal reduction = 0
+primitive curvature entry for c =
+Hcc
++e_c diagonal reduction = 0
+-e_c diagonal reduction = 0
+primitive curvature entry for gamma =
+Hgg
++e_gamma diagonal reduction = 0
+-e_gamma diagonal reduction = 0
+primitive curvature entry for U =
+HUU
++e_U diagonal reduction = 0
+-e_U diagonal reduction = 0
+primitive curvature entry for W =
+HWW
++e_W diagonal reduction = 0
+-e_W diagonal reduction = 0
+
+----------------------------------------------------------------------------------------
+II. Off-diagonal Hessian entry first appears only on mixed rays
+----------------------------------------------------------------------------------------
+mixed two-coordinate curvature (lambda,c) =
+a⋅(Hlc⋅b + Hll⋅a) + b⋅(Hcc⋅b + Hlc⋅a)
+mixed-ray quadratic form = 0
+off-diagonal first appearance = 0
+
+----------------------------------------------------------------------------------------
+III. Canonical primitive orientation gives negative slope magnitude
+----------------------------------------------------------------------------------------
+canonical primitive sign eps =
+-sign(Gam)
+oriented primitive slope =
+⎧  0     for Gam = 0
+⎪                   
+⎪    2              
+⎨-Gam               
+⎪──────   otherwise 
+⎪│Gam│              
+⎩                   
+canonical orientation law = 0
+
+----------------------------------------------------------------------------------------
+IV. Sign-adapted primitive dependent exponents from Stage 204
+----------------------------------------------------------------------------------------
+sign-adapted primitive exponents for lambda =
+⎡           0            ⎤
+⎢                        ⎥
+⎢           0            ⎥
+⎢                        ⎥
+⎢           0            ⎥
+⎢                        ⎥
+⎣-2⋅Eₛₜₐᵣ⋅eps_λ - 2⋅eps_λ⎦
+primitive exponent row (lambda) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+sign-adapted primitive exponents for c =
+⎡              -eps_c⋅(deltaUₛₜₐᵣ + 1)                ⎤
+⎢              ────────────────────────               ⎥
+⎢                    χ₀ ₛₜₐᵣ + 1                      ⎥
+⎢                                                     ⎥
+⎢              -eps_c⋅(deltaUₛₜₐᵣ + 1)                ⎥
+⎢              ────────────────────────               ⎥
+⎢                    χ₀ ₛₜₐᵣ + 1                      ⎥
+⎢                                                     ⎥
+⎢                       2⋅eps_c                       ⎥
+⎢                                                     ⎥
+⎢-Fₛₜₐᵣ⋅eps_c⋅(deltaUₛₜₐᵣ + 1) + 2⋅eps_c⋅(χ₀ ₛₜₐᵣ + 1)⎥
+⎢─────────────────────────────────────────────────────⎥
+⎣                     χ₀ ₛₜₐᵣ + 1                     ⎦
+primitive exponent row (c) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+sign-adapted primitive exponents for gamma =
+⎡                 -epsᵧ⋅(deltaUₛₜₐᵣ + 1)                  ⎤
+⎢                 ───────────────────────                 ⎥
+⎢                       χ₀ ₛₜₐᵣ + 1                       ⎥
+⎢                                                         ⎥
+⎢                 -epsᵧ⋅(deltaUₛₜₐᵣ + 1)                  ⎥
+⎢                 ───────────────────────                 ⎥
+⎢                       χ₀ ₛₜₐᵣ + 1                       ⎥
+⎢                                                         ⎥
+⎢                            0                            ⎥
+⎢                                                         ⎥
+⎢-2⋅Eₛₜₐᵣ⋅epsᵧ⋅(χ₀ ₛₜₐᵣ + 1) - Fₛₜₐᵣ⋅epsᵧ⋅(deltaUₛₜₐᵣ + 1)⎥
+⎢─────────────────────────────────────────────────────────⎥
+⎣                       χ₀ ₛₜₐᵣ + 1                       ⎦
+primitive exponent row (gamma) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+sign-adapted primitive exponents for U =
+⎡                      eps_U⋅(deltaUₛₜₐᵣ + 1)                      ⎤
+⎢                      ──────────────────────                      ⎥
+⎢                           χ₀ ₛₜₐᵣ + 1                            ⎥
+⎢                                                                  ⎥
+⎢           eps_U⋅(χ₀ ₛₜₐᵣ + 1) + eps_U⋅(deltaUₛₜₐᵣ + 1)           ⎥
+⎢           ────────────────────────────────────────────           ⎥
+⎢                           χ₀ ₛₜₐᵣ + 1                            ⎥
+⎢                                                                  ⎥
+⎢                              -eps_U                              ⎥
+⎢                                                                  ⎥
+⎢Fₛₜₐᵣ⋅eps_U⋅(deltaUₛₜₐᵣ + 1) + (χ₀ ₛₜₐᵣ + 1)⋅(Eₛₜₐᵣ⋅eps_U - eps_U)⎥
+⎢──────────────────────────────────────────────────────────────────⎥
+⎣                           χ₀ ₛₜₐᵣ + 1                            ⎦
+primitive exponent row (U) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+sign-adapted primitive exponents for W =
+⎡          0          ⎤
+⎢                     ⎥
+⎢          0          ⎥
+⎢                     ⎥
+⎢          0          ⎥
+⎢                     ⎥
+⎣Eₛₜₐᵣ⋅eps_W + 2⋅eps_W⎦
+primitive exponent row (W) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+V. Certified monotone primitive bracket compiler
+----------------------------------------------------------------------------------------
+tau_lo(H0,k;cL) =
+         2⋅H₀         
+──────────────────────
+       _______________
+      ╱             2 
+k + ╲╱  -2⋅H₀⋅cL + k  
+tau_hi(H0,k;cU) =
+         2⋅H₀         
+──────────────────────
+       _______________
+      ╱             2 
+k + ╲╱  -2⋅H₀⋅cU + k  
+lower comparison quadratic = 0
+upper comparison quadratic = 0
+primitive monotone bracket width =
+      ⎛   _______________      _______________⎞  
+      ⎜  ╱             2      ╱             2 ⎟  
+ 2⋅H₀⋅⎝╲╱  -2⋅H₀⋅cL + k   - ╲╱  -2⋅H₀⋅cU + k  ⎠  
+─────────────────────────────────────────────────
+⎛       _______________⎞ ⎛       _______________⎞
+⎜      ╱             2 ⎟ ⎜      ╱             2 ⎟
+⎝k + ╲╱  -2⋅H₀⋅cL + k  ⎠⋅⎝k + ╲╱  -2⋅H₀⋅cU + k  ⎠
+
+----------------------------------------------------------------------------------------
+VI. Certified turning primitive bracket compiler
+----------------------------------------------------------------------------------------
+tau_lo^(tp) =
+     ____
+√2⋅╲╱ H₀ 
+─────────
+  _______
+╲╱ aₜᵤᵣₙ 
+tau_hi^(tp) =
+     ____
+√2⋅╲╱ H₀ 
+─────────
+  _______
+╲╱ bₜᵤᵣₙ 
+turning lower quadratic = 0
+turning upper quadratic = 0
+
+----------------------------------------------------------------------------------------
+VII. Primitive certified row packet summary
+----------------------------------------------------------------------------------------
+primitive certified row (lambda) -> tau_lo, tau_hi =
+⎛             2⋅H₀                            2⋅H₀             ⎞
+⎜──────────────────────────────, ──────────────────────────────⎟
+⎜         _____________________           _____________________⎟
+⎜        ╱                   2           ╱                   2 ⎟
+⎝k_λ + ╲╱  -2⋅H₀⋅κ_lo_λ + k_λ    k_λ + ╲╱  -2⋅H₀⋅κ_hi_λ + k_λ  ⎠
+primitive certified row (c) -> tau_lo, tau_hi =
+⎛             2⋅H₀                            2⋅H₀             ⎞
+⎜──────────────────────────────, ──────────────────────────────⎟
+⎜         _____________________           _____________________⎟
+⎜        ╱                   2           ╱                   2 ⎟
+⎝k_c + ╲╱  -2⋅H₀⋅κ_lo_c + k_c    k_c + ╲╱  -2⋅H₀⋅κ_hi_c + k_c  ⎠
+primitive certified row (gamma) -> tau_lo, tau_hi =
+⎛           2⋅H₀                         2⋅H₀            ⎞
+⎜───────────────────────────, ───────────────────────────⎟
+⎜        ___________________          ___________________⎟
+⎜       ╱                 2          ╱                 2 ⎟
+⎝kᵧ + ╲╱  -2⋅H₀⋅κₗₒ ᵧ + kᵧ    kᵧ + ╲╱  -2⋅H₀⋅κₕᵢ ᵧ + kᵧ  ⎠
+primitive certified row (U) -> tau_lo, tau_hi =
+⎛             2⋅H₀                            2⋅H₀             ⎞
+⎜──────────────────────────────, ──────────────────────────────⎟
+⎜         _____________________           _____________________⎟
+⎜        ╱                   2           ╱                   2 ⎟
+⎝k_U + ╲╱  -2⋅H₀⋅κ_lo_U + k_U    k_U + ╲╱  -2⋅H₀⋅κ_hi_U + k_U  ⎠
+primitive certified row (W) -> tau_lo, tau_hi =
+⎛             2⋅H₀                            2⋅H₀             ⎞
+⎜──────────────────────────────, ──────────────────────────────⎟
+⎜         _____________________           _____________________⎟
+⎜        ╱                   2           ╱                   2 ⎟
+⎝k_W + ╲╱  -2⋅H₀⋅κ_lo_W + k_W    k_W + ╲╱  -2⋅H₀⋅κ_hi_W + k_W  ⎠
+
+========================================================================================
+STAGE 190 SYMPY AUDIT PASSED
+========================================================================================
+
+EXIT_CODE: 0

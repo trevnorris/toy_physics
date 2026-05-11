@@ -1,12 +1,12 @@
-# Review: Stage 029 — Tracking branch bounds
+# Review: Stage 029 — Dynamic loading
 
-**Batch:** 4 — Kernel Continuation
-**Status:** Verified (1× MINOR, 1× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage029_tracking_branch_bounds.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage029_tracking_branch_bounds_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage029_dynamic_loading.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`
 
 ## Review Checklist
 
@@ -36,43 +36,61 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** MINOR
-
-**Notes Derivation Review:**
-
-1. **Equation-level correctness.** G_tr and F_tr correctly from Stage 028. Flat recovery at R=1 correct (9+2=11). Loading monotonicity dG_tr/dR = -36R xi^2(delta+xi)/[...]^2 verified by quotient rule — negative for R>0. Normalization monotonicity dF_tr/dR factored with polynomial P_R having all positive coefficients — positive for physical range. Exact comparison G_tr-G_flat and F_flat-F_tr with factored forms including (1-R^2) and (1-R) factors correct. Endpoint formulas: G_tr(R=0)=xi, F_tr(R=0)=1/(1-xi) verified. Bounds G_flat <= G_tr <= xi and 1/(1-xi) <= F_tr <= F_flat consistent with monotonicity directions. Residual comparison E_tr - E_flat = F_flat - F_tr > 0 correct.
-
-2. **Logical flow.** Clean: tracking functions → monotonicity → comparison → endpoints → bounds → residual theorem.
-
-3. **Physical interpretation.** Sound: R < 1 tracking branch requires less loading but also produces smaller normalization — a double-edged effect.
-
-**Script Review:**
-
-**B.1-B.7.** Faithful: endpoint limits, exact derivatives (sp.diff vs closed forms), flat-branch comparison formulas all verified. Polynomial coefficients P_R, P1, P2 transcribed and verified against SymPy computation. No tautologies. All pass (exit code 0).
-
-**Issues Found:**
-
-1. **(MINOR)** Script does not programmatically verify that all coefficients in P_R, P1, P2 are positive — it verifies the formula correctness but not the sign claim. Positivity is manifest by inspection of coefficient lists, but a programmatic check would strengthen the audit.
-
----
-
-### Agent: GPT-5 Codex — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-- The tracking-branch formulas are correct. I independently rechecked `G_tr` and `F_tr` and the endpoint limits `R=0` and `R=1`; the algebra matches the saved output exactly.
-- The derivative identities are also right. `dG_tr/dR` is strictly negative for physical `R>0`, while `dF_tr/dR` factors through a polynomial with positive coefficients, so the monotonicity claims are justified.
-- The flat-branch comparison formulas are exact, and the sign conclusions follow correctly from the factorization structure. The residual ordering `E_tr > E_flat` on `0 < R < 1` is therefore sound.
+1. **Equation-level correctness.** All equations consistent. Overlap constants kappa_0 = 2sqrt(2)/pi, kappa_1 = -4/(3pi), sigma = 88/(9pi^2) match Stage 10. Schur complement decomposes correctly into Xi(omega) I_2 + alpha(omega) v v^T (confirmed symbolically by script). Conservative static limits Xi_0, Delta_0, alpha_0 follow by direct substitution. Isotropic shift cancellation K1 - Xi_0 - (K0 - Xi_0) = DeltaK_ax is trivially correct and verified. tan(2 theta) formula consistent with Stage 11 after substitution. Refined softening threshold correctly uses shifted stiffnesses.
+
+2. **Logical flow.** Clean progression: coupled operator setup → Schur complement → conservative static specialization → outgoing dressing → transfer factor → selected-mode projection. Each step builds on prior stages.
+
+3. **Assumptions.** All stated: minimal internal block, sign convention for U-W cross coupling, passive/outgoing dressing, compact outgoing l=2 branch law.
+
+4. **Completeness.** Conservative static, general dynamic, first-order outgoing, and selected-mode projection all covered. Refined softening threshold included. No missing branches.
+
+5. **Notation consistency.** Consistent with Stages 10-11. New symbols (Xi, alpha(omega), Delta_UW, beta, beta_5, P_0) cleanly introduced.
+
+6. **Physical interpretation.** Sound. Isotropic shift (from U doublet) vs directional rank-1 load (from BdG + mixed) has clear physical meaning. beta_0 >= 0 (ratio of squares) ensures nonnegative transfer factor.
 
 **Script Review:**
 
-- The script faithfully checks the endpoint formulas, derivative identities, flat-branch comparison formulas, and the strong-split bounds.
-- I did not find a coding bug or a tautological check. The output matches the note, and the algebra is nontrivial enough to support the branch ordering theorem.
+**B.1 Faithful.** Internal block Mint and coupling C match notes Section 1. K1 = K0 + DeltaK_ax (recent fix) ensures K1 > K0.
+
+**B.2 No bugs.** Matrix inversions, differentiation, series expansion, limits all correct. Exit code 0.
+
+**B.3 Hardcoded values.** Only kappa_0 = 2sqrt(2)/pi and kappa_1 = -4/(3pi) — exact analytical values derived and verified in Stage 10.
+
+**B.4 Tautological checks.** None. Sigma computed by C^T Mint^{-1} C vs. closed-form Xi*I + alpha*vv^T — independent computations. Beta check compares SymPy derivative vs hand-constructed rational expression. Hellmann-Feynman limits are non-trivial.
+
+**B.5 Symbol assumptions.** All correct: omega real, stiffness/mass/frequency positive, coupling constants real (signs not fixed), Pi unconstrained (can be complex from outgoing port).
+
+**B.6 Output agreement.** All expect_zero pass. All notes claims confirmed.
+
+**B.7 Coverage.** Complete: Schur complement, conservative static data, angle law, softening threshold, outgoing dressing, transfer factor, selected-mode projection with limits.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+- The main structural claim checks out. Using the reduced internal block `(u, W, phi)`, the wall self-energy does decompose exactly as `Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`; I independently recomputed the Schur complement and got zero difference from that closed form.
+- The conservative static limits `Xi_0`, `Delta_0`, and `alpha_0` are consistent with the Stage 11 loaded-angle law, and the isotropic shift cancels out of the wall-level splitting exactly as claimed.
+- The outgoing transfer factor is also consistent with the earlier `P/Delta` structure. An independent SymPy check confirms that the `i omega^5` coefficient of the outgoing-substituted `alpha(omega)` is exactly the stated
+  `beta_5 = Gamma_2^(port) (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2`.
+- The selected-mode projection formula `delta D_-^(odd)(omega) = - i beta_5 kappa(theta_-)^2 omega^5 + O(omega^7)` is the correct rank-1 projection of the odd part onto the conservative lower wall mode.
+
+**Script Review:**
+
+- The script correctly verifies the Schur decomposition, the conservative profile-selection law, the refined softening threshold, and the selected-mode Hellmann-Feynman overlap formula. The saved output is consistent with the notes.
+- I did find one coverage gap: after substituting the outgoing port law, the script prints `alpha_out(omega)` and `beta_5`, but it does not explicitly assert that the extracted imaginary `omega^5` coefficient equals the stated `beta_5`. That identity is true, but it is only displayed, not checked.
 
 **Issues Found:**
 
-None.
+- **(MINOR)** Missing explicit assertion for the final outgoing-series coefficient. The audit should isolate the `i omega^5` term of `alpha_out(omega)` and compare it programmatically to `beta_5` instead of only printing both objects.
 
 **Questions:**
 

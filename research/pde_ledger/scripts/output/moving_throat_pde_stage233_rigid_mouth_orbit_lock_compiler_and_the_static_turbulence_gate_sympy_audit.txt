@@ -1,0 +1,51 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+# Date: 2026-05-11T12:51:54-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 233 SymPy audit: rigid-mouth orbit-lock compiler and the static turbulence gate ===
+
+Stage 188 observable compiler:
+Theta1 = dln_Rtr
+Xi1 = -B_star*dln_Rtr + dln_Nstar
+R1 = B_star*dln_Rtr - dln_Nstar - dln_eps_eta*eps_eta_star/(1 - eps_eta_star)
+
+Rigid-mouth specialization dln R_tr = 0:
+Theta1 -> 0
+Xi1 -> dln_Nstar
+R1 -> -dln_Nstar - dln_eps_eta*eps_eta_star/(1 - eps_eta_star)
+
+Outgoing-prefactor slope identity:
+P0 = N0/D0
+P1 = (D0*N01 - D01*N0)/D0**2
+Xi_load = N01/N0 - D01/D0
+Verified: Xi_load = P1 / P0
+
+Operator-rigid specialization D01 = 0:
+Xi_load -> N01/N0
+
+Transported static ceiling:
+|epsilon * Xi1| <= Pcrit*mhat0**2/(Delta_norm + Tquad) - 1
+Equivalent Pbar form: -1 + Pcrit/Pbar
+Calibrated branch Delta_norm = 0 -> (Pcrit*mhat0**2 - Tquad)/Tquad
+
+Track-locked internal-transfer gate:
+|epsilon * dln N_*| <= Pcrit*mhat0**2/(Delta_norm + Tquad) - 1
+If Xi1 is identified with the static load scalar on the operator-rigid branch:
+|epsilon * (N01 / N0)| <= Pcrit*mhat0**2/(Delta_norm + Tquad) - 1
+
+Stage 223 / Stage 224 carried numbers:
+Pbar compatibility point = 0.002069792318062885
+Robust budget = 0.367930328492646
+Nonempty budget = 0.737619063660757
+Implied Pcrit (robust) = 0.00283133168555931762164906695389
+Implied Pcrit (nonempty) = 0.00359651058968465822760635086652
+Recovered robust budget = 0.367930328492646061558113500249
+Recovered nonempty budget = 0.737619063660757132804394859984
+
+All Stage 233 symbolic and numerical checks passed.
+
+EXIT_CODE: 0

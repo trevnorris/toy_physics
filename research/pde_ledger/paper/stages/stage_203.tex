@@ -1,28 +1,27 @@
-\section[Stage 203]{Stage 203: Dynamic mixed-port kernel and phase-lag no-go}
+\section[Stage 203]{Stage 203: Scalar graph-slice theorem}
 \label{stage:203}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.1}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~203 promotes the one-port bundle to finite frequency and tests whether linear dynamic driving changes the same-charge kernel class.}
+\stagefield{Purpose}{Stage~203 proves that once a branch is aligned with the target graph, the only remaining closure equation is the scalar condition \(\widehat\chi_Q(\mathbf y)=1\).}
 
-\stagefield{Inputs}{Imports Stage~202, frequency-dependent BdG and Maxwell/mixed denominators, the outgoing dressing $\Pi_{\rm out}(\omega)$, and the off-pole conditions $\varpi^2-\omega^2\ne0$, $\Delta_\Pi\ne0$, $D_\Pi\ne0$.}
+\stagefield{Inputs}{Imports the Stage~202 graph, the graph-error packet, and differentiable candidate families in the positive free-quintuple domain.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage203_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl}.}
 
-\stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
+\stagefield{Derivation ledger}{The derivation composes \(\chi_Q\) with the target graph, proves graph-lifted tangents lie in \(\ker M_*\), separates graph-aligned and off-graph family packets, and applies the intermediate value theorem to one-parameter graph crossings.}
 
-\stagefield{Output}{Dynamic product-family theorem and phase-lag no-go: linear dynamic mixing preserves the static spatial families, and the first-order passive/outgoing insertion is a phase-lag term rather than a new real barrier-lowering kernel off resonance.}
+\stagefield{Output}{Scalar graph slice \(\mathcal Z_*=\{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\}\), graph-family tangency, and one-parameter crossing theorem.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
-\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
-\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
-\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\item Check target monomial ratios are formed against the declared target values before taking logarithms.
+\item Check the same-free-quintuple convention is used; changing the free/dependent split changes the projection chart.
+\item Check graph-aligned closure is not confused with actual PDE realization.
+\item Carry the \StatusExactClosure{} status tag whenever citing the compiler itself.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
-
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.1} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
 

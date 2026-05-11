@@ -1,28 +1,26 @@
-\section[Stage 218]{Stage 218: Rigid-mouth packet projectors}
+\section[Stage 218]{Stage 218: Final local mixed-ray closure theorem}
 \label{stage:218}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.6}.}
-\claimstatus{\StatusExactClosure{}.}
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.4}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}, \StatusOpen{}.}
 
-\stagefield{Purpose}{Stage~218 defines the finite packet map and its projectors in the direct rigid-mouth coordinates.}
+\stagefield{Purpose}{Stage~218 splices the unique support-five interior packet to the support-\(\le4\) boundary ledger and closes the declared local mixed-ray search.}
 
-\stagefield{Inputs}{Imports the direct packet variables, nontracking coordinate $q_{\rm nt}$, dressing coordinate $q_\eta$, and the static-blind line.}
+\stagefield{Inputs}{Imports the support-\(\le4\) global ledger, the support-five interior packet, and the unique five-simplex boundary stratification.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage218_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl}.}
 
-\stagefield{Derivation ledger}{The derivation constructs an involutive direct-packet map, derives projectors $P_{\rm nt}$ and $P_\eta$, identifies the static-blind dressing line, and proves the codimension-two orbit-lock statement.}
+\stagefield{Derivation ledger}{The derivation proves the boundary-identification theorem \(\partial\Delta_5^+=\mathcal S_{\le4}^{\rm loc}\), proves the support ceiling, splices the support-five interior and support-\(\le4\) intervals, classifies support-five outcomes, and records the exact evaluation budget.}
 
-\stagefield{Output}{Rigid-mouth packet projector theorem: the finite same-charge packet splits into independent nontracking and dressing axes, and orbit lock is codimension two.}
+\stagefield{Output}{Final local mixed-ray closure theorem, certified support-\(\le5\) splice interval, preferred total budget \(1464\), fallback budget \(2640\), and finite-candidate status of any remaining ambiguity.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
-\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
-\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
-\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+\item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+\item Check support-cardinality closure is limited to the declared five free coordinates.
+\item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.6} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
-
-
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.4} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}

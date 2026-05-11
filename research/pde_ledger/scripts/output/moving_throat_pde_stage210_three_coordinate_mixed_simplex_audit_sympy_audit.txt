@@ -1,0 +1,176 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_sympy_audit.py
+# Date: 2026-05-11T12:49:21-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 193 — THREE-COORDINATE MIXED-SIMPLEX AND THE CANONICAL TRIPLE-SCREEN AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Positive spherical simplex and exact boundary reductions
+----------------------------------------------------------------------------------------
+a_ij(r) =
+⎡     1     ⎤
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎢╲╱  r  + 1 ⎥
+⎢           ⎥
+⎢     r     ⎥
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎢╲╱  r  + 1 ⎥
+⎢           ⎥
+⎣     0     ⎦
+a_ik(s) =
+⎡     1     ⎤
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎢╲╱  s  + 1 ⎥
+⎢           ⎥
+⎢     0     ⎥
+⎢           ⎥
+⎢     s     ⎥
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎣╲╱  s  + 1 ⎦
+a_jk(nu) =
+⎡     0     ⎤
+⎢           ⎥
+⎢     1     ⎥
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎢╲╱  ν  + 1 ⎥
+⎢           ⎥
+⎢     ν     ⎥
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎣╲╱  ν  + 1 ⎦
+edge ij normalization = 0
+edge ik normalization = 0
+edge jk normalization = 0
+edge ij slope reduction = 0
+edge ik slope reduction = 0
+edge jk slope reduction = 0
+
+----------------------------------------------------------------------------------------
+II. Exact three-coordinate gradient-synergy theorem
+----------------------------------------------------------------------------------------
+a_grad =
+⎡         kᵢ          ⎤
+⎢─────────────────────⎥
+⎢   __________________⎥
+⎢  ╱   2      2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  ⎥
+⎢                     ⎥
+⎢         k_j         ⎥
+⎢─────────────────────⎥
+⎢   __________________⎥
+⎢  ╱   2      2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  ⎥
+⎢                     ⎥
+⎢         kₖ          ⎥
+⎢─────────────────────⎥
+⎢   __________________⎥
+⎢  ╱   2      2     2 ⎥
+⎣╲╱  kᵢ  + k_j  + kₖ  ⎦
+k_grad =
+   __________________
+  ╱   2      2     2 
+╲╱  kᵢ  + k_j  + kₖ  
+gradient-optimal normalization = 0
+gradient-optimal slope value = 0
+gradient-optimal ratio r = 0
+gradient-optimal ratio s = 0
+Kgrad^2 - Kij^2 - k_k^2 = 0
+Kgrad^2 - Kik^2 - k_j^2 = 0
+Kgrad^2 - Kjk^2 - k_i^2 = 0
+
+----------------------------------------------------------------------------------------
+III. Exact total cross-leverage theorem
+----------------------------------------------------------------------------------------
+w_Sigma(a) =
+2⋅aᵢ⋅a_j + 2⋅aᵢ⋅aₖ + 2⋅a_j⋅aₖ
+w_Sigma - ((sum a)^2 - ||a||^2) = 0
+Cauchy slack identity = 0
+equal-mix barycenter normalization = 0
+pairwise equal-edge normalization = 0
+w_Sigma(equal-mix barycenter) - 2 = 0
+w_Sigma(pairwise equal edge) - 1 = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact three-coordinate curvature law and edge reductions
+----------------------------------------------------------------------------------------
+kappa_ijk(a) =
+aᵢ⋅(aᵢ⋅uᵢᵢ + a_j⋅u_ij + aₖ⋅uᵢₖ) + a_j⋅(aᵢ⋅u_ij + a_j⋅u_jj + aₖ⋅u_jk) + aₖ⋅(aᵢ⋅ ↪
+
+↪ uᵢₖ + a_j⋅u_jk + aₖ⋅uₖₖ)
+edge ij curvature reduction = 0
+edge ik curvature reduction = 0
+edge jk curvature reduction = 0
+diagonal-neutral reduction = 0
+
+----------------------------------------------------------------------------------------
+V. Exact fixed-simplex root map and ratio-coordinate form
+----------------------------------------------------------------------------------------
+tau_ijk(a) =
+                                                                               ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                             _________________________________________________ ↪
+                            ╱                                                  ↪
+aᵢ⋅kᵢ + a_j⋅k_j + aₖ⋅kₖ + ╲╱  -2⋅H₀⋅(aᵢ⋅(aᵢ⋅uᵢᵢ + a_j⋅u_ij + aₖ⋅uᵢₖ) + a_j⋅(aᵢ ↪
+
+↪      2⋅H₀                                                                    ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪ ____________________________________________________________________________ ↪
+↪                                                                              ↪
+↪ ⋅u_ij + a_j⋅u_jj + aₖ⋅u_jk) + aₖ⋅(aᵢ⋅uᵢₖ + a_j⋅u_jk + aₖ⋅uₖₖ)) + (aᵢ⋅kᵢ + a_ ↪
+
+↪                 
+↪ ────────────────
+↪ ________________
+↪               2 
+↪ j⋅k_j + aₖ⋅kₖ)  
+Delta_sharp(r,s) =
+        2                                            2                         ↪
+- 2⋅H₀⋅r ⋅u_jj - 4⋅H₀⋅r⋅s⋅u_jk - 4⋅H₀⋅r⋅u_ij - 2⋅H₀⋅s ⋅uₖₖ - 4⋅H₀⋅s⋅uᵢₖ - 2⋅H₀ ↪
+
+↪          2                               2  2                    2  2
+↪ ⋅uᵢᵢ + kᵢ  + 2⋅kᵢ⋅k_j⋅r + 2⋅kᵢ⋅kₖ⋅s + k_j ⋅r  + 2⋅k_j⋅kₖ⋅r⋅s + kₖ ⋅s 
+interior ratio normalization = 0
+discriminant numerator reduction = 0
+interior ratio tau form = 0
+tau(r,s) -> pairwise ij on s=0 = 0
+tau(r,s) -> pairwise ik on r=0 = 0
+direct jk edge tau reduction = 0
+
+----------------------------------------------------------------------------------------
+VI. Canonical interior screen values
+----------------------------------------------------------------------------------------
+k_eq =
+√3⋅(kᵢ + k_j + kₖ)
+──────────────────
+        3         
+k_grad =
+   __________________
+  ╱   2      2     2 
+╲╱  kᵢ  + k_j  + kₖ  
+equal-mix slope value = 0
+gradient slope value = 0
+k_grad^2 - ||k||^2 = 0
+
+========================================================================================
+STAGE 193 SYMPY AUDIT COMPLETED SUCCESSFULLY
+========================================================================================
+
+EXIT_CODE: 0

@@ -1,0 +1,30 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage076_n5_wall_depth_lock_mathematica_audit.wl
+# Date: 2026-05-11T12:58:41-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 059 — EXACT n=5 WALL-DEPTH LOCK
+========================================================================================
+c_s^2(rho) = (5*kConst*rho^4)/mpsi
+h(rho) = (5*kConst*rho^4)/4
+n=5 enthalpy identity = 0
+PASS: n=5 enthalpy identity
+Theta_w (enthalpy lock) = (cSw^2*lambdaMu^2*mpsi^2*rhoW^2)/(4*hbar^2)
+Theta_w - expected = 0
+PASS: Theta_w - expected
+healing-lock reduction = 0
+PASS: healing-lock reduction
+Theta_w (healing lock) = (lambdaMu^2*rhoW^2)/(16*ell^2)
+Theta_w (reference branch, general a) = (25*lambdaMu^2*rhoW^2)/a^2
+Theta_w (reference branch, normalized wall units) = 25*lambdaMu^2*rhoW^2
+normalized reference factor = 0
+PASS: normalized reference factor
+
+Stage 076 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,50 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage159_hybrid_outlet_projection_mathematica_audit.wl
+# Date: 2026-05-11T13:17:45-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 142 — HYBRID OUTLET LINEARIZATION
+========================================================================================
+delta chi formula = 0
+PASS: delta chi formula
+delta E2 formula = 0
+PASS: delta E2 formula
+delta E4 formula = 0
+PASS: delta E4 formula
+
+========================================================================================
+MOUTH-GAIN -> HYBRID-LOADING TRANSPORT
+========================================================================================
+deltaC mouth transport = 0
+PASS: deltaC mouth transport
+sigma_star substitution = 0
+PASS: sigma_star substitution
+
+========================================================================================
+CANONICAL-EVEN PRESERVATION
+========================================================================================
+solution = {{deltaC -> 0, dk -> 0}}
+determinant = -27*sigma0
+
+========================================================================================
+FINAL REDUCED DEFECT
+========================================================================================
+final Delta_Q + 9 sigma* dgamma /(1-sigma*) = 0
+PASS: final Delta_Q + 9 sigma* dgamma /(1-sigma*)
+
+Carry-forward formulas:
+  delta C := delta rho_R - 4 delta sigma_W
+  delta E2 = (delta C - 9 sigma_* delta kappa_W)/(27(1-sigma_*))
+  delta E4 = (5 delta C - 72 sigma_* delta kappa_W)/(243(1-sigma_*))
+  Delta_Q  = (delta C - 27 sigma_* delta gamma_W)/(3(1-sigma_*))
+  Canonical-even preservation => delta C = delta kappa_W = 0
+  Hence Delta_Q = -9 sigma_* delta gamma_W/(1-sigma_*)
+
+Stage 159 Mathematica audit passed.
+
+EXIT_CODE: 0

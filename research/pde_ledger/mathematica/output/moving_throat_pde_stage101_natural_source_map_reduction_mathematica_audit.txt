@@ -1,0 +1,27 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage101_natural_source_map_reduction_mathematica_audit.wl
+# Date: 2026-05-11T13:05:49-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 084 — NATURAL SOURCE-MAP REDUCTION
+========================================================================================
+NQ from exact factorized odd normalization = 1/(chiQ*mHat0^2)
+point-particle natural branch mhat0->1 gives = chiQ^(-1)
+canonical compact outgoing branch chiQ=1 gives = 1
+point-particle natural branch reduction = 0
+PASS: point-particle natural branch reduction
+canonical compact outgoing branch gives NQ=1 = 0
+PASS: canonical compact outgoing branch gives NQ=1
+NQ - 1 in terms of DeltaQ = -1 + (1 + deltaQ)^(-1)
+small-DeltaQ series = -deltaQ + deltaQ^2
+exact replacement chiQ=1+DeltaQ = 0
+PASS: exact replacement chiQ=1+DeltaQ
+
+Stage 101 Mathematica audit passed.
+
+EXIT_CODE: 0

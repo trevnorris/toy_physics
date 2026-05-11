@@ -1,3 +1,15 @@
-PASS  stage138_139_fixedpoint_stress  (updated, 6s)
+PASS  stage003_021_foundational_stress  (updated, 4s)
+PASS  stage045_048_stress  (updated, 4s)
+PASS  stage058_170_foundational_stress  (updated, 5s)
+PASS  stage106_canonical_outgoing_stress  (updated, 4s)
+PASS  stage125_positive_source_stress  (updated, 4s)
+PASS  stage142_144_mouth_branch_stress  (updated, 5s)
+PASS  stage146_148_rigidity_stress  (updated, 5s)
+PASS  stage150_152_profile_correction_stress  (updated, 4s)
+PASS  stage154_coevolving_map_stress  (updated, 6s)
+PASS  stage155_156_fixedpoint_stress  (updated, 5s)
+PASS  stage185_187_orbit_stress  (updated, 4s)
+PASS  stage248_event_chain_stress  (updated, 5s)
+PASS  stage253_material_threshold_stress  (updated, 5s)
 
-TOTAL: 1  PASS: 1  FAIL: 0  SKIPPED: 1  MODE: update
+TOTAL: 13  PASS: 13  FAIL: 0  SKIPPED: 1  MODE: update

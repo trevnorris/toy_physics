@@ -7,7 +7,7 @@
 # Usage:
 #   bash research/pde_ledger/scripts/run_all_audits.sh           # incremental
 #   bash research/pde_ledger/scripts/run_all_audits.sh --force    # re-run all
-#   bash research/pde_ledger/scripts/run_all_audits.sh stage042   # run one stage
+#   bash research/pde_ledger/scripts/run_all_audits.sh stage059   # run one stage
 
 set -euo pipefail
 

@@ -1,0 +1,209 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy_sympy_audit.py
+# Date: 2026-05-11T12:49:18-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 191 — PAIRWISE MIXED RAYS AND OFF-DIAGONAL HESSIAN SYNERGY
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact pairwise mixed-ray family and oriented slope law
+----------------------------------------------------------------------------------------
+mixed-ray direction s_ij(r) =
+⎡     1     ⎤
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎢╲╱  r  + 1 ⎥
+⎢           ⎥
+⎢     r     ⎥
+⎢───────────⎥
+⎢   ________⎥
+⎢  ╱  2     ⎥
+⎣╲╱  r  + 1 ⎦
+oriented slope K_ij(r) =
+-kᵢ - k_j⋅r
+───────────
+   ________
+  ╱  2     
+╲╱  r  + 1 
+positive slope magnitude k_ij(r) =
+kᵢ + k_j⋅r 
+───────────
+   ________
+  ╱  2     
+╲╱  r  + 1 
+mixed slope law = 0
+d k_ij / dr =
+-kᵢ⋅r + k_j
+───────────
+        3/2
+⎛ 2    ⎞   
+⎝r  + 1⎠   
+mixed slope derivative law = 0
+gradient-optimal ratio r_grad =
+k_j
+───
+kᵢ 
+k_ij(r_grad) =
+   ____________
+  ╱   2      2 
+╲╱  kᵢ  + k_j  
+gradient-optimal ratio stationarity = 0
+gradient-optimal slope = 0
+gradient gain over primitive i = 0
+
+----------------------------------------------------------------------------------------
+II. Exact mixed curvature decomposition and cross-Hessian leverage
+----------------------------------------------------------------------------------------
+pairwise curvature H_1,ij(r) =
+hᵢᵢ + h_ij⋅r + r⋅(h_ij + h_jj⋅r)
+────────────────────────────────
+              2                 
+             r  + 1             
+weights (w_i, w_x, w_j) =
+⎛                   2  ⎞
+⎜  1      2⋅r      r   ⎟
+⎜──────, ──────, ──────⎟
+⎜ 2       2       2    ⎟
+⎝r  + 1  r  + 1  r  + 1⎠
+mixed curvature decomposition = 0
+diagonal neutrality when h_ij = 0 = 0
+d w_x / dr =
+   ⎛     2⎞  
+ 2⋅⎝1 - r ⎠  
+─────────────
+ 4      2    
+r  + 2⋅r  + 1
+cross-weight derivative = 0
+cross-weight stationarity at r=1 = 0
+cross-weight maximum value = 0
+
+----------------------------------------------------------------------------------------
+III. Canonical gradient-optimal and equal-mix mixed rays
+----------------------------------------------------------------------------------------
+gradient-optimal mixed direction =
+⎡      kᵢ       ⎤
+⎢───────────────⎥
+⎢   ____________⎥
+⎢  ╱   2      2 ⎥
+⎢╲╱  kᵢ  + k_j  ⎥
+⎢               ⎥
+⎢      k_j      ⎥
+⎢───────────────⎥
+⎢   ____________⎥
+⎢  ╱   2      2 ⎥
+⎣╲╱  kᵢ  + k_j  ⎦
+gradient-optimal slope =
+    ____________
+   ╱   2      2 
+-╲╱  kᵢ  + k_j  
+gradient-optimal curvature =
+kᵢ⋅(hᵢᵢ⋅kᵢ + h_ij⋅k_j) + k_j⋅(h_ij⋅kᵢ + h_jj⋅k_j)
+─────────────────────────────────────────────────
+                     2      2                    
+                   kᵢ  + k_j                     
+gradient-optimal direction from r_grad =
+⎡0⎤
+⎢ ⎥
+⎣0⎦
+gradient-optimal K = 0
+gradient-optimal curvature law = 0
+equal-mix direction =
+⎡√2⎤
+⎢──⎥
+⎢2 ⎥
+⎢  ⎥
+⎢√2⎥
+⎢──⎥
+⎣2 ⎦
+equal-mix slope =
+√2⋅(-kᵢ - k_j)
+──────────────
+      2       
+equal-mix curvature =
+hᵢᵢ          h_jj
+─── + h_ij + ────
+ 2            2  
+equal-mix direction from r=1 =
+⎡0⎤
+⎢ ⎥
+⎣0⎦
+equal-mix slope law = 0
+equal-mix curvature law = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact mixed curvature envelopes from entrywise envelopes
+----------------------------------------------------------------------------------------
+lower mixed curvature envelope =
+                           2
+hiiₗₒ + 2⋅hijₗₒ⋅r + hjjₗₒ⋅r 
+────────────────────────────
+            2               
+           r  + 1           
+upper mixed curvature envelope =
+                           2
+hiiₕᵢ + 2⋅hijₕᵢ⋅r + hjjₕᵢ⋅r 
+────────────────────────────
+            2               
+           r  + 1           
+lower envelope weighted form = 0
+upper envelope weighted form = 0
+
+----------------------------------------------------------------------------------------
+V. Fixed-ratio mixed-ray certified bracket data
+----------------------------------------------------------------------------------------
+Delta_lo(r) =
+       ⎛                           2⎞               2
+- 2⋅H₀⋅⎝hiiₗₒ + 2⋅hijₗₒ⋅r + hjjₗₒ⋅r ⎠ + (kᵢ + k_j⋅r) 
+─────────────────────────────────────────────────────
+                        2                            
+                       r  + 1                        
+Delta_hi(r) =
+       ⎛                           2⎞               2
+- 2⋅H₀⋅⎝hiiₕᵢ + 2⋅hijₕᵢ⋅r + hjjₕᵢ⋅r ⎠ + (kᵢ + k_j⋅r) 
+─────────────────────────────────────────────────────
+                        2                            
+                       r  + 1                        
+tau_lo(r) =
+                                   ________                            
+                                  ╱  2                                 
+                           2⋅H₀⋅╲╱  r  + 1                             
+───────────────────────────────────────────────────────────────────────
+                _______________________________________________________
+               ╱        ⎛                           2⎞               2 
+kᵢ + k_j⋅r + ╲╱  - 2⋅H₀⋅⎝hiiₗₒ + 2⋅hijₗₒ⋅r + hjjₗₒ⋅r ⎠ + (kᵢ + k_j⋅r)  
+tau_hi(r) =
+                                   ________                            
+                                  ╱  2                                 
+                           2⋅H₀⋅╲╱  r  + 1                             
+───────────────────────────────────────────────────────────────────────
+                _______________________________________________________
+               ╱        ⎛                           2⎞               2 
+kᵢ + k_j⋅r + ╲╱  - 2⋅H₀⋅⎝hiiₕᵢ + 2⋅hijₕᵢ⋅r + hjjₕᵢ⋅r ⎠ + (kᵢ + k_j⋅r)  
+quadratic root relation for tau_lo = 0
+quadratic root relation for tau_hi = 0
+
+----------------------------------------------------------------------------------------
+VI. Canonical screen rays separate gradient gain from cross-Hessian leverage
+----------------------------------------------------------------------------------------
+gradient and equal-mix coincide iff k_i-k_j = 0 via ratio difference = 0
+cross-Hessian weight on gradient-optimal ray =
+ 2⋅kᵢ⋅k_j 
+──────────
+  2      2
+kᵢ  + k_j 
+cross-Hessian weight on equal-mix ray =
+1
+gradient-optimal cross weight formula = 0
+
+========================================================================================
+STAGE 191 SYMPY AUDIT COMPLETED SUCCESSFULLY
+========================================================================================
+
+EXIT_CODE: 0

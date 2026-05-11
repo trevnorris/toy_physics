@@ -1,22 +1,35 @@
-\section[Stage 051]{Stage 051: Resonance-Corrected Thresholds for the Sech--Gaussian Benchmark}
+\section[Stage 051]{Stage 051: Exact Lowest-Twin Sufficiency Criterion on the Tracking Branch}
 \label{stage:051}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} after inserting the benchmark coherence penalty.}
-\stagefield{Purpose}{Stage~051 shows that the first independent-profile benchmark changes the matched thresholds only mildly.}
-\stagefield{Inputs}{The matched window \eqref{eq:app-stage049-Wwindow} and penalty factor \(P_{\rm res}\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the branch-product form.}
+\stagefield{Purpose}{Stage~051 expresses the lowest-twin support test in the same branch-product variables used by the continuum placement map.}
+\stagefield{Inputs}{The tracking-branch product \(\Pi_{\rm tr}=F_{\rm tr}G_{\rm tr}\) and \(C_{\rm mix}=8\Lambda(1-\epsilon)/\pi^2\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage051_resonance_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage051_resonance_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage051_resonance_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage051_resonance_thresholds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage051_lowest_twin_criterion_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage051_lowest_twin_criterion_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The resonance-corrected matched thresholds are multiplied by
+Define
 \begin{equation}
-\label{eq:app-stage051-Pres}
-P_{\rm res}\simeq1.005612487760576.
+\label{eq:app-stage051-Cmix}
+C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
 \end{equation}
-Thus the independent-profile benchmark raises the required wall figure of merit by about \(0.56\%\), not by an order-one factor.
+The required enhancement is \(S_{\rm req}=\Pi_{\rm tr}/C_{\rm mix}\).  Since the lowest twin gives \(S_0=2\), it is sufficient iff
+\begin{equation}
+\label{eq:app-stage051-twin-criterion}
+\boxed{
+\Pi_{\rm tr}\leq2C_{\rm mix}
+=\frac{16\Lambda(1-\epsilon)}{\pi^2}}.
+\end{equation}
+Equivalently, the threshold scales can be written as
+\begin{equation}
+\label{eq:app-stage051-Lambda-threshold}
+\Lambda_{\rm twin,req}=\frac{\pi^2}{16(1-\epsilon)}\Pi_{\rm tr},
+\qquad
+M_{\rm mix}^{({\rm twin,req})}=\frac{G_{\rm tr}}{2}.
+\end{equation}
 
-\stagefield{Output}{Threshold correction factor \(P_{\rm res}\).}
-\stagefield{Downstream use}{Stage~052 uses this to state a three-zone support/source verdict.}
+\stagefield{Output}{The lowest-twin branch-product criterion \eqref{eq:app-stage051-twin-criterion}.}
+\stagefield{Downstream use}{Stage~052 uses this criterion to split the support problem into mixed-only, lowest-twin, and non-twin regimes.}
 

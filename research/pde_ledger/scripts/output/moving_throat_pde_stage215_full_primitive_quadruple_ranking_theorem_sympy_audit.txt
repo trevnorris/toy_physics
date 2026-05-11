@@ -1,0 +1,81 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+# Date: 2026-05-11T12:49:34-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 198 — FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact combinatorial ledger
+----------------------------------------------------------------------------------------
+primitive axes = ('lambda', 'c', 'gamma', 'U', 'W')
+primitive triples = [('lambda', 'c', 'gamma'), ('lambda', 'c', 'U'), ('lambda', 'c', 'W'), ('lambda', 'gamma', 'U'), ('lambda', 'gamma', 'W'), ('lambda', 'U', 'W'), ('c', 'gamma', 'U'), ('c', 'gamma', 'W'), ('c', 'U', 'W'), ('gamma', 'U', 'W')]
+primitive quadruples = [('lambda', 'c', 'gamma', 'U'), ('lambda', 'c', 'gamma', 'W'), ('lambda', 'c', 'U', 'W'), ('lambda', 'gamma', 'U', 'W'), ('c', 'gamma', 'U', 'W')]
+#triples = 10
+#quadruples = 5
+#triples - binomial(5,3) = 0
+#quadruples - binomial(5,4) = 0
+quadruple face incidence ('lambda', 'c', 'gamma', 'U') -> 4
+quadruple face incidence ('lambda', 'c', 'gamma', 'W') -> 4
+quadruple face incidence ('lambda', 'c', 'U', 'W') -> 4
+quadruple face incidence ('lambda', 'gamma', 'U', 'W') -> 4
+quadruple face incidence ('c', 'gamma', 'U', 'W') -> 4
+triple incidence ('lambda', 'c', 'gamma') -> 2
+triple incidence ('lambda', 'c', 'U') -> 2
+triple incidence ('lambda', 'c', 'W') -> 2
+triple incidence ('lambda', 'gamma', 'U') -> 2
+triple incidence ('lambda', 'gamma', 'W') -> 2
+triple incidence ('lambda', 'U', 'W') -> 2
+triple incidence ('c', 'gamma', 'U') -> 2
+triple incidence ('c', 'gamma', 'W') -> 2
+triple incidence ('c', 'U', 'W') -> 2
+triple incidence ('gamma', 'U', 'W') -> 2
+axis incidence lambda -> 4
+axis incidence c -> 4
+axis incidence gamma -> 4
+axis incidence U -> 4
+axis incidence W -> 4
+
+----------------------------------------------------------------------------------------
+II. Exact boundary-splice algebra
+----------------------------------------------------------------------------------------
+beta_lo =
+Min(tau_ijk_lo, tau_ijl_lo, tau_ikl_lo, tau_jkl_lo)
+beta_hi =
+Min(tau_ijk_hi, tau_ijl_hi, tau_ikl_hi, tau_jkl_hi)
+full_lo =
+Min(iota_lo, tau_ijk_lo, tau_ijl_lo, tau_ikl_lo, tau_jkl_lo)
+full_hi =
+Min(iota_hi, tau_ijk_hi, tau_ijl_hi, tau_ikl_hi, tau_jkl_hi)
+nested Min flattening (lo) = True
+nested Min flattening (hi) = True
+
+----------------------------------------------------------------------------------------
+III. Exhaustive interval-theorem checks
+----------------------------------------------------------------------------------------
+verified local full-simplex interval theorem on 3136 ordered integer samples
+verified interior-certified local order on 924 samples
+verified boundary-certified local order on 462 samples
+verified certified interval ordering on 896 samples
+verified global splice theorem on 3136 samples
+verified global four-coordinate improvement theorem on 924 samples
+verified global four-coordinate no-improvement theorem on 462 samples
+
+----------------------------------------------------------------------------------------
+IV. Exact finite evaluation budget theorem
+----------------------------------------------------------------------------------------
+imported support<=3 budget = 600
+interior quadruple evaluation budget = 540
+full support<=4 budget = 1140
+quadruple interior budget - 540 = 0
+full support<=4 budget - 1140 = 0
+
+All Stage 215 identities and interval theorems verified.
+
+EXIT_CODE: 0

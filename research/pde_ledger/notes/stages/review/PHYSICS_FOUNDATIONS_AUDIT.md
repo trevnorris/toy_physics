@@ -8,7 +8,7 @@ chain:
 - [stage001_geometry_lift.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage001_geometry_lift.md)
 - [stage002_breathing_reduction.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage002_breathing_reduction.md)
 - [stage003_bdg_coupling.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage003_bdg_coupling.md)
-- [stage004_maxwell_mixed_response.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage004_maxwell_mixed_response.md)
+- [stage021_reduced_one_port_normal_form.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage021_reduced_one_port_normal_form.md)
 
 The standard here is not ontology. The standard is:
 
@@ -34,7 +34,7 @@ But there are still three real referee-facing pressure points:
 
 1. the wall/interface theory in [stage001_geometry_lift.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage001_geometry_lift.md) is a **controlled effective ansatz**, not a unique derivation from the parent theory;
 2. the stable BdG elimination in [stage003_bdg_coupling.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage003_bdg_coupling.md) is only as good as the assumed branch stability/spectral separation;
-3. the outgoing mixed-port attachment in [stage004_maxwell_mixed_response.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage004_maxwell_mixed_response.md) is a legitimate reduced representative, but not yet the unique microscopic radiation theorem.
+3. the outgoing mixed-port attachment in [stage021_reduced_one_port_normal_form.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage021_reduced_one_port_normal_form.md) is a legitimate reduced representative, but not yet the unique microscopic radiation theorem.
 
 Those are important limitations, but they are **not** the same as hidden tuning
 or physical incoherence.
@@ -52,7 +52,7 @@ Why:
 - [stage001_geometry_lift.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage001_geometry_lift.md) introduces constitutive functions `mu_eta, T_w, T_Omega, K_eta`, but keeps them symbolic rather than fitting them to later target values.
 - [stage002_breathing_reduction.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage002_breathing_reduction.md) reduces those symbolic coefficients to overlap matrices; again, no later-output fitting enters.
 - [stage003_bdg_coupling.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage003_bdg_coupling.md) derives Schur-complement self-energies structurally from couplings and stable support frequencies.
-- [stage004_maxwell_mixed_response.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage004_maxwell_mixed_response.md) derives the transfer factor and odd `l=2` fingerprint from the reduced model algebra; the sign and `omega^5` structure are not inserted by hand.
+- [stage021_reduced_one_port_normal_form.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage021_reduced_one_port_normal_form.md) derives the transfer factor and odd `l=2` fingerprint from the reduced model algebra; the sign and `omega^5` structure are not inserted by hand.
 
 So the early chain is not succeeding because of local retuning. It is
 succeeding because once the reduced ingredients are chosen, the resulting
@@ -113,7 +113,7 @@ This is the sharpest current foundational assumption.
 
 ## 4. The Stage `004` outgoing bridge is legitimate, but not yet unique
 
-[stage004_maxwell_mixed_response.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage004_maxwell_mixed_response.md)
+[stage021_reduced_one_port_normal_form.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage021_reduced_one_port_normal_form.md)
 is physically one of the strongest early stages, not one of the weakest.
 
 Why:
@@ -141,7 +141,7 @@ Maxwell or passivity concepts.
 
 One thing a referee could attack later if the language becomes careless:
 
-- [stage004_maxwell_mixed_response.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage004_maxwell_mixed_response.md)
+- [stage021_reduced_one_port_normal_form.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage021_reduced_one_port_normal_form.md)
   shows that a derivative-coupled scalar outlet can delay the dangerous scalar
   odd term from `omega` to `omega^3`.
 
@@ -230,8 +230,8 @@ So the foundations currently pass the effective-model legitimacy test:
 
 The next physics red-team target should be:
 
-- [stage112_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage112_mouth_boundary_layer.md)
-- [stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md)
+- [stage129_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage129_mouth_boundary_layer.md)
+- [stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md)
 
 That is where a referee is most likely to ask whether an effective closure has
 become a disguised tuning knob.

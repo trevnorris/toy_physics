@@ -1,27 +1,27 @@
-\section[Stage 186]{Stage 186: Scalar graph-slice theorem}
+\section[Stage 186]{Stage 186: Similarity-orbit tangent theorem}
 \label{stage:186}
 
-\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.1}.}
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.3}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~186 proves that once a branch is aligned with the target graph, the only remaining closure equation is the scalar condition \(\widehat\chi_Q(\mathbf y)=1\).}
+\stagefield{Purpose}{Stage~186 is the original-stage audit card for \emph{Similarity-orbit tangent theorem}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
 
-\stagefield{Inputs}{Imports the Stage~185 graph, the graph-error packet, and differentiable candidate families in the positive free-quintuple domain.}
+\stagefield{Inputs}{This stage imports the coherent local D/N tracking branch, the transfer-shape slope \(\Xi_1\), and the microscopic coherent-kernel variables.  It assumes the positive-coupling state space used for the quotient/orbit theorem.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage186_similarity_orbit_closure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage186_similarity_orbit_closure_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The derivation composes \(\chi_Q\) with the target graph, proves graph-lifted tangents lie in \(\ker M_*\), separates graph-aligned and off-graph family packets, and applies the intermediate value theorem to one-parameter graph crossings.}
+\stagefield{Derivation ledger}{The derivation changes variables from raw microscopic slippages to tracking, nontracking, and dressing coordinates; integrates them to monomial quotient coordinates; and identifies the zero-defect tangent and finite similarity orbits.}
 
-\stagefield{Output}{Scalar graph slice \(\mathcal Z_*=\{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\}\), graph-family tangency, and one-parameter crossing theorem.}
+\stagefield{Output}{Shows the zero-defect equations are the tangent equations of a five-parameter monomial-preserving similarity orbit \(\mathcal G_*\).}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check target monomial ratios are formed against the declared target values before taking logarithms.
-\item Check the same-free-quintuple convention is used; changing the free/dependent split changes the projection chart.
-\item Check graph-aligned closure is not confused with actual PDE realization.
-\item Carry the \StatusExactClosure{} status tag whenever citing the compiler itself.
+\item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before interpretation.
+\item Check the positive-coupling state-space assumption before invoking the finite orbit theorem.
+\item Check that quotient motion is distinguished from the five-dimensional similarity orbit.
+\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.1} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.3} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
 

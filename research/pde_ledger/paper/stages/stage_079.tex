@@ -1,27 +1,50 @@
-\section[Stage 079]{Stage 079: Actual Branch Verdict for the Geometry-Lane Check}
+\section[Stage 079]{Stage 079: Exact Family--1 Map from Quadrupole Demand to Required Transport Bias}
 \label{stage:079}
 
-\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the Family--1 demand-to-transport map.}
+\stagefield{Purpose}{Stage~079 converts a required support ratio into the transport bias required on the explicit Family--1 branch.}
+\stagefield{Inputs}{The Family--1 parameters \(\kappa_{\rm F1}=12321/5\), \(\eta=37\), and the physical support map of Stage~057.}
 
-\stagefield{Purpose}{Stage~79 is a geometry-lane firewall ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage079_family1_quadrupole_pe_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage079_family1_quadrupole_pe_map_mathematica_audit.txt}.}
 
-\stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier, the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\subsection*{Derivation}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage079_geometry_lane_check_verdict_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage079_geometry_lane_check_verdict_mathematica_audit.wl}.}
+Let \(y_{\rm F1}\) solve
+\begin{equation}
+\label{eq:app-stage079-yF1}
+y_{\rm F1}\tan y_{\rm F1}=37,
+\qquad
+0<y_{\rm F1}<\frac{\pi}{2},
+\qquad
+ y_{\rm F1}\simeq1.52948248371470.
+\end{equation}
+Define
+\begin{equation}
+\label{eq:app-stage079-AF1}
+A_{\rm F1}=\frac{\kappa_{\rm F1}+\pi^2/4}{\kappa_{\rm F1}+y_{\rm F1}^2},
+\qquad
+\kappa_{\rm F1}=\frac{12321}{5}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage079-AF1-value}
+\boxed{
+A_{\rm F1}\simeq1.00005192880220}.
+\end{equation}
+The Family--1 support-ratio map is
+\begin{equation}
+\label{eq:app-stage079-zetaF1}
+\boxed{
+\zeta_{\rm F1}(\mathrm{Pe})=A_{\rm F1}\Omega_{\mathrm{Pe}}^2}.
+\end{equation}
+The hard constructive ceiling is
+\begin{equation}
+\label{eq:app-stage079-ceiling}
+\boxed{
+\zeta_{\max}^{\rm F1}=A_{\rm F1}\frac{\pi^2}{4}
+\simeq2.46752922945601}.
+\end{equation}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-
-\begin{quote}
-The natural isotropic branch is conservatively clean; only genuine symmetry breaking or a second dynamic \(l=2\) geometry pole can reopen the issue.
-\end{quote}
-
-\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-\item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
-\item Check that any support/source success statement still carries the minimal-module hypothesis.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{This stage feeds Stages 83--89 and any downstream use of \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), or \(N_Q\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Output}{Family--1 demand map \eqref{eq:app-stage079-zetaF1} and ceiling \eqref{eq:app-stage079-ceiling}.}
+\stagefield{Downstream use}{Stages~080--081 convert wall-depth thresholds into \(\zeta\) and product windows.}

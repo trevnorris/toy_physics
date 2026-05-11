@@ -1,0 +1,55 @@
+{
+  "updated": "2026-05-11",
+  "canonical_stage_count": 253,
+  "policy": [
+    {
+      "current_range": "001-003",
+      "source": "existing PDE ledger",
+      "mapping": "unchanged"
+    },
+    {
+      "current_range": "004-020",
+      "source": "notes/em_projected derivation notes through step 18; no step 06 file exists",
+      "mapping": "projected Maxwell derivation imported as ordinary global stages"
+    },
+    {
+      "current_range": "021",
+      "source": "retained reduced one-port normal form",
+      "mapping": "former Stage 004 EM reduction retained as the one-port closure after projection"
+    },
+    {
+      "current_range": "022-253",
+      "source": "former PDE ledger stages 005-236",
+      "mapping": "+17"
+    }
+  ],
+  "excluded_em_projected_material": [
+    "step 19 branch-export diagnostic",
+    "step 20 and later computational, runtime, frontier, and falsification work"
+  ],
+  "projected_maxwell_stages": [
+    {"stage": "004", "source_step": "01", "slug": "projected_maxwell_bundle_index"},
+    {"stage": "005", "source_step": "02", "slug": "projected_maxwell_covariant"},
+    {"stage": "006", "source_step": "03", "slug": "projected_maxwell_vector"},
+    {"stage": "007", "source_step": "04", "slug": "projection_reduction_comparison"},
+    {"stage": "008", "source_step": "05", "slug": "projected_maxwell_extension"},
+    {"stage": "009", "source_step": "07", "slug": "projected_maxwell_near_throat"},
+    {"stage": "010", "source_step": "08", "slug": "projected_maxwell_push_bundle_master"},
+    {"stage": "011", "source_step": "09", "slug": "projected_maxwell_p2_bridge"},
+    {"stage": "012", "source_step": "10", "slug": "projected_maxwell_primitive_bridge"},
+    {"stage": "013", "source_step": "11", "slug": "projected_maxwell_mouth_taylor_master"},
+    {"stage": "014", "source_step": "12", "slug": "projected_maxwell_mouth_taylor_gate_bridge"},
+    {"stage": "015", "source_step": "13", "slug": "parent_throat_action_master"},
+    {"stage": "016", "source_step": "14", "slug": "parent_throat_action_candidate"},
+    {"stage": "017", "source_step": "15", "slug": "parent_throat_action_weak_axisym"},
+    {"stage": "018", "source_step": "16", "slug": "parent_throat_action_bundle_master"},
+    {"stage": "019", "source_step": "17", "slug": "parent_throat_action_isotropic_bundle"},
+    {"stage": "020", "source_step": "18", "slug": "parent_throat_action_weak_axisym_packet"},
+    {"stage": "021", "source_step": "retained_reduction", "slug": "reduced_one_port_normal_form"}
+  ],
+  "audit_policy": {
+    "sympy": "top-level scripts/moving_throat_pde_stageNNN_* files match paper stage numbers",
+    "mathematica": "stage021 retains the reduced one-port mirror; shifted post-EM mirrors match their new stage numbers",
+    "transcripts": "regenerate after renumbering rather than trusting renamed output files"
+  }
+}

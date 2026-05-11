@@ -1,51 +1,50 @@
-\section[Stage 062]{Stage 062: Exact Family--1 Map from Quadrupole Demand to Required Transport Bias}
+\section[Stage 062]{Stage 062: Parent-Action Projection of the Microscopic Support/Source Gain}
 \label{stage:062}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the Family--1 demand-to-transport map.}
-\stagefield{Purpose}{Stage~062 converts a required support ratio into the transport bias required on the explicit Family--1 branch.}
-\stagefield{Inputs}{The Family--1 parameters \(\kappa_{\rm F1}=12321/5\), \(\eta=37\), and the physical support map of Stage~040.}
+\claimstatus{\StatusExact{} for the parent GNLS compressional identities; \StatusReduced{} for the projected support/source ansatz.}
+\stagefield{Purpose}{Stage~062 projects the microscopic gain back into parent-action variables: confinement loading, compressional stiffness, and source/support overlap.}
+\stagefield{Inputs}{GNLS compressional stiffness for the frozen \(n=5\) EOS and support/source profiles \(\chi_\phi\), \(\chi_\sigma\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage062_family1_quadrupole_pe_map_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage062_family1_quadrupole_pe_map_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage062_family1_quadrupole_pe_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage062_family1_quadrupole_pe_map_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage062_parent_action_gain_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage062_parent_action_gain_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage062_parent_action_gain_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Let \(y_{\rm F1}\) solve
+Take
 \begin{equation}
-\label{eq:app-stage062-yF1}
-y_{\rm F1}\tan y_{\rm F1}=37,
-\qquad
-0<y_{\rm F1}<\frac{\pi}{2},
-\qquad
- y_{\rm F1}\simeq1.52948248371470.
+\label{eq:app-stage062-dV}
+\delta V_{\rm conf}(s,y)=-g_\phi\chi_\phi(y)\phi(s).
 \end{equation}
-Define
+For the frozen \(n=5\) EOS,
 \begin{equation}
-\label{eq:app-stage062-AF1}
-A_{\rm F1}=\frac{\kappa_{\rm F1}+\pi^2/4}{\kappa_{\rm F1}+y_{\rm F1}^2},
+\label{eq:app-stage062-hprime}
+h'(\rho_*)=5K\rho_*^3=\frac{mc_{s,*}^2}{\rho_*}.
+\end{equation}
+Define profile overlaps
+\begin{equation}
+\label{eq:app-stage062-overlaps}
+N_{\sigma\sigma}=\int d^3y\,\chi_\sigma^2,
 \qquad
-\kappa_{\rm F1}=\frac{12321}{5}.
+N_{\phi\phi}=\int d^3y\,\chi_\phi^2,
+\qquad
+O_{\sigma\phi}=\int d^3y\,\chi_\sigma\chi_\phi.
 \end{equation}
 Then
 \begin{equation}
-\label{eq:app-stage062-AF1-value}
+\label{eq:app-stage062-Gmicro}
 \boxed{
-A_{\rm F1}\simeq1.00005192880220}.
+G_{\rm micro}
+=\frac{\rho_*g_\phi^2O_{\sigma\phi}^2}{mc_{s,*}^2K_XN_{\sigma\sigma}}
+=\frac{\rho_*g_\phi^2N_{\phi\phi}}{mc_{s,*}^2K_X}C_{\sigma\phi}^2},
 \end{equation}
-The Family--1 support-ratio map is
+where
 \begin{equation}
-\label{eq:app-stage062-zetaF1}
-\boxed{
-\zeta_{\rm F1}(\mathrm{Pe})=A_{\rm F1}\Omega_{\mathrm{Pe}}^2}.
-\end{equation}
-The hard constructive ceiling is
-\begin{equation}
-\label{eq:app-stage062-ceiling}
-\boxed{
-\zeta_{\max}^{\rm F1}=A_{\rm F1}\frac{\pi^2}{4}
-\simeq2.46752922945601}.
+\label{eq:app-stage062-Csigma}
+C_{\sigma\phi}^2=\frac{O_{\sigma\phi}^2}{N_{\sigma\sigma}N_{\phi\phi}},
+\qquad
+0\leq C_{\sigma\phi}^2\leq1.
 \end{equation}
 
-\stagefield{Output}{Family--1 demand map \eqref{eq:app-stage062-zetaF1} and ceiling \eqref{eq:app-stage062-ceiling}.}
-\stagefield{Downstream use}{Stages~063--064 convert wall-depth thresholds into \(\zeta\) and product windows.}
+\stagefield{Output}{Parent-action gain formula \eqref{eq:app-stage062-Gmicro}.}
+\stagefield{Downstream use}{Stage~063 converts this into amplitude/coherence thresholds; Stage~064 derives the equilibrium source profile.}
 

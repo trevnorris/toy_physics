@@ -1,40 +1,66 @@
-\section[Stage 041]{Stage 041: Coupled Support/Source Operator and Exact Peclet Branch Equation}
+\section[Stage 041]{Stage 041: Rank--2 Support Completion and Exact Support-Loading Theorem}
 \label{stage:041}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the operator-selected fixed point.}
-\stagefield{Purpose}{Stage~041 closes the support/source system by letting support loading generate the transport bias that selects \(\mathrm{Pe}_*\).}
-\stagefield{Inputs}{The physical support ratio map and the source/support response kernel parameterized by \((\kappa,\eta)\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the two-rank selected-mode determinant.}
+\stagefield{Purpose}{Stage~041 adds a second loading direction for physical support and proves that the selected-branch determinant remains linear in the support loading.}
+\stagefield{Inputs}{Mixed baseline \(m\), mixed direction \((1,q)\), support loading \(n\), support direction \((1,r)\), and selected lower depth \(\xi\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage041_coupled_support_source_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage041_coupled_support_source_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage041_coupled_support_source_operator_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage041_coupled_support_source_operator_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage041_rank2_support_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage041_rank2_support_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage041_rank2_support_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The self-consistent branch equation is
+The two-direction loaded stiffness matrix is
 \begin{equation}
-\label{eq:app-stage041-Pe-fixed}
+\label{eq:app-stage041-loaded-matrix}
+\frac{K_{\rm loaded}}{A_0}
+=\operatorname{diag}(1,1+\delta)
+-m(1,q)^T(1,q)
+-n(1,r)^T(1,r).
+\end{equation}
+The determinant condition at \(\lambda_-=A_0(1-\xi)\) is
+\begin{equation}
+\label{eq:app-stage041-Dsel}
+D_{\rm sel}
+=\xi(\delta+\xi)
+-m[\delta+(1+q^2)\xi]
+-n[\delta+(1+r^2)\xi]
++mn(q-r)^2.
+\end{equation}
+Solving the linear equation \(D_{\rm sel}=0\) for \(n\) gives
+\begin{equation}
+\label{eq:app-stage041-nreq}
 \boxed{
-\mathrm{Pe}_*=\Xi\Delta(\mathrm{Pe}_*;\kappa,\eta)}.
+ n_{\rm req}(\xi,\delta;m,q,r)
+=\frac{\xi(\delta+\xi)-m[\delta+(1+q^2)\xi]}
+{\delta+(1+r^2)\xi-m(q-r)^2}}.
 \end{equation}
-The exact endpoint bracket is
+Differentiating yields the exact monotonicity law
 \begin{equation}
-\label{eq:app-stage041-bracket}
+\label{eq:app-stage041-nreq-derivative}
 \boxed{
-\Xi\Delta_0(\kappa,\eta)\leq \mathrm{Pe}_*\leq \Xi\Delta_\infty(\kappa,\eta)}.
+\frac{\partial n_{\rm req}}{\partial m}
+=-\frac{[\delta+(1+qr)\xi]^2}
+{[\delta+(1+r^2)\xi-m(q-r)^2]^2}<0
+}
 \end{equation}
-Writing \(\alpha=\sqrt\kappa\), the endpoint functions are
+on every regular branch.  Additional mixed baseline always lowers the support loading needed to reach the same selected depth.
+
+Two special closures are important:
 \begin{equation}
-\label{eq:app-stage041-Delta0}
-\Delta_0
-=\frac{\eta(\cosh\alpha-1)}{\alpha^2(\alpha\sinh\alpha+\eta\cosh\alpha)},
+\label{eq:app-stage041-tracking}
+r=q
+\quad\Longrightarrow\quad
+n_{\rm req}=G_q(\xi,\delta)-m,
 \end{equation}
+and, with source-tied support and \(q=tR_U\),
 \begin{equation}
-\label{eq:app-stage041-Deltainfty}
-\Delta_\infty
-=\frac{\cosh\alpha+(\eta/\alpha)\sinh\alpha-1}
-{\alpha\sinh\alpha+\eta\cosh\alpha}.
+\label{eq:app-stage041-source-tied}
+ n_{\rm req}^{\rm src}
+=\frac{\xi(\delta+\xi)-m[\delta+(1+\lambda_0R_U^2)\xi]}
+{\delta+(1+\lambda_0)\xi-m\lambda_0(R_U-1)^2}.
 \end{equation}
 
-\stagefield{Output}{Fixed-point equation \eqref{eq:app-stage041-Pe-fixed} and bracket \eqref{eq:app-stage041-bracket}.}
-\stagefield{Downstream use}{Stage~042 turns the bracket into exact fail/succeed thresholds.}
+\stagefield{Output}{The support-loading theorem \eqref{eq:app-stage041-nreq}, its monotonicity \eqref{eq:app-stage041-nreq-derivative}, and the tracking/source-tied alternatives.}
+\stagefield{Downstream use}{Stage~042 computes normalization with three distinct directions; Stage~045 shows the first coherent D/N kernel lands on the tracking surface.}
 

@@ -1,28 +1,28 @@
-\section[Stage 205]{Stage 205: Concrete finite-throat primitive branch}
+\section[Stage 205]{Stage 205: Directional Hessian and quadratic predictors}
 \label{stage:205}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.2}.}
-\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~205 inserts the lowest concrete finite-throat primitive branch into the resonance/linewidth theorem.}
+\stagefield{Purpose}{Stage~205 adds second-order local information to the Stage~204 scalar root problem and treats the turning case where the first derivative vanishes.}
 
-\stagefield{Inputs}{Imports the lowest N/N wall--$U$ profile, the lowest D/N half-wave support--$W$ profile, the one-port mixed kernel, and the line-shape survival gate from Stage~204.}
+\stagefield{Inputs}{Imports \(\Phi_{\mathbf s}\), free log coordinates \(\boldsymbol\ell\), directional derivative \(\mathcal D_{\mathbf s}\), and directional Hessian \(\mathcal H_{\mathbf s}\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage205_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation evaluates the exact overlap constants for the primitive branch, forms the quartic pole polynomial, identifies wall-like and internal poles, computes residues and linewidths, and tests the resulting low-loss survival inequality on an illustrative admissible slice.}
+\stagefield{Derivation ledger}{The derivation computes \((\Phi_0,\Phi_1,\Phi_2)\), translates between affine and logarithmic quadratic data, derives discriminants, obtains continuous-branch quadratic predictors, and isolates the turning-point criterion \((1-\Phi_0)\Phi_2>0\).}
 
-\stagefield{Output}{Concrete branch pole census, residue/linewidth cancellation, and first branch-level dynamic survival test.  The pole polynomial and survival gate are exact in the primitive closure; the displayed slice is a numerical placement.}
+\stagefield{Output}{Affine and logarithmic quadratic predictors, discriminant tests, curvature-corrected local expansions, and turning-point/tangency theorem.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
-\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
-\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
-\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
+\item Check the log-ray validity interval before using a local bracket.
+\item Check curvature-envelope hypotheses before reporting a certified interval.
+\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
 
 

@@ -1,4 +1,4 @@
-# Moving-Throat PDE — Stage 1 Geometry Lift and Linearized PDE Skeleton
+# Moving-Throat PDE — Stage 001 Geometry Lift and Linearized PDE Skeleton
 
 ## 0. What this note does
 

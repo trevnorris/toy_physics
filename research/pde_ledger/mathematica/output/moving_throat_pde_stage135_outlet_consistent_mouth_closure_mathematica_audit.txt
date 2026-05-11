@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl
+# Date: 2026-05-11T13:12:55-06:00
+# Elapsed: 8s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 118 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE
+========================================================================================
+Pi = sigmaM*(4 - (2*pi*(2*pi*Sech[Pi/2] + E^pi*(-2*pi + Pi*Tanh[Pi/2])))/((-1 + E^pi)*(-4*pi^2 + Pi^2)))
+outlet-consistent reduction = 0
+PASS: outlet-consistent reduction
+S_q(Pi_star) = 0.65807593760542948674050367268182940317`28.269941337792933
+0 < S_q(Pi_star) < 1 = True
+PASS: 0 < S_q(Pi_star) < 1
+Sigma_m^* = 0.4514852777390898089760109877847000591818502074253708581495`29.696301671958512
+M_s^* = 1.8059411109563592359040439511388002367274008297014834325979`29.696301671958512
+M_q^* = -0.4514852777390898089760109877847000591818502074253708581495`29.696301671958512
+M_q^* S_q(Pi_*) = -0.29711159746319926754151033279246836332`28.25396738054503
+Pi_star - Sigma_star*(4 - S_star) = 0``28.68818091139617
+Sigma_m^* numeric check diff = 1.124622808555747000591818502074253708581495`13.770306635329915*^-16
+PASS: Sigma_m^* numeric check
+M_s^* numeric check diff = 4.4984912342229880023673`13.518439060425203*^-16
+PASS: M_s^* numeric check
+M_q^* numeric check diff = 1.124622808555747000591818502074253708581495`13.770306635329915*^-16
+PASS: M_q^* numeric check
+mixed-lane correction numeric check diff = 1.08162512384143646836332`13.789654206224501*^-15
+PASS: mixed-lane correction numeric check
+closure residual diff = 0``28.68818091139617
+PASS: closure residual
+3 Sigma_m^* < Pi_* < 4 Sigma_m^* = True
+PASS: 3 Sigma_m^* < Pi_* < 4 Sigma_m^*
+
+Carry-forward formulas:
+  M_s = 4 Sigma_m,   M_q = -Sigma_m
+  Pi = Sigma_m [4 - S_q(Pi)]
+  The canonical outlet-consistent branch is selected by one moderate mouth-gain amplitude.
+
+EXIT_CODE: 0

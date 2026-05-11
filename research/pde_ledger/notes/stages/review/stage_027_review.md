@@ -1,12 +1,12 @@
-# Review: Stage 027 — Continuum selected rank2 closure
+# Review: Stage 027 — Nonconstant axial family
 
-**Batch:** 4 — Kernel Continuation
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage027_continuum_selected_rank2_closure.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage027_continuum_selected_rank2_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage027_nonconstant_axial_family.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,11 +40,21 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Continuum-selected branch equation correctly substitutes Stage-24 n_req with Stage-22/26 data. Quadratic rearrangement xi^2 + B_cont xi + C_cont = 0 verified. Physical root selection: at M_mix=M_supp=0, roots are 0 and -delta, + branch gives xi=0. Normalization function F_cont correctly specializes Stage-25. Source-tied surface (R_phi=1) and tracking surface (R_phi=R_U) correctly identified from Stage 26. Mismatch penalty lambda_0 M_mix M_supp (R_U-R_phi)^2 in C_cont correct.
+1. **Equation-level correctness.** All equations verified: N/N basis functions u_0, u_1 correct with proper BCs and normalization. D/N half-wave f_0 correct. Overlap kappa_0 = 2sqrt(2)/pi verified by integration. kappa_1 = -4/(3pi) verified using product-to-sum identity. rho = 2sqrt(22)/(3pi) from sigma = 88/(9pi^2). Blind angle tan(theta_blind) = 3sqrt(2)/2 correct. Max-coupling tan(theta_max) = -sqrt(2)/3 correct with sin^2(theta_max) = 2/11. Wall stiffness K_geo(theta) correctly includes T_w(pi/L)^2 sin^2(theta) from first cosine mode. Section 4 substitutions all algebraically direct from Stage 9.
 
-2. **Logical flow.** Clean: data collection → quadratic theorem → normalization → special surfaces → mismatch penalty.
+2. **Logical flow.** Clean: basis → overlaps → wall stiffness → Stage-8/9 substitution → normalization → special cases.
 
-**Script Review:** Verifies quadratic form by expanding n_req-M_supp numerator. Special surface collapses verified by substitution. Mismatch penalty by R_phi → R_U-Delta_R. No tautologies. All pass (exit code 0). Complete coverage.
+3. **Assumptions.** All explicit: same profile for wall and brane, D/N half-wave for support/mixed, one-parameter coherent family.
+
+4. **Completeness.** Three special cases (Stage-9 recovery, blind angle, max-coupling) all treated.
+
+5. **Notation consistent** with Stages 8-9.
+
+6. **Physical interpretation.** Sound: angular family trades overlap vs stiffness.
+
+**Script Review:**
+
+**B.1-B.7.** Faithful implementation. No bugs. No hardcoded final answers (blind/max substitutions derived from tangent values). No tautologies — overlaps computed by sp.integrate, wall stiffness by integrating chi*G_eta*chi with sp.diff. All expect_zero pass. Complete coverage of all sections. Minor style issue: nested function calls produce repeated output blocks (cosmetic only).
 
 **Issues Found:** None.
 
@@ -55,17 +65,15 @@
 
 **Notes Derivation Review:**
 
-1. The continuum-selected branch equation is correct. Substituting the actual continuum `M_supp`, `R_phi`, `M_mix`, and `R_U` data into the Stage-24 support theorem produces the exact quadratic
-   `xi^2 + B_cont xi + C_cont = 0`,
-   and the physical root `xi_phys` is the `+` branch that returns to zero when the loads vanish.
-2. I independently checked the two most failure-prone reductions: the quadratic branch equation and the normalization function. Both agree with the note and the saved output, including the source-tied limit `R_phi = 1` and the interference-matched tracking limit `R_phi = R_U`.
-3. The mismatch penalty is correctly positive and quadratic in `R_U - R_phi`, so the generic first extended kernel really does define an intermediate closure rather than collapsing to either special surface.
-4. The stage is a good checkpoint: it turns the abstract rank-2 geometry from Stages 24-25 into explicit continuum-selected branch equations without changing the meaning of the selected-branch data.
+- The first nonconstant family is set up correctly. `u_0`, `u_1`, and `f_0` satisfy the quoted N/N and D/N boundary conditions and normalizations, and my independent SymPy check reproduces `kappa_1 = -4/(3 pi)` and the closed overlap law `kappa(theta) = 2(-2 sin theta + 3 sqrt(2) cos theta)/(3 pi)`.
+- The blind-angle and max-coupling statements are algebraically consistent: `kappa(theta_blind)=0` gives the stated no-go branch, while `tan(theta_max)=kappa_1/kappa_0=-sqrt(2)/3` and `sin^2(theta_max)=2/11` match the amplitude-maximizing direction.
+- The geometry-side lifting is also correct. Evaluating `G_eta = -T_w d_s^2 + K_eta + 6 T_Omega` on `chi_theta` gives `K_geo(theta)=K_eta + 6 T_Omega + T_w pi^2 sin^2(theta)/L^2`, so the tradeoff between stronger D/N overlap and higher axial-gradient cost is derived, not asserted.
+- The substitution back into the Stage 8/9 module is faithful: the full branch really is the Stage-9 branch with `kappa_0 -> kappa(theta)` plus the axial-gradient penalty in `K_geo`.
 
 **Script Review:**
 
-1. The audit script faithfully checks the quadratic theorem, the zero-load root, the continuum-selected normalization function, the source-tied collapse, the tracking collapse, and the exact mismatch penalty. The saved output matches all of those claims.
-2. I did not find a coding error or a tautological assertion. The script’s factor-9 convention in the quadratic expansion is just a rescaling of the numerator, not a mismatch.
+- The audit script computes the basis integrals, overlap law, special-angle data, wall-stiffness expectation, branch substitution, Stage 9 recovery, and blind-angle no-go directly with SymPy. The saved output matches the note’s formulas and all checks pass.
+- The script is somewhat repetitive because helper sections are re-run inside later sections, but that is only a presentation issue; I did not find a correctness bug or a tautological check.
 
 **Issues Found:**
 

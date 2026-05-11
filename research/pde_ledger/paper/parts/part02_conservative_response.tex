@@ -1,7 +1,7 @@
 \chapter{Conservative Response Kernels and Grouped \texorpdfstring{$P_2$}{P2} Normalization Language}
 \label{chap:part02_conservative_response}
-\section*{Stage range: 007--019}
-\addcontentsline{toc}{section}{Stage range: 007--019}
+\section*{Stage range: 024--036}
+\addcontentsline{toc}{section}{Stage range: 024--036}
 
 Part II converts the grouped packet from Part I into explicit finite-throat placement data.  Part I reduced the isotropic outgoing-normalization gate to the ratio
 \begin{equation}
@@ -38,13 +38,13 @@ This is still not a proof that the actual nonlinear moving-throat branch realize
 \toprule
 Stages & Packet & Status & Carry-forward output \\
 \midrule
-007--010 & Angular and finite-throat data & \StatusExactClosure{} / \StatusReduced{} & Real-STF overlaps, isotropy collapse, weak-axisymmetric signature \(b=3a\), explicit D/N constants, and the first profile-dressed normalization gates. \\
+024--027 & Angular and finite-throat data & \StatusExactClosure{} / \StatusReduced{} & Real-STF overlaps, isotropy collapse, weak-axisymmetric signature \(b=3a\), explicit D/N constants, and the first profile-dressed normalization gates. \\
 \addlinespace
-011--014 & Selected spectral placement & \StatusExactClosure{} / \StatusReduced{} & Loaded wall eigenproblem, Schur-complement loading law, selected prefactor \(P_{0,-}\), and stable-side unique-crossing control. \\
+028--031 & Selected spectral placement & \StatusExactClosure{} / \StatusReduced{} & Loaded wall eigenproblem, Schur-complement loading law, selected prefactor \(P_{0,-}\), and stable-side unique-crossing control. \\
 \addlinespace
-015--017 & Source-map and microscopic normalization & \StatusExactClosure{} / \StatusOpen{} & Natural D/N source map, coupling-level normalization equation, stability gate, and the scalar softening-depth normal form \(x=A-\lambda_-\). \\
+032--034 & Source-map and microscopic normalization & \StatusExactClosure{} / \StatusOpen{} & Natural D/N source map, coupling-level normalization equation, stability gate, and the scalar softening-depth normal form \(x=A-\lambda_-\). \\
 \addlinespace
-018--019 & Dimensionless admissibility frontier & \StatusExactClosure{} / \StatusOpen{} & Monotone shape function \(F(\xi,\delta)\), support frontier \(G(\xi,\delta)\), and the final two-condition selected-branch test. \\
+035--036 & Dimensionless admissibility frontier & \StatusExactClosure{} / \StatusOpen{} & Monotone shape function \(F(\xi,\delta)\), support frontier \(G(\xi,\delta)\), and the final two-condition selected-branch test. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -140,20 +140,20 @@ Inside the declared finite-throat selected-branch closure, the following chain o
   M_{\rm mix}\leq G(\xi,\delta).
   \end{equation}
 \end{enumerate}
-Consequently, by the end of Stage 19, the reduced theorem gap is no longer an unspecified outgoing coefficient.  It is the concrete question of whether the actual moving-throat PDE places the physical defect in the admissible region of the universal \((F,G)\) branch geometry.
+Consequently, by the end of Stage~036, the reduced theorem gap is no longer an unspecified outgoing coefficient.  It is the concrete question of whether the actual moving-throat PDE places the physical defect in the admissible region of the universal \((F,G)\) branch geometry.
 \end{theorem}
 
 \begin{proof}
-Stages 7--8 establish the angular source map, isotropy collapse, and minimal one-lane normalization ratio.  Stages 9--10 evaluate the first finite-throat axial overlaps and profile family.  Stages 11--12 derive the selected wall profile and dynamic loading from a rank-one Schur complement.  Stages 13--16 translate the selected operator into normalized-response language, prove stable-side monotonicity, fix the natural source map, and write the microscopic coupling-level equation.  Stages 17--19 remove the eigenvector variables in favor of the softening depth and then non-dimensionalize the branch into the functions \(F\) and \(G\).  Each implication is exact inside the declared reduced closure.  The actual placement of the physical branch remains an open realization question.
+Stages~024--025 establish the angular source map, isotropy collapse, and minimal one-lane normalization ratio.  Stages~026--027 evaluate the first finite-throat axial overlaps and profile family.  Stages~028--029 derive the selected wall profile and dynamic loading from a rank-one Schur complement.  Stages~030--033 translate the selected operator into normalized-response language, prove stable-side monotonicity, fix the natural source map, and write the microscopic coupling-level equation.  Stages~034--036 remove the eigenvector variables in favor of the softening depth and then non-dimensionalize the branch into the functions \(F\) and \(G\).  Each implication is exact inside the declared reduced closure.  The actual placement of the physical branch remains an open realization question.
 \end{proof}
 
 \section{Explicit overlap-integral normalization}
 \label{sec:part02_conservative_response:explicit-overlap-integral-normalization}
 
 \subsection{Local goal}
-\label{subsec:part02-stage007-goal}
+\label{subsec:part02-stage024-goal}
 
-Stage 7 starts from the Part I grouped-bundle ratio \eqref{eq:part02-entry-normalization-ratio}.  In Part I, the quantities \(B_{A,n}\), \(Z_{A,n}\), and \(N_{A,n}\) were exact reduced coefficients, but the angular geometry behind them had not yet been audited.  Stage 7 supplies that audit.  It proves that the canonical angular source map is already correct on the isotropic branch and that the first weak-axisymmetric splitting pattern is diagnostic rather than arbitrary.
+Stage~024 starts from the Part I grouped-bundle ratio \eqref{eq:part02-entry-normalization-ratio}.  In Part I, the quantities \(B_{A,n}\), \(Z_{A,n}\), and \(N_{A,n}\) were exact reduced coefficients, but the angular geometry behind them had not yet been audited.  Stage~024 supplies that audit.  It proves that the canonical angular source map is already correct on the isotropic branch and that the first weak-axisymmetric splitting pattern is diagnostic rather than arbitrary.
 
 The grouped label \(A\) in this section runs over the real quadrupole ports.  When the five real STF modes are paired into the project ledger's grouped convention, the three grouped lanes are \(20,21,22\), where \(21\) and \(22\) represent cosine/sine pairs.
 
@@ -389,9 +389,9 @@ The identity \(\widehat m_{\rm ang}=1\) is used in every later selected-branch n
 \label{sec:part02_conservative_response:minimal-isotropic-single-mode-closure}
 
 \subsection{One-mode radial/axial model}
-\label{subsec:part02-stage008-one-mode-model}
+\label{subsec:part02-stage025-one-mode-model}
 
-Stage 8 strips the isotropic branch to the smallest radial/axial module that can carry the normalization product: one stable BdG support mode, one brane-like internal gauge coordinate, and one mixed \(A_w/F_{\mu w}/J^w\) coordinate.  Define
+Stage~025 strips the isotropic branch to the smallest radial/axial module that can carry the normalization product: one stable BdG support mode, one brane-like internal gauge coordinate, and one mixed \(A_w/F_{\mu w}/J^w\) coordinate.  Define
 \begin{equation}
 \label{eq:part02-stage8-couplings}
 C=\lambda_B I_{\eta\phi},
@@ -428,7 +428,7 @@ N_0=\frac{\mathcal P^2}{\Delta^2}.
 \end{equation}
 
 \subsection{Minimal explicit normalization law}
-\label{subsec:part02-stage008-normalization-law}
+\label{subsec:part02-stage025-normalization-law}
 
 The static prefactor is
 \begin{equation}
@@ -439,7 +439,7 @@ P_0=\frac{N_0}{D_0}
 =
 \frac{\mathcal P^2}{\Delta\left(K\Delta-\Delta C^2/\varpi^2-Q\right)}.
 \end{equation}
-Since Stage 7 fixed \(\widehat m_{\rm ang}=1\), the branch test is purely radial/axial:
+Since Stage~024 fixed \(\widehat m_{\rm ang}=1\), the branch test is purely radial/axial:
 \begin{equation}
 \label{eq:part02-stage8-normalization-target}
 \boxed{
@@ -473,15 +473,15 @@ In the one-BdG-mode, one-Maxwell/mixed-pair isotropic closure, the universal out
 \end{proposition}
 
 \paragraph{Downstream use.}
-Stage 9 evaluates the overlap factors in \eqref{eq:part02-stage8-couplings} on a concrete finite-throat D/N branch.  Stage 12 later shows that the same mixed-sector numerator \(\mathcal P\) controls the selected-mode dynamic loading and odd outgoing coefficient.
+Stage~026 evaluates the overlap factors in \eqref{eq:part02-stage8-couplings} on a concrete finite-throat D/N branch.  Stage~029 later shows that the same mixed-sector numerator \(\mathcal P\) controls the selected-mode dynamic loading and odd outgoing coefficient.
 
 \section{Concrete finite-throat axial modes}
 \label{sec:part02_conservative_response:concrete-finite-throat-axial-modes}
 
 \subsection{Finite interval and axial basis}
-\label{subsec:part02-stage009-axial-basis}
+\label{subsec:part02-stage026-axial-basis}
 
-Stage 9 chooses a concrete finite-throat interval
+Stage~026 chooses a concrete finite-throat interval
 \begin{equation}
 s\in[0,L]
 \end{equation}
@@ -526,7 +526,7 @@ Therefore
 The lowest trapped half-wave is automatically the dominant axial branch because \(|\kappa_n|\sim(n+1/2)^{-1}\).
 
 \subsection{Branch-level coefficients}
-\label{subsec:part02-stage009-branch-coefficients}
+\label{subsec:part02-stage026-branch-coefficients}
 
 Take
 \begin{equation}
@@ -577,7 +577,7 @@ X=\frac{\kappa^2\lambda_B^2}{\varpi^2}.
 \end{equation}
 
 \subsection{First finite-throat normalization test}
-\label{subsec:part02-stage009-normalization-test}
+\label{subsec:part02-stage026-normalization-test}
 
 Substitution into \eqref{eq:part02-stage8-normalization-target} gives
 \begin{equation}
@@ -618,15 +618,15 @@ On the constant N/N wall/brane branch coupled to the lowest D/N support/mixed ha
 \end{proposition}
 
 \paragraph{Downstream use.}
-Stage 10 tests whether this equation was an artifact of the constant wall profile.  Stage 15 later reuses the same D/N mode integrals to eliminate the abstract selected source-map factor.
+Stage~027 tests whether this equation was an artifact of the constant wall profile.  Stage~032 later reuses the same D/N mode integrals to eliminate the abstract selected source-map factor.
 
 \section{Nonconstant axial profile families}
 \label{sec:part02_conservative_response:nonconstant-axial-profile-families}
 
 \subsection{First N/N deformation family}
-\label{subsec:part02-stage010-profile-family}
+\label{subsec:part02-stage027-profile-family}
 
-Stage 10 turns on the first nonconstant N/N axial mode
+Stage~027 turns on the first nonconstant N/N axial mode
 \begin{equation}
 \label{eq:part02-u1}
 u_1(s)=\sqrt{\frac2L}\cos\!\left(\frac{\pi s}{L}\right),
@@ -715,7 +715,7 @@ On the coherent profile family,
 K_{\rm geo}(\theta)
 =K_\eta+6T_\Omega+\frac{\pi^2T_w}{L^2}\sin^2\theta}.
 \end{equation}
-The full profile-dressed normalization condition is the Stage 9 test with
+The full profile-dressed normalization condition is the Stage~026 test with
 \begin{equation}
 \kappa\longrightarrow\kappa(\theta),
 \qquad
@@ -751,17 +751,17 @@ Q(\theta)=\lambda_U^2\Omega_W^2
 
 \begin{theorem}[First profile-selection gate]
 \label{thm:part02-profile-selection-gate}
-The Stage 9 constant profile is the \(\theta=0\) member of an exact finite-throat profile family.  The family has an exact blind-angle no-go at \eqref{eq:part02-blind-angle}, an exact max-coupling point at \eqref{eq:part02-theta-max}, and the profile-selected branch must satisfy the dressed stiffness equation \eqref{eq:part02-stage10-Kreq-theta}.
+The Stage~026 constant profile is the \(\theta=0\) member of an exact finite-throat profile family.  The family has an exact blind-angle no-go at \eqref{eq:part02-blind-angle}, an exact max-coupling point at \eqref{eq:part02-theta-max}, and the profile-selected branch must satisfy the dressed stiffness equation \eqref{eq:part02-stage10-Kreq-theta}.
 \end{theorem}
 
 \paragraph{Downstream use.}
-Stage 11 stops treating \(\theta\) as a chosen parameter and derives it as an eigenvector of the loaded wall operator.
+Stage~028 stops treating \(\theta\) as a chosen parameter and derives it as an eigenvector of the loaded wall operator.
 
 \section{Loaded-profile selection and dynamic loading}
 \label{sec:part02_conservative_response:loaded-profile-selection-and-dynamic-loading}
 
 \subsection{Rank-one loaded wall eigenproblem}
-\label{subsec:part02-stage011-loaded-wall}
+\label{subsec:part02-stage028-loaded-wall}
 
 Work in the first two N/N wall modes, with profile vector
 \begin{equation}
@@ -836,9 +836,9 @@ The softening threshold is
 \end{equation}
 
 \subsection{Dynamic origin of the loading parameter}
-\label{subsec:part02-stage012-dynamic-loading}
+\label{subsec:part02-stage029-dynamic-loading}
 
-Stage 12 replaces the phenomenological \(\alpha\) with the Schur complement of the coupled response block.  Let
+Stage~029 replaces the phenomenological \(\alpha\) with the Schur complement of the coupled response block.  Let
 \begin{equation}
 D_\eta^{\rm bare}(\omega)
 =
@@ -895,10 +895,10 @@ K_{\rm eff}^{(0)}
 -
 \alpha_0vv^T.
 \end{equation}
-Thus the Stage 11 angle law survives with \(K_i\mapsto K_i-\Xi_0\) and \(\alpha\mapsto\alpha_0\).
+Thus the Stage~028 angle law survives with \(K_i\mapsto K_i-\Xi_0\) and \(\alpha\mapsto\alpha_0\).
 
 \subsection{Outgoing dressing and selected odd coefficient}
-\label{subsec:part02-stage012-odd-coefficient}
+\label{subsec:part02-stage029-odd-coefficient}
 
 To first order in the passive/outgoing port,
 \begin{equation}
@@ -943,13 +943,13 @@ The first reduced wall/BdG/Maxwell/mixed operator produces the rank-one loaded p
 \end{theorem}
 
 \paragraph{Downstream use.}
-Stages 13--16 translate \eqref{eq:part02-stage12-selected-odd} into normalized-response language and then into a microscopic coupling-level target.
+Stages~030--033 translate \eqref{eq:part02-stage12-selected-odd} into normalized-response language and then into a microscopic coupling-level target.
 
 \section{Selected-mode normalized response}
 \label{sec:part02_conservative_response:selected-mode-normalized-response}
 
 \subsection{Selected eigenvalue and overlap}
-\label{subsec:part02-stage013-selected-eigenvalue}
+\label{subsec:part02-stage030-selected-eigenvalue}
 
 Use the compact notation
 \begin{equation}
@@ -1023,7 +1023,7 @@ u_{4,-}=\frac{D_{-2}^2-D_{-0}D_{-4}}{D_{-0}^2},
 \qquad
 \Gamma_{5,-}=\frac{C_{5,-}}{D_{-0}}.
 \end{equation}
-Using the Stage 12 odd coefficient,
+Using the Stage~029 odd coefficient,
 \begin{equation}
 \Gamma_{5,-}=\frac{a^5}{27c_s^5}\frac{\beta_0s_-}{\lambda_-}.
 \end{equation}
@@ -1044,9 +1044,9 @@ The selected-branch quadrupole target is
 \end{equation}
 
 \subsection{Stable-side monotonicity and unique crossing}
-\label{subsec:part02-stage014-monotonicity}
+\label{subsec:part02-stage031-monotonicity}
 
-Stage 14 proves that the selected prefactor is strictly monotone on the stable branch.  First,
+Stage~031 proves that the selected prefactor is strictly monotone on the stable branch.  First,
 \begin{equation}
 \label{eq:part02-ds-dalpha}
 \boxed{
@@ -1096,9 +1096,9 @@ The monotonicity theorem justifies treating the selected branch as a one-dimensi
 \label{sec:part02_conservative_response:source-map-and-microscopic-normalization-equation}
 
 \subsection{Natural D/N source branch}
-\label{subsec:part02-stage015-source-map}
+\label{subsec:part02-stage032-source-map}
 
-Stage 15 attaches the orbital/worldtube STF quadrupole source through the same D/N axial load used by the mixed/support module:
+Stage~032 attaches the orbital/worldtube STF quadrupole source through the same D/N axial load used by the mixed/support module:
 \begin{equation}
 L_{\rm src}=g_QQ_{\rm STF}\int_0^L\eta(s)f_0(s)\,ds.
 \end{equation}
@@ -1139,9 +1139,9 @@ N_-(\alpha_0)=N_Q^{\rm target}}.
 \end{equation}
 
 \subsection{Microscopic coupling variables and stability gate}
-\label{subsec:part02-stage016-microscopic-couplings}
+\label{subsec:part02-stage033-microscopic-couplings}
 
-For the first explicit finite-throat kernel model, Stage 16 writes
+For the first explicit finite-throat kernel model, Stage~033 writes
 \begin{equation}
 \label{eq:part02-stage16-defs}
 \boxed{
@@ -1186,7 +1186,7 @@ In coupling form,
 \end{equation}
 
 \subsection{Onset criterion and weak-loading expansion}
-\label{subsec:part02-stage016-onset}
+\label{subsec:part02-stage033-onset}
 
 Because \(N_-(\alpha_0)\) is strictly increasing on the stable branch, the zero-loading value is a necessary onset test.  At \(\alpha_0=0\),
 \begin{equation}
@@ -1246,15 +1246,15 @@ subject to \eqref{eq:part02-stage16-stability-gate}.  The onset condition \eqref
 \end{theorem}
 
 \paragraph{Downstream use.}
-Stages 17--19 remove \(s_-\), \(\lambda_-\), and the eigenvector algebra from \eqref{eq:part02-microscopic-selected-target} by passing to the softening depth and then to dimensionless functions \(F\) and \(G\).
+Stages~034--036 remove \(s_-\), \(\lambda_-\), and the eigenvector algebra from \eqref{eq:part02-microscopic-selected-target} by passing to the softening depth and then to dimensionless functions \(F\) and \(G\).
 
 \section{Softening-depth normal form}
 \label{sec:part02_conservative_response:softening-depth-normal-form}
 
 \subsection{Softening-depth variable}
-\label{subsec:part02-stage017-softening-depth}
+\label{subsec:part02-stage034-softening-depth}
 
-Stage 17 trades the selected eigenvalue for the softening depth
+Stage~034 trades the selected eigenvalue for the softening depth
 \begin{equation}
 \label{eq:part02-softening-depth}
 \boxed{
@@ -1342,15 +1342,15 @@ The first rank-one selected finite-throat branch is exactly parameterized by the
 \end{theorem}
 
 \paragraph{Downstream use.}
-The softening-depth form is the input to the dimensionless \((F,G)\) functions in Stages 18--19 and to the support-completion program in Part III.
+The softening-depth form is the input to the dimensionless \((F,G)\) functions in Stages~035--036 and to the support-completion program in Part III.
 
 \section{Support-feasibility frontier}
 \label{sec:part02_conservative_response:support-feasibility-frontier}
 
 \subsection{Dimensionless D/N normalization function}
-\label{subsec:part02-stage018-F}
+\label{subsec:part02-stage035-F}
 
-Stage 18 substitutes the exact D/N constants
+Stage~035 substitutes the exact D/N constants
 \begin{equation}
 \label{eq:part02-DN-constants}
 \boxed{
@@ -1408,7 +1408,7 @@ The exact derivative is
 \frac{\partial F}{\partial\xi}
 =
 \frac{(9\delta+11\xi)^3
-\left(81\delta^3+72\delta^2+189\delta^2\xi+297\delta\xi^2+121\xi^3\right)}
+\left(81\delta^3+72\delta^2+206\delta^2\xi+297\delta\xi^2+138\xi^3\right)}
 {81(1-\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^3}>0.
 \end{equation}
 Also,
@@ -1438,9 +1438,9 @@ The exact required total loading is
 \end{equation}
 
 \subsection{Support-feasibility function}
-\label{subsec:part02-stage019-G}
+\label{subsec:part02-stage036-G}
 
-Stage 19 writes the support-feasibility test in the same dimensionless variable.  Define
+Stage~036 writes the support-feasibility test in the same dimensionless variable.  Define
 \begin{equation}
 \label{eq:part02-Mmix}
 \boxed{
@@ -1581,7 +1581,7 @@ and then asks whether rank-two support completion, coherent D/N support, and exp
 
 The citation-safe summary is:
 \begin{quote}
-Stages 7--19 derive the conservative grouped-response and selected-branch normalization language.  They prove exact angular isotropy, identify the weak-axisymmetric \(b=3a\) signature, compute the first finite-throat D/N overlap structure, derive the selected wall-mode Schur complement, eliminate the abstract source map on the natural D/N branch, and reduce the selected quadrupole branch to the dimensionless admissibility test
+Stages~024--036 derive the conservative grouped-response and selected-branch normalization language.  They prove exact angular isotropy, identify the weak-axisymmetric \(b=3a\) signature, compute the first finite-throat D/N overlap structure, derive the selected wall-mode Schur complement, eliminate the abstract source map on the natural D/N branch, and reduce the selected quadrupole branch to the dimensionless admissibility test
 \[
 F(\xi_{\rm req},\delta)=R_{\rm target},
 \qquad

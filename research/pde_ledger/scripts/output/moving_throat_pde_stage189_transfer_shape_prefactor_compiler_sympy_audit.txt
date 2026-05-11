@@ -1,0 +1,140 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+# Date: 2026-05-11T12:48:35-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 172 — TRANSFER-SHAPE / OUTGOING-PREFACTOR COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Observable packet -> transfer-shape / selected-branch packet
+----------------------------------------------------------------------------------------
+Delta_obs^(1) =
+⎡ dln_Rtr ⎤
+⎢         ⎥
+⎢dln_Nstar⎥
+⎢         ⎥
+⎣dlnₑₚₛₑₜₐ⎦
+C_obs->trf =
+⎡-Bₛₜₐᵣ  1           0         ⎤
+⎢                              ⎥
+⎢             -epsilonetaₛₜₐᵣ  ⎥
+⎢  0     0   ──────────────────⎥
+⎢            1 - epsilonetaₛₜₐᵣ⎥
+⎢                              ⎥
+⎢             -epsilonetaₛₜₐᵣ  ⎥
+⎢Bₛₜₐᵣ   -1  ──────────────────⎥
+⎣            1 - epsilonetaₛₜₐᵣ⎦
+Delta_trf^(1) =
+⎡                        -Bₛₜₐᵣ⋅dln_Rtr + dln_Nstar                         ⎤
+⎢                                                                           ⎥
+⎢                         dlnₑₚₛₑₜₐ⋅epsilonetaₛₜₐᵣ                          ⎥
+⎢                         ────────────────────────                          ⎥
+⎢                            epsilonetaₛₜₐᵣ - 1                             ⎥
+⎢                                                                           ⎥
+⎢dlnₑₚₛₑₜₐ⋅epsilonetaₛₜₐᵣ + (epsilonetaₛₜₐᵣ - 1)⋅(Bₛₜₐᵣ⋅dln_Rtr - dln_Nstar)⎥
+⎢───────────────────────────────────────────────────────────────────────────⎥
+⎣                            epsilonetaₛₜₐᵣ - 1                             ⎦
+C_obs->trf * Delta_obs^(1) - Delta_trf^(1) =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+selected-branch compatibility row = 0
+rank(C_obs->trf) = 2
+Xi - (dln N_* - B_* dln R_tr) = 0
+R_1 - dln R_target = 0
+(R_1 + Xi_1) - dln(1-epseta) = 0
+
+----------------------------------------------------------------------------------------
+II. One-port continuum transfer-shape identity
+----------------------------------------------------------------------------------------
+T_A^2 (direct continuum form) =
+                2      
+     Z_W⋅(ρ + 1)       
+───────────────────────
+                      2
+OmegaW₂⋅(epsilonW - 1) 
+R_target (selected-branch form) =
+                          2                  
+-Λ₀⋅OmegaW₂⋅(epsilonW - 1) ⋅(epsiloneta - 1) 
+─────────────────────────────────────────────
+                           2                 
+                Z_W⋅(ρ + 1)                  
+Lambda_0 (1-epseta) / R_target - T_A^2 = 0
+T^2 (coherent local D/N specialization) =
+                           2             2           
+           121⋅Z_W⋅(χ₀ + 1) ⋅(deltaU + 1)            
+─────────────────────────────────────────────────────
+                                                    2
+OmegaW₂⋅(-11⋅deltaU + epsilonW⋅(9⋅deltaU + 11) - 11) 
+
+----------------------------------------------------------------------------------------
+III. Exact isotropic grouped response / prefactor compiler
+----------------------------------------------------------------------------------------
+Y(omega) = D0 / Dcons =
+   ⎛         2⎞           2
+ 4 ⎜  D₄   D₂ ⎟       D₂⋅ω 
+ω ⋅⎜- ── + ───⎟ + 1 - ─────
+   ⎜  D₀     2⎟        D₀  
+   ⎝       D₀ ⎠            
+Y(omega) - (1 + u2 w^2 + u4 w^4) = 0
+Pref(omega) = D0 N(omega) / Dcons(omega)^2 =
+   ⎛   ⎛             2⎞               ⎞                         
+   ⎜   ⎜  2⋅D₄   3⋅D₂ ⎟               ⎟                         
+   ⎜N₀⋅⎜- ──── + ─────⎟               ⎟                         
+   ⎜   ⎜   D₀       2 ⎟               ⎟                         
+ 4 ⎜   ⎝          D₀  ⎠   N₄   2⋅D₂⋅N₂⎟    2 ⎛N₂   2⋅D₂⋅N₀⎞   N₀
+ω ⋅⎜─────────────────── + ── - ───────⎟ + ω ⋅⎜── - ───────⎟ + ──
+   ⎜        D₀            D₀       2  ⎟      ⎜D₀       2  ⎟   D₀
+   ⎝                             D₀   ⎠      ⎝       D₀   ⎠     
+Pref(omega) - (P0 + P2 w^2 + P4 w^4) = 0
+P0 - (K_bl/D0) T_eff^2 = 0
+
+----------------------------------------------------------------------------------------
+IV. Weak-axisymmetric prefactor slope
+----------------------------------------------------------------------------------------
+P_A - (P0 + eps lambda P1) = 0
+log(P_A/P0) - eps lambda (P1/P0) = 0
+P1/P0 - (N1/N0 - D1/D0) = 0
+
+----------------------------------------------------------------------------------------
+V. Compact outgoing l=2 fingerprint compiler
+----------------------------------------------------------------------------------------
+outgoing branch expansion - (K0 + K2 w^2 + K4 w^4 + i Gamma5 w^5) = 0
+
+----------------------------------------------------------------------------------------
+VI. Normalization equivalence and constant-prefactor branch
+----------------------------------------------------------------------------------------
+mhat0^2 Gamma5 - 2G/(5c^5) at P0_target = 0
+Gamma5 - a^5 P0/(27 c_s^5) = 0
+P2 on constant-prefactor branch = 0
+P4 on constant-prefactor branch = 0
+K2 on constant-prefactor branch - A P0 = 0
+K4 on constant-prefactor branch - B P0 = 0
+
+========================================================================================
+STAGE 172 LEDGER
+========================================================================================
+1. The Stage 188 branch-observable packet compiles exactly to the direct transfer packet
+      (d ln T^2, d ln(1-epseta), d ln R_target),
+   with one built-in selected-branch compatibility relation.
+2. The isotropic grouped operator/transfer data
+      (D0,D2,D4,N0,N2,N4)
+   compile exactly to
+      (u2,u4,P0,P2,P4).
+3. Multiplying by the compact outgoing l=2 fingerprint gives
+      (K0,K2,K4,Gamma5),
+   and the first odd coefficient depends only on the static prefactor P0.
+4. The universal normalization target is exactly equivalent to
+      mhat0^2 P0 = 54 G c_s^5 / (5 a^5 c^5).
+5. On the constant-prefactor branch, the even outgoing coefficients collapse to the
+   pure compact-fingerprint values K2 = A P0 and K4 = B P0.
+
+EXIT_CODE: 0

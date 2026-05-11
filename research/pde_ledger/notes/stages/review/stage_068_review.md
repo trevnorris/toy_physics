@@ -1,12 +1,12 @@
-# Review: Stage 068 — Quadrupole demand cancellation
+# Review: Stage 068 — Softening depth normal form
 
-**Batch:** 11 — Loading Ratio & Isotropic Verdict
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage068_quadrupole_demand_cancellation.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage068_quadrupole_demand_cancellation_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage034_softening_depth_normal_form.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py`
 
 ## Review Checklist
 
@@ -38,25 +38,41 @@
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
-**Notes Derivation Review:** Pi_tr = (NQ/beta_0) alpha_req and C_mix = (NQ/beta_0) alpha_mix verified — factors of pi^2, 8, A cancel. Ratio Pi_tr/C_mix = alpha_req/alpha_mix. Spectral form with NQ = mhat^2 beta_0 s_-/lambda_- gives beta_0 cancellation. zeta_req rewritten entirely in loading-ratio rho_alpha = alpha_req/alpha_mix — K cancels from every term. Unblocked limit zeta_req = rho_alpha - 1 correct.
-
-**Script Review:** All identities verified symbolically. Spectral substitution checked. Loading-ratio form verified. No hardcoded values, no tautologies. All pass (exit code 0).
-
-**Issues Found:** None.
-
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** PASS
-
 **Notes Derivation Review:**
 
-1. The cancellation is exact. Inserting the Stage-18/19 definitions of `R_target`, `G_tr`, and `M_mix` with `kappa_0^2 = 8/pi^2` really does leave `Pi_tr = (N_Q^(target)/beta_0) alpha_req` and `C_mix = (N_Q^(target)/beta_0) alpha_mix`.
-2. The Stage-13 normalization stack is used correctly: substituting `N_Q^(target) = mhat_-^2 beta_0 s_- / lambda_-` gives the advertised spectral forms with the same common prefactor on both products.
-3. The reduced support-demand law depends only on `rho_alpha = alpha_req / alpha_mix`, and the unblocked limit `zeta_req = rho_alpha - 1` follows immediately.
+1. **Equation-level correctness.** All verified: x := A - lambda_- substitution correct. Secular equation in x-form: alpha_0 = x(x+DK)/[kappa_0^2(x+DK) + kappa_1^2 x] verified. Overlap s_- = D^2/[kappa_0^2(x+DK)^2 + kappa_1^2 x^2] derived from 1/(dalpha/dx) with dalpha/dx = [kappa_0^2(x+DK)^2 + kappa_1^2 x^2]/D^2 verified by quotient rule. Normalization product in x-form correct. Monotonicity dalpha/dx manifestly positive (ratio of positive quantities). Loading decomposition direct from Stage 16.
+
+2. **Logical flow.** Clean: variable substitution → differentiation → composition → Stage-16 rewrite.
+
+3. **Assumptions.** All inherited from prior stages. Hellmann-Feynman from Stage 13.
+
+4. **Completeness.** Edge cases x=0 (unloaded) and x→A (softening) addressed.
+
+5. **Notation consistent** with Stage 16.
+
+6. **Physical interpretation.** Correct: trades eigenvector data for single scalar deformation coordinate.
 
 **Script Review:**
 
-The script faithfully reconstructs the product identities from symbolic inputs, checks the selected-mode spectral substitution, and verifies the pure loading-ratio form of `zeta_req`. I reran the audit locally and it passed unchanged.
+**B.1-B.7.** Faithful. No bugs. No hardcoded values (all symbolic). Checks: substitution equivalence (genuine), monotonicity derivative (sp.diff vs closed form — genuine), loading decomposition. All pass. Minor: check 17.3 (alpha_mix + gBreq - alpha_x = 0) is mildly tautological by construction, and no explicit s_- = 1/diff(alpha_x, x) check, but substitution check implicitly covers this.
 
-**Issues Found:** None.
+**Issues Found:**
+
+1. **(MINOR, script)** Check 17.3 is tautological by construction (gBreq := alpha_x - alpha_mix). Does not add verification power.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+- The softening-depth reparameterization is correct: substituting `x = A - lambda_-` turns the selected-branch secular equation into the rational form shown in the note, and the resulting `alpha_0(x)` and `N_-(x)` expressions match the saved audit output.
+- I independently rechecked the monotonicity identity with SymPy. `d alpha_0 / dx` reduces to the manifestly positive rational form in the note, so the branch remains one-to-one in the stable interval.
+- The support-loading rewrite is also algebraically consistent: once `alpha_mix` is separated out, the remaining required support term is exactly the difference `alpha_x - alpha_mix`.
+
+**Issues Found:**
+
+- **[MINOR] The final support-loading check is still self-referential.** The script defines `g_B,req^2/varpi^2 := alpha_x - alpha_mix` and then verifies `alpha_mix + g_B,req^2/varpi^2 - alpha_x = 0`, so the last assertion does not independently test the formula. That matches the existing audit gap and is acceptable only as a coverage limitation, not as a separate derivation check.
 
 ---

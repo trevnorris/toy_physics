@@ -1,0 +1,58 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage044_continuum_selected_rank2_mathematica_audit.wl
+# Date: 2026-05-11T12:50:04-06:00
+# Elapsed: 8s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 027 — CONTINUUM-SELECTED RANK-2 CLOSURE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Exact continuum-selected branch equation and quadratic theorem
+----------------------------------------------------------------------------------------
+n_req^(cont) = (xi*(delta + xi) - mMix*(delta + xi + (2*rU^2*xi)/9))/(delta - (2*mMix*(rPhi - rU)^2)/9 + xi + (2*rPhi^2*xi)/9)
+numerator of n_req - M_supp = 2*mMix*mSupp*(rPhi - rU)^2 - 9*delta*(mMix + mSupp - xi) - (mSupp*(9 + 2*rPhi^2) + mMix*(9 + 2*rU^2))*xi + 9*xi^2
+quadratic branch equation = 0
+PASS: quadratic branch equation
+xi_phys = (-9*delta + 9*mMix + 9*mSupp + 2*mSupp*rPhi^2 + 2*mMix*rU^2 + 9*Sqrt[4*delta*(mMix + mSupp) - (8*mMix*mSupp*(rPhi - rU)^2)/9 + (delta - (mSupp*(9 + 2*rPhi^2))/9 - (mMix*(9 + 2*rU^2))/9)^2])/18
+zero-load root = 0
+PASS: zero-load root
+
+----------------------------------------------------------------------------------------
+2. Exact continuum-selected normalization function
+----------------------------------------------------------------------------------------
+F_cont(xi) = ((delta + (2*mMix*(rPhi - rU)*(-1 + rU))/9 + xi + (2*rPhi*xi)/9)^2*(delta + xi + (2*rPhi*rU*xi)/9)^2)/((1 - xi)*((delta + (2*mMix*(rPhi - rU)*rU)/9 + xi)^2 + (2*(mMix*(-rPhi + rU) + rPhi*xi)^2)/9)^2)
+
+----------------------------------------------------------------------------------------
+3. Minimal-kernel source-tied surface
+----------------------------------------------------------------------------------------
+n_source = (xi*(delta + xi) - mMix*(delta + xi + (2*rU^2*xi)/9))/(delta - (2*mMix*(-1 + rU)^2)/9 + (11*xi)/9)
+F_source = ((delta - (2*mMix*(-1 + rU)^2)/9 + (11*xi)/9)^2*(delta + xi + (2*rU*xi)/9)^2)/((1 - xi)*((2*(mMix*(-1 + rU) + xi)^2)/9 + (delta - (2*mMix*(-1 + rU)*rU)/9 + xi)^2)^2)
+source-tied n = 0
+PASS: source-tied n
+source-tied F = 0
+PASS: source-tied F
+
+----------------------------------------------------------------------------------------
+4. Interference-matched tracking surface
+----------------------------------------------------------------------------------------
+tracking collapse of n_req = 0
+PASS: tracking collapse of n_req
+tracking total-loading law = 0
+PASS: tracking total-loading law
+tracking F collapse = 0
+PASS: tracking F collapse
+
+----------------------------------------------------------------------------------------
+5. Exact mismatch penalty
+----------------------------------------------------------------------------------------
+quadratic mismatch penalty = 0
+PASS: quadratic mismatch penalty
+
+Stage 044 Mathematica audit passed.
+
+EXIT_CODE: 0

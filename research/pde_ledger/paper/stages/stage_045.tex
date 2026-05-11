@@ -1,50 +1,47 @@
-\section[Stage 045]{Stage 045: Parent-Action Projection of the Microscopic Support/Source Gain}
+\section[Stage 045]{Stage 045: Coherent Local D/N Support Kernel and Exact Tracking Reduction}
 \label{stage:045}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExact{} for the parent GNLS compressional identities; \StatusReduced{} for the projected support/source ansatz.}
-\stagefield{Purpose}{Stage~045 projects the microscopic gain back into parent-action variables: confinement loading, compressional stiffness, and source/support overlap.}
-\stagefield{Inputs}{GNLS compressional stiffness for the frozen \(n=5\) EOS and support/source profiles \(\chi_\phi\), \(\chi_\sigma\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the first coherent local D/N kernel.}
+\stagefield{Purpose}{Stage~045 checks the first coherent local D/N support kernel and proves that it does not realize a generic rank--2 direction.  It forces exact tracking.}
+\stagefield{Inputs}{The continuum support kernel and rank--2 branch variables \(R_U\), \(R_\phi\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage045_parent_action_gain_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage045_parent_action_gain_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage045_parent_action_gain_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage045_parent_action_gain_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage045_coherent_local_tracking_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage045_coherent_local_tracking_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Take
+The coherent local D/N kernel enforces
 \begin{equation}
-\label{eq:app-stage045-dV}
-\delta V_{\rm conf}(s,y)=-g_\phi\chi_\phi(y)\phi(s).
-\end{equation}
-For the frozen \(n=5\) EOS,
-\begin{equation}
-\label{eq:app-stage045-hprime}
-h'(\rho_*)=5K\rho_*^3=\frac{mc_{s,*}^2}{\rho_*}.
-\end{equation}
-Define profile overlaps
-\begin{equation}
-\label{eq:app-stage045-overlaps}
-N_{\sigma\sigma}=\int d^3y\,\chi_\sigma^2,
-\qquad
-N_{\phi\phi}=\int d^3y\,\chi_\phi^2,
-\qquad
-O_{\sigma\phi}=\int d^3y\,\chi_\sigma\chi_\phi.
-\end{equation}
-Then
-\begin{equation}
-\label{eq:app-stage045-Gmicro}
+\label{eq:app-stage045-coherent-condition}
 \boxed{
-G_{\rm micro}
-=\frac{\rho_*g_\phi^2O_{\sigma\phi}^2}{mc_{s,*}^2K_XN_{\sigma\sigma}}
-=\frac{\rho_*g_\phi^2N_{\phi\phi}}{mc_{s,*}^2K_X}C_{\sigma\phi}^2},
+g_Bg_R=g_Wg_S}.
 \end{equation}
-where
+This condition lands on the tracking surface
 \begin{equation}
-\label{eq:app-stage045-Csigma}
-C_{\sigma\phi}^2=\frac{O_{\sigma\phi}^2}{N_{\sigma\sigma}N_{\phi\phi}},
+\label{eq:app-stage045-tracking}
+\boxed{
+R_\phi=R_U=R_{\rm tr}}.
+\end{equation}
+The coherent tracking factor is
+\begin{equation}
+\label{eq:app-stage045-Rtr}
+\boxed{
+R_{\rm tr}=\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
 \qquad
-0\leq C_{\sigma\phi}^2\leq1.
+\frac{1}{1+\delta_U}<R_{\rm tr}<1
+}
+\end{equation}
+for the constructive split--\(U\) branch.
+
+Therefore the rank--2 support branch collapses to tracking laws
+\begin{equation}
+\label{eq:app-stage045-tracking-laws}
+\boxed{
+M_{\rm tr}=G_{\rm tr}(\xi,\delta;R_{\rm tr}),
+\qquad
+R_{\rm target}=F_{\rm tr}(\xi,\delta;R_{\rm tr})}.
 \end{equation}
 
-\stagefield{Output}{Parent-action gain formula \eqref{eq:app-stage045-Gmicro}.}
-\stagefield{Downstream use}{Stage~046 converts this into amplitude/coherence thresholds; Stage~047 derives the equilibrium source profile.}
+\stagefield{Output}{The exact tracking condition \eqref{eq:app-stage045-tracking} and coherent tracking factor \eqref{eq:app-stage045-Rtr}.}
+\stagefield{Downstream use}{Stages~046--048 prove that support compensation is still needed and derive the exact required support ratio.}
 

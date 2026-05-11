@@ -1,62 +1,37 @@
-\section[Stage 004]{Stage 004: Projection-First Maxwell Sector and Parent-Action Bridge}
+\section[Stage 004]{Stage 004: Projected Maxwell bundle index}
 \label{stage:004}
 
-\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T1} and \resultanchor{MTDC-T4}.}
-\claimstatus{\StatusExact{} for the projection-first localized Maxwell law inside the declared parent equation.  The zero-mode comparison is a controlled \StatusReduced{} matching channel.  The mouth and grouped-bundle transport formulas are \StatusExactClosure{} once the declared projection kernel and primitive packet are adopted.  Actual branch realization of the transfer coefficients remains \StatusOpen{}.}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+\claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel closure, parent-action packet, or one-port normal form.}
 
-\stagefield{Purpose}{Stage~004 replaces the old reduction-first electromagnetic entrance by a projection-first localized Maxwell derivation.  It is organized file-for-file against the imported pre-computation SymPy audits: projected covariant Maxwell, vector Maxwell, projection/reduction matching, near-mouth projection, grouped-bundle transport, mouth-Taylor gates, parent-throat action promotion, weak-axisymmetric parent packet, and finally the retained reduced Maxwell/mixed one-port normal form used downstream.}
+\paragraph{Source and audit.}
+This stage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py}.
+It imports the bundle-level source index from the projected-Maxwell notes and
+checks that the covariant, vector, and projection/reduction comparison audits
+are present in the ledger script order.
 
-\stagefield{Inputs}{The stage imports the localized parent Maxwell equation with localization weight \(Z(w)\), a normalized brane-observation kernel \(W(w)\), the gauge-fixing weight \(H(w)\), the mixed gauge-invariant fields \(E_w=F_{w0}\) and \(C_a=F_{aw}\), the promoted parent throat block \(S_\Sigma[R]\), the Stage~003 wall operator, and the compact outgoing \(l=2\) fingerprint.}
+\paragraph{Bundle role.}
+The electromagnetic sector is treated as a projection problem before it is
+treated as a reduced one-port normal form.  The source bundle fixes three
+rules:
+\begin{enumerate}
+\item projection by parts creates a real transverse leakage/source term;
+\item the homogeneous Maxwell equations project in measured fields, while the
+inhomogeneous equations carry source-coupled flux fields;
+\item reduction is a matched channel, not the primary parent derivation.
+\end{enumerate}
 
-\stagefield{Verification}{Root-level SymPy audits \StageFile{scripts/moving_throat_pde_stage004_001_projected_maxwell_readme_sympy_audit.py} through \StageFile{scripts/moving_throat_pde_stage004_017_parent_throat_action_weak_axisym_packet_sympy_audit.py} are file-for-file migrations of the derivation-only \StageFile{notes/em_projected} scripts, renamed so their order matches the TeX substages.  \StageFile{scripts/moving_throat_pde_stage004_018_reduced_one_port_normal_form_sympy_audit.py} retains the legacy reduced one-port normal form.  Transcripts are written under \StageFile{scripts/output/}.  The \StageFile{notes/em_projected/step_19_*} branch-export packet and later scan/runtime material remain outside the paper derivation.  Mathematica mirrors currently cover the earlier compact projection/matching/mouth checks and the reduced normal form; full file-for-file Mathematica mirrors remain a separate follow-up unless independently derived.  Shared numerical stress test with Stage~003: \StageFile{scripts/numerical/stage003_004_foundational_stress.py}, \StageFile{scripts/numerical/output/stage003_004_foundational_stress.txt}, \StageFile{mathematica/numerical/stage003_004_foundational_stress.wl}, and \StageFile{mathematica/numerical/output/stage003_004_foundational_stress.txt}.}
+\paragraph{Projection identity.}
+For any smooth profile \(Q(w)\) and observation kernel \(W(w)\),
+\begin{equation}
+\label{eq:stage004-projection-ibp}
+\partial_w(WQ)-W\partial_wQ-(\partial_wW)Q=0.
+\end{equation}
+After integration over \(w\), \eqref{eq:stage004-projection-ibp} is the
+bookkeeping identity that turns the parent \(w\)-flux into a boundary term
+plus a kernel-gradient leakage term.
 
-\subsection*{Derivation}
-
-\input{stages/stage_004_001_projected_maxwell_readme}
-
-\input{stages/stage_004_002_projected_maxwell_covariant}
-
-\input{stages/stage_004_003_projected_maxwell_vector}
-
-\input{stages/stage_004_004_projection_reduction_comparison}
-
-\input{stages/stage_004_005_projected_maxwell_extension}
-
-\input{stages/stage_004_006_projected_maxwell_near_throat}
-
-\input{stages/stage_004_007_projected_maxwell_push_bundle_master}
-
-\input{stages/stage_004_008_projected_maxwell_p2_bridge}
-
-\input{stages/stage_004_009_projected_maxwell_stage4_primitive_bridge}
-
-\input{stages/stage_004_010_projected_maxwell_mouth_taylor_master}
-
-\input{stages/stage_004_011_projected_maxwell_mouth_taylor_gate_bridge}
-
-\input{stages/stage_004_012_parent_throat_action_master}
-
-\input{stages/stage_004_013_parent_throat_action_candidate}
-
-\input{stages/stage_004_014_parent_throat_action_weak_axisym}
-
-\input{stages/stage_004_015_parent_throat_action_bundle_master}
-
-\input{stages/stage_004_016_parent_throat_action_isotropic_bundle}
-
-\input{stages/stage_004_017_parent_throat_action_weak_axisym_packet}
-
-\input{stages/stage_004_018_reduced_one_port_normal_form}
-
-\stagefield{Output}{Stage~004 outputs the projected Maxwell law \eqref{eq:stage004001-projected-maxwell}, the projected continuity law \eqref{eq:stage004001-projected-continuity}, the matched zero-mode reduction conditions \eqref{eq:stage004002-hz} and \eqref{eq:stage004002-source-match}, the projected grouped-bundle shifts \eqref{eq:stage004003-projected-shifts}, the mouth-Taylor primitive map \eqref{eq:stage004004-z0n0}--\eqref{eq:stage004004-z4}, the parent throat action packet \eqref{eq:stage004012-parent-density}--\eqref{eq:stage004017-residual-xi}, the reduced conservative one-port self-energy \eqref{eq:app-stage004-self-energy}, the outgoing transfer factor \eqref{eq:app-stage004-transfer-factor}, and the wall-level \(i\omega^5\) quadrupole coefficient \eqref{eq:app-stage004-wall-odd}.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Projection by parts gives the exact transverse leakage term in \eqref{eq:stage004001-projected-maxwell}.
-\item The homogeneous equations project in measured fields, while the inhomogeneous equations use source-coupled flux fields; identifying them is a closure condition.
-\item \(H=Z\) and \(S=Z/Z_{\rm int}\) give the clean matched zero-mode channel that reproduces the reduction-first coupling.
-\item Mouth-local projection feeds the existing grouped-bundle \(Z_n,N_n\) slots, and the static conservative shift cancels from the eliminated compatibility surface.
-\item The parent throat action packet fixes the wall-side isotropic and weak-axisymmetric data carried into later branch testing.
-\item The one-port Schur complement and outgoing dressing preserve the old nonnegative transfer factor and compact outgoing \(l=2\) fingerprint.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{Stage~005 uses \(N_A(\omega)\) as the outgoing-transfer factor in each grouped lane, now read as the reduced normal form of the projection-first mixed-sector packet.  Stage~006 collects the conservative moments into \(Z_{A0},Z_{A2},Z_{A4}\) and the transfer moments into \(N_{A0},N_{A2},N_{A4}\).  Later weak-axisymmetric stages use the projected mouth bridge and parent-action packet as the provenance for how EM slippage and parent wall data can feed \(\Xi_1\), \(K_1\), and \(H_{\rm even}\) without claiming actual branch realization.}
+\paragraph{Output.}
+Stage~004 fixes the source ordering for the projection-first EM bundle and
+anchors the projection-by-parts identity used in the next stage.

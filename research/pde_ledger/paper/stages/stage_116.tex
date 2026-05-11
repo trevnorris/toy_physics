@@ -1,28 +1,28 @@
-\section[Stage 116]{Stage 116: Full Coupled Mouth-Layer Fixed-Point Law}
+\section[Stage~133]{Stage~133: Finite D/N Mixed-Tube Realization}
 \label{stage:116}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusReduced{}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~116 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~116 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage116_coupled_mouth_fixedpoint_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage116_coupled_mouth_fixedpoint_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage116_coupled_mouth_fixedpoint_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage116_coupled_mouth_fixedpoint_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
 
 \begin{quote}
-Two-channel D/N boundary layer gives \(\Pi=\sum_{\alpha=\pm}M_\alpha\mathcal S(\Pi,\kappa_\alpha)\).
+First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale.
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
-\item Check the self-matched susceptibility closure before using the one-scalar branch law.
-\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+\item Check the Schur complement signs in the two-channel core model.
+\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+\item Check parent overlap ratios before interpreting them as actual branch values.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Stages 129--136 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
 

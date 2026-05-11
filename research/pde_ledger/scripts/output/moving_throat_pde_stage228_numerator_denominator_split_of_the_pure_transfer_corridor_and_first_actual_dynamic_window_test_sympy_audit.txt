@@ -1,0 +1,52 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+# Date: 2026-05-11T12:51:49-06:00
+# Elapsed: 38s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 228 SymPy audit: numerator/denominator split and first actual dynamic-window test ===
+
+Verified exact numerator/denominator split theorem:
+Xi_1   = 2*(875*xLR + 294*pi**2*xLR - 75*xLU + 294*pi**2*xLU - 400*xLW + 1568*pi**2*xLW - 588*pi**2*xOU - 800*xOU - 3724*pi**2*xOW)/(19*(-25 + 98*pi**2))
+pi_1   = 3*xLR/19 + 3*xLU/19 + 16*xLW/19 + 32*xOU/19
+delta_1= -50*xLR/(-25 + 98*pi**2) + 196*pi**2*xOU/(-25 + 98*pi**2) + 196*pi**2*xOW/(-25 + 98*pi**2)
+
+Verified exact subcorridor counts:
+rank(pure-transfer) = 3  nullity = 2
+rank(+ numerator rigidity) = 4  nullity = 1
+rank(+ denominator rigidity) = 4  nullity = 1
+rank(+ both rigidities) = 5  nullity = 0
+det[(pi_1, delta_1)|_pure transfer] = 196*(200 + 147*pi**2)*(80000 + 343225*pi**2 + 43218*pi**4)/(475*(8670000 + 14894275*pi**2 + 2117682*pi**4))
+
+Verified positive-Xi_1 unit rigid survivors:
+v_num = [-0.555511493913663, 0.31814575602683626, -0.657668009116379, -0.045337299604351705, -0.3944712627066854]
+pi_1(v_num)    = 5.426657103235053e-166
+delta_1(v_num) = -0.8680561748383809
+Xi_1(v_num)    = 1.7361123496767619
+v_den = [-0.2658399341453669, 0.18448136606435753, 0.9445445942495105, 0.049844987652256284, -0.02543111614911035]
+pi_1(v_den)    = 0.3464660759060185
+delta_1(v_den) = 3.391660689521908e-167
+Xi_1(v_den)    = 0.692932151812037
+
+Verified undeformed compatibility-branch wall-like poles:
+omega_- = 1.997535678933614    R_Q,- = 30.19990756025007
+omega_+ = 4.949054323643118    R_Q,+ = 36.171186483269544
+P_0     = 0.0020697923180628833
+
+Verified first-order dynamic slopes on the rigid subcorridors:
+numerator-rigid:   dln P0 = 1.7361123205716922
+                   dln R_Q,+ = -0.5234658706498863    dln R_Q,- = 0.7135849466877175
+denominator-rigid: dln P0 = 0.692932156098891
+                   dln R_Q,+ = -0.35245539820039085    dln R_Q,- = -0.23169477447737563
+
+Verified first actual dynamic-window ceilings:
+numerator-rigid dynamic ceilings   = (0.9625325988179823, inf)
+denominator-rigid dynamic ceilings = (1.395926950291649, 1.4295509940882898)
+numerator-rigid static ceilings    = (0.2119277180196023, 0.42486827756169737)
+denominator-rigid static ceilings  = (0.5309759801598148, 1.0644895921366362)
+
+Stage 228 audit completed successfully.
+
+EXIT_CODE: 0

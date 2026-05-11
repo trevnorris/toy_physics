@@ -1,0 +1,44 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage158_linear_defect_transport_mathematica_audit.wl
+# Date: 2026-05-11T13:17:30-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 141 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT
+========================================================================================
+linear delta R law = 0
+PASS: linear delta R law
+delta Ms law = 0
+PASS: delta Ms law
+delta Mq law = 0
+PASS: delta Mq law
+delta Pi law = 0
+PASS: delta Pi law
+linear Delta_Q law = 0
+PASS: linear Delta_Q law
+
+========================================================================================
+Numerical coefficients at the renormalized canonical point
+========================================================================================
+dR/dg        = -0.49021604438762603754266850824349743585`20.
+dMq/dSigma0  = -1/4
+dMq/dg       = 2.28001126927792351405414544310045729337`20.
+dPi/dSigma0  = 0.83240947108163457213159119874035241082`20.
+dPi/dS       = -1.1627583875422189407800033222883939743`20.
+dPi/dg       = 1.52843317823248362127665487307121799914`20.
+dSigma0/dThat= 6.42981496203005499347050823012573851479`20.
+dPi/dThat    = 5.35223887169621835652632105900072845146`19.69897000433602
+
+Carry-forward summary:
+  delta R  = -(delta g)/sqrt(1+r_F1^2) + O(delta g^2)
+  delta Mq = -(1/4) delta Sigma0 + Sigma0_can/sqrt(1+r_F1^2) delta g + O(2)
+  delta Pi = (1-S_can/4) delta Sigma0 - (Sigma0_can/4) delta S + Sigma0_can*S_can/sqrt(1+r_F1^2) delta g + O(2)
+  Delta_Q  = 5 b + a0/3 + 9 a5 + O(2)
+
+Stage 158 Mathematica audit passed.
+
+EXIT_CODE: 0

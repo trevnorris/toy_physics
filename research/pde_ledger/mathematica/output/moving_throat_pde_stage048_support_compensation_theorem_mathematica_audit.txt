@@ -1,0 +1,52 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage048_support_compensation_theorem_mathematica_audit.wl
+# Date: 2026-05-11T12:51:07-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 031 — SUPPORT COMPENSATION THEOREM
+========================================================================================
+G_tr = (9*xi*(delta + xi))/(9*delta + (9 + 2*r^2)*xi)
+M_crit = (9*(1 + delta))/(9 + 9*delta + 2*r^2)
+dG_tr/dxi = (9*(9*delta^2 + 18*delta*xi + 9*xi^2 + 2*r^2*xi^2))/(9*delta + 9*xi + 2*r^2*xi)^2
+dG_tr/dxi formula = 0
+PASS: dG_tr/dxi formula
+F_tr(xi=0)-1 = 0
+PASS: F_tr(xi=0)-1
+softening coefficient for F_tr = ((9 + 9*delta + 2*r)^2*(9 + 9*delta + 2*r^2)^2)/(81*(9*(1 + delta)^2 + 2*r^2)^2)
+(1-xi) F_tr softening coefficient = 0
+PASS: (1-xi) F_tr softening coefficient
+M_crit - G_tr = (-9*(-1 + xi)*(9*delta + 9*delta^2 + 9*xi + 9*delta*xi + 2*r^2*xi))/((9 + 9*delta + 2*r^2)*(9*delta + 9*xi + 2*r^2*xi))
+M_crit - G_tr formula = 0
+PASS: M_crit - G_tr formula
+S(zeta;eps) = 1 + ((-1 + eps)*zeta)/(-1 + eps*zeta)
+S(zeta=0)-1 = 0
+PASS: S(zeta=0)-1
+dS/dzeta - (1-eps)/(1-zeta eps)^2 = 0
+PASS: dS/dzeta - (1-eps)/(1-zeta eps)^2
+pole coefficient for S = (1 - eps)/eps^2
+pole coefficient formula = 0
+PASS: pole coefficient formula
+zeta_req = (-1 + sReq)/(1 + eps*(-2 + sReq))
+zeta_crit = (-1 + sCrit)/(1 + eps*(-2 + sCrit))
+inverse map S(zeta_req)-S_req = 0
+PASS: inverse map S(zeta_req)-S_req
+inverse map S(zeta_crit)-S_crit = 0
+PASS: inverse map S(zeta_crit)-S_crit
+1/eps - zeta_req = -((-1 + eps)/(eps*(1 - 2*eps + eps*sReq)))
+zeta_crit - zeta_req = -(((-1 + eps)*(sCrit - sReq))/((1 - 2*eps + eps*sCrit)*(1 - 2*eps + eps*sReq)))
+pole margin formula = 0
+PASS: pole margin formula
+branch margin formula = 0
+PASS: branch margin formula
+dxi_phys/dzeta = -1/9*((-1 + eps)*mMix*(9*delta + 9*xi + 2*r^2*xi)^2)/((9*delta^2 + 18*delta*xi + 9*xi^2 + 2*r^2*xi^2)*(-1 + eps*zeta)^2)
+dxi_phys/dzeta formula = 0
+PASS: dxi_phys/dzeta formula
+
+Stage 048 Mathematica audit passed.
+
+EXIT_CODE: 0

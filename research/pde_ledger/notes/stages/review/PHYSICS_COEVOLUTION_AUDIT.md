@@ -1,23 +1,23 @@
-# Moving-Throat PDE — Physics Co-Evolving Branch Audit (`125-127`, `137`, `139-140`)
+# Moving-Throat PDE — Physics Co-Evolving Branch Audit (`142-144`, `154`, `156-157`)
 
 ## Scope
 
 This pass targets the place where a referee is most likely to accuse the model of
 quietly protecting a preferred branch:
 
-- [stage125_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_selfconsistent_mouth_branch.md)
-- [stage126_equal_normalized_singular_limit.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage126_equal_normalized_singular_limit.md)
-- [stage127_unique_regular_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage127_unique_regular_canonical_branch.md)
-- [stage137_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_coevolving_core_mouth_map.md)
-- [stage139_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage139_renormalized_canonical_branch.md)
-- [stage140_core_mouth_coevolution_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_core_mouth_coevolution_status.md)
+- [stage142_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage142_selfconsistent_mouth_branch.md)
+- [stage143_equal_normalized_singular_limit.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage143_equal_normalized_singular_limit.md)
+- [stage144_unique_regular_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage144_unique_regular_canonical_branch.md)
+- [stage154_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage154_coevolving_core_mouth_map.md)
+- [stage156_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage156_renormalized_canonical_branch.md)
+- [stage157_core_mouth_coevolution_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage157_core_mouth_coevolution_status.md)
 
 with supporting numerical red-team artifacts:
 
-- [stage125_127_mouth_branch_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage125_127_mouth_branch_stress.txt)
-- [stage137_coevolving_map_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage137_coevolving_map_stress.txt)
-- [stage138_139_fixedpoint_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage138_139_fixedpoint_stress.txt)
-- [stage138_139_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/mathematica/numerical/output/stage138_139_fixedpoint_stress.txt)
+- [stage142_144_mouth_branch_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage142_144_mouth_branch_stress.txt)
+- [stage154_coevolving_map_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage154_coevolving_map_stress.txt)
+- [stage155_156_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage155_156_fixedpoint_stress.txt)
+- [stage155_156_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/mathematica/numerical/output/stage155_156_fixedpoint_stress.txt)
 
 The standard here is still not ontology. The standard is:
 
@@ -32,7 +32,7 @@ The standard here is still not ontology. The standard is:
 
 Current verdict:
 
-- the `125-127`, `137`, `139-140` chain looks **physically coherent as a reduced
+- the `142-144`, `154`, `156-157` chain looks **physically coherent as a reduced
   self-consistent mean-field closure**;
 - I do **not** see evidence that the canonical branch is being protected by hidden tuning;
 - the later co-evolving solve is actually strong anti-tuning evidence, because it
@@ -40,9 +40,9 @@ Current verdict:
 
 The main referee-facing limitations are narrower:
 
-1. [stage137_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_coevolving_core_mouth_map.md) is still a quasi-static reduced fixed-point closure, not a dynamical existence/stability theorem for the full PDE.
-2. [stage139_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage139_renormalized_canonical_branch.md) proves uniqueness only on the analyzed positive branch window, not across every conceivable non-positive or remote branch.
-3. [stage140_core_mouth_coevolution_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_core_mouth_coevolution_status.md) should always be read as a reduced-closure status note, not a theorem that the full PDE has no other microscopic realizations.
+1. [stage154_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage154_coevolving_core_mouth_map.md) is still a quasi-static reduced fixed-point closure, not a dynamical existence/stability theorem for the full PDE.
+2. [stage156_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage156_renormalized_canonical_branch.md) proves uniqueness only on the analyzed positive branch window, not across every conceivable non-positive or remote branch.
+3. [stage157_core_mouth_coevolution_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage157_core_mouth_coevolution_status.md) should always be read as a reduced-closure status note, not a theorem that the full PDE has no other microscopic realizations.
 
 Those are serious scope limits, but they are not evidence of hidden branch bias or misapplied physics.
 
@@ -50,21 +50,21 @@ Those are serious scope limits, but they are not evidence of hidden branch bias 
 
 ## Findings
 
-## 1. Stages `125-127` narrow the branch space instead of rescuing it
+## 1. Stages `142-144` narrow the branch space instead of rescuing it
 
 This is the first important anti-tuning result.
 
 Inside the explicit positive mouth family:
 
-- [stage125_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_selfconsistent_mouth_branch.md) identifies `g_c = g_Pi`, so the core-loading ratio is no longer a free label;
-- [stage126_equal_normalized_singular_limit.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage126_equal_normalized_singular_limit.md) shows the naive equal-normalized branch is not a finite regular branch at all, but a singular `Pi -> infinity` limit with divergent traction;
-- [stage127_unique_regular_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage127_unique_regular_canonical_branch.md) shows that within the explicit positive exponential family the lower compensated branch is the unique regular finite-bias finite-traction branch.
+- [stage142_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage142_selfconsistent_mouth_branch.md) identifies `g_c = g_Pi`, so the core-loading ratio is no longer a free label;
+- [stage143_equal_normalized_singular_limit.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage143_equal_normalized_singular_limit.md) shows the naive equal-normalized branch is not a finite regular branch at all, but a singular `Pi -> infinity` limit with divergent traction;
+- [stage144_unique_regular_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage144_unique_regular_canonical_branch.md) shows that within the explicit positive exponential family the lower compensated branch is the unique regular finite-bias finite-traction branch.
 
 That is the opposite of hidden tuning.
 
 If the model were being massaged to keep many plausible rescue branches open, this is not the structure it would produce. Instead, the closure eliminates the upper branch, eliminates the finite equal-normalized branch, and leaves only one regular compensated branch in the explicit family.
 
-The stress harness at [stage125_127_mouth_branch_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage125_127_mouth_branch_stress.txt) reinforces this:
+The stress harness at [stage142_144_mouth_branch_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage142_144_mouth_branch_stress.txt) reinforces this:
 
 - finite positive bias always stays in `2/pi < g(Pi) < 1`,
 - the upper branch never enters the positive-source range,
@@ -72,9 +72,9 @@ The stress harness at [stage125_127_mouth_branch_stress.txt](/var/projects/toy_p
 
 ---
 
-## 2. Stage `137` is an honest co-evolving closure, not a disguised branch prescription
+## 2. Stage `154` is an honest co-evolving closure, not a disguised branch prescription
 
-[stage137_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_coevolving_core_mouth_map.md)
+[stage154_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage154_coevolving_core_mouth_map.md)
 is physically the right next move once the mouth profile and core ratio are no longer treated separately.
 
 What is good:
@@ -87,7 +87,7 @@ So the model is not being told what branch to land on. It is being asked to solv
 
 The strongest evidence for that is numerical:
 
-- [stage137_coevolving_map_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage137_coevolving_map_stress.txt) shows the slope law and first-order transport identities hold for canonical, broadened, and fixed-point profiles rather than only at one specially chosen profile.
+- [stage154_coevolving_map_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage154_coevolving_map_stress.txt) shows the slope law and first-order transport identities hold for canonical, broadened, and fixed-point profiles rather than only at one specially chosen profile.
 
 The legitimate scope limit is different:
 
@@ -95,7 +95,7 @@ The legitimate scope limit is different:
 
 ---
 
-## 3. Stage `139` is the strongest anti-tuning evidence in the whole mouth/core chain
+## 3. Stage `156` is the strongest anti-tuning evidence in the whole mouth/core chain
 
 If the derivation were secretly protecting the preferred canonical branch, the old
 canonical traction would continue to give `g = g_*` once co-evolution is switched on.
@@ -116,9 +116,9 @@ Restoring exact compensation requires the much larger numerically located root
 
 Relative to the original canonical point, that is roughly:
 
-- `+157.54%` in `Sigma_0`,
+- `+174.54%` in `Sigma_0`,
 - `+60.48%` in normalized traction,
-- `+156.59%` in bias.
+- `+173.59%` in bias.
 
 That is not a cheap rescue. It is a substantial self-consistency cost.
 
@@ -130,8 +130,8 @@ This is exactly the pattern I would want to see if I were testing for hidden tun
 
 The fixed-point stress outputs make this stronger:
 
-- [stage138_139_fixedpoint_stress.txt](/var/projects/toy_physics/scripts/moving_throat/numerical/output/stage138_139_fixedpoint_stress.txt)
-- [stage138_139_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/mathematica/numerical/output/stage138_139_fixedpoint_stress.txt)
+- [stage155_156_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/scripts/numerical/output/stage155_156_fixedpoint_stress.txt)
+- [stage155_156_fixedpoint_stress.txt](/var/projects/toy_physics/research/pde_ledger/mathematica/numerical/output/stage155_156_fixedpoint_stress.txt)
 
 Both show:
 
@@ -186,7 +186,7 @@ That is the behavior of a model under constraint, not a model being tuned to pas
 
 These are things I explicitly do **not** think are co-evolving-branch problems.
 
-1. The self-consistent map in [stage125_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_selfconsistent_mouth_branch.md) is not a hidden fit.
+1. The self-consistent map in [stage142_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage142_selfconsistent_mouth_branch.md) is not a hidden fit.
    It removes a free branch label by tying it to the source profile.
 
 2. The singularity of the equal-normalized branch is not a contradiction.
@@ -217,7 +217,7 @@ To keep this tranche referee-hard:
 ## Co-Evolving Verdict
 
 If I were trying to kill the project as a referee, I would **not** attack
-`125-127`, `137`, `139-140` by saying the branch was protected through hidden tuning.
+`142-144`, `154`, `156-157` by saying the branch was protected through hidden tuning.
 
 In fact, these stages are some of the strongest evidence against that accusation:
 
@@ -244,9 +244,9 @@ So this slice currently passes the effective-model legitimacy test:
 
 The next physics red-team target should be the remaining foundational realization bridges:
 
-- [stage108_positive_source_theorem.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage108_positive_source_theorem.md)
-- [stage153_outgoing_load_factorization.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage153_outgoing_load_factorization.md)
-- [stage168_microscopic_monomials.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage168_microscopic_monomials.md)
-- [stage170_orbit_quotient_closure.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage170_orbit_quotient_closure.md)
+- [stage125_positive_source_theorem.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_positive_source_theorem.md)
+- [stage170_outgoing_load_factorization.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage170_outgoing_load_factorization.md)
+- [stage185_microscopic_monomials.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage185_microscopic_monomials.md)
+- [stage187_orbit_quotient_closure.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage187_orbit_quotient_closure.md)
 
 Those are where a referee is most likely to shift from “is this tuned?” to “does the full reduced invariant structure really correspond to the intended physical branch data?”

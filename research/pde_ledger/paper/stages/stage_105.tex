@@ -1,28 +1,28 @@
-\section[Stage 105]{Stage 105: Concrete Mouth-Source Branch and Compensation Test}
+\section[Stage~122]{Stage~122: Exact Fixing of chi-Q}
 \label{stage:105}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~105 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~105 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage105_mouth_source_compensation_test_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
 
 \begin{quote}
-Equal-normalized mouth source misses the lower compensated branch but only by a modest traction renormalization.
+Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the Schur complement signs in the two-channel core model.
-\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
-\item Check parent overlap ratios before interpreting them as actual branch values.
+\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
+\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Stages 108--122 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages~107--113, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
 

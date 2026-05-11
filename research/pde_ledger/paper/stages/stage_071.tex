@@ -1,53 +1,59 @@
-\section[Stage 071]{Stage 071: Loading-Ratio Extraction from the Minimal Isotropic Quadrupole Module}
+\section[Stage 071]{Stage 071: Canonical Tanh-Wall Branch and Natural Local Mouth Closure}
 \label{stage:071}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} under the natural contact-plus-pole interpretation of the minimal isotropic conservative quadrupole precursor.}
-\stagefield{Purpose}{Stage~071 supplies the one missing loading ratio by reading the minimal isotropic conservative quadrupole module as contact plus pole.}
-\stagefield{Inputs}{The minimal isotropic conservative precursor \(Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\).}
+\claimstatus{\StatusExactClosure{} for the canonical wall-profile moments.}
+\stagefield{Purpose}{Stage~071 chooses the canonical tanh-wall shell and records the resulting branch controls.}
+\stagefield{Inputs}{Profile \(f(\xi)=(1+\tanh\xi)/2\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage071_loading_ratio_from_minimal_module_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage071_loading_ratio_from_minimal_module_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage071_loading_ratio_from_minimal_module_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage071_loading_ratio_from_minimal_module_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The minimal precursor is
+For
 \begin{equation}
-\label{eq:app-stage071-YQ}
+\label{eq:app-stage071-tanh}
+f(\xi)=\frac{1+\tanh\xi}{2},
+\qquad
+f'(\xi)=\frac12\operatorname{sech}^2\xi,
+\end{equation}
+the exact moments are
+\begin{equation}
+\label{eq:app-stage071-moments}
 \boxed{
-Y_Q^{\rm cons}(\omega)
-=c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2},
+I_f=\frac13,
 \qquad
-c_0=\frac34,
+I_g=\frac{4}{15},
 \qquad
-c_1=\frac14,
-\qquad
-\Omega_Q=\frac{3c_s}{2a}}.
+\frac{I_g}{I_f}=\frac45}.
 \end{equation}
-The natural contact-plus-pole reading writes
+The natural local mouth closure is
 \begin{equation}
-\label{eq:app-stage071-contact-pole}
-Y_Q^{\rm cons}(\omega)
-=\frac{1}{\rho_\alpha}
-+\frac{\rho_\alpha-1}{\rho_\alpha}\frac{1}{1-\omega^2/\Omega_Q^2}.
+\label{eq:app-stage071-mouth}
+K_m=\frac{T_X}{\ell},
+\qquad
+\eta=\frac{K_mL}{T_X}=\frac{L}{\ell}=\Lambda_\ell.
 \end{equation}
-Matching coefficients gives
+Define
 \begin{equation}
-\label{eq:app-stage071-rho}
+\label{eq:app-stage071-controls}
+\chi_s=\frac{mc_{s,w}L}{\hbar},
+\qquad
+\Lambda_\ell=\frac{L}{\ell},
+\qquad
+\Upsilon_w=\frac{4\rho_w^2V_0^2}{\hbar^2c_{s,w}^2}.
+\end{equation}
+Then
+\begin{equation}
+\label{eq:app-stage071-control-laws}
 \boxed{
-\rho_\alpha=\frac{1}{c_0}=\frac43,
+\kappa=4\chi_s^2+\frac45\Lambda_\ell^2,
 \qquad
-\zeta_{\rm req}=\frac{c_1}{c_0}=\frac13,
+\eta=\Lambda_\ell,
 \qquad
-\Pi_{\rm tr}=\frac43C_{\rm mix}}.
-\end{equation}
-This lies in the symmetric-lowest-twin regime:
-\begin{equation}
-\label{eq:app-stage071-regime}
-C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix},
-\qquad
-0<\zeta_{\rm req}=\frac13<1.
+W_{\rm wall}=\Upsilon_w\Lambda_\ell^2}.
 \end{equation}
 
-\stagefield{Output}{The minimal-module ratio \eqref{eq:app-stage071-rho}.}
-\stagefield{Downstream use}{Stage~072 compares \(\zeta_{\rm req}=1/3\) against the explicit Family--1 support map.}
+\stagefield{Output}{Canonical branch controls \eqref{eq:app-stage071-control-laws}.}
+\stagefield{Downstream use}{Stages~073--074 fix \(\Lambda_\ell\), \(\eta\), \(\chi_s\), and \(\kappa\) for Family--1.}
 

@@ -1,0 +1,27 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl
+# Date: 2026-05-11T12:57:41-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 056 — FAMILY-1 GEOMETRY MAP
+========================================================================================
+epsilon_r = 1/20
+ell/a = 1/20
+L/a = 37/20
+Lambda_ell = L/ell = 37
+Lambda_ell - 37 = 0
+PASS: Lambda_ell - 37
+eta under K_m = T_X/ell -> len/ell
+eta - L/ell = 0
+PASS: eta - L/ell
+eta(reference) - 37 = 0
+PASS: eta(reference) - 37
+
+Stage 073 Mathematica audit passed.
+
+EXIT_CODE: 0

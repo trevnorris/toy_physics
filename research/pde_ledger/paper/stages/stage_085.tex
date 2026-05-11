@@ -1,28 +1,40 @@
-\section[Stage 085]{Stage 085: At 2.5PN the Only Live Retarded Obstruction is the Leading omega to the 5 Outgoing Normalization}
+\section[Stage 085]{Stage 085: Exact Cancellation of Outgoing-Normalization Factors in the Selected Demand Product}
 \label{stage:085}
 
-\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{}.}
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the selected-branch cancellation.}
+\stagefield{Purpose}{Stage~085 proves that after the selected outgoing quadrupole branch is normalized, the support theorem depends only on a loading ratio, not on the absolute outgoing normalization factors.}
+\stagefield{Inputs}{Selected outgoing normalization, \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), and selected support loading.}
 
-\stagefield{Purpose}{Stage~85 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage085_quadrupole_demand_cancellation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage085_quadrupole_demand_cancellation_mathematica_audit.txt}.}
 
-\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\subsection*{Derivation}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage085_higher_odd_irrelevance_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage085_higher_odd_irrelevance_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage085_higher_odd_irrelevance_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage085_higher_odd_irrelevance_mathematica_audit.txt}.}
+The selected product and mixed product are
+\begin{equation}
+\label{eq:app-stage085-products}
+\boxed{
+\Pi_{\rm tr}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm req},
+\qquad
+C_{\rm mix}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm mix}}.
+\end{equation}
+Therefore the absolute factors cancel:
+\begin{equation}
+\label{eq:app-stage085-ratio}
+\boxed{
+\frac{\Pi_{\rm tr}}{C_{\rm mix}}
+=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+=:\rho_\alpha}.
+\end{equation}
+The support demand becomes
+\begin{equation}
+\label{eq:app-stage085-zeta-rho}
+\boxed{
+\zeta_{\rm req}(\rho_\alpha,\epsilon_{\rm blk})
+=\frac{\rho_\alpha-1}{1-\epsilon_{\rm blk}(2-\rho_\alpha)}}.
+\end{equation}
+In the unblocked limit, \(\zeta_{\rm req}=\rho_\alpha-1\).
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
-
-\begin{quote}
-Retarded terms beginning at \(O(\omega^7)\) do not affect the point-particle \(2.5\)PN theorem.
-\end{quote}
-
-\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
-\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
-\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{This stage feeds Stages 90--96, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Output}{The cancellation theorem \eqref{eq:app-stage085-ratio} and reduced demand formula \eqref{eq:app-stage085-zeta-rho}.}
+\stagefield{Downstream use}{Stages~086--087 express the Family--1 support window entirely in \(\rho_\alpha\); Stage~088 computes \(\rho_\alpha\) from the minimal module.}
 

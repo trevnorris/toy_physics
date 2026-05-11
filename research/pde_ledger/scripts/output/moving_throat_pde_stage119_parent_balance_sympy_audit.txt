@@ -1,0 +1,39 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage119_parent_balance_sympy_audit.py
+# Date: 2026-05-11T12:45:29-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+I. Dimensionless reduction of the compensation law
+========================================================================================
+Reduced law = -4*ghat**2 + 8*ghat*rhat - 3*rhat**2 + 1
+dimensionless law = 0
+
+========================================================================================
+II. Exact solution for the mouth-coupling ratio
+========================================================================================
+ghat solutions = [rhat - sqrt(rhat**2 + 1)/2, rhat + sqrt(rhat**2 + 1)/2]
+positive branch check = 0
+negative branch check = 0
+
+========================================================================================
+III. D/N-tube length in terms of the same normalized hybridization
+========================================================================================
+L_W = pi*a*sqrt(3*rc + 3)/6
+tube-length law = 0
+
+========================================================================================
+IV. Explicit traction law
+========================================================================================
+ghat explicit = sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*Tm*c_s*sqrt(mu0))
+ghat explicit simplification = 0
+T_m (+ branch) = 2*sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*c_s*sqrt(mu0)*(2*rhat + sqrt(rhat**2 + 1)))
+T_m (- branch) = 2*sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*c_s*sqrt(mu0)*(2*rhat - sqrt(rhat**2 + 1)))
+
+All Stage 119 symbolic checks passed.
+
+EXIT_CODE: 0

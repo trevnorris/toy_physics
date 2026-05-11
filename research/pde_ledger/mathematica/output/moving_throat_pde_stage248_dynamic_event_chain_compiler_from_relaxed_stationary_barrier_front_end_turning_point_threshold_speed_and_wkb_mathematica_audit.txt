@@ -1,0 +1,93 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl
+# Date: 2026-05-11T13:27:27-06:00
+# Elapsed: 19s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 231 — DYNAMIC EVENT-CHAIN COMPILER FROM THE RELAXED STATIONARY BARRIER FRONT END
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact reduced energy conservation
+----------------------------------------------------------------------------------------
+dE/dt on-shell = 0
+PASS: dE/dt on-shell
+
+----------------------------------------------------------------------------------------
+II. Barrier-peak and threshold-speed compiler
+----------------------------------------------------------------------------------------
+E(v_crit,new) - V_peak = 0
+PASS: E(v_crit,new) - V_peak
+solve(v_crit,new) - compiler = 0
+PASS: solve(v_crit,new) - compiler
+delta_new vanishes at v_crit,new = 0
+PASS: delta_new vanishes at v_crit,new
+solve(v_contact,coul) - compiler = 0
+PASS: solve(v_contact,coul) - compiler
+delta_coul vanishes at v_contact,coul = 0
+PASS: delta_coul vanishes at v_contact,coul
+
+----------------------------------------------------------------------------------------
+III. Turning-point and WKB compiler
+----------------------------------------------------------------------------------------
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+Coulomb antiderivative = 0
+PASS: Coulomb antiderivative
+Coulomb endpoint evaluation = 0
+PASS: Coulomb endpoint evaluation
+dr_+/dE transport law = 0
+PASS: dr_+/dE transport law
+dr_-/dE transport law = 0
+PASS: dr_-/dE transport law
+
+----------------------------------------------------------------------------------------
+IV. Near-top parabolic normal form
+----------------------------------------------------------------------------------------
+near-top action normal form = 0
+PASS: near-top action normal form
+
+----------------------------------------------------------------------------------------
+V. Session-II benchmark specialization (benchmark-only numeric layer)
+----------------------------------------------------------------------------------------
+v_crit,new(session) diff = 0. (tol = 1/1000000000000)
+PASS: v_crit,new(session)
+v_contact,coul(session) diff = 0. (tol = 1/1000000000000)
+PASS: v_contact,coul(session)
+v_0,sub(session) diff = 0. (tol = 1/1000000000000)
+PASS: v_0,sub(session)
+r_turn,coul(session) diff = 0. (tol = 1/1000000000000000)
+PASS: r_turn,coul(session)
+T_new(session) diff = 3.0286079200081417*^-9 (tol = 1/20000000)
+PASS: T_new(session)
+T_coul(session) diff = 3.4696573392167807*^-9 (tol = 1/20000000)
+PASS: T_coul(session)
+T_new/T_coul(session) diff = 1.7040520106093027*^-8 (tol = 1/20000000)
+PASS: T_new/T_coul(session)
+improvement percentage diff = 0.000045704052009654106 (tol = 1/1000)
+PASS: improvement percentage
+Coulomb turnback at v_cross diff = 2.253480122837992*^-6 (tol = 3/1000000)
+PASS: Coulomb turnback at v_cross
+I_coul exact vs report diff = 0.00008282644795259975 (tol = 1/1000)
+PASS: I_coul exact vs report
+threshold ordering sign = 0
+PASS: threshold ordering sign
+Xi_turn positivity flag = 0
+PASS: Xi_turn positivity flag
+lambda_th positivity flag = 0
+PASS: lambda_th positivity flag
+v_0,sub(E) = Sqrt[2]*Sqrt[(Esub - V0)/ms]
+r_turn,Coul(E) = Esub^(-1)
+I_Coul(E) = (Sqrt[2]*ms*(-Sqrt[Esub*rContact*(1 - Esub*rContact)] + ArcCos[Sqrt[Esub*rContact]]))/(hbarEff*Sqrt[Esub*ms])
+T_new/T_Coul symbolic = E^(-2*(-Icoul + Inew))
+r_+(top) = Sqrt[2]*Sqrt[DeltaE/Kpeak] + rPeak
+r_-(top) = -(Sqrt[2]*Sqrt[DeltaE/Kpeak]) + rPeak
+|V'(r_turn)| from lambda_th(session) = 5.8374628518457765
+
+All Stage 248 symbolic and benchmark-specialization checks passed.
+
+EXIT_CODE: 0

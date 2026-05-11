@@ -1,0 +1,84 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+# Date: 2026-05-11T12:41:51-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 20 — CONTINUUM-KERNEL EXTRACTION AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Exact N/N and D/N modes
+----------------------------------------------------------------------------------------
+u0 normalization - 1 = 0
+u1 normalization - 1 = 0
+f0 normalization - 1 = 0
+u0-u1 orthogonality = 0
+u0 N/N boundary slope @0 = 0
+u1 N/N boundary slope @0 = 0
+u1 N/N boundary slope @L = 0
+f0 D/N boundary value @0 = 0
+f0 D/N boundary slope @L = 0
+kappa0 = 2*sqrt(2)/pi
+kappa1 = -4/(3*pi)
+sigma  = 88/(9*pi**2)
+kappa0 - 2 sqrt(2)/pi = 0
+kappa1 + 4/(3 pi) = 0
+sigma - 88/(9 pi^2) = 0
+
+----------------------------------------------------------------------------------------
+2. Mass-normalized projected kernels
+----------------------------------------------------------------------------------------
+K0          = (K_eta + 6*T_Omega)/mu_eta
+DeltaK_ax   = pi**2*T_w/(L**2*mu_eta)
+varpi^2     = K_phi/mu_phi + pi**2*T_phi/(4*L**2*mu_phi)
+Omega_U^2   = K_U/mu_U
+Omega_W^2   = K_W/mu_W + pi**2*T_W/(4*L**2*mu_W)
+
+----------------------------------------------------------------------------------------
+3. Schur-complement factorization
+----------------------------------------------------------------------------------------
+Sigma_wall - [Xi I + alpha v v^T] =
+⎡0  0⎤
+⎢    ⎥
+⎣0  0⎦
+
+----------------------------------------------------------------------------------------
+4. Continuum extraction of A, alpha_mix, beta_0, M_mix, delta
+----------------------------------------------------------------------------------------
+A continuum formula = 0
+Delta0 continuum formula = 0
+Chi continuum formula = 0
+beta0 continuum formula = 0
+alpha_mix continuum formula = 0
+M_mix continuum formula = 0
+delta continuum formula = 0
+A         = (K_U*(K_eta + 6*T_Omega) - c_etaU**2)/(K_U*mu_eta)
+Delta0    = K_U*K_W/(mu_U*mu_W) + pi**2*K_U*T_W/(4*L**2*mu_U*mu_W) - 88*c_UW**2/(9*pi**2*mu_U*mu_W)
+Chi       = (K_U*c_etaW + c_UW*c_etaU)/(mu_U*sqrt(mu_W)*sqrt(mu_eta))
+beta0     = 1296*pi**4*L**4*mu_W*(K_U*c_etaW + c_UW*c_etaU)**2/(mu_eta*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2)**2)
+alpha_mix = 36*pi**2*L**2*(K_U*c_etaW + c_UW*c_etaU)**2/(K_U*mu_eta*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2))
+M_mix     = 288*L**2*(K_U*c_etaW + c_UW*c_etaU)**2/((K_U*(K_eta + 6*T_Omega) - c_etaU**2)*(9*pi**2*K_U*(4*K_W*L**2 + pi**2*T_W) - 352*L**2*c_UW**2))
+delta     = pi**2*K_U*T_w/(L**2*(K_U*(K_eta + 6*T_Omega) - c_etaU**2))
+
+----------------------------------------------------------------------------------------
+5. Exact continuum stability inequalities
+----------------------------------------------------------------------------------------
+A - [K_U K_eta^(eff) - c_(etaU)^2]/(mu_eta K_U) = 0
+Delta0 - [K_U K_W^(eff) - c_(UW)^2 sigma]/(mu_U mu_W) = 0
+Stable selected branch requires:
+  K_U K_eta^(eff) > c_(etaU)^2
+  K_U K_W^(eff)   > c_(UW)^2 sigma
+with sigma = 88/(9*pi**2)
+
+========================================================================================
+STAGE 20 AUDIT COMPLETE
+========================================================================================
+The first explicit finite-throat continuum kernel reproduces the full reduced
+Stage-17/19 branch data exactly.
+
+EXIT_CODE: 0

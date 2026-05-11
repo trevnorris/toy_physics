@@ -5,7 +5,7 @@
 # Usage:
 #   bash research/pde_ledger/mathematica/numerical/run_all_stress.sh
 #   bash research/pde_ledger/mathematica/numerical/run_all_stress.sh --update
-#   bash research/pde_ledger/mathematica/numerical/run_all_stress.sh stage137
+#   bash research/pde_ledger/mathematica/numerical/run_all_stress.sh stage154
 #
 # Default mode is --check: rerun each harness and compare stdout against the
 # saved artifact under research/pde_ledger/mathematica/numerical/output/.
@@ -54,9 +54,9 @@ for script in "$SCRIPTS_DIR"/stage*_stress.wl; do
   basename="$(basename "$script" .wl)"
   out_file="$OUTPUT_DIR/${basename}.txt"
 
-  # stage138_139_stress.wl is a superseded exploratory harness; keep the
+  # stage155_156_stress.wl is a superseded exploratory harness; keep the
   # maintained fixed-point regression instead.
-  if [ "$basename" = "stage138_139_stress" ]; then
+  if [ "$basename" = "stage155_156_stress" ]; then
     skip=$((skip + 1))
     continue
   fi

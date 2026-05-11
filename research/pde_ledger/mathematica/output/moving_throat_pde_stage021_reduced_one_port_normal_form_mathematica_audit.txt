@@ -1,0 +1,84 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl
+# Date: 2026-05-11T12:42:37-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 004 — MAXWELL + MIXED-SECTOR REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Mixed 4+1 Maxwell fields are gauge invariant
+----------------------------------------------------------------------------------------
+E_w gauge variation = 0
+PASS: E_w gauge variation
+C_a gauge variation = 0
+PASS: C_a gauge variation
+
+----------------------------------------------------------------------------------------
+II. Conservative wall + brane-MAXWELL + mixed-mode reduction
+----------------------------------------------------------------------------------------
+Q kinetic coefficient = 0
+PASS: Q kinetic coefficient
+Sigma_EM+mix^cons(omega) = (gW^2*(-oA^2 + omega^2) + gA^2*(omega - oW)*(omega + oW) - 2*gA*gW*r)/((oA - omega)*(oA + omega)*(omega - oW)*(omega + oW) + r^2)
+D_cons(omega) = k - m*omega^2 + (gA^2*(-omega^2 + oW^2) + gW*(gW*(oA - omega)*(oA + omega) + 2*gA*r))/((oA - omega)*(oA + omega)*(omega - oW)*(omega + oW) + r^2)
+A exact solution residual = 0
+PASS: A exact solution residual
+W exact solution residual = 0
+PASS: W exact solution residual
+z0 formula = 0
+PASS: z0 formula
+z2 formula = 0
+PASS: z2 formula
+z4 formula = 0
+PASS: z4 formula
+z0^(EM+mix) = (gW^2*oA^2 + gA^2*oW^2 + 2*gA*gW*r)/(oA^2*oW^2 - r^2)
+z2^(EM+mix) = (2*gA*gW*(oA^2 + oW^2)*r + gW^2*(oA^4 + r^2) + gA^2*(oW^4 + r^2))/(-(oA^2*oW^2) + r^2)^2
+z4^(EM+mix) = (2*gA*gW*r*(oA^4 + oA^2*oW^2 + oW^4 + r^2) + gW^2*(oA^6 + (2*oA^2 + oW^2)*r^2) + gA^2*(oW^6 + (oA^2 + 2*oW^2)*r^2))/(oA^2*oW^2 - r^2)^3
+Sigma z0 = 0
+PASS: Sigma z0
+Sigma z2 = 0
+PASS: Sigma z2
+Sigma z4 = 0
+PASS: Sigma z4
+
+----------------------------------------------------------------------------------------
+III. Outgoing dressing of the mixed block
+----------------------------------------------------------------------------------------
+Sigma_full(omega) = (gW^2*(-oA^2 + omega^2) + gA^2*(omega^2 - oW^2 + piOut) - 2*gA*gW*r)/((oA - omega)*(oA + omega)*(omega^2 - oW^2 + piOut) + r^2)
+N(omega) = (gW*(oA - omega)*(oA + omega) + gA*r)^2/((oA - omega)*(oA + omega)*(omega - oW)*(omega + oW) + r^2)^2
+N(0) = (gW*oA^2 + gA*r)^2/(-(oA^2*oW^2) + r^2)^2
+delta D_wall^(odd) = ((-I)*gammaPort*omega^5*(gW*oA^2 + gA*r)^2)/(-(oA^2*oW^2) + r^2)^2
+N(omega) compact formula = 0
+PASS: N(omega) compact formula
+N(0) positive-square form = 0
+PASS: N(0) positive-square form
+
+----------------------------------------------------------------------------------------
+IV. Compact outgoing l=2 fingerprint
+----------------------------------------------------------------------------------------
+Lambda2(k) = -3/radius + (kWave^2*radius)/3 + (kWave^4*radius^3)/9 + (I/9)*kWave^5*radius^4 - (2*kWave^6*radius^5)/27
+Y2_hat(omega) = 1 + (omega^2*radius^2)/(9*cS^2) + (4*omega^4*radius^4)/(81*cS^4) + ((I/27)*omega^5*radius^5)/cS^5
+Gamma5_port = radius^5/(27*cS^5)
+Y2_hat minimal branch = 0
+PASS: Y2_hat minimal branch
+Gamma5_port - a^5/(27 c_s^5) = 0
+PASS: Gamma5_port - a^5/(27 c_s^5)
+
+----------------------------------------------------------------------------------------
+V. Derivative-coupled scalar mixed outlet starts at i omega^3
+----------------------------------------------------------------------------------------
+N_scalar(omega) = (eta^2*oA^4*omega^2)/(-(oA^2*oW^2) + r^2)^2
+Pi0_out * N_scalar = (I*eta^2*gamma1*oA^4*omega^3)/(-(oA^2*oW^2) + r^2)^2
+N_scalar leading term = 0
+PASS: N_scalar leading term
+scalar odd order = 0
+PASS: scalar odd order
+
+Stage 004 Mathematica audit passed.
+
+EXIT_CODE: 0

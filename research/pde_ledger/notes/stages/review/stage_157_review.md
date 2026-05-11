@@ -1,12 +1,12 @@
-# Review: Stage 157 — Static self similarity
+# Review: Stage 157 — Dimensionless continuum placement
 
-**Batch:** Batch 19 — Grouped Outlet & Similarity Closure
+**Batch:** 4 — Kernel Continuation
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage157_static_self_similarity.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage157_static_self_similarity_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py`
 
 ## Review Checklist
 
@@ -35,24 +35,45 @@
 
 **Questions:**
 
-### Agent: Claude Opus 4.6 — 2026-04-03
-**Verdict:** PASS
-**Notes Derivation Review:** Weighted decomposition delta_D = omega_K delta_K - omega_B delta_B - omega_Z delta_Z verified. Weight identity omega_K-omega_B-omega_Z=1. Wall-referenced Xi_load form correct. Microscopic log slopes for BdG (2 delta ln(c/varpi)), Z (quotient rule), N (P^2/Delta^2) sectors verified. Self-similarity theorem: all Sigma=0 → Xi_load=0. Clean.
-**Script Review:** Weight identity, delta_D decomposition, wall-referenced form, all three microscopic weighted averages (BdG 2-mode, Z 2-port, N 2-port), self-similarity, mismatch-field. All genuine. All pass (exit code 0).
-**Issues Found:** None.
-
-### Agent: GPT-5 — 2026-04-03
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The self-similarity reduction is coherent. The weight identity closes exactly, the `delta_D` decomposition is consistent with the grouped `K/B/Z` lanes, and the wall-referenced `Xi_load` form matches the staged microscopic averages. The theorem that common static self-similarity forces `Xi_load = 0` is the correct algebraic endpoint.
+1. **Equation-level correctness.** Five dimensionless ratios (eps_eta, eps_W, rho, Z_W, delta_0) plus Lambda correctly defined from Stage-20 continuum formulas. Placement formulas verified: delta = delta_0/(1-eps_eta), M_mix = 8 Z_W(1+rho)^2/(pi^2(1-eps_eta)(1-eps_W)). Product relation R_target * M_mix = 8 Lambda(1-eps_W)/pi^2 verified — Z_W, (1+rho)^2, (1-eps_eta) cancel exactly. All nine derivative factorizations verified by hand.
+
+2. **Logical flow.** Clean: dimensionless ratios → placement formulas → product relation → parameter tendencies → three-lane factorization.
+
+3. **Notation consistent** with Stages 18-20.
+
+**Script Review:** Builds Stage-20 microscopic expressions from scratch, applies dimensionless substitutions via ordered pattern matching. No tautologies. All pass (exit code 0). Complete coverage of placement formulas, product relation, and all 9 derivatives.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+- The dimensionless reduction is algebraically correct. Substituting the Stage 20 continuum formulas into `delta`, `M_mix`, and `R_target` gives exactly the stated five-ratio map in `(eps_eta, eps_W, rho, Z_W, delta_0)` plus `Lambda`.
+- I independently rechecked the load-bearing identity of the stage:
+  `R_target M_mix = 8 Lambda (1 - eps_W)/pi^2`,
+  and it reduces to zero directly. That confirms the claimed separation between product-setting variables `(eps_W, Lambda)` and redistribution variables `(eps_eta, Z_W, rho)`.
+- The one-way tendencies are also correct. The derivative factorizations have the expected signs on the physical branch `0 < eps_eta, eps_W < 1` and `1 + rho > 0`, so the narrative about how each kernel ratio moves the physical point in `(delta, M_mix, R_target)` space is consistent.
+- The beta-factor rewrite is compatible with the Stage 20 kernel formulas: only the mass ratio `mu_W/mu_eta` survives in `beta_0`, while the placement variables themselves are pure stiffness/coupling ratios.
 
 **Script Review:**
 
-The audit script checks the weight identity, the weighted decomposition, the wall-referenced form, the microscopic averages, and the self-similarity theorem. The saved output shows each check returning zero, so the implementation is faithful.
+- The script faithfully reconstructs the Stage 20 formulas, applies the dimensionless substitutions in a nontrivial way, verifies the exact placement map, the product relation, and all nine derivative identities.
+- The saved output matches the notes and I did not find a tautological check or coding bug.
 
 **Issues Found:**
+
+None.
+
+**Questions:**
 
 None.
 

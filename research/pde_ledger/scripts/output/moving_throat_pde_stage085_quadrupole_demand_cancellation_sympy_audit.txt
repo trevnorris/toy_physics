@@ -1,0 +1,36 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+# Date: 2026-05-11T12:44:55-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 68 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS
+========================================================================================
+R_target = pi**2*A*NQ/(8*beta0)
+G_tr = 8*alpha_req/(pi**2*A)
+M_mix = 8*alpha_mix/(pi**2*A)
+Pi_tr = NQ*alpha_req/beta0
+C_mix = NQ*alpha_mix/beta0
+Pi_tr - NQ*alpha_req/beta0 = 0
+C_mix - NQ*alpha_mix/beta0 = 0
+Pi_tr/C_mix - alpha_req/alpha_mix = 0
+NQ_selected = beta0*mhat**2*s_minus/lam_minus
+Pi_sel = alpha_req*mhat**2*s_minus/lam_minus
+C_sel = alpha_mix*mhat**2*s_minus/lam_minus
+Pi_sel - mhat^2 s_- alpha_req/lambda_- = 0
+C_sel - mhat^2 s_- alpha_mix/lambda_- = 0
+zeta_req product form - loading form = 0
+zeta_req loading form - rho_alpha form = 0
+unblocked limit = 0
+
+FINAL LEDGER
+Pi_tr = (N_Q^(target)/beta0) alpha_req
+C_mix = (N_Q^(target)/beta0) alpha_mix
+Pi_tr/C_mix = alpha_req/alpha_mix
+zeta_req = (alpha_req-alpha_mix)/[alpha_mix - eps_blk(2 alpha_mix-alpha_req)]
+
+EXIT_CODE: 0

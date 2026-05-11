@@ -1,0 +1,75 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage184_branch_invariant_coordinates_mathematica_audit.wl
+# Date: 2026-05-11T13:24:12-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES
+========================================================================================
+B_* = (2*(1 + chi0 + deltaU))/deltaU
+C_* = ((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU))/(chi0*deltaU)
+
+========================================================================================
+Exact branch identities
+========================================================================================
+R_target * T^2 - Lambda0 * (1 - eps_eta) = 0
+PASS: R_target * T^2 - Lambda0 * (1 - eps_eta)
+
+========================================================================================
+Tracking invariant
+========================================================================================
+delta ln T_* = -(((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)*theta1)/(chi0*deltaU))
+delta ln T_* - Sigma_tr = 0
+PASS: delta ln T_* - Sigma_tr
+
+========================================================================================
+Corrected nontracking composite
+========================================================================================
+delta ln N_* = (2*(1 + chi0 + deltaU)*theta1)/deltaU + xi1
+delta ln N_* - Sigma_nt = 0
+PASS: delta ln N_* - Sigma_nt
+
+========================================================================================
+Dressing coordinate and selected-branch complement
+========================================================================================
+delta ln eps_eta = sigmaEta
+delta ln eps_eta - Sigma_eta = 0
+PASS: delta ln eps_eta - Sigma_eta
+delta ln[(R_target T^2)/Lambda0] = (epsEta*sigmaEta)/(-1 + epsEta)
+selected-branch complement identity = 0
+PASS: selected-branch complement identity
+
+========================================================================================
+Composite zero-defect theorem
+========================================================================================
+Sigma_tr as branch-invariant log drift = 0
+PASS: Sigma_tr as branch-invariant log drift
+Sigma_nt as branch-invariant log drift = 0
+PASS: Sigma_nt as branch-invariant log drift
+Sigma_eta as branch-invariant log drift = 0
+PASS: Sigma_eta as branch-invariant log drift
+delta ln T_* | Theta1=0 = 0
+PASS: delta ln T_* | Theta1=0
+delta ln N_* | Theta1=Xi1=0 = 0
+PASS: delta ln N_* | Theta1=Xi1=0
+delta ln eps_eta | Sigma_eta=0 = 0
+PASS: delta ln eps_eta | Sigma_eta=0
+
+Carry-forward formulas:
+  T_*  = R_tr^(-C_*)
+  N_*  = T^2 R_tr^(B_*)
+  D_*  = eps_eta
+  delta ln T_* = Sigma_tr
+  delta ln N_* = Sigma_nt
+  delta ln D_* = Sigma_eta
+  (R_target T^2)/Lambda0 = 1 - eps_eta
+  delta ln[(R_target T^2)/Lambda0] = -(eps_eta/(1-eps_eta)) Sigma_eta
+  Full zero-defect theorem: invariance of (R_tr, N_*, eps_eta) at first grouped order.
+
+Stage 184 Mathematica audit passed.
+
+EXIT_CODE: 0

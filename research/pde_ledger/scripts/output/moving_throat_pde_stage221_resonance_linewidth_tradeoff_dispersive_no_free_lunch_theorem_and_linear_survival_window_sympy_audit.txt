@@ -1,0 +1,55 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py
+# Date: 2026-05-11T12:50:04-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 221 SymPy audit: resonance / linewidth tradeoff ===
+
+Verified generic simple-pole normal form:
+chi(omega) = Num_star/(Fprime*delta - I*Gamma_out*Z_star)
+A_*        = Num_star/Fprime
+gamma_*    = Gamma_out*Z_star/Fprime
+
+Verified exact Stage 220 derivative identity:
+dD_Pi/dPi = -N(omega)
+
+Verified wall-like pole specialization:
+chi_qq(omega) = 1/(D0prime*delta - I*Gamma_out*N_star)
+gamma_wall    = Gamma_out*N_star/D0prime
+
+Exact line-shape components on the positive-detuning slice:
+Re chi = Aabs*r/(gamma*(r**2 + 1))
+Im chi = Aabs/(gamma*(r**2 + 1))
+|Re|/|Im| = r
+
+Exact conservative-shape factor: f(r) = r/(r**2 + 1)
+Maximum identity: f(r) - 1/2 = -(r - 1)**2/(2*(r**2 + 1))
+Low-loss identity: f(r) - eta/(1+eta^2) = -(-eta + r)*(eta*r - 1)/((eta**2 + 1)*(r**2 + 1))
+
+Barrier / absorbed-power ratio:
+U_disp = -Aabs*Sfam**2*r/(2*gamma*(r**2 + 1))
+P_abs  = Aabs*Sfam**2*omega_drive/(2*gamma*(r**2 + 1))
+P_abs / (omega |U_disp|) = 1/r
+
+Quality-factor detuning relation:
+|omega - omega_*| / omega_* = r/(2*Qfac)
+Low-loss boundary r = 1/eta gives 1/(2*Qfac*eta)
+
+Linear survival-window formulas:
+|U_disp|_max in the low-loss window = Aabs*Sfam**2*eta/(2*gamma*(eta**2 + 1))
+Necessary residue/linewidth ratio >= 2*DeltaV_req*(eta**2 + 1)/(Sfam**2*eta)
+
+Constructive numerical slice:
+Re chi            = 1.05000000000000
+Im chi            = 0.350000000000000
+|Re|/|Im|         = 3.00000000000000
+|U_disp|          = 13.1250000000000
+P_abs             = 48.1250000000000
+P_abs/(omega|U|)  = 0.333333333333333
+low-loss |U|_max  = 10.2941176470588
+required |A|/gamma= 0.204000000000000
+
+EXIT_CODE: 0

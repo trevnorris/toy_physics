@@ -1,12 +1,12 @@
-# Review: Stage 093 — Robin outlet model
+# Review: Stage 093 — Minimal isotropic normalization
 
-**Batch:** 14 — General DtN & Core Extraction
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (2× PASS, 2026-04-02)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage093_robin_outlet_model.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage093_robin_outlet_model_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -37,23 +37,46 @@
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
-**Notes Derivation Review:** Robin model Lambda_R = Lambda_out + rho_R. Y_R series: z^2 coeff = 1/(9-3rho_R), z^4 coeff = (4-rho_R)/(9(3-rho_R)^2), z^5 coeff = i/(27-9rho_R). chi_Q^R = 3/(3-rho_R) verified. Linearization chi_Q = 1+rho_R/3+O(rho_R^2). Branch triple (0,rho_R,0) consistent.
-**Script Review:** Series expansion, coefficient extraction, chi_Q formula, linearization. All genuine. All pass (exit code 0).
-**Issues Found:** None (minor LaTeX typo in notes: `rac{3}` should be `\frac{3}`).
+
+**Notes Derivation Review:**
+
+**1. Equation-level correctness.** All formulas verified:
+
+- Sec. 1 definitions of Delta, Q, P match Stage 7 exactly (single-mode truncation). B_0 = C^2/varpi^2, Z_0 = Q/Delta, N_0 = P^2/Delta^2, D_0 = K - B_0 - Z_0 all correct.
+- P_0 = N_0/D_0 = P^2/[Delta^2(K - C^2/varpi^2 - Q/Delta)]. Algebra verified by multiplying through by Delta.
+- Target equation mhat_rad^2 * P_0 = 54 G c_s^5/(5 a^5 c^5) follows from Stage 7 with mhat_ang = 1.
+- Stability/positivity (Sec. 3): Delta > 0 (stable 2×2 block), D_0 > 0 (stiffness > softening), N_0 = P^2/Delta^2 >= 0 (perfect square). P_0 > 0 when P != 0. All correct.
+- Monotonicity (Sec. 4): partial_K P_0 = -N_0/D_0^2 and partial_X P_0 = +N_0/D_0^2 verified by direct differentiation. Sum = 0. Correct.
+
+**2-6.** Logical flow clean from Stage 7. All assumptions explicit. Five undetermined quantities correctly identified. Notation consistent. Physical interpretation (balance between port transfer and wall self-loading) sound.
+
+**Script Review:**
+
+**B.1-B.7.** Faithful implementation of all formulas. No bugs, no hardcoded values, no tautological checks. Symbol assumptions correct (K/varpi positive, couplings real, X nonneg). All expect_zero checks pass. Coverage includes coefficient definitions, compact P0 equivalence, stability identities, monotonicity derivatives.
+
+**Issues Found:** None.
+
+---
 
 ### Agent: GPT-5 — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The isotropic Robin outlet expansion is correct: adding `rho_R` to the canonical outgoing denominator shifts the even coefficients and yields `chi_Q^R = 3/(3 - rho_R)`.
-2. The linearized behavior around the canonical branch is consistent with the exact formula, giving `chi_Q^R = 1 + rho_R/3 + O(rho_R^2)`.
-3. The branch-selection triple `(0, rho_R, 0)` is the right reduced description of a pure static Robin shift.
+1. **Equation-level correctness.** The single-mode reduction is algebraically consistent. `Delta = Omega_U^2 Omega_W^2 - R^2`, `Q = G_U^2 Omega_W^2 + 2 G_U G_W R + G_W^2 Omega_U^2`, `P = Omega_U^2 G_W + R G_U`, and the derived coefficients `B_0`, `Z_0`, `N_0`, `D_0` all match the Stage 7 definitions after truncation. The normalization rewrite `P_0 = P^2 / [Delta (K Delta - Delta C^2 / varpi^2 - Q)]` is correct.
+
+2. **Logical flow.** The stage cleanly narrows the problem from the isotropic angular theorem to the remaining radial/axial scalar. The jump from `mhat_ang = 1` to `mhat_0 = mhat_rad` is justified by the prior stage and the target equation is the right reduced form.
+
+3. **Assumptions.** The stable-branch assumptions `Delta > 0` and `D_0 > 0` are stated explicitly and are the right admissibility conditions for the denominator. The support-softening variable `X = C^2 / varpi^2` is introduced consistently.
+
+4. **Notation consistency.** The notation is consistent with Stage 7 and with the Stage 8 script. The reuse of `P_0` for the normalization prefactor is unambiguous in context.
+
+5. **Physical interpretation.** The interpretation is sensible: stronger bare wall stiffness lowers the prefactor, while stronger support softening raises it. The stage correctly isolates the remaining unknowns to `X`, `Delta`, `Q`, `P`, and `mhat_rad`.
 
 **Script Review:**
 
-The script expands the Robin-normalized branch, extracts the low-order coefficients, and verifies the exact `chi_Q^R` formula and its linearization. The saved output matches the note, and my independent check reproduces the same coefficients.
+The audit script faithfully implements the notes. It recomputes the zero-frequency coefficients, proves the compact form of `P_0`, checks the stability identity `Delta*D_0 = K*Delta - Delta*C^2/varpi^2 - Q`, and differentiates with respect to `K` and `X`. The saved output matches the claims, and my independent SymPy spot-check of `P_0 - P_0_compact` also reduced to zero.
 
 **Issues Found:** None.
 
----
+**Questions:** None.

@@ -1,0 +1,140 @@
+\section[Stage 253]{Stage 253: Physical calibration and material thresholds}
+\label{stage:253}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl}.}
+
+\subsection{Physical calibration dictionary}
+\label{subsec:app-part08-stage253-calibration}
+
+Stage 253 introduces the explicit physical dictionary
+\begin{equation}
+\label{eq:app-part08-stage253-physical-dictionary}
+t^{\rm phys}=t_*t,
+\qquad
+r^{\rm phys}=\frac{\lambda_{\rm phys}}{\lambda_{\rm ref}}r,
+\qquad
+E^{\rm phys}=E_*E.
+\end{equation}
+The safe-edge lattice event-equivalent rate is
+\begin{equation}
+\label{eq:app-part08-stage253-lat-safe-rate}
+\gamma_{\rm lat,safe}^{\rm eq}
+=
+f_{\rm lat}(s_c)\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+\end{equation}
+A coarse transport projection factor \(\Upsilon_{\rm lat}>0\) defines the physical lattice-turnover rate
+\begin{equation}
+\label{eq:app-part08-stage253-lattice-turn-rate}
+\gamma_{\rm lat,turn}^{\rm phys}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}t_*}
+=
+\zeta_{\rm ep}\lambda_{\rm ep}\omega_D.
+\end{equation}
+Thus the electron-phonon turnover threshold is \cref{eq:app-part08-main-ep-threshold}, and the product form is
+\begin{equation}
+\label{eq:app-part08-stage253-ep-product}
+(\lambda_{\rm ep}\omega_Dt_{\rm cross}^{\rm phys})_{\min}^{(253)}
+=
+\frac{f_{\rm lat}(s_c)\mu_\eta(s_0^2-s_c^2)}{\Upsilon_{\rm lat}\zeta_{\rm ep}s_c^2}.
+\end{equation}
+The legacy Session-V slice is recovered by choosing
+\begin{equation}
+\label{eq:app-part08-stage253-upsilon-session}
+\Upsilon_{\rm lat}^{\rm sess}
+=
+\frac{\gamma_{\rm lat,safe}^{\rm eq}}{\gamma_{\rm lattice}^{\rm red}}.
+\end{equation}
+This is a calibration slice, not a new branch law.
+
+For the harmonic interstitial companion,
+\begin{equation}
+\label{eq:app-part08-stage253-physical-radius}
+r_{\rm turn}^{\rm phys}=\frac{r_{\rm turn}}{\lambda_{\rm ref}}\lambda_{\rm phys},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-part08-stage253-chi-lattice}
+\chi_{\lambda,{\rm lattice}}(r_{\rm turn})
+=
+\frac{2\lambda_{\rm phys}}{r_{\rm turn}^{\rm phys}}
+=
+\frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+\end{equation}
+This is only a geometric trigger.  The force-matched stiffness requires
+\begin{equation}
+\label{eq:app-part08-stage253-force-match}
+k_{\rm eff,req}
+=
+\frac{E_*\lambda_{\rm ref}^{2}}{\lambda_{\rm phys}^{2}}
+\frac{|V_{\rm red}'(r_{\rm turn})|}{r_{\rm turn}}
+=
+\mathcal K_{\rm turn}\frac{E_*}{\lambda_{\rm phys}^{2}},
+\end{equation}
+where
+\begin{equation}
+\label{eq:app-part08-stage253-kturn}
+\mathcal K_{\rm turn}=\frac{\lambda_{\rm ref}^{2}}{r_{\rm turn}}|V_{\rm red}'(r_{\rm turn})|.
+\end{equation}
+For \(\lambda_{\rm phys}=a_{\rm int}/2\),
+\begin{equation}
+\label{eq:app-part08-stage253-k-aint}
+k_{\rm eff,req}=4\mathcal K_{\rm turn}\frac{E_*}{a_{\rm int}^{2}}.
+\end{equation}
+
+The Korringa companion is the cleanest physical map.  With
+\begin{equation}
+\label{eq:app-part08-stage253-korringa}
+T_1T=\mathcal K_{\rm corr},
+\qquad
+T_1\ge t_{\rm cross}^{\rm phys},
+\end{equation}
+the ceiling temperature is
+\begin{equation}
+\label{eq:app-part08-stage253-tmax}
+T_{\max}=\frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+=\frac{s_c\mathcal K_{\rm corr}}{t_*}.
+\end{equation}
+
+\subsection{Material-screening ratios}
+\label{subsec:app-part08-stage253-screening-ratios}
+
+The companion ends with four screening ratios:
+\begin{equation}
+\label{eq:app-part08-stage253-pi-ep}
+\Pi_{\rm ep}
+=
+\frac{\Upsilon_{\rm lat}\zeta_{\rm ep}\lambda_{\rm ep}\omega_Dt_*}{\gamma_{\rm lat,safe}^{\rm eq}}
+=
+\frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(253)}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage253-pi-chi}
+\Pi_\chi=\frac{2\lambda_{\rm ref}}{r_{\rm turn}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage253-pi-k}
+\Pi_k=
+\frac{k_{\rm eff}\lambda_{\rm phys}^{2}}{\mathcal K_{\rm turn}E_*}
+=
+\frac{k_{\rm eff}}{k_{\rm eff,req}},
+\end{equation}
+\begin{equation}
+\label{eq:app-part08-stage253-pi-t}
+\Pi_T(T)=
+\frac{\mathcal K_{\rm corr}}{Tt_{\rm cross}^{\rm phys}}
+=
+\frac{T_{\max}}{T}.
+\end{equation}
+The materials companion is then
+\begin{equation}
+\label{eq:app-part08-stage253-final-screen}
+\Pi_{\rm ep}\ge1,
+\qquad
+\Pi_\chi\ge1,
+\qquad
+\Pi_k\ge1,
+\qquad
+\Pi_T(T)\ge1.
+\end{equation}
+This is not a claim that any particular host passes.  It is the reduced threshold stack that a candidate host must satisfy after the physical unit map and material constants are supplied.

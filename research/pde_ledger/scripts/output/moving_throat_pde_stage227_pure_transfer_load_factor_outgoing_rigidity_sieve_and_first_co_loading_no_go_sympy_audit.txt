@@ -1,0 +1,39 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+# Date: 2026-05-11T12:51:11-06:00
+# Elapsed: 21s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 227 SymPy audit: pure-transfer load factor and outgoing-rigidity sieve ===
+
+Verified Stage 226 pure-transfer corridor basis:
+t_1 = [-4.359222794717644, 3.107402039105293, 18.703510605854177, 1.0, 0.0]
+t_2 = [1.9092566556867514, -1.1636512381543045, -0.48241449470528536, 0.0, 1.0]
+
+Verified pure-transfer theorem:
+Xi_1 = 2*(875*xLR + 294*pi**2*xLR - 75*xLU + 294*pi**2*xLU - 400*xLW + 1568*pi**2*xLW - 588*pi**2*xOU - 800*xOU - 3724*pi**2*xOW)/(19*(-25 + 98*pi**2))
+Lambda = 95*sqrt(2)*pi/(2*(-25 + 98*pi**2))
+I = 3/16
+H = 25/(98*pi**2)
+Xi_1 = 2[m + I/(1+I) i + H/(1-H) h]
+Xi_1 sample law = 2*(-950*xLR + 950*xOU + 950*xOW + (25 - 98*pi**2)*(3*xLR + 3*xLU + 16*xLW - 6*xOU - 38*xOW))/(19*(25 - 98*pi**2))
+
+Verified combined i=h rigidity determinant:
+det[(i,h)|_pure transfer] = -19*(-25 + 98*pi**2)*(200 + 147*pi**2)*(441*pi**2 + 4400)/(6*(8670000 + 14894275*pi**2 + 2117682*pi**4))
+
+Verified rigid one-dimensional survivors:
+v_i = [0.4528082485626012, -0.2942461228480851, -0.8281517006890647, -0.04054866463918921, 0.14458380152813619]  |Xi_1| = 1.265762479656174
+v_h = [0.6656196323312675, -0.38941931994750695, 0.46712837034745, 0.03609301419981702, 0.43103535614763294]  |Xi_1| = 2.0450912347297803
+v_m = [0.1338623859538613, -0.10586712661767451, -0.9824289950482211, -0.05389174976217097, -0.05293356330883726]  |Xi_1| = 0.2934295178813794
+
+Verified corridor norms and transported stricter 10%-loss ceilings:
+sigma_transfer = 2.3156190438605546  ceilings = (0.15889069899824274, 0.3185407658554289)
+sigma_i        = 1.265762479656174  ceilings = (0.29067880775908994, 0.5827468229751293)
+sigma_h        = 2.0450912347297803  ceilings = (0.17990900466661136, 0.3606778275386913)
+sigma_m        = 0.2934295178813794  ceilings = (1.2538967829452796, 2.5137861691165777)
+
+Stage 227 audit completed successfully.
+
+EXIT_CODE: 0

@@ -11,13 +11,13 @@ identified in
 `notes/moving_throat/review/PROOF_HARDENING_PLAN.md`:
 
 - `003-004`
-- `020-031`
-- `041`
-- `089`
-- `108`
-- `125-140`
-- `153`
-- `168-170`
+- `037-048`
+- `058`
+- `106`
+- `125`
+- `142-157`
+- `170`
+- `185-187`
 
 The goal here is not to restate every algebraic assumption appearing in every
 CAS file. The goal is to make the mathematically relevant hypotheses explicit:
@@ -59,7 +59,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: full grouped-`P2` Maxwell channelization and multimode outgoing
   coupling are deferred.
 
-## Stage `020`
+## Stage `037`
 
 - `Explicit`: first finite-throat linear continuum operator on `s in [0,L]`
   with N/N wall-`U` modes and D/N half-wave `W/phi` modes.
@@ -70,18 +70,18 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: this stage gives explicit continuum data, but not a theorem that
   the completed PDE necessarily lands in the admissible/stable region.
 
-## Stage `021`
+## Stage `038`
 
-- `Explicit`: uses the dimensionless map built from Stage `020`.
+- `Explicit`: uses the dimensionless map built from Stage `037`.
 - `CAS`: `eps_eta, eps_W, rho, Z_W, delta0, Lambda > 0`.
 - `Branch`: physical/stable placement uses `0 < eps_eta, eps_W < 1`.
 - `Branch`: the natural transfer branch is the nonvanishing one `1 + rho > 0`.
 - `Open edge`: the map is exact only after the actual PDE kernel ratios are
   supplied; this stage does not derive them.
 
-## Stage `022`
+## Stage `039`
 
-- `Explicit`: first axial `U` splitting of the Stage-`020` operator.
+- `Explicit`: first axial `U` splitting of the Stage-`037` operator.
 - `CAS`: positive effective stiffnesses and masses; `delta0, deltaU > 0`;
   real couplings; nonzero split parameters where denominators require it.
 - `Branch`: flat limit `delta_U = 0` is treated as a special degeneration.
@@ -91,18 +91,18 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
   `delta_U != 0`, so later normalization stages must admit noncollinear
   geometry.
 
-## Stage `023`
+## Stage `040`
 
 - `Explicit`: generalized rank-1 selected branch parameterized by the loading
   ratio `q = z1 / z0`.
 - `CAS`: `A0, delta, alpha, z0, xi, R_U, eps > 0`, `q` real and nonzero,
   `eta` real.
 - `Branch`: stable selected branch is restricted to `0 <= xi < 1`.
-- `Branch`: Stage-`018/019` flat-`U` formulas are recovered only on the
+- `Branch`: Stage-`035/036` flat-`U` formulas are recovered only on the
   `R_U = 1` limit.
 - `Open edge`: the actual support direction is still unknown here.
 
-## Stage `024`
+## Stage `041`
 
 - `Explicit`: two rank-1 loading directions `z` and `y`.
 - `CAS`: `A0, delta, xi > 0`, `R_U > 0`, and real `m, n, q, r`.
@@ -112,7 +112,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the physically relevant alignment of `y` remains unresolved
   (`y || z` versus `y || v`).
 
-## Stage `025`
+## Stage `042`
 
 - `Explicit`: general three-direction geometry `(z, y, s)` inserted into the
   selected-mode normalization law.
@@ -123,7 +123,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
   general normalization law, not generic equalities.
 - `Open edge`: this stage still waits on the actual continuum support direction.
 
-## Stage `026`
+## Stage `043`
 
 - `Explicit`: first symmetry-allowed `U/phi` coupling while keeping a rank-1
   support lane after elimination of the split `U` doublet.
@@ -136,7 +136,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: this stage extracts the actual support lane but does not yet
   close the physical selected branch.
 
-## Stage `027`
+## Stage `044`
 
 - `Explicit`: actual continuum inputs `(M_mix, R_U, M_supp, R_phi)` are inserted
   into the rank-2 selected-branch formulas.
@@ -148,7 +148,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: without a concrete kernel, this stage does not decide whether
   the physical PDE lands on source-tied, tracking, or intermediate closure.
 
-## Stage `028`
+## Stage `045`
 
 - `Explicit`: coherent local-kernel hypothesis that `W` and `phi` couple to the
   same local wall/`U` density.
@@ -160,7 +160,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the note’s exact normalization-law collapse is now supported by
   Mathematica, but the physical kernel hypothesis itself is still an input.
 
-## Stage `029`
+## Stage `046`
 
 - `Explicit`: physical tracking branch is compared against the flat branch.
 - `CAS`: `xi, delta, R > 0`.
@@ -171,7 +171,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: coefficient positivity is clear algebraically but only partly
   asserted programmatically in the original SymPy check.
 
-## Stage `030`
+## Stage `047`
 
 - `Explicit`: coherent local-kernel tracking branch with explicit support
   amplitude ratio `zeta`.
@@ -184,7 +184,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the stage defines the enhancement law, but not the actual
   physical `zeta`.
 
-## Stage `031`
+## Stage `048`
 
 - `Explicit`: support compensation theorem on the coherent tracking branch.
 - `CAS`: `xi, delta, R > 0`, `eps, zeta > 0`, `M_mix > 0`, `S_req, S_crit > 0`,
@@ -196,7 +196,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: no reduced-level obstruction remains, but the true PDE may still
   fail physically if its realized `zeta` never reaches `zeta_req`.
 
-## Stage `041`
+## Stage `058`
 
 - `Explicit`: coupled support/source drift-diffusion fixed point for `Pe`.
 - `CAS`: `Pe, alpha, eta, Xi > 0`.
@@ -207,7 +207,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the stage proves existence and bracketing, not a unique
   closed-form root for all `Xi`.
 
-## Stage `089`
+## Stage `106`
 
 - `Explicit`: canonical outgoing reduced closure for the quadrupole channel.
 - `CAS`: positive `G`, `c`, `c_s`, `a`, `m0hat`, `chi_Q`, `N_Q`.
@@ -217,7 +217,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the reduction is conditional on the PDE actually realizing the
   canonical outgoing branch.
 
-## Stage `108`
+## Stage `125`
 
 - `Explicit`: positive normalized localized mouth source on the first D/N
   interval.
@@ -230,7 +230,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: this is still a theorem inside the positive-source setup; it does
   not rederive the full branch-value provenance locally.
 
-## Stage `125`
+## Stage `142`
 
 - `Explicit`: explicit exponential positive mouth layer `g_c = g_Pi` and
   Family-1 self-matched closure `Sigma0 = (20/9) Tmhat^2`.
@@ -241,16 +241,16 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the singular locus `1 - R_q S_q = 0` is not globally analyzed in
   this stage.
 
-## Stage `126`
+## Stage `143`
 
-- `Explicit`: same explicit exponential mouth family as Stage `125`.
+- `Explicit`: same explicit exponential mouth family as Stage `142`.
 - `CAS`: `Pi > 0`.
 - `Branch`: finite positive `Pi` always satisfies `0 < g_Pi < 1`.
 - `Branch`: the equal-normalized branch `g_c = 1` occurs only in the singular
   limit `Pi -> infinity`, with `Tmhat ~ 0.72567 sqrt(Pi)`.
 - `Open edge`: exclusion is only inside the explicit exponential mouth family.
 
-## Stage `127`
+## Stage `144`
 
 - `Explicit`: positive-source theorem plus the self-consistent exponential
   mouth/core map.
@@ -261,15 +261,15 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: uniqueness is proved only inside the explicit Family-1
   positive-mouth closure, not the full PDE.
 
-## Stage `128`
+## Stage `145`
 
 - `Explicit`: status/consolidation stage for the mouth branch.
 - `Branch`: carries forward the explicit exponential family, upper-branch
-  exclusion, and equal-normalized singularity from Stages `113`, `125`, `127`.
+  exclusion, and equal-normalized singularity from Stages `130`, `142`, `144`.
 - `Open edge`: still assumes the real mouth layer is close enough to the
   explicit exponential family to make this reduction meaningful.
 
-## Stage `129`
+## Stage `146`
 
 - `Explicit`: small positive convex deformation
   `Sigma_eps = (1 - eps) Sigma_* + eps varpi`.
@@ -280,34 +280,34 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: all formulas are perturbative to first order; no finite-`eps`
   theorem is claimed.
 
-## Stage `130`
+## Stage `147`
 
 - `Explicit`: first-order traction-rigidity kernel on the compensated branch.
 - `CAS`: `Pi > 0`, `x, eps, lam` real.
 - `Branch`: lower compensated branch structure is frozen at `R_q = 1/4`.
-- `Branch`: the traction law is a first-order consequence of the Stage-`129`
+- `Branch`: the traction law is a first-order consequence of the Stage-`146`
   retuning formulas, not a global exact law.
 - `Open edge`: higher-order mouth corrections are not controlled here.
 
-## Stage `131`
+## Stage `148`
 
 - `Explicit`: two explicit positive non-exponential mouth families plus affine
   interpolation.
 - `CAS`: `Pi > 0`, `x, eps, lam` real.
-- `Branch`: evaluations use the first-order rigidity kernel from Stage `130`.
+- `Branch`: evaluations use the first-order rigidity kernel from Stage `147`.
 - `Branch`: the “zero-shift” interpolation claim is comparative and approximate,
   not a new exact theorem.
 - `Open edge`: stage-level issues were cosmetic/numeric; the mathematical result
   remains first-order and family-restricted.
 
-## Stage `132`
+## Stage `149`
 
 - `Explicit`: status stage for mouth rigidity.
-- `Branch`: simply inherits the `129-131` deformation/rigidity regime.
+- `Branch`: simply inherits the `146-148` deformation/rigidity regime.
 - `Open edge`: no stage-specific audit; the conclusion remains a summary of the
   explicit Family-1 mouth closure rather than a general PDE theorem.
 
-## Stage `133`
+## Stage `150`
 
 - `Explicit`: explicit Family-1 branch with `kappa_s = 0`, `kappa_q = pi/2`,
   canonical exponential source, and compensated outlet
@@ -319,33 +319,33 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the stage proves tangent matching and broadening of the full
   profile, not the final branch retuning.
 
-## Stage `134`
+## Stage `151`
 
 - `Explicit`: linearization of the actual full source around the canonical
   branch.
 - `Branch`: assumes
   `Sigma_act = Sigma_* (1 - Rtilde_*) + O(R_*^2)`.
-- `Branch`: uses frozen canonical derivatives and the Stage-`130` rigidity
+- `Branch`: uses frozen canonical derivatives and the Stage-`147` rigidity
   coefficients.
 - `Open edge`: the actual numerical covariances still have to be computed; this
   stage is structural.
 
-## Stage `135`
+## Stage `152`
 
-- `Explicit`: canonical residual from Stage `133` is evaluated numerically and
-  fed through the Stage-`134` first-order correction law.
+- `Explicit`: canonical residual from Stage `150` is evaluated numerically and
+  fed through the Stage-`151` first-order correction law.
 - `Branch`: still a mouth-only correction with the core outlet frozen.
 - `Branch`: one-step nonlinear Picard update is used as a consistency check,
   not as a full convergence theorem.
 - `Open edge`: this stage does not yet include core-mouth co-evolution.
 
-## Stage `136`
+## Stage `153`
 
 - `Explicit`: status stage consolidating the mouth correction.
-- `Branch`: inherits the mouth-only correction regime from Stages `133-135`.
+- `Branch`: inherits the mouth-only correction regime from Stages `150-152`.
 - `Open edge`: the next unresolved variable is full core-mouth co-evolution.
 
-## Stage `137`
+## Stage `154`
 
 - `Explicit`: any positive normalized source `Sigma`, exact Family-1 core law,
   self-consistent Boltzmann fixed point, and self-matched closure
@@ -357,7 +357,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the exact traction needed to land back on `g_*` is not solved
   here.
 
-## Stage `138`
+## Stage `155`
 
 - `Explicit`: exact co-evolving fixed-point map with traction frozen at the old
   canonical value `Sigma0 = Sigma0^*`.
@@ -367,7 +367,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: uniqueness is supported by the solved branch and audits, but the
   note does not prove global uniqueness from arbitrary seeds.
 
-## Stage `139`
+## Stage `156`
 
 - `Explicit`: exact co-evolving condition `g_fp(Sigma0) = g_*`.
 - `Branch`: assumes monotonicity of `g_fp(Sigma0)` on the numerically solved
@@ -377,28 +377,28 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the theorem is exact as a fixed-point condition, but the realized
   branch value is numerical rather than closed-form.
 
-## Stage `140`
+## Stage `157`
 
 - `Explicit`: status stage for the full co-evolving fixed-point picture.
-- `Branch`: inherits branch elimination from `108`, `126`, `127`, and the
-  co-evolving fixed-point results from `138-139`.
+- `Branch`: inherits branch elimination from `125`, `143`, `144`, and the
+  co-evolving fixed-point results from `155-156`.
 - `Open edge`: summary numerics must continue to match the cited stage values
   exactly; the derivation itself is carried by prior stages, not proved anew
   here.
 
-## Stage `153`
+## Stage `170`
 
 - `Explicit`: isotropic compensated canonical branch with pure linear grouped
   real `P2` anisotropy.
 - `CAS`: nonzero real reduced coefficients such as `D0`, `N0`, `P0`, `sigma`,
   and real grouped perturbations.
-- `Branch`: relies on Stage `152` constraint `delta C^(1,P2) = 0`.
+- `Branch`: relies on Stage `169` constraint `delta C^(1,P2) = 0`.
 - `Branch`: weak-axisymmetric specialization later uses the pattern
   `(1, 1/2, -1)` after the grouped derivation is done.
 - `Open edge`: this gives the linear grouped outlet map, not the actual
   anisotropies realized on the physical branch.
 
-## Stage `168`
+## Stage `185`
 
 - `Explicit`: coherent local D/N tracking branch at first grouped
   weak-axisymmetric/reference-branch order, freezing
@@ -412,10 +412,10 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 - `Open edge`: the true branch preserving those monomials remains an open PDE
   theorem.
 
-## Stage `169`
+## Stage `186`
 
 - `Explicit`: same coherent local D/N tracking and grouped weak-axisymmetric
-  setting as Stage `168`.
+  setting as Stage `185`.
 - `CAS`: `chi, delta > 0`, `E, F` real, and the selected rank-3 minor is used.
 - `Branch`: the scalar axial scale `L` is inert at first order in the present
   reduction.
@@ -425,7 +425,7 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
   tangent space solves the linearized defect equations, but remains an
   infinitesimal/tangent-space theorem.
 
-## Stage `170`
+## Stage `187`
 
 - `Explicit`: positive microscopic state space `M_+` and the coherent local D/N
   tracking branch.
@@ -443,10 +443,10 @@ CAS file. The goal is to make the mathematically relevant hypotheses explicit:
 
 - The highest-value unresolved assumption question is no longer algebraic; it is
   whether the real completed PDE actually lands on the constructive/coherent
-  branches assumed in `028-031`, `089`, and `168-170`.
-- The mouth-side chain `125-140` is mathematically solid inside the explicit
+  branches assumed in `045-048`, `106`, and `185-187`.
+- The mouth-side chain `142-157` is mathematically solid inside the explicit
   Family-1 positive-mouth closure, but that closure itself is still a model
   choice, not a theorem about every positive mouth profile.
-- The late orbit/quotient chain `168-170` is exact as an invariant-structure
+- The late orbit/quotient chain `185-187` is exact as an invariant-structure
   theorem inside the coherent positive sector, but it is still missing the final
   dynamical branch-selection theorem.

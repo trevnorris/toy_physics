@@ -1,113 +1,179 @@
-# Review: Stage 159 — Outgoing load factorization
+# Review: Stage 159 — Full grouped bundle
 
-**Batch:** Batch 19 — Grouped Outlet & Similarity Closure
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (current PASS after one-port replay, 2026-04-20)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage159_outgoing_load_factorization.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage159_outgoing_load_factorization_sympy_audit.py`
+- **Notes:** `notes/moving_throat_pde_stage023_full_grouped_bundle.md`
+- **SymPy:** `scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py`
+- **Mathematica:** `mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl`
 
 ## Review Checklist
 
-- [x] Equation-level correctness (signs, factors, indices, limits)
-- [x] Logical flow from prior stage(s)
-- [x] Assumptions stated and justified
-- [x] Notation consistent with prior stages
-- [x] Physical interpretation sensible
-- [x] SymPy script faithfully implements notes
-- [x] Script runs without error
-- [x] Script output matches notes claims
-- [x] No missing edge cases or branches
+- [ ] Equation-level correctness (signs, factors, indices, limits)
+- [ ] Logical flow from prior stage(s)
+- [ ] Assumptions stated and justified
+- [ ] Notation consistent with prior stages
+- [ ] Physical interpretation sensible
+- [ ] SymPy script faithfully implements notes
+- [ ] Mathematica script faithfully implements notes
+- [ ] Script runs without error
+- [ ] Script output matches notes claims
+- [ ] No missing edge cases or branches
 
 ## Agent Reviews
 
-<!-- Agents: append your review below this line using the template: -->
+<!-- Agents: append your review below this line using the template:
 
-### Agent: Claude Opus 4.6 (1M context) — 2026-04-03
-**Verdict:** PASS (one minor notation item)
+### Agent: [Model Name] — [Date]
+**Verdict:** [PASS | MINOR | ISSUE | BLOCK]
 
 **Notes Derivation Review:**
 
-1. **Section 1 (Starting point).** The carry-forward from Stage 158 is consistent. The defect field definition Sigma_r^{(N)} = delta ln(Lambda_r^2 / K) matches the Stage-158 formula Sigma_r^{(N)} = 2 delta ln Lambda_r - delta_K = delta ln(Lambda_r^2 / K), and the load identity Xi_load = sum rho_r^{(N)} Sigma_r^{(N)} on conservative-shape-preserving branches is correctly inherited.
-
-2. **Section 2 (Exact factorization).** Verified by direct algebra. Writing P_r = Omega_{U,r}^2 G_{W,r} + R_r G_{U,r} = Omega_{U,r}^2 G_{W,r} (1 + I_r) and Delta_r = Omega_{U,r}^2 Omega_{W,r}^2 - R_r^2 = Omega_{U,r}^2 Omega_{W,r}^2 (1 - H_r), one gets Lambda_r = P_r/Delta_r = [G_{W,r}(1+I_r)] / [Omega_{W,r}^2 (1-H_r)]. Squaring and dividing by K yields M_r^2 (1+I_r)^2 / (1-H_r)^2. Identity confirmed.
-
-3. **Section 3 (Logarithmic decomposition).** Taking ln of the boxed identity from Section 2 and applying delta immediately gives the three-term logarithmic decomposition. The sign on the (1-H_r) term is correct: ln(Lambda_r^2/K) = 2 ln M_r + 2 ln(1+I_r) - 2 ln(1-H_r), so its variation has the minus sign in front of delta ln(1-H_r). Correct.
-
-4. **Section 4 (First-order transport).** The three logarithmic drifts (dlnM, dlnI, dlnH) are correctly computed from the definitions (verified term by term). The chain-rule step from delta ln(1+I_r) = [I_r/(1+I_r)] delta ln I_r and delta ln(1-H_r) = -[H_r/(1-H_r)] delta ln H_r yields the boxed formula with the correct signs and prefactors.
-
-5. **Section 5 (Expanded transport).** Verified by explicit expansion of the Section 4 formula into primitive variables. All six coefficients (dK, dGW, dGU, dR, dOU, dOW) check out:
-   - dK: -1 (from the -1/2 dK in dlnM, times 2)
-   - dGW: 2/(1+I) (from dlnM and dlnI cancellation)
-   - dGU: 2I/(1+I) (from dlnI only)
-   - dR: 2(I/(1+I) + 2H/(1-H)) (from dlnI and dlnH)
-   - dOU: -2(I/(1+I) + H/(1-H)) (from dlnI and dlnH)
-   - dOW: -2/(1-H) (from dlnM and dlnH cancellation)
-
-6. **Section 6 (Conservative-shape theorem).** Correctly specializes to the case delta ln I_r = 0, delta ln H_r = 0, leaving Sigma = 2 delta ln M_r. The resulting Xi_load formula is consistent.
-
-7. **Section 7 (Square-root mixed-leg law).** The conclusion G_{W,r}/Omega_{W,r}^2 proportional to sqrt(K) is the immediate consequence of delta ln M_r = 0. The sufficient conditions are properly stated as a conjunction of interference rigidity, hybridization rigidity, and the M_r scaling law.
-
-8. **Section 8 (Dominant-port corollary).** Straightforward. Uses sum rho_r = 1, and the approximation rho_{r*} approx 1 collapses the sum to a single term. No issues.
-
-9. **Section 9 (What the stage changes).** Accurate summary of the results and the next theorem gate.
-
-**Notation issue:** Stage 158 uses lowercase g_{W,r}, g_{U,r} in the definition of P_r, while Stage 159 switches to uppercase G_{W,r}, G_{U,r} without any bridging remark or redefinition. The internal consistency of Stage 159 is unaffected (G is used uniformly throughout), but a one-line note acknowledging the relabeling would prevent confusion when cross-referencing.
-
 **Script Review:**
-
-1. **Symbol definitions (line 34).** All six primitive variables (K, OU2, OW2, R, GU, GW) are declared as positive real, which is correct for these physical quantities and avoids spurious sign issues.
-
-2. **Lambda construction (line 36).** Lambda = (OU2*GW + R*GU)/(OU2*OW2 - R^2) faithfully encodes the notes' P_r/Delta_r. The script uses flat (un-subscripted) names for a single generic port, which is appropriate.
-
-3. **Microscopic variables (lines 37-39).** M_r, I_r, H_r are constructed directly from definitions matching Section 2 of the notes. Verified.
-
-4. **Test 1: Exact factorization (lines 41-44).** Tests Lambda^2/K - M^2 (1+I)^2/(1-H)^2 = 0. This is a genuine non-tautological algebraic identity verified by SymPy simplification. It does not hardcode the answer. PASS.
-
-5. **Test 2: First-order perturbation (lines 54-72).** The perturbation method is sound: each variable is multiplied by exp(eps * d_var), the log ratio is series-expanded to O(eps), and the O(eps) coefficient is extracted. This independently computes the first-order defect without assuming the factored form. PASS.
-
-6. **Test 3: Factored formula (lines 74-82).** The microscopic logarithmic drifts dlnM, dlnI, dlnH match the notes' Section 4 exactly. The factored defect formula is then tested against the independently-computed Sigma_exact. This is a non-tautological check. PASS.
-
-7. **Test 4: Expanded formula (lines 84-92).** The expanded primitive-variable coefficients are tested against the same independently-derived Sigma_exact. This directly verifies the notes' Section 5. Non-tautological. PASS.
-
-8. **Test 5: Rigidity corollary (lines 102-103).** Substitutes dlnI = 0 and dlnH = 0 into the factored formula and checks the result equals 2*dlnM. This is a straightforward substitution check, but still useful as it confirms the algebraic reduction is clean. PASS.
-
-9. **Coverage assessment.** The script covers:
-   - [x] Exact factorization identity (Section 2)
-   - [x] First-order factored defect formula (Section 4)
-   - [x] Expanded primitive-variable formula (Section 5)
-   - [x] Rigidity corollary (Section 6)
-   - [ ] The weighted sum Xi_load (Section 3) -- not tested, but this is just plugging Sigma into a sum, no nontrivial algebra
-   - [ ] Dominant-port corollary (Section 8) -- not tested, but trivially follows from the single-term limit
-
-   No critical gap. The untested items are trivial corollaries of tested results.
-
-10. **No hardcoded values or tautological assertions found.** Every check compares an independently-derived quantity against a formula from the notes. The `expect_zero` function uses `sp.simplify(sp.expand(...))` which is adequate.
-
-11. **Output agreement.** All five `expect_zero` calls return 0 in the output file. No errors.
 
 **Issues Found:**
 
-- **MINOR (notation):** Stage 159 switches from lowercase g_{W,r}, g_{U,r} (Stage 158 convention) to uppercase G_{W,r}, G_{U,r} without a bridging note. This is cosmetic -- the algebra is internally consistent -- but adding a one-line remark like "We write G_{W,r} for the coupling previously denoted g_{W,r}" would aid cross-stage readability.
-
 **Questions:**
 
-None. The derivation is clean, the factorization is algebraically verified, and the script is faithful and non-tautological.
-
-### Agent: GPT-5 — 2026-04-03
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The outgoing-load factorization is correct. The exact square-law factorization of `Lambda^2 / K` matches the microscopic definitions, the logarithmic decomposition into `M`, `I`, and `H` terms has the right signs, and the first-order transport law expands to the primitive-variable form stated in the notes. The same algebra yields the conservative-shape and dominant-port corollaries without extra assumptions.
+**1. Equation-level correctness.**
+
+- **Projector calculus (Sec. 1):** Weighted grouped metric Ggrp = diag(1,2,2) consistent with (1,2,2) degeneracy. Basis vectors e_bar=(1,1,1), e_a=(4,-1,-1), e_b=(0,1,-1) verified orthogonal under Ggrp: e_bar^T Ggrp e_a = 4-2-2 = 0. Projectors are correct rank-1 outer products, idempotent, and complete (P_bar + P_a + P_b = I_3). All verified.
+
+- **Lane Lagrangian (Sec. 2):** Direct multi-port generalization of Stage 021 single-port model. Wall backbone (M_A, K_A), BdG support modes with bilinear coupling, Maxwell/mixed pairs with frequencies, internal mixing R, and wall couplings g_U, g_W. No sign errors.
+
+- **Low-frequency coefficients (Sec. 3):** B_{A,n} moments match Stage 003 convention. Z_{A,n} and N_{A,n} formulas are multi-port generalizations of Stage 021. Notation correspondence verified: Stage 023's (Delta, S, Q, G, P) = Stage 021's (D0, S2, N0, G2, P0_proto).
+
+- **Isotropic branch formulas (Sec. 5):** u_2 = -D_2/D_0 and u_4 = (D_2^2 - D_0 D_4)/D_0^2 match Stage 022. Prefactor formulas P_0, P_2, P_4 match Stage 022 Section 4.
+
+- **Constant-prefactor conditions (Sec. 6):** N_2 and N_4 conditions verified. Substituting N_2 = 2 D_2 N_0/D_0 into N_4 formula yields N_0(2 D_0 D_4 + D_2^2)/D_0^2, matching script output.
+
+- **First-order anisotropy (Sec. 7):** delta u_2 = -(delta D_2 + u_2 delta D_0)/D_0 and delta P_0 = (delta N_0 - P_0 delta D_0)/D_0 are standard quotient-rule expansions. Correct.
+
+- **Monotonicity (Sec. 8):** dP_0/dN_0 > 0 and dP_0/dB_0 > 0 on stable branch (D_0 > 0). Straightforward calculus. Correct.
+
+**2. Logical flow.** Clean progression from Stage 022. Normalization target correctly cited.
+
+**3. Assumptions.** Main assumption (grouped lanes don't mix at linear order on isotropic background) explicitly stated and consistent with Stage 003 angular selection rules.
+
+**4. Completeness.** All six anisotropy channels handled. Edge case D_0 = 0 acknowledged via "stable branch" qualifier.
+
+**5. Notation consistency.** Consistent with Stages 003-022. G_{A,r} notation noted to avoid clash with Newton's G.
+
+**6. Physical interpretation.** Sound: bundle organizes all microscopic inputs, projectors separate isotropy from anisotropy, theorem gap sharpened to one ratio.
 
 **Script Review:**
 
-The script checks the exact factorization, the first-order perturbation law, the factored and expanded transport formulas, and the rigidity corollary. I also rechecked the core factorization symbolically; it simplifies to zero, and the saved output agrees with the note.
+**B.1 Faithful.** Covers projector calculus (I), bundle assembly (II), isotropic formulas and constant-prefactor conditions (III), anisotropy transport (IV), monotonicity (V).
+
+**B.2 No bugs.** Series expansions correct. `expect_zero` and `grouped_parts` helpers correct.
+
+**B.3 Hardcoded values.** Denominators 5, 10, 2 fixed by (1,2,2) weighting. Target carried symbolically.
+
+**B.4 Tautological checks.** Section II.2 (grouped parts round-trip) is mildly tautological (tests helper function consistency). Critical checks in Sections I (projector properties), III (series identities), IV (epsilon expansion) are substantive and non-tautological.
+
+**B.5 Symbol assumptions.** D0, D2, D4 nonzero+real (appropriate for denominators). K, B0, Z0, N0 positive for stable branch.
+
+**B.6 Output agreement.** All expect_zero pass. N_2 target = 2*D2*N0/D0. N_4 target = N0*(2*D0*D4 + D2^2)/D0^2. Consistent.
+
+**B.7 Coverage.** Does not re-derive Z_{A,n} and N_{A,n} from Lagrangian (inherited from Stage 021 audit). Acceptable.
 
 **Issues Found:**
+
+1. **(MINOR, coverage)** Script does not independently re-derive Z_{A,n} and N_{A,n} low-frequency formulas from the Lagrangian (tested in Stage 021). A single-port spot-check within Stage 023's script would strengthen confidence.
+
+### Agent: GPT-5 — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+1. The weighted projector calculus is correct: the `diag(1,2,2)` metric, the `e_bar/e_a/e_b` basis, and the three projectors are all mutually orthogonal and complete, and the grouped vector decomposition is exact.
+2. The full coupled bundle formulas, isotropic-branch response moments, constant-prefactor conditions, and first-order anisotropy transport laws all match the reduced algebra in the note. The normalization target is carried through consistently to `mhat_0^2 P_0 = 54 G c_s^5 / (5 a^5 c^5)`.
+
+**Script Review:**
+
+1. The script is faithful to the note structure and the cached output confirms the projector identities, the full-bundle coefficient decomposition, the isotropic formulas, and the monotonicity derivatives.
+2. A direct SymPy spot-check of the `N4` prototype formula agrees with the note and output.
+
+**Issues Found:**
+
+1. **(MINOR)** The stage treats `Z_(A,n)` and `N_(A,n)` as assembled reduced coefficients, but the script does not independently reconstruct them from the underlying Lagrangian in this stage. That is a coverage gap, not a correctness problem.
+
+**Questions:**
 
 None.
 
 ---
+
+### Agent: GPT-5 — 2026-04-20
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The checkpoint claim is still the exact full grouped-bundle packet:
+   weighted projector calculus for the real grouped `P_2` lanes, exact
+   grouped decomposition of the conservative/output coefficients, isotropic
+   branch formulas for `u_2`, `u_4`, `P_0`, `P_2`, `P_4`, the
+   constant-prefactor constraints, and first-order anisotropy transport.
+2. I did not find a mathematical mismatch between the current note and the
+   live CAS outputs. The grouped `(1,2,2)` metric, projector normalization,
+   decomposition weights, and the carried Stage-022 normalization target are all
+   used consistently.
+
+**Script Review:**
+
+1. The earlier coverage caveat is stale. The current SymPy audit now includes
+   a representative one-port reconstruction of both `Z_n` and `N_n` directly
+   from the underlying `(\Delta, S, Q, H, P)` lane data before assembling the
+   grouped packet.
+2. The Mathematica mirror independently replays the same structure: weighted
+   projector calculus, representative one-port `Z_n/N_n` reconstruction,
+   grouped bundle assembly, isotropic branch formulas, constant-prefactor
+   conditions, anisotropy transport laws, and monotonicity derivatives.
+3. I did not find a remaining trust defect at the checkpoint level. The open
+   gap is only the absence of a dedicated numerical-stress layer for this
+   checkpoint family, which is a coverage priority but not a symbolic-fidelity
+   failure.
+
+**Issues Found:**
+
+- None. The old “assembled inputs only” caveat is closed in the live audit
+  surface.
+
+**Questions:**
+
+- None.
+
+---
+
+### Agent: GPT-5 — 2026-04-21
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The grouped-bundle theorem is unchanged, but the last remaining carry-forward
+   literal at the normalization-product seam is now gone.
+2. `Gamma5_port` is rebuilt through the same exact Stage-021/022 outgoing `l=2`
+   route used in Stage `022`, so the bundle-level invariant product no longer
+   silently depends on a retyped `a^5/(27 c_s^5)` coefficient.
+
+**Script Review:**
+
+1. The SymPy audit now derives `Gamma5_port` from the spherical Hankel
+   `l=2` DtN branch before solving the Stage-6 normalization target.
+2. The Mathematica mirror now does the same rather than carrying the `27`
+   denominator as a local literal.
+
+**Issues Found:**
+
+- None. The Stage-022 carry-forward seam is now anchored in both CAS layers.
+
+**Questions:**
+
+- None.

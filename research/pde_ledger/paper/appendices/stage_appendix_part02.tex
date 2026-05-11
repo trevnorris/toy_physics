@@ -1,10 +1,10 @@
 \chapter{Stage Appendix: Part II -- Conservative Response Kernels and Grouped \texorpdfstring{$P_2$}{P2} Normalization Language}
 \label{app:stage-part-2}
 
-\section*{Stages 007--019; anchor MTDC-T5}
-\addcontentsline{toc}{section}{Stages 007--019; anchor MTDC-T5}
+\section*{Stages 024--036; anchor MTDC-T5}
+\addcontentsline{toc}{section}{Stages 024--036; anchor MTDC-T5}
 
-This appendix is the detailed verification ledger for the second theorem block of the moving-throat derivation.  The corresponding main-text chapter, \cref{chap:part02_conservative_response}, explains why this block is needed in the larger derivation.  The job here is more mechanical: to preserve the exact reduced algebra, the branch assumptions, the finite-throat overlap calculations, the selected-mode normalization formulas, and the final admissibility frontier that Stages~007--019 derive.
+This appendix is the detailed verification ledger for the second theorem block of the moving-throat derivation.  The corresponding main-text chapter, \cref{chap:part02_conservative_response}, explains why this block is needed in the larger derivation.  The job here is more mechanical: to preserve the exact reduced algebra, the branch assumptions, the finite-throat overlap calculations, the selected-mode normalization formulas, and the final admissibility frontier that Stages~024--036 derive.
 
 Part~I ended with a full grouped real \(P_2\) wall/BdG/Maxwell/mixed bundle.  In that bundle the isotropic outgoing-normalization question had already collapsed to the ratio
 \begin{equation}
@@ -23,7 +23,7 @@ M_{\rm mix}\leq G(\xi_{\rm req},\delta).
 
 
 \paragraph{Source layout.}
-Stages~007--019 are now sourced from the canonical files \StageFile{stages/stage_007.tex} through \StageFile{stages/stage_019.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+Stages~024--036 are now sourced from the canonical files \StageFile{stages/stage_024.tex} through \StageFile{stages/stage_036.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
 
 \begin{longtable}{@{}L{0.10\textwidth}L{0.29\textwidth}L{0.22\textwidth}L{0.33\textwidth}@{}}
 \caption{Part II stage-audit map.}\label{tab:app-part02-stage-map}\\
@@ -35,31 +35,31 @@ Stage & Source stage & Primary status & Verification output \\
 Stage & Source stage & Primary status & Verification output \\
 \midrule
 \endhead
-007 & Overlap integrals, \(O(3)\) isotropy, and first axisymmetric splitting & \StatusExactClosure{} / \StatusReduced{} & Canonical real-STF basis, angular source-map identity, isotropic grouped collapse, and weak-axisymmetric signature \(b=3a\). \\
+024 & Overlap integrals, \(O(3)\) isotropy, and first axisymmetric splitting & \StatusExactClosure{} / \StatusReduced{} & Canonical real-STF basis, angular source-map identity, isotropic grouped collapse, and weak-axisymmetric signature \(b=3a\). \\
 \addlinespace
-008 & Minimal isotropic single-mode closure & \StatusExactClosure{} / \StatusOpen{} & Explicit one-BdG/one-mixed-pair normalization ratio and stability gate. \\
+025 & Minimal isotropic single-mode closure & \StatusExactClosure{} / \StatusOpen{} & Explicit one-BdG/one-mixed-pair normalization ratio and stability gate. \\
 \addlinespace
-009 & Concrete finite-throat axial modes & \StatusExactClosure{} & D/N overlap \(\kappa=2\sqrt2/\pi\), branch-level normalization law, and required stiffness formula. \\
+026 & Concrete finite-throat axial modes & \StatusExactClosure{} & D/N overlap \(\kappa=2\sqrt2/\pi\), branch-level normalization law, and required stiffness formula. \\
 \addlinespace
-010 & First nonconstant finite-throat wall/brane family & \StatusExactClosure{} & Profile overlap \(\kappa(\theta)\), blind-angle no-go, max-coupling angle, and dressed stiffness equation. \\
+027 & First nonconstant finite-throat wall/brane family & \StatusExactClosure{} & Profile overlap \(\kappa(\theta)\), blind-angle no-go, max-coupling angle, and dressed stiffness equation. \\
 \addlinespace
-011 & Loaded axial profile selection & \StatusExactClosure{} & Rank-one loaded wall eigenproblem, lower-mode angle law, and softening threshold. \\
+028 & Loaded axial profile selection & \StatusExactClosure{} & Rank-one loaded wall eigenproblem, lower-mode angle law, and softening threshold. \\
 \addlinespace
-012 & Dynamic loading from coupled wall/BdG/Maxwell/mixed operator & \StatusExactClosure{} / \StatusReduced{} & Schur-complement split \(\Sigma_{\rm wall}=\Xi I_2+\alpha vv^T\) and selected odd quadrupole coefficient. \\
+029 & Dynamic loading from coupled wall/BdG/Maxwell/mixed operator & \StatusExactClosure{} / \StatusReduced{} & Schur-complement split \(\Sigma_{\rm wall}=\Xi I_2+\alpha vv^T\) and selected odd quadrupole coefficient. \\
 \addlinespace
-013 & Selected-mode normalized response & \StatusExactClosure{} & Selected prefactor \(P_{0,-}=\beta_0s_-/\lambda_-\) and selected target. \\
+030 & Selected-mode normalized response & \StatusExactClosure{} & Selected prefactor \(P_{0,-}=\beta_0s_-/\lambda_-\) and selected target. \\
 \addlinespace
-014 & Reachability and stable-side monotonicity & \StatusExactClosure{} & Strict monotonicity of \(P_{0,-}\) and unique stable crossing. \\
+031 & Reachability and stable-side monotonicity & \StatusExactClosure{} & Strict monotonicity of \(P_{0,-}\) and unique stable crossing. \\
 \addlinespace
-015 & Source map from finite-throat mode integrals & \StatusExactClosure{} & Natural D/N source map \(\widehat m_-^2=s_-/\kappa_0^2\). \\
+032 & Source map from finite-throat mode integrals & \StatusExactClosure{} & Natural D/N source map \(\widehat m_-^2=s_-/\kappa_0^2\). \\
 \addlinespace
-016 & Microscopic normalization equation and stability gate & \StatusExactClosure{} / \StatusOpen{} & Coupling-level selected target, stability inequalities, onset criterion, and weak-loading expansion. \\
+033 & Microscopic normalization equation and stability gate & \StatusExactClosure{} / \StatusOpen{} & Coupling-level selected target, stability inequalities, onset criterion, and weak-loading expansion. \\
 \addlinespace
-017 & Softening-depth normal form & \StatusExactClosure{} & Scalar branch variable \(x=A-\lambda_-\), exact \(\alpha_0(x)\), \(s_-(x)\), \(N_-(x)\), and support-loading formula. \\
+034 & Softening-depth normal form & \StatusExactClosure{} & Scalar branch variable \(x=A-\lambda_-\), exact \(\alpha_0(x)\), \(s_-(x)\), \(N_-(x)\), and support-loading formula. \\
 \addlinespace
-018 & Dimensionless D/N normalization locus & \StatusExactClosure{} & Shape function \(F(\xi,\delta)\), monotonicity, endpoint theorem, and total loading. \\
+035 & Dimensionless D/N normalization locus & \StatusExactClosure{} & Shape function \(F(\xi,\delta)\), monotonicity, endpoint theorem, and total loading. \\
 \addlinespace
-019 & Dimensionless support-feasibility frontier & \StatusExactClosure{} / \StatusOpen{} & Shape function \(G(\xi,\delta)\), monotonicity, and final admissibility region in \((R_{\rm target},M_{\rm mix})\). \\
+036 & Dimensionless support-feasibility frontier & \StatusExactClosure{} / \StatusOpen{} & Shape function \(G(\xi,\delta)\), monotonicity, and final admissibility region in \((R_{\rm target},M_{\rm mix})\). \\
 \bottomrule
 \end{longtable}
 
@@ -83,37 +83,37 @@ Thus the isotropic Part-I target is \(\widehat m_0^{\,2}P_0=N_Q^{\rm target}\), 
 \begingroup
 \let\clearpage\relax
 \clearpage
-\input{stages/stage_007}
+\input{stages/stage_024}
 \clearpage
-\input{stages/stage_008}
+\input{stages/stage_025}
 \clearpage
-\input{stages/stage_009}
+\input{stages/stage_026}
 \clearpage
-\input{stages/stage_010}
+\input{stages/stage_027}
 \clearpage
-\input{stages/stage_011}
+\input{stages/stage_028}
 \clearpage
-\input{stages/stage_012}
+\input{stages/stage_029}
 \clearpage
-\input{stages/stage_013}
+\input{stages/stage_030}
 \clearpage
-\input{stages/stage_014}
+\input{stages/stage_031}
 \clearpage
-\input{stages/stage_015}
+\input{stages/stage_032}
 \clearpage
-\input{stages/stage_016}
+\input{stages/stage_033}
 \clearpage
-\input{stages/stage_017}
+\input{stages/stage_034}
 \clearpage
-\input{stages/stage_018}
+\input{stages/stage_035}
 \clearpage
-\input{stages/stage_019}
+\input{stages/stage_036}
 \endgroup
 
 \section{Part II appendix closure and handoff to Part III}
 \label{sec:app-part02-closure}
 
-Stages~007--019 close the second verification block.  The block does not prove that the full nonlinear moving-throat PDE realizes the desired outgoing-normalization value.  It proves something narrower and necessary: inside the declared finite-throat selected-branch closure, the normalization problem is no longer a vague choice of prefactors.  It is a controlled branch-placement problem with exact angular normalization, exact finite-throat D/N overlap constants, exact selected-mode spectral formulas, and exact dimensionless frontier functions.
+Stages~024--036 close the second verification block.  The block does not prove that the full nonlinear moving-throat PDE realizes the desired outgoing-normalization value.  It proves something narrower and necessary: inside the declared finite-throat selected-branch closure, the normalization problem is no longer a vague choice of prefactors.  It is a controlled branch-placement problem with exact angular normalization, exact finite-throat D/N overlap constants, exact selected-mode spectral formulas, and exact dimensionless frontier functions.
 
 The stable outputs are:
 \begin{enumerate}[leftmargin=2.2em]

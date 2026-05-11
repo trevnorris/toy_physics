@@ -1,0 +1,46 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+# Date: 2026-05-11T12:50:25-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 224 SymPy audit: actual-branch packet compiler and weak-axisymmetric ceiling transport ===
+
+Verified exact grouped inverse map:
+P20 = 4*aP + (Delta_norm + T_quad)/mhat0**2
+P21 = -aP + bP + (Delta_norm + T_quad)/mhat0**2
+P22 = -aP - bP + (Delta_norm + T_quad)/mhat0**2
+Recovered Pbar = (Delta_norm + T_quad)/mhat0**2
+Recovered aP   = aP
+Recovered bP   = bP
+
+Exact isotropic compiler:
+Pbar = (Delta_norm + T_quad)/mhat0**2
+Pbar <= Pcrit  <=>  Delta_norm <= Pcrit*mhat0**2 - T_quad
+Calibrated branch (Delta_norm = 0):  mhat0^2 >= T_quad/Pcrit
+
+Verified weak-axisymmetric lane law:
+P20 = Delta_norm*Xi1*eps/mhat0**2 + Delta_norm/mhat0**2 + T_quad*Xi1*eps/mhat0**2 + T_quad/mhat0**2
+P21 = Delta_norm*Xi1*eps/(2*mhat0**2) + Delta_norm/mhat0**2 + T_quad*Xi1*eps/(2*mhat0**2) + T_quad/mhat0**2
+P22 = -Delta_norm*Xi1*eps/mhat0**2 + Delta_norm/mhat0**2 - T_quad*Xi1*eps/mhat0**2 + T_quad/mhat0**2
+aP  = Xi1*eps*(Delta_norm + T_quad)/(4*mhat0**2)
+bP  = 3*Xi1*eps*(Delta_norm + T_quad)/(4*mhat0**2)
+Exact relation: bP = 3 aP
+
+Verified robust all-lane ceiling collapse:
+For eps*Xi1 > 0, max lane prefactor = Delta_norm*zabs/mhat0**2 + Delta_norm/mhat0**2 + T_quad*zabs/mhat0**2 + T_quad/mhat0**2
+For eps*Xi1 < 0, max lane prefactor = Delta_norm*zabs/mhat0**2 + Delta_norm/mhat0**2 + T_quad*zabs/mhat0**2 + T_quad/mhat0**2
+Common robust form = Pbar * (1 + |eps Xi1|) = Pbar + 4 |aP|
+Calibrated weak-axisymmetric lower bound on mhat0^2: T_quad*(Abs(Xi1*eps) + 1)/Pcrit
+
+Explicit headroom at the Stage 223 compatibility point:
+both_10: |eps Xi1| <= 0.3679303284926459956514052327077297529815135851150 ; |aP| <= 0.000190384841874108125
+one_10: |eps Xi1| <= 0.7376190636607566755795125704279391146182807741860 ; |aP| <= 0.000381679567905443075
+both_30: |eps Xi1| <= 2.9488958570313447670408176113081110510300432164209 ; |aP| <= 0.00152590049791273625
+one_30: |eps Xi1| <= 4.6350547237189231773440834250853168514917204605230 ; |aP| <= 0.00239840016523862875
+
+All Stage 224 symbolic and numerical checks passed.
+
+EXIT_CODE: 0

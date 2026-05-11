@@ -1,35 +1,26 @@
-\section[Stage 069]{Stage 069: Exact Family--1 Success/Failure Window in the Pure Loading-Ratio Variable}
+\section[Stage 069]{Stage 069: Final Reduced Verdict for the Support/Source Program}
 \label{stage:069}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the Family--1 ratio window.}
-\stagefield{Purpose}{Stage~069 converts the explicit Family--1 support/source verdict into a pure window for \(\rho_\alpha\).}
-\stagefield{Inputs}{The cancellation theorem of Stage~068 and the Family--1 demand thresholds.}
+\claimstatus{\StatusExactClosure{} for the reduced verdict; \StatusOpen{} for actual branch placement outside the matched/prototyped families.}
+\stagefield{Purpose}{Stage~069 summarizes the support/source program before inserting the explicit Family--1 wall branch.}
+\stagefield{Inputs}{The matched wall theorem, profile penalty benchmark, and operator-selected support/source thresholds.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage069_family1_loading_ratio_window_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage069_family1_loading_ratio_window_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage069_family1_loading_ratio_window_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage069_family1_loading_ratio_window_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage069_final_reduced_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage069_final_reduced_verdict_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-In the unblocked branch at \(\lambda_\mu=1\), the Family--1 success/failure window is
+The reduced support/source side has three regimes:
 \begin{equation}
-\label{eq:app-stage069-success-window}
+\label{eq:app-stage069-three-zone}
 \boxed{
-\rho_\alpha\leq3.46622291347846\Rightarrow\text{guaranteed success}},
+\begin{array}{lll}
+W_{\rm wall}<\mathrm{Pe}_{\rm req}/\Delta_\infty &\Rightarrow& \text{universal fail},\\[0.25em]
+W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
+\mathrm{Pe}_{\rm req}/\Delta_\infty\leq W_{\rm wall}\leq \mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{profile-sensitive band}.
+\end{array}}
 \end{equation}
-\begin{equation}
-\label{eq:app-stage069-fail-window}
-\boxed{
-\begin{aligned}
-\rho_\alpha\geq3.46752913273870
-&\Rightarrow
-\text{guaranteed failure},\\
-\rho_\alpha<3.46752922945601
-&\Rightarrow
-\text{absolute constructive ceiling}.
-\end{aligned}
-}
-\end{equation}
-Thus the entire explicit support/source side waits for one number from the outgoing conservative precursor: \(\rho_\alpha\).
+The sech--Gaussian benchmark shows that realistic smooth mismatch need not significantly enlarge the middle band, but the actual PDE branch still has to supply its own profiles.
 
-\stagefield{Output}{The pure Family--1 loading-ratio window \eqref{eq:app-stage069-success-window}--\eqref{eq:app-stage069-fail-window}.}
-\stagefield{Downstream use}{Stage~070 states the finish line; Stage~071 supplies \(\rho_\alpha\) for the minimal module.}
+\stagefield{Output}{The final pre-Family--1 support/source verdict \eqref{eq:app-stage069-three-zone}.}
+\stagefield{Downstream use}{Stages~070--078 evaluate \(W_{\rm wall}\), \(\kappa\), and \(\eta\) for the explicit Family--1 branch.}

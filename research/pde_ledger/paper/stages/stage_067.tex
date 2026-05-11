@@ -1,32 +1,33 @@
-\section[Stage 067]{Stage 067: Full Reduced Moving-Throat PDE Write-Up Skeleton and Remaining Theorem Gap}
+\section[Stage 067]{Stage 067: Exact Sech--Gaussian Coherence Resonance Benchmark}
 \label{stage:067}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the reduced hierarchy organization; \StatusOpen{} for final actual-branch realization.}
-\stagefield{Purpose}{Stage~067 organizes the completed reduced hierarchy into a write-up-ready theorem chain and isolates the final outgoing quadrupole product as the remaining gap.}
-\stagefield{Inputs}{Stages~020--066.}
+\claimstatus{\StatusExactClosure{} for the benchmark family; \StatusNumerical{} for the quoted coherence value.}
+\stagefield{Purpose}{Stage~067 tests how sensitive the matched theorem is to independent source/support shapes by using a sech--Gaussian benchmark family.}
+\stagefield{Inputs}{Source profile \(\chi_\sigma=\operatorname{sech}(y/w_f)\) and support profile \(\chi_\phi=e^{-y^2/w_g^2}\).}
 
-\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage067_full_reduced_pde_writeup_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage067_full_reduced_pde_writeup_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The reduced PDE chain is now
+The exact self-dual stationary point of the shape family is
 \begin{equation}
-\label{eq:app-stage067-chain}
-\begin{aligned}
-\text{continuum placement}
-&\rightarrow
-\text{support completion}
-\rightarrow
-\text{transport/parent gain}
-\\
-&\rightarrow
-\text{Family--1 support map}
-\rightarrow
-R_{\rm quad}.
-\end{aligned}
+\label{eq:app-stage067-self-dual}
+\boxed{
+\frac{w_g}{w_f}=\sqrt\pi}.
 \end{equation}
-The remaining open datum is the outgoing branch's demand side, i.e. the conservative quadrupole module and its loading ratio.  The support/source machinery can be cited as completed within the declared reduced Family--1 closure once that ratio is supplied.
+At this point the coherence is
+\begin{equation}
+\label{eq:app-stage067-Cres}
+\boxed{
+C_{\rm res}^2\simeq0.994418836451529}.
+\end{equation}
+The corresponding penalty factor is
+\begin{equation}
+\label{eq:app-stage067-Pres}
+\boxed{
+P_{\rm res}=\frac{1}{C_{\rm res}^2}\simeq1.005612487760576}.
+\end{equation}
 
-\stagefield{Output}{A structured reduced-PDE theorem chain and handoff to the outgoing-branch loading-ratio problem.}
-\stagefield{Downstream use}{Stages~068--073 finish the support side by showing that the natural minimal module supplies a small ratio.}
+\stagefield{Output}{The near-perfect benchmark coherence \eqref{eq:app-stage067-Cres} and penalty \eqref{eq:app-stage067-Pres}.}
+\stagefield{Downstream use}{Stage~068 applies \(P_{\rm res}\) to the matched thresholds; Stage~069 gives the final support/source verdict.}

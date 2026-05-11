@@ -1,0 +1,63 @@
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage150_152_profile_correction_samples.json
+=== Stage 150: full-profile residual geometry ===
+[PASS] Pi_* matches expected canonical bias: Pi_*=1.508829513493, expected=1.508829513493
+[PASS] Sigma_m* matches expected canonical gain: Sigma_m*=0.451485277739, expected=0.451485277739
+[PASS] g_* matches expected canonical overlap: g_*=0.758035078945, expected=0.758035078945
+[PASS] S_* matches expected canonical response: S_*=0.658075937605, expected=0.658075937605
+[PASS] R_*(0)=0: R(0)=0.000000000000
+forward derivative at h=0.000001000000 -> -0.000001311849
+[PASS] R_*'(0) small at h=0.000001000000: forward diff=-0.000001311849
+[PASS] R_*(h) is negative at h=0.000001000000: R(h)=-0.000000000001
+forward derivative at h=0.000010000000 -> -0.000013120005
+[PASS] R_*'(0) small at h=0.000010000000: forward diff=-0.000013120005
+[PASS] R_*(h) is negative at h=0.000010000000: R(h)=-0.000000000131
+central second derivative at h=0.000100000000 -> -2.623986726706
+[PASS] R_*''(0) matches target at h=0.000100000000: finite diff=-2.623986726706, target=-2.623986657704
+[PASS] R_*''(0) stays negative at h=0.000100000000: finite diff=-2.623986726706
+central second derivative at h=0.001000000000 -> -2.623986976314
+[PASS] R_*''(0) matches target at h=0.001000000000: finite diff=-2.623986976314, target=-2.623986657704
+[PASS] R_*''(0) stays negative at h=0.001000000000: finite diff=-2.623986976314
+
+=== Stage 152: covariance correction and nonlinear stress ===
+[PASS] Cov(c,R_*) matches Stage 152: cov_cR=0.064806968767, expected=0.064806968767
+[PASS] Cov(K_q,R_*) matches Stage 152: cov_KR=0.038871836865, expected=0.038871836865
+[PASS] delta g_act matches Stage 152: delta_g=-0.064806968767, expected=-0.064806968767
+[PASS] delta S_act matches Stage 152: delta_S=-0.038871836865, expected=-0.038871836865
+[PASS] delta Pi_act matches Stage 152: deltaPi=0.907084414843, expected=0.907084414843
+[PASS] delta T_act matches Stage 152: deltaT=0.271653979462, expected=0.271653979462
+
+lambda_0p10 (perturbative): lambda=0.100000000000
+  delta_g_actual=-0.006569524364, delta_g_linear=-0.006480696877, delta_S_actual=-0.003918764025, delta_S_linear=-0.003887183687
+  deltaPi_actual=0.091951734154, deltaPi_linear=0.090708441484, deltaT_actual=0.027540666384, deltaT_linear=0.027165397946
+[PASS] lambda_0p10 keeps the correction direction: delta_g=-0.006569524364, delta_S=-0.003918764025, deltaPi=0.091951734154, deltaT=0.027540666384
+[PASS] lambda_0p10 deltaPi stays within the linear envelope: relative error=0.013706471522, envelope=0.020000000000
+[PASS] lambda_0p10 deltaT stays within the linear envelope: relative error=0.013814207265, envelope=0.020000000000
+
+lambda_0p25 (perturbative): lambda=0.250000000000
+  delta_g_actual=-0.016757555160, delta_g_linear=-0.016201742192, delta_S_actual=-0.009913067192, delta_S_linear=-0.009717959216
+  deltaPi_actual=0.234550657218, deltaPi_linear=0.226771103711, deltaT_actual=0.070261968154, deltaT_linear=0.067913494866
+[PASS] lambda_0p25 keeps the correction direction: delta_g=-0.016757555160, delta_S=-0.009913067192, deltaPi=0.234550657218, deltaT=0.070261968154
+[PASS] lambda_0p25 deltaPi stays within the linear envelope: relative error=0.034305753157, envelope=0.040000000000
+[PASS] lambda_0p25 deltaT stays within the linear envelope: relative error=0.034580362757, envelope=0.040000000000
+
+lambda_0p50 (stress): lambda=0.500000000000
+  delta_g_actual=-0.034626122772, delta_g_linear=-0.032403484383, delta_S_actual=-0.020198716289, delta_S_linear=-0.019435918433
+  deltaPi_actual=0.484651834685, deltaPi_linear=0.453542207421, deltaT_actual=0.145220640080, deltaT_linear=0.135826989731
+[PASS] lambda_0p50 keeps the correction direction: delta_g=-0.034626122772, delta_S=-0.020198716289, deltaPi=0.484651834685, deltaT=0.145220640080
+[PASS] lambda_0p50 deltaPi stays within the linear envelope: relative error=0.068592573645, envelope=0.080000000000
+[PASS] lambda_0p50 deltaT stays within the linear envelope: relative error=0.069158937904, envelope=0.080000000000
+
+lambda_1p00 (one-step-nonlinear): lambda=1.000000000000
+  delta_g_actual=-0.073611504879, delta_g_linear=-0.064806968767, delta_S_actual=-0.041742807035, delta_S_linear=-0.038871836865
+  deltaPi_actual=1.030318962605, deltaPi_linear=0.907084414843, deltaT_actual=0.308885366669, deltaT_linear=0.271653979462
+[PASS] lambda_1p00 keeps the correction direction: delta_g=-0.073611504879, delta_S=-0.041742807035, deltaPi=1.030318962605, deltaT=0.308885366669
+[PASS] lambda_1p00 deltaPi stays within the linear envelope: relative error=0.135857860355, envelope=0.150000000000
+[PASS] lambda_1p00 deltaT stays within the linear envelope: relative error=0.137054451699, envelope=0.150000000000
+[PASS] lambda=1 g_1 matches Stage 152: g_1=0.684423574065, expected=0.684423574065
+[PASS] lambda=1 S_1 matches Stage 152: S_1=0.616333130570, expected=0.616333130570
+[PASS] lambda=1 Pi_1 matches Stage 152: Pi_1=2.539148476098, expected=2.539148476098
+[PASS] lambda=1 T_1 matches Stage 152: T_1=1.210369420844, expected=1.210369420844
+[PASS] deltaPi linearization error grows with lambda: errors=0.013706471522, 0.034305753157, 0.068592573645, 0.135857860355
+[PASS] deltaT linearization error grows with lambda: errors=0.013814207265, 0.034580362757, 0.069158937904, 0.137054451699
+
+All stage-150/152 profile-correction stress checks passed.

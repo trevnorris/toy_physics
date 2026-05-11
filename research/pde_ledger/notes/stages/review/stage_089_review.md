@@ -1,14 +1,12 @@
-# Review: Stage 089 — Canonical outgoing reduced closure
+# Review: Stage 089 — Dimensionless continuum placement
 
-**Batch:** 13 — Outgoing DtN
-**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
-
-**This is a CHECKPOINT stage.** Also verify cross-stage consistency (Protocol C).
+**Batch:** 4 — Kernel Continuation
+**Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage089_canonical_outgoing_reduced_closure.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage089_canonical_outgoing_reduced_closure_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,33 +38,43 @@
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
-**Notes Derivation Review:** m0hat^2 chi_Q N_Q = 1 with m0hat=1 (Stage 084) and chi_Q=1 (Stage 088) gives N_Q=1. Canonical K-bar coefficients: K_bar_0 = 54 G c_s^5/(5 a^5 c^5), K_bar_2 = 6 G c_s^3/(5 a^3 c^5), K_bar_4 = 8 G c_s/(15 a c^5), Gamma_bar_5 = 2G/(5c^5). All verified. Five-point theorem summary faithful to prior stages. Remaining open: PDE branch realization. Honest and well-scoped.
+**Notes Derivation Review:**
 
-**Script Review:** N_Q = 1 from sp.solve. Two branch identity cross-checks (K0 K4 = 4 K2^2 and Gamma5 = 9 sqrt(K2^5/K0^3)) provide genuine validation. gamma_eff check partially tautological (hardcoded 1^2). K-bar targets hardcoded but cross-validated.
+1. **Equation-level correctness.** Five dimensionless ratios (eps_eta, eps_W, rho, Z_W, delta_0) plus Lambda correctly defined from Stage-20 continuum formulas. Placement formulas verified: delta = delta_0/(1-eps_eta), M_mix = 8 Z_W(1+rho)^2/(pi^2(1-eps_eta)(1-eps_W)). Product relation R_target * M_mix = 8 Lambda(1-eps_W)/pi^2 verified — Z_W, (1+rho)^2, (1-eps_eta) cancel exactly. All nine derivative factorizations verified by hand.
 
-**Cross-Stage Consistency:** Chain 082→083→084→086→087→088→089 tight. No circular reasoning. Each substitution (m0hat=1, chi_Q=1) independently derived. Closure conditional on branch realization, honestly stated. No issues papered over.
+2. **Logical flow.** Clean: dimensionless ratios → placement formulas → product relation → parameter tendencies → three-lane factorization.
 
-**Issues Found:**
+3. **Notation consistent** with Stages 18-20.
 
-1. **(MINOR)** Script gamma_eff check uses literal 1^2 instead of symbolic m0hat — partially tautological. K-bar targets entered by hand but mitigated by branch identity cross-checks.
+**Script Review:** Builds Stage-20 microscopic expressions from scratch, applies dimensionless substitutions via ordered pattern matching. No tautologies. All pass (exit code 0). Complete coverage of placement formulas, product relation, and all 9 derivatives.
 
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** MINOR
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The note is mathematically consistent with Stage 88 and the earlier reduced stack: `chi_Q = 1` on the canonical DtN branch collapses the point-particle normalization constraint to `N_Q = 1`.
-2. The target coefficients `Kbar_0`, `Kbar_2`, `Kbar_4`, and `Gammabar_5` are internally consistent and the branch identities tie them together correctly.
-3. The conclusion is properly scoped as a conditional closure on the canonical outgoing branch, not as a proof that the PDE must realize that branch.
+- The dimensionless reduction is algebraically correct. Substituting the Stage 20 continuum formulas into `delta`, `M_mix`, and `R_target` gives exactly the stated five-ratio map in `(eps_eta, eps_W, rho, Z_W, delta_0)` plus `Lambda`.
+- I independently rechecked the load-bearing identity of the stage:
+  `R_target M_mix = 8 Lambda (1 - eps_W)/pi^2`,
+  and it reduces to zero directly. That confirms the claimed separation between product-setting variables `(eps_W, Lambda)` and redistribution variables `(eps_eta, Z_W, rho)`.
+- The one-way tendencies are also correct. The derivative factorizations have the expected signs on the physical branch `0 < eps_eta, eps_W < 1` and `1 + rho > 0`, so the narrative about how each kernel ratio moves the physical point in `(delta, M_mix, R_target)` space is consistent.
+- The beta-factor rewrite is compatible with the Stage 20 kernel formulas: only the mass ratio `mu_W/mu_eta` survives in `beta_0`, while the placement variables themselves are pure stiffness/coupling ratios.
 
 **Script Review:**
 
-The script does verify the intended closure algebra, but it still hardcodes the canonical substitutions `m0hat = 1` and `chi_Q = 1` before solving for `N_Q`, and the `gamma_eff` check uses a literal `1**2` rather than the symbolic source-map factor. That makes it a useful ledger check, but not a fully independent re-derivation.
+- The script faithfully reconstructs the Stage 20 formulas, applies the dimensionless substitutions in a nontrivial way, verifies the exact placement map, the product relation, and all nine derivative identities.
+- The saved output matches the notes and I did not find a tautological check or coding bug.
 
 **Issues Found:**
 
-1. **MINOR:** The checkpoint script is partly tautological. The identities are correct and the output matches the note, but the stage does not independently re-derive the source-map factor.
+None.
 
-**Questions:** None.
+**Questions:**
+
+None.
 
 ---

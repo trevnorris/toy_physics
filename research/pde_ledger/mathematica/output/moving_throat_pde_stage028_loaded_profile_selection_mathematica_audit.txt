@@ -1,0 +1,53 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl
+# Date: 2026-05-11T12:44:49-06:00
+# Elapsed: 9s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 011 — LOADED PROFILE SELECTION
+========================================================================================
+v = {(2*Sqrt[2])/Pi, -4/(3*Pi)}
+K_bare = {{Keta + 6*TOmega, 0}, {0, Keta + 6*TOmega + (Pi^2*Tw)/L^2}}
+K_eff = {{Keta - (8*alpha)/Pi^2 + 6*TOmega, (8*Sqrt[2]*alpha)/(3*Pi^2)}, {(8*Sqrt[2]*alpha)/(3*Pi^2), Keta - (16*alpha)/(9*Pi^2) + 6*TOmega + (Pi^2*Tw)/L^2}}
+kappa0^2 - kappa1^2 - 56/(9 Pi^2) = 0
+PASS: kappa0^2 - kappa1^2 - 56/(9 Pi^2)
+2 kappa0 kappa1 + 16 Sqrt[2]/(3 Pi^2) = 0
+PASS: 2 kappa0 kappa1 + 16 Sqrt[2]/(3 Pi^2)
+trace(K_eff) = 2*Keta - (88*alpha)/(9*Pi^2) + 12*TOmega + (Pi^2*Tw)/L^2
+det(K_eff) = ((Keta + 6*TOmega)*(-88*alpha + 9*Pi^2*(Keta + 6*TOmega)))/(9*Pi^2) + ((-8*alpha + Pi^2*(Keta + 6*TOmega))*Tw)/L^2
+trace - expected = 0
+PASS: trace - expected
+det - expected = 0
+PASS: det - expected
+characteristic factorization = 0
+PASS: characteristic factorization
+lambda_- = (2*Keta - (88*alpha)/(9*Pi^2) + 12*TOmega + (Pi^2*Tw)/L^2 - Sqrt[(512*alpha^2)/(9*Pi^4) + ((56*alpha)/(9*Pi^2) + (Pi^2*Tw)/L^2)^2])/2
+lambda_+ = (2*Keta - (88*alpha)/(9*Pi^2) + 12*TOmega + (Pi^2*Tw)/L^2 + Sqrt[(512*alpha^2)/(9*Pi^4) + ((56*alpha)/(9*Pi^2) + (Pi^2*Tw)/L^2)^2])/2
+dE/dtheta - stationarity_expected/2 = 0
+PASS: dE/dtheta - stationarity_expected/2
+tan(2 theta) = (-48*Sqrt[2]*alpha*L^2)/(56*alpha*L^2 + 9*Pi^4*Tw)
+-tan(2 theta) - manifestly positive form = 0
+PASS: -tan(2 theta) - manifestly positive form
+weak-loading theta coefficient = (-8*Sqrt[2]*L^2)/(3*Pi^4*Tw)
+weak-loading coefficient - kappa0 kappa1/deltaK = 0
+PASS: weak-loading coefficient - kappa0 kappa1/deltaK
+lim_{alpha->Infinity} tan(2 theta) = (-6*Sqrt[2])/7
+tan(theta_max) = -1/3*Sqrt[2]
+strong-loading limit - tan(2 theta_max) = 0
+PASS: strong-loading limit - tan(2 theta_max)
+tan(theta_max) + Sqrt[2]/3 = 0
+PASS: tan(theta_max) + Sqrt[2]/3
+alpha_crit = (9*Pi^2*(Keta + 6*TOmega)*(L^2*(Keta + 6*TOmega) + Pi^2*Tw))/(88*L^2*(Keta + 6*TOmega) + 72*Pi^2*Tw)
+alpha_crit - finite-throat closed form = 0
+PASS: alpha_crit - finite-throat closed form
+det(alpha_crit) = 0
+PASS: det(alpha_crit)
+det(alpha_crit*(1-eps)) = eps*(Keta + 6*TOmega)*(Keta + 6*TOmega + (Pi^2*Tw)/L^2)
+
+Stage 028 Mathematica audit passed.
+
+EXIT_CODE: 0

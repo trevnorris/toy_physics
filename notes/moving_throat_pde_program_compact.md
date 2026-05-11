@@ -19,10 +19,12 @@ target-surface, branch-freeze, and solver-pipeline layers.
 The document is therefore organized as a **single compact ledger** for future
 work on:
 
-- the exact parent `4+1` GNLS/Maxwell theory and projection/reduction hooks,
+- the exact parent `4+1` GNLS/Maxwell theory and the projection-first Maxwell
+  bridge before any matched reduction,
 - the corrected status of the moving wall as either an effective closure or a
   promoted throat action,
-- the Maxwell gauge-localization safety patch,
+- the Maxwell gauge-localization safety patch, measured/flux field split, and
+  projection/reduction firewall,
 - the open finite-radius throat boundary protocol,
 - finite-throat support, D/N AC impedance, and mouth DtN data,
 - wall/BdG/Maxwell/mixed Schur complements and stability gates,
@@ -88,6 +90,11 @@ The following separations are structural.
 Current best reading of the program:
 
 - the parent `4+1` field-theory block is fixed at the exact declared-action level,
+- the electromagnetic sector is now projection-first: Stages `004--020` carry
+  the projected Maxwell law, source/leakage bookkeeping, measured-vs-flux
+  field split, matched-reduction firewall, mouth-Taylor bundle transport, and
+  parent throat-action packet; Stage `021` keeps the old reduced one-port
+  Maxwell/mixed normal form only as the downstream transfer adapter,
 - the moving-throat geometry lift and reduced wall/support/outgoing program are explicit and stable enough for theorem work inside the carried closures,
 - the grouped real `P2` Packet-A finish line is no longer an eight-slot residual ledger at theorem order; on the natural isotropic point-particle branch it has collapsed to the single outgoing-normalization scalar
   \[
@@ -123,14 +130,14 @@ Current best reading of the program:
   \zeta_{\rm req}=\frac13,
   \]
   with actual placement then reduced to one coordinate on the selected twin-support curve,
-- the post-225 barrier companion is now a codimension-three relaxed branch around the Stage-225 slice, with exact recovery map
+- the post-242 barrier companion is now a codimension-three relaxed branch around the Stage-242 slice, with exact recovery map
   \[
   \ell_w=f_U=a=b=0,
   \]
   and with the same same-charge long-range verdict still frozen,
 - on that relaxed branch the stationary lowered front end is carried by
   \[
-  V_{\rm eff}^{(230)}(r)
+  V_{\rm eff}^{(247)}(r)
   =
   V_{\rm short}^{(1p)}(r)
   -
@@ -200,7 +207,7 @@ it does not by itself produce a wall PDE with \(\eta_{tt}\),
 A parent-complete moving-throat statement must instead be
 \[
 \boxed{
-S_{\rm total}=S_\psi[\psi,A,\Sigma]+S_{\rm EM}[A]+S_\Sigma[\Sigma;\mathcal C_\Sigma].
+S_{\rm total}=S_\psi[\psi,A;\Sigma]+S_{\rm EM}[A]+S_\Sigma[R].
 }
 \]
 At quadratic order around a stationary branch,
@@ -209,6 +216,10 @@ S_\Sigma\to S_\eta^{(2)}+O(\eta^3).
 \]
 Until this promotion is made, the distributed wall PDE should be labeled an
 **effective linear wall closure**, not an already-derived strict parent field.
+Stages `015--020` are the current parent-action packet: they promote a throat
+graph field \(R(\Omega,w,t)\), recover the quadratic \(K_\eta\) formula, and
+transport the weak-axisymmetric wall-slope solve into the live prefactor
+obstruction \(\Xi_1\).
 
 #### Maxwell gauge-localization correction
 
@@ -235,6 +246,67 @@ For \(H=Z\), the zero-mode gauge-fixed action is finite and \(\xi_4=\xi\). The
 mixed observables \(E_w\) and \(C_a\) remain exact gauge invariants and are not
 artifacts of the gauge choice.
 
+#### Projection-first Maxwell correction
+
+The current ledger no longer treats the electromagnetic sector as a reduction
+first problem.  Stages `004--020` establish the projection-first chain, and
+Stage `021` retains the older reduced Maxwell/mixed calculation only as the
+matched one-port adapter used downstream.
+
+For any observation kernel \(W(w)\), projection by parts is the basic
+bookkeeping identity:
+\[
+\partial_w(WQ)-W\partial_wQ-(\partial_wW)Q=0.
+\]
+Applying it to the localized parent Maxwell equation gives
+\[
+\boxed{
+\partial_\nu\!\int WZ F^{\nu\mu}\,dw
+=
+\mu_0\int WJ^\mu\,dw
+-[WZF^{w\mu}]_{\partial}
++\int(\partial_wW)ZF^{w\mu}\,dw .
+}
+\]
+The projected current balance is similarly
+\[
+\boxed{
+\partial_\mu\!\int WJ^\mu\,dw
+=
+-[WJ^w]_{\partial}+\int(\partial_wW)J^w\,dw .
+}
+\]
+Thus leakage, boundary discharge, and kernel-gradient source terms are
+projection data, not optional notation.
+
+The homogeneous vector equations use measured fields
+\[
+\mathbf E_{\rm meas}=\int W\mathbf E\,dw,\qquad
+\mathbf B_{\rm meas}=\int W\mathbf B\,dw,
+\]
+while the inhomogeneous equations use source-coupled flux fields
+\[
+\mathbf D_{\rm flux}=\int WZ\mathbf E\,dw,\qquad
+\mathbf H_{\rm flux}=\int WZ\mathbf B\,dw.
+\]
+Identifying these two field pairs is a closure or matching assumption, not a
+parent identity.
+
+The clean reduction match is recovered only after declaring
+\[
+\boxed{
+H=Z,\qquad S(w)=Z(w)/Z_{\rm int},\qquad Z_{\rm int}=\int Z(w)\,dw,
+}
+\]
+so that \(\xi_{\rm eff}^{\rm proj}=\xi\) and
+\(\mu_{\rm eff}^{\rm proj}=\mu_0/Z_{\rm int}\).  Without that matching
+prescription, projected parameters remain observer-kernel quantities.
+
+The imported derivation boundary is also fixed: the compact should use
+`notes/em_projected` only through the derivation packet ending at step 18.
+Step 19 branch-export material and step 20+ computational/runtime diagnostics
+remain outside this compact theorem ledger.
+
 #### Open-throat endpoint correction
 
 The actual branch-realization geometry is an **open finite-radius conduit**:
@@ -259,7 +331,8 @@ Before target residuals are evaluated, freeze:
 - parent action and gauge convention,
 - wall/interface action status,
 - open-exit boundary protocol,
-- projection/source map,
+- projection-first Maxwell/source map \((W,Z,H,S)\), boundary discharge
+  convention, and measured/flux field split,
 - support family,
 - mode/port list,
 - stability/passivity gates,
@@ -422,7 +495,7 @@ This action gives exact matter and Maxwell equations plus a wall force from
 stiffness. The parent-complete moving-throat action, when promoted, is
 \[
 \boxed{
-S_{\rm total}=S_\psi[\psi,A,\Sigma]+S_{\rm EM}[A]+S_\Sigma[\Sigma;\mathcal C_\Sigma].
+S_{\rm total}=S_\psi[\psi,A;\Sigma]+S_{\rm EM}[A]+S_\Sigma[R].
 }
 \]
 The quadratic wall action used later should be read as
@@ -430,6 +503,55 @@ The quadratic wall action used later should be read as
 S_\Sigma\to S_\eta^{(2)}+O(\eta^3)
 \]
 unless and until a nonlinear \(S_\Sigma\) is declared.
+In the current projection-first ledger, Stages `015--020` are the compact
+parent-action continuation: they provide the throat graph action, boundary
+controls, weak-axisymmetric lane law, isotropic parent-bundle denominator, and
+the residual \(\Xi_1\) obstruction after the even wall-slope gates are solved.
+At the compact formula level,
+\[
+S_\Sigma[R]=\int dt\,dw\,d\Omega\;\mathcal L_\Sigma,
+\]
+\[
+\mathcal L_\Sigma
+=\frac12\mu_\Sigma R_t^2
+-\frac12T_{w,\Sigma}R_w^2
+-\frac12T_{\Omega,\Sigma}|\nabla_\Omega R|^2
+-U_\Sigma,
+\]
+and the quadratic stiffness around \(R_0(w)\) is
+\[
+\boxed{
+K_\eta=
+U_{\Sigma,RR}(R_0,w)
+-\partial_w\!\bigl(T_{w,\Sigma,R}(R_0,w)R_0'\bigr)
++\frac12T_{w,\Sigma,RR}(R_0,w)(R_0')^2.
+}
+\]
+In the weak-axisymmetric parent packet,
+\[
+D_{01}=\delta K_\Sigma-B_{01}-Z_{01},\quad
+D_{21}=-(\delta M_\Sigma+B_{21}+Z_{21}),\quad
+D_{41}=-(B_{41}+Z_{41}),
+\]
+\[
+K_1=D_{21}+\frac{D_{01}}9,\qquad
+H_{\rm even}=D_{41}-\frac23D_{21}-\frac{D_{01}}{27}.
+\]
+Solving the two even gates gives
+\[
+\boxed{
+\delta K_\Sigma=B_{01}+Z_{01}+27(B_{41}+Z_{41}),
+\qquad
+\delta M_\Sigma=-(B_{21}+Z_{21})+3(B_{41}+Z_{41}),
+}
+\]
+and leaves
+\[
+\boxed{
+\Xi_1=\frac{N_{01}}{N_0}
+-\frac{27(B_{41}+Z_{41})}{K_\Sigma-B_0-Z_0}.
+}
+\]
 
 #### 2.4.1 Matter sector: gauged GNLS
 
@@ -668,15 +790,16 @@ These mixed channels are suppressed only in the strict far-field zero-mode brane
 reduction. They remain part of the microscopic ontology and are essential to the
 honest outgoing bridge.
 
-#### 2.5.7 Cold-start projection and zero-mode reduction hooks
+#### 2.5.7 Projection-first Maxwell bridge and matched zero-mode reduction
 
-**Status:** `Reduced / Controlled Reduction`
+**Status:** `Exact` for the projection identities; `Reduced / Controlled Reduction`
+only after a zero-mode or matching ansatz is declared
 
-For a normalized brane weight \(W(w)\),
+For a normalized brane observation weight \(W(w)\),
 \[
 \int W(w)\,dw=1,
 \]
-the exact projected brane observables are
+the exact projected matter observables are
 \[
 \rho_{\rm brane}(\mathbf x,t)=\int W(w)\rho(\mathbf x,w,t)\,dw,
 \]
@@ -686,21 +809,124 @@ the exact projected brane observables are
 \mathbf v_{\rm brane}=\mathbf j_{\rm brane}/\rho_{\rm brane}.
 \]
 
+The same projection principle applies to Maxwell.  The current ledger order is:
+
+1. project the localized parent Maxwell law with \(W\);
+2. keep boundary discharge and \(W'\)-leakage terms explicit;
+3. distinguish measured homogeneous fields from source-coupled flux fields;
+4. impose a matching prescription only if a reduced brane law is desired.
+
+The projection-by-parts identity is
+\[
+\boxed{
+\partial_w(WQ)-W\partial_wQ-(\partial_wW)Q=0.
+}
+\]
+Applying it to
+\(\partial_N(ZF^{NM})=\mu_0J^M\) gives the brane-facing projected
+inhomogeneous law
+\[
+\boxed{
+\partial_\nu\!\int WZ F^{\nu\mu}\,dw
+=
+\mu_0\int WJ^\mu\,dw
+-[WZF^{w\mu}]_{\partial}
++\int(\partial_wW)ZF^{w\mu}\,dw .
+}
+\]
 Projected continuity is exact:
 \[
 \boxed{
 \partial_t\rho_{\rm brane}+\nabla_3\cdot \mathbf j_{\rm brane}=S_{\rm leak},
 }
 \]
-with leakage term
+with
 \[
 \boxed{
 S_{\rm leak}
 =
--\left[Wj^w\right]_{-\infty}^{+\infty}
+-\left[Wj^w\right]_{\partial}
 +\int W'(w)j^w\,dw.
 }
 \]
+Equivalently, for the Maxwell source current,
+\[
+\boxed{
+\partial_\mu\!\int WJ^\mu\,dw
+=
+-[WJ^w]_{\partial}+\int(\partial_wW)J^w\,dw.
+}
+\]
+
+The homogeneous vector equations use measured projected fields
+\[
+\boxed{
+\mathbf E_{\rm meas}=\int W\mathbf E\,dw,\qquad
+\mathbf B_{\rm meas}=\int W\mathbf B\,dw,
+}
+\]
+whereas the inhomogeneous equations use source-coupled flux fields
+\[
+\boxed{
+\mathbf D_{\rm flux}=\int WZ\mathbf E\,dw,\qquad
+\mathbf H_{\rm flux}=\int WZ\mathbf B\,dw.
+}
+\]
+Thus the projected Ampere law has the structural form
+\[
+\boxed{
+\nabla\times\mathbf H_{\rm flux}-\partial_t\mathbf D_{\rm flux}
+=\mu_0\mathbf J_{\rm proj}+\mathbf L_{\rm mix},
+}
+\]
+where \(\mathbf L_{\rm mix}\) is the vector version of the transverse
+boundary/kernel-gradient term.  Collapsing
+\((\mathbf E_{\rm meas},\mathbf B_{\rm meas})\) onto
+\((\mathbf D_{\rm flux},\mathbf H_{\rm flux})\) is a closure or matching
+assumption.
+
+Under a zero-mode ansatz \(A_\mu(x,w)=a_\mu(x)\), the projected coefficients are
+\[
+I_{WZ}=\int WZ\,dw,\qquad
+I_{WH}=\int WH\,dw,\qquad
+I_{WS}=\int WS\,dw,
+\]
+\[
+\boxed{
+\mu_{\rm eff}^{\rm proj}=\mu_0\frac{I_{WS}}{I_{WZ}},
+\qquad
+\frac1{\xi_{\rm eff}^{\rm proj}}=\frac{I_{WH}}{\xi I_{WZ}}.
+}
+\]
+These remain observer-kernel quantities until matched.  The clean reduction
+match is
+\[
+\boxed{
+H=Z,\qquad S(w)=Z(w)/Z_{\rm int},\qquad Z_{\rm int}=\int Z(w)\,dw,
+}
+\]
+which gives
+\[
+\boxed{
+\xi_{\rm eff}^{\rm proj}=\xi,\qquad
+\mu_{\rm eff}^{\rm proj}=\mu_0/Z_{\rm int}.
+}
+\]
+
+Only after this matching does the controlled far-field zero-mode sector read
+\[
+\boxed{
+\partial_\mu F^{\mu\nu}=\mu_0^{\rm eff}J_{\rm eff}^\nu,
+\qquad
+\mu_0^{\rm eff}=\frac{\mu_0}{Z_{\rm int}}.
+}
+\]
+The reduction assumptions
+\[
+A_w\approx0,\qquad \partial_wA_\mu\approx0,\qquad
+J^w\approx0,\qquad F_{\mu w}\approx0
+\]
+are therefore a matched channel, not the parent derivation.
 
 Under the Helmholtz split
 \[
@@ -708,7 +934,7 @@ Under the Helmholtz split
 \qquad
 \nabla_3\cdot\mathbf v_T=0,
 \]
-the exact longitudinal identity is
+the exact longitudinal identity remains
 \[
 \boxed{
 \rho_{\rm brane}\,\nabla_3^2\varphi
@@ -718,32 +944,8 @@ S_{\rm leak}
 -(\nabla_3\rho_{\rm brane})\cdot(\nabla_3\varphi+\mathbf v_T).
 }
 \]
-
 In the quasi-static longitudinal regime this becomes the brane Poisson hook for
 \(\varphi\).
-
-Under the controlled far-field zero-mode assumptions
-\[
-A_w\approx 0,
-\qquad
-\partial_w A_\mu\approx 0,
-\qquad
-J^w\approx 0,
-\qquad
-F_{\mu w}\approx 0,
-\]
-integration over \(w\) gives the effective brane Maxwell sector
-\[
-\boxed{
-\partial_\mu F^{\mu\nu}=\mu_0^{\rm eff}J_{\rm eff}^\nu,
-\qquad
-\mu_0^{\rm eff}=\frac{\mu_0}{Z_{\rm int}}.
-}
-\]
-
-This is a controlled reduction, not a denial of the mixed-core structure. It is
-the short cold-start bridge between the exact parent theory and the reduced brane
-language used later in the document.
 
 Gauge-fixing caution: if the five-dimensional gauge-fixing term is unweighted
 \((H=1)\), impose Lorenz gauge before zero-mode reduction and choose any desired
@@ -761,6 +963,8 @@ only by the far-field ansatz, not removed from the microscopic theory.
 - \(\Sigma/R\) as a confinement-coupling argument,
 - the exact gauged GNLS plus localized Maxwell action,
 - the exact bulk equations and exact mixed-sector observables,
+- the projection-first Maxwell law, measured/flux field split, and matched
+  reduction firewall,
 - the corrected charge ontology,
 - the Maxwell gauge-localization safety rule.
 
@@ -1265,6 +1469,10 @@ For each grouped lane \(A\in\{20,21,22\}\), define:
 - mixed coordinates \(W_{A,r}\) with frequencies \(\Omega_{W,A,r}\),
 - internal mixed-sector couplings \(R_{A,r}\).
 
+The reduced Maxwell/mixed one-port normal form used here is Stage `021`: it is
+the retained matched adapter after the projection-first derivation, not the
+primary parent EM derivation.
+
 On the stable separated-pole branch, eliminating the stable BdG modes gives the
 exact conservative moments
 \[
@@ -1322,6 +1530,111 @@ D_{A,4}=-\big(B_{A,4}+Z_{A,4}\big).
 
 So at this level the completed PDE is expected to supply a grouped conservative
 bundle of static, quadratic, and quartic low-frequency coefficients lane by lane.
+
+### 4.8A Projection-first EM transport into grouped-bundle slots
+
+**Status:** `Exact` for the algebraic transport once the projected mouth data
+and reduced primitive packet are declared
+
+Stages `010--014` carry the compact bridge from projected Maxwell mouth data to
+the grouped conservative/outgoing slots.  Write the projected perturbation as
+\[
+Z_n\mapsto Z_n+\varepsilon z_n,\qquad
+N_n\mapsto N_n+\varepsilon n_n,\qquad n\in\{0,2,4\}.
+\]
+For
+\[
+D_0=K-B_0-Z_0,\qquad
+D_2=-(M+B_2+Z_2),\qquad
+D_4=-(B_4+Z_4),
+\]
+the first variations are
+\[
+\boxed{
+\delta u_2=\frac{D_0z_2-D_2z_0}{D_0^2},
+}
+\]
+\[
+\boxed{
+\delta u_4=
+\frac{D_0^2z_4-D_0(2D_2z_2+D_4z_0)+2D_2^2z_0}{D_0^3},
+}
+\]
+\[
+\boxed{
+\delta P_0=\frac{D_0n_0+N_0z_0}{D_0^2}.
+}
+\]
+
+After eliminating the static wall stiffness, the projected `P2`
+compatibility surface can be written with
+\[
+S=M+B_2+Z_2,\qquad T=B_4+Z_4,
+\]
+\[
+\mathcal C=\frac{N_0}{P_{0,\rm target}}-\frac{3S^2}{T},
+\]
+so
+\[
+\boxed{
+\delta\mathcal C
+=\frac{n_0}{P_{0,\rm target}}
+-\frac{6Sz_2}{T}
++\frac{3S^2z_4}{T^2}.
+}
+\]
+The \(z_0\) slot cancels from this eliminated compatibility surface; it still
+changes \(P_0\).
+
+The primitive reduced packet uses
+\[
+\Delta=A\,W-R^2,
+\]
+plus the conservative numerator \(Q\), mixed-transfer numerator \(P\), and
+denominator slope \(S_2\).  Along the one-sided mouth coordinate \(s\),
+\[
+\boxed{
+z_0=\partial_s\!\left(\frac{Q}{\Delta}\right),
+\qquad
+n_0=\partial_s\!\left(\frac{P^2}{\Delta^2}\right),
+}
+\]
+\[
+\boxed{
+z_2=\partial_s\!\left(\frac{QS_2-H_{\rm port}\Delta}{\Delta^2}\right),
+}
+\]
+\[
+\boxed{
+z_4=\partial_s\!\left(
+\frac{Q(S_2^2-\Delta)-H_{\rm port}S_2\Delta}{\Delta^3}
+\right).
+}
+\]
+The live first-order prefactor slope is
+\[
+\boxed{
+\Xi_{\rm load}=\frac{n_0}{N_0}+\frac{z_0}{D_0}.
+}
+\]
+
+The even gates are
+\[
+\boxed{
+K_1=-z_2-\frac{z_0}{9},
+\qquad
+H_{\rm even}=-z_4+\frac23z_2-\frac{z_0}{27}.
+}
+\]
+The projected EM mouth data can tune those gates only away from the primitive
+degeneracy
+\[
+\boxed{
+Q\,S_2-\Delta H_{\rm port}=0.
+}
+\]
+This is the compact AI-facing version of the Stage `010--014`
+projection-to-bundle bridge.
 
 ### 4.9 Conservative-lane status at this point
 
@@ -2710,7 +3023,7 @@ The coherent local-kernel hypothesis forces
 \qquad
 Z_\phi=\zeta Z_W,
 \]
-so the reduced Stage-27 branch lands exactly on the tracking surface
+so the reduced Stage-044 branch lands exactly on the tracking surface
 \[
 \boxed{
 R_{\rm tr}=R_U=R_\phi
@@ -3508,7 +3821,7 @@ closure set is the codimension-one graph slice
 }
 \]
 
-For any graph-lifted free-quintuple family `\(\mathbf y(\tau)\)`, the Stage-175
+For any graph-lifted free-quintuple family `\(\mathbf y(\tau)\)`, the Stage-192
 monomial map annihilates the graph tangent:
 \[
 \boxed{M_*\,\dot{\Delta\mathbf x}_{\rm graph}=0.}
@@ -3553,11 +3866,11 @@ L_0:=\left.\frac{d}{d\tau}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0},
 \qquad
 L_1:=\left.\frac{d^2}{d\tau^2}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0}.
 \]
-Stage `187` gives the log-linear predictor
+Stage `204` gives the log-linear predictor
 \[
 \boxed{\tau_{\log}:=-\frac{\ln\Phi_0}{L_0},}
 \]
-while Stage `188` gives the quadratic log predictor through the discriminant
+while Stage `205` gives the quadratic log predictor through the discriminant
 \[
 \boxed{\Delta_{\log}:=L_0^2-2L_1\ln\Phi_0.}
 \]
@@ -3568,7 +3881,7 @@ directional Hessian data of `\(\ln\widehat\chi_Q\)`.
 
 **Status:** `Exact Within Closure`
 
-Stages `189-198` turn the free-quintuple local search into a certified sieve.
+Stages `206--215` turn the free-quintuple local search into a certified sieve.
 The primitive rays are controlled by the exact local packet
 \[
 (H_0,K_0,[\underline K_1,\overline K_1]),
@@ -3578,7 +3891,7 @@ mixed rays reduce to finite quartic stationary problems. Triple and quadruple
 simplices add genuine interior content, but each closes to finite certified
 interior packets and exact boundary splices.
 
-By Stage `198`, the whole support-`<=4` search is already a finite certified
+By Stage `215`, the whole support-`<=4` search is already a finite certified
 ledger with global interval splices and a preferred evaluation budget of
 \[
 \boxed{1140}
@@ -3624,8 +3937,11 @@ completed ledger.
 
 **Status:** `Exact Within Closure`
 
-The post-`201` same-charge audit inserts actual one-port wall/BdG/Maxwell/mixed
-bundle data into the already-completed local mixed-ray ledger.
+The reduced one-port Maxwell/mixed normal form originates at current Stage
+`021`, where the older reduction calculation is retained as the transfer
+adapter after the projection-first Stages `004--020`.  The post-`218`
+same-charge audit then inserts actual one-port wall/BdG/Maxwell/mixed bundle
+data into the already-completed local mixed-ray ledger.
 
 After the stable BdG support mode is integrated out,
 \[
@@ -3728,7 +4044,7 @@ After the residue/linewidth audit and the exact `5`PN compatibility surface,
 the only linear dynamic corridor left is resonant dispersive enhancement of the
 already-existing short-range families inside a finite branch-compatible window.
 
-So the post-`201` same-charge bundle verdict is now:
+So the post-`218` same-charge bundle verdict is now:
 
 - no new static long-range law,
 - no new linear dynamic kernel class,
@@ -3739,7 +4055,7 @@ So the post-`201` same-charge bundle verdict is now:
 
 **Status:** `Exact Within Closure`
 
-The later same-charge stages then convert the Stage-206 compatibility surface
+The later same-charge stages then convert the Stage-223 compatibility surface
 into an actual-branch ceiling test.
 
 For any prefactor ceiling `P_{\rm crit}`, the actual weak-axisymmetric branch is
@@ -4021,7 +4337,7 @@ So the realized selected point is
 =\frac{4}{3\varrho_{\rm phys}}-2.
 }
 \]
-Once `\(\epsilon\)` is known, the Stage-224 ranking region is fixed with no
+Once `\(\epsilon\)` is known, the Stage-241 ranking region is fixed with no
 further support solve.
 
 The coherent orbit packet can then be read directly from the physical placement
@@ -4122,13 +4438,13 @@ This is the most concrete actual-branch evaluation checklist the compact program
 currently has.
 
 
-## 9. Relaxed-Constraint / Open-System Barrier Extension (`226-236`)
+## 9. Relaxed-Constraint / Open-System Barrier Extension (`243--253`)
 
 ### 9.1 Relaxed branch declaration and exact recovery slice
 
 **Status:** `Exact Within Closure`
 
-The strict Stage-225 front end is now carried as the standard-recovery slice
+The strict Stage-242 front end is now carried as the standard-recovery slice
 \[
 \boxed{
 \mathfrak B_{\rm std}
@@ -4137,17 +4453,17 @@ The strict Stage-225 front end is now carried as the standard-recovery slice
 J^w=0,\ U=0,\ V=0,\ \varsigma(z)\equiv1
 \Bigr\}
 \subset
-(\mathcal P_{225},\mathcal S_{225}).
+(\mathcal P_{242},\mathcal S_{242}).
 }
 \]
 
-The post-225 relaxed branch is the codimension-three lift
+The post-242 relaxed branch is the codimension-three lift
 \[
 \boxed{
-\mathfrak B_{226}^{\rm relax}
+\mathfrak B_{243}^{\rm relax}
 =
 \Bigl\{
-(\mathcal P_{225},\mathcal S_{225});
+(\mathcal P_{242},\mathcal S_{242});
 L_w,\ L_{UV},\ L_\varsigma
 \Bigr\},
 }
@@ -4197,10 +4513,10 @@ Yukawa-`\(1/x\)` same-charge attraction.
 The minimal relaxed packet is therefore
 \[
 \boxed{
-\mathcal P_{226}^{\rm relax}
+\mathcal P_{243}^{\rm relax}
 =
 \Bigl(
-\mathcal P_{225};
+\mathcal P_{242};
 S_{\rm leak},
 \mathcal W_w,
 U,
@@ -4217,7 +4533,7 @@ V,
 
 **Status:** `Exact Within Closure`
 
-The selected-support demand carried from Stage 225 is
+The selected-support demand carried from Stage 242 is
 \[
 \Pi_{\rm tr}
 =
@@ -4287,10 +4603,10 @@ S_{\rm leak}(-\eta_{\rm leak})=-S_{\rm leak}(\eta_{\rm leak}),
 A practical packet is
 \[
 \boxed{
-\mathcal P_{227}^{\rm leak}
+\mathcal P_{244}^{\rm leak}
 =
 \Bigl(
-\mathcal P_{225};
+\mathcal P_{242};
 \Lambda,\epsilon,\eta_{\rm leak},
 S_{\rm leak},
 \mathcal W_w^{\rm bulk},
@@ -4508,15 +4824,15 @@ The compact packet to carry forward is
 }
 \]
 
-### 9.5 Carried Stage-230 stationary lowered front end
+### 9.5 Carried Stage-247 stationary lowered front end
 
 **Status:** `Reduced / Controlled Reduction`
 
-The extension does not restate a standalone Stage-230 theorem block, but Stage 231
+The extension does not restate a standalone Stage-247 theorem block, but Stage 248
 carries forward its exact reduced stationary front end as
 \[
 \boxed{
-V_{\rm eff}^{(230)}(r)
+V_{\rm eff}^{(247)}(r)
 =
 V_{\rm short}^{(1p)}(r)
 -
@@ -4543,7 +4859,7 @@ Here the compact master writes
   }
   \]
 - and `\(\mathcal M_{\sigma,\rm red}(r)\)` for the scalar barrier-lowering
-  contribution built from the Stage-229 source packet
+  contribution built from the Stage-246 source packet
   `\(\mathcal M_\sigma^{\rm pack}(r)\)`.
 
 This is only a short-range/open-system reshaping of the already-audited one-port
@@ -4553,7 +4869,7 @@ same-charge front end. It does not change the kernel-span theorem in `§9.1`.
 
 **Status:** `Exact Within Closure`
 
-On the carried lowered front end `\(V(r):=V_{\rm eff}^{(230)}(r)\)`, the reduced
+On the carried lowered front end `\(V(r):=V_{\rm eff}^{(247)}(r)\)`, the reduced
 one-dimensional dynamics is
 \[
 \boxed{
@@ -4686,7 +5002,7 @@ The hidden-channel diagnostic carried by the parent projection algebra is
 -\Phi_h-2\mathcal C_h,
 }
 \]
-where `\(H_{\rm sub}\)` is the unresolved projected helicity on the Stage-231
+where `\(H_{\rm sub}\)` is the unresolved projected helicity on the Stage-248
 event chain.
 
 Introduce the orientation closure label
@@ -4752,7 +5068,7 @@ T_{\rm traj}(E;r_a\to r_b)
 }
 \]
 
-The Stage-233 characteristic-width closure compresses this to
+The Stage-250 characteristic-width closure compresses this to
 \[
 \boxed{
 t_{\rm cross}(E)
@@ -5073,7 +5389,7 @@ E^{\rm phys}=E_*\,E.
 The exact lattice-turnover threshold is then
 \[
 \boxed{
-(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}
+(\lambda_{\rm ep}\omega_D)_{\min}^{(253)}
 =
 \frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,t_*},
 }
@@ -5081,7 +5397,7 @@ The exact lattice-turnover threshold is then
 or equivalently
 \[
 \boxed{
-(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{(236)}
+(\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{(253)}
 =
 \frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,s_c}.
 }
@@ -5121,7 +5437,7 @@ T_{\max}
 }
 \]
 
-Stage 236 then packages the condensed-matter screen into four exact ratios:
+Stage 253 then packages the condensed-matter screen into four exact ratios:
 \[
 \boxed{
 \Pi_{\rm ep}
@@ -5129,7 +5445,7 @@ Stage 236 then packages the condensed-matter screen into four exact ratios:
 \frac{\Upsilon_{\rm lat}\,\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D\,t_*}
 {\gamma_{\rm lat,safe}^{\rm eq}}
 =
-\frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(236)}},
+\frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(253)}},
 }
 \]
 \[
@@ -5158,7 +5474,7 @@ Stage 236 then packages the condensed-matter screen into four exact ratios:
 }
 \]
 
-A candidate host survives the Stage-236 companion screen only if
+A candidate host survives the Stage-253 companion screen only if
 \[
 \boxed{
 \Pi_{\rm ep}\ge1,
@@ -5171,11 +5487,11 @@ A candidate host survives the Stage-236 companion screen only if
 }
 \]
 
-### 9.12 Global reading of the `226-236` extension
+### 9.12 Global reading of the `243--253` extension
 
 **Status:** `Open`
 
-The post-225 extension does **not** overturn the earlier same-charge verdict.
+The post-242 extension does **not** overturn the earlier same-charge verdict.
 It leaves intact:
 
 - the no-new-long-range-kernel theorem,
@@ -5189,7 +5505,7 @@ What it does add is a controlled companion branch around that front end:
    \[
    (J^w,\ U/V,\ \varsigma),
    \]
-2. an explicit lowered stationary front end `\(V_{\rm eff}^{(230)}\)`,
+2. an explicit lowered stationary front end `\(V_{\rm eff}^{(247)}\)`,
 3. a complete reduced event chain with threshold, turning-point, WKB, and
    Goldilocks compilers,
 4. a hidden-channel unloading diagnostic,
@@ -5230,6 +5546,10 @@ rather than more missing symbolic compilers.
   localized Maxwell action, GNLS equation, continuity law, Maxwell equation,
   Madelung rewrite, and mixed gauge-invariant identities in Section `2` are the
   exact starting theory of this program.
+- The projection-first Maxwell identities are now part of the exact parent
+  bridge: projected inhomogeneous Maxwell, projected continuity, boundary and
+  kernel-gradient leakage, and the measured/flux field split precede any
+  matched zero-mode reduction.
 - `Sigma/R` is exact as a confinement-coupling argument. It becomes an
   autonomous parent dynamical field only after `S_Sigma` is included; otherwise
   the wall PDE in Sections `3-4` is an effective closure.
@@ -5243,6 +5563,10 @@ rather than more missing symbolic compilers.
 - The finite-throat D/N support problem, the minimal distributed wall action, and
   the grouped conservative lane coefficients are exact inside the reduced
   moving-throat wall/support hierarchy.
+- The projected EM mouth-to-bundle transport is exact inside the declared
+  projected primitive packet: `Z_n`/`N_n` slot shifts, the projected `P2`
+  compatibility variation, the mouth-Taylor derivative map, and the even-gate
+  sieve are fixed before the reduced one-port adapter is invoked.
 - The one-lane positive localized-source theorem, the explicit exponential
   mouth-layer law, the exact Family-1 gain map, the self-consistent explicit
   mouth branch, and the singular exclusion of the equal-normalized branch are
@@ -5254,7 +5578,7 @@ rather than more missing symbolic compilers.
   support-enhancement factor, the microscopic slippage normal form, and the
   finite similarity-orbit / quotient theorem are exact inside the coherent
   reduced hierarchy and the positive coherent microscopic sector where stated.
-- The post-175 extension is now also exact inside the carried hierarchy:
+- The post-192 extension is now also exact inside the carried hierarchy:
   the isotropic grouped-real `P2` conservative one-pole surface, the scalar/
   geometry firewall, the exact outgoing `l=2` DtN fingerprint, the source/outgoing
   factorization, higher-odd irrelevance, the Packet-A finish-line theorem
@@ -5262,7 +5586,7 @@ rather than more missing symbolic compilers.
   projection, the free-quintuple target graph, the graph-error packet, the
   graph-slice theorem, the explicit log-ray compiler, and the finite support-`<=5`
   local mixed-ray sieve.
-- The post-201 same-charge / rigid-mouth / selected-branch extension is now also
+- The post-218 same-charge / rigid-mouth / selected-branch extension is now also
   exact inside the carried one-port, weak-axisymmetric, rigid-mouth, and
   selected-branch closures:
   the one-port static susceptibility kernel and square-law suppression theorem,
@@ -5272,7 +5596,7 @@ rather than more missing symbolic compilers.
   `(U,V)`, the physical-to-microscopic dependent compiler, the exact support
   slice `\(\rho_\alpha=4/3\)`, the selected twin-support ranking theorem, and the
   actual placement / support-versus-orbit packet compiler.
-- The post-225 relaxed/open-system barrier companion is now also exact within the
+- The post-242 relaxed/open-system barrier companion is now also exact within the
   carried reduced hierarchy where stated:
   the codimension-three relaxed-branch declaration and recovery slice,
   the selected-branch leakage/work compiler, the finite non-rigid `U/V`
@@ -5280,7 +5604,7 @@ rather than more missing symbolic compilers.
   event-chain/turning-point/WKB compiler, the conditional unresolved-helicity
   export diagnostic, the Goldilocks lower-edge theorem, the microscopic
   cubic/quintic export kernel with exact event-safe surface, the channel-resolved
-  vacuum/lattice heat-partition law, and the Stage-236 material-screening
+  vacuum/lattice heat-partition law, and the Stage-253 material-screening
   companion invariants.
 
 ### 10.3 Numerically located branch data
@@ -5440,9 +5764,9 @@ rather than more missing symbolic compilers.
 - The relaxed/open-system continuation now has an explicit codimension-three lift
   of the selected-branch front end,
   \[
-  \mathfrak B_{226}^{\rm relax}
+  \mathfrak B_{243}^{\rm relax}
   =
-  \{(\mathcal P_{225},\mathcal S_{225});L_w,L_{UV},L_\varsigma\},
+  \{(\mathcal P_{242},\mathcal S_{242});L_w,L_{UV},L_\varsigma\},
   \]
   with exact recovery slice
   \[
@@ -5450,7 +5774,7 @@ rather than more missing symbolic compilers.
   \]
 - Its carried stationary lowered front end is
   \[
-  V_{\rm eff}^{(230)}(r)
+  V_{\rm eff}^{(247)}(r)
   =
   V_{\rm short}^{(1p)}(r)
   -
@@ -5486,7 +5810,7 @@ rather than more missing symbolic compilers.
   \ge
   \mu_\eta(s_0^2-s_c^2).
   \]
-- The Stage-236 materials companion is now organized by the exact inequality stack
+- The Stage-253 materials companion is now organized by the exact inequality stack
   \[
   \Pi_{\rm ep}\ge1,
   \qquad
@@ -5516,7 +5840,7 @@ rather than more missing symbolic compilers.
 
 **Status:** `Open`
 
-- None of the post-225 relaxed/open-system stages changes the earlier one-port
+- None of the post-242 relaxed/open-system stages changes the earlier one-port
   same-charge verdict: there is still no new static long-range attractive family
   and no new linear dynamic conservative kernel class. The relaxed branch remains
   a short-range/open-system companion around the strict selected-support front end.
@@ -5544,8 +5868,8 @@ rather than more missing symbolic compilers.
   bottleneck is now: selected support placement, actual `\Xi_1` placement, and
   rigid-mouth orbit lock on the realized branch.
 
-- If one follows the Stage-226-236 companion branch rather than staying on the
-  strict Stage-225 slice, the active open objects are no longer symbolic closure
+- If one follows the Stage-243--253 companion branch rather than staying on the
+  strict Stage-242 slice, the active open objects are no longer symbolic closure
   formulas but realized coefficients and calibration data:
   \[
   \eta_{\rm leak},
@@ -5584,7 +5908,7 @@ The remaining gap is now concentrated and explicit.
 
 ### 11.2 What is still genuinely open
 
-- If the relaxed/open-system companion is kept, the realized Stage-226-230
+- If the relaxed/open-system companion is kept, the realized Stage-243--247
   branch data are also genuinely open:
   \[
   \eta_{\rm leak},
@@ -5595,7 +5919,7 @@ The remaining gap is now concentrated and explicit.
   \]
   together with the resulting lowered front end
   \[
-  V_{\rm eff}^{(230)}(r)
+  V_{\rm eff}^{(247)}(r)
   \quad\text{and its dynamic tags}\quad
   (r_{\rm peak},V_{\rm peak},r_\pm,I_{\rm new},\Xi_{\rm turn},\lambda_{\rm th}).
   \]
@@ -5690,7 +6014,8 @@ parent_action_status        # strict current action or promoted S_Sigma
 gauge_fixing_convention     # H=1 pre-Lorenz or localized H=Z
 boundary_class              # must be open_impedance for V2 branch tests
 R_exit                      # must be > 0
-projection_source_map       # mhat0 and S_port convention
+projection_source_map       # W, Z, H, S, boundary discharge, measured/flux split
+maxwell_match_status        # projected-only or matched reduction with H=Z, S=Z/Z_int
 support_family              # D/N AC support, Robin/impedance, etc.
 mode_port_list              # wall, BdG, U/W mixed ports
 stability_gates             # wall positivity, BdG positivity, Delta>0, D0>0
@@ -5730,6 +6055,11 @@ judgment.
   \(S_\Sigma\) has been included.
 - Do not integrate the unweighted five-dimensional gauge-fixing term over the
   noncompact zero mode.
+- Do not treat the reduced one-port Maxwell/mixed normal form as the primary
+  parent EM derivation; it is the matched Stage `021` adapter after projected
+  Stages `004--020`.
+- Do not identify measured fields \(\int W(E,B)\) with flux fields
+  \(\int WZ(E,B)\) unless that closure has been declared.
 - Do not use a hard cap \(R(L)=0\) for branch-realization tests.
 - Do not erase \(A_w,J^w,F_{\mu w},E_w,C_a\) because the far-field brane limit
   suppresses them.
@@ -6027,7 +6357,7 @@ carried by the final invariant theorem.
 
 ### 12.8 Branch-observable, transfer-shape, and rigid-mouth physical packet
 
-The Stage-171 PDE-facing observable packet is
+The Stage-188 PDE-facing observable packet is
 \[
 \Delta_{\rm obs}^{(1)}
 =
@@ -6321,7 +6651,7 @@ The preferred full evaluation budget is `1464`, with fallback `2640`.
 
 ### 12.12 Relaxed/open-system barrier companion variables
 
-The post-225 relaxed branch is organized by three lifted lanes:
+The post-242 relaxed branch is organized by three lifted lanes:
 \[
 L_w=(S_{\rm leak},\mathcal W_w),
 \qquad
@@ -6372,7 +6702,7 @@ The compensated source packet uses
 
 The carried lowered stationary front end is
 \[
-V_{\rm eff}^{(230)}(r)
+V_{\rm eff}^{(247)}(r)
 =
 V_{\rm short}^{(1p)}(r)
 -\lambda_L S_{\rm leak}(r)
@@ -6451,13 +6781,27 @@ session to recover the working state without searching the document.
 
 ```text
 Strict parent: S_current = S_psi[psi,A;Sigma] + S_EM[A]
-Wall PDE strict parent status: requires + S_Sigma[Sigma]
+Wall PDE strict parent status: requires + S_Sigma[R]
 Quadratic wall closure: S_eta^(2), effective unless promoted
 Gauge H=1: impose Lorenz before zero-mode reduction
 Gauge H=Z: finite localized gauge fixing, xi_4 = xi
 Physical branch endpoint: R(L) > 0
 D/N ladder: AC impedance/reflection, not a hard cap
 Mixed channels: A_w, J^w, F_{mu w}, E_w, C_a stay alive
+```
+
+### 13.1A Projection-first EM card
+
+```text
+EM order: projection first, reduction second
+Stages 004--020: projected Maxwell + mouth transport + parent-action packet
+Stage 021: retained reduced one-port Maxwell/mixed adapter
+Projection identity: int W d_w Q = [WQ]_bdry - int W' Q
+Projected Maxwell: boundary discharge + W' leakage stay explicit
+Measured fields: int W E, int W B
+Flux fields: int W Z E, int W Z B
+Clean match: H=Z and S=Z/Z_int gives xi_eff=xi, mu_eff=mu0/Z_int
+Do not import notes/em_projected step 19+ computational/runtime material
 ```
 
 ### 13.2 Full-bundle coefficient card

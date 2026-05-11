@@ -1,0 +1,104 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage043_support_direction_sympy_audit.py
+# Date: 2026-05-11T12:42:41-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 26 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+26.1 — Exact effective support vector after eliminating the split U doublet
+----------------------------------------------------------------------------------------
+y =
+⎡     κ₀⋅(K_U⋅g_B + g_S⋅g_U)     ⎤
+⎢     ──────────────────────     ⎥
+⎢              K_U               ⎥
+⎢                                ⎥
+⎢κ₁⋅(K_U⋅g_B⋅(δ_U + 1) + g_S⋅g_U)⎥
+⎢────────────────────────────────⎥
+⎣         K_U⋅(δ_U + 1)          ⎦
+R_phi =
+K_U⋅δ_U⋅g_B + K_U⋅g_B + g_S⋅g_U
+───────────────────────────────
+ (δ_U + 1)⋅(K_U⋅g_B + g_S⋅g_U) 
+R_phi - expected = 0
+D_phi =
+-δ_U⋅g_S⋅g_U⋅κ₀⋅κ₁ 
+───────────────────
+   K_U⋅(δ_U + 1)   
+D_phi - expected = 0
+
+----------------------------------------------------------------------------------------
+26.2 — Exact support pole shift and split support-blocking ratio
+----------------------------------------------------------------------------------------
+v.D_U.v =
+ σ⋅(9⋅δ_U + 11) 
+────────────────
+11⋅K_U⋅(δ_U + 1)
+support overlap contraction = 0
+A_phi^(eff) =
+                                              2                  2  
+11⋅K_U⋅K_φ_eff⋅δ_U + 11⋅K_U⋅K_φ_eff - 9⋅c_Uphi ⋅δ_U⋅σ - 11⋅c_Uphi ⋅σ
+────────────────────────────────────────────────────────────────────
+                          11⋅K_U⋅(δ_U + 1)                          
+A_phi^(eff) - expected = 0
+
+----------------------------------------------------------------------------------------
+26.3 — Exact physical support baseline
+----------------------------------------------------------------------------------------
+M_supp =
+                                                                     2         ↪
+                          -88⋅(δ_U + 1)⋅(K_U⋅cₑₜₐₚₕᵢ + c_Uphi⋅c_etaU)          ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+ 2                          ⎛                                              2   ↪
+π ⋅K_U⋅K_η_eff⋅(epsₑₜₐ - 1)⋅⎝11⋅K_U⋅K_φ_eff⋅δ_U + 11⋅K_U⋅K_φ_eff - 9⋅c_Uphi ⋅δ ↪
+
+↪                     
+↪                     
+↪ ────────────────────
+↪                 2  ⎞
+↪ _U⋅σ - 11⋅c_Uphi ⋅σ⎠
+M_supp - expected = 0
+
+----------------------------------------------------------------------------------------
+26.4 — Exact tracking condition relative to the mixed vector
+----------------------------------------------------------------------------------------
+D_(phi z) =
+-δ_U⋅g_U⋅κ₀⋅κ₁⋅(g_B⋅g_R - g_S⋅g_W) 
+───────────────────────────────────
+           K_U⋅(δ_U + 1)           
+D_(phi z) - expected = 0
+tracking condition via g_B g_R = g_W g_S = 0
+
+----------------------------------------------------------------------------------------
+26.5 — Exact mismatch formula
+----------------------------------------------------------------------------------------
+R_phi - R_U =
+         K_U⋅δ_U⋅g_U⋅(g_B⋅g_R - g_S⋅g_W)         
+─────────────────────────────────────────────────
+(δ_U + 1)⋅(K_U⋅g_B + g_S⋅g_U)⋅(K_U⋅g_W + g_R⋅g_U)
+mismatch formula = 0
+
+========================================================================================
+STAGE 26 THEOREM LEDGER
+========================================================================================
+1. The first symmetry-allowed U/phi continuum extension keeps the support loading rank-1,
+   but rotates the support direction to the exact vector y.
+2. The exact support-direction factor is
+      R_phi = [1 + sigma0/(1+delta_U)] / (1 + sigma0).
+3. The support direction is source-tied iff sigma0 = 0 (or delta_U = 0).
+4. The exact split support-blocking ratio is
+      eps_phi^(split) = eps_phi [1 - (2/11) delta_U/(1+delta_U)].
+5. The exact physical support baseline is
+      M_supp = 8 Z_phi (1+sigma0)^2 / [pi^2 (1-eps_eta)(1-eps_phi^(split))].
+6. The support vector tracks the mixed vector iff
+      g_B g_R = g_W g_S,  equivalently  sigma0 = rho0.
+7. Therefore the minimal kernel is source-tied, the generic first extended kernel is
+   intermediate, and exact tracking is a codimension-one interference match.
+
+EXIT_CODE: 0

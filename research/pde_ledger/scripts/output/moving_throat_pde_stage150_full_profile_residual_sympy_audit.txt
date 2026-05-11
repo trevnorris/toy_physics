@@ -1,0 +1,40 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+# Date: 2026-05-11T12:46:57-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+FULL-PROFILE FAMILY-1 MOUTH RESIDUAL
+========================================================================================
+S_q(Pi) =
+     ⎛       Π     2⋅Π        Π     ⎛π⎞⎞ 
+-2⋅Π⋅⎜- 2⋅Π⋅ℯ  + ─────── + π⋅ℯ ⋅tanh⎜─⎟⎟ 
+     ⎜               ⎛π⎞            ⎝2⎠⎟ 
+     ⎜           cosh⎜─⎟               ⎟ 
+     ⎝               ⎝2⎠               ⎠ 
+─────────────────────────────────────────
+          ⎛   2    2⎞ ⎛ Π    ⎞           
+          ⎝4⋅Π  - π ⎠⋅⎝ℯ  - 1⎠           
+T_s(0) = 0
+T_q(0) = 0
+T_s'(0)-1 = 0
+T_q'(0)-S_q = 0
+R(0) = 0
+R'(0) = 0
+R''(0) =
+       Π
+3⋅Π⋅Σ⋅ℯ 
+────────
+      Π 
+ 1 - ℯ  
+R''(0) - target = 0
+
+Theorem:
+  R(0)=0, R'(0)=0, and R''(0) = -3 Sigma Pi/(1-exp(-Pi)) < 0.
+  So the full compensated mouth potential is tangent-matched but sublinear at the mouth.
+
+EXIT_CODE: 0

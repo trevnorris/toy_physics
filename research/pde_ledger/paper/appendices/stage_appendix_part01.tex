@@ -1,15 +1,15 @@
 \chapter{Stage Appendix: Part I -- Parent Theory, Geometry Lift, and Linearized PDE Backbone}
 \label{app:stage-part-1}
 
-\section*{Stages 001--006; anchors MTDC-T1--T4}
-\addcontentsline{toc}{section}{Stages 001--006; anchors MTDC-T1--T4}
+\section*{Stages 001--023; anchors MTDC-T1--T5}
+\addcontentsline{toc}{section}{Stages 001--023; anchors MTDC-T1--T5}
 
 This appendix is the detailed verification ledger for the first theorem block of the moving-throat derivation.  The corresponding main-text chapter, \cref{chap:part01_parent_geometry}, explains the role of the block in the larger paper.  The job of this appendix is narrower and more mechanical: it records, stage by stage, the definitions, reductions, algebraic transforms, branch tests, and audit checks that turn the exact parent model into the first usable wall/support/outgoing response bundle.
 
-The six stages here should be read as a single construction.  Stage~001 promotes the old collective geometry variables to a distributed moving-surface field and introduces the scalar, grouped real \(P_2\), and higher-harmonic lanes.  Stage~002 verifies that this distributed wall theory reduces back to the old \((a,L)\) closure in the lowest axisymmetric sector.  Stage~003 couples the wall to stable BdG matter support modes and derives the first conservative Schur-complement kernels.  Stage~004 now treats the electromagnetic sector projection-first: it derives the exact projected localized Maxwell law, identifies the matched zero-mode reduction, transports mouth-local projected corrections into the grouped \(Z_n,N_n\) slots, imports the parent-throat action packet, and retains the previous Maxwell/mixed one-port calculation as the reduced normal form for outgoing transfer.  Stage~005 translates that outgoing bridge into the normalized grouped-response language used by the retarded quadrupole program.  Stage~006 writes the full grouped \(20/21/22\) bundle, its weighted projectors, its microscopic coefficient ledger, and the isotropic normalization test.
+The twenty-three stages here should be read as a single construction.  Stage~001 promotes the old collective geometry variables to a distributed moving-surface field and introduces the scalar, grouped real \(P_2\), and higher-harmonic lanes.  Stage~002 verifies that this distributed wall theory reduces back to the old \((a,L)\) closure in the lowest axisymmetric sector.  Stage~003 couples the wall to stable BdG matter support modes and derives the first conservative Schur-complement kernels.  Stages~004--021 now treat the electromagnetic sector projection-first: they derive the exact projected localized Maxwell law, identify the matched zero-mode reduction, transport mouth-local projected corrections into the grouped \(Z_n,N_n\) slots, import the parent-throat action packet, and retain the previous Maxwell/mixed one-port calculation as the reduced normal form for outgoing transfer.  Stage~022 translates that outgoing bridge into the normalized grouped-response language used by the retarded quadrupole program.  Stage~023 writes the full grouped \(20/21/22\) bundle, its weighted projectors, its microscopic coefficient ledger, and the isotropic normalization test.
 
 \paragraph{Source layout.}
-Stages~001--006 are now sourced from the canonical files \StageFile{stages/stage_001.tex} through \StageFile{stages/stage_006.tex}.  The raw Markdown notes and other provenance artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy, Mathematica, and numerical-stress references when they exist.
+Stages~001--023 are now sourced from the canonical files \StageFile{stages/stage_001.tex} through \StageFile{stages/stage_023.tex}.  The raw Markdown notes and other provenance artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy, Mathematica, and numerical-stress references when they exist.
 
 \begin{longtable}{@{}L{0.10\textwidth}L{0.27\textwidth}L{0.22\textwidth}L{0.34\textwidth}@{}}
 \caption{Part I stage-audit map.}\label{tab:app-part01-stage-map}\\
@@ -27,11 +27,45 @@ Stage & Source stage & Primary status & Verification output \\
 \addlinespace
 003 & Minimal BdG--wall coupling & \StatusReduced{} / \StatusExactClosure{} & Stable-mode Schur complement, low-frequency wall moments, pole shift formula, and conservative grouped-isotropy diagnostic. \\
 \addlinespace
-004 & Projection-first Maxwell/mixed response & \StatusExact{} / \StatusReduced{} / \StatusExactClosure{} & Exact projected localized Maxwell law, matched reduction channel, projected \(Z_n,N_n\) bundle transport, reduced one-port transfer factor, compact \(l=2\) fingerprint, and scalar-compatibility criterion. \\
+004 & Projected Maxwell bundle index & \StatusExact{} & Bundle ordering and projection-by-parts identity for the projection-first electromagnetic sector. \\
 \addlinespace
-005 & Grouped normalization bridge & \StatusExactClosure{} / \StatusOpen{} & Conversion from operator moments to normalized response moments and invariant outgoing-normalization product. \\
+005 & Covariant projected Maxwell law & \StatusExact{} & Exact projected inhomogeneous Maxwell equation, boundary flux, kernel-gradient leakage, and projected continuity law. \\
 \addlinespace
-006 & Full grouped bundle and projectors & \StatusExactClosure{} / \StatusOpen{} & Weighted grouped projectors, full \(D,N,P\) coefficient ledger, isotropic branch test, and first-order anisotropy transport laws. \\
+006 & Vector projected Maxwell split & \StatusExact{} & Measured-field homogeneous equations, source-flux inhomogeneous equations, and the open-system charge balance. \\
+\addlinespace
+007 & Projection/reduction comparison & \StatusExact{} / \StatusReduced{} & Matched Gaussian zero-mode channel and its coupling mismatch relative to the projection law. \\
+\addlinespace
+008 & Projected Maxwell extension and clean matching & \StatusExact{} / \StatusReduced{} & Slot-level distinction between source-flux projection and matched reduction. \\
+\addlinespace
+009 & Near-throat projection scale & \StatusExactClosure{} & Near-throat projected scale factors and the leakage/source normalization ledger. \\
+\addlinespace
+010 & Projected Maxwell push into bundle slots & \StatusExactClosure{} & Projected \(Z_n,N_n\) slot transport for the grouped response bundle. \\
+\addlinespace
+011 & Projected Maxwell \(P_2\) bridge & \StatusExactClosure{} & \(P_2\)-lane bridge from projected electromagnetic slots into the grouped normalization language. \\
+\addlinespace
+012 & Projected Maxwell primitive bridge & \StatusExactClosure{} & Primitive finite-throat bridge data induced by the projected electromagnetic sector. \\
+\addlinespace
+013 & Mouth-Taylor master map & \StatusExactClosure{} & Mouth-local Taylor map for projected source and flux corrections. \\
+\addlinespace
+014 & Mouth-Taylor gate bridge & \StatusExactClosure{} & Gate conditions for carrying mouth-local projected data into the grouped bundle. \\
+\addlinespace
+015 & Parent throat action master & \StatusExact{} / \StatusReduced{} & Parent throat-action packet and projection/reduction status boundary. \\
+\addlinespace
+016 & Parent throat action candidate & \StatusExactClosure{} & Candidate parent-action data for the projected throat sector. \\
+\addlinespace
+017 & Parent throat action weak-axisymmetric law & \StatusExactClosure{} & Weak-axisymmetric parent-action transport law. \\
+\addlinespace
+018 & Parent throat action bundle master & \StatusExactClosure{} & Bundle-level parent-action identities used by the projected electromagnetic response. \\
+\addlinespace
+019 & Parent throat action isotropic bundle & \StatusExactClosure{} & Isotropic parent-action specialization for the projected bundle. \\
+\addlinespace
+020 & Parent throat action weak-axisymmetric packet & \StatusExactClosure{} & Weak-axisymmetric packet exported from the parent throat-action bundle. \\
+\addlinespace
+021 & Reduced Maxwell/mixed one-port normal form & \StatusReduced{} / \StatusExactClosure{} & Retained reduced one-port self-energy, transfer factor, compact \(l=2\) fingerprint, and scalar-compatibility criterion. \\
+\addlinespace
+022 & Grouped normalization bridge & \StatusExactClosure{} / \StatusOpen{} & Conversion from operator moments to normalized response moments and invariant outgoing-normalization product. \\
+\addlinespace
+023 & Full grouped bundle and projectors & \StatusExactClosure{} / \StatusOpen{} & Weighted grouped projectors, full \(D,N,P\) coefficient ledger, isotropic branch test, and first-order anisotropy transport laws. \\
 \bottomrule
 \end{longtable}
 
@@ -55,11 +89,45 @@ The grouped symbols \(20,21,22\) are grouped real \(P_2\) lanes, not spacetime i
 \input{stages/stage_005}
 \clearpage
 \input{stages/stage_006}
+\clearpage
+\input{stages/stage_007}
+\clearpage
+\input{stages/stage_008}
+\clearpage
+\input{stages/stage_009}
+\clearpage
+\input{stages/stage_010}
+\clearpage
+\input{stages/stage_011}
+\clearpage
+\input{stages/stage_012}
+\clearpage
+\input{stages/stage_013}
+\clearpage
+\input{stages/stage_014}
+\clearpage
+\input{stages/stage_015}
+\clearpage
+\input{stages/stage_016}
+\clearpage
+\input{stages/stage_017}
+\clearpage
+\input{stages/stage_018}
+\clearpage
+\input{stages/stage_019}
+\clearpage
+\input{stages/stage_020}
+\clearpage
+\input{stages/stage_021}
+\clearpage
+\input{stages/stage_022}
+\clearpage
+\input{stages/stage_023}
 \endgroup
 
 \section{Part I appendix closure and handoff to Part II}
 \label{sec:app-part01-closure}
 
-Stages~001--006 complete the first verification block.  They do not solve the nonlinear moving-throat PDE, but they remove the main algebraic ambiguity that existed before the ledger began.  The reduced response variables used later are not arbitrary symbols: they are the low-frequency coefficients of a coupled wall/BdG/Maxwell/mixed Schur-complement system, organized by exact grouped projectors and normalized by a definite outgoing \(l=2\) fingerprint.
+Stages~001--023 complete the first verification block.  They do not solve the nonlinear moving-throat PDE, but they remove the main algebraic ambiguity that existed before the ledger began.  The reduced response variables used later are not arbitrary symbols: they are the low-frequency coefficients of a coupled wall/BdG/Maxwell/mixed Schur-complement system, organized by exact grouped projectors and normalized by a definite outgoing \(l=2\) fingerprint.
 
-The handoff to Part~II is therefore precise.  What remains to be checked next is not the abstract existence of grouped \(P_2\) lanes, nor whether the electromagnetic sector should be projected before it is reduced.  Those now exist inside the reduced moving-throat construction.  The next question is whether explicit radial/axial overlap integrals on an isotropic branch force the three grouped lanes to agree, and how the first controlled anisotropy enters when the branch is weakly axisymmetric.  That is the job of Stages~007--019.
+The handoff to Part~II is therefore precise.  What remains to be checked next is not the abstract existence of grouped \(P_2\) lanes, nor whether the electromagnetic sector should be projected before it is reduced.  Those now exist inside the reduced moving-throat construction.  The next question is whether explicit radial/axial overlap integrals on an isotropic branch force the three grouped lanes to agree, and how the first controlled anisotropy enters when the branch is weakly axisymmetric.  That is the job of Stages~024--036.

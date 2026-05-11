@@ -1,0 +1,85 @@
+{
+  "schema": "moving_throat_numerical_stage058_170_v1",
+  "stage058": {
+    "quadrature_points": 20001,
+    "bisection_iterations": 80,
+    "tolerances": {
+      "quadrature_tol": 1e-8,
+      "residual_tol": 1e-12,
+      "bracket_tol": 1e-12
+    },
+    "cases": [
+      {
+        "name": "small_xi_interior",
+        "kind": "interior",
+        "alpha": 0.8,
+        "eta": 0.4,
+        "Xi": 0.5
+      },
+      {
+        "name": "moderate_xi_same_kernel",
+        "kind": "interior",
+        "alpha": 0.8,
+        "eta": 0.4,
+        "Xi": 3.0
+      },
+      {
+        "name": "moderate_alpha_stronger_eta",
+        "kind": "interior",
+        "alpha": 1.4,
+        "eta": 1.2,
+        "Xi": 0.8
+      },
+      {
+        "name": "larger_xi_moderate_kernel",
+        "kind": "stress",
+        "alpha": 1.4,
+        "eta": 1.2,
+        "Xi": 4.0
+      },
+      {
+        "name": "large_xi_larger_alpha",
+        "kind": "stress",
+        "alpha": 2.0,
+        "eta": 0.7,
+        "Xi": 6.0
+      }
+    ]
+  },
+  "stage170": {
+    "epsilon_step": 1e-7,
+    "tolerances": {
+      "linear_tol": 1e-8,
+      "pair_tol": 1e-10,
+      "inconsistency_floor": 1e-3
+    },
+    "baseline": {
+      "D0": 3.0,
+      "N0": 6.0,
+      "sigma": 0.65
+    },
+    "consistent_pairs": [
+      {
+        "name": "pair_a1",
+        "dD0": 0.09,
+        "dD2": 0.01,
+        "dN0": 0.48
+      },
+      {
+        "name": "pair_a2",
+        "dD0": -0.18,
+        "dD2": 0.04,
+        "dN0": -0.06
+      }
+    ],
+    "inconsistent_cases": [
+      {
+        "name": "bad_even_lane",
+        "dD0": 0.05,
+        "dD2": 0.02,
+        "dD4": 0.0,
+        "dN0": 0.22
+      }
+    ]
+  }
+}

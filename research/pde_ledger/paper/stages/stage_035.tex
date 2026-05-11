@@ -1,54 +1,143 @@
-\section[Stage 035]{Stage 035: Exact Non-Twin Asymmetry Requirement}
+\section[Stage 035]{Stage 035: Dimensionless D/N Normalization Locus}
 \label{stage:035}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the support-regime split.}
-\stagefield{Purpose}{Stage~035 identifies when mixed baseline, symmetric lowest twin support, or non-twin support asymmetry is required.}
-\stagefield{Inputs}{The branch product \(\Pi_{\rm tr}\), the mixed product scale \(C_{\rm mix}\), and the blocking factor \(\epsilon\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the D/N selected-branch normal form.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage035_nontwin_asymmetry_threshold_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage035_nontwin_asymmetry_threshold_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage035_nontwin_asymmetry_threshold_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage035_nontwin_asymmetry_threshold_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~035 non-dimensionalizes the softening-depth target.  The selected normalization product factors into an onset value times a universal D/N shape function \(F(\xi,\delta)\).  Strict monotonicity of \(F\) upgrades the Stage~033 onset inequality into a unique stable normalization locus.}
+
+\stagefield{Inputs}{The inputs are the Stage~034 expression for \(N_-(x)\) and the exact D/N constants \(\kappa_0^2=8/\pi^2\), \(\kappa_1^2=16/(9\pi^2)\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The required support ratio in product variables is
+\paragraph{1. Dimensionless variables.}
+Use
 \begin{equation}
-\label{eq:app-stage035-zeta-req}
+\label{eq:app-stage035-DN-constants}
 \boxed{
-\zeta_{\rm req}
-=\frac{\Pi_{\rm tr}-C_{\rm mix}}
-{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+\kappa_0^2=\frac{8}{\pi^2},
+\qquad
+\kappa_1^2=\frac{16}{9\pi^2},
+\qquad
+\eta=\frac{\kappa_1^2}{\kappa_0^2}=\frac29}.
 \end{equation}
-It is monotone in \(\Pi_{\rm tr}\):
+Define
 \begin{equation}
-\label{eq:app-stage035-zeta-derivative}
-\frac{d\zeta_{\rm req}}{d\Pi_{\rm tr}}
-=\frac{C_{\rm mix}(1-\epsilon)}{[C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})]^2}>0.
-\end{equation}
-The exact regime split is
-\begin{equation}
-\label{eq:app-stage035-regimes}
+\label{eq:app-stage035-xi-delta}
 \boxed{
-\begin{array}{lll}
-\Pi_{\rm tr}\leq C_{\rm mix} &\Rightarrow& \text{mixed-only enough},\\[0.25em]
-C_{\rm mix}<\Pi_{\rm tr}\leq2C_{\rm mix} &\Rightarrow& \text{symmetric lowest twin enough},\\[0.25em]
-\Pi_{\rm tr}>2C_{\rm mix} &\Rightarrow& \text{non-twin asymmetry required}.
-\end{array}}
+\xi=\frac{x}{A},
+\qquad
+\delta=\frac{\Delta K_{\rm ax}}{A},
+\qquad
+0\leq\xi<1}.
 \end{equation}
-The excess beyond the symmetric twin branch is
+Then
 \begin{equation}
-\label{eq:app-stage035-Dzeta}
+\label{eq:app-stage035-factorization}
+N_-(x)=N_-(0)F(\xi,\delta),
+\qquad
+N_-(0)=\frac{\beta_0\kappa_0^2}{A}.
+\end{equation}
+The exact shape function is
+\begin{equation}
+\label{eq:app-stage035-F}
 \boxed{
-\Delta_\zeta=\zeta_{\rm req}-1
-=\frac{(1-\epsilon)(\Pi_{\rm tr}-2C_{\rm mix})}
-{C_{\rm mix}-\epsilon(2C_{\rm mix}-\Pi_{\rm tr})}}.
+F(\xi,\delta)=
+\frac{(9\delta+11\xi)^4}{81(1-\xi)(9\delta^2+18\delta\xi+11\xi^2)^2}}.
 \end{equation}
-For a general lowest lane,
+The dimensionless target ratio is
 \begin{equation}
-\label{eq:app-stage035-zeta0-general}
-\zeta_0^{\rm phys}=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}\Omega_0^2.
+\label{eq:app-stage035-Rtarget}
+\boxed{
+R_{\rm target}:=\frac{N_Q^{\rm target}}{N_-(0)}
+=\frac{N_Q^{\rm target}A}{\beta_0\kappa_0^2}}.
 \end{equation}
-Thus the two resources for non-twin rescue are overlap boost \(\Omega_0^2\) and support softening \(K_W^{\rm eff}/K_{\phi,0}^{\rm eff}\).
+The normalization locus is
+\begin{equation}
+\label{eq:app-stage035-F-locus}
+\boxed{F(\xi,\delta)=R_{\rm target}}.
+\end{equation}
 
-\stagefield{Output}{Regime split \eqref{eq:app-stage035-regimes}, excess formula \eqref{eq:app-stage035-Dzeta}, and resource factorization \eqref{eq:app-stage035-zeta0-general}.}
-\stagefield{Downstream use}{Stages~036--040 quantify the two resources and attach them to transport/Robin physics.}
+\paragraph{2. Monotonicity and endpoints.}
+Differentiating gives
+\begin{equation}
+\label{eq:app-stage035-F-derivative}
+\boxed{
+\frac{\partial F}{\partial\xi}
+=
+\frac{(9\delta+11\xi)^3
+\left(81\delta^3+72\delta^2+206\delta^2\xi+297\delta\xi^2+138\xi^3\right)}
+{81(1-\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^3}>0}.
+\end{equation}
+Moreover,
+\begin{equation}
+\label{eq:app-stage035-F-endpoints}
+F(0,\delta)=1,
+\qquad
+\lim_{\xi\to1^-}F(\xi,\delta)=+\infty.
+\end{equation}
+Near softening,
+\begin{equation}
+\label{eq:app-stage035-Cdelta}
+F(\xi,\delta)\sim\frac{C(\delta)}{1-\xi},
+\qquad
+C(\delta)=\frac{(9\delta+11)^4}{81(9\delta^2+18\delta+11)^2}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage035-existence}
+\boxed{
+R_{\rm target}<1\Rightarrow\text{no stable hit},
+\qquad
+R_{\rm target}=1\Rightarrow\xi_{\rm req}=0,
+\qquad
+R_{\rm target}>1\Rightarrow\exists!\,\xi_{\rm req}\in(0,1)}.
+\end{equation}
+
+\paragraph{3. Required total loading.}
+The total loading law becomes
+\begin{equation}
+\label{eq:app-stage035-alpha-req}
+\boxed{
+\alpha_{\rm req}(\xi,\delta)=
+\frac{9\pi^2A\xi(\xi+\delta)}{8(9\delta+11\xi)}}.
+\end{equation}
+As \(\xi\to1^-\), this approaches the refined stable threshold
+\begin{equation}
+\label{eq:app-stage035-alpha-crit}
+\alpha_{\rm crit}=\frac{9\pi^2A(1+\delta)}{8(11+9\delta)}.
+\end{equation}
+
+\paragraph{4. Useful asymptotics.}
+Near onset,
+\begin{equation}
+\label{eq:app-stage035-onset-expansion}
+F(\xi,\delta)=1+\left(1+\frac{8}{9\delta}\right)\xi
++\left(1+\frac{8}{9\delta}-\frac{28}{27\delta^2}\right)\xi^2+O(\xi^3).
+\end{equation}
+If \(R_{\rm target}=1+\varepsilon_R\), then
+\begin{equation}
+\label{eq:app-stage035-xi-near-onset}
+\xi_{\rm req}\simeq\frac{\varepsilon_R}{1+8/(9\delta)}.
+\end{equation}
+For large target ratio,
+\begin{equation}
+\label{eq:app-stage035-xi-near-softening}
+1-\xi_{\rm req}\simeq\frac{C(\delta)}{R_{\rm target}}.
+\end{equation}
+
+\stagefield{Output}{Stage~035 outputs the shape function \eqref{eq:app-stage035-F}, the target ratio \eqref{eq:app-stage035-Rtarget}, the monotonicity derivative \eqref{eq:app-stage035-F-derivative}, the existence/uniqueness theorem \eqref{eq:app-stage035-existence}, and the required total loading \eqref{eq:app-stage035-alpha-req}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Substitution of the D/N constants into Stage~034 gives \(F\).
+\item Every factor in \(\partial_\xi F\) is positive for \(\delta>0\) and \(0\leq\xi<1\).
+\item The endpoint \(F(0,\delta)=1\) reproduces the onset condition.
+\item The divergence as \(\xi\to1^-\) matches the selected eigenvalue approaching zero.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~036 pairs \(F\) with the support-feasibility function \(G\).  Part~III later computes continuum placement data that determine \(R_{\rm target}\), \(M_{\rm mix}\), and \(\delta\).}
+
+\clearpage
 

@@ -1,0 +1,92 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+# Date: 2026-05-11T12:49:46-06:00
+# Elapsed: 11s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 200 — UNIQUE FIVE-COORDINATE SIMPLEX INTERIOR OPTIMIZER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Unique support-cardinality-5 simplex and face count
+----------------------------------------------------------------------------------------
+Primitive five-coordinate simplex:
+['lambda', 'c', 'gamma', 'U', 'W']
+Codimension-one quadruple faces:
+('c', 'gamma', 'U', 'W')
+('lambda', 'gamma', 'U', 'W')
+('lambda', 'c', 'U', 'W')
+('lambda', 'c', 'gamma', 'W')
+('lambda', 'c', 'gamma', 'U')
+
+----------------------------------------------------------------------------------------
+II. Exact interior chart and stationary numerator identities
+----------------------------------------------------------------------------------------
+r-stationary numerator identity = 0
+s-stationary numerator identity = 0
+t-stationary numerator identity = 0
+u-stationary numerator identity = 0
+
+----------------------------------------------------------------------------------------
+III. Lifted polynomial stationary system and exact degree ledger
+----------------------------------------------------------------------------------------
+deg(F_r) = 3
+deg(F_s) = 3
+deg(F_t) = 3
+deg(F_u) = 3
+deg(F_Delta) = 2
+Lifted Bezout bound = 162
+
+----------------------------------------------------------------------------------------
+IV. Direct square-root-free elimination and projected candidate bound
+----------------------------------------------------------------------------------------
+deg(C_rs) = 5
+deg(C_rt) = 5
+deg(C_ru) = 5
+deg(S_r) = 6
+Projected one-chart Bezout bound = 750
+
+----------------------------------------------------------------------------------------
+V. Special reduction 1 — diagonal-isotropic curvature
+----------------------------------------------------------------------------------------
+L_r(diag) - 2 K_lin M_r = 0
+L_s(diag) - 2 K_lin M_s = 0
+L_t(diag) - 2 K_lin M_t = 0
+L_u(diag) - 2 K_lin M_u = 0
+M_r at gradient-optimal ratios = 0
+M_s at gradient-optimal ratios = 0
+M_t at gradient-optimal ratios = 0
+M_u at gradient-optimal ratios = 0
+L_r at gradient-optimal ratios = 0
+L_s at gradient-optimal ratios = 0
+L_t at gradient-optimal ratios = 0
+L_u at gradient-optimal ratios = 0
+
+----------------------------------------------------------------------------------------
+VI. Special reduction 2 — full fivefold symmetry
+----------------------------------------------------------------------------------------
+M_r at equal-mix barycenter = 0
+M_s at equal-mix barycenter = 0
+M_t at equal-mix barycenter = 0
+M_u at equal-mix barycenter = 0
+L_r at equal-mix barycenter = 0
+L_s at equal-mix barycenter = 0
+L_t at equal-mix barycenter = 0
+L_u at equal-mix barycenter = 0
+
+----------------------------------------------------------------------------------------
+VII. Stage 217 audit verdict
+----------------------------------------------------------------------------------------
+Verified:
+1. The unique support-cardinality-5 interior chart carries exact stationary numerators.
+2. The lifted stationary system has degree pattern (3,3,3,3,2) and Bezout bound 162.
+3. The direct projected one-chart elimination has degrees (5,5,5,6) and bound 750.
+4. The gradient-optimal interior ray is exact under diagonal-isotropic curvature.
+5. The equal-mix barycenter is exact under full fivefold symmetry.
+6. The unique five-coordinate interior problem is therefore a finite algebraic candidate problem.
+
+EXIT_CODE: 0

@@ -1,0 +1,54 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_sympy_audit.py
+# Date: 2026-05-11T12:49:35-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+Stage 216 SymPy audit — unique five-coordinate positive simplex and support-cardinality-5 gate
+
+1. Primitive five-coordinate simplex ledger
+   primitive axes = (lambda, c, gamma, U, W)
+   number of codimension-one faces = 5
+   boundary faces = Q_hatlambda, Q_hatc, Q_hatgamma, Q_hatU, Q_hatW
+
+2. Gradient-optimal interior ray
+   ||a_grad||^2 = 1
+   k_grad = sqrt(k_U**2 + k_W**2 + k_c**2 + k_gamma**2 + k_lambda**2)
+   (k_5^grad)^2 - (k_Q_hatlambda^grad)^2 = k_lambda**2
+   (k_5^grad)^2 - (k_Q_hatc^grad)^2 = k_c**2
+   (k_5^grad)^2 - (k_Q_hatgamma^grad)^2 = k_gamma**2
+   (k_5^grad)^2 - (k_Q_hatU^grad)^2 = k_U**2
+   (k_5^grad)^2 - (k_Q_hatW^grad)^2 = k_W**2
+
+   interior ratio patch (a_lambda > 0):
+   r_grad = k_c/k_lambda
+   s_grad = k_gamma/k_lambda
+   t_grad = k_U/k_lambda
+   u_grad = k_W/k_lambda
+
+3. Total ten-way off-diagonal leverage
+   w_sigma - ((sum a_i)^2 - sum a_i^2) = 0
+   5*sum a_i^2 - (sum a_i)^2 - sum_(p<q)(a_p-a_q)^2 = 0
+   equal-mix barycenter a_eq = (1,1,1,1,1)/sqrt(5)
+   w_sigma(a_eq) = 4
+   quadruple equal-mix leverage = 3
+   triple equal-mix leverage = 2
+   pairwise equal-mix leverage = 1
+
+4. Fixed-point certified bracket
+   tau(H0,k,kappa) = 2*H0/(k + sqrt(-2*H0*kappa + k**2))
+   with k = k_5(a) and kappa = a^T H_(5,star) a
+
+5. Canonical five-way screen packet
+   imported faces  = 5
+   interior screens = {gradient-optimal, equal-mix}
+   total canonical rows = 7
+
+6. Support-cardinality ceiling
+   free-quintuple dimension = 5
+   therefore no local mixed ray can have support-cardinality > 5
+
+
+EXIT_CODE: 0

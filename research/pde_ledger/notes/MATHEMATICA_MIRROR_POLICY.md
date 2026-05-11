@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-04-21`
+Snapshot date: `2026-05-11`
 
 ## Rule
 
@@ -29,39 +29,39 @@ different verification structure from the SymPy side:
 - `003`
   acceptable dual-CAS checkpoint coverage after the shared stress-harness
   hardening; no active independence defect remains
-- `005`
-  re-anchors the outgoing `l=2` coefficients through the Stage-4 exact
+- `022`
+  re-anchors the outgoing `l=2` coefficients through the Stage-021 exact
   fingerprint before solving the normalization product
-- `042`
+- `059`
   uses a constructive `FindRoot` saturation route instead of symbolic replay
-- `050`
+- `067`
   derives stationarity from the self-dual `C^2(r)=C^2(pi/r)` symmetry equation
-- `052`
+- `069`
   closes the ordered three-zone regime algebra rather than width-only replay
-- `072`
+- `089`
   rebuilds the Family-1 verdict from the Stage-62/63/69 formulas
-- `073`
+- `090`
   acceptable as a narrow status-boundary replay because the checkpoint claim is
   itself an explicit carried-data verdict
-- `168`
+- `185`
   reconstructs primitive microscopic ratios before assembling the carried
   packet
-- `183`
+- `200`
   derives the Packet-B compiler from primitive monomials/orbit data
-- `186`
+- `203`
   verifies the graph-composed scalar-closure / crossing route
-- `201`
+- `218`
   rebuilds the actual support-five splice/budget ledger
-- `222`
-  uses the carried Stage-219/221 formulas for blind directions and orbit-lock
-- `225`
+- `239`
+  uses the carried Stage 236/238 formulas for blind directions and orbit-lock
+- `242`
   verifies orbit-lock through the direct-observable compiler
-- `226`
+- `243`
   rebuilds the short-range kernel from the declared primitive profiles
-- `231`
+- `248`
   has an exact symbolic route plus independent numerical stress on the
   event-chain benchmark family
-- `236`
+- `253`
   has an exact symbolic route plus independent numerical stress on the
   material-threshold screening family
 

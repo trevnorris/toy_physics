@@ -1,0 +1,67 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl
+# Date: 2026-05-11T13:18:14-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION
+========================================================================================
+B_W = ((epsGamma - epsKappa)*(1 + rc))/9
+exact similarity-defect decomposition = 0
+PASS: exact similarity-defect decomposition
+dB_W = depsG/9 - depsK/9 + (depsG*rcStar)/9 - (depsK*rcStar)/9
+linearized slippage law = 0
+PASS: linearized slippage law
+
+========================================================================================
+D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION
+========================================================================================
+eps_kappa = -1 + (12*lW^2)/(a^2*Pi^2*(1 + rc))
+d eps_kappa = (-12*lW*(a*drc*lW - 2*a*dLW*(1 + rc) + 2*da*lW*(1 + rc)))/(a^3*Pi^2*(1 + rc)^2)
+d eps_kappa identity = 0
+PASS: d eps_kappa identity
+d eps_gamma = (9*dgamma0 - drc)/(1 + rc)
+d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c) = 0
+PASS: d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)
+difference identity = 0
+PASS: difference identity
+
+========================================================================================
+TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW
+========================================================================================
+Upsilon_Pi = ((1 + rcStar)*(xiGamma - 2*xiL))/9
+Delta_Q = (dPiTan*sigmaStar*(xiGamma - 2*xiL))/(-1 + sigmaStar)
+N_Q - 1 = -((dPiTan*sigmaStar*(xiGamma - 2*xiL))/(-1 + sigmaStar))
+collapsed Delta_Q law = 0
+PASS: collapsed Delta_Q law
+collapsed N_Q-1 law = 0
+PASS: collapsed N_Q-1 law
+Delta_Q in (dSigma0,dS) = (-1.16275838754222*dS*sigmaStar*xiGamma)/(-1 + sigmaStar) + (0.832409471081635*dSigma0*sigmaStar*xiGamma)/(-1 + sigmaStar) + (2.32551677508444*dS*sigmaStar*xiL)/(-1 + sigmaStar) - (1.66481894216327*dSigma0*sigmaStar*xiL)/(-1 + sigmaStar)
+Delta_Q in (dThat,dS) = (-1.16275838754222*dS*sigmaStar*xiGamma)/(-1 + sigmaStar) + (5.352238871696225*dThat*sigmaStar*xiGamma)/(-1 + sigmaStar) + (2.32551677508444*dS*sigmaStar*xiL)/(-1 + sigmaStar) - (10.70447774339245*dThat*sigmaStar*xiL)/(-1 + sigmaStar)
+
+========================================================================================
+D/N SIMILARITY PRESERVATION
+========================================================================================
+Xi_gamma = 2 Xi_L => Delta_Q = 0 = 0
+PASS: Xi_gamma = 2 Xi_L => Delta_Q = 0
+Xi_gamma = 2 Xi_L => N_Q - 1 = 0 = 0
+PASS: Xi_gamma = 2 Xi_L => N_Q - 1 = 0
+(1+r_F1^2)/9 = 0.46236233468786880105466350900749063734`18.
+
+========================================================================================
+Carry-forward formulas
+========================================================================================
+1) B_W = ((1+r_c)/9) (eps_gamma - eps_kappa)
+2) dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa)
+3) d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a)
+4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)
+5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan
+6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes.
+
+Stage 161 Mathematica audit passed.
+
+EXIT_CODE: 0

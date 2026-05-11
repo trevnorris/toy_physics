@@ -1,0 +1,49 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+# Date: 2026-05-11T12:47:20-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
+========================================================================================
+delta u_2^(A) = (-dD0*u2 - dD2)/D0
+delta P_0^(A) = (D0*dN0 - N0*dD0)/D0**2
+
+========================================================================================
+Exact obstruction-pair rewrite
+========================================================================================
+K_A + D0*delta_u2 - (1/9-u2)*dD0 = 0
+G_A - D0*delta_P0 = 0
+
+========================================================================================
+Canonical-even collapse at u2 = 1/9
+========================================================================================
+K_A + D0*delta_u2 on canonical branch = 0
+
+========================================================================================
+Physical form of the hidden-even consistency relation
+========================================================================================
+delta u_2^(A) on canonical branch = (-dD0/9 - dD2)/D0
+delta u_4^(A) on canonical branch = (-5*dD0 - 18*dD2 - 81*dD4)/(81*D0)
+delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation = 0
+
+========================================================================================
+Direct outlet formulas in physical grouped variables
+========================================================================================
+delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A) = 0
+delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A) = 0
+Delta_Q^(A) - delta P_0^(A)/P0 = 0
+
+Carry-forward formulas:
+  K_A = -D_0 delta u_2^(A) on the canonical even branch
+  G_A = D_0 delta P_0^(A) exactly
+  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0
+  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)
+  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0
+  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch
+
+EXIT_CODE: 0

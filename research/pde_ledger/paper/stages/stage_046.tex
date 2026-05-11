@@ -1,41 +1,38 @@
-\section[Stage 046]{Stage 046: Parent-Overlap Threshold Theorem and Microscopic Success/No-Go Tests}
+\section[Stage 046]{Stage 046: Tracking-Branch Bounds and Residual Comparison}
 \label{stage:046}
 
-\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} after the Stage~045 parent-overlap projection.}
-\stagefield{Purpose}{Stage~046 turns the microscopic gain formula into exact fail/succeed surfaces for confinement-loading amplitude and source/support coherence.}
-\stagefield{Inputs}{The parent gain formula, \(G_{\rm fail}\), \(G_{\rm suff}\), and the Cauchy bound on \(C_{\sigma\phi}^2\).}
+\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
+\claimstatus{\StatusExactClosure{} for the monotonicity and residual comparison on the tracking branch.}
+\stagefield{Purpose}{Stage~046 determines whether the first coherent tracking deformation helps or hurts the selected normalization target.}
+\stagefield{Inputs}{The tracking functions \(F_{\rm tr}\), \(G_{\rm tr}\) and the constructive inequality \(R_{\rm tr}<1\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage046_parent_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage046_parent_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage046_parent_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage046_parent_thresholds_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-At fixed profile shapes, the amplitude thresholds are
+The tracking functions obey
 \begin{equation}
-\label{eq:app-stage046-gphi-thresholds}
+\label{eq:app-stage046-monotonicity}
 \boxed{
-g_{\phi,{\rm fail}}^2
-=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm fail}}{\rho_*O_{\sigma\phi}^2},
+\frac{\partial G_{\rm tr}}{\partial R}<0,
 \qquad
- g_{\phi,{\rm suff}}^2
-=\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm suff}}{\rho_*O_{\sigma\phi}^2}}.
+\frac{\partial F_{\rm tr}}{\partial R}>0}.
 \end{equation}
-At fixed \(g_\phi\), the coherence thresholds are
+Because the constructive split--\(U\) branch has \(R_{\rm tr}<1\), one finds
 \begin{equation}
-\label{eq:app-stage046-coherence-thresholds}
+\label{eq:app-stage046-inequalities}
+G_{\rm tr}>G_{\rm flat},
+\qquad
+F_{\rm tr}<F_{\rm flat}
+\end{equation}
+at fixed \((\xi,\delta)\).  The exact residual comparison can be written as
+\begin{equation}
+\label{eq:app-stage046-residual}
 \boxed{
-C_{\rm fail}^2=\frac{mc_{s,*}^2K_XG_{\rm fail}}{\rho_*g_\phi^2N_{\phi\phi}},
-\qquad
-C_{\rm suff}^2=\frac{mc_{s,*}^2K_XG_{\rm suff}}{\rho_*g_\phi^2N_{\phi\phi}}}.
+E_{\rm tr}-E_{\rm flat}=F_{\rm flat}-F_{\rm tr}>0}.
 \end{equation}
-The Cauchy bound yields the no-go:
-\begin{equation}
-\label{eq:app-stage046-cauchy-nogo}
-C_{\rm fail}^2>1
-\quad\Longrightarrow\quad
-\text{no source profile in this support channel can reach even the fail threshold.}
-\end{equation}
+Thus the first coherent local D/N kernel worsens the selected normalization relative to the flat branch.  Support enhancement must compensate this deficit.
 
-\stagefield{Output}{Amplitude thresholds \eqref{eq:app-stage046-gphi-thresholds}, coherence thresholds \eqref{eq:app-stage046-coherence-thresholds}, and Cauchy no-go \eqref{eq:app-stage046-cauchy-nogo}.}
-\stagefield{Downstream use}{Stage~047 shows that parent equilibrium tends toward matched source/support alignment; Stages~048--052 reduce the thresholds to a wall figure of merit.}
+\stagefield{Output}{Monotonicity \eqref{eq:app-stage046-monotonicity} and residual theorem \eqref{eq:app-stage046-residual}.}
+\stagefield{Downstream use}{Stage~047 introduces support enhancement; Stage~048 proves the compensation theorem.}
 

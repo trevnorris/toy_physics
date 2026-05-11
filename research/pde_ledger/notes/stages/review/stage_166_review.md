@@ -1,12 +1,12 @@
-# Review: Stage 166 — Triangular normal form
+# Review: Stage 166 — Selected mode normalization
 
-**Batch:** Batch 19 — Grouped Outlet & Similarity Closure
+**Batch:** 2 — Wall Profiles & Loading
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage166_triangular_normal_form.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage166_triangular_normal_form_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage030_selected_mode_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -22,68 +22,70 @@
 
 ## Agent Reviews
 
-<!-- Agents: append your review below this line using the template: -->
+<!-- Agents: append your review below this line using the template:
 
-### Agent: Claude Opus 4.6 (1M context) — 2026-04-03
+### Agent: [Model Name] — [Date]
+**Verdict:** [PASS | MINOR | ISSUE | BLOCK]
+
+**Notes Derivation Review:**
+
+**Script Review:**
+
+**Issues Found:**
+
+**Questions:**
+
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. **Logical flow from Stage 165:** Stage 165 established the five microscopic slippages (Sigma_Z, Sigma_chi, Sigma_eps, Sigma_del, Sigma_eta), the tracking combination Sigma_tr, the Theta_1 formula, and the Xi_1 formula rewritten in terms of (Sigma_tr, Sigma_Z, Sigma_eps, Sigma_del). Stage 166 takes these as given and reorganizes into branch-adapted coordinates. The transition is clean and correctly cited.
+1. **Equation-level correctness.** All formulas verified. Eigenvalue formula for 2×2 loaded wall block correct (signs checked via diagonal difference and off-diagonal elements). Hellmann-Feynman overlap s_- = -d lambda_-/d alpha_0 verified. Closed form for s_- matches direct differentiation. Weak-loading limit s_-(0) = kappa_0^2 and strong-loading limit s_- → sigma both verified. Normalized response expansion u2, u4, Gamma5 follow from standard geometric series. Prefactor algebra Gamma_{5,-} = Gamma_2^{port} * P_{0,-} correct. Target equation mhat^2 * P0 = 54 G c_s^5/(5 a^5 c^5) verified. Determinant identity via matrix determinant lemma correct. Critical threshold alpha_crit = AB/(B*x0 + A*x1) correct.
 
-2. **Definition of Sigma_nt (Section 1):** The nontracking slippage is defined by subtracting the A_tr*Sigma_tr piece from Xi_1. I verified the substitution step manually: starting from Stage 165's Xi_1 in terms of (Sigma_Z, Sigma_chi, Sigma_eps, Sigma_del) and replacing Sigma_chi = [Sigma_tr - (1+chi_0)*Sigma_del]/(1+deltaU), the Sigma_del coefficient collects to exactly -[2*chi_0/(1+deltaU) + 4*epsW*deltaU/(11*(1-eps)*(1+deltaU)^2)], matching the boxed formula. The definition is self-consistent.
+2. **Logical flow.** Clean chain: eigenvalue → overlap → normalization → prefactor → target → determinant. Connects Stage 12 operator-level results to Stage 022 normalized-response language.
 
-3. **Triangular normal form (Section 2):** The three boxed equations for (Theta_1, Xi_1, R_1+Xi_1) correctly express the observables as functions of the three branch-adapted coordinates. The triangular structure is genuine: Theta_1 depends only on Sigma_tr, Xi_1 depends on (Sigma_tr, Sigma_nt), and R_1+Xi_1 depends only on Sigma_eta. The interpretation of the hierarchy (tracking, nontracking transfer-shape, dressing) is physically sensible.
+3. **Assumptions.** All explicit: DeltaK_ax > 0, KappaProd > 0, beta_0 > 0, lambda_- > 0 on stable branch.
 
-4. **Inverse reconstruction (Section 3):** All three inverse formulas are correct.
-   - Sigma_tr inversion from Theta_1: straightforward division by C_tr; sign and prefactor correct.
-   - A_tr/C_tr = 2*(1+chi_0+deltaU)/deltaU: verified by hand. The common factors (1+chi_0)*(1+deltaU) cancel, and chi_0 cancels, leaving 2*(1+chi_0+deltaU)/deltaU.
-   - Sigma_nt = Xi_1 + (A_tr/C_tr)*Theta_1: follows from Xi_1 = A_tr*Sigma_tr + Sigma_nt and Sigma_tr = -(1/C_tr)*Theta_1, giving Sigma_nt = Xi_1 + A_tr/C_tr * Theta_1 (sign correct since Theta_1 = -C_tr*Sigma_tr).
-   - Sigma_eta = -[(1-eps_eta)/eps_eta]*(R_1+Xi_1): direct inversion, correct.
+4. **Completeness.** O(omega^6) remainder not addressed, consistent with project convention.
 
-5. **Rigidity theorems (Section 4):** The biconditional statements are valid on the physical branch (chi_0 > 0, deltaU > 0, 0 < eps_eta < 1) because the prefactors C_tr and eps_eta/(1-eps_eta) are strictly nonzero there. The triple-rigidity theorem (Section 4.4) follows from the triangular structure plus invertibility.
+5. **Notation consistency.** Matches Stages 12 and 5. New symbols P_{0,-}, D_{-0}, N_Q^{target} well-defined.
 
-6. **Notation:** Consistent with Stage 165 throughout. All symbols are either carried forward or explicitly defined.
-
-7. **No missing steps or unjustified assumptions:** The only assumptions are the physical branch conditions (chi_0 > 0, deltaU > 0, 0 < eps_eta < 1), which are stated and necessary for invertibility.
+6. **Physical interpretation.** Sound: normalization reduces to spectral ratio — sensitivity of selected eigenvalue to loading.
 
 **Script Review:**
 
-1. **Faithful implementation:** The script correctly encodes the Stage 165 formulas for Theta_1, Xi_1, and R_1, the definition of Sigma_nt, the coefficients A_tr and C_tr, all three inverse reconstruction formulas, and the triple-rigidity forward check.
+**B.1 Faithful.** Same 2×2 block, eigenvalues, overlap, prefactor, determinant identity, target equivalence.
+**B.2 No bugs.** Series expansion, im() extraction, expect_zero all correct.
+**B.3 No problematic hardcoding.** Constants 27, 54 are derived (2×27=54).
+**B.4 No tautologies.** HF vs closed-form overlap is two independent computations. Determinant identity expands product and compares. Normalization equivalence verifies two condition forms are proportional.
+**B.5 Symbol assumptions correct.** A, DK positive; alpha nonneg; x0, x1 positive; beta0, G5 positive.
+**B.6 All pass.** Exit code 0.
+**B.7 Coverage.** Complete. Strong-loading limit not in script but verified analytically.
 
-2. **Epsilon definition (line 39):** eps = epsW*(1 - (2/11)*deltaU/(1+deltaU)) matches the notes exactly.
+**Issues Found:** None.
 
-3. **No hardcoded numeric values:** All expressions are built symbolically from the declared parameters. The only numeric constant is Rational(2,11) from the epsilon formula, which is structurally correct.
+---
 
-4. **Near-tautological check (line 81):** The check `Xi1 - (A_tr*SigmaTr + SigmaNT_def) == 0` is close to tautological because SigmaNT_def is constructed from exactly the same terms as Xi1 minus A_tr*SigmaTr. It confirms definition-level consistency but does not independently verify the formula against a separate computation. This is a minor coverage gap, not an error.
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** PASS
 
-5. **Genuine cross-checks:** The inverse reconstruction checks (lines 93-104) are nontrivial -- they substitute the inverse formula back through Theta_1 and verify recovery of SigmaTr, and they combine Xi_1 with the ratio*Theta_1 to verify Sigma_nt recovery. The A_tr/C_tr ratio check (line 98) is also independently computed.
+**Notes Derivation Review:**
 
-6. **Triple-rigidity (lines 109-114):** Only the forward direction (slippages=0 implies observables=0) is tested. The reverse direction is logically entailed by the already-verified inverse formulas, so coverage is complete in aggregate but not via a direct symbolic test.
+1. The selected-mode normalization chain is internally consistent. The generic response expansion gives the expected `u2`, `u4`, and odd `Gamma5` coefficients, and the selected lower eigenvalue / overlap formulas match the loaded `2x2` wall block exactly.
+2. The selected static prefactor `P_{0,-} = beta_0 s_- / lambda_-` is correctly translated into the normalized-response language, and the `mhat_-^2 P_{0,-}` target is algebraically equivalent to the quadrupole normalization condition.
+3. The determinant identity and the spectral rewrite are both correct. I independently checked the core normalization identities with SymPy, and the results reduced to zero.
 
-7. **Output agreement:** The script output shows exit code 0, all expect_zero checks pass, and the printed formulas match the notes. No discrepancies.
+**Script Review:**
 
-8. **Missing coverage:** The script does not independently verify the substitution from (Sigma_chi, Sigma_delta) into Sigma_tr that was done in Stage 165, but this is within scope of Stage 165's audit, not Stage 166's.
+1. The script faithfully implements the note structure: series expansion, exact eigenvalues, Hellmann-Feynman overlap, prefactor identity, determinant identity, and target equivalence.
+2. The saved output matches the note claims, and the checks are nontrivial rather than tautological.
 
 **Issues Found:**
 
-None blocking or substantive.
-
-Minor observations (not requiring action):
-- The near-tautological nature of the Sigma_nt definition check (line 81) means it tests self-consistency rather than independent correctness. A stronger check would build Xi_1 from the original five slippages (including Sigma_chi) and then verify the reduction. However, since the substitution was verified in Stage 165 and the script's goal is Stage 166 content, this is acceptable.
-- Stage 165 has a minor LaTeX typo on line 405 (`\,rac` instead of `\,\frac`) but this is not a Stage 166 issue.
+None.
 
 **Questions:**
 
 None.
-
-### Agent: Codex GPT-5 — 2026-04-03
-**Verdict:** PASS
-
-**Notes Derivation Review:** The triangular normal form and inverse reconstruction are consistent with Stage 165. I rechecked the A_tr/C_tr ratio and the Sigma_eta inversion; both match exactly. The branch-adapted hierarchy of tracking, nontracking, and dressing variables is internally tight.
-
-**Script Review:** The audit script compares the inverse formulas and rigidity statements against the saved output. It runs cleanly and the nontrivial inverse/back-substitution checks pass. The Sigma_nt definition check is close to the formula it is meant to confirm, but the stage still has genuine independent checks, so this does not affect the verdict.
-
-**Issues Found:** None substantive.
 
 ---

@@ -137,19 +137,19 @@ Deliverable:
 
 Port a small set of high-value stages first:
 
-- `041` coupled support-source operator
-- `065` master quadrupole residual
-- `066` Family-1 direct operator window
-- `082` reduced finish line
-- `089` canonical outgoing reduced closure
-- `108` positive source theorem
-- `117` Family-1 mouth fixedpoint
-- `138` frozen traction fixedpoint
-- `139` renormalized canonical branch
-- `147` microscopic log channels
-- `153` linear grouped outlet map
-- `168` microscopic monomials
-- `170` orbit quotient closure
+- `058` coupled support-source operator
+- `082` master quadrupole residual
+- `083` Family-1 direct operator window
+- `099` reduced finish line
+- `106` canonical outgoing reduced closure
+- `125` positive source theorem
+- `134` Family-1 mouth fixedpoint
+- `155` frozen traction fixedpoint
+- `156` renormalized canonical branch
+- `164` microscopic log channels
+- `170` linear grouped outlet map
+- `185` microscopic monomials
+- `187` orbit quotient closure
 
 Deliverable:
 
@@ -166,13 +166,13 @@ Success criterion:
 
 Port the stages that historically needed audit hardening:
 
-- `005`, `006`, `007`
-- `011`, `012`
-- `016`, `017`, `018`, `019`
-- `028`, `029`, `031`
-- `047`
-- `054`
-- `118`
+- `022`, `023`, `024`
+- `028`, `029`
+- `033`, `034`, `035`, `036`
+- `045`, `046`, `048`
+- `064`
+- `071`
+- `135`
 
 Deliverable:
 
@@ -186,10 +186,10 @@ Expand coverage batch by batch, following the existing review order in
 
 Suggested order after the pilot:
 
-1. Batches 8-11 (`041-072`)
-2. Batches 13-17 (`083-140`)
-3. Batches 18-19 (`141-170`)
-4. Early foundation batches (`003-040`)
+1. Batches 8-11 (`058-089`)
+2. Batches 13-17 (`100-157`)
+3. Batches 18-19 (`158-187`)
+4. Early foundation batches (`003-057`)
 
 Rationale:
 
@@ -223,7 +223,7 @@ A stage is lower priority if:
 - it is already trivial once adjacent stages are verified,
 - its claims are fully subsumed by a stronger checkpoint script.
 
-For status notes such as `067`, `132`, or `140`, prefer a Mathematica script
+For status notes such as `084`, `149`, or `157`, prefer a Mathematica script
 only if it independently verifies the consolidated formulas or quoted carried
 values. Do not create a script that merely restates prose.
 
@@ -264,7 +264,7 @@ Create a shell runner analogous to the SymPy one:
 ```bash
 bash research/pde_ledger/mathematica/run_all_audits.sh
 bash research/pde_ledger/mathematica/run_all_audits.sh --force
-bash research/pde_ledger/mathematica/run_all_audits.sh stage089
+bash research/pde_ledger/mathematica/run_all_audits.sh stage106
 ```
 
 Responsibilities:
@@ -299,11 +299,11 @@ Important:
 When implementation starts, do this exact sequence:
 
 1. Create `research/pde_ledger/mathematica/run_all_audits.sh`.
-2. Port `089`, `108`, and `153`.
+2. Port `106`, `125`, and `170`.
 3. Make sure all three run cleanly through the runner.
-4. Port `041`, `065`, and `066`.
-5. Port `117`, `138`, and `139`.
-6. Port `147`, `168`, and `170`.
+4. Port `058`, `082`, and `083`.
+5. Port `134`, `155`, and `156`.
+6. Port `164`, `185`, and `187`.
 
 Why this slice:
 
@@ -327,7 +327,7 @@ Scaffold plus first 3 scripts:
 
 - runner exists,
 - outputs save correctly,
-- `089`, `108`, `153` pass.
+- `106`, `125`, `170` pass.
 
 ### Milestone 2
 

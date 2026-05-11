@@ -1,0 +1,239 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_sympy_audit.py
+# Date: 2026-05-11T12:49:27-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 196 — FOUR-COORDINATE MIXED SIMPLEX AND THE SUPPORT-CARDINALITY-4 GATE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact combinatorial ledger
+----------------------------------------------------------------------------------------
+primitive axes = ('lambda', 'c', 'gamma', 'U', 'W')
+primitive triples = [('lambda', 'c', 'gamma'), ('lambda', 'c', 'U'), ('lambda', 'c', 'W'), ('lambda', 'gamma', 'U'), ('lambda', 'gamma', 'W'), ('lambda', 'U', 'W'), ('c', 'gamma', 'U'), ('c', 'gamma', 'W'), ('c', 'U', 'W'), ('gamma', 'U', 'W')]
+primitive quadruples = [('lambda', 'c', 'gamma', 'U'), ('lambda', 'c', 'gamma', 'W'), ('lambda', 'c', 'U', 'W'), ('lambda', 'gamma', 'U', 'W'), ('c', 'gamma', 'U', 'W')]
+#triples = 10
+#quadruples = 5
+#quadruples - binomial(5,4) = 0
+triple incidence ('lambda', 'c', 'gamma') -> 2
+triple incidence ('lambda', 'c', 'U') -> 2
+triple incidence ('lambda', 'c', 'W') -> 2
+triple incidence ('lambda', 'gamma', 'U') -> 2
+triple incidence ('lambda', 'gamma', 'W') -> 2
+triple incidence ('lambda', 'U', 'W') -> 2
+triple incidence ('c', 'gamma', 'U') -> 2
+triple incidence ('c', 'gamma', 'W') -> 2
+triple incidence ('c', 'U', 'W') -> 2
+triple incidence ('gamma', 'U', 'W') -> 2
+axis incidence lambda -> 4
+axis incidence c -> 4
+axis incidence gamma -> 4
+axis incidence U -> 4
+axis incidence W -> 4
+
+----------------------------------------------------------------------------------------
+II. Positive spherical four-simplex and exact face reductions
+----------------------------------------------------------------------------------------
+a_ijk(r,s) =
+⎡       1        ⎤
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  r  + s  + 1 ⎥
+⎢                ⎥
+⎢       r        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  r  + s  + 1 ⎥
+⎢                ⎥
+⎢       s        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  r  + s  + 1 ⎥
+⎢                ⎥
+⎣       0        ⎦
+a_ijl(r,t) =
+⎡       1        ⎤
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  r  + t  + 1 ⎥
+⎢                ⎥
+⎢       r        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  r  + t  + 1 ⎥
+⎢                ⎥
+⎢       0        ⎥
+⎢                ⎥
+⎢       t        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎣╲╱  r  + t  + 1 ⎦
+a_ikl(s,t) =
+⎡       1        ⎤
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  s  + t  + 1 ⎥
+⎢                ⎥
+⎢       0        ⎥
+⎢                ⎥
+⎢       s        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  s  + t  + 1 ⎥
+⎢                ⎥
+⎢       t        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎣╲╱  s  + t  + 1 ⎦
+a_jkl(u,v) =
+⎡       0        ⎤
+⎢                ⎥
+⎢       1        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  u  + v  + 1 ⎥
+⎢                ⎥
+⎢       u        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎢╲╱  u  + v  + 1 ⎥
+⎢                ⎥
+⎢       v        ⎥
+⎢────────────────⎥
+⎢   _____________⎥
+⎢  ╱  2    2     ⎥
+⎣╲╱  u  + v  + 1 ⎦
+face ijk normalization = 0
+face ijl normalization = 0
+face ikl normalization = 0
+face jkl normalization = 0
+face ijk slope reduction = 0
+face ijl slope reduction = 0
+face ikl slope reduction = 0
+face jkl slope reduction = 0
+
+----------------------------------------------------------------------------------------
+III. Exact four-coordinate gradient-synergy theorem
+----------------------------------------------------------------------------------------
+a_grad =
+⎡            kᵢ             ⎤
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            k_j            ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            kₖ             ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            kₗ             ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎣╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎦
+k_grad =
+   ________________________
+  ╱   2      2     2     2 
+╲╱  kᵢ  + k_j  + kₖ  + kₗ  
+gradient-optimal normalization = 0
+gradient-optimal slope value = 0
+gradient-optimal ratio r = 0
+gradient-optimal ratio s = 0
+gradient-optimal ratio t = 0
+Kgrad^2 - Kijk^2 - k_l^2 = 0
+Kgrad^2 - Kijl^2 - k_k^2 = 0
+Kgrad^2 - Kikl^2 - k_j^2 = 0
+Kgrad^2 - Kjkl^2 - k_i^2 = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact total cross-leverage theorem
+----------------------------------------------------------------------------------------
+w_Sigma(a) =
+2⋅aᵢ⋅a_j + 2⋅aᵢ⋅aₖ + 2⋅aᵢ⋅aₗ + 2⋅a_j⋅aₖ + 2⋅a_j⋅aₗ + 2⋅aₖ⋅aₗ
+w_Sigma - ((sum a)^2 - ||a||^2) = 0
+Cauchy slack identity = 0
+equal-mix four-way normalization = 0
+equal-mix triple-face normalization = 0
+equal-mix pair-edge normalization = 0
+w_Sigma(four-way equal mix) - 3 = 0
+w_Sigma(triple equal face) - 2 = 0
+w_Sigma(pair equal edge) - 1 = 0
+
+----------------------------------------------------------------------------------------
+V. Exact four-coordinate curvature law and ratio-coordinate form
+----------------------------------------------------------------------------------------
+kappa_ijkl(a) =
+aᵢ⋅(aᵢ⋅uᵢᵢ + a_j⋅u_ij + aₖ⋅uᵢₖ + aₗ⋅uᵢₗ) + a_j⋅(aᵢ⋅u_ij + a_j⋅u_jj + aₖ⋅u_jk + ↪
+
+↪  aₗ⋅u_jl) + aₖ⋅(aᵢ⋅uᵢₖ + a_j⋅u_jk + aₖ⋅uₖₖ + aₗ⋅uₖₗ) + aₗ⋅(aᵢ⋅uᵢₗ + a_j⋅u_jl ↪
+
+↪  + aₖ⋅uₖₗ + aₗ⋅uₗₗ)
+diagonal-neutral reduction = 0
+Delta_sharp(r,s,t) =
+        2                                                            2         ↪
+- 2⋅H₀⋅r ⋅u_jj - 4⋅H₀⋅r⋅s⋅u_jk - 4⋅H₀⋅r⋅t⋅u_jl - 4⋅H₀⋅r⋅u_ij - 2⋅H₀⋅s ⋅uₖₖ - 4 ↪
+
+↪                                  2                                 2         ↪
+↪ ⋅H₀⋅s⋅t⋅uₖₗ - 4⋅H₀⋅s⋅uᵢₖ - 2⋅H₀⋅t ⋅uₗₗ - 4⋅H₀⋅t⋅uᵢₗ - 2⋅H₀⋅uᵢᵢ + kᵢ  + 2⋅kᵢ⋅ ↪
+
+↪                                    2  2                                   2  ↪
+↪ k_j⋅r + 2⋅kᵢ⋅kₖ⋅s + 2⋅kᵢ⋅kₗ⋅t + k_j ⋅r  + 2⋅k_j⋅kₖ⋅r⋅s + 2⋅k_j⋅kₗ⋅r⋅t + kₖ ⋅ ↪
+
+↪  2                   2  2
+↪ s  + 2⋅kₖ⋅kₗ⋅s⋅t + kₗ ⋅t 
+interior ratio normalization = 0
+discriminant numerator reduction = 0
+interior ratio tau form = 0
+tau(r,s,t) -> triple ijk on t=0 = 0
+tau(r,s,t) -> triple ijl on s=0 = 0
+tau(r,s,t) -> triple ikl on r=0 = 0
+jkl-face discriminant reduction = 0
+direct jkl-face tau reduction = 0
+
+----------------------------------------------------------------------------------------
+VI. Canonical screens and exact theorem-gate checks
+----------------------------------------------------------------------------------------
+equal-mix slope value = 0
+gradient slope value = 0
+k_grad^2 - ||k||^2 = 0
+beta_lo =
+Min(f1_lo, f2_lo, f3_lo, f4_lo)
+beta_hi =
+Min(f1_hi, f2_hi, f3_hi, f4_hi)
+nested Min flattening (boundary lo) = True
+nested Min flattening (boundary hi) = True
+verified four-face boundary splice theorem on 1500625 ordered integer samples
+verified canonical screen dominance against boundary on 924 samples
+verified canonical non-improvement filter on 924 samples
+verified support-cardinality-4 improvement gate on 924 samples
+verified support-cardinality-4 non-improvement filter on 924 samples
+
+========================================================================================
+STAGE 196 SYMPY AUDIT COMPLETED SUCCESSFULLY
+========================================================================================
+
+EXIT_CODE: 0

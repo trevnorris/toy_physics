@@ -1,0 +1,88 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+# Date: 2026-05-11T12:52:46-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1. Exact one-port short-range baseline
+========================================================================================
+Delta                 = OmU2*OmW2 - Rmix**2
+Q                     = GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2
+P                     = GU*Rmix + GW*OmU2
+D0                    = (-GU**2*OmW2 - 2*GU*GW*Rmix - GW**2*OmU2 + Kstar*(OmU2*OmW2 - Rmix**2))/(OmU2*OmW2 - Rmix**2)
+chi_qq                = (-OmU2*OmW2 + Rmix**2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+chi_qU                = (-GU*OmW2 - GW*Rmix)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+chi_qW                = (-GU*Rmix - GW*OmU2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+chi_UU                = (GW**2 - Kstar*OmW2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+chi_UW                = (-GU*GW - Kstar*Rmix)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+chi_WW                = (GU**2 - Kstar*OmU2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+C6                    = betaQ**2*(-OmU2*OmW2 + Rmix**2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+C4                    = betaQ*(-betaU*(GU*OmW2 + GW*Rmix) - betaW*(GU*Rmix + GW*OmU2))/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+C2                    = (betaU**2*(GW**2 - Kstar*OmW2) - 2*betaU*betaW*(GU*GW + Kstar*Rmix) + betaW**2*(GU**2 - Kstar*OmU2))/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+A6                    = (3*alpha6*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2)) + betaQ**2*(-OmU2*OmW2 + Rmix**2)/2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+A4                    = -betaQ*(betaU*(GU*OmW2 + GW*Rmix) + betaW*(GU*Rmix + GW*OmU2))/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+A2                    = (alpha2*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2)) + betaU**2*(GW**2 - Kstar*OmW2)/2 - betaU*betaW*(GU*GW + Kstar*Rmix) + betaW**2*(GU**2 - Kstar*OmU2)/2)/(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))
+V_short(r)            = (2*betaQ*r**2*(betaU*(GU*OmW2 + GW*Rmix) + betaW*(GU*Rmix + GW*OmU2))*exp(2*kappa*r) + r**5*(2*exp(2*kappa*r) + 1)*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2))*exp(2*kappa*r) + r**4*(-2*alpha2*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2)) + betaU**2*(-GW**2 + Kstar*OmW2) + 2*betaU*betaW*(GU*GW + Kstar*Rmix) + betaW**2*(-GU**2 + Kstar*OmU2)) + (-6*alpha6*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2)) + betaQ**2*(OmU2*OmW2 - Rmix**2))*exp(4*kappa*r))*exp(-4*kappa*r)/(2*r**6*(GU**2*OmW2 + 2*GU*GW*Rmix + GW**2*OmU2 - Kstar*(OmU2*OmW2 - Rmix**2)))
+
+========================================================================================
+2. Exact Stage 244 leakage / work packet
+========================================================================================
+E0                    = 16*Lvar*eta_leak/pi**2
+S_leak                = 8*sqrt(2)*Lvar*eta_leak*mu_w*rho0/(pi**(5/2)*lam**3)
+W_sess                = 512*Lvar**2*eta_leak**2*mu_w*q*rho0/(pi**4*lam**2)
+Lvar(W_sess)          = Lvar
+
+========================================================================================
+3. Exact Stage 245 weighted U/V drain
+========================================================================================
+Delta_UV              = a_U*a_V - chi_UV**2
+D_UV                  = a_V*chi_UV**2*f_U**2/(a_U*a_V - chi_UV**2)**2
+DeltaE_UV             = a_V*chi_UV**2*eta_UV*f_U**2/(a_U*a_V - chi_UV**2)**2
+
+========================================================================================
+4. Exact Stage 246 compensated source response
+========================================================================================
+s(r)                  = r_sigma**2/(r**2 + r_sigma**2)
+g(r)                  = 2*(5*a0*r_sigma**2 - b0*r_sigma**2 + 15*r**2 + 15*r_sigma**2)/(15*pi*(r**2 + r_sigma**2))
+g_infty               = 2/pi
+R(r)                  = (-10*a0*r_sigma**2 + 2*b0*r_sigma**2 - 30*r**2 + 15*pi*rF1*(r**2 + r_sigma**2) - 30*r_sigma**2)**2/(225*pi**2*(r**2 + r_sigma**2)**2*(rF1**2 + 1))
+R_infty               = (pi*rF1 - 2)**2/(pi**2*(rF1**2 + 1))
+M_sigma               = xi_R*(225*(r**2 + r_sigma**2)**2*(pi*rF1 - 2)**2 - (10*a0*r_sigma**2 - 2*b0*r_sigma**2 + 30*r**2 - 15*pi*rF1*(r**2 + r_sigma**2) + 30*r_sigma**2)**2)/(225*pi**2*(r**2 + r_sigma**2)**2*(rF1**2 + 1))
+sigma_min             = (r**2 + r_sigma**2*(-a0 + b0) + r_sigma**2)/(r**2 + r_sigma**2)
+
+========================================================================================
+5. Exact stationary compiler and lowering identity
+========================================================================================
+Lowering gap          = 512*Lvar**2*eta_leak**2*lambda_W*mu_w*q*rho0/(pi**4*lam**2) + 8*sqrt(2)*Lvar*eta_leak*lambda_L*mu_w*rho0/(pi**(5/2)*lam**3) - 100*a0**2*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + 40*a0*b0*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + 300*pi*a0*r**2*rF1*r_sigma**2*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) - 600*a0*r**2*r_sigma**2*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + 300*pi*a0*rF1*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) - 600*a0*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + a_V*chi_UV**2*eta_UV*f_U**2/(a_U**2*a_V**2 - 2*a_U*a_V*chi_UV**2 + chi_UV**4) - 4*b0**2*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) - 60*pi*b0*r**2*rF1*r_sigma**2*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + 120*b0*r**2*r_sigma**2*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) - 60*pi*b0*rF1*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4) + 120*b0*r_sigma**4*xi_R/(225*pi**2*r**4*rF1**2 + 225*pi**2*r**4 + 450*pi**2*r**2*rF1**2*r_sigma**2 + 450*pi**2*r**2*r_sigma**2 + 225*pi**2*rF1**2*r_sigma**4 + 225*pi**2*r_sigma**4)
+
+========================================================================================
+6. Session-I one-point benchmark
+========================================================================================
+Delta(session)        = 142.1775000000000
+D0(session)           = 3.764818624606566
+V_short(session)      = 3.741636979285524
+M_sigma(session)      = 0.1838612007190837
+Lvar(session)         = 20.01677472685125
+S_leak(session)       = 0.3106959887767410
+Residual after work+UV        = 2.014673129285524
+Residual after work+UV+source = 1.830811928566440
+lambda_L(session)     = 0.2697191840048420
+V_eff rebuilt         = 1.747011260000000
+
+========================================================================================
+Stage 247 audit result
+========================================================================================
+All symbolic checks passed.
+Verified objects:
+- exact one-port short-range baseline carried from the static mixed-bundle audit,
+- exact Stage 244 leakage / Session-I work packet,
+- exact Stage 245 weighted U/V drain packet,
+- exact Stage 246 compensated source response scalar R_infty - R(r),
+- exact stationary compiler and lowering identity,
+- and a consistent Session-I one-point benchmark decomposition at r_soft = 0.18.
+
+EXIT_CODE: 0

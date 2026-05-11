@@ -1,28 +1,28 @@
-\section[Stage 122]{Stage 122: Actual Family-1 Mouth Gains}
+\section[Stage~139]{Stage~139: Concrete Mouth-Source Branch and Compensation Test}
 \label{stage:122}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusNumerical{}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~122 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~139 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage122_family1_actual_mouth_gains_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage122_family1_actual_mouth_gains_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage122_family1_actual_mouth_gains_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage122_family1_actual_mouth_gains_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
 
 \begin{quote}
-Natural and exact-compensated gain pairs are evaluated on the Family--1 branch.
+Equal-normalized mouth source misses the lower compensated branch but only by a modest traction renormalization.
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
-\item Check the self-matched susceptibility closure before using the one-scalar branch law.
-\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+\item Check the Schur complement signs in the two-channel core model.
+\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+\item Check parent overlap ratios before interpreting them as actual branch values.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Stages 129--136 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
 

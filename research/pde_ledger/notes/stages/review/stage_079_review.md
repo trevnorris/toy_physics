@@ -1,13 +1,12 @@
-# Review: Stage 079 — Geometry lane check verdict
+# Review: Stage 079 — Loaded profile selection
 
-**Batch:** 12 — Geometry Lane
-**Status:** Verified (4× PASS, 2026-04-21)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat_pde_stage079_geometry_lane_check_verdict.md`
-- **SymPy:** `scripts/moving_throat_pde_stage079_geometry_lane_check_verdict_sympy_audit.py`
-- **Mathematica:** `mathematica/moving_throat_pde_stage079_geometry_lane_check_verdict_mathematica_audit.wl`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage028_loaded_profile_selection.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py`
 
 ## Review Checklist
 
@@ -17,7 +16,6 @@
 - [ ] Notation consistent with prior stages
 - [ ] Physical interpretation sensible
 - [ ] SymPy script faithfully implements notes
-- [ ] Mathematica script faithfully implements notes
 - [ ] Script runs without error
 - [ ] Script output matches notes claims
 - [ ] No missing edge cases or branches
@@ -38,110 +36,57 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** PASS
+**Verdict:** MINOR
 
-**Notes Derivation Review:** Faithful summary of Stages 77-78. eps_2=eps_4=0 from Stage 077's angular orthogonality. c_pole=1/4, c_geom=3/4 giving standard module. rho_alpha=4/3, zeta_req=1/3 consistent with Stage 072. Remaining gap (passive/outgoing normalization) correctly identified. No overclaiming.
+**Notes Derivation Review:**
 
-**Issues Found:** None.
+1. **Equation-level correctness.** All verified: Bare wall matrix K_bare = diag(K_0, K_1) with K_1 = K_0 + T_w pi^2/L^2. Loaded matrix K_eff = K_bare - alpha v v^T correct. Trace, determinant, eigenvalue formulas all standard 2×2 results. tan(2 theta) formula verified with correct sign analysis: numerator negative, denominator positive for alpha > 0, giving theta < 0. Weak loading theta ~ alpha kappa_0 kappa_1/DK correct. Strong loading limit matches tan(2 theta_max) = -6sqrt(2)/7 (verified by double-angle formula). alpha_crit = K_0 K_1/(K_1 kappa_0^2 + K_0 kappa_1^2) correct.
 
-### Agent: Codex GPT-5 — 2026-04-03
+2. **Logical flow.** Clean progression from free angle (Stage 10) to dynamically selected angle.
+
+3. **Assumptions.** All explicit: energy functional with alpha > 0, rank-1 structure, two N/N modes.
+
+4. **Completeness.** Eigenvalue spectrum, profile angle, both limits, blind-angle disfavoring, softening threshold all treated.
+
+5. **Notation consistent** with Stage 10.
+
+6. **Physical interpretation.** Sound: rank-1 attractive loading rotates toward max-coupling direction.
+
+**Script Review:**
+
+**B.1-B.7.** Faithful. No bugs. No hardcoded answers. Substantive checks: trace/det from SymPy matrix vs manual forms, characteristic polynomial factorization, stationarity from differentiation, weak/strong limits via sp.series/sp.limit, threshold via sp.solve. All pass.
+
+**Issues Found:**
+
+1. **(MINOR)** Positivity assumption mismatch: Stage 027 declares K_eta, T_Omega as real=True; Stage 028 declares them positive=True. Harmless (both scripts pass) but inconsistent.
+
+2. **(MINOR)** No explicit programmatic assertion that tan(2 theta) < 0 for alpha > 0 (the main physical conclusion). Follows trivially from verified sign data, but an assert would strengthen the audit.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-This consolidation note is faithful to the preceding stages. It correctly records that the actual isotropic branch keeps `eps_2 = eps_4 = 0`, recovers the `3/4 + 1/4` conservative module, and leaves the passive/outgoing normalization as the remaining open problem rather than pretending the full PDE is solved.
+- The loaded two-mode model is internally consistent. Starting from `E_eff[q] = (1/2) q^T K_bare q - (alpha/2) (v.q)^2`, the matrix `K_eff = K_bare - alpha v v^T` and the quoted trace, determinant, eigenvalue, and `tan(2 theta)` formulas are the standard exact `2 x 2` results.
+- I independently re-derived the angle equation from `dE/dtheta = 0`; it matches the note and script exactly:
+  `tan(2 theta) = 2 alpha kappa_0 kappa_1 / (Delta K_ax + alpha (kappa_0^2 - kappa_1^2))`.
+  Since `kappa_0 kappa_1 < 0` and the denominator is positive for `alpha > 0`, the selected lower branch indeed rotates in the negative `u_1` direction.
+- The weak-loading and strong-loading limits are also correct. The `alpha -> infinity` limit agrees with `tan(2 theta_max)`, so the max-coupling branch is the asymptotic loaded eigenvector, not a hand-picked direction.
+- The softening threshold from `det(K_eff)=0` is derived correctly and has the expected interpretation as the exact onset of quadrupole marginality in this reduced model.
 
 **Script Review:**
 
-No script is attached for this consolidation stage, which is consistent with the review plan. The note itself is internally consistent with Stages 77-78 and with the earlier loading-ratio results.
+- The script faithfully checks the matrix formulas, characteristic-factorization identity, stationarity equation, weak/strong-loading limits, and exact softening threshold. The cached output matches the note.
+- I did not find a mathematical or coding error. The previously noted sign conclusion is supported by the verified sign ledger even though it is not wrapped in a dedicated boolean assertion.
 
 **Issues Found:**
 
 None.
 
-### Agent: Codex GPT-5 — 2026-04-21
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-The stage is still citation-grade, but the strongest accurate wording is now
-clearer than it was before. Stage `079` genuinely rechecks the isotropic
-`l=0 <-> l=2` decoupling, and it genuinely packages the conservative verdict on
-the isotropic branch. What it does **not** do is re-derive the obstruction law
-from Stage `075` primitives inside this script.
-
-**Script Review:**
-
-Current scope is best described as:
-
-1. re-derive the grouped-real harmonic decoupling on `S^2`,
-2. confirm the isotropic branch gives `eps_2 = eps_4 = 0`, and
-3. evaluate the carried Stage-`075` obstruction formula at that isotropic
-   endpoint to recover
-   `c_pole = 1/4`,
-   `c_geom = 3/4`,
-   `rho_alpha = 4/3`,
-   `zeta_req = 1/3`.
-
-That is still strong enough for the checkpoint role because the imported
-formula is explicit and the branch endpoint evaluation is exact, but the trust
-description should say "evaluates the carried obstruction formula" rather than
-"derives the full `3/4 + 1/4` split from primitives in-script."
-
-**Issues Found:**
-
-No current script defect. This pass only narrows the trust wording to the
-actual scope of the existing proof path.
-
----
-
-### Agent: Codex GPT-5 — 2026-04-20
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-The note remains faithful to the geometry-lane packet. It keeps the claim at
-the correct reduced-branch level: on the actual isotropic branch in the present
-hierarchy, the geometry contamination vanishes, the `3/4 + 1/4` conservative
-module is recovered, and the true passive/outgoing normalization gap remains
-open.
-
-**Script Review:**
-
-Added `scripts/moving_throat_pde_stage079_geometry_lane_check_verdict_sympy_audit.py`.
-The script rechecks exact `l=0` / grouped-real-`l=2` decoupling on `S^2`,
-derives `eps_2 = eps_4 = 0` for the isotropic branch, and then collapses the
-Stage 75 obstruction formula to `c_pole = 1/4`, `c_geom = 3/4`,
-`rho_alpha = 4/3`, and `zeta_req = 1/3`.
-
-**Issues Found:**
+**Questions:**
 
 None.
-
----
-
-### Agent: Codex GPT-5 — 2026-04-21
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-The theorem scope is unchanged, but the CAS parity is no longer asymmetric.
-The stage still evaluates the carried Stage-`075` obstruction formula on the
-isotropic endpoint rather than re-deriving that obstruction from primitives,
-and the review wording should stay that precise.
-
-**Script Review:**
-
-1. The Mathematica mirror now matches the SymPy surface on the two previously
-   missing items:
-   exact `l=0` / grouped-real-`l=2` orthogonality on `S^2`, and
-   the frequency-dependent conservative carrier identity
-   `\widehat Y_Q^{cons} = 3/4 + (1/4)/(1 - \omega^2 / \Omega_Q^2)`.
-2. That closes the earlier asymmetry where only the SymPy side checked those
-   blocks.
-
-**Issues Found:**
-
-- None.
 
 ---

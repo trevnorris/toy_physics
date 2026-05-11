@@ -1,28 +1,33 @@
-\section[Stage 078]{Stage 078: First Nonzero Geometry Contamination Appears Only at Second Order in Anisotropy/Mixing}
+\section[Stage 078]{Stage 078: Explicit Family--1 Branch Comparison and Closing Verdict for This Subprogram}
 \label{stage:078}
 
-\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{}.}
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} for the comparison of extracted Family--1 data against the threshold window.}
+\stagefield{Purpose}{Stage~078 decides whether the explicit Family--1 wall-depth datum is the bottleneck.}
+\stagefield{Inputs}{The threshold window of Stage~075 and the extracted \(\Theta_w\) data from Stage~077.}
 
-\stagefield{Purpose}{Stage~78 is a geometry-lane firewall ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.txt}.}
 
-\stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier, the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\subsection*{Derivation}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage078_second_order_geometry_contamination_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage078_second_order_geometry_contamination_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage078_second_order_geometry_contamination_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage078_second_order_geometry_contamination_mathematica_audit.txt}.}
+For the natural shell-weighted datum,
+\begin{equation}
+\label{eq:app-stage078-Pe-chi}
+\boxed{
+\mathrm{Pe}_{\rm suff}^{(\chi)}\simeq96.5285247264386\lambda_\mu^2,
+\qquad
+\mathrm{Pe}_{\rm fail}^{(\chi)}\simeq11220.5441626259\lambda_\mu^2}.
+\end{equation}
+For the conservative floor,
+\begin{equation}
+\label{eq:app-stage078-Pe-J}
+\boxed{
+\mathrm{Pe}_{\rm suff}^{(J)}\simeq22.0062226330754\lambda_\mu^2,
+\qquad
+\mathrm{Pe}_{\rm fail}^{(J)}\simeq2558.01892349205\lambda_\mu^2}.
+\end{equation}
+The Family--1 branch is therefore not wall-depth starved except if the quadrupole-side demand requires an anomalously large transport bias.
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-
-\begin{quote}
-Weak \(l=0\leftrightarrow l=2\) mixing contaminates the grouped module only at \(O(\chi^2)\).
-\end{quote}
-
-\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-\item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
-\item Check that any support/source success statement still carries the minimal-module hypothesis.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{This stage feeds Stages 83--89 and any downstream use of \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), or \(N_Q\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Output}{The first explicit Family--1 support/source verdict: wall-depth is not the leading bottleneck for moderate demand.}
+\stagefield{Downstream use}{Stages~079--087 translate quadrupole demand into the remaining loading ratio.}
 

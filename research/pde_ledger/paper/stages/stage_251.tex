@@ -1,0 +1,97 @@
+\section{Stage 251: Microscopic export kernel}
+\label{sec:app-part08:microscopic-export-kernel}
+\label{stage:251}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 251 replaces the phenomenological \(\gamma_{\rm tot}\dot V\) envelope law by the first microscopic odd export operator seen by the active dressing leg.  Project
+\begin{equation}
+\label{eq:app-part08-stage251-v-projection}
+V(t)=\Pi_{V0}q_0(t)+\Pi_{V-}q_-(t)+\cdots,
+\end{equation}
+where \(q_0\) is the derivative-coupled scalar outlet and \(q_-\) is the selected mixed quadrupole outlet.
+
+For the scalar lane, take
+\begin{equation}
+\label{eq:app-part08-stage251-scalar-coupling}
+g_{W,0}(\omega)=\eta_0\omega,
+\qquad
+g_{A,0}(\omega)=0,
+\qquad
+\Pi_0^{\rm out}(\omega)=i\gamma_1\omega+O(\omega^3).
+\end{equation}
+With
+\begin{equation}
+\label{eq:app-part08-stage251-delta0}
+\Delta_0=\Omega_{U,0}^2\Omega_{W,0}^2-R_0^2,
+\end{equation}
+the scalar outgoing factor gives
+\begin{equation}
+\label{eq:app-part08-stage251-gamma30}
+\Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+\qquad
+\Gamma_3=\Pi_{V0}^{2}\Gamma_{3,0}.
+\end{equation}
+For the selected quadrupole outlet,
+\begin{equation}
+\label{eq:app-part08-stage251-gamma5}
+\Gamma_{5,-}=\frac{a^5}{27c_s^5}P_{0,-},
+\qquad
+P_{0,-}=\frac{\beta_0s_-}{\lambda_-},
+\qquad
+\Gamma_5=\Pi_{V-}^{2}\Gamma_{5,-}.
+\end{equation}
+Thus the microscopic kernel is \cref{eq:app-part08-main-kexp}.
+
+The active-leg equation is
+\begin{equation}
+\label{eq:app-part08-stage251-active-equation}
+\mu_\eta\ddot V-\kappa_VV+
+\Gamma_3V^{(3)}-
+\Gamma_5V^{(5)}=
+\mathcal S_V(t),
+\qquad
+\kappa_V=g_{UV}\chi_{\rm peak}.
+\end{equation}
+In Laplace form,
+\begin{equation}
+\label{eq:app-part08-stage251-laplace-d}
+\mathcal D_V(s)=\mu_\eta s^2-\kappa_V+\Gamma_3s^3+\Gamma_5s^5.
+\end{equation}
+The passive power identity is
+\begin{equation}
+\label{eq:app-part08-stage251-power-identity}
+\dot V(\Gamma_3V^{(3)}-\Gamma_5V^{(5)})
+=
+\frac{d}{dt}\mathcal S_{\rm odd}
+-
+\Gamma_3\ddot V^{2}
+-
+\Gamma_5\dddot V^{2},
+\end{equation}
+so the exported power is
+\begin{equation}
+\label{eq:app-part08-stage251-export-power}
+\mathcal P_{\rm exp}=\Gamma_3\ddot V^{2}+\Gamma_5\dddot V^{2}\ge0.
+\end{equation}
+
+For homogeneous growth \(V=V_0e^{st}\), the characteristic polynomial is
+\begin{equation}
+\label{eq:app-part08-stage251-characteristic}
+F(s)=\Gamma_5s^5+\Gamma_3s^3+\mu_\eta s^2-\kappa_V.
+\end{equation}
+For positive \((\Gamma_3,\Gamma_5,\mu_\eta,\kappa_V)\), \(F(0)<0\), \(F(s)\to+\infty\), and \(F'(s)>0\) for \(s>0\).  Therefore there is exactly one positive growth root.  The small-kernel slowdown is
+\begin{equation}
+\label{eq:app-part08-stage251-small-kernel}
+s_+=s_0-\frac{\Gamma_3s_0^2+\Gamma_5s_0^4}{2\mu_\eta}+O(\Gamma^2),
+\qquad
+s_0=\sqrt{\kappa_V/\mu_\eta}.
+\end{equation}
+Thus finite passive cubic/quintic export slows but does not remove the unstable root in the minimal closure.
+
+For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
+\begin{equation}
+\label{eq:app-part08-stage251-benchmark-half-plane}
+\widehat\Gamma_3+0.3013336471\widehat\Gamma_5\ge 289.61004918.
+\end{equation}
+This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.

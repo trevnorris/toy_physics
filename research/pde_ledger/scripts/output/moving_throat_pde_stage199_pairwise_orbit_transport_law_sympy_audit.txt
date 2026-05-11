@@ -1,0 +1,467 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+# Date: 2026-05-11T12:48:58-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 182 — EXACT PAIRWISE ORBIT-TRANSPORT LAW AND THE TWO-POINT ORBIT-LOCK THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact pairwise monomial ratios
+----------------------------------------------------------------------------------------
+Ctr_2 / Ctr_1 =
+   χ₀ ₛₜₐᵣ + 1    -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2         deltaUₛₜₐᵣ + 1
+r_T           ⋅r_U                         ⋅(r_c⋅rᵧ)              
+Cnt_2 / Cnt_1 =
+                              Eₛₜₐᵣ
+              Fₛₜₐᵣ ⎛  2    2⎞     
+   2     ⎛r_U⎞      ⎜rᵧ ⋅r_λ ⎟     
+r_λ ⋅rₘᵤ⋅⎜───⎟     ⋅⎜────────⎟     
+         ⎝r_T⎠      ⎝r_U⋅r_W ⎠     
+───────────────────────────────────
+                    2              
+             r_K⋅r_W               
+epsEta_2 / epsEta_1 =
+    2  
+ r_c   
+───────
+r_K⋅r_U
+Ctr pairwise ratio - expected = 0
+Cnt pairwise ratio - expected = 0
+epsEta pairwise ratio - expected = 0
+
+----------------------------------------------------------------------------------------
+II. Exact pairwise orbit transport factors
+----------------------------------------------------------------------------------------
+Phi_T =
+            deltaUₛₜₐᵣ + 1
+            ──────────────
+             χ₀ ₛₜₐᵣ + 1  
+    ⎛ r_U  ⎞              
+r_U⋅⎜──────⎟              
+    ⎝r_c⋅rᵧ⎠              
+Phi_K =
+   2
+r_c 
+────
+r_U 
+Phi_mu =
+                                                Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ + 1)         ↪
+   Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ + 1)                       ──────────────────────         ↪
+   ────────────────────── - 1                        χ₀ ₛₜₐᵣ + 1               ↪
+        χ₀ ₛₜₐᵣ + 1              2    2 ⎛  1   ⎞                       ⎛r_U⋅r_ ↪
+r_U                          ⋅r_W ⋅r_c ⋅⎜──────⎟                      ⋅⎜────── ↪
+                                        ⎝r_c⋅rᵧ⎠                       ⎜  2    ↪
+                                                                       ⎝rᵧ ⋅r_ ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                            2                                  ↪
+                                         r_λ                                   ↪
+
+↪         
+↪         
+↪    Eₛₜₐᵣ
+↪ W ⎞     
+↪ ──⎟     
+↪  2⎟     
+↪ λ ⎠     
+↪ ────────
+↪         
+↪         
+ln Phi_mu - ln expanded monomial form = 0
+ln[Ctr ratio on same orbit] = 0
+ln[epsEta ratio on same orbit] = 0
+ln[Cnt ratio on same orbit] = 0
+
+----------------------------------------------------------------------------------------
+III. Exact reference-independent mismatch triple
+----------------------------------------------------------------------------------------
+m_T =
+                                   -(deltaUₛₜₐᵣ + 1) 
+            deltaUₛₜₐᵣ + 1         ──────────────────
+       -1 - ──────────────            χ₀ ₛₜₐᵣ + 1    
+             χ₀ ₛₜₐᵣ + 1   ⎛  1   ⎞                  
+r_T⋅r_U                   ⋅⎜──────⎟                  
+                           ⎝r_c⋅rᵧ⎠                  
+m_K =
+r_K⋅r_U
+───────
+    2  
+ r_c   
+m_mu =
+   -Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ + 1) + χ₀ ₛₜₐᵣ + 1                  Fₛₜₐᵣ⋅(deltaUₛₜₐᵣ +  ↪
+   ─────────────────────────────────────                  ──────────────────── ↪
+                χ₀ ₛₜₐᵣ + 1                 2                  χ₀ ₛₜₐᵣ + 1     ↪
+r_U                                     ⋅r_λ ⋅rₘᵤ⋅(r_c⋅rᵧ)                     ↪
+                                                                               ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                              2    2                           ↪
+                                           r_W ⋅r_c                            ↪
+
+↪ 1)           Eₛₜₐᵣ
+↪ ── ⎛  2    2⎞     
+↪    ⎜rᵧ ⋅r_λ ⎟     
+↪   ⋅⎜────────⎟     
+↪    ⎝r_U⋅r_W ⎠     
+↪ ──────────────────
+↪                   
+↪                   
+Ctr pairwise ratio - m_T^(1+chi0_*) = 0
+epsEta pairwise ratio - 1/m_K = 0
+Cnt pairwise ratio - m_mu/(m_K m_T^F_*) = 0
+
+----------------------------------------------------------------------------------------
+IV. Exact q-chart and Stage 192 projectors on finite two-point data
+----------------------------------------------------------------------------------------
+q^(2<-1) = M_* Delta x^(2<-1) =
+⎡   ⎛   χ₀ ₛₜₐᵣ + 1    -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2    deltaUₛₜₐᵣ + 1   deltaUₛₜₐ ↪
+⎢log⎝r_T           ⋅r_U                         ⋅r_c              ⋅rᵧ          ↪
+⎢                                                                              ↪
+⎢       ⎛   -Fₛₜₐᵣ    -Eₛₜₐᵣ + Fₛₜₐᵣ    -Eₛₜₐᵣ - 2   2⋅Eₛₜₐᵣ    2⋅Eₛₜₐᵣ + 2    ↪
+⎢       ⎜r_T      ⋅r_U              ⋅r_W          ⋅rᵧ       ⋅r_λ           ⋅rₘ ↪
+⎢    log⎜───────────────────────────────────────────────────────────────────── ↪
+⎢       ⎝                                 r_K                                  ↪
+⎢                                                                              ↪
+⎢                                      ⎛    2  ⎞                               ↪
+⎢                                      ⎜ r_c   ⎟                               ↪
+⎢                                   log⎜───────⎟                               ↪
+⎣                                      ⎝r_K⋅r_U⎠                               ↪
+
+↪ ᵣ + 1⎞⎤
+↪      ⎠⎥
+↪       ⎥
+↪  ⎞    ⎥
+↪ ᵤ⎟    ⎥
+↪ ─⎟    ⎥
+↪  ⎠    ⎥
+↪       ⎥
+↪       ⎥
+↪       ⎥
+↪       ⎥
+↪       ⎦
+q_tr - (1+chi0_*) ln m_T = 0
+q_eta + ln m_K = 0
+q_nt - [ln m_mu - ln m_K - F_* ln m_T] = 0
+Q_quot Delta x^(2<-1) =
+⎡                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢   ⎛                                                                          ↪
+⎢   ⎜                                                                          ↪
+⎢   ⎜                                                                          ↪
+⎢   ⎜⎛                                                                         ↪
+⎢   ⎜⎜   -Eₛₜₐᵣ⋅χ₀ ₛₜₐᵣ - Eₛₜₐᵣ - Fₛₜₐᵣ⋅deltaUₛₜₐᵣ - Fₛₜₐᵣ + χ₀ ₛₜₐᵣ + 1    Fₛ ↪
+⎢log⎝⎝r_U                                                               ⋅r_c   ↪
+⎢                                                                              ↪
+⎢                                                                 ⎛            ↪
+⎢                                                                 ⎜            ↪
+⎢                                                                 ⎜            ↪
+⎢                                                                 ⎜⎛   χ₀ ₛₜₐᵣ ↪
+⎣                                                              log⎝⎝r_T        ↪
+
+↪                                  0                                           ↪
+↪                                                                              ↪
+↪                                  0                                           ↪
+↪                                                                              ↪
+↪                                  0                                           ↪
+↪                                                                              ↪
+↪                                  0                                           ↪
+↪                                                                              ↪
+↪                               ⎛r_K⋅r_U⎞                                      ↪
+↪                            log⎜───────⎟                                      ↪
+↪                               ⎜    2  ⎟                                      ↪
+↪                               ⎝ r_c   ⎠                                      ↪
+↪                                                                              ↪
+↪                                  0                                           ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪ ₜₐᵣ⋅(deltaUₛₜₐᵣ + 1) - 2⋅χ₀ ₛₜₐᵣ - 2   2⋅Eₛₜₐᵣ⋅(χ₀ ₛₜₐᵣ + 1) + Fₛₜₐᵣ⋅(deltaU ↪
+↪                                     ⋅rᵧ                                      ↪
+↪                                                                              ↪
+↪                                                                           1  ↪
+↪                                                                      ─────── ↪
+↪                                                                      χ₀ ₛₜₐᵣ ↪
+↪  + 1    -χ₀ ₛₜₐᵣ - deltaUₛₜₐᵣ - 2    deltaUₛₜₐᵣ + 1   deltaUₛₜₐᵣ + 1⎞        ↪
+↪     ⋅r_U                         ⋅r_c              ⋅rᵧ              ⎠        ↪
+
+↪                                                                     ⎤
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                                     ⎥
+↪                                                              1     ⎞⎥
+↪                                                         ───────────⎟⎥
+↪                                                         χ₀ ₛₜₐᵣ + 1⎟⎥
+↪                                             χ₀ ₛₜₐᵣ + 1⎞           ⎟⎥
+↪ ₛₜₐᵣ + 1) ⎛   -Eₛₜₐᵣ - 2    2⋅Eₛₜₐᵣ + 2    ⎞           ⎟           ⎟⎥
+↪          ⋅⎝r_W          ⋅r_λ           ⋅rₘᵤ⎠           ⎠           ⎠⎥
+↪                                                                     ⎥
+↪     ⎞                                                               ⎥
+↪ ────⎟                                                               ⎥
+↪  + 1⎟                                                               ⎥
+↪     ⎟                                                               ⎥
+↪     ⎠                                                               ⎦
+O_orb Delta x^(2<-1) =
+⎡                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢                                                                              ↪
+⎢   ⎛                                                                          ↪
+⎢   ⎜                                                                          ↪
+⎢   ⎜                                                                          ↪
+⎢   ⎜⎛                                                                         ↪
+⎢   ⎜⎜   Eₛₜₐᵣ⋅χ₀ ₛₜₐᵣ + Eₛₜₐᵣ + Fₛₜₐᵣ⋅deltaUₛₜₐᵣ + Fₛₜₐᵣ - χ₀ ₛₜₐᵣ - 1    -Fₛ ↪
+⎢log⎝⎝r_U                                                              ⋅r_c    ↪
+⎢                                                                              ↪
+⎢                                                                       ⎛      ↪
+⎢                                                                       ⎜      ↪
+⎢                                                                       ⎜      ↪
+⎢                                                                       ⎜⎛   χ ↪
+⎣                                                                    log⎝⎝r_U  ↪
+
+↪                             log(r_λ)                                         ↪
+↪                                                                              ↪
+↪                             log(r_c)                                         ↪
+↪                                                                              ↪
+↪                             log(rᵧ)                                          ↪
+↪                                                                              ↪
+↪                             log(r_U)                                         ↪
+↪                                                                              ↪
+↪                               ⎛   2⎞                                         ↪
+↪                               ⎜r_c ⎟                                         ↪
+↪                            log⎜────⎟                                         ↪
+↪                               ⎝r_U ⎠                                         ↪
+↪                                                                              ↪
+↪                             log(r_W)                                         ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪                                                                              ↪
+↪ ₜₐᵣ⋅(deltaUₛₜₐᵣ + 1) + 2⋅χ₀ ₛₜₐᵣ + 2   -2⋅Eₛₜₐᵣ⋅(χ₀ ₛₜₐᵣ + 1) - Fₛₜₐᵣ⋅(delta ↪
+↪                                     ⋅rᵧ                                      ↪
+↪                                                                              ↪
+↪                                                                   1     ⎞    ↪
+↪                                                              ───────────⎟    ↪
+↪                                                              χ₀ ₛₜₐᵣ + 1⎟    ↪
+↪ ₀ ₛₜₐᵣ + deltaUₛₜₐᵣ + 2    -deltaUₛₜₐᵣ - 1   -deltaUₛₜₐᵣ - 1⎞           ⎟    ↪
+↪                        ⋅r_c               ⋅rᵧ               ⎠           ⎠    ↪
+
+↪                                                                  ⎤
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                           1     ⎞⎥
+↪                                                      ───────────⎟⎥
+↪                                                      χ₀ ₛₜₐᵣ + 1⎟⎥
+↪                                          χ₀ ₛₜₐᵣ + 1⎞           ⎟⎥
+↪ Uₛₜₐᵣ + 1) ⎛   Eₛₜₐᵣ + 2    -2⋅Eₛₜₐᵣ - 2⎞           ⎟           ⎟⎥
+↪           ⋅⎝r_W         ⋅r_λ            ⎠           ⎠           ⎠⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎥
+↪                                                                  ⎦
+Q_quot Delta x - expected =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+O_orb Delta x - expected =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+Q + O - Delta x =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+M_* O_orb Delta x =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+M_* Q_quot Delta x - qpair =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+V. Exact pairwise restoration map
+----------------------------------------------------------------------------------------
+ln T2_restore - ln(Phi_T T1) = 0
+ln K2_restore - ln(Phi_K Keta1) = 0
+ln mu2_restore - ln(Phi_mu mu1) = 0
+
+----------------------------------------------------------------------------------------
+VI. Exact cocycle/composition laws
+----------------------------------------------------------------------------------------
+Phi_T^31 - Phi_T^32 Phi_T^21 = 0
+Phi_K^31 - Phi_K^32 Phi_K^21 = 0
+Phi_mu^31 - Phi_mu^32 Phi_mu^21 = 0
+ln m_T^31 - ln m_T^32 - ln m_T^21 = 0
+ln m_K^31 - ln m_K^32 - ln m_K^21 = 0
+ln m_mu^31 - ln m_mu^32 - ln m_mu^21 = 0
+Delta x^31 - Delta x^32 - Delta x^21 =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+q^31 - q^32 - q^21 =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+VII. Exact reduction to Stage 198
+----------------------------------------------------------------------------------------
+Phi_T at equal free coordinates - 1 = 0
+Phi_K at equal free coordinates - 1 = 0
+Phi_mu at equal free coordinates - 1 = 0
+m_T at equal free coordinates - r_T = 0
+m_K at equal free coordinates - r_K = 0
+m_mu at equal free coordinates - r_mu = 0
+
+========================================================================================
+STAGE 182 LEDGER
+========================================================================================
+1. For two positive microscopic states x^(1), x^(2), the exact finite pairwise log-ratio vector
+      Delta x^(2<-1) = ln(x^(2)/x^(1))
+   is acted on by the same Stage 192 map M_*.
+   Because the coherent monomials are multiplicative, this gives the exact two-point quotient packet
+      q^(2<-1) = M_* Delta x^(2<-1)
+   with
+      q_tr = ln(Ctr_2/Ctr_1),   q_nt = ln(Cnt_2/Cnt_1),   q_eta = ln(epsEta_2/epsEta_1).
+2. If the two states are on the same exact similarity orbit, then the dependent pairwise ratios are determined uniquely by the five free pairwise ratios through
+      Phi_T = r_U (r_U/(r_gamma r_c))^((1+deltaU_*)/(1+chi0_*)),
+      Phi_K = r_c^2 / r_U,
+      Phi_mu = Phi_K r_W^2 / r_lambda^2 * (r_gamma^2 r_lambda^2/(r_U r_W))^(-E_*) * (Phi_T/r_U)^(F_*).
+3. For an arbitrary pair, the exact reference-independent mismatch triple is
+      m_T = r_T/Phi_T,   m_K = r_K/Phi_K,   m_mu = r_mu/Phi_mu.
+   The pairwise invariant ratios collapse exactly to
+      Ctr_2/Ctr_1   = m_T^(1+chi0_*),
+      epsEta_2/epsEta_1 = 1/m_K,
+      Cnt_2/Cnt_1   = m_mu/(m_K m_T^(F_*)).
+4. Therefore the exact Packet-B logarithmic chart is again
+      q_tr = (1+chi0_*) ln m_T,   q_eta = - ln m_K,   q_nt = ln m_mu - ln m_K - F_* ln m_T.
+5. Applying the Stage 192 projectors to the finite pairwise log-ratio vector gives the exact two-point decomposition
+      Delta x^(2<-1) = O_orb Delta x^(2<-1) + Q_quot Delta x^(2<-1),
+   where O_orb carries the free ratios and the transported dependent ratios
+      (Phi_T, Phi_K, Phi_mu),
+   while Q_quot has support only on the dependent triple and carries
+      (ln m_T, ln m_K, ln m_mu).
+6. The pairwise transport, mismatch, and quotient packets compose exactly:
+      Phi^31 = Phi^32 Phi^21,   m^31 = m^32 m^21,   q^31 = q^32 + q^21.
+7. Hence the exact two-point orbit-lock criterion is
+      x^(2) in G_* . x^(1)
+   iff
+      m_T = m_K = m_mu = 1
+   iff
+      q_tr = q_nt = q_eta = 0.
+8. If the two states share the same five free microscopic coordinates, then
+      Phi_T = Phi_K = Phi_mu = 1,
+   so Stage 199 reduces exactly to the Stage 198 fixed-base formulas.
+
+EXIT_CODE: 0

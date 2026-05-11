@@ -1,18 +1,18 @@
-\section[Stage 225]{Stage 225: Actual twin-support placement and coherent orbit-lock compiler}
+\section[Stage 225]{Stage 225: Microscopic Xi compiler and first compensation surface}
 \label{stage:225}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.7}.}
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.3}.}
 \claimstatus{Mixed: \StatusExactClosure{}, \StatusOpen{}.}
 
-\stagefield{Purpose}{Stage~225 places the actual coherent branch on the selected twin-support curve and packages the final front-end branch-evaluation data.}
+\stagefield{Purpose}{Stage~225 derives the first microscopic formula for the weak-axisymmetric prefactor slope $\Xi_1$.}
 
-\stagefield{Inputs}{Imports the selected curve from Stage~224, the coherent local D/N placement map, the physical variable $\epsilon$, and the support-blind orbit-lock packet compiler.}
+\stagefield{Inputs}{Imports the linear grouped variations $D_{01},D_{21},D_{41},N_{01}$, the physical slopes $u_2^{(1)}$, $u_4^{(1)}$, and the primitive logarithmic slopes of wall, BdG, and Maxwell/mixed data.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage225_actual_twin_support_placement_and_coherent_orbit_lock_compiler_mathematica_audit.wl}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation identifies $\varrho_{\rm phys}=2(1-\epsilon)/3$, rewrites the thresholds in the realized variable, classifies the support lane, constructs the finite orbit packet, and separates support placement from orbit lock.}
+\stagefield{Derivation ledger}{The derivation expands $u_2=-D_2/D_0$, $u_4=(D_2^2-D_0D_4)/D_0^2$, and $P_0=N_0/D_0$ to first weak-axisymmetric order, then solves the first conservative compensation surface and sorts wall-only, BdG-only, and mixed-sector mechanisms.}
 
-\stagefield{Output}{Final front-end packet: actual selected placement coordinate, primitive ranking region, support/orbit packet split, weak-axisymmetric orbit packet, and separate outgoing finish-line datum $N_Q-1$.}
+\stagefield{Output}{Microscopic compiler $\Xi_1=N_{01}/N_0-D_{01}/D_0$ together with first-order even-preserving compensation conditions and the first surviving mixed-sector family.}
 
 \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
 
@@ -23,4 +23,4 @@
 \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.7} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.3} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

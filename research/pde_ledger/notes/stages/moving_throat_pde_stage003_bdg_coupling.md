@@ -364,12 +364,12 @@ b_2=\frac{u_2^{(21)}-u_2^{(22)}}{2}.
 
 At the present reduced level, the same algebra applies to any fixed normalization of the channelwise low-frequency coefficients. Using the `d_{2A}^{eff}` defined above,
 \[
-\bar d_2=\frac{d_{220}^{\rm eff}+2d_{221}^{\rm eff}+2d_{222}^{\rm eff}}{5},
+\bar d_2=\frac{d_{237}^{\rm eff}+2d_{238}^{\rm eff}+2d_{239}^{\rm eff}}{5},
 \]
 \[
-a_2=\frac{2d_{220}^{\rm eff}-d_{221}^{\rm eff}-d_{222}^{\rm eff}}{10},
+a_2=\frac{2d_{237}^{\rm eff}-d_{238}^{\rm eff}-d_{239}^{\rm eff}}{10},
 \qquad
-b_2=\frac{d_{221}^{\rm eff}-d_{222}^{\rm eff}}{2}.
+b_2=\frac{d_{238}^{\rm eff}-d_{239}^{\rm eff}}{2}.
 \]
 
 So the first conservative isotropy theorem on the matter-coupled branch is immediate:
@@ -458,9 +458,9 @@ The accompanying script verifies:
 Supporting files:
 - `moving_throat_pde_stage003_bdg_sympy_audit.py`
 - `moving_throat_pde_stage003_bdg_mathematica_audit.wl`
-- `stage003_004_foundational_stress.py`
-- `stage003_004_foundational_stress.wl`
-- `stage003_004_foundational_samples.json`
+- `stage003_021_foundational_stress.py`
+- `stage003_021_foundational_stress.wl`
+- `stage003_021_foundational_samples.json`
 
 The symbolic theorem path is exact in both CAS layers. The shared numerical
 stress harness uses the JSON sample file only for probe cases that test root

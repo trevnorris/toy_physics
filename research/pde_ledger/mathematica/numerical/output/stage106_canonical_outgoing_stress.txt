@@ -1,0 +1,70 @@
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage106_canonical_outgoing_samples.json
+=== Stage 106: canonical outgoing closure stress ===
+source-map model: mhat0 = 1 + (a_over_r)^2
+
+point_particle_1e-4 (interior): a/r=0.000100000000, mhat0=1.000000010000, z_probe=0.001000000000
+  N_Q=0.999999980000, point-particle approx=0.999999980000, chi_Q^out(exact)=0.999999888889
+[PASS] point_particle_1e-4 canonical branch keeps N_Q <= 1: N_Q=0.999999980000
+[PASS] point_particle_1e-4 exact outgoing DtN fixes chi_Q = 1: chi_Q^out(exact)=0.999999888889
+[PASS] point_particle_1e-4 outgoing DtN and source-map canonical N_Q agree: N_Q(chi_exact)=1.000000091111, N_Q(chi=1)=0.999999980000
+[PASS] point_particle_1e-4 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=0.000000000000
+[PASS] point_particle_1e-4 point-particle remainder stays below floating-point noise: N_Q - [1 - 2(a/r)^2]=0.000000000000
+
+point_particle_1e-3 (interior): a/r=0.001000000000, mhat0=1.000001000000, z_probe=0.010000000000
+  N_Q=0.999998000003, point-particle approx=0.999998000000, chi_Q^out(exact)=0.999988889259
+[PASS] point_particle_1e-3 canonical branch keeps N_Q <= 1: N_Q=0.999998000003
+[PASS] point_particle_1e-3 exact outgoing DtN fixes chi_Q = 1: chi_Q^out(exact)=0.999988889259
+[PASS] point_particle_1e-3 outgoing DtN and source-map canonical N_Q agree: N_Q(chi_exact)=1.000009110845, N_Q(chi=1)=0.999998000003
+[PASS] point_particle_1e-3 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=0.000000000003
+[PASS] point_particle_1e-3 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=3.000044657142
+
+transitional_5e-2 (transitional): a/r=0.050000000000, mhat0=1.002500000000, z_probe=0.020000000000
+  N_Q=0.995018687695, point-particle approx=0.995000000000, chi_Q^out(exact)=0.999955561480
+[PASS] transitional_5e-2 canonical branch keeps N_Q <= 1: N_Q=0.995018687695
+[PASS] transitional_5e-2 exact outgoing DtN fixes chi_Q = 1: chi_Q^out(exact)=0.999955561480
+[PASS] transitional_5e-2 outgoing DtN and source-map canonical N_Q agree: N_Q(chi_exact)=0.995062906817, N_Q(chi=1)=0.995018687695
+[PASS] transitional_5e-2 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=0.000018687695
+[PASS] transitional_5e-2 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=2.990031156536
+
+transitional_1e-1 (transitional): a/r=0.100000000000, mhat0=1.010000000000, z_probe=0.020000000000
+  N_Q=0.980296049407, point-particle approx=0.980000000000, chi_Q^out(exact)=0.999955561480
+[PASS] transitional_1e-1 canonical branch keeps N_Q <= 1: N_Q=0.980296049407
+[PASS] transitional_1e-1 exact outgoing DtN fixes chi_Q = 1: chi_Q^out(exact)=0.999955561480
+[PASS] transitional_1e-1 outgoing DtN and source-map canonical N_Q agree: N_Q(chi_exact)=0.980339614248, N_Q(chi=1)=0.980296049407
+[PASS] transitional_1e-1 exact N_Q stays above the O((a/r)^2) point-particle truncation: N_Q - [1 - 2(a/r)^2]=0.000296049407
+[PASS] transitional_1e-1 point-particle remainder is O((a/r)^4): (N_Q - [1 - 2(a/r)^2])/(a/r)^4=2.960494069209
+[PASS] point_particle_1e-4 is closer to target than point_particle_1e-3: |N_Q-1|(0.000100000000)=0.000000020000, |N_Q-1|(0.001000000000)=0.000001999997
+[PASS] point_particle_1e-3 is closer to target than transitional_5e-2: |N_Q-1|(0.001000000000)=0.000001999997, |N_Q-1|(0.050000000000)=0.004981312305
+[PASS] transitional_5e-2 is closer to target than transitional_1e-1: |N_Q-1|(0.050000000000)=0.004981312305, |N_Q-1|(0.100000000000)=0.019703950593
+
+near_canonical_positive_shift (stress): a/r=0.000100000000, mhat0=1.000000010000, chi_Q=1.050000000000, chi_Q^out(exact)=0.999999888889
+  N_Q=0.952380933333, canonical N_Q=1.000000091111, chi gap=0.050000111111
+[PASS] near_canonical_positive_shift positive chi_Q shift lowers N_Q: N_Q=0.952380933333, canonical=1.000000091111
+[PASS] near_canonical_positive_shift positive chi_Q shift stays above the outgoing DtN branch: chi_Q=1.050000000000, chi_Q^out(exact)=0.999999888889
+
+near_canonical_negative_shift (stress): a/r=0.000100000000, mhat0=1.000000010000, chi_Q=0.950000000000, chi_Q^out(exact)=0.999999888889
+  N_Q=1.052631557895, canonical N_Q=1.000000091111, chi gap=-0.049999888889
+[PASS] near_canonical_negative_shift negative chi_Q shift raises N_Q: N_Q=1.052631557895, canonical=1.000000091111
+[PASS] near_canonical_negative_shift negative chi_Q shift stays below the outgoing DtN branch: chi_Q=0.950000000000, chi_Q^out(exact)=0.999999888889
+
+transitional_positive_shift (stress): a/r=0.050000000000, mhat0=1.002500000000, chi_Q=1.100000000000, chi_Q^out(exact)=0.999955561480
+  N_Q=0.904562443359, canonical N_Q=0.995062906817, chi gap=0.100044438520
+[PASS] transitional_positive_shift positive chi_Q shift lowers N_Q: N_Q=0.904562443359, canonical=0.995062906817
+[PASS] transitional_positive_shift positive chi_Q shift stays above the outgoing DtN branch: chi_Q=1.100000000000, chi_Q^out(exact)=0.999955561480
+
+transitional_negative_shift (stress): a/r=0.050000000000, mhat0=1.002500000000, chi_Q=0.900000000000, chi_Q^out(exact)=0.999955561480
+  N_Q=1.105576319661, canonical N_Q=0.995062906817, chi gap=-0.099955561480
+[PASS] transitional_negative_shift negative chi_Q shift raises N_Q: N_Q=1.105576319661, canonical=0.995062906817
+[PASS] transitional_negative_shift negative chi_Q shift stays below the outgoing DtN branch: chi_Q=0.900000000000, chi_Q^out(exact)=0.999955561480
+[PASS] a/r=0.000100000000 symmetric branch slope around the outgoing DtN branch is negative: slope=-1.002506245614
+[PASS] a/r=0.000100000000 symmetric branch response is centered on chi_Q^out: chi_Q^out(+)= 0.999999888889, chi_Q^out(-)= 0.999999888889
+[PASS] a/r=0.000100000000 reciprocal conservative response is convex: N_Q(chi_+) + N_Q(chi_-) - 2 N_Q(chi_out)=0.005012309006
+[PASS] a/r=0.000100000000 symmetric chi_Q shifts stay on opposite sides of chi_Q^out: chi_-=0.950000000000, chi_out=0.999999888889, chi_+=1.050000000000
+[PASS] a/r=0.000100000000 symmetric chi_Q shifts separate the conservative coefficient: N_Q(chi_-)-N_Q(chi_+)=0.100250624561
+[PASS] a/r=0.050000000000 symmetric branch slope around the outgoing DtN branch is negative: slope=-1.005069381510
+[PASS] a/r=0.050000000000 symmetric branch response is centered on chi_Q^out: chi_Q^out(+)= 0.999955561480, chi_Q^out(-)= 0.999955561480
+[PASS] a/r=0.050000000000 reciprocal conservative response is convex: N_Q(chi_+) + N_Q(chi_-) - 2 N_Q(chi_out)=0.020012949385
+[PASS] a/r=0.050000000000 symmetric chi_Q shifts stay on opposite sides of chi_Q^out: chi_-=0.900000000000, chi_out=0.999955561480, chi_+=1.100000000000
+[PASS] a/r=0.050000000000 symmetric chi_Q shifts separate the conservative coefficient: N_Q(chi_-)-N_Q(chi_+)=0.201013876302
+
+All stage-106 canonical outgoing stress checks passed.

@@ -1,143 +1,42 @@
-\section[Stage 010]{Stage 010: First Nonconstant Finite-Throat Wall/Brane Family}
+\section[Stage 010]{Stage 010: Projected Maxwell push into bundle slots}
 \label{stage:010}
 
-\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
-\claimstatus{\StatusExactClosure{} inside the first two-mode N/N wall/brane axial family.}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+\claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel closure, parent-action packet, or one-port normal form.}
 
-\stagefield{Purpose}{Stage~010 checks whether the Stage~009 constant axial profile is too restrictive.  It introduces the first nonconstant N/N profile, computes the profile-dependent D/N overlap \(\kappa(\theta)\), identifies an exact blind-angle no-go, and derives the profile-dressed normalization gate.}
+\paragraph{Source and audit.}
+This stage corresponds to
+\StageFile{scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py}.
+It is the master transport from projected EM corrections into the grouped
+bundle slots.
 
-\stagefield{Inputs}{The inputs are the constant N/N profile, the first N/N excitation, and the lowest D/N half-wave from Stage~009.}
-
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage010_nonconstant_axial_family_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage010_nonconstant_axial_family_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage010_nonconstant_axial_family_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage010_nonconstant_axial_family_mathematica_audit.txt}.}
-
-\subsection*{Derivation}
-
-\paragraph{1. Two-mode N/N family.}
-The first nonconstant N/N profile is
+\paragraph{Bundle shifts.}
+The conservative and outgoing-transfer moments shift as
 \begin{equation}
-\label{eq:app-stage010-u1}
-\nu_1(s)=\sqrt{\frac2L}\cos\!\left(\frac{\pi s}{L}\right),
-\qquad
--\nu_1''=\frac{\pi^2}{L^2}\nu_1.
+\label{eq:stage006-projected-shifts}
+Z_n\mapsto Z_n+\varepsilon z_n,\qquad
+N_n\mapsto N_n+\varepsilon n_n,\qquad n\in\{0,2,4\}.
 \end{equation}
-Use the coherent family
+For
+\[
+D_0=K-B_0-Z_0,\qquad D_2=-(M+B_2+Z_2),\qquad D_4=-(B_4+Z_4),
+\]
+the first response variations are
 \begin{equation}
-\label{eq:app-stage010-chi-theta}
-\chi_\theta(s)=\cos\theta\,\nu_0(s)+\sin\theta\,\nu_1(s),
+\label{eq:stage010-du2}
+\delta u_2=\frac{D_0z_2-D_2z_0}{D_0^2},
 \end{equation}
-for both the wall profile and the brane-like internal coordinate:
 \begin{equation}
-\chi_\eta=\chi_\theta,
-\qquad
-u=\chi_\theta,
-\qquad
-\phi=w=f_0.
+\label{eq:stage010-du4}
+\delta u_4=
+\frac{D_0^2z_4-D_0(2D_2z_2+D_4z_0)+2D_2^2z_0}{D_0^3},
 \end{equation}
-Since \(\nu_0,\nu_1\) are orthonormal, \(\int_0^L\chi_\theta^2ds=1\).
-
-\paragraph{2. Profile overlap.}
-The D/N overlap is
+and
 \begin{equation}
-\label{eq:app-stage010-kappa-theta}
-\boxed{
-\kappa(\theta)=\int_0^L\chi_\theta(s)f_0(s)\,ds
-=\kappa_0\cos\theta+\kappa_1\sin\theta},
-\end{equation}
-where
-\begin{equation}
-\label{eq:app-stage010-kappa0-kappa1}
-\boxed{
-\kappa_0=\frac{2\sqrt2}{\pi},
-\qquad
-\kappa_1=-\frac{4}{3\pi}}.
-\end{equation}
-Equivalently,
-\begin{equation}
-\label{eq:app-stage010-kappa-explicit}
-\kappa(\theta)=\frac{2(-2\sin\theta+3\sqrt2\cos\theta)}{3\pi}.
-\end{equation}
-The maximum overlap magnitude is
-\begin{equation}
-\label{eq:app-stage010-kappa-max}
-\boxed{
-|\kappa|_{\max}=\sqrt{\kappa_0^2+\kappa_1^2}=\frac{2\sqrt{22}}{3\pi}}.
+\label{eq:stage010-dp0}
+\delta P_0=\frac{D_0n_0+N_0z_0}{D_0^2}.
 \end{equation}
 
-\paragraph{3. Blind angle and max-coupling angle.}
-The blind angle satisfies \(\kappa(\theta)=0\), hence
-\begin{equation}
-\label{eq:app-stage010-blind-angle}
-\boxed{
-\tan\theta_{\rm blind}=\frac{3\sqrt2}{2}}.
-\end{equation}
-At this angle, the D/N-coupled data vanish:
-\begin{equation}
-C=0,
-\qquad
-G_W=0,
-\qquad
-R=0,
-\qquad
-\mathcal P=0,
-\qquad
-N_0=0.
-\end{equation}
-A positive quadrupole target is therefore impossible on the blind-angle branch.
-
-The positive-overlap maximum occurs at
-\begin{equation}
-\label{eq:app-stage010-theta-max}
-\boxed{
-\tan\theta_{\max}=\frac{\kappa_1}{\kappa_0}=-\frac{\sqrt2}{3},
-\qquad
-\sin^2\theta_{\max}=\frac{2}{11}}.
-\end{equation}
-This is a small negative admixture of \(\nu_1\).
-
-\paragraph{4. Profile-dressed wall stiffness.}
-For the quadrupole wall operator
-\begin{equation}
-G_\eta=-T_w\frac{d^2}{ds^2}+K_\eta+6T_\Omega,
-\end{equation}
-the coherent profile has
-\begin{equation}
-\label{eq:app-stage010-Kgeo}
-\boxed{
-K_{\rm geo}(\theta)=K_\eta+6T_\Omega+\frac{\pi^2T_w}{L^2}\sin^2\theta}.
-\end{equation}
-The profile-dressed normalization gate is
-\begin{equation}
-\label{eq:app-stage010-Kgate}
-\boxed{
-K_{\rm geo}(\theta)=K_{\rm req}(\theta)},
-\end{equation}
-where Stage~009's required stiffness is evaluated with \(\kappa\to\kappa(\theta)\):
-\begin{equation}
-\label{eq:app-stage010-Kreq}
-K_{\rm req}(\theta)
-=
-\frac{\lambda_B^2\kappa(\theta)^2}{\varpi^2}
-+\frac{Q(\theta)}{\Delta(\theta)}
-+\frac{\widehat m_{\rm rad}^{\,2}\kappa(\theta)^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}{N_Q^{\rm target}\Delta(\theta)^2},
-\end{equation}
-with
-\begin{equation}
-\Delta(\theta)=\Omega_U^2\Omega_W^2-\lambda_R^2\kappa(\theta)^2,
-\end{equation}
-\begin{equation}
-Q(\theta)=\lambda_U^2\Omega_W^2+2\lambda_U\lambda_W\lambda_R\kappa(\theta)^2+\lambda_W^2\Omega_U^2\kappa(\theta)^2.
-\end{equation}
-
-\stagefield{Output}{Stage~010 outputs \(\kappa(\theta)\), the blind-angle no-go \eqref{eq:app-stage010-blind-angle}, the max-coupling angle \eqref{eq:app-stage010-theta-max}, and the profile-dressed branch equation \eqref{eq:app-stage010-Kgate}.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item The profile remains normalized because \(\nu_0\) and \(\nu_1\) are orthonormal.
-\item The blind angle gives \(\kappa=0\), so every D/N-mediated outgoing numerator vanishes.
-\item The max-coupling angle follows from aligning \((\cos\theta,\sin\theta)\) with \((\kappa_0,\kappa_1)\).
-\item The wall stiffness picks up only the \(\nu_1\) axial-gradient cost, giving \(\Delta K_{\rm ax}\sin^2\theta\).
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{Stage~011 derives \(\theta\) dynamically rather than selecting it by hand.  The exact value \(\sin^2\theta_{\max}=2/11\) is later echoed in the D/N branch constants used by the selected-mode formulas.}
-
-\clearpage
-
+\paragraph{Output.}
+Stage~010 exports the transport map
+\eqref{eq:stage006-projected-shifts}--\eqref{eq:stage010-dp0}.

@@ -1,47 +1,101 @@
-\section[Stage 028]{Stage 028: Coherent Local D/N Support Kernel and Exact Tracking Reduction}
+\section[Stage 028]{Stage 028: Loaded Axial Profile Selection}
 \label{stage:028}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the first coherent local D/N kernel.}
-\stagefield{Purpose}{Stage~028 checks the first coherent local D/N support kernel and proves that it does not realize a generic rank--2 direction.  It forces exact tracking.}
-\stagefield{Inputs}{The continuum support kernel and rank--2 branch variables \(R_U\), \(R_\phi\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the two-mode wall profile and rank-one loading closure.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage028_coherent_local_tracking_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage028_coherent_local_tracking_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage028_coherent_local_tracking_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage028_coherent_local_tracking_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~028 stops treating the wall-profile angle as an external choice.  The support/mixed branch induces an attractive rank-one load along the D/N overlap vector, and the selected profile is the lower eigenvector of the loaded wall matrix.}
+
+\stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and a positive loading coefficient \(\alpha\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The coherent local D/N kernel enforces
+\paragraph{1. Bare wall matrix and overlap vector.}
+Set
 \begin{equation}
-\label{eq:app-stage028-coherent-condition}
-\boxed{
-g_Bg_R=g_Wg_S}.
-\end{equation}
-This condition lands on the tracking surface
-\begin{equation}
-\label{eq:app-stage028-tracking}
-\boxed{
-R_\phi=R_U=R_{\rm tr}}.
-\end{equation}
-The coherent tracking factor is
-\begin{equation}
-\label{eq:app-stage028-Rtr}
-\boxed{
-R_{\rm tr}=\frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
+\label{eq:app-stage028-qtheta}
+q=(q_0,q_1)^T,
 \qquad
-\frac{1}{1+\delta_U}<R_{\rm tr}<1
-}
-\end{equation}
-for the constructive split--\(U\) branch.
-
-Therefore the rank--2 support branch collapses to tracking laws
-\begin{equation}
-\label{eq:app-stage028-tracking-laws}
-\boxed{
-M_{\rm tr}=G_{\rm tr}(\xi,\delta;R_{\rm tr}),
+q_0^2+q_1^2=1,
 \qquad
-R_{\rm target}=F_{\rm tr}(\xi,\delta;R_{\rm tr})}.
+q_0=\cos\theta,
+\qquad
+q_1=\sin\theta.
+\end{equation}
+The bare quadrupole wall matrix is
+\begin{equation}
+\label{eq:app-stage028-Kbare}
+K_{\rm bare}=\begin{pmatrix}K_0&0\\0&K_1\end{pmatrix},
+\qquad
+K_0=K_\eta+6T_\Omega,
+\qquad
+K_1=K_0+\Delta K_{\rm ax},
+\end{equation}
+where
+\begin{equation}
+\Delta K_{\rm ax}=\frac{\pi^2T_w}{L^2}.
+\end{equation}
+The D/N overlap vector is
+\begin{equation}
+\label{eq:app-stage028-v}
+\boxed{
+v=(\kappa_0,\kappa_1)^T,
+\qquad
+\kappa_0=\frac{2\sqrt2}{\pi},
+\qquad
+\kappa_1=-\frac{4}{3\pi}}.
 \end{equation}
 
-\stagefield{Output}{The exact tracking condition \eqref{eq:app-stage028-tracking} and coherent tracking factor \eqref{eq:app-stage028-Rtr}.}
-\stagefield{Downstream use}{Stages~029--031 prove that support compensation is still needed and derive the exact required support ratio.}
+\paragraph{2. Rank-one loaded wall matrix.}
+The minimal attractive loading is
+\begin{equation}
+\label{eq:app-stage028-Keff}
+\boxed{
+K_{\rm eff}=K_{\rm bare}-\alpha vv^T,
+\qquad
+\alpha>0}.
+\end{equation}
+The exact eigenvalues are
+\begin{equation}
+\label{eq:app-stage028-eigenvalues}
+\boxed{
+\lambda_\pm=\frac12\left[
+K_0+K_1-\alpha(\kappa_0^2+\kappa_1^2)
+\pm
+\sqrt{\left(\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)\right)^2+4\alpha^2\kappa_0^2\kappa_1^2}
+\right]}.
+\end{equation}
+The lower selected profile obeys
+\begin{equation}
+\label{eq:app-stage028-angle-law}
+\boxed{
+\tan(2\theta_-)
+=\frac{2\alpha\kappa_0\kappa_1}{\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)}}.
+\end{equation}
+Since \(\kappa_0\kappa_1<0\), positive loading drives \(\theta_-<0\), toward the max-coupling direction and away from the blind-angle branch.
+
+\paragraph{3. Softening threshold.}
+The lower eigenvalue reaches zero when \(\det K_{\rm eff}=0\).  This gives
+\begin{equation}
+\label{eq:app-stage028-alpha-crit}
+\boxed{
+\alpha_{\rm crit}
+=\frac{K_0K_1}{K_1\kappa_0^2+K_0\kappa_1^2}}.
+\end{equation}
+The stable side of this reduced branch is \(0\leq\alpha<\alpha_{\rm crit}\).
+
+\stagefield{Output}{Stage~028 outputs the rank-one wall matrix \eqref{eq:app-stage028-Keff}, exact eigenvalues \eqref{eq:app-stage028-eigenvalues}, the selected angle law \eqref{eq:app-stage028-angle-law}, and the softening threshold \eqref{eq:app-stage028-alpha-crit}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The eigenvalues follow from the characteristic polynomial of the \(2\times2\) symmetric matrix \(K_{\rm bare}-\alpha vv^T\).
+\item The sign of \(\theta_-\) is fixed because \(\kappa_0>0\) and \(\kappa_1<0\).
+\item The threshold is checked by \(\det(K_{\rm bare}-\alpha vv^T)=0\).
+\item The loaded branch cannot select the blind angle under positive loading because the selected direction moves toward larger \(|v\cdot q|\), not toward zero overlap.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~029 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed Schur complement.  Stages~030--034 use the selected lower eigenvalue and eigenvector overlap to define \(\lambda_-\), \(s_-\), and the softening-depth normal form.}
+
+\clearpage
 

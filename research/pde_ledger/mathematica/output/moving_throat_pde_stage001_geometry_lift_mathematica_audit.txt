@@ -1,3 +1,11 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl
+# Date: 2026-05-11T12:40:16-06:00
+# Elapsed: 87s
+# Exit code: 0
+# Status: PASS
+#
+
 
 ========================================================================================
 STAGE 001 — GEOMETRY LIFT AND LINEARIZED PDE SKELETON
@@ -85,3 +93,5 @@ localized-Maxwell w-component = 0
 PASS: localized-Maxwell w-component
 
 All Stage-001 symbolic checks passed.
+
+EXIT_CODE: 0

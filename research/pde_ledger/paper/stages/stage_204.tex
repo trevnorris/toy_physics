@@ -1,27 +1,26 @@
-\section[Stage 204]{Stage 204: Resonance/linewidth tradeoff}
+\section[Stage 204]{Stage 204: Free-quintuple log-ray sweep}
 \label{stage:204}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
+\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~204 analyzes the only surviving linear dynamic escape hatch: resonant dispersive enhancement of the already-short-range mixed kernels.}
+\stagefield{Purpose}{Stage~204 turns graph-aligned realization into an explicit local family compiler by sweeping logarithmic rays in the five free coordinates.}
 
-\stagefield{Inputs}{Imports Stage~203 and expands near a simple conservative pole $F_0(\omega_*)=0$ with $F_0^\prime(\omega_*)\ne0$; the wall-like specialization also assumes $D_0(\omega_*)=0$ and $\Delta_0(\omega_*)\ne0$.}
+\stagefield{Inputs}{Imports the Stage~203 scalar graph slice, base free quintuple \(\mathbf y_\circ\), and log-ray direction \(\mathbf s=(s_\lambda,s_c,s_\gamma,s_U,s_W)\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage204_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.wl}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation reduces the susceptibility to the Breit--Wigner form $A_*/(\delta-i\gamma_*)$, computes the real and imaginary line shapes, rewrites the result in absorbed-power language, and derives the low-loss survival window.}
+\stagefield{Derivation ledger}{The derivation constructs \(\mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s}\), lifts it through the graph, proves finite monomial invariance along the lift, lists primitive directions, and defines the scalar root function \(\Phi_{\mathbf s}(\tau)=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))\).}
 
-\stagefield{Output}{Dispersive/no-free-lunch theorem: $|\Re\chi_*|/|\Im\chi_*|=|\delta|/\gamma_*$, so resonant conservative gain is inseparable from absorptive loading, with maximal balanced leverage at equal conservative and absorptive magnitudes.}
+\stagefield{Output}{Graph-invariant log-ray family, primitive free-direction table, scalar root equation \(\Phi_{\mathbf s}(\tau)=1\), monotone-ray uniqueness theorem, and first local root predictors.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth closure before citing the output.
-\item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it to another paper.
-\item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel claims inherit the source-product family limits.
-\item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
+\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
+\item Check the log-ray validity interval before using a local bracket.
+\item Check curvature-envelope hypotheses before reporting a certified interval.
+\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
-
+\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}

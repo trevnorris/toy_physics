@@ -1,12 +1,12 @@
-# Review: Stage 038 — Explicit lowest lane reachability
+# Review: Stage 038 — Dimensionless continuum placement
 
-**Batch:** 6 — Support & Threshold Analysis
+**Batch:** 4 — Kernel Continuation
 **Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_explicit_lowest_lane_reachability.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_explicit_reachability_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,13 +40,13 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Combined zeta_0^{exp+R} = Omega_exp(alpha)^2 * A_K(eta) correct product. Closure range: lower (alpha=0, eta=∞) gives 1×1=1; upper (alpha→∞, eta→0) gives (pi/2)^2 × 4/(4-x) = pi^2/(4-x). Reachability criterion zeta_req <= pi^2/(4-x) ⟺ x >= 4-pi^2/zeta_req. Three regimes (A: overlap alone, B: combined, C: fails) correctly classified. Stiffness-ratio form K_X/K_W <= pi^2/(4 zeta_req) verified.
+1. **Equation-level correctness.** Five dimensionless ratios (eps_eta, eps_W, rho, Z_W, delta_0) plus Lambda correctly defined from Stage-20 continuum formulas. Placement formulas verified: delta = delta_0/(1-eps_eta), M_mix = 8 Z_W(1+rho)^2/(pi^2(1-eps_eta)(1-eps_W)). Product relation R_target * M_mix = 8 Lambda(1-eps_W)/pi^2 verified — Z_W, (1+rho)^2, (1-eps_eta) cancel exactly. All nine derivative factorizations verified by hand.
 
-2. **Logical flow.** Clean combination of Stage-36 overlap and Stage-37 softening.
+2. **Logical flow.** Clean: dimensionless ratios → placement formulas → product relation → parameter tendencies → three-lane factorization.
 
-3. **Physical interpretation.** Sound. Independence of alpha and eta in closure range correctly noted as a property of the family, not a claim about the physical system.
+3. **Notation consistent** with Stages 18-20.
 
-**Script Review:** Combined family from Stage-36/37 formulas. Twin and closure limits by sp.limit. Reachability floor by sp.solve. KX/KW equivalence cross-checked. All genuine, all pass (exit code 0).
+**Script Review:** Builds Stage-20 microscopic expressions from scratch, applies dimensionless substitutions via ordered pattern matching. No tautologies. All pass (exit code 0). Complete coverage of placement formulas, product relation, and all 9 derivatives.
 
 **Issues Found:** None.
 
@@ -57,21 +57,17 @@
 
 **Notes Derivation Review:**
 
-- The explicit reachability family is algebraically correct. The combined branch
-  `zeta_0^(exp+R) = Omega_exp(alpha)^2 * A_K(eta)`
-  has the stated closure range, with the twin point at `1` and the upper closure `pi^2/(4-x)`.
-- I independently rechecked the two load-bearing reachability identities:
-  `lim_(alpha -> oo, eta -> 0^+) zeta_0^(exp+R) = pi^2/(4-x)`
-  and
-  `x_floor = 4 - pi^2/zeta_req`.
-  Both reduce to zero exactly. The stiffness-ratio form `K_X/K_W <= pi^2/(4 zeta_req)` is therefore consistent.
-- The regime split is physically sensible and matches the notes: overlap alone can cover the pure-overlap ceiling, while the combined exp+Robin family extends the reachability window up to `pi^2/(4-x)`.
-- The prior Stage 37 results are carried forward correctly; the current stage is a clean composition of the overlap and compliance branches, not a new derivation trick.
+- The dimensionless reduction is algebraically correct. Substituting the Stage 20 continuum formulas into `delta`, `M_mix`, and `R_target` gives exactly the stated five-ratio map in `(eps_eta, eps_W, rho, Z_W, delta_0)` plus `Lambda`.
+- I independently rechecked the load-bearing identity of the stage:
+  `R_target M_mix = 8 Lambda (1 - eps_W)/pi^2`,
+  and it reduces to zero directly. That confirms the claimed separation between product-setting variables `(eps_W, Lambda)` and redistribution variables `(eps_eta, Z_W, rho)`.
+- The one-way tendencies are also correct. The derivative factorizations have the expected signs on the physical branch `0 < eps_eta, eps_W < 1` and `1 + rho > 0`, so the narrative about how each kernel ratio moves the physical point in `(delta, M_mix, R_target)` space is consistent.
+- The beta-factor rewrite is compatible with the Stage 20 kernel formulas: only the mass ratio `mu_W/mu_eta` survives in `beta_0`, while the placement variables themselves are pure stiffness/coupling ratios.
 
 **Script Review:**
 
-- The audit script checks the twin point, the closure maximum, the reachability floor, and the stiffness-ratio equivalence directly from symbolic definitions. The saved output matches the note.
-- I did not find a code bug or a tautological check. The script is short but it does verify the actual reachability algebra.
+- The script faithfully reconstructs the Stage 20 formulas, applies the dimensionless substitutions in a nontrivial way, verifies the exact placement map, the product relation, and all nine derivative identities.
+- The saved output matches the notes and I did not find a tautological check or coding bug.
 
 **Issues Found:**
 

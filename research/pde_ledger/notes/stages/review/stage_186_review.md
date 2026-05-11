@@ -1,179 +1,77 @@
-# Review: Stage 186 — Scalar graph-slice theorem
+# Review: Stage 186 — Microscopic normalization equation
 
-**Batch:** Batch 22 — Realization Compiler
-**Status:** PASS after explicit graph-crossing hardening (2026-04-21)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem.md`
-- **Script:** `scripts/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py`
-- **Mathematica:** `mathematica/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py`
 
 ## Review Checklist
 
-- [x] Equation-level correctness (signs, factors, indices, limits)
-- [x] Logical flow from prior stage(s)
-- [x] Assumptions stated and justified
-- [x] Notation consistent with prior stages
-- [x] Physical interpretation sensible
-- [x] SymPy script faithfully implements notes
-- [x] Mathematica script faithfully implements notes
-- [x] Scripts run without error
-- [x] Script output matches notes claims
-- [x] No missing edge cases or branches
+- [ ] Equation-level correctness (signs, factors, indices, limits)
+- [ ] Logical flow from prior stage(s)
+- [ ] Assumptions stated and justified
+- [ ] Notation consistent with prior stages
+- [ ] Physical interpretation sensible
+- [ ] SymPy script faithfully implements notes
+- [ ] Script runs without error
+- [ ] Script output matches notes claims
+- [ ] No missing edge cases or branches
 
 ## Agent Reviews
 
-<!-- Agents: append your review below this line using the template: -->
+<!-- Agents: append your review below this line using the template:
 
-### Agent: Codex GPT-5 — 2026-04-20
+### Agent: [Model Name] — [Date]
+**Verdict:** [PASS | MINOR | ISSUE | BLOCK]
+
+**Notes Derivation Review:**
+
+**Script Review:**
+
+**Issues Found:**
+
+**Questions:**
+
+### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-The note is a clean continuation of Stages 184--185. It takes the explicit
-free-quintuple target graph as fixed input, proves that graph-aligned tangents
-lie in the Stage-175 orbit kernel, and reduces the reduced-closure search to
-the scalar graph slice `widehat chi_Q(y) = 1`. The claim boundary is stated
-correctly: this is an exact reduced compiler theorem, not a proof of actual PDE
-realization.
+1. **Equation-level correctness.** All verified: microscopic abbreviations (A, Delta_0, Chi, beta_0, alpha_0) correctly transcribed from Stage 15. N_- = beta_0 s_-^2/(kappa_0^2 lambda_-) correct. Three-part stability gate: Delta_0 > 0, A > 0, alpha_crit = 9 pi^2 A(A+DK)/[8(11A+9DK)] verified by substituting D/N constants. Monotonicity dN_-/dalpha_0 > 0 from quotient rule + Hellmann-Feynman (all factors positive). Zero-loading onset N_-(0) = beta_0 kappa_0^2/A. Weak-loading first-order coefficient 64(8A+9DK)/(9 pi^4 A^2 DK) verified term by term.
+
+2. **Logical flow.** Clean: abbreviations → normalization equation → stability gate → onset criterion → weak-loading expansion → summary.
+
+3. **Assumptions.** Three stability conditions explicit. Zero-loading start standard. Local isotropic kernel from Stage 15.
+
+4. **Completeness.** Gate complete for 2×2 conservative wall problem. Four microscopic "lanes" correctly identified.
+
+5. **Notation consistent** with Stages 13-15. Chi newly introduced, clearly defined.
+
+6. **Physical interpretation.** Sound: onset criterion = necessary condition, four lanes control different aspects.
 
 **Script Review:**
 
-The existing SymPy audit covers the right symbolic identities:
+**B.1-B.7.** Faithful: 5 blocks covering normalization product, monotonicity formula (genuine diff check), alpha_crit simplification, zero-loading onset, weak-loading series, microscopic coupling rewrite with onset stiffness (sp.solve). No bugs. D/N constants as exact symbolic expressions. No tautologies (monotonicity check compares sp.diff output against closed form; onset stiffness uses sp.solve). All pass. Complete coverage.
 
-1. the carried Stage-175 monomial-drift matrix,
-2. the exact dependent-triple graph tangent formulas,
-3. the kernel property `M_* dot(Delta x)_graph = 0`,
-4. the graph-error to quotient-packet compiler and its inverse,
-5. the exact repair vector,
-6. the same-free-quintuple decomposition.
+**Issues Found:** None.
 
-I added a Mathematica mirror at
-`mathematica/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl`
-that checks the same compiler structure in the second CAS.
+---
 
-**Issues Found:**
-
-None.
-
-### Agent: Codex GPT-5 — 2026-04-20 (hardening pass)
-**Verdict:** PASS after hardening
-
-**Issue Closed:**
-
-The prior audit covered the orbit-kernel and repair-compiler algebra but did not
-actually touch the scalar graph-slice theorem advertised by the paper card.
-SymPy also lacked a real inverse solve; it only checked a handwritten
-round-trip.
-
-**Fix Applied:**
-
-The SymPy and Mathematica audits now:
-
-1. rebuild the Stage-186 tangent formulas from the Stage-185 target graph
-   directly via log-derivative calculations,
-2. reconstruct the graph-error packet from the direct monomials rather than
-   from a prewritten quotient packet,
-3. solve the inverse compiler explicitly in both CAS layers,
-4. verify the repair vector from the solved graph-error packet,
-5. and verify the graph-lift collapse to the one-scalar packet
-   `(\widehat\chi_Q - 1, 0, 0, 0)`.
-
-To give the crossing theorem an executable witness, both audits now also carry
-a representative affine sign-change model with an explicit in-interval root.
-That is not a machine proof of the abstract IVT statement, but it does make the
-stage scripts verify the scalar-crossing reduction they previously ignored.
-
-**Issues Found:**
-
-None after the hardening pass.
-
-### Agent: Codex GPT-5 — 2026-04-21 (follow-up review)
-**Verdict:** ISSUE
+### Agent: GPT-5 Codex — 2026-04-03
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-The follow-up review is right on the main point. The inverse compiler and the
-graph-tangent machinery are meaningfully better than before, but the advertised
-`widehat\chi_Q(y)=1` crossing theorem is still not actually verified by the
-current scripts.
-
-**Script Review:**
-
-I agree with the remaining open defect:
-
-1. the current Section VI does not compose `chi_Q` with the Stage-185 graph or
-   solve a nontrivial `chi_Q(y) = 1` equation;
-2. the affine residual `-a + (a+b) s` is an ad hoc toy model, not a derived
-   graph residual;
-3. the endpoint checks are equalities, not sign assertions; and
-4. there is no genuine IVT / sign-change step in either CAS layer.
-
-So F2/F3 were improved, but the original high-severity crossing-theorem defect
-is still open.
+- The microscopic abbreviations are consistent with Stage 15 and the saved audit output: `A`, `Delta_0`, `Chi`, `beta_0`, and `alpha_0` are all carried through correctly.
+- I independently rechecked the key algebraic steps. The zero-loading limit gives `N_-(0) = 8 beta_0/(pi^2 A)`, the closed-form stability threshold reduces to `9 pi^2 A(A + DeltaK)/(8(11A + 9DeltaK))`, and the weak-loading coefficient matches the stated `64 beta_0 (8A + 9DeltaK)/(9 pi^4 A^2 DeltaK)`.
+- The monotonicity identity is also sound: differentiating the selected-branch product gives the exact formula used in the note, and the positivity assumptions on the factors are sufficient for the intended branch-admissibility argument.
+- Physically, the stage does what it claims: it turns the selected-branch normalization problem into one explicit microscopic equation plus a stability gate and an onset test, rather than leaving the source-map factor abstract.
 
 **Issues Found:**
 
-Stage `186` should remain open until the script evaluates a real graph-composed
-scalar closure, checks opposite-sign endpoints, and closes the crossing via a
-genuine solve / sign-change argument rather than an equality identity.
-
-### Agent: Codex GPT-5 — 2026-04-21 (explicit graph-crossing hardening)
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-The reopened high-severity gap is now closed. Section VI no longer uses an
-invented affine placeholder. Instead, both CAS layers compose the carried
-Stage-180 Packet-A closure formula with an explicit Stage-185 free-quintuple
-graph path in which only the `\gamma` lane is varied:
-
-\[
-\mathbf y(\tau)=
-(\lambda_{\rm bar}, c_{\eta U,{\rm bar}},
-\gamma_{\rm bar}\,\beta(\tau), K_{U,{\rm bar}}, K_{W,{\rm bar}}),
-\qquad
-\beta(\tau)=1+\frac{\rho(2\tau-1)}{1+\rho}.
-\]
-
-On that graph path the carried closure formula gives
-\[
-\widehat\chi_Q(\mathbf y(\tau))=\beta(\tau)^5,
-\qquad
-\widehat\Delta_Q(\tau)=\beta(\tau)^5-1.
-\]
-
-That is a real graph-composed scalar closure model, not a toy witness.
-
-**Script Review:**
-
-The final hardening pass adds the missing crossing content in both CAS layers:
-
-1. it ties the path explicitly to the Stage-185 free-quintuple graph by
-   checking `beta_path = gamma(tau)/gamma_bar`;
-2. it derives the graph residual from the carried Stage-180 closure numerator,
-   not from a hand-written ansatz;
-3. it proves the residual denominator stays positive on the path;
-4. it checks `widehat Delta_Q(0) < 0` and `widehat Delta_Q(1) > 0` as genuine
-   sign assertions;
-5. it checks `widehat Delta_Q(1/2) = 0`; and
-6. it computes the real crossing set and verifies that the only real root is
-   `tau = 1/2`.
-
-That satisfies the acceptance criterion the follow-up review asked for:
-opposite-sign endpoints, a graph-composed scalar residual, and a genuine
-solve/sign-change closure rather than an equality identity.
-
-**Verification Outcome:**
-
-Both updated scripts passed on `2026-04-21`:
-
-- `python3 research/pde_ledger/scripts/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py`
-- `math -script research/pde_ledger/mathematica/moving_throat_pde_stage186_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl`
-
-**Issues Found:**
-
-None after the explicit graph-crossing hardening pass.
+- **[MINOR] The fully substituted branch-admissibility inequality is not independently checked.** The note states the exact microscopic gate `alpha_0 = g_B^2/varpi^2 + Chi^2/(Omega_U^2 Delta_0) < alpha_crit`, but the audit script only verifies the closed form for `alpha_crit` and the onset rearrangement. That is enough for the algebraic formulae, but it leaves the final inequality as a documented assumption rather than a directly validated microscopic bound.
 
 ---

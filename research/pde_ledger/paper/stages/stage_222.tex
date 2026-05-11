@@ -1,18 +1,18 @@
-\section[Stage 222]{Stage 222: Rigid-mouth physical normal form}
+\section[Stage 222]{Stage 222: Concrete finite-throat primitive branch}
 \label{stage:222}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.6}.}
-\claimstatus{\StatusExactClosure{}.}
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.2}.}
+\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
 
-\stagefield{Purpose}{Stage~222 uses the physical logarithmic variables themselves as the rigid-mouth packet chart.}
+\stagefield{Purpose}{Stage~222 inserts the lowest concrete finite-throat primitive branch into the resonance/linewidth theorem.}
 
-\stagefield{Inputs}{Imports $U=\ln(\mathcal T^2/\mathcal T_{\rm ref}^2)$, $V=\ln(\epsilon_\eta/\epsilon_{\eta,\rm ref})$, and the microscopic dependent-plane compiler.}
+\stagefield{Inputs}{Imports the lowest N/N wall--$U$ profile, the lowest D/N half-wave support--$W$ profile, the one-port mixed kernel, and the line-shape survival gate from Stage~221.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage222_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_mathematica_audit.wl}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation diagonalizes the packet in $(U,V)$, derives the exact microscopic correction $(\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V)$, and identifies the Cartesian orbit-lock point.}
+\stagefield{Derivation ledger}{The derivation evaluates the exact overlap constants for the primitive branch, forms the quartic pole polynomial, identifies wall-like and internal poles, computes residues and linewidths, and tests the resulting low-loss survival inequality on an illustrative admissible slice.}
 
-\stagefield{Output}{Cartesian orbit-lock theorem: rigid-mouth orbit lock is exactly $U=V=0$, equivalently $\mathcal T^2=\mathcal T_{\rm ref}^2$ and $\epsilon_\eta=\epsilon_{\eta,\rm ref}$.}
+\stagefield{Output}{Concrete branch pole census, residue/linewidth cancellation, and first branch-level dynamic survival test.  The pole polynomial and survival gate are exact in the primitive closure; the displayed slice is a numerical placement.}
 
 \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
 
@@ -23,5 +23,4 @@
 \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.6} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
-
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}

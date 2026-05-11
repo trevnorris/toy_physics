@@ -1,101 +1,39 @@
-\section[Stage 011]{Stage 011: Loaded Axial Profile Selection}
+\section[Stage 011]{Stage 011: Projected Maxwell \(P_2\) bridge}
 \label{stage:011}
 
-\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
-\claimstatus{\StatusExactClosure{} inside the two-mode wall profile and rank-one loading closure.}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+\claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel closure, parent-action packet, or one-port normal form.}
 
-\stagefield{Purpose}{Stage~011 stops treating the wall-profile angle as an external choice.  The support/mixed branch induces an attractive rank-one load along the D/N overlap vector, and the selected profile is the lower eigenvector of the loaded wall matrix.}
+\paragraph{Source and audit.}
+This stage corresponds to
+\StageFile{scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py}.
+It applies the bundle shifts to the one-pole/normalization compatibility
+surface.
 
-\stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and a positive loading coefficient \(\alpha\).}
-
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage011_loaded_profile_selection_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage011_loaded_profile_selection_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage011_loaded_profile_selection_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage011_loaded_profile_selection_mathematica_audit.txt}.}
-
-\subsection*{Derivation}
-
-\paragraph{1. Bare wall matrix and overlap vector.}
-Set
+\paragraph{Compatibility surface.}
+Let
 \begin{equation}
-\label{eq:app-stage011-qtheta}
-q=(q_0,q_1)^T,
-\qquad
-q_0^2+q_1^2=1,
-\qquad
-q_0=\cos\theta,
-\qquad
-q_1=\sin\theta.
+\label{eq:stage011-compat-base}
+S=M+B_2+Z_2,\qquad T=B_4+Z_4 .
 \end{equation}
-The bare quadrupole wall matrix is
+After eliminating the static wall stiffness, the isotropic compatibility
+surface is
 \begin{equation}
-\label{eq:app-stage011-Kbare}
-K_{\rm bare}=\begin{pmatrix}K_0&0\\0&K_1\end{pmatrix},
-\qquad
-K_0=K_\eta+6T_\Omega,
-\qquad
-K_1=K_0+\Delta K_{\rm ax},
+\label{eq:stage011-compat}
+\mathcal C=\frac{N_0}{P_{0,\rm target}}-\frac{3S^2}{T}.
 \end{equation}
-where
+The projected variation is
 \begin{equation}
-\Delta K_{\rm ax}=\frac{\pi^2T_w}{L^2}.
+\label{eq:stage011-dcompat}
+\delta\mathcal C
+=\frac{n_0}{P_{0,\rm target}}
+-\frac{6Sz_2}{T}
++\frac{3S^2z_4}{T^2}.
 \end{equation}
-The D/N overlap vector is
-\begin{equation}
-\label{eq:app-stage011-v}
-\boxed{
-v=(\kappa_0,\kappa_1)^T,
-\qquad
-\kappa_0=\frac{2\sqrt2}{\pi},
-\qquad
-\kappa_1=-\frac{4}{3\pi}}.
-\end{equation}
+The static conservative shift \(z_0\) cancels from
+\eqref{eq:stage011-dcompat}; it changes \(P_0\), but not the eliminated
+compatibility surface.
 
-\paragraph{2. Rank-one loaded wall matrix.}
-The minimal attractive loading is
-\begin{equation}
-\label{eq:app-stage011-Keff}
-\boxed{
-K_{\rm eff}=K_{\rm bare}-\alpha vv^T,
-\qquad
-\alpha>0}.
-\end{equation}
-The exact eigenvalues are
-\begin{equation}
-\label{eq:app-stage011-eigenvalues}
-\boxed{
-\lambda_\pm=\frac12\left[
-K_0+K_1-\alpha(\kappa_0^2+\kappa_1^2)
-\pm
-\sqrt{\left(\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)\right)^2+4\alpha^2\kappa_0^2\kappa_1^2}
-\right]}.
-\end{equation}
-The lower selected profile obeys
-\begin{equation}
-\label{eq:app-stage011-angle-law}
-\boxed{
-\tan(2\theta_-)
-=\frac{2\alpha\kappa_0\kappa_1}{\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)}}.
-\end{equation}
-Since \(\kappa_0\kappa_1<0\), positive loading drives \(\theta_-<0\), toward the max-coupling direction and away from the blind-angle branch.
-
-\paragraph{3. Softening threshold.}
-The lower eigenvalue reaches zero when \(\det K_{\rm eff}=0\).  This gives
-\begin{equation}
-\label{eq:app-stage011-alpha-crit}
-\boxed{
-\alpha_{\rm crit}
-=\frac{K_0K_1}{K_1\kappa_0^2+K_0\kappa_1^2}}.
-\end{equation}
-The stable side of this reduced branch is \(0\leq\alpha<\alpha_{\rm crit}\).
-
-\stagefield{Output}{Stage~011 outputs the rank-one wall matrix \eqref{eq:app-stage011-Keff}, exact eigenvalues \eqref{eq:app-stage011-eigenvalues}, the selected angle law \eqref{eq:app-stage011-angle-law}, and the softening threshold \eqref{eq:app-stage011-alpha-crit}.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item The eigenvalues follow from the characteristic polynomial of the \(2\times2\) symmetric matrix \(K_{\rm bare}-\alpha vv^T\).
-\item The sign of \(\theta_-\) is fixed because \(\kappa_0>0\) and \(\kappa_1<0\).
-\item The threshold is checked by \(\det(K_{\rm bare}-\alpha vv^T)=0\).
-\item The loaded branch cannot select the blind angle under positive loading because the selected direction moves toward larger \(|v\cdot q|\), not toward zero overlap.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{Stage~012 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed Schur complement.  Stages~013--017 use the selected lower eigenvalue and eigenvector overlap to define \(\lambda_-\), \(s_-\), and the softening-depth normal form.}
-
-\clearpage
-
+\paragraph{Output.}
+Stage~011 exports the \(z_0\)-cancellation and the projected \(P_2\)
+compatibility bridge \eqref{eq:stage011-dcompat}.

@@ -1,0 +1,35 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage058_coupled_support_source_sympy_audit.py
+# Date: 2026-05-11T12:44:07-06:00
+# Elapsed: 25s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 41 — COUPLED SUPPORT/SOURCE OPERATOR
+========================================================================================
+K_(alpha,eta)(x) = (alpha*(cosh(alpha*x) - cosh(alpha*(x - 1))) + eta*sinh(alpha*x))/(alpha*(alpha*sinh(alpha) + eta*cosh(alpha)))
+dK/dx = (alpha*(sinh(alpha*x) - sinh(alpha*(x - 1))) + eta*cosh(alpha*x))/(alpha*sinh(alpha) + eta*cosh(alpha))
+Kprime identity = 0
+Sigma_Pe(x) = Pe*exp(Pe*x)/(exp(Pe) - 1)
+Sigma normalization = 0
+Ic antiderivative check = 0
+Is antiderivative check = 0
+Ic(Pe,alpha) = -(Pe - (Pe*cosh(alpha) - alpha*sinh(alpha))*exp(Pe))/(Pe**2 - alpha**2)
+Is(Pe,alpha) = (alpha + (Pe*sinh(alpha) - alpha*cosh(alpha))*exp(Pe))/(Pe**2 - alpha**2)
+Delta(Pe;alpha,eta) = Pe*(alpha*(Pe - (Pe*cosh(alpha) - alpha*sinh(alpha))*exp(Pe))*(cosh(alpha) - 1) + (alpha + (Pe*sinh(alpha) - alpha*cosh(alpha))*exp(Pe))*(alpha*sinh(alpha) + eta))/(alpha*(Pe**2 - alpha**2)*(alpha*sinh(alpha) + eta*cosh(alpha))*(exp(Pe) - 1))
+Delta_0 = eta*(cosh(alpha) - 1)/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha)))
+Delta0 formula = 0
+Delta0 integral identity = 0
+Delta_inf = (alpha*(cosh(alpha) - 1) + eta*sinh(alpha))/(alpha*(alpha*sinh(alpha) + eta*cosh(alpha)))
+Delta_inf formula = 0
+Pe_lo = Xi Delta_0 = Xi*eta*(cosh(alpha) - 1)/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha)))
+Pe_hi = Xi Delta_inf = Xi*(alpha*(cosh(alpha) - 1) + eta*sinh(alpha))/(alpha*(alpha*sinh(alpha) + eta*cosh(alpha)))
+Delta(Pe) small-Pe series = Pe*(sinh(alpha)/(alpha*(alpha*sinh(alpha) + eta*cosh(alpha))) + eta*cosh(alpha)/(2*alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) + eta/(2*alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) - sinh(alpha)**2/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) + cosh(alpha)**2/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) - 2*cosh(alpha)/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) + 1/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) - eta*sinh(alpha)/(alpha**3*(alpha*sinh(alpha) + eta*cosh(alpha)))) + eta*cosh(alpha)/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha))) - eta/(alpha**2*(alpha*sinh(alpha) + eta*cosh(alpha)))
+weak-coupling constant term = 0
+
+Stage 41 audit passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,83 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+# Date: 2026-05-11T12:50:24-06:00
+# Elapsed: 18s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 223 SymPy audit: isotropic target-surface compatibility window ===
+
+Verified primitive finite-throat overlap constant:
+kappa = 2*sqrt(2)/pi
+
+Primitive isotropic one-port data:
+B0 = kap**2*lam_B**2/varpi**2
+B2 = kap**2*lam_B**2/varpi**4
+B4 = kap**2*lam_B**2/varpi**6
+Z0 = (Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W)/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)
+Z2 = ((Omega_U**2 + Omega_W**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W) - (Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2))/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2
+Z4 = (-(Omega_U**2 + Omega_W**2)*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2) + (-Omega_U**2*Omega_W**2 + kap**2*lam_R**2 + (Omega_U**2 + Omega_W**2)**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W))/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**3
+N0 = (Omega_U**2*kap*lam_W + kap*lam_R*lam_U)**2/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2
+
+Verified isotropic one-pole compatibility identities:
+K_pole = kap**2*lam_B**2/varpi**2 + 3*(M + kap**2*lam_B**2/varpi**4 + ((Omega_U**2 + Omega_W**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W) - (Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2))/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2)**2/(kap**2*lam_B**2/varpi**6 - ((Omega_U**2 + Omega_W**2)*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2) - (-Omega_U**2*Omega_W**2 + kap**2*lam_R**2 + (Omega_U**2 + Omega_W**2)**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W))/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**3) + (Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W)/(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)
+K_norm = (P0_target*kap**2*lam_B**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2 + P0_target*varpi**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W) + kap**2*varpi**2*(Omega_U**2*lam_W + lam_R*lam_U)**2)/(P0_target*varpi**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2)
+P0_target_compat = kap**2*varpi**2*(Omega_U**2*lam_W + lam_R*lam_U)**2*(kap**2*lam_B**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**3 + varpi**6*(-(Omega_U**2 + Omega_W**2)*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2) + (-Omega_U**2*Omega_W**2 + kap**2*lam_R**2 + (Omega_U**2 + Omega_W**2)**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W)))/(3*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(M*varpi**4*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2 + kap**2*lam_B**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2 + varpi**4*((Omega_U**2 + Omega_W**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W) - (Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2)))**2)
+D0_compat = 3*(M*varpi**4*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2 + kap**2*lam_B**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**2 + varpi**4*((Omega_U**2 + Omega_W**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W) - (Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2)))**2/(varpi**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_B**2*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)**3 + varpi**6*(-(Omega_U**2 + Omega_W**2)*(Omega_U**2*Omega_W**2 - kap**2*lam_R**2)*(kap**2*lam_W**2 + lam_U**2) + (-Omega_U**2*Omega_W**2 + kap**2*lam_R**2 + (Omega_U**2 + Omega_W**2)**2)*(Omega_U**2*kap**2*lam_W**2 + Omega_W**2*lam_U**2 + 2*kap**2*lam_R*lam_U*lam_W))))
+
+Exact quartic pole polynomial:
+F(y) = K*Omega_U**2*Omega_W**2*varpi**2 - K*Omega_U**2*Omega_W**2*y - K*Omega_U**2*varpi**2*y + K*Omega_U**2*y**2 - K*Omega_W**2*varpi**2*y + K*Omega_W**2*y**2 - K*kap**2*lam_R**2*varpi**2 + K*kap**2*lam_R**2*y + K*varpi**2*y**2 - K*y**3 - M*Omega_U**2*Omega_W**2*varpi**2*y + M*Omega_U**2*Omega_W**2*y**2 + M*Omega_U**2*varpi**2*y**2 - M*Omega_U**2*y**3 + M*Omega_W**2*varpi**2*y**2 - M*Omega_W**2*y**3 + M*kap**2*lam_R**2*varpi**2*y - M*kap**2*lam_R**2*y**2 - M*varpi**2*y**3 + M*y**4 - Omega_U**2*Omega_W**2*kap**2*lam_B**2 + Omega_U**2*kap**2*lam_B**2*y - Omega_U**2*kap**2*lam_W**2*varpi**2 + Omega_U**2*kap**2*lam_W**2*y + Omega_W**2*kap**2*lam_B**2*y - Omega_W**2*lam_U**2*varpi**2 + Omega_W**2*lam_U**2*y + kap**4*lam_B**2*lam_R**2 - kap**2*lam_B**2*y**2 - 2*kap**2*lam_R*lam_U*lam_W*varpi**2 + 2*kap**2*lam_R*lam_U*lam_W*y + kap**2*lam_W**2*varpi**2*y - kap**2*lam_W**2*y**2 + lam_U**2*varpi**2*y - lam_U**2*y**2
+
+Concrete sample compatibility branch:
+C                 = 0.45015815807855303
+G_U               = 3/10
+G_W               = 0.36012652646284243
+R                 = 0.22507907903927651
+Delta             = 1.909339408178831
+Q                 = 0.3547252832105145
+P                 = 0.4276502501746254
+B0                = 0.05066059182116889
+B2                = 0.012665147955292222
+B4                = 0.0031662869888230555
+Z0                = 0.18578429884755748
+Z2                = 0.1729553206266028
+Z4                = 0.17082528586066764
+N0                = 0.050166198024959106
+P0_target_compat  = 0.002069792318062883
+K_compat          = 24.473754879290976
+D0_compat         = 24.23730998862225
+
+Compatibility-branch pole census:
+omega_* = 0.971575315129466,   R_Q,* = 0.159888393135938
+omega_* = 1.416512901225611,   R_Q,* = 0.000806281535937
+omega_* = 1.997535678933612,   R_Q,* = 30.199907560249976
+omega_* = 4.949054323643118,   R_Q,* = 36.171186483269544
+
+Illustrative compatibility-branch thresholds at x = 1:
+R_Q,* required for eta = 0.1 : 21.854566296358396
+R_Q,* required for eta = 0.3 : 7.8618736841685335
+
+Compatibility-family scan:
+(lambda_W, P0_target_compat, K_compat, lower wall R_Q, upper wall R_Q)
+(0.2, 0.0005769708798430451, 29.31584648723137, 138.81413694208146, 137.50254660071312)
+(0.4, 0.002069792318062882, 24.47375487929097, 30.19990756024997, 36.17118648326956)
+(0.6, 0.004865681200486083, 21.154428740184475, 12.834860027398724, 16.757551032711632)
+(0.8, 0.009169913681573038, 19.029830090056127, 7.060742422079904, 9.690357852420549)
+(1.0, 0.01498119032409064, 17.78245918229169, 4.459228500986801, 6.301110944695505)
+
+Finite dynamic survival windows in P0_target_compat:
+10% loss benchmark:
+  lower wall root lambda_W = 0.465761354958082
+  lower wall P0_target_compat <= 0.0028313316855593336
+  upper wall root lambda_W = 0.5215717498376773
+  upper wall P0_target_compat <= 0.003596510589684656
+30% loss benchmark:
+  lower wall root lambda_W = 0.7594939812724786
+  lower wall P0_target_compat <= 0.008173394309713826
+  upper wall root lambda_W = 0.8919936925437852
+  upper wall P0_target_compat <= 0.011663392979017383
+
+Stage 223 audit completed successfully.
+
+EXIT_CODE: 0

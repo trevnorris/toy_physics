@@ -17,7 +17,7 @@ This appendix is the operating manual for completing the derivation companion.  
 
 The appendix should be used whenever a new section, stage entry, theorem block, source card, reproducibility card, or downstream citation is added.  It is also the maintenance checklist for freezing a stable release of the companion.
 
-The workflow assumes the document structure already fixed in the front matter: the theorem-block chapters in Parts I--VIII give the readable derivation path; the stage appendices preserve the 236-stage verification trail; the result-anchor map gives citation handles; the source-file index records provenance; and the reproducibility map records what kind of evidence supports each claim.  The central rule is that no fill operation is complete until all of those layers agree.
+The workflow assumes the document structure already fixed in the front matter: the theorem-block chapters in Parts I--VIII give the readable derivation path; the stage appendices preserve the 253-stage verification trail; the result-anchor map gives citation handles; the source-file index records provenance; and the reproducibility map records what kind of evidence supports each claim.  The central rule is that no fill operation is complete until all of those layers agree.
 
 \section{What ``filled'' means}
 \label{sec:fill-definition}
@@ -57,7 +57,7 @@ Result anchor map & Public citation handles such as \resultanchor{MTDC-T1}--\res
 \addlinespace
 Dependency map & Upstream and downstream theorem dependencies. & Prevent silent use of formula gates and keep the fill order aligned with actual dependency order. \\
 \addlinespace
-Stage ledger & Consolidated Stage 001--236 map. & Verify that every filled theorem block points to the right stages and that every stage entry exports the correct result. \\
+Stage ledger & Consolidated Stage 001--253 map. & Verify that every filled theorem block points to the right stages and that every stage entry exports the correct result. \\
 \addlinespace
 Reproducibility map & Script, search, symbolic, numerical, and repository-freeze evidence. & Decide whether a derivation is hand-checkable, script-backed, numerically located, or still open. \\
 \addlinespace
@@ -115,7 +115,7 @@ File family & Role & Fill cadence \\
 \addlinespace
 \WorkflowFile{appendices/stage_ledger.tex} & One-line registry of every stage, status, output, anchor, and source range. & Update whenever a stage status, title, output, or anchor changes. \\
 \addlinespace
-\WorkflowFile{appendices/stage_appendix_part*.tex} & Detailed verification trail for Stages 001--236.  This is the audit spine of the companion. & Fill stage by stage; revise when theorem-block wording exposes missing assumptions. \\
+\WorkflowFile{appendices/stage_appendix_part*.tex} & Detailed verification trail for Stages 001--253.  This is the audit spine of the companion. & Fill stage by stage; revise when theorem-block wording exposes missing assumptions. \\
 \addlinespace
 \WorkflowFile{appendices/reproducibility_map.tex} & Evidence and audit registry: symbolic scripts, hand checks, numerical searches, branch-realization gates, and freeze protocol. & Update whenever a result becomes script-backed, numerically located, or branch-realization dependent. \\
 \addlinespace
@@ -130,11 +130,11 @@ The front matter is allowed to define rules.  The theorem-block chapters are all
 \section{Recommended global fill order}
 \label{sec:fill-global-order}
 
-The safest fill order is deliberately conservative.  It avoids polishing a theorem block before the associated stage entries are stable, but it also avoids burying the reader in 236 raw entries before the citation structure exists.
+The safest fill order is deliberately conservative.  It avoids polishing a theorem block before the associated stage entries are stable, but it also avoids burying the reader in 253 raw entries before the citation structure exists.
 
 \begin{enumerate}[leftmargin=2.5em]
 \item \textbf{Freeze the front-matter rules.}  Confirm that the purpose, reading rules, status firewall, notation firewall, result anchors, and dependency map are internally consistent.
-\item \textbf{Fill one complete pilot block.}  Use Part I and Stages 001--006 as the pilot because those stages define the parent lift, reduced wall variables, first BdG coupling, Maxwell/mixed bridge, grouped normalization bridge, and full grouped bundle.
+\item \textbf{Fill one complete pilot block.}  Use Part I and Stages 001--023 as the pilot because those stages define the parent lift, reduced wall variables, first BdG coupling, Maxwell/mixed bridge, grouped normalization bridge, and full grouped bundle.
 \item \textbf{Audit the pilot block end to end.}  Check that the theorem statements, stage entries, equation labels, result anchors, source entries, and reproducibility notes agree.
 \item \textbf{Fill the remaining parts by stage range.}  Work through Parts II--VIII in order, always keeping the corresponding stage appendix ahead of or tied with the theorem-block prose.
 \item \textbf{Update the consolidated stage ledger after each part.}  Do not wait until the end to reconcile stage statuses and outputs.
@@ -145,7 +145,7 @@ The safest fill order is deliberately conservative.  It avoids polishing a theor
 \item \textbf{Freeze a release manifest.}  Only after the ledger builds cleanly and the status audit passes should downstream framework and application papers be revised to cite the companion.
 \end{enumerate}
 
-This order is not meant to slow down writing.  It is meant to keep later corrections local.  If a status demotion is discovered in Stage 154, the demotion should affect the corresponding theorem block, result anchor, and downstream wording immediately rather than being discovered after future papers have already cited the stronger claim.
+This order is not meant to slow down writing.  It is meant to keep later corrections local.  If a status demotion is discovered in Stage 171, the demotion should affect the corresponding theorem block, result anchor, and downstream wording immediately rather than being discovered after future papers have already cited the stronger claim.
 
 \section{Unit of work}
 \label{sec:fill-unit-of-work}
@@ -177,7 +177,7 @@ Before writing prose, identify the source material that controls the section.  T
 =
 (\text{source file},\ \text{stage range},\ \text{prior anchors},\ \text{script artifacts},\ \text{status ceiling}).
 \]
-For example, a section in Part V may draw from Stages 147--183, from the weak-axisymmetric transport results, from the exact quotient/orbit theorem, and from the compact program status summary.  The section should not begin by restating every stage.  It should begin by deciding which result it is trying to make citable.
+For example, a section in Part V may draw from Stages 164--200, from the weak-axisymmetric transport results, from the exact quotient/orbit theorem, and from the compact program status summary.  The section should not begin by restating every stage.  It should begin by deciding which result it is trying to make citable.
 
 \subsection{Step 2: write the hypothesis box first}
 \label{subsec:workflow-hypothesis-box-first}
@@ -409,7 +409,7 @@ Intermediate algebra should receive ordinary equation labels only when it is ref
 Use stable semantic labels rather than line-number-like labels.  Examples:
 \[
 \begin{aligned}
-\texttt{eq:stage005-p0-normalization-target},\\
+\texttt{eq:stage022-p0-normalization-target},\\
 \texttt{eq:weak-axisymmetric-b-equals-3a},\\
 \texttt{eq:rigid-mouth-uv-lock}.
 \end{aligned}

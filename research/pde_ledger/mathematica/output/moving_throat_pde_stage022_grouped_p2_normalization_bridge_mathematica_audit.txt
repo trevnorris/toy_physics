@@ -1,0 +1,100 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl
+# Date: 2026-05-11T12:42:52-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 005 — GROUPED P2 NORMALIZATION BRIDGE
+========================================================================================
+
+========================================================================================
+SECTION I — CONSERVATIVE OPERATOR TO RESPONSE
+========================================================================================
+Y_resp(omega) = 1 - (d2*omega^2)/d0 + (d2^2*omega^4)/d0^2 - (d4*omega^4)/d0
+u2 formula = 0
+PASS: u2 formula
+u4 formula = 0
+PASS: u4 formula
+
+========================================================================================
+SECTION II — OUTGOING PREFACTOR AND BRANCH COEFFICIENTS
+========================================================================================
+P0 formula = 0
+PASS: P0 formula
+P2 formula = 0
+PASS: P2 formula
+P4 formula = 0
+PASS: P4 formula
+K0 formula = 0
+PASS: K0 formula
+K2 formula = 0
+PASS: K2 formula
+K4 formula = 0
+PASS: K4 formula
+Gamma5 formula = 0
+PASS: Gamma5 formula
+
+========================================================================================
+SECTION III — GROUPED REAL P2 INVERSE MAP
+========================================================================================
+x20 recovered = 0
+PASS: x20 recovered
+x21 recovered = 0
+PASS: x21 recovered
+x22 recovered = 0
+PASS: x22 recovered
+xbar isotropic = 0
+PASS: xbar isotropic
+ax isotropic = 0
+PASS: ax isotropic
+bx isotropic = 0
+PASS: bx isotropic
+
+========================================================================================
+SECTION IV — STAGE-4 ONE-PORT PROTOTYPE
+========================================================================================
+N0 prototype = 0
+PASS: N0 prototype
+N2 prototype = 0
+PASS: N2 prototype
+N4 prototype = 0
+PASS: N4 prototype
+N0 round-trip = 0
+PASS: N0 round-trip
+N2 round-trip = 0
+PASS: N2 round-trip
+N4 round-trip = 0
+PASS: N4 round-trip
+
+========================================================================================
+SECTION V — STAGE-4 OUTGOING l=2 FINGERPRINT ANCHOR
+========================================================================================
+Stage-4 A coefficient = 0
+PASS: Stage-4 A coefficient
+Stage-4 B coefficient = 0
+PASS: Stage-4 B coefficient
+Stage-4 G5 coefficient = 0
+PASS: Stage-4 G5 coefficient
+
+========================================================================================
+SECTION VI — QUADRUPOLE NORMALIZATION PRODUCT
+========================================================================================
+Gamma5_port = a^5/(27*cS^5)
+Required mhat^2 * P0 = (54*cS^5*G)/(5*a^5*c^5*mhat^2)
+mhat=1 K0 target = 0
+PASS: mhat=1 K0 target
+mhat=1 K2 target = 0
+PASS: mhat=1 K2 target
+mhat=1 K4 target = 0
+PASS: mhat=1 K4 target
+
+FINAL STAGE-005 LEDGER:
+  Verified the exact grouped P2 bridge from conservative operator moments to
+  normalized response moments, outgoing prefactor coefficients, the one-port
+  prototype N0/N2/N4 formulas, and the universal quadrupole normalization product.
+
+EXIT_CODE: 0

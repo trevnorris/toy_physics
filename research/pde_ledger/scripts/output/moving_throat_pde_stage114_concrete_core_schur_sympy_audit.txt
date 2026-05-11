@@ -1,0 +1,28 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+# Date: 2026-05-11T12:45:22-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 97 — CONCRETE TWO-CHANNEL CORE OUTLET MODEL
+========================================================================================
+delta_Lambda(D) =
+  2                     2 
+gₛ     (Kₛ⋅g_q - gₛ⋅lam)  
+─── - ────────────────────
+Kₛ       ⎛              2⎞
+      Kₛ⋅⎝D⋅K_q⋅Kₛ + lam ⎠
+Schur form identity = 0
+low-frequency normalized outlet identity = 0
+
+Exact core-level identifications:
+rho_c   = g_s**2/K_s
+sigma_c = (K_s*g_q - g_s*lam)**2/(K_s*(K_q*K_s + lam**2))
+kappa_c = K_q*K_s*kappa0/(K_q*K_s + lam**2)
+gamma_c = K_q*K_s*gamma0/(K_q*K_s + lam**2)
+
+EXIT_CODE: 0

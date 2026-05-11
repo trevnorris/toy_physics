@@ -1,0 +1,73 @@
+Loaded config from /var/projects/toy_physics/research/pde_ledger/scripts/numerical/stage248_event_chain_samples.json
+
+=== Stage 248: dynamic event-chain stress ===
+
+wide_corridor_success: expected=success
+  raw barrier data: strength=7, scale=0.3, r_contact=0.42, r0=5
+  classification: status=success, reason=success
+[PASS] wide_corridor_success expected success status: status=success, reason=success
+  peak/turning data: r_peak=0.841232728916, r_minus=0.483260795412, r_plus=1.32123746149
+  barrier heights: V0=0.199999595558, V_contact=0.654773633361, V_peak=0.764806779554, Esub=0.67127860529
+  actions: I_new=0.275058875751, I_coul_quad=0.968509313321, I_coul_closed=0.968509313321, T_ratio=4.00242679195
+  diagnostics: Xi_turn=0.382648798303, lambda_th=2.33444014222, |V'(r_+)|=0.287554430353
+[PASS] wide_corridor_success dynamic corridor ordering: v_sub=0.970854273032, v_crit=1.06283317976, v_cross=1.31925422475, v_contact=2.08851735973
+[PASS] wide_corridor_success Coulomb action quadrature: quad=0.968509313321, closed=0.968509313321
+[PASS] wide_corridor_success lowered branch beats Coulomb: I_new=0.275058875751, I_coul=0.968509313321, ratio=4.00242679195
+[PASS] wide_corridor_success Xi_turn derived from monotone profile: Xi_launch=0.113178275559, Xi_turn=0.382648798303, Xi_contact=0.698984876261
+[PASS] wide_corridor_success derivative at r_plus: fd=0.287554430374, exact=0.287554430353
+[PASS] wide_corridor_success turning transport law: fd=-3.47760247697, exact=-3.47760247954
+
+narrow_corridor_success: expected=success
+  raw barrier data: strength=8, scale=0.24, r_contact=0.4, r0=4.6
+  classification: status=success, reason=success
+[PASS] narrow_corridor_success expected success status: status=success, reason=success
+  peak/turning data: r_peak=0.580606615017, r_minus=0.43054025517, r_plus=0.713908906751
+  barrier heights: V0=0.217391266407, V_contact=0.9889951773, V_peak=1.01039018577, Esub=0.992204428571
+  actions: I_new=0.0522951197684, I_coul_quad=0.719474060496, I_coul_closed=0.719474060496, T_ratio=3.79755668179
+  diagnostics: Xi_turn=0.465713803822, lambda_th=3.81848462805, |V'(r_+)|=0.25984245721
+[PASS] narrow_corridor_success dynamic corridor ordering: v_sub=1.09179679862, v_crit=1.10453534914, v_cross=1.60465783493, v_contact=1.87395455805
+[PASS] narrow_corridor_success Coulomb action quadrature: quad=0.719474060496, closed=0.719474060496
+[PASS] narrow_corridor_success lowered branch beats Coulomb: I_new=0.0522951197684, I_coul=0.719474060496, ratio=3.79755668179
+[PASS] narrow_corridor_success Xi_turn derived from monotone profile: Xi_launch=0.14434115352, Xi_turn=0.465713803822, Xi_contact=0.60164987967
+[PASS] narrow_corridor_success derivative at r_plus: fd=0.259842457155, exact=0.25984245721
+[PASS] narrow_corridor_success turning transport law: fd=-3.84848576913, exact=-3.8484857738
+
+near_top_success: expected=success
+  raw barrier data: strength=7, scale=0.28, r_contact=0.44, r0=5.4
+  classification: status=success, reason=success
+[PASS] near_top_success expected success status: status=success, reason=success
+  peak/turning data: r_peak=0.707573600304, r_minus=0.549327658727, r_plus=0.870348139595
+  barrier heights: V0=0.185185155713, V_contact=0.818489962722, V_peak=0.854019212294, Esub=0.836254587508
+  actions: I_new=0.0405603216645, I_coul_quad=0.582559433111, I_coul_closed=0.582559433111, T_ratio=2.95647660417
+  diagnostics: Xi_turn=0.416838971445, lambda_th=4.11346227881, |V'(r_+)|=0.203297011332
+[PASS] near_top_success dynamic corridor ordering: v_sub=1.20283870887, v_crit=1.21913818065, v_cross=1.63974936855, v_contact=2.15382970932
+[PASS] near_top_success Coulomb action quadrature: quad=0.582559433111, closed=0.582559433111
+[PASS] near_top_success lowered branch beats Coulomb: I_new=0.0405603216645, I_coul=0.582559433111, ratio=2.95647660417
+[PASS] near_top_success Xi_turn derived from monotone profile: Xi_launch=0.123971864593, Xi_turn=0.416838971445, Xi_contact=0.567217556201
+[PASS] near_top_success derivative at r_plus: fd=0.203297011303, exact=0.203297011332
+[PASS] near_top_success turning transport law: fd=-4.91890554669, exact=-4.91891146579
+
+weak_lowering_fail: expected=failure
+  raw barrier data: strength=4, scale=0.12, r_contact=0.25, r0=5
+  classification: status=failure, reason=no_peak
+[PASS] weak_lowering_fail expected failure status: status=failure
+[PASS] weak_lowering_fail expected failure reason: reason=no_peak, expected=no_peak
+
+double_stationary_fail: expected=failure
+  raw barrier data: strength=8, scale=0.24, r_contact=0.34, r0=5
+  classification: status=failure, reason=multiple_stationary_points
+[PASS] double_stationary_fail expected failure status: status=failure
+[PASS] double_stationary_fail expected failure reason: reason=multiple_stationary_points, expected=multiple_stationary_points
+
+=== Stage 248: near-top parabolic action stress ===
+
+soft_cap_probe: m_s=1, hbar_eff=1, DeltaE=0.4, Kpeak=2.2, y_turn=0.603022689156
+[PASS] soft_cap_probe near-top quadrature: quad=0.847224533986, closed=0.847224533986
+
+steep_cap_probe: m_s=1.6, hbar_eff=0.75, DeltaE=0.9, Kpeak=5, y_turn=0.6
+[PASS] steep_cap_probe near-top quadrature: quad=2.13258381032, closed=2.13258381032
+
+shallow_cap_probe: m_s=0.85, hbar_eff=1.2, DeltaE=0.25, Kpeak=1.3, y_turn=0.620173672946
+[PASS] shallow_cap_probe near-top quadrature: quad=0.529232397395, closed=0.529232397395
+
+All Stage 248 numerical stress checks passed.

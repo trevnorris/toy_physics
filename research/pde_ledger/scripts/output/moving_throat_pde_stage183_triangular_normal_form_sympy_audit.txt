@@ -1,0 +1,76 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+# Date: 2026-05-11T12:48:17-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT
+========================================================================================
+
+========================================================================================
+Branch-adapted nontracking slippage
+========================================================================================
+Sigma_nt =
+Σ_Z⋅(deltaU + 1)⋅(-11⋅deltaU + epsW⋅(9⋅deltaU + 11) - 11) - 2⋅Σ_del⋅(χ₀⋅(-11⋅d ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                           (deltaU + 1)⋅(-11⋅d ↪
+
+↪ eltaU + epsW⋅(9⋅deltaU + 11) - 11) - 2⋅deltaU⋅epsW) - 2⋅Σₑₚₛ⋅epsW⋅(deltaU +  ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪ eltaU + epsW⋅(9⋅deltaU + 11) - 11)                                           ↪
+
+↪ 1)⋅(9⋅deltaU + 11)
+↪ ──────────────────
+↪                   
+Xi_1 - (A_tr Sigma_tr + Sigma_nt) = 0
+R_1 + Xi_1 + eps_eta/(1-eps_eta) Sigma_eta = 0
+
+========================================================================================
+Triangular observable ledger
+========================================================================================
+Theta_1 =
+            -Σₜᵣ⋅χ₀⋅deltaU             
+───────────────────────────────────────
+(χ₀ + 1)⋅(deltaU + 1)⋅(χ₀ + deltaU + 1)
+Xi_1 =
+Σₙₜ⋅(χ₀ + 1)⋅(deltaU + 1) + 2⋅Σₜᵣ⋅χ₀
+────────────────────────────────────
+       (χ₀ + 1)⋅(deltaU + 1)        
+R_1 + Xi_1 =
+Σₑₜₐ⋅epsₑₜₐ
+───────────
+epsₑₜₐ - 1 
+
+========================================================================================
+Exact inverse reconstruction
+========================================================================================
+Sigma_tr inverse = 0
+A_tr/C_tr = 2*(chi0 + deltaU + 1)/deltaU
+A_tr/C_tr - 2(1+chi0+deltaU)/deltaU = 0
+Sigma_nt inverse = 0
+Sigma_eta inverse = 0
+
+========================================================================================
+Triple-rigidity theorem
+========================================================================================
+Theta_1|(Sigma_tr=0) = 0
+Xi_1|(Sigma_tr=Sigma_nt=0) = 0
+(R_1+Xi_1)|(Sigma_eta=0) = 0
+
+Carry-forward formulas:
+  Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi
+  Sigma_nt = Sigma_Z
+             + [2 eps_W/(1-eps)] * [(11+9 delta_U)/(11(1+delta_U))] Sigma_eps
+             - [2 chi_0/(1+delta_U) + 4 eps_W delta_U/(11(1-eps)(1+delta_U)^2)] Sigma_del
+  Theta_1   = -C_tr Sigma_tr
+  Xi_1      = A_tr Sigma_tr + Sigma_nt
+  R_1+Xi_1  = -(eps_eta/(1-eps_eta)) Sigma_eta
+  Sigma_tr  = -((1+chi_0)(1+delta_U)(1+chi_0+delta_U)/(chi_0 delta_U)) Theta_1
+  Sigma_nt  = Xi_1 + 2(1+chi_0+delta_U)/delta_U * Theta_1
+  Sigma_eta = -((1-eps_eta)/eps_eta) (R_1 + Xi_1)
+
+EXIT_CODE: 0

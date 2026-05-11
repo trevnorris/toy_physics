@@ -1,0 +1,69 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl
+# Date: 2026-05-11T12:48:43-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 022 — SPLIT-U SECTOR
+========================================================================================
+kappa0 = (2*Sqrt[2])/Pi
+kappa1 = -4/(3*Pi)
+sigma = 88/(9*Pi^2)
+lambda0 = 2/9
+
+----------------------------------------------------------------------------------------
+1. Exact U-mode split and direct wall softening
+----------------------------------------------------------------------------------------
+A0 = (kEtaEff - epsEta*kEtaEff)/muEta
+A1 = ((1 + delta0 + deltaU + delta0*deltaU - epsEta)*kEtaEff)/((1 + deltaU)*muEta)
+delta_split = (delta0 + (deltaU*epsEta)/(1 + deltaU))/(1 - epsEta)
+A0 direct - expected = 0
+PASS: A0 direct - expected
+A1 direct - expected = 0
+PASS: A1 direct - expected
+
+----------------------------------------------------------------------------------------
+2. Exact mixed blocking ratio with split U sector
+----------------------------------------------------------------------------------------
+S_U = (8*(11 + 9*deltaU))/(9*(1 + deltaU)*kU*Pi^2)
+eps_W_split = epsW - (2*deltaU*epsW)/(11*(1 + deltaU))
+eps_W direct - split formula = 0
+PASS: eps_W direct - split formula
+
+----------------------------------------------------------------------------------------
+3. Mixed loading vector and exact direction-splitting invariant
+----------------------------------------------------------------------------------------
+z0 = (2*Sqrt[2]*cEtaW*(1 + rho0))/(Sqrt[muEta*muW]*Pi)
+z1 = (-4*cEtaW*(1 + deltaU + rho0))/(3*(1 + deltaU)*Sqrt[muEta*muW]*Pi)
+R_U = (1 + deltaU + rho0)/(1 + deltaU + rho0 + deltaU*rho0)
+z1/z0 - (kappa1/kappa0) R_U = 0
+PASS: z1/z0 - (kappa1/kappa0) R_U
+D_dir = (8*Sqrt[2]*cEtaW*deltaU*rho0)/(3*(1 + deltaU)*Sqrt[muEta*muW]*Pi^2)
+direction-splitting invariant = 0
+PASS: direction-splitting invariant
+
+----------------------------------------------------------------------------------------
+4. Split-U continuum placement map
+----------------------------------------------------------------------------------------
+M_mix^(split U) = (88*(1 + deltaU)*(1 + rho0)^2*zW)/((-1 + epsEta)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)*Pi^2)
+R_target^(split U) = ((1 - epsEta)*(1 + (-1 + (2*deltaU)/(11*(1 + deltaU)))*epsW)^2*lambda)/((1 + rho0)^2*zW)
+product = (8*(11 + 11*deltaU - 11*epsW - 9*deltaU*epsW)*lambda)/(11*(1 + deltaU)*Pi^2)
+product law = 0
+PASS: product law
+
+----------------------------------------------------------------------------------------
+5. Small-splitting expansions
+----------------------------------------------------------------------------------------
+delta_split = (delta0 + deltaU*epsEta)/(1 - epsEta) + O(deltaU^2)
+eps_W_split = epsW - (2*deltaU*epsW)/11 + O(deltaU^2)
+R_U = 1 - (deltaU*rho0)/(1 + rho0) + O(deltaU^2)
+M_mix_split / M_mix_flat = 1 + (2*deltaU*epsW)/(11*(-1 + epsW)) + O(deltaU^2)
+R_target_split / R_target_flat = 1 - (4*deltaU*epsW)/(11*(-1 + epsW)) + O(deltaU^2)
+
+Stage 039 Mathematica audit passed.
+
+EXIT_CODE: 0

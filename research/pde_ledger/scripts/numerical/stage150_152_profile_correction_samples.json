@@ -1,0 +1,62 @@
+{
+  "schema": "moving_throat_numerical_stage150_152_v1",
+  "tolerances": {
+    "value_tol": 1e-6,
+    "derivative_tol": 2e-5,
+    "curvature_tol": 1e-5
+  },
+  "constants": {
+    "Pi_star_expected": 1.50882951349316,
+    "Sigma_m_star_expected": 0.451485277739090,
+    "g_star_expected": 0.758035078944663,
+    "S_star_expected": 0.658075937605429,
+    "gprime_star_expected": 0.0714453558083195,
+    "A_T_expected": -4.27263956256927,
+    "B_T_expected": 0.134875005736706,
+    "T_hat_star_expected": 0.901484054174205,
+    "cov_cR_expected": 0.0648069687666328,
+    "cov_KR_expected": 0.0388718368650403,
+    "delta_g_expected": -0.0648069687666328,
+    "delta_S_expected": -0.0388718368650403,
+    "deltaPi_expected": 0.907084414842908,
+    "deltaT_expected": 0.271653979462338,
+    "g1_expected": 0.684423574065325,
+    "S1_expected": 0.616333130570251,
+    "Pi1_expected": 2.53914847609768,
+    "T1_expected": 1.21036942084359
+  },
+  "finite_difference_steps": [
+    1e-6,
+    1e-5
+  ],
+  "curvature_steps": [
+    1e-4,
+    1e-3
+  ],
+  "lambda_samples": [
+    {
+      "name": "lambda_0p10",
+      "lambda": 0.1,
+      "kind": "perturbative",
+      "relative_envelope": 0.02
+    },
+    {
+      "name": "lambda_0p25",
+      "lambda": 0.25,
+      "kind": "perturbative",
+      "relative_envelope": 0.04
+    },
+    {
+      "name": "lambda_0p50",
+      "lambda": 0.5,
+      "kind": "stress",
+      "relative_envelope": 0.08
+    },
+    {
+      "name": "lambda_1p00",
+      "lambda": 1.0,
+      "kind": "one-step-nonlinear",
+      "relative_envelope": 0.15
+    }
+  ]
+}

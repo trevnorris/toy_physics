@@ -1,33 +1,76 @@
-\section[Stage 031]{Stage 031: Exact Support-Compensation Theorem on the Physical Tracking Branch}
+\section[Stage 031]{Stage 031: Reachability and Stable-Side Monotonicity}
 \label{stage:031}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the reduced support-compensation theorem; \StatusOpen{} for actual PDE placement of \(\zeta_{\rm phys}\).}
-\stagefield{Purpose}{Stage~031 proves that there is no reduced-level support no-go on the coherent tracking branch: if a finite support ratio above threshold exists, it reaches the target before the softening pole.}
-\stagefield{Inputs}{The support factor \(S(\zeta;\epsilon)\), mixed baseline \(M_{\rm mix}\), and tracking-branch required load \(M_{\rm req}\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{\StatusExactClosure{} inside the selected lower-mode branch.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage031_support_compensation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage031_support_compensation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage031_support_compensation_theorem_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage031_support_compensation_theorem_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~031 proves that the selected prefactor is strictly increasing as the rank-one loading approaches the softening threshold.  This turns selected normalization into a one-dimensional reachability theorem.}
+
+\stagefield{Inputs}{The stage uses \(\lambda_-(\alpha_0)\), \(s_-(\alpha_0)\), \(P_{0,-}=\beta_0s_-/\lambda_-\), and the stable interval \(0\leq\alpha_0<\alpha_{\rm crit}\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-Define
+\paragraph{1. Derivative of the selected overlap.}
+The exact derivative is
 \begin{equation}
-\label{eq:app-stage031-Sreq}
-S_{\rm req}=\frac{M_{\rm req}}{M_{\rm mix}}.
-\end{equation}
-Solving \(S(\zeta;\epsilon)=S_{\rm req}\) gives the exact inverse
-\begin{equation}
-\label{eq:app-stage031-zeta-req}
+\label{eq:app-stage031-ds-dalpha}
 \boxed{
-\zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+\frac{ds_-}{d\alpha_0}=
+\frac{2(\Delta K_{\rm ax})^2\Pi_\kappa}{R_\lambda^3}>0}.
 \end{equation}
-On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds iff
+Using \(d\lambda_-/d\alpha_0=-s_-\), one obtains
 \begin{equation}
-\label{eq:app-stage031-success-iff}
+\label{eq:app-stage031-dP-dalpha}
 \boxed{
-\zeta_{\rm phys}\geq\zeta_{\rm req}}.
+\frac{dP_{0,-}}{d\alpha_0}
+=\beta_0\frac{(ds_-/d\alpha_0)\lambda_-+s_-^2}{\lambda_-^2}>0
+}
+\end{equation}
+whenever \(\lambda_->0\) and \(\beta_0>0\).
+
+\paragraph{2. Endpoints.}
+At zero loading,
+\begin{equation}
+\label{eq:app-stage031-P-zero}
+P_{0,-}(0)=\frac{\beta_0\kappa_0^2}{A}.
+\end{equation}
+The refined threshold, now with the isotropic \(U\)-softening absorbed into \(A,B\), is
+\begin{equation}
+\label{eq:app-stage031-alpha-crit}
+\boxed{
+\alpha_{\rm crit}=\frac{AB}{B\kappa_0^2+A\kappa_1^2}}.
+\end{equation}
+As \(\alpha_0\to\alpha_{\rm crit}^-\), \(\lambda_-\to0^+\) while \(s_-\) remains positive, so
+\begin{equation}
+P_{0,-}\to+\infty.
+\end{equation}
+Thus the stable branch spans
+\begin{equation}
+\label{eq:app-stage031-range}
+P_{0,-}(0)\leq P_{0,-}<+\infty.
 \end{equation}
 
-\stagefield{Output}{The exact threshold \eqref{eq:app-stage031-zeta-req} and success condition \eqref{eq:app-stage031-success-iff}.}
-\stagefield{Downstream use}{Stages~032--040 derive \(\zeta_{\rm phys}\) from finite-throat support, overlap, Robin compliance, and transport bias.}
+\paragraph{3. Unique crossing.}
+Because \(P_{0,-}\) is continuous and strictly increasing on the stable interval, every target satisfying
+\begin{equation}
+P_{\rm target}>P_{0,-}(0)
+\end{equation}
+has a unique \(\alpha_*\in(0,\alpha_{\rm crit})\) such that \(P_{0,-}(\alpha_*)=P_{\rm target}\).  For the quadrupole target,
+\begin{equation}
+P_{\rm target}=\frac{N_Q^{\rm target}}{\widehat m_-^{\,2}}.
+\end{equation}
+
+\stagefield{Output}{Stage~031 outputs the derivative identities \eqref{eq:app-stage031-ds-dalpha}--\eqref{eq:app-stage031-dP-dalpha}, the refined threshold \eqref{eq:app-stage031-alpha-crit}, and the unique stable crossing theorem.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The positivity of \(ds_-/d\alpha_0\) follows from \((\Delta K_{\rm ax})^2\Pi_\kappa>0\) and \(R_\lambda>0\).
+\item The derivative of \(P_{0,-}\) is positive because both terms in the numerator are nonnegative and \(s_-^2>0\).
+\item The divergence at softening follows from \(\lambda_-\to0^+\) with \(s_->0\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~032 modifies the target by fixing \(\widehat m_-\).  Stage~035 upgrades the reachability statement into the explicit monotone shape function \(F(\xi,\delta)\).}
+
+\clearpage
 

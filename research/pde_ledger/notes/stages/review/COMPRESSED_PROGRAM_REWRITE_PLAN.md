@@ -287,7 +287,7 @@ State the reduced conservative kernels and outgoing bridge that the PDE must sup
 ### Primary sources
 
 - existing handoff Sections `10-12`
-- stages `003-004`, `089`, `153`
+- stages `003-004`, `106`, `170`
 - theorem tightening notes for outgoing scope
 
 ### Done criteria
@@ -317,7 +317,7 @@ one clean branch stack.
 
 ### Primary sources
 
-- stages `108`, `112`, `120-127`
+- stages `125`, `129`, `137-144`
 - mouth physics audit
 
 ### Done criteria
@@ -345,9 +345,9 @@ self-consistency cost in one place.
 
 ### Primary sources
 
-- stages `137-140`
+- stages `154-157`
 - co-evolution physics audit
-- numerical stress results for `137-139`
+- numerical stress results for `154-156`
 
 ### Done criteria
 
@@ -372,7 +372,7 @@ Summarize the linear grouped anisotropy bridge without re-deriving every stage.
 
 ### Primary sources
 
-- stages `142-153`
+- stages `159-170`
 - realization/invariant physics audit
 
 ### Done criteria
@@ -401,8 +401,8 @@ invariants, and quotient theorem into one final reduced-invariant block.
 
 ### Primary sources
 
-- stages `020-031`
-- stages `165-170`
+- stages `037-048`
+- stages `182-187`
 - theorem tightening notes
 - realization/invariant physics audit
 

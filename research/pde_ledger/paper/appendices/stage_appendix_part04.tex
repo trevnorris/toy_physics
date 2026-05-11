@@ -2,12 +2,12 @@
 \chapter{Stage Appendix: Part IV -- Geometry Lane, Retarded Closure, Outlet/Core/Mouth Compensation}
 \label{app:stage-part-4}
 
-\section*{Stage range: 074--146}
-\addcontentsline{toc}{section}{Stage range: 074--146}
+\section*{Stage range: 091--163}
+\addcontentsline{toc}{section}{Stage range: 091--163}
 
 This appendix records the fourth theorem block of the moving-throat derivation ledger.  Parts I--III built the parent wall/BdG/Maxwell/mixed response compiler, the grouped real \(P_2\) normalization language, the selected finite-throat support front end, and the first explicit Family--1 support verdict.  Part IV asks a different question.  Once the support/source side is no longer the dominant reduced uncertainty, what prevents the reduced passive/outgoing quadrupole branch from becoming a full usable retarded branch?
 
-The answer is progressively narrowed across Stages 74--146.  First, the geometry lane is shown not to contaminate the isotropic grouped \(P_2\) carrier at linear order, so the conservative quadrupole module collapses to the forced contact-plus-pole split
+The answer is progressively narrowed across Stages~091--163.  First, the geometry lane is shown not to contaminate the isotropic grouped \(P_2\) carrier at linear order, so the conservative quadrupole module collapses to the forced contact-plus-pole split
 \begin{equation}
 \label{eq:app-part04-intro-3quarter-module}
 \widehat Y_Q^{\rm cons}(\omega)
@@ -22,14 +22,14 @@ The result anchor served by this appendix is \resultanchor{MTDC-T8}.  The block 
 \paragraph{Audit-path map.}
 For readability, this appendix organizes the seventy-three stages into eight audit paths:
 \begin{enumerate}[leftmargin=2.2em]
-\item Stages 074--082: geometry-lane firewall and the conservative \(3/4+1/4\) module.
-\item Stages 083--089: factorization of the reduced \(2.5\)PN obstruction and canonical outgoing \(l=2\) DtN closure.
-\item Stages 090--096: low-frequency outlet deformations and the compensated Robin--mixed branch.
-\item Stages 097--107: two-channel core realization, parent extraction, and geometric core selection.
-\item Stages 108--115: positive mouth-source theorem and explicit GNLS/localized-Maxwell mouth boundary layer.
-\item Stages 116--128: coupled mouth fixed point, core-to-mouth gain map, and canonical regular branch selection.
-\item Stages 129--136: first-order mouth-profile rigidity and finite mouth-only correction.
-\item Stages 137--146: co-evolving core--mouth branch, linear defect transport, D/N similarity, and the final off-family normal coordinate.
+\item Stages 091--099: geometry-lane firewall and the conservative \(3/4+1/4\) module.
+\item Stages 100--106: factorization of the reduced \(2.5\)PN obstruction and canonical outgoing \(l=2\) DtN closure.
+\item Stages 107--113: low-frequency outlet deformations and the compensated Robin--mixed branch.
+\item Stages 114--124: two-channel core realization, parent extraction, and geometric core selection.
+\item Stages 125--132: positive mouth-source theorem and explicit GNLS/localized-Maxwell mouth boundary layer.
+\item Stages 133--145: coupled mouth fixed point, core-to-mouth gain map, and canonical regular branch selection.
+\item Stages 146--153: first-order mouth-profile rigidity and finite mouth-only correction.
+\item Stages 154--163: co-evolving core--mouth branch, linear defect transport, D/N similarity, and the final off-family normal coordinate.
 \end{enumerate}
 The full stage-by-stage audit cards appear in \cref{sec:app-part04-stage-cards}.
 
@@ -83,7 +83,7 @@ Thus the end of Part IV is not a broad family of remaining outlet defects.  It i
 \end{theorem}
 
 \begin{proof}
-Stages 74--82 prove the geometry and conservative-normalization reductions.  Stages 83--89 prove the retarded factorization and canonical DtN coefficient.  Stages 90--100 classify admissible low-frequency outlet deformations and identify the compensated Robin--mixed class.  Stages 101--122 derive parent and mouth-layer parameters for that class.  Stages 123--140 select and renormalize the regular Family--1 co-evolving branch.  Stages 141--146 linearize the remaining defect and show that the outlet, D/N similarity, and parent compensation defects are all images of the same off-family normal coordinate.
+Stages~091--099 prove the geometry and conservative-normalization reductions.  Stages~100--106 prove the retarded factorization and canonical DtN coefficient.  Stages~107--124 classify admissible low-frequency outlet/core deformations and identify the compensated Robin--mixed class.  Stages~125--145 derive parent and mouth-layer parameters for that class and select the regular mouth branch.  Stages~146--163 linearize the remaining defect and show that the outlet, D/N similarity, and parent compensation defects are all images of the same off-family normal coordinate.
 \end{proof}
 
 \section{Geometry-lane firewall}
@@ -559,7 +559,7 @@ On the Family--1 preferred aspect ratio \(L/a=37/20\),
 \label{eq:app-part04-rF1}
 \mathfrak r_{F1}
 =
-\frac{\sqrt{4107-100\pi^2}}{10\pi}
+\frac{\sqrt{4107-117\pi^2}}{10\pi}
 \approx1.77799353547498.
 \end{equation}
 The lower compensated mouth-coupling branch is then
@@ -1211,42 +1211,8 @@ The preceding sections collect the derivation by audit path.  The following card
 
 
 \paragraph{Source layout.}
-Stages~074--146 are now sourced from the canonical files \StageFile{stages/stage_074.tex} through \StageFile{stages/stage_146.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
+Stages~091--163 are now sourced from the canonical files \StageFile{stages/stage_091.tex} through \StageFile{stages/stage_163.tex}.  The raw Markdown notes and audit artifacts are tracked in a repo-local provenance index, so they do not have to appear in the reader-facing PDF.  The stage files themselves carry the executable SymPy and Mathematica audit references.
 
-\input{stages/stage_074}
-\clearpage
-\input{stages/stage_075}
-\clearpage
-\input{stages/stage_076}
-\clearpage
-\input{stages/stage_077}
-\clearpage
-\input{stages/stage_078}
-\clearpage
-\input{stages/stage_079}
-\clearpage
-\input{stages/stage_080}
-\clearpage
-\input{stages/stage_081}
-\clearpage
-\input{stages/stage_082}
-\clearpage
-\input{stages/stage_083}
-\clearpage
-\input{stages/stage_084}
-\clearpage
-\input{stages/stage_085}
-\clearpage
-\input{stages/stage_086}
-\clearpage
-\input{stages/stage_087}
-\clearpage
-\input{stages/stage_088}
-\clearpage
-\input{stages/stage_089}
-\clearpage
-\input{stages/stage_090}
-\clearpage
 \input{stages/stage_091}
 \clearpage
 \input{stages/stage_092}
@@ -1358,4 +1324,38 @@ Stages~074--146 are now sourced from the canonical files \StageFile{stages/stage
 \input{stages/stage_145}
 \clearpage
 \input{stages/stage_146}
+\clearpage
+\input{stages/stage_147}
+\clearpage
+\input{stages/stage_148}
+\clearpage
+\input{stages/stage_149}
+\clearpage
+\input{stages/stage_150}
+\clearpage
+\input{stages/stage_151}
+\clearpage
+\input{stages/stage_152}
+\clearpage
+\input{stages/stage_153}
+\clearpage
+\input{stages/stage_154}
+\clearpage
+\input{stages/stage_155}
+\clearpage
+\input{stages/stage_156}
+\clearpage
+\input{stages/stage_157}
+\clearpage
+\input{stages/stage_158}
+\clearpage
+\input{stages/stage_159}
+\clearpage
+\input{stages/stage_160}
+\clearpage
+\input{stages/stage_161}
+\clearpage
+\input{stages/stage_162}
+\clearpage
+\input{stages/stage_163}
 \endgroup

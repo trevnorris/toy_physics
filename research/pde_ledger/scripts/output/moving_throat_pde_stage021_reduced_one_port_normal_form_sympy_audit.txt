@@ -1,0 +1,211 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+# Date: 2026-05-11T12:39:25-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION I — MIXED 4+1 MAXWELL FIELDS ARE GAUGE INVARIANT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I.1 — Mixed electric and mixed spatial fields
+----------------------------------------------------------------------------------------
+E_w gauge variation = 0
+C_a=F_aw gauge variation = 0
+So the mixed fields E_w = F_w0 and C_a = F_aw are honest gauge-invariant observables.
+This is the exact parent-theory reason the A_w / F_{mu w} sector can carry real reduced dynamics.
+
+========================================================================================
+SECTION II — CONSERVATIVE WALL + BRANE-MAXWELL + MIXED-MODE REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+II.1 — Euler–Lagrange equations
+----------------------------------------------------------------------------------------
+Q equation = 0
+A equation = 0
+W equation = 0
+
+----------------------------------------------------------------------------------------
+II.2 — Exact conservative self-energy
+----------------------------------------------------------------------------------------
+Sigma_EM+mix^cons(omega) =
+                  2 ⎛     2    2⎞      2 ⎛     2    2⎞
+-2⋅R⋅g_A⋅g_W + g_A ⋅⎝- Ω_W  + ω ⎠ + g_W ⋅⎝- Ω_A  + ω ⎠
+──────────────────────────────────────────────────────
+              2   ⎛   2    2⎞ ⎛   2    2⎞             
+             R  - ⎝Ω_A  - ω ⎠⋅⎝Ω_W  - ω ⎠             
+D_cons(omega) = K - M omega^2 - Sigma_EM+mix^cons(omega) =
+                 2 ⎛   2    2⎞      2 ⎛   2    2⎞   ⎛       2⎞ ⎛ 2   ⎛   2     ↪
+2⋅R⋅g_A⋅g_W + g_A ⋅⎝Ω_W  - ω ⎠ + g_W ⋅⎝Ω_A  - ω ⎠ + ⎝K - M⋅ω ⎠⋅⎝R  - ⎝Ω_A  - ω ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                 2   ⎛   2    2⎞ ⎛   2    2⎞                   ↪
+                                R  - ⎝Ω_A  - ω ⎠⋅⎝Ω_W  - ω ⎠                   ↪
+
+↪ 2⎞ ⎛   2    2⎞⎞
+↪  ⎠⋅⎝Ω_W  - ω ⎠⎠
+↪ ───────────────
+↪                
+↪                
+A exact solution residual = 0
+W exact solution residual = 0
+
+----------------------------------------------------------------------------------------
+II.3 — Low-frequency conservative coefficients
+----------------------------------------------------------------------------------------
+z0 formula = 0
+z2 formula = 0
+z4 formula = 0
+Sigma z0 = 0
+Sigma z2 = 0
+Sigma z4 = 0
+z0^(EM+mix) =
+   2    2      2    2              
+Ω_A ⋅g_W  + Ω_W ⋅g_A  + 2⋅R⋅g_A⋅g_W
+───────────────────────────────────
+             2    2    2           
+          Ω_A ⋅Ω_W  - R            
+z2^(EM+mix) =
+   4    2        2                4    2        2              2    2    2    2
+Ω_A ⋅g_W  + 2⋅Ω_A ⋅R⋅g_A⋅g_W + Ω_W ⋅g_A  + 2⋅Ω_W ⋅R⋅g_A⋅g_W + R ⋅g_A  + R ⋅g_W 
+───────────────────────────────────────────────────────────────────────────────
+                           4    4        2    2  2    4                        
+                        Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R                         
+z4^(EM+mix) =
+   6    2        4                  2    2                2  2    2        2   ↪
+Ω_A ⋅g_W  + 2⋅Ω_A ⋅R⋅g_A⋅g_W + 2⋅Ω_A ⋅Ω_W ⋅R⋅g_A⋅g_W + Ω_A ⋅R ⋅g_A  + 2⋅Ω_A ⋅R ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                            6    6        4    ↪
+                                                         Ω_A ⋅Ω_W  - 3⋅Ω_A ⋅Ω_ ↪
+
+↪ 2    2      6    2        4                  2  2    2      2  2    2      3 ↪
+↪  ⋅g_W  + Ω_W ⋅g_A  + 2⋅Ω_W ⋅R⋅g_A⋅g_W + 2⋅Ω_W ⋅R ⋅g_A  + Ω_W ⋅R ⋅g_W  + 2⋅R  ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪  4  2        2    2  4    6                                                  ↪
+↪ W ⋅R  + 3⋅Ω_A ⋅Ω_W ⋅R  - R                                                   ↪
+
+↪         
+↪ ⋅g_A⋅g_W
+↪ ────────
+↪         
+↪         
+
+========================================================================================
+SECTION III — OUTGOING DRESSING OF THE MIXED BLOCK
+========================================================================================
+
+----------------------------------------------------------------------------------------
+III.1 — First-order outgoing correction
+----------------------------------------------------------------------------------------
+Sigma_full(omega) =
+                  2 ⎛     2        2⎞      2 ⎛     2    2⎞
+-2⋅R⋅g_A⋅g_W + g_A ⋅⎝- Ω_W  + Π + ω ⎠ + g_W ⋅⎝- Ω_A  + ω ⎠
+──────────────────────────────────────────────────────────
+             2   ⎛   2    2⎞ ⎛     2        2⎞            
+            R  + ⎝Ω_A  - ω ⎠⋅⎝- Ω_W  + Π + ω ⎠            
+N(omega) from Sigma_full = Sigma_cons + Pi*N + O(Pi^2):
+                                               4    2        2                 ↪
+                                            Ω_A ⋅g_W  + 2⋅Ω_A ⋅R⋅g_A⋅g_W - 2⋅Ω ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+   4    4        4    2  2      4  4        2    4  2        2    2  2         ↪
+Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅ω  + Ω_A ⋅ω  - 2⋅Ω_A ⋅Ω_W ⋅ω  - 2⋅Ω_A ⋅Ω_W ⋅R  + 4⋅Ω_A ↪
+
+↪   2    2  2    2    2                2      2  4                             ↪
+↪ _A ⋅g_W ⋅ω  + R ⋅g_A  - 2⋅R⋅g_A⋅g_W⋅ω  + g_W ⋅ω                              ↪
+↪ ──────────────────────────────────────────────────────────────────────────── ↪
+↪ 2    2  4        2  2  2        2  6      4  4        2  2  2        2  6    ↪
+↪  ⋅Ω_W ⋅ω  + 2⋅Ω_A ⋅R ⋅ω  - 2⋅Ω_A ⋅ω  + Ω_W ⋅ω  + 2⋅Ω_W ⋅R ⋅ω  - 2⋅Ω_W ⋅ω  +  ↪
+
+↪                  
+↪                  
+↪ ─────────────────
+↪  4      2  4    8
+↪ R  - 2⋅R ⋅ω  + ω 
+N(omega) compact formula = 0
+N(0) positive-square form = 0
+N(0) =
+   4    2        2              2    2
+Ω_A ⋅g_W  + 2⋅Ω_A ⋅R⋅g_A⋅g_W + R ⋅g_A 
+──────────────────────────────────────
+      4    4        2    2  2    4    
+   Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R     
+So the mixed-sector outgoing port is transferred to the wall with a manifestly nonnegative coefficient.
+If Pi_out = + i Gamma_port omega^5 + O(omega^7), then
+delta D_wall^(odd) =
+          5 ⎛   4    2        2              2    2⎞ 
+-ⅈ⋅Γₚₒᵣₜ⋅ω ⋅⎝Ω_A ⋅g_W  + 2⋅Ω_A ⋅R⋅g_A⋅g_W + R ⋅g_A ⎠ 
+─────────────────────────────────────────────────────
+              4    4        2    2  2    4           
+           Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R            
+In this wall-operator convention the outgoing branch therefore appears with a negative imaginary sign.
+Equivalently, the normalized response/admittance carries the positive +i omega^5 sign used in the 2.5PN audit.
+
+========================================================================================
+SECTION IV — COMPACT OUTGOING l=2 FINGERPRINT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+IV.1 — Normalized outgoing l=2 response
+----------------------------------------------------------------------------------------
+Lambda2(k) =
+     5  6      4  5    3  4      2    
+  2⋅a ⋅k    ⅈ⋅a ⋅k    a ⋅k    a⋅k    3
+- ─────── + ─────── + ───── + ──── - ─
+    27         9        9      3     a
+Y2_hat(omega) =
+   5  5      4  4    2  2    
+ⅈ⋅a ⋅ω    4⋅a ⋅ω    a ⋅ω     
+─────── + ─────── + ───── + 1
+     5         4        2    
+27⋅cₛ     81⋅cₛ     9⋅cₛ     
+Y2_hat minimal branch = 0
+Gamma5_port - a^5/(27 c_s^5) = 0
+Gamma5_port =
+   5  
+  a   
+──────
+     5
+27⋅cₛ 
+So the compact outgoing l=2 branch starts at + i omega^5 with coefficient a^5/(27 c_s^5).
+
+========================================================================================
+SECTION V — DERIVATIVE-COUPLED SCALAR MIXED OUTLET STARTS AT i*omega^3
+========================================================================================
+N_scalar(omega) =
+             4  2  2           
+          Ω_A ⋅η ⋅ω            
+───────────────────────────────
+   4    4        2    2  2    4
+Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R 
+N_scalar leading term = 0
+Pi0_out * N_scalar =
+             4  2     3        
+        ⅈ⋅Ω_A ⋅η ⋅γ₁⋅ω         
+───────────────────────────────
+   4    4        2    2  2    4
+Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R 
+scalar odd order = 0
+So a derivative-coupled scalar mixed outlet converts the naive i*omega port law into an i*omega^3 wall correction.
+That matches the scalar rescue pattern isolated in the 2.5PN audit.
+
+========================================================================================
+FINAL STAGE-4 LEDGER
+========================================================================================
+Verified with SymPy:
+  • the mixed 4+1 Maxwell fields E_w = F_w0 and C_a = F_aw are gauge invariant;
+  • a reduced wall + brane-like Maxwell mode + mixed A_w/F_{mu w}/J^w-active mode has the exact conservative self-energy
+    Sigma_EM+mix^cons = [g_A^2 W + 2 g_A g_W R + g_W^2 A] / (A W - R^2);
+  • its low-frequency coefficients are explicit rational functions of the conservative pole data and couplings;
+  • dressing the mixed block by a retarded port Pi_out transfers the odd part to the wall with coefficient
+    N(0) = (Omega_A^2 g_W + R g_A)^2 / (Omega_A^2 Omega_W^2 - R^2)^2 >= 0;
+  • the compact outgoing l=2 branch has the normalized fingerprint
+    Y2_hat = 1 + a^2 omega^2/(9 c_s^2) + 4 a^4 omega^4/(81 c_s^4) + i a^5 omega^5/(27 c_s^5) + ...;
+  • therefore the first wall-level odd quadrupole coefficient is the outgoing-port coefficient
+    a^5/(27 c_s^5) multiplied by the conservative mixed-sector transfer factor N(0);
+  • if the scalar outlet enters only through a derivative mixed coupling, the wall-level scalar odd term starts at i*omega^3 rather than i*omega.
+
+EXIT_CODE: 0

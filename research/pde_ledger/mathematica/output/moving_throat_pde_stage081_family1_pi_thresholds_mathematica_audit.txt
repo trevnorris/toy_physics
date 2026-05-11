@@ -1,0 +1,42 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.wl
+# Date: 2026-05-11T13:32:02-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS
+========================================================================================
+Pi_of_zeta = ConditionalExpression[(cMix*(1 + zeta - 2*epsBlk*zeta))/(1 - epsBlk*zeta), (zeta > 1 && (epsBlk < zeta^(-1) || zeta*(1 + zeta - 2*epsBlk*zeta) < 0)) || zeta < 1]
+Q(zeta;eps_blk) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)
+Q(0)-1 = 0
+PASS: Q(0)-1
+Q(1)-2 = 0
+PASS: Q(1)-2
+dQ/dzeta exact formula = 0
+PASS: dQ/dzeta exact formula
+Pi_suff^(chi)/C_mix = 2.`18.026872146400304 + 0.5945216490631174229907338622621309967`17.0977570477335/(0.4054783509368825770092661377378690033`18.823908740944322 - 1.`18.79588001734408*epsBlk)
+Pi_fail^(chi)/C_mix = 2.`18.026872146400304 + 0.59473629440390667668268653208123479968`17.097881218864707/(0.40526370559609332331731346791876520032`18.823908740944322 - 1.`18.79588001734408*epsBlk)
+Pi_suff^(J)/C_mix = 2.00000000000000000000000000000000000001`18.026872146400304 + 0.59059610969176033840685123933930028504`17.095476550560257/(0.40940389030823966159314876066069971496`18.823908740944322 - 1.`18.79588001734408*epsBlk)
+Pi_fail^(J)/C_mix = 2.`18.026872146400304 + 0.59473600465578716554142661180656105942`17.097881051283526/(0.40526399534421283445857338819343894058`18.823908740944322 - 1.`18.79588001734408*epsBlk)
+Pi_max^(F1)/C_mix = 2.`18.026872146400304 + 0.59473631028862851826639193556857462192`17.097881228051925/(0.40526368971137148173360806443142537808`18.823908740944322 - 1.`18.79588001734408*epsBlk)
+Pi_suff^(chi)/C_mix at eps=0 diff = 1.214`0.9441237034490262*^-16
+PASS: Pi_suff^(chi)/C_mix at eps=0
+Pi_fail^(chi)/C_mix at eps=0 diff = 1.07`0.8890599995623186*^-16
+PASS: Pi_fail^(chi)/C_mix at eps=0
+Pi_suff^(J)/C_mix at eps=0 diff = 8.13`0.7741585397476165*^-17
+PASS: Pi_suff^(J)/C_mix at eps=0
+Pi_fail^(J)/C_mix at eps=0 diff = 1.418`1.0113527616546578*^-16
+PASS: Pi_fail^(J)/C_mix at eps=0
+Pi_max^(F1)/C_mix at eps=0 diff = 5.370000000000000000001`0.5896504906403154*^-17
+PASS: Pi_max^(F1)/C_mix at eps=0
+Blocking ceiling eps_blk < 0.40526368971137148173360806443142537808`20.
+blocking ceiling numeric check diff = 1.803639193556857462192`3.6484076270149695*^-17
+PASS: blocking ceiling numeric check
+
+Stage 081 Mathematica audit passed.
+
+EXIT_CODE: 0

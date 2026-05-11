@@ -1,0 +1,45 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage051_lowest_twin_criterion_mathematica_audit.wl
+# Date: 2026-05-11T12:51:53-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 034 — LOWEST TWIN CRITERION
+========================================================================================
+G_tr = (9*xi*(delta + xi))/(9*delta + (9 + 2*r^2)*xi)
+F_tr = -1/81*((9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi)^2)/((-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2)
+Pi_tr = -1/9*(xi*(delta + xi)*(9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi))/((-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2)
+Pi_tr - expected closed form = 0
+PASS: Pi_tr - expected closed form
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+Pi_tr(xi->0+) = 0
+Pi_tr(xi->1-) = Infinity
+C_mix = (-8*(-1 + eps)*lambda)/Pi^2
+S_req = (pBranch*Pi^2)/(8*lambda - 8*eps*lambda)
+zeta_req(Pi,C_mix,eps) = (8*(-1 + eps)*lambda + pBranch*Pi^2)/(8*(-1 + eps)*(-1 + 2*eps)*lambda + eps*pBranch*Pi^2)
+Physical-branch zeta_req = (8*(-1 + eps)*lambda - (Pi^2*xi*(delta + xi)*(9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi))/(9*(-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2))/(8*(-1 + eps)*(-1 + 2*eps)*lambda - (eps*Pi^2*xi*(delta + xi)*(9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi))/(9*(-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2))
+zeta_req at Pi = C_mix = 0
+PASS: zeta_req at Pi = C_mix
+zeta_req at Pi = 2 C_mix minus 1 = 0
+PASS: zeta_req at Pi = 2 C_mix minus 1
+zeta_req - 1 at Pi = 2 C_mix = 0
+PASS: zeta_req - 1 at Pi = 2 C_mix
+Lambda_twin,req = (Pi^2*xi*(delta + xi)*(9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi))/(144*(-1 + eps)*(-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2)
+M_mix^(twin,req) = (9*xi*(delta + xi))/(2*(9*delta + (9 + 2*r^2)*xi))
+Z_W^(twin,req) = (9*(-1 + eps)*(-1 + epsEta)*Pi^2*xi*(delta + xi))/(16*(1 + chi0)^2*(9*delta + (9 + 2*r^2)*xi))
+M_mix(Z_W^(twin,req)) - G_tr/2 = 0
+PASS: M_mix(Z_W^(twin,req)) - G_tr/2
+xi_(2x) = (-9*delta + 18*mMix + 4*mMix*r^2 + Sqrt[648*delta*mMix + (9*delta - 2*mMix*(9 + 2*r^2))^2])/18
+G_tr(xi_(2x)) - 2 M_mix = 0
+PASS: G_tr(xi_(2x)) - 2 M_mix
+
+Stage 051 Mathematica audit passed.
+
+EXIT_CODE: 0

@@ -1,18 +1,18 @@
-\section[Stage 219]{Stage 219: Microscopic dependent-plane projectors}
+\section[Stage 219]{Stage 219: One-port mixed-bundle static kernel}
 \label{stage:219}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.6}.}
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~219 transfers the direct packet projectors to the microscopic dependent plane.}
+\stagefield{Purpose}{Stage~219 inserts the isotropic one-port wall/BdG/Maxwell/mixed bundle into the completed same-charge audit and asks whether the static mixed sector creates a new long-range attractive family.}
 
-\stagefield{Inputs}{Imports the dependent triple $(T_U,K_\eta^{(\rm eff)},\mu_W)$ and the same-free-quintuple graph section.}
+\stagefield{Inputs}{Imports the one-port static bundle, the admissible conditions $\Omega_U^2>0$, $\Delta>0$, $D_0>0$, the primitive source profiles $x^{-3}$ and $e^{-2\kappa x}/x$, and the outgoing-prefactor bridge $P_0=N_0/D_0$.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage219_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation computes the dependent-plane compiler, projectors $P_{\rm nt}^{\rm dep}$ and $P_\eta^{\rm dep}$, the equal-drift dressing ray, and the static-only restoration direction.}
+\stagefield{Derivation ledger}{The derivation forms the static $3\times3$ kernel $\mathcal K_{\rm red}$, proves $\det\mathcal K_{\rm red}=\Delta D_0$, computes the inverse susceptibility entries, factors the wall--mixed load $\Lambda=P/\Delta$, and expands the on-shell correction $-J^T\mathcal K_{\rm red}^{-1}J/2$ into source products.}
 
-\stagefield{Output}{Microscopic projector theorem: clearing the static nontracking defect moves along a different dependent direction than clearing the post-static dressing defect; a static-only fix leaves a dressing gap.}
+\stagefield{Output}{Exact square-law suppression theorem: the one-port static mixed bundle produces only $x^{-6}$, $e^{-2\kappa x}x^{-4}$, and $e^{-4\kappa x}x^{-2}$ product families, and no new $-1/x$ or Yukawa-strength long-range same-charge attraction.}
 
 \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
 
@@ -23,6 +23,6 @@
 \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.6} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
 
 

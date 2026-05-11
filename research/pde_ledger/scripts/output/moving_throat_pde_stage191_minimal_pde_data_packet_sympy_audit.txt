@@ -1,0 +1,352 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+# Date: 2026-05-11T12:48:41-06:00
+# Elapsed: 2s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 174 — MINIMAL PDE DATA PACKET AND THE EXACT HOME-STRETCH THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact response / prefactor compiler from one grouped lane
+----------------------------------------------------------------------------------------
+Y(omega) = D0 / D(omega) =
+        D₀        
+──────────────────
+         2       4
+D₀ + D₂⋅ω  + D₄⋅ω 
+nu2 =
+-D₂ 
+────
+ D₀ 
+nu4 =
+           2
+-D₀⋅D₄ + D₂ 
+────────────
+      2     
+    D₀      
+response series compiler = 0
+Pref(omega) = D0 N(omega) / D(omega)^2 =
+   ⎛         2       4⎞
+D₀⋅⎝N₀ + N₂⋅ω  + N₄⋅ω ⎠
+───────────────────────
+                     2 
+ ⎛         2       4⎞  
+ ⎝D₀ + D₂⋅ω  + D₄⋅ω ⎠  
+P0 =
+N₀
+──
+D₀
+P2 =
+D₀⋅N₂ - 2⋅D₂⋅N₀
+───────────────
+        2      
+      D₀       
+P4 =
+  2                                 2   
+D₀ ⋅N₄ - 2⋅D₀⋅(D₂⋅N₂ + D₄⋅N₀) + 3⋅D₂ ⋅N₀
+────────────────────────────────────────
+                    3                   
+                  D₀                    
+prefactor series compiler = 0
+Delta_pole^(one-lane) =
+             2
+-D₀⋅D₄ - 3⋅D₂ 
+──────────────
+       2      
+     D₀       
+Delta_pole^(one-lane) + (3 D2^2 + D0 D4)/D0^2 = 0
+
+----------------------------------------------------------------------------------------
+II. Exact grouped weighted trace/anomaly calculus
+----------------------------------------------------------------------------------------
+xbar =
+x₂₀   2⋅x₂₁   2⋅x₂₂
+─── + ───── + ─────
+ 5      5       5  
+a_x =
+x₂₀   x₂₁   x₂₂
+─── - ─── - ───
+ 5    10    10 
+b_x =
+x₂₁   x₂₂
+─── - ───
+ 2     2 
+x20 inverse = 0
+x21 inverse = 0
+x22 inverse = 0
+ebar^T G ea = 0
+ebar^T G eb = 0
+ea^T G eb = 0
+Pbar + Pa + Pb - I =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar^2 - Pbar =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pa^2 - Pa =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pb^2 - Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar Pa =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pbar Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+Pa Pb =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  0  0⎥
+⎢       ⎥
+⎣0  0  0⎦
+
+----------------------------------------------------------------------------------------
+III. Exact compilation of Delta_branch from Packet A
+----------------------------------------------------------------------------------------
+Delta_branch =
+⎡                                                    D₂₂ ₂      D₂₁ ₂      D₂₀ ↪
+⎢                                                   ──────── + ──────── - ──── ↪
+⎢                                                   10⋅D₂₂ ₀   10⋅D₂₁ ₀   5⋅D₂ ↪
+⎢                                                                              ↪
+⎢                                                          D₂₂ ₂     D₂₁ ₂     ↪
+⎢                                                         ─────── - ───────    ↪
+⎢                                                         2⋅D₂₂ ₀   2⋅D₂₁ ₀    ↪
+⎢                                                                              ↪
+⎢                                                  2                      2    ↪
+⎢                                  D₂₂ ₄      D₂₂ ₂       D₂₁ ₄      D₂₁ ₂     ↪
+⎢                                 ──────── - ───────── + ──────── - ─────────  ↪
+⎢                                 10⋅D₂₂ ₀           2   10⋅D₂₁ ₀           2  ↪
+⎢                                            10⋅D₂₂ ₀               10⋅D₂₁ ₀   ↪
+⎢                                                                              ↪
+⎢                                                              2               ↪
+⎢                                               D₂₂ ₄     D₂₂ ₂      D₂₁ ₄     ↪
+⎢                                              ─────── - ──────── - ─────── +  ↪
+⎢                                              2⋅D₂₂ ₀          2   2⋅D₂₁ ₀    ↪
+⎢                                                        2⋅D₂₂ ₀               ↪
+⎢                                                                              ↪
+⎢                                                     N₂₂ ₀      N₂₁ ₀      N₂ ↪
+⎢                                                  - ──────── - ──────── + ─── ↪
+⎢                                                    10⋅D₂₂ ₀   10⋅D₂₁ ₀   5⋅D ↪
+⎢                                                                              ↪
+⎢                                                           N₂₂ ₀     N₂₁ ₀    ↪
+⎢                                                        - ─────── + ───────   ↪
+⎢                                                          2⋅D₂₂ ₀   2⋅D₂₁ ₀   ↪
+⎢                                                                              ↪
+⎢                   2                    2                   2                 ↪
+⎢  2⋅D₂₂ ₄   2⋅D₂₂ ₂    2⋅D₂₁ ₄   2⋅D₂₁ ₂     D₂₀ ₄     D₂₀ ₂     4⋅(2⋅D₂₀ ₀⋅D ↪
+⎢- ─────── + ──────── - ─────── + ──────── - ─────── + ──────── - ──────────── ↪
+⎢  5⋅D₂₂ ₀          2   5⋅D₂₁ ₀          2   5⋅D₂₀ ₀          2                ↪
+⎢            5⋅D₂₂ ₀              5⋅D₂₁ ₀              5⋅D₂₀ ₀                 ↪
+⎢                                                                              ↪
+⎢                                                 5             2              ↪
+⎢                                          54⋅G⋅cₛ    2⋅N₂₂ ₀⋅m̂₀    2⋅N₂₁ ₀⋅m̂₀ ↪
+⎢                                        - ──────── + ─────────── + ────────── ↪
+⎢                                             5  5      5⋅D₂₂ ₀       5⋅D₂₁ ₀  ↪
+⎣                                          5⋅a ⋅c                              ↪
+
+↪  ₂                                                    ⎤
+↪ ───                                                   ⎥
+↪ ₀ ₀                                                   ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                   2                                   ⎥
+↪    D₂₀ ₄     D₂₀ ₂                                    ⎥
+↪ - ─────── + ────────                                  ⎥
+↪   5⋅D₂₀ ₀          2                                  ⎥
+↪             5⋅D₂₀ ₀                                   ⎥
+↪                                                       ⎥
+↪       2                                               ⎥
+↪  D₂₁ ₂                                                ⎥
+↪ ────────                                              ⎥
+↪        2                                              ⎥
+↪ 2⋅D₂₁ ₀                                               ⎥
+↪                                                       ⎥
+↪ ₀ ₀                                                   ⎥
+↪ ────                                                  ⎥
+↪ ₂₀ ₀                                                  ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                       ⎥
+↪                                                      2⎥
+↪ ₂₁ ₀⋅D₂₂ ₂ + 2⋅D₂₀ ₀⋅D₂₁ ₂⋅D₂₂ ₀ + D₂₀ ₂⋅D₂₁ ₀⋅D₂₂ ₀) ⎥
+↪ ──────────────────────────────────────────────────────⎥
+↪                  2      2      2                      ⎥
+↪          25⋅D₂₀ ₀ ⋅D₂₁ ₀ ⋅D₂₂ ₀                       ⎥
+↪                                                       ⎥
+↪ 2           2                                         ⎥
+↪     N₂₀ ₀⋅m̂₀                                          ⎥
+↪ ─ + ─────────                                         ⎥
+↪      5⋅D₂₀ ₀                                          ⎥
+↪                                                       ⎦
+a2 on isotropic branch = 0
+b2 on isotropic branch = 0
+a4 on isotropic branch = 0
+b4 on isotropic branch = 0
+aP0 on isotropic branch = 0
+bP0 on isotropic branch = 0
+ubar2 on isotropic branch - nu2_iso = 0
+ubar4 on isotropic branch - nu4_iso = 0
+Pbar0 on isotropic branch - P0_iso = 0
+Delta_branch on isotropic one-pole normalized branch =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+
+----------------------------------------------------------------------------------------
+IV. Exact orbit-packet interconversion and zero-set equivalence
+----------------------------------------------------------------------------------------
+R from mismatch packet =
+⎡   χ₀ ₛₜₐᵣ + 1⎤
+⎢m_T           ⎥
+⎢              ⎥
+⎢   -Fₛₜₐᵣ     ⎥
+⎢m_T      ⋅mₘᵤ ⎥
+⎢───────────── ⎥
+⎢     m_K      ⎥
+⎢              ⎥
+⎢      1       ⎥
+⎢     ───      ⎥
+⎣     m_K      ⎦
+q from mismatch packet =
+⎡(χ₀ ₛₜₐᵣ + 1)⋅log(m_T)⎤
+⎢                      ⎥
+⎢     ⎛   -Fₛₜₐᵣ    ⎞  ⎥
+⎢     ⎜m_T      ⋅mₘᵤ⎟  ⎥
+⎢  log⎜─────────────⎟  ⎥
+⎢     ⎝     m_K     ⎠  ⎥
+⎢                      ⎥
+⎣      -log(m_K)       ⎦
+m from quotient packet =
+⎡                   qₜᵣ                  ⎤
+⎢               ───────────              ⎥
+⎢               χ₀ ₛₜₐᵣ + 1              ⎥
+⎢              ℯ                         ⎥
+⎢                                        ⎥
+⎢                  -qₑₜₐ                 ⎥
+⎢                 ℯ                      ⎥
+⎢                                        ⎥
+⎢ Fₛₜₐᵣ⋅qₜᵣ + (χ₀ ₛₜₐᵣ + 1)⋅(-qₑₜₐ + qₙₜ)⎥
+⎢ ───────────────────────────────────────⎥
+⎢               χ₀ ₛₜₐᵣ + 1              ⎥
+⎣ℯ                                       ⎦
+R from quotient packet =
+⎡ qₜᵣ ⎤
+⎢ℯ    ⎥
+⎢     ⎥
+⎢ qₙₜ ⎥
+⎢ℯ    ⎥
+⎢     ⎥
+⎢ qₑₜₐ⎥
+⎣ℯ    ⎦
+R_from_m after m_from_q =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+q_from_m after m_from_q =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+q_from_R after R_from_q =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+m_from_q at orbit lock =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+R_from_q at orbit lock =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+q_from_m at orbit lock =
+⎡0⎤
+⎢ ⎥
+⎢0⎥
+⎢ ⎥
+⎣0⎦
+Delta_orbit =
+⎡qₜᵣ ⎤
+⎢    ⎥
+⎢qₙₜ ⎥
+⎢    ⎥
+⎣qₑₜₐ⎦
+
+----------------------------------------------------------------------------------------
+V. Final packet theorem ledger
+----------------------------------------------------------------------------------------
+Packet A — grouped bundle data:
+  (D_A0,D_A2,D_A4,N_A0,N_A2,N_A4) for A in {20,21,22}, plus mhat_0
+
+Packet B — any one of:
+  (m_T,m_K,m_mu),  (R_tr,R_nt,R_eta),  or  (q_tr,q_nt,q_eta)
+
+Everything else in the reduced endgame is an exact compiler output of these packets.
+The reduced verdict is exactly the pair of zero-set tests:
+  Delta_branch = 0
+  Delta_orbit  = 0
+
+========================================================================================
+STAGE 174 LEDGER
+========================================================================================
+1. Packet A compiles exactly to the grouped response moments, the outgoing
+   prefactor moments, and the final branch residual packet Delta_branch.
+2. Packet B can be provided in any of three exact forms and compiles exactly
+   to the orbit residual packet Delta_orbit = (q_tr,q_nt,q_eta).
+3. On the isotropic one-pole normalized test branch, Delta_branch vanishes exactly.
+4. On orbit lock, Delta_orbit vanishes exactly.
+5. So the completed moving-throat PDE only has to supply the finite data needed
+   to evaluate Delta_branch and Delta_orbit on the actual branch.
+
+EXIT_CODE: 0

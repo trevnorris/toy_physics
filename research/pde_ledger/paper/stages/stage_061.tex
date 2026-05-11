@@ -1,33 +1,39 @@
-\section[Stage 061]{Stage 061: Explicit Family--1 Branch Comparison and Closing Verdict for This Subprogram}
+\section[Stage 061]{Stage 061: Microscopic Gain Thresholds and Operator Phase Diagram}
 \label{stage:061}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusExactClosure{} for the comparison of extracted Family--1 data against the threshold window.}
-\stagefield{Purpose}{Stage~061 decides whether the explicit Family--1 wall-depth datum is the bottleneck.}
-\stagefield{Inputs}{The threshold window of Stage~058 and the extracted \(\Theta_w\) data from Stage~060.}
+\claimstatus{\StatusExactClosure{} for the gain-threshold phase diagram.}
+\stagefield{Purpose}{Stage~061 rewrites the support/source verdict in terms of the microscopic gain rather than an abstract operator strength.}
+\stagefield{Inputs}{The thresholds \(\Xi_{\rm fail}\), \(\Xi_{\rm suff}\), the support geometry parameter \(\kappa\), and the relation between \(\Xi\) and \(G_{\rm micro}\).}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage061_family1_branch_verdict_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage061_family1_branch_verdict_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage061_family1_branch_verdict_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage061_family1_branch_verdict_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-For the natural shell-weighted datum,
+The fixed-point strength is written as
 \begin{equation}
-\label{eq:app-stage061-Pe-chi}
-\boxed{
-\mathrm{Pe}_{\rm suff}^{(\chi)}\simeq96.5285247264386\lambda_\mu^2,
-\qquad
-\mathrm{Pe}_{\rm fail}^{(\chi)}\simeq11220.5441626259\lambda_\mu^2}.
+\label{eq:app-stage061-Xi-micro}
+\Xi_{\rm micro}=\kappa G_{\rm micro}.
 \end{equation}
-For the conservative floor,
+Consequently, the gain thresholds are
 \begin{equation}
-\label{eq:app-stage061-Pe-J}
+\label{eq:app-stage061-G-thresholds}
 \boxed{
-\mathrm{Pe}_{\rm suff}^{(J)}\simeq22.0062226330754\lambda_\mu^2,
+G_{\rm fail}=\frac{\Xi_{\rm fail}}{\kappa},
 \qquad
-\mathrm{Pe}_{\rm fail}^{(J)}\simeq2558.01892349205\lambda_\mu^2}.
+G_{\rm suff}=\frac{\Xi_{\rm suff}}{\kappa}}.
 \end{equation}
-The Family--1 branch is therefore not wall-depth starved except if the quadrupole-side demand requires an anomalously large transport bias.
+The reduced phase diagram is
+\begin{equation}
+\label{eq:app-stage061-phase-diagram}
+\boxed{
+\begin{array}{lll}
+G_{\rm micro}<G_{\rm fail} &\Rightarrow& \text{fail},\\[0.25em]
+G_{\rm micro}>G_{\rm suff} &\Rightarrow& \text{succeed},\\[0.25em]
+G_{\rm fail}\leq G_{\rm micro}\leq G_{\rm suff} &\Rightarrow& \text{root-sensitive}.
+\end{array}}
+\end{equation}
 
-\stagefield{Output}{The first explicit Family--1 support/source verdict: wall-depth is not the leading bottleneck for moderate demand.}
-\stagefield{Downstream use}{Stages~062--070 translate quadrupole demand into the remaining loading ratio.}
+\stagefield{Output}{The microscopic gain phase diagram \eqref{eq:app-stage061-G-thresholds}--\eqref{eq:app-stage061-phase-diagram}.}
+\stagefield{Downstream use}{Stages~062--063 express \(G_{\rm micro}\) in parent GNLS overlap data and derive no-go/success thresholds.}
 

@@ -1,0 +1,27 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+# Date: 2026-05-11T12:45:30-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 105 — NATURAL MOUTH-SOURCE BRANCH VS COMPENSATION FAMILY
+========================================================================================
+r_F1 = sqrt(-1 + 4107/(100*pi**2))
+g_minus = (-37*sqrt(3) + 2*sqrt(4107 - 100*pi**2))/(20*pi)
+g_plus  = (37*sqrt(3) + 2*sqrt(4107 - 100*pi**2))/(20*pi)
+compensation defect on natural branch = (-12321 + 80*pi*sqrt(4107 - 100*pi**2))/(100*pi**2)
+numeric defect = 1.7401652472273881285
+delta g_minus = 0.24196492105533717308
+delta g_plus  = 1.7979519920052934101
+T_m(-)/T_m(nat) = -20*pi/(-2*sqrt(4107 - 100*pi**2) + 37*sqrt(3))
+T_m(+)/T_m(nat) = 20*pi/(37*sqrt(3) + 2*sqrt(4107 - 100*pi**2))
+numeric T ratio (-) = 1.3192001633911203307
+numeric T ratio (+) = 0.35740427386078899977
+gminus exact form = 0
+gplus exact form = 0
+
+EXIT_CODE: 0

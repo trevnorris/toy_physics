@@ -1,0 +1,76 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage038_dimensionless_continuum_placement_mathematica_audit.wl
+# Date: 2026-05-11T12:48:28-06:00
+# Elapsed: 5s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 021 — DIMENSIONLESS CONTINUUM PLACEMENT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+1. Stage-20 continuum formulas
+----------------------------------------------------------------------------------------
+A = (-cEtaU^2 + kU*(kEta + 6*tOmega))/(kU*muEta)
+delta = (kU*Pi^2*tw)/(ell^2*(-cEtaU^2 + kU*(kEta + 6*tOmega)))
+M_mix = (-288*ell^2*(cEtaU*cUW + cEtaW*kU)^2)/((cEtaU^2 - kU*(kEta + 6*tOmega))*(4*ell^2*(-88*cUW^2 + 9*kU*kW*Pi^2) + 9*kU*Pi^4*tW))
+beta0 = ((cEtaU*cUW + cEtaW*kU)^2*muW)/(muEta*((-88*cUW^2)/(9*Pi^2) + kU*(kW + (Pi^2*tW)/(4*ell^2)))^2)
+R_target = (27*cS^5*gNewton*(-cEtaU^2 + kU*(kEta + 6*tOmega))*((-88*cUW^2)/(9*Pi) + kU*kW*Pi + (kU*Pi^3*tW)/(4*ell^2))^2)/(20*aScale^5*cLight^5*kU*(cEtaU*cUW + cEtaW*kU)^2*muW)
+
+----------------------------------------------------------------------------------------
+2. Dimensionless kernel substitutions
+----------------------------------------------------------------------------------------
+delta - delta0/(1-epsEta) = 0
+PASS: delta - delta0/(1-epsEta)
+M_mix - 8 Z_W (1+rho)^2 / [Pi^2 (1-epsEta)(1-epsW)] = 0
+PASS: M_mix - 8 Z_W (1+rho)^2 / [Pi^2 (1-epsEta)(1-epsW)]
+R_target - lambda (1-epsEta)(1-epsW)^2 / [Z_W (1+rho)^2] = 0
+PASS: R_target - lambda (1-epsEta)(1-epsW)^2 / [Z_W (1+rho)^2]
+beta0 - (muW/muEta)(KetaEff/KWEff) Z_W (1+rho)^2/(1-epsW)^2 = 0
+PASS: beta0 - (muW/muEta)(KetaEff/KWEff) Z_W (1+rho)^2/(1-epsW)^2
+delta(dimless) = delta0/(1 - epsEta)
+M_mix(dimless) = (8*(1 + rho)^2*zW)/((-1 + epsEta)*(-1 + epsW)*Pi^2)
+R_target(dimless) = -(((-1 + epsEta)*(-1 + epsW)^2*lambda)/((1 + rho)^2*zW))
+beta0(dimless) = (4*ell^2*muW*(1 + rho)^2*(kEta + 6*tOmega)*zW)/((-1 + epsW)^2*muEta*(4*ell^2*kW + Pi^2*tW))
+
+----------------------------------------------------------------------------------------
+3. Exact product relation
+----------------------------------------------------------------------------------------
+R_target M_mix - 8 lambda (1-epsW)/Pi^2 = 0
+PASS: R_target M_mix - 8 lambda (1-epsW)/Pi^2
+8 lambda (1-epsW)/Pi^2 - NQ KWeff(1-epsW)/muW = 0
+PASS: 8 lambda (1-epsW)/Pi^2 - NQ KWeff(1-epsW)/muW
+R_target M_mix = (-8*(-1 + epsW)*lambda)/Pi^2
+
+----------------------------------------------------------------------------------------
+4. Exact derivative factors
+----------------------------------------------------------------------------------------
+d delta / d epsEta factorization = 0
+PASS: d delta / d epsEta factorization
+d M / d Z_W factorization = 0
+PASS: d M / d Z_W factorization
+d R / d Z_W factorization = 0
+PASS: d R / d Z_W factorization
+d M / d epsEta factorization = 0
+PASS: d M / d epsEta factorization
+d R / d epsEta factorization = 0
+PASS: d R / d epsEta factorization
+d M / d epsW factorization = 0
+PASS: d M / d epsW factorization
+d R / d epsW factorization = 0
+PASS: d R / d epsW factorization
+d M / d rho factorization = 0
+PASS: d M / d rho factorization
+d R / d rho factorization = 0
+PASS: d R / d rho factorization
+On the natural nonvanishing transfer branch 1+rho > 0:
+  delta increases with epsEta
+  M_mix increases with epsEta, epsW, Z_W, rho
+  R_target decreases with epsEta, epsW, Z_W, rho
+
+Stage 038 Mathematica audit passed.
+
+EXIT_CODE: 0

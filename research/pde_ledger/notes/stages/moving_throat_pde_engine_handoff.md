@@ -1027,10 +1027,10 @@ This engine document was distilled from the exact/reduced stack anchored by
 - `4d_plasma_summary.md`
 - `4d_1pn_bridge_summary.md`
 - `moving_throat_pde_full.md`
-- `moving_throat_pde_stage147_microscopic_log_channels.md`
-- `moving_throat_pde_stage148_exact_branch_drifts.md`
-- `moving_throat_pde_stage168_microscopic_monomials.md`
-- `moving_throat_pde_stage169_similarity_orbit_closure.md`
-- `moving_throat_pde_stage170_orbit_quotient_closure.md`
+- `moving_throat_pde_stage164_microscopic_log_channels.md`
+- `moving_throat_pde_stage165_exact_branch_drifts.md`
+- `moving_throat_pde_stage185_microscopic_monomials.md`
+- `moving_throat_pde_stage186_similarity_orbit_closure.md`
+- `moving_throat_pde_stage187_orbit_quotient_closure.md`
 
 The intended use is: a fresh session should be able to start from **this document alone**, then only drill into the stage files if it wants the longer derivation path.

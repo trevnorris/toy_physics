@@ -1,0 +1,68 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage034_softening_depth_normal_form_sympy_audit.py
+# Date: 2026-05-11T12:41:45-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 17.1 — EXACT SOFTENING-DEPTH SECULAR REDUCTION
+========================================================================================
+alpha(lambda) =
+        (A - λ)⋅(A + DeltaK - λ)        
+────────────────────────────────────────
+κ_0_sq⋅(A + DeltaK - λ) + κ_1_sq⋅(A - λ)
+alpha(x) =
+        x⋅(DeltaK + x)        
+──────────────────────────────
+κ_0_sq⋅(DeltaK + x) + κ_1_sq⋅x
+s_-(x) =
+                                2
+(κ_0_sq⋅(DeltaK + x) + κ_1_sq⋅x) 
+─────────────────────────────────
+                   2           2 
+κ_0_sq⋅(DeltaK + x)  + κ_1_sq⋅x  
+N_-(x) =
+                                          4       
+       β₀⋅(κ_0_sq⋅(DeltaK + x) + κ_1_sq⋅x)        
+──────────────────────────────────────────────────
+                                                 2
+               ⎛                   2           2⎞ 
+κ_0_sq⋅(A - x)⋅⎝κ_0_sq⋅(DeltaK + x)  + κ_1_sq⋅x ⎠ 
+alpha(lambda=A-x) - alpha(x) = 0
+s(lambda=A-x) - s(x) = 0
+N(lambda=A-x) - N(x) = 0
+
+========================================================================================
+STAGE 17.2 — EXACT MONOTONICITY OF THE SOFTENING MAP
+========================================================================================
+d alpha / dx =
+-x⋅(DeltaK + x)⋅(κ_0_sq + κ_1_sq) + (DeltaK + 2⋅x)⋅(κ_0_sq⋅(DeltaK + x) + κ_1_ ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                                         2                     ↪
+                         (κ_0_sq⋅(DeltaK + x) + κ_1_sq⋅x)                      ↪
+
+↪ sq⋅x)
+↪ ─────
+↪      
+↪      
+dalpha/dx - manifestly positive form = 0
+s_x * d alpha / dx - 1 = 0
+
+========================================================================================
+STAGE 17.3 — REQUIRED SUPPORT LOADING IN SOFTENING-DEPTH FORM
+========================================================================================
+alpha_mix = Chi**2/(Delta_0*Omega_U**2)
+g_B,req^2 / varpi^2 =
+   2                  2             2                         2           2  2
+- Χ ⋅DeltaK⋅κ_0_sq - Χ ⋅κ_0_sq⋅x - Χ ⋅κ_1_sq⋅x + DeltaK⋅Δ₀⋅Ω_U ⋅x + Δ₀⋅Ω_U ⋅x 
+──────────────────────────────────────────────────────────────────────────────
+                      2                                                       
+                Δ₀⋅Ω_U ⋅(DeltaK⋅κ_0_sq + κ_0_sq⋅x + κ_1_sq⋅x)                 
+solved g_B,req^2/varpi^2 - (alpha(x) - alpha_mix) = 0
+alpha_mix + g_B,req^2/varpi^2 - alpha(x) = 0
+All Stage 17 checks passed.
+
+EXIT_CODE: 0

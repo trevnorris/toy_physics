@@ -1,62 +1,300 @@
-\section[Stage 023]{Stage 023: Generalized Selected-Branch Normalization with Source/Loading Mismatch}
+\section[Stage 023]{Stage 023: Full Grouped Bundle, Exact Projectors, and Isotropic Normalization Test}
 \label{stage:023}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the rank-one selected-mode algebra with distinct source and loading directions.}
-\stagefield{Purpose}{Stage~023 replaces the flat one-vector selected branch by a source/loading mismatch law.  It derives deformed branch functions \(F_{q,\eta_s}\) and \(G_q\), then specializes them to the split--\(U\) continuum through \(R_U\).}
-\stagefield{Inputs}{The selected lower eigenvalue \(\lambda_-=A_0(1-\xi)\), loading vector \(z=z_0(1,q)^T\), and source vector \(s=s_0(1,t)^T\).}
+\stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}, preparing \resultanchor{MTDC-T5}.}
+\claimstatus{The grouped projectors, coefficient formulas, isotropic reduction, constant-prefactor conditions, and first-order transport laws are \StatusExactClosure{} inside the full reduced grouped-bundle model.  Actual values of the microscopic branch data remain \StatusOpen{}.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage023_generalized_selected_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage023_generalized_selected_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage023_generalized_selected_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage023_generalized_selected_branch_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~023 writes the entire grouped real \(20/21/22\) bundle in one place.  It combines the wall baseline, BdG support moments, projection-first Maxwell/matched mixed conservative moments, and outgoing-transfer moments; introduces exact weighted projectors for the grouped lanes; states the isotropic normalization test in full-bundle variables; and derives the first-order anisotropy transport laws.}
+
+\stagefield{Inputs}{The inputs are the Stage~003 BdG moments, the Stages~004--021 projected Maxwell-to-\(Z_n,N_n\) packet and matched one-port conservative/transfer moments, the Stage~022 response/prefactor conversion, and the grouped metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\).}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-For a single rank-one loading, the required loading is
+\paragraph{1. Weighted grouped projector calculus.}
+The grouped triple \((20,21,22)\) carries metric
 \begin{equation}
-\label{eq:app-stage023-alpha-req}
-\alpha_{\rm req}=\frac{A_0\xi(\xi+\delta)}{z_0^2[\delta+(1+q^2)\xi]},
+\label{eq:app-stage023-grouped-metric}
+G_{\rm grp}=\operatorname{diag}(1,2,2).
+\end{equation}
+Use the \(G_{\rm grp}\)-orthogonal basis
+\begin{equation}
+\label{eq:app-stage023-basis}
+e_{\bar x}=(1,1,1),
 \qquad
-0\leq\xi<1.
-\end{equation}
-The selected eigenvector has ratio
-\begin{equation}
-\label{eq:app-stage023-evec}
-\frac{e_1}{e_0}=\frac{q\xi}{\delta+\xi}.
-\end{equation}
-With \(\eta_s=s_1z_1/(s_0z_0)\), the generalized normalization and baseline loading functions are
-\begin{equation}
-\label{eq:app-stage023-Fqeta}
-\boxed{
-F_{q,\eta_s}(\xi,\delta)
-=\frac{[\delta+(1+q^2)\xi]^2[\delta+(1+\eta_s)\xi]^2}
-{(1-\xi)[(\delta+\xi)^2+q^2\xi^2]^2}},
-\end{equation}
-\begin{equation}
-\label{eq:app-stage023-Gq}
-\boxed{
-G_q(\xi,\delta)=\frac{\xi(\xi+\delta)}{\delta+(1+q^2)\xi}}.
-\end{equation}
-For the split--\(U\) continuum, using \(\lambda_0=\kappa_1^2/\kappa_0^2=2/9\),
-\begin{equation}
-\label{eq:app-stage023-qeta-RU}
-q=-\frac{\sqrt2}{3}R_U,
+e_a=(4,-1,-1),
 \qquad
-\eta_s=\frac{2}{9}R_U.
+e_b=(0,1,-1).
 \end{equation}
-Therefore the one-parameter split--\(U\) functions are
+The norms are
 \begin{equation}
-\label{eq:app-stage023-FU}
+\label{eq:app-stage023-norms}
+e_{\bar x}^TG_{\rm grp}e_{\bar x}=5,
+\qquad
+e_a^TG_{\rm grp}e_a=20,
+\qquad
+e_b^TG_{\rm grp}e_b=4.
+\end{equation}
+Thus any grouped vector decomposes as
+\begin{equation}
+\label{eq:app-stage023-decomp}
+x=\bar x\,e_{\bar x}+a_xe_a+b_xe_b,
+\end{equation}
+with \(\bar x,a_x,b_x\) as in \eqref{eq:app-stage022-grouped-defs}.  The exact projectors are
+\begin{equation}
+\label{eq:app-stage023-projectors}
 \boxed{
-F_U(\xi,\delta;R_U)=
-\frac{[9\delta+(9+2R_U^2)\xi]^2[9\delta+(9+2R_U)\xi]^2}
-{81(1-\xi)[9\delta^2+18\delta\xi+(9+2R_U^2)\xi^2]^2}},
+P_{\bar x}=\frac15
+\begin{pmatrix}
+1&2&2\\1&2&2\\1&2&2
+\end{pmatrix},
+\quad
+P_a=\frac1{20}
+\begin{pmatrix}
+16&-8&-8\\-4&2&2\\-4&2&2
+\end{pmatrix},
+\quad
+P_b=\frac14
+\begin{pmatrix}
+0&0&0\\0&2&-2\\0&-2&2
+\end{pmatrix}}.
+\end{equation}
+They obey
+\begin{equation}
+\label{eq:app-stage023-projector-identities}
+P_{\bar x}+P_a+P_b=I_3,
+\qquad
+P_iP_j=\delta_{ij}P_i.
+\end{equation}
+Grouped isotropy is the condition
+\begin{equation}
+\label{eq:app-stage023-isotropy-projector}
+P_ax=P_bx=0.
+\end{equation}
+
+\paragraph{2. Full coupled lane Lagrangian.}
+For each lane \(A\in\{20,21,22\}\), retain a wall amplitude \(q_A\), stable BdG support modes \(X_{A\alpha}\), brane-like gauge coordinates \(U_{A r}\), mixed coordinates \(W_{A r}\), and internal gauge mixing \(R_{A r}\).  The reduced Lagrangian is
+\begin{align}
+\label{eq:app-stage023-full-lagrangian}
+L_A={}&\frac12M_A\dot q_A^2-\frac12K_Aq_A^2
++\sum_\alpha\left[\frac12\dot X_{A\alpha}^2-\frac12\varpi_{A\alpha}^2X_{A\alpha}^2+c_{A\alpha}q_AX_{A\alpha}\right]\\
+&+\sum_r\bigl[\frac12\dot U_{A r}^2-\frac12\Omega_{U,A r}^2U_{A r}^2
++\frac12\dot W_{A r}^2-\frac12\Omega_{W,A r}^2W_{A r}^2
++R_{A r}U_{A r}W_{A r}\\
+&\qquad\quad
++g_{U,A r}q_AU_{A r}+g_{W,A r}q_AW_{A r}\bigr].
+\end{align}
+
+\paragraph{3. BdG support moments.}
+Define
+\begin{equation}
+\label{eq:app-stage023-b-moments}
+\boxed{
+B_{A0}=\sum_\alpha\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^2},
+\qquad
+B_{A2}=\sum_\alpha\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^4},
+\qquad
+B_{A4}=\sum_\alpha\frac{c_{A\alpha}^2}{\varpi_{A\alpha}^6}}.
+\end{equation}
+These are the Stage~003 Schur-complement moments collected lane by lane.
+
+\paragraph{4. Conservative Maxwell/mixed moments.}
+For each port \(r\), set
+\begin{equation}
+\label{eq:app-stage023-delta-s-q-g}
+\Delta_{A r}=\Omega_{U,A r}^2\Omega_{W,A r}^2-R_{A r}^2,
+\qquad
+S_{A r}=\Omega_{U,A r}^2+\Omega_{W,A r}^2,
 \end{equation}
 \begin{equation}
-\label{eq:app-stage023-GU}
-\boxed{
-G_U(\xi,\delta;R_U)=\frac{9\xi(\xi+\delta)}{9\delta+(9+2R_U^2)\xi}}.
+Q_{A r}=g_{U,A r}^2\Omega_{W,A r}^2
++2g_{U,A r}g_{W,A r}R_{A r}
++g_{W,A r}^2\Omega_{U,A r}^2,
+\qquad
+G_{A r}=g_{U,A r}^2+g_{W,A r}^2.
 \end{equation}
-The flat branch is recovered at \(R_U=1\).
+The conservative Maxwell/mixed moments are
+\begin{align}
+\label{eq:app-stage023-z-moments-port}
+Z_{A0}^{(r)}&=\frac{Q_{A r}}{\Delta_{A r}},\\
+Z_{A2}^{(r)}&=\frac{Q_{A r}S_{A r}-G_{A r}\Delta_{A r}}{\Delta_{A r}^2},\\
+Z_{A4}^{(r)}&=\frac{Q_{A r}(S_{A r}^2-\Delta_{A r})-S_{A r}G_{A r}\Delta_{A r}}{\Delta_{A r}^3},
+\end{align}
+and
+\begin{equation}
+\label{eq:app-stage023-z-sum}
+Z_{An}=\sum_rZ_{An}^{(r)},
+\qquad
+n\in\{0,2,4\}.
+\end{equation}
 
-\stagefield{Output}{The generalized selected functions \eqref{eq:app-stage023-Fqeta}--\eqref{eq:app-stage023-Gq} and their split--\(U\) specialization \eqref{eq:app-stage023-FU}--\eqref{eq:app-stage023-GU}.}
-\stagefield{Downstream use}{Stages~024--027 add a second support direction and determine the actual softening depth.}
+\paragraph{5. Outgoing-transfer moments.}
+Define
+\begin{equation}
+\label{eq:app-stage023-p-ar}
+P_{A r}=\Omega_{U,A r}^2g_{W,A r}+R_{A r}g_{U,A r}.
+\end{equation}
+The outgoing-transfer moments per port are
+\begin{align}
+\label{eq:app-stage023-n-moments-port}
+N_{A0}^{(r)}&=\frac{P_{A r}^2}{\Delta_{A r}^2},\\
+N_{A2}^{(r)}&=\frac{2P_{A r}\bigl(P_{A r}S_{A r}-\Delta_{A r}g_{W,A r}\bigr)}{\Delta_{A r}^3},\\
+N_{A4}^{(r)}&=\frac{\Delta_{A r}^2g_{W,A r}^2-2\Delta_{A r}P_{A r}^2-4\Delta_{A r}P_{A r}S_{A r}g_{W,A r}+3P_{A r}^2S_{A r}^2}{\Delta_{A r}^4}.
+\end{align}
+Summing over outgoing ports gives
+\begin{equation}
+\label{eq:app-stage023-n-sum}
+N_{An}=\sum_rN_{An}^{(r)},
+\qquad
+n\in\{0,2,4\}.
+\end{equation}
 
+\paragraph{6. Total conservative grouped operator.}
+The full conservative grouped-lane operator is
+\begin{equation}
+\label{eq:app-stage023-d-total}
+D_A^{\rm cons}(\omega)=D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6),
+\end{equation}
+with
+\begin{equation}
+\label{eq:app-stage023-d-coeffs}
+\boxed{
+D_{A0}=K_A-B_{A0}-Z_{A0},
+\qquad
+D_{A2}=-\bigl(M_A+B_{A2}+Z_{A2}\bigr),
+\qquad
+D_{A4}=-\bigl(B_{A4}+Z_{A4}\bigr)}.
+\end{equation}
+This is the full Part-I coefficient ledger.
+
+\paragraph{7. Microscopic anisotropy ledger.}
+Apply the grouped decomposition \eqref{eq:app-stage023-decomp} to every microscopic family \(K_A,M_A,B_{An},Z_{An},N_{An}\).  The static conservative defects obey
+\begin{equation}
+\label{eq:app-stage023-d0-defects}
+\bar D_0=\bar K-\bar B_0-\bar Z_0,
+\qquad
+a_{D,0}=a_K-a_{B,0}-a_{Z,0},
+\qquad
+b_{D,0}=b_K-b_{B,0}-b_{Z,0}.
+\end{equation}
+Similarly,
+\begin{equation}
+\label{eq:app-stage023-d2-defects}
+\bar D_2=-(\bar M+\bar B_2+\bar Z_2),
+\qquad
+a_{D,2}=-(a_M+a_{B,2}+a_{Z,2}),
+\qquad
+b_{D,2}=-(b_M+b_{B,2}+b_{Z,2}),
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-stage023-d4-defects}
+\bar D_4=-(\bar B_4+\bar Z_4),
+\qquad
+a_{D,4}=-(a_{B,4}+a_{Z,4}),
+\qquad
+b_{D,4}=-(b_{B,4}+b_{Z,4}).
+\end{equation}
+Thus grouped anisotropy can enter only through the wall baseline, the BdG support bundle, or the Maxwell/mixed conservative and outgoing-transfer bundles.
+
+\paragraph{8. Isotropic branch and normalization ratio.}
+On the isotropic branch,
+\begin{equation}
+D_{20,n}=D_{21,n}=D_{22,n}=D_n,
+\qquad
+N_{20,n}=N_{21,n}=N_{22,n}=N_n.
+\end{equation}
+Stage~022 then gives
+\begin{equation}
+\label{eq:app-stage023-isotropic-response}
+u_2=-\frac{D_2}{D_0},
+\qquad
+u_4=\frac{D_2^2-D_0D_4}{D_0^2},
+\end{equation}
+and
+\begin{equation}
+\label{eq:app-stage023-isotropic-pref}
+P_0=\frac{N_0}{D_0},
+\qquad
+P_2=\frac{D_0N_2-2D_2N_0}{D_0^2},
+\end{equation}
+\begin{equation}
+\label{eq:app-stage023-isotropic-p4}
+P_4=\frac{D_0^2N_4-2D_0(D_2N_2+D_4N_0)+3D_2^2N_0}{D_0^3}.
+\end{equation}
+The isotropic normalization test is
+\begin{equation}
+\label{eq:app-stage023-normalization-test}
+\boxed{
+\widehat m_0^{\,2}\frac{N_0}{K-B_0-Z_0}
+=\frac{54Gc_s^5}{5a^5c^5}}.
+\end{equation}
+The denominator is the static full-bundle stiffness
+\begin{equation}
+D_0=K-B_0-Z_0.
+\end{equation}
+
+\paragraph{9. Constant-prefactor branch.}
+The constant-prefactor branch through the retained orders is
+\begin{equation}
+P_2=0,
+\qquad
+P_4=0.
+\end{equation}
+Using \eqref{eq:app-stage023-isotropic-pref}--\eqref{eq:app-stage023-isotropic-p4}, this is equivalent to
+\begin{equation}
+\label{eq:app-stage023-constant-prefactor-conditions}
+\boxed{
+N_2=\frac{2D_2N_0}{D_0},
+\qquad
+N_4=\frac{2D_0(D_2N_2+D_4N_0)-3D_2^2N_0}{D_0^2}}.
+\end{equation}
+So constant outgoing prefactor does not require \(N_2=N_4=0\); it requires precise correlation between transfer and conservative moments.
+
+\paragraph{10. First-order anisotropy transport.}
+Let
+\begin{equation}
+D_{An}=D_n+\delta D_{An},
+\qquad
+N_{An}=N_n+\delta N_{An},
+\end{equation}
+near the isotropic branch.  From \(u_2^{(A)}=-D_{A2}/D_{A0}\),
+\begin{equation}
+\label{eq:app-stage023-du2}
+\delta u_2^{(A)}=-\frac{\delta D_{A2}+u_2\delta D_{A0}}{D_0}.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:app-stage023-u-anisotropy}
+\boxed{
+a_{u,2}=-\frac{a_{D,2}+u_2a_{D,0}}{D_0},
+\qquad
+b_{u,2}=-\frac{b_{D,2}+u_2b_{D,0}}{D_0}}.
+\end{equation}
+Similarly, from \(P_0^{(A)}=N_{A0}/D_{A0}\),
+\begin{equation}
+\label{eq:app-stage023-dp0}
+\delta P_0^{(A)}=\frac{\delta N_{A0}-P_0\delta D_{A0}}{D_0},
+\end{equation}
+so
+\begin{equation}
+\label{eq:app-stage023-p-anisotropy}
+\boxed{
+a_{P,0}=\frac{a_{N,0}-P_0a_{D,0}}{D_0},
+\qquad
+b_{P,0}=\frac{b_{N,0}-P_0b_{D,0}}{D_0}}.
+\end{equation}
+Thus outgoing-prefactor anisotropy can arise only from direct anisotropy in \(N_{A0}\) or conservative anisotropy in \(D_{A0}\) reweighted by \(P_0\).
+
+\stagefield{Output}{Stage~023 outputs the projectors \eqref{eq:app-stage023-projectors}, the full coupled coefficient formulas \eqref{eq:app-stage023-b-moments}, \eqref{eq:app-stage023-z-moments-port}, \eqref{eq:app-stage023-n-moments-port}, and \eqref{eq:app-stage023-d-coeffs}, the isotropic normalization ratio \eqref{eq:app-stage023-normalization-test}, the constant-prefactor conditions \eqref{eq:app-stage023-constant-prefactor-conditions}, and the anisotropy transport laws \eqref{eq:app-stage023-u-anisotropy} and \eqref{eq:app-stage023-p-anisotropy}.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Direct multiplication verifies \(P_iP_j=\delta_{ij}P_i\) and \(P_{\bar x}+P_a+P_b=I_3\).
+\item The BdG, Maxwell/mixed, and outgoing-transfer coefficient formulas reduce to the Stage~003 and Stage~021 one-lane formulas when a single mode/port is retained.
+\item The isotropic limit sets all grouped defects to zero and collapses \((20,21,22)\) to one common \(D_n,N_n\) packet.
+\item First-order quotient differentiation gives the transport laws \eqref{eq:app-stage023-u-anisotropy} and \eqref{eq:app-stage023-p-anisotropy}.
+\item The final normalization equation is a stability-sensitive branch test because \(D_0=K-B_0-Z_0\) must remain positive on the stable side.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stage~024 begins the explicit overlap-integral and \(O(3)\) isotropy theorem using the Stage~023 coefficient ledger.  Later conservative and retarded stages repeatedly reuse \(D_0,D_2,D_4\), \(N_0,N_2,N_4\), \(P_0,P_2,P_4\), the grouped projectors, and the anisotropy transport laws.  The weak-axisymmetric orbit and same-charge sections eventually reinterpret \(P_1/P_0\) as the transported outgoing-prefactor slope.}

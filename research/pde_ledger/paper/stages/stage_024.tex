@@ -1,66 +1,237 @@
-\section[Stage 024]{Stage 024: Rank--2 Support Completion and Exact Support-Loading Theorem}
+\section[Stage 024]{Stage 024: Explicit Overlap Integrals, \texorpdfstring{$O(3)$}{O(3)} Isotropy, and First Axisymmetric Splitting}
 \label{stage:024}
 
-\stagefield{Part / anchor}{Part III; primary anchor \resultanchor{MTDC-T6}.}
-\claimstatus{\StatusExactClosure{} for the two-rank selected-mode determinant.}
-\stagefield{Purpose}{Stage~024 adds a second loading direction for physical support and proves that the selected-branch determinant remains linear in the support loading.}
-\stagefield{Inputs}{Mixed baseline \(m\), mixed direction \((1,q)\), support loading \(n\), support direction \((1,r)\), and selected lower depth \(\xi\).}
+\stagefield{Part / anchor}{Part II; primary anchor \resultanchor{MTDC-T5}.}
+\claimstatus{The angular identities and grouped splitting law are \StatusExactClosure{} once the real-STF basis and reduced overlap closure are adopted.  The separated radial/axial ansatz is \StatusReduced{}.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage024_rank2_support_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage024_rank2_support_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage024_rank2_support_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage024_rank2_support_mathematica_audit.txt}.}
+\stagefield{Purpose}{Stage~024 takes the grouped coefficients of Stage~023 and gives them their first explicit overlap-integral interpretation.  It proves that the angular source map is exact on the canonical isotropic branch, that \(O(3)\)-invariant kernels collapse the grouped lanes to common values, and that the first weak-axisymmetric quadrupole splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).}
+
+\stagefield{Inputs}{The stage uses the Stage~023 full-bundle coefficients \(B_{A,n}\), \(Z_{A,n}\), \(N_{A,n}\), the grouped trace/anomaly variables, and the real STF basis for the quadrupole ports.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The two-direction loaded stiffness matrix is
+\paragraph{1. Real-STF harmonic normalization.}
+Let \(n^i\) be the unit vector on the throat sphere and let \(E_A^{ij}\) be a real STF basis satisfying
 \begin{equation}
-\label{eq:app-stage024-loaded-matrix}
-\frac{K_{\rm loaded}}{A_0}
-=\operatorname{diag}(1,1+\delta)
--m(1,q)^T(1,q)
--n(1,r)^T(1,r).
+\label{eq:app-stage024-STF-norm}
+\operatorname{Tr}(E_AE_B)=\delta_{AB}.
 \end{equation}
-The determinant condition at \(\lambda_-=A_0(1-\xi)\) is
+Define
 \begin{equation}
-\label{eq:app-stage024-Dsel}
-D_{\rm sel}
-=\xi(\delta+\xi)
--m[\delta+(1+q^2)\xi]
--n[\delta+(1+r^2)\xi]
-+mn(q-r)^2.
+\label{eq:app-stage024-YA}
+Y_A(n)=\sqrt{\frac{15}{8\pi}}E_A^{ij}n_in_j,
+\qquad
+A\in\{20,21c,21s,22c,22s\}.
 \end{equation}
-Solving the linear equation \(D_{\rm sel}=0\) for \(n\) gives
+The exact fourth-moment identity
 \begin{equation}
-\label{eq:app-stage024-nreq}
+\label{eq:app-stage024-fourth-moment}
+\int_{S^2}n_in_jn_kn_l\,d\Omega
+=\frac{4\pi}{15}\left(\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right)
+\end{equation}
+then gives
+\begin{equation}
+\label{eq:app-stage024-Y-orthonormal}
 \boxed{
- n_{\rm req}(\xi,\delta;m,q,r)
-=\frac{\xi(\delta+\xi)-m[\delta+(1+q^2)\xi]}
-{\delta+(1+r^2)\xi-m(q-r)^2}}.
+\int_{S^2}Y_A Y_B\,d\Omega=\delta_{AB}}.
 \end{equation}
-Differentiating yields the exact monotonicity law
+Thus the real grouped quadrupole ports have a canonical normalized angular basis.
+
+\paragraph{2. Angular source-map identity.}
+Expand the orbital/worldtube STF quadrupole source as
 \begin{equation}
-\label{eq:app-stage024-nreq-derivative}
+\label{eq:app-stage024-source-expansion}
+S(n)=\sum_A S_A Y_A(n).
+\end{equation}
+Projecting on the same ports gives
+\begin{equation}
+\label{eq:app-stage024-source-map}
 \boxed{
-\frac{\partial n_{\rm req}}{\partial m}
-=-\frac{[\delta+(1+qr)\xi]^2}
-{[\delta+(1+r^2)\xi-m(q-r)^2]^2}<0
+S_A^{\rm port}=\int_{S^2}Y_A(n)S(n)\,d\Omega=S_A}.
+\end{equation}
+Therefore the source map factors as
+\begin{equation}
+\label{eq:app-stage024-mhat-factor}
+\widehat m_0=\widehat m_{\rm rad}\widehat m_{\rm ang},
+\qquad
+\boxed{\widehat m_{\rm ang}=1}
+\end{equation}
+on the canonical isotropic branch.  The remaining source-map problem is radial/axial.
+
+\paragraph{3. Isotropic overlap factorization.}
+On an \(O(3)\)-invariant branch, write the wall, BdG, brane-like gauge, and mixed coordinates in separated form:
+\begin{align}
+\eta_A(s,\Omega,t)&=q_A(t)\chi_\eta(s)Y_A(\Omega),\label{eq:app-stage024-eta-sep}\\
+X_{\alpha,A}(s,\Omega,t)&=X_{\alpha,A}(t)\phi_\alpha(s)Y_A(\Omega),\label{eq:app-stage024-X-sep}\\
+U_{r,A}(s,\Omega,t)&=U_{r,A}(t)u_r(s)Y_A(\Omega),\label{eq:app-stage024-U-sep}\\
+W_{r,A}(s,\Omega,t)&=W_{r,A}(t)w_r(s)Y_A(\Omega).\label{eq:app-stage024-W-sep}
+\end{align}
+The angular factor is diagonal by \eqref{eq:app-stage024-Y-orthonormal}.  The radial/axial overlaps are
+\begin{align}
+I_{\eta\alpha}&=\int ds\,\mu_s(s)\chi_\eta(s)\phi_\alpha(s),\label{eq:app-stage024-I-eta-alpha}\\
+I_{\eta u,r}&=\int ds\,\mu_s(s)\chi_\eta(s)u_r(s),\label{eq:app-stage024-I-eta-u}\\
+I_{\eta w,r}&=\int ds\,\mu_s(s)\chi_\eta(s)w_r(s),\label{eq:app-stage024-I-eta-w}\\
+I_{uw,r}&=\int ds\,\mu_s(s)u_r(s)w_r(s).\label{eq:app-stage024-I-uw}
+\end{align}
+The lane-independent reduced couplings are
+\begin{equation}
+\label{eq:app-stage024-isotropic-couplings}
+\boxed{
+C_\alpha=\lambda_{B,\alpha}I_{\eta\alpha},
+\qquad
+G_{U,r}=\lambda_{U,r}I_{\eta u,r},
+\qquad
+G_{W,r}=\lambda_{W,r}I_{\eta w,r},
+\qquad
+R_r=\lambda_{R,r}I_{uw,r}}.
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:app-stage024-B-moments}
+\boxed{
+B_0=\sum_\alpha\frac{C_\alpha^2}{\varpi_\alpha^2},
+\qquad
+B_2=\sum_\alpha\frac{C_\alpha^2}{\varpi_\alpha^4},
+\qquad
+B_4=\sum_\alpha\frac{C_\alpha^2}{\varpi_\alpha^6}}.
+\end{equation}
+For each Maxwell/mixed pair define
+\begin{equation}
+\label{eq:app-stage024-Delta-S-Q-H-P}
+\Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2,
+\qquad
+S_r=\Omega_{U,r}^2+\Omega_{W,r}^2,
+\end{equation}
+\begin{equation}
+Q_r=G_{U,r}^2\Omega_{W,r}^2+2G_{U,r}G_{W,r}R_r+G_{W,r}^2\Omega_{U,r}^2,
+\qquad
+H_r=G_{U,r}^2+G_{W,r}^2,
+\end{equation}
+\begin{equation}
+\mathcal P_r=\Omega_{U,r}^2G_{W,r}+R_rG_{U,r}.
+\end{equation}
+Then
+\begin{align}
+\label{eq:app-stage024-ZN-moments}
+Z_0&=\sum_r\frac{Q_r}{\Delta_r},&
+Z_2&=\sum_r\frac{Q_rS_r-H_r\Delta_r}{\Delta_r^2},&
+Z_4&=\sum_r\frac{Q_r(S_r^2-\Delta_r)-S_rH_r\Delta_r}{\Delta_r^3},\\
+N_0&=\sum_r\frac{\mathcal P_r^2}{\Delta_r^2},&
+N_2&=\sum_r\frac{2\mathcal P_r(\mathcal P_rS_r-\Delta_rG_{W,r})}{\Delta_r^3},&
+N_4&=\sum_r\frac{\Delta_r^2G_{W,r}^2-2\Delta_r\mathcal P_r^2-4\Delta_r\mathcal P_rS_rG_{W,r}+3\mathcal P_r^2S_r^2}{\Delta_r^4}.
+\end{align}
+The conservative operator is
+\begin{equation}
+\label{eq:app-stage024-D-isotropic}
+\boxed{
+\begin{aligned}
+D(\omega)&=D_0+D_2\omega^2+D_4\omega^4+O(\omega^6),\\
+D_0&=K-B_0-Z_0,\\
+D_2&=-(M+B_2+Z_2),\\
+D_4&=-(B_4+Z_4).
+\end{aligned}
 }
 \end{equation}
-on every regular branch.  Additional mixed baseline always lowers the support loading needed to reach the same selected depth.
-
-Two special closures are important:
+Therefore
 \begin{equation}
-\label{eq:app-stage024-tracking}
-r=q
-\quad\Longrightarrow\quad
-n_{\rm req}=G_q(\xi,\delta)-m,
+\label{eq:app-stage024-isotropic-collapse}
+\boxed{
+\begin{aligned}
+D_{20,n}=D_{21,n}=D_{22,n}&=D_n,\\
+N_{20,n}=N_{21,n}=N_{22,n}&=N_n,
+\end{aligned}
+}
 \end{equation}
-and, with source-tied support and \(q=tR_U\),
+so every grouped anisotropy defect vanishes on a truly \(O(3)\)-invariant branch.
+
+\paragraph{4. Weak-axisymmetric quadrupole splitting.}
+Let the first symmetry-breaking perturbation be
 \begin{equation}
-\label{eq:app-stage024-source-tied}
- n_{\rm req}^{\rm src}
-=\frac{\xi(\delta+\xi)-m[\delta+(1+\lambda_0R_U^2)\xi]}
-{\delta+(1+\lambda_0)\xi-m\lambda_0(R_U-1)^2}.
+\label{eq:app-stage024-deltaK-axisym}
+\delta K=\varepsilon\,\kappa(s)Y_{20}(\Omega).
+\end{equation}
+The angular matrix is
+\begin{equation}
+\label{eq:app-stage024-MAB20}
+M_{AB}^{(20)}=\int_{S^2}Y_A Y_{20}Y_B\,d\Omega.
+\end{equation}
+Using the sixth moment of the unit sphere gives
+\begin{equation}
+\label{eq:app-stage024-axisym-matrix}
+\boxed{
+M^{(20)}=\frac{\sqrt5}{7\sqrt\pi}\operatorname{diag}\left(1,\frac12,\frac12,-1,-1\right)
+}
+\end{equation}
+in the five real STF lanes.  Grouping the cosine/sine pairs gives
+\begin{equation}
+\label{eq:app-stage024-lambda-signature}
+\boxed{
+\lambda_{20}=1,
+\qquad
+\lambda_{21}=\frac12,
+\qquad
+\lambda_{22}=-1}.
+\end{equation}
+Any first-order grouped coefficient therefore has the form
+\begin{equation}
+\label{eq:app-stage024-x-signature}
+x_{20}=x^{(0)}+\varepsilon x^{(1)},
+\qquad
+x_{21}=x^{(0)}+\frac{\varepsilon}{2}x^{(1)},
+\qquad
+x_{22}=x^{(0)}-\varepsilon x^{(1)}.
+\end{equation}
+The grouped trace/anomaly variables are
+\begin{equation}
+\label{eq:app-stage024-b-3a}
+\boxed{
+\bar x=x^{(0)},
+\qquad
+a_x=\frac{\varepsilon}{4}x^{(1)},
+\qquad
+b_x=\frac{3\varepsilon}{4}x^{(1)},
+\qquad
+b_x=3a_x}.
+\end{equation}
+This is the first weak-axisymmetric diagnostic line.
+
+\paragraph{5. First-order normalization transport.}
+If
+\begin{equation}
+D_A=D_0+\varepsilon\lambda_A D_1+O(\varepsilon^2),
+\qquad
+N_A=N_0+\varepsilon\lambda_A N_1+O(\varepsilon^2),
+\end{equation}
+then
+\begin{equation}
+\label{eq:app-stage024-PA-transport}
+P_A=\frac{N_A}{D_A}=P_0+\varepsilon\lambda_A P_1+O(\varepsilon^2),
+\qquad
+\boxed{P_1=\frac{N_1D_0-N_0D_1}{D_0^2}}.
+\end{equation}
+The prefactor defects therefore satisfy
+\begin{equation}
+\label{eq:app-stage024-P-defects}
+\boxed{
+a_P=\frac{\varepsilon}{4}P_1,
+\qquad
+b_P=\frac{3\varepsilon}{4}P_1,
+\qquad
+b_P=3a_P}.
 \end{equation}
 
-\stagefield{Output}{The support-loading theorem \eqref{eq:app-stage024-nreq}, its monotonicity \eqref{eq:app-stage024-nreq-derivative}, and the tracking/source-tied alternatives.}
-\stagefield{Downstream use}{Stage~025 computes normalization with three distinct directions; Stage~028 shows the first coherent D/N kernel lands on the tracking surface.}
+\stagefield{Output}{Stage~024 outputs the real-STF normalization \eqref{eq:app-stage024-Y-orthonormal}, the angular source-map identity \eqref{eq:app-stage024-source-map}, the isotropic overlap formulas \eqref{eq:app-stage024-B-moments}--\eqref{eq:app-stage024-D-isotropic}, the grouped isotropy collapse \eqref{eq:app-stage024-isotropic-collapse}, the weak-axisymmetric signature \eqref{eq:app-stage024-lambda-signature}, the line \(b=3a\), and the normalization transport coefficient \eqref{eq:app-stage024-PA-transport}.}
 
+\stagefield{Checks}{\begin{verificationchecklist}
+\item The angular source map is checked by inserting the source expansion and using orthonormality of \(Y_A\).
+\item The isotropic collapse is checked by verifying that all angular integrals reduce to \(\delta_{AB}\) and all remaining radial/axial data are lane-independent.
+\item The weak-axisymmetric matrix is checked from the exact sixth moment on \(S^2\).
+\item The grouped line \(b=3a\) follows directly by applying the weighted trace/anomaly map to the signature \((1,1/2,-1)\).
+\item The prefactor transport formula is the first-order quotient variation of \(P_A=N_A/D_A\).
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{Stages~025--026 use \(\widehat m_{\rm ang}=1\) to focus on radial/axial normalization.  Stages~164--200 later reuse \(b=3a\) as the weak-axisymmetric orbit signature.  The same prefactor slope becomes \(\Xi_1=P_1/P_0\) in the weak-axisymmetric and same-charge analysis.}
+
+\clearpage

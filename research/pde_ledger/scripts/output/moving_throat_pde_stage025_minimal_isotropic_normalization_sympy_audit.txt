@@ -1,0 +1,92 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+# Date: 2026-05-11T12:39:52-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+SECTION II — EXACT MINIMAL ISOTROPIC NORMALIZATION FORMULA
+========================================================================================
+
+========================================================================================
+SECTION I — MINIMAL ISOTROPIC ZERO-FREQUENCY COEFFICIENTS
+========================================================================================
+Delta = OmegaU**2*OmegaW**2 - R**2
+Q     = GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2
+P     = GU*R + GW*OmegaU**2
+B0    = C**2/varpi**2
+Z0    = (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+N0    = (GU*R + GW*OmegaU**2)**2/(OmegaU**2*OmegaW**2 - R**2)**2
+D0    = -C**2/varpi**2 + K - (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+
+----------------------------------------------------------------------------------------
+II.1 — P0 in raw and compact form
+----------------------------------------------------------------------------------------
+P0 raw    = -varpi**2*(GU*R + GW*OmegaU**2)**2/((OmegaU**2*OmegaW**2 - R**2)*(C**2*(OmegaU**2*OmegaW**2 - R**2) - K*varpi**2*(OmegaU**2*OmegaW**2 - R**2) + varpi**2*(GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)))
+P0 compact= -varpi**2*(GU*R + GW*OmegaU**2)**2/((C**2*(OmegaU**2*OmegaW**2 - R**2) + varpi**2*(GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2 - K*(OmegaU**2*OmegaW**2 - R**2)))*(OmegaU**2*OmegaW**2 - R**2))
+P0 - P0_compact = 0
+
+----------------------------------------------------------------------------------------
+II.2 — Exact target equation
+----------------------------------------------------------------------------------------
+Target residual =
+                                                                               ↪
+         5                                                    2      2 ⎛       ↪
+  54⋅G⋅cₛ                                                    m̂ ⋅varpi ⋅⎝GU⋅R + ↪
+- ──────── - ───────────────────────────────────────────────────────────────── ↪
+     5  5    ⎛ 2 ⎛      2       2    2⎞        2 ⎛  2       2                  ↪
+  5⋅a ⋅c     ⎝C ⋅⎝OmegaU ⋅OmegaW  - R ⎠ + varpi ⋅⎝GU ⋅OmegaW  + 2⋅GU⋅GW⋅R + GW ↪
+
+↪             2                                                
+↪           2⎞                                                 
+↪  GW⋅OmegaU ⎠                                                 
+↪ ─────────────────────────────────────────────────────────────
+↪ 2       2     ⎛      2       2    2⎞⎞⎞ ⎛      2       2    2⎞
+↪  ⋅OmegaU  - K⋅⎝OmegaU ⋅OmegaW  - R ⎠⎠⎠⋅⎝OmegaU ⋅OmegaW  - R ⎠
+
+========================================================================================
+SECTION III — STABILITY AND POSITIVITY STRUCTURE
+========================================================================================
+
+========================================================================================
+SECTION I — MINIMAL ISOTROPIC ZERO-FREQUENCY COEFFICIENTS
+========================================================================================
+Delta = OmegaU**2*OmegaW**2 - R**2
+Q     = GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2
+P     = GU*R + GW*OmegaU**2
+B0    = C**2/varpi**2
+Z0    = (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+N0    = (GU*R + GW*OmegaU**2)**2/(OmegaU**2*OmegaW**2 - R**2)**2
+D0    = -C**2/varpi**2 + K - (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q) = 0
+N0 - P^2/Delta^2 = 0
+If Delta > 0 and D0 > 0, then P0 > 0 whenever P != 0.
+
+========================================================================================
+SECTION IV — EXACT MONOTONIC DERIVATIVES
+========================================================================================
+
+========================================================================================
+SECTION I — MINIMAL ISOTROPIC ZERO-FREQUENCY COEFFICIENTS
+========================================================================================
+Delta = OmegaU**2*OmegaW**2 - R**2
+Q     = GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2
+P     = GU*R + GW*OmegaU**2
+B0    = C**2/varpi**2
+Z0    = (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+N0    = (GU*R + GW*OmegaU**2)**2/(OmegaU**2*OmegaW**2 - R**2)**2
+D0    = -C**2/varpi**2 + K - (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
+
+----------------------------------------------------------------------------------------
+IV.1 — Derivatives with respect to K and X = C^2/varpi^2
+----------------------------------------------------------------------------------------
+dP0/dK = -(GU*R + GW*OmegaU**2)**2/(GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2 - (K - X)*(OmegaU**2*OmegaW**2 - R**2))**2
+dP0/dX = (GU*R + GW*OmegaU**2)**2/(GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2 - (K - X)*(OmegaU**2*OmegaW**2 - R**2))**2
+dP0/dK + N0/(K - X - Q/Delta)^2 = 0
+dP0/dX - N0/(K - X - Q/Delta)^2 = 0
+dP0/dX + dP0/dK = 0
+
+EXIT_CODE: 0

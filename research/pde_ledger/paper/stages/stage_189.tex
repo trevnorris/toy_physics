@@ -1,28 +1,27 @@
-\section[Stage 189]{Stage 189: Curvature-envelope ray ranking}
+\section[Stage 189]{Stage 189: Transfer-shape / outgoing-prefactor compiler}
 \label{stage:189}
 
-\stagefield{Part / anchor}{Part VI; primary anchor \resultanchor{MTDC-T10}, local subanchor \resultanchor{MTDC-T10.2}.}
-\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}
+\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.4}.}
+\claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~189 converts local ray predictors into certified local brackets by bounding the oriented log residual's curvature.}
+\stagefield{Purpose}{Stage~189 is the original-stage audit card for \emph{Transfer-shape / outgoing-prefactor compiler}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
 
-\stagefield{Inputs}{Imports the oriented residual \(H_{\mathbf s}\), local data \((H_0,K_0)\), and a curvature envelope \(\underline K_1\le H_{\mathbf s}''\le\overline K_1\) on a validity interval.}
+\stagefield{Inputs}{This stage imports the triangular normal form, the transfer-shape/outgoing-prefactor identity, and the exact monomial quotient coordinates.  It compiles observable branch data rather than solving the nonlinear moving-throat PDE.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage189_certified_ray_ranking_and_local_bracketing_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py}.  Mathematica audit: none yet.}
 
-\stagefield{Derivation ledger}{The derivation builds upper/lower quadratic comparison functions, proves the root-map monotonicity in the curvature parameter, derives certified monotone and turning brackets, gives a bracket-width law, and defines pairwise interval ordering.}
+\stagefield{Derivation ledger}{The derivation composes the quotient map with the observable packet, equates the direct coherent defect with the transfer-shape/outgoing-prefactor slope, and separates branch-side and orbit-side packets.}
 
-\stagefield{Output}{Certified monotone bracket theorem, certified turning-ray bracket theorem, pairwise ray-ordering theorem, and local search-sieve admissibility test.}
+\stagefield{Output}{Equates \(\Xi_1\) with the logarithmic transfer-shape and outgoing-prefactor slope, including corrected nontracking form.}
 
-\stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary; it should not be read as a second independent proof.}
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check \(\widehat\chi_Q\) is evaluated on the target graph, not on an off-graph candidate.
-\item Check the log-ray validity interval before using a local bracket.
-\item Check curvature-envelope hypotheses before reporting a certified interval.
-\item Separate exact predictor formulas from numerical derivative data supplied by a branch.
+\item Check that direct transfer-shape drift \(\Xi_1\) is kept separate from selected-branch dressing residuals.
+\item Check Packet A and Packet B are not collapsed until the two-packet theorem is invoked.
+\item Check the corrected nontracking form when tracking feed-through has been removed.
+\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream papers should cite \resultanchor{MTDC-T10.2} for this local stage range and \resultanchor{MTDC-T10} for the full Part VI compiler.}
-
+\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.4} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
 

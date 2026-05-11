@@ -1,0 +1,1210 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+# Date: 2026-05-11T12:49:34-06:00
+# Elapsed: 7s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 197 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER
+========================================================================================
+
+========================================================================================
+EXACT LIFTED STATIONARY SYSTEM AND FINITE ALGEBRAIC CANDIDATE REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact interior ratio objective and stationary numerators
+----------------------------------------------------------------------------------------
+Phi(r,s,t) =
+                              ________________________________________________ ↪
+                             ╱                          2                      ↪
+kᵢ + k_j⋅r + kₖ⋅s + kₗ⋅t + ╲╱  A + B⋅r + C⋅s + D⋅t + E⋅r  + F⋅r⋅s + G⋅r⋅t + H⋅ ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                                        __________________                     ↪
+                                       ╱  2    2    2                          ↪
+                                     ╲╱  r  + s  + t  + 1                      ↪
+
+↪ __________________
+↪  2              2 
+↪ s  + I⋅s⋅t + J⋅t  
+↪ ──────────────────
+↪                   
+↪                   
+↪                   
+tau(r,s,t) =
+                                           __________________                  ↪
+                                          ╱  2    2    2                       ↪
+                                   2⋅H₀⋅╲╱  r  + s  + t  + 1                   ↪
+────────────────────────────────────────────────────────────────────────────── ↪
+                              ________________________________________________ ↪
+                             ╱                          2                      ↪
+kᵢ + k_j⋅r + kₖ⋅s + kₗ⋅t + ╲╱  A + B⋅r + C⋅s + D⋅t + E⋅r  + F⋅r⋅s + G⋅r⋅t + H⋅ ↪
+
+↪                   
+↪                   
+↪                   
+↪ ──────────────────
+↪ __________________
+↪  2              2 
+↪ s  + I⋅s⋅t + J⋅t  
+M_r =
+             2        2                        
+-kᵢ⋅r + k_j⋅s  + k_j⋅t  + k_j - kₖ⋅r⋅s - kₗ⋅r⋅t
+M_s =
+                      2       2              
+-kᵢ⋅s - k_j⋅r⋅s + kₖ⋅r  + kₖ⋅t  + kₖ - kₗ⋅s⋅t
+M_t =
+                               2       2     
+-kᵢ⋅t - k_j⋅r⋅t - kₖ⋅s⋅t + kₗ⋅r  + kₗ⋅s  + kₗ
+L_r =
+      ⎛                         2                      2              2⎞       ↪
+- 2⋅r⋅⎝A + B⋅r + C⋅s + D⋅t + E⋅r  + F⋅r⋅s + G⋅r⋅t + H⋅s  + I⋅s⋅t + J⋅t ⎠ + (B  ↪
+
+↪                      ⎛ 2    2    2    ⎞
+↪ + 2⋅E⋅r + F⋅s + G⋅t)⋅⎝r  + s  + t  + 1⎠
+L_s =
+      ⎛                         2                      2              2⎞       ↪
+- 2⋅s⋅⎝A + B⋅r + C⋅s + D⋅t + E⋅r  + F⋅r⋅s + G⋅r⋅t + H⋅s  + I⋅s⋅t + J⋅t ⎠ + (C  ↪
+
+↪                      ⎛ 2    2    2    ⎞
+↪ + F⋅r + 2⋅H⋅s + I⋅t)⋅⎝r  + s  + t  + 1⎠
+L_t =
+      ⎛                         2                      2              2⎞       ↪
+- 2⋅t⋅⎝A + B⋅r + C⋅s + D⋅t + E⋅r  + F⋅r⋅s + G⋅r⋅t + H⋅s  + I⋅s⋅t + J⋅t ⎠ + (D  ↪
+
+↪                      ⎛ 2    2    2    ⎞
+↪ + G⋅r + I⋅s + 2⋅J⋅t)⋅⎝r  + s  + t  + 1⎠
+exact dPhi/dr compiler = 0
+exact dPhi/ds compiler = 0
+exact dPhi/dt compiler = 0
+
+----------------------------------------------------------------------------------------
+II. Lifted polynomial stationary system and degree ledger
+----------------------------------------------------------------------------------------
+F_r(r,s,t,y) =
+            2      2      2                                  2          2      ↪
+-2⋅A⋅r - B⋅r  + B⋅s  + B⋅t  + B - 2⋅C⋅r⋅s - 2⋅D⋅r⋅t + 2⋅E⋅r⋅s  + 2⋅E⋅r⋅t  + 2⋅ ↪
+
+↪          2        3        2            2        2        3                2 ↪
+↪ E⋅r - F⋅r ⋅s + F⋅s  + F⋅s⋅t  + F⋅s - G⋅r ⋅t + G⋅s ⋅t + G⋅t  + G⋅t - 2⋅H⋅r⋅s  ↪
+
+↪                       2                     2            2                   ↪
+↪  - 2⋅I⋅r⋅s⋅t - 2⋅J⋅r⋅t  - 2⋅kᵢ⋅r⋅y + 2⋅k_j⋅s ⋅y + 2⋅k_j⋅t ⋅y + 2⋅k_j⋅y - 2⋅k ↪
+
+↪                     
+↪ ₖ⋅r⋅s⋅y - 2⋅kₗ⋅r⋅t⋅y
+F_s(r,s,t,y) =
+                      2      2      2                      2        3        2 ↪
+-2⋅A⋅s - 2⋅B⋅r⋅s + C⋅r  - C⋅s  + C⋅t  + C - 2⋅D⋅s⋅t - 2⋅E⋅r ⋅s + F⋅r  - F⋅r⋅s  ↪
+
+↪         2                          2            2              2        2    ↪
+↪  + F⋅r⋅t  + F⋅r - 2⋅G⋅r⋅s⋅t + 2⋅H⋅r ⋅s + 2⋅H⋅s⋅t  + 2⋅H⋅s + I⋅r ⋅t - I⋅s ⋅t  ↪
+
+↪      3                2                                  2           2       ↪
+↪ + I⋅t  + I⋅t - 2⋅J⋅s⋅t  - 2⋅kᵢ⋅s⋅y - 2⋅k_j⋅r⋅s⋅y + 2⋅kₖ⋅r ⋅y + 2⋅kₖ⋅t ⋅y + 2 ↪
+
+↪                   
+↪ ⋅kₖ⋅y - 2⋅kₗ⋅s⋅t⋅y
+F_t(r,s,t,y) =
+                                2      2      2            2                   ↪
+-2⋅A⋅t - 2⋅B⋅r⋅t - 2⋅C⋅s⋅t + D⋅r  + D⋅s  - D⋅t  + D - 2⋅E⋅r ⋅t - 2⋅F⋅r⋅s⋅t + G ↪
+
+↪   3        2        2              2        2        3        2              ↪
+↪ ⋅r  + G⋅r⋅s  - G⋅r⋅t  + G⋅r - 2⋅H⋅s ⋅t + I⋅r ⋅s + I⋅s  - I⋅s⋅t  + I⋅s + 2⋅J⋅ ↪
+
+↪  2          2                                                         2      ↪
+↪ r ⋅t + 2⋅J⋅s ⋅t + 2⋅J⋅t - 2⋅kᵢ⋅t⋅y - 2⋅k_j⋅r⋅t⋅y - 2⋅kₖ⋅s⋅t⋅y + 2⋅kₗ⋅r ⋅y +  ↪
+
+↪       2           
+↪ 2⋅kₗ⋅s ⋅y + 2⋅kₗ⋅y
+F_Delta(r,s,t,y) =
+                          2                      2              2    2
+-A - B⋅r - C⋅s - D⋅t - E⋅r  - F⋅r⋅s - G⋅r⋅t - H⋅s  - I⋅s⋅t - J⋅t  + y 
+deg F_r = 3
+deg F_s = 3
+deg F_t = 3
+deg F_Delta = 2
+lifted Bezout bound = 54
+
+----------------------------------------------------------------------------------------
+III. Exact square-root-free elimination identities
+----------------------------------------------------------------------------------------
+C_rs(r,s,t) =
+         2              3              2                       3             2 ↪
+2⋅A⋅k_j⋅r ⋅s + 2⋅A⋅k_j⋅s  + 2⋅A⋅k_j⋅s⋅t  + 2⋅A⋅k_j⋅s - 2⋅A⋅kₖ⋅r  - 2⋅A⋅kₖ⋅r⋅s  ↪
+
+↪              2                    2           3           2                  ↪
+↪  - 2⋅A⋅kₖ⋅r⋅t  - 2⋅A⋅kₖ⋅r - B⋅kᵢ⋅r ⋅s - B⋅kᵢ⋅s  - B⋅kᵢ⋅s⋅t  - B⋅kᵢ⋅s + B⋅k_j ↪
+
+↪   3              3              2                     4         2  2         ↪
+↪ ⋅r ⋅s + B⋅k_j⋅r⋅s  + B⋅k_j⋅r⋅s⋅t  + B⋅k_j⋅r⋅s - B⋅kₖ⋅r  - B⋅kₖ⋅r ⋅s  + B⋅kₖ⋅ ↪
+
+↪  2  2         2         4           2                2             3         ↪
+↪ s ⋅t  + B⋅kₖ⋅s  + B⋅kₖ⋅t  + 2⋅B⋅kₖ⋅t  + B⋅kₖ - B⋅kₗ⋅r ⋅s⋅t - B⋅kₗ⋅s ⋅t - B⋅k ↪
+
+↪      3                    3           2           2                   2  2   ↪
+↪ ₗ⋅s⋅t  - B⋅kₗ⋅s⋅t + C⋅kᵢ⋅r  + C⋅kᵢ⋅r⋅s  + C⋅kᵢ⋅r⋅t  + C⋅kᵢ⋅r + C⋅k_j⋅r ⋅s  - ↪
+
+↪         2  2          2          4          4            2                 3 ↪
+↪  C⋅k_j⋅r ⋅t  - C⋅k_j⋅r  + C⋅k_j⋅s  - C⋅k_j⋅t  - 2⋅C⋅k_j⋅t  - C⋅k_j - C⋅kₖ⋅r  ↪
+
+↪              3             2                    3             2              ↪
+↪ ⋅s - C⋅kₖ⋅r⋅s  - C⋅kₖ⋅r⋅s⋅t  - C⋅kₖ⋅r⋅s + C⋅kₗ⋅r ⋅t + C⋅kₗ⋅r⋅s ⋅t + C⋅kₗ⋅r⋅t ↪
+
+↪ 3                       2                3                3                  ↪
+↪   + C⋅kₗ⋅r⋅t + 2⋅D⋅k_j⋅r ⋅s⋅t + 2⋅D⋅k_j⋅s ⋅t + 2⋅D⋅k_j⋅s⋅t  + 2⋅D⋅k_j⋅s⋅t -  ↪
+
+↪         3               2               3                        3           ↪
+↪ 2⋅D⋅kₖ⋅r ⋅t - 2⋅D⋅kₖ⋅r⋅s ⋅t - 2⋅D⋅kₖ⋅r⋅t  - 2⋅D⋅kₖ⋅r⋅t - 2⋅E⋅kᵢ⋅r ⋅s - 2⋅E⋅k ↪
+
+↪      3               2                        3  2           3             2 ↪
+↪ ᵢ⋅r⋅s  - 2⋅E⋅kᵢ⋅r⋅s⋅t  - 2⋅E⋅kᵢ⋅r⋅s + 2⋅E⋅kₖ⋅r ⋅t  + 2⋅E⋅kₖ⋅r  + 2⋅E⋅kₖ⋅r⋅s  ↪
+
+↪   2             2             4             2                      3         ↪
+↪ ⋅t  + 2⋅E⋅kₖ⋅r⋅s  + 2⋅E⋅kₖ⋅r⋅t  + 4⋅E⋅kₖ⋅r⋅t  + 2⋅E⋅kₖ⋅r - 2⋅E⋅kₗ⋅r ⋅s⋅t - 2 ↪
+
+↪          3                 3                        4         2  2         2 ↪
+↪ ⋅E⋅kₗ⋅r⋅s ⋅t - 2⋅E⋅kₗ⋅r⋅s⋅t  - 2⋅E⋅kₗ⋅r⋅s⋅t + F⋅kᵢ⋅r  + F⋅kᵢ⋅r ⋅t  + F⋅kᵢ⋅r  ↪
+
+↪          4         2  2         2          3  2          3            2  2   ↪
+↪  - F⋅kᵢ⋅s  - F⋅kᵢ⋅s ⋅t  - F⋅kᵢ⋅s  - F⋅k_j⋅r ⋅t  - F⋅k_j⋅r  - F⋅k_j⋅r⋅s ⋅t  - ↪
+
+↪           2            4              2                   2    2         2   ↪
+↪  F⋅k_j⋅r⋅s  - F⋅k_j⋅r⋅t  - 2⋅F⋅k_j⋅r⋅t  - F⋅k_j⋅r + F⋅kₖ⋅r ⋅s⋅t  + F⋅kₖ⋅r ⋅s ↪
+
+↪          3  2         3           4             2                  4         ↪
+↪  + F⋅kₖ⋅s ⋅t  + F⋅kₖ⋅s  + F⋅kₖ⋅s⋅t  + 2⋅F⋅kₖ⋅s⋅t  + F⋅kₖ⋅s + F⋅kₗ⋅r ⋅t + F⋅k ↪
+
+↪    2  3         2           4           2  3         2           2           ↪
+↪ ₗ⋅r ⋅t  + F⋅kₗ⋅r ⋅t - F⋅kₗ⋅s ⋅t - F⋅kₗ⋅s ⋅t  - F⋅kₗ⋅s ⋅t - G⋅kᵢ⋅r ⋅s⋅t - G⋅k ↪
+
+↪    3             3                     3                3                3   ↪
+↪ ᵢ⋅s ⋅t - G⋅kᵢ⋅s⋅t  - G⋅kᵢ⋅s⋅t + G⋅k_j⋅r ⋅s⋅t + G⋅k_j⋅r⋅s ⋅t + G⋅k_j⋅r⋅s⋅t  + ↪
+
+↪                      4           2  2           2  3         2           5   ↪
+↪  G⋅k_j⋅r⋅s⋅t - G⋅kₖ⋅r ⋅t - G⋅kₖ⋅r ⋅s ⋅t + G⋅kₖ⋅s ⋅t  + G⋅kₖ⋅s ⋅t + G⋅kₖ⋅t  + ↪
+
+↪          3                  2    2         3  2           4           2      ↪
+↪  2⋅G⋅kₖ⋅t  + G⋅kₖ⋅t - G⋅kₗ⋅r ⋅s⋅t  - G⋅kₗ⋅s ⋅t  - G⋅kₗ⋅s⋅t  - G⋅kₗ⋅s⋅t  + 2⋅ ↪
+
+↪       3               3               2                         2    2       ↪
+↪ H⋅kᵢ⋅r ⋅s + 2⋅H⋅kᵢ⋅r⋅s  + 2⋅H⋅kᵢ⋅r⋅s⋅t  + 2⋅H⋅kᵢ⋅r⋅s - 2⋅H⋅k_j⋅r ⋅s⋅t  - 2⋅H ↪
+
+↪       2              3  2            3              4              2         ↪
+↪ ⋅k_j⋅r ⋅s - 2⋅H⋅k_j⋅s ⋅t  - 2⋅H⋅k_j⋅s  - 2⋅H⋅k_j⋅s⋅t  - 4⋅H⋅k_j⋅s⋅t  - 2⋅H⋅k ↪
+
+↪                3                 3                 3                         ↪
+↪ _j⋅s + 2⋅H⋅kₗ⋅r ⋅s⋅t + 2⋅H⋅kₗ⋅r⋅s ⋅t + 2⋅H⋅kₗ⋅r⋅s⋅t  + 2⋅H⋅kₗ⋅r⋅s⋅t + I⋅kᵢ⋅r ↪
+
+↪ 3             2             3                     2  2            2  3       ↪
+↪  ⋅t + I⋅kᵢ⋅r⋅s ⋅t + I⋅kᵢ⋅r⋅t  + I⋅kᵢ⋅r⋅t + I⋅k_j⋅r ⋅s ⋅t - I⋅k_j⋅r ⋅t  - I⋅k ↪
+
+↪     2            4            5            3                   3             ↪
+↪ _j⋅r ⋅t + I⋅k_j⋅s ⋅t - I⋅k_j⋅t  - 2⋅I⋅k_j⋅t  - I⋅k_j⋅t - I⋅kₖ⋅r ⋅s⋅t - I⋅kₖ⋅ ↪
+
+↪    3               3                      3  2           2  2           4    ↪
+↪ r⋅s ⋅t - I⋅kₖ⋅r⋅s⋅t  - I⋅kₖ⋅r⋅s⋅t + I⋅kₗ⋅r ⋅t  + I⋅kₗ⋅r⋅s ⋅t  + I⋅kₗ⋅r⋅t  +  ↪
+
+↪         2            2    2            3  2              4              2    ↪
+↪ I⋅kₗ⋅r⋅t  + 2⋅J⋅k_j⋅r ⋅s⋅t  + 2⋅J⋅k_j⋅s ⋅t  + 2⋅J⋅k_j⋅s⋅t  + 2⋅J⋅k_j⋅s⋅t  -  ↪
+
+↪         3  2             2  2             4             2
+↪ 2⋅J⋅kₖ⋅r ⋅t  - 2⋅J⋅kₖ⋅r⋅s ⋅t  - 2⋅J⋅kₖ⋅r⋅t  - 2⋅J⋅kₖ⋅r⋅t 
+C_rt(r,s,t) =
+         2              2              3                       3             2 ↪
+2⋅A⋅k_j⋅r ⋅t + 2⋅A⋅k_j⋅s ⋅t + 2⋅A⋅k_j⋅t  + 2⋅A⋅k_j⋅t - 2⋅A⋅kₗ⋅r  - 2⋅A⋅kₗ⋅r⋅s  ↪
+
+↪              2                    2           2           3                  ↪
+↪  - 2⋅A⋅kₗ⋅r⋅t  - 2⋅A⋅kₗ⋅r - B⋅kᵢ⋅r ⋅t - B⋅kᵢ⋅s ⋅t - B⋅kᵢ⋅t  - B⋅kᵢ⋅t + B⋅k_j ↪
+
+↪   3              2              3                     2             3        ↪
+↪ ⋅r ⋅t + B⋅k_j⋅r⋅s ⋅t + B⋅k_j⋅r⋅t  + B⋅k_j⋅r⋅t - B⋅kₖ⋅r ⋅s⋅t - B⋅kₖ⋅s ⋅t - B⋅ ↪
+
+↪       3                    4         2  2         4         2  2           2 ↪
+↪ kₖ⋅s⋅t  - B⋅kₖ⋅s⋅t - B⋅kₗ⋅r  - B⋅kₗ⋅r ⋅t  + B⋅kₗ⋅s  + B⋅kₗ⋅s ⋅t  + 2⋅B⋅kₗ⋅s  ↪
+
+↪          2                   2                3                3             ↪
+↪  + B⋅kₗ⋅t  + B⋅kₗ + 2⋅C⋅k_j⋅r ⋅s⋅t + 2⋅C⋅k_j⋅s ⋅t + 2⋅C⋅k_j⋅s⋅t  + 2⋅C⋅k_j⋅s ↪
+
+↪              3               3               2                      3        ↪
+↪ ⋅t - 2⋅C⋅kₗ⋅r ⋅s - 2⋅C⋅kₗ⋅r⋅s  - 2⋅C⋅kₗ⋅r⋅s⋅t  - 2⋅C⋅kₗ⋅r⋅s + D⋅kᵢ⋅r  + D⋅kᵢ ↪
+
+↪     2           2                   2  2          2  2          2          4 ↪
+↪ ⋅r⋅s  + D⋅kᵢ⋅r⋅t  + D⋅kᵢ⋅r - D⋅k_j⋅r ⋅s  + D⋅k_j⋅r ⋅t  - D⋅k_j⋅r  - D⋅k_j⋅s  ↪
+
+↪             2          4                 3             3             2       ↪
+↪  - 2⋅D⋅k_j⋅s  + D⋅k_j⋅t  - D⋅k_j + D⋅kₖ⋅r ⋅s + D⋅kₖ⋅r⋅s  + D⋅kₖ⋅r⋅s⋅t  + D⋅k ↪
+
+↪               3             2             3                      3           ↪
+↪ ₖ⋅r⋅s - D⋅kₗ⋅r ⋅t - D⋅kₗ⋅r⋅s ⋅t - D⋅kₗ⋅r⋅t  - D⋅kₗ⋅r⋅t - 2⋅E⋅kᵢ⋅r ⋅t - 2⋅E⋅k ↪
+
+↪      2               3                        3                 3            ↪
+↪ ᵢ⋅r⋅s ⋅t - 2⋅E⋅kᵢ⋅r⋅t  - 2⋅E⋅kᵢ⋅r⋅t - 2⋅E⋅kₖ⋅r ⋅s⋅t - 2⋅E⋅kₖ⋅r⋅s ⋅t - 2⋅E⋅kₖ ↪
+
+↪       3                          3  2           3             4              ↪
+↪ ⋅r⋅s⋅t  - 2⋅E⋅kₖ⋅r⋅s⋅t + 2⋅E⋅kₗ⋅r ⋅s  + 2⋅E⋅kₗ⋅r  + 2⋅E⋅kₗ⋅r⋅s  + 2⋅E⋅kₗ⋅r⋅s ↪
+
+↪ 2  2             2             2                    2             3          ↪
+↪  ⋅t  + 4⋅E⋅kₗ⋅r⋅s  + 2⋅E⋅kₗ⋅r⋅t  + 2⋅E⋅kₗ⋅r - F⋅kᵢ⋅r ⋅s⋅t - F⋅kᵢ⋅s ⋅t - F⋅kᵢ ↪
+
+↪     3                     3                3                3                ↪
+↪ ⋅s⋅t  - F⋅kᵢ⋅s⋅t + F⋅k_j⋅r ⋅s⋅t + F⋅k_j⋅r⋅s ⋅t + F⋅k_j⋅r⋅s⋅t  + F⋅k_j⋅r⋅s⋅t  ↪
+
+↪         2  2           4           2  3         2           4           2    ↪
+↪ - F⋅kₖ⋅r ⋅s ⋅t - F⋅kₖ⋅s ⋅t - F⋅kₖ⋅s ⋅t  - F⋅kₖ⋅s ⋅t - F⋅kₗ⋅r ⋅s - F⋅kₗ⋅r ⋅s⋅ ↪
+
+↪  2         5         3  2           3           2                  4         ↪
+↪ t  + F⋅kₗ⋅s  + F⋅kₗ⋅s ⋅t  + 2⋅F⋅kₗ⋅s  + F⋅kₗ⋅s⋅t  + F⋅kₗ⋅s + G⋅kᵢ⋅r  + G⋅kᵢ⋅ ↪
+
+↪  2  2         2         2  2         4         2          3  2          3    ↪
+↪ r ⋅s  + G⋅kᵢ⋅r  - G⋅kᵢ⋅s ⋅t  - G⋅kᵢ⋅t  - G⋅kᵢ⋅t  - G⋅k_j⋅r ⋅s  - G⋅k_j⋅r  -  ↪
+
+↪          4            2  2              2            2                   4   ↪
+↪ G⋅k_j⋅r⋅s  - G⋅k_j⋅r⋅s ⋅t  - 2⋅G⋅k_j⋅r⋅s  - G⋅k_j⋅r⋅t  - G⋅k_j⋅r + G⋅kₖ⋅r ⋅s ↪
+
+↪          2  3         2           3  2           4           2         2  2  ↪
+↪  + G⋅kₖ⋅r ⋅s  + G⋅kₖ⋅r ⋅s - G⋅kₖ⋅s ⋅t  - G⋅kₖ⋅s⋅t  - G⋅kₖ⋅s⋅t  + G⋅kₗ⋅r ⋅s ⋅ ↪
+
+↪           2           4           2  3           2           3               ↪
+↪ t + G⋅kₗ⋅r ⋅t + G⋅kₗ⋅s ⋅t + G⋅kₗ⋅s ⋅t  + 2⋅G⋅kₗ⋅s ⋅t + G⋅kₗ⋅t  + G⋅kₗ⋅t + 2⋅ ↪
+
+↪        2  2              4              2  3            2             3  2   ↪
+↪ H⋅k_j⋅r ⋅s ⋅t + 2⋅H⋅k_j⋅s ⋅t + 2⋅H⋅k_j⋅s ⋅t  + 2⋅H⋅k_j⋅s ⋅t - 2⋅H⋅kₗ⋅r ⋅s  - ↪
+
+↪            4             2  2             2         3             3          ↪
+↪  2⋅H⋅kₗ⋅r⋅s  - 2⋅H⋅kₗ⋅r⋅s ⋅t  - 2⋅H⋅kₗ⋅r⋅s  + I⋅kᵢ⋅r ⋅s + I⋅kᵢ⋅r⋅s  + I⋅kᵢ⋅r ↪
+
+↪     2                     2  3          2    2          2            5       ↪
+↪ ⋅s⋅t  + I⋅kᵢ⋅r⋅s - I⋅k_j⋅r ⋅s  + I⋅k_j⋅r ⋅s⋅t  - I⋅k_j⋅r ⋅s - I⋅k_j⋅s  - 2⋅I ↪
+
+↪       3            4                   3  2           4           2  2       ↪
+↪ ⋅k_j⋅s  + I⋅k_j⋅s⋅t  - I⋅k_j⋅s + I⋅kₖ⋅r ⋅s  + I⋅kₖ⋅r⋅s  + I⋅kₖ⋅r⋅s ⋅t  + I⋅k ↪
+
+↪      2         3               3               3                        3    ↪
+↪ ₖ⋅r⋅s  - I⋅kₗ⋅r ⋅s⋅t - I⋅kₗ⋅r⋅s ⋅t - I⋅kₗ⋅r⋅s⋅t  - I⋅kₗ⋅r⋅s⋅t + 2⋅J⋅kᵢ⋅r ⋅t  ↪
+
+↪             2               3                         2  2              2    ↪
+↪ + 2⋅J⋅kᵢ⋅r⋅s ⋅t + 2⋅J⋅kᵢ⋅r⋅t  + 2⋅J⋅kᵢ⋅r⋅t - 2⋅J⋅k_j⋅r ⋅s ⋅t - 2⋅J⋅k_j⋅r ⋅t  ↪
+
+↪            4              2  3            2              3                   ↪
+↪ - 2⋅J⋅k_j⋅s ⋅t - 2⋅J⋅k_j⋅s ⋅t  - 4⋅J⋅k_j⋅s ⋅t - 2⋅J⋅k_j⋅t  - 2⋅J⋅k_j⋅t + 2⋅J ↪
+
+↪      3                 3                 3               
+↪ ⋅kₖ⋅r ⋅s⋅t + 2⋅J⋅kₖ⋅r⋅s ⋅t + 2⋅J⋅kₖ⋅r⋅s⋅t  + 2⋅J⋅kₖ⋅r⋅s⋅t
+C_st(r,s,t) =
+        2             2             3                      2             3     ↪
+2⋅A⋅kₖ⋅r ⋅t + 2⋅A⋅kₖ⋅s ⋅t + 2⋅A⋅kₖ⋅t  + 2⋅A⋅kₖ⋅t - 2⋅A⋅kₗ⋅r ⋅s - 2⋅A⋅kₗ⋅s  - 2 ↪
+
+↪          2                      3               2               3            ↪
+↪ ⋅A⋅kₗ⋅s⋅t  - 2⋅A⋅kₗ⋅s + 2⋅B⋅kₖ⋅r ⋅t + 2⋅B⋅kₖ⋅r⋅s ⋅t + 2⋅B⋅kₖ⋅r⋅t  + 2⋅B⋅kₖ⋅r ↪
+
+↪              3               3               2                      2        ↪
+↪ ⋅t - 2⋅B⋅kₗ⋅r ⋅s - 2⋅B⋅kₗ⋅r⋅s  - 2⋅B⋅kₗ⋅r⋅s⋅t  - 2⋅B⋅kₗ⋅r⋅s - C⋅kᵢ⋅r ⋅t - C⋅ ↪
+
+↪     2           3                   3              2              3          ↪
+↪ kᵢ⋅s ⋅t - C⋅kᵢ⋅t  - C⋅kᵢ⋅t - C⋅k_j⋅r ⋅t - C⋅k_j⋅r⋅s ⋅t - C⋅k_j⋅r⋅t  - C⋅k_j⋅ ↪
+
+↪             2             3             3                    4         2  2  ↪
+↪ r⋅t + C⋅kₖ⋅r ⋅s⋅t + C⋅kₖ⋅s ⋅t + C⋅kₖ⋅s⋅t  + C⋅kₖ⋅s⋅t + C⋅kₗ⋅r  + C⋅kₗ⋅r ⋅t   ↪
+
+↪           2         4         2  2         2                2           3    ↪
+↪ + 2⋅C⋅kₗ⋅r  - C⋅kₗ⋅s  - C⋅kₗ⋅s ⋅t  + C⋅kₗ⋅t  + C⋅kₗ + D⋅kᵢ⋅r ⋅s + D⋅kᵢ⋅s  +  ↪
+
+↪         2                   3              3              2                  ↪
+↪ D⋅kᵢ⋅s⋅t  + D⋅kᵢ⋅s + D⋅k_j⋅r ⋅s + D⋅k_j⋅r⋅s  + D⋅k_j⋅r⋅s⋅t  + D⋅k_j⋅r⋅s - D⋅ ↪
+
+↪     4         2  2           2         2  2         2         4              ↪
+↪ kₖ⋅r  - D⋅kₖ⋅r ⋅s  - 2⋅D⋅kₖ⋅r  + D⋅kₖ⋅s ⋅t  - D⋅kₖ⋅s  + D⋅kₖ⋅t  - D⋅kₖ - D⋅k ↪
+
+↪    2             3             3                      4             2  2     ↪
+↪ ₗ⋅r ⋅s⋅t - D⋅kₗ⋅s ⋅t - D⋅kₗ⋅s⋅t  - D⋅kₗ⋅s⋅t + 2⋅E⋅kₖ⋅r ⋅t + 2⋅E⋅kₖ⋅r ⋅s ⋅t + ↪
+
+↪          2  3           2             4             2  3           2    2    ↪
+↪  2⋅E⋅kₖ⋅r ⋅t  + 2⋅E⋅kₖ⋅r ⋅t - 2⋅E⋅kₗ⋅r ⋅s - 2⋅E⋅kₗ⋅r ⋅s  - 2⋅E⋅kₗ⋅r ⋅s⋅t  -  ↪
+
+↪         2           3             2             3                     4      ↪
+↪ 2⋅E⋅kₗ⋅r ⋅s - F⋅kᵢ⋅r ⋅t - F⋅kᵢ⋅r⋅s ⋅t - F⋅kᵢ⋅r⋅t  - F⋅kᵢ⋅r⋅t - F⋅k_j⋅r ⋅t -  ↪
+
+↪        2  2            2  3          2           3               3           ↪
+↪ F⋅k_j⋅r ⋅s ⋅t - F⋅k_j⋅r ⋅t  - F⋅k_j⋅r ⋅t + F⋅kₖ⋅r ⋅s⋅t + F⋅kₖ⋅r⋅s ⋅t + F⋅kₖ⋅ ↪
+
+↪      3                      5         3  2           3           4           ↪
+↪ r⋅s⋅t  + F⋅kₖ⋅r⋅s⋅t + F⋅kₗ⋅r  + F⋅kₗ⋅r ⋅t  + 2⋅F⋅kₗ⋅r  - F⋅kₗ⋅r⋅s  - F⋅kₗ⋅r⋅ ↪
+
+↪  2  2           2                  3             3             2             ↪
+↪ s ⋅t  + F⋅kₗ⋅r⋅t  + F⋅kₗ⋅r + G⋅kᵢ⋅r ⋅s + G⋅kᵢ⋅r⋅s  + G⋅kᵢ⋅r⋅s⋅t  + G⋅kᵢ⋅r⋅s  ↪
+
+↪          4            2  3          2    2          2           5         3  ↪
+↪ + G⋅k_j⋅r ⋅s + G⋅k_j⋅r ⋅s  + G⋅k_j⋅r ⋅s⋅t  + G⋅k_j⋅r ⋅s - G⋅kₖ⋅r  - G⋅kₖ⋅r ⋅ ↪
+
+↪  2           3           2  2           2           4                  3     ↪
+↪ s  - 2⋅G⋅kₖ⋅r  + G⋅kₖ⋅r⋅s ⋅t  - G⋅kₖ⋅r⋅s  + G⋅kₖ⋅r⋅t  - G⋅kₖ⋅r - G⋅kₗ⋅r ⋅s⋅t ↪
+
+↪            3               3                        2               3        ↪
+↪  - G⋅kₗ⋅r⋅s ⋅t - G⋅kₗ⋅r⋅s⋅t  - G⋅kₗ⋅r⋅s⋅t - 2⋅H⋅kᵢ⋅r ⋅s⋅t - 2⋅H⋅kᵢ⋅s ⋅t - 2⋅ ↪
+
+↪         3                         3                  3                  3    ↪
+↪ H⋅kᵢ⋅s⋅t  - 2⋅H⋅kᵢ⋅s⋅t - 2⋅H⋅k_j⋅r ⋅s⋅t - 2⋅H⋅k_j⋅r⋅s ⋅t - 2⋅H⋅k_j⋅r⋅s⋅t  -  ↪
+
+↪                         4             2  3           2    2           2      ↪
+↪ 2⋅H⋅k_j⋅r⋅s⋅t + 2⋅H⋅kₗ⋅r ⋅s + 2⋅H⋅kₗ⋅r ⋅s  + 2⋅H⋅kₗ⋅r ⋅s⋅t  + 4⋅H⋅kₗ⋅r ⋅s +  ↪
+
+↪         3             2                    2  2         2  2         4       ↪
+↪ 2⋅H⋅kₗ⋅s  + 2⋅H⋅kₗ⋅s⋅t  + 2⋅H⋅kₗ⋅s + I⋅kᵢ⋅r ⋅s  - I⋅kᵢ⋅r ⋅t  + I⋅kᵢ⋅s  + I⋅k ↪
+
+↪    2         4         2          3  2          3  2            4            ↪
+↪ ᵢ⋅s  - I⋅kᵢ⋅t  - I⋅kᵢ⋅t  + I⋅k_j⋅r ⋅s  - I⋅k_j⋅r ⋅t  + I⋅k_j⋅r⋅s  + I⋅k_j⋅r⋅ ↪
+
+↪  2            4            2         4           2  3         2    2         ↪
+↪ s  - I⋅k_j⋅r⋅t  - I⋅k_j⋅r⋅t  - I⋅kₖ⋅r ⋅s - I⋅kₖ⋅r ⋅s  - I⋅kₖ⋅r ⋅s⋅t  - 2⋅I⋅k ↪
+
+↪    2           3           2                  4           2  2           2   ↪
+↪ ₖ⋅r ⋅s - I⋅kₖ⋅s  - I⋅kₖ⋅s⋅t  - I⋅kₖ⋅s + I⋅kₗ⋅r ⋅t + I⋅kₗ⋅r ⋅s ⋅t + I⋅kₗ⋅r ⋅t ↪
+
+↪ 3           2           2           3                    2               3   ↪
+↪   + 2⋅I⋅kₗ⋅r ⋅t + I⋅kₗ⋅s ⋅t + I⋅kₗ⋅t  + I⋅kₗ⋅t + 2⋅J⋅kᵢ⋅r ⋅s⋅t + 2⋅J⋅kᵢ⋅s ⋅t ↪
+
+↪              3                         3                  3                  ↪
+↪  + 2⋅J⋅kᵢ⋅s⋅t  + 2⋅J⋅kᵢ⋅s⋅t + 2⋅J⋅k_j⋅r ⋅s⋅t + 2⋅J⋅k_j⋅r⋅s ⋅t + 2⋅J⋅k_j⋅r⋅s⋅ ↪
+
+↪  3                           4             2  2             2  3           2 ↪
+↪ t  + 2⋅J⋅k_j⋅r⋅s⋅t - 2⋅J⋅kₖ⋅r ⋅t - 2⋅J⋅kₖ⋅r ⋅s ⋅t - 2⋅J⋅kₖ⋅r ⋅t  - 4⋅J⋅kₖ⋅r  ↪
+
+↪              2             3           
+↪ ⋅t - 2⋅J⋅kₖ⋅s ⋅t - 2⋅J⋅kₖ⋅t  - 2⋅J⋅kₖ⋅t
+S_r(r,s,t) =
+   2  2          3            2            2                    2            2 ↪
+4⋅A ⋅r  + 4⋅A⋅B⋅r  - 4⋅A⋅B⋅r⋅s  - 4⋅A⋅B⋅r⋅t  - 4⋅A⋅B⋅r + 8⋅A⋅C⋅r ⋅s + 8⋅A⋅D⋅r  ↪
+
+↪             2  2          2  2          2          3              3          ↪
+↪ ⋅t - 8⋅A⋅E⋅r ⋅s  - 8⋅A⋅E⋅r ⋅t  - 8⋅A⋅E⋅r  + 4⋅A⋅F⋅r ⋅s - 4⋅A⋅F⋅r⋅s  - 4⋅A⋅F⋅ ↪
+
+↪      2                      3              2              3                  ↪
+↪ r⋅s⋅t  - 4⋅A⋅F⋅r⋅s + 4⋅A⋅G⋅r ⋅t - 4⋅A⋅G⋅r⋅s ⋅t - 4⋅A⋅G⋅r⋅t  - 4⋅A⋅G⋅r⋅t + 8⋅ ↪
+
+↪      2  2          2              2  2         2  2                 2        ↪
+↪ A⋅H⋅r ⋅s  + 8⋅A⋅I⋅r ⋅s⋅t + 8⋅A⋅J⋅r ⋅t  - 4⋅A⋅kᵢ ⋅r  + 8⋅A⋅kᵢ⋅k_j⋅r⋅s  + 8⋅A⋅ ↪
+
+↪           2                             2                2            2  4   ↪
+↪ kᵢ⋅k_j⋅r⋅t  + 8⋅A⋅kᵢ⋅k_j⋅r - 8⋅A⋅kᵢ⋅kₖ⋅r ⋅s - 8⋅A⋅kᵢ⋅kₗ⋅r ⋅t - 4⋅A⋅k_j ⋅s  - ↪
+
+↪         2  2  2          2  2          2  4          2  2          2         ↪
+↪  8⋅A⋅k_j ⋅s ⋅t  - 8⋅A⋅k_j ⋅s  - 4⋅A⋅k_j ⋅t  - 8⋅A⋅k_j ⋅t  - 4⋅A⋅k_j  + 8⋅A⋅k ↪
+
+↪          3                   2                                  2            ↪
+↪ _j⋅kₖ⋅r⋅s  + 8⋅A⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅A⋅k_j⋅kₖ⋅r⋅s + 8⋅A⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅A⋅k_ ↪
+
+↪         3                          2  2  2              2             2  2   ↪
+↪ j⋅kₗ⋅r⋅t  + 8⋅A⋅k_j⋅kₗ⋅r⋅t - 4⋅A⋅kₖ ⋅r ⋅s  - 8⋅A⋅kₖ⋅kₗ⋅r ⋅s⋅t - 4⋅A⋅kₗ ⋅r ⋅t ↪
+
+↪ 2    2  4      2  2  2      2  2  2      2  2    2  4      2  2  2      2  2 ↪
+↪   + B ⋅r  - 2⋅B ⋅r ⋅s  - 2⋅B ⋅r ⋅t  - 2⋅B ⋅r  + B ⋅s  + 2⋅B ⋅s ⋅t  + 2⋅B ⋅s  ↪
+
+↪     2  4      2  2    2          3              3              2             ↪
+↪  + B ⋅t  + 2⋅B ⋅t  + B  + 4⋅B⋅C⋅r ⋅s - 4⋅B⋅C⋅r⋅s  - 4⋅B⋅C⋅r⋅s⋅t  - 4⋅B⋅C⋅r⋅s ↪
+
+↪           3              2              3                      3  2          ↪
+↪  + 4⋅B⋅D⋅r ⋅t - 4⋅B⋅D⋅r⋅s ⋅t - 4⋅B⋅D⋅r⋅t  - 4⋅B⋅D⋅r⋅t - 4⋅B⋅E⋅r ⋅s  - 4⋅B⋅E⋅ ↪
+
+↪  3  2          3            4            2  2            2            4      ↪
+↪ r ⋅t  - 4⋅B⋅E⋅r  + 4⋅B⋅E⋅r⋅s  + 8⋅B⋅E⋅r⋅s ⋅t  + 8⋅B⋅E⋅r⋅s  + 4⋅B⋅E⋅r⋅t  + 8⋅ ↪
+
+↪        2                    4            2  3          2    2          2     ↪
+↪ B⋅E⋅r⋅t  + 4⋅B⋅E⋅r + 2⋅B⋅F⋅r ⋅s - 4⋅B⋅F⋅r ⋅s  - 4⋅B⋅F⋅r ⋅s⋅t  - 4⋅B⋅F⋅r ⋅s + ↪
+
+↪         5          3  2          3            4            2                 ↪
+↪  2⋅B⋅F⋅s  + 4⋅B⋅F⋅s ⋅t  + 4⋅B⋅F⋅s  + 2⋅B⋅F⋅s⋅t  + 4⋅B⋅F⋅s⋅t  + 2⋅B⋅F⋅s + 2⋅B ↪
+
+↪     4            2  2            2  3          2            4            2   ↪
+↪ ⋅G⋅r ⋅t - 4⋅B⋅G⋅r ⋅s ⋅t - 4⋅B⋅G⋅r ⋅t  - 4⋅B⋅G⋅r ⋅t + 2⋅B⋅G⋅s ⋅t + 4⋅B⋅G⋅s ⋅t ↪
+
+↪ 3          2            5          3                    3  2            4    ↪
+↪   + 4⋅B⋅G⋅s ⋅t + 2⋅B⋅G⋅t  + 4⋅B⋅G⋅t  + 2⋅B⋅G⋅t + 4⋅B⋅H⋅r ⋅s  - 4⋅B⋅H⋅r⋅s  -  ↪
+
+↪          2  2            2          3                3                3      ↪
+↪ 4⋅B⋅H⋅r⋅s ⋅t  - 4⋅B⋅H⋅r⋅s  + 4⋅B⋅I⋅r ⋅s⋅t - 4⋅B⋅I⋅r⋅s ⋅t - 4⋅B⋅I⋅r⋅s⋅t  - 4⋅ ↪
+
+↪                    3  2            2  2            4            2         2  ↪
+↪ B⋅I⋅r⋅s⋅t + 4⋅B⋅J⋅r ⋅t  - 4⋅B⋅J⋅r⋅s ⋅t  - 4⋅B⋅J⋅r⋅t  - 4⋅B⋅J⋅r⋅t  - 4⋅B⋅kᵢ ⋅ ↪
+
+↪  3               2  2               2  2               2              3      ↪
+↪ r  + 8⋅B⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅B⋅kᵢ⋅k_j⋅r ⋅t  + 8⋅B⋅kᵢ⋅k_j⋅r  - 8⋅B⋅kᵢ⋅kₖ⋅r ⋅s -  ↪
+
+↪            3            2    4          2    2  2          2    2          2 ↪
+↪ 8⋅B⋅kᵢ⋅kₗ⋅r ⋅t - 4⋅B⋅k_j ⋅r⋅s  - 8⋅B⋅k_j ⋅r⋅s ⋅t  - 8⋅B⋅k_j ⋅r⋅s  - 4⋅B⋅k_j  ↪
+
+↪     4          2    2          2                 2  3               2    2   ↪
+↪ ⋅r⋅t  - 8⋅B⋅k_j ⋅r⋅t  - 4⋅B⋅k_j ⋅r + 8⋅B⋅k_j⋅kₖ⋅r ⋅s  + 8⋅B⋅k_j⋅kₖ⋅r ⋅s⋅t  + ↪
+
+↪              2                 2  2                 2  3               2     ↪
+↪  8⋅B⋅k_j⋅kₖ⋅r ⋅s + 8⋅B⋅k_j⋅kₗ⋅r ⋅s ⋅t + 8⋅B⋅k_j⋅kₗ⋅r ⋅t  + 8⋅B⋅k_j⋅kₗ⋅r ⋅t - ↪
+
+↪        2  3  2              3             2  3  2      2  2  2          2    ↪
+↪  4⋅B⋅kₖ ⋅r ⋅s  - 8⋅B⋅kₖ⋅kₗ⋅r ⋅s⋅t - 4⋅B⋅kₗ ⋅r ⋅t  + 4⋅C ⋅r ⋅s  + 8⋅C⋅D⋅r ⋅s⋅ ↪
+
+↪            2  3          2    2          2            3  2            4      ↪
+↪ t - 8⋅C⋅E⋅r ⋅s  - 8⋅C⋅E⋅r ⋅s⋅t  - 8⋅C⋅E⋅r ⋅s + 4⋅C⋅F⋅r ⋅s  - 4⋅C⋅F⋅r⋅s  - 4⋅ ↪
+
+↪        2  2            2          3                3                3        ↪
+↪ C⋅F⋅r⋅s ⋅t  - 4⋅C⋅F⋅r⋅s  + 4⋅C⋅G⋅r ⋅s⋅t - 4⋅C⋅G⋅r⋅s ⋅t - 4⋅C⋅G⋅r⋅s⋅t  - 4⋅C⋅ ↪
+
+↪                  2  3          2  2            2    2         2  2           ↪
+↪ G⋅r⋅s⋅t + 8⋅C⋅H⋅r ⋅s  + 8⋅C⋅I⋅r ⋅s ⋅t + 8⋅C⋅J⋅r ⋅s⋅t  - 4⋅C⋅kᵢ ⋅r ⋅s + 8⋅C⋅k ↪
+
+↪          3                   2                               2  2            ↪
+↪ ᵢ⋅k_j⋅r⋅s  + 8⋅C⋅kᵢ⋅k_j⋅r⋅s⋅t  + 8⋅C⋅kᵢ⋅k_j⋅r⋅s - 8⋅C⋅kᵢ⋅kₖ⋅r ⋅s  - 8⋅C⋅kᵢ⋅k ↪
+
+↪    2              2  5          2  3  2          2  3          2    4        ↪
+↪ ₗ⋅r ⋅s⋅t - 4⋅C⋅k_j ⋅s  - 8⋅C⋅k_j ⋅s ⋅t  - 8⋅C⋅k_j ⋅s  - 4⋅C⋅k_j ⋅s⋅t  - 8⋅C⋅ ↪
+
+↪    2    2          2                   4                 2  2                ↪
+↪ k_j ⋅s⋅t  - 4⋅C⋅k_j ⋅s + 8⋅C⋅k_j⋅kₖ⋅r⋅s  + 8⋅C⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅C⋅k_j⋅kₖ⋅r ↪
+
+↪   2                 3                     3                            2  2  ↪
+↪ ⋅s  + 8⋅C⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅C⋅k_j⋅kₗ⋅r⋅s⋅t  + 8⋅C⋅k_j⋅kₗ⋅r⋅s⋅t - 4⋅C⋅kₖ ⋅r ⋅ ↪
+
+↪  3              2  2           2  2    2      2  2  2          2  2          ↪
+↪ s  - 8⋅C⋅kₖ⋅kₗ⋅r ⋅s ⋅t - 4⋅C⋅kₗ ⋅r ⋅s⋅t  + 4⋅D ⋅r ⋅t  - 8⋅D⋅E⋅r ⋅s ⋅t - 8⋅D⋅ ↪
+
+↪    2  3          2            3                3                3            ↪
+↪ E⋅r ⋅t  - 8⋅D⋅E⋅r ⋅t + 4⋅D⋅F⋅r ⋅s⋅t - 4⋅D⋅F⋅r⋅s ⋅t - 4⋅D⋅F⋅r⋅s⋅t  - 4⋅D⋅F⋅r⋅ ↪
+
+↪              3  2            2  2            4            2          2  2    ↪
+↪ s⋅t + 4⋅D⋅G⋅r ⋅t  - 4⋅D⋅G⋅r⋅s ⋅t  - 4⋅D⋅G⋅r⋅t  - 4⋅D⋅G⋅r⋅t  + 8⋅D⋅H⋅r ⋅s ⋅t  ↪
+
+↪          2    2          2  3         2  2                   2               ↪
+↪ + 8⋅D⋅I⋅r ⋅s⋅t  + 8⋅D⋅J⋅r ⋅t  - 4⋅D⋅kᵢ ⋅r ⋅t + 8⋅D⋅kᵢ⋅k_j⋅r⋅s ⋅t + 8⋅D⋅kᵢ⋅k_ ↪
+
+↪      3                               2                  2  2          2  4   ↪
+↪ j⋅r⋅t  + 8⋅D⋅kᵢ⋅k_j⋅r⋅t - 8⋅D⋅kᵢ⋅kₖ⋅r ⋅s⋅t - 8⋅D⋅kᵢ⋅kₗ⋅r ⋅t  - 4⋅D⋅k_j ⋅s ⋅t ↪
+
+↪           2  2  3          2  2            2  5          2  3          2     ↪
+↪  - 8⋅D⋅k_j ⋅s ⋅t  - 8⋅D⋅k_j ⋅s ⋅t - 4⋅D⋅k_j ⋅t  - 8⋅D⋅k_j ⋅t  - 4⋅D⋅k_j ⋅t + ↪
+
+↪                3                     3                                    2  ↪
+↪  8⋅D⋅k_j⋅kₖ⋅r⋅s ⋅t + 8⋅D⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅D⋅k_j⋅kₖ⋅r⋅s⋅t + 8⋅D⋅k_j⋅kₗ⋅r⋅s ⋅ ↪
+
+↪  2                 4                 2         2  2  2                2    2 ↪
+↪ t  + 8⋅D⋅k_j⋅kₗ⋅r⋅t  + 8⋅D⋅k_j⋅kₗ⋅r⋅t  - 4⋅D⋅kₖ ⋅r ⋅s ⋅t - 8⋅D⋅kₖ⋅kₗ⋅r ⋅s⋅t  ↪
+
+↪          2  2  3      2  2  4      2  2  2  2      2  2  2      2  2  4      ↪
+↪  - 4⋅D⋅kₗ ⋅r ⋅t  + 4⋅E ⋅r ⋅s  + 8⋅E ⋅r ⋅s ⋅t  + 8⋅E ⋅r ⋅s  + 4⋅E ⋅r ⋅t  + 8⋅ ↪
+
+↪  2  2  2      2  2          3  3          3    2          3              5   ↪
+↪ E ⋅r ⋅t  + 4⋅E ⋅r  - 4⋅E⋅F⋅r ⋅s  - 4⋅E⋅F⋅r ⋅s⋅t  - 4⋅E⋅F⋅r ⋅s + 4⋅E⋅F⋅r⋅s  + ↪
+
+↪           3  2            3              4              2                    ↪
+↪  8⋅E⋅F⋅r⋅s ⋅t  + 8⋅E⋅F⋅r⋅s  + 4⋅E⋅F⋅r⋅s⋅t  + 8⋅E⋅F⋅r⋅s⋅t  + 4⋅E⋅F⋅r⋅s - 4⋅E⋅ ↪
+
+↪    3  2            3  3          3              4              2  3          ↪
+↪ G⋅r ⋅s ⋅t - 4⋅E⋅G⋅r ⋅t  - 4⋅E⋅G⋅r ⋅t + 4⋅E⋅G⋅r⋅s ⋅t + 8⋅E⋅G⋅r⋅s ⋅t  + 8⋅E⋅G⋅ ↪
+
+↪    2              5            3                      2  4          2  2  2  ↪
+↪ r⋅s ⋅t + 4⋅E⋅G⋅r⋅t  + 8⋅E⋅G⋅r⋅t  + 4⋅E⋅G⋅r⋅t - 8⋅E⋅H⋅r ⋅s  - 8⋅E⋅H⋅r ⋅s ⋅t   ↪
+
+↪          2  2          2  3            2    3          2              2  2   ↪
+↪ - 8⋅E⋅H⋅r ⋅s  - 8⋅E⋅I⋅r ⋅s ⋅t - 8⋅E⋅I⋅r ⋅s⋅t  - 8⋅E⋅I⋅r ⋅s⋅t - 8⋅E⋅J⋅r ⋅s ⋅t ↪
+
+↪ 2          2  4          2  2         2  4               3  2                ↪
+↪   - 8⋅E⋅J⋅r ⋅t  - 8⋅E⋅J⋅r ⋅t  - 4⋅E⋅kᵢ ⋅r  + 8⋅E⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅E⋅kᵢ⋅k_j⋅r ↪
+
+↪ 3  2               3              4                4            2  2  4      ↪
+↪  ⋅t  + 8⋅E⋅kᵢ⋅k_j⋅r  - 8⋅E⋅kᵢ⋅kₖ⋅r ⋅s - 8⋅E⋅kᵢ⋅kₗ⋅r ⋅t - 4⋅E⋅k_j ⋅r ⋅s  - 8⋅ ↪
+
+↪      2  2  2  2          2  2  2          2  2  4          2  2  2           ↪
+↪ E⋅k_j ⋅r ⋅s ⋅t  - 8⋅E⋅k_j ⋅r ⋅s  - 4⋅E⋅k_j ⋅r ⋅t  - 8⋅E⋅k_j ⋅r ⋅t  - 4⋅E⋅k_j ↪
+
+↪ 2  2               3  3               3    2               3                 ↪
+↪  ⋅r  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s + 8⋅E⋅k_j⋅kₗ⋅ ↪
+
+↪  3  2                 3  3               3           2  4  2              4  ↪
+↪ r ⋅s ⋅t + 8⋅E⋅k_j⋅kₗ⋅r ⋅t  + 8⋅E⋅k_j⋅kₗ⋅r ⋅t - 4⋅E⋅kₖ ⋅r ⋅s  - 8⋅E⋅kₖ⋅kₗ⋅r ⋅ ↪
+
+↪             2  4  2    2  4  2      2  2  4      2  2  2  2      2  2  2     ↪
+↪ s⋅t - 4⋅E⋅kₗ ⋅r ⋅t  + F ⋅r ⋅s  - 2⋅F ⋅r ⋅s  - 2⋅F ⋅r ⋅s ⋅t  - 2⋅F ⋅r ⋅s  + F ↪
+
+↪ 2  6      2  4  2      2  4    2  2  4      2  2  2    2  2          4       ↪
+↪  ⋅s  + 2⋅F ⋅s ⋅t  + 2⋅F ⋅s  + F ⋅s ⋅t  + 2⋅F ⋅s ⋅t  + F ⋅s  + 2⋅F⋅G⋅r ⋅s⋅t - ↪
+
+↪         2  3            2    3          2              5            3  3     ↪
+↪  4⋅F⋅G⋅r ⋅s ⋅t - 4⋅F⋅G⋅r ⋅s⋅t  - 4⋅F⋅G⋅r ⋅s⋅t + 2⋅F⋅G⋅s ⋅t + 4⋅F⋅G⋅s ⋅t  + 4 ↪
+
+↪       3              5            3                      3  3            5   ↪
+↪ ⋅F⋅G⋅s ⋅t + 2⋅F⋅G⋅s⋅t  + 4⋅F⋅G⋅s⋅t  + 2⋅F⋅G⋅s⋅t + 4⋅F⋅H⋅r ⋅s  - 4⋅F⋅H⋅r⋅s  - ↪
+
+↪           3  2            3          3  2              4              2  3   ↪
+↪  4⋅F⋅H⋅r⋅s ⋅t  - 4⋅F⋅H⋅r⋅s  + 4⋅F⋅I⋅r ⋅s ⋅t - 4⋅F⋅I⋅r⋅s ⋅t - 4⋅F⋅I⋅r⋅s ⋅t  - ↪
+
+↪           2            3    2            3  2              4              2  ↪
+↪  4⋅F⋅I⋅r⋅s ⋅t + 4⋅F⋅J⋅r ⋅s⋅t  - 4⋅F⋅J⋅r⋅s ⋅t  - 4⋅F⋅J⋅r⋅s⋅t  - 4⋅F⋅J⋅r⋅s⋅t   ↪
+
+↪         2  3                 2  3               2    2               2       ↪
+↪ - 4⋅F⋅kᵢ ⋅r ⋅s + 8⋅F⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅F⋅kᵢ⋅k_j⋅r ⋅s⋅t  + 8⋅F⋅kᵢ⋅k_j⋅r ⋅s - 8 ↪
+
+↪           3  2              3              2    5          2    3  2         ↪
+↪ ⋅F⋅kᵢ⋅kₖ⋅r ⋅s  - 8⋅F⋅kᵢ⋅kₗ⋅r ⋅s⋅t - 4⋅F⋅k_j ⋅r⋅s  - 8⋅F⋅k_j ⋅r⋅s ⋅t  - 8⋅F⋅k ↪
+
+↪   2    3          2      4          2      2          2                   2  ↪
+↪ _j ⋅r⋅s  - 4⋅F⋅k_j ⋅r⋅s⋅t  - 8⋅F⋅k_j ⋅r⋅s⋅t  - 4⋅F⋅k_j ⋅r⋅s + 8⋅F⋅k_j⋅kₖ⋅r ⋅ ↪
+
+↪  4               2  2  2               2  2               2  3               ↪
+↪ s  + 8⋅F⋅k_j⋅kₖ⋅r ⋅s ⋅t  + 8⋅F⋅k_j⋅kₖ⋅r ⋅s  + 8⋅F⋅k_j⋅kₗ⋅r ⋅s ⋅t + 8⋅F⋅k_j⋅k ↪
+
+↪    2    3               2             2  3  3              3  2           2  ↪
+↪ ₗ⋅r ⋅s⋅t  + 8⋅F⋅k_j⋅kₗ⋅r ⋅s⋅t - 4⋅F⋅kₖ ⋅r ⋅s  - 8⋅F⋅kₖ⋅kₗ⋅r ⋅s ⋅t - 4⋅F⋅kₗ ⋅ ↪
+
+↪  3    2    2  4  2      2  2  2  2      2  2  4      2  2  2    2  4  2      ↪
+↪ r ⋅s⋅t  + G ⋅r ⋅t  - 2⋅G ⋅r ⋅s ⋅t  - 2⋅G ⋅r ⋅t  - 2⋅G ⋅r ⋅t  + G ⋅s ⋅t  + 2⋅ ↪
+
+↪  2  2  4      2  2  2    2  6      2  4    2  2          3  2              4 ↪
+↪ G ⋅s ⋅t  + 2⋅G ⋅s ⋅t  + G ⋅t  + 2⋅G ⋅t  + G ⋅t  + 4⋅G⋅H⋅r ⋅s ⋅t - 4⋅G⋅H⋅r⋅s  ↪
+
+↪               2  3            2            3    2            3  2            ↪
+↪ ⋅t - 4⋅G⋅H⋅r⋅s ⋅t  - 4⋅G⋅H⋅r⋅s ⋅t + 4⋅G⋅I⋅r ⋅s⋅t  - 4⋅G⋅I⋅r⋅s ⋅t  - 4⋅G⋅I⋅r⋅ ↪
+
+↪    4              2          3  3            2  3            5            3  ↪
+↪ s⋅t  - 4⋅G⋅I⋅r⋅s⋅t  + 4⋅G⋅J⋅r ⋅t  - 4⋅G⋅J⋅r⋅s ⋅t  - 4⋅G⋅J⋅r⋅t  - 4⋅G⋅J⋅r⋅t   ↪
+
+↪         2  3                 2  2                 2  3               2       ↪
+↪ - 4⋅G⋅kᵢ ⋅r ⋅t + 8⋅G⋅kᵢ⋅k_j⋅r ⋅s ⋅t + 8⋅G⋅kᵢ⋅k_j⋅r ⋅t  + 8⋅G⋅kᵢ⋅k_j⋅r ⋅t - 8 ↪
+
+↪           3                  3  2          2    4            2    2  3       ↪
+↪ ⋅G⋅kᵢ⋅kₖ⋅r ⋅s⋅t - 8⋅G⋅kᵢ⋅kₗ⋅r ⋅t  - 4⋅G⋅k_j ⋅r⋅s ⋅t - 8⋅G⋅k_j ⋅r⋅s ⋅t  - 8⋅G ↪
+
+↪     2    2            2    5          2    3          2                   2  ↪
+↪ ⋅k_j ⋅r⋅s ⋅t - 4⋅G⋅k_j ⋅r⋅t  - 8⋅G⋅k_j ⋅r⋅t  - 4⋅G⋅k_j ⋅r⋅t + 8⋅G⋅k_j⋅kₖ⋅r ⋅ ↪
+
+↪  3                 2    3               2                   2  2  2          ↪
+↪ s ⋅t + 8⋅G⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅G⋅k_j⋅kₖ⋅r ⋅s⋅t + 8⋅G⋅k_j⋅kₗ⋅r ⋅s ⋅t  + 8⋅G⋅k_ ↪
+
+↪       2  4               2  2         2  3  2                3    2          ↪
+↪ j⋅kₗ⋅r ⋅t  + 8⋅G⋅k_j⋅kₗ⋅r ⋅t  - 4⋅G⋅kₖ ⋅r ⋅s ⋅t - 8⋅G⋅kₖ⋅kₗ⋅r ⋅s⋅t  - 4⋅G⋅kₗ ↪
+
+↪ 2  3  3      2  2  4          2  3            2  2  2         2  2  2        ↪
+↪  ⋅r ⋅t  + 4⋅H ⋅r ⋅s  + 8⋅H⋅I⋅r ⋅s ⋅t + 8⋅H⋅J⋅r ⋅s ⋅t  - 4⋅H⋅kᵢ ⋅r ⋅s  + 8⋅H⋅ ↪
+
+↪           4                 2  2                 2              2  3         ↪
+↪ kᵢ⋅k_j⋅r⋅s  + 8⋅H⋅kᵢ⋅k_j⋅r⋅s ⋅t  + 8⋅H⋅kᵢ⋅k_j⋅r⋅s  - 8⋅H⋅kᵢ⋅kₖ⋅r ⋅s  - 8⋅H⋅k ↪
+
+↪       2  2            2  6          2  4  2          2  4          2  2  4   ↪
+↪ ᵢ⋅kₗ⋅r ⋅s ⋅t - 4⋅H⋅k_j ⋅s  - 8⋅H⋅k_j ⋅s ⋅t  - 8⋅H⋅k_j ⋅s  - 4⋅H⋅k_j ⋅s ⋅t  - ↪
+
+↪         2  2  2          2  2                 5                 3  2         ↪
+↪  8⋅H⋅k_j ⋅s ⋅t  - 4⋅H⋅k_j ⋅s  + 8⋅H⋅k_j⋅kₖ⋅r⋅s  + 8⋅H⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅H⋅k ↪
+
+↪          3                 4                   2  3                 2        ↪
+↪ _j⋅kₖ⋅r⋅s  + 8⋅H⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅H⋅k_j⋅kₗ⋅r⋅s ⋅t  + 8⋅H⋅k_j⋅kₗ⋅r⋅s ⋅t - 4⋅ ↪
+
+↪     2  2  4              2  3           2  2  2  2      2  2  2  2           ↪
+↪ H⋅kₖ ⋅r ⋅s  - 8⋅H⋅kₖ⋅kₗ⋅r ⋅s ⋅t - 4⋅H⋅kₗ ⋅r ⋅s ⋅t  + 4⋅I ⋅r ⋅s ⋅t  + 8⋅I⋅J⋅r ↪
+
+↪ 2    3         2  2                     3                     3              ↪
+↪  ⋅s⋅t  - 4⋅I⋅kᵢ ⋅r ⋅s⋅t + 8⋅I⋅kᵢ⋅k_j⋅r⋅s ⋅t + 8⋅I⋅kᵢ⋅k_j⋅r⋅s⋅t  + 8⋅I⋅kᵢ⋅k_j ↪
+
+↪                     2  2                2    2          2  5            2  3 ↪
+↪ ⋅r⋅s⋅t - 8⋅I⋅kᵢ⋅kₖ⋅r ⋅s ⋅t - 8⋅I⋅kᵢ⋅kₗ⋅r ⋅s⋅t  - 4⋅I⋅k_j ⋅s ⋅t - 8⋅I⋅k_j ⋅s  ↪
+
+↪   3          2  3            2    5          2    3          2               ↪
+↪ ⋅t  - 8⋅I⋅k_j ⋅s ⋅t - 4⋅I⋅k_j ⋅s⋅t  - 8⋅I⋅k_j ⋅s⋅t  - 4⋅I⋅k_j ⋅s⋅t + 8⋅I⋅k_j ↪
+
+↪        4                   2  3                 2                   3  2     ↪
+↪ ⋅kₖ⋅r⋅s ⋅t + 8⋅I⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅I⋅k_j⋅kₖ⋅r⋅s ⋅t + 8⋅I⋅k_j⋅kₗ⋅r⋅s ⋅t  + 8 ↪
+
+↪                4                   2         2  2  3                2  2  2  ↪
+↪ ⋅I⋅k_j⋅kₗ⋅r⋅s⋅t  + 8⋅I⋅k_j⋅kₗ⋅r⋅s⋅t  - 4⋅I⋅kₖ ⋅r ⋅s ⋅t - 8⋅I⋅kₖ⋅kₗ⋅r ⋅s ⋅t   ↪
+
+↪         2  2    3      2  2  4         2  2  2                 2  2          ↪
+↪ - 4⋅I⋅kₗ ⋅r ⋅s⋅t  + 4⋅J ⋅r ⋅t  - 4⋅J⋅kᵢ ⋅r ⋅t  + 8⋅J⋅kᵢ⋅k_j⋅r⋅s ⋅t  + 8⋅J⋅kᵢ ↪
+
+↪         4                 2              2    2              2  3          2 ↪
+↪ ⋅k_j⋅r⋅t  + 8⋅J⋅kᵢ⋅k_j⋅r⋅t  - 8⋅J⋅kᵢ⋅kₖ⋅r ⋅s⋅t  - 8⋅J⋅kᵢ⋅kₗ⋅r ⋅t  - 4⋅J⋅k_j  ↪
+
+↪   4  2          2  2  4          2  2  2          2  6          2  4         ↪
+↪ ⋅s ⋅t  - 8⋅J⋅k_j ⋅s ⋅t  - 8⋅J⋅k_j ⋅s ⋅t  - 4⋅J⋅k_j ⋅t  - 8⋅J⋅k_j ⋅t  - 4⋅J⋅k ↪
+
+↪   2  2                 3  2                   4                   2          ↪
+↪ _j ⋅t  + 8⋅J⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅J⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅J⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅J⋅k_ ↪
+
+↪         2  3                 5                 3         2  2  2  2          ↪
+↪ j⋅kₗ⋅r⋅s ⋅t  + 8⋅J⋅k_j⋅kₗ⋅r⋅t  + 8⋅J⋅k_j⋅kₗ⋅r⋅t  - 4⋅J⋅kₖ ⋅r ⋅s ⋅t  - 8⋅J⋅kₖ ↪
+
+↪      2    3         2  2  4
+↪ ⋅kₗ⋅r ⋅s⋅t  - 4⋅J⋅kₗ ⋅r ⋅t 
+S_s(r,s,t) =
+   2  2            2          2            3            2                    2 ↪
+4⋅A ⋅s  + 8⋅A⋅B⋅r⋅s  - 4⋅A⋅C⋅r ⋅s + 4⋅A⋅C⋅s  - 4⋅A⋅C⋅s⋅t  - 4⋅A⋅C⋅s + 8⋅A⋅D⋅s  ↪
+
+↪             2  2          3              3              2                    ↪
+↪ ⋅t + 8⋅A⋅E⋅r ⋅s  - 4⋅A⋅F⋅r ⋅s + 4⋅A⋅F⋅r⋅s  - 4⋅A⋅F⋅r⋅s⋅t  - 4⋅A⋅F⋅r⋅s + 8⋅A⋅ ↪
+
+↪      2            2  2          2  2          2          2              3    ↪
+↪ G⋅r⋅s ⋅t - 8⋅A⋅H⋅r ⋅s  - 8⋅A⋅H⋅s ⋅t  - 8⋅A⋅H⋅s  - 4⋅A⋅I⋅r ⋅s⋅t + 4⋅A⋅I⋅s ⋅t  ↪
+
+↪            3                      2  2         2  2                 2        ↪
+↪ - 4⋅A⋅I⋅s⋅t  - 4⋅A⋅I⋅s⋅t + 8⋅A⋅J⋅s ⋅t  - 4⋅A⋅kᵢ ⋅s  - 8⋅A⋅kᵢ⋅k_j⋅r⋅s  + 8⋅A⋅ ↪
+
+↪        2                  2                            2            2  2  2  ↪
+↪ kᵢ⋅kₖ⋅r ⋅s + 8⋅A⋅kᵢ⋅kₖ⋅s⋅t  + 8⋅A⋅kᵢ⋅kₖ⋅s - 8⋅A⋅kᵢ⋅kₗ⋅s ⋅t - 4⋅A⋅k_j ⋅r ⋅s   ↪
+
+↪               3                     2                                  2     ↪
+↪ + 8⋅A⋅k_j⋅kₖ⋅r ⋅s + 8⋅A⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅A⋅k_j⋅kₖ⋅r⋅s - 8⋅A⋅k_j⋅kₗ⋅r⋅s ⋅t - ↪
+
+↪        2  4         2  2  2         2  2         2  4         2  2         2 ↪
+↪  4⋅A⋅kₖ ⋅r  - 8⋅A⋅kₖ ⋅r ⋅t  - 8⋅A⋅kₖ ⋅r  - 4⋅A⋅kₖ ⋅t  - 8⋅A⋅kₖ ⋅t  - 4⋅A⋅kₖ  ↪
+
+↪               2                    3                         2  2  2      2  ↪
+↪  + 8⋅A⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅A⋅kₖ⋅kₗ⋅s⋅t  + 8⋅A⋅kₖ⋅kₗ⋅s⋅t - 4⋅A⋅kₗ ⋅s ⋅t  + 4⋅B ⋅ ↪
+
+↪  2  2          3              3              2                        2      ↪
+↪ r ⋅s  - 4⋅B⋅C⋅r ⋅s + 4⋅B⋅C⋅r⋅s  - 4⋅B⋅C⋅r⋅s⋅t  - 4⋅B⋅C⋅r⋅s + 8⋅B⋅D⋅r⋅s ⋅t +  ↪
+
+↪        3  2          4            2  3          2    2          2            ↪
+↪ 8⋅B⋅E⋅r ⋅s  - 4⋅B⋅F⋅r ⋅s + 4⋅B⋅F⋅r ⋅s  - 4⋅B⋅F⋅r ⋅s⋅t  - 4⋅B⋅F⋅r ⋅s + 8⋅B⋅G⋅ ↪
+
+↪  2  2            3  2            2  2            2          3                ↪
+↪ r ⋅s ⋅t - 8⋅B⋅H⋅r ⋅s  - 8⋅B⋅H⋅r⋅s ⋅t  - 8⋅B⋅H⋅r⋅s  - 4⋅B⋅I⋅r ⋅s⋅t + 4⋅B⋅I⋅r⋅ ↪
+
+↪  3                3                          2  2         2    2             ↪
+↪ s ⋅t - 4⋅B⋅I⋅r⋅s⋅t  - 4⋅B⋅I⋅r⋅s⋅t + 8⋅B⋅J⋅r⋅s ⋅t  - 4⋅B⋅kᵢ ⋅r⋅s  - 8⋅B⋅kᵢ⋅k_ ↪
+
+↪    2  2              3                    2                                2 ↪
+↪ j⋅r ⋅s  + 8⋅B⋅kᵢ⋅kₖ⋅r ⋅s + 8⋅B⋅kᵢ⋅kₖ⋅r⋅s⋅t  + 8⋅B⋅kᵢ⋅kₖ⋅r⋅s - 8⋅B⋅kᵢ⋅kₗ⋅r⋅s  ↪
+
+↪             2  3  2               4                 2    2               2   ↪
+↪ ⋅t - 4⋅B⋅k_j ⋅r ⋅s  + 8⋅B⋅k_j⋅kₖ⋅r ⋅s + 8⋅B⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅B⋅k_j⋅kₖ⋅r ⋅s ↪
+
+↪                2  2           2  5         2  3  2         2  3         2    ↪
+↪  - 8⋅B⋅k_j⋅kₗ⋅r ⋅s ⋅t - 4⋅B⋅kₖ ⋅r  - 8⋅B⋅kₖ ⋅r ⋅t  - 8⋅B⋅kₖ ⋅r  - 4⋅B⋅kₖ ⋅r⋅ ↪
+
+↪  4         2    2         2                3                      3          ↪
+↪ t  - 8⋅B⋅kₖ ⋅r⋅t  - 4⋅B⋅kₖ ⋅r + 8⋅B⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅B⋅kₖ⋅kₗ⋅r⋅s⋅t  + 8⋅B⋅kₖ ↪
+
+↪                   2    2  2    2  4      2  2  2      2  2  2      2  2    2 ↪
+↪ ⋅kₗ⋅r⋅s⋅t - 4⋅B⋅kₗ ⋅r⋅s ⋅t  + C ⋅r  - 2⋅C ⋅r ⋅s  + 2⋅C ⋅r ⋅t  + 2⋅C ⋅r  + C  ↪
+
+↪   4      2  2  2      2  2    2  4      2  2    2          2              3  ↪
+↪ ⋅s  - 2⋅C ⋅s ⋅t  - 2⋅C ⋅s  + C ⋅t  + 2⋅C ⋅t  + C  - 4⋅C⋅D⋅r ⋅s⋅t + 4⋅C⋅D⋅s ⋅ ↪
+
+↪              3                      4            2  3          2    2        ↪
+↪ t - 4⋅C⋅D⋅s⋅t  - 4⋅C⋅D⋅s⋅t - 4⋅C⋅E⋅r ⋅s + 4⋅C⋅E⋅r ⋅s  - 4⋅C⋅E⋅r ⋅s⋅t  - 4⋅C⋅ ↪
+
+↪    2            5          3  2          3  2          3            4        ↪
+↪ E⋅r ⋅s + 2⋅C⋅F⋅r  - 4⋅C⋅F⋅r ⋅s  + 4⋅C⋅F⋅r ⋅t  + 4⋅C⋅F⋅r  + 2⋅C⋅F⋅r⋅s  - 4⋅C⋅ ↪
+
+↪      2  2            2            4            2                    3        ↪
+↪ F⋅r⋅s ⋅t  - 4⋅C⋅F⋅r⋅s  + 2⋅C⋅F⋅r⋅t  + 4⋅C⋅F⋅r⋅t  + 2⋅C⋅F⋅r - 4⋅C⋅G⋅r ⋅s⋅t +  ↪
+
+↪          3                3                        4            2  3         ↪
+↪ 4⋅C⋅G⋅r⋅s ⋅t - 4⋅C⋅G⋅r⋅s⋅t  - 4⋅C⋅G⋅r⋅s⋅t + 4⋅C⋅H⋅r ⋅s - 4⋅C⋅H⋅r ⋅s  + 8⋅C⋅H ↪
+
+↪   2    2          2            3  2          3            4            2     ↪
+↪ ⋅r ⋅s⋅t  + 8⋅C⋅H⋅r ⋅s - 4⋅C⋅H⋅s ⋅t  - 4⋅C⋅H⋅s  + 4⋅C⋅H⋅s⋅t  + 8⋅C⋅H⋅s⋅t  + 4 ↪
+
+↪                 4            2  2            2  3          2            4    ↪
+↪ ⋅C⋅H⋅s + 2⋅C⋅I⋅r ⋅t - 4⋅C⋅I⋅r ⋅s ⋅t + 4⋅C⋅I⋅r ⋅t  + 4⋅C⋅I⋅r ⋅t + 2⋅C⋅I⋅s ⋅t  ↪
+
+↪          2  3          2            5          3                    2    2   ↪
+↪ - 4⋅C⋅I⋅s ⋅t  - 4⋅C⋅I⋅s ⋅t + 2⋅C⋅I⋅t  + 4⋅C⋅I⋅t  + 2⋅C⋅I⋅t - 4⋅C⋅J⋅r ⋅s⋅t  + ↪
+
+↪         3  2            4            2         2  3                 3        ↪
+↪  4⋅C⋅J⋅s ⋅t  - 4⋅C⋅J⋅s⋅t  - 4⋅C⋅J⋅s⋅t  - 4⋅C⋅kᵢ ⋅s  - 8⋅C⋅kᵢ⋅k_j⋅r⋅s  + 8⋅C⋅ ↪
+
+↪        2  2              2  2              2              3            2  2  ↪
+↪ kᵢ⋅kₖ⋅r ⋅s  + 8⋅C⋅kᵢ⋅kₖ⋅s ⋅t  + 8⋅C⋅kᵢ⋅kₖ⋅s  - 8⋅C⋅kᵢ⋅kₗ⋅s ⋅t - 4⋅C⋅k_j ⋅r ⋅ ↪
+
+↪  3               3  2                 2  2                 2                 ↪
+↪ s  + 8⋅C⋅k_j⋅kₖ⋅r ⋅s  + 8⋅C⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅C⋅k_j⋅kₖ⋅r⋅s  - 8⋅C⋅k_j⋅kₗ⋅r⋅ ↪
+
+↪  3           2  4           2  2    2         2  2           2    4          ↪
+↪ s ⋅t - 4⋅C⋅kₖ ⋅r ⋅s - 8⋅C⋅kₖ ⋅r ⋅s⋅t  - 8⋅C⋅kₖ ⋅r ⋅s - 4⋅C⋅kₖ ⋅s⋅t  - 8⋅C⋅kₖ ↪
+
+↪ 2    2         2                2  2                2  3              2      ↪
+↪  ⋅s⋅t  - 4⋅C⋅kₖ ⋅s + 8⋅C⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅C⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅C⋅kₖ⋅kₗ⋅s ⋅t -  ↪
+
+↪       2  3  2      2  2  2          2  2            3                3       ↪
+↪ 4⋅C⋅kₗ ⋅s ⋅t  + 4⋅D ⋅s ⋅t  + 8⋅D⋅E⋅r ⋅s ⋅t - 4⋅D⋅F⋅r ⋅s⋅t + 4⋅D⋅F⋅r⋅s ⋅t - 4 ↪
+
+↪           3                          2  2          2  2            2  3      ↪
+↪ ⋅D⋅F⋅r⋅s⋅t  - 4⋅D⋅F⋅r⋅s⋅t + 8⋅D⋅G⋅r⋅s ⋅t  - 8⋅D⋅H⋅r ⋅s ⋅t - 8⋅D⋅H⋅s ⋅t  - 8⋅ ↪
+
+↪      2            2    2          3  2            4            2          2  ↪
+↪ D⋅H⋅s ⋅t - 4⋅D⋅I⋅r ⋅s⋅t  + 4⋅D⋅I⋅s ⋅t  - 4⋅D⋅I⋅s⋅t  - 4⋅D⋅I⋅s⋅t  + 8⋅D⋅J⋅s ⋅ ↪
+
+↪  3         2  2                   2                2                    3    ↪
+↪ t  - 4⋅D⋅kᵢ ⋅s ⋅t - 8⋅D⋅kᵢ⋅k_j⋅r⋅s ⋅t + 8⋅D⋅kᵢ⋅kₖ⋅r ⋅s⋅t + 8⋅D⋅kᵢ⋅kₖ⋅s⋅t  +  ↪
+
+↪                            2  2          2  2  2                 3           ↪
+↪ 8⋅D⋅kᵢ⋅kₖ⋅s⋅t - 8⋅D⋅kᵢ⋅kₗ⋅s ⋅t  - 4⋅D⋅k_j ⋅r ⋅s ⋅t + 8⋅D⋅k_j⋅kₖ⋅r ⋅s⋅t + 8⋅D ↪
+
+↪              3                                    2  2         2  4          ↪
+↪ ⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅D⋅k_j⋅kₖ⋅r⋅s⋅t - 8⋅D⋅k_j⋅kₗ⋅r⋅s ⋅t  - 4⋅D⋅kₖ ⋅r ⋅t - 8⋅D⋅ ↪
+
+↪   2  2  3         2  2           2  5         2  3         2                 ↪
+↪ kₖ ⋅r ⋅t  - 8⋅D⋅kₖ ⋅r ⋅t - 4⋅D⋅kₖ ⋅t  - 8⋅D⋅kₖ ⋅t  - 4⋅D⋅kₖ ⋅t + 8⋅D⋅kₖ⋅kₗ⋅r ↪
+
+↪ 2    2                4                2         2  2  3      2  4  2        ↪
+↪  ⋅s⋅t  + 8⋅D⋅kₖ⋅kₗ⋅s⋅t  + 8⋅D⋅kₖ⋅kₗ⋅s⋅t  - 4⋅D⋅kₗ ⋅s ⋅t  + 4⋅E ⋅r ⋅s  - 4⋅E⋅ ↪
+
+↪    5            3  3          3    2          3            3  2            4 ↪
+↪ F⋅r ⋅s + 4⋅E⋅F⋅r ⋅s  - 4⋅E⋅F⋅r ⋅s⋅t  - 4⋅E⋅F⋅r ⋅s + 8⋅E⋅G⋅r ⋅s ⋅t - 8⋅E⋅H⋅r  ↪
+
+↪   2          2  2  2          2  2          4              2  3            2 ↪
+↪ ⋅s  - 8⋅E⋅H⋅r ⋅s ⋅t  - 8⋅E⋅H⋅r ⋅s  - 4⋅E⋅I⋅r ⋅s⋅t + 4⋅E⋅I⋅r ⋅s ⋅t - 4⋅E⋅I⋅r  ↪
+
+↪     3          2              2  2  2         2  2  2               3  2     ↪
+↪ ⋅s⋅t  - 4⋅E⋅I⋅r ⋅s⋅t + 8⋅E⋅J⋅r ⋅s ⋅t  - 4⋅E⋅kᵢ ⋅r ⋅s  - 8⋅E⋅kᵢ⋅k_j⋅r ⋅s  + 8 ↪
+
+↪           4                2    2              2                2  2         ↪
+↪ ⋅E⋅kᵢ⋅kₖ⋅r ⋅s + 8⋅E⋅kᵢ⋅kₖ⋅r ⋅s⋅t  + 8⋅E⋅kᵢ⋅kₖ⋅r ⋅s - 8⋅E⋅kᵢ⋅kₗ⋅r ⋅s ⋅t - 4⋅E ↪
+
+↪     2  4  2               5                 3    2               3           ↪
+↪ ⋅k_j ⋅r ⋅s  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s + 8⋅E⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅E⋅k_j⋅kₖ⋅r ⋅s - 8⋅E⋅k ↪
+
+↪        3  2           2  6         2  4  2         2  4         2  2  4      ↪
+↪ _j⋅kₗ⋅r ⋅s ⋅t - 4⋅E⋅kₖ ⋅r  - 8⋅E⋅kₖ ⋅r ⋅t  - 8⋅E⋅kₖ ⋅r  - 4⋅E⋅kₖ ⋅r ⋅t  - 8⋅ ↪
+
+↪     2  2  2         2  2              4                  2    3              ↪
+↪ E⋅kₖ ⋅r ⋅t  - 4⋅E⋅kₖ ⋅r  + 8⋅E⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅E⋅kₖ⋅kₗ⋅r ⋅s⋅t  + 8⋅E⋅kₖ⋅kₗ⋅ ↪
+
+↪  2             2  2  2  2    2  6      2  4  2      2  4  2      2  4    2   ↪
+↪ r ⋅s⋅t - 4⋅E⋅kₗ ⋅r ⋅s ⋅t  + F ⋅r  - 2⋅F ⋅r ⋅s  + 2⋅F ⋅r ⋅t  + 2⋅F ⋅r  + F ⋅r ↪
+
+↪ 2  4      2  2  2  2      2  2  2    2  2  4      2  2  2    2  2          4 ↪
+↪  ⋅s  - 2⋅F ⋅r ⋅s ⋅t  - 2⋅F ⋅r ⋅s  + F ⋅r ⋅t  + 2⋅F ⋅r ⋅t  + F ⋅r  - 4⋅F⋅G⋅r  ↪
+
+↪               2  3            2    3          2              5            3  ↪
+↪ ⋅s⋅t + 4⋅F⋅G⋅r ⋅s ⋅t - 4⋅F⋅G⋅r ⋅s⋅t  - 4⋅F⋅G⋅r ⋅s⋅t + 4⋅F⋅H⋅r ⋅s - 4⋅F⋅H⋅r ⋅ ↪
+
+↪  3          3    2          3              3  2            3              4  ↪
+↪ s  + 8⋅F⋅H⋅r ⋅s⋅t  + 8⋅F⋅H⋅r ⋅s - 4⋅F⋅H⋅r⋅s ⋅t  - 4⋅F⋅H⋅r⋅s  + 4⋅F⋅H⋅r⋅s⋅t   ↪
+
+↪              2                      5            3  2            3  3        ↪
+↪ + 8⋅F⋅H⋅r⋅s⋅t  + 4⋅F⋅H⋅r⋅s + 2⋅F⋅I⋅r ⋅t - 4⋅F⋅I⋅r ⋅s ⋅t + 4⋅F⋅I⋅r ⋅t  + 4⋅F⋅ ↪
+
+↪    3              4              2  3            2              5            ↪
+↪ I⋅r ⋅t + 2⋅F⋅I⋅r⋅s ⋅t - 4⋅F⋅I⋅r⋅s ⋅t  - 4⋅F⋅I⋅r⋅s ⋅t + 2⋅F⋅I⋅r⋅t  + 4⋅F⋅I⋅r⋅ ↪
+
+↪  3                      3    2            3  2              4              2 ↪
+↪ t  + 2⋅F⋅I⋅r⋅t - 4⋅F⋅J⋅r ⋅s⋅t  + 4⋅F⋅J⋅r⋅s ⋅t  - 4⋅F⋅J⋅r⋅s⋅t  - 4⋅F⋅J⋅r⋅s⋅t  ↪
+
+↪          2    3               2  3              3  2                2  2     ↪
+↪  - 4⋅F⋅kᵢ ⋅r⋅s  - 8⋅F⋅kᵢ⋅k_j⋅r ⋅s  + 8⋅F⋅kᵢ⋅kₖ⋅r ⋅s  + 8⋅F⋅kᵢ⋅kₖ⋅r⋅s ⋅t  + 8 ↪
+
+↪             2                3            2  3  3               4  2         ↪
+↪ ⋅F⋅kᵢ⋅kₖ⋅r⋅s  - 8⋅F⋅kᵢ⋅kₗ⋅r⋅s ⋅t - 4⋅F⋅k_j ⋅r ⋅s  + 8⋅F⋅k_j⋅kₖ⋅r ⋅s  + 8⋅F⋅k ↪
+
+↪        2  2  2               2  2               2  3           2  5          ↪
+↪ _j⋅kₖ⋅r ⋅s ⋅t  + 8⋅F⋅k_j⋅kₖ⋅r ⋅s  - 8⋅F⋅k_j⋅kₗ⋅r ⋅s ⋅t - 4⋅F⋅kₖ ⋅r ⋅s - 8⋅F⋅ ↪
+
+↪   2  3    2         2  3           2      4         2      2         2       ↪
+↪ kₖ ⋅r ⋅s⋅t  - 8⋅F⋅kₖ ⋅r ⋅s - 4⋅F⋅kₖ ⋅r⋅s⋅t  - 8⋅F⋅kₖ ⋅r⋅s⋅t  - 4⋅F⋅kₖ ⋅r⋅s + ↪
+
+↪             3  2                  2  3                2           2    3  2  ↪
+↪  8⋅F⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅F⋅kₖ⋅kₗ⋅r⋅s ⋅t  + 8⋅F⋅kₖ⋅kₗ⋅r⋅s ⋅t - 4⋅F⋅kₗ ⋅r⋅s ⋅t   ↪
+
+↪      2  2  2  2          3  2              2  3            2            3    ↪
+↪ + 4⋅G ⋅r ⋅s ⋅t  - 8⋅G⋅H⋅r ⋅s ⋅t - 8⋅G⋅H⋅r⋅s ⋅t  - 8⋅G⋅H⋅r⋅s ⋅t - 4⋅G⋅I⋅r ⋅s⋅ ↪
+
+↪  2            3  2              4              2            2  3         2   ↪
+↪ t  + 4⋅G⋅I⋅r⋅s ⋅t  - 4⋅G⋅I⋅r⋅s⋅t  - 4⋅G⋅I⋅r⋅s⋅t  + 8⋅G⋅J⋅r⋅s ⋅t  - 4⋅G⋅kᵢ ⋅r ↪
+
+↪   2                 2  2                3                      3             ↪
+↪ ⋅s ⋅t - 8⋅G⋅kᵢ⋅k_j⋅r ⋅s ⋅t + 8⋅G⋅kᵢ⋅kₖ⋅r ⋅s⋅t + 8⋅G⋅kᵢ⋅kₖ⋅r⋅s⋅t  + 8⋅G⋅kᵢ⋅kₖ ↪
+
+↪                       2  2          2  3  2                 4                ↪
+↪ ⋅r⋅s⋅t - 8⋅G⋅kᵢ⋅kₗ⋅r⋅s ⋅t  - 4⋅G⋅k_j ⋅r ⋅s ⋅t + 8⋅G⋅k_j⋅kₖ⋅r ⋅s⋅t + 8⋅G⋅k_j⋅ ↪
+
+↪     2    3               2                   2  2  2         2  5            ↪
+↪ kₖ⋅r ⋅s⋅t  + 8⋅G⋅k_j⋅kₖ⋅r ⋅s⋅t - 8⋅G⋅k_j⋅kₗ⋅r ⋅s ⋅t  - 4⋅G⋅kₖ ⋅r ⋅t - 8⋅G⋅kₖ ↪
+
+↪ 2  3  3         2  3           2    5         2    3         2               ↪
+↪  ⋅r ⋅t  - 8⋅G⋅kₖ ⋅r ⋅t - 4⋅G⋅kₖ ⋅r⋅t  - 8⋅G⋅kₖ ⋅r⋅t  - 4⋅G⋅kₖ ⋅r⋅t + 8⋅G⋅kₖ⋅ ↪
+
+↪     3    2                  4                  2         2    2  3      2  4 ↪
+↪ kₗ⋅r ⋅s⋅t  + 8⋅G⋅kₖ⋅kₗ⋅r⋅s⋅t  + 8⋅G⋅kₖ⋅kₗ⋅r⋅s⋅t  - 4⋅G⋅kₗ ⋅r⋅s ⋅t  + 4⋅H ⋅r  ↪
+
+↪   2      2  2  2  2      2  2  2      2  2  4      2  2  2      2  2         ↪
+↪ ⋅s  + 8⋅H ⋅r ⋅s ⋅t  + 8⋅H ⋅r ⋅s  + 4⋅H ⋅s ⋅t  + 8⋅H ⋅s ⋅t  + 4⋅H ⋅s  + 4⋅H⋅I ↪
+
+↪   4              2  3            2    3          2              3  3         ↪
+↪ ⋅r ⋅s⋅t - 4⋅H⋅I⋅r ⋅s ⋅t + 8⋅H⋅I⋅r ⋅s⋅t  + 8⋅H⋅I⋅r ⋅s⋅t - 4⋅H⋅I⋅s ⋅t  - 4⋅H⋅I ↪
+
+↪   3              5            3                      2  2  2          2  4   ↪
+↪ ⋅s ⋅t + 4⋅H⋅I⋅s⋅t  + 8⋅H⋅I⋅s⋅t  + 4⋅H⋅I⋅s⋅t - 8⋅H⋅J⋅r ⋅s ⋅t  - 8⋅H⋅J⋅s ⋅t  - ↪
+
+↪         2  2         2  4                 4              2  3              3 ↪
+↪  8⋅H⋅J⋅s ⋅t  - 4⋅H⋅kᵢ ⋅s  - 8⋅H⋅kᵢ⋅k_j⋅r⋅s  + 8⋅H⋅kᵢ⋅kₖ⋅r ⋅s  + 8⋅H⋅kᵢ⋅kₖ⋅s  ↪
+
+↪   2              3              4            2  2  4               3  3      ↪
+↪ ⋅t  + 8⋅H⋅kᵢ⋅kₖ⋅s  - 8⋅H⋅kᵢ⋅kₗ⋅s ⋅t - 4⋅H⋅k_j ⋅r ⋅s  + 8⋅H⋅k_j⋅kₖ⋅r ⋅s  + 8⋅ ↪
+
+↪             3  2                 3                 4           2  4  2       ↪
+↪ H⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅H⋅k_j⋅kₖ⋅r⋅s  - 8⋅H⋅k_j⋅kₗ⋅r⋅s ⋅t - 4⋅H⋅kₖ ⋅r ⋅s  - 8⋅H ↪
+
+↪    2  2  2  2         2  2  2         2  2  4         2  2  2         2  2   ↪
+↪ ⋅kₖ ⋅r ⋅s ⋅t  - 8⋅H⋅kₖ ⋅r ⋅s  - 4⋅H⋅kₖ ⋅s ⋅t  - 8⋅H⋅kₖ ⋅s ⋅t  - 4⋅H⋅kₖ ⋅s  + ↪
+
+↪             2  3                3  3              3           2  4  2    2   ↪
+↪  8⋅H⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅H⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅H⋅kₖ⋅kₗ⋅s ⋅t - 4⋅H⋅kₗ ⋅s ⋅t  + I ⋅r ↪
+
+↪ 4  2      2  2  2  2      2  2  4      2  2  2    2  4  2      2  2  4       ↪
+↪  ⋅t  - 2⋅I ⋅r ⋅s ⋅t  + 2⋅I ⋅r ⋅t  + 2⋅I ⋅r ⋅t  + I ⋅s ⋅t  - 2⋅I ⋅s ⋅t  - 2⋅I ↪
+
+↪ 2  2  2    2  6      2  4    2  2          2    3          3  3            5 ↪
+↪  ⋅s ⋅t  + I ⋅t  + 2⋅I ⋅t  + I ⋅t  - 4⋅I⋅J⋅r ⋅s⋅t  + 4⋅I⋅J⋅s ⋅t  - 4⋅I⋅J⋅s⋅t  ↪
+
+↪             3         2  3                   3                2  2           ↪
+↪  - 4⋅I⋅J⋅s⋅t  - 4⋅I⋅kᵢ ⋅s ⋅t - 8⋅I⋅kᵢ⋅k_j⋅r⋅s ⋅t + 8⋅I⋅kᵢ⋅kₖ⋅r ⋅s ⋅t + 8⋅I⋅k ↪
+
+↪       2  3              2                3  2          2  2  3               ↪
+↪ ᵢ⋅kₖ⋅s ⋅t  + 8⋅I⋅kᵢ⋅kₖ⋅s ⋅t - 8⋅I⋅kᵢ⋅kₗ⋅s ⋅t  - 4⋅I⋅k_j ⋅r ⋅s ⋅t + 8⋅I⋅k_j⋅k ↪
+
+↪    3  2                   2  3                 2                   3  2      ↪
+↪ ₖ⋅r ⋅s ⋅t + 8⋅I⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅I⋅k_j⋅kₖ⋅r⋅s ⋅t - 8⋅I⋅k_j⋅kₗ⋅r⋅s ⋅t  - 4⋅ ↪
+
+↪     2  4             2  2    3         2  2             2    5         2     ↪
+↪ I⋅kₖ ⋅r ⋅s⋅t - 8⋅I⋅kₖ ⋅r ⋅s⋅t  - 8⋅I⋅kₖ ⋅r ⋅s⋅t - 4⋅I⋅kₖ ⋅s⋅t  - 8⋅I⋅kₖ ⋅s⋅t ↪
+
+↪ 3         2                  2  2  2              2  4              2  2     ↪
+↪   - 4⋅I⋅kₖ ⋅s⋅t + 8⋅I⋅kₖ⋅kₗ⋅r ⋅s ⋅t  + 8⋅I⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅I⋅kₖ⋅kₗ⋅s ⋅t  - 4 ↪
+
+↪      2  3  3      2  2  4         2  2  2                 2  2               ↪
+↪ ⋅I⋅kₗ ⋅s ⋅t  + 4⋅J ⋅s ⋅t  - 4⋅J⋅kᵢ ⋅s ⋅t  - 8⋅J⋅kᵢ⋅k_j⋅r⋅s ⋅t  + 8⋅J⋅kᵢ⋅kₖ⋅r ↪
+
+↪ 2    2                4                2              2  3          2  2  2  ↪
+↪  ⋅s⋅t  + 8⋅J⋅kᵢ⋅kₖ⋅s⋅t  + 8⋅J⋅kᵢ⋅kₖ⋅s⋅t  - 8⋅J⋅kᵢ⋅kₗ⋅s ⋅t  - 4⋅J⋅k_j ⋅r ⋅s ⋅ ↪
+
+↪  2               3    2                   4                   2              ↪
+↪ t  + 8⋅J⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅J⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅J⋅k_j⋅kₖ⋅r⋅s⋅t  - 8⋅J⋅k_j⋅kₗ ↪
+
+↪     2  3         2  4  2         2  2  4         2  2  2         2  6        ↪
+↪ ⋅r⋅s ⋅t  - 4⋅J⋅kₖ ⋅r ⋅t  - 8⋅J⋅kₖ ⋅r ⋅t  - 8⋅J⋅kₖ ⋅r ⋅t  - 4⋅J⋅kₖ ⋅t  - 8⋅J⋅ ↪
+
+↪   2  4         2  2              2    3                5                3    ↪
+↪ kₖ ⋅t  - 4⋅J⋅kₖ ⋅t  + 8⋅J⋅kₖ⋅kₗ⋅r ⋅s⋅t  + 8⋅J⋅kₖ⋅kₗ⋅s⋅t  + 8⋅J⋅kₖ⋅kₗ⋅s⋅t  -  ↪
+
+↪       2  2  4
+↪ 4⋅J⋅kₗ ⋅s ⋅t 
+S_t(r,s,t) =
+   2  2            2            2          2            2            3         ↪
+4⋅A ⋅t  + 8⋅A⋅B⋅r⋅t  + 8⋅A⋅C⋅s⋅t  - 4⋅A⋅D⋅r ⋅t - 4⋅A⋅D⋅s ⋅t + 4⋅A⋅D⋅t  - 4⋅A⋅D ↪
+
+↪             2  2              2          3              2              3     ↪
+↪ ⋅t + 8⋅A⋅E⋅r ⋅t  + 8⋅A⋅F⋅r⋅s⋅t  - 4⋅A⋅G⋅r ⋅t - 4⋅A⋅G⋅r⋅s ⋅t + 4⋅A⋅G⋅r⋅t  - 4 ↪
+
+↪                   2  2          2              3              3              ↪
+↪ ⋅A⋅G⋅r⋅t + 8⋅A⋅H⋅s ⋅t  - 4⋅A⋅I⋅r ⋅s⋅t - 4⋅A⋅I⋅s ⋅t + 4⋅A⋅I⋅s⋅t  - 4⋅A⋅I⋅s⋅t  ↪
+
+↪          2  2          2  2          2         2  2                 2        ↪
+↪ - 8⋅A⋅J⋅r ⋅t  - 8⋅A⋅J⋅s ⋅t  - 8⋅A⋅J⋅t  - 4⋅A⋅kᵢ ⋅t  - 8⋅A⋅kᵢ⋅k_j⋅r⋅t  - 8⋅A⋅ ↪
+
+↪          2              2                2                          2  2  2  ↪
+↪ kᵢ⋅kₖ⋅s⋅t  + 8⋅A⋅kᵢ⋅kₗ⋅r ⋅t + 8⋅A⋅kᵢ⋅kₗ⋅s ⋅t + 8⋅A⋅kᵢ⋅kₗ⋅t - 4⋅A⋅k_j ⋅r ⋅t   ↪
+
+↪                   2               3                   2                      ↪
+↪ - 8⋅A⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅A⋅k_j⋅kₗ⋅r ⋅t + 8⋅A⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅A⋅k_j⋅kₗ⋅r⋅t - ↪
+
+↪        2  2  2              2                  3                           2 ↪
+↪  4⋅A⋅kₖ ⋅s ⋅t  + 8⋅A⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅A⋅kₖ⋅kₗ⋅s ⋅t + 8⋅A⋅kₖ⋅kₗ⋅s⋅t - 4⋅A⋅kₗ  ↪
+
+↪   4         2  2  2         2  2         2  4         2  2         2      2  ↪
+↪ ⋅r  - 8⋅A⋅kₗ ⋅r ⋅s  - 8⋅A⋅kₗ ⋅r  - 4⋅A⋅kₗ ⋅s  - 8⋅A⋅kₗ ⋅s  - 4⋅A⋅kₗ  + 4⋅B ⋅ ↪
+
+↪  2  2              2          3              2              3                ↪
+↪ r ⋅t  + 8⋅B⋅C⋅r⋅s⋅t  - 4⋅B⋅D⋅r ⋅t - 4⋅B⋅D⋅r⋅s ⋅t + 4⋅B⋅D⋅r⋅t  - 4⋅B⋅D⋅r⋅t +  ↪
+
+↪        3  2          2    2          4            2  2            2  3       ↪
+↪ 8⋅B⋅E⋅r ⋅t  + 8⋅B⋅F⋅r ⋅s⋅t  - 4⋅B⋅G⋅r ⋅t - 4⋅B⋅G⋅r ⋅s ⋅t + 4⋅B⋅G⋅r ⋅t  - 4⋅B ↪
+
+↪     2              2  2          3                3                3         ↪
+↪ ⋅G⋅r ⋅t + 8⋅B⋅H⋅r⋅s ⋅t  - 4⋅B⋅I⋅r ⋅s⋅t - 4⋅B⋅I⋅r⋅s ⋅t + 4⋅B⋅I⋅r⋅s⋅t  - 4⋅B⋅I ↪
+
+↪                 3  2            2  2            2         2    2             ↪
+↪ ⋅r⋅s⋅t - 8⋅B⋅J⋅r ⋅t  - 8⋅B⋅J⋅r⋅s ⋅t  - 8⋅B⋅J⋅r⋅t  - 4⋅B⋅kᵢ ⋅r⋅t  - 8⋅B⋅kᵢ⋅k_ ↪
+
+↪    2  2                  2              3                  2                 ↪
+↪ j⋅r ⋅t  - 8⋅B⋅kᵢ⋅kₖ⋅r⋅s⋅t  + 8⋅B⋅kᵢ⋅kₗ⋅r ⋅t + 8⋅B⋅kᵢ⋅kₗ⋅r⋅s ⋅t + 8⋅B⋅kᵢ⋅kₗ⋅r ↪
+
+↪             2  3  2               2    2               4                 2   ↪
+↪ ⋅t - 4⋅B⋅k_j ⋅r ⋅t  - 8⋅B⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅B⋅k_j⋅kₗ⋅r ⋅t + 8⋅B⋅k_j⋅kₗ⋅r ⋅s ↪
+
+↪ 2                 2           2    2  2              3                    3  ↪
+↪  ⋅t + 8⋅B⋅k_j⋅kₗ⋅r ⋅t - 4⋅B⋅kₖ ⋅r⋅s ⋅t  + 8⋅B⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅B⋅kₖ⋅kₗ⋅r⋅s ⋅ ↪
+
+↪                             2  5         2  3  2         2  3         2    4 ↪
+↪ t + 8⋅B⋅kₖ⋅kₗ⋅r⋅s⋅t - 4⋅B⋅kₗ ⋅r  - 8⋅B⋅kₗ ⋅r ⋅s  - 8⋅B⋅kₗ ⋅r  - 4⋅B⋅kₗ ⋅r⋅s  ↪
+
+↪          2    2         2        2  2  2          2              3           ↪
+↪  - 8⋅B⋅kₗ ⋅r⋅s  - 4⋅B⋅kₗ ⋅r + 4⋅C ⋅s ⋅t  - 4⋅C⋅D⋅r ⋅s⋅t - 4⋅C⋅D⋅s ⋅t + 4⋅C⋅D ↪
+
+↪     3                      2    2            2  2          3                 ↪
+↪ ⋅s⋅t  - 4⋅C⋅D⋅s⋅t + 8⋅C⋅E⋅r ⋅s⋅t  + 8⋅C⋅F⋅r⋅s ⋅t  - 4⋅C⋅G⋅r ⋅s⋅t - 4⋅C⋅G⋅r⋅s ↪
+
+↪ 3                3                        3  2          2  2            4    ↪
+↪  ⋅t + 4⋅C⋅G⋅r⋅s⋅t  - 4⋅C⋅G⋅r⋅s⋅t + 8⋅C⋅H⋅s ⋅t  - 4⋅C⋅I⋅r ⋅s ⋅t - 4⋅C⋅I⋅s ⋅t  ↪
+
+↪          2  3          2            2    2          3  2            2        ↪
+↪ + 4⋅C⋅I⋅s ⋅t  - 4⋅C⋅I⋅s ⋅t - 8⋅C⋅J⋅r ⋅s⋅t  - 8⋅C⋅J⋅s ⋅t  - 8⋅C⋅J⋅s⋅t  - 4⋅C⋅ ↪
+
+↪   2    2                   2              2  2              2                ↪
+↪ kᵢ ⋅s⋅t  - 8⋅C⋅kᵢ⋅k_j⋅r⋅s⋅t  - 8⋅C⋅kᵢ⋅kₖ⋅s ⋅t  + 8⋅C⋅kᵢ⋅kₗ⋅r ⋅s⋅t + 8⋅C⋅kᵢ⋅k ↪
+
+↪    3                            2  2    2                 2  2               ↪
+↪ ₗ⋅s ⋅t + 8⋅C⋅kᵢ⋅kₗ⋅s⋅t - 4⋅C⋅k_j ⋅r ⋅s⋅t  - 8⋅C⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅C⋅k_j⋅kₗ⋅ ↪
+
+↪  3                     3                              2  3  2              2 ↪
+↪ r ⋅s⋅t + 8⋅C⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅C⋅k_j⋅kₗ⋅r⋅s⋅t - 4⋅C⋅kₖ ⋅s ⋅t  + 8⋅C⋅kₖ⋅kₗ⋅r  ↪
+
+↪   2                4                2           2  4           2  2  3       ↪
+↪ ⋅s ⋅t + 8⋅C⋅kₖ⋅kₗ⋅s ⋅t + 8⋅C⋅kₖ⋅kₗ⋅s ⋅t - 4⋅C⋅kₗ ⋅r ⋅s - 8⋅C⋅kₗ ⋅r ⋅s  - 8⋅C ↪
+
+↪    2  2           2  5         2  3         2      2  4      2  2  2      2  ↪
+↪ ⋅kₗ ⋅r ⋅s - 4⋅C⋅kₗ ⋅s  - 8⋅C⋅kₗ ⋅s  - 4⋅C⋅kₗ ⋅s + D ⋅r  + 2⋅D ⋅r ⋅s  - 2⋅D ⋅ ↪
+
+↪  2  2      2  2    2  4      2  2  2      2  2    2  4      2  2    2        ↪
+↪ r ⋅t  + 2⋅D ⋅r  + D ⋅s  - 2⋅D ⋅s ⋅t  + 2⋅D ⋅s  + D ⋅t  - 2⋅D ⋅t  + D  - 4⋅D⋅ ↪
+
+↪    4            2  2            2  3          2            3                 ↪
+↪ E⋅r ⋅t - 4⋅D⋅E⋅r ⋅s ⋅t + 4⋅D⋅E⋅r ⋅t  - 4⋅D⋅E⋅r ⋅t - 4⋅D⋅F⋅r ⋅s⋅t - 4⋅D⋅F⋅r⋅s ↪
+
+↪ 3                3                        5          3  2          3  2      ↪
+↪  ⋅t + 4⋅D⋅F⋅r⋅s⋅t  - 4⋅D⋅F⋅r⋅s⋅t + 2⋅D⋅G⋅r  + 4⋅D⋅G⋅r ⋅s  - 4⋅D⋅G⋅r ⋅t  + 4⋅ ↪
+
+↪      3            4            2  2            2            4            2   ↪
+↪ D⋅G⋅r  + 2⋅D⋅G⋅r⋅s  - 4⋅D⋅G⋅r⋅s ⋅t  + 4⋅D⋅G⋅r⋅s  + 2⋅D⋅G⋅r⋅t  - 4⋅D⋅G⋅r⋅t  + ↪
+
+↪                   2  2            4            2  3          2            4  ↪
+↪  2⋅D⋅G⋅r - 4⋅D⋅H⋅r ⋅s ⋅t - 4⋅D⋅H⋅s ⋅t + 4⋅D⋅H⋅s ⋅t  - 4⋅D⋅H⋅s ⋅t + 2⋅D⋅I⋅r ⋅ ↪
+
+↪            2  3          2    2          2            5          3  2        ↪
+↪ s + 4⋅D⋅I⋅r ⋅s  - 4⋅D⋅I⋅r ⋅s⋅t  + 4⋅D⋅I⋅r ⋅s + 2⋅D⋅I⋅s  - 4⋅D⋅I⋅s ⋅t  + 4⋅D⋅ ↪
+
+↪    3            4            2                    4            2  2          ↪
+↪ I⋅s  + 2⋅D⋅I⋅s⋅t  - 4⋅D⋅I⋅s⋅t  + 2⋅D⋅I⋅s + 4⋅D⋅J⋅r ⋅t + 8⋅D⋅J⋅r ⋅s ⋅t - 4⋅D⋅ ↪
+
+↪    2  3          2            4            2  3          2            3      ↪
+↪ J⋅r ⋅t  + 8⋅D⋅J⋅r ⋅t + 4⋅D⋅J⋅s ⋅t - 4⋅D⋅J⋅s ⋅t  + 8⋅D⋅J⋅s ⋅t - 4⋅D⋅J⋅t  + 4⋅ ↪
+
+↪               2  3                 3                3              2  2      ↪
+↪ D⋅J⋅t - 4⋅D⋅kᵢ ⋅t  - 8⋅D⋅kᵢ⋅k_j⋅r⋅t  - 8⋅D⋅kᵢ⋅kₖ⋅s⋅t  + 8⋅D⋅kᵢ⋅kₗ⋅r ⋅t  + 8⋅ ↪
+
+↪          2  2              2          2  2  3                   3            ↪
+↪ D⋅kᵢ⋅kₗ⋅s ⋅t  + 8⋅D⋅kᵢ⋅kₗ⋅t  - 4⋅D⋅k_j ⋅r ⋅t  - 8⋅D⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅D⋅k_j⋅ ↪
+
+↪     3  2                 2  2                 2         2  2  3              ↪
+↪ kₗ⋅r ⋅t  + 8⋅D⋅k_j⋅kₗ⋅r⋅s ⋅t  + 8⋅D⋅k_j⋅kₗ⋅r⋅t  - 4⋅D⋅kₖ ⋅s ⋅t  + 8⋅D⋅kₖ⋅kₗ⋅ ↪
+
+↪  2    2              3  2                2         2  4           2  2  2    ↪
+↪ r ⋅s⋅t  + 8⋅D⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅D⋅kₖ⋅kₗ⋅s⋅t  - 4⋅D⋅kₗ ⋅r ⋅t - 8⋅D⋅kₗ ⋅r ⋅s ⋅t  ↪
+
+↪         2  2           2  4           2  2           2        2  4  2        ↪
+↪ - 8⋅D⋅kₗ ⋅r ⋅t - 4⋅D⋅kₗ ⋅s ⋅t - 8⋅D⋅kₗ ⋅s ⋅t - 4⋅D⋅kₗ ⋅t + 4⋅E ⋅r ⋅t  + 8⋅E⋅ ↪
+
+↪    3    2          5            3  2            3  3          3            2 ↪
+↪ F⋅r ⋅s⋅t  - 4⋅E⋅G⋅r ⋅t - 4⋅E⋅G⋅r ⋅s ⋅t + 4⋅E⋅G⋅r ⋅t  - 4⋅E⋅G⋅r ⋅t + 8⋅E⋅H⋅r  ↪
+
+↪   2  2          4              2  3            2    3          2             ↪
+↪ ⋅s ⋅t  - 4⋅E⋅I⋅r ⋅s⋅t - 4⋅E⋅I⋅r ⋅s ⋅t + 4⋅E⋅I⋅r ⋅s⋅t  - 4⋅E⋅I⋅r ⋅s⋅t - 8⋅E⋅J ↪
+
+↪   4  2          2  2  2          2  2         2  2  2               3  2     ↪
+↪ ⋅r ⋅t  - 8⋅E⋅J⋅r ⋅s ⋅t  - 8⋅E⋅J⋅r ⋅t  - 4⋅E⋅kᵢ ⋅r ⋅t  - 8⋅E⋅kᵢ⋅k_j⋅r ⋅t  - 8 ↪
+
+↪           2    2              4                2  2                2         ↪
+↪ ⋅E⋅kᵢ⋅kₖ⋅r ⋅s⋅t  + 8⋅E⋅kᵢ⋅kₗ⋅r ⋅t + 8⋅E⋅kᵢ⋅kₗ⋅r ⋅s ⋅t + 8⋅E⋅kᵢ⋅kₗ⋅r ⋅t - 4⋅E ↪
+
+↪     2  4  2               3    2               5                 3  2        ↪
+↪ ⋅k_j ⋅r ⋅t  - 8⋅E⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅E⋅k_j⋅kₗ⋅r ⋅t + 8⋅E⋅k_j⋅kₗ⋅r ⋅s ⋅t + 8⋅ ↪
+
+↪           3           2  2  2  2              4                  2  3        ↪
+↪ E⋅k_j⋅kₗ⋅r ⋅t - 4⋅E⋅kₖ ⋅r ⋅s ⋅t  + 8⋅E⋅kₖ⋅kₗ⋅r ⋅s⋅t + 8⋅E⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅ ↪
+
+↪          2             2  6         2  4  2         2  4         2  2  4     ↪
+↪ E⋅kₖ⋅kₗ⋅r ⋅s⋅t - 4⋅E⋅kₗ ⋅r  - 8⋅E⋅kₗ ⋅r ⋅s  - 8⋅E⋅kₗ ⋅r  - 4⋅E⋅kₗ ⋅r ⋅s  - 8 ↪
+
+↪      2  2  2         2  2      2  2  2  2          4              2  3       ↪
+↪ ⋅E⋅kₗ ⋅r ⋅s  - 4⋅E⋅kₗ ⋅r  + 4⋅F ⋅r ⋅s ⋅t  - 4⋅F⋅G⋅r ⋅s⋅t - 4⋅F⋅G⋅r ⋅s ⋅t + 4 ↪
+
+↪       2    3          2                3  2          3  2              4     ↪
+↪ ⋅F⋅G⋅r ⋅s⋅t  - 4⋅F⋅G⋅r ⋅s⋅t + 8⋅F⋅H⋅r⋅s ⋅t  - 4⋅F⋅I⋅r ⋅s ⋅t - 4⋅F⋅I⋅r⋅s ⋅t + ↪
+
+↪           2  3            2            3    2            3  2              2 ↪
+↪  4⋅F⋅I⋅r⋅s ⋅t  - 4⋅F⋅I⋅r⋅s ⋅t - 8⋅F⋅J⋅r ⋅s⋅t  - 8⋅F⋅J⋅r⋅s ⋅t  - 8⋅F⋅J⋅r⋅s⋅t  ↪
+
+↪          2      2               2    2                2  2              3    ↪
+↪  - 4⋅F⋅kᵢ ⋅r⋅s⋅t  - 8⋅F⋅kᵢ⋅k_j⋅r ⋅s⋅t  - 8⋅F⋅kᵢ⋅kₖ⋅r⋅s ⋅t  + 8⋅F⋅kᵢ⋅kₗ⋅r ⋅s⋅ ↪
+
+↪                  3                              2  3    2               2  2 ↪
+↪ t + 8⋅F⋅kᵢ⋅kₗ⋅r⋅s ⋅t + 8⋅F⋅kᵢ⋅kₗ⋅r⋅s⋅t - 4⋅F⋅k_j ⋅r ⋅s⋅t  - 8⋅F⋅k_j⋅kₖ⋅r ⋅s  ↪
+
+↪   2               4                   2  3                 2             2   ↪
+↪ ⋅t  + 8⋅F⋅k_j⋅kₗ⋅r ⋅s⋅t + 8⋅F⋅k_j⋅kₗ⋅r ⋅s ⋅t + 8⋅F⋅k_j⋅kₗ⋅r ⋅s⋅t - 4⋅F⋅kₖ ⋅r ↪
+
+↪   3  2              3  2                  4                  2           2   ↪
+↪ ⋅s ⋅t  + 8⋅F⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅F⋅kₖ⋅kₗ⋅r⋅s ⋅t + 8⋅F⋅kₖ⋅kₗ⋅r⋅s ⋅t - 4⋅F⋅kₗ ⋅r ↪
+
+↪ 5           2  3  3         2  3           2    5         2    3         2   ↪
+↪  ⋅s - 8⋅F⋅kₗ ⋅r ⋅s  - 8⋅F⋅kₗ ⋅r ⋅s - 4⋅F⋅kₗ ⋅r⋅s  - 8⋅F⋅kₗ ⋅r⋅s  - 4⋅F⋅kₗ ⋅r ↪
+
+↪       2  6      2  4  2      2  4  2      2  4    2  2  4      2  2  2  2    ↪
+↪ ⋅s + G ⋅r  + 2⋅G ⋅r ⋅s  - 2⋅G ⋅r ⋅t  + 2⋅G ⋅r  + G ⋅r ⋅s  - 2⋅G ⋅r ⋅s ⋅t  +  ↪
+
+↪    2  2  2    2  2  4      2  2  2    2  2          3  2              4      ↪
+↪ 2⋅G ⋅r ⋅s  + G ⋅r ⋅t  - 2⋅G ⋅r ⋅t  + G ⋅r  - 4⋅G⋅H⋅r ⋅s ⋅t - 4⋅G⋅H⋅r⋅s ⋅t +  ↪
+
+↪          2  3            2            5            3  3          3    2      ↪
+↪ 4⋅G⋅H⋅r⋅s ⋅t  - 4⋅G⋅H⋅r⋅s ⋅t + 2⋅G⋅I⋅r ⋅s + 4⋅G⋅I⋅r ⋅s  - 4⋅G⋅I⋅r ⋅s⋅t  + 4⋅ ↪
+
+↪      3              5            3  2            3              4            ↪
+↪ G⋅I⋅r ⋅s + 2⋅G⋅I⋅r⋅s  - 4⋅G⋅I⋅r⋅s ⋅t  + 4⋅G⋅I⋅r⋅s  + 2⋅G⋅I⋅r⋅s⋅t  - 4⋅G⋅I⋅r⋅ ↪
+
+↪    2                      5            3  2            3  3          3       ↪
+↪ s⋅t  + 2⋅G⋅I⋅r⋅s + 4⋅G⋅J⋅r ⋅t + 8⋅G⋅J⋅r ⋅s ⋅t - 4⋅G⋅J⋅r ⋅t  + 8⋅G⋅J⋅r ⋅t + 4 ↪
+
+↪         4              2  3            2              3                      ↪
+↪ ⋅G⋅J⋅r⋅s ⋅t - 4⋅G⋅J⋅r⋅s ⋅t  + 8⋅G⋅J⋅r⋅s ⋅t - 4⋅G⋅J⋅r⋅t  + 4⋅G⋅J⋅r⋅t - 4⋅G⋅kᵢ ↪
+
+↪ 2    3               2  3                  3              3  2               ↪
+↪  ⋅r⋅t  - 8⋅G⋅kᵢ⋅k_j⋅r ⋅t  - 8⋅G⋅kᵢ⋅kₖ⋅r⋅s⋅t  + 8⋅G⋅kᵢ⋅kₗ⋅r ⋅t  + 8⋅G⋅kᵢ⋅kₗ⋅r ↪
+
+↪   2  2                2          2  3  3               2    3                ↪
+↪ ⋅s ⋅t  + 8⋅G⋅kᵢ⋅kₗ⋅r⋅t  - 4⋅G⋅k_j ⋅r ⋅t  - 8⋅G⋅k_j⋅kₖ⋅r ⋅s⋅t  + 8⋅G⋅k_j⋅kₗ⋅r ↪
+
+↪ 4  2               2  2  2               2  2         2    2  3              ↪
+↪  ⋅t  + 8⋅G⋅k_j⋅kₗ⋅r ⋅s ⋅t  + 8⋅G⋅k_j⋅kₗ⋅r ⋅t  - 4⋅G⋅kₖ ⋅r⋅s ⋅t  + 8⋅G⋅kₖ⋅kₗ⋅ ↪
+
+↪  3    2                3  2                  2         2  5           2  3   ↪
+↪ r ⋅s⋅t  + 8⋅G⋅kₖ⋅kₗ⋅r⋅s ⋅t  + 8⋅G⋅kₖ⋅kₗ⋅r⋅s⋅t  - 4⋅G⋅kₗ ⋅r ⋅t - 8⋅G⋅kₗ ⋅r ⋅s ↪
+
+↪ 2           2  3           2    4           2    2           2          2  4 ↪
+↪  ⋅t - 8⋅G⋅kₗ ⋅r ⋅t - 4⋅G⋅kₗ ⋅r⋅s ⋅t - 8⋅G⋅kₗ ⋅r⋅s ⋅t - 4⋅G⋅kₗ ⋅r⋅t + 4⋅H ⋅s  ↪
+
+↪   2          2  3            5            3  3          3            2  2  2 ↪
+↪ ⋅t  - 4⋅H⋅I⋅r ⋅s ⋅t - 4⋅H⋅I⋅s ⋅t + 4⋅H⋅I⋅s ⋅t  - 4⋅H⋅I⋅s ⋅t - 8⋅H⋅J⋅r ⋅s ⋅t  ↪
+
+↪           4  2          2  2         2  2  2                 2  2            ↪
+↪  - 8⋅H⋅J⋅s ⋅t  - 8⋅H⋅J⋅s ⋅t  - 4⋅H⋅kᵢ ⋅s ⋅t  - 8⋅H⋅kᵢ⋅k_j⋅r⋅s ⋅t  - 8⋅H⋅kᵢ⋅k ↪
+
+↪    3  2              2  2                4                2            2  2  ↪
+↪ ₖ⋅s ⋅t  + 8⋅H⋅kᵢ⋅kₗ⋅r ⋅s ⋅t + 8⋅H⋅kᵢ⋅kₗ⋅s ⋅t + 8⋅H⋅kᵢ⋅kₗ⋅s ⋅t - 4⋅H⋅k_j ⋅r ⋅ ↪
+
+↪  2  2                 3  2               3  2                   4            ↪
+↪ s ⋅t  - 8⋅H⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅H⋅k_j⋅kₗ⋅r ⋅s ⋅t + 8⋅H⋅k_j⋅kₗ⋅r⋅s ⋅t + 8⋅H⋅k_ ↪
+
+↪         2           2  4  2              2  3                5               ↪
+↪ j⋅kₗ⋅r⋅s ⋅t - 4⋅H⋅kₖ ⋅s ⋅t  + 8⋅H⋅kₖ⋅kₗ⋅r ⋅s ⋅t + 8⋅H⋅kₖ⋅kₗ⋅s ⋅t + 8⋅H⋅kₖ⋅kₗ ↪
+
+↪   3           2  4  2         2  2  4         2  2  2         2  6         2 ↪
+↪ ⋅s ⋅t - 4⋅H⋅kₗ ⋅r ⋅s  - 8⋅H⋅kₗ ⋅r ⋅s  - 8⋅H⋅kₗ ⋅r ⋅s  - 4⋅H⋅kₗ ⋅s  - 8⋅H⋅kₗ  ↪
+
+↪   4         2  2    2  4  2      2  2  4      2  2  2  2      2  2  2    2   ↪
+↪ ⋅s  - 4⋅H⋅kₗ ⋅s  + I ⋅r ⋅s  + 2⋅I ⋅r ⋅s  - 2⋅I ⋅r ⋅s ⋅t  + 2⋅I ⋅r ⋅s  + I ⋅s ↪
+
+↪ 6      2  4  2      2  4    2  2  4      2  2  2    2  2          4          ↪
+↪   - 2⋅I ⋅s ⋅t  + 2⋅I ⋅s  + I ⋅s ⋅t  - 2⋅I ⋅s ⋅t  + I ⋅s  + 4⋅I⋅J⋅r ⋅s⋅t + 8⋅ ↪
+
+↪      2  3            2    3          2              5            3  3        ↪
+↪ I⋅J⋅r ⋅s ⋅t - 4⋅I⋅J⋅r ⋅s⋅t  + 8⋅I⋅J⋅r ⋅s⋅t + 4⋅I⋅J⋅s ⋅t - 4⋅I⋅J⋅s ⋅t  + 8⋅I⋅ ↪
+
+↪    3              3                     2    3                   3           ↪
+↪ J⋅s ⋅t - 4⋅I⋅J⋅s⋅t  + 4⋅I⋅J⋅s⋅t - 4⋅I⋅kᵢ ⋅s⋅t  - 8⋅I⋅kᵢ⋅k_j⋅r⋅s⋅t  - 8⋅I⋅kᵢ⋅ ↪
+
+↪     2  3              2    2              3  2                2          2   ↪
+↪ kₖ⋅s ⋅t  + 8⋅I⋅kᵢ⋅kₗ⋅r ⋅s⋅t  + 8⋅I⋅kᵢ⋅kₗ⋅s ⋅t  + 8⋅I⋅kᵢ⋅kₗ⋅s⋅t  - 4⋅I⋅k_j ⋅r ↪
+
+↪ 2    3                 2  3               3    2                 3  2        ↪
+↪  ⋅s⋅t  - 8⋅I⋅k_j⋅kₖ⋅r⋅s ⋅t  + 8⋅I⋅k_j⋅kₗ⋅r ⋅s⋅t  + 8⋅I⋅k_j⋅kₗ⋅r⋅s ⋅t  + 8⋅I⋅ ↪
+
+↪             2         2  3  3              2  2  2              4  2         ↪
+↪ k_j⋅kₗ⋅r⋅s⋅t  - 4⋅I⋅kₖ ⋅s ⋅t  + 8⋅I⋅kₖ⋅kₗ⋅r ⋅s ⋅t  + 8⋅I⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅I⋅k ↪
+
+↪       2  2         2  4             2  2  3           2  2             2  5  ↪
+↪ ₖ⋅kₗ⋅s ⋅t  - 4⋅I⋅kₗ ⋅r ⋅s⋅t - 8⋅I⋅kₗ ⋅r ⋅s ⋅t - 8⋅I⋅kₗ ⋅r ⋅s⋅t - 4⋅I⋅kₗ ⋅s ⋅ ↪
+
+↪           2  3           2          2  4  2      2  2  2  2      2  2  2     ↪
+↪ t - 8⋅I⋅kₗ ⋅s ⋅t - 4⋅I⋅kₗ ⋅s⋅t + 4⋅J ⋅r ⋅t  + 8⋅J ⋅r ⋅s ⋅t  + 8⋅J ⋅r ⋅t  + 4 ↪
+
+↪   2  4  2      2  2  2      2  2         2  4                 4              ↪
+↪ ⋅J ⋅s ⋅t  + 8⋅J ⋅s ⋅t  + 4⋅J ⋅t  - 4⋅J⋅kᵢ ⋅t  - 8⋅J⋅kᵢ⋅k_j⋅r⋅t  - 8⋅J⋅kᵢ⋅kₖ⋅ ↪
+
+↪    4              2  3              2  3              3          2  2  4     ↪
+↪ s⋅t  + 8⋅J⋅kᵢ⋅kₗ⋅r ⋅t  + 8⋅J⋅kᵢ⋅kₗ⋅s ⋅t  + 8⋅J⋅kᵢ⋅kₗ⋅t  - 4⋅J⋅k_j ⋅r ⋅t  - 8 ↪
+
+↪                4               3  3                 2  3                 3   ↪
+↪ ⋅J⋅k_j⋅kₖ⋅r⋅s⋅t  + 8⋅J⋅k_j⋅kₗ⋅r ⋅t  + 8⋅J⋅k_j⋅kₗ⋅r⋅s ⋅t  + 8⋅J⋅k_j⋅kₗ⋅r⋅t  - ↪
+
+↪        2  2  4              2    3              3  3                3        ↪
+↪  4⋅J⋅kₖ ⋅s ⋅t  + 8⋅J⋅kₖ⋅kₗ⋅r ⋅s⋅t  + 8⋅J⋅kₖ⋅kₗ⋅s ⋅t  + 8⋅J⋅kₖ⋅kₗ⋅s⋅t  - 4⋅J⋅ ↪
+
+↪   2  4  2         2  2  2  2         2  2  2         2  4  2         2  2  2 ↪
+↪ kₗ ⋅r ⋅t  - 8⋅J⋅kₗ ⋅r ⋅s ⋅t  - 8⋅J⋅kₗ ⋅r ⋅t  - 4⋅J⋅kₗ ⋅s ⋅t  - 8⋅J⋅kₗ ⋅s ⋅t  ↪
+
+↪          2  2
+↪  - 4⋅J⋅kₗ ⋅t 
+cross-elimination identity rs = 0
+cross-elimination identity rt = 0
+cross-elimination identity st = 0
+square elimination identity r = 0
+square elimination identity s = 0
+square elimination identity t = 0
+deg C_rs = 5
+deg C_rt = 5
+deg C_st = 5
+deg S_r = 6
+deg S_s = 6
+deg S_t = 6
+projected one-chart Bezout bound = 150
+
+----------------------------------------------------------------------------------------
+IV. Diagonal-isotropic curvature reduction
+----------------------------------------------------------------------------------------
+Delta_iso reduction = 0
+tau_iso depends only on k_rst = 0
+a_grad =
+⎡            kᵢ             ⎤
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            k_j            ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            kₖ             ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎢╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎥
+⎢                           ⎥
+⎢            kₗ             ⎥
+⎢───────────────────────────⎥
+⎢   ________________________⎥
+⎢  ╱   2      2     2     2 ⎥
+⎣╲╱  kᵢ  + k_j  + kₖ  + kₗ  ⎦
+gradient-optimal normalization = 0
+gradient-optimal slope value = 0
+
+----------------------------------------------------------------------------------------
+V. Full quadruple-symmetry reduction and equal-mix barycenter
+----------------------------------------------------------------------------------------
+equal-mix stationary numerator Nr(1,1,1) = 0
+equal-mix stationary numerator Ns(1,1,1) = 0
+equal-mix stationary numerator Nt(1,1,1) = 0
+equal-mix normalization = 0
+
+----------------------------------------------------------------------------------------
+VI. Interior winner theorem against the Stage 213 boundary ledger
+----------------------------------------------------------------------------------------
+verified interior winner theorem on 924 ordered integer samples
+verified interior non-improvement theorem on 924 ordered integer samples
+
+========================================================================================
+STAGE 197 SYMPY AUDIT COMPLETED SUCCESSFULLY
+========================================================================================
+
+EXIT_CODE: 0

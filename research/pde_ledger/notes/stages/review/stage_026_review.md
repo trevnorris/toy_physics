@@ -1,12 +1,12 @@
-# Review: Stage 026 — Support direction extraction
+# Review: Stage 026 — Concrete axial overlaps
 
-**Batch:** 4 — Kernel Continuation
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (2× MINOR, 2026-04-02)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage026_support_direction_extraction.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage026_support_direction_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage026_concrete_axial_overlaps.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py`
 
 ## Review Checklist
 
@@ -36,47 +36,74 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** PASS
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** Continuum extension with c_{Uphi} coupling correctly projected. Effective support vector y = g_B v + g_U g_S D_U v from standard tree-level elimination. R_phi = [1+sigma_0/(1+delta_U)]/(1+sigma_0) correct. Splitting invariant D_phi verified. Overlap contraction v.D_U.v = (sigma/K_U)[1-(2/11)delta_U/(1+delta_U)] verified by expanding kappa_0^2/K_U + kappa_1^2/(K_U(1+delta_U)). Tracking condition g_B g_R = g_W g_S (codimension-1) correct. Mismatch R_phi - R_U = delta_U(rho_0-sigma_0)/[(1+delta_U)(1+rho_0)(1+sigma_0)] verified.
+**1. Equation-level correctness.** All formulas verified:
 
-2. **Logical flow.** Clean: continuum coupling → effective vector → direction factor → splitting invariant → tracking condition → mismatch.
+- u_0(s) = 1/sqrt(L) with int u_0^2 = 1. Correct.
+- D/N modes f_n = sqrt(2/L) sin((n+1/2)pi s/L), k_n = (n+1/2)pi/L. Normalization verified.
+- Overlap kappa_n = sqrt(2)/((n+1/2)pi). kappa_0 = 2 sqrt(2)/pi ≈ 0.900316. Verified by integration.
+- All four overlap assignments (I_{eta,phi}, I_{eta,u}, I_{eta,w}, I_{u,w}) correctly traced through mode definitions.
+- All Stage 8 substitutions (C, G_U, G_W, R, Delta, Q, P, N_0, B_0, Z_0, D_0, P_0) correctly computed with kappa factors.
+- K_req solution from target equation algebraically correct.
 
-3. **Physical interpretation.** Trichotomy (source-tied / intermediate / tracking) cleanly stated and logically follows.
+**2. Logical flow.** Clean progression: concrete modes → overlap computation → Stage 8 substitution → K_req solution.
 
-**Script Review:**
+**3. Assumptions.** All stated: flat axial measure, N/N zero mode for wall, D/N half-wave for support/mixed, minimal branch n=0.
 
-**B.1-B.7.** All 7 claims verified: effective vector, R_phi, D_phi, overlap contraction, support baseline, tracking condition (substitutes g_S = g_B g_R/g_W and verifies R_phi-R_U = 0), mismatch formula. No tautologies. Coupling constants correctly real (either sign). All pass (exit code 0, 2s). Complete coverage.
+**4. Completeness.** Eight undetermined branch parameters clearly enumerated. Hierarchy kappa_n ~ 1/(n+1/2) correct.
 
-**Issues Found:** None.
+**5. Notation consistency.** Consistent with Stage 8 and Stage 7. Minor dual use of u_0 (Neumann zero mode function and brane-like profile) ultimately unambiguous in context.
 
----
-
-### Agent: GPT-5 Codex — 2026-04-03
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-1. The support-direction extraction is mathematically consistent. The effective support vector `y = g_B v + g_U g_S D_U v` is the correct tree-level result after eliminating the split `U` doublet, and the resulting direction factor
-   `R_phi = [1 + sigma_0/(1 + delta_U)] / (1 + sigma_0)`
-   matches the note and the saved audit output exactly.
-2. I independently rechecked the two core identities with SymPy: the support-direction factor and the splitting invariant `D_phi`. Both reduce to zero against the stated formulas, so the source-tied limit `sigma_0 = 0` and the `delta_U = 0` degenerate limit are both correctly captured.
-3. The support pole shift and the `2/11` contraction factor are consistent with the frozen overlap data from Stage 20. The physical support baseline `M_supp` and the tracking condition `g_B g_R = g_W g_S` are therefore derived, not assumed.
-4. Physically, the trichotomy is clean: minimal kernel is source-tied, the generic first extension is intermediate, and exact tracking is a codimension-one interference match.
+**6. Physical interpretation.** Sound. Higher D/N levels axially suppressed. K_req as balance condition well-motivated.
 
 **Script Review:**
 
-1. The audit script faithfully computes the effective support vector, the direction factor, the splitting invariant, the overlap contraction, the support baseline, the tracking condition, and the mismatch formula. The saved output matches those claims.
-2. I did not find a bug, hardcoded result, or tautological check that would undermine the verification.
+**B.1 Faithful.** All mode definitions, overlaps, substitutions, and K_req solution implemented.
+
+**B.2 No bugs.** Integration limits, mode expressions, algebraic substitutions all correct.
+
+**B.3 Hardcoded values.** Factor 6 in `K = K_eta + 6 T_Omega` (line 234) used in print statement but not verified by script. Minor gap.
+
+**B.4 No tautologies.** Normalization and overlap checks are genuine SymPy integrals. Branch substitution checks compare SymPy-computed overlaps against hand-derived compact forms.
+
+**B.5 Symbol assumptions correct.** s,L positive; coupling constants real; frequencies positive.
+
+**B.6 Output agreement.** All expect_zero pass (exit code 0). kappa = 2*sqrt(2)/pi matches notes.
+
+**B.7 Coverage.** Mode normalization, overlap law, all substituted quantities, K_req verified. Gap: K = K_eta + 6 T_Omega decomposition not verified.
 
 **Issues Found:**
 
-None.
+1. **(MINOR)** The `K = K_eta + 6 T_Omega` wall stiffness decomposition (notes Sec. 5, script line 234-235) is stated without derivation or cross-reference to the specific earlier stage where this is established. The script prints it but does not verify the factor of 6. This feeds into the interpretation of K_req. A cross-reference or brief derivation would improve traceability.
 
-**Questions:**
+---
 
-None.
+### Agent: GPT-5 — 2026-04-03
+**Verdict:** MINOR
+
+**Notes Derivation Review:**
+
+1. **Equation-level correctness.** The concrete finite-throat mode choice is consistent: `u_0 = 1/sqrt(L)` is correctly normalized, the D/N ladder `f_n = sqrt(2/L) sin((n+1/2) pi s/L)` satisfies the stated boundary conditions, and the overlap law `kappa_n = sqrt(2)/((n+1/2) pi)` is exact. Substituting the branch overlaps into the Stage 8 scalars produces the quoted `Delta`, `Q`, `P`, `B_0`, `Z_0`, `N_0`, and the branch-level normalization equation without algebraic mismatch.
+
+2. **Logical flow.** The stage is a clean continuation of Stage 8: it replaces formal overlap integrals with a concrete finite-throat family, then propagates those constants into the final normalization test. The hierarchy statement that higher D/N levels are axially suppressed follows directly from the `kappa_n ~ 1/(n+1/2)` scaling.
+
+3. **Assumptions.** The branch assumptions are explicit and sufficient for the calculation: flat axial measure, constant N/N zero mode for the wall/brane-like sector, D/N half-wave support/mixed sector, and the `n = 0` truncation on the minimal branch.
+
+4. **Notation consistency.** The reuse of `u_0` for both the wall profile and the brane-like zero mode is acceptable here because the stage states they are intentionally the same constant mode. The reduced couplings and frequencies carry through Stage 8 consistently.
+
+5. **Physical interpretation.** The branch interpretation is sound. The mode selection makes the constant overlap `kappa = 2 sqrt(2) / pi` the only nontrivial axial constant, and the final `K_req` equation is a sensible balance among support softening, Maxwell/mixed self-load, and outgoing normalization.
+
+**Script Review:**
+
+The script faithfully mirrors the notes and the saved output agrees with every checked identity. The normalization integrals, the general `kappa_n` formula, the branch substitutions, and the exact `K_req` solve are all computed symbolically rather than hardcoded. My independent spot-check of the overlap integral also reproduces `kappa_n` exactly when the integer assumption on `n` is used.
+
+**Issues Found:**
+
+1. The final wall-stiffness identification `K = K_eta + 6 T_Omega` is carried through from prior reduction but is only printed here, not rederived or checked by the script. That does not affect the algebra in this stage, but it leaves a small traceability gap in the branch interpretation.
+
+**Questions:** None.
 
 ---

@@ -1,0 +1,49 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage152_family1_actual_correction_mathematica_audit.wl
+# Date: 2026-05-11T13:16:17-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+ACTUAL FAMILY-1 MOUTH CORRECTION
+========================================================================================
+R'(0) forward diff at h=1e-6 : -1.3119927911765686963678722144310596544059321672199401`30.*^-6
+R'(0) forward diff at h=1e-5 : -0.0000131198795210976324744783745280632810215157637612502672`30.
+R(0) = 0``77.63488044716352
+R(1) = -0.9048514039051923350330999302575590002812795718031463085272`30.
+Cov_*(c,R_*)      = 0.0648069687666326870200230564462394173263105371390414126856`30.
+Cov_*(K_q,R_*)    = 0.0388718368650401565839064690164388267444737317769668036269`30.
+delta g_act       = -0.0648069687666326870200230564462394173263105371390414126856`30.
+delta S_act       = -0.0388718368650401565839064690164388267444737317769668036269`30.
+delta Pi_act      = 0.9070844148429054224138709645642926243026860366699213609747`30.
+delta Tm_act      = 0.2716539794623375548494138651039472473000874193797349499036`30.
+Pi_corr           = 2.4159139283360610054194217205185675530813232298229997924008`30.
+T_corr            = 1.1731380336365415938139265762451628295627134067481461693701`30.
+g_1               = 0.684423574065324389413649060066751098440683941361164461829`30.
+S_1               = 0.6163331305702505636247382637965481491456616467728229203861`30.
+Pi_1              = 2.539148476097673497167030613354075578541080290552943521739`30.
+T_1               = 1.2103694208435907253275535102915972980736429130669673885531`30.
+lambda_eff^(Pi)   = 0.3804876327711111315030711308660174272040341818061144525068`30.
+lambda_eff^(T)    = 0.3789392411763376991302296737782488396106040159739921545252`30.
+delta g linearized covariance consistency diff = 0``50.08468352367091
+PASS: delta g linearized covariance consistency
+delta Pi_act scale diff = 2.55351295663786*^-15
+PASS: delta Pi_act scale
+delta Tm_act scale diff = 4.440892098500626*^-16
+PASS: delta Tm_act scale
+lambda_eff^(Pi) scale diff = 1.1657341758564144*^-15
+PASS: lambda_eff^(Pi) scale
+lambda_eff^(T) scale diff = 1.27675647831893*^-15
+PASS: lambda_eff^(T) scale
+
+Conclusion:
+  The full compensated mouth potential broadens the source relative to the tangent exponential,
+  shifts the canonical Family-1 point upward, and is well approximated by a moderate positive
+  broadening toward the uniform family (lambda_eff ≈ 0.38).
+
+Stage 152 Mathematica audit passed.
+
+EXIT_CODE: 0

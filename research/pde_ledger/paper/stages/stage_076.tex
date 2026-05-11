@@ -1,28 +1,23 @@
-\section[Stage 076]{Stage 076: Updated Status After the Direct Grouped-P2 + Geometry Derivation}
+\section[Stage 076]{Stage 076: Exact \texorpdfstring{$n=5$}{n=5} Wall-Depth Lock}
 \label{stage:076}
 
-\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+\stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+\claimstatus{\StatusExactClosure{} inside the Family--1 normalization conventions and frozen \(n=5\) EOS.}
+\stagefield{Purpose}{Stage~076 expresses the remaining wall-depth datum \(\Theta_w\) in normalized Family--1 density variables.}
+\stagefield{Inputs}{The \(n=5\) identity \(h(\rho)=mc_s^2/4\), healing lock, and wall-density normalization.}
 
-\stagefield{Purpose}{Stage~76 is a geometry-lane firewall ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage076_n5_wall_depth_lock_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage076_n5_wall_depth_lock_mathematica_audit.txt}.}
 
-\stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier, the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\subsection*{Derivation}
 
-\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage076_grouped_p2_status_update_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage076_grouped_p2_status_update_mathematica_audit.txt}.}
+The exact \(n=5\) relation and healing lock reduce the wall-depth datum to
+\begin{equation}
+\label{eq:app-stage076-theta}
+\boxed{
+\Theta_w=25\lambda_\mu^2\rho_w^2}.
+\end{equation}
+Thus only the effective wall density weighting remains to be extracted from the explicit wall profile.
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction variables \((\epsilon_2,\epsilon_4)\).}
-
-\begin{quote}
-Declares the remaining question: whether actual isotropic geometry is dynamically inert or supplies \((\epsilon_2,\epsilon_4)\).
-\end{quote}
-
-\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
-
-\stagefield{Checks}{\begin{verificationchecklist}
-\item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
-\item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
-\item Check that any support/source success statement still carries the minimal-module hypothesis.
-\end{verificationchecklist}}
-
-\stagefield{Downstream use}{This stage feeds Stages 83--89 and any downstream use of \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), or \(N_Q\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Output}{The wall-depth lock \eqref{eq:app-stage076-theta}.}
+\stagefield{Downstream use}{Stage~077 evaluates \(\rho_w^2\) with shell weights; Stage~078 uses it in the threshold comparison.}
 

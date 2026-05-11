@@ -1,0 +1,67 @@
+\section{Stage 250: Crossing-vs-collapse Goldilocks window}
+\label{sec:app-part08:crossing-vs-collapse-goldilocks-window}
+\label{stage:250}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py}.  Mathematica audit: none yet.}
+
+
+Stage 250 turns the dynamic branch into a survival inequality.  The exact path-time integral from the Stage 248 energy law is
+\begin{equation}
+\label{eq:app-part08-stage250-path-time}
+T_{\rm traj}(E;r_a\to r_b)
+=
+\sqrt{\frac{m_s}{2}}
+\int_{r_b}^{r_a}\frac{dr}{\sqrt{E-V(r)}}.
+\end{equation}
+The characteristic-width closure used by Session III compresses the active barrier region to
+\begin{equation}
+\label{eq:app-part08-stage250-cross-time}
+t_{\rm cross}(E)
+=
+\lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
+\end{equation}
+This is a reduced timescale closure, not a replacement for the exact path integral.
+
+The active dressing leg uses the local unstable normal form
+\begin{equation}
+\label{eq:app-part08-stage250-v-leg}
+\mu_\eta\ddot V=g_{UV}\chi_{\rm peak}V.
+\end{equation}
+Hence
+\begin{equation}
+\label{eq:app-part08-stage250-collapse-time}
+t_{\rm collapse}=
+\sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+\end{equation}
+The survival ratio is
+\begin{equation}
+\label{eq:app-part08-stage250-survival-ratio}
+\mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}}
+=
+\lambda_{\rm eff}
+\sqrt{\frac{m_sg_{UV}\chi_{\rm peak}}{2\mu_\eta(E-V_{\rm peak})}}.
+\end{equation}
+The lower safe edge is \cref{eq:app-part08-main-goldilocks-edge}, and the speed-space identity is \cref{eq:app-part08-main-goldilocks-speed}.
+
+If \(\mu_\eta=\alpha m_s\), the edge becomes
+\begin{equation}
+\label{eq:app-part08-stage250-heavy-edge}
+E_{\rm edge}=V_{\rm peak}+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2\alpha},
+\end{equation}
+so simultaneous scaling of particle mass and wall inertia cancels out of the edge.  The real control packet is
+\begin{equation}
+\label{eq:app-part08-stage250-control-packet}
+(\lambda_{\rm eff},\chi_{\rm peak},g_{UV},\mu_\eta/m_s).
+\end{equation}
+With the trigger-width specialization,
+\begin{equation}
+\label{eq:app-part08-stage250-trigger-width}
+\lambda_{\rm eff}=\lambda_{\rm th}(r_{\rm turn})=
+\left|\frac{V(r_{\rm turn})}{V'(r_{\rm turn})}\right|.
+\end{equation}
+The benchmark edge and sensitivity statements are therefore direct consequences of the dependence
+\begin{equation}
+\label{eq:app-part08-stage250-edge-sensitivity}
+E_{\rm edge}-V_{\rm peak}\propto\lambda_{\rm eff}^{2}\chi_{\rm peak}.
+\end{equation}
+
+Within this closure the safe window is one-sided because \(t_{\rm collapse}\) is energy-independent and \(t_{\rm cross}(E)\) decreases monotonically.  Any upper edge requires an additional high-energy failure mechanism outside Stage 250.

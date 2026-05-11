@@ -1,7 +1,7 @@
 \chapter{Support Completion, Continuum Placement, and Family--1 Branch Construction}
 \label{chap:part03_support_family1}
-\section*{Stage range: 020--073}
-\addcontentsline{toc}{section}{Stage range: 020--073}
+\section*{Stage range: 037--090}
+\addcontentsline{toc}{section}{Stage range: 037--090}
 
 Part III turns the Part II admissibility geometry into explicit support/source branch data.  In that language the stable selected branch is fixed by a softening depth \(\xi\), a bare anisotropy ratio \(\delta\), a target normalization ratio \(R_{\rm target}\), and a mixed loading baseline \(M_{\rm mix}\).  The reduced admissibility test was
 \begin{equation}
@@ -31,13 +31,13 @@ The endpoint is not a full branch realization.  It is a reduced support/source v
 \toprule
 Stages & Packet & Status & Carry-forward output \\
 \midrule
-020--034 & Continuum placement and support completion & \StatusExactClosure{} / \StatusReduced{} & Continuum kernel extraction, dimensionless placement laws, rank-2 support completion, coherent D/N tracking rules, and the lowest-twin sufficiency criterion. \\
+037--051 & Continuum placement and support completion & \StatusExactClosure{} / \StatusReduced{} & Continuum kernel extraction, dimensionless placement laws, rank-2 support completion, coherent D/N tracking rules, and the lowest-twin sufficiency criterion. \\
 \addlinespace
-035--052 & Lowest-lane transport and parent thresholds & \StatusExactClosure{} / \StatusReduced{} & Non-twin asymmetry regimes, overlap and Robin reachability windows, drift-diffusion transport laws, parent-overlap gain thresholds, and the three-zone reduced support/source verdict. \\
+052--069 & Lowest-lane transport and parent thresholds & \StatusExactClosure{} / \StatusReduced{} & Non-twin asymmetry regimes, overlap and Robin reachability windows, drift-diffusion transport laws, parent-overlap gain thresholds, and the three-zone reduced support/source verdict. \\
 \addlinespace
-053--061 & Explicit Family--1 wall-shell baseline & \StatusExactClosure{} / \StatusReduced{} / \StatusNumerical{} & GNLS wall-shell reduction, canonical tanh-wall branch, Family--1 geometry and healing-length locks, wall-depth extraction, and the first explicit Family--1 baseline verdict. \\
+070--078 & Explicit Family--1 wall-shell baseline & \StatusExactClosure{} / \StatusReduced{} / \StatusNumerical{} & GNLS wall-shell reduction, canonical tanh-wall branch, Family--1 geometry and healing-length locks, wall-depth extraction, and the first explicit Family--1 baseline verdict. \\
 \addlinespace
-062--073 & Family--1 demand window and finish line & \StatusExactClosure{} / \StatusOpen{} & Demand-to-transport map, branch-product windows, master quadrupole residual, minimal-module ratio packet, and the reduced statement that support/source closure is finished once the outgoing conservative module is realized. \\
+079--090 & Family--1 demand window and finish line & \StatusExactClosure{} / \StatusOpen{} & Demand-to-transport map, branch-product windows, master quadrupole residual, minimal-module ratio packet, and the reduced statement that support/source closure is finished once the outgoing conservative module is realized. \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -124,7 +124,7 @@ The only remaining reduced gap after this theorem chain is not support/source su
 \end{theorem}
 
 \begin{proof}[Proof structure]
-Stages 20--21 compute the continuum Schur complement and then repackage it into dimensionless placement ratios.  Stages 22--27 show how non-flat internal structure and rank-2 support loading deform, but do not destroy, the selected-branch algebra.  Stages 28--34 reduce coherent D/N support to a tracking branch and an exact support-ratio threshold.  Stages 35--44 identify the physical resources that can exceed the lowest-twin threshold: overlap bias, Robin compliance, drift-diffusion transport, and microscopic gain.  Stages 45--52 project that gain back into the parent GNLS/confinement action and close the support/source phase diagram.  Stages 53--61 evaluate the first explicit Family--1 wall-shell branch.  Stages 62--70 collapse its remaining support test to one loading-ratio datum.  Stages 71--73 evaluate that datum for the minimal isotropic contact-plus-pole quadrupole precursor and state the final reduced status.
+Stages~037--038 compute the continuum Schur complement and then repackage it into dimensionless placement ratios.  Stages~039--044 show how non-flat internal structure and rank-2 support loading deform, but do not destroy, the selected-branch algebra.  Stages~045--051 reduce coherent D/N support to a tracking branch and an exact support-ratio threshold.  Stages~052--061 identify the physical resources that can exceed the lowest-twin threshold: overlap bias, Robin compliance, drift-diffusion transport, and microscopic gain.  Stages~062--069 project that gain back into the parent GNLS/confinement action and close the support/source phase diagram.  Stages~070--078 evaluate the first explicit Family--1 wall-shell branch.  Stages~079--087 collapse its remaining support test to one loading-ratio datum.  Stages~088--090 evaluate that datum for the minimal isotropic contact-plus-pole quadrupole precursor and state the final reduced status.
 \end{proof}
 
 \section{Continuum-kernel extraction and placement map}
@@ -133,7 +133,7 @@ Stages 20--21 compute the continuum Schur complement and then repackage it into 
 \subsection{Local goal}
 \label{subsec:part03-continuum-goal}
 
-The Part II admissibility test \eqref{eq:part03-entry-FG-test} is useful only if the quantities \(A\), \(\Delta K_{\rm ax}\), \(\beta_0\), \(\alpha_{\rm mix}\), \(M_{\rm mix}\), and \(\delta\) can be obtained from a concrete branch.  Stages 20--21 provide the first such extraction.  The branch is still reduced: it uses the lowest wall doublet, the first brane-like internal \(U\) block, the lowest D/N support field, and the mixed \(W\) lane.  But after that reduced operator is declared, the extraction is exact.
+The Part II admissibility test \eqref{eq:part03-entry-FG-test} is useful only if the quantities \(A\), \(\Delta K_{\rm ax}\), \(\beta_0\), \(\alpha_{\rm mix}\), \(M_{\rm mix}\), and \(\delta\) can be obtained from a concrete branch.  Stages~037--038 provide the first such extraction.  The branch is still reduced: it uses the lowest wall doublet, the first brane-like internal \(U\) block, the lowest D/N support field, and the mixed \(W\) lane.  But after that reduced operator is declared, the extraction is exact.
 
 \subsection{Finite-throat operator and projected constants}
 \label{subsec:part03-continuum-operator}
@@ -240,7 +240,7 @@ K_UK_W^{\rm eff}>c_{UW}^2\sigma.
 \subsection{Dimensionless placement ledger}
 \label{subsec:part03-dimensionless-placement}
 
-Stage 21 compresses the same continuum data to dimensionless ratios
+Stage~038 compresses the same continuum data to dimensionless ratios
 \begin{equation}
 \label{eq:part03-stage21-ratios}
 \epsilon_\eta=\frac{c_{\eta U}^2}{K_UK_\eta^{\rm eff}},
@@ -295,7 +295,7 @@ with \((\epsilon_\eta,Z_W,\rho)\) redistributing the physical point between \(R_
 \subsection{Split-\texorpdfstring{$U$}{U} deformation}
 \label{subsec:part03-split-u}
 
-The flat-\(U\) doublet made the source direction, the support direction, and the mixed loading direction coincide.  Stage 22 tests that simplifying assumption by adding the first axial structure to \(U\):
+The flat-\(U\) doublet made the source direction, the support direction, and the mixed loading direction coincide.  Stage~039 tests that simplifying assumption by adding the first axial structure to \(U\):
 \begin{equation}
 \label{eq:part03-deltaU-def}
 K_{U0}=K_U,
@@ -336,7 +336,7 @@ On the natural constructive branch \(\rho_0>0\), positive \(\delta_U\) lowers th
 \subsection{General selected-branch deformation}
 \label{subsec:part03-general-selected-deformation}
 
-Stage 23 replaces the old one-vector branch functions by a source/loading mismatch law.  Let the loading vector be \(z=z_0(1,q)^T\) and the source vector be \(s=s_0(1,t)^T\).  The selected lower eigenvalue is still written
+Stage~040 replaces the old one-vector branch functions by a source/loading mismatch law.  Let the loading vector be \(z=z_0(1,q)^T\) and the source vector be \(s=s_0(1,t)^T\).  The selected lower eigenvalue is still written
 \begin{equation}
 \label{eq:part03-lambda-xi}
 \lambda_-=A_0(1-\xi),
@@ -402,7 +402,7 @@ Setting \(R_U=1\) recovers the flat-\(U\) functions of Part II exactly.
 \subsection{Two-direction selected branch}
 \label{subsec:part03-rank2-determinant}
 
-Once source/loading collinearity is broken, the selected wall branch must allow both mixed loading and support loading.  Stage 24 writes
+Once source/loading collinearity is broken, the selected wall branch must allow both mixed loading and support loading.  Stage~041 writes
 \begin{equation}
 \label{eq:part03-rank2-matrix}
 \frac{K_{\rm loaded}}{A_0}
@@ -454,7 +454,7 @@ This is the first genuinely new rank-2 support-feasibility branch.
 \subsection{Rank-2 selected-mode normalization}
 \label{subsec:part03-rank2-normalization}
 
-Stage 25 keeps the same two loading directions and introduces the source direction \(s=s_0(1,t)^T\).  With \(n=n_{\rm req}\), the lower selected eigenvector obeys
+Stage~042 keeps the same two loading directions and introduces the source direction \(s=s_0(1,t)^T\).  With \(n=n_{\rm req}\), the lower selected eigenvector obeys
 \begin{equation}
 \label{eq:part03-rank2-eigenvector}
 \frac{e_1}{e_0}
@@ -484,7 +484,7 @@ Thus the rank-2 normalization law depends on outgoing, support, and source direc
 \subsection{Continuum-selected quadratic}
 \label{subsec:part03-continuum-selected-quadratic}
 
-Stages 26--27 insert the continuum support direction data.  The physical softening depth is pinned by
+Stages~043--044 insert the continuum support direction data.  The physical softening depth is pinned by
 \begin{equation}
 \label{eq:part03-cont-quadratic}
 \boxed{
@@ -516,7 +516,7 @@ This is the first place where the abstract selected-mode branch becomes a concre
 \subsection{Tracking reduction}
 \label{subsec:part03-tracking-reduction}
 
-Stage 28 asks what the first coherent local D/N kernel does to the rank-2 ambiguity.  The coherent kernel forces
+Stage~045 asks what the first coherent local D/N kernel does to the rank-2 ambiguity.  The coherent kernel forces
 \begin{equation}
 \label{eq:part03-coherent-condition}
 g_Bg_R=g_Wg_S,
@@ -542,7 +542,7 @@ M_{\rm tr}=G_{\rm tr}(\xi,
 R_{\rm target}=F_{\rm tr}(\xi,
 \delta;R_{\rm tr}).
 \end{equation}
-Stage 29 then proves the monotonicity signs
+Stage~046 then proves the monotonicity signs
 \begin{equation}
 \label{eq:part03-tracking-monotonicity}
 \frac{\partial G_{\rm tr}}{\partial R}<0,
@@ -554,7 +554,7 @@ Since the constructive split branch has \(R_{\rm tr}<1\), it raises the required
 \subsection{Support-enhancement factor}
 \label{subsec:part03-support-enhancement}
 
-Stage 30 introduces a coherent support lane with ratio \(\zeta\).  The total tracking load is
+Stage~047 introduces a coherent support lane with ratio \(\zeta\).  The total tracking load is
 \begin{equation}
 \label{eq:part03-Mtr-support-factor}
 M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
@@ -584,12 +584,12 @@ Solving \(S(\zeta;\epsilon)=S_{\rm req}\) gives
 \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+
 \epsilon(S_{\rm req}-2)}}.
 \end{equation}
-Stage 31 proves that if the mixed-only branch is below the required load, there is a unique support ratio below the softening pole that reaches the target, provided the actual physical support lane can supply \(\zeta_{\rm phys}\geq\zeta_{\rm req}\).
+Stage~048 proves that if the mixed-only branch is below the required load, there is a unique support ratio below the softening pole that reaches the target, provided the actual physical support lane can supply \(\zeta_{\rm phys}\geq\zeta_{\rm req}\).
 
 \subsection{D/N microscopic support ratio and lowest-twin criterion}
 \label{subsec:part03-DN-zeta}
 
-Stage 32 derives the physical support ratio of an explicit D/N support tower:
+Stage~049 derives the physical support ratio of an explicit D/N support tower:
 \begin{equation}
 \label{eq:part03-zeta-phys-general}
 \boxed{
@@ -640,7 +640,7 @@ Thus the first coherent support tower is strongly biased toward the lowest twin 
 \subsection{Branch-product form of the lowest-twin test}
 \label{subsec:part03-lowest-twin-product}
 
-Stage 34 rewrites the same result in the product variable.  Define
+Stage~051 rewrites the same result in the product variable.  Define
 \begin{equation}
 \label{eq:part03-Cmix}
 C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2},
@@ -660,7 +660,7 @@ This criterion will be reused below when the support demand is rewritten in term
 \subsection{Three support regimes}
 \label{subsec:part03-support-regimes}
 
-Stage 35 gives the exact branch-demand variable
+Stage~052 gives the exact branch-demand variable
 \begin{equation}
 \label{eq:part03-zeta-req-product}
 \boxed{
@@ -687,7 +687,7 @@ Thus non-twin rescue can come from overlap boost \(\Omega_0^2>1\), support softe
 \subsection{Overlap boost and Robin softening}
 \label{subsec:part03-overlap-robin}
 
-Stage 36 studies the normalized exponential source family
+Stage~053 studies the normalized exponential source family
 \begin{equation}
 \label{eq:part03-sigma-alpha}
 \sigma_\alpha(s)=\frac{\alpha e^{\alpha s/L}}{e^\alpha-1},
@@ -712,7 +712,7 @@ It satisfies
 \end{equation}
 Pure overlap rescue is therefore possible only if \(\zeta_{\rm req}\leq\pi^2/4\).
 
-Stage 37 replaces the Dirichlet mouth with Robin compliance.  Let
+Stage~054 replaces the Dirichlet mouth with Robin compliance.  Let
 \begin{equation}
 \label{eq:part03-robin-root}
 y\tan y=\eta,
@@ -738,12 +738,12 @@ Its endpoint window is
 \label{eq:part03-AK-window}
 1\leq A_K\leq\frac{4}{4-x}.
 \end{equation}
-Combining overlap and compliance yields the first explicit non-twin reachability window of Stage 38.
+Combining overlap and compliance yields the first explicit non-twin reachability window of Stage~055.
 
 \subsection{Transport origin of the overlap bias}
 \label{subsec:part03-transport-origin}
 
-Stage 39 derives the exponential family from a stationary drift-diffusion operator:
+Stage~056 derives the exponential family from a stationary drift-diffusion operator:
 \begin{equation}
 \label{eq:part03-drift-diffusion}
 \partial_t\sigma+
@@ -765,7 +765,7 @@ It is therefore natural to write the physical overlap factor as
 \qquad
 \Omega_0=1}.
 \end{equation}
-Stage 40 combines this with the Robin factor into the physical lowest-lane support ratio
+Stage~057 combines this with the Robin factor into the physical lowest-lane support ratio
 \begin{equation}
 \label{eq:part03-zeta-Pe-kappa-eta}
 \boxed{
@@ -778,7 +778,7 @@ Stage 40 combines this with the Robin factor into the physical lowest-lane suppo
 \subsection{Coupled support/source fixed point}
 \label{subsec:part03-support-source-fixed-point}
 
-Stage 41 closes the source and support operators with a self-consistent branch equation
+Stage~058 closes the source and support operators with a self-consistent branch equation
 \begin{equation}
 \label{eq:part03-Pe-fixed-point}
 \boxed{
@@ -802,7 +802,7 @@ where, with \(\alpha=\sqrt\kappa\),
 =\frac{\cosh\alpha+(\eta/\alpha)\sinh\alpha-1}
 {\alpha\sinh\alpha+\eta\cosh\alpha}.
 \end{equation}
-Since \(\zeta_0\) is monotone in \(\mathrm{Pe}\), Stage 42 turns this into residual bounds and exact coupling thresholds.  If \(\mathrm{Pe}_{\rm req}\) is the Peclet bias needed to meet \(\zeta_{\rm req}\), then
+Since \(\zeta_0\) is monotone in \(\mathrm{Pe}\), Stage~059 turns this into residual bounds and exact coupling thresholds.  If \(\mathrm{Pe}_{\rm req}\) is the Peclet bias needed to meet \(\zeta_{\rm req}\), then
 \begin{equation}
 \label{eq:part03-Xi-thresholds}
 \boxed{
@@ -817,7 +817,7 @@ Below \(\Xi_{\rm fail}\) the branch fails; above \(\Xi_{\rm suff}\) it succeeds;
 \subsection{Parent-action gain and overlap thresholds}
 \label{subsec:part03-parent-gain}
 
-Stages 43--46 derive the gain from the parent GNLS/confinement sector.  Project the linearized compressional source onto \(\delta\rho(s,y)=\sigma(s)\chi_\sigma(y)\), and the support onto \(\phi(s)\chi_\phi(y)\), with
+Stages~060--063 derive the gain from the parent GNLS/confinement sector.  Project the linearized compressional source onto \(\delta\rho(s,y)=\sigma(s)\chi_\sigma(y)\), and the support onto \(\phi(s)\chi_\phi(y)\), with
 \begin{equation}
 \label{eq:part03-parent-support-loading}
 \delta V_{\rm conf}(s,y)=-g_\phi\chi_\phi(y)\phi(s).
@@ -877,7 +877,7 @@ The Cauchy bound gives the first parent-overlap no-go: if the best possible alig
 \subsection{Equilibrium alignment and wall figure of merit}
 \label{subsec:part03-wall-figure-merit}
 
-Stage 47 shows that the parent equilibrium response is not arbitrary:
+Stage~064 shows that the parent equilibrium response is not arbitrary:
 \begin{equation}
 \label{eq:part03-equilibrium-source}
 \chi_\sigma(y)=\frac{g_\phi\chi_\phi(y)}{H(y)},
@@ -899,7 +899,7 @@ In a thin layer with nearly constant \(H\), \(C_{\sigma\phi}^2=1\) and
 G_{\rm eq}=\frac{g_\phi^2I_1}{K_X}.
 \end{equation}
 
-Stages 48--49 then use a concrete thin-wall confinement
+Stages~065--066 then use a concrete thin-wall confinement
 \begin{equation}
 \label{eq:part03-thin-wall-conf}
 V_{\rm conf}(r;a)=V_0f\left(\frac{r-a}{\ell}\right),
@@ -922,7 +922,7 @@ W_{\rm wall}\geq\frac{\mathrm{Pe}_{\rm req}}{\Delta_0}\Rightarrow\text{succeed}}
 \end{equation}
 Only the intermediate band requires a full root solve.
 
-Stages 50--51 benchmark independent source/support mismatch using \(\chi_\sigma=\operatorname{sech}(y/w_f)\), \(\chi_\phi=e^{-y^2/w_g^2}\).  The exact self-dual stationary point is
+Stages~067--068 benchmark independent source/support mismatch using \(\chi_\sigma=\operatorname{sech}(y/w_f)\), \(\chi_\phi=e^{-y^2/w_g^2}\).  The exact self-dual stationary point is
 \begin{equation}
 \label{eq:part03-sech-gauss}
 \frac{w_g}{w_f}=\sqrt\pi,
@@ -934,7 +934,7 @@ C_{\rm res}^2\simeq0.994418836451529,
 \qquad
 P_{\rm res}=\frac{1}{C_{\rm res}^2}\simeq1.005612487760576.
 \end{equation}
-Thus the first independent-profile benchmark changes the matched thresholds by only about \(0.56\%\).  Stage 52's reduced verdict is therefore the three-zone wall theorem: universal fail below \(\mathrm{Pe}_{\rm req}/\Delta_\infty\), universal matched success above \(\mathrm{Pe}_{\rm req}/\Delta_0\), and only a narrow profile-sensitive band in between.
+Thus the first independent-profile benchmark changes the matched thresholds by only about \(0.56\%\).  Stage~069's reduced verdict is therefore the three-zone wall theorem: universal fail below \(\mathrm{Pe}_{\rm req}/\Delta_\infty\), universal matched success above \(\mathrm{Pe}_{\rm req}/\Delta_0\), and only a narrow profile-sensitive band in between.
 
 \section{Family--1 explicit branch construction}
 \label{sec:part03_support_family1:family-1-explicit-branch-construction}
@@ -942,7 +942,7 @@ Thus the first independent-profile benchmark changes the matched thresholds by o
 \subsection{GNLS wall-shell support branch}
 \label{subsec:part03-wall-shell}
 
-Stage 53 derives the support coefficients from the parent GNLS shell energy.  Near the wall background \(\rho_w\), the quadratic support energy for \(\delta\rho(s,y)=q(s)\chi_\phi(y)\) is
+Stage~070 derives the support coefficients from the parent GNLS shell energy.  Near the wall background \(\rho_w\), the quadratic support energy for \(\delta\rho(s,y)=q(s)\chi_\phi(y)\) is
 \begin{equation}
 \label{eq:part03-E2-support}
 E^{(2)}[q]=\frac12\int_0^Lds\left[T_Xq'(s)^2+K_Xq(s)^2\right],
@@ -986,7 +986,7 @@ W_{\rm wall}=\Xi
 \subsection{Canonical tanh wall and reference geometry}
 \label{subsec:part03-tanh-reference}
 
-Stage 54 chooses
+Stage~071 chooses
 \begin{equation}
 \label{eq:part03-tanh-wall}
 f(\xi)=\frac{1+\tanh\xi}{2},
@@ -1029,7 +1029,7 @@ Then
 W_{\rm wall}=\Upsilon_w\Lambda_\ell^2}.
 \end{equation}
 
-Stages 56--57 fix the Family--1 reference values.  The carried geometry is
+Stages~073--074 fix the Family--1 reference values.  The carried geometry is
 \begin{equation}
 \label{eq:part03-family1-geometry}
 \frac{L}{a}=\frac{37}{20},
@@ -1053,13 +1053,13 @@ gives
 \qquad
 \kappa=\frac95\Lambda_\ell^2=\frac{12321}{5},
 \qquad
-\alpha=\sqrt\kappa=\frac{111}{\sqrt5}}.
+\alpha=\sqrt\kappa=\frac{128}{\sqrt5}}.
 \end{equation}
 
 \subsection{Family--1 threshold window and wall-depth datum}
 \label{subsec:part03-family1-window}
 
-Stage 58 evaluates the exact support/source thresholds at \((\kappa,
+Stage~075 evaluates the exact support/source thresholds at \((\kappa,
 \eta)=(12321/5,37)\):
 \begin{equation}
 \label{eq:part03-family1-deltas}
@@ -1074,7 +1074,7 @@ Stage 58 evaluates the exact support/source thresholds at \((\kappa,
 With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), write
 \begin{equation}
 \label{eq:part03-theta-def}
-\Upsilon_w=100\Theta_w.
+\Upsilon_w=117\Theta_w.
 \end{equation}
 The explicit branch theorem is
 \begin{equation}
@@ -1090,12 +1090,12 @@ The explicit branch theorem is
 \Rightarrow\text{succeed}}.
 \end{equation}
 
-Stage 59 uses the exact \(n=5\) identity \(h(\rho)=mc_s^2/4\) and the healing lock to obtain
+Stage~076 uses the exact \(n=5\) identity \(h(\rho)=mc_s^2/4\) and the healing lock to obtain
 \begin{equation}
 \label{eq:part03-theta-rho}
 \Theta_w=25\lambda_\mu^2\rho_w^2
 \end{equation}
-in normalized Family--1 variables.  Stage 60 extracts \(\rho_w\) from the explicit radial wall profile with the canonical support weight.  The result is
+in normalized Family--1 variables.  Stage~077 extracts \(\rho_w\) from the explicit radial wall profile with the canonical support weight.  The result is
 \begin{equation}
 \label{eq:part03-rho-averages}
 \langle\rho_r\rangle_\chi\simeq0.192619005556493,
@@ -1117,7 +1117,7 @@ with conservative lower envelope
 \simeq0.927552032539308\lambda_\mu^2}.
 \end{equation}
 
-Stage 61 compares these to the threshold window.  For the natural shell-weighted datum,
+Stage~078 compares these to the threshold window.  For the natural shell-weighted datum,
 \begin{equation}
 \label{eq:part03-Pe-suff-fail-chi}
 \mathrm{Pe}_{\rm suff}^{(\chi)}
@@ -1143,7 +1143,7 @@ The branch-level verdict is that Family--1 is not wall-depth starved except for 
 \subsection{Demand map and Family--1 ceiling}
 \label{subsec:part03-demand-map}
 
-Stages 62--64 rewrite the remaining support/source condition in the demand variables used by the outgoing quadrupole branch.  Let \(y_{\rm F1}\) be the Robin root
+Stages~079--081 rewrite the remaining support/source condition in the demand variables used by the outgoing quadrupole branch.  Let \(y_{\rm F1}\) be the Robin root
 \begin{equation}
 \label{eq:part03-yF1}
 y_{\rm F1}\tan y_{\rm F1}=37,
@@ -1198,7 +1198,7 @@ The natural branch nearly reaches the hard ceiling.
 \subsection{Master residual}
 \label{subsec:part03-master-residual}
 
-Stage 65 packages the remaining reduced PDE into one scalar residual.  Let
+Stage~082 packages the remaining reduced PDE into one scalar residual.  Let
 \begin{equation}
 \label{eq:part03-zeta-req-master}
 \zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
@@ -1248,7 +1248,7 @@ with
 \subsection{Cancellation of outgoing normalization factors}
 \label{subsec:part03-normalization-cancellation}
 
-Stages 68--70 show that once the selected outgoing branch is normalized, the support theorem no longer depends separately on \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), or \(\widehat m_-\).  The exact identities are
+Stages~085--087 show that once the selected outgoing branch is normalized, the support theorem no longer depends separately on \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), or \(\widehat m_-\).  The exact identities are
 \begin{equation}
 \label{eq:part03-Pi-Cmix-alpha}
 \Pi_{\rm tr}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm req},
@@ -1294,7 +1294,7 @@ Thus the support/source side reduces to one number from the outgoing branch: \(\
 \subsection{Minimal isotropic contact-plus-pole module}
 \label{subsec:part03-minimal-module}
 
-Stage 71 extracts \(\rho_\alpha\) from the minimal isotropic conservative precursor.  The precursor is
+Stage~088 extracts \(\rho_\alpha\) from the minimal isotropic conservative precursor.  The precursor is
 \begin{equation}
 \label{eq:part03-YQ-minimal}
 Y_Q^{\rm cons}(\omega)
@@ -1330,7 +1330,7 @@ C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix},
 \qquad
 0<\zeta_{\rm req}=\frac13<1.
 \end{equation}
-Stage 72 compares it to the explicit Family--1 support map.  Since
+Stage~089 compares it to the explicit Family--1 support map.  Since
 \begin{equation}
 \label{eq:part03-zeta-min-zero-bias}
 \zeta_{\rm req}^{\rm min}=\frac13<A_{\rm F1}\simeq1.00005192880220,
@@ -1385,5 +1385,5 @@ The chapter deliberately does not claim that the actual moving-throat grouped-\(
 
 The citation-safe summary is:
 \begin{quote}
-Stages 20--73 derive the support-completion and explicit Family--1 branch side of the moving-throat response program.  They extract the selected-branch continuum data, compress the placement problem to dimensionless ratios and a product law, treat source/loading mismatch through rank-2 support completion, derive coherent D/N support thresholds, reduce non-twin rescue to overlap, Robin, transport, and parent-gain resources, evaluate the first explicit GNLS wall-shell Family--1 branch, and finally show that the minimal isotropic contact-plus-pole quadrupole precursor selects \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), and \(\mathrm{Pe}_{\rm req}=0\).  The support/source side is therefore not the remaining bottleneck under that precursor; the remaining open task is to derive the precursor itself from the actual grouped real \(P_2\) and geometry branch.
+Stages~037--090 derive the support-completion and explicit Family--1 branch side of the moving-throat response program.  They extract the selected-branch continuum data, compress the placement problem to dimensionless ratios and a product law, treat source/loading mismatch through rank-2 support completion, derive coherent D/N support thresholds, reduce non-twin rescue to overlap, Robin, transport, and parent-gain resources, evaluate the first explicit GNLS wall-shell Family--1 branch, and finally show that the minimal isotropic contact-plus-pole quadrupole precursor selects \(\rho_\alpha=4/3\), \(\zeta_{\rm req}=1/3\), and \(\mathrm{Pe}_{\rm req}=0\).  The support/source side is therefore not the remaining bottleneck under that precursor; the remaining open task is to derive the precursor itself from the actual grouped real \(P_2\) and geometry branch.
 \end{quote}

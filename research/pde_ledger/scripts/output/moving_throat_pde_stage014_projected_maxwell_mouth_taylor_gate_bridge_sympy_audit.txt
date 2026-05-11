@@ -1,0 +1,111 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+# Date: 2026-05-11T12:39:12-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+================================================================================================
+1) Mouth-local Taylor ansatz
+================================================================================================
+Take a normalized one-sided mouth kernel w(u), u >= 0, with first moment mu1 = ∫ u w(u) du.
+Then for any primitive one-port quantity X(s),
+  X_proj(ell) = X(0) + ell * mu1 * X'(0) + O(ell^2).
+So
+  q1 = mu1*Q'(0),   s1 = mu1*S2'(0),   h1 = mu1*H_port'(0),
+  d1 = mu1*Delta'(0), p1 = mu1*P'(0),  g1 = mu1*G_W'(0).
+For a symmetric interior kernel, mu1 = 0 and the whole first layer vanishes.
+
+================================================================================================
+2) Primitive-to-bundle mouth-derivative map (divide out mu1)
+================================================================================================
+z0/mu1 =
+  (Delta*Qx - Deltax*Q)/Delta**2
+z2/mu1 =
+  -(Delta**2*Hx - Delta*Deltax*H - Delta*Q*S2x - Delta*Qx*S2 + 2*Deltax*Q*S2)/Delta**3
+z4/mu1 =
+  -(Delta**2*H*S2x + Delta**2*Hx*S2 + Delta**2*Qx - 2*Delta*Deltax*H*S2 - 2*Delta*Deltax*Q - 2*Delta*Q*S2*S2x - Delta*Qx*S2**2 + 3*Deltax*Q*S2**2)/Delta**4
+n0/mu1 =
+  2*P*(Delta*Px - Deltax*P)/Delta**3
+n2/mu1 =
+  -2*(Delta**2*Gw*Px + Delta**2*Gwx*P - 2*Delta*Deltax*Gw*P - Delta*P**2*S2x - 2*Delta*P*Px*S2 + 3*Deltax*P**2*S2)/Delta**4
+n4/mu1 =
+  2*(Delta**3*Gw*Gwx - Delta**2*Deltax*Gw**2 - 2*Delta**2*Gw*P*S2x - 2*Delta**2*Gw*Px*S2 - 2*Delta**2*Gwx*P*S2 - 2*Delta**2*P*Px + 6*Delta*Deltax*Gw*P*S2 + 3*Delta*Deltax*P**2 + 3*Delta*P**2*S2*S2x + 3*Delta*P*Px*S2**2 - 6*Deltax*P**2*S2**2)/Delta**5
+
+================================================================================================
+3) Direct projected-Maxwell contribution to the 5PN bottlenecks
+================================================================================================
+Xi_load^(proj)/mu1 =
+  (2*D0*Delta**2*Px - 2*D0*Delta*Deltax*P + Delta*P*Qx - Deltax*P*Q)/(D0*Delta**2*P)
+K1^(proj)/mu1 =
+  (9*Delta**2*Hx - Delta**2*Qx - 9*Delta*Deltax*H + Delta*Deltax*Q - 9*Delta*Q*S2x - 9*Delta*Qx*S2 + 18*Deltax*Q*S2)/(9*Delta**3)
+H_even^(proj)/mu1 =
+  -(18*Delta**3*Hx + Delta**3*Qx - 18*Delta**2*Deltax*H - Delta**2*Deltax*Q - 27*Delta**2*H*S2x - 27*Delta**2*Hx*S2 - 18*Delta**2*Q*S2x - 18*Delta**2*Qx*S2 - 27*Delta**2*Qx + 54*Delta*Deltax*H*S2 + 36*Delta*Deltax*Q*S2 + 54*Delta*Deltax*Q + 54*Delta*Q*S2*S2x + 27*Delta*Qx*S2**2 - 81*Deltax*Q*S2**2)/(27*Delta**4)
+
+Immediate dependency pattern:
+  - Xi_load depends only on (Q', Delta', P').
+  - K1 and H_even depend only on (Q', Delta', S2', H_port').
+  - G_W' does not enter Xi_load, K1, or H_even.
+  - G_W' first enters the constant-prefactor transport delta P2, delta P4.
+
+================================================================================================
+4) Isotropic compatibility and constant-prefactor transport
+================================================================================================
+delta Compat / mu1 =
+  (6*Delta**3*Hx*Ptarget*S*T - 6*Delta**2*Deltax*H*Ptarget*S*T - 3*Delta**2*H*Ptarget*S**2*S2x - 3*Delta**2*Hx*Ptarget*S**2*S2 + 2*Delta**2*P*Px*T**2 - 6*Delta**2*Ptarget*Q*S*S2x*T - 3*Delta**2*Ptarget*Qx*S**2 - 6*Delta**2*Ptarget*Qx*S*S2*T + 6*Delta*Deltax*H*Ptarget*S**2*S2 - 2*Delta*Deltax*P**2*T**2 + 6*Delta*Deltax*Ptarget*Q*S**2 + 12*Delta*Deltax*Ptarget*Q*S*S2*T + 6*Delta*Ptarget*Q*S**2*S2*S2x + 3*Delta*Ptarget*Qx*S**2*S2**2 - 9*Deltax*Ptarget*Q*S**2*S2**2)/(Delta**4*Ptarget*T**2)
+delta P2 / mu1 =
+  -2*(D0**2*Delta**2*Gw*Px + D0**2*Delta**2*Gwx*P - 2*D0**2*Delta*Deltax*Gw*P - D0**2*Delta*P**2*S2x - 2*D0**2*Delta*P*Px*S2 + 3*D0**2*Deltax*P**2*S2 + 2*D0*D2*Delta**2*P*Px - 2*D0*D2*Delta*Deltax*P**2 + D0*Delta**3*Hx*N0 - D0*Delta**2*Deltax*H*N0 - D0*Delta**2*N0*Q*S2x - D0*Delta**2*N0*Qx*S2 + 2*D0*Delta*Deltax*N0*Q*S2 + D2*Delta**3*N0*Qx - D2*Delta**2*Deltax*N0*Q)/(D0**3*Delta**4)
+delta P4 / mu1 =
+  2*(D0**3*Delta**3*Gw*Gwx - D0**3*Delta**2*Deltax*Gw**2 - 2*D0**3*Delta**2*Gw*P*S2x - 2*D0**3*Delta**2*Gw*Px*S2 - 2*D0**3*Delta**2*Gwx*P*S2 - 2*D0**3*Delta**2*P*Px + 6*D0**3*Delta*Deltax*Gw*P*S2 + 3*D0**3*Delta*Deltax*P**2 + 3*D0**3*Delta*P**2*S2*S2x + 3*D0**3*Delta*P*Px*S2**2 - 6*D0**3*Deltax*P**2*S2**2 + 2*D0**2*D2*Delta**3*Gw*Px + 2*D0**2*D2*Delta**3*Gwx*P - 4*D0**2*D2*Delta**2*Deltax*Gw*P - 2*D0**2*D2*Delta**2*P**2*S2x - 4*D0**2*D2*Delta**2*P*Px*S2 + 6*D0**2*D2*Delta*Deltax*P**2*S2 - 2*D0**2*D4*Delta**3*P*Px + 2*D0**2*D4*Delta**2*Deltax*P**2 - D0**2*Delta**3*H*N0*S2x - D0**2*Delta**3*Hx*N0*S2 - D0**2*Delta**3*N0*Qx + 2*D0**2*Delta**2*Deltax*H*N0*S2 + 2*D0**2*Delta**2*Deltax*N0*Q + 2*D0**2*Delta**2*N0*Q*S2*S2x + D0**2*Delta**2*N0*Qx*S2**2 - 3*D0**2*Delta*Deltax*N0*Q*S2**2 + 3*D0*D2**2*Delta**3*P*Px - 3*D0*D2**2*Delta**2*Deltax*P**2 + D0*D2*Delta**4*Hx*N0 - D0*D2*Delta**3*Deltax*H*N0 - D0*D2*Delta**3*N0*Q*S2x - D0*D2*Delta**3*N0*Qx*S2 + 2*D0*D2*Delta**2*Deltax*N0*Q*S2 - D0*D4*Delta**4*N0*Qx + D0*D4*Delta**3*Deltax*N0*Q + D2**2*Delta**4*N0*Qx - D2**2*Delta**3*Deltax*N0*Q)/(D0**4*Delta**5)
+
+Useful direct coefficients:
+  d(Xi_load)/dP'  =
+    2/P
+  d(delta P2)/dG_W' =
+    -2*P/(D0*Delta**2)
+  d(delta P4)/dG_W' =
+    2*(D0*Delta*Gw - 2*D0*P*S2 + 2*D2*Delta*P)/(D0**2*Delta**3)
+
+================================================================================================
+5) Mechanism sieve
+================================================================================================
+Case A: source/denominator sector only, S2' = H_port' = 0
+  solve K1 = H_even = 0  ->
+   [{Deltax: 0, Qx: 0}]
+Case B: spectral sector only, Q' = Delta' = 0
+  solve K1 = H_even = 0  ->
+   [{Hx: 0, S2x: 0}]
+
+So neither a pure (Q', Delta') correction nor a pure (S2', H_port') correction
+can close the even gates nontrivially.
+
+================================================================================================
+6) Exact mixed compensation surface for the even gates
+================================================================================================
+Solving K1 = H_even = 0 for (H_port', S2') gives
+H_port' =
+  (Delta**3*H*Qx + Delta**3*Q*Qx + 9*Delta**2*Deltax*H**2 - Delta**2*Deltax*H*Q - Delta**2*Deltax*Q**2 + 9*Delta**2*H*Qx*S2 - 2*Delta**2*Q*Qx*S2 - 9*Delta**2*Q*Qx - 18*Delta*Deltax*H*Q*S2 + 2*Delta*Deltax*Q**2*S2 + 18*Delta*Deltax*Q**2 - 9*Delta*Q*Qx*S2**2 + 9*Deltax*Q**2*S2**2)/(9*Delta**2*(Delta*H - Q*S2))
+S2' =
+  (Delta**3*Qx - Delta**2*Deltax*Q - Delta**2*Qx*S2 - 9*Delta**2*Qx + 9*Delta*Deltax*H*S2 + Delta*Deltax*Q*S2 + 18*Delta*Deltax*Q - 9*Deltax*Q*S2**2)/(9*Delta*(Delta*H - Q*S2))
+
+The compensation denominator is proportional to
+  Delta*H_port - Q*S2.
+This is exactly the primitive combination behind the conservative Z2 slot:
+  Z2 = (Q*S2 - H_port*Delta)/Delta^2.
+So the even-gate compensation becomes singular on the surface Delta*H_port = Q*S2
+(equivalently Z2 = 0).
+
+================================================================================================
+7) Readout
+================================================================================================
+The mouth-local projected-Maxwell packet factorizes into three jobs:
+  (i)  (Q', Delta', S2', H_port') repair the conservative even gates K1 and H_even,
+  (ii) P' directly tunes the weak-axisymmetric prefactor slope Xi_load,
+  (iii) G_W' first tunes the constant-prefactor transport through delta P2 and delta P4.
+
+This is precisely the kind of multi-channel structure you would expect from a real
+near-throat missing piece, and it is much sharper than a single scalar correction.
+STATUS: PASS
+
+EXIT_CODE: 0

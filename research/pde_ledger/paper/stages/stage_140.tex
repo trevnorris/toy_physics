@@ -1,27 +1,27 @@
-\section[Stage 140]{Stage 140: v59 Status}
+\section[Stage 140]{Stage 140: Self-Matched Mouth Susceptibility Closure}
 \label{stage:140}
 
 \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
-\claimstatus{\StatusNumerical{} / \StatusOpen{}.}
+\claimstatus{\StatusReduced{} / \StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~140 is a co-evolving core--mouth transport ledger step.  Its audit target is the verification output quoted below.}
+\stagefield{Purpose}{Stage~140 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
 
-\stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point, and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage140_core_mouth_coevolution_status_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage140_core_mouth_coevolution_status_mathematica_audit.wl}.  Numerical stress: \StageFile{scripts/numerical/stage140_core_mouth_coevolution_status_stress.py}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt}.}
 
-\stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate \(\delta_\perp\).}
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
 
 \begin{quote}
-Identifies the reduced co-evolving target and leaves the deviation-to-normalization map as the next task.
+Same-layer susceptibility gives \(\Sigma_0=M_s=(20/9)\widehat T_m^2\).
 \end{quote}
 
 \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Check deviations are taken about the renormalized co-evolving canonical point.
-\item Check even-preservation constraints are imposed before reading the remaining odd defect.
-\item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+\item Check the self-matched susceptibility closure before using the one-scalar branch law.
+\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds Part V and downstream branch-realization, orbit-lock, and same-charge audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}

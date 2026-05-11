@@ -1,0 +1,77 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+# Date: 2026-05-11T12:49:24-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 195 — FULL PRIMITIVE-TRIPLE RANKING AND THE UP-TO-THREE-COORDINATE SIEVE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Exact combinatorial ledger
+----------------------------------------------------------------------------------------
+primitive axes = ('lambda', 'c', 'gamma', 'U', 'W')
+primitive pairs = [('lambda', 'c'), ('lambda', 'gamma'), ('lambda', 'U'), ('lambda', 'W'), ('c', 'gamma'), ('c', 'U'), ('c', 'W'), ('gamma', 'U'), ('gamma', 'W'), ('U', 'W')]
+primitive triples = [('lambda', 'c', 'gamma'), ('lambda', 'c', 'U'), ('lambda', 'c', 'W'), ('lambda', 'gamma', 'U'), ('lambda', 'gamma', 'W'), ('lambda', 'U', 'W'), ('c', 'gamma', 'U'), ('c', 'gamma', 'W'), ('c', 'U', 'W'), ('gamma', 'U', 'W')]
+#pairs = 10
+#triples = 10
+#pairs - binomial(5,2) = 0
+#triples - binomial(5,3) = 0
+pair incidence ('lambda', 'c') -> 3
+pair incidence ('lambda', 'gamma') -> 3
+pair incidence ('lambda', 'U') -> 3
+pair incidence ('lambda', 'W') -> 3
+pair incidence ('c', 'gamma') -> 3
+pair incidence ('c', 'U') -> 3
+pair incidence ('c', 'W') -> 3
+pair incidence ('gamma', 'U') -> 3
+pair incidence ('gamma', 'W') -> 3
+pair incidence ('U', 'W') -> 3
+axis incidence lambda -> 6
+axis incidence c -> 6
+axis incidence gamma -> 6
+axis incidence U -> 6
+axis incidence W -> 6
+
+----------------------------------------------------------------------------------------
+II. Exact boundary-splice algebra
+----------------------------------------------------------------------------------------
+beta_lo =
+Min(tau_ij_lo, tau_ik_lo, tau_jk_lo)
+beta_hi =
+Min(tau_ij_hi, tau_ik_hi, tau_jk_hi)
+full_lo =
+Min(iota_lo, tau_ij_lo, tau_ik_lo, tau_jk_lo)
+full_hi =
+Min(iota_hi, tau_ij_hi, tau_ik_hi, tau_jk_hi)
+nested Min flattening (lo) = True
+nested Min flattening (hi) = True
+
+----------------------------------------------------------------------------------------
+III. Exhaustive interval-theorem checks
+----------------------------------------------------------------------------------------
+verified local full-simplex interval theorem on 3136 ordered integer samples
+verified interior-certified local order on 924 samples
+verified boundary-certified local order on 462 samples
+verified certified interval ordering on 896 samples
+verified global splice theorem on 3136 samples
+verified global three-coordinate improvement theorem on 924 samples
+verified global three-coordinate no-improvement theorem on 462 samples
+
+----------------------------------------------------------------------------------------
+IV. Exact finite evaluation budget theorem
+----------------------------------------------------------------------------------------
+pairwise evaluation budget = 120
+interior triple evaluation budget = 480
+full up-to-three-coordinate budget = 600
+pairwise budget - 120 = 0
+triple interior budget - 480 = 0
+full budget - 600 = 0
+
+All Stage 212 identities and interval theorems verified.
+
+EXIT_CODE: 0

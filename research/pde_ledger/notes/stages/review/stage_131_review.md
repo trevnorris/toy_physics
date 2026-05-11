@@ -1,12 +1,12 @@
-# Review: Stage 131 — Representative positive families
+# Review: Stage 131 — Dynamic loading
 
-**Batch:** 17 — Rigidity & Corrections
-**Status:** Verified (2× MINOR, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (1× PASS, 1× MINOR, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage131_representative_positive_families.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage131_representative_positive_families_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage029_dynamic_loading.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`
 
 ## Review Checklist
 
@@ -36,31 +36,64 @@
 **Questions:**
 
 ### Agent: Claude Opus 4.6 — 2026-04-02
-**Verdict:** MINOR
-**Notes Derivation Review:** Uniform family: g_u = 2/pi, S_u = 2 tanh(pi/2)/pi verified. Derivative family: g_d = pi/4, S_d correct. Retuning formulas from Stages 129-130. Convex interpolation affine in lambda. Zero-crossing lambda_(Pi,0) ~ 0.816, lambda_(T,0) ~ 0.813. Stage 109 consistency 1-lambda ~ xi_* confirmed to ~1.7e-15. Broadening raises canonical point, sharpening lowers it.
-**Script Review:** Moments from exact formulas. A_T, B_T from Stage 130. Interpolation solved symbolically. All genuine. All pass (exit code 0).
-**Issues Found:**
-1. **(MINOR)** dPi_d/eps displayed as ...921 in notes but script gives ...928 (7 ULP). Several other last-digit discrepancies.
-2. **(MINOR)** "Stage-110 broadening fraction" should be "Stage-109" — xi_* originates in Stage 109.
-3. **(MINOR)** xi_star hardcoded as 15-digit string rather than exact algebraic formula.
+**Verdict:** PASS
 
-### Agent: GPT-5 — 2026-04-03
+**Notes Derivation Review:**
+
+1. **Equation-level correctness.** All equations consistent. Overlap constants kappa_0 = 2sqrt(2)/pi, kappa_1 = -4/(3pi), sigma = 88/(9pi^2) match Stage 10. Schur complement decomposes correctly into Xi(omega) I_2 + alpha(omega) v v^T (confirmed symbolically by script). Conservative static limits Xi_0, Delta_0, alpha_0 follow by direct substitution. Isotropic shift cancellation K1 - Xi_0 - (K0 - Xi_0) = DeltaK_ax is trivially correct and verified. tan(2 theta) formula consistent with Stage 11 after substitution. Refined softening threshold correctly uses shifted stiffnesses.
+
+2. **Logical flow.** Clean progression: coupled operator setup → Schur complement → conservative static specialization → outgoing dressing → transfer factor → selected-mode projection. Each step builds on prior stages.
+
+3. **Assumptions.** All stated: minimal internal block, sign convention for U-W cross coupling, passive/outgoing dressing, compact outgoing l=2 branch law.
+
+4. **Completeness.** Conservative static, general dynamic, first-order outgoing, and selected-mode projection all covered. Refined softening threshold included. No missing branches.
+
+5. **Notation consistency.** Consistent with Stages 10-11. New symbols (Xi, alpha(omega), Delta_UW, beta, beta_5, P_0) cleanly introduced.
+
+6. **Physical interpretation.** Sound. Isotropic shift (from U doublet) vs directional rank-1 load (from BdG + mixed) has clear physical meaning. beta_0 >= 0 (ratio of squares) ensures nonnegative transfer factor.
+
+**Script Review:**
+
+**B.1 Faithful.** Internal block Mint and coupling C match notes Section 1. K1 = K0 + DeltaK_ax (recent fix) ensures K1 > K0.
+
+**B.2 No bugs.** Matrix inversions, differentiation, series expansion, limits all correct. Exit code 0.
+
+**B.3 Hardcoded values.** Only kappa_0 = 2sqrt(2)/pi and kappa_1 = -4/(3pi) — exact analytical values derived and verified in Stage 10.
+
+**B.4 Tautological checks.** None. Sigma computed by C^T Mint^{-1} C vs. closed-form Xi*I + alpha*vv^T — independent computations. Beta check compares SymPy derivative vs hand-constructed rational expression. Hellmann-Feynman limits are non-trivial.
+
+**B.5 Symbol assumptions.** All correct: omega real, stiffness/mass/frequency positive, coupling constants real (signs not fixed), Pi unconstrained (can be complex from outgoing port).
+
+**B.6 Output agreement.** All expect_zero pass. All notes claims confirmed.
+
+**B.7 Coverage.** Complete: Schur complement, conservative static data, angle law, softening threshold, outgoing dressing, transfer factor, selected-mode projection with limits.
+
+**Issues Found:** None.
+
+---
+
+### Agent: GPT-5 Codex — 2026-04-03
 **Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-1. The representative uniform and self-matched derivative families reproduce the stated first-order bias and traction shifts, and the convex interpolation behaves affinely as claimed.
-2. The zero-crossing interpolation points are in the expected interval and agree with the earlier exact compensation broadening fraction to numerical precision.
-3. The stage remains mathematically sound, but the last-digit mismatches and the Stage-110/109 cross-reference typo are real enough to keep the verdict at `MINOR`.
+- The main structural claim checks out. Using the reduced internal block `(u, W, phi)`, the wall self-energy does decompose exactly as `Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`; I independently recomputed the Schur complement and got zero difference from that closed form.
+- The conservative static limits `Xi_0`, `Delta_0`, and `alpha_0` are consistent with the Stage 11 loaded-angle law, and the isotropic shift cancels out of the wall-level splitting exactly as claimed.
+- The outgoing transfer factor is also consistent with the earlier `P/Delta` structure. An independent SymPy check confirms that the `i omega^5` coefficient of the outgoing-substituted `alpha(omega)` is exactly the stated
+  `beta_5 = Gamma_2^(port) (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2`.
+- The selected-mode projection formula `delta D_-^(odd)(omega) = - i beta_5 kappa(theta_-)^2 omega^5 + O(omega^7)` is the correct rank-1 projection of the odd part onto the conservative lower wall mode.
 
 **Script Review:**
 
-The audit script evaluates the exact moments, computes the retuning coefficients, and solves the interpolation zero points. I independently rechecked the interpolation coefficients; the formulas are right, but the notes still disagree with the script in the last digits and the stage reference.
+- The script correctly verifies the Schur decomposition, the conservative profile-selection law, the refined softening threshold, and the selected-mode Hellmann-Feynman overlap formula. The saved output is consistent with the notes.
+- I did find one coverage gap: after substituting the outgoing port law, the script prints `alpha_out(omega)` and `beta_5`, but it does not explicitly assert that the extracted imaginary `omega^5` coefficient equals the stated `beta_5`. That identity is true, but it is only displayed, not checked.
 
 **Issues Found:**
 
-1. The `dPi_d/eps` value in the notes still differs from the script output at the last digits.
-2. The Stage-110 cross-reference should still be Stage-109.
-3. `xi_*` is still hardcoded rather than given as an exact expression.
+- **(MINOR)** Missing explicit assertion for the final outgoing-series coefficient. The audit should isolate the `i omega^5` term of `alpha_out(omega)` and compare it programmatically to `beta_5` instead of only printing both objects.
+
+**Questions:**
+
+None.
 
 ---

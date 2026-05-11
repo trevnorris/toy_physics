@@ -1,0 +1,66 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.wl
+# Date: 2026-05-11T12:54:35-06:00
+# Elapsed: 6s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 044 — MICROSCOPIC GAIN THRESHOLDS
+========================================================================================
+Delta_0 = (eta*(-1 + Cosh[Sqrt[kappa]]))/(eta*kappa*Cosh[Sqrt[kappa]] + kappa^(3/2)*Sinh[Sqrt[kappa]])
+Delta_inf = (-1 + Cosh[Sqrt[kappa]] + (eta*Sinh[Sqrt[kappa]])/Sqrt[kappa])/(eta*Cosh[Sqrt[kappa]] + Sqrt[kappa]*Sinh[Sqrt[kappa]])
+Xi_micro = (chiSigma*ell^2*lambdaPhi^2)/tX
+G_micro = (chiSigma*lambdaPhi^2)/kX
+G_fail = (peReq*(eta*Cosh[Sqrt[kappa]] + Sqrt[kappa]*Sinh[Sqrt[kappa]]))/(kappa*(-1 + Cosh[Sqrt[kappa]]) + eta*Sqrt[kappa]*Sinh[Sqrt[kappa]])
+G_suff = (peReq*(eta*Cosh[Sqrt[kappa]] + Sqrt[kappa]*Sinh[Sqrt[kappa]]))/(eta*(-1 + Cosh[Sqrt[kappa]]))
+Xi_micro - kappa G_micro = 0
+PASS: Xi_micro - kappa G_micro
+chi_fail from G_fail = 0
+PASS: chi_fail from G_fail
+chi_suff from G_suff = 0
+PASS: chi_suff from G_suff
+Lambda^2_fail from G_fail = 0
+PASS: Lambda^2_fail from G_fail
+Lambda^2_suff from G_suff = 0
+PASS: Lambda^2_suff from G_suff
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+lim_{kappa->0+} Delta_0 = 1/2
+lim_{kappa->0+} Delta_inf = 1
+Delta0 soft-support limit - 1/2 = 0
+PASS: Delta0 soft-support limit - 1/2
+Delta_inf soft-support limit - 1 = 0
+PASS: Delta_inf soft-support limit - 1
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+General::stop: Further output of Limit::alimv will be suppressed during this calculation.
+kappa G_fail soft-support limit - Pe_req = 0
+PASS: kappa G_fail soft-support limit - Pe_req
+kappa G_suff soft-support limit - 2 Pe_req = 0
+PASS: kappa G_suff soft-support limit - 2 Pe_req
+lim_{eta->Infinity} Delta_0 = (1 - Sech[Sqrt[kappa]])/kappa
+lim_{eta->Infinity} Delta_inf = Tanh[Sqrt[kappa]]/Sqrt[kappa]
+G_fail^(inf) = (peReq*Coth[Sqrt[kappa]])/Sqrt[kappa]
+G_suff^(inf) = peReq*(1 + (-1 + Cosh[Sqrt[kappa]])^(-1))
+Delta0 eta->Infinity formula = 0
+PASS: Delta0 eta->Infinity formula
+Delta_inf eta->Infinity formula = 0
+PASS: Delta_inf eta->Infinity formula
+G_fail^(inf) formula = 0
+PASS: G_fail^(inf) formula
+G_suff^(inf) formula = 0
+PASS: G_suff^(inf) formula
+stiff-support compliant-mouth limit: sqrt(kappa) G_fail -> Pe_req = 0
+PASS: stiff-support compliant-mouth limit: sqrt(kappa) G_fail -> Pe_req
+stiff-support compliant-mouth limit: G_suff -> Pe_req = 0
+PASS: stiff-support compliant-mouth limit: G_suff -> Pe_req
+
+Stage 061 Mathematica audit passed.
+
+EXIT_CODE: 0

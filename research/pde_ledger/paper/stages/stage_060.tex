@@ -1,37 +1,22 @@
-\section[Stage 060]{Stage 060: Shell-Weighted Extraction of \texorpdfstring{$\Theta_w$}{Theta w} on Family--1}
+\section[Stage 060]{Stage 060: Entropic Source Microclosure and Microscopic Gain}
 \label{stage:060}
 
 \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
-\claimstatus{\StatusReduced{} / \StatusNumerical{} for the shell-weighted profile extraction.}
-\stagefield{Purpose}{Stage~060 evaluates the natural wall-density weighting and a conservative lower envelope.}
-\stagefield{Inputs}{The explicit radial wall profile and the canonical support weighting.}
+\claimstatus{\StatusExactClosure{} inside the positive-density Onsager/free-energy closure.}
+\stagefield{Purpose}{Stage~060 shows that the drift-diffusion source branch can be obtained from a positive local source thermodynamics rather than imposed as a shape family.}
+\stagefield{Inputs}{A positive source density, an Onsager mobility, and a free-energy gradient producing drift and diffusion.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage060_family1_theta_extraction_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage060_family1_theta_extraction_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage060_family1_theta_extraction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage060_family1_theta_extraction_mathematica_audit.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage060_entropic_microclosure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage060_entropic_microclosure_mathematica_audit.txt}.}
 
 \subsection*{Derivation}
 
-The shell-weighted profile extraction gives
+The source transport equation of Stage~056 is reproduced by an Onsager form
 \begin{equation}
-\label{eq:app-stage060-rho-weights}
-\langle\rho_r\rangle_\chi\simeq0.192619005556493,
-\qquad
-\langle\rho_r^2\rangle_\chi\simeq0.162745294003265.
+\label{eq:app-stage060-onsager}
+J=-\mathcal M(\sigma)\partial_s\frac{\delta\mathcal F}{\delta\sigma},
 \end{equation}
-Using \eqref{eq:app-stage059-theta}, the natural shell-weighted datum is
-\begin{equation}
-\label{eq:app-stage060-theta-chi}
-\boxed{
-\Theta_w^{(\chi)}=25\lambda_\mu^2\langle\rho_r^2\rangle_\chi
-\simeq4.06863235008162\lambda_\mu^2}.
-\end{equation}
-The conservative lower envelope is
-\begin{equation}
-\label{eq:app-stage060-theta-J}
-\boxed{
-\Theta_w^{(J)}=25\lambda_\mu^2\langle\rho_r\rangle_\chi^2
-\simeq0.927552032539308\lambda_\mu^2}.
-\end{equation}
+with a strictly positive mobility and a convex local entropy contribution.  The resulting stationary zero-flux state is the same exponential branch.  The microscopic source/support coupling is then summarized by a dimensionless gain \(G_{\rm micro}\), later projected explicitly from the parent action.
 
-\stagefield{Output}{Natural and conservative Family--1 wall-depth data \eqref{eq:app-stage060-theta-chi}--\eqref{eq:app-stage060-theta-J}.}
-\stagefield{Downstream use}{Stage~061 compares these against the exact threshold window.}
+\stagefield{Output}{A positive-density microclosure for the transport source family and the definition of the microscopic gain variable.}
+\stagefield{Downstream use}{Stage~061 uses this gain to build a phase diagram; Stage~062 derives the gain from GNLS parent-action overlaps.}
 

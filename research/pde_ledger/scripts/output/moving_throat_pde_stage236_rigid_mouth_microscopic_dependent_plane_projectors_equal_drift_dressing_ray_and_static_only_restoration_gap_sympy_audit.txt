@@ -1,0 +1,100 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py
+# Date: 2026-05-11T12:51:56-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 236 SymPy audit: rigid-mouth microscopic dependent-plane projectors, equal-drift dressing ray, and static-only restoration gap ===
+
+Rigid-mouth dependent section:
+S_rm_dep =
+⎡0  0 ⎤
+⎢     ⎥
+⎢0  -1⎥
+⎢     ⎥
+⎣1  -1⎦
+y_rm(q_nt,q_eta) =
+⎡     0     ⎤
+⎢           ⎥
+⎢   -qₑₜₐ   ⎥
+⎢           ⎥
+⎣-qₑₜₐ + qₙₜ⎦
+
+Direct-observable-to-dependent compiler:
+C_rm_dep =
+⎡0          0       ⎤
+⎢                   ⎥
+⎢0         -1       ⎥
+⎢                   ⎥
+⎢           1       ⎥
+⎢-1  ───────────────⎥
+⎣    epsₑₜₐ ₛₜₐᵣ - 1⎦
+y_rm = C_rm_dep x_rm =
+⎡            0            ⎤
+⎢                         ⎥
+⎢           -E₁           ⎥
+⎢                         ⎥
+⎢E₁ - R₁⋅(epsₑₜₐ ₛₜₐᵣ - 1)⎥
+⎢─────────────────────────⎥
+⎣     epsₑₜₐ ₛₜₐᵣ - 1     ⎦
+
+Dependent-plane packet projectors:
+L_rm_dep =
+⎡0  -1  1⎤
+⎢        ⎥
+⎣0  -1  0⎦
+P_nt_dep =
+⎡0  0   0⎤
+⎢        ⎥
+⎢0  0   0⎥
+⎢        ⎥
+⎣0  -1  1⎦
+P_eta_dep =
+⎡0  0  0⎤
+⎢       ⎥
+⎢0  1  0⎥
+⎢       ⎥
+⎣0  1  0⎦
+y_nt =
+⎡ 0 ⎤
+⎢   ⎥
+⎢ 0 ⎥
+⎢   ⎥
+⎣qₙₜ⎦
+y_eta =
+⎡  0  ⎤
+⎢     ⎥
+⎢-qₑₜₐ⎥
+⎢     ⎥
+⎣-qₑₜₐ⎦
+
+Static-strip and dressing-ray checks:
+Delta_mu - Delta_Keta = q_nt
+On q_nt = 0, y_rm =
+⎡ 0 ⎤
+⎢   ⎥
+⎢-E₁⎥
+⎢   ⎥
+⎣-E₁⎦
+||y_eta||^2 = 2*q_eta**2
+
+Microscopic correction compilers:
+Delta y_static =
+⎡ 0  ⎤
+⎢    ⎥
+⎢ 0  ⎥
+⎢    ⎥
+⎣-qₙₜ⎦
+Delta y_orbit =
+⎡    0     ⎤
+⎢          ⎥
+⎢   qₑₜₐ   ⎥
+⎢          ⎥
+⎣qₑₜₐ - qₙₜ⎦
+Static-only and full orbit-lock correction identities verified exactly.
+
+All Stage 236 symbolic checks passed.
+
+EXIT_CODE: 0

@@ -1,0 +1,42 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage180_effective_transfer_shape_collapse_sympy_audit.py
+# Date: 2026-05-11T12:47:59-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 163 — EFFECTIVE TRANSFER-SHAPE COLLAPSE
+========================================================================================
+multi-port effective-shape identity = 0
+
+========================================================================================
+One-port continuum transfer shape
+========================================================================================
+T^2 = beta0/K0 -> muW/KW form = 0
+T^2 = ZW(1+rho)^2 / [OmegaW^2 (1-epsW)^2] = 0
+
+========================================================================================
+Selected-branch reformulation
+========================================================================================
+selected-branch T^2 identity = 0
+
+========================================================================================
+Weak-axisymmetric slope laws
+========================================================================================
+direct slope law = 0
+selected-branch slope law = 0
+
+Carry-forward formulas:
+  T_eff^2 = sum_r T_r^2 = N_0/K
+  Xi_1    = delta ln(T_eff^2)/(eps lambda_A)
+  On the one-port continuum branch,
+    T^2 = Z_W (1+rho)^2 / [Omega_W^2 (1-eps_W)^2]
+        = (27 pi^2 G c_s^5 / (20 a^5 c^5)) * (1-eps_eta)/R_target
+  Hence
+    Xi_1 = zeta_W - omega_W + 2 rho_1/(1+rho) + 2 epsW_1/(1-eps_W)
+        = - eta_1/(1-eps_eta) - R_1
+
+EXIT_CODE: 0

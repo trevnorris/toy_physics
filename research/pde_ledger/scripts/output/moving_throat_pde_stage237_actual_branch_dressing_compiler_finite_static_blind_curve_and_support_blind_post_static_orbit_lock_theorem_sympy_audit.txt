@@ -1,0 +1,68 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+# Date: 2026-05-11T12:51:57-06:00
+# Elapsed: 1s
+# Exit code: 0
+# Status: PASS
+#
+
+=== Stage 237 SymPy audit: actual-branch dressing compiler, finite static-blind curve, and support-blind post-static orbit-lock theorem ===
+
+Rigid-mouth finite packet:
+q_tr = -C_star*log(Rtr/Rtr_ref)
+q_nt = B_star*log(Rtr/Rtr_ref) - log(Rtarget/Rtarget_ref) + log((1 - eps_eta)/(1 - eps_eta_ref))
+q_eta = log(eps_eta/eps_eta_ref)
+Rigid-mouth reduction q_nt = -log(Rtarget/Rtarget_ref) + log((1 - eps_eta)/(1 - eps_eta_ref))
+Rigid-mouth reduction q_eta = log(eps_eta/eps_eta_ref)
+
+Finite static-blind curve:
+Rratio_static_blind = (1 - eps_eta)/(1 - eps_eta_ref)
+Rratio(q_eta) = (eps_eta_ref*exp(qeta_param) - 1)/(eps_eta_ref - 1)
+q_eta(Rratio) = log((-Rratio*(1 - eps_eta_ref) + 1)/eps_eta_ref)
+
+First-order packet compiler:
+c_eta = -eps_eta_ref/(eps_eta_ref - 1)
+M_packet =
+⎡      eps_η_ref  ⎤
+⎢-1  ─────────────⎥
+⎢    eps_η_ref - 1⎥
+⎢                 ⎥
+⎣0         1      ⎦
+q_linear =
+⎡E₁⋅eps_η_ref - R₁⋅(eps_η_ref - 1)⎤
+⎢─────────────────────────────────⎥
+⎢          eps_η_ref - 1          ⎥
+⎢                                 ⎥
+⎣               E₁                ⎦
+Tangent slope d ln(Rratio)/dq_eta|_0 = eps_eta_ref/(eps_eta_ref - 1)
+
+Microscopic coherent compiler:
+q_eta_micro =
+   ⎛                          2⎞
+   ⎜K_U_ref⋅K_η_eff_ref⋅c_etaU ⎟
+log⎜───────────────────────────⎟
+   ⎜                        2  ⎟
+   ⎝  K_U⋅K_η_eff⋅c_etaU_ref   ⎠
+Linear drift extractor = 2*c1 - kappa_U - kappa_eta
+
+Support-blindness checks:
+zeta = K_W_eff*lambda_phi**2/(K_phi_eff*lambda_W**2)
+M_tr = M_mix*(K_W_eff*lambda_phi**2*(1 - eps)/(K_phi_eff*lambda_W**2*(-K_W_eff*eps*lambda_phi**2/(K_phi_eff*lambda_W**2) + 1)) + 1)
+dq_eta/dzeta = 0
+dq_eta/dM_tr = 0
+dq_eta/dlambda_phi = 0
+dq_eta/dK_phi_eff = 0
+
+Post-static dependent-plane ray:
+y_eta(q_eta) =
+⎡    0     ⎤
+⎢          ⎥
+⎢-qetaₚₐᵣₐₘ⎥
+⎢          ⎥
+⎣-qetaₚₐᵣₐₘ⎦
+Rigid-mouth orbit-lock point occurs at q_nt = 0, q_eta = 0.
+Finite and first-order codimension-two checks verified exactly.
+
+All Stage 237 symbolic checks passed.
+
+EXIT_CODE: 0

@@ -1,13 +1,12 @@
-# Review: Stage 072 — Family1 minimal isotropic verdict
+# Review: Stage 072 — Dimensionless continuum placement
 
-**Batch:** 11 — Loading Ratio & Isotropic Verdict
-**Status:** Verified (current PASS after Family-1 replay, 2026-04-20)
+**Batch:** 4 — Kernel Continuation
+**Status:** Verified (2× PASS, 2026-04-03)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage072_family1_minimal_isotropic_verdict.md`
-- **SymPy:** `scripts/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_sympy_audit.py`
-- **Mathematica:** `mathematica/moving_throat_pde_stage072_family1_minimal_isotropic_verdict_mathematica_audit.wl`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py`
 
 ## Review Checklist
 
@@ -17,7 +16,6 @@
 - [ ] Notation consistent with prior stages
 - [ ] Physical interpretation sensible
 - [ ] SymPy script faithfully implements notes
-- [ ] Mathematica script faithfully implements notes
 - [ ] Script runs without error
 - [ ] Script output matches notes claims
 - [ ] No missing edge cases or branches
@@ -40,85 +38,43 @@
 ### Agent: Claude Opus 4.6 — 2026-04-02
 **Verdict:** PASS
 
-**Notes Derivation Review:** Compares rho_alpha = 4/3 against Family-1 window. Margins all ~2.13 (huge). Zero-transport-bias result: zeta_req = 1/3 < A_F1 ~ 1.0001, so demand met before any transport bias. Strong conclusion. Remaining gap: whether actual geometry realizes minimal isotropic module. Ordering 1.333 < 3.466 < 3.468 trivially correct.
-
-**Script Review:** Exact rho_min = 4/3, zeta_min = 1/3 via sp.Rational. Five margins computed. Four ordering assertions verified. All pass (exit code 0).
-
-**Issues Found:** None.
-
-### Agent: GPT-5 — 2026-04-03
-**Verdict:** PASS
-
 **Notes Derivation Review:**
 
-1. The comparison against the frozen Family-1 windows is correct: `4/3` is far below the loading-ratio thresholds and `1/3` is below both `A_F1` and the hard support ceiling.
-2. The regime classification is consistent with Stage 71 and the earlier support-ratio maps. The minimal isotropic branch stays in the symmetric-lowest-twin window and does not require transport bias.
-3. The conclusion is appropriately bounded. Stage 72 shows the explicit Family-1 branch is comfortably compatible with the minimal isotropic precursor, but it does not claim to solve the deeper branch-realization problem.
+1. **Equation-level correctness.** Five dimensionless ratios (eps_eta, eps_W, rho, Z_W, delta_0) plus Lambda correctly defined from Stage-20 continuum formulas. Placement formulas verified: delta = delta_0/(1-eps_eta), M_mix = 8 Z_W(1+rho)^2/(pi^2(1-eps_eta)(1-eps_W)). Product relation R_target * M_mix = 8 Lambda(1-eps_W)/pi^2 verified — Z_W, (1+rho)^2, (1-eps_eta) cancel exactly. All nine derivative factorizations verified by hand.
 
-**Script Review:**
+2. **Logical flow.** Clean: dimensionless ratios → placement formulas → product relation → parameter tendencies → three-lane factorization.
 
-The script faithfully performs the intended arithmetic checks: it compares the minimal isotropic ratio against the explicit Family-1 thresholds, verifies the strict ordering, and confirms `zeta_min < A_F1`, which implies zero transport bias on the explicit Family-1 map. The saved output matches the notes.
+3. **Notation consistent** with Stages 18-20.
+
+**Script Review:** Builds Stage-20 microscopic expressions from scratch, applies dimensionless substitutions via ordered pattern matching. No tautologies. All pass (exit code 0). Complete coverage of placement formulas, product relation, and all 9 derivatives.
 
 **Issues Found:** None.
-
-**Questions:** None.
 
 ---
 
-### Agent: GPT-5 — 2026-04-20
+### Agent: GPT-5 Codex — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. The checkpoint claim is narrow and exact: once the minimal isotropic
-   precursor is accepted, the explicit Family-1 support/source branch succeeds
-   already at zero transport bias. The note does not overclaim beyond that
-   arithmetic verdict.
-2. The theorem packet is clean: `rho_min = 4/3`, `zeta_min = 1/3`, strict
-   ordering against the carried Family-1 loading window, and the decisive
-   `zeta_min < A_F1` zero-bias check.
+- The dimensionless reduction is algebraically correct. Substituting the Stage 20 continuum formulas into `delta`, `M_mix`, and `R_target` gives exactly the stated five-ratio map in `(eps_eta, eps_W, rho, Z_W, delta_0)` plus `Lambda`.
+- I independently rechecked the load-bearing identity of the stage:
+  `R_target M_mix = 8 Lambda (1 - eps_W)/pi^2`,
+  and it reduces to zero directly. That confirms the claimed separation between product-setting variables `(eps_W, Lambda)` and redistribution variables `(eps_eta, Z_W, rho)`.
+- The one-way tendencies are also correct. The derivative factorizations have the expected signs on the physical branch `0 < eps_eta, eps_W < 1` and `1 + rho > 0`, so the narrative about how each kernel ratio moves the physical point in `(delta, M_mix, R_target)` space is consistent.
+- The beta-factor rewrite is compatible with the Stage 20 kernel formulas: only the mass ratio `mu_W/mu_eta` survives in `beta_0`, while the placement variables themselves are pure stiffness/coupling ratios.
 
 **Script Review:**
 
-1. The SymPy audit passes and checks exactly the intended verdict surface:
-   loading-ratio ordering, symmetric-lowest-twin regime membership, the
-   zero-bias `A_F1` comparison, and the hard ceiling check.
-2. The Mathematica mirror passes and independently replays the same explicit
-   comparisons with the carried Family-1 thresholds.
-3. This is not pretending to be a fresh support-window derivation. It is a
-   closed arithmetic theorem conditional on the upstream minimal-isotropic
-   module, and the current dual-CAS surface is strong enough for that narrower
-   claim.
+- The script faithfully reconstructs the Stage 20 formulas, applies the dimensionless substitutions in a nontrivial way, verifies the exact placement map, the product relation, and all nine derivative identities.
+- The saved output matches the notes and I did not find a tautological check or coding bug.
 
-**Issues Found:** None.
+**Issues Found:**
 
-**Questions:** None.
+None.
 
----
+**Questions:**
 
-### Agent: GPT-5 — 2026-04-21
-**Verdict:** PASS
-
-**Notes Derivation Review:**
-
-1. The previous provenance weakness is now closed. The stage no longer relies
-   on naked Family-1 decimals for `A_F1`, `zeta_max`, or the carried `rho_*`
-   thresholds.
-2. The script now rebuilds `A_F1` from the Stage-62 root/closed form, derives
-   `zeta_max^(F1) = A_F1 pi^2/4`, and reconstructs the `rho_*` values from the
-   Stage-63/69 `zeta_F1(Pe)` and `Q(zeta;0)` formulas at `lambda_mu = 1`.
-
-**Script Review:**
-
-1. SymPy now contains explicit anchor checks:
-   `zeta_max - A_F1 pi^2/4 = 0`,
-   `Q(zeta;0) - (1+zeta) = 0`,
-   and the resulting `rho_suff`, `rho_fail`, `rho_max` bridge checks.
-2. The Mathematica mirror now follows the same derived route with `FindRoot`
-   for `y_F1` and explicit `Q(zeta;0)` anchor checks.
-
-**Issues Found:** None.
-
-**Questions:** None.
+None.
 
 ---

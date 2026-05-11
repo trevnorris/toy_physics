@@ -3,17 +3,16 @@
 # Run or verify the moving-throat Python numerical stress harnesses.
 #
 # Usage:
-#   bash scripts/moving_throat/numerical/run_all_stress.sh
-#   bash scripts/moving_throat/numerical/run_all_stress.sh --update
-#   bash scripts/moving_throat/numerical/run_all_stress.sh stage137
+#   bash research/pde_ledger/scripts/numerical/run_all_stress.sh
+#   bash research/pde_ledger/scripts/numerical/run_all_stress.sh --update
+#   bash research/pde_ledger/scripts/numerical/run_all_stress.sh stage154
 #
 # Default mode is --check: rerun each harness and compare stdout against the
-# saved artifact under scripts/moving_throat/numerical/output/.
+# saved artifact under research/pde_ledger/scripts/numerical/output/.
 
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
-SCRIPTS_DIR="$REPO_ROOT/scripts/moving_throat/numerical"
+SCRIPTS_DIR="$(cd "$(dirname "$0")" && pwd)"
 OUTPUT_DIR="$SCRIPTS_DIR/output"
 SUMMARY_FILE="$OUTPUT_DIR/_summary.txt"
 
@@ -48,9 +47,9 @@ for script in "$SCRIPTS_DIR"/stage*_stress.py; do
   basename="$(basename "$script" .py)"
   out_file="$OUTPUT_DIR/${basename}.txt"
 
-  # stage138_139_stress.py is a superseded exploratory harness; keep the
+  # stage155_156_stress.py is a superseded exploratory harness; keep the
   # maintained fixed-point regression instead.
-  if [ "$basename" = "stage138_139_stress" ]; then
+  if [ "$basename" = "stage155_156_stress" ]; then
     skip=$((skip + 1))
     continue
   fi

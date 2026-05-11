@@ -1,22 +1,22 @@
-# Moving-Throat PDE — Physics Mouth Audit (`112`, `120-124`)
+# Moving-Throat PDE — Physics Mouth Audit (`129`, `137-141`)
 
 ## Scope
 
 This pass targets the first explicit mouth-layer and mouth-gain closure chain:
 
-- [stage112_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage112_mouth_boundary_layer.md)
-- [stage120_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage120_core_to_mouth_gain_map.md)
-- [stage121_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage121_normalized_mouth_gain_family.md)
-- [stage122_family1_actual_mouth_gains.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage122_family1_actual_mouth_gains.md)
-- [stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md)
-- [stage124_mouth_gain_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage124_mouth_gain_status.md)
+- [stage129_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage129_mouth_boundary_layer.md)
+- [stage137_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_core_to_mouth_gain_map.md)
+- [stage138_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage138_normalized_mouth_gain_family.md)
+- [stage139_family1_actual_mouth_gains.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage139_family1_actual_mouth_gains.md)
+- [stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md)
+- [stage141_mouth_gain_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage141_mouth_gain_status.md)
 
 with physical provenance from:
 
-- [stage043_entropic_microclosure.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage043_entropic_microclosure.md)
-- [stage045_parent_action_gain.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage045_parent_action_gain.md)
-- [stage046_parent_thresholds.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage046_parent_thresholds.md)
-- [stage047_equilibrium_alignment.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage047_equilibrium_alignment.md)
+- [stage060_entropic_microclosure.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage060_entropic_microclosure.md)
+- [stage062_parent_action_gain.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage062_parent_action_gain.md)
+- [stage063_parent_thresholds.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage063_parent_thresholds.md)
+- [stage064_equilibrium_alignment.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage064_equilibrium_alignment.md)
 
 The standard here is not ontology. The standard is:
 
@@ -31,7 +31,7 @@ The standard here is not ontology. The standard is:
 
 Current verdict:
 
-- the `112`, `120-124` mouth chain looks **physically coherent as an effective
+- the `129`, `137-141` mouth chain looks **physically coherent as an effective
   mouth-layer closure**;
 - I do **not** see evidence here of hidden tuning or branch-by-branch rescue;
 - I do **not** see a point where a physicist should be able to dismiss the chain
@@ -39,9 +39,9 @@ Current verdict:
 
 The real referee-facing pressure points are narrower:
 
-1. [stage112_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage112_mouth_boundary_layer.md) uses a legitimate zero-flux Onsager mouth law, but the linear potential `V_m(z)≈V_1 z` is still a reduced mouth-layer approximation on the active interval, not a global theorem for the whole throat potential.
-2. [stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md) is a **matched-layer closure**: it identifies the source susceptibility with the same active shell layer used for the shell/compliance mode. That is plausible and structurally motivated, but it is not yet the unique microscopic possibility.
-3. [stage124_mouth_gain_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage124_mouth_gain_status.md) should always be read as a status statement **inside the explicit throat-core plus mouth-layer closure**, not as a full-PDE uniqueness theorem.
+1. [stage129_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage129_mouth_boundary_layer.md) uses a legitimate zero-flux Onsager mouth law, but the linear potential `V_m(z)≈V_1 z` is still a reduced mouth-layer approximation on the active interval, not a global theorem for the whole throat potential.
+2. [stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md) is a **matched-layer closure**: it identifies the source susceptibility with the same active shell layer used for the shell/compliance mode. That is plausible and structurally motivated, but it is not yet the unique microscopic possibility.
+3. [stage141_mouth_gain_status.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage141_mouth_gain_status.md) should always be read as a status statement **inside the explicit throat-core plus mouth-layer closure**, not as a full-PDE uniqueness theorem.
 
 Those are important limitations, but they are not signs of hidden tuning or bad transport physics.
 
@@ -55,21 +55,21 @@ This is the main positive result of the pass.
 
 Why:
 
-- [stage112_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage112_mouth_boundary_layer.md) collapses the source-profile freedom to the dimensionless bias `Pi_m = V_1 L / Theta_sigma`; it does not fit `Pi_m` to later output targets.
-- [stage120_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage120_core_to_mouth_gain_map.md) and [stage121_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage121_normalized_mouth_gain_family.md) derive `(M_s,M_q)` and `R_q` from the already frozen core coefficients rather than inserting a gain pair by hand.
-- [stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md) removes the last free susceptibility scale by identifying it with the already active shell layer. That move decreases freedom; it does not create a new fit knob.
+- [stage129_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage129_mouth_boundary_layer.md) collapses the source-profile freedom to the dimensionless bias `Pi_m = V_1 L / Theta_sigma`; it does not fit `Pi_m` to later output targets.
+- [stage137_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_core_to_mouth_gain_map.md) and [stage138_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage138_normalized_mouth_gain_family.md) derive `(M_s,M_q)` and `R_q` from the already frozen core coefficients rather than inserting a gain pair by hand.
+- [stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md) removes the last free susceptibility scale by identifying it with the already active shell layer. That move decreases freedom; it does not create a new fit knob.
 
 The strongest anti-tuning evidence is downstream:
 
-- when the later co-evolving solve is done in [stage139_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage139_renormalized_canonical_branch.md), the model is forced to pay a substantial traction increase to restore exact compensation.
+- when the later co-evolving solve is done in [stage156_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage156_renormalized_canonical_branch.md), the model is forced to pay a substantial traction increase to restore exact compensation.
 
 If the mouth closure were secretly tuned to preserve the preferred branch cheaply, that is not what the later chain would look like. The later renormalization cost is good evidence that the mouth closure is constraining the model rather than rescuing it.
 
 ---
 
-## 2. Stage `112` is physically standard drift-diffusion, not a misuse of transport theory
+## 2. Stage `129` is physically standard drift-diffusion, not a misuse of transport theory
 
-[stage112_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage112_mouth_boundary_layer.md)
+[stage129_mouth_boundary_layer.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage129_mouth_boundary_layer.md)
 is physically conservative in the right way.
 
 What is good:
@@ -95,7 +95,7 @@ Also:
 
 ## 3. The self-matched susceptibility closure is plausible and restrictive, not arbitrary
 
-[stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md)
+[stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md)
 is the place where a referee is most likely to ask whether a hidden knob has been smuggled in.
 
 My current answer is no.
@@ -103,7 +103,7 @@ My current answer is no.
 Why:
 
 - the closure `Theta_sigma = H_w J_s` is not chosen to hit a target value of `M_s`;
-- it is inherited from the same-layer logic already visible in [stage047_equilibrium_alignment.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage047_equilibrium_alignment.md), where matched support/source layers drive the branch toward `C_(sigma phi)^2 = 1`;
+- it is inherited from the same-layer logic already visible in [stage064_equilibrium_alignment.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage064_equilibrium_alignment.md), where matched support/source layers drive the branch toward `C_(sigma phi)^2 = 1`;
 - the source susceptibility is being tied to the already active shell layer instead of being left free.
 
 So the closure is best described as:
@@ -122,9 +122,9 @@ That would be a model-realization objection, not evidence of hidden tuning insid
 
 ## 4. The derived gain formulas are structurally coherent
 
-[stage120_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage120_core_to_mouth_gain_map.md)
-and [stage121_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage121_normalized_mouth_gain_family.md)
-use the same electrochemical combination that motivated Stage `112`:
+[stage137_core_to_mouth_gain_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_core_to_mouth_gain_map.md)
+and [stage138_normalized_mouth_gain_family.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage138_normalized_mouth_gain_family.md)
+use the same electrochemical combination that motivated Stage `129`:
 
 - shell contribution enters with one sign,
 - localized-Maxwell mixed contribution enters with the opposite sign,
@@ -172,7 +172,7 @@ These are things I explicitly do **not** think are mouth-chain problems.
 3. The susceptibility closure is not a hidden fitting parameter.
    It removes a free scale instead of introducing one.
 
-4. The derived `~4%` traction shift in [stage123_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage123_selfmatched_mouth_susceptibility.md) is not evidence of tuning.
+4. The derived `~4%` traction shift in [stage140_selfmatched_mouth_susceptibility.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md) is not evidence of tuning.
    It is just the output of the chosen closure before the later full co-evolving correction.
 
 5. The fact that later stages demand much larger traction is not a contradiction.
@@ -193,8 +193,8 @@ To keep the mouth chain referee-hard:
 
 ## Mouth Verdict
 
-If I were trying to kill the project as a referee, I would **not** attack `112`,
-`120-124` by saying the transport theory is nonsensical or the gains are being tuned by hand.
+If I were trying to kill the project as a referee, I would **not** attack `129`,
+`137-141` by saying the transport theory is nonsensical or the gains are being tuned by hand.
 
 I would instead attack it by saying:
 
@@ -216,8 +216,8 @@ So this slice currently passes the effective-model legitimacy test:
 
 The next physics red-team target should be the co-evolving mouth/core branch:
 
-- [stage125_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_selfconsistent_mouth_branch.md)
-- [stage137_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage137_coevolving_core_mouth_map.md)
-- [stage139_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage139_renormalized_canonical_branch.md)
+- [stage142_selfconsistent_mouth_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage142_selfconsistent_mouth_branch.md)
+- [stage154_coevolving_core_mouth_map.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage154_coevolving_core_mouth_map.md)
+- [stage156_renormalized_canonical_branch.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage156_renormalized_canonical_branch.md)
 
 That is where a referee is most likely to ask whether the model is now paying a genuine self-consistency cost or still hiding a branch-selection bias.

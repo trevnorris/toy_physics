@@ -1,18 +1,18 @@
-\section[Stage 221]{Stage 221: Physical transfer-shape compiler}
+\section[Stage 221]{Stage 221: Resonance/linewidth tradeoff}
 \label{stage:221}
 
-\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.6}.}
+\stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.1}.}
 \claimstatus{\StatusExactClosure{}.}
 
-\stagefield{Purpose}{Stage~221 rewrites the rigid-mouth packet in the physical transfer-shape variables.}
+\stagefield{Purpose}{Stage~221 analyzes the only surviving linear dynamic escape hatch: resonant dispersive enhancement of the already-short-range mixed kernels.}
 
-\stagefield{Inputs}{Imports $\mathcal T^2$, $R_{\rm target}$, $\epsilon_\eta$, and the constant $\Lambda_0$.}
+\stagefield{Inputs}{Imports Stage~220 and expands near a simple conservative pole $F_0(\omega_*)=0$ with $F_0^\prime(\omega_*)\ne0$; the wall-like specialization also assumes $D_0(\omega_*)=0$ and $\Delta_0(\omega_*)\ne0$.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage221_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py}.  Mathematica audit: none yet.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.wl}.}
 
-\stagefield{Derivation ledger}{The derivation proves $R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)$, factorizes the finite packet, and splits the branch gates into tracking, transfer-shape, and dressing conditions.}
+\stagefield{Derivation ledger}{The derivation reduces the susceptibility to the Breit--Wigner form $A_*/(\delta-i\gamma_*)$, computes the real and imaginary line shapes, rewrites the result in absorbed-power language, and derives the low-loss survival window.}
 
-\stagefield{Output}{Physical transfer-shape compiler: the finite rigid-mouth packet is completely described by tracking, $\mathcal T^2$, and $\epsilon_\eta$.}
+\stagefield{Output}{Dispersive/no-free-lunch theorem: $|\Re\chi_*|/|\Im\chi_*|=|\delta|/\gamma_*$, so resonant conservative gain is inseparable from absorptive loading, with maximal balanced leverage at equal conservative and absorptive magnitudes.}
 
 \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
 
@@ -23,6 +23,5 @@
 \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth tracking alone.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.6} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
-
+\stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.1} for this local stage range and \resultanchor{MTDC-T11} for the full Part VII compiler.}
 

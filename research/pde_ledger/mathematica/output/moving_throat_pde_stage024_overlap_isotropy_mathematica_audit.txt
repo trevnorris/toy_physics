@@ -1,0 +1,109 @@
+# Mathematica Audit Output
+# Script: moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.wl
+# Date: 2026-05-11T12:43:36-06:00
+# Elapsed: 19s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 007 — OVERLAP ISOTROPY
+========================================================================================
+
+========================================================================================
+SECTION I — NORMALIZED HARMONICS AND SOURCE MAP
+========================================================================================
+Gram - I5 = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+PASS: Gram - I5
+projected coefficients - source coefficients = {0, 0, 0, 0, 0}
+PASS: projected coefficients - source coefficients
+
+========================================================================================
+SECTION II — ISOTROPIC GROUPED-BUNDLE COLLAPSE
+========================================================================================
+xbar - x0 = 0
+PASS: xbar - x0
+a_x on equal lanes = 0
+PASS: a_x on equal lanes
+b_x on equal lanes = 0
+PASS: b_x on equal lanes
+a_x witness - 1/5 = 0
+PASS: a_x witness - 1/5
+b_x witness = 0
+PASS: b_x witness
+a_x second witness + 1/10 = 0
+PASS: a_x second witness + 1/10
+b_x second witness - 1/2 = 0
+PASS: b_x second witness - 1/2
+
+========================================================================================
+SECTION III — ISOTROPIC RADIAL/AXIAL OVERLAP MOMENTS
+========================================================================================
+C_alpha - lambda_B,alpha I_etaalpha = {0, 0}
+PASS: C_alpha - lambda_B,alpha I_etaalpha
+B0 sum formula = 0
+PASS: B0 sum formula
+B2 sum formula = 0
+PASS: B2 sum formula
+B4 sum formula = 0
+PASS: B4 sum formula
+Z0 formula = 0
+PASS: Z0 formula
+Z2 formula = 0
+PASS: Z2 formula
+Z4 formula = 0
+PASS: Z4 formula
+N0 formula = 0
+PASS: N0 formula
+N2 formula = 0
+PASS: N2 formula
+N4 formula = 0
+PASS: N4 formula
+D0 formula = 0
+PASS: D0 formula
+D2 formula = 0
+PASS: D2 formula
+D4 formula = 0
+PASS: D4 formula
+
+========================================================================================
+SECTION IV — AXISYMMETRIC SPLITTING MATRIX
+========================================================================================
+M - M_target = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+PASS: M - M_target
+xbar axisymmetric - x0 = 0
+PASS: xbar axisymmetric - x0
+a_x - eps*x1/4 = 0
+PASS: a_x - eps*x1/4
+b_x - 3 eps*x1/4 = 0
+PASS: b_x - 3 eps*x1/4
+b_x - 3 a_x = 0
+PASS: b_x - 3 a_x
+
+========================================================================================
+SECTION V — FIRST-ORDER TRANSPORT LAW
+========================================================================================
+P20 - (P0 + eps P1) = 0
+PASS: P20 - (P0 + eps P1)
+P21 - (P0 + eps P1/2) = 0
+PASS: P21 - (P0 + eps P1/2)
+P22 - (P0 - eps P1) = 0
+PASS: P22 - (P0 - eps P1)
+Pbar - P0 = 0
+PASS: Pbar - P0
+a_P - eps*P1/4 = 0
+PASS: a_P - eps*P1/4
+b_P - 3 eps*P1/4 = 0
+PASS: b_P - 3 eps*P1/4
+b_P - 3 a_P = 0
+PASS: b_P - 3 a_P
+
+FINAL STAGE-007 LEDGER:
+  Verified the normalized real STF harmonic orthonormality, the exact angular
+  source-map identity, the O(3) isotropy collapse, representative isotropic
+  overlap formulas for C_alpha/B_n/Z_n/N_n/D(omega), the axisymmetric Y20
+  triple-overlap matrix, the grouped splitting law b = 3 a, and the
+  corresponding first-order transport law for P_A = N_A / D_A.
+
+EXIT_CODE: 0

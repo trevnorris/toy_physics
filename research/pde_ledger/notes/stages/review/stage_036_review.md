@@ -1,12 +1,13 @@
-# Review: Stage 036 — Overlap boost window
+# Review: Stage 036 — Support feasibility frontier
 
-**Batch:** 6 — Support & Threshold Analysis
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 2 — Wall Profiles & Loading
+**Status:** Verified (current PASS after full frontier closure, 2026-04-21)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage036_overlap_boost_window.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage036_overlap_boost_sympy_audit.py`
+- **Notes:** `notes/moving_throat_pde_stage036_support_feasibility_frontier.md`
+- **SymPy:** `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
+- **Mathematica:** `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
 
 ## Review Checklist
 
@@ -16,6 +17,7 @@
 - [ ] Notation consistent with prior stages
 - [ ] Physical interpretation sensible
 - [ ] SymPy script faithfully implements notes
+- [ ] Mathematica script faithfully implements notes
 - [ ] Script runs without error
 - [ ] Script output matches notes claims
 - [ ] No missing edge cases or branches
@@ -40,39 +42,124 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** D/N mode chi_0 = sqrt(2/L) sin(pi s/(2L)) correct. I_W = 2sqrt(2L)/pi verified by integration. Overlap bound Omega_0 <= pi/2 (hence A_I <= pi^2/4) from max chi_0 = sqrt(2/L) and nonnegativity of source. Sharpness: delta-function at s=L (antinode). Exponential family sigma_alpha = alpha exp(alpha s/L)/(exp(alpha)-1) with total mass L verified. Omega_exp(0)=1 and Omega_exp(∞)=pi/2 correct. Small-alpha coefficient (4-pi)/(2pi) ≈ 0.137 > 0. Pure overlap rescue criterion: zeta_req <= pi^2/4 ≈ 2.467.
+1. **Equation-level correctness.** All equations correct. G(xi,delta) = 9 xi(xi+delta)/(9 delta + 11 xi) verified by direct algebra from Stage 18 alpha_req. Derivative dG/dxi confirmed by quotient rule; numerator quadratic has discriminant -72 < 0, confirming strict monotonicity. G(0,delta) = 0, G_max = 9(1+delta)/(9 delta+11) by direct evaluation. Loading split g_B,req^2/varpi^2 = (pi^2 A/8)(G - M_mix) algebraically exact. Near-onset series G = xi - 2 xi^2/(9 delta) + O(xi^3) confirmed by Taylor expansion.
 
-2. **Logical flow.** Clean: overlap definition → bound → constructive family → rescue criterion.
+2. **Logical flow.** Clean: G defined from Stage 18 → monotonicity/range → admissible region by combining F and G → near-onset asymptotics → theorem gate. No gaps.
 
-3. **Physical interpretation.** Hard ceiling pi/2 on overlap boost is a concrete, memorable result.
+3. **Assumptions.** All inherited from Stages 17-18 (positive delta, xi in [0,1), rank-1 selected-branch model). No new assumptions.
 
-**Script Review:** chi_0 and I_W by sp.integrate. Exponential family normalization verified. Omega_alpha from actual integration vs separately entered closed form. Both limits by sp.limit. Series coefficient checked. All genuine, all pass (exit code 0). Excellent coverage.
+4. **Completeness.** Both endpoints covered, near-onset asymptotic provided. No missing edge cases.
+
+5. **Notation consistency.** Consistent with Stages 17-18. New symbols G and M_mix cleanly introduced.
+
+6. **Physical interpretation.** Coherent: G measures directional loading capacity; G >= M_mix ensures BdG sector doesn't need unphysical negative loading. Parametric frontier in (R_target, M_mix) space is natural.
+
+**Script Review:**
+
+**B.1 Faithful.** All three quantitative sections implemented: G definition and loading split, monotonicity/derivative/endpoints, near-onset series.
+
+**B.2 No bugs.** Standard SymPy calls throughout.
+
+**B.3 Hardcoded values.** Numbers (9, 11, 8, 2, 18, 81) all derive from D/N overlap constants established in Stage 18. Structural, not arbitrary.
+
+**B.4 No tautologies.** Loading split checks two independent algebraic paths. Derivative compared against separately defined target. Series check compares SymPy expansion against manual target.
+
+**B.5 Symbol assumptions.** All positive+real. Correct for stable branch parameters.
+
+**B.6 Output agreement.** All expect_zero pass. Exit code 0. Matches notes.
+
+**B.7 Coverage.** All quantitative claims covered. Qualitative/geometric statements (admissible region, theorem gate summary) reasonably not script-tested.
 
 **Issues Found:** None.
 
 ---
 
 ### Agent: GPT-5 Codex — 2026-04-03
-**Verdict:** PASS
+**Verdict:** MINOR
 
 **Notes Derivation Review:**
 
-- The overlap bound is correct. For the lowest D/N mode `chi_0`, the maximum pointwise value is `sqrt(2/L)`, so the exact finite-throat bound `Omega_0 <= pi/2` and therefore `A_I <= pi^2/4` follow directly from the nonnegative equal-strength source assumption.
-- I independently rechecked the exponential bottom-biased family. Its normalization integrates to `L`, the closed-form overlap matches the note, and the limits `Omega_alpha(0)=1` and `Omega_alpha(alpha->oo)=pi/2` both hold.
-- The linear term in the small-`alpha` expansion is also correct and positive, so the family genuinely interpolates from the symmetric branch upward toward the sharp overlap ceiling.
-- The stage’s physical conclusion is sound: pure overlap asymmetry can rescue the support threshold only when `zeta_req <= pi^2/4`, and otherwise overlap alone is insufficient.
+1. The support-feasibility split is correct. Recomputing `G(xi,delta)` from Stage 18 gives the same `9 xi(xi+delta)/(9 delta + 11 xi)` expression, and the factorization through `G - M_mix` matches the note exactly.
+2. The monotonicity and endpoint claims are sound. I independently checked `dG/dxi`, `G(0,delta)`, and `G_max(delta)`, and they agree with the note and saved output.
+3. The near-onset series is also correct, so the geometric interpretation of the combined admissible region in `(R_target, M_mix)` space is internally consistent.
 
 **Script Review:**
 
-- The script faithfully computes the D/N normalization, the pointwise overlap ceiling, the exponential source family, the closed-form overlap, its limits, the series coefficient, and the pure-overlap rescue threshold.
-- The saved output matches the note and the checks are nontrivial. I did not find a coding bug or a tautological identity.
+1. The script faithfully verifies the support-loading factorization, the derivative form, the endpoint values, and the near-onset expansion. The saved output matches the printed formulas.
+2. I ran a small independent SymPy check of the derivative identity and the near-onset series; both reduced to zero.
 
 **Issues Found:**
 
-None.
+- **[MINOR] The branch parameter `xi` is again declared `positive=True` even though the note treats `xi = 0` as the onset boundary.** This does not change the algebra, but it is the same boundary-assumption mismatch as Stage 18 and should be made explicit or loosened in the script.
 
 **Questions:**
 
 None.
+
+---
+
+### Agent: GPT-5 — 2026-04-20
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+1. The checkpoint claim is the exact support-feasibility frontier inside the
+   selected D/N normal form: closed-form `G(xi,delta)`, the exact loading split
+   through `G - M_mix`, strict monotonicity on `0 <= xi < 1`, the endpoint
+   values, and the near-onset asymptotic. I did not find a mathematical
+   mismatch between the current note and the live CAS outputs.
+2. The note already treats `xi = 0` as the onset boundary and writes the
+   parametric frontier with `xi in [0,1)`, so the theorem statement itself is
+   internally aligned.
+
+**Script Review:**
+
+1. The earlier boundary-assumption caveat is stale. The current SymPy audit
+   declares `xi` as `nonnegative=True`, and the Mathematica mirror assumes
+   `0 <= xi < 1` explicitly.
+2. Both CAS layers now check the same live surface: exact `G`, loading split,
+   manifestly positive derivative form, `G(0,delta)`, the `xi -> 1^-` endpoint,
+   and the near-onset series.
+3. I did not find a remaining checkpoint-level trust defect. The stage is a
+   selected-branch normal-form theorem, and the current scripts match that
+   scope cleanly.
+
+**Issues Found:**
+
+- None. The older `xi > 0` boundary mismatch is closed in the live audit
+  surface.
+
+**Questions:**
+
+- None.
+
+---
+
+### Agent: Codex GPT-5 — 2026-04-21
+**Verdict:** PASS
+
+**Notes Derivation Review:**
+
+The stage-level frontier claim is now fully represented in the executable
+surface. The scripts no longer stop at the `G`-only loading split; they now
+cover the parametric frontier together with the final admissibility gate.
+
+**Script Review:**
+
+1. Both CAS layers now import the carried
+   `F(\xi,\delta)` frontier from Stage `035`, define
+   `R_target = N_Q A / (\beta_0 (8/\pi^2))`, and verify the exact
+   support-loading equivalence already used for `G`.
+2. Both scripts now assemble the full three-conjunct admissibility surface:
+   `R_target >= 1`,
+   `F(\xi_req,\delta) = R_target`,
+   and
+   `M_mix <= G(\xi_req,\delta)`.
+3. The positive/negative witness cases make this materially stronger than the
+   previous `G`-only checkpoint.
+
+**Issues Found:**
+
+- None.
 
 ---

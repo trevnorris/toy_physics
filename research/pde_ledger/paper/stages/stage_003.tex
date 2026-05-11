@@ -8,7 +8,7 @@
 
 \stagefield{Inputs}{The inputs are the Stage~001 coupling \(\delta V_{\rm conf}=-(V_{\rm wall}'/\ell_c)\eta\), the Stage~002 wall coordinates, the assumption of stable BdG normal modes with positive frequencies, and harmonic selection on an isotropic reference throat.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage003_bdg_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage003_bdg_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage003_bdg_mathematica_audit.txt}.  Shared numerical stress test with Stage~004: \StageFile{scripts/numerical/stage003_004_foundational_stress.py}, \StageFile{scripts/numerical/output/stage003_004_foundational_stress.txt}, \StageFile{mathematica/numerical/stage003_004_foundational_stress.wl}, and \StageFile{mathematica/numerical/output/stage003_004_foundational_stress.txt}.}
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage003_bdg_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage003_bdg_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage003_bdg_mathematica_audit.txt}.  Shared numerical stress test with Stage~021: \StageFile{scripts/numerical/stage003_021_foundational_stress.py}, \StageFile{scripts/numerical/output/stage003_021_foundational_stress.txt}, \StageFile{mathematica/numerical/stage003_021_foundational_stress.wl}, and \StageFile{mathematica/numerical/output/stage003_021_foundational_stress.txt}.}
 
 \subsection*{Derivation}
 
@@ -163,4 +163,4 @@ Conversely, a nonzero defect must come from anisotropy in wall data, matter supp
 \item The isotropy check follows by lane equality of all microscopic inputs.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{Stage~004 adds Maxwell/mixed self-energies to the same operator structure.  Stage~005 converts the \(D_A\) operator moments into normalized grouped response moments.  Stage~006 collects the Stage~003 BdG moments as \(B_{A0},B_{A2},B_{A4}\).}
+\stagefield{Downstream use}{Stages~004--021 add the projected Maxwell/mixed self-energies and reduce them to the matched one-port normal form on the same operator structure.  Stage~022 converts the \(D_A\) operator moments into normalized grouped response moments.  Stage~023 collects the Stage~003 BdG moments as \(B_{A0},B_{A2},B_{A4}\).}

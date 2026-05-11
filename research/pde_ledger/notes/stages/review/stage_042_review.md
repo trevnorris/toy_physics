@@ -1,12 +1,12 @@
-# Review: Stage 042 — Operator branch residual bounds
+# Review: Stage 042 — Minimal isotropic normalization
 
-**Batch:** 8 — Operator & Gain Analysis
-**Status:** Verified (2× PASS, 2026-04-03)
+**Batch:** 1 — Geometry Lift & Coupling
+**Status:** Verified (2× PASS, 2026-04-02)
 
 ## Files Under Review
 
-- **Notes:** `notes/moving_throat/moving_throat_pde_stage042_operator_branch_residual_bounds.md`
-- **Script:** `scripts/moving_throat/moving_throat_pde_stage042_operator_branch_residual_bounds_sympy_audit.py`
+- **Notes:** `notes/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization.md`
+- **Script:** `scripts/moving_throat/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py`
 
 ## Review Checklist
 
@@ -40,50 +40,42 @@
 
 **Notes Derivation Review:**
 
-1. **Equation-level correctness.** zeta_phys from substituting Pe_* into Stage 40 family. Bracket zeta_- <= zeta_phys <= zeta_+ from Stage 41 Pe bracket + Stage 40 monotonicity. Residual brackets with correct sign convention. Xi_fail = Pe_req/Delta_inf and Xi_suff = Pe_req/Delta_0 from bracket inversion. Ordering Xi_fail <= Xi_suff from Delta_inf >= Delta_0. Weak-coupling expansion zeta_phys = A_K[1 + ((4-pi)/pi) Xi Delta_0 + O(Xi^2)] correct.
+**1. Equation-level correctness.** All formulas verified:
 
-2. **Logical flow.** Clean three-zone structure (fail/intermediate/success) from bracket.
+- Sec. 1 definitions of Delta, Q, P match Stage 7 exactly (single-mode truncation). B_0 = C^2/varpi^2, Z_0 = Q/Delta, N_0 = P^2/Delta^2, D_0 = K - B_0 - Z_0 all correct.
+- P_0 = N_0/D_0 = P^2/[Delta^2(K - C^2/varpi^2 - Q/Delta)]. Algebra verified by multiplying through by Delta.
+- Target equation mhat_rad^2 * P_0 = 54 G c_s^5/(5 a^5 c^5) follows from Stage 7 with mhat_ang = 1.
+- Stability/positivity (Sec. 3): Delta > 0 (stable 2×2 block), D_0 > 0 (stiffness > softening), N_0 = P^2/Delta^2 >= 0 (perfect square). P_0 > 0 when P != 0. All correct.
+- Monotonicity (Sec. 4): partial_K P_0 = -N_0/D_0^2 and partial_X P_0 = +N_0/D_0^2 verified by direct differentiation. Sum = 0. Correct.
 
-**Script Review:** Abstract Omega function for bracket checks, explicit Omega_Pe for series coefficient. Residual center identity, Xi threshold identities all verified. All pass (exit code 0).
+**2-6.** Logical flow clean from Stage 7. All assumptions explicit. Five undetermined quantities correctly identified. Notation consistent. Physical interpretation (balance between port transfer and wall self-loading) sound.
+
+**Script Review:**
+
+**B.1-B.7.** Faithful implementation of all formulas. No bugs, no hardcoded values, no tautological checks. Symbol assumptions correct (K/varpi positive, couplings real, X nonneg). All expect_zero checks pass. Coverage includes coefficient definitions, compact P0 equivalence, stability identities, monotonicity derivatives.
 
 **Issues Found:** None.
+
+---
 
 ### Agent: GPT-5 — 2026-04-03
 **Verdict:** PASS
 
 **Notes Derivation Review:**
 
-1. Evaluating the Stage-40 physical ratio on the Stage-41 fixed-point branch is done correctly: the monotonicity in `Pe` transfers the branch bracket into the exact `zeta_- <= zeta_phys <= zeta_+` support window.
-2. The residual envelope `R_- <= R_phys <= R_+` and the two theorem gates follow with the correct sign convention. The threshold definitions `Xi_fail = Pe_req / Delta_inf` and `Xi_suff = Pe_req / Delta_0` are the right inversions of the branch bracket.
-3. The weak-coupling expansion uses the same Stage-40 small-`Pe` coefficient `((4-pi)/pi)` and is consistent with substituting `Pe_* = Xi Delta_0 + O(Xi^2)`.
+1. **Equation-level correctness.** The single-mode reduction is algebraically consistent. `Delta = Omega_U^2 Omega_W^2 - R^2`, `Q = G_U^2 Omega_W^2 + 2 G_U G_W R + G_W^2 Omega_U^2`, `P = Omega_U^2 G_W + R G_U`, and the derived coefficients `B_0`, `Z_0`, `N_0`, `D_0` all match the Stage 7 definitions after truncation. The normalization rewrite `P_0 = P^2 / [Delta (K Delta - Delta C^2 / varpi^2 - Q)]` is correct.
+
+2. **Logical flow.** The stage cleanly narrows the problem from the isotropic angular theorem to the remaining radial/axial scalar. The jump from `mhat_ang = 1` to `mhat_0 = mhat_rad` is justified by the prior stage and the target equation is the right reduced form.
+
+3. **Assumptions.** The stable-branch assumptions `Delta > 0` and `D_0 > 0` are stated explicitly and are the right admissibility conditions for the denominator. The support-softening variable `X = C^2 / varpi^2` is introduced consistently.
+
+4. **Notation consistency.** The notation is consistent with Stage 7 and with the Stage 8 script. The reuse of `P_0` for the normalization prefactor is unambiguous in context.
+
+5. **Physical interpretation.** The interpretation is sensible: stronger bare wall stiffness lowers the prefactor, while stronger support softening raises it. The stage correctly isolates the remaining unknowns to `X`, `Delta`, `Q`, `P`, and `mhat_rad`.
 
 **Script Review:**
 
-The script mirrors the note structure cleanly: it checks the abstract branch brackets with `Omega`, verifies the residual-center identity, and then uses the explicit `Omega_Pe` series for the weak-coupling coefficient. I reran the Stage 42 audit locally and it passed unchanged.
-
-**Issues Found:** None.
-
----
-
-### Agent: GPT-5 Codex — 2026-04-21
-**Verdict:** PASS (HARDENED)
-
-**Notes Derivation Review:**
-
-The three-zone theorem is unchanged. The important stage content is the exact
-threshold saturation/order structure on the ordered branch, not the raw
-definitions of `Xi_fail` and `Xi_suff`.
-
-**Script Review:**
-
-The earlier threshold checks were still too close to definition replay. The
-current scripts keep the ordered-branch positivity checks, but the saturation
-route is now different: both CAS layers use the explicit Stage-39 `Omega_Pe`
-formula on a constructive sample and solve the saturation equations numerically
-(`nsolve` / `FindRoot`) for `Xi_fail` and `Xi_suff`, then compare those roots
-against `Pe_req / Delta_inf` and `Pe_req / Delta_0`. That closes the obvious
-`(A/B) B = A` objection while preserving the theorem-level positivity checks.
-SymPy and Mathematica reran successfully.
+The audit script faithfully implements the notes. It recomputes the zero-frequency coefficients, proves the compact form of `P_0`, checks the stability identity `Delta*D_0 = K*Delta - Delta*C^2/varpi^2 - Q`, and differentiates with respect to `K` and `X`. The saved output matches the claims, and my independent SymPy spot-check of `P_0 - P_0_compact` also reduced to zero.
 
 **Issues Found:** None.
 

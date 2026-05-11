@@ -1,0 +1,53 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+# Date: 2026-05-11T12:47:02-06:00
+# Elapsed: 0s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+STAGE 157 — CORE-MOUTH COEVOLUTION STATUS
+========================================================================================
+
+========================================================================================
+1. Exact Family-1 compensation identities
+========================================================================================
+R(g_*) - 1/4 = 0
+
+========================================================================================
+2. Carry-forward numerical basepoint from Stages 138-139
+========================================================================================
+r_F1 radical check diff = 1.8814843650771253e-15
+g_* lower-branch check diff = 1.7308031911431281e-16
+self-matched traction law diff = 1.3203526721892828e-15
+R_can = 1/4 diff = 4.3553355180533693e-16
+Pi_can identity diff = 1.687318133635777e-15
+Sigma0_star = 1.80594111095636000000000000000
+T_hat_star  = 0.901484054174204000000000000000
+Pi_star     = 1.50882951349316000000000000000
+Sigma0_can  = 4.65103355016886700000000000000
+T_hat_can   = 1.44670836645676130000000000000
+S_can       = 0.670362115673461700000000000000
+Pi_can      = 3.87156437747900200000000000000
+
+========================================================================================
+3. Tangent-on-family and even-preservation handoff
+========================================================================================
+tangent motion keeps delta R = 0 = 0
+canonical-even preservation solutions = [{deltaC: 0, delta_kappa: 0}]
+tangent motion kills delta C = 0
+
+========================================================================================
+4. Stage 158 expansion point
+========================================================================================
+Stage 158 tangent expansion packet = 0
+dPi_tan at the renormalized canonical point = -1.16275838754221675*delta_S + 0.832409471081634575*delta_Sigma0
+
+Open branch note:
+  This capstone closes the reduced co-evolving classification and basepoint data.
+  It does not assert that the full moving-throat PDE has already realized the
+  balance-selected branch; that remains the open microscopic question carried forward.
+
+EXIT_CODE: 0

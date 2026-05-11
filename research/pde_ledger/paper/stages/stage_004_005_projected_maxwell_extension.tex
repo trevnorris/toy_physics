@@ -1,0 +1,41 @@
+\subsection*{Stage 004.005: Projected Maxwell extension and clean matching}
+\label{subsec:stage004005-projected-maxwell-extension}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_005_projected_maxwell_extension_sympy_audit.py}.
+It records the clean gauge/source choices under which the projected channel
+reproduces the reduction-first coupling.
+
+\paragraph{Clean gauge channel.}
+The gauge-fixing weight \(H(w)\) controls the effective gauge parameter in
+\eqref{eq:stage004004-effective-parameters}.  The clean localized gauge choice
+is
+\begin{equation}
+\label{eq:stage004002-hz}
+H(w)=Z(w),
+\qquad
+\xi_{\rm eff}^{\rm proj}=\xi .
+\end{equation}
+
+\paragraph{Source match.}
+The source profile \(S(w)\) must be matched to the localized Maxwell weight:
+\begin{equation}
+\label{eq:stage004002-source-match}
+S(w)=\frac{Z(w)}{Z_{\rm int}},
+\qquad
+Z_{\rm int}=\int Z(w)\,dw .
+\end{equation}
+Then
+\begin{equation}
+\mu_{\rm eff}^{\rm proj}=\frac{\mu_0}{Z_{\rm int}},
+\end{equation}
+which is the reduction-first coupling.  The audit also checks the Gaussian
+case and the regulator limit, including mutation guards distinguishing
+\(H=1\) from \(H=Z\).
+
+\paragraph{Output.}
+Stage~004.005 exports the matching conditions
+\eqref{eq:stage004002-hz}--\eqref{eq:stage004002-source-match}.  These
+conditions are the firewall between exact projection and reduced brane
+coupling.

@@ -1,0 +1,37 @@
+\subsection*{Stage 004.004: Projection/reduction comparison}
+\label{subsec:stage004004-projection-reduction-comparison}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_004_projection_reduction_comparison_sympy_audit.py}.
+It compares the exact projected law with the zero-mode reduction channel and
+keeps observer dependence explicit.
+
+\paragraph{Reduction channel.}
+For a zero-mode ansatz \(A_\mu(x,w)=a_\mu(x)\), the projected equation contains
+the weighted factors
+\begin{equation}
+\label{eq:stage004004-projected-integrals}
+I_{WZ}=\int WZ\,dw,\qquad
+I_{WH}=\int WH\,dw,\qquad
+I_{WS}=\int WS\,dw .
+\end{equation}
+The effective projected parameters are
+\begin{equation}
+\label{eq:stage004004-effective-parameters}
+\mu_{\rm eff}^{\rm proj}=\mu_0\frac{I_{WS}}{I_{WZ}},
+\qquad
+\frac1{\xi_{\rm eff}^{\rm proj}}=\frac{I_{WH}}{\xi I_{WZ}}.
+\end{equation}
+These are observer-kernel quantities until a matching prescription is imposed.
+
+\paragraph{Mismatch guard.}
+The comparison audit checks concrete smooth profiles and mutation guards.  A
+delta-like source and a smooth localized gauge profile do not automatically
+produce the same coupling as a reduced brane theory; source matching is a
+separate condition.
+
+\paragraph{Output.}
+Stage~004.004 exports the observer-dependent projected coefficients
+\eqref{eq:stage004004-effective-parameters} and marks the reduction-first
+brane law as a matched channel rather than the controlling derivation.

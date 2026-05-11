@@ -1,0 +1,42 @@
+\subsection*{Stage 004.010: Mouth-Taylor master map}
+\label{subsec:stage004010-mouth-taylor-master}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_010_projected_maxwell_mouth_taylor_master_sympy_audit.py}.
+It is the master one-sided Taylor map from primitive mouth data to live
+weak-axisymmetric gates.
+
+\paragraph{Primitive slippages.}
+With \(Q,S_2,H_{\rm port},\Delta,P\) evaluated along the mouth coordinate \(s\),
+\begin{equation}
+\label{eq:stage004004-z0n0}
+z_0=\partial_s\!\left(\frac{Q}{\Delta}\right),
+\qquad
+n_0=\partial_s\!\left(\frac{P^2}{\Delta^2}\right).
+\end{equation}
+The next conservative slots are
+\begin{equation}
+\label{eq:stage004004-z2}
+z_2=\partial_s\!\left(\frac{QS_2-H_{\rm port}\Delta}{\Delta^2}\right),
+\end{equation}
+\begin{equation}
+\label{eq:stage004004-z4}
+z_4=\partial_s\!\left(
+\frac{Q(S_2^2-\Delta)-H_{\rm port}S_2\Delta}{\Delta^3}
+\right).
+\end{equation}
+
+\paragraph{Gate feed.}
+The first-order prefactor slope receives
+\begin{equation}
+\label{eq:stage004010-xi}
+\Xi_{\rm load}=\frac{n_0}{N_0}+\frac{z_0}{D_0},
+\end{equation}
+while \(z_0,z_2,z_4\) feed the even gates \(K_1\) and \(H_{\rm even}\).  The
+audit checks the one-sided Taylor derivatives and their dependence on the
+primitive bottlenecks.
+
+\paragraph{Output.}
+Stage~004.010 exports the mouth-Taylor primitive map
+\eqref{eq:stage004004-z0n0}--\eqref{eq:stage004004-z4}.

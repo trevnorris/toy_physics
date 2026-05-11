@@ -1,0 +1,43 @@
+\subsection*{Stage 004.016: Parent throat action isotropic bundle}
+\label{subsec:stage004016-parent-throat-action-isotropic-bundle}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_016_parent_throat_action_isotropic_bundle_sympy_audit.py}.
+It rewrites the isotropic one-pole and outgoing-normalization targets in
+parent-wall variables.
+
+\paragraph{Parent-complete denominator.}
+The isotropic bundle moments are
+\begin{equation}
+\label{eq:stage004016-parent-bundle}
+D_0=K_\Sigma-B_0-Z_0,\qquad
+D_2=-(M_\Sigma+B_2+Z_2),\qquad
+D_4=-(B_4+Z_4).
+\end{equation}
+The one-pole surface fixes
+\begin{equation}
+\label{eq:stage004016-one-pole-parent}
+K_\Sigma=B_0+Z_0+
+\frac{3(M_\Sigma+B_2+Z_2)^2}{B_4+Z_4}.
+\end{equation}
+The outgoing normalization fixes
+\begin{equation}
+\label{eq:stage004016-normalization-parent}
+K_\Sigma=B_0+Z_0+\frac{N_0}{P_{0,\rm target}},
+\qquad
+P_{0,\rm target}=\frac{54Gc_s^5}{5a^5c^5\widehat m_0^{\,2}}.
+\end{equation}
+
+\paragraph{Compatibility.}
+The parent-complete compatibility identity is
+\begin{equation}
+\label{eq:stage004016-isotropic-compatibility}
+\frac{N_0}{P_{0,\rm target}}
+=\frac{3(M_\Sigma+B_2+Z_2)^2}{B_4+Z_4}.
+\end{equation}
+The audit also checks the response-sign criterion selecting the positive
+one-pole branch and the constant-prefactor conditions.
+
+\paragraph{Output.}
+Stage~004.016 exports \eqref{eq:stage004016-parent-bundle}--\eqref{eq:stage004016-isotropic-compatibility}.

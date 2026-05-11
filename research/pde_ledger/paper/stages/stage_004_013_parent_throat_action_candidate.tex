@@ -1,0 +1,23 @@
+\subsection*{Stage 004.013: Parent throat action candidate}
+\label{subsec:stage004013-parent-throat-action-candidate}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_013_parent_throat_action_candidate_sympy_audit.py}.
+It verifies the minimal nonlinear candidate and its exact quadratic recovery.
+
+\paragraph{Candidate status.}
+The density \eqref{eq:stage004012-parent-density} is deliberately the minimal
+gauge-fixed throat action in the current coordinates.  It is not a uniqueness
+claim.  A later worldvolume-invariant action could be stronger, but the
+present candidate is sufficient to recover the audited linear wall PDE.
+
+\paragraph{Boundary controls.}
+The audit verifies integration by parts with Gaussian and Lorentzian probes
+and checks a nonzero \(\arctan w\) endpoint discharge.  Therefore the
+quadratic recovery is not relying on a broken boundary reader that always
+returns zero.
+
+\paragraph{Output.}
+Stage~004.013 records the candidate action as a parent-complete source of the
+linear wall closure, subject to the explicitly checked boundary class.

@@ -1,0 +1,49 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage004_016_parent_throat_action_isotropic_bundle_sympy_audit.py
+# Date: 2026-05-11T02:30:21-06:00
+# Elapsed: 4s
+# Exit code: 0
+# Status: PASS
+#
+
+PARENT THROAT ACTION — ISOTROPIC FULL-BUNDLE BRIDGE AUDIT
+
+D0 = -B0 + KSigma - Z0
+D2 = -B2 - MSigma - Z2
+D4 = -B4 - Z4
+
+u2 = (-B2 - MSigma - Z2)/(B0 - KSigma + Z0)
+u4 = (-(B4 + Z4)*(B0 - KSigma + Z0) + (B2 + MSigma + Z2)**2)/(B0 - KSigma + Z0)**2
+u4 - 4*u2^2 = -(B0*B4 + B0*Z4 + 3*B2**2 + 6*B2*MSigma + 6*B2*Z2 - B4*KSigma + B4*Z0 - KSigma*Z4 + 3*MSigma**2 + 6*MSigma*Z2 + Z0*Z4 + 3*Z2**2)/(B0 - KSigma + Z0)**2
+
+K_from_one_pole = (B0*B4 + B0*Z4 + 3*B2**2 + 6*B2*MSigma + 6*B2*Z2 + B4*Z0 + 3*MSigma**2 + 6*MSigma*Z2 + Z0*Z4 + 3*Z2**2)/(B4 + Z4)
+K_from_norm = B0 + Z0 + 5*N0*a**5*c**5*mhat0**2/(54*G*cs**5)
+P0_target = 54*G*cs**5/(5*a**5*c**5*mhat0**2)
+Compatibility_equation = -(-162*B2**2*G*cs**5 - 324*B2*G*MSigma*cs**5 - 324*B2*G*Z2*cs**5 + 5*B4*N0*a**5*c**5*mhat0**2 - 162*G*MSigma**2*cs**5 - 324*G*MSigma*Z2*cs**5 - 162*G*Z2**2*cs**5 + 5*N0*Z4*a**5*c**5*mhat0**2)/(54*G*cs**5*(B4 + Z4))
+
+P2 = -(B0*N2 - 2*B2*N0 - KSigma*N2 - 2*MSigma*N0 - 2*N0*Z2 + N2*Z0)/(B0 - KSigma + Z0)**2
+P4 = -(B0**2*N4 - 2*B0*B2*N2 - 2*B0*B4*N0 - 2*B0*KSigma*N4 - 2*B0*MSigma*N2 - 2*B0*N0*Z4 - 2*B0*N2*Z2 + 2*B0*N4*Z0 + 3*B2**2*N0 + 2*B2*KSigma*N2 + 6*B2*MSigma*N0 + 6*B2*N0*Z2 - 2*B2*N2*Z0 + 2*B4*KSigma*N0 - 2*B4*N0*Z0 + KSigma**2*N4 + 2*KSigma*MSigma*N2 + 2*KSigma*N0*Z4 + 2*KSigma*N2*Z2 - 2*KSigma*N4*Z0 + 3*MSigma**2*N0 + 6*MSigma*N0*Z2 - 2*MSigma*N2*Z0 - 2*N0*Z0*Z4 + 3*N0*Z2**2 - 2*N2*Z0*Z2 + N4*Z0**2)/(B0 - KSigma + Z0)**3
+N2_on_constant_prefactor_branch = 2*N0*(B2 + MSigma + Z2)/(B0 - KSigma + Z0)
+N4_on_constant_prefactor_branch = N0*(2*B0*B4 + 2*B0*Z4 + B2**2 + 2*B2*MSigma + 2*B2*Z2 - 2*B4*KSigma + 2*B4*Z0 - 2*KSigma*Z4 + MSigma**2 + 2*MSigma*Z2 + 2*Z0*Z4 + Z2**2)/(B0**2 - 2*B0*KSigma + 2*B0*Z0 + KSigma**2 - 2*KSigma*Z0 + Z0**2)
+N4_on_one_pole_plus_constant_prefactor = -5*N0*(B4 + Z4)**2/(9*(B2 + MSigma + Z2)**2)
+N4_md_equivalent_on_one_pole = -5*N0*(B4 + Z4)**2/(9*(B2 + MSigma + Z2)**2)
+constant-prefactor mutation guards = PASS
+u2_on_positive_root = -sqrt(3)*sqrt(-(B4 + Z4)*(B0 - KSigma + Z0))/(3*B0 - 3*KSigma + 3*Z0)
+u2_on_negative_root = sqrt(3)*sqrt(-(B4 + Z4)*(B0 - KSigma + Z0))/(3*(B0 - KSigma + Z0))
+numeric stable-pole sample D0 = 10, B4+Z4 = 12
+positive-root numeric u2 = 0.6324555320336759
+negative-root numeric u2 = -0.6324555320336759
+multi-sample response-sign guard count = 3
+  baseline: D0=10, B4+Z4=12, u2+=0.6324555320336759, u2-=-0.6324555320336759
+  small-D0 large-tail: D0=2, B4+Z4=20, u2+=1.8257418583505538, u2-=-1.8257418583505538
+  large-D0 small-tail: D0=100, B4+Z4=1, u2+=0.057735026918962574, u2-=-0.057735026918962574
+one-pole numerical response-sign guard = PASS
+Concrete wall-integral example: MSigma=sqrt(pi), KSigma=3*sqrt(pi)/2
+The one-pole algebra leaves two M roots, but under the stable-pole sign convention D0>0 and B4+Z4>0
+only the positive root gives u2>0; the negative root gives u2<0.
+
+STATUS: PASS
+The promoted parent wall block enters the isotropic full bundle only through KSigma and MSigma,
+and the one-pole / normalization / constant-prefactor conditions reduce to exact algebraic equations.
+
+EXIT_CODE: 0

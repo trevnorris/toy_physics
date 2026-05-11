@@ -1,0 +1,78 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage004_004_projection_reduction_comparison_sympy_audit.py
+# Date: 2026-05-11T02:29:37-06:00
+# Elapsed: 3s
+# Exit code: 0
+# Status: PASS
+#
+
+
+========================================================================================
+1) Generic zero-mode projection formula
+========================================================================================
+Assume F^{mu nu}(x,w) = f^{mu nu}(x), J^nu(x,w) = j^nu(x) S(w), and ∫W(w)dw = 1.
+Then measured zero-mode fields satisfy Proj_W[F^{mu nu}] = f^{mu nu}.
+The projected inhomogeneous law becomes:
+  I_WZ * partial_mu f^{mu nu} = mu0 * I_WS * j^nu
+with
+  I_WZ := ∫ W(w) Z(w) dw
+  I_WS := ∫ W(w) S(w) dw
+
+So the projection-first effective coupling to the measured field is:
+  mu0_eff^(proj) = mu0 * I_WS / I_WZ
+
+The reduction-first coupling from the localized action is:
+  mu0_eff^(red)  = mu0 / Z_int
+
+These coincide only if I_WS / I_WZ = 1 / Z_int.
+Concrete smooth-profile projection residual checks pass, including a w-dependent-field mutation guard.
+
+========================================================================================
+2) Gaussian localization data
+========================================================================================
+Take Z(w) = exp(-w^2/lambda^2).
+  Z_int  = sqrt(pi)*lam
+  Z2_int = sqrt(2)*sqrt(pi)*lam/2
+  Z2_int / Z_int = sqrt(2)/2
+
+========================================================================================
+3) Case A: matched projection kernel W = Z / Z_int and a brane-localized source S = delta(w)
+========================================================================================
+  I_WZ(match) = sqrt(2)/2
+  I_WS(match) = 1/(sqrt(pi)*lam)
+  mu0_eff^(proj, match) = sqrt(2)*mu0/(sqrt(pi)*lam)
+  mu0_eff^(red)         = mu0/(sqrt(pi)*lam)
+  ratio proj/reduction  = sqrt(2)
+
+So with the natural matched observer kernel and a delta-localized source,
+projection gives mu0 / Z2_int, not mu0 / Z_int.
+
+========================================================================================
+4) Case B: regularized sharp observer and regularized sharp source
+========================================================================================
+Use normalized Gaussians W_eps = S_eps = exp(-w^2/eps^2)/(sqrt(pi) eps).
+  I_WZ(eps) = lam/sqrt(epsilon**2 + lam**2)
+  I_WS(eps) = sqrt(2)/(2*sqrt(pi)*epsilon)
+  mu0_eff^(proj, eps) = mu0*sqrt(2*epsilon**2 + 2*lam**2)/(2*sqrt(pi)*epsilon*lam)
+  I_WZ(eps -> 0) = 1
+  I_WS(eps) diverges as eps -> 0, showing why exact delta/delta sampling is not a finite coupling.
+
+This replaces the distribution-undefined delta squared case with an explicit regulator.
+
+========================================================================================
+5) Compact comparison
+========================================================================================
+Reduction-first:
+  mu0_eff = mu0 / Z_int
+
+Projection-first, zero-mode limit:
+  mu0_eff = mu0 * (∫ W S) / (∫ W Z)
+
+Matched Gaussian observer + delta source:
+  mu0_eff = sqrt(2)*mu0/(sqrt(pi)*lam) = sqrt(2) * mu0 / (sqrt(pi)*lambda)
+
+So projection does not simply reproduce the reduced Maxwell coupling.
+It yields a family of observer-dependent effective laws unless extra closure conditions are imposed.
+STATUS: PASS
+
+EXIT_CODE: 0

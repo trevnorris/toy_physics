@@ -5,14 +5,14 @@
 # than the source script (use --force to re-run everything).
 #
 # Usage:
-#   bash scripts/moving_throat/run_all_audits.sh           # incremental
-#   bash scripts/moving_throat/run_all_audits.sh --force    # re-run all
-#   bash scripts/moving_throat/run_all_audits.sh stage042   # run one stage
+#   bash research/pde_ledger/scripts/run_all_audits.sh           # incremental
+#   bash research/pde_ledger/scripts/run_all_audits.sh --force    # re-run all
+#   bash research/pde_ledger/scripts/run_all_audits.sh stage042   # run one stage
 
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-SCRIPTS_DIR="$REPO_ROOT/scripts/moving_throat"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPTS_DIR="$SCRIPT_DIR"
 OUTPUT_DIR="$SCRIPTS_DIR/output"
 TIMEOUT_SEC=0  # 0 = no timeout
 

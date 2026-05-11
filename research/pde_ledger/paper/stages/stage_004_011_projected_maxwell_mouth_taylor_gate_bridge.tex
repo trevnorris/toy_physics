@@ -1,0 +1,30 @@
+\subsection*{Stage 004.011: Mouth-Taylor gate bridge}
+\label{subsec:stage004011-mouth-taylor-gate-bridge}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_011_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py}.
+It turns the mouth-Taylor primitive map into a gate-level compensation test.
+
+\paragraph{Even gates.}
+The conservative mouth shifts enter
+\begin{equation}
+\label{eq:stage004011-k1}
+K_1=-z_2-\frac{z_0}{9},
+\end{equation}
+\begin{equation}
+\label{eq:stage004011-heven}
+H_{\rm even}=-z_4+\frac23z_2-\frac{z_0}{27}.
+\end{equation}
+Solving the pair of even gates against the primitive derivative slots gives a
+nontrivial compensation denominator.  In the primitive notation of the audit,
+the determinant is proportional to
+\begin{equation}
+\label{eq:stage004004-compensation-denominator}
+Q\,S_2-\Delta H_{\rm port}.
+\end{equation}
+
+\paragraph{Output.}
+Stage~004.011 exports the mechanism sieve: projected EM mouth data can tune
+the even gates only away from the degeneracy
+\eqref{eq:stage004004-compensation-denominator}.

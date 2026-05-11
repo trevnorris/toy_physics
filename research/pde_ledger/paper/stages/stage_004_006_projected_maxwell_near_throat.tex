@@ -1,0 +1,30 @@
+\subsection*{Stage 004.006: Near-throat projection scale}
+\label{subsec:stage004006-projected-maxwell-near-throat}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_006_projected_maxwell_near_throat_sympy_audit.py}.
+It distinguishes symmetric interior averaging from one-sided mouth averaging.
+
+\paragraph{Interior versus mouth.}
+For a symmetric interior kernel, the first finite-width correction to a smooth
+profile is even and begins at \(O(\sigma^2)\).  At a mouth with one-sided
+coordinate \(s\ge0\),
+\begin{equation}
+\label{eq:stage004006-mouth-kernel}
+W_\ell(s)=\frac1\ell w(s/\ell),
+\qquad
+\int_0^\infty w(u)\,du=1,
+\end{equation}
+the expansion is
+\begin{equation}
+\label{eq:stage004006-mouth-expansion}
+\langle X\rangle_\ell
+=X(0)+\ell\mu_1X'(0)+O(\ell^2),
+\qquad
+\mu_1=\int_0^\infty u\,w(u)\,du .
+\end{equation}
+
+\paragraph{Output.}
+Stage~004.006 explains why mouth-local projected EM data enter at first order
+in the mouth scale, while symmetric interior thickness effects enter later.

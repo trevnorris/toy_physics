@@ -1,0 +1,34 @@
+\subsection*{Stage 004.001: Projected Maxwell bundle index}
+\label{subsec:stage004001-projected-maxwell-readme}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_001_projected_maxwell_readme_sympy_audit.py}.
+It imports the bundle-level source index from the projected-Maxwell notes and
+checks that the covariant, vector, and projection/reduction comparison audits
+are present in the ledger script order.
+
+\paragraph{Bundle role.}
+The electromagnetic sector is treated as a projection problem before it is
+treated as a reduced one-port normal form.  The source bundle fixes three
+rules:
+\begin{enumerate}
+\item projection by parts creates a real transverse leakage/source term;
+\item the homogeneous Maxwell equations project in measured fields, while the
+inhomogeneous equations carry source-coupled flux fields;
+\item reduction is a matched channel, not the primary parent derivation.
+\end{enumerate}
+
+\paragraph{Projection identity.}
+For any smooth profile \(Q(w)\) and observation kernel \(W(w)\),
+\begin{equation}
+\label{eq:stage004001-projection-ibp}
+\partial_w(WQ)-W\partial_wQ-(\partial_wW)Q=0.
+\end{equation}
+After integration over \(w\), \eqref{eq:stage004001-projection-ibp} is the
+bookkeeping identity that turns the parent \(w\)-flux into a boundary term
+plus a kernel-gradient leakage term.
+
+\paragraph{Output.}
+Stage~004.001 fixes the source ordering for the projection-first EM bundle and
+anchors the projection-by-parts identity used in the next substage.

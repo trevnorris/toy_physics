@@ -70,7 +70,7 @@ Anchor & Stages & Default status & Citation target \\
 \addlinespace
 \resultanchor{MTDC-T3} & 3 & Mixed: \StatusReduced, \StatusExactClosure & Wall/BdG stable-mode reduction, Schur-complement support kernel, low-frequency conservative moments, grouped \(P_2\) support self-energies, and first pole-shift formulas. \\
 \addlinespace
-\resultanchor{MTDC-T4} & 4--5 & Mixed: \StatusReduced, \StatusExactClosure, \StatusOpen & Localized Maxwell/mixed-sector reduction, gauge-invariant mixed variables, outgoing-transfer factor, compact \(l=2\) fingerprint, grouped response normalization, and the first invariant outgoing-normalization product. \\
+\resultanchor{MTDC-T4} & 4--5 & Mixed: \StatusExact, \StatusReduced, \StatusExactClosure, \StatusOpen & Projection-first localized Maxwell law, matched reduction channel, projected mouth-to-bundle transport, reduced Maxwell/mixed one-port normal form, outgoing-transfer factor, compact \(l=2\) fingerprint, grouped response normalization, and the first invariant outgoing-normalization product. \\
 \addlinespace
 \resultanchor{MTDC-T5} & 6--19 & Mixed: \StatusExactClosure, \StatusReduced, \StatusOpen & Full grouped real \(P_2\) projector calculus, isotropy defects, overlap-integral theorem, weak-axisymmetric splitting law, selected-mode normal form, and support-feasibility frontier. \\
 \addlinespace
@@ -170,7 +170,7 @@ Subanchor & Stages & Primary status & Downstream citation use \\
 \bottomrule
 \end{longtable}
 
-\subsection{MTDC-T4: Maxwell/mixed response and outgoing-normalization bridge}
+\subsection{MTDC-T4: projection-first Maxwell/mixed response and outgoing-normalization bridge}
 \label{subsec:anchors-t4}
 
 \begin{longtable}{L{0.16\textwidth}L{0.16\textwidth}L{0.24\textwidth}L{0.34\textwidth}}
@@ -183,17 +183,19 @@ Subanchor & Stages & Primary status & Downstream citation use \\
 Subanchor & Stages & Primary status & Downstream citation use \\
 \midrule
 \endhead
-\resultanchor{MTDC-T4.1} & 4 & \StatusExact & Gauge invariance of the mixed fields \(E_w\) and \(C_a\) under the parent gauge transformation. \\
+\resultanchor{MTDC-T4.1} & 4.001 & \StatusExact & Projection-first localized Maxwell law, projected transverse leakage, projected charge continuity, and measured-field versus source-coupled-flux split. \\
 \addlinespace
-\resultanchor{MTDC-T4.2} & 4 & \StatusReduced & Minimal reduced Maxwell/mixed one-lane model and conservative mixed self-energy. \\
+\resultanchor{MTDC-T4.2} & 4.002 & \StatusReduced & Matched zero-mode reduction channel: \(H=Z\), \(S=Z/Z_{\rm int}\), and equality with the reduction-first brane Maxwell coupling. \\
 \addlinespace
-\resultanchor{MTDC-T4.3} & 4 & \StatusExactClosure & Outgoing-port dressing of the mixed coordinate, nonnegative transfer factor, and sign convention for passive damping. \\
+\resultanchor{MTDC-T4.3} & 4.003--4.004 & \StatusExactClosure & Near-mouth projected Maxwell bridge into the grouped \(Z_n,N_n\) slots, compatibility variation, weak-axisymmetric prefactor feed, primitive mouth-Taylor map, and gate sieve. \\
 \addlinespace
-\resultanchor{MTDC-T4.4} & 4 & \StatusExactClosure & Compact outgoing \(l=2\) fingerprint and wall-level leading odd quadrupole coefficient. \\
+\resultanchor{MTDC-T4.4} & 4.005 & \StatusReduced & Reduced Maxwell/mixed one-port normal form, gauge-invariant mixed variables, conservative mixed self-energy, and low-frequency \(Z_n\) coefficients. \\
 \addlinespace
-\resultanchor{MTDC-T4.5} & 5 & \StatusExactClosure & Conversion from conservative operator moments \(D_{A0},D_{A2},D_{A4}\) to normalized grouped-response moments \(u_2^{(A)},u_4^{(A)}\). \\
+\resultanchor{MTDC-T4.5} & 4.005 & \StatusExactClosure & Outgoing-port dressing of the mixed coordinate, nonnegative transfer factor, compact outgoing \(l=2\) fingerprint, and wall-level leading odd quadrupole coefficient. \\
 \addlinespace
-\resultanchor{MTDC-T4.6} & 5 & \StatusExactClosure & Prefactor expansion \(P_{A0},P_{A2},P_{A4}\), leading \(\Gamma_5^{(A)}\), and invariant normalization target for \(m_{\hat 0}^{2}P_0\). \\
+\resultanchor{MTDC-T4.6} & 5 & \StatusExactClosure & Conversion from conservative operator moments \(D_{A0},D_{A2},D_{A4}\) to normalized grouped-response moments \(u_2^{(A)},u_4^{(A)}\). \\
+\addlinespace
+\resultanchor{MTDC-T4.7} & 5 & \StatusExactClosure & Prefactor expansion \(P_{A0},P_{A2},P_{A4}\), leading \(\Gamma_5^{(A)}\), and invariant normalization target for \(m_{\hat 0}^{2}P_0\). \\
 \bottomrule
 \end{longtable}
 
@@ -455,7 +457,7 @@ Anchor & Formula family & Labeling target \\
 \addlinespace
 \resultanchor{MTDC-T3} & BdG Schur complement & Axisymmetric matrix kernel, grouped channelwise support kernels, low-frequency BdG moments, and pole-shift formula. \\
 \addlinespace
-\resultanchor{MTDC-T4} & Maxwell/mixed and outgoing bridge & Conservative mixed self-energy, outgoing-transfer factor, compact \(l=2\) fingerprint, prefactor moments, and invariant product \(m_{\hat 0}^{2}P_0\). \\
+\resultanchor{MTDC-T4} & Projected Maxwell/mixed and outgoing bridge & Projected Maxwell law, matched reduction conditions, projected \(Z_n,N_n\) slot shifts, conservative mixed self-energy, outgoing-transfer factor, compact \(l=2\) fingerprint, prefactor moments, and invariant product \(m_{\hat 0}^{2}P_0\). \\
 \addlinespace
 \resultanchor{MTDC-T5} & Grouped bundle and selected front end & Weighted projectors, \(u_2^{(A)}\), \(u_4^{(A)}\), \(P_{A0}\), \(P_{A2}\), \(P_{A4}\), \(O(3)\) isotropy, weak-axisymmetric line \(b=3a\), and support-feasibility functions. \\
 \addlinespace
@@ -613,7 +615,7 @@ The following examples show the intended level of precision.
 
 Safe wording:
 \begin{quote}
-The derivation companion shows that, inside the reduced wall/BdG/Maxwell/mixed grouped-bundle closure, the leading odd quadrupole coefficient is controlled by the isotropic static prefactor \(P_0=N_0/D_0\); actual realization of the universal value is a separate branch condition.  See \resultanchor{MTDC-T4} and \resultanchor{MTDC-T5}.
+The derivation companion shows that the electromagnetic sector must be projected before the matched Maxwell/mixed normal form is used, and that inside the reduced wall/BdG/projected-Maxwell grouped-bundle closure the leading odd quadrupole coefficient is controlled by the isotropic static prefactor \(P_0=N_0/D_0\); actual realization of the universal value is a separate branch condition.  See \resultanchor{MTDC-T4} and \resultanchor{MTDC-T5}.
 \end{quote}
 
 Unsafe wording:

@@ -56,7 +56,7 @@ The shortest faithful global spine is
 \text{wall/support modal system}
 \\[0.35em]
 &\Longrightarrow
-\text{BdG and Maxwell/mixed Schur complements}
+\text{BdG Schur complement and projection-first Maxwell packet}
 \\[0.35em]
 &\Longrightarrow
 \text{grouped real }P_2\text{ response bundle}
@@ -150,7 +150,7 @@ Anchor & Required upstream blocks & Principal outputs & Downstream blocks that u
 \addlinespace
 \resultanchor{MTDC-T3} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T2}; stable BdG normal-mode reduction. & Schur-complement support kernels, pole shifts, scalar/geometry lane renormalization, grouped \(P_2\) conservative self-energies, and first isotropy diagnostics. & \resultanchor{MTDC-T4}, \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, and the conservative front end of \resultanchor{MTDC-T9}. \\
 \addlinespace
-\resultanchor{MTDC-T4} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T3}; retained mixed sector; compact outgoing branch; 2.5PN/4PN quadrupole target. & Maxwell/mixed self-energy, outgoing transfer factor, compact \(l=2\) fingerprint, normalized grouped response language, and invariant target for \(\widehat m_0^{\,2}P_0\). & \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, \resultanchor{MTDC-T11}, and any future radiative or tail calculation. \\
+\resultanchor{MTDC-T4} & \resultanchor{MTDC-T1}--\resultanchor{MTDC-T3}; projection-first localized Maxwell law; retained mixed sector; matched reduction channel; compact outgoing branch; 2.5PN/4PN quadrupole target. & Exact projected Maxwell leakage law, measured/flux field split, matched one-port Maxwell/mixed self-energy, projected \(Z_n,N_n\) bundle transport, outgoing transfer factor, compact \(l=2\) fingerprint, normalized grouped response language, and invariant target for \(\widehat m_0^{\,2}P_0\). & \resultanchor{MTDC-T5}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, \resultanchor{MTDC-T11}, and any future radiative or tail calculation. \\
 \addlinespace
 \resultanchor{MTDC-T5} & \resultanchor{MTDC-T2}--\resultanchor{MTDC-T4}; grouped metric and projector calculus; overlap model assumptions. & Full grouped real \(P_2\) bundle, exact projector/inverse maps, isotropy theorem, weak-axisymmetric splitting law, selected-mode front end, and early support-feasibility surfaces. & \resultanchor{MTDC-T6}, \resultanchor{MTDC-T7}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T9}, and the selected-support part of \resultanchor{MTDC-T11}. \\
 \addlinespace
@@ -187,7 +187,7 @@ Source family & Imported content & Used primarily by \\
 \endhead
 Parent \((4+1)\) action paper & Exact GNLS matter sector, localized Maxwell sector, projection/reduction distinction, leakage identity, Poisson-hook vocabulary, and corrected charge ontology. & \resultanchor{MTDC-T1}; indirectly all later anchors. \\
 \addlinespace
-Electromagnetic and plasma papers & Localized Maxwell reduction, canonical zero-mode charge normalization, mixed fields \(A_w,J^w,F_{\mu w},E_w,C_a\), and the rule that mixed channels are suppressed only in the far-field brane limit. & \resultanchor{MTDC-T1}, \resultanchor{MTDC-T4}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T12}. \\
+Electromagnetic and plasma papers & Projection-first localized Maxwell law, matched zero-mode charge normalization, mixed fields \(A_w,J^w,F_{\mu w},E_w,C_a\), and the rule that mixed channels are suppressed only in a controlled matched brane limit. & \resultanchor{MTDC-T1}, \resultanchor{MTDC-T4}, \resultanchor{MTDC-T8}, \resultanchor{MTDC-T12}. \\
 \addlinespace
 Conservative 1PN stack & Frozen lower-order constants such as \(\kappa_\rho=1\), \(n=5\), \(\kappa_{\rm add}=1/2\), \(\kappa_{\rm PV}=3/2\), and the closure-status discipline used by later PN assemblies. & \resultanchor{MTDC-T1}, branch interpretation in \resultanchor{MTDC-T5}--\resultanchor{MTDC-T8}. \\
 \addlinespace
@@ -227,6 +227,8 @@ Geometry lift & \(\Sigma(\mathbf X,t)=r-R(\Omega,w,t)\). & Makes the grouped rea
 Wall modal split & \(\eta=\eta_0Y_{00}+\sum q_{2m}Y_{2m}^{\rm real}+\eta_{\ge3}\). & Separates scalar/geometry, grouped quadrupole, and higher-lane sectors before support and gauge couplings are added. \\
 \addlinespace
 BdG Schur complement & \(D_A(\omega)=K_A-M_A\omega^2-\sum_\alpha g_{A\alpha}^2/(\varpi_{A\alpha}^2-\omega^2)\). & Supplies conservative support softening, inertia renormalization, higher even moments, and pole shifts. \\
+\addlinespace
+Projected Maxwell law & \(\partial_\mu\langle ZF^{\mu\nu}\rangle_W+[WZF^{w\nu}]_{\partial D}-\int_DW'ZF^{w\nu}dw+\xi^{-1}\partial^\nu\langle H\partial\!\cdot\!A\rangle_W=\mu_0\langle J^\nu\rangle_W\). & Keeps the mixed transverse EM channel alive before any matched brane reduction and fixes the measured-field/source-flux distinction. \\
 \addlinespace
 Maxwell/mixed transfer & \(N_A(0)=[\Omega_{U,A}^{2}g_{W,A}+R_Ag_{U,A}]^2/[\Omega_{U,A}^{2}\Omega_{W,A}^{2}-R_A^2]^2\). & Transfers the passive/outgoing port into the wall operator with a nonnegative static factor. \\
 \addlinespace
@@ -479,7 +481,7 @@ Failure or limitation & What it means & What depends on it \\
 \endhead
 Finite-dimensional \((a,L)\) closure is insufficient for the full PDE problem. & It cannot expose grouped real \(P_2\), geometry-lane, and outgoing-response data as literal modes. & The geometry lift in \resultanchor{MTDC-T2}. \\
 \addlinespace
-Geometry-only wall theory is conservative and cannot itself supply the passive/outgoing odd branch. & Stable wall and BdG blocks can produce even moments and pole shifts, but not the required retarded \(i\omega^5\) fingerprint. & The Maxwell/mixed bridge in \resultanchor{MTDC-T4}. \\
+Geometry-only wall theory is conservative and cannot itself supply the passive/outgoing odd branch. & Stable wall and BdG blocks can produce even moments and pole shifts, but not the required retarded \(i\omega^5\) fingerprint. & The projection-first Maxwell/mixed bridge in \resultanchor{MTDC-T4}. \\
 \addlinespace
 Angular isotropy does not fix radial/axial normalization. & The real STF source map can be identity while \(P_0\) still misses the universal target. & Support placement in \resultanchor{MTDC-T6} and compensation work in \resultanchor{MTDC-T8}. \\
 \addlinespace

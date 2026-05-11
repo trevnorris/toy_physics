@@ -1,162 +1,62 @@
-\section[Stage 004]{Stage 004: Localized Maxwell/Mixed Response and the First Outgoing Quadrupole Bridge}
+\section[Stage 004]{Stage 004: Projection-First Maxwell Sector and Parent-Action Bridge}
 \label{stage:004}
 
-\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T3} and \resultanchor{MTDC-T4}.}
-\claimstatus{\StatusExactClosure{} inside the one-lane reduced Maxwell/mixed model.  The model is \StatusReduced{} relative to the full localized Maxwell PDE.  Actual branch realization of the transfer coefficient is \StatusOpen{}.}
+\stagefield{Part / anchor}{Part I; primary anchors \resultanchor{MTDC-T1} and \resultanchor{MTDC-T4}.}
+\claimstatus{\StatusExact{} for the projection-first localized Maxwell law inside the declared parent equation.  The zero-mode comparison is a controlled \StatusReduced{} matching channel.  The mouth and grouped-bundle transport formulas are \StatusExactClosure{} once the declared projection kernel and primitive packet are adopted.  Actual branch realization of the transfer coefficients remains \StatusOpen{}.}
 
-\stagefield{Purpose}{Stage~004 introduces the first sector capable of carrying a passive/outgoing channel: the localized Maxwell/mixed block.  It shows that mixed fields are gauge-invariant, derives the conservative Maxwell/mixed self-energy, attaches an outgoing port to the mixed coordinate, and obtains the first wall-level \(i\omega^5\) quadrupole coefficient.}
+\stagefield{Purpose}{Stage~004 replaces the old reduction-first electromagnetic entrance by a projection-first localized Maxwell derivation.  It is organized file-for-file against the imported pre-computation SymPy audits: projected covariant Maxwell, vector Maxwell, projection/reduction matching, near-mouth projection, grouped-bundle transport, mouth-Taylor gates, parent-throat action promotion, weak-axisymmetric parent packet, and finally the retained reduced Maxwell/mixed one-port normal form used downstream.}
 
-\stagefield{Inputs}{The stage imports the exact localized Maxwell equation, the mixed gauge invariants \(E_w=F_{w0}\) and \(C_a=F_{aw}\), the Stage~003 wall operator, and the retarded-branch result that the surviving universal point-particle route is the outgoing \(l=2\) quadrupole branch.}
+\stagefield{Inputs}{The stage imports the localized parent Maxwell equation with localization weight \(Z(w)\), a normalized brane-observation kernel \(W(w)\), the gauge-fixing weight \(H(w)\), the mixed gauge-invariant fields \(E_w=F_{w0}\) and \(C_a=F_{aw}\), the promoted parent throat block \(S_\Sigma[R]\), the Stage~003 wall operator, and the compact outgoing \(l=2\) fingerprint.}
 
-\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage004_maxwell_mixed_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage004_maxwell_mixed_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage004_maxwell_mixed_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage004_maxwell_mixed_mathematica_audit.txt}.  Shared numerical stress test with Stage~003: \StageFile{scripts/numerical/stage003_004_foundational_stress.py}, \StageFile{scripts/numerical/output/stage003_004_foundational_stress.txt}, \StageFile{mathematica/numerical/stage003_004_foundational_stress.wl}, and \StageFile{mathematica/numerical/output/stage003_004_foundational_stress.txt}.}
+\stagefield{Verification}{Root-level SymPy audits \StageFile{scripts/moving_throat_pde_stage004_001_projected_maxwell_readme_sympy_audit.py} through \StageFile{scripts/moving_throat_pde_stage004_017_parent_throat_action_weak_axisym_packet_sympy_audit.py} are file-for-file migrations of the derivation-only \StageFile{notes/em_projected} scripts, renamed so their order matches the TeX substages.  \StageFile{scripts/moving_throat_pde_stage004_018_reduced_one_port_normal_form_sympy_audit.py} retains the legacy reduced one-port normal form.  Transcripts are written under \StageFile{scripts/output/}.  The \StageFile{notes/em_projected/step_19_*} branch-export packet and later scan/runtime material remain outside the paper derivation.  Mathematica mirrors currently cover the earlier compact projection/matching/mouth checks and the reduced normal form; full file-for-file Mathematica mirrors remain a separate follow-up unless independently derived.  Shared numerical stress test with Stage~003: \StageFile{scripts/numerical/stage003_004_foundational_stress.py}, \StageFile{scripts/numerical/output/stage003_004_foundational_stress.txt}, \StageFile{mathematica/numerical/stage003_004_foundational_stress.wl}, and \StageFile{mathematica/numerical/output/stage003_004_foundational_stress.txt}.}
 
 \subsection*{Derivation}
 
-\paragraph{1. Mixed gauge invariants.}
-Under
-\begin{equation}
-A_0\mapsto A_0-\partial_t\chi,
-\qquad
-A_a\mapsto A_a+\partial_a\chi,
-\qquad
-A_w\mapsto A_w+\partial_w\chi,
-\end{equation}
-the mixed fields
-\begin{equation}
-\label{eq:app-stage004-mixed-fields}
-E_w=-\partial_tA_w-\partial_wA_0,
-\qquad
-C_a=\partial_aA_w-\partial_wA_a
-\end{equation}
-are gauge invariant.  Therefore a reduced coordinate representing the mixed \(A_w/F_{\mu w}/J^w\) sector is not a gauge artifact.
+\input{stages/stage_004_001_projected_maxwell_readme}
 
-\paragraph{2. One-lane Maxwell/mixed reduced Lagrangian.}
-For one harmonic lane \(l\), let \(Q_l\) be the wall amplitude, \(A_l\) a brane-like localized Maxwell coordinate, and \(W_l\) a mixed-sector coordinate.  The reduced Lagrangian is
-\begin{align}
-\label{eq:app-stage004-reduced-lagrangian}
-L_l={}&\frac12M_l\dot Q_l^{\,2}-\frac12K_lQ_l^2
-+\frac12\dot A_l^{\,2}-\frac12\Omega_{A,l}^2A_l^2
-+\frac12\dot W_l^{\,2}-\frac12\Omega_{W,l}^2W_l^2 \\
-&+R_lA_lW_l+g_{A,l}Q_lA_l+g_{W,l}Q_lW_l.
-\end{align}
-Use the frequency convention \(e^{-i\omega t}\) and define
-\begin{equation}
-A_l(\omega)=\Omega_{A,l}^2-\omega^2,
-\qquad
-W_l(\omega)=\Omega_{W,l}^2-\omega^2,
-\qquad
-\Delta_l(\omega)=A_l(\omega)W_l(\omega)-R_l^2.
-\end{equation}
-Eliminating \((A_l,W_l)\) gives the conservative self-energy
-\begin{equation}
-\label{eq:app-stage004-self-energy}
-\boxed{
-\Sigma_l^{({\rm EM}+{\rm mix},{\rm cons})}(\omega)
-=\frac{g_{A,l}^2W_l(\omega)+2g_{A,l}g_{W,l}R_l+g_{W,l}^2A_l(\omega)}{\Delta_l(\omega)}}.
-\end{equation}
-The wall operator is
-\begin{equation}
-\label{eq:app-stage004-wall-operator-cons}
-D_l^{\rm cons}(\omega)=K_l-M_l\omega^2-\Sigma_l^{({\rm EM}+{\rm mix},{\rm cons})}(\omega).
-\end{equation}
+\input{stages/stage_004_002_projected_maxwell_covariant}
 
-\paragraph{3. Low-frequency conservative coefficients.}
-At \(\omega=0\), define
-\begin{equation}
-\Delta_0=\Omega_A^2\Omega_W^2-R^2,
-\qquad
-S_2=\Omega_A^2+\Omega_W^2,
-\end{equation}
-\begin{equation}
-N_0^{\rm cons}=g_A^2\Omega_W^2+2g_Ag_WR+g_W^2\Omega_A^2,
-\qquad
-G_2=g_A^2+g_W^2.
-\end{equation}
-Then
-\begin{equation}
-\Sigma^{\rm cons}(\omega)=z_0+z_2\omega^2+z_4\omega^4+O(\omega^6),
-\end{equation}
-with
-\begin{align}
-\label{eq:app-stage004-z-coeffs}
-z_0&=\frac{N_0^{\rm cons}}{\Delta_0},\\
-z_2&=\frac{N_0^{\rm cons}S_2-G_2\Delta_0}{\Delta_0^2},\\
-z_4&=\frac{N_0^{\rm cons}(S_2^2-\Delta_0)-S_2G_2\Delta_0}{\Delta_0^3}.
-\end{align}
-These coefficients later become the conservative Maxwell/mixed entries \(Z_{A0},Z_{A2},Z_{A4}\).
+\input{stages/stage_004_003_projected_maxwell_vector}
 
-\paragraph{4. Outgoing-port dressing and transfer factor.}
-Attach the outgoing port to the mixed coordinate by replacing
-\begin{equation}
-W_l(\omega)\longmapsto W_l(\omega)-\Pi_l^{\rm out}(\omega).
-\end{equation}
-To first order in \(\Pi_l^{\rm out}\),
-\begin{equation}
-\Sigma_l^{\rm full}(\omega)
-=\Sigma_l^{\rm cons}(\omega)+\Pi_l^{\rm out}(\omega)N_l(\omega)+O\bigl((\Pi_l^{\rm out})^2\bigr),
-\end{equation}
-where the exact transfer factor is
-\begin{equation}
-\label{eq:app-stage004-transfer-factor}
-\boxed{
-N_l(\omega)=
-\frac{\bigl[A_l(\omega)g_{W,l}+R_lg_{A,l}\bigr]^2}{\bigl[A_l(\omega)W_l(\omega)-R_l^2\bigr]^2}}.
-\end{equation}
-At zero frequency,
-\begin{equation}
-\label{eq:app-stage004-n0-positive}
-\boxed{
-N_l(0)=\frac{(\Omega_{A,l}^2g_{W,l}+R_lg_{A,l})^2}{(\Omega_{A,l}^2\Omega_{W,l}^2-R_l^2)^2}\ge0}.
-\end{equation}
-The outgoing sign is therefore not inserted by hand.  The reduced internal block transfers the outgoing port with a nonnegative conservative factor.
+\input{stages/stage_004_004_projection_reduction_comparison}
 
-\paragraph{5. Compact outgoing \(l=2\) fingerprint.}
-The normalized compact outgoing \(l=2\) response has the low-frequency form
-\begin{equation}
-\label{eq:app-stage004-outgoing-fingerprint}
-\widehat Y_2^{\rm out}(\omega)
-=1+\frac{a^2\omega^2}{9c_s^2}
-+\frac{4a^4\omega^4}{81c_s^4}
-+i\frac{a^5\omega^5}{27c_s^5}
-+O(\omega^6).
-\end{equation}
-Thus
-\begin{equation}
-\label{eq:app-stage004-gamma-port}
-\Gamma_2^{\rm port}=\frac{a^5}{27c_s^5}.
-\end{equation}
-In the wall-operator convention \(D=K-M\omega^2-\Sigma\), a positive-imaginary outgoing port contributes
-\begin{equation}
-\label{eq:app-stage004-wall-odd}
-\boxed{
-\delta D_2^{\rm odd}(\omega)
-=-iN_2(0)\frac{a^5}{27c_s^5}\omega^5+O(\omega^7)}.
-\end{equation}
-The same branch appears with the corresponding positive admittance sign when the response is normalized.
+\input{stages/stage_004_005_projected_maxwell_extension}
 
-\paragraph{6. Scalar compatibility check.}
-If the scalar/breathing lane enters the port-active mixed sector only through a derivative coupling
-\begin{equation}
-g_{W,0}(\omega)=\eta\omega,
-\end{equation}
-with no non-derivative direct coupling into the same port-active combination, then
-\begin{equation}
-N_0(\omega)=O(\omega^2).
-\end{equation}
-A scalar outgoing law \(\Pi_0^{\rm out}(\omega)=i\gamma_1\omega+\cdots\) then induces only
-\begin{equation}
-\delta D_0^{\rm odd}(\omega)=O(i\omega^3),
-\end{equation}
-so the dangerous \(i\omega\) scalar wall-level term is delayed.  This is a compatibility mechanism, not yet a full scalar no-go theorem.
+\input{stages/stage_004_006_projected_maxwell_near_throat}
 
-\stagefield{Output}{Stage~004 outputs the conservative self-energy \eqref{eq:app-stage004-self-energy}, its low-frequency coefficients \eqref{eq:app-stage004-z-coeffs}, the outgoing transfer factor \eqref{eq:app-stage004-transfer-factor}, the nonnegative static transfer \eqref{eq:app-stage004-n0-positive}, and the wall-level \(i\omega^5\) quadrupole coefficient \eqref{eq:app-stage004-wall-odd}.}
+\input{stages/stage_004_007_projected_maxwell_push_bundle_master}
+
+\input{stages/stage_004_008_projected_maxwell_p2_bridge}
+
+\input{stages/stage_004_009_projected_maxwell_stage4_primitive_bridge}
+
+\input{stages/stage_004_010_projected_maxwell_mouth_taylor_master}
+
+\input{stages/stage_004_011_projected_maxwell_mouth_taylor_gate_bridge}
+
+\input{stages/stage_004_012_parent_throat_action_master}
+
+\input{stages/stage_004_013_parent_throat_action_candidate}
+
+\input{stages/stage_004_014_parent_throat_action_weak_axisym}
+
+\input{stages/stage_004_015_parent_throat_action_bundle_master}
+
+\input{stages/stage_004_016_parent_throat_action_isotropic_bundle}
+
+\input{stages/stage_004_017_parent_throat_action_weak_axisym_packet}
+
+\input{stages/stage_004_018_reduced_one_port_normal_form}
+
+\stagefield{Output}{Stage~004 outputs the projected Maxwell law \eqref{eq:stage004001-projected-maxwell}, the projected continuity law \eqref{eq:stage004001-projected-continuity}, the matched zero-mode reduction conditions \eqref{eq:stage004002-hz} and \eqref{eq:stage004002-source-match}, the projected grouped-bundle shifts \eqref{eq:stage004003-projected-shifts}, the mouth-Taylor primitive map \eqref{eq:stage004004-z0n0}--\eqref{eq:stage004004-z4}, the parent throat action packet \eqref{eq:stage004012-parent-density}--\eqref{eq:stage004017-residual-xi}, the reduced conservative one-port self-energy \eqref{eq:app-stage004-self-energy}, the outgoing transfer factor \eqref{eq:app-stage004-transfer-factor}, and the wall-level \(i\omega^5\) quadrupole coefficient \eqref{eq:app-stage004-wall-odd}.}
 
 \stagefield{Checks}{\begin{verificationchecklist}
-\item Gauge invariance of \(E_w\) and \(C_a\) follows by direct substitution of the gauge transformation.
-\item The Schur complement of the \((A,W)\) block gives \eqref{eq:app-stage004-self-energy}.
-\item The outgoing transfer coefficient is a square over a squared determinant at \(\omega=0\), hence nonnegative.
-\item The compact outgoing fingerprint has the required \(l=2\) odd order \(\omega^{2l+1}=\omega^5\).
-\item Derivative scalar coupling delays a scalar \(i\omega\) port to a wall-level \(i\omega^3\) contribution.
+\item Projection by parts gives the exact transverse leakage term in \eqref{eq:stage004001-projected-maxwell}.
+\item The homogeneous equations project in measured fields, while the inhomogeneous equations use source-coupled flux fields; identifying them is a closure condition.
+\item \(H=Z\) and \(S=Z/Z_{\rm int}\) give the clean matched zero-mode channel that reproduces the reduction-first coupling.
+\item Mouth-local projection feeds the existing grouped-bundle \(Z_n,N_n\) slots, and the static conservative shift cancels from the eliminated compatibility surface.
+\item The parent throat action packet fixes the wall-side isotropic and weak-axisymmetric data carried into later branch testing.
+\item The one-port Schur complement and outgoing dressing preserve the old nonnegative transfer factor and compact outgoing \(l=2\) fingerprint.
 \end{verificationchecklist}}
 
-\stagefield{Downstream use}{Stage~005 uses \(N_A(\omega)\) as the outgoing-transfer factor in each grouped lane.  Stage~006 collects the conservative coefficients from \eqref{eq:app-stage004-z-coeffs} into \(Z_{A0},Z_{A2},Z_{A4}\) and the transfer moments into \(N_{A0},N_{A2},N_{A4}\).  Later retarded-closure stages use \eqref{eq:app-stage004-outgoing-fingerprint} and \eqref{eq:app-stage004-wall-odd}.}
+\stagefield{Downstream use}{Stage~005 uses \(N_A(\omega)\) as the outgoing-transfer factor in each grouped lane, now read as the reduced normal form of the projection-first mixed-sector packet.  Stage~006 collects the conservative moments into \(Z_{A0},Z_{A2},Z_{A4}\) and the transfer moments into \(N_{A0},N_{A2},N_{A4}\).  Later weak-axisymmetric stages use the projected mouth bridge and parent-action packet as the provenance for how EM slippage and parent wall data can feed \(\Xi_1\), \(K_1\), and \(H_{\rm even}\) without claiming actual branch realization.}

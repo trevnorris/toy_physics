@@ -22,8 +22,8 @@ Snapshot date: `2026-04-21`
 | Metric | Count |
 |---|---:|
 | Total stages in archive | 236 |
-| SymPy audits present | 223 |
-| Mathematica audits present | 165 |
+| SymPy audits present | 240 |
+| Mathematica audits present | 166 |
 | Numerical stress artifacts present | 15 |
 | Stage-specific review notes present | 175 |
 | Stages with no executable audit | 11 |
@@ -33,6 +33,49 @@ Mathematica counts above are presence counts only. They are **not**
 independence counts. See `MATHEMATICA_MIRROR_POLICY.md` for the current rule
 that distinguishes secondary replay coverage from genuinely independent
 Mathematica mirrors.
+
+### Stage 004 substage update
+
+Snapshot addendum: `2026-05-11`
+
+Stage `004` has been split internally into ordered substages
+`004_001`--`004_018` for the projection-first Maxwell integration,
+parent-action packet, and retained reduced one-port normal form.  These are
+substage coverage artifacts, not new canonical stages, so the global stage
+count remains `236` and the Part I row remains `6` stages.
+
+The Stage `004` verification surface now includes eighteen ordered SymPy audits
+whose basenames match the eighteen TeX substages:
+
+- `stage004_001_projected_maxwell_readme`
+- `stage004_002_projected_maxwell_covariant`
+- `stage004_003_projected_maxwell_vector`
+- `stage004_004_projection_reduction_comparison`
+- `stage004_005_projected_maxwell_extension`
+- `stage004_006_projected_maxwell_near_throat`
+- `stage004_007_projected_maxwell_push_bundle_master`
+- `stage004_008_projected_maxwell_p2_bridge`
+- `stage004_009_projected_maxwell_stage4_primitive_bridge`
+- `stage004_010_projected_maxwell_mouth_taylor_master`
+- `stage004_011_projected_maxwell_mouth_taylor_gate_bridge`
+- `stage004_012_parent_throat_action_master`
+- `stage004_013_parent_throat_action_candidate`
+- `stage004_014_parent_throat_action_weak_axisym`
+- `stage004_015_parent_throat_action_bundle_master`
+- `stage004_016_parent_throat_action_isotropic_bundle`
+- `stage004_017_parent_throat_action_weak_axisym_packet`
+- `stage004_018_reduced_one_port_normal_form`
+
+The first seventeen SymPy audits are file-for-file migrations of the
+derivation-only `notes/em_projected` scripts through
+`step_18_parent_throat_action_weak_axisym_packet` into the root ledger audit
+order.  The `notes/em_projected/step_19_*` branch-export packet and `step_20+`
+computational/runtime diagnostics are intentionally excluded from paper
+coverage.  The eighteenth audit adapts the old Stage `004` reduced
+Maxwell/mixed audit as the retained one-port normal form.  File-for-file
+Mathematica mirrors for the new imported scripts have not been independently
+derived yet; only the legacy reduced Mathematica audit remains active for this
+Stage 004 substage split.
 
 ## Coverage By Part
 

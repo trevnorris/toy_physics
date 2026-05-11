@@ -160,6 +160,8 @@ Parent-action source summaries & Parent action summary. & Fully action-based \((
 \addlinespace
 Localized electromagnetic source summaries & Localized electromagnetic sector summary. & Inhomogeneous Maxwell equation from localized \((4+1)\)-dimensional action, zero-mode Maxwell reduction, thickness-controlled brane charge strength, KK corrections, retarded propagation, and source consistency. & \StatusExact{} / \StatusReduced{}. \\
 \addlinespace
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_001_projected_maxwell_readme_sympy_audit.py}--\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_017_parent_throat_action_weak_axisym_packet_sympy_audit.py} & Projected Maxwell and parent-action derivation bundle copied into the ledger script order. & Projection-first localized Maxwell law, measured-field/source-flux split, matched projection/reduction channel, near-mouth projected bundle bridge, mouth-Taylor gate sieve, parent throat action promotion, and weak-axisymmetric parent packet. & \StatusExact{} for projection identities; \StatusReduced{} / \StatusExactClosure{} for matched and bundle closures. \\
+\addlinespace
 Plasma and open-system source summaries & Plasma and open-system projection summary. & Multi-species charged medium, projection kernel \(W(w)\), leakage terms, mixed fields \(E_w\) and \(C_a\), finite-localization transverse modes, and conservative brane-bulk exchange interpretation. & \StatusExact{} for balance identities; \StatusReduced{} for brane limits. \\
 \addlinespace
 1PN bridge source summaries & Bridge from parent action to 1PN coefficient logic. & Topology discriminator \(\kappa_{\rm add}=1/2\), EOS exponent \(n=5\), EIH cross-sector constants, wave-supported kinematics, and explicit adiabatic closure data. & Mixed: \StatusReduced{} / \StatusExactClosure{}. \\
@@ -168,6 +170,21 @@ Plasma and open-system source summaries & Plasma and open-system projection summ
 
 \paragraph{Use rule.}
 The parent-action files establish the exact field-theory arena and the controlled brane-reduction hooks.  They do not by themselves prove the completed moving-throat response branch.  When this companion imports parent equations, it should preserve whether the statement is exact in the parent theory or only true after a brane reduction.
+
+\paragraph{Projected-Maxwell scope rule.}
+Only the root ledger audits
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_001_*}
+through
+\SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_017_*}
+are file-for-file imported projected-EM derivation sources for the present
+companion; \SrcPath{research/pde_ledger/scripts/moving_throat_pde_stage004_018_reduced_one_port_normal_form_sympy_audit.py}
+is the retained reduced one-port normal-form adapter.  The
+\SrcPath{notes/em_projected/step_19*} branch-export packet and the later
+\SrcPath{notes/em_projected/step_20*} and following files are computational or
+branch-diagnostic material: branch-family scans, frontiers, runtime monitors,
+CFD adapters, fail-fast classifiers, and falsification tools.  They may be
+useful private diagnostics, but they are deliberately excluded from the paper
+derivation, result anchors, and Stage~004 verification claims.
 
 \section{Conservative post-Newtonian and radiative bridge sources}
 \label{sec:pn-source-files}

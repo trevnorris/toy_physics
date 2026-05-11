@@ -1,0 +1,27 @@
+\subsection*{Stage 004.009: Stage-4 primitive bridge}
+\label{subsec:stage004009-stage4-primitive-bridge}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_009_projected_maxwell_stage4_primitive_bridge_sympy_audit.py}.
+It rewrites the projected bundle shifts in the primitive variables used by the
+old Stage~004 reduced normal form.
+
+\paragraph{Primitive packet.}
+The primitive reduced packet is built from the denominator
+\[
+\Delta=A\,W-R^2,
+\]
+the conservative numerator \(Q\), the mixed transfer numerator \(P\), and the
+\(\omega^2\) denominator slope \(S_2\).  At the mouth, projected perturbations
+of these primitives determine the \(z_n\) and \(n_n\) slots used in
+Stage~004.007.
+
+\paragraph{Transport role.}
+The audit checks both fixed-target and transported-target compatibility
+shifts.  This is the step that connects the projection-first mouth data to the
+same primitive variables that later appear in the one-port Schur complement.
+
+\paragraph{Output.}
+Stage~004.009 exports the primitive-to-bundle bridge used by the mouth-Taylor
+substages.

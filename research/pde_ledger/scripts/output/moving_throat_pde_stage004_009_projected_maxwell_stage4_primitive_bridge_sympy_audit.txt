@@ -1,0 +1,92 @@
+# SymPy Audit Output
+# Script: moving_throat_pde_stage004_009_projected_maxwell_stage4_primitive_bridge_sympy_audit.py
+# Date: 2026-05-11T02:30:03-06:00
+# Elapsed: 16s
+# Exit code: 0
+# Status: PASS
+#
+
+
+================================================================================================
+1) Primitive one-port Maxwell/mixed formulas
+================================================================================================
+Z0 =
+  Q/Delta
+Z2 =
+  (-Delta*H + Q*S2)/Delta**2
+Z4 =
+  (-Delta*H*S2 + Q*(-Delta + S2**2))/Delta**3
+N0 =
+  P**2/Delta**2
+N2 =
+  2*P*(-Delta*Gw + P*S2)/Delta**3
+N4 =
+  (Delta**2*Gw**2 - 4*Delta*Gw*P*S2 - 2*Delta*P**2 + 3*P**2*S2**2)/Delta**4
+We now perturb the primitive one-port data by small mouth-local projected-Maxwell slippages:
+  Q -> Q + ell*q1,
+  S2 -> S2 + ell*s1,
+  H  -> H  + ell*h1,
+  Delta -> Delta + ell*d1,
+  P -> P + ell*p1,
+  Gw -> Gw + ell*g1.
+
+================================================================================================
+2) Induced bundle corrections z0, z2, z4, n0, n2, n4
+================================================================================================
+z0 =
+  (Delta*q1 - Q*d1)/Delta**2
+z2 =
+  (-Delta**2*h1 + Delta*(H*d1 + Q*s1 + S2*q1) - 2*Q*S2*d1)/Delta**3
+z4 =
+  (-Delta**2*H*s1 - Delta**2*S2*h1 - Delta**2*q1 + 2*Delta*H*S2*d1 + 2*Delta*Q*S2*s1 + 2*Delta*Q*d1 + Delta*S2**2*q1 - 3*Q*S2**2*d1)/Delta**4
+n0 =
+  2*P*(Delta*p1 - P*d1)/Delta**3
+n2 =
+  -(2*Delta**2*(Gw*p1 + P*g1) - 2*Delta*P*(2*Gw*d1 + P*s1 + 2*S2*p1) + 6*P**2*S2*d1)/Delta**4
+n4 =
+  2*(Delta**3*Gw*g1 - Delta**2*Gw**2*d1 - 2*Delta**2*Gw*P*s1 - 2*Delta**2*Gw*S2*p1 - 2*Delta**2*P*S2*g1 - 2*Delta**2*P*p1 + 6*Delta*Gw*P*S2*d1 + 3*Delta*P**2*S2*s1 + 3*Delta*P**2*d1 + 3*Delta*P*S2**2*p1 - 6*P**2*S2**2*d1)/Delta**5
+
+================================================================================================
+3) Reading the primitive slippages
+================================================================================================
+Three useful structural facts are immediate:
+  1. z0 depends only on (q1, d1).
+  2. z2 depends only on (q1, s1, h1, d1).
+  3. n0 depends only on (p1, d1).
+So the first isotropic normalization shift is controlled by the primitive transfer-leg slippage p1,
+the primitive denominator slippage d1, and the primitive conservative source slippage q1.
+
+================================================================================================
+4) Direct primitive contribution to Xi1 = P1/P0
+================================================================================================
+Xi1^(primitive,static) =
+  2*p1/P - 2*d1/Delta + q1/(D0*Delta) - Q*d1/(D0*Delta**2)
+So at the one-port primitive level the weak-axisymmetric static prefactor slope receives contributions from:
+  - transfer-leg slippage p1,
+  - denominator slippage d1,
+  - and direct conservative source slippage q1 through z0/D0.
+
+================================================================================================
+5) Direct primitive contribution to the isotropic compatibility shift
+================================================================================================
+delta Compat^(primitive) =
+  (6*Delta**3*Ptarget*S*T*h1 - 3*Delta**2*H*Ptarget*S**2*s1 - 6*Delta**2*H*Ptarget*S*T*d1 + 2*Delta**2*P*T**2*p1 - 6*Delta**2*Ptarget*Q*S*T*s1 - 3*Delta**2*Ptarget*S**2*S2*h1 - 3*Delta**2*Ptarget*S**2*q1 - 6*Delta**2*Ptarget*S*S2*T*q1 + 6*Delta*H*Ptarget*S**2*S2*d1 - 2*Delta*P**2*T**2*d1 + 6*Delta*Ptarget*Q*S**2*S2*s1 + 6*Delta*Ptarget*Q*S**2*d1 + 12*Delta*Ptarget*Q*S*S2*T*d1 + 3*Delta*Ptarget*S**2*S2**2*q1 - 9*Ptarget*Q*S**2*S2**2*d1)/(Delta**4*Ptarget*T**2)
+Because delta Compat depends on z2, z4, and n0 only, the primitive contributors that matter here are
+  q1, s1, h1, d1, p1,
+while the Gw slope g1 first appears only through n2 and n4, i.e. in the constant-prefactor transport.
+The script also checks that z0 cancels from both the fixed-target and transported-target compatibility shifts,
+even though the normalization K surface still carries z0 before compatibility elimination.
+
+================================================================================================
+6) Practical reading
+================================================================================================
+At this one-port primitive level the projected-Maxwell near-throat correction has a clean hierarchy:
+  - (q1, d1, p1) are the first static normalization movers,
+  - (s1, h1) first matter through z2 and z4, hence through one-pole / compatibility transport,
+  - g1 first matters for N2 and N4, hence for whether the branch stays on the constant-prefactor outgoing surface.
+
+This is a useful way to decide which concrete throat-local projected ansatz to try next.
+
+STATUS: PASS
+
+EXIT_CODE: 0

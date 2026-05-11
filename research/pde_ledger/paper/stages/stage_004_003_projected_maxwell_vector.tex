@@ -1,0 +1,45 @@
+\subsection*{Stage 004.003: Vector projected Maxwell split}
+\label{subsec:stage004003-projected-maxwell-vector}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_003_projected_maxwell_vector_sympy_audit.py}.
+It checks the \(3+1\) vector signs, the measured-field/source-flux split, and
+the boundary discharge terms.
+
+\paragraph{Measured and flux fields.}
+The homogeneous equations use the measured projected fields
+\begin{equation}
+\label{eq:stage004003-measured-fields}
+\mathbf E_{\rm meas}=\int W\mathbf E\,dw,
+\qquad
+\mathbf B_{\rm meas}=\int W\mathbf B\,dw,
+\end{equation}
+whereas the inhomogeneous equations use the source-coupled flux fields
+\begin{equation}
+\label{eq:stage004003-flux-fields}
+\mathbf D_{\rm flux}=\int WZ\mathbf E\,dw,
+\qquad
+\mathbf H_{\rm flux}=\int WZ\mathbf B\,dw.
+\end{equation}
+Identifying these two pairs is an additional closure assumption.  It is not
+part of the parent projection.
+
+\paragraph{Projected vector laws.}
+With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
+fixed by the audit:
+\begin{equation}
+\partial_t\mathbf B_{\rm meas}+\nabla\times\mathbf E_{\rm meas}=0,
+\end{equation}
+\begin{equation}
+\label{eq:stage004003-ampere}
+\nabla\times\mathbf H_{\rm flux}-\partial_t\mathbf D_{\rm flux}
+=\mu_0\mathbf J_{\rm proj}+\mathbf L_{\rm mix}.
+\end{equation}
+Here \(\mathbf L_{\rm mix}\) is the vector form of the transverse leakage term
+in \eqref{eq:stage004002-projected-maxwell-expanded}.
+
+\paragraph{Output.}
+Stage~004.003 exports the field split
+\eqref{eq:stage004003-measured-fields}--\eqref{eq:stage004003-flux-fields}
+and the vector-law sign convention used by the rest of Stage~004.

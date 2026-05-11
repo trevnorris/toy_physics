@@ -12,7 +12,7 @@ This chapter is the archive entry that later parts treat as shared infrastructur
 \begin{readermap}
 \item[Primary question] How does the derivation program pass from the parent PDE model to a reusable reduced wall/support/outgoing packet?
 \item[Starting inputs] The declared \((4+1)\)-dimensional GNLS/Maxwell parent theory, the old breathing variables \((a,L)\), and the confinement lift \(V_{\rm conf}(\mathbf X;a,L)\to V_{\rm conf}(\mathbf X;\Sigma)\).
-\item[Delivers] The moving-surface lift; the breathing reduction; conservative Schur complements for the BdG and Maxwell/mixed sectors; and the grouped \(D,N,P\) normalization language.
+\item[Delivers] The moving-surface lift; the breathing reduction; the BdG support Schur complement; the projection-first Maxwell law with its matched one-port normal form; and the grouped \(D,N,P\) normalization language.
 \item[Used by] Part II for overlap and spectral placement, Part III for support completion, and Parts IV--VIII for retarded, quotient, realization, and strict/relaxed branch tests.
 \item[Result anchors] \resultanchor{MTDC-T1}, \resultanchor{MTDC-T2}, \resultanchor{MTDC-T3}, and \resultanchor{MTDC-T4}; the closing section hands off directly to \resultanchor{MTDC-T5}.
 \end{readermap}
@@ -26,16 +26,16 @@ Stages & Packet & Status & Carry-forward output \\
 \midrule
 001--002 & Parent import and geometry lift & \StatusExact{} / \StatusExactClosure{} & Shape field \(R(\Omega,w,t)\), promoted confinement coupling, and the two-mode breathing reduction recovering \((\delta a,\delta L)\) as collective moments. \\
 \addlinespace
-003--004 & Conservative response kernels & \StatusReduced{} / \StatusExactClosure{} & Stable-mode and mixed-sector Schur complements, pole shifts, and the first passive/outgoing \(l=2\) bridge. \\
+003--004 & Conservative response and projected EM bridge & \StatusExact{} / \StatusReduced{} / \StatusExactClosure{} & Stable-mode Schur complements, projection-first Maxwell leakage, matched mixed-sector normal form, pole shifts, and the first passive/outgoing \(l=2\) bridge. \\
 \addlinespace
 005--006 & Grouped normalization packet & \StatusExactClosure{} / \StatusOpen{} & Grouped projectors, normalized \(D,N,P\) coefficients, isotropic ratio \(P_0=N_0/D_0\), and anisotropy transport laws reused later. \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\claimstatus{Mixed.  The imported parent equations are \StatusExact{}.  The moving-surface algebra, breathing reduction, Schur complements, grouped projectors, and normalized branch formulas are \StatusExactClosure{} once the declared reduced closure is adopted.  Stable-mode reduction, low-frequency expansion, and outgoing-port attachment are \StatusReduced{}.  Actual nonlinear branch realization of the final normalization target is \StatusOpen{}.}
+\claimstatus{Mixed.  The imported parent equations and projection-first Maxwell identities are \StatusExact{} inside the declared parent theory and projection kernel.  The moving-surface algebra, breathing reduction, Schur complements, grouped projectors, and normalized branch formulas are \StatusExactClosure{} once the declared reduced closure is adopted.  Stable-mode reduction, matched Maxwell reduction, low-frequency expansion, and outgoing-port attachment are \StatusReduced{}.  Actual nonlinear branch realization of the final normalization target is \StatusOpen{}.}
 
-\derivationfield{What this part proves}{Part I fixes the parent-theory import, the moving-surface lift, the first reduced wall/BdG/Maxwell response operators, and the grouped normalization packet that later parts treat as shared infrastructure.}
+\derivationfield{What this part proves}{Part I fixes the parent-theory import, the moving-surface lift, the first reduced wall/BdG response operators, the projection-first Maxwell-to-bundle bridge, and the grouped normalization packet that later parts treat as shared infrastructure.}
 \derivationfield{What this part does not prove}{It does not prove that the completed nonlinear moving-throat branch realizes the final outgoing-normalization target; it only derives the reduced object that the branch must realize.}
 \derivationfield{Why later parts need it}{Every later part reuses this backbone. Part II builds explicit overlap and selected-mode geometry on top of it, and all later closure, quotient, and realization arguments inherit its operator and normalization language.}
 
@@ -56,7 +56,7 @@ This part has a narrow verification contract.  It must show that the later reduc
 \text{grouped response bundle}.
 \end{aligned}
 \end{equation}
-The chain is deliberately status-stratified.  The parent action and its Euler--Lagrange identities are exact inside the declared parent model.  The shape-field lift is the working effective geometry closure.  The stable-mode and Maxwell/mixed reductions are exact after their reduced normal-coordinate ansatz is declared.  The final outgoing normalization condition is an exact branch test, but its realization by the actual moving-throat branch remains open at this stage.
+The chain is deliberately status-stratified.  The parent action and its Euler--Lagrange identities are exact inside the declared parent model.  The shape-field lift is the working effective geometry closure.  The projected Maxwell law is exact once the observation kernel is declared, while the old reduction-first Maxwell block survives only as a matched one-port normal form.  The stable-mode and Maxwell/mixed Schur complements are exact after their reduced normal-coordinate ansatz is declared.  The final outgoing normalization condition is an exact branch test, but its realization by the actual moving-throat branch remains open at this stage.
 
 \begin{theorem}[Part I backbone theorem]
 \label{thm:part01-backbone}
@@ -74,7 +74,7 @@ the linearized throat problem admits a reduced wall/support/outgoing response de
   \item The old variables \(a(t)\) and \(L(t)\) are recovered as lowest collective moments of \(R\), not treated as fundamental moving-throat coordinates.
   \item The real \(l=2\) wall/support sector splits into grouped lanes \(20,21,22\), with the \(21\) and \(22\) entries denoting real cosine/sine pairs.
   \item Stable matter support modes generate conservative Schur-complement corrections to the wall operator.
-  \item Localized Maxwell and mixed \(A_w/F_{\mu w}/J^w\) modes generate conservative self-energies and a passive/outgoing transfer factor.
+  \item Projection-first localized Maxwell theory gives an open-system brane law; its matched mixed \(A_w/F_{\mu w}/J^w\) normal form generates conservative self-energies and a passive/outgoing transfer factor.
   \item On the isotropic grouped branch, the leading outgoing quadrupole test reduces to the single invariant ratio
   \begin{equation}
   \label{eq:part01-normalization-product-overview}
@@ -89,7 +89,7 @@ The derivation of \eqref{eq:part01-normalization-product-overview} is exact insi
 \end{theorem}
 
 \begin{proof}
-The statement is a compilation of the six stage-level reductions.  The moment recovery and modal decomposition follow from the shape-field definition.  The breathing reduction follows by inserting the lowest axisymmetric ansatz into the quadratic wall action.  The BdG and Maxwell/mixed kernels follow by exact Schur complements in the declared reduced normal-coordinate systems.  The final normalization product follows by converting the conservative grouped operator into a normalized response and multiplying by the compact outgoing \(l=2\) fingerprint.  Each individual step is written below with its own status boundary.
+The statement is a compilation of the six stage-level reductions.  The moment recovery and modal decomposition follow from the shape-field definition.  The breathing reduction follows by inserting the lowest axisymmetric ansatz into the quadratic wall action.  The BdG kernel follows by an exact Schur complement in the declared stable-mode coordinates.  The Maxwell sector first follows by exact projection of the localized parent equation, then by matched mouth/bundle transport, parent-action packet bookkeeping, and the reduced Schur complement for the one-port mixed normal form.  The final normalization product follows by converting the conservative grouped operator into a normalized response and multiplying by the compact outgoing \(l=2\) fingerprint.  Each individual step is written below with its own status boundary.
 \end{proof}
 
 \section{Exact parent action and field-equation import}
@@ -226,9 +226,11 @@ The localized Maxwell Lagrangian density is
 \mathcal L_{\rm EM}
 =
 -\frac{Z(w)}{4\mu_0}F_{MN}F^{MN}
--\frac{1}{2\xi\mu_0}(\partial\!\cdot\!A)^2
+-\frac{H(w)}{2\xi\mu_0}(\partial\!\cdot\!A)^2
 -A_MJ_{\rm ext}^M.
 \end{equation}
+Here \(H(w)=1\) is the old unweighted gauge-fixing convention, while
+\(H(w)=Z(w)\) is the projection-stable localized convention used below.
 The matter current generated by minimal coupling is not to be double-counted in \(J_{\rm ext}^M\).  The source entering Maxwell's equation is
 \begin{equation}
 J_{\rm tot}^M=J_\psi^M+J_{\rm ext}^M.
@@ -238,7 +240,7 @@ Variation with respect to \(A_N\) gives
 \label{eq:part01-maxwell-equation}
 \boxed{
 \partial_M\!\bigl(Z(w)F^{MN}\bigr)
-+\frac1\xi\partial^N(\partial\!\cdot\!A)
++\frac1\xi\partial^N\!\bigl(H(w)\partial\!\cdot\!A\bigr)
 =
 \mu_0J_{\rm tot}^N}.
 \end{equation}
@@ -291,7 +293,24 @@ This equation is frequently useful, but it is not a charge dictionary.  It recor
 \subsection{Projection and reduction hooks}
 \label{subsec:part01-projection-hooks}
 
-For a normalized brane-observation kernel \(W(w)\), projection defines
+For a normalized brane-observation kernel \(W(w)\), projection means
+\begin{equation}
+\label{eq:part01-projection-operator}
+\langle Q\rangle_W=\int_D W(w)Q(w)\,dw,
+\qquad
+\int_DW(w)\,dw=1.
+\end{equation}
+Projection commutes with brane derivatives, but not with the transverse
+derivative:
+\begin{equation}
+\label{eq:part01-projection-ibp}
+\langle \partial_w Q\rangle_W
+=\bigl[WQ\bigr]_{\partial D}-\int_DW'(w)Q(w)\,dw.
+\end{equation}
+This identity is the reason a projection-first brane theory is generally an
+open system.
+
+Applied to the matter current, the same projection defines
 \begin{equation}
 \rho_{\rm brane}(\mathbf x,t)=\int W(w)\rho(\mathbf x,w,t)\,dw,
 \qquad
@@ -308,6 +327,68 @@ where
 S_{\rm leak}
 =-[Wj^w]_{-\infty}^{+\infty}+\int W'(w)j^w\,dw.
 \end{equation}
+
+Applied to the localized Maxwell equation \eqref{eq:part01-maxwell-equation},
+projection gives, for brane index \(\nu\),
+\begin{equation}
+\label{eq:part01-projected-maxwell-law}
+\boxed{
+\partial_\mu\langle ZF^{\mu\nu}\rangle_W
++\bigl[WZF^{w\nu}\bigr]_{\partial D}
+-\int_DW'(w)ZF^{w\nu}\,dw
++\frac1\xi\partial^\nu\langle H\,\partial\!\cdot\!A\rangle_W
+=\mu_0\langle J^\nu\rangle_W}.
+\end{equation}
+The homogeneous equations project in the measured fields
+\begin{equation}
+\label{eq:part01-measured-vs-flux-fields}
+E_{{\rm meas},a}=\langle F_{a0}\rangle_W,
+\qquad
+B_{{\rm meas},ab}=\langle F_{ab}\rangle_W,
+\end{equation}
+whereas \eqref{eq:part01-projected-maxwell-law} uses the source-coupled fluxes
+\begin{equation}
+D_{\rm flux}^{a}=\langle ZF^{a0}\rangle_W,
+\qquad
+H_{\rm flux}^{ab}=\langle ZF^{ab}\rangle_W.
+\end{equation}
+Identifying measured fields with flux fields is therefore a closure assumption,
+not a parent identity.
+
+In the zero-mode channel
+\begin{equation}
+A_\mu(x,w)=a_\mu(x),
+\qquad
+A_w=0,
+\qquad
+F^{w\nu}=0,
+\qquad
+J^\nu(x,w)=j^\nu(x)S(w),
+\end{equation}
+the projected effective parameters are
+\begin{equation}
+\label{eq:part01-projected-effective-parameters}
+\boxed{
+\mu_{0,\rm eff}^{\rm proj}
+=\mu_0\frac{\int WS\,dw}{\int WZ\,dw},
+\qquad
+\xi_{\rm eff}^{\rm proj}
+=\xi\frac{\int WZ\,dw}{\int WH\,dw}}.
+\end{equation}
+The matched reduction-first brane Maxwell law is recovered by the localized
+gauge choice and source profile
+\begin{equation}
+\label{eq:part01-projection-reduction-match}
+\boxed{
+H=Z,
+\qquad
+S(w)=\frac{Z(w)}{Z_{\rm int}},
+\qquad
+\mu_{0,\rm eff}^{\rm proj}=\frac{\mu_0}{Z_{\rm int}}}.
+\end{equation}
+Thus the reduction-first Maxwell sector is retained below as a controlled
+matched channel and one-port normal form, not as the generic parent projection.
+
 Under the Helmholtz split
 \begin{equation}
 \mathbf v_{\rm brane}=\nabla_3\varphi+\mathbf v_T,
@@ -326,11 +407,11 @@ This is an imported lower-order hook rather than a new Stage 1--6 result.  It fi
 
 \begin{theorem}[Parent-theory import]
 \label{thm:part01-parent-import}
-Within the corrected charge ontology and the declared localized Maxwell/GNLS parent action, the moving-throat derivation inherits the exact equations \eqref{eq:part01-gnls}, \eqref{eq:part01-number-current}, \eqref{eq:part01-maxwell-equation}, \eqref{eq:part01-mixed-fields}, and \eqref{eq:part01-vorticity-gauge}.  Any moving-throat closure must therefore preserve the mixed-channel ontology and may only suppress \(A_w,J^w,F_{\mu w},E_w,C_a\) as part of a controlled far-field brane reduction.
+Within the corrected charge ontology and the declared localized Maxwell/GNLS parent action, the moving-throat derivation inherits the exact equations \eqref{eq:part01-gnls}, \eqref{eq:part01-number-current}, \eqref{eq:part01-maxwell-equation}, \eqref{eq:part01-mixed-fields}, and \eqref{eq:part01-vorticity-gauge}.  After a brane-observation kernel is declared, it also inherits the exact projected Maxwell law \eqref{eq:part01-projected-maxwell-law}.  Any moving-throat closure must therefore preserve the mixed-channel ontology and may only suppress \(A_w,J^w,F_{\mu w},E_w,C_a\) as part of a controlled matched brane reduction.
 \end{theorem}
 
 \begin{proof}
-The equations are direct Euler--Lagrange consequences of the imported parent action and the minimal-coupling definitions.  The mixed fields in \eqref{eq:part01-mixed-fields} are components of the gauge-invariant field strength.  Therefore they cannot be removed by a gauge choice.  The zero-mode brane Maxwell reduction may set them to zero as a branch assumption, but the moving-throat PDE that is supposed to compute microscopic response data must retain them until such a branch restriction is explicitly imposed.
+The equations are direct Euler--Lagrange consequences of the imported parent action and the minimal-coupling definitions.  The projected Maxwell law follows by applying \eqref{eq:part01-projection-ibp} to the transverse derivative in \eqref{eq:part01-maxwell-equation}.  The mixed fields in \eqref{eq:part01-mixed-fields} are components of the gauge-invariant field strength.  Therefore they cannot be removed by a gauge choice.  The zero-mode brane Maxwell reduction may set them to zero as a matched branch assumption, but the moving-throat PDE that is supposed to compute microscopic response data must retain them until such a branch restriction is explicitly imposed.
 \end{proof}
 
 \section{Hybrid level-set / shape-field representation}
@@ -850,7 +931,7 @@ Inside the stable normal-mode reduction of the linearized matter sector, integra
 The reduced matter coordinates enter quadratically and linearly.  Their frequency-domain equations are algebraic.  Solving those equations and substituting back into the wall equations gives the Schur complements.  Expanding \((\Omega^2-\omega^2)^{-1}\) in powers of \(\omega^2\) gives the stated low-frequency coefficients.  The isotropy statement follows from equality of the three lane data.
 \end{proof}
 
-\section{Localized Maxwell/mixed response and outgoing \texorpdfstring{\(l=2\)}{l=2} bridge}
+\section{Projection-first Maxwell/mixed response and outgoing \texorpdfstring{\(l=2\)}{l=2} bridge}
 \label{sec:part01_parent_geometry:localized-maxwell-mixed-response-and-outgoing-l-2-}
 
 \subsection{Why the mixed sector enters before the outgoing bridge}
@@ -858,7 +939,7 @@ The reduced matter coordinates enter quadratically and linearly.  Their frequenc
 
 The BdG support kernel is conservative.  It can produce even low-frequency response moments and pole shifts, but by itself it does not produce an honest passive/outgoing odd term.  The first available microscopic carrier of an outgoing branch is the localized Maxwell/mixed block, because \(A_w\), \(F_{\mu w}\), and \(J^w\) are present in the parent ontology and are not gauge artifacts.
 
-Stage 4 therefore studies the minimal reduced lane containing one wall coordinate \(Q_l\), one brane-like localized Maxwell coordinate \(A_l\), and one mixed-sector coordinate \(W_l\).  This is not the full PDE.  It is the smallest reduced model that can carry both conservative gauge self-energy and passive outgoing transfer.
+Stage 4 first projects the localized parent Maxwell equation, producing the exact open-system law \eqref{eq:part01-projected-maxwell-law}.  Only after the matched channel \eqref{eq:part01-projection-reduction-match} is declared does the derivation compress the EM sector into a minimal reduced lane containing one wall coordinate \(Q_l\), one brane-like localized Maxwell coordinate \(A_l\), and one mixed-sector coordinate \(W_l\).  This is not the full PDE.  It is the normal form used to carry both conservative gauge self-energy and passive outgoing transfer into the grouped bundle.
 
 \subsection{One-lane Maxwell/mixed Lagrangian}
 \label{subsec:part01-maxwell-mixed-L}
@@ -1005,13 +1086,13 @@ N_0(\omega)=O(\omega^2).
 \end{equation}
 Therefore an outgoing scalar port with \(\Pi_0^{\rm out}(\omega)=i\gamma_1\omega+\cdots\) contributes at wall level only as \(O(i\omega^3)\).  This is a compatibility mechanism, not yet a full scalar no-go theorem.
 
-\begin{theorem}[First Maxwell/mixed outgoing bridge]
+\begin{theorem}[Projection-first Maxwell/mixed outgoing bridge]
 \label{thm:part01-maxwell-mixed-bridge}
-In the one-lane localized Maxwell/mixed reduction, the wall inherits an outgoing odd contribution through the exact transfer factor \eqref{eq:part01-outgoing-transfer-N}.  For \(l=2\), the leading wall-level odd coefficient is \eqref{eq:part01-wall-odd-quadrupole}; the remaining normalization problem is the computation of the static transfer factor on the actual moving-throat branch.
+The exact projected Maxwell law \eqref{eq:part01-projected-maxwell-law} retains the transverse mixed channel before any brane reduction.  In the matched one-lane Maxwell/mixed normal form, the wall inherits an outgoing odd contribution through the exact transfer factor \eqref{eq:part01-outgoing-transfer-N}.  For \(l=2\), the leading wall-level odd coefficient is \eqref{eq:part01-wall-odd-quadrupole}; the remaining normalization problem is the computation of the static transfer factor on the actual moving-throat branch.
 \end{theorem}
 
 \begin{proof}
-Eliminate the two internal gauge coordinates from \eqref{eq:part01-maxwell-mixed-L}; this gives the conservative self-energy \eqref{eq:part01-sigma-cons}.  Replacing \(W_l\) by \(W_l-\Pi_l^{\rm out}\) and expanding to first order in \(\Pi_l^{\rm out}\) gives \eqref{eq:part01-outgoing-transfer-N}.  Multiplying by the compact outgoing \(l=2\) fingerprint coefficient \eqref{eq:part01-Gamma2-port} gives \eqref{eq:part01-wall-odd-quadrupole}.
+Projection supplies the mixed transverse source term in \eqref{eq:part01-projected-maxwell-law}; the matched channel \eqref{eq:part01-projection-reduction-match} is the reduction in which it can be represented by a finite one-port packet.  Eliminating the two internal gauge coordinates from \eqref{eq:part01-maxwell-mixed-L} gives the conservative self-energy \eqref{eq:part01-sigma-cons}.  Replacing \(W_l\) by \(W_l-\Pi_l^{\rm out}\) and expanding to first order in \(\Pi_l^{\rm out}\) gives \eqref{eq:part01-outgoing-transfer-N}.  Multiplying by the compact outgoing \(l=2\) fingerprint coefficient \eqref{eq:part01-Gamma2-port} gives \eqref{eq:part01-wall-odd-quadrupole}.
 \end{proof}
 
 \section{Full grouped real \texorpdfstring{\(P_2\)}{P2} bundle transition}
@@ -1020,7 +1101,7 @@ Eliminate the two internal gauge coordinates from \eqref{eq:part01-maxwell-mixed
 \subsection{Conservative operator moments and normalized response moments}
 \label{subsec:part01-operator-to-response}
 
-Stages 5 and 6 lift the one-lane Maxwell/mixed bridge into the full grouped real bundle.  For each grouped lane \(A\in\{20,21,22\}\), write the conservative operator as
+Stages 5 and 6 lift the projection-first Maxwell packet, through its matched one-port normal form, into the full grouped real bundle.  For each grouped lane \(A\in\{20,21,22\}\), write the conservative operator as
 \begin{equation}
 \label{eq:part01-DA-cons-expansion}
 D_A^{\rm cons}(\omega)
@@ -1242,6 +1323,54 @@ D_{A2}=-\bigl(M_A+B_{A2}+Z_{A2}\bigr),
 D_{A4}=-\bigl(B_{A4}+Z_{A4}\bigr)}.
 \end{equation}
 
+\subsection{Projected Maxwell slippage into grouped slots}
+\label{subsec:part01-projected-maxwell-slippage}
+
+The projection-first correction is transported into the same grouped variables
+by the slot shifts
+\begin{equation}
+\label{eq:part01-projected-slot-shifts}
+Z_n\mapsto Z_n+\varepsilon z_n,
+\qquad
+N_n\mapsto N_n+\varepsilon n_n,
+\qquad
+n\in\{0,2,4\}.
+\end{equation}
+At a symmetric interior slice \(\varepsilon=O(\sigma^2)\), while a one-sided
+mouth projection gives \(\varepsilon=O(\ell)\).  On an isotropic lane, the
+induced response shifts are
+\begin{equation}
+\label{eq:part01-projected-du2-du4}
+\delta u_2=\frac{D_0z_2-D_2z_0}{D_0^2},
+\qquad
+\delta u_4=
+\frac{D_0^2z_4-D_0(2D_2z_2+D_4z_0)+2D_2^2z_0}{D_0^3},
+\end{equation}
+and the static outgoing-prefactor shift is
+\begin{equation}
+\label{eq:part01-projected-dp0}
+\delta P_0=\frac{D_0n_0+N_0z_0}{D_0^2}.
+\end{equation}
+For the eliminated isotropic one-pole compatibility surface
+\begin{equation}
+\mathcal C=\frac{N_0}{P_{0,\rm target}}-\frac{3S^2}{T},
+\qquad
+S=M+B_2+Z_2,\quad T=B_4+Z_4,
+\end{equation}
+the projected variation is
+\begin{equation}
+\label{eq:part01-projected-compatibility-variation}
+\boxed{
+\delta\mathcal C
+=\frac{n_0}{P_{0,\rm target}}
+-\frac{6Sz_2}{T}
++\frac{3S^2z_4}{T^2}}.
+\end{equation}
+The static conservative shift \(z_0\) cancels from this eliminated surface.
+It still changes \(P_0\) through \eqref{eq:part01-projected-dp0}, so the
+projection-first EM correction remains live in the normalization branch even
+when it does not move the one-pole compatibility equation.
+
 \subsection{Isotropic branch and final Part I normalization test}
 \label{subsec:part01-isotropic-normalization-test}
 
@@ -1347,11 +1476,11 @@ These formulas will be used later when weak-axisymmetric anisotropy is transport
 
 \begin{theorem}[Full grouped \(P_2\) bundle and isotropic normalization test]
 \label{thm:part01-full-grouped-bundle}
-Inside the full reduced wall/BdG/Maxwell/mixed grouped-bundle closure, the coupled conservative moments and outgoing-transfer moments are given by \eqref{eq:part01-B-moments}--\eqref{eq:part01-full-D-coefficients}.  On the isotropic branch the leading outgoing quadrupole normalization reduces to the single scalar condition \eqref{eq:part01-final-normalization}.  First-order anisotropy around that branch is transported by \eqref{eq:part01-u-anisotropy-transport} and \eqref{eq:part01-P0-anisotropy-transport}.
+Inside the full reduced wall/BdG/projected-Maxwell grouped-bundle closure, the coupled conservative moments and outgoing-transfer moments are given by \eqref{eq:part01-B-moments}--\eqref{eq:part01-full-D-coefficients}, with projection-first EM slippage transported by \eqref{eq:part01-projected-slot-shifts}--\eqref{eq:part01-projected-compatibility-variation}.  On the isotropic branch the leading outgoing quadrupole normalization reduces to the single scalar condition \eqref{eq:part01-final-normalization}.  First-order anisotropy around that branch is transported by \eqref{eq:part01-u-anisotropy-transport} and \eqref{eq:part01-P0-anisotropy-transport}.
 \end{theorem}
 
 \begin{proof}
-The full grouped bundle is the direct sum of the lane-wise reduced mechanisms from Stages 3 and 4.  The BdG support moments, conservative Maxwell/mixed moments, and outgoing-transfer moments add to the wall operator as shown in \eqref{eq:part01-full-D-coefficients}.  The normalized response and prefactor expansions are algebraic inversions of \(D_A^{\rm cons}\) and \(D_A^{\rm cons}{}^2\), giving \eqref{eq:part01-isotropic-u-P}.  Equality of the three grouped lanes kills the projector components \(P_a\) and \(P_b\), leaving the scalar ratio \(N_0/D_0\).  Linearizing the definitions of \(u_2^{(A)}\) and \(P_0^{(A)}\) gives the anisotropy transport laws.
+The full grouped bundle is the direct sum of the lane-wise reduced mechanisms from Stages 3 and 4.  The BdG support moments, conservative Maxwell/mixed moments, and outgoing-transfer moments add to the wall operator as shown in \eqref{eq:part01-full-D-coefficients}; projection-first corrections enter the same \(Z_n,N_n\) slots by \eqref{eq:part01-projected-slot-shifts}.  The normalized response and prefactor expansions are algebraic inversions of \(D_A^{\rm cons}\) and \(D_A^{\rm cons}{}^2\), giving \eqref{eq:part01-isotropic-u-P}.  Equality of the three grouped lanes kills the projector components \(P_a\) and \(P_b\), leaving the scalar ratio \(N_0/D_0\).  Linearizing the definitions of \(u_2^{(A)}\) and \(P_0^{(A)}\) gives the anisotropy transport laws.
 \end{proof}
 
 \section{Part I audit summary and handoff to Part II}
@@ -1364,7 +1493,7 @@ Part I establishes the following stable outputs.
   \item \textbf{Wall modal structure.}  The distributed wall action separates the scalar lane, residual geometry lane, grouped real \(P_2\) lane, and higher multipoles.
   \item \textbf{Breathing reduction.}  The old \((a,L)\) closure is the lowest axisymmetric truncation of the distributed wall field.
   \item \textbf{Matter support Schur complement.}  Stable BdG modes generate conservative low-frequency support moments and pole shifts.
-  \item \textbf{Maxwell/mixed outgoing bridge.}  The mixed sector supplies a nonnegative outgoing-transfer factor and carries the compact outgoing \(l=2\) \(i\omega^5\) fingerprint.
+  \item \textbf{Projected Maxwell/mixed outgoing bridge.}  Projection-first Maxwell supplies the open-system mixed-channel provenance; the matched one-port normal form supplies a nonnegative outgoing-transfer factor and carries the compact outgoing \(l=2\) \(i\omega^5\) fingerprint.
   \item \textbf{Grouped bundle.}  The final Part I object is the grouped coefficient packet \((D_A,N_A,P_A)\) and the isotropic normalization gate \eqref{eq:part01-final-normalization}.
 \end{enumerate}
 
@@ -1377,7 +1506,7 @@ This chapter does not prove that the actual nonlinear moving-throat PDE realizes
 \item The old \((a,L)\) closure is recovered as a two-mode axisymmetric truncation.
 \item The geometry-only grouped real \(P_2\) sector is degenerate on an isotropic reference throat.
 \item Stable BdG modes are integrated out by Schur complement, not by a fitted response coefficient.
-\item The localized Maxwell/mixed block retains \(A_w,F_{\mu w},J^w\) until a controlled brane reduction is declared.
+\item The projection-first localized Maxwell block retains \(A_w,F_{\mu w},J^w\) until a controlled matched brane reduction is declared.
 \item The outgoing \(l=2\) odd coefficient depends on the static prefactor \(P_0=N_0/D_0\).
 \item The grouped metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\) and projectors \(P_{\bar x},P_a,P_b\) are used consistently.
 \item The final Part I theorem gate is the branch-realization test \eqref{eq:part01-final-normalization}, not a free normalization choice.
@@ -1387,7 +1516,7 @@ Part II uses the operator-to-response bridge \eqref{eq:part01-u2-u4-conversion} 
 
 The citation-safe summary is:
 \begin{quote}
-Stages 1--6 define the moving-throat linearized response backbone.  They reduce the parent wall/matter/gauge system to a grouped real \(P_2\) response bundle with exact conservative moments, exact outgoing-transfer moments, exact grouped projectors, and the isotropic normalization test
+Stages 1--6 define the moving-throat linearized response backbone.  They project the parent Maxwell sector before applying the matched one-port reduction, and reduce the parent wall/matter/gauge system to a grouped real \(P_2\) response bundle with exact conservative moments, exact outgoing-transfer moments, exact grouped projectors, and the isotropic normalization test
 \[
 \widehat m_0^{\,2}\frac{N_0}{K-B_0-Z_0}=\frac{54Gc_s^5}{5a^5c^5}.
 \]

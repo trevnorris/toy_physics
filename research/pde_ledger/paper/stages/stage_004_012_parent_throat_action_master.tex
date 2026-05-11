@@ -1,0 +1,43 @@
+\subsection*{Stage 004.012: Parent throat action master}
+\label{subsec:stage004012-parent-throat-action-master}
+
+\paragraph{Source and audit.}
+This substage corresponds to
+\StageFile{scripts/moving_throat_pde_stage004_012_parent_throat_action_master_sympy_audit.py}.
+It begins the parent-action continuation of the projected EM bundle.
+
+\paragraph{Promotion.}
+The throat is promoted to an autonomous graph field \(R(\Omega,w,t)\) with
+\begin{equation}
+\label{eq:stage004005-parent-action}
+S_\Sigma[R]=\int dt\,dw\,d\Omega\;\mathcal L_\Sigma,
+\end{equation}
+\begin{equation}
+\label{eq:stage004012-parent-density}
+\mathcal L_\Sigma
+=\frac12\mu_\Sigma R_t^2
+-\frac12T_{w,\Sigma}R_w^2
+-\frac12T_{\Omega,\Sigma}|\nabla_\Omega R|^2
+-U_\Sigma .
+\end{equation}
+The total parent-level model is
+\begin{equation}
+\label{eq:stage004012-total-action}
+S_{\rm total}=S_\psi[\psi,A;\Sigma]+S_{\rm EM}[A]+S_\Sigma[R].
+\end{equation}
+
+\paragraph{Quadratic limit.}
+The quadratic stiffness around \(R_0(w)\) is
+\begin{equation}
+\label{eq:stage004012-keta}
+K_\eta=
+U_{\Sigma,RR}(R_0,w)
+-\partial_w\!\bigl(T_{w,\Sigma,R}(R_0,w)R_0'\bigr)
++\frac12T_{w,\Sigma,RR}(R_0,w)(R_0')^2.
+\end{equation}
+The audit carries the boundary densities explicitly and tests both zero and
+nonzero boundary-discharge probes.
+
+\paragraph{Output.}
+Stage~004.012 exports the parent throat action promotion and the exact
+quadratic recovery formula \eqref{eq:stage004012-keta}.

@@ -1,47 +1,47 @@
 {
   "nodes": [
     {
-      "id": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
+      "id": "CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH",
       "type": "file",
-      "file": "nodes/claims/CLAIM_5PN_FULL_BUNDLE_SURFACE.md",
+      "file": "nodes/claims/CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH.md",
       "x": 0,
       "y": 0,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_PACKET_A_PACKET_B_SPLIT",
+      "id": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
       "type": "file",
-      "file": "nodes/claims/CLAIM_PACKET_A_PACKET_B_SPLIT.md",
+      "file": "nodes/claims/CLAIM_PARENT_ACTION_CURRENT_EXACT.md",
       "x": 0,
       "y": 240,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_PARENT_WALL_STATUS_SPLIT",
+      "id": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
       "type": "file",
-      "file": "nodes/claims/CLAIM_PARENT_WALL_STATUS_SPLIT.md",
+      "file": "nodes/claims/CLAIM_ZERO_MODE_MAXWELL_REDUCTION.md",
       "x": 0,
       "y": 480,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_STAGE1_GEOMETRY_LIFT",
+      "id": "MATH_LOCALIZED_MAXWELL_AM",
       "type": "file",
-      "file": "nodes/claims/CLAIM_STAGE1_GEOMETRY_LIFT.md",
-      "x": 0,
-      "y": 720,
+      "file": "nodes/math/MATH_LOCALIZED_MAXWELL_AM.md",
+      "x": 380,
+      "y": 0,
       "width": 330,
       "height": 190
     },
     {
-      "id": "TARGET_PACKET_B",
+      "id": "MATH_Z_PROFILE",
       "type": "file",
-      "file": "nodes/open_gates/TARGET_PACKET_B.md",
+      "file": "nodes/math/MATH_Z_PROFILE.md",
       "x": 380,
-      "y": 0,
+      "y": 240,
       "width": 330,
       "height": 190
     },
@@ -310,27 +310,27 @@
   "edges": [
     {
       "id": "e0",
-      "fromNode": "CLAIM_PACKET_A_PACKET_B_SPLIT",
+      "fromNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
       "fromSide": "right",
-      "toNode": "TARGET_PACKET_B",
+      "toNode": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
+      "toSide": "left",
+      "label": "SUPPLIES_PARENT_FOR"
+    },
+    {
+      "id": "e1",
+      "fromNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
+      "fromSide": "right",
+      "toNode": "MATH_LOCALIZED_MAXWELL_AM",
       "toSide": "left",
       "label": "FEEDS_OR_STATUS_OF"
     },
     {
-      "id": "e1",
-      "fromNode": "CLAIM_PARENT_WALL_STATUS_SPLIT",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE1_GEOMETRY_LIFT",
-      "toSide": "left",
-      "label": "STATUS_LIMITS"
-    },
-    {
       "id": "e2",
-      "fromNode": "MT_V2_28_ONTOLOGY_CHECKLIST",
+      "fromNode": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
       "fromSide": "right",
-      "toNode": "PHYS_BRANE_BULK_THROAT_DEFECT",
+      "toNode": "MATH_Z_PROFILE",
       "toSide": "left",
-      "label": "ANCHORS"
+      "label": "FEEDS_OR_STATUS_OF"
     },
     {
       "id": "e3",
@@ -338,10 +338,18 @@
       "fromSide": "right",
       "toNode": "PHYS_BRANE_BULK_THROAT_DEFECT",
       "toSide": "left",
-      "label": "PATCHES_LANGUAGE"
+      "label": "ANCHORS"
     },
     {
       "id": "e4",
+      "fromNode": "MT_V2_28_ONTOLOGY_CHECKLIST",
+      "fromSide": "right",
+      "toNode": "PHYS_BRANE_BULK_THROAT_DEFECT",
+      "toSide": "left",
+      "label": "PATCHES_LANGUAGE"
+    },
+    {
+      "id": "e5",
       "fromNode": "MT_V2_30_EM_ONTOLOGY",
       "fromSide": "right",
       "toNode": "PHYS_CHARGE_BRANCH",
@@ -349,7 +357,7 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e5",
+      "id": "e6",
       "fromNode": "MT_V2_30_EM_ONTOLOGY",
       "fromSide": "right",
       "toNode": "PHYS_MAGNETIC_VORTICAL_CIRCULATION",
@@ -357,20 +365,12 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e6",
+      "id": "e7",
       "fromNode": "MT_V2_30_EM_ONTOLOGY",
       "fromSide": "right",
       "toNode": "PHYS_MIXED_EM_CORE",
       "toSide": "left",
       "label": "PATCHES_LANGUAGE"
-    },
-    {
-      "id": "e7",
-      "fromNode": "PHYS_BRANE_BULK_THROAT_DEFECT",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE1_GEOMETRY_LIFT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
     },
     {
       "id": "e8",
@@ -422,17 +422,17 @@
     },
     {
       "id": "e14",
-      "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
+      "fromNode": "PHYS_BRANE_OBSERVER",
       "fromSide": "right",
-      "toNode": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
+      "toNode": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
       "toSide": "left",
       "label": "GROUNDS_PHYSICAL_MEANING"
     },
     {
       "id": "e15",
-      "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
+      "fromNode": "PHYS_BULK_ARENA",
       "fromSide": "right",
-      "toNode": "CLAIM_PACKET_A_PACKET_B_SPLIT",
+      "toNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
       "toSide": "left",
       "label": "GROUNDS_PHYSICAL_MEANING"
     },
@@ -440,44 +440,12 @@
       "id": "e16",
       "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
       "fromSide": "right",
-      "toNode": "CLAIM_PARENT_WALL_STATUS_SPLIT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
-      "id": "e17",
-      "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE1_GEOMETRY_LIFT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
-      "id": "e18",
-      "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
-      "fromSide": "right",
       "toNode": "PHYS_GROUPED_P2_SHAPE_RESPONSE",
       "toSide": "left",
       "label": "FEEDS"
     },
     {
-      "id": "e19",
-      "fromNode": "PHYS_FINITE_MOUTH_SHAPE",
-      "fromSide": "right",
-      "toNode": "TARGET_PACKET_B",
-      "toSide": "left",
-      "label": "AFFECTS"
-    },
-    {
-      "id": "e20",
-      "fromNode": "PHYS_GROUPED_P2_SHAPE_RESPONSE",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE1_GEOMETRY_LIFT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
-      "id": "e21",
+      "id": "e17",
       "fromNode": "PHYS_INTERIOR_SUPPORT",
       "fromSide": "right",
       "toNode": "PHYS_SUPERFLUID_INTAKE_OUTPUT",
@@ -485,7 +453,63 @@
       "label": "SUPPORTS"
     },
     {
+      "id": "e18",
+      "fromNode": "PHYS_LOCALIZED_EM_SECTOR",
+      "fromSide": "right",
+      "toNode": "CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e19",
+      "fromNode": "PHYS_LOCALIZED_EM_SECTOR",
+      "fromSide": "right",
+      "toNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e20",
+      "fromNode": "PHYS_LOCALIZED_EM_SECTOR",
+      "fromSide": "right",
+      "toNode": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e21",
+      "fromNode": "PHYS_LOCALIZED_EM_SECTOR",
+      "fromSide": "right",
+      "toNode": "MATH_LOCALIZED_MAXWELL_AM",
+      "toSide": "left",
+      "label": "REPRESENTED_BY"
+    },
+    {
       "id": "e22",
+      "fromNode": "PHYS_LOCALIZED_EM_SECTOR",
+      "fromSide": "right",
+      "toNode": "MATH_Z_PROFILE",
+      "toSide": "left",
+      "label": "LOCALIZED_BY"
+    },
+    {
+      "id": "e23",
+      "fromNode": "PHYS_MIXED_EM_CORE",
+      "fromSide": "right",
+      "toNode": "CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e24",
+      "fromNode": "PHYS_MIXED_EM_CORE",
+      "fromSide": "right",
+      "toNode": "CLAIM_ZERO_MODE_MAXWELL_REDUCTION",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
+    },
+    {
+      "id": "e25",
       "fromNode": "PHYS_MOUTH_CROSS_SECTION",
       "fromSide": "right",
       "toNode": "PHYS_MOUTH_INTERIOR_FIREWALL",
@@ -493,7 +517,7 @@
       "label": "REQUIRES_FIREWALL"
     },
     {
-      "id": "e23",
+      "id": "e26",
       "fromNode": "PHYS_REG_BRANCH_EXPORT",
       "fromSide": "right",
       "toNode": "PHYS_BRANCH_EXPORTER",
@@ -501,7 +525,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e24",
+      "id": "e27",
       "fromNode": "PHYS_REG_CHARGE_EM",
       "fromSide": "right",
       "toNode": "PHYS_CHARGE_BRANCH",
@@ -509,7 +533,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e25",
+      "id": "e28",
       "fromNode": "PHYS_REG_CHARGE_EM",
       "fromSide": "right",
       "toNode": "PHYS_MIXED_EM_CORE",
@@ -517,7 +541,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e26",
+      "id": "e29",
       "fromNode": "PHYS_REG_OBSERVER_PROJECTION",
       "fromSide": "right",
       "toNode": "PHYS_BRANE_OBSERVER",
@@ -525,7 +549,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e27",
+      "id": "e30",
       "fromNode": "PHYS_REG_OUTGOING_PORT",
       "fromSide": "right",
       "toNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
@@ -533,7 +557,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e28",
+      "id": "e31",
       "fromNode": "PHYS_REG_P2_QUAD",
       "fromSide": "right",
       "toNode": "PHYS_GROUPED_P2_SHAPE_RESPONSE",
@@ -541,15 +565,7 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e29",
-      "fromNode": "PHYS_REG_PARTICLE_THROAT",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE1_GEOMETRY_LIFT",
-      "toSide": "left",
-      "label": "LINKS_TO"
-    },
-    {
-      "id": "e30",
+      "id": "e32",
       "fromNode": "PHYS_REG_PARTICLE_THROAT",
       "fromSide": "right",
       "toNode": "PHYS_BRANE_BULK_THROAT_DEFECT",
@@ -557,36 +573,20 @@
       "label": "LINKS_TO"
     },
     {
-      "id": "e31",
-      "fromNode": "PHYS_RESPONSE_READOUTS",
-      "fromSide": "right",
-      "toNode": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
-      "id": "e32",
-      "fromNode": "PHYS_RESPONSE_READOUTS",
-      "fromSide": "right",
-      "toNode": "CLAIM_PACKET_A_PACKET_B_SPLIT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
       "id": "e33",
-      "fromNode": "PHYS_RESPONSE_READOUTS",
-      "fromSide": "right",
-      "toNode": "CLAIM_PARENT_WALL_STATUS_SPLIT",
-      "toSide": "left",
-      "label": "GROUNDS_PHYSICAL_MEANING"
-    },
-    {
-      "id": "e34",
       "fromNode": "PHYS_SUPERFLUID_INTAKE_OUTPUT",
       "fromSide": "right",
       "toNode": "PHYS_BRANCH_EXPORTER",
       "toSide": "left",
       "label": "FEEDS"
+    },
+    {
+      "id": "e34",
+      "fromNode": "PHYS_SUPERFLUID_MEDIUM",
+      "fromSide": "right",
+      "toNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
+      "toSide": "left",
+      "label": "GROUNDS_PHYSICAL_MEANING"
     }
   ]
 }

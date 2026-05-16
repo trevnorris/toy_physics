@@ -6,11 +6,11 @@
 
 - `atlas_completion_phase`: 8
 - `atlas_meta`: 15
-- `claim_theorem`: 30
-- `derivation`: 25
+- `claim_theorem`: 34
+- `derivation`: 28
 - `equation_anchor`: 25
 - `extension_workflow_step`: 5
-- `file_anchor`: 18
+- `file_anchor`: 20
 - `math_object`: 27
 - `open_gate`: 16
 - `paper_backlink`: 16

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Does the hydrogenic zero-mode reduction prove full atomic structure from the solved moving-throat PDE?
 future_paper_needed: false
 claim_ids:
@@ -53,9 +53,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `NEG_QUERY_HYDROGEN_FULL_MOVING_THROAT_THEOREM`  
-> **Status:** `v07_negative_query`  
-> **Layer:** `query_validation`  
+> **Atlas ID:** `NEG_QUERY_HYDROGEN_FULL_MOVING_THROAT_THEOREM`
+> **Status:** `v07_negative_query`
+> **Layer:** `query_validation`
 > **Type:** `negative_query_test`
 
 ## Summary

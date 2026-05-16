@@ -529,9 +529,9 @@ def note_body(
         "> [!warning] Generated note",
         "> This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.",
         "",
-        f"> **Atlas ID:** `{node['id']}`  ",
-        f"> **Status:** `{node.get('status', '')}`  ",
-        f"> **Layer:** `{node.get('layer', '')}`  ",
+        f"> **Atlas ID:** `{node['id']}`",
+        f"> **Status:** `{node.get('status', '')}`",
+        f"> **Layer:** `{node.get('layer', '')}`",
         f"> **Type:** `{node.get('type', '')}`",
         "",
         "## Summary",
@@ -702,6 +702,13 @@ def write_node_notes(graph: dict[str, Any], generated_utc: str) -> dict[str, str
     return paths
 
 
+def write_tsv_row(writer: csv.writer, row: list[Any]) -> None:
+    trimmed = list(row)
+    while trimmed and trimmed[-1] == "":
+        trimmed.pop()
+    writer.writerow(trimmed)
+
+
 def write_exports(graph: dict[str, Any], note_paths: dict[str, str]) -> None:
     graph_export = dict(graph)
     for node in graph_export["nodes"]:
@@ -716,11 +723,12 @@ def write_exports(graph: dict[str, Any], note_paths: dict[str, str]) -> None:
     )
 
     with (EXPORT_DIR / "atlas_nodes.tsv").open("w", encoding="utf-8", newline="") as file:
-        writer = csv.writer(file, delimiter="\t")
-        writer.writerow(["id", "label", "layer", "type", "status", "note", "source_kind", "tex_file", "tex_line"])
+        writer = csv.writer(file, delimiter="\t", lineterminator="\n")
+        write_tsv_row(writer, ["id", "label", "layer", "type", "status", "note", "source_kind", "tex_file", "tex_line"])
         for node in graph["nodes"]:
             anchor = node.get("tex_anchor") or {}
-            writer.writerow(
+            write_tsv_row(
+                writer,
                 [
                     node["id"],
                     node.get("label", ""),
@@ -735,10 +743,10 @@ def write_exports(graph: dict[str, Any], note_paths: dict[str, str]) -> None:
             )
 
     with (EXPORT_DIR / "atlas_edges.tsv").open("w", encoding="utf-8", newline="") as file:
-        writer = csv.writer(file, delimiter="\t")
-        writer.writerow(["source", "relation", "target", "status", "note"])
+        writer = csv.writer(file, delimiter="\t", lineterminator="\n")
+        write_tsv_row(writer, ["source", "relation", "target", "status", "note"])
         for edge in graph["edges"]:
-            writer.writerow([edge["source"], edge.get("relation", ""), edge["target"], edge.get("status", ""), edge.get("note", "")])
+            write_tsv_row(writer, [edge["source"], edge.get("relation", ""), edge["target"], edge.get("status", ""), edge.get("note", "")])
 
 
 def nodes_matching_canvas_spec(

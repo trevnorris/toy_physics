@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Mixed kernel audit.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -19,7 +19,7 @@ source_links:
 - '[[FILE_PDE_AUDIT]]'
 claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
@@ -27,7 +27,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Mixed kernel audit.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Mixed kernel audit.
@@ -57,9 +57,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_MIXED_KERNEL`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_MIXED_KERNEL`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -92,7 +92,7 @@ Mixed kernel audit.
 
 ### Related claims
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -108,7 +108,7 @@ Mixed kernel audit.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Mixed kernel audit. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Mixed kernel audit. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Mixed kernel audit. |
 
 ## Incoming Edges
 

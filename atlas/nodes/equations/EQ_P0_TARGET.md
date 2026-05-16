@@ -9,20 +9,20 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Central remaining 2.5PN/4PN moving-throat normalization target.
 future_paper_needed: false
 source_files:
-- research/pde_ledger/paper/stages/stage_005.tex
+- research/pde_ledger/paper/stages/stage_022.tex
 - research/4d_2_5pn/paper/4d_2_5pn.tex
 - research/4d_4pn/paper/4d_4pn.tex
-- notes/pde_audit_full.md
-- moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+- notes/moving_throat_pde_program_compact.md
+- moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
 - 4d_2_5pn_summary.md
 - 4d_4pn_summary.md
 - pde_audit_full.md
 legacy_sources:
-- moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+- moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
 - 4d_2_5pn_summary.md
 - 4d_4pn_summary.md
 - pde_audit_full.md
@@ -54,8 +54,8 @@ claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
 - CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_QUAD_NORMALIZATION
 source_ids:
@@ -88,11 +88,11 @@ outgoing_edges:
   relation: SUPPORTS_CLAIM
   status: paper_facing_ontology_discipline
   note: Equation anchor supports this named claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: SUPPORTS_CLAIM
   status: exact_within_grouped_bridge
   note: Equation anchor supports this named claim.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: SUPPORTS_CLAIM
   status: exact_within_selected_reduced_branch
   note: Equation anchor supports this named claim.
@@ -143,9 +143,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `EQ_P0_TARGET`  
-> **Status:** `open_actual_branch_data`  
-> **Layer:** `equation_anchor`  
+> **Atlas ID:** `EQ_P0_TARGET`
+> **Status:** `open_actual_branch_data`
+> **Layer:** `equation_anchor`
 > **Type:** `equation`
 
 ## Summary
@@ -191,8 +191,8 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_25PN_QUAD_NARROWING]]
 - [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_QUAD_NORMALIZATION]]
@@ -216,8 +216,8 @@ The graph currently records the equation text but not a full variable dictionary
 | `SUPPORTS_CLAIM` | [[CLAIM_25PN_QUAD_NARROWING]] | Equation anchor supports this named claim. |
 | `SUPPORTS_CLAIM` | [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]] | Equation anchor supports this named claim. |
 | `SUPPORTS_CLAIM` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Equation anchor supports this named claim. |
-| `SUPPORTS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | Equation anchor supports this named claim. |
-| `SUPPORTS_CLAIM` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Equation anchor supports this named claim. |
+| `SUPPORTS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | Equation anchor supports this named claim. |
+| `SUPPORTS_CLAIM` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Equation anchor supports this named claim. |
 
 ## Incoming Edges
 
@@ -240,11 +240,11 @@ The graph currently records the equation text but not a full variable dictionary
 - [[FILE_PDE_AUDIT]]
 
 ### Source files
-- `research/pde_ledger/paper/stages/stage_005.tex`
+- `research/pde_ledger/paper/stages/stage_022.tex`
 - `research/4d_2_5pn/paper/4d_2_5pn.tex`
 - `research/4d_4pn/paper/4d_4pn.tex`
-- `notes/pde_audit_full.md`
-- `moving_throat_pde_stage005_grouped_p2_normalization_bridge.md`
+- `notes/moving_throat_pde_program_compact.md`
+- `moving_throat_pde_stage022_grouped_p2_normalization_bridge.md`
 - `4d_2_5pn_summary.md`
 - `4d_4pn_summary.md`
 - `pde_audit_full.md`

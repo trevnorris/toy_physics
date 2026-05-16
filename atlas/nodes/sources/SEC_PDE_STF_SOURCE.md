@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: STF angular source-map theorem.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -18,13 +18,13 @@ source_files:
 source_links:
 - '[[FILE_PDE_AUDIT]]'
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 status_firewall_ids:
 - FIREWALL_ANGULAR_NOT_RADIAL
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: STF angular source-map theorem.
@@ -58,9 +58,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_STF_SOURCE`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_STF_SOURCE`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -92,7 +92,7 @@ STF angular source-map theorem.
 - none
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -107,7 +107,7 @@ STF angular source-map theorem.
 
 | Relation | Node | Note |
 |---|---|---|
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE7_O3_ISOTROPY]] | STF angular source-map theorem. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE024_O3_ISOTROPY]] | STF angular source-map theorem. |
 
 ## Incoming Edges
 

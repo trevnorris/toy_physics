@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The throat is represented as Sigma=r-R(Omega,w,t), so a(t), L(t) become collective moments and scalar/P2/geometry lanes become explicit wall/support modes.
 future_paper_needed: false
 source_links:
@@ -128,9 +128,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE1_GEOMETRY_LIFT`  
-> **Status:** `effective_geometry_lift`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_STAGE1_GEOMETRY_LIFT`
+> **Status:** `effective_geometry_lift`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

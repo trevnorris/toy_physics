@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: D0, C, P0, N2, N4 are low-order projected response readouts of the throat branch, not the throat itself.
 future_paper_needed: false
 source_files:
@@ -25,8 +25,8 @@ claim_ids:
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_PARENT_WALL_STATUS_SPLIT
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 status_firewall_ids:
 - FIREWALL_READOUTS_NOT_THROAT
 source_ids:
@@ -52,11 +52,11 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: paper_facing_ontology_discipline
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_grouped_bridge
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_reduced_bundle
   note: Physical ontology object grounded by this claim.
@@ -90,9 +90,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_RESPONSE_READOUTS`  
-> **Status:** `not_physical_object`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_RESPONSE_READOUTS`
+> **Status:** `not_physical_object`
+> **Layer:** `physical_ontology`
 > **Type:** `readout_interpretation`
 
 ## Summary
@@ -152,8 +152,8 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - none
@@ -173,8 +173,8 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE5_P0_TARGET]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE022_P0_TARGET]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Physical ontology object grounded by this claim. |
 | `INTERPRETS` | [[READOUT_D0_C_P0_N2_N4]] | Low-order readouts are compressed projected quantities, not the object. |
 
 ## Incoming Edges

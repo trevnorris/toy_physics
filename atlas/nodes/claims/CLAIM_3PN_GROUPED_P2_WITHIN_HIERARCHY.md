@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The conservative 3PN ledger is assigned in the fixed ADM chart; the grouped real P2 bundle is the live conservative higher-order payload needing microscopic moving-throat deriva...
 future_paper_needed: false
 source_files:
@@ -124,9 +124,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY`  
-> **Status:** `exact_assembly_within_closure`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY`
+> **Status:** `exact_assembly_within_closure`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

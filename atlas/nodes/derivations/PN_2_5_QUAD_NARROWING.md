@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Demotes scalar/dipole dangers and isolates orbital/worldtube STF quadrupole branch plus normalization gap.
 future_paper_needed: false
 source_files:
@@ -87,7 +87,7 @@ incoming_edges:
   relation: PROTECTS_STATUS_OF
   status: v07
   note: Firewall preserves this correct status boundary.
-- source: MT_STAGE5_GROUPED_P2_BRIDGE
+- source: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: SUPPORTS
   status: reduced
   note: Moving-throat bridge supplies exact reduced target mhat0²P0.
@@ -108,9 +108,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PN_2_5_QUAD_NARROWING`  
-> **Status:** `conditional_theorem_open_normalization`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `PN_2_5_QUAD_NARROWING`
+> **Status:** `conditional_theorem_open_normalization`
+> **Layer:** `derivation`
 > **Type:** `PN_bridge`
 
 ## Summary
@@ -184,7 +184,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_25PN_QUAD_NARROWING]] | Claim feeds this downstream object, output, or open gate. |
 | `INTERFACES` | [[MT_V2_15_25PN_4PN_INTERFACE]] | Relates moving-throat quadrupole branch to 2.5PN channel. |
 | `PROTECTS_STATUS_OF` | [[FIREWALL_25PN_CONDITIONAL]] | Firewall preserves this correct status boundary. |
-| `SUPPORTS` | [[MT_STAGE5_GROUPED_P2_BRIDGE]] | Moving-throat bridge supplies exact reduced target mhat0²P0. |
+| `SUPPORTS` | [[MT_STAGE022_GROUPED_P2_BRIDGE]] | Moving-throat bridge supplies exact reduced target mhat0²P0. |
 
 ## Source Anchors
 

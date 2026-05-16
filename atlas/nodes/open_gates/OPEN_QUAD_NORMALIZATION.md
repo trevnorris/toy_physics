@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Remaining 2.5PN/4PN bridge target; now a concrete P0/N0/D0 branch-output condition.
 future_paper_needed: false
 source_files:
@@ -50,7 +50,7 @@ equation_ids:
 claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
 - CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 open_gate_ids:
 - TARGET_PACKET_A
 status_firewall_ids:
@@ -94,7 +94,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: local_closed_tail_conditional
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_STAGE022_P0_TARGET
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_grouped_bridge
   note: Claim feeds this downstream object, output, or open gate.
@@ -126,7 +126,7 @@ incoming_edges:
   relation: INHERITS_GATE
   status: open
   note: Full 4PN theorem inherits same quadrupole normalization condition.
-- source: MT_STAGE5_GROUPED_P2_BRIDGE
+- source: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: ISOLATES
   status: open
   note: Invariant product mhat0²P0 is the remaining normalization target.
@@ -175,9 +175,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_QUAD_NORMALIZATION`  
-> **Status:** `open_actual_branch_data`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_QUAD_NORMALIZATION`
+> **Status:** `open_actual_branch_data`
+> **Layer:** `open_gate`
 > **Type:** `normalization_gate`
 
 ## Summary
@@ -226,7 +226,7 @@ The graph currently records the equation text but not a full variable dictionary
 ### Related claims
 - [[CLAIM_25PN_QUAD_NARROWING]]
 - [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - [[TARGET_PACKET_A]]
@@ -257,7 +257,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `FEEDS` | [[MATH_COMPACT_L2_OUTGOING_FINGERPRINT]] | The i omega^5 coefficient feeds the quadrupole normalization target. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_25PN_QUAD_NARROWING]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE5_P0_TARGET]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE022_P0_TARGET]] | Claim feeds this downstream object, output, or open gate. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_25PN]] | Paper backlink block flags open gate OPEN_QUAD_NORMALIZATION. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_3PN_FULL]] | Paper backlink block flags open gate OPEN_QUAD_NORMALIZATION. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_4PN_FULL]] | Paper backlink block flags open gate OPEN_QUAD_NORMALIZATION. |
@@ -265,7 +265,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `FLAGS_REMAINING_GATE` | [[ATLAS_CURRENT_READINESS_V05]] | Still open after atlas organization; atlas tracks it but does not solve it. |
 | `FLAGS_REMAINING_GATE` | [[ATLAS_CURRENT_READINESS_V06]] | Still open after v0.6 organization pass. |
 | `INHERITS_GATE` | [[PN_4_LOCAL_TAIL]] | Full 4PN theorem inherits same quadrupole normalization condition. |
-| `ISOLATES` | [[MT_STAGE5_GROUPED_P2_BRIDGE]] | Invariant product mhat0²P0 is the remaining normalization target. |
+| `ISOLATES` | [[MT_STAGE022_GROUPED_P2_BRIDGE]] | Invariant product mhat0²P0 is the remaining normalization target. |
 | `OPENS_GATE` | [[PN_2_5_QUAD_NARROWING]] | Surviving universal branch needs passive/outgoing normalization. |
 | `PROTECTS_STATUS_OF` | [[FIREWALL_25PN_CONDITIONAL]] | Firewall preserves this correct status boundary. |
 | `PROTECTS_STATUS_OF` | [[FIREWALL_4PN_LOCAL_NOT_FULL_TAIL]] | Firewall preserves this correct status boundary. |

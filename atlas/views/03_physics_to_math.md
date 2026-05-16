@@ -33,7 +33,7 @@
 - [[MATH_GROUPED_PROJECTORS_GGRP]] — `exact` — Weighted grouped-real P2 trace/anomaly decomposition with metric diag(1,2,2).
 - [[MATH_LOCALIZED_MAXWELL_AM]] — `exact` — Gauge field sector with localization weight and source consistency.
 - [[MATH_LONGITUDINAL_IDENTITY]] — `exact` — Exact brane scalar-potential identity containing a 3D Laplacian.
-- [[MATH_MAXWELL_MIXED_KERNEL]] — `exact_within_reduced_bundle` — Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+- [[MATH_MAXWELL_MIXED_KERNEL]] — `exact_projection_with_reduced_adapter` — Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplie...
 - [[MATH_MAXWELL_WEIGHTED_GAUGE_FIXING]] — `safe_interpretation_or_patch` — General H(w)-weighted gauge-fixing audit for localized Maxwell theory; H=1 is a bulk gauge device, H=Z is l...
 - [[MATH_MIXED_FIELDS_EW_CA]] — `exact` — Gauge-invariant mixed slots used for brane-bulk EM exchange and outgoing bridge.
 - [[MATH_MONOMIAL_QUOTIENT]] — `exact_within_coherent_branch` — Three exact quotient coordinates separate physical branch motion from the five-dimensional similarity orbit.
@@ -66,7 +66,7 @@
 - [[EQ_LEPTON_HALF_INTEGER]] — `conditional_open` — Half-integer same-charge quantizer under selective tau subbundle and autonomous standing-wave soliton closure.
 - [[EQ_LEPTON_MASS_PARTITION]] — `conditional_reduced_theorem` — Reduced isolated-defect rest-energy partition under declared closure.
 - [[EQ_LONGITUDINAL_IDENTITY]] — `exact` — Exact projected identity that contains the Poisson-hook Laplacian.
-- [[EQ_MAXWELL_MIXED_TRANSFER]] — `exact_within_reduced_bundle` — Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+- [[EQ_MAXWELL_MIXED_TRANSFER]] — `exact_within_reduced_bundle` — Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledge...
 - [[EQ_MONOMIAL_QUOTIENT]] — `exact_within_coherent_branch` — Separates true branch motion from five-dimensional similarity-orbit motion.
 - [[EQ_P0_TARGET]] — `open_actual_branch_data` — Central remaining 2.5PN/4PN moving-throat normalization target.
 - [[EQ_PARENT_ACTION_CURRENT]] — `exact_declared_parent_with_geometry_argument` — Current declared parent has GNLS + localized Maxwell, with geometry through V_conf(X;Sigma).

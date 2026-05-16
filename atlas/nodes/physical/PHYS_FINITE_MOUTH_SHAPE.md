@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Finite throat size makes Hessian/tidal mouth loading and headless P22 shape physics relevant.
 future_paper_needed: false
 source_files:
@@ -26,9 +26,9 @@ claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_PARENT_WALL_STATUS_SPLIT
+- CLAIM_STAGE024_O3_ISOTROPY
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE1_GEOMETRY_LIFT
-- CLAIM_STAGE7_O3_ISOTROPY
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 open_gate_ids:
 - TARGET_PACKET_B
 outgoing_edges:
@@ -52,17 +52,17 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: strict_parent_fail_effective_wall_pass
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE1_GEOMETRY_LIFT
-  relation: GROUNDS_PHYSICAL_MEANING
-  status: effective_geometry_lift
-  note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_angular_reduced
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_selected_reduced_branch
+  note: Physical ontology object grounded by this claim.
+- target: CLAIM_STAGE1_GEOMETRY_LIFT
+  relation: GROUNDS_PHYSICAL_MEANING
+  status: effective_geometry_lift
   note: Physical ontology object grounded by this claim.
 tags:
 - atlas/node
@@ -82,9 +82,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_FINITE_MOUTH_SHAPE`  
-> **Status:** `reduced_conditional`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_FINITE_MOUTH_SHAPE`
+> **Status:** `reduced_conditional`
+> **Layer:** `physical_ontology`
 > **Type:** `geometry_response`
 
 ## Summary
@@ -134,9 +134,9 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 
 ### Open gates
 - [[TARGET_PACKET_B]]
@@ -156,9 +156,9 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
 
 ## Incoming Edges
 

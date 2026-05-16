@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The 5PN/moving-throat continuation gives exact isotropic full-bundle target surfaces and weak-axisymmetric quotient/orbit structures, but the actual branch still must land on them.
 future_paper_needed: false
 source_links:
@@ -31,7 +31,7 @@ equation_ids:
 - EQ_WEAK_AXISYM_SIGNATURE
 claim_ids:
 - CLAIM_G2_COMMON_QUOTIENT
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 open_gate_ids:
 - OPEN_N2_N4_MOMENT_SHAPE
 - OPEN_WEAK_AXISYM_ORBIT_LOCK
@@ -60,7 +60,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle_open_branch
   note: Claim feeds this downstream object, output, or open gate.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: REFINES
   status: active
   note: Claim-level dependency added in v0.4.
@@ -161,9 +161,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_5PN_FULL_BUNDLE_SURFACE`  
-> **Status:** `exact_within_reduced_bundle_open_branch`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_5PN_FULL_BUNDLE_SURFACE`
+> **Status:** `exact_within_reduced_bundle_open_branch`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
@@ -205,7 +205,7 @@ The 5PN/moving-throat continuation gives exact isotropic full-bundle target surf
 
 ### Related claims
 - [[CLAIM_G2_COMMON_QUOTIENT]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - [[OPEN_N2_N4_MOMENT_SHAPE]]
@@ -232,7 +232,7 @@ The 5PN/moving-throat continuation gives exact isotropic full-bundle target surf
 | `FEEDS_OR_STATUS_OF` | [[OPEN_N2_N4_MOMENT_SHAPE]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[OPEN_WEAK_AXISYM_ORBIT_LOCK]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[PN_5_FULL_BUNDLE_SURFACE]] | Claim feeds this downstream object, output, or open gate. |
-| `REFINES` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
+| `REFINES` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
 | `SUPPLIES_XI1_LANGUAGE_FOR` | [[CLAIM_G2_COMMON_QUOTIENT]] | Claim-level dependency added in v0.4. |
 
 ## Incoming Edges

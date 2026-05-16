@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The localized 4+1 Maxwell action reduces to ordinary 3+1 Maxwell with mu0_eff=mu0/Z_int only under axial/zero-mode/far-field assumptions; mixed core channels are suppressed, not...
 future_paper_needed: false
 source_files:
@@ -202,9 +202,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_ZERO_MODE_MAXWELL_REDUCTION`  
-> **Status:** `controlled_reduction`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_ZERO_MODE_MAXWELL_REDUCTION`
+> **Status:** `controlled_reduction`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

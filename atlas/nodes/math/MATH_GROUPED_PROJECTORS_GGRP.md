@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Weighted grouped-real P2 trace/anomaly decomposition with metric diag(1,2,2).
 future_paper_needed: false
 source_files:
@@ -23,7 +23,7 @@ legacy_sources:
 claim_ids:
 - CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY
 outgoing_edges:
-- target: MT_STAGE6_FULL_GROUPED_BUNDLE
+- target: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: ORGANIZES
   status: exact
   note: Organizes the full grouped P2 bundle and anisotropy extraction.
@@ -57,9 +57,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_GROUPED_PROJECTORS_GGRP`  
-> **Status:** `exact`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_GROUPED_PROJECTORS_GGRP`
+> **Status:** `exact`
+> **Layer:** `math_object`
 > **Type:** `projector_calculus`
 
 ## Summary
@@ -117,7 +117,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `ORGANIZES` | [[MT_STAGE6_FULL_GROUPED_BUNDLE]] | Organizes the full grouped P2 bundle and anisotropy extraction. |
+| `ORGANIZES` | [[MT_STAGE023_FULL_GROUPED_BUNDLE]] | Organizes the full grouped P2 bundle and anisotropy extraction. |
 
 ## Incoming Edges
 

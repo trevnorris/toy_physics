@@ -9,18 +9,18 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Diagnostic first-order splitting law for a weak axisymmetric quadrupole perturbation.
 future_paper_needed: false
 source_files:
-- research/pde_ledger/paper/stages/stage_007.tex
+- research/pde_ledger/paper/stages/stage_024.tex
 - notes/pde_audit_full.md
 - notes/5pn/5pn_notes_full.md
-- moving_throat_pde_stage007_overlap_isotropy.md
+- moving_throat_pde_stage024_overlap_isotropy.md
 - pde_audit_full.md
 - 5pn_notes_full.md
 legacy_sources:
-- moving_throat_pde_stage007_overlap_isotropy.md
+- moving_throat_pde_stage024_overlap_isotropy.md
 - pde_audit_full.md
 - 5pn_notes_full.md
 source_links:
@@ -28,15 +28,15 @@ source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
 - '[[FILE_PDE_AUDIT]]'
 tex_anchor:
-  file: research/pde_ledger/paper/stages/stage_007.tex
+  file: research/pde_ledger/paper/stages/stage_024.tex
   line: 149
   heading_level: paragraph
   heading: 4. Weak-axisymmetric quadrupole splitting.
   nearest_label:
-    name: eq:app-stage007-deltaK-axisym
+    name: eq:app-stage024-deltaK-axisym
     line: 152
   nearby_labels:
-  - name: eq:app-stage007-deltaK-axisym
+  - name: eq:app-stage024-deltaK-axisym
     line: 152
   - name: eq:app-stage007-MAB20
     line: 157
@@ -57,7 +57,7 @@ equation_ids:
 - EQ_XI1_PREF_SLOPE
 claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 source_ids:
 - FILE_5PN_FULL
 - FILE_MOVING_THROAT_COMPACT
@@ -75,7 +75,7 @@ outgoing_edges:
   relation: SUPPORTS_CLAIM
   status: exact_within_reduced_bundle_open_branch
   note: Equation anchor supports this named claim.
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: SUPPORTS_CLAIM
   status: exact_angular_reduced
   note: Equation anchor supports this named claim.
@@ -110,9 +110,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `EQ_WEAK_AXISYM_SIGNATURE`  
-> **Status:** `exact_angular_first_order`  
-> **Layer:** `equation_anchor`  
+> **Atlas ID:** `EQ_WEAK_AXISYM_SIGNATURE`
+> **Status:** `exact_angular_first_order`
+> **Layer:** `equation_anchor`
 > **Type:** `equation`
 
 ## Summary
@@ -153,7 +153,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -173,7 +173,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `ANCHORS` | [[MATH_WEAK_AXISYM_SPLITTING]] | Equation anchor belongs to or formalizes this graph node. |
 | `ORGANIZES` | [[EQ_XI1_PREF_SLOPE]] | Weak-axisymmetric signature carries prefactor slope Xi1. |
 | `SUPPORTS_CLAIM` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Equation anchor supports this named claim. |
-| `SUPPORTS_CLAIM` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Equation anchor supports this named claim. |
+| `SUPPORTS_CLAIM` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Equation anchor supports this named claim. |
 
 ## Incoming Edges
 
@@ -191,18 +191,18 @@ The graph currently records the equation text but not a full variable dictionary
 - [[FILE_PDE_AUDIT]]
 
 ### Source files
-- `research/pde_ledger/paper/stages/stage_007.tex`
+- `research/pde_ledger/paper/stages/stage_024.tex`
 - `notes/pde_audit_full.md`
 - `notes/5pn/5pn_notes_full.md`
-- `moving_throat_pde_stage007_overlap_isotropy.md`
+- `moving_throat_pde_stage024_overlap_isotropy.md`
 - `pde_audit_full.md`
 - `5pn_notes_full.md`
 
 ### TeX anchor
-- File: `research/pde_ledger/paper/stages/stage_007.tex`
+- File: `research/pde_ledger/paper/stages/stage_024.tex`
 - Line: `149`
 - Heading: 4. Weak-axisymmetric quadrupole splitting.
-- Nearest label: `eq:app-stage007-deltaK-axisym` at line `152`
+- Nearest label: `eq:app-stage024-deltaK-axisym` at line `152`
 - Match basis: `semantic_heading_match`
 - Confidence: `medium`
 

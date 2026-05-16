@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Poisson hook and worldtube reduction produce Newtonian brane-facing scalar sector.
 future_paper_needed: false
 source_files:
@@ -73,9 +73,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PN_0_NEWTONIAN_HOOK`  
-> **Status:** `controlled_reduction`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `PN_0_NEWTONIAN_HOOK`
+> **Status:** `controlled_reduction`
+> **Layer:** `derivation`
 > **Type:** `PN_backbone`
 
 ## Summary

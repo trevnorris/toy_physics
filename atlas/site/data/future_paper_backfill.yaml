@@ -77,6 +77,20 @@
   tag: future_paper_needed
 - topic_slug: charge-em
   topic_title: Electromagnetism and charge bookkeeping
+  source: notes/circulation/step_01_fluxoid_firewall.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
+  source: notes/circulation/step_01_fluxoid_firewall_sympy.py
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  tag: future_paper_needed
+- topic_slug: charge-em
+  topic_title: Electromagnetism and charge bookkeeping
   source: notes/lepton_work.md
   reason: No formal paper source is recorded yet.
   node_ids:
@@ -137,6 +151,20 @@
   reason: No formal paper source is recorded yet.
   node_ids:
   - BACKLINK_5PN_FULL
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
+  tag: future_paper_needed
+- topic_slug: moving-throat-pde
+  topic_title: Moving-throat PDE program
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
   tag: future_paper_needed
 - topic_slug: moving-throat-pde
   topic_title: Moving-throat PDE program
@@ -357,6 +385,20 @@
   tag: future_paper_needed
 - topic_slug: lepton-atom-sectors
   topic_title: Lepton and atom reduced sectors
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
+  tag: future_paper_needed
+- topic_slug: lepton-atom-sectors
+  topic_title: Lepton and atom reduced sectors
   source: notes/g2/g2_full_output.md
   reason: No formal paper source is recorded yet.
   node_ids:
@@ -522,6 +564,20 @@
   reason: No formal paper source is recorded yet.
   node_ids:
   - FILE_ATOM_WORK
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
+  tag: future_paper_needed
+- topic_slug: future-paper-worklist
+  topic_title: Future paper worklist
+  source: notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
+  reason: No formal paper source is recorded yet.
+  node_ids:
+  - OPEN_MIXED_RECIRCULATION
   tag: future_paper_needed
 - topic_slug: future-paper-worklist
   topic_title: Future paper worklist

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Observable packet fixture and extraction formulas.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -19,7 +19,7 @@ source_links:
 - '[[FILE_PDE_AUDIT]]'
 claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
@@ -27,7 +27,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Observable packet fixture and extraction formulas.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Observable packet fixture and extraction formulas.
@@ -56,9 +56,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_BRANCH_FIXTURE`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_BRANCH_FIXTURE`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -91,7 +91,7 @@ Observable packet fixture and extraction formulas.
 
 ### Related claims
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -107,7 +107,7 @@ Observable packet fixture and extraction formulas.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_BRANCH_EXPORTER_REQUIRED]] | Observable packet fixture and extraction formulas. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Observable packet fixture and extraction formulas. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Observable packet fixture and extraction formulas. |
 
 ## Incoming Edges
 

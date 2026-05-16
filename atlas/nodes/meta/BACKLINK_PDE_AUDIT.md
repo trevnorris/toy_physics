@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 'Backlinks audit corrections: parent wall action split, Maxwell gauge-localization patch, BdG and mixed kernels, grouped projectors, STF map, normalization ratio, branch exporter...'
 future_paper_needed: false
 source_files:
@@ -41,11 +41,11 @@ claim_ids:
 - CLAIM_MATERIAL_CLOSURE_GAP
 - CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH
 - CLAIM_PARENT_WALL_STATUS_SPLIT
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 - OPEN_EXECUTABLE_BRANCH_SOLVER
@@ -87,26 +87,26 @@ outgoing_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_PARENT_WALL_STATUS_SPLIT.
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
 - target: CLAIM_RESPONSE_READOUT_DISCIPLINE
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_RESPONSE_READOUT_DISCIPLINE.
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
+- target: CLAIM_STAGE024_O3_ISOTROPY
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY.
 - target: CLAIM_STAGE3_BDG_SCHUR
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_STAGE3_BDG_SCHUR.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
-- target: CLAIM_STAGE7_O3_ISOTROPY
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY.
 - target: MATH_BDG_SCHUR_COMPLEMENT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
@@ -234,9 +234,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `BACKLINK_PDE_AUDIT`  
-> **Status:** `v06_backlink_ready_not_inserted`  
-> **Layer:** `paper_backlink`  
+> **Atlas ID:** `BACKLINK_PDE_AUDIT`
+> **Status:** `v06_backlink_ready_not_inserted`
+> **Layer:** `paper_backlink`
 > **Type:** `paper_backlink_block`
 
 ## Summary
@@ -272,11 +272,11 @@ Backlinks audit corrections: parent wall action split, Maxwell gauge-localizatio
 - [[CLAIM_MATERIAL_CLOSURE_GAP]]
 - [[CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -315,11 +315,11 @@ Backlinks audit corrections: parent wall action split, Maxwell gauge-localizatio
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_MATERIAL_CLOSURE_GAP]] | Paper backlink block references CLAIM_MATERIAL_CLOSURE_GAP. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH]] | Paper backlink block references CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | Paper backlink block references CLAIM_PARENT_WALL_STATUS_SPLIT. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Paper backlink block references CLAIM_RESPONSE_READOUT_DISCIPLINE. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE3_BDG_SCHUR]] | Paper backlink block references CLAIM_STAGE3_BDG_SCHUR. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY. |
 | `BACKLINKS_ATLAS_NODE` | [[MATH_BDG_SCHUR_COMPLEMENT]] | Paper backlink block references MATH_BDG_SCHUR_COMPLEMENT. |
 | `BACKLINKS_ATLAS_NODE` | [[MATH_MAXWELL_MIXED_KERNEL]] | Paper backlink block references MATH_MAXWELL_MIXED_KERNEL. |
 | `BACKLINKS_ATLAS_NODE` | [[MATH_MAXWELL_WEIGHTED_GAUGE_FIXING]] | Paper backlink block references MATH_MAXWELL_WEIGHTED_GAUGE_FIXING. |

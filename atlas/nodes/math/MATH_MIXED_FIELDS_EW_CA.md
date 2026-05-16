@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Gauge-invariant mixed slots used for brane-bulk EM exchange and outgoing bridge.
 future_paper_needed: false
 source_files:
@@ -32,7 +32,7 @@ claim_ids:
 source_ids:
 - FILE_EM_FIELDS
 outgoing_edges:
-- target: MT_STAGE4_MAXWELL_MIXED
+- target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: ENABLES
   status: exact/reduced
   note: Mixed fields are the microscopic place for outgoing bridge.
@@ -82,9 +82,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_MIXED_FIELDS_EW_CA`  
-> **Status:** `exact`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_MIXED_FIELDS_EW_CA`
+> **Status:** `exact`
+> **Layer:** `math_object`
 > **Type:** `gauge_invariant_fields`
 
 ## Summary
@@ -143,7 +143,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `ENABLES` | [[MT_STAGE4_MAXWELL_MIXED]] | Mixed fields are the microscopic place for outgoing bridge. |
+| `ENABLES` | [[MT_STAGE004_020_PROJECTED_MAXWELL]] | Mixed fields are the microscopic place for outgoing bridge. |
 | `REDUCES_TO` | [[MATH_MAXWELL_MIXED_KERNEL]] | Mixed fields feed reduced port-active Maxwell/mixed kernel. |
 
 ## Incoming Edges

@@ -1,6 +1,6 @@
 ---
-id: MT_STAGE7_OVERLAP_ISOTROPY
-title: Stage 7 overlap isotropy theorem
+id: MT_STAGE024_OVERLAP_ISOTROPY
+title: Stage 024 overlap isotropy theorem
 type: moving_throat_stage
 layer: derivation
 status: exact_within_O3_reduced_kernel
@@ -9,36 +9,34 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Proves angular source map identity and O(3) isotropy; first weak-axisymmetric splitting law.
 future_paper_needed: false
 source_files:
-- notes/moving_throat_notes_full.md
-- notes/pde_audit_full.md
-- moving_throat_output_full.md
-- pde_audit_full.md
+- research/pde_ledger/paper/stages/stage_024.tex
+- notes/moving_throat_pde_program_compact.md
+- moving_throat_pde_stage024_overlap_isotropy.md
 legacy_sources:
-- moving_throat_output_full.md
-- pde_audit_full.md:V2-12/V2-17
+- moving_throat_pde_stage024_overlap_isotropy.md
 physical_ids:
 - PHYS_GROUPED_P2_SHAPE_RESPONSE
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 outgoing_edges:
 - target: PHYS_GROUPED_P2_SHAPE_RESPONSE
   relation: GIVES_PHYSICAL_DIAGNOSTIC
   status: reduced
   note: O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response.
-- target: MT_STAGE8_MINIMAL_NORMALIZATION
+- target: MT_STAGE025_MINIMAL_NORMALIZATION
   relation: NARROWS_TO
   status: reduced
   note: Angular side closed; radial/axial normalization remains.
 incoming_edges:
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: SPECIALIZES_TO
   status: exact within O3 reduced kernel
   note: O(3)-invariant overlap model collapses grouped lanes.
@@ -53,14 +51,14 @@ tags:
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Stage 7 overlap isotropy theorem
+# Stage 024 overlap isotropy theorem
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_STAGE7_OVERLAP_ISOTROPY`  
-> **Status:** `exact_within_O3_reduced_kernel`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `MT_STAGE024_OVERLAP_ISOTROPY`
+> **Status:** `exact_within_O3_reduced_kernel`
+> **Layer:** `derivation`
 > **Type:** `moving_throat_stage`
 
 ## Summary
@@ -107,7 +105,7 @@ The graph currently records the equation text but not a full variable dictionary
 - none
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -123,14 +121,14 @@ The graph currently records the equation text but not a full variable dictionary
 | Relation | Node | Note |
 |---|---|---|
 | `GIVES_PHYSICAL_DIAGNOSTIC` | [[PHYS_GROUPED_P2_SHAPE_RESPONSE]] | O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response. |
-| `NARROWS_TO` | [[MT_STAGE8_MINIMAL_NORMALIZATION]] | Angular side closed; radial/axial normalization remains. |
+| `NARROWS_TO` | [[MT_STAGE025_MINIMAL_NORMALIZATION]] | Angular side closed; radial/axial normalization remains. |
 
 ## Incoming Edges
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
-| `SPECIALIZES_TO` | [[MT_STAGE6_FULL_GROUPED_BUNDLE]] | O(3)-invariant overlap model collapses grouped lanes. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
+| `SPECIALIZES_TO` | [[MT_STAGE023_FULL_GROUPED_BUNDLE]] | O(3)-invariant overlap model collapses grouped lanes. |
 
 ## Source Anchors
 
@@ -138,10 +136,9 @@ The graph currently records the equation text but not a full variable dictionary
 - No source anchor note recorded.
 
 ### Source files
-- `notes/moving_throat_notes_full.md`
-- `notes/pde_audit_full.md`
-- `moving_throat_output_full.md`
-- `pde_audit_full.md`
+- `research/pde_ledger/paper/stages/stage_024.tex`
+- `notes/moving_throat_pde_program_compact.md`
+- `moving_throat_pde_stage024_overlap_isotropy.md`
 
 ## AI Maintenance Notes
 

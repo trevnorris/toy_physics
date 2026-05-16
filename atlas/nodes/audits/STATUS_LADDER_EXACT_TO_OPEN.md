@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 'Canonical status ladder for v0.4: exact, controlled_reduction, protocol_closure, exact_within_closure, reduced_sector_consequence, conditional_theorem, effective_closure, patche...'
 future_paper_needed: false
 claim_ids:
@@ -32,16 +32,16 @@ claim_ids:
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_PARENT_ACTION_CURRENT_EXACT
 - CLAIM_PARENT_WALL_STATUS_SPLIT
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_PROJECTION_OPEN_BRANE_SYSTEM
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE1_GEOMETRY_LIFT
 - CLAIM_STAGE2_AL_RECOVERY
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 - CLAIM_ZERO_MODE_MAXWELL_REDUCTION
 outgoing_edges:
 - target: CLAIM_1PN_EIH_WITHIN_HIERARCHY
@@ -120,6 +120,10 @@ outgoing_edges:
   relation: CLASSIFIES
   status: strict_parent_fail_effective_wall_pass
   note: 'Claim class: patched_required'
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  relation: CLASSIFIES
+  status: exact_within_reduced_mixed_kernel
+  note: 'Claim class: exact_within_closure'
 - target: CLAIM_PROJECTION_OPEN_BRANE_SYSTEM
   relation: CLASSIFIES
   status: exact_projection_plus_controlled_hook
@@ -128,6 +132,22 @@ outgoing_edges:
   relation: CLASSIFIES
   status: paper_facing_ontology_discipline
   note: 'Claim class: status_audit'
+- target: CLAIM_STAGE022_P0_TARGET
+  relation: CLASSIFIES
+  status: exact_within_grouped_bridge
+  note: 'Claim class: exact_within_closure'
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: CLASSIFIES
+  status: exact_within_reduced_bundle
+  note: 'Claim class: exact_within_closure'
+- target: CLAIM_STAGE024_O3_ISOTROPY
+  relation: CLASSIFIES
+  status: exact_angular_reduced
+  note: 'Claim class: exact_within_closure'
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
+  relation: CLASSIFIES
+  status: exact_within_selected_reduced_branch
+  note: 'Claim class: exact_within_closure'
 - target: CLAIM_STAGE1_GEOMETRY_LIFT
   relation: CLASSIFIES
   status: effective_geometry_lift
@@ -139,26 +159,6 @@ outgoing_edges:
 - target: CLAIM_STAGE3_BDG_SCHUR
   relation: CLASSIFIES
   status: exact_within_reduced_stable_modes
-  note: 'Claim class: exact_within_closure'
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  relation: CLASSIFIES
-  status: exact_within_reduced_mixed_kernel
-  note: 'Claim class: exact_within_closure'
-- target: CLAIM_STAGE5_P0_TARGET
-  relation: CLASSIFIES
-  status: exact_within_grouped_bridge
-  note: 'Claim class: exact_within_closure'
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: CLASSIFIES
-  status: exact_within_reduced_bundle
-  note: 'Claim class: exact_within_closure'
-- target: CLAIM_STAGE7_O3_ISOTROPY
-  relation: CLASSIFIES
-  status: exact_angular_reduced
-  note: 'Claim class: exact_within_closure'
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  relation: CLASSIFIES
-  status: exact_within_selected_reduced_branch
   note: 'Claim class: exact_within_closure'
 - target: CLAIM_ZERO_MODE_MAXWELL_REDUCTION
   relation: CLASSIFIES
@@ -185,9 +185,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `STATUS_LADDER_EXACT_TO_OPEN`  
-> **Status:** `active`  
-> **Layer:** `status_audit`  
+> **Atlas ID:** `STATUS_LADDER_EXACT_TO_OPEN`
+> **Status:** `active`
+> **Layer:** `status_audit`
 > **Type:** `status_taxonomy`
 
 ## Summary
@@ -235,16 +235,16 @@ Canonical status ladder for v0.4: exact, controlled_reduction, protocol_closure,
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_PARENT_ACTION_CURRENT_EXACT]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_PROJECTION_OPEN_BRANE_SYSTEM]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
 - [[CLAIM_STAGE2_AL_RECOVERY]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 - [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]]
 
 ### Open gates
@@ -279,16 +279,16 @@ Canonical status ladder for v0.4: exact, controlled_reduction, protocol_closure,
 | `CLASSIFIES` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Claim class: open_gate |
 | `CLASSIFIES` | [[CLAIM_PARENT_ACTION_CURRENT_EXACT]] | Claim class: exact |
 | `CLASSIFIES` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | Claim class: patched_required |
+| `CLASSIFIES` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim class: exact_within_closure |
 | `CLASSIFIES` | [[CLAIM_PROJECTION_OPEN_BRANE_SYSTEM]] | Claim class: exact_and_controlled_reduction |
 | `CLASSIFIES` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Claim class: status_audit |
+| `CLASSIFIES` | [[CLAIM_STAGE022_P0_TARGET]] | Claim class: exact_within_closure |
+| `CLASSIFIES` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim class: exact_within_closure |
+| `CLASSIFIES` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim class: exact_within_closure |
+| `CLASSIFIES` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Claim class: exact_within_closure |
 | `CLASSIFIES` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Claim class: effective_closure |
 | `CLASSIFIES` | [[CLAIM_STAGE2_AL_RECOVERY]] | Claim class: exact_within_closure |
 | `CLASSIFIES` | [[CLAIM_STAGE3_BDG_SCHUR]] | Claim class: exact_within_closure |
-| `CLASSIFIES` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim class: exact_within_closure |
-| `CLASSIFIES` | [[CLAIM_STAGE5_P0_TARGET]] | Claim class: exact_within_closure |
-| `CLASSIFIES` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim class: exact_within_closure |
-| `CLASSIFIES` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim class: exact_within_closure |
-| `CLASSIFIES` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Claim class: exact_within_closure |
 | `CLASSIFIES` | [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]] | Claim class: controlled_reduction |
 
 ## Incoming Edges

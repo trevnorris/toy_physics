@@ -9,12 +9,14 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Need closed law connecting circulation, throat intake, mixed transport, brane magnetic fields, and current source.
 future_paper_needed: false
 source_files:
 - notes/pde_audit_full.md
 - notes/lepton_work.md
+- notes/circulation/step_06_mixed_sector_plumbing_closure.md
+- notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
 - pde_audit_full.md
 - lepton_work.md
 legacy_sources:
@@ -25,6 +27,7 @@ source_links:
 physical_ids:
 - MT_V2_30_EM_ONTOLOGY
 claim_ids:
+- CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
 - CLAIM_MIXED_RECIRCULATION_OPEN
 source_ids:
 - SEC_PDE_EM_STATUS
@@ -33,6 +36,10 @@ incoming_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: EM ontology and recirculation/plumbing status.
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: FEEDS_OR_STATUS_OF
+  status: conditional_open_plumbing
+  note: Circulation package refines the open gate to include Lambda_A sign and N0 magnitude status.
 - source: CLAIM_MIXED_RECIRCULATION_OPEN
   relation: FEEDS_OR_STATUS_OF
   status: open
@@ -79,9 +86,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_MIXED_RECIRCULATION`  
-> **Status:** `open`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_MIXED_RECIRCULATION`
+> **Status:** `open`
+> **Layer:** `open_gate`
 > **Type:** `EM_plumbing_gate`
 
 ## Summary
@@ -120,6 +127,10 @@ $$
 fluxoid
 $$
 
+$$
+Lambda_A sign/plumbing map
+$$
+
 ## Variable Dictionary
 
 The graph currently records the equation text but not a full variable dictionary for this generated note. Add dictionary detail in the graph source before regenerating if this equation becomes a reusable paper-facing object.
@@ -136,6 +147,7 @@ The graph currently records the equation text but not a full variable dictionary
 - none
 
 ### Related claims
+- [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]]
 - [[CLAIM_MIXED_RECIRCULATION_OPEN]]
 
 ### Open gates
@@ -156,6 +168,7 @@ The graph currently records the equation text but not a full variable dictionary
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_EM_STATUS]] | EM ontology and recirculation/plumbing status. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]] | Circulation package refines the open gate to include Lambda_A sign and N0 magnitude status. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_MIXED_RECIRCULATION_OPEN]] | Claim feeds this downstream object, output, or open gate. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_EM_FIELDS]] | Paper backlink block flags open gate OPEN_MIXED_RECIRCULATION. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_LEPTON_WORK]] | Paper backlink block flags open gate OPEN_MIXED_RECIRCULATION. |
@@ -172,6 +185,8 @@ The graph currently records the equation text but not a full variable dictionary
 ### Source files
 - `notes/pde_audit_full.md`
 - `notes/lepton_work.md`
+- `notes/circulation/step_06_mixed_sector_plumbing_closure.md`
+- `notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py`
 - `pde_audit_full.md`
 - `lepton_work.md`
 

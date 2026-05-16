@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Grouped P2 projectors.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -18,16 +18,16 @@ source_files:
 source_links:
 - '[[FILE_PDE_AUDIT]]'
 claim_ids:
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Grouped P2 projectors.
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Grouped P2 projectors.
@@ -56,9 +56,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_P2_PROJECTORS`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_P2_PROJECTORS`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -90,8 +90,8 @@ Grouped P2 projectors.
 - none
 
 ### Related claims
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -106,8 +106,8 @@ Grouped P2 projectors.
 
 | Relation | Node | Note |
 |---|---|---|
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Grouped P2 projectors. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Grouped P2 projectors. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Grouped P2 projectors. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Grouped P2 projectors. |
 
 ## Incoming Edges
 

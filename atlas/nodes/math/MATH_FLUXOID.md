@@ -9,12 +9,14 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Topological magnetic/vortical class; not electric charge definition.
 future_paper_needed: false
 source_files:
 - research/4d/paper/4d.tex
 - notes/pde_audit_full.md
+- notes/circulation/step_01_fluxoid_firewall.md
+- notes/circulation/step_01_fluxoid_firewall_sympy.py
 - 4d_summary.md
 - pde_audit_full.md
 legacy_sources:
@@ -37,16 +39,32 @@ tex_anchor:
 physical_ids:
 - PHYS_CHARGE_BRANCH
 - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+claim_ids:
+- CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+- CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+- CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
 outgoing_edges:
 - target: PHYS_CHARGE_BRANCH
   relation: SHOULD_NOT_IDENTIFY_WITH
   status: firewall
   note: Circulation is magnetic/vortical, not electric charge.
 incoming_edges:
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: IMPORTS
+  status: conditional_open_plumbing
+  note: Effective current map starts from the fluxoid/circulation integer but does not derive from it alone.
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: LIMITS_SCOPE_OF
+  status: exact_negative_within_3d_closure_analysis
+  note: Fluxoid holonomy alone is not a 3D radial-force law.
 - source: PHYS_MAGNETIC_VORTICAL_CIRCULATION
   relation: REPRESENTED_BY
   status: exact/open plumbing
   note: Fluxoid/circulation represented by quantized holonomy law.
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  relation: SUPPORTS
+  status: exact_identity_audit
+  note: Circulation package derives integer phase winding from single-valued psi and supports the fluxoid/circulation law.
 tags:
 - atlas/math
 - atlas/node
@@ -64,9 +82,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_FLUXOID`  
-> **Status:** `exact_identity_open_plumbing`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_FLUXOID`
+> **Status:** `exact_identity_open_plumbing`
+> **Layer:** `math_object`
 > **Type:** `topological_identity`
 
 ## Summary
@@ -106,7 +124,9 @@ The graph currently records the equation text but not a full variable dictionary
 - none
 
 ### Related claims
-- none
+- [[CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION]]
+- [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]]
+- [[CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID]]
 
 ### Open gates
 - none
@@ -127,7 +147,10 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
+| `IMPORTS` | [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]] | Effective current map starts from the fluxoid/circulation integer but does not derive from it alone. |
+| `LIMITS_SCOPE_OF` | [[CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID]] | Fluxoid holonomy alone is not a 3D radial-force law. |
 | `REPRESENTED_BY` | [[PHYS_MAGNETIC_VORTICAL_CIRCULATION]] | Fluxoid/circulation represented by quantized holonomy law. |
+| `SUPPORTS` | [[CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION]] | Circulation package derives integer phase winding from single-valued psi and supports the fluxoid/circulati... |
 
 ## Source Anchors
 
@@ -137,6 +160,8 @@ The graph currently records the equation text but not a full variable dictionary
 ### Source files
 - `research/4d/paper/4d.tex`
 - `notes/pde_audit_full.md`
+- `notes/circulation/step_01_fluxoid_firewall.md`
+- `notes/circulation/step_01_fluxoid_firewall_sympy.py`
 - `4d_summary.md`
 - `pde_audit_full.md`
 

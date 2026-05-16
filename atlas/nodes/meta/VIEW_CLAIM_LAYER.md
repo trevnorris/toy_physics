@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Groups equations, physics objects, files, and gates into named claims with explicit status classes.
 future_paper_needed: false
 claim_ids:
@@ -32,16 +32,16 @@ claim_ids:
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_PARENT_ACTION_CURRENT_EXACT
 - CLAIM_PARENT_WALL_STATUS_SPLIT
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_PROJECTION_OPEN_BRANE_SYSTEM
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE1_GEOMETRY_LIFT
 - CLAIM_STAGE2_AL_RECOVERY
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 - CLAIM_ZERO_MODE_MAXWELL_REDUCTION
 outgoing_edges:
 - target: CLAIM_1PN_EIH_WITHIN_HIERARCHY
@@ -120,11 +120,31 @@ outgoing_edges:
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  relation: CONTAINS_CLAIM
+  status: active
+  note: v0.4 claim/theorem layer item.
 - target: CLAIM_PROJECTION_OPEN_BRANE_SYSTEM
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
 - target: CLAIM_RESPONSE_READOUT_DISCIPLINE
+  relation: CONTAINS_CLAIM
+  status: active
+  note: v0.4 claim/theorem layer item.
+- target: CLAIM_STAGE022_P0_TARGET
+  relation: CONTAINS_CLAIM
+  status: active
+  note: v0.4 claim/theorem layer item.
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: CONTAINS_CLAIM
+  status: active
+  note: v0.4 claim/theorem layer item.
+- target: CLAIM_STAGE024_O3_ISOTROPY
+  relation: CONTAINS_CLAIM
+  status: active
+  note: v0.4 claim/theorem layer item.
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
@@ -137,26 +157,6 @@ outgoing_edges:
   status: active
   note: v0.4 claim/theorem layer item.
 - target: CLAIM_STAGE3_BDG_SCHUR
-  relation: CONTAINS_CLAIM
-  status: active
-  note: v0.4 claim/theorem layer item.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  relation: CONTAINS_CLAIM
-  status: active
-  note: v0.4 claim/theorem layer item.
-- target: CLAIM_STAGE5_P0_TARGET
-  relation: CONTAINS_CLAIM
-  status: active
-  note: v0.4 claim/theorem layer item.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: CONTAINS_CLAIM
-  status: active
-  note: v0.4 claim/theorem layer item.
-- target: CLAIM_STAGE7_O3_ISOTROPY
-  relation: CONTAINS_CLAIM
-  status: active
-  note: v0.4 claim/theorem layer item.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
@@ -188,9 +188,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `VIEW_CLAIM_LAYER`  
-> **Status:** `active`  
-> **Layer:** `atlas_meta`  
+> **Atlas ID:** `VIEW_CLAIM_LAYER`
+> **Status:** `active`
+> **Layer:** `atlas_meta`
 > **Type:** `view`
 
 ## Summary
@@ -238,16 +238,16 @@ Groups equations, physics objects, files, and gates into named claims with expli
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_PARENT_ACTION_CURRENT_EXACT]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_PROJECTION_OPEN_BRANE_SYSTEM]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
 - [[CLAIM_STAGE2_AL_RECOVERY]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 - [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]]
 
 ### Open gates
@@ -282,16 +282,16 @@ Groups equations, physics objects, files, and gates into named claims with expli
 | `CONTAINS_CLAIM` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_PARENT_ACTION_CURRENT_EXACT]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | v0.4 claim/theorem layer item. |
+| `CONTAINS_CLAIM` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_PROJECTION_OPEN_BRANE_SYSTEM]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | v0.4 claim/theorem layer item. |
+| `CONTAINS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | v0.4 claim/theorem layer item. |
+| `CONTAINS_CLAIM` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | v0.4 claim/theorem layer item. |
+| `CONTAINS_CLAIM` | [[CLAIM_STAGE024_O3_ISOTROPY]] | v0.4 claim/theorem layer item. |
+| `CONTAINS_CLAIM` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_STAGE2_AL_RECOVERY]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_STAGE3_BDG_SCHUR]] | v0.4 claim/theorem layer item. |
-| `CONTAINS_CLAIM` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | v0.4 claim/theorem layer item. |
-| `CONTAINS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | v0.4 claim/theorem layer item. |
-| `CONTAINS_CLAIM` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | v0.4 claim/theorem layer item. |
-| `CONTAINS_CLAIM` | [[CLAIM_STAGE7_O3_ISOTROPY]] | v0.4 claim/theorem layer item. |
-| `CONTAINS_CLAIM` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | v0.4 claim/theorem layer item. |
 | `CONTAINS_CLAIM` | [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]] | v0.4 claim/theorem layer item. |
 | `FEEDS` | [[VIEW_EXTENSION_WORKBENCH]] | Future derivation extensions start by selecting claim nodes and traversing their dependencies. |
 

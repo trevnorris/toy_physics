@@ -9,34 +9,34 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Bridge from conservative operator moments to normalized grouped response moments.
 future_paper_needed: false
 source_files:
-- research/pde_ledger/paper/stages/stage_005.tex
-- notes/pde_audit_full.md
-- moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+- research/pde_ledger/paper/stages/stage_022.tex
+- notes/moving_throat_pde_program_compact.md
+- moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
 - pde_audit_full.md
 legacy_sources:
-- moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+- moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
 - pde_audit_full.md
 source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
 - '[[FILE_PDE_AUDIT]]'
 tex_anchor:
-  file: research/pde_ledger/paper/stages/stage_005.tex
+  file: research/pde_ledger/paper/stages/stage_022.tex
   line: 15
   heading_level: paragraph
   heading: 1. Conservative operator and normalized response.
   nearest_label:
-    name: eq:app-stage005-d-operator
+    name: eq:app-stage022-d-operator
     line: 18
   nearby_labels:
-  - name: eq:app-stage005-d-operator
+  - name: eq:app-stage022-d-operator
     line: 18
-  - name: eq:app-stage005-y-response
+  - name: eq:app-stage022-y-response
     line: 23
-  - name: eq:app-stage005-u2u4
+  - name: eq:app-stage022-u2u4
     line: 29
   match_basis: semantic_heading_match
   match_score: 0.589
@@ -46,12 +46,12 @@ equation_ids:
 - EQ_FULL_BUNDLE_TARGET_SURFACE
 claim_ids:
 - CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 source_ids:
 - FILE_MOVING_THROAT_COMPACT
 - FILE_PDE_AUDIT
 outgoing_edges:
-- target: MT_STAGE5_GROUPED_P2_BRIDGE
+- target: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: ANCHORS
   status: equation_anchor
   note: Equation anchor belongs to or formalizes this graph node.
@@ -63,7 +63,7 @@ outgoing_edges:
   relation: SUPPORTS_CLAIM
   status: exact_assembly_within_closure
   note: Equation anchor supports this named claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: SUPPORTS_CLAIM
   status: exact_within_grouped_bridge
   note: Equation anchor supports this named claim.
@@ -96,9 +96,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `EQ_GROUPED_RESPONSE_MOMENTS`  
-> **Status:** `exact_within_reduced_bundle`  
-> **Layer:** `equation_anchor`  
+> **Atlas ID:** `EQ_GROUPED_RESPONSE_MOMENTS`
+> **Status:** `exact_within_reduced_bundle`
+> **Layer:** `equation_anchor`
 > **Type:** `equation`
 
 ## Summary
@@ -114,7 +114,7 @@ Bridge from conservative operator moments to normalized grouped response moments
 - Layer: `equation_anchor`
 - Type: `equation`
 - Status: `exact_within_reduced_bundle`
-- Parent node: `MT_STAGE5_GROUPED_P2_BRIDGE`
+- Parent node: `MT_STAGE022_GROUPED_P2_BRIDGE`
 
 ## Equation
 
@@ -140,7 +140,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - none
@@ -156,10 +156,10 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `ANCHORS` | [[MT_STAGE5_GROUPED_P2_BRIDGE]] | Equation anchor belongs to or formalizes this graph node. |
+| `ANCHORS` | [[MT_STAGE022_GROUPED_P2_BRIDGE]] | Equation anchor belongs to or formalizes this graph node. |
 | `FEEDS` | [[EQ_FULL_BUNDLE_TARGET_SURFACE]] | Response moments enter one-pole and full-bundle target surface. |
 | `SUPPORTS_CLAIM` | [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]] | Equation anchor supports this named claim. |
-| `SUPPORTS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | Equation anchor supports this named claim. |
+| `SUPPORTS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | Equation anchor supports this named claim. |
 
 ## Incoming Edges
 
@@ -176,16 +176,16 @@ The graph currently records the equation text but not a full variable dictionary
 - [[FILE_PDE_AUDIT]]
 
 ### Source files
-- `research/pde_ledger/paper/stages/stage_005.tex`
-- `notes/pde_audit_full.md`
-- `moving_throat_pde_stage005_grouped_p2_normalization_bridge.md`
+- `research/pde_ledger/paper/stages/stage_022.tex`
+- `notes/moving_throat_pde_program_compact.md`
+- `moving_throat_pde_stage022_grouped_p2_normalization_bridge.md`
 - `pde_audit_full.md`
 
 ### TeX anchor
-- File: `research/pde_ledger/paper/stages/stage_005.tex`
+- File: `research/pde_ledger/paper/stages/stage_022.tex`
 - Line: `15`
 - Heading: 1. Conservative operator and normalized response.
-- Nearest label: `eq:app-stage005-d-operator` at line `18`
+- Nearest label: `eq:app-stage022-d-operator` at line `18`
 - Match basis: `semantic_heading_match`
 - Confidence: `medium`
 

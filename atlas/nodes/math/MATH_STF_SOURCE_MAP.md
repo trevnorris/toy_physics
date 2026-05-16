@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Canonical real STF angular basis maps orbital/worldtube quadrupole sources to grouped P2 ports with mhat_ang=1.
 future_paper_needed: false
 source_files:
@@ -23,7 +23,7 @@ legacy_sources:
 physical_ids:
 - PHYS_REG_P2_QUAD
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 open_gate_ids:
 - OPEN_SOURCE_PORT_NORMALIZATION
 status_firewall_ids:
@@ -38,7 +38,7 @@ incoming_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references MATH_STF_SOURCE_MAP.
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
@@ -75,9 +75,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_STF_SOURCE_MAP`  
-> **Status:** `exact_angular`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_STF_SOURCE_MAP`
+> **Status:** `exact_angular`
+> **Layer:** `math_object`
 > **Type:** `source_map`
 
 ## Summary
@@ -116,7 +116,7 @@ The graph currently records the equation text but not a full variable dictionary
 - none
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - [[OPEN_SOURCE_PORT_NORMALIZATION]]
@@ -138,7 +138,7 @@ The graph currently records the equation text but not a full variable dictionary
 | Relation | Node | Note |
 |---|---|---|
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_25PN]] | Paper backlink block references MATH_STF_SOURCE_MAP. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
 | `LINKS_TO` | [[PHYS_REG_P2_QUAD]] | Physical register entry links to graph object. |
 | `PROTECTS_STATUS_OF` | [[FIREWALL_ANGULAR_NOT_RADIAL]] | Firewall preserves this correct status boundary. |
 | `PROVES` | [[MT_V2_12_STF_SOURCE_MAP]] | Closes angular source-map identity. |

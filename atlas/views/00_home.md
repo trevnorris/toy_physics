@@ -4,8 +4,8 @@
 
 This vault is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`.
 
-- Nodes: `373`
-- Edges: `1325`
+- Nodes: `382`
+- Edges: `1348`
 - Source graph version: `v0.8-codex-handoff`
 
 ## Dashboards

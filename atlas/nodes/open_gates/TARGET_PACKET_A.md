@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Actual branch must export K,M,B_n,Z_n,N_n satisfying one-pole and normalization conditions.
 future_paper_needed: false
 source_files:
@@ -21,7 +21,7 @@ claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 - OPEN_QUAD_NORMALIZATION
@@ -47,7 +47,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: paper_facing_ontology_discipline
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle
   note: Claim feeds this downstream object, output, or open gate.
@@ -75,9 +75,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `TARGET_PACKET_A`  
-> **Status:** `open_branch_realization`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `TARGET_PACKET_A`
+> **Status:** `open_branch_realization`
+> **Layer:** `open_gate`
 > **Type:** `target_packet`
 
 ## Summary
@@ -139,7 +139,7 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -165,7 +165,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_BRANCH_EXPORTER_REQUIRED]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim feeds this downstream object, output, or open gate. |
 | `INCLUDED_IN` | [[OPEN_QUAD_NORMALIZATION]] | Quadrupole normalization appears as P0/N0/D0 condition in Packet A. |
 | `MUST_REALIZE` | [[OPEN_ACTUAL_BRANCH_EXPORTER]] | Physical branch must output Packet A target-blind. |
 

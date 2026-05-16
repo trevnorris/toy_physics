@@ -188,8 +188,9 @@
       "status": "mixed_published_and_open",
       "node_ids": [
         "CLAIM_25PN_QUAD_NARROWING",
-        "CLAIM_STAGE5_P0_TARGET",
-        "CLAIM_STAGE7_O3_ISOTROPY",
+        "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+        "CLAIM_STAGE022_P0_TARGET",
+        "CLAIM_STAGE024_O3_ISOTROPY",
         "PN_2_5_QUAD_NARROWING",
         "PHYS_OUTGOING_QUADRUPOLE_PORT",
         "MATH_STF_SOURCE_MAP",
@@ -204,12 +205,14 @@
         "physical_picture": [
           "This page is the gate between the published PN ladder and the still-active moving-throat branch program. It explains why the 2.5PN result is a strong narrowing theorem but not yet an unconditional solved-branch theorem.",
           "The scalar and dipole danger channels are demoted on the natural branch, leaving the orbital or worldtube STF quadrupole as the surviving universal dissipative route.",
+          "The current PDE ledger gets to this outgoing port through the projection-first electromagnetic packet in Stages 004--020, then uses the retained Stage 021 reduced one-port adapter before the grouped normalization bridge.",
           "The outgoing quadrupole port is the physical place where the branch must speak. It must export the passive outgoing response with the correct normalization before the 2.5PN and inherited 4PN tail statements can be upgraded.",
           "The angular source-map result is real progress: the canonical STF angular basis maps into the grouped P2 ports cleanly. But angular closure is only the angular part of the problem.",
           "The remaining issue is radial, axial, and port-amplitude data. The same branch must provide the source scale and outgoing prefactor as branch data, not as a coefficient fitted after comparing with the PN target."
         ],
         "mathematical_core": [
           "The compact outgoing l=2 fingerprint fixes the universal low-frequency structure of the outgoing quadrupole response. Its imaginary omega^5 term is the bridge into the dissipative 2.5PN coefficient.",
+          "In the reordered ledger, that fingerprint is anchored after projected EM by the Stage 021 one-port adapter, while Stage 022 records the grouped P2 normalization bridge.",
           "The central target is an invariant product involving the source scale and outgoing response coefficient. The graph records it as EQ_P0_TARGET and protects it with open-gate status.",
           "In reduced grouped-P2 language, the leading odd coefficient depends on the isotropic static outgoing prefactor. The branch must therefore deliver P0 or the equivalent N0/D0 readout through the response-packet machinery.",
           "The STF source-map theorem and O(3) angular isotropy organize the basis and remove angular ambiguity. They do not compute the radial selected branch, the axial normalization, or the outgoing port amplitude.",
@@ -238,7 +241,10 @@
         "MATH_WALL_MODAL_PDE",
         "EQ_WALL_MODAL_PDE",
         "CLAIM_PARENT_WALL_STATUS_SPLIT",
-        "CLAIM_STAGE8_TO_14_SELECTED_BRANCH",
+        "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+        "MT_STAGE004_020_PROJECTED_MAXWELL",
+        "MT_STAGE021_REDUCED_ONE_PORT",
+        "CLAIM_STAGE025_031_SELECTED_BRANCH",
         "MATH_PARENT_ACTION_PROMOTED",
         "OPEN_PARENT_PROMOTION_S_SIGMA",
         "OPEN_NONLINEAR_S_SIGMA",
@@ -264,6 +270,7 @@
         "mathematical_core": [
           "The quadratic wall action S_eta^(2) generates the effective scalar and P2 wall equations. It is a controlled linear wall closure, not yet a strict parent-level nonlinear wall theory.",
           "Strict parent-level status requires the promoted S_Sigma action. Its quadratic limit should reproduce the effective wall closure, but the nonlinear completion remains an open gate.",
+          "The electromagnetic block now follows the projection-first ledger ordering: Stages 004--020 derive the projected Maxwell packet, and Stage 021 keeps the reduced one-port normal form only as the downstream adapter.",
           "The selected-mode stages convert radial and axial branch data into a spectral reachability packet for the remaining normalization targets.",
           "The branch exporter should output quantities such as K, M, B_n, Z_n, N_n, P0, N2, and N4 as frozen data from the solved branch, not as adjustable fit knobs.",
           "Material closure and mixed recirculation have to close on the same branch. Density, sound speed, effective light cone, intake/output flux, A_w, F_muw, and current-source plumbing cannot be solved as detached post-processing."
@@ -565,5 +572,5 @@
       ]
     }
   ],
-  "generated_utc": "2026-04-27T23:04:30Z"
+  "generated_utc": "2026-05-16T02:23:53Z"
 }

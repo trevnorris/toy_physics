@@ -1,6 +1,6 @@
 ---
-id: MT_STAGE8_MINIMAL_NORMALIZATION
-title: Stage 8 minimal isotropic normalization
+id: MT_STAGE025_MINIMAL_NORMALIZATION
+title: Stage 025 minimal isotropic normalization
 type: moving_throat_stage
 layer: derivation
 status: reduced_model
@@ -9,22 +9,23 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Collapses radial/axial normalization to one explicit minimal scalar expression.
 future_paper_needed: false
 source_files:
-- notes/moving_throat_notes_full.md
+- research/pde_ledger/paper/stages/stage_025.tex
+- notes/moving_throat_pde_program_compact.md
 - moving_throat_output_full.md
 legacy_sources:
 - moving_throat_output_full.md
 claim_ids:
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 incoming_edges:
-- source: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- source: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_selected_reduced_branch
   note: Claim feeds this downstream object, output, or open gate.
-- source: MT_STAGE7_OVERLAP_ISOTROPY
+- source: MT_STAGE024_OVERLAP_ISOTROPY
   relation: NARROWS_TO
   status: reduced
   note: Angular side closed; radial/axial normalization remains.
@@ -33,19 +34,20 @@ tags:
 - atlas/node
 - layer/derivation
 - status/reduced_model
+- topic/moving_throat
 - type/moving_throat_stage
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Stage 8 minimal isotropic normalization
+# Stage 025 minimal isotropic normalization
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_STAGE8_MINIMAL_NORMALIZATION`  
-> **Status:** `reduced_model`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `MT_STAGE025_MINIMAL_NORMALIZATION`
+> **Status:** `reduced_model`
+> **Layer:** `derivation`
 > **Type:** `moving_throat_stage`
 
 ## Summary
@@ -84,7 +86,7 @@ The graph currently records the equation text but not a full variable dictionary
 - none
 
 ### Related claims
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -103,8 +105,8 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Claim feeds this downstream object, output, or open gate. |
-| `NARROWS_TO` | [[MT_STAGE7_OVERLAP_ISOTROPY]] | Angular side closed; radial/axial normalization remains. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Claim feeds this downstream object, output, or open gate. |
+| `NARROWS_TO` | [[MT_STAGE024_OVERLAP_ISOTROPY]] | Angular side closed; radial/axial normalization remains. |
 
 ## Source Anchors
 
@@ -112,7 +114,8 @@ The graph currently records the equation text but not a full variable dictionary
 - No source anchor note recorded.
 
 ### Source files
-- `notes/moving_throat_notes_full.md`
+- `research/pde_ledger/paper/stages/stage_025.tex`
+- `notes/moving_throat_pde_program_compact.md`
 - `moving_throat_output_full.md`
 
 ## AI Maintenance Notes

@@ -1,16 +1,16 @@
 ---
-id: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-title: Localized Maxwell/mixed block carries first honest outgoing bridge
+id: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+title: Projection-first EM packet feeds the outgoing bridge
 type: claim
 layer: claim_theorem
-status: exact_within_reduced_mixed_kernel
+status: exact_projection_with_reduced_adapter
 atlas_version: obsidian-v0.1
 source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: The Maxwell/mixed block contributes conservative self-energy and transfers a passive/outgoing l=2 odd fingerprint to the wall through a nonnegative static transfer factor.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 finge...
 future_paper_needed: false
 source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
@@ -27,14 +27,14 @@ equation_ids:
 - EQ_MAXWELL_MIXED_TRANSFER
 claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
+- CLAIM_STAGE022_P0_TARGET
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE5_P0_TARGET
 source_ids:
 - FILE_MOVING_THROAT_COMPACT
 - FILE_PDE_AUDIT
 - SEC_PDE_MIXED_KERNEL
 outgoing_edges:
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: FEEDS
   status: active
   note: Claim-level dependency added in v0.4.
@@ -46,10 +46,14 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_mixed_kernel
   note: Claim feeds this downstream object, output, or open gate.
-- target: MT_STAGE4_MAXWELL_MIXED
+- target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_mixed_kernel
   note: Claim feeds this downstream object, output, or open gate.
+- target: MT_STAGE021_REDUCED_ONE_PORT
+  relation: FEEDS_OR_STATUS_OF
+  status: retained_reduced_adapter
+  note: Retained reduced one-port adapter closes the projection-first EM packet for downstream grouped normalization.
 incoming_edges:
 - source: SEC_PDE_MIXED_KERNEL
   relation: ANCHORS_CLAIM_SECTION
@@ -58,11 +62,11 @@ incoming_edges:
 - source: BACKLINK_MOVING_THROAT_COMPACT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
 - source: BACKLINK_PDE_AUDIT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
 - source: STATUS_LADDER_EXACT_TO_OPEN
   relation: CLASSIFIES
   status: exact_within_reduced_mixed_kernel
@@ -111,43 +115,44 @@ tags:
 - atlas/claims
 - atlas/node
 - layer/claim_theorem
-- status/exact_within_reduced_mixed_kernel
+- status/exact_projection_with_reduced_adapter
 - topic/maxwell
 - topic/moving_throat
+- topic/projection
 - topic/quadrupole
 - type/claim
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Localized Maxwell/mixed block carries first honest outgoing bridge
+# Projection-first EM packet feeds the outgoing bridge
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER`  
-> **Status:** `exact_within_reduced_mixed_kernel`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE`
+> **Status:** `exact_projection_with_reduced_adapter`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
 
-The Maxwell/mixed block contributes conservative self-energy and transfers a passive/outgoing l=2 odd fingerprint to the wall through a nonnegative static transfer factor.
+The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 fingerprint into the grouped normalization bridge.
 
 ## Claim
 
-The Maxwell/mixed block contributes conservative self-energy and transfers a passive/outgoing l=2 odd fingerprint to the wall through a nonnegative static transfer factor.
+The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 fingerprint into the grouped normalization bridge.
 
 ## Physical Meaning
 
-The Maxwell/mixed block contributes conservative self-energy and transfers a passive/outgoing l=2 odd fingerprint to the wall through a nonnegative static transfer factor.
+The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 fingerprint into the grouped normalization bridge.
 
 ## Mathematical Role
 
 - Layer: `claim_theorem`
 - Type: `claim`
-- Status: `exact_within_reduced_mixed_kernel`
-- Outputs: `MT_STAGE4_MAXWELL_MIXED`, `MATH_MAXWELL_MIXED_KERNEL`, `MATH_COMPACT_L2_OUTGOING_FINGERPRINT`
+- Status: `exact_projection_with_reduced_adapter`
+- Outputs: `MT_STAGE004_020_PROJECTED_MAXWELL`, `MT_STAGE021_REDUCED_ONE_PORT`, `MATH_MAXWELL_MIXED_KERNEL`, `MATH_COMPACT_L2_OUTGOING_FINGERPRINT`
 
 ## Atlas Links
 
@@ -165,8 +170,8 @@ The Maxwell/mixed block contributes conservative self-energy and transfers a pas
 
 ### Related claims
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE5_P0_TARGET]]
 
 ### Open gates
 - none
@@ -183,18 +188,19 @@ The Maxwell/mixed block contributes conservative self-energy and transfers a pas
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS` | [[CLAIM_STAGE5_P0_TARGET]] | Claim-level dependency added in v0.4. |
+| `FEEDS` | [[CLAIM_STAGE022_P0_TARGET]] | Claim-level dependency added in v0.4. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_COMPACT_L2_OUTGOING_FINGERPRINT]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_MAXWELL_MIXED_KERNEL]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[MT_STAGE4_MAXWELL_MIXED]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE004_020_PROJECTED_MAXWELL]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE021_REDUCED_ONE_PORT]] | Retained reduced one-port adapter closes the projection-first EM packet for downstream grouped normalization. |
 
 ## Incoming Edges
 
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_MIXED_KERNEL]] | Mixed kernel audit. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE. |
 | `CLASSIFIES` | [[STATUS_LADDER_EXACT_TO_OPEN]] | Claim class: exact_within_closure |
 | `CONTAINS_CLAIM` | [[VIEW_CLAIM_LAYER]] | v0.4 claim/theorem layer item. |
 | `ENABLES` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Claim-level dependency added in v0.4. |

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Continuum-kernel extraction and placement map.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -19,7 +19,7 @@ source_links:
 - '[[FILE_5PN_FULL]]'
 claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 source_ids:
 - FILE_5PN_FULL
 outgoing_edges:
@@ -27,7 +27,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Continuum-kernel extraction and placement map.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Continuum-kernel extraction and placement map.
@@ -56,9 +56,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_5PN_STAGE24_26_PLACEMENT`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_5PN_STAGE24_26_PLACEMENT`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -91,7 +91,7 @@ Continuum-kernel extraction and placement map.
 
 ### Related claims
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -107,7 +107,7 @@ Continuum-kernel extraction and placement map.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_BRANCH_EXPORTER_REQUIRED]] | Continuum-kernel extraction and placement map. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Continuum-kernel extraction and placement map. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Continuum-kernel extraction and placement map. |
 
 ## Incoming Edges
 

@@ -9,14 +9,14 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Stage 1 makes grouped P2 a real wall/support mode; later stages add BdG, mixed/outgoing bridge, full bundle, and O(3) isotropy.
 future_paper_needed: false
 claim_ids:
+- CLAIM_STAGE024_O3_ISOTROPY
 - CLAIM_STAGE1_GEOMETRY_LIFT
-- CLAIM_STAGE7_O3_ISOTROPY
 outgoing_edges:
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: EXPECTS_TARGET
   status: v06
   note: Query validation expected target node.
@@ -41,9 +41,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `QUERY_P2_BECOMES_PHYSICAL`  
-> **Status:** `v06_seed_query`  
-> **Layer:** `query_validation`  
+> **Atlas ID:** `QUERY_P2_BECOMES_PHYSICAL`
+> **Status:** `v06_seed_query`
+> **Layer:** `query_validation`
 > **Type:** `query_test`
 
 ## Summary
@@ -59,7 +59,7 @@ Stage 1 makes grouped P2 a real wall/support mode; later stages add BdG, mixed/o
 - Layer: `query_validation`
 - Type: `query_test`
 - Status: `v06_seed_query`
-- Target: `CLAIM_STAGE7_O3_ISOTROPY`
+- Target: `CLAIM_STAGE024_O3_ISOTROPY`
 
 ## Atlas Links
 
@@ -73,8 +73,8 @@ Stage 1 makes grouped P2 a real wall/support mode; later stages add BdG, mixed/o
 - none
 
 ### Related claims
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -89,7 +89,7 @@ Stage 1 makes grouped P2 a real wall/support mode; later stages add BdG, mixed/o
 
 | Relation | Node | Note |
 |---|---|---|
-| `EXPECTS_TARGET` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Query validation expected target node. |
+| `EXPECTS_TARGET` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Query validation expected target node. |
 | `STARTS_AT` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Query validation start node. |
 
 ## Incoming Edges

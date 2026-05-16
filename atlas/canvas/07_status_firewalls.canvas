@@ -1,18 +1,18 @@
 {
   "nodes": [
     {
-      "id": "FILE_1PN_FULL",
+      "id": "PHYS_MOUTH_INTERIOR_FIREWALL",
       "type": "file",
-      "file": "nodes/sources/FILE_1PN_FULL.md",
+      "file": "nodes/status_firewalls/PHYS_MOUTH_INTERIOR_FIREWALL.md",
       "x": 0,
       "y": 0,
       "width": 330,
       "height": 190
     },
     {
-      "id": "PHYS_MOUTH_INTERIOR_FIREWALL",
+      "id": "NEG_QUERY_LEPTON_HALF_INTEGER_PROVED",
       "type": "file",
-      "file": "nodes/status_firewalls/PHYS_MOUTH_INTERIOR_FIREWALL.md",
+      "file": "nodes/audits/NEG_QUERY_LEPTON_HALF_INTEGER_PROVED.md",
       "x": 380,
       "y": 0,
       "width": 330,
@@ -334,14 +334,6 @@
     },
     {
       "id": "e3",
-      "fromNode": "FIREWALL_KAPPARHO_NOT_CHARGE",
-      "fromSide": "right",
-      "toNode": "FILE_1PN_FULL",
-      "toSide": "left",
-      "label": "ANCHORED_IN"
-    },
-    {
-      "id": "e4",
       "fromNode": "FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE",
       "fromSide": "right",
       "toNode": "INVALID_ZERO_MODE_REMOVES_MIXED",
@@ -349,7 +341,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e5",
+      "id": "e4",
       "fromNode": "FIREWALL_PROJECTION_NOT_REDUCTION",
       "fromSide": "right",
       "toNode": "INVALID_PROJECTION_EQUALS_REDUCTION",
@@ -357,7 +349,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e6",
+      "id": "e5",
       "fromNode": "FIREWALL_PARENT_WALL_NOT_STRICT",
       "fromSide": "right",
       "toNode": "INVALID_CURRENT_PARENT_HAS_AUTONOMOUS_WALL_PDE",
@@ -365,7 +357,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e7",
+      "id": "e6",
       "fromNode": "FIREWALL_WALL_COEFFS_BRANCH_DATA",
       "fromSide": "right",
       "toNode": "INVALID_WALL_COEFFS_POSTHOC_FITS",
@@ -373,7 +365,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e8",
+      "id": "e7",
       "fromNode": "FIREWALL_4PN_LOCAL_NOT_FULL_TAIL",
       "fromSide": "right",
       "toNode": "INVALID_4PN_LOCAL_IMPLIES_FULL_TAIL",
@@ -381,7 +373,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e9",
+      "id": "e8",
       "fromNode": "FIREWALL_25PN_CONDITIONAL",
       "fromSide": "right",
       "toNode": "INVALID_25PN_UNCONDITIONAL_THEOREM",
@@ -389,7 +381,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e10",
+      "id": "e9",
       "fromNode": "FIREWALL_ANGULAR_NOT_RADIAL",
       "fromSide": "right",
       "toNode": "INVALID_STF_ANGULAR_MAP_CLOSES_RADIAL_NORM",
@@ -397,7 +389,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e11",
+      "id": "e10",
       "fromNode": "FIREWALL_READOUTS_NOT_THROAT",
       "fromSide": "right",
       "toNode": "INVALID_READOUTS_ARE_PHYSICAL_THROAT",
@@ -405,7 +397,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e12",
+      "id": "e11",
       "fromNode": "FIREWALL_ATOM_REDUCED_SECTOR",
       "fromSide": "right",
       "toNode": "INVALID_HYDROGEN_FULL_PDE_THEOREM",
@@ -413,7 +405,23 @@
       "label": "GUARDS_AGAINST"
     },
     {
+      "id": "e12",
+      "fromNode": "NEG_QUERY_LEPTON_HALF_INTEGER_PROVED",
+      "fromSide": "right",
+      "toNode": "INVALID_LEPTON_HALF_INTEGER_PROVED",
+      "toSide": "left",
+      "label": "FORBIDS_TARGET"
+    },
+    {
       "id": "e13",
+      "fromNode": "NEG_QUERY_LEPTON_HALF_INTEGER_PROVED",
+      "fromSide": "right",
+      "toNode": "FIREWALL_LEPTON_CONDITIONAL",
+      "toSide": "left",
+      "label": "PROTECTED_BY"
+    },
+    {
+      "id": "e14",
       "fromNode": "FIREWALL_LEPTON_CONDITIONAL",
       "fromSide": "right",
       "toNode": "INVALID_LEPTON_HALF_INTEGER_PROVED",
@@ -421,7 +429,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e14",
+      "id": "e15",
       "fromNode": "FIREWALL_SIMILARITY_NOT_FULL_5PN",
       "fromSide": "right",
       "toNode": "INVALID_SIMILARITY_ORBIT_SOLVES_FULL_5PN",
@@ -429,7 +437,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e15",
+      "id": "e16",
       "fromNode": "FIREWALL_G2_COMMON_CONDITIONAL",
       "fromSide": "right",
       "toNode": "INVALID_G2_COMMON_LAYER_CLOSED",
@@ -437,7 +445,7 @@
       "label": "GUARDS_AGAINST"
     },
     {
-      "id": "e16",
+      "id": "e17",
       "fromNode": "FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED",
       "fromSide": "right",
       "toNode": "INVALID_GAUGE_FIXING_LOCALIZATION_IGNORED",

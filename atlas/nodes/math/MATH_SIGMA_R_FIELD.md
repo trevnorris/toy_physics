@@ -9,16 +9,16 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Distributed throat shape variable replacing pure a,L closure.
 future_paper_needed: false
 source_files:
 - notes/moving_throat_notes_full.md
 - notes/pde_audit_full.md
-- moving_throat_output_full.md
+- moving_throat_pde_stage025_minimal_isotropic_normalization.md
 - pde_audit_full.md
 legacy_sources:
-- moving_throat_output_full.md
+- moving_throat_pde_stage025_minimal_isotropic_normalization.md
 - pde_audit_full.md:V2-28
 physical_ids:
 - PHYS_BRANE_BULK_THROAT_DEFECT
@@ -65,9 +65,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_SIGMA_R_FIELD`  
-> **Status:** `effective_closure_unless_Sigma_action_promoted`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_SIGMA_R_FIELD`
+> **Status:** `effective_closure_unless_Sigma_action_promoted`
+> **Layer:** `math_object`
 > **Type:** `geometry_field`
 
 ## Summary
@@ -145,7 +145,7 @@ The graph currently records the equation text but not a full variable dictionary
 ### Source files
 - `notes/moving_throat_notes_full.md`
 - `notes/pde_audit_full.md`
-- `moving_throat_output_full.md`
+- `moving_throat_pde_stage025_minimal_isotropic_normalization.md`
 - `pde_audit_full.md`
 
 ## AI Maintenance Notes

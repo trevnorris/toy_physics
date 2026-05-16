@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Links 3PN conservative closure to grouped real P2 constitutive data and the later moving-throat grouped-bundle target.
 future_paper_needed: false
 source_files:
@@ -42,7 +42,7 @@ equation_ids:
 - EQ_3PN_SPLIT
 claim_ids:
 - CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 - OPEN_QUAD_NORMALIZATION
@@ -56,10 +56,10 @@ outgoing_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
 - target: EQ_3PN_SPLIT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
@@ -117,9 +117,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `BACKLINK_3PN_FULL`  
-> **Status:** `v06_backlink_ready_not_inserted`  
-> **Layer:** `paper_backlink`  
+> **Atlas ID:** `BACKLINK_3PN_FULL`
+> **Status:** `v06_backlink_ready_not_inserted`
+> **Layer:** `paper_backlink`
 > **Type:** `paper_backlink_block`
 
 ## Summary
@@ -149,7 +149,7 @@ Links 3PN conservative closure to grouped real P2 constitutive data and the late
 
 ### Related claims
 - [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -169,7 +169,7 @@ Links 3PN conservative closure to grouped real P2 constitutive data and the late
 | Relation | Node | Note |
 |---|---|---|
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]] | Paper backlink block references CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
 | `BACKLINKS_ATLAS_NODE` | [[EQ_3PN_SPLIT]] | Paper backlink block references EQ_3PN_SPLIT. |
 | `BACKLINKS_ATLAS_NODE` | [[MATH_GROUPED_PROJECTORS_GGRP]] | Paper backlink block references MATH_GROUPED_PROJECTORS_GGRP. |
 | `BACKLINKS_ATLAS_NODE` | [[PHYS_GROUPED_P2_SHAPE_RESPONSE]] | Paper backlink block references PHYS_GROUPED_P2_SHAPE_RESPONSE. |

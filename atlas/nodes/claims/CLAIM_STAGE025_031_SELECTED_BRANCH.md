@@ -1,6 +1,6 @@
 ---
-id: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-title: Selected-mode spectral reachability packet
+id: CLAIM_STAGE025_031_SELECTED_BRANCH
+title: Stages 025--031 selected-mode spectral reachability packet
 type: claim
 layer: claim_theorem
 status: exact_within_selected_reduced_branch
@@ -9,8 +9,8 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.
 future_paper_needed: false
 source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
@@ -28,7 +28,7 @@ equation_ids:
 - EQ_FULL_BUNDLE_TARGET_SURFACE
 - EQ_P0_TARGET
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 open_gate_ids:
 - OPEN_SOURCE_PORT_NORMALIZATION
 source_ids:
@@ -40,7 +40,7 @@ source_ids:
 - SEC_PDE_BRANCH_FIXTURE
 - SEC_PDE_WEAK_FORM_EXPORTER
 outgoing_edges:
-- target: MT_STAGE8_MINIMAL_NORMALIZATION
+- target: MT_STAGE025_MINIMAL_NORMALIZATION
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_selected_reduced_branch
   note: Claim feeds this downstream object, output, or open gate.
@@ -72,11 +72,11 @@ incoming_edges:
 - source: BACKLINK_5PN_FULL
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
 - source: BACKLINK_MOVING_THROAT_COMPACT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
 - source: STATUS_LADDER_EXACT_TO_OPEN
   relation: CLASSIFIES
   status: exact_within_selected_reduced_branch
@@ -105,7 +105,7 @@ incoming_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_within_selected_reduced_branch
   note: Source artifact anchors this claim.
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   relation: RADIAL_AXIAL_CONTINUATION_FOR
   status: active
   note: Claim-level dependency added in v0.4.
@@ -129,34 +129,34 @@ tags:
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Selected-mode spectral reachability packet
+# Stages 025--031 selected-mode spectral reachability packet
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE8_TO_14_SELECTED_BRANCH`  
-> **Status:** `exact_within_selected_reduced_branch`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_STAGE025_031_SELECTED_BRANCH`
+> **Status:** `exact_within_selected_reduced_branch`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
 
-Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.
+Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.
 
 ## Claim
 
-Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.
+Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.
 
 ## Physical Meaning
 
-Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.
+Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.
 
 ## Mathematical Role
 
 - Layer: `claim_theorem`
 - Type: `claim`
 - Status: `exact_within_selected_reduced_branch`
-- Outputs: `MT_STAGE8_MINIMAL_NORMALIZATION`, `OPEN_SOURCE_PORT_NORMALIZATION`
+- Outputs: `MT_STAGE025_MINIMAL_NORMALIZATION`, `OPEN_SOURCE_PORT_NORMALIZATION`
 
 ## Atlas Links
 
@@ -173,7 +173,7 @@ Stages 8-14 compress the radial/axial selected-branch problem into a concrete fi
 - [[EQ_P0_TARGET]]
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - [[OPEN_SOURCE_PORT_NORMALIZATION]]
@@ -194,7 +194,7 @@ Stages 8-14 compress the radial/axial selected-branch problem into a concrete fi
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS_OR_STATUS_OF` | [[MT_STAGE8_MINIMAL_NORMALIZATION]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE025_MINIMAL_NORMALIZATION]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[OPEN_SOURCE_PORT_NORMALIZATION]] | Claim feeds this downstream object, output, or open gate. |
 
 ## Incoming Edges
@@ -206,8 +206,8 @@ Stages 8-14 compress the radial/axial selected-branch problem into a concrete fi
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_ACTUAL_BRANCH_PACKETS]] | Packet A/B actual branch protocol. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_BRANCH_FIXTURE]] | Observable packet fixture and extraction formulas. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_WEAK_FORM_EXPORTER]] | Weak-form branch extraction preparation. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_5PN_FULL]] | Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_5PN_FULL]] | Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH. |
 | `CLASSIFIES` | [[STATUS_LADDER_EXACT_TO_OPEN]] | Claim class: exact_within_closure |
 | `CONTAINS_CLAIM` | [[VIEW_CLAIM_LAYER]] | v0.4 claim/theorem layer item. |
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_FINITE_MOUTH_SHAPE]] | Physical ontology object grounded by this claim. |
@@ -215,7 +215,7 @@ Stages 8-14 compress the radial/axial selected-branch problem into a concrete fi
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_OUTGOING_QUADRUPOLE_PORT]] | Physical ontology object grounded by this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[FILE_MOVING_THROAT_COMPACT]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[FILE_PDE_AUDIT]] | Source artifact anchors this claim. |
-| `RADIAL_AXIAL_CONTINUATION_FOR` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim-level dependency added in v0.4. |
+| `RADIAL_AXIAL_CONTINUATION_FOR` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim-level dependency added in v0.4. |
 | `SUPPORTS_CLAIM` | [[EQ_FULL_BUNDLE_TARGET_SURFACE]] | Equation anchor supports this named claim. |
 | `SUPPORTS_CLAIM` | [[EQ_P0_TARGET]] | Equation anchor supports this named claim. |
 

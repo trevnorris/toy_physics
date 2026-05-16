@@ -25,12 +25,12 @@
   <div class="breadcrumb"><a href="../index.html">Reader</a> / Moving-throat PDE program</div>
   <article class="topic-page">
     <header class="topic-header">
-      <p class="eyebrow">Moving Throat · generated 2026-04-27T23:04:30Z</p>
+      <p class="eyebrow">Moving Throat · generated 2026-05-16T02:23:53Z</p>
       <h1>Moving-throat PDE program</h1>
       <p class="lede">The moving-throat program studies wall/support dynamics, branch selection, and response export, but some parts are currently notes-backed rather than formal paper-backed.</p>
       <p>
         <span class="badge notes_backed_pending_papers">paper pending</span>
-        <span class="muted">18 selected graph nodes · 11 paper-pending source entries</span>
+        <span class="muted">21 selected graph nodes · 13 paper-pending source entries</span>
       </p>
     </header>
 
@@ -47,6 +47,7 @@
       <h2>Mathematical Core</h2>
       <p>The quadratic wall action S_eta^(2) generates the effective scalar and P2 wall equations. It is a controlled linear wall closure, not yet a strict parent-level nonlinear wall theory.</p>
 <p>Strict parent-level status requires the promoted S_Sigma action. Its quadratic limit should reproduce the effective wall closure, but the nonlinear completion remains an open gate.</p>
+<p>The electromagnetic block now follows the projection-first ledger ordering: Stages 004--020 derive the projected Maxwell packet, and Stage 021 keeps the reduced one-port normal form only as the downstream adapter.</p>
 <p>The selected-mode stages convert radial and axial branch data into a spectral reachability packet for the remaining normalization targets.</p>
 <p>The branch exporter should output quantities such as K, M, B_n, Z_n, N_n, P0, N2, and N4 as frozen data from the solved branch, not as adjustable fit knobs.</p>
 <p>Material closure and mixed recirculation have to close on the same branch. Density, sound speed, effective light cone, intake/output flux, A_w, F_muw, and current-source plumbing cannot be solved as detached post-processing.</p>
@@ -85,7 +86,8 @@
       <h2>Claims</h2>
       <ul class="node-list">
 <li><code>CLAIM_PARENT_WALL_STATUS_SPLIT</code> <strong>Parent wall status split: force yes, autonomous PDE no</strong> <span class="badge small">strict_parent_fail_effective_wall_pass</span><p>The confinement-only parent supplies a wall force/source but no autonomous wall PDE; S_eta^(2) is a consistent linear effective closure and must be promoted to S_Sigma for parent-level dynamics.</p></li>
-<li><code>CLAIM_STAGE8_TO_14_SELECTED_BRANCH</code> <strong>Selected-mode spectral reachability packet</strong> <span class="badge small">exact_within_selected_reduced_branch</span><p>Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.</p></li>
+<li><code>CLAIM_PROJECTED_EM_OUTGOING_BRIDGE</code> <strong>Projection-first EM packet feeds the outgoing bridge</strong> <span class="badge small">exact_projection_with_reduced_adapter</span><p>The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 fingerprint into the grouped normalization br...</p></li>
+<li><code>CLAIM_STAGE025_031_SELECTED_BRANCH</code> <strong>Stages 025--031 selected-mode spectral reachability packet</strong> <span class="badge small">exact_within_selected_reduced_branch</span><p>Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.</p></li>
 </ul>
     </section>
 
@@ -117,9 +119,14 @@
 <li><strong>Maxwell from the Unified 4D Toy Model: Localized 5D Gauge Dynamics, Brane Reduction, and KK Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449834">10.5281/zenodo.19449834</a><br><code>research/4d_em_fields/paper/4d_em_fields.tex</code></li>
 <li><strong>Plasma Dynamics from the Unified 4D Toy Model: A 4+1D Alternative to MHD with a Controlled MHD Limit and 4D Interaction Corrections</strong> <a href="https://doi.org/10.5281/zenodo.19449935">10.5281/zenodo.19449935</a><br><code>research/4d_plasma/paper/4d_plasma.tex</code></li>
 <li><strong>Moving-Throat PDE Derivation Companion Archive Ledger</strong> <a href="https://doi.org/10.5281/zenodo.19699523">10.5281/zenodo.19699523</a><br><code>research/pde_ledger/paper/stages/stage_001.tex</code></li>
+<li><strong>Moving-Throat PDE Derivation Companion Archive Ledger</strong> <a href="https://doi.org/10.5281/zenodo.19699523">10.5281/zenodo.19699523</a><br><code>research/pde_ledger/paper/stages/stage_004.tex</code></li>
+<li><strong>Moving-Throat PDE Derivation Companion Archive Ledger</strong> <a href="https://doi.org/10.5281/zenodo.19699523">10.5281/zenodo.19699523</a><br><code>research/pde_ledger/paper/stages/stage_020.tex</code></li>
+<li><strong>Moving-Throat PDE Derivation Companion Archive Ledger</strong> <a href="https://doi.org/10.5281/zenodo.19699523">10.5281/zenodo.19699523</a><br><code>research/pde_ledger/paper/stages/stage_021.tex</code></li>
 </ul>
 <h3>Paper pending sources</h3><ul class="source-list pending">
 <li><span class="badge pending-badge">paper pending</span> <code>notes/5pn/5pn_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/circulation/step_06_mixed_sector_plumbing_closure.md</code><p>No formal paper source is recorded yet.</p></li>
+<li><span class="badge pending-badge">paper pending</span> <code>notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py</code><p>No formal paper source is recorded yet.</p></li>
 <li><span class="badge pending-badge">paper pending</span> <code>notes/lepton_mass_notes.md</code><p>No formal paper source is recorded yet.</p></li>
 <li><span class="badge pending-badge">paper pending</span> <code>notes/lepton_work.md</code><p>No formal paper source is recorded yet.</p></li>
 <li><span class="badge pending-badge">paper pending</span> <code>notes/moving_throat_notes_full.md</code><p>No formal paper source is recorded yet.</p></li>

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Passive/outgoing normalization.
 source_kind: paper
 future_paper_needed: false
@@ -33,7 +33,7 @@ tex_anchor:
   confidence: high
 claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 source_ids:
 - FILE_2_5PN
 outgoing_edges:
@@ -41,7 +41,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Passive/outgoing normalization.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Passive/outgoing normalization.
@@ -71,9 +71,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_25PN_NORM_STACK`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_25PN_NORM_STACK`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -103,7 +103,7 @@ Passive/outgoing normalization.
 
 ### Related claims
 - [[CLAIM_25PN_QUAD_NARROWING]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - none
@@ -119,7 +119,7 @@ Passive/outgoing normalization.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_25PN_QUAD_NARROWING]] | Passive/outgoing normalization. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE5_P0_TARGET]] | Passive/outgoing normalization. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE022_P0_TARGET]] | Passive/outgoing normalization. |
 
 ## Incoming Edges
 

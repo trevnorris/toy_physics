@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Derive independent outgoing N2 and N4 moment-shape controls on the same frozen branch.
 future_paper_needed: false
 source_files:
@@ -53,9 +53,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_N2_N4_MOMENT_SHAPE`  
-> **Status:** `open`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_N2_N4_MOMENT_SHAPE`
+> **Status:** `open`
+> **Layer:** `open_gate`
 > **Type:** `moment_shape_gate`
 
 ## Summary

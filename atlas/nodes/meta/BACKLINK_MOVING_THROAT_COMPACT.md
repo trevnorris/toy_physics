@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks, Packet A/B discipline, selected branch, and actual branch exporter.
 future_paper_needed: false
 source_files:
@@ -25,11 +25,11 @@ claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
 - CLAIM_PACKET_A_PACKET_B_SPLIT
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE1_GEOMETRY_LIFT
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 - OPEN_EXECUTABLE_BRANCH_SOLVER
@@ -55,26 +55,26 @@ outgoing_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_PACKET_A_PACKET_B_SPLIT.
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
 - target: CLAIM_RESPONSE_READOUT_DISCIPLINE
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_RESPONSE_READOUT_DISCIPLINE.
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
+  relation: BACKLINKS_ATLAS_NODE
+  status: v06
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
 - target: CLAIM_STAGE1_GEOMETRY_LIFT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_STAGE1_GEOMETRY_LIFT.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  relation: BACKLINKS_ATLAS_NODE
-  status: v06
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
 - target: SEC_MT_MIXED_INVARIANTS
   relation: BACKLINKS_SECTION_ANCHOR
   status: v06
@@ -138,9 +138,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `BACKLINK_MOVING_THROAT_COMPACT`  
-> **Status:** `v06_backlink_ready_not_inserted`  
-> **Layer:** `paper_backlink`  
+> **Atlas ID:** `BACKLINK_MOVING_THROAT_COMPACT`
+> **Status:** `v06_backlink_ready_not_inserted`
+> **Layer:** `paper_backlink`
 > **Type:** `paper_backlink_block`
 
 ## Summary
@@ -172,11 +172,11 @@ Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -202,11 +202,11 @@ Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_BRANCH_EXPORTER_REQUIRED]] | Paper backlink block references CLAIM_BRANCH_EXPORTER_REQUIRED. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Paper backlink block references CLAIM_MIXED_SECTOR_MICROSCOPIC. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Paper backlink block references CLAIM_PACKET_A_PACKET_B_SPLIT. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Paper backlink block references CLAIM_RESPONSE_READOUT_DISCIPLINE. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Paper backlink block references CLAIM_STAGE1_GEOMETRY_LIFT. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH. |
 | `BACKLINKS_SECTION_ANCHOR` | [[SEC_MT_MIXED_INVARIANTS]] | Paper backlink block references source-section anchor SEC_MT_MIXED_INVARIANTS. |
 | `BACKLINKS_SECTION_ANCHOR` | [[SEC_MT_PARENT_FIELDS]] | Paper backlink block references source-section anchor SEC_MT_PARENT_FIELDS. |
 | `BACKLINKS_SECTION_ANCHOR` | [[SEC_MT_PROJECTION_ZERO_MODE]] | Paper backlink block references source-section anchor SEC_MT_PROJECTION_ZERO_MODE. |

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The 2.5PN audit demotes scalar/dipole dangers on the natural branch and narrows the universal point-particle route to the orbital/worldtube STF quadrupole, with passive/outgoing...
 future_paper_needed: false
 source_files:
@@ -162,9 +162,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_25PN_QUAD_NARROWING`  
-> **Status:** `conditional_theorem_open_normalization`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_25PN_QUAD_NARROWING`
+> **Status:** `conditional_theorem_open_normalization`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

@@ -209,8 +209,8 @@ Purpose: Backlinks the conditional 2.5PN theorem, STF source-map, scalar/dipole 
 
 Primary atlas anchors:
 - `CLAIM_25PN_QUAD_NARROWING` — 2.5PN conditional quadrupole narrowing
-- `CLAIM_STAGE5_P0_TARGET` — Grouped P2 bridge isolates P0 target
-- `CLAIM_STAGE7_O3_ISOTROPY` — O(3) isotropy and weak-axisymmetric splitting theorem
+- `CLAIM_STAGE022_P0_TARGET` — Stage 022 grouped P2 bridge isolates P0 target
+- `CLAIM_STAGE024_O3_ISOTROPY` — Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem
 - `EQ_COMPACT_L2_FINGERPRINT` — Compact outgoing l=2 fingerprint
 - `EQ_P0_TARGET` — Invariant quadrupole normalization target
 - `MATH_STF_SOURCE_MAP` — STF source-map theorem
@@ -245,7 +245,7 @@ Purpose: Links 3PN conservative closure to grouped real P2 constitutive data and
 Primary atlas anchors:
 - `CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY` — 3PN grouped real P2 conservative closure
 - `EQ_3PN_SPLIT` — 3PN conservative split
-- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
 - `PHYS_GROUPED_P2_SHAPE_RESPONSE` — Grouped real P2 shape/support response
 - `MATH_GROUPED_PROJECTORS_GGRP` — Grouped P2 weighted projectors
 
@@ -276,7 +276,7 @@ Purpose: Backlinks exact local instantaneous 4PN assembly, tail bridge, and the 
 Primary atlas anchors:
 - `CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL` — 4PN local sector closed; tail inherits quadrupole gate
 - `EQ_4PN_TAIL_BRIDGE` — 4PN tail coefficient bridge
-- `CLAIM_STAGE5_P0_TARGET` — Grouped P2 bridge isolates P0 target
+- `CLAIM_STAGE022_P0_TARGET` — Stage 022 grouped P2 bridge isolates P0 target
 - `PHYS_OUTGOING_QUADRUPOLE_PORT` — Passive/outgoing quadrupole port
 
 Source-section anchors:
@@ -305,8 +305,8 @@ Purpose: Links full-bundle target surfaces, monomial quotient/orbit-lock packet,
 Primary atlas anchors:
 - `CLAIM_5PN_FULL_BUNDLE_SURFACE` — 5PN full-bundle surface and weak-axisymmetric continuation
 - `CLAIM_G2_COMMON_QUOTIENT` — g-2 common correction through quotient/prefactor slope
-- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
-- `CLAIM_STAGE8_TO_14_SELECTED_BRANCH` — Selected-mode spectral reachability packet
+- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+- `CLAIM_STAGE025_031_SELECTED_BRANCH` — Stages 025--031 selected-mode spectral reachability packet
 - `MATH_MONOMIAL_QUOTIENT` — Monomial quotient coordinates
 - `MATH_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope Xi1
 - `EQ_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope
@@ -349,9 +349,9 @@ Primary atlas anchors:
 - `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required
 - `CLAIM_PACKET_A_PACKET_B_SPLIT` — Packet A / Packet B target split
 - `CLAIM_STAGE1_GEOMETRY_LIFT` — Distributed Sigma/R geometry lift
-- `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER` — Localized Maxwell/mixed block carries first honest outgoing bridge
-- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
-- `CLAIM_STAGE8_TO_14_SELECTED_BRANCH` — Selected-mode spectral reachability packet
+- `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE` — Projection-first EM packet feeds the outgoing bridge
+- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+- `CLAIM_STAGE025_031_SELECTED_BRANCH` — Stages 025--031 selected-mode spectral reachability packet
 - `CLAIM_MIXED_SECTOR_MICROSCOPIC` — Mixed EM sector is microscopic ontology, not gauge artifact
 
 Source-section anchors:
@@ -386,9 +386,9 @@ Primary atlas anchors:
 - `CLAIM_PARENT_WALL_STATUS_SPLIT` — Parent wall status split: force yes, autonomous PDE no
 - `CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH` — Maxwell gauge-fixing localization patch
 - `CLAIM_STAGE3_BDG_SCHUR` — BdG-wall Schur complement gives even support ladder
-- `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER` — Localized Maxwell/mixed block carries first honest outgoing bridge
-- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
-- `CLAIM_STAGE7_O3_ISOTROPY` — O(3) isotropy and weak-axisymmetric splitting theorem
+- `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE` — Projection-first EM packet feeds the outgoing bridge
+- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+- `CLAIM_STAGE024_O3_ISOTROPY` — Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem
 - `CLAIM_RESPONSE_READOUT_DISCIPLINE` — D0/C/P0/N2/N4 are response readouts, not the throat itself
 - `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required
 - `CLAIM_MATERIAL_CLOSURE_GAP` — Material closure must be solved on same branch

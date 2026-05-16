@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Pure weak-axisymmetric l=2 perturbation forces grouped signature (20,21,22)~(1,1/2,-1), equivalently b=3a.
 future_paper_needed: false
 source_files:
@@ -23,7 +23,7 @@ legacy_sources:
 equation_ids:
 - EQ_WEAK_AXISYM_SIGNATURE
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 open_gate_ids:
 - OPEN_WEAK_AXISYM_ORBIT_LOCK
 outgoing_edges:
@@ -36,7 +36,7 @@ incoming_edges:
   relation: ANCHORS
   status: equation_anchor
   note: Equation anchor belongs to or formalizes this graph node.
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
@@ -60,9 +60,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_WEAK_AXISYM_SPLITTING`  
-> **Status:** `exact_angular_first_order`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_WEAK_AXISYM_SPLITTING`
+> **Status:** `exact_angular_first_order`
+> **Layer:** `math_object`
 > **Type:** `anisotropy_fingerprint`
 
 ## Summary
@@ -113,7 +113,7 @@ The graph currently records the equation text but not a full variable dictionary
 - [[EQ_WEAK_AXISYM_SIGNATURE]]
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - [[OPEN_WEAK_AXISYM_ORBIT_LOCK]]
@@ -135,7 +135,7 @@ The graph currently records the equation text but not a full variable dictionary
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS` | [[EQ_WEAK_AXISYM_SIGNATURE]] | Equation anchor belongs to or formalizes this graph node. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
 | `FREEZES` | [[MT_V2_17_WEAK_AXISYM]] | Weak-axisymmetric first-order grouped signature. |
 
 ## Source Anchors

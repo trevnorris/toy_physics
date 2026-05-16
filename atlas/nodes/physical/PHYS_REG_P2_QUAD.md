@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Grouped P2 is a physical mouth/support shape-response bundle tied to the orbital/worldtube STF quadrupole, not a symbolic coefficient list.
 future_paper_needed: false
 physical_ids:
@@ -17,9 +17,9 @@ physical_ids:
 math_ids:
 - MATH_STF_SOURCE_MAP
 claim_ids:
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 outgoing_edges:
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: LINKS_TO
   status: active
   note: Physical register entry links to graph object.
@@ -52,9 +52,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_REG_P2_QUAD`  
-> **Status:** `active`  
-> **Layer:** `physical_register`  
+> **Atlas ID:** `PHYS_REG_P2_QUAD`
+> **Status:** `active`
+> **Layer:** `physical_register`
 > **Type:** `register`
 
 ## Summary
@@ -83,7 +83,7 @@ Grouped P2 is a physical mouth/support shape-response bundle tied to the orbital
 - none
 
 ### Related claims
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -98,7 +98,7 @@ Grouped P2 is a physical mouth/support shape-response bundle tied to the orbital
 
 | Relation | Node | Note |
 |---|---|---|
-| `LINKS_TO` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Physical register entry links to graph object. |
+| `LINKS_TO` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Physical register entry links to graph object. |
 | `LINKS_TO` | [[MATH_STF_SOURCE_MAP]] | Physical register entry links to graph object. |
 | `LINKS_TO` | [[PHYS_GROUPED_P2_SHAPE_RESPONSE]] | Physical register entry links to graph object. |
 

@@ -18,6 +18,7 @@ still need to be written.
 | `4d_2_5pn_summary.md`, `4d_2_5pn.tex` | `research/4d_2_5pn/paper/4d_2_5pn.tex` | `notes/summaries/4d_2_5pn_summary.md` |
 | `4d_3pn_summary.md`, `4d_3pn.tex` | `research/4d_3pn/paper/4d_3pn.tex` | `notes/summaries/4d_3pn_summary.md` |
 | `4d_4pn_summary.md`, `4d_4pn.tex`, `4d_4pn_full_notes.md` | `research/4d_4pn/paper/4d_4pn.tex` | `notes/summaries/4d_4pn_summary.md`, `research/4d_4pn/notes/4d_4pn_full_notes.md` |
+| `pde_ledger.tex` | `research/pde_ledger/paper/pde_ledger.tex` | `notes/moving_throat_pde_program_compact.md` |
 
 ## Paper Components
 
@@ -28,9 +29,12 @@ The moving-throat stage notes have maintained TeX components in the PDE ledger:
 | `moving_throat_pde_stage001_geometry_lift.md` | `research/pde_ledger/paper/stages/stage_001.tex` |
 | `moving_throat_pde_stage002_breathing_reduction.md` | `research/pde_ledger/paper/stages/stage_002.tex` |
 | `moving_throat_pde_stage003_bdg_coupling.md` | `research/pde_ledger/paper/stages/stage_003.tex` |
-| `moving_throat_pde_stage004_maxwell_mixed_response.md` | `research/pde_ledger/paper/stages/stage_004.tex` |
-| `moving_throat_pde_stage005_grouped_p2_normalization_bridge.md` | `research/pde_ledger/paper/stages/stage_005.tex` |
-| `moving_throat_pde_stage007_overlap_isotropy.md` | `research/pde_ledger/paper/stages/stage_007.tex` |
+| `notes/em_projected/step_01_projected_maxwell_readme.md` through `notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md` | `research/pde_ledger/paper/stages/stage_004.tex` through `research/pde_ledger/paper/stages/stage_020.tex` |
+| `moving_throat_pde_stage021_reduced_one_port_normal_form.md` | `research/pde_ledger/paper/stages/stage_021.tex` |
+| `moving_throat_pde_stage022_grouped_p2_normalization_bridge.md` | `research/pde_ledger/paper/stages/stage_022.tex` |
+| `moving_throat_pde_stage023_full_grouped_bundle.md` | `research/pde_ledger/paper/stages/stage_023.tex` |
+| `moving_throat_pde_stage024_overlap_isotropy.md` | `research/pde_ledger/paper/stages/stage_024.tex` |
+| `moving_throat_pde_stage025_minimal_isotropic_normalization.md` | `research/pde_ledger/paper/stages/stage_025.tex` |
 
 ## Future Paper Backlog
 

@@ -19,7 +19,9 @@
 - [[FILE_LEPTON_WORK]] — `particle_identity_anchor` — Lepton/spin/mixed-sector reduced work and conditional same-charge corridor.
 - [[FILE_MOVING_THROAT_COMPACT]] — `master_anchor` — Compact master ledger for moving-throat PDE program and current active bottlenecks.
 - [[FILE_MOVING_THROAT_OUTPUT]] — `long_derivation_anchor` — Long moving-throat derivation output containing dynamic mixed-sector, barrier, and exporter extensions.
+- [[FILE_PDE_LEDGER]] — `maintained_paper` — Maintained 253-stage PDE ledger with a linear projection-first EM block at Stages 004--020, retained reduce...
 - [[FILE_PDE_AUDIT]] — `audit_anchor` — Alias file anchor added for v0.7 firewall references.
+- [[FILE_CIRCULATION_PACKAGE]] — `note_audit_package` — Six-step circulation pair-force audit package covering fluxoid winding, no-universal-force status, coaxial ...
 - [[FILE_PLASMA]] — `plasma_anchor` — Alias file anchor added for v0.7 firewall references.
 - [[SEC_1PN_BRIDGE_DICTIONARY]] — `v06_section_anchor` — Bridge paper carries corrected charge ontology, GNLS, geometry variables, and reduction language.
 - [[SEC_1PN_BRIDGE_DOWNSTREAM]] — `v06_section_anchor` — Bridge coefficients are carry-forward constraints for later PN and throat-response work.

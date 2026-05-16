@@ -1,6 +1,6 @@
 ---
 id: EQ_MAXWELL_MIXED_TRANSFER
-title: Maxwell/mixed outgoing transfer factor
+title: Stage 021 one-port outgoing transfer factor
 type: equation
 layer: equation_anchor
 status: exact_within_reduced_bundle
@@ -9,33 +9,33 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger treats it as the adapter after projection-first EM Stages 004--020.
 future_paper_needed: false
 source_files:
-- research/pde_ledger/paper/stages/stage_004.tex
-- notes/pde_audit_full.md
-- moving_throat_pde_stage004_maxwell_mixed_response.md
+- research/pde_ledger/paper/stages/stage_021.tex
+- notes/moving_throat_pde_program_compact.md
+- moving_throat_pde_stage021_reduced_one_port_normal_form.md
 - pde_audit_full.md
 legacy_sources:
-- moving_throat_pde_stage004_maxwell_mixed_response.md
+- moving_throat_pde_stage021_reduced_one_port_normal_form.md
 - pde_audit_full.md
 source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
 - '[[FILE_PDE_AUDIT]]'
 tex_anchor:
-  file: research/pde_ledger/paper/stages/stage_004.tex
-  line: 88
+  file: research/pde_ledger/paper/stages/stage_021.tex
+  line: 43
   heading_level: paragraph
-  heading: 4. Outgoing-port dressing and transfer factor.
+  heading: Outgoing transfer.
   nearest_label:
-    name: eq:app-stage004-transfer-factor
-    line: 100
+    name: eq:app-stage021-transfer-factor
+    line: 47
   nearby_labels:
-  - name: eq:app-stage004-transfer-factor
-    line: 100
-  - name: eq:app-stage004-n0-positive
-    line: 107
+  - name: eq:app-stage021-transfer-factor
+    line: 47
+  - name: eq:app-stage021-n0-positive
+    line: 54
   match_basis: semantic_heading_match
   match_score: 0.606
   confidence: medium
@@ -46,7 +46,7 @@ equation_ids:
 claim_ids:
 - CLAIM_MIXED_RECIRCULATION_OPEN
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 source_ids:
 - FILE_MOVING_THROAT_COMPACT
 - FILE_PDE_AUDIT
@@ -67,7 +67,7 @@ outgoing_edges:
   relation: SUPPORTS_CLAIM
   status: exact_gauge_invariant_with_reduced_uses
   note: Equation anchor supports this named claim.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: SUPPORTS_CLAIM
   status: exact_within_reduced_mixed_kernel
   note: Equation anchor supports this named claim.
@@ -87,28 +87,29 @@ tags:
 - status/exact_within_reduced_bundle
 - topic/maxwell
 - topic/moving_throat
+- topic/projection
 - type/equation
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Maxwell/mixed outgoing transfer factor
+# Stage 021 one-port outgoing transfer factor
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `EQ_MAXWELL_MIXED_TRANSFER`  
-> **Status:** `exact_within_reduced_bundle`  
-> **Layer:** `equation_anchor`  
+> **Atlas ID:** `EQ_MAXWELL_MIXED_TRANSFER`
+> **Status:** `exact_within_reduced_bundle`
+> **Layer:** `equation_anchor`
 > **Type:** `equation`
 
 ## Summary
 
-Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger treats it as the adapter after projection-first EM Stages 004--020.
 
 ## Physical Meaning
 
-Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger treats it as the adapter after projection-first EM Stages 004--020.
 
 ## Mathematical Role
 
@@ -141,7 +142,7 @@ The graph currently records the equation text but not a full variable dictionary
 ### Related claims
 - [[CLAIM_MIXED_RECIRCULATION_OPEN]]
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -161,7 +162,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `MULTIPLIES` | [[EQ_COMPACT_L2_FINGERPRINT]] | Mixed transfer carries the outgoing fingerprint to the wall branch. |
 | `SUPPORTS_CLAIM` | [[CLAIM_MIXED_RECIRCULATION_OPEN]] | Equation anchor supports this named claim. |
 | `SUPPORTS_CLAIM` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Equation anchor supports this named claim. |
-| `SUPPORTS_CLAIM` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Equation anchor supports this named claim. |
+| `SUPPORTS_CLAIM` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Equation anchor supports this named claim. |
 
 ## Incoming Edges
 
@@ -177,16 +178,16 @@ The graph currently records the equation text but not a full variable dictionary
 - [[FILE_PDE_AUDIT]]
 
 ### Source files
-- `research/pde_ledger/paper/stages/stage_004.tex`
-- `notes/pde_audit_full.md`
-- `moving_throat_pde_stage004_maxwell_mixed_response.md`
+- `research/pde_ledger/paper/stages/stage_021.tex`
+- `notes/moving_throat_pde_program_compact.md`
+- `moving_throat_pde_stage021_reduced_one_port_normal_form.md`
 - `pde_audit_full.md`
 
 ### TeX anchor
-- File: `research/pde_ledger/paper/stages/stage_004.tex`
-- Line: `88`
-- Heading: 4. Outgoing-port dressing and transfer factor.
-- Nearest label: `eq:app-stage004-transfer-factor` at line `100`
+- File: `research/pde_ledger/paper/stages/stage_021.tex`
+- Line: `43`
+- Heading: Outgoing transfer.
+- Nearest label: `eq:app-stage021-transfer-factor` at line `47`
 - Match basis: `semantic_heading_match`
 - Confidence: `medium`
 

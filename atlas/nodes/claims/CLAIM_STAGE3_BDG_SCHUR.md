@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Stable BdG support modes integrate out by Schur complement, lowering static stiffness, increasing inertia, and generating the even low-frequency ladder for scalar and grouped P2...
 future_paper_needed: false
 source_links:
@@ -24,8 +24,8 @@ math_ids:
 equation_ids:
 - EQ_BDG_SCHUR_KERNEL
 claim_ids:
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_STAGE2_AL_RECOVERY
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
 source_ids:
 - FILE_MOVING_THROAT_COMPACT
 - FILE_PDE_AUDIT
@@ -39,7 +39,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_stable_modes
   note: Claim feeds this downstream object, output, or open gate.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: PREPARES
   status: active
   note: Claim-level dependency added in v0.4.
@@ -100,9 +100,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE3_BDG_SCHUR`  
-> **Status:** `exact_within_reduced_stable_modes`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_STAGE3_BDG_SCHUR`
+> **Status:** `exact_within_reduced_stable_modes`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
@@ -137,8 +137,8 @@ Stable BdG support modes integrate out by Schur complement, lowering static stif
 - [[EQ_BDG_SCHUR_KERNEL]]
 
 ### Related claims
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_STAGE2_AL_RECOVERY]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
 
 ### Open gates
 - none
@@ -157,7 +157,7 @@ Stable BdG support modes integrate out by Schur complement, lowering static stif
 |---|---|---|
 | `FEEDS_OR_STATUS_OF` | [[MATH_BDG_SCHUR_COMPLEMENT]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[MT_STAGE3_BDG_COUPLING]] | Claim feeds this downstream object, output, or open gate. |
-| `PREPARES` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim-level dependency added in v0.4. |
+| `PREPARES` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim-level dependency added in v0.4. |
 
 ## Incoming Edges
 

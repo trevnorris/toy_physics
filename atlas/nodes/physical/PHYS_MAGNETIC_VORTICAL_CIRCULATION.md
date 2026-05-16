@@ -9,12 +9,14 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Fluxoid/circulation belongs to tangential magnetic/vortical holonomy, not the electric-charge dictionary.
 future_paper_needed: false
 source_files:
 - research/4d/paper/4d.tex
 - notes/pde_audit_full.md
+- notes/circulation/step_01_fluxoid_firewall.md
+- notes/circulation/step_01_fluxoid_firewall_sympy.py
 - 4d_summary.md
 - pde_audit_full.md
 legacy_sources:
@@ -27,6 +29,7 @@ math_ids:
 - MATH_QSTAR_QEFF
 claim_ids:
 - CLAIM_CHARGE_ONTOLOGY_FIREWALL
+- CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
 - CLAIM_MIXED_RECIRCULATION_OPEN
 open_gate_ids:
 - OPEN_LEPTON_SPIN_DISCRETIZER
@@ -56,6 +59,10 @@ incoming_edges:
   relation: DISTINGUISHES_FROM
   status: open
   note: Spin-like state must not reduce to ordinary orbital/vortical circulation.
+- source: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: MAPS_LOCAL_LABEL_TO_GLOBAL_AXIS
+  status: exact_within_fixed_current_orientation_closure
+  note: Oriented loop area maps local swirl labels to the global current/dipole axis.
 - source: NEG_QUERY_CHARGE_FROM_CIRCULATION
   relation: STARTS_AT
   status: v07
@@ -77,9 +84,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_MAGNETIC_VORTICAL_CIRCULATION`  
-> **Status:** `exact_identity_and_open_plumbing`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_MAGNETIC_VORTICAL_CIRCULATION`
+> **Status:** `exact_identity_and_open_plumbing`
+> **Layer:** `physical_ontology`
 > **Type:** `topological_sector`
 
 ## Summary
@@ -120,6 +127,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_CHARGE_ONTOLOGY_FIREWALL]]
+- [[CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL]]
 - [[CLAIM_MIXED_RECIRCULATION_OPEN]]
 
 ### Open gates
@@ -146,6 +154,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `ANCHORS` | [[MT_V2_30_EM_ONTOLOGY]] | EM ontology anchors circulation/magnetism firewall. |
 | `DISTINGUISHES_FROM` | [[MATH_QSTAR_QEFF]] | Charge dictionary must not be conflated with circulation. |
 | `DISTINGUISHES_FROM` | [[OPEN_LEPTON_SPIN_DISCRETIZER]] | Spin-like state must not reduce to ordinary orbital/vortical circulation. |
+| `MAPS_LOCAL_LABEL_TO_GLOBAL_AXIS` | [[CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL]] | Oriented loop area maps local swirl labels to the global current/dipole axis. |
 | `STARTS_AT` | [[NEG_QUERY_CHARGE_FROM_CIRCULATION]] | Negative query starts from PHYS_MAGNETIC_VORTICAL_CIRCULATION. |
 
 ## Source Anchors
@@ -156,6 +165,8 @@ The graph currently records the equation text but not a full variable dictionary
 ### Source files
 - `research/4d/paper/4d.tex`
 - `notes/pde_audit_full.md`
+- `notes/circulation/step_01_fluxoid_firewall.md`
+- `notes/circulation/step_01_fluxoid_firewall_sympy.py`
 - `4d_summary.md`
 - `pde_audit_full.md`
 

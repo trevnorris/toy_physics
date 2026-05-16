@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Defines post-miss coefficient map, outgoing prefactor, moment-shape conditions, Packet A/B, notes intake, and no-refit rules.
 future_paper_needed: false
 source_files:
@@ -40,9 +40,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_V2_25_ACTUAL_BRANCH_PROTOCOL`  
-> **Status:** `open_actual_branch`  
-> **Layer:** `status_audit`  
+> **Atlas ID:** `MT_V2_25_ACTUAL_BRANCH_PROTOCOL`
+> **Status:** `open_actual_branch`
+> **Layer:** `status_audit`
 > **Type:** `protocol_gate`
 
 ## Summary

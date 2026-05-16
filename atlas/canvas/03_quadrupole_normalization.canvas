@@ -37,9 +37,9 @@
       "height": 190
     },
     {
-      "id": "CLAIM_STAGE5_P0_TARGET",
+      "id": "CLAIM_STAGE022_P0_TARGET",
       "type": "file",
-      "file": "nodes/claims/CLAIM_STAGE5_P0_TARGET.md",
+      "file": "nodes/claims/CLAIM_STAGE022_P0_TARGET.md",
       "x": 380,
       "y": 480,
       "width": 330,
@@ -207,7 +207,7 @@
     },
     {
       "id": "e4",
-      "fromNode": "CLAIM_STAGE5_P0_TARGET",
+      "fromNode": "CLAIM_STAGE022_P0_TARGET",
       "fromSide": "right",
       "toNode": "OPEN_QUAD_NORMALIZATION",
       "toSide": "left",
@@ -249,7 +249,7 @@
       "id": "e9",
       "fromNode": "EQ_P0_TARGET",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "SUPPORTS_CLAIM"
     },
@@ -281,7 +281,7 @@
       "id": "e13",
       "fromNode": "FILE_4PN_FULL",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "OWNS_OR_ANCHORS_CLAIM"
     },
@@ -329,7 +329,7 @@
       "id": "e19",
       "fromNode": "PHYS_OUTGOING_QUADRUPOLE_PORT",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "GROUNDS_PHYSICAL_MEANING"
     },
@@ -377,7 +377,7 @@
       "id": "e25",
       "fromNode": "STATUS_LADDER_EXACT_TO_OPEN",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "CLASSIFIES"
     },
@@ -401,7 +401,7 @@
       "id": "e28",
       "fromNode": "VIEW_CLAIM_LAYER",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "CONTAINS_CLAIM"
     },
@@ -489,7 +489,7 @@
       "id": "e39",
       "fromNode": "BACKLINK_4PN_FULL",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
       "toSide": "left",
       "label": "BACKLINKS_ATLAS_NODE"
     },

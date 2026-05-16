@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: No. Electric charge sign is eta_Q; circulation belongs to the magnetic/vortical sector.
 future_paper_needed: false
 source_links:
@@ -23,6 +23,7 @@ math_ids:
 - MATH_QSTAR_QEFF
 claim_ids:
 - CLAIM_CHARGE_ONTOLOGY_FIREWALL
+- CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
 source_ids:
 - FILE_4D_PARENT
 - FILE_EM_FIELDS
@@ -66,6 +67,10 @@ incoming_edges:
   relation: PROTECTED_BY
   status: v07
   note: Negative query is protected by a status-firewall rule.
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  relation: REINFORCES_FIREWALL
+  status: exact_identity_audit
+  note: Audit keeps eta_Q/q_* bookkeeping separate from the circulation integer.
 tags:
 - atlas/node
 - atlas/status_firewalls
@@ -83,9 +88,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `FIREWALL_CHARGE_NOT_CIRCULATION`  
-> **Status:** `active_v07`  
-> **Layer:** `status_audit`  
+> **Atlas ID:** `FIREWALL_CHARGE_NOT_CIRCULATION`
+> **Status:** `active_v07`
+> **Layer:** `status_audit`
 > **Type:** `status_firewall_rule`
 
 ## Summary
@@ -123,6 +128,7 @@ No. Electric charge sign is eta_Q; circulation belongs to the magnetic/vortical 
 
 ### Related claims
 - [[CLAIM_CHARGE_ONTOLOGY_FIREWALL]]
+- [[CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION]]
 
 ### Open gates
 - none
@@ -154,6 +160,7 @@ No. Electric charge sign is eta_Q; circulation belongs to the magnetic/vortical 
 | Relation | Node | Note |
 |---|---|---|
 | `PROTECTED_BY` | [[NEG_QUERY_CHARGE_FROM_CIRCULATION]] | Negative query is protected by a status-firewall rule. |
+| `REINFORCES_FIREWALL` | [[CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION]] | Audit keeps eta_Q/q_* bookkeeping separate from the circulation integer. |
 
 ## Source Anchors
 

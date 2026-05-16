@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The unweighted Lorenz term is consistent as a bulk gauge device but singular as a noncompact zero-mode gauge-fixed action; the atlas records either impose Lorenz before reductio...
 future_paper_needed: false
 source_links:
@@ -97,9 +97,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH`  
-> **Status:** `safe_interpretation_or_structural_patch`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH`
+> **Status:** `safe_interpretation_or_structural_patch`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

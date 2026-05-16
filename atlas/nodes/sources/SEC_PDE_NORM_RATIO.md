@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: P0/N0/D0 normalization audit.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -18,16 +18,16 @@ source_files:
 source_links:
 - '[[FILE_PDE_AUDIT]]'
 claim_ids:
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: P0/N0/D0 normalization audit.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: P0/N0/D0 normalization audit.
@@ -57,9 +57,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_NORM_RATIO`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_NORM_RATIO`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -91,8 +91,8 @@ P0/N0/D0 normalization audit.
 - none
 
 ### Related claims
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - none
@@ -107,8 +107,8 @@ P0/N0/D0 normalization audit.
 
 | Relation | Node | Note |
 |---|---|---|
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE5_P0_TARGET]] | P0/N0/D0 normalization audit. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | P0/N0/D0 normalization audit. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE022_P0_TARGET]] | P0/N0/D0 normalization audit. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | P0/N0/D0 normalization audit. |
 
 ## Incoming Edges
 

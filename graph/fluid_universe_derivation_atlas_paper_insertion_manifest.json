@@ -495,12 +495,12 @@
           "description": "2.5PN conditional quadrupole narrowing"
         },
         {
-          "id": "CLAIM_STAGE5_P0_TARGET",
-          "description": "Grouped P2 bridge isolates P0 target"
+          "id": "CLAIM_STAGE022_P0_TARGET",
+          "description": "Stage 022 grouped P2 bridge isolates P0 target"
         },
         {
-          "id": "CLAIM_STAGE7_O3_ISOTROPY",
-          "description": "O(3) isotropy and weak-axisymmetric splitting theorem"
+          "id": "CLAIM_STAGE024_O3_ISOTROPY",
+          "description": "Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem"
         },
         {
           "id": "EQ_COMPACT_L2_FINGERPRINT",
@@ -557,7 +557,7 @@
         }
       ],
       "status_note": "Conditional theorem ledger: live universal branch narrowed to orbital/worldtube STF quadrupole; PDE-side passive/outgoing normalization remains open.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_25PN`\n\nPurpose: Backlinks the conditional 2.5PN theorem, STF source-map, scalar/dipole demotion, compact l=2 outgoing fingerprint, and P0 normalization gate.\n\nPrimary atlas anchors:\n- `CLAIM_25PN_QUAD_NARROWING` — 2.5PN conditional quadrupole narrowing\n- `CLAIM_STAGE5_P0_TARGET` — Grouped P2 bridge isolates P0 target\n- `CLAIM_STAGE7_O3_ISOTROPY` — O(3) isotropy and weak-axisymmetric splitting theorem\n- `EQ_COMPACT_L2_FINGERPRINT` — Compact outgoing l=2 fingerprint\n- `EQ_P0_TARGET` — Invariant quadrupole normalization target\n- `MATH_STF_SOURCE_MAP` — STF source-map theorem\n- `PHYS_OUTGOING_QUADRUPOLE_PORT` — Passive/outgoing quadrupole port\n\nSource-section anchors:\n- `SEC_25PN_CLAIMS` — notes/summaries/4d_2_5pn_summary.md:89, 2) What this package claims — and what it does not claim\n- `SEC_25PN_STF_MAP` — notes/summaries/4d_2_5pn_summary.md:190, 3.5 Canonical orbital quadrupole and grouped \\(P_2\\) basis map\n- `SEC_25PN_QUAD_LEDGER` — notes/summaries/4d_2_5pn_summary.md:348, 4.5 Quadrupole structural ledger\n- `SEC_25PN_NORM_STACK` — notes/summaries/4d_2_5pn_summary.md:375, 4.6 Quadrupole normalization stack\n- `SEC_25PN_OPEN` — notes/summaries/4d_2_5pn_summary.md:727, 7.3 Still genuinely open\n\nOpen gates to preserve:\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n- `OPEN_SOURCE_PORT_NORMALIZATION` — Source/port normalization law\n\nStatus note: Conditional theorem ledger: live universal branch narrowed to orbital/worldtube STF quadrupole; PDE-side passive/outgoing normalization remains open.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_25PN`\n\nPurpose: Backlinks the conditional 2.5PN theorem, STF source-map, scalar/dipole demotion, compact l=2 outgoing fingerprint, and P0 normalization gate.\n\nPrimary atlas anchors:\n- `CLAIM_25PN_QUAD_NARROWING` — 2.5PN conditional quadrupole narrowing\n- `CLAIM_STAGE022_P0_TARGET` — Stage 022 grouped P2 bridge isolates P0 target\n- `CLAIM_STAGE024_O3_ISOTROPY` — Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem\n- `EQ_COMPACT_L2_FINGERPRINT` — Compact outgoing l=2 fingerprint\n- `EQ_P0_TARGET` — Invariant quadrupole normalization target\n- `MATH_STF_SOURCE_MAP` — STF source-map theorem\n- `PHYS_OUTGOING_QUADRUPOLE_PORT` — Passive/outgoing quadrupole port\n\nSource-section anchors:\n- `SEC_25PN_CLAIMS` — notes/summaries/4d_2_5pn_summary.md:89, 2) What this package claims — and what it does not claim\n- `SEC_25PN_STF_MAP` — notes/summaries/4d_2_5pn_summary.md:190, 3.5 Canonical orbital quadrupole and grouped \\(P_2\\) basis map\n- `SEC_25PN_QUAD_LEDGER` — notes/summaries/4d_2_5pn_summary.md:348, 4.5 Quadrupole structural ledger\n- `SEC_25PN_NORM_STACK` — notes/summaries/4d_2_5pn_summary.md:375, 4.6 Quadrupole normalization stack\n- `SEC_25PN_OPEN` — notes/summaries/4d_2_5pn_summary.md:727, 7.3 Still genuinely open\n\nOpen gates to preserve:\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n- `OPEN_SOURCE_PORT_NORMALIZATION` — Source/port normalization law\n\nStatus note: Conditional theorem ledger: live universal branch narrowed to orbital/worldtube STF quadrupole; PDE-side passive/outgoing normalization remains open.",
       "candidate_full_draft_paths_or_globs": [
         "research/4d_2_5pn/paper/4d_2_5pn.tex",
         "notes/summaries/4d_2_5pn_summary.md"
@@ -584,8 +584,8 @@
           "description": "3PN conservative split"
         },
         {
-          "id": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
-          "description": "Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
+          "id": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
+          "description": "Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
         },
         {
           "id": "PHYS_GROUPED_P2_SHAPE_RESPONSE",
@@ -624,7 +624,7 @@
         }
       ],
       "status_note": "3PN algebraic target closed in the declared hierarchy; microscopic grouped-P2 constitutive law remains a moving-throat task.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_3PN_FULL`\n\nPurpose: Links 3PN conservative closure to grouped real P2 constitutive data and the later moving-throat grouped-bundle target.\n\nPrimary atlas anchors:\n- `CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY` — 3PN grouped real P2 conservative closure\n- `EQ_3PN_SPLIT` — 3PN conservative split\n- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `PHYS_GROUPED_P2_SHAPE_RESPONSE` — Grouped real P2 shape/support response\n- `MATH_GROUPED_PROJECTORS_GGRP` — Grouped P2 weighted projectors\n\nSource-section anchors:\n- `SEC_3PN_GROUPED_MODULE` — notes/summaries/4d_3pn_summary.md:191, 3.2 Why the 2.5PN notes narrow the next conservative target to the grouped real \\(P_2\\) bundle\n- `SEC_3PN_MAIN_THEOREM` — notes/summaries/4d_3pn_summary.md:870, 9) Final conservative 3PN theorem\n- `SEC_3PN_INTERFACE` — notes/summaries/4d_3pn_summary.md:926, 10) Interface to the 2.5PN program\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n\nStatus note: 3PN algebraic target closed in the declared hierarchy; microscopic grouped-P2 constitutive law remains a moving-throat task.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_3PN_FULL`\n\nPurpose: Links 3PN conservative closure to grouped real P2 constitutive data and the later moving-throat grouped-bundle target.\n\nPrimary atlas anchors:\n- `CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY` — 3PN grouped real P2 conservative closure\n- `EQ_3PN_SPLIT` — 3PN conservative split\n- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `PHYS_GROUPED_P2_SHAPE_RESPONSE` — Grouped real P2 shape/support response\n- `MATH_GROUPED_PROJECTORS_GGRP` — Grouped P2 weighted projectors\n\nSource-section anchors:\n- `SEC_3PN_GROUPED_MODULE` — notes/summaries/4d_3pn_summary.md:191, 3.2 Why the 2.5PN notes narrow the next conservative target to the grouped real \\(P_2\\) bundle\n- `SEC_3PN_MAIN_THEOREM` — notes/summaries/4d_3pn_summary.md:870, 9) Final conservative 3PN theorem\n- `SEC_3PN_INTERFACE` — notes/summaries/4d_3pn_summary.md:926, 10) Interface to the 2.5PN program\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n\nStatus note: 3PN algebraic target closed in the declared hierarchy; microscopic grouped-P2 constitutive law remains a moving-throat task.",
       "candidate_full_draft_paths_or_globs": [
         "research/4d_3pn/paper/4d_3pn.tex",
         "notes/summaries/4d_3pn_summary.md"
@@ -651,8 +651,8 @@
           "description": "4PN tail coefficient bridge"
         },
         {
-          "id": "CLAIM_STAGE5_P0_TARGET",
-          "description": "Grouped P2 bridge isolates P0 target"
+          "id": "CLAIM_STAGE022_P0_TARGET",
+          "description": "Stage 022 grouped P2 bridge isolates P0 target"
         },
         {
           "id": "PHYS_OUTGOING_QUADRUPOLE_PORT",
@@ -683,7 +683,7 @@
         }
       ],
       "status_note": "Local 4PN sector is assembled within the declared hierarchy; full 4PN theorem remains conditional on the same outgoing quadrupole normalization.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_4PN_FULL`\n\nPurpose: Backlinks exact local instantaneous 4PN assembly, tail bridge, and the inherited 2.5PN quadrupole normalization gate.\n\nPrimary atlas anchors:\n- `CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL` — 4PN local sector closed; tail inherits quadrupole gate\n- `EQ_4PN_TAIL_BRIDGE` — 4PN tail coefficient bridge\n- `CLAIM_STAGE5_P0_TARGET` — Grouped P2 bridge isolates P0 target\n- `PHYS_OUTGOING_QUADRUPOLE_PORT` — Passive/outgoing quadrupole port\n\nSource-section anchors:\n- `SEC_4PN_TAIL_BRIDGE` — notes/summaries/4d_4pn_summary.md:741, 6) Tail / hereditary 4PN bridge\n- `SEC_4PN_NO_NEW_GAP` — notes/summaries/4d_4pn_summary.md:769, 6.4 No new 4PN-specific normalization gap\n- `SEC_4PN_FINAL_THEOREM` — notes/summaries/4d_4pn_summary.md:775, 7) Final conditional conservative 4PN theorem\n\nOpen gates to preserve:\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n\nStatus note: Local 4PN sector is assembled within the declared hierarchy; full 4PN theorem remains conditional on the same outgoing quadrupole normalization.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_4PN_FULL`\n\nPurpose: Backlinks exact local instantaneous 4PN assembly, tail bridge, and the inherited 2.5PN quadrupole normalization gate.\n\nPrimary atlas anchors:\n- `CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL` — 4PN local sector closed; tail inherits quadrupole gate\n- `EQ_4PN_TAIL_BRIDGE` — 4PN tail coefficient bridge\n- `CLAIM_STAGE022_P0_TARGET` — Stage 022 grouped P2 bridge isolates P0 target\n- `PHYS_OUTGOING_QUADRUPOLE_PORT` — Passive/outgoing quadrupole port\n\nSource-section anchors:\n- `SEC_4PN_TAIL_BRIDGE` — notes/summaries/4d_4pn_summary.md:741, 6) Tail / hereditary 4PN bridge\n- `SEC_4PN_NO_NEW_GAP` — notes/summaries/4d_4pn_summary.md:769, 6.4 No new 4PN-specific normalization gap\n- `SEC_4PN_FINAL_THEOREM` — notes/summaries/4d_4pn_summary.md:775, 7) Final conditional conservative 4PN theorem\n\nOpen gates to preserve:\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n\nStatus note: Local 4PN sector is assembled within the declared hierarchy; full 4PN theorem remains conditional on the same outgoing quadrupole normalization.",
       "candidate_full_draft_paths_or_globs": [
         "research/4d_4pn/paper/4d_4pn.tex",
         "notes/summaries/4d_4pn_summary.md",
@@ -712,12 +712,12 @@
           "description": "g-2 common correction through quotient/prefactor slope"
         },
         {
-          "id": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
-          "description": "Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
+          "id": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
+          "description": "Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
         },
         {
-          "id": "CLAIM_STAGE8_TO_14_SELECTED_BRANCH",
-          "description": "Selected-mode spectral reachability packet"
+          "id": "CLAIM_STAGE025_031_SELECTED_BRANCH",
+          "description": "Stages 025--031 selected-mode spectral reachability packet"
         },
         {
           "id": "MATH_MONOMIAL_QUOTIENT",
@@ -803,7 +803,7 @@
         }
       ],
       "status_note": "The reduced 5PN finish line is compressed; the active gap is actual moving-throat branch realization, not more algebraic compression.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_5PN_FULL`\n\nPurpose: Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 prefactor slope, support/source theorem, and actual PDE-selected branch conditions.\n\nPrimary atlas anchors:\n- `CLAIM_5PN_FULL_BUNDLE_SURFACE` — 5PN full-bundle surface and weak-axisymmetric continuation\n- `CLAIM_G2_COMMON_QUOTIENT` — g-2 common correction through quotient/prefactor slope\n- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE8_TO_14_SELECTED_BRANCH` — Selected-mode spectral reachability packet\n- `MATH_MONOMIAL_QUOTIENT` — Monomial quotient coordinates\n- `MATH_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope Xi1\n- `EQ_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope\n- `EQ_FULL_BUNDLE_TARGET_SURFACE` — Isotropic full-bundle target surface\n\nSource-section anchors:\n- `SEC_5PN_SUMMARY_SCOPE` — legacy missing summary anchor `4d_5pn_summary.md:3`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_CLAIMS` — legacy missing summary anchor `4d_5pn_summary.md:119`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_MONOMIALS` — legacy missing summary anchor `4d_5pn_summary.md:351`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_BOTTOM_LINE` — legacy missing summary anchor `4d_5pn_summary.md:914`; remap when the future 5PN paper is written\n- `SEC_5PN_STAGE11_MONOMIALS` — notes/5pn/5pn_notes_full.md:493, Stage 11 — direct microscopic monomials, similarity orbit, and quotient closure\n- `SEC_5PN_STAGE15_XI` — notes/5pn/5pn_notes_full.md:890, Stage 15 — the exact `Xi_load` bridge\n- `SEC_5PN_STAGE18_SURFACE` — notes/5pn/5pn_notes_full.md:1030, Stage 18 — exact isotropic full-bundle target surface\n- `SEC_5PN_STAGE20_EVEN_GATES` — notes/5pn/5pn_notes_full.md:1141, Stage 20 — full even-gate solve on the constructive branch\n- `SEC_5PN_STAGE24_26_PLACEMENT` — notes/5pn/5pn_notes_full.md:1268, Continuation past Stage 26: Stages 27–29\n- `SEC_5PN_STAGE31_SUPPORT` — notes/5pn/5pn_notes_full.md:1383, Stage 31 — Support-compensation theorem\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_WEAK_AXISYM_ORBIT_LOCK` — Weak-axisymmetric tangent and orbit-lock packet\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n\nStatus note: The reduced 5PN finish line is compressed; the active gap is actual moving-throat branch realization, not more algebraic compression.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_5PN_FULL`\n\nPurpose: Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 prefactor slope, support/source theorem, and actual PDE-selected branch conditions.\n\nPrimary atlas anchors:\n- `CLAIM_5PN_FULL_BUNDLE_SURFACE` — 5PN full-bundle surface and weak-axisymmetric continuation\n- `CLAIM_G2_COMMON_QUOTIENT` — g-2 common correction through quotient/prefactor slope\n- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE025_031_SELECTED_BRANCH` — Stages 025--031 selected-mode spectral reachability packet\n- `MATH_MONOMIAL_QUOTIENT` — Monomial quotient coordinates\n- `MATH_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope Xi1\n- `EQ_XI1_PREF_SLOPE` — Weak-axisymmetric prefactor slope\n- `EQ_FULL_BUNDLE_TARGET_SURFACE` — Isotropic full-bundle target surface\n\nSource-section anchors:\n- `SEC_5PN_SUMMARY_SCOPE` — legacy missing summary anchor `4d_5pn_summary.md:3`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_CLAIMS` — legacy missing summary anchor `4d_5pn_summary.md:119`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_MONOMIALS` — legacy missing summary anchor `4d_5pn_summary.md:351`; remap when the future 5PN paper is written\n- `SEC_5PN_SUMMARY_BOTTOM_LINE` — legacy missing summary anchor `4d_5pn_summary.md:914`; remap when the future 5PN paper is written\n- `SEC_5PN_STAGE11_MONOMIALS` — notes/5pn/5pn_notes_full.md:493, Stage 11 — direct microscopic monomials, similarity orbit, and quotient closure\n- `SEC_5PN_STAGE15_XI` — notes/5pn/5pn_notes_full.md:890, Stage 15 — the exact `Xi_load` bridge\n- `SEC_5PN_STAGE18_SURFACE` — notes/5pn/5pn_notes_full.md:1030, Stage 18 — exact isotropic full-bundle target surface\n- `SEC_5PN_STAGE20_EVEN_GATES` — notes/5pn/5pn_notes_full.md:1141, Stage 20 — full even-gate solve on the constructive branch\n- `SEC_5PN_STAGE24_26_PLACEMENT` — notes/5pn/5pn_notes_full.md:1268, Continuation past Stage 26: Stages 27–29\n- `SEC_5PN_STAGE31_SUPPORT` — notes/5pn/5pn_notes_full.md:1383, Stage 31 — Support-compensation theorem\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_WEAK_AXISYM_ORBIT_LOCK` — Weak-axisymmetric tangent and orbit-lock packet\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n\nStatus note: The reduced 5PN finish line is compressed; the active gap is actual moving-throat branch realization, not more algebraic compression.",
       "candidate_full_draft_paths_or_globs": [
         "notes/5pn/5pn_notes_full.md"
       ],
@@ -836,16 +836,16 @@
           "description": "Distributed Sigma/R geometry lift"
         },
         {
-          "id": "CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER",
-          "description": "Localized Maxwell/mixed block carries first honest outgoing bridge"
+          "id": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+          "description": "Projection-first EM packet feeds the outgoing bridge"
         },
         {
-          "id": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
-          "description": "Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
+          "id": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
+          "description": "Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
         },
         {
-          "id": "CLAIM_STAGE8_TO_14_SELECTED_BRANCH",
-          "description": "Selected-mode spectral reachability packet"
+          "id": "CLAIM_STAGE025_031_SELECTED_BRANCH",
+          "description": "Stages 025--031 selected-mode spectral reachability packet"
         },
         {
           "id": "CLAIM_MIXED_SECTOR_MICROSCOPIC",
@@ -898,7 +898,7 @@
         }
       ],
       "status_note": "Compact master is the high-level theorem ledger; exact/effective/open statuses must be read with the status tags.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_MOVING_THROAT_COMPACT`\n\nPurpose: Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks, Packet A/B discipline, selected branch, and actual branch exporter.\n\nPrimary atlas anchors:\n- `CLAIM_RESPONSE_READOUT_DISCIPLINE` — D0/C/P0/N2/N4 are response readouts, not the throat itself\n- `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required\n- `CLAIM_PACKET_A_PACKET_B_SPLIT` — Packet A / Packet B target split\n- `CLAIM_STAGE1_GEOMETRY_LIFT` — Distributed Sigma/R geometry lift\n- `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER` — Localized Maxwell/mixed block carries first honest outgoing bridge\n- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE8_TO_14_SELECTED_BRANCH` — Selected-mode spectral reachability packet\n- `CLAIM_MIXED_SECTOR_MICROSCOPIC` — Mixed EM sector is microscopic ontology, not gauge artifact\n\nSource-section anchors:\n- `SEC_MT_READING_RULES` — notes/moving_throat_pde_program_compact.md:49, 1. Reading Rules and Status Firewall\n- `SEC_MT_THEOREM_STATUS` — notes/moving_throat_pde_program_compact.md:84, 1.3 Present theorem-status summary\n- `SEC_MT_PARENT_FIELDS` — notes/moving_throat_pde_program_compact.md:180, 2. Parent Theory and Exact Bulk Equations\n- `SEC_MT_MIXED_INVARIANTS` — notes/moving_throat_pde_program_compact.md:483, 2.5.6 Exact mixed-sector gauge invariants\n- `SEC_MT_PROJECTION_ZERO_MODE` — notes/moving_throat_pde_program_compact.md:507, 2.5.7 Cold-start projection and zero-mode reduction hooks\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n- `OPEN_WEAK_AXISYM_ORBIT_LOCK` — Weak-axisymmetric tangent and orbit-lock packet\n\nStatus note: Compact master is the high-level theorem ledger; exact/effective/open statuses must be read with the status tags.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_MOVING_THROAT_COMPACT`\n\nPurpose: Backlinks the compact master to parent fields, mixed invariants, zero-mode hooks, Packet A/B discipline, selected branch, and actual branch exporter.\n\nPrimary atlas anchors:\n- `CLAIM_RESPONSE_READOUT_DISCIPLINE` — D0/C/P0/N2/N4 are response readouts, not the throat itself\n- `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required\n- `CLAIM_PACKET_A_PACKET_B_SPLIT` — Packet A / Packet B target split\n- `CLAIM_STAGE1_GEOMETRY_LIFT` — Distributed Sigma/R geometry lift\n- `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE` — Projection-first EM packet feeds the outgoing bridge\n- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE025_031_SELECTED_BRANCH` — Stages 025--031 selected-mode spectral reachability packet\n- `CLAIM_MIXED_SECTOR_MICROSCOPIC` — Mixed EM sector is microscopic ontology, not gauge artifact\n\nSource-section anchors:\n- `SEC_MT_READING_RULES` — notes/moving_throat_pde_program_compact.md:49, 1. Reading Rules and Status Firewall\n- `SEC_MT_THEOREM_STATUS` — notes/moving_throat_pde_program_compact.md:84, 1.3 Present theorem-status summary\n- `SEC_MT_PARENT_FIELDS` — notes/moving_throat_pde_program_compact.md:180, 2. Parent Theory and Exact Bulk Equations\n- `SEC_MT_MIXED_INVARIANTS` — notes/moving_throat_pde_program_compact.md:483, 2.5.6 Exact mixed-sector gauge invariants\n- `SEC_MT_PROJECTION_ZERO_MODE` — notes/moving_throat_pde_program_compact.md:507, 2.5.7 Cold-start projection and zero-mode reduction hooks\n\nOpen gates to preserve:\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n- `OPEN_QUAD_NORMALIZATION` — Open gate: passive/outgoing quadrupole normalization\n- `OPEN_WEAK_AXISYM_ORBIT_LOCK` — Weak-axisymmetric tangent and orbit-lock packet\n\nStatus note: Compact master is the high-level theorem ledger; exact/effective/open statuses must be read with the status tags.",
       "candidate_full_draft_paths_or_globs": [
         "notes/moving_throat_pde_program_compact.md"
       ],
@@ -927,16 +927,16 @@
           "description": "BdG-wall Schur complement gives even support ladder"
         },
         {
-          "id": "CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER",
-          "description": "Localized Maxwell/mixed block carries first honest outgoing bridge"
+          "id": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+          "description": "Projection-first EM packet feeds the outgoing bridge"
         },
         {
-          "id": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
-          "description": "Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
+          "id": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
+          "description": "Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)"
         },
         {
-          "id": "CLAIM_STAGE7_O3_ISOTROPY",
-          "description": "O(3) isotropy and weak-axisymmetric splitting theorem"
+          "id": "CLAIM_STAGE024_O3_ISOTROPY",
+          "description": "Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem"
         },
         {
           "id": "CLAIM_RESPONSE_READOUT_DISCIPLINE",
@@ -1071,7 +1071,7 @@
         }
       ],
       "status_note": "Audit patch: confinement-only parent gives a wall force, not an autonomous wall PDE; S_eta/S_Sigma must be promoted or wall PDE must remain effective closure.",
-      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_PDE_AUDIT`\n\nPurpose: Backlinks audit corrections: parent wall action split, Maxwell gauge-localization patch, BdG and mixed kernels, grouped projectors, STF map, normalization ratio, branch exporter, physical picture, and material closure gap.\n\nPrimary atlas anchors:\n- `CLAIM_PARENT_WALL_STATUS_SPLIT` — Parent wall status split: force yes, autonomous PDE no\n- `CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH` — Maxwell gauge-fixing localization patch\n- `CLAIM_STAGE3_BDG_SCHUR` — BdG-wall Schur complement gives even support ladder\n- `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER` — Localized Maxwell/mixed block carries first honest outgoing bridge\n- `CLAIM_STAGE6_FULL_BUNDLE_RATIO` — Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE7_O3_ISOTROPY` — O(3) isotropy and weak-axisymmetric splitting theorem\n- `CLAIM_RESPONSE_READOUT_DISCIPLINE` — D0/C/P0/N2/N4 are response readouts, not the throat itself\n- `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required\n- `CLAIM_MATERIAL_CLOSURE_GAP` — Material closure must be solved on same branch\n- `MATH_WALL_ACTION_S_ETA` — Quadratic wall action S_eta^(2)\n- `MATH_MAXWELL_WEIGHTED_GAUGE_FIXING` — Weighted Maxwell gauge fixing\n- `MATH_BDG_SCHUR_COMPLEMENT` — BdG-wall Schur complement\n- `MATH_MAXWELL_MIXED_KERNEL` — Maxwell/mixed kernel\n\nSource-section anchors:\n- `SEC_PDE_PARENT_WALL_EXEC` — notes/pde_audit_full.md:4, Executive result\n- `SEC_PDE_WALL_VARIATION` — notes/pde_audit_full.md:188, 3. Variation after adding the quadratic wall action\n- `SEC_PDE_MAXWELL_GAUGE` — notes/pde_audit_full.md:523, Stage V2-02 — Maxwell Gauge-Localization Audit\n- `SEC_PDE_BDG_AUDIT` — notes/pde_audit_full.md:2335, Stage V2-08 — BdG–Wall Schur Complement and Stability/Softening Audit\n- `SEC_PDE_P2_PROJECTORS` — notes/pde_audit_full.md:2844, 8. Grouped real \\(P_2\\) isotropy\n- `SEC_PDE_MIXED_KERNEL` — notes/pde_audit_full.md:2948, Stage V2-09 — Maxwell/mixed-sector kernel audit\n- `SEC_PDE_STF_SOURCE` — notes/pde_audit_full.md:4432, Stage V2-12 — STF Angular Source-Map Theorem\n- `SEC_PDE_NORM_RATIO` — notes/pde_audit_full.md:4846, Stage V2-13 — Grouped Normalization Ratio Audit\n- `SEC_PDE_BRANCH_FREEZE` — notes/pde_audit_full.md:5868, Stage V2-16 — Branch-freeze / no-refit protocol\n- `SEC_PDE_WEAK_FORM_EXPORTER` — notes/pde_audit_full.md:7939, Stage V2-20 — Weak-form and numerical branch-extraction preparation\n- `SEC_PDE_BRANCH_FIXTURE` — notes/pde_audit_full.md:8578, Stage V2-21 — Branch-Extraction Fixture and Observable Packet\n- `SEC_PDE_ACTUAL_BRANCH_PACKETS` — notes/pde_audit_full.md:10750, 4. Actual branch packets\n- `SEC_PDE_PHYSICAL_ONTOLOGY` — notes/pde_audit_full.md:11885, Stage V2-28 - Physical Picture and Ontology Checklist\n- `SEC_PDE_MATERIAL_GAP` — notes/pde_audit_full.md:12301, Stage V2-29 - Superfluid Material Closure Gap\n- `SEC_PDE_EM_STATUS` — notes/pde_audit_full.md:12537, Stage V2-30 - Electromagnetic Ontology and Status\n\nOpen gates to preserve:\n- `OPEN_PARENT_PROMOTION_S_SIGMA` — Open gate: promote S_Sigma\n- `OPEN_NONLINEAR_S_SIGMA` — Nonlinear throat action S_Sigma\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_MATERIAL_CLOSURE` — Open gate: material closure on same branch\n- `OPEN_MIXED_RECIRCULATION` — Open gate: mixed recirculation/plumbing law\n\nStatus note: Audit patch: confinement-only parent gives a wall force, not an autonomous wall PDE; S_eta/S_Sigma must be promoted or wall PDE must remain effective closure.",
+      "block_markdown": "### Fluid Universe Atlas backlinks\n\nAtlas version: v0.6\n\nBacklink block: `BACKLINK_PDE_AUDIT`\n\nPurpose: Backlinks audit corrections: parent wall action split, Maxwell gauge-localization patch, BdG and mixed kernels, grouped projectors, STF map, normalization ratio, branch exporter, physical picture, and material closure gap.\n\nPrimary atlas anchors:\n- `CLAIM_PARENT_WALL_STATUS_SPLIT` — Parent wall status split: force yes, autonomous PDE no\n- `CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH` — Maxwell gauge-fixing localization patch\n- `CLAIM_STAGE3_BDG_SCHUR` — BdG-wall Schur complement gives even support ladder\n- `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE` — Projection-first EM packet feeds the outgoing bridge\n- `CLAIM_STAGE023_FULL_BUNDLE_RATIO` — Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)\n- `CLAIM_STAGE024_O3_ISOTROPY` — Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem\n- `CLAIM_RESPONSE_READOUT_DISCIPLINE` — D0/C/P0/N2/N4 are response readouts, not the throat itself\n- `CLAIM_BRANCH_EXPORTER_REQUIRED` — Actual target-blind branch exporter required\n- `CLAIM_MATERIAL_CLOSURE_GAP` — Material closure must be solved on same branch\n- `MATH_WALL_ACTION_S_ETA` — Quadratic wall action S_eta^(2)\n- `MATH_MAXWELL_WEIGHTED_GAUGE_FIXING` — Weighted Maxwell gauge fixing\n- `MATH_BDG_SCHUR_COMPLEMENT` — BdG-wall Schur complement\n- `MATH_MAXWELL_MIXED_KERNEL` — Maxwell/mixed kernel\n\nSource-section anchors:\n- `SEC_PDE_PARENT_WALL_EXEC` — notes/pde_audit_full.md:4, Executive result\n- `SEC_PDE_WALL_VARIATION` — notes/pde_audit_full.md:188, 3. Variation after adding the quadratic wall action\n- `SEC_PDE_MAXWELL_GAUGE` — notes/pde_audit_full.md:523, Stage V2-02 — Maxwell Gauge-Localization Audit\n- `SEC_PDE_BDG_AUDIT` — notes/pde_audit_full.md:2335, Stage V2-08 — BdG–Wall Schur Complement and Stability/Softening Audit\n- `SEC_PDE_P2_PROJECTORS` — notes/pde_audit_full.md:2844, 8. Grouped real \\(P_2\\) isotropy\n- `SEC_PDE_MIXED_KERNEL` — notes/pde_audit_full.md:2948, Stage V2-09 — Maxwell/mixed-sector kernel audit\n- `SEC_PDE_STF_SOURCE` — notes/pde_audit_full.md:4432, Stage V2-12 — STF Angular Source-Map Theorem\n- `SEC_PDE_NORM_RATIO` — notes/pde_audit_full.md:4846, Stage V2-13 — Grouped Normalization Ratio Audit\n- `SEC_PDE_BRANCH_FREEZE` — notes/pde_audit_full.md:5868, Stage V2-16 — Branch-freeze / no-refit protocol\n- `SEC_PDE_WEAK_FORM_EXPORTER` — notes/pde_audit_full.md:7939, Stage V2-20 — Weak-form and numerical branch-extraction preparation\n- `SEC_PDE_BRANCH_FIXTURE` — notes/pde_audit_full.md:8578, Stage V2-21 — Branch-Extraction Fixture and Observable Packet\n- `SEC_PDE_ACTUAL_BRANCH_PACKETS` — notes/pde_audit_full.md:10750, 4. Actual branch packets\n- `SEC_PDE_PHYSICAL_ONTOLOGY` — notes/pde_audit_full.md:11885, Stage V2-28 - Physical Picture and Ontology Checklist\n- `SEC_PDE_MATERIAL_GAP` — notes/pde_audit_full.md:12301, Stage V2-29 - Superfluid Material Closure Gap\n- `SEC_PDE_EM_STATUS` — notes/pde_audit_full.md:12537, Stage V2-30 - Electromagnetic Ontology and Status\n\nOpen gates to preserve:\n- `OPEN_PARENT_PROMOTION_S_SIGMA` — Open gate: promote S_Sigma\n- `OPEN_NONLINEAR_S_SIGMA` — Nonlinear throat action S_Sigma\n- `OPEN_EXECUTABLE_BRANCH_SOLVER` — Executable physical branch solver\n- `OPEN_ACTUAL_BRANCH_EXPORTER` — Open gate: actual moving-throat branch exporter\n- `OPEN_MATERIAL_CLOSURE` — Open gate: material closure on same branch\n- `OPEN_MIXED_RECIRCULATION` — Open gate: mixed recirculation/plumbing law\n\nStatus note: Audit patch: confinement-only parent gives a wall force, not an autonomous wall PDE; S_eta/S_Sigma must be promoted or wall PDE must remain effective closure.",
       "candidate_full_draft_paths_or_globs": [
         "notes/pde_audit_full.md"
       ],
@@ -1429,22 +1429,46 @@
       "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage003_bdg_coupling.md"
     },
     {
-      "legacy_ref": "moving_throat_pde_stage004_maxwell_mixed_response.md",
+      "legacy_ref": "notes/em_projected/step_01_projected_maxwell_readme.md",
       "canonical_ref": "research/pde_ledger/paper/stages/stage_004.tex",
       "source_kind": "paper_component",
-      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage004_maxwell_mixed_response.md"
+      "note": "First stage of the linear projection-first EM packet. The imported derivation block runs through Stage 020."
     },
     {
-      "legacy_ref": "moving_throat_pde_stage005_grouped_p2_normalization_bridge.md",
-      "canonical_ref": "research/pde_ledger/paper/stages/stage_005.tex",
+      "legacy_ref": "notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_020.tex",
       "source_kind": "paper_component",
-      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage005_grouped_p2_normalization_bridge.md"
+      "note": "Last imported derivation-only projected-EM source; step 19 and later computational work remain excluded."
     },
     {
-      "legacy_ref": "moving_throat_pde_stage007_overlap_isotropy.md",
-      "canonical_ref": "research/pde_ledger/paper/stages/stage_007.tex",
+      "legacy_ref": "moving_throat_pde_stage021_reduced_one_port_normal_form.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_021.tex",
       "source_kind": "paper_component",
-      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage007_overlap_isotropy.md"
+      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md"
+    },
+    {
+      "legacy_ref": "moving_throat_pde_stage022_grouped_p2_normalization_bridge.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_022.tex",
+      "source_kind": "paper_component",
+      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md"
+    },
+    {
+      "legacy_ref": "moving_throat_pde_stage023_full_grouped_bundle.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_023.tex",
+      "source_kind": "paper_component",
+      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md"
+    },
+    {
+      "legacy_ref": "moving_throat_pde_stage024_overlap_isotropy.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_024.tex",
+      "source_kind": "paper_component",
+      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage024_overlap_isotropy.md"
+    },
+    {
+      "legacy_ref": "moving_throat_pde_stage025_minimal_isotropic_normalization.md",
+      "canonical_ref": "research/pde_ledger/paper/stages/stage_025.tex",
+      "source_kind": "paper_component",
+      "source_note": "research/pde_ledger/notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md"
     },
     {
       "legacy_ref": "4d_5pn_summary.md",

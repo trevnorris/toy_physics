@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Low-order projected response moments used to test branch; not full physical description.
 future_paper_needed: false
 source_files:
@@ -27,7 +27,7 @@ physical_ids:
 - PHYS_RESPONSE_READOUTS
 claim_ids:
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 open_gate_ids:
 - TARGET_PACKET_A
 outgoing_edges:
@@ -52,7 +52,7 @@ incoming_edges:
   relation: AFFECTS
   status: reduced/open
   note: Mixed spectra contribute Z_n,N_n moments.
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: COMPRESSES_TO
   status: target packet
   note: Full bundle exports compressed audit readouts.
@@ -60,7 +60,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: paper_facing_ontology_discipline
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_STAGE022_P0_TARGET
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_grouped_bridge
   note: Claim feeds this downstream object, output, or open gate.
@@ -93,9 +93,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `READOUT_D0_C_P0_N2_N4`  
-> **Status:** `compressed_target_readouts`  
-> **Layer:** `status_audit`  
+> **Atlas ID:** `READOUT_D0_C_P0_N2_N4`
+> **Status:** `compressed_target_readouts`
+> **Layer:** `status_audit`
 > **Type:** `readout_packet`
 
 ## Summary
@@ -156,7 +156,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - [[TARGET_PACKET_A]]
@@ -181,9 +181,9 @@ The graph currently records the equation text but not a full variable dictionary
 | `AFFECTS` | [[PHYS_INTERIOR_SUPPORT]] | BdG/support spectra contribute B_n moments. |
 | `AFFECTS` | [[PHYS_MATERIAL_CLOSURE]] | Material sector can shift response readouts through density/speed/flux. |
 | `AFFECTS` | [[PHYS_MIXED_EM_CORE]] | Mixed spectra contribute Z_n,N_n moments. |
-| `COMPRESSES_TO` | [[MT_STAGE6_FULL_GROUPED_BUNDLE]] | Full bundle exports compressed audit readouts. |
+| `COMPRESSES_TO` | [[MT_STAGE023_FULL_GROUPED_BUNDLE]] | Full bundle exports compressed audit readouts. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE5_P0_TARGET]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE022_P0_TARGET]] | Claim feeds this downstream object, output, or open gate. |
 | `INTERPRETS` | [[PHYS_RESPONSE_READOUTS]] | Low-order readouts are compressed projected quantities, not the object. |
 | `STARTS_AT` | [[NEG_QUERY_READOUTS_ARE_PHYSICAL_THROAT]] | Negative query starts from READOUT_D0_C_P0_N2_N4. |
 | `USES` | [[TARGET_PACKET_A]] | Packet A is evaluated through reduced response readouts. |

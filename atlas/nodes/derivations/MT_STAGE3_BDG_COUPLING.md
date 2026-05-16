@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Integrates stable BdG support modes out by Schur complement, giving conservative self-energies and pole shifts.
 future_paper_needed: false
 source_files:
@@ -25,10 +25,10 @@ math_ids:
 claim_ids:
 - CLAIM_STAGE3_BDG_SCHUR
 outgoing_edges:
-- target: MT_STAGE4_MAXWELL_MIXED
+- target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS
-  status: reduced
-  note: Conservative support self-energy enlarged by localized Maxwell/mixed block.
+  status: exact_projection_derivation
+  note: BdG support data feeds the projection-first EM packet before the retained one-port adapter.
 incoming_edges:
 - source: MT_STAGE2_BREATHING_REDUCTION
   relation: FEEDS
@@ -58,9 +58,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_STAGE3_BDG_COUPLING`  
-> **Status:** `reduced_controlled`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `MT_STAGE3_BDG_COUPLING`
+> **Status:** `reduced_controlled`
+> **Layer:** `derivation`
 > **Type:** `moving_throat_stage`
 
 ## Summary
@@ -114,7 +114,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS` | [[MT_STAGE4_MAXWELL_MIXED]] | Conservative support self-energy enlarged by localized Maxwell/mixed block. |
+| `FEEDS` | [[MT_STAGE004_020_PROJECTED_MAXWELL]] | BdG support data feeds the projection-first EM packet before the retained one-port adapter. |
 
 ## Incoming Edges
 

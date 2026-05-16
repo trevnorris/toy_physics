@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The radiative/outgoing route is a passive l=2 port coupled through the mixed sector and measured by the P0/N0/D0 response readout.
 future_paper_needed: false
 physical_ids:
@@ -17,9 +17,9 @@ physical_ids:
 math_ids:
 - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
 claim_ids:
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 outgoing_edges:
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: LINKS_TO
   status: active
   note: Physical register entry links to graph object.
@@ -53,9 +53,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_REG_OUTGOING_PORT`  
-> **Status:** `active`  
-> **Layer:** `physical_register`  
+> **Atlas ID:** `PHYS_REG_OUTGOING_PORT`
+> **Status:** `active`
+> **Layer:** `physical_register`
 > **Type:** `register`
 
 ## Summary
@@ -84,7 +84,7 @@ The radiative/outgoing route is a passive l=2 port coupled through the mixed sec
 - none
 
 ### Related claims
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - none
@@ -99,7 +99,7 @@ The radiative/outgoing route is a passive l=2 port coupled through the mixed sec
 
 | Relation | Node | Note |
 |---|---|---|
-| `LINKS_TO` | [[CLAIM_STAGE5_P0_TARGET]] | Physical register entry links to graph object. |
+| `LINKS_TO` | [[CLAIM_STAGE022_P0_TARGET]] | Physical register entry links to graph object. |
 | `LINKS_TO` | [[MATH_COMPACT_L2_OUTGOING_FINGERPRINT]] | Physical register entry links to graph object. |
 | `LINKS_TO` | [[PHYS_OUTGOING_QUADRUPOLE_PORT]] | Physical register entry links to graph object. |
 

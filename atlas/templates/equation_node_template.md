@@ -3,7 +3,7 @@ id: NODE_ID
 title: Generated equation node template
 generated: true
 generated_by: codex
-last_generated_utc: 2026-04-27T19:11:17Z
+last_generated_utc: 2026-05-16T02:18:48Z
 ---
 
 # Generated equation node template

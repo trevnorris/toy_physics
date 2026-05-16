@@ -91,38 +91,47 @@
       "height": 190
     },
     {
-      "id": "CLAIM_PROJECTION_OPEN_BRANE_SYSTEM",
+      "id": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
       "type": "file",
-      "file": "nodes/claims/CLAIM_PROJECTION_OPEN_BRANE_SYSTEM.md",
+      "file": "nodes/claims/CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.md",
       "x": 0,
       "y": 2400,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_STAGE5_P0_TARGET",
+      "id": "CLAIM_PROJECTION_OPEN_BRANE_SYSTEM",
       "type": "file",
-      "file": "nodes/claims/CLAIM_STAGE5_P0_TARGET.md",
+      "file": "nodes/claims/CLAIM_PROJECTION_OPEN_BRANE_SYSTEM.md",
       "x": 0,
       "y": 2640,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
+      "id": "CLAIM_STAGE022_P0_TARGET",
       "type": "file",
-      "file": "nodes/claims/CLAIM_STAGE6_FULL_BUNDLE_RATIO.md",
+      "file": "nodes/claims/CLAIM_STAGE022_P0_TARGET.md",
       "x": 0,
       "y": 2880,
       "width": 330,
       "height": 190
     },
     {
-      "id": "CLAIM_STAGE7_O3_ISOTROPY",
+      "id": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
       "type": "file",
-      "file": "nodes/claims/CLAIM_STAGE7_O3_ISOTROPY.md",
+      "file": "nodes/claims/CLAIM_STAGE023_FULL_BUNDLE_RATIO.md",
       "x": 0,
       "y": 3120,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "CLAIM_STAGE024_O3_ISOTROPY",
+      "type": "file",
+      "file": "nodes/claims/CLAIM_STAGE024_O3_ISOTROPY.md",
+      "x": 0,
+      "y": 3360,
       "width": 330,
       "height": 190
     },
@@ -131,7 +140,7 @@
       "type": "file",
       "file": "nodes/claims/CLAIM_ZERO_MODE_MAXWELL_REDUCTION.md",
       "x": 0,
-      "y": 3360,
+      "y": 3600,
       "width": 330,
       "height": 190
     },
@@ -145,11 +154,29 @@
       "height": 190
     },
     {
+      "id": "MT_STAGE004_020_PROJECTED_MAXWELL",
+      "type": "file",
+      "file": "nodes/derivations/MT_STAGE004_020_PROJECTED_MAXWELL.md",
+      "x": 380,
+      "y": 240,
+      "width": 330,
+      "height": 190
+    },
+    {
+      "id": "MT_STAGE021_REDUCED_ONE_PORT",
+      "type": "file",
+      "file": "nodes/derivations/MT_STAGE021_REDUCED_ONE_PORT.md",
+      "x": 380,
+      "y": 480,
+      "width": 330,
+      "height": 190
+    },
+    {
       "id": "PN_0_NEWTONIAN_HOOK",
       "type": "file",
       "file": "nodes/derivations/PN_0_NEWTONIAN_HOOK.md",
       "x": 380,
-      "y": 240,
+      "y": 720,
       "width": 330,
       "height": 190
     },
@@ -158,7 +185,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_1_EIH_FULL.md",
       "x": 380,
-      "y": 480,
+      "y": 960,
       "width": 330,
       "height": 190
     },
@@ -167,7 +194,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_2_5_QUAD_NARROWING.md",
       "x": 380,
-      "y": 720,
+      "y": 1200,
       "width": 330,
       "height": 190
     },
@@ -176,7 +203,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_2_ADM_FULL.md",
       "x": 380,
-      "y": 960,
+      "y": 1440,
       "width": 330,
       "height": 190
     },
@@ -185,7 +212,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_3_GROUPED_P2_FULL.md",
       "x": 380,
-      "y": 1200,
+      "y": 1680,
       "width": 330,
       "height": 190
     },
@@ -194,7 +221,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_4_LOCAL_TAIL.md",
       "x": 380,
-      "y": 1440,
+      "y": 1920,
       "width": 330,
       "height": 190
     },
@@ -203,7 +230,7 @@
       "type": "file",
       "file": "nodes/derivations/PN_5_FULL_BUNDLE_SURFACE.md",
       "x": 380,
-      "y": 1680,
+      "y": 2160,
       "width": 330,
       "height": 190
     },
@@ -271,38 +298,11 @@
       "height": 190
     },
     {
-      "id": "EQ_MONOMIAL_QUOTIENT",
+      "id": "EQ_MAXWELL_MIXED_TRANSFER",
       "type": "file",
-      "file": "nodes/equations/EQ_MONOMIAL_QUOTIENT.md",
+      "file": "nodes/equations/EQ_MAXWELL_MIXED_TRANSFER.md",
       "x": 760,
       "y": 1680,
-      "width": 330,
-      "height": 190
-    },
-    {
-      "id": "EQ_P0_TARGET",
-      "type": "file",
-      "file": "nodes/equations/EQ_P0_TARGET.md",
-      "x": 760,
-      "y": 1920,
-      "width": 330,
-      "height": 190
-    },
-    {
-      "id": "EQ_PARENT_ACTION_CURRENT",
-      "type": "file",
-      "file": "nodes/equations/EQ_PARENT_ACTION_CURRENT.md",
-      "x": 760,
-      "y": 2160,
-      "width": 330,
-      "height": 190
-    },
-    {
-      "id": "EQ_PROJECTED_CONTINUITY",
-      "type": "file",
-      "file": "nodes/equations/EQ_PROJECTED_CONTINUITY.md",
-      "x": 760,
-      "y": 2400,
       "width": 330,
       "height": 190
     }
@@ -392,7 +392,7 @@
       "id": "e10",
       "fromNode": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
+      "toNode": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
       "toSide": "left",
       "label": "REFINES"
     },
@@ -454,22 +454,46 @@
     },
     {
       "id": "e18",
-      "fromNode": "CLAIM_STAGE5_P0_TARGET",
+      "fromNode": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
+      "toNode": "CLAIM_STAGE022_P0_TARGET",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e19",
+      "fromNode": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+      "fromSide": "right",
+      "toNode": "MT_STAGE004_020_PROJECTED_MAXWELL",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e20",
+      "fromNode": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
+      "fromSide": "right",
+      "toNode": "MT_STAGE021_REDUCED_ONE_PORT",
+      "toSide": "left",
+      "label": "FEEDS_OR_STATUS_OF"
+    },
+    {
+      "id": "e21",
+      "fromNode": "CLAIM_STAGE022_P0_TARGET",
+      "fromSide": "right",
+      "toNode": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
       "toSide": "left",
       "label": "GENERALIZES_TO"
     },
     {
-      "id": "e19",
-      "fromNode": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
+      "id": "e22",
+      "fromNode": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE7_O3_ISOTROPY",
+      "toNode": "CLAIM_STAGE024_O3_ISOTROPY",
       "toSide": "left",
       "label": "ANGULARLY_REFINED_BY"
     },
     {
-      "id": "e20",
+      "id": "e23",
       "fromNode": "EQ_1PN_EIH_EQUALITY",
       "fromSide": "right",
       "toNode": "CLAIM_1PN_EIH_WITHIN_HIERARCHY",
@@ -477,7 +501,7 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e21",
+      "id": "e24",
       "fromNode": "EQ_1PN_EIH_EQUALITY",
       "fromSide": "right",
       "toNode": "EQ_2PN_ADM_EQUALITY",
@@ -485,7 +509,7 @@
       "label": "FEEDS"
     },
     {
-      "id": "e22",
+      "id": "e25",
       "fromNode": "EQ_1PN_EIH_EQUALITY",
       "fromSide": "right",
       "toNode": "PN_1_EIH_FULL",
@@ -493,7 +517,7 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e23",
+      "id": "e26",
       "fromNode": "EQ_2PN_ADM_EQUALITY",
       "fromSide": "right",
       "toNode": "CLAIM_2PN_ADM_WITHIN_HIERARCHY",
@@ -501,15 +525,7 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e24",
-      "fromNode": "EQ_2PN_ADM_EQUALITY",
-      "fromSide": "right",
-      "toNode": "EQ_P0_TARGET",
-      "toSide": "left",
-      "label": "EXPOSES_SUPPORT_STRUCTURE_FOR"
-    },
-    {
-      "id": "e25",
+      "id": "e27",
       "fromNode": "EQ_2PN_ADM_EQUALITY",
       "fromSide": "right",
       "toNode": "PN_2_ADM_FULL",
@@ -517,7 +533,7 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e26",
+      "id": "e28",
       "fromNode": "EQ_3PN_SPLIT",
       "fromSide": "right",
       "toNode": "CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY",
@@ -525,7 +541,7 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e27",
+      "id": "e29",
       "fromNode": "EQ_3PN_SPLIT",
       "fromSide": "right",
       "toNode": "PN_3_GROUPED_P2_FULL",
@@ -533,7 +549,7 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e28",
+      "id": "e30",
       "fromNode": "EQ_4PN_TAIL_BRIDGE",
       "fromSide": "right",
       "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
@@ -541,7 +557,7 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e29",
+      "id": "e31",
       "fromNode": "EQ_4PN_TAIL_BRIDGE",
       "fromSide": "right",
       "toNode": "PN_4_LOCAL_TAIL",
@@ -549,7 +565,7 @@
       "label": "ANCHORS"
     },
     {
-      "id": "e30",
+      "id": "e32",
       "fromNode": "EQ_FULL_BUNDLE_TARGET_SURFACE",
       "fromSide": "right",
       "toNode": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
@@ -557,15 +573,15 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e31",
+      "id": "e33",
       "fromNode": "EQ_FULL_BUNDLE_TARGET_SURFACE",
       "fromSide": "right",
-      "toNode": "CLAIM_STAGE6_FULL_BUNDLE_RATIO",
+      "toNode": "CLAIM_STAGE023_FULL_BUNDLE_RATIO",
       "toSide": "left",
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e32",
+      "id": "e34",
       "fromNode": "EQ_G2_COMMON_TANGENT",
       "fromSide": "right",
       "toNode": "CLAIM_G2_COMMON_QUOTIENT",
@@ -573,7 +589,7 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e33",
+      "id": "e35",
       "fromNode": "EQ_GNLS_BULK",
       "fromSide": "right",
       "toNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
@@ -581,95 +597,15 @@
       "label": "SUPPORTS_CLAIM"
     },
     {
-      "id": "e34",
-      "fromNode": "EQ_MONOMIAL_QUOTIENT",
-      "fromSide": "right",
-      "toNode": "CLAIM_5PN_FULL_BUNDLE_SURFACE",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e35",
-      "fromNode": "EQ_MONOMIAL_QUOTIENT",
-      "fromSide": "right",
-      "toNode": "CLAIM_G2_COMMON_QUOTIENT",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
       "id": "e36",
-      "fromNode": "EQ_MONOMIAL_QUOTIENT",
+      "fromNode": "EQ_MAXWELL_MIXED_TRANSFER",
       "fromSide": "right",
-      "toNode": "EQ_G2_COMMON_TANGENT",
+      "toNode": "CLAIM_PROJECTED_EM_OUTGOING_BRIDGE",
       "toSide": "left",
-      "label": "FEEDS"
+      "label": "SUPPORTS_CLAIM"
     },
     {
       "id": "e37",
-      "fromNode": "EQ_P0_TARGET",
-      "fromSide": "right",
-      "toNode": "CLAIM_25PN_QUAD_NARROWING",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e38",
-      "fromNode": "EQ_P0_TARGET",
-      "fromSide": "right",
-      "toNode": "CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e39",
-      "fromNode": "EQ_P0_TARGET",
-      "fromSide": "right",
-      "toNode": "CLAIM_STAGE5_P0_TARGET",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e40",
-      "fromNode": "EQ_P0_TARGET",
-      "fromSide": "right",
-      "toNode": "EQ_4PN_TAIL_BRIDGE",
-      "toSide": "left",
-      "label": "REQUIRED_BY"
-    },
-    {
-      "id": "e41",
-      "fromNode": "EQ_P0_TARGET",
-      "fromSide": "right",
-      "toNode": "EQ_FULL_BUNDLE_TARGET_SURFACE",
-      "toSide": "left",
-      "label": "IS_COMPONENT_OF"
-    },
-    {
-      "id": "e42",
-      "fromNode": "EQ_PARENT_ACTION_CURRENT",
-      "fromSide": "right",
-      "toNode": "CLAIM_PARENT_ACTION_CURRENT_EXACT",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e43",
-      "fromNode": "EQ_PARENT_ACTION_CURRENT",
-      "fromSide": "right",
-      "toNode": "CLAIM_PARENT_WALL_STATUS_SPLIT",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e44",
-      "fromNode": "EQ_PROJECTED_CONTINUITY",
-      "fromSide": "right",
-      "toNode": "CLAIM_PROJECTION_OPEN_BRANE_SYSTEM",
-      "toSide": "left",
-      "label": "SUPPORTS_CLAIM"
-    },
-    {
-      "id": "e45",
       "fromNode": "MATH_POISSON_HOOK",
       "fromSide": "right",
       "toNode": "PN_0_NEWTONIAN_HOOK",
@@ -677,7 +613,15 @@
       "label": "FEEDS"
     },
     {
-      "id": "e46",
+      "id": "e38",
+      "fromNode": "MT_STAGE004_020_PROJECTED_MAXWELL",
+      "fromSide": "right",
+      "toNode": "MT_STAGE021_REDUCED_ONE_PORT",
+      "toSide": "left",
+      "label": "CLOSED_BY"
+    },
+    {
+      "id": "e39",
       "fromNode": "PN_0_NEWTONIAN_HOOK",
       "fromSide": "right",
       "toNode": "PN_1_EIH_FULL",
@@ -685,79 +629,79 @@
       "label": "FEEDS"
     },
     {
-      "id": "e47",
+      "id": "e40",
       "fromNode": "PN_1_EIH_FULL",
       "fromSide": "right",
       "toNode": "PN_2_ADM_FULL",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e41",
+      "fromNode": "PN_1_EIH_FULL",
+      "fromSide": "right",
+      "toNode": "PN_2_ADM_FULL",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e42",
+      "fromNode": "PN_2_5_QUAD_NARROWING",
+      "fromSide": "right",
+      "toNode": "PN_3_GROUPED_P2_FULL",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e43",
+      "fromNode": "PN_2_5_QUAD_NARROWING",
+      "fromSide": "right",
+      "toNode": "PN_3_GROUPED_P2_FULL",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e44",
+      "fromNode": "PN_2_5_QUAD_NARROWING",
+      "fromSide": "right",
+      "toNode": "PN_4_LOCAL_TAIL",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e45",
+      "fromNode": "PN_2_ADM_FULL",
+      "fromSide": "right",
+      "toNode": "PN_2_5_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e46",
+      "fromNode": "PN_2_ADM_FULL",
+      "fromSide": "right",
+      "toNode": "PN_2_5_QUAD_NARROWING",
+      "toSide": "left",
+      "label": "FEEDS"
+    },
+    {
+      "id": "e47",
+      "fromNode": "PN_3_GROUPED_P2_FULL",
+      "fromSide": "right",
+      "toNode": "PN_4_LOCAL_TAIL",
       "toSide": "left",
       "label": "FEEDS"
     },
     {
       "id": "e48",
-      "fromNode": "PN_1_EIH_FULL",
+      "fromNode": "PN_3_GROUPED_P2_FULL",
       "fromSide": "right",
-      "toNode": "PN_2_ADM_FULL",
+      "toNode": "PN_4_LOCAL_TAIL",
       "toSide": "left",
       "label": "FEEDS"
     },
     {
       "id": "e49",
-      "fromNode": "PN_2_5_QUAD_NARROWING",
-      "fromSide": "right",
-      "toNode": "PN_3_GROUPED_P2_FULL",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e50",
-      "fromNode": "PN_2_5_QUAD_NARROWING",
-      "fromSide": "right",
-      "toNode": "PN_3_GROUPED_P2_FULL",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e51",
-      "fromNode": "PN_2_5_QUAD_NARROWING",
-      "fromSide": "right",
-      "toNode": "PN_4_LOCAL_TAIL",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e52",
-      "fromNode": "PN_2_ADM_FULL",
-      "fromSide": "right",
-      "toNode": "PN_2_5_QUAD_NARROWING",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e53",
-      "fromNode": "PN_2_ADM_FULL",
-      "fromSide": "right",
-      "toNode": "PN_2_5_QUAD_NARROWING",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e54",
-      "fromNode": "PN_3_GROUPED_P2_FULL",
-      "fromSide": "right",
-      "toNode": "PN_4_LOCAL_TAIL",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e55",
-      "fromNode": "PN_3_GROUPED_P2_FULL",
-      "fromSide": "right",
-      "toNode": "PN_4_LOCAL_TAIL",
-      "toSide": "left",
-      "label": "FEEDS"
-    },
-    {
-      "id": "e56",
       "fromNode": "PN_4_LOCAL_TAIL",
       "fromSide": "right",
       "toNode": "PN_5_FULL_BUNDLE_SURFACE",
@@ -765,7 +709,7 @@
       "label": "CONTINUES_TO"
     },
     {
-      "id": "e57",
+      "id": "e50",
       "fromNode": "PN_4_LOCAL_TAIL",
       "fromSide": "right",
       "toNode": "PN_5_FULL_BUNDLE_SURFACE",

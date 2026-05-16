@@ -9,8 +9,8 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective...
 future_paper_needed: false
 source_links:
 - '[[FILE_MOVING_THROAT_COMPACT]]'
@@ -23,7 +23,9 @@ physical_ids:
 equation_ids:
 - EQ_MAXWELL_MIXED_TRANSFER
 claim_ids:
+- CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
+- CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
 open_gate_ids:
 - OPEN_MIXED_RECIRCULATION
 source_ids:
@@ -72,6 +74,14 @@ incoming_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: open
   note: Source artifact anchors this claim.
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: PRESERVES_OPEN_GATE
+  status: conditional_open_plumbing
+  note: Lambda_A sign remains an open plumbing-law datum.
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: PRESERVES_OPEN_GATE
+  status: exact_negative_within_3d_closure_analysis
+  note: Current/plumbing coefficients and mixed-sector transport remain external closure data.
 - source: EQ_MAXWELL_MIXED_TRANSFER
   relation: SUPPORTS_CLAIM
   status: open
@@ -93,18 +103,18 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_MIXED_RECIRCULATION_OPEN`  
-> **Status:** `open`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_MIXED_RECIRCULATION_OPEN`
+> **Status:** `open`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
 
-The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective current coefficient Lambda_A.
 
 ## Claim
 
-The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective current coefficient Lambda_A.
 
 ## What It Does Not Claim
 
@@ -112,7 +122,7 @@ This generated note preserves the graph status. It should not be read as closing
 
 ## Physical Meaning
 
-The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective current coefficient Lambda_A.
 
 ## Mathematical Role
 
@@ -135,7 +145,9 @@ The EM ontology needs a closed mixed recirculation law relating circulation, thr
 - [[EQ_MAXWELL_MIXED_TRANSFER]]
 
 ### Related claims
+- [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]]
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
+- [[CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID]]
 
 ### Open gates
 - [[OPEN_MIXED_RECIRCULATION]]
@@ -167,6 +179,8 @@ The EM ontology needs a closed mixed recirculation law relating circulation, thr
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_OPEN_CONDUIT]] | Physical ontology object grounded by this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[FILE_MOVING_THROAT_COMPACT]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[FILE_PDE_AUDIT]] | Source artifact anchors this claim. |
+| `PRESERVES_OPEN_GATE` | [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]] | Lambda_A sign remains an open plumbing-law datum. |
+| `PRESERVES_OPEN_GATE` | [[CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID]] | Current/plumbing coefficients and mixed-sector transport remain external closure data. |
 | `SUPPORTS_CLAIM` | [[EQ_MAXWELL_MIXED_TRANSFER]] | Equation anchor supports this named claim. |
 
 ## Source Anchors

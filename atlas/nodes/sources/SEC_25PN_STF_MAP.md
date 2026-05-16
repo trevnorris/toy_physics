@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: STF/source map.
 source_kind: paper
 future_paper_needed: false
@@ -33,7 +33,7 @@ tex_anchor:
   confidence: medium
 claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 status_firewall_ids:
 - FIREWALL_ANGULAR_NOT_RADIAL
 source_ids:
@@ -43,7 +43,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: STF/source map.
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: STF/source map.
@@ -77,9 +77,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_25PN_STF_MAP`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_25PN_STF_MAP`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -109,7 +109,7 @@ STF/source map.
 
 ### Related claims
 - [[CLAIM_25PN_QUAD_NARROWING]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -125,7 +125,7 @@ STF/source map.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_25PN_QUAD_NARROWING]] | STF/source map. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE7_O3_ISOTROPY]] | STF/source map. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE024_O3_ISOTROPY]] | STF/source map. |
 
 ## Incoming Edges
 

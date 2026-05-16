@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Hidden brane-bulk EM transport channels retained microscopically outside strict zero-mode brane reduction.
 future_paper_needed: false
 source_files:
@@ -35,9 +35,10 @@ claim_ids:
 - CLAIM_G2_COMMON_QUOTIENT
 - CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL
 - CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH
+- CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
 - CLAIM_MIXED_RECIRCULATION_OPEN
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_ZERO_MODE_MAXWELL_REDUCTION
 open_gate_ids:
 - OPEN_LEPTON_SPIN_DISCRETIZER
@@ -70,7 +71,7 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_gauge_invariant_with_reduced_uses
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_reduced_mixed_kernel
   note: Physical ontology object grounded by this claim.
@@ -95,6 +96,10 @@ incoming_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references PHYS_MIXED_EM_CORE.
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: DEPENDS_ON
+  status: conditional_open_plumbing
+  note: Plumbing condition lives in the mixed brane-bulk EM channels.
 - source: FILE_PLASMA
   relation: DOCUMENTS
   status: source_anchor
@@ -141,9 +146,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_MIXED_EM_CORE`  
-> **Status:** `exact_parent_observables_reduced_open`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_MIXED_EM_CORE`
+> **Status:** `exact_parent_observables_reduced_open`
+> **Layer:** `physical_ontology`
 > **Type:** `field_sector`
 
 ## Summary
@@ -203,9 +208,10 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_G2_COMMON_QUOTIENT]]
 - [[CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL]]
 - [[CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH]]
+- [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]]
 - [[CLAIM_MIXED_RECIRCULATION_OPEN]]
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]]
 
 ### Open gates
@@ -227,7 +233,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_MIXED_RECIRCULATION_OPEN]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_ZERO_MODE_MAXWELL_REDUCTION]] | Physical ontology object grounded by this claim. |
 | `REPRESENTED_BY` | [[MATH_MIXED_FIELDS_EW_CA]] | Mixed physical channels represented by gauge-invariant E_w,C_a and A_w/F_mu_w/J^w. |
 
@@ -238,6 +244,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_4D_PARENT]] | Paper backlink block references PHYS_MIXED_EM_CORE. |
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_LEPTON_WORK]] | Paper backlink block references PHYS_MIXED_EM_CORE. |
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PLASMA]] | Paper backlink block references PHYS_MIXED_EM_CORE. |
+| `DEPENDS_ON` | [[CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL]] | Plumbing condition lives in the mixed brane-bulk EM channels. |
 | `DOCUMENTS` | [[FILE_PLASMA]] | File anchor documents this node. |
 | `LINKS_TO` | [[PHYS_REG_CHARGE_EM]] | Physical register entry links to graph object. |
 | `MAY_DEPEND_ON` | [[OPEN_LEPTON_SPIN_DISCRETIZER]] | Lepton same-charge route likely depends on mixed-sector internal structure. |

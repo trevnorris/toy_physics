@@ -1,36 +1,37 @@
 ---
-id: MT_STAGE4_MAXWELL_MIXED
-title: Stage 4 Maxwell/mixed outgoing bridge
+id: MT_STAGE004_020_PROJECTED_MAXWELL
+title: Stages 004--020 projected Maxwell packet
 type: moving_throat_stage
 layer: derivation
-status: reduced_controlled
+status: exact_projection_derivation
 atlas_version: obsidian-v0.1
 source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: Adds localized Maxwell/mixed U/W block and passive outgoing port transfer.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: Imports the derivation-only projected Maxwell chain from notes/em_projected through step 18. This is the canonical EM derivation block; reduction is no longer the primary EM der...
 future_paper_needed: false
 source_files:
-- notes/moving_throat_notes_full.md
-- notes/pde_audit_full.md
-- moving_throat_output_full.md
-- pde_audit_full.md
+- research/pde_ledger/paper/stages/stage_004.tex
+- research/pde_ledger/paper/stages/stage_020.tex
+- notes/moving_throat_pde_program_compact.md
+- notes/em_projected/step_01_projected_maxwell_readme.md
+- notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md
 legacy_sources:
-- moving_throat_output_full.md
-- pde_audit_full.md:V2-09
+- notes/em_projected/step_01_projected_maxwell_readme.md
+- notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md
 math_ids:
 - MATH_MAXWELL_MIXED_KERNEL
 - MATH_MIXED_FIELDS_EW_CA
 claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 outgoing_edges:
-- target: MT_STAGE5_GROUPED_P2_BRIDGE
-  relation: FEEDS
-  status: reduced
-  note: One-lane outgoing transfer lifted to grouped P2 normalization language.
+- target: MT_STAGE021_REDUCED_ONE_PORT
+  relation: CLOSED_BY
+  status: retained_reduced_adapter
+  note: Projection-first EM derivation is closed for downstream response work by the retained one-port normal form.
 incoming_edges:
 - source: MATH_MIXED_FIELDS_EW_CA
   relation: ENABLES
@@ -38,13 +39,13 @@ incoming_edges:
   note: Mixed fields are the microscopic place for outgoing bridge.
 - source: MT_STAGE3_BDG_COUPLING
   relation: FEEDS
-  status: reduced
-  note: Conservative support self-energy enlarged by localized Maxwell/mixed block.
+  status: exact_projection_derivation
+  note: BdG support data feeds the projection-first EM packet before the retained one-port adapter.
 - source: CLAIM_MIXED_SECTOR_MICROSCOPIC
   relation: FEEDS_OR_STATUS_OF
   status: exact_gauge_invariant_with_reduced_uses
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_mixed_kernel
   note: Claim feeds this downstream object, output, or open gate.
@@ -56,42 +57,47 @@ tags:
 - atlas/derivations
 - atlas/node
 - layer/derivation
-- status/reduced_controlled
+- status/exact_projection_derivation
 - topic/maxwell
 - topic/moving_throat
+- topic/projection
 - type/moving_throat_stage
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Stage 4 Maxwell/mixed outgoing bridge
+# Stages 004--020 projected Maxwell packet
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_STAGE4_MAXWELL_MIXED`  
-> **Status:** `reduced_controlled`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `MT_STAGE004_020_PROJECTED_MAXWELL`
+> **Status:** `exact_projection_derivation`
+> **Layer:** `derivation`
 > **Type:** `moving_throat_stage`
 
 ## Summary
 
-Adds localized Maxwell/mixed U/W block and passive outgoing port transfer.
+Imports the derivation-only projected Maxwell chain from notes/em_projected through step 18. This is the canonical EM derivation block; reduction is no longer the primary EM derivation.
 
 ## Physical Meaning
 
-Adds localized Maxwell/mixed U/W block and passive outgoing port transfer.
+Imports the derivation-only projected Maxwell chain from notes/em_projected through step 18. This is the canonical EM derivation block; reduction is no longer the primary EM derivation.
 
 ## Mathematical Role
 
 - Layer: `derivation`
 - Type: `moving_throat_stage`
-- Status: `reduced_controlled`
+- Status: `exact_projection_derivation`
 
 ## Equation
 
 $$
-N_l(0)=[Ω_A²g_W+Rg_A]²/[Ω_A²Ω_W²-R²]²
+projection-first Maxwell sector
+$$
+
+$$
+derivation notes step 01 through step 18, with no step 06 source file
 $$
 
 ## Variable Dictionary
@@ -112,7 +118,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -127,16 +133,16 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `FEEDS` | [[MT_STAGE5_GROUPED_P2_BRIDGE]] | One-lane outgoing transfer lifted to grouped P2 normalization language. |
+| `CLOSED_BY` | [[MT_STAGE021_REDUCED_ONE_PORT]] | Projection-first EM derivation is closed for downstream response work by the retained one-port normal form. |
 
 ## Incoming Edges
 
 | Relation | Node | Note |
 |---|---|---|
 | `ENABLES` | [[MATH_MIXED_FIELDS_EW_CA]] | Mixed fields are the microscopic place for outgoing bridge. |
-| `FEEDS` | [[MT_STAGE3_BDG_COUPLING]] | Conservative support self-energy enlarged by localized Maxwell/mixed block. |
+| `FEEDS` | [[MT_STAGE3_BDG_COUPLING]] | BdG support data feeds the projection-first EM packet before the retained one-port adapter. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim feeds this downstream object, output, or open gate. |
 | `FORMALIZES` | [[MATH_MAXWELL_MIXED_KERNEL]] | Matches Stage-4 port-active mixed-sector bridge. |
 
 ## Source Anchors
@@ -145,10 +151,11 @@ The graph currently records the equation text but not a full variable dictionary
 - No source anchor note recorded.
 
 ### Source files
-- `notes/moving_throat_notes_full.md`
-- `notes/pde_audit_full.md`
-- `moving_throat_output_full.md`
-- `pde_audit_full.md`
+- `research/pde_ledger/paper/stages/stage_004.tex`
+- `research/pde_ledger/paper/stages/stage_020.tex`
+- `notes/moving_throat_pde_program_compact.md`
+- `notes/em_projected/step_01_projected_maxwell_readme.md`
+- `notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md`
 
 ## AI Maintenance Notes
 

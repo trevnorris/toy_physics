@@ -1,6 +1,6 @@
 ---
-id: CLAIM_STAGE7_O3_ISOTROPY
-title: O(3) isotropy and weak-axisymmetric splitting theorem
+id: CLAIM_STAGE024_O3_ISOTROPY
+title: Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem
 type: claim
 layer: claim_theorem
 status: exact_angular_reduced
@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The angular source map is identity on the canonical real STF basis; O(3)-invariant kernels force grouped-lane isotropy, while weak axisymmetric splitting has signature (1,1/2,-1...
 future_paper_needed: false
 source_files:
@@ -46,8 +46,8 @@ math_ids:
 equation_ids:
 - EQ_WEAK_AXISYM_SIGNATURE
 claim_ids:
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_WEAK_AXISYM_ORBIT_LOCK
 source_ids:
@@ -66,7 +66,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
-- target: MT_STAGE7_OVERLAP_ISOTROPY
+- target: MT_STAGE024_OVERLAP_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
@@ -74,7 +74,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: RADIAL_AXIAL_CONTINUATION_FOR
   status: active
   note: Claim-level dependency added in v0.4.
@@ -91,18 +91,18 @@ incoming_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: STF angular source-map theorem.
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANGULARLY_REFINED_BY
   status: active
   note: Claim-level dependency added in v0.4.
 - source: BACKLINK_25PN
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY.
+  note: Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY.
 - source: BACKLINK_PDE_AUDIT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY.
+  note: Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY.
 - source: STATUS_LADDER_EXACT_TO_OPEN
   relation: CLASSIFIES
   status: exact_angular_reduced
@@ -156,14 +156,14 @@ tags:
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# O(3) isotropy and weak-axisymmetric splitting theorem
+# Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE7_O3_ISOTROPY`  
-> **Status:** `exact_angular_reduced`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_STAGE024_O3_ISOTROPY`
+> **Status:** `exact_angular_reduced`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
@@ -183,7 +183,7 @@ The angular source map is identity on the canonical real STF basis; O(3)-invaria
 - Layer: `claim_theorem`
 - Type: `claim`
 - Status: `exact_angular_reduced`
-- Outputs: `MT_STAGE7_OVERLAP_ISOTROPY`, `MATH_STF_SOURCE_MAP`, `MATH_WEAK_AXISYM_SPLITTING`, `OPEN_WEAK_AXISYM_ORBIT_LOCK`
+- Outputs: `MT_STAGE024_OVERLAP_ISOTROPY`, `MATH_STF_SOURCE_MAP`, `MATH_WEAK_AXISYM_SPLITTING`, `OPEN_WEAK_AXISYM_ORBIT_LOCK`
 
 ## Atlas Links
 
@@ -200,8 +200,8 @@ The angular source map is identity on the canonical real STF basis; O(3)-invaria
 - [[EQ_WEAK_AXISYM_SIGNATURE]]
 
 ### Related claims
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_WEAK_AXISYM_ORBIT_LOCK]]
@@ -223,9 +223,9 @@ The angular source map is identity on the canonical real STF basis; O(3)-invaria
 |---|---|---|
 | `FEEDS_OR_STATUS_OF` | [[MATH_STF_SOURCE_MAP]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_WEAK_AXISYM_SPLITTING]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[MT_STAGE7_OVERLAP_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE024_OVERLAP_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[OPEN_WEAK_AXISYM_ORBIT_LOCK]] | Claim feeds this downstream object, output, or open gate. |
-| `RADIAL_AXIAL_CONTINUATION_FOR` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Claim-level dependency added in v0.4. |
+| `RADIAL_AXIAL_CONTINUATION_FOR` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Claim-level dependency added in v0.4. |
 
 ## Incoming Edges
 
@@ -234,9 +234,9 @@ The angular source map is identity on the canonical real STF basis; O(3)-invaria
 | `ANCHORS_CLAIM_SECTION` | [[SEC_25PN_STF_MAP]] | STF/source map. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_P2_PROJECTORS]] | Grouped P2 projectors. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_STF_SOURCE]] | STF angular source-map theorem. |
-| `ANGULARLY_REFINED_BY` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_25PN]] | Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY. |
+| `ANGULARLY_REFINED_BY` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_25PN]] | Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY. |
 | `CLASSIFIES` | [[STATUS_LADDER_EXACT_TO_OPEN]] | Claim class: exact_within_closure |
 | `CONTAINS_CLAIM` | [[VIEW_CLAIM_LAYER]] | v0.4 claim/theorem layer item. |
 | `EXPECTS_TARGET` | [[QUERY_P2_BECOMES_PHYSICAL]] | Query validation expected target node. |

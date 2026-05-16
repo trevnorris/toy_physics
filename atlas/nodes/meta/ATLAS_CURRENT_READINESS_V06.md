@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 'Curated graph, status gates, claim layer, source-section anchors, and paper backlink register are present. Remaining work: physical insertion into drafts and extended query vali...'
 future_paper_needed: false
 open_gate_ids:
@@ -63,9 +63,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `ATLAS_CURRENT_READINESS_V06`  
-> **Status:** `usable_working_base_plus_backlink_register`  
-> **Layer:** `atlas_meta`  
+> **Atlas ID:** `ATLAS_CURRENT_READINESS_V06`
+> **Status:** `usable_working_base_plus_backlink_register`
+> **Layer:** `atlas_meta`
 > **Type:** `completion_status`
 
 ## Summary

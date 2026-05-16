@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Projection with W(w) gives exact projected continuity with leakage; the longitudinal identity becomes the Poisson hook only in a controlled quasi-static/longitudinal regime.
 future_paper_needed: false
 source_files:
@@ -188,9 +188,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_PROJECTION_OPEN_BRANE_SYSTEM`  
-> **Status:** `exact_projection_plus_controlled_hook`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_PROJECTION_OPEN_BRANE_SYSTEM`
+> **Status:** `exact_projection_plus_controlled_hook`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

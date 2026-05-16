@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Current moving-throat finish line separates conservative/outgoing grouped target data (Packet A) from orbit-lock/weak-axisymmetric data (Packet B), both requiring actual branch ...
 future_paper_needed: false
 source_links:
@@ -28,7 +28,7 @@ claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
 - CLAIM_G2_COMMON_QUOTIENT
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 open_gate_ids:
 - OPEN_WEAK_AXISYM_ORBIT_LOCK
 - TARGET_PACKET_A
@@ -81,7 +81,7 @@ incoming_edges:
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: DEFINES_PACKET_A
   status: active
   note: Claim-level dependency added in v0.4.
@@ -133,9 +133,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_PACKET_A_PACKET_B_SPLIT`  
-> **Status:** `open_branch_packets`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_PACKET_A_PACKET_B_SPLIT`
+> **Status:** `open_branch_packets`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
@@ -178,7 +178,7 @@ Current moving-throat finish line separates conservative/outgoing grouped target
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
 - [[CLAIM_G2_COMMON_QUOTIENT]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - [[OPEN_WEAK_AXISYM_ORBIT_LOCK]]
@@ -214,7 +214,7 @@ Current moving-throat finish line separates conservative/outgoing grouped target
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_PACKET_A_PACKET_B_SPLIT. |
 | `CLASSIFIES` | [[STATUS_LADDER_EXACT_TO_OPEN]] | Claim class: open_gate |
 | `CONTAINS_CLAIM` | [[VIEW_CLAIM_LAYER]] | v0.4 claim/theorem layer item. |
-| `DEFINES_PACKET_A` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
+| `DEFINES_PACKET_A` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim-level dependency added in v0.4. |
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_FINITE_MOUTH_SHAPE]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_RESPONSE_READOUTS]] | Physical ontology object grounded by this claim. |
 | `ORGANIZES` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Claim-level dependency added in v0.4. |

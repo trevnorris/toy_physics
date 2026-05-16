@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Outgoing l=2 normalized response has even coefficients plus the leading i omega^5 fingerprint.
 future_paper_needed: false
 source_files:
@@ -25,7 +25,7 @@ physical_ids:
 equation_ids:
 - EQ_COMPACT_L2_FINGERPRINT
 claim_ids:
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 open_gate_ids:
 - OPEN_QUAD_NORMALIZATION
 outgoing_edges:
@@ -42,7 +42,7 @@ incoming_edges:
   relation: DERIVES
   status: exact_reduced
   note: Derives compact outgoing l=2 fingerprint.
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_mixed_kernel
   note: Claim feeds this downstream object, output, or open gate.
@@ -66,9 +66,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_COMPACT_L2_OUTGOING_FINGERPRINT`  
-> **Status:** `exact_reduced`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_COMPACT_L2_OUTGOING_FINGERPRINT`
+> **Status:** `exact_reduced`
+> **Layer:** `math_object`
 > **Type:** `outgoing_fingerprint`
 
 ## Summary
@@ -107,7 +107,7 @@ The graph currently records the equation text but not a full variable dictionary
 - [[EQ_COMPACT_L2_FINGERPRINT]]
 
 ### Related claims
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - [[OPEN_QUAD_NORMALIZATION]]
@@ -130,7 +130,7 @@ The graph currently records the equation text but not a full variable dictionary
 |---|---|---|
 | `ANCHORS` | [[EQ_COMPACT_L2_FINGERPRINT]] | Equation anchor belongs to or formalizes this graph node. |
 | `DERIVES` | [[MT_V2_14_L2_OUTGOING]] | Derives compact outgoing l=2 fingerprint. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim feeds this downstream object, output, or open gate. |
 | `LINKS_TO` | [[PHYS_REG_OUTGOING_PORT]] | Physical register entry links to graph object. |
 
 ## Source Anchors

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Combined surface for one-pole conservative response, universal quadrupole normalization, and constant-prefactor branch.
 future_paper_needed: false
 source_files:
@@ -23,7 +23,7 @@ legacy_sources:
 equation_ids:
 - EQ_FULL_BUNDLE_TARGET_SURFACE
 claim_ids:
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 outgoing_edges:
@@ -40,7 +40,7 @@ incoming_edges:
   relation: DEFINES
   status: exact_within_bundle
   note: Defines normalized response, P0, P2, P4, target surface.
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle
   note: Claim feeds this downstream object, output, or open gate.
@@ -65,9 +65,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_FULL_BUNDLE_TARGET_SURFACE`  
-> **Status:** `exact_within_reduced_bundle`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_FULL_BUNDLE_TARGET_SURFACE`
+> **Status:** `exact_within_reduced_bundle`
+> **Layer:** `math_object`
 > **Type:** `target_surface`
 
 ## Summary
@@ -110,7 +110,7 @@ The graph currently records the equation text but not a full variable dictionary
 - [[EQ_FULL_BUNDLE_TARGET_SURFACE]]
 
 ### Related claims
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -133,7 +133,7 @@ The graph currently records the equation text but not a full variable dictionary
 |---|---|---|
 | `ANCHORS` | [[EQ_FULL_BUNDLE_TARGET_SURFACE]] | Equation anchor belongs to or formalizes this graph node. |
 | `DEFINES` | [[MT_V2_13_GROUPED_NORMALIZATION]] | Defines normalized response, P0, P2, P4, target surface. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Claim feeds this downstream object, output, or open gate. |
 | `FREEZES` | [[MT_V2_19_TARGET_SURFACE]] | Freezes the target packet for actual-branch export. |
 
 ## Source Anchors

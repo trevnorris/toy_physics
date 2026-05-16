@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Promotes a,L closure to distributed shape field and l=0/l=2 modal skeleton.
 future_paper_needed: false
 source_files:
@@ -77,9 +77,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MT_STAGE1_GEOMETRY_LIFT`  
-> **Status:** `effective_closure_scaffold`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `MT_STAGE1_GEOMETRY_LIFT`
+> **Status:** `effective_closure_scaffold`
+> **Layer:** `derivation`
 > **Type:** `moving_throat_stage`
 
 ## Summary

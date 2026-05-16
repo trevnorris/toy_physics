@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Derive mhat and P0 as branch data rather than fitted scales.
 future_paper_needed: false
 source_files:
@@ -23,7 +23,7 @@ legacy_sources:
 math_ids:
 - MATH_STF_SOURCE_MAP
 claim_ids:
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 status_firewall_ids:
@@ -33,7 +33,7 @@ incoming_edges:
   relation: DECOMPOSES_INTO
   status: open
   note: Exporter must derive source/port normalization law.
-- source: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- source: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_selected_reduced_branch
   note: Claim feeds this downstream object, output, or open gate.
@@ -66,9 +66,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_SOURCE_PORT_NORMALIZATION`  
-> **Status:** `open`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_SOURCE_PORT_NORMALIZATION`
+> **Status:** `open`
+> **Layer:** `open_gate`
 > **Type:** `normalization_gate`
 
 ## Summary
@@ -105,7 +105,7 @@ Derive mhat and P0 as branch data rather than fitted scales.
 - none
 
 ### Related claims
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -125,7 +125,7 @@ Derive mhat and P0 as branch data rather than fitted scales.
 | Relation | Node | Note |
 |---|---|---|
 | `DECOMPOSES_INTO` | [[OPEN_ACTUAL_BRANCH_EXPORTER]] | Exporter must derive source/port normalization law. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Claim feeds this downstream object, output, or open gate. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_25PN]] | Paper backlink block flags open gate OPEN_SOURCE_PORT_NORMALIZATION. |
 | `NARROWS` | [[MATH_STF_SOURCE_MAP]] | Leaves radial/axial source/port normalization only. |
 | `PROTECTS_STATUS_OF` | [[FIREWALL_ANGULAR_NOT_RADIAL]] | Firewall preserves this correct status boundary. |

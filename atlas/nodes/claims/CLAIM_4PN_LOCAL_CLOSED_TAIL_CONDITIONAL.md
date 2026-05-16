@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The local instantaneous 4PN sector is assembled in the declared hierarchy; the full 4PN theorem depends on the same passive/outgoing STF quadrupole normalization isolated at 2.5PN.
 future_paper_needed: false
 source_files:
@@ -133,9 +133,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL`  
-> **Status:** `local_closed_tail_conditional`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL`
+> **Status:** `local_closed_tail_conditional`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary

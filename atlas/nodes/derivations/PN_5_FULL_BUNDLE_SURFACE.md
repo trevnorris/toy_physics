@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Later reduced stack sharpens isotropic full-bundle target and weak-axisymmetric prefactor slope/orbit-lock conditions.
 future_paper_needed: false
 source_files:
@@ -56,7 +56,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle_open_branch
   note: Claim feeds this downstream object, output, or open gate.
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: SUPPORTS
   status: reduced
   note: Full bundle target surface matches later 5PN/orbit-lock compression.
@@ -78,9 +78,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PN_5_FULL_BUNDLE_SURFACE`  
-> **Status:** `reduced_target_surface_open_realization`  
-> **Layer:** `derivation`  
+> **Atlas ID:** `PN_5_FULL_BUNDLE_SURFACE`
+> **Status:** `reduced_target_surface_open_realization`
+> **Layer:** `derivation`
 > **Type:** `PN_bridge`
 
 ## Summary
@@ -153,7 +153,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `DOCUMENTS` | [[FILE_5PN_FULL]] | File anchor documents this node. |
 | `FEEDS` | [[PN_4_LOCAL_TAIL]] | 4PN tail interface motivates 5PN/full-bundle continuation. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Claim feeds this downstream object, output, or open gate. |
-| `SUPPORTS` | [[MT_STAGE6_FULL_GROUPED_BUNDLE]] | Full bundle target surface matches later 5PN/orbit-lock compression. |
+| `SUPPORTS` | [[MT_STAGE023_FULL_GROUPED_BUNDLE]] | Full bundle target surface matches later 5PN/orbit-lock compression. |
 
 ## Source Anchors
 

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The first serious finite-mouth/throat quadrupole support-response bundle.
 future_paper_needed: false
 source_files:
@@ -34,11 +34,11 @@ claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
 - CLAIM_2PN_ADM_WITHIN_HIERARCHY
 - CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
 - CLAIM_STAGE1_GEOMETRY_LIFT
 - CLAIM_STAGE2_AL_RECOVERY
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
 outgoing_edges:
 - target: CLAIM_25PN_QUAD_NARROWING
   relation: GROUNDS_PHYSICAL_MEANING
@@ -52,6 +52,14 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_assembly_within_closure
   note: Physical ontology object grounded by this claim.
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: GROUNDS_PHYSICAL_MEANING
+  status: exact_within_reduced_bundle
+  note: Physical ontology object grounded by this claim.
+- target: CLAIM_STAGE024_O3_ISOTROPY
+  relation: GROUNDS_PHYSICAL_MEANING
+  status: exact_angular_reduced
+  note: Physical ontology object grounded by this claim.
 - target: CLAIM_STAGE1_GEOMETRY_LIFT
   relation: GROUNDS_PHYSICAL_MEANING
   status: effective_geometry_lift
@@ -63,14 +71,6 @@ outgoing_edges:
 - target: CLAIM_STAGE3_BDG_SCHUR
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_reduced_stable_modes
-  note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: GROUNDS_PHYSICAL_MEANING
-  status: exact_within_reduced_bundle
-  note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE7_O3_ISOTROPY
-  relation: GROUNDS_PHYSICAL_MEANING
-  status: exact_angular_reduced
   note: Physical ontology object grounded by this claim.
 incoming_edges:
 - source: EQ_WALL_P2_STIFFNESS
@@ -93,7 +93,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_assembly_within_closure
   note: Claim feeds this downstream object, output, or open gate.
-- source: MT_STAGE7_OVERLAP_ISOTROPY
+- source: MT_STAGE024_OVERLAP_ISOTROPY
   relation: GIVES_PHYSICAL_DIAGNOSTIC
   status: reduced
   note: O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response.
@@ -122,9 +122,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_GROUPED_P2_SHAPE_RESPONSE`  
-> **Status:** `reduced_controlled`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_GROUPED_P2_SHAPE_RESPONSE`
+> **Status:** `reduced_controlled`
+> **Layer:** `physical_ontology`
 > **Type:** `response_sector`
 
 ## Summary
@@ -171,11 +171,11 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_25PN_QUAD_NARROWING]]
 - [[CLAIM_2PN_ADM_WITHIN_HIERARCHY]]
 - [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
 - [[CLAIM_STAGE2_AL_RECOVERY]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -193,11 +193,11 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_25PN_QUAD_NARROWING]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_2PN_ADM_WITHIN_HIERARCHY]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE2_AL_RECOVERY]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE3_BDG_SCHUR]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Physical ontology object grounded by this claim. |
 
 ## Incoming Edges
 
@@ -208,7 +208,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_3PN_FULL]] | Paper backlink block references PHYS_GROUPED_P2_SHAPE_RESPONSE. |
 | `FEEDS` | [[PHYS_FINITE_MOUTH_SHAPE]] | Finite-mouth Hessian/tidal loading drives P0/P2 response. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_2PN_ADM_WITHIN_HIERARCHY]] | Claim feeds this downstream object, output, or open gate. |
-| `GIVES_PHYSICAL_DIAGNOSTIC` | [[MT_STAGE7_OVERLAP_ISOTROPY]] | O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response. |
+| `GIVES_PHYSICAL_DIAGNOSTIC` | [[MT_STAGE024_OVERLAP_ISOTROPY]] | O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response. |
 | `LINKS_TO` | [[PHYS_REG_P2_QUAD]] | Physical register entry links to graph object. |
 | `SUPPORTS` | [[MATH_WALL_MODAL_PDE]] | l=2 modes are literal wall/support modes. |
 

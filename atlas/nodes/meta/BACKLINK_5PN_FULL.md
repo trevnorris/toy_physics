@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 prefactor slope, support/source theorem, and actual PDE-selected branch conditions.
 future_paper_needed: false
 source_files:
@@ -35,8 +35,8 @@ equation_ids:
 claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
 - CLAIM_G2_COMMON_QUOTIENT
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 - OPEN_EXECUTABLE_BRANCH_SOLVER
@@ -62,14 +62,14 @@ outgoing_edges:
   relation: BACKLINKS_ATLAS_NODE
   status: v06
   note: Paper backlink block references CLAIM_G2_COMMON_QUOTIENT.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
 - target: EQ_FULL_BUNDLE_TARGET_SURFACE
   relation: BACKLINKS_ATLAS_NODE
   status: v06
@@ -165,9 +165,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `BACKLINK_5PN_FULL`  
-> **Status:** `v06_backlink_ready_not_inserted`  
-> **Layer:** `paper_backlink`  
+> **Atlas ID:** `BACKLINK_5PN_FULL`
+> **Status:** `v06_backlink_ready_not_inserted`
+> **Layer:** `paper_backlink`
 > **Type:** `paper_backlink_block`
 
 ## Summary
@@ -200,8 +200,8 @@ Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 pr
 ### Related claims
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
 - [[CLAIM_G2_COMMON_QUOTIENT]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -230,8 +230,8 @@ Links full-bundle target surfaces, monomial quotient/orbit-lock packet, Xi/P0 pr
 |---|---|---|
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Paper backlink block references CLAIM_5PN_FULL_BUNDLE_SURFACE. |
 | `BACKLINKS_ATLAS_NODE` | [[CLAIM_G2_COMMON_QUOTIENT]] | Paper backlink block references CLAIM_G2_COMMON_QUOTIENT. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH. |
 | `BACKLINKS_ATLAS_NODE` | [[EQ_FULL_BUNDLE_TARGET_SURFACE]] | Paper backlink block references EQ_FULL_BUNDLE_TARGET_SURFACE. |
 | `BACKLINKS_ATLAS_NODE` | [[EQ_XI1_PREF_SLOPE]] | Paper backlink block references EQ_XI1_PREF_SLOPE. |
 | `BACKLINKS_ATLAS_NODE` | [[MATH_MONOMIAL_QUOTIENT]] | Paper backlink block references MATH_MONOMIAL_QUOTIENT. |

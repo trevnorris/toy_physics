@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Exact isotropic full-bundle target surface.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -19,7 +19,7 @@ source_links:
 - '[[FILE_5PN_FULL]]'
 claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
 source_ids:
 - FILE_5PN_FULL
 outgoing_edges:
@@ -27,7 +27,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Exact isotropic full-bundle target surface.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Exact isotropic full-bundle target surface.
@@ -56,9 +56,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_5PN_STAGE18_SURFACE`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_5PN_STAGE18_SURFACE`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -91,7 +91,7 @@ Exact isotropic full-bundle target surface.
 
 ### Related claims
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
 
 ### Open gates
 - none
@@ -107,7 +107,7 @@ Exact isotropic full-bundle target surface.
 | Relation | Node | Note |
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Exact isotropic full-bundle target surface. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Exact isotropic full-bundle target surface. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Exact isotropic full-bundle target surface. |
 
 ## Incoming Edges
 

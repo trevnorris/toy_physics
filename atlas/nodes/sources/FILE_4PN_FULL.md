@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 4PN local instantaneous assembly and tail interface back to the same quadrupole normalization.
 source_kind: paper
 future_paper_needed: false
@@ -43,7 +43,7 @@ equation_ids:
 - EQ_P0_TARGET
 claim_ids:
 - CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 status_firewall_ids:
 - FIREWALL_4PN_LOCAL_NOT_FULL_TAIL
 source_ids:
@@ -83,7 +83,7 @@ outgoing_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: local_closed_tail_conditional
   note: Source artifact anchors this claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_within_grouped_bridge
   note: Source artifact anchors this claim.
@@ -109,9 +109,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `FILE_4PN_FULL`  
-> **Status:** `paper_anchor`  
-> **Layer:** `file_anchor`  
+> **Atlas ID:** `FILE_4PN_FULL`
+> **Status:** `paper_anchor`
+> **Layer:** `file_anchor`
 > **Type:** `source_file`
 
 ## Summary
@@ -142,7 +142,7 @@ tags:
 
 ### Related claims
 - [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - none
@@ -167,7 +167,7 @@ tags:
 | `HAS_SECTION_ANCHOR` | [[SEC_4PN_NO_NEW_GAP]] | 4d_4pn_summary.md:769 — 6.4 No new 4PN-specific normalization gap |
 | `HAS_SECTION_ANCHOR` | [[SEC_4PN_TAIL_BRIDGE]] | 4d_4pn_summary.md:741 — 6) Tail / hereditary 4PN bridge |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | Source artifact anchors this claim. |
 
 ## Incoming Edges
 

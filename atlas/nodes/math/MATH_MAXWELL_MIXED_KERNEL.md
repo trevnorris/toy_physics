@@ -1,24 +1,25 @@
 ---
 id: MATH_MAXWELL_MIXED_KERNEL
-title: Maxwell/mixed kernel
+title: Projected EM packet with reduced one-port adapter
 type: reduced_kernel
 layer: math_object
-status: exact_within_reduced_bundle
+status: exact_projection_with_reduced_adapter
 atlas_version: obsidian-v0.1
 source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies conservative self-energy and outgoing transfer data for the grouped ...
 future_paper_needed: false
 source_files:
-- notes/pde_audit_full.md
+- research/pde_ledger/paper/stages/stage_004.tex
+- research/pde_ledger/paper/stages/stage_021.tex
 - notes/moving_throat_pde_program_compact.md
-- pde_audit_full.md
+- moving_throat_pde_stage021_reduced_one_port_normal_form.md
 - moving_throat_pde_program_compact.md
 legacy_sources:
-- pde_audit_full.md
+- moving_throat_pde_stage021_reduced_one_port_normal_form.md
 - moving_throat_pde_program_compact.md
 math_ids:
 - MATH_MIXED_FIELDS_EW_CA
@@ -26,9 +27,9 @@ equation_ids:
 - EQ_MAXWELL_MIXED_TRANSFER
 claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 outgoing_edges:
-- target: MT_STAGE4_MAXWELL_MIXED
+- target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FORMALIZES
   status: reduced
   note: Matches Stage-4 port-active mixed-sector bridge.
@@ -45,7 +46,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_gauge_invariant_with_reduced_uses
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_mixed_kernel
   note: Claim feeds this downstream object, output, or open gate.
@@ -65,39 +66,48 @@ tags:
 - atlas/math
 - atlas/node
 - layer/math_object
-- status/exact_within_reduced_bundle
+- status/exact_projection_with_reduced_adapter
 - topic/maxwell
 - topic/moving_throat
+- topic/projection
 - type/reduced_kernel
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Maxwell/mixed kernel
+# Projected EM packet with reduced one-port adapter
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_MAXWELL_MIXED_KERNEL`  
-> **Status:** `exact_within_reduced_bundle`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_MAXWELL_MIXED_KERNEL`
+> **Status:** `exact_projection_with_reduced_adapter`
+> **Layer:** `math_object`
 > **Type:** `reduced_kernel`
 
 ## Summary
 
-Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies conservative self-energy and outgoing transfer data for the grouped bridge.
 
 ## Physical Meaning
 
-Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies conservative self-energy and outgoing transfer data for the grouped bridge.
 
 ## Mathematical Role
 
 - Layer: `math_object`
 - Type: `reduced_kernel`
-- Status: `exact_within_reduced_bundle`
+- Status: `exact_projection_with_reduced_adapter`
 
 ## Equation
+
+$$
+Stages 004--020 projected Maxwell packet
+$$
+
+$$
+Stage 021 reduced one-port Z_n,N_n adapter
+$$
 
 $$
 Z_n
@@ -128,7 +138,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 ### Related claims
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -143,7 +153,7 @@ The graph currently records the equation text but not a full variable dictionary
 
 | Relation | Node | Note |
 |---|---|---|
-| `FORMALIZES` | [[MT_STAGE4_MAXWELL_MIXED]] | Matches Stage-4 port-active mixed-sector bridge. |
+| `FORMALIZES` | [[MT_STAGE004_020_PROJECTED_MAXWELL]] | Matches Stage-4 port-active mixed-sector bridge. |
 
 ## Incoming Edges
 
@@ -152,7 +162,7 @@ The graph currently records the equation text but not a full variable dictionary
 | `ANCHORS` | [[EQ_MAXWELL_MIXED_TRANSFER]] | Equation anchor belongs to or formalizes this graph node. |
 | `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references MATH_MAXWELL_MIXED_KERNEL. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim feeds this downstream object, output, or open gate. |
 | `GATES` | [[MT_V2_10_HAMILTONIAN_STABILITY]] | Adds internal-block, wall-softening, ghost/Krein, and dark-port failure modes. |
 | `REDUCES_TO` | [[MATH_MIXED_FIELDS_EW_CA]] | Mixed fields feed reduced port-active Maxwell/mixed kernel. |
 | `VALIDATES` | [[MT_V2_09_MAXWELL_MIXED_KERNEL]] | Audits the Maxwell/mixed kernel and outgoing transfer factor. |
@@ -163,9 +173,10 @@ The graph currently records the equation text but not a full variable dictionary
 - No source anchor note recorded.
 
 ### Source files
-- `notes/pde_audit_full.md`
+- `research/pde_ledger/paper/stages/stage_004.tex`
+- `research/pde_ledger/paper/stages/stage_021.tex`
 - `notes/moving_throat_pde_program_compact.md`
-- `pde_audit_full.md`
+- `moving_throat_pde_stage021_reduced_one_port_normal_form.md`
 - `moving_throat_pde_program_compact.md`
 
 ## AI Maintenance Notes

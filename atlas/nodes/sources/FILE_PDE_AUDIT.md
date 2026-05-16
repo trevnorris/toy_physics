@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Alias file anchor added for v0.7 firewall references.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -61,15 +61,15 @@ claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
 - CLAIM_PACKET_A_PACKET_B_SPLIT
 - CLAIM_PARENT_WALL_STATUS_SPLIT
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE1_GEOMETRY_LIFT
 - CLAIM_STAGE2_AL_RECOVERY
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 status_firewall_ids:
 - FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED
 - FIREWALL_PARENT_WALL_NOT_STRICT
@@ -256,9 +256,29 @@ outgoing_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: strict_parent_fail_effective_wall_pass
   note: Source artifact anchors this claim.
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  relation: OWNS_OR_ANCHORS_CLAIM
+  status: exact_within_reduced_mixed_kernel
+  note: Source artifact anchors this claim.
 - target: CLAIM_RESPONSE_READOUT_DISCIPLINE
   relation: OWNS_OR_ANCHORS_CLAIM
   status: paper_facing_ontology_discipline
+  note: Source artifact anchors this claim.
+- target: CLAIM_STAGE022_P0_TARGET
+  relation: OWNS_OR_ANCHORS_CLAIM
+  status: exact_within_grouped_bridge
+  note: Source artifact anchors this claim.
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  relation: OWNS_OR_ANCHORS_CLAIM
+  status: exact_within_reduced_bundle
+  note: Source artifact anchors this claim.
+- target: CLAIM_STAGE024_O3_ISOTROPY
+  relation: OWNS_OR_ANCHORS_CLAIM
+  status: exact_angular_reduced
+  note: Source artifact anchors this claim.
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
+  relation: OWNS_OR_ANCHORS_CLAIM
+  status: exact_within_selected_reduced_branch
   note: Source artifact anchors this claim.
 - target: CLAIM_STAGE1_GEOMETRY_LIFT
   relation: OWNS_OR_ANCHORS_CLAIM
@@ -271,26 +291,6 @@ outgoing_edges:
 - target: CLAIM_STAGE3_BDG_SCHUR
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_within_reduced_stable_modes
-  note: Source artifact anchors this claim.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  relation: OWNS_OR_ANCHORS_CLAIM
-  status: exact_within_reduced_mixed_kernel
-  note: Source artifact anchors this claim.
-- target: CLAIM_STAGE5_P0_TARGET
-  relation: OWNS_OR_ANCHORS_CLAIM
-  status: exact_within_grouped_bridge
-  note: Source artifact anchors this claim.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  relation: OWNS_OR_ANCHORS_CLAIM
-  status: exact_within_reduced_bundle
-  note: Source artifact anchors this claim.
-- target: CLAIM_STAGE7_O3_ISOTROPY
-  relation: OWNS_OR_ANCHORS_CLAIM
-  status: exact_angular_reduced
-  note: Source artifact anchors this claim.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  relation: OWNS_OR_ANCHORS_CLAIM
-  status: exact_within_selected_reduced_branch
   note: Source artifact anchors this claim.
 incoming_edges:
 - source: FIREWALL_MAXWELL_GAUGE_PATCH_REQUIRED
@@ -325,9 +325,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `FILE_PDE_AUDIT`  
-> **Status:** `audit_anchor`  
-> **Layer:** `file_anchor`  
+> **Atlas ID:** `FILE_PDE_AUDIT`
+> **Status:** `audit_anchor`
+> **Layer:** `file_anchor`
 > **Type:** `source_file`
 
 ## Summary
@@ -381,15 +381,15 @@ Alias file anchor added for v0.7 firewall references.
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
 - [[CLAIM_PARENT_WALL_STATUS_SPLIT]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE1_GEOMETRY_LIFT]]
 - [[CLAIM_STAGE2_AL_RECOVERY]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -462,15 +462,15 @@ Alias file anchor added for v0.7 firewall references.
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_PARENT_WALL_STATUS_SPLIT]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE1_GEOMETRY_LIFT]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE2_AL_RECOVERY]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE3_BDG_SCHUR]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Source artifact anchors this claim. |
 
 ## Incoming Edges
 

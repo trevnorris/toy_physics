@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Status/firewall rule register that v0.8 Codex sweep must preserve.
 future_paper_needed: false
 incoming_edges:
@@ -31,9 +31,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `STATUS_FIREWALL_REGISTER_V07`  
-> **Status:** `canonical_register`  
-> **Layer:** `atlas_meta`  
+> **Atlas ID:** `STATUS_FIREWALL_REGISTER_V07`
+> **Status:** `canonical_register`
+> **Layer:** `atlas_meta`
 > **Type:** `register_artifact`
 
 ## Summary

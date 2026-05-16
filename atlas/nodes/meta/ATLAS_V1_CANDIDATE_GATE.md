@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The atlas is v1-useful if the backlink register is accepted as the paper-side backlink layer; direct insertion into drafts remains optional/manual.
 future_paper_needed: false
 incoming_edges:
@@ -32,9 +32,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `ATLAS_V1_CANDIDATE_GATE`  
-> **Status:** `candidate_if_backlink_register_is_canonical`  
-> **Layer:** `atlas_meta`  
+> **Atlas ID:** `ATLAS_V1_CANDIDATE_GATE`
+> **Status:** `candidate_if_backlink_register_is_canonical`
+> **Layer:** `atlas_meta`
 > **Type:** `release_gate`
 
 ## Summary

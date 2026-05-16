@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: The l-mode equation supplied by the quadratic wall action, with l=0 scalar and l=2 grouped P2 specialization.
 future_paper_needed: false
 source_files:
@@ -73,9 +73,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `MATH_WALL_MODAL_PDE`  
-> **Status:** `exact_if_S_eta_included`  
-> **Layer:** `math_object`  
+> **Atlas ID:** `MATH_WALL_MODAL_PDE`
+> **Status:** `exact_if_S_eta_included`
+> **Layer:** `math_object`
 > **Type:** `modal_equation`
 
 ## Summary

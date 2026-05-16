@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Packet A/B actual branch protocol.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -20,7 +20,7 @@ source_links:
 claim_ids:
 - CLAIM_BRANCH_EXPORTER_REQUIRED
 - CLAIM_PACKET_A_PACKET_B_SPLIT
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 source_ids:
 - FILE_PDE_AUDIT
 outgoing_edges:
@@ -32,7 +32,7 @@ outgoing_edges:
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Packet A/B actual branch protocol.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   status: v05
   note: Packet A/B actual branch protocol.
@@ -61,9 +61,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `SEC_PDE_ACTUAL_BRANCH_PACKETS`  
-> **Status:** `v05_first_section_anchor`  
-> **Layer:** `source_section_anchor`  
+> **Atlas ID:** `SEC_PDE_ACTUAL_BRANCH_PACKETS`
+> **Status:** `v05_first_section_anchor`
+> **Layer:** `source_section_anchor`
 > **Type:** `section_anchor`
 
 ## Summary
@@ -97,7 +97,7 @@ Packet A/B actual branch protocol.
 ### Related claims
 - [[CLAIM_BRANCH_EXPORTER_REQUIRED]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -114,7 +114,7 @@ Packet A/B actual branch protocol.
 |---|---|---|
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_BRANCH_EXPORTER_REQUIRED]] | Packet A/B actual branch protocol. |
 | `ANCHORS_CLAIM_SECTION` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Packet A/B actual branch protocol. |
-| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Packet A/B actual branch protocol. |
+| `ANCHORS_CLAIM_SECTION` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Packet A/B actual branch protocol. |
 
 ## Incoming Edges
 

@@ -286,8 +286,8 @@ nodes:
   meaning: Backlinks the conditional 2.5PN theorem, STF source-map, scalar/dipole demotion, compact l=2 outgoing fingerprint, and P0 normalization gate.
   anchors:
   - CLAIM_25PN_QUAD_NARROWING
-  - CLAIM_STAGE5_P0_TARGET
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_STAGE022_P0_TARGET
+  - CLAIM_STAGE024_O3_ISOTROPY
   - EQ_COMPACT_L2_FINGERPRINT
   - EQ_P0_TARGET
   - MATH_STF_SOURCE_MAP
@@ -379,7 +379,7 @@ nodes:
   anchors:
   - CLAIM_3PN_GROUPED_P2_WITHIN_HIERARCHY
   - EQ_3PN_SPLIT
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
   - PHYS_GROUPED_P2_SHAPE_RESPONSE
   - MATH_GROUPED_PROJECTORS_GGRP
   section_anchors:
@@ -472,7 +472,7 @@ nodes:
   anchors:
   - CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL
   - EQ_4PN_TAIL_BRIDGE
-  - CLAIM_STAGE5_P0_TARGET
+  - CLAIM_STAGE022_P0_TARGET
   - PHYS_OUTGOING_QUADRUPOLE_PORT
   section_anchors:
   - SEC_4PN_TAIL_BRIDGE
@@ -524,8 +524,8 @@ nodes:
   anchors:
   - CLAIM_5PN_FULL_BUNDLE_SURFACE
   - CLAIM_G2_COMMON_QUOTIENT
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   - MATH_MONOMIAL_QUOTIENT
   - MATH_XI1_PREF_SLOPE
   - EQ_XI1_PREF_SLOPE
@@ -719,9 +719,9 @@ nodes:
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   - CLAIM_PACKET_A_PACKET_B_SPLIT
   - CLAIM_STAGE1_GEOMETRY_LIFT
-  - CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   - CLAIM_MIXED_SECTOR_MICROSCOPIC
   section_anchors:
   - SEC_MT_READING_RULES
@@ -754,9 +754,9 @@ nodes:
   - CLAIM_PARENT_WALL_STATUS_SPLIT
   - CLAIM_MAXWELL_GAUGE_LOCALIZATION_PATCH
   - CLAIM_STAGE3_BDG_SCHUR
-  - CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE024_O3_ISOTROPY
   - CLAIM_RESPONSE_READOUT_DISCIPLINE
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   - CLAIM_MATERIAL_CLOSURE_GAP
@@ -1207,11 +1207,12 @@ nodes:
   layer: claim_theorem
   type: claim
   status: open
-  meaning: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, and source current.
+  meaning: The EM ontology needs a closed mixed recirculation law relating circulation, throat intake, mixed transport, brane magnetic fields, source current, and the sign of the effective current coefficient Lambda_A.
   claim_class: open_gate
   source_files:
   - FILE_PDE_AUDIT
   - FILE_MOVING_THROAT_COMPACT
+  - FILE_CIRCULATION_PACKAGE
   equation_anchors:
   - EQ_MAXWELL_MIXED_TRANSFER
   physical_anchors:
@@ -1221,6 +1222,106 @@ nodes:
   outputs:
   - OPEN_MIXED_RECIRCULATION
   obsidian_note: nodes/claims/CLAIM_MIXED_RECIRCULATION_OPEN.md
+- id: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  label: Fluxoid integer winding from single-valued psi
+  layer: claim_theorem
+  type: claim
+  status: exact_identity_audit
+  meaning: The circulation package derives Delta_theta in 2*pi*Z from psi(2*pi)=psi(0), verifies single-valued chi contributes zero loop winding, and preserves eta_Q as a separate electric branch label.
+  claim_class: topological_identity_audit
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - MATH_FLUXOID
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  outputs:
+  - MATH_FLUXOID
+  - FIREWALL_CHARGE_NOT_CIRCULATION
+  obsidian_note: nodes/claims/CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION.md
+- id: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  label: Fluxoid alone gives no universal 3D radial force sign
+  layer: claim_theorem
+  type: claim
+  status: exact_negative_within_3d_closure_analysis
+  meaning: The circulation package shows that n fixes holonomy but not the current/plumbing coefficient, orientation sign, mutual-inductance closure, or ensemble, so no universal attraction/repulsion sign follows from n1*n2 alone in 3D.
+  claim_class: negative_scope_theorem
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - MATH_FLUXOID
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  - PHYS_MIXED_EM_CORE
+  outputs:
+  - CLAIM_MIXED_RECIRCULATION_OPEN
+  - OPEN_MIXED_RECIRCULATION
+  obsidian_note: nodes/claims/CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID.md
+- id: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  label: Coaxial current-loop mutual inductance finite-mouth expansion
+  layer: derivation
+  type: symbolic_audit
+  status: exact_within_fixed_current_far_field_closure
+  meaning: Step 03 derives the reduced Neumann integral from 3-vector loop parameterizations and symbolically expands the coaxial fixed-current mutual inductance and force through the displayed finite-mouth terms.
+  math:
+  - M(d)=mu0*pi*R1^2*R2^2/(2*d^3)*(1-3*(R1^2+R2^2)/(2*d^2)+15*(R1^4+3*R1^2*R2^2+R2^4)/(8*d^4)+...)
+  - F_d=-3*mu0*pi*I1*I2*R1^2*R2^2/(2*d^4)*(1-5*(R1^2+R2^2)/(2*d^2)+35*(R1^4+3*R1^2*R2^2+R2^4)/(8*d^4)+...)
+  sources:
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance.md
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_sympy.py
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_output.txt
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  obsidian_note: nodes/derivations/DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP.md
+- id: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  label: Facing-mouth opposite local swirl attraction is closure-conditional
+  layer: claim_theorem
+  type: claim
+  status: exact_within_fixed_current_orientation_closure
+  meaning: With a fixed-current/current-like coaxial closure, a real tangential swirl circulation, and oriented area vectors, facing local normals give sigma1*sigma2=-1, so opposite local swirl labels attract; this is not a fluxoid-only theorem.
+  claim_class: conditional_orientation_sign_rule
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  outputs:
+  - CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  obsidian_note: nodes/claims/CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL.md
+- id: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  label: Vector dipole orientation law and coaxial recovery
+  layer: derivation
+  type: symbolic_audit
+  status: exact_dipole_far_field_crosscheck
+  meaning: Step 05 builds m_A=pi*R_A^2*I_A*s_A as actual 3-vectors, computes m1.m2 and m_i.dhat from components, recovers the Step-03 coaxial leading force, and treats finite-size terms as asymptotic.
+  math:
+  - U=-mu0/(4*pi*d^3)*(3*(m1.dhat)*(m2.dhat)-m1.m2)
+  - F_d=-dU/dd
+  sources:
+  - notes/circulation/step_05_3d_orientation_and_finite_size.md
+  - notes/circulation/step_05_3d_orientation_and_finite_size_sympy.py
+  - notes/circulation/step_05_3d_orientation_and_finite_size_output.txt
+  physical_anchors:
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  obsidian_note: nodes/derivations/DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK.md
+- id: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  label: Mixed-sector circulation force sign remains Lambda_A-conditional
+  layer: claim_theorem
+  type: claim
+  status: conditional_open_plumbing
+  meaning: Step 06 verifies that N0 is a nonnegative square-over-square transfer magnitude and includes it in the force, but Lambda_A remains real/open; facing-mouth opposite local swirl attraction requires Lambda1*Lambda2*N0>0.
+  claim_class: conditional_mixed_plumbing_status
+  source_files:
+  - FILE_CIRCULATION_PACKAGE
+  equation_anchors:
+  - EQ_MAXWELL_MIXED_TRANSFER
+  physical_anchors:
+  - PHYS_MIXED_EM_CORE
+  - PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  outputs:
+  - OPEN_MIXED_RECIRCULATION
+  obsidian_note: nodes/claims/CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL.md
 - id: CLAIM_MIXED_SECTOR_MICROSCOPIC
   label: Mixed EM sector is microscopic ontology, not gauge artifact
   layer: claim_theorem
@@ -1242,7 +1343,7 @@ nodes:
   outputs:
   - MATH_MIXED_FIELDS_EW_CA
   - MATH_MAXWELL_MIXED_KERNEL
-  - MT_STAGE4_MAXWELL_MIXED
+  - MT_STAGE004_020_PROJECTED_MAXWELL
   tex_anchor:
     file: research/4d_em_fields/paper/4d_em_fields.tex
     line: 1348
@@ -1453,14 +1554,15 @@ nodes:
   - MT_STAGE3_BDG_COUPLING
   - MATH_BDG_SCHUR_COMPLEMENT
   obsidian_note: nodes/claims/CLAIM_STAGE3_BDG_SCHUR.md
-- id: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  label: Localized Maxwell/mixed block carries first honest outgoing bridge
+- id: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  label: Projection-first EM packet feeds the outgoing bridge
   layer: claim_theorem
   type: claim
-  status: exact_within_reduced_mixed_kernel
-  meaning: The Maxwell/mixed block contributes conservative self-energy and transfers a passive/outgoing l=2 odd fingerprint to the wall through a nonnegative static transfer factor.
+  status: exact_projection_with_reduced_adapter
+  meaning: The current PDE ledger projects the EM sector before reduction in Stages 004--020, then retains the reduced one-port Stage 021 adapter to transfer the passive/outgoing l=2 fingerprint into the grouped normalization bridge.
   claim_class: exact_within_closure
   source_files:
+  - FILE_PDE_LEDGER
   - FILE_MOVING_THROAT_COMPACT
   - FILE_PDE_AUDIT
   equation_anchors:
@@ -1470,18 +1572,20 @@ nodes:
   - PHYS_MIXED_EM_CORE
   - PHYS_OUTGOING_QUADRUPOLE_PORT
   outputs:
-  - MT_STAGE4_MAXWELL_MIXED
+  - MT_STAGE004_020_PROJECTED_MAXWELL
+  - MT_STAGE021_REDUCED_ONE_PORT
   - MATH_MAXWELL_MIXED_KERNEL
   - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
-  obsidian_note: nodes/claims/CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.md
-- id: CLAIM_STAGE5_P0_TARGET
-  label: Grouped P2 bridge isolates P0 target
+  obsidian_note: nodes/claims/CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.md
+- id: CLAIM_STAGE022_P0_TARGET
+  label: Stage 022 grouped P2 bridge isolates P0 target
   layer: claim_theorem
   type: claim
   status: exact_within_grouped_bridge
-  meaning: The leading odd 2.5PN coefficient depends only on the isotropic static outgoing prefactor P0=N0/D0, with target mhat0^2 P0=54 G c_s^5/(5 a^5 c^5).
+  meaning: Stage 022 translates the projection-first EM packet and retained one-port adapter into grouped real P2 response language. The leading odd 2.5PN coefficient depends only on the isotropic static outgoing prefactor P0=N0/D0, with target mhat0^2 P0=54 G c_s^5/(5 a^5 c^5).
   claim_class: exact_within_closure
   source_files:
+  - FILE_PDE_LEDGER
   - FILE_MOVING_THROAT_COMPACT
   - FILE_PDE_AUDIT
   - FILE_2_5PN
@@ -1493,7 +1597,7 @@ nodes:
   - PHYS_OUTGOING_QUADRUPOLE_PORT
   - PHYS_RESPONSE_READOUTS
   outputs:
-  - MT_STAGE5_GROUPED_P2_BRIDGE
+  - MT_STAGE022_GROUPED_P2_BRIDGE
   - OPEN_QUAD_NORMALIZATION
   - READOUT_D0_C_P0_N2_N4
   tex_anchor:
@@ -1511,15 +1615,16 @@ nodes:
     match_score: 0.804
     confidence: medium
     source_anchor_node: SEC_25PN_NORM_STACK
-  obsidian_note: nodes/claims/CLAIM_STAGE5_P0_TARGET.md
-- id: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  label: Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+  obsidian_note: nodes/claims/CLAIM_STAGE022_P0_TARGET.md
+- id: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  label: Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
   layer: claim_theorem
   type: claim
   status: exact_within_reduced_bundle
-  meaning: The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
+  meaning: Stage 023 writes the full grouped real 20/21/22 bundle, tracking wall, BdG, projection-first Maxwell/matched one-port, and outgoing data. On the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
   claim_class: exact_within_closure
   source_files:
+  - FILE_PDE_LEDGER
   - FILE_MOVING_THROAT_COMPACT
   - FILE_PDE_AUDIT
   - FILE_5PN_FULL
@@ -1529,18 +1634,19 @@ nodes:
   - PHYS_RESPONSE_READOUTS
   - PHYS_GROUPED_P2_SHAPE_RESPONSE
   outputs:
-  - MT_STAGE6_FULL_GROUPED_BUNDLE
+  - MT_STAGE023_FULL_GROUPED_BUNDLE
   - MATH_FULL_BUNDLE_TARGET_SURFACE
   - TARGET_PACKET_A
-  obsidian_note: nodes/claims/CLAIM_STAGE6_FULL_BUNDLE_RATIO.md
-- id: CLAIM_STAGE7_O3_ISOTROPY
-  label: O(3) isotropy and weak-axisymmetric splitting theorem
+  obsidian_note: nodes/claims/CLAIM_STAGE023_FULL_BUNDLE_RATIO.md
+- id: CLAIM_STAGE024_O3_ISOTROPY
+  label: Stage 024 O(3) isotropy and weak-axisymmetric splitting theorem
   layer: claim_theorem
   type: claim
   status: exact_angular_reduced
   meaning: The angular source map is identity on the canonical real STF basis; O(3)-invariant kernels force grouped-lane isotropy, while weak axisymmetric splitting has signature (1,1/2,-1) or b=3a.
   claim_class: exact_within_closure
   source_files:
+  - FILE_PDE_LEDGER
   - FILE_MOVING_THROAT_COMPACT
   - FILE_PDE_AUDIT
   - FILE_5PN_FULL
@@ -1550,7 +1656,7 @@ nodes:
   - PHYS_GROUPED_P2_SHAPE_RESPONSE
   - PHYS_FINITE_MOUTH_SHAPE
   outputs:
-  - MT_STAGE7_OVERLAP_ISOTROPY
+  - MT_STAGE024_OVERLAP_ISOTROPY
   - MATH_STF_SOURCE_MAP
   - MATH_WEAK_AXISYM_SPLITTING
   - OPEN_WEAK_AXISYM_ORBIT_LOCK
@@ -1569,15 +1675,16 @@ nodes:
     match_score: 0.583
     confidence: medium
     source_anchor_node: SEC_25PN_STF_MAP
-  obsidian_note: nodes/claims/CLAIM_STAGE7_O3_ISOTROPY.md
-- id: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  label: Selected-mode spectral reachability packet
+  obsidian_note: nodes/claims/CLAIM_STAGE024_O3_ISOTROPY.md
+- id: CLAIM_STAGE025_031_SELECTED_BRANCH
+  label: Stages 025--031 selected-mode spectral reachability packet
   layer: claim_theorem
   type: claim
   status: exact_within_selected_reduced_branch
-  meaning: Stages 8-14 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0,- before wall softening.
+  meaning: Stages 025--031 compress the radial/axial selected-branch problem into a concrete finite-throat spectral-transfer/reachability test for P0 before wall softening.
   claim_class: exact_within_closure
   source_files:
+  - FILE_PDE_LEDGER
   - FILE_MOVING_THROAT_COMPACT
   - FILE_PDE_AUDIT
   equation_anchors:
@@ -1588,9 +1695,9 @@ nodes:
   - PHYS_OUTGOING_QUADRUPOLE_PORT
   - PHYS_FINITE_MOUTH_SHAPE
   outputs:
-  - MT_STAGE8_MINIMAL_NORMALIZATION
+  - MT_STAGE025_MINIMAL_NORMALIZATION
   - OPEN_SOURCE_PORT_NORMALIZATION
-  obsidian_note: nodes/claims/CLAIM_STAGE8_TO_14_SELECTED_BRANCH.md
+  obsidian_note: nodes/claims/CLAIM_STAGE025_031_SELECTED_BRANCH.md
 - id: CLAIM_ZERO_MODE_MAXWELL_REDUCTION
   label: Zero-mode localized Maxwell gives brane Maxwell only as a controlled limit
   layer: claim_theorem
@@ -1794,27 +1901,25 @@ nodes:
   meaning: Universal outgoing quadrupole low-frequency fingerprint in normalized response language.
   expression: Ŷ_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
   sources:
-  - research/pde_ledger/paper/stages/stage_004.tex
-  - notes/pde_audit_full.md
+  - research/pde_ledger/paper/stages/stage_021.tex
+  - notes/moving_throat_pde_program_compact.md
   parent_node: MATH_COMPACT_L2_OUTGOING_FINGERPRINT
   legacy_sources:
-  - moving_throat_pde_stage004_maxwell_mixed_response.md
+  - moving_throat_pde_stage021_reduced_one_port_normal_form.md
   - pde_audit_full.md
   tex_anchor:
-    file: research/pde_ledger/paper/stages/stage_004.tex
-    line: 113
+    file: research/pde_ledger/paper/stages/stage_021.tex
+    line: 60
     heading_level: paragraph
-    heading: 5. Compact outgoing (l=2 ) fingerprint.
+    heading: Compact outgoing fingerprint.
     nearest_label:
-      name: eq:app-stage004-outgoing-fingerprint
-      line: 116
+      name: eq:app-stage021-outgoing-fingerprint
+      line: 63
     nearby_labels:
-    - name: eq:app-stage004-outgoing-fingerprint
-      line: 116
-    - name: eq:app-stage004-gamma-port
-      line: 125
-    - name: eq:app-stage004-wall-odd
-      line: 130
+    - name: eq:app-stage021-outgoing-fingerprint
+      line: 63
+    - name: eq:app-stage021-wall-odd
+      line: 72
     match_basis: semantic_heading_match
     match_score: 1.0
     confidence: high
@@ -1888,26 +1993,26 @@ nodes:
   meaning: Bridge from conservative operator moments to normalized grouped response moments.
   expression: u_2^(A)=-D_A2/D_A0,   u_4^(A)=(D_A2²-D_A0D_A4)/D_A0²
   sources:
-  - research/pde_ledger/paper/stages/stage_005.tex
-  - notes/pde_audit_full.md
-  parent_node: MT_STAGE5_GROUPED_P2_BRIDGE
+  - research/pde_ledger/paper/stages/stage_022.tex
+  - notes/moving_throat_pde_program_compact.md
+  parent_node: MT_STAGE022_GROUPED_P2_BRIDGE
   legacy_sources:
-  - moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+  - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
   - pde_audit_full.md
   tex_anchor:
-    file: research/pde_ledger/paper/stages/stage_005.tex
+    file: research/pde_ledger/paper/stages/stage_022.tex
     line: 15
     heading_level: paragraph
     heading: 1. Conservative operator and normalized response.
     nearest_label:
-      name: eq:app-stage005-d-operator
+      name: eq:app-stage022-d-operator
       line: 18
     nearby_labels:
-    - name: eq:app-stage005-d-operator
+    - name: eq:app-stage022-d-operator
       line: 18
-    - name: eq:app-stage005-y-response
+    - name: eq:app-stage022-y-response
       line: 23
-    - name: eq:app-stage005-u2u4
+    - name: eq:app-stage022-u2u4
       line: 29
     match_basis: semantic_heading_match
     match_score: 0.589
@@ -1975,32 +2080,32 @@ nodes:
     confidence: high
   obsidian_note: nodes/equations/EQ_LONGITUDINAL_IDENTITY.md
 - id: EQ_MAXWELL_MIXED_TRANSFER
-  label: Maxwell/mixed outgoing transfer factor
+  label: Stage 021 one-port outgoing transfer factor
   layer: equation_anchor
   type: equation
   status: exact_within_reduced_bundle
-  meaning: Positive static transfer factor by which an outgoing mixed port reaches the wall operator.
+  meaning: Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger treats it as the adapter after projection-first EM Stages 004--020.
   expression: N_l(0)=[Ω_A² g_W + R g_A]²/[Ω_A²Ω_W²-R²]² ≥ 0
   sources:
-  - research/pde_ledger/paper/stages/stage_004.tex
-  - notes/pde_audit_full.md
+  - research/pde_ledger/paper/stages/stage_021.tex
+  - notes/moving_throat_pde_program_compact.md
   parent_node: MATH_MAXWELL_MIXED_KERNEL
   legacy_sources:
-  - moving_throat_pde_stage004_maxwell_mixed_response.md
+  - moving_throat_pde_stage021_reduced_one_port_normal_form.md
   - pde_audit_full.md
   tex_anchor:
-    file: research/pde_ledger/paper/stages/stage_004.tex
-    line: 88
+    file: research/pde_ledger/paper/stages/stage_021.tex
+    line: 43
     heading_level: paragraph
-    heading: 4. Outgoing-port dressing and transfer factor.
+    heading: Outgoing transfer.
     nearest_label:
-      name: eq:app-stage004-transfer-factor
-      line: 100
+      name: eq:app-stage021-transfer-factor
+      line: 47
     nearby_labels:
-    - name: eq:app-stage004-transfer-factor
-      line: 100
-    - name: eq:app-stage004-n0-positive
-      line: 107
+    - name: eq:app-stage021-transfer-factor
+      line: 47
+    - name: eq:app-stage021-n0-positive
+      line: 54
     match_basis: semantic_heading_match
     match_score: 0.606
     confidence: medium
@@ -2030,13 +2135,13 @@ nodes:
   meaning: Central remaining 2.5PN/4PN moving-throat normalization target.
   expression: mhat_0² P_0 = 54 G c_s⁵/(5 a⁵ c⁵)
   sources:
-  - research/pde_ledger/paper/stages/stage_005.tex
+  - research/pde_ledger/paper/stages/stage_022.tex
   - research/4d_2_5pn/paper/4d_2_5pn.tex
   - research/4d_4pn/paper/4d_4pn.tex
-  - notes/pde_audit_full.md
+  - notes/moving_throat_pde_program_compact.md
   parent_node: OPEN_QUAD_NORMALIZATION
   legacy_sources:
-  - moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
+  - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
   - 4d_2_5pn_summary.md
   - 4d_4pn_summary.md
   - pde_audit_full.md
@@ -2188,24 +2293,24 @@ nodes:
   meaning: Diagnostic first-order splitting law for a weak axisymmetric quadrupole perturbation.
   expression: (20,21,22) ~ (1, 1/2, -1), equivalently b=3a
   sources:
-  - research/pde_ledger/paper/stages/stage_007.tex
+  - research/pde_ledger/paper/stages/stage_024.tex
   - notes/pde_audit_full.md
   - notes/5pn/5pn_notes_full.md
   parent_node: MATH_WEAK_AXISYM_SPLITTING
   legacy_sources:
-  - moving_throat_pde_stage007_overlap_isotropy.md
+  - moving_throat_pde_stage024_overlap_isotropy.md
   - pde_audit_full.md
   - 5pn_notes_full.md
   tex_anchor:
-    file: research/pde_ledger/paper/stages/stage_007.tex
+    file: research/pde_ledger/paper/stages/stage_024.tex
     line: 149
     heading_level: paragraph
     heading: 4. Weak-axisymmetric quadrupole splitting.
     nearest_label:
-      name: eq:app-stage007-deltaK-axisym
+      name: eq:app-stage024-deltaK-axisym
       line: 152
     nearby_labels:
-    - name: eq:app-stage007-deltaK-axisym
+    - name: eq:app-stage024-deltaK-axisym
       line: 152
     - name: eq:app-stage007-MAB20
       line: 157
@@ -2566,6 +2671,16 @@ nodes:
   future_paper_needed: true
   resolution_note: Current canonical source is a note/ledger; replace with a maintained TeX paper when written.
   obsidian_note: nodes/sources/FILE_MOVING_THROAT_OUTPUT.md
+- id: FILE_PDE_LEDGER
+  label: pde_ledger.tex
+  layer: file_anchor
+  type: source_file
+  status: maintained_paper
+  meaning: Maintained 253-stage PDE ledger with a linear projection-first EM block at Stages 004--020, retained reduced one-port adapter at Stage 021, and grouped bridge/full bundle at Stages 022--023.
+  files:
+  - research/pde_ledger/paper/pde_ledger.tex
+  source_kind: paper
+  obsidian_note: nodes/sources/FILE_PDE_LEDGER.md
 - id: FILE_PDE_AUDIT
   label: pde_audit_full.md
   layer: file_anchor
@@ -2580,6 +2695,36 @@ nodes:
   future_paper_needed: true
   resolution_note: Current canonical source is a note/ledger; replace with a maintained TeX paper when written.
   obsidian_note: nodes/sources/FILE_PDE_AUDIT.md
+- id: FILE_CIRCULATION_PACKAGE
+  label: notes/circulation derivation package
+  layer: file_anchor
+  type: source_file
+  status: note_audit_package
+  meaning: Six-step circulation pair-force audit package covering fluxoid winding, no-universal-force status, coaxial current-loop closure, facing-mouth swirl labels, vector dipole orientation, and mixed-sector plumbing status.
+  files:
+  - notes/circulation/README.md
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
+  - notes/circulation/step_01_fluxoid_firewall_output.txt
+  - notes/circulation/step_02_no_universal_force.md
+  - notes/circulation/step_02_no_universal_force_sympy.py
+  - notes/circulation/step_02_no_universal_force_output.txt
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance.md
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_sympy.py
+  - notes/circulation/step_03_current_loop_closure_mutual_inductance_output.txt
+  - notes/circulation/step_04_facing_mouth_swirl_sign.md
+  - notes/circulation/step_04_facing_mouth_swirl_sign_sympy.py
+  - notes/circulation/step_04_facing_mouth_swirl_sign_output.txt
+  - notes/circulation/step_05_3d_orientation_and_finite_size.md
+  - notes/circulation/step_05_3d_orientation_and_finite_size_sympy.py
+  - notes/circulation/step_05_3d_orientation_and_finite_size_output.txt
+  - notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_output.txt
+  source_kind: future_paper_note
+  future_paper_needed: true
+  resolution_note: Current canonical source is a note/audit package; promote only status-disciplined claims into a maintained paper.
+  obsidian_note: nodes/sources/FILE_CIRCULATION_PACKAGE.md
 - id: FILE_PLASMA
   label: 4d_plasma_summary.md / 4d_plasma.tex
   layer: file_anchor
@@ -2698,6 +2843,8 @@ nodes:
   sources:
   - research/4d/paper/4d.tex
   - notes/pde_audit_full.md:V2-30
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
   legacy_sources:
   - 4d_summary.md
   - pde_audit_full.md:V2-30
@@ -2825,20 +2972,23 @@ nodes:
     confidence: high
   obsidian_note: nodes/math/MATH_LONGITUDINAL_IDENTITY.md
 - id: MATH_MAXWELL_MIXED_KERNEL
-  label: Maxwell/mixed kernel
+  label: Projected EM packet with reduced one-port adapter
   layer: math_object
   type: reduced_kernel
-  status: exact_within_reduced_bundle
-  meaning: Conservative localized Maxwell/mixed self-energy and outgoing transfer factor for port-active mixed sector.
+  status: exact_projection_with_reduced_adapter
+  meaning: Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies conservative self-energy and outgoing transfer data for the grouped bridge.
   math:
+  - Stages 004--020 projected Maxwell packet
+  - Stage 021 reduced one-port Z_n,N_n adapter
   - Z_n
   - N_n
   - Delta=Omega_U^2 Omega_W^2-R^2
   sources:
-  - notes/pde_audit_full.md
+  - research/pde_ledger/paper/stages/stage_004.tex
+  - research/pde_ledger/paper/stages/stage_021.tex
   - notes/moving_throat_pde_program_compact.md
   legacy_sources:
-  - pde_audit_full.md
+  - moving_throat_pde_stage021_reduced_one_port_normal_form.md
   - moving_throat_pde_program_compact.md
   obsidian_note: nodes/math/MATH_MAXWELL_MIXED_KERNEL.md
 - id: MATH_MAXWELL_WEIGHTED_GAUGE_FIXING
@@ -3013,7 +3163,7 @@ nodes:
   - notes/moving_throat_notes_full.md
   - notes/pde_audit_full.md:V2-28
   legacy_sources:
-  - moving_throat_output_full.md
+  - moving_throat_pde_stage025_minimal_isotropic_normalization.md
   - pde_audit_full.md:V2-28
   obsidian_note: nodes/math/MATH_SIGMA_R_FIELD.md
 - id: MATH_STF_SOURCE_MAP
@@ -3290,23 +3440,40 @@ nodes:
   - moving_throat_output_full.md
   - pde_audit_full.md:V2-08
   obsidian_note: nodes/derivations/MT_STAGE3_BDG_COUPLING.md
-- id: MT_STAGE4_MAXWELL_MIXED
-  label: Stage 4 Maxwell/mixed outgoing bridge
+- id: MT_STAGE004_020_PROJECTED_MAXWELL
+  label: Stages 004--020 projected Maxwell packet
   layer: derivation
   type: moving_throat_stage
-  status: reduced_controlled
-  meaning: Adds localized Maxwell/mixed U/W block and passive outgoing port transfer.
+  status: exact_projection_derivation
+  meaning: Imports the derivation-only projected Maxwell chain from notes/em_projected through step 18. This is the canonical EM derivation block; reduction is no longer the primary EM derivation.
+  math:
+  - projection-first Maxwell sector
+  - derivation notes step 01 through step 18, with no step 06 source file
+  sources:
+  - research/pde_ledger/paper/stages/stage_004.tex
+  - research/pde_ledger/paper/stages/stage_020.tex
+  - notes/moving_throat_pde_program_compact.md
+  legacy_sources:
+  - notes/em_projected/step_01_projected_maxwell_readme.md
+  - notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md
+  obsidian_note: nodes/derivations/MT_STAGE004_020_PROJECTED_MAXWELL.md
+- id: MT_STAGE021_REDUCED_ONE_PORT
+  label: Stage 021 reduced Maxwell/mixed one-port adapter
+  layer: derivation
+  type: moving_throat_stage
+  status: retained_reduced_adapter
+  meaning: Retains the earlier reduced Maxwell/mixed calculation as the one-port normal form used downstream after the projection-first EM packet.
   math:
   - N_l(0)=[Ω_A²g_W+Rg_A]²/[Ω_A²Ω_W²-R²]²
+  - Y_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
   sources:
-  - notes/moving_throat_notes_full.md
-  - notes/pde_audit_full.md:V2-09
+  - research/pde_ledger/paper/stages/stage_021.tex
+  - notes/moving_throat_pde_program_compact.md
   legacy_sources:
-  - moving_throat_output_full.md
-  - pde_audit_full.md:V2-09
-  obsidian_note: nodes/derivations/MT_STAGE4_MAXWELL_MIXED.md
-- id: MT_STAGE5_GROUPED_P2_BRIDGE
-  label: Stage 5 grouped P2 normalization bridge
+  - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  obsidian_note: nodes/derivations/MT_STAGE021_REDUCED_ONE_PORT.md
+- id: MT_STAGE022_GROUPED_P2_BRIDGE
+  label: Stage 022 grouped P2 normalization bridge
   layer: derivation
   type: moving_throat_stage
   status: exact_within_reduced_bundle
@@ -3316,12 +3483,13 @@ nodes:
   - P0=N0/D0
   - mhat0²P0=54Gc_s^5/(5a^5c^5)
   sources:
-  - notes/moving_throat_notes_full.md
+  - research/pde_ledger/paper/stages/stage_022.tex
+  - notes/moving_throat_pde_program_compact.md
   legacy_sources:
-  - moving_throat_output_full.md
-  obsidian_note: nodes/derivations/MT_STAGE5_GROUPED_P2_BRIDGE.md
-- id: MT_STAGE6_FULL_GROUPED_BUNDLE
-  label: Stage 6 full grouped bundle
+  - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  obsidian_note: nodes/derivations/MT_STAGE022_GROUPED_P2_BRIDGE.md
+- id: MT_STAGE023_FULL_GROUPED_BUNDLE
+  label: Stage 023 full grouped bundle
   layer: derivation
   type: moving_throat_stage
   status: exact_within_reduced_bundle
@@ -3330,14 +3498,13 @@ nodes:
   - D0=K-B0-Z0
   - P0=N0/D0
   sources:
-  - notes/moving_throat_notes_full.md
-  - notes/pde_audit_full.md:V2-11/V2-13
+  - research/pde_ledger/paper/stages/stage_023.tex
+  - notes/moving_throat_pde_program_compact.md
   legacy_sources:
-  - moving_throat_output_full.md
-  - pde_audit_full.md:V2-11/V2-13
-  obsidian_note: nodes/derivations/MT_STAGE6_FULL_GROUPED_BUNDLE.md
-- id: MT_STAGE7_OVERLAP_ISOTROPY
-  label: Stage 7 overlap isotropy theorem
+  - moving_throat_pde_stage023_full_grouped_bundle.md
+  obsidian_note: nodes/derivations/MT_STAGE023_FULL_GROUPED_BUNDLE.md
+- id: MT_STAGE024_OVERLAP_ISOTROPY
+  label: Stage 024 overlap isotropy theorem
   layer: derivation
   type: moving_throat_stage
   status: exact_within_O3_reduced_kernel
@@ -3347,14 +3514,13 @@ nodes:
   - (20,21,22)~(1,1/2,-1)
   - b=3a
   sources:
-  - notes/moving_throat_notes_full.md
-  - notes/pde_audit_full.md:V2-12/V2-17
+  - research/pde_ledger/paper/stages/stage_024.tex
+  - notes/moving_throat_pde_program_compact.md
   legacy_sources:
-  - moving_throat_output_full.md
-  - pde_audit_full.md:V2-12/V2-17
-  obsidian_note: nodes/derivations/MT_STAGE7_OVERLAP_ISOTROPY.md
-- id: MT_STAGE8_MINIMAL_NORMALIZATION
-  label: Stage 8 minimal isotropic normalization
+  - moving_throat_pde_stage024_overlap_isotropy.md
+  obsidian_note: nodes/derivations/MT_STAGE024_OVERLAP_ISOTROPY.md
+- id: MT_STAGE025_MINIMAL_NORMALIZATION
+  label: Stage 025 minimal isotropic normalization
   layer: derivation
   type: moving_throat_stage
   status: reduced_model
@@ -3362,10 +3528,11 @@ nodes:
   math:
   - mhat_rad²P²/[Delta(KDelta-Delta C²/varpi²-Q)] = target
   sources:
-  - notes/moving_throat_notes_full.md
+  - research/pde_ledger/paper/stages/stage_025.tex
+  - notes/moving_throat_pde_program_compact.md
   legacy_sources:
   - moving_throat_output_full.md
-  obsidian_note: nodes/derivations/MT_STAGE8_MINIMAL_NORMALIZATION.md
+  obsidian_note: nodes/derivations/MT_STAGE025_MINIMAL_NORMALIZATION.md
 - id: MT_V2_01_PARENT_WALL_AUDIT
   label: V2-01 parent/wall action audit
   layer: status_audit
@@ -3780,9 +3947,12 @@ nodes:
   - J^M source
   - A_w/F_muw/J^w transport
   - fluxoid
+  - Lambda_A sign/plumbing map
   sources:
   - notes/pde_audit_full.md:V2-30
   - notes/lepton_work.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure.md
+  - notes/circulation/step_06_mixed_sector_plumbing_closure_sympy.py
   legacy_sources:
   - pde_audit_full.md:V2-30
   - lepton_work.md
@@ -4057,6 +4227,8 @@ nodes:
   sources:
   - research/4d/paper/4d.tex
   - notes/pde_audit_full.md:V2-30
+  - notes/circulation/step_01_fluxoid_firewall.md
+  - notes/circulation/step_01_fluxoid_firewall_sympy.py
   legacy_sources:
   - 4d_summary.md
   - pde_audit_full.md:V2-30
@@ -4214,7 +4386,7 @@ nodes:
   linked_objects:
   - PHYS_OUTGOING_QUADRUPOLE_PORT
   - MATH_COMPACT_L2_OUTGOING_FINGERPRINT
-  - CLAIM_STAGE5_P0_TARGET
+  - CLAIM_STAGE022_P0_TARGET
   obsidian_note: nodes/physical/PHYS_REG_OUTGOING_PORT.md
 - id: PHYS_REG_P2_QUAD
   label: Grouped P2/quadrupole physical spine
@@ -4225,7 +4397,7 @@ nodes:
   linked_objects:
   - PHYS_GROUPED_P2_SHAPE_RESPONSE
   - MATH_STF_SOURCE_MAP
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_STAGE024_O3_ISOTROPY
   obsidian_note: nodes/physical/PHYS_REG_P2_QUAD.md
 - id: PHYS_REG_PARTICLE_THROAT
   label: Particle/throat physical spine
@@ -4528,7 +4700,7 @@ nodes:
   status: v06_seed_query
   meaning: Mixed fields are microscopic gauge-invariant channels; Stage 4 uses localized Maxwell/mixed coordinates to carry the outgoing quadrupole bridge.
   start: CLAIM_MIXED_SECTOR_MICROSCOPIC
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   obsidian_note: nodes/audits/QUERY_MIXED_SECTOR.md
 - id: QUERY_P2_BECOMES_PHYSICAL
   label: Where does grouped P2 become physical geometry?
@@ -4537,7 +4709,7 @@ nodes:
   status: v06_seed_query
   meaning: Stage 1 makes grouped P2 a real wall/support mode; later stages add BdG, mixed/outgoing bridge, full bundle, and O(3) isotropy.
   start: CLAIM_STAGE1_GEOMETRY_LIFT
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   obsidian_note: nodes/audits/QUERY_P2_BECOMES_PHYSICAL.md
 - id: QUERY_PARENT_WALL_STATUS
   label: What changes if S_eta or S_Sigma is not promoted?
@@ -4838,7 +5010,7 @@ nodes:
   meaning: Passive/outgoing normalization.
   anchors_claims:
   - CLAIM_25PN_QUAD_NARROWING
-  - CLAIM_STAGE5_P0_TARGET
+  - CLAIM_STAGE022_P0_TARGET
   legacy_file: 4d_2_5pn_summary.md
   source_kind: paper
   legacy_line: 375
@@ -4928,7 +5100,7 @@ nodes:
   meaning: STF/source map.
   anchors_claims:
   - CLAIM_25PN_QUAD_NARROWING
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_STAGE024_O3_ISOTROPY
   legacy_file: 4d_2_5pn_summary.md
   source_kind: paper
   legacy_line: 190
@@ -5525,7 +5697,7 @@ nodes:
   meaning: Exact isotropic full-bundle target surface.
   anchors_claims:
   - CLAIM_5PN_FULL_BUNDLE_SURFACE
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
   legacy_file: 5pn_notes_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -5562,7 +5734,7 @@ nodes:
   query: Stage 26
   meaning: Continuum-kernel extraction and placement map.
   anchors_claims:
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   legacy_file: 5pn_notes_full.md
   source_kind: future_paper_note
@@ -5581,7 +5753,7 @@ nodes:
   query: Stage 31
   meaning: Support-compensation theorem.
   anchors_claims:
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   legacy_file: 5pn_notes_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -6090,7 +6262,7 @@ nodes:
   anchors_claims:
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   - CLAIM_PACKET_A_PACKET_B_SPLIT
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -6126,7 +6298,7 @@ nodes:
   query: Branch-Extraction Fixture
   meaning: Observable packet fixture and extraction formulas.
   anchors_claims:
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
@@ -6221,7 +6393,7 @@ nodes:
   query: Maxwell/mixed-sector kernel audit
   meaning: Mixed kernel audit.
   anchors_claims:
-  - CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  - CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   - CLAIM_MIXED_SECTOR_MICROSCOPIC
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
@@ -6240,8 +6412,8 @@ nodes:
   query: Grouped Normalization Ratio Audit
   meaning: P0/N0/D0 normalization audit.
   anchors_claims:
-  - CLAIM_STAGE5_P0_TARGET
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE022_P0_TARGET
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -6259,8 +6431,8 @@ nodes:
   query: Grouped Real
   meaning: Grouped P2 projectors.
   anchors_claims:
-  - CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  - CLAIM_STAGE024_O3_ISOTROPY
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -6316,7 +6488,7 @@ nodes:
   query: STF Angular Source-Map
   meaning: STF angular source-map theorem.
   anchors_claims:
-  - CLAIM_STAGE7_O3_ISOTROPY
+  - CLAIM_STAGE024_O3_ISOTROPY
   legacy_file: pde_audit_full.md
   source_kind: future_paper_note
   future_paper_needed: true
@@ -6353,7 +6525,7 @@ nodes:
   query: Weak-form and numerical branch-extraction
   meaning: Weak-form branch extraction preparation.
   anchors_claims:
-  - CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  - CLAIM_STAGE025_031_SELECTED_BRANCH
   - CLAIM_BRANCH_EXPORTER_REQUIRED
   - OPEN_EXECUTABLE_BRANCH_SOLVER
   legacy_file: pde_audit_full.md
@@ -7322,7 +7494,7 @@ edges:
   note: Claim-level dependency added in v0.4.
   status: active
 - source: CLAIM_5PN_FULL_BUNDLE_SURFACE
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: REFINES
   note: Claim-level dependency added in v0.4.
   status: active
@@ -7466,8 +7638,83 @@ edges:
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: open
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  target: MATH_FLUXOID
+  relation: SUPPORTS
+  note: Circulation package derives integer phase winding from single-valued psi and supports the fluxoid/circulation law.
+  status: exact_identity_audit
+- source: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  target: FIREWALL_CHARGE_NOT_CIRCULATION
+  relation: REINFORCES_FIREWALL
+  note: Audit keeps eta_Q/q_* bookkeeping separate from the circulation integer.
+  status: exact_identity_audit
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  target: MATH_FLUXOID
+  relation: LIMITS_SCOPE_OF
+  note: Fluxoid holonomy alone is not a 3D radial-force law.
+  status: exact_negative_within_3d_closure_analysis
+- source: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  target: CLAIM_MIXED_RECIRCULATION_OPEN
+  relation: PRESERVES_OPEN_GATE
+  note: Current/plumbing coefficients and mixed-sector transport remain external closure data.
+  status: exact_negative_within_3d_closure_analysis
+- source: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: SUPPLIES_CLOSURE_EXAMPLE
+  note: Fixed-current loop law is a named closure, not a consequence of fluxoid alone.
+  status: exact_within_fixed_current_far_field_closure
+- source: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: SUPPLIES_FIXED_CURRENT_FORCE
+  note: Facing-mouth sign table imports the fixed-current coaxial force sign.
+  status: exact_within_fixed_current_far_field_closure
+- source: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  target: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  relation: RECOVERS_COAXIAL_LIMIT
+  note: Vector dipole audit recovers the Step-03 leading coaxial force.
+  status: exact_dipole_far_field_crosscheck
+- source: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: SUPPLIES_ORIENTATION_LAW
+  note: 3D vector dipole orientation law supplies the geometric sign rule.
+  status: exact_dipole_far_field_crosscheck
+- source: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  target: PHYS_MAGNETIC_VORTICAL_CIRCULATION
+  relation: MAPS_LOCAL_LABEL_TO_GLOBAL_AXIS
+  note: Oriented loop area maps local swirl labels to the global current/dipole axis.
+  status: exact_within_fixed_current_orientation_closure
+- source: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: RESPECTS_SCOPE_LIMIT
+  note: Facing-mouth attraction statement remains closure-conditional and does not override the no-universal-force result.
+  status: exact_within_fixed_current_orientation_closure
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: IMPORTS_SIGN_TABLE_CONDITIONALLY
+  note: Mixed-sector statement imports the facing-mouth sign rule only after a current-like plumbing map is assumed.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: CLAIM_MIXED_RECIRCULATION_OPEN
+  relation: PRESERVES_OPEN_GATE
+  note: Lambda_A sign remains an open plumbing-law datum.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: OPEN_MIXED_RECIRCULATION
+  relation: FEEDS_OR_STATUS_OF
+  note: Circulation package refines the open gate to include Lambda_A sign and N0 magnitude status.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: PHYS_MIXED_EM_CORE
+  relation: DEPENDS_ON
+  note: Plumbing condition lives in the mixed brane-bulk EM channels.
+  status: conditional_open_plumbing
+- source: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  target: MATH_FLUXOID
+  relation: IMPORTS
+  note: Effective current map starts from the fluxoid/circulation integer but does not derive from it alone.
+  status: conditional_open_plumbing
 - source: CLAIM_MIXED_SECTOR_MICROSCOPIC
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: ENABLES
   note: Claim-level dependency added in v0.4.
   status: active
@@ -7482,7 +7729,7 @@ edges:
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_gauge_invariant_with_reduced_uses
 - source: CLAIM_MIXED_SECTOR_MICROSCOPIC
-  target: MT_STAGE4_MAXWELL_MIXED
+  target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_gauge_invariant_with_reduced_uses
@@ -7632,7 +7879,7 @@ edges:
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_wall_action
 - source: CLAIM_STAGE3_BDG_SCHUR
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: PREPARES
   note: Claim-level dependency added in v0.4.
   status: active
@@ -7646,102 +7893,107 @@ edges:
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_stable_modes
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  target: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  target: CLAIM_STAGE022_P0_TARGET
   relation: FEEDS
   note: Claim-level dependency added in v0.4.
   status: active
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   target: MATH_COMPACT_L2_OUTGOING_FINGERPRINT
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_mixed_kernel
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   target: MATH_MAXWELL_MIXED_KERNEL
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_mixed_kernel
-- source: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-  target: MT_STAGE4_MAXWELL_MIXED
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_mixed_kernel
-- source: CLAIM_STAGE5_P0_TARGET
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+  target: MT_STAGE021_REDUCED_ONE_PORT
+  relation: FEEDS_OR_STATUS_OF
+  note: Retained reduced one-port adapter closes the projection-first EM packet for downstream grouped normalization.
+  status: retained_reduced_adapter
+- source: CLAIM_STAGE022_P0_TARGET
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: GENERALIZES_TO
   note: Claim-level dependency added in v0.4.
   status: active
-- source: CLAIM_STAGE5_P0_TARGET
-  target: MT_STAGE5_GROUPED_P2_BRIDGE
+- source: CLAIM_STAGE022_P0_TARGET
+  target: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_grouped_bridge
-- source: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_STAGE022_P0_TARGET
   target: OPEN_QUAD_NORMALIZATION
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_grouped_bridge
-- source: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_STAGE022_P0_TARGET
   target: READOUT_D0_C_P0_N2_N4
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_grouped_bridge
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   target: CLAIM_PACKET_A_PACKET_B_SPLIT
   relation: DEFINES_PACKET_A
   note: Claim-level dependency added in v0.4.
   status: active
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  target: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANGULARLY_REFINED_BY
   note: Claim-level dependency added in v0.4.
   status: active
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   target: MATH_FULL_BUNDLE_TARGET_SURFACE
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_bundle
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-  target: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+  target: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_bundle
-- source: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- source: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   target: TARGET_PACKET_A
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_reduced_bundle
-- source: CLAIM_STAGE7_O3_ISOTROPY
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- source: CLAIM_STAGE024_O3_ISOTROPY
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: RADIAL_AXIAL_CONTINUATION_FOR
   note: Claim-level dependency added in v0.4.
   status: active
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   target: MATH_STF_SOURCE_MAP
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_angular_reduced
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   target: MATH_WEAK_AXISYM_SPLITTING
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_angular_reduced
-- source: CLAIM_STAGE7_O3_ISOTROPY
-  target: MT_STAGE7_OVERLAP_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
+  target: MT_STAGE024_OVERLAP_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_angular_reduced
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   target: OPEN_WEAK_AXISYM_ORBIT_LOCK
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_angular_reduced
-- source: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  target: MT_STAGE8_MINIMAL_NORMALIZATION
+- source: CLAIM_STAGE025_031_SELECTED_BRANCH
+  target: MT_STAGE025_MINIMAL_NORMALIZATION
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
   status: exact_within_selected_reduced_branch
-- source: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- source: CLAIM_STAGE025_031_SELECTED_BRANCH
   target: OPEN_SOURCE_PORT_NORMALIZATION
   relation: FEEDS_OR_STATUS_OF
   note: Claim feeds this downstream object, output, or open gate.
@@ -7852,7 +8104,7 @@ edges:
   note: Equation anchor supports this named claim.
   status: conditional_theorem_open_normalization
 - source: EQ_COMPACT_L2_FINGERPRINT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_reduced_mixed_kernel
@@ -7887,12 +8139,12 @@ edges:
   note: Equation anchor supports this named claim.
   status: paper_facing_ontology_discipline
 - source: EQ_FULL_BUNDLE_TARGET_SURFACE
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_reduced_bundle
 - source: EQ_FULL_BUNDLE_TARGET_SURFACE
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_selected_reduced_branch
@@ -7927,7 +8179,7 @@ edges:
   note: Equation anchor supports this named claim.
   status: exact_assembly_within_closure
 - source: EQ_GROUPED_RESPONSE_MOMENTS
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_grouped_bridge
@@ -7937,7 +8189,7 @@ edges:
   note: Response moments enter one-pole and full-bundle target surface.
   status: reduced
 - source: EQ_GROUPED_RESPONSE_MOMENTS
-  target: MT_STAGE5_GROUPED_P2_BRIDGE
+  target: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: ANCHORS
   note: Equation anchor belongs to or formalizes this graph node.
   status: equation_anchor
@@ -7987,7 +8239,7 @@ edges:
   note: Equation anchor supports this named claim.
   status: exact_gauge_invariant_with_reduced_uses
 - source: EQ_MAXWELL_MIXED_TRANSFER
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_reduced_mixed_kernel
@@ -8042,12 +8294,12 @@ edges:
   note: Equation anchor supports this named claim.
   status: paper_facing_ontology_discipline
 - source: EQ_P0_TARGET
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_grouped_bridge
 - source: EQ_P0_TARGET
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_within_selected_reduced_branch
@@ -8162,7 +8414,7 @@ edges:
   note: Equation anchor supports this named claim.
   status: exact_within_reduced_bundle_open_branch
 - source: EQ_WEAK_AXISYM_SIGNATURE
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: SUPPORTS_CLAIM
   note: Equation anchor supports this named claim.
   status: exact_angular_reduced
@@ -8277,7 +8529,7 @@ edges:
   note: Source artifact anchors this claim.
   status: conditional_theorem_open_normalization
 - source: FILE_2_5PN
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_grouped_bridge
@@ -8392,7 +8644,7 @@ edges:
   note: Source artifact anchors this claim.
   status: local_closed_tail_conditional
 - source: FILE_4PN_FULL
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_grouped_bridge
@@ -8422,12 +8674,12 @@ edges:
   note: Source artifact anchors this claim.
   status: conditional_reduced_residual
 - source: FILE_5PN_FULL
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_reduced_bundle
 - source: FILE_5PN_FULL
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_angular_reduced
@@ -8667,27 +8919,27 @@ edges:
   note: Source artifact anchors this claim.
   status: exact_within_reduced_stable_modes
 - source: FILE_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_reduced_mixed_kernel
 - source: FILE_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_grouped_bridge
 - source: FILE_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_reduced_bundle
 - source: FILE_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_angular_reduced
 - source: FILE_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_selected_reduced_branch
@@ -8812,27 +9064,27 @@ edges:
   note: Source artifact anchors this claim.
   status: exact_within_reduced_stable_modes
 - source: FILE_PDE_AUDIT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_reduced_mixed_kernel
 - source: FILE_PDE_AUDIT
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_grouped_bridge
 - source: FILE_PDE_AUDIT
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_reduced_bundle
 - source: FILE_PDE_AUDIT
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_angular_reduced
 - source: FILE_PDE_AUDIT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: OWNS_OR_ANCHORS_CLAIM
   note: Source artifact anchors this claim.
   status: exact_within_selected_reduced_branch
@@ -8926,6 +9178,36 @@ edges:
   relation: DOCUMENTS
   note: File anchor documents this node.
   status: source_anchor
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_FLUXOID_SINGLE_VALUED_PSI_QUANTIZATION
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 01 anchors this quantized phase-winding audit.
+  status: exact_identity_audit
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_NO_UNIVERSAL_FORCE_FROM_FLUXOID
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 02 anchors the no-universal-force scope result.
+  status: exact_negative_within_3d_closure_analysis
+- source: FILE_CIRCULATION_PACKAGE
+  target: DERIVATION_COAXIAL_NEUMANN_CURRENT_LOOP
+  relation: DOCUMENTS
+  note: Circulation package Step 03 documents the fixed-current Neumann loop derivation.
+  status: exact_within_fixed_current_far_field_closure
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_FACING_MOUTH_SWIRL_CONDITIONAL
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 04 anchors the facing-mouth local-swirl sign rule.
+  status: exact_within_fixed_current_orientation_closure
+- source: FILE_CIRCULATION_PACKAGE
+  target: DERIVATION_VECTOR_DIPOLE_ORIENTATION_CROSSCHECK
+  relation: DOCUMENTS
+  note: Circulation package Step 05 documents the vector dipole orientation cross-check.
+  status: exact_dipole_far_field_crosscheck
+- source: FILE_CIRCULATION_PACKAGE
+  target: CLAIM_MIXED_CIRCULATION_PLUMBING_CONDITIONAL
+  relation: OWNS_OR_ANCHORS_CLAIM
+  note: Circulation package Step 06 anchors the Lambda_A-conditional mixed plumbing status.
+  status: conditional_open_plumbing
 - source: FILE_PLASMA
   target: CLAIM_MIXED_SECTOR_MICROSCOPIC
   relation: OWNS_OR_ANCHORS_CLAIM
@@ -9002,7 +9284,7 @@ edges:
   note: Target surface can only be tested after branch exporter supplies frozen data.
   status: open
 - source: MATH_GROUPED_PROJECTORS_GGRP
-  target: MT_STAGE6_FULL_GROUPED_BUNDLE
+  target: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: ORGANIZES
   note: Organizes the full grouped P2 bundle and anisotropy extraction.
   status: exact
@@ -9027,7 +9309,7 @@ edges:
   note: Quasi-static/longitudinal regime gives Poisson hook.
   status: controlled
 - source: MATH_MAXWELL_MIXED_KERNEL
-  target: MT_STAGE4_MAXWELL_MIXED
+  target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FORMALIZES
   note: Matches Stage-4 port-active mixed-sector bridge.
   status: reduced
@@ -9042,7 +9324,7 @@ edges:
   note: Mixed fields feed reduced port-active Maxwell/mixed kernel.
   status: reduced
 - source: MATH_MIXED_FIELDS_EW_CA
-  target: MT_STAGE4_MAXWELL_MIXED
+  target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: ENABLES
   note: Mixed fields are the microscopic place for outgoing bridge.
   status: exact/reduced
@@ -9162,51 +9444,56 @@ edges:
   note: Wall modes then coupled to stable matter support modes.
   status: reduced
 - source: MT_STAGE3_BDG_COUPLING
-  target: MT_STAGE4_MAXWELL_MIXED
+  target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS
-  note: Conservative support self-energy enlarged by localized Maxwell/mixed block.
-  status: reduced
-- source: MT_STAGE4_MAXWELL_MIXED
-  target: MT_STAGE5_GROUPED_P2_BRIDGE
+  note: BdG support data feeds the projection-first EM packet before the retained one-port adapter.
+  status: exact_projection_derivation
+- source: MT_STAGE004_020_PROJECTED_MAXWELL
+  target: MT_STAGE021_REDUCED_ONE_PORT
+  relation: CLOSED_BY
+  note: Projection-first EM derivation is closed for downstream response work by the retained one-port normal form.
+  status: retained_reduced_adapter
+- source: MT_STAGE021_REDUCED_ONE_PORT
+  target: MT_STAGE022_GROUPED_P2_BRIDGE
   relation: FEEDS
   note: One-lane outgoing transfer lifted to grouped P2 normalization language.
-  status: reduced
-- source: MT_STAGE5_GROUPED_P2_BRIDGE
-  target: MT_STAGE6_FULL_GROUPED_BUNDLE
+  status: exact_closure_adapter
+- source: MT_STAGE022_GROUPED_P2_BRIDGE
+  target: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: GENERALIZES_TO
   note: Full 20/21/22 bundle and projectors.
   status: exact within bundle
-- source: MT_STAGE5_GROUPED_P2_BRIDGE
+- source: MT_STAGE022_GROUPED_P2_BRIDGE
   target: OPEN_QUAD_NORMALIZATION
   relation: ISOLATES
   note: Invariant product mhat0²P0 is the remaining normalization target.
   status: open
-- source: MT_STAGE5_GROUPED_P2_BRIDGE
+- source: MT_STAGE022_GROUPED_P2_BRIDGE
   target: PN_2_5_QUAD_NARROWING
   relation: SUPPORTS
   note: Moving-throat bridge supplies exact reduced target mhat0²P0.
   status: reduced
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
-  target: MT_STAGE7_OVERLAP_ISOTROPY
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
+  target: MT_STAGE024_OVERLAP_ISOTROPY
   relation: SPECIALIZES_TO
   note: O(3)-invariant overlap model collapses grouped lanes.
   status: exact within O3 reduced kernel
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
   target: PN_5_FULL_BUNDLE_SURFACE
   relation: SUPPORTS
   note: Full bundle target surface matches later 5PN/orbit-lock compression.
   status: reduced
-- source: MT_STAGE6_FULL_GROUPED_BUNDLE
+- source: MT_STAGE023_FULL_GROUPED_BUNDLE
   target: READOUT_D0_C_P0_N2_N4
   relation: COMPRESSES_TO
   note: Full bundle exports compressed audit readouts.
   status: target packet
-- source: MT_STAGE7_OVERLAP_ISOTROPY
-  target: MT_STAGE8_MINIMAL_NORMALIZATION
+- source: MT_STAGE024_OVERLAP_ISOTROPY
+  target: MT_STAGE025_MINIMAL_NORMALIZATION
   relation: NARROWS_TO
   note: Angular side closed; radial/axial normalization remains.
   status: reduced
-- source: MT_STAGE7_OVERLAP_ISOTROPY
+- source: MT_STAGE024_OVERLAP_ISOTROPY
   target: PHYS_GROUPED_P2_SHAPE_RESPONSE
   relation: GIVES_PHYSICAL_DIAGNOSTIC
   note: O(3) isotropy and weak-axisymmetric b=3a pattern classify shape response.
@@ -9607,12 +9894,12 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: effective_geometry_lift
 - source: PHYS_FINITE_MOUTH_SHAPE
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_angular_reduced
 - source: PHYS_FINITE_MOUTH_SHAPE
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_selected_reduced_branch
@@ -9657,12 +9944,12 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_stable_modes
 - source: PHYS_GROUPED_P2_SHAPE_RESPONSE
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_bundle
 - source: PHYS_GROUPED_P2_SHAPE_RESPONSE
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_angular_reduced
@@ -9687,7 +9974,7 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_stable_modes
 - source: PHYS_INTERIOR_SUPPORT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_selected_reduced_branch
@@ -9782,7 +10069,7 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: exact_gauge_invariant_with_reduced_uses
 - source: PHYS_MIXED_EM_CORE
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_mixed_kernel
@@ -9842,17 +10129,17 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: exact_gauge_invariant_with_reduced_uses
 - source: PHYS_OUTGOING_QUADRUPOLE_PORT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_mixed_kernel
 - source: PHYS_OUTGOING_QUADRUPOLE_PORT
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_grouped_bridge
 - source: PHYS_OUTGOING_QUADRUPOLE_PORT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_selected_reduced_branch
@@ -9912,7 +10199,7 @@ edges:
   note: Physical register entry links to graph object.
   status: active
 - source: PHYS_REG_OUTGOING_PORT
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: LINKS_TO
   note: Physical register entry links to graph object.
   status: active
@@ -9927,7 +10214,7 @@ edges:
   note: Physical register entry links to graph object.
   status: active
 - source: PHYS_REG_P2_QUAD
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: LINKS_TO
   note: Physical register entry links to graph object.
   status: active
@@ -9982,12 +10269,12 @@ edges:
   note: Physical ontology object grounded by this claim.
   status: paper_facing_ontology_discipline
 - source: PHYS_RESPONSE_READOUTS
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_grouped_bridge
 - source: PHYS_RESPONSE_READOUTS
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: GROUNDS_PHYSICAL_MEANING
   note: Physical ontology object grounded by this claim.
   status: exact_within_reduced_bundle
@@ -10252,27 +10539,27 @@ edges:
   note: 'Claim class: exact_within_closure'
   status: exact_within_reduced_stable_modes
 - source: STATUS_LADDER_EXACT_TO_OPEN
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: CLASSIFIES
   note: 'Claim class: exact_within_closure'
   status: exact_within_reduced_mixed_kernel
 - source: STATUS_LADDER_EXACT_TO_OPEN
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: CLASSIFIES
   note: 'Claim class: exact_within_closure'
   status: exact_within_grouped_bridge
 - source: STATUS_LADDER_EXACT_TO_OPEN
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: CLASSIFIES
   note: 'Claim class: exact_within_closure'
   status: exact_within_reduced_bundle
 - source: STATUS_LADDER_EXACT_TO_OPEN
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: CLASSIFIES
   note: 'Claim class: exact_within_closure'
   status: exact_angular_reduced
 - source: STATUS_LADDER_EXACT_TO_OPEN
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: CLASSIFIES
   note: 'Claim class: exact_within_closure'
   status: exact_within_selected_reduced_branch
@@ -10407,27 +10694,27 @@ edges:
   note: v0.4 claim/theorem layer item.
   status: active
 - source: VIEW_CLAIM_LAYER
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: CONTAINS_CLAIM
   note: v0.4 claim/theorem layer item.
   status: active
 - source: VIEW_CLAIM_LAYER
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: CONTAINS_CLAIM
   note: v0.4 claim/theorem layer item.
   status: active
 - source: VIEW_CLAIM_LAYER
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: CONTAINS_CLAIM
   note: v0.4 claim/theorem layer item.
   status: active
 - source: VIEW_CLAIM_LAYER
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: CONTAINS_CLAIM
   note: v0.4 claim/theorem layer item.
   status: active
 - source: VIEW_CLAIM_LAYER
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: CONTAINS_CLAIM
   note: v0.4 claim/theorem layer item.
   status: active
@@ -10832,7 +11119,7 @@ edges:
   note: Passive/outgoing normalization.
   status: v05
 - source: SEC_25PN_NORM_STACK
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: ANCHORS_CLAIM_SECTION
   note: Passive/outgoing normalization.
   status: v05
@@ -10847,7 +11134,7 @@ edges:
   note: STF/source map.
   status: v05
 - source: SEC_25PN_STF_MAP
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   note: STF/source map.
   status: v05
@@ -10947,7 +11234,7 @@ edges:
   note: Exact isotropic full-bundle target surface.
   status: v05
 - source: SEC_5PN_STAGE18_SURFACE
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   note: Exact isotropic full-bundle target surface.
   status: v05
@@ -11002,7 +11289,7 @@ edges:
   note: '5pn_notes_full.md:1268 — Continuation past Stage 26: Stages 27–29'
   status: v05
 - source: SEC_5PN_STAGE24_26_PLACEMENT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   note: Continuum-kernel extraction and placement map.
   status: v05
@@ -11017,7 +11304,7 @@ edges:
   note: 5pn_notes_full.md:1383 — Stage 31 — Support-compensation theorem
   status: v05
 - source: SEC_5PN_STAGE31_SUPPORT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   note: Support-compensation theorem.
   status: v05
@@ -11142,7 +11429,7 @@ edges:
   note: pde_audit_full.md:2948 — Stage V2-09 — Maxwell/mixed-sector kernel audit
   status: v05
 - source: SEC_PDE_MIXED_KERNEL
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: ANCHORS_CLAIM_SECTION
   note: Mixed kernel audit.
   status: v05
@@ -11157,12 +11444,12 @@ edges:
   note: pde_audit_full.md:2844 — 8. Grouped real \(P_2\) isotropy
   status: v05
 - source: SEC_PDE_P2_PROJECTORS
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   note: Grouped P2 projectors.
   status: v05
 - source: SEC_PDE_P2_PROJECTORS
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   note: Grouped P2 projectors.
   status: v05
@@ -11172,7 +11459,7 @@ edges:
   note: pde_audit_full.md:4432 — Stage V2-12 — STF Angular Source-Map Theorem
   status: v05
 - source: SEC_PDE_STF_SOURCE
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANCHORS_CLAIM_SECTION
   note: STF angular source-map theorem.
   status: v05
@@ -11182,12 +11469,12 @@ edges:
   note: pde_audit_full.md:4846 — Stage V2-13 — Grouped Normalization Ratio Audit
   status: v05
 - source: SEC_PDE_NORM_RATIO
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: ANCHORS_CLAIM_SECTION
   note: P0/N0/D0 normalization audit.
   status: v05
 - source: SEC_PDE_NORM_RATIO
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: ANCHORS_CLAIM_SECTION
   note: P0/N0/D0 normalization audit.
   status: v05
@@ -11222,7 +11509,7 @@ edges:
   note: pde_audit_full.md:7939 — Stage V2-20 — Weak-form and numerical branch-extraction preparation
   status: v05
 - source: SEC_PDE_WEAK_FORM_EXPORTER
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   note: Weak-form branch extraction preparation.
   status: v05
@@ -11242,7 +11529,7 @@ edges:
   note: pde_audit_full.md:8578 — Stage V2-21 — Branch-Extraction Fixture and Observable Packet
   status: v05
 - source: SEC_PDE_BRANCH_FIXTURE
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   note: Observable packet fixture and extraction formulas.
   status: v05
@@ -11267,7 +11554,7 @@ edges:
   note: Packet A/B actual branch protocol.
   status: v05
 - source: SEC_PDE_ACTUAL_BRANCH_PACKETS
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: ANCHORS_CLAIM_SECTION
   note: Packet A/B actual branch protocol.
   status: v05
@@ -12037,14 +12324,14 @@ edges:
   note: Paper backlink block references CLAIM_25PN_QUAD_NARROWING.
   status: v06
 - source: BACKLINK_25PN
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE5_P0_TARGET.
+  note: Paper backlink block references CLAIM_STAGE022_P0_TARGET.
   status: v06
 - source: BACKLINK_25PN
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY.
+  note: Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY.
   status: v06
 - source: BACKLINK_25PN
   target: EQ_COMPACT_L2_FINGERPRINT
@@ -12117,9 +12404,9 @@ edges:
   note: Paper backlink block references EQ_3PN_SPLIT.
   status: v06
 - source: BACKLINK_3PN_FULL
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
   status: v06
 - source: BACKLINK_3PN_FULL
   target: PHYS_GROUPED_P2_SHAPE_RESPONSE
@@ -12172,9 +12459,9 @@ edges:
   note: Paper backlink block references EQ_4PN_TAIL_BRIDGE.
   status: v06
 - source: BACKLINK_4PN_FULL
-  target: CLAIM_STAGE5_P0_TARGET
+  target: CLAIM_STAGE022_P0_TARGET
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE5_P0_TARGET.
+  note: Paper backlink block references CLAIM_STAGE022_P0_TARGET.
   status: v06
 - source: BACKLINK_4PN_FULL
   target: PHYS_OUTGOING_QUADRUPOLE_PORT
@@ -12217,14 +12504,14 @@ edges:
   note: Paper backlink block references CLAIM_G2_COMMON_QUOTIENT.
   status: v06
 - source: BACKLINK_5PN_FULL
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
   status: v06
 - source: BACKLINK_5PN_FULL
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
   status: v06
 - source: BACKLINK_5PN_FULL
   target: MATH_MONOMIAL_QUOTIENT
@@ -12337,19 +12624,19 @@ edges:
   note: Paper backlink block references CLAIM_STAGE1_GEOMETRY_LIFT.
   status: v06
 - source: BACKLINK_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
   status: v06
 - source: BACKLINK_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
   status: v06
 - source: BACKLINK_MOVING_THROAT_COMPACT
-  target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+  target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE8_TO_14_SELECTED_BRANCH.
+  note: Paper backlink block references CLAIM_STAGE025_031_SELECTED_BRANCH.
   status: v06
 - source: BACKLINK_MOVING_THROAT_COMPACT
   target: CLAIM_MIXED_SECTOR_MICROSCOPIC
@@ -12422,19 +12709,19 @@ edges:
   note: Paper backlink block references CLAIM_STAGE3_BDG_SCHUR.
   status: v06
 - source: BACKLINK_PDE_AUDIT
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER.
+  note: Paper backlink block references CLAIM_PROJECTED_EM_OUTGOING_BRIDGE.
   status: v06
 - source: BACKLINK_PDE_AUDIT
-  target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+  target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
   status: v06
 - source: BACKLINK_PDE_AUDIT
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: BACKLINKS_ATLAS_NODE
-  note: Paper backlink block references CLAIM_STAGE7_O3_ISOTROPY.
+  note: Paper backlink block references CLAIM_STAGE024_O3_ISOTROPY.
   status: v06
 - source: BACKLINK_PDE_AUDIT
   target: CLAIM_RESPONSE_READOUT_DISCIPLINE
@@ -12892,7 +13179,7 @@ edges:
   note: Query validation start node.
   status: v06
 - source: QUERY_P2_BECOMES_PHYSICAL
-  target: CLAIM_STAGE7_O3_ISOTROPY
+  target: CLAIM_STAGE024_O3_ISOTROPY
   relation: EXPECTS_TARGET
   note: Query validation expected target node.
   status: v06
@@ -12932,7 +13219,7 @@ edges:
   note: Query validation start node.
   status: v06
 - source: QUERY_MIXED_SECTOR
-  target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+  target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: EXPECTS_TARGET
   note: Query validation expected target node.
   status: v06
@@ -13836,8 +14123,8 @@ edges:
 - source: ATLAS_CODEX_BACKLINK_SWEEP_V08
   target: STATUS_FIREWALL_REGISTER_V07
   relation: PRESERVES
-node_count: 373
-edge_count: 1325
+node_count: 382
+edge_count: 1348
 v06_additions:
   added_backlink_blocks: 16
   added_section_anchors: 7
@@ -13927,6 +14214,10 @@ source_resolution:
   canonical_ref: research/4d_4pn/paper/4d_4pn.tex
   source_kind: paper
   source_note: research/4d_4pn/notes/4d_4pn_full_notes.md
+- legacy_ref: pde_ledger.tex
+  canonical_ref: research/pde_ledger/paper/pde_ledger.tex
+  source_kind: paper
+  note: Current maintained 253-stage PDE derivation ledger.
 - legacy_ref: moving_throat_pde_stage001_geometry_lift.md
   canonical_ref: research/pde_ledger/paper/stages/stage_001.tex
   source_kind: paper_component
@@ -13939,18 +14230,34 @@ source_resolution:
   canonical_ref: research/pde_ledger/paper/stages/stage_003.tex
   source_kind: paper_component
   source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage003_bdg_coupling.md
-- legacy_ref: moving_throat_pde_stage004_maxwell_mixed_response.md
+- legacy_ref: notes/em_projected/step_01_projected_maxwell_readme.md
   canonical_ref: research/pde_ledger/paper/stages/stage_004.tex
   source_kind: paper_component
-  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage004_maxwell_mixed_response.md
-- legacy_ref: moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
-  canonical_ref: research/pde_ledger/paper/stages/stage_005.tex
+  note: First stage of the linear projection-first EM packet. The imported derivation block runs through Stage 020.
+- legacy_ref: notes/em_projected/step_18_parent_throat_action_weak_axisym_packet_notes.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_020.tex
   source_kind: paper_component
-  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage005_grouped_p2_normalization_bridge.md
-- legacy_ref: moving_throat_pde_stage007_overlap_isotropy.md
-  canonical_ref: research/pde_ledger/paper/stages/stage_007.tex
+  note: Last imported derivation-only projected-EM source; step 19 and later computational work remain excluded.
+- legacy_ref: moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_021.tex
   source_kind: paper_component
-  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage007_overlap_isotropy.md
+  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+- legacy_ref: moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_022.tex
+  source_kind: paper_component
+  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+- legacy_ref: moving_throat_pde_stage023_full_grouped_bundle.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_023.tex
+  source_kind: paper_component
+  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+- legacy_ref: moving_throat_pde_stage024_overlap_isotropy.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_024.tex
+  source_kind: paper_component
+  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+- legacy_ref: moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  canonical_ref: research/pde_ledger/paper/stages/stage_025.tex
+  source_kind: paper_component
+  source_note: research/pde_ledger/notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
 - legacy_ref: 4d_5pn_summary.md
   canonical_ref: notes/5pn/5pn_notes_full.md
   source_kind: future_paper_note
@@ -14002,6 +14309,11 @@ source_resolution:
   source_kind: future_paper_note
   future_paper_needed: true
   note: g-2 derivation ledger still needs a paper.
+- legacy_ref: notes/circulation/
+  canonical_ref: notes/circulation/README.md
+  source_kind: future_paper_note
+  future_paper_needed: true
+  note: Six-step circulation pair-force audit package; keep conditional status until a maintained paper section exists.
 - legacy_ref: derived_from_current_task
   canonical_ref: derived_from_current_task
   source_kind: synthetic_provenance

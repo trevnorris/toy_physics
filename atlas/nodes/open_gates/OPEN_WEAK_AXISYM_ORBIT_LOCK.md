@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Derive weak-axisymmetric tangent, Xi1, q_tr/q_nt/q_eta packet, and orbit-lock conditions on the actual branch.
 future_paper_needed: false
 source_files:
@@ -32,7 +32,7 @@ claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
 - CLAIM_G2_COMMON_QUOTIENT
 - CLAIM_PACKET_A_PACKET_B_SPLIT
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE024_O3_ISOTROPY
 open_gate_ids:
 - OPEN_ACTUAL_BRANCH_EXPORTER
 source_ids:
@@ -81,7 +81,7 @@ incoming_edges:
   relation: FEEDS_OR_STATUS_OF
   status: open_branch_packets
   note: Claim feeds this downstream object, output, or open gate.
-- source: CLAIM_STAGE7_O3_ISOTROPY
+- source: CLAIM_STAGE024_O3_ISOTROPY
   relation: FEEDS_OR_STATUS_OF
   status: exact_angular_reduced
   note: Claim feeds this downstream object, output, or open gate.
@@ -121,9 +121,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_WEAK_AXISYM_ORBIT_LOCK`  
-> **Status:** `open`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_WEAK_AXISYM_ORBIT_LOCK`
+> **Status:** `open`
+> **Layer:** `open_gate`
 > **Type:** `orbit_lock_gate`
 
 ## Summary
@@ -164,7 +164,7 @@ Derive weak-axisymmetric tangent, Xi1, q_tr/q_nt/q_eta packet, and orbit-lock co
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
 - [[CLAIM_G2_COMMON_QUOTIENT]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - [[OPEN_ACTUAL_BRANCH_EXPORTER]]
@@ -196,7 +196,7 @@ Derive weak-axisymmetric tangent, Xi1, q_tr/q_nt/q_eta packet, and orbit-lock co
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_G2_COMMON_QUOTIENT]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim feeds this downstream object, output, or open gate. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_5PN_FULL]] | Paper backlink block flags open gate OPEN_WEAK_AXISYM_ORBIT_LOCK. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_G2_OUTPUT]] | Paper backlink block flags open gate OPEN_WEAK_AXISYM_ORBIT_LOCK. |
 | `FLAGS_OPEN_GATE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block flags open gate OPEN_WEAK_AXISYM_ORBIT_LOCK. |

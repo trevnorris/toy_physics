@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 5PN continuation, full-bundle surface, weak-axisymmetric transport, monomial quotient/orbit-lock machinery.
 source_kind: future_paper_note
 future_paper_needed: true
@@ -39,8 +39,8 @@ equation_ids:
 claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
 - CLAIM_G2_COMMON_QUOTIENT
-- CLAIM_STAGE6_FULL_BUNDLE_RATIO
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE023_FULL_BUNDLE_RATIO
+- CLAIM_STAGE024_O3_ISOTROPY
 status_firewall_ids:
 - FIREWALL_SIMILARITY_NOT_FULL_5PN
 source_ids:
@@ -127,11 +127,11 @@ outgoing_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: conditional_reduced_residual
   note: Source artifact anchors this claim.
-- target: CLAIM_STAGE6_FULL_BUNDLE_RATIO
+- target: CLAIM_STAGE023_FULL_BUNDLE_RATIO
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_within_reduced_bundle
   note: Source artifact anchors this claim.
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_angular_reduced
   note: Source artifact anchors this claim.
@@ -156,9 +156,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `FILE_5PN_FULL`  
-> **Status:** `continuation_anchor`  
-> **Layer:** `file_anchor`  
+> **Atlas ID:** `FILE_5PN_FULL`
+> **Status:** `continuation_anchor`
+> **Layer:** `file_anchor`
 > **Type:** `source_file`
 
 ## Summary
@@ -195,8 +195,8 @@ tags:
 ### Related claims
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
 - [[CLAIM_G2_COMMON_QUOTIENT]]
-- [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - none
@@ -238,8 +238,8 @@ tags:
 | `HAS_SECTION_ANCHOR` | [[SEC_5PN_SUMMARY_SCOPE]] | v0.6 section anchor: 0) What this package is doing |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_5PN_FULL_BUNDLE_SURFACE]] | Source artifact anchors this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_G2_COMMON_QUOTIENT]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE6_FULL_BUNDLE_RATIO]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE023_FULL_BUNDLE_RATIO]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Source artifact anchors this claim. |
 
 ## Incoming Edges
 

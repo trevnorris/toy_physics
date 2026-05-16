@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Axial/cavity support structure extending into w and carrying wall, BdG, Maxwell/mixed, and outgoing-port degrees of freedom.
 future_paper_needed: false
 source_files:
@@ -27,8 +27,8 @@ claim_ids:
 - CLAIM_2PN_ADM_WITHIN_HIERARCHY
 - CLAIM_LEPTON_MASS_REDUCED_LEDGER
 - CLAIM_RESPONSE_READOUT_DISCIPLINE
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 - CLAIM_STAGE3_BDG_SCHUR
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
 outgoing_edges:
 - target: READOUT_D0_C_P0_N2_N4
   relation: AFFECTS
@@ -46,13 +46,13 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: paper_facing_ontology_discipline
   note: Physical ontology object grounded by this claim.
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
+  relation: GROUNDS_PHYSICAL_MEANING
+  status: exact_within_selected_reduced_branch
+  note: Physical ontology object grounded by this claim.
 - target: CLAIM_STAGE3_BDG_SCHUR
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_reduced_stable_modes
-  note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
-  relation: GROUNDS_PHYSICAL_MEANING
-  status: exact_within_selected_reduced_branch
   note: Physical ontology object grounded by this claim.
 - target: PHYS_SUPERFLUID_INTAKE_OUTPUT
   relation: SUPPORTS
@@ -96,9 +96,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_INTERIOR_SUPPORT`  
-> **Status:** `physical_ontology`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_INTERIOR_SUPPORT`
+> **Status:** `physical_ontology`
+> **Layer:** `physical_ontology`
 > **Type:** `geometry_feature`
 
 ## Summary
@@ -149,8 +149,8 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_2PN_ADM_WITHIN_HIERARCHY]]
 - [[CLAIM_LEPTON_MASS_REDUCED_LEDGER]]
 - [[CLAIM_RESPONSE_READOUT_DISCIPLINE]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 - [[CLAIM_STAGE3_BDG_SCHUR]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
 
 ### Open gates
 - none
@@ -169,8 +169,8 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_2PN_ADM_WITHIN_HIERARCHY]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_LEPTON_MASS_REDUCED_LEDGER]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_RESPONSE_READOUT_DISCIPLINE]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE3_BDG_SCHUR]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
 | `SUPPORTS` | [[PHYS_SUPERFLUID_INTAKE_OUTPUT]] | Interior/open conduit hosts intake/output and support channels. |
 
 ## Incoming Edges

@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Surviving universal dissipative/tail bridge after scalar and dipole demotion; requires actual branch normalization.
 future_paper_needed: false
 source_files:
@@ -29,9 +29,9 @@ claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
 - CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE025_031_SELECTED_BRANCH
 open_gate_ids:
 - OPEN_QUAD_NORMALIZATION
 outgoing_edges:
@@ -47,15 +47,15 @@ outgoing_edges:
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_gauge_invariant_with_reduced_uses
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_reduced_mixed_kernel
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_grouped_bridge
   note: Physical ontology object grounded by this claim.
-- target: CLAIM_STAGE8_TO_14_SELECTED_BRANCH
+- target: CLAIM_STAGE025_031_SELECTED_BRANCH
   relation: GROUNDS_PHYSICAL_MEANING
   status: exact_within_selected_reduced_branch
   note: Physical ontology object grounded by this claim.
@@ -94,9 +94,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `PHYS_OUTGOING_QUADRUPOLE_PORT`  
-> **Status:** `open_actual_branch_data`  
-> **Layer:** `physical_ontology`  
+> **Atlas ID:** `PHYS_OUTGOING_QUADRUPOLE_PORT`
+> **Status:** `open_actual_branch_data`
+> **Layer:** `physical_ontology`
 > **Type:** `radiative_port`
 
 ## Summary
@@ -142,9 +142,9 @@ The graph currently records the equation text but not a full variable dictionary
 - [[CLAIM_25PN_QUAD_NARROWING]]
 - [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]]
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE025_031_SELECTED_BRANCH]]
 
 ### Open gates
 - [[OPEN_QUAD_NORMALIZATION]]
@@ -162,9 +162,9 @@ The graph currently records the equation text but not a full variable dictionary
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_25PN_QUAD_NARROWING]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_4PN_LOCAL_CLOSED_TAIL_CONDITIONAL]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE5_P0_TARGET]] | Physical ontology object grounded by this claim. |
-| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE8_TO_14_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE022_P0_TARGET]] | Physical ontology object grounded by this claim. |
+| `GROUNDS_PHYSICAL_MEANING` | [[CLAIM_STAGE025_031_SELECTED_BRANCH]] | Physical ontology object grounded by this claim. |
 | `REQUIRES` | [[OPEN_QUAD_NORMALIZATION]] | Outgoing port normalization must match universal quadrupole coefficient. |
 
 ## Incoming Edges

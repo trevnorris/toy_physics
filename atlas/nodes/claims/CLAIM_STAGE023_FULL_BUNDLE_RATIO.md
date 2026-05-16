@@ -1,6 +1,6 @@
 ---
-id: CLAIM_STAGE6_FULL_BUNDLE_RATIO
-title: Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+id: CLAIM_STAGE023_FULL_BUNDLE_RATIO
+title: Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
 type: claim
 layer: claim_theorem
 status: exact_within_reduced_bundle
@@ -9,8 +9,8 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
-summary_short: The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
+last_generated_utc: '2026-05-16T02:18:48Z'
+summary_short: Stage 023 writes the full grouped real 20/21/22 bundle, tracking wall, BdG, projection-first Maxwell/matched one-port, and outgoing data. On the isotropic branch the normalizati...
 future_paper_needed: false
 source_links:
 - '[[FILE_5PN_FULL]]'
@@ -29,8 +29,8 @@ equation_ids:
 claim_ids:
 - CLAIM_5PN_FULL_BUNDLE_SURFACE
 - CLAIM_PACKET_A_PACKET_B_SPLIT
-- CLAIM_STAGE5_P0_TARGET
-- CLAIM_STAGE7_O3_ISOTROPY
+- CLAIM_STAGE022_P0_TARGET
+- CLAIM_STAGE024_O3_ISOTROPY
 open_gate_ids:
 - TARGET_PACKET_A
 source_ids:
@@ -41,7 +41,7 @@ source_ids:
 - SEC_PDE_NORM_RATIO
 - SEC_PDE_P2_PROJECTORS
 outgoing_edges:
-- target: CLAIM_STAGE7_O3_ISOTROPY
+- target: CLAIM_STAGE024_O3_ISOTROPY
   relation: ANGULARLY_REFINED_BY
   status: active
   note: Claim-level dependency added in v0.4.
@@ -53,7 +53,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle
   note: Claim feeds this downstream object, output, or open gate.
-- target: MT_STAGE6_FULL_GROUPED_BUNDLE
+- target: MT_STAGE023_FULL_GROUPED_BUNDLE
   relation: FEEDS_OR_STATUS_OF
   status: exact_within_reduced_bundle
   note: Claim feeds this downstream object, output, or open gate.
@@ -77,19 +77,19 @@ incoming_edges:
 - source: BACKLINK_3PN_FULL
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
 - source: BACKLINK_5PN_FULL
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
 - source: BACKLINK_MOVING_THROAT_COMPACT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
 - source: BACKLINK_PDE_AUDIT
   relation: BACKLINKS_ATLAS_NODE
   status: v06
-  note: Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO.
+  note: Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO.
 - source: STATUS_LADDER_EXACT_TO_OPEN
   relation: CLASSIFIES
   status: exact_within_reduced_bundle
@@ -98,7 +98,7 @@ incoming_edges:
   relation: CONTAINS_CLAIM
   status: active
   note: v0.4 claim/theorem layer item.
-- source: CLAIM_STAGE5_P0_TARGET
+- source: CLAIM_STAGE022_P0_TARGET
   relation: GENERALIZES_TO
   status: active
   note: Claim-level dependency added in v0.4.
@@ -138,39 +138,40 @@ tags:
 - topic/maxwell
 - topic/moving_throat
 - topic/pn_chain
+- topic/projection
 - type/claim
 ---
 
 <!-- GENERATED FROM graph/fluid_universe_derivation_atlas_graph.yaml; DO NOT EDIT BY HAND. -->
 
-# Full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
+# Stage 023 full grouped bundle reduces isotropic target to N0/(K-B0-Z0)
 
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_STAGE6_FULL_BUNDLE_RATIO`  
-> **Status:** `exact_within_reduced_bundle`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_STAGE023_FULL_BUNDLE_RATIO`
+> **Status:** `exact_within_reduced_bundle`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
 
-The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
+Stage 023 writes the full grouped real 20/21/22 bundle, tracking wall, BdG, projection-first Maxwell/matched one-port, and outgoing data. On the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
 
 ## Claim
 
-The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
+Stage 023 writes the full grouped real 20/21/22 bundle, tracking wall, BdG, projection-first Maxwell/matched one-port, and outgoing data. On the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
 
 ## Physical Meaning
 
-The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
+Stage 023 writes the full grouped real 20/21/22 bundle, tracking wall, BdG, projection-first Maxwell/matched one-port, and outgoing data. On the isotropic branch the normalization test is mhat0^2 N0/(K-B0-Z0) against the universal target.
 
 ## Mathematical Role
 
 - Layer: `claim_theorem`
 - Type: `claim`
 - Status: `exact_within_reduced_bundle`
-- Outputs: `MT_STAGE6_FULL_GROUPED_BUNDLE`, `MATH_FULL_BUNDLE_TARGET_SURFACE`, `TARGET_PACKET_A`
+- Outputs: `MT_STAGE023_FULL_GROUPED_BUNDLE`, `MATH_FULL_BUNDLE_TARGET_SURFACE`, `TARGET_PACKET_A`
 
 ## Atlas Links
 
@@ -187,8 +188,8 @@ The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on 
 ### Related claims
 - [[CLAIM_5PN_FULL_BUNDLE_SURFACE]]
 - [[CLAIM_PACKET_A_PACKET_B_SPLIT]]
-- [[CLAIM_STAGE5_P0_TARGET]]
-- [[CLAIM_STAGE7_O3_ISOTROPY]]
+- [[CLAIM_STAGE022_P0_TARGET]]
+- [[CLAIM_STAGE024_O3_ISOTROPY]]
 
 ### Open gates
 - [[TARGET_PACKET_A]]
@@ -208,10 +209,10 @@ The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on 
 
 | Relation | Node | Note |
 |---|---|---|
-| `ANGULARLY_REFINED_BY` | [[CLAIM_STAGE7_O3_ISOTROPY]] | Claim-level dependency added in v0.4. |
+| `ANGULARLY_REFINED_BY` | [[CLAIM_STAGE024_O3_ISOTROPY]] | Claim-level dependency added in v0.4. |
 | `DEFINES_PACKET_A` | [[CLAIM_PACKET_A_PACKET_B_SPLIT]] | Claim-level dependency added in v0.4. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_FULL_BUNDLE_TARGET_SURFACE]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[MT_STAGE6_FULL_GROUPED_BUNDLE]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE023_FULL_GROUPED_BUNDLE]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[TARGET_PACKET_A]] | Claim feeds this downstream object, output, or open gate. |
 
 ## Incoming Edges
@@ -221,13 +222,13 @@ The full 20/21/22 bundle tracks wall, BdG, Maxwell/mixed, and outgoing data; on 
 | `ANCHORS_CLAIM_SECTION` | [[SEC_5PN_STAGE18_SURFACE]] | Exact isotropic full-bundle target surface. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_NORM_RATIO]] | P0/N0/D0 normalization audit. |
 | `ANCHORS_CLAIM_SECTION` | [[SEC_PDE_P2_PROJECTORS]] | Grouped P2 projectors. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_3PN_FULL]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_5PN_FULL]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
-| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_STAGE6_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_3PN_FULL]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_5PN_FULL]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_MOVING_THROAT_COMPACT]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
+| `BACKLINKS_ATLAS_NODE` | [[BACKLINK_PDE_AUDIT]] | Paper backlink block references CLAIM_STAGE023_FULL_BUNDLE_RATIO. |
 | `CLASSIFIES` | [[STATUS_LADDER_EXACT_TO_OPEN]] | Claim class: exact_within_closure |
 | `CONTAINS_CLAIM` | [[VIEW_CLAIM_LAYER]] | v0.4 claim/theorem layer item. |
-| `GENERALIZES_TO` | [[CLAIM_STAGE5_P0_TARGET]] | Claim-level dependency added in v0.4. |
+| `GENERALIZES_TO` | [[CLAIM_STAGE022_P0_TARGET]] | Claim-level dependency added in v0.4. |
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_GROUPED_P2_SHAPE_RESPONSE]] | Physical ontology object grounded by this claim. |
 | `GROUNDS_PHYSICAL_MEANING` | [[PHYS_RESPONSE_READOUTS]] | Physical ontology object grounded by this claim. |
 | `OWNS_OR_ANCHORS_CLAIM` | [[FILE_5PN_FULL]] | Source artifact anchors this claim. |

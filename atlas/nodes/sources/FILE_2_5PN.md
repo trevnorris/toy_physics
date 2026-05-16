@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: 2.5PN audit narrowing radiation reaction to the orbital/worldtube STF quadrupole normalization.
 source_kind: paper
 future_paper_needed: false
@@ -42,7 +42,7 @@ equation_ids:
 - EQ_P0_TARGET
 claim_ids:
 - CLAIM_25PN_QUAD_NARROWING
-- CLAIM_STAGE5_P0_TARGET
+- CLAIM_STAGE022_P0_TARGET
 status_firewall_ids:
 - FIREWALL_25PN_CONDITIONAL
 - FIREWALL_4PN_LOCAL_NOT_FULL_TAIL
@@ -89,7 +89,7 @@ outgoing_edges:
   relation: OWNS_OR_ANCHORS_CLAIM
   status: conditional_theorem_open_normalization
   note: Source artifact anchors this claim.
-- target: CLAIM_STAGE5_P0_TARGET
+- target: CLAIM_STAGE022_P0_TARGET
   relation: OWNS_OR_ANCHORS_CLAIM
   status: exact_within_grouped_bridge
   note: Source artifact anchors this claim.
@@ -119,9 +119,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `FILE_2_5PN`  
-> **Status:** `bridge_anchor`  
-> **Layer:** `file_anchor`  
+> **Atlas ID:** `FILE_2_5PN`
+> **Status:** `bridge_anchor`
+> **Layer:** `file_anchor`
 > **Type:** `source_file`
 
 ## Summary
@@ -151,7 +151,7 @@ tags:
 
 ### Related claims
 - [[CLAIM_25PN_QUAD_NARROWING]]
-- [[CLAIM_STAGE5_P0_TARGET]]
+- [[CLAIM_STAGE022_P0_TARGET]]
 
 ### Open gates
 - none
@@ -180,7 +180,7 @@ tags:
 | `HAS_SECTION_ANCHOR` | [[SEC_25PN_QUAD_LEDGER]] | 4d_2_5pn_summary.md:348 — 4.5 Quadrupole structural ledger |
 | `HAS_SECTION_ANCHOR` | [[SEC_25PN_STF_MAP]] | 4d_2_5pn_summary.md:190 — 3.5 Canonical orbital quadrupole and grouped \(P_2\) basis map |
 | `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_25PN_QUAD_NARROWING]] | Source artifact anchors this claim. |
-| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE5_P0_TARGET]] | Source artifact anchors this claim. |
+| `OWNS_OR_ANCHORS_CLAIM` | [[CLAIM_STAGE022_P0_TARGET]] | Source artifact anchors this claim. |
 
 ## Incoming Edges
 

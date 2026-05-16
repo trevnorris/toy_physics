@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: A_w, F_mu_w, J^w, E_w, and C_a are retained in the parent/microscopic ontology and are the natural carriers for leakage, beyond-MHD structure, and outgoing quadrupole transfer.
 future_paper_needed: false
 source_files:
@@ -49,7 +49,7 @@ equation_ids:
 claim_ids:
 - CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL
 - CLAIM_MIXED_RECIRCULATION_OPEN
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 status_firewall_ids:
 - FIREWALL_ZERO_MODE_NOT_MIXED_ERASURE
 source_ids:
@@ -65,7 +65,7 @@ source_ids:
 - SEC_PLASMA_AW_ROLE
 - SEC_PLASMA_MIXED_FIELDS
 outgoing_edges:
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: ENABLES
   status: active
   note: Claim-level dependency added in v0.4.
@@ -77,7 +77,7 @@ outgoing_edges:
   relation: FEEDS_OR_STATUS_OF
   status: exact_gauge_invariant_with_reduced_uses
   note: Claim feeds this downstream object, output, or open gate.
-- target: MT_STAGE4_MAXWELL_MIXED
+- target: MT_STAGE004_020_PROJECTED_MAXWELL
   relation: FEEDS_OR_STATUS_OF
   status: exact_gauge_invariant_with_reduced_uses
   note: Claim feeds this downstream object, output, or open gate.
@@ -200,9 +200,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `CLAIM_MIXED_SECTOR_MICROSCOPIC`  
-> **Status:** `exact_gauge_invariant_with_reduced_uses`  
-> **Layer:** `claim_theorem`  
+> **Atlas ID:** `CLAIM_MIXED_SECTOR_MICROSCOPIC`
+> **Status:** `exact_gauge_invariant_with_reduced_uses`
+> **Layer:** `claim_theorem`
 > **Type:** `claim`
 
 ## Summary
@@ -222,7 +222,7 @@ A_w, F_mu_w, J^w, E_w, and C_a are retained in the parent/microscopic ontology a
 - Layer: `claim_theorem`
 - Type: `claim`
 - Status: `exact_gauge_invariant_with_reduced_uses`
-- Outputs: `MATH_MIXED_FIELDS_EW_CA`, `MATH_MAXWELL_MIXED_KERNEL`, `MT_STAGE4_MAXWELL_MIXED`
+- Outputs: `MATH_MIXED_FIELDS_EW_CA`, `MATH_MAXWELL_MIXED_KERNEL`, `MT_STAGE004_020_PROJECTED_MAXWELL`
 
 ## Atlas Links
 
@@ -241,7 +241,7 @@ A_w, F_mu_w, J^w, E_w, and C_a are retained in the parent/microscopic ontology a
 ### Related claims
 - [[CLAIM_LEPTON_HALF_INTEGER_CONDITIONAL]]
 - [[CLAIM_MIXED_RECIRCULATION_OPEN]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -266,10 +266,10 @@ A_w, F_mu_w, J^w, E_w, and C_a are retained in the parent/microscopic ontology a
 
 | Relation | Node | Note |
 |---|---|---|
-| `ENABLES` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Claim-level dependency added in v0.4. |
+| `ENABLES` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Claim-level dependency added in v0.4. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_MAXWELL_MIXED_KERNEL]] | Claim feeds this downstream object, output, or open gate. |
 | `FEEDS_OR_STATUS_OF` | [[MATH_MIXED_FIELDS_EW_CA]] | Claim feeds this downstream object, output, or open gate. |
-| `FEEDS_OR_STATUS_OF` | [[MT_STAGE4_MAXWELL_MIXED]] | Claim feeds this downstream object, output, or open gate. |
+| `FEEDS_OR_STATUS_OF` | [[MT_STAGE004_020_PROJECTED_MAXWELL]] | Claim feeds this downstream object, output, or open gate. |
 
 ## Incoming Edges
 

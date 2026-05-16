@@ -9,7 +9,7 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Numerically or analytically solve the actual open-throat branch and export frozen profile/response data.
 future_paper_needed: false
 source_files:
@@ -83,9 +83,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `OPEN_EXECUTABLE_BRANCH_SOLVER`  
-> **Status:** `open`  
-> **Layer:** `open_gate`  
+> **Atlas ID:** `OPEN_EXECUTABLE_BRANCH_SOLVER`
+> **Status:** `open`
+> **Layer:** `open_gate`
 > **Type:** `solver_gate`
 
 ## Summary

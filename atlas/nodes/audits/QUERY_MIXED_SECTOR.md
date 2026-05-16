@@ -9,14 +9,14 @@ source_graph_version: v0.8-codex-handoff
 source_graph_file: graph/fluid_universe_derivation_atlas_graph.yaml
 generated_by: codex
 generated: true
-last_generated_utc: '2026-04-27T19:11:17Z'
+last_generated_utc: '2026-05-16T02:18:48Z'
 summary_short: Mixed fields are microscopic gauge-invariant channels; Stage 4 uses localized Maxwell/mixed coordinates to carry the outgoing quadrupole bridge.
 future_paper_needed: false
 claim_ids:
 - CLAIM_MIXED_SECTOR_MICROSCOPIC
-- CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
 outgoing_edges:
-- target: CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER
+- target: CLAIM_PROJECTED_EM_OUTGOING_BRIDGE
   relation: EXPECTS_TARGET
   status: v06
   note: Query validation expected target node.
@@ -41,9 +41,9 @@ tags:
 > [!warning] Generated note
 > This Obsidian note is generated from `graph/fluid_universe_derivation_atlas_graph.yaml`. Do not edit by hand; update the graph and regenerate.
 
-> **Atlas ID:** `QUERY_MIXED_SECTOR`  
-> **Status:** `v06_seed_query`  
-> **Layer:** `query_validation`  
+> **Atlas ID:** `QUERY_MIXED_SECTOR`
+> **Status:** `v06_seed_query`
+> **Layer:** `query_validation`
 > **Type:** `query_test`
 
 ## Summary
@@ -59,7 +59,7 @@ Mixed fields are microscopic gauge-invariant channels; Stage 4 uses localized Ma
 - Layer: `query_validation`
 - Type: `query_test`
 - Status: `v06_seed_query`
-- Target: `CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER`
+- Target: `CLAIM_PROJECTED_EM_OUTGOING_BRIDGE`
 
 ## Atlas Links
 
@@ -74,7 +74,7 @@ Mixed fields are microscopic gauge-invariant channels; Stage 4 uses localized Ma
 
 ### Related claims
 - [[CLAIM_MIXED_SECTOR_MICROSCOPIC]]
-- [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]]
+- [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]]
 
 ### Open gates
 - none
@@ -89,7 +89,7 @@ Mixed fields are microscopic gauge-invariant channels; Stage 4 uses localized Ma
 
 | Relation | Node | Note |
 |---|---|---|
-| `EXPECTS_TARGET` | [[CLAIM_STAGE4_MIXED_OUTGOING_TRANSFER]] | Query validation expected target node. |
+| `EXPECTS_TARGET` | [[CLAIM_PROJECTED_EM_OUTGOING_BRIDGE]] | Query validation expected target node. |
 | `STARTS_AT` | [[CLAIM_MIXED_SECTOR_MICROSCOPIC]] | Query validation start node. |
 
 ## Incoming Edges

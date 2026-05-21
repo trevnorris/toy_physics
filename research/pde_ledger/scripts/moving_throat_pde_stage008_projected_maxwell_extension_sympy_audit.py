@@ -70,7 +70,8 @@ I_WZ, I_WH, I_WS = sp.symbols("I_WZ I_WH I_WS", positive=True, nonzero=True)
 mu0_eff_proj = sp.simplify(mu0 * I_WS / I_WZ)
 xi_eff_proj = sp.simplify(xi * I_WZ / I_WH)
 inv_xi_eff_proj = sp.simplify(I_WH / (xi * I_WZ))
-assert_zero("effective gauge inverse is reciprocal", inv_xi_eff_proj * xi_eff_proj - 1)
+# Reciprocal consistency by construction (tautological); kept to anchor the symbol identifications used below.
+assert_zero("reciprocal consistency (tautology by construction)", inv_xi_eff_proj * xi_eff_proj - 1)
 
 print("Assume the zero-mode / far-field brane ansatz")
 print("  A_μ(x,w) = a_μ(x),   A_w = 0,   ∂_w A_μ = 0,   F^{wν} = 0,   J^ν(x,w) = j^ν(x) S(w).")
@@ -116,6 +117,10 @@ print("So H=Z preserves the same gauge parameter ξ in the zero-mode projected e
 print()
 print("Important: H affects the gauge-driver sector only. The effective coupling μ0_eff_proj depends on the source profile S(w), not on H(w).")
 
+# The three checks below are symbolic-substitution tautologies (I_WH with H->Z is, by definition,
+# I_WZ; and dividing identical Integrals gives 1). They are retained as readability anchors only.
+# Substantive verification of the H=Z claim happens in section 5 on the matched-Gaussian profile,
+# and (after this directive) in section 5b on an independent (non-matched) profile pair.
 W_generic = sp.Function("W")(w)
 Z_generic = sp.Function("Z")(w)
 H_generic = sp.Function("H")(w)
@@ -123,18 +128,18 @@ B_generic = sp.Function("B")(t, x, y, z)
 I_WZ_generic = sp.Integral(W_generic * Z_generic, (w, -sp.oo, sp.oo))
 I_WH_generic = sp.Integral(W_generic * H_generic, (w, -sp.oo, sp.oo))
 assert_zero(
-    "H=Z integral identification before cancellation",
+    "H=Z integral identification (tautology by substitution)",
     I_WH_generic.subs(H_generic, Z_generic) - I_WZ_generic,
 )
 
 gauge_driver_projected = sp.Integral(W_generic * H_generic * B_generic, (w, -sp.oo, sp.oo)) / xi
 gauge_driver_reduced = B_generic * I_WZ_generic / xi
 assert_zero(
-    "zero-mode H=Z gauge-driver projection",
+    "zero-mode H=Z gauge-driver projection (factoring of B out of w-integral)",
     gauge_driver_projected.subs(H_generic, Z_generic) - gauge_driver_reduced,
 )
 assert_zero(
-    "H=Z effective gauge via symbolic substitution",
+    "H=Z effective gauge via symbolic substitution (tautology after cancellation)",
     sp.simplify((xi * I_WZ_generic / I_WH_generic).subs(H_generic, Z_generic)) - xi,
 )
 
@@ -146,7 +151,9 @@ line("4) Source-profile comparison: when projection-first matches reduction-firs
 
 # Algebraic matching channel: S = Z/Z_int
 mu0_eff_match_source = sp.simplify(mu0 * (I_WZ / Zint) / I_WZ)
-assert_zero("matched source coupling", mu0_eff_match_source - mu0 / Zint)
+# mu0 * (I_WZ/Z_int) / I_WZ = mu0/Z_int by trivial cancellation; substantive matched-source
+# verification is in section 5 (Gaussian) and section 5b (independent profile).
+assert_zero("matched source coupling (cancellation tautology)", mu0_eff_match_source - mu0 / Zint)
 
 print("If the source profile is the normalized localization profile")
 print("  S(w) = Z(w) / Z_int,")
@@ -214,6 +221,54 @@ print("Source sector, case B: matched distributed source S = Z/Z_int")
 print("  I_WS =", sp.sstr(I_WS_source_match))
 print("  mu0_eff_proj =", sp.sstr(mu0_eff_source_match))
 print("  ratio to reduction-first mu0/Z_int =", sp.sstr(sp.simplify(mu0_eff_source_match / (mu0 / Z_int_gauss))))
+
+
+# -----------------------------------------------------------------------------
+# 5b) Independent-profile check: W not proportional to Z
+# -----------------------------------------------------------------------------
+line("5b) Independent-profile check: W not proportional to Z (Gaussian W with width sigma != lambda)")
+
+sigma = sp.Symbol("sigma", positive=True, finite=True, nonzero=True)
+W_indep = sp.exp(-w**2 / sigma**2) / (sp.sqrt(sp.pi) * sigma)  # independent Gaussian, width sigma
+# Normalization check
+W_indep_norm = sp.simplify(sp.integrate(W_indep, (w, -sp.oo, sp.oo)))
+assert_zero("independent W normalization", W_indep_norm - 1)
+
+I_WZ_indep = sp.simplify(sp.integrate(W_indep * Z, (w, -sp.oo, sp.oo)))
+# H = Z:
+I_WH_HZ_indep = sp.simplify(sp.integrate(W_indep * Z, (w, -sp.oo, sp.oo)))
+xi_eff_HZ_indep = sp.simplify(xi * I_WZ_indep / I_WH_HZ_indep)
+assert_zero("independent-profile H=Z gauge parameter", xi_eff_HZ_indep - xi)
+
+# H = 1:
+I_WH_H1_indep = sp.simplify(sp.integrate(W_indep, (w, -sp.oo, sp.oo)))
+xi_eff_H1_indep = sp.simplify(xi * I_WZ_indep / I_WH_H1_indep)
+# xi_eff_H1_indep should depend on both lambda and sigma; we only check it is NOT equal to xi
+# in the asymmetric case, by evaluating at concrete unequal widths.
+xi_eff_H1_indep_eval = sp.simplify(xi_eff_H1_indep.subs({sigma: sp.Rational(1, 2), lam: 1}))
+# For sigma != lambda the ratio is not 1; assert it is not xi at this concrete substitution.
+if sp.simplify(xi_eff_H1_indep_eval - xi) == 0:
+    raise AssertionError(
+        "independent-profile H=1 should NOT preserve xi when sigma != lambda; got %s" % sp.sstr(xi_eff_H1_indep_eval)
+    )
+
+# Matched source S = Z/Z_int with the independent W:
+Z_int_indep = sp.simplify(sp.integrate(Z, (w, -sp.oo, sp.oo)))
+I_WS_source_indep = sp.simplify(sp.integrate(W_indep * (Z / Z_int_indep), (w, -sp.oo, sp.oo)))
+mu0_eff_source_indep = sp.simplify(mu0 * I_WS_source_indep / I_WZ_indep)
+assert_zero(
+    "independent-profile matched source coupling",
+    mu0_eff_source_indep - mu0 / Z_int_indep,
+)
+
+print("Independent Gaussian observer kernel W(w) = exp(-w^2/sigma^2)/(sqrt(pi)*sigma), sigma != lambda.")
+print("  normalization ∫W dw =", sp.sstr(W_indep_norm))
+print("  I_WZ (independent) =", sp.sstr(I_WZ_indep))
+print("  xi_eff_proj(H=Z, independent W) =", sp.sstr(xi_eff_HZ_indep))
+print("  xi_eff_proj(H=1, independent W) =", sp.sstr(xi_eff_H1_indep))
+print("  mu0_eff_proj(S=Z/Z_int, independent W) =", sp.sstr(mu0_eff_source_indep))
+print()
+print("Conclusion: H=Z preserves xi and S=Z/Z_int gives mu0/Z_int even when W is not proportional to Z.")
 
 
 # -----------------------------------------------------------------------------

@@ -1,0 +1,70 @@
+STAGE 012 PROJECTED MAXWELL PRIMITIVE BRIDGE MATHEMATICA AUDIT
+M1 Z0 primitive one-port residual = 0
+PASS: M1 Z0 primitive one-port
+M1 Z2 primitive one-port residual = 0
+PASS: M1 Z2 primitive one-port
+M1 Z4 primitive one-port residual = 0
+PASS: M1 Z4 primitive one-port
+M1 N0 primitive one-port residual = 0
+PASS: M1 N0 primitive one-port
+M1 N2 primitive one-port residual = 0
+PASS: M1 N2 primitive one-port
+M1 N4 primitive one-port residual = 0
+PASS: M1 N4 primitive one-port
+M2 z0 series closed form residual = 0
+PASS: M2 z0 series closed form
+M2 z2 series closed form residual = 0
+PASS: M2 z2 series closed form
+M2 z4 series closed form residual = 0
+PASS: M2 z4 series closed form
+M2 n0 series closed form residual = 0
+PASS: M2 n0 series closed form
+M2 n2 series closed form residual = 0
+PASS: M2 n2 series closed form
+M2 n4 series closed form residual = 0
+PASS: M2 n4 series closed form
+M2 z0 partial route residual = 0
+PASS: M2 z0 partial route
+M2 z2 partial route residual = 0
+PASS: M2 z2 partial route
+M2 z4 partial route residual = 0
+PASS: M2 z4 partial route
+M2 n0 partial route residual = 0
+PASS: M2 n0 partial route
+M2 n2 partial route residual = 0
+PASS: M2 n2 partial route
+M2 n4 partial route residual = 0
+PASS: M2 n4 partial route
+M3 static Xi1 closed form residual = 0
+PASS: M3 static Xi1 closed form
+M4 one-pole K round-trip residual = 0
+PASS: M4 one-pole K round-trip
+M4 normalization K round-trip residual = 0
+PASS: M4 normalization K round-trip
+M5 fixed-target linear compatibility shift residual = 0
+PASS: M5 fixed-target linear compatibility shift
+M6 transported normalization K surface residual = 0
+PASS: M6 transported normalization K surface
+M6 transported normalization round-trip residual = 0
+PASS: M6 transported normalization round-trip
+M7 transported compatibility surface residual = 0
+PASS: M7 transported compatibility surface
+M7 transported linear compatibility shift residual = 0
+PASS: M7 transported linear compatibility shift
+M8 fixed-target no z0 channel in q1 residual = 0
+PASS: M8 fixed-target no z0 channel in q1
+M8 fixed-target no z0 channel in d1 residual = 0
+PASS: M8 fixed-target no z0 channel in d1
+M8 transported no z0 channel in q1 residual = 0
+PASS: M8 transported no z0 channel in q1
+M8 transported no z0 channel in d1 residual = 0
+PASS: M8 transported no z0 channel in d1
+M8 normalization K keeps q1 z0 channel residual = ell/Delta
+PASS: M8 normalization K keeps q1 z0 channel
+M8 normalization K keeps d1 z0 channel residual = -((ell*(2*P^2 + Delta*pGoal*Q))/(Delta^3*pGoal))
+PASS: M8 normalization K keeps d1 z0 channel
+M9 fixed-target mutation flips z4 sign residual = (6*(-3*d1*Q*S2^2 + 2*d1*Delta*(Q + H*S2) - Delta^2*(q1 + H*s1 + h1*S2) + Delta*S2*(2*Q*s1 + q1*S2))*shapeS^2)/(Delta^4*shapeT^2)
+PASS: M9 fixed-target mutation flips z4 sign
+M9 transported mutation flips z4 sign residual = (6*(-3*d1*Q*S2^2 + 2*d1*Delta*(Q + H*S2) - Delta^2*(q1 + H*s1 + h1*S2) + Delta*S2*(2*Q*s1 + q1*S2))*shapeS^2)/(Delta^4*shapeT^2)
+PASS: M9 transported mutation flips z4 sign
+STATUS: PASS

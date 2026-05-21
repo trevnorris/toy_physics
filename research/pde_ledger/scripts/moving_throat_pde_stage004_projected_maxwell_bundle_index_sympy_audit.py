@@ -30,13 +30,18 @@ def main() -> None:
         raise FileNotFoundError(f"Missing bundle scripts: {missing}")
 
     w = sp.symbols("w", real=True)
-    W = sp.Function("W")(w)
-    Q = sp.Function("Q")(w)
 
     # Projection by parts identity:
-    # int W Q_w dw = [WQ] - int W_w Q dw.
-    by_parts_density = sp.diff(W * Q, w) - W * sp.diff(Q, w) - sp.diff(W, w) * Q
-    assert_zero("projection integration-by-parts density", by_parts_density)
+    # Verify integration-by-parts at density level using concrete decaying
+    # test functions so the boundary term [W Q] vanishes at +/- infinity:
+    #   int W Q_w dw + int W_w Q dw = 0.
+    lam_ibp = sp.Symbol("lam_ibp", positive=True)
+    W_ex = sp.exp(-w**2 / lam_ibp**2)
+    Q_ex = w * sp.exp(-w**2 / lam_ibp**2)
+    ibp_lhs = sp.integrate(W_ex * sp.diff(Q_ex, w), (w, -sp.oo, sp.oo))
+    ibp_rhs = -sp.integrate(sp.diff(W_ex, w) * Q_ex, (w, -sp.oo, sp.oo))
+    assert_zero("projection integration-by-parts (decaying test functions)",
+                sp.simplify(ibp_lhs - ibp_rhs))
 
     t, x, y, z = sp.symbols("t x y z", real=True)
     E1 = sp.Function("E1")(t, x, y, z)

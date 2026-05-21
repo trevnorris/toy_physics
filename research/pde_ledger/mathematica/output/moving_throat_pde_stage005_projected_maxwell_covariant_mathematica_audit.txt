@@ -1,0 +1,30 @@
+STAGE 005 -- projected Maxwell covariance audit
+M1 residual = 0
+PASS: M1 commutation with brane derivative
+M1 mutant residual = 7*Cos[t]
+PASS: M1 mutant guard
+M2 boundary value = 0
+PASS: M2 boundary decay
+M2 residual = 0
+PASS: M2 projected IBP identity
+M2 mutant residual = 16/(5*Sqrt[5])
+PASS: M2 mutant guard
+M3 boundary value = 0
+PASS: M3 boundary decay
+M3 residual = 0
+PASS: M3 projected inhomogeneous Maxwell law
+M3 mutant residual = 3
+PASS: M3 mutant guard
+M4 leakage cross-check = 1
+M4 residual = 0
+PASS: M4 analytic transverse leakage value
+M4 mutant residual = -2
+PASS: M4 mutant guard
+PASS: M4 nonzero leakage guard
+M5 boundary value = 0
+PASS: M5 boundary decay
+M5 residual = 0
+PASS: M5 projected charge continuity
+M5 mutant residual = 3
+PASS: M5 mutant guard
+STATUS: PASS

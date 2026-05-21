@@ -1,0 +1,20 @@
+STAGE 011 PROJECTED MAXWELL P2 BRIDGE MATHEMATICA AUDIT
+M1 delta u2 residual = 0
+M2 delta P0 residual = 0
+M3 one-pole first variation residual = 0
+M4 fixed-target K-eliminated surface residual = 0
+M5 fixed-target compatibility first variation residual = 0
+M5 fixed-target z0 independence residual = 0
+M6 transported-target normalization K surface residual = 0
+M7 transported-target compatibility first variation residual = 0
+M7 transported-target z0 independence residual = 0
+M8 real-Y20 lambda(0) residual = 0
+M8 real-Y20 lambda(1) residual = 0
+M8 real-Y20 lambda(2) residual = 0
+M8 same-sign selection m=1 residual = 0
+M8 same-sign selection m=2 residual = 0
+M9 weak-axisymmetric grouped trace residual = 0
+M9 weak-axisymmetric b=3a residual = 0
+M10 static Xi1 slope residual = 0
+M11 u2 projected-Maxwell lane slope residual = 0
+STATUS: PASS

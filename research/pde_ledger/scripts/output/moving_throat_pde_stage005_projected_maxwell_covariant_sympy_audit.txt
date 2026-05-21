@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage005_projected_maxwell_covariant_sympy_audit.py
-# Date: 2026-05-11T12:38:32-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 1) Projection identities
@@ -84,5 +76,3 @@ So a projected Maxwell theory is naturally an open-system electrodynamics, not a
 ========================================================================================
 Concrete Gaussian-kernel checks: commutation, explicit boundary discharge, nonzero leakage, and projected continuity all pass.
 STATUS: PASS
-
-EXIT_CODE: 0

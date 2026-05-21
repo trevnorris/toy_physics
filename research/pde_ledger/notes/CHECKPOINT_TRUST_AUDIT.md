@@ -9,7 +9,7 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-11`
+Snapshot date: `2026-05-21`
 
 ## Scope
 
@@ -65,7 +65,7 @@ Disposition: `ready for citation support`
 | `051` | Exact symbolic product law, endpoint limits, threshold rewrite, and closed root solve; no open review findings. | None urgent. Add numerical stress only if this threshold is later used numerically. |
 | `069` | Exact reduced threshold-window and profile-penalty algebra; no open review findings. | None urgent. |
 | `096` | Re-derives the isotropic `l=0 <-> l=2` decoupling and then evaluates the carried Stage 092 obstruction formula on the isotropic branch to recover the `3/4 + 1/4` conservative module. | None urgent. |
-| `003` | Exact Schur-complement replay, exact one-mode pole split, grouped real `P_2` isotropy/anomaly bookkeeping, independent Mathematica mirror, and now-runnable shared numerical stress. | None urgent. |
+| `003` | Exact Schur-complement replay, exact one-mode pole split, grouped real `P_2` isotropy/anomaly bookkeeping, independent Mathematica mirror (red-team batch I.1 patched a multi-line `lRed = ...` continuation defect that had captured only kinetic terms -- downstream results unaffected, flowed through `mMat/kMat/cMat/oMat`), and now-runnable shared numerical stress. | None urgent. |
 | `022` | Exact grouped-`P_2` normalization bridge, explicit Stage-021 dictionary round-trip for `N0/N2/N4`, and independent Mathematica replay of the normalization-product solve. | None urgent. |
 | `023` | Exact weighted-projector calculus, representative one-port reconstruction of `Z_n/N_n`, full grouped-bundle assembly, and isotropic prefactor laws. Matching Mathematica execution coverage exists, but the trust grade rests on the symbolic theorem path rather than mirror independence. | None urgent. Add numerical stress later only if the grouped-bundle checkpoint starts carrying quantitative downstream claims. |
 | `024` | Exact STF harmonic Gram/source-map closure, unequal-lane witness checks, exact `Y_20` triple-overlap matrix, and the grouped `(1,1/2,-1)` splitting law. Matching Mathematica execution coverage exists, but the trust grade rests on the symbolic theorem path rather than mirror independence. | None urgent. Add numerical stress only if future papers start using quantitative overlap-sensitivity claims rather than the symbolic angular law. |
@@ -75,7 +75,7 @@ Disposition: `ready for citation support`
 | `163` | Exact off-family normal-coordinate transport packet in both CAS layers; the Family-1 numbers are explanatory readbacks only and do not enter the symbolic theorem checks. | None urgent. Add numerical stress later only if downstream work starts relying on the canonical-point coefficient readbacks quantitatively. |
 | `105` | Exact outgoing-DtN fixing of `chi_Q`; symbolic theorem path is clean. | None urgent. |
 | `112` | Exact hybrid / Robin branch solve with no open review issues. | None urgent. |
-| `001--002` | The foundational harmonic bookkeeping, confinement sign, densitized-versus-weighted convention, monopole bridge, `4\pi` overlap factor, and conservative `(a,L)` / grouped-`P_2` reductions are now explicit in the human-facing stage material and checked in both CAS layers. | None urgent. Add numerical stress only if later downstream papers need quantitative sensitivity tests at this foundation layer. |
+| `001--002` | The foundational harmonic bookkeeping, confinement sign, densitized-versus-weighted convention, monopole bridge, `4\pi` overlap factor, and conservative `(a,L)` / grouped-`P_2` reductions are now explicit in the human-facing stage material and checked in both CAS layers; red-team batch I.1 (2026-05-21) reverified end-to-end with no material change. | None urgent. Add numerical stress only if later downstream papers need quantitative sensitivity tests at this foundation layer. |
 | `185` | Primitive microscopic ratios, tracking/nontracking/dressing monomial compilers, observable complement law, and zero-defect solve now all check symbolically in both CAS layers, with the earlier tautology concern removed. | None urgent. Keep the existing `185--187` numerical stress as secondary coverage. |
 | `200` | Exact reference-free packet identities, cocycle law, mismatch compiler, and linearized four-scalar compiler in both CAS layers. | None urgent. |
 | `203` | Exact graph-kernel theorem, inverse compiler, and repair-vector algebra in both CAS layers. | None urgent. |

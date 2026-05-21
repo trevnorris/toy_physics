@@ -308,6 +308,66 @@ assert_zero(
     "concrete projected Ampere 3",
     (sp.diff(H1_bulk_proj, y) - sp.diff(H2_bulk_proj, x)) - sp.diff(D3_bulk_proj, t) + leak3_bulk - mu0 * Pg(J3_bulk),
 )
+
+# --- F2 sub-checks: projection-specific physics not already exercised ---
+
+# (a) Bogus projection: adding `z * w**2` couples a 3D coordinate (z) to the
+#     extra-dim (w). Because `w**2` is even in `w`, the symmetric Gaussian
+#     projector Pg does NOT kill it: `Pg(z * w**2) = z * Pg(w**2) != 0`.
+#     Then `d/dz` of the projected B-component is nonzero, so divB picks
+#     up a spurious term. A *real* projector preserves divB = 0; this
+#     bogus one demonstrates the failure mode.
+B3_bogus = B3_bulk_proj + z * w**2
+assert_nonzero(
+    "bogus-projection divB fails when transverse coord leaks in",
+    sp.diff(B3_bogus, z),
+)
+print("PASS: bogus-projection divB fails when transverse coord leaks in")
+
+# (b) A genuine non-potential 2-form (H_{23} = w, others 0) is not a curl,
+#     so projection-killing of its divB is only because the *symmetric*
+#     Gaussian weight integrates the odd-in-w piece to zero. A slight
+#     asymmetric weight reveals the difference: the projected B_1 becomes
+#     nonzero.
+H23_nonpotential = w  # not of the form ∂_y A_3 - ∂_z A_2 for any smooth A
+H31_nonpotential = 0
+H12_nonpotential = 0
+B1_np = Pg(H23_nonpotential)  # zero because integrand is odd in w
+B2_np = Pg(H31_nonpotential)
+B3_np = Pg(H12_nonpotential)
+assert_zero(
+    "non-potential 2-form with symmetric Gaussian weight: divB = 0 trivially",
+    sp.diff(B1_np, x) + sp.diff(B2_np, y) + sp.diff(B3_np, z),
+)
+print("PASS: non-potential 2-form with symmetric Gaussian weight: divB = 0 trivially")
+Wg_asym = sp.exp(-(w - sp.Rational(1, 2)) ** 2) / sp.sqrt(sp.pi)
+B1_np_asym = sp.simplify(sp.integrate(Wg_asym * H23_nonpotential, (w, -sp.oo, sp.oo)))
+assert_nonzero(
+    "non-potential 2-form with asymmetric weight: projected B_1 is nonzero",
+    B1_np_asym,
+)
+print("PASS: non-potential 2-form with asymmetric weight: projected B_1 is nonzero")
+
+# (c) Antisymmetric mediator kills the leak. The projected-leak kernel is
+#     leak ~ -∫ Wgp(w) * Z(w) * Fw1(w) dw, with Wgp = d/dw(Gaussian) odd in
+#     w and Fw1 = w odd in w. An antisymmetric Z = w makes Z*Fw1 = w**2
+#     even, so Wgp * Z * Fw1 is odd and the integral vanishes. (Note: the
+#     auditor's original claim that Z=1 kills the leak was wrong; Z=1 is
+#     symmetric and gives Wgp * 1 * Fw1 = -2 w**2 * Gaussian / sqrt(pi),
+#     even, with nonzero integral. It is mediator *parity*, not triviality,
+#     that controls the projected leak.)
+Z_antisym = w  # antisymmetric mediator (odd in w)
+leak1_antisym = -sp.simplify(sp.integrate(Wgp * Z_antisym * Fw1, (w, -sp.oo, sp.oo)))
+assert_zero(
+    "antisymmetric-Z mediator kills the projected leak",
+    leak1_antisym,
+)
+print("PASS: antisymmetric-Z mediator kills the projected leak")
+assert_nonzero(
+    "Gaussian-Z leak differs from antisymmetric-Z leak (parity matters)",
+    leak1 - leak1_antisym,
+)
+print("PASS: Gaussian-Z leak differs from antisymmetric-Z leak (parity matters)")
 assert_nonzero(
     "mutated concrete Faraday sign should fail",
     sp.diff(B1_bulk_proj, t) - sp.diff(E3_bulk_proj, y) + sp.diff(E2_bulk_proj, z),

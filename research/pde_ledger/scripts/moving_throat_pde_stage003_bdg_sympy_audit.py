@@ -127,12 +127,35 @@ def axisymmetric_matrix_kernel_audit() -> None:
         EL_xb.lhs + sp.diff(xb, t, 2) + wb**2 * xb - c1b * qa - c2b * qL,
     )
 
-    subbanner("I.2 — Frequency-space elimination")
+    Qa, QL, Xa, Xb = sp.symbols("Qa QL Xa Xb")
+    phase = sp.exp(-sp.I * omega * t)
+    ansatz = {
+        qa: Qa * phase,
+        qL: QL * phase,
+        xa: Xa * phase,
+        xb: Xb * phase,
+    }
+    EL_qa_f = sp.simplify(EL_qa.lhs.subs(ansatz).doit() / phase)
+    EL_qL_f = sp.simplify(EL_qL.lhs.subs(ansatz).doit() / phase)
+    EL_xa_f = sp.simplify(EL_xa.lhs.subs(ansatz).doit() / phase)
+    EL_xb_f = sp.simplify(EL_xb.lhs.subs(ansatz).doit() / phase)
+    x_solution = sp.solve([EL_xa_f, EL_xb_f], [Xa, Xb], dict=True)[0]
+    EL_qa_red = sp.simplify(EL_qa_f.subs(x_solution))
+    EL_qL_red = sp.simplify(EL_qL_f.subs(x_solution))
+    D_derived = -sp.Matrix(
+        [
+            [sp.simplify(sp.diff(EL_qa_red, Qa)), sp.simplify(sp.diff(EL_qa_red, QL))],
+            [sp.simplify(sp.diff(EL_qL_red, Qa)), sp.simplify(sp.diff(EL_qL_red, QL))],
+        ]
+    )
     Mmat = sp.Matrix([[Maa, MaL], [MaL, MLL]])
     Kmat = sp.Matrix([[Kaa, KaL], [KaL, KLL]])
     Cmat = sp.Matrix([[c1a, c1b], [c2a, c2b]])
     Omat = sp.diag(wa**2, wb**2)
     Deff = sp.simplify(Kmat - omega**2 * Mmat - Cmat * (Omat - omega**2 * sp.eye(2)).inv() * Cmat.T)
+    expect_zero("derived D0_eff vs Deff", sp.simplify(D_derived - Deff))
+
+    subbanner("I.2 — Frequency-space elimination")
     print("Effective axisymmetric kernel D0_eff(omega) =")
     sp.pprint(Deff)
 
@@ -192,9 +215,26 @@ def one_mode_pole_shift_audit() -> None:
     M, K, varpi2, g, eps = sp.symbols("M K varpi2 g eps", positive=True, real=True)
     Om2 = sp.symbols("Omega_eta2", positive=True, real=True)
     w2 = sp.symbols("w2", real=True)
+    t, omega = sp.symbols("t omega", real=True)
+
+    q = sp.Function("q")(t)
+    x = sp.Function("x")(t)
+    L_one = M * sp.diff(q, t) ** 2 / 2 - K * q**2 / 2 + sp.diff(x, t) ** 2 / 2 - varpi2 * x**2 / 2 + g * q * x
+    EL_q = sp.euler_equations(L_one, q, [t])[0]
+    EL_x = sp.euler_equations(L_one, x, [t])[0]
+    Q, X = sp.symbols("Q X")
+    phase = sp.exp(-sp.I * omega * t)
+    ansatz = {q: Q * phase, x: X * phase}
+    EL_q_f = sp.simplify(EL_q.lhs.subs(ansatz).doit() / phase)
+    EL_x_f = sp.simplify(EL_x.lhs.subs(ansatz).doit() / phase)
+    x_solution = sp.solve(EL_x_f, X, dict=True)[0]
+    EL_q_red = sp.simplify(EL_q_f.subs(x_solution))
 
     # Exact reduced dispersion relation
     dispersion = sp.expand((K - M * w2) * (varpi2 - w2) - g**2)
+    derived_dispersion = sp.expand(-sp.together(EL_q_red * (varpi2 - omega**2) / Q))
+    derived_dispersion = derived_dispersion.subs(omega**4, w2**2).subs(omega**2, w2)
+    expect_zero("derived dispersion vs (K - M w2)(varpi2 - w2) - g^2", derived_dispersion - dispersion)
     roots = sp.solve(sp.Eq(dispersion, 0), w2)
     roots = [sp.simplify(r.subs(K, M * Om2)) for r in roots]
 
@@ -321,13 +361,25 @@ def selection_rule_audit() -> None:
     Y22c = sp.sqrt(15) / (4 * sp.sqrt(sp.pi)) * sp.sin(th) ** 2 * sp.cos(2 * ph)
 
     I00_20 = sp.simplify(sp.integrate(sp.integrate(Y00 * Y20 * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    I00_21c = sp.simplify(sp.integrate(sp.integrate(Y00 * Y21c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    I00_22c = sp.simplify(sp.integrate(sp.integrate(Y00 * Y22c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
     I20_21c = sp.simplify(sp.integrate(sp.integrate(Y20 * Y21c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
     I20_22c = sp.simplify(sp.integrate(sp.integrate(Y20 * Y22c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    I21c_22c = sp.simplify(sp.integrate(sp.integrate(Y21c * Y22c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    N00 = sp.simplify(sp.integrate(sp.integrate(Y00 * Y00 * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
     N20 = sp.simplify(sp.integrate(sp.integrate(Y20 * Y20 * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    N21c = sp.simplify(sp.integrate(sp.integrate(Y21c * Y21c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
+    N22c = sp.simplify(sp.integrate(sp.integrate(Y22c * Y22c * dOmega, (ph, 0, 2 * sp.pi)), (th, 0, sp.pi)))
 
     expect_zero("Y00-Y20 cross integral", I00_20)
     expect_zero("Y20-Y21c cross integral", I20_21c)
     expect_zero("Y20-Y22c cross integral", I20_22c)
+    expect_zero("Y00-Y21c cross integral", I00_21c)
+    expect_zero("Y00-Y22c cross integral", I00_22c)
+    expect_zero("Y21c-Y22c cross integral", I21c_22c)
+    expect_zero("Y00 norm - 1", N00 - 1)
+    expect_zero("Y21c norm - 1", N21c - 1)
+    expect_zero("Y22c norm - 1", N22c - 1)
     expect_zero("Y20 norm - 1", N20 - 1)
 
     print("With an isotropic background and scalar confinement coupling, the angular overlap is diagonal in (l,m).")

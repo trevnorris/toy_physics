@@ -1,0 +1,21 @@
+STAGE 008 PROJECTED MAXWELL EXTENSION MATHEMATICA AUDIT
+M1 reciprocal residual = 0
+PASS: M1 reciprocal identity
+M2 Pair A normalization residual = 0
+M2 Pair A H=Z residual = 0
+PASS: M2 Pair A Gaussian-Gaussian
+M2 Pair B normalization residual = 0
+M2 Pair B H=Z residual = 0
+PASS: M2 Pair B Lorentzian-Gaussian
+M3 matched source residual = 0
+PASS: M3 mu0_eff_proj matched source
+M4 residuals = {0, 0, 0, 0, 0, 0, 0}
+PASS: M4 Gaussian matched-kernel concrete values
+M5 regulator limit residual = 0
+PASS: M5 reduction-first H=1 regulator limit
+M6 H=Z reduction residual = 0
+PASS: M6 reduction-first H=Z identity
+M7 Lorentzian numeric H=Z residuals = {0, 0}
+M7 Lorentzian numeric matched-source residuals = {0, 0}
+PASS: M7 Lorentzian numerical independent-profile checks
+STATUS: PASS

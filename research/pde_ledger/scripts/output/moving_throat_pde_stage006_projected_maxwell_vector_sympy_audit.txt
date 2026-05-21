@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
-# Date: 2026-05-11T12:38:35-06:00
-# Elapsed: 3s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 1) Homogeneous projected equations
@@ -82,7 +74,10 @@ So the projected theory looks like an open-system effective medium, not a closed
 ========================================================================================
 5) Concrete projection audit
 ========================================================================================
+PASS: bogus-projection divB fails when transverse coord leaks in
+PASS: non-potential 2-form with symmetric Gaussian weight: divB = 0 trivially
+PASS: non-potential 2-form with asymmetric weight: projected B_1 is nonzero
+PASS: antisymmetric-Z mediator kills the projected leak
+PASS: Gaussian-Z leak differs from antisymmetric-Z leak (parity matters)
 Concrete checks: Faraday/Ampere sign maps, explicit boundary discharge, E-vs-D distinction, and nonzero leakage all pass.
 STATUS: PASS
-
-EXIT_CODE: 0

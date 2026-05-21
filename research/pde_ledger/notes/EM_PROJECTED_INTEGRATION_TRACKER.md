@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-11
+Updated: 2026-05-21
 
 ## Scope decision
 
@@ -51,8 +51,10 @@ Former post-EM ledger stages start at Stage `022`.
 - SymPy audits are top-level files named
   `scripts/moving_throat_pde_stageNNN_*_sympy_audit.py` and should match the
   paper stage order.
-- Projected Maxwell Stages `004--020` do not currently claim Mathematica
-  mirrors.  Stage `021` retains the reduced one-port Mathematica audit.
+- Projected Maxwell Stages `004--012` now have independent Mathematica mirrors
+  landed during red-team audit batch I.1 (2026-05-21). Stages `013--020` do
+  not yet claim mirrors. Stage `021` retains its reduced one-port Mathematica
+  audit.
 - Mathematica audits must be regenerated one script at a time.
 - Paper `\StageFile{...}` entries should resolve to real source files and to
   regenerated transcript files after the audit runs.
@@ -69,3 +71,9 @@ Former post-EM ledger stages start at Stage `022`.
 - Missing `\StageFile{...}` and stale old-numbering scans were run against
   paper-facing files and active metadata after the linear renumbering.
 - `paper/pde_ledger.tex` was rebuilt in the post-renumbering verification pass.
+- Red-team audit batch I.1 (stages 001-012, "Part I.1 -- Geometry lift, BdG
+  coupling, projected Maxwell setup") completed 2026-05-21 with all 12 stages
+  reaching `verified` and both engines independently checking each load-bearing
+  claim. `material_change: false` on every stage, so no upstream cascade. See
+  `redteam/batches/batch_I1.md` plus per-stage reports at
+  `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.

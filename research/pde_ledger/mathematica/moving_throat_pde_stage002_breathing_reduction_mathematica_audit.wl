@@ -1,5 +1,6 @@
 ClearAll["Global`*"];
 $HistoryLength = 0;
+Needs["VariationalMethods`"];
 
 banner[title_String] := (
   Print[""];
@@ -79,7 +80,7 @@ Clear[theta, phi, deltaA, q00];
 $Assumptions = Element[{theta, phi, deltaA, q00}, Reals] && 0 < theta < Pi;
 
 dOmega = Sin[theta];
-y00 = 1/(2 Sqrt[Pi]);
+y00 = FullSimplify[SphericalHarmonicY[0, 0, theta, phi]];
 
 avgY00 = FullSimplify[
   Integrate[y00 dOmega, {phi, 0, 2 Pi}, {theta, 0, Pi}]/(4 Pi),
@@ -130,20 +131,31 @@ lw = FullSimplify[
 Q = {da, dL};
 Qdot = {dadt, dLdt};
 
-Mintegrand = 4 Pi {
+MaaExt = 2 Coefficient[lw, dadt, 2];
+MLLExt = 2 Coefficient[lw, dLdt, 2];
+MaLExt = Coefficient[Coefficient[lw, dadt], dLdt];
+KaaExt = -2 Coefficient[lw, da, 2];
+KLLExt = -2 Coefficient[lw, dL, 2];
+KaLExt = -Coefficient[Coefficient[lw, da], dL];
+MintegrandExtracted = {{MaaExt, MaLExt}, {MaLExt, MLLExt}};
+KintegrandExtracted = {{KaaExt, KaLExt}, {KaLExt, KLLExt}};
+MintegrandBoxed = 4 Pi {
   {muEta alphaA^2, muEta alphaA alphaL},
   {muEta alphaA alphaL, muEta alphaL^2}
 };
-Kintegrand = 4 Pi {
+KintegrandBoxed = 4 Pi {
   {Tw D[alphaA, w]^2 + K0 alphaA^2, Tw D[alphaA, w] D[alphaL, w] + K0 alphaA alphaL},
   {Tw D[alphaA, w] D[alphaL, w] + K0 alphaA alphaL, Tw D[alphaL, w]^2 + K0 alphaL^2}
 };
+expectZero["extracted M matches boxed M (4 Pi overlap form)", MintegrandExtracted - MintegrandBoxed];
+expectZero["extracted K matches boxed K (4 Pi overlap form)", KintegrandExtracted - KintegrandBoxed];
 
+Mintegrand = MintegrandExtracted;
+Kintegrand = KintegrandExtracted;
 lwTarget = FullSimplify[
-  (1/2) (Qdot . Mintegrand . Qdot - Q . Kintegrand . Q),
+  (1/2) (Qdot . MintegrandBoxed . Qdot - Q . KintegrandBoxed . Q),
   Assumptions -> $Assumptions
 ];
-expectZero["reduced Lagrangian density from the action - target overlap form", lw - lwTarget];
 
 Mmat = {
   {Integrate[Mintegrand[[1, 1]], {w, wL, wR}], Integrate[Mintegrand[[1, 2]], {w, wL, wR}]},
@@ -174,8 +186,9 @@ lredTime = (1/2) (
   Kaa qa^2 - 2 KaL qa qLfun - KLL qLfun^2
 );
 
-elA = eulerLagrange1D[lredTime, qa, t];
-elL = eulerLagrange1D[lredTime, qLfun, t];
+{elAEq, elLEq} = EulerEquations[lredTime, {qa, qLfun}, t];
+elA = elAEq[[2]] - elAEq[[1]];
+elL = elLEq[[2]] - elLEq[[1]];
 
 expectZero[
   "Euler-Lagrange equation for q_a",
@@ -197,8 +210,8 @@ y21c = Sqrt[15]/(2 Sqrt[Pi]) Sin[theta] Cos[theta] Cos[phi];
 y21s = Sqrt[15]/(2 Sqrt[Pi]) Sin[theta] Cos[theta] Sin[phi];
 y22c = Sqrt[15]/(4 Sqrt[Pi]) Sin[theta]^2 Cos[2 phi];
 y22s = Sqrt[15]/(4 Sqrt[Pi]) Sin[theta]^2 Sin[2 phi];
-basis = {y20, y21c, y22c};
-basisNames = {"Y20", "Y21c", "Y22c"};
+basis = {y20, y21c, y21s, y22c, y22s};
+basisNames = {"Y20", "Y21c", "Y21s", "Y22c", "Y22s"};
 
 expectZero["phase shift: Y21s(theta,phi) - Y21c(theta,phi-Pi/2)", y21s - (y21c /. phi -> phi - Pi/2)];
 expectZero["phase shift: Y22s(theta,phi) - Y22c(theta,phi-Pi/4)", y22s - (y22c /. phi -> phi - Pi/4)];
@@ -218,6 +231,23 @@ Do[
   {i, 1, Length[basis]}
 ];
 
+normMatrix5 = Table[
+  FullSimplify[
+    Integrate[basis[[i]] basis[[j]] dOmega, {phi, 0, 2 Pi}, {theta, 0, Pi}],
+    Assumptions -> $Assumptions
+  ],
+  {i, 1, Length[basis]}, {j, 1, Length[basis]}
+];
+gradMatrix5 = Table[
+  FullSimplify[
+    Integrate[gradS2Inner[basis[[i]], basis[[j]], theta, phi] dOmega, {phi, 0, 2 Pi}, {theta, 0, Pi}],
+    Assumptions -> $Assumptions
+  ],
+  {i, 1, Length[basis]}, {j, 1, Length[basis]}
+];
+expectZero["real P2 norm matrix - IdentityMatrix[5]", normMatrix5 - IdentityMatrix[5]];
+expectZero["real P2 angular stiffness matrix - 6 IdentityMatrix[5]", gradMatrix5 - 6 IdentityMatrix[5]];
+
 Do[
   expectZero[
     StringJoin["-Delta_S2 ", basisNames[[i]], " - 6 ", basisNames[[i]]],
@@ -232,8 +262,8 @@ TOmega = TOmegaF[w];
 KEta = KEtaF[w];
 beta2 = beta2F[w];
 
-qvec = {q20, q21c, q22c};
-qdotvec = {q20d, q21cd, q22cd};
+qvec = {q20, q21c, q21s, q22c, q22s};
+qdotvec = {q20d, q21cd, q21sd, q22cd, q22sd};
 
 Do[
   yi = basis[[i]];

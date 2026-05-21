@@ -80,6 +80,59 @@ def main() -> None:
     n2 = dlin(N2)
     n4 = dlin(N4)
 
+    assert_zero("z0 closed form", z0 - (Delta * q1 - Q * d1) / Delta**2)
+    assert_zero(
+        "z2 closed form",
+        z2 - (-Delta**2 * h1 + Delta * (H * d1 + Q * s1 + S2 * q1) - 2 * Q * S2 * d1) / Delta**3,
+    )
+    assert_zero(
+        "z4 closed form",
+        z4
+        - (
+            -Delta**2 * H * s1
+            - Delta**2 * S2 * h1
+            - Delta**2 * q1
+            + 2 * Delta * H * S2 * d1
+            + 2 * Delta * Q * S2 * s1
+            + 2 * Delta * Q * d1
+            + Delta * S2**2 * q1
+            - 3 * Q * S2**2 * d1
+        )
+        / Delta**4,
+    )
+    assert_zero("n0 closed form", n0 - 2 * P * (Delta * p1 - P * d1) / Delta**3)
+    assert_zero(
+        "n2 closed form",
+        n2
+        - (
+            -(
+                2 * Delta**2 * (Gw * p1 + P * g1)
+                - 2 * Delta * P * (2 * Gw * d1 + P * s1 + 2 * S2 * p1)
+                + 6 * P**2 * S2 * d1
+            )
+            / Delta**4
+        ),
+    )
+    assert_zero(
+        "n4 closed form",
+        n4
+        - 2
+        * (
+            Delta**3 * Gw * g1
+            - Delta**2 * Gw**2 * d1
+            - 2 * Delta**2 * Gw * P * s1
+            - 2 * Delta**2 * Gw * S2 * p1
+            - 2 * Delta**2 * P * S2 * g1
+            - 2 * Delta**2 * P * p1
+            + 6 * Delta * Gw * P * S2 * d1
+            + 3 * Delta * P**2 * S2 * s1
+            + 3 * Delta * P**2 * d1
+            + 3 * Delta * P * S2**2 * p1
+            - 6 * P**2 * S2**2 * d1
+        )
+        / Delta**5,
+    )
+
     slips = {Q: q1, S2: s1, H: h1, Delta: d1, P: p1, Gw: g1}
 
     def frechet(expr: sp.Expr) -> sp.Expr:
@@ -121,8 +174,14 @@ def main() -> None:
     dCompat = sp.simplify((sp.series(sp.expand(K_norm_p - K_one_p), ell, 0, 2).removeO() - compat) / ell)
     dCompat_direct = sp.simplify((sp.series(sp.expand(compat_direct_p), ell, 0, 2).removeO() - compat_direct) / ell)
     dCompat_transport = sp.simplify((sp.series(sp.expand(compat_transport_p), ell, 0, 2).removeO() - compat_transport) / ell)
-    assert_zero("primitive compatibility surface after eliminating K", (K_norm_p - K_one_p) - compat_direct_p)
-    assert_zero("primitive compatibility shift from eliminated surface", dCompat - dCompat_direct)
+    assert_zero(
+        "K_one solve round-trip",
+        (K_one_p - B0 - (Z0slot + ell * z0)) * (T + ell * z4) - 3 * (S + ell * z2) ** 2,
+    )
+    assert_zero(
+        "K_norm solve round-trip",
+        (N0base + ell * n0) / (K_norm_p - B0 - (Z0slot + ell * z0)) - Ptarget,
+    )
     assert_zero(
         "primitive compatibility shift from competing K surfaces",
         dCompat_direct - (n0 / Ptarget - 6 * S * z2 / T + 3 * S**2 * z4 / T**2),
@@ -136,16 +195,30 @@ def main() -> None:
         "primitive transported-target compatibility shift",
         dCompat_transport - (-6 * S * z2 / T + 3 * S**2 * z4 / T**2),
     )
-    z0_probe = sp.symbols("z0_probe")
-    K_norm_probe = B0 + Z0slot + ell * z0_probe + (N0base + ell * n0) / Ptarget
-    K_one_probe = B0 + Z0slot + ell * z0_probe + 3 * (S + ell * z2) ** 2 / (T + ell * z4)
-    K_norm_transport_probe = B0 + Z0slot + ell * z0_probe + D0target
-    assert_zero("primitive fixed-target compatibility z0 cancellation", sp.diff(K_norm_probe - K_one_probe, z0_probe))
-    assert_zero(
-        "primitive transported-target compatibility z0 cancellation",
-        sp.diff(K_norm_transport_probe - K_one_probe, z0_probe),
+    # The derived z0 = (Delta*q1 - Q*d1)/Delta**2 enters K_norm_p and K_one_p
+    # through identical +ell*z0 terms, so it must cancel from their difference.
+    # The substantive check is that the q1 and d1 partials of the compatibility
+    # difference receive NO contribution from the z0 channel: they must equal
+    # the q1 and d1 partials of compat_direct_p, which depends only on n0, z2, z4.
+    for slip in (q1, d1):
+        assert_zero(
+            f"primitive fixed-target compatibility has no z0 channel in {slip}",
+            sp.diff(K_norm_p - K_one_p, slip) - sp.diff(compat_direct_p, slip),
+        )
+        assert_zero(
+            f"primitive transported-target compatibility has no z0 channel in {slip}",
+            sp.diff(K_norm_transport_p - K_one_p, slip) - sp.diff(compat_transport_p, slip),
+        )
+    # Conversely, the normalization K surface alone DOES retain a q1/d1 channel
+    # through the derived z0.
+    assert_nonzero(
+        "primitive normalization K surface retains q1 channel from z0",
+        sp.diff(K_norm_p, q1),
     )
-    assert_nonzero("primitive normalization K surface still carries z0", sp.diff(K_norm_probe, z0_probe))
+    assert_nonzero(
+        "primitive normalization K surface retains d1 channel from z0",
+        sp.diff(K_norm_p, d1),
+    )
     assert_nonzero(
         "mutated primitive compatibility transport should fail",
         dCompat_direct - (n0 / Ptarget - 6 * S * z2 / T - 3 * S**2 * z4 / T**2),

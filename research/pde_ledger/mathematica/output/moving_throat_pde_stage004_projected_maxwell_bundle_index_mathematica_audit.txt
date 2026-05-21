@@ -1,0 +1,18 @@
+STAGE 004 PROJECTED MAXWELL BUNDLE INDEX MATHEMATICA AUDIT
+M1 residual = 0
+PASS: M1 density-level integration by parts
+M2 component 1 residual = 0
+PASS: M2 Faraday component 1
+M2 component 2 residual = 0
+PASS: M2 Faraday component 2
+M2 component 3 residual = 0
+PASS: M2 Faraday component 3
+M3 residual = 0
+PASS: M3 Gaussian normalization
+M4 residual = 0
+PASS: M4 Gaussian squared norm
+M5 residual = 0
+PASS: M5 matched-kernel overlap
+M6 residual = 0
+PASS: M6 delta-source projection/reduction ratio
+STATUS: PASS

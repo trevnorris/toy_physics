@@ -24,3 +24,13 @@ atlas/.obsidian/workspace.json
 atlas/.obsidian/workspace-mobile.json
 atlas/.obsidian/cache/
 atlas/.obsidian/plugins/*/data.json
+
+# Red-team rendered prompt files (regenerated on demand from prompts/ templates)
+research/*/redteam/tmp_prompts/
+
+# Red-team runtime artifacts (captured per fix/verify cycle; reproducible)
+research/*/redteam/exec_logs/
+research/*/redteam/codex_logs/
+research/*/redteam/fix_batch_*.log
+research/*/redteam/fix_batch_*.marker
+research/*/redteam/MORNING_SUMMARY.md

@@ -108,6 +108,7 @@ Qw = q0 + q1*w + q2*w**2/sp.Integer(2) + q3*w**3/sp.Integer(6) + q4*w**4/sp.Inte
 Wexp = sp.exp(-w/ell)/ell
 
 avg_Q_half = sp.simplify(sp.integrate(Wexp*Qw, (w, 0, sp.oo)))
+assert_zero("half-line Q expansion", avg_Q_half - (q0 + ell*q1 + ell**2*q2 + ell**3*q3 + ell**4*q4))
 avg_dQ_half = sp.simplify(sp.integrate(Wexp*sp.diff(Qw, w), (w, 0, sp.oo)))
 boundary_half = sp.simplify(sp.limit(Wexp*Qw, w, sp.oo) - (Wexp*Qw).subs(w, 0))
 minus_Wp_half = sp.simplify(-sp.integrate(sp.diff(Wexp, w)*Qw, (w, 0, sp.oo)))
@@ -147,13 +148,21 @@ line("4) Zero-mode effective parameters in the near-throat limits")
 mu_eff_sym = sp.simplify(mu0 * (s0 + m2*sigma**2*s2/2) / (z0 + m2*sigma**2*z2/2))
 xi_eff_sym = sp.simplify(xi * (z0 + m2*sigma**2*z2/2) / (h0 + m2*sigma**2*h2/2))
 mu_eff_sym_series = sp.series(mu_eff_sym, sigma, 0, 3).removeO()  # up to sigma^2
+assert_zero("symmetric mu_eff series",
+            mu_eff_sym_series - (mu0*s0/z0 + (m2*sigma**2/2)*(mu0*s2/z0 - mu0*s0*z2/z0**2)))
 xi_eff_sym_series = sp.series(xi_eff_sym, sigma, 0, 3).removeO()
+assert_zero("symmetric xi_eff series",
+            xi_eff_sym_series - (xi*z0/h0 + (m2*sigma**2/2)*(xi*z2/h0 - xi*z0*h2/h0**2)))
 
 # one-sided mouth expansions
 mu_eff_half = sp.simplify(mu0 * (s0 + ell*s1 + ell**2*s2) / (z0 + ell*z1 + ell**2*z2))
 xi_eff_half = sp.simplify(xi * (z0 + ell*z1 + ell**2*z2) / (h0 + ell*h1 + ell**2*h2))
 mu_eff_half_series = sp.series(mu_eff_half, ell, 0, 2).removeO()  # up to ell
+assert_zero("mouth mu_eff series",
+            mu_eff_half_series - (mu0*s0/z0 + ell*(mu0*s1/z0 - mu0*s0*z1/z0**2)))
 xi_eff_half_series = sp.series(xi_eff_half, ell, 0, 2).removeO()
+assert_zero("mouth xi_eff series",
+            xi_eff_half_series - (xi*z0/h0 + ell*(xi*z1/h0 - xi*z0*h1/h0**2)))
 
 print("Now impose the zero-mode ansatz")
 print("  A_μ(x,w)=a_μ(x),   A_w=0,   F^{wν}=0,   J^ν(x,w)=j^ν(x) S(w).")
@@ -178,25 +187,38 @@ print("Immediate corollaries:")
 print("  - If H = Z, then ξ_eff = ξ exactly, not just approximately.")
 print("  - If S is locally proportional to Z at the mouth/interior slice, the first μ_eff correction vanishes.")
 
-# exact cancellations for H=Z and S=C Z
-C = sp.symbols("C")
-mu_eff_proportional = sp.simplify(mu0 * (C*(z0 + ell*z1 + ell**2*z2)) / (z0 + ell*z1 + ell**2*z2))
-xi_eff_exact_HZ = sp.simplify(xi * (z0 + ell*z1 + ell**2*z2) / (z0 + ell*z1 + ell**2*z2))
+# perturbative profile-alignment: H = Z + eps*Δh, S = C*Z + eps*Δs.
+C, eps = sp.symbols("C epsilon", real=True)
 W_conc = sp.exp(-w / ell) / ell
 Z_conc = z0 + z1*w + z2*w**2 / 2
+H_pert = Z_conc + eps * (h0 + h1*w + h2*w**2/2)
+S_pert = C * Z_conc + eps * (s0 + s1*w + s2*w**2/2)
 IZ_conc = sp.integrate(W_conc * Z_conc, (w, 0, sp.oo))
-H_sym = sp.Function("H")(w)
-S_sym = sp.Function("S")(w)
-IH_conc = sp.Integral(W_conc * H_sym, (w, 0, sp.oo))
-IS_conc = sp.Integral(W_conc * S_sym, (w, 0, sp.oo))
-assert_zero("H=Z before effective-gauge cancellation", IH_conc.subs(H_sym, Z_conc) - IZ_conc)
-assert_zero("S=CZ before effective-coupling cancellation", IS_conc.subs(S_sym, C * Z_conc) - C * IZ_conc)
-assert_zero("H=Z effective gauge", sp.simplify((xi * IZ_conc / IH_conc).subs(H_sym, Z_conc)) - xi)
-assert_zero("S=CZ effective coupling", sp.simplify((mu0 * IS_conc / IZ_conc).subs(S_sym, C * Z_conc)) - C * mu0)
+IH_pert = sp.integrate(W_conc * H_pert, (w, 0, sp.oo))
+IS_pert = sp.integrate(W_conc * S_pert, (w, 0, sp.oo))
+
+# the cancellation must be exact at eps = 0 (genuine cancellation, not symbol substitution)
+xi_eff_HZ_zero  = sp.simplify((xi  * IZ_conc / IH_pert).subs(eps, 0))
+mu_eff_SCZ_zero = sp.simplify((mu0 * IS_pert / IZ_conc).subs(eps, 0))
+assert_zero("H=Z effective gauge (eps=0 cancellation)",  xi_eff_HZ_zero - xi)
+assert_zero("S=CZ effective coupling (eps=0 cancellation)", mu_eff_SCZ_zero - C * mu0)
+
+# leading correction must equal -xi * <W Δh> / <W Z> (gauge) and mu0 * <W Δs> / <W Z> (coupling)
+xi_eff_pert  = sp.series(sp.simplify(xi  * IZ_conc / IH_pert), eps, 0, 2).removeO()
+mu_eff_pert  = sp.series(sp.simplify(mu0 * IS_pert / IZ_conc), eps, 0, 2).removeO()
+IDh = sp.integrate(W_conc * (h0 + h1*w + h2*w**2/2), (w, 0, sp.oo))
+IDs = sp.integrate(W_conc * (s0 + s1*w + s2*w**2/2), (w, 0, sp.oo))
+assert_zero("xi_eff first-order correction in eps",
+            xi_eff_pert - (xi - eps * xi * IDh / IZ_conc))
+assert_zero("mu_eff first-order correction in eps",
+            mu_eff_pert - (C * mu0 + eps * mu0 * IDs / IZ_conc))
+
 print()
-print("Exact profile-alignment checks:")
-print("  if S = C Z globally, then μ_eff =", sp.sstr(mu_eff_proportional))
-print("  if H = Z globally, then ξ_eff =", sp.sstr(xi_eff_exact_HZ))
+print("Perturbative profile-alignment checks (H = Z + eps Δh, S = C Z + eps Δs):")
+print("  ξ_eff |_{eps=0} =", sp.sstr(xi_eff_HZ_zero))
+print("  μ_eff |_{eps=0} =", sp.sstr(mu_eff_SCZ_zero))
+print("  ξ_eff to O(eps) =", sp.sstr(xi_eff_pert))
+print("  μ_eff to O(eps) =", sp.sstr(mu_eff_pert))
 
 # -----------------------------------------------------------------------------
 line("5) Concrete Gaussian localization examples")
@@ -206,15 +228,22 @@ Ws = sp.exp(-w**2/(2*sigma**2)) / (sp.sqrt(2*sp.pi) * sigma)
 Zg = sp.exp(-w**2/lam**2)
 IWZ_sym_gauss = sp.simplify(sp.integrate(Ws * Zg, (w, -sp.oo, sp.oo)))
 IWZ_sym_gauss_series = sp.series(IWZ_sym_gauss, sigma, 0, 5).removeO()
+assert_zero("symmetric Gaussian asymptotic literal",
+            IWZ_sym_gauss_series - (1 - sigma**2/lam**2 + 3*sigma**4/(2*lam**4)))
 
 # One-sided exponential mouth kernel with Gaussian localizer
 Wm = sp.exp(-w/ell)/ell
 IWZ_mouth_gauss = sp.simplify(sp.integrate(Wm * Zg, (w, 0, sp.oo)))
 r = sp.symbols("r", positive=True)
-IWZ_mouth_gauss_r = sp.sqrt(sp.pi) * lam * r * sp.erfc(lam * r / 2) * sp.exp(lam**2 * r**2 / 4) / 2
+# derive the asymptotic series directly from the SymPy-evaluated integral via ell = 1/r at r → ∞
+IWZ_mouth_gauss_r = sp.simplify(IWZ_mouth_gauss.rewrite(sp.erfc).subs(ell, 1/r))
 IWZ_mouth_gauss_series = sp.simplify(
     sp.series(IWZ_mouth_gauss_r, r, sp.oo, 8).removeO().subs(r, 1 / ell)
 )
+# guard: the SymPy integral really equals the erfc closed form
+IWZ_mouth_gauss_erfc = sp.sqrt(sp.pi) * lam * sp.erfc(lam / (2*ell)) * sp.exp(lam**2 / (4*ell**2)) / (2*ell)
+assert_zero("mouth Gaussian integral equals erfc closed form",
+            sp.simplify((IWZ_mouth_gauss - IWZ_mouth_gauss_erfc).rewrite(sp.erfc)))
 IWZ_mouth_taylor_integral = sp.integrate(
     Wm * sp.series(Zg, w, 0, 8).removeO(),
     (w, 0, sp.oo),

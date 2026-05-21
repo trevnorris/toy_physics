@@ -56,10 +56,31 @@ def main() -> None:
     dP4 = sp.diff(P4p, eps).subs(eps, 0)
 
     assert_zero("delta P0", dP0 - (n0 / D0 + N0 * z0 / D0**2))
-    if not {z0, z2, n0, n2}.issubset(dP2.free_symbols):
-        raise AssertionError("delta P2 is missing one of the advertised first-order slots")
-    if not {z0, z2, z4, n0, n2, n4}.issubset(dP4.free_symbols):
-        raise AssertionError("delta P4 is missing one of the advertised first-order slots")
+    assert_zero(
+        "delta P2",
+        dP2 - (
+            n2 / D0
+            + N2 * z0 / D0**2
+            + 2 * N0 * z2 / D0**2
+            - 2 * D2 * n0 / D0**2
+            - 4 * D2 * N0 * z0 / D0**3
+        ),
+    )
+    assert_zero(
+        "delta P4",
+        dP4 - (
+            n4 / D0
+            + N4 * z0 / D0**2
+            + 2 * N2 * z2 / D0**2
+            - 2 * D2 * n2 / D0**2
+            + 2 * N0 * z4 / D0**2
+            - 2 * D4 * n0 / D0**2
+            - 4 * (D2 * N2 + D4 * N0) * z0 / D0**3
+            - 6 * D2 * N0 * z2 / D0**3
+            + 3 * D2**2 * n0 / D0**3
+            + 9 * D2**2 * N0 * z0 / D0**4
+        ),
+    )
 
     K, B0, Z0slot, Ptarget, S, T = sp.symbols("K B0 Z0slot Ptarget S T", nonzero=True)
     K_one_pole_p = sp.solve(

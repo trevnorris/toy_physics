@@ -1,0 +1,28 @@
+STAGE 006 -- projected Maxwell vector audit
+M1 Faraday rearrangement residual = {0, 0, 0}
+PASS: M1 Faraday rearrangement
+M1 divB rearrangement residual = 0
+PASS: M1 divB rearrangement
+M2 Gauss rearrangement residual = 0
+PASS: M2 Gauss rearrangement
+M2 Ampere rearrangement residual = {0, 0, 0}
+PASS: M2 Ampere rearrangement
+M3 boundary discharge residual = 0
+PASS: M3 boundary discharge
+M3 projected IBP relation residual = 0
+PASS: M3 projected IBP relation
+M3 leakage normalization residual = 0
+PASS: M3 leakage normalization
+M4 projected Bianchi divB residual = 0
+PASS: M4 projected Bianchi divB
+M4 projected Bianchi Faraday residual = {0, 0, 0}
+PASS: M4 projected Bianchi Faraday
+M4 projected Gauss law residual = 0
+PASS: M4 projected Gauss law
+M4 projected Ampere law residual = {0, 0, 0}
+PASS: M4 projected Ampere law
+M5 IBP sign mutation residual = 1/Sqrt[2]
+PASS: M5 IBP sign mutation
+M5 concrete Faraday sign mutation residual = -3
+PASS: M5 concrete Faraday sign mutation
+STATUS: PASS

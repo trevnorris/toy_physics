@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
-# Date: 2026-05-11T12:38:43-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ================================================================================================
 1) Exact projected inhomogeneous Maxwell law on a throat domain
@@ -99,9 +91,11 @@ Immediate corollaries:
   - If H = Z, then ξ_eff = ξ exactly, not just approximately.
   - If S is locally proportional to Z at the mouth/interior slice, the first μ_eff correction vanishes.
 
-Exact profile-alignment checks:
-  if S = C Z globally, then μ_eff = C*mu0
-  if H = Z globally, then ξ_eff = xi
+Perturbative profile-alignment checks (H = Z + eps Δh, S = C Z + eps Δs):
+  ξ_eff |_{eps=0} = xi
+  μ_eff |_{eps=0} = C*mu0
+  ξ_eff to O(eps) = ell**2*xi*z2/(ell**2*z2 + ell*z1 + z0) + ell*xi*z1/(ell**2*z2 + ell*z1 + z0) + epsilon*(ell**2*xi*z2*(-ell**2*h2/(ell**2*z2 + ell*z1 + z0) - ell*h1/(ell**2*z2 + ell*z1 + z0) - h0/(ell**2*z2 + ell*z1 + z0))/(ell**2*z2 + ell*z1 + z0) + ell*xi*z1*(-ell**2*h2/(ell**2*z2 + ell*z1 + z0) - ell*h1/(ell**2*z2 + ell*z1 + z0) - h0/(ell**2*z2 + ell*z1 + z0))/(ell**2*z2 + ell*z1 + z0) + xi*z0*(-ell**2*h2/(ell**2*z2 + ell*z1 + z0) - ell*h1/(ell**2*z2 + ell*z1 + z0) - h0/(ell**2*z2 + ell*z1 + z0))/(ell**2*z2 + ell*z1 + z0)) + xi*z0/(ell**2*z2 + ell*z1 + z0)
+  μ_eff to O(eps) = C*ell**2*mu0*z2/(ell**2*z2 + ell*z1 + z0) + C*ell*mu0*z1/(ell**2*z2 + ell*z1 + z0) + C*mu0*z0/(ell**2*z2 + ell*z1 + z0) + epsilon*(ell**2*mu0*s2/(ell**2*z2 + ell*z1 + z0) + ell*mu0*s1/(ell**2*z2 + ell*z1 + z0) + mu0*s0/(ell**2*z2 + ell*z1 + z0))
 
 ================================================================================================
 5) Concrete Gaussian localization examples
@@ -146,5 +140,3 @@ The main structural distinction is:
 So the mouth itself is the place where projection-first and reduction-first differ most sharply.
 That makes it the natural regime to compare against the moving-throat Maxwell/mixed bundle.
 STATUS: PASS
-
-EXIT_CODE: 0

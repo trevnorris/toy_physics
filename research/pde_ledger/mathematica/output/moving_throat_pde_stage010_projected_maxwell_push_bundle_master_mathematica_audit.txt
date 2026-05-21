@@ -1,0 +1,19 @@
+STAGE 010 PROJECTED MAXWELL PUSH BUNDLE MASTER MATHEMATICA AUDIT
+M1 residual = 0
+M2 residual = 0
+M3 residual = 0
+M4 residual = 0
+M5 residual = 0
+M6 residual = 0
+M7 residual = 0
+M8 residual = 0
+M9 residual = 0
+M10 residual = 0
+M11 residual = 0
+M12 residual = 0
+M13 residuals = {0, 0, 0, 0, 0}
+M14 residuals = {0, 0, 0, 0}
+M15 residual = 0
+M16 mutation residual = (6*S^2*z4)/T^2
+M17 mutation residual = (6*S^2*z4)/T^2
+STATUS: PASS

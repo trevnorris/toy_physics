@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl
-# Date: 2026-05-11T12:40:16-06:00
-# Elapsed: 87s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 001 — GEOMETRY LIFT AND LINEARIZED PDE SKELETON
@@ -60,6 +52,14 @@ PASS: -Delta_S2 Y22c - 6 Y22c
 PASS: -Delta_S2 Y22s - 6 Y22s
 
 ----------------------------------------------------------------------------------------
+I.3b Spherical Laplacian via SphericalHarmonicY
+----------------------------------------------------------------------------------------
+SphericalHarmonicY[0,0]: lap eigenvalue = 0 = 0
+PASS: SphericalHarmonicY[0,0]: lap eigenvalue = 0
+SphericalHarmonicY[2,0]: lap eigenvalue = -6 = 0
+PASS: SphericalHarmonicY[2,0]: lap eigenvalue = -6
+
+----------------------------------------------------------------------------------------
 II. Level-set confinement linearization
 ----------------------------------------------------------------------------------------
 First variation = -((etaMode*Derivative[1][Vwall][sigma0/ellc])/ellc)
@@ -93,5 +93,3 @@ localized-Maxwell w-component = 0
 PASS: localized-Maxwell w-component
 
 All Stage-001 symbolic checks passed.
-
-EXIT_CODE: 0

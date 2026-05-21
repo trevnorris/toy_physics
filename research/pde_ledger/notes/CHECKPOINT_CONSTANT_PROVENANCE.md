@@ -6,7 +6,7 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-11`
+Snapshot date: `2026-05-21`
 
 ## Audit Rule
 
@@ -113,6 +113,14 @@ Audit note:
   than merely listed in the stage card.
 - The sample JSON is used only for perturbative-validity and scaling probes; it
   does not supply any constant used to derive the Stage 003 formulas.
+- Red-team batch I.1 (2026-05-21) identified and patched a Wolfram Language
+  multi-line continuation defect in the original `.wl`: the `lRed = ...`
+  assignment spanning several lines only captured the kinetic terms, missing
+  the potential and coupling additions. Downstream results were unaffected
+  because the dispersion derivations flowed through `mMat`, `kMat`, `cMat`,
+  and `oMat` rather than from `lRed`. The corrected `.wl` now adds the missing
+  terms via parenthesised `lRed = lRed + (...)` and verifies all four EL
+  residuals against the SymPy convention.
 
 ### Stage 022
 

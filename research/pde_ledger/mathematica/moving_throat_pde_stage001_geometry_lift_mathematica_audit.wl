@@ -1,5 +1,6 @@
 ClearAll["Global`*"];
 $HistoryLength = 0;
+Needs["VariationalMethods`"];
 
 banner[title_String] := (
   Print[""];
@@ -54,16 +55,6 @@ expectZero[name_String, expr_] := Module[{res},
     Print[name, " = ", fmt[res]];
     If[allZeroQ[res], pass[name], fail[name, res]]
   ];
-];
-
-eulerLagrange2D[L_, field_, tVar_, wVar_] := Module[
-  {qt, qw},
-  qt = D[field, tVar];
-  qw = D[field, wVar];
-  FullSimplify[
-    D[D[L, qt], tVar] + D[D[L, qw], wVar] - D[L, field],
-    Assumptions -> $Assumptions
-  ]
 ];
 
 banner["STAGE 001 — GEOMETRY LIFT AND LINEARIZED PDE SKELETON"];
@@ -134,8 +125,24 @@ expectZero["-Delta_S2 Y21s - 6 Y21s", -lapS2[y21s] - 6 y21s];
 expectZero["-Delta_S2 Y22c - 6 Y22c", -lapS2[y22c] - 6 y22c];
 expectZero["-Delta_S2 Y22s - 6 Y22s", -lapS2[y22s] - 6 y22s];
 
+subbanner["I.3b Spherical Laplacian via SphericalHarmonicY"];
+
+(* Independent check: angular Laplacian eigenvalue from Mathematica's built-in
+   complex spherical harmonics, converted to confirm the eigenvalue is -l(l+1). *)
+lapEig[l_] := Module[{Ylm, lap},
+  Ylm = SphericalHarmonicY[l, 0, theta, phi];
+  lap = (1/Sin[theta]) D[Sin[theta] D[Ylm, theta], theta]
+        + D[Ylm, {phi, 2}]/Sin[theta]^2;
+  FullSimplify[lap + l (l + 1) Ylm, Assumptions -> $Assumptions]
+];
+expectZero["SphericalHarmonicY[0,0]: lap eigenvalue = 0", lapEig[0]];
+expectZero["SphericalHarmonicY[2,0]: lap eigenvalue = -6", lapEig[2]];
+
 subbanner["II. Level-set confinement linearization"];
 
+(* Note: chain rule on a single composite function admits no engine-independent
+   route; this section is an intentional parallel check rather than an independent
+   derivation. The two engines agree here as a sanity cross-check only. *)
 Clear[sigma0, etaMode, ellc, eps];
 $Assumptions = Element[{sigma0, etaMode, ellc, eps}, Reals] && ellc > 0;
 
@@ -160,12 +167,14 @@ qField = q[t, w];
 kEll = kEta + ell (ell + 1) tOmega;
 
 ldens = (1/2) muEta D[qField, t]^2 - (1/2) tW D[qField, w]^2 - (1/2) kEll qField^2;
-elDens = FullSimplify[-eulerLagrange2D[ldens, qField, t, w], Assumptions -> $Assumptions];
+elDensEq = EulerEquations[ldens, q[t, w], {t, w}];
+elDens = FullSimplify[elDensEq[[1]] - elDensEq[[2]], Assumptions -> $Assumptions];
 targetDens = -muEta D[qField, {t, 2}] + D[tW D[qField, w], w] - kEll qField;
 expectZero["densitized Euler-Lagrange equation", elDens - targetDens];
 
 lweighted = g ldens;
-elWeighted = FullSimplify[-eulerLagrange2D[lweighted, qField, t, w], Assumptions -> $Assumptions];
+elWeightedEq = EulerEquations[lweighted, q[t, w], {t, w}];
+elWeighted = FullSimplify[elWeightedEq[[1]] - elWeightedEq[[2]], Assumptions -> $Assumptions];
 targetWeighted = -g muEta D[qField, {t, 2}] + D[g tW D[qField, w], w] - g kEll qField;
 expectZero["weighted Euler-Lagrange equation", elWeighted - targetWeighted];
 
@@ -177,7 +186,8 @@ Clear[Slm, fext];
 $Assumptions = Element[{t, w}, Reals] && Element[ell, Integers] && ell >= 0;
 sourceTotal = Slm[t, w] + fext[t, w];
 ldensForced = ldens - qField*sourceTotal;
-elForced = FullSimplify[-eulerLagrange2D[ldensForced, qField, t, w], Assumptions -> $Assumptions];
+elForcedEq = EulerEquations[ldensForced, q[t, w], {t, w}];
+elForced = FullSimplify[elForcedEq[[1]] - elForcedEq[[2]], Assumptions -> $Assumptions];
 targetForced = targetDens - sourceTotal;
 expectZero["sourced densitized Euler-Lagrange equation", elForced - targetForced];
 
@@ -193,14 +203,10 @@ jwField = Jw[x, w];
 fwx = D[axField, w] - D[awField, x];
 divA = D[axField, x] + D[awField, w];
 lmax = (1/2) zloc fwx^2 - divA^2/(2 gaugeXi) + mu0 (jxField axField + jwField awField);
-elAx = FullSimplify[
-  D[D[lmax, D[axField, x]], x] + D[D[lmax, D[axField, w]], w] - D[lmax, axField],
-  Assumptions -> $Assumptions
-];
-elAw = FullSimplify[
-  D[D[lmax, D[awField, x]], x] + D[D[lmax, D[awField, w]], w] - D[lmax, awField],
-  Assumptions -> $Assumptions
-];
+(* VariationalD uses the standard variational derivative dL/dA - D_i(dL/d(D_i A));
+   the existing Maxwell residual target is the opposite-side equation residual. *)
+elAx = FullSimplify[-VariationalD[lmax, axField, {x, w}], Assumptions -> $Assumptions];
+elAw = FullSimplify[-VariationalD[lmax, awField, {x, w}], Assumptions -> $Assumptions];
 targetAx = D[zloc fwx, w] - D[divA, x]/gaugeXi - mu0 jxField;
 targetAw = -D[zloc fwx, x] - D[divA, w]/gaugeXi - mu0 jwField;
 expectZero["localized-Maxwell x-component", elAx - targetAx];

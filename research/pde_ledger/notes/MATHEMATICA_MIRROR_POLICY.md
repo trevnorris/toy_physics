@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-11`
+Snapshot date: `2026-05-21`
 
 ## Rule
 
@@ -21,14 +21,64 @@ This policy exists because much of the Mathematica corpus was generated as a
 port of the SymPy logic. Those mirrors are still useful, but they should not be
 described as independent corroboration.
 
+Stages whose red-team audit has been completed are being upgraded to native
+Mathematica derivations: `EulerEquations`, `VariationalD`, `SphericalHarmonicY`,
+`Coefficient`/`Series`, `ThreeJSymbol`-composed Gaunt, and so on. Those new
+files land under `mathematica/` (not `scripts/`) and are listed below in the
+Independent-Mirror Set. The directory convention (`.py` lives in `scripts/`,
+`.wl` lives in `mathematica/`) is enforced by the red-team workflow.
+
 ## Current Independent-Mirror Set
 
 These stages now have intentionally non-port Mathematica routes or materially
 different verification structure from the SymPy side:
 
+- `001`
+  red-team batch I.1 upgraded to native `EulerEquations`/`VariationalD` plus
+  `SphericalHarmonicY` for the angular-Laplacian eigenvalue check
+- `002`
+  red-team batch I.1 replaced transliterated extraction with native
+  `SphericalHarmonicY`, `Coefficient`-based M/K extraction, and
+  `EulerEquations`; 5x5 multiplet matrix checks added
 - `003`
-  acceptable dual-CAS checkpoint coverage after the shared stress-harness
-  hardening; no active independence defect remains
+  red-team batch I.1 restructured through `DiagonalMatrix`-valued `Series`
+  and a single 4x4 overlap-matrix check; also patched a multi-line `lRed = ...`
+  continuation defect that had captured only kinetic terms (downstream
+  unaffected, flowed through `mMat/kMat/cMat/oMat`)
+- `004`
+  red-team batch I.1 created native mirror for M1-M6: density-level IBP via
+  combined-integrand boundary-term identity, vector Bianchi signs, Gaussian
+  normalization, matched-kernel overlap, delta-source ratio
+- `005`
+  red-team batch I.1 created native mirror for M1-M5 using independent test
+  profiles for projection-by-parts and regulator limits
+- `006`
+  red-team batch I.1 created native mirror via `LeviCivitaTensor[3]`/`Sum`
+  for Faraday/Ampere signs, plus mediator-parity checks (antisymmetric Z
+  kills the projected leak; corrects auditor's prior wrong-parity claim)
+- `007`
+  red-team batch I.1 created native mirror covering 11 Gaussian/regulator
+  overlap claims (M1-M11) with independent integrand routes
+- `008`
+  red-team batch I.1 created native mirror for M1-M7 including a
+  Lorentzian-Gaussian non-matched-profile numeric check; SymPy companion
+  gained an independent observer-kernel test with `sigma != lambda`
+- `009`
+  red-team batch I.1 created native mirror with 11 manifest items M1a-M5b
+  including near-throat mouth-Gaussian asymptotic via `Series` at infinity;
+  SymPy erfc closed form now derived rather than typed
+- `010`
+  red-team batch I.1 created native mirror for the full 17-claim manifest
+  using `Series`/`Coefficient`, `Solve` with uniqueness checks, and
+  `ThreeJSymbol`-composed Gaunt
+- `011`
+  red-team batch I.1 created native mirror for 11 manifest items via
+  `Series`+`Coefficient` extraction (not SymPy `(expr_lin - expr_base)/eps`)
+  and `ThreeJSymbol` directly
+- `012`
+  red-team batch I.1 created native mirror via `Series`/`Coefficient` for
+  primitive-bridge expansions; SymPy companion gained explicit negative-control
+  assertions replacing earlier tautological checks
 - `022`
   re-anchors the outgoing `l=2` coefficients through the Stage-021 exact
   fingerprint before solving the normalization product

@@ -1,0 +1,24 @@
+STAGE 007 PROJECTION REDUCTION COMPARISON MATHEMATICA AUDIT
+M1 residual = 0
+PASS: M1 Gaussian profile area
+M2 residual = 0
+PASS: M2 Gaussian squared profile area
+M3 residual = 0
+PASS: M3 smooth observer/profile overlap
+M4 residual = 0
+PASS: M4 smooth observer/source overlap
+M5 residual = 0
+PASS: M5 field-mutation Gaussian moment
+M6 residual = 0
+PASS: M6 source-mutation Gaussian moment
+M7 residual = 0
+PASS: M7 matched-observer overlap
+M8 residual = 0
+PASS: M8 matched projection/reduction ratio
+M9 residual = 0
+PASS: M9 regulated observer/profile overlap
+M10 residual = 0
+PASS: M10 regulated observer self-overlap
+M11 residual = 0
+PASS: M11 sharp-sampling limit
+STATUS: PASS

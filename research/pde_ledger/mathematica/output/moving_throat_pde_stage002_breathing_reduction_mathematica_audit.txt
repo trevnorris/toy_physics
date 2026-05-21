@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl
-# Date: 2026-05-11T12:42:04-06:00
-# Elapsed: 98s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 002 — BREATHING REDUCTION BACK TO THE OLD (a, L) CLOSURE
@@ -27,13 +19,17 @@ PASS: angular prefactor from (2 sqrt(pi) Y00)^2 - 4 pi
 ----------------------------------------------------------------------------------------
 II. Axisymmetric two-mode reduction from the Stage 001 action
 ----------------------------------------------------------------------------------------
-reduced Lagrangian density from the action - target overlap form = 0
-PASS: reduced Lagrangian density from the action - target overlap form
+extracted M matches boxed M (4 Pi overlap form) =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: extracted M matches boxed M (4 Pi overlap form)
+extracted K matches boxed K (4 Pi overlap form) =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: extracted K matches boxed K (4 Pi overlap form)
 formal reduced Lagrangian - boxed matrix form = 0
 PASS: formal reduced Lagrangian - boxed matrix form
 Recovered overlap matrices:
 MatrixForm[{{Integrate[4*Pi*alphaAF[w]^2*muEtaF[w], {w, wL, wR}], Integrate[4*Pi*alphaAF[w]*alphaLF[w]*muEtaF[w], {w, wL, wR}]}, {Integrate[4*Pi*alphaAF[w]*alphaLF[w]*muEtaF[w], {w, wL, wR}], Integrate[4*Pi*alphaLF[w]^2*muEtaF[w], {w, wL, wR}]}}]
-MatrixForm[{{Integrate[4*Pi*(alphaAF[w]^2*K0F[w] + TwF[w]*Derivative[1][alphaAF][w]^2), {w, wL, wR}], Integrate[4*Pi*(alphaAF[w]*alphaLF[w]*K0F[w] + TwF[w]*Derivative[1][alphaAF][w]*Derivative[1][alphaLF][w]), {w, wL, wR}]}, {Integrate[4*Pi*(alphaAF[w]*alphaLF[w]*K0F[w] + TwF[w]*Derivative[1][alphaAF][w]*Derivative[1][alphaLF][w]), {w, wL, wR}], Integrate[4*Pi*(alphaLF[w]^2*K0F[w] + TwF[w]*Derivative[1][alphaLF][w]^2), {w, wL, wR}]}}]
+MatrixForm[{{Integrate[4*Pi*(alphaAF[w]^2*K0F[w] + TwF[w]*Derivative[1][alphaAF][w]^2), {w, wL, wR}], Integrate[2*Pi*(2*alphaAF[w]*alphaLF[w]*K0F[w] + 2*TwF[w]*Derivative[1][alphaAF][w]*Derivative[1][alphaLF][w]), {w, wL, wR}]}, {Integrate[2*Pi*(2*alphaAF[w]*alphaLF[w]*K0F[w] + 2*TwF[w]*Derivative[1][alphaAF][w]*Derivative[1][alphaLF][w]), {w, wL, wR}], Integrate[4*Pi*(alphaLF[w]^2*K0F[w] + TwF[w]*Derivative[1][alphaLF][w]^2), {w, wL, wR}]}}]
 Euler-Lagrange equation for q_a = 0
 PASS: Euler-Lagrange equation for q_a
 Euler-Lagrange equation for q_L = 0
@@ -54,22 +50,44 @@ norm(Y21c) - 1 = 0
 PASS: norm(Y21c) - 1
 angular energy(Y21c) - 6 = 0
 PASS: angular energy(Y21c) - 6
+norm(Y21s) - 1 = 0
+PASS: norm(Y21s) - 1
+angular energy(Y21s) - 6 = 0
+PASS: angular energy(Y21s) - 6
 norm(Y22c) - 1 = 0
 PASS: norm(Y22c) - 1
 angular energy(Y22c) - 6 = 0
 PASS: angular energy(Y22c) - 6
+norm(Y22s) - 1 = 0
+PASS: norm(Y22s) - 1
+angular energy(Y22s) - 6 = 0
+PASS: angular energy(Y22s) - 6
+real P2 norm matrix - IdentityMatrix[5] =
+MatrixForm[{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}]
+PASS: real P2 norm matrix - IdentityMatrix[5]
+real P2 angular stiffness matrix - 6 IdentityMatrix[5] =
+MatrixForm[{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}]
+PASS: real P2 angular stiffness matrix - 6 IdentityMatrix[5]
 -Delta_S2 Y20 - 6 Y20 = 0
 PASS: -Delta_S2 Y20 - 6 Y20
 -Delta_S2 Y21c - 6 Y21c = 0
 PASS: -Delta_S2 Y21c - 6 Y21c
+-Delta_S2 Y21s - 6 Y21s = 0
+PASS: -Delta_S2 Y21s - 6 Y21s
 -Delta_S2 Y22c - 6 Y22c = 0
 PASS: -Delta_S2 Y22c - 6 Y22c
+-Delta_S2 Y22s - 6 Y22s = 0
+PASS: -Delta_S2 Y22s - 6 Y22s
 single-component reduced density for Y20 = 0
 PASS: single-component reduced density for Y20
 single-component reduced density for Y21c = 0
 PASS: single-component reduced density for Y21c
+single-component reduced density for Y21s = 0
+PASS: single-component reduced density for Y21s
 single-component reduced density for Y22c = 0
 PASS: single-component reduced density for Y22c
+single-component reduced density for Y22s = 0
+PASS: single-component reduced density for Y22s
 single-component P2 Euler-Lagrange equation = 0
 PASS: single-component P2 Euler-Lagrange equation
 
@@ -84,5 +102,3 @@ Verified with Mathematica:
     using those overlap integrals as coefficients;
   • real P2 orthonormality, common angular stiffness 6, and the resulting
     isotropic grouped-real P2 degeneracy before coupling.
-
-EXIT_CODE: 0

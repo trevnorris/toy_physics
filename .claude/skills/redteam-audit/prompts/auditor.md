@@ -226,4 +226,17 @@ After Codex applies, the verifier will run `redteam exec-sympy {UNIT_ID}` (or ma
 - **A checkpoint stage** (this one is checkpoint: `{IS_CHECKPOINT}`) gets a higher bar. No status-only carve-outs; both engines required; assertions must be substantive.
 - **`stale_output`** is cheap to spot via mtime alone, but only file a finding if the freshness matters — saved output not reflecting current script means either (a) the script was edited without re-running (likely benign, the verifier will catch on re-run) or (b) the saved output is being used as "proof" elsewhere and is misleading.
 
+## Self-test before finalizing the directive (REQUIRED)
+
+Before writing the final `## F<n>` block to the directive, walk through your "Required change" mentally as if you were SymPy/Mathematica:
+
+1. **Variable independence**: For every `sp.diff(EXPR, VAR)` or `D[expr, var]` in the new check, list which symbols `EXPR` actually depends on. If `VAR` isn't one of them, the derivative is identically zero — the `assert_nonzero` will fail and the `assert_zero` will pass trivially. **This was the actual failure mode in earlier units; do not repeat it.**
+2. **Symmetry/parity**: For every integral over an unbounded domain, identify the integrand's parity in the integration variable. Even-times-even = even (integral can be nonzero); odd-times-odd = even (integral can be nonzero); odd-times-even = odd (integral is zero on a symmetric domain). If the assertion claims "this vanishes", verify it really does given the actual weight functions defined in the script (e.g., is the weight a Gaussian or the *derivative* of a Gaussian? They have opposite parity).
+3. **Trivial-case pre-check**: For each `assert_zero` you propose, mentally substitute the simplest concrete profile (e.g., `Z=1`, `W=Gaussian`, `lambda=1`) and confirm the residual reduces to 0. For each `assert_nonzero`, do the same and confirm it gives a nonzero literal (e.g., 1, sqrt(2), or symbolic expression that's obviously not zero).
+4. **Path specifications**: For `missing_verification_script` findings, the directive's "Target" line MUST name the full target path including the correct directory. `.py` files live in `scripts/`; `.wl` files live in `mathematica/`. Do not let Codex guess.
+
+If any step uncovers an error, fix the directive BEFORE writing it. A self-test failure here saves a Codex iteration (and prevents silent-pass bugs where Codex applies a wrong assertion that happens to be true for unrelated reasons).
+
+Write a short `## Self-test notes` block at the very end of the report (after Verdict justification) listing which traps you checked and what you concluded. Two or three sentences suffice.
+
 You are not graded on number of findings. You are graded on whether the findings you raise are real and whether the issues you missed are caught later. Be precise. Be specific. Be adversarial.

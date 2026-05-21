@@ -4,7 +4,10 @@ batch: I.1
 created_at: 2026-05-20T00:00:00Z
 findings_count: 1
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-21T00:00:00-06:00
+findings_applied: 1
+findings_blocked: 0
 verification_status: pending
 ---
 
@@ -121,3 +124,17 @@ After Codex applies, the verifier will run `redteam exec-mathematica 001` and co
 (d) the `I.3b` section invoking `SphericalHarmonicY` is present;
 
 (e) the output file's residuals are still `0` everywhere they were before.
+
+## Applied: F1
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl`
+- summary: Replaced the hand-rolled Mathematica variational route with `EulerEquations`/`VariationalD`, added the `SphericalHarmonicY` eigenvalue check, and documented the intentional chain-rule parallel check.
+- deviation: none
+
+## Applied: F1-iter2
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl`
+- summary: Removed the erroneous `First[]` wrappers from the three `EulerEquations` uses so each returned equation is reduced by subtracting its two sides; `math -script` now exits 0 with every `expectZero` check passing.
+- deviation: none

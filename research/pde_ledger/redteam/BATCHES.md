@@ -1,11 +1,11 @@
 # Red-Team Batch Status
 
-Generated: 2026-05-15T21:35:40-06:00
+Generated: 2026-05-21T12:02:15-06:00
 Project: pde_ledger
 
 | Batch | Range | Stages | States | Label |
 |---|---|---:|---|---|
-| I.1 | 1–12 | 12 | pending=12 | Part I.1 — Geometry lift, BdG coupling, projected Maxwell setup |
+| I.1 | 1–12 | 12 | verified=12 | Part I.1 — Geometry lift, BdG coupling, projected Maxwell setup |
 | I.2 | 13–23 | 11 | pending=11 | Part I.2 — Maxwell bridge, parent throat action, reduced one-port |
 | II.1 | 24–36 | 13 | pending=13 | Part II.1 — Overlap isotropy through continuum kernel |
 | III.1 | 37–48 | 12 | pending=12 | Part III.1 — Continuum kernel, generalized branch, rank-2 |

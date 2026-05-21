@@ -71,6 +71,54 @@ For Mathematica scripts:
 
 Both scripts must be runnable via the runners in `.redteam-config.yaml`. Run them yourself (`python3 <path>` / `math -script <path>`) and iterate until they exit 0 with all checks passing.
 
+## Common Mathematica pitfalls (defects seen in prior batches)
+
+These have each cost a fix-loop iteration at least once. Check for them proactively when authoring or editing a `.wl`:
+
+1. **Multi-line continuation truncation on `=`.** A statement like
+
+   ```
+   lRed =
+     1/2 m D[q, t]^2 - 1/2 k q^2
+     + 1/2 D[a, t]^2 - 1/2 oA^2 a^2
+     + r a ww + gA q a + gW q ww;
+   ```
+
+   parses as `lRed = (1/2 m D[q,t]^2 - 1/2 k q^2)` — Mathematica's parser ends the expression at the first line whose trailing token completes a parseable form, silently dropping subsequent `+ ...` lines. **Always parenthesize the RHS** when an assignment spans multiple lines:
+
+   ```
+   lRed = (
+     1/2 m D[q, t]^2 - 1/2 k q^2
+     + 1/2 D[a, t]^2 - 1/2 oA^2 a^2
+     + r a ww + gA q a + gW q ww
+   );
+   ```
+
+   This defect has been caught at stage 003 (batch I.1) and stage 021 (batch I.2). If you are touching any multi-line assignment whose RHS uses leading-`+`/`-` continuation, parenthesize it.
+
+2. **`D[expr, f[t]]` returns 0 when `f[t]` is a head-applied form, not a symbol.** When local variables are bound to function applications:
+
+   ```
+   q = qFun[t]; a = aFun[t]; ww = wFun[t];
+   lRed = 1/2 m D[q,t]^2 - 1/2 k q^2 + ... + gA q a + gW q ww;
+   D[lRed, q]   (* returns -k qFun[t], MISSING the gA aFun[t] + gW wFun[t] terms *)
+   ```
+
+   Mathematica's `D` does not differentiate w.r.t. `qFun[t]` for product terms — it treats the head-applied form as not-a-variable for those terms. So a manual Euler-Lagrange operator pattern `D[D[lRed, D[q,t]], t] - D[lRed, q]` silently yields a wrong EOM. The script exits 0, the `expectZero` Prints "FAIL: ...", and you don't notice unless you read the output line.
+
+   **Use `EulerEquations` from the `VariationalMethods` package** instead:
+
+   ```
+   Needs["VariationalMethods`"];
+   elList = EulerEquations[lRed, {qFun[t], aFun[t], wFun[t]}, t];
+   ```
+
+   `EulerEquations` returns a list of `lhs == rhs` equations; coerce to a residual via `/. Equal[lhs_, rhs_] :> lhs - rhs` before passing to `expectZero`. Note that `EulerEquations` may return the opposite sign convention; if so, flip the canonical RHS rather than reintroducing the manual operator. Fallback: substitute true symbols for the head-form aliases before calling `D`.
+
+   This defect has been caught at stage 021 (batch I.2).
+
+3. **`expectZero` Prints "FAIL" but does not `Exit[1]`.** Many existing `.wl` files use a helper that Prints failure but doesn't propagate. The orchestrator's post-fix sanity check now greps the saved output for `^FAIL\b` so this can't pass silently — but if you are writing a new helper, **also call `Exit[1]` on failure**.
+
 ## When you finish
 
 Before marking the directive applied, confirm: every `.py` and `.wl` script you edited or created exits 0 when run, with all in-file `assert` / `expectZero` / `If[..., Exit[1]]` checks passing. If you cannot reach that state for a finding within ~5 iterations, append `## Blocked: F<n>` instead of `## Applied: F<n>`.

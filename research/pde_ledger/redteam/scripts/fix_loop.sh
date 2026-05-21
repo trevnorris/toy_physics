@@ -5,7 +5,16 @@
 #   - codex non-zero exit
 #   - any ## Blocked: block appearing in the directive (codex couldn't apply something)
 #   - post-codex script re-exec failure (sanity check)
+#   - post-codex output contains FAIL/Traceback/AssertionError/$Failed (catches
+#     the case where math -script exits 0 but printed FAIL — e.g. an
+#     `expectZero` helper that Prints "FAIL" without Exit[1])
 #   - stage in unexpected initial state
+#
+# Per-stage sanity exec writes refreshed transcripts to the canonical paths
+#   scripts/output/<NNN>_*_sympy_audit.txt
+#   mathematica/output/<NNN>_*_mathematica_audit.txt
+# which is what the verifier agents read. (Bypasses $RT exec-sympy/exec-
+# mathematica — those write to exec_logs/ and race on MANIFEST.yaml.)
 #
 # A halt writes a marker file with the failing stage + reason; subsequent re-runs
 # of this script will skip already-completed stages (codex_applied / verified) and
@@ -89,22 +98,34 @@ log "Stages to process: $STAGES"
 # prep). Idempotent: safe to re-run; halts cleanly if scripts no longer pass.
 ensure_prep_for_codex_applied() {
   local n="$1"
-  local sympy_path math_path
-  sympy_path=$(bash "$RT" paths "$n" | awk '/^sympy:/{print $2}')
-  math_path=$(bash "$RT" paths "$n" | awk '/^mathematica:/{print $2}')
+  local sympy_src math_src sympy_out math_out
+  sympy_src=$(bash "$RT" paths "$n" | awk '
+    /^[a-z_]+:$/ { sect = $0; sub(/:$/, "", sect); next }
+    sect == "sympy" && /^[[:space:]]*path:/ { print $2; exit }
+  ')
+  math_src=$(bash "$RT" paths "$n" | awk '
+    /^[a-z_]+:$/ { sect = $0; sub(/:$/, "", sect); next }
+    sect == "mathematica" && /^[[:space:]]*path:/ { print $2; exit }
+  ')
 
-  if [[ -n "$sympy_path" && "$sympy_path" != "null" ]]; then
-    bash "$RT" exec-sympy "$n" >> "$LOG_BASENAME" 2>&1
-    local src=$?
-    if [[ $src -ne 0 ]]; then
-      halt "$n" "codex_applied stage's sympy script no longer exits 0 (exit $src)"
+  if [[ -n "$sympy_src" && "$sympy_src" != "null" && -f "$sympy_src" ]]; then
+    sympy_out="scripts/output/$(basename "${sympy_src%.py}").txt"
+    mkdir -p "$(dirname "$sympy_out")"
+    if ! python3 "$sympy_src" > "$sympy_out" 2>&1; then
+      halt "$n" "codex_applied stage's sympy script no longer exits 0 — see $sympy_out"
+    fi
+    if grep -qE '^(FAIL\b|Traceback|AssertionError)' "$sympy_out"; then
+      halt "$n" "codex_applied stage's sympy output contains FAIL/Traceback — see $sympy_out"
     fi
   fi
-  if [[ -n "$math_path" && "$math_path" != "null" ]]; then
-    bash "$RT" exec-mathematica "$n" >> "$LOG_BASENAME" 2>&1
-    local mrc=$?
-    if [[ $mrc -ne 0 ]]; then
-      halt "$n" "codex_applied stage's mathematica script no longer exits 0 (exit $mrc)"
+  if [[ -n "$math_src" && "$math_src" != "null" && -f "$math_src" ]]; then
+    math_out="mathematica/output/$(basename "${math_src%.wl}").txt"
+    mkdir -p "$(dirname "$math_out")"
+    if ! math -script "$math_src" > "$math_out" 2>&1; then
+      halt "$n" "codex_applied stage's mathematica script no longer exits 0 — see $math_out"
+    fi
+    if grep -qE '^(FAIL\b|\$Failed\b)' "$math_out"; then
+      halt "$n" "codex_applied stage's mathematica output contains FAIL — see $math_out"
     fi
   fi
 
@@ -183,28 +204,50 @@ process_stage() {
   # downstream paths lookup returns null and the sanity exec fails.
   bash "$RT" scan "$n" >> "$LOG_BASENAME" 2>&1
 
-  # Sanity exec: independently confirm scripts run clean. (Codex claims it
-  # iterated to exit 0, but trust-but-verify costs us seconds and catches the
-  # case where codex's iteration logic short-circuited.)
-  local sympy_path math_path
-  sympy_path=$(bash "$RT" paths "$n" | awk '/^sympy:/{print $2}')
-  math_path=$(bash "$RT" paths "$n" | awk '/^mathematica:/{print $2}')
+  # Sanity exec + canonical-output refresh. Two goals here:
+  #   (1) Independently confirm scripts run clean. Codex claims it iterated
+  #       to exit 0, but trust-but-verify costs us seconds.
+  #   (2) Refresh the canonical scripts/output and mathematica/output .txt
+  #       files (what the verifier reads). $RT exec-* writes to exec_logs/
+  #       and is parallel-unsafe re: MANIFEST.yaml (see
+  #       feedback_no_parallel_exec_sympy memory). Direct invocation here
+  #       sidesteps both issues.
+  #
+  # Critical: we grep the saved output for explicit FAIL lines. Mathematica
+  # `expectZero` helpers Print "FAIL: ..." without `Exit[1]`, so an exit-0
+  # check alone misses real failures (this is what let batch I.2 stage 021
+  # slip to codex_applied with a broken EL derivation).
+  local sympy_src math_src sympy_out math_out
+  sympy_src=$(bash "$RT" paths "$n" | awk '
+    /^[a-z_]+:$/ { sect = $0; sub(/:$/, "", sect); next }
+    sect == "sympy" && /^[[:space:]]*path:/ { print $2; exit }
+  ')
+  math_src=$(bash "$RT" paths "$n" | awk '
+    /^[a-z_]+:$/ { sect = $0; sub(/:$/, "", sect); next }
+    sect == "mathematica" && /^[[:space:]]*path:/ { print $2; exit }
+  ')
 
-  if [[ -n "$sympy_path" && "$sympy_path" != "null" ]]; then
-    log "Stage $n: sanity exec sympy"
-    bash "$RT" exec-sympy "$n" >> "$LOG_BASENAME" 2>&1
-    local src=$?
-    if [[ $src -ne 0 ]]; then
-      halt "$n" "post-codex sympy exec failed (exit $src) — codex claimed success but script doesn't run"
+  if [[ -n "$sympy_src" && "$sympy_src" != "null" && -f "$sympy_src" ]]; then
+    sympy_out="scripts/output/$(basename "${sympy_src%.py}").txt"
+    mkdir -p "$(dirname "$sympy_out")"
+    log "Stage $n: refresh sympy -> $sympy_out"
+    if ! python3 "$sympy_src" > "$sympy_out" 2>&1; then
+      halt "$n" "post-codex sympy non-zero exit — see $sympy_out"
+    fi
+    if grep -qE '^(FAIL\b|Traceback|AssertionError)' "$sympy_out"; then
+      halt "$n" "post-codex sympy output contains FAIL/Traceback/AssertionError — see $sympy_out"
     fi
   fi
 
-  if [[ -n "$math_path" && "$math_path" != "null" ]]; then
-    log "Stage $n: sanity exec mathematica"
-    bash "$RT" exec-mathematica "$n" >> "$LOG_BASENAME" 2>&1
-    local mrc=$?
-    if [[ $mrc -ne 0 ]]; then
-      halt "$n" "post-codex mathematica exec failed (exit $mrc) — codex claimed success but script doesn't run"
+  if [[ -n "$math_src" && "$math_src" != "null" && -f "$math_src" ]]; then
+    math_out="mathematica/output/$(basename "${math_src%.wl}").txt"
+    mkdir -p "$(dirname "$math_out")"
+    log "Stage $n: refresh mathematica -> $math_out"
+    if ! math -script "$math_src" > "$math_out" 2>&1; then
+      halt "$n" "post-codex mathematica non-zero exit — see $math_out"
+    fi
+    if grep -qE '^(FAIL\b|\$Failed\b)' "$math_out"; then
+      halt "$n" "post-codex mathematica output contains FAIL — see $math_out"
     fi
   fi
 

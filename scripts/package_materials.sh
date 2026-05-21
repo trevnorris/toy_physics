@@ -40,7 +40,10 @@ for paper_dir in "${paper_dirs[@]}"; do
     zip -q -r "$tmp_zip" . \
       -x 'paper/*.pdf' \
       -x 'materials.zip' \
-      -x './materials.zip'
+      -x './materials.zip' \
+      -x 'redteam/*' \
+      -x 'redteam' \
+      -x '.redteam-config.yaml'
   )
 
   mv -f "$tmp_zip" "$zip_path"

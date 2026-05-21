@@ -1,0 +1,79 @@
+# .redteam-config.yaml
+# Place this at the root of the project you're auditing.
+# All paths are relative to this file's location.
+
+project:
+  name: "example-paper"
+  # Where redteam/ artifacts will live (manifest, reports, directives, etc.)
+  redteam_dir: "redteam"
+
+# How units are numbered in filenames (only used for stage-numbered projects).
+# stage_pad=3 means unit 7 → "007", "stage007", etc.
+# For topic-keyed projects this is ignored (unit IDs are slugs, not numbers).
+stage_pad: 3
+
+# Filesystem layout. {N} is the zero-padded unit number (stage-numbered projects only).
+# For topic-keyed projects, replace {N} with `*` and the unit slug comes from the
+# captured wildcard match (handled by bootstrap).
+#
+# Only script-related roles are tracked here. The red-team does NOT track
+# paper.tex or notes/ files — doc alignment is handled manually, out-of-band.
+paths:
+  sympy:
+    - "scripts/*_stage{N}_*_sympy_audit.py"
+  mathematica:
+    - "mathematica/*_stage{N}_*_mathematica_audit.wl"
+  sympy_output:
+    - "scripts/output/*_stage{N}_*_sympy_audit.txt"
+  mathematica_output:
+    - "mathematica/output/*_stage{N}_*_mathematica_audit.txt"
+
+# Commands to execute the scripts. {script} is the absolute path.
+# Set to null if that engine is not used in this project.
+runners:
+  sympy: "python3 {script}"
+  mathematica: "math -script {script}"
+
+# Unit range (inclusive). The CLI iterates this range to build the manifest.
+# For stage-numbered projects only; topic-keyed projects use `units:` instead
+# (a list of unit slugs derived from script filenames at bootstrap time).
+stages:
+  start: 1
+  end: 253
+  # Units within [start,end] that don't exist (renumbering gaps, etc.)
+  exclude: []
+
+# Batch map: ordered list of batches. Order = audit order.
+# Each batch covers a contiguous range of unit numbers (stage-numbered) or
+# an explicit list of unit slugs (topic-keyed).
+batches:
+  - id: "I.1"
+    label: "Part I — Geometry Lift & Coupling (first half)"
+    range: [1, 12]
+  - id: "I.2"
+    label: "Part I — Reduced One-Port Normal Form"
+    range: [13, 23]
+  # ... etc
+
+# Checkpoint units (warrant extra scrutiny, can't be skipped on coverage gaps).
+checkpoints: []
+
+# Iteration / parallelism caps.
+limits:
+  max_iterations: 2          # max audit→fix→verify loops per unit per batch run
+  parallel_audit_max: 10     # max parallel auditor agents per batch
+  parallel_verify_max: 10    # max parallel verifier agents per batch
+  fix_parallelism: 1         # MUST be 1 — codex fixes are sequential per unit
+
+# Codex invocation knobs.
+codex:
+  chat_wrapper: "~/.claude/hooks/codex-chat/codex-chat"
+  sandbox: "workspace-write"
+  # Set to true to skip codex entirely and only audit. Useful for first passes
+  # when you want to see what's wrong before committing to fixes.
+  dry_run: false
+
+# Status-only units: units with no executable script of their own, only
+# consolidation/carry-forward. Exempted from "both scripts required" IFF
+# their carry-forward claims trace back to upstream units whose scripts pass.
+status_only_candidates: []

@@ -1,0 +1,176 @@
+project:
+  name: pde_ledger
+  redteam_dir: redteam
+stage_pad: 3
+paths:
+  sympy:
+  - scripts/moving_throat_pde_stage{N}_*_sympy_audit.py
+  - scripts/moving_throat_pde_stage{N}_*_sympy_audit_refresh.py
+  mathematica:
+  - mathematica/moving_throat_pde_stage{N}_*_mathematica_audit.wl
+  sympy_output:
+  - scripts/output/moving_throat_pde_stage{N}_*_sympy_audit.txt
+  mathematica_output:
+  - mathematica/output/moving_throat_pde_stage{N}_*_mathematica_audit.txt
+runners:
+  sympy: python3 {script}
+  mathematica: math -script {script}
+stages:
+  start: 1
+  end: 253
+  exclude: []
+batches:
+- id: I.1
+  label: "Part I.1 \u2014 Geometry lift, BdG coupling, projected Maxwell setup"
+  range:
+  - 1
+  - 12
+- id: I.2
+  label: "Part I.2 \u2014 Maxwell bridge, parent throat action, reduced one-port"
+  range:
+  - 13
+  - 23
+- id: II.1
+  label: "Part II.1 \u2014 Overlap isotropy through continuum kernel"
+  range:
+  - 24
+  - 36
+- id: III.1
+  label: "Part III.1 \u2014 Continuum kernel, generalized branch, rank-2"
+  range:
+  - 37
+  - 48
+- id: III.2
+  label: "Part III.2 \u2014 Tracking, zeta thresholds, asymmetry, boost"
+  range:
+  - 49
+  - 60
+- id: III.3
+  label: "Part III.3 \u2014 Microclosure, gain thresholds, equilibrium, walls"
+  range:
+  - 61
+  - 72
+- id: III.4
+  label: "Part III.4 \u2014 Family-1 geometry, thresholds, quadrupole"
+  range:
+  - 73
+  - 84
+- id: III.5
+  label: "Part III.5 \u2014 Quadrupole cancellation, loading ratio, verdict"
+  range:
+  - 85
+  - 90
+- id: IV.1
+  label: "Part IV.1 \u2014 Grouped p2 geometry, decoupling, contamination"
+  range:
+  - 91
+  - 102
+- id: IV.2
+  label: "Part IV.2 \u2014 Outgoing DtN, deformation, robustness, robin"
+  range:
+  - 103
+  - 114
+- id: IV.3
+  label: "Part IV.3 \u2014 Core balance, DtN mixed, outlet, positive source"
+  range:
+  - 115
+  - 126
+- id: IV.4
+  label: "Part IV.4 \u2014 Penetration, mouth boundary, fixedpoint"
+  range:
+  - 127
+  - 138
+- id: IV.5
+  label: "Part IV.5 \u2014 Susceptibility, branch, defect transport"
+  range:
+  - 139
+  - 150
+- id: IV.6
+  label: "Part IV.6 \u2014 Correction, coevolution, traction, off-family"
+  range:
+  - 151
+  - 163
+- id: V.1
+  label: "Part V.1 \u2014 Microscopic logs, drifts, bundle inversion"
+  range:
+  - 164
+  - 175
+- id: V.2
+  label: "Part V.2 \u2014 Load shape, transfer shape, coherent slippage"
+  range:
+  - 176
+  - 187
+- id: V.3
+  label: "Part V.3 \u2014 Branch observables, isotropic target, home stretch"
+  range:
+  - 188
+  - 200
+- id: VI.1
+  label: "Part VI.1 \u2014 Explicit realization, scalar slice, ray ranking"
+  range:
+  - 201
+  - 218
+- id: VII.1
+  label: "Part VII.1 \u2014 Mixed bundle, resonance, branch packet, 5PN"
+  range:
+  - 219
+  - 230
+- id: VII.2
+  label: "Part VII.2 \u2014 Rigid mouth orbit lock, branch dressing, twin support"
+  range:
+  - 231
+  - 242
+- id: VIII.1
+  label: "Part VIII.1 \u2014 Relaxed branch, dynamic event chain, cold survival"
+  range:
+  - 243
+  - 253
+checkpoints:
+- 1
+- 2
+- 3
+- 22
+- 23
+- 24
+- 36
+- 51
+- 69
+- 89
+- 90
+- 96
+- 105
+- 112
+- 163
+- 185
+- 200
+- 203
+- 218
+- 221
+- 239
+- 242
+- 243
+- 248
+- 253
+limits:
+  max_iterations: 2
+  parallel_audit_max: 10
+  parallel_verify_max: 10
+  fix_parallelism: 1
+codex:
+  chat_wrapper: ~/.claude/hooks/codex-chat/codex-chat
+  sandbox: workspace-write
+  dry_run: false
+status_only_candidates:
+- 103
+- 113
+- 120
+- 124
+- 128
+- 132
+- 136
+- 141
+- 145
+- 149
+- 153
+- 84
+- 93

@@ -1,0 +1,20 @@
+STAGE 020 PARENT THROAT ACTION WEAK-AXISYMMETRIC PACKET MATHEMATICA AUDIT
+M1 lambda_0 residual = 0
+M1 lambda_1 residual = 0
+M1 lambda_2 residual = 0
+M1 same-sign m=1 residual = 0
+M1 same-sign m=2 residual = 0
+M1 OK
+M2 even-gate Jacobian determinant residual = 0
+M2 OK
+M3 solution count residual = 0
+M3 dKSigma residual = 0
+M3 dMSigma residual = 0
+M3 OK
+M4 D01 residual = 0
+M4 D21 residual = 0
+M4 D41 residual = 0
+M4 OK
+M5 Xi1 residual = 0
+M5 OK
+STATUS: PASS

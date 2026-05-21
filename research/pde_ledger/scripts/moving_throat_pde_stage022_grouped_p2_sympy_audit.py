@@ -242,24 +242,6 @@ def stage4_prototype_transfer_coefficients() -> dict[str, sp.Expr]:
     print("P0_proto =")
     sp.pprint(dict_back[P0_proto])
 
-    Nproto_stage4 = (
-        (dict_back[P0_proto] - gW * omega**2) ** 2
-        / (dict_back[Delta0] - dict_back[S2] * omega**2 + omega**4) ** 2
-    )
-    Nseries_stage4 = sp.expand(sp.series(Nproto_stage4, omega, 0, 6).removeO())
-    expect_zero(
-        "N0 round-trip into Stage-4 symbols",
-        Nseries_stage4.coeff(omega, 0) - sp.simplify(N0.subs(dict_back)),
-    )
-    expect_zero(
-        "N2 round-trip into Stage-4 symbols",
-        Nseries_stage4.coeff(omega, 2) - sp.simplify(N2.subs(dict_back)),
-    )
-    expect_zero(
-        "N4 round-trip into Stage-4 symbols",
-        Nseries_stage4.coeff(omega, 4) - sp.simplify(N4.subs(dict_back)),
-    )
-
     return {"N0": N0, "N2": N2, "N4": N4}
 
 

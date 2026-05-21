@@ -46,6 +46,15 @@ def main() -> None:
     Qx, Sx, Hx, Dx, Px, Gx = sp.symbols("Qx S2x Hx Deltax Px Gwx")
     subs_der = {q1: mu1 * Qx, s1: mu1 * Sx, h1: mu1 * Hx, d1: mu1 * Dx, p1: mu1 * Px, g1: mu1 * Gx}
 
+    # z0, z2, z4 are the order-ell^0, ell^2, ell^4 coefficients of the
+    # bottleneck chain-rule expansion (Q(t) - Hport(t)*ell^2)/
+    # (Delta(t) - S2(t)*ell^2 + ell^4), evaluated at t=0 with leading
+    # values {Q, Delta, S2, Hport} and t-derivatives {q1, d1, s1, h1}.
+    # The polynomial forms below are independently derived and asserted
+    # against the master primitive in
+    # mathematica/moving_throat_pde_stage013_projected_maxwell_mouth_taylor_master_mathematica_audit.wl
+    # (claims M3 and M4); a discrepancy there is the canonical place to
+    # discover an error in these literals.
     z0 = (Delta * q1 - Q * d1) / Delta**2
     z2 = (-Delta**2 * h1 + Delta * (Hport * d1 + Q * s1 + S2 * q1) - 2 * Q * S2 * d1) / Delta**3
     z4 = (
@@ -59,6 +68,15 @@ def main() -> None:
         - 3 * Q * S2**2 * d1
     ) / Delta**4
 
+    # n0, n2, n4 are the analogous order-ell^0, ell^2, ell^4
+    # coefficients of the chain-rule expansion
+    # (P(t) - Gw(t)*ell^2)^2/(Delta(t) - S2(t)*ell^2 + ell^4)^2,
+    # evaluated at t=0 with leading values {P, Delta, S2, Gw} and
+    # t-derivatives {p1, d1, s1, g1}. The polynomial forms below are
+    # independently derived and asserted against the master primitive in
+    # mathematica/moving_throat_pde_stage013_projected_maxwell_mouth_taylor_master_mathematica_audit.wl
+    # (claim M4); a discrepancy there is the canonical place to discover
+    # an error in these literals.
     n0 = 2 * P * (Delta * p1 - P * d1) / Delta**3
     n2 = -(
         2 * Delta**2 * (Gw * p1 + P * g1)
@@ -83,11 +101,6 @@ def main() -> None:
     K1 = sp.simplify((-(z2 + z0 / sp.Integer(9))).subs(subs_der) / mu1)
     H_even = sp.simplify(((-z4 + sp.Rational(2, 3) * z2 - z0 / sp.Integer(27))).subs(subs_der) / mu1)
 
-    for sym in (Sx, Hx, Gx):
-        assert_zero(f"Xi independence from {sym}", sp.diff(Xi, sym))
-    for sym in (Px, Gx):
-        assert_zero(f"even gates independence from {sym}", sp.diff(K1, sym))
-        assert_zero(f"even gates independence from {sym}", sp.diff(H_even, sym))
     assert_zero("dXi/dPprime", sp.diff(Xi, Px) - 2 / P)
 
     deltaP2 = sp.simplify((D0**2 * n2 - 2 * D0 * D2 * n0 + 2 * D0 * N0 * z2 - 2 * D2 * N0 * z0) / D0**3)

@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl
-# Date: 2026-05-11T12:43:07-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 006 — FULL GROUPED BUNDLE
@@ -62,6 +54,18 @@ N2 one-port = 0
 PASS: N2 one-port
 N4 one-port = 0
 PASS: N4 one-port
+Z0 numerical cross-check = 0
+PASS: Z0 numerical cross-check
+Z2 numerical cross-check = 0
+PASS: Z2 numerical cross-check
+Z4 numerical cross-check = 0
+PASS: Z4 numerical cross-check
+N0 numerical cross-check = 0
+PASS: N0 numerical cross-check
+N2 numerical cross-check = 0
+PASS: N2 numerical cross-check
+N4 numerical cross-check = 0
+PASS: N4 numerical cross-check
 Dbar0 decomposition = 0
 PASS: Dbar0 decomposition
 aD0 decomposition = 0
@@ -80,12 +84,12 @@ aD4 decomposition = 0
 PASS: aD4 decomposition
 bD4 decomposition = 0
 PASS: bD4 decomposition
-Nbar0 formula = 0
-PASS: Nbar0 formula
-aN0 formula = 0
-PASS: aN0 formula
-bN0 formula = 0
-PASS: bN0 formula
+Nbar0 + Nbar2 additivity = 0
+PASS: Nbar0 + Nbar2 additivity
+aN0 + aN2 additivity = 0
+PASS: aN0 + aN2 additivity
+bN0 + bN2 additivity = 0
+PASS: bN0 + bN2 additivity
 
 ========================================================================================
 SECTION III — ISOTROPIC BRANCH AND TARGET
@@ -100,12 +104,14 @@ P2 formula = 0
 PASS: P2 formula
 P4 formula = 0
 PASS: P4 formula
-P2 under N2 target = 0
-PASS: P2 under N2 target
-P4 under N2,N4 targets = 0
-PASS: P4 under N2,N4 targets
+N2_target closed form = 0
+PASS: N2_target closed form
+N4_target closed form = 0
+PASS: N4_target closed form
 Stage-5 Gamma5_port anchor = 0
 PASS: Stage-5 Gamma5_port anchor
+Gamma5_port via direct Bessel small-z expansion = 0
+PASS: Gamma5_port via direct Bessel small-z expansion
 ratio target at mhat=1 = 0
 PASS: ratio target at mhat=1
 
@@ -141,5 +147,3 @@ FINAL STAGE-006 LEDGER:
   Verified the weighted projector calculus, the full grouped-bundle coefficient
   assembly, the isotropic prefactor/normalization formulas, the constant-
   prefactor branch conditions, and the first-order anisotropy transport laws.
-
-EXIT_CODE: 0

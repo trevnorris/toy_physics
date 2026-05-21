@@ -1,0 +1,36 @@
+STAGE 014 PROJECTED MAXWELL MOUTH-TAYLOR GATE BRIDGE MATHEMATICA AUDIT
+M1 XiLoad independence from Sx residual = 0
+PASS: M1 XiLoad independence from Sx
+M1 XiLoad independence from Hx residual = 0
+PASS: M1 XiLoad independence from Hx
+M1 XiLoad independence from Gx residual = 0
+PASS: M1 XiLoad independence from Gx
+M1 K1 independence from Px residual = 0
+PASS: M1 K1 independence from Px
+M1 He independence from Px residual = 0
+PASS: M1 He independence from Px
+M1 K1 independence from Gx residual = 0
+PASS: M1 K1 independence from Gx
+M1 He independence from Gx residual = 0
+PASS: M1 He independence from Gx
+M2 dXiLoad/dPx residual = 0
+PASS: M2 dXiLoad/dPx
+M3 d(deltaP2)/dGx residual = 0
+PASS: M3 d(deltaP2)/dGx
+M4 deltaP4 Gx dependence residual = (2*D0*Delta*Gw + 4*D2*Delta*P - 4*D0*P*S2)/(D0^2*Delta^3)
+PASS: M4 deltaP4 Gx dependence
+M5 source/denominator solve residual = True
+PASS: M5 source/denominator solve
+M6 spectral solve residual = True
+PASS: M6 spectral solve
+M7 source/denominator Jacobian determinant residual = (-(Delta^3*Hport) + Delta*(9*Hport - 2*Q)*S2^2 - 9*Q*S2^3 + Delta^2*(9*Hport + Q + 2*Hport*S2 + Q*S2))/(9*Delta^6)
+PASS: M7 source/denominator Jacobian determinant
+M8 spectral Jacobian determinant residual = (-(Delta*Hport) + Q*S2)/Delta^4
+PASS: M8 spectral Jacobian determinant
+M9 Hx compensation denominator residual = 0
+PASS: M9 Hx compensation denominator
+M9 Sx compensation denominator residual = 0
+PASS: M9 Sx compensation denominator
+M10 sign-flip denominator mutation residual = -18*Delta^2*Q*S2
+PASS: M10 sign-flip denominator mutation
+STATUS: PASS

@@ -51,10 +51,15 @@ Former post-EM ledger stages start at Stage `022`.
 - SymPy audits are top-level files named
   `scripts/moving_throat_pde_stageNNN_*_sympy_audit.py` and should match the
   paper stage order.
-- Projected Maxwell Stages `004--012` now have independent Mathematica mirrors
-  landed during red-team audit batch I.1 (2026-05-21). Stages `013--020` do
-  not yet claim mirrors. Stage `021` retains its reduced one-port Mathematica
-  audit.
+- Projected Maxwell Stages `004--012` have independent Mathematica mirrors
+  landed during red-team audit batch I.1 (2026-05-21), and Stages `013--020`
+  have independent Mathematica mirrors landed during red-team audit batch I.2
+  (2026-05-21). Stage `021`'s reduced one-port Mathematica audit was
+  substantially rewritten in batch I.2 (manual EL derivation replaced with
+  `EulerEquations` from `VariationalMethods`; a recurrence of the I.1 stage
+  003 multi-line `lRed = ...` continuation parsing defect was caught and
+  patched via parenthesization; Sections II.2/III/V rewritten to use
+  `LinearSolve`, an analytic-derivative route, and `SphericalHankelH1[2, z]`).
 - Mathematica audits must be regenerated one script at a time.
 - Paper `\StageFile{...}` entries should resolve to real source files and to
   regenerated transcript files after the audit runs.
@@ -77,3 +82,12 @@ Former post-EM ledger stages start at Stage `022`.
   claim. `material_change: false` on every stage, so no upstream cascade. See
   `redteam/batches/batch_I1.md` plus per-stage reports at
   `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch I.2 (stages 013-023, "Part I.2 -- Maxwell bridge,
+  parent throat action, reduced one-port") completed 2026-05-21 with all 11
+  stages reaching `verified` and both engines independently checking each
+  load-bearing claim. Stages 013-020 received new independent Mathematica
+  mirrors; stage 021's mirror was substantially rewritten; stages 022-023
+  verified without material changes. `material_change: false` on every stage,
+  so no upstream cascade. See `redteam/batches/batch_I2.md` plus per-stage
+  reports at `redteam/reports/stage_NNN.md` and
+  `redteam/verifications/stage_NNN.md`.

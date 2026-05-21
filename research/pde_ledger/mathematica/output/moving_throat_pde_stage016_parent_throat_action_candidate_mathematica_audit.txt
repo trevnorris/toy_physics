@@ -1,0 +1,67 @@
+STAGE 016 PARENT THROAT ACTION CANDIDATE MATHEMATICA AUDIT
+Script: mathematica/moving_throat_pde_stage016_parent_throat_action_candidate_mathematica_audit.wl
+Claims: exact EL, fluctuation K_eta, boundary discharges, Y20 angular sector, modal EL.
+[M1] residual = 0
+[M1] PASS
+[M1 mutation] residual = 2*Derivative[1, 0][USig][R[t, w, u, v], w]
+[M1 mutation] PASS
+[M2] residual = 0
+[M2] PASS
+[M2 mutation] residual = -2*eta*UR0
+[M2 mutation] PASS
+[M3] residual = 0
+[M3] PASS
+[M3 mutation] residual = -2*dTw0p*eta
+[M3 mutation] PASS
+[M3 boundary] carried term = [-Tw(R0,w) R0' eta]
+[M4] residual = 0
+[M4] PASS
+[M4 cross] residual = 0
+[M4 cross] PASS
+[M4 mutation] residual = -2*R0p*TwR0
+[M4 mutation] PASS
+[M5 product-rule] residual = 0
+[M5 product-rule] PASS
+[M5] residual = 0
+[M5] PASS
+L2 after IBP = -R0p^2*TwRR0*eta^2/4 - TO0*grad2/2 - Tw0*eta_w^2/2 - URR0*eta^2/2 + d_TwR_R0p*eta^2/2 + eta_t^2*mu0/2
+K_eta(w)  = R0p^2*TwRR0/2 + URR0 - d_TwR_R0p
+[M5 mutation] residual = dTwR0p*eta^2
+[M5 mutation] PASS
+[M6] residual = 0
+[M6] PASS
+[M6 linear IBP] residual = 0
+[M6 linear IBP] PASS
+[M6 quadratic IBP] residual = 0
+[M6 quadratic IBP] PASS
+[M6 mutation] residual = -1
+[M6 mutation] PASS
+[M7] residual = 0
+[M7] PASS
+[M7 mutation] residual = -2
+[M7 mutation] PASS
+[M8] residual = 0
+[M8] PASS
+[M8 denominator] Together form = -(1/(E^w^2*(1 + w^2)))
+[M8 denominator] residual = 0
+[M8 denominator] PASS
+[M8 mutation] residual = Pi
+[M8 mutation] PASS
+[M8 denominator mutation] residual = w^2/(E^w^2*(1 + w^2))
+[M8 denominator mutation] PASS
+[M9] residual = 0
+[M9] PASS
+[M9 mutation] residual = -1/8*(Sqrt[5/Pi]*(1 + 3*Cos[2*th]))
+[M9 mutation] PASS
+[M10] residual = 0
+[M10] PASS
+Y20 angular norm = 1
+Y20 angular stiffness = 6
+Y20 angular sector contributes +6 T_Omega
+[M10 mutation] residual = 1
+[M10 mutation] PASS
+[M11] residual = 0
+[M11] PASS
+[M11 mutation] residual = -(q[tm, wm]*TOmode[wm])
+[M11 mutation] PASS
+STATUS: PASS

@@ -79,9 +79,64 @@ different verification structure from the SymPy side:
   red-team batch I.1 created native mirror via `Series`/`Coefficient` for
   primitive-bridge expansions; SymPy companion gained explicit negative-control
   assertions replacing earlier tautological checks
+- `013`
+  red-team batch I.2 created native mirror (previously no `.wl`) covering
+  M1-M6 mouth-Taylor primitive expansion via `Series` on the master
+  primitives `(Q - H_port ell^2)/Delta(ell)` and `(P - G_w ell^2)^2/Delta(ell)^2`
+- `014`
+  red-team batch I.2 created native mirror (previously no `.wl`) covering
+  M1-M10 gate-bridge claims via formal `D[..., ell]` Taylor lift, with two
+  negative-existence solves, two Jacobian non-vanishing determinants, and a
+  sign-flip mutation guard
+- `015`
+  red-team batch I.2 created native mirror (previously no `.wl`) using
+  `Series`+`Coefficient` (not `D[..., {eps,2}]/2`), `ThreeJSymbol` directly
+  for Gaunt overlaps, and closed-form Gaussian wall-overlap evaluation;
+  M1-M9 covered with wall-only gate Jacobian determinant `1/27`
+- `016`
+  red-team batch I.2 created native mirror (previously no `.wl`) with
+  dependent-symbol `R[t,w,u,v]` declaration, independent `D[L, {eps,2}]/2`
+  quadratic expansion, symbolic IBP product-rule check, `SphericalHarmonicY`
+  for Y20 eigenvalue/norm/stiffness, and direct sphere integration
+- `017`
+  red-team batch I.2 created native mirror (previously no `.wl`) using
+  `Integrate[Sin[theta] * SphericalHarmonicY * SphericalHarmonicY *
+  SphericalHarmonicY, ...]` for full Wigner independence; 12 manifest claims
+  M1-M12 across 23 labeled checks
+- `018`
+  red-team batch I.2 created native mirror (previously no `.wl`) covering
+  M1-M8 with `Series`/`Coefficient` re-derivation of `u2/u4` from the pole
+  expansion (not a transliteration); SymPy companion gained closed-form
+  `expected_dK/expected_dM` substitutions and an `Xi1_from_expected` block
+- `019`
+  red-team batch I.2 created native mirror (previously no `.wl`) covering
+  M1-M12 (one-pole defect identity, both closed-form `KSigma` solutions,
+  `N2_const/N4_const`, Jacobian determinant `D0^3`, mutation guards)
+- `020`
+  red-team batch I.2 created native mirror (previously no `.wl`) defining its
+  own `GauntIntegral` from first principles via `ThreeJSymbol`, with
+  CamelCase naming, `Module`/`SetAttributes`, and `Solve` for the
+  weak-axisymmetric packet; SymPy companion lost the `m=0` Gaunt
+  short-circuit, so the m=0 lane now exercises the Wigner machinery
+- `021`
+  red-team batch I.2 replaced the manual EL derivation with
+  `Needs["VariationalMethods``"]` + `EulerEquations[lRed, {qFun[t], aFun[t],
+  wFun[t]}, t]`, patched a recurrence of the I.1 stage 003 multi-line
+  `lRed = ...` continuation defect via parenthesization, and rewrote
+  Sections II.2/III/V to use `LinearSolve`, an analytic-derivative route,
+  and `SphericalHankelH1[2, z]` instead of mirroring SymPy
 - `022`
-  re-anchors the outgoing `l=2` coefficients through the Stage-021 exact
-  fingerprint before solving the normalization product
+  red-team batch I.2 switched Sections I/II/IV from `Series` extraction to
+  `Solve[coeffEqs, ...]` on `Expand[ansatz*denom - num]` and replaced
+  hand-typed `j2 + I*y2` with `SphericalHankelH1[2, z]`; still re-anchors
+  the outgoing `l=2` coefficients through the Stage-021 exact fingerprint
+  before solving the normalization product
+- `023`
+  red-team batch I.2 added two algebraically-distinct cross-checks
+  (numerical substitution for `Z_n`/`N_n` and direct small-z Bessel
+  expansion via `Series` applied to `j2 + I*y2`); SymPy companion replaced
+  solver-roundtrip substitutions with hand-typed closed-form comparisons
+  `N2_target_closed = 2 D2 N0/D0` and `N4_target_closed = N0(2 D0 D4 + D2^2)/D0^2`
 - `059`
   uses a constructive `FindRoot` saturation route instead of symbolic replay
 - `067`

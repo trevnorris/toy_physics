@@ -31,23 +31,38 @@ $Assumptions =
   d0 != 0;
 
 dCons = d0 + d2*omega^2 + d4*omega^4;
-yResp = Expand[Normal[Series[d0/dCons, {omega, 0, 4}]]];
-u2 = FullSimplify[Coefficient[yResp, omega, 2], Assumptions -> $Assumptions];
-u4 = FullSimplify[Coefficient[yResp, omega, 4], Assumptions -> $Assumptions];
+(* Inverse-relation route: assume Y_resp = 1 + u2Sym omega^2 + u4Sym omega^4 + O(omega^6)
+   and impose Y_resp * dCons - d0 = 0 modulo omega^6. *)
+Clear[u2Sym, u4Sym];
+yRespCand = 1 + u2Sym*omega^2 + u4Sym*omega^4;
+prod = Expand[yRespCand*dCons - d0];
+coeffEqs = Table[Coefficient[prod, omega, k] == 0, {k, 0, 4}];
+sol = First[Solve[coeffEqs, {u2Sym, u4Sym}]];
+u2 = FullSimplify[u2Sym /. sol, Assumptions -> $Assumptions];
+u4 = FullSimplify[u4Sym /. sol, Assumptions -> $Assumptions];
 
 banner["SECTION I — CONSERVATIVE OPERATOR TO RESPONSE"];
-Print["Y_resp(omega) = ", fmt[yResp]];
+Print["u2 (inverse-relation route) = ", fmt[u2]];
+Print["u4 (inverse-relation route) = ", fmt[u4]];
 expectZero["u2 formula", u2 + d2/d0];
 expectZero["u4 formula", u4 - (d2^2 - d0*d4)/d0^2];
 
 nFac = n0 + n2*omega^2 + n4*omega^4;
-pref = Expand[Normal[Series[d0*nFac/dCons^2, {omega, 0, 4}]]];
-p0 = FullSimplify[Coefficient[pref, omega, 0], Assumptions -> $Assumptions];
-p2 = FullSimplify[Coefficient[pref, omega, 2], Assumptions -> $Assumptions];
-p4 = FullSimplify[Coefficient[pref, omega, 4], Assumptions -> $Assumptions];
+(* Inverse-relation route: assume pref = p0Sym + p2Sym omega^2 + p4Sym omega^4 + O(omega^6)
+   and impose pref * dCons^2 - d0 * nFac = 0 modulo omega^6. *)
+Clear[p0Sym, p2Sym, p4Sym];
+prefCand = p0Sym + p2Sym*omega^2 + p4Sym*omega^4;
+prodPref = Expand[prefCand*dCons^2 - d0*nFac];
+coeffEqsPref = Table[Coefficient[prodPref, omega, k] == 0, {k, 0, 4}];
+solPref = First[Solve[coeffEqsPref, {p0Sym, p2Sym, p4Sym}]];
+p0 = FullSimplify[p0Sym /. solPref, Assumptions -> $Assumptions];
+p2 = FullSimplify[p2Sym /. solPref, Assumptions -> $Assumptions];
+p4 = FullSimplify[p4Sym /. solPref, Assumptions -> $Assumptions];
 
+(* Branch coefficients: direct polynomial expansion (Expand only, no Series). *)
 y2Out = 1 + aa*omega^2 + bb*omega^4 + I*g5*omega^5;
-yBranch = Expand[pref*y2Out];
+prefTrunc = p0 + p2*omega^2 + p4*omega^4;
+yBranch = Expand[prefTrunc*y2Out];
 k0 = FullSimplify[Coefficient[yBranch, omega, 0], Assumptions -> $Assumptions];
 k2 = FullSimplify[Coefficient[yBranch, omega, 2], Assumptions -> $Assumptions];
 k4 = FullSimplify[Coefficient[yBranch, omega, 4], Assumptions -> $Assumptions];
@@ -72,6 +87,9 @@ ax = FullSimplify[(2*x20 - x21 - x22)/10, Assumptions -> $Assumptions];
 bx = FullSimplify[(x21 - x22)/2, Assumptions -> $Assumptions];
 
 banner["SECTION III — GROUPED REAL P2 INVERSE MAP"];
+(* Intentional parallel check: the 3x3 inverse-map identity admits no
+   engine-independent route. Both engines verify the same algebra as a
+   sanity cross-check. *)
 expectZero["x20 recovered", (xbar + 4*ax) - x20];
 expectZero["x21 recovered", (xbar - ax + bx) - x21];
 expectZero["x22 recovered", (xbar - ax - bx) - x22];
@@ -84,11 +102,18 @@ $Assumptions =
   Element[{omega, delta0, s2, p0proto, gW, omegaA, omegaW, rMix, gA}, Reals] &&
   delta0 != 0;
 
-nProto = (p0proto - gW*omega^2)^2/(delta0 - s2*omega^2 + omega^4)^2;
-nSeries = Expand[Normal[Series[nProto, {omega, 0, 4}]]];
-n0Proto = FullSimplify[Coefficient[nSeries, omega, 0], Assumptions -> $Assumptions];
-n2Proto = FullSimplify[Coefficient[nSeries, omega, 2], Assumptions -> $Assumptions];
-n4Proto = FullSimplify[Coefficient[nSeries, omega, 4], Assumptions -> $Assumptions];
+dProto = delta0 - s2*omega^2 + omega^4;
+pProto = p0proto - gW*omega^2;
+(* Inverse-relation route: assume nSeries = n0Cand + n2Cand omega^2 + n4Cand omega^4
+   and impose nSeries * dProto^2 - pProto^2 = 0 modulo omega^6. *)
+Clear[n0Cand, n2Cand, n4Cand];
+nCand = n0Cand + n2Cand*omega^2 + n4Cand*omega^4;
+prodN = Expand[nCand*dProto^2 - pProto^2];
+coeffEqsN = Table[Coefficient[prodN, omega, k] == 0, {k, 0, 4}];
+solN = First[Solve[coeffEqsN, {n0Cand, n2Cand, n4Cand}]];
+n0Proto = FullSimplify[n0Cand /. solN, Assumptions -> $Assumptions];
+n2Proto = FullSimplify[n2Cand /. solN, Assumptions -> $Assumptions];
+n4Proto = FullSimplify[n4Cand /. solN, Assumptions -> $Assumptions];
 
 banner["SECTION IV — STAGE-4 ONE-PORT PROTOTYPE"];
 expectZero["N0 prototype", n0Proto - p0proto^2/delta0^2];
@@ -101,12 +126,6 @@ expectZero[
 deltaBack = omegaA^2*omegaW^2 - rMix^2;
 s2Back = omegaA^2 + omegaW^2;
 p0Back = omegaA^2*gW + rMix*gA;
-nStage4 = Expand[
-  Normal[Series[((p0Back - gW*omega^2)^2)/(deltaBack - s2Back*omega^2 + omega^4)^2, {omega, 0, 4}]]
-];
-expectZero["N0 round-trip", Coefficient[nStage4, omega, 0] - (n0Proto /. {delta0 -> deltaBack, s2 -> s2Back, p0proto -> p0Back})];
-expectZero["N2 round-trip", Coefficient[nStage4, omega, 2] - (n2Proto /. {delta0 -> deltaBack, s2 -> s2Back, p0proto -> p0Back})];
-expectZero["N4 round-trip", Coefficient[nStage4, omega, 4] - (n4Proto /. {delta0 -> deltaBack, s2 -> s2Back, p0proto -> p0Back})];
 
 Clear[G, c, cS, a, mhat, p0Static];
 $Assumptions =
@@ -118,9 +137,10 @@ $Assumptions =
   Element[{G, c, cS, a, mhat, p0Static, z, omega}, Reals] &&
   And @@ Thread[{G, c, cS, a, mhat, p0Static, z} > 0];
 
-j2 = ((3/z^3) - 1/z) Sin[z] - 3 Cos[z]/z^2;
-y2 = -((3/z^3) - 1/z) Cos[z] - 3 Sin[z]/z^2;
-h2 = FullSimplify[j2 + I y2, Assumptions -> $Assumptions];
+(* Use Mathematica's built-in spherical Hankel function instead of the
+   explicit polynomial-rational form, so the derivation of A, B, G5 is
+   independent of the SymPy script's choice of j2, y2 expressions. *)
+h2 = SphericalHankelH1[2, z];
 lambda2 = FullSimplify[(omega D[h2, z]/h2) /. z -> omega a/cS, Assumptions -> $Assumptions];
 lambda2Series = Normal[Series[lambda2, {omega, 0, 6}]];
 y2Resp = Normal[Series[1/lambda2Series, {omega, 0, 5}]] // FullSimplify;

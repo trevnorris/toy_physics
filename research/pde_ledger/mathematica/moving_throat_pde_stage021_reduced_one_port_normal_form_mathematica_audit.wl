@@ -30,6 +30,8 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
+Needs["VariationalMethods`"];
+
 banner["STAGE 004 — MAXWELL + MIXED-SECTOR REDUCTION"];
 
 subbanner["I. Mixed 4+1 Maxwell fields are gauge invariant"];
@@ -64,29 +66,29 @@ q = qFun[t];
 a = aFun[t];
 ww = wFun[t];
 
-lRed =
+lRed = (
   1/2 m D[q, t]^2 - 1/2 k q^2
   + 1/2 D[a, t]^2 - 1/2 oA^2 a^2
   + 1/2 D[ww, t]^2 - 1/2 oW^2 ww^2
-  + r a ww + gA q a + gW q ww;
+  + r a ww + gA q a + gW q ww
+);
 
-staticL = lRed /. {D[q, t] -> 0, D[a, t] -> 0, D[ww, t] -> 0};
-staticTmp = staticL /. {q -> q0, a -> a0r, ww -> w0};
-staticBack = {q0 -> q, a0r -> a, w0 -> ww};
-qd = D[q, t];
-ad = D[a, t];
-wd = D[ww, t];
-lVel = Expand[lRed /. {qd -> vq, ad -> va, wd -> vw}];
-
-expectZero["Q kinetic coefficient", Coefficient[lVel, vq^2] - m/2];
+elList = EulerEquations[lRed, {qFun[t], aFun[t], wFun[t]}, t];
+expectZero["Q equation", (elList[[1]] /. Equal[lhs_, rhs_] :> lhs - rhs) + (m qFun''[t] + k qFun[t] - gA aFun[t] - gW wFun[t])];
+expectZero["A equation", (elList[[2]] /. Equal[lhs_, rhs_] :> lhs - rhs) + (aFun''[t] + oA^2 aFun[t] - r wFun[t] - gA qFun[t])];
+expectZero["W equation", (elList[[3]] /. Equal[lhs_, rhs_] :> lhs - rhs) + (wFun''[t] + oW^2 wFun[t] - r aFun[t] - gW qFun[t])];
 
 aKer = oA^2 - omega^2;
 wKer = oW^2 - omega^2;
 delta = FullSimplify[aKer wKer - r^2, Assumptions -> $Assumptions];
 sigmaCons = FullSimplify[(gA^2 wKer + 2 gA gW r + gW^2 aKer)/delta, Assumptions -> $Assumptions];
 dCons = FullSimplify[k - m omega^2 - sigmaCons, Assumptions -> $Assumptions];
-aSol = FullSimplify[(gA wKer + gW r)/delta, Assumptions -> $Assumptions];
-wSol = FullSimplify[(gW aKer + gA r)/delta, Assumptions -> $Assumptions];
+matEAW = {{aKer, -r}, {-r, wKer}};
+solAW = LinearSolve[matEAW, {gA, gW}];
+aSol = FullSimplify[solAW[[1]], Assumptions -> $Assumptions];
+wSol = FullSimplify[solAW[[2]], Assumptions -> $Assumptions];
+sigmaConsDerived = FullSimplify[gA aSol + gW wSol, Assumptions -> $Assumptions];
+expectZero["sigmaCons from LinearSolve matches closed form", sigmaConsDerived - sigmaCons];
 
 Print["Sigma_EM+mix^cons(omega) = ", fmt[sigmaCons]];
 Print["D_cons(omega) = ", fmt[dCons]];
@@ -128,8 +130,7 @@ wKer = oW^2 - omega^2;
 delta = FullSimplify[aKer wKer - r^2, Assumptions -> $Assumptions];
 sigmaCons = FullSimplify[(gA^2 wKer + 2 gA gW r + gW^2 aKer)/delta, Assumptions -> $Assumptions];
 sigmaFull = FullSimplify[(gA^2 (wKer - piOut) + 2 gA gW r + gW^2 aKer)/(aKer (wKer - piOut) - r^2), Assumptions -> $Assumptions];
-sigmaFirst = Expand[Normal[Series[sigmaFull, {piOut, 0, 1}]]];
-nOmega = FullSimplify[(sigmaFirst - sigmaCons)/piOut, Assumptions -> $Assumptions];
+nOmega = FullSimplify[D[sigmaFull, piOut] /. piOut -> 0, Assumptions -> $Assumptions];
 n0 = FullSimplify[nOmega /. omega -> 0, Assumptions -> oA > 0 && oW > 0];
 dCorr = FullSimplify[-I gammaPort omega^5 n0, Assumptions -> $Assumptions];
 
@@ -146,9 +147,7 @@ Clear[kWave, radius, cS, za];
 $Assumptions =
   Element[{kWave, radius, cS, omega, za}, Reals] && kWave > 0 && radius > 0 && cS > 0;
 
-j2a = ((3/za^3) - 1/za) Sin[za] - 3 Cos[za]/za^2;
-y2a = -((3/za^3) - 1/za) Cos[za] - 3 Sin[za]/za^2;
-h2a = FullSimplify[j2a + I y2a, Assumptions -> $Assumptions];
+h2a = SphericalHankelH1[2, za];
 lambda2 = FullSimplify[(kWave D[h2a, za]/h2a) /. za -> kWave radius, Assumptions -> $Assumptions];
 lambda2Series = Normal[Series[lambda2, {kWave, 0, 6}]];
 y2 = Normal[Series[1/lambda2Series, {kWave, 0, 5}]] // FullSimplify;

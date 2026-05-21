@@ -1,0 +1,22 @@
+STAGE 013 PROJECTED MAXWELL MOUTH-TAYLOR MASTER MATHEMATICA AUDIT
+OK M1 one-sided Taylor first moment residual = 0
+OK M2 W2 second moment residual = 0
+OK M2 W2 first moment recovery residual = 0
+OK M3 z0 chain-rule coefficient residual = 0
+OK M3 z2 chain-rule coefficient residual = 0
+OK M3 z4 chain-rule coefficient residual = 0
+OK M4 n0 chain-rule coefficient residual = 0
+OK M4 n2 chain-rule coefficient residual = 0
+OK M4 n4 chain-rule coefficient residual = 0
+OK M5 dXi/dPprime residual = 0
+OK M5 d(delta P2)/dGprime residual = 0
+OK M5 delta P4 Gprime dependence residual = (2*D0*Delta*Gw + 4*D2*Delta*P - 4*D0*P*S2)/(D0^2*Delta^3)
+OK M6 source/denominator determinant residual = (-(Delta^3*Hport) + Delta*(9*Hport - 2*Q)*S2^2 - 9*Q*S2^3 + Delta^2*(9*Hport + Q + 2*Hport*S2 + Q*S2))/(9*Delta^6)
+OK M6 spectral determinant residual = (-(Delta*Hport) + Q*S2)/Delta^4
+OK M6 source/denominator solve count residual = 0
+OK M6 source/denominator Qx solution residual = 0
+OK M6 source/denominator Dx solution residual = 0
+OK M6 spectral solve count residual = 0
+OK M6 spectral Sx solution residual = 0
+OK M6 spectral Hx solution residual = 0
+STAGE 013 MATHEMATICA AUDIT: PASS

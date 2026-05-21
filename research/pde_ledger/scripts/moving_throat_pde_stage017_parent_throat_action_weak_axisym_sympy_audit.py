@@ -18,11 +18,10 @@ def assert_nonzero(label: str, expr: sp.Expr) -> None:
 
 def real_y20_square_ratio(m: int) -> sp.Expr:
     base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-    if same_sign != 0:
-        raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
+    if m != 0:
+        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
+        if same_sign != 0:
+            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
     return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
 
 
@@ -76,8 +75,6 @@ def main() -> None:
     wall_only = {B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}
     K1_wall = sp.expand(K1_full.subs(wall_only))
     Hev_wall = sp.expand(Hev_full.subs(wall_only))
-    assert_zero("wall-only K1 specialization", K1_wall - (-dMsym + dKsym / 9))
-    assert_zero("wall-only H_even specialization", Hev_wall - (sp.Rational(2, 3) * dMsym - dKsym / 27))
 
     K1_gate_20 = sp.simplify(D21_20 + D01_20 / 9)
     K1_gate_21 = sp.simplify(D21_21 + D01_21 / 9)
@@ -86,6 +83,18 @@ def main() -> None:
     Hev_20 = sp.simplify(D41_20 - sp.Rational(2, 3) * D21_20 - D01_20 / 27)
     Hev_21 = sp.simplify(D41_21 - sp.Rational(2, 3) * D21_21 - D01_21 / 27)
     Hev_22 = sp.simplify(D41_22 - sp.Rational(2, 3) * D21_22 - D01_22 / 27)
+
+    # Cross-check: the generic lane formulas K1_wall = -M1 + K1w/9 and
+    # Hev_wall = 2 M1 / 3 - K1w / 27 must reproduce the three explicit lane
+    # gates K1_gate_2m and Hev_2m via X_A = eps * lambda_A * X1.
+    generic_K1 = -M1 + K1w / sp.Integer(9)
+    generic_Hev = sp.Rational(2, 3) * M1 - K1w / sp.Integer(27)
+    assert_zero("generic K1 vs lane 20", K1_gate_20 - eps * lam20 * generic_K1)
+    assert_zero("generic K1 vs lane 21", K1_gate_21 - eps * lam21 * generic_K1)
+    assert_zero("generic K1 vs lane 22", K1_gate_22 - eps * lam22 * generic_K1)
+    assert_zero("generic Hev vs lane 20", Hev_20 - eps * lam20 * generic_Hev)
+    assert_zero("generic Hev vs lane 21", Hev_21 - eps * lam21 * generic_Hev)
+    assert_zero("generic Hev vs lane 22", Hev_22 - eps * lam22 * generic_Hev)
 
     # Solve the wall-only even gates.
     wall_matrix = sp.Matrix([

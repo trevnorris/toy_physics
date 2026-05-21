@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
-# Date: 2026-05-11T12:39:25-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 SECTION I — MIXED 4+1 MAXWELL FIELDS ARE GAUGE INVARIANT
@@ -207,5 +199,3 @@ Verified with SymPy:
   • therefore the first wall-level odd quadrupole coefficient is the outgoing-port coefficient
     a^5/(27 c_s^5) multiplied by the conservative mixed-sector transfer factor N(0);
   • if the scalar outlet enters only through a derivative mixed coupling, the wall-level scalar odd term starts at i*omega^3 rather than i*omega.
-
-EXIT_CODE: 0

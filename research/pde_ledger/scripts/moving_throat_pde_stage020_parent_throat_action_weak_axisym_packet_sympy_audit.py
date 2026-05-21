@@ -19,11 +19,10 @@ def assert_zero(label: str, expr: sp.Expr) -> None:
 
 def real_y20_square_ratio(m: int) -> sp.Expr:
     base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-    if same_sign != 0:
-        raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
+    if m != 0:
+        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
+        if same_sign != 0:
+            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
     return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
 
 

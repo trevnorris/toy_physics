@@ -1,0 +1,48 @@
+STAGE 017 PARENT THROAT ACTION WEAK AXISYM MATHEMATICA AUDIT
+M1 lane ratio m=0 residual = 0
+PASS: M1 lane ratio m=0
+M2 lane ratio m=1 residual = 0
+PASS: M2 lane ratio m=1
+M3 lane ratio m=2 residual = 0
+PASS: M3 lane ratio m=2
+M4 same-sign cross term m=1 residual = 0
+PASS: M4 same-sign cross term m=1
+M4 same-sign cross term m=2 residual = 0
+PASS: M4 same-sign cross term m=2
+M9 wall Jacobian determinant residual = 0
+PASS: M9 wall Jacobian determinant
+M10 wall-only solution count residual = 0
+PASS: M10 wall-only solution count
+M10 wall-only dK solution residual = 0
+PASS: M10 wall-only dK solution
+M10 wall-only dM solution residual = 0
+PASS: M10 wall-only dM solution
+M7 K1 gate lane m=0 residual = 0
+PASS: M7 K1 gate lane m=0
+M7 K1 gate lane m=1 residual = 0
+PASS: M7 K1 gate lane m=1
+M7 K1 gate lane m=2 residual = 0
+PASS: M7 K1 gate lane m=2
+M8 H_even gate lane m=0 residual = 0
+PASS: M8 H_even gate lane m=0
+M8 H_even gate lane m=1 residual = 0
+PASS: M8 H_even gate lane m=1
+M8 H_even gate lane m=2 residual = 0
+PASS: M8 H_even gate lane m=2
+M5 wall inertia grouped trace residual = 0
+PASS: M5 wall inertia grouped trace
+M5 wall inertia grouped line residual = 0
+PASS: M5 wall inertia grouped line
+M6 wall stiffness grouped trace residual = 0
+PASS: M6 wall stiffness grouped trace
+M6 wall stiffness grouped line residual = 0
+PASS: M6 wall stiffness grouped line
+M11 Xi load grouped trace residual = 0
+PASS: M11 Xi load grouped trace
+M11 Xi load grouped line residual = 0
+PASS: M11 Xi load grouped line
+M12 prefactor grouped trace residual = 0
+PASS: M12 prefactor grouped trace
+M12 prefactor grouped line residual = 0
+PASS: M12 prefactor grouped line
+STATUS: PASS

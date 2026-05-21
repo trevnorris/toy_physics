@@ -1,7 +1,7 @@
 # Mathematica Audit Output
 # Script: moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl
-# Date: 2026-05-11T12:42:37-06:00
-# Elapsed: 6s
+# Date: 2026-05-21T15:16:05-06:00
+# Elapsed: 3s
 # Exit code: 0
 # Status: PASS
 #
@@ -22,8 +22,14 @@ PASS: C_a gauge variation
 ----------------------------------------------------------------------------------------
 II. Conservative wall + brane-MAXWELL + mixed-mode reduction
 ----------------------------------------------------------------------------------------
-Q kinetic coefficient = 0
-PASS: Q kinetic coefficient
+Q equation = 0
+PASS: Q equation
+A equation = 0
+PASS: A equation
+W equation = 0
+PASS: W equation
+sigmaCons from LinearSolve matches closed form = 0
+PASS: sigmaCons from LinearSolve matches closed form
 Sigma_EM+mix^cons(omega) = (gW^2*(-oA^2 + omega^2) + gA^2*(omega - oW)*(omega + oW) - 2*gA*gW*r)/((oA - omega)*(oA + omega)*(omega - oW)*(omega + oW) + r^2)
 D_cons(omega) = k - m*omega^2 + (gA^2*(-omega^2 + oW^2) + gW*(gW*(oA - omega)*(oA + omega) + 2*gA*r))/((oA - omega)*(oA + omega)*(omega - oW)*(omega + oW) + r^2)
 A exact solution residual = 0

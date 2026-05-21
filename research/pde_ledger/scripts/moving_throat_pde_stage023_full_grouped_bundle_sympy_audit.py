@@ -244,12 +244,12 @@ def bundle_coefficient_assembly() -> dict[str, sp.Expr]:
 
     subbanner("II.2 — The same grouped decomposition applies directly to the outgoing transfer bundle")
     # Nothing to prove beyond linearity, but verify a representative identity.
-    expect_zero(
-        "Nbar0 formula",
-        Nbar0 - (N020 + 2 * N021 + 2 * N022) / 5,
-    )
-    expect_zero("aN0 formula", aN0 - (2 * N020 - N021 - N022) / 10)
-    expect_zero("bN0 formula", bN0 - (N021 - N022) / 2)
+    # Non-tautological linearity test: grouped_parts(N0 + N2 lane sum)
+    # equals the sum of the individual grouped_parts outputs.
+    Nbar02, aN02, bN02 = grouped_parts(N020 + N220, N021 + N221, N022 + N222)
+    expect_zero("Nbar0 + Nbar2 additivity", Nbar02 - (Nbar0 + Nbar2))
+    expect_zero("aN0 + aN2 additivity", aN02 - (aN0 + aN2))
+    expect_zero("bN0 + bN2 additivity", bN02 - (bN0 + bN2))
 
     return {
         "Dbar0": Dbar0,
@@ -302,15 +302,21 @@ def isotropic_branch_and_target() -> dict[str, sp.Expr]:
     print("If P2 = P4 = 0, then N4 =")
     sp.pprint(N4_target)
 
-    expect_zero("P2 under N2_target", P2.subs(N2, N2_target))
-    expect_zero("P4 under N2_target,N4_target", P4.subs({N2: N2_target, N4: N4_target}))
+    # Independent closed-form derivation of N2_target and N4_target.
+    # If the solver disagrees with these closed forms, the substitution check
+    # would still pass tautologically; comparing to the closed form catches it.
+    N2_target_closed = 2 * D2 * N0 / D0
+    N4_target_closed = sp.simplify(N0 * (2 * D0 * D4 + D2**2) / D0**2)
+    expect_zero("N2_target closed form", sp.simplify(N2_target - N2_target_closed))
+    expect_zero("N4_target closed form", sp.simplify(N4_target - N4_target_closed))
 
     subbanner("III.3 — Universal normalization product")
-    P0_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0, 54 * G * c_s**5 / (5 * a**5 * c**5)), N0)[0])
-    # This is the target on N0, but the more natural statement is on P0.
+    N0_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * (N0/D0), 54 * G * c_s**5 / (5 * a**5 * c**5)), N0)[0])
+    # Substantive check: N0_target, when substituted into mhat^2 * P0, must
+    # reproduce the universal normalization 54 G c_s^5 / (5 a^5 c^5).
     expect_zero(
-        "P0 normalization target",
-        P0 - N0 / D0,
+        "N0_target reproduces universal normalization",
+        (mhat**2 * (N0_target/D0)) - 54 * G * c_s**5 / (5 * a**5 * c**5),
     )
     # Carry the outgoing odd coefficient through the same exact Stage-4/5 DtN
     # route used in Stage 022 instead of retyping a^5/(27 c_s^5).

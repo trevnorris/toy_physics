@@ -1,0 +1,32 @@
+STAGE 019 PARENT THROAT ACTION ISOTROPIC BUNDLE MATHEMATICA AUDIT
+P0 series normalization residual = 0
+M1 one-pole numerator residual = 0
+M1 OK
+M2 one-pole KSigma residual = 0
+M2 OK
+M3 normalization KSigma residual = 0
+M3 OK
+M4 N2 constant-prefactor closure residual = 0
+M4 OK
+M5 N4 constant-prefactor closure residual = 0
+M5 OK
+M6 constant-prefactor Jacobian determinant residual = 0
+M6 OK
+M7 P2 factorization residual = 0
+M7 OK
+M8 P4 factorization on N2 closure residual = 0
+M8 OK
+M9 mutated N2 closure guard residual = -(eps/(B0 - KSigma + Z0))
+M9 mutated N4 closure guard residual = -(eps/(B0 - KSigma + Z0))
+M9 OK
+M10 M-root factorization residual = 0
+M10 M-root Vieta sum residual = 0
+M10 M-root Vieta product residual = 0
+M10 OK
+M11 u2 on positive M root residual = 0
+M11 u2 on negative M root residual = 0
+M11 OK
+M12 Gaussian wall inertia integral residual = 0
+M12 Gaussian wall stiffness integral residual = 0
+M12 OK
+STATUS: PASS

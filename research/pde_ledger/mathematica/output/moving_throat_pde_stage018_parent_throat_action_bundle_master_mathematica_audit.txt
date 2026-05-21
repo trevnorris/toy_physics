@@ -1,0 +1,15 @@
+STAGE 018 PARENT THROAT ACTION BUNDLE MASTER MATHEMATICA AUDIT
+M1 one-pole numerator identity residual = 0
+M2 one-pole KSigma closure residual = 0
+M3 normalization closure residual = 0
+M3-mut normalization mutation residual = -Ptarget
+M4 compatibility cross-closure residual = 0
+M5 even-gate determinant residual = 0
+M5-mut determinant mutation residual = 2/27
+M6 closed slopes K1 residual = 0
+M6 closed slopes H_even residual = 0
+M7 residual amplitude residual = 0
+M7-mut residual sign mutation residual = (54*(B41 + Z41))/(B0 - KSigma + Z0)
+M8 Gaussian inertia integral residual = 0
+M8 Gaussian stiffness integral residual = 0
+STAGE 018 MATHEMATICA AUDIT PASS

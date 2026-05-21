@@ -24,11 +24,10 @@ def boundary_value(expr: sp.Expr, var: sp.Symbol) -> sp.Expr:
 
 def real_y20_square_ratio(m: int) -> sp.Expr:
     base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-    if same_sign != 0:
-        raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
+    if m != 0:
+        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
+        if same_sign != 0:
+            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
     return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
 
 
@@ -126,13 +125,45 @@ def main() -> None:
     H_even_wall = sp.expand(H_even_full.subs(wall_only_specialization))
     assert_zero("wall-only K1 specialization", K1_wall - (-dM + dK / 9))
     assert_zero("wall-only H_even specialization", H_even_wall - (sp.Rational(2, 3) * dM - dK / 27))
-    assert_zero(
-        "wall-only K1 from overlap-generated slots",
-        K1_wall.subs({dK: dK_overlap, dM: dM_overlap}) - (-dM_overlap + dK_overlap / 9),
+
+    # Concretize the symbolic overlaps with Gaussian profiles so the wall-only
+    # K1/H_even algebra is exercised against actual closed-form integrals, not
+    # against a substitution rename of the same algebra.
+    beta_concrete = sp.exp(-wall_w**2)
+    delta_mu_concrete = sp.exp(-wall_w**2)
+    delta_Tw_concrete = sp.exp(-wall_w**2)
+    delta_TO_concrete = sp.exp(-wall_w**2)
+    delta_Keta_concrete = sp.exp(-wall_w**2)
+    dM_overlap_concrete = sp.integrate(
+        delta_mu_concrete * beta_concrete**2,
+        (wall_w, -sp.oo, sp.oo),
+    )
+    dK_overlap_concrete = sp.integrate(
+        delta_Tw_concrete * sp.diff(beta_concrete, wall_w)**2
+        + (delta_Keta_concrete + 6 * delta_TO_concrete) * beta_concrete**2,
+        (wall_w, -sp.oo, sp.oo),
     )
     assert_zero(
-        "wall-only H_even from overlap-generated slots",
-        H_even_wall.subs({dK: dK_overlap, dM: dM_overlap}) - (sp.Rational(2, 3) * dM_overlap - dK_overlap / 27),
+        "wall-only K1 from concrete Gaussian overlap integrals",
+        K1_wall.subs({dK: dK_overlap_concrete, dM: dM_overlap_concrete})
+        - (-dM_overlap_concrete + dK_overlap_concrete / 9),
+    )
+    assert_zero(
+        "wall-only H_even from concrete Gaussian overlap integrals",
+        H_even_wall.subs({dK: dK_overlap_concrete, dM: dM_overlap_concrete})
+        - (sp.Rational(2, 3) * dM_overlap_concrete - dK_overlap_concrete / 27),
+    )
+    # Coefficient guard: changing the 6*delta_TO coefficient to 5*delta_TO must
+    # break the K1 identity against the unmutated dK_overlap.
+    dK_overlap_mutated = sp.integrate(
+        delta_Tw_concrete * sp.diff(beta_concrete, wall_w)**2
+        + (delta_Keta_concrete + 5 * delta_TO_concrete) * beta_concrete**2,
+        (wall_w, -sp.oo, sp.oo),
+    )
+    assert_nonzero(
+        "wall-only K1 detects mutated 6*delta_TO coefficient",
+        K1_wall.subs({dK: dK_overlap_mutated, dM: dM_overlap_concrete})
+        - (-dM_overlap_concrete + dK_overlap_concrete / 9),
     )
     wall_matrix = sp.Matrix(
         [

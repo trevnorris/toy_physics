@@ -39,7 +39,10 @@ def main() -> None:
     assert_nonzero("mutated one-pole K solve should fail", (u4 - 3 * u2**2).subs(KSigma, K_from_one_pole))
     assert_nonzero("mutated normalization K solve should fail", (N0 / D0).subs(KSigma, K_from_norm) - 2 * Ptarget)
     compatibility = N0 / Ptarget - 3 * (MSigma + B2 + Z2) ** 2 / (B4 + Z4)
-    assert_zero("compatibility equality", sp.simplify(K_from_norm - K_from_one_pole) - compatibility)
+    N0_from_compat = sp.solve(compatibility, N0)[0]
+    N0_from_equality = sp.solve(K_from_norm - K_from_one_pole, N0)[0]
+    assert_zero("compatibility equality", N0_from_compat - N0_from_equality)
+    assert_nonzero("mutated compatibility equality should fail", N0_from_compat - 2 * N0_from_equality)
 
     dKSigma, dMSigma = sp.symbols("dKSigma dMSigma")
     B01, B21, B41 = sp.symbols("B01 B21 B41")
@@ -67,8 +70,9 @@ def main() -> None:
 
     D01_comp = sp.simplify(D01.subs(sol))
     assert_zero("compensated D01", D01_comp - 27 * (B41 + Z41))
-    assert_zero("compensated K1", K1.subs(sol))
-    assert_zero("compensated H_even", H_even.subs(sol))
+    assert_zero("expected slopes satisfy K1", K1.subs({dKSigma: expected_dK, dMSigma: expected_dM}))
+    assert_zero("expected slopes satisfy H_even", H_even.subs({dKSigma: expected_dK, dMSigma: expected_dM}))
+    assert_nonzero("mutated expected slopes fail K1", K1.subs({dKSigma: expected_dK + 1, dMSigma: expected_dM}))
     assert_zero(
         "residual Xi1",
         Xi1.subs(sol) - (N01 / N0 - 27 * (B41 + Z41) / (KSigma - B0 - Z0)),
@@ -76,6 +80,11 @@ def main() -> None:
     assert_nonzero(
         "mutated residual Xi1 should fail",
         Xi1.subs(sol) - (N01 / N0 + 27 * (B41 + Z41) / (KSigma - B0 - Z0)),
+    )
+    Xi1_from_expected = Xi1.subs({dKSigma: expected_dK, dMSigma: expected_dM})
+    assert_zero(
+        "residual Xi1 from expected slopes",
+        Xi1_from_expected - (N01 / N0 - 27 * (B41 + Z41) / (KSigma - B0 - Z0)),
     )
 
     w = sp.symbols("w", real=True)

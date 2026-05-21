@@ -94,14 +94,35 @@ coef_Xi_Px = sp.simplify(sp.diff(Xi, Px))
 coef_dP2_Gx = sp.simplify(sp.diff(deltaP2, Gx))
 coef_dP4_Gx = sp.simplify(sp.diff(deltaP4, Gx))
 
-assert_zero("z0 derivative map", z0d - (Delta*Qx - Q*Dx)/Delta**2)
-assert_zero("n0 derivative map", n0d - 2*P*(Delta*Px - P*Dx)/Delta**3)
+# z0 and n0 are single primitive monomials, so their lifts are structural
+# (z0d, n0d are *defined* on lines 59, 62 by exactly the substitution).
+# Real derivative-map content lives in z2d, z4d, n2d, n4d, where multiple
+# primitive slips cross-contract. Anchor those four to a structural property
+# that requires the Taylor lift to be linear in each primitive slip:
+for _slip in (Qx, Sx, Hx, Dx, Px, Gx):
+    for _name, _expr in (("z2d", z2d), ("z4d", z4d), ("n2d", n2d), ("n4d", n4d)):
+        assert_zero(f"{_name} is linear in {_slip}", sp.diff(_expr, _slip, 2))
 
+# NOTE: The next five independence checks are construction-level, not physical:
+# Xi (line 67), K1 (line 68), H_even (line 69) are *defined* without any
+# dependence on the listed primitive slips. To exercise the factorization
+# claim non-trivially, we below also re-derive the bottlenecks from a
+# naive bundle pull-back that contains all six slips, and assert that the
+# cancellation to the three-/four-slip form is an algebraic identity.
 for sym in (Sx, Hx, Gx):
     assert_zero(f"Xi_load independence from {sym}", sp.diff(Xi, sym))
 for sym in (Px, Gx):
     assert_zero(f"K1 independence from {sym}", sp.diff(K1, sym))
     assert_zero(f"H_even independence from {sym}", sp.diff(He, sym))
+# Bundle pull-back consistency: rebuild Xi, K1, H_even from z0d/z2d/z4d/n0d
+# (which DO contain all six primed slips before simplification), and assert
+# the rebuilt forms equal the directly-substituted Xi, K1, H_even.
+Xi_bundle = sp.simplify(2*Px/P - 2*Dx/Delta + Qx/(D0*Delta) - Q*Dx/(D0*Delta**2))
+assert_zero("Xi bundle pull-back consistency", Xi - Xi_bundle)
+K1_bundle = sp.simplify(-(z2d + z0d/sp.Integer(9)))
+assert_zero("K1 bundle pull-back consistency", K1 - K1_bundle)
+He_bundle = sp.simplify(-(z4d) + sp.Rational(2,3)*z2d - z0d/sp.Integer(27))
+assert_zero("H_even bundle pull-back consistency", He - He_bundle)
 assert_zero("d Xi_load / d Pprime", coef_Xi_Px - 2/P)
 assert_zero("d deltaP2 / d G_W prime", coef_dP2_Gx + 2*P/(D0*Delta**2))
 assert_nonzero("deltaP4 should depend on G_W prime", coef_dP4_Gx)
@@ -115,9 +136,14 @@ if qd_only != [{Qx: 0, Dx: 0}]:
     raise AssertionError(f"Unexpected pure source/denominator solve: {qd_only}")
 if sh_only != [{Sx: 0, Hx: 0}]:
     raise AssertionError(f"Unexpected pure spectral solve: {sh_only}")
+# Note: the next two assertions are tautological by sp.solve's contract
+# (comp_surface is defined as the solve output), kept here for visual
+# symmetry with the explicit denominator factorization assertions above.
 assert_zero("compensation K1", K1.subs(comp_surface))
 assert_zero("compensation H_even", He.subs(comp_surface))
-assert_zero("compensation denominator tracks Z2 slot", (Delta*Hport - Q*S2) + Delta**2*((Q*S2 - Hport*Delta)/Delta**2))
+Z2_slot = (Q*S2 - Hport*Delta)/Delta**2
+assert_zero("compensation Hport denominator equals -9 Delta^4 Z2", Hx_den - (-9*Delta**4*Z2_slot))
+assert_zero("compensation S2 denominator equals -9 Delta^3 Z2", Sx_den - (-9*Delta**3*Z2_slot))
 
 def p(expr):
     return sp.factor(sp.simplify(expr))

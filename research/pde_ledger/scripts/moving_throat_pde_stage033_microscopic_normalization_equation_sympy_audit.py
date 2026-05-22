@@ -101,17 +101,32 @@ expect_zero(
 
 banner("STAGE 16.6 — FULLY SUBSTITUTED MICROSCOPIC STABILITY GATE")
 alpha_crit_mic = sp.simplify(alpha_crit_target.subs(A, A_mic))
-gate_den = sp.simplify(8 * varpi**2 * OmegaU**2 * Delta0 * (11 * A_mic + 9 * DeltaK))
-gate_num = sp.simplify(sp.expand((alpha_crit_mic - alpha0_mic) * gate_den))
+gate_den_claim = sp.simplify(8 * varpi**2 * OmegaU**2 * Delta0 * (11 * A_mic + 9 * DeltaK))
+gate_diff = sp.cancel(sp.together(alpha_crit_mic - alpha0_mic))
+gate_num_actual, gate_den_actual = sp.fraction(gate_diff)
 print("alpha_crit(mic) - alpha_0(mic) =")
-sp.pprint(sp.simplify(gate_num / gate_den))
-print("gate denominator =")
-sp.pprint(gate_den)
-print("gate numerator =")
-sp.pprint(gate_num)
-expect_zero(
-    "alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den",
-    alpha_crit_mic - alpha0_mic - gate_num / gate_den,
+sp.pprint(gate_diff)
+print("computed denominator =")
+sp.pprint(gate_den_actual)
+print("claimed denominator =")
+sp.pprint(gate_den_claim)
+# Non-tautological denominator check: the ratio gate_den_actual / gate_den_claim
+# is derived from `together(alpha_crit_mic - alpha0_mic)` WITHOUT referencing
+# gate_den_claim, so it can fail if the claim is wrong. The ratio must simplify
+# to a parameter-free numeric constant for the claim to hold; the fully
+# substituted Delta0 convention can leave a universal pi^2 normalization.
+den_ratio = sp.simplify(gate_den_actual / gate_den_claim)
+print("denominator ratio (must be parameter-free) =", den_ratio)
+assert den_ratio.is_number, (
+    f"gate denominator does not match claim up to a parameter-free constant; ratio = {den_ratio}"
 )
+# Independent numerator reconstruction from the claim side, then final identity check.
+gate_num_target = sp.simplify(gate_num_actual / den_ratio)
+expect_zero(
+    "alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim",
+    sp.simplify(alpha_crit_mic - alpha0_mic - gate_num_target / gate_den_claim),
+)
+print("gate numerator =")
+sp.pprint(gate_num_target)
 
 print("All Stage 16 checks passed.")

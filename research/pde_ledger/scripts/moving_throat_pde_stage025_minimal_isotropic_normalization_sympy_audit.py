@@ -59,6 +59,10 @@ mhat = sp.symbols("mhat", positive=True, real=True)
 
 X = sp.symbols("X", nonnegative=True, real=True)
 
+SAMPLE_POINT = {K: sp.Integer(2), varpi: sp.Integer(1), C: sp.Integer(1),
+                OmegaU: sp.Integer(2), OmegaW: sp.Integer(2), R: sp.Integer(1),
+                GU: sp.Integer(1), GW: sp.Integer(1)}
+
 
 # ---------------------------------------------------------------------------
 # I. Minimal isotropic zero-frequency coefficients
@@ -103,12 +107,35 @@ def normalization_formula() -> None:
     print("P0 compact=", P0_compact)
     expect_zero("P0 - P0_compact", P0 - P0_compact)
 
+    p0_value_raw = sp.nsimplify(P0.subs(SAMPLE_POINT))
+    p0_value_compact = sp.nsimplify(P0_compact.subs(SAMPLE_POINT))
+    print(f"P0 raw at sample     = {p0_value_raw}")
+    print(f"P0 compact at sample = {p0_value_compact}")
+    if p0_value_raw != sp.Rational(1, 3):
+        raise AssertionError(f"P0 raw at sample point != 1/3: got {p0_value_raw}")
+    if p0_value_compact != sp.Rational(1, 3):
+        raise AssertionError(f"P0 compact at sample point != 1/3: got {p0_value_compact}")
+
+    # target coefficient 54/5 is carried forward from
+    # scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:321-342,
+    # where Gamma5_port = a^5/(27*c_s^5) and gamma_GR = 2*G/(5*c^5)
+    # imply mhat^2*P0 = gamma_GR/Gamma5_port = 54*G*c_s^5/(5*a^5*c^5).
     target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
     equation_residual = sp.simplify(mhat**2 * P0_compact - target)
 
     subbanner("II.2 — Exact target equation")
     print("Target residual =")
     sp.pprint(equation_residual)
+    # Solvability check: mhat^2 = target / P0_compact must be positive on the
+    # stability branch (Delta > 0, D0 > 0, so P0_compact > 0; and target > 0
+    # since G, c_s, a, c > 0). On the sample point this is a definite rational.
+    mhat_sq = sp.simplify(target / P0_compact)
+    sample_with_units = dict(SAMPLE_POINT)
+    sample_with_units.update({G: sp.Integer(1), c_s: sp.Integer(1), a: sp.Integer(1), c: sp.Integer(1)})
+    mhat_sq_at_sample = sp.nsimplify(mhat_sq.subs(sample_with_units))
+    print(f"mhat^2 on sample = {mhat_sq_at_sample}")
+    if mhat_sq_at_sample <= 0:
+        raise AssertionError(f"mhat^2 on sample is not positive: {mhat_sq_at_sample}")
 
 
 # ---------------------------------------------------------------------------
@@ -122,6 +149,19 @@ def stability_and_positivity() -> None:
     compact_denom = sp.simplify(Delta * D0)
     expect_zero("Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q)", compact_denom - (K * Delta - Delta * C**2 / varpi**2 - Q))
     expect_zero("N0 - P^2/Delta^2", N0 - P**2 / Delta**2)
+
+    delta_value = sp.nsimplify(Delta.subs(SAMPLE_POINT))
+    d0_value = sp.nsimplify(D0.subs(SAMPLE_POINT))
+    p0_pos = sp.nsimplify((N0 / D0).subs(SAMPLE_POINT))
+    print(f"Delta on sample = {delta_value}")
+    print(f"D0    on sample = {d0_value}")
+    print(f"P0    on sample = {p0_pos}")
+    if delta_value <= 0:
+        raise AssertionError(f"Delta on sample is not positive: {delta_value}")
+    if d0_value <= 0:
+        raise AssertionError(f"D0 on sample is not positive: {d0_value}")
+    if p0_pos <= 0:
+        raise AssertionError(f"P0 on sample is not positive: {p0_pos}")
 
     print("If Delta > 0 and D0 > 0, then P0 > 0 whenever P != 0.")
 
@@ -146,6 +186,19 @@ def monotonic_derivatives() -> None:
     expect_zero("dP0/dK + N0/(K - X - Q/Delta)^2", dP0_dK + N0 / (K - X - Q / Delta)**2)
     expect_zero("dP0/dX - N0/(K - X - Q/Delta)^2", dP0_dX - N0 / (K - X - Q / Delta)**2)
     expect_zero("dP0/dX + dP0/dK", dP0_dX + dP0_dK)
+
+    sample_iv = dict(SAMPLE_POINT)
+    sample_iv[X] = sp.Integer(1)  # X = C^2/varpi^2 = 1 at sample
+    dP0_dK_val = sp.nsimplify(dP0_dK.subs(sample_iv))
+    dP0_dX_val = sp.nsimplify(dP0_dX.subs(sample_iv))
+    print(f"dP0/dK on sample = {dP0_dK_val}")
+    print(f"dP0/dX on sample = {dP0_dX_val}")
+    if dP0_dK_val >= 0:
+        raise AssertionError(f"dP0/dK on sample is not negative: {dP0_dK_val}")
+    if dP0_dX_val <= 0:
+        raise AssertionError(f"dP0/dX on sample is not positive: {dP0_dX_val}")
+    if dP0_dK_val + dP0_dX_val != 0:
+        raise AssertionError(f"dP0/dK + dP0/dX on sample is not zero: {dP0_dK_val + dP0_dX_val}")
 
 
 # ---------------------------------------------------------------------------

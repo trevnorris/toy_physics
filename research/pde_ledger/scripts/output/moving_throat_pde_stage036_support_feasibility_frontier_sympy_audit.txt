@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
-# Date: 2026-05-11T12:41:48-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 19.1 — EXACT SUPPORT-FEASIBILITY FUNCTION
@@ -15,7 +7,6 @@ F(xi,delta) = -(9*delta + 11*xi)**4/(81*(xi - 1)*(9*delta**2 + 18*delta*xi + 11*
 M_mix = 8*Chi**2/(pi**2*A*Delta_0*Omega_U**2)
 R_target = pi**2*A*NQ/(8*beta0)
 g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix) = 0
-R_target - pi^2 A NQ/(8 beta0) = 0
 
 ========================================================================================
 STAGE 19.2 — EXACT MONOTONICITY AND ENDPOINTS OF G
@@ -33,8 +24,8 @@ Parametric frontier: xi -> (F(xi,delta), G(xi,delta))
 final-test support inequality <-> nonnegative required support loading = 0
 admissible sample: R_target >= 1 = R_target=1414562/558009
 admissible sample: F(xi_req,delta) - R_target(host) = 0
+symbolic kappa derivation: F(xi,delta) - R_target_sym = 0
 admissible sample: M_mix <= G(xi_req,delta) = M_mix=53/145, G=27/58
-inadmissible sample: R_target < 1 blocks the branch = R_target=9/10
 inadmissible sample: support deficit blocks the branch = M_mix=82/145, G=27/58
 
 ========================================================================================
@@ -43,5 +34,3 @@ STAGE 19.4 — NEAR-ONSET ASYMPTOTICS
 G(xi,delta) near xi=0 = xi - 2*xi**2/(9*delta)
 G near-onset series through O(xi^2) = 0
 All Stage 19 checks passed.
-
-EXIT_CODE: 0

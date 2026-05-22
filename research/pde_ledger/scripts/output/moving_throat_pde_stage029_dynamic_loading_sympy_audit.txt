@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
-# Date: 2026-05-11T12:41:17-06:00
-# Elapsed: 57s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 SECTION I — EXACT SCHUR-COMPLEMENT DECOMPOSITION
@@ -919,5 +911,3 @@ weak-loading kappa_sel^2 -> kappa0^2 = 0
 strong-loading kappa_sel^2 -> sigma = 0
 Therefore the selected lower-mode odd coefficient is
   delta D_-^(odd)(omega) = - i beta_5 kappa_sel^2 omega^5 + O(omega^7)
-
-EXIT_CODE: 0

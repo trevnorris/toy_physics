@@ -88,11 +88,12 @@ overlapLaw[] := Module[{u0, u1, f0, chi, kappa0, kappa1, kappa, rho, blindSubs, 
   {u0, u1, f0, chi, kappa}
 ];
 
-wallStiffness[] := Module[{u0, u1, f0, chi, kappa, kGeo, kGeoExpected, maxSubs, kGeoMax},
+wallStiffness[] := Module[{u0, u1, f0, chi, kappa, gEta, kGeo, kGeoExpected, maxSubs, kGeoMax},
   banner["SECTION III — EXACT WALL STIFFNESS EXPECTATION"];
   {u0, u1, f0, chi, kappa} = overlapLaw[];
-  kGeo = kEta + 6*tOmega + tW*Pi^2*Sin[theta]^2/l^2;
-  kGeoExpected = kGeo;
+  gEta = -tW*D[chi, {s, 2}] + (kEta + 6*tOmega)*chi;
+  kGeo = FullSimplify[Integrate[chi*gEta, {s, 0, l}], Assumptions -> $Assumptions];
+  kGeoExpected = kEta + 6*tOmega + tW*Pi^2*Sin[theta]^2/l^2;
 
   Print["K_geo(theta) = ", fmt[kGeo]];
   expectZero["K_geo - expected", kGeo - kGeoExpected];

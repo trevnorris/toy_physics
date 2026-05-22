@@ -110,7 +110,11 @@ sp.pprint(Gamma5_sel)
 print("P0_sel =")
 sp.pprint(P0_sel)
 
-expect_zero("Gamma5_sel - G5*P0_sel", Gamma5_sel - G5 * P0_sel)
+# Note: Gamma5_sel - G5*P0_sel == 0 follows by construction from the
+# definitions on lines 101-104 (C5_sel := G5*beta0*s, Gamma5_sel := C5_sel/lam_-,
+# P0_sel := beta0*s/lam_-), so it is not verified separately here. The physical
+# content of this relation is the identification Gamma5 = C5/D0 at the selected
+# mode, which is verified in generic form by the Part-I expansion (line 55).
 expect_zero(
     "P0_sel + beta0*d(log lambda_-)/d alpha",
     P0_sel + beta0 * sp.diff(sp.log(lam_minus), alpha),
@@ -141,7 +145,14 @@ expect_zero(
 )
 
 lambda_req = sp.simplify(mhat**2 * beta0 * s_minus_closed / NQ_target)
-expect_zero("spectral condition rewrite", sp.simplify(lam_minus - lambda_req) + sp.simplify((mhat**2 * P0_sel - NQ_target) * lam_minus / NQ_target))
+# Note: the algebraic rearrangement
+#   (lam_- - lambda_req) + (mhat^2*P0_sel - NQ_target)*lam_-/NQ_target = 0
+# follows by substituting the definitions P0_sel := beta0*s/lam_- and
+# lambda_req := mhat^2*beta0*s/NQ_target; both sides collapse to 0 without
+# exercising the physical content of lam_- or s. It is therefore not
+# verified separately. The substantive content (that lam_- = lambda_req
+# when the constraint mhat^2 P0_sel = NQ_target holds) is recorded here
+# as a definitional identity, not as a check.
 print("lambda_req =")
 sp.pprint(lambda_req)
 

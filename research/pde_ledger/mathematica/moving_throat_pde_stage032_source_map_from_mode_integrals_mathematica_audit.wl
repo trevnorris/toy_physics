@@ -100,7 +100,26 @@ bMat = {
   {gU, 0, gB*kappa0, gW*kappa0},
   {0, gU, gB*kappa1, gW*kappa1}
 };
+
+(* Independent derivation: do not invert kInt directly.
+   Solve kInt . y == Transpose[bMat] . z for y in terms of an arbitrary external z = {z1, z2}.
+   Then Bmat . y is, by construction, Bmat . kInt^{-1} . Transpose[bMat] . z, i.e.
+   the Schur image of z. We then read off sigmaMat from the linear coefficients of z1, z2. *)
+zVec = {z1, z2};
+rhs = Transpose[bMat] . zVec;
+ySol = LinearSolve[kInt, rhs];
+schurImage = FullSimplify[bMat . ySol, Assumptions -> $Assumptions];
+
+sigmaMatViaSolve = FullSimplify[
+  {{Coefficient[schurImage[[1]], z1], Coefficient[schurImage[[1]], z2]},
+   {Coefficient[schurImage[[2]], z1], Coefficient[schurImage[[2]], z2]}},
+  Assumptions -> $Assumptions
+];
+
+(* Original direct-inversion route, kept for cross-checking the two methods. *)
 sigmaMat = FullSimplify[bMat.Inverse[kInt].Transpose[bMat], Assumptions -> $Assumptions];
+expectZero["Schur via Inverse vs LinearSolve", sigmaMat - sigmaMatViaSolve];
+
 sigma = FullSimplify[(Transpose[v].v)[[1, 1]], Assumptions -> $Assumptions];
 xi = FullSimplify[gU^2/aU, Assumptions -> $Assumptions];
 alphaCoeff = FullSimplify[
@@ -113,6 +132,7 @@ Print["Sigma = ", fmt[sigmaMat]];
 Print["Xi = ", fmt[xi]];
 Print["alpha = ", fmt[alphaCoeff]];
 expectZero["Sigma - [Xi I + alpha vv^T]", sigmaMat - sigmaTarget];
+expectZero["sigmaMatViaSolve - [Xi I + alpha vv^T]", sigmaMatViaSolve - sigmaTarget];
 
 banner["STAGE 15.4 — NATURAL D/N SOURCE MAP"];
 Clear[a, dK, alpha0, sigmaSym, deltaKappa, kappaProd, beta0, gConst, cs, radius, cSpeed, mhat];
@@ -129,13 +149,44 @@ mhatSq = FullSimplify[sMinusNat/kappa0^2, Assumptions -> $Assumptions];
 
 Print["mhat_-^2 = ", fmt[mhatSq]];
 expectZero["mhat_-^2(alpha=0) - 1", (mhatSq /. alpha0 -> 0) - 1];
+
+(* Non-trivial identity on the natural-D/N kappa products. *)
+expectZero[
+  "delta_kappa^2 + 4*Kprod - sigma^2 (natural)",
+  (deltaKappa^2 + 4*kappaProd - sigmaSym^2) /. subsNat
+];
+
+(* Interior consistency: derive s_minus_nat via the simplified R form. *)
+rNat = Sqrt[dK^2 + 2*alpha0*dK*deltaKappa + alpha0^2*sigmaSym^2];
+sMinusNatSimplified = FullSimplify[
+  (sigmaSym + (dK*deltaKappa + alpha0*sigmaSym^2)/rNat)/2,
+  Assumptions -> $Assumptions
+];
+expectZero[
+  "s_minus_nat - s_minus_nat_simplified (interior identity)",
+  FullSimplify[sMinusNat - (sMinusNatSimplified /. subsNat), Assumptions -> $Assumptions]
+];
+expectZero[
+  "s_minus_nat at (alpha0=1, dK=1) interior point",
+  FullSimplify[
+    (sMinusNat /. {alpha0 -> 1, dK -> 1})
+      - ((sMinusNatSimplified /. {alpha0 -> 1, dK -> 1}) /. subsNat),
+    Assumptions -> $Assumptions
+  ]
+];
 expectZero["limit_{alpha->oo} mhat_-^2 - 11/9", Limit[mhatSq, alpha0 -> Infinity] - 11/9];
 
 banner["STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR"];
-p0Minus = FullSimplify[beta0*sMinus/lamMinus, Assumptions -> $Assumptions];
-nProd = FullSimplify[(sMinus/kappa0^2)*p0Minus, Assumptions -> $Assumptions];
-nProdTarget = FullSimplify[beta0*sMinus^2/(kappa0^2*lamMinus), Assumptions -> $Assumptions];
-expectZero["mhat^2 P0_- - beta0 s^2/(kappa0^2 lambda_-)", nProd - nProdTarget];
+p0MinusNat = FullSimplify[(beta0*sMinus/lamMinus) /. subsNat, Assumptions -> $Assumptions];
+nProdNat = FullSimplify[((sMinus/kappa0^2) /. subsNat)*p0MinusNat, Assumptions -> $Assumptions];
+
+(* (i) alpha0 = 0 must give beta0 * kappa0^2 / a. *)
+nProdAt0 = FullSimplify[nProdNat /. alpha0 -> 0, Assumptions -> $Assumptions];
+expectZero["Nprod(alpha=0) - beta0 * kappa0^2 / a", nProdAt0 - beta0*kappa0^2/a];
+
+(* (ii) alpha0 -> Infinity must give zero. *)
+nProdInf = Limit[nProdNat, alpha0 -> Infinity, Assumptions -> $Assumptions];
+expectZero["limit_{alpha->oo} Nprod_nat", nProdInf];
 
 Print["All Stage 15 checks passed."];
 

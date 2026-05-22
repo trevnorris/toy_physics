@@ -80,14 +80,15 @@ print("alpha_mix =", alpha_mix)
 print("g_B,req^2 / varpi^2 =")
 sp.pprint(gBreq_sq_over_varpi2)
 
-# Check that solving the microscopic loading equation really reproduces alpha(x).
-expect_zero(
-    "solved g_B,req^2/varpi^2 - (alpha(x) - alpha_mix)",
-    gBreq_sq_over_varpi2 - (alpha_x - alpha_mix),
+# Independent solve of the loading equation in the original lambda variable,
+# checked against the x-form solution under lambda = A - x. This is non-trivial:
+# it exercises the closed-form alpha_lam together with the substitution.
+gBreq_lambda = sp.simplify(
+    sp.solve(sp.Eq(gB_sq_over_varpi2 + alpha_mix, alpha_lam), gB_sq_over_varpi2)[0]
 )
 expect_zero(
-    "alpha_mix + g_B,req^2/varpi^2 - alpha(x)",
-    alpha_mix + gBreq_sq_over_varpi2 - alpha_x,
+    "lambda-form vs x-form support loading",
+    gBreq_lambda.subs(lam, A - x) - gBreq_sq_over_varpi2,
 )
 
 print("All Stage 17 checks passed.")

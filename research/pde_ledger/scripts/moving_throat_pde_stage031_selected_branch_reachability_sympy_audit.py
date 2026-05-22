@@ -68,8 +68,12 @@ dP_generic = dP_generic.subs({
 dP_expected = sp.simplify(beta0 * (DSsym * Lsym + Ssym**2) / Lsym**2)
 expect_zero("generic quotient/HF identity", sp.simplify(dP_generic - dP_expected))
 
+dP_direct = sp.diff(P0_sel, alpha)
+dP_physical = beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2
+expect_zero("dP0_-/dalpha direct identity", sp.simplify(dP_direct - dP_physical))
+
 print("dP0_-/dalpha =")
-sp.pprint(sp.simplify(beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2))
+sp.pprint(sp.simplify(dP_physical))
 
 banner("PART III — INITIAL VALUES")
 
@@ -82,13 +86,18 @@ banner("PART IV — EXACT SOFTENING THRESHOLD")
 T0 = sp.simplify((A + DK) * x0 + A * x1)
 alpha_crit = sp.simplify(A * (A + DK) / T0)
 expect_zero("det factorization", sp.expand(lam_minus * lam_plus - (A * (A + DK) - alpha * T0)))
-expect_zero("alpha_crit condition", sp.simplify((A * (A + DK) - alpha * T0).subs(alpha, alpha_crit)))
+root_crit = A**2 * x1 + (A + DK) ** 2 * x0
+lam_minus_crit = sp.together(lam_minus.subs(alpha, alpha_crit)).replace(
+    lambda expr: isinstance(expr, sp.Pow) and expr.exp == sp.Rational(1, 2) and sp.simplify(expr.base - root_crit**2) == 0,
+    lambda expr: root_crit,
+)
+expect_zero("lam_-(alpha_crit)", sp.simplify(lam_minus_crit))
 
 lambda_plus_crit = sp.simplify(lam_plus.subs(alpha, alpha_crit))
-radcrit = A**4*x0**2 + 2*A**4*x0*x1 + A**4*x1**2 + 4*A**3*DK*x0**2 + 4*A**3*DK*x0*x1 + 6*A**2*DK**2*x0**2 + 2*A**2*DK**2*x0*x1 + 4*A*DK**3*x0**2 + DK**4*x0**2
+radcrit_derived = sp.expand(T0**2 * (R**2).subs(alpha, alpha_crit))
 expect_zero(
     "threshold radical square identity",
-    radcrit - (A**2 * x1 + (A + DK) ** 2 * x0) ** 2,
+    sp.expand(radcrit_derived - (A**2 * x1 + (A + DK) ** 2 * x0) ** 2),
 )
 print("alpha_crit =")
 sp.pprint(alpha_crit)

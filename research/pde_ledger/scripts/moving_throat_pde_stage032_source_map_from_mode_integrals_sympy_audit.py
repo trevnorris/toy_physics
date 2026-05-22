@@ -164,16 +164,49 @@ mhat_sq = sp.simplify(s_minus_nat / kappa0**2)
 
 print("mhat_-^2 =", mhat_sq)
 expect_zero("mhat_-^2(alpha=0) - 1", sp.simplify(mhat_sq.subs(alpha0, 0) - 1))
+
+# Non-trivial identity on the natural-D/N kappa products.
+expect_zero(
+    "delta_kappa^2 + 4*Kprod - sigma^2 (natural)",
+    (delta_kappa**2 + 4 * Kprod - sigma_sym**2).subs(subs_nat),
+)
+
+# Interior consistency: s_minus_nat at alpha0 = 1, DK = 1 equals the
+# closed form obtained using the natural-D/N identity above.
+R_nat = sp.sqrt(DK**2 + 2 * alpha0 * DK * delta_kappa + alpha0**2 * sigma_sym**2)
+s_minus_nat_simplified = sp.simplify(
+    (sigma_sym + (DK * delta_kappa + alpha0 * sigma_sym**2) / R_nat) / 2
+)
+expect_zero(
+    "s_minus_nat - s_minus_nat_simplified (interior identity)",
+    sp.simplify((s_minus_nat - s_minus_nat_simplified.subs(subs_nat))),
+)
+expect_zero(
+    "s_minus_nat at (alpha0=1, DK=1) interior point",
+    sp.simplify(
+        s_minus_nat.subs({alpha0: sp.Integer(1), DK: sp.Integer(1)})
+        - s_minus_nat_simplified.subs({alpha0: sp.Integer(1), DK: sp.Integer(1)}).subs(subs_nat)
+    ),
+)
 expect_zero("limit_{alpha->oo} mhat_-^2 - 11/9", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11, 9)))
 
 banner("STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR")
 
-beta0, kappa0_sq = sp.symbols("beta0 kappa0_sq", positive=True, real=True)
-P0_minus = sp.symbols("P0_minus", real=True)
+beta0 = sp.symbols("beta0", positive=True, real=True)
 
-P0_from_stage13 = sp.simplify(beta0 * s_minus / lambda_minus)
-Nprod = sp.simplify((s_minus / kappa0_sq) * P0_from_stage13)
-Nprod_target = sp.simplify(beta0 * s_minus**2 / (kappa0_sq * lambda_minus))
-expect_zero("mhat^2 P0_- - beta0 s^2/(kappa0^2 lambda_-)", Nprod - Nprod_target)
+# Closed-form product under the natural D/N substitution.
+P0_minus_nat = sp.simplify((beta0 * s_minus / lambda_minus).subs(subs_nat))
+Nprod_nat = sp.simplify((s_minus / kappa0**2).subs(subs_nat) * P0_minus_nat)
+
+# (i) At alpha0 = 0 the elimination must yield beta0 * kappa0^2 / A.
+Nprod_alpha0 = sp.simplify(Nprod_nat.subs(alpha0, 0))
+expect_zero(
+    "Nprod(alpha=0) - beta0 * kappa0^2 / A",
+    Nprod_alpha0 - beta0 * kappa0**2 / A,
+)
+
+# (ii) As alpha0 -> oo the product vanishes (lambda_minus diverges, s_minus is finite).
+Nprod_inf = sp.limit(Nprod_nat, alpha0, sp.oo)
+expect_zero("limit_{alpha->oo} Nprod_nat", Nprod_inf)
 
 print("All Stage 15 checks passed.")

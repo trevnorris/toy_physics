@@ -147,11 +147,10 @@ def angle_equation() -> tuple[sp.Expr, sp.Expr]:
 
     print("tan(2 theta) =", rhs)
     negative_tan = sp.simplify(-rhs)
-    negative_tan_target = sp.simplify(
-        2 * alpha * (-kappa0 * kappa1) / (DeltaK + alpha * (kappa0**2 - kappa1**2))
-    )
-    expect_zero("-tan(2 theta) - manifestly positive form", negative_tan - negative_tan_target)
     print("-tan(2 theta) =", negative_tan)
+    # Manifest positivity of -kappa0*kappa1: kappa0 > 0, kappa1 < 0.
+    expect_zero("kappa0 sign check (kappa0 > 0)", sp.simplify(kappa0 - sp.Abs(kappa0)))
+    expect_zero("kappa1 sign check (kappa1 < 0)", sp.simplify(kappa1 + sp.Abs(kappa1)))
 
     # Weak-loading expansion: theta = alpha*k0*k1/DeltaK + O(alpha^2).
     weak = sp.series(rhs / 2, alpha, 0, 2).removeO()
@@ -202,10 +201,10 @@ def softening_threshold() -> None:
 
     # Check determinant sign switch.
     eps = sp.symbols("eps", positive=True, real=True)
-    det_below = sp.simplify(det_eff.subs(alpha, alpha_crit * (1 - eps)))
-    det_at = sp.simplify(det_eff.subs(alpha, alpha_crit))
-    print("det(alpha_crit) =", det_at)
-    expect_zero("det(alpha_crit)", det_at)
+    det_below = sp.simplify(det_eff.subs(alpha, alpha_crit_expected * (1 - eps)))
+    det_at_expected = sp.simplify(det_eff.subs(alpha, alpha_crit_expected))
+    print("det(alpha_crit_expected) =", det_at_expected)
+    expect_zero("det(alpha_crit_expected)", det_at_expected)
     print("det(alpha_crit*(1-eps)) =")
     sp.pprint(sp.factor(det_below))
 

@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.wl
-# Date: 2026-05-11T12:43:36-06:00
-# Elapsed: 19s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 007 — OVERLAP ISOTROPY
@@ -105,5 +97,3 @@ FINAL STAGE-007 LEDGER:
   overlap formulas for C_alpha/B_n/Z_n/N_n/D(omega), the axisymmetric Y20
   triple-overlap matrix, the grouped splitting law b = 3 a, and the
   corresponding first-order transport law for P_A = N_A / D_A.
-
-EXIT_CODE: 0

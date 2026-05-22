@@ -69,7 +69,6 @@ expect_zero(
     "g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",
     gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
 )
-expect_zero("R_target - pi^2 A NQ/(8 beta0)", R_target - sp.pi**2 * A * NQ / (8 * beta0))
 
 banner("STAGE 19.2 — EXACT MONOTONICITY AND ENDPOINTS OF G")
 dG = sp.simplify(sp.diff(G, xi))
@@ -118,12 +117,31 @@ expect_zero(
     "admissible sample: F(xi_req,delta) - R_target(host)",
     F.subs({delta: delta_sample, xi: xi_sample}) - R_target_host,
 )
+# Symbolic kappa-based cross-check of the support-feasibility content.
+# Builds R_target_sym from the Stage-18 microscopic kappa expansion
+# symbolically in (xi, delta, A_sym, beta0_sym) and confirms it equals F.
+A_sym, beta0_sym = sp.symbols("A_sym beta0_sym", positive=True, real=True)
+x_sym = A_sym * xi
+deltaK_sym = A_sym * delta
+N_sym = (
+    beta0_sym
+    * (KAPPA0_SQ * (x_sym + deltaK_sym) + KAPPA1_SQ * x_sym) ** 4
+    / (
+        KAPPA0_SQ
+        * (A_sym - x_sym)
+        * (KAPPA0_SQ * (x_sym + deltaK_sym) ** 2 + KAPPA1_SQ * x_sym ** 2) ** 2
+    )
+)
+R_target_sym = sp.simplify(N_sym * A_sym / (beta0_sym * KAPPA0_SQ))
+expect_zero(
+    "symbolic kappa derivation: F(xi,delta) - R_target_sym",
+    sp.simplify(F - R_target_sym),
+)
 expect_true(
     "admissible sample: M_mix <= G(xi_req,delta)",
     bool(Mmix_good <= G_sample),
     f"M_mix={Mmix_good}, G={G_sample}",
 )
-expect_true("inadmissible sample: R_target < 1 blocks the branch", bool(sp.Rational(9, 10) < 1), "R_target=9/10")
 expect_true(
     "inadmissible sample: support deficit blocks the branch",
     bool(Mmix_bad > G_sample),

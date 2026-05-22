@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-21`
+Snapshot date: `2026-05-22`
 
 ## Rule
 
@@ -27,6 +27,18 @@ Mathematica derivations: `EulerEquations`, `VariationalD`, `SphericalHarmonicY`,
 files land under `mathematica/` (not `scripts/`) and are listed below in the
 Independent-Mirror Set. The directory convention (`.py` lives in `scripts/`,
 `.wl` lives in `mathematica/`) is enforced by the red-team workflow.
+
+Red-team batches must explicitly screen each `.wl` for line-by-line
+correspondence to its `.py` counterpart as the first audit step. If the `.wl`
+mirrors SymPy primitives one-for-one -- shared local variable names, identical
+section ordering, hand-typed polynomial answers, `pairings`-style recursion,
+or `_expected` self-substitutions copied from the SymPy companion -- it must
+be rewritten to a Mathematica-native primitive (`Integrate`, `Eigenvalues`,
+`LinearSolve`, `Series`+`Coefficient`, `Solve`, `Factor`/`Apart`,
+`EulerEquations`, `SphericalHarmonicY`, `ThreeJSymbol`, `SphericalHankelH1`)
+before the batch closes. Batch II.1 found `mathematica_transliteration` on
+every single one of its 13 stages; treat this as a default expectation, not
+an exceptional finding.
 
 ## Current Independent-Mirror Set
 
@@ -137,6 +149,68 @@ different verification structure from the SymPy side:
   expansion via `Series` applied to `j2 + I*y2`); SymPy companion replaced
   solver-roundtrip substitutions with hand-typed closed-form comparisons
   `N2_target_closed = 2 D2 N0/D0` and `N4_target_closed = N0(2 D0 D4 + D2^2)/D0^2`
+- `024`
+  red-team batch II.1 replaced Wick-pair `pairings` recursion with
+  `Integrate[..., {theta, 0, Pi}, {phi, 0, 2 Pi}]` over Cartesian `n[i]`
+  components for the angular moments; removed SymPy-named shorthands
+  (`deltaPair`/`sPair`/`qPair`/`hPair`/`pPair`) and added an `xLane[lam_]`
+  parameterizer in place of pre-substituted lane forms
+- `025`
+  red-team batch II.1 replaced transliterated algebra with `Factor`,
+  `Apart[Together[..., k]]`, `Limit`-based derivatives, and `Reduce`
+  solvability checks; SymPy companion added numerical sample-point checks
+  on `P0/Delta/D0/mhat^2/dP0` and reanchored the `54/5` overlap target to
+  Stage 023's exact derivation
+- `026`
+  red-team batch II.1 added two algebraically-distinct routes for the
+  overlap law (indefinite-integral + boundary-evaluation path vs typed
+  analytic short form); deleted `_expected` self-substitution rebuilds
+  and the `K_req_expected` solver round-trip
+- `027`
+  red-team batch II.1 built `gEta = -tW*D[chi,{s,2}] + (kEta+6*tOmega)*chi`
+  and evaluated `kGeo = FullSimplify[Integrate[chi*gEta, {s,0,l}], ...]`
+  instead of hard-coding the answer; output prints `kGeo` in `Cos[2*theta]`
+  canonical form rather than `sin^2(theta)`, proving the integral was
+  actually evaluated
+- `028`
+  red-team batch II.1 replaced typed eigenvalue answers with
+  `Eigenvalues[kEff]` sum/product checks and `Solve[detEff == 0, alpha]`
+- `029`
+  red-team batch II.1 used sequential elimination (phi -> W -> U) for the
+  Schur block and `Eigensystem[keffAl]` for `kappa_sel` instead of
+  transliterated linear algebra
+- `030`
+  red-team batch II.1 used `Eigenvalues[mMat]` on the explicit 2x2 wall
+  block instead of hand-typed `lam_+`/`lam_-`
+- `031`
+  red-team batch II.1 derived `radcrit` from `T0^2*R^2.subs(alpha,
+  alpha_crit)` instead of a hand-typed 9-term polynomial; SymPy companion
+  replaced abstract `sp.Function("S")`/`sp.Function("L")` derivations with
+  the physical `s_-`/`lam_-` symbols
+- `032`
+  red-team batch II.1 used `LinearSolve[kInt . y == bMat^T . z, ...]` to
+  derive the Schur matrix from coefficients, with a `delta_kappa^2 +
+  4*Kprod = sigma^2` identity check covering the previously-uncovered
+  interior region
+- `033`
+  red-team batch II.1 added a numerical cross-check at two rational rule
+  sets in addition to the symbolic route, and replaced the Mathematica
+  `k0Onset` hardcoded form with `Solve[n0Mic == NQ, K0]`
+- `034`
+  red-team batch II.1 replaced the linear-solve self-check with
+  `solve(gB+alpha_mix==alpha_x, lam)` in the original lambda variable,
+  then substituted `lam = A-x`
+- `035`
+  red-team batch II.1 preserved target literals as the claim under test
+  but switched `expectZero` LHSs from `fTarget`/`alphaReqTarget` to
+  engine-derived `f`/`alphaReq` so wrong coefficients in either literal
+  would surface
+- `036`
+  red-team batch II.1 replaced hand-typed `dGTarget`, `gMaxTarget`,
+  `gSeriesTarget` with derived alternatives (polynomial form, `Limit`
+  form, coefficient extraction); added a `disc + 72*delta^2 == 0`
+  discriminant check; substantive symbolic kappa-based `F`-`R_target`
+  identity inserted in both engines
 - `059`
   uses a constructive `FindRoot` saturation route instead of symbolic replay
 - `067`

@@ -58,12 +58,11 @@ banner["PART IV — EXACT SOFTENING THRESHOLD"];
 t0 = FullSimplify[(a + dK)*x0 + a*x1, Assumptions -> $Assumptions];
 alphaCrit = FullSimplify[a*(a + dK)/t0, Assumptions -> $Assumptions];
 expectZero["det factorization", Expand[lamMinus*lamPlus - (a*(a + dK) - alpha*t0)]];
-expectZero["alpha_crit condition", (a*(a + dK) - alpha*t0) /. alpha -> alphaCrit];
+expectZero["lam_-(alphaCrit)", FullSimplify[lamMinus /. alpha -> alphaCrit, Assumptions -> $Assumptions]];
 
 lambdaPlusCrit = FullSimplify[lamPlus /. alpha -> alphaCrit, Assumptions -> $Assumptions];
-radCrit = a^4*x0^2 + 2*a^4*x0*x1 + a^4*x1^2 + 4*a^3*dK*x0^2 + 4*a^3*dK*x0*x1 +
-  6*a^2*dK^2*x0^2 + 2*a^2*dK^2*x0*x1 + 4*a*dK^3*x0^2 + dK^4*x0^2;
-expectZero["threshold radical square identity", radCrit - (a^2*x1 + (a + dK)^2*x0)^2];
+radCritDerived = Expand[t0^2 * (r^2 /. alpha -> alphaCrit)];
+expectZero["threshold radical square identity", Expand[radCritDerived - (a^2*x1 + (a + dK)^2*x0)^2]];
 Print["alpha_crit = ", fmt[alphaCrit]];
 Print["lambda_+^(crit) = ", fmt[lambdaPlusCrit]];
 

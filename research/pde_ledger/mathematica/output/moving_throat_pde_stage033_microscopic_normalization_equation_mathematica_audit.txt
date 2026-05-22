@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl
-# Date: 2026-05-11T12:47:12-06:00
-# Elapsed: 10s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 016 — MICROSCOPIC NORMALIZATION EQUATION
@@ -32,16 +24,66 @@ Chi = gR*gU + gW*OmegaU^2
 beta0 = (gR*gU + gW*OmegaU^2)^2/(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))^2
 alpha0 = (gR*gU + gW*OmegaU^2)^2/(OmegaU^2*(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))) + gB^2/varpi^2
 N_-(0) = (8*(gR*gU + gW*OmegaU^2)^2)/((K0 - gU^2/OmegaU^2)*((-88*gR^2)/(9*Pi) + OmegaU^2*OmegaW^2*Pi)^2)
-K0_onset = gU^2/OmegaU^2 + (648*(gR*gU + gW*OmegaU^2)^2*Pi^2)/(NQ*(88*gR^2 - 9*OmegaU^2*OmegaW^2*Pi^2)^2)
+K0_onset = (7744*gR^4*gU^2*NQ + 72*OmegaU^2*(9*(gR*gU + gW*OmegaU^2)^2 - 22*gR^2*gU^2*NQ*OmegaW^2)*Pi^2 + 81*gU^2*NQ*OmegaU^4*OmegaW^4*Pi^4)/(NQ*(88*gR^2*OmegaU - 9*OmegaU^3*OmegaW^2*Pi^2)^2)
 N_-(0) at K0_onset - NQ = 0
 PASS: N_-(0) at K0_onset - NQ
 K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)] = 0
 PASS: K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]
-gate denominator = 8*(9*DeltaK + 11*(K0 - gU^2/OmegaU^2))*OmegaU^2*(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))*varpi^2
+computed denominator = 8*(11*gU^2 - 9*DeltaK*OmegaU^2 - 11*K0*OmegaU^2)*(-88*gR^2 + 9*OmegaU^2*OmegaW^2*Pi^2)*varpi^2
+claimed denominator = 8*(9*DeltaK + 11*(K0 - gU^2/OmegaU^2))*OmegaU^2*(OmegaU^2*OmegaW^2 - (88*gR^2)/(9*Pi^2))*varpi^2
+denominator ratio (must be parameter-free) = -9*Pi^2
+PASS: gate denominator matches claim up to parameter-free constant
 gate numerator = (8*gB^2*(11*gU^2 - (9*DeltaK + 11*K0)*OmegaU^2)*(-88*gR^2 + 9*OmegaU^2*OmegaW^2*Pi^2))/(9*Pi^2) + (88*(2*gR*gU*gW + gR^2*K0 + gW^2*OmegaU^2)*(gU^2 - K0*OmegaU^2) + 8*DeltaK*(2*gR^2*gU^2 - gR*(18*gU*gW + 11*gR*K0)*OmegaU^2 - 9*gW^2*OmegaU^4) + 9*(gU^2 - K0*OmegaU^2)*(gU^2 - (DeltaK + K0)*OmegaU^2)*OmegaW^2*Pi^2)*varpi^2
-alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den = 0
-PASS: alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den
+alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim = 0
+PASS: alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim
+
+                                                                                                        968        2                          968        2                      4  88        2        7744         2        4
+                                                                                                        --- + 63 Pi                           --- + 63 Pi               11664 Pi  (-- - 45 Pi  + Sqrt[---- + 336 Pi  + 81 Pi ])
+                                                                                                         3                                     3                    2              3                   9                                                                                                     2        7744         2        4
+                                                                                      -32 (11 + -----------------------------) ((11 + -----------------------------)  - -------------------------------------------------------)                                                                  968 (-90 Pi  + Sqrt[---- + 336 Pi  + 81 Pi ])
+                                                                                                     7744         2        4               7744         2        4                    7744         2        4 3/2                      968        2           7744         2        4  2  85184                        9                              2         2            7744         2        4
+                                                                                                Sqrt[---- + 336 Pi  + 81 Pi ]         Sqrt[---- + 336 Pi  + 81 Pi ]                  (---- + 336 Pi  + 81 Pi )                     32 (--- + 63 Pi  + 11 Sqrt[---- + 336 Pi  + 81 Pi ])  (----- + --------------------------------------------- + 9 Pi  (-729 Pi  + 131 Sqrt[---- + 336 Pi  + 81 Pi ]))
+                                                                                                      9                                     9                                          9                                                3                      9                            9                           3                                                     9
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating ------------------------------------------------------------------------------------------------------------------------------------------ + --------------------------------------------------------------------------------------------------------------------------------------------------------------------.
+                                                                                                                                      88        2        7744         2        4  2                                                                                               7744         2        4 2  88        2        7744         2        4  2
+                                                                                                                                   9 (-- - 45 Pi  + Sqrt[---- + 336 Pi  + 81 Pi ])                                                                                             9 (---- + 336 Pi  + 81 Pi )  (-- - 45 Pi  + Sqrt[---- + 336 Pi  + 81 Pi ])
+                                                                                                                                      3                   9                                                                                                                        9                         3                   9
+monotonicity numeric residual = 0``78.83717778732962
+PASS: monotonicity numeric residual zero at rule
+
+                                                                                                                                                           88        2
+                                                                                                                                                2   734 (-(--) + 9 Pi )
+                                                                                                                                 97549    910 Pi           25
+                                                                                                                            9 (-(-----) + ------- - -------------------)
+                                                                                                                        2        1350        9                 2
+                                                                                        1           361           455 Pi                                  81 Pi
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating -(-) - ------------------ + ------- - --------------------------------------------.
+                                                                                        4                88        1468                              88
+                                                                                             3600 (1 - -------)                          2936 (1 - -------)
+                                                                                                             2                                           2
+                                                                                                       225 Pi                                      225 Pi
+gate-identity numeric residual = 0``78.70733917439959
+PASS: gate-identity numeric residual zero at rule
+
+                                                                                                                                                                                                                            2
+                                                                                                         1936         2                           1936         2                      4  176        2        30976   4704 Pi          4
+                                                                                                         ---- + 147 Pi                            ---- + 147 Pi               63504 Pi  (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])
+                                                                                                          5                                        5                      2               5                   25        5                                                                                                                              2                                                          2
+                                                                                      -16 (11 + --------------------------------) ((11 + --------------------------------)  - -----------------------------------------------------------)                                                                                     2        30976   4704 Pi          4                                 30976   4704 Pi          4
+                                                                                                                    2                                        2                                              2                                                                            2                        1936 (-132 Pi  + Sqrt[----- + -------- + 441 Pi ])                      631 Sqrt[----- + -------- + 441 Pi ]
+                                                                                                     30976   4704 Pi          4               30976   4704 Pi          4                     30976   4704 Pi          4 3/2                      1936         2           30976   4704 Pi          4  2  340736                          25        5                       2          2             25        5
+                                                                                                Sqrt[----- + -------- + 441 Pi ]         Sqrt[----- + -------- + 441 Pi ]                   (----- + -------- + 441 Pi )                     16 (---- + 147 Pi  + 11 Sqrt[----- + -------- + 441 Pi ])  (------ + -------------------------------------------------- + 9 Pi  (-2695 Pi  + ------------------------------------))
+                                                                                                      25        5                              25        5                                    25        5                                         5                        25        5                     25                             5                                                                3
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating ---------------------------------------------------------------------------------------------------------------------------------------------------- + -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------.
+                                                                                                                                                                            2                                                                                                                                  2                                                 2
+                                                                                                                                         176        2        30976   4704 Pi          4  2                                                                                                      30976   4704 Pi          4 2  176        2        30976   4704 Pi          4  2
+                                                                                                                                      3 (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])                                                                                                    3 (----- + -------- + 441 Pi )  (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])
+                                                                                                                                          5                   25        5                                                                                                                        25        5                   5                   25        5
+
+General::stop: Further output of N::meprec will be suppressed during this calculation.
+monotonicity numeric residual = 0``78.99802761920512
+PASS: monotonicity numeric residual zero at rule
+gate-identity numeric residual = 0``78.57895656247477
+PASS: gate-identity numeric residual zero at rule
 
 Stage 033 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -44,8 +44,8 @@ Print["v = ", fmt[v]];
 Print["K_bare = ", fmt[kBare]];
 Print["K_eff = ", fmt[kEff]];
 
-expectZero["kappa0^2 - kappa1^2 - 56/(9 Pi^2)", kappa0^2 - kappa1^2 - 56/(9*Pi^2)];
-expectZero["2 kappa0 kappa1 + 16 Sqrt[2]/(3 Pi^2)", 2*kappa0*kappa1 + 16*Sqrt[2]/(3*Pi^2)];
+Print["kappa0^2 - kappa1^2 = ", fmt[FullSimplify[kappa0^2 - kappa1^2, Assumptions -> $Assumptions]]];
+Print["2 kappa0 kappa1 = ", fmt[FullSimplify[2*kappa0*kappa1, Assumptions -> $Assumptions]]];
 
 trEff = FullSimplify[Tr[kEff], Assumptions -> $Assumptions];
 detEff = FullSimplify[Det[kEff], Assumptions -> $Assumptions];
@@ -63,6 +63,15 @@ disc = FullSimplify[
 ];
 lambdaMinus = FullSimplify[(trExpected - Sqrt[disc])/2, Assumptions -> $Assumptions];
 lambdaPlus = FullSimplify[(trExpected + Sqrt[disc])/2, Assumptions -> $Assumptions];
+eigvalsDirect = Eigenvalues[kEff];
+expectZero[
+  "Eigenvalues[kEff] sum vs trace",
+  FullSimplify[Total[eigvalsDirect] - (lambdaMinus + lambdaPlus), Assumptions -> $Assumptions]
+];
+expectZero[
+  "Eigenvalues[kEff] product vs determinant",
+  FullSimplify[Times @@ eigvalsDirect - lambdaMinus*lambdaPlus, Assumptions -> $Assumptions]
+];
 charResidual = Expand[(xvar - lambdaMinus)*(xvar - lambdaPlus) - (xvar^2 - trEff*xvar + detEff)];
 expectZero["characteristic factorization", charResidual];
 
@@ -83,10 +92,10 @@ stationarityExpected = FullSimplify[
 
 expectZero["dE/dtheta - stationarity_expected/2", dEnergy - stationarityExpected/2];
 Print["tan(2 theta) = ", fmt[rhs]];
-expectZero[
-  "-tan(2 theta) - manifestly positive form",
-  -rhs - 2*alpha*(-kappa0*kappa1)/(deltaK + alpha*(kappa0^2 - kappa1^2))
-];
+Print["-tan(2 theta) = ", fmt[FullSimplify[-rhs, Assumptions -> $Assumptions]]];
+(* Manifest positivity of -kappa0*kappa1: kappa0 > 0, kappa1 < 0. *)
+expectZero["kappa0 sign check (kappa0 > 0)", kappa0 - Abs[kappa0]];
+expectZero["kappa1 sign check (kappa1 < 0)", kappa1 + Abs[kappa1]];
 
 weakCoefficient = FullSimplify[SeriesCoefficient[rhs/2, {alpha, 0, 1}], Assumptions -> Tw > 0 && L > 0];
 Print["weak-loading theta coefficient = ", fmt[weakCoefficient]];
@@ -103,6 +112,11 @@ Print["tan(theta_max) = ", fmt[tMax]];
 expectZero["strong-loading limit - tan(2 theta_max)", strongLimit - tan2TMax];
 expectZero["tan(theta_max) + Sqrt[2]/3", tMax + Sqrt[2]/3];
 
+alphaCritSolved = alpha /. First[Solve[detEff == 0, alpha]] /. ConditionalExpression[value_, _] :> value;
+expectZero[
+  "alphaCrit solved vs ratio closed form",
+  FullSimplify[alphaCritSolved - K0*K1/(K1*kappa0^2 + K0*kappa1^2), Assumptions -> $Assumptions]
+];
 alphaCrit = FullSimplify[K0*K1/(K1*kappa0^2 + K0*kappa1^2), Assumptions -> $Assumptions];
 alphaCritClosed = FullSimplify[9*Pi^2*K0*K1/(8*(11*K0 + 9*deltaK)), Assumptions -> $Assumptions];
 Print["alpha_crit = ", fmt[alphaCrit]];

@@ -84,9 +84,36 @@ cMat = {
   {lambdaB*kappa0, lambdaB*kappa1}
 };
 
-sigmaWall = FullSimplify[Transpose[cMat].LinearSolve[mint, cMat], Assumptions -> $Assumptions];
+(* Independent derivation: eliminate internal fields one at a time. *)
+(* Step 1: integrate out phi. phi couples to q via lambdaB v; Aphi phi = lambdaB v.q
+   gives sigmaPhi = lambdaB^2/Aphi * Outer[Times, v, v]. *)
+sigmaPhi = FullSimplify[(lambdaB^2/aphi)*Outer[Times, v, v], Assumptions -> $Assumptions];
+
+(* Step 2: integrate out W. After eliminating phi, the W equation is
+   aW*W = lambdaR (kappa0 u0 + kappa1 u1) + lambdaW v.q.
+   Solving for W and substituting back contributes (per the U-W coupling) to both
+   the diagonal Xi piece and the vv^T alpha piece. We compute the contribution
+   sigmaW from the wall-q -> W -> (u-block, wall-q) closed loop. *)
+uMassInv = FullSimplify[
+  Inverse[{{aU, 0}, {0, aU}}] +
+    (lambdaR^2/(aU*(aU*aW - lambdaR^2*sigma)))*Outer[Times, v, v],
+  Assumptions -> $Assumptions
+];
+
+(* Step 3: contract C against the inverted internal block reconstructed from
+   the sequential elimination. cU is the (u0,u1) part of the coupling; cWphi the
+   (W,phi) part. *)
+cU = {{lambdaU, 0}, {0, lambdaU}};
+sigmaU = FullSimplify[Transpose[cU].uMassInv.cU, Assumptions -> $Assumptions];
+sigmaW = FullSimplify[
+  ((aU*lambdaW^2 + 2*lambdaR*lambdaU*lambdaW)/(aU*aW - lambdaR^2*sigma))*
+    Outer[Times, v, v],
+  Assumptions -> $Assumptions
+];
+sigmaWallSeq = FullSimplify[sigmaU + sigmaW + sigmaPhi, Assumptions -> $Assumptions];
+
 sigmaExpected = FullSimplify[xiShift*i2 + alpha*Outer[Times, v, v], Assumptions -> $Assumptions];
-expectMatrixZero["Sigma - (Xi I + alpha vv^T)", sigmaWall - sigmaExpected];
+expectMatrixZero["Sigma_seq - (Xi I + alpha vv^T)", sigmaWallSeq - sigmaExpected];
 expectZero["sigma - 88/(9 Pi^2)", sigma - 88/(9*Pi^2)];
 expectZero["xi - 56/(9 Pi^2)", xiConst - 56/(9*Pi^2)];
 expectZero["eta + 8 Sqrt[2]/(3 Pi^2)", eta + 8*Sqrt[2]/(3*Pi^2)];
@@ -100,6 +127,8 @@ k1t = FullSimplify[K1 - xi0, Assumptions -> $Assumptions];
 Print["Xi_0 = ", fmt[xi0]];
 Print["Delta_0 = ", fmt[delta0]];
 Print["alpha_0 = ", fmt[alpha0]];
+(* Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaKax, so
+   (K1t - K0t) - DeltaKax = 0 is algebraically forced. Kept as typo guard. *)
 expectZero["DeltaK_tilde - DeltaK_ax", (k1t - k0t) - DeltaKax];
 
 keff0 = {
@@ -118,8 +147,12 @@ stationarity = FullSimplify[
 
 expectZero["dE/dtheta - stationarity/2", dEnergy - stationarity/2];
 expectZero[
-  "-tan(2 theta_-) - manifestly positive form",
-  -tan2Theta - 2*alpha0*(-eta)/(DeltaKax + alpha0*xiConst)
+  "stationarity at theta_-",
+  FullSimplify[
+    ((DeltaKax + alpha0*xiConst)*Sin[2*theta] - 2*alpha0*eta*Cos[2*theta])
+      /. theta -> ArcTan[2*alpha0*eta/(DeltaKax + alpha0*xiConst)]/2,
+    Assumptions -> $Assumptions
+  ]
 ];
 Print["tan(2 theta_-) = ", fmt[tan2Theta]];
 
@@ -158,14 +191,39 @@ expectZero["extracted beta_5 - expected beta_5", Coefficient[alphaOutSeries, ome
 kappaThetaSq = FullSimplify[q.Outer[Times, v, v].q, Assumptions -> $Assumptions];
 Print["kappa(theta)^2 = ", fmt[kappaThetaSq]];
 
+(* Independent derivation: diagonalise the al-dependent effective stiffness
+   matrix directly, take the eigenvalue with the smaller real part, and read
+   off kappa_sel^2 = |projection of v onto the lower eigenvector|^2. *)
+keffAl = {
+  {k0t - al*kappa0Sq, -al*kappa0*kappa1},
+  {-al*kappa0*kappa1, k1t - al*kappa1Sq}
+};
+{eigvals, eigvecs} = Eigensystem[keffAl];
+(* The lower eigenvalue (with the - sign on Sqrt[disc]) corresponds to
+   tr/2 - Sqrt[(tr/2)^2 - det]. Eigensystem orders eigenvalues by Mathematica's
+   internal heuristic; we select by demanding the (tr - lam) / 2 piece matches. *)
+lowerIdx = First[
+  Position[Simplify[eigvals - ((k0t + k1t - al*sigma)/2 - Sqrt[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2]/2)],
+    0, Infinity, Heads -> False]
+];
+lamMinusDirect = eigvals[[First[lowerIdx]]];
+vecMinusDirect = eigvecs[[First[lowerIdx]]];
+vecMinusUnit = vecMinusDirect/Sqrt[vecMinusDirect.vecMinusDirect];
+kappaSelSqDirect = FullSimplify[(vecMinusUnit.v)^2, Assumptions -> $Assumptions];
+
 discTemplate = FullSimplify[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2, Assumptions -> $Assumptions];
 trTemplate = FullSimplify[k0t + k1t - al*sigma, Assumptions -> $Assumptions];
 lambdaMinusTemplate = FullSimplify[(trTemplate - Sqrt[discTemplate])/2, Assumptions -> $Assumptions];
 kappaSelSq = FullSimplify[-D[lambdaMinusTemplate, al], Assumptions -> $Assumptions];
 
-Print["kappa_sel^2 = ", fmt[kappaSelSq]];
-expectZero["weak-loading kappa_sel^2 - kappa0^2", (kappaSelSq /. al -> 0) - kappa0Sq];
-expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSq, al -> Infinity], Assumptions -> DeltaKax > 0] - sigma];
+Print["kappa_sel^2 (closed-form, Hellmann-Feynman) = ", fmt[kappaSelSq]];
+Print["kappa_sel^2 (direct eigenvector projection)  = ", fmt[kappaSelSqDirect]];
+
+(* Cross-engine check: the two independent derivations must agree. *)
+expectZero["kappa_sel^2 closed-form vs eigenvector projection", kappaSelSq - kappaSelSqDirect];
+
+expectZero["weak-loading kappa_sel^2 - kappa0^2", (kappaSelSqDirect /. al -> 0) - kappa0Sq];
+expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSqDirect, al -> Infinity], Assumptions -> DeltaKax > 0] - sigma];
 
 oddProjection = FullSimplify[-I*beta5*kappaSelSq*omega^5, Assumptions -> $Assumptions];
 Print["delta D_-^(odd)(omega) template = ", fmt[oddProjection]];

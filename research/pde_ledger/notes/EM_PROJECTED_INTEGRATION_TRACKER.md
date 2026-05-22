@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-21
+Updated: 2026-05-22
 
 ## Scope decision
 
@@ -89,5 +89,12 @@ Former post-EM ledger stages start at Stage `022`.
   mirrors; stage 021's mirror was substantially rewritten; stages 022-023
   verified without material changes. `material_change: false` on every stage,
   so no upstream cascade. See `redteam/batches/batch_I2.md` plus per-stage
+  reports at `redteam/reports/stage_NNN.md` and
+  `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch II.1 (stages 024-036, "Part II.1 -- Overlap isotropy
+  through continuum kernel") completed 2026-05-22 with all 13 stages
+  reaching `verified` and both engines independently checking each
+  load-bearing claim. `material_change: false` on every stage, so no
+  upstream cascade. See `redteam/batches/batch_II1.md` plus per-stage
   reports at `redteam/reports/stage_NNN.md` and
   `redteam/verifications/stage_NNN.md`.

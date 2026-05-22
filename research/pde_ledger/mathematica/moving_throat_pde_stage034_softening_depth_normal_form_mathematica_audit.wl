@@ -88,13 +88,12 @@ gBReqSqOverVarpi2 = FullSimplify[gBsqOverVarpi2 /. First[gBSolution], Assumption
 
 Print["alpha_mix = ", fmt[alphaMix]];
 Print["g_B,req^2 / varpi^2 = ", fmt[gBReqSqOverVarpi2]];
+gBSolutionLambda = Solve[alphaMix + gBsqOverVarpi2 == alphaLambda, gBsqOverVarpi2, Reals];
+If[Length[gBSolutionLambda] != 1, fail["support-loading lambda-form solve count", Length[gBSolutionLambda]]];
+gBReqLambda = FullSimplify[gBsqOverVarpi2 /. First[gBSolutionLambda], Assumptions -> $Assumptions];
 expectZero[
-  "solved g_B,req^2/varpi^2 - (alpha(x) - alpha_mix)",
-  gBReqSqOverVarpi2 - (alphaX - alphaMix)
-];
-expectZero[
-  "alpha_mix + g_B,req^2/varpi^2 - alpha(x)",
-  alphaMix + gBReqSqOverVarpi2 - alphaX
+  "lambda-form vs x-form support loading",
+  (gBReqLambda /. lambda -> A - x) - gBReqSqOverVarpi2
 ];
 
 Print[""];

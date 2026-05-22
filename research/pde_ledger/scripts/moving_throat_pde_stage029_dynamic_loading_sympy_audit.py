@@ -149,7 +149,9 @@ def conservative_profile_selection() -> tuple[sp.Expr, sp.Expr, sp.Expr]:
     print("Xi_0    =", Xi0)
     print("Delta_0 =", Delta0)
     print("alpha_0 =", alpha0)
-    # Verify the isotropic shift cancels from the stiffness splitting.
+    # Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaK_ax, so
+    # (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.
+    # Kept here as a typo guard, not as a physics check.
     expect_zero("DeltaK_tilde - DeltaK_bare (Xi_0 cancellation)", DeltaK - DeltaK_ax)
 
     Keff0 = sp.Matrix(

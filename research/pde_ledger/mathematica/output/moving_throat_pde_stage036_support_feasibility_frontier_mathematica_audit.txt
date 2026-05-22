@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl
-# Date: 2026-05-11T12:47:56-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 019 — SUPPORT-FEASIBILITY FRONTIER
@@ -18,20 +10,20 @@ G - 8 alpha_req/(Pi^2 A) = 0
 PASS: G - 8 alpha_req/(Pi^2 A)
 G - closed form = 0
 PASS: G - closed form
-R_target - Pi^2 A NQ/(8 beta0) = 0
-PASS: R_target - Pi^2 A NQ/(8 beta0)
 g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix) = 0
 PASS: g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix)
 dG/dxi = (9*(1 + (18*delta^2)/(9*delta + 11*xi)^2))/11
-dG/dxi - manifestly positive form = 0
-PASS: dG/dxi - manifestly positive form
+9 * dG/dxi * (9 delta + 11 xi)^2 / 81 (polynomial) = 9*delta^2 + 18*delta*xi + 11*xi^2
+dG/dxi positivity polynomial: 9 dG/dxi (9d+11xi)^2 / 9 == 11 xi^2 + 18 delta xi + 9 delta^2 = 0
+PASS: dG/dxi positivity polynomial: 9 dG/dxi (9d+11xi)^2 / 9 == 11 xi^2 + 18 delta xi + 9 delta^2
+discriminant (in xi) = -72*delta^2
+dG/dxi numerator discriminant equals -72 delta^2 = 0
+PASS: dG/dxi numerator discriminant equals -72 delta^2
 G(0,delta) = 0
 PASS: G(0,delta)
 G_max(delta) = (9*(1 + delta))/(11 + 9*delta)
-G_max - closed form = 0
-PASS: G_max - closed form
-(Pi^2 A / 8) G_max - alpha_crit = 0
-PASS: (Pi^2 A / 8) G_max - alpha_crit
+G_max - 9(1+delta)/(9delta+11) = 0
+PASS: G_max - 9(1+delta)/(9delta+11)
 
 ========================================================================================
 STAGE 019.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST
@@ -42,10 +34,10 @@ admissible sample: R_target >= 1 = R_target=1414562/558009
 PASS: admissible sample: R_target >= 1
 admissible sample: F(xi_req,delta) - R_target(host) = 0
 PASS: admissible sample: F(xi_req,delta) - R_target(host)
+symbolic kappa derivation: F(xi,delta) - R_target_sym = 0
+PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym
 admissible sample: M_mix <= G(xi_req,delta) = M_mix=53/145, G=27/58
 PASS: admissible sample: M_mix <= G(xi_req,delta)
-inadmissible sample: R_target < 1 blocks the branch = R_target=9/10
-PASS: inadmissible sample: R_target < 1 blocks the branch
 inadmissible sample: support deficit blocks the branch = M_mix=82/145, G=27/58
 PASS: inadmissible sample: support deficit blocks the branch
 
@@ -53,9 +45,12 @@ PASS: inadmissible sample: support deficit blocks the branch
 STAGE 019.4 — NEAR-ONSET ASYMPTOTICS
 ========================================================================================
 G(xi,delta) near xi=0 = xi - (2*xi^2)/(9*delta)
-G near-onset series through O(xi^2) = 0
-PASS: G near-onset series through O(xi^2)
+near-onset coefficients: c0=0, c1=1, c2=-2/(9*delta)
+near-onset c0 = 0 = 0
+PASS: near-onset c0 = 0
+near-onset c1 = 1 = 0
+PASS: near-onset c1 = 1
+near-onset c2 = -2/(9 delta) = 0
+PASS: near-onset c2 = -2/(9 delta)
 
 Stage 036 Mathematica audit passed.
-
-EXIT_CODE: 0

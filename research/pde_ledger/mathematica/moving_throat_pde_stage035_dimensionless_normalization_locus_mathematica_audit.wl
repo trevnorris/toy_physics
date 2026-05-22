@@ -61,7 +61,7 @@ Print["R_target = ", fmt[rTarget]];
 expectZero["F - closed D/N form", f - fTarget];
 expectZero["R_target - Pi^2 A NQ/(8 beta0)", rTarget - rTargetClosed];
 
-dF = FullSimplify[D[fTarget, xi], Assumptions -> $Assumptions];
+dF = FullSimplify[D[f, xi], Assumptions -> $Assumptions];
 dFTarget = FullSimplify[
   (9*delta + 11*xi)^3*(81*delta^3 + 72*delta^2 + 189*delta^2*xi + 297*delta*xi^2 + 121*xi^3)/
     (81*(1 - xi)^2*(9*delta^2 + 18*delta*xi + 11*xi^2)^3),
@@ -73,7 +73,7 @@ expectZero["F(0,delta) - 1", (fTarget /. xi -> 0) - 1];
 
 softConst = Block[
   {$Assumptions = Element[{delta}, Reals] && delta > 0},
-  FullSimplify[Limit[(1 - xi)*fTarget, xi -> 1, Direction -> "FromBelow"], Assumptions -> $Assumptions]
+  FullSimplify[Limit[(1 - xi)*f, xi -> 1, Direction -> "FromBelow"], Assumptions -> $Assumptions]
 ];
 softConstTarget = FullSimplify[
   (9*delta + 11)^4/(81*(9*delta^2 + 18*delta + 11)^2),
@@ -84,7 +84,7 @@ expectZero["softening constant - closed form", softConst - softConstTarget];
 
 epsSoft = Symbol["epsSoft"];
 softScaledSeries = FullSimplify[
-  Normal[Series[(epsSoft*fTarget /. xi -> 1 - epsSoft), {epsSoft, 0, 0}]],
+  Normal[Series[(epsSoft*f /. xi -> 1 - epsSoft), {epsSoft, 0, 0}]],
   Assumptions -> delta > 0 && epsSoft > 0
 ];
 expectZero["near-softening asymptotic coefficient", softScaledSeries - softConstTarget];
@@ -96,7 +96,7 @@ alphaReqTarget = FullSimplify[
 ];
 alphaCrit = Block[
   {$Assumptions = Element[{A, delta}, Reals] && A > 0 && delta > 0},
-  FullSimplify[Limit[alphaReqTarget, xi -> 1, Direction -> "FromBelow"], Assumptions -> $Assumptions]
+  FullSimplify[Limit[alphaReq, xi -> 1, Direction -> "FromBelow"], Assumptions -> $Assumptions]
 ];
 alphaCritTarget = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), Assumptions -> A > 0 && delta > 0];
 
@@ -108,14 +108,13 @@ expectZero["alpha_crit - closed form", alphaCrit - alphaCritTarget];
 alphaMix = FullSimplify[Chi^2/(OmegaU^2*Delta0), Assumptions -> $Assumptions];
 gBReqSqOverVarpi2 = FullSimplify[alphaReqTarget - alphaMix, Assumptions -> $Assumptions];
 Print["g_B,req^2 / varpi^2 = ", fmt[gBReqSqOverVarpi2]];
-expectZero["support split residual", gBReqSqOverVarpi2 - (alphaReqTarget - alphaMix)];
 
-fSeries = FullSimplify[Normal[Series[fTarget, {xi, 0, 2}]], Assumptions -> delta > 0];
+fSeries = FullSimplify[Normal[Series[f, {xi, 0, 2}]], Assumptions -> delta > 0];
 fSeriesTarget = FullSimplify[
   1 + (1 + 8/(9*delta))*xi + (1 + 8/(9*delta) - 28/(27*delta^2))*xi^2,
   Assumptions -> delta > 0
 ];
-alphaSeries = FullSimplify[Normal[Series[alphaReqTarget, {xi, 0, 2}]], Assumptions -> A > 0 && delta > 0];
+alphaSeries = FullSimplify[Normal[Series[alphaReq, {xi, 0, 2}]], Assumptions -> A > 0 && delta > 0];
 alphaSeriesTarget = FullSimplify[Pi^2*A*xi/8 - Pi^2*A*xi^2/(36*delta), Assumptions -> A > 0 && delta > 0];
 
 Print["F(xi,delta) near xi=0 = ", fmt[fSeries]];

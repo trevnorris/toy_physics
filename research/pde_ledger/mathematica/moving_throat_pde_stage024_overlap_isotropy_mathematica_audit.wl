@@ -28,30 +28,18 @@ expectZero[name_String, expr_] := Module[{res},
   ]
 ];
 
-pairings[list_List] := Module[{a, out = {}, b, rest},
-  If[list === {}, Return[{{}}]];
-  a = First[list];
-  Do[
-    b = list[[i]];
-    rest = Join[Take[list, {2, i - 1}], Drop[list, i]];
-    out = Join[out, Prepend[#, {a, b}] & /@ pairings[rest]],
-    {i, 2, Length[list]}
-  ];
-  out
+n[1] = Sin[theta] Cos[phi];
+n[2] = Sin[theta] Sin[phi];
+n[3] = Cos[theta];
+
+i4[i_, j_, k_, l_] := Integrate[
+  n[i] n[j] n[k] n[l] Sin[theta],
+  {theta, 0, Pi}, {phi, 0, 2 Pi}
 ];
 
-i4[i_, j_, k_, l_] := (4*Pi/15) (
-  KroneckerDelta[i, j]*KroneckerDelta[k, l] +
-  KroneckerDelta[i, k]*KroneckerDelta[j, l] +
-  KroneckerDelta[i, l]*KroneckerDelta[j, k]
-);
-
-i6[i_, j_, k_, l_, m_, n_] := Module[{inds = {i, j, k, l, m, n}, total = 0},
-  Do[
-    total += Times @@ (KroneckerDelta[inds[[#[[1]]]], inds[[#[[2]]]]] & /@ pr),
-    {pr, pairings[{1, 2, 3, 4, 5, 6}]}
-  ];
-  FullSimplify[4*Pi*total/105]
+i6[i_, j_, k_, l_, m_, nn_] := Integrate[
+  n[i] n[j] n[k] n[l] n[m] n[nn] Sin[theta],
+  {theta, 0, Pi}, {phi, 0, 2 Pi}
 ];
 
 quadOverlap[aMat_, bMat_] := FullSimplify[
@@ -61,8 +49,8 @@ quadOverlap[aMat_, bMat_] := FullSimplify[
 
 tripleOverlap[aMat_, qMat_, bMat_] := FullSimplify[
   Sum[
-    aMat[[i, j]]*qMat[[k, l]]*bMat[[m, n]]*i6[i, j, k, l, m, n],
-    {i, 1, 3}, {j, 1, 3}, {k, 1, 3}, {l, 1, 3}, {m, 1, 3}, {n, 1, 3}
+    aMat[[i, j]]*qMat[[k, l]]*bMat[[m, nn]]*i6[i, j, k, l, m, nn],
+    {i, 1, 3}, {j, 1, 3}, {k, 1, 3}, {l, 1, 3}, {m, 1, 3}, {nn, 1, 3}
   ],
   Assumptions -> $Assumptions
 ];
@@ -129,17 +117,20 @@ $Assumptions =
 gU = lambdaU*iEtaU;
 gW = lambdaW*iEtaW;
 rPair = lambdaR*iUW;
-deltaPair = omegaU^2*omegaW^2 - rPair^2;
-sPair = omegaU^2 + omegaW^2;
-qPair = gU^2*omegaW^2 + 2*gU*gW*rPair + gW^2*omegaU^2;
-hPair = gU^2 + gW^2;
-pPair = omegaU^2*gW + rPair*gU;
 
-zResp = Expand[Normal[Series[(qPair - hPair*omega^2)/(deltaPair - sPair*omega^2 + omega^4), {omega, 0, 4}]]];
+zResp = Expand[Normal[Series[
+  ((gU^2*omegaW^2 + 2*gU*gW*rPair + gW^2*omegaU^2) - (gU^2 + gW^2)*omega^2) /
+  ((omegaU^2*omegaW^2 - rPair^2) - (omegaU^2 + omegaW^2)*omega^2 + omega^4),
+  {omega, 0, 4}
+]]];
 z0 = FullSimplify[Coefficient[zResp, omega, 0], Assumptions -> $Assumptions];
 z2 = FullSimplify[Coefficient[zResp, omega, 2], Assumptions -> $Assumptions];
 z4 = FullSimplify[Coefficient[zResp, omega, 4], Assumptions -> $Assumptions];
-nResp = Expand[Normal[Series[(pPair - gW*omega^2)^2/(deltaPair - sPair*omega^2 + omega^4)^2, {omega, 0, 4}]]];
+nResp = Expand[Normal[Series[
+  ((omegaU^2*gW + rPair*gU) - gW*omega^2)^2 /
+  ((omegaU^2*omegaW^2 - rPair^2) - (omegaU^2 + omegaW^2)*omega^2 + omega^4)^2,
+  {omega, 0, 4}
+]]];
 n0 = FullSimplify[Coefficient[nResp, omega, 0], Assumptions -> $Assumptions];
 n2 = FullSimplify[Coefficient[nResp, omega, 2], Assumptions -> $Assumptions];
 n4 = FullSimplify[Coefficient[nResp, omega, 4], Assumptions -> $Assumptions];
@@ -148,12 +139,12 @@ d0 = FullSimplify[Coefficient[dResp, omega, 0], Assumptions -> $Assumptions];
 d2 = FullSimplify[Coefficient[dResp, omega, 2], Assumptions -> $Assumptions];
 d4 = FullSimplify[Coefficient[dResp, omega, 4], Assumptions -> $Assumptions];
 
-expectZero["Z0 formula", z0 - qPair/deltaPair];
-expectZero["Z2 formula", z2 - (qPair*sPair - hPair*deltaPair)/deltaPair^2];
-expectZero["Z4 formula", z4 - (qPair*(sPair^2 - deltaPair) - sPair*hPair*deltaPair)/deltaPair^3];
-expectZero["N0 formula", n0 - pPair^2/deltaPair^2];
-expectZero["N2 formula", n2 - 2*pPair*(pPair*sPair - deltaPair*gW)/deltaPair^3];
-expectZero["N4 formula", n4 - (deltaPair^2*gW^2 - 2*deltaPair*pPair^2 - 4*deltaPair*pPair*sPair*gW + 3*pPair^2*sPair^2)/deltaPair^4];
+expectZero["Z0 formula", z0 - (gU^2*omegaW^2 + 2*gU*gW*rPair + gW^2*omegaU^2)/(omegaU^2*omegaW^2 - rPair^2)];
+expectZero["Z2 formula", z2 - ((gU^2*omegaW^2 + 2*gU*gW*rPair + gW^2*omegaU^2)*(omegaU^2 + omegaW^2) - (gU^2 + gW^2)*(omegaU^2*omegaW^2 - rPair^2))/(omegaU^2*omegaW^2 - rPair^2)^2];
+expectZero["Z4 formula", z4 - ((gU^2*omegaW^2 + 2*gU*gW*rPair + gW^2*omegaU^2)*((omegaU^2 + omegaW^2)^2 - (omegaU^2*omegaW^2 - rPair^2)) - (omegaU^2 + omegaW^2)*(gU^2 + gW^2)*(omegaU^2*omegaW^2 - rPair^2))/(omegaU^2*omegaW^2 - rPair^2)^3];
+expectZero["N0 formula", n0 - (omegaU^2*gW + rPair*gU)^2/(omegaU^2*omegaW^2 - rPair^2)^2];
+expectZero["N2 formula", n2 - 2*(omegaU^2*gW + rPair*gU)*((omegaU^2*gW + rPair*gU)*(omegaU^2 + omegaW^2) - (omegaU^2*omegaW^2 - rPair^2)*gW)/(omegaU^2*omegaW^2 - rPair^2)^3];
+expectZero["N4 formula", n4 - ((omegaU^2*omegaW^2 - rPair^2)^2*gW^2 - 2*(omegaU^2*omegaW^2 - rPair^2)*(omegaU^2*gW + rPair*gU)^2 - 4*(omegaU^2*omegaW^2 - rPair^2)*(omegaU^2*gW + rPair*gU)*(omegaU^2 + omegaW^2)*gW + 3*(omegaU^2*gW + rPair*gU)^2*(omegaU^2 + omegaW^2)^2)/(omegaU^2*omegaW^2 - rPair^2)^4];
 expectZero["D0 formula", d0 - (k - b0 - z0)];
 expectZero["D2 formula", d2 + (m + b2 + z2)];
 expectZero["D4 formula", d4 + (b4 + z4)];
@@ -168,9 +159,10 @@ expectZero["M - M_target", m20 - mtarget];
 
 Clear[eps, x1];
 $Assumptions = Element[{x0, eps, x1}, Reals];
-x20ax = x0 + eps*x1;
-x21ax = x0 + eps*x1/2;
-x22ax = x0 - eps*x1;
+xLane[lam_] := x0 + eps*lam*x1;
+x20ax = xLane[1];
+x21ax = xLane[1/2];
+x22ax = xLane[-1];
 xbarAx = FullSimplify[(x20ax + 2*x21ax + 2*x22ax)/5, Assumptions -> $Assumptions];
 axAx = FullSimplify[(2*x20ax - x21ax - x22ax)/10, Assumptions -> $Assumptions];
 bxAx = FullSimplify[(x21ax - x22ax)/2, Assumptions -> $Assumptions];

@@ -45,13 +45,32 @@ banner["PART II — EXACT SELECTED LOWER EIGENVALUE AND OVERLAP"];
 Clear[a, dK, alpha, x0, x1];
 $Assumptions = Element[{a, dK, alpha, x0, x1}, Reals] && a > 0 && dK > 0 && alpha >= 0 && x0 > 0 && x1 > 0;
 
+(* Independent derivation: define the 2x2 wall block explicitly and let
+   Mathematica's Eigenvalues[] produce the spectrum. The matrix is chosen so
+   that Tr[mMat] = 2 a + dK - alpha (x0+x1) and
+   Det[mMat] = a (a+dK) - alpha ((a+dK) x0 + a x1) -- the same trace/det as the
+   determinant identity verified later in this script (see wl:87). This breaks
+   the line-by-line transliteration of the SymPy file by routing lamMinus /
+   lamPlus through Eigenvalues[mMat] rather than through a typed closed form. *)
+mMat = {{a + dK - alpha*x1, -alpha*Sqrt[x0*x1]},
+        {-alpha*Sqrt[x0*x1], a - alpha*x0}};
+
 sigma = x0 + x1;
 deltaKappa = x0 - x1;
 kappaProd = x0*x1;
 r = Sqrt[(dK + alpha*deltaKappa)^2 + 4*alpha^2*kappaProd];
 
-lamMinus = FullSimplify[(2*a + dK - alpha*sigma - r)/2, Assumptions -> $Assumptions];
-lamPlus = FullSimplify[(2*a + dK - alpha*sigma + r)/2, Assumptions -> $Assumptions];
+eigVals = Eigenvalues[mMat];
+lamMinus = FullSimplify[
+  First[Select[eigVals,
+    FullSimplify[# - ((2*a + dK - alpha*sigma) - r)/2, Assumptions -> $Assumptions] === 0 &]],
+  Assumptions -> $Assumptions
+];
+lamPlus = FullSimplify[
+  First[Select[eigVals,
+    FullSimplify[# - ((2*a + dK - alpha*sigma) + r)/2, Assumptions -> $Assumptions] === 0 &]],
+  Assumptions -> $Assumptions
+];
 
 Print["lambda_- = ", fmt[lamMinus]];
 Print["lambda_+ = ", fmt[lamPlus]];
@@ -80,7 +99,11 @@ Print["C5_sel = ", fmt[c5Sel]];
 Print["Gamma5_sel = ", fmt[gamma5Sel]];
 Print["P0_sel = ", fmt[p0Sel]];
 
-expectZero["Gamma5_sel - G5*P0_sel", gamma5Sel - g5*p0Sel];
+(* Note: gamma5Sel - g5*p0Sel == 0 follows by construction from lines 74-77
+   (c5Sel := g5*beta0*sMinusClosed, gamma5Sel := c5Sel/lamMinus,
+   p0Sel := beta0*sMinusClosed/lamMinus). Not verified separately. The
+   physical content (Gamma5 = C5/D0 at the selected mode) is verified in
+   generic form by Part I (line 41). *)
 expectZero["P0_sel + beta0*d(log lambda_-)/d alpha", p0Sel + beta0*D[Log[lamMinus], alpha]];
 
 t0 = (a + dK)*x0 + a*x1;
@@ -101,11 +124,10 @@ cond2 = FullSimplify[mhat^2*p0Sel - nQTarget, Assumptions -> $Assumptions];
 expectZero["normalization equivalence", cond1 - g5Phys*cond2];
 
 lambdaReq = FullSimplify[mhat^2*beta0*sMinusClosed/nQTarget, Assumptions -> $Assumptions];
-expectZero[
-  "spectral condition rewrite",
-  FullSimplify[lamMinus - lambdaReq, Assumptions -> $Assumptions] +
-  FullSimplify[(mhat^2*p0Sel - nQTarget)*lamMinus/nQTarget, Assumptions -> $Assumptions]
-];
+(* Note: (lamMinus - lambdaReq) + (mhat^2 p0Sel - nQTarget) lamMinus / nQTarget
+   == 0 follows from the definitions p0Sel := beta0*sMinusClosed/lamMinus and
+   lambdaReq := mhat^2*beta0*sMinusClosed/nQTarget by substitution, with no
+   physical content of lamMinus required. Not verified separately. *)
 Print["lambda_req = ", fmt[lambdaReq]];
 
 banner["STAGE 13 AUDIT COMPLETE"];

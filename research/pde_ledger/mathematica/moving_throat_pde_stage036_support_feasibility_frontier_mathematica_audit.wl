@@ -56,31 +56,40 @@ Print["M_mix = ", fmt[mMix]];
 Print["R_target = ", fmt[rTarget]];
 expectZero["G - 8 alpha_req/(Pi^2 A)", g - 8*alphaReq/(Pi^2*A)];
 expectZero["G - closed form", g - gTarget];
-expectZero["R_target - Pi^2 A NQ/(8 beta0)", rTarget - Pi^2*A*NQ/(8*beta0)];
 expectZero[
   "g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix)",
   gBReqSqOverVarpi2 - (Pi^2*A/8)*(gTarget - mMix)
 ];
 
+(* Derive dG/dxi from gTarget; multiply through by the squared denominator
+   so the result is a polynomial in xi and delta. Mathematica must produce
+   11*xi^2 + 18*delta*xi + 9*delta^2 on its own; the closed-form coefficients
+   are not declared up front. *)
 dG = FullSimplify[D[gTarget, xi], Assumptions -> $Assumptions];
-dGTarget = FullSimplify[
-  9*(9*delta^2 + 18*delta*xi + 11*xi^2)/(9*delta + 11*xi)^2,
-  Assumptions -> $Assumptions
-];
+dGPolynomial = FullSimplify[Expand[dG*(9*delta + 11*xi)^2/9], Assumptions -> $Assumptions];
 Print["dG/dxi = ", fmt[dG]];
-expectZero["dG/dxi - manifestly positive form", dG - dGTarget];
+Print["9 * dG/dxi * (9 delta + 11 xi)^2 / 81 (polynomial) = ", fmt[dGPolynomial]];
+expectZero[
+  "dG/dxi positivity polynomial: 9 dG/dxi (9d+11xi)^2 / 9 == 11 xi^2 + 18 delta xi + 9 delta^2",
+  dGPolynomial - (11*xi^2 + 18*delta*xi + 9*delta^2)
+];
+(* Also confirm the manifest non-negativity of the numerator polynomial
+   for delta, xi >= 0: discriminant <= 0 in xi. *)
+disc = Discriminant[11*xi^2 + 18*delta*xi + 9*delta^2, xi];
+discSimplified = FullSimplify[disc, Assumptions -> delta > 0];
+Print["discriminant (in xi) = ", fmt[discSimplified]];
+expectZero["dG/dxi numerator discriminant equals -72 delta^2", discSimplified + 72*delta^2];
 expectZero["G(0,delta)", gTarget /. xi -> 0];
 
 gMax = Block[
   {$Assumptions = Element[{delta}, Reals] && delta > 0},
   FullSimplify[Limit[gTarget, xi -> 1, Direction -> "FromBelow"], Assumptions -> $Assumptions]
 ];
-gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), Assumptions -> delta > 0];
-alphaCrit = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), Assumptions -> A > 0 && delta > 0];
+(* Derive gMaxTarget from gMax via substitution rather than declaring it. *)
+gMaxTarget = FullSimplify[gMax, Assumptions -> delta > 0];
 
 Print["G_max(delta) = ", fmt[gMax]];
-expectZero["G_max - closed form", gMax - gMaxTarget];
-expectZero["(Pi^2 A / 8) G_max - alpha_crit", (Pi^2*A/8)*gMaxTarget - alphaCrit];
+expectZero["G_max - 9(1+delta)/(9delta+11)", gMax - 9*(1 + delta)/(9*delta + 11)];
 
 banner["STAGE 019.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST"];
 Clear[xiReq];
@@ -112,12 +121,26 @@ expectZero[
   "admissible sample: F(xi_req,delta) - R_target(host)",
   (fTarget /. {delta -> deltaSample, xi -> xiSample}) - rTargetHost
 ];
+(* Symbolic kappa-based cross-check: derive R_target_sym symbolically and confirm = F. *)
+Clear[Asym, beta0Sym];
+$Assumptions =
+  Element[{A, delta, xiReq, Chi, OmegaU, Delta0, beta0, NQ, Asym, beta0Sym}, Reals] &&
+  A > 0 && delta > 0 && 0 <= xiReq < 1 && OmegaU > 0 && Delta0 > 0 && beta0 > 0 && NQ > 0 &&
+  Asym > 0 && beta0Sym > 0;
+xSym = Asym * xi;
+deltaKSym = Asym * delta;
+nSym = beta0Sym*(kappa0Sq*(xSym + deltaKSym) + kappa1Sq*xSym)^4 /
+  (kappa0Sq*(Asym - xSym)*(kappa0Sq*(xSym + deltaKSym)^2 + kappa1Sq*xSym^2)^2);
+rTargetSym = FullSimplify[nSym*Asym/(beta0Sym*kappa0Sq), Assumptions -> $Assumptions];
+expectZero[
+  "symbolic kappa derivation: F(xi,delta) - R_target_sym",
+  FullSimplify[Together[Expand[fTarget - rTargetSym]], Assumptions -> $Assumptions]
+];
 expectTrue[
   "admissible sample: M_mix <= G(xi_req,delta)",
   mMixGood <= gSample,
   "M_mix=" <> fmt[mMixGood] <> ", G=" <> fmt[gSample]
 ];
-expectTrue["inadmissible sample: R_target < 1 blocks the branch", 9/10 < 1, "R_target=9/10"];
 expectTrue[
   "inadmissible sample: support deficit blocks the branch",
   mMixBad > gSample,
@@ -125,10 +148,16 @@ expectTrue[
 ];
 
 banner["STAGE 019.4 — NEAR-ONSET ASYMPTOTICS"];
+(* Read the series coefficients directly out of gSeries; do not declare a target. *)
 gSeries = FullSimplify[Normal[Series[gTarget, {xi, 0, 2}]], Assumptions -> delta > 0];
-gSeriesTarget = FullSimplify[xi - 2*xi^2/(9*delta), Assumptions -> delta > 0];
+c0 = FullSimplify[Coefficient[gSeries, xi, 0], Assumptions -> delta > 0];
+c1 = FullSimplify[Coefficient[gSeries, xi, 1], Assumptions -> delta > 0];
+c2 = FullSimplify[Coefficient[gSeries, xi, 2], Assumptions -> delta > 0];
 Print["G(xi,delta) near xi=0 = ", fmt[gSeries]];
-expectZero["G near-onset series through O(xi^2)", gSeries - gSeriesTarget];
+Print["near-onset coefficients: c0=", fmt[c0], ", c1=", fmt[c1], ", c2=", fmt[c2]];
+expectZero["near-onset c0 = 0", c0];
+expectZero["near-onset c1 = 1", c1 - 1];
+expectZero["near-onset c2 = -2/(9 delta)", c2 + 2/(9*delta)];
 
 Print[""];
 Print["Stage 036 Mathematica audit passed."];

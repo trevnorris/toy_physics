@@ -10,7 +10,7 @@ What this audit verifies
 2. The physical root xi_phys is the branch that reduces to xi=0 when the loads vanish.
 3. Inserting q=t R_U and r=t R_phi into the Stage-25 normalization law yields the
    exact continuum-selected normalization function F_cont.
-4. The minimal-kernel limit sigma0=0 gives the exact source-tied closure.
+4. The minimal-kernel limit R_phi=1 gives the exact source-tied closure.
 5. The interference-match surface R_phi = R_U collapses the rank-2 branch to the
    one-direction tracking law with total loading M_mix + M_supp.
 6. The genuine rank-2 mismatch penalty enters as +lambda0 M_mix M_supp (R_U-R_phi)^2.
@@ -47,7 +47,6 @@ Mmix, Msupp = sp.symbols("M_mix M_supp", nonnegative=True, real=True)
 RU, Rphi = sp.symbols("R_U R_phi", positive=True, real=True)
 lambda0 = sp.Rational(2, 9)
 t = sp.symbols("t", real=True)
-sigma0 = sp.symbols("sigma_0", real=True)
 
 banner("STAGE 27 — CONTINUUM-SELECTED RANK-2 CLOSURE")
 
@@ -95,6 +94,20 @@ sp.pprint(sp.factor(F_cont))
 
 print("F_cont built successfully.")
 
+# Third slice: independent literal R_phi = 2 to constrain bivariate dependence
+# beyond the R_phi=1 and R_phi=R_U collapsed surfaces.
+Rphi_lit = sp.Integer(2)
+F_lit = sp.simplify(F_cont.subs(Rphi, Rphi_lit))
+F_lit_expected = sp.simplify(
+    (delta + (1 + lambda0 * RU * Rphi_lit) * xi)**2
+    * (delta + (1 + lambda0 * Rphi_lit) * xi - Mmix * lambda0 * (RU - Rphi_lit) * (RU - 1))**2
+    / ((1 - xi) * (
+        (delta + xi - Mmix * lambda0 * RU * (RU - Rphi_lit))**2
+        + lambda0 * (Mmix * (RU - Rphi_lit) + Rphi_lit * xi)**2
+    )**2)
+)
+expect_zero("third-slice F at Rphi=2", F_lit - F_lit_expected)
+
 subbanner("27.3 — Minimal-kernel source-tied surface")
 
 Rphi_source = sp.Integer(1)
@@ -124,10 +137,6 @@ n_track = sp.simplify(n_req.subs(Rphi, RU))
 G_q = sp.simplify(xi * (delta + xi) / (delta + (1 + lambda0 * RU**2) * xi))
 expect_zero("tracking collapse of n_req", n_track - (G_q - Mmix))
 
-# Setting actual support baseline equal to the exact required support load yields total-loading law.
-tracking_equation = sp.simplify((n_track - Msupp) - (G_q - (Mmix + Msupp)))
-expect_zero("tracking total-loading law", tracking_equation)
-
 F_track = sp.simplify(F_cont.subs(Rphi, RU))
 F_track_expected = sp.simplify(
     (delta + (1 + lambda0 * RU**2) * xi)**2
@@ -138,10 +147,11 @@ expect_zero("tracking F collapse", F_track - F_track_expected)
 
 subbanner("27.5 — Exact mismatch penalty")
 
-mismatch = sp.symbols("Delta_R", real=True)
-C_rewritten = sp.simplify(C_cont.subs(Rphi, RU - mismatch))
-C_expected = sp.simplify(-delta * (Mmix + Msupp) + lambda0 * Mmix * Msupp * mismatch**2)
-expect_zero("quadratic mismatch penalty", C_rewritten - C_expected)
+# Extract the xi-constant coefficient of branch_eq (the numerator of n_req - M_supp).
+# branch_eq = 9*(xi^2 + B_cont*xi + C_cont), so the constant-in-xi term is 9*C_cont.
+C_from_branch_eq = sp.simplify(sp.Poly(branch_eq, xi).nth(0) / 9)
+C_expected = sp.simplify(-delta * (Mmix + Msupp) + lambda0 * Mmix * Msupp * (RU - Rphi)**2)
+expect_zero("mismatch penalty in C coefficient", C_from_branch_eq - C_expected)
 
 banner("STAGE 27 THEOREM LEDGER")
 print("1. The continuum-selected selected branch is fixed by the exact quadratic equation")

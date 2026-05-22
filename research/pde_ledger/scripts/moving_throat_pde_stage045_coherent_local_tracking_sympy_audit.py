@@ -43,15 +43,32 @@ g_U = sp.symbols("g_U", real=True)
 
 # Mass-normalized amplitudes produced by
 #   [lambda_W W + lambda_phi phi] [eta - gamma U].
+W_sym, phi_sym, eta_sym, U_sym = sp.symbols("W_sym phi_sym eta_sym U_sym")
+coupling_density = sp.expand((lam_W*W_sym + lam_phi*phi_sym) * (eta_sym - gamma*U_sym))
+# Extract bilinear coefficients from the kernel directly.
+c_W_eta   = coupling_density.coeff(W_sym).coeff(eta_sym)
+c_W_U     = coupling_density.coeff(W_sym).coeff(U_sym)
+c_phi_eta = coupling_density.coeff(phi_sym).coeff(eta_sym)
+c_phi_U   = coupling_density.coeff(phi_sym).coeff(U_sym)
+g_W_ext = c_W_eta   / sp.sqrt(mu_eta * mu_W)
+g_R_ext = -c_W_U    / sp.sqrt(mu_U   * mu_W)
+g_B_ext = c_phi_eta / sp.sqrt(mu_eta * mu_phi)
+g_S_ext = -c_phi_U  / sp.sqrt(mu_U   * mu_phi)
+# Reference (the form the script historically used).
 g_W = lam_W / sp.sqrt(mu_eta * mu_W)
 g_R = gamma * lam_W / sp.sqrt(mu_U * mu_W)
 g_B = lam_phi / sp.sqrt(mu_eta * mu_phi)
 g_S = gamma * lam_phi / sp.sqrt(mu_U * mu_phi)
+# Cross-check: extracted vs reference (catches sign / coefficient errors in the kernel).
+expect_zero("g_W extracted - reference", g_W_ext - g_W)
+expect_zero("g_R extracted - reference", g_R_ext - g_R)
+expect_zero("g_B extracted - reference", g_B_ext - g_B)
+expect_zero("g_S extracted - reference", g_S_ext - g_S)
+# Now the kernel-derived identity becomes a non-trivial check.
+expect_zero("g_B g_R - g_W g_S", g_B_ext * g_R_ext - g_W_ext * g_S_ext)
 
-expect_zero("g_B g_R - g_W g_S", g_B * g_R - g_W * g_S)
-
-rho_0 = sp.simplify(g_R * g_U / (K_U * g_W))
-sigma_0 = sp.simplify(g_U * g_S / (K_U * g_B))
+rho_0 = sp.simplify(g_R_ext * g_U / (K_U * g_W_ext))
+sigma_0 = sp.simplify(g_U * g_S_ext / (K_U * g_B_ext))
 print("rho_0   =", rho_0)
 print("sigma_0 =", sigma_0)
 expect_zero("rho_0 - sigma_0", rho_0 - sigma_0)
@@ -94,18 +111,22 @@ eps_eta, eps_W_split, eps_phi_split = sp.symbols(
     "eps_eta eps_W_split eps_phi_split", real=True
 )
 
-M_mix = sp.simplify(8 * Z_W * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta) * (1 - eps_W_split)))
-M_supp = sp.simplify(8 * Z_phi * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta) * (1 - eps_phi_split)))
+channels = [
+    ("W", Z_W, eps_W_split),
+    ("phi", Z_phi, eps_phi_split),
+]
+prefactor = 8 * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta))
+M_tr_channel_sum = sp.simplify(
+    sum(prefactor * Z_i / (1 - eps_i) for (_, Z_i, eps_i) in channels)
+)
+M_mix = sp.simplify(prefactor * Z_W / (1 - eps_W_split))
+M_supp = sp.simplify(prefactor * Z_phi / (1 - eps_phi_split))
 M_tr = sp.simplify(M_mix + M_supp)
 print("M_mix  =", M_mix)
 print("M_supp =", M_supp)
 print("M_tr   =", M_tr)
-
-M_tr_expected = sp.simplify(
-    8 * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta))
-    * (Z_W / (1 - eps_W_split) + Z_phi / (1 - eps_phi_split))
-)
-expect_zero("M_tr - expected", M_tr - M_tr_expected)
+print("M_tr_channel_sum =", M_tr_channel_sum)
+expect_zero("M_tr - channel_sum", M_tr - M_tr_channel_sum)
 
 # ---------------------------------------------------------------------------
 # 4. Stage-27 quadratic branch equation collapses to tracking law

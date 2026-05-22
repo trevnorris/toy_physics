@@ -6,7 +6,12 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-21`
+Snapshot date: `2026-05-22` (batch III.1 close — stages 037-048 contain
+no checkpoints in `CITATION_SUPPORT_SET.md`, so no new stage rows were
+added; the existing checkpoint constant-provenance tier is unchanged.
+This also bumps the snapshot through the batch II.1 close, which added
+the Stage 024 and Stage 036 entries above but left the snapshot date
+unbumped.)
 
 ## Audit Rule
 

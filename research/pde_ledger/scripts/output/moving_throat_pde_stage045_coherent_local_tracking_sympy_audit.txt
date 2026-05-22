@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
-# Date: 2026-05-11T12:43:00-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT
@@ -14,6 +6,10 @@ STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT
 ========================================================================================
 1. Exact tracking identity from the coherent local kernel
 ========================================================================================
+g_W extracted - reference = 0
+g_R extracted - reference = 0
+g_B extracted - reference = 0
+g_S extracted - reference = 0
 g_B g_R - g_W g_S = 0
 rho_0   = g_U*gamma*sqrt(mu_eta)/(K_U*sqrt(mu_U))
 sigma_0 = g_U*gamma*sqrt(mu_eta)/(K_U*sqrt(mu_U))
@@ -34,7 +30,8 @@ range identity 2 = 0
 M_mix  = 8*Z_W*(chi_0 + 1)**2/(pi**2*(eps_W_split - 1)*(eps_eta - 1))
 M_supp = 8*Z_phi*(chi_0 + 1)**2/(pi**2*(eps_eta - 1)*(eps_phi_split - 1))
 M_tr   = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
-M_tr - expected = 0
+M_tr_channel_sum = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
+M_tr - channel_sum = 0
 
 ========================================================================================
 4. Exact collapse of the Stage-27 branch equation
@@ -49,5 +46,3 @@ F_tr normalization law = 0
 coherent normalization residual = (R_target*(xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2 + (9*delta + xi*(2*R_U + 9))**2*(9*delta + xi*(2*R_U**2 + 9))**2/81)/((xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2)
 
 All Stage-28 symbolic checks passed.
-
-EXIT_CODE: 0

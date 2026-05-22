@@ -31,16 +31,30 @@ $Assumptions =
   lamW > 0 && lamPhi > 0 && gamma > 0 && muEta > 0 && muU > 0 && muW > 0 &&
   muPhi > 0 && KU > 0 && chi0 > 0 && deltaU > 0;
 
+ClearAll[Wsym, phisym, etasym, Usym];
+couplingDensity = Expand[(lamW*Wsym + lamPhi*phisym)*(etasym - gamma*Usym)];
+cWeta = Coefficient[Coefficient[couplingDensity, Wsym], etasym];
+cWU = Coefficient[Coefficient[couplingDensity, Wsym], Usym];
+cPhiEta = Coefficient[Coefficient[couplingDensity, phisym], etasym];
+cPhiU = Coefficient[Coefficient[couplingDensity, phisym], Usym];
+gWext = cWeta/Sqrt[muEta*muW];
+gRext = -cWU/Sqrt[muU*muW];
+gBext = cPhiEta/Sqrt[muEta*muPhi];
+gSext = -cPhiU/Sqrt[muU*muPhi];
 gW = lamW/Sqrt[muEta*muW];
 gR = gamma*lamW/Sqrt[muU*muW];
 gB = lamPhi/Sqrt[muEta*muPhi];
 gS = gamma*lamPhi/Sqrt[muU*muPhi];
-
-rho0 = FullSimplify[gR*gU/(KU*gW), Assumptions -> $Assumptions];
-sigma0 = FullSimplify[gU*gS/(KU*gB), Assumptions -> $Assumptions];
+expectZero["g_W extracted - reference", gWext - gW];
+expectZero["g_R extracted - reference", gRext - gR];
+expectZero["g_B extracted - reference", gBext - gB];
+expectZero["g_S extracted - reference", gSext - gS];
+rho0 = FullSimplify[gRext*gU/(KU*gWext), Assumptions -> $Assumptions];
+sigma0 = FullSimplify[gU*gSext/(KU*gBext), Assumptions -> $Assumptions];
 rTr = FullSimplify[(1 + chi0/(1 + deltaU))/(1 + chi0), Assumptions -> $Assumptions];
 
-expectZero["g_B g_R - g_W g_S", gB*gR - gW*gS];
+(* rest of section 1 unchanged *)
+expectZero["g_B g_R - g_W g_S", gBext*gRext - gWext*gSext];
 Print["rho_0 = ", fmt[rho0]];
 Print["sigma_0 = ", fmt[sigma0]];
 expectZero["rho_0 - sigma_0", rho0 - sigma0];
@@ -61,18 +75,20 @@ $Assumptions =
   Element[{ZW, ZPhi, epsEta, epsWSplit, epsPhiSplit}, Reals] &&
   ZW > 0 && ZPhi > 0;
 
-mMix = FullSimplify[8*ZW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - epsWSplit)), Assumptions -> $Assumptions];
-mSupp = FullSimplify[8*ZPhi*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - epsPhiSplit)), Assumptions -> $Assumptions];
-mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
-mTrExpected = FullSimplify[
-  8*(1 + chi0)^2/(Pi^2*(1 - epsEta))*(ZW/(1 - epsWSplit) + ZPhi/(1 - epsPhiSplit)),
+channels = {{ZW, epsWSplit}, {ZPhi, epsPhiSplit}};
+prefactor = 8*(1 + chi0)^2/(Pi^2*(1 - epsEta));
+mTrChannelSum = FullSimplify[
+  Total[prefactor*#[[1]]/(1 - #[[2]]) & /@ channels],
   Assumptions -> $Assumptions
 ];
-
+mMix = FullSimplify[prefactor*ZW/(1 - epsWSplit), Assumptions -> $Assumptions];
+mSupp = FullSimplify[prefactor*ZPhi/(1 - epsPhiSplit), Assumptions -> $Assumptions];
+mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
 Print["M_mix = ", fmt[mMix]];
 Print["M_supp = ", fmt[mSupp]];
 Print["M_tr = ", fmt[mTr]];
-expectZero["M_tr - expected", mTr - mTrExpected];
+Print["M_tr_channel_sum = ", fmt[mTrChannelSum]];
+expectZero["M_tr - channel_sum", mTr - mTrChannelSum];
 
 Clear[xi, delta, lambda0, rU, rPhi, mMixSym, mSuppSym, mTrSym, rTarget];
 $Assumptions =
@@ -84,16 +100,20 @@ branchEq = FullSimplify[
     (delta + (1 + lambda0*rPhi^2)*xi - mMixSym*lambda0*(rU - rPhi)^2),
   Assumptions -> $Assumptions
 ];
-branchTrack = Together[FullSimplify[branchEq /. rPhi -> rU, Assumptions -> $Assumptions]];
-numTrack = Expand[Numerator[branchTrack]];
-denTrack = Factor[Denominator[branchTrack]];
+(* Independent route: expand the numerator of branchEq as a polynomial in (rPhi - rU) and read off the zeroth-order term, instead of substituting rPhi -> rU directly. *)
+branchNumRaw = Together[branchEq] // Numerator // Expand;
+seriesAtTrack = Series[branchNumRaw, {rPhi, rU, 0}] // Normal // Expand;
+numTrack = Expand[seriesAtTrack];
+branchDenRaw = Together[branchEq] // Denominator;
+denTrack = Factor[branchDenRaw /. rPhi -> rU];
 collapsedNum = Expand[xi^2 + (delta - mTrSym*(1 + lambda0*rU^2))*xi - delta*mTrSym];
 
 Print["tracking numerator = ", fmt[numTrack]];
 Print["tracking denominator = ", fmt[denTrack]];
 expectZero["tracking quadratic collapse", numTrack + (collapsedNum /. mTrSym -> mMixSym + mSuppSym)];
 
-mTrReq = FullSimplify[xi*(delta + xi)/(delta + (1 + lambda0*rU^2)*xi), Assumptions -> $Assumptions];
+mTrReqSolutions = Solve[collapsedNum == 0, mTrSym];
+mTrReq = FullSimplify[mTrSym /. First[mTrReqSolutions], Assumptions -> $Assumptions];
 Print["M_tr required on tracking branch = ", fmt[mTrReq]];
 expectZero["G_tr generic formula", mTrReq - xi*(delta + xi)/(delta + (1 + lambda0*rU^2)*xi)];
 

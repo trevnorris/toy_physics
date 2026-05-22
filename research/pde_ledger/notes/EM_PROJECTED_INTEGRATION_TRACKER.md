@@ -98,3 +98,14 @@ Former post-EM ledger stages start at Stage `022`.
   upstream cascade. See `redteam/batches/batch_II1.md` plus per-stage
   reports at `redteam/reports/stage_NNN.md` and
   `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch III.1 (stages 037-048, "Part III.1 -- Continuum
+  kernel, generalized branch, rank-2") completed 2026-05-22 with all 12
+  stages reaching `verified` and both engines independently checking
+  each load-bearing claim. 10 of 12 stages required codex edits (27
+  findings total: 10 `mathematica_transliteration`, ~11
+  `tautological_check`, 4 `insufficient_verification`, 1
+  `hardcoded_result`, 1 `symbol_assumption_error`); stages 042 and 048
+  verified clean on first read. Zero codex iter-2 fixes needed.
+  `material_change: false` on every stage, so no upstream cascade. See
+  `redteam/batches/batch_III1.md` plus per-stage reports at
+  `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.

@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl
-# Date: 2026-05-11T12:50:52-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 030 — COHERENT KERNEL MAP
@@ -29,6 +21,8 @@ PASS: Z_phi - zeta_def Z_W
 R_tr = (kU*(1 + (cEtaU*ell^2*gamma)/(ell^2*kU + Pi^2*tU)))/(cEtaU*gamma + kU)
 eps = (8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU))/(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU))
 delta = -((Pi^2*(cEtaU^2*ell^2*tU + kU*(ell^2*kU + Pi^2*tU)*tw))/(ell^2*(cEtaU^2 - kEtaEff*kU)*(ell^2*kU + Pi^2*tU)))
+S from ratio agrees with closed-form S = 0
+PASS: S from ratio agrees with closed-form S
 M_mix = (-72*(cEtaU*gamma + kU)^2*lamW^2*(ell^2*kU + Pi^2*tU))/((cEtaU^2 - kEtaEff*kU)*(ell^2*kU*(-88*gamma^2*lamW^2 + 9*kU*kWEff*Pi^2) + 9*Pi^2*(-8*gamma^2*lamW^2 + kU*kWEff*Pi^2)*tU))
 M_supp = (-72*(cEtaU*gamma + kU)^2*lamW^2*(ell^2*kU + Pi^2*tU)*zeta)/((cEtaU^2 - kEtaEff*kU)*(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU) - 8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU)*zeta))
 S(zeta;eps) = (9*Pi^2*tU*(-16*gamma^2*lamW^2*zeta + kU*kWEff*Pi^2*(1 + zeta)) + ell^2*kU*(-176*gamma^2*lamW^2*zeta + 9*kU*kWEff*Pi^2*(1 + zeta)))/(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU) - 8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU)*zeta)
@@ -52,5 +46,3 @@ S(zeta=0)-1 = 0
 PASS: S(zeta=0)-1
 
 Stage 047 Mathematica audit passed.
-
-EXIT_CODE: 0

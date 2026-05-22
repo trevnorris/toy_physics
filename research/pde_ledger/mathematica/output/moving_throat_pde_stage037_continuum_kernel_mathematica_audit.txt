@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage037_continuum_kernel_mathematica_audit.wl
-# Date: 2026-05-11T12:48:13-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 020 — CONTINUUM-KERNEL EXTRACTION
@@ -54,14 +46,18 @@ Omega_W^2 = (kW + (Pi^2*tW)/(4*ell^2))/muW
 ----------------------------------------------------------------------------------------
 3. Schur-complement factorization
 ----------------------------------------------------------------------------------------
-Sigma_wall - (Xi I + alpha v v^T) = {{0, 0}, {0, 0}}
-PASS: Sigma_wall - (Xi I + alpha v v^T)
+Sigma_wall (2,2) consistency with ansatz = 0
+PASS: Sigma_wall (2,2) consistency with ansatz
+Xi (recovered) = gU^2/aU
+alpha (recovered) = (-88*aU*gB^2*gR^2 + 9*(aPhi*gR^2*gU^2 + aU*(aU*aW*gB^2 + 2*aPhi*gR*gU*gW + aPhi*aU*gW^2))*Pi^2)/(aPhi*aU*(-88*gR^2 + 9*aU*aW*Pi^2))
 
 ----------------------------------------------------------------------------------------
 4. Continuum extraction of A, alpha_mix, beta0, M_mix, delta
 ----------------------------------------------------------------------------------------
-A continuum formula = 0
-PASS: A continuum formula
+A reduces to closed form = 0
+PASS: A reduces to closed form
+A numerator matches Schur form = 0
+PASS: A numerator matches Schur form
 Delta0 continuum formula = 0
 PASS: Delta0 continuum formula
 Chi continuum formula = 0
@@ -72,8 +68,8 @@ alpha_mix continuum formula = 0
 PASS: alpha_mix continuum formula
 M_mix continuum formula = 0
 PASS: M_mix continuum formula
-delta continuum formula = 0
-PASS: delta continuum formula
+delta numerator matches closed form = 0
+PASS: delta numerator matches closed form
 A = (-cEtaU^2 + kU*(kEta + 6*tOmega))/(kU*muEta)
 Delta0 = ((-88*cUW^2)/(9*Pi^2) + kU*(kW + (Pi^2*tW)/(4*ell^2)))/(muU*muW)
 Chi = (cEtaU*cUW + cEtaW*kU)/(muU*Sqrt[muEta*muW])
@@ -95,5 +91,3 @@ Stable selected branch requires:
   sigma = 88/(9*Pi^2)
 
 Stage 037 Mathematica audit passed.
-
-EXIT_CODE: 0

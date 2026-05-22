@@ -174,6 +174,48 @@ expect_zero("d R / d eps_W factorization", dR_deps_W + 2 * Lambda * (1 - eps_eta
 expect_zero("d M / d rho factorization", dM_drho - 16 * Z_W * (1 + rho) / (sp.pi**2 * (1 - eps_eta) * (1 - eps_W)))
 expect_zero("d R / d rho factorization", dR_drho + 2 * Lambda * (1 - eps_eta) * (1 - eps_W) ** 2 / (Z_W * (1 + rho) ** 3))
 
+# Sign assertions under the natural transfer-branch assumption
+# (0 < eps_eta < 1, 0 < eps_W < 1, 1 + rho > 0, Z_W > 0, Lambda > 0, delta0 > 0)
+# Each derivative factors as (sign) * (manifestly positive template); we assert the sign.
+
+# delta = delta0/(1 - eps_eta), d delta / d eps_eta = + delta0/(1 - eps_eta)^2
+expect_zero(
+    "sign(d delta / d eps_eta) - 1",
+    d_delta_deps_eta * (1 - eps_eta)**2 / delta0 - 1,
+)
+expect_zero(
+    "sign(d M / d Z_W) - 1",
+    dM_dZ * sp.pi**2 * (1 - eps_eta) * (1 - eps_W) / (8 * (1 + rho)**2) - 1,
+)
+expect_zero(
+    "sign(d R / d Z_W) + 1",
+    dR_dZ * Z_W**2 * (1 + rho)**2 / (Lambda * (1 - eps_eta) * (1 - eps_W)**2) + 1,
+)
+expect_zero(
+    "sign(d M / d eps_eta) - 1",
+    dM_deps_eta * sp.pi**2 * (1 - eps_eta)**2 * (1 - eps_W) / (8 * Z_W * (1 + rho)**2) - 1,
+)
+expect_zero(
+    "sign(d R / d eps_eta) + 1",
+    dR_deps_eta * Z_W * (1 + rho)**2 / (Lambda * (1 - eps_W)**2) + 1,
+)
+expect_zero(
+    "sign(d M / d eps_W) - 1",
+    dM_deps_W * sp.pi**2 * (1 - eps_eta) * (1 - eps_W)**2 / (8 * Z_W * (1 + rho)**2) - 1,
+)
+expect_zero(
+    "sign(d R / d eps_W) + 1",
+    dR_deps_W * Z_W * (1 + rho)**2 / (2 * Lambda * (1 - eps_eta) * (1 - eps_W)) + 1,
+)
+expect_zero(
+    "sign(d M / d rho) - 1",
+    dM_drho * sp.pi**2 * (1 - eps_eta) * (1 - eps_W) / (16 * Z_W * (1 + rho)) - 1,
+)
+expect_zero(
+    "sign(d R / d rho) + 1",
+    dR_drho * Z_W * (1 + rho)**3 / (2 * Lambda * (1 - eps_eta) * (1 - eps_W)**2) + 1,
+)
+
 print("On the natural nonvanishing transfer branch 1+rho > 0:")
 print("  delta increases with eps_eta")
 print("  M_mix increases with eps_eta, eps_W, Z_W, rho")

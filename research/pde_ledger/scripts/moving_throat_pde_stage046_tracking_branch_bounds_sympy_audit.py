@@ -140,6 +140,51 @@ expect_zero("F_flat - F_tr formula", sp.simplify(delta_F - F_diff_expected))
 expect_positive_coefficients("P1", P1, R, delta, xi)
 expect_positive_coefficients("P2", P2, R, delta, xi)
 
+banner("3b. Sign verification of branch-difference factors")
+
+# Boundary values: at R=1 the tracking and flat branches must coincide; at R=0
+# the tracking branch must hit the strong-split endpoint.
+expect_zero(
+    "G_tr - G_flat vanishes at R=1",
+    sp.simplify((G_tr - G_flat).subs(R, 1)),
+)
+expect_zero(
+    "F_flat - F_tr vanishes at R=1",
+    sp.simplify((F_flat - F_tr).subs(R, 1)),
+)
+expect_zero(
+    "G_tr at R=0 equals xi",
+    sp.simplify(G_tr.subs(R, 0) - xi),
+)
+expect_zero(
+    "F_tr at R=0 equals 1/(1-xi)",
+    sp.simplify(F_tr.subs(R, 0) - 1 / (1 - xi)),
+)
+
+# Numerical sign sampling of delta_G = G_tr - G_flat and delta_F = F_flat - F_tr
+# at three representative interior points (R, xi, delta). All must be strictly
+# positive for the bound G_flat <= G_tr and F_tr <= F_flat to hold on the open
+# interval R in (0,1).
+delta_G_value = sp.simplify(G_tr - G_flat)
+delta_F_value = sp.simplify(F_flat - F_tr)
+sample_points = [
+    {R: sp.Rational(1, 4), xi: sp.Rational(1, 3), delta: sp.Rational(1, 2)},
+    {R: sp.Rational(1, 2), xi: sp.Rational(1, 2), delta: sp.Rational(1, 4)},
+    {R: sp.Rational(3, 4), xi: sp.Rational(1, 5), delta: sp.Rational(2, 3)},
+]
+for idx, pt in enumerate(sample_points, start=1):
+    g_sample = sp.simplify(delta_G_value.subs(pt))
+    f_sample = sp.simplify(delta_F_value.subs(pt))
+    print(f"sample {idx}: G_tr - G_flat = {g_sample}, F_flat - F_tr = {f_sample}")
+    if g_sample <= 0:
+        raise AssertionError(
+            f"sample {idx} violates G_tr > G_flat: got {g_sample}"
+        )
+    if f_sample <= 0:
+        raise AssertionError(
+            f"sample {idx} violates F_tr < F_flat: got {f_sample}"
+        )
+
 banner("4. Endpoint bounds")
 print("For 0 <= R <= 1:")
 print("  G_flat <= G_tr <= xi")

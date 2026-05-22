@@ -47,10 +47,10 @@ y0 = FullSimplify[y[[1]], Assumptions -> $Assumptions];
 y1 = FullSimplify[y[[2]], Assumptions -> $Assumptions];
 
 sigma0 = FullSimplify[gU gS/(kU gB), Assumptions -> $Assumptions];
-rPhi = FullSimplify[(y1/y0)/(kappa1/kappa0), Assumptions -> $Assumptions];
+rPhi = FullSimplify[(y[[2]]/kappa1) / (y[[1]]/kappa0), Assumptions -> $Assumptions];
 rPhiExpected = FullSimplify[(1 + sigma0/(1 + deltaU))/(1 + sigma0), Assumptions -> $Assumptions];
-dPhi = FullSimplify[kappa0 y1 - kappa1 y0, Assumptions -> $Assumptions];
-dPhiExpected = FullSimplify[-kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
+dPhi = FullSimplify[Det[{{y0, y1}, {kappa0, kappa1}}], Assumptions -> $Assumptions];
+dPhiExpected = FullSimplify[kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
 
 Print["y = ", fmt[y]];
 Print["R_phi = ", fmt[rPhi]];
@@ -62,7 +62,7 @@ subbanner["2. Exact support pole shift and split support-blocking ratio"];
 
 sU = FullSimplify[v.dU.v, Assumptions -> $Assumptions];
 sUSub = FullSimplify[
-  sU /. {kappa1^2 -> (2/11) sigma, kappa0^2 -> sigma - (2/11) sigma},
+  sU /. {kappa1^2 -> (2/11) sigma, kappa0^2 -> (9/11) sigma},
   Assumptions -> $Assumptions
 ];
 sUExpected = FullSimplify[(sigma/kU) (1 - (2/11) deltaU/(1 + deltaU)), Assumptions -> $Assumptions];
@@ -76,8 +76,26 @@ aPhiEffExpected = FullSimplify[
 
 Print["v.D_U.v = ", fmt[sUSub]];
 Print["A_phi^(eff) = ", fmt[aPhiEff]];
+sUEndpointZero = FullSimplify[(sU /. {kappa1^2 -> (2/11) sigma, kappa0^2 -> (9/11) sigma}) /. deltaU -> 0, Assumptions -> $Assumptions];
+sUEndpointZeroExpected = sigma/kU;
+sUEndpointInf = FullSimplify[Limit[sU /. {kappa1^2 -> (2/11) sigma, kappa0^2 -> (9/11) sigma}, deltaU -> Infinity], Assumptions -> $Assumptions];
+sUEndpointInfExpected = (9/11) sigma/kU;
+Print["v.D_U.v at deltaU=0 = ", fmt[sUEndpointZero]];
+Print["v.D_U.v as deltaU->Infinity = ", fmt[sUEndpointInf]];
+expectZero["overlap endpoint deltaU=0", sUEndpointZero - sUEndpointZeroExpected];
+expectZero["overlap endpoint deltaU->Infinity", sUEndpointInf - sUEndpointInfExpected];
 expectZero["support overlap contraction", sUSub - sUExpected];
 expectZero["A_phi^(eff) - expected", aPhiEff - aPhiEffExpected];
+
+aPhiEffMin = FullSimplify[Limit[aPhiEff, deltaU -> 0], Assumptions -> $Assumptions];
+aPhiEffMinExpected = FullSimplify[kPhiEff - cUphi^2 sigma/kU, Assumptions -> $Assumptions];
+Print["A_phi^(eff) at deltaU=0 = ", fmt[aPhiEffMin]];
+expectZero["A_phi^(eff) at deltaU=0 (minimal)", aPhiEffMin - aPhiEffMinExpected];
+
+overlapRatio = FullSimplify[(kPhiEff - aPhiEff)/(kPhiEff - aPhiEffMin), Assumptions -> $Assumptions];
+overlapRatioExpected = FullSimplify[1 - (2/11) deltaU/(1 + deltaU), Assumptions -> $Assumptions];
+Print["split-vs-minimal overlap ratio = ", fmt[overlapRatio]];
+expectZero["split-vs-minimal overlap ratio", overlapRatio - overlapRatioExpected];
 
 subbanner["3. Exact physical support baseline"];
 
@@ -87,21 +105,34 @@ mSuppCont = FullSimplify[
     ((kEtaEff (1 - epsEta)/muEta) (kPhiEff (1 - epsPhiSplitPhys)/muPhi)),
   Assumptions -> $Assumptions
 ];
-mSuppExpected = FullSimplify[
-  (8/Pi^2) (cB^2/(kEtaEff kPhiEff)) (1 + cEtaU cUphi/(kU cB))^2/
+
+(* F3: M_supp must not depend on muEta or muPhi (they must cancel). *)
+expectZero["M_supp independent of muEta", FullSimplify[D[mSuppCont, muEta], Assumptions -> $Assumptions]];
+expectZero["M_supp independent of muPhi", FullSimplify[D[mSuppCont, muPhi], Assumptions -> $Assumptions]];
+
+(* F3: structural-form check with a free baseline symbol bBaseline. *)
+Clear[bBaseline];
+$Assumptions = $Assumptions && bBaseline > 0;
+mSuppContInB = FullSimplify[mSuppCont /. kappa0^2 -> bBaseline, Assumptions -> $Assumptions];
+mSuppStructExpected = FullSimplify[
+  bBaseline (cB^2/(kEtaEff kPhiEff)) (1 + cEtaU cUphi/(kU cB))^2/
     ((1 - epsEta) (1 - epsPhiSplitPhys)),
   Assumptions -> $Assumptions
 ];
-mSuppContEval = FullSimplify[mSuppCont /. kappa0^2 -> 8/Pi^2, Assumptions -> $Assumptions];
+Print["M_supp structural form (free baseline) = ", fmt[mSuppContInB]];
+expectZero["M_supp structural form (free baseline)", mSuppContInB - mSuppStructExpected];
 
-Print["M_supp = ", fmt[mSuppContEval]];
-expectZero["M_supp - expected", mSuppContEval - mSuppExpected];
+(* F3: baseline value identification, isolated from the structural check. *)
+mSuppContEval = FullSimplify[mSuppContInB /. bBaseline -> 8/Pi^2, Assumptions -> $Assumptions];
+mSuppExpected = FullSimplify[mSuppStructExpected /. bBaseline -> 8/Pi^2, Assumptions -> $Assumptions];
+Print["M_supp at baseline B = 8/Pi^2 = ", fmt[mSuppContEval]];
+expectZero["M_supp at baseline B = 8/Pi^2", mSuppContEval - mSuppExpected];
 
 subbanner["4. Exact tracking condition relative to the mixed vector"];
 
 z0 = FullSimplify[kappa0 (gW + gU gR/kU), Assumptions -> $Assumptions];
 z1 = FullSimplify[kappa1 (gW + gU gR/(kU (1 + deltaU))), Assumptions -> $Assumptions];
-dPhiZ = FullSimplify[y0 z1 - y1 z0, Assumptions -> $Assumptions];
+dPhiZ = FullSimplify[Det[{{y0, y1}, {z0, z1}}], Assumptions -> $Assumptions];
 dPhiZExpected = FullSimplify[
   -deltaU gU kappa0 kappa1 (gB gR - gW gS)/(kU (1 + deltaU)),
   Assumptions -> $Assumptions
@@ -120,6 +151,10 @@ mismatchExpected = FullSimplify[
   deltaU (rho0 - sigma0)/((1 + deltaU) (1 + rho0) (1 + sigma0)),
   Assumptions -> $Assumptions
 ];
+mismatchLeading = FullSimplify[Series[mismatch, {deltaU, 0, 1}] // Normal, Assumptions -> $Assumptions];
+mismatchLeadingExpected = FullSimplify[deltaU (rho0 - sigma0)/((1 + rho0) (1 + sigma0)), Assumptions -> $Assumptions];
+Print["mismatch leading in deltaU = ", fmt[mismatchLeading]];
+expectZero["mismatch leading-in-deltaU coefficient", mismatchLeading - mismatchLeadingExpected];
 
 Print["R_phi - R_U = ", fmt[mismatch]];
 expectZero["mismatch formula", mismatch - mismatchExpected];

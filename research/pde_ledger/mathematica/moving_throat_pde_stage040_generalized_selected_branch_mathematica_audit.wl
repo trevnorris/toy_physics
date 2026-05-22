@@ -32,41 +32,76 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 023 — GENERALIZED SELECTED-BRANCH NORMALIZATION"];
 
-Clear[a0, delta, z0, q, eta, xi, rU, eps];
+Clear[a0, delta, z0, q, eta, xi, rU, eps, alpha];
 $Assumptions =
-  Element[{a0, delta, z0, q, eta, xi, rU, eps}, Reals] &&
+  Element[{a0, delta, z0, q, eta, xi, rU, eps, alpha}, Reals] &&
   a0 > 0 && delta > 0 && z0 > 0 && xi > 0 && rU > 0 && eps > 0 && q != 0;
 
 lambda0 = 2/9;
 
 subbanner["1. Exact 2x2 selected-branch solve with generic loading ratio"];
 
+(* Independent derivation: build the perturbed matrix, solve the         *)
+(* characteristic equation det(M - alpha z z^T - lam I) = 0 for alpha    *)
+(* at lam = a0 (1 - xi), then derive the eigenvector via NullSpace.     *)
+mBase = DiagonalMatrix[{a0, a0 (1 + delta)}];
+zVec = {z0, q z0};
+mPert[alphaVal_] := mBase - alphaVal Outer[Times, zVec, zVec];
 lamMinus = a0 (1 - xi);
-alphaReq = FullSimplify[a0 xi (delta + xi)/(z0^2 (delta + xi) + (q z0)^2 xi), Assumptions -> $Assumptions];
-r = FullSimplify[(a0 xi - alphaReq z0^2)/(alphaReq z0 (q z0)), Assumptions -> $Assumptions];
 
-Print["alpha_req = ", fmt[alphaReq]];
-Print["e1/e0 = ", fmt[r]];
+charEq = Det[mPert[alpha] - lamMinus IdentityMatrix[2]] == 0;
+alphaSol = Solve[charEq, alpha];
+alphaReq = FullSimplify[alpha /. alphaSol[[1]], Assumptions -> $Assumptions];
+Print["alpha_req (from Det = 0) = ", fmt[alphaReq]];
+
+(* Eigenvector via NullSpace of (M - alpha_req z z^T - lam I).          *)
+nsVec = NullSpace[mPert[alphaReq] - lamMinus IdentityMatrix[2]];
+eMinusRaw = FullSimplify[nsVec[[1]], Assumptions -> $Assumptions];
+(* Normalize so the first component is 1. *)
+eMinus = FullSimplify[eMinusRaw/eMinusRaw[[1]], Assumptions -> $Assumptions];
+eMinusFromNullSpace = eMinus;
+r = eMinus[[2]];
+Print["e1/e0 (from NullSpace) = ", fmt[r]];
 expectZero["e1/e0 closed form", r - xi q/(delta + xi)];
+
+(* Explicit eigenvalue/eigenvector residual check. *)
+(* Convention: perturbed matrix is M - alpha z z^T, with             *)
+(* M = DiagonalMatrix[{a0, a0 (1+delta)}] and z = {z0, q z0}.         *)
+mBase = DiagonalMatrix[{a0, a0 (1 + delta)}];
+zVec = {z0, q z0};
+mPerturbed = mBase - alphaReq Outer[Times, zVec, zVec];
+eMinus = {1, q xi/(delta + xi)};
+eigResidual = FullSimplify[mPerturbed.eMinus - lamMinus eMinus,
+  Assumptions -> $Assumptions];
+expectZero["eigenvector residual row 0", eigResidual[[1]]];
+expectZero["eigenvector residual row 1", eigResidual[[2]]];
+eMinus = eMinusFromNullSpace;
 
 subbanner["2. Exact overlap formulas and generalized F,G functions"];
 
-zOverlapSq = FullSimplify[(1 + q r)^2/(1 + r^2), Assumptions -> $Assumptions];
-sOverlapSq = FullSimplify[(1 + eta xi/(delta + xi))^2/(1 + r^2), Assumptions -> $Assumptions];
+(* Build z and s overlaps from the derived eigenvector, NOT from a      *)
+(* posited r ratio. Use s = (1, eta/q) so that s1/s0 * q = eta.         *)
+sVec = {1, eta/q};
+zDotE = zVec.eMinus;
+sDotE = sVec.eMinus;
+normESq = eMinus.eMinus;
+zOverlapSq = FullSimplify[zDotE^2/(z0^2 normESq), Assumptions -> $Assumptions];
+sOverlapSq = FullSimplify[sDotE^2/(1^2 normESq), Assumptions -> $Assumptions];
 fGeneral = FullSimplify[(a0/lamMinus) zOverlapSq sOverlapSq, Assumptions -> $Assumptions];
 gGeneral = FullSimplify[(z0^2/a0) alphaReq, Assumptions -> $Assumptions];
 
+Print["(z.e_-)^2 / z0^2 = ", fmt[zOverlapSq]];
+Print["(s.e_-)^2 / s0^2 = ", fmt[sOverlapSq]];
+Print["F_(q,eta) = ", fmt[fGeneral]];
+Print["G_q = ", fmt[gGeneral]];
+
+(* Cross-check against the SymPy script's claimed closed forms. *)
 fExpected = FullSimplify[
   (delta + (1 + q^2) xi)^2 (delta + (1 + eta) xi)^2/
     ((1 - xi) ((delta + xi)^2 + q^2 xi^2)^2),
   Assumptions -> $Assumptions
 ];
 gExpected = FullSimplify[xi (delta + xi)/(delta + (1 + q^2) xi), Assumptions -> $Assumptions];
-
-Print["(z.e_-)^2 / z0^2 = ", fmt[zOverlapSq]];
-Print["(s.e_-)^2 / s0^2 = ", fmt[sOverlapSq]];
-Print["F_(q,eta) = ", fmt[fGeneral]];
-Print["G_q = ", fmt[gGeneral]];
 expectZero["F_general - expected", fGeneral - fExpected];
 expectZero["G_general - expected", gGeneral - gExpected];
 
@@ -77,6 +112,11 @@ etaU = FullSimplify[lambda0 rU, Assumptions -> $Assumptions];
 fU = FullSimplify[fExpected /. {q -> qU, eta -> etaU}, Assumptions -> $Assumptions];
 gU = FullSimplify[gExpected /. q -> qU, Assumptions -> $Assumptions];
 
+(* fStage18 reproduces the Stage-18 closed-form F(xi, delta) verified  *)
+(* in mathematica/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.wl lines 50-61. *)
+(* gStage19 reproduces the Stage-19 closed-form G(xi, delta) verified  *)
+(* in mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl lines 41-58. *)
+(* Keep these literals in sync with the upstream source of truth.      *)
 fStage18 = FullSimplify[
   (9 delta + 11 xi)^4/(81 (1 - xi) (9 delta^2 + 18 delta xi + 11 xi^2)^2),
   Assumptions -> $Assumptions
@@ -88,19 +128,26 @@ Print["G_U(xi,delta;R_U) = ", fmt[gU]];
 expectZero["F_U(R_U=1) - Stage18 F", (fU /. rU -> 1) - fStage18];
 expectZero["G_U(R_U=1) - Stage19 G", (gU /. rU -> 1) - gStage19];
 
-subbanner["4. Exact small-deformation expansion about the flat-U limit"];
+subbanner["4. Independent cross-check of first-order deformation about flat-U limit"];
 
-fRatio = FullSimplify[Normal[Series[(fU /. rU -> 1 + eps)/fStage18, {eps, 0, 1}]], Assumptions -> $Assumptions];
-gRatio = FullSimplify[Normal[Series[(gU /. rU -> 1 + eps)/gStage19, {eps, 0, 1}]], Assumptions -> $Assumptions];
+qUEps = FullSimplify[-Sqrt[lambda0] (1 + eps), Assumptions -> $Assumptions];
+etaUEps = FullSimplify[lambda0 (1 + eps), Assumptions -> $Assumptions];
+
 hF = FullSimplify[(D[fU /. rU -> 1 + eps, eps] /. eps -> 0)/fStage18, Assumptions -> $Assumptions];
 hG = FullSimplify[(D[gU /. rU -> 1 + eps, eps] /. eps -> 0)/gStage19, Assumptions -> $Assumptions];
 
-Print["F_U / F_flat = ", fmt[fRatio], " + O(eps^2)"];
-Print["G_U / G_flat = ", fmt[gRatio], " + O(eps^2)"];
-Print["H_F = ", fmt[hF]];
-Print["H_G = ", fmt[hG]];
-expectZero["F_ratio - (1 + eps H_F)", Expand[fRatio - (1 + eps hF)]];
-expectZero["G_ratio - (1 + eps H_G)", Expand[gRatio - (1 + eps hG)]];
+fGeneralEps = fGeneral /. {q -> qUEps, eta -> etaUEps};
+gGeneralEps = gGeneral /. q -> qUEps;
+hFDirect = FullSimplify[(D[fGeneralEps, eps] /. eps -> 0)/fStage18, Assumptions -> $Assumptions];
+hGDirect = FullSimplify[(D[gGeneralEps, eps] /. eps -> 0)/gStage19, Assumptions -> $Assumptions];
+
+Print["H_F (via F_U)        = ", fmt[hF]];
+Print["H_F (via F_general)  = ", fmt[hFDirect]];
+Print["H_G (via G_U)        = ", fmt[hG]];
+Print["H_G (via G_general)  = ", fmt[hGDirect]];
+
+expectZero["H_F cross-check (F_U vs F_general)", hF - hFDirect];
+expectZero["H_G cross-check (G_U vs G_general)", hG - hGDirect];
 
 Print[""];
 Print["Stage 040 Mathematica audit passed."];

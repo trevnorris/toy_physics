@@ -104,16 +104,13 @@ expect_zero("tracking collapse", n_track - (G_q - m))
 subbanner("24.4 — Source-tied theorem: support remains aligned with the original source vector")
 
 # The physical source-tied specialization uses q = t R_U, r = t with t^2 = lam0.
-# Because only q^2, r^2, q r, and (q-r)^2 appear, we can substitute directly.
-q2_src = lam0 * R_U**2
-r2_src = lam0
-qr_src = lam0 * R_U
-qr_diff_sq = lam0 * (R_U - 1)**2
-
+# Derive n_src by substituting into the general n_expected from section 24.1,
+# not by re-stating the substituted formula.
+t = sp.symbols("t", real=True)
 n_src = sp.simplify(
-    (xi * (delta + xi) - m * (delta + (1 + q2_src) * xi))
-    / (delta + (1 + r2_src) * xi - m * qr_diff_sq)
+    n_expected.subs({q: t * R_U, r: t})
 )
+n_src = sp.simplify(sp.expand(n_src).subs(t**2, lam0))
 print("n_req^(src) =")
 sp.pprint(sp.factor(n_src))
 

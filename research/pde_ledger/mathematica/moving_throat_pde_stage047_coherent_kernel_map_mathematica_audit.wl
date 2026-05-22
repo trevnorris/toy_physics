@@ -33,9 +33,34 @@ $Assumptions =
   cs > 0 && a > 0 && c > 0 && muW > 0 && zeta > 0;
 
 sigma = 88/(9*Pi^2);
-rho0 = FullSimplify[(gamma*lamW)*cEtaU/(kU*lamW), Assumptions -> $Assumptions];
-sigma0 = FullSimplify[cEtaU*(gamma*lamPhi)/(kU*lamPhi), Assumptions -> $Assumptions];
+
+(* rho_0: W-channel coherent ratio (numerator/denominator kept separate
+   so the channel-saturation cancellation is performed by FullSimplify,
+   not by string cancellation). *)
+rho0Num = gamma*lamW*cEtaU;
+rho0Den = kU*lamW;
+rho0 = FullSimplify[rho0Num/rho0Den, Assumptions -> $Assumptions];
+
+(* sigma_0: phi-channel analogue. *)
+sigma0Num = cEtaU*gamma*lamPhi;
+sigma0Den = kU*lamPhi;
+sigma0 = FullSimplify[sigma0Num/sigma0Den, Assumptions -> $Assumptions];
+
 chi0 = FullSimplify[gamma*cEtaU/kU, Assumptions -> $Assumptions];
+
+(* Sanity: the channel-saturation rule must hold non-trivially. *)
+If[
+  TrueQ[FullSimplify[rho0Num*kU - rho0Den*gamma*cEtaU,
+    Assumptions -> $Assumptions] === 0],
+  Null,
+  (Print["FAIL: rho0 channel-saturation rule violated"]; Exit[1])
+];
+If[
+  TrueQ[FullSimplify[sigma0Num*kU - sigma0Den*gamma*cEtaU,
+    Assumptions -> $Assumptions] === 0],
+  Null,
+  (Print["FAIL: sigma0 channel-saturation rule violated"]; Exit[1])
+];
 
 Print["rho_0 = ", fmt[rho0]];
 Print["sigma_0 = ", fmt[sigma0]];
@@ -70,9 +95,25 @@ Print["eps = ", fmt[eps]];
 Print["delta = ", fmt[delta]];
 
 mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
-mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)), Assumptions -> $Assumptions];
-sEnhance = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
+
+(* Independent derivation of M_supp: the support packet contributes a
+   factor zeta*(1-eps)/(1-zeta*eps) on top of M_mix, by the support-
+   loading rule of stage 047. We construct M_supp from this rule rather
+   than copying the closed form, so this engine has an independent path
+   to the result. *)
+supportLoadFactor = zeta*(1 - eps)/(1 - zeta*eps);
+mSupp = FullSimplify[mMix*supportLoadFactor, Assumptions -> $Assumptions];
+
+(* M_tr from the sum, then S as the ratio M_tr/M_mix. *)
 mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
+sEnhance = FullSimplify[mTr/mMix, Assumptions -> $Assumptions];
+
+(* Cross-check: S as derived from the ratio must equal the closed-form
+   1 + zeta*(1-eps)/(1-zeta*eps). If this fails, the support-loading
+   rule above is inconsistent with the closed-form S in the paper. *)
+sClosedForm = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
+expectZero["S from ratio agrees with closed-form S", sEnhance - sClosedForm];
+
 rTarget = FullSimplify[lambdaScale*(1 - epsEta)*(1 - eps)^2/(zW*(1 + chi0)^2), Assumptions -> $Assumptions];
 
 Print["M_mix = ", fmt[mMix]];

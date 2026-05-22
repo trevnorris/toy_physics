@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-22`
+Snapshot date: `2026-05-22` (batch III.1 close)
 
 ## Rule
 
@@ -37,8 +37,11 @@ be rewritten to a Mathematica-native primitive (`Integrate`, `Eigenvalues`,
 `LinearSolve`, `Series`+`Coefficient`, `Solve`, `Factor`/`Apart`,
 `EulerEquations`, `SphericalHarmonicY`, `ThreeJSymbol`, `SphericalHankelH1`)
 before the batch closes. Batch II.1 found `mathematica_transliteration` on
-every single one of its 13 stages; treat this as a default expectation, not
-an exceptional finding.
+every single one of its 13 stages; batch III.1 found it on 10 of 12 (with
+the remaining two — 042 and 048 — passing transliteration screening only
+because their closed-form-identity structure or independent `Solve`/
+`Series` route already broke the line-by-line correspondence). Treat
+transliteration as the default expectation, not an exceptional finding.
 
 ## Current Independent-Mirror Set
 
@@ -211,6 +214,84 @@ different verification structure from the SymPy side:
   form, coefficient extraction); added a `disc + 72*delta^2 == 0`
   discriminant check; substantive symbolic kappa-based `F`-`R_target`
   identity inserted in both engines
+- `037`
+  red-team batch III.1 removed hand-supplied `xiTerm`/`alphaTerm`/
+  `sigmaExpected` and `aExpected`/`deltaExpected` literals; the
+  Mathematica mirror now reconstructs `xi` and `alpha` from two entries
+  of `sigmaWall` and cross-checks the third as a substantive identity,
+  and derives `A`/`delta` closed forms via `Together` numerator-and-
+  denominator extraction against the Schur closed form
+- `038`
+  red-team batch III.1 dropped the pre-baked `(cEtaU*cUW + cEtaW*kU)^2
+  -> zW kEtaEff kWEff kU^2 (1+rho)^2` substitution rule in `applyDimless`;
+  added nine non-tautological sign assertions in both engines (each
+  multiplies the symbolically-differentiated derivative by a manifestly
+  positive template under the stated transfer-branch assumption and
+  verifies the +/-1 residual)
+- `039`
+  red-team batch III.1 restructured the `.wl` so `deltaSplit`,
+  `epsWSplit`, and `dDir` are derived from their own algebra rather
+  than postulated, with the SymPy-side postulate moved to the RHS of
+  a new `derived matches postulated` check (unlocks engine-disagreement
+  detection); replaced the `z1/z0 - (kappa1/kappa0)*R_U` tautology with
+  a structurally explicit kappa-rho residual and added flat-U baseline
+  substitution checks
+- `040`
+  red-team batch III.1 added a genuine perturbed-matrix eigenvector
+  residual check (both rows reduce to 0 against `M - alpha z z^T`),
+  replaced the `series`-vs-`diff` tautology with a two-path cross-check
+  for `H_F` (via `F_U` vs via `F_general`), and now derives `alphaReq`
+  via `Solve[Det[...] == 0, alpha]` and the eigenvector via `NullSpace`
+  instead of postulating the closed form
+- `041`
+  red-team batch III.1 made the source-tied `n_src` check
+  non-tautological by deriving it from the general `n_expected` via
+  `q -> t R_U, r -> t, t^2 -> lambda0` substitution in both engines,
+  so the assertion now verifies the substitution actually reduces to
+  the hand-written form
+- `042`
+  red-team batch III.1 verified clean as-is: rank-2 selected-mode
+  Mathematica mirror is structurally parallel to SymPy but cross-checks
+  identities through `FullSimplify`/`Together` canonical paths rather
+  than copied algebra; not flagged as transliteration because the
+  claims are pure closed-form identities and the agreement is genuine
+- `043`
+  red-team batch III.1 added five independent algebraic paths in the
+  Mathematica script (`Det` forms for `dPhi`/`dPhiZ`, residue-ratio for
+  `rPhi`, endpoint limits for `v.D_U.v`, `Series` expansion for
+  mismatch); replaced tautological `A_phi^eff` and `M_supp` self-
+  comparisons with genuine minimal-overlap and split-vs-minimal ratio
+  anchors plus mu-independence derivatives
+- `044`
+  red-team batch III.1 added an independent `Solve` route for `xiPhys`
+  in Mathematica, replaced tautological renames with non-tautological
+  coefficient extraction from `branch_eq`, deleted an algebraically
+  redundant tracking total-loading assertion, and added a literal slice
+  at `Rphi=2` to constrain the bivariate dependence
+- `045`
+  red-team batch III.1 added a polynomial-extraction route
+  (`coupling_density` -> `coeff(...)` -> `g_X_ext`) with four
+  `extracted - reference` firewall assertions and an enumerated
+  `channels` list giving `M_tr_channel_sum`; the `.wl` self-comparison
+  on `mTrReq` was replaced with `Solve[collapsedNum == 0, mTrSym]`, and
+  the branch numerator is now derived via `Series[..., {rPhi, rU, 0}] //
+  Normal` rather than direct substitution
+- `046`
+  red-team batch III.1 removed hand-typed `pR`/`p1`/`p2`/`*Expected`
+  literals; the `.wl` now uses direct `Together[D[...]]`, `Reduce[
+  ForAll[...]]` sign claims, and `PolynomialQuotientRemainder` factor
+  checks; both engines gained non-tautological boundary and three-point
+  sign-sample assertions operating on `G_tr - G_flat` / `F_flat - F_tr`
+- `047`
+  red-team batch III.1 closed the `rho_0 - chi_0` and `sigma_0 - chi_0`
+  tautologies (the `lamW/lamW` and `lamphi/lamphi` factors had
+  cancelled by construction) and rewrote `mSupp`/`sEnhance` in the
+  Mathematica mirror through independent algebraic routes; added a
+  `PASS: S from ratio agrees with closed-form S` cross-engine identity
+- `048`
+  red-team batch III.1 verified clean as-is: independently `Solve`s for
+  `zeta_req` and adds two limit-coefficient checks (softening, pole)
+  absent from the SymPy script; not a transliteration
 - `059`
   uses a constructive `FindRoot` saturation route instead of symbolic replay
 - `067`

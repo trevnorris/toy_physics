@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage039_split_u_sector_sympy_audit.py
-# Date: 2026-05-11T12:41:57-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 22 — SPLIT-U SECTOR: EXACT CONTINUUM REDUCTION
@@ -37,7 +29,7 @@ eps_W direct - split formula = 0
 z0 = 2*sqrt(2)*c_etaW*(rho0 + 1)/(pi*sqrt(mu_W)*sqrt(mu_eta))
 z1 = -4*c_etaW*(deltaU + rho0 + 1)/(3*pi*sqrt(mu_W)*sqrt(mu_eta)*(deltaU + 1))
 R_U = (deltaU + rho0 + 1)/((deltaU + 1)*(rho0 + 1))
-z1/z0 - (kappa1/kappa0) R_U = 0
+z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0
 D_dir = 8*sqrt(2)*c_etaW*deltaU*rho0/(3*pi**2*sqrt(mu_W)*sqrt(mu_eta)*(deltaU + 1))
 direction-splitting invariant = 0
 Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U = 0).
@@ -48,7 +40,8 @@ Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U
 M_mix^(split U) = 88*Z_W*(deltaU + 1)*(rho0 + 1)**2/(pi**2*(eps_eta - 1)*(-11*deltaU + eps_W*(9*deltaU + 11) - 11))
 R_target^(split U) = -Lambda*(eps_eta - 1)*(11*deltaU - eps_W*(9*deltaU + 11) + 11)**2/(121*Z_W*(deltaU + 1)**2*(rho0 + 1)**2)
 product = 8*Lambda*(11*deltaU - eps_W*(9*deltaU + 11) + 11)/(11*pi**2*(deltaU + 1))
-product law = 0
+M_mix split is M_mix_flat under eps_W -> eps_W_split = 0
+R_target split is R_target_flat under eps_W -> eps_W_split = 0
 
 ----------------------------------------------------------------------------------------
 22.5 — Small-splitting expansions
@@ -72,5 +65,3 @@ STAGE 22 THEOREM LEDGER
    exact invariant D_dir = -kappa0*kappa1*g_W*rho0*deltaU/(1+deltaU).
 5. Therefore the Stage-21 factorization survives at the scalar-placement level, but
    source/loading collinearity is no longer generic once deltaU != 0 and rho0 != 0.
-
-EXIT_CODE: 0

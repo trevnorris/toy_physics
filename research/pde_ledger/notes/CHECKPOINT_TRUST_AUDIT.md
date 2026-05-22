@@ -9,7 +9,8 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-22`
+Snapshot date: `2026-05-22` (batch III.1 close — no checkpoint stages in
+range 037-048, snapshot tier unchanged)
 
 ## Scope
 

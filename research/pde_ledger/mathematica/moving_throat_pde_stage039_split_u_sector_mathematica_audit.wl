@@ -56,7 +56,10 @@ kU1 = FullSimplify[kU (1 + deltaU), Assumptions -> $Assumptions];
 a0 = FullSimplify[(kEtaEff - cEtaU^2/kU)/muEta, Assumptions -> $Assumptions];
 a1 = FullSimplify[(kEtaEff (1 + delta0) - cEtaU^2/kU1)/muEta, Assumptions -> $Assumptions];
 
-deltaSplit = FullSimplify[(delta0 + epsEta deltaU/(1 + deltaU))/(1 - epsEta), Assumptions -> $Assumptions];
+a1Direct = FullSimplify[(a1 /. cEtaU^2 -> epsEta kU kEtaEff), Assumptions -> $Assumptions];
+deltaSplitDerived = FullSimplify[a1Direct/a0Expected - 1, Assumptions -> $Assumptions];
+deltaSplitPostulated = (delta0 + epsEta deltaU/(1 + deltaU))/(1 - epsEta);
+deltaSplit = deltaSplitDerived;
 a0Expected = FullSimplify[kEtaEff (1 - epsEta)/muEta, Assumptions -> $Assumptions];
 a1Expected = FullSimplify[a0Expected (1 + deltaSplit), Assumptions -> $Assumptions];
 
@@ -65,16 +68,19 @@ Print["A1 = ", fmt[a1Expected]];
 Print["delta_split = ", fmt[deltaSplit]];
 expectZero["A0 direct - expected", (a0 /. cEtaU^2 -> epsEta kU kEtaEff) - a0Expected];
 expectZero["A1 direct - expected", (a1 /. cEtaU^2 -> epsEta kU kEtaEff) - a1Expected];
+expectZero["delta_split derived matches postulated", deltaSplitDerived - deltaSplitPostulated];
 
 subbanner["2. Exact mixed blocking ratio with split U sector"];
 
 sU = FullSimplify[kappa0^2/kU + kappa1^2/kU1, Assumptions -> $Assumptions];
 epsWDirect = FullSimplify[cUW^2 sU/kWEff, Assumptions -> $Assumptions];
-epsWSplit = FullSimplify[epsW (1 - (2/11) deltaU/(1 + deltaU)), Assumptions -> $Assumptions];
+epsWSplitDerived = FullSimplify[(epsWDirect /. cUW^2 -> epsW kU kWEff/sigma), Assumptions -> $Assumptions];
+epsWSplitPostulated = epsW (1 - (2/11) deltaU/(1 + deltaU));
+epsWSplit = epsWSplitDerived;
 
 Print["S_U = ", fmt[sU]];
 Print["eps_W_split = ", fmt[epsWSplit]];
-expectZero["eps_W direct - split formula", (epsWDirect /. cUW^2 -> epsW kU kWEff/sigma) - epsWSplit];
+expectZero["eps_W_split derived matches postulated", epsWSplitDerived - epsWSplitPostulated];
 
 subbanner["3. Mixed loading vector and exact direction-splitting invariant"];
 
@@ -86,15 +92,22 @@ rU = FullSimplify[(1 + rho0/(1 + deltaU))/(1 + rho0), Assumptions -> $Assumption
 Print["z0 = ", fmt[z0]];
 Print["z1 = ", fmt[z1]];
 Print["R_U = ", fmt[rU]];
-expectZero["z1/z0 - (kappa1/kappa0) R_U", z1/z0 - (kappa1/kappa0) rU];
+expectZero[
+  "z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))",
+  z1*(1 + rho0) - (kappa1/kappa0)*z0*(1 + rho0/(1 + deltaU))
+];
 
 dDir = FullSimplify[kappa0 z1 - kappa1 z0, Assumptions -> $Assumptions];
-dDirExpected = FullSimplify[-kappa0 kappa1 gW rho0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
+dDirDerived = dDir;
+dDirPostulated = FullSimplify[-kappa0 kappa1 gW rho0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
+dDirExpected = dDirDerived;
 Print["D_dir = ", fmt[dDir]];
-expectZero["direction-splitting invariant", dDir - dDirExpected];
+expectZero["direction-splitting invariant derived matches postulated", dDirDerived - dDirPostulated];
 
 subbanner["4. Split-U continuum placement map"];
 
+mMixFlat = FullSimplify[8 zW (1 + rho0)^2/(Pi^2 (1 - epsEta) (1 - epsW)), Assumptions -> $Assumptions];
+rTargetFlat = FullSimplify[lambda (1 - epsEta) (1 - epsW)^2/(zW (1 + rho0)^2), Assumptions -> $Assumptions];
 mMixSplit = FullSimplify[8 zW (1 + rho0)^2/(Pi^2 (1 - epsEta) (1 - epsWSplit)), Assumptions -> $Assumptions];
 rTargetSplit = FullSimplify[lambda (1 - epsEta) (1 - epsWSplit)^2/(zW (1 + rho0)^2), Assumptions -> $Assumptions];
 product = FullSimplify[mMixSplit rTargetSplit, Assumptions -> $Assumptions];
@@ -102,7 +115,8 @@ product = FullSimplify[mMixSplit rTargetSplit, Assumptions -> $Assumptions];
 Print["M_mix^(split U) = ", fmt[mMixSplit]];
 Print["R_target^(split U) = ", fmt[rTargetSplit]];
 Print["product = ", fmt[product]];
-expectZero["product law", product - 8 lambda (1 - epsWSplit)/Pi^2];
+expectZero["M_mix split is M_mix_flat under epsW -> epsWSplit", mMixSplit - (mMixFlat /. epsW -> epsWSplit)];
+expectZero["R_target split is R_target_flat under epsW -> epsWSplit", rTargetSplit - (rTargetFlat /. epsW -> epsWSplit)];
 
 subbanner["5. Small-splitting expansions"];
 

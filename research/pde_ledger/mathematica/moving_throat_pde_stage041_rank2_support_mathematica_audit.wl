@@ -32,9 +32,9 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 024 — RANK-2 SUPPORT COMPLETION"];
 
-Clear[a0, delta, xi, m, n, q, r, rU];
+Clear[a0, delta, xi, m, n, q, r, rU, t];
 $Assumptions =
-  Element[{a0, delta, xi, m, n, q, r, rU}, Reals] &&
+  Element[{a0, delta, xi, m, n, q, r, rU, t}, Reals] &&
   a0 > 0 && delta > 0 && xi > 0 && rU > 0;
 
 lambda0 = 2/9;
@@ -85,13 +85,14 @@ expectZero["tracking collapse", nTrack - (gQ - m)];
 
 subbanner["4. Source-tied theorem: support remains aligned with the original source vector"];
 
-q2Src = lambda0 rU^2;
-r2Src = lambda0;
-qrSrc = lambda0 rU;
-qrDiffSq = lambda0 (rU - 1)^2;
-
+(* Derive nSrc from nExpected by substituting the source-tied invariants.
+   The physical specialization is q = t rU, r = t with t^2 = lambda0. *)
 nSrc = FullSimplify[
-  (xi (delta + xi) - m (delta + (1 + q2Src) xi))/(delta + (1 + r2Src) xi - m qrDiffSq),
+  nExpected /. {q -> t rU, r -> t},
+  Assumptions -> $Assumptions
+];
+nSrc = FullSimplify[
+  Expand[nSrc] /. t^2 -> lambda0,
   Assumptions -> $Assumptions
 ];
 nSrcExpected = FullSimplify[

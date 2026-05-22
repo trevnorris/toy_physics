@@ -111,7 +111,10 @@ R_U = sp.simplify((1 + rho0 / (1 + deltaU)) / (1 + rho0))
 print("z0 =", z0)
 print("z1 =", z1)
 print("R_U =", R_U)
-expect_zero("z1/z0 - (kappa1/kappa0) R_U", sp.simplify(z1 / z0 - (kappa1 / kappa0) * R_U))
+expect_zero(
+    "z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))",
+    sp.simplify(z1 * (1 + rho0) - (kappa1 / kappa0) * z0 * (1 + rho0 / (1 + deltaU))),
+)
 
 D_dir = sp.simplify(kappa0 * z1 - kappa1 * z0)
 D_dir_expected = sp.simplify(-kappa0 * kappa1 * g_W * rho0 * deltaU / (1 + deltaU))
@@ -123,6 +126,8 @@ print("Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently 
 subbanner("22.4 — Split-U continuum placement map")
 
 # Stage-21 dimensionless kernel ratios, now with split effective blocking.
+M_mix_flat = sp.simplify(8 * Z_W * (1 + rho0)**2 / (pi**2 * (1 - eps_eta) * (1 - eps_W)))
+R_target_flat = sp.simplify(Lambda * (1 - eps_eta) * (1 - eps_W)**2 / (Z_W * (1 + rho0)**2))
 M_mix_split = sp.simplify(8 * Z_W * (1 + rho0)**2 / (pi**2 * (1 - eps_eta) * (1 - eps_W_split)))
 R_target_split = sp.simplify(Lambda * (1 - eps_eta) * (1 - eps_W_split)**2 / (Z_W * (1 + rho0)**2))
 product = sp.simplify(M_mix_split * R_target_split)
@@ -130,7 +135,8 @@ product = sp.simplify(M_mix_split * R_target_split)
 print("M_mix^(split U) =", M_mix_split)
 print("R_target^(split U) =", R_target_split)
 print("product =", product)
-expect_zero("product law", product - 8 * Lambda * (1 - eps_W_split) / pi**2)
+expect_zero("M_mix split is M_mix_flat under eps_W -> eps_W_split", M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))
+expect_zero("R_target split is R_target_flat under eps_W -> eps_W_split", R_target_split - R_target_flat.subs(eps_W, eps_W_split))
 
 subbanner("22.5 — Small-splitting expansions")
 

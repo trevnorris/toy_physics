@@ -75,11 +75,7 @@ $Assumptions =
   muW > 0 && kEtaEff > 0 && kWEff > 0 && kU > 0;
 
 applyDimless[expr_] := Module[{res},
-  res = expr /. {
-    (cEtaU*cUW + cEtaW*kU)^2 -> zW kEtaEff kWEff kU^2 (1 + rho)^2,
-    (cEtaU*cUW + cEtaW*kU)^(-2) -> 1/(zW kEtaEff kWEff kU^2 (1 + rho)^2)
-  };
-  res = Expand[res /. cUW*cEtaU -> rho kU cEtaW];
+  res = Expand[PowerExpand[Factor[expr /. cUW*cEtaU -> rho kU cEtaW]]];
   res = Expand[
     res /. {
       cUW^4 -> (epsW kU kWEff/sigma)^2,
@@ -163,6 +159,26 @@ expectZero["d M / d epsW factorization", dMDepsW - 8 zW (1 + rho)^2/(Pi^2 (1 - e
 expectZero["d R / d epsW factorization", dRDepsW + 2 lambda (1 - epsEta) (1 - epsW)/(zW (1 + rho)^2)];
 expectZero["d M / d rho factorization", dMDrho - 16 zW (1 + rho)/(Pi^2 (1 - epsEta) (1 - epsW))];
 expectZero["d R / d rho factorization", dRDrho + 2 lambda (1 - epsEta) (1 - epsW)^2/(zW (1 + rho)^3)];
+
+(* Sign assertions under the natural transfer-branch assumption *)
+expectZero["sign(d delta / d epsEta) - 1",
+  dDeltaDepsEta (1 - epsEta)^2/delta0 - 1];
+expectZero["sign(d M / d Z_W) - 1",
+  dMdzW Pi^2 (1 - epsEta) (1 - epsW)/(8 (1 + rho)^2) - 1];
+expectZero["sign(d R / d Z_W) + 1",
+  dRdzW zW^2 (1 + rho)^2/(lambda (1 - epsEta) (1 - epsW)^2) + 1];
+expectZero["sign(d M / d epsEta) - 1",
+  dMDepsEta Pi^2 (1 - epsEta)^2 (1 - epsW)/(8 zW (1 + rho)^2) - 1];
+expectZero["sign(d R / d epsEta) + 1",
+  dRDepsEta zW (1 + rho)^2/(lambda (1 - epsW)^2) + 1];
+expectZero["sign(d M / d epsW) - 1",
+  dMDepsW Pi^2 (1 - epsEta) (1 - epsW)^2/(8 zW (1 + rho)^2) - 1];
+expectZero["sign(d R / d epsW) + 1",
+  dRDepsW zW (1 + rho)^2/(2 lambda (1 - epsEta) (1 - epsW)) + 1];
+expectZero["sign(d M / d rho) - 1",
+  dMDrho Pi^2 (1 - epsEta) (1 - epsW)/(16 zW (1 + rho)) - 1];
+expectZero["sign(d R / d rho) + 1",
+  dRDrho zW (1 + rho)^3/(2 lambda (1 - epsEta) (1 - epsW)^2) + 1];
 
 Print["On the natural nonvanishing transfer branch 1+rho > 0:"];
 Print["  delta increases with epsEta"];

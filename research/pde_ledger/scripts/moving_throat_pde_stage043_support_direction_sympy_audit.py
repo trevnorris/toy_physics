@@ -100,6 +100,20 @@ print("A_phi^(eff) =")
 sp.pprint(sp.factor(Aphi_eff))
 expect_zero("A_phi^(eff) - expected", Aphi_eff - Aphi_eff_expected)
 
+# F2: minimal-overlap baseline (delta_U = 0) reduces to the trivial pole shift.
+Aphi_eff_min = sp.simplify(Aphi_eff.subs(delta_U, 0))
+Aphi_eff_min_expected = sp.simplify(Kphi_eff - cUphi**2 * sigma / KU)
+print("A_phi^(eff) at delta_U=0 =")
+sp.pprint(sp.factor(Aphi_eff_min))
+expect_zero("A_phi^(eff) at delta_U=0 (minimal)", Aphi_eff_min - Aphi_eff_min_expected)
+
+# F2: the split-vs-minimal overlap ratio is exactly (1 - (2/11) delta_U/(1+delta_U)).
+overlap_ratio = sp.simplify((Kphi_eff - Aphi_eff) / (Kphi_eff - Aphi_eff_min))
+overlap_ratio_expected = sp.simplify(1 - sp.Rational(2, 11) * delta_U / (1 + delta_U))
+print("split-vs-minimal overlap ratio =")
+sp.pprint(sp.factor(overlap_ratio))
+expect_zero("split-vs-minimal overlap ratio", overlap_ratio - overlap_ratio_expected)
+
 subbanner("26.3 — Exact physical support baseline")
 
 # Continuum expression from y0^2 / [A0 * Aphi_eff], with A0 = Keta_eff(1-eps_eta)/mu_eta,
@@ -108,16 +122,30 @@ Msupp_cont = sp.simplify(
     (kappa0**2 * cB**2 * (1 + ceU * cUphi / (KU * cB))**2 / (mu_eta * mu_phi))
     / ((Keta_eff * (1 - eps_eta) / mu_eta) * (Kphi_eff * (1 - eps_phi_split.subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))) / mu_phi))
 )
-Msupp_expected = sp.simplify(
-    (sp.Rational(8, 1) / sp.pi**2)
+
+# F3: M_supp must not depend on the bare-mode masses mu_eta, mu_phi (they must cancel).
+expect_zero("M_supp independent of mu_eta", sp.simplify(sp.diff(Msupp_cont, mu_eta)))
+expect_zero("M_supp independent of mu_phi", sp.simplify(sp.diff(Msupp_cont, mu_phi)))
+
+# F3: structural form check with a FREE baseline B (no hand-substitution of kappa0^2).
+B = sp.symbols("B_baseline", positive=True, real=True)
+Msupp_cont_in_B = sp.simplify(Msupp_cont.subs(kappa0**2, B))
+Msupp_struct_expected = sp.simplify(
+    B
     * (cB**2 / (Keta_eff * Kphi_eff))
     * (1 + ceU * cUphi / (KU * cB))**2
     / ((1 - eps_eta) * (1 - eps_phi_split.subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))))
 )
-Msupp_cont_eval = sp.simplify(Msupp_cont.subs(kappa0**2, sp.Rational(8, 1) / sp.pi**2))
-print("M_supp =")
+print("M_supp structural form (free baseline B) =")
+sp.pprint(sp.factor(Msupp_cont_in_B))
+expect_zero("M_supp structural form (free baseline)", Msupp_cont_in_B - Msupp_struct_expected)
+
+# F3: baseline value identification, isolated from the structural check.
+Msupp_cont_eval = sp.simplify(Msupp_cont_in_B.subs(B, sp.Rational(8, 1) / sp.pi**2))
+Msupp_expected = sp.simplify(Msupp_struct_expected.subs(B, sp.Rational(8, 1) / sp.pi**2))
+print("M_supp at baseline B = 8/pi^2 =")
 sp.pprint(sp.factor(Msupp_cont_eval))
-expect_zero("M_supp - expected", Msupp_cont_eval - Msupp_expected)
+expect_zero("M_supp at baseline B = 8/pi^2", Msupp_cont_eval - Msupp_expected)
 
 subbanner("26.4 — Exact tracking condition relative to the mixed vector")
 

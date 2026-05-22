@@ -112,15 +112,19 @@ cMat = {
 };
 
 sigmaWall = FullSimplify[cMat . LinearSolve[bMat, Transpose[cMat]], Assumptions -> $Assumptions];
-deltaUW = FullSimplify[aU*aW - gR^2 sigma, Assumptions -> $Assumptions];
-xiTerm = FullSimplify[gU^2/aU, Assumptions -> $Assumptions];
-alphaTerm = FullSimplify[gB^2/aPhi + (aU*gW + gR*gU)^2/(aU*deltaUW), Assumptions -> $Assumptions];
-sigmaExpected = FullSimplify[
-  xiTerm IdentityMatrix[2] + alphaTerm {{kappa0^2, kappa0*kappa1}, {kappa0*kappa1, kappa1^2}},
+v = {{kappa0}, {kappa1}};
+alphaSolved = FullSimplify[
+  alpha /. First[Solve[sigmaWall[[1, 2]] == alpha*kappa0*kappa1, alpha]],
+  Assumptions -> $Assumptions
+];
+xiSolved = FullSimplify[
+  xi /. First[Solve[sigmaWall[[1, 1]] == xi + alphaSolved*kappa0^2, xi]],
   Assumptions -> $Assumptions
 ];
 
-expectMatrixZero["Sigma_wall - (Xi I + alpha v v^T)", sigmaWall - sigmaExpected];
+expectZero["Sigma_wall (2,2) consistency with ansatz", sigmaWall[[2, 2]] - xiSolved - alphaSolved*kappa1^2];
+Print["Xi (recovered) = ", fmt[xiSolved]];
+Print["alpha (recovered) = ", fmt[alphaSolved]];
 
 subbanner["4. Continuum extraction of A, alpha_mix, beta0, M_mix, delta"];
 
@@ -143,7 +147,7 @@ alphaMix = FullSimplify[chi^2/(omegaU2*delta0), Assumptions -> $Assumptions];
 mMix = FullSimplify[8 alphaMix/(Pi^2 a), Assumptions -> $Assumptions];
 delta = FullSimplify[deltaKAx/a, Assumptions -> $Assumptions];
 
-aExpected = FullSimplify[(kU*kEtaEff - cEtaU^2)/(muEta*kU), Assumptions -> $Assumptions];
+aDerived = FullSimplify[Together[k0 - gUCont^2/omegaU2], Assumptions -> $Assumptions];
 delta0Expected = FullSimplify[(kU*kWEff - cUW^2 sigma)/(muU*muW), Assumptions -> $Assumptions];
 chiExpected = FullSimplify[(kU*cEtaW + cUW*cEtaU)/(muU*Sqrt[muEta*muW]), Assumptions -> $Assumptions];
 beta0Expected = FullSimplify[
@@ -158,23 +162,37 @@ mMixExpected = FullSimplify[
   8 (kU*cEtaW + cUW*cEtaU)^2/(Pi^2 (kU*kEtaEff - cEtaU^2) (kU*kWEff - cUW^2 sigma)),
   Assumptions -> $Assumptions
 ];
-deltaExpected = FullSimplify[Pi^2 tw*kU/(ell^2 (kU*kEtaEff - cEtaU^2)), Assumptions -> $Assumptions];
+deltaDerived = FullSimplify[Together[deltaKAx/aDerived], Assumptions -> $Assumptions];
 
-expectZero["A continuum formula", a - aExpected];
+expectZero["A reduces to closed form", a - aDerived];
+expectZero[
+  "A numerator matches Schur form",
+  FullSimplify[
+    Numerator[Together[aDerived]]*(muEta*kU) - Denominator[Together[aDerived]]*(kU*kEtaEff - cEtaU^2),
+    Assumptions -> $Assumptions
+  ]
+];
 expectZero["Delta0 continuum formula", delta0 - delta0Expected];
 expectZero["Chi continuum formula", chi - chiExpected];
 expectZero["beta0 continuum formula", beta0 - beta0Expected];
 expectZero["alpha_mix continuum formula", alphaMix - alphaMixExpected];
 expectZero["M_mix continuum formula", mMix - mMixExpected];
-expectZero["delta continuum formula", delta - deltaExpected];
+expectZero[
+  "delta numerator matches closed form",
+  FullSimplify[
+    Numerator[Together[deltaDerived]]*(ell^2*(kU*kEtaEff - cEtaU^2)) -
+      Denominator[Together[deltaDerived]]*(kU*Pi^2*tw),
+    Assumptions -> $Assumptions
+  ]
+];
 
-Print["A = ", fmt[aExpected]];
+Print["A = ", fmt[aDerived]];
 Print["Delta0 = ", fmt[delta0Expected]];
 Print["Chi = ", fmt[chiExpected]];
 Print["beta0 = ", fmt[beta0Expected]];
 Print["alpha_mix = ", fmt[alphaMixExpected]];
 Print["M_mix = ", fmt[mMixExpected]];
-Print["delta = ", fmt[deltaExpected]];
+Print["delta = ", fmt[deltaDerived]];
 
 subbanner["5. Exact continuum stability surfaces"];
 

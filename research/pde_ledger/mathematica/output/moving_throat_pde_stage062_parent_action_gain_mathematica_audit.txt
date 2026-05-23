@@ -1,34 +1,29 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage062_parent_action_gain_mathematica_audit.wl
-# Date: 2026-05-11T12:54:50-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 045 — PARENT ACTION GAIN
 ========================================================================================
-U(rho) = (capitalK*rho^5)/4
-h(rho) = (5*capitalK*rho^4)/4
-h'(rho) = 5*capitalK*rho^3
-c_s^2(rho) = (5*capitalK*rho^4)/m
-h'(rho) - m c_s^2 / rho = 0
-PASS: h'(rho) - m c_s^2 / rho
+h'(rho) = m c_s^2 / rho (general polytrope) = 0
+PASS: h'(rho) = m c_s^2 / rho (general polytrope)
+Specializing to n=5:
+  U(rho) = (capitalK*rho^5)/4
+  h(rho) = (5*capitalK*rho^4)/4
+  h'(rho) = 5*capitalK*rho^3
+  c_s^2(rho) = (5*capitalK*rho^4)/m
+n=5 specialization of h' = m c_s^2/rho = 0
+PASS: n=5 specialization of h' = m c_s^2/rho
+inconsistency probe nonzero: capitalK*(5 - 6*rho)*rho^3
 Theta_sigma = (csStarSq*m*nSS)/rhoStar
 Lambda_phi = gPhi*oSP
-chi_sigma^(eff) = rhoStar/(csStarSq*m*nSS)
-G_micro = (gPhi^2*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
-G_micro - expected parent formula = 0
-PASS: G_micro - expected parent formula
-C_(sigma phi)^2 definition = oSP^2/(nPP*nSS)
-coherence-factor decomposition = 0
-PASS: coherence-factor decomposition
+sigmaStar = -((gPhi*oSP*phi*rhoStar)/(csStarSq*m*nSS))
+S_eff = (kX*phi^2)/2 - (gPhi^2*oSP^2*phi^2*rhoStar)/(2*csStarSq*m*nSS)
+G_micro from action = (gPhi^2*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
+Mathematica two-route consistency = 0
+PASS: Mathematica two-route consistency
+gMicro from parent action vs closed form = 0
+PASS: gMicro from parent action vs closed form
+Coherence factor (definition):  C_(sigma phi)^2 := O_sp^2 / (N_ss N_pp)
 Xi_micro = (gPhi^2*kappa*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
-Xi_micro - parent projected formula = 0
-PASS: Xi_micro - parent projected formula
+kappa solved from xiMicro = xiTarget: (ell^2*kX)/tX
+PASS: kappa solution equals kX ell^2/tX
 
 Stage 062 Mathematica audit passed.
-
-EXIT_CODE: 0

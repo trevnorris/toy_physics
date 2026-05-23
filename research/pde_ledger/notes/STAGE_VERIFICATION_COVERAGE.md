@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-22` (batch III.2 close)
+Snapshot date: `2026-05-22` (batch III.3 close)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-22`: 60 of 253 stages red-team verified.
+As of `2026-05-22`: 72 of 253 stages red-team verified.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -56,14 +56,17 @@ As of `2026-05-22`: 60 of 253 stages red-team verified.
 | II.1 | `024--036` | 13 | 13 | 2026-05-22 |
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 |
 | III.2 | `049--060` | 12 | 12 | 2026-05-22 |
-| III.3 onward | `061--253` | 193 | 0 | pending |
+| III.3 | `061--072` | 12 | 12 | 2026-05-22 |
+| III.4 onward | `073--253` | 181 | 0 | pending |
 
-Cumulative findings closed: ~152 (`tautological_check` dominant,
+Cumulative findings closed: ~179 (`tautological_check` dominant,
 `mathematica_transliteration` second, then `insufficient_verification` and
-`hardcoded_result`). One stage in III.2 (060) flagged `material_change: true`
-from a `Csol = a/(exp(a*L)-1)` restructure of a previously-failing
-`sp.solve`; downstream consumers are still `pending` so no immediate
-cascade. See per-batch summaries in `redteam/batches/batch_<ID>.md`.
+`hardcoded_result`). Two stages now carry `material_change: true`: III.2
+stage 060 (a `Csol = a/(exp(a*L)-1)` restructure of a previously-failing
+`sp.solve`) and III.3 stage 068 (`Solve`-derived `Wfail_res`/`Wfail_match`
+matching prior postulated forms symbolically); downstream consumers are
+still `pending` so no immediate cascade in either case. See per-batch
+summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update
 

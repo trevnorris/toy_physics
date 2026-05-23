@@ -99,4 +99,26 @@ expect_zero(
     - sp.simplify(m * cs_star_sq * TX * Pe_req / (rho_star * Npp * C2 * L**2 * Delta0)),
 )
 
+# Derive g_phi^2 thresholds from G_micro = G_fail (Cauchy-anchored derivation).
+gphi_sq = sp.symbols("gphi_sq_solve", positive=True, real=True)
+G_micro_gphi = G_micro.subs(g_phi**2, gphi_sq)
+sol_fail = sp.solve(G_micro_gphi - G_fail, gphi_sq)
+sol_suff = sp.solve(G_micro_gphi - G_suff, gphi_sq)
+assert len(sol_fail) == 1 and len(sol_suff) == 1, "expected unique g_phi^2 root"
+expect_zero(
+    "g_fail^2 from solve(G_micro=G_fail) matches hand-rearranged form",
+    sp.simplify(sol_fail[0] - g_fail_sq),
+)
+expect_zero(
+    "g_suff^2 from solve(G_micro=G_suff) matches hand-rearranged form",
+    sp.simplify(sol_suff[0] - g_suff_sq),
+)
+
+# Cauchy-Schwarz: O_sp^2 <= N_ss N_pp, with equality at perfect alignment.
+# At C^2 = 1 the microscopic gain saturates G_max.
+expect_zero(
+    "G_max = G_micro at Cauchy saturation (O_sp^2 = N_ss N_pp)",
+    sp.simplify(G_micro.subs(Osp**2, Nss * Npp) - G_max),
+)
+
 print("\nAll Stage 46 symbolic checks passed.")

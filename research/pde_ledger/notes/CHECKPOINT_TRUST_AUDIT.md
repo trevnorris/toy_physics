@@ -9,11 +9,14 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-22` (batch III.2 close — checkpoint stage 051
-audited and verified; both findings (taut, math_translit) closed with
-forward-map verification via Stage 047/030 and independent Solve on Reals;
-tier table unchanged because the checkpoint's substantive claim was
-already strong, the findings only affected verification non-tautologicity)
+Snapshot date: `2026-05-22` (batch III.3 close — checkpoint stage 069
+audited and verified; three findings (taut, math_translit, prov) closed by
+replacing `Cres2`/`Wfail_res`/`delta_fail` definitional identities with a
+parameterized `W_match` generator + monotonicity check (SymPy) and a
+`Cres2Prim`/`Pres = 1/Cres2` route with `PresGap` via `Solve`
+(Mathematica); tier table unchanged because the checkpoint's substantive
+threshold-window claim was already strong, the findings only affected
+verification non-tautologicity)
 
 ## Scope
 
@@ -67,7 +70,7 @@ Disposition: `ready for citation support`
 | Stage(s) | Why currently strong | Immediate next action |
 |---|---|---|
 | `051` | Exact symbolic product law, endpoint limits, threshold rewrite, and closed root solve; no open review findings. | None urgent. Add numerical stress only if this threshold is later used numerically. |
-| `069` | Exact reduced threshold-window and profile-penalty algebra; no open review findings. | None urgent. |
+| `069` | Exact reduced threshold-window and profile-penalty algebra; no open review findings. Red-team batch III.3 (2026-05-22) reverified end-to-end with no tier shift after replacing the `Cres2`/`Wfail_res`/`delta_fail` definitional identities with a parameterized `W_match` generator + monotonicity check (SymPy) and a `Cres2Prim` primitive + `Pres = 1/Cres2` derivation + `PresGap` via `Solve` (Mathematica); upstream `Pres`/`Wfail_match` carry-forward now carries an explicit provenance comment. | None urgent. |
 | `096` | Re-derives the isotropic `l=0 <-> l=2` decoupling and then evaluates the carried Stage 092 obstruction formula on the isotropic branch to recover the `3/4 + 1/4` conservative module. | None urgent. |
 | `003` | Exact Schur-complement replay, exact one-mode pole split, grouped real `P_2` isotropy/anomaly bookkeeping, independent Mathematica mirror (red-team batch I.1 patched a multi-line `lRed = ...` continuation defect that had captured only kinetic terms -- downstream results unaffected, flowed through `mMat/kMat/cMat/oMat`; red-team batch I.2 caught the same continuation-defect class at non-checkpoint stage 021 and patched it in iter 2), and now-runnable shared numerical stress. | None urgent. |
 | `022` | Exact grouped-`P_2` normalization bridge, explicit Stage-021 dictionary round-trip for `N0/N2/N4`, and independent Mathematica replay of the normalization-product solve; red-team batch I.2 (2026-05-21) reverified end-to-end with no material change after rewriting the Mathematica mirror Sections I/II/IV/V to `LinearSolve` + `SphericalHankelH1` (F1) and removing a tautological round-trip block (F2). | None urgent. |

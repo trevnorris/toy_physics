@@ -1,54 +1,58 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage069_final_reduced_verdict_mathematica_audit.wl
-# Date: 2026-05-11T12:56:36-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT
 ========================================================================================
 Matched-branch fail threshold       = PeReq/(Delta0 + DeltaGap)
 Matched-branch success threshold    = PeReq/Delta0
-Resonance-family fail threshold     = (PeReq*(1 + PresGap))/(Delta0 + DeltaGap)
-Resonance-family success threshold  = (PeReq*(1 + PresGap))/Delta0
+Resonance-family fail threshold     = PeReq/(Cres2Prim*(Delta0 + DeltaGap))
+Resonance-family success threshold  = PeReq/(Cres2Prim*Delta0)
+1 - C_res^2 > 0  -> 1 - Cres2Prim
+PASS: 1 - C_res^2
+P_res - 1 > 0  -> -1 + Cres2Prim^(-1)
+PASS: P_res - 1
 P_res - 1/C_res^2 = 0
 PASS: P_res - 1/C_res^2
-matched window width = 0
-PASS: matched window width
 Delta_inf - Delta_0 > 0  -> DeltaGap
 PASS: Delta_inf - Delta_0
-matched success threshold - matched fail threshold > 0  -> (DeltaGap*PeReq)/(Delta0^2 + Delta0*DeltaGap)
-PASS: matched success threshold - matched fail threshold
 resonance fail threshold - Pe_req/(C_res^2 Delta_inf) = 0
 PASS: resonance fail threshold - Pe_req/(C_res^2 Delta_inf)
 resonance success threshold - Pe_req/(C_res^2 Delta_0) = 0
 PASS: resonance success threshold - Pe_req/(C_res^2 Delta_0)
-1 - C_res^2 > 0  -> PresGap/(1 + PresGap)
-PASS: 1 - C_res^2
-P_res - 1 > 0  -> PresGap
-PASS: P_res - 1
-Failure-side profile-sensitive width = (PeReq*PresGap)/(Delta0 + DeltaGap)
-Success-side profile-sensitive width = (PeReq*PresGap)/Delta0
+Pres-PresGap consistency via Solve = 0
+PASS: Pres-PresGap consistency via Solve
+matched fail edge from W_match(Delta_inf) = 0
+PASS: matched fail edge from W_match(Delta_inf)
+matched success edge from W_match(Delta_0) = 0
+PASS: matched success edge from W_match(Delta_0)
+W_match decreasing in Delta_eff > 0  -> 1
+PASS: W_match decreasing in Delta_eff
+P_res from band-edge ratio matches (1 + Pres_gap) = 0
+PASS: P_res from band-edge ratio matches (1 + Pres_gap)
+P_res from success-band ratio agrees with failure-band ratio = 0
+PASS: P_res from success-band ratio agrees with failure-band ratio
+matched window width = 0
+PASS: matched window width
+matched success threshold - matched fail threshold > 0  -> (DeltaGap*PeReq)/(Delta0^2 + Delta0*DeltaGap)
+PASS: matched success threshold - matched fail threshold
+Failure-side profile-sensitive width = (PeReq - Cres2Prim*PeReq)/(Cres2Prim*Delta0 + Cres2Prim*DeltaGap)
+Success-side profile-sensitive width = (PeReq - Cres2Prim*PeReq)/(Cres2Prim*Delta0)
 failure-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_inf) = 0
 PASS: failure-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_inf)
 success-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_0) = 0
 PASS: success-side width - Pe_req(1-C_res^2)/(C_res^2 Delta_0)
 P_res - 1 - (1-C_res^2)/C_res^2 = 0
 PASS: P_res - 1 - (1-C_res^2)/C_res^2
-failure-side width > 0  -> (PeReq*PresGap)/(Delta0 + DeltaGap)
+failure-side width > 0  -> (PeReq - Cres2Prim*PeReq)/(Cres2Prim*Delta0 + Cres2Prim*DeltaGap)
 PASS: failure-side width
-success-side width > 0  -> (PeReq*PresGap)/Delta0
+success-side width > 0  -> (PeReq - Cres2Prim*PeReq)/(Cres2Prim*Delta0)
 PASS: success-side width
-failure-band point - matched fail edge > 0  -> (PeReq*PresGap*vFail)/(Delta0 + DeltaGap + Delta0*vFail + DeltaGap*vFail)
+failure-band point - matched fail edge > 0  -> -(((-1 + Cres2Prim)*PeReq*vFail)/(Cres2Prim*(Delta0 + DeltaGap)*(1 + vFail)))
 PASS: failure-band point - matched fail edge
-resonance fail edge - failure-band point > 0  -> (PeReq*PresGap)/(Delta0 + DeltaGap + Delta0*vFail + DeltaGap*vFail)
+resonance fail edge - failure-band point > 0  -> -(((-1 + Cres2Prim)*PeReq)/(Cres2Prim*(Delta0 + DeltaGap)*(1 + vFail)))
 PASS: resonance fail edge - failure-band point
-success-band point - matched success edge > 0  -> (PeReq*PresGap*vSucc)/(Delta0 + Delta0*vSucc)
+success-band point - matched success edge > 0  -> (PeReq*vSucc - Cres2Prim*PeReq*vSucc)/(Cres2Prim*Delta0 + Cres2Prim*Delta0*vSucc)
 PASS: success-band point - matched success edge
-resonance success edge - success-band point > 0  -> (PeReq*PresGap)/(Delta0 + Delta0*vSucc)
+resonance success edge - success-band point > 0  -> (PeReq - Cres2Prim*PeReq)/(Cres2Prim*Delta0 + Cres2Prim*Delta0*vSucc)
 PASS: resonance success edge - success-band point
 
 ========================================================================================
@@ -65,5 +69,3 @@ Therefore the only profile-sensitive regions are the exact side-bands
 and
   Pe_req/Delta_0 < W_wall < Pe_req/(C_res^2 Delta_0),
 whose relative widths are both P_res - 1 = (1 - C_res^2)/C_res^2.
-
-EXIT_CODE: 0

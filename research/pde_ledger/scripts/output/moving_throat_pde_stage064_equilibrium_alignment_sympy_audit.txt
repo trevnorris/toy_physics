@@ -1,19 +1,25 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
-# Date: 2026-05-11T12:44:15-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 47 — PARENT EQUILIBRIUM SOURCE/SUPPORT ALIGNMENT
 ========================================================================================
+closure chi_sigma = g_phi*chi_phi(y_loc)/H(y_loc)
+closure law chi_sigma = g_phi chi_phi/H = 0
+Npp_int = sqrt(pi)*L_int   I1_int = sqrt(pi)*L_int/H_w   I2_int = sqrt(pi)*L_int/H_w**2
+overlap O = g_phi * I1 (integral form) = 0
+overlap N_ss = g_phi^2 * I2 (integral form) = 0
 O_(sigma phi) = I1*g_phi
 N_(sigma sigma) = I2*g_phi**2
 C_(sigma phi)^2 = I1**2/(I2*N_pp)
 G_eq = I1*g_phi**2/K_X
+
+========================================================================================
+MATCHED-LAYER INTEGRAL REDUCTION (concrete Gaussian profile)
+========================================================================================
+Npp_int = sqrt(pi)*L
+I1_int  = sqrt(pi)*L/H_w
+I2_int  = sqrt(pi)*L/H_w**2
+matched-layer I1 reduction = 0
+matched-layer I2 reduction = 0
 
 ========================================================================================
 CONSTANT-COMPRESSIBILITY / MATCHED-LAYER LIMIT
@@ -36,7 +42,8 @@ ELIMINATED-SOURCE SOFTENING CHECK
 sigma_stat = Lambda*phi/Theta
 F_eff = phi**2*(K_X*Theta - Lambda**2)/(2*Theta)
 effective support softening = 0
-(Lambda^2/Theta)_eq = N_pp*g_phi**2/H_w
+Lambda^2/Theta (closure form) = I1**2*g_phi**2/(H_w*I2)
+Lambda^2/Theta (matched layer) = I1*g_phi**2
 equilibrium softening equals g_phi^2 I1 = 0
 
 ========================================================================================
@@ -46,5 +53,3 @@ STAGE 47 AUDIT PASSED
 2. The coherence factor is exactly C^2 = I1^2/(N_pp I2) and reaches 1 when H is constant on the active layer.
 3. The exact eliminated-source gain is G_eq = g_phi^2 I1/K_X.
 4. In the matched-layer limit this reproduces the Stage-45/46 best-alignment formulas.
-
-EXIT_CODE: 0

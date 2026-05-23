@@ -66,6 +66,20 @@ upsilonSuffShell = FullSimplify[(4/5)*(1 + 2/Sqrt[5])*peReq, Assumptions -> $Ass
 delta0Shell = FullSimplify[lambdaEll/((cShell*lambdaEll)^2*(cShell*lambdaEll + lambdaEll)), Assumptions -> $Assumptions];
 deltaInfShell = FullSimplify[(1 + lambdaEll/(cShell*lambdaEll))/(cShell*lambdaEll + lambdaEll), Assumptions -> $Assumptions];
 
+(* Extract the leading-order asymptotic of the full Delta_0, Delta_inf as
+   chi_s -> 0 then Lambda_ell -> infinity, and confirm the ratio to the
+   hand-built shell forms tends to 1. *)
+delta0ShellRatio = Limit[FullSimplify[(delta0 /. chiS -> 0)/delta0Shell,
+    Assumptions -> lambdaEll > 0], lambdaEll -> Infinity];
+deltaInfShellRatio = Limit[FullSimplify[(deltaInf /. chiS -> 0)/deltaInfShell,
+    Assumptions -> lambdaEll > 0], lambdaEll -> Infinity];
+Print["Delta0  shell leading-order ratio = ", fmt[delta0ShellRatio]];
+Print["DeltaInf shell leading-order ratio = ", fmt[deltaInfShellRatio]];
+expectZero["Delta0  shell leading-order matches full delta0",
+  delta0ShellRatio - 1];
+expectZero["DeltaInf shell leading-order matches full deltaInf",
+  deltaInfShellRatio - 1];
+
 Print["Upsilon_fail_shell = ", fmt[upsilonFailShell]];
 Print["Upsilon_suff_shell = ", fmt[upsilonSuffShell]];
 expectZero["shell fail asymptotic", peReq/(lambdaEll^2*deltaInfShell) - upsilonFailShell];
@@ -77,6 +91,19 @@ delta0Comp = FullSimplify[lambdaEll/((2*chiS)^2*(2*chiS + lambdaEll)), Assumptio
 deltaInfComp = FullSimplify[(1 + lambdaEll/(2*chiS))/(2*chiS + lambdaEll), Assumptions -> $Assumptions];
 upsilonFailComp = FullSimplify[peReq/(lambdaEll^2*deltaInfComp), Assumptions -> $Assumptions];
 upsilonSuffComp = FullSimplify[peReq/(lambdaEll^2*delta0Comp), Assumptions -> $Assumptions];
+
+(* Confirm the hand-built compression forms are the leading-order asymptotic of
+   the full Delta_0, Delta_inf as chi_s -> infinity at fixed Lambda_ell. *)
+delta0CompRatio = Limit[FullSimplify[delta0/delta0Comp,
+    Assumptions -> chiS > 0 && lambdaEll > 0], chiS -> Infinity];
+deltaInfCompRatio = Limit[FullSimplify[deltaInf/deltaInfComp,
+    Assumptions -> chiS > 0 && lambdaEll > 0], chiS -> Infinity];
+Print["Delta0  comp leading-order ratio = ", fmt[delta0CompRatio]];
+Print["DeltaInf comp leading-order ratio = ", fmt[deltaInfCompRatio]];
+expectZero["Delta0  comp leading-order matches full delta0",
+  delta0CompRatio - 1];
+expectZero["DeltaInf comp leading-order matches full deltaInf",
+  deltaInfCompRatio - 1];
 
 Print["Upsilon_fail_comp = ", fmt[upsilonFailComp]];
 Print["Upsilon_suff_comp = ", fmt[upsilonSuffComp]];

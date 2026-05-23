@@ -32,52 +32,67 @@ banner("STAGE 45 — PARENT-ACTION PROJECTION OF THE MICROSCOPIC GAIN")
 
 # EOS identities
 rho, K, m = sp.symbols("rho K m", positive=True, real=True)
-U = K * rho**5 / 4
-h = sp.diff(U, rho)
-hprime = sp.diff(h, rho)
-cs_sq = (1 / m) * sp.diff(K * rho**5, rho)
+n_poly = sp.symbols("n_poly", positive=True, integer=True)
+# Preserve the stage normalization U = K rho^n/(n - 1), with c_s^2 = d(K rho^n)/d rho / m.
+U_general = K * rho**n_poly / (n_poly - 1)
+h_general = sp.diff(U_general, rho)
+hprime_general = sp.diff(h_general, rho)
+cs_sq_general = sp.diff(K * rho**n_poly, rho) / m
 
-print("U(rho) =", sp.simplify(U))
-print("h(rho) =", sp.simplify(h))
-print("h'(rho) =", sp.simplify(hprime))
-print("c_s^2(rho) =", sp.simplify(cs_sq))
-expect_zero("h'(rho) - m c_s^2 / rho", hprime - m * cs_sq / rho)
+expect_zero(
+    "h'(rho) = m c_s^2 / rho (general polytrope)",
+    hprime_general - m * cs_sq_general / rho,
+)
+
+subs_n5 = {n_poly: 5}
+print("Specializing to n=5:")
+print("  U(rho) =", sp.simplify(U_general.subs(subs_n5)))
+print("  h(rho) =", sp.simplify(h_general.subs(subs_n5)))
+print("  h'(rho) =", sp.simplify(hprime_general.subs(subs_n5)))
+print("  c_s^2(rho) =", sp.simplify(cs_sq_general.subs(subs_n5)))
+expect_zero(
+    "n=5 specialization of h' = m c_s^2/rho",
+    (hprime_general - m * cs_sq_general / rho).subs(subs_n5),
+)
+
+cs_sq_wrong = sp.diff(K * rho**(n_poly + 1), rho) / m
+residual_wrong = (hprime_general - m * cs_sq_wrong / rho).subs(subs_n5)
+assert sp.simplify(residual_wrong) != 0, "Inconsistency check failed to detect wrong exponent"
+print("Inconsistency probe (n+1 in c_s^2 only):", sp.simplify(residual_wrong))
 
 # Projected source/support coefficients
 rho_star, cs_star_sq = sp.symbols("rho_star cs_star_sq", positive=True, real=True)
 Nss, Npp, Osp = sp.symbols("N_ss N_pp O_sp", positive=True, real=True)
-g_phi, KX, TX, L = sp.symbols("g_phi K_X T_X L", positive=True, real=True)
+g_phi, KX, TX, L, kappa = sp.symbols("g_phi K_X T_X L kappa", positive=True, real=True)
 
 Theta_sigma = (m * cs_star_sq / rho_star) * Nss
 Lambda_phi = g_phi * Osp
-chi_eff = sp.simplify(1 / Theta_sigma)
-G_micro = sp.simplify(chi_eff * Lambda_phi**2 / KX)
-G_expected = sp.simplify(rho_star * g_phi**2 * Osp**2 / (m * cs_star_sq * KX * Nss))
+sigma, phi = sp.symbols("sigma phi", real=True)
+S_parent = (
+    sp.Rational(1, 2) * Theta_sigma * sigma**2
+    + Lambda_phi * sigma * phi
+    + sp.Rational(1, 2) * KX * phi**2
+)
+sigma_star = sp.solve(sp.diff(S_parent, sigma), sigma)[0]
+S_eff_phi = sp.expand(S_parent.subs(sigma, sigma_star))
+gain_from_action = sp.simplify((KX - 2 * sp.simplify(S_eff_phi.coeff(phi, 2))) / KX)
+G_micro_closed = rho_star * g_phi**2 * Osp**2 / (m * cs_star_sq * KX * Nss)
 
 print("Theta_sigma =", Theta_sigma)
 print("Lambda_phi =", Lambda_phi)
-print("chi_sigma^(eff) =", chi_eff)
-print("G_micro =", G_micro)
-expect_zero("G_micro - expected parent formula", G_micro - G_expected)
+print("sigma_star =", sigma_star)
+print("S_eff_phi =", S_eff_phi)
+print("G_micro from action =", gain_from_action)
+expect_zero("G_micro from parent action vs closed form", gain_from_action - G_micro_closed)
 
-# Coherence factor decomposition
-C2 = sp.symbols("C_sp_sq", nonnegative=True, real=True)
-C2_def = sp.simplify(Osp**2 / (Nss * Npp))
-G_coh = sp.simplify(rho_star * g_phi**2 * Npp * C2 / (m * cs_star_sq * KX))
-print("C_(sigma phi)^2 definition =", C2_def)
-expect_zero(
-    "coherence-factor decomposition",
-    G_expected.subs(Osp**2, C2 * Nss * Npp) - G_coh,
-)
+print("Coherence factor (definition):  C_(sigma phi)^2 := Osp^2 / (Nss Npp)")
 
 # Xi_micro relation
-kappa = sp.symbols("kappa", positive=True, real=True)
-Xi_micro = sp.simplify(kappa * G_micro)
-Xi_expected = sp.simplify(rho_star * g_phi**2 * Osp**2 * L**2 / (m * cs_star_sq * TX * Nss))
+Xi_micro = sp.simplify(kappa * gain_from_action)
+Xi_target = rho_star * g_phi**2 * Osp**2 * L**2 / (m * cs_star_sq * TX * Nss)
 print("Xi_micro =", Xi_micro)
-expect_zero(
-    "Xi_micro - parent projected formula",
-    Xi_micro.subs(kappa, KX * L**2 / TX) - Xi_expected,
-)
+kappa_solved = sp.solve(Xi_micro - Xi_target, kappa)
+assert kappa_solved == [KX * L**2 / TX], f"Unexpected kappa solution: {kappa_solved}"
+print("kappa solved from Xi_micro = Xi_target:", kappa_solved[0])
 
 print("\nAll Stage 45 symbolic checks passed.")

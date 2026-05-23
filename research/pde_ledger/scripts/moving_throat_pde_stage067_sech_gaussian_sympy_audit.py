@@ -65,6 +65,15 @@ Npp = wg * sp.sqrt(sp.pi / 2)
 print("N_(sigma sigma) =", Nss)
 print("N_(phi phi)     =", Npp)
 
+# Derive the norms by direct integration to anchor the declared values.
+y = sp.symbols("y", real=True)
+Nss_integral = sp.integrate((sp.sech(y / wf) ** 2).rewrite(sp.cosh), (y, -sp.oo, sp.oo))
+Npp_integral = sp.integrate(sp.exp(-2 * y ** 2 / wg ** 2), (y, -sp.oo, sp.oo))
+print("integrate(sech(y/w_f)^2)        =", sp.simplify(Nss_integral))
+print("integrate(exp(-2 y^2/w_g^2))    =", sp.simplify(Npp_integral))
+expect_zero("N_(sigma sigma) integral - 2 w_f", Nss_integral - Nss)
+expect_zero("N_(phi phi) integral - w_g sqrt(pi/2)", Npp_integral - Npp)
+
 # Dimensionless overlap variable.
 I = sp.Function("I")
 C2 = sp.simplify(I(r)**2 / (r * sp.sqrt(2 * sp.pi)))
@@ -79,6 +88,9 @@ subbanner("2. Exact duality implication")
 duality_rhs = (r / sp.sqrt(sp.pi)) * I(sp.pi / r)
 C2_dual = sp.simplify(duality_rhs**2 / (r * sp.sqrt(2 * sp.pi)))
 C2_target = sp.simplify(I(sp.pi / r)**2 / ((sp.pi / r) * sp.sqrt(2 * sp.pi)))
+# Algebraic implication only: substitutes I -> (r/sqrt(pi)) I(pi/r) into C^2(r) and
+# checks it equals C^2(pi/r). Holds for ANY function I; the duality identity for the
+# sech-Gaussian overlap is exercised numerically in section 5.
 expect_zero("C^2(r) - C^2(pi/r) under duality", C2_dual - C2_target)
 
 print("Therefore: if I(r) = (r/sqrt(pi)) I(pi/r), then C^2(r) = C^2(pi/r).")
@@ -101,6 +113,8 @@ duality_tangent_at_rstar = sp.simplify(
     duality_tangent.subs(r, rstar).subs(Iprime_dual, Iprime_left)
 )
 print("differentiated overlap duality at r_* =", duality_tangent_at_rstar)
+# Tautological: the substitution Iprime_left -> Istar/(2*sqrt(pi)) is the solution of
+# the preceding equation. This checks calculus, not the sech-Gaussian profile.
 expect_zero(
     "self-dual overlap-slope relation",
     duality_tangent_at_rstar.subs(Iprime_left, Istar / (2 * sp.sqrt(sp.pi))),
@@ -110,6 +124,10 @@ dC2_selfdual = sp.simplify(
     (2 * Istar * Iprime_left * rstar - Istar**2)
     / (rstar**2 * sp.sqrt(2 * sp.pi))
 )
+# Tautological: dC2_selfdual is a hand-written derivative formula, then the slope value
+# derived above is substituted back. Stationarity of a symmetric differentiable function
+# at the symmetric point is a calculus identity, not specific to sech-Gaussian.
+# The substantive stationary-point evidence is the numerical monotonicity scan below.
 expect_zero(
     "stationary derivative of C^2 at the self-dual point",
     dC2_selfdual.subs(Iprime_left, Istar / (2 * sp.sqrt(sp.pi))),

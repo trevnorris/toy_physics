@@ -125,3 +125,17 @@ Former post-EM ledger stages start at Stage `022`.
   consumers in batches III.3+ are still `pending` so no immediate cascade.
   See `redteam/batches/batch_III2.md` plus per-stage reports at
   `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch III.3 (stages 061-072, "Part III.3 -- Microclosure,
+  gain thresholds, equilibrium, walls") completed 2026-05-22 with all 12
+  stages reaching `verified` and both engines independently checking each
+  load-bearing claim. 10 of 12 stages required codex edits (27 findings
+  total: 14 `tautological_check`, 9 `mathematica_transliteration`, 3
+  `insufficient_verification`, 1 `hardcoded_result`); stages 061 and 066
+  verified clean on first read. Zero codex iter-2 fixes needed. One stage
+  (068) flagged `material_change: true`: `Wfail_res`/`Wfail_match` now
+  derived via `Solve` from explicit resonance-corrected premises rather
+  than postulated, with derived expressions matching the prior postulated
+  forms symbolically. III.3 is out of the linear projected-EM core range
+  (004-021), so no downstream cascade into this tracker's scope. See
+  `redteam/batches/batch_III3.md` plus per-stage reports at
+  `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.

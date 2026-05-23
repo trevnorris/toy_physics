@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
-# Date: 2026-05-11T12:44:24-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT
@@ -14,10 +6,15 @@ Matched-branch fail threshold       = Pe_req/(Delta_0 + Delta_gap)
 Matched-branch success threshold    = Pe_req/Delta_0
 Resonance-family fail threshold     = Pe_req*(Pres_gap + 1)/(Delta_0 + Delta_gap)
 Resonance-family success threshold  = Pe_req*(Pres_gap + 1)/Delta_0
+matched fail edge from W_match(Delta_inf) = 0
+matched success edge from W_match(Delta_0) = 0
+W_match decreasing in Delta_eff > 0  -> 1
 P_res - 1/C_res^2 = 0
 matched window width = 0
 Delta_inf - Delta_0 > 0  -> Delta_gap
 matched success threshold - matched fail threshold > 0  -> Delta_gap*Pe_req/(Delta_0*(Delta_0 + Delta_gap))
+P_res from band-edge ratio matches (1 + Pres_gap) = 0
+P_res from success-band ratio agrees with failure-band ratio = 0
 resonance fail threshold - Pe_req/(C_res^2 Delta_inf) = 0
 resonance success threshold - Pe_req/(C_res^2 Delta_0) = 0
 1 - C_res^2 > 0  -> Pres_gap/(Pres_gap + 1)
@@ -48,5 +45,3 @@ Therefore the only profile-sensitive regions are the exact side-bands
 and
   Pe_req/Delta_0 < W_wall < Pe_req/(C_res^2 Delta_0),
 whose relative widths are both P_res - 1 = (1 - C_res^2)/C_res^2.
-
-EXIT_CODE: 0

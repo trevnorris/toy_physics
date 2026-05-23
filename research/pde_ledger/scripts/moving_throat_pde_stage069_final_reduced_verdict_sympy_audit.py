@@ -21,6 +21,19 @@ Provenance notes
   theorem surface carried forward verbatim.
 - `P_res = 1/C_res^2` is the Stage 068 resonance penalty; this script keeps
   those symbols unchanged and only assembles the final verdict from them.
+- Source for the matched-window form `Pe_req/Delta_inf`:
+  `scripts/moving_throat_pde_stage066_*.py` produces this form from the
+  matched-branch theorem at its file's `expect_zero("Stage 049 matched
+  window", ...)` block. This script imports the form symbolically as
+  `Pe_req/Deltainf` and `Pe_req/Delta_0`; it does not re-derive it.
+- Source for the resonance penalty `P_res = 1 + Pres_gap`:
+  `scripts/moving_throat_pde_stage068_*.py` produces this form from the
+  resonance amplification factor. This script imports the form symbolically
+  as `Pres = 1 + Pres_gap` and asserts the band-edge ratio matches; it does
+  not re-derive the amplification factor.
+- The assertions in this script are conditional on Stages 066 and 068
+  being correct. The new ratio-based assertions added per F1 verify the
+  consolidation step but do not re-verify the upstream derivations.
 """
 
 from __future__ import annotations
@@ -65,10 +78,36 @@ Wsuff_match = sp.simplify(Pe_req / Delta0)
 Wfail_res = sp.simplify(Pres * Wfail_match)
 Wsuff_res = sp.simplify(Pres * Wsuff_match)
 
+# --- Upstream-anchor assumption (see docstring) ---
+# Wfail_match, Wsuff_match, Wfail_res, Wsuff_res are constructed here from
+# free positive symbols. Their interpretation as the Stage 066 / Stage 068
+# threshold values is asserted by the F1 consolidation block below
+# (matched fail edge from W_match(Delta_inf) = 0, P_res from band-edge
+# ratio matches (1 + Pres_gap) = 0), but the upstream derivations
+# themselves are not re-checked here.
+
 print("Matched-branch fail threshold       =", Wfail_match)
 print("Matched-branch success threshold    =", Wsuff_match)
 print("Resonance-family fail threshold     =", Wfail_res)
 print("Resonance-family success threshold  =", Wsuff_res)
+
+# Stage-49 matched-window derivation as a generating function.
+# Encodes the theorem "W_match(Delta_eff) = Pe_req / Delta_eff" with
+# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.
+Delta_eff = sp.symbols("Delta_eff", positive=True, real=True)
+W_match_generator = Pe_req / Delta_eff
+expect_zero(
+    "matched fail edge from W_match(Delta_inf)",
+    W_match_generator.subs(Delta_eff, Deltainf) - Wfail_match,
+)
+expect_zero(
+    "matched success edge from W_match(Delta_0)",
+    W_match_generator.subs(Delta_eff, Delta0) - Wsuff_match,
+)
+expect_positive(
+    "W_match decreasing in Delta_eff",
+    -sp.diff(W_match_generator, Delta_eff) * Delta_eff**2 / Pe_req,
+)
 
 # Stage-49 matched window and Stage-51 penalty factor.
 expect_zero("P_res - 1/C_res^2", Pres - 1 / Cres2)
@@ -78,6 +117,19 @@ expect_zero(
 )
 expect_positive("Delta_inf - Delta_0", Deltainf - Delta0)
 expect_positive("matched success threshold - matched fail threshold", Wsuff_match - Wfail_match)
+# Stage-51 / Stage-68 resonance penalty as a band-edge ratio.
+# Encodes the theorem "P_res = W_fail_res / W_fail_match" rather than
+# defining P_res and C_res^2 to satisfy it by construction.
+Pres_from_ratio = sp.simplify(Wfail_res / Wfail_match)
+expect_zero(
+    "P_res from band-edge ratio matches (1 + Pres_gap)",
+    Pres_from_ratio - (1 + Pres_gap),
+)
+Pres_from_success_ratio = sp.simplify(Wsuff_res / Wsuff_match)
+expect_zero(
+    "P_res from success-band ratio agrees with failure-band ratio",
+    Pres_from_ratio - Pres_from_success_ratio,
+)
 expect_zero(
     "resonance fail threshold - Pe_req/(C_res^2 Delta_inf)",
     Wfail_res - Pe_req / (Cres2 * Deltainf),

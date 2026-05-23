@@ -6,12 +6,14 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-22` (batch III.2 close — stage 051 is the one
-checkpoint in range 049-060; its red-team findings (taut + math_translit)
-were closed by re-anchoring `xi_(2x)` to a Solve-derived form and by
-forward-map verification via Stage 047/030. No new numerical or symbolic
-constants were introduced — the closed-form claim and its provenance were
-unchanged, only the verification structure. No new stage rows needed.)
+Snapshot date: `2026-05-22` (batch III.3 close — stage 069 is the one
+checkpoint in range 061-072; its red-team findings (taut + math_translit +
+prov) were closed by replacing definitional `Cres2`/`Wfail_res`/`delta_fail`
+identities with a parameterized `W_match` generator + monotonicity check
+(SymPy) and a `Cres2Prim`/`Pres = 1/Cres2` route with `PresGap` via
+`Solve` (Mathematica). No new numerical or symbolic constants were
+introduced — the form of the threshold-window result is unchanged, only
+the verification structure. No new stage rows needed.)
 
 ## Audit Rule
 

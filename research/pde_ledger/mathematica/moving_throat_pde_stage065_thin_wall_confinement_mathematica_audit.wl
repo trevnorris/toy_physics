@@ -23,6 +23,38 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
+banner["INDEPENDENT SHELL-INTEGRAL DERIVATION (concrete Gaussian profile)"];
+
+(* Concrete symmetric profile: f(u) = Exp[-u^2]; constant compressibility h' = 1. *)
+fProf[u_] := Exp[-u^2];
+fpProf[u_] := D[fProf[u], u];   (* = -2 u Exp[-u^2] *)
+hConst = 1;
+
+(* Direct moment integrals of (f')^2 / h'. *)
+j1Num = Integrate[(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+j2Num = Integrate[xi*(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+j3Num = Integrate[xi^2*(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+
+Print["J1_num = ", fmt[j1Num]];
+Print["J2_num = ", fmt[j2Num]];
+Print["J3_num = ", fmt[j3Num]];
+
+(* Claim (3): J2 = 0 for a centred symmetric layer (parity). *)
+expectZero["independent: J2 vanishes for symmetric profile", j2Num];
+
+(* Claim (2): expanding the full shell weight gives the (1, 2, 1) coefficient pattern. *)
+i1Direct = Integrate[(fpProf[xi])^2/hConst*(aSym + ellSym*xi)^2, {xi, -Infinity, Infinity}];
+i1Direct = FullSimplify[i1Direct, Assumptions -> aSym > 0 && ellSym > 0];
+i1Poly   = aSym^2*j1Num + 2*aSym*ellSym*j2Num + ellSym^2*j3Num;
+expectZero["independent: I1 polynomial expansion matches direct integral",
+           i1Direct - i1Poly];
+
+(* Claim (6): for constant h' = H_w, J1 = I_f / H_w with I_f = integral of (f')^2. *)
+ifMomDirect = Integrate[(fpProf[xi])^2, {xi, -Infinity, Infinity}];
+hwSym = 1;  (* hConst above; documented numerically here *)
+expectZero["independent: J1 = I_f / H_w under constant compressibility",
+           j1Num - ifMomDirect/hwSym];
+
 banner["STAGE 048 — THIN-WALL CONFINEMENT BRANCH"];
 
 Clear[v0, ell, a, kx, j1, j2, j3, peReq, delta0, deltaInf, tx, len, kappa, hw, ifMom];

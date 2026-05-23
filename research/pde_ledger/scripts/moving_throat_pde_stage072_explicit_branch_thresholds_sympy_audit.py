@@ -54,22 +54,50 @@ V0_suff_sq = sp.simplify(hbar**2 * c_sw**2 * Upsilon_suff / (4 * rho_w**2))
 print("V0_fail^2 =", V0_fail_sq)
 print("V0_suff^2 =", V0_suff_sq)
 
-# Shell-gradient dominated asymptotics: kappa ~ (4/5) Lambda_ell^2.
+# Shell-gradient dominated asymptotics: kappa ~ (4/5) Lambda_ell^2 (i.e. chi_s -> 0,
+# Lambda_ell -> oo so that alpha -> oo).  Extract the leading-order forms of
+# Delta_0 and Delta_inf directly from the full closed forms by taking chi_s -> 0
+# and then Lambda_ell -> oo, and compare to the hand-built shell forms.
 c = sp.Rational(2) / sp.sqrt(5)
 Upsilon_fail_shell = sp.simplify(2 * Pe_req / (sp.sqrt(5) * Lambda_ell))
 Upsilon_suff_shell = sp.simplify(sp.Rational(4, 5) * (1 + sp.Rational(2) / sp.sqrt(5)) * Pe_req)
 
-# Check against leading asymptotics derived directly from Delta0, DeltaInf with alpha ~ c Lambda_ell.
 Delta0_shell = sp.simplify(Lambda_ell / ((c * Lambda_ell)**2 * (c * Lambda_ell + Lambda_ell)))
 DeltaInf_shell = sp.simplify((1 + Lambda_ell / (c * Lambda_ell)) / (c * Lambda_ell + Lambda_ell))
-expect_zero("shell fail asymptotic", sp.simplify(Pe_req / (Lambda_ell**2 * DeltaInf_shell) - Upsilon_fail_shell))
-expect_zero("shell suff asymptotic", sp.simplify(Pe_req / (Lambda_ell**2 * Delta0_shell) - Upsilon_suff_shell))
 
-# Compression dominated asymptotics: kappa ~ 4 chi_s^2.
+# Ratio of the full closed form to the hand-built leading-order form must tend to 1.
+Delta0_shell_ratio = sp.limit(sp.simplify(Delta0.subs(chi_s, 0) / Delta0_shell),
+                              Lambda_ell, sp.oo)
+DeltaInf_shell_ratio = sp.limit(sp.simplify(DeltaInf.subs(chi_s, 0) / DeltaInf_shell),
+                                Lambda_ell, sp.oo)
+print("Delta0  shell leading-order ratio (Delta0/Delta0_shell)   =", Delta0_shell_ratio)
+print("DeltaInf shell leading-order ratio (DeltaInf/DeltaInf_shell)=", DeltaInf_shell_ratio)
+expect_zero("Delta0  shell leading-order matches full Delta0",
+            Delta0_shell_ratio - 1)
+expect_zero("DeltaInf shell leading-order matches full DeltaInf",
+            DeltaInf_shell_ratio - 1)
+expect_zero("shell fail asymptotic",
+            sp.simplify(Pe_req / (Lambda_ell**2 * DeltaInf_shell) - Upsilon_fail_shell))
+expect_zero("shell suff asymptotic",
+            sp.simplify(Pe_req / (Lambda_ell**2 * Delta0_shell) - Upsilon_suff_shell))
+
+# Compression dominated asymptotics: kappa ~ 4 chi_s^2 (i.e. chi_s -> oo with
+# Lambda_ell fixed, so alpha -> oo).  Extract the leading-order forms of
+# Delta_0 and Delta_inf from the full closed forms via chi_s -> oo and compare
+# to the hand-built compression forms.
 Delta0_comp = sp.simplify(Lambda_ell / ((2 * chi_s)**2 * (2 * chi_s + Lambda_ell)))
 DeltaInf_comp = sp.simplify((1 + Lambda_ell / (2 * chi_s)) / (2 * chi_s + Lambda_ell))
 Upsilon_fail_comp = sp.simplify(Pe_req / (Lambda_ell**2 * DeltaInf_comp))
 Upsilon_suff_comp = sp.simplify(Pe_req / (Lambda_ell**2 * Delta0_comp))
+
+Delta0_comp_ratio = sp.limit(sp.simplify(Delta0 / Delta0_comp), chi_s, sp.oo)
+DeltaInf_comp_ratio = sp.limit(sp.simplify(DeltaInf / DeltaInf_comp), chi_s, sp.oo)
+print("Delta0  comp leading-order ratio (Delta0/Delta0_comp)   =", Delta0_comp_ratio)
+print("DeltaInf comp leading-order ratio (DeltaInf/DeltaInf_comp)=", DeltaInf_comp_ratio)
+expect_zero("Delta0  comp leading-order matches full Delta0",
+            Delta0_comp_ratio - 1)
+expect_zero("DeltaInf comp leading-order matches full DeltaInf",
+            DeltaInf_comp_ratio - 1)
 
 print("Upsilon_fail_shell =", Upsilon_fail_shell)
 print("Upsilon_suff_shell =", Upsilon_suff_shell)

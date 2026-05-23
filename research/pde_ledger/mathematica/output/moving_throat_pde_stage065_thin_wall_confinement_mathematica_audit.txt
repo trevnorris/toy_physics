@@ -1,11 +1,16 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl
-# Date: 2026-05-11T12:55:33-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
 
+========================================================================================
+INDEPENDENT SHELL-INTEGRAL DERIVATION (concrete Gaussian profile)
+========================================================================================
+J1_num = Sqrt[Pi/2]
+J2_num = 0
+J3_num = (3*Sqrt[Pi/2])/4
+independent: J2 vanishes for symmetric profile = 0
+PASS: independent: J2 vanishes for symmetric profile
+independent: I1 polynomial expansion matches direct integral = 0
+PASS: independent: I1 polynomial expansion matches direct integral
+independent: J1 = I_f / H_w under constant compressibility = 0
+PASS: independent: J1 = I_f / H_w under constant compressibility
 
 ========================================================================================
 STAGE 048 — THIN-WALL CONFINEMENT BRANCH
@@ -42,5 +47,3 @@ constant-H suff threshold = 0
 PASS: constant-H suff threshold
 
 Stage 065 Mathematica audit passed.
-
-EXIT_CODE: 0

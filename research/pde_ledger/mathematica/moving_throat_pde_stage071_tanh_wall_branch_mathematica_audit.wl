@@ -78,7 +78,9 @@ km = FullSimplify[tx/ell, Assumptions -> $Assumptions];
 eta = FullSimplify[km*L/tx, Assumptions -> $Assumptions];
 Print["K_m = ", fmt[km]];
 Print["eta = ", fmt[eta]];
-expectZero["eta - L/ell", eta - L/ell];
+kmExpected = Pi*a^2*hbar^2/(3*m*rhoW);
+expectZero["K_m - pi a^2 hbar^2 / (3 m rhoW)", km - kmExpected];
+expectZero["eta - L/ell (from closed-form K_m)", (kmExpected*L/tx) - L/ell];
 
 kappa = FullSimplify[kx*L^2/tx, Assumptions -> $Assumptions];
 kappaExpected = FullSimplify[4*(m*cSw*L/hbar)^2 + (4/5)*(L/ell)^2, Assumptions -> $Assumptions];

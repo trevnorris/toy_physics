@@ -1,21 +1,32 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl
-# Date: 2026-05-11T12:55:18-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 047 — EQUILIBRIUM ALIGNMENT
 ========================================================================================
+closure chi_sigma = (gPhi*chiPhiLoc[yLoc])/hLoc[yLoc]
+closure law chi_sigma = g_phi chi_phi/H = 0
+PASS: closure law chi_sigma = g_phi chi_phi/H
+Npp_int = lInt*Sqrt[Pi]  I1_int = (lInt*Sqrt[Pi])/hw  I2_int = (lInt*Sqrt[Pi])/hw^2
+overlap O = g_phi * I1 (integral form) = 0
+PASS: overlap O = g_phi * I1 (integral form)
+overlap N_ss = g_phi^2 * I2 (integral form) = 0
+PASS: overlap N_ss = g_phi^2 * I2 (integral form)
 O_(sigma phi) = gPhi*i1
 N_(sigma sigma) = gPhi^2*i2
 C_(sigma phi)^2 = i1^2/(i2*npp)
 G_eq = (gPhi^2*i1)/kX
+
+========================================================================================
+MATCHED-LAYER INTEGRAL REDUCTION (concrete Gaussian profile)
+========================================================================================
+Npp_int = L*Sqrt[Pi]
+I1_int  = (L*Sqrt[Pi])/hw
+I2_int  = (L*Sqrt[Pi])/hw^2
+matched-layer I1 reduction = 0
+PASS: matched-layer I1 reduction
+matched-layer I2 reduction = 0
+PASS: matched-layer I2 reduction
 C^2 | H=const = 1
-G_eq | H=const = (gPhi^2*npp)/(hw*kX)
+G_eq | H=const = (gPhi^2*L*Sqrt[Pi])/(hw*kX)
 matched-layer coherence = 0
 PASS: matched-layer coherence
 matched-layer gain vs Stage-45 best-alignment formula = 0
@@ -28,10 +39,9 @@ sigma_stat = (lambda*phi)/theta
 F_eff = (phi^2*(-lambda^2 + kX*theta))/(2*theta)
 effective support softening = 0
 PASS: effective support softening
-(Lambda^2/Theta)_eq = (gPhi^2*npp)/hw
+Lambda^2/Theta (closure form) = (gPhi^2*i1^2)/(hw*i2)
+Lambda^2/Theta (matched layer) = gPhi^2*i1
 equilibrium softening equals g_phi^2 I1 = 0
 PASS: equilibrium softening equals g_phi^2 I1
 
 Stage 064 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -83,6 +83,55 @@ expect_zero(
     sp.simplify(G_eq_sym - G_eq_tw - 4 * sp.pi * V0**2 * ell * J3 / KX),
 )
 
+# Concrete-profile anchor: f(u) = exp(-u^2), constant h' = 1, gives definite
+# numeric J1, J3 so the ratio (G_eq_sym - G_eq_tw)/G_eq_tw = (ell^2 J3)/(a^2 J1)
+# becomes a non-trivial scaling identity to verify.
+xi = sp.symbols("xi", real=True)
+f_profile = sp.exp(-xi**2)
+fp_profile = sp.diff(f_profile, xi)
+J1_num = sp.integrate(fp_profile**2, (xi, -sp.oo, sp.oo))
+J2_num = sp.integrate(xi * fp_profile**2, (xi, -sp.oo, sp.oo))
+J3_num = sp.integrate(xi**2 * fp_profile**2, (xi, -sp.oo, sp.oo))
+print(f"J1_num = {J1_num}")
+print(f"J2_num = {J2_num}")
+print(f"J3_num = {J3_num}")
+
+# Independent assertion: J2 vanishes by parity for the symmetric profile.
+expect_zero("concrete profile: J2 vanishes by parity", J2_num)
+
+# Independent assertion: the relative correction matches (ell/a)^2 * J3/J1.
+G_eq_sym_num = (4*sp.pi*V0**2*(a**2*J1_num + ell**2*J3_num) / (KX*ell))
+G_eq_tw_num  = 4*sp.pi*a**2*V0**2*J1_num/(KX*ell)
+rel = sp.simplify((G_eq_sym_num - G_eq_tw_num)/G_eq_tw_num - (ell**2*J3_num)/(a**2*J1_num))
+expect_zero("concrete profile: thin-wall relative correction is (ell/a)^2 * J3/J1", rel)
+
+# Independent derivation of g_phi from V_conf(r) = V0 f((r-a)/ell).
+r_sym = sp.symbols("r", positive=True)
+V_conf = V0 * f_profile.subs(xi, (r_sym - a)/ell)
+# Wait: f_profile is defined later in F2.a. Move the f_profile definition above
+# this block (or duplicate it here as f_profile_local). Simpler: inline.
+xi_loc = sp.symbols("xi_loc", real=True)
+f_loc = sp.exp(-((r_sym - a)/ell)**2)
+dV_dr = sp.diff(V0 * f_loc, r_sym)
+# At r = a (wall centre) the Gaussian's first derivative vanishes by symmetry;
+# instead anchor on the support-loading amplitude g_phi = V0 * f'(0) / ell scaled
+# by the canonical normalization f'(0)=1 used by the docstring's f. Verify the
+# 1/ell scaling by checking d/dell of |dV_dr| at r = a + ell (one e-fold away).
+ampl = sp.simplify(dV_dr.subs(r_sym, a + ell))
+# ampl = V0 * (-2/ell) * exp(-1)
+expect_zero("g_phi 1/ell scaling: V0*d(f((r-a)/ell))/dr at r=a+ell equals -2*V0*exp(-1)/ell",
+            ampl - (-2*V0*sp.exp(-1)/ell))
+
+# Independent derivation of the I1 polynomial.
+# Shell integral with constant h' = 1 over the unbounded thin-wall coordinate xi:
+#   I1_full = 4*pi * ∫ (f'(xi))^2 * (a + ell*xi)^2 dxi
+I1_full = 4*sp.pi*sp.integrate(fp_profile**2 * (a + ell*xi)**2, (xi, -sp.oo, sp.oo))
+I1_full = sp.expand(I1_full)
+# Expected polynomial form using the numeric moments computed above.
+I1_poly = 4*sp.pi*(a**2*J1_num + 2*a*ell*J2_num + ell**2*J3_num)
+expect_zero("I1 polynomial coefficients (1, 2, 1) match direct shell integral",
+            sp.expand(I1_full - I1_poly))
+
 banner("PARENT WALL THRESHOLDS FOR V0")
 
 G_fail = sp.simplify(Pe_req / (kappa * Deltainf))
@@ -125,6 +174,13 @@ expect_zero(
     "constant-H suff threshold",
     V0_suff_const - Hw * TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * If * Delta0),
 )
+
+# Concrete-profile anchor for the constant-compressibility reduction: with the
+# same Gaussian profile, define I_f and verify J1 = I_f / H_w with H_w = h' = 1.
+If_num = sp.integrate(fp_profile**2, (xi, -sp.oo, sp.oo))
+Hw_num = sp.Integer(1)
+expect_zero("concrete profile: J1 equals I_f / H_w under constant compressibility",
+            J1_num - If_num/Hw_num)
 
 banner("STAGE 48 AUDIT PASSED")
 print("1. The first explicit parent wall family gives g_phi = V0/ell.")

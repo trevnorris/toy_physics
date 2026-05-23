@@ -53,6 +53,34 @@ g_phi, KX, Npp = sp.symbols("g_phi K_X N_pp", positive=True, real=True)
 I1, I2 = sp.symbols("I1 I2", positive=True, real=True)
 Hw = sp.symbols("H_w", positive=True, real=True)
 
+# --- Local static linear-response closure ---
+# At fixed y, the local sigma-energy is (1/2) H(y) sigma^2 - g_phi chi_phi(y) sigma.
+# Minimising over sigma yields the closure law sigma(y) = g_phi chi_phi(y) / H(y).
+y_loc = sp.symbols("y_loc", real=True)
+chi_phi_loc = sp.Function("chi_phi")(y_loc)
+H_loc = sp.Function("H")(y_loc)
+sigma_loc = sp.symbols("sigma_loc", real=True)
+F_loc = sp.Rational(1, 2) * H_loc * sigma_loc**2 - g_phi * chi_phi_loc * sigma_loc
+closure_solutions = sp.solve(sp.diff(F_loc, sigma_loc), sigma_loc)
+assert len(closure_solutions) == 1, "linear-response minimiser must be unique"
+chi_sigma_closure = closure_solutions[0]
+print("closure chi_sigma =", chi_sigma_closure)
+expect_zero("closure law chi_sigma = g_phi chi_phi/H", chi_sigma_closure - g_phi * chi_phi_loc / H_loc)
+
+# --- Integral-level overlap invariants (concrete Gaussian profile) ---
+y_int, L_int = sp.symbols("y_int L_int", positive=True, real=True)
+chi_phi_g = sp.exp(-y_int**2 / (2 * L_int**2))
+H_g = Hw
+Npp_int_check = sp.integrate(chi_phi_g**2, (y_int, -sp.oo, sp.oo))
+I1_int_check = sp.integrate(chi_phi_g**2 / H_g, (y_int, -sp.oo, sp.oo))
+I2_int_check = sp.integrate(chi_phi_g**2 / H_g**2, (y_int, -sp.oo, sp.oo))
+chi_sigma_g = g_phi * chi_phi_g / H_g
+Osp_int_check = sp.integrate(chi_sigma_g * chi_phi_g, (y_int, -sp.oo, sp.oo))
+Nss_int_check = sp.integrate(chi_sigma_g**2, (y_int, -sp.oo, sp.oo))
+print("Npp_int =", Npp_int_check, "  I1_int =", I1_int_check, "  I2_int =", I2_int_check)
+expect_zero("overlap O = g_phi * I1 (integral form)", Osp_int_check - g_phi * I1_int_check)
+expect_zero("overlap N_ss = g_phi^2 * I2 (integral form)", Nss_int_check - g_phi**2 * I2_int_check)
+
 # Derived overlap invariants from chi_sigma = g_phi * chi_phi / H.
 Osp = sp.simplify(g_phi * I1)
 Nss = sp.simplify(g_phi**2 * I2)
@@ -63,6 +91,22 @@ print("O_(sigma phi) =", Osp)
 print("N_(sigma sigma) =", Nss)
 print("C_(sigma phi)^2 =", C2)
 print("G_eq =", Geq)
+
+banner("MATCHED-LAYER INTEGRAL REDUCTION (concrete Gaussian profile)")
+
+y, L = sp.symbols("y L", positive=True, real=True)
+chi_phi_y = sp.exp(-y**2 / (2 * L**2))
+H_const = Hw  # constant compressibility on the active layer
+
+Npp_int = sp.integrate(chi_phi_y**2, (y, -sp.oo, sp.oo))
+I1_int = sp.integrate(chi_phi_y**2 / H_const, (y, -sp.oo, sp.oo))
+I2_int = sp.integrate(chi_phi_y**2 / H_const**2, (y, -sp.oo, sp.oo))
+
+print("Npp_int =", Npp_int)
+print("I1_int  =", I1_int)
+print("I2_int  =", I2_int)
+expect_zero("matched-layer I1 reduction", I1_int - Npp_int / Hw)
+expect_zero("matched-layer I2 reduction", I2_int - Npp_int / Hw**2)
 
 banner("CONSTANT-COMPRESSIBILITY / MATCHED-LAYER LIMIT")
 
@@ -109,13 +153,16 @@ expect_zero(
     F_eff - sp.Rational(1, 2) * (KX - Lambda**2 / Theta) * phi**2,
 )
 
-# Under the equilibrium-matched branch with constant H:
-# Theta = H_w N_(sigma sigma), Lambda = g_phi O_(sigma phi).
-Theta_eq = sp.simplify(Hw * Nss.subs(const_subs))
-Lambda_eq = sp.simplify(g_phi * Osp.subs(const_subs))
-soft_eq = sp.simplify(Lambda_eq**2 / Theta_eq)
-print("(Lambda^2/Theta)_eq =", soft_eq)
-expect_zero("equilibrium softening equals g_phi^2 I1", soft_eq - g_phi**2 * (Npp / Hw))
+# Closure-level definitions: Theta = H_w * N_(sigma sigma), Lambda = g_phi * O_(sigma phi).
+Theta_abs = sp.simplify(Hw * Nss)
+Lambda_abs = sp.simplify(g_phi * Osp)
+soft_abs = sp.simplify(Lambda_abs**2 / Theta_abs)
+print("Lambda^2/Theta (closure form) =", soft_abs)
+# The matched-layer closure forces I2 = I1^2 / N_pp; only THEN should the softening
+# reduce to g_phi^2 * I1.
+soft_matched = sp.simplify(soft_abs.subs(I2, I1**2 / Npp).subs(Npp, I1 * Hw))
+print("Lambda^2/Theta (matched layer) =", soft_matched)
+expect_zero("equilibrium softening equals g_phi^2 I1", soft_matched - g_phi**2 * I1)
 
 banner("STAGE 47 AUDIT PASSED")
 print("1. The equilibrium-induced source channel is aligned with the support loading through 1/H.")

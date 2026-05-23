@@ -82,6 +82,28 @@ expectZero[
     FullSimplify[m*csStarSq*tX*peReq/(rhoStar*nPP*c2Def*ell^2*delta0), Assumptions -> $Assumptions]
 ];
 
+(* Use Reduce + positive-root selection so the Mathematica derivation differs
+   from the sympy Solve path. *)
+gphiSq = Symbol["gphiSq"];
+reduceFail = Reduce[(gMicro /. gPhi^2 -> gphiSq) == gFail && gphiSq > 0, gphiSq, Reals];
+reduceSuff = Reduce[(gMicro /. gPhi^2 -> gphiSq) == gSuff && gphiSq > 0, gphiSq, Reals];
+gFailFromReduce = Cases[reduceFail, HoldPattern[gphiSq == rhs_] :> rhs, Infinity][[1]];
+gSuffFromReduce = Cases[reduceSuff, HoldPattern[gphiSq == rhs_] :> rhs, Infinity][[1]];
+expectZero[
+  "g_fail^2 from Reduce[gMicro==gFail, gphiSq>0] matches hand-rearranged form",
+  FullSimplify[gFailFromReduce - gFailSq, Assumptions -> $Assumptions]
+];
+expectZero[
+  "g_suff^2 from Reduce[gMicro==gSuff, gphiSq>0] matches hand-rearranged form",
+  FullSimplify[gSuffFromReduce - gSuffSq, Assumptions -> $Assumptions]
+];
+
+(* Cauchy-Schwarz: oSP^2 <= nSS nPP, with equality at perfect alignment (c2 = 1). *)
+expectZero[
+  "G_max = G_micro at Cauchy saturation (oSP^2 = nSS nPP)",
+  FullSimplify[(gMicro /. oSP^2 -> nSS*nPP) - gMax, Assumptions -> $Assumptions]
+];
+
 Print[""];
 Print["Stage 063 Mathematica audit passed."];
 

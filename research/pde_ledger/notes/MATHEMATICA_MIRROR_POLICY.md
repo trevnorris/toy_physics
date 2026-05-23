@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-22` (batch III.2 close)
+Snapshot date: `2026-05-22` (batch III.3 close)
 
 ## Rule
 
@@ -45,8 +45,11 @@ found it on 6 of 12 (049, 051, 052, 058, 059, 060), the lower share due
 to a higher concentration of pure tautology / hardcoded findings in the
 other 5 dirty stages (050, 053, 054, 055, 057) plus one clean-on-first-read
 stage (056) whose `Limit[..., {Pe, Infinity}]` and `Series.removeO` paths
-already broke line-by-line correspondence. Treat transliteration as the
-default expectation, not an exceptional finding.
+already broke line-by-line correspondence; batch III.3 found it on 9 of 12
+(062-065, 067-070, 072) — share back up because the stage cluster 062-068
+was particularly mirror-heavy on asymptotic leading-order forms, with
+stages 061 and 066 passing transliteration screening on first read. Treat
+transliteration as the default expectation, not an exceptional finding.
 
 ## Current Independent-Mirror Set
 
@@ -370,10 +373,69 @@ different verification structure from the SymPy side:
   `Delta = Lambda L^2 sigma_0 / (2 T_X)` in the `K_m -> infty` limit.
   `material_change: true` was flagged by the verifier — second-pass should
   spot-check downstream Xi_micro consumers
+- `062`
+  red-team batch III.3 replaced hand-built `sigma_star` and EOS-monomial
+  assertions with a real parent-action Gaussian-elimination `sp.solve` for
+  `sigma_star(rho)` plus an `n=5 EOS identity` wrong-exponent probe printing
+  a nonzero residual `K*rho^3*(5 - 6*rho)`; Mathematica side now derives
+  `sigma_star` via `Series`/`SeriesCoefficient` rather than mirroring the
+  SymPy choreography
+- `063`
+  red-team batch III.3 replaced all 8 SymPy + 8 Mathematica tautologies with
+  `sp.solve` / `Reduce` derivations and added a Cauchy-saturation check that
+  would fail under plausible bugs (e.g. `N_ss`-vs-`N_pp` swap in `G_max`);
+  Mathematica side switched to `Reduce[... && gphiSq>0, ..., Reals]` to
+  break the SymPy mirror
+- `064`
+  red-team batch III.3 instantiated `chi_phi(y)` / `H(y)` profiles and
+  derived the `I1`/`I2` integral overlap reductions rather than carrying
+  them as `const_subs` literals; one orchestrator-acceptable codex
+  deviation (an extra `Npp -> I1*Hw` substitution required for F1's
+  independently-verified integral identity to canonicalize) was retained
+- `065`
+  red-team batch III.3 anchored docstring claims (1)-(3) and (6) with
+  concrete-Gaussian shell integrals `J2=0` (by parity), `I1` polynomial
+  coefficient expansion, and `gphi`'s `1/ell` scaling from `V_conf`
+  differentiation; `K_X`-cancellation identities remain as the surviving
+  substantive checks
 - `067`
-  derives stationarity from the self-dual `C^2(r)=C^2(pi/r)` symmetry equation
+  derives stationarity from the self-dual `C^2(r)=C^2(pi/r)` symmetry equation;
+  red-team batch III.3 additionally integrated the transverse norms `2 w_f`
+  and `w_g sqrt(pi/2)` explicitly in SymPy (via `.rewrite(sp.cosh)`-workaround
+  `Integrate[sech^2]` and `Integrate[Gaussian^2]`) and made two
+  "duality implies stationarity" blocks non-tautological while preserving
+  the numerical duality/monotonicity checks
+- `068`
+  red-team batch III.3 derived `Wfail_res := Pe_req/(C2*Delta_inf)` and the
+  `Wfail_match` cross-relation via `Solve` from explicit resonance-corrected
+  premises rather than postulating them; `M3/M4` cross-relations now carry
+  the load-bearing assertions; `material_change: true` flagged because the
+  derivation route changed even though the symbolic content of the derived
+  expressions matches the prior postulated forms
 - `069`
-  closes the ordered three-zone regime algebra rather than width-only replay
+  closes the ordered three-zone regime algebra rather than width-only replay;
+  red-team batch III.3 (CHECKPOINT) additionally replaced
+  `Cres2`/`Wfail_res`/`delta_fail` definitional identities with a
+  parameterized `W_match` generator + monotonicity check (SymPy) and a
+  `Cres2Prim` primitive + `Pres = 1/Cres2` derivation + `PresGap` via
+  `Solve` (Mathematica); upstream `Pres`/`Wfail_match` carry-forward
+  annotated with provenance comment
+- `070`
+  red-team batch III.3 inlined `1/Hw -> rhoW/(m*cSw^2)` in the Mathematica
+  mirror and removed mirrored intermediates `J_1`, `gphi`, `I_1` while
+  retaining the 3 `expectZero` calls; assembled forms now built from
+  primitives and closed forms typed directly
+- `071`
+  red-team batch III.3 replaced the `eta - L/ell` tautology with a pin
+  `K_m = pi a^2 hbar^2/(3 m rho_w)` and an `eta`-reconstruction from the
+  closed-form `K_m` in both engines
+- `072`
+  red-team batch III.3 added 4 ratio-limit checks per engine comparing the
+  full `Delta_0`/`Delta_inf` closed forms to the shell- and
+  compression-dominated leading-order forms; SymPy collapses both shell
+  ratios to `1` directly while Mathematica's `DeltaInf` shell ratio surfaces
+  as the algebraically-equivalent surd `2/Sqrt[5] + 1/(5 + 2 Sqrt[5])` —
+  divergent presentations confirm cross-engine independence
 - `089`
   rebuilds the Family-1 verdict from the Stage-62/63/69 formulas
 - `090`

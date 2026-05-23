@@ -61,6 +61,9 @@ banner["EXACT DUALITY IMPLICATION"];
 dualityRhs = FullSimplify[(r/Sqrt[Pi])*overlapHead[Pi/r], Assumptions -> $Assumptions];
 c2Dual = FullSimplify[dualityRhs^2/(r*Sqrt[2*Pi]), Assumptions -> $Assumptions];
 c2Target = FullSimplify[overlapHead[Pi/r]^2/((Pi/r)*Sqrt[2*Pi]), Assumptions -> $Assumptions];
+(* Algebraic implication only: substitutes OverlapI -> (r/Sqrt[Pi]) OverlapI[Pi/r] into
+   C^2(r) and checks it equals C^2(Pi/r). Holds for ANY function OverlapI; the duality
+   identity for the sech-Gaussian overlap is exercised numerically below. *)
 expectZero["C^2(r) - C^2(pi/r) under duality", c2Dual - c2Target];
 
 banner["SELF-DUAL STATIONARY POINT"];
@@ -83,6 +86,10 @@ c2SymmetryAtRStar = FullSimplify[
 Print["differentiated C^2 symmetry at r_* = ", fmt[c2SymmetryAtRStar]];
 c2StationarySolve = Solve[c2SymmetryAtRStar == 0, c2PrimeLeft, Reals];
 Print["Solve[c2 symmetry tangent == 0] = ", fmt[c2StationarySolve]];
+(* Tautological: Solve[2*C2PrimeLeft == 0] returns C2PrimeLeft -> 0; substituting that
+   back into C2PrimeLeft yields 0. This is the calculus fact that a function symmetric
+   under r <-> Pi/r has zero derivative at r = Sqrt[Pi], not a sech-Gaussian-specific
+   result. The numerical monotonicity scan below provides the substantive evidence. *)
 expectZero[
   "self-dual C^2 stationary slope from symmetry solve",
   FullSimplify[c2PrimeLeft /. First[c2StationarySolve], Assumptions -> $Assumptions]
@@ -112,6 +119,10 @@ rStarNum = N[rStar, 60];
 c2Star = N[c2Num[rStarNum], 60];
 pres = N[1/c2Star, 60];
 
+(* c2Target / presTarget are the sympy mpmath quad results from
+   scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt.
+   This block confirms cross-engine numerical agreement on the same definite
+   integral, not agreement with any closed-form benchmark. *)
 c2Target = ToExpression["0.994418836451529348706428351608877628170873348983716948813464`60"];
 presTarget = ToExpression["1.00561248776057621695172301479763550405448504648609605997534`60"];
 

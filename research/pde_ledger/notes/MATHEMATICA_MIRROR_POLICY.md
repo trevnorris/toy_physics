@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-22` (batch III.1 close)
+Snapshot date: `2026-05-22` (batch III.2 close)
 
 ## Rule
 
@@ -40,8 +40,13 @@ before the batch closes. Batch II.1 found `mathematica_transliteration` on
 every single one of its 13 stages; batch III.1 found it on 10 of 12 (with
 the remaining two — 042 and 048 — passing transliteration screening only
 because their closed-form-identity structure or independent `Solve`/
-`Series` route already broke the line-by-line correspondence). Treat
-transliteration as the default expectation, not an exceptional finding.
+`Series` route already broke the line-by-line correspondence); batch III.2
+found it on 6 of 12 (049, 051, 052, 058, 059, 060), the lower share due
+to a higher concentration of pure tautology / hardcoded findings in the
+other 5 dirty stages (050, 053, 054, 055, 057) plus one clean-on-first-read
+stage (056) whose `Limit[..., {Pe, Infinity}]` and `Series.removeO` paths
+already broke line-by-line correspondence. Treat transliteration as the
+default expectation, not an exceptional finding.
 
 ## Current Independent-Mirror Set
 
@@ -292,8 +297,79 @@ different verification structure from the SymPy side:
   red-team batch III.1 verified clean as-is: independently `Solve`s for
   `zeta_req` and adds two limit-coefficient checks (softening, pole)
   absent from the SymPy script; not a transliteration
+- `049`
+  red-team batch III.2 deleted the `uniformDnOverlap` helper; the
+  Mathematica overlap derivation now goes through
+  `Integrate[chiN, {s, 0, l}]` (integer assumption) with `i0` obtained by
+  `overlapFormula /. n -> 0`. Tautological `k_n` definitional check replaced
+  with a non-trivial Neumann-boundary residual `cos(k_n L) == 0`
+- `050`
+  red-team batch III.2 replaced the `(2n+1)^2 / (2n+1)^2` impossibility-bound
+  cancellation with a genuine admissibility-numerator residual; added a
+  derivative-sign check on `zeta_n^(twin)(x)`; added the missing factored
+  form for `S_n^(max) - S_n^(twin)`; introduced an explicit
+  `ConditionalExpression` strip in `expectZero` so post-`Solve` zero residuals
+  collapse cleanly under `$Assumptions`
+- `051`
+  red-team batch III.2 (CHECKPOINT) replaced the `M_mix(Z_W^(twin,req))`
+  inverse-roundtrip with a forward-map comparison via the Stage 047/030
+  `Z_W = pi^2 (1-eps_eta)(1-eps) M_mix / [8 (1+chi0)^2]` relation; routed
+  the Mathematica side through independent `Factor[Together[...]]`
+  canonicalization and `Solve[{gTr == 2 mMix, xi > 0}, xi, Reals]` for
+  `xi_(2x)`. The `Pi_tr(xi->1-)` infinity check switched from `pi1 =!= Infinity`
+  to `1/pi1 == 0` to handle Mathematica's non-deterministic `Limit` output
+- `052`
+  red-team batch III.2 broke the SymPy/Mathematica `applyDimless`-style
+  tautological renames for `zeta_req`, `dZdPi`, `Delta_zeta`, and the
+  softening fraction; the Mathematica mirror now derives each via independent
+  `Solve`/`Together`/log-derivative routes
+- `053`
+  red-team batch III.2 replaced the hand-typed `2/pi - 1/2` linear-coefficient
+  literals with `series_small.coeff(alpha, 1)` (SymPy) and
+  `Coefficient[seriesSmall, alpha, 1]` (Mathematica), so the small-alpha
+  coefficient assertion now depends on the integrated `Omega_alpha`
+- `054`
+  red-team batch III.2 removed two Mathematica hardcoded literals:
+  `bExpr = a Tan[k ell]` is now obtained via `Solve` of the Neumann condition,
+  and the `x floor` is obtained by inverting `aKMax == zetaReq` via `Solve`.
+  SymPy was already clean
+- `055`
+  red-team batch III.2 re-anchored the `KX/KW equivalence` check to
+  `(1/AK).subs(y, 0).subs(x, x_floor)` rather than the hand-typed `1 - x/4`,
+  so the assertion now depends on `A_K` itself
+- `056`
+  red-team batch III.2 verified clean: SymPy and Mathematica derive
+  `Omega_Pe`, the twin/finite-throat limits, the covariance identity, the
+  small-Pe coefficient, and the large-Pe `-pi^3/8` correction through
+  genuinely different mechanisms (`Series.removeO` vs `Limit[pe^2(Omega-pi/2)]`).
+  Structural similarity is high but not transliteration
+- `057`
+  red-team batch III.2 replaced the `y_req identity` self-subtraction with a
+  round-trip substitution of `y_req_sq` into the defining equation
+  `zeta_req = Omega^2(kappa + pi^2/4)/(kappa + y^2)`; both engines now exercise
+  this non-tautologically
+- `058`
+  red-team batch III.2 re-derived `fc`/`fs`/`delta` through independent
+  `Integrate[]` calls in Mathematica (no SymPy antiderivative ansatz import);
+  added bracket-gap closed-form + positivity sweep + `Delta_inf as Pe -> oo`
+  limit checks across both engines; the constant-term analyticity identity
+  was augmented with a genuine non-vanishing `Pe^1` coefficient assertion
 - `059`
-  uses a constructive `FindRoot` saturation route instead of symbolic replay
+  red-team batch III.2 (previously: constructive `FindRoot` saturation route)
+  swapped the Mathematica linear-coefficient path from `Series`/`Coefficient`
+  to `Limit[D[Omega, pe], pe -> 0]`; restructured the circular saturation test
+  to use an independent `zeta_req_probe = 2/5` and recover `Pe_star` via a
+  fresh `Solve`. Substantive `(4-pi)/pi` claim preserved
+- `060`
+  red-team batch III.2 replaced the failing `sp.solve` with the explicit
+  `Csol = a/(exp(a*L) - 1)` closed form plus Jacobian-aware rescaling
+  assertions; swapped the tautological `Pe identification` for a
+  `Solve[gamma]`-derived rate check; replaced the Onsager dissipation
+  cancellation with a genuine positivity check (`sp.ask` / `Reduce[ForAll[...]]`)
+  in both engines; added a `K_X = 0` support-BVP solve that confirms
+  `Delta = Lambda L^2 sigma_0 / (2 T_X)` in the `K_m -> infty` limit.
+  `material_change: true` was flagged by the verifier — second-pass should
+  spot-check downstream Xi_micro consumers
 - `067`
   derives stationarity from the self-dual `C^2(r)=C^2(pi/r)` symmetry equation
 - `069`

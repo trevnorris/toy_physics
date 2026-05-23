@@ -63,8 +63,8 @@ def main() -> None:
     print("k_n =", k_n)
 
     expect_zero(
-        "k_n - (n+1/2) pi / L",
-        k_n - (n + sp.Rational(1, 2)) * sp.pi / L,
+        "k_n satisfies D/N Neumann boundary",
+        sp.cos(k_n * L),
     )
 
     overlap_from_integral = sp.simplify(sp.integrate(chi_n, (s, 0, L)))

@@ -6,12 +6,12 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-22` (batch III.1 close — stages 037-048 contain
-no checkpoints in `CITATION_SUPPORT_SET.md`, so no new stage rows were
-added; the existing checkpoint constant-provenance tier is unchanged.
-This also bumps the snapshot through the batch II.1 close, which added
-the Stage 024 and Stage 036 entries above but left the snapshot date
-unbumped.)
+Snapshot date: `2026-05-22` (batch III.2 close — stage 051 is the one
+checkpoint in range 049-060; its red-team findings (taut + math_translit)
+were closed by re-anchoring `xi_(2x)` to a Solve-derived form and by
+forward-map verification via Stage 047/030. No new numerical or symbolic
+constants were introduced — the closed-form claim and its provenance were
+unchanged, only the verification structure. No new stage rows needed.)
 
 ## Audit Rule
 

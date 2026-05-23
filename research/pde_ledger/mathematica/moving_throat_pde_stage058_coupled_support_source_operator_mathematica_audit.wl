@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -38,18 +44,18 @@ kernelPrime = FullSimplify[D[kernel, x], Assumptions -> $Assumptions];
 Print["K_(alpha,eta)(x) = ", fmt[kernel]];
 Print["dK/dx = ", fmt[kernelPrime]];
 expectZero[
-  "Kprime identity",
+  "Kprime identity (Mma re-derivation)",
   kernelPrime - (alpha*Sinh[alpha*x] + eta*Cosh[alpha*x] + alpha*Sinh[alpha*(1 - x)])/w
 ];
 
 sigmaPe = FullSimplify[Pe*Exp[Pe*x]/(Exp[Pe] - 1), Assumptions -> $Assumptions];
 Print["Sigma_Pe(x) = ", fmt[sigmaPe]];
-expectZero["Sigma normalization", Integrate[sigmaPe, {x, 0, 1}] - 1];
+expectZero["Sigma normalization (Mma re-derivation)", Integrate[sigmaPe, {x, 0, 1}] - 1];
 
-fc = Exp[Pe*x]*(Pe*Cosh[alpha*x] - alpha*Sinh[alpha*x])/(Pe^2 - alpha^2);
-fs = Exp[Pe*x]*(Pe*Sinh[alpha*x] - alpha*Cosh[alpha*x])/(Pe^2 - alpha^2);
-expectZero["Ic antiderivative check", D[fc, x] - Exp[Pe*x]*Cosh[alpha*x]];
-expectZero["Is antiderivative check", D[fs, x] - Exp[Pe*x]*Sinh[alpha*x]];
+fc = FullSimplify[Integrate[Exp[Pe*x]*Cosh[alpha*x], x], Assumptions -> $Assumptions && Pe != alpha];
+fs = FullSimplify[Integrate[Exp[Pe*x]*Sinh[alpha*x], x], Assumptions -> $Assumptions && Pe != alpha];
+expectZero["Ic antiderivative regression (Mma re-derivation)", D[fc, x] - Exp[Pe*x]*Cosh[alpha*x]];
+expectZero["Is antiderivative regression (Mma re-derivation)", D[fs, x] - Exp[Pe*x]*Sinh[alpha*x]];
 
 ic = FullSimplify[(fc /. x -> 1) - (fc /. x -> 0), Assumptions -> $Assumptions];
 is = FullSimplify[(fs /. x -> 1) - (fs /. x -> 0), Assumptions -> $Assumptions];
@@ -57,9 +63,14 @@ Print["Ic(Pe,alpha) = ", fmt[ic]];
 Print["Is(Pe,alpha) = ", fmt[is]];
 
 delta = FullSimplify[
-  Pe/(Exp[Pe] - 1)*((1 - Cosh[alpha])*ic + (eta/alpha + Sinh[alpha])*is)/w,
-  Assumptions -> $Assumptions
+  Integrate[kernel*sigmaPe, {x, 0, 1}, Assumptions -> $Assumptions && Pe != alpha],
+  Assumptions -> $Assumptions && Pe != alpha
 ];
+deltaCombination = FullSimplify[
+  Pe/(Exp[Pe] - 1)*((1 - Cosh[alpha])*ic + (eta/alpha + Sinh[alpha])*is)/w,
+  Assumptions -> $Assumptions && Pe != alpha
+];
+expectZero["delta independent integral matches combination form", delta - deltaCombination];
 Print["Delta(Pe;alpha,eta) = ", fmt[delta]];
 
 delta0 = FullSimplify[
@@ -68,9 +79,9 @@ delta0 = FullSimplify[
 ];
 delta0Expected = FullSimplify[eta*(Cosh[alpha] - 1)/(alpha^2*w), Assumptions -> alpha > 0 && eta > 0];
 Print["Delta_0 = ", fmt[delta0]];
-expectZero["Delta0 formula", delta0 - delta0Expected];
+expectZero["Delta0 formula (Mma re-derivation)", delta0 - delta0Expected];
 expectZero[
-  "Delta0 integral identity",
+  "Delta0 integral identity (Mma re-derivation)",
   FullSimplify[delta0 - Integrate[kernel, {x, 0, 1}], Assumptions -> alpha > 0 && eta > 0]
 ];
 
@@ -80,16 +91,45 @@ deltaInfExpected = FullSimplify[
   Assumptions -> alpha > 0 && eta > 0
 ];
 Print["Delta_inf = ", fmt[deltaInf]];
-expectZero["Delta_inf formula", deltaInf - deltaInfExpected];
+expectZero["Delta_inf direct substitution (sanity, Mma re-derivation)", deltaInf - deltaInfExpected];
 
 peLo = FullSimplify[Xi*delta0Expected, Assumptions -> alpha > 0 && eta > 0 && Xi > 0];
 peHi = FullSimplify[Xi*deltaInfExpected, Assumptions -> alpha > 0 && eta > 0 && Xi > 0];
 Print["Pe_lo = Xi Delta_0 = ", fmt[peLo]];
 Print["Pe_hi = Xi Delta_inf = ", fmt[peHi]];
 
+bracketGap = FullSimplify[deltaInfExpected - delta0Expected, Assumptions -> alpha > 0 && eta > 0];
+bracketGapExpected = FullSimplify[
+  ((alpha^2 - eta)*(Cosh[alpha] - 1) + alpha*eta*Sinh[alpha])/(alpha^2*w),
+  Assumptions -> alpha > 0 && eta > 0
+];
+expectZero["bracket gap closed form", bracketGap - bracketGapExpected];
+bracketGapValues = Flatten[Table[
+  N[bracketGap /. {alpha -> aV, eta -> eV}],
+  {aV, {1/10, 1, 3}}, {eV, {1/10, 1, 10}}
+]];
+If[AnyTrue[bracketGapValues, # <= 0 &],
+  fail["bracket gap positivity sweep", bracketGapValues],
+  pass["bracket gap positivity sweep"]
+];
+
+deltaInfLimit = FullSimplify[
+  Limit[delta, Pe -> Infinity, Assumptions -> alpha > 0 && eta > 0],
+  Assumptions -> alpha > 0 && eta > 0
+];
+Print["Delta(Pe -> oo) = ", fmt[deltaInfLimit]];
+expectZero["Delta_inf as Pe -> oo limit", deltaInfLimit - deltaInfExpected];
+
 deltaSeries = FullSimplify[Normal[Series[delta, {Pe, 0, 1}]], Assumptions -> alpha > 0 && eta > 0];
 Print["Delta(Pe) small-Pe series = ", fmt[deltaSeries]];
-expectZero["weak-coupling constant term", SeriesCoefficient[deltaSeries, {Pe, 0, 0}] - delta0Expected];
+expectZero["weak-coupling constant term (Mma re-derivation)", SeriesCoefficient[deltaSeries, {Pe, 0, 0}] - delta0Expected];
+pe1Coeff = FullSimplify[SeriesCoefficient[deltaSeries, {Pe, 0, 1}], Assumptions -> alpha > 0 && eta > 0];
+Print["Delta(Pe) first-order coefficient = ", fmt[pe1Coeff]];
+pe1Val = N[pe1Coeff /. {alpha -> 1, eta -> 1}];
+If[Chop[pe1Val] === 0,
+  fail["weak-coupling first-order coefficient vanishes at alpha=eta=1", pe1Val],
+  pass["weak-coupling first-order coefficient nonvanishing at alpha=eta=1"]
+];
 
 Print[""];
 Print["Stage 058 Mathematica audit passed."];

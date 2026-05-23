@@ -53,7 +53,7 @@ expect_zero("x floor = 4 - pi^2/zeta_req", x_floor - (4 - pi**2 / zeta_req))
 
 # Equivalent stiffness-ratio form.
 KX_over_KW = sp.symbols("KX_over_KW", positive=True, real=True)
-expect_zero("KX/KW equivalence", (1 - x / 4).subs(x, x_floor) - pi**2 / (4 * zeta_req))
+expect_zero("KX/KW equivalence", (1 / AK).subs(y, 0).subs(x, x_floor) - pi**2 / (4 * zeta_req))
 
 banner("REGIME SPLIT")
 

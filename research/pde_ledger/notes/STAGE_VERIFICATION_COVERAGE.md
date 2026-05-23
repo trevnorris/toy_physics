@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-11`
+Snapshot date: `2026-05-22` (batch III.2 close)
 
 ## Scope
 
@@ -38,6 +38,32 @@ Mathematica mirrors.
 The SymPy runner summary reports `241` passing files because it includes the
 repo-level `moving_throat_pde_master_sympy_audit.py` in addition to the `240`
 stage-level SymPy audits counted above.
+
+### Red-team verification status
+
+Distinct from "audit file present" (counted above) is "red-team verified" —
+the stage has passed the `audit → directive → codex → verifier` pipeline run
+out of `redteam/`, with both engines independently checking load-bearing
+claims and a clean-context verifier agent confirming the directive's intent
+was honored. See `redteam/BATCHES.md` for the live batch table.
+
+As of `2026-05-22`: 60 of 253 stages red-team verified.
+
+| Batch | Range | Stages | Verified | Date |
+|---|---|---:|---:|---|
+| I.1 | `001--012` | 12 | 12 | 2026-05-21 |
+| I.2 | `013--023` | 11 | 11 | 2026-05-21 |
+| II.1 | `024--036` | 13 | 13 | 2026-05-22 |
+| III.1 | `037--048` | 12 | 12 | 2026-05-22 |
+| III.2 | `049--060` | 12 | 12 | 2026-05-22 |
+| III.3 onward | `061--253` | 193 | 0 | pending |
+
+Cumulative findings closed: ~152 (`tautological_check` dominant,
+`mathematica_transliteration` second, then `insufficient_verification` and
+`hardcoded_result`). One stage in III.2 (060) flagged `material_change: true`
+from a `Csol = a/(exp(a*L)-1)` restructure of a previously-failing
+`sp.solve`; downstream consumers are still `pending` so no immediate
+cascade. See per-batch summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update
 

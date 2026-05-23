@@ -1,18 +1,10 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage049_dn_overlap_zeta_sympy_audit.py
-# Date: 2026-05-11T12:43:24-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
 ========================================================================================
 chi_n(s) = sqrt(2)*sin(pi*s*(2*n + 1)/(2*L))/sqrt(L)
 k_n = pi*(2*n + 1)/(2*L)
-k_n - (n+1/2) pi / L = 0
+k_n satisfies D/N Neumann boundary = 0
 I_n from direct integral = 2*sqrt(2)*sqrt(L)/(pi*(2*n + 1))
 I_n closed form = 2*sqrt(2)*sqrt(L)/(pi*(2*n + 1))
 uniform overlap integral = 0
@@ -33,5 +25,3 @@ Carry-forward formulas:
   zeta_n^(phys) = (K_W_eff / K_phi,n_eff) (I_n / I_0)^2
   zeta_n^(twin) = 1 / ((2n+1)^2 (1 + x n(n+1)))
   zeta_0^(twin) = 1
-
-EXIT_CODE: 0

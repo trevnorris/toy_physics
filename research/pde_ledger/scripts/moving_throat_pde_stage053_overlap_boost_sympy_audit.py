@@ -71,9 +71,9 @@ expect_zero("antinode concentration limit", Omegainf - pi/2)
 
 series_small = sp.series(Omega_alpha, alpha, 0, 3).removeO()
 print("small-alpha series =", series_small)
-expected_linear = sp.simplify(2 / pi - sp.Rational(1, 2))
-print("linear coefficient =", expected_linear)
-expect_zero("linear coefficient - (4-pi)/(2pi)", expected_linear - (4 - pi) / (2 * pi))
+linear_coeff = sp.simplify(series_small.coeff(alpha, 1))
+print("linear coefficient =", linear_coeff)
+expect_zero("linear coefficient - (4-pi)/(2pi)", linear_coeff - (4 - pi) / (2 * pi))
 
 banner("PURE OVERLAP THRESHOLD")
 

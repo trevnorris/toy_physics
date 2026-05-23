@@ -9,8 +9,11 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-22` (batch III.1 close — no checkpoint stages in
-range 037-048, snapshot tier unchanged)
+Snapshot date: `2026-05-22` (batch III.2 close — checkpoint stage 051
+audited and verified; both findings (taut, math_translit) closed with
+forward-map verification via Stage 047/030 and independent Solve on Reals;
+tier table unchanged because the checkpoint's substantive claim was
+already strong, the findings only affected verification non-tautologicity)
 
 ## Scope
 

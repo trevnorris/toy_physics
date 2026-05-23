@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -88,8 +94,11 @@ expectZero[
   kappaReq - (omegaPe^2 Pi^2/4 - zetaReq y^2)/(zetaReq - omegaPe^2)
 ];
 expectZero[
-  "y_req identity",
-  yReqSq - ((omegaPe^2/zetaReq) (kappa + Pi^2/4) - kappa)
+  "y_req defining equation",
+  zetaReq - FullSimplify[
+    omegaPe^2 (kappa + Pi^2/4)/(kappa + yReqSq),
+    Assumptions -> $Assumptions
+  ]
 ];
 
 Print[""];

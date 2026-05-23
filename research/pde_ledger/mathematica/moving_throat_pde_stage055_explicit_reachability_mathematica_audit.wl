@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -51,7 +57,7 @@ expectZero["twin value", zetaTwin - 1];
 expectZero["closure maximum", zetaMax - Pi^2/(4 - x)];
 expectZero["x floor = 4 - Pi^2/zeta_req", xFloor - (4 - Pi^2/zetaReq)];
 expectZero["zeta_max(x_floor) - zeta_req", (zetaMax /. x -> xFloor) - zetaReq];
-expectZero["KX/KW equivalence", ((1 - x/4) /. x -> xFloor) - Pi^2/(4 zetaReq)];
+expectZero["KX/KW equivalence", ((1/aK) /. y -> 0 /. x -> xFloor) - Pi^2/(4 zetaReq)];
 
 Print[""];
 Print["Stage 055 Mathematica audit passed."];

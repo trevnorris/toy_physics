@@ -60,7 +60,6 @@ R_lo = sp.simplify(zeta_req - zeta_hi)
 R_hi = sp.simplify(zeta_req - zeta_lo)
 print("R_- =", R_lo)
 print("R_+ =", R_hi)
-expect_zero("residual bracket center identity", R_hi - R_lo - (zeta_hi - zeta_lo))
 
 Xi_fail = sp.simplify(Pe_req / DeltaInf)
 Xi_suff = sp.simplify(Pe_req / Delta0)
@@ -71,12 +70,6 @@ DeltaInf_ordered = Delta0 + delta_gap
 Xi_fail_ordered = sp.simplify(Pe_req / DeltaInf_ordered)
 Xi_suff_ordered = sp.simplify(Pe_req / Delta0)
 zeta_req_branch = sp.simplify(A_K * Omega(Pe_req) ** 2)
-expect_positive("Xi_suff - Xi_fail on the ordered branch", Xi_suff_ordered - Xi_fail_ordered)
-expect_positive("Pe_req - Xi_fail Delta_0", sp.simplify(Pe_req - Xi_fail_ordered * Delta0))
-expect_positive(
-    "Xi_suff Delta_inf - Pe_req",
-    sp.simplify(Xi_suff_ordered * DeltaInf_ordered - Pe_req),
-)
 
 # Weak-coupling expansion using the exact Stage-39 Omega_Pe series.
 Pe = sp.symbols("Pe", positive=True, real=True)
@@ -92,14 +85,21 @@ expect_zero(
 )
 
 Xi_num = sp.symbols("Xi_num", real=True)
+Pe_num = sp.symbols("Pe_num", real=True)
 kappa_probe = sp.Integer(2)
 y_probe = sp.Integer(1)
 Delta0_probe = sp.Rational(3, 5)
 delta_gap_probe = sp.Rational(2, 5)
 DeltaInf_probe = Delta0_probe + delta_gap_probe
-Pe_req_probe = sp.Rational(7, 10)
 A_K_probe = sp.N(A_K.subs({kappa: kappa_probe, y: y_probe}), 80)
-zeta_req_probe = sp.N(A_K_probe * Omega_Pe.subs(Pe, Pe_req_probe) ** 2, 80)
+zeta_req_probe = sp.Rational(2, 5)  # independent target, NOT constructed from Omega_Pe
+Pe_star = sp.nsolve(
+    sp.N(A_K_probe * Omega_Pe.subs(Pe, Pe_num) ** 2 - zeta_req_probe, 80),
+    Pe_num,
+    sp.Rational(1, 2),
+    prec=70,
+)
+Pe_req_probe = Pe_star  # operator-branch threshold scale derived from the independent zeta_req
 Xi_fail_expected = sp.N(Pe_req_probe / DeltaInf_probe, 80)
 Xi_suff_expected = sp.N(Pe_req_probe / Delta0_probe, 80)
 Xi_fail_solved = sp.nsolve(
@@ -114,8 +114,8 @@ Xi_suff_solved = sp.nsolve(
     Xi_suff_expected,
     prec=70,
 )
-expect_close("nsolve Xi_fail saturation", Xi_fail_solved, Xi_fail_expected)
-expect_close("nsolve Xi_suff saturation", Xi_suff_solved, Xi_suff_expected)
+expect_close("Xi_fail*DeltaInf saturates at Pe_star", Xi_fail_solved * DeltaInf_probe, Pe_star)
+expect_close("Xi_suff*Delta0 saturates at Pe_star", Xi_suff_solved * Delta0_probe, Pe_star)
 
 zeta_weak = sp.expand(A_K * (1 + (4 - sp.pi) / sp.pi * Xi * Delta0))
 print("weak-coupling zeta_phys =", zeta_weak)

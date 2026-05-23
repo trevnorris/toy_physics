@@ -105,8 +105,10 @@ expect_zero(
     kappa_req - (Omega_Pe**2 * sp.pi**2 / 4 - zeta_req * y**2) / (zeta_req - Omega_Pe**2),
 )
 expect_zero(
-    "y_req identity",
-    y_req_sq - ((Omega_Pe**2 / zeta_req) * (kappa + sp.pi**2 / 4) - kappa),
+    "y_req defining equation",
+    zeta_req - sp.simplify(
+        Omega_Pe**2 * (kappa + sp.pi**2 / 4) / (kappa + y_req_sq)
+    ),
 )
 
 print("\nStage 40 audit passed.")

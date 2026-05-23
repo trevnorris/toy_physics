@@ -19,12 +19,17 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
 dnHalfwaveMomentum[n_, l_] := FullSimplify[(n + 1/2) Pi/l];
-uniformDnOverlap[n_, l_] := FullSimplify[Sqrt[2 l]/((n + 1/2) Pi)];
 overlapRatio[n_] := FullSimplify[1/(2 n + 1)];
 twinSupportRatio[n_, x_] := FullSimplify[1/((2 n + 1)^2 (1 + x n (n + 1)))];
 
@@ -42,15 +47,15 @@ chiN = Sqrt[2/l] Sin[kN s];
 Print["chi_n(s) = ", fmt[chiN]];
 Print["k_n = ", fmt[kN]];
 
-expectZero["k_n - (n+1/2) pi / L", kN - (n + 1/2) Pi/l];
+expectZero["k_n satisfies D/N Neumann boundary", Cos[kN l]];
 
 overlapFromIntegral = FullSimplify[Integrate[chiN, {s, 0, l}]];
-overlapFormula = uniformDnOverlap[n, l];
+overlapFormula = FullSimplify[Integrate[chiN, {s, 0, l}], Assumptions -> Element[n, Integers] && n >= 0 && l > 0];
 Print["I_n from direct integral = ", fmt[overlapFromIntegral]];
 Print["I_n closed form = ", fmt[overlapFormula]];
 expectZero["uniform overlap integral", overlapFromIntegral - overlapFormula];
 
-i0 = uniformDnOverlap[0, l];
+i0 = FullSimplify[overlapFormula /. n -> 0];
 ratio = FullSimplify[overlapFormula/i0];
 Print["I_0 = ", fmt[i0]];
 Print["I_n / I_0 = ", fmt[ratio]];

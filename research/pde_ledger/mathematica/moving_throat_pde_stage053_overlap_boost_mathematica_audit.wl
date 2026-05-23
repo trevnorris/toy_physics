@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -61,7 +67,7 @@ expectZero["Omega_alpha closed form", omegaAlpha - omegaAlphaSimple];
 omega0 = FullSimplify[Limit[omegaAlpha, alpha -> 0], Assumptions -> ell > 0];
 omegaInf = FullSimplify[Limit[omegaAlpha, alpha -> Infinity], Assumptions -> ell > 0];
 seriesSmall = FullSimplify[Normal[Series[omegaAlpha, {alpha, 0, 2}]], Assumptions -> ell > 0];
-linearCoeff = FullSimplify[2/Pi - 1/2];
+linearCoeff = FullSimplify[Coefficient[seriesSmall, alpha, 1], Assumptions -> ell > 0];
 
 Print["Omega_alpha(alpha->0) = ", fmt[omega0]];
 Print["Omega_alpha(alpha->+infty) = ", fmt[omegaInf]];

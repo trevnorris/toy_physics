@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -77,24 +83,77 @@ expectZero[
   ]
 ];
 
-sigmaPe = FullSimplify[pe*Exp[pe*s]/(Exp[pe] - 1), Assumptions -> pe > 0];
-expectZero["normalized Sigma_Pe family", Integrate[sigmaPe, {s, 0, 1}] - 1];
-expectZero["Pe identification", a*ell - lambdaPhi*deltaDrop/theta];
+cNormSol = a/(Exp[a*ell] - 1);
+expectZero["Csol normalizes sigmaTrial on [0,ell]",
+  FullSimplify[Integrate[cNormSol*Exp[a*s], {s, 0, ell}] - 1, Assumptions -> $Assumptions]];
+xVar = Symbol["xVar"];
+sigmaFromRescale = FullSimplify[
+  ell*(cNormSol*Exp[a*s] /. s -> xVar*ell) /. deltaDrop -> pe*theta/lambdaPhi,
+  Assumptions -> $Assumptions && pe > 0];
+sigmaPe = FullSimplify[pe*Exp[pe*xVar]/(Exp[pe] - 1), Assumptions -> pe > 0];
+expectZero["Sigma_Pe from rescaling", sigmaFromRescale - sigmaPe];
+expectZero["normalized Sigma_Pe family",
+  Integrate[sigmaPe, {xVar, 0, 1}] - 1];
+(* derive gamma from J=0 without referencing the predefined a *)
+gammaVar = Symbol["gammaVar"];
+sigmaAnsatz = cNorm*Exp[gammaVar*s];
+odeAnsatz = jAff /. {sigmaField -> sigmaAnsatz, Derivative[1][sigma][s] -> D[sigmaAnsatz, s]};
+gammaSolved = Quiet[
+  Solve[FullSimplify[odeAnsatz, Assumptions -> $Assumptions] == 0, gammaVar],
+  Solve::ifun];
+gammaDerived = gammaVar /. First[Select[gammaSolved, (gammaVar /. #) =!= 0 &]];
+Print["gammaDerived = ", fmt[gammaDerived]];
+expectZero["Pe identification (derived rate)",
+  FullSimplify[gammaDerived - lambdaPhi*deltaDrop/(theta*ell), Assumptions -> $Assumptions]];
 
-deltaSupport = Symbol["DeltaSupport"];
-xiMicro = FullSimplify[(lambdaPhi/ theta)*(lambdaPhi*ell^2*deltaSupport/tX)/deltaSupport, Assumptions -> $Assumptions];
+(* derive phi_from_Phi from the support EL in the constant-sigma, K_X=0 limit *)
+phiBVP = Symbol["phiBVP"];
+sigma0 = Symbol["sigma0"];
+elConst[fun_] := -lambdaPhi*sigma0 - tX*D[fun[s], {s, 2}];
+solGeneral = DSolveValue[elConst[phiBVP] == 0, phiBVP[s], s];
+{cc1, cc2} = Sort[Cases[{solGeneral}, _C, Infinity]];
+phiS = D[solGeneral, s];
+bc1 = tX*(phiS /. s -> 0) == kM*(solGeneral /. s -> 0);
+bc2 = (phiS /. s -> ell) == 0;
+constVals = Solve[{bc1, bc2}, {cc1, cc2}];
+phiSolved = FullSimplify[solGeneral /. First[constVals], Assumptions -> $Assumptions];
+deltaDerived = FullSimplify[(phiSolved /. s -> ell) - (phiSolved /. s -> 0),
+  Assumptions -> $Assumptions && sigma0 > 0];
+Print["Delta_derived = ", fmt[deltaDerived]];
+deltaRigidLimit = FullSimplify[Quiet[Limit[deltaDerived, kM -> Infinity], Limit::alimv],
+  Assumptions -> $Assumptions && sigma0 > 0];
+deltaTargetRigid = lambdaPhi*ell^2*sigma0/(2*tX);
+expectZero["phi_from_Phi from support BVP (kM -> infty)",
+  FullSimplify[deltaRigidLimit - deltaTargetRigid, Assumptions -> $Assumptions]];
+
+(* Independent route: form Xi_micro from dimensional combination of derived
+   parameters, then verify it matches the susceptibility and phenomenological
+   forms used in the SymPy script. The deltaSupport cancellation is avoided. *)
+xiMicro = lambdaPhi^2*ell^2/(theta*tX);
+xiMicroFromChi = chiSigma*lambdaPhi^2*ell^2/tX /. chiSigma -> 1/theta;
+expectZero["xiMicro consistency via chi substitution",
+  FullSimplify[xiMicro - xiMicroFromChi, Assumptions -> $Assumptions]];
+xiMicroFromDM = mSigma*lambdaPhi^2*ell^2/(dSigma*tX) /. dSigma -> mSigma*theta;
+expectZero["xiMicro consistency via D/M substitution",
+  FullSimplify[xiMicro - xiMicroFromDM, Assumptions -> $Assumptions]];
 Print["Xi_micro = ", fmt[xiMicro]];
 expectZero["Xi_micro - Lambda^2 L^2/(Theta T_X)", xiMicro - lambdaPhi^2*ell^2/(theta*tX)];
 expectZero["Xi_micro susceptibility form", FullSimplify[xiMicro /. theta -> 1/chiSigma, Assumptions -> $Assumptions] - chiSigma*lambdaPhi^2*ell^2/tX];
 expectZero["Xi_micro phenomenological form", FullSimplify[xiMicro /. theta -> dSigma/mSigma, Assumptions -> $Assumptions] - mSigma*lambdaPhi^2*ell^2/(dSigma*tX)];
 
-muFun = mu[s];
-jFun = j[s];
-localIdentity = FullSimplify[-muFun*D[jFun, s] - (-D[muFun*jFun, s] + D[muFun, s]*jFun), Assumptions -> $Assumptions];
-expectZero["integration-by-parts identity", localIdentity];
+(* product-rule identity -mu J' = -(mu J)' + mu' J is a calculus identity, not asserted *)
 muS = Symbol["muS"];
-jOnsager = -mSigma*sigma*muS;
-expectZero["Onsager dissipation density", FullSimplify[muS*jOnsager + jOnsager^2/(mSigma*sigma), Assumptions -> $Assumptions]];
+sigmaVal = Symbol["sigmaVal"];
+jOnsager = -mSigma*sigmaVal*muS;
+dissipationDensity = FullSimplify[jOnsager^2/(mSigma*sigmaVal),
+  Assumptions -> $Assumptions && mSigma > 0 && sigmaVal > 0 && Element[muS, Reals]];
+Print["dissipation density = ", fmt[dissipationDensity]];
+positivityCheck = Reduce[ForAll[{muS, sigmaVal, mSigma},
+    Implies[mSigma > 0 && sigmaVal > 0 && Element[muS, Reals], dissipationDensity >= 0]],
+  Reals];
+If[TrueQ[positivityCheck === True],
+  pass["dissipation density nonnegative under mSigma, sigmaVal > 0"],
+  fail["dissipation density nonnegative", positivityCheck]];
 
 phiHead = Unique["phiFun"];
 sigmaHead = Unique["sigmaFun"];

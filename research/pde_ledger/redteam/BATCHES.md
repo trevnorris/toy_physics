@@ -1,6 +1,6 @@
 # Red-Team Batch Status
 
-Generated: 2026-05-22T13:24:46-06:00
+Generated: 2026-05-22T19:05:54-06:00
 Project: pde_ledger
 
 | Batch | Range | Stages | States | Label |
@@ -9,7 +9,7 @@ Project: pde_ledger
 | I.2 | 13–23 | 11 | verified=11 | Part I.2 — Maxwell bridge, parent throat action, reduced one-port |
 | II.1 | 24–36 | 13 | verified=13 | Part II.1 — Overlap isotropy through continuum kernel |
 | III.1 | 37–48 | 12 | verified=12 | Part III.1 — Continuum kernel, generalized branch, rank-2 |
-| III.2 | 49–60 | 12 | pending=12 | Part III.2 — Tracking, zeta thresholds, asymmetry, boost |
+| III.2 | 49–60 | 12 | verified=12 | Part III.2 — Tracking, zeta thresholds, asymmetry, boost |
 | III.3 | 61–72 | 12 | pending=12 | Part III.3 — Microclosure, gain thresholds, equilibrium, walls |
 | III.4 | 73–84 | 12 | pending=12 | Part III.4 — Family-1 geometry, thresholds, quadrupole |
 | III.5 | 85–90 | 6 | pending=6 | Part III.5 — Quadrupole cancellation, loading ratio, verdict |

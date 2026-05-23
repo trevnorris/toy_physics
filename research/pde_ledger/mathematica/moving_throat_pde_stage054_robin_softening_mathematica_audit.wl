@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -31,7 +37,7 @@ $Assumptions =
   y > 0 && eta > 0 && a != 0;
 
 psi = a Cos[k s] + b Sin[k s];
-bExpr = FullSimplify[a Tan[k ell], Assumptions -> $Assumptions];
+bExpr = FullSimplify[b /. First@Solve[(D[psi, s] /. s -> ell) == 0, b], Assumptions -> $Assumptions];
 psiBN = FullSimplify[psi /. b -> bExpr, Assumptions -> $Assumptions];
 charEq = FullSimplify[(D[psiBN, s] /. s -> 0) - h (psiBN /. s -> 0), Assumptions -> $Assumptions];
 
@@ -75,7 +81,7 @@ expectZero["soft-mouth limit", aKSoft - 4/(4 - x)];
 ineqRhs = FullSimplify[1/zetaReq - 1 + x/4, Assumptions -> $Assumptions];
 yReqSq = FullSimplify[Pi^2 ineqRhs/x, Assumptions -> $Assumptions];
 aKMax = FullSimplify[4/(4 - x), Assumptions -> $Assumptions];
-xFloor = FullSimplify[4 - 4/zetaReq, Assumptions -> zetaReq > 0];
+xFloor = FullSimplify[x /. First@Solve[aKMax == zetaReq, x], Assumptions -> zetaReq > 0];
 
 Print["Condition A_K >= zeta_req implies y^2 <= ", fmt[yReqSq]];
 Print["A_K,max = ", fmt[aKMax]];

@@ -123,11 +123,13 @@ sp.pprint(Mmix_twin_req)
 print("\nZ_W^(twin,req) =")
 sp.pprint(ZW_twin_req)
 
-# Verify Z_W threshold against the Stage-30 coherent map.
-Mmix_from_ZW = sp.simplify(8 * ZW * (1 + chi0) ** 2 / (pi**2 * (1 - eps_eta) * (1 - eps)))
+# Stage 047/030 coherent forward map: Z_W = pi^2 (1-eps_eta)(1-eps) M_mix / [8 (1+chi0)^2].
+ZW_from_Mmix = sp.simplify(pi**2 * (1 - eps_eta) * (1 - eps) * Mmix / (8 * (1 + chi0) ** 2))
+# Apply the forward map to the M_mix threshold M_mix = G_tr/2 and compare to ZW_twin_req.
+ZW_threshold_via_map = sp.simplify(ZW_from_Mmix.subs(Mmix, Gtr / 2))
 expect_zero(
-    "M_mix(Z_W^(twin,req)) - G_tr/2",
-    Mmix_from_ZW.subs(ZW, ZW_twin_req) - Gtr / 2,
+    "Z_W^(twin,req) - forward-map(M_mix=G_tr/2)",
+    ZW_twin_req - ZW_threshold_via_map,
 )
 
 banner("EXACT TWIN-SATURATION DEPTH")

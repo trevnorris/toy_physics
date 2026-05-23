@@ -82,13 +82,23 @@ sp.pprint(Omega0_req_sq)
 print("\nK_(phi,0)^(req) =")
 sp.pprint(Kphi0_req)
 
-expect_zero(
-    "threshold equality at fixed stiffness",
-    zeta0_phys.subs(Omega0**2, Omega0_req_sq) - zeta_req,
+Omega0_sq_sym = sp.symbols("Omega0_sq", positive=True, real=True)
+sol_Omega0_sq = sp.solve(
+    (KW * Omega0_sq_sym / Kphi0) - zeta_req, Omega0_sq_sym
 )
+assert len(sol_Omega0_sq) == 1, "expected unique Omega0^2 solution"
 expect_zero(
-    "threshold equality at fixed overlap",
-    zeta0_phys.subs(Kphi0, Kphi0_req) - zeta_req,
+    "solve(zeta_phys = zeta_req) for Omega0^2 - expected",
+    sp.simplify(sol_Omega0_sq[0] - Omega0_req_sq),
+)
+
+sol_Kphi0 = sp.solve(
+    (KW * Omega0**2 / Kphi0) - zeta_req, Kphi0
+)
+assert len(sol_Kphi0) == 1, "expected unique Kphi0 solution"
+expect_zero(
+    "solve(zeta_phys = zeta_req) for Kphi0 - expected",
+    sp.simplify(sol_Kphi0[0] - Kphi0_req),
 )
 
 banner("SYMMETRIC TWIN DIAGNOSTICS")

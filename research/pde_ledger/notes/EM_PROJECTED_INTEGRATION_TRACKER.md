@@ -109,3 +109,19 @@ Former post-EM ledger stages start at Stage `022`.
   `material_change: false` on every stage, so no upstream cascade. See
   `redteam/batches/batch_III1.md` plus per-stage reports at
   `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch III.2 (stages 049-060, "Part III.2 -- Tracking,
+  zeta thresholds, asymmetry, boost") completed 2026-05-22 with all 12
+  stages reaching `verified` and both engines independently checking
+  each load-bearing claim. 11 of 12 stages required codex edits (27
+  findings total: 13 `tautological_check`, 6 `mathematica_transliteration`,
+  5 `insufficient_verification`, 3 `hardcoded_result`); stage 056 verified
+  clean on first read. Two batch-wide toolchain patches landed: an
+  `expectZero` helper update to strip `ConditionalExpression[0, ...]`
+  wrappers that `Solve`/`Reduce` introduce under aggressive `$Assumptions`,
+  and a `1/pi1 == 0` infinity test replacing strict `pi1 =!= Infinity`
+  in stage 051 because Mathematica's `Limit` returns inconsistent forms.
+  Zero codex iter-2 fixes needed. One stage (060) flagged
+  `material_change: true` due to a Csol restructuring; downstream Xi_micro
+  consumers in batches III.3+ are still `pending` so no immediate cascade.
+  See `redteam/batches/batch_III2.md` plus per-stage reports at
+  `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.

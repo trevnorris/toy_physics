@@ -58,6 +58,14 @@ banner("2. Same-operator twin family and stiffness threshold")
 # redeclared locally as a primitive formula.
 zeta_n = twin_support_ratio(n, x)
 print("zeta_n^(twin) =", zeta_n)
+# Monotonicity check: zeta_n^(twin) is strictly decreasing in x, so
+# zeta_n^(twin)(x) >= zeta_req iff x <= x_max.
+d_zeta_n_dx = sp.simplify(sp.diff(zeta_n, x))
+d_zeta_n_dx_target = -n * (n + 1) / ((2 * n + 1) ** 2 * (1 + x * n * (n + 1)) ** 2)
+expect_zero(
+    "d zeta_n^(twin) / dx + n(n+1) / [(2n+1)^2 (1 + x n(n+1))^2]",
+    sp.simplify(d_zeta_n_dx - d_zeta_n_dx_target),
+)
 # Solve equality zeta_n = zeta_req for x.
 x_eq = sp.solve(sp.Eq(zeta_n, zeta_req), x)[0]
 print("x_max(n;zeta_req) =", sp.simplify(x_eq))
@@ -67,11 +75,15 @@ expect_zero(
 )
 
 banner("3. Exact impossibility bound from higher-harmonic suppression")
-# Suppression bound relative to overlap only.
-supp = sp.simplify((2 * n + 1) ** 2 * zeta_n)
-print("(2n+1)^2 zeta_n^(twin) =", supp)
-expect_zero("suppression factor - 1/(1+x n(n+1))", supp - 1 / (1 + x * n * (n + 1)))
-print("Necessary condition for success: zeta_req <= 1/(2n+1)^2")
+# x_max is non-negative iff (2n+1)^2 zeta_req <= 1; the numerator (2n+1)^2 zeta_req - 1
+# of -x_max * n(n+1) factors that sign condition out cleanly.
+admissibility_num = sp.together(sp.simplify(-x_eq * n * (n + 1) - (((2 * n + 1) ** 2 * zeta_req - 1) / ((2 * n + 1) ** 2 * zeta_req))))
+print("admissibility numerator residual =", admissibility_num)
+expect_zero(
+    "x_max non-negativity reduces to (2n+1)^2 zeta_req <= 1",
+    admissibility_num,
+)
+print("Therefore the necessary condition is exactly zeta_req <= 1/(2n+1)^2.")
 
 banner("4. Higher-harmonic enhancement ceiling")
 S_n = sp.simplify(S.subs(zeta, zeta_n))
@@ -80,6 +92,21 @@ print("S_n^(twin) =", S_n)
 print("S_n^(max) =", S_n_max)
 # At x=0 the upper bound is saturated.
 expect_zero("S_n^(twin)(x=0) - S_n^(max)", sp.simplify(S_n.subs(x, 0) - S_n_max))
+# Ceiling check: S_n^(max) - S_n^(twin)(x) >= 0 for x >= 0.
+ceiling_diff = sp.simplify(S_n_max - S_n)
+ceiling_diff_factored = sp.together(ceiling_diff)
+print("S_n^(max) - S_n^(twin) =", ceiling_diff_factored)
+# Expected closed form: (1-eps) * (2n+1)^2 * n(n+1) * x  /  [ ((2n+1)^2 - eps) * ((2n+1)^2 (1 + x n(n+1)) - eps) ]
+ceiling_diff_target = (
+    (1 - eps) * (2 * n + 1) ** 2 * n * (n + 1) * x
+    / (((2 * n + 1) ** 2 - eps) * ((2 * n + 1) ** 2 * (1 + x * n * (n + 1)) - eps))
+)
+expect_zero(
+    "S_n^(max) - S_n^(twin) factored form",
+    sp.simplify(ceiling_diff - ceiling_diff_target),
+)
+# Under 0 < eps < 1, n >= 1, x >= 0 each factor of ceiling_diff_target is >= 0,
+# so S_n^(max) is indeed an upper bound (ceiling).
 # First few explicit cases.
 print("S_1^(max) =", sp.simplify(S_n_max.subs(n, 1)))
 print("S_2^(max) =", sp.simplify(S_n_max.subs(n, 2)))

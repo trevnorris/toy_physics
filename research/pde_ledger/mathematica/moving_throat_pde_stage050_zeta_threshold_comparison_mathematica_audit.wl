@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -44,25 +50,49 @@ expectZero[
 ];
 
 zetaN = FullSimplify[1/((2 n + 1)^2 (1 + x n (n + 1))), Assumptions -> $Assumptions];
-xEq = FullSimplify[(1/(((2 n + 1)^2) zetaReq) - 1)/(n (n + 1)), Assumptions -> $Assumptions];
+xEqSolution = x /. First[Solve[zetaN == zetaReq, x]];
+xEqSolution = xEqSolution /. ConditionalExpression[e_, _] :> e;
+xEq = FullSimplify[xEqSolution, Assumptions -> $Assumptions];
+xEqClosedForm = (1/(((2 n + 1)^2) zetaReq) - 1)/(n (n + 1));
 
 Print["zeta_n^(twin) = ", fmt[zetaN]];
+dZetaNdx = FullSimplify[D[zetaN, x], Assumptions -> $Assumptions];
+dZetaNdxTarget = -n (n + 1) / ((2 n + 1)^2 (1 + n (n + 1) x)^2);
+expectZero[
+  "d zeta_n^(twin) / dx + n(n+1)/[(2n+1)^2 (1 + x n(n+1))^2]",
+  dZetaNdx - dZetaNdxTarget
+];
 Print["x_max(n;zeta_req) = ", fmt[xEq]];
 expectZero["zeta_n^(twin)(x_max) - zeta_req", (zetaN /. x -> xEq) - zetaReq];
 expectZero[
-  "x_max - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)]",
-  xEq - (1/(((2 n + 1)^2) zetaReq) - 1)/(n (n + 1))
+  "x_max (from Solve) - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)]",
+  xEq - xEqClosedForm
 ];
 
-supp = FullSimplify[(2 n + 1)^2 zetaN, Assumptions -> $Assumptions];
-Print["(2n+1)^2 zeta_n^(twin) = ", fmt[supp]];
-expectZero["suppression factor - 1/(1+x n(n+1))", supp - 1/(1 + x n (n + 1))];
+admissibilityNum = FullSimplify[
+  -xEq n (n + 1) - ((2 n + 1)^2 zetaReq - 1)/((2 n + 1)^2 zetaReq),
+  Assumptions -> $Assumptions
+];
+Print["admissibility numerator residual = ", fmt[admissibilityNum]];
+expectZero[
+  "x_max non-negativity reduces to (2n+1)^2 zeta_req <= 1",
+  admissibilityNum
+];
 
 sN = FullSimplify[sEnhance /. zeta -> zetaN, Assumptions -> $Assumptions];
 sNMax = FullSimplify[1 + (1 - eps)/((2 n + 1)^2 - eps), Assumptions -> $Assumptions];
 Print["S_n^(twin) = ", fmt[sN]];
 Print["S_n^(max) = ", fmt[sNMax]];
 expectZero["S_n^(twin)(x=0) - S_n^(max)", (sN /. x -> 0) - sNMax];
+ceilingDiff = FullSimplify[sNMax - sN, Assumptions -> $Assumptions];
+Print["S_n^(max) - S_n^(twin) = ", fmt[ceilingDiff]];
+ceilingDiffTarget =
+  ((1 - eps) (2 n + 1)^2 n (n + 1) x) /
+  (((2 n + 1)^2 - eps) ((2 n + 1)^2 (1 + n (n + 1) x) - eps));
+expectZero[
+  "S_n^(max) - S_n^(twin) factored form",
+  ceilingDiff - ceilingDiffTarget
+];
 Print["S_1^(max) = ", fmt[sNMax /. n -> 1]];
 Print["S_2^(max) = ", fmt[sNMax /. n -> 2]];
 

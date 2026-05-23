@@ -119,6 +119,42 @@ These have each cost a fix-loop iteration at least once. Check for them proactiv
 
 3. **`expectZero` Prints "FAIL" but does not `Exit[1]`.** Many existing `.wl` files use a helper that Prints failure but doesn't propagate. The orchestrator's post-fix sanity check now greps the saved output for `^FAIL\b` so this can't pass silently — but if you are writing a new helper, **also call `Exit[1]` on failure**.
 
+4. **`Solve`/`Reduce` returning `ConditionalExpression[0, cond]`, which is not `=== 0`.** When you replace a hand-typed expression with `var /. First[Solve[eqn, var]]`, `Solve[..., Reals]`, or `Reduce[..., var]`, the result is often wrapped in `ConditionalExpression[..., <inequality on declared parameters>]`. Substituting that back into a residual produces `ConditionalExpression[0, cond]`, which is identically zero under `$Assumptions` but does not match the standard `If[TrueQ[res === 0], ...]` check inside `expectZero` — so the residual prints `ConditionalExpression[0, cond]`, the helper Prints "FAIL", and the script exits 1.
+
+   **Strip the wrapper before passing the value forward**, or extend the helper:
+
+   ```
+   xEqRaw = xi /. First[Solve[{eqn, xi > 0}, xi, Reals]];
+   xEqRaw = xEqRaw /. ConditionalExpression[e_, _] :> e;
+   xEq    = FullSimplify[xEqRaw, Assumptions -> $Assumptions];
+   ```
+
+   Or, if you control the helper, build the strip in once:
+
+   ```
+   expectZero[name_String, expr_] := Module[{res},
+     res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+     res = res /. ConditionalExpression[e_, _] :> e;
+     res = FullSimplify[res, Assumptions -> $Assumptions];
+     Print[name, " = ", fmt[res]];
+     If[TrueQ[res === 0], pass[name], fail[name, res]];
+   ];
+   ```
+
+   Substance-preserving — `ConditionalExpression[0, cond]` is genuinely zero on the declared domain. This defect has been caught at stages 050, 051, and 052 (batch III.2).
+
+5. **`Limit` non-determinism for poles: `Infinity` vs `Infinity/<positive>`.** `Limit[fraction_with_simple_pole, var -> 1, Direction -> "FromBelow"]` returns either `Infinity` or `Infinity/(positive polynomial in declared parameters)` non-deterministically across `math -script` invocations. Strict checks like `If[pi1 =!= Infinity, fail[...]]` are flaky.
+
+   **Test the inverse vanishes instead:**
+
+   ```
+   pi1 = Limit[piTr, xi -> 1, Direction -> "FromBelow"];
+   If[!TrueQ[Simplify[1/pi1 == 0, Assumptions -> $Assumptions]],
+      fail["Pi_tr(xi->1-) is not +infinity", pi1], None];
+   ```
+
+   `1/Infinity == 0` and `1/(Infinity/positive) == 0` both reduce to `True`, so this accepts both surface forms while still failing for finite limits or `Indeterminate`. This defect has been caught at stage 051 (batch III.2).
+
 ## When you finish
 
 Before marking the directive applied, confirm: every `.py` and `.wl` script you edited or created exits 0 when run, with all in-file `assert` / `expectZero` / `If[..., Exit[1]]` checks passing. If you cannot reach that state for a finding within ~5 iterations, append `## Blocked: F<n>` instead of `## Applied: F<n>`.

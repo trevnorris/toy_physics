@@ -9,11 +9,15 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-25` (batch III.4 close — no checkpoint stages
-fall in range 073-084, so no tier-table rows changed. Batch III.4 closed
-all 40 findings across 12 stages with zero `material_change: true` flags,
-so no upstream-stale cascade into earlier checkpoint stages either.
-Previous III.3 update remains accurate for stage 069.)
+Snapshot date: `2026-05-25` (batch I.1 v2 close — first paper-grounded
+re-audit pass over an already-verified batch. No checkpoint stages fall
+in range 001-012, so no tier-table rows changed directly. Two stages
+in I.1 flagged `material_change: true` (001 source/gauge sign flips,
+004 Faraday/Bianchi restructure); 001's cascade reaches stages 003+
+005-009 in principle, but those stages were just re-verified in the
+same v2 sweep against the corrected stage 001, so no separate
+upstream-stale check is needed. Previous III.3 update remains accurate
+for stage 069; III.4 close remains accurate for batches III.1-III.4.)
 
 ## Scope
 

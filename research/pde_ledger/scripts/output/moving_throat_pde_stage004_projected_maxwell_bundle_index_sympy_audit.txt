@@ -1,3 +1,3 @@
 STEP 01 PROJECTED MAXWELL README AUDIT
-Checked script inventory, projection identity, vector Bianchi signs, and Gaussian coupling mismatch.
+Checked script inventory, projection identity, cyclic Bianchi from F=dA and Maxwell-Faraday reduction, and Gaussian coupling mismatch.
 STATUS: PASS

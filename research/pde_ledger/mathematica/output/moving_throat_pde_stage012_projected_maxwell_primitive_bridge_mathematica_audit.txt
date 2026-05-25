@@ -1,16 +1,11 @@
 STAGE 012 PROJECTED MAXWELL PRIMITIVE BRIDGE MATHEMATICA AUDIT
-M1 Z0 primitive one-port residual = 0
-PASS: M1 Z0 primitive one-port
-M1 Z2 primitive one-port residual = 0
-PASS: M1 Z2 primitive one-port
-M1 Z4 primitive one-port residual = 0
-PASS: M1 Z4 primitive one-port
-M1 N0 primitive one-port residual = 0
-PASS: M1 N0 primitive one-port
-M1 N2 primitive one-port residual = 0
-PASS: M1 N2 primitive one-port
-M1 N4 primitive one-port residual = 0
-PASS: M1 N4 primitive one-port
+M1 primitive one-port forms (carried from Stage 4 / Stage 5):
+  Z0 = Q/Delta
+  Z2 = (-(Delta*H) + Q*S2)/Delta^2
+  Z4 = (-(Delta*H*S2) + Q*(-Delta + S2^2))/Delta^3
+  N0 = P^2/Delta^2
+  N2 = (2*P*(-(Delta*Gw) + P*S2))/Delta^3
+  N4 = (Delta^2*Gw^2 - 2*Delta*P^2 - 4*Delta*Gw*P*S2 + 3*P^2*S2^2)/Delta^4
 M2 z0 series closed form residual = 0
 PASS: M2 z0 series closed form
 M2 z2 series closed form residual = 0

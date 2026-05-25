@@ -2,121 +2,108 @@
 unit_id: 004
 batch: I.1
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-21T00:00:00Z
+verify_date: 2026-05-25T17:20:00Z
 verdict: verified
-sympy_exit: n/a
+sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 2
-findings_total: 2
-material_change: false
+findings_resolved: 1
+findings_total: 1
+material_change: true
 ---
 
-# Verification — unit 004
+# Verification — unit 004 (v2 re-audit follow-up)
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — tautological_check (Faraday/Bianchi block)
 
 **Classification:** resolved
 
 **What changed:**
 
-`scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py:32-44` (post-edit numbering).
-The old block (formerly lines 37-39) constructed `by_parts_density = sp.diff(W*Q, w) - W*sp.diff(Q, w) - sp.diff(W, w)*Q` over abstract `W, Q = sp.Function(...)(w)` symbols and asserted it was zero — a product-rule identity that `sp.diff` enforces by construction. Codex replaced it with concrete decaying Gaussian densities:
+Both engines now exercise the cyclic Bianchi identity for `F = dA` (then specialize via the E,B↔F map to recover Maxwell-Faraday), replacing the prior substitute-and-compare block.
 
-```
-lam_ibp = sp.Symbol("lam_ibp", positive=True)
-W_ex = sp.exp(-w**2 / lam_ibp**2)
-Q_ex = w * sp.exp(-w**2 / lam_ibp**2)
-ibp_lhs = sp.integrate(W_ex * sp.diff(Q_ex, w), (w, -sp.oo, sp.oo))
-ibp_rhs = -sp.integrate(sp.diff(W_ex, w) * Q_ex, (w, -sp.oo, sp.oo))
-assert_zero("projection integration-by-parts (decaying test functions)",
-            sp.simplify(ibp_lhs - ibp_rhs))
-```
+- sympy `scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py:46-84`: declares `A0..A3 = sp.Function(...)` on real `(t,x,y,z)`, defines `F(mu,nu) = ∂_mu A_nu - ∂_nu A_mu`, iterates the three cyclic triples `(0,2,3),(0,3,1),(0,1,2)` asserting `∂_α F_{βγ} + ∂_β F_{γα} + ∂_γ F_{αβ} == 0`, then constructs `E_from_A = (-F(0,1),-F(0,2),-F(0,3))`, `B_from_A = (F(2,3),F(3,1),F(1,2))` and asserts three Maxwell-Faraday components vanish. The header print at line 102 was updated to "cyclic Bianchi from F=dA and Maxwell-Faraday reduction" as directed.
 
-The previously unused `W = sp.Function("W")(w)` and `Q = sp.Function("Q")(w)` declarations were removed per the directive's mechanical-removal allowance (they had no other readers after this block was rewritten).
+- mathematica `mathematica/moving_throat_pde_stage004_projected_maxwell_bundle_index_mathematica_audit.wl:28-92`: same physics but with a structural deviation from the directive's literal Do/Module/`fieldStrength[mu_,nu_]` pattern. The directive's verbatim form raised `Part::pkspec1` at runtime because `potentialList[[nu+1]]` was evaluated under Module-bound gensym locals before the loop variable was bound. The orchestrator's fix precomputes `F01,F02,F03,F12,F13,F23` (and their negatives) as immediate-valued expressions at top level via `fStr[i_Integer,j_Integer]`, then builds `bianchiChecks = {{{0,2,3}, D[F23,t]+D[F30,y]+D[F02,z]}, ...}` and `maxwellFaradayChecks = {{1, mf1}, ...}` as concrete `{label, precomputed-expression}` pair lists. The Do loops then iterate over these precomputed expressions and call `FullSimplify` — no pattern-matching or Part-indexing fires inside any Module body. Math content is identical to the directive (same cyclic triples, same `B_k = F_{ij}` and `E_i = -F_{0i}` map). I checked the indexing by hand:
+  - `coordList = {t,x,y,z}` so `coordList[[i+1]]` for `i=0..3` yields the right coord.
+  - `F23 = D[A3,y] - D[A2,z]`; `F30 = -F03 = -(D[A3,t] - D[A0,z]) = -D[A3,t] + D[A0,z]`; `F02 = D[A2,t] - D[A0,y]`.
+  - Cyclic sum `D[F23,t] + D[F30,y] + D[F02,z]` expands to six mixed-partial pairs that cancel pairwise by Schwarz. FullSimplify under `Element[{t,x,y,z}, Reals]` returns 0.
+  - `mf1 = D[F23,t] + D[-F03,y] - D[-F02,z]` = `D[B1,t] + D[E3,y] - D[E2,z]` — the standard `(∂_t B + curl E)_1` form. Substitution gives the same six-term Schwarz cancellation, hence 0.
 
 **Assessment:**
 
-The replacement is exactly what the directive's "required change" block specified, character for character. Substantively, the new check is non-tautological:
+The new checks are non-tautological in both engines:
 
-- SymPy must actually evaluate two improper Gaussian integrals on `(-∞, ∞)`, not merely apply the product rule.
-- The identity holds only because `W_ex · Q_ex` decays at both infinities, so the boundary term `[W·Q]_{-∞}^{∞}` vanishes. If the densities had been chosen non-decaying (e.g. polynomial probes, or one Gaussian and one constant), the integrals would either diverge or not satisfy the IBP identity.
-- The label string `"projection integration-by-parts (decaying test functions)"` is honest about what is exercised.
+1. Sign sensitivity: if the F definition were `+∂_nu A_mu` (wrong sign) or the cyclic sum used `-D[F(γ,α), coords[β]]`, the Schwarz cancellation would fail and a nonzero residual would surface. The directive's self-test #1 walked through this; I confirmed it by hand on triple `(0,2,3)`.
+2. E,B↔F map sensitivity: the Maxwell-Faraday block specializes via `E_i = -F_{0i}`, `B_1 = F_{23}, B_2 = F_{31}, B_3 = F_{12}`. A sign error in this map (e.g., `E_i = +F_{0i}`) would flip the relative sign between the `D[B,t]` and `D[E,...]` terms and break the Schwarz cancellation in `mf1..mf3`.
+3. Schwarz is real-coord-conditional: both engines require the coords to be declared real for mixed-partial commutativity to fire. sympy uses `sp.symbols("t x y z", real=True)`; Mathematica uses `Element[{t, x, y, z}, Reals]` as the FullSimplify assumption. Both are in place.
 
-The saved output transcript at `scripts/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.txt` shows `STATUS: PASS` with mtime 2026-05-21 11:26, post-dating the script mtime 01:09, so the assertion fires on the post-fix script without raising. No collateral edits beyond the directive-sanctioned removal of the unused abstract declarations.
+The Mathematica deviation from the directive's literal pattern is structural, not mathematical. The pair-list pre-build is a defensible workaround for the `Part::pkspec1` pre-evaluation trap that the verbatim directive form would hit, and the resulting expressions exercise the same identity. No collateral edits outside the M2 block; M1, M3-M6, the `fmt`/scale-assumption preamble, and `STATUS: PASS` line are untouched (diff confirms).
 
-### F2 — missing_verification_script
-
-**Classification:** resolved
-
-**What changed:**
-
-New file `mathematica/moving_throat_pde_stage004_projected_maxwell_bundle_index_mathematica_audit.wl` (124 lines) was created. It contains six independent blocks M1-M6, each terminating in an `If[FullSimplify[...] =!= 0, Print["FAIL: ..."]; Exit[1]]` guard, with `Print["M# residual = ...]` diagnostic above and `Print["PASS: ..."]` below. Final line prints `STATUS: PASS` and exits 0.
-
-**Assessment:**
-
-Per-claim substance:
-
-- **M1** (`.wl:12-26`): Codex chose the combined-integrand formulation `Integrate[W·f' + W'·f, {w, -∞, ∞}]` rather than the directive's literally-stated two-separate-integrals form. The two are mathematically equivalent (and Mathematica's `Integrate` recognizes the combined integrand as `d/dw(W·f)` and evaluates to the boundary term, which vanishes by decay). This is the iter2 fix after an iter1 residual bug. The combined form is slightly less informative than two-side comparison, but it is not tautological: a non-decaying choice of densities would either fail to integrate or yield a nonzero boundary term. Acceptable as a substantive IBP-under-decay check.
-- **M2** (`.wl:28-69`): Three independent cyclic permutations. Each builds the antisymmetric two-form `twoForm##` from explicit field substitutions (`twoForm02 = -E2[t,x,y,z]`, etc.), takes `D[...]` derivatives, and compares to the explicit Faraday vector form. Uses Mathematica's `D[]` and `FullSimplify` rather than SymPy's `sp.diff`. Each component has its own guard.
-- **M3** (`.wl:71-82`): `Integrate[Exp[-w^2/lam^2], {w, -∞, ∞}, Assumptions -> lam > 0]` independently evaluates and compares to `Sqrt[Pi]*lam`.
-- **M4** (`.wl:84-94`): `Integrate[Exp[-w^2/lam^2]^2, ...]` compared to `Sqrt[2*Pi]*lam/2`.
-- **M5** (`.wl:96-107`): `matchedWeight = localizedProfile / profileArea`, then `Integrate[matchedWeight*localizedProfile, ...]` compared to `Sqrt[2]/2`. Derived from the integral definition above the assertion, not transliterated from `I_WZ`.
-- **M6** (`.wl:109-121`): `pointSourceCoupling = mu0*(matchedWeight /. w -> 0)/overlapValue`, `volumeReducedCoupling = mu0/profileArea`, ratio compared to `Sqrt[2]` with `couplingAssumptions = lam > 0 && mu0 > 0`.
-
-Naming conventions are Mathematica-idiomatic and do not mirror the SymPy intermediates: `localizedProfile/profileArea/matchedWeight/overlapValue/pointSourceCoupling/volumeReducedCoupling` instead of `Z/Z_int/W_match/I_WZ/mu_proj_delta/mu_red`. Each claim is derived from its own integral or algebraic definition immediately above the guard — no imports of the `.py` script's intermediates. The script uses `Assumptions ->` correctly (scaleAssumptions for `lam > 0`-only claims, couplingAssumptions for M6 which involves `mu0`).
-
-The exec log shows all six residuals are literally `0` (not just `FullSimplify[...] === 0`-after-fiddling) and the script exits `0`. The new file exists at the directive-named path.
+The sympy edit follows the directive verbatim (modulo the unavoidable Python formatting). No collateral edits there either.
 
 ## Exec log assessment
 
-**SymPy:** exit=n/a. The orchestrator did not capture a `stage_004_sympy.log` for this iteration. However, the saved transcript at `scripts/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.txt` (mtime 2026-05-21 11:26, after the script's 01:09 mtime) contains:
+**SymPy:** exit=n/a (the `redteam/exec_logs/stage_004_sympy.log` file does not exist on disk). However, the saved transcript `scripts/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.txt` (mtime May 25 02:35, post-fix) shows:
 
 ```
 STEP 01 PROJECTED MAXWELL README AUDIT
-Checked script inventory, projection identity, vector Bianchi signs, and Gaussian coupling mismatch.
+Checked script inventory, projection identity, cyclic Bianchi from F=dA and Maxwell-Faraday reduction, and Gaussian coupling mismatch.
 STATUS: PASS
 ```
 
-This is sufficient to confirm the post-fix script reached its final `print("STATUS: PASS")` without `AssertionError` (which would have aborted before reaching that line).
+The sympy script uses `assert_zero` which raises on nonzero residue; reaching the final `STATUS: PASS` print line implies all eleven assertions (IBP + three cyclic Bianchi + three Maxwell-Faraday from A + four Gaussian/√2 checks) passed.
 
-**Mathematica:** exit=0. Notable lines from `redteam/exec_logs/stage_004_mathematica.log`:
+**Mathematica:** exit=0 (per the saved transcript `mathematica/output/...txt`, mtime May 25 17:09, post-fix). Notable lines:
 
 ```
-M1 residual = 0
-M2 component 1 residual = 0
-M2 component 2 residual = 0
-M2 component 3 residual = 0
-M3 residual = 0
-M4 residual = 0
-M5 residual = 0
-M6 residual = 0
+M2 cyclic Bianchi {0, 2, 3} residual = 0
+PASS: M2 cyclic Bianchi {0, 2, 3}
+M2 cyclic Bianchi {0, 3, 1} residual = 0
+PASS: M2 cyclic Bianchi {0, 3, 1}
+M2 cyclic Bianchi {0, 1, 2} residual = 0
+PASS: M2 cyclic Bianchi {0, 1, 2}
+M2 Maxwell-Faraday component 1 residual = 0
+PASS: M2 Maxwell-Faraday component 1
+...
+M2 Maxwell-Faraday component 3 residual = 0
+PASS: M2 Maxwell-Faraday component 3
+...
 STATUS: PASS
 ```
 
-All six claims pass with residuals literally simplifying to `0`.
+The old labels `M2 Faraday component k` and `M2 component k residual` no longer appear. The new labels match the directive's verification checklist.
 
-**Output freshness:** Confirmed.
-- `scripts/.../sympy_audit.py` mtime 2026-05-21 01:09 < `scripts/output/.../sympy_audit.txt` mtime 2026-05-21 11:26.
-- `mathematica/.../mathematica_audit.wl` mtime 2026-05-21 11:22 < `mathematica/output/.../mathematica_audit.txt` mtime 2026-05-21 11:50.
+**Output freshness:**
 
-Both saved transcripts post-date their source scripts, so they reflect the post-fix runs.
+- `scripts/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.txt` — May 25 02:35 (post-fix; script edit landed earlier the same day).
+- `mathematica/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_mathematica_audit.txt` — May 25 17:09 (post-orchestrator-fix for the Part::pkspec1 patch).
+- `redteam/exec_logs/stage_004_mathematica.log` is STALE (May 21 11:23, contains the old `M2 Faraday component k` labels from before the v2 directive landed). The orchestrator's most recent Mathematica run wrote to the `.txt` output transcript but did not update the `exec_logs/` cache. The `.txt` transcript is the authoritative post-fix record and matches the script-side new labels.
+- `redteam/exec_logs/stage_004_sympy.log` does not exist (orchestrator did not capture a sympy log this cycle; the `.txt` transcript covers it).
+
+Both authoritative outputs (`scripts/output/.../*.txt` and `mathematica/output/.../*.txt`) are post-fix and show `STATUS: PASS`.
 
 ## Material-change assessment
 
-`material_change`: false.
+`material_change`: **true**.
 
-Neither edit changes a derived result that downstream units consume. F1 replaced a tautological assertion with a genuine integral check — the script's exported numerical/symbolic claims (Gaussian integrals A5-A8, Faraday sign checks A2-A4) are unchanged. F2 is purely additive: a new `.wl` file that re-derives the same claims in a second engine. No downstream unit reads variables out of this script.
+The substantive printed output of the M2 block changed (six new "cyclic Bianchi" + "Maxwell-Faraday from A" PASS lines replacing the old three "Faraday component k" PASS lines), and the sympy header-print summary string changed. No numerical constant downstream stages depend on changed: the Gaussian/√2 checks (M3-M6 / A5-A8) and the IBP identity (M1 / A1) are unchanged in value and unchanged in code. The M2 block was a paper-claim spot-check; replacing tautology with a real Schwarz-driven identity does not propagate a different numeric value to any downstream constant.
+
+Downstream effect: per project memory, the orchestrator will mark all units > 004 as `upstream_stale: true`. The narrow concern here is purely the labeling and assertion structure of the M2 block; no downstream stage quotes a number that came from M2. Downstream re-audit at this layer should not surface any change.
 
 ## Side observations (non-blocking)
 
-1. The orchestrator did not produce `stage_004_sympy.log` (the file is absent from `redteam/exec_logs/`), while it did produce `stage_004_mathematica.log`. The `.txt` saved transcript is fresh and confirms PASS, so this isn't a verification blocker, but the orchestrator may want to investigate why the sympy log capture step was skipped for this iteration.
+1. The exec_log cache `redteam/exec_logs/stage_004_mathematica.log` is stale (May 21, pre-v2). The orchestrator should refresh it on the next run to keep the `redteam exec-mathematica` cache and the authoritative `.txt` transcript in sync. This is a hygiene issue, not a verification blocker — the `.txt` transcript was clearly regenerated post-fix and confirms PASS.
 
-2. M1 in the `.wl` deviates from the directive's literal "two-separate-integrals" specification, using a combined-integrand form instead. This is functionally equivalent and was reportedly the iter2 fix after an iter1 IBP residual bug. The combined form is slightly less informative as a diagnostic (it cannot localize which side of the IBP identity is wrong if a residual appears), but it is not tautological and matches the spirit of the claim. Not raising as a finding.
+2. `redteam/exec_logs/stage_004_sympy.log` is missing entirely. Same hygiene note. The sympy `.txt` output transcript is post-fix and confirms PASS by virtue of reaching the final print line (any failing `assert_zero` would have raised before that).
 
-3. The combined-integrand M1 in Mathematica and the two-sided M1-equivalent in SymPy are not structurally identical formulations, which is consistent with the directive's "do NOT mirror SymPy variable choreography" requirement. The engine cross-check is now meaningful: both engines independently confirm the IBP identity under Gaussian decay, the Gaussian normalization `Sqrt[Pi]*lam`, the squared-norm `Sqrt[2*Pi]*lam/2`, the matched-kernel overlap `Sqrt[2]/2`, and the projection/reduction ratio `Sqrt[2]`.
+3. The Mathematica edit is a deviation from the directive's literal text (precomputed F-components and pair-list expressions instead of `Do[Module[{alpha,beta,gamma,cyc,residual},...]]` with `fieldStrength[mu_,nu_]` and `coordList[[alpha+1]]` inside the Module). The deviation is documented in the file's comments (lines 37-41 and 72-76 explain the `Part::pkspec1` pre-evaluation trap), the math is equivalent, and the directive's `## Applied: F1` block notes `deviation: none`. The deviation-narrative is technically inaccurate (it should have flagged the patch), but the substantive content is correct. Non-blocking; the orchestrator's note in the task framing already calls this out.
+
+4. The directive's prescribed `D[a_, b_] := D[a_, b]` definition was not added (it appears in the prose self-test but not in the code block). The fix proceeded without it; `D` works directly on `AA[i][t,x,y,z]` in Mathematica without a wrapper. Non-blocking.
 
 ## Verdict justification
 
-Both findings are `resolved`. F1's new IBP check actually evaluates two improper Gaussian integrals and compares them, which is genuinely non-tautological — a misplaced sign or a non-decaying density choice would produce a nonzero residue. F2's new `.wl` re-derives each M1-M6 claim independently from integral or algebraic definitions, uses Mathematica idioms, employs distinct naming from the `.py`, and exits `0` with every residual literally `0`. Saved transcripts post-date their source scripts. No regressions visible in the diff; no collateral edits beyond directive-sanctioned ones. Verdict: `verified`.
+F1 is resolved in both engines. The new M2 block exercises the cyclic Bianchi identity for `F = dA` via Schwarz symmetry of mixed partials and specializes to Maxwell-Faraday via the standard E,B↔F map. Both sign-error sensitivities the directive's self-test promised (the cyclic-sum sign and the E,B↔F map sign) are real — the identity holds only by Schwarz cancellation, which is conditional on correct signs throughout. Both engines exit 0 with all PASS, and the saved transcripts confirm the new labels appear and the old tautological labels are gone. The Mathematica deviation from the directive's literal Do/Module pattern is a forced workaround for a `Part::pkspec1` pre-evaluation race, and the precomputed-expression structure is mathematically equivalent.
+
+stage 004: verified, material_change: true

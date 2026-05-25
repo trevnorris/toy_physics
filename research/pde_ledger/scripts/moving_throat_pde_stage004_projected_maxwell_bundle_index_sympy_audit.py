@@ -44,27 +44,44 @@ def main() -> None:
                 sp.simplify(ibp_lhs - ibp_rhs))
 
     t, x, y, z = sp.symbols("t x y z", real=True)
-    E1 = sp.Function("E1")(t, x, y, z)
-    E2 = sp.Function("E2")(t, x, y, z)
-    E3 = sp.Function("E3")(t, x, y, z)
-    B1 = sp.Function("B1")(t, x, y, z)
-    B2 = sp.Function("B2")(t, x, y, z)
-    B3 = sp.Function("B3")(t, x, y, z)
+    coords = (t, x, y, z)
+    A0 = sp.Function("A0")(t, x, y, z)
+    A1 = sp.Function("A1")(t, x, y, z)
+    A2 = sp.Function("A2")(t, x, y, z)
+    A3 = sp.Function("A3")(t, x, y, z)
+    A_components = (A0, A1, A2, A3)
 
-    F23, F31, F12 = B1, B2, B3
-    F10, F20, F30 = E1, E2, E3
-    F01, F02, F03 = -E1, -E2, -E3
+    # F_{mu nu} = d_mu A_nu - d_nu A_mu (antisymmetric by construction).
+    def F(mu, nu):
+        return (sp.diff(A_components[nu], coords[mu])
+                - sp.diff(A_components[mu], coords[nu]))
 
-    faraday = [
-        sp.diff(F23, t) + sp.diff(F30, y) + sp.diff(F02, z)
-        - (sp.diff(B1, t) + sp.diff(E3, y) - sp.diff(E2, z)),
-        sp.diff(F31, t) + sp.diff(F10, z) + sp.diff(F03, x)
-        - (sp.diff(B2, t) + sp.diff(E1, z) - sp.diff(E3, x)),
-        sp.diff(F12, t) + sp.diff(F20, x) + sp.diff(F01, y)
-        - (sp.diff(B3, t) + sp.diff(E2, x) - sp.diff(E1, y)),
-    ]
-    for i, residue in enumerate(faraday, start=1):
-        assert_zero(f"Faraday component {i}", residue)
+    # Cyclic Bianchi: d_[alpha F_{beta gamma]} = 0 for F = dA, by Schwarz
+    # symmetry of mixed partials on smooth A on real coords. The check is
+    # non-tautological: a sign error in the F definition produces a nonzero
+    # residual.
+    for (alpha, beta, gamma) in [(0, 2, 3), (0, 3, 1), (0, 1, 2)]:
+        cyc = (sp.diff(F(beta, gamma), coords[alpha])
+               + sp.diff(F(gamma, alpha), coords[beta])
+               + sp.diff(F(alpha, beta), coords[gamma]))
+        assert_zero(
+            f"cyclic Bianchi (alpha={alpha}, beta={beta}, gamma={gamma})", cyc)
+
+    # Specialize via E_i = -F_{0i} and B_1 = F_{23}, B_2 = F_{31}, B_3 = F_{12},
+    # then verify the three components of dB/dt + curl(E) = 0 reduce to
+    # cyclic Bianchi (and hence vanish). A sign error in the E,B<->F map
+    # produces a nonzero residual.
+    E_from_A = (-F(0, 1), -F(0, 2), -F(0, 3))
+    B_from_A = (F(2, 3), F(3, 1), F(1, 2))
+    mf1 = (sp.diff(B_from_A[0], t)
+           + sp.diff(E_from_A[2], y) - sp.diff(E_from_A[1], z))
+    mf2 = (sp.diff(B_from_A[1], t)
+           + sp.diff(E_from_A[0], z) - sp.diff(E_from_A[2], x))
+    mf3 = (sp.diff(B_from_A[2], t)
+           + sp.diff(E_from_A[1], x) - sp.diff(E_from_A[0], y))
+    assert_zero("Maxwell-Faraday component 1 from A", mf1)
+    assert_zero("Maxwell-Faraday component 2 from A", mf2)
+    assert_zero("Maxwell-Faraday component 3 from A", mf3)
 
     lam, mu0 = sp.symbols("lambda mu0", positive=True, nonzero=True)
     Z = sp.exp(-w**2 / lam**2)
@@ -82,7 +99,7 @@ def main() -> None:
     assert_zero("delta-source projection/reduction ratio", mu_proj_delta / mu_red - sp.sqrt(2))
 
     print("STEP 01 PROJECTED MAXWELL README AUDIT")
-    print("Checked script inventory, projection identity, vector Bianchi signs, and Gaussian coupling mismatch.")
+    print("Checked script inventory, projection identity, cyclic Bianchi from F=dA and Maxwell-Faraday reduction, and Gaussian coupling mismatch.")
     print("STATUS: PASS")
 
 

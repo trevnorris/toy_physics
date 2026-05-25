@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-25
+Updated: 2026-05-25 (batch I.1 v2 close)
 
 ## Scope decision
 
@@ -159,3 +159,37 @@ Former post-EM ledger stages start at Stage `022`.
   tracker's scope. See `redteam/batches/batch_III4.md` plus per-stage
   reports at `redteam/reports/stage_NNN.md` and
   `redteam/verifications/stage_NNN.md`.
+- Red-team v2 paper-grounded re-audit of batch I.1 (stages 001-012, "Part
+  I.1 -- Geometry lift, BdG coupling, projected Maxwell setup") completed
+  2026-05-25. **First batch processed under the v2 auditor**, which reads
+  `paper/stages/stage_NNN.tex`, per-stage notes under `notes/stages/`, and
+  the part-level appendix BEFORE opening scripts. A 10th finding category
+  `paper_misalignment` was added with subtypes; findings of that category
+  route to user resolution rather than codex. All 12 stages reached
+  `verified`. **5 substantive defects v1 missed**: 7 paper_misalignment
+  items across stages 001/006/007/010/011, plus 3 new script-side
+  tautologies (004 Faraday/Bianchi symbol-substitution, 008
+  `Integrate[W*Z]` self-cancel, 012 M1 carried-forward primitive
+  self-checks). All 7 paper_misalignment items resolved via a structured
+  Codex-as-math-authority workflow (questions markdown → Codex fills
+  recommendation blocks → user approves → Codex apply session edits paper
+  + scripts). Two stages flagged `material_change: true`: 001 (source-
+  coupling and gauge-fix sign flips per paper notation firewall
+  `eta = diag(-1,+1,+1,+1,+1)`) and 004 (Faraday/Bianchi block now
+  exercises a real cyclic identity via Schwarz commutativity instead of
+  pure symbol substitution). Stage 010 paper card grew ~100 lines (δP_n
+  display equations + 4 new cluster anchor paragraphs); stage 011 script
+  trimmed (5 clusters moved attribution to stages 022-024 which already
+  publish them); stage 007 scripts gained ~75 lines per engine (H(w)
+  profile + `xi_eff^proj` checks for the gauge channel the paper
+  promised). One new toolchain pitfall documented in `codex.md`
+  (`Part[]`-on-pattern-parameter inside `Do[Module[...]]` silently drops
+  half the body; discovered on stage 004; fix is precomputed
+  immediate-valued `F_ij` expressions before any Do/Module scope opens).
+  Since I.1 IS in the linear projected-EM core range (004-021), the v2
+  sweep also serves as a paper-alignment certification for the first
+  half of that range; the remaining 013-021 will be covered when batch
+  I.2 is re-swept. See `redteam/batches/batch_I1_v2.md`,
+  `redteam/resolutions/batch_I1_paper_alignment.md` (Codex's 7
+  recommendations with rationales), and per-stage reports/verifications
+  under `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.

@@ -32,9 +32,13 @@ gaussOverlap =
   Integrate[gaussianWeight*localizedGaussian, {w, -Infinity, Infinity},
     Assumptions -> lambda > 0 && sigma > 0];
 gaussGaugeWeight =
-  Integrate[gaussianWeight*localizedGaussian, {w, -Infinity, Infinity},
+  Integrate[gaussianWeight*Exp[-w^2/lambda^2], {w, -Infinity, Infinity},
     Assumptions -> lambda > 0 && sigma > 0];
 m2aNormResidual = FullSimplify[gaussNorm - 1];
+If[FullSimplify[gaussGaugeWeight - gaussOverlap] =!= 0,
+  Print["FAIL: M2 Pair A H=Z integrals match"]; Exit[1]
+];
+Print["PASS: M2 Pair A H=Z integrals independently match"];
 m2aGaugeResidual = FullSimplify[xi*gaussOverlap/gaussGaugeWeight - xi];
 Print["M2 Pair A normalization residual = ", fmt[m2aNormResidual]];
 Print["M2 Pair A H=Z residual = ", fmt[m2aGaugeResidual]];
@@ -53,9 +57,13 @@ lorentzOverlap =
   Integrate[lorentzWeight*localizedGaussian, {w, -Infinity, Infinity},
     Assumptions -> lambda > 0 && sigma > 0];
 lorentzGaugeWeight =
-  Integrate[lorentzWeight*localizedGaussian, {w, -Infinity, Infinity},
+  Integrate[lorentzWeight*Exp[-w^2/lambda^2], {w, -Infinity, Infinity},
     Assumptions -> lambda > 0 && sigma > 0];
 m2bNormResidual = FullSimplify[lorentzNorm - 1];
+If[FullSimplify[lorentzGaugeWeight - lorentzOverlap] =!= 0,
+  Print["FAIL: M2 Pair B H=Z integrals match"]; Exit[1]
+];
+Print["PASS: M2 Pair B H=Z integrals independently match"];
 m2bGaugeResidual = FullSimplify[xi*lorentzOverlap/lorentzGaugeWeight - xi];
 Print["M2 Pair B normalization residual = ", fmt[m2bNormResidual]];
 Print["M2 Pair B H=Z residual = ", fmt[m2bGaugeResidual]];
@@ -97,11 +105,18 @@ matchedDeltaSource =
 matchedDistributedSource =
   Integrate[matchedWeight*(localizedGaussian/zArea), {w, -Infinity, Infinity},
     Assumptions -> lambda > 0];
+matchedGaugeOverlap =
+  Integrate[matchedWeight*Exp[-w^2/lambda^2], {w, -Infinity, Infinity},
+    Assumptions -> lambda > 0];
+If[FullSimplify[matchedGaugeOverlap - matchedOverlap] =!= 0,
+  Print["FAIL: M4 H=Z matched integrals match"]; Exit[1]
+];
+Print["PASS: M4 H=Z matched integrals independently match"];
 m4Residuals = {
   FullSimplify[zArea - Sqrt[Pi]*lambda],
   FullSimplify[zSelfArea - Sqrt[Pi/2]*lambda],
   FullSimplify[matchedOverlap - Sqrt[2]/2],
-  FullSimplify[xi*matchedOverlap/matchedOverlap - xi],
+  FullSimplify[xi*matchedOverlap/matchedGaugeOverlap - xi],
   FullSimplify[xi*matchedOverlap/matchedNorm - xi/Sqrt[2]],
   FullSimplify[(mu0*matchedDeltaSource/matchedOverlap)/(mu0/zArea) - Sqrt[2]],
   FullSimplify[mu0*matchedDistributedSource/matchedOverlap - mu0/zArea]
@@ -116,7 +131,7 @@ If[FullSimplify[zSelfArea - Sqrt[Pi/2]*lambda] =!= 0,
 If[FullSimplify[matchedOverlap - Sqrt[2]/2] =!= 0,
   Print["FAIL: M4 matched I_WZ"]; Exit[1]
 ];
-If[FullSimplify[xi*matchedOverlap/matchedOverlap - xi] =!= 0,
+If[FullSimplify[xi*matchedOverlap/matchedGaugeOverlap - xi] =!= 0,
   Print["FAIL: M4 H=Z matched gauge"]; Exit[1]
 ];
 If[FullSimplify[xi*matchedOverlap/matchedNorm - xi/Sqrt[2]] =!= 0,
@@ -149,11 +164,14 @@ If[FullSimplify[xi4General[zIntSym, zIntSym] - xi] =!= 0,
 ];
 Print["PASS: M6 reduction-first H=Z identity"];
 
+lorentzGaugeOverlap =
+  Integrate[lorentzWeight*Exp[-w^2/lambda^2], {w, -Infinity, Infinity},
+    Assumptions -> lambda > 0 && sigma > 0];
 lorentzMatchedSourceOverlap =
   Integrate[lorentzWeight*(localizedGaussian/zArea), {w, -Infinity, Infinity},
     Assumptions -> lambda > 0 && sigma > 0];
 m7GaugeResiduals =
-  N[(xi*lorentzOverlap/lorentzGaugeWeight - xi) /.
+  N[(xi*lorentzOverlap/lorentzGaugeOverlap - xi) /.
     {{lambda -> 1, sigma -> 1/2, xi -> 7/5},
       {lambda -> 1, sigma -> 2, xi -> 7/5}}, 30];
 m7SourceResiduals =

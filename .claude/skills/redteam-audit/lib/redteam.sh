@@ -411,11 +411,28 @@ cmd_codex_invoke() {
     "$wrapper" --resume "$session" -C "$PROJECT_ROOT" < "$directive_path" > "$log" 2>&1
   else
     # New session — prepend codex.md preamble (system prompt) to the directive.
+    # Substitute the same paper/notes/appendix reference paths the auditor used
+    # so codex can consult them as read-only context (it still must not edit them).
+    local batch_id paper_tex_path notes_paths appendix_path part_xx
+    batch_id="$(_field_or "$unit" batch_id "")"
+    paper_tex_path="$(_optional_file "$PROJECT_ROOT/paper/stages/stage_${unit}.tex")"
+    notes_paths="$(_notes_stage_glob "$unit")"
+    part_xx="$(_batch_to_part "$batch_id")"
+    if [[ -n "$part_xx" ]]; then
+      appendix_path="$(_optional_file "$PROJECT_ROOT/paper/appendices/stage_appendix_part${part_xx}.tex")"
+    else
+      appendix_path="(missing)"
+    fi
+
     local combined
     combined="$(mktemp)"
-    sed -e "s|{UNIT_ID}|$unit|g" \
-        -e "s|{DIRECTIVE_PATH}|$directive_path|g" \
-        "$SKILL_DIR/prompts/codex.md" > "$combined"
+    $RENDER_PY "$SKILL_DIR/prompts/codex.md" \
+      "UNIT_ID=$unit" \
+      "DIRECTIVE_PATH=$directive_path" \
+      "PAPER_STAGE_TEX_PATH=$paper_tex_path" \
+      "NOTES_STAGE_PATHS=$notes_paths" \
+      "PAPER_APPENDIX_PATH=$appendix_path" \
+      > "$combined"
     {
       echo ""
       echo "---"
@@ -496,6 +513,63 @@ _path_field() {
   _resolve_path "$(_field_or "$unit" "$field" "$fallback")"
 }
 
+# Map a batch ID like "III.4" or "VIII.1" to a zero-padded part number "03"/"08".
+# Used to locate paper/appendices/stage_appendix_partXX.tex for v2 audits.
+_batch_to_part() {
+  local batch=$1
+  # Strip everything from the dot onward, leaving the Roman numeral prefix.
+  local roman="${batch%%.*}"
+  case "$roman" in
+    I)    echo "01" ;;
+    II)   echo "02" ;;
+    III)  echo "03" ;;
+    IV)   echo "04" ;;
+    V)    echo "05" ;;
+    VI)   echo "06" ;;
+    VII)  echo "07" ;;
+    VIII) echo "08" ;;
+    *)    echo "" ;;
+  esac
+}
+
+# Render an optional file reference: if the file exists on disk, return its
+# absolute path; otherwise return "(missing)" so the auditor knows the file
+# does not exist (vs. existing-but-empty).
+_optional_file() {
+  local path=$1
+  if [[ -n "$path" && -f "$path" ]]; then
+    echo "$path"
+  else
+    echo "(missing)"
+  fi
+}
+
+# Expand notes/stages/moving_throat_pde_stage{NNN}_*.md to a bullet list of
+# absolute paths. Returns "(none)" if no files match.
+_notes_stage_glob() {
+  local unit=$1
+  local pattern="$PROJECT_ROOT/notes/stages/moving_throat_pde_stage${unit}_*.md"
+  # Use nullglob so missing matches yield an empty array, not the literal pattern.
+  local matches=()
+  shopt -s nullglob
+  matches=( $pattern )
+  shopt -u nullglob
+  if [[ ${#matches[@]} -eq 0 ]]; then
+    echo "(none)"
+    return
+  fi
+  local out=""
+  local f
+  for f in "${matches[@]}"; do
+    if [[ -z "$out" ]]; then
+      out="- $f"
+    else
+      out="$out"$'\n'"- $f"
+    fi
+  done
+  echo "$out"
+}
+
 cmd_render_audit_prompt() {
   ensure_config_loaded
   if [[ $# -lt 1 ]]; then
@@ -516,6 +590,17 @@ cmd_render_audit_prompt() {
   sympy_out="$(_path_field "$unit" files.sympy_output.path "(missing)")"
   math_out="$(_path_field "$unit" files.mathematica_output.path "(missing)")"
 
+  # v2 paper-grounded inputs.
+  local paper_tex_path notes_paths appendix_path part_xx
+  paper_tex_path="$(_optional_file "$PROJECT_ROOT/paper/stages/stage_${unit}.tex")"
+  notes_paths="$(_notes_stage_glob "$unit")"
+  part_xx="$(_batch_to_part "$batch_id")"
+  if [[ -n "$part_xx" ]]; then
+    appendix_path="$(_optional_file "$PROJECT_ROOT/paper/appendices/stage_appendix_part${part_xx}.tex")"
+  else
+    appendix_path="(missing)"
+  fi
+
   local report_path="$REDTEAM_DIR/reports/stage_${unit}.md"
   local directive_path="$REDTEAM_DIR/directives/stage_${unit}.md"
 
@@ -529,6 +614,9 @@ cmd_render_audit_prompt() {
     "MATH_PATH=$math_path" \
     "SYMPY_OUT_PATH=$sympy_out" \
     "MATH_OUT_PATH=$math_out" \
+    "PAPER_STAGE_TEX_PATH=$paper_tex_path" \
+    "NOTES_STAGE_PATHS=$notes_paths" \
+    "PAPER_APPENDIX_PATH=$appendix_path" \
     "REPORT_PATH=$report_path" \
     "DIRECTIVE_PATH=$directive_path"
 }

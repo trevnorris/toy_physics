@@ -1,140 +1,133 @@
 ---
 unit_id: 001
 batch: I.1
-created_at: 2026-05-20T00:00:00Z
-findings_count: 1
+created_at: 2026-05-25T00:00:00Z
+findings_count: 2
 stop_cold: null
-applied: true
-applied_at: 2026-05-21T00:00:00-06:00
-findings_applied: 1
-findings_blocked: 0
+applied: false
 verification_status: pending
+needs_user_resolution: true
 ---
 
-# Codex directive — unit 001
+# Codex directive — unit 001 (v2, paper-grounded re-audit)
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+Both findings below are `paper_misalignment`. **Do not edit any file** until the user has chosen a direction for each. The orchestrator is holding for user resolution. Codex must not silently flip signs in either `scripts/`, `mathematica/`, `paper/`, or `notes/` to "fix" the apparent mismatches.
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+The prior v1 directive (Mathematica transliteration finding) was already applied — that work stands and is not re-opened here. The two findings below are net-new from the paper-grounded v2 re-audit.
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+## F1 — paper_misalignment
 
-Do NOT run python or mathematica. Only edit files.
+**Subtype:** target_mismatch (sign convention on source coupling in modal-wall PDE)
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_001.tex:156-163` quote:
+  ```
+  \boxed{
+  \mu_\eta\,\partial_t^2 q_{lm}
+   -\partial_w\!\bigl(T_w\partial_w q_{lm}\bigr)
+   +\bigl[K_\eta+l(l+1)T_\Omega\bigr]q_{lm}
+   = S_{lm}^{(\psi,A)}+f_{lm}^{\rm ext}}.
+  ```
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage001_geometry_lift.md:358-361` quote:
+  ```
+  mu_eta q_{lm,tt} - partial_w( T_w partial_w q_{lm} )
+   + [ K_eta + l(l+1) T_Omega ] q_{lm}
+   = S_{lm}^{(psi,A)} + f_{lm}^{ext}.
+  ```
+- Both sources place the source on the RHS with **positive** sign.
 
-## F1 — mathematica_transliteration
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage001_geometry_lift_sympy_audit.py:188-192` quote:
+  ```python
+  source_total = S_lm(t, w) + f_ext(t, w)
+  ldens_forced = ldens - q(t, w) * source_total
+  el_forced = euler_equations(ldens_forced, q(t, w), [t, w])[0]
+  target_forced = target_dens - source_total
+  expect_zero("sourced densitized Euler-Lagrange equation", el_forced.lhs - target_forced)
+  ```
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl:184-192` quote:
+  ```
+  sourceTotal = Slm[t, w] + fext[t, w];
+  ldensForced = ldens - qField*sourceTotal;
+  elForcedEq = EulerEquations[ldensForced, q[t, w], {t, w}];
+  elForced = FullSimplify[elForcedEq[[1]] - elForcedEq[[2]], Assumptions -> $Assumptions];
+  targetForced = targetDens - sourceTotal;
+  expectZero["sourced densitized Euler-Lagrange equation", elForced - targetForced];
+  ```
+- SymPy's `euler_equations` returns the EL identity in the form `∂L/∂q − Σ_i d/dx_i ∂L/∂(∂_{x_i} q) = 0`. With `ldens_forced = ldens − q · source_total`, the resulting equation is `μ q_tt − ∂_w(T_w q_w) + K_l q = −(S_lm + f_ext)` — the **negative** of the paper's RHS source.
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl:59-211`
+## Resolve before fix_loop
 
-**Issue:**
+The paper card and the notes both write the modal-wall PDE with `+(S_{lm}^{(psi,A)} + f_{lm}^{ext})` on the RHS. The SymPy and Mathematica scripts encode the source as `−q · source_total` in the Lagrangian, which produces `−(S_lm + f_ext)` on the equation RHS. The script's own summary line claims it verifies the paper's positive-RHS form, but the assertion exercises the opposite sign.
 
-The Mathematica audit script is a line-by-line transliteration of the SymPy audit script. It uses the same variable choreography, the same `target_*` constructions, and a hand-rolled `eulerLagrange2D` that re-implements `sympy.calculus.euler.euler_equations` rather than calling Mathematica's native variational machinery. The harmonic Laplacian is also recomputed from `(1/sin θ) d/dθ (sin θ d/dθ ...) + d²/dφ² / sin²θ` instead of leveraging Mathematica's built-in spherical-harmonic identities. This violates the second-engine independence policy at a checkpoint stage.
+**Which sign is correct?**
 
-**Required change:**
+Possible directions (the user picks one):
 
-Edit `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl` as follows. Keep all existing assertion names and target expressions; only change the route by which the LHS of each assertion is computed.
+- **(a) Paper is correct (most likely)** → flip the script's source-coupling sign:
+  - `scripts/.../sympy_audit.py:189` change `ldens - q(t, w) * source_total` → `ldens + q(t, w) * source_total`
+  - `scripts/.../sympy_audit.py:191` change `target_dens - source_total` → `target_dens + source_total`
+  - `mathematica/.../mathematica_audit.wl:188` change `ldens - qField*sourceTotal` → `ldens + qField*sourceTotal`
+  - `mathematica/.../mathematica_audit.wl:191` change `targetDens - sourceTotal` → `targetDens + sourceTotal`
 
-1. **Load Mathematica's variational package.** Near the top of the file, after `$HistoryLength = 0;` (line 2), insert:
+  Re-run sympy + mathematica; outputs should still show `= 0`.
 
-   ```
-   Needs["VariationalMethods`"];
-   ```
+- **(b) Script is correct** → update the paper card (line 161 of `stage_001.tex`) and the notes (line 361 of the markdown) to read `= -(S_{lm}^{(psi,A)} + f_{lm}^{ext})` on the RHS. (Unlikely — the standard physics convention places source on the RHS with positive sign.)
 
-2. **Replace the hand-rolled `eulerLagrange2D` with `EulerEquations` calls.**
+- **(c) Both are derived from a third source that contradicts both** → flag for deeper review (audit Stage 002+003 which reuse this modal PDE form to identify the upstream convention author).
 
-   Delete the `eulerLagrange2D` helper at lines 59-67.
+The orchestrator will not invoke Codex on this unit until the user picks a direction.
 
-   In Section III.1 (currently lines 162-165), replace
-   ```
-   elDens = FullSimplify[-eulerLagrange2D[ldens, qField, t, w], Assumptions -> $Assumptions];
-   ```
-   with a call that uses `EulerEquations` from the `VariationalMethods` package on the field `q[t, w]`:
-   ```
-   elDensEq = EulerEquations[ldens, q[t, w], {t, w}];
-   elDens = FullSimplify[elDensEq[[1]] - elDensEq[[2]], Assumptions -> $Assumptions];
-   ```
-   (Adjust the right-hand-side extraction to match whatever `EulerEquations` returns in this version of Mathematica: if it returns `lhs == 0`, use `elDens = FullSimplify[elDensEq[[1]], ...]`; if it returns a bare expression equal to zero, use that directly. The intent: do NOT apply a manual sign flip; use what `EulerEquations` gives you, and adjust `targetDens` only if the sign convention forces it. If a sign flip is necessary, write a comment that names the EulerEquations convention you observed rather than silently negating.)
+## F2 — paper_misalignment
 
-   Apply the same substitution to:
-   - `elWeighted` (currently line 168) — use `EulerEquations[lweighted, q[t, w], {t, w}]`.
-   - `elForced` (currently line 180) — use `EulerEquations[ldensForced, q[t, w], {t, w}]`.
-   - `elAx` (currently lines 196-199) — use `VariationalD[lmax, axField, {x, w}]` (or `EulerEquations[lmax, Ax[x, w], {x, w}]`).
-   - `elAw` (currently lines 200-203) — use `VariationalD[lmax, awField, {x, w}]` (or the equivalent `EulerEquations` call).
+**Subtype:** target_mismatch (gauge-fix term sign in linearized localized Maxwell, contingent on unstated metric signature)
 
-3. **Replace the hand-rolled spherical Laplacian with built-in spherical-harmonic verification.**
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_001.tex:192-198` quote:
+  ```
+  \boxed{
+  \partial_M\bigl(Z(w)\delta F^{MN}\bigr)
+   +\frac1\xi\partial^N(\partial\!\cdot\!\delta A)
+   =\mu_0\delta J^N}.
+  ```
+- The card does not state the metric signature. `partial^N` vs `partial_N` differs in sign for spatial indices under mostly-minus vs mostly-plus conventions.
 
-   In Section I.3 (currently lines 125-135):
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage001_geometry_lift_sympy_audit.py:209-229` quote (relevant fragments):
+  ```python
+  lmax = (
+      sp.Rational(1, 2) * Zloc(w) * Fwx**2
+      - sp.Rational(1, 2) * divA**2 / gauge_xi
+      + mu0 * (Jx(x, w) * Ax(x, w) + Jw(x, w) * Aw(x, w))
+  )
+  ...
+  target_Ax = sp.diff(Zloc(w) * Fwx, w) - sp.diff(divA, x) / gauge_xi - mu0 * Jx(x, w)
+  target_Aw = -sp.diff(Zloc(w) * Fwx, x) - sp.diff(divA, w) / gauge_xi - mu0 * Jw(x, w)
+  ```
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl:204-211` mirrors with `lmax = (1/2) zloc fwx^2 - divA^2/(2 gaugeXi) + ...` and the same `targetAx`/`targetAw` constructions.
 
-   Keep the existing `expectZero` calls for sanity, but ADD an independent check that uses `SphericalHarmonicY[l, m, theta, phi]` directly. After line 135, append:
+Setting `target_Ax = 0` gives `∂_w(Z F_wx) − (1/ξ) ∂_x(div A) = μ_0 J_x` — the gauge term enters the equation with a **negative** sign. Reading the paper's `+(1/ξ) ∂^N(∂·δA)` under a mostly-plus signature gives `+(1/ξ) ∂_x(div A)`, opposite to script. Under mostly-minus, `∂^x = −∂_x` and the paper's equation rewrites as `−(1/ξ) ∂_x(div A) = ...`, matching script.
 
-   ```
-   subbanner["I.3b Spherical Laplacian via SphericalHarmonicY"];
+## Resolve before fix_loop
 
-   (* Independent check: angular Laplacian eigenvalue from Mathematica's built-in
-      complex spherical harmonics, converted to confirm the eigenvalue is -l(l+1). *)
-   lapEig[l_] := Module[{Ylm, lap},
-     Ylm = SphericalHarmonicY[l, 0, theta, phi];
-     lap = (1/Sin[theta]) D[Sin[theta] D[Ylm, theta], theta]
-           + D[Ylm, {phi, 2}]/Sin[theta]^2;
-     FullSimplify[lap + l (l + 1) Ylm, Assumptions -> $Assumptions]
-   ];
-   expectZero["SphericalHarmonicY[0,0]: lap eigenvalue = 0", lapEig[0]];
-   expectZero["SphericalHarmonicY[2,0]: lap eigenvalue = -6", lapEig[2]];
-   ```
+The discrepancy is either a genuine script-side sign error or a metric-signature convention difference left unstated in the paper card.
 
-   This is still using the Laplacian operator, but it acts on `SphericalHarmonicY` (Mathematica's built-in) rather than on the bespoke `y20` polynomial — independent of the SymPy script's basis construction.
+**What metric signature does the (4+1)-dimensional parent theory use?**
 
-4. **Document any intentional parallelism.**
+Possible directions (the user picks one):
 
-   For Section II (confinement chain rule, lines 137-146), insert a one-line comment after `subbanner["II. Level-set confinement linearization"];` (line 137):
+- **(a) Mostly-minus signature, e.g. `(+,−,−,−,−)`** → script is correct as-is; add a one-line metric-signature statement to either the paper card (preferred, near the localized-Maxwell box) or the script docstring. Suggested paper-side text: *"All raised-index spatial derivatives use mostly-minus signature; for spatial N, `partial^N = -partial_N`, so the gauge-fix term reads `-(1/xi) partial_N(partial . delta A)` in coordinate form."* No script change needed.
 
-   ```
-   (* Note: chain rule on a single composite function admits no engine-independent
-      route; this section is an intentional parallel check rather than an independent
-      derivation. The two engines agree here as a sanity cross-check only. *)
-   ```
+- **(b) Mostly-plus signature, e.g. `(−,+,+,+,+)`** → script's gauge-fix term sign is wrong. Flip the gauge-fix term in the Lagrangian and corresponding targets:
+  - `sympy_audit.py:211` change `- sp.Rational(1, 2) * divA**2 / gauge_xi` → `+ sp.Rational(1, 2) * divA**2 / gauge_xi`
+  - `sympy_audit.py:225` change `sp.diff(Zloc(w) * Fwx, w) - sp.diff(divA, x) / gauge_xi - mu0 * Jx(x, w)` → `... + sp.diff(divA, x) / gauge_xi - mu0 * Jx(x, w)`
+  - `sympy_audit.py:226` change `-sp.diff(Zloc(w) * Fwx, x) - sp.diff(divA, w) / gauge_xi - mu0 * Jw(x, w)` → `... + sp.diff(divA, w) / gauge_xi - mu0 * Jw(x, w)`
+  - `mathematica_audit.wl:205` change `divA^2/(2 gaugeXi)` (subtracted) → `+ divA^2/(2 gaugeXi)`
+  - `mathematica_audit.wl:210` change `- D[divA, x]/gaugeXi` → `+ D[divA, x]/gaugeXi`
+  - `mathematica_audit.wl:211` change `- D[divA, w]/gaugeXi` → `+ D[divA, w]/gaugeXi`
 
-   Do not modify the substantive lines 139-146.
+  Re-run sympy + mathematica; outputs should still show `= 0`.
 
-5. **Do not modify `target*` expressions.** Those are the claim, written in symbolic form. The point of this change is to compute the LHS independently, not to alter the claim.
+- **(c) The parent theory's actual convention is neither pure mostly-plus nor pure mostly-minus, or `Z(w)` absorbs a non-trivial wall-direction metric factor** → flag for deeper review against the parent-theory definition document.
 
-**Claim manifest** (the new script must independently verify these):
-
-- **M1:** `EulerEquations[ldens, q[t,w], {t,w}]` reduces (up to sign convention) to `-mu_eta q_tt + d/dw(T_w q_w) - K_l q == 0`.
-
-- **M2:** `EulerEquations[g · ldens, q[t,w], {t,w}]` reduces to `-g mu_eta q_tt + d/dw(g T_w q_w) - g K_l q == 0`.
-
-- **M3:** `EulerEquations[ldens - q · (S_lm + f_ext), q[t,w], {t,w}]` reduces to the densitized LHS minus `(S_lm + f_ext)`.
-
-- **M4:** `VariationalD[lmax, A_x[x,w], {x,w}]` reduces to `d/dw(Z F_wx) - (1/xi) d/dx(divA) - mu0 J_x` (and analogously for `A_w`).
-
-- **M5:** `SphericalHarmonicY[2, 0, theta, phi]` satisfies the angular Laplacian eigenvalue equation with eigenvalue `-6` (and `l=0` gives eigenvalue `0`).
-
-**Verification command:**
-
-After Codex applies, the verifier will run `redteam exec-mathematica 001` and confirm:
-
-(a) the script exits 0 and all `expectZero` checks pass;
-
-(b) the script's body now contains `EulerEquations[...]` (or `VariationalD[...]`) in place of the hand-rolled `eulerLagrange2D` calls;
-
-(c) the `Needs["VariationalMethods\`"]` line is present near the top;
-
-(d) the `I.3b` section invoking `SphericalHarmonicY` is present;
-
-(e) the output file's residuals are still `0` everywhere they were before.
-
-## Applied: F1
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl`
-- summary: Replaced the hand-rolled Mathematica variational route with `EulerEquations`/`VariationalD`, added the `SphericalHarmonicY` eigenvalue check, and documented the intentional chain-rule parallel check.
-- deviation: none
-
-## Applied: F1-iter2
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage001_geometry_lift_mathematica_audit.wl`
-- summary: Removed the erroneous `First[]` wrappers from the three `EulerEquations` uses so each returned equation is reduced by subtracting its two sides; `math -script` now exits 0 with every `expectZero` check passing.
-- deviation: none
+The orchestrator will not invoke Codex on this unit until the user picks a direction.

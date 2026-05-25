@@ -13,7 +13,7 @@ bundle slots.
 \paragraph{Bundle shifts.}
 The conservative and outgoing-transfer moments shift as
 \begin{equation}
-\label{eq:stage006-projected-shifts}
+\label{eq:stage010-projected-shifts}
 Z_n\mapsto Z_n+\varepsilon z_n,\qquad
 N_n\mapsto N_n+\varepsilon n_n,\qquad n\in\{0,2,4\}.
 \end{equation}
@@ -36,7 +36,109 @@ and
 \label{eq:stage010-dp0}
 \delta P_0=\frac{D_0n_0+N_0z_0}{D_0^2}.
 \end{equation}
+The denominator-only quantities \(u_2,u_4\) and the full prefactor quantities
+\(P_n\) are distinct.  The full first variations in the \(P_2\) and \(P_4\)
+slots are
+\begin{equation}
+\label{eq:stage010-dP2}
+\delta P_2=
+\frac{n_2}{D_0}
++\frac{N_2z_0+2N_0z_2-2D_2n_0}{D_0^2}
+-\frac{4D_2N_0z_0}{D_0^3},
+\end{equation}
+\begin{equation}
+\label{eq:stage010-dP4}
+\begin{aligned}
+\delta P_4={}&
+\frac{n_4}{D_0}
++\frac{N_4z_0+2N_2z_2-2D_2n_2+2N_0z_4-2D_4n_0}{D_0^2}\\
+&+\frac{3D_2^2n_0-4(D_2N_2+D_4N_0)z_0-6D_2N_0z_2}{D_0^3}
++\frac{9D_2^2N_0z_0}{D_0^4}.
+\end{aligned}
+\end{equation}
+
+\paragraph{Compatibility transport.}
+With \(S=M+B_2+Z_2\) and \(T=B_4+Z_4\), the one-pole and fixed-target
+normalization \(K\)-surfaces under the slot shift are
+\begin{equation}
+\label{eq:stage010-k-surfaces}
+\begin{aligned}
+K_{\rm pole}(\varepsilon)
+&=B_0+Z_0+\varepsilon z_0
++\frac{3(S+\varepsilon z_2)^2}{T+\varepsilon z_4},\\
+K_{\rm norm}(\varepsilon)
+&=B_0+Z_0+\varepsilon z_0
++\frac{N_0+\varepsilon n_0}{P_{0,\rm target}}.
+\end{aligned}
+\end{equation}
+Eliminating \(K\) gives the fixed-target compatibility variation
+\begin{equation}
+\label{eq:stage010-compat-fixed}
+\delta\mathcal C_{\rm fixed}
+=\frac{n_0}{P_{0,\rm target}}
+-\frac{6Sz_2}{T}
++\frac{3S^2z_4}{T^2},
+\qquad
+\partial_{z_0}\delta\mathcal C_{\rm fixed}=0.
+\end{equation}
+For a transported target
+\(P_{0,\rm target}(\varepsilon)=(N_0+\varepsilon n_0)/D_{0,\rm target}\),
+\begin{equation}
+\label{eq:stage010-compat-transport}
+\mathcal C_{\rm tr}(\varepsilon)
+=D_{0,\rm target}
+-\frac{3(S+\varepsilon z_2)^2}{T+\varepsilon z_4},
+\qquad
+\delta\mathcal C_{\rm tr}
+=-\frac{6Sz_2}{T}+\frac{3S^2z_4}{T^2}.
+\end{equation}
+
+\paragraph{Grouped weak-axisymmetric lane.}
+The real \(Y_{20}\) square-overlap lane multipliers are
+\begin{equation}
+\label{eq:stage010-y20-lambdas}
+\lambda_{20}=1,\qquad
+\lambda_{21}=\frac12,\qquad
+\lambda_{22}=-1.
+\end{equation}
+Thus a weak-axisymmetric lane packet
+\(x_A=x^{(0)}+\varepsilon\lambda_Ax^{(1)}\) obeys
+\begin{equation}
+\label{eq:stage010-weak-axisym-trace}
+\bar x=x^{(0)},\qquad
+a_x=\frac{\varepsilon x^{(1)}}4,\qquad
+b_x=\frac{3\varepsilon x^{(1)}}4,\qquad
+b_x=3a_x.
+\end{equation}
+
+\paragraph{Primitive static prefactor.}
+For primitive mouth data \(Q,\Delta,P\) with perturbation slopes
+\(q_1,d_1,p_1\),
+\begin{equation}
+\label{eq:stage010-primitive-xi}
+z_0^{\rm prim}=\frac{\Delta q_1-Qd_1}{\Delta^2},
+\qquad
+n_0^{\rm prim}=\frac{2P(\Delta p_1-Pd_1)}{\Delta^3},
+\qquad
+\Xi_{\rm static}
+=\frac{2p_1}{P}-\frac{2d_1}{\Delta}
++\frac{\Delta q_1-Qd_1}{D_0\Delta^2}.
+\end{equation}
+The sign-flip mutation guards are the nonzero residuals
+\begin{equation}
+\label{eq:stage010-mutation-guards}
+\mathcal R_{\rm fixed}
+=\mathcal R_{\rm tr}
+=\frac{6S^2z_4}{T^2}\not\equiv0,
+\end{equation}
+obtained by flipping the sign of the \(3S^2z_4/T^2\) term in
+\eqref{eq:stage010-compat-fixed} or \eqref{eq:stage010-compat-transport}.
 
 \paragraph{Output.}
 Stage~010 exports the transport map
-\eqref{eq:stage006-projected-shifts}--\eqref{eq:stage010-dp0}.
+\eqref{eq:stage010-projected-shifts}--\eqref{eq:stage010-dP4}, the
+compatibility transports \eqref{eq:stage010-k-surfaces}--\eqref{eq:stage010-compat-transport},
+the weak-axisymmetric lane signature
+\eqref{eq:stage010-y20-lambdas}--\eqref{eq:stage010-weak-axisym-trace},
+the primitive static prefactor anchor \eqref{eq:stage010-primitive-xi}, and
+the sign-flip guards \eqref{eq:stage010-mutation-guards}.

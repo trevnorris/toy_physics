@@ -1,4 +1,6 @@
 STAGE 010 PROJECTED MAXWELL PUSH BUNDLE MASTER MATHEMATICA AUDIT
+M0a residual = 0
+M0b residual = 0
 M1 residual = 0
 M2 residual = 0
 M3 residual = 0

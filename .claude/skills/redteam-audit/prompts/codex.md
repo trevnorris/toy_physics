@@ -6,9 +6,21 @@ You are applying a red-team directive that was written by an auditor agent. The 
 
 Read it in full. Apply each finding's required change exactly as written. Edit only the files and line ranges the directive names.
 
+## Reference materials (READ-ONLY)
+
+The auditor read these files before writing the directive. Treat them as authoritative for *what* the unit is supposed to verify — your job is to make the scripts faithful to them, NOT to edit them.
+
+- Paper stage card: `{PAPER_STAGE_TEX_PATH}`
+- Notes that informed the stage card: `{NOTES_STAGE_PATHS}`
+- Part-level appendix row: `{PAPER_APPENDIX_PATH}`
+
+**When to consult these**: any time the directive's "Required change" leaves you uncertain about the *intent* — what identity is supposed to hold, what constants should be used, what parameter range applies. The directive will usually quote enough context, but if it doesn't, open the paper card or notes for the unit and re-read the relevant lines. The auditor explicitly relied on these sources; you can too.
+
+**Never edit them.** Paper and notes are out of scope for this loop. If your fix would require a paper/notes edit, mark the finding `Blocked` and surface the question — the user resolves paper-side discrepancies, not you.
+
 ## Hard rules
 
-- **Scripts only.** Touch only `.py` and `.wl` script files (and their saved `.txt` outputs if the directive explicitly asks for regeneration). Do NOT touch `paper.tex`, `notes/*.md`, or any other prose document. The red-team is a script-verification loop; doc alignment is handled out-of-band.
+- **Scripts only.** Touch only `.py` and `.wl` script files (and their saved `.txt` outputs if the directive explicitly asks for regeneration). Do NOT touch `paper.tex`, `notes/*.md`, or any other prose document. The red-team is a script-verification loop; doc alignment is handled out-of-band (the auditor flags `paper_misalignment` findings to the user, not to you).
 - **No new features, no refactors, no stylistic changes.** If the directive says "fix the sign on line 42," fix the sign on line 42. Nothing else.
 - **Execute to validate, and iterate.** After you make edits, RUN the affected scripts and confirm they exit 0. Use `python3 <script-path>` for SymPy and `math -script <script-path>` for Mathematica. If the script fails (non-zero exit, error message, FAIL on an `expectZero`/`assert` check), read the output, diagnose the cause, fix the script, and run again. Do not stop iterating until every script you edited (or created) exits 0 with all its in-file checks passing. The orchestrator dispatches a separate clean-context verifier agent AFTER you confirm the scripts run — that verifier reviews substance, not whether the script runs. Getting the script to run is your job.
 - **Iteration cap.** If the same failure persists after ~5 attempts, mark the finding `Blocked` rather than thrash. Better to escalate a hard case than burn the session.
@@ -143,7 +155,54 @@ These have each cost a fix-loop iteration at least once. Check for them proactiv
 
    Substance-preserving — `ConditionalExpression[0, cond]` is genuinely zero on the declared domain. This defect has been caught at stages 050, 051, and 052 (batch III.2).
 
-5. **`Limit` non-determinism for poles: `Infinity` vs `Infinity/<positive>`.** `Limit[fraction_with_simple_pole, var -> 1, Direction -> "FromBelow"]` returns either `Infinity` or `Infinity/(positive polynomial in declared parameters)` non-deterministically across `math -script` invocations. Strict checks like `If[pi1 =!= Infinity, fail[...]]` are flaky.
+5. **`Part[]`-indexing on pattern parameters inside `Do[Module[{locals = list}, ...]]` silently drops half the body.** A function like
+
+   ```
+   fieldStrength[mu_, nu_] :=
+     D[potentialList[[nu + 1]], coordList[[mu + 1]]]
+       - D[potentialList[[mu + 1]], coordList[[nu + 1]]];
+
+   Do[Module[{alpha, beta, gamma, cyc, residual},
+        {alpha, beta, gamma} = triple;
+        cyc = D[fieldStrength[beta, gamma], coordList[[alpha + 1]]]
+            + D[fieldStrength[gamma, alpha], coordList[[beta + 1]]]
+            + D[fieldStrength[alpha, beta], coordList[[gamma + 1]]];
+        ...],
+      {triple, {{0,2,3}, {0,3,1}, {0,1,2}}}]
+   ```
+
+   triggers `Part::pkspec1: The expression 1 + mu cannot be used as a part specification.` **and** silently drops one of the two `D[...]` terms in each `fieldStrength` call. The cyclic Bianchi identity then evaluates to a nonzero residual containing exactly half the expected terms. Root cause: Mathematica's evaluator runs the `Module` body once during analysis (before `{alpha, beta, gamma} = triple` fires), so `fieldStrength[beta, gamma]` is called with the unbound gensym locals — even with `_Integer` pattern guards, the partial evaluation leaks a malformed expression that overrides what later iterations produce.
+
+   **Don't try to fix this with `_Integer` guards alone — they are not sufficient.** The fix is to *precompute the indexed values as immediate expressions before the `Do`/`Module` opens its scope*:
+
+   ```
+   (* Precompute every field-strength component you need, with concrete
+      integer indices, BEFORE any Do/Module loop touches them. *)
+   F01 = D[potentialList[[2]], coordList[[1]]] - D[potentialList[[1]], coordList[[2]]];
+   F02 = D[potentialList[[3]], coordList[[1]]] - D[potentialList[[1]], coordList[[3]]];
+   F03 = D[potentialList[[4]], coordList[[1]]] - D[potentialList[[1]], coordList[[4]]];
+   F12 = D[potentialList[[3]], coordList[[2]]] - D[potentialList[[2]], coordList[[3]]];
+   F13 = D[potentialList[[4]], coordList[[2]]] - D[potentialList[[2]], coordList[[4]]];
+   F23 = D[potentialList[[4]], coordList[[3]]] - D[potentialList[[3]], coordList[[4]]];
+   F10 = -F01; F20 = -F02; F30 = -F03;
+   F21 = -F12; F31 = -F13; F32 = -F23;
+
+   (* Then build the cyclic sums as an immediate-valued list of (label, expr) pairs. *)
+   bianchiChecks = {
+     {{0, 2, 3}, D[F23, t] + D[F30, y] + D[F02, z]},
+     {{0, 3, 1}, D[F31, t] + D[F10, z] + D[F03, x]},
+     {{0, 1, 2}, D[F12, t] + D[F20, x] + D[F01, y]}
+   };
+   Do[Module[{triple, cyc, residual},
+        {triple, cyc} = entry;
+        residual = FullSimplify[cyc, Assumptions -> spaceTimeAssumptions];
+        ...],
+      {entry, bianchiChecks}]
+   ```
+
+   The Module/Do still iterates, but the *values* it iterates over are already-evaluated D-expressions — no pattern matching, no `Part[]`-on-unbound-symbol, no analysis-pass corruption. This defect has been caught at stage 004 (batch I.1, v2 paper-grounded re-audit).
+
+6. **`Limit` non-determinism for poles: `Infinity` vs `Infinity/<positive>`.** `Limit[fraction_with_simple_pole, var -> 1, Direction -> "FromBelow"]` returns either `Infinity` or `Infinity/(positive polynomial in declared parameters)` non-deterministically across `math -script` invocations. Strict checks like `If[pi1 =!= Infinity, fail[...]]` are flaky.
 
    **Test the inverse vanishes instead:**
 

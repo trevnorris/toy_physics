@@ -185,10 +185,10 @@ subbanner["III.4 Sourced modal wall equation"];
 Clear[Slm, fext];
 $Assumptions = Element[{t, w}, Reals] && Element[ell, Integers] && ell >= 0;
 sourceTotal = Slm[t, w] + fext[t, w];
-ldensForced = ldens - qField*sourceTotal;
+ldensForced = ldens + qField*sourceTotal;
 elForcedEq = EulerEquations[ldensForced, q[t, w], {t, w}];
 elForced = FullSimplify[elForcedEq[[1]] - elForcedEq[[2]], Assumptions -> $Assumptions];
-targetForced = targetDens - sourceTotal;
+targetForced = targetDens + sourceTotal;
 expectZero["sourced densitized Euler-Lagrange equation", elForced - targetForced];
 
 subbanner["IV. Representative localized-Maxwell linearization"];
@@ -202,13 +202,13 @@ jxField = Jx[x, w];
 jwField = Jw[x, w];
 fwx = D[axField, w] - D[awField, x];
 divA = D[axField, x] + D[awField, w];
-lmax = (1/2) zloc fwx^2 - divA^2/(2 gaugeXi) + mu0 (jxField axField + jwField awField);
+lmax = (1/2) zloc fwx^2 + divA^2/(2 gaugeXi) + mu0 (jxField axField + jwField awField);
 (* VariationalD uses the standard variational derivative dL/dA - D_i(dL/d(D_i A));
    the existing Maxwell residual target is the opposite-side equation residual. *)
 elAx = FullSimplify[-VariationalD[lmax, axField, {x, w}], Assumptions -> $Assumptions];
 elAw = FullSimplify[-VariationalD[lmax, awField, {x, w}], Assumptions -> $Assumptions];
-targetAx = D[zloc fwx, w] - D[divA, x]/gaugeXi - mu0 jxField;
-targetAw = -D[zloc fwx, x] - D[divA, w]/gaugeXi - mu0 jwField;
+targetAx = D[zloc fwx, w] + D[divA, x]/gaugeXi - mu0 jxField;
+targetAw = -D[zloc fwx, x] + D[divA, w]/gaugeXi - mu0 jwField;
 expectZero["localized-Maxwell x-component", elAx - targetAx];
 expectZero["localized-Maxwell w-component", elAw - targetAw];
 

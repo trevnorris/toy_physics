@@ -1,12 +1,18 @@
 STAGE 004 PROJECTED MAXWELL BUNDLE INDEX MATHEMATICA AUDIT
 M1 residual = 0
 PASS: M1 density-level integration by parts
-M2 component 1 residual = 0
-PASS: M2 Faraday component 1
-M2 component 2 residual = 0
-PASS: M2 Faraday component 2
-M2 component 3 residual = 0
-PASS: M2 Faraday component 3
+M2 cyclic Bianchi {0, 2, 3} residual = 0
+PASS: M2 cyclic Bianchi {0, 2, 3}
+M2 cyclic Bianchi {0, 3, 1} residual = 0
+PASS: M2 cyclic Bianchi {0, 3, 1}
+M2 cyclic Bianchi {0, 1, 2} residual = 0
+PASS: M2 cyclic Bianchi {0, 1, 2}
+M2 Maxwell-Faraday component 1 residual = 0
+PASS: M2 Maxwell-Faraday component 1
+M2 Maxwell-Faraday component 2 residual = 0
+PASS: M2 Maxwell-Faraday component 2
+M2 Maxwell-Faraday component 3 residual = 0
+PASS: M2 Maxwell-Faraday component 3
 M3 residual = 0
 PASS: M3 Gaussian normalization
 M4 residual = 0

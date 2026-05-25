@@ -2,160 +2,157 @@
 unit_id: 002
 batch: I.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-20T00:00:00Z
-verdict: findings
+audit_date: 2026-05-25T00:00:00-06:00
+verdict: clean
 stop_cold: null
-findings_count: 2
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
-  engines_agree: false
+  engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  paper_appendix: present
 ---
 
 # Audit unit 002 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_002.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage002_breathing_reduction.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 26 covers stage 002)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage002_breathing_reduction_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.txt`
 
-(Both output files have mtimes later than their script mtimes: scripts dated 2026-04-21 17:04, outputs dated 2026-05-11 12:38 / 12:42. Outputs are fresh.)
+## What the paper claims
+
+Stage 002 verifies that the distributed wall lift, restricted to the lowest axisymmetric truncation, reproduces the old `(δa, δL)` matrix system, and that the grouped real P_2 sector becomes a one-mode degenerate family of the same wall PDE. The paper's `\stagefield{Output}` states: "The stage outputs the `(δa, δL)` matrix system (eq:app-stage002-el), the effective matrices (eq:app-stage002-mass-matrix)-(eq:app-stage002-stiffness-matrix), and the uncoupled grouped P_2 mass/stiffness pair (eq:app-stage002-m2)-(eq:app-stage002-k2)." Concretely the deliverables are: (D1) the Y_00 normalization bridge `q_00 = 2 sqrt(pi) δa`; (D2) the boxed `M_AB = 4π ∫dw μ_η α_A α_B` and `K_AB = 4π ∫dw [T_w α_A' α_B' + K_0 α_A α_B]`; (D3) the conservative Euler-Lagrange matrix equation `M_AB Q̈^B + K_AB Q^B = 0`; (D4) the grouped real P_2 ansatz with `-Δ_{S²}Y_{2m}^real = 6 Y_{2m}^real`; (D5) the boxed P_2 pair `M_2 = ∫dw μ_η β_2²` and `K_2 = ∫dw [T_w β_2'² + (K_η + 6 T_Ω) β_2²]` (no 4π prefactor on the P_2 side, since the real Y_{2m}^real basis is L² normalized); (D6) the P_2 Euler-Lagrange equation `M_2 q̈_{2m} + K_2 q_{2m} = 0`; (D7) the five-component degeneracy of grouped real P_2. The `\stagefield{Checks}` list also requires explicit verification of the 4π prefactor's provenance from the 2√π normalization, of the `l(l+1) = 6` angular eigenvalue, and of the no-dependence on real component label of `M_2/K_2`.
 
 ## What the script claims to verify
 
-The two scripts together claim to verify, for the breathing reduction stage of the moving-throat PDE: (i) a monopole normalization bridge identifying `q_00 = 2 sqrt(pi) delta_a` via the `Y_00` mouth average and the resulting `4 pi` angular prefactor; (ii) that inserting the axisymmetric two-mode ansatz `eta = 2 sqrt(pi)(alpha_a delta_a + alpha_L delta_L) Y_00` into the Stage 001 wall action reproduces the boxed overlap-integral form of the kinetic matrix `M_AB` and stiffness matrix `K_AB`, with the resulting two-variable conservative Euler-Lagrange system `M_AB Q_ddot^B + K_AB Q^B = 0`; (iii) orthonormality of the grouped real P2 multiplet, a common Laplace-Beltrami eigenvalue 6 across the multiplet, and the resulting isotropic five-component degeneracy with single-component reduced equation `M2 q_ddot + K2 q = 0`.
+The SymPy and Mathematica scripts share a common three-section structure: (Section I) the Y_00 monopole normalization bridge — they verify `∫_{S²} Y_00 dΩ / (4π) = 1/(2 sqrt(π))`, `∫_{S²} Y_00² dΩ = 1`, that mouth-averaging `q_00 Y_00` yields `q_00/(2 sqrt(π))`, and that `(2 sqrt(π) Y_00)² ∫dΩ = 4π`. (Section II) the two-mode axisymmetric reduction — they form the reduced 1D Lagrangian density by integrating the Stage 001 quadratic wall action over Ω with the two-mode ansatz, then check that it equals the bilinear form built from the boxed `4π` overlap matrices, and additionally derive the Euler-Lagrange equations for `q_a, q_L`. The Mathematica script adds an independent `Coefficient[...]`-based extraction of the M and K integrands and compares them directly to the boxed forms. (Section III) the grouped real P_2 sector — they construct the explicit five real Y_{2m} basis, verify pairwise orthonormality (norm matrix = I_5), verify the angular stiffness matrix equals 6 I_5, verify `-Δ_{S²} basis_i = 6 basis_i` per component, and assemble the reduced density to check the boxed `M_2/K_2` form and the per-component degeneracy. Both engines then derive the single-component P_2 Euler-Lagrange equation.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| D1 — Y_00 bridge `q_00 = 2√π δa` | normalization_bridge_audit (sympy 69-97); subbanner I (math 77-105) | match |
+| D2 — boxed `M_AB`, `K_AB` with 4π | `lw - lw_target` (sympy 156-157); `lred - lred_target` (sympy 171-173); `MintegrandExtracted - MintegrandBoxed` and `LredTarget` checks (math 134-170) | match |
+| D3 — `M_AB Q̈^B + K_AB Q^B = 0` | `euler_equations(lred_time, qa(t), [t])` checks (sympy 194-204); `EulerEquations` (math 189-200) | match |
+| D4 — `-Δ_{S²} Y_{2m}^real = 6 Y_{2m}^real` | `lap_s2` per-basis check (sympy 250); `lapS2` per-basis check (math 251-257) | match |
+| D5 — boxed `M_2 = ∫dw μ_η β_2²`, `K_2 = ∫dw [T_w β_2'² + (K_η + 6 T_Ω) β_2²]` | `lw_p2 - lw_p2_target` (sympy 264-282); per-i `lwP2i - lwP2Target` (math 268-297); `M2`, `K2` Integrals (sympy 286-287; math 303-304) | match |
+| D6 — `M_2 q̈ + K_2 q = 0` | `single-component P2 Euler-Lagrange equation` (sympy 289-290; math 306-307) | match |
+| D7 — five-component degeneracy | `norm_matrix - I_5`, `grad_matrix - 6 I_5` (sympy 247-248); `normMatrix5 - IdentityMatrix[5]`, `gradMatrix5 - 6 IdentityMatrix[5]` (math 234-249); per-component reduced density (math 268-297) | match |
+| Check: 4π provenance from 2√π normalization | `angular prefactor from (2 sqrt(pi) Y00)^2 - 4 pi` (sympy 91-97; math 101-105) | match |
+| Check: l(l+1) = 6 angular stiffness | `grad_matrix - 6 I_5` and per-basis `-Δ_{S²} y - 6y` (sympy 247-250; math 219-257) | match |
+| Check: M_2/K_2 independent of real component label | per-i `lwP2i - lwP2Target` over all 5 components (math 268-297); collective form via norm/grad-matrix-as-I_5/6I_5 (sympy 247-282) | match |
+
+Dominant pattern: `match` across all deliverables. Setting `paper_alignment: aligned`.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 83 | `simplify(avg_y00 - 1/(2 sqrt(pi))) == 0` | yes |
-| A2 | sympy | 84 | `simplify(norm_y00 - 1) == 0` | yes |
-| A3 | sympy | 88 | `simplify(q00 * avg_y00 - q00/(2 sqrt(pi))) == 0` | partial (algebraic rescaling of A1) |
-| A4 | sympy | 97 | `simplify(angular_prefactor - 4 pi) == 0` | yes |
-| A5 | sympy | 157 | `simplify(lw - lw_target) == 0` (angular integration of two-mode ansatz vs. hand-built overlap matrices with 4 pi factor) | yes |
-| A6 | sympy | 173 | `simplify(lred - lred_target) == 0` (integration commutes with matrix bilinear-form expansion) | partial (follows from A5 by linearity of integral) |
-| A7 | sympy | 197-200 | Euler-Lagrange for q_a vanishes when matched against `Maa qa'' + MaL qL'' + Kaa qa + KaL qL` | yes |
-| A8 | sympy | 201-204 | Euler-Lagrange for q_L vanishes (mirror of A7) | yes |
-| A9 | sympy | 247 | `(norm_matrix - I_5) == 0` (real-P2 orthonormality across all five components) | yes |
-| A10 | sympy | 248 | `(grad_matrix - 6 I_5) == 0` (common stiffness eigenvalue 6 across all five components) | yes |
-| A11 | sympy | 250 | `-Delta_S2 basis[i] - 6 basis[i] == 0` for i = 0..4 (Laplace-Beltrami eigen-check) | yes |
-| A12 | sympy | 282 | grouped-five-component reduced density - diagonal target form | yes |
-| A13 | sympy | 290 | single-component P2 Euler-Lagrange equation matches `M2 q'' + K2 q` | yes |
-| B1 | mathematica | 93 | `Y00 mouth average - 1/(2 sqrt(pi))` | yes |
-| B2 | mathematica | 94 | `norm(Y00) - 1` | yes |
-| B3 | mathematica | 97 | `mouth average from q00 Y00 - q00/(2 sqrt(pi))` | partial (algebraic rescaling of B1) |
-| B4 | mathematica | 104 | `angular prefactor - 4 Pi` | yes |
-| B5 | mathematica | 146 | `lw - lwTarget == 0` (same construction as A5) | yes |
-| B6 | mathematica | 158 | `Lred - LredTarget == 0` | partial (follows from B5) |
-| B7 | mathematica | 180-183 | Euler-Lagrange q_a check | yes |
-| B8 | mathematica | 184-187 | Euler-Lagrange q_L check | yes |
-| B9 | mathematica | 203 | `Y21s - Y21c(phi - Pi/2) == 0` (substitute for testing y21s) | partial (phase identity, not orthonormality) |
-| B10 | mathematica | 204 | `Y22s - Y22c(phi - Pi/4) == 0` (substitute for testing y22s) | partial (phase identity, not orthonormality) |
-| B11 | mathematica | 215 | `norm(basis[i]) - 1` for i in {Y20, Y21c, Y22c} only | partial (only 3/5 of multiplet) |
-| B12 | mathematica | 216 | `angular energy(basis[i]) - 6` for i in {Y20, Y21c, Y22c} only | partial (only 3/5) |
-| B13 | mathematica | 222-225 | `-Delta_S2 basis[i] - 6 basis[i]` for i in {Y20, Y21c, Y22c} only | partial (only 3/5) |
-| B14 | mathematica | 262-265 | single-component reduced density per basis member, three components | partial (only 3/5; SymPy does sum-over-5 in one shot, MA does 3 separately) |
-| B15 | mathematica | 277 | single-component P2 Euler-Lagrange | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 83 | `Y00 mouth average - 1/(2 sqrt(pi)) = 0` | D1 (normalization bridge) | yes |
+| A2 | sympy | 84 | `norm(Y00) - 1 = 0` | D1 | yes |
+| A3 | sympy | 88 | `mouth average from q00 Y00 - q00/(2 sqrt(pi)) = 0` | D1 | yes |
+| A4 | sympy | 97 | `angular prefactor (2 sqrt(pi) Y00)^2 - 4 pi = 0` | D2 prefactor check | yes |
+| A5 | sympy | 157 | `lw - lw_target = 0` (reduced Lagrangian density vs boxed overlap form) | D2 | yes |
+| A6 | sympy | 173 | `lred - lred_target = 0` (formal reduced Lagrangian vs boxed matrix form) | D2 | yes |
+| A7 | sympy | 197-200 | Euler-Lagrange for q_a | D3 | yes |
+| A8 | sympy | 201-204 | Euler-Lagrange for q_L | D3 | yes |
+| A9 | sympy | 247 | `norm_matrix - eye(5) = 0` | D7 (and prerequisite for D5/D6) | yes |
+| A10 | sympy | 248 | `grad_matrix - 6 eye(5) = 0` | D7 / l(l+1)=6 check | yes |
+| A11 | sympy | 250 | `-Δ_S2 basis[i] - 6 basis[i] = 0` (5 checks) | D4 | yes |
+| A12 | sympy | 282 | `lw_p2 - lw_p2_target = 0` (grouped reduced density) | D5 + D7 | yes |
+| A13 | sympy | 290 | `single-component P2 Euler-Lagrange = 0` | D6 | yes |
+| B1 | math | 94 | `Y00 mouth average - 1/(2 sqrt(pi))` | D1 | yes |
+| B2 | math | 95 | `norm(Y00) - 1` | D1 | yes |
+| B3 | math | 98 | `mouth avg q00 Y00 - q00/(2 sqrt(pi))` | D1 | yes |
+| B4 | math | 105 | `angular prefactor (2 sqrt(pi) Y00)^2 - 4 pi` | D2 prefactor | yes |
+| B5 | math | 150 | `extracted M - boxed M (4π overlap)` | D2 (M structure) | yes |
+| B6 | math | 151 | `extracted K - boxed K (4π overlap)` | D2 (K structure) | yes |
+| B7 | math | 170 | `Lred - LredTarget = 0` (formal reduced Lagrangian) | D2 | yes |
+| B8 | math | 193-196 | Euler-Lagrange for q_a | D3 | yes |
+| B9 | math | 197-200 | Euler-Lagrange for q_L | D3 | yes |
+| B10 | math | 216 | phase shift Y21s vs Y21c | D7 (independent basis check) | yes |
+| B11 | math | 217 | phase shift Y22s vs Y22c | D7 (independent basis check) | yes |
+| B12 | math | 228 | per-i `norm(Y_i) - 1` (5 checks) | D7 | yes |
+| B13 | math | 229 | per-i `angular energy(Y_i) - 6` (5 checks) | D4 / l(l+1)=6 | yes |
+| B14 | math | 248 | `normMatrix5 - I_5` | D7 | yes |
+| B15 | math | 249 | `gradMatrix5 - 6 I_5` | D7 | yes |
+| B16 | math | 252-255 | per-i `-Δ_S2 Y_i - 6 Y_i` (5 checks) | D4 | yes |
+| B17 | math | 292-295 | per-i `lwP2i - lwP2Target` (5 checks) | D5 + D7 | yes |
+| B18 | math | 307 | `single-component P2 Euler-Lagrange` | D6 | yes |
+
+Every script-side assertion traces to a specific paper-side deliverable. No orphaned scaffolding.
 
 ## Findings
 
-### F1 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl:74-187`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py:69-204`
-
-**What's wrong:**
-The Mathematica script is a line-by-line port of the SymPy script's algebra rather than an independent second-engine derivation. Direct evidence:
-
-1. **Identical variable choreography in Section I.** Compare:
-   - SymPy lines 74-78: `y00 = sp.Rational(1,2)/sp.sqrt(sp.pi)`; `avg_y00 = ... integrate(y00 * dOmega ...) / (4 pi)`.
-   - WL lines 82-87: `y00 = 1/(2 Sqrt[Pi])`; `avgY00 = Integrate[y00 dOmega ...] / (4 Pi)`.
-   The intermediate names (`y00`, `avg_y00`/`avgY00`, `mouthAvg`, `angularPrefactor`) and their order are identical.
-
-2. **Identical Section II construction.** Both scripts define the two-mode ansatz with the same `2 sqrt(pi)` prefactor wrapping `Y_00`, the same `M_integrand` / `Mintegrand` with `4 pi` pulled out front by hand, and the same target check `lw - lw_target == 0`. Compare:
-   - SymPy lines 137-154 build `M_integrand` and `K_integrand` as explicit `4*pi*[[...]]` 2x2 matrices.
-   - WL lines 133-140 build `Mintegrand` and `Kintegrand` as the same `4 Pi {{...}}` 2x2 matrices, in the same order, with the same off-diagonal symmetrization.
-
-3. **Identical EL choreography.** SymPy lines 185-204 build `lred_time` then call `euler_equations(...)`; WL lines 172-187 build `lredTime` then call the helper `eulerLagrange1D`. Both then compare against a hand-constructed `Maa qa'' + MaL qL'' + Kaa qa + KaL qL` expression with identical signs.
-
-4. **Identical name strings for every assertion.** Every `expectZero[...]` in the WL has a matching `expect_zero(...)` in the SymPy with byte-identical name strings (e.g. `"Y00 mouth average - 1/(2 sqrt(pi))"`, `"reduced Lagrangian density from the action - target overlap form"`, `"Euler-Lagrange equation for q_a"`). Engines that derived the result independently would not converge to identical naming.
-
-An independent Mathematica derivation would, for example, use `SphericalHarmonicY[0,0,theta,phi]` instead of hardcoding `1/(2 Sqrt[Pi])`, use `EulerEquations` from `VariationalMethods` instead of reproducing the helper `D[D[L, D[field,t]],t] - D[L,field]` formula, and arrive at the matrices via `Coefficient[]` extraction from the integrated Lagrangian rather than postulating them and checking they match. The current WL does none of this.
-
-**Why this matters:**
-The second-engine policy exists to catch errors that propagate consistently through one engine's algebraic conventions. A line-by-line transliteration cannot catch them; both engines execute the same algebraic plan, so they will both fail or both pass for the same reason. The PASS in both outputs is then evidence of internal consistency only, not of independent verification.
-
-**Required change:**
-Refactor the Mathematica script so its Section I and Section II derivations do not mirror the SymPy structure. Concretely:
-- Use `SphericalHarmonicY[0, 0, theta, phi]` to obtain `Y00` (Mathematica returns `1/(2 Sqrt[Pi])`, so the numeric value is verified by the engine, not hardcoded).
-- For Section II, do not predeclare `Mintegrand` and `Kintegrand` with `4 Pi` factored out. Instead, perform the full angular integral of the two-mode ansatz Lagrangian density and then `Coefficient[lw, dadt^2]`, `Coefficient[lw, dadt dLdt]`, `Coefficient[lw, dLdt^2]` to extract the components of `M`, and analogously for `K`. Then the check becomes whether the extracted matrix equals the boxed form, not whether two hand-built bilinear expansions agree.
-- For the EL step, call `VariationalMethods` `EulerEquations[lredTime, {qa, qLfun}, t]` rather than reproducing the formula by hand.
-
-These three changes break the line-by-line correspondence with the SymPy script without changing the physics tested. Lines affected: WL 82-104 (Section I), 110-187 (Section II).
-
-**Verification:**
-After the refactor, diff-style inspection should show no shared intermediate variable names with the SymPy script beyond the user-facing physical symbols (`mu_eta`, `T_w`, `K_0`, `alpha_a`, `alpha_L`, `delta_a`, `delta_L`, `q00`). The final assertions (the matrix-element values of M, K and the EL equation form) should still pass.
-
-### F2 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl:200-267`
-
-**What's wrong:**
-The Mathematica script's Section III claims to verify "real P2 orthonormality, common angular stiffness 6, and the resulting isotropic grouped-real P2 degeneracy before coupling" (script summary, WL lines 285-287), but actually exercises only 3 of the 5 P2 basis elements. Specifically:
-
-- Line 200: `basis = {y20, y21c, y22c};` — `y21s` and `y22s` are defined (lines 197, 199) but omitted from the test basis.
-- Lines 206-227: `Do[ ... , {i, 1, Length[basis]}]` only loops over the three-element basis; orthonormality, angular-energy = 6, and `-Delta_S2 y - 6 y = 0` checks are not performed on `y21s` and `y22s`.
-- Lines 238-267: the single-component reduced-density verification likewise loops over only those three components.
-- Lines 203-204 do verify `y21s = y21c(theta, phi - Pi/2)` and `y22s = y22c(theta, phi - Pi/4)` as substitutes. Phase-shift identities prove that one Y_2m is a rigid rotation of another in phi, which is fine for arguing the multiplet inherits the eigenvalue and norm — but the inheritance argument is not what the script claims; the script claims it verified the multiplet directly.
-
-The SymPy script (lines 219-250) does test all five components in the orthonormality matrix (5x5) and stiffness matrix (5x5) and runs the eigenvalue check on each. So the two engines disagree on the breadth of the verification, which is also relevant under engine cross-check: the WL output's "isotropic 5-component degeneracy" PASS reflects 3 components, not 5.
-
-**Why this matters:**
-The off-diagonal entries of the 5x5 orthonormality and stiffness matrices (e.g. ⟨Y21c, Y22s⟩, ⟨Y20, Y21s⟩, the four entries pairing a `c` with an `s` member) are never integrated in Mathematica. The claim being asserted is that the entire 5x5 norm matrix equals `I_5` and the entire 5x5 stiffness matrix equals `6 I_5`. Using a 3x3 sub-block plus two phase-shift identities is a weaker test: it shows the diagonal of the 5x5 is correct and that the `s` rows are rotations of the `c` rows, but it does not directly verify that, e.g., `⟨Y20, Y21s⟩_{S^2}` vanishes via the angular integral the script purports to use.
-
-**Required change:**
-Extend the Mathematica `basis` and the loops to cover all five P2 components. Edit:
-- WL line 200: change to `basis = {y20, y21c, y21s, y22c, y22s};` and `basisNames = {"Y20", "Y21c", "Y21s", "Y22c", "Y22s"};`.
-- WL lines 206-219: keep the `Do[ ... ]` loop structure but also add an outer-product 5x5 norm matrix and a 5x5 angular-stiffness matrix, asserting they equal `IdentityMatrix[5]` and `6 IdentityMatrix[5]` respectively (parallel to SymPy lines 221-247 but written with `Mathematica`-idiomatic `Table[...]` and `IdentityMatrix[5]`, not as a literal port of the Python).
-- WL lines 235-267: extend `qvec` to five symbols (`{q20, q21c, q21s, q22c, q22s}`), extend `qdotvec` similarly, and adjust the per-component loop to iterate over all five.
-- Keep the phase-shift identities on lines 203-204 as supplementary checks; they are not the problem.
-
-The two existing phase-shift assertions can stay; they just shouldn't be a substitute for the missing direct checks.
-
-**Verification:**
-The refreshed Mathematica output should show `norm(...)` and `angular energy(...)` PASS lines for `Y21s` and `Y22s` as well, and a 5x5 matrix identity assertion alongside (or in place of) the per-component checks. Total assertion count in Section III should increase from 14 to at least 16 (two new norm + two new angular energy) and ideally include explicit matrix-form `5x5 norm - I_5 == 0` and `5x5 stiffness - 6 I_5 == 0` lines.
+(none)
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is structurally a transliteration of the SymPy script's algebra. The evidence is enumerated in F1; the short version is that every meaningful step is reproduced in the same order with the same intermediate names and identical assertion strings, and no `SphericalHarmonicY`, `EulerEquations`, or `Coefficient`-based extraction is used despite all three being available in Mathematica's standard libraries. The one structural divergence (Section III uses only 3 components in Mathematica vs. 5 in SymPy) is itself a defect rather than evidence of independence.
+The Mathematica script is not a transliteration. Key independent moves:
+
+- **Y_00 source**: Mathematica uses the builtin `SphericalHarmonicY[0, 0, theta, phi]` (line 83) while SymPy constructs `1/(2 sqrt(pi))` by hand (line 74). Both agree on the result, but the derivations come from independent definitional sources.
+- **Section II M/K extraction**: Mathematica uses `Coefficient[lw, dadt, 2]`, `Coefficient[Coefficient[lw, dadt], dLdt]` etc. (lines 134-141) to extract the M and K integrands directly from the reduced Lagrangian density, then compares against the boxed form (lines 150-151). SymPy instead constructs the boxed `M_integrand`, `K_integrand` matrices explicitly and checks that the integrated reduced Lagrangian equals the bilinear form built from them (sympy line 156-157, 171-173). These are genuinely different algebraic angles: SymPy verifies "boxed M gives back lw"; Mathematica verifies "lw gives back boxed M". Either direction would catch a mismatched coefficient.
+- **Section III per-component checks**: Mathematica iterates over `basis` with a `Do` loop and verifies per-component norm, angular energy, reduced density, and Laplacian eigenvalue (lines 219-297). SymPy uses matrix-level constructs (`norm_matrix`, `grad_matrix` as 5×5 sympy matrices). Mathematica also includes phase-shift identities (lines 216-217) that are absent from SymPy and provide an additional sanity check on the explicit basis encoding.
+- **Euler-Lagrange**: Mathematica uses `EulerEquations` from `VariationalMethods` (loaded at line 3); SymPy uses `sympy.calculus.euler.euler_equations`. Different library implementations.
+
+These differences support the claim of independent re-derivation rather than line-by-line port.
 
 ## Engine cross-check
 
-Both engines emit PASS for the assertions they perform. However, they do not test the same set of statements in Section III: SymPy verifies orthonormality and angular stiffness across the full 5x5 P2 matrix, while Mathematica only tests 3x3 (Y20, Y21c, Y22c). For the assertions that do overlap (Sections I and II, plus the diagonal of Section III's basis), the engines agree. The overall claim of "five-component isotropic degeneracy" is verified only by the SymPy engine; the Mathematica engine verifies a weaker three-component statement.
+Both engines run to completion and all assertions pass:
 
-| Statement | SymPy | Mathematica |
-|---|---|---|
-| `q_00 = 2 sqrt(pi) delta_a` bridge | PASS | PASS |
-| 4 pi angular prefactor | PASS | PASS |
-| Two-mode `lw = lw_target` | PASS | PASS |
-| Two-mode `lred = lred_target` | PASS | PASS |
-| EL `(q_a, q_L)` matrix form | PASS | PASS |
-| P2 orthonormality (full 5x5) | PASS | NOT TESTED (3x3 only) |
-| P2 angular stiffness (full 5x5 = 6 I) | PASS | NOT TESTED (3x3 only) |
-| `-Delta_S2 Y_2m = 6 Y_2m` for m in {0,±1,±2} | PASS (all 5) | PASS (3 of 5) |
-| Five-component reduced density target | PASS (sum-of-5) | PASS (per-component, 3 of 5) |
-| Single-component EL `M2 q'' + K2 q = 0` | PASS | PASS |
+- SymPy output (`scripts/output/moving_throat_pde_stage002_breathing_reduction_sympy_audit.txt`): every `expect_zero` reports `= 0`. Final section summarises the four claim families.
+- Mathematica output (`mathematica/output/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.txt`): every `expectZero` reports `PASS: ...`. Final summary identical in substance.
 
-`engines_agree: false` in the front-matter because the engines diverge on whether the 5-component multiplet has been verified.
+Concrete symbolic side-by-side checks where both engines compute the same quantity:
+
+| Quantity | SymPy result | Mathematica result | Agree? |
+|---|---|---|---|
+| `∫ Y_00 dΩ / (4π) - 1/(2√π)` | 0 | 0 | yes |
+| `∫ Y_00² dΩ - 1` | 0 | 0 | yes |
+| `∫ (2√π Y_00)² dΩ - 4π` | 0 | 0 | yes |
+| reduced Lagrangian = boxed bilinear form | 0 | 0 (also verified by Coefficient extraction) | yes |
+| Euler-Lagrange for q_a | 0 | 0 | yes |
+| Euler-Lagrange for q_L | 0 | 0 | yes |
+| `norm_matrix - I_5` | 0 (matrix) | 0 (matrix) | yes |
+| `grad_matrix - 6 I_5` | 0 (matrix) | 0 (matrix) | yes |
+| `-Δ_S² Y_2m - 6 Y_2m` (×5) | 0 each | 0 each | yes |
+| Grouped P_2 reduced density vs boxed form | 0 | 0 (per component i) | yes |
+| Single-component P_2 EL | 0 | 0 | yes |
+
+No engine disagreement.
+
+Output freshness: sympy script mtime `2025-04-21 17:04`, sympy output mtime `2026-05-21 11:25`; mathematica script mtime `2026-05-21 00:39`, mathematica output mtime `2026-05-21 11:50`. Outputs are newer than the corresponding scripts. No `stale_output`.
 
 ## Verdict justification
 
-`findings` (not `clean`, not `stop_cold`). The algebra in both scripts holds up under direct inspection: the bilinear forms expand correctly, the `4 pi` angular factor is consistent with the `2 sqrt(pi) Y_00` ansatz, the Euler-Lagrange residuals are zero with the standard SymPy `∂L/∂q − d/dt(∂L/∂q̇)` sign convention, the P2 spherical harmonics in SymPy do satisfy `−Δ_{S^2} Y = 6 Y` and form an orthonormal set under direct integration, and the saved outputs are newer than the scripts (no `stale_output`). I attempted to attack the EL sign convention, the angular normalization, the use of `simplify` under `real=True` assumptions (no positivity claims hidden), and the spherical harmonic eigenvalue formulae; none broke. The two findings are at a higher structural level: the Mathematica script is a port rather than an independent re-derivation (F1), and that port quietly reduces the multiplet coverage from 5 to 3 (F2). Neither defect renders the unit's math wrong, but each violates the verification policy this stage is supposed to satisfy.
+The audit attempted several attacks and all failed:
+
+1. **Tautology attempt**: Could the section-II `lw - lw_target` check pass for any wrong M_AB / K_AB? No — `lw` is computed from the action density via independent ansatz substitution and angular integration; `lw_target` is built from the separately-declared `M_integrand` and `K_integrand`. The match is a structural verification of the reduction, not a self-comparison.
+2. **Hidden component degeneracy**: Could the per-i `lwP2i - lwP2Target` checks in Mathematica be passing because of common factoring? No — each iteration substitutes the specific Y_{2m}^real basis function explicitly into the action integrand and integrates over dΩ. The five components have visibly different angular forms (Y20 ∝ 3cos²θ − 1; Y22c ∝ sin²θ cos2φ; etc.), so a structural error in the angular orthonormality would surface in at least one component.
+3. **4π prefactor cancellation**: Could the boxed 4π factor be a free parameter the script forgets to constrain? No — `angular prefactor (2 sqrt(pi) Y00)^2 - 4π = 0` directly verifies that the prefactor follows from the 2√π normalization in the ansatz, and the reduced-Lagrangian check then propagates that 4π into the boxed M_AB/K_AB.
+4. **Symbol-assumption errors**: SymPy declares all relevant symbols `real=True`; Mathematica declares the corresponding `Element[..., Reals]` plus `0 < theta < Pi`, `wL < wR`. The assumptions match the physical setup (real perturbations, finite axial window, polar angle in (0, π)).
+5. **Convention disagreement (paper vs script)**: The paper writes `η_0 = 2√π [α_a δa + α_L δL]` and the script writes `eta = 2√π · axisym · Y_00`. These differ only in whether the Y_00 factor is implicit (paper) or explicit (script); after the angular integration both produce the same 4π prefactor on M_AB/K_AB. The script's explicit treatment is mathematically equivalent (since Y_00 = 1/(2√π) makes `2√π · axisym · Y_00 = axisym`, and `∫dΩ axisym² = 4π · axisym²`).
+6. **M_2/K_2 prefactor**: The paper's P_2 boxed forms have NO 4π prefactor (since `∫ (Y_{2m}^real)² dΩ = 1` by the script-verified normalization). The scripts correctly omit the 4π in M_2 and K_2 (sympy lines 286-287; mathematica lines 303-304). This is the asymmetry that distinguishes the monopole branch from the P_2 branch and the scripts honor it.
+7. **Mathematica transliteration**: Mathematica uses `SphericalHarmonicY` builtin, `Coefficient`-based M/K extraction, and per-i Do-loop checks (phase shifts included) that have no sympy counterpart. Not a transliteration.
+
+Paper-side and script-side claims align item-for-item across all seven deliverables and all four explicit `\stagefield{Checks}` items. Both engines pass. Outputs are fresh. No findings.
+
+## Self-test notes
+
+- Variable independence: every derivative used in the EL checks operates on functions that genuinely depend on `t` (qa(t), qL(t), q(t)), and every `D[..., w]` operates on functions of `w` (alphaA, alphaL, beta2, mu_eta, T_w, K_eta, T_Omega). No identically-zero derivatives lurking in `assert_zero` blocks.
+- Symmetry/parity: the angular integrals over the explicit Y_{2m}^real basis use orthogonal combinations of sin/cos of φ and θ; cross-products (e.g., `∫ Y_21c Y_22s dΩ`) involve odd-in-φ integrands over [0, 2π] which vanish, consistent with the off-diagonal zeros in the verified `norm_matrix`.
+- Trivial-case pre-check: substituting `alpha_a = 1`, `alpha_L = 0`, mu_eta=1, T_w=0, K_0=0 reduces the reduced Lagrangian density to `(1/2) · 4π · δȧ²`, matching boxed `M_aa = 4π ∫dw`, so the structure works out by hand. The check is non-trivial.
+- Paper round-trip: re-reading the paper card and notes against the scripts shows no `paper_misalignment`. No new finding to introduce.

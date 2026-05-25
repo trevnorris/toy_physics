@@ -186,9 +186,9 @@ def modal_wall_action_audit() -> None:
     S_lm = sp.Function("S_lm")
     f_ext = sp.Function("f_ext")
     source_total = S_lm(t, w) + f_ext(t, w)
-    ldens_forced = ldens - q(t, w) * source_total
+    ldens_forced = ldens + q(t, w) * source_total
     el_forced = euler_equations(ldens_forced, q(t, w), [t, w])[0]
-    target_forced = target_dens - source_total
+    target_forced = target_dens + source_total
     expect_zero("sourced densitized Euler-Lagrange equation", el_forced.lhs - target_forced)
 
 
@@ -208,7 +208,7 @@ def linearized_maxwell_audit() -> None:
 
     lmax = (
         sp.Rational(1, 2) * Zloc(w) * Fwx**2
-        - sp.Rational(1, 2) * divA**2 / gauge_xi
+        + sp.Rational(1, 2) * divA**2 / gauge_xi
         + mu0 * (Jx(x, w) * Ax(x, w) + Jw(x, w) * Aw(x, w))
     )
     el_Ax = (
@@ -222,8 +222,8 @@ def linearized_maxwell_audit() -> None:
         - sp.diff(lmax, Aw(x, w))
     )
 
-    target_Ax = sp.diff(Zloc(w) * Fwx, w) - sp.diff(divA, x) / gauge_xi - mu0 * Jx(x, w)
-    target_Aw = -sp.diff(Zloc(w) * Fwx, x) - sp.diff(divA, w) / gauge_xi - mu0 * Jw(x, w)
+    target_Ax = sp.diff(Zloc(w) * Fwx, w) + sp.diff(divA, x) / gauge_xi - mu0 * Jx(x, w)
+    target_Aw = -sp.diff(Zloc(w) * Fwx, x) + sp.diff(divA, w) / gauge_xi - mu0 * Jw(x, w)
 
     expect_zero("localized-Maxwell x-component", el_Ax - target_Ax)
     expect_zero("localized-Maxwell w-component", el_Aw - target_Aw)

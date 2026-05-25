@@ -183,7 +183,10 @@ Z2_int_gauss = sp.simplify(sp.integrate(Z**2, (w, -sp.oo, sp.oo)))
 W_match = sp.simplify(Z / Z_int_gauss)
 I_WZ_match = sp.simplify(sp.integrate(W_match * Z, (w, -sp.oo, sp.oo)))
 I_WH_H1_match = sp.simplify(sp.integrate(W_match, (w, -sp.oo, sp.oo)))
-I_WH_HZ_match = sp.simplify(sp.integrate(W_match * Z, (w, -sp.oo, sp.oo)))
+# H=Z computed from a textually-distinct integrand so the integrator must independently
+# reproduce the same closed form.
+H_Z_match = sp.exp(-w**2 / lam**2)
+I_WH_HZ_match = sp.simplify(sp.integrate(W_match * H_Z_match, (w, -sp.oo, sp.oo)))
 
 # delta-localized source sampled by the projection kernel
 I_WS_delta_match = sp.simplify(W_match.subs(w, 0))
@@ -198,6 +201,7 @@ xi_eff_HZ_match = sp.simplify(xi * I_WZ_match / I_WH_HZ_match)
 assert_zero("Gaussian Z_int", Z_int_gauss - sp.sqrt(sp.pi) * lam)
 assert_zero("Gaussian Z2_int", Z2_int_gauss - sp.sqrt(2 * sp.pi) * lam / 2)
 assert_zero("matched Gaussian I_WZ", I_WZ_match - sp.sqrt(2) / 2)
+assert_zero("Gaussian H=Z integrals match (independent computation)", I_WH_HZ_match - I_WZ_match)
 assert_zero("Gaussian H=Z gauge parameter", xi_eff_HZ_match - xi)
 assert_zero("Gaussian H=1 gauge parameter", xi_eff_H1_match - xi / sp.sqrt(2))
 assert_zero("Gaussian matched source coupling", mu0_eff_source_match - mu0 / Z_int_gauss)
@@ -235,8 +239,10 @@ W_indep_norm = sp.simplify(sp.integrate(W_indep, (w, -sp.oo, sp.oo)))
 assert_zero("independent W normalization", W_indep_norm - 1)
 
 I_WZ_indep = sp.simplify(sp.integrate(W_indep * Z, (w, -sp.oo, sp.oo)))
-# H = Z:
-I_WH_HZ_indep = sp.simplify(sp.integrate(W_indep * Z, (w, -sp.oo, sp.oo)))
+# H = Z: re-typed integrand so the integrator must independently reproduce the same closed form.
+H_Z_indep = sp.exp(-w**2 / lam**2)
+I_WH_HZ_indep = sp.simplify(sp.integrate(W_indep * H_Z_indep, (w, -sp.oo, sp.oo)))
+assert_zero("independent-profile H=Z integrals match (independent computation)", I_WH_HZ_indep - I_WZ_indep)
 xi_eff_HZ_indep = sp.simplify(xi * I_WZ_indep / I_WH_HZ_indep)
 assert_zero("independent-profile H=Z gauge parameter", xi_eff_HZ_indep - xi)
 

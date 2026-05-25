@@ -6,15 +6,12 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-25` (batch III.4 close — no checkpoint stages
-fall in range 073-084, so no new entries needed. The Family-1 numerology
-cluster 075-084 generated 12 `hardcoded_result` findings this batch
-(literal constants like `alpha_r=10`, `1/20`, `4.06863235...`,
-`0.927552032...`, `136900`, `1369`), but those were resolved either by
-in-script derivation routes or by SOURCE-ANCHOR/TODO(provenance) comments
-on the carried-forward literals — none of the stages involved are
-checkpoint stages, so they don't enter this log. Previous III.3 update
-remains accurate for stage 069.)
+Snapshot date: `2026-05-25` (batch I.1 v2 close — first paper-grounded
+re-audit pass over an already-verified batch. No checkpoint stages
+fall in range 001-012, so no new entries needed. The v2 re-audit
+surfaced 0 new hardcoded_result findings on I.1; all paper_misalignment
+items were resolved by Codex with file-cited recommendations. Previous
+III.4 update remains accurate for batches III.1-III.4.)
 
 ## Audit Rule
 

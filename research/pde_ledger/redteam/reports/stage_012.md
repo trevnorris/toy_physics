@@ -1,146 +1,159 @@
 ---
 unit_id: 012
 batch: I.1
-auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-20T00:00:00Z
+auditor_model: claude-opus-4-7-1m
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 1
+paper_alignment: aligned
 scripts_checked:
   sympy: present
-  mathematica: missing
-  engines_agree: n/a
+  mathematica: present
+  engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: []
+  paper_appendix: present
 ---
 
 # Audit unit 012 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_012.tex`
+- notes: `(none)` (per prompt; `notes/em_projected/step_NN_*.md` not committed for EM-projected stages 004-020)
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 46 + `\input{stages/stage_012}` line 103)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py`
-- mathematica: (missing)
+- mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.txt`
-- mathematica output: (missing)
+- mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_mathematica_audit.txt`
+
+## What the paper claims
+
+The stage card (Stage 012, "Projected Maxwell primitive bridge", Part I anchor MTDC-T4, status `StatusExactClosure`) identifies the primitive packet as built from the denominator `Delta = A W - R^2`, the conservative numerator `Q`, the mixed transfer numerator `P`, and the omega^2 denominator slope `S2`. Per the card, "at the mouth, projected perturbations of these primitives determine the `z_n` and `n_n` slots used in Stage 010." The card explicitly states the audit "checks both fixed-target and transported-target compatibility shifts." The Output line reads: "Stage 012 exports the primitive-to-bundle bridge used by the mouth-Taylor stages." The Part I appendix row 46 reinforces: "Primitive finite-throat bridge data induced by the projected electromagnetic sector." No source notes file is available for this EM-projected stage.
 
 ## What the script claims to verify
 
-The script perturbs the Stage-4/5 primitive one-port Maxwell/mixed data `(Q, S2, H, Delta, P, Gw)` by small linear slippages `(q1, s1, h1, d1, p1, g1)` weighted by `ell`, and derives the first-order corrections `z0, z2, z4, n0, n2, n4` to the bundle quantities `Z0, Z2, Z4, N0, N2, N4`. The script then claims (i) those linearizations equal the Frechet derivatives of the closed-form primitives, (ii) the static `Xi1 = n0/N0 + z0/D0` reduces to a stated explicit form, (iii) the isotropic compatibility surface obtained by eliminating `K` between the normalization and one-pole K surfaces is `(N0+ell n0)/Ptarget - 3*(S+ell z2)^2/(T+ell z4)`, with linear shift `n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2`, and the same for the transported-target variant, (iv) `z0` cancels from the compatibility surfaces but not from the normalization surface itself.
+Both scripts perturb the primitive one-port data `(Q, S2, H, Delta, P, Gw)` by small slips `(q1, s1, h1, d1, p1, g1)` and derive the first-order induced bundle corrections `(z0, z2, z4, n0, n2, n4)` as both a series-coefficient extraction and a Frechet/partial-derivative sum, asserting the two routes agree with independently typed closed forms. They then build the K-surface algebra and verify (a) the static `Xi1 = n0/N0 + z0/D0` closed form, (b) the fixed-target linear compatibility shift `n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2`, (c) the transported-target linear compatibility shift `-6 S z2/T + 3 S^2 z4/T^2`, (d) that `z0` cancels from the `q1, d1` partials of `K_norm - K_one` (both fixed-target and transported-target), (e) that the normalization K surface alone retains `z0` contributions in `q1, d1`, and (f) two mutation negative controls in which `z4`'s sign is flipped and the residuals must be nonzero.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| Primitive packet identification (Q, S2, P, Delta from `A W - R^2`) | sympy 51, 56-62; mathematica 41-48 | match (Delta entered as opaque symbol; the `A W - R^2` decomposition is upstream, not load-bearing at this bridge level) |
+| Projected perturbations determine z_n, n_n slots | sympy 76-146 (series + Frechet against closed forms); mathematica 77-177 (Series-Coefficient + partial-derivative routes against closed forms) | match |
+| Fixed-target compatibility shift checked | sympy 185-188 ("primitive compatibility shift from competing K surfaces"); mathematica M5 (222-225) | match |
+| Transported-target compatibility shift checked | sympy 194-197 ("primitive transported-target compatibility shift"); mathematica M7 (254-261) | match |
+| z_n/n_n exportable as Stage 010 inputs | derived forms exposed in transcript section 2 (sympy output lines 28-39); independent verification belongs to Stage 010 | match (consistent with bridge role) |
+| Static Xi1 primitive prefactor (supporting context) | sympy 149-153; mathematica M3 (186-191) | extra-but-consistent (no paper disagreement; the card discusses bridge role generally) |
+
+Dominant pattern: all paper-side deliverables are exercised; no script-side check contradicts or materially exceeds the paper card. `paper_alignment: aligned`.
 
 ## Assertion inventory
 
-| #   | Script | Line    | Form                                                                                          | Anchored to claim? |
-|-----|--------|---------|-----------------------------------------------------------------------------------------------|--------------------|
-| A1  | sympy  | 88      | `z0 - frechet(Z0) == 0`                                                                       | partial            |
-| A2  | sympy  | 89      | `z2 - frechet(Z2) == 0`                                                                       | partial            |
-| A3  | sympy  | 90      | `z4 - frechet(Z4) == 0`                                                                       | partial            |
-| A4  | sympy  | 91      | `n0 - frechet(N0) == 0`                                                                       | partial            |
-| A5  | sympy  | 92      | `n2 - frechet(N2) == 0`                                                                       | partial            |
-| A6  | sympy  | 93      | `n4 - frechet(N4) == 0`                                                                       | partial            |
-| A7  | sympy  | 97-100  | `Xi1_static - (2p1/P - 2d1/Delta + (Delta q1 - Q d1)/(D0 Delta^2)) == 0`                      | yes                |
-| A8  | sympy  | 124     | `(K_norm_p - K_one_p) - compat_direct_p == 0`                                                 | no (tautological)  |
-| A9  | sympy  | 125     | `dCompat - dCompat_direct == 0`                                                               | no (tautological)  |
-| A10 | sympy  | 126-129 | `dCompat_direct - (n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2) == 0`                                | yes                |
-| A11 | sympy  | 130     | `K_norm_transport_p - (B0 + Z0slot + ell z0 + D0target) == 0`                                 | partial            |
-| A12 | sympy  | 132-134 | `compat_transport_p - (D0target - 3 (S+ell z2)^2/(T+ell z4)) == 0`                            | partial            |
-| A13 | sympy  | 136-138 | `dCompat_transport - (-6 S z2/T + 3 S^2 z4/T^2) == 0`                                         | yes                |
-| A14 | sympy  | 143     | `diff(K_norm_probe - K_one_probe, z0_probe) == 0`                                             | no (tautological)  |
-| A15 | sympy  | 144-147 | `diff(K_norm_transport_probe - K_one_probe, z0_probe) == 0`                                   | no (tautological)  |
-| A16 | sympy  | 148     | `assert_nonzero diff(K_norm_probe, z0_probe)` (= ell)                                         | no (tautological)  |
-| A17 | sympy  | 149-152 | `assert_nonzero` mutated dCompat_direct with wrong sign on z4 term                            | yes (cheap)        |
-| A18 | sympy  | 153-156 | `assert_nonzero` mutated dCompat_transport with wrong sign on z4 term                         | yes (cheap)        |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 83 | `assert_zero` z0 closed form vs series | bridge (z0) | yes |
+| A2 | sympy | 84-87 | `assert_zero` z2 closed form vs series | bridge (z2) | yes |
+| A3 | sympy | 88-102 | `assert_zero` z4 closed form vs series | bridge (z4) | yes |
+| A4 | sympy | 103 | `assert_zero` n0 closed form vs series | bridge (n0) | yes |
+| A5 | sympy | 104-115 | `assert_zero` n2 closed form vs series | bridge (n2) | yes |
+| A6 | sympy | 116-134 | `assert_zero` n4 closed form vs series | bridge (n4) | yes |
+| A7 | sympy | 141-146 | Frechet route reproduces each z/n | independent re-derivation of bridge | yes |
+| A8 | sympy | 150-153 | static Xi1 closed form | Xi1 primitive prefactor support | yes |
+| A9 | sympy | 177-184 | K-surface solve round-trips | K-surface algebra used by compatibility | yes |
+| A10 | sympy | 185-188 | fixed-target compatibility shift closed form | fixed-target compatibility | yes |
+| A11 | sympy | 189-193 | transported normalization K surface + compatibility surface | transported-target setup | yes |
+| A12 | sympy | 194-197 | transported compatibility shift closed form | transported-target compatibility | yes |
+| A13 | sympy | 203-211 | q1, d1 partial cancellation of z0 in both compat differences | z0-channel cancellation | yes |
+| A14 | sympy | 214-221 | `assert_nonzero` normalization-K retains q1, d1 channel from z0 | dual to A13 | yes |
+| A15 | sympy | 222-229 | mutation tests (z4 sign flip → nonzero) | negative-control | yes |
+| M1 | math | 50-66 | `expectZero[Z0form - Q/Delta]` etc. | (none — algebraic identity by definition) | no (tautology) |
+| M2 | math | 166-177 | series + partial routes vs closed forms (z0..n4) | bridge identification (both routes) | yes |
+| M3 | math | 186-191 | static Xi1 | Xi1 prefactor support | yes |
+| M4 | math | 201-209 | K solve round-trips | K-surface algebra | yes |
+| M5 | math | 222-225 | fixed-target linear compatibility shift | fixed-target compatibility | yes |
+| M6 | math | 232-240 | transported normalization K surface + round-trip | transported-target setup | yes |
+| M7 | math | 254-261 | transported compatibility surface + linear shift | transported-target compatibility | yes |
+| M8 | math | 263-286 | q1, d1 cancellation in compat differences; retention in normalization K | z0-channel cancellation | yes |
+| M9 | math | 288-295 | mutation tests (z4 sign flip → nonzero) | negative-control | yes |
 
 ## Findings
 
-### F1 — missing_verification_script
-
-**Severity:** high
-**Files:**
-- `(missing)` — no Mathematica script for unit 012
-
-**What's wrong:**
-The manifest entry for unit 012 has `is_status_only_candidate: False`, so it is a real verification unit and both engines are required. Only a SymPy script exists at `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py`. There is no `.wl` companion. Consequently `engines_agree = n/a`, and every claim in this stage is verified by a single algebra system.
-
-**Why this matters:**
-The unit derives closed-form first-order corrections `z0..z4, n0..n4` and explicit compatibility-shift formulas that downstream units consume. With only one engine, an error in sympy's `simplify`/`series`/`solve` (or in the typed-in closed forms) would not be caught.
-
-**Required change:**
-Create `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_mathematica_audit.wl` that independently re-derives — not transliterates — the claims in the manifest below, using Mathematica primitives (`Series`, `Coefficient`, `D`, `Solve`, `FullSimplify`). It must terminate with an explicit pass/fail (e.g. `If[FullSimplify[...] =!= 0, Print["FAIL"]; Exit[1]]`) for each claim.
-
-**Verification:**
-After Codex creates the `.wl`, the verifier runs `redteam exec-mathematica 012` and expects (i) the file to exist, (ii) the script to exit 0, (iii) all eight claim checks listed in the directive's claim manifest to print PASS lines.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py:124`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py:125`
-
-**What's wrong:**
-At line 103-106 the script solves `(K - B0 - (Z0slot + ell*z0))*(T + ell*z4) = 3*(S + ell*z2)^2` for `K` to obtain `K_one_p = B0 + Z0slot + ell*z0 + 3*(S+ell*z2)^2/(T+ell*z4)`. At line 107-110 it solves `(N0base+ell*n0)/(K - B0 - (Z0slot+ell*z0)) = Ptarget` for `K` to obtain `K_norm_p = B0 + Z0slot + ell*z0 + (N0base+ell*n0)/Ptarget`. At line 111 it defines `compat_direct_p = (N0base+ell*n0)/Ptarget - 3*(S+ell*z2)^2/(T+ell*z4)`. By construction `K_norm_p - K_one_p == compat_direct_p` algebraically — there is no physics in the equality. The assertion at line 124, `(K_norm_p - K_one_p) - compat_direct_p == 0`, cannot fail regardless of any error elsewhere. Line 125's `dCompat - dCompat_direct == 0` is a direct consequence of line 124 (series expansion is linear), so it is equally tautological.
-
-**Why this matters:**
-These checks consume audit budget while testing nothing about z0,z2,z4,n0 correctness; a reader inspecting the script's PASS line is misled into thinking the compatibility-surface derivation is independently verified when it is only a rename of a difference.
-
-**Required change:**
-Replace the line 124 assertion with one that exercises the compatibility surface against an independent derivation — concretely, expand `K_norm_p - K_one_p` directly and compare its closed form, term by term, to the right-hand side `(N0base + ell*n0)/Ptarget - 3*(S + ell*z2)**2/(T + ell*z4)` only after substituting the solved K's back into the *original* defining equations (e.g. verify `(K_norm_p - B0 - (Z0slot + ell*z0))*Ptarget - (N0base + ell*n0) == 0` and `(K_one_p - B0 - (Z0slot + ell*z0))*(T + ell*z4) - 3*(S + ell*z2)**2 == 0`). Then delete the line 125 assertion (it duplicates A10 at line 126-129 once A10 is the substantive check).
-
-**Verification:**
-After patching, lines 124-125 either (i) are removed entirely in favor of two new "solve round-trip" checks, or (ii) read as direct round-trip residual checks against the original solve equations. The output file should no longer print the labels `primitive compatibility surface after eliminating K` and `primitive compatibility shift from eliminated surface` unless those labels now front substantive checks.
-
-### F3 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py:139-148`
-
-**What's wrong:**
-At lines 140-142 the script types `K_norm_probe = B0 + Z0slot + ell*z0_probe + (N0base + ell*n0)/Ptarget`, `K_one_probe = B0 + Z0slot + ell*z0_probe + 3*(S + ell*z2)^2/(T + ell*z4)`, `K_norm_transport_probe = B0 + Z0slot + ell*z0_probe + D0target`. The `ell*z0_probe` term appears identically in all three. The assertions at lines 143 and 144-147, `diff(K_norm_probe - K_one_probe, z0_probe) == 0` and `diff(K_norm_transport_probe - K_one_probe, z0_probe) == 0`, are forced by construction — `z0_probe` cancels because the same literal `ell*z0_probe` summand was typed into both terms of each difference. The assertion at line 148, `assert_nonzero diff(K_norm_probe, z0_probe)`, evaluates to `ell != 0`, which is also guaranteed by the typed-in form. None of these touches `z0` (the derived bundle correction) at all.
-
-**Why this matters:**
-The script's stage-5 prose claims "z0 cancels from both the fixed-target and transported-target compatibility shifts, even though the normalization K surface still carries z0 before compatibility elimination." That claim is about the derived `z0 = (Delta*q1 - Q*d1)/Delta^2`, not about a free symbol `z0_probe` that the author typed identically into both sides. The current test cannot detect any of the errors it appears to guard against (e.g. a sign error in z0 derivation, or a Ptarget-vs-Ptarget_transport substitution slip).
-
-**Required change:**
-Replace lines 139-148 with a check that uses the actual derived `z0` (from line 76). Concretely, substitute the explicit `z0 = (Delta*q1 - Q*d1)/Delta**2` into `K_norm_p` and `K_one_p` from lines 103-110, then verify `diff(K_norm_p - K_one_p, q1) == diff(compat_direct_p, q1)` and similarly for `d1` — i.e. the q1 and d1 partials of the compatibility shift must come only from `n0` and `z2/z4`, not from `z0`. Or, equivalently, verify that after substituting the derived `z0`, the symbolic dependence of `K_norm_p - K_one_p` on `q1, d1` arises solely through `n0` and the (z2,z4) of the compatibility surface, with the `z0` channel contributing zero. Then assert that `K_norm_p` (alone, no subtraction) does depend on `q1` and `d1` through the explicit `z0` channel — which is the actual non-tautological version of A16.
-
-**Verification:**
-After patching, lines 139-148 reference the bound symbol `z0` (and through it `q1, d1`) rather than an unbound `z0_probe`. The output transcript prints a check label such as `primitive compatibility surface has no q1/d1 channel from z0` and a complementary `primitive normalization K surface retains q1/d1 channel from z0`, both with PASS.
-
-### F4 — insufficient_verification
+### F1 — tautological_check
 
 **Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py:73-93`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_mathematica_audit.wl:50-66`
 
 **What's wrong:**
-The Frechet block (A1-A6) compares `dlin(expr)` (via `sp.series(expr.subs(subs), ell, 0, 2).removeO() - expr) / ell`) against `frechet(expr)` (via `sum(diff(expr, var) * slip)`). Both are sympy-internal first-order Taylor coefficients of the same polynomial-rational `expr`; they must agree for any well-formed `expr` regardless of whether the typed-in closed forms `Z0..N4` are physically correct. The script's docstring says the unit "derives the induced bundle corrections z0, z2, z4, n0, n2, n4 exactly at first order" — but A1-A6 verify only that two equivalent sympy methods give the same answer, not that the resulting `z0..n4` match any externally-anchored closed form.
+The M1 block defines each primitive one-port form on lines 41-48 and then on lines 50-66 asserts that each form equals its own definition.
+
+- Line 41: `Z0form = Q/Delta;`
+- Line 50: `expectZero["M1 Z0 primitive one-port", Z0form - Q/Delta];`
+
+The residual `Z0form - Q/Delta` is identically zero by construction; the same pattern repeats for `Z2form`, `Z4form`, `N0form`, `N2form`, `N4form` on lines 51-66. The Mathematica output transcript confirms each residual is literally `0` (`mathematica/output/...txt` lines 2-13). These six PASS lines cannot fail no matter what the physics is.
 
 **Why this matters:**
-If a typo or sign error were introduced into `Z2`, `Z4`, `N2`, or `N4` at lines 57-62, A1-A6 would still pass — both `dlin` and `frechet` would silently linearize the wrong primitive. Section 2 of the output transcript (the closed forms for `z0..n4`) is therefore the actual claim, but nothing checks those closed forms against an independent derivation.
+Six PASS lines in the Mathematica transcript convey false signal — they look like substantive verifications of the primitive one-port forms but verify nothing beyond `FullSimplify[0]==0`. The *correctness* of `Z0..N4` as the right "primitive one-port" representations is delegated entirely to the M2 series and partial routes (which take the M1 expressions as ground truth). The paper card is silent on the M1 forms' provenance; the SymPy docstring (line 55) calls them the "Stage-4 / Stage-5 primitive one-port formulas." A reader inspecting the PASS count is misled.
 
 **Required change:**
-Add explicit closed-form checks for `z0, z2, z4, n0, n2, n4` against typed-in expected expressions, mirroring the style used at line 99 for `Xi1_static`. For example, after line 81, add:
+Remove the six M1 `expectZero` calls at lines 50-66 (they verify nothing). Replace with a single `Print` group that emits the assumed forms and labels them as upstream carry-forwards:
+
+```mathematica
+Print["M1 primitive one-port forms (carried from Stage 4 / Stage 5):"];
+Print["  Z0 = ", fmt[Z0form]];
+Print["  Z2 = ", fmt[Z2form]];
+Print["  Z4 = ", fmt[Z4form]];
+Print["  N0 = ", fmt[N0form]];
+Print["  N2 = ", fmt[N2form]];
+Print["  N4 = ", fmt[N4form]];
 ```
-assert_zero("z0 closed form",  z0 - (Delta*q1 - Q*d1)/Delta**2)
-assert_zero("z2 closed form",  z2 - (-Delta**2*h1 + Delta*(H*d1 + Q*s1 + S2*q1) - 2*Q*S2*d1)/Delta**3)
-assert_zero("z4 closed form",  z4 - (-Delta**2*H*s1 - Delta**2*S2*h1 - Delta**2*q1 + 2*Delta*H*S2*d1 + 2*Delta*Q*S2*s1 + 2*Delta*Q*d1 + Delta*S2**2*q1 - 3*Q*S2**2*d1)/Delta**4)
-assert_zero("n0 closed form",  n0 - 2*P*(Delta*p1 - P*d1)/Delta**3)
-assert_zero("n2 closed form",  n2 - (-(2*Delta**2*(Gw*p1 + P*g1) - 2*Delta*P*(2*Gw*d1 + P*s1 + 2*S2*p1) + 6*P**2*S2*d1)/Delta**4))
-assert_zero("n4 closed form",  n4 - 2*(Delta**3*Gw*g1 - Delta**2*Gw**2*d1 - 2*Delta**2*Gw*P*s1 - 2*Delta**2*Gw*S2*p1 - 2*Delta**2*P*S2*g1 - 2*Delta**2*P*p1 + 6*Delta*Gw*P*S2*d1 + 3*Delta*P**2*S2*s1 + 3*Delta*P**2*d1 + 3*Delta*P*S2**2*p1 - 6*P**2*S2**2*d1)/Delta**5)
-```
-These RHSs are exactly the closed forms the script prints in section 2 of the output file (transcript lines 36-47). Replacing or supplementing A1-A6 with these elevates them from method-consistency to closed-form anchors. Keep A1-A6 if desired, but add the six closed-form anchors.
+
+The substantive M2..M9 checks all stand on their own and are unaffected by this trimming.
 
 **Verification:**
-After patching, the output transcript prints six new lines labelled `z0 closed form` ... `n4 closed form`, each passing.
+Re-run mathematica audit; the output should no longer contain the six tautological `PASS: M1 ...` lines but should still PASS M2..M9 and exit 0. The final `STATUS: PASS` line is unchanged.
 
 ## Independent-derivation check (Mathematica)
 
-No `.wl` exists. See finding F1. There is no second engine to compare against.
+The `.wl` is **not** a transliteration of the `.py`. Evidence:
+
+- Different helpers (`expectZero`/`expectNonZero` with `Module`+`FullSimplify[Together[...]]` vs SymPy's `assert_zero` using `sp.factor(sp.together(sp.simplify(...)))`).
+- Different linearization mechanic: `Coefficient[Normal[Series[..., {ell, 0, 1}]], ell, 1]` (mathematica lines 79, 219, 251) extracts the first-order coefficient directly; SymPy's `(sp.series(expr.subs(subs), ell, 0, 2).removeO() - expr) / ell` (sympy line 74) subtracts the zeroth-order term and divides — different algebraic paths to the same coefficient.
+- Different K-surface symbol naming: mathematica uses `kVar, bBare, zSlot, nSeed, dTarget, pGoal, shapeS, shapeT` (line 30, 38); SymPy uses `K, B0, Z0slot, N0base, D0target, Ptarget, S, T` (line 155).
+- Different solve idiom: `kVar /. First[Solve[..., kVar]]` (mathematica 196, 199, 230) vs `sp.solve(sp.Eq(...), K)[0]` (sympy 156, 160).
+- The Mathematica script provides both a series route (M2 "series closed form" lines 77-106 → 166-171) AND an explicit partial-derivative route (M2 "partial route" lines 108-143 → 172-177) for each z/n; both are written out independently rather than reusing a helper, consistent with fresh authorship rather than mechanical translation.
+
+The choreography parallels the SymPy structure because the paper claim is the same, but the algebraic derivations are independent. The single exception is M1, which is its own block on the Mathematica side with no SymPy counterpart (and is flagged as F1).
 
 ## Engine cross-check
 
-`engines_agree = n/a` — only sympy is present.
+Both engines pass and produce equivalent symbolic results:
+
+- z0 closed form: both `(Delta*q1 - Q*d1)/Delta^2` (sympy output line 29; mathematica M2 residual 0 at line 14).
+- z2, z4, n0, n2, n4 closed forms: residuals 0 in both engines (sympy run completes through `STATUS: PASS`; mathematica M2 lines 14-37).
+- Static Xi1: identical form via M3 (mathematica output line 38-39) and sympy section 4 (output lines 53-55).
+- Fixed-target compatibility shift: both match `n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2`.
+- Transported-target compatibility shift: both match `-6 S z2/T + 3 S^2 z4/T^2`.
+- z0-channel cancellation in compat differences: both pass (sympy `for slip in (q1, d1)` block; mathematica M8 lines 54-57).
+- Normalization K retains q1/d1 via z0: mathematica residual `ell/Delta` for q1 and `-(ell*(2*P^2 + Delta*pGoal*Q))/(Delta^3*pGoal)` for d1 (nonzero, PASS); SymPy `assert_nonzero` passes.
+- Mutation tests (z4 sign flipped): both engines report nonzero residual (mathematica M9 residuals on lines 66-68; sympy `assert_nonzero` passes).
+
+Engines agree.
 
 ## Verdict justification
 
-The SymPy script is internally consistent and many of its assertions are substantive (A7, A10, A13, the closed-form Xi1 check, and the mutated-sign nonzero sanity checks at lines 149-156). However, four substantive defects exist: (1) the Mathematica engine is entirely absent for a non-status-only unit; (2) the "compatibility surface = K_norm - K_one" check at line 124 and its derivative at line 125 are tautological renamings; (3) the entire z0_probe block at lines 139-148 uses a free symbol identically typed on both sides of each difference and exercises no physics; (4) the Frechet block A1-A6 verifies only sympy-internal method consistency, not that the closed forms `z0..n4` printed in the output are correct. Attacks I tried that failed: I checked whether `Z0..N4` and the Frechet vs series outputs would actually disagree under a typo (they would, but only A1-A6 catches structural mismatches, not closed-form errors); I checked whether the compatibility-shift linear coefficients `n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2` and `-6 S z2/T + 3 S^2 z4/T^2` are computed correctly (they are — series expansion of `3*(S+ell*z2)^2/(T+ell*z4)` at ell=0 has linear coefficient `6 S z2/T - 3 S^2 z4/T^2`, with the sign discipline carried correctly into A10 and A13); I checked symbol assumptions (`Q, S2, H, Delta, P, Gw, K, B0, Z0slot, N0base, D0target, Ptarget, S, T, D0sym` are all declared `nonzero=True`, no further assumptions made, no divide-by-zero hazard given the rational structure). The unit is repairable; verdict is `findings`, not `stop_cold`.
+The scripts faithfully verify what the paper card claims: they identify the same primitive packet `(Q, S2, P, Delta` with auxiliaries `H, Gw)`, derive the induced bundle corrections `z0..n4` from primitive slippages by two independent routes (series + Frechet/partials), and check both fixed-target and transported-target compatibility shifts — the two specific deliverables the card calls out explicitly. The substantive assertion ladder (sympy 83-229 / mathematica M2-M9) is non-tautological: the closed forms targeted by each `assert_zero`/`expectZero` are stated independently of how the LHS is computed, and the z0-channel cancellation logic plus the mutation negative controls give real attack-survival evidence.
+
+The one finding is the M1 Mathematica block (six self-equating identities). It is `low` severity because the substantive verification is intact downstream; it is a real `tautological_check` and inflates the apparent PASS count. No `paper_misalignment`: the paper's deliverables map cleanly onto script-side assertions; the static Xi1 block is supplementary context (not flagged as a paper-side gap because the card itself describes the bridge role generally without enumerating every exported quantity).
+
+Outputs are fresh (sympy output 11:52 > script 11:37; mathematica output 11:51 > script 11:39).
+
+Attacks tried that failed: (i) checked whether `Delta`'s lack of decomposition into `A W - R^2` is load-bearing — it is not at this bridge level; the script treats `Delta` as opaque and the primitive perturbation `d1` covers any composite variation. (ii) Checked whether `assert_zero`'s use of `sp.factor(sp.together(sp.simplify(...)))` could hide branch errors — the closed forms are rational in symbolic constants and require no domain assumptions beyond `nonzero=True` (set on sympy line 51); no `sqrt` or domain-sensitive structure. (iii) Checked whether the `q1, d1` cancellation in `K_norm - K_one` is tautological given `z0` enters both K-surfaces with the same coefficient — verified the cancellation is non-trivial because `z0 = (Delta*q1 - Q*d1)/Delta^2` itself carries `q1, d1`, so the cancellation depends on `z0` entering symmetrically, which is a genuine algebraic property of the K-surface construction (not a typed-in identity). (iv) Checked whether the `assert_nonzero` mutation tests could pass for spurious reasons — they are sign-flipped versions of the actual identity, so a nonzero residual cleanly confirms the sign was substantive (mathematica's `M9` residual `(6 * (...) * shapeS^2)/(Delta^4 * shapeT^2)` exhibits the expected `6 S^2 z4/T^2` doubled magnitude). (v) Reread the paper card looking for a deliverable the scripts miss — the card mentions Stage 010 and Stage 021 by reference but does not require this stage to verify the downstream wiring (that belongs to Stage 010's audit), so no `script_missing_paper_claim`.
+
+## Self-test notes
+
+Walked through the proposed F1 fix mentally: replacing six tautological `expectZero` calls with `Print` statements does not introduce any new check, so no paper round-trip concern arises (the assumed forms are unchanged in semantics). Verified the M1 expressions are pure rational functions in symbolic constants, so `Z0form - Q/Delta` and analogues are guaranteed zero — F1 is real. Parity/branch traps not applicable (no integrals or square roots). Path specification names the existing `.wl` file in the `mathematica/` directory; Codex edits only that file, no new file creation needed.

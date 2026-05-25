@@ -47,23 +47,13 @@ N4form =
   (Delta^2 Gw^2 - 2 Delta P^2 - 4 Delta P S2 Gw + 3 P^2 S2^2)/
     Delta^4;
 
-expectZero["M1 Z0 primitive one-port", Z0form - Q/Delta];
-expectZero["M1 Z2 primitive one-port", Z2form - (Q S2 - H Delta)/Delta^2];
-expectZero[
-  "M1 Z4 primitive one-port",
-  Z4form - (Q (S2^2 - Delta) - S2 H Delta)/Delta^3
-];
-expectZero["M1 N0 primitive one-port", N0form - P^2/Delta^2];
-expectZero[
-  "M1 N2 primitive one-port",
-  N2form - 2 P (P S2 - Delta Gw)/Delta^3
-];
-expectZero[
-  "M1 N4 primitive one-port",
-  N4form -
-    (Delta^2 Gw^2 - 2 Delta P^2 - 4 Delta P S2 Gw +
-        3 P^2 S2^2)/Delta^4
-];
+Print["M1 primitive one-port forms (carried from Stage 4 / Stage 5):"];
+Print["  Z0 = ", fmt[Z0form]];
+Print["  Z2 = ", fmt[Z2form]];
+Print["  Z4 = ", fmt[Z4form]];
+Print["  N0 = ", fmt[N0form]];
+Print["  N2 = ", fmt[N2form]];
+Print["  N4 = ", fmt[N4form]];
 
 primitiveShift = {
   Q -> Q + ell q1,

@@ -25,48 +25,71 @@ If[FullSimplify[m1Left - m1Right, Assumptions -> scaleAssumptions] =!= 0,
 ];
 Print["PASS: M1 density-level integration by parts"];
 
-(* M2: cyclic Bianchi signs reduce to vector Faraday signs. *)
-Clear[t, x, y, z, E1, E2, E3, B1, B2, B3];
+(* M2: cyclic Bianchi identity for F = dA implies Maxwell-Faraday by
+   Schwarz symmetry of mixed partials. Non-tautological: a sign error in
+   the E,B<->F map produces a nonzero residual. *)
+Clear[t, x, y, z, AA];
 spaceTimeAssumptions = Element[{t, x, y, z}, Reals];
+coordList = {t, x, y, z};
+potentialList = {AA[0][t, x, y, z], AA[1][t, x, y, z],
+                  AA[2][t, x, y, z], AA[3][t, x, y, z]};
 
-twoForm23 = B1[t, x, y, z];
-twoForm30 = E3[t, x, y, z];
-twoForm02 = -E2[t, x, y, z];
-m2LeftOne = D[twoForm23, t] + D[twoForm30, y] + D[twoForm02, z];
-m2RightOne =
-  D[B1[t, x, y, z], t] + D[E3[t, x, y, z], y] - D[E2[t, x, y, z], z];
-m2ResidualOne = FullSimplify[m2LeftOne - m2RightOne, Assumptions -> spaceTimeAssumptions];
-Print["M2 component 1 residual = ", fmt[m2ResidualOne]];
-If[FullSimplify[m2LeftOne - m2RightOne, Assumptions -> spaceTimeAssumptions] =!= 0,
-  Print["FAIL: M2 Faraday component 1"]; Exit[1]
-];
-Print["PASS: M2 Faraday component 1"];
+(* fieldStrength evaluated explicitly per index pair, avoiding Module
+   pre-evaluation pitfalls where Part-indexing on a pattern parameter
+   inside a Do/Module body fires Part::pkspec1 with unbound gensym locals. *)
+fStr[i_Integer, j_Integer] := D[potentialList[[j + 1]], coordList[[i + 1]]] -
+                              D[potentialList[[i + 1]], coordList[[j + 1]]];
 
-twoForm31 = B2[t, x, y, z];
-twoForm10 = E1[t, x, y, z];
-twoForm03 = -E3[t, x, y, z];
-m2LeftTwo = D[twoForm31, t] + D[twoForm10, z] + D[twoForm03, x];
-m2RightTwo =
-  D[B2[t, x, y, z], t] + D[E1[t, x, y, z], z] - D[E3[t, x, y, z], x];
-m2ResidualTwo = FullSimplify[m2LeftTwo - m2RightTwo, Assumptions -> spaceTimeAssumptions];
-Print["M2 component 2 residual = ", fmt[m2ResidualTwo]];
-If[FullSimplify[m2LeftTwo - m2RightTwo, Assumptions -> spaceTimeAssumptions] =!= 0,
-  Print["FAIL: M2 Faraday component 2"]; Exit[1]
-];
-Print["PASS: M2 Faraday component 2"];
+(* Precompute the six field-strength components needed below.  Using
+   concrete integer literals here forces full evaluation before any
+   Module/Do scope opens, so the cyclic Bianchi sums are built from
+   already-evaluated D[AA[k], coord] expressions. *)
+F01 = fStr[0, 1]; F02 = fStr[0, 2]; F03 = fStr[0, 3];
+F12 = fStr[1, 2]; F13 = fStr[1, 3]; F23 = fStr[2, 3];
+F10 = -F01; F20 = -F02; F30 = -F03;
+F21 = -F12; F31 = -F13; F32 = -F23;
 
-twoForm12 = B3[t, x, y, z];
-twoForm20 = E2[t, x, y, z];
-twoForm01 = -E1[t, x, y, z];
-m2LeftThree = D[twoForm12, t] + D[twoForm20, x] + D[twoForm01, y];
-m2RightThree =
-  D[B3[t, x, y, z], t] + D[E2[t, x, y, z], x] - D[E1[t, x, y, z], y];
-m2ResidualThree = FullSimplify[m2LeftThree - m2RightThree, Assumptions -> spaceTimeAssumptions];
-Print["M2 component 3 residual = ", fmt[m2ResidualThree]];
-If[FullSimplify[m2LeftThree - m2RightThree, Assumptions -> spaceTimeAssumptions] =!= 0,
-  Print["FAIL: M2 Faraday component 3"]; Exit[1]
+(* M2: cyclic Bianchi identity per triple, with the three field-strength
+   components substituted in literally so no pattern-matching happens
+   inside the loop body. *)
+bianchiChecks = {
+  {{0, 2, 3}, D[F23, t] + D[F30, y] + D[F02, z]},
+  {{0, 3, 1}, D[F31, t] + D[F10, z] + D[F03, x]},
+  {{0, 1, 2}, D[F12, t] + D[F20, x] + D[F01, y]}
+};
+Do[Module[{triple, cyc, residual},
+    {triple, cyc} = entry;
+    residual = FullSimplify[cyc, Assumptions -> spaceTimeAssumptions];
+    Print["M2 cyclic Bianchi ", triple, " residual = ", fmt[residual]];
+    If[residual =!= 0,
+      Print["FAIL: M2 cyclic Bianchi ", triple]; Exit[1]
+    ];
+    Print["PASS: M2 cyclic Bianchi ", triple];
+  ],
+  {entry, bianchiChecks}
 ];
-Print["PASS: M2 Faraday component 3"];
+
+(* Maxwell-Faraday checks: each component is the standard cyclic identity
+   ∂_t B_k + ε_{klm} ∂_l E_m = 0 with E_i = -F_{0i} and B_1=F_{23}, B_2=F_{31}, B_3=F_{12}.
+   The original Module/Do/Part-indexing pattern lost half its terms to
+   pre-evaluation; precomputing each component as an immediate expression
+   from already-evaluated F-components avoids the trap. *)
+mf1 = D[F23, t] + D[-F03, y] - D[-F02, z];
+mf2 = D[F31, t] + D[-F01, z] - D[-F03, x];
+mf3 = D[F12, t] + D[-F02, x] - D[-F01, y];
+
+maxwellFaradayChecks = {{1, mf1}, {2, mf2}, {3, mf3}};
+Do[Module[{compIdx, expr, residual},
+    {compIdx, expr} = entry;
+    residual = FullSimplify[expr, Assumptions -> spaceTimeAssumptions];
+    Print["M2 Maxwell-Faraday component ", compIdx, " residual = ", fmt[residual]];
+    If[residual =!= 0,
+      Print["FAIL: M2 Maxwell-Faraday component ", compIdx]; Exit[1]
+    ];
+    Print["PASS: M2 Maxwell-Faraday component ", compIdx];
+  ],
+  {entry, maxwellFaradayChecks}
+];
 
 (* M3: Gaussian normalization. *)
 localizedProfile = Exp[-w^2/lam^2];

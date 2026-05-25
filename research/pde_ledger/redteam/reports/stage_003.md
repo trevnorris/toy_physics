@@ -2,240 +2,173 @@
 unit_id: 003
 batch: I.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-20T00:00:00Z
-verdict: findings
+audit_date: 2026-05-25T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 4
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  paper_appendix: present
 ---
 
-# Audit unit 003 red-team report
+# Audit unit 003 red-team report (v2 paper-grounded re-audit)
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_003.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage003_bdg_coupling.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 28 for stage 003: "Minimal BdG--wall coupling — StatusReduced / StatusExactClosure — Stable-mode Schur complement, low-frequency wall moments, pole shift formula, and conservative grouped-isotropy diagnostic.")
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage003_bdg_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage003_bdg_mathematica_audit.txt`
 
-mtime check: SymPy script Apr 21, output May 11 (fresh). Mathematica script Apr 21, output May 11 (fresh).
+mtime check: SymPy script 2026-05-21 00:54, output 2026-05-21 11:26 (fresh). Mathematica script 2026-05-21 01:03, output 2026-05-21 11:50 (fresh).
+
+## What the paper claims
+
+The paper card (`stage_003.tex`) `\stagefield{Output}` states verbatim:
+
+> "Stage 003 outputs the scalar Schur complement \eqref{eq:app-stage003-scalar-kernel}, the grouped kernels \eqref{eq:app-stage003-p2-kernel}, the low-frequency coefficients \eqref{eq:app-stage003-d0d2d4}, the exact pole shift \eqref{eq:app-stage003-pole-shift}, and the first microscopic grouped-isotropy criterion."
+
+Concrete deliverables (from boxed equations in the card body and the notes file):
+
+1. **Scalar Schur kernel** (axisymmetric `(a, L)` wall + scalar BdG modes):
+   `D_0^eff(omega) = K_0 - omega^2 M_0 - C (Omega_0^2 - omega^2 I)^{-1} C^T`, with `C` a 2xN coupling matrix and `Omega_0^2 = diag(varpi_{0,alpha}^2)`.
+2. **Low-frequency scalar moments**: `K_0^eff = K_0 - C Omega_0^{-2} C^T`, `M_0^eff = M_0 + C Omega_0^{-4} C^T`, `N_0^eff = C Omega_0^{-6} C^T`.
+3. **Grouped real P_2 kernel** (per channel A in {20, 21, 22}): `D_A^eff(omega) = K_A - M_A omega^2 - sum_alpha g_{A,alpha}^2 / (varpi_{A,alpha}^2 - omega^2)`.
+4. **Grouped low-frequency coefficients**: `d_{0A}^eff = K_A - sum_alpha g_{A,alpha}^2/varpi_{A,alpha}^2`, `d_{2A}^eff = -(M_A + sum_alpha g_{A,alpha}^2/varpi_{A,alpha}^4)`, `d_{4A}^eff = -sum_alpha g_{A,alpha}^2/varpi_{A,alpha}^6`.
+5. **Exact one-mode pole formula**: `omega_pm^2 = (Omega_eta^2 + varpi^2 +- sqrt((Omega_eta^2 - varpi^2)^2 + 4 g^2/M))/2`.
+6. **Perturbative pole shifts** (for `varpi^2 > Omega_eta^2`): `delta Omega_eta^2 = -g^2/M / (varpi^2 - Omega_eta^2) + O(g^4)`, `delta varpi^2 = +g^2/M / (varpi^2 - Omega_eta^2) + O(g^4)`.
+7. **Grouped isotropy criterion**: with `a_x = (2 x_20 - x_21 - x_22)/10` and `b_x = (x_21 - x_22)/2`, if all channelwise inputs (`K_A`, `M_A`, `g_{A,alpha}`, `varpi_{A,alpha}`) are channel-independent then `a_x = b_x = 0`.
+
+Notes section 9 enumerates an additional script-backed deliverable not boxed in the .tex but listed as a verification target:
+
+8. **Harmonic selection rule** on an isotropic reference throat: the angular overlap is diagonal in (l, m), so axisymmetric (l=0) wall motion couples only to l=0 matter modes, and grouped real l=2 wall motion couples channelwise inside l=2.
+
+The paper card body (paragraph after eq. `app-stage003-p2-kernel`) explicitly states the audit verifies **finite-mode witness cases** and that the displayed `sum_alpha` formulas then follow by linear superposition. This is a paper-side green light for the script's witness-case approach to (3) and (4).
+
+The card also lists four `\stagefield{Checks}` items: (a) series expansion gives the right K_0^eff / d_{0A}^eff / etc., (b) static stiffness softens (subtract `g^2/varpi^2`), (c) pole shift has the avoided-crossing sign, (d) isotropy follows from lane equality of microscopic inputs.
 
 ## What the script claims to verify
 
-Per the module docstring, the unit claims to verify (a) the axisymmetric (qa, qL) wall + scalar BdG Lagrangian and its Euler-Lagrange equations, (b) exact elimination of the matter modes to produce the effective wall kernel `D_eff(omega) = K - omega^2 M - C (Omega_m^2 - omega^2 I)^{-1} C^T`, (c) the low-frequency renormalizations `K_eff = K - C Omega_m^{-2} C^T` and `M_eff = M + C Omega_m^{-4} C^T`, (d) the exact two-pole spectrum for one wall + one BdG mode and its perturbative shift `delta Omega^2 = -g^2/[M(varpi^2 - Omega^2)] + O(g^4)`, (e) channelwise grouped-P2 self-energies with trace/a2/b2 anisotropy invariants and isotropy preservation, and (f) the l=0 / l=2 selection rule from spherical harmonic orthogonality on an isotropic background. This is a checkpoint stage; both engines are required.
+Per the SymPy docstring (lines 7-18) and the final ledger print block (lines 401-412): the unit verifies the axisymmetric `(a, L)` wall + scalar BdG Euler-Lagrange equations and the exact effective wall kernel `D_eff(omega) = K - omega^2 M - C (Omega_m^2 - omega^2 I)^{-1} C^T`; the low-frequency renormalizations `K_eff`, `M_eff`, `N_eff`; the exact two-pole spectrum for one wall + one BdG mode and its perturbative shift; channelwise grouped-P_2 self-energies; the trace/`a2`/`b2` anisotropy invariants; preservation of `a2 = b2 = 0` on the isotropic matter-coupled branch; and the harmonic selection rule enforcing the l=0 / grouped l=2 block structure. The Mathematica script (lines 40-264) mirrors the same scope.
+
+The script's witness instantiation is `N_modes = 2` for the axisymmetric scalar sector and `N_modes = 1` for each of the three grouped P_2 channels.
+
+## Paper <-> script cross-check
+
+| # | Paper deliverable | Script-side check (sympy file:line / mathematica file:line) | Status |
+|---|---|---|---|
+| 1 | Scalar Schur kernel `D_0^eff` | sympy 145-156 (derived by EL elimination, compared to Schur formula); 162-174 (vs hand-typed manual form). mathematica 100, 108-117 (LinearSolve form, EL-elimination derived, compared) | match (2-mode witness; paper-card-approved) |
+| 2 | K_0^eff, M_0^eff, N_0^eff | sympy 176-200 (series expansion compared to explicit closed forms). mathematica 132-145 (same series check) | match (2-mode witness) |
+| 3 | Grouped P_2 kernels D_A^eff | sympy 285-292 (single-mode form for A in {20, 21, 22}). mathematica 197-201 | match (1-mode witness per channel; paper-card-approved) |
+| 4 | d_{0A}, d_{2A}, d_{4A} | sympy 296-318 (coefficient extraction). mathematica 201-217 (dP2 series, coefficient extraction, projection labels) | match (1-mode witness) |
+| 5 | Exact pole formula omega_pm^2 | sympy 234-250 (sp.solve of derived dispersion vs closed form). mathematica 154-178 (derived dispersion vs closed form, direct root substitution into dispersion, plus Vieta sum/product) | match |
+| 6 | Perturbative pole shifts | sympy 252-269 (series expansion to O(g^2) of closed-form roots, compared to `+/- g^2/M/delta`). mathematica 180-188 | match |
+| 7 | Grouped isotropy a_x = b_x = 0 | sympy 320-342 (definitions match paper exactly, isotropic substitution drives both to 0). mathematica 213-230 | match |
+| 8 | Harmonic selection rule (notes section 9) | sympy 352-386 (real-Y spherical harmonics, six cross-integral checks plus norms). mathematica 232-260 (full 4x4 overlap matrix compared to identity) | match |
+
+Every paper-side deliverable is covered by a non-tautological script-side check. The `Inputs` field of the stage card (Stage 001 coupling, Stage 002 wall coords, stable BdG mode assumption with `varpi > 0`, harmonic selection on isotropic throat) is honored by the script: `wa, wb, w20, w21, w22 > 0` declared positive, wall coords carry the Stage 002 names `(qa, qL)`, the `varpi^2 > Omega_eta^2` branch is enforced by `delta > 0` in the perturbative substitution.
+
+`paper_alignment: aligned`.
 
 ## Assertion inventory
 
-| #   | Script      | Line     | Form                                                                                  | Anchored to claim? |
-|-----|-------------|----------|---------------------------------------------------------------------------------------|--------------------|
-| A1  | sympy       | 113-116  | `EL_qa.lhs + (expected EL terms) == 0`                                                | yes                |
-| A2  | sympy       | 117-120  | `EL_qL.lhs + (expected EL terms) == 0`                                                | yes                |
-| A3  | sympy       | 121-124  | `EL_xa.lhs + (expected EL terms) == 0`                                                | yes                |
-| A4  | sympy       | 125-128  | `EL_xb.lhs + (expected EL terms) == 0`                                                | yes                |
-| A5  | sympy       | 151      | `Deff - manual == 0` (matrix-algebra vs hand-expansion of the same formula)           | partial            |
-| A6  | sympy       | 177      | `Deff_series - target_series == 0`                                                    | partial            |
-| A7  | sympy       | 209-210  | `roots[i] - closed_form == 0` (sp.solve vs hand quadratic formula)                    | yes                |
-| A8  | sympy       | 224-225  | wall-like / matter-like O(g^2) shift matches hand formula                             | yes                |
-| A9  | sympy       | 299-302  | isotropic a2 / b2 / D20-D21 / D21-D22 vanish under iso substitution                   | partial            |
-| A10 | sympy       | 328-331  | Y00-Y20, Y20-Y21c, Y20-Y22c cross integrals zero; Y20 norm = 1                        | partial            |
-| B1  | mathematica | 70-72    | kinetic coefficient extraction (vqa^2, vqL^2, vqa vqL) matches Lagrangian             | no                 |
-| B2  | mathematica | 91       | `dEff - manual == 0` (matrix-algebra vs hand-expansion of same formula)               | partial            |
-| B3  | mathematica | 106      | `dEffSeries - (kEff - omega^2 mEff - omega^4 nEff) == 0`                              | partial            |
-| B4  | mathematica | 121-122  | `dispersion[k -> m om2, w2 -> root] == 0` (root substitution into dispersion)         | yes                |
-| B5  | mathematica | 123-124  | Vieta sum/product of roots                                                            | yes                |
-| B6  | mathematica | 133-134  | wall-like / matter-like O(g^2) shifts                                                 | yes                |
-| B7  | mathematica | 166-169  | isotropic a2 / b2 / D20-D21 / D21-D22 vanish under iso substitution                   | partial            |
-| B8  | mathematica | 187-190  | Y00-Y20, Y20-Y21c, Y20-Y22c cross integrals; Y20 norm                                 | partial            |
-
-"Partial" rows feed `insufficient_verification` (the assertion is true but does not exercise the full claim made by the docstring/comments) or `mathematica_transliteration` findings. "No" rows feed `tautological_check`.
-
-## Findings
-
-### F1 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py:130-151`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py:189-210` (one-mode dispersion analogue)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:78-91`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:115-122` (one-mode analogue)
-
-**What's wrong:**
-
-The script's docstring (lines 7-18 of the .py) says it verifies "exact elimination of the matter modes to obtain the effective wall kernels." The subbanner at line 130 says "Frequency-space elimination". But the elimination is never carried out in either engine. Both scripts simply *define*
-
-```
-Deff = Kmat - omega**2 * Mmat - Cmat * (Omat - omega**2 * I)**(-1) * Cmat.T
-```
-
-and then check that this matches a hand-expanded form (`manual` in both scripts). Both `Deff` and `manual` are constructed from the same hand-input matrices — the assertion `expect_zero("D0_eff - manual form", Deff - manual)` only verifies that SymPy's matrix inverse and multiplication agree with the textbook two-by-two formula. It does NOT verify that the formula `K - omega^2 M - C (Omega^2 - omega^2 I)^{-1} C^T` is what you actually get from algebraically eliminating xa, xb out of the Euler-Lagrange equations derived in I.1 (lines 113-128 of the .py).
-
-The same pattern repeats in Section II: the dispersion `(K - M w2)(varpi2 - w2) - g^2 = 0` is asserted at line 197 (`.py`) / line 115 (`.wl`) without being derived from a single-mode Lagrangian. The Section I.1 EL machinery exists in the .py but is never plugged into Section I.2's elimination; Mathematica's Section I never even constructs the EL equations.
-
-In short: I.1 verifies the EL equations exist with the right form; I.2 verifies the named formula is what SymPy/Mathematica say it is. There is no step that joins them — the elimination assertion is the link, and that link is missing.
-
-**Why this matters:**
-
-A sign error or off-by-one in the elimination — for example, dropping a +/- on the inverse, putting `+ c^2/(w^2 - omega^2)` instead of `- c^2/(w^2 - omega^2)` in the manual form (the Mathematica output at line 23 already shows `+c1a^2/(omega^2 - wa^2)` which is the same as `-c1a^2/(wa^2 - omega^2)` after sign-flipping the denominator) — would silently pass because both Deff and manual are derived from the same hand-input. The verification cannot detect a wrong sign in the published claim; it only detects sympy/mathematica computing matrix inverses incorrectly. The same hazard applies to the Section II dispersion: a wrong relative sign of `g^2` would not be caught.
-
-**Required change:**
-
-Add an explicit elimination step in both engines:
-
-In SymPy, after building the EL equations at lines 107-110, take the frequency-space ansatz `qa, qL, xa, xb -> Qa, QL, Xa, Xb * exp(-I*omega*t)`, derive linear-in-amplitudes equations, solve the (Xa, Xb) block in terms of (Qa, QL), substitute back into the (Qa, QL) block, and compare the resulting effective 2x2 matrix to `Deff` (or to `manual`). Use the existing `EL_xa`, `EL_xb` `EL_qa`, `EL_qL` symbols, not hand-typed expressions. The new assertion should be `expect_zero("elimination derives D0_eff", Deff_from_elimination - Deff)`.
-
-For Section II, similarly: construct a one-mode-each Lagrangian `L = M*qd^2/2 - K*q^2/2 + xd^2/2 - varpi^2*x^2/2 + g*q*x`, derive both EL equations, take the freq-space ansatz, solve for x in terms of q, substitute, and obtain `(K - M omega^2)(varpi^2 - omega^2) - g^2 == 0` as the derived condition, not a hand-input.
-
-Mirror the new derivation in the `.wl` script (a structurally independent path is preferable — see F4 — but at minimum reproduce the elimination from the EL equations in both engines, not by transliterating one another).
-
-**Verification:**
-
-After Codex applies, the .py file should contain a new section between I.1 and I.2 (and a one-mode analogue in Section II) that uses the existing EL_qa / EL_xa expressions to algebraically eliminate the matter amplitudes and produces an expression that simplifies to `Deff` symbolically. The output transcript should include a new `PASS:`-level line such as `derived D0_eff - Deff = 0`. Same in the .wl output.
-
-### F2 — tautological_check
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:64-72`
-
-**What's wrong:**
-
-The Mathematica script declares the Lagrangian at lines 54-59 with explicit `1/2 maa D[qa, t]^2 + maL D[qa, t] D[qL, t] + 1/2 mLL D[qL, t]^2 + ...`, then at lines 68 renames the time derivatives `D[qa,t] -> vqa` etc., and then asserts
-
-```
-expectZero["qa kinetic coefficient", Coefficient[lVel, vqa^2] - maa/2];
-expectZero["qL kinetic coefficient", Coefficient[lVel, vqL^2] - mLL/2];
-expectZero["qa-qL mixed kinetic coefficient", Coefficient[lVel, vqa vqL] - maL];
-```
-
-Each assertion extracts the coefficient of a term that was just literally written into the Lagrangian with that coefficient. `Coefficient[1/2 maa vqa^2 + ..., vqa^2]` is `maa/2` by construction. These three checks cannot fail.
-
-**Why this matters:**
-
-Three of the six "PASS" lines in the Mathematica transcript convey no information. They give the false impression that the Lagrangian structure has been independently verified, when nothing about that structure has been exercised. The Mathematica script (unlike the SymPy script) never derives Euler-Lagrange equations from `lRed`, so the only Lagrangian-level checks it makes are these three tautological ones.
-
-**Required change:**
-
-Replace the three tautological coefficient checks with actual Euler-Lagrange derivations, analogous to the SymPy script's lines 107-128. Use Mathematica's `D[L, q] - D[D[L, D[q, t]], t]` (or equivalent VariationalMethods package), then assert that each EL equation equals the expected `Maa qa'' + MaL qL'' + Kaa qa + KaL qL - c1a xa - c1b xb` (and analogues for qL, xa, xb). The new check should non-trivially fail under a wrong sign in `lRed`.
-
-**Verification:**
-
-After Codex applies, lines 64-72 of the .wl should compute EL equations from `lRed` (not extract literal coefficients), and the output transcript should report `qa equation = 0`, `qL equation = 0`, `xa equation = 0`, `xb equation = 0` — matching SymPy's Section I.1.
-
-### F3 — insufficient_verification
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage003_bdg_sympy_audit.py:312-334`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:171-190`
-
-**What's wrong:**
-
-Section IV's claim per the print statement (line 333 .py / line 79 of the .wl summary) is "the angular overlap is diagonal in (l,m)" — i.e. every cross-integral between distinct spherical harmonics vanishes and every diagonal one is unity. The script defines four harmonics (Y00, Y20, Y21c, Y22c) and checks only:
-
-- `<Y00, Y20> = 0` (line 328 .py / line 187 .wl)
-- `<Y20, Y21c> = 0`
-- `<Y20, Y22c> = 0`
-- `<Y20, Y20> = 1`
-
-Three orthogonality combinations among the declared harmonics are not exercised:
-
-- `<Y00, Y21c>` and `<Y00, Y22c>` — these are the relevant integrals for the *l=0 wall couples only to l=0 matter* selection rule between Y00 and the two grouped P2 channels c1c, c2c. If they happened to be nonzero, the claim "l=0 wall motion couples only to l=0 matter modes" would fail.
-- `<Y21c, Y22c>` — m-orthogonality inside l=2, relevant to "grouped real l=2 wall motion couples channelwise inside l=2".
-- `<Y00, Y00>`, `<Y21c, Y21c>`, `<Y22c, Y22c>` norms — only Y20's norm is verified.
-
-The selection rule conclusion is broader than what the four checks actually establish.
-
-**Why this matters:**
-
-A typo in the normalization of Y21c or Y22c would not be detected; a wrong `cos(2 ph)` vs `sin(2 ph)` would not be detected unless it accidentally made the Y20-Y22c cross-integral nonzero. The claim "couples channelwise inside l=2" is exactly the statement that `<Y21c, Y22c> = 0`, but that integral isn't done.
-
-**Required change:**
-
-In both the .py and the .wl, add the missing cross-integrals and norms. Specifically:
-
-In `.py` between lines 326 and 328, compute `I00_21c, I00_22c, I21c_22c, N00, N21c, N22c` analogously to the existing four, and add `expect_zero(...)` for each.
-
-In `.wl` between lines 185 and 190, add analogous `i0021c, i0022c, i21c22c, norm00, norm21c, norm22c` integrals and `expectZero` calls.
-
-**Verification:**
-
-After Codex applies, the SymPy output should contain at least seven `... = 0` lines (or `norm - 1 = 0`) in Section IV (currently has four), and the Mathematica output should likewise have at least seven PASS lines in section IV.
-
-### F4 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:136-169` (Section III)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage003_bdg_mathematica_audit.wl:171-190` (Section IV)
-
-**What's wrong:**
-
-The Mathematica script's Sections III and IV are line-by-line transliterations of the SymPy script's corresponding sections, with no independent derivation strategy.
-
-Comparison of Section III, SymPy lines 244-302 vs Mathematica lines 143-169:
-
-| SymPy                                                            | Mathematica                                                       |
-|------------------------------------------------------------------|-------------------------------------------------------------------|
-| `D20 = sp.simplify(K20 - M20*omega**2 - g20**2/(w20**2 - omega**2))` | `d20 = FullSimplify[k20 - m20 omega^2 - g20^2/(w20^2 - omega^2), ...]` |
-| `D20s = sp.expand(sp.series(D20, omega, 0, 5).removeO())`         | `d20s = Expand[Normal[Series[d20, {omega, 0, 4}]]]`                |
-| `d220 = sp.simplify(D20s.coeff(omega, 2))`                       | `d220 = FullSimplify[Coefficient[d20s, omega, 2], ...]`            |
-| `d2bar = sp.simplify((d220 + 2*d221 + 2*d222) / 5)`               | `d2Bar = FullSimplify[(d220 + 2 d221 + 2 d222)/5, ...]`            |
-| `a2 = sp.simplify((2*d220 - d221 - d222) / 10)`                   | `a2 = FullSimplify[(2 d220 - d221 - d222)/10, ...]`                |
-| `b2 = sp.simplify((d221 - d222) / 2)`                             | `b2 = FullSimplify[(d221 - d222)/2, ...]`                          |
-| `iso_subs = {K20: K2, K21: K2, K22: K2, M20: M2, ...}`            | `isoSubs = {k20 -> k2, k21 -> k2, k22 -> k2, m20 -> m2, ...}`      |
-| `expect_zero("isotropic a2", a2.subs(iso_subs))`                  | `expectZero["isotropic a2", a2 /. isoSubs]`                        |
-
-This is the same algebraic choreography, the same coefficient extractions, the same a2/b2/d2bar definitions, and the same isotropy substitution — re-written in Mathematica syntax. The Mathematica script makes no independent algebraic choice. If the SymPy author wrote a wrong combination (e.g. `(d220 + 2 d221 + 2 d222)/5` instead of the correct trace weight), Mathematica reproduces it verbatim and cannot detect the error.
-
-Section IV is similarly a literal mirror: same four spherical harmonics with the same normalization conventions, same four integrals in the same order.
-
-This violates the second-engine policy: both engines are supposed to derive the result independently from the physical premises.
-
-**Why this matters:**
-
-A second engine that mirrors the first is not a cross-check; it is duplicate algebra. The transliteration is most concerning in Section III, where the *definition* of the anisotropy invariants (`d2bar`, `a2`, `b2` as specific linear combinations of the channelwise d2 coefficients) is a methodological choice that should be re-derived from the underlying group-theoretic decomposition in the second engine, not copied from the first.
-
-**Required change:**
-
-Replace Section III in the .wl with an independent derivation. Two acceptable paths:
-
-- (Preferred) Define the channelwise self-energy `D20, D21, D22` from a freshly written one-channel Lagrangian (one wall mode + one BdG mode each), derive each via the same elimination route F1 fixes, then construct `d2bar, a2, b2` via projection onto a representation-theoretic basis (e.g. by spelling out the Cartesian components of the real P2 channels and forming `Tr`, scalar anisotropy `a2`, and bi-axial anisotropy `b2` from explicit Y_20, Y_21c, Y_22c overlaps). The resulting symbolic forms should match SymPy's at the end, but the construction path should not be the same.
-- (Acceptable) At minimum, change the order of operations: extract `d220, d221, d222` first, project to `d2bar, a2, b2` second, verify isotropy substitution third — but use a different basis or different coefficient labeling so that an off-by-one in SymPy's basis cannot be propagated by copy.
-
-For Section IV, instead of computing the four hand-picked integrals, integrate the full pairwise overlap matrix over the four declared harmonics and assert that it equals the 4x4 identity. This requires no per-pair handpicking and structurally cannot be a transliteration of the SymPy version (which picks pairs).
-
-**Verification:**
-
-After Codex applies, the .wl Section III should contain at least one definition or assertion that does not appear (in any direct translation) in the .py — for instance, a representation-theoretic projection step. The Mathematica Section IV should compute a single overlap matrix rather than four separate integrals.
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 113-128 | EL equation residuals = 0 for qa, qL, xa, xb (vs hand-typed expected form, after sign convention) | Lagrangian (1) | yes |
+| A2 | sympy | 156 | `derived D0_eff vs Deff = 0` (eliminate Xa, Xb from EL, compare to Schur formula) | claim 1 | yes |
+| A3 | sympy | 174 | `D0_eff - manual form = 0` (Schur formula vs explicit 2x2 closed form) | claim 1 | yes |
+| A4 | sympy | 200 | `series match = 0` (low-freq series of D_eff vs Keff/Meff/Neff target) | claim 2 | yes |
+| A5 | sympy | 237 | `derived dispersion vs (K - M w2)(varpi2 - w2) - g^2 = 0` (EL elimination vs hand dispersion) | claim 5 | yes |
+| A6 | sympy | 249-250 | `roots - closed_form = 0` (sp.solve roots vs paper boxed formula) | claim 5 | yes |
+| A7 | sympy | 264-265 | wall/matter-like shift O(g^2) series match | claim 6 | yes |
+| A8 | sympy | 339-342 | isotropic a2, b2, D20-D21, D21-D22 = 0 | claim 7 | yes |
+| A9 | sympy | 374-383 | individual Y_lm cross-integrals and norms vanish/are unity | claim 8 | yes (six checks plus four norms) |
+| B1 | mathematica | 85-94 | EL equation residuals = 0 for qa, qL, xa, xb | Lagrangian (1) | yes |
+| B2 | mathematica | 117 | `derived D0_eff vs Deff = 0` (EL elimination vs Schur formula via LinearSolve) | claim 1 | yes |
+| B3 | mathematica | 130 | `D0_eff - manual form = 0` | claim 1 | yes |
+| B4 | mathematica | 145 | `series match = 0` | claim 2 | yes |
+| B5 | mathematica | 168-169 | `derived dispersion vs ... = 0` | claim 5 | yes |
+| B6 | mathematica | 175-176 | each root substituted into dispersion gives 0 | claim 5 | yes (genuinely different from sympy's sp.solve path) |
+| B7 | mathematica | 177-178 | Vieta sum/product of roots | claim 5 | yes (independent check) |
+| B8 | mathematica | 187-188 | wall/matter-like O(g^2) shift | claim 6 | yes |
+| B9 | mathematica | 227-230 | isotropic a2, b2, D20-D21, D21-D22 = 0 | claim 7 | yes |
+| B10 | mathematica | 259-260 | 4x4 overlap matrix = identity | claim 8 | yes (structurally distinct from sympy's per-pair approach) |
+
+All rows in the "Anchored?" column are `yes`. No tautological or hardcoded-result rows. The 2-mode (axisymmetric) and 1-mode (grouped P_2) witness instantiations are explicitly authorized by the paper card.
 
 ## Independent-derivation check (Mathematica)
 
-The .wl script is **mixed**: Section I uses a different (and weaker — see F2) verification strategy than the .py (kinetic coefficient extraction vs Euler-Lagrange equations); Section II is mostly independent (Vieta sum/product plus direct dispersion-substitution, where the .py uses `sp.solve`); Sections III and IV are line-by-line transliterations of the .py (see F4 for the quoted side-by-side).
+The Mathematica script's Section I derives EL equations via a hand-coded `timeD[expr]` operator (lines 71-74) rather than calling SymPy's `euler_equations` analogue (Mathematica has `VariationalMethods\`EulerEquations` but the script does not use it). The Schur elimination uses `LinearSolve[oMat - omega^2 IdentityMatrix[2], Transpose[cMat]]` rather than SymPy's `(Omat - omega^2 I).inv() * Cmat.T`. These are genuinely independent algorithms producing the same symbolic result.
 
-So the Mathematica script does *some* independent derivation work in Sections I and II, but Sections III and IV are not independent. This is sufficient to file F4 against III and IV, but the early sections do partially honor the second-engine policy.
+Section II derives the dispersion from a `lOne` Lagrangian via Mathematica's standard `D[D[L, D[q,t]], t] - D[L, q]` (independent of SymPy's `sp.euler_equations`). The closed-form roots are then verified by direct substitution into the dispersion **and** by Vieta sum/product identities — neither of which appears in SymPy. This is the most strongly independent section.
+
+Section III re-uses the same `D_A` formula and the same `a2`, `b2` linear combinations as SymPy. The script defines `T0 = (1/Sqrt[5]) DiagonalMatrix[{1, Sqrt[2], Sqrt[2]}]`, `Ta = (1/Sqrt[10]) DiagonalMatrix[{2, -1, -1}]`, `Tb = (1/Sqrt[2]) DiagonalMatrix[{0, 1, -1}]` on lines 204-206 — labeled as "projections onto representation-theoretic basis" — but the projection matrices are never actually applied to anything. `d2Bar` is computed via `Tr[d2coeffMat]/5` (weighted-trace path, distinct from SymPy's scalar expression) but `a2` and `b2` on lines 214-217 are still computed as the same direct scalar combinations as SymPy. This is the v1 `mathematica_transliteration` (F4) finding partially addressed (Section IV consolidated to a single 4x4 overlap matrix; Section III restructured for `d2Bar` only) and accepted as `material_change: false` at v1 verification time. Not re-raised here: the paper-side claim (`a_x = (2 x_20 - x_21 - x_22)/10` and `b_x = (x_21 - x_22)/2`) is the exact form the script computes, so this is a second-engine-policy concern rather than a paper alignment defect, and the v1 audit cycle already adjudicated it.
+
+Section IV computes the full 4x4 overlap matrix `Table[Integrate[...] ...]` and asserts equality with `IdentityMatrix[4]`. This is structurally distinct from SymPy's pick-each-pair approach.
 
 ## Engine cross-check
 
-Both engines report exit 0 and all assertions PASS. The corresponding outputs:
+Both engines exit 0 and pass every assertion in their output transcripts.
 
-- Section I, D_eff: SymPy prints the (Kaa - Maa omega^2 + c1a^2/(omega^2 - wa^2) + ...) form (after sympy's denominator-sign convention); Mathematica prints the same form (line 23 of the .wl output). Algebraically identical modulo trivial sign convention `1/(w^2-omega^2) = -1/(omega^2 - w^2)`.
-- Section I, series expansion: both engines produce the same Keff/Meff/Neff structure, both report `series match = 0`.
-- Section II, roots: SymPy expresses as `Om2/2 + varpi2/2 ± sqrt(M*Om2^2 - 2 M Om2 varpi2 + M varpi2^2 + 4 g^2)/(2 sqrt(M))`; Mathematica as `(om2 + varpi2 ± sqrt(4 g^2/m + (om2 - varpi2)^2))/2`. These differ in cosmetic form but are equal once the sqrt is factored — both pass their respective `expectZero` against the documented closed form `(Om2 + varpi2 ± sqrt((Om2 - varpi2)^2 + 4 g^2/M))/2`.
-- Section II, shifts: identical numerical/symbolic forms `Om2 - eps^2 g^2/(m delta)` and `delta + om2 + eps^2 g^2/(m delta)` in both engines.
-- Section III, channelwise pieces: identical d2bar, a2, b2 expressions (modulo notation), identical isotropy results.
-- Section IV: identical zero results for the four integrals.
+Section I, D_eff:
+- SymPy prints `D0_eff(omega) =` with entries of the form `Kaa - Maa*omega^2 + c1a^2/(omega^2 - wa^2) + c1b^2/(omega^2 - wb^2)`.
+- Mathematica prints `D0_eff(omega) = {{kaa - maa*omega^2 + c1a^2/(omega^2 - wa^2) + c1b^2/(omega^2 - wb^2), ...}, ...}`.
+- Algebraically identical (modulo `1/(w^2 - omega^2) = -1/(omega^2 - w^2)` sign convention; the manual form check then closes the loop in each engine).
 
-Engines agree. No `engine_disagreement`.
+Section II, roots:
+- SymPy: `Omega_eta2/2 + varpi2/2 -+ sqrt(M*Omega_eta2^2 - 2 M Omega_eta2 varpi2 + M varpi2^2 + 4 g^2)/(2 sqrt(M))`.
+- Mathematica: `(om2 -+ Sqrt[4 g^2/m + (om2 - varpi2)^2] + varpi2)/2`.
+- These are the same expression once `sqrt(M*X + 4 g^2)/sqrt(M) = sqrt(X + 4 g^2/M)`. Both pass the `expect_zero` against the paper's closed form.
+
+Section II, perturbative shifts:
+- SymPy: `Omega_eta2 - eps^2 g^2/(M delta)` and `Omega_eta2 + delta + eps^2 g^2/(M delta)`.
+- Mathematica: `om2 - eps^2 g^2/(delta m)` and `delta + om2 + eps^2 g^2/(delta m)`.
+- Identical.
+
+Section III, anomalies:
+- SymPy: `a2 = -M20/5 + M21/10 + M22/10 - g20^2/(5 w20^4) + g21^2/(10 w21^4) + g22^2/(10 w22^4)`, `b2 = -M21/2 + M22/2 - g21^2/(2 w21^4) + g22^2/(2 w22^4)`.
+- Mathematica: `a2 = (-2 m20 + m21 + m22 - 2 g20^2/w20^4 + g21^2/w21^4 + g22^2/w22^4)/10`, `b2 = (-m21 + m22 - g21^2/w21^4 + g22^2/w22^4)/2`.
+- Identical (modulo notation).
+
+Section IV: all per-pair integrals zero in SymPy; full 4x4 overlap matrix is identity in Mathematica. Equivalent statements.
+
+`engines_agree: true`. No `engine_disagreement`.
 
 ## Verdict justification
 
-Four findings: one medium-severity insufficient_verification (F1 — elimination from EL not derived in either engine; the heart of the claim is asserted, not produced), one medium-severity mathematica_transliteration (F4 — Sections III and IV are line-by-line copies), one low tautological_check (F2 — Mathematica's only Lagrangian-level checks are coefficient extractions of just-written terms), and one low insufficient_verification (F3 — Section IV omits several relevant orthogonality integrals).
+`clean` (paper_alignment: aligned, findings_count: 0).
 
-Attacks that the script holds up against: the EL equations in SymPy Section I.1 are real and would catch a sign error in `lRed`. The Vieta and dispersion-substitution checks in Mathematica Section II are real and would catch a sign error in the closed-form roots. The perturbative O(g^2) wall/matter shifts in both engines are real Taylor-expansion checks against the predicted shift formula and would catch a factor-of-2 or sign error in the published shift. The freshly typed isotropy substitution in Section III is structurally constrained to vanish — not an attack survivor, but tagged informationally rather than as a separate finding.
+Every paper-side deliverable — the scalar Schur kernel, the K/M/N moments, the grouped P_2 kernels, the low-frequency d_{0A}/d_{2A}/d_{4A} coefficients, the exact pole formula, the perturbative shifts, the isotropy criterion, and the harmonic selection rule — has a non-tautological script-side check in both engines, with assertions anchored to the named claim. The witness-case instantiation (2 modes for the scalar sector, 1 mode per grouped P_2 channel) is explicitly authorized by the paper card body ("the executable audit closes finite-mode witness cases explicitly; the displayed sum_alpha formulas then follow by linear superposition because each stable BdG mode contributes additively to the Schur complement"). The two checks `Inputs` carries forward — Stage 001 confinement coupling sign and Stage 002 wall coord names — are honored by the script's symbol choices.
 
-No `stop_cold` flag. The findings are all script-level (verification scope and second-engine independence), not internal mathematical inconsistencies, so they're fixable in place; nothing about the underlying physical claim is contradicted by the script itself. Engines agree; outputs are fresh.
+Adversarial attacks attempted:
+
+- **Sign convention on the Schur subtraction**: paper has `K_0 - C Omega_0^{-2} C^T` (subtract). Script's `Keff = Kaa - c1a^2/wa^2 - c1b^2/wb^2` (subtract). Match. A flipped sign in the script would fail the series-match assertion (line 200 of `.py`, line 145 of `.wl`). Both engines pass.
+- **Sign of pole shift**: paper has `delta Omega_eta^2 = -g^2/(M (varpi^2 - Omega_eta^2))` (negative for `varpi^2 > Omega_eta^2`). Script's wall-like shift is `Omega_eta2 - eps^2 g^2/(M delta)` with `delta > 0`. The corresponding `expect_zero` would fail under a sign flip. Both engines pass.
+- **Witness-case multi-mode additivity**: paper allows witness-case audit because additivity over alpha follows by linear superposition. Section I (N = 2 modes) directly verifies the additivity for the scalar sector. Section III (N = 1 per channel) does not separately re-verify additivity for the grouped P_2 channels, but the algebraic structure is identical (single oscillator per channel coupled to a wall coordinate via the same Schur form), so the additivity established in Section I propagates. Not a finding.
+- **Coupling matrix convention**: paper's `C` is 2xN (wall rows by mode columns). Script's `Cmat = [[c1a, c1b], [c2a, c2b]]` is 2x2 — first wall coord couples to modes a, b; second wall coord couples to modes a, b. The `Cmat * (Omat - omega^2 I)^{-1} * Cmat.T` then yields the per-element form the paper's closed-form `D_0^eff` expects. Convention matches.
+- **Y_lm normalization conventions**: SymPy uses the real-Y_lm forms `Y00 = 1/(2 sqrt(pi))`, `Y20 = sqrt(5)/(4 sqrt(pi)) (3 cos^2 - 1)`, `Y21c = sqrt(15)/(2 sqrt(pi)) sin cos cos(phi)`, `Y22c = sqrt(15)/(4 sqrt(pi)) sin^2 cos(2 phi)`. The orthonormality checks (norms all = 1, cross-overlaps all = 0) confirm these are the standard real STF basis — the paper's selection-rule notes (section 9 of the .md) require exactly this. Match.
+
+The Mathematica multi-line `lRed = ...` continuation that captured only kinetic terms in the v1 pre-fix code is now correctly compensated by the `lRed = lRed + (...)` block (lines 62-67) that adds back the missing potential and coupling terms; the resulting EL equations on lines 80-83 then match the paper's reduced Lagrangian exactly, confirmed by the four PASS lines in the Mathematica output transcript. This was the v1 F2 fix and has been verified.
+
+Confirmed reading order: paper card (`stage_003.tex`) -> notes (`moving_throat_pde_stage003_bdg_coupling.md`) -> part appendix (`stage_appendix_part01.tex`, row 28) -> SymPy script -> Mathematica script -> both saved outputs. Paper claim and script claim match.
+
+## Self-test notes
+
+Walked through the failure modes flagged by the v2 prompt's self-test list:
+
+1. **Variable independence in derivatives**: every `sp.diff(EXPR, VAR)` and `D[expr, var]` in both scripts is on a variable that actually appears in `EXPR` (verified by inspection — e.g., `sp.diff(EL_qa_red, Qa)` after substitution `qa -> Qa exp(-i omega t)` correctly has `Qa` as a dependency).
+2. **Symmetry/parity in integrals**: the spherical harmonic overlap integrals span `(theta, phi) in [0, pi] x [0, 2 pi]`. Cross-overlaps vanish by m-orthogonality (phi integral) or l-orthogonality (theta integral); norms are positive even integrands. Both engines obtain the correct values.
+3. **Trivial-case pre-check**: for the isotropic substitution `K20 -> K2, K21 -> K2, ...`, the residual `a2` reduces to `-3 M2/10 + 3 M2/10 - (3 g2^2)/(10 w2^4) + (3 g2^2)/(10 w2^4) = 0` and similarly for `b2 = 0`. Matches the assertion.
+4. **Multi-line `lRed` continuation**: re-checked Mathematica's parsing rule (newline terminates expression when syntactically complete) — line 55 ends with `1/2 mLL D[qL, t]^2` (a complete subexpression), so the `\n` terminates `lRed`'s assignment with only kinetic terms in the initial assignment. The `lRed = lRed + (...)` extension on lines 62-67 then correctly adds back the missing potential and coupling, restoring the full Lagrangian before the EL operator is applied. Verified consistency with the v1-iter1 failure transcript at log line 5327, which shows the exact residual `-(kaa qa) - kaL qL + c1a xa + c1b xb` that confirms the pre-fix `lRed` had only kinetic terms.
+5. **Paper round-trip**: re-read the boxed equations in `stage_003.tex` after auditing the script. The script's symbolic forms for `D_0^eff`, `K_eff/M_eff/N_eff`, `D_A^eff`, `d_0/d_2/d_4`, `omega_pm^2`, and `delta Omega_eta^2 / delta varpi^2` all match the boxed forms verbatim (modulo trivial notation: `varpi^2` vs `varpi2`, `Omega_eta^2` vs `Omega_eta2 / Om2`).

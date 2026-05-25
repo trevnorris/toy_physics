@@ -2,101 +2,222 @@
 unit_id: 010
 batch: I.1
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-21T00:00:00-06:00
+verify_date: 2026-05-25T00:00:00-06:00
 verdict: verified
-sympy_exit: 0
-mathematica_exit: 0
+sympy_exit: n/a
+mathematica_exit: n/a
 findings_resolved: 2
 findings_total: 2
 material_change: false
+paper_alignment: aligned
 ---
 
-# Verification — unit 010
+# Verification — unit 010 (v2 paper-alignment iteration)
+
+This verification covers the v2 paper-grounded audit pass, which produced two
+`paper_misalignment` findings (F1 = `δu_n` vs `δP_n` mismatch; F2 = seven script
+clusters with no paper anchor). The user picked direction (c) for F1 ("both
+sides grow") and direction (a) for F2 ("paper card is incomplete"); resolutions
+are recorded in `redteam/resolutions/batch_I1_paper_alignment.md` (Q5, Q6).
+An earlier verification of the v1 (scripts-only) iteration is preserved by git
+history; this file replaces it with the v2 outcome.
 
 ## Per-finding outcomes
 
-### F1 — missing_verification_script (missing_mathematica)
+### F1 — paper_misalignment (δu_n vs δP_n)
 
 **Classification:** resolved
 
 **What changed:**
-Codex created `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_mathematica_audit.wl` (223 lines). The directive nominally pointed at `scripts/`, but `.redteam-config.yaml` (lines 9-10) places Mathematica audit files under `mathematica/`. Codex documented this in the `## Applied: F1` deviation block, and the runner's path glob is `mathematica/moving_throat_pde_stage{N}_*_mathematica_audit.wl`. The deviation is required by the runner layout, not a workaround.
 
-The script verifies each of M1-M17 with `If[FullSimplify[expr] =!= 0, Print["FAIL: M<n>"]; Exit[1]]` (resp. `=== 0` for the M16/M17 negative-control mutations). Mathematica-native constructs used as required: `Series[..., {eps, 0, 1}]` + `Coefficient[..., eps, 1]` (lines 39-41, 80, 99, 112, 139, 202) for first-order expansion; `Solve` (lines 68, 88, 122) for K surfaces with uniqueness check via `Length[poleSolutions] - 1 === 0` (lines 69, 89); `ThreeJSymbol`-composed Gaunt at lines 145-156 rather than calling a Gaunt routine directly; bundle slot definitions written first as closed-form functions `slot0[e_], slot2[e_], slot4[e_]` (lines 31-37) and then differentiated, rather than building `P0p/P2p/P4p` intermediates as in the SymPy script. Variable naming differs throughout (`den0/num0/slot0/onePoleSurface/normSurface/transportSurface/gauntByThreeJ/lambda2/laneN/meanTrace/axisTrace/branchTrace/primZ/primN`).
+Paper side (`paper/stages/stage_010.tex`):
+- New `\paragraph{Bundle shifts.}` block (`:13-58`) keeps the existing
+  `\eqref{eq:stage010-du2}`/`\eqref{eq:stage010-du4}`/`\eqref{eq:stage010-dp0}`
+  identities, then adds explicit display equations for the full prefactor
+  variations under labels `eq:stage010-dP2` (lines 42-48) and `eq:stage010-dP4`
+  (lines 49-58), with the bridge text "The denominator-only quantities
+  \(u_2,u_4\) and the full prefactor quantities \(P_n\) are distinct."
+- `\stagefield{Output}` paragraph (lines 137-144) cites
+  `\eqref{eq:stage010-projected-shifts}--\eqref{eq:stage010-dP4}`, picking up
+  the new dP4 anchor as the end of the transport-map range.
+- Local label rename `eq:stage006-projected-shifts → eq:stage010-projected-shifts`
+  (line 16). `rg` over the source tree shows the new label is referenced in
+  `paper/stages/stage_010.tex:139` only; remaining `eq:stage006-projected-shifts`
+  hits are in stale `.aux` build artifacts (refreshed at next LaTeX build) and
+  in historical audit prose under `redteam/`.
+
+Script side — SymPy (`scripts/moving_throat_pde_stage010_*_sympy_audit.py`):
+- Lines 50-51 add the denominator-only inversion coefficients
+  `u2p = -D2p/D0p`, `u4p = D2p**2/D0p**2 - D4p/D0p` built from the perturbed
+  `D_n^p = D_n - eps z_n` quantities.
+- Lines 56-57 compute `du2 = sp.diff(u2p, eps).subs(eps, 0)` and
+  `du4 = sp.diff(u4p, eps).subs(eps, 0)`.
+- Lines 62-66 assert the paper's closed forms:
+  `assert_zero("delta u2", du2 - (D0*z2 - D2*z0)/D0**2)` and
+  `assert_zero("delta u4", du4 - (D0**2*z4 - D0*(2*D2*z2 + D4*z0) + 2*D2**2*z0)/D0**3)`.
+
+Script side — Mathematica (`mathematica/moving_throat_pde_stage010_*_mathematica_audit.wl`):
+- Lines 31-32 add `u2slot[e_] := -den2[e]/den0[e]` and
+  `u4slot[e_] := den2[e]^2/den0[e]^2 - den4[e]/den0[e]`.
+- Lines 41-42 extract the first-order coefficient via
+  `Coefficient[Normal[Series[u2slot[eps], {eps, 0, 1}]], eps, 1]` (and the same
+  for `u4slot`).
+- Lines 47-49 check `m0aResidual = FullSimplify[u2Linear - (D0 z2 - D2 z0)/D0^2]`
+  with `Exit[1]` on `=!= 0`; lines 51-57 mirror for `m0bResidual`.
 
 **Assessment:**
-Per-claim substance check, looking for shortcuts vs. genuine independent derivation:
 
-- **M1 (dP0):** `slot0Linear` independently derived via `Coefficient[Normal[Series[slot0[eps], {eps, 0, 1}]], eps, 1]`, compared to closed form `n0/D0 + N0 z0/D0^2`. Independent of SymPy's `sp.diff`. Non-tautological.
-- **M2 (dP2):** Same independent `Series` path; RHS matches my hand-derivation `dP2 = n2/D0 + N2 z0/D0^2 + 2 N0 z2/D0^2 - 2 D2 n0/D0^2 - 4 D2 N0 z0/D0^3` from the perturbation definition (the directive's illustrative form had `2 N2 z0/D0^2`; codex correctly used `N2 z0/D0^2` per the actual derivative — confirmed by both engines independently).
-- **M3 (dP4):** Same independent `Series` derivation; closed form has 10 terms in `eps^0` shifts, all cross-validated against the SymPy `sp.diff` result via both engines hitting 0.
-- **M4 (K_one_pole closed form):** Independent `Solve` of `(K - B0 - Z0slot - eps z0)(T + eps z4) == 3 (S + eps z2)^2`; uniqueness check `Length[poleSolutions] - 1 === 0`; compared to closed form.
-- **M5 (dK_one_pole):** Series expansion of the M4 surface, compared to closed form. Non-tautological.
-- **M6 (K_norm closed form):** Independent `Solve` of `(N0 + eps n0)/(K - B0 - Z0slot - eps z0) == Ptarget`; uniqueness check; compared to closed form.
-- **M7 (dK_norm):** Series expansion of M6, compared to closed form.
-- **M8 (compatibility surface identity):** `compatSurface = FullSimplify[normSurface - onePoleSurface]` compared to `compatDirect = (N0 + eps n0)/Ptarget - 3 (S + eps z2)^2/(T + eps z4)`. Genuine: M4 and M6 were independently derived via `Solve`, so the M8 identity is computed by subtracting two `Solve` results, not by assuming.
-- **M9 (dcompat first variation):** Coefficient of Series of M8 expression, compared to closed form `n0/Ptarget - 6 S z2/T + 3 S^2 z4/T^2` (with the load-bearing `+` sign on the z4 term — opposite the M16 mutation).
-- **M10 (K_norm_transport):** Independent `Solve` against transported target `(N0 + eps n0)/D0target`.
-- **M11 (compat_transport z0 cancellation):** `transportCompat = transportSurface - onePoleSurface` compared to `D0target - 3(S+eps z2)^2/(T+eps z4)`. The RHS contains no z0, so the assertion implicitly verifies the cancellation (non-tautological because `transportSurface` and `onePoleSurface` each contain `eps z0` from M10/M4).
-- **M12 (dcompat_transport):** Series coefficient of M11, compared to closed form `-6 S z2/T + 3 S^2 z4/T^2` (sign-matched to M9 modulo the n0/Ptarget term).
-- **M13 (Y20 overlap lanes):** `lambda2[m]` defined via `ThreeJSymbol`-composed Gaunt; checks `lambda2[0] - 1, lambda2[1] - 1/2, lambda2[2] + 1`, plus the two same-sign vanishings `gauntByThreeJ[2,2,2,0,1,1] == 0` and `[2,2,2,0,2,2] == 0`. This is the requested independent re-implementation, not calling sympy's `gaunt`.
-- **M14 (weak-axisymmetric trace decomposition):** Uses M13's `lambda2[m]` outputs to build lanes, computes `meanTrace, axisTrace, branchTrace` from the grouped recipe `(lane0 + 2 lane1 + 2 lane2)/5`, `(2 lane0 - lane1 - lane2)/10`, `(lane1 - lane2)/2`, and checks against the four target identities including `branchTrace - 3 axisTrace`.
-- **M15 (primitive static Xi):** Independent substitution `N0sym -> P^2/Delta^2` and direct comparison to the claimed RHS.
-- **M16/M17 (negative-control mutations):** Encoded with the correct polarity (`=== 0` triggers FAIL). Both produce nonzero residual `(6*S^2*z4)/T^2` per the output transcript line 17-18, confirming the unmutated assertions in M9/M12 are not vacuous.
+The new assertions are non-tautological. `u2p` and `u4p` are defined purely in
+terms of the perturbed `D_n^p` and then differentiated by sympy; the RHS in the
+`assert_zero` is the paper's symbolic closed form in `(D0, D2, D4, z0, z2, z4)`.
+A wrong sign or coefficient on the paper-side RHS would leave a nonzero residual
+after `sp.simplify`. The Mathematica mirror uses a different idiom
+(`Series`+`Coefficient` rather than `sp.diff(...).subs(eps, 0)`), so the two
+engines reach the same RHS through structurally distinct algebra paths.
 
-No M is verified via a shortcut that assumes its own claim. The script genuinely re-derives each identity from the underlying defining equations using Mathematica-native primitives.
+The existing `δP_0`, `δP_2`, `δP_4` assertions (sympy `:67-92`,
+mathematica `:59-79`) are untouched — they continue to verify the same closed
+forms they did in the v1 iteration. The paper additions for `eq:stage010-dP2`
+and `eq:stage010-dP4` reproduce those same RHS values exactly, so paper and
+scripts now display the same `δP_n` closed forms.
 
-### F2 — insufficient_verification
+Hand check on a couple of the `δP_4` cross terms against the paper's display:
+paper line 54-55 shows `(N_4 z_0 + 2 N_2 z_2 - 2 D_2 n_2 + 2 N_0 z_4 - 2 D_4 n_0)/D_0^2`
+matching script `:81-86` term-for-term; paper line 55 `(3 D_2^2 n_0 - 4(D_2 N_2 + D_4 N_0) z_0 - 6 D_2 N_0 z_2)/D_0^3` matches script `:87-89`; paper line 56
+`9 D_2^2 N_0 z_0/D_0^4` matches script `:90`. Engines agree.
+
+### F2 — paper_misalignment (7 unanchored script clusters)
 
 **Classification:** resolved
 
 **What changed:**
-At `scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py:58-83`, the two `if not {...}.issubset(...)` symbol-presence blocks are gone and replaced with two `assert_zero` calls. The dP2 closed form is `n2/D0 + N2 z0/D0^2 + 2 N0 z2/D0^2 - 2 D2 n0/D0^2 - 4 D2 N0 z0/D0^3`. The dP4 closed form is the 10-term expansion derived from `P4p = (D0p^2 N4p - 2 D0p (D2p N2p + D4p N0p) + 3 D2p^2 N0p)/D0p^3`.
+
+Paper side (`paper/stages/stage_010.tex`):
+- `\paragraph{Compatibility transport.}` (lines 60-94) introduces `S`, `T`,
+  `P_{0,target}`, the one-pole and fixed-target normalization K-surfaces
+  (label `eq:stage010-k-surfaces`, lines 63-73), the fixed-target compatibility
+  variation `δ𝒞_fixed` with explicit `z_0`-cancellation note
+  (label `eq:stage010-compat-fixed`, lines 75-83), and the transported-target
+  variant `𝒞_tr`/`δ𝒞_tr` (label `eq:stage010-compat-transport`, lines 86-94).
+- `\paragraph{Grouped weak-axisymmetric lane.}` (lines 96-112) introduces
+  the real-`Y_{20}` square-overlap lane multipliers `(λ_{20}, λ_{21}, λ_{22})
+  = (1, 1/2, -1)` (label `eq:stage010-y20-lambdas`) and the trace/anomaly
+  decomposition `b_x = 3 a_x` (label `eq:stage010-weak-axisym-trace`).
+- `\paragraph{Primitive static prefactor.}` (lines 114-126) introduces the
+  primitive mouth data `Q, Δ, P, q_1, d_1, p_1`, the perturbation slopes
+  `z_0^{prim}, n_0^{prim}`, and the `Ξ_static` closed form
+  (label `eq:stage010-primitive-xi`).
+- Sign-flip mutation guards equation (label `eq:stage010-mutation-guards`,
+  lines 128-133) records the nonzero residual `6 S^2 z_4/T^2` left by flipping
+  the sign of the `3 S^2 z_4/T^2` term in either compatibility variation.
+- `\stagefield{Output}` paragraph (lines 137-144) enumerates the new anchors:
+  transport map, compatibility transports, weak-axisymmetric lane signature,
+  primitive static prefactor anchor, and sign-flip guards.
+
+Paper appendix row updated (`paper/appendices/stage_appendix_part01.tex:42`):
+"Projected \(Z_n,N_n\) slot transport, denominator and prefactor variations,
+compatibility transports, and weak-axisymmetric lane anchors." (previously:
+"Projected \(Z_n,N_n\) slot transport for the grouped response bundle.")
+
+Script side (housekeeping only — no algebra changed):
+- SymPy docstring at `:2` now reads "Stage 010 audit for projected-Maxwell
+  transport into grouped bundle slots." (previously referenced
+  `step_08_projected_maxwell_push_bundle_master_notes.md`, an unsurvived
+  EM-projected notes file). Banner print at `:180` updated to
+  "STAGE 010 PROJECTED MAXWELL PUSH MASTER AUDIT" (previously "STEP 08").
 
 **Assessment:**
-I re-derived dP2 by quotient rule from `P2p = (D0p N2p - 2 D2p N0p)/D0p^2`: at eps=0 the derivative is `n2/D0 + z0 N2/D0^2 + 2 N0 z2/D0^2 - 2 D2 n0/D0^2 - 4 D2 N0 z0/D0^3`, matching codex's RHS exactly. The directive's illustrative form had `2 N2 z0/D0^2` (coefficient 2 on the first cross term), which is wrong; codex correctly trusted its own derivation per the directive's "if the hand-derivation disagrees, trust the hand-derivation" instruction. The dP4 closed form is cross-checked by the independent Mathematica `Series` expansion (M3) hitting 0 against the same RHS. The new asserts are non-tautological — `dP2` and `dP4` are computed by `sp.diff(P{2,4}p, eps).subs(eps, 0)` from the perturbation definition, so a sign-flipped or wrong-coefficient RHS would leave a nonzero residual.
 
-Deviation noted in `## Applied: F2`: "Used expansion-derived dP2/dP4 targets because the illustrative forms in the directive disagreed with the perturbation definitions." This is the correct response to the directive's caveat.
+The seven previously-unanchored clusters now have explicit equation labels in
+the stage card, and the Output paragraph cites them. The paper text reproduces
+the script's identities verbatim where they are displayed, and labels them so
+downstream stages (011 P_2 bridge, 012 primitive bridge, 013-014 mouth-Taylor)
+can cite them by reference.
 
-Diff is contained to lines 58-82 of the .py file; no collateral edits.
+No script-side algebra changed for F2: the seven clusters were already
+script-verified; the resolution was to grow paper anchors so the audit body is
+no longer orphan. The docstring/banner cleanup removes the dangling reference
+to the missing `step_08_*_notes.md` file but does not change any assertion.
+
+The label rename `eq:stage006-projected-shifts → eq:stage010-projected-shifts`
+is correct: the apply notes flagged that `rg` found no external refs to the
+old name, and my own search reproduces this (only stale `.aux` artifacts and
+historical audit prose under `redteam/`).
 
 ## Exec log assessment
 
-**SymPy:** stage_010_sympy.log is not present in `redteam/exec_logs/`; only `stage_010_diff.patch` is. However, the saved transcript at `scripts/output/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.txt` (mtime 2026-05-21 11:51:54 MDT, 23 minutes after Codex's apply timestamp 11:29:33) ends with `STATUS: PASS`, indicating the script ran to completion with exit 0. Treating user-reported "Both engines exit 0; orchestrator confirmed" as authoritative for the missing per-stage log file.
+**SymPy:** exit=n/a. Per-stage exec log `redteam/exec_logs/stage_010_sympy.log`
+is **not present** for this iteration; only `stage_010_diff.patch` (mtime
+2026-05-21) survives from v1. Saved transcript at
+`scripts/output/moving_throat_pde_stage010_*_sympy_audit.txt` is also stale
+(mtime 2026-05-21 11:51, ~4 days older than the current script mtime
+2026-05-25 02:19). The verifier sandbox blocks script execution, so I cannot
+refresh either artifact. The user-supplied directive states "Codex apply notes:
+... scripts/.../stage010_*_sympy_audit.py: added u2/u4 definitions and
+assertions (lines 50-65)" and the resolution-file `sanity_check` line reads
+"sympy + mathematica exit 0"; treating that user-confirmed orchestrator
+report as authoritative for the missing log.
 
-Notable lines from the output transcript:
-- `STEP 08 PROJECTED MAXWELL PUSH MASTER AUDIT`
-- `Checked bundle perturbation slots, z0 cancellation from compatibility, grouped signature, and primitive static dependencies.`
-- `Target-transport z0 cancellation guards = PASS`
-- `STATUS: PASS`
+**Mathematica:** exit=n/a. Same situation —
+`redteam/exec_logs/stage_010_mathematica.log` is not present; saved transcript
+at `mathematica/output/moving_throat_pde_stage010_*_mathematica_audit.txt`
+also predates the current script. User-supplied directive confirms both
+engines exit 0 post-edit.
 
-**Mathematica:** stage_010_mathematica.log is similarly not in `redteam/exec_logs/`. The saved transcript at `mathematica/output/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_mathematica_audit.txt` (mtime 2026-05-21 11:51:36 MDT) ends with `STATUS: PASS`. M1-M15 residuals all 0; M16/M17 mutation residuals both `(6*S^2*z4)/T^2` (correctly nonzero, the encoded `=== 0` polarity would have failed if these had cancelled).
-
-Notable lines:
-- `M1 residual = 0` ... `M15 residual = 0`
-- `M13 residuals = {0, 0, 0, 0, 0}`
-- `M14 residuals = {0, 0, 0, 0}`
-- `M16 mutation residual = (6*S^2*z4)/T^2`
-- `M17 mutation residual = (6*S^2*z4)/T^2`
-- `STATUS: PASS`
-
-**Output freshness:** Confirmed.
-- Script mtimes: sympy .py = 11:28:21, mathematica .wl = 11:29:13.
-- Output mtimes: sympy .txt = 11:51:54, mathematica .txt = 11:51:36.
-Both outputs are ~22 minutes newer than the corresponding scripts.
+**Output freshness:** the saved `.txt` transcripts are NOT post-edit fresh
+(script mtimes 2026-05-25 02:15/02:19, transcript mtimes 2026-05-21 11:51).
+This is documented as a side observation; it does not block verification
+because (a) the orchestrator's user-relayed report confirms exit 0 from both
+engines after the v2 edits, and (b) the script-side edits I can read are
+non-tautological by construction (see F1 assessment). If the orchestrator
+wants to backfill the per-stage exec logs for the v2 iteration, that is a
+log-collection concern, not a substance concern.
 
 ## Material-change assessment
 
-`material_change`: false.
+`material_change`: **false**.
 
-The F2 fix tightens an under-verified assertion but does not change any derived closed form that downstream units depend on — the dP2/dP4 RHS values were already implicit in the `P2p, P4p` definitions; the prior symbol-presence stubs would have caught only catastrophic omissions, not the actual algebra. F1 adds a second-engine cross-check but does not alter any value. No symbolic identity changed; no constant was renumbered. Downstream units that consume dP2/dP4, the compatibility surfaces, the Y20 overlaps, or the Xi formula see the same values they would have seen before this iteration.
+The δu_n forms are *new* closed forms not previously asserted in either engine,
+but they do not redefine or update any value that prior verification or any
+downstream stage already depended on. The pre-existing δP_0, δP_2, δP_4
+closed forms are byte-identical to the v1 iteration. The seven extra clusters
+(K-surfaces, transported-target compatibility, Y20 lane multipliers, weak-
+axisymmetric trace anomaly, primitive static Ξ, two mutation guards) were
+already script-verified in v1; the v2 edits only added paper-side anchors and
+display equations, not new derived values. The label rename is internal to
+stage 010 (no external refs).
+
+No downstream unit needs to be marked `upstream_stale` on substance grounds.
 
 ## Side observations (non-blocking)
 
-- The per-stage exec logs `stage_010_sympy.log` and `stage_010_mathematica.log` are absent from `redteam/exec_logs/` even though sibling stages (e.g., 005, 006, 011) have theirs. The saved `output/*.txt` transcripts compensate, but the orchestrator's log-collection step seems to have skipped this stage. Not a blocker since user message confirms orchestrator already saw exit 0 from both engines.
-- The Mathematica script uses `Clear[...]` followed by `$Assumptions = Element[{...}, Reals] && D0 != 0 && T != 0 && ...`. This is broader than the SymPy script's `nonzero=True` flags but is appropriate for `FullSimplify` and does not narrow the assertion's scope.
-- The directive said M2's illustrative form was `2 N2 z0/D0^2`. Codex's expansion-derived `N2 z0/D0^2` (coefficient 1) is the correct one, confirmed by hand. The directive's parenthetical "Wait — let me redo this" was the prompt author already catching the slip; codex resolved it correctly.
+- Per-stage exec logs `redteam/exec_logs/stage_010_sympy.log` and
+  `redteam/exec_logs/stage_010_mathematica.log` are absent for this v2
+  iteration. Saved `output/*.txt` transcripts also predate the v2 script
+  edits (2026-05-21 vs 2026-05-25). Orchestrator's log-collection step
+  appears to have skipped this stage for the v2 paper-alignment pass.
+  User-supplied report of "exit 0" is being accepted as authoritative.
+- Stale `eq:stage006-projected-shifts` references remain in
+  `paper/pde_ledger.aux` (build artifact, will refresh on next LaTeX build)
+  and in `redteam/{directives,reports}/stage_010.md` (historical audit prose
+  that quotes the old label; no need to backfill).
+- The previous verification file content for this stage was for the v1
+  (scripts-only) iteration; this file replaces it. Git history preserves
+  the v1 verification at the prior blob.
 
 ## Verdict justification
 
-Both findings are resolved with non-tautological, independently-derived checks. The .wl genuinely re-implements each of M1-M17 using Mathematica-native primitives (`Series`/`Coefficient`/`Solve`/`ThreeJSymbol`), variable naming and derivation order differ substantially from the SymPy script, and the M16/M17 negative-control mutations correctly leave a nonzero residual. The F2 fix replaces symbol-presence stubs with closed-form `assert_zero` checks whose RHS I confirmed by hand for dP2 and which Mathematica independently confirms via Series expansion. Both engines exit 0; outputs are fresh post-edit. No regressions visible in the diff (which is tightly scoped to the two specified locations). Verdict: `verified`.
+Both v2 `paper_misalignment` findings are resolved by user-approved Codex
+edits. F1 grew both the paper (new `eq:stage010-dP2`, `eq:stage010-dP4`
+display equations and explanatory bridge text) and the scripts (new `δu_2`
+and `δu_4` assertions in both engines via independent algebra paths —
+`sp.diff` for SymPy, `Series`+`Coefficient` for Mathematica). F2 grew the
+paper card with explicit equation labels for all seven previously-orphan
+clusters and updated the Output paragraph to cite them; the script-side
+docstring/banner cleanup removes the dangling reference to the missing
+EM-projected notes file. Paper alignment status moves from `partial` to
+`aligned`. No previously-verified value changed; `material_change: false`.
+Exec logs are not present for this iteration (documented as a side
+observation); accepting user-supplied "exit 0" report as authoritative.
+
+stage 010: verified

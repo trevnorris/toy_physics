@@ -3,22 +3,42 @@ M1 residual = 0
 PASS: M1 Gaussian profile area
 M2 residual = 0
 PASS: M2 Gaussian squared profile area
+M2b residual = 0
+PASS: M2b Gaussian gauge-weight area
 M3 residual = 0
 PASS: M3 smooth observer/profile overlap
 M4 residual = 0
 PASS: M4 smooth observer/source overlap
+M4b residual = 0
+PASS: M4b smooth observer/gauge-weight overlap
+M4c residual = 0
+PASS: M4c smooth projected gauge parameter
 M5 residual = 0
 PASS: M5 field-mutation Gaussian moment
 M6 residual = 0
 PASS: M6 source-mutation Gaussian moment
 M7 residual = 0
 PASS: M7 matched-observer overlap
+M7b residual = 0
+PASS: M7b matched-observer gauge overlap
 M8 residual = 0
 PASS: M8 matched projection/reduction ratio
+M8b residual = 0
+PASS: M8b matched gauge projection/reduction ratio
+M8c residual = 0
+PASS: M8c H=Z matched gauge alignment
 M9 residual = 0
 PASS: M9 regulated observer/profile overlap
 M10 residual = 0
 PASS: M10 regulated observer self-overlap
+M10b residual = 0
+PASS: M10b regulated gauge overlap
+M10c residual = 0
+PASS: M10c regulated projected gauge parameter
 M11 residual = 0
 PASS: M11 sharp-sampling limit
+M11b residual = 0
+PASS: M11b sharp gauge-sampling limit
+M11c residual = 0
+PASS: M11c sharp projected gauge-parameter limit
 STATUS: PASS

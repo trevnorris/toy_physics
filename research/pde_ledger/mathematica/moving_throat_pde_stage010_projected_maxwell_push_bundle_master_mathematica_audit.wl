@@ -28,6 +28,8 @@ num0[e_] := N0 + e n0;
 num2[e_] := N2 + e n2;
 num4[e_] := N4 + e n4;
 
+u2slot[e_] := -den2[e]/den0[e];
+u4slot[e_] := den2[e]^2/den0[e]^2 - den4[e]/den0[e];
 slot0[e_] := num0[e]/den0[e];
 slot2[e_] :=
   (den0[e] num2[e] - 2 den2[e] num0[e])/den0[e]^2;
@@ -36,9 +38,23 @@ slot4[e_] :=
       2 den0[e] (den2[e] num2[e] + den4[e] num0[e]) +
       3 den2[e]^2 num0[e])/den0[e]^3;
 
+u2Linear = Coefficient[Normal[Series[u2slot[eps], {eps, 0, 1}]], eps, 1];
+u4Linear = Coefficient[Normal[Series[u4slot[eps], {eps, 0, 1}]], eps, 1];
 slot0Linear = Coefficient[Normal[Series[slot0[eps], {eps, 0, 1}]], eps, 1];
 slot2Linear = Coefficient[Normal[Series[slot2[eps], {eps, 0, 1}]], eps, 1];
 slot4Linear = Coefficient[Normal[Series[slot4[eps], {eps, 0, 1}]], eps, 1];
+
+m0aResidual = FullSimplify[u2Linear - (D0 z2 - D2 z0)/D0^2];
+Print["M0a residual = ", fmt[m0aResidual]];
+If[FullSimplify[m0aResidual] =!= 0, Print["FAIL: M0a"]; Exit[1]];
+
+m0bResidual =
+  FullSimplify[
+    u4Linear -
+      (D0^2 z4 - D0 (2 D2 z2 + D4 z0) + 2 D2^2 z0)/D0^3
+  ];
+Print["M0b residual = ", fmt[m0bResidual]];
+If[FullSimplify[m0bResidual] =!= 0, Print["FAIL: M0b"]; Exit[1]];
 
 m1Residual =
   FullSimplify[slot0Linear - (n0/D0 + N0 z0/D0^2)];

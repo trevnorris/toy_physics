@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Master-note audit for step_08_projected_maxwell_push_bundle_master_notes.md."""
+"""Stage 010 audit for projected-Maxwell transport into grouped bundle slots."""
 from __future__ import annotations
 
 import sympy as sp
@@ -47,14 +47,23 @@ def main() -> None:
     N2p = N2 + eps * n2
     N4p = N4 + eps * n4
 
+    u2p = -D2p / D0p
+    u4p = D2p**2 / D0p**2 - D4p / D0p
     P0p = N0p / D0p
     P2p = (D0p * N2p - 2 * D2p * N0p) / D0p**2
     P4p = (D0p**2 * N4p - 2 * D0p * (D2p * N2p + D4p * N0p) + 3 * D2p**2 * N0p) / D0p**3
 
+    du2 = sp.diff(u2p, eps).subs(eps, 0)
+    du4 = sp.diff(u4p, eps).subs(eps, 0)
     dP0 = sp.diff(P0p, eps).subs(eps, 0)
     dP2 = sp.diff(P2p, eps).subs(eps, 0)
     dP4 = sp.diff(P4p, eps).subs(eps, 0)
 
+    assert_zero("delta u2", du2 - (D0 * z2 - D2 * z0) / D0**2)
+    assert_zero(
+        "delta u4",
+        du4 - (D0**2 * z4 - D0 * (2 * D2 * z2 + D4 * z0) + 2 * D2**2 * z0) / D0**3,
+    )
     assert_zero("delta P0", dP0 - (n0 / D0 + N0 * z0 / D0**2))
     assert_zero(
         "delta P2",
@@ -168,8 +177,8 @@ def main() -> None:
         - (2*p1/P - 2*d1/Delta + (Delta*q1 - Q*d1)/(D0sym*Delta**2)),
     )
 
-    print("STEP 08 PROJECTED MAXWELL PUSH MASTER AUDIT")
-    print("Checked bundle perturbation slots, z0 cancellation from compatibility, grouped signature, and primitive static dependencies.")
+    print("STAGE 010 PROJECTED MAXWELL PUSH MASTER AUDIT")
+    print("Checked bundle perturbation slots, u/P variations, z0 cancellation from compatibility, grouped signature, and primitive static dependencies.")
     print("Target-transport z0 cancellation guards = PASS")
     print("STATUS: PASS")
 

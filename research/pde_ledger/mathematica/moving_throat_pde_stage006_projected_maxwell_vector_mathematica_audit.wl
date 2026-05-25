@@ -101,7 +101,6 @@ expectZero["M1 divB rearrangement", divCycleResidual];
 Dflux = Table[Symbol["Dflux" <> ToString[i]][t, x, y, z], {i, 1, 3}];
 Hflux = Table[Symbol["Hflux" <> ToString[i]][t, x, y, z], {i, 1, 3}];
 leak = Table[Symbol["leak" <> ToString[i]][t, x, y, z], {i, 0, 3}];
-gauge = Table[Symbol["gauge" <> ToString[i]][t, x, y, z], {i, 0, 3}];
 rho = rhoProj[t, x, y, z];
 J = Table[Symbol["J" <> ToString[i]][t, x, y, z], {i, 1, 3}];
 
@@ -114,11 +113,11 @@ fluxG[i_Integer, j_Integer] /; 1 <= i <= 3 && 1 <= j <= 3 :=
 projectedInhom[nu_Integer] := Sum[
   D[fluxG[mu, nu], braneCoords[[mu + 1]]],
   {mu, {0, 1, 2, 3}}
-] + leak[[nu + 1]] + gauge[[nu + 1]];
+] + leak[[nu + 1]];
 
-gaussRearranged = projectedInhom[0] - (divergence3[Dflux] + leak[[1]] + gauge[[1]]);
+gaussRearranged = projectedInhom[0] - (divergence3[Dflux] + leak[[1]]);
 ampereRearranged = Table[
-  projectedInhom[i] - (ampereCurl3[Hflux][[i]] - D[Dflux[[i]], t] + leak[[i + 1]] + gauge[[i + 1]]),
+  projectedInhom[i] - (ampereCurl3[Hflux][[i]] - D[Dflux[[i]], t] + leak[[i + 1]]),
   {i, 1, 3}
 ];
 expectZero["M2 Gauss rearrangement", gaussRearranged];

@@ -33,6 +33,14 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 
 banner("STAGE 56 — FAMILY-1 GEOMETRY MAP")
 
+# Symbolic identity: Lambda_ell = (L/a) / (ell/a) = L/ell, independent of the
+# specific reference-branch values chosen below.
+L_sym, a_sym, ell_sym = sp.symbols('L a ell', positive=True)
+Lambda_star_sym = L_sym / a_sym
+ell_over_a_sym = ell_sym / a_sym
+Lambda_ell_sym = sp.simplify(Lambda_star_sym / ell_over_a_sym)
+expect_zero("Lambda_ell - L/ell (symbolic)", Lambda_ell_sym - L_sym / ell_sym)
+
 epsilon_r = sp.Rational(1, 20)
 Lambda_star = sp.Rational(37, 20)  # carried reference branch L/a
 
@@ -46,9 +54,12 @@ print("Lambda_ell = L/ell =", Lambda_ell)
 
 expect_zero("Lambda_ell - 37", Lambda_ell - 37)
 
-# Robin closure K_m = T_X/ell.
+# Robin closure K_m = T_X/ell. Build eta symbolically in K_m first so the
+# assertion eta - L/ell == 0 actually exercises the closure substitution and
+# not a trivial T_X cancellation.
 K_m, T_X, L, ell = sp.symbols('K_m T_X L ell', positive=True, real=True)
-eta = sp.simplify((T_X / ell) * L / T_X)
+eta_sym = K_m * L / T_X
+eta = sp.simplify(eta_sym.subs(K_m, T_X / ell))
 print("eta under K_m = T_X/ell ->", eta)
 expect_zero("eta - L/ell", eta - L / ell)
 expect_zero("eta(reference) - 37", eta.subs({L / ell: 37}) - 37)

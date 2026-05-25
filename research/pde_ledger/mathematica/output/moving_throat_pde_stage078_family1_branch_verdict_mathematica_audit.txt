@@ -1,32 +1,28 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl
-# Date: 2026-05-11T12:59:10-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 061 — FAMILY-1 BRANCH VERDICT
 ========================================================================================
-Pe_suff^(chi) / lambda_mu^2 = 96.52852472643856904608378538974577541384`19.69897000433602
-Pe_fail^(chi) / lambda_mu^2 = 11220.54416262590551355952769654137406145922`19.69897000433602
-Pe_suff^(J) / lambda_mu^2 = 22.00622263307541136581599955593507837236`19.69897000433602
-Pe_fail^(J) / lambda_mu^2 = 2558.01892349205282379273711965272544925633`19.69897000433602
-Pe_suff^(chi) numeric check diff = 6.90791621461025422458616`3.553659225492525*^-15
+Pe_suff^(chi) / lambda_mu^2 = 96.52852472643852
+Pe_fail^(chi) / lambda_mu^2 = 11220.54416262589764129696275246581666836108`30.
+Pe_suff^(J) / lambda_mu^2 = 22.006222633075424
+Pe_fail^(J) / lambda_mu^2 = 2558.0189234920537145921595536146147137509`30.
+Pe_suff^(chi) numeric check diff = 0.
 PASS: Pe_suff^(chi) numeric check
-Pe_fail^(chi) numeric check diff = 2.1255952769654137406145922`2.9764344898714525*^-13
+Pe_fail^(chi) numeric check diff = 0``25.648956084907972
 PASS: Pe_fail^(chi) numeric check
-Pe_suff^(J) numeric check diff = 2.23118400044406492162764`3.7049577175377073*^-15
+Pe_suff^(J) numeric check diff = 0.
 PASS: Pe_suff^(J) numeric check
-Pe_fail^(J) numeric check diff = 1.8779273711965272544925633`3.5647428718527028*^-13
+Pe_fail^(J) numeric check diff = 0``26.291066251373472
 PASS: Pe_fail^(J) numeric check
 Pe_suff^(chi) < Pe_fail^(chi) = True
 PASS: Pe_suff^(chi) < Pe_fail^(chi)
 Pe_suff^(J) < Pe_fail^(J) = True
 PASS: Pe_suff^(J) < Pe_fail^(J)
+Pe_suff^(J) < Pe_suff^(chi) = True
+PASS: Pe_suff^(J) < Pe_suff^(chi)
+Pe_fail^(J) < Pe_fail^(chi) = True
+PASS: Pe_fail^(J) < Pe_fail^(chi)
+Pe_suff^(chi) < Pe_fail^(J) (window overlap) = True
+PASS: Pe_suff^(chi) < Pe_fail^(J) (window overlap)
 
 Stage 078 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -27,10 +27,24 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 banner("STAGE 57 — HEALING-LENGTH LOCK AND SUPPORT SCALE")
 
 Lambda_ell = sp.symbols("Lambda_ell", positive=True)
-chi_s = sp.symbols("chi_s", positive=True)
-kappa = sp.symbols("kappa", positive=True)
+hbar, m_psi, c_s, ell, L = sp.symbols("hbar m_psi c_s ell L", positive=True)
 
-chi_lock = sp.simplify(Lambda_ell / 2)
+# Physical definition of the dimensionless support scale chi_s = m c_s L / hbar.
+chi_def = m_psi * c_s * L / hbar
+
+# Apply the GNLS healing/compliance width: ell = hbar / (2 m c_s),
+# equivalently c_s = hbar / (2 m_psi ell).
+chi_in_ell = sp.simplify(chi_def.subs(c_s, hbar / (2 * m_psi * ell)))
+print("chi (after healing-length substitution) =", chi_in_ell)
+
+# Re-express L/ell as the dimensionless ratio Lambda_ell.
+chi_lock = sp.simplify(chi_in_ell.subs(L, Lambda_ell * ell))
+
+# Family-1 branch coefficient: kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.
+# Coefficients 4 and 4/5 come from the Family-1 Euler-Lagrange branch
+# (carried forward from the earlier Family-1 stages); this stage only
+# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to
+# (9/5) Lambda_ell^2.
 kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)
 
 print("chi_s (locked) =", chi_lock)

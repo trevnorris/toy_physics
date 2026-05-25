@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-22
+Updated: 2026-05-25
 
 ## Scope decision
 
@@ -139,3 +139,23 @@ Former post-EM ledger stages start at Stage `022`.
   (004-021), so no downstream cascade into this tracker's scope. See
   `redteam/batches/batch_III3.md` plus per-stage reports at
   `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.
+- Red-team audit batch III.4 (stages 073-084, "Part III.4 -- Family-1
+  geometry, thresholds, quadrupole") completed 2026-05-25 with all 12
+  stages reaching `verified` and both engines independently checking each
+  load-bearing claim. All 12 of 12 stages required codex edits (first
+  batch with no clean-on-first-read stages); 40 findings total (14
+  `tautological_check`, 12 `hardcoded_result`, 7 `mathematica_transliteration`,
+  7 `insufficient_verification`) — `hardcoded_result` rose sharply because
+  the Family-1 numerology cluster 075-084 accumulates many literal
+  constants. Zero codex iter-2 fixes needed; one orchestrator-applied
+  mid-batch hot-fix on stage 081 (standard `ConditionalExpression[e_, _]
+  :> e` strip retrofitted after `Solve` introduced the wrapper). Two
+  acceptable codex deviations (stage 076: `P = K*rho^n_poly` over the
+  directive's literal form; stage 078: removed a spurious `100` factor in
+  the directive — both verified necessary). Zero `material_change: true`
+  flags this batch — every derivation-route rewrite left printed symbolic
+  and numeric content byte-identical. III.4 is out of the linear
+  projected-EM core range (004-021), so no downstream cascade into this
+  tracker's scope. See `redteam/batches/batch_III4.md` plus per-stage
+  reports at `redteam/reports/stage_NNN.md` and
+  `redteam/verifications/stage_NNN.md`.

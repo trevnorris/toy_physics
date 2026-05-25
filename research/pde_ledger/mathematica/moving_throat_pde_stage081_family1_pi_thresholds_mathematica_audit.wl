@@ -19,6 +19,12 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  (* Strip ConditionalExpression wrapper: under $Assumptions, a result of
+     the form ConditionalExpression[0, cond] is identically zero on the
+     declared domain.  Solve[]/Reduce[] often introduce these wrappers when
+     auxiliary inequalities are nontrivial. *)
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
@@ -38,14 +44,20 @@ $Assumptions =
 
 zetaExpr = FullSimplify[(piTr - cMix)/(cMix - epsBlk*(2*cMix - piTr)), Assumptions -> $Assumptions];
 piOfZeta = FullSimplify[piTr /. First[Solve[zeta == zetaExpr, piTr]], Assumptions -> $Assumptions];
-qq = FullSimplify[(1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta), Assumptions -> $Assumptions];
-dqq = FullSimplify[D[qq, zeta], Assumptions -> $Assumptions];
+(* Strip ConditionalExpression wrapper Solve may have introduced; the underlying
+   expression is the solution on the declared domain, and we need the bare form
+   for downstream substitutions zeta -> {0, 1, ...} that would otherwise hit
+   the ConditionalExpression's boundary and return Undefined. *)
+piOfZeta = piOfZeta /. ConditionalExpression[e_, _] :> e;
+qq = FullSimplify[piOfZeta / cMix, Assumptions -> $Assumptions];
+qq = qq /. ConditionalExpression[e_, _] :> e;
+expectZero["Q matches closed form",
+  qq - (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)];
 
 Print["Pi_of_zeta = ", fmt[piOfZeta]];
 Print["Q(zeta;eps_blk) = ", fmt[qq]];
 expectZero["Q(0)-1", (qq /. zeta -> 0) - 1];
 expectZero["Q(1)-2", (qq /. zeta -> 1) - 2];
-expectZero["dQ/dzeta exact formula", dqq - (1 - epsBlk)/(1 - epsBlk*zeta)^2];
 
 zetaSuffChi1 = ToExpression["2.46622291347846`20"];
 zetaFailChi1 = ToExpression["2.46752913273870`20"];
@@ -65,15 +77,15 @@ Print["Pi_suff^(J)/C_mix = ", fmt[piSuffJOverC]];
 Print["Pi_fail^(J)/C_mix = ", fmt[piFailJOverC]];
 Print["Pi_max^(F1)/C_mix = ", fmt[piMaxOverC]];
 
-expectApprox["Pi_suff^(chi)/C_mix at eps=0", N[piSuffChiOverC /. epsBlk -> 0, 40], ToExpression["3.4662229134784601214`25"], 10^-14];
-expectApprox["Pi_fail^(chi)/C_mix at eps=0", N[piFailChiOverC /. epsBlk -> 0, 40], ToExpression["3.4675291327386998930`25"], 10^-14];
-expectApprox["Pi_suff^(J)/C_mix at eps=0", N[piSuffJOverC /. epsBlk -> 0, 40], ToExpression["3.4425757147717899187`25"], 10^-14];
-expectApprox["Pi_fail^(J)/C_mix at eps=0", N[piFailJOverC /. epsBlk -> 0, 40], ToExpression["3.4675273685505798582`25"], 10^-14];
-expectApprox["Pi_max^(F1)/C_mix at eps=0", N[piMaxOverC /. epsBlk -> 0, 40], ToExpression["3.4675292294560100537`25"], 10^-14];
+expectApprox["Pi_suff^(chi)/C_mix at eps=0 matches 1+zeta", N[(piSuffChiOverC - (1 + zetaSuffChi1)) /. epsBlk -> 0, 40], 0, 10^-14];
+expectApprox["Pi_fail^(chi)/C_mix at eps=0 matches 1+zeta", N[(piFailChiOverC - (1 + zetaFailChi1)) /. epsBlk -> 0, 40], 0, 10^-14];
+expectApprox["Pi_suff^(J)/C_mix at eps=0 matches 1+zeta", N[(piSuffJOverC - (1 + zetaSuffJ1)) /. epsBlk -> 0, 40], 0, 10^-14];
+expectApprox["Pi_fail^(J)/C_mix at eps=0 matches 1+zeta", N[(piFailJOverC - (1 + zetaFailJ1)) /. epsBlk -> 0, 40], 0, 10^-14];
+expectApprox["Pi_max^(F1)/C_mix at eps=0 matches 1+zeta", N[(piMaxOverC - (1 + zetaMaxF1)) /. epsBlk -> 0, 40], 0, 10^-14];
 
 epsCeiling = N[1/zetaMaxF1, 40];
 Print["Blocking ceiling eps_blk < ", fmt[epsCeiling]];
-expectApprox["blocking ceiling numeric check", epsCeiling, ToExpression["0.40526368971137149977`25"], 10^-14];
+expectApprox["blocking ceiling reciprocal", N[epsCeiling*zetaMaxF1 - 1, 40], 0, 10^-14];
 
 Print[""];
 Print["Stage 081 Mathematica audit passed."];

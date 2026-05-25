@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-22` (batch III.3 close)
+Snapshot date: `2026-05-25` (batch III.4 close)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-22`: 72 of 253 stages red-team verified.
+As of `2026-05-25`: 84 of 253 stages red-team verified.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -57,15 +57,19 @@ As of `2026-05-22`: 72 of 253 stages red-team verified.
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 |
 | III.2 | `049--060` | 12 | 12 | 2026-05-22 |
 | III.3 | `061--072` | 12 | 12 | 2026-05-22 |
-| III.4 onward | `073--253` | 181 | 0 | pending |
+| III.4 | `073--084` | 12 | 12 | 2026-05-25 |
+| III.5 onward | `085--253` | 169 | 0 | pending |
 
-Cumulative findings closed: ~179 (`tautological_check` dominant,
-`mathematica_transliteration` second, then `insufficient_verification` and
-`hardcoded_result`). Two stages now carry `material_change: true`: III.2
+Cumulative findings closed: ~219 (`tautological_check` dominant overall,
+`mathematica_transliteration` second; `hardcoded_result` rose sharply in
+III.4 to 12 because the Family-1 numerology cluster 075-084 packs many
+literal constants). Two stages still carry `material_change: true`: III.2
 stage 060 (a `Csol = a/(exp(a*L)-1)` restructure of a previously-failing
 `sp.solve`) and III.3 stage 068 (`Solve`-derived `Wfail_res`/`Wfail_match`
-matching prior postulated forms symbolically); downstream consumers are
-still `pending` so no immediate cascade in either case. See per-batch
+matching prior postulated forms symbolically); III.4 added no new
+`material_change` flags (every derivation-route rewrite left printed
+symbolic and numeric content byte-identical). Downstream consumers of 060
+and 068 are still `pending` so no immediate cascade. See per-batch
 summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update

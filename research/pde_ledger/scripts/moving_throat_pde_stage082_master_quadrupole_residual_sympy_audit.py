@@ -74,8 +74,24 @@ expect_zero(
     R_quad.subs({Pi_tr: Pi_fail, zeta_phys: zeta_plus}),
 )
 
+# Directional content of R_quad: verify the partial derivatives that
+# underwrite the "guaranteed success / guaranteed failure" theorems.
+dR_dzeta_phys = sp.simplify(sp.diff(R_quad, zeta_phys))
+expect_zero("dR_quad/dzeta_phys + 1", dR_dzeta_phys + 1)
+
+dzeta_req_dPi = sp.simplify(sp.diff(zeta_req, Pi_tr))
+dR_dPi_at_zeta_minus = sp.simplify(sp.diff(R_quad.subs(zeta_phys, zeta_minus), Pi_tr))
+expect_zero(
+    "dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-)",
+    dR_dPi_at_zeta_minus - dzeta_req_dPi,
+)
+
 # Family-1 strength identities.
 Theta_w, Upsilon_w = sp.symbols("Theta_w Upsilon_w", positive=True, real=True)
+# TODO(provenance): Lambda_ell = 37 and the convention Upsilon_w = 100 * Theta_w
+# are carry-forward constants. Cite the upstream stage's script (likely an
+# earlier moving_throat_pde_stage*_sympy_audit.py) that derives them. Until
+# then, this stage treats them as inputs and only displays their consequences.
 Lambda_ell = sp.Integer(37)
 Xi_F1_from_Upsilon = sp.simplify(Upsilon_w * Lambda_ell**2)
 Xi_F1_from_Theta = sp.simplify(100 * Theta_w * Lambda_ell**2)
@@ -84,14 +100,13 @@ print("\nXi_F1 from Upsilon_w =")
 sp.pprint(Xi_F1_from_Upsilon)
 print("Xi_F1 from Theta_w =")
 sp.pprint(Xi_F1_from_Theta)
-expect_zero(
-    "Xi_F1(Theta_w) - 136900 Theta_w",
-    Xi_F1_from_Theta - sp.Integer(136900) * Theta_w,
-)
-expect_zero(
-    "Xi_F1(Upsilon_w=100 Theta_w) - Xi_F1(Theta_w)",
-    Xi_F1_from_Upsilon.subs(Upsilon_w, 100 * Theta_w) - Xi_F1_from_Theta,
-)
+# Note: the two equalities below are arithmetic on the hand-supplied integers
+# 37, 100, 1369, 136900. They are not independent verifications of the Family-1
+# strength identity — the upstream stage that derives Lambda_ell = 37 and the
+# convention Upsilon_w = 100 * Theta_w is responsible for those facts. Here we
+# only display the resulting Xi_F1 forms for downstream readers.
+print(f"Xi_F1(Theta_w) - 136900 Theta_w = {sp.simplify(Xi_F1_from_Theta - sp.Integer(136900) * Theta_w)}  (display only)")
+print(f"Xi_F1(Upsilon_w=100 Theta_w) - Xi_F1(Theta_w) = {sp.simplify(Xi_F1_from_Upsilon.subs(Upsilon_w, 100 * Theta_w) - Xi_F1_from_Theta)}  (display only)")
 
 print("\nTheorem ledger:")
 print("  Pi_tr <= C_mix Q(zeta_-,eps_blk)  -> guaranteed success if zeta_phys >= zeta_-")

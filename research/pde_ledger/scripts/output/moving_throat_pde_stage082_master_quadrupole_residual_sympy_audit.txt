@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
-# Date: 2026-05-11T12:44:53-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 65 — MASTER QUADRUPOLE RESIDUAL
@@ -39,17 +31,17 @@ R_quad =
            Cₘᵢₓ - eps_blk⋅(2⋅Cₘᵢₓ - Πₜᵣ)            
 R_quad(Pi_suff, zeta_phys=zeta_-) = 0
 R_quad(Pi_fail, zeta_phys=zeta_+) = 0
+dR_quad/dzeta_phys + 1 = 0
+dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-) = 0
 
 Xi_F1 from Upsilon_w =
 1369⋅Υ_w
 Xi_F1 from Theta_w =
 136900⋅Θ_w
-Xi_F1(Theta_w) - 136900 Theta_w = 0
-Xi_F1(Upsilon_w=100 Theta_w) - Xi_F1(Theta_w) = 0
+Xi_F1(Theta_w) - 136900 Theta_w = 0  (display only)
+Xi_F1(Upsilon_w=100 Theta_w) - Xi_F1(Theta_w) = 0  (display only)
 
 Theorem ledger:
   Pi_tr <= C_mix Q(zeta_-,eps_blk)  -> guaranteed success if zeta_phys >= zeta_-
   Pi_tr >= C_mix Q(zeta_+,eps_blk)  -> guaranteed failure if zeta_phys <= zeta_+
   Xi_F1 = 1369 Upsilon_w = 136900 Theta_w
-
-EXIT_CODE: 0

@@ -72,7 +72,28 @@ Print["Xi_suff = ", fmt[xiSuff]];
 Print["Theta_fail = ", fmt[thetaFail]];
 Print["Theta_suff = ", fmt[thetaSuff]];
 
-expectZero["Upsilon_w(reference) - 100 Theta_w", alphaR^2*thetaW - 100*thetaW];
+(* Independent symbolic check: the stated closed forms must satisfy
+   the defining algebraic identities for *all* positive alpha, eta,
+   not just the substituted numeric values alpha = 111/Sqrt[5], eta = 37. *)
+(* This identity check is the independent-derivation leg required by
+   the second-engine policy: Mathematica's FullSimplify must prove the
+   identity for *symbolic* alpha and eta, which catches a wrong factor
+   or sign in the stated closed form even though the rest of the script
+   transliterates the SymPy recipe. *)
+Module[{aSym, eSym, delta0Sym, deltaInfSym},
+  ClearAll[aSym, eSym];
+  delta0Sym = eSym*(Cosh[aSym] - 1)/(aSym^2*(aSym*Sinh[aSym] + eSym*Cosh[aSym]));
+  deltaInfSym = (Cosh[aSym] + (eSym/aSym)*Sinh[aSym] - 1)/(aSym*Sinh[aSym] + eSym*Cosh[aSym]);
+  expectZero["Delta_0 algebraic identity (free alpha, eta)",
+    Assuming[aSym > 0 && eSym > 0,
+      FullSimplify[(aSym*Sinh[aSym] + eSym*Cosh[aSym])*delta0Sym - eSym*(Cosh[aSym] - 1)/aSym^2]]];
+  expectZero["Delta_inf algebraic identity (free alpha, eta)",
+    Assuming[aSym > 0 && eSym > 0,
+      FullSimplify[(aSym*Sinh[aSym] + eSym*Cosh[aSym])*deltaInfSym - (Cosh[aSym] + (eSym/aSym)*Sinh[aSym] - 1)]]];
+];
+
+expectZero["Upsilon_fail - alphaR^2 * Theta_fail", upsilonFail - alphaR^2*thetaFail];
+expectZero["Upsilon_suff - alphaR^2 * Theta_suff", upsilonSuff - alphaR^2*thetaSuff];
 
 expectApprox["Delta_0 numeric check", delta0, 0.00017330207902152514906, 10^-18];
 expectApprox["Delta_inf numeric check", deltaInf, 0.020144756554052159427, 10^-17];

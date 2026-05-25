@@ -9,14 +9,11 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-22` (batch III.3 close — checkpoint stage 069
-audited and verified; three findings (taut, math_translit, prov) closed by
-replacing `Cres2`/`Wfail_res`/`delta_fail` definitional identities with a
-parameterized `W_match` generator + monotonicity check (SymPy) and a
-`Cres2Prim`/`Pres = 1/Cres2` route with `PresGap` via `Solve`
-(Mathematica); tier table unchanged because the checkpoint's substantive
-threshold-window claim was already strong, the findings only affected
-verification non-tautologicity)
+Snapshot date: `2026-05-25` (batch III.4 close — no checkpoint stages
+fall in range 073-084, so no tier-table rows changed. Batch III.4 closed
+all 40 findings across 12 stages with zero `material_change: true` flags,
+so no upstream-stale cascade into earlier checkpoint stages either.
+Previous III.3 update remains accurate for stage 069.)
 
 ## Scope
 

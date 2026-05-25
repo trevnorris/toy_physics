@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-22` (batch III.3 close)
+Snapshot date: `2026-05-25` (batch III.4 close)
 
 ## Rule
 
@@ -48,8 +48,14 @@ stage (056) whose `Limit[..., {Pe, Infinity}]` and `Series.removeO` paths
 already broke line-by-line correspondence; batch III.3 found it on 9 of 12
 (062-065, 067-070, 072) — share back up because the stage cluster 062-068
 was particularly mirror-heavy on asymptotic leading-order forms, with
-stages 061 and 066 passing transliteration screening on first read. Treat
-transliteration as the default expectation, not an exceptional finding.
+stages 061 and 066 passing transliteration screening on first read; batch
+III.4 found it on 7 of 12 (073, 075, 076, 078, 079, 082, 083) — slightly
+below III.3's share because the Family-1 numerology cluster (075-084)
+distributed its 40 findings across a broader category mix (12
+`hardcoded_result`, 14 `tautological_check`, 7 each of `math_translit`
+and `insufficient_verification`), but `material_change: false` on every
+stage. Treat transliteration as the default expectation, not an
+exceptional finding.
 
 ## Current Independent-Mirror Set
 
@@ -436,6 +442,76 @@ different verification structure from the SymPy side:
   ratios to `1` directly while Mathematica's `DeltaInf` shell ratio surfaces
   as the algebraically-equivalent surd `2/Sqrt[5] + 1/(5 + 2 Sqrt[5])` —
   divergent presentations confirm cross-engine independence
+- `073`
+  red-team batch III.4 fixed a Mathematica precedence bug (`eta /. (len/ell) -> 37 - 37`
+  parsed as `(len/ell) -> 0` because `Rule` has lower precedence than `Plus`); both
+  engines now build `eta`/`Lambda_ell` from symbolic `K_m` / `L/ell` with a symbolic
+  `Lambda_ell - L/ell` identity check before numerical specialization
+- `074`
+  red-team batch III.4 replaced the `chi_lock = Lambda_ell/2` tautology with the
+  physical substitution chain `chi_def = m_psi*c_s*L/hbar -> subs(c_s) -> subs(L/ell)`
+  in SymPy; Mathematica side was already the more substantive engine here, deriving
+  `chi_s` from `m c_s L / hbar` with the healing-length substitution rather than
+  mirroring SymPy
+- `075`
+  red-team batch III.4 replaced the `100*Theta_w == 100*Theta_w` round-trip with a
+  free-symbol `Delta_0`/`Delta_inf` algebraic identity check (alpha_sym/eta_sym must
+  be proved by `simplify`/`FullSimplify` rather than being self-consistent literals);
+  cross-engine independence achieved via the symbolic-route F2 leg
+- `076`
+  red-team batch III.4 derived `U` from `Integrate[P/rho^2]` rather than typing
+  `K*rho^5/4`; routed `mu_star` and `c_sw` through `sp.solve`/`Solve` rather than
+  postulating; paired the n=5 enthalpy identity with a non-tautological n=3
+  fail-check (the assertion holds for `n=5` and fails for `n=3` because `P` itself is
+  index-parameterized as `K*rho^n_poly`); renamed `thetaHealTarget` to
+  `thetaHealReduced` to break line-by-line `.wl`/`.py` correspondence
+- `077`
+  red-team batch III.4 added the symbolic `1 - alpha_r * S(xi_*)^2 = 0` identity
+  check in both engines (proves `xi_* = atanh(2/sqrt(alpha_r) - 1)` is the cut point
+  rather than postulating it); removed the tautological `xi_* numeric check` from
+  the `.wl`; added SymPy `expect_close` per-value Jensen-floor tolerance checks
+- `078`
+  red-team batch III.4 replaced literal-decimal `Theta_chi_coeff`/`Theta_J_coeff`
+  copies with symbolic `Sinh`/`Cosh` closed forms in Mathematica and high-precision
+  `ToExpression["...`40"]` loads; `expectApprox` targets now computed in-script;
+  three branch-verdict ordering inequalities added; one acceptable codex deviation
+  (removed a spurious `100` factor in the directive)
+- `079`
+  red-team batch III.4 replaced literal decimal `zeta0`/`zetaInf` copies with
+  `Limit[aF1*omega^2, pe -> 0/Infinity]` (high-precision `expectApprox` fallback per
+  directive); F3 added a `D[omega, pe]` symbolic-derivative slope check returning
+  `(4-Pi)/(2*Pi)` independently from SymPy's `series`
+- `080`
+  red-team batch III.4 added four `zetaTarget*` independent-path numeric
+  computations in Mathematica (replacing literal SymPy-output copies) and four
+  ordering inequalities (chi-pair, J-pair, J<=chi suff, J<=chi fail); SymPy added
+  four `zeta numeric check` lines exercising Stage-61 Pe constants
+- `081`
+  red-team batch III.4 derived `qq = piOfZeta / cMix` via `Solve[zeta == zetaExpr,
+  piTr]` rather than postulating; orchestrator retrofitted the standard
+  `ConditionalExpression[e_, _] :> e` strip (Solve introduced the wrapper, which
+  broke the `=== 0` test and downstream `zeta -> {0, 1, ...}` substitutions);
+  five magic-number self-checks replaced with residuals against `1 + zeta_*`
+  functional form
+- `082`
+  red-team batch III.4 routed Mathematica `zetaReq` through `Solve` of `qMap`
+  (with `ConditionalExpression` strip) rather than mirroring the SymPy formula;
+  two `Xi_F1` tautological self-checks demoted to `print`; two new derivative
+  assertions (`dR_quad/dzeta_phys + 1 = 0` and `dR_quad/dPi_tr - dzeta_req/dPi_tr`)
+  added in both engines
+- `083`
+  red-team batch III.4 added `delta0Residual`/`deltaInfResidual`/`omegaResidual`
+  cross-engine identity checks, `y_F1` defining-equation residual gate, and a
+  `dzetaDpe` monotonicity sign-check; SOURCE-ANCHOR comment blocks for
+  `Theta_chi_coeff`/`Theta_J_coeff`/`136900` literals; one benign deviation
+  (`nsolve(prec=80)` bump for numerical stability)
+- `084`
+  red-team batch III.4 replaced two `(37^2 - 1369)`-style tautologies with the
+  cross-route consistency check `(xiF1FromUpsilon /. upsilonW -> 100*thetaW) -
+  xiF1FromTheta`; two hardcoded float-difference checks replaced with four
+  `expectZero[If[TrueQ[...], 0, 1]]` ordering inequalities; added
+  `FindRoot`/`Limit[zetaPhys, Pe -> Infinity]` block returning `2.467529229456...`
+  matching `zetaMaxF1` to ~14 digits
 - `089`
   rebuilds the Family-1 verdict from the Stage-62/63/69 formulas
 - `090`

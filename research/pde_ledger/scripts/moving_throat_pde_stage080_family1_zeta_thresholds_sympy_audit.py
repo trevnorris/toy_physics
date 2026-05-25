@@ -59,6 +59,29 @@ vals = {
 for k, v in vals.items():
     print(k, '=', v)
 
+# Independent recomputation of zeta_*(1) via A_F1 * Omega(Pe)^2 with
+# explicit float Pe values; the four reference targets are the
+# corresponding output values printed above. This anchors the four
+# Stage-61 numerical Pe thresholds (96.5285..., 11220.5..., 22.0062...,
+# 2558.02...) to the four zeta values, breaking the tautology in the
+# limit-saturation check below.
+def _omega_explicit(p):
+    return sp.pi * p * (2 * p * sp.exp(p) + sp.pi) / ((4 * p**2 + sp.pi**2) * (sp.exp(p) - 1))
+
+A_F1_recomputed = (sp.Rational(12321, 5) + sp.pi**2 / 4) / (sp.Rational(12321, 5) + y_F1**2)
+_numeric_targets = [
+    ("zeta_suff^(chi)(1)", sp.Float('96.5285247264386', 30), sp.Float('2.4662229134784638979', 25)),
+    ("zeta_fail^(chi)(1)", sp.Float('11220.5441626259', 30), sp.Float('2.4675291327387028754', 25)),
+    ("zeta_suff^(J)(1)",   sp.Float('22.0062226330754', 30), sp.Float('2.4425757147717912819', 25)),
+    ("zeta_fail^(J)(1)",   sp.Float('2558.01892349205', 30), sp.Float('2.4675273685505776147', 25)),
+]
+for _name, _pe_val, _expected in _numeric_targets:
+    _zeta_val = sp.N(A_F1_recomputed * _omega_explicit(_pe_val)**2, 25)
+    _diff = abs(sp.N(_zeta_val - _expected, 30))
+    print(f"zeta numeric check {_name}: diff = {_diff}")
+    if _diff > sp.Float('1e-14'):
+        raise AssertionError(f"zeta numeric check {_name}: |{_zeta_val} - {_expected}| = {_diff} > 1e-14")
+
 # Large-lambda limits saturate at the hard ceiling.
 for name, expr in [
     ("limit zeta_suff^(chi)", zeta_suff_chi),

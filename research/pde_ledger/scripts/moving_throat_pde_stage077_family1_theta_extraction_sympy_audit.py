@@ -42,6 +42,10 @@ xi_star = sp.simplify(sp.atanh(2 / sp.sqrt(alpha_r) - 1))
 print("xi_* =", xi_star)
 print("xi_*(alpha_r=10) =", sp.N(xi_star.subs(alpha_r, 10), 20))
 
+S_at_star = (1 + sp.tanh(xi_star)) / 2
+rho_quartic_at_star = sp.simplify(1 - alpha_r * S_at_star**2)
+expect_zero("1 - alpha_r * S(xi_*)**2", rho_quartic_at_star)
+
 # Numerical branch evaluation at alpha_r = 10.
 mp.mp.dps = 50
 alpha_num = mp.mpf('10')
@@ -74,5 +78,36 @@ Theta_J = mp.mpf('25') * (R1**2)
 
 print("Theta_w^(chi) / lambda_mu^2 =", Theta_chi)
 print("Theta_w^(J)   / lambda_mu^2 =", Theta_J)
+
+def expect_close(name: str, value, target, tol) -> None:
+    diff = abs(value - target)
+    print(f"{name} diff = {diff}")
+    if diff > tol:
+        raise AssertionError(f"{name} exceeds tol {tol}")
+
+expect_close(
+    "<rho>_chi",
+    R1,
+    mp.mpf('0.19261900555649309777068139356018510792903510747507'),
+    mp.mpf('1e-28'),
+)
+expect_close(
+    "<rho^2>_chi",
+    R2,
+    mp.mpf('0.16274529400326462037087418498629868328210821103971'),
+    mp.mpf('1e-28'),
+)
+expect_close(
+    "Theta_w^(chi)",
+    Theta_chi,
+    mp.mpf('4.0686323500816155092718546246574670820527052759928'),
+    mp.mpf('1e-26'),
+)
+expect_close(
+    "Theta_w^(J)",
+    Theta_J,
+    mp.mpf('0.92755203253930797183993260663904217023332624032789'),
+    mp.mpf('1e-27'),
+)
 if not (Theta_chi >= Theta_J > 0):
     raise AssertionError("Expected Theta_w^(chi) >= Theta_w^(J) > 0")

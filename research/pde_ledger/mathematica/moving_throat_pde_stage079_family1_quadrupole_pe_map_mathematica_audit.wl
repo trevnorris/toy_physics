@@ -64,14 +64,19 @@ zetaInf = N[aF1*omegaInf^2, 50];
 Print["zeta_F1(Pe) = A_F1 Omega(Pe)^2"];
 Print["zeta_F1(0+) = ", fmt[zeta0]];
 Print["zeta_F1(inf) = ", fmt[zetaInf]];
-expectApprox["zeta_F1(0+) numeric check", zeta0, ToExpression["1.00005192880219492404747131934`30"], 10^-14];
-expectApprox["zeta_max^(F1) numeric check", zetaInf, ToExpression["2.46752922945601123498982913352`30"], 10^-14];
+zeta0Sym = FullSimplify[Limit[aF1*omega^2, pe -> 0, Direction -> "FromAbove"], Assumptions -> $Assumptions];
+zetaInfSym = FullSimplify[Limit[aF1*omega^2, pe -> Infinity], Assumptions -> $Assumptions];
+expectApprox["zeta_F1(0+) - A_F1", N[zeta0Sym - aF1, 50], 0, 10^-40];
+expectApprox["zeta_F1(inf) - A_F1 Pi^2/4", N[zetaInfSym - aF1*Pi^2/4, 50], 0, 10^-40];
 
 zetaSeries = FullSimplify[Normal[Series[aF1*omega^2, {pe, 0, 1}]], Assumptions -> $Assumptions];
 expectedSeries = FullSimplify[aF1*(1 + ((4 - Pi)/Pi)*pe), Assumptions -> $Assumptions];
 seriesDiff = N[Expand[zetaSeries - expectedSeries], 50];
 expectApprox["small-Pe constant coefficient check", Coefficient[seriesDiff, pe, 0], 0, 10^-28];
 expectApprox["small-Pe linear coefficient check", Coefficient[seriesDiff, pe, 1], 0, 10^-28];
+omegaPrime0 = FullSimplify[Limit[D[omega, pe], pe -> 0, Direction -> "FromAbove"], Assumptions -> $Assumptions];
+Print["Omega'(0+) = ", fmt[omegaPrime0]];
+expectApprox["Omega'(0+) - (4-Pi)/(2 Pi)", N[omegaPrime0 - (4 - Pi)/(2*Pi), 50], 0, 10^-40];
 
 Print[""];
 Print["Stage 079 Mathematica audit passed."];

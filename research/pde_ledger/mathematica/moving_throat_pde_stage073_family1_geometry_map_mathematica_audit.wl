@@ -25,6 +25,15 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 056 — FAMILY-1 GEOMETRY MAP"];
 
+Clear[lSym, aSym, ellSym];
+Module[{lambdaStarSym, ellOverASym, lambdaEllSym},
+  lambdaStarSym = lSym/aSym;
+  ellOverASym = ellSym/aSym;
+  lambdaEllSym = FullSimplify[lambdaStarSym/ellOverASym,
+    Assumptions -> lSym > 0 && aSym > 0 && ellSym > 0];
+  expectZero["Lambda_ell - L/ell (symbolic)", lambdaEllSym - lSym/ellSym];
+];
+
 epsilonR = 1/20;
 lambdaStar = 37/20;
 ellOverA = epsilonR;
@@ -41,10 +50,11 @@ $Assumptions =
   Element[{km, tx, len, ell}, Reals] &&
   km > 0 && tx > 0 && len > 0 && ell > 0;
 
-eta = FullSimplify[(tx/ell)*len/tx, Assumptions -> $Assumptions];
+etaSym = km*len/tx;
+eta = FullSimplify[etaSym /. km -> tx/ell, Assumptions -> $Assumptions];
 Print["eta under K_m = T_X/ell -> ", fmt[eta]];
 expectZero["eta - L/ell", eta - len/ell];
-expectZero["eta(reference) - 37", eta /. (len/ell) -> 37 - 37];
+expectZero["eta(reference) - 37", (eta /. (len/ell) -> 37) - 37];
 
 Print[""];
 Print["Stage 073 Mathematica audit passed."];

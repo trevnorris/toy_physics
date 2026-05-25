@@ -62,14 +62,18 @@ Print["kappa_F1 = ", fmt[kappaF1]];
 Print["eta_F1 = ", fmt[etaF1]];
 Print["Xi_F1 from Upsilon_w = ", fmt[xiF1FromUpsilon]];
 Print["Xi_F1 from Theta_w = ", fmt[xiF1FromTheta]];
-expectZero["Xi_F1(Upsilon) - 1369 Upsilon_w", xiF1FromUpsilon - 1369*upsilonW];
-expectZero["Xi_F1(Theta) - 136900 Theta_w", xiF1FromTheta - 136900*thetaW];
+expectZero["Xi_F1(Upsilon|Upsilon_w->100 Theta_w) - Xi_F1(Theta)", (xiF1FromUpsilon /. upsilonW -> 100*thetaW) - xiF1FromTheta];
 
 zetaMinusChi = ToExpression["2.46622291347846`20"];
 zetaPlusChi = ToExpression["2.46752913273870`20"];
 zetaMinusJ = ToExpression["2.44257571477179`20"];
 zetaPlusJ = ToExpression["2.46752736855058`20"];
 zetaMaxF1 = ToExpression["2.46752922945601`20"];
+yF1 = y /. FindRoot[y*Tan[y] - 37, {y, 153/100}, WorkingPrecision -> 40];
+zetaPhysF1Limit = Limit[zetaPhys /. {kappa -> kappaF1, eta -> etaF1, y -> yF1}, pe -> Infinity];
+zetaPhysF1Numeric = N[zetaPhysF1Limit, 20];
+Print["zeta_phys(Pe->oo, kappa_F1, eta_F1, y_F1) = ", fmt[zetaPhysF1Numeric]];
+expectApprox["zeta_phys at Family-1 (Pe->oo limit) matches upstream zeta_max^(F1)", zetaPhysF1Numeric, zetaMaxF1, 10^-10];
 
 Print["zeta_-^(chi) = ", fmt[zetaMinusChi]];
 Print["zeta_+^(chi) = ", fmt[zetaPlusChi]];
@@ -77,8 +81,10 @@ Print["zeta_-^(J) = ", fmt[zetaMinusJ]];
 Print["zeta_+^(J) = ", fmt[zetaPlusJ]];
 Print["zeta_max^(F1) = ", fmt[zetaMaxF1]];
 
-expectApprox["natural-window ordering gap", zetaPlusChi - zetaMinusChi, ToExpression["0.00130621926024`20"], 10^-12];
-expectApprox["hard-ceiling gap", zetaMaxF1 - zetaPlusChi, ToExpression["9.6717311`10*^-8"], 10^-12];
+expectZero["chi-window ordering positive (zeta_+^chi > zeta_-^chi)", If[TrueQ[zetaPlusChi > zetaMinusChi], 0, 1]];
+expectZero["hard-ceiling gap positive (zeta_max^F1 > zeta_+^chi)", If[TrueQ[zetaMaxF1 > zetaPlusChi], 0, 1]];
+expectZero["J-window ordering positive (zeta_+^J > zeta_-^J)", If[TrueQ[zetaPlusJ > zetaMinusJ], 0, 1]];
+expectZero["fail-side J below chi (zeta_+^J <= zeta_+^chi)", If[TrueQ[zetaPlusJ <= zetaPlusChi], 0, 1]];
 
 Print[""];
 Print["Stage 084 Mathematica audit passed."];

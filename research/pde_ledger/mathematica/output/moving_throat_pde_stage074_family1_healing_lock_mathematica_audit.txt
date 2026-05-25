@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.wl
-# Date: 2026-05-11T12:57:55-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 057 — HEALING-LENGTH LOCK AND SUPPORT SCALE
@@ -28,5 +20,3 @@ kappa_ref - 12321/5 = 0
 PASS: kappa_ref - 12321/5
 
 Stage 074 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -63,8 +63,30 @@ DeltaInf_F1 = sp.simplify(
     / (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1))
 )
 
+# Defining-equation residuals for Delta_0 and Delta_inf (Family-1):
+#   (alpha^2 * (alpha sinh(alpha) + eta cosh(alpha))) * Delta_0 == eta (cosh(alpha) - 1)
+#   (alpha sinh(alpha) + eta cosh(alpha))           * Delta_inf == cosh(alpha) + (eta/alpha) sinh(alpha) - 1
+# These are non-tautological because they express Delta_* as the unique
+# solution of a linear equation, not as a chosen closed form.
+delta0_residual = sp.simplify(
+    (alpha_F1**2 * (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1))) * Delta0_F1
+    - eta_F1 * (sp.cosh(alpha_F1) - 1)
+)
+expect_zero("Delta_0(F1) defining-equation residual", delta0_residual)
+
+deltaInf_residual = sp.simplify(
+    (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1)) * DeltaInf_F1
+    - (sp.cosh(alpha_F1) + (eta_F1 / alpha_F1) * sp.sinh(alpha_F1) - 1)
+)
+expect_zero("Delta_inf(F1) defining-equation residual", deltaInf_residual)
+
 yy = sp.symbols("yy")
-y_F1 = sp.nsolve(yy * sp.tan(yy) - eta_F1, 1.53, tol=1e-30, maxsteps=100)
+y_F1 = sp.nsolve(yy * sp.tan(yy) - eta_F1, sp.Float("1.53", 80), tol=1e-30, maxsteps=100, prec=80)
+y_residual = sp.N(y_F1 * sp.tan(y_F1) - eta_F1, 40)
+# nsolve solved this to tol=1e-30; verify residual is below 1e-25.
+if abs(y_residual) > sp.Float("1e-25"):
+    raise AssertionError(f"y_F1 fails defining equation: residual = {y_residual}")
+print(f"y_F1 defining-equation residual = {y_residual}")
 A_F1 = sp.simplify((kappa_F1 + pi**2 / 4) / (kappa_F1 + y_F1**2))
 
 print("Delta_0(F1) =", sp.N(Delta0_F1, 30))
@@ -72,6 +94,15 @@ print("Delta_inf(F1) =", sp.N(DeltaInf_F1, 30))
 print("y_F1 =", sp.N(y_F1, 30))
 print("A_F1 =", sp.N(A_F1, 30))
 
+# SOURCE-ANCHOR (operator selectors):
+#   Theta_chi_coeff (= 4.06863235008162) and Theta_J_coeff (= 0.927552032539308)
+#   are the natural Family-1 operator selectors carried forward from earlier
+#   stages.  The integer prefactor 136900 = 370^2 = eta_F1 * (kappa_F1 + ...?)
+#   originates upstream as well.  If an upstream verifying script anchors
+#   these (e.g., a root of an operator equation), reference it here.  As of
+#   this audit no upstream sympy/mathematica script in this unit verifies
+#   them, so any transcription typo here will propagate silently.
+#   TODO(upstream-anchor): cite the producing stage's verifying script.
 Theta_chi_coeff = sp.Float("4.06863235008162")
 Theta_J_coeff = sp.Float("0.927552032539308")
 Xi_chi_coeff = sp.Integer(136900) * Theta_chi_coeff
@@ -102,6 +133,21 @@ zeta_plus_chi = sp.N(zeta_F1.subs(Pe_sym, Pe_plus_chi), 30)
 zeta_minus_J = sp.N(zeta_F1.subs(Pe_sym, Pe_minus_J), 30)
 zeta_plus_J = sp.N(zeta_F1.subs(Pe_sym, Pe_plus_J), 30)
 zeta_max_F1 = sp.N(A_F1 * pi**2 / 4, 30)
+
+# Monotonicity check: zeta_F1(Pe) = A_F1 * Omega(Pe)^2 should be monotone
+# increasing in Pe over the relevant range, since Omega is positive and
+# increasing on (0, infinity).  The ledger claim "monotone in Xi on the
+# stable branch" follows because Pe = Xi * Delta is monotone in Xi on the
+# stable branch.  Check d zeta / d Pe > 0 at a sample of representative Pe
+# values spanning the chi and J windows.
+dzeta_dPe = sp.diff(zeta_F1, Pe_sym)
+for Pe_test_val in [sp.Float("10"), sp.Float("100"), sp.Float("1000"), sp.Float("10000")]:
+    deriv_num = sp.N(dzeta_dPe.subs(Pe_sym, Pe_test_val), 30)
+    print(f"  d zeta / d Pe at Pe = {Pe_test_val} : {deriv_num}")
+    if deriv_num <= 0:
+        raise AssertionError(
+            f"zeta_F1 not monotone increasing at Pe = {Pe_test_val}: deriv = {deriv_num}"
+        )
 
 print("zeta_-^(chi) =", zeta_minus_chi)
 print("zeta_+^(chi) =", zeta_plus_chi)

@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage083_family1_direct_operator_window_mathematica_audit.wl
-# Date: 2026-05-11T13:00:35-06:00
-# Elapsed: 17s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 066 — DIRECT FAMILY-1 OPERATOR WINDOW
@@ -13,6 +5,14 @@ STAGE 066 — DIRECT FAMILY-1 OPERATOR WINDOW
 dPe_*/dXi = delta[pe[xi]]/(1 - xi*Derivative[1][delta][pe[xi]])
 implicit fixed-point derivative = 0
 PASS: implicit fixed-point derivative
+Delta_0(F1) defining-equation residual = 0
+PASS: Delta_0(F1) defining-equation residual
+Delta_inf(F1) defining-equation residual = 0
+PASS: Delta_inf(F1) defining-equation residual
+y_F1 satisfies y Tan[y] = eta diff = 0``46.851292696328365
+PASS: y_F1 satisfies y Tan[y] = eta
+A_F1 independent vs closed-form diff = 0``39.69894745252931
+PASS: A_F1 independent vs closed-form
 Delta_0(F1) = 0.0001733020790215251490571561965499240307128269537269643639`30.
 Delta_inf(F1) = 0.0201447565540521594271032956099177756319537877435562045469`30.
 y_F1 = 1.5294824837146996499271076224024730256136350231989369098177`30.
@@ -23,6 +23,8 @@ Pe_-^(chi) = 96.5285247264385
 Pe_+^(chi) = 11220.54416262591
 Pe_-^(J)   = 22.006222633075396
 Pe_+^(J)   = 2558.0189234920535
+Omega(Pe) identity residual = 0
+PASS: Omega(Pe) identity residual
 zeta_-^(chi) = 2.466222913478465
 zeta_+^(chi) = 2.4675291327387034
 zeta_-^(J)   = 2.442575714771791
@@ -50,6 +52,8 @@ zeta_+^(J) numeric check diff = 2.220446049250313*^-15
 PASS: zeta_+^(J) numeric check
 zeta_max^(F1) numeric check diff = 2.220446049250313*^-15
 PASS: zeta_max^(F1) numeric check
+  d zeta / d Pe samples = {0.0223883515404681120652853280303031795703677756031171758354`30., 0.0000243355192517079032933462453817121858217607194676730838`30., 2.43533570739107786386275668323910079953362769995328`30.*^-8, 2.43535355401574360788819948213816608163084367625`28.39215289313394*^-11}
+PASS: zeta_F1 monotone increasing
 Pi_suff^(chi)/C_mix at eps_blk=0 = 3.466222913478465
 Pi_fail^(chi)/C_mix at eps_blk=0 = 3.4675291327387034
 Pi_suff^(J)/C_mix at eps_blk=0   = 3.442575714771791
@@ -60,5 +64,3 @@ Theorem ledger:
   dPe_*/dXi = Delta / (1 - Xi dDelta/dPe)
   zeta_phys(F1) and Pi/C_mix windows are monotone in Xi on the stable branch
   inserting the natural Family-1 wall data reproduces the Stage-61/63/64 windows directly
-
-EXIT_CODE: 0

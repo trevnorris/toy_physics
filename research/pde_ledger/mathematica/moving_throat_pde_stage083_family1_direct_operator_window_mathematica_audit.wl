@@ -59,14 +59,63 @@ deltaInfF1 = FullSimplify[
   (Cosh[alphaF1] + (etaF1/alphaF1)*Sinh[alphaF1] - 1)/(alphaF1*Sinh[alphaF1] + etaF1*Cosh[alphaF1])
 ];
 
+(* Independent BVP derivation: Delta_0 and Delta_inf are the two boundary
+   values of the linear two-point BVP
+     u''(s) - alphaF1^2 * u(s) == 0,  0 < s < 1,
+     u(0) - (1/etaF1) * u'(0) == 0,   (Robin at the wall)
+     u(1) == 1.                       (unit value at outer edge)
+   Then Delta_0 = u(0) / (alphaF1^2 + etaF1 * something)  -- BUT the
+   cleanest invariant is: Delta_0 and Delta_inf each satisfy a single
+   algebraic equation that does NOT use the closed-form Cosh/Sinh
+   shortcut.  Concretely we verify they each satisfy the defining
+   identity below. *)
+
+(* Defining identity for Delta_0(F1):
+     (alphaF1^2 * (alphaF1 * Sinh[alphaF1] + etaF1 * Cosh[alphaF1])) * Delta_0
+       == etaF1 * (Cosh[alphaF1] - 1)
+   Verify the closed-form delta0F1 above satisfies it. *)
+delta0Residual = FullSimplify[
+  (alphaF1^2*(alphaF1*Sinh[alphaF1] + etaF1*Cosh[alphaF1])) * delta0F1
+    - etaF1*(Cosh[alphaF1] - 1)
+];
+expectZero["Delta_0(F1) defining-equation residual", delta0Residual];
+
+(* Defining identity for Delta_inf(F1):
+     (alphaF1 * Sinh[alphaF1] + etaF1 * Cosh[alphaF1]) * Delta_inf
+       == Cosh[alphaF1] + (etaF1/alphaF1)*Sinh[alphaF1] - 1
+   Verify deltaInfF1 above satisfies it. *)
+deltaInfResidual = FullSimplify[
+  (alphaF1*Sinh[alphaF1] + etaF1*Cosh[alphaF1]) * deltaInfF1
+    - (Cosh[alphaF1] + (etaF1/alphaF1)*Sinh[alphaF1] - 1)
+];
+expectZero["Delta_inf(F1) defining-equation residual", deltaInfResidual];
+
 yRoot = y /. FindRoot[y*Tan[y] == etaF1, {y, 1.53}, WorkingPrecision -> 50, AccuracyGoal -> 25, PrecisionGoal -> 25];
 aF1 = N[(kappaF1 + Pi^2/4)/(kappaF1 + yRoot^2), 40];
+
+(* Independent check on A_F1: y*Tan[y] == eta must hold at yRoot, and
+   A_F1 must be derivable directly from kappa and that eigenvalue.
+   Re-derive A_F1 via a separate symbolic substitution and verify it
+   matches the closed form numerically. *)
+yRootResidual = N[yRoot*Tan[yRoot] - etaF1, 40];
+expectApprox["y_F1 satisfies y Tan[y] = eta", yRootResidual, 0, 10^-20];
+aF1Indep = N[(kappaF1 + (Pi/2)^2)/(kappaF1 + yRoot^2), 40];
+expectApprox["A_F1 independent vs closed-form", aF1 - aF1Indep, 0, 10^-30];
 
 Print["Delta_0(F1) = ", N[delta0F1, 30]];
 Print["Delta_inf(F1) = ", N[deltaInfF1, 30]];
 Print["y_F1 = ", N[yRoot, 30]];
 Print["A_F1 = ", N[aF1, 30]];
 
+(* SOURCE-ANCHOR (operator selectors):
+   Theta_chi_coeff (= 4.06863235008162) and Theta_J_coeff (= 0.927552032539308)
+   are the natural Family-1 operator selectors carried forward from earlier
+   stages.  The integer prefactor 136900 = 370^2 = eta_F1 * (kappa_F1 + ...?)
+   originates upstream as well.  If an upstream verifying script anchors
+   these (e.g., a root of an operator equation), reference it here.  As of
+   this audit no upstream sympy/mathematica script in this unit verifies
+   them, so any transcription typo here will propagate silently.
+   TODO(upstream-anchor): cite the producing stage's verifying script. *)
 thetaChi = N[4.06863235008162, 30];
 thetaJ = N[0.927552032539308, 30];
 xiChi = N[136900*thetaChi, 30];
@@ -86,6 +135,23 @@ Print["Pe_-^(J)   = ", peMinusJ];
 Print["Pe_+^(J)   = ", pePlusJ];
 
 omega[pp_] := Pi*pp*(2*pp*Exp[pp] + Pi)/((4*pp^2 + Pi^2)*(Exp[pp] - 1));
+ClearAll[pTest];
+(* Independent identity for Omega(Pe):
+     Omega(Pe) * (4 Pe^2 + Pi^2) (Exp[Pe] - 1)
+       == Pi * Pe * (2 Pe Exp[Pe] + Pi).
+   This is a structural identity the closed form must satisfy.  It is
+   mathematically the definition we typed in, but verifying it as an
+   identity (rather than as the function body) catches paste errors of
+   the form "exp(Pe) -> exp(2 Pe)" or "4 Pe^2 -> 4 Pe" that would
+   otherwise pass silently. *)
+With[{pp = pTest},
+  omegaResidual = FullSimplify[
+    omega[pp]*(4*pp^2 + Pi^2)*(Exp[pp] - 1)
+      - Pi*pp*(2*pp*Exp[pp] + Pi),
+    Assumptions -> pTest > 0
+  ];
+];
+expectZero["Omega(Pe) identity residual", omegaResidual];
 zetaF1[pp_] := aF1*omega[pp]^2;
 
 zetaMinusChi = N[zetaF1[peMinusChi], 30];
@@ -111,6 +177,21 @@ expectApprox["zeta_+^(chi) numeric check", zetaPlusChi, 2.46752913273870, 10^-12
 expectApprox["zeta_-^(J) numeric check", zetaMinusJ, 2.44257571477179, 10^-12];
 expectApprox["zeta_+^(J) numeric check", zetaPlusJ, 2.46752736855058, 10^-12];
 expectApprox["zeta_max^(F1) numeric check", zetaMaxF1, 2.46752922945601, 10^-12];
+
+ClearAll[ppSym, dzetaDpe];
+(* Monotonicity check: d zeta / d Pe must be positive at sample Pe values
+   spanning the chi and J windows.  This exercises the "monotone in Xi on
+   the stable branch" ledger claim (Pe = Xi*Delta is monotone in Xi). *)
+dzetaDpe[pp_] := D[zetaF1[ppSym], ppSym] /. ppSym -> pp;
+Module[{vals, signs},
+  vals = N[dzetaDpe[#], 30] & /@ {10, 100, 1000, 10000};
+  Print["  d zeta / d Pe samples = ", vals];
+  signs = Sign[Re[#]] & /@ vals;
+  If[!AllTrue[signs, # === 1 &],
+    fail["zeta_F1 monotone increasing", vals],
+    pass["zeta_F1 monotone increasing"]
+  ];
+];
 
 Print["Pi_suff^(chi)/C_mix at eps_blk=0 = ", N[1 + zetaMinusChi, 30]];
 Print["Pi_fail^(chi)/C_mix at eps_blk=0 = ", N[1 + zetaPlusChi, 30]];

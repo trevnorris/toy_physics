@@ -37,6 +37,29 @@ Deltainf = sp.simplify(
     (alpha * sp.sinh(alpha) + eta * sp.cosh(alpha))
 )
 
+# Independent symbolic check: the stated closed forms must satisfy
+# the defining algebraic identities for *all* positive alpha_sym, eta_sym,
+# not just the substituted numeric values alpha = 111/sqrt(5), eta = 37.
+alpha_sym, eta_sym = sp.symbols("alpha_sym eta_sym", positive=True, real=True)
+Delta0_sym = eta_sym * (sp.cosh(alpha_sym) - 1) / (
+    alpha_sym**2 * (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym))
+)
+Deltainf_sym = (sp.cosh(alpha_sym) + (eta_sym / alpha_sym) * sp.sinh(alpha_sym) - 1) / (
+    alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)
+)
+delta0_identity = sp.simplify(
+    (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Delta0_sym
+    - eta_sym * (sp.cosh(alpha_sym) - 1) / alpha_sym**2
+)
+deltainf_identity = sp.simplify(
+    (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Deltainf_sym
+    - (sp.cosh(alpha_sym) + (eta_sym / alpha_sym) * sp.sinh(alpha_sym) - 1)
+)
+print("Delta_0 algebraic identity (free alpha, eta) =", delta0_identity)
+print("Delta_inf algebraic identity (free alpha, eta) =", deltainf_identity)
+assert delta0_identity == 0
+assert deltainf_identity == 0
+
 print("Lambda_ell =", Lambda_ell)
 print("eta =", eta)
 print("kappa =", kappa)
@@ -71,9 +94,14 @@ print("Theta_fail / Pe_req =", sp.N(sp.simplify(Theta_fail / Pe_req), 20))
 print("Theta_suff / Pe_req =", sp.N(sp.simplify(Theta_suff / Pe_req), 20))
 
 # Exact reduction Upsilon_w = alpha_r^2 Theta_w on the reference branch.
-Upsilon_expr = sp.simplify(alpha_r**2 * Theta)
-print("\nUpsilon_w(reference) =", Upsilon_expr)
-assert Upsilon_expr == 100 * Theta
+# Test the round-trip on the actually-constructed fail and suff branches,
+# not the trivial identity 100*Theta == 100*Theta.
+Upsilon_fail_from_Theta = sp.simplify(alpha_r**2 * Theta_fail)
+Upsilon_suff_from_Theta = sp.simplify(alpha_r**2 * Theta_suff)
+print("\nUpsilon_fail - alpha_r^2 * Theta_fail =", sp.simplify(Upsilon_fail - Upsilon_fail_from_Theta))
+print("Upsilon_suff - alpha_r^2 * Theta_suff =", sp.simplify(Upsilon_suff - Upsilon_suff_from_Theta))
+assert sp.simplify(Upsilon_fail - Upsilon_fail_from_Theta) == 0
+assert sp.simplify(Upsilon_suff - Upsilon_suff_from_Theta) == 0
 
 print("\nFinal ledger:")
 print("  Delta_0   ~", sp.N(Delta0, 16))

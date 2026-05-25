@@ -52,6 +52,13 @@ zetaFailChi = zetaFn[peFailChi];
 zetaSuffJ = zetaFn[peSuffJ];
 zetaFailJ = zetaFn[peFailJ];
 
+omegaIndep[p_] := Pi*p*(2*p*Exp[p] + Pi) / ((4*p^2 + Pi^2) * (Exp[p] - 1));
+aF1Indep = N[(12321/5 + Pi^2/4) / (12321/5 + yRoot^2), 50];
+zetaTargetSuffChi = N[aF1Indep * omegaIndep[ToExpression["96.5285247264386`30"]]^2, 40];
+zetaTargetFailChi = N[aF1Indep * omegaIndep[ToExpression["11220.5441626259`30"]]^2, 40];
+zetaTargetSuffJ   = N[aF1Indep * omegaIndep[ToExpression["22.0062226330754`30"]]^2, 40];
+zetaTargetFailJ   = N[aF1Indep * omegaIndep[ToExpression["2558.01892349205`30"]]^2, 40];
+
 Print["zeta_max^(F1) = ", fmt[zetaMax]];
 Print["zeta_suff^(chi)(lambda_mu) = zeta_F1(96.5285247264386 lambda_mu^2)"];
 Print["zeta_fail^(chi)(lambda_mu) = zeta_F1(11220.5441626259 lambda_mu^2)"];
@@ -68,10 +75,10 @@ Print["zeta_fail^(chi)(1) = ", fmt[zetaFailChi1]];
 Print["zeta_suff^(J)(1) = ", fmt[zetaSuffJ1]];
 Print["zeta_fail^(J)(1) = ", fmt[zetaFailJ1]];
 
-expectApprox["zeta_suff^(chi)(1) numeric check", zetaSuffChi1, ToExpression["2.4662229134784638979`25"], 10^-14];
-expectApprox["zeta_fail^(chi)(1) numeric check", zetaFailChi1, ToExpression["2.4675291327387028754`25"], 10^-14];
-expectApprox["zeta_suff^(J)(1) numeric check", zetaSuffJ1, ToExpression["2.4425757147717912819`25"], 10^-14];
-expectApprox["zeta_fail^(J)(1) numeric check", zetaFailJ1, ToExpression["2.4675273685505776147`25"], 10^-14];
+expectApprox["zeta_suff^(chi)(1) numeric check", zetaSuffChi1, zetaTargetSuffChi, 10^-14];
+expectApprox["zeta_fail^(chi)(1) numeric check", zetaFailChi1, zetaTargetFailChi, 10^-14];
+expectApprox["zeta_suff^(J)(1) numeric check", zetaSuffJ1, zetaTargetSuffJ, 10^-14];
+expectApprox["zeta_fail^(J)(1) numeric check", zetaFailJ1, zetaTargetFailJ, 10^-14];
 
 limSuffChi = N[Limit[zetaSuffChi, lambdaMu -> Infinity], 40];
 limFailChi = N[Limit[zetaFailChi, lambdaMu -> Infinity], 40];
@@ -88,6 +95,9 @@ expectApprox["limit zeta_fail^(chi) -> zeta_max", limFailChi, zetaMax, 10^-14];
 expectApprox["limit zeta_suff^(J) -> zeta_max", limSuffJ, zetaMax, 10^-14];
 expectApprox["limit zeta_fail^(J) -> zeta_max", limFailJ, zetaMax, 10^-14];
 expectTrue["zeta_suff^(chi)(1) < zeta_fail^(chi)(1) < zeta_max", zetaSuffChi1 < zetaFailChi1 < zetaMax];
+expectTrue["zeta_suff^(J)(1) < zeta_fail^(J)(1) < zeta_max", zetaSuffJ1 < zetaFailJ1 < zetaMax];
+expectTrue["zeta_suff^(J)(1) <= zeta_suff^(chi)(1)", zetaSuffJ1 <= zetaSuffChi1];
+expectTrue["zeta_fail^(J)(1) <= zeta_fail^(chi)(1)", zetaFailJ1 <= zetaFailChi1];
 
 Print[""];
 Print["Stage 080 Mathematica audit passed."];

@@ -50,6 +50,9 @@ Print["I_f = ", fmt[ifMom]];
 expectZero["I_f - 1/3", ifMom - 1/3];
 Print["xi_* = ", fmt[xiStar]];
 Print["xi_*(alpha_r=10) = ", fmt[N[xiStar /. alphaR -> 10, 30]]];
+sAtStar = (1 + Tanh[xiStar])/2;
+rhoQuarticAtStar = FullSimplify[1 - alphaR*sAtStar^2, Assumptions -> $Assumptions];
+expectZero["1 - alphaR*S[xi_*]^2", rhoQuarticAtStar];
 
 banner["NUMERICAL FAMILY-1 EXTRACTION"];
 
@@ -86,7 +89,6 @@ Print["denominator = ", fmt[denNum]];
 Print["Theta_w^(chi) / lambda_mu^2 = ", fmt[thetaChi]];
 Print["Theta_w^(J) / lambda_mu^2 = ", fmt[thetaJ]];
 
-expectApprox["xi_* numeric check", xiCut, ToExpression["-0.38558106921542562403635498846713378847348301441599`50"], 10^-30];
 expectApprox["<rho>_chi numeric check", r1, ToExpression["0.19261900555649309777068139356018510792903510747507`50"], 10^-28];
 expectApprox["<rho^2>_chi numeric check", r2, ToExpression["0.16274529400326462037087418498629868328210821103971`50"], 10^-28];
 expectApprox["Theta_w^(chi) numeric check", thetaChi, ToExpression["4.0686323500816155092718546246574670820527052759928`50"], 10^-26];

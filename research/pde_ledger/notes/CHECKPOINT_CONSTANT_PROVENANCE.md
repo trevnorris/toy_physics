@@ -6,14 +6,15 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-22` (batch III.3 close — stage 069 is the one
-checkpoint in range 061-072; its red-team findings (taut + math_translit +
-prov) were closed by replacing definitional `Cres2`/`Wfail_res`/`delta_fail`
-identities with a parameterized `W_match` generator + monotonicity check
-(SymPy) and a `Cres2Prim`/`Pres = 1/Cres2` route with `PresGap` via
-`Solve` (Mathematica). No new numerical or symbolic constants were
-introduced — the form of the threshold-window result is unchanged, only
-the verification structure. No new stage rows needed.)
+Snapshot date: `2026-05-25` (batch III.4 close — no checkpoint stages
+fall in range 073-084, so no new entries needed. The Family-1 numerology
+cluster 075-084 generated 12 `hardcoded_result` findings this batch
+(literal constants like `alpha_r=10`, `1/20`, `4.06863235...`,
+`0.927552032...`, `136900`, `1369`), but those were resolved either by
+in-script derivation routes or by SOURCE-ANCHOR/TODO(provenance) comments
+on the carried-forward literals — none of the stages involved are
+checkpoint stages, so they don't enter this log. Previous III.3 update
+remains accurate for stage 069.)
 
 ## Audit Rule
 

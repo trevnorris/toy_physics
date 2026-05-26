@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 028 — COHERENT LOCAL TRACKING
+STAGE 045 — COHERENT LOCAL TRACKING
 ========================================================================================
 g_W extracted - reference = 0
 PASS: g_W extracted - reference
@@ -24,9 +24,6 @@ PASS: R_tr - 1/(1+deltaU) - deltaU/((1+chi0)(1+deltaU))
 M_mix = (8*(1 + chi0)^2*ZW)/((-1 + epsEta)*(-1 + epsWSplit)*Pi^2)
 M_supp = (8*(1 + chi0)^2*ZPhi)/((-1 + epsEta)*(-1 + epsPhiSplit)*Pi^2)
 M_tr = (8*(1 + chi0)^2*((-1 + epsWSplit)*ZPhi + (-1 + epsPhiSplit)*ZW))/((-1 + epsEta)*(-1 + epsPhiSplit)*(-1 + epsWSplit)*Pi^2)
-M_tr_channel_sum = (8*(1 + chi0)^2*((-1 + epsWSplit)*ZPhi + (-1 + epsPhiSplit)*ZW))/((-1 + epsEta)*(-1 + epsPhiSplit)*(-1 + epsWSplit)*Pi^2)
-M_tr - channel_sum = 0
-PASS: M_tr - channel_sum
 tracking numerator = delta*mMixSym + delta*mSuppSym - delta*xi + mMixSym*xi + mSuppSym*xi + lambda0*mMixSym*rU^2*xi + lambda0*mSuppSym*rU^2*xi - xi^2
 tracking denominator = delta + xi + lambda0*rU^2*xi
 tracking quadratic collapse = 0
@@ -36,8 +33,10 @@ G_tr generic formula = 0
 PASS: G_tr generic formula
 G_tr D/N specialization = 0
 PASS: G_tr D/N specialization
-F_tr normalization law = 0
-PASS: F_tr normalization law
-coherent normalization residual = rTarget + ((9*delta + (9 + 2*rU)*xi)^2*(9*delta + (9 + 2*rU^2)*xi)^2)/(81*(-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*rU^2)*xi^2)^2)
+Stage-044 tracking F collapse = 0
+PASS: Stage-044 tracking F collapse
+F_tr collapse from Stage-044 residual = 0
+PASS: F_tr collapse from Stage-044 residual
+coherent normalization residual = rTarget - ((delta + xi + (2*rU*xi)/9)^2*(delta + xi + (2*rU^2*xi)/9)^2)/((1 - xi)*((2*rU^2*xi^2)/9 + (delta + xi)^2)^2)
 
 Stage 045 Mathematica audit passed.

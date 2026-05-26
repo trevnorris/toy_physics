@@ -39,6 +39,12 @@ PASS: z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))
 D_dir = (8*Sqrt[2]*cEtaW*deltaU*rho0)/(3*(1 + deltaU)*Sqrt[muEta*muW]*Pi^2)
 direction-splitting invariant derived matches postulated = 0
 PASS: direction-splitting invariant derived matches postulated
+collinearity if-leg: D_dir(deltaU=0) = 0 = 0
+PASS: collinearity if-leg: D_dir(deltaU=0) = 0
+collinearity if-leg: D_dir(rho0=0) = 0 = 0
+PASS: collinearity if-leg: D_dir(rho0=0) = 0
+Numerator(D_dir) / (rho0*deltaU) = 8*Sqrt[2]*cEtaW
+PASS: collinearity only-if: residual factor is nonzero and independent of rho0, deltaU
 
 ----------------------------------------------------------------------------------------
 4. Split-U continuum placement map
@@ -46,10 +52,6 @@ PASS: direction-splitting invariant derived matches postulated
 M_mix^(split U) = (88*(1 + deltaU)*(1 + rho0)^2*zW)/((-1 + epsEta)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)*Pi^2)
 R_target^(split U) = ((1 - epsEta)*(1 - ((11 + 9*deltaU)*epsW)/(11*(1 + deltaU)))^2*lambda)/((1 + rho0)^2*zW)
 product = (8*(11 + 11*deltaU - 11*epsW - 9*deltaU*epsW)*lambda)/(11*(1 + deltaU)*Pi^2)
-M_mix split is M_mix_flat under epsW -> epsWSplit = 0
-PASS: M_mix split is M_mix_flat under epsW -> epsWSplit
-R_target split is R_target_flat under epsW -> epsWSplit = 0
-PASS: R_target split is R_target_flat under epsW -> epsWSplit
 
 ----------------------------------------------------------------------------------------
 5. Small-splitting expansions

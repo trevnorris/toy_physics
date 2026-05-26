@@ -67,7 +67,7 @@ sExpected = FullSimplify[
   (delta + (1 + r t) xi - m (q - r) (q - t))^2/dQR,
   Assumptions -> $Assumptions
 ];
-fGeneral = FullSimplify[zExpected sExpected/(1 - xi), Assumptions -> $Assumptions];
+fGeneral = FullSimplify[zOverlap sOverlap/(1 - xi), Assumptions -> $Assumptions];
 fExpected = FullSimplify[
   (delta + (1 + q r) xi)^2 (delta + (1 + r t) xi - m (q - r) (q - t))^2/
     ((1 - xi) dQR^2),

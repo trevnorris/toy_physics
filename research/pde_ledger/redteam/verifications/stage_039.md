@@ -2,16 +2,16 @@
 unit_id: 039
 batch: III.1
 verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-22T12:35:00Z
+verify_date: 2026-05-26T02:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
+findings_resolved: 2
+findings_total: 2
 material_change: false
 ---
 
-# Verification — unit 039
+# Verification — unit 039 (v2)
 
 ## Per-finding outcomes
 
@@ -21,149 +21,96 @@ material_change: false
 
 **What changed:**
 
-- `scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:114-117` — replaced
-  `expect_zero("z1/z0 - (kappa1/kappa0) R_U", sp.simplify(z1/z0 - (kappa1/kappa0)*R_U))` with
-  `expect_zero("z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))", sp.simplify(z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))))`.
-  `R_U` is no longer referenced in the assertion; the `print("R_U =", R_U)` informational line at 113 is retained.
-- `mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:95-98` — same replacement
-  applied to the Mathematica mirror; the `Print["R_U = ", fmt[rU]]` informational line at 94 is retained.
+- `scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py`: the two `expect_zero` assertions that compared `M_mix_split` to `M_mix_flat.subs(eps_W, eps_W_split)` and `R_target_split` to `R_target_flat.subs(eps_W, eps_W_split)` (previously at lines 138-139) have been deleted. The documentation prints at lines 149-151 (`print("M_mix^(split U) =", ...)`, `print("R_target^(split U) =", ...)`, `print("product =", ...)`) are retained. The flat-definition statements at lines 143-144 are retained for documentation continuity.
+- `mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl`: the two `expectZero` analogues (previously at lines 118-119) have been deleted. The `Print["M_mix^(split U) = ", ...]`, `Print["R_target^(split U) = ", ...]`, `Print["product = ", ...]` documentation prints at lines 129-131 remain. `mMixFlat` and `rTargetFlat` definitions at lines 123-124 remain.
+
+The diff at `redteam/exec_logs/stage_039_diff.patch` lines 30-31 (Mathematica) and 64-65 (SymPy) shows exactly the deletions specified in the directive, with no collateral edits.
 
 **Assessment:**
 
-The edits match the directive verbatim in both files. The new check references `z0` and `z1` against
-their explicit `(1+rho0)` / `(1+rho0/(1+deltaU))` rho-structure rather than against the named symbol
-`R_U`, satisfying the auditor's stated verification criterion (the auditor's own self-test notes at
-report line 205 affirm this form is acceptable). The transcripts show
-`z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0` printed and PASS in both engines (sympy
-output line 32; mma output lines 37-38). No collateral edits.
+The edit is correct and exactly matches the "Required change" in the directive. The two tautological identities — both constructed by literally substituting `eps_W_split` into the flat formula and then asserting equivalence — are gone. The exec logs no longer print the tautological PASS lines:
 
-### F2 — tautological_check
+- SymPy log (lines 47-50) shows section 22.4 with only the three `print(...)` lines for `M_mix^(split U)`, `R_target^(split U)`, and `product`; no `... = 0` lines.
+- Mathematica log (lines 56-59) shows section 4 with only three `Print[...]` lines, no `PASS: M_mix split ...` or `PASS: R_target split ...` lines.
+
+No paper-side claim is left unverified because these checks were `extra` relative to `\stagefield{Output}`. Both scripts still `exit 0`.
+
+### F2 — insufficient_verification
 
 **Classification:** resolved
 
 **What changed:**
 
-- `scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:129-139` — inserted flat-U
-  baseline definitions `M_mix_flat`, `R_target_flat` immediately before `M_mix_split`,
-  `R_target_split`; replaced `expect_zero("product law", product - 8*Lambda*(1-eps_W_split)/pi**2)`
-  with two substitution checks
-  `expect_zero("M_mix split is M_mix_flat under eps_W -> eps_W_split", M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))`
-  and the analogous `R_target` check. `print("product =", product)` at line 137 retained.
-- `mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:109-119` — inserted
-  `mMixFlat`, `rTargetFlat` definitions immediately after the section banner; replaced
-  `expectZero["product law", product - 8 lambda (1 - epsWSplit)/Pi^2]` with the two analogous
-  substitution checks. `Print["product = ", fmt[product]]` at line 117 retained.
+- `scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:124-136`: a new collinearity-iff block was inserted between the existing `expect_zero("direction-splitting invariant", ...)` (line 122) and `print("Collinearity theorem: ...")` (now line 138). The block contains:
+  - `expect_zero("collinearity if-leg: D_dir(deltaU=0) = 0", D_dir.subs(deltaU, 0))`
+  - `expect_zero("collinearity if-leg: D_dir(rho0=0) = 0", D_dir.subs(rho0, 0))`
+  - Only-if leg using `sp.fraction(sp.together(D_dir))` to extract numerator, divide by `rho0 * deltaU`, simplify, print the reduced ratio, and raise `AssertionError` if it still depends on `rho0` or `deltaU`, or if it simplifies to zero.
+- `mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:107-119`: an analogous block was inserted immediately after `expectZero["direction-splitting invariant derived matches postulated", ...]` at line 105 (before the `subbanner` at line 121). The block contains the same three checks using `Together`, `Numerator`, `FullSimplify`, `FreeQ`, and `fail`/`pass` helpers.
+
+The diff at `redteam/exec_logs/stage_039_diff.patch` lines 5-21 (Mathematica) and 39-55 (SymPy) shows exactly the additions specified in the directive, including the comments, with no collateral edits.
 
 **Assessment:**
 
-Edits match the directive verbatim in both files. The new checks are structural identities that
-will fail under exponent perturbations in either `M_mix_split` or `R_target_split` (per the
-auditor's stated verification criterion), so they are non-tautological in the sense the auditor
-specified. The transcripts show both new checks pass with residual `0` in both engines (sympy
-output lines 43-44; mma output lines 49-52). The old `product law` assertion is gone. No collateral
-edits.
+Both insertions match the directive's "Required change" verbatim (matching variable names, structure, helper functions, and assertion messages). The new checks are non-tautological:
 
-### F3 — mathematica_transliteration
+- The `if-leg` substitutions exercise `D_dir = kappa0*z1 - kappa1*z0` (which was derived independently from the underlying `z0`, `z1` loading vectors at lines 109-117 of the SymPy script and 87-94 of the Mathematica script), not the postulated closed-form. The fact that `D_dir.subs(deltaU, 0) = 0` and `D_dir.subs(rho0, 0) = 0` are independently true is a non-trivial algebraic identity, not a built-in equivalence.
+- The only-if leg pulls `Numerator(Together(D_dir))`, divides by `rho0 * deltaU`, and verifies the remaining factor has no `rho0` or `deltaU` dependence. The SymPy exec log line 42 shows `Numerator(D_dir) / (rho0*deltaU) = 8*sqrt(2)*c_etaW`; the Mathematica exec log line 51 shows `Numerator(D_dir) / (rho0*deltaU) = 8*Sqrt[2]*cEtaW`. Both are non-zero constants in `(c_etaW, mu_W, mu_eta, pi)` after `Together` reduction (the `1/(3*pi^2*sqrt(mu_W mu_eta)*(deltaU+1))` factor ends up in the denominator after `Together`, so the numerator-only ratio is `8*sqrt(2)*c_etaW`). The check is exactly equivalent to the directive's spec — the directive predicted a different reduced form (with denominator constants attached), but that was an error in the directive's prediction; the actual `sp.fraction(sp.together(...))` returns numerator-only, and the resulting check is still `free of rho0 and deltaU` and `nonzero`, which is precisely what the only-if leg requires. No semantic difference.
 
-**Classification:** resolved
+Exec log confirmations:
 
-**What changed:**
+- SymPy log lines 40-42:
+  ```
+  collinearity if-leg: D_dir(deltaU=0) = 0 = 0
+  collinearity if-leg: D_dir(rho0=0) = 0 = 0
+  Numerator(D_dir) / (rho0*deltaU) = 8*sqrt(2)*c_etaW
+  ```
+- Mathematica log lines 47-52:
+  ```
+  collinearity if-leg: D_dir(deltaU=0) = 0 = 0
+  PASS: collinearity if-leg: D_dir(deltaU=0) = 0
+  collinearity if-leg: D_dir(rho0=0) = 0 = 0
+  PASS: collinearity if-leg: D_dir(rho0=0) = 0
+  Numerator(D_dir) / (rho0*deltaU) = 8*Sqrt[2]*cEtaW
+  PASS: collinearity only-if: residual factor is nonzero and independent of rho0, deltaU
+  ```
 
-- `mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:59-62` — `deltaSplit`
-  is no longer a postulated closed form; instead the script introduces
-  `a1Direct = FullSimplify[a1 /. cEtaU^2 -> epsEta kU kEtaEff]`, then
-  `deltaSplitDerived = FullSimplify[a1Direct/a0Expected - 1]`,
-  `deltaSplitPostulated = (delta0 + epsEta deltaU/(1+deltaU))/(1-epsEta)`, and finally
-  `deltaSplit = deltaSplitDerived`. A new check at line 71
-  `expectZero["delta_split derived matches postulated", deltaSplitDerived - deltaSplitPostulated]`
-  asserts the Mathematica-derived form equals the SymPy postulate.
-- `mathematica/...stage039...wl:77-79, 83` — `epsWSplit` similarly switched from postulated to
-  derived: `epsWSplitDerived = FullSimplify[epsWDirect /. cUW^2 -> epsW kU kWEff/sigma]`,
-  `epsWSplitPostulated = epsW(1 - (2/11) deltaU/(1+deltaU))`, `epsWSplit = epsWSplitDerived`. The
-  old `expectZero["eps_W direct - split formula", ...]` at the prior line 77 was replaced by
-  `expectZero["eps_W_split derived matches postulated", epsWSplitDerived - epsWSplitPostulated]`.
-- `mathematica/...stage039...wl:100-105` — `dDir` left as `FullSimplify[kappa0 z1 - kappa1 z0]`;
-  added `dDirDerived = dDir`, `dDirPostulated = FullSimplify[-kappa0 kappa1 gW rho0 deltaU/(1+deltaU)]`,
-  `dDirExpected = dDirDerived`; replaced
-  `expectZero["direction-splitting invariant", dDir - dDirExpected]` with
-  `expectZero["direction-splitting invariant derived matches postulated", dDirDerived - dDirPostulated]`.
-
-**Assessment:**
-
-All three restructurings match the directive verbatim. The transcript confirms the three new
-`derived matches postulated` assertions appear and print residual `0` (mma output lines 20-21,
-28-29, 40-41), and the original `A0 direct - expected` / `A1 direct - expected` assertions remain
-and still pass (mma output lines 16-19). The Mathematica engine now computes `deltaSplit`,
-`epsWSplit`, `dDir` from the direct expressions and checks them against the SymPy-side postulates,
-so a sign or coefficient typo in either side's postulate would surface as a non-zero residual
-(`engine_disagreement` mode unlocked).
-
-One mild code-quality note (non-blocking): at mma:60 the assignment of `deltaSplitDerived`
-references `a0Expected` before `a0Expected` is bound at mma:63. Because Mathematica's `Set`
-evaluates the RHS at definition time, this leaves the bare symbol `a0Expected` inside the stored
-value of `deltaSplitDerived`; the symbol is resolved later when `deltaSplitDerived` is used in
-the `Print` and the `expectZero` (by which time `a0Expected` is defined). The transcript
-(`delta_split derived matches postulated = 0`, PASS) confirms the resolution happens correctly,
-so the check is sound. The directive specified this exact ordering, so Codex followed it
-verbatim — not a deviation. Listed as a side observation below for awareness but not blocking.
+Both scripts still `exit 0`. The collinearity-iff theorem is now formally asserted in both engines, closing the original finding.
 
 ## Exec log assessment
 
-**SymPy:** exit=0 (inferred from transcript; the script raises `AssertionError` on failure, the
-transcript completes with the full theorem ledger printed). Notable lines:
-
-- `A0 direct - expected = 0` and `A1 direct - expected = 0` (lines 16-17).
-- `eps_W direct - split formula = 0` (line 24).
-- `z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0` (line 32) — new F1 label.
-- `direction-splitting invariant = 0` (line 34).
-- `M_mix split is M_mix_flat under eps_W -> eps_W_split = 0` and
-  `R_target split is R_target_flat under eps_W -> eps_W_split = 0` (lines 43-44) — new F2 labels.
-- No `Traceback` or `AssertionError` anywhere.
+**SymPy:** exit=0. Notable lines:
+```
+direction-splitting invariant = 0
+collinearity if-leg: D_dir(deltaU=0) = 0 = 0
+collinearity if-leg: D_dir(rho0=0) = 0 = 0
+Numerator(D_dir) / (rho0*deltaU) = 8*sqrt(2)*c_etaW
+```
+All previous load-bearing assertions (A1-A5: `A0 direct - expected`, `A1 direct - expected`, `eps_W direct - split formula`, `z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))`, `direction-splitting invariant`) still print `= 0`. The two tautological lines from F1 are absent.
 
 **Mathematica:** exit=0. Notable lines:
+```
+PASS: direction-splitting invariant derived matches postulated
+PASS: collinearity if-leg: D_dir(deltaU=0) = 0
+PASS: collinearity if-leg: D_dir(rho0=0) = 0
+PASS: collinearity only-if: residual factor is nonzero and independent of rho0, deltaU
+Stage 039 Mathematica audit passed.
+```
+All previous `PASS:` lines (A8-A13) are still present. The two tautological `PASS:` lines from F1 are absent.
 
-- `PASS: A0 direct - expected` and `PASS: A1 direct - expected` (output lines 17, 19).
-- `PASS: delta_split derived matches postulated` (line 21) — new F3 label.
-- `PASS: eps_W_split derived matches postulated` (line 29) — new F3 label.
-- `PASS: z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))` (line 38) — new F1 label.
-- `PASS: direction-splitting invariant derived matches postulated` (line 41) — new F3 label.
-- `PASS: M_mix split is M_mix_flat under epsW -> epsWSplit` and
-  `PASS: R_target split is R_target_flat under epsW -> epsWSplit` (lines 50, 52) — new F2 labels.
-- Terminates with `Stage 039 Mathematica audit passed.`. No `FAIL`, `$Failed`, or stack traces.
-
-**Output freshness:** confirmed. Both saved `.txt` outputs (mtime 12:26) are newer than the
-corresponding script files (mtime 12:25); freshly regenerated after the codex edits.
+**Output freshness:** the saved `.txt` outputs at `scripts/output/moving_throat_pde_stage039_split_u_sector_sympy_audit.txt` and `mathematica/output/moving_throat_pde_stage039_split_u_sector_mathematica_audit.txt` are still dated May 22 12:26, while the scripts were last edited May 26 01:37 and the exec logs were captured May 26 01:50. The substantive verification rests on the exec logs (which are post-fix), but the orchestrator should re-run the saved-output refresh step (`$RT exec-*` or equivalent) to bring the `.txt` outputs into sync with the current scripts. This is a tracker/manifest concern, not a verification failure.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The edits only strengthen the verification of Stage 039's existing claims — they replace
-tautological assertions with structurally-informative ones (F1, F2) and convert postulated closed
-forms in the Mathematica mirror into derived ones (F3). No derived constant, sign, or symbolic
-form propagated downstream changed. The closed-form expressions for `delta_split`, `eps_W_split`,
-`D_dir`, `M_mix_split`, `R_target_split`, and `product` printed in the transcripts are unchanged
-from the pre-fix audit. Downstream units > 039 do not need a re-audit on substantive grounds.
+The F1 fix removes two extra (non-`Output`) tautological checks; no derived result is altered. The F2 fix adds new checks against `D_dir`, but `D_dir` itself, its closed form, `delta_split`, `eps_W_split`, `R_U`, `M_mix^(split U)`, `R_target^(split U)`, and the small-`deltaU` expansions are all unchanged in the script body and unchanged in the exec log compared to the pre-fix output. Downstream units that depend on stage 039 see identical derived quantities; no `upstream_stale` flag is needed on the substance, only (optionally) for tracking that section 22.3 of the script now has additional `PASS:` lines.
 
 ## Side observations (non-blocking)
 
-1. The Mathematica forward-reference ordering at mma:60 (`a0Expected` used before bound at mma:63)
-   is fragile-looking but works correctly because of how `Set` and lazy symbol resolution interact;
-   the directive specified exactly this ordering, so Codex was correct to apply it as-written. A
-   future cleanup might reorder the `a0Expected` definition to precede the `deltaSplitDerived`
-   line, but this is purely stylistic.
-2. The F1 sympy/mma new assertion (`z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0`) is
-   technically still an algebraic identity following from the literal definitions of `z0`, `z1`,
-   but it no longer references the named symbol `R_U`, and the auditor explicitly accepted this
-   form in the report's self-test notes (line 205) as the intended non-tautological structure.
-   Listed for completeness, not as a verification failure.
+1. Saved `.txt` outputs are stale relative to the scripts (May 22 vs. May 26). The orchestrator's post-batch tracker-update step should refresh them via `$RT exec-sympy 039` and `$RT exec-mathematica 039` (sequentially, per the no-parallel-exec rule). The exec logs already captured by the orchestrator are post-fix, so the verification is sound; this is purely a manifest-freshness item.
+2. The directive's predicted reduced form for `Numerator(D_dir) / (rho0*deltaU)` (`8*sqrt(2)*c_etaW/(3*pi**2*sqrt(mu_W)*sqrt(mu_eta))`) included denominator constants that `sp.together` actually keeps in the denominator. The actual output (`8*sqrt(2)*c_etaW` for SymPy, `8*Sqrt[2]*cEtaW` for Mathematica) is the numerator-only reduction, which is still independent of `rho0` and `deltaU` and is nonzero. The semantic check (the only-if leg) is correctly verified; only the predicted print value differed from the actual.
+3. Both engines agree on the reduced numerator (modulo the trivial transliteration `sqrt -> Sqrt`, `c_etaW -> cEtaW`). The engine cross-check from the original audit report still holds.
 
 ## Verdict justification
 
-All three findings were applied verbatim per the directive, both engines exit 0, all new
-assertions print residual `0` and PASS with the directive-specified labels, the old tautological
-assertions are gone, and the saved outputs are newer than the scripts. The F3 restructuring
-successfully unlocks engine-disagreement detection at the three key derived quantities
-(`deltaSplit`, `epsWSplit`, `dDir`) by deriving them in Mathematica and asserting equality with
-the SymPy-side postulates. No closed-form constants or signs changed, so downstream units are not
-materially affected.
+Both F1 and F2 are `resolved`. The diff at `redteam/exec_logs/stage_039_diff.patch` matches the directive's "Required change" specs verbatim, with no collateral edits. The exec logs show that both scripts still `exit 0`, all pre-existing assertions still pass, the F1 tautological assertions are gone from both engines, and the F2 collinearity-iff `if-leg` and `only-if` checks are now present in both engines and pass non-tautologically. No downstream-affecting derivation changed. Verdict: `verified`.

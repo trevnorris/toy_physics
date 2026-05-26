@@ -229,7 +229,7 @@ This is the first exact “concrete-kernel” form of the normalization test.
 
 ---
 
-## 7. Best current theorem statement after Stage 28
+## 7. Best current theorem statement after Stage 045
 
 ### What is now exact
 

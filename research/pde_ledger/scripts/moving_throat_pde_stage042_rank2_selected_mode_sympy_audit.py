@@ -89,7 +89,7 @@ sp.pprint(sp.factor(S_overlap))
 expect_zero("Z_overlap - expected", Z_overlap - Z_expected)
 expect_zero("S_overlap - expected", S_overlap - S_expected)
 
-F_general = sp.simplify(Z_expected * S_expected / (1 - xi))
+F_general = sp.simplify(Z_overlap * S_overlap / (1 - xi))
 print("F_(q,r,t) =")
 sp.pprint(sp.factor(F_general))
 

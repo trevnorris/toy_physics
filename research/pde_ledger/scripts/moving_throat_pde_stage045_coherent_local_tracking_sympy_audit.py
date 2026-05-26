@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 28 SymPy audit.
+Stage 045 SymPy audit.
 
 Checks:
 1. The coherent local D/N support kernel implies g_B g_R = g_W g_S exactly.
@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT")
+banner("STAGE 045 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT")
 
 # ---------------------------------------------------------------------------
 # 1. Coherent local support density => exact tracking condition
@@ -111,22 +111,15 @@ eps_eta, eps_W_split, eps_phi_split = sp.symbols(
     "eps_eta eps_W_split eps_phi_split", real=True
 )
 
-channels = [
-    ("W", Z_W, eps_W_split),
-    ("phi", Z_phi, eps_phi_split),
-]
 prefactor = 8 * (1 + chi_0) ** 2 / (sp.pi ** 2 * (1 - eps_eta))
-M_tr_channel_sum = sp.simplify(
-    sum(prefactor * Z_i / (1 - eps_i) for (_, Z_i, eps_i) in channels)
-)
 M_mix = sp.simplify(prefactor * Z_W / (1 - eps_W_split))
 M_supp = sp.simplify(prefactor * Z_phi / (1 - eps_phi_split))
 M_tr = sp.simplify(M_mix + M_supp)
 print("M_mix  =", M_mix)
 print("M_supp =", M_supp)
 print("M_tr   =", M_tr)
-print("M_tr_channel_sum =", M_tr_channel_sum)
-expect_zero("M_tr - channel_sum", M_tr - M_tr_channel_sum)
+# M_mix and M_supp are carried forward from Stages 022 and 026 in symbolic form;
+# the substantive verification of the prefactor structure lives in those stages.
 
 # ---------------------------------------------------------------------------
 # 4. Stage-27 quadratic branch equation collapses to tracking law
@@ -175,17 +168,35 @@ G_tr_dn = sp.simplify(M_tr_req.subs(lam0, lam0_dn))
 G_tr_expected = sp.simplify(9 * xi * (delta + xi) / (9 * delta + (9 + 2 * R_U ** 2) * xi))
 expect_zero("G_tr D/N specialization", G_tr_dn - G_tr_expected)
 
-F_track = sp.simplify(
+# Import Stage-044 F_cont residual; substitute tracking (R_phi -> R_U)
+# plus the D/N value (lambda_0 -> 2/9).
+# See: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py:82-90,140-146
+D_cont_stage044 = sp.simplify(
+    (delta + xi - Mmix * lam0 * R_U * (R_U - R_phi)) ** 2
+    + lam0 * (Mmix * (R_U - R_phi) + R_phi * xi) ** 2
+)
+F_cont_stage044 = sp.simplify(
+    (delta + (1 + lam0 * R_U * R_phi) * xi) ** 2
+    * (delta + (1 + lam0 * R_phi) * xi - Mmix * lam0 * (R_U - R_phi) * (R_U - 1)) ** 2
+    / ((1 - xi) * D_cont_stage044 ** 2)
+)
+F_track_stage044 = sp.simplify(F_cont_stage044.subs(R_phi, R_U))
+F_track_expected = sp.simplify(
     (delta + (1 + lam0 * R_U ** 2) * xi) ** 2
     * (delta + (1 + lam0 * R_U) * xi) ** 2
     / ((1 - xi) * ((delta + xi) ** 2 + lam0 * R_U ** 2 * xi ** 2) ** 2)
+)
+expect_zero("Stage-044 tracking F collapse", F_track_stage044 - F_track_expected)
+
+F_tr_from_stage044 = sp.simplify(
+    F_cont_stage044.subs([(R_phi, R_U), (lam0, lam0_dn)])
 )
 F_tr_expected = sp.simplify(
     (9 * delta + (9 + 2 * R_U ** 2) * xi) ** 2
     * (9 * delta + (9 + 2 * R_U) * xi) ** 2
     / (81 * (1 - xi) * (9 * delta ** 2 + 18 * delta * xi + (9 + 2 * R_U ** 2) * xi ** 2) ** 2)
 )
-expect_zero("F_tr normalization law", sp.simplify(F_track.subs(lam0, lam0_dn)) - F_tr_expected)
-print("coherent normalization residual =", sp.simplify(R_target - F_tr_expected))
+expect_zero("F_tr collapse from Stage-044 residual", F_tr_from_stage044 - F_tr_expected)
+print("coherent normalization residual =", sp.simplify(R_target - F_tr_from_stage044))
 
-print("\nAll Stage-28 symbolic checks passed.")
+print("\nAll Stage-045 symbolic checks passed.")

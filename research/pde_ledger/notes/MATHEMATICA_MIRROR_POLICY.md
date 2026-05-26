@@ -3,7 +3,9 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-26` (batch II.1 v2 close)
+Snapshot date: `2026-05-26` (batch III.1 v2 close)
+
+III.1 v2 re-audit (2026-05-26) caught *new* `mathematica_transliteration` findings in stage 043 (full Sections 1-5 port) and stage 045 (coefficient-chain port). Stage 043's fix introduced a separate pitfall (NEW pitfall #7 candidate): **primitive-vs-derived substitution**. The directive's F2-Insertion2 numeric-point sign anchor prescribed substituting `sigma_0=0, rho_0=1` symbolically, but the Mathematica expression's primary symbols are the primitive couplings `gB, gU, gS, gR, gW, kU` — `sigma_0` and `rho_0` are derived quantities (`sigma_0 = gU·gS/(kU·gB)`, `rho_0 = gU·gR/(kU·gW)`). Symbolic substitution on derived names doesn't reduce the primitive expression. Iter2 fix: substitute on primitives that realize the derived value — `gS → 0` for sigma_0=0, `gW → gU·gR/kU` for rho_0=1. Defense: when a directive prescribes `subs(<derived>, value)`, lift to the primitive symbols that realize the derived value. Promote to `codex.md` if recurs.
 
 II.1 v2 re-audit (2026-05-26) caught a *new* `mathematica_transliteration` finding in stage 024 (Sections III/V were line-by-line ports despite v1 II.1 having flagged the file as already rewritten). The remediation pass for 024 also fixed a separate **performance pitfall**: heavy `Table[tripleOverlap[...], {i,1,5}, {j,1,5}]` with 6-fold inner sums + FullSimplify hangs >18min when global-symbol context leaks from earlier sections; the fix is `ClearAll[<symbol-list>]` reset at the top of Section IV plus memoization of `i4`/`i6` sphere integrals via `i6[args] := i6[args] = Integrate[...]`. This pattern (heavy FullSimplify after large symbol additions in earlier sections) should be screened pre-emptively in future Mathematica-heavy stages. II.1 v2 also caught transliteration in 031 (full PART I-II port — replaced with `Eigenvalues`/`Eigenvectors`-based independent derivation) and 032 (Stage 15.4-15.5 port — replaced with `Eigensystem`-based independent path).
 

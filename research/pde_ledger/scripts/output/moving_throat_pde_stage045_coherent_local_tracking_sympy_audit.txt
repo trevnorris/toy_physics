@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 28 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT
+STAGE 045 — COHERENT LOCAL D/N KERNEL TRACKING AUDIT
 ========================================================================================
 
 ========================================================================================
@@ -30,8 +30,6 @@ range identity 2 = 0
 M_mix  = 8*Z_W*(chi_0 + 1)**2/(pi**2*(eps_W_split - 1)*(eps_eta - 1))
 M_supp = 8*Z_phi*(chi_0 + 1)**2/(pi**2*(eps_eta - 1)*(eps_phi_split - 1))
 M_tr   = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
-M_tr_channel_sum = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
-M_tr - channel_sum = 0
 
 ========================================================================================
 4. Exact collapse of the Stage-27 branch equation
@@ -42,7 +40,8 @@ tracking quadratic collapse = 0
 M_tr required on tracking branch = xi*(delta + xi)/(R_U**2*lambda_0*xi + delta + xi)
 G_tr formula = 0
 G_tr D/N specialization = 0
-F_tr normalization law = 0
-coherent normalization residual = (R_target*(xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2 + (9*delta + xi*(2*R_U + 9))**2*(9*delta + xi*(2*R_U**2 + 9))**2/81)/((xi - 1)*(9*delta**2 + 18*delta*xi + xi**2*(2*R_U**2 + 9))**2)
+Stage-044 tracking F collapse = 0
+F_tr collapse from Stage-044 residual = 0
+coherent normalization residual = (R_target*(xi - 1)*(2*R_U**2*xi**2 + 9*(delta + xi)**2)**2 + (9*delta + xi*(2*R_U + 9))**2*(9*delta + xi*(2*R_U**2 + 9))**2/81)/((xi - 1)*(2*R_U**2*xi**2 + 9*(delta + xi)**2)**2)
 
-All Stage-28 symbolic checks passed.
+All Stage-045 symbolic checks passed.

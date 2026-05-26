@@ -1,14 +1,15 @@
 ---
 unit_id: 047
 batch: III.1
-created_at: 2026-05-22T00:00:00-06:00
+created_at: 2026-05-26T00:00:00-06:00
 findings_count: 2
 stop_cold: null
 applied: true
-applied_at: 2026-05-22T12:55:57-06:00
+applied_at: 2026-05-26T01:46:54-06:00
 findings_applied: 2
 findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 047
@@ -26,26 +27,35 @@ Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifi
 ## F1 — tautological_check
 
 **Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py:42-51`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl:36-44`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py:41-74`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl:37-69`
 
 **Issue:**
-The "coherent kernel identities" rho_0 = sigma_0 = chi_0 are not non-trivially verified. The current code writes `rho0 = (gamma*lamW)*c_etaU/(KU*lamW)` and `sigma0 = c_etaU*(gamma*lamphi)/(KU*lamphi)`, with the channel-coupling factors (lamW and lamphi) appearing as multiplicative pairs that cancel by construction before any `simplify` call. The subsequent assertions `expect_zero("rho_0 - chi_0", ...)` and `expect_zero("sigma_0 - chi_0", ...)` therefore cannot fail. The Mathematica file mirrors this pattern.
+The `rho_0 = sigma_0 = chi_0` "coherent collapse identities" cannot fail in either engine. In the sympy file the construction is
+
+```python
+rho0_num = gamma * lamW * c_etaU        # line 48
+rho0_den = KU * lamW                    # line 49
+rho0 = sp.simplify(rho0_num / rho0_den) # line 50
+...
+sigma0_num = c_etaU * gamma * lamphi    # line 53
+sigma0_den = KU * lamphi                # line 54
+sigma0 = sp.simplify(sigma0_num / sigma0_den)  # line 55
+...
+chi0 = sp.simplify(gamma * c_etaU / KU) # line 58
+```
+
+then the "channel-saturation guard" asserts `simplify(rho0_num*KU - rho0_den*gamma*c_etaU) == 0` and `simplify(sigma0_num*KU - sigma0_den*gamma*c_etaU) == 0`, both of which are `simplify(KU*gamma*lamW*c_etaU - KU*gamma*lamW*c_etaU) == 0` (resp. with `lamphi`) — true by commutativity for arbitrary symbolic content, independent of any physics. The `expect_zero("rho_0 - chi_0", rho0 - chi0)` and `expect_zero("sigma_0 - chi_0", sigma0 - chi0)` calls at lines 73-74 inherit the same tautology because `rho0` and `sigma0` reduce to `chi0` by the `lamW/lamW` (resp. `lamphi/lamphi`) cancellation, which is structural in the script's expression, not derived from any matching condition. The Mathematica file (lines 40-69) mirrors this exactly.
+
+The simplest non-disruptive fix is option (b) from the report — delete the assertions and the no-op guards, and replace them with a comment marking the equality as a notational rename verified upstream at Stage 28. If the unit author later wants to re-establish a substantive collapse identity here, that requires re-derivation from Stage-28 matching conditions and should be scheduled as a separate change.
 
 **Required change:**
 
 Step 1 — SymPy file `scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py`:
 
-Replace lines 41-45 (which currently read):
-```python
-# Exact coherent identities.
-rho0 = sp.simplify((gamma * lamW) * c_etaU / (KU * lamW))
-sigma0 = sp.simplify(c_etaU * (gamma * lamphi) / (KU * lamphi))
-chi0 = sp.simplify(gamma * c_etaU / KU)
-```
+Replace lines 41-74 (currently the `# Exact coherent identities.` block plus the two no-op guard `assert` statements plus the banner and the two `expect_zero` calls) with the following block. The block keeps `chi0` as the bare coherent ratio used downstream, removes `rho0`/`sigma0` as separate symbols, prints `chi_0` for trace continuity with the .wl, and inserts a comment explaining where the collapse identity is actually verified.
 
-with the following block, which constructs rho_0 and sigma_0 from independent channel-saturation expressions whose collapse to chi_0 is performed by `simplify` rather than by manual string cancellation:
-
+Before:
 ```python
 # Exact coherent identities.
 # rho_0 is the W-channel coherent ratio: cross-correlation strength
@@ -74,26 +84,38 @@ assert sp.simplify(rho0_num * KU - rho0_den * gamma * c_etaU) == 0, (
 assert sp.simplify(sigma0_num * KU - sigma0_den * gamma * c_etaU) == 0, (
     "sigma_0 numerator/denominator do not pre-satisfy the channel-saturation rule"
 )
+
+banner("1. Coherent interference ratios")
+print("rho_0 =", rho0)
+print("sigma_0 =", sigma0)
+print("chi_0 =", chi0)
+expect_zero("rho_0 - chi_0", rho0 - chi0)
+expect_zero("sigma_0 - chi_0", sigma0 - chi0)
 ```
 
-The two new `assert` statements verify (non-trivially) that the channel-saturation rule `rho0_num * KU == rho0_den * (gamma*c_etaU)` holds, which is the physical content of the "identity"; they would fail if e.g. the numerator carried an extra lamW factor without a matching denominator factor.
+After:
+```python
+# Coherent interference ratio.
+# On the coherent tracking branch the W-channel and phi-channel
+# polarisation amplitudes saturate to the same bare ratio gamma*c_etaU/KU.
+# That saturation is established upstream at Stage 28 (matching condition
+# for the coherent local D/N kernel); within the scope of Stage 047 the
+# equalities rho_0 = sigma_0 = chi_0 are a notational rename rather than
+# an independent identity, so we do not assert them here. Any attempt to
+# verify them locally reduces to lamW/lamW (resp. lamphi/lamphi) string
+# cancellation, which is tautological.
+chi0 = sp.simplify(gamma * c_etaU / KU)
 
-Leave the existing assertions on lines 50-51 (`expect_zero("rho_0 - chi_0", rho0 - chi0)` and `expect_zero("sigma_0 - chi_0", sigma0 - chi0)`) unchanged — they remain a useful regression check on the simplified forms.
+banner("1. Coherent interference ratio")
+print("chi_0 =", chi0)
+```
 
 Step 2 — Mathematica file `mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl`:
 
-Replace lines 35-38 (which currently read):
-```mathematica
-sigma = 88/(9*Pi^2);
-rho0 = FullSimplify[(gamma*lamW)*cEtaU/(kU*lamW), Assumptions -> $Assumptions];
-sigma0 = FullSimplify[cEtaU*(gamma*lamPhi)/(kU*lamPhi), Assumptions -> $Assumptions];
-chi0 = FullSimplify[gamma*cEtaU/kU, Assumptions -> $Assumptions];
-```
+Replace lines 37-69 (the `rho0Num/rho0Den/rho0`, `sigma0Num/sigma0Den/sigma0`, `chi0` definitions, the two `If[TrueQ[FullSimplify[...] === 0], Null, ...]` no-op guards, the trace prints, and the two `expectZero` calls) with:
 
-with:
+Before:
 ```mathematica
-sigma = 88/(9*Pi^2);
-
 (* rho_0: W-channel coherent ratio (numerator/denominator kept separate
    so the channel-saturation cancellation is performed by FullSimplify,
    not by string cancellation). *)
@@ -121,48 +143,62 @@ If[
   Null,
   (Print["FAIL: sigma0 channel-saturation rule violated"]; Exit[1])
 ];
+
+Print["rho_0 = ", fmt[rho0]];
+Print["sigma_0 = ", fmt[sigma0]];
+Print["chi_0 = ", fmt[chi0]];
+expectZero["rho_0 - chi_0", rho0 - chi0];
+expectZero["sigma_0 - chi_0", sigma0 - chi0];
 ```
 
-Leave the existing `expectZero["rho_0 - chi_0", ...]` and `expectZero["sigma_0 - chi_0", ...]` calls at lines 43-44 unchanged.
+After:
+```mathematica
+(* Coherent interference ratio.
+   On the coherent tracking branch the W-channel and phi-channel
+   polarisation amplitudes saturate to the same bare ratio gamma*cEtaU/kU.
+   That saturation is established upstream at Stage 28 (matching condition
+   for the coherent local D/N kernel); within the scope of Stage 047 the
+   equalities rho_0 = sigma_0 = chi_0 are a notational rename, so we do
+   not assert them here. Any local verification reduces to lamW/lamW
+   (resp. lamPhi/lamPhi) string cancellation, which is tautological. *)
+chi0 = FullSimplify[gamma*cEtaU/kU, Assumptions -> $Assumptions];
+
+Print["chi_0 = ", fmt[chi0]];
+```
+
+Downstream `chi0` usage in both files is unchanged.
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 047` and `redteam exec-mathematica 047` and confirm: (a) both scripts exit 0; (b) the captured `.txt` output for the sympy script now includes a printed intermediate of the form `rho_0 = c_etaU*gamma/KU` (post-simplify) AND the two new internal `assert` statements pass silently; (c) the captured `.txt` for the Mathematica script does not contain `FAIL: rho0 channel-saturation rule violated`.
+After Codex applies, the verifier will run `redteam exec-sympy 047` and `redteam exec-mathematica 047` and confirm:
+(a) both scripts exit 0;
+(b) the captured `.txt` outputs no longer contain `rho_0 =`, `sigma_0 =`, `rho_0 - chi_0 =`, `sigma_0 - chi_0 =`, or `PASS: rho_0 - chi_0` lines — the `chi_0 = ...` print line remains;
+(c) every remaining `PASS:` line (eps_phi - zeta_def eps_W, Z_phi - zeta_def Z_W, M_tr - M_mix S, product law, support-loaded R_target reconstruction, dR_target_loaded/dzeta, R_target_loaded(zeta) - R_target_loaded(0), dS/dzeta - (1-eps)/(1-zeta eps)^2, S(zeta=0)-1) is still present.
 
 ## Applied: F1
 
 - files_changed:
   - `scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py`
   - `mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl`
-- summary: Reworked rho_0 and sigma_0 construction to keep channel numerator and denominator expressions separate and added non-trivial channel-saturation checks.
+- summary: Removed the tautological rho_0 and sigma_0 local checks and retained chi_0 as the Stage 047 notational coherent ratio.
 - deviation: none
 
-## F2 — mathematica_transliteration
+## F2 — insufficient_verification
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl:72-83`
+**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl:97-115`
 
 **Issue:**
-The `.wl` script defines `mMix`, `mSupp`, `sEnhance`, `mTr` (lines 72-75) using the same closed-form expressions as the SymPy script (lines 87-90). The agreement of the two engines' final outputs is therefore not evidence of independent verification — it is byte-equivalent algebra under different syntax. The two-engine policy requires at least one independent derivation path.
+The .wl script (post the prior F2 patch) derives `mSupp = mMix * supportLoadFactor` where `supportLoadFactor = zeta*(1-eps)/(1-zeta*eps)`, then defines `sEnhance = mTr/mMix` and asserts `sEnhance - sClosedForm == 0` where `sClosedForm = 1 + zeta*(1-eps)/(1-zeta*eps)`. By construction:
+- `sEnhance = (mMix + mMix*supportLoadFactor)/mMix = 1 + supportLoadFactor = sClosedForm`,
+- so the .wl line currently numbered 115 (`expectZero["S from ratio agrees with closed-form S", sEnhance - sClosedForm]`) is identically true;
+- the downstream `expectZero["M_tr - M_mix S", mTr - mMix*sEnhance]` (currently line 124) is also identically true, since `mTr - mMix*(mTr/mMix) = 0` symbolically.
+
+The net effect: the .wl no longer cross-checks the closed-form M_supp formula against the M_mix * S factorization. The two-engine policy on Stage 047's central factorization claim (`M_tr = M_mix * S`) is therefore unsatisfied in the Mathematica engine.
 
 **Required change:**
 
-In `mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl`, replace lines 72-83 (currently):
-```mathematica
-mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
-mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)), Assumptions -> $Assumptions];
-sEnhance = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
-mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
-rTarget = FullSimplify[lambdaScale*(1 - epsEta)*(1 - eps)^2/(zW*(1 + chi0)^2), Assumptions -> $Assumptions];
+In `mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl`, replace lines 97-115 (the current `mMix`, support-load-factor derivation of `mSupp`, `mTr`, `sEnhance`, `sClosedForm`, and the `"S from ratio agrees with closed-form S"` assertion) with the following block, which defines `mSupp` from the paper's closed form (notes §4: `M_supp = 8 zeta Z_W (1+chi_0)^2 / (pi^2 (1-eps_eta) (1-zeta eps))`) and `sEnhance` from the paper's closed-form S (Eq. app-stage047-S), so that the downstream `mTr - mMix*sEnhance == 0` assertion (now at the line directly following) is a substantive algebraic identity rather than a tautology.
 
-Print["M_mix = ", fmt[mMix]];
-Print["M_supp = ", fmt[mSupp]];
-Print["S(zeta;eps) = ", fmt[sEnhance]];
-Print["M_tr = ", fmt[mTr]];
-Print["R_target = ", fmt[rTarget]];
-expectZero["M_tr - M_mix S", mTr - mMix*sEnhance];
-```
-
-with the following block, which derives `mSupp` independently as `mMix * (zeta*(1-eps)/(1-zeta*eps))` from the S-decomposition (rather than copying the SymPy closed form), and derives `sEnhance` independently as `mTr/mMix` after constructing `mTr` from the independent definitions of `mMix` and `mSupp`. The final closed-form expressions must still agree with the SymPy outputs:
-
+Before (currently lines 97-115):
 ```mathematica
 mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
 
@@ -183,25 +219,49 @@ sEnhance = FullSimplify[mTr/mMix, Assumptions -> $Assumptions];
    rule above is inconsistent with the closed-form S in the paper. *)
 sClosedForm = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
 expectZero["S from ratio agrees with closed-form S", sEnhance - sClosedForm];
-
-rTarget = FullSimplify[lambdaScale*(1 - epsEta)*(1 - eps)^2/(zW*(1 + chi0)^2), Assumptions -> $Assumptions];
-
-Print["M_mix = ", fmt[mMix]];
-Print["M_supp = ", fmt[mSupp]];
-Print["S(zeta;eps) = ", fmt[sEnhance]];
-Print["M_tr = ", fmt[mTr]];
-Print["R_target = ", fmt[rTarget]];
-expectZero["M_tr - M_mix S", mTr - mMix*sEnhance];
 ```
 
-Do not alter the assertions at lines 90-98 — they continue to verify the product law and monotonicity from the now-independently-derived `mSupp`, `mTr`, and `sEnhance`.
+After:
+```mathematica
+mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
+
+(* M_supp from the paper's closed form (notes §4): the support lane
+   replaces (1-eps) with (1-zeta*eps) in the denominator and acquires a
+   prefactor zeta. We write M_supp from the dimensionless ratios directly
+   so the factorization M_tr = M_mix * S below is a non-trivial algebraic
+   identity rather than a script-built tautology. *)
+mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)),
+                     Assumptions -> $Assumptions];
+
+(* M_tr as the sum of the two independently defined baselines. *)
+mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
+
+(* S(zeta;eps) from the closed-form definition (Eq. app-stage047-S). *)
+sEnhance = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps),
+                        Assumptions -> $Assumptions];
+```
+
+The subsequent `Print` lines and assertions are unchanged:
+- `Print["M_mix = ", fmt[mMix]];`
+- `Print["M_supp = ", fmt[mSupp]];`
+- `Print["S(zeta;eps) = ", fmt[sEnhance]];`
+- `Print["M_tr = ", fmt[mTr]];`
+- `Print["R_target = ", fmt[rTarget]];`
+- `expectZero["M_tr - M_mix S", mTr - mMix*sEnhance];`
+- (everything from `rTarget = FullSimplify[lambdaScale*...]` line onward, including the product-law and monotonicity checks).
+
+Do not change the `rTarget` definition or any check after `M_tr - M_mix S`.
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 047` and confirm: (a) the script exits 0; (b) the captured `.txt` output contains a new `PASS: S from ratio agrees with closed-form S` line; (c) the printed `M_supp = ...` and `S(zeta;eps) = ...` expressions match the corresponding SymPy outputs after FullSimplify (algebraic equivalence, not byte equality); (d) the existing `PASS: M_tr - M_mix S`, `PASS: product law`, `PASS: support-loaded R_target reconstruction`, and `PASS: dS/dzeta - (1-eps)/(1-zeta eps)^2` lines remain present.
+After Codex applies, the verifier will run `redteam exec-mathematica 047` and confirm:
+(a) the script exits 0;
+(b) the captured `.txt` output's `M_supp = ...` line is algebraically equal (after `FullSimplify`) to the sympy script's `M_supp = ...` line, but its symbolic construction path is now the closed form rather than a multiplication by `supportLoadFactor`;
+(c) the captured `.txt` no longer contains `PASS: S from ratio agrees with closed-form S`;
+(d) the captured `.txt` still contains `PASS: M_tr - M_mix S`, `PASS: product law`, `PASS: support-loaded R_target reconstruction`, `PASS: dR_target_loaded/dzeta`, `PASS: R_target_loaded(zeta) - R_target_loaded(0)`, `PASS: dS/dzeta - (1-eps)/(1-zeta eps)^2`, `PASS: S(zeta=0)-1`.
 
 ## Applied: F2
 
 - files_changed:
   - `mathematica/moving_throat_pde_stage047_coherent_kernel_map_mathematica_audit.wl`
-- summary: Replaced the Mathematica closed-form support packet copy with an independent support-loading derivation and ratio-based S check.
+- summary: Restored the Mathematica M_supp and S definitions to independent closed forms so the M_tr factorization check is substantive.
 - deviation: none

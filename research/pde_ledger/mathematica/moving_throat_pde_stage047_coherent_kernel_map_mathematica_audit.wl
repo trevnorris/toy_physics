@@ -34,39 +34,17 @@ $Assumptions =
 
 sigma = 88/(9*Pi^2);
 
-(* rho_0: W-channel coherent ratio (numerator/denominator kept separate
-   so the channel-saturation cancellation is performed by FullSimplify,
-   not by string cancellation). *)
-rho0Num = gamma*lamW*cEtaU;
-rho0Den = kU*lamW;
-rho0 = FullSimplify[rho0Num/rho0Den, Assumptions -> $Assumptions];
-
-(* sigma_0: phi-channel analogue. *)
-sigma0Num = cEtaU*gamma*lamPhi;
-sigma0Den = kU*lamPhi;
-sigma0 = FullSimplify[sigma0Num/sigma0Den, Assumptions -> $Assumptions];
-
+(* Coherent interference ratio.
+   On the coherent tracking branch the W-channel and phi-channel
+   polarisation amplitudes saturate to the same bare ratio gamma*cEtaU/kU.
+   That saturation is established upstream at Stage 28 (matching condition
+   for the coherent local D/N kernel); within the scope of Stage 047 the
+   equalities rho_0 = sigma_0 = chi_0 are a notational rename, so we do
+   not assert them here. Any local verification reduces to lamW/lamW
+   (resp. lamPhi/lamPhi) string cancellation, which is tautological. *)
 chi0 = FullSimplify[gamma*cEtaU/kU, Assumptions -> $Assumptions];
 
-(* Sanity: the channel-saturation rule must hold non-trivially. *)
-If[
-  TrueQ[FullSimplify[rho0Num*kU - rho0Den*gamma*cEtaU,
-    Assumptions -> $Assumptions] === 0],
-  Null,
-  (Print["FAIL: rho0 channel-saturation rule violated"]; Exit[1])
-];
-If[
-  TrueQ[FullSimplify[sigma0Num*kU - sigma0Den*gamma*cEtaU,
-    Assumptions -> $Assumptions] === 0],
-  Null,
-  (Print["FAIL: sigma0 channel-saturation rule violated"]; Exit[1])
-];
-
-Print["rho_0 = ", fmt[rho0]];
-Print["sigma_0 = ", fmt[sigma0]];
 Print["chi_0 = ", fmt[chi0]];
-expectZero["rho_0 - chi_0", rho0 - chi0];
-expectZero["sigma_0 - chi_0", sigma0 - chi0];
 
 epsEta = FullSimplify[cEtaU^2/(kU*kEtaEff), Assumptions -> $Assumptions];
 epsW = FullSimplify[gamma^2*lamW^2*sigma/(kU*kWEff), Assumptions -> $Assumptions];
@@ -96,23 +74,20 @@ Print["delta = ", fmt[delta]];
 
 mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
 
-(* Independent derivation of M_supp: the support packet contributes a
-   factor zeta*(1-eps)/(1-zeta*eps) on top of M_mix, by the support-
-   loading rule of stage 047. We construct M_supp from this rule rather
-   than copying the closed form, so this engine has an independent path
-   to the result. *)
-supportLoadFactor = zeta*(1 - eps)/(1 - zeta*eps);
-mSupp = FullSimplify[mMix*supportLoadFactor, Assumptions -> $Assumptions];
+(* M_supp from the paper's closed form (notes §4): the support lane
+   replaces (1-eps) with (1-zeta*eps) in the denominator and acquires a
+   prefactor zeta. We write M_supp from the dimensionless ratios directly
+   so the factorization M_tr = M_mix * S below is a non-trivial algebraic
+   identity rather than a script-built tautology. *)
+mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)),
+                     Assumptions -> $Assumptions];
 
-(* M_tr from the sum, then S as the ratio M_tr/M_mix. *)
+(* M_tr as the sum of the two independently defined baselines. *)
 mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
-sEnhance = FullSimplify[mTr/mMix, Assumptions -> $Assumptions];
 
-(* Cross-check: S as derived from the ratio must equal the closed-form
-   1 + zeta*(1-eps)/(1-zeta*eps). If this fails, the support-loading
-   rule above is inconsistent with the closed-form S in the paper. *)
-sClosedForm = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
-expectZero["S from ratio agrees with closed-form S", sEnhance - sClosedForm];
+(* S(zeta;eps) from the closed-form definition (Eq. app-stage047-S). *)
+sEnhance = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps),
+                        Assumptions -> $Assumptions];
 
 rTarget = FullSimplify[lambdaScale*(1 - epsEta)*(1 - eps)^2/(zW*(1 + chi0)^2), Assumptions -> $Assumptions];
 

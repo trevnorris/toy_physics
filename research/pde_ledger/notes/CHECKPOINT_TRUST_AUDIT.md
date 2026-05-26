@@ -9,8 +9,28 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-26` (batch II.1 v2 close — third paper-grounded
-re-audit pass. Checkpoints `024` and `036` fall in this batch's range.
+Snapshot date: `2026-05-26` (batch III.1 v2 close — fourth paper-grounded
+re-audit pass. No checkpoint stages fall in III.1's range (037-048); the
+batch closed with all 12 stages verified, 3 paper_misalignment + 1
+insufficient_verification user-gate items resolved, and 1 stage (045)
+flagged `material_change: true` — but the change is **structural-only**
+(F3 imported Stage-044's `F_cont` residual as the anchor for 045's
+verification path; the exported `F_tr` value is unchanged), so the
+runbook's automatic downstream cascade was NOT triggered (would have
+demoted 046-253 unnecessarily). Stage 043 had a `paper_misalignment`
+for `D_phi` sign convention (Mathematica swapped rows → kappa-first
+convention matching SymPy + notes per stage 039 `D_dir` precedent).
+Stage 046 had a `paper_misalignment` for notes coefficient typos in
+auxiliary polynomials P_R/P_1/P_2 (notes-only fix; scripts unchanged
+because both engines independently verified the script values). One
+codex iter2 remediation pass for stage 043 F2-Insertion2 (primitive-vs-
+derived substitution pitfall — directive prescribed `subs(sigma0=0,
+rho0=1)` but Mathematica primary symbols are primitive couplings; fix
+used `gS → 0` and `gW → gU·gR/kU` substitutions). Previous batch II.1 v2
+text now superseded by this entry; the I.1/I.2 v2 close text remains
+accurate for those ranges.
+
+Previous (II.1 v2) snapshot: Checkpoints `024` and `036` fall in II.1's range.
 Stage 024 v2 had F1 mathematica_transliteration (Sections III/V port —
 remediated to a 2x2 matrix-inverse-based independent derivation with
 `-R` off-diagonal derived from `paper/parts/part01_parent_geometry.tex:956`

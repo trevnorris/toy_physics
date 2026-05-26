@@ -2,71 +2,142 @@
 unit_id: 046
 batch: III.1
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-22T00:00:00-06:00
+verify_date: 2026-05-26T00:00:00Z
 verdict: verified
-sympy_exit: 0
-mathematica_exit: 0
-findings_resolved: 2
-findings_total: 2
+sympy_exit: n/a
+mathematica_exit: n/a
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
-# Verification — unit 046
+# Verification — unit 046 (batch III.1 v2)
+
+This report supersedes the prior v1 verification (the v1 audit raised two
+script-side findings — mathematica_transliteration and insufficient_verification
+— which Codex resolved by editing the Mathematica and SymPy scripts; those edits
+remain in place and are still correct). The v2 paper-grounded re-audit raised a
+single new finding, F1, which is a notes-only paper_misalignment. This report
+documents only the v2 resolution.
 
 ## Per-finding outcomes
 
-### F1 — mathematica_transliteration
+### F1 — paper_misalignment (notes_contradicts_script)
 
 **Classification:** resolved
 
 **What changed:**
-`mathematica/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.wl:55-129` was rewritten. The hand-typed `pR`, `p1`, `p2`, `dGExpected`, `dFExpected`, `gDiffExpected`, `fDiffExpected` literals (formerly lines 55-89) are removed entirely (confirmed by reading the file and by `stage_046_diff.patch` lines 9-43 showing deletion). The replacement (wl:55-106) derives `dGdR = Together[D[gTr, r]]`, `dFdR = Together[D[fTr, r]]`, `deltaG = Together[gTr - gFlat]`, `deltaF = Together[fFlat - fTr]` directly from `gTr`/`fTr`, then uses `Reduce[ForAll[...] dGdR < 0]`, etc., to confirm sign claims on the open domain, and `PolynomialQuotientRemainder` to verify `(1 - r^2)` divides the numerator of `deltaG` and `(1 - r)` divides the numerator of `deltaF`.
+Notes-only edits to
+`/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md`
+at exactly the five coefficient sites the directive enumerated:
+
+- Line 90 (P_R): `230 R delta^3` -> `162 R delta^3`, and `230 R delta xi^2` -> `162 R delta xi^2`.
+- Line 132 (P_1): `248 R delta^2 xi` -> `180 R delta^2 xi`.
+- Line 133 (P_1): `230 delta^3` -> `162 delta^3`.
+- Line 137 (P_2): `237 R^2 xi^4` -> `220 R^2 xi^4`.
+
+`git diff HEAD -- notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md`
+shows exactly these five substitutions and nothing else.
+`git diff HEAD --` against the SymPy and Mathematica audit scripts
+(`scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py`,
+`mathematica/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.wl`)
+is empty: scripts were not modified in this batch, consistent with the
+directive's user-approved direction (a).
+
+A grep across the notes file for `230|248|237` confirms no stale coefficient
+survives in any of the disputed sites, and a grep for the corrected
+`162|180|220` confirms the new values appear exactly at lines 90, 132, 133,
+and 137 — the four lines the Applied block listed.
 
 **Assessment:**
-The edit matches the directive verbatim — the diff is the directive block placed at wl:55-106. Grep for `4*r^4*xi^3`, `18*r^2*delta^2*xi`, `18*r^3*delta^2*xi^2`, `dGExpected`, `dFExpected`, `gDiffExpected`, `fDiffExpected` returns only the comment line "no hand-typed p1/p2/gDiffExpected/fDiffExpected" (wl:75) — no remaining literal source. The Mathematica transcript (mathematica_audit.txt:13-32) shows the four `Reduce[...] = True` results and `PASS` lines for `dG/dR < 0`, `dF/dR > 0`, `G_tr > G_flat`, `F_flat > F_tr`, plus zero remainders for both polynomial divisions. The sign checks are non-tautological: `Reduce` actually solves the ForAll-quantified inequality over the rationals — a sign typo in `gTr` or `fTr` would yield a non-True reduction and `fail` would trigger. The two engines now perform genuinely different work: SymPy compares to hand-typed factored expected forms (preserved at sympy:67-141) while Mathematica derives factorisations directly and runs `Reduce`. No collateral edits beyond the directive block.
+The fix implements the math-correct direction (a) from the directive's
+`## Resolve before fix_loop` block, the same direction the user approved in
+the batch III.1 Q4 apply session. Both engines independently derive the
+corrected coefficients from the shared definition of `F_tr`:
 
-### F2 — insufficient_verification
+- The Mathematica saved output at
+  `mathematica/output/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.txt`
+  line 14 (`dF_tr/dR = ...`) contains `162*delta^3*r` and `162*delta*r*xi^2`,
+  matching the corrected P_R coefficients in notes line 90.
+- The same Mathematica output line 20 (`F_flat - F_tr = ...`) contains
+  `180*delta^2*r*xi`, `162*delta^3`, and `220*r^2*xi^4`, matching the
+  corrected P_1 and P_2 coefficients in notes lines 132-133 and 137.
+- The SymPy script (unchanged) has used the script-side `162/162/180/162/220`
+  values since at least the batch III.1 v1 baseline; its
+  `expect_zero("dF_tr/dR formula", ...)` and `expect_zero("F_flat - F_tr formula", ...)`
+  assertions against those typed polynomials already pass in the standing
+  saved output.
 
-**Classification:** resolved
-
-**What changed:**
-- `scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py:143-186` adds the `3b. Sign verification of branch-difference factors` banner with four boundary-value `expect_zero` calls and three interior rational sample points (R=1/4, 1/2, 3/4 with varied xi/delta), with `raise AssertionError` on non-positive samples.
-- `mathematica/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.wl:108-129` adds the analogous `3b. Boundary-value sign checks` banner with four `expectZero` boundary checks and the same three sample points via `Do[...]` with `fail` triggers on `!TrueQ[gs > 0]` / `!TrueQ[fs > 0]`.
-
-**Assessment:**
-Both insertions match the directive block-for-block. The SymPy transcript (sympy_audit.txt:38-44) shows all four boundary `= 0` lines and three sample lines with the rational values `225/8869`, `38617837960/99381932001`, `81/1736`, `759648230/1473329763`, `91/21935`, `5842146019415/70196178995856` — all positive and identical between the two engines (Mathematica mathematica_audit.txt:37-47), confirming engine cross-agreement at the sampled points. The boundary checks are non-tautological: a sign error in `(1 - R)` inside `F_diff_expected` (the regression scenario the auditor flagged) would not cancel here because these new assertions act on `F_flat - F_tr` and `G_tr - G_flat` constructed directly from `F_tr`, `G_tr`, `F_flat`, `G_flat`, not from the hand-typed `*_diff_expected` polynomials. The numerical sample assertions use strict `<= 0` triggers — a regression yielding negative `delta_G` or `delta_F` would raise; SymPy passing requires all three samples positive.
+No collateral edits in the notes file (the diff is exactly the five intended
+replacements). No script change means there is no new assertion that could
+have been made tautological, and no engine output that could have drifted.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines:
-- sympy_audit.txt:13-14: `strong-split endpoint for G = 0`, `strong-split endpoint for F = 0`
-- sympy_audit.txt:38-41: `G_tr - G_flat vanishes at R=1 = 0`, `F_flat - F_tr vanishes at R=1 = 0`, `G_tr at R=0 equals xi = 0`, `F_tr at R=0 equals 1/(1-xi) = 0`
-- sympy_audit.txt:42-44: three sample lines with strictly positive rational values for both `G_tr - G_flat` and `F_flat - F_tr`
-- sympy_audit.txt:53: `All Stage-29 symbolic checks passed.`
+**SymPy:** exit=n/a. No SymPy exec log was generated for this unit in batch
+III.1 v2. This is correct per the Applied block (`Scripts unchanged ... no
+script re-run needed`). The standing saved output
+`scripts/output/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.txt`
+already reflects the script-side coefficients that the notes have now been
+corrected to match; the script that produced it is unchanged from when the
+auditor cited it as evidence.
 
-**Mathematica:** exit=0. Notable lines:
-- mathematica_audit.txt:15-18: `Reduce[dG/dR < 0 on (0,1)^3] = True` and `Reduce[dF/dR > 0 on (0,1)^3] = True` with corresponding `PASS` lines
-- mathematica_audit.txt:23, 27: `PASS: (1 - r^2) divides numerator of G_tr - G_flat`, `PASS: (1 - r) divides numerator of F_flat - F_tr`
-- mathematica_audit.txt:29-32: `Reduce[G_tr - G_flat > 0 on (0,1)^3] = True` and `Reduce[F_flat - F_tr > 0 on (0,1)^3] = True` with PASS lines
-- mathematica_audit.txt:37-44: four boundary-value PASS lines and three sample lines with positive values matching the SymPy values exactly
-- mathematica_audit.txt:49: `Stage 046 Mathematica audit passed.`
+**Mathematica:** exit=n/a. Same reasoning. The standing saved output
+`mathematica/output/moving_throat_pde_stage046_tracking_branch_bounds_mathematica_audit.txt`
+is the independent-engine evidence that the corrected notes coefficients are
+what `D[fTr, r]` (line 14) and `Factor[fFlat - fTr]` (line 20) actually
+evaluate to.
 
-**Output freshness:** Confirmed post-fix. mtimes:
-- sympy_audit.py = 1779475951; sympy_audit.txt = 1779476060 (txt newer by 109s)
-- mathematica_audit.wl = 1779475951; mathematica_audit.txt = 1779476070 (txt newer by 119s)
-Both `.txt` outputs were regenerated after the script edits.
+**Output freshness:** Not applicable. No script was re-run in this batch
+because no script was modified. The pre-existing outputs continue to apply
+because the scripts they were generated from are byte-identical to the audit
+baseline (confirmed by empty `git diff HEAD --` against both audit script
+files).
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The edits added new verification assertions (F2) and replaced a transliterated check with independent CAS reasoning (F1). The closed-form expressions for `G_tr`, `F_tr`, `G_flat`, `F_flat` themselves are unchanged. No derived constant, no symbolic identity, and no downstream-consumed result is altered — the audit now proves more about the same expressions. Downstream units that depend on the tracking-branch bound claim see strengthened (not modified) evidence.
+The fix is a notes-only typographical correction. No script, no derived
+script output, no paper.tex line, and no downstream stage's symbol
+definitions were altered. Stages > 046 consume the boxed monotonicity and
+residual-theorem claims from `paper/stages/stage_046.tex`, which were never
+quoted in the disputed coefficient form; the notes correction does not
+change any consumable result. No `upstream_stale` propagation is warranted.
 
 ## Side observations (non-blocking)
 
-- The SymPy script header docstring still says "Stage 29 SymPy audit" (sympy_audit.py:3) and section banner says "STAGE 29" (sympy_audit.py:39); the file is `stage046`. Pre-existing labelling inconsistency unrelated to either finding.
-- The new SymPy sample-loop uses `if g_sample <= 0` / `if f_sample <= 0` directly on a SymPy expression rather than coercing to a numeric/Rational comparison. For the rational sample points chosen, SymPy returns concrete `Rational` results so the comparison is well-defined, but this would break if non-rational samples were introduced. Non-blocking.
+- The captured diff at `redteam/exec_logs/stage_046_diff.patch` is from an
+  earlier batch III.1 v1 capture window and shows the prior script-side
+  edits (the v1 Mathematica transliteration rewrite and v1 SymPy
+  insufficient_verification additions), not the v2 notes-only edit. This is
+  expected: the v2 flow did not invoke Codex on this unit (notes-only,
+  user-resolved), so the orchestrator did not regenerate a `.patch` for the
+  notes correction. The authoritative record of the v2 fix is the live
+  `git diff HEAD --` on the notes file, which is what this verification
+  checks against. Not blocking.
+- The directive's `## Applied: F1` block correctly records
+  `files_changed: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md:90,132-133,137`,
+  `summary: Fixed 5 coefficient typos in notes auxiliary polynomials P_R
+  (230->162 twice), P_1 (248->180, 230->162), P_2 (237->220). Scripts
+  unchanged (already correct per both engines' independent derivation). Per
+  user-approved Q4 (a) in batch III.1 v2.`, and `deviation: none — notes-only
+  fix; no script re-run needed.` This matches the on-disk state.
+- Pre-existing SymPy script header label `Stage 29` (sympy_audit.py:3 and
+  banner) was already noted as a non-blocking labelling inconsistency in the
+  v1 verification; it remains pre-existing and outside the scope of this
+  v2 finding.
 
 ## Verdict justification
 
-Both findings are fully addressed by edits that match the directive verbatim, with no collateral changes beyond the inserted blocks (diff confirms only `+` lines in the specified regions). The Mathematica file no longer contains any hand-typed `pR`/`p1`/`p2`/`*Expected` literals; `Reduce`-based sign claims and `PolynomialQuotientRemainder`-based factor checks now drive Mathematica's independent verification. The new SymPy/Mathematica boundary and sample assertions are non-tautological because they operate directly on `G_tr - G_flat` / `F_flat - F_tr` (not on the hand-typed `*_diff_expected` polynomials), so a sign typo in those polynomials would now fail these new checks while still passing the legacy `expect_zero(... - *_diff_expected)` lines. Both engines exit 0; outputs are fresh; no regressions appear in the diff.
+The single v2 finding (F1, paper_misalignment notes_contradicts_script) was
+resolved by the user-approved direction (a): correct the notes to match the
+script-side coefficients that both engines independently derive. All five
+prescribed substitutions (P_R `230` -> `162` twice on line 90; P_1
+`248` -> `180` on line 132; P_1 `230` -> `162` on line 133; P_2
+`237` -> `220` on line 137) are present at the expected lines; no other
+notes edits crept in; the audit scripts were not touched (correctly — there
+was nothing to fix on the script side); and the standing Mathematica saved
+output independently corroborates that the corrected coefficients are what
+`D[fTr, r]` and `Factor[fFlat - fTr]` actually evaluate to. `verdict:
+verified`, `material_change: false`.

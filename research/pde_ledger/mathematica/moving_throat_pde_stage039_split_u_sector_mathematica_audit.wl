@@ -104,6 +104,20 @@ dDirExpected = dDirDerived;
 Print["D_dir = ", fmt[dDir]];
 expectZero["direction-splitting invariant derived matches postulated", dDirDerived - dDirPostulated];
 
+(* Collinearity iff theorem (paper eq:app-stage039-collinearity). *)
+expectZero["collinearity if-leg: D_dir(deltaU=0) = 0", dDir /. deltaU -> 0];
+expectZero["collinearity if-leg: D_dir(rho0=0) = 0", dDir /. rho0 -> 0];
+(* Only-if leg: numerator of D_dir must factor as rho0 * deltaU * <nonzero, no rho0, no deltaU>. *)
+dDirTogether = Together[dDir];
+dDirNum = Numerator[dDirTogether];
+dDirNumReduced = FullSimplify[dDirNum/(rho0 deltaU), Assumptions -> $Assumptions];
+Print["Numerator(D_dir) / (rho0*deltaU) = ", fmt[dDirNumReduced]];
+If[!FreeQ[dDirNumReduced, rho0] || !FreeQ[dDirNumReduced, deltaU],
+  fail["collinearity only-if: numerator still depends on rho0 or deltaU after factoring", dDirNumReduced]];
+If[TrueQ[FullSimplify[dDirNumReduced == 0, Assumptions -> $Assumptions]],
+  fail["collinearity only-if: numerator is identically zero after factoring rho0*deltaU", dDirNumReduced]];
+pass["collinearity only-if: residual factor is nonzero and independent of rho0, deltaU"];
+
 subbanner["4. Split-U continuum placement map"];
 
 mMixFlat = FullSimplify[8 zW (1 + rho0)^2/(Pi^2 (1 - epsEta) (1 - epsW)), Assumptions -> $Assumptions];
@@ -115,8 +129,6 @@ product = FullSimplify[mMixSplit rTargetSplit, Assumptions -> $Assumptions];
 Print["M_mix^(split U) = ", fmt[mMixSplit]];
 Print["R_target^(split U) = ", fmt[rTargetSplit]];
 Print["product = ", fmt[product]];
-expectZero["M_mix split is M_mix_flat under epsW -> epsWSplit", mMixSplit - (mMixFlat /. epsW -> epsWSplit)];
-expectZero["R_target split is R_target_flat under epsW -> epsWSplit", rTargetSplit - (rTargetFlat /. epsW -> epsWSplit)];
 
 subbanner["5. Small-splitting expansions"];
 

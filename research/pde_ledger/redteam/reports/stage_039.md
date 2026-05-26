@@ -2,205 +2,222 @@
 unit_id: 039
 batch: III.1
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T07:59:49Z
+audit_date: 2026-05-26T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 3
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  paper_appendix: present
 ---
 
 # Audit unit 039 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_039.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage039_split_u_sector.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row at line 56 is the only stage-039 reference besides the `\input`)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage039_split_u_sector_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage039_split_u_sector_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 039 turns on the first axial U-sector stiffness via `K_{U1} = K_U (1 + delta_U)` with `delta_U = pi^2 T_U / (L^2 K_U)`. The paper card's `\stagefield{Output}` line states the stage proves: (1) the split scalar-placement law (eq:app-stage039-split-placement) consisting of the boxed expressions for `delta_split = (delta_0 + eps_eta delta_U/(1+delta_U))/(1-eps_eta)` and `eps_{W,split} = eps_W [1 - (2/11) delta_U/(1+delta_U)]`; (2) the boxed direction factor `R_U = [1 + rho_0/(1+delta_U)]/(1+rho_0)` (eq:app-stage039-RU); and (3) the boxed collinearity theorem `D_dir = 0 <=> delta_U = 0 or rho_0 = 0` (eq:app-stage039-collinearity), where the underlying invariant `D_dir = -kappa_0 kappa_1 g_W rho_0 delta_U/(1+delta_U)` is boxed at eq:app-stage039-Ddir. The notes (sections 4-5) also discuss the mixed-loading components `z_0`, `z_1`, the small-`delta_U` expansion of `R_U`, and a placement-map factorization with `M_mix^(split U)` and `R_target^(split U)`, but those auxiliary results are not enumerated in the `\stagefield{Output}` of the paper card. The Part III appendix row at line 56 summarizes the stage as "Split placement, direction-splitting invariant, and collinearity iff condition.", consistent with the card.
+
 ## What the script claims to verify
 
-Per the SymPy docstring and inline comments, the unit asserts that turning on the first axial U-sector stiffness (`deltaU`) (i) splits the flat U-doublet so the direct wall anisotropy ratio becomes an exact shifted form `delta_split = (delta0 + eps_eta*deltaU/(1+deltaU))/(1-eps_eta)`, (ii) renormalizes the mixed U/W blocking ratio to `eps_W_split = eps_W*(1 - 2/11*deltaU/(1+deltaU))`, (iii) yields a non-collinear mixed-loading vector whose direction-splitting invariant `D_dir = kappa0*z1 - kappa1*z0` is exactly `-kappa0*kappa1*g_W*rho0*deltaU/(1+deltaU)`, and (iv) preserves the Stage-21 placement-map product law `M_mix * R_target = 8*Lambda*(1-eps_W_split)/pi^2` after substituting `eps_W -> eps_W_split` and `delta -> delta_split`. Section 22.5 prints (without asserting) the linear-order series of all the above in `deltaU`.
+Per the SymPy docstring and the in-script print banners, the audit verifies: (1) the split direct-softening rearrangement `A_0 = K_eta^eff (1-eps_eta)/mu_eta`, `A_1 = A_0 (1 + delta_split)` with `delta_split` matching the paper's closed form; (2) the mixed blocking ratio `eps_W_split = eps_W (1 - (2/11) delta_U/(1+delta_U))` derived from the overlap-weighted inverse kernel `S_U = kappa_0^2/K_U + kappa_1^2/K_{U1}`; (3) the loading-vector identity `z_1/z_0 = (kappa_1/kappa_0) R_U` with the direction-splitting invariant `D_dir = kappa_0 z_1 - kappa_1 z_0` reducing to the closed form `-kappa_0 kappa_1 g_W rho_0 delta_U/(1+delta_U)`; (4) (extra) a placement-map check `M_mix^(split U) == M_mix^(flat) [eps_W -> eps_W_split]` and the analogous statement for `R_target`; (5) (informational, no assertions) small-`delta_U` series expansions of `delta_split`, `eps_W_split`, `R_U`, `M_mix^(split U)/M_mix^(flat)`, `R_target^(split U)/R_target^(flat)`. The collinearity theorem itself is printed but not formally asserted; it is read off from the factored form of `D_dir`.
+
+## Paper <-> script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| `delta_split` formula (eq:app-stage039-split-placement, first box) | sympy line 86-87 / wl line 69-71 | match |
+| `eps_W_split` formula (eq:app-stage039-split-placement, second box) | sympy line 98-101 / wl line 77-83 | match |
+| `R_U` direction factor (eq:app-stage039-RU) | sympy line 109, 114-117 / wl line 90, 95-98 | match |
+| `D_dir` closed form (eq:app-stage039-Ddir, boxed but not listed in Output) | sympy line 119-122 / wl line 100-105 | match |
+| Collinearity iff theorem (eq:app-stage039-collinearity) | sympy line 124 print only; wl no explicit assertion | partial (implied by factored `D_dir` form; kappa_0, kappa_1, g_W are nonzero by positivity assumptions, so `D_dir = 0` algebraically forces `rho_0 delta_U = 0`, hence iff) |
+| `M_mix^(split U)`, `R_target^(split U)` placement map (notes only) | sympy line 138-139 / wl line 118-119 | extra (not in `\stagefield{Output}`; and the assertion is tautological — see F1) |
+| Small-`delta_U` expansions (notes only) | sympy line 143-149 / wl line 123-129 | extra (informational prints, no assertions) |
+
+Set `paper_alignment: aligned`. The three load-bearing deliverables called out in the paper's `\stagefield{Output}` are each exercised non-tautologically. The placement-map check is `extra` and one of the extras is tautological, but the paper-side claims themselves are anchored. The collinearity-iff line is "implied" rather than asserted, which is borderline; the factored form makes it algebraically transparent and I do not file a separate `paper_misalignment` finding for it, but it appears in F2 below.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 86 | `expect_zero("A0 direct - expected", A0.subs({c_etaU**2: eps_eta*K_U*K_eta_eff}) - A0_expected)` | yes |
-| A2 | sympy | 87 | `expect_zero("A1 direct - expected", A1.subs({c_etaU**2: eps_eta*K_U*K_eta_eff}) - A1_expected)` | yes |
-| A3 | sympy | 98-101 | `expect_zero("eps_W direct - split formula", eps_W_direct.subs(...) - eps_W_split)` | yes |
-| A4 | sympy | 114 | `expect_zero("z1/z0 - (kappa1/kappa0) R_U", z1/z0 - (kappa1/kappa0)*R_U)` | **no (tautological)** |
-| A5 | sympy | 119 | `expect_zero("direction-splitting invariant", D_dir - D_dir_expected)` | partial |
-| A6 | sympy | 133 | `expect_zero("product law", product - 8*Lambda*(1-eps_W_split)/pi**2)` | **no (tautological by construction)** |
-| A7 | mma | 66 | `expectZero["A0 direct - expected", (a0 /. cEtaU^2 -> epsEta*kU*kEtaEff) - a0Expected]` | yes |
-| A8 | mma | 67 | `expectZero["A1 direct - expected", (a1 /. cEtaU^2 -> epsEta*kU*kEtaEff) - a1Expected]` | yes |
-| A9 | mma | 77 | `expectZero["eps_W direct - split formula", (epsWDirect /. cUW^2 -> ...) - epsWSplit]` | yes |
-| A10 | mma | 89 | `expectZero["z1/z0 - (kappa1/kappa0) R_U", z1/z0 - (kappa1/kappa0)*rU]` | **no (tautological)** |
-| A11 | mma | 94 | `expectZero["direction-splitting invariant", dDir - dDirExpected]` | partial |
-| A12 | mma | 105 | `expectZero["product law", product - 8*lambda*(1-epsWSplit)/Pi^2]` | **no (tautological by construction)** |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 86 | `expect_zero(A0_direct.subs(c_etaU^2 -> eps_eta K_U K_eta_eff) - A0_expected)` | `delta_split` formula (A_0 leg) | yes |
+| A2 | sympy | 87 | `expect_zero(A1_direct.subs(c_etaU^2 -> eps_eta K_U K_eta_eff) - A0_expected*(1+delta_split))` | `delta_split` formula (A_1 leg, derives the ratio) | yes |
+| A3 | sympy | 98-101 | `expect_zero(c_UW^2 S_U / K_W_eff with c_UW^2 -> eps_W K_U K_W_eff/sigma  - eps_W_split)` | `eps_W_split` formula | yes |
+| A4 | sympy | 114-117 | `expect_zero(z1 (1+rho0) - (kappa1/kappa0) z0 (1+rho0/(1+deltaU)))` | `R_U` direction factor (via `z_1/z_0 = (kappa_1/kappa_0) R_U`) | yes |
+| A5 | sympy | 122 | `expect_zero(D_dir - (-kappa0 kappa1 g_W rho0 deltaU/(1+deltaU)))` | `D_dir` closed form (eq:app-stage039-Ddir) | yes |
+| A6 | sympy | 138 | `expect_zero(M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))` | (extra; tautological by construction — see F1) | no |
+| A7 | sympy | 139 | `expect_zero(R_target_split - R_target_flat.subs(eps_W, eps_W_split))` | (extra; tautological by construction — see F1) | no |
+| A8 | mathematica | 69 | `expectZero[a0 (with c_etaU^2 subst) - a0Expected]` | `delta_split` (A_0 leg) | yes |
+| A9 | mathematica | 70 | `expectZero[a1 (with c_etaU^2 subst) - a1Expected]` | `delta_split` (A_1 leg) | yes |
+| A10 | mathematica | 71 | `expectZero[deltaSplitDerived - deltaSplitPostulated]` | `delta_split` (closed-form match) | yes |
+| A11 | mathematica | 83 | `expectZero[epsWSplitDerived - epsWSplitPostulated]` | `eps_W_split` formula | yes |
+| A12 | mathematica | 95-98 | `expectZero[z1(1+rho0) - (kappa1/kappa0) z0 (1+rho0/(1+deltaU))]` | `R_U` direction factor | yes |
+| A13 | mathematica | 105 | `expectZero[dDirDerived - dDirPostulated]` | `D_dir` closed form | yes |
+| A14 | mathematica | 118 | `expectZero[mMixSplit - (mMixFlat /. epsW -> epsWSplit)]` | (extra; tautological — see F1) | no |
+| A15 | mathematica | 119 | `expectZero[rTargetSplit - (rTargetFlat /. epsW -> epsWSplit)]` | (extra; tautological — see F1) | no |
 
-The "no/tautological" rows feed F1 and F2 below. The "partial" rows are direct algebraic identities that follow without freedom from the postulated forms, but the postulated `D_dir_expected` formula at least has to come out with the right sign and `deltaU/(1+deltaU)` factor — they get a pass.
+Collinearity iff (paper eq:app-stage039-collinearity): not in the table because there is no formal assertion. See F2.
 
 ## Findings
 
 ### F1 — tautological_check
 
-**Severity:** medium
+**Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:107-114`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:82-89`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:131-139`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:109-119`
 
 **What's wrong:**
+Section 22.4 ("Split-U continuum placement map") defines
 
-In Section 22.3 the script constructs
-
-```
-z0 = kappa0 * g_W * (1 + rho0)
-z1 = kappa1 * g_W * (1 + rho0/(1+deltaU))
-R_U = (1 + rho0/(1+deltaU)) / (1 + rho0)
+```python
+M_mix_flat = 8 Z_W (1+rho0)^2 / (pi^2 (1-eps_eta) (1-eps_W))
+M_mix_split = 8 Z_W (1+rho0)^2 / (pi^2 (1-eps_eta) (1-eps_W_split))
 ```
 
-then asserts `expect_zero("z1/z0 - (kappa1/kappa0) R_U", z1/z0 - (kappa1/kappa0)*R_U)` (sympy line 114; Mathematica line 89). But `z1/z0` evaluates to `(kappa1/kappa0) * (1 + rho0/(1+deltaU))/(1+rho0) = (kappa1/kappa0)*R_U` by *substitution of the literal definitions*. No physics can make it fail — `R_U` is defined to be exactly the ratio of the rho-factors that appear in `z0` and `z1`. The check just confirms the definition against itself.
+and then asserts at line 138
+
+```python
+expect_zero("M_mix split is M_mix_flat under eps_W -> eps_W_split",
+            M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))
+```
+
+`M_mix_split` was *constructed* by writing the flat formula with `eps_W_split` already in place of `eps_W`. Therefore `M_mix_flat.subs(eps_W, eps_W_split)` is identically `M_mix_split` by construction of `M_mix_flat`. The same construction is used for line 139 (`R_target_split` vs. `R_target_flat.subs(eps_W, eps_W_split)`). The Mathematica analogues at lines 118-119 follow the same pattern — `mMixSplit` is defined with `epsWSplit` already substituted, and then compared against `mMixFlat /. epsW -> epsWSplit`. Both pairs are algebraically guaranteed to vanish regardless of the underlying physics.
+
+The non-trivial claim from the notes (section 5) would be: *the placement-map ratios derived from the new mixed inverse kernel `S_U = kappa_0^2/K_U + kappa_1^2/K_{U1}` equal the flat-doublet formula with `eps_W -> eps_W_split`.* That derivation is not performed in either script — the script only substitutes the postulated `eps_W_split` into the postulated `M_mix_flat` shape and observes that this equals itself.
+
+Note: the placement-map check is also `extra` relative to the paper's `\stagefield{Output}` (the paper Output lists only the split placement law, R_U, and the collinearity theorem; M_mix^(split U) and R_target^(split U) appear only in the notes). Both observations (tautological + extra) point in the same direction: this section can be safely dropped or replaced with a real kernel-side derivation, without weakening any paper-side claim.
 
 **Why this matters:**
-
-The output line `z1/z0 - (kappa1/kappa0) R_U = 0` is currently reported as evidence that the mixed-loading vector satisfies a derived ratio relation, but it is actually evidence of nothing more than `a/b = a/b`. If the verifier ever audits "what is the non-tautological consequence of split-U here," this assertion contributes none.
-
-**Required change:**
-
-Replace the tautological identity with a substantive check that ties `R_U`'s structure to an independently-named physical input. Concretely, derive `z0`, `z1` from the source-vector definition `g_W = c_etaW/sqrt(mu_eta*mu_W)` and the kappa basis, and verify that the *ratio* `z1/z0` equals an expression that does not contain `R_U` as a defined symbol — e.g. assert
-
-```
-expect_zero(
-    "z1/z0 collinearity gap",
-    z1 * (1 + rho0) - z0 * (kappa1/kappa0) * (1 + rho0/(1 + deltaU))
-)
-```
-
-which, after substituting the constructed `z0`, `z1`, must vanish identically only if the kappa-weighted rho-factor structure is correct. Then *separately* introduce `R_U` as a named shorthand and observe that the gap is `(kappa1/kappa0)*R_U`, without an `expect_zero` on the trivial identity.
-
-Equivalently, drop the existing assertion (sympy:114, mma:89) entirely if it is not replaced — the printout `R_U = ...` already communicates the intended observation.
-
-**Verification:**
-
-The verifier should see either (a) the existing line `expect_zero("z1/z0 - (kappa1/kappa0) R_U", ...)` removed from sympy:114 and mma:89, or (b) replaced with a check whose left-hand side does not equal its right-hand side by direct substitution of named definitions. The new check should pass when the kappa-rho structure is correct and fail under, e.g., perturbing the `(1 + rho0/(1+deltaU))` factor in `z1`.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:126-133`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:98-105`
-
-**What's wrong:**
-
-In Section 22.4 the script defines
-
-```
-M_mix_split   = 8 * Z_W * (1 + rho0)^2 / (pi^2 * (1 - eps_eta) * (1 - eps_W_split))
-R_target_split = Lambda * (1 - eps_eta) * (1 - eps_W_split)^2 / (Z_W * (1 + rho0)^2)
-```
-
-then asserts `expect_zero("product law", M_mix_split * R_target_split - 8 * Lambda * (1 - eps_W_split) / pi^2)` (sympy line 133; Mathematica line 105). The product literally cancels: `Z_W` cancels, `(1+rho0)^2` cancels, `(1-eps_eta)` cancels, one factor of `(1-eps_W_split)` cancels. The residual is exactly `8*Lambda*(1-eps_W_split)/pi^2` by elementary algebra, irrespective of any physics. The factors `Z_W`, `(1+rho0)^2`, `(1-eps_eta)`, `(1-eps_W_split)` were chosen to appear with the *exact* powers needed for the product to reduce, and the assertion just confirms that the chosen powers indeed cancel.
-
-**Why this matters:**
-
-The script's theorem ledger (sympy:160-161) cites this as "the Stage-21 factorization survives at the scalar placement level," but the assertion currently reduces to `(a*b/c) * (c*b/a) = b^2 * (something) = ...` — pure schoolbook cancellation with no input from the split-U sector. Whatever derivation actually established the placement-map structure happened upstream of this script; A6/A12 verify nothing about Stage 039.
+A `PASS` on these two lines in each script gives the false impression that an additional placement-map identity has been verified. Anyone reviewing the transcript would reasonably believe the kernel-level placement map has been checked against the split-U construction; in fact, only an algebraic identity built into the script's own definitions has been confirmed.
 
 **Required change:**
+Either delete the tautological checks, or replace them with a non-tautological derivation from the new mixed kernel. The minimal safe change is to *delete* assertions A6/A7 (sympy) and A14/A15 (mathematica), keeping the `print` lines that display the symbolic forms of `M_mix^(split U)`, `R_target^(split U)`, and `product` for documentation but not labelling them as verified. Concretely:
 
-Replace the identity check with a substitution-based check that links `M_mix_split`, `R_target_split` to their Stage-21 (flat-U) counterparts. Concretely, the claim that the script *says* it is making (sympy docstring item 5: "Stage-21 continuum placement map survives at the scalar level with `eps_W -> eps_W_split` and `delta -> delta_split`") implies there should be flat-U expressions `M_mix_flat` and `R_target_flat` such that
+- sympy: delete lines 138 and 139.
+- mathematica: delete lines 118 and 119.
 
-```
-M_mix_split   == M_mix_flat   .subs(eps_W, eps_W_split)
-R_target_split == R_target_flat.subs(eps_W, eps_W_split)
-```
-
-This is what should be asserted. Define `M_mix_flat = 8*Z_W*(1+rho0)^2/(pi^2*(1-eps_eta)*(1-eps_W))` and `R_target_flat = Lambda*(1-eps_eta)*(1-eps_W)^2/(Z_W*(1+rho0)^2)` once, then `expect_zero("M_mix split is M_mix_flat under eps_W->eps_W_split", M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))` and similarly for `R_target`. Keep the product printout but drop the trivial `expect_zero("product law", ...)`.
-
-Equivalent in Mathematica: define `mMixFlat`, `rTargetFlat`, then `expectZero["M_mix split substitution", mMixSplit - (mMixFlat /. epsW -> epsWSplit)]`.
+The remaining `Print[...]` statements at sympy lines 135-137 and mathematica lines 115-117 continue to display the symbolic forms — they do not assert anything tautological because they are not `expect_zero` / `expectZero` calls.
 
 **Verification:**
+After the fix, the sympy script no longer prints `M_mix split is M_mix_flat under eps_W -> eps_W_split = 0` or `R_target split is R_target_flat under eps_W -> eps_W_split = 0`. The mathematica script no longer prints `PASS: M_mix split is M_mix_flat under epsW -> epsWSplit` or `PASS: R_target split is R_target_flat under epsW -> epsWSplit`. The script must still exit 0.
 
-The verifier should see at sympy:133 (and mma:105) that the `expect_zero("product law", ...)` is either removed or replaced by substitution checks `M_mix_split - M_mix_flat.subs(...)` and `R_target_split - R_target_flat.subs(...)`. The new checks must equal zero only when the substitution structure holds; perturbing the exponent on `(1-eps_W_split)` in either `M_mix_split` or `R_target_split` should make at least one of them fail.
-
-### F3 — mathematica_transliteration
+### F2 — insufficient_verification
 
 **Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl:33-126`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py:124`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl` (no analogue at all)
 
 **What's wrong:**
+The paper card lists the collinearity theorem (eq:app-stage039-collinearity) as a top-level boxed deliverable in `\stagefield{Output}`:
 
-The Mathematica script is structurally a line-by-line port of the SymPy script's algebraic choreography, not an independent re-derivation. Side-by-side correspondence:
+> `D_dir = 0  <=>  delta_U = 0 or rho_0 = 0`.
 
-| SymPy block | Mathematica block | Identical algebra? |
-|---|---|---|
-| `K_U1 = K_U*(1+deltaU)` (line 71) | `kU1 = kU*(1+deltaU)` (line 55) | yes |
-| `A0 = (K_eta_eff - c_etaU**2/K_U)/mu_eta`; `A1 = (...(1+delta0) - c_etaU**2/K_U1)/mu_eta` (72-73) | `a0 = ...`; `a1 = ...` (56-57) | yes |
-| `delta_split = (delta0 + eps_eta*deltaU/(1+deltaU))/(1-eps_eta)` (78) | `deltaSplit = (delta0 + epsEta*deltaU/(1+deltaU))/(1-epsEta)` (59) | yes |
-| `A0.subs({c_etaU**2: eps_eta*K_U*K_eta_eff})` (86) | `a0 /. cEtaU^2 -> epsEta*kU*kEtaEff` (66) | yes (literal substitution rule, same direction) |
-| `S_U = kappa0**2/K_U + kappa1**2/K_U1` (92) | `sU = kappa0^2/kU + kappa1^2/kU1` (71) | yes |
-| `eps_W_split = eps_W*(1 - 2/11*deltaU/(1+deltaU))` (94) | `epsWSplit = epsW*(1 - (2/11)*deltaU/(1+deltaU))` (73) | yes (`2/11` postulated identically) |
-| `D_dir = kappa0*z1 - kappa1*z0` (116) | `dDir = kappa0*z1 - kappa1*z0` (91) | yes |
-| `M_mix_split = 8*Z_W*(1+rho0)**2/(pi**2*(1-eps_eta)*(1-eps_W_split))` (126) | `mMixSplit = 8*zW*(1+rho0)^2/(Pi^2*(1-epsEta)*(1-epsWSplit))` (98) | yes |
+The SymPy script's section 22.3 verifies that `D_dir` reduces to the closed form `-kappa_0 kappa_1 g_W rho_0 delta_U / (1+delta_U)` (A5 above), and then at line 124 issues only a print statement:
 
-Variable names are camelCased and the substitution operator changes from `.subs({a: b})` to `/. a -> b`, but every algebraic step is in the same order with the same intermediate forms. There is no Mathematica-side independent derivation (e.g., constructing `S_U` from a different basis decomposition, or solving the U-sector splitting via `Solve[...]` rather than direct postulation) that could disagree with the SymPy script through any path other than a typo. The second-engine policy requires both engines to derive the result independently from the physical premises so that a mistake in either chain can surface as `engine_disagreement`; this script cannot surface such a disagreement because the chain is shared.
+```python
+print("Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U = 0).")
+```
+
+There is no formal assertion that `D_dir = 0` requires `rho_0 = 0` or `delta_U = 0`. The Mathematica script does not even print this — there is no acknowledgment of the iff direction in section 3 of the .wl. The "iff" is, in practice, manifest from the factored form because `kappa_0 = 2 sqrt(2)/pi != 0`, `kappa_1 = -4/(3 pi) != 0`, `g_W > 0`, and `1/(1+delta_U) != 0` under the script's positivity assumptions — so the factored numerator product `rho_0 delta_U` vanishing is equivalent to `rho_0 = 0 or delta_U = 0`. But this conclusion is left to the reader, not exercised by a check.
+
+This is `insufficient_verification` (script asserts only one of the two paper-side deliverables in section 3 of the paper card — `D_dir` closed form yes, collinearity iff no), not `paper_misalignment`, because the factored form of `D_dir` algebraically implies the iff: an honest verifier looking at the printed `D_dir = -kappa_0 kappa_1 g_W rho_0 delta_U/(1+delta_U)` immediately reads off both directions. But the audit framework's job is to make those checks mechanical and visible.
 
 **Why this matters:**
-
-The independent-engine check provides almost no additional confidence. If the SymPy author's choice of postulated forms (e.g., the `2/11` coefficient on `deltaU/(1+deltaU)`, or the `R_U` ratio definition) had a sign or factor error rooted in a misunderstanding of the underlying PDE, the Mathematica script — which copied those postulated forms — would still PASS. This is exactly the failure mode the second-engine policy is meant to catch.
+The collinearity-iff is the headline theorem statement of the stage in the appendix row and in the `\stagefield{Output}`. A reader of the SymPy or Mathematica transcript should be able to see a `PASS: collinearity iff` line, not have to reason about positivity of `kappa_0`, `kappa_1`, `g_W` themselves.
 
 **Required change:**
+Add explicit assertions in both scripts that
+(a) `D_dir.subs(delta_U, 0) == 0` and `D_dir.subs(rho_0, 0) == 0` (the "if" direction), and
+(b) the only factors of `D_dir / (-kappa_0 kappa_1 g_W)` that can vanish are `rho_0` and `delta_U` themselves (the "only if" direction), which can be verified by asserting that
+`Numerator(D_dir) / (rho_0 delta_U)` simplifies to a non-vanishing constant (in symbolic, this is `kappa_0 kappa_1 g_W / (1 + delta_U)`).
 
-Restructure the Mathematica script so that the key derived quantities — `epsWSplit`, `deltaSplit`, `dDirExpected`, and at least one of the placement-map factors `mMixSplit` / `rTargetSplit` — are obtained by Mathematica's own algebra from the *direct* expressions, rather than postulated and then checked. Concrete edits:
+Concretely, for the sympy script insert at line 122 (i.e. directly after the existing `expect_zero("direction-splitting invariant", D_dir - D_dir_expected)` assertion and before the `print("Collinearity theorem: ...")` line):
 
-1. At mma:73, remove the postulated `epsWSplit = FullSimplify[epsW*(1 - (2/11)*deltaU/(1+deltaU)), ...]`. Instead, *derive* it: `epsWSplit = FullSimplify[(epsWDirect /. cUW^2 -> epsW*kU*kWEff/sigma), Assumptions -> $Assumptions]`. Then the assertion at mma:77 should be `expectZero["eps_W split agrees with postulated form", epsWSplit - epsW*(1 - (2/11)*deltaU/(1 + deltaU))]` — i.e., the postulated form is on the right, the Mathematica-derived form is on the left. This way the `2/11` coefficient is computed by Mathematica from `kappa0^2`, `kappa1^2`, `sigma`, not assumed.
+```python
+# Collinearity iff theorem (paper eq:app-stage039-collinearity).
+expect_zero("collinearity if-leg: deltaU=0", D_dir.subs(deltaU, 0))
+expect_zero("collinearity if-leg: rho0=0", D_dir.subs(rho0, 0))
+ratio = sp.simplify(sp.together(D_dir) / (rho0 * deltaU))
+print("D_dir / (rho0*deltaU) =", ratio)
+# The reduced ratio must be free of rho0 and deltaU (so they were the only vanishing factors).
+assert ratio.free_symbols.isdisjoint({rho0, deltaU}), \
+    f"D_dir / (rho0 deltaU) still depends on {ratio.free_symbols & {rho0, deltaU}}"
+```
 
-2. At mma:59, similarly derive `deltaSplit` from solving `a0Expected*(1 + d) == a1Direct` for `d`, where `a1Direct = (a1 /. cEtaU^2 -> epsEta*kU*kEtaEff)`. Then assert that the postulated closed form matches.
+For the mathematica script, insert immediately after the existing `expectZero["direction-splitting invariant derived matches postulated", ...]` at line 105 (i.e. as the very next lines, before the `subbanner` at line 107):
 
-3. At mma:92, derive `dDirExpected` by `FullSimplify[Together[kappa0*z1 - kappa1*z0]]`, no postulated form. Then assert it equals the closed form `-kappa0*kappa1*gW*rho0*deltaU/(1+deltaU)`.
+```mathematica
+expectZero["collinearity if-leg: deltaU=0", dDir /. deltaU -> 0];
+expectZero["collinearity if-leg: rho0=0", dDir /. rho0 -> 0];
+dDirRatio = FullSimplify[Together[dDir]/(rho0 deltaU), Assumptions -> $Assumptions];
+Print["D_dir / (rho0*deltaU) = ", fmt[dDirRatio]];
+If[!FreeQ[dDirRatio, rho0] || !FreeQ[dDirRatio, deltaU],
+   fail["collinearity only-if: ratio still depends on rho0 or deltaU", dDirRatio]];
+```
 
-These changes make the Mathematica script independent at exactly the points where the SymPy script postulated answers, so a typo in either side's postulate now produces an `engine_disagreement` instead of mutual silence.
+The `expect_zero` / `expectZero` for the `if`-leg substitutions are non-tautological because `D_dir` was independently derived from `kappa_0 z_1 - kappa_1 z_0` (A4/A12 chain), not assumed. The "free of rho0 and deltaU" check on the reduced ratio is the only-if leg.
 
 **Verification:**
+After the fix, the sympy transcript shows three new lines under section 22.3:
+- `collinearity if-leg: deltaU=0 = 0`
+- `collinearity if-leg: rho0=0 = 0`
+- `D_dir / (rho0*deltaU) = -8*sqrt(2)*c_etaW/(3*pi^2*sqrt(mu_W)*sqrt(mu_eta)*(deltaU + 1))` (or equivalent factored form involving `kappa0`, `kappa1`, `g_W`, `1/(1+deltaU)`)
 
-The verifier should see at mma:59, 73, 92 that the postulated closed forms are no longer the *left-hand side* of the definition but the *right-hand side* of an `expectZero` check, with the left-hand side being obtained by Mathematica's `FullSimplify`/`Solve`/`Together` on the direct expressions. Output should print the Mathematica-derived form before the assertion.
+and one final unprinted `assert` on the `free_symbols.isdisjoint({rho0, deltaU})` check. The script must still exit 0.
+
+The Mathematica transcript shows two new `PASS:` lines for the `if`-legs and a printed `D_dir / (rho0*deltaU) = ...` value followed (silently) by the only-if check. The script must still `Exit[0]`.
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` script does not derive the claims independently — it transliterates the SymPy script's algebraic choreography step-for-step (see F3 for the side-by-side table). All key derived quantities (`epsWSplit`, `deltaSplit`, `dDirExpected`, the `M_mix`/`R_target` factors) are postulated with the same closed forms as in the SymPy script, then verified against direct constructions that themselves match the SymPy direct constructions. There is no Mathematica-only intermediate step that could disagree with SymPy through an independent algebraic path.
+The Mathematica script is *not* a pure line-by-line transliteration. It does one additional symbolic derivation that the SymPy script does not: it computes `deltaSplitDerived = a1Direct / a0Expected - 1` and then asserts that this derived expression equals the postulated `(delta0 + epsEta deltaU/(1+deltaU))/(1 - epsEta)`. The SymPy script takes the opposite ordering: it defines `delta_split` as the postulated form and verifies `A_1_direct - A_0_expected (1+delta_split) == 0`. Both orientations exercise the same identity, but the Mathematica version is structurally an independent re-derivation of `delta_split` from the A_0, A_1 raw forms.
+
+Similarly, sections 2 and 3 of the Mathematica script use the "derive then assert against postulated" pattern (`eps_W_split_derived` vs. `eps_W_split_postulated`, `dDir_derived` vs. `dDir_postulated`), which is slightly different from the SymPy script's "define postulated, verify raw matches" pattern.
+
+The two scripts use parallel variable choreography (same wall basis constants, same physical constants, same substitution `c_etaU^2 -> eps_eta K_U K_eta_eff`, same kernel definition `S_U = kappa_0^2/K_U + kappa_1^2/K_{U1}`), and section 4 is essentially a transliteration (same placement-map shape, same tautological assertion). On balance this is *not* a `mathematica_transliteration` finding — the engines run in opposite directions on the load-bearing checks, and the only section that is fully parallel (section 4) is the section that I am separately recommending be cleaned up under F1.
+
+One stylistic note (not a finding): in the Mathematica file at line 60, `deltaSplitDerived = FullSimplify[a1Direct/a0Expected - 1, ...]` references `a0Expected` *before* it is assigned at line 63. This works in Mathematica because at line 60 `a0Expected` evaluates to the literal symbol `a0Expected`, and when `deltaSplitDerived` is later re-evaluated (during the substitutions on lines 66, 68, 71) the now-bound value of `a0Expected` is folded in. The saved output at line 15 (`delta_split = -1 + ((1 + delta0 + deltaU + delta0*deltaU - epsEta)*kEtaEff)/((1 + deltaU)*(kEtaEff - epsEta*kEtaEff))`) confirms the late binding succeeded — `a0Expected` was substituted by its final value. This is brittle but mathematically correct; not a defect I am filing.
 
 ## Engine cross-check
 
-Both engines complete with `Exit 0` and report the same simplified outputs:
+Both engines produce identical algebraic results on the load-bearing checks:
 
-| Quantity | SymPy output | Mathematica output | Agree? |
-|---|---|---|---|
-| `kappa0` | `2*sqrt(2)/pi` | `(2*Sqrt[2])/Pi` | yes |
-| `kappa1` | `-4/(3*pi)` | `-4/(3*Pi)` | yes |
-| `sigma` | `88/(9*pi**2)` | `88/(9*Pi^2)` | yes |
-| `lambda0` | `2/9` | `2/9` | yes |
-| `S_U` | `8*(9*deltaU + 11)/(9*pi**2*K_U*(deltaU + 1))` | `(8*(11 + 9*deltaU))/(9*(1+deltaU)*kU*Pi^2)` | yes |
-| `eps_W_split` | `eps_W*(9*deltaU+11)/(11*(deltaU+1))` | `epsW - (2*deltaU*epsW)/(11*(1+deltaU))` | yes (algebraically equal) |
-| `R_U` | `(deltaU + rho0 + 1)/((deltaU+1)*(rho0+1))` | `(1+deltaU+rho0)/(1+deltaU+rho0+deltaU*rho0)` | yes (`1+deltaU+rho0+deltaU*rho0 = (1+deltaU)(1+rho0)`) |
-| `D_dir` | `8*sqrt(2)*c_etaW*deltaU*rho0/(3*pi**2*sqrt(mu_W*mu_eta)*(deltaU+1))` | `(8*Sqrt[2]*cEtaW*deltaU*rho0)/(3*(1+deltaU)*Sqrt[muEta*muW]*Pi^2)` | yes |
-| `product` (final) | `8*Lambda*(11*deltaU - eps_W*(9*deltaU+11) + 11)/(11*pi**2*(deltaU+1))` | `(8*(11+11*deltaU - 11*epsW - 9*deltaU*epsW)*lambda)/(11*(1+deltaU)*Pi^2)` | yes |
+| Quantity | SymPy | Mathematica |
+|---|---|---|
+| `sigma = kappa_0^2 + kappa_1^2` | `88/(9 pi^2)` | `88/(9 Pi^2)` |
+| `lambda_0 = kappa_1^2 / kappa_0^2` | `2/9` | `2/9` |
+| `S_U` | `8 (9 deltaU + 11) / (9 pi^2 K_U (deltaU+1))` | `(8 (11 + 9 deltaU))/(9 (1 + deltaU) kU Pi^2)` |
+| `eps_W_split` | `eps_W (9 deltaU + 11) / (11 (deltaU+1))` | `((11 + 9 deltaU) epsW)/(11 (1 + deltaU))` |
+| `R_U` (in `delta_U`, `rho_0`) | `(deltaU + rho0 + 1) / ((deltaU + 1)(rho0 + 1))` | `(1 + deltaU + rho0)/(1 + deltaU + rho0 + deltaU rho0)` (= same after expanding denominator) |
+| `D_dir` numerator (sign convention) | `+8 sqrt(2) c_etaW deltaU rho0 / (3 pi^2 sqrt(mu_W mu_eta) (deltaU+1))` | `+(8 Sqrt[2] cEtaW deltaU rho0)/(3 (1 + deltaU) Sqrt[muEta muW] Pi^2)` |
+| `R_target^(split U) M_mix^(split U)` | `8 Lambda (11 deltaU - eps_W (9 deltaU+11) + 11) / (11 pi^2 (deltaU+1))` (= `8 Lambda (1 - eps_W_split)/pi^2`) | `(8 (11 + 11 deltaU - 11 epsW - 9 deltaU epsW) lambda)/(11 (1 + deltaU) Pi^2)` (= `8 lambda (1 - eps_W_split)/Pi^2`) |
 
-All six assertions in each script PASS. But — as F3 notes — this agreement is forced by the transliteration, not earned by independent derivation, so the engine-cross-check is weak evidence here.
+Sign of `D_dir`: both engines give a positive numerator after using `kappa_1 = -4/(3 pi)`. Reconcile with the paper's `D_dir = -kappa_0 kappa_1 g_W rho_0 delta_U/(1+delta_U)`: with `kappa_0 = +2 sqrt(2)/pi > 0` and `kappa_1 = -4/(3 pi) < 0`, `-kappa_0 kappa_1 = +8 sqrt(2)/(3 pi^2) > 0`, so the paper's signed form gives the same positive value once the constants are substituted in. Engine outputs agree.
+
+Both engines exit 0. `outputs_fresh: true` (script mtimes 12:25, output mtimes 12:26 on May 22).
 
 ## Verdict justification
 
-The script is mathematically consistent in the algebra it does perform — the substitution `c_etaU^2 -> eps_eta*K_U*K_eta_eff` correctly yields the postulated `delta_split` and `eps_W_split` closed forms, the direction-splitting invariant comes out with the right sign and `deltaU/(1+deltaU)` factor, and the two engines agree on every simplified expression. However, two of the six assertion pairs (`z1/z0 = (kappa1/kappa0)*R_U` and the product law `M_mix*R_target = 8*Lambda*(1-eps_W_split)/pi^2`) are tautological by construction (F1, F2), and the Mathematica script is a step-by-step transliteration of the SymPy choreography rather than an independent derivation (F3). Verdict is `findings` with three actionable items; no `stop_cold` flag because none of the fixes propagate downstream — they strengthen the verification of *this* unit's existing claims rather than changing any derived constant or sign.
-
-Attacks attempted that failed: (a) trying to break the `2/11` coefficient by recomputing `kappa0^2/sigma`, `kappa1^2/sigma` — both come out exactly to `9/11` and `2/11`, consistent; (b) trying to find a sign error in `D_dir` by direct expansion — sign is correct; (c) trying to find a domain-assumption mismatch (e.g., requiring `eps_eta < 1` for `(1-eps_eta)` in the denominator) — the algebraic identities in the script don't actually require positivity of `(1-eps_eta)`, only that it be nonzero, and the `simplify` calls don't exploit positivity in a way that would hide a branch error; (d) trying to find a parity / domain mismatch in the series expansions (22.5) — these are just `removeO()` prints with no assertion, so they cannot fail in a hidden way.
+The three paper-side deliverables in `\stagefield{Output}` (`delta_split` law, `eps_W_split` law packaged with it in eq:app-stage039-split-placement, `R_U` direction factor at eq:app-stage039-RU, and the collinearity iff at eq:app-stage039-collinearity) are each substantively verified by both engines, with the partial caveat that the collinearity-iff direction is read off from the factored `D_dir` form rather than asserted (F2). The `D_dir` closed-form invariant (boxed at eq:app-stage039-Ddir) is asserted directly. No paper-side claim is verified against a different identity, so `paper_alignment: aligned` and no `paper_misalignment` finding. Two real but low-severity script-side findings remain: F1 (tautological placement-map check in section 4 of each script — an extra check that the paper does not require and that as written can never fail) and F2 (the collinearity iff is implied rather than asserted). Both are mechanically fixable, neither propagates downstream. Adversarial attacks I tried: (a) attempt to find a `paper_misalignment` between the constants in the script and the paper card — none, all constants (`kappa_0 = 2 sqrt(2)/pi`, `kappa_1 = -4/(3 pi)`, `sigma = 88/(9 pi^2)`, factors 2/11, 8/pi^2, 27 pi^2/...) match between paper, notes, and script; (b) check the `positive=True` declarations against the iff theorem (rho_0 = 0 case) — the declarations are stylistic, do not prevent substitution, and SymPy `.subs(rho0, 0)` works correctly even on a positive symbol; the `if`-leg check I am recommending in F2 will exercise this in practice; (c) inspect the brittle `a0Expected` late-binding in the Mathematica script at line 60 vs. 63 — works correctly by Mathematica's lazy lookup of stored symbol bindings, confirmed against output line 15; not a defect; (d) check the substitution `c_UW^2 -> eps_W K_U K_W_eff / sigma` used in the `eps_W_split` derivation against the notes definition `eps_W := c_UW^2 sigma / (K_U K_W^eff)` — these are inverses of each other (rearrange to `c_UW^2 = eps_W K_U K_W^eff / sigma`), correct; (e) verify the sign of `D_dir` between paper boxed form and script numeric form — agrees once `kappa_1 < 0` is substituted in. Verdict: `findings` with two low-severity script-side findings; not stop-cold.
 
 ## Self-test notes
 
-- **Variable independence**: No new `sp.diff` or `D[...]` is proposed in any "Required change"; all proposed checks are algebraic identities of the same symbols already in the script. The substitution-based checks in F2's "Required change" (`M_mix_split - M_mix_flat.subs(eps_W, eps_W_split)`) involve only `eps_W`, `eps_W_split`, both already declared as positive reals — no new symbol introductions, no derivatives, so the variable-independence trap does not apply.
-- **Parity / trivial-case**: Setting `deltaU -> 0` in the proposed substitution check `M_mix_split - M_mix_flat.subs(eps_W, eps_W_split)` gives `M_mix_split|_{deltaU=0} = M_mix_flat` (since `eps_W_split|_{deltaU=0} = eps_W`), so the residual collapses to 0 as required. For F1's proposed `z1*(1+rho0) - z0*(kappa1/kappa0)*(1+rho0/(1+deltaU))`: substituting the literal definitions gives `kappa1*g_W*(1+rho0/(1+deltaU))*(1+rho0) - kappa0*g_W*(1+rho0)*(kappa1/kappa0)*(1+rho0/(1+deltaU)) = 0` — correct, this is the *non-tautological* form because the rho-factor structure is no longer encapsulated in a defined symbol `R_U`.
-- **Path specifications**: The directive's "Target" lines name `.py` files in `scripts/` and `.wl` files in `mathematica/`, matching the canonical layout.
+I checked: (1) the proposed F2 `D_dir.subs(deltaU, 0)` and `D_dir.subs(rho0, 0)` both reduce to 0 trivially because the closed-form numerator is `rho_0 delta_U`; verified mentally against the printed `D_dir = 8 sqrt(2) c_etaW deltaU rho0 / (3 pi^2 sqrt(mu_W mu_eta)(deltaU+1))`. (2) For the only-if leg, my first draft proposed `ratio = D_dir / (rho0 deltaU)` and a `free_symbols.isdisjoint({rho0, deltaU})` check — this would fail because `(1+deltaU)` survives in the denominator of `D_dir` even after factoring out `rho0 deltaU`. The corrected approach (encoded in the directive) is to pull `Numerator(Together(D_dir))` first, then divide by `rho0 deltaU`; the resulting reduced numerator `8 sqrt(2) c_etaW / (3 pi^2 sqrt(mu_W mu_eta))` is genuinely free of both `rho0` and `deltaU`. The directive also checks that this reduced numerator is not identically zero, to rule out the case where some other factor cancellation accidentally produces a vanishing residue. (3) Paper round-trip: the F1 deletion of lines 138-139 (sympy) and 118-119 (.wl) removes only extra checks not listed in `\stagefield{Output}`; no paper-side claim is left unverified. (4) The F2 additions reuse only symbols already in scope (`deltaU`, `rho0`, `D_dir`/`dDir`, plus standard SymPy/Mathematica builtins); no new symbol declarations required. (5) Path specifications: F1 and F2 target `scripts/...sympy_audit.py` and `mathematica/...mathematica_audit.wl` respectively; no missing-script directive in this audit.

@@ -8,7 +8,7 @@ STAGE 026 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT DIRECTION
 ----------------------------------------------------------------------------------------
 y = {kappa0*(gB + (gS*gU)/kU), kappa1*(gB + (gS*gU)/(kU + deltaU*kU))}
 R_phi = 1 - (deltaU*gS*gU)/((1 + deltaU)*(gS*gU + gB*kU))
-D_phi = (deltaU*gS*gU*kappa0*kappa1)/(kU + deltaU*kU)
+D_phi = -((deltaU*gS*gU*kappa0*kappa1)/(kU + deltaU*kU))
 R_phi - expected = 0
 PASS: R_phi - expected
 D_phi - expected = 0
@@ -72,5 +72,11 @@ PASS: mismatch leading-in-deltaU coefficient
 R_phi - R_U = (deltaU*gU*(gB*gR - gS*gW)*kU)/((1 + deltaU)*(gS*gU + gB*kU)*(gR*gU + gW*kU))
 mismatch formula = 0
 PASS: mismatch formula
+mismatch sign at deltaU=1, sigma0=0, rho0=1 = 0
+PASS: mismatch sign at deltaU=1, sigma0=0, rho0=1
+mismatch sign at deltaU=1, sigma0=1, rho0=0 = 0
+PASS: mismatch sign at deltaU=1, sigma0=1, rho0=0
+mismatch vanishes at tracking sigma0=rho0 = 0
+PASS: mismatch vanishes at tracking sigma0=rho0
 
 Stage 043 Mathematica audit passed.

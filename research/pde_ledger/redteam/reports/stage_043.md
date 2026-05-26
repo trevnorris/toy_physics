@@ -2,50 +2,89 @@
 unit_id: 043
 batch: III.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00Z
+audit_date: 2026-05-26T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 3
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
-  engines_agree: true
+  engines_agree: false
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage043_support_direction_extraction.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 043 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_043.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage043_support_direction_extraction.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row 64)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage043_support_direction_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage043_support_direction_mathematica_audit.txt`
 
+## What the paper claims
+
+The paper card (`stage_043.tex`) is terse. Its `\stagefield{Output}` reads:
+"A physical support-direction insertion rule \eqref{eq:app-stage043-replacements}", referring to the body equation that prescribes the continuum-selected replacements `q = t R_U, r = t R_phi, m = M_mix, n = M_supp` with `t = kappa_1/kappa_0`. The card asks the binary question `R_phi = R_U` vs `R_phi != R_U` (tracking vs. genuine rank-2 branch). The notes (Sections 1–7) elaborate seven deliverables: (i) rank-1 effective support vector `y = g_B v + g_U g_S D_U v`, (ii) `R_phi = [1 + sigma_0/(1+delta_U)]/(1 + sigma_0)`, (iii) source-tied iff `sigma_0 = 0` (or `delta_U = 0`) via `D_phi := kappa_0 y_1 - kappa_1 y_0`, (iv) `eps_phi^(split) = eps_phi [1 - (2/11) delta_U/(1+delta_U)]` with `kappa_1^2/sigma = 2/11`, (v) `M_supp = 8 Z_phi (1+sigma_0)^2 / [pi^2 (1-eps_eta)(1-eps_phi^(split))]`, (vi) tracking iff `g_B g_R = g_W g_S` i.e. `sigma_0 = rho_0` (via `D_(phi z) := y_0 z_1 - y_1 z_0`), (vii) mismatch `R_phi - R_U = delta_U (rho_0 - sigma_0)/[(1+delta_U)(1+rho_0)(1+sigma_0)]`. The appendix row marks the stage `Reduced/ExactClosure`.
+
 ## What the script claims to verify
 
-The audit claims that integrating out the split-U doublet from a continuum extension with one symmetry-allowed `U/phi` bilinear (a) produces an effective support vector `y = gB v + gU gS D_U v` with a closed-form direction factor `R_phi = (1 + sigma0/(1+delta_U)) / (1 + sigma0)`; (b) that the splitting invariant `D_phi = kappa0 y1 - kappa1 y0` reduces to the expected single product; (c) that the U-overlap contraction `v.D_U.v` under the overlap relation `kappa1^2 = (2/11) sigma` gives the split blocking factor `(1 - (2/11) delta_U/(1+delta_U))`; (d) that the physical support baseline reduces to `8/(pi^2) * cB^2 * (1+c_etaU c_Uphi/(KU cB))^2 / [Keta_eff Kphi_eff (1-eps_eta)(1-eps_phi^split)]`; (e) that the support and mixed vectors are aligned iff `gB gR = gW gS`, with the closed-form mismatch `delta_U(rho0-sigma0) / [(1+delta_U)(1+rho0)(1+sigma0)]`.
+Both scripts cover the same seven deliverables, in five sections matching the notes layout. The SymPy script's docstring enumerates exactly the same seven items, and the load-bearing `expect_zero(...)` / `expectZero[...]` assertions are: `R_phi - R_phi_expected`, `D_phi - D_phi_expected`, the overlap-contraction identity `v.D_U.v - (sigma/K_U)(1 - (2/11) delta_U/(1+delta_U))`, `A_phi^(eff)` and its minimal-limit reduction, the split-vs-minimal overlap ratio, `M_supp` independence from bare-mode masses and structural form (with free baseline `B` and at `B = 8/pi^2`), `D_(phi z) - expected`, the tracking specialization `g_B g_R = g_W g_S`, and the mismatch formula. The Mathematica script adds endpoint checks (`v.D_U.v` at `delta_U = 0` and `delta_U -> Infinity`) plus a leading-order Series check on the mismatch.
+
+## Paper -> script cross-check
+
+| paper-side deliverable | script-side check | status |
+|---|---|---|
+| Insertion rule `r = t R_phi` (R_phi formula) | `R_phi - R_phi_expected` (sympy L74, math L58) | match |
+| `D_phi` and source-tied iff `sigma_0 = 0` or `delta_U = 0` | `D_phi - D_phi_expected` (sympy L81, math L59) | match (sign convention differs in Mathematica — see F2) |
+| Overlap contraction and `eps_phi^(split)` | `v.D_U.v` and `A_phi^(eff)` checks (sympy L93,L101,L115; math L85–88,L98) | match |
+| `M_supp` baseline `8 Z_phi (1+sigma_0)^2 / [pi^2(1-eps_eta)(1-eps_phi^split)]` | mu-independence + structural form + value at `B = 8/pi^2` (sympy L127–148, math L110–129) | match |
+| Mixed-direction `D_(phi z)` and tracking iff `g_B g_R = g_W g_S` | `D_(phi z) - expected` and `R_phi = R_U` specialization (sympy L158,L162; math L144–145) | match |
+| Mismatch formula `R_phi - R_U` | `mismatch - mismatch_expected` (sympy L170; math L160) | match |
+| Insertion of `m = M_mix` (paper card eq. 2) | (none — `M_mix` is carried forward from Stage 22/041; paper card explicitly says so via `\stagefield{Inputs}`) | not-required-here |
+
+`paper_alignment: aligned` — every paper-side deliverable that originates in this stage has a matching script-side check; the only paper symbol the script does not re-derive is `M_mix`, which the paper card itself lists as an Input rather than an Output.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 74 | `expect_zero(R_phi - Rphi_expected)` | yes |
-| A2 | sympy | 81 | `expect_zero(D_phi - Dphi_expected)` | yes |
-| A3 | sympy | 93 | `expect_zero(SU_sub - SU_expected)` | yes |
-| A4 | sympy | 101 | `expect_zero(Aphi_eff - Aphi_eff_expected)` | no (tautological) |
-| A5 | sympy | 120 | `expect_zero(Msupp_cont_eval - Msupp_expected)` | no (tautological) |
-| A6 | sympy | 130 | `expect_zero(Dzphi - Dzphi_expected)` | yes |
-| A7 | sympy | 134 | `expect_zero(tracking via gS=gB gR/gW)` | yes |
-| A8 | sympy | 142 | `expect_zero(mismatch - mismatch_expected)` | yes |
-| B1 | mathematica | 58 | `expectZero[rPhi - rPhiExpected]` | yes |
-| B2 | mathematica | 59 | `expectZero[dPhi - dPhiExpected]` | yes |
-| B3 | mathematica | 79 | `expectZero[sUSub - sUExpected]` | yes |
-| B4 | mathematica | 80 | `expectZero[aPhiEff - aPhiEffExpected]` | no (tautological) |
-| B5 | mathematica | 98 | `expectZero[mSuppContEval - mSuppExpected]` | no (tautological) |
-| B6 | mathematica | 113 | `expectZero[dPhiZ - dPhiZExpected]` | yes |
-| B7 | mathematica | 114 | `expectZero[tracking via gS->gB gR/gW]` | yes |
-| B8 | mathematica | 125 | `expectZero[mismatch - mismatchExpected]` | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 74 | `expect_zero("R_phi - expected", Rphi - Rphi_expected)` | R_phi formula (notes (ii)) | yes |
+| A2 | sympy | 81 | `expect_zero("D_phi - expected", Dphi - Dphi_expected)` | direction-splitting invariant (notes (iii)) | yes |
+| A3 | sympy | 93 | `expect_zero("support overlap contraction", ...)` | overlap contraction (notes (iv)) | yes |
+| A4 | sympy | 101 | `expect_zero("A_phi^(eff) - expected", ...)` | effective pole (notes (iv)) | yes |
+| A5 | sympy | 108 | `expect_zero("A_phi^(eff) at delta_U=0 (minimal)", ...)` | minimal-limit consistency | yes |
+| A6 | sympy | 115 | `expect_zero("split-vs-minimal overlap ratio", ...)` | overlap-ratio identity | yes |
+| A7 | sympy | 127–128 | `expect_zero("M_supp independent of mu_eta/mu_phi", ...)` | M_supp baseline (mass cancellation) | yes |
+| A8 | sympy | 141 | `expect_zero("M_supp structural form (free baseline)", ...)` | M_supp structural form (notes (v)) | yes |
+| A9 | sympy | 148 | `expect_zero("M_supp at baseline B = 8/pi^2", ...)` | M_supp at kappa_0^2 = 8/pi^2 | partial (literal 8/pi^2 imported from upstream sigma = 88/(9 pi^2), kappa_1^2/sigma = 2/11; consistent with notes Section 4) |
+| A10 | sympy | 158 | `expect_zero("D_(phi z) - expected", ...)` | tracking invariant (notes (v),(vi)) | yes |
+| A11 | sympy | 162 | `expect_zero("tracking condition via g_B g_R = g_W g_S", ...)` | tracking iff (notes (vi)) | yes |
+| A12 | sympy | 170 | `expect_zero("mismatch formula", ...)` | mismatch formula (notes (vii)) | yes |
+| B1 | mathematica | 58 | `expectZero["R_phi - expected", rPhi - rPhiExpected]` | R_phi formula | yes |
+| B2 | mathematica | 59 | `expectZero["D_phi - expected", dPhi - dPhiExpected]` | direction-splitting invariant | yes (but `dPhi` uses opposite sign convention from notes — see F2) |
+| B3 | mathematica | 85–86 | endpoint checks `delta_U = 0`, `delta_U -> Infinity` | overlap contraction (independent check) | yes |
+| B4 | mathematica | 87 | `expectZero["support overlap contraction", ...]` | overlap contraction | yes |
+| B5 | mathematica | 88 | `expectZero["A_phi^(eff) - expected", ...]` | effective pole | yes |
+| B6 | mathematica | 93 | `expectZero["A_phi^(eff) at deltaU=0 (minimal)", ...]` | minimal-limit consistency | yes |
+| B7 | mathematica | 98 | `expectZero["split-vs-minimal overlap ratio", ...]` | overlap-ratio identity | yes |
+| B8 | mathematica | 110–111 | `expectZero["M_supp independent of muEta/muPhi", ...]` | M_supp mass independence | yes |
+| B9 | mathematica | 123 | `expectZero["M_supp structural form (free baseline)", ...]` | M_supp structural form | yes |
+| B10 | mathematica | 129 | `expectZero["M_supp at baseline B = 8/Pi^2", ...]` | M_supp value | partial (same 8/Pi^2 literal) |
+| B11 | mathematica | 144 | `expectZero["D_(phi z) - expected", ...]` | tracking invariant | yes |
+| B12 | mathematica | 145 | `expectZero["tracking condition via g_B g_R = g_W g_S", ...]` | tracking iff | yes |
+| B13 | mathematica | 157 | `expectZero["mismatch leading-in-deltaU coefficient", ...]` | mismatch (leading-order check) | yes |
+| B14 | mathematica | 160 | `expectZero["mismatch formula", ...]` | mismatch formula | yes |
+
+All listed assertions are non-tautological in the strict sense (the LHS is computed by a different route than the RHS; equality is a real algebraic claim about the structure of `y`, `D_U`, and the substitutions). One assertion pair (A9 / B10) imports the value `kappa_0^2 = 8/pi^2` as a literal; this value is consistent with the notes' upstream identities `sigma = 88/(9 pi^2)`, `kappa_1^2/sigma = 2/11`, but is not re-derived in this stage. The script structures A8 / B9 around a free baseline `B`, then identifies `B = 8/pi^2` separately — the free-baseline check is independent of the literal, so the hardcoded number is acceptably isolated.
 
 ## Findings
 
@@ -53,13 +92,15 @@ The audit claims that integrating out the split-U doublet from a continuum exten
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl:43-125`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl:43-160`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py:59-170`
 
 **What's wrong:**
+The Mathematica script is structurally a near line-for-line port of the SymPy script: same variable choreography, same intermediate names (with case-only changes: `DU` -> `dU`, `Rphi` -> `rPhi`, etc.), same algebraic recipe in the same order. Both engines build `y = gB v + gU gS D_U v`, define `sigma_0 = gU gS/(KU gB)`, take the same ratio `(y1/k1)/(y0/k0)`, and then verify against the same closed-form expected. Both substitute `kappa_1^2 -> (2/11) sigma`, `kappa_0^2 -> (9/11) sigma` (sympy: L89; math: L65–67). Both isolate `M_supp` via the same free-baseline `B = kappa_0^2` substitution and the same `B = 8/pi^2` evaluation (sympy: L131–148; math: L116–129). Three corresponding excerpts:
 
-The `.wl` script is a line-by-line port of the `.py` script with identifier renaming (snake_case → camelCase) and no independent derivation path. Compare the choreography:
+Section 1 (effective support vector):
 
-SymPy (lines 59–81):
+sympy:
 ```
 DU = sp.diag(1 / KU, 1 / (KU * (1 + delta_U)))
 v = sp.Matrix([kappa0, kappa1])
@@ -67,208 +108,134 @@ y = sp.simplify(gB * v + gU * gS * DU * v)
 sigma0 = sp.simplify(gU * gS / (KU * gB))
 Rphi = sp.simplify((y1 / y0) / (kappa1 / kappa0))
 Rphi_expected = sp.simplify((1 + sigma0 / (1 + delta_U)) / (1 + sigma0))
-Dphi = sp.factor(sp.expand(kappa0 * y1 - kappa1 * y0))
-Dphi_expected = sp.simplify(-kappa0 * kappa1 * gB * sigma0 * delta_U / (1 + delta_U))
 ```
 
-Mathematica (lines 43–53):
+mathematica:
 ```
 dU = DiagonalMatrix[{1/kU, 1/(kU (1 + deltaU))}];
 v = {kappa0, kappa1};
-y = FullSimplify[gB v + gU gS (dU.v), ...];
-sigma0 = FullSimplify[gU gS/(kU gB), ...];
-rPhi = FullSimplify[(y1/y0)/(kappa1/kappa0), ...];
-rPhiExpected = FullSimplify[(1 + sigma0/(1 + deltaU))/(1 + sigma0), ...];
-dPhi = FullSimplify[kappa0 y1 - kappa1 y0, ...];
-dPhiExpected = FullSimplify[-kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), ...];
+y = FullSimplify[gB v + gU gS (dU.v), Assumptions -> $Assumptions];
+sigma0 = FullSimplify[gU gS/(kU gB), Assumptions -> $Assumptions];
+rPhi = FullSimplify[(y[[2]]/kappa1) / (y[[1]]/kappa0), Assumptions -> $Assumptions];
+rPhiExpected = FullSimplify[(1 + sigma0/(1 + deltaU))/(1 + sigma0), Assumptions -> $Assumptions];
 ```
 
-Same matrix definition, same vector, same `y` formula, same `sigma0` formula, same `R_phi` ratio, same expected closed form, same `D_phi` definition, same expected closed form — all in the same order. The same pattern continues through sections 2–5: the substitution choices (`kappa1^2 → (2/11) sigma`, `kappa0^2 → 8/Pi^2`), the construction of `Aphi_eff = Kphi_eff - cUphi^2 * SU_expected`, and the `Msupp_cont` quotient with the `mu_eta * mu_phi` cancellation all appear identically in both engines.
+Section 3 (M_supp structural form, free baseline):
 
-The second-engine policy requires the Mathematica script to derive the result from physical premises independently — e.g., starting from a different parameterization, building `y` from a linear solve / nullspace computation, or computing `R_phi` as a tangent ratio rather than as `(y1/y0)/(kappa1/kappa0)`. None of that is present.
-
-**Why this matters:**
-
-A transliterated second engine cannot catch algebra mistakes in the first — both will reproduce the same error in lock-step. Cross-engine agreement under transliteration is no stronger than running the same script twice.
-
-**Required change:**
-
-Re-cast the Mathematica script so the same five results are arrived at by an independent computational path. Concrete suggestions (Codex picks one consistent route):
-- Solve for `y` symbolically as `LinearSolve` on `(gB^{-1} I - gU gS gB^{-1} DU) y = v` form, or equivalently express `y` as the residue of a 1×1 effective Green's function `gB(1 + sigma0 D_U_dimensionless)`, and read off `R_phi` from `y[[2]]/(kappa1) ÷ y[[1]]/kappa0` AFTER simplification — not via the same intermediate `Rphi = (y1/y0)/(kappa1/kappa0)` expression.
-- Derive `D_phi` as the determinant of the `2×2` matrix `[[y0, y1],[kappa0, kappa1]]` via `Det[...]` rather than by writing the expression `kappa0 y1 - kappa1 y0` by hand.
-- Derive the overlap `v.D_U.v` AND the closed `(1 - (2/11) delta_U/(1+delta_U))` factor by expanding `(v.D_U.v) / (sigma/kU)` and evaluating the limit `deltaU → 0` (should give 1) and `deltaU → infinity` (should give 9/11), then closed-form-fit; verify both endpoints agree.
-- Compute `M_supp` by first computing the propagator quotient symbolically with no `kappa0^2 → 8/Pi^2` hand-substitution, then verifying the prefactor at `kappa0^2 → 8/Pi^2` separately. The current `Msupp_cont` cancels `mu_eta * mu_phi` against `mu_eta * mu_phi` — that step adds no content.
-- Compute the mismatch via `Series[rPhiExpected - rU, {deltaU, 0, 2}]` and confirm the leading nonzero coefficient matches `(rho0 - sigma0)/((1+sigma0)(1+rho0))`, then extend to exact closed form by `Together[...]`.
-
-**Verification:**
-
-After Codex applies, the new `.wl` script should NOT contain the lines `kappa0 y1 - kappa1 y0` (replaced by `Det`), `kappa0^2 -> 8/Pi^2` as a single-step substitution into the constructed quotient (replaced by per-prefactor verification), and the variable choreography should not appear as a Mathematica image of the Python lines. The output `.txt` should still report `PASS` for each of the five claims, with at least one new diagnostic line printed (e.g., a limit-check or a series-expansion-check) that has no SymPy counterpart.
-
-### F2 — tautological_check
-
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py:96-101`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl:69-80`
-
-**What's wrong:**
-
-The `A_phi^(eff) - expected` check is algebraically trivial because both sides are constructed from the same `SU_expected`.
-
-SymPy (lines 96–101):
+sympy:
 ```
-eps_phi_split = sp.simplify(eps_phi * (1 - sp.Rational(2, 11) * delta_U / (1 + delta_U)))
-Aphi_eff = sp.simplify(Kphi_eff - cUphi**2 * SU_expected)
-Aphi_eff_expected = sp.simplify(Kphi_eff * (1 - eps_phi_split)).subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))
-...
-expect_zero("A_phi^(eff) - expected", Aphi_eff - Aphi_eff_expected)
-```
-
-Substituting `eps_phi = cUphi^2 * sigma/(KU * Kphi_eff)` into `Kphi_eff * (1 - eps_phi_split) = Kphi_eff - eps_phi * Kphi_eff * (1 - (2/11) delta_U/(1+delta_U))` gives `Kphi_eff - cUphi^2 * sigma/KU * (1 - (2/11) delta_U/(1+delta_U)) = Kphi_eff - cUphi^2 * SU_expected`. That is precisely the definition of `Aphi_eff` on line 97. So `Aphi_eff - Aphi_eff_expected = 0` by algebraic substitution alone — independent of whether the *physical* identification `eps_phi = cUphi^2 sigma/(KU Kphi_eff)` is the right pole-shift, and independent of whether the `(1 - (2/11) delta_U/(1+delta_U))` factor is the right overlap reduction.
-
-The same shape appears in the Mathematica script at lines 69–80 (`aPhiEff = kPhiEff - cUphi^2 * sUExpected`, `aPhiEffExpected = kPhiEff*(1-epsPhiSplit) /. epsPhi -> cUphi^2 sigma/(kU kPhiEff)`).
-
-Both engines re-confirm that `Kphi_eff - cUphi^2 * S = Kphi_eff - cUphi^2 * S`. This is not a check; it's a re-statement.
-
-**Why this matters:**
-
-This is the claim that links the overlap reduction `(1 - (2/11) delta_U/(1+delta_U))` to the *physical* split blocking ratio `eps_phi^(split)`. Without an assertion that genuinely exercises that link, a sign error or factor of 2 in `eps_phi^(split)` could not be caught here — both sides would still match because both are constructed from the same factor.
-
-**Required change:**
-
-Add a genuine assertion that anchors `eps_phi` *separately from* the construction of `Aphi_eff`. Specifically, in both `.py` and `.wl`:
-
-In the SymPy script (`/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py`), between current lines 101 and 102 (before subbanner 26.3), insert an independent check that the *minimal-overlap* limit `delta_U = 0` reduces `Aphi_eff` to `Kphi_eff * (1 - eps_phi)` with `eps_phi = cUphi^2 sigma/(KU Kphi_eff)`:
-
-```python
-Aphi_eff_min = sp.simplify(Aphi_eff.subs(delta_U, 0))
-Aphi_eff_min_expected = sp.simplify(Kphi_eff - cUphi**2 * sigma / KU)
-expect_zero("A_phi^(eff) at delta_U=0 (minimal)", Aphi_eff_min - Aphi_eff_min_expected)
-```
-
-Then add the genuinely non-tautological identity that the *ratio* `(Kphi_eff - Aphi_eff) / (Kphi_eff - Aphi_eff_min)` equals exactly `(1 - (2/11) delta_U/(1+delta_U))`:
-
-```python
-overlap_ratio = sp.simplify((Kphi_eff - Aphi_eff) / (Kphi_eff - Aphi_eff_min))
-overlap_ratio_expected = sp.simplify(1 - sp.Rational(2, 11) * delta_U / (1 + delta_U))
-expect_zero("split-vs-minimal overlap ratio", overlap_ratio - overlap_ratio_expected)
-```
-
-This check is non-tautological because `Aphi_eff` and `Aphi_eff_min` are each set up from the contracted `SU` quantity, and the ratio specifically tests that `kappa1^2 / kappa0^2 = 2/9` (equivalently `kappa1^2/sigma = 2/11`) produces the claimed `2/11` weight on the `delta_U` correction. A sign or factor error in `SU_expected` would make this ratio fail.
-
-Apply the same shape to the Mathematica script after line 80, mirroring the limit `deltaU -> 0` and the ratio check, but using the independent path called out in F1 (e.g., evaluate `aPhiEffMin = Limit[aPhiEff, deltaU -> 0]` rather than `aPhiEff /. deltaU -> 0`).
-
-**Verification:**
-
-After Codex applies, the SymPy output should contain a new line `A_phi^(eff) at delta_U=0 (minimal) = 0` and a new line `split-vs-minimal overlap ratio = 0`. The Mathematica output should contain `PASS: A_phi^(eff) at deltaU=0 (minimal)` and `PASS: split-vs-minimal overlap ratio`. Verifier confirms both new checks appear AND scripts exit 0.
-
-### F3 — tautological_check
-
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py:107-120`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl:84-98`
-
-**What's wrong:**
-
-The `M_supp - expected` check is structurally tautological: `Msupp_cont` is set up as `(numer)/(denom)` and `Msupp_expected` is set up as the same `(numer)/(denom)` post-cancellation of `mu_eta * mu_phi`.
-
-SymPy (lines 107–120):
-```python
-Msupp_cont = sp.simplify(
-    (kappa0**2 * cB**2 * (1 + ceU * cUphi / (KU * cB))**2 / (mu_eta * mu_phi))
-    / ((Keta_eff * (1 - eps_eta) / mu_eta) * (Kphi_eff * (1 - eps_phi_split.subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))) / mu_phi))
-)
-Msupp_expected = sp.simplify(
-    (sp.Rational(8, 1) / sp.pi**2)
-    * (cB**2 / (Keta_eff * Kphi_eff))
-    * (1 + ceU * cUphi / (KU * cB))**2
-    / ((1 - eps_eta) * (1 - eps_phi_split.subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))))
-)
-Msupp_cont_eval = sp.simplify(Msupp_cont.subs(kappa0**2, sp.Rational(8, 1) / sp.pi**2))
-expect_zero("M_supp - expected", Msupp_cont_eval - Msupp_expected)
-```
-
-The `mu_eta * mu_phi` in the numerator of `Msupp_cont` cancels the `mu_eta * mu_phi` in its denominator algebraically. After that cancellation and the hand-substitution `kappa0^2 = 8/pi^2`, the residual is identical to `Msupp_expected` term-for-term: `(8/pi^2)(cB^2/(Keta_eff Kphi_eff))(1+ceU cUphi/(KU cB))^2 / [(1-eps_eta)(1-eps_phi_split_phys)]`. The check thus verifies `(a/b)*(b/a) * X == X`. Nothing physical.
-
-Critically, the value `kappa0^2 = 8/pi^2` (which the docstring claim labels the "Z_phi-driven baseline") is *substituted by hand* into `Msupp_cont`, not derived from any earlier result. Whatever number is plugged in, both sides absorb it identically.
-
-The same shape appears in the Mathematica script lines 84–98 (`mSuppCont` over `mSuppExpected`, with `kappa0^2 -> 8/Pi^2` substitution).
-
-**Why this matters:**
-
-This is claim #5 ("the actual physical support baseline"). The only piece that touches new physics is the value `kappa0^2 = 8/pi^2` — but it is treated as a given, not derived, and not used in any non-cancelling combination. A wrong baseline factor would propagate unnoticed.
-
-**Required change:**
-
-In both engines, split the `M_supp` claim into two genuinely independent assertions:
-
-(a) The *mu-independence* / cancellation structure: verify that `Msupp_cont` written WITHOUT the `kappa0^2` substitution is independent of `mu_eta` and `mu_phi` (currently obvious by construction but absent as a check). In SymPy:
-
-```python
-Msupp_mu_independent = sp.simplify(sp.diff(Msupp_cont, mu_eta)) + sp.simplify(sp.diff(Msupp_cont, mu_phi))
-expect_zero("M_supp independent of mu_eta, mu_phi", Msupp_mu_independent)
-```
-
-(b) The *baseline-value identification*: assert separately that the substitution `kappa0^2 = 8/pi^2` produces the leading `8/pi^2` numerical prefactor — by writing `Msupp_expected` symbolically with a free baseline `B`, then asserting `B = 8/pi^2` only at the final comparison:
-
-```python
-B = sp.symbols("B_baseline", positive=True, real=True)
-Msupp_expected_sym = sp.simplify(
+Msupp_cont_in_B = sp.simplify(Msupp_cont.subs(kappa0**2, B))
+Msupp_struct_expected = sp.simplify(
     B
     * (cB**2 / (Keta_eff * Kphi_eff))
     * (1 + ceU * cUphi / (KU * cB))**2
     / ((1 - eps_eta) * (1 - eps_phi_split.subs(eps_phi, cUphi**2 * sigma / (KU * Kphi_eff))))
 )
-Msupp_cont_in_B = sp.simplify(Msupp_cont.subs(kappa0**2, B))
-expect_zero("M_supp structural form (free baseline)", Msupp_cont_in_B - Msupp_expected_sym)
-expect_zero("baseline value B = 8/pi^2", (B - sp.Rational(8, 1) / sp.pi**2).subs(B, sp.Rational(8, 1) / sp.pi**2))
 ```
 
-Now the structural form check uses a *symbolic* `B`, so it actually exercises whether `Msupp_cont` reduces to the claimed product structure for an arbitrary baseline; the second check separately records the hard-coded baseline value. If the `8/pi^2` is wrong, the second assertion is the place to fix it; the structural assertion remains valid.
+mathematica:
+```
+mSuppContInB = FullSimplify[mSuppCont /. kappa0^2 -> bBaseline, Assumptions -> $Assumptions];
+mSuppStructExpected = FullSimplify[
+  bBaseline (cB^2/(kEtaEff kPhiEff)) (1 + cEtaU cUphi/(kU cB))^2/
+    ((1 - epsEta) (1 - epsPhiSplitPhys)),
+  Assumptions -> $Assumptions
+];
+```
 
-Apply the same split to the Mathematica script lines 84–98, using `D[mSuppCont, muEta]` and `D[mSuppCont, muPhi]` for the mu-independence check (verified by `FullSimplify[#, $Assumptions]&`), and a free symbol `bBaseline` for the structural form. Reach the structural form via an independent path (per F1) — for instance, build `mSuppExpected_sym` from the residue of the 2×2 effective propagator at the support pole rather than copying the SymPy quotient form.
+Section 5 (mismatch):
+
+sympy:
+```
+mismatch = sp.simplify(Rphi_expected - RU)
+mismatch_expected = sp.simplify(delta_U * (rho0 - sigma0) / ((1 + delta_U) * (1 + rho0) * (1 + sigma0)))
+```
+
+mathematica:
+```
+mismatch = FullSimplify[rPhiExpected - rU, Assumptions -> $Assumptions];
+mismatchExpected = FullSimplify[
+  deltaU (rho0 - sigma0)/((1 + deltaU) (1 + rho0) (1 + sigma0)),
+  Assumptions -> $Assumptions
+];
+```
+
+The Mathematica script does add two genuinely independent decorations (endpoint limits at `delta_U = 0` and `delta_U -> Infinity` on `v.D_U.v` at L79–86, and a `Series` leading-order coefficient check on the mismatch at L154–157). These are real second-engine value-adds. But the load-bearing assertions — R_phi, D_phi, A_phi^(eff), M_supp structural form, D_(phi z), mismatch formula — are computed by the same algebraic recipe in the same order using parallel variable names. The second engine is not independently rederiving the result; it is re-executing the SymPy script's algebra in Mathematica syntax.
+
+**Why this matters:**
+The second-engine policy exists to catch cases where the first engine has a hidden bug (mis-typed expected, wrong sign, sloppy `simplify` masking a residual). A transliterated second engine cannot catch any of those: it builds the same intermediate from the same recipe and finds the same answer. The endpoint and series checks are useful supplements but are not a substitute for an independent derivation.
+
+**Required change:**
+Augment the Mathematica script with at least one genuinely independent derivation route for the load-bearing claims. Concrete options Codex can pick from (any one of these would suffice; do not refactor the existing flow):
+- For R_phi: solve a small linear system in the wall-basis components instead of pre-eliminating `U` symbolically. E.g. define `Eta`, `phi`, `U0`, `U1` as separate variables, write down the four reduced static equations from the notes (`L_(eta U) = -g_U Q.U`, `L_(eta phi) = -g_B (v.Q) Phi`, `L_(Uphi) = +g_S (v.U) Phi`), `Solve[]` the system for `(U0, U1)` in terms of `(Q, Phi)`, substitute back, and read off the residual `eta-phi` coupling. Compare the resulting `y` vector against the current `y` symbolically.
+- For D_(phi z): instead of `Det[{{y0,y1},{z0,z1}}]`, write `z = gW v + gU gR D_U v` and derive the cross-product `y0 z1 - y1 z0` by expanding the bilinear in `gB, gW, gS, gR` and tracking the four resulting terms; verify the only surviving terms factor through `(gB gR - gW gS)`.
+- For the mismatch: take `R_phi - R_U` via partial-fraction expansion in `(1+sigma_0)(1+rho_0)` rather than direct subtraction; check the numerator equals `delta_U (rho_0 - sigma_0)`.
+
+Choose ONE of these; the goal is a second derivation route, not a refactor of all existing checks. The current parallel checks should remain (they confirm the simpler route still passes); the new route exercises the same identity by a structurally different path.
 
 **Verification:**
+After the patch, the Mathematica script must (a) still pass all current `expectZero[...]` checks, (b) contain a new `expectZero[...]` whose LHS is built by a derivation route absent from the SymPy script (e.g. a `Solve[]` call where SymPy uses direct substitution), and (c) the new check's variable names should NOT mirror the SymPy script's. The transcript should show the new check passing.
 
-After Codex applies, the SymPy output should contain:
-- `M_supp independent of mu_eta, mu_phi = 0`
-- `M_supp structural form (free baseline) = 0`
-- `baseline value B = 8/pi^2 = 0`
+### F2 — paper_misalignment
 
-The Mathematica output should contain the same three diagnostic lines (named identically). All five claims should still pass.
+**Subtype:** notes_contradicts_script
+
+**Severity:** low
+**Files:**
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage043_support_direction_extraction.md:119-121`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage043_support_direction_mathematica_audit.wl:52-53`
+
+**What's wrong:**
+The notes explicitly define the support direction-splitting invariant as
+
+> `D_phi := kappa_0 y_1 - kappa_1 y_0`
+> `      = - kappa_0 kappa_1 g_B sigma_0 delta_U / (1 + delta_U).`
+
+(notes lines 119–121). The SymPy script honors this convention: `Dphi = sp.factor(sp.expand(kappa0 * y1 - kappa1 * y0))` and `Dphi_expected = -kappa0 * kappa1 * gB * sigma0 * delta_U / (1 + delta_U)` (sympy L77–78). The printed SymPy output reads `D_phi = -delta_U*g_S*g_U*kappa0*kappa1 / (K_U*(delta_U+1))`, consistent with the notes' sign.
+
+The Mathematica script reverses the sign:
+```
+dPhi = FullSimplify[Det[{{y0, y1}, {kappa0, kappa1}}], ...];
+dPhiExpected = FullSimplify[kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), ...];
+```
+`Det[{{y0, y1}, {kappa0, kappa1}}] = y0*kappa1 - y1*kappa0 = -(kappa_0 y_1 - kappa_1 y_0)`, i.e. the negative of the notes' definition. The Mathematica `dPhiExpected` is also given without the leading minus sign, so the check passes internally — but the printed transcript reads `D_phi = (deltaU*gS*gU*kappa0*kappa1)/(kU + deltaU*kU)`, which has the OPPOSITE sign from the notes' definition and from the SymPy transcript.
+
+The substantive claim `D_phi = 0 iff sigma_0 = 0 or delta_U = 0` is unaffected (the vanishing set is symmetric under sign), but the printed object labeled `D_phi` in the Mathematica transcript is `-D_phi` per the notes' convention, and the two engines' transcripts disagree on the sign of this named quantity.
+
+**Why this matters:**
+A reader cross-checking the Mathematica transcript against the notes will see a sign flip and may suspect a real error in either the notes or the script. The two engines do not agree on the printed sign of a load-bearing intermediate; this is exactly the kind of disagreement the second-engine policy is supposed to surface, not hide.
+
+**Required change:**
+This is a `paper_misalignment` (subtype `notes_contradicts_script`). Direction of resolution is the user's call — see `## Resolve before fix_loop` block in the directive. Codex must not silently flip either side.
+
+**Verification:**
+After user resolution, either (a) Mathematica L52 changes from `Det[{{y0, y1}, {kappa0, kappa1}}]` to `Det[{{kappa0, kappa1}, {y0, y1}}]` (equivalent to the notes' `kappa_0 y_1 - kappa_1 y_0`) and `dPhiExpected` gets a leading minus sign so the printed `D_phi` matches notes; or (b) the notes are updated to define `D_phi := y_0 kappa_1 - y_1 kappa_0` (sign-flipped). Either way, the two engines and the notes must agree on the sign of the printed `D_phi`.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is structurally a line-by-line port of the SymPy script with the variable-renaming convention `delta_U → deltaU`, `K_U → kU`, `c_etaU → cEtaU`, etc. Every intermediate expression and every assertion appears in the same order with the same algebraic form. There is no independent derivation path. This is filed as F1 (`mathematica_transliteration`).
+The Mathematica script is a near-transliteration of the SymPy script. The two endpoint checks (L79–86) and the Series check (L154–157) are independent, but the bulk of the load-bearing assertions follow the same recipe in the same order with parallel variable names. See F1 for the line-by-line excerpts.
 
 ## Engine cross-check
 
-Both engines produce identical residuals (`0`) for all eight assertions. The pre-residual displays also match:
+Both engines exit cleanly with `PASS:` lines on every assertion. The printed final residuals (after subtracting expected) are all `0`. However:
+- `D_phi` printed values disagree in sign:
+  - sympy: `D_phi = -delta_U*g_S*g_U*kappa0*kappa1 / (K_U*(delta_U+1))`
+  - mathematica: `D_phi = (deltaU*gS*gU*kappa0*kappa1)/(kU + deltaU*kU)`
 
-| Quantity | SymPy | Mathematica |
-|---|---|---|
-| `R_phi` | `(K_U δ_U g_B + K_U g_B + g_S g_U) / [(δ_U+1)(K_U g_B + g_S g_U)]` | `1 - (deltaU gS gU)/((1+deltaU)(gS gU + gB kU))` |
-| `D_phi` | `-δ_U g_S g_U κ_0 κ_1 / (K_U(δ_U+1))` | `-(deltaU gS gU kappa0 kappa1)/(kU + deltaU kU)` |
-| `v.D_U.v` | `σ(9 δ_U + 11) / [11 K_U (δ_U+1)]` | `(sigma + (9 deltaU sigma)/11)/(kU + deltaU kU)` |
-| `A_phi^(eff)` | `(11 K_U K_φ_eff δ_U + 11 K_U K_φ_eff − 9 c_Uphi^2 δ_U σ − 11 c_Uphi^2 σ) / [11 K_U (δ_U+1)]` | `kPhiEff − (cUphi^2 (11+9 deltaU) sigma)/(11(1+deltaU) kU)` |
-| `M_supp` | `−88 (δ_U+1)(K_U c_etaphi + c_Uphi c_etaU)^2 / [π^2 K_U K_η_eff (epsη−1)(11 K_U K_φ_eff δ_U + … )]` | `(−88 (1+deltaU)(cEtaU cUphi + cB kU)^2) / ((−1+epsEta) kEtaEff kU π^2 (11(1+deltaU) kPhiEff kU − cUphi^2 (11+9 deltaU) sigma))` |
-| `D_(phi z)` | `−δ_U g_U κ_0 κ_1 (g_B g_R − g_S g_W) / [K_U(δ_U+1)]` | `(deltaU gU (−(gB gR)+gS gW) kappa0 kappa1)/((1+deltaU) kU)` |
-| `R_phi − R_U` | `K_U δ_U g_U (g_B g_R − g_S g_W) / [(δ_U+1)(K_U g_B + g_S g_U)(K_U g_W + g_R g_U)]` | `(deltaU gU (gB gR − gS gW) kU) / ((1+deltaU)(gS gU + gB kU)(gR gU + gW kU))` |
+  This is F2 — sign-convention mismatch hidden by each engine's `expected` having the matching sign.
+- `D_(phi z)`, `R_phi`, `A_phi^(eff)`, `M_supp` agree across engines.
+- `mismatch (R_phi - R_U)` agrees (sympy: `K_U*delta_U*g_U*(g_B*g_R - g_S*g_W) / [(delta_U+1)*(K_U*g_B + g_S*g_U)*(K_U*g_W + g_R*g_U)]`; mathematica: `(deltaU*gU*(gB*gR - gS*gW)*kU)/((1+deltaU)*(gS*gU + gB*kU)*(gR*gU + gW*kU))` — algebraically identical).
 
-Each pair is the same expression under the snake_case ↔ camelCase mapping. `engines_agree: true`.
+`engines_agree: false` in the front-matter because of the sign convention on `D_phi`; the underlying math is the same, the printed/named quantity differs.
 
 ## Verdict justification
 
-Three of the eight assertion pairs (`R_phi`, `D_phi`, `v.D_U.v`, `D_(phi z)`, `mismatch`) genuinely exercise the physics: they construct LHS by one route and RHS by another. The tracking-condition check at line 134/114 is also genuine — substituting `gS = gB gR/gW` and showing the difference collapses to zero is a real algebraic identity. But two of the central assertions (`A_phi^(eff) - expected` and `M_supp - expected`) are tautological by construction: each side is built from the same intermediate (`SU_expected` in the first; the quotient `numer/(denom)` with cancelling mu's in the second), so the residual is identically zero independent of the physics. These are filed as F2 and F3. The Mathematica script is a renamed copy of the SymPy script; that's F1.
+The stage substantively holds: every paper-side deliverable that originates in this stage has a corresponding non-tautological script check, and both engines reach `0` on every load-bearing identity. Attacks tried that failed: (a) tried to find a tautology — every `expected` is built from a different route than the LHS, none are algebraically identical by construction; (b) checked whether `kappa_0^2 -> B` substitution hides the structural claim — no, the script verifies the structural form with a free baseline `B` and only afterwards specializes `B = 8/pi^2`, so the structural identity is exercised symbolically; (c) checked whether `(2/11)`/`(9/11)` literal substitution is tautological — no, these come from upstream Stage 22 facts about `kappa_1^2/sigma`, not from this stage; (d) checked symbol assumptions — `kappa0, kappa1` are declared `real, nonzero`, `delta_U > 0`, all consistent with the physical setup; (e) checked sign conventions on `D_phi` and `D_(phi z)` — `D_phi` mismatches between engines (F2), `D_(phi z)` agrees.
 
-The arithmetic itself holds up where it's exercised — I worked through `D_phi`, `v.D_U.v`, and the mismatch formula by hand and confirmed they reduce to the expected closed forms by genuine algebraic manipulation, not by construction. The output transcripts match my hand-computation. No sign errors found; no `kappa0^2 = (9/11)sigma vs (2/11)sigma` mix-up (sympy's `subs({kappa0**2: sigma - kappa1**2, kappa1**2: (2/11)sigma})` and Mathematica's pre-evaluated `kappa0^2 → sigma - (2/11)sigma` both correctly land on `(9/11)sigma`).
+The two findings are real but bounded: F1 (transliteration) is medium-severity because both engines reach the same answer but by the same recipe; F2 (sign of `D_phi`) is low-severity because the vanishing condition (the actual physical claim) is unaffected. The paper card and the script's load-bearing claims align.
 
-Verdict: `findings` (not stop-cold). The two tautological checks and the transliteration are correctable in-place without invalidating the genuine portion. No downstream propagation is at risk because the *closed-form* claims (R_phi, mismatch, etc.) are still verified by genuine checks; only the additional anchoring assertions need to be added.
+Verdict: `findings`. Not `stop_cold` — neither finding propagates to invalidate downstream units. `paper_alignment: aligned` (the paper card's `\stagefield{Output}` insertion rule is exactly what the script verifies, with `M_mix` correctly excluded as an Input).
 
 ## Self-test notes
 
-- **Variable independence:** F3's proposed `sp.diff(Msupp_cont, mu_eta)` derivative is meaningful — `Msupp_cont` does explicitly contain `mu_eta` and `mu_phi` (line 108) in both numerator and denominator, so the derivative is non-trivially the test that they cancel. Not a fake zero. Same for `D[mSuppCont, muEta]` on the Mathematica side.
-- **Parity / symmetry:** No integrals over unbounded domains in this unit; this trap does not apply.
-- **Trivial-case pre-check:** For F2's proposed `Aphi_eff at delta_U = 0`, substituting `delta_U = 0` collapses `SU_expected = sigma/KU * (1 - 0) = sigma/KU` and `Aphi_eff_min = Kphi_eff - cUphi^2 sigma/KU`, which equals the proposed `Aphi_eff_min_expected`. Genuine zero. For the `split-vs-minimal overlap ratio`, plug in `delta_U = 1`: SymPy ratio = `(sigma/KU)(1 - (2/11)*(1/2)) / (sigma/KU) = 1 - 1/11 = 10/11`. Expected: `1 - (2/11)*(1/2) = 10/11`. Genuine match — and `10/11 ≠ 0`, so a sign error in `SU_expected` would be caught.
-- **Path specifications:** No `missing_verification_script` findings; F1–F3 are edits to existing files. Paths verified at `scripts/...sympy_audit.py` and `mathematica/...mathematica_audit.wl`.
+Traps checked: (1) Variable-independence trap — confirmed `M_supp` truly depends on `mu_eta, mu_phi` before cancellation (each appears in the numerator `1/(mu_eta mu_phi)` and in the denominators `Keta_eff/mu_eta` and `Kphi_eff/mu_phi`), so the `D[Msupp, mu_eta] = 0` check is non-trivial. (2) Sign / parity — confirmed `D_phi`'s sign convention differs between engines (-> F2); confirmed `D_(phi z)` signs agree. (3) Trivial-case pre-check — substituted `sigma_0 = 0` mentally into `R_phi = (1+sigma_0/(1+delta_U))/(1+sigma_0)` -> `1`, then into `D_phi` -> `0`, both consistent with the source-tied closure claim; substituted `sigma_0 = rho_0` into the mismatch formula -> `0`, consistent with tracking. (4) Path specifications — F1's directive change is in `mathematica/`, not `scripts/`. (5) Paper round-trip — F1's proposed change introduces a `Solve[]`-based route; this does not introduce new symbols beyond those already in the notes, and the paper card does not constrain the derivation method, only the final identities.

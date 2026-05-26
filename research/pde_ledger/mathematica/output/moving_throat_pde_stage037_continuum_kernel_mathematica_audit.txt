@@ -46,6 +46,8 @@ Omega_W^2 = (kW + (Pi^2*tW)/(4*ell^2))/muW
 ----------------------------------------------------------------------------------------
 3. Schur-complement factorization
 ----------------------------------------------------------------------------------------
+Sigma_wall - [Xi I + alpha v v^T] = {{0, 0}, {0, 0}}
+PASS: Sigma_wall - [Xi I + alpha v v^T]
 Sigma_wall (2,2) consistency with ansatz = 0
 PASS: Sigma_wall (2,2) consistency with ansatz
 Xi (recovered) = gU^2/aU

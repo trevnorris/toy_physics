@@ -87,7 +87,7 @@ with the positive polynomial
 `P_R`
 `= 4 R^4 xi^3`
 `  + 54 R^2 delta^2 xi + 90 R^2 delta xi^2 + 36 R^2 xi^3`
-`  + 230 R delta^3 + 324 R delta^2 xi + 230 R delta xi^2`
+`  + 162 R delta^3 + 324 R delta^2 xi + 162 R delta xi^2`
 `  + 81 delta^3 + 243 delta^2 xi + 243 delta xi^2 + 81 xi^3.`
 
 Every coefficient in `P_R` is positive, so for the physical branch `0 < xi < 1`, `delta > 0`, `R > 0`,
@@ -129,12 +129,12 @@ with
 
 `P_1`
 `= 18 R^2 delta^2 xi + 36 R^2 delta xi^2 + 22 R^2 xi^3`
-`  + 81 R delta^3 + 248 R delta^2 xi + 99 R delta xi^2`
-`  + 230 delta^3 + 423 delta^2 xi + 360 delta xi^2 + 99 xi^3,`
+`  + 81 R delta^3 + 180 R delta^2 xi + 99 R delta xi^2`
+`  + 162 delta^3 + 423 delta^2 xi + 360 delta xi^2 + 99 xi^3,`
 
 `P_2`
 `= 18 R^3 delta^2 xi^2 + 36 R^3 delta xi^3 + 22 R^3 xi^4`
-`  + 81 R^2 delta^3 xi + 324 R^2 delta^2 xi^2 + 459 R^2 delta xi^3 + 237 R^2 xi^4`
+`  + 81 R^2 delta^3 xi + 324 R^2 delta^2 xi^2 + 459 R^2 delta xi^3 + 220 R^2 xi^4`
 `  + 81 R delta^3 xi + 243 R delta^2 xi^2 + 261 R delta xi^3 + 99 R xi^4`
 `  + 729 delta^4 + 3078 delta^3 xi + 4959 delta^2 xi^2 + 3600 delta xi^3 + 990 xi^4.`
 

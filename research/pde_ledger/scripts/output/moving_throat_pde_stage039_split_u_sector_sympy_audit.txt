@@ -32,6 +32,9 @@ R_U = (deltaU + rho0 + 1)/((deltaU + 1)*(rho0 + 1))
 z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0
 D_dir = 8*sqrt(2)*c_etaW*deltaU*rho0/(3*pi**2*sqrt(mu_W)*sqrt(mu_eta)*(deltaU + 1))
 direction-splitting invariant = 0
+collinearity if-leg: D_dir(deltaU=0) = 0 = 0
+collinearity if-leg: D_dir(rho0=0) = 0 = 0
+Numerator(D_dir) / (rho0*deltaU) = 8*sqrt(2)*c_etaW
 Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U = 0).
 
 ----------------------------------------------------------------------------------------
@@ -40,8 +43,6 @@ Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U
 M_mix^(split U) = 88*Z_W*(deltaU + 1)*(rho0 + 1)**2/(pi**2*(eps_eta - 1)*(-11*deltaU + eps_W*(9*deltaU + 11) - 11))
 R_target^(split U) = -Lambda*(eps_eta - 1)*(11*deltaU - eps_W*(9*deltaU + 11) + 11)**2/(121*Z_W*(deltaU + 1)**2*(rho0 + 1)**2)
 product = 8*Lambda*(11*deltaU - eps_W*(9*deltaU + 11) + 11)/(11*pi**2*(deltaU + 1))
-M_mix split is M_mix_flat under eps_W -> eps_W_split = 0
-R_target split is R_target_flat under eps_W -> eps_W_split = 0
 
 ----------------------------------------------------------------------------------------
 22.5 — Small-splitting expansions

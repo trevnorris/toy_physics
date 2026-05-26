@@ -6,20 +6,21 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-26` (batch II.1 v2 close — third paper-grounded
-re-audit pass. Checkpoints `024` and `036` fall in range. The II.1 v2
-sweep surfaced 0 new hardcoded_result findings; the one paper-side
-constant correction (Q3, stage 035) was a *paper polynomial coefficient
-fix* (`206→189` and `138→121` in the bracket polynomial of `dF/dxi`) —
-scripts already had the correct coefficients per Codex's independent
-quotient-rule expansion (verified at δ=0 numerically:
-`121/[81(1-ξ)²]`); paper and notes were updated to match. No new
-literals introduced into checkpoint stages. Stage 024's added matrix-
-inverse anchor block uses only paper-side symbols `Q,H,P,Delta,S,
-G_U,G_W,Omega_U,Omega_W,R` (all carried forward from stage 024 paper
-card `paper/stages/stage_024.tex:103,108,113`); no magic numbers
-introduced. I.1 + I.2 v2 close text remains accurate for those ranges;
-III.4 update remains accurate for batches III.1-III.4.)
+Snapshot date: `2026-05-26` (batch III.1 v2 close — fourth paper-grounded
+re-audit pass. No checkpoint stages fall in III.1's range (037-048). The
+III.1 v2 sweep surfaced 0 new hardcoded_result findings; the one notes-side
+constant correction (Q4, stage 046) was a *notes polynomial coefficient
+fix* (5 typos in auxiliary positivity polynomials P_R/P_1/P_2: 230→162
+twice, 248→180, 230→162, 237→220) — scripts already had the correct
+values per both engines' independent `D[F_tr, R]` and `Factor[F_flat - F_tr]`
+derivations. Codex independently verified `P_R[R delta^3] = 162` via
+`(A + 2RB)C - 2Rxi·AB` decomposition: only term contributing is
+`(18 R delta)(9 delta^2) = 162 R delta^3`. Stage 045's new Stage-044
+residual import block uses only paper-side symbols `delta, xi, R_U, R_phi,
+lambda_0, M_mix` (all carried forward from `paper/stages/stage_044.tex`);
+no magic numbers introduced. II.1 v2 update remains accurate for that
+range; I.1 + I.2 v2 close text remains accurate for those ranges;
+III.4 update remains accurate for batches III.2-III.4.)
 
 ## Audit Rule
 

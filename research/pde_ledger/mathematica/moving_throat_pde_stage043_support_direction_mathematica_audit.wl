@@ -49,8 +49,8 @@ y1 = FullSimplify[y[[2]], Assumptions -> $Assumptions];
 sigma0 = FullSimplify[gU gS/(kU gB), Assumptions -> $Assumptions];
 rPhi = FullSimplify[(y[[2]]/kappa1) / (y[[1]]/kappa0), Assumptions -> $Assumptions];
 rPhiExpected = FullSimplify[(1 + sigma0/(1 + deltaU))/(1 + sigma0), Assumptions -> $Assumptions];
-dPhi = FullSimplify[Det[{{y0, y1}, {kappa0, kappa1}}], Assumptions -> $Assumptions];
-dPhiExpected = FullSimplify[kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
+dPhi = FullSimplify[Det[{{kappa0, kappa1}, {y0, y1}}], Assumptions -> $Assumptions];
+dPhiExpected = FullSimplify[-kappa0 kappa1 gB sigma0 deltaU/(1 + deltaU), Assumptions -> $Assumptions];
 
 Print["y = ", fmt[y]];
 Print["R_phi = ", fmt[rPhi]];
@@ -158,6 +158,27 @@ expectZero["mismatch leading-in-deltaU coefficient", mismatchLeading - mismatchL
 
 Print["R_phi - R_U = ", fmt[mismatch]];
 expectZero["mismatch formula", mismatch - mismatchExpected];
+
+(* F2 cross-check 2: derive the sign of (R_phi - R_U) at sigma0 < rho0 and sigma0 > rho0
+   by direct numerical-symbolic limits, independent of the closed-form mismatch formula.
+   This catches a hidden sign error in the closed-form expected. *)
+(* At deltaU = 1, sigma0 = 0, rho0 = 1: rho0 > sigma0, mismatch should be positive. *)
+mismatchAtTestPoint1 = FullSimplify[
+  (rPhi - rU) /. {deltaU -> 1, gS -> 0, gW -> gU*gR/kU},
+  Assumptions -> $Assumptions
+];
+(* expected: deltaU*(rho0-sigma0)/((1+deltaU)(1+sigma0)(1+rho0)) at (1, 0, 1) = 1*1/(2*1*2) = 1/4 *)
+expectZero["mismatch sign at deltaU=1, sigma0=0, rho0=1", mismatchAtTestPoint1 - 1/4];
+(* At deltaU = 1, sigma0 = 1, rho0 = 0: sigma0 > rho0, mismatch should be negative. *)
+mismatchAtTestPoint2 = FullSimplify[
+  (rPhi - rU) /. {deltaU -> 1, gU -> 1, kU -> 1, gB -> 1, gS -> 1, gR -> 0, gW -> 1},
+  Assumptions -> $Assumptions
+];
+(* expected: 1*(-1)/(2*2*1) = -1/4 *)
+expectZero["mismatch sign at deltaU=1, sigma0=1, rho0=0", mismatchAtTestPoint2 - (-1/4)];
+(* At sigma0 = rho0 (tracking): mismatch must vanish for ANY deltaU. *)
+mismatchAtTracking = FullSimplify[(rPhi - rU) /. {gS -> gB*gR/gW}, Assumptions -> $Assumptions];
+expectZero["mismatch vanishes at tracking sigma0=rho0", mismatchAtTracking];
 
 Print[""];
 Print["Stage 043 Mathematica audit passed."];

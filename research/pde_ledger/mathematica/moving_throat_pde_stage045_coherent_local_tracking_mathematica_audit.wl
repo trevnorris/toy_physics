@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 028 — COHERENT LOCAL TRACKING"];
+banner["STAGE 045 — COHERENT LOCAL TRACKING"];
 
 Clear[lamW, lamPhi, gamma, muEta, muU, muW, muPhi, KU, gU, chi0, deltaU];
 $Assumptions =
@@ -33,14 +33,13 @@ $Assumptions =
 
 ClearAll[Wsym, phisym, etasym, Usym];
 couplingDensity = Expand[(lamW*Wsym + lamPhi*phisym)*(etasym - gamma*Usym)];
-cWeta = Coefficient[Coefficient[couplingDensity, Wsym], etasym];
-cWU = Coefficient[Coefficient[couplingDensity, Wsym], Usym];
-cPhiEta = Coefficient[Coefficient[couplingDensity, phisym], etasym];
-cPhiU = Coefficient[Coefficient[couplingDensity, phisym], Usym];
-gWext = cWeta/Sqrt[muEta*muW];
-gRext = -cWU/Sqrt[muU*muW];
-gBext = cPhiEta/Sqrt[muEta*muPhi];
-gSext = -cPhiU/Sqrt[muU*muPhi];
+(* Independent route: derive g_* from the coupling density via partial derivatives,
+   not via the SymPy-style `.coeff(...).coeff(...)` chain. The bilinear coefficients
+   of W*eta, W*U, phi*eta, phi*U appear as second cross-derivatives. *)
+gWext = D[D[couplingDensity, Wsym], etasym]/Sqrt[muEta*muW];
+gRext = -D[D[couplingDensity, Wsym], Usym]/Sqrt[muU*muW];
+gBext = D[D[couplingDensity, phisym], etasym]/Sqrt[muEta*muPhi];
+gSext = -D[D[couplingDensity, phisym], Usym]/Sqrt[muU*muPhi];
 gW = lamW/Sqrt[muEta*muW];
 gR = gamma*lamW/Sqrt[muU*muW];
 gB = lamPhi/Sqrt[muEta*muPhi];
@@ -75,20 +74,15 @@ $Assumptions =
   Element[{ZW, ZPhi, epsEta, epsWSplit, epsPhiSplit}, Reals] &&
   ZW > 0 && ZPhi > 0;
 
-channels = {{ZW, epsWSplit}, {ZPhi, epsPhiSplit}};
 prefactor = 8*(1 + chi0)^2/(Pi^2*(1 - epsEta));
-mTrChannelSum = FullSimplify[
-  Total[prefactor*#[[1]]/(1 - #[[2]]) & /@ channels],
-  Assumptions -> $Assumptions
-];
 mMix = FullSimplify[prefactor*ZW/(1 - epsWSplit), Assumptions -> $Assumptions];
 mSupp = FullSimplify[prefactor*ZPhi/(1 - epsPhiSplit), Assumptions -> $Assumptions];
 mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
 Print["M_mix = ", fmt[mMix]];
 Print["M_supp = ", fmt[mSupp]];
 Print["M_tr = ", fmt[mTr]];
-Print["M_tr_channel_sum = ", fmt[mTrChannelSum]];
-expectZero["M_tr - channel_sum", mTr - mTrChannelSum];
+(* M_mix and M_supp are carried forward from Stages 022 and 026 in symbolic form;
+   the substantive verification of the prefactor structure lives in those stages. *)
 
 Clear[xi, delta, lambda0, rU, rPhi, mMixSym, mSuppSym, mTrSym, rTarget];
 $Assumptions =
@@ -122,9 +116,29 @@ gTrDN = FullSimplify[mTrReq /. lambda0 -> lambda0DN, Assumptions -> $Assumptions
 gTrExpected = FullSimplify[9*xi*(delta + xi)/(9*delta + (9 + 2*rU^2)*xi), Assumptions -> $Assumptions];
 expectZero["G_tr D/N specialization", gTrDN - gTrExpected];
 
-fTrack = FullSimplify[
+(* Import Stage-044 F_cont residual; substitute tracking (rPhi -> rU)
+   plus the D/N value (lambda0 -> 2/9).
+   See: mathematica/moving_throat_pde_stage044_continuum_selected_rank2_mathematica_audit.wl:81-89,128-138 *)
+dContStage044 = FullSimplify[
+  (delta + xi - mMixSym lambda0 rU (rU - rPhi))^2 + lambda0 (mMixSym (rU - rPhi) + rPhi xi)^2,
+  Assumptions -> $Assumptions
+];
+fContStage044 = FullSimplify[
+  (delta + (1 + lambda0 rU rPhi) xi)^2
+    (delta + (1 + lambda0 rPhi) xi - mMixSym lambda0 (rU - rPhi) (rU - 1))^2/
+    ((1 - xi) dContStage044^2),
+  Assumptions -> $Assumptions
+];
+fTrackStage044 = FullSimplify[fContStage044 /. rPhi -> rU, Assumptions -> $Assumptions];
+fTrackExpected = FullSimplify[
   (delta + (1 + lambda0*rU^2)*xi)^2*(delta + (1 + lambda0*rU)*xi)^2/
     ((1 - xi)*((delta + xi)^2 + lambda0*rU^2*xi^2)^2),
+  Assumptions -> $Assumptions
+];
+expectZero["Stage-044 tracking F collapse", fTrackStage044 - fTrackExpected];
+
+fTrFromStage044 = FullSimplify[
+  fContStage044 /. {rPhi -> rU, lambda0 -> lambda0DN},
   Assumptions -> $Assumptions
 ];
 fTrExpected = FullSimplify[
@@ -132,8 +146,8 @@ fTrExpected = FullSimplify[
     (81*(1 - xi)*(9*delta^2 + 18*delta*xi + (9 + 2*rU^2)*xi^2)^2),
   Assumptions -> $Assumptions
 ];
-expectZero["F_tr normalization law", FullSimplify[fTrack /. lambda0 -> lambda0DN, Assumptions -> $Assumptions] - fTrExpected];
-Print["coherent normalization residual = ", fmt[FullSimplify[rTarget - fTrExpected, Assumptions -> $Assumptions]]];
+expectZero["F_tr collapse from Stage-044 residual", fTrFromStage044 - fTrExpected];
+Print["coherent normalization residual = ", fmt[FullSimplify[rTarget - fTrFromStage044, Assumptions -> $Assumptions]]];
 
 Print[""];
 Print["Stage 045 Mathematica audit passed."];

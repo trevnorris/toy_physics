@@ -56,6 +56,14 @@ expect_zero(
 )
 expect_zero("F_tr(xi=0)-1", sp.simplify(F_tr.subs(xi, 0) - 1))
 print("limit xi->1^- of F_tr =", sp.limit(F_tr, xi, 1, dir="-"))
+soft_coeff = sp.simplify(sp.limit((1 - xi) * F_tr, xi, 1, dir="-"))
+print("softening coefficient for F_tr =", soft_coeff)
+expect_zero(
+    "(1-xi) F_tr softening coefficient",
+    soft_coeff
+    - (9 * delta + 9 + 2 * R ** 2) ** 2 * (9 * delta + 9 + 2 * R) ** 2
+    / (81 * (9 * delta ** 2 + 18 * delta + 9 + 2 * R ** 2) ** 2),
+)
 Mgap = sp.factor(sp.simplify(Mcrit - G_tr))
 print("M_crit - G_tr =", Mgap)
 expect_zero(

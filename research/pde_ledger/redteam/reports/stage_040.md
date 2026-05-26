@@ -2,199 +2,157 @@
 unit_id: 040
 batch: III.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00-06:00
-verdict: findings
+audit_date: 2026-05-26T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 4
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 040 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_040.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (rows for stage 040 only)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 040 replaces the flat one-vector selected branch by a source/loading mismatch law. Verbatim `\stagefield{Output}`: "The generalized selected functions \eqref{eq:app-stage040-Fqeta}--\eqref{eq:app-stage040-Gq} and their split--$U$ specialization \eqref{eq:app-stage040-FU}--\eqref{eq:app-stage040-GU}." Concretely, the stage proves:
+1. The required rank-1 loading is `alpha_req = A0*xi*(xi+delta)/[z0^2*(delta+(1+q^2)*xi)]` for `0 <= xi < 1` (eq. app-stage040-alpha-req).
+2. The selected eigenvector has ratio `e1/e0 = q*xi/(delta+xi)` (eq. app-stage040-evec).
+3. The generalized normalization function `F_{q,eta_s}(xi,delta) = [delta+(1+q^2)xi]^2 [delta+(1+eta_s)xi]^2 / ((1-xi)[(delta+xi)^2+q^2*xi^2]^2)` with `eta_s = s1*z1/(s0*z0)` (eq. app-stage040-Fqeta).
+4. The deformed loading function `G_q(xi,delta) = xi*(xi+delta)/[delta+(1+q^2)xi]` (eq. app-stage040-Gq).
+5. The split-U specialization `q = -sqrt(2)/3 * R_U`, `eta_s = (2/9) R_U` (eq. app-stage040-qeta-RU), yielding `F_U(xi,delta;R_U)` and `G_U(xi,delta;R_U)` (eqs. app-stage040-FU and app-stage040-GU).
+6. The flat branch is recovered at `R_U = 1` (matches Stage-18/19 functions). The notes additionally enumerate (Section 5) the first-order deformation about the flat-U limit with explicit `H_F`, `H_G`.
+
 ## What the script claims to verify
 
-The scripts claim five things about a generalized selected-branch normalization for a 2x2 baseline `diag(A0, A0(1+delta))` perturbed by a rank-1 loading `alpha z z^T` with loading ratio `q = z1/z0` and a separate source-direction ratio captured by `eta`. The docstring asserts: (1) exact closed-form eigenvalue `lam_minus = A0(1-xi)` and eigenvector `(1, r)` with `r = q xi/(delta+xi)`; (2) a two-vector normalization function `F_{q,eta}` that reduces to the Stage-18 form when source and loading are aligned; (3) a one-parameter family `F_U(xi,delta;R_U), G_U(xi,delta;R_U)` for the split-U continuum; (4) `R_U = 1` recovers Stage-18/19 closed forms; (5) the first-order Taylor expansion about `R_U = 1` is exact. The assertions verify algebraic identities between posited expressions and hardcoded closed forms; the eigenvalue/eigenvector statement is never tested against the actual matrix equation, and the Taylor-expansion check is a structural identity that cannot fail.
+The SymPy script (and its Mathematica counterpart) verify exactly the items above:
+1. The exact `alpha_req` closed form (sympy L59) and the eigenvector residual `(M - alpha_req z z^T - lam I) e_- = 0` for `e_- = (1, q*xi/(delta+xi))^T` (sympy L73-79).
+2. Construction of `F_general` from normalized overlaps and `A0/lam_minus`, with equality to paper's literal `F_expected` (sympy L89, L95-98).
+3. Construction of `G_general = (z0^2/A0)*alpha_req` with equality to paper's `G_expected` (sympy L90, L96, L99).
+4. Substitution `q -> -sqrt(2/9)*R_U`, `eta -> (2/9)*R_U` to form `F_U`, `G_U`, with verification that `F_U(R_U=1) - F_stage18 = 0` and `G_U(R_U=1) - G_stage19 = 0` (sympy L105-122).
+5. First-order deformation `H_F`, `H_G` derived by two independent routes (differentiating `F_U` after R_U substitution vs. differentiating `F_general` after eps-parametrized (q,eta) substitution) and cross-checked equal (sympy L124-149).
+The Mathematica script independently derives `alpha_req` via `Solve[Det[mPert[alpha] - lam I] == 0, alpha]` and the eigenvector via `NullSpace[...]`, not by copying SymPy's algebraic substitution path.
+
+## Paper - script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| `alpha_req` (eq. alpha-req) | sympy L59 closed form + L73-79 residual; math L52-55 Solve | match |
+| `e1/e0 = q*xi/(delta+xi)` (eq. evec) | sympy L64-66, L77-79 residual; math L58-65 NullSpace, L74-77 residual | match |
+| `F_{q,eta_s}` (eq. Fqeta) | sympy L89, L95-98; math L90, L99-105 | match |
+| `G_q` (eq. Gq) | sympy L90, L96, L99; math L91, L104, L106 | match |
+| Split-U `q, eta_s` (eq. qeta-RU) | sympy L105-106; math L110-111 | match |
+| `F_U`, `G_U` (eqs. FU, GU) via R_U=1 recovery | sympy L107-122; math L112-129 | match |
+| Notes Sec. 5 `H_F`, `H_G` first-order deformation | sympy L128-149 two-path; math L133-150 two-path | match (extra detail beyond .tex Output but anchored in notes) |
+
+`paper_alignment`: `aligned`.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 66 | `simplify(r - xi*q/(delta+xi)) == 0` | partial — verifies algebra of posited `r`, not eigenvalue equation |
-| A2 | sympy | 85 | `simplify(F_general - F_expected) == 0` | partial — both sides hardcoded/derived in script, no eigenvalue check feeds in |
-| A3 | sympy | 86 | `simplify(G_general - G_expected) == 0` | partial — same as A2 |
-| A4 | sympy | 103 | `simplify(F_U(R_U=1) - F_stage18) == 0` | partial — `F_stage18` is hardcoded, not imported |
-| A5 | sympy | 104 | `simplify(G_U(R_U=1) - G_stage19) == 0` | partial — `G_stage19` is hardcoded |
-| A6 | sympy | 118-121 | `expand(F_ratio - (1 + eps*HF)) == 0` | no — tautological: `F_ratio` is the Taylor series, `HF` is the derivative, equality holds by definition |
-| A7 | sympy | 122-125 | `expand(G_ratio - (1 + eps*HG)) == 0` | no — same as A6 |
-| B1 | mathematica | 50 | `expectZero[r - xi*q/(delta+xi)]` | partial — mirror of A1 |
-| B2 | mathematica | 70 | `expectZero[fGeneral - fExpected]` | partial — mirror of A2 |
-| B3 | mathematica | 71 | `expectZero[gGeneral - gExpected]` | partial — mirror of A3 |
-| B4 | mathematica | 88 | `expectZero[(fU /. rU->1) - fStage18]` | partial — mirror of A4 |
-| B5 | mathematica | 89 | `expectZero[(gU /. rU->1) - gStage19]` | partial — mirror of A5 |
-| B6 | mathematica | 102 | `expectZero[fRatio - (1 + eps*hF)]` | no — same tautology as A6 |
-| B7 | mathematica | 103 | `expectZero[gRatio - (1 + eps*hG)]` | no — same tautology as A7 |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 66 | `expect_zero("e1/e0 closed form", r - xi*q/(delta+xi))` | claim 2 (evec ratio) | yes |
+| A2 | sympy | 78 | `expect_zero("eigenvector residual row 0", eig_residual[0])` | claims 1+2 (alpha_req and evec consistent with lam_minus) | yes |
+| A3 | sympy | 79 | `expect_zero("eigenvector residual row 1", eig_residual[1])` | claims 1+2 | yes |
+| A4 | sympy | 98 | `expect_zero("F_general - expected", F_general - F_expected)` | claim 3 (F_{q,eta_s} closed form) | yes |
+| A5 | sympy | 99 | `expect_zero("G_general - expected", G_general - G_expected)` | claim 4 (G_q closed form) | yes |
+| A6 | sympy | 121 | `expect_zero("F_U(R_U=1) - Stage18 F", ...)` | claim 6 (flat-U recovery of F) | yes |
+| A7 | sympy | 122 | `expect_zero("G_U(R_U=1) - Stage19 G", ...)` | claim 6 (flat-U recovery of G) | yes |
+| A8 | sympy | 148 | `expect_zero("H_F cross-check (F_U vs F_general)", HF - HF_direct)` | notes Sec. 5 H_F | yes |
+| A9 | sympy | 149 | `expect_zero("H_G cross-check (G_U vs G_general)", HG - HG_direct)` | notes Sec. 5 H_G | yes |
+| B1 | math | 65 | `expectZero["e1/e0 closed form", r - xi q/(delta + xi)]` | claim 2 | yes |
+| B2 | math | 76 | `expectZero["eigenvector residual row 0", eigResidual[[1]]]` | claims 1+2 | yes |
+| B3 | math | 77 | `expectZero["eigenvector residual row 1", eigResidual[[2]]]` | claims 1+2 | yes |
+| B4 | math | 105 | `expectZero["F_general - expected", fGeneral - fExpected]` | claim 3 | yes |
+| B5 | math | 106 | `expectZero["G_general - expected", gGeneral - gExpected]` | claim 4 | yes |
+| B6 | math | 128 | `expectZero["F_U(R_U=1) - Stage18 F", (fU /. rU -> 1) - fStage18]` | claim 6 | yes |
+| B7 | math | 129 | `expectZero["G_U(R_U=1) - Stage19 G", (gU /. rU -> 1) - gStage19]` | claim 6 | yes |
+| B8 | math | 149 | `expectZero["H_F cross-check (F_U vs F_general)", hF - hFDirect]` | notes Sec. 5 H_F | yes |
+| B9 | math | 150 | `expectZero["H_G cross-check (G_U vs G_general)", hG - hGDirect]` | notes Sec. 5 H_G | yes |
+
+All assertions are non-tautological and trace to a specific paper-side or notes-side deliverable.
 
 ## Findings
 
-### F1 — insufficient_verification
+None.
 
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py:58-66`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl:44-50`
+Attacks attempted and dismissed:
 
-**What's wrong:**
-The docstring (sympy lines 6-8) claims "the selected lower wall branch for a diagonal 2x2 baseline plus a rank-1 loading vector z has exact closed-form eigenvalue and eigenvector formulas." The script posits `lam_minus = A0*(1 - xi)` (line 58) and `alpha_req = A0*xi*(delta + xi)/(z0**2*(delta + xi) + (q*z0)**2*xi)` (line 59), then defines `r` as a particular algebraic combination (line 64) and asserts `r == q*xi/(delta+xi)` (line 66). At no point does the script:
-
-- construct the 2x2 perturbed matrix `M = diag(A0, A0*(1+delta))` (with or without the rank-1 term `alpha z z^T`), or
-- write the determinantal equation `det(M_perturbed - lam_minus * I) == 0`, or
-- write the eigenvector residual `(M_perturbed - lam_minus * I) @ e_minus == 0`.
-
-The assertion at line 66 verifies only an algebraic identity between two posited symbolic expressions. With the convention `M_perturbed = M - alpha z z^T`, the eigenvalue and eigenvector claims are in fact correct (I verified numerically at `q=1, delta=1, xi=1/2, z0=1, A0=1`: the matrix `[[1/8, -3/8], [-3/8, 9/8]]` has determinant 0 and null vector `(1, 1/3)`). But this is left implicit; the script never checks it. The Mathematica script mirrors the same omission.
-
-**Why this matters:**
-The "selected-branch" claim is the entire physical premise of stages 22-23. The script can pass while the underlying matrix relationship is silently wrong; any sign or convention error in `alpha_req` or `lam_minus` would slip through because the assertion only tests internal algebra. The downstream `F_general`, `G_general`, and split-U specializations all sit on this unverified foundation.
-
-**Required change:**
-Insert before line 68 (sympy) and before subbanner "2." (mathematica) an explicit eigenvalue/eigenvector residual check. Build the perturbed matrix and the eigenvector explicitly using SymPy `Matrix`/`MatMul` (or Mathematica equivalents), then assert each component of `(M_perturbed - lam_minus * I) @ e_minus` simplifies to zero. The convention is `M_perturbed = M - alpha_req * z * z^T` (subtracted rank-1), based on the script's sign choice in `r`.
-
-**Verification:**
-After the fix, the sympy script will have a new `expect_zero` block printing two residual components for the eigenvector equation, both reducing to 0; the mathematica script gains the analogous `expectZero` calls. If the residuals do not simplify to 0, the underlying premise is wrong and a separate finding is warranted.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py:106-125`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl:91-103`
-
-**What's wrong:**
-Section 23.4 ("Exact small-deformation expansion about the flat-U limit") computes:
-
-```
-F_ratio = sp.series(F_U.subs(R_U, 1 + eps) / F_stage18, eps, 0, 2).removeO()
-HF      = sp.diff(F_U.subs(R_U, 1 + eps), eps).subs(eps, 0) / F_stage18
-expect_zero("F_ratio - (1 + eps * HF)", sp.expand(F_ratio - (1 + eps * HF)))
-```
-
-By definition, `sp.series(f, eps, 0, 2).removeO() = f(0) + f'(0)*eps`. Here `f(0) = F_U(R_U=1)/F_stage18 = 1` (already checked in 23.3) and `f'(0) = HF`. Therefore `F_ratio = 1 + HF*eps` is true by construction of `series` and `diff`; the assertion `F_ratio - (1 + eps*HF) == 0` is an algebraic identity that cannot fail regardless of the physics. The same applies to the `G_ratio` check at lines 122-125 (and Mathematica lines 102-103). The substantive Taylor coefficient `H_F` itself is just *defined* as the derivative and is never compared against an independently derived value.
-
-**Why this matters:**
-The output advertises that the "first-order deformation around the flat-U limit is exact," but the assertion contributes zero physical information — it only verifies that SymPy's `series` and `diff` agree on the same expression, which is a CAS sanity check. A genuinely substantive verification would derive `H_F` from an independent route (e.g., a direct first-order perturbation of the eigenvalue problem when `R_U = 1 + eps`) and confirm the two computations match.
-
-**Required change:**
-Replace the tautological assertion at sympy lines 118-125 (and mathematica lines 102-103) with a substantive cross-check. Compute `HF_direct` and `HG_direct` by an *independent* path: take the `q_U`, `eta_U` substitutions at `R_U = 1 + eps`, expand `F_general` and `G_general` (the eigenvector-overlap construction from section 23.2) to first order in `eps` with `q -> q_U(1+eps)`, `eta -> eta_U(1+eps)`, and assert the resulting first-order coefficients equal the script's `HF`, `HG`. If an independent path is not feasible within the unit's scope, delete the tautological assertions (and the corresponding `H_F`, `H_G` prints) entirely and demote section 23.4 to an informational print of the leading-order ratio, since it does not exercise any claim.
-
-**Verification:**
-After the fix, the sympy output should show either (a) two new `HF - HF_direct == 0` and `HG - HG_direct == 0` checks both passing, where `HF_direct` is built from `F_general`/`G_general` rather than from `F_U` itself; or (b) section 23.4 contains only informational prints with no `expect_zero` calls on `F_ratio - (1 + eps*HF)`.
-
-### F3 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl:33-103`
-- (compared against `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py:44-125`)
-
-**What's wrong:**
-The Mathematica script is a line-by-line transliteration of the SymPy script. Quoting three corresponding pairs:
-
-Pair 1 — same posited `alpha_req`:
-- SymPy line 59: `alpha_req = sp.simplify(A0 * xi * (delta + xi) / (z0**2 * (delta + xi) + (q * z0)**2 * xi))`
-- Mathematica line 45: `alphaReq = FullSimplify[a0 xi (delta + xi)/(z0^2 (delta + xi) + (q z0)^2 xi), ...]`
-
-Pair 2 — same hardcoded "expected" closed form for F:
-- SymPy line 82: `F_expected = sp.simplify((delta + (1 + q**2) * xi)**2 * (delta + (1 + eta) * xi)**2 / ((1 - xi) * ((delta + xi)**2 + q**2 * xi**2)**2))`
-- Mathematica lines 59-63: `fExpected = FullSimplify[(delta + (1 + q^2) xi)^2 (delta + (1 + eta) xi)^2/((1 - xi) ((delta + xi)^2 + q^2 xi^2)^2), ...]`
-
-Pair 3 — same hardcoded Stage-18 target and same comparison structure:
-- SymPy line 100: `F_stage18 = sp.simplify((9*delta + 11*xi)**4 / (81 * (1 - xi) * (9*delta**2 + 18*delta*xi + 11*xi**2)**2))`
-- Mathematica lines 80-83: `fStage18 = FullSimplify[(9 delta + 11 xi)^4/(81 (1 - xi) (9 delta^2 + 18 delta xi + 11 xi^2)^2), ...]`
-
-Every intermediate variable name is the same modulo casing (`alpha_req`↔`alphaReq`, `F_general`↔`fGeneral`, `z_overlap_sq`↔`zOverlapSq`, `F_stage18`↔`fStage18`, `H_F`↔`hF`, etc.). The algebraic ordering is identical, the same closed forms are hardcoded as targets in both engines, and the section banners (`23.1`/`1.`, `23.2`/`2.`) map one-to-one. Neither engine independently derives `alpha_req` from the eigenvalue equation (see F1), so both are echoing the same algebra. This violates the second-engine policy: the engines must derive results from the physical premise (the eigenvalue problem) independently, not import each other's algebra.
-
-**Why this matters:**
-A second engine that echoes the first engine's algebra cannot catch algebraic errors in the first engine. If `alpha_req` had a sign error or a misplaced factor, both scripts would carry the same error and both would "pass." The current pair only verifies that two CAS engines agree on simplification, not that the physics is right.
-
-**Required change:**
-Restructure the Mathematica script to derive the closed forms from the eigenvalue equation directly, using Mathematica's `Eigenvalues`/`Eigenvectors`/`Solve` on the explicit perturbed matrix. Concretely: build `Mmat = DiagonalMatrix[{a0, a0 (1 + delta)}] - alpha {z0, q z0}.Transpose[{{z0, q z0}}]`, then `Solve[Det[Mmat - lambda IdentityMatrix[2]] == 0 /. lambda -> a0 (1 - xi), alpha]` to derive `alphaReq` independently, and use `NullSpace[Mmat /. alpha -> alphaReq - a0 (1 - xi) IdentityMatrix[2]]` (or equivalent) to derive the eigenvector. Then `fExpected` and `gExpected` need not be hardcoded — they fall out of substituting the derived eigenvector into the overlap construction. Hardcoded targets `fStage18`, `gStage19` may remain (they reference upstream units' results), but the intermediate algebra path must differ from the SymPy script's.
-
-**Verification:**
-After the fix, the Mathematica script's structure differs visibly: it contains `Solve[Det[...] == 0, alpha]` and `NullSpace[...]` or analogous matrix-eigenvalue calls, derives `alphaReq` rather than positing it, and arrives at `fGeneral`/`gGeneral` without relying on `fExpected`/`gExpected` as the comparison target (the comparison becomes between the two engines' derived `F_general` forms rather than against a shared hardcoded closed form).
-
-### F4 — hardcoded_result
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py:100-101`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage040_generalized_selected_branch_mathematica_audit.wl:80-84`
-
-**What's wrong:**
-The "Stage-18 F" and "Stage-19 G" closed forms are hardcoded in both scripts:
-
-- SymPy lines 100-101:
-  ```
-  F_stage18 = sp.simplify((9 * delta + 11 * xi)**4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2)**2))
-  G_stage19 = sp.simplify(9 * xi * (delta + xi) / (9 * delta + 11 * xi))
-  ```
-- Mathematica lines 80-84:
-  ```
-  fStage18 = FullSimplify[(9 delta + 11 xi)^4/(81 (1 - xi) (9 delta^2 + 18 delta xi + 11 xi^2)^2), ...]
-  gStage19 = FullSimplify[9 xi (delta + xi)/(9 delta + 11 xi), ...]
-  ```
-
-These literal expressions are stated without any in-script derivation and without a comment citing the specific upstream script and line where these forms are verified. The checks `F_U(R_U=1) - F_stage18 == 0` and `G_U(R_U=1) - G_stage19 == 0` then verify the current script's specialization against a hardcoded snippet of unstated provenance.
-
-**Why this matters:**
-If the upstream Stage-18/Stage-19 scripts later change their canonical form (sign, factor, or simplification representative), this stage's hardcoded copies will silently drift out of sync. The check would still pass on its own terms but would no longer reflect "Stage-18 F" as that file currently defines it. Provenance comments protect against this drift.
-
-**Required change:**
-Add a comment immediately above the `F_stage18` and `G_stage19` definitions in both scripts naming the specific upstream script file and the line range where these closed forms are verified. The form is informational only (no code change to the expressions themselves). Example for sympy line 99:
-
-```
-# F_stage18 and G_stage19 reproduce the closed forms verified in
-# scripts/<filename>.py (lines NN-MM). If those upstream forms change,
-# update here.
-```
-
-The auditor cannot supply the exact upstream filename and lines because notes/ and other units' scripts are out of scope for this audit; Codex must locate the upstream Stage-18 and Stage-19 sympy scripts (by filename containing "stage018" or "stage19" / "stage_18" / similar) and cite them.
-
-**Verification:**
-After the fix, both scripts have a non-blank comment immediately preceding the `F_stage18` / `fStage18` and `G_stage19` / `gStage19` definitions, citing an upstream script path and line range. No assertion is added or removed; this is a provenance fix.
+- **alpha_req mismatch attack**: Paper's denominator is `z0^2*[delta + (1+q^2)*xi]`. SymPy L59 writes `(z0**2*(delta + xi) + (q*z0)**2*xi)` which expands to `z0^2*(delta+xi+q^2*xi) = z0^2*(delta+(1+q^2)xi)`. Match. Mathematica independently solves `Det[mPert[alpha] - lamMinus I] == 0` for alpha and gets the same expression. No finding.
+- **eta vs eta_s naming**: Paper uses `eta_s`, script uses `eta`. Both defined as `s1*z1/(s0*z0)`, and in script comment L47 `eta := (s1/s0)*q`, which is identical since `q=z1/z0`. Cosmetic rename, not misalignment.
+- **xi domain attack**: Paper says `0 <= xi < 1`. SymPy declares `xi` as `positive=True` (excludes `xi=0`); does not encode `xi < 1`. The factor `(1-xi)` appears symbolically; no division is performed during the algebraic check. The boundary `xi=0` is a trivial endpoint not used by any of the stage's theorem statements. Not a finding.
+- **R_U positivity / eps positivity**: SymPy declares both as `positive=True`. Paper notes (Sec. 5) allow `R_U = 1 + eps` with eps potentially negative on the natural branch (`rho_0 > 0` -> `R_U < 1`). However, the script's checks are symbolic identities. The derivative-at-eps=0 check does not depend on the sign of eps, and the substitution `R_U -> 1` for Stage-18/19 recovery is also sign-independent. Not a finding.
+- **Hardcoded Stage-18/19 forms (sympy L118-119; math L120-124)**: These are literals, but their comments cite upstream verification scripts (`stage035_*_sympy_audit.py` lines 46-58 and `stage036_*_sympy_audit.py` lines 53-70). They are used as targets in `F_U(R_U=1) - F_stage18 = 0`, a non-tautological reduction-to-limit check. This is the standard carry-forward pattern with explicit provenance; not `hardcoded_result`.
+- **Mathematica transliteration check**: SymPy directly substitutes the closed-form `alpha_req` and computes `r` from a sign-fixed algebraic expression. Mathematica solves `Solve[Det[...] == 0, alpha]` and extracts the eigenvector via `NullSpace[...]`. These are genuinely different derivation paths converging to the same physics. Not transliteration.
+- **Tautology attack on H_F cross-check**: `HF` is `diff(F_U.subs(R_U, 1+eps), eps).subs(eps, 0) / F_stage18`. `HF_direct` is `diff(F_general.subs({q: q_U_eps, eta: eta_U_eps}), eps).subs(eps, 0) / F_stage18`. The two paths use different intermediate expressions (`F_U` already has q,eta substituted; `F_general` retains the symbolic q,eta and substitutes the eps-parametrized versions at differentiation time). The assertion `HF - HF_direct == 0` is a real cross-check of two algebra paths, not a CAS tautology.
+- **Tautology attack on F_general assertion**: `F_general` is `(A0/lam_minus)*z_overlap_sq*s_overlap_sq` constructed from analytically derived overlaps, with `r = (A0*xi - alpha_req*z0^2)/(alpha_req*z0*(q*z0))` (sympy L64) — a route through the eigenvalue equation. `F_expected` is the paper's literal closed form. They are connected only through nontrivial algebraic identities. Equality is a real check.
+- **Engine disagreement attack**: Both engines produce identical `alpha_req`, identical `e1/e0`, identical overlaps and F/G, identical F_U/G_U, identical H_F/H_G. All `expectZero`/`expect_zero` checks PASS in both transcripts. No disagreement.
+- **Stage labeling drift**: Script docstring and banner say "Stage 23"; file/paper say "Stage 040". Notes file uses "Stage 040" in heading but refers internally to "Stage 22/23". This is a known internal-vs-paper numbering convention, not a math finding.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is **not** an independent derivation. As detailed in F3, it transliterates the SymPy script: same hardcoded `alpha_req` (Mathematica line 45 ↔ SymPy line 59), same hardcoded comparison targets `fExpected` (line 59-63 ↔ line 82), same `fStage18` literal (line 80-83 ↔ line 100), and same algebraic recipe in the same order. Neither script derives `alpha_req` from the eigenvalue equation; both posit it and verify algebraic simplifications about `r`. Mathematica's `Eigenvalues`, `Eigenvectors`, `Solve`, and `NullSpace` primitives are not used anywhere.
+The `.wl` is **not** a transliteration. Key independent moves:
+
+- **Section 1, alpha derivation (lines 52-55)**:
+  ```
+  charEq = Det[mPert[alpha] - lamMinus IdentityMatrix[2]] == 0;
+  alphaSol = Solve[charEq, alpha];
+  alphaReq = FullSimplify[alpha /. alphaSol[[1]], ...];
+  ```
+  This actually solves the characteristic polynomial for `alpha` given `lam = a0(1-xi)`. The SymPy script's L59 writes the closed form directly. Different derivation paths to the same target.
+
+- **Section 1, eigenvector via NullSpace (lines 57-65)**:
+  ```
+  nsVec = NullSpace[mPert[alphaReq] - lamMinus IdentityMatrix[2]];
+  eMinusRaw = FullSimplify[nsVec[[1]], ...];
+  eMinus = FullSimplify[eMinusRaw/eMinusRaw[[1]], ...];
+  ```
+  Computes the null space of the loaded matrix at the selected eigenvalue and normalizes. SymPy constructs `r` algebraically from `(A0*xi - alpha_req*z0^2)/(alpha_req*z0*(q*z0))`. Different derivations.
+
+- **Section 2, overlaps (lines 83-91)**: Mathematica uses `sVec = {1, eta/q}` and `zVec = {z0, q z0}`, computes `(z.e)^2 / (z0^2 ||e||^2)` and `(s.e)^2 / (1 * ||e||^2)`. SymPy assembles them via the analytic identities `(1+qr)^2/(1+r^2)` and `(1+eta*xi/(delta+xi))^2/(1+r^2)`. Mathematica's approach starts from vectors directly; SymPy's from rationalized algebra. Different and convergent.
+
+No `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-The two engines produce numerically and symbolically equivalent outputs:
+| Quantity | SymPy output | Mathematica output | Agree? |
+|---|---|---|---|
+| `alpha_req` | `A0*xi*(delta + xi)/(z0**2*(delta + q**2*xi + xi))` | `(a0*xi*(delta + xi))/((delta + xi + q^2*xi)*z0^2)` | yes |
+| `e1/e0` | `q*xi/(delta + xi)` | `(q*xi)/(delta + xi)` | yes |
+| `(z.e_-)^2/z0^2` (normalized) | `(delta+q**2*xi+xi)**2/(delta**2+2*delta*xi+q**2*xi**2+xi**2)` | `(delta+xi+q^2*xi)^2/(delta^2+2*delta*xi+(1+q^2)*xi^2)` | yes |
+| `(s.e_-)^2/s0^2` (normalized) | `(delta+eta*xi+xi)**2/(delta**2+2*delta*xi+q**2*xi**2+xi**2)` | `(delta+xi+eta*xi)^2/(delta^2+2*delta*xi+(1+q^2)*xi^2)` | yes |
+| `F_(q,eta)` | matches `F_expected` (residual 0) | matches `fExpected` (residual 0) | yes |
+| `G_q` | `xi*(delta+xi)/(delta+q**2*xi+xi)` | `(xi*(delta+xi))/(delta+xi+q^2*xi)` | yes |
+| `F_U(R_U=1) - F_stage18` | 0 | 0 | yes |
+| `G_U(R_U=1) - G_stage19` | 0 | 0 | yes |
+| `H_F` | `4*xi*(27*delta**2+36*delta*xi+11*xi**2)/((9*delta+11*xi)*(9*delta**2+18*delta*xi+11*xi**2))` | `(4*xi*(27*delta^2+36*delta*xi+11*xi^2))/((9*delta+11*xi)*(9*delta^2+18*delta*xi+11*xi^2))` | yes |
+| `H_G` | `-4*xi/(9*delta+11*xi)` | `(-4*xi)/(9*delta+11*xi)` | yes |
 
-| Quantity | SymPy output | Mathematica output |
-|---|---|---|
-| `alpha_req` | `A0*xi*(delta+xi)/(z0^2*(delta+q^2*xi+xi))` | `(a0*xi*(delta+xi))/((delta+xi+q^2*xi)*z0^2)` |
-| `e1/e0` | `q*xi/(delta+xi)` | `(q*xi)/(delta+xi)` |
-| `F_(q,eta)` | `-(delta+eta*xi+xi)^2*(delta+q^2*xi+xi)^2/((xi-1)*(...)^2)` | `((delta+xi+eta*xi)^2*(delta+xi+q^2*xi)^2)/((1-xi)*(...)^2)` (same up to factoring (xi-1)= -(1-xi)) |
-| `G_q` | `xi*(delta+xi)/(delta+q^2*xi+xi)` | `(xi*(delta+xi))/(delta+xi+q^2*xi)` |
-| `H_F` | `4*xi*(27*delta^2 + 36*delta*xi + 11*xi^2)/((9*delta+11*xi)*(9*delta^2+18*delta*xi+11*xi^2))` | `(4*xi*(27*delta^2 + 36*delta*xi + 11*xi^2))/((9*delta+11*xi)*(9*delta^2+18*delta*xi+11*xi^2))` |
-| `H_G` | `-4*xi/(9*delta+11*xi)` | `(-4*xi)/(9*delta+11*xi)` |
+All `expectZero` / `expect_zero` checks return 0 in both transcripts. Engines fully agree.
 
-All seven `expect_zero`/`expectZero` checks pass (`= 0`) in both engines. Engines agree at the symbolic level. This agreement, however, is consistent with the F3 transliteration finding: identical inputs to identical algebra produce identical outputs, which is not the same as two independent derivations corroborating each other.
+Output mtimes both newer than corresponding script mtimes (SymPy: script 1779474522 < output 1779474740; Mathematica: script 1779474673 < output 1779474749). Outputs fresh.
 
 ## Verdict justification
 
-The scripts pass every assertion they make, but the assertions are weaker than the docstring's claims. The eigenvalue/eigenvector existence statement of section 23.1 is asserted in the docstring and used as the foundation for everything downstream, yet no script writes the perturbed matrix or checks the eigenvalue residual — the check at line 66 is a pure algebraic identity about posited expressions (F1). Section 23.4's "exact first-order expansion" check is tautological by construction: it verifies that `sp.series` and `sp.diff` agree on the same expression (F2). The Mathematica script is a line-by-line transliteration of the SymPy script rather than an independent re-derivation (F3); both engines posit `alpha_req` and `r` rather than deriving them from the matrix equation, so the cross-engine agreement provides limited corroboration. Stage-18/19 reference forms are hardcoded without provenance (F4, low severity). Attacks I tried that failed: (a) testing whether `lam_minus = A0(1-xi)` could actually be an eigenvalue under the rank-1-subtracted convention — it can, I verified at `q=1, delta=1, xi=1/2, A0=z0=1` and got a singular matrix `[[1/8, -3/8], [-3/8, 9/8]]` with null vector `(1, 1/3)` matching the script's `r`; (b) checking parity of `F_general, G_general` under `q -> -q` (both depend only on `q^2`, so the negative-q substitution for split-U is safe); (c) checking that the `removeO()` truncation in `sp.series(..., 2)` correctly produces the linear-order expansion (it does). Verdict: `findings` (not stop-cold) — the math holds where it's exercised, but the verification surface is too narrow and the second-engine independence is absent.
+`clean`. The paper card states six exact deliverables for Stage 040; both scripts verify all six, plus the notes-only first-order deformation in Section 5, by non-tautological algebraic checks that derive the targets via genuinely different routes (closed-form substitution and explicit matrix residual in SymPy vs. `Solve[Det == 0]` and `NullSpace` in Mathematica). The engines produce identical final expressions for every quantity and identical PASS outcomes for every `expectZero`. I attempted attacks on: `alpha_req` algebraic form (matches paper exactly after expansion), `eta` vs `eta_s` naming (identical definition), `xi`/`R_U`/`eps` positivity declarations (do not affect symbolic identities tested), hardcoded Stage-18/19 forms (cited upstream sources, used as reduction targets not as answers), Mathematica transliteration (independent derivations confirmed), tautological F_general construction (real algebraic identity), tautological H_F cross-check (two genuinely different paths), and engine drift (none). The stage-23 internal label vs. stage-040 paper label is cosmetic. The Stage-040 audit holds up.
 
 ## Self-test notes
 
-**Variable independence (F1 directive):** the proposed eigenvalue residual `(M_perturbed - lam_minus * I) @ e_minus` depends on `A0, delta, xi, q, z0` through every component. No `sp.diff(EXPR, VAR)` with `VAR` outside `EXPR`'s symbol set. Trivial-case check: at `q=1, delta=1, xi=1/2, A0=z0=1` I worked the arithmetic out by hand (`alpha_req = 3/8`, `r = 1/3`, residual = `(1/8, -3/8)*(1,1/3) - 1/2*(1,1/3) = (1/8 - 1/8, -3/8 + 3/8) - (1/2, 1/6) = (0, 0) - ...` — wait, recomputed: `M_perturbed - lam I = [[1/8, -3/8], [-3/8, 9/8]]`, applied to `(1, 1/3)` gives `(1/8 - 1/8, -3/8 + 3/8) = (0, 0)`. ✓ Residual is genuinely zero, so the proposed `expect_zero` will pass after the directive is applied. **Parity (F4 / split-U):** confirmed `F_general`, `G_general` are even in `q`, so the negative-q substitution for `q_U` is safe — not raised as a finding. **Tautology probe (F2):** confirmed by reading the script that `F_ratio` and `1 + eps*HF` are constructed from the same expression via series/diff, with `f(0) = 1` already established in section 23.3; so the assertion is structurally true and the finding is real. **Path specifications:** no `missing_verification_script` findings here, so no path-disambiguation traps. The F3 directive targets a file in `mathematica/` (correct directory for `.wl`). The F1 directive edits both `scripts/` (`.py`) and `mathematica/` (`.wl`) at the cited line ranges, both confirmed to exist in this audit.
+Walked through the math by hand: (i) `z0^2*(delta+xi) + (q*z0)^2*xi = z0^2*(delta+(1+q^2)*xi)`, so script L59 alpha_req equals paper's eq. alpha-req; (ii) the split-U substitution `q -> -sqrt(2)/3 R_U`, `eta -> (2/9) R_U` into `F_expected` yields paper's `F_U` after pulling factors of 9 through (numerator gains `1/6561`, denominator gains `1/81`, leaving the explicit `1/(81*(1-xi))` factor in paper's eq. FU); (iii) at R_U=1, `9+2R_U^2 = 11 = 9+2R_U`, giving `(9d+11xi)^4` in F_U numerator and the Stage-18 denominator, matching `F_stage18`. Verified F_general parity in q (depends only on `q^2` via `(1+q^2)xi` and `q^2*xi^2`), so the negative sign of `q_U` is harmless. The H_F cross-check uses two different intermediate expressions (one with q,eta already substituted, one parametrized by eps via q_U(1+eps), eta_U(1+eps)), so `expect_zero(HF - HF_direct)` is substantive. No trap from variable-independence in `sp.diff(EXPR, eps)`: in both paths `eps` enters the expression nontrivially before differentiation.

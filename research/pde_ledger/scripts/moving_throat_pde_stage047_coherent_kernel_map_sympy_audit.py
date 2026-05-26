@@ -38,40 +38,19 @@ Tw, L, TU = sp.symbols("T_w L T_U", positive=True, real=True)
 G, cs, a, c, muW = sp.symbols("G c_s a c mu_W", positive=True, real=True)
 sigma = sp.Rational(88, 9) / sp.pi ** 2
 
-# Exact coherent identities.
-# rho_0 is the W-channel coherent ratio: cross-correlation strength
-# (gamma * lamW * c_etaU) normalised by the W-channel coupling lamW
-# composed with the eta-channel propagator KU. The lamW factor enters
-# both numerator (through the W-channel polarisation) and denominator
-# (through the normalisation), but here we keep them in separate
-# subexpressions so the cancellation is a genuine simplification step.
-rho0_num = gamma * lamW * c_etaU
-rho0_den = KU * lamW
-rho0 = sp.simplify(rho0_num / rho0_den)
-
-# sigma_0 is the phi-channel analogue with lamphi in place of lamW.
-sigma0_num = c_etaU * gamma * lamphi
-sigma0_den = KU * lamphi
-sigma0 = sp.simplify(sigma0_num / sigma0_den)
-
-# chi_0 is the bare coherent ratio (no channel coupling on either side).
+# Coherent interference ratio.
+# On the coherent tracking branch the W-channel and phi-channel
+# polarisation amplitudes saturate to the same bare ratio gamma*c_etaU/KU.
+# That saturation is established upstream at Stage 28 (matching condition
+# for the coherent local D/N kernel); within the scope of Stage 047 the
+# equalities rho_0 = sigma_0 = chi_0 are a notational rename rather than
+# an independent identity, so we do not assert them here. Any attempt to
+# verify them locally reduces to lamW/lamW (resp. lamphi/lamphi) string
+# cancellation, which is tautological.
 chi0 = sp.simplify(gamma * c_etaU / KU)
 
-# Sanity: rho_0 and sigma_0 must not be identically chi_0 prior to
-# simplification — otherwise the assertions below are tautological.
-assert sp.simplify(rho0_num * KU - rho0_den * gamma * c_etaU) == 0, (
-    "rho_0 numerator/denominator do not pre-satisfy the channel-saturation rule"
-)
-assert sp.simplify(sigma0_num * KU - sigma0_den * gamma * c_etaU) == 0, (
-    "sigma_0 numerator/denominator do not pre-satisfy the channel-saturation rule"
-)
-
-banner("1. Coherent interference ratios")
-print("rho_0 =", rho0)
-print("sigma_0 =", sigma0)
+banner("1. Coherent interference ratio")
 print("chi_0 =", chi0)
-expect_zero("rho_0 - chi_0", rho0 - chi0)
-expect_zero("sigma_0 - chi_0", sigma0 - chi0)
 
 # Dimensionless coherent ratios.
 eps_eta = sp.simplify(c_etaU ** 2 / (KU * Keta_eff))

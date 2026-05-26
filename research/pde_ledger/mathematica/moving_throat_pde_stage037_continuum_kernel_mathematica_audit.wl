@@ -112,6 +112,15 @@ cMat = {
 };
 
 sigmaWall = FullSimplify[cMat . LinearSolve[bMat, Transpose[cMat]], Assumptions -> $Assumptions];
+deltaUW = aU*aW - gR^2*sigma;
+xiExpected = gU^2/aU;
+alphaExpected = gB^2/aPhi + (aU*gW + gR*gU)^2/(aU*deltaUW);
+sigmaWallExpected = FullSimplify[
+  xiExpected*IdentityMatrix[2]
+    + alphaExpected*{{kappa0^2, kappa0*kappa1}, {kappa0*kappa1, kappa1^2}},
+  Assumptions -> $Assumptions
+];
+expectMatrixZero["Sigma_wall - [Xi I + alpha v v^T]", sigmaWall - sigmaWallExpected];
 v = {{kappa0}, {kappa1}};
 alphaSolved = FullSimplify[
   alpha /. First[Solve[sigmaWall[[1, 2]] == alpha*kappa0*kappa1, alpha]],

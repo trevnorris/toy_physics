@@ -121,6 +121,20 @@ D_dir_expected = sp.simplify(-kappa0 * kappa1 * g_W * rho0 * deltaU / (1 + delta
 print("D_dir =", D_dir)
 expect_zero("direction-splitting invariant", D_dir - D_dir_expected)
 
+# Collinearity iff theorem (paper eq:app-stage039-collinearity).
+expect_zero("collinearity if-leg: D_dir(deltaU=0) = 0", D_dir.subs(deltaU, 0))
+expect_zero("collinearity if-leg: D_dir(rho0=0) = 0", D_dir.subs(rho0, 0))
+# Only-if leg: the numerator of D_dir must factor exactly as rho0 * deltaU * <nonzero>.
+num, den = sp.fraction(sp.together(D_dir))
+num_reduced = sp.simplify(num / (rho0 * deltaU))
+print("Numerator(D_dir) / (rho0*deltaU) =", num_reduced)
+if num_reduced.has(rho0) or num_reduced.has(deltaU):
+    raise AssertionError(
+        f"D_dir numerator still depends on rho0 or deltaU after dividing by rho0*deltaU: {num_reduced}"
+    )
+if sp.simplify(num_reduced) == 0:
+    raise AssertionError("D_dir numerator is identically zero after factoring out rho0*deltaU")
+
 print("Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U = 0).")
 
 subbanner("22.4 — Split-U continuum placement map")
@@ -135,8 +149,6 @@ product = sp.simplify(M_mix_split * R_target_split)
 print("M_mix^(split U) =", M_mix_split)
 print("R_target^(split U) =", R_target_split)
 print("product =", product)
-expect_zero("M_mix split is M_mix_flat under eps_W -> eps_W_split", M_mix_split - M_mix_flat.subs(eps_W, eps_W_split))
-expect_zero("R_target split is R_target_flat under eps_W -> eps_W_split", R_target_split - R_target_flat.subs(eps_W, eps_W_split))
 
 subbanner("22.5 — Small-splitting expansions")
 

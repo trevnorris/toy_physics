@@ -2,13 +2,7 @@
 ========================================================================================
 STAGE 030 — COHERENT KERNEL MAP
 ========================================================================================
-rho_0 = (cEtaU*gamma)/kU
-sigma_0 = (cEtaU*gamma)/kU
 chi_0 = (cEtaU*gamma)/kU
-rho_0 - chi_0 = 0
-PASS: rho_0 - chi_0
-sigma_0 - chi_0 = 0
-PASS: sigma_0 - chi_0
 zeta_def = (kWEff*lamPhi^2)/(kPhiEff*lamW^2)
 eps_W = (88*gamma^2*lamW^2)/(9*kU*kWEff*Pi^2)
 eps_phi = (88*gamma^2*lamPhi^2)/(9*kPhiEff*kU*Pi^2)
@@ -21,8 +15,6 @@ PASS: Z_phi - zeta_def Z_W
 R_tr = (kU*(1 + (cEtaU*ell^2*gamma)/(ell^2*kU + Pi^2*tU)))/(cEtaU*gamma + kU)
 eps = (8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU))/(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU))
 delta = -((Pi^2*(cEtaU^2*ell^2*tU + kU*(ell^2*kU + Pi^2*tU)*tw))/(ell^2*(cEtaU^2 - kEtaEff*kU)*(ell^2*kU + Pi^2*tU)))
-S from ratio agrees with closed-form S = 0
-PASS: S from ratio agrees with closed-form S
 M_mix = (-72*(cEtaU*gamma + kU)^2*lamW^2*(ell^2*kU + Pi^2*tU))/((cEtaU^2 - kEtaEff*kU)*(ell^2*kU*(-88*gamma^2*lamW^2 + 9*kU*kWEff*Pi^2) + 9*Pi^2*(-8*gamma^2*lamW^2 + kU*kWEff*Pi^2)*tU))
 M_supp = (-72*(cEtaU*gamma + kU)^2*lamW^2*(ell^2*kU + Pi^2*tU)*zeta)/((cEtaU^2 - kEtaEff*kU)*(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU) - 8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU)*zeta))
 S(zeta;eps) = (9*Pi^2*tU*(-16*gamma^2*lamW^2*zeta + kU*kWEff*Pi^2*(1 + zeta)) + ell^2*kU*(-176*gamma^2*lamW^2*zeta + 9*kU*kWEff*Pi^2*(1 + zeta)))/(9*kU*kWEff*Pi^2*(ell^2*kU + Pi^2*tU) - 8*gamma^2*lamW^2*(11*ell^2*kU + 9*Pi^2*tU)*zeta)

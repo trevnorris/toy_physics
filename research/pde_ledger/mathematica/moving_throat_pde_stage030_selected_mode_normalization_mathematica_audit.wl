@@ -72,6 +72,20 @@ lamPlus = FullSimplify[
   Assumptions -> $Assumptions
 ];
 
+(* HF eigenvector check: compute the lower-eigenvalue eigenvector of mMat
+   directly and verify (v.e_-)^2 = sMinusClosed. This closes the HF chain
+   (v.e_-)^2 = -d lambda_-/d alpha = closed form. In the mMat basis (row 1
+   = kappa_1-mode, row 2 = kappa_0-mode), the loading direction is
+   vVec = {Sqrt[x1], Sqrt[x0]}. *)
+eigPairs = Eigensystem[mMat];
+eMinusRaw = First[Pick[Transpose[eigPairs][[All, 2]],
+  Map[FullSimplify[# - lamMinus, Assumptions -> $Assumptions] === 0 &,
+      First[eigPairs]]]];
+eMinusNorm = FullSimplify[eMinusRaw/Sqrt[eMinusRaw.eMinusRaw],
+  Assumptions -> $Assumptions];
+vVec = {Sqrt[x1], Sqrt[x0]};
+sMinusEig = FullSimplify[(vVec.eMinusNorm)^2, Assumptions -> $Assumptions];
+
 Print["lambda_- = ", fmt[lamMinus]];
 Print["lambda_+ = ", fmt[lamPlus]];
 
@@ -81,6 +95,7 @@ sMinusClosed = FullSimplify[
   Assumptions -> $Assumptions
 ];
 expectZero["selected overlap: HF - closed form", sMinusHF - sMinusClosed];
+expectZero["HF eigenvector check", sMinusEig - sMinusClosed];
 Print["s_- = (v.e_-)^2 = ", fmt[sMinusClosed]];
 expectZero["weak-loading overlap limit", (sMinusClosed /. alpha -> 0) - x0];
 

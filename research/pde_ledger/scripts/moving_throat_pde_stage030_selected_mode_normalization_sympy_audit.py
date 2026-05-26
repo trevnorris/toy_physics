@@ -73,6 +73,27 @@ R = sp.sqrt((DK + alpha * delta_kappa) ** 2 + 4 * alpha**2 * KappaProd)
 lam_minus = sp.simplify((2 * A + DK - alpha * sigma - R) / 2)
 lam_plus = sp.simplify((2 * A + DK - alpha * sigma + R) / 2)
 
+# HF eigenvector check: build the same loaded wall block used in the
+# Mathematica script (basis row 1 = kappa_1-mode, row 2 = kappa_0-mode),
+# extract the eigenvector at the lower eigenvalue, and verify (v.e_-)^2
+# equals s_minus_closed. The matrix entries reproduce
+# trace = 2 A + DK - alpha*(x0+x1) and
+# det = A*(A+DK) - alpha*((A+DK)*x0 + A*x1).
+M_eff = sp.Matrix([
+    [A + DK - alpha * x1, -alpha * sp.sqrt(x0 * x1)],
+    [-alpha * sp.sqrt(x0 * x1), A - alpha * x0],
+])
+v_vec = sp.Matrix([sp.sqrt(x1), sp.sqrt(x0)])
+e_minus_raw = None
+for val, _mult, vects in M_eff.eigenvects():
+    if sp.simplify(val - lam_minus) == 0:
+        e_minus_raw = vects[0]
+        break
+if e_minus_raw is None:
+    raise AssertionError("HF eigenvector check: lower-branch eigenvector not found")
+e_minus_norm = e_minus_raw / sp.sqrt((e_minus_raw.T * e_minus_raw)[0, 0])
+s_minus_eig = sp.simplify(((v_vec.T * e_minus_norm)[0, 0]) ** 2)
+
 print("lambda_- =")
 sp.pprint(lam_minus)
 print("lambda_+ =")
@@ -85,6 +106,7 @@ s_minus_closed = sp.simplify(
 )
 
 expect_zero("selected overlap: HF - closed form", s_minus_hf - s_minus_closed)
+expect_zero("HF eigenvector check", s_minus_eig - s_minus_closed)
 print("s_- = (v.e_-)^2 =")
 sp.pprint(s_minus_closed)
 

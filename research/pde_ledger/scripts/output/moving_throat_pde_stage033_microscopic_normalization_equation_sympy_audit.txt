@@ -130,7 +130,7 @@ claimed denominator =
                                     2                                  
                                  9⋅π                                   
 denominator ratio (must be parameter-free) = 9*pi**2
-alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim = 0
+gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is den_ratio.is_number above) = 0
 gate numerator =
                                                                                ↪
    2              4    2      2                   2    2      2                ↪

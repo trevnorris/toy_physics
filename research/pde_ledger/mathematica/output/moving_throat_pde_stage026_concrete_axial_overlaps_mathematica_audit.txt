@@ -77,6 +77,8 @@ Target residual = (-54*cs^5*gConst)/(5*a^5*cSpeed^5) + (8*mhat^2*(lambdaR*lambda
 IV.2 — Exact required wall stiffness
 ----------------------------------------------------------------------------------------
 K_req = (20*a^5*cSpeed^5*mhat^2*(lambdaR*lambdaU + lambdaW*omegaU^2)^2*Pi^2)/(27*cs^5*gConst*(-8*lambdaR^2 + omegaU^2*omegaW^2*Pi^2)^2) + (8*lambdaW*(2*lambdaR*lambdaU + lambdaW*omegaU^2) + lambdaU^2*omegaW^2*Pi^2)/(-8*lambdaR^2 + omegaU^2*omegaW^2*Pi^2) + (8*lambdaB^2)/(Pi^2*varpi^2)
+K_req - K_req_paper = 0
+PASS: K_req - K_req_paper
 residual @ K_req = 0
 PASS: residual @ K_req
 On the constant wall branch, bare quadrupole wall stiffness is K = kEta + 6*tOmega

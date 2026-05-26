@@ -65,6 +65,10 @@ print("G(xi,delta) =", G)
 print("F(xi,delta) =", F)
 print("M_mix =", Mmix_expr)
 print("R_target =", R_target)
+# Definitional self-consistency: a_req and G are both hardcoded closed forms,
+# so this just confirms a_req = (pi^2 A / 8) G after Mmix_expr cancels.
+# The genuine anchor for F (and hence the closed form of G via the same algebra)
+# is the symbolic kappa derivation below ("symbolic kappa derivation: F(xi,delta) - R_target_sym").
 expect_zero(
     "g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",
     gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
@@ -84,6 +88,7 @@ expect_zero("G_max - closed form", Gmax - Gmax_target)
 banner("STAGE 19.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST")
 xi_req = sp.symbols("xi_req", nonnegative=True, real=True)
 print("Parametric frontier: xi -> (F(xi,delta), G(xi,delta))")
+# Same definitional identity as above, with xi -> xi_req. Definitional, not load-bearing.
 expect_zero(
     "final-test support inequality <-> nonnegative required support loading",
     (sp.pi**2 * A / 8) * (G.subs(xi, xi_req) - Mmix_expr) - gBreq_sq_over_varpi2.subs(xi, xi_req),
@@ -93,8 +98,9 @@ delta_sample = sp.Integer(1)
 xi_sample = sp.Rational(1, 2)
 F_sample = sp.simplify(F.subs({delta: delta_sample, xi: xi_sample}))
 G_sample = sp.simplify(G.subs({delta: delta_sample, xi: xi_sample}))
-Mmix_good = sp.simplify(G_sample - sp.Rational(1, 10))
-Mmix_bad = sp.simplify(G_sample + sp.Rational(1, 10))
+Mmix_admissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 29}))
+Mmix_inadmissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 1}))
+G_sample_n = sp.N(G_sample)
 expect_true("admissible sample: R_target >= 1", bool(F_sample >= 1), f"R_target={F_sample}")
 
 # Stronger middle-conjunct witness: derive R_target from the Stage-18
@@ -138,14 +144,14 @@ expect_zero(
     sp.simplify(F - R_target_sym),
 )
 expect_true(
-    "admissible sample: M_mix <= G(xi_req,delta)",
-    bool(Mmix_good <= G_sample),
-    f"M_mix={Mmix_good}, G={G_sample}",
+    "admissible sample: M_mix < G(xi_req,delta)",
+    bool(Mmix_admissible < G_sample_n),
+    f"M_mix={Mmix_admissible}, G={G_sample_n}",
 )
 expect_true(
     "inadmissible sample: support deficit blocks the branch",
-    bool(Mmix_bad > G_sample),
-    f"M_mix={Mmix_bad}, G={G_sample}",
+    bool(Mmix_inadmissible > G_sample_n),
+    f"M_mix={Mmix_inadmissible}, G={G_sample_n}",
 )
 
 banner("STAGE 19.4 — NEAR-ONSET ASYMPTOTICS")

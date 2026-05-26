@@ -103,10 +103,9 @@ Sigma - [Xi I + alpha vv^T] =
 STAGE 15.4 — NATURAL D/N SOURCE MAP
 ========================================================================================
 mhat_-^2 = (63*pi**2*DeltaK + 968*alpha0 + 11*sqrt(4608*alpha0**2 + (9*pi**2*DeltaK + 56*alpha0)**2))/(18*sqrt(4608*alpha0**2 + (9*pi**2*DeltaK + 56*alpha0)**2))
+s_check - s_minus_nat (independent (v.e_-)^2 construction) = 0
+lam_minus_sym - lambda_minus (independent eigenvalue construction) = 0
 mhat_-^2(alpha=0) - 1 = 0
-delta_kappa^2 + 4*Kprod - sigma^2 (natural) = 0
-s_minus_nat - s_minus_nat_simplified (interior identity) = 0
-s_minus_nat at (alpha0=1, DK=1) interior point = 0
 limit_{alpha->oo} mhat_-^2 - 11/9 = 0
 
 ========================================================================================

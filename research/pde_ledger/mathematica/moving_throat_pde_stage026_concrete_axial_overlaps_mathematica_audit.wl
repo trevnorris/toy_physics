@@ -159,6 +159,18 @@ normalizationTest[] := Module[{kappa, delta, q, p, b0, z0, n0, d0, target, resid
 
   subbanner["IV.2 — Exact required wall stiffness"];
   Print["K_req = ", fmt[kReq]];
+
+  (* Independent structural check: the paper's eq:app-stage026-Kreq states the
+     three-term decomposition K_req = B0 + Q/Delta + mhat^2 * kappa^2 * (...)^2
+     / (target * Delta^2). Verify the solver's output matches that form. *)
+  kReqPaper = FullSimplify[
+    b0
+    + q/delta
+    + mhat^2 * kappa^2 * (omegaU^2*lambdaW + lambdaR*lambdaU)^2
+      / (target * delta^2),
+    Assumptions -> $Assumptions
+  ];
+  expectZero["K_req - K_req_paper", kReq - kReqPaper];
   expectZero["residual @ K_req", residual /. k -> kReq];
 
   kGeom = FullSimplify[kEta + 6*tOmega, Assumptions -> $Assumptions];

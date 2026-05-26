@@ -55,19 +55,6 @@ banner("PART II — EXACT PREFATOR MONOTONICITY IDENTITY")
 
 P0_sel = sp.simplify(beta0 * s_minus / lam_minus)
 
-# Verify the quotient-rule identity generically, using the exact Hellmann–Feynman law
-# d lambda_-/d alpha = - s_- together with the explicit ds_-/dalpha formula from Part I.
-Lsym, Ssym, DSsym = sp.symbols("Lsym Ssym DSsym", nonzero=True, real=True)
-dP_generic = sp.diff(beta0 * sp.Function("S")(alpha) / sp.Function("L")(alpha), alpha)
-dP_generic = dP_generic.subs({
-    sp.diff(sp.Function("S")(alpha), alpha): DSsym,
-    sp.Function("S")(alpha): Ssym,
-    sp.diff(sp.Function("L")(alpha), alpha): -Ssym,
-    sp.Function("L")(alpha): Lsym,
-})
-dP_expected = sp.simplify(beta0 * (DSsym * Lsym + Ssym**2) / Lsym**2)
-expect_zero("generic quotient/HF identity", sp.simplify(dP_generic - dP_expected))
-
 dP_direct = sp.diff(P0_sel, alpha)
 dP_physical = beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2
 expect_zero("dP0_-/dalpha direct identity", sp.simplify(dP_direct - dP_physical))

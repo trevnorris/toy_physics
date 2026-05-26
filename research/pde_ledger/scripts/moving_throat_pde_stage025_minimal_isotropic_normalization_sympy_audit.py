@@ -137,6 +137,16 @@ def normalization_formula() -> None:
     if mhat_sq_at_sample <= 0:
         raise AssertionError(f"mhat^2 on sample is not positive: {mhat_sq_at_sample}")
 
+    subbanner("II.3 — P = 0 corollary (paper Checks item 4)")
+    # Forcing GW = -R*GU/OmegaU^2 gives P = OmegaU^2*GW + R*GU = 0 symbolically.
+    P_zero_sub = {GW: -R * GU / OmegaU**2}
+    N0_at_Pzero = sp.simplify(N0.subs(P_zero_sub))
+    print(f"N0 at P=0 = {N0_at_Pzero}")
+    expect_zero("N0 vanishes when P=0", N0_at_Pzero)
+    residual_at_Pzero = sp.simplify((mhat**2 * P0_compact - target).subs(P_zero_sub))
+    print(f"(mhat^2*P0 - target) at P=0 = {residual_at_Pzero}")
+    expect_zero("(mhat^2*P0 - target) at P=0 equals -target", residual_at_Pzero + target)
+
 
 # ---------------------------------------------------------------------------
 # III. Stability and positivity structure
@@ -148,7 +158,9 @@ def stability_and_positivity() -> None:
     Delta, Q, P, B0, Z0, N0, D0 = zero_frequency_coefficients()
     compact_denom = sp.simplify(Delta * D0)
     expect_zero("Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q)", compact_denom - (K * Delta - Delta * C**2 / varpi**2 - Q))
-    expect_zero("N0 - P^2/Delta^2", N0 - P**2 / Delta**2)
+    P_raw = OmegaU**2 * GW + R * GU
+    Delta_raw = OmegaU**2 * OmegaW**2 - R**2
+    expect_zero("N0 reconstructed from raw symbols", N0 - P_raw**2 / Delta_raw**2)
 
     delta_value = sp.nsimplify(Delta.subs(SAMPLE_POINT))
     d0_value = sp.nsimplify(D0.subs(SAMPLE_POINT))

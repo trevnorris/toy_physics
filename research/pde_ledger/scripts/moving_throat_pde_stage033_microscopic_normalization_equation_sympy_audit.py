@@ -123,7 +123,8 @@ assert den_ratio.is_number, (
 # Independent numerator reconstruction from the claim side, then final identity check.
 gate_num_target = sp.simplify(gate_num_actual / den_ratio)
 expect_zero(
-    "alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim",
+    "gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) "
+    "(tautological by reconstruction; substantive check is den_ratio.is_number above)",
     sp.simplify(alpha_crit_mic - alpha0_mic - gate_num_target / gate_den_claim),
 )
 print("gate numerator =")

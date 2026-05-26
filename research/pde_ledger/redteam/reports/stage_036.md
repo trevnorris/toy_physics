@@ -1,279 +1,245 @@
 ---
 unit_id: 036
 batch: II.1
-auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-21T00:00:00Z
+auditor_model: claude-opus-4-7[1m]
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 6
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: [moving_throat_pde_stage036_support_feasibility_frontier.md]
+  paper_appendix: present
 ---
 
 # Audit unit 036 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_036.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part02.tex`
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.txt`
 
+(Note: a prior v1 directive at `/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_036.md` was already applied — its F1, F3, F4, F5 removed the previous round of tautological checks, and F2/F6 added the symbolic kappa derivation that is now present at sympy:123-139 / mathematica:124-138. The two findings below are v2 catches against the **current** state of the scripts, after those v1 fixes landed.)
+
+## What the paper claims
+
+Stage 036 isolates the dimensionless support-feasibility frontier left over once the Stage-035 normalization locus has selected `xi_req`. The card defines (i) the dimensionless mixed baseline `M_mix = 8 alpha_mix / (pi^2 A) = 8 Chi^2 / (pi^2 A Omega_U^2 Delta_0)`, (ii) the support-feasibility function `G(xi,delta) = 8 alpha_req / (pi^2 A) = 9 xi (xi+delta) / (9 delta + 11 xi)`, (iii) the required support loading `g_{B,req}^2/varpi^2 = (pi^2 A / 8)[G(xi_req,delta) - M_mix]`, (iv) the manifestly-positive monotonicity derivative `partial_xi G = 9(9 delta^2 + 18 delta xi + 11 xi^2)/(9 delta + 11 xi)^2`, (v) the endpoints `G(0,delta)=0` and `G_max(delta) = 9(1+delta)/(9 delta + 11)`, (vi) the near-onset expansion `G = xi - 2 xi^2/(9 delta) + O(xi^3)`, and (vii) the final admissibility test `R_target >= 1`, `F(xi_req,delta)=R_target`, `M_mix <= G(xi_req,delta)`. The Output line lists items (i), (ii), (iii), (iv), and the final-test triple as the load-bearing deliverables; the notes file restates the same content with more derivation context (`alpha_req`-split, `G_max` as the dimensionless form of the refined stability bound, parametric frontier interpretation).
+
 ## What the script claims to verify
 
-The scripts claim to verify (per docstring): (1) the exact dimensionless support-feasibility function `G(xi,delta) = 9*xi*(xi+delta)/(9*delta+11*xi)`; (2) exact monotonicity of G and its endpoint values `G(0,delta)=0` and `G_max = lim_{xi->1^-} G = 9*(1+delta)/(9*delta+11)`; (3) the exact factorization of the required support loading as `g_{B,req}^2/varpi^2 = (pi^2 A / 8)*(G - M_mix)`; (4) the near-onset asymptotics `G ~ xi - 2*xi^2/(9*delta)`; and they also exhibit witness samples for admissible/inadmissible parameter choices that anchor the support inequality `M_mix <= G` and the R-target test `F(xi,delta) >= 1`.
+The SymPy and Mathematica audits each: (1) print the closed forms of `G`, `F`, `M_mix`, `R_target`; (2) assert `(a_req - alpha_mix) - (pi^2 A/8)(G - M_mix) == 0` as the `g_{B,req}` factorization; (3) compute `dG/dxi` and check it matches the closed-form numerator `9(9 delta^2 + 18 delta xi + 11 xi^2)/(9 delta + 11 xi)^2`; (4) check `G(0,delta)=0` and `G_max = 9(1+delta)/(9 delta + 11)` via direct substitution / limit; (5) at a sample point `(delta=1, xi=1/2)`, check `R_target >= 1`, check `F(xi_req,delta) - R_target_host == 0` from a host-numeric microscopic kappa expansion, AND symbolically derive `R_target_sym` from the `kappa_0^2 = 8/pi^2`, `kappa_1^2 = 16/(9 pi^2)` expansion in `(A_sym, beta0_sym, xi, delta)` and check it equals `F`; (6) compare two sample `M_mix` values to `G(xi_req,delta)`; (7) check the near-onset series of `G` matches `xi - 2 xi^2/(9 delta)`. The Mathematica script adds an independent positivity argument via the discriminant of the numerator polynomial.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check(s) | Status |
+|---|---|---|
+| `M_mix` closed form | `Mmix_expr = 8 alpha_mix/(pi^2 A)` printed; used downstream | match |
+| `G(xi,delta)` closed form | `G` printed; verified `G == 8 a_req/(pi^2 A)` (Mathematica line 57); definitional in sympy | match |
+| `g_{B,req}^2/varpi^2 = (pi^2 A/8)(G - M_mix)` | sympy lines 68-71; Mathematica lines 59-62 | match (but tautological — see F2) |
+| `dG/dxi = 9(9 d^2 + 18 d xi + 11 xi^2)/(9 d + 11 xi)^2 > 0` | sympy lines 74-77; Mathematica lines 68-81 (+ discriminant `-72 delta^2`) | match |
+| `G(0,delta)=0`, `G_max = 9(1+delta)/(9 delta+11)` | sympy lines 78-82; Mathematica lines 82-92 | match |
+| Near-onset `G = xi - 2 xi^2/(9 d) + O(xi^3)` | sympy lines 152-155; Mathematica lines 152-160 (coefficient-by-coefficient) | match |
+| Final test `R_target >= 1` | sympy line 98; Mathematica line 110 | match (single sample point) |
+| Final test `F(xi_req,delta) = R_target` | sympy lines 116-119 + symbolic 123-139; Mathematica lines 120-138 | match (host-sample + symbolic kappa re-derivation) |
+| Final test `M_mix <= G(xi_req,delta)` | sympy lines 140-149; Mathematica lines 139-148 | **mismatch by tautology** — sample inequalities are constructed as `G_sample ± 1/10`, so the inequalities `G_sample - 1/10 <= G_sample` and `G_sample + 1/10 > G_sample` are arithmetic identities, not feasibility tests (F1) |
+
+paper_alignment: aligned (all paper deliverables have script-side checks; the feasibility-witness check is structurally weak rather than misaligned with paper content).
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 68-71 | `simplify(gBreq_sq_over_varpi2 - (pi^2 A/8)(G - Mmix_expr)) == 0` | no (tautological by construction) |
-| A2 | sympy | 72 | `simplify(R_target - pi^2 A NQ/(8 beta0)) == 0` | no (tautological — R_target was just defined as that) |
-| A3 | sympy | 78 | `simplify(dG/dxi - dG_target) == 0` | yes |
-| A4 | sympy | 79 | `simplify(G.subs(xi,0)) == 0` | partial (trivial substitution) |
-| A5 | sympy | 83 | `simplify(Gmax - 9*(1+delta)/(9*delta+11)) == 0` | yes (exercises symbolic limit) |
-| A6 | sympy | 88-91 | `(pi^2 A/8)*(G(xi_req)-Mmix) - gBreq(xi_req) == 0` | no (same identity as A1 with renamed variable) |
-| A7 | sympy | 99 | `bool(F_sample >= 1)` | yes (numeric witness) |
-| A8 | sympy | 117-120 | `F(1/2,1) - R_target_host == 0` (kappa-based) | yes (non-trivial — uses kappa expansion) |
-| A9 | sympy | 122-125 | `bool(Mmix_good <= G_sample)` numeric witness | partial (witness only) |
-| A10 | sympy | 126 | `bool(Rational(9,10) < 1)` | no (purely "9/10 < 1") |
-| A11 | sympy | 128-131 | `bool(Mmix_bad > G_sample)` numeric witness | partial (witness only) |
-| A12 | sympy | 137 | `simplify(G_series - (xi - 2*xi^2/(9*delta))) == 0` | yes (series expansion) |
-| B1 | mathematica | 57 | `g - 8*alphaReq/(Pi^2*A) == 0` | no (algebraic identity by construction) |
-| B2 | mathematica | 58 | `g - gTarget == 0` | no (g and gTarget both built from the same alphaReq closed form) |
-| B3 | mathematica | 59 | `rTarget - Pi^2*A*NQ/(8*beta0) == 0` | no (tautological) |
-| B4 | mathematica | 60-63 | `gBReqSqOverVarpi2 - (Pi^2 A/8)(gTarget - mMix) == 0` | no (tautological mirror of A1) |
-| B5 | mathematica | 71 | `dG - dGTarget == 0` | yes |
-| B6 | mathematica | 72 | `gTarget /. xi->0 == 0` | partial |
-| B7 | mathematica | 82 | `gMax - gMaxTarget == 0` | yes |
-| B8 | mathematica | 83 | `(Pi^2 A/8)*gMaxTarget - alphaCrit == 0` | no (alphaCrit defined as exactly that) |
-| B9 | mathematica | 90-93 | `(Pi^2 A/8)((gTarget /. xi->xiReq) - mMix) - (gBReqSqOverVarpi2/.xi->xiReq) == 0` | no (mirror of A6) |
-| B10 | mathematica | 101 | `fSample >= 1` | yes |
-| B11 | mathematica | 111-114 | `(fTarget /. ...) - rTargetHost == 0` | yes (numeric kappa witness) |
-| B12 | mathematica | 115-119 | `mMixGood <= gSample` numeric | partial |
-| B13 | mathematica | 120 | `9/10 < 1` | no |
-| B14 | mathematica | 121-125 | `mMixBad > gSample` numeric | partial |
-| B15 | mathematica | 131 | `gSeries - (xi - 2*xi^2/(9*delta)) == 0` | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 68-71 | `expect_zero("g_B,req^2/varpi^2 - (pi^2 A/8)(G - M_mix)", ...)` | g_{B,req} factorization | partial — identity follows from hardcoded `a_req` and `G` having matching closed forms |
+| A2 | sympy | 77 | `expect_zero("dG/dxi - manifestly positive form", dG - dG_target)` | monotonicity | yes |
+| A3 | sympy | 78 | `expect_zero("G(0,delta)", G.subs(xi,0))` | endpoint | yes |
+| A4 | sympy | 82 | `expect_zero("G_max - closed form", Gmax - Gmax_target)` | G_max | yes |
+| A5 | sympy | 87-90 | `expect_zero("final-test support inequality <-> nonnegative required support loading", ...)` | feasibility ↔ g_{B,req}^2 ≥ 0 | partial — same identity as A1 with xi→xi_req |
+| A6 | sympy | 98 | `expect_true("admissible sample: R_target >= 1", ...)` | R_target ≥ 1 (final test) | yes (one sample) |
+| A7 | sympy | 116-119 | `expect_zero("F(xi_req,delta) - R_target(host)", ...)` | F(xi_req,delta) = R_target | yes (numeric host) |
+| A8 | sympy | 136-139 | `expect_zero("symbolic kappa derivation: F(xi,delta) - R_target_sym", ...)` | F(xi,delta) = R_target | yes (genuine: derives F from kappa expansion symbolically) |
+| A9 | sympy | 140-144 | `expect_true("M_mix <= G(xi_req,delta)", Mmix_good <= G_sample, ...)` with `Mmix_good = G_sample - 1/10` | feasibility (M_mix ≤ G) | **no — tautological: (x − 1/10) ≤ x** |
+| A10 | sympy | 145-149 | `expect_true("inadmissible sample: support deficit blocks the branch", Mmix_bad > G_sample, ...)` with `Mmix_bad = G_sample + 1/10` | feasibility (deficit) | **no — tautological: (x + 1/10) > x** |
+| A11 | sympy | 155 | `expect_zero("G near-onset series through O(xi^2)", ...)` | near-onset expansion | yes |
+| B1 | math | 57 | `expectZero["G - 8 alpha_req/(Pi^2 A)", ...]` | G definition | yes (a single algebraic simplification) |
+| B2 | math | 59-62 | `expectZero["g_B,req^2/varpi^2 - (Pi^2 A/8)(G - M_mix)", ...]` | g_{B,req} factorization | partial — same tautology as A1 |
+| B3 | math | 72-75 | `expectZero["dG/dxi positivity polynomial: ... == 11 xi^2 + 18 delta xi + 9 delta^2", ...]` | monotonicity | yes |
+| B4 | math | 81 | `expectZero["dG/dxi numerator discriminant equals -72 delta^2", ...]` | manifest positivity (independent argument) | yes |
+| B5 | math | 82 | `expectZero["G(0,delta)", gTarget /. xi -> 0]` | endpoint | yes |
+| B6 | math | 92 | `expectZero["G_max - 9(1+delta)/(9delta+11)", ...]` | G_max | yes |
+| B7 | math | 99-102 | `expectZero["final-test support inequality <-> nonnegative required support loading", ...]` | feasibility ↔ g_{B,req}^2 ≥ 0 | partial — same tautology as A5 |
+| B8 | math | 110 | `expectTrue["R_target >= 1", fSample >= 1, ...]` | R_target ≥ 1 | yes (one sample) |
+| B9 | math | 120-123 | `expectZero["F(xi_req,delta) - R_target(host)", ...]` | F(xi_req,delta) = R_target | yes (numeric host) |
+| B10 | math | 134-138 | `expectZero["symbolic kappa derivation: F(xi,delta) - R_target_sym", ...]` | F(xi,delta) = R_target | yes (symbolic) |
+| B11 | math | 139-143 | `expectTrue["M_mix <= G(xi_req,delta)", mMixGood <= gSample, ...]` with `mMixGood = gSample - 1/10` | feasibility | **no — tautological** |
+| B12 | math | 144-148 | `expectTrue["inadmissible sample: support deficit blocks the branch", mMixBad > gSample, ...]` with `mMixBad = gSample + 1/10` | feasibility (deficit) | **no — tautological** |
+| B13 | math | 152-160 | `expectZero["near-onset c0 = 0" / "c1 = 1" / "c2 = -2/(9 delta)", ...]` | near-onset expansion | yes (independently reads coefficients via `Coefficient[Series[...], ...]`) |
 
 ## Findings
 
 ### F1 — tautological_check
 
-**Severity:** high
+**Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:57,72`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:50,59`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:96-99,140-149`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:108-109,139-148`
 
 **What's wrong:**
-In the SymPy script line 57 defines
-`R_target = sp.simplify(NQ * A / (beta0 * (sp.Rational(8) / sp.pi**2)))`
-which simplifies to `pi**2 * A * NQ / (8 * beta0)`. Line 72 then asserts
-`expect_zero("R_target - pi^2 A NQ/(8 beta0)", R_target - sp.pi**2 * A * NQ / (8 * beta0))`.
-This is `X - X = 0` for the same expression. The assertion cannot fail no matter what the physics is.
+The "admissible / inadmissible M_mix witness" checks for the paper-card feasibility condition `M_mix <= G(xi_req,delta)` are constructed so that they cannot fail regardless of what `G_sample` is. In sympy:
 
-The Mathematica script mirrors this: line 50 defines `rTarget = FullSimplify[NQ*A/(beta0*(8/Pi^2)), ...]`, line 59 asserts `rTarget - Pi^2*A*NQ/(8*beta0) == 0`.
+```python
+Mmix_good = sp.simplify(G_sample - sp.Rational(1, 10))   # line 96
+Mmix_bad  = sp.simplify(G_sample + sp.Rational(1, 10))   # line 97
+...
+expect_true(
+    "admissible sample: M_mix <= G(xi_req,delta)",
+    bool(Mmix_good <= G_sample),     # (x - 1/10) <= x  is always True
+    f"M_mix={Mmix_good}, G={G_sample}",
+)
+expect_true(
+    "inadmissible sample: support deficit blocks the branch",
+    bool(Mmix_bad > G_sample),       # (x + 1/10) > x   is always True
+    f"M_mix={Mmix_bad}, G={G_sample}",
+)
+```
+
+The Mathematica script mirrors this exactly (`mMixGood = gSample - 1/10`, `mMixBad = gSample + 1/10`, then tests `mMixGood <= gSample` and `mMixBad > gSample` at lines 108-109, 139-148). Both inequalities are arithmetic identities on the rationals: `x - 1/10 <= x` and `x + 1/10 > x` are unconditionally true. They never test the physical feasibility condition `M_mix <= G(xi_req,delta)` because `M_mix` is being *defined* relative to `G_sample` rather than constructed independently (e.g. from a chosen `Chi, Omega_U, Delta_0, A` quartet) and then compared.
+
+The output transcripts dutifully report `M_mix=53/145, G=27/58` and `M_mix=82/145, G=27/58` — and yes, those numerical inequalities happen to be correct, but the test code did not have to verify them: it pre-shifted them by ±1/10 from `G_sample` itself.
 
 **Why this matters:**
-The script's docstring identifies the `R_target` relation as one of the structural quantities being audited. A line that re-states a definition as a "check" provides zero verification of the physics. It is misleading evidence of coverage.
+This is the final-admissibility leg of the paper's Output (eq. `app-stage036-final-test`). The paper card lists the inequality `M_mix <= G(xi_req,delta)` as one of three load-bearing components of the admissibility test, and a reader would reasonably believe these two `expect_true` calls demonstrate (a) that the inequality holds for a physically admissible parameter pick and (b) that it fails when the support gap is overdrawn. They do neither. If someone later flipped the sign in the definition of `G` (or of `M_mix`), these checks would still pass — they don't even touch `M_mix_expr`. The v1 audit missed this entirely; the v2 paper-grounded read caught it because the paper card frames the inequality as the third leg of the admissibility test, which forced re-examination of the witness.
 
 **Required change:**
-Remove the tautological line 72 (SymPy) and line 59 (Mathematica). The `R_target` symbol still appears in the printed output for context. If the script wants a non-trivial test of R_target, that role is already filled by the kappa-based derivation at A8/B11 (lines 104-120 / 102-114).
+Construct the sample `M_mix` from independent microscopic data, not from `G_sample`. At `(delta=1, xi=1/2)`, `G_sample = 27/58 ≈ 0.4655`. Provide a concrete admissible witness by choosing `(Chi, Omega_U, Delta_0, A) = (1, 1, 1, 29)`: then `M_mix_expr.subs(...) = 8/(29 pi^2) ≈ 0.0280`, well below `G_sample`. Provide a concrete inadmissible witness by choosing `(Chi, Omega_U, Delta_0, A) = (1, 1, 1, 1)`: then `M_mix_expr.subs(...) = 8/pi^2 ≈ 0.8106`, above `G_sample`. Numerical-evaluate both with `sp.N(...)` / `N[...]` and assert the inequality.
+
+Concretely (sympy), replace lines 96-99 and lines 140-149 with:
+
+```python
+Mmix_admissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 29}))
+Mmix_inadmissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 1}))
+G_sample_n = sp.N(G_sample)
+expect_true(
+    "admissible sample: M_mix < G(xi_req,delta)",
+    bool(Mmix_admissible < G_sample_n),
+    f"M_mix={Mmix_admissible}, G={G_sample_n}",
+)
+expect_true(
+    "inadmissible sample: support deficit blocks the branch",
+    bool(Mmix_inadmissible > G_sample_n),
+    f"M_mix={Mmix_inadmissible}, G={G_sample_n}",
+)
+```
+
+Mirror the same construction in Mathematica (lines 108-109, 139-148): replace `mMixGood = gSample - 1/10` and `mMixBad = gSample + 1/10` with `mMixAdmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 29}]` and `mMixInadmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 1}]`, and the `expectTrue` calls accordingly with `gSampleN = N[gSample]`. Both witnesses must be derived from `M_mix_expr / mMix` evaluated at independent parameter tuples — not by shifting `G_sample`.
 
 **Verification:**
-On re-run, the lines `R_target - pi^2 A NQ/(8 beta0) = 0` and `PASS: R_target - Pi^2 A NQ/(8 beta0)` must be absent from the saved outputs. All remaining assertions must still pass.
+After the fix, the script's printed `M_mix=` and `G=` values for the two cases must no longer be `G_sample ± 1/10` (i.e. `53/145` and `82/145`) but instead be independently computed numbers approximately equal to `0.0280` (admissible) and `0.8106` (inadmissible). The verifier should confirm both lines now show `M_mix` numerators that are not arithmetically derived from `G_sample`.
 
 ### F2 — tautological_check
 
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:54,56,60-61,68-71,88-91`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:41-43,49,51,60-63,90-93`
-
-**What's wrong:**
-The SymPy script defines, at lines 53-61,
-`F = (9*delta+11*xi)**4 / (81*(1-xi)*(9*delta**2+18*delta*xi+11*xi**2)**2)`,
-`G = 9*xi*(xi+delta)/(9*delta+11*xi)`,
-`alpha_mix = Chi**2/(OmegaU**2*Delta0)`,
-`Mmix_expr = 8*alpha_mix/(pi**2*A)`,
-`a_req = 9*pi**2*A*xi*(xi+delta)/(8*(9*delta+11*xi))`,
-`gBreq_sq_over_varpi2 = a_req - alpha_mix`.
-
-Inspection: `(pi**2*A/8)*G = (pi**2*A/8)*9*xi*(xi+delta)/(9*delta+11*xi) = a_req` and `(pi**2*A/8)*Mmix_expr = alpha_mix` follow from the literal closed forms used, with no derivation step in between. Therefore the assertion at lines 68-71,
-`gBreq_sq_over_varpi2 - (pi**2*A/8)*(G - Mmix_expr) = (a_req - alpha_mix) - (a_req - alpha_mix) = 0`,
-is algebraically guaranteed by the way the symbols were introduced; it does not test the claimed "exact factorization of the required support loading through G - M_mix" (docstring item 3) — it restates how the symbols were typed in.
-
-Lines 88-91 re-apply the same identity at `xi -> xi_req`; this is a syntactic substitution and provides no additional information.
-
-The Mathematica script mirrors this construction at lines 41-43 (`alphaReq` written explicitly as `9*Pi^2*A*xi*(xi+delta)/(8*(9*delta+11*xi))`, `gTarget` as `9*xi*(xi+delta)/(9*delta+11*xi)`), and the corresponding "checks" at lines 57, 60-63, 90-93 are tautological in exactly the same way.
-
-**Why this matters:**
-The "exact factorization through G - M_mix" is the central support-inequality content of this checkpoint stage. If it is only `X - X = 0` after both sides were written in the same form, then the script is not actually verifying that factorization — it is asserting that a definition equals itself. A future change to either `a_req` or `G`'s closed form would not be caught by this assertion unless the change broke the textual match; small algebraic errors propagated into the closed-form template would pass silently.
-
-**Required change:**
-In the SymPy script, derive `a_req` (or equivalently `(pi**2*A/8)*G`) symbolically from a different starting point so the equality is no longer by construction. The script already has the kappa-based derivation machinery for the host sample (lines 104-116); generalize it symbolically. Concretely, introduce symbolic `A_sym, beta0_sym, xi, delta` and define
-`x_sym = A_sym*xi`, `deltaK_sym = A_sym*delta`,
-`N_sym = beta0_sym*(KAPPA0_SQ*(x_sym+deltaK_sym) + KAPPA1_SQ*x_sym)**4 / (KAPPA0_SQ*(A_sym-x_sym)*(KAPPA0_SQ*(x_sym+deltaK_sym)**2 + KAPPA1_SQ*x_sym**2)**2)`
-`R_target_sym = N_sym*A_sym/(beta0_sym*KAPPA0_SQ)`
-and then assert `simplify(R_target_sym - F) == 0`. This is a non-trivial identity that depends on the specific values `KAPPA0_SQ = 8/pi**2`, `KAPPA1_SQ = 16/(9*pi**2)` being correct. With that anchor in place, the lines 68-71 and 88-91 assertions, which mechanically follow from the closed forms once F (and hence G) is anchored to the kappa expansion, can remain as bookkeeping confirmations of the factorization.
-
-In the Mathematica script, add the analogous symbolic derivation (do not copy the SymPy variable names — derive it independently from the same physical premises).
-
-**Verification:**
-On re-run, the SymPy output must contain a new assertion line of the form `R_target_sym - F = 0` that passes, and the Mathematica output must contain a corresponding `RTargetSym - fTarget == 0` PASS line.
-
-### F3 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:79,83`
-
-**What's wrong:**
-Line 79 defines
-`alphaCrit = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), ...]`
-and line 83 asserts
-`expectZero["(Pi^2 A / 8) G_max - alpha_crit", (Pi^2*A/8)*gMaxTarget - alphaCrit]`.
-Since `gMaxTarget = 9*(1+delta)/(9*delta+11)` (line 78), `(Pi^2*A/8)*gMaxTarget = 9*Pi^2*A*(1+delta)/(8*(9*delta+11)) = alphaCrit` is `X - X = 0`. The assertion cannot fail.
-
-**Why this matters:**
-Same pattern as F1: a defined-by-definition relation is being presented as a verification. The Mathematica script claims an extra check that the SymPy script doesn't have, but the extra check is tautological.
-
-**Required change:**
-Delete lines 79 and 83 of the Mathematica script. The `G_max - closed form` assertion at line 82 already pins down `gMaxTarget` symbolically; there is no additional content in restating `(Pi^2*A/8)*gMaxTarget == alphaCrit` when `alphaCrit` is defined as exactly that.
-
-**Verification:**
-On re-run, the lines `(Pi^2 A / 8) G_max - alpha_crit = 0` and `PASS: (Pi^2 A / 8) G_max - alpha_crit` must be absent from the saved Mathematica output.
-
-### F4 — tautological_check
-
 **Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:126`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:120`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:60-71`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:87-90`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:41-62`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:99-102`
 
 **What's wrong:**
-SymPy line 126:
-`expect_true("inadmissible sample: R_target < 1 blocks the branch", bool(sp.Rational(9, 10) < 1), "R_target=9/10")`.
-The boolean argument is `bool(Rational(9,10) < 1)`, i.e., the literal `True`. No `R_target` is computed from any parameter setting; the script simply asserts `9/10 < 1`. The label "inadmissible sample" implies a parameter choice was made and produced an inadmissible R_target, but no such parameter choice exists in the script — only the bare number `9/10` is compared to `1`.
+The "g_B,req^2/varpi^2 - (pi^2 A/8)(G - M_mix) == 0" check and its `xi -> xi_req` echo are identically zero by construction. In sympy:
 
-Mathematica line 120 mirrors the issue: `expectTrue["inadmissible sample: R_target < 1 blocks the branch", 9/10 < 1, "R_target=9/10"]`.
-
-**Why this matters:**
-This assertion provides no test of the inadmissibility branch. A future change that broke R_target's actual formula would not flip this assertion. The label is misleading evidence of coverage.
-
-**Required change:**
-Either (a) remove the assertion (preferred, since the admissibility branch is already exercised at line 99 / 101 with a real F_sample value), or (b) construct an actual sample where `F(xi_bad, delta_bad) < 1` is computed from the closed form for some choice of `xi_bad, delta_bad` for which the inequality holds, and assert that result.
-
-Apply option (a): delete line 126 in the SymPy script and line 120 in the Mathematica script.
-
-**Verification:**
-On re-run, the lines `inadmissible sample: R_target < 1 blocks the branch = R_target=9/10` and the corresponding `PASS:` line must be absent from both saved outputs.
-
-### F5 — mathematica_transliteration
-
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl` (entire script)
-
-**What's wrong:**
-The Mathematica script is structurally a port of the SymPy script: same variables in the same order, same closed-form targets typed in directly, same numeric host sample, same `M_mix_good = G - 1/10` / `M_mix_bad = G + 1/10` witness strategy. Examples of corresponding sections:
-
-(a) SymPy line 54: `G = sp.simplify(9 * xi * (xi + delta) / (9 * delta + 11 * xi))`.
-    Mathematica line 43: `gTarget = FullSimplify[9*xi*(xi + delta)/(9*delta + 11*xi), ...]`.
-    The Mathematica closed form is written down identically; it is not derived from any prior expression.
-
-(b) SymPy lines 75-76:
-    `dG_target = sp.simplify(9 * (9 * delta**2 + 18 * delta * xi + 11 * xi**2) / (9 * delta + 11 * xi) ** 2)`.
-    Mathematica lines 66-69:
-    `dGTarget = FullSimplify[9*(9*delta^2 + 18*delta*xi + 11*xi^2)/(9*delta + 11*xi)^2, ...]`.
-    Same closed form copied directly.
-
-(c) SymPy lines 104-115 (host kappa derivation: A_host=3, beta0_host=5, x_host=A*xi_sample, deltaK_host=A*delta_sample, N_host built from KAPPA0_SQ, KAPPA1_SQ).
-    Mathematica lines 102-110: aHost=3, beta0Host=5, xHost=aHost*xiSample, deltaKHost=aHost*deltaSample, nHost built from kappa0Sq, kappa1Sq. Identical variable choreography with renamed identifiers.
-
-(d) SymPy line 134: `G_series = sp.series(G, xi, 0, 3).removeO()`. Mathematica line 128: `gSeries = FullSimplify[Normal[Series[gTarget, {xi, 0, 2}]], ...]`. Both compute the same Taylor expansion and compare to the same hand-written target `xi - 2*xi^2/(9*delta)`.
-
-None of the Mathematica "closed forms" (`gTarget`, `dGTarget`, `gMaxTarget`, `gSeriesTarget`, `alphaCrit`) are derived inside the Mathematica script; they are written down by hand, matching SymPy's hand-written targets. The second-engine policy requires the engines to derive results independently from the physical premises so that an algebraic error or convention mismatch in one engine is exposed by the other.
-
-**Why this matters:**
-A transliteration cannot catch errors in the closed forms themselves. If the SymPy script's `dG_target` were wrong (e.g., a coefficient flipped), the Mathematica script would write down the same wrong target and "verify" it. The two engines must arrive at the same closed form via different algebraic routes, not by typing the same target into both.
-
-**Required change:**
-Restructure the Mathematica script so each closed-form target is *derived* in Mathematica, not declared. Specifically, in the .wl script:
-
-1. Replace the explicit declaration of `dGTarget` at lines 66-69 with `dGTarget = FullSimplify[D[gTarget, xi]*((9*delta + 11*xi)^2/9), Assumptions -> $Assumptions]` (or another Mathematica-native simplification path), and assert that `9*dGTarget/(9*delta+11*xi)^2 == dG` after the derivative step. This forces Mathematica to perform the differentiation and algebraic factorization on its own.
-
-2. Replace the explicit declaration of `gMaxTarget` at line 78 with the Mathematica limit form already computed at line 76, i.e., set `gMaxTarget = gMax` (where `gMax` is the symbolic Limit), then verify `gMax == 9*(1 + delta)/(9*delta + 11)` by `FullSimplify[gMax - 9*(1+delta)/(9*delta+11), Assumptions -> delta > 0] == 0`. This way the closed form is the side being tested, not the side being declared.
-
-3. Replace `gSeriesTarget = FullSimplify[xi - 2*xi^2/(9*delta), ...]` at line 129 with a derivation: expand `gTarget` symbolically by series first and assert the result equals `xi - 2*xi^2/(9*delta)` via `Coefficient[gSeries, xi, k]` checks for k=0,1,2 against the expected coefficients `{0, 1, -2/(9*delta)}` extracted via `Solve` or by direct substitution into a polynomial-fitting expression. The "target" must not be declared up front; the coefficients must be read out of `gSeries`.
-
-4. For the kappa-based numeric witness (lines 102-114), substitute the Mathematica-native `Resolve` / `Reduce` framework or rely on `FullSimplify` over `Rationals` so that the witness computation is structured differently from SymPy's `sp.simplify(...)` chain. At minimum, do not rename SymPy identifiers character-for-character.
-
-**Verification:**
-After Codex's edits, the Mathematica script's output must still pass, but the structural diff must show derived (not declared) targets. The verifier will spot-check that `dGTarget`, `gMaxTarget`, and `gSeriesTarget` no longer appear as up-front closed-form declarations matching SymPy's.
-
-### F6 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:104-120`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:102-114`
-
-**What's wrong:**
-The kappa-based derivation of R_target (the "stronger middle-conjunct witness" at SymPy lines 104-120 and Mathematica lines 102-114) only checks the identity at a single numeric sample (`A_host=3, beta0_host=5, xi_sample=1/2, delta_sample=1`). The relation `F(xi,delta) == R_target_sym(xi,delta,A,beta0)` holds symbolically for all positive A, beta0, all delta>0, all 0<=xi<1; restricting the check to one sample means an error in any of the coefficients `11, 9, 18` inside F or N that happens to cancel at (1/2, 1) would not be caught.
-
-For a checkpoint stage with stated "exact" claims, the witness should be symbolic across (xi, delta, A, beta0). The infrastructure (symbol declarations, kappa values) is already in place — only the symbolic instantiation step is missing.
-
-**Why this matters:**
-F is the load-line function whose ratio against `1` controls admissibility at the support-feasibility frontier. A symbolic identity `F = R_target_sym` would close the docstring's "Exact dimensionless support-feasibility function" claim. As written, the script verifies only the closed form `9*xi*(xi+delta)/(9*delta+11*xi)` of G — F is taken on faith except at one sample.
-
-**Required change:**
-Add a symbolic version of the host computation, using already-declared symbolic `A` (line 46) and a newly declared symbolic `beta0`. Concretely, after line 120 of the SymPy script, add:
-
-```
-A_sym = sp.symbols("A_sym", positive=True, real=True)
-beta0_sym = sp.symbols("beta0_sym", positive=True, real=True)
-x_sym = A_sym * xi
-deltaK_sym = A_sym * delta
-N_sym = (
-    beta0_sym
-    * (KAPPA0_SQ * (x_sym + deltaK_sym) + KAPPA1_SQ * x_sym) ** 4
-    / (
-        KAPPA0_SQ
-        * (A_sym - x_sym)
-        * (KAPPA0_SQ * (x_sym + deltaK_sym) ** 2 + KAPPA1_SQ * x_sym ** 2) ** 2
-    )
+```python
+a_req = sp.simplify(9 * sp.pi**2 * A * xi * (xi + delta) / (8 * (9 * delta + 11 * xi)))   # line 60
+gBreq_sq_over_varpi2 = sp.simplify(a_req - alpha_mix)                                      # line 61
+...
+expect_zero(
+    "g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",
+    gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),                          # line 68-71
 )
-R_target_sym = sp.simplify(N_sym * A_sym / (beta0_sym * KAPPA0_SQ))
-expect_zero("symbolic kappa derivation: F(xi,delta) - R_target_sym", sp.simplify(F - R_target_sym))
 ```
 
-Add the analogous block in the Mathematica script after line 114, using independent Mathematica simplification (`FullSimplify[Together[Expand[fTarget - rTargetSym]], Assumptions -> ...]`).
+Substituting the literals: `gBreq_sq_over_varpi2 = a_req - alpha_mix`, `Mmix_expr = 8 alpha_mix/(pi^2 A)`, so the residual is
+`(a_req - alpha_mix) - (pi^2 A/8) G + alpha_mix = a_req - (pi^2 A/8) G`.
+With `G = 9 xi(xi+delta)/(9 delta+11 xi)` and `a_req = 9 pi^2 A xi(xi+delta)/(8(9 delta+11 xi))`, the residual is identically zero — both quantities are independent hardcoded literals constructed to match. The check verifies the algebraic identity `G == 8 a_req/(pi^2 A)`, which is the same form a reader would write down by inspection. The line-87 `expect_zero` repeats the same identity with `xi -> xi_req`. Same issue in the Mathematica script (lines 41-62 set `alphaReq`, `g`, `gBReqSqOverVarpi2` from the same literals; lines 99-102 mirror the substitution).
+
+**Why this matters:**
+This is the only check that exercises the paper's defining equation `g_{B,req}^2/varpi^2 = (pi^2 A/8)(G - M_mix)`. Because both sides are hardcoded closed forms, the check confirms only that the author copied the same formula twice consistently. A genuine check would derive one side from the Stage-035 source (e.g. start from the split `alpha_req = alpha_mix + g_{B,req}^2/varpi^2` and verify the resulting `g_{B,req}^2/varpi^2` reduces to the boxed form when `alpha_req` is the Stage-035 closed form), not just assert `LHS == LHS`. This is less critical than F1 because the algebra is short and visually checkable, and because the kappa-derived F→R_target_sym chain (sympy:123-139, math:124-138) provides an independent anchor for `F` (and hence indirectly for `G = 8 alpha_req/(pi^2 A)` when `alpha_req` is read out of `F`'s structure). But the local lines 68-71 / 60-63 and 87-90 / 99-102 do not, by themselves, prove the factorization.
+
+**Required change:**
+Minimal version (preferred): add an inline comment above each of the four assertions clarifying that the check is a definitional self-consistency on the hardcoded forms, and pointing the reader to A8 / B10 (the symbolic kappa derivation) for the genuine anchor of the closed form. Specifically:
+
+- sympy, before line 68: add comment `# Definitional identity: a_req and G are both hardcoded closed forms,`
+  `# so this just confirms a_req = (pi^2 A / 8) G. The genuine anchor`
+  `# for F (and hence for the closed form of G) is the symbolic kappa derivation`
+  `# below at "symbolic kappa derivation: F(xi,delta) - R_target_sym".`
+- sympy, before line 87: add comment `# Same definitional identity, with xi -> xi_req.`
+- mathematica, before line 59: analogous comment.
+- mathematica, before line 99: analogous comment.
+
+Stronger version (optional, not required for this audit pass): express `g_{B,req}^2/varpi^2` symbolically as a free `alpha_req_sym - alpha_mix` (without baking the Stage-035 closed form into `alpha_req_sym`), substitute the Stage-035 closed form at the end, and confirm the boxed factorization emerges. This converts the check from a definitional identity into a real derivation step, but it is a structural rewrite rather than a one-line patch.
 
 **Verification:**
-On re-run, both outputs must contain a new PASS line of the form `symbolic kappa derivation: F(xi,delta) - R_target_sym = 0` (SymPy) / `PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym` (Mathematica).
+For the minimal version: comments are present above the four assertions explicitly flagging them as definitional self-consistency. The printed residuals continue to be 0 in both saved outputs. The verifier confirms the comments landed at the named lines and the scripts still exit 0.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is a transliteration of the SymPy script. Closed-form targets (`gTarget`, `dGTarget`, `gMaxTarget`, `gSeriesTarget`, `alphaCrit`) are written down by hand in identical form to the SymPy script rather than being derived inside Mathematica. The host sample (A=3, beta0=5, xi=1/2, delta=1) is numerically identical with renamed identifiers. See F5 for quoted excerpts. The Mathematica script's unique line (the `alphaCrit` check) is itself tautological; see F3.
+The Mathematica script is **partially independent, partially a transliteration**. The arithmetic core (`alphaReq`, `g`, `fTarget`, `alphaMix`, `mMix`, `rTarget`, the host-sample point `(delta=1, xi=1/2, A=3, beta0=5)`, the same `kappa_0^2 = 8/Pi^2`, `kappa_1^2 = 16/(9 Pi^2)`, the symbolic kappa derivation at lines 124-138) is a direct line-by-line port of the SymPy script with renamed identifiers — same variable choreography, same expressions, same chosen sample. The two engines clearly share an author template.
+
+However, Mathematica also performs three genuinely independent moves that the SymPy script does not:
+1. Lines 68-75 derive `dG/dxi` and multiply through by `(9 delta + 11 xi)^2/9` to extract the polynomial `11 xi^2 + 18 delta xi + 9 delta^2`, then verify it matches term by term — a different algebraic route than sympy's direct `dG - dG_target` simplify.
+2. Lines 78-81 compute `Discriminant[11 xi^2 + 18 delta xi + 9 delta^2, xi]` and confirm `disc = -72 delta^2`, giving an algebraic-discriminant argument for positivity that sympy does not perform.
+3. Lines 152-160 use `Coefficient[Series[gTarget, {xi, 0, 2}], xi, k]` to *extract* the near-onset coefficients `c0, c1, c2` and independently check each against `0, 1, -2/(9 delta)` — sympy instead does a single `series` minus target comparison.
+
+These three independent contributions clear the transliteration bar at the borderline (this restructuring is the legacy of the v1 F5 fix that was already applied — see the v1 directive). I do not file a `mathematica_transliteration` finding, but I note the structural overlap on the core algebra so downstream readers do not over-credit the Mathematica engine as a fully independent re-derivation. The two together are best read as a single algebraic derivation cross-checked by two algebra engines, which is acceptable for this stage's content (no nontrivial branch choices, no integration with multiple sign conventions).
 
 ## Engine cross-check
 
-Both engines produce identical printed output:
+Both engines produce identical results at every shared check:
 
-- `G(xi,delta) = 9*xi*(delta + xi)/(9*delta + 11*xi)` (SymPy) / `(9*xi*(delta + xi))/(9*delta + 11*xi)` (Mathematica) — agree.
-- `F(xi,delta) = -(9*delta + 11*xi)**4 / (81*(xi-1)*(...)^2)` (SymPy) / `-1/81*(9*delta + 11*xi)^4/((-1+xi)*(...)^2)` (Mathematica) — algebraically identical (factor of `-1/(xi-1)` vs `-1/(-1+xi)`).
-- Sample values `M_mix=53/145, G=27/58, R_target_host=1414562/558009` agree.
-- All assertions pass in both engines.
+| Check | sympy output | Mathematica output |
+|---|---|---|
+| `G(xi,delta)` | `9*xi*(delta + xi)/(9*delta + 11*xi)` | `(9*xi*(delta + xi))/(9*delta + 11*xi)` |
+| `F(xi,delta)` | `-(9*delta + 11*xi)**4/(81*(xi - 1)*(...)**2)` | `-1/81*(9*delta + 11*xi)^4/((-1 + xi)*(...)^2)` |
+| `M_mix` | `8*Chi**2/(pi**2*A*Delta_0*Omega_U**2)` | `(8*Chi^2)/(A*Delta0*OmegaU^2*Pi^2)` |
+| `R_target` | `pi**2*A*NQ/(8*beta0)` | `(A*NQ*Pi^2)/(8*beta0)` |
+| `dG/dxi` residual | `0` | `0` |
+| `dG/dxi` polynomial (math only) | n/a | `9*delta^2 + 18*delta*xi + 11*xi^2` |
+| `Discriminant` (math only) | n/a | `-72*delta^2` |
+| `G(0,delta)` | `0` | `0` |
+| `G_max(delta)` | `9*(delta + 1)/(9*delta + 11)` | `(9*(1 + delta))/(11 + 9*delta)` |
+| `R_target` sample | `1414562/558009` | `1414562/558009` |
+| `F - R_target_host` (sample) | `0` | `0` |
+| `F - R_target_sym` (symbolic kappa) | `0` | `0` |
+| `M_mix sample` (admissible) | `M_mix=53/145, G=27/58` | `M_mix=53/145, G=27/58` |
+| `M_mix sample` (inadmissible) | `M_mix=82/145, G=27/58` | `M_mix=82/145, G=27/58` |
+| Near-onset series / coeffs | `xi - 2*xi**2/(9*delta)` | `c0=0, c1=1, c2=-2/(9*delta)` |
 
-No engine disagreement. However, agreement here means little, given that the Mathematica script is a transliteration (F5) — the two engines were not run independently against the same physical premises.
+`engines_agree: true`. The agreement on the M_mix sample is also why F1 is not auto-caught by the engine cross-check: both engines compute the *same tautological inequality* and both report PASS, but neither tests the physical inequality.
+
+Output freshness: sympy `.py` mtime is 2026-05-21 17:37, output `.txt` mtime is 17:40 — fresh. Mathematica `.wl` mtime 17:37, output `.txt` mtime 17:40 — fresh. No `stale_output` finding.
 
 ## Verdict justification
 
-The script holds up algebraically: the differentiation, limit, and series checks (A3, A5, A12; B5, B7, B15) genuinely exercise computer-algebra machinery, and the kappa-derived host sample (A8/B11) is a real numeric witness for `F = R_target` at a non-trivial parameter point. But several of the headline assertions — `R_target - pi^2 A NQ/(8 beta0)`, `g_B,req^2/varpi^2 - (pi^2 A/8)(G - M_mix)`, `(Pi^2 A/8) G_max - alphaCrit` in Mathematica, and the "inadmissible sample" `9/10 < 1` — are guaranteed by how the symbols were defined and provide no test. The Mathematica script is structurally a port of the SymPy script and so cannot catch errors in the closed-form targets. Findings F1-F4 each remove a hollow assertion; F5 forces the second engine to be a genuine cross-check; F6 closes the docstring's "exact" claim with a symbolic kappa derivation. No `UNFIXABLE` or `CRITICAL_DOWNSTREAM` is warranted — the fixes are local edits to this stage's scripts that strengthen rather than invalidate the verified content.
+`findings`, not `clean`. The paper-side content is faithfully covered: all six numbered deliverables of the Output line (M_mix, G, g_{B,req} factorization, dG/dxi, G_max, near-onset expansion, final test) have script-side checks, and most of them are genuine — the dG/dxi check (especially Mathematica's polynomial and discriminant route), the endpoint and limit, the near-onset series (Mathematica reads coefficients independently), the symbolic kappa-based re-derivation of F (`F == R_target_sym` symbolically in `(xi, delta, A_sym, beta0_sym)`), and the host-sample numeric `F - R_target_host = 0` all hold up under attack. The `R_target >= 1` check is real (single sample at `F = 1414562/558009 ≈ 2.535`). I verified by hand that the symbolic kappa derivation reduces to `F` when `kappa_0^2 = 8/pi^2`, `kappa_1^2 = (2/9) kappa_0^2`, so that assertion is a genuine non-trivial identity.
+
+What does not hold up is the third leg of the final admissibility test (`M_mix <= G(xi_req,delta)`): both engines test arithmetic identities of the form `(G_sample - 1/10) <= G_sample` and `(G_sample + 1/10) > G_sample`, which can never fail (F1). The `g_{B,req}^2/varpi^2` factorization check is also definitional in both engines (both sides hardcoded closed forms), recorded as F2 at low severity — the kappa-derived chain indirectly anchors the closed form, and the algebra is one line and visible, so a comment is sufficient.
+
+Paper alignment is `aligned`. No `paper_misalignment`. The verdict is `findings` with `stop_cold: null` — Codex can fix both findings mechanically by (F1) replacing the witness construction with parameter-derived `M_mix` evaluations and (F2) adding clarifying comments above the four definitional assertions.
 
 ## Self-test notes
 
-Walked through F2/F6's proposed symbolic kappa derivation by hand: with `KAPPA0_SQ = 8/pi^2`, `KAPPA1_SQ = 16/(9*pi^2) = (2/9)*KAPPA0_SQ`, `x = A*xi`, `deltaK = A*delta`, the inner-numerator expression `KAPPA0_SQ*(x+deltaK) + KAPPA1_SQ*x = KAPPA0_SQ*((11/9)*x + deltaK) = (KAPPA0_SQ*A/9)*(11*xi + 9*delta)`, and the inner-denominator expression `KAPPA0_SQ*(x+deltaK)^2 + KAPPA1_SQ*x^2 = (KAPPA0_SQ*A^2/9)*(9*delta^2 + 18*delta*xi + 11*xi^2)`. Substituting into `N*A/(beta0*KAPPA0_SQ)` collapses to `(9*delta+11*xi)^4 / (81*(1-xi)*(9*delta^2+18*delta*xi+11*xi^2)^2) = F`, confirming the assertion `F - R_target_sym == 0` is a non-trivial identity that will simplify to 0 only if the kappa coefficients are correct. Verified the parity/symmetry of the series check (F's denominator is symmetric in delta, even under `delta -> delta`; the series expansion is in `xi`, not on a symmetric domain — no parity trap). Confirmed `A_sym` and `beta0_sym` actually appear in N_sym (not just as wrappers around an identity), so they will cancel in `R_target_sym = N_sym*A_sym/(beta0_sym*KAPPA0_SQ)` only because they are factored out at construction — verified by hand that `A_sym` and `beta0_sym` enter and leave the simplified expression. Path specifications: directive targets the existing `.py` in `scripts/` and `.wl` in `mathematica/`; no new files required.
+- Variable independence: in the F1 fix, `M_mix` for the admissible/inadmissible witnesses must be constructed from independent symbols `(Chi, Omega_U, Delta_0, A)` so the resulting numerical value is not algebraically tied to `G_sample`. I checked the proposed numerical witnesses: `M_mix_adm = 8/(29 pi^2) ≈ 0.0280`, `G_sample = 27/58 ≈ 0.4655` — admissible. `M_mix_inadm = 8/pi^2 ≈ 0.8106` — exceeds `G_sample`. The two witnesses straddle `G_sample` non-trivially, and the choice `(Chi=1, OmegaU=1, Delta0=1)` is consistent with the script's `Chi, OmegaU, Delta0 > 0` assumptions.
+- Symmetry/parity: no integrals on unbounded domains; n/a.
+- Trivial-case pre-check: F1's proposed witnesses give concrete inequalities (0.0280 < 0.4655 < 0.8106) that are non-vacuous; F2's required change is comment-only, so no trivial case applies.
+- Path specifications: no missing scripts; both `.py` (scripts/) and `.wl` (mathematica/) already exist at the correct directories.
+- Paper round-trip: F1 fix replaces the witness arithmetic with independent `M_mix` evaluations; the paper card does not state numeric witness values, so there is no risk of introducing a new paper_misalignment. F2 fix is comment-only; no risk.

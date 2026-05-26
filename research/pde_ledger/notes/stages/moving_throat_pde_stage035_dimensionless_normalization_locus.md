@@ -83,7 +83,7 @@ One obtains
 
 `dF/dxi`
 `= (9 delta + 11 xi)^3`
-`  [ 81 delta^3 + 72 delta^2 + 206 delta^2 xi + 297 delta xi^2 + 138 xi^3 ]`
+`  [ 81 delta^3 + 72 delta^2 + 189 delta^2 xi + 297 delta xi^2 + 121 xi^3 ]`
 `  / [ 81 (1 - xi)^2 (9 delta^2 + 18 delta xi + 11 xi^2)^3 ]`
 `> 0`.
 

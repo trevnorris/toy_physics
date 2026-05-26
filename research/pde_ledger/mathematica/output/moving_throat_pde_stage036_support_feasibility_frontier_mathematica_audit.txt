@@ -36,9 +36,9 @@ admissible sample: F(xi_req,delta) - R_target(host) = 0
 PASS: admissible sample: F(xi_req,delta) - R_target(host)
 symbolic kappa derivation: F(xi,delta) - R_target_sym = 0
 PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym
-admissible sample: M_mix <= G(xi_req,delta) = M_mix=53/145, G=27/58
-PASS: admissible sample: M_mix <= G(xi_req,delta)
-inadmissible sample: support deficit blocks the branch = M_mix=82/145, G=27/58
+admissible sample: M_mix < G(xi_req,delta) = M_mix=0.02795067134961042, G=0.46551724137931033
+PASS: admissible sample: M_mix < G(xi_req,delta)
+inadmissible sample: support deficit blocks the branch = M_mix=0.8105694691387022, G=0.46551724137931033
 PASS: inadmissible sample: support deficit blocks the branch
 
 ========================================================================================

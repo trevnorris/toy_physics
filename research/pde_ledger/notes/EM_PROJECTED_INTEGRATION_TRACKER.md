@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-25 (batch I.1 v2 close)
+Updated: 2026-05-26 (batch II.1 v2 close — entire range 001-036 now paper-aligned at v2 depth; the projected-EM core 004-021 was closed at batch I.2 v2; II.1 v2 closed the post-EM bookend 022-023 + 024-036)
 
 ## Scope decision
 

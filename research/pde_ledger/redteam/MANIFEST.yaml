@@ -866,12 +866,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.txt
         exists: true
         mtime: 1779404029
-    last_status_change: 2026-05-22 00:59:12-06:00
+    last_status_change: 2026-05-26 00:37:32-06:00
     codex_session: 019e4c8d-aeb9-7f13-8242-1e2c5788c981
     codex_log_paths:
     - redteam/codex_logs/024_iter1.txt
-    last_codex_run: 2026-05-21 16:03:30-06:00
+    - redteam/codex_logs/024_iter1.txt
+    last_codex_run: 2026-05-25 23:32:35-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:30:51-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:31:24-06:00
   '025':
     stage: 25
     stage_str: '025'
@@ -901,12 +906,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage025_minimal_isotropic_normalization_mathematica_audit.txt
         exists: true
         mtime: 1779404322
-    last_status_change: 2026-05-22 00:59:16-06:00
+    last_status_change: 2026-05-26 00:37:37-06:00
     codex_session: 019e4cbe-e99d-7fd0-a0e2-b94e89289ba6
     codex_log_paths:
     - redteam/codex_logs/025_iter1.txt
-    last_codex_run: 2026-05-21 16:58:25-06:00
+    - redteam/codex_logs/025_iter1.txt
+    last_codex_run: 2026-05-25 23:35:02-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:14:04-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:14:22-06:00
   '026':
     stage: 26
     stage_str: '026'
@@ -936,12 +946,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage026_concrete_axial_overlaps_mathematica_audit.txt
         exists: true
         mtime: 1779404526
-    last_status_change: 2026-05-22 00:59:20-06:00
+    last_status_change: 2026-05-26 00:37:42-06:00
     codex_session: 019e4cc3-5f11-7f43-90d0-be1c4507f93f
     codex_log_paths:
     - redteam/codex_logs/026_iter1.txt
-    last_codex_run: 2026-05-21 17:01:50-06:00
+    - redteam/codex_logs/026_iter1.txt
+    last_codex_run: 2026-05-25 23:36:49-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:14:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:14:47-06:00
   '027':
     stage: 27
     stage_str: '027'
@@ -971,7 +986,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage027_nonconstant_axial_family_mathematica_audit.txt
         exists: true
         mtime: 1779404655
-    last_status_change: 2026-05-22 00:59:24-06:00
+    last_status_change: 2026-05-25 22:58:15-06:00
     codex_session: 019e4cc6-7bf8-7bf1-ac6d-49c33e0a74c1
     codex_log_paths:
     - redteam/codex_logs/027_iter1.txt
@@ -1006,7 +1021,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.txt
         exists: true
         mtime: 1779404839
-    last_status_change: 2026-05-22 00:59:28-06:00
+    last_status_change: 2026-05-25 22:58:18-06:00
     codex_session: 019e4cc8-7762-7680-83f8-4ebe559a1b03
     codex_log_paths:
     - redteam/codex_logs/028_iter1.txt
@@ -1041,12 +1056,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.txt
         exists: true
         mtime: 1779405262
-    last_status_change: 2026-05-22 00:59:33-06:00
+    last_status_change: 2026-05-26 00:37:47-06:00
     codex_session: 019e4ccb-42a8-7c50-aa4d-6574da0c3e97
     codex_log_paths:
     - redteam/codex_logs/029_iter1.txt
-    last_codex_run: 2026-05-21 17:12:37-06:00
+    - redteam/codex_logs/029_iter1.txt
+    last_codex_run: 2026-05-25 23:39:28-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:16:16-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:17:22-06:00
   '030':
     stage: 30
     stage_str: '030'
@@ -1076,12 +1096,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage030_selected_mode_normalization_mathematica_audit.txt
         exists: true
         mtime: 1779405433
-    last_status_change: 2026-05-22 00:59:37-06:00
+    last_status_change: 2026-05-26 00:38:07-06:00
     codex_session: 019e4cd1-bacc-75a3-81bb-296b25f636ce
     codex_log_paths:
     - redteam/codex_logs/030_iter1.txt
-    last_codex_run: 2026-05-21 17:16:58-06:00
+    - redteam/codex_logs/030_iter1.txt
+    last_codex_run: 2026-05-25 23:41:27-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:17:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:18:08-06:00
   '031':
     stage: 31
     stage_str: '031'
@@ -1111,12 +1136,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.txt
         exists: true
         mtime: 1779405746
-    last_status_change: 2026-05-22 00:59:41-06:00
+    last_status_change: 2026-05-26 00:38:13-06:00
     codex_session: 019e4cd4-5658-75c0-a2fb-d84d16742be2
     codex_log_paths:
     - redteam/codex_logs/031_iter1.txt
-    last_codex_run: 2026-05-21 17:21:56-06:00
+    - redteam/codex_logs/031_iter1.txt
+    last_codex_run: 2026-05-25 23:44:14-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:18:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:18:52-06:00
   '032':
     stage: 32
     stage_str: '032'
@@ -1146,12 +1176,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage032_source_map_from_mode_integrals_mathematica_audit.txt
         exists: true
         mtime: 1779405965
-    last_status_change: 2026-05-22 00:59:45-06:00
+    last_status_change: 2026-05-26 00:38:19-06:00
     codex_session: 019e4cd9-1c24-7b10-b0c6-429a481cef25
     codex_log_paths:
     - redteam/codex_logs/032_iter1.txt
-    last_codex_run: 2026-05-21 17:25:44-06:00
+    - redteam/codex_logs/032_iter1.txt
+    last_codex_run: 2026-05-25 23:48:46-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:19:04-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:19:27-06:00
   '033':
     stage: 33
     stage_str: '033'
@@ -1181,12 +1216,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.txt
         exists: true
         mtime: 1779406310
-    last_status_change: 2026-05-22 00:59:50-06:00
+    last_status_change: 2026-05-26 00:38:25-06:00
     codex_session: 019e4cdc-74ba-7783-b647-0f4e9f87d52a
     codex_log_paths:
     - redteam/codex_logs/033_iter1.txt
-    last_codex_run: 2026-05-21 17:31:26-06:00
+    - redteam/codex_logs/033_iter1.txt
+    last_codex_run: 2026-05-25 23:50:48-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:19:44-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:20:01-06:00
   '034':
     stage: 34
     stage_str: '034'
@@ -1216,7 +1256,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage034_softening_depth_normal_form_mathematica_audit.txt
         exists: true
         mtime: 1779406430
-    last_status_change: 2026-05-22 00:59:54-06:00
+    last_status_change: 2026-05-25 22:58:21-06:00
     codex_session: 019e4ce1-b707-7e81-a027-4fb79b9f49ee
     codex_log_paths:
     - redteam/codex_logs/034_iter1.txt
@@ -1251,7 +1291,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.txt
         exists: true
         mtime: 1779406560
-    last_status_change: 2026-05-22 00:59:58-06:00
+    last_status_change: 2026-05-25 23:25:34-06:00
     codex_session: 019e4ce3-8b65-7941-b64c-bbf5ff53ea26
     codex_log_paths:
     - redteam/codex_logs/035_iter1.txt
@@ -1286,12 +1326,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.txt
         exists: true
         mtime: 1779406812
-    last_status_change: 2026-05-22 01:00:02-06:00
+    last_status_change: 2026-05-26 00:38:31-06:00
     codex_session: 019e4ce5-87ab-7131-810b-540d828d35ec
     codex_log_paths:
     - redteam/codex_logs/036_iter1.txt
-    last_codex_run: 2026-05-21 17:40:02-06:00
+    - redteam/codex_logs/036_iter1.txt
+    last_codex_run: 2026-05-25 23:52:39-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 00:20:10-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 00:20:20-06:00
   '037':
     stage: 37
     stage_str: '037'

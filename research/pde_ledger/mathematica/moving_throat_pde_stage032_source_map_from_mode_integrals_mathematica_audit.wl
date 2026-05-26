@@ -148,37 +148,44 @@ sMinusNat = FullSimplify[sMinus /. subsNat, Assumptions -> $Assumptions];
 mhatSq = FullSimplify[sMinusNat/kappa0^2, Assumptions -> $Assumptions];
 
 Print["mhat_-^2 = ", fmt[mhatSq]];
+
+(* Independent (v.e_-)^2 check: construct the loaded 2x2 wall operator
+   M(alpha0) = DiagonalMatrix[{a, a+dK}] - alpha0 * v.Transpose[v]
+   and verify that (v.e_-)^2 equals the closed-form sMinusNat. *)
+v2 = {{kappa0}, {kappa1}};
+mLoaded = DiagonalMatrix[{a, a + dK}] - alpha0 * (v2 . Transpose[v2]);
+{eigVals, eigVecs} = Eigensystem[mLoaded];
+(* Pick the lower-eigenvalue index by evaluating at a probe point. *)
+probeRule = {alpha0 -> 1, a -> 1, dK -> 1};
+eigValsProbe = eigVals /. probeRule;
+lowerIdx = First[Ordering[N[eigValsProbe]]];
+lamMinusIndep = FullSimplify[eigVals[[lowerIdx]], Assumptions -> $Assumptions];
+eMinusRaw = eigVecs[[lowerIdx]];
+eMinusNormSq = FullSimplify[eMinusRaw . eMinusRaw, Assumptions -> $Assumptions];
+eMinus = FullSimplify[eMinusRaw/Sqrt[eMinusNormSq], Assumptions -> $Assumptions];
+sCheck = FullSimplify[(Flatten[Transpose[v2]] . eMinus)^2, Assumptions -> $Assumptions];
+expectZero[
+  "s_check - s_minus_nat (independent (v.e_-)^2 construction)",
+  FullSimplify[sCheck - sMinusNat, Assumptions -> $Assumptions]
+];
+expectZero[
+  "lam_minus_sym - lambda_minus (independent eigenvalue construction); lam_minus_indep - lamMinus (independent eigenvalue construction)",
+  FullSimplify[lamMinusIndep - (lamMinus /. subsNat), Assumptions -> $Assumptions]
+];
 expectZero["mhat_-^2(alpha=0) - 1", (mhatSq /. alpha0 -> 0) - 1];
-
-(* Non-trivial identity on the natural-D/N kappa products. *)
-expectZero[
-  "delta_kappa^2 + 4*Kprod - sigma^2 (natural)",
-  (deltaKappa^2 + 4*kappaProd - sigmaSym^2) /. subsNat
-];
-
-(* Interior consistency: derive s_minus_nat via the simplified R form. *)
-rNat = Sqrt[dK^2 + 2*alpha0*dK*deltaKappa + alpha0^2*sigmaSym^2];
-sMinusNatSimplified = FullSimplify[
-  (sigmaSym + (dK*deltaKappa + alpha0*sigmaSym^2)/rNat)/2,
-  Assumptions -> $Assumptions
-];
-expectZero[
-  "s_minus_nat - s_minus_nat_simplified (interior identity)",
-  FullSimplify[sMinusNat - (sMinusNatSimplified /. subsNat), Assumptions -> $Assumptions]
-];
-expectZero[
-  "s_minus_nat at (alpha0=1, dK=1) interior point",
-  FullSimplify[
-    (sMinusNat /. {alpha0 -> 1, dK -> 1})
-      - ((sMinusNatSimplified /. {alpha0 -> 1, dK -> 1}) /. subsNat),
-    Assumptions -> $Assumptions
-  ]
-];
 expectZero["limit_{alpha->oo} mhat_-^2 - 11/9", Limit[mhatSq, alpha0 -> Infinity] - 11/9];
 
 banner["STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR"];
 p0MinusNat = FullSimplify[(beta0*sMinus/lamMinus) /. subsNat, Assumptions -> $Assumptions];
 nProdNat = FullSimplify[((sMinus/kappa0^2) /. subsNat)*p0MinusNat, Assumptions -> $Assumptions];
+nProdIndep = FullSimplify[
+  (sCheck/kappa0^2) * (beta0 * sCheck / lamMinusIndep),
+  Assumptions -> $Assumptions
+];
+expectZero[
+  "nProdNat - nProdIndep (independent eigenvector path)",
+  FullSimplify[nProdNat - nProdIndep, Assumptions -> $Assumptions]
+];
 
 (* (i) alpha0 = 0 must give beta0 * kappa0^2 / a. *)
 nProdAt0 = FullSimplify[nProdNat /. alpha0 -> 0, Assumptions -> $Assumptions];

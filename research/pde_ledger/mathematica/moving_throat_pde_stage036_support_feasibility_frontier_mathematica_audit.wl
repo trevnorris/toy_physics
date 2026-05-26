@@ -56,6 +56,10 @@ Print["M_mix = ", fmt[mMix]];
 Print["R_target = ", fmt[rTarget]];
 expectZero["G - 8 alpha_req/(Pi^2 A)", g - 8*alphaReq/(Pi^2*A)];
 expectZero["G - closed form", g - gTarget];
+(* Definitional self-consistency: alphaReq and gTarget are both hardcoded
+   closed forms, so this just confirms alphaReq = (Pi^2 A / 8) gTarget after mMix cancels.
+   The genuine anchor for F (and hence the closed form of G via the same algebra)
+   is the symbolic kappa derivation below (rTargetSym). *)
 expectZero[
   "g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix)",
   gBReqSqOverVarpi2 - (Pi^2*A/8)*(gTarget - mMix)
@@ -96,6 +100,7 @@ Clear[xiReq];
 $Assumptions =
   Element[{A, delta, xiReq, Chi, OmegaU, Delta0, beta0, NQ}, Reals] &&
   A > 0 && delta > 0 && 0 <= xiReq < 1 && OmegaU > 0 && Delta0 > 0 && beta0 > 0 && NQ > 0;
+(* Same definitional identity as above, with xi -> xiReq. Definitional, not load-bearing. *)
 expectZero[
   "final-test support inequality <-> nonnegative required support loading",
   (Pi^2*A/8)*((gTarget /. xi -> xiReq) - mMix) - (gBReqSqOverVarpi2 /. xi -> xiReq)
@@ -105,8 +110,9 @@ deltaSample = 1;
 xiSample = 1/2;
 fSample = FullSimplify[fTarget /. {delta -> deltaSample, xi -> xiSample}];
 gSample = FullSimplify[gTarget /. {delta -> deltaSample, xi -> xiSample}];
-mMixGood = FullSimplify[gSample - 1/10];
-mMixBad = FullSimplify[gSample + 1/10];
+mMixAdmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 29}];
+mMixInadmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 1}];
+gSampleN = N[gSample];
 expectTrue["admissible sample: R_target >= 1", fSample >= 1, "R_target=" <> fmt[fSample]];
 aHost = 3;
 beta0Host = 5;
@@ -137,14 +143,14 @@ expectZero[
   FullSimplify[Together[Expand[fTarget - rTargetSym]], Assumptions -> $Assumptions]
 ];
 expectTrue[
-  "admissible sample: M_mix <= G(xi_req,delta)",
-  mMixGood <= gSample,
-  "M_mix=" <> fmt[mMixGood] <> ", G=" <> fmt[gSample]
+  "admissible sample: M_mix < G(xi_req,delta)",
+  mMixAdmissible < gSampleN,
+  "M_mix=" <> fmt[mMixAdmissible] <> ", G=" <> fmt[gSampleN]
 ];
 expectTrue[
   "inadmissible sample: support deficit blocks the branch",
-  mMixBad > gSample,
-  "M_mix=" <> fmt[mMixBad] <> ", G=" <> fmt[gSample]
+  mMixInadmissible > gSampleN,
+  "M_mix=" <> fmt[mMixInadmissible] <> ", G=" <> fmt[gSampleN]
 ];
 
 banner["STAGE 019.4 — NEAR-ONSET ASYMPTOTICS"];

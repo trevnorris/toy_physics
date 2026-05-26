@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage12_dynamic_loading_sympy_audit.py
+moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
 
-SymPy audit for Stage 12 of the moving-throat PDE program.
+SymPy audit for Stage 029 of the moving-throat PDE program.
 
 Scope
 -----
@@ -14,7 +14,6 @@ selection model. It checks:
         Xi(omega) I_2 + alpha(omega) v v^T,
   • the conservative static limits Xi_0 and alpha_0,
   • the refined Stage-11 angle law with the isotropic shift included,
-  • the refined softening threshold alpha_crit,
   • the first-order outgoing expansion of alpha(omega),
   • and the selected-mode odd coefficient projected onto the conservative lower
     wall eigenvector.
@@ -186,13 +185,6 @@ def conservative_profile_selection() -> tuple[sp.Expr, sp.Expr, sp.Expr]:
     tan2theta = sp.simplify(2 * alpha0 * eta / (DeltaK + alpha0 * xi))
     print("tan(2 theta_-) =", tan2theta)
 
-    al = sp.symbols('alpha_load', real=True)
-    det_template = sp.simplify(((K0t - al*kappa0**2)*(K1t - al*kappa1**2) - al**2*kappa0**2*kappa1**2))
-    alpha_crit = sp.solve(sp.Eq(det_template, 0), al)[0]
-    alpha_crit_expected = sp.simplify(K0t * K1t / (K1t * kappa0**2 + K0t * kappa1**2))
-    print("alpha_crit =", alpha_crit)
-    expect_zero("alpha_crit - expected", alpha_crit - alpha_crit_expected)
-
     return Xi0, alpha0, lam_minus
 
 
@@ -274,9 +266,41 @@ def selected_mode_projection() -> None:
     print("kappa_sel^2 = - d lambda_- / d alpha |_(alpha_0) =")
     sp.pprint(kappa_sel_sq)
 
+    # Direct eigenvector projection of v onto the lower eigenvector of K_eff(al).
+    # Independent of the Hellmann-Feynman derivation above; the two must agree.
+    K_eff_al = sp.Matrix(
+        [
+            [K0t - al * kappa0**2, -al * kappa0 * kappa1],
+            [-al * kappa0 * kappa1, K1t - al * kappa1**2],
+        ]
+    )
+    null = (K_eff_al - lam_minus_template * sp.eye(2)).nullspace()
+    assert null, "lower-eigenvector nullspace is empty"
+    vec_lo = null[0]
+    norm_sq = sp.simplify((vec_lo.T * vec_lo)[0])
+    kappa_sel_sq_direct_template = sp.simplify(((vec_lo.T * v)[0]) ** 2 / norm_sq)
+    expect_zero(
+        "kappa_sel^2 closed-form vs eigenvector projection",
+        sp.simplify(kappa_sel_template - kappa_sel_sq_direct_template),
+    )
+
     # Verify limiting values on the template before substitution.
     expect_zero("weak-loading kappa_sel^2 -> kappa0^2", sp.simplify(kappa_sel_template.subs(al, 0) - kappa0**2))
     expect_zero("strong-loading kappa_sel^2 -> sigma", sp.simplify(sp.limit(kappa_sel_template, al, sp.oo) - sigma))
+
+    # Anchor the paper's eq selected-odd against the script-computed pieces.
+    delta_D_paper = (
+        -sp.I * Gamma_port
+        * (Omega_U**2 * lambda_W + lambda_R * lambda_U) ** 2
+        / (Omega_U**2 * Omega_W**2 - lambda_R**2 * sigma) ** 2
+        * kappa_sel_sq
+        * omega**5
+    )
+    delta_D_script = -sp.I * beta5 * kappa_sel_sq * omega**5
+    expect_zero(
+        "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+        delta_D_script - delta_D_paper,
+    )
 
     print("Therefore the selected lower-mode odd coefficient is")
     print("  delta D_-^(odd)(omega) = - i beta_5 kappa_sel^2 omega^5 + O(omega^7)")

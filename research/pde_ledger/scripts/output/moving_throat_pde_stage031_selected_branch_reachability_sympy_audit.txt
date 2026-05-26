@@ -14,7 +14,6 @@ ds_-/dalpha =
 ========================================================================================
 PART II — EXACT PREFATOR MONOTONICITY IDENTITY
 ========================================================================================
-generic quotient/HF identity = 0
 dP0_-/dalpha direct identity = 0
 dP0_-/dalpha =
    ⎛                                                                           ↪

@@ -14,12 +14,6 @@ PASS: projected coefficients - source coefficients
 ========================================================================================
 SECTION II — ISOTROPIC GROUPED-BUNDLE COLLAPSE
 ========================================================================================
-xbar - x0 = 0
-PASS: xbar - x0
-a_x on equal lanes = 0
-PASS: a_x on equal lanes
-b_x on equal lanes = 0
-PASS: b_x on equal lanes
 a_x witness - 1/5 = 0
 PASS: a_x witness - 1/5
 b_x witness = 0
@@ -28,18 +22,26 @@ a_x second witness + 1/10 = 0
 PASS: a_x second witness + 1/10
 b_x second witness - 1/2 = 0
 PASS: b_x second witness - 1/2
+x20 reassembled - p = 0
+PASS: x20 reassembled - p
+x21 reassembled - q = 0
+PASS: x21 reassembled - q
+x22 reassembled - rr = 0
+PASS: x22 reassembled - rr
 
 ========================================================================================
 SECTION III — ISOTROPIC RADIAL/AXIAL OVERLAP MOMENTS
 ========================================================================================
-C_alpha - lambda_B,alpha I_etaalpha = {0, 0}
-PASS: C_alpha - lambda_B,alpha I_etaalpha
 B0 sum formula = 0
 PASS: B0 sum formula
 B2 sum formula = 0
 PASS: B2 sum formula
 B4 sum formula = 0
 PASS: B4 sum formula
+Z_full from matrix inverse matches paper rational = 0
+PASS: Z_full from matrix inverse matches paper rational
+N_full from matrix inverse matches paper rational = 0
+PASS: N_full from matrix inverse matches paper rational
 Z0 formula = 0
 PASS: Z0 formula
 Z2 formula = 0
@@ -60,6 +62,24 @@ D4 formula = 0
 PASS: D4 formula
 
 ========================================================================================
+SECTION III.5 — LANE COLLAPSE UNDER O(3) INVARIANCE
+========================================================================================
+D_20 - D_21 (isotropic) = 0
+PASS: D_20 - D_21 (isotropic)
+D_21 - D_22 (isotropic) = 0
+PASS: D_21 - D_22 (isotropic)
+D_20 - D_22 (isotropic) = 0
+PASS: D_20 - D_22 (isotropic)
+N_20 - N_21 (isotropic) = 0
+PASS: N_20 - N_21 (isotropic)
+N_21 - N_22 (isotropic) = 0
+PASS: N_21 - N_22 (isotropic)
+N_20 - N_22 (isotropic) = 0
+PASS: N_20 - N_22 (isotropic)
+linear coefficient of delta in (D_20 - D_21) = (2*gUiso*(omega - omW)*(omega + omW) - 2*gWiso*rrIso)/((omega - omU)*(omega + omU)*(omega - omW)*(omega + omW) - rrIso^2)
+PASS: Lane-breaking witness: collapse check is non-tautological
+
+========================================================================================
 SECTION IV — AXISYMMETRIC SPLITTING MATRIX
 ========================================================================================
 M - M_target = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
@@ -76,12 +96,14 @@ PASS: b_x - 3 a_x
 ========================================================================================
 SECTION V — FIRST-ORDER TRANSPORT LAW
 ========================================================================================
-P20 - (P0 + eps P1) = 0
-PASS: P20 - (P0 + eps P1)
-P21 - (P0 + eps P1/2) = 0
-PASS: P21 - (P0 + eps P1/2)
-P22 - (P0 - eps P1) = 0
-PASS: P22 - (P0 - eps P1)
+P20 first-order from quotient rule = 0
+PASS: P20 first-order from quotient rule
+P21 first-order from quotient rule = 0
+PASS: P21 first-order from quotient rule
+P22 first-order from quotient rule = 0
+PASS: P22 first-order from quotient rule
+P0 from quotient rule = 0
+PASS: P0 from quotient rule
 Pbar - P0 = 0
 PASS: Pbar - P0
 a_P - eps*P1/4 = 0

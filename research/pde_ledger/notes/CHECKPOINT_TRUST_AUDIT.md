@@ -9,23 +9,33 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded
-re-audit pass. Checkpoints `022` and `023` fall in this batch's range.
-Stage 022 audited clean (0 findings) at v2 depth; stage 023 had F1
-tautological_check (resolved by fix_loop: N0_target self-substitution
-replaced with abstract-vs-explicit normalization equivalence) and F2
-insufficient_verification (Schur-complement derivation added in both
-engines after a Codex remediation pass that read the paper's §2
-Lagrangian to resolve a sign-convention conflict — option α chosen,
-existing `+2*g_U*g_W*R_mix` numerator confirmed correct given paper's
-`+R U W` Lagrangian → frequency-space spring matrix off-diagonal is
-`-R`). Both checkpoints remain at their prior trust tier with stronger
-verification. Four other I.2 stages (013, 014, 015, 018) flagged
-`material_change: true` due to script-side scope reductions removing
-duplicates; downstream consumers should rebind to the destination
-stages that genuinely own each piece (013 δP_n/sieve → 010/014; 015
-wall-only/Y20/grouped → 017; 018 one-pole/gate/Xi_1 → 019/020; 020 Y20
-→ 010/017). I.1 v2 close text remains accurate for batches III.1-III.4
+Snapshot date: `2026-05-26` (batch II.1 v2 close — third paper-grounded
+re-audit pass. Checkpoints `024` and `036` fall in this batch's range.
+Stage 024 v2 had F1 mathematica_transliteration (Sections III/V port —
+remediated to a 2x2 matrix-inverse-based independent derivation with
+`-R` off-diagonal derived from `paper/parts/part01_parent_geometry.tex:956`
+`+R_l A_l W_l` Lagrangian), F2 insufficient_verification (SymPy
+`g.T * Mpair.inv() * g` anchor added with same `-R` sign), F3
+tautological_check (C_alpha self-equality + equal-lane substitutions
+replaced with `x20/x21/x22 reassembled` arbitrary-lane checks), and F4
+insufficient_verification (explicit O(3)-collapse `D_{20,n}=D_{21,n}=D_{22,n}`
+witness plus lane-breaking witness with non-zero linear-in-delta
+coefficient on both engines). Section IV symbol-context reset +
+`i4`/`i6` sphere-integral memoization fixed a separate performance hang
+(>18min CPU → 25.05s total runtime). Stage 036 v2 had F1 tautological_check
+(M_mix admissible/inadmissible witnesses replaced with parameter-derived
+`Mmix_expr` evaluations) and F2 tautological_check labelling
+(definitional self-consistency comment blocks added). Both checkpoints
+verify with `material_change: false`. Three other II.1 stages had
+paper_misalignment items (029 F1 docstring relabel, 029 F4 `alpha_crit`
+trim with destination stage 031, 035 F1 paper polynomial coefficient
+fix `206→189`, `138→121`) — none required user redirection (Codex
+first-pass recommendations all held up; orchestrator cross-verified
+Q2's destination claim). Zero `material_change: true` flags this batch
+overall — all script-side edits were additions or removals of
+tautological self-checks; no downstream-visible closed forms changed.
+With II.1 v2 closed, the entire range 001-036 is now paper-aligned at
+v2 depth. I.1 v2 close text remains accurate for batches III.1-III.4
 and for the I.1 stage range.)
 
 ## Scope

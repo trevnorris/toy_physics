@@ -126,7 +126,7 @@ pass["gate denominator matches claim up to parameter-free constant"];
 gateNumTarget = FullSimplify[gateNumActual/denRatio, Assumptions -> $Assumptions];
 Print["gate numerator = ", fmt[gateNumTarget]];
 expectZero[
-  "alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim",
+  "gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above)",
   alphaCritMic - alpha0Mic - gateNumTarget/gateDenClaim
 ];
 
@@ -149,12 +149,6 @@ Do[
   If[Abs[monotonicityNumeric] > 10^-20,
     fail["monotonicity numeric residual nonzero", monotonicityNumeric],
     pass["monotonicity numeric residual zero at rule"]
-  ];
-  gateNumeric = N[(alphaCritMic - alpha0Mic - gateNumTarget/gateDenClaim) /. rule, 30];
-  Print["gate-identity numeric residual = ", fmt[gateNumeric]];
-  If[Abs[gateNumeric] > 10^-20,
-    fail["gate-identity numeric residual nonzero", gateNumeric],
-    pass["gate-identity numeric residual zero at rule"]
   ],
   {rule, {numericRule1, numericRule2}}
 ];

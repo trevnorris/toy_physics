@@ -49,9 +49,6 @@ SECTION II — ISOTROPIC GROUPED-BUNDLE COLLAPSE
 ----------------------------------------------------------------------------------------
 II.1 — Equal-lane data imply exact grouped isotropy
 ----------------------------------------------------------------------------------------
-xbar - x0 = 0
-a_x on equal lanes = 0
-b_x on equal lanes = 0
 
 ----------------------------------------------------------------------------------------
 II.2 — Unequal lanes produce visible grouped defects
@@ -60,16 +57,15 @@ a_x witness - 1/5 = 0
 b_x witness = 0
 a_x second witness + 1/10 = 0
 b_x second witness - 1/2 = 0
+x20 reassembled - p = 0
+x21 reassembled - q = 0
+x22 reassembled - rr = 0
 Interpretation: any O(3)-invariant reduced kernel forces the grouped 20/21/22 bundle
 to collapse to one common scalar value on the isotropic branch.
 
 ========================================================================================
 SECTION III — ISOTROPIC RADIAL/AXIAL OVERLAP MOMENTS
 ========================================================================================
-C_alpha - lambda_B,alpha I_etaalpha =
-⎡0⎤
-⎢ ⎥
-⎣0⎦
 
 ----------------------------------------------------------------------------------------
 III.1 — Two-mode witness for the BdG moments
@@ -77,10 +73,15 @@ III.1 — Two-mode witness for the BdG moments
 B0 sum formula = 0
 B2 sum formula = 0
 B4 sum formula = 0
+Z_from_matrix - Zresp_target (physics anchor) = 0
+N_from_matrix - Nresp_target (physics anchor) = 0
 
 ----------------------------------------------------------------------------------------
 III.2 — One-pair Maxwell/mixed witness and D(omega)
 ----------------------------------------------------------------------------------------
+Note: Section III.2 below derives Z_n, N_n, D_n from the matrix-inverse
+anchor above; the closed-form coefficient assertions are non-tautological
+given the anchor.
 Z0 formula = 0
 Z2 formula = 0
 Z4 formula = 0
@@ -90,6 +91,30 @@ N4 formula = 0
 D0 formula = 0
 D2 formula = 0
 D4 formula = 0
+
+========================================================================================
+SECTION III.5 — LANE COLLAPSE UNDER O(3) INVARIANCE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+III.5.1 — Per-lane D_{A,n} collapse under O(3) invariance
+----------------------------------------------------------------------------------------
+D_20 - D_21 (isotropic) = 0
+D_21 - D_22 (isotropic) = 0
+D_20 - D_22 (isotropic) = 0
+
+----------------------------------------------------------------------------------------
+III.5.2 — Per-lane N_{A,n} collapse under O(3) invariance
+----------------------------------------------------------------------------------------
+N_20 - N_21 (isotropic) = 0
+N_21 - N_22 (isotropic) = 0
+N_20 - N_22 (isotropic) = 0
+
+----------------------------------------------------------------------------------------
+III.5.3 — Lane-breaking witness: a single-lane perturbation produces a nonzero defect
+----------------------------------------------------------------------------------------
+linear coefficient of delta in (D_20 - D_21) = 2*(GU_iso*Omega_W**2 - GU_iso*omega**2 + GW_iso*Rr_iso)/(-Omega_U**2*Omega_W**2 + Omega_U**2*omega**2 + Omega_W**2*omega**2 + Rr_iso**2 - omega**4)
+Lane-breaking witness: collapse check is non-tautological (defect is linear in delta).
 
 ========================================================================================
 SECTION IV — AXISYMMETRIC QUADRUPOLE SPLITTING MATRIX

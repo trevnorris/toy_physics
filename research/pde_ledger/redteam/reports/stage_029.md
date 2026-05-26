@@ -2,281 +2,279 @@
 unit_id: 029
 batch: II.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T00:00:00Z
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 3
+findings_count: 4
+paper_alignment: partial
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage029_dynamic_loading.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 029 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_029.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage029_dynamic_loading.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part02.tex` (row at line 48; `\input` at line 96)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage029_dynamic_loading_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 029 gives the loading coefficient `alpha` a microscopic origin by computing the exact Schur complement of the coupled wall/BdG/Maxwell/mixed operator. The paper's `\stagefield{Output}` (line 106) is verbatim: *"Stage~029 outputs the Schur-complement split \eqref{eq:app-stage029-schur-split}, the static branch data \eqref{eq:app-stage029-static-data}, the outgoing transfer coefficient \eqref{eq:app-stage029-beta0}, and the selected odd coefficient \eqref{eq:app-stage029-selected-odd}."* The four deliverables are:
+
+1. **Schur split:** `Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T` with `Xi = lambda_U^2 / A_U` and `alpha = lambda_B^2 / A_phi + (A_U lambda_W + lambda_R lambda_U)^2 / (A_U Delta_UW)`; `Delta_UW = A_U A_W - lambda_R^2 sigma`; `sigma = 88/(9 pi^2)` (eqs `Xi-alpha`, `DeltaUW`).
+2. **Static branch data:** `Xi_0 = lambda_U^2/Omega_U^2`, `Delta_0 = Omega_U^2 Omega_W^2 - lambda_R^2 sigma`, `alpha_0 = lambda_B^2/varpi^2 + (Omega_U^2 lambda_W + lambda_R lambda_U)^2/(Omega_U^2 Delta_0)`, and the conservative static matrix `K_eff^(0)` (eq `static-data`).
+3. **Outgoing transfer coefficient:** `beta(omega) = (A_U lambda_W + lambda_R lambda_U)^2 / Delta_cons^2` with `Delta_cons = A_U(Omega_W^2 - omega^2) - lambda_R^2 sigma`, and `beta_0 = (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2 >= 0` (eqs `beta`, `beta0`).
+4. **Selected odd coefficient:** `delta D_-^odd(omega) = -i (a^5/(27 c_s^5)) beta_0 (v.e_-)^2 omega^5 + O(omega^7)` (eq `selected-odd`).
+
+The notes provide the same content plus the additional named result `alpha_crit = (K_0 - Xi_0)(K_1 - Xi_0) / [(K_1 - Xi_0) kappa_0^2 + (K_0 - Xi_0) kappa_1^2]` (notes section 3.1). The `\stagefield{Checks}` (lines 108-113) emphasize: scalar U-sector -> I_2, mixed/support -> vv^T; positivity of alpha_0 under stable denominators; beta_0 as square-over-squared-determinant; projection onto e_- inserts (v.e_-)^2.
+
 ## What the script claims to verify
 
-The script claims a first-principles dynamic-loading lift of the Stage-11 profile selection model. Concretely, it verifies (1) the exact Schur-complement elimination of the coupled u/W/phi internal-field block reproduces a wall self-energy of the form `Sigma(omega) = Xi(omega) I + alpha(omega) v v^T` with explicit closed-form `Xi` and `alpha`; (2) the conservative static data `Xi_0, Delta_0, alpha_0` are recovered at `omega = 0, Pi = 0`; (3) the refined effective stiffness `K_eff` produces a stationarity equation `dE/dtheta = (DeltaK + alpha_0 xi) sin(2theta) - 2 alpha_0 eta cos(2theta)` whose root gives `tan(2 theta_-) = 2 alpha_0 eta / (DeltaK + alpha_0 xi)`; (4) the softening determinant has a closed-form root `alpha_crit = K0t K1t / (K1t kappa0^2 + K0t kappa1^2)`; (5) the first-order expansion of `alpha(omega)` in the outgoing port variable `Pi` produces a clean transfer factor `beta(omega) = (A_U lambda_W + lambda_R lambda_U)^2 / Delta_cons^2`; (6) the `Pi = i Gamma_port omega^5` substitution yields the expected coefficient `beta_5` extractable from the `omega^5` term of the series; and (7) the selected lower-mode odd quadrupole coefficient obeys the Hellmann–Feynman identity `kappa_sel^2 = -d lambda_-/d alpha` with correct weak (`al -> 0 -> kappa0^2`) and strong (`al -> infty -> sigma`) limits.
+Both engines work in the same reduced operator (wall (q_0, q_1), internal block (u_0, u_1, W, phi)) with the same coupling pattern. Sympy uses the direct 4x4 Schur formula `C^T M_int^(-1) C`. Mathematica derives `Sigma_wall` by partial elimination - Sherman-Morrison-like inverse of the (U, W) block plus the phi contribution as a separate vv^T piece - and asserts equality with the closed-form `Xi I + alpha vv^T`. The static substitutions omega->0, Pi->0 give the printed expressions for Xi_0, Delta_0, alpha_0. The first-order Pi expansion verifies the closed-form `beta(omega)`. The `Pi -> i Gamma_port omega^5` substitution yields a series whose omega^5 coefficient is extracted and shown equal to `Gamma_port * beta(omega=0)`. `kappa_sel^2` is computed via Hellmann-Feynman `-d lambda_- / d alpha`; Mathematica additionally constructs `e_-` directly from `Eigensystem` and asserts that `(v.e_-)^2` equals the Hellmann-Feynman expression. Sympy only checks weak (alpha=0 -> kappa_0^2) and strong (alpha->infty -> sigma) limits.
+
+## Paper <-> script cross-check
+
+| # | Paper deliverable | Script-side check | Status |
+|---|---|---|---|
+| D1 | Schur split `Sigma = Xi I + alpha vv^T` | sympy line 127; mathematica line 116 | match |
+| D2 | Static branch data Xi_0, Delta_0, alpha_0 | sympy lines 141-143 (printed only, no `expect_zero` against literal closed form); mathematica lines 121-123 (printed only) | partial - values are computed by substitution from the verified Sigma formula, so D2 is structurally implied by D1, but no explicit anchoring assertion exists |
+| D3 | Outgoing transfer beta(omega) and beta_0 >= 0 | sympy line 216 asserts `beta(omega) = (A_U lambda_W + lambda_R lambda_U)^2/Delta_cons^2`; mathematica lines 175, 188 assert both `beta(omega)` and the explicit `beta_5 = Gamma_port (Omega_U^2 lambda_W + lambda_R lambda_U)^2/Delta_0^2` | match (sympy carries beta_0 implicitly through `beta_clean.subs(omega, 0)`; mathematica carries it explicitly) |
+| D4 | Selected odd `delta D_-^odd = -i Gamma_port beta_0 (v.e_-)^2 omega^5` | sympy lines 263-265 print `odd_projection = -i beta_5 kappa_theta^2 omega^5` (with `kappa_theta^2 = (q.v)^2` as a function of theta, NOT specialized to theta_-) and prints `kappa_sel^2` separately; no `expect_zero` ties the two together or against the paper's combined formula. Mathematica line 228-229 forms an analogous template, also unasserted. | partial - building blocks present and verified, but the paper's combined claim is never an asserted identity in either engine |
+| D5 (paper Checks) | beta_0 >= 0 inequality | not asserted; structurally true because formula is real^2 / real^2 | partial (structural) |
+| extra | `alpha_crit = K0t*K1t/(K1t kappa_0^2 + K0t kappa_1^2)` | sympy line 194; mathematica line 166 | extra - verified by both engines, but not in paper card `\stagefield{Output}` (only in notes section 3.1) |
+
+Dominant pattern: D1 and D3 are exactly anchored; D2 and D4 are implicit; D5 is structural; one extra (alpha_crit) lives only in the notes. Setting `paper_alignment: partial`.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1  | sympy | 127  | `expect_zero("Sigma - (Xi I + alpha vv^T)", ...)` | yes |
-| A2  | sympy | 153  | `expect_zero("DeltaK_tilde - DeltaK_bare (Xi_0 cancellation)", DeltaK - DeltaK_ax)` | no (tautological) |
-| A3  | sympy | 182  | `expect_zero("dE/dtheta - stationarity/2", dE - stationarity/2)` | yes |
-| A4  | sympy | 192  | `expect_zero("alpha_crit - expected", alpha_crit - alpha_crit_expected)` | yes |
-| A5  | sympy | 214  | `expect_zero("beta - clean transfer factor", beta - beta_clean)` | yes |
-| A6  | sympy | 218  | `expect_zero("alpha - (alpha_cons + beta*Pi) at O(Pi)", ...)` | yes |
-| A7  | sympy | 230  | `expect_zero("extracted beta_5 - expected beta_5", ...)` | yes |
-| A8  | sympy | 276  | `expect_zero("weak-loading kappa_sel^2 -> kappa0^2", ...)` | yes |
-| A9  | sympy | 277  | `expect_zero("strong-loading kappa_sel^2 -> sigma", ...)` | yes |
-| A10 | mma   | 89   | `expectMatrixZero["Sigma - (Xi I + alpha vv^T)", ...]` | yes |
-| A11 | mma   | 90-92| sigma/xi/eta literal-constant cross-checks | yes |
-| A12 | mma   | 103  | `expectZero["DeltaK_tilde - DeltaK_ax", (k1t - k0t) - DeltaKax]` | no (tautological) |
-| A13 | mma   | 119  | `expectZero["dE/dtheta - stationarity/2", ...]` | yes |
-| A14 | mma   | 120-123 | `expectZero["-tan(2 theta_-) - manifestly positive form", -tan2Theta - 2*alpha0*(-eta)/(DKax+alpha0*xi)]` | no (tautological) |
-| A15 | mma   | 133  | `expectZero["det(alpha_crit)", detTemplate /. al -> alphaCrit]` | yes |
-| A16 | mma   | 142  | `expectZero["beta - clean transfer factor", beta - betaClean]` | yes |
-| A17 | mma   | 146  | `expectZero["alpha - (alpha_cons + beta portPi) at O(portPi)", ...]` | yes |
-| A18 | mma   | 155  | `expectZero["beta_5 - GammaPort (OmegaU^2 lambdaW + lambdaR lambdaU)^2/Delta0^2", ...]` | yes |
-| A19 | mma   | 156  | `expectZero["extracted beta_5 - expected beta_5", ...]` | yes |
-| A20 | mma   | 167  | `expectZero["weak-loading kappa_sel^2 - kappa0^2", ...]` | yes |
-| A21 | mma   | 168  | `expectZero["strong-loading kappa_sel^2 - sigma", ...]` | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored? |
+|---|---|---|---|---|---|
+| A1 | sympy | 127 | `expect_zero("Sigma - (Xi I + alpha vv^T)", Sigma - Sigma_expected)` | D1 (Schur split) | yes |
+| A2 | sympy | 155 | `expect_zero("DeltaK_tilde - DeltaK_bare", DeltaK - DeltaK_ax)` | typo guard (script self-acknowledges via comment lines 152-154) | no (tautological by construction; explicitly flagged) |
+| A3 | sympy | 184 | `expect_zero("dE/dtheta - stationarity/2", dE - stationarity/2)` | D2 stationarity / notes section 3 angle law | yes |
+| A4 | sympy | 194 | `expect_zero("alpha_crit - expected", alpha_crit - alpha_crit_expected)` | extra (alpha_crit from notes section 3.1, not from paper card Output) | yes |
+| A5 | sympy | 216 | `expect_zero("beta - clean transfer factor", beta - beta_clean)` | D3 (beta(omega) formula) | yes |
+| A6 | sympy | 220 | `expect_zero("alpha - (alpha_cons + beta*Pi) at O(Pi)", ...)` | first-order outgoing expansion (paper eq `alpha-out`) | yes |
+| A7 | sympy | 232 | `expect_zero("extracted beta_5 - expected beta_5", ...)` | D3 (Pi = i Gamma omega^5 projection); implicitly D4 (beta_0 via `beta_clean.subs(omega, 0)`) | yes |
+| A8 | sympy | 278 | `expect_zero("weak-loading kappa_sel^2 -> kappa0^2", ...)` | D4 building block (e_- at alpha=0 = (1,0)) | partial - limit only |
+| A9 | sympy | 279 | `expect_zero("strong-loading kappa_sel^2 -> sigma", ...)` | D4 building block (e_- at alpha->infty = v/||v||) | partial - limit only |
+| M1 | math | 116 | `expectMatrixZero["Sigma_seq - (Xi I + alpha vv^T)", ...]` | D1 (Schur split, independent derivation) | yes |
+| M2 | math | 117-119 | three `expectZero` for sigma, xi, eta literals | building blocks for v.v, etc. | yes |
+| M3 | math | 132 | `expectZero["DeltaK_tilde - DeltaK_ax", ...]` | typo guard | no (tautological; explicitly flagged) |
+| M4 | math | 148, 150 | `expectZero` for stationarity and stationarity-at-theta_- | D2 angle law | yes |
+| M5 | math | 166 | `expectZero["det(alpha_crit)", ...]` | extra (notes section 3.1) | yes |
+| M6 | math | 175, 179 | `expectZero` for beta(omega) and first-order Pi expansion | D3 | yes |
+| M7 | math | 188, 189 | `expectZero` for beta_5 vs explicit `(Omega_U^2 lambda_W + lambda_R lambda_U)^2/Delta_0^2` AND series-coefficient extraction | D3 and direct D4 building block beta_0 closed form | yes |
+| M8 | math | 223 | `expectZero["kappa_sel^2 closed-form vs eigenvector projection", kappaSelSq - kappaSelSqDirect]` | D4 (Hellmann-Feynman == direct projection onto e_-) | yes - independent cross-check |
+| M9 | math | 225, 226 | weak/strong limit checks (mirror A8, A9) | D4 building block | partial - limit only, but redundant given M8 |
+
+Sympy is missing the M8 cross-check (closed-form == eigenvector projection), and neither engine asserts D4 in fully-assembled form against the paper's combined formula.
 
 ## Findings
 
-### F1 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:113-123`
-
-**What's wrong:**
-The Mathematica script defines
-
-```
-tan2Theta = FullSimplify[2*alpha0*eta/(DeltaKax + alpha0*xiConst), ...];
-...
-expectZero[
-  "-tan(2 theta_-) - manifestly positive form",
-  -tan2Theta - 2*alpha0*(-eta)/(DeltaKax + alpha0*xiConst)
-];
-```
-
-Substituting the definition of `tan2Theta` into the residual gives
-
-```
--(2*alpha0*eta/(DKax + alpha0*xiConst)) - 2*alpha0*(-eta)/(DKax + alpha0*xiConst)
-  = -2 alpha0 eta / D + 2 alpha0 eta / D
-  = 0
-```
-
-i.e. the residual is structurally `-x - (-x) = 0` for any value of `alpha0`, `eta`, `DeltaKax`, `xiConst`. The check is algebraically guaranteed by construction; no physics is being tested. The comment / label suggests it is verifying a "manifestly positive form" of `tan(2 theta_-)`, but the right-hand side of the residual is just a re-bracketing of the same expression with the minus sign moved from the leading factor into the numerator.
-
-**Why this matters:**
-A PASS here gives no evidence about the angle law, the sign of `eta`, or anything else physical. It dilutes the meaning of the script's overall PASS line. If the genuine claim is that the numerator `−eta = κ0|κ1|` is positive given the chosen `kappa0 > 0, kappa1 < 0`, then the check should verify positivity (e.g. `Sign[-eta] == 1` or `Refine[-eta > 0, Assumptions -> kappa0 > 0 && kappa1 < 0]`), not the identity `−x ≡ −x`.
-
-**Required change:**
-Replace the tautological residual on lines 120–123 with a check that actually exercises the angle-law content. Two viable substantive forms (pick one):
-
-(a) Verify the stationarity-equation root by direct substitution:
-```
-expectZero[
-  "stationarity at theta_-",
-  ((DeltaKax + alpha0*xiConst)*Sin[2*theta] - 2*alpha0*eta*Cos[2*theta])
-    /. theta -> ArcTan[2*alpha0*eta/(DeltaKax + alpha0*xiConst)]/2
-];
-```
-
-(b) Or alternatively verify the sign claim — that the actual numerator `−eta = 8 Sqrt[2]/(3 Pi^2)` is positive in the chosen overlap convention:
-```
-expectZero["-eta - 8 Sqrt[2]/(3 Pi^2)", -eta - 8*Sqrt[2]/(3*Pi^2)];
-```
-which the script does NOT currently check (it only checks `eta + 8 Sqrt[2]/(3 Pi^2) = 0`, which is the same identity).
-
-The SymPy script does not assert this identity at all, so removing the Mathematica check (without replacement) is also acceptable; if removed, also delete the `tan2Theta` symbol on line 113 if no longer used downstream.
-
-**Verification:**
-After patch, `redteam exec-mathematica 029` should still exit 0; the captured output should contain a new substantive PASS line (the replacement check) or — if the check was simply deleted — should NOT contain "manifestly positive form" anywhere.
-
-### F2 — tautological_check
+### F1 — paper_misalignment
 
 **Severity:** low
+**Subtype:** notes_contradicts_script (docstring / banner refer to obsolete stage number)
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:146-153`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:97-103`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:3` (first line of docstring "moving_throat_pde_stage12_dynamic_loading_sympy_audit.py")
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:5` ("SymPy audit for Stage 12 of the moving-throat PDE program.")
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:33` (`banner["STAGE 012 — DYNAMIC LOADING"]`)
 
 **What's wrong:**
-Both engines define
-
-```
-K1 = K0 + DeltaK_ax        (sympy line 67 / mma line 47)
-K0t = K0 - Xi0
-K1t = K1 - Xi0
-DeltaK = K1t - K0t         (sympy line 148 / implicit on mma line 103 via (k1t - k0t))
-```
-
-then assert `DeltaK - DeltaK_ax == 0`. Expanding the definitions in either engine:
-
-```
-K1t - K0t = (K0 + DeltaK_ax - Xi0) - (K0 - Xi0) = DeltaK_ax
-```
-
-so `DeltaK - DeltaK_ax = 0` is forced by the very definitions on the lines immediately above — no matter what `Xi_0` is, no matter what the physics is, the `Xi_0` shift cancels under subtraction. The accompanying comment "Verify the isotropic shift cancels from the stiffness splitting" overstates what the check accomplishes: the check is "subtraction cancels what is subtracted twice", which is trivially true.
+Paper card title (`paper/stages/stage_029.tex:1`): *"Stage 029: Coupled Response Operator"*; see also `\input{stages/stage_029}` at `paper/appendices/stage_appendix_part02.tex:96`. The sympy docstring states this is the audit for "Stage 12"; the Mathematica banner prints `STAGE 012 — DYNAMIC LOADING`. The closing line of the Mathematica script (line 232) correctly says "Stage 029 Mathematica audit passed." — so the file knows both numbers exist. The notes file similarly mixes legacy "Stage 11"/"Stage 12" references with the current "Stage 029" title; the notes are out of scope for this auditor (prose, read-only).
 
 **Why this matters:**
-Lower severity than F1 because this is at least an honest sanity check on the construction (catches a typo where someone wrote `K1t = K1 + Xi0` instead of `K1t = K1 - Xi0`). But the script's comment claims it as verifying *physics* of the isotropic shift, when in fact it can only catch a typing error in the immediately preceding two lines.
+Pure labeling drift from an earlier numbering scheme. The math is unaffected. The risk is operational: a future reader auditing by docstring or banner search may believe the script does not cover stage 029.
 
 **Required change:**
-Either (a) downgrade the inline comments to make clear this is a typo-guard, not a physics check; or (b) replace the trivial check with a non-trivial one that actually exercises the isotropic-shift cancellation in a context where it's not algebraically forced.
-
-The minimum-effort fix is (a). In SymPy at line 152, change the comment from:
-```
-# Verify the isotropic shift cancels from the stiffness splitting.
-```
-to:
-```
-# Sanity check: the K0t/K1t construction yields DeltaK_tilde = DeltaK_ax. This is
-# enforced by the definitions on the two preceding lines (trivially true under
-# the construction K1 = K0 + DeltaK_ax, K0t = K0 - Xi0, K1t = K1 - Xi0) and is
-# kept here only as a typo guard.
-```
-
-In Mathematica at line 102 (immediately above the `expectZero[...]` on line 103), insert the same clarifying comment:
-```
-(* Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaKax, so
-   (K1t - K0t) - DeltaKax = 0 is algebraically forced. Kept as typo guard. *)
-```
-
-Do NOT delete the assertion itself; the typo guard has nonzero value.
+Update sympy docstring lines 3 and 5 to reference "Stage 029" instead of "Stage 12". Update the Mathematica banner string at line 33 from `"STAGE 012 — DYNAMIC LOADING"` to `"STAGE 029 — DYNAMIC LOADING"`. Do not edit the notes file. Do not touch comments inside the script that reference physical results from "Stage 11"/"Stage 12" descriptively (those are content references, not file-identification labels).
 
 **Verification:**
-After patch, the assertion remains in both scripts (verifier still sees the PASS line in both output transcripts) but the docstring/comment honestly describes what it checks.
+After Codex applies, the banner output (mathematica) should read `STAGE 029 — DYNAMIC LOADING`, and the sympy docstring header should reference Stage 029. Existing `Stage 029 Mathematica audit passed.` line is already correct.
 
-### F3 — mathematica_transliteration
+### F2 — insufficient_verification
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:74-89` (Schur block)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:161-168` (Hellmann–Feynman block)
-- (versus the corresponding SymPy blocks at `scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:97-131` and `:265-277`)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:246-283` (function `selected_mode_projection`)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:191-229`
 
 **What's wrong:**
-The Mathematica script is structurally a line-by-line port of the SymPy script. Side-by-side excerpts:
+Paper card eq `selected-odd` (lines 100-104) claims `delta D_-^odd(omega) = -i (a^5/(27 c_s^5)) beta_0 (v.e_-)^2 omega^5 + O(omega^7)`. Neither engine asserts this combined identity. Both compute the pieces but never bind them:
 
-Schur block (SymPy `:101-127` vs Mathematica `:74-89`):
-```
-# SymPy
-Mint = sp.Matrix([
-    [AU, 0, -lambda_R * kappa0, 0],
-    [0, AU, -lambda_R * kappa1, 0],
-    [-lambda_R * kappa0, -lambda_R * kappa1, AW, 0],
-    [0, 0, 0, Aphi],
-])
-C = sp.Matrix([
-    [lambda_U, 0],
-    [0, lambda_U],
-    [lambda_W * kappa0, lambda_W * kappa1],
-    [lambda_B * kappa0, lambda_B * kappa1],
-])
-Sigma = sp.simplify(C.T * Mint.inv() * C)
-Sigma_expected = sp.simplify(Xi * I2 + alpha * (v * v.T))
-expect_zero("Sigma - (Xi I + alpha vv^T)", Sigma - Sigma_expected)
-```
-```
-(* Mathematica *)
-mint = {
-  {aU, 0, -lambdaR*kappa0, 0},
-  {0, aU, -lambdaR*kappa1, 0},
-  {-lambdaR*kappa0, -lambdaR*kappa1, aW, 0},
-  {0, 0, 0, aphi}
-};
-cMat = {
-  {lambdaU, 0},
-  {0, lambdaU},
-  {lambdaW*kappa0, lambdaW*kappa1},
-  {lambdaB*kappa0, lambdaB*kappa1}
-};
-sigmaWall = FullSimplify[Transpose[cMat].LinearSolve[mint, cMat], ...];
-sigmaExpected = FullSimplify[xiShift*i2 + alpha*Outer[Times, v, v], ...];
-expectMatrixZero["Sigma - (Xi I + alpha vv^T)", sigmaWall - sigmaExpected];
-```
+- sympy line 263: `odd_projection = -sp.I * beta5 * kappa_theta_sq * omega**5`, where `kappa_theta_sq = (q.T*(v*v.T)*q)[0]` is a generic theta-dependent quantity (line 258), *not* specialized to theta_-, and `beta5 = beta_clean(omega=0) * Gamma_port = Gamma_port * beta_0`. The script prints `odd_projection` and prints `kappa_sel_sq` (Hellmann-Feynman) separately, but never asserts e.g. `odd_projection_at_theta_minus - (-i * Gamma_port * beta_0 * kappa_sel^2(alpha_0) * omega^5) == 0`.
+- mathematica line 228 forms an analogous `oddProjection = -I*beta5*kappaSelSq*omega^5` and only `Print`s it (line 229) without `expectZero`.
 
-The internal-field ordering `(u0, u1, W, phi)`, the coupling matrix `C`, the choice to compute `Sigma = C^T M^{-1} C` in one shot, and the comparison form `Xi*I + alpha*vv^T` are bit-for-bit identical. The only differences are surface syntax (`sp.Matrix` vs `{...}`, `Mint.inv()` vs `LinearSolve[mint, ...]`, `simplify` vs `FullSimplify`).
-
-Hellmann–Feynman block (SymPy `:266-277` vs Mathematica `:161-168`):
-```
-# SymPy
-disc = sp.simplify((DeltaK + al * xi) ** 2 + 4 * al**2 * eta**2)
-tr_eff = sp.simplify((K0t + K1t) - al * sigma)
-lam_minus_template = sp.simplify((tr_eff - sp.sqrt(disc)) / 2)
-kappa_sel_template = sp.simplify(-sp.diff(lam_minus_template, al))
-...
-expect_zero("weak-loading kappa_sel^2 -> kappa0^2", ...kappa_sel_template.subs(al, 0) - kappa0**2)
-expect_zero("strong-loading kappa_sel^2 -> sigma", ...sp.limit(kappa_sel_template, al, sp.oo) - sigma)
-```
-```
-(* Mathematica *)
-discTemplate = FullSimplify[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2, ...];
-trTemplate = FullSimplify[k0t + k1t - al*sigma, ...];
-lambdaMinusTemplate = FullSimplify[(trTemplate - Sqrt[discTemplate])/2, ...];
-kappaSelSq = FullSimplify[-D[lambdaMinusTemplate, al], ...];
-...
-expectZero["weak-loading kappa_sel^2 - kappa0^2", (kappaSelSq /. al -> 0) - kappa0Sq];
-expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSq, al -> Infinity], ...] - sigma];
-```
-
-Again: same `disc`/`tr_eff`/`lam_minus` form, same `−d/d(al)` Hellmann–Feynman formula, same two limit checks at exactly the same two limit points.
-
-This violates the second-engine policy: the Mathematica script is echoing the SymPy script's algebra rather than re-deriving the result from independent intermediate forms. A genuine independent derivation would (a) eliminate the internal fields one at a time (eliminate `phi` first using the trivial `Aphi * phi = ...` block, then `W` using `aW*W = lambdaR*(kappa0 u0 + kappa1 u1)`, then the `U` doublet) to obtain `Sigma_wall` without ever inverting the 4×4, OR (b) derive `kappa_sel^2` by directly diagonalising `Keff0` at `alpha = alpha_0` and reading off the projection onto the lower eigenvector, OR (c) verify the angle law by an independent method such as completing the square on `(K0t - alpha0 kappa0^2) cos^2 theta + (K1t - alpha0 kappa1^2) sin^2 theta - 2 alpha0 kappa0 kappa1 sin theta cos theta`.
+So both engines verify the building blocks ((v.e_-)^2 via two routes in Mathematica; one route in sympy; beta_0 closed form in Mathematica; beta_5 series extraction in both), but the combined paper claim is left implicit.
 
 **Why this matters:**
-If both engines simply echo the same algebra, a bug in either author's setup (e.g. a sign in `Mint`, a transposition of the coupling matrix, a wrong sign on `eta`) will be reproduced verbatim in both scripts and both will PASS. The second engine exists precisely to break this kind of correlated failure.
+Without an asserted equality binding the printed `odd_projection` to the paper's symbolic form, a future edit to one of the building blocks (e.g. a sign or factor in beta_5 or kappa_sel^2) could pass the existing assertions while quietly changing the combined paper formula. The paper claim is the load-bearing one; the building blocks are intermediate.
 
 **Required change:**
-Restructure the Mathematica script's Schur block (lines 74–89) and Hellmann–Feynman block (lines 161–168) to use independent derivation paths. Concretely:
+Add one assertion per engine that ties the building blocks to the paper formula.
 
-(1) Replace lines 74–89 with a sequential-elimination derivation: eliminate `phi`, `W`, and the `U` doublet one at a time from the coupled 4×4 system, accumulating the effective wall self-energy as a sum of three rank-correction contributions (from `phi`, from `W`, from `U`). Compare the resulting `Sigma_wall_seq` to the same `Sigma_expected = Xi I + alpha vv^T` target. The check on line 89 then verifies the *sequentially-derived* `Sigma_wall_seq` agrees with the algebraic decomposition, not the one-shot 4×4 inverse.
+In sympy `selected_mode_projection`, after the current line 275:
+```
+delta_D_paper = (
+    -sp.I * Gamma_port
+    * (Omega_U**2 * lambda_W + lambda_R * lambda_U)**2
+    / (Omega_U**2 * Omega_W**2 - lambda_R**2 * sigma)**2
+    * kappa_sel_sq
+    * omega**5
+)
+delta_D_script = sp.simplify(-sp.I * beta5 * kappa_sel_sq * omega**5)
+expect_zero(
+    "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+    delta_D_script - delta_D_paper,
+)
+```
+(`beta5` and `kappa_sel_sq` are already defined; this is a trivial equality once `beta5` matches the paper closed form, which is the case by construction at line 224.)
 
-(2) Replace lines 161–168 with a derivation that does NOT use the closed-form `lam_minus = (tr - Sqrt[disc])/2` and `-D[lam_minus, al]`. Instead, at `alpha = alpha_0`, diagonalise `Keff0` numerically over the symbolic ring via `Eigensystem[Keff0]` (Mathematica supports this for symbolic 2×2), take the eigenvalue with the smaller real part, and read `kappa_sel^2 = | <v_-, v> |^2` where `v_- = (cos theta_-, sin theta_-)`. Then the assertion is `(kappa_sel^2 - "closed-form formula" )`, with the closed form being the SymPy script's `−d lambda_- / d al` — and that becomes the genuine cross-engine check.
+In Mathematica, after line 228:
+```
+deltaDPaper = -I*GammaPort
+              * (OmegaU^2*lambdaW + lambdaR*lambdaU)^2 / delta0^2
+              * kappaSelSq
+              * omega^5;
+deltaDScript = -I*beta5*kappaSelSq*omega^5;
+expectZero[
+  "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+  deltaDScript - deltaDPaper
+];
+```
+This binds the paper's eq `selected-odd` to the script-computed combination, anchoring deliverable D4 directly.
 
 **Verification:**
-After Codex applies, `redteam exec-mathematica 029` exits 0, the captured output (a) contains a new printed line `Sigma_wall_seq = ...` distinct from `Sigma_wall_oneshot`, and (b) the printed `kappa_sel^2` line is derived from `Eigensystem[Keff0]` rather than `-D[lambdaMinusTemplate, al]`. The verifier visually confirms the two derivation paths in the source.
+New `expect_zero`/`expectZero` line appears in each script. After `redteam exec-sympy 029` and `redteam exec-mathematica 029`, the new line emits `= 0` / `PASS`. The saved outputs include the new line.
+
+### F3 — insufficient_verification
+
+**Severity:** medium
+**Files:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:268-279`
+
+**What's wrong:**
+The Mathematica script at line 223 asserts the cross-check `kappa_sel^2 closed-form vs eigenvector projection`, comparing the Hellmann-Feynman `-d lambda_- / d alpha` expression against `(v.e_-_hat)^2` where `e_-_hat` is constructed directly from `Eigensystem[K_eff(al)]`. This is the genuine independent verification that the Hellmann-Feynman shortcut produces the same `(v.e_-)^2` the paper writes.
+
+The sympy script computes only the Hellmann-Feynman form (`kappa_sel_template`, line 272) and then checks weak/strong limits (lines 278-279). It does NOT construct `e_-` explicitly via SymPy's eigenvector routines and project `v` onto it. So sympy alone could not catch a Hellmann-Feynman sign error or a wrong-eigenvalue branch identification - the limit checks pass for either branch up to sign in the alpha=0 limit (both kappa_0^2 and sigma are positive in the limits), but the formula being correct *between* the limits is unverified by sympy alone.
+
+**Why this matters:**
+The selected odd coefficient (D4) carries the sign that makes the eigenvalue's `-i omega^5`-shift damping rather than amplification. A wrong-branch `kappa_sel^2` would still satisfy the two limit checks at alpha->0 and alpha->infty but be wrong in the interior. Mathematica catches this via M8; sympy does not - so on sympy alone, the verification is asymmetric.
+
+**Required change:**
+Add a SymPy direct-eigenvector projection comparable to Mathematica's M8. In `selected_mode_projection` after line 275, add roughly:
+```
+K_eff_al = sp.Matrix(
+    [
+        [K0t - al * kappa0**2, -al * kappa0 * kappa1],
+        [-al * kappa0 * kappa1, K1t - al * kappa1**2],
+    ]
+)
+eigdata = K_eff_al.eigenvects()
+vec_lo = None
+for ev, _, vecs in eigdata:
+    if sp.simplify(ev - lam_minus_template) == 0:
+        vec_lo = vecs[0]
+        break
+assert vec_lo is not None, "lower eigenvector not found"
+norm_sq = sp.simplify((vec_lo.T * vec_lo)[0])
+kappa_sel_sq_direct = sp.simplify(((vec_lo.T * v)[0])**2 / norm_sq)
+expect_zero(
+    "kappa_sel^2 closed-form vs eigenvector projection",
+    sp.simplify(kappa_sel_template - kappa_sel_sq_direct),
+)
+```
+This mirrors mathematica lines 201-223 in SymPy.
+
+**Note for Codex (self-test):** `sp.Matrix.eigenvects()` may return eigenvalues in either order. The loop's match against `lam_minus_template` (already defined at line 271) picks the correct branch. The squared projection `((vec.T * v)[0])**2 / (vec.T * vec)[0]` is sign-invariant in the eigenvector's overall scale. If `eigenvects()` returns a `CRootOf` form or stalls, fall back to constructing the eigenvector analytically from the nullspace of `K_eff_al - lam_minus_template * sp.eye(2)`:
+```
+N = (K_eff_al - lam_minus_template * sp.eye(2)).nullspace()
+vec_lo = N[0]
+```
+Either path is acceptable; the equality is what matters.
+
+**Verification:**
+New `expect_zero` line emits `= 0` after `redteam exec-sympy 029`. The new sympy output file contains this new line under SECTION IV.
+
+### F4 — paper_misalignment
+
+**Severity:** low
+**Subtype:** paper_missing_script_claim
+**Files:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_029.tex:106` (`\stagefield{Output}` — does not mention `alpha_crit`)
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_029.tex:108-113` (`\stagefield{Checks}` — does not mention `alpha_crit`)
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage029_dynamic_loading.md:173-186` (section 3.1 - defines and discusses `alpha_crit`)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:189-194` (asserts `alpha_crit - expected == 0`)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:159-166` (asserts `det(alpha_crit) == 0`)
+
+**What's wrong:**
+Both scripts verify a closed form for the refined softening threshold `alpha_crit = K0t*K1t / (K1t kappa_0^2 + K0t kappa_1^2)`. This appears in the notes section 3.1 but is **not** listed in the paper card's `\stagefield{Output}` (line 106) nor in `\stagefield{Checks}` (lines 108-113). The card's Output enumerates only Schur split, static branch data, beta_0, and selected odd coefficient. The scripts therefore verify an extra deliverable that the paper card does not state.
+
+**Why this matters:**
+Either the paper card should mention `alpha_crit` (since the notes treat it as a substantive result of the stage), or the script should drop the `alpha_crit` assertion as out-of-scope. Direction of resolution is the user's call. Without resolution, a future reader of the paper card would not know `alpha_crit` had been verified, and a future editor of the card could not gauge whether the script-side check needs to be retained or trimmed.
+
+**Required change:**
+See directive `## Resolve before fix_loop` block. Codex does not auto-resolve.
+
+**Verification:**
+After user resolution, either: (a) paper card line 106 expands `\stagefield{Output}` to mention `alpha_crit` (notes-source authority preserved), or (b) the script's `alpha_crit` assertion is removed (sympy lines 189-194; mathematica lines 159-166). No auto-fix is applied until the user picks a direction.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is NOT an independent re-derivation. See F3 above for line-by-line correspondence with the SymPy script. The shared elements include: the identical Mint matrix layout with fields ordered `(u0, u1, W, phi)`, the identical coupling matrix C with the same rows in the same order, the one-shot Schur formula `C^T M^{-1} C` (vs sequential elimination), the same Hellmann–Feynman template `−D[lam_minus, al]`, and the same two limit checks (`al -> 0` and `al -> Infinity`). The only divergence is surface syntax.
+The Mathematica script is **not** a transliteration of the sympy script. Key contrast:
+
+- sympy line 120: single shot `Sigma = C.T * Mint.inv() * C` — direct 4x4 matrix inverse and quadratic form.
+- mathematica lines 87-113: sequential elimination. Step 1 (line 90): phi contributes `sigmaPhi = (lambda_B^2/A_phi) * outer(v, v)` directly. Step 2 (lines 97-101): build `uMassInv` as a Sherman-Morrison-like sum `Inverse[diag(A_U, A_U)] + (lambda_R^2/(A_U * Delta_UW)) * outer(v, v)`. Step 3 (lines 106-112): contract `C_U^T . uMassInv . C_U` for the isotropic Xi piece and add a hand-derived `sigmaW = ((A_U lambda_W^2 + 2 lambda_R lambda_U lambda_W) / Delta_UW) * outer(v, v)` for the wall-q -> W -> wall-q closed loop.
+
+These are demonstrably different computational paths to the same `Sigma_wall`: sympy uses the canonical Schur formula, Mathematica uses a partitioned/Sherman-Morrison inversion. They produce identical results (verified by both engines' explicit assertions: sympy line 127 and mathematica line 116 both null `Sigma - (Xi I + alpha vv^T)`). Genuine cross-engine check, not a port.
+
+A similar independence holds for `kappa_sel^2`: sympy uses Hellmann-Feynman exclusively; Mathematica uses Hellmann-Feynman AND direct `Eigensystem` projection AND verifies the two agree (M8). The selected-eigenvalue identification in Mathematica (lines 205-209) uses an explicit `Position` match against the expected `tr/2 - Sqrt[disc]/2` form, so the branch choice is forced from outside and cannot silently swap.
+
+No `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-Both engines' final outputs agree at the level they claim to. Spot-check:
+Both engines produce the same closed forms for every shared assertion:
 
-- `sigma`: sympy `88/(9*pi**2)` (line 353) = mma `88/(9 Pi^2)` (line 19 PASS). ✓
-- `xi`: sympy `56/(9*pi**2)` (line 354) = mma `56/(9 Pi^2)` (line 21 PASS). ✓
-- `eta`: sympy `-8*sqrt(2)/(3*pi**2)` (line 355) = mma `-8 Sqrt[2]/(3 Pi^2)` (line 23 PASS). ✓
-- `Xi_0`: both `lambda_U^2/Omega_U^2`. ✓
-- `alpha_0`: SymPy line 366 expansion equals the Mathematica line 27 form after clearing the `9 pi^2` factor between numerator and denominator. ✓
-- `beta_5`: sympy `81*pi^4*Gamma_port*(...)^2/(9*pi^2*Omega_U^2*Omega_W^2 - 88*lambda_R^2)^2` (line 829) equals mma `Gamma_port*(...)^2/(Omega_U^2*Omega_W^2 - 88*lambda_R^2/(9*Pi^2))^2` (line 45) after factoring `9 pi^2` from the denominator and squaring. ✓
-- `kappa(theta)^2`: sympy `(8/(9 pi^2))(11/2 + (7/2) cos(2 theta) - 3 sqrt(2) sin(2 theta))` = mma `(4/(9 Pi^2))(11 + 7 Cos[2 theta] - 6 Sqrt[2] Sin[2 theta])`. ✓
-- All `expect_zero` / `expectZero` residuals print as `0` / `PASS` in both engines.
+| Object | sympy output | mathematica output |
+|---|---|---|
+| sigma | `88/(9*pi**2)` (line 345) | `88/(9 Pi^2)` (line 11) |
+| Xi_0 | `lambda_U**2/Omega_U**2` (line 356) | `lambdaU^2/OmegaU^2` (line 17) |
+| Delta_0 | `Omega_U**2*Omega_W**2 - 88*lambda_R**2/(9*pi**2)` (line 357) | `OmegaU^2*OmegaW^2 - (88*lambdaR^2)/(9*Pi^2)` (line 18) |
+| alpha_0 | combined rational (line 358) | combined rational (line 19) — algebraically equal after common-denominator rearrangement |
+| beta_5 | `81*pi**4*Gamma_port*(Omega_U^2 lambda_W + lambda_R lambda_U)^2/(9 pi^2 Omega_U^2 Omega_W^2 - 88 lambda_R^2)^2` (line 821) | `(GammaPort*(lambdaR lambdaU + lambdaW OmegaU^2)^2) / (OmegaU^2 OmegaW^2 - 88 lambdaR^2/(9 Pi^2))^2` (line 37) — equal after multiplying num/denom by (9 Pi^2)^2 |
+| kappa_sel^2 (HF) | sympy line 838ff prints the full radical form | mathematica line 43: `(88 + 8(968 alphaLoad + 63 DeltaKax Pi^2)/Sqrt[...])/(18 Pi^2)` — equal after factoring |
 
-No engine disagreement.
+All cross-engine `PASS`. `engines_agree: true`.
 
 ## Verdict justification
 
-Three findings: F1 (a tautological Mathematica check of the form `-x - (-x) = 0`, mislabeled as a positivity claim), F2 (a tautological check in both engines that subtraction of equal shifts cancels — kept honestly as a typo guard but mislabeled in comments as a physics check), and F3 (the Mathematica script is structurally a line-by-line port of the SymPy script, providing no genuine independent verification). The unit's substantive math (Schur decomposition, alpha_crit closed form, beta_5 outgoing dressing, Hellmann–Feynman selected-mode coefficient) holds up under attack — assertions are well-anchored, residuals genuinely vanish, and engine cross-check is clean. None of the findings is `UNFIXABLE` or `CRITICAL_DOWNSTREAM`: F1/F2 are local cosmetic/labeling fixes; F3 is a restructuring that does not change the proven result.
+The math holds. Both engines independently verify the Schur split (D1, the bottom-line theorem of the stage) via genuinely different routes, and both verify the `beta(omega)` closed form (D3) and the first-order `Pi`-expansion. The static branch data (D2) is computed by direct substitution from D1 and printed — algebraically implied, but not anchored by an explicit assertion against the literal closed forms. The selected odd coefficient (D4) is computed in pieces but never asserted as a single equality against the paper's eq `selected-odd`. Sympy's `kappa_sel^2` verification is asymmetrically weaker than Mathematica's because sympy lacks the direct eigenvector projection cross-check. One extra script-side check (`alpha_crit`) is verified in both engines but does not appear in the paper card.
 
-Attacks attempted that failed: (i) substituting the trivial profile `kappa0 = 1, kappa1 = 0` into the Schur decomposition — the residual still simplifies to zero, no hidden branch error in the `Mint^{-1}` computation; (ii) checking that the `assume(positive=True)` on `Omega_U, Omega_W, varpi, K0, M0, M1, DeltaK_ax` does not collapse a sign in `eta = kappa0 kappa1` — the assumptions affect only the physical-parameter symbols, while `eta`'s sign comes from the explicit numeric definition of `kappa1 = -4/(3*pi) < 0`; (iii) testing whether `sp.series(alpha.subs(Pi, eps), eps, 0, 2)` could agree with `alpha_cons + beta_clean * Pi` for trivial reasons even if `beta_clean` were wrong — but `beta_clean` is independently asserted to equal `D(alpha, Pi)|_{Pi=0}` on line 214 first, so the O(Pi) series check is consistent rather than vacuous; (iv) confirming the `omega -> 0` limit in `beta_5 = beta_clean.subs(omega, 0)*Gamma_port` does not silently drop a finite term — direct substitution shows `beta_clean(omega=0) = (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2`, which matches the `beta_5` reported in both outputs.
+Attacks attempted that did not break the math:
+- Tried to find a sign mismatch between sympy's `eta = kappa_0 * kappa_1 = -8 sqrt(2)/(9 pi^2) < 0` and the stationarity equation: sympy uses `eta` consistently and the sign is correct (kappa_1 < 0 by construction at line 76, kappa_0 > 0).
+- Tried to find a wrong-branch `kappa_sel^2` in sympy via the limit checks alone: limits pin down `kappa_0^2` at alpha=0 and `sigma` at alpha->infty, but the interior is what genuinely forbids the wrong branch - hence F3.
+- Checked whether the `Pi` symbol clash with `sp.pi` could cause cross-contamination: at sympy line 72 `Pi = sp.symbols("Pi")` declares the symbol explicitly; `sp.pi` is the constant; no collision in `sp.simplify`.
+- Verified `expect_zero` does catch nonzero matrix entries (line 51 raises if `any(entry != 0)`). Not tautological.
+- Checked whether the printed `alpha_0` in the sympy output (line 358) and mathematica (line 19) agree: after putting both over a common denominator, identical.
+- Checked the Mathematica `sigmaW` hand-derivation against the W-only contribution one expects from inverting the inner 3x3 (U_0, U_1, W) block: the numerator `aU * lambdaW^2 + 2 lambdaR lambdaU lambdaW` is the cross-channel coupling-product that comes from `(C_W^T + C_R-inversion-correction)`-style expansion; matches direct computation against the Mathematica inversion path (verified end-to-end by M1 anyway).
+
+Verdict: `findings`. Two medium-severity `insufficient_verification` findings (F2, F3) that add asserted anchors for D4 and the `kappa_sel^2` cross-check; one low `paper_misalignment` for the stage-number docstring/banner drift (F1); and one low `paper_misalignment` for the `alpha_crit`-not-in-card item that needs user resolution (F4). `stop_cold: null`. F1, F2, F3 are safely applicable by Codex; F4 routes to the user.
 
 ## Self-test notes
 
-I checked each proposed directive edit before writing it. (a) For F1, I substituted the definition `tan2Theta = 2 a0 eta / D` into the residual `-tan2Theta - 2 a0 (-eta)/D` and obtained `-2 a0 eta/D + 2 a0 eta/D = 0` confirming the tautology; for the proposed replacement (a), `((DeltaKax + alpha0*xiConst) Sin[2t] - 2 alpha0 eta Cos[2t]) /. t -> ArcTan[2 alpha0 eta/(DKax+alpha0 xi)]/2` is a genuine equation `R sin(phi-phi0) = 0` whose root `2t = arctan(2 a0 eta/(DKax+a0 xi))` does make it vanish, so the replacement is non-trivial and PASS-able. (b) For F2, the assertion `(K1t - K0t) - DeltaKax = ((K0 + DeltaKax - Xi0) - (K0 - Xi0)) - DeltaKax = 0` is forced by definitions on the two preceding lines; my proposed fix only edits the comment, not the assertion, so no derivative/parity/trivial-case re-derivation is needed. (c) For F3, the directive proposes restructuring the Mathematica script; I verified that `Eigensystem` over a symbolic 2×2 in Mathematica does produce closed-form eigenvalues/eigenvectors, and that the sequential-elimination derivation of `Sigma_wall` (eliminate phi → W → U doublet) does land on the same `Xi I + alpha vv^T` form, so the proposed independent paths are not degenerate. (d) Path specifications: F1 and F3 target the `.wl` file under `mathematica/`; F2 targets both the `.py` under `scripts/` and the `.wl` under `mathematica/`. All paths are absolute and correctly placed.
+I checked: (1) **Variable independence** — the proposed F2/F3 `expect_zero` arguments use already-defined script variables (`beta5`, `kappa_sel_template`, `Omega_U`, `lambda_W`, etc.), all carrying nontrivial dependence on the substituted symbols. The differences are not identically zero by construction; they collapse to zero by genuine algebraic equality (e.g. `beta_5 == Gamma_port * (Omega_U^2 lambda_W + lambda_R lambda_U)^2 / Delta_0^2` is the same identity already asserted in Mathematica's M7, so sympy will pass the new F2 binding). (2) **Symmetry/parity** — not applicable; the new checks are algebraic, not integrals. (3) **Trivial-case pre-check** — at alpha=0, the F3 direct-eigenvector route gives `e_- = (1, 0)`, so `(v.e_-)^2 = kappa_0^2`, matching A8; the closed-form HF expression also gives `kappa_0^2` at alpha=0; difference vanishes. At alpha->infty, `e_- -> v/||v||`, giving `(v.e_-)^2 = ||v||^2 = sigma`, matching A9. The interior is forced by the explicit equality, not just the two limits. (4) **Path specifications** — F1/F2/F3 modify existing files (no missing-script finding); paths are `scripts/...py` and `mathematica/...wl`. (5) **Paper round-trip** — F2 binds the script to the paper's eq `selected-odd` *as written*, with the explicit `(Omega_U^2 lambda_W + lambda_R lambda_U)^2/Delta_0^2` denominator; no new paper claims introduced.

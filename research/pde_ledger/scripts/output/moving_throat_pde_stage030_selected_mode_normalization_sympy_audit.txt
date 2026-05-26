@@ -28,6 +28,7 @@ lambda_+ =
 A + ── - ─────────── + ─────────────────────────────────────
     2         2                          2                  
 selected overlap: HF - closed form = 0
+HF eigenvector check = 0
 s_- = (v.e_-)^2 =
                                                         ______________________ ↪
                                                        ╱    2                  ↪

@@ -6,16 +6,20 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded
-re-audit pass. Checkpoints `022` and `023` fall in range. The I.2 v2
-sweep surfaced 0 new hardcoded_result findings; all 6 paper_misalignment
-items were resolved via Codex apply (4 stages with material_change:true
-due to script trims removing content duplicated from destination
-stages). Stage 023's Schur-derivation block added via Codex remediation
-introduced no new literals — the Schur derivation closes against
-existing `Q_expr`/`H_expr` symbolic forms with no magic numbers. I.1 v2
-close text remains accurate for I.1 range; III.4 update remains
-accurate for batches III.1-III.4.)
+Snapshot date: `2026-05-26` (batch II.1 v2 close — third paper-grounded
+re-audit pass. Checkpoints `024` and `036` fall in range. The II.1 v2
+sweep surfaced 0 new hardcoded_result findings; the one paper-side
+constant correction (Q3, stage 035) was a *paper polynomial coefficient
+fix* (`206→189` and `138→121` in the bracket polynomial of `dF/dxi`) —
+scripts already had the correct coefficients per Codex's independent
+quotient-rule expansion (verified at δ=0 numerically:
+`121/[81(1-ξ)²]`); paper and notes were updated to match. No new
+literals introduced into checkpoint stages. Stage 024's added matrix-
+inverse anchor block uses only paper-side symbols `Q,H,P,Delta,S,
+G_U,G_W,Omega_U,Omega_W,R` (all carried forward from stage 024 paper
+card `paper/stages/stage_024.tex:103,108,113`); no magic numbers
+introduced. I.1 + I.2 v2 close text remains accurate for those ranges;
+III.4 update remains accurate for batches III.1-III.4.)
 
 ## Audit Rule
 

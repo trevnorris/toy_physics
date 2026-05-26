@@ -2,104 +2,84 @@
 unit_id: 031
 batch: II.1
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-22T00:00:00Z
+verify_date: 2026-05-26T00:35:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 4
-findings_total: 4
+findings_resolved: 2
+findings_total: 2
 material_change: false
 ---
 
-# Verification — unit 031
+# Verification — unit 031 (batch II.1 v2)
 
 ## Per-finding outcomes
 
-### F1 — insufficient_verification
+### F1 — mathematica_transliteration
 
 **Classification:** resolved
 
 **What changed:**
-- `scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py:71-76`: Inserted three new lines between the existing `expect_zero("generic quotient/HF identity", ...)` (line 69) and the `print("dP0_-/dalpha =")` (line 75):
-  ```
-  dP_direct = sp.diff(P0_sel, alpha)
-  dP_physical = beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2
-  expect_zero("dP0_-/dalpha direct identity", sp.simplify(dP_direct - dP_physical))
-  ```
-  and changed the subsequent pprint argument from a re-typed expression to `sp.simplify(dP_physical)`. The generic-identity assertion remains intact.
+`mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl:26-145` — the body between the unchanged helper block (lines 1-24) and the trailing `Exit[0];` was replaced wholesale with the prescribed independent-derivation sequence. The new body:
+
+- Builds the loaded 2x2 wall matrix directly: `wallMatrix = {{a, 0}, {0, a + dK}} - alpha*Outer[Times, {kappa0, kappa1}, {kappa0, kappa1}]` (lines 37-38), with `kappa0, kappa1` symbols (not `x0, x1`).
+- Extracts eigenvalues via `Eigenvalues[wallMatrix]` and sorts to pick the lower branch as `lamMinusIndep` (lines 42-44).
+- Extracts the lower eigenvector via `Eigenvectors[wallMatrix]`, pairs eigenvalues with eigenvectors, picks the lower-eigenvalue eigenvector `eMinus`, and computes the loading-vector overlap `sMinusOverlap = (loadingVec . eMinus)^2 / (eMinus . eMinus)` (lines 51-59).
+- Asserts the Hellmann–Feynman identity `D[lamMinusIndep, alpha] + sMinusOverlap == 0` as an *independent theorem* (lines 63-67) rather than treating `s_-` as a defined quantity.
+- Derives `alpha_crit` from `Solve[Det[wallMatrix] == 0, alpha]` (lines 98-107) and asserts equality with the closed form `a(a + dK)/((a + dK)*kappa0^2 + a*kappa1^2)`.
+- Re-derives Parts III–VI from these primitives, using `Det[M] = lam_- * lam_+` (lines 118-125) and the pole factorization of `P0_-` (lines 127-134).
 
 **Assessment:**
-Edit matches the directive verbatim (modulo the cosmetic pprint refactor, which uses the now-defined `dP_physical` instead of re-typing the closed form — equivalent in content). The new assertion is non-tautological: it invokes the physical `P0_sel = beta0 * s_minus / lam_minus` built from the explicit eigenvalue expressions, takes `sp.diff(...)` against `alpha`, and compares to the closed form `beta0*(ds_expected*lam_minus + s_minus**2)/lam_minus**2`. A sign error in `s_minus` or in `ds_expected` would cause this check to fail because `dP_direct` is computed independently of those symbols. The saved sympy output shows `dP0_-/dalpha direct identity = 0` at line 18, between `generic quotient/HF identity = 0` (line 17) and `dP0_-/dalpha =` (line 19), exactly as the directive's verification clause requires.
+The replacement matches the directive's prescribed text essentially verbatim. Verified that the smoking-gun substrings called out in the directive's Verification Command are absent — grep for `sigma = x0 + x1`, `deltaKappa = x0 - x1`, `kappaProd = x0*x1`, `radCritDerived`, and the old banner `PART I — EXACT SELECTED OVERLAP DERIVATIVE` returns no matches in the `.wl`. Verified that `Eigenvalues`, `Eigenvectors`, `wallMatrix`, `sMinusOverlap`, and `hfResidual` are present. The Mathematica exec log (`redteam/exec_logs/stage_031_mathematica.log`) shows every assertion in the new claim manifest M1–M7 emits `= 0` followed by `PASS:` and the script exits 0.
+
+No assertion is tautological: the HF check (M1) compares the *derivative of an eigenvalue obtained from Mathematica's `Eigenvalues[wallMatrix]`* against the *overlap of the loading vector with the eigenvector obtained from `Eigenvectors[wallMatrix]`* — two structurally independent computations whose equality is genuinely informative. M5 (`alpha_crit`) compares `alpha /. First[Solve[Det[wallMatrix] == 0, alpha]]` against the closed form, also non-vacuous. No collateral edits: the helpers/banner block at lines 1-24 and the trailing `Exit[0];` at line 145 are unchanged, matching the directive. Codex's `## Applied: F1` block declares `deviation: none`, consistent with what's in the file.
 
 ### F2 — tautological_check
 
 **Classification:** resolved
 
 **What changed:**
-- `scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py:89-94`: Replaced the tautological `(A*(A+DK) - alpha*T0).subs(alpha, alpha_crit)` check with a denesting-then-simplify check on `lam_minus.subs(alpha, alpha_crit)`. Codex did NOT use `sp.radsimp` as the directive suggested; instead it introduced `root_crit = A**2 x1 + (A+DK)**2 x0` and a custom `expr.replace(...)` that matches any `Pow` with exponent 1/2 whose base simplifies to `root_crit**2`, replacing the sqrt with `root_crit`. This deviation is acknowledged in the `## Applied: F2` block ("`sp.radsimp` did not reduce ... in this environment").
-- `mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl:61`: Replaced `expectZero["alpha_crit condition", (a*(a + dK) - alpha*t0) /. alpha -> alphaCrit]` with `expectZero["lam_-(alphaCrit)", FullSimplify[lamMinus /. alpha -> alphaCrit, Assumptions -> $Assumptions]]` exactly as specified.
+`scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py:57-60` — the 12-line block at original lines 58-69 was deleted: the comment, the `Lsym, Ssym, DSsym` symbol declaration, the `dP_generic = sp.diff(...)` construction, the `.subs(...)` map, the `dP_expected` assignment, and the `expect_zero("generic quotient/HF identity", ...)` call. What remains in PART II is `P0_sel = sp.simplify(beta0 * s_minus / lam_minus)` (line 56), followed directly by `dP_direct = sp.diff(P0_sel, alpha)` (line 58), `dP_physical = beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2` (line 59), and the load-bearing `expect_zero("dP0_-/dalpha direct identity", sp.simplify(dP_direct - dP_physical))` at line 60. Lines 62-63 (`print("dP0_-/dalpha =")` and `sp.pprint(...)`) are unchanged.
 
 **Assessment:**
-Both engines now assert the substantive physical claim `lambda_-(alpha_crit) = 0` (the selected eigenvalue collapses at the threshold), not the tautological rearrangement.
-
-On the SymPy deviation: the custom denester is mathematically sound. The radical inside `lam_minus.subs(alpha, alpha_crit)` after `sp.together` is `sqrt(numerator/T0**2)` where `numerator = T0**2 * R(alpha_crit)**2`. Codex's `replace` only fires when the sqrt's base equals `root_crit**2` modulo `sp.simplify`; if the F3 perfect-square identity (verified separately at line 100) failed, the matcher would not fire and the residual would survive `sp.simplify` non-zero. The check is therefore genuinely substantive and not made-to-pass by the rewrite — it depends on the perfect-square structure that F3 establishes. Since all parameters are positive, `sqrt(root_crit**2) = root_crit` is valid (no |.| sign issue). The output shows `lam_-(alpha_crit) = 0` (sympy line 71) and `lam_-(alphaCrit) = 0 / PASS: lam_-(alphaCrit)` (mathematica lines 31-32), satisfying the directive's verification clause.
-
-A genuine concern was whether the SymPy implementation might mask a sign error in `T0` or `alpha_crit`: if `T0 = (A+DK)*x0 - A*x1` (the typo example from the audit report), then `alpha_crit = A(A+DK)/T0_wrong`, `R(alpha_crit)` would no longer evaluate to `root_crit/T0_wrong`, the matcher would not match `root_crit**2`, the radical would survive, and `sp.simplify` of the unreduced rational expression would not produce 0. So the check is robust against that class of error.
-
-### F3 — hardcoded_result
-
-**Classification:** resolved
-
-**What changed:**
-- `scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py:97-101`: Replaced the hand-typed 9-term polynomial `radcrit = A**4*x0**2 + ...` with `radcrit_derived = sp.expand(T0**2 * (R**2).subs(alpha, alpha_crit))`. The assertion now expands the difference `radcrit_derived - (A**2 * x1 + (A + DK) ** 2 * x0) ** 2`.
-- `mathematica/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.wl:64-65`: Replaced the hand-typed `radCrit = ...` with `radCritDerived = Expand[t0^2 * (r^2 /. alpha -> alphaCrit)]` and updated the assertion to `Expand[radCritDerived - (a^2*x1 + (a + dK)^2*x0)^2]`.
-
-**Assessment:**
-Edits match the directive verbatim in both engines. The LHS is now derived in-script from the physical radicand `R**2 = (DK + alpha*(x0-x1))**2 + 4*alpha**2*x0*x1`, evaluated at `alpha = alpha_crit`, and weighted by `T0**2`. The RHS is the closed-form perfect square. The check therefore anchors the threshold radical to the actual quadratic-formula discriminant, not to a hand-supplied polynomial. A typo in `R`, `T0`, or `alpha_crit` would now propagate to `radcrit_derived` and the difference would be non-zero. Output shows `threshold radical square identity = 0` in both engines (sympy line 72, mathematica line 33). Confirmed via grep that neither file contains the tail term `dK^4*x0^2` / `DK**4*x0**2` of the old hand-typed polynomial.
-
-### F4 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-The same Mathematica edit applied for F3 (lines 64-65). Directive explicitly states F4 is addressed by the F3 Mathematica patch; no additional edits required or applied.
-
-**Assessment:**
-The most direct evidence of transliteration (the identical hand-typed 9-term `radCrit` polynomial shared verbatim between `.py` and `.wl`) is eliminated. The Mathematica file now derives the perfect-square identity from its own symbolic `r^2 /. alpha -> alphaCrit` rather than copying SymPy's polynomial. PART II already does independent work via `D[p0Sel, alpha]` (which was unchanged). Verbatim transliteration in PARTs I, III, V remains, but that is intrinsic to the algebraic problem and is out of scope per the directive's minimal-change instruction. The grep above confirms `dK^4*x0^2` is gone from the Mathematica file.
+The edit matches the directive exactly. Confirmed via grep that `generic quotient/HF identity`, `dP_generic`, `dP_expected`, `Lsym`, `Ssym`, `DSsym` no longer occur anywhere in the script. The retained direct identity at line 60 is the load-bearing physical assertion (compares SymPy's symbolic derivative of `P0_sel = beta0 * s_minus / lam_minus` — built from the explicit eigenvalue expressions — against the closed-form quotient-rule expression). The SymPy exec log shows the PART II banner followed by exactly `dP0_-/dalpha direct identity = 0` and the printed closed form — no `generic quotient/HF identity = 0` line — and the script exits 0. Other parts (I, III, IV, V) were not touched and continue to pass. No collateral edits. Codex's `## Applied: F2` block declares `deviation: none`, consistent with what's in the file.
 
 ## Exec log assessment
 
-**SymPy:** exit=0 (inferred). `exec_logs/stage_031_sympy.log` is not present; per the verifier prompt, the saved output file `scripts/output/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.txt` (mtime 2026-05-21 17:22, newer than the script mtime 17:20) is the freshness record. Notable lines:
-- `ds_-/dalpha exact formula = 0` (line 5)
-- `generic quotient/HF identity = 0` (line 17)
-- `dP0_-/dalpha direct identity = 0` (line 18) — new F1 assertion
-- `lam_-(alpha_crit) = 0` (line 71) — new F2 assertion
-- `threshold radical square identity = 0` (line 72) — new F3 assertion
-- `lambda_- * lambda_+ - T0*(alpha_crit-alpha) = 0` (line 93)
-- `STAGE 14 AUDIT COMPLETE` banner present (line 121); since `expect_zero` raises `AssertionError` on any non-zero residual, reaching the completion banner implies all assertions passed and the script exited 0.
+**SymPy:** exit=0. Notable lines:
+- `ds_-/dalpha exact formula = 0` (PART I)
+- `dP0_-/dalpha direct identity = 0` (PART II, sole remaining identity)
+- `lambda_-(0) = 0`, `s_-(0) = 0`, `P0_-(0) = 0` (PART III)
+- `det factorization = 0`, `lam_-(alpha_crit) = 0`, `threshold radical square identity = 0` (PART IV)
+- `lambda_- * lambda_+ - T0*(alpha_crit-alpha) = 0`, `P0_- factorization = 0` (PART V)
 
-**Mathematica:** exit=0 (inferred). `exec_logs/stage_031_mathematica.log` is not present; the saved output `mathematica/output/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.txt` (mtime 2026-05-21 17:22, newer than the .wl mtime 17:18) is the freshness record. Notable lines:
-- `PASS: ds_-/dalpha exact formula` (line 6)
-- `PASS: exact monotonicity identity` (line 13) — unchanged, PART II already correct per F1's source
-- `PASS: lam_-(alphaCrit)` (line 32) — new F2 assertion
-- `PASS: threshold radical square identity` (line 34) — F3 derived form
-- `PASS: lambda_- * lambda_+ - T0*(alpha_crit-alpha)` (line 42)
-- `STAGE 14 AUDIT COMPLETE` banner present (line 48); 10 `PASS:` lines, 0 `FAIL:` lines. `Exit[0]` is in the script at line 83, and `expectZero` calls `fail[...]; Exit[1]` on any non-zero residual, so reaching the banner indicates exit 0.
+The PART II section in the log contains exactly the direct identity line — the generic-quotient line is absent, confirming F2's deletion took effect at runtime. The `STAGE 14 AUDIT COMPLETE` banner is reached and `# exit_code: 0` is logged.
 
-**Output freshness:** Confirmed. Script mtimes are 17:18 (.wl) and 17:20 (.py); output mtimes are both 17:22, post-fix. Diff patch mtime also 17:22.
+**Mathematica:** exit=0. Notable lines:
+- `lam_-(0) initial value = 0 / PASS`, `lam_+(0) initial value = 0 / PASS` (eigenvalue branch identification)
+- `Hellmann-Feynman d lam_-/d alpha + s_- = 0 = 0 / PASS` (M1, the new independent theorem — the load-bearing F1 evidence)
+- `ds_-/dalpha closed form = 0 / PASS` (M2)
+- `dP0_-/dalpha closed form = 0 / PASS` (M3)
+- `s_-(0) = kappa0^2 = 0 / PASS`, `P0_-(0) = beta0 kappa0^2 / a = 0 / PASS` (M4)
+- `alpha_crit from Det[M]=0 = 0 / PASS` and `lam_-(alpha_crit) = 0 = 0 / PASS` (M5, M6)
+- `Det[M] - t0(alpha_crit - alpha) = 0 / PASS`, `lam_- lam_+ - Det[M] = 0 / PASS`, `P0_- pole factorization = 0 / PASS` (M7 and supporting)
+
+The printed forms `alpha_crit = (a*(a + dK))/((a + dK)*kappa0^2 + a*kappa1^2)` and `ds_-/dalpha = (2*dK^2*kappa0^2*kappa1^2)/...^(3/2)` agree algebraically with the SymPy results (under the `kappa0^2 ↔ x0`, `kappa1^2 ↔ x1` re-labeling that is the point of the independent derivation). `# exit_code: 0` is logged.
+
+**Output freshness:** The saved `.txt` outputs at `mathematica/output/...txt` and `scripts/output/...txt` both carry mtimes of 2026-05-21 17:22, while the scripts were edited 2026-05-25 23:42–23:43. The committed `.txt` outputs were NOT regenerated after Codex's edits. The post-fix runs are captured in the exec logs (`redteam/exec_logs/stage_031_{sympy,mathematica}.log`, dated 2026-05-26 00:18) which the prompt designates as the authoritative log source for verification; both show passing runs at exit 0. Flagging the stale committed `.txt` outputs as a side observation — they should be refreshed by the orchestrator before downstream stages depend on them.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The fixes tighten existing checks and replace hand-typed expressions with derived ones, but they do not alter any quoted result: `alpha_crit = A(A+DK)/T0`, `lambda_+^(crit) = ((A+DK)^2 x0 + A^2 x1)/T0`, `ds_-/dalpha`, `dP0_-/dalpha`, and `P0_-` are all unchanged in the saved outputs. Downstream units that depend on `alpha_crit`, the perfect-square identity, or the prefactor derivative will see the same symbolic forms.
+F1 restructures the Mathematica engine to derive the same results via an independent route from `Eigenvalues`/`Eigenvectors`; every previously-verified algebraic identity is still asserted and still passes (plus the new HF theorem M1), and no numeric value enters or leaves the ledger. F2 deletes a SymPy-only scaffolding assertion that was tautological by construction; the load-bearing physical check at line 60 is unchanged. The exact symbolic results consumed downstream (`alpha_crit`, `ds_-/dalpha`, `dP_{0,-}/dalpha`, `P_{0,-}(0)`, the pole factorization of `P_{0,-}`) are identical to the pre-fix runs. Downstream stages do not need re-audit on the basis of these edits.
 
 ## Side observations (non-blocking)
 
-- The F2 SymPy implementation is more elaborate than the directive's `sp.radsimp(...)` suggestion. Codex's `## Applied: F2` `deviation` note explains this is environmental (sp.radsimp did not reduce). The custom `Pow.replace` with a `root_crit**2` matcher is a localized denester. It is sound under positivity assumptions; the only risk is a future maintainer changing `root_crit` to a different (but equivalent) form that fails the `expr.base - root_crit**2` simplifier — at which point the matcher would silently no-op and the residual sqrt would survive. This is a maintainability concern, not a correctness concern, and not part of any finding.
-- The pretty-printed `lambda_+^(crit)` in the SymPy output (lines 78-88) is not auto-denested by `sp.simplify`; the Mathematica equivalent at line 36 is fully simplified to `((a + dK)^2*x0 + a^2*x1)/(dK*x0 + a*(x0 + x1))`. The two are algebraically equal (the original audit verified this), so this is purely a cosmetic engine difference and is not part of any finding.
-- PARTs I, III, V of the Mathematica file remain structurally parallel to the SymPy file. The directive scoped F4 to the F3 Mathematica edit only, so this is expected and not a defect.
+1. The committed `.txt` audit outputs in `mathematica/output/` and `scripts/output/` were not refreshed after Codex's edits and still date from 2026-05-21 17:22, while the script mtimes are 2026-05-25 23:42–23:43. The post-fix runs are captured in the `redteam/exec_logs/` files instead. The orchestrator should rerun `exec-sympy 031` and `exec-mathematica 031` to refresh the committed `.txt` snapshots, but this is housekeeping and not a verification failure.
+2. The Mathematica file now closes with `STAGE 031 INDEPENDENT MATHEMATICA AUDIT COMPLETE` while the SymPy script still prints `STAGE 14 AUDIT COMPLETE` (line 108 of the `.py`). Pre-existing label drift unrelated to either finding; flagging only for future cleanup.
+3. The Mathematica file invokes `Eigenvalues[wallMatrix]` twice (once via `eigvals = Sort[Eigenvalues[wallMatrix]]` at line 42 and again inside the `pairs = Sort[Transpose[{Eigenvalues[wallMatrix], eigvecs}], ...]` at line 53). Cosmetic redundancy carried over verbatim from the directive text; both calls return the same multiset so there is no correctness impact.
 
 ## Verdict justification
 
-All four findings are `resolved`. F1 adds the substantive direct-derivative check the audit specified; F2 replaces the tautological `alpha_crit` check with `lambda_-(alpha_crit) = 0` in both engines (the SymPy implementation deviates from the suggested `sp.radsimp` to a custom radical denester but remains substantively correct and non-tautological); F3 derives the threshold radical polynomial from the physical `R**2(alpha_crit) * T0**2` in both engines; F4 is structurally addressed by the F3 Mathematica edit. Saved outputs confirm all new assertions evaluate to 0, both scripts reach their completion banners (implying exit 0), and no hardcoded 9-term polynomial remains in either file. No regressions introduced by the diff. No findings were blocked or skipped.
+Both findings are resolved with no deviations. F1's replacement Mathematica body matches the directive's prescribed text essentially verbatim, eliminates all five smoking-gun transliteration markers, and adds the M1 Hellmann–Feynman cross-check as a genuine independent theorem; the exec log shows every M1–M7 assertion passing and the script exits 0. F2's deletion removes exactly the 12 lines the directive specified, leaves the load-bearing direct identity intact, and the exec log shows the PART II section is now clean of the generic-quotient line. The diff (`redteam/exec_logs/stage_031_diff.patch`) is scoped exclusively to the two target files at the specified ranges with no collateral edits. Both engines exit 0, downstream-visible algebraic results are unchanged. Verdict `verified`.

@@ -34,8 +34,8 @@ claimed denominator = 8*(9*DeltaK + 11*(K0 - gU^2/OmegaU^2))*OmegaU^2*(OmegaU^2*
 denominator ratio (must be parameter-free) = -9*Pi^2
 PASS: gate denominator matches claim up to parameter-free constant
 gate numerator = (8*gB^2*(11*gU^2 - (9*DeltaK + 11*K0)*OmegaU^2)*(-88*gR^2 + 9*OmegaU^2*OmegaW^2*Pi^2))/(9*Pi^2) + (88*(2*gR*gU*gW + gR^2*K0 + gW^2*OmegaU^2)*(gU^2 - K0*OmegaU^2) + 8*DeltaK*(2*gR^2*gU^2 - gR*(18*gU*gW + 11*gR*K0)*OmegaU^2 - 9*gW^2*OmegaU^4) + 9*(gU^2 - K0*OmegaU^2)*(gU^2 - (DeltaK + K0)*OmegaU^2)*OmegaW^2*Pi^2)*varpi^2
-alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim = 0
-PASS: alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim
+gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above) = 0
+PASS: gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above)
 
                                                                                                         968        2                          968        2                      4  88        2        7744         2        4
                                                                                                         --- + 63 Pi                           --- + 63 Pi               11664 Pi  (-- - 45 Pi  + Sqrt[---- + 336 Pi  + 81 Pi ])
@@ -51,20 +51,6 @@ N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evalu
 monotonicity numeric residual = 0``78.83717778732962
 PASS: monotonicity numeric residual zero at rule
 
-                                                                                                                                                           88        2
-                                                                                                                                                2   734 (-(--) + 9 Pi )
-                                                                                                                                 97549    910 Pi           25
-                                                                                                                            9 (-(-----) + ------- - -------------------)
-                                                                                                                        2        1350        9                 2
-                                                                                        1           361           455 Pi                                  81 Pi
-N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating -(-) - ------------------ + ------- - --------------------------------------------.
-                                                                                        4                88        1468                              88
-                                                                                             3600 (1 - -------)                          2936 (1 - -------)
-                                                                                                             2                                           2
-                                                                                                       225 Pi                                      225 Pi
-gate-identity numeric residual = 0``78.70733917439959
-PASS: gate-identity numeric residual zero at rule
-
                                                                                                                                                                                                                             2
                                                                                                          1936         2                           1936         2                      4  176        2        30976   4704 Pi          4
                                                                                                          ---- + 147 Pi                            ---- + 147 Pi               63504 Pi  (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])
@@ -79,11 +65,7 @@ N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evalu
                                                                                                                                          176        2        30976   4704 Pi          4  2                                                                                                      30976   4704 Pi          4 2  176        2        30976   4704 Pi          4  2
                                                                                                                                       3 (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])                                                                                                    3 (----- + -------- + 441 Pi )  (--- - 66 Pi  + Sqrt[----- + -------- + 441 Pi ])
                                                                                                                                           5                   25        5                                                                                                                        25        5                   5                   25        5
-
-General::stop: Further output of N::meprec will be suppressed during this calculation.
 monotonicity numeric residual = 0``78.99802761920512
 PASS: monotonicity numeric residual zero at rule
-gate-identity numeric residual = 0``78.57895656247477
-PASS: gate-identity numeric residual zero at rule
 
 Stage 033 Mathematica audit passed.

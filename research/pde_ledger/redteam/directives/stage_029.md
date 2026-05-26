@@ -1,250 +1,198 @@
 ---
 unit_id: 029
 batch: II.1
-created_at: 2026-05-21T00:00:00Z
-findings_count: 3
+created_at: 2026-05-25T00:00:00Z
+findings_count: 4
 stop_cold: null
 applied: true
-applied_at: 2026-05-21T23:11:15Z
-findings_applied: 3
+applied_at: 2026-05-26T05:38:32Z
+findings_applied: 4
 findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 029
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+Apply each non-paper_misalignment finding below (F1, F2, F3) in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+For F4 (`paper_misalignment`), do nothing — the orchestrator is holding for user resolution. Do not edit `paper/stages/stage_029.tex`, the notes, or scripts to "fix" F4 unless the user has explicitly chosen a direction in a follow-up directive.
+
+If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding and continue with the rest.
 
 Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
 
 Do NOT run python or mathematica. Only edit files.
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+Do NOT touch `paper/`, `notes/`, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
 
-## F1 — tautological_check
+## F1 — paper_misalignment (legacy stage-number drift in docstrings/banner)
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:120-123`
+**Subtype:** notes_contradicts_script
 
-**Issue:** The current Mathematica check
-```
-expectZero[
-  "-tan(2 theta_-) - manifestly positive form",
-  -tan2Theta - 2*alpha0*(-eta)/(DeltaKax + alpha0*xiConst)
-];
-```
-expands to `-x - (-x) = 0` after substituting `tan2Theta = 2*alpha0*eta/(DeltaKax + alpha0*xiConst)`. The residual is algebraically forced to vanish regardless of physics. The label claims a "manifestly positive form" but the check verifies an identity that holds for any expression. SymPy has no corresponding check, so this is a Mathematica-side defect.
+**Targets:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:3,5`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:33`
+
+**Note:** Although this is a `paper_misalignment` category, the resolution is entirely script-side (docstring/banner label only). No paper or notes edit is needed. Codex MAY apply this fix without waiting for user resolution — there is no ambiguity about the correct stage number (the file is named `stage_029`, the paper card is `stage_029.tex`, and the Mathematica script already prints "Stage 029 Mathematica audit passed." on its last line).
+
+**Issue:** SymPy docstring header refers to "moving_throat_pde_stage12_dynamic_loading_sympy_audit.py" / "Stage 12"; Mathematica banner prints `STAGE 012 — DYNAMIC LOADING`. The file is in fact stage_029 in the current paper numbering.
+
+**Required change:**
+1. In `scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`:
+   - Change line 3 from `moving_throat_pde_stage12_dynamic_loading_sympy_audit.py` to `moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`.
+   - Change line 5 from `SymPy audit for Stage 12 of the moving-throat PDE program.` to `SymPy audit for Stage 029 of the moving-throat PDE program.`.
+   - Leave the rest of the docstring (lines 7-25) untouched — its references to "Stage-11 loading parameter" describe a physical relationship to an earlier stage in the program and are not file-identification labels. Do NOT mass-replace "Stage 11" or "Stage-11" elsewhere.
+2. In `mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl`:
+   - Change line 33 from `banner["STAGE 012 — DYNAMIC LOADING"];` to `banner["STAGE 029 — DYNAMIC LOADING"];`.
+
+**Verification command:**
+`grep -nE 'Stage 12|STAGE 012|stage12_|stage_12' scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl` — should return no matches (matches on physical-content references like "Stage-11 ansatz" are NOT failures; only file-identification "Stage 12" / "STAGE 012" / "stage12_" / "stage_12" tokens are).
+
+## F2 — insufficient_verification (selected odd coefficient not asserted as combined identity)
+
+**Targets:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:246-283`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:191-229`
+
+**Issue:** Paper eq `selected-odd` claims `delta D_-^odd(omega) = -i Gamma_port * beta_0 * (v.e_-)^2 * omega^5 + O(omega^7)`, where `Gamma_port = a^5/(27 c_s^5)`. Both scripts compute `beta_5 = Gamma_port * beta_0` and `kappa_sel^2 = (v.e_-)^2 |_{alpha=alpha_0}` but never assert that their printed `odd_projection`/`oddProjection` equals the paper's combined symbolic form. Add the assertion.
 
 **Required change:**
 
-Replace the existing `expectZero[...]` block on lines 120-123 with a substantive stationarity-root check. The replacement should verify that the closed-form `tan(2 theta_-) = 2 alpha0 eta / (DeltaK_ax + alpha0 xi)` is indeed a root of the stationarity equation `(DeltaK_ax + alpha0 xi) Sin[2 theta] - 2 alpha0 eta Cos[2 theta] = 0`.
+(a) In sympy `selected_mode_projection`, insert the following BEFORE the final print at line 281 (i.e. after the existing `print("kappa_sel^2 = ...")` block at lines 274-275 and after the existing weak/strong limit checks at lines 278-279):
 
-Before (lines 120-123):
+```python
+    # Anchor the paper's eq selected-odd against the script-computed pieces.
+    delta_D_paper = (
+        -sp.I * Gamma_port
+        * (Omega_U**2 * lambda_W + lambda_R * lambda_U) ** 2
+        / (Omega_U**2 * Omega_W**2 - lambda_R**2 * sigma) ** 2
+        * kappa_sel_sq
+        * omega**5
+    )
+    delta_D_script = -sp.I * beta5 * kappa_sel_sq * omega**5
+    expect_zero(
+        "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+        delta_D_script - delta_D_paper,
+    )
 ```
+
+(b) In Mathematica, insert the following BEFORE `Print[""];` at line 231 (i.e. after the existing `Print["delta D_-^(odd)(omega) template = ", fmt[oddProjection]];` at line 229):
+
+```mathematica
+deltaDPaper = -I*GammaPort
+              * (OmegaU^2*lambdaW + lambdaR*lambdaU)^2 / delta0^2
+              * kappaSelSq
+              * omega^5;
+deltaDScript = -I*beta5*kappaSelSq*omega^5;
 expectZero[
-  "-tan(2 theta_-) - manifestly positive form",
-  -tan2Theta - 2*alpha0*(-eta)/(DeltaKax + alpha0*xiConst)
+  "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+  deltaDScript - deltaDPaper
 ];
 ```
 
-After:
-```
-expectZero[
-  "stationarity at theta_-",
-  FullSimplify[
-    ((DeltaKax + alpha0*xiConst)*Sin[2*theta] - 2*alpha0*eta*Cos[2*theta])
-      /. theta -> ArcTan[2*alpha0*eta/(DeltaKax + alpha0*xiConst)]/2,
-    Assumptions -> $Assumptions
-  ]
-];
-```
-
-Do NOT remove the `tan2Theta = FullSimplify[...]` definition on line 113 — it is still used by the `Print["tan(2 theta_-) = ", fmt[tan2Theta]]` on line 124.
-
-Do NOT touch lines 113 (`tan2Theta` definition) or 124 (`Print["tan(2 theta_-) = ..."]`).
-
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 029` and confirm the new check labeled `stationarity at theta_-` appears in the captured output with `PASS`, that the line containing the phrase `manifestly positive form` is gone, and that the script exits 0.
-
-## Applied: F1
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl`
-- summary: Replaced the tautological tan-form check with a stationarity-root check at theta_-.
-- deviation: none
-
-## F2 — tautological_check
-
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:152`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:102` (insert a new comment line immediately before the existing line 103 `expectZero[...]`)
-
-**Issue:**
-The check `(K1t - K0t) - DeltaK_ax = 0` is algebraically forced by the definitions on the two preceding lines (`K1 = K0 + DeltaK_ax`, `K0t = K0 - Xi0`, `K1t = K1 - Xi0`). The current comment in SymPy (`# Verify the isotropic shift cancels from the stiffness splitting.`) overclaims what the check accomplishes. The assertion has nonzero value as a typo guard (catches e.g. `K1t = K1 + Xi0`) but should be honestly labeled.
-
-**Required change:**
-
-(1) In SymPy at line 152, replace the single comment line:
-```python
-    # Verify the isotropic shift cancels from the stiffness splitting.
-```
-with the following three-line comment block:
-```python
-    # Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaK_ax, so
-    # (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.
-    # Kept here as a typo guard, not as a physics check.
-```
-Do NOT touch line 153 (the `expect_zero(...)` call itself); keep the assertion.
-
-(2) In Mathematica, insert the following two-line comment block immediately before the existing `expectZero["DeltaK_tilde - DeltaK_ax", ...]` on line 103 (i.e. between current line 102 (which prints `alpha_0`) and current line 103):
-```
-(* Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaKax, so
-   (K1t - K0t) - DeltaKax = 0 is algebraically forced. Kept as typo guard. *)
-```
-Do NOT touch the existing `expectZero[...]` line itself; keep the assertion.
-
-**Verification command:**
-After Codex applies, the verifier will run both `redteam exec-sympy 029` and `redteam exec-mathematica 029`. Both should still exit 0, and both should still report PASS on `DeltaK_tilde - DeltaK_(ax|bare)`. Codex's `## Applied: F2` block should confirm the comments were edited but the assertions were not changed.
+After Codex applies, the verifier will run `redteam exec-sympy 029` and `redteam exec-mathematica 029` and confirm the new line `delta D_-^odd (script) - delta D_-^odd (paper formula) = 0` (sympy) and `PASS: delta D_-^odd (script) - delta D_-^odd (paper formula)` (mathematica) appears in each output and each script exits 0.
 
 ## Applied: F2
 
-- files_changed:
-  - `scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py`
-  - `mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl`
-- summary: Relabeled the DeltaK cancellation checks as algebraic typo guards while leaving both assertions unchanged.
-- deviation: none
+files_changed: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:291-303; mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:222-231
+summary: Added selected-odd combined-identity assertions tying the script-computed odd coefficient to the paper formula in both engines.
+deviation: Parenthesized the Mathematica multi-line deltaDPaper RHS to preserve the requested formula safely in .wl script form.
 
-## F3 — mathematica_transliteration
+## F3 — insufficient_verification (sympy lacks direct eigenvector projection cross-check)
 
 **Target:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:74-89` (Schur block)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:161-168` (Hellmann–Feynman block)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:268-279`
 
-**Issue:**
-The Mathematica script reuses SymPy's exact derivation path: same `Mint` matrix layout with internal-field ordering `(u0, u1, W, phi)`, same coupling matrix `C` with the same row order, same one-shot Schur formula `C^T M^{-1} C`, same Hellmann–Feynman template `-D[lam_minus, al]`, same two limit checks. Surface syntax differs but the algebraic content is line-by-line identical. This violates the second-engine policy: a sign or transposition error in `Mint` or `C` would be reproduced verbatim in both engines and would PASS in both.
-
-The fix restructures the Mathematica derivation to use a genuinely independent path. The same SymPy script remains unchanged — only Mathematica is restructured. The final assertions (which compare the independently-derived results to the same `Xi I + alpha vv^T` target and the same SymPy-computed `-d lambda_- / d al` template) become a real cross-engine check rather than a transliteration confirmation.
+**Issue:** Mathematica asserts `kappa_sel^2 closed-form vs eigenvector projection` (line 223) — Hellmann-Feynman vs direct `Eigensystem` projection of `v` onto `e_-`. SymPy only has the Hellmann-Feynman form plus weak/strong limit checks. Add the SymPy mirror of M8 so that sympy independently verifies the closed-form `kappa_sel^2` against a direct nullspace/eigenvector projection.
 
 **Required change:**
 
-(1) Schur block, lines 74-89. Keep the `mint`, `cMat` definitions on lines 74-85 for reference (they are also used by the printed output on line 87 to keep the diagnostic message). REPLACE the body of the Schur computation on lines 87-89 with a sequential-elimination derivation.
+In sympy `selected_mode_projection`, insert the following BEFORE the weak-loading limit check at line 278 (i.e. after `kappa_sel_sq = sp.simplify(kappa_sel_template.subs(al, alpha0))` at line 273 and its print at lines 274-275, but BEFORE the existing `expect_zero("weak-loading ...")` call):
 
-Insert immediately after line 85 (which ends `cMat = {...};`):
-
-```
-(* Independent derivation: eliminate internal fields one at a time. *)
-(* Step 1: integrate out phi. phi couples to q via lambdaB v; Aphi phi = lambdaB v.q
-   gives sigmaPhi = lambdaB^2/Aphi * Outer[Times, v, v]. *)
-sigmaPhi = FullSimplify[(lambdaB^2/aphi)*Outer[Times, v, v], Assumptions -> $Assumptions];
-
-(* Step 2: integrate out W. After eliminating phi, the W equation is
-   aW*W = lambdaR (kappa0 u0 + kappa1 u1) + lambdaW v.q.
-   Solving for W and substituting back contributes (per the U-W coupling) to both
-   the diagonal Xi piece and the vv^T alpha piece. We compute the contribution
-   sigmaW from the wall-q -> W -> (u-block, wall-q) closed loop. *)
-uMassInv = FullSimplify[
-  Inverse[{{aU, 0}, {0, aU}}] +
-    (lambdaR^2/(aU*(aU*aW - lambdaR^2*sigma)))*Outer[Times, v, v],
-  Assumptions -> $Assumptions
-];
-
-(* Step 3: contract C against the inverted internal block reconstructed from
-   the sequential elimination. cU is the (u0,u1) part of the coupling; cWphi the
-   (W,phi) part. *)
-cU = {{lambdaU, 0}, {0, lambdaU}};
-sigmaU = FullSimplify[Transpose[cU].uMassInv.cU, Assumptions -> $Assumptions];
-sigmaW = FullSimplify[
-  ((aU*lambdaW + lambdaR*lambdaU)^2 / (aU*(aU*aW - lambdaR^2*sigma)))*
-    Outer[Times, v, v],
-  Assumptions -> $Assumptions
-];
-sigmaWallSeq = FullSimplify[sigmaU + sigmaW + sigmaPhi, Assumptions -> $Assumptions];
-
-sigmaExpected = FullSimplify[xiShift*i2 + alpha*Outer[Times, v, v], Assumptions -> $Assumptions];
-expectMatrixZero["Sigma_seq - (Xi I + alpha vv^T)", sigmaWallSeq - sigmaExpected];
+```python
+    # Direct eigenvector projection of v onto the lower eigenvector of K_eff(al).
+    # Independent of the Hellmann-Feynman derivation above; the two must agree.
+    K_eff_al = sp.Matrix(
+        [
+            [K0t - al * kappa0**2, -al * kappa0 * kappa1],
+            [-al * kappa0 * kappa1, K1t - al * kappa1**2],
+        ]
+    )
+    null = (K_eff_al - lam_minus_template * sp.eye(2)).nullspace()
+    assert null, "lower-eigenvector nullspace is empty"
+    vec_lo = null[0]
+    norm_sq = sp.simplify((vec_lo.T * vec_lo)[0])
+    kappa_sel_sq_direct_template = sp.simplify(((vec_lo.T * v)[0]) ** 2 / norm_sq)
+    expect_zero(
+        "kappa_sel^2 closed-form vs eigenvector projection",
+        sp.simplify(kappa_sel_template - kappa_sel_sq_direct_template),
+    )
 ```
 
-DELETE the original lines 87-89:
-```
-sigmaWall = FullSimplify[Transpose[cMat].LinearSolve[mint, cMat], Assumptions -> $Assumptions];
-sigmaExpected = FullSimplify[xiShift*i2 + alpha*Outer[Times, v, v], Assumptions -> $Assumptions];
-expectMatrixZero["Sigma - (Xi I + alpha vv^T)", sigmaWall - sigmaExpected];
-```
-
-The constant-overlap checks on lines 90-92 (`sigma - 88/(9 Pi^2)`, etc.) are independent of the Schur block and are kept unchanged.
-
-(2) Hellmann–Feynman block, lines 161-168. REPLACE with a derivation that uses `Eigensystem` on the symbolic 2×2 `keff0` directly, rather than the closed-form `(tr - Sqrt[disc])/2` template.
-
-Insert immediately before line 161:
-
-```
-(* Independent derivation: diagonalise the al-dependent effective stiffness
-   matrix directly, take the eigenvalue with the smaller real part, and read
-   off kappa_sel^2 = |projection of v onto the lower eigenvector|^2. *)
-keffAl = {
-  {k0t - al*kappa0Sq, -al*kappa0*kappa1},
-  {-al*kappa0*kappa1, k1t - al*kappa1Sq}
-};
-{eigvals, eigvecs} = Eigensystem[keffAl];
-(* The lower eigenvalue (with the - sign on Sqrt[disc]) corresponds to
-   tr/2 - Sqrt[(tr/2)^2 - det]. Eigensystem orders eigenvalues by Mathematica's
-   internal heuristic; we select by demanding the (tr - lam) / 2 piece matches. *)
-lowerIdx = First[
-  Position[Simplify[eigvals - ((k0t + k1t - al*sigma)/2 - Sqrt[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2]/2)],
-    0, Infinity, Heads -> False]
-];
-lamMinusDirect = eigvals[[First[lowerIdx]]];
-vecMinusDirect = eigvecs[[First[lowerIdx]]];
-vecMinusUnit = vecMinusDirect/Sqrt[vecMinusDirect.vecMinusDirect];
-kappaSelSqDirect = FullSimplify[(vecMinusUnit.v)^2, Assumptions -> $Assumptions];
-```
-
-Then REPLACE the existing lines 161-168:
-
-```
-discTemplate = FullSimplify[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2, Assumptions -> $Assumptions];
-trTemplate = FullSimplify[k0t + k1t - al*sigma, Assumptions -> $Assumptions];
-lambdaMinusTemplate = FullSimplify[(trTemplate - Sqrt[discTemplate])/2, Assumptions -> $Assumptions];
-kappaSelSq = FullSimplify[-D[lambdaMinusTemplate, al], Assumptions -> $Assumptions];
-
-Print["kappa_sel^2 = ", fmt[kappaSelSq]];
-expectZero["weak-loading kappa_sel^2 - kappa0^2", (kappaSelSq /. al -> 0) - kappa0Sq];
-expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSq, al -> Infinity], Assumptions -> DeltaKax > 0] - sigma];
-```
-
-with:
-
-```
-discTemplate = FullSimplify[(DeltaKax + al*xiConst)^2 + 4*al^2*eta^2, Assumptions -> $Assumptions];
-trTemplate = FullSimplify[k0t + k1t - al*sigma, Assumptions -> $Assumptions];
-lambdaMinusTemplate = FullSimplify[(trTemplate - Sqrt[discTemplate])/2, Assumptions -> $Assumptions];
-kappaSelSq = FullSimplify[-D[lambdaMinusTemplate, al], Assumptions -> $Assumptions];
-
-Print["kappa_sel^2 (closed-form, Hellmann-Feynman) = ", fmt[kappaSelSq]];
-Print["kappa_sel^2 (direct eigenvector projection)  = ", fmt[kappaSelSqDirect]];
-
-(* Cross-engine check: the two independent derivations must agree. *)
-expectZero["kappa_sel^2 closed-form vs eigenvector projection", kappaSelSq - kappaSelSqDirect];
-
-expectZero["weak-loading kappa_sel^2 - kappa0^2", (kappaSelSqDirect /. al -> 0) - kappa0Sq];
-expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSqDirect, al -> Infinity], Assumptions -> DeltaKax > 0] - sigma];
-```
-
-Note: the weak and strong limit checks are repointed at the new `kappaSelSqDirect` so that the limit test exercises the independent derivation path. The closed-form `kappaSelSq` is retained and cross-checked against `kappaSelSqDirect`.
-
-If `Eigensystem[keffAl]`'s symbolic output ordering is non-deterministic enough that `lowerIdx` cannot be unambiguously selected (e.g. the `Position[...]` match fails to find exactly one index), STOP and write a `## Blocked: F3` block asking the auditor for an alternative selection rule (e.g. `Sort[eigvals, Less /. _Symbol -> 0][[1]]`). Do not attempt to guess.
+The `nullspace` route (rather than `eigenvects()`) avoids SymPy's occasional `CRootOf` rendering on symbolic 2x2 matrices and is the more direct realization of "the eigenvector whose eigenvalue equals `lam_minus_template`".
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 029` and confirm:
-- the captured output contains the new line `Sigma_seq - (Xi I + alpha vv^T) = {{0, 0}, {0, 0}}` followed by a `PASS: Sigma_seq - ...` line;
-- the captured output contains both `kappa_sel^2 (closed-form, Hellmann-Feynman) = ...` AND `kappa_sel^2 (direct eigenvector projection) = ...`;
-- the captured output contains a PASS line for `kappa_sel^2 closed-form vs eigenvector projection`;
-- the script exits 0.
+After Codex applies, `redteam exec-sympy 029` outputs the new line `kappa_sel^2 closed-form vs eigenvector projection = 0` and the script exits 0.
+
+**Self-test verification for F3 (auditor done):**
+- At `al = 0`: `lam_minus_template = K0t`, `K_eff_al - K0t*I = diag(0, DeltaK_ax)`, nullspace = span((1, 0)). Then `(v . (1, 0))^2 / 1 = kappa_0^2`. Hellmann-Feynman at `al=0` also gives `kappa_0^2`. Difference = 0. PASS.
+- At `al -> infty`: dominant eigenvalue `-> -al * sigma`, eigenvector `-> v / ||v||`. Then `(v . v)^2 / ||v||^2 = ||v||^2 = sigma`. Hellmann-Feynman limit also gives `sigma`. Difference -> 0. PASS.
+- In the interior, both expressions are algebraic functions of `(al, DeltaK_ax)` (after the K0/Xi_0 cancellations); they're equal by the standard Hellmann-Feynman identity for a 2x2 symmetric matrix linear in a parameter (`K_eff_al = M_0 - al * v v^T`, with `M_0 = diag(K0t, K1t)`).
 
 ## Applied: F3
 
-- files_changed:
-  - `mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl`
-- summary: Replaced the transliterated Mathematica Schur and selected-mode checks with sequential-elimination and direct-eigenvector derivations.
-- deviation: Adjusted the prescribed sigmaW split to avoid double-counting the u-block correction already present in sigmaU.
+files_changed: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:269-285
+summary: Added the SymPy direct nullspace eigenvector projection check against the Hellmann-Feynman kappa_sel^2 template.
+deviation: none
+
+## F4 — paper_misalignment (alpha_crit verified in scripts, not in paper card)
+
+**Subtype:** paper_missing_script_claim
+
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_029.tex:106` quote: *"Stage~029 outputs the Schur-complement split \eqref{eq:app-stage029-schur-split}, the static branch data \eqref{eq:app-stage029-static-data}, the outgoing transfer coefficient \eqref{eq:app-stage029-beta0}, and the selected odd coefficient \eqref{eq:app-stage029-selected-odd}."* (no mention of alpha_crit)
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_029.tex:108-113` quote: `\stagefield{Checks}` lists four items (I_2/vv^T separation, positivity of alpha_0, beta_0 as square/squared-determinant, projection-onto-e_- inserts (v.e_-)^2) — alpha_crit not present.
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage029_dynamic_loading.md:173-186` quote: *"### 3.1 Refined conservative softening threshold ... alpha_crit = (K_0 - Xi_0)(K_1 - Xi_0) / [ (K_1 - Xi_0) kappa_0^2 + (K_0 - Xi_0) kappa_1^2 ]."* — the notes do treat alpha_crit as a substantive stage result.
+
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:189-194` quote:
+  ```
+  al = sp.symbols('alpha_load', real=True)
+  det_template = sp.simplify(((K0t - al*kappa0**2)*(K1t - al*kappa1**2) - al**2*kappa0**2*kappa1**2))
+  alpha_crit = sp.solve(sp.Eq(det_template, 0), al)[0]
+  alpha_crit_expected = sp.simplify(K0t * K1t / (K1t * kappa0**2 + K0t * kappa1**2))
+  print("alpha_crit =", alpha_crit)
+  expect_zero("alpha_crit - expected", alpha_crit - alpha_crit_expected)
+  ```
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:159-166` quote:
+  ```
+  al = Symbol["alphaLoad"];
+  detTemplate = FullSimplify[Det[{{k0t - al*kappa0Sq, -al*kappa0*kappa1}, {-al*kappa0*kappa1, k1t - al*kappa1Sq}}], Assumptions -> $Assumptions];
+  alphaCrit = FullSimplify[k0t*k1t/(k1t*kappa0Sq + k0t*kappa1Sq), Assumptions -> $Assumptions];
+  Print["alpha_crit = ", fmt[alphaCrit]];
+  expectZero["det(alpha_crit)", detTemplate /. al -> alphaCrit];
+  ```
+
+## Resolve before fix_loop
+
+**RESOLVED** (2026-05-25, batch II.1 v2): User approved direction **(b)** — trim `alpha_crit` from stage 029 scripts. Stage 031 owns the refined threshold (boxed in `paper/stages/stage_031.tex:43` as `alpha_{\rm crit}=AB/(B\kappa_0^2+A\kappa_1^2)`, Output line 65; and verified in `scripts/moving_throat_pde_stage031_..._sympy_audit.py:87,94,116` and `mathematica/moving_throat_pde_stage031_..._mathematica_audit.wl:59,61,71`).
+
+Applied via Codex apply session 2026-05-25 (see `redteam/resolutions/batch_II1_paper_alignment.md` § Apply log → Q2). Stage 029 scripts re-run post-trim, both exit 0.
+
+F1 also resolved (relabel Stage 12 → Stage 029) per Q1 approval; see Apply log → Q1.
+
+Remaining work for fix_loop: F2 and F3 only (both insufficient_verification, script-side).
+
+## Applied: F1
+
+files_changed: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:3,5; mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:33
+summary: Relabeled docstring "Stage 12" → "Stage 029" and Mathematica banner "STAGE 012" → "STAGE 029" per user-approved Q1 (a) in batch II.1 v2 paper_alignment resolution.
+deviation: none
+
+## Applied: F4
+
+files_changed: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py:17,189-194; mathematica/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.wl:159-166
+summary: Removed alpha_crit definition + assertion block from stage 029 audits per user-approved Q2 (b). Stage 031 owns alpha_crit derivation (destination-verified: paper/stages/stage_031.tex:43,65; scripts/moving_throat_pde_stage031_..._sympy_audit.py:87,94,116; mathematica/moving_throat_pde_stage031_..._mathematica_audit.wl:59,61,71). Both stage 029 scripts re-run post-trim, exit 0.
+deviation: none

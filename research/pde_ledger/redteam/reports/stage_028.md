@@ -2,269 +2,167 @@
 unit_id: 028
 batch: II.1
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T00:00:00Z
-verdict: findings
+audit_date: 2026-05-25T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 4
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  paper_appendix: present
 ---
 
 # Audit unit 028 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_028.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part02.tex` (row at line 46, `\input` at line 94)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.txt`
 
-Output mtimes (both newer than their script mtimes): sympy output 2026-05-11 12:40 vs script 2026-04-03 12:05; Mathematica output 2026-05-11 12:44 vs script 2026-05-11 11:56. Outputs are fresh.
+Freshness: scripts mtime 2026-05-21 17:05; outputs mtime 2026-05-21 17:07. Both outputs are newer than their producing scripts. Fresh.
+
+## What the paper claims
+
+Quoting `\stagefield{Output}` verbatim: "Stage~028 outputs the rank-one wall matrix \eqref{eq:app-stage028-Keff}, exact eigenvalues \eqref{eq:app-stage028-eigenvalues}, the selected angle law \eqref{eq:app-stage028-angle-law}, and the softening threshold \eqref{eq:app-stage028-alpha-crit}." Concretely the four boxed deliverables are: (1) `K_eff = K_bare - alpha v v^T` with `v = (kappa0, kappa1)^T`, `kappa0 = 2 sqrt(2)/pi`, `kappa1 = -4/(3 pi)`, `K_bare = diag(K_0, K_1)`, `K_0 = K_eta + 6 T_Omega`, `K_1 = K_0 + DeltaK_ax`, `DeltaK_ax = pi^2 T_w/L^2`; (2) the exact eigenvalues `lambda_± = (1/2)[K_0 + K_1 - alpha(kappa0^2 + kappa1^2) ± sqrt((DeltaK_ax + alpha(kappa0^2 - kappa1^2))^2 + 4 alpha^2 kappa0^2 kappa1^2)]`; (3) the selected angle law `tan(2 theta_-) = 2 alpha kappa0 kappa1 / (DeltaK_ax + alpha(kappa0^2 - kappa1^2))`; (4) `alpha_crit = K_0 K_1 / (K_1 kappa0^2 + K_0 kappa1^2)` from `det K_eff = 0`. The `\stagefield{Checks}` block adds (a) sign of theta_- fixed by kappa0>0 and kappa1<0, and (b) the blind angle cannot be selected under positive loading. The notes (§§4.1, 4.2, 5) elaborate two consequence-level checks the script is expected to exercise: weak-loading expansion theta = alpha kappa0 kappa1/DeltaK_ax + O(alpha^2), and strong-loading limit tan(theta_max) = kappa1/kappa0 = -sqrt(2)/3.
 
 ## What the script claims to verify
 
-In the {u0,u1} N/N basis, the scripts construct the loaded wall operator `K_eff = K_bare - alpha v v^T` with `v = (kappa0, kappa1) = (2 sqrt(2)/pi, -4/(3 pi))`, `K_bare = diag(K0, K1)`, `K1 = K0 + DeltaK`, and `DeltaK = pi^2 T_w / L^2`. They then assert (i) closed forms for `trace(K_eff)` and `det(K_eff)`, (ii) a characteristic-polynomial factorization with explicit eigenvalues `lambda_+/-` using a discriminant `disc = (DeltaK + alpha(kappa0^2-kappa1^2))^2 + 4 alpha^2 kappa0^2 kappa1^2`, (iii) the stationarity condition `dE/dtheta = stationarity_expected/2` and the closed-form `tan(2 theta) = 2 alpha kappa0 kappa1 / (DeltaK + alpha(kappa0^2-kappa1^2))`, (iv) the weak-loading leading coefficient `kappa0 kappa1/DeltaK`, (v) the strong-loading limit `tan(2 theta) -> tan(2 theta_max)` with `tan(theta_max) = kappa1/kappa0 = -sqrt(2)/3`, and (vi) the softening threshold `alpha_crit = K0 K1 / (K1 kappa0^2 + K0 kappa1^2)` with `det(K_eff)|_{alpha_crit} = 0` and a linear-in-eps determinant just below criticality.
+Both engines construct `K_eff = K_bare - alpha v v^T` symbolically using the paper's literal overlap constants (`kappa0 = 2 sqrt(2)/pi`, `kappa1 = -4/(3 pi)`, `DeltaK_ax = pi^2 T_w/L^2`, `K_0 = K_eta + 6 T_Omega`, `K_1 = K_0 + DeltaK_ax`). They then assert: (i) trace and determinant of K_eff match the closed-form expressions; (ii) the characteristic polynomial factorizes through the constructed `lambda_±` (and, in Mathematica, that `Eigenvalues[kEff]` sum/product agree as an independent eigensolver path); (iii) `d/dtheta (q^T K_eff q / 2) = (DeltaK_ax + alpha(kappa0^2 - kappa1^2)) sin(2 theta)/2 - alpha kappa0 kappa1 cos(2 theta)`, recovering the tan(2 theta) relation; (iv) the kappa0 and kappa1 literals have the positive and negative signs the paper claims; (v) the weak-alpha leading coefficient of theta is `kappa0 kappa1/DeltaK_ax`; (vi) the strong-alpha limit of tan(2 theta) equals `tan(2 theta_max)` with `tan(theta_max) = -sqrt(2)/3`; (vii) `alpha_crit` obtained from `Solve[det K_eff = 0, alpha]` matches the paper's closed-form ratio and (Mathematica only) a re-simplified `9 pi^2 K_0 K_1 / (8(11 K_0 + 9 DeltaK_ax))`; and (viii) `det(K_eff)` evaluated at `alpha_crit*(1-eps)` factors as a positive multiple of `eps`, demonstrating that the determinant approaches zero linearly from above as `alpha` approaches `alpha_crit` from below.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| (1) K_eff = K_bare - alpha vv^T with paper's kappa0, kappa1 | sympy L74-76 builds it with the literal kappa0=2 sqrt(2)/pi, kappa1=-4/(3 pi); math L33-41 mirrors | match |
+| (2) Closed-form eigenvalues lambda_± | sympy L112-119 constructs and confirms via characteristic factorization; math L60-76 adds independent `Eigenvalues[kEff]` sum/product cross-check | match |
+| (3) tan(2 theta_-) angle law | sympy L138-148 (derived from stationarity); math L81-94 (mirrors) | match |
+| (4) alpha_crit = K0 K1 / (K1 kappa0^2 + K0 kappa1^2) | sympy L192-200 solves det=0 and matches expected; math L115-124 solves and matches both ratio and simplified closed form | match |
+| Checks (a) sign of theta_- < 0 driven by kappa0 k1 < 0 | sympy L152-153 and math L97-98 assert kappa0 > 0 and kappa1 < 0 via `kappa0 - Abs[kappa0] == 0`, `kappa1 + Abs[kappa1] == 0`; sign of the rhs of tan(2 theta_-) thereby becomes manifest. Explicit `theta_- < 0` is not asserted, but the sign of the numerator/denominator is asserted via literal expansion: `2 kappa0 kappa1 = -16 sqrt(2)/(3 pi^2)` and `kappa0^2 - kappa1^2 = 56/(9 pi^2)` are printed (sympy L87-88, math L47-48). | partial-but-acceptable (paper claim is a sign consequence, not an independent identity) |
+| Checks (b) blind angle dynamically disfavored | Indirectly: sympy L179-180 / math L112-113 prove strong-loading limit aligns the selected eigenvector with `v/|v|` (i.e., `tan(theta_max) = -sqrt(2)/3`), which is opposite-sign to `tan(theta_blind) = 3 sqrt(2)/2 > 0`. No explicit comparison line, but the strong-limit assertion plus the kappa0, kappa1 sign asserts establish the implication. | partial-but-acceptable |
+| Notes §4.1 weak-loading coefficient | sympy L156-158, math L100-102: `weak_coeff - kappa0 kappa1/DeltaK == 0` | match |
+| Notes §4.2 strong-loading limit | sympy L171-180, math L104-113: `strong_limit - tan(2 theta_max) == 0` AND `tan(theta_max) + sqrt(2)/3 == 0` | match |
+
+`paper_alignment: aligned` — every load-bearing `\stagefield{Output}` deliverable has a hard-zero assertion against the paper's literal form; the two "partial-but-acceptable" rows verify consequences of asserted facts rather than re-asserting the consequence.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | mathematica | 47 | `expectZero["kappa0^2 - kappa1^2 - 56/(9 Pi^2)", ...]` | no (tautology by literal substitution) |
-| A2 | mathematica | 48 | `expectZero["2 kappa0 kappa1 + 16 Sqrt[2]/(3 Pi^2)", ...]` | no (tautology by literal substitution) |
-| A3 | sympy | 109 | `expect_zero("trace - expected", tr_eff - tr_expected)` | yes |
-| A4 | sympy | 110 | `expect_zero("det - expected", det_eff - det_expected)` | yes |
-| A5 | mathematica | 57 | `expectZero["trace - expected", ...]` | yes |
-| A6 | mathematica | 58 | `expectZero["det - expected", ...]` | yes |
-| A7 | sympy | 119 | `expect_zero("characteristic-factorization check", char)` | yes |
-| A8 | mathematica | 67 | `expectZero["characteristic factorization", ...]` | yes |
-| A9 | sympy | 146 | `expect_zero("dE/dtheta - stationarity_expected/2", ...)` | yes |
-| A10 | mathematica | 84 | `expectZero["dE/dtheta - stationarity_expected/2", ...]` | yes |
-| A11 | sympy | 153 | `expect_zero("-tan(2 theta) - manifestly positive form", ...)` | no (tautology: `-rhs` vs `2 alpha (-k0 k1)/(...)` — identical by sign rewrite) |
-| A12 | mathematica | 86-89 | `expectZero["-tan(2 theta) - manifestly positive form", ...]` | no (same tautology) |
-| A13 | sympy | 159 | `expect_zero("weak-loading coefficient - k0*k1/DeltaK", ...)` | yes |
-| A14 | mathematica | 93 | `expectZero["weak-loading coefficient - kappa0 kappa1/deltaK", ...]` | yes |
-| A15 | sympy | 180 | `expect_zero("strong-loading limit - tan(2 theta_max)", ...)` | yes |
-| A16 | sympy | 181 | `expect_zero("tan(theta_max) + sqrt(2)/3", ...)` | yes |
-| A17 | mathematica | 103 | `expectZero["strong-loading limit - tan(2 theta_max)", ...]` | yes |
-| A18 | mathematica | 104 | `expectZero["tan(theta_max) + Sqrt[2]/3", ...]` | yes |
-| A19 | sympy | 201 | `expect_zero("alpha_crit - expected", ...)` | yes (verifies `sp.solve` returns the closed form) |
-| A20 | mathematica | 109 | `expectZero["alpha_crit - finite-throat closed form", ...]` | yes (verifies two algebraic forms agree) |
-| A21 | sympy | 208 | `expect_zero("det(alpha_crit)", det_at)` | no (`alpha_crit` was produced by `sp.solve(det_eff==0, alpha)`, so substitution back is identically zero) |
-| A22 | mathematica | 110 | `expectZero["det(alpha_crit)", detEff /. alpha -> alphaCrit]` | yes (`alphaCrit` is the quoted closed form, not solved; substitution can fail if the closed form is wrong) |
+| #   | Script      | Line  | Form                                                                                  | Exercises which paper claim?               | Anchored to claim? |
+|-----|-------------|-------|---------------------------------------------------------------------------------------|--------------------------------------------|--------------------|
+| A1  | sympy       | 109   | `expect_zero("trace - expected", tr_eff - tr_expected)`                                | (2) prerequisite (trace of K_eff)          | yes                |
+| A2  | sympy       | 110   | `expect_zero("det - expected", det_eff - det_expected)`                                | (4) prerequisite (det of K_eff)            | yes                |
+| A3  | sympy       | 119   | `expect_zero("characteristic-factorization check", char)`                              | (2) eigenvalues closed form                | yes                |
+| A4  | sympy       | 146   | `expect_zero("dE/dtheta - stationarity_expected/2", ...)`                              | (3) angle law                              | yes                |
+| A5  | sympy       | 152   | `expect_zero("kappa0 sign check", kappa0 - Abs(kappa0))`                               | (1) overlap literal sign / Checks (a)      | yes                |
+| A6  | sympy       | 153   | `expect_zero("kappa1 sign check", kappa1 + Abs(kappa1))`                               | (1) overlap literal sign / Checks (a)      | yes                |
+| A7  | sympy       | 158   | `expect_zero("weak-loading coefficient - k0*k1/DeltaK", ...)`                          | Notes §4.1                                 | yes                |
+| A8  | sympy       | 179   | `expect_zero("strong-loading limit - tan(2 theta_max)", ...)`                          | Notes §4.2 / Checks (b)                    | yes                |
+| A9  | sympy       | 180   | `expect_zero("tan(theta_max) + sqrt(2)/3", ...)`                                       | Notes §4.2 literal                         | yes                |
+| A10 | sympy       | 200   | `expect_zero("alpha_crit - expected", ...)`                                            | (4) alpha_crit                             | yes                |
+| A11 | sympy       | 207   | `expect_zero("det(alpha_crit_expected)", ...)`                                         | (4) det zero at threshold                  | yes                |
+| M1  | mathematica | 57    | `expectZero["trace - expected", trEff - trExpected]`                                   | (2) prerequisite                           | yes                |
+| M2  | mathematica | 58    | `expectZero["det - expected", detEff - detExpected]`                                   | (4) prerequisite                           | yes                |
+| M3  | mathematica | 67-70 | `expectZero["Eigenvalues[kEff] sum vs trace", Total[eigvalsDirect] - (lambdaMinus + lambdaPlus)]` | (2) independent eigensolver path | yes                |
+| M4  | mathematica | 71-74 | `expectZero["Eigenvalues[kEff] product vs determinant", Times @@ eigvalsDirect - lambdaMinus*lambdaPlus]` | (2) independent eigensolver path | yes      |
+| M5  | mathematica | 76    | `expectZero["characteristic factorization", charResidual]`                             | (2) eigenvalues closed form                | yes                |
+| M6  | mathematica | 93    | `expectZero["dE/dtheta - stationarity_expected/2", ...]`                               | (3) angle law                              | yes                |
+| M7  | mathematica | 97    | `expectZero["kappa0 sign check (kappa0 > 0)", kappa0 - Abs[kappa0]]`                   | (1) sign / Checks (a)                      | yes                |
+| M8  | mathematica | 98    | `expectZero["kappa1 sign check (kappa1 < 0)", kappa1 + Abs[kappa1]]`                   | (1) sign / Checks (a)                      | yes                |
+| M9  | mathematica | 102   | `expectZero["weak-loading coefficient - kappa0 kappa1/deltaK", ...]`                   | Notes §4.1                                 | yes                |
+| M10 | mathematica | 112   | `expectZero["strong-loading limit - tan(2 theta_max)", ...]`                           | Notes §4.2                                 | yes                |
+| M11 | mathematica | 113   | `expectZero["tan(theta_max) + Sqrt[2]/3", ...]`                                        | Notes §4.2 literal                         | yes                |
+| M12 | mathematica | 116-119 | `expectZero["alphaCrit solved vs ratio closed form", Solve[detEff==0, alpha] - K0 K1/(K1 kappa0^2 + K0 kappa1^2)]` | (4) alpha_crit | yes                |
+| M13 | mathematica | 123   | `expectZero["alpha_crit - finite-throat closed form", ...]`                            | (4) alpha_crit alternate form              | yes                |
+| M14 | mathematica | 124   | `expectZero["det(alpha_crit)", detEff /. alpha -> alphaCrit]`                          | (4) det zero at threshold                  | yes                |
+
+Every assertion traces to a paper-side deliverable. No orphan checks. All "yes" anchored.
 
 ## Findings
 
-### F1 — tautological_check
+(no findings — see Verdict justification)
 
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl:47-48`
+## Independent-derivation check (Mathematica)
 
-**What's wrong:**
-The two Mathematica assertions
+The .wl is structurally parallel to the .py: same constants in the same order (kappa0, kappa1, deltaK, K0, K1); same intermediate quantities (trEff, detEff, disc, lambdaMinus, lambdaPlus, q, energy, dEnergy, rhs, weakCoefficient, strongLimit, tMax, tan2TMax, alphaCrit); same final `det(alpha_crit*(1-eps))` factorization. Compare sympy lines 102-114:
+
 ```
-expectZero["kappa0^2 - kappa1^2 - 56/(9 Pi^2)", kappa0^2 - kappa1^2 - 56/(9*Pi^2)];
-expectZero["2 kappa0 kappa1 + 16 Sqrt[2]/(3 Pi^2)", 2*kappa0*kappa1 + 16*Sqrt[2]/(3*Pi^2)];
-```
-are algebraically guaranteed by the literal definitions on lines 33-34 (`kappa0 = 2 Sqrt[2]/Pi`, `kappa1 = -4/(3 Pi)`). Direct substitution gives `(2 Sqrt[2]/Pi)^2 - (-4/(3 Pi))^2 = 8/Pi^2 - 16/(9 Pi^2) = 56/(9 Pi^2)` and `2 * (2 Sqrt[2]/Pi)*(-4/(3 Pi)) = -16 Sqrt[2]/(3 Pi^2)`. The checks cannot fail unless `FullSimplify` itself malfunctions; they verify arithmetic, not physics. The sympy script (lines 87-88) only `print`s the same identities, which is the correct treatment for a sanity restatement.
-
-**Why this matters:**
-Tautological assertions inflate the apparent verification coverage without exercising the unit's claims. They also waste a slot in the Mathematica audit that could carry an independent check.
-
-**Required change:**
-Either (a) demote both lines to `Print[...]` (matching the sympy treatment), or (b) replace them with cross-engine consistency anchors that are not trivially true. The minimal fix is (a): remove the two `expectZero` wrappers and leave bare `Print` statements showing the values.
-
-**Verification:**
-After the fix, the Mathematica output should still show the numeric identities printed but no longer carry `PASS:` lines for them. The script must still exit 0.
-
-### F2 — tautological_check
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py:208`
-
-**What's wrong:**
-Line 197 sets `alpha_crit = sp.solve(sp.Eq(det_eff, 0), alpha)[0]`, i.e. by definition `det_eff` evaluates to zero at `alpha = alpha_crit`. Line 207-208 then substitutes `alpha_crit` back into `det_eff` and asserts the result is zero:
-```python
-det_at = sp.simplify(det_eff.subs(alpha, alpha_crit))
-print("det(alpha_crit) =", det_at)
-expect_zero("det(alpha_crit)", det_at)
-```
-This is algebraically guaranteed by `sp.solve`'s contract; it can only fail if sympy's simplification cannot collapse the resubstitution, in which case the failure is a simplification artefact rather than a physics violation. The Mathematica counterpart at line 110 is NOT tautological for the same reason because `alphaCrit` there is the quoted closed form `K0*K1/(K1*kappa0^2 + K0*kappa1^2)`, not a solve result.
-
-**Why this matters:**
-The substantive softening-threshold check is `expect_zero("alpha_crit - expected", alpha_crit - alpha_crit_expected)` on line 201, which can fail if `sp.solve` returns a different root form. The line-208 check adds nothing beyond confirming `sp.solve` did not lie about its return value.
-
-**Required change:**
-Replace the resubstitution check on line 208 with a substitution of the closed-form `alpha_crit_expected` (defined on line 198) into `det_eff`:
-```python
-det_at = sp.simplify(det_eff.subs(alpha, alpha_crit_expected))
-print("det(alpha_crit_expected) =", det_at)
-expect_zero("det(alpha_crit_expected)", det_at)
-```
-This mirrors the Mathematica path (substitute closed form, confirm zero) and removes the tautology.
-
-**Verification:**
-After the fix, the saved output should show the line label changed to `det(alpha_crit_expected)` and the value still zero. Script must exit 0.
-
-### F3 — tautological_check
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py:149-153`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl:86-89`
-
-**What's wrong:**
-Both scripts define
-```
-rhs = 2 alpha kappa0 kappa1 / (DeltaK + alpha (kappa0^2 - kappa1^2))
-```
-and then check that `-rhs` equals the same expression with the numerator written as `2 alpha (-kappa0 kappa1)` instead of `-(2 alpha kappa0 kappa1)`. Sympy line 150-152:
-```python
-negative_tan = sp.simplify(-rhs)
-negative_tan_target = sp.simplify(
-    2 * alpha * (-kappa0 * kappa1) / (DeltaK + alpha * (kappa0**2 - kappa1**2))
-)
-expect_zero("-tan(2 theta) - manifestly positive form", negative_tan - negative_tan_target)
-```
-Mathematica lines 86-89:
-```
-expectZero["-tan(2 theta) - manifestly positive form",
-  -rhs - 2*alpha*(-kappa0*kappa1)/(deltaK + alpha*(kappa0^2 - kappa1^2))];
-```
-`(-1)*(kappa0*kappa1) === -(kappa0*kappa1)` algebraically — these two expressions are identical before any simplifier sees them. The check is guaranteed by construction. The comment "manifestly positive form" suggests the author intended to verify that `-kappa0 kappa1 > 0`, but the assertion does not actually test positivity.
-
-**Why this matters:**
-The "manifestly positive" framing is misleading. The check does not verify any sign or positivity property; it only restates `-rhs` with a sign moved from outside the fraction to inside the numerator factor.
-
-**Required change:**
-Replace the tautological assertion with one that actually tests the intended property — namely that `-rhs > 0` for `alpha > 0` (equivalently `-kappa0 kappa1 > 0`).
-
-In sympy, line 150-153, replace with:
-```python
-print("-tan(2 theta) =", sp.simplify(-rhs))
-# Manifest positivity: -kappa0*kappa1 > 0 since kappa0 > 0, kappa1 < 0.
-expect_zero("kappa0 sign check (kappa0 > 0)", sp.simplify(kappa0 - sp.Abs(kappa0)))
-expect_zero("kappa1 sign check (kappa1 < 0)", sp.simplify(kappa1 + sp.Abs(kappa1)))
-```
-In Mathematica, lines 86-89, replace with:
-```
-Print["-tan(2 theta) = ", fmt[FullSimplify[-rhs, Assumptions -> $Assumptions]]];
-expectZero["kappa0 sign check (kappa0 > 0)", kappa0 - Abs[kappa0]];
-expectZero["kappa1 sign check (kappa1 < 0)", kappa1 + Abs[kappa1]];
-```
-Both new checks can fail if `kappa0` or `kappa1` had been declared with the wrong sign (i.e., they test the substantive claim implied by the original comment).
-
-**Verification:**
-After the fix, the saved outputs should show both sign checks passing and no longer carry the tautological `-tan(2 theta) - manifestly positive form` line. Scripts must exit 0.
-
-### F4 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.wl:33-110` (whole script)
-- compare to `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py:60-201`
-
-**What's wrong:**
-The Mathematica script ports the sympy choreography line-for-line. Three matching segments:
-
-(i) Symbol setup (sympy lines 55-64 vs Mathematica lines 28-37):
-```python
-kappa0 = sp.simplify(2 * sp.sqrt(2) / sp.pi)
-kappa1 = sp.simplify(-4 / (3 * sp.pi))
-DeltaK = sp.simplify(T_w * sp.pi**2 / L**2)
-K0 = sp.simplify(K_eta + 6 * T_Omega); K1 = sp.simplify(K0 + DeltaK)
-```
-```mathematica
-kappa0 = FullSimplify[2*Sqrt[2]/Pi, ...]; kappa1 = FullSimplify[-4/(3*Pi), ...];
-deltaK = FullSimplify[Tw*Pi^2/L^2, ...];
-K0 = Keta + 6*TOmega; K1 = K0 + deltaK;
-```
-
-(ii) Eigenvalue closed form (sympy lines 112-114 vs Mathematica lines 60-65):
-```python
-disc = sp.simplify((DeltaK + alpha*(kappa0**2 - kappa1**2))**2 + 4*alpha**2*kappa0**2*kappa1**2)
+tr_eff = sp.simplify(sp.trace(K_eff))
+det_eff = sp.simplify(K_eff.det())
+tr_expected = sp.simplify(K0 + K1 - alpha * (kappa0**2 + kappa1**2))
+det_expected = sp.simplify(K0 * K1 - alpha * (K1 * kappa0**2 + K0 * kappa1**2))
+...
+disc = sp.simplify((DeltaK + alpha * (kappa0**2 - kappa1**2))**2 + 4 * alpha**2 * kappa0**2 * kappa1**2)
 lam_minus = sp.simplify((tr_expected - sp.sqrt(disc)) / 2)
 lam_plus  = sp.simplify((tr_expected + sp.sqrt(disc)) / 2)
 ```
-```mathematica
+
+with math lines 50-65:
+
+```
+trEff = FullSimplify[Tr[kEff], ...];
+detEff = FullSimplify[Det[kEff], ...];
+trExpected = FullSimplify[K0 + K1 - alpha*(kappa0^2 + kappa1^2), ...];
+detExpected = FullSimplify[K0*K1 - alpha*(K1*kappa0^2 + K0*kappa1^2), ...];
 disc = FullSimplify[(deltaK + alpha*(kappa0^2 - kappa1^2))^2 + 4*alpha^2*kappa0^2*kappa1^2, ...];
 lambdaMinus = FullSimplify[(trExpected - Sqrt[disc])/2, ...];
 lambdaPlus  = FullSimplify[(trExpected + Sqrt[disc])/2, ...];
 ```
 
-(iii) Stationarity closed form (sympy line 144 vs Mathematica lines 79-82):
-```python
-stationarity_expected = sp.simplify((DeltaK + alpha*(kappa0**2 - kappa1**2)) * sp.sin(2*theta) - 2*alpha*kappa0*kappa1*sp.cos(2*theta))
-```
-```mathematica
-stationarityExpected = FullSimplify[(deltaK + alpha*(kappa0^2 - kappa1^2))*Sin[2*theta] - 2*alpha*kappa0*kappa1*Cos[2*theta], ...];
-```
+The angle equation (sympy 138-144 vs math 81-91) and alpha_crit solve (sympy 196-200 vs math 115-119) are also parallel.
 
-Every closed-form ansatz the Mathematica script tests against was already hand-written in the same algebraic form in the sympy script. Mathematica does NOT call `Eigenvalues[kEff]` to derive `lambda_+/-` independently, and it does NOT call `Solve[detEff == 0, alpha]` to derive `alphaCrit` independently — both quantities are hand-coded as the same closed forms sympy uses. The only genuinely independent path is the implicit one inside each engine's `FullSimplify` / `sp.simplify`. The second-engine policy expects at least one substantive derivation by a path not used in the other engine.
+However, the Mathematica file does add two genuinely independent steps that the SymPy file lacks:
 
-**Why this matters:**
-Both engines simplifying the same hand-written algebra is weaker than two independent derivations. If the hand-written closed forms (e.g. `disc`, `stationarityExpected`, `alpha_crit_expected`) are wrong in the same way in both engines, neither check catches the error.
+1. Lines 66-74: direct `Eigenvalues[kEff]` then `Total[eigvalsDirect] - (lambdaMinus + lambdaPlus)` and `Times @@ eigvalsDirect - lambdaMinus*lambdaPlus`. Mathematica's built-in `Eigenvalues` is its own closed-form path; the assertion that its sum and product match the hand-built `lambdaMinus`, `lambdaPlus` is an independent confirmation of the discriminant identity.
+2. Lines 120-123: `alphaCritClosed = 9*Pi^2*K0*K1/(8*(11*K0 + 9*deltaK))` cross-check against the ratio form (which the sympy script does not perform).
 
-**Required change:**
-Add at least two genuinely independent derivations to the Mathematica script (do not modify the sympy script):
-
-1. Compute the eigenvalues directly via Mathematica's `Eigenvalues[]` and assert they match `{lambdaPlus, lambdaMinus}` (up to ordering). Insert after line 65, before line 66:
-```
-eigvalsDirect = Sort[Eigenvalues[kEff], Less] /. {a_, b_} :> {a, b};
-expectZero[
-  "Eigenvalues[kEff] vs lambdaMinus",
-  FullSimplify[First[Sort[{lambdaMinus, lambdaPlus}, Less]] - First[Sort[Eigenvalues[kEff], Less]], Assumptions -> $Assumptions]
-];
-expectZero[
-  "Eigenvalues[kEff] vs lambdaPlus",
-  FullSimplify[Last[Sort[{lambdaMinus, lambdaPlus}, Less]] - Last[Sort[Eigenvalues[kEff], Less]], Assumptions -> $Assumptions]
-];
-```
-(If the `Sort[..., Less]` over symbolic eigenvalues does not reduce, fall back to comparing the unordered set: `expectZero["Eigenvalues[kEff] product vs lambdaMinus*lambdaPlus", Times @@ Eigenvalues[kEff] - lambdaMinus*lambdaPlus]` and `expectZero["Eigenvalues[kEff] sum vs lambdaMinus+lambdaPlus", Total[Eigenvalues[kEff]] - lambdaMinus - lambdaPlus]`. The sum/product variant is robust to ordering.)
-
-2. Derive `alphaCrit` via `Solve[]` instead of quoting the closed form. Insert before line 106:
-```
-alphaCritSolved = alpha /. First[Solve[detEff == 0, alpha]];
-expectZero["alphaCrit solved vs closed form", FullSimplify[alphaCritSolved - K0*K1/(K1*kappa0^2 + K0*kappa1^2), Assumptions -> $Assumptions]];
-```
-Then leave the existing `alphaCrit` line and its downstream uses unchanged.
-
-**Verification:**
-After the fix, the Mathematica output must show new `PASS:` lines for `Eigenvalues[kEff] sum vs lambdaMinus+lambdaPlus`, `Eigenvalues[kEff] product vs lambdaMinus*lambdaPlus` (or the ordered variants), and `alphaCrit solved vs closed form`. Script must exit 0.
-
-## Independent-derivation check (Mathematica)
-
-The Mathematica script is a near-line-by-line port of the sympy script for the symbol setup, eigenvalue closed forms, and stationarity ansatz (see F4 quotations above). The only divergent paths are: (a) Mathematica adds a closed-form `alphaCritClosed = 9 Pi^2 K0 K1 / (8 (11 K0 + 9 deltaK))` that sympy does not write, and confirms `alphaCrit - alphaCritClosed == 0`; (b) sympy uses `sp.solve(det_eff == 0, alpha)` whereas Mathematica quotes `alphaCrit` directly. Neither divergence is a substantive independent derivation of the central claim. Both engines re-simplify the same hand-written ansatze rather than re-deriving them.
+Because both engines also independently `Solve` for `alpha_crit` (sympy `sp.solve(sp.Eq(det_eff, 0), alpha)` line 196; math `Solve[detEff == 0, alpha]` line 115), and the Mathematica file uses its built-in eigensolver as a parallel check, the .wl is no longer a pure transliteration — it adds substantive Mathematica-specific paths. The structural parallelism in the trace/det/discriminant ledger is essentially forced by the underlying 2x2-with-rank-1-perturbation problem. I do not raise a `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-Both engines agree on every assertion they share (trace, determinant, characteristic factorization, stationarity, tan(2 theta), weak-loading coefficient, strong-loading limit, tan(theta_max), alpha_crit closed form, det(alpha_crit) vanishing). The outputs are visibly the same under different surface forms:
+Both engines agree at the level of fully simplified residuals on every load-bearing identity. Key shared closed forms (compare sympy output lines 76, 80, 82-84, 89 with math output lines 26, 32, 35-37, 43):
 
 | Quantity | Sympy | Mathematica |
 |---|---|---|
-| tan(2 theta) | `-48 sqrt(2) L^2 alpha / (56 L^2 alpha + 9 pi^4 T_w)` | `(-48 Sqrt[2] alpha L^2)/(56 alpha L^2 + 9 Pi^4 Tw)` |
-| weak coeff | `-8 sqrt(2) L^2 / (3 pi^4 T_w)` (in `weak/alpha` form) | `(-8 Sqrt[2] L^2)/(3 Pi^4 Tw)` |
-| lim_{alpha→∞} tan(2 theta) | `-6 sqrt(2)/7` | `(-6 Sqrt[2])/7` |
-| tan(theta_max) | `-sqrt(2)/3` | `-1/3 Sqrt[2]` |
-| alpha_crit | `9 pi^2 (K_eta^2 L^2 + 12 K_eta L^2 T_Omega + pi^2 K_eta T_w + 36 L^2 T_Omega^2 + 6 pi^2 T_Omega T_w) / (8 (11 K_eta L^2 + 66 L^2 T_Omega + 9 pi^2 T_w))` | `(9 Pi^2 (Keta + 6 TOmega)(L^2 (Keta + 6 TOmega) + Pi^2 Tw))/(88 L^2 (Keta + 6 TOmega) + 72 Pi^2 Tw)` |
-| det(alpha_crit (1-eps)) | `eps (K_eta + 6 T_Omega)(K_eta L^2 + 6 L^2 T_Omega + pi^2 T_w)/L^2` | `eps (Keta + 6 TOmega)(Keta + 6 TOmega + Pi^2 Tw/L^2)` |
+| `tan(2 theta)` | `-48 sqrt(2) L^2 alpha / (56 L^2 alpha + 9 pi^4 T_w)` | `(-48 Sqrt[2] alpha L^2)/(56 alpha L^2 + 9 Pi^4 Tw)` |
+| weak coeff | `-8 sqrt(2) L^2 / (3 pi^4 T_w)` (from `weak/alpha`) | `(-8 Sqrt[2] L^2)/(3 Pi^4 Tw)` |
+| `lim_{alpha→∞} tan(2 theta)` | `-6 sqrt(2)/7` | `(-6 Sqrt[2])/7` |
+| `tan(theta_max)` | `-sqrt(2)/3` | `-1/3 Sqrt[2]` |
+| `alpha_crit` | `9 pi^2 (K_eta^2 L^2 + 12 K_eta L^2 T_Omega + pi^2 K_eta T_w + 36 L^2 T_Omega^2 + 6 pi^2 T_Omega T_w) / (8 (11 K_eta L^2 + 66 L^2 T_Omega + 9 pi^2 T_w))` (expanded) | `9 Pi^2 (Keta + 6 TOmega)(L^2 (Keta + 6 TOmega) + Pi^2 Tw) / (88 L^2 (Keta + 6 TOmega) + 72 Pi^2 Tw)` (factored) |
+| `det(alpha_crit (1-eps))` | `eps (K_eta + 6 T_Omega)(K_eta L^2 + 6 L^2 T_Omega + pi^2 T_w)/L^2` | `eps (Keta + 6 TOmega)(Keta + 6 TOmega + Pi^2 Tw/L^2)` |
 
-The `alpha_crit` forms differ only by whether the numerator and denominator are expanded; `K_eta^2 + 12 K_eta T_Omega + 36 T_Omega^2 = (K_eta + 6 T_Omega)^2` matches directly, and the denominator factorizations also agree. No engine disagreement.
+The `alpha_crit` forms differ only by expansion vs. factorization (numerator factors as `9 pi^2 (K_eta + 6 T_Omega)((K_eta + 6 T_Omega) L^2 + pi^2 T_w)`; denominator `88 L^2 (K_eta + 6 T_Omega) + 72 pi^2 T_w` matches sympy's `8 (11 K_eta L^2 + 66 L^2 T_Omega + 9 pi^2 T_w)`). The `det(alpha_crit (1-eps))` forms differ by an overall `1/L^2` distribution. Engines agree.
 
 ## Verdict justification
 
-`findings: 4`. The substantive physics checks (trace/det closed forms, characteristic-polynomial factorization, stationarity ↔ closed-form tan(2 theta), weak-loading coefficient, strong-loading limit ↔ tan(2 theta_max), softening threshold) all hold under attack: I rederived the discriminant identity `tr^2 - 4 det = disc`, the closed-form `tan(2 theta)`, the strong-loading limit `-6 sqrt(2)/7`, and `alpha_crit = 9 pi^2 K0 K1 / (8 (11 K0 + 9 DeltaK))` by hand and all match the script's outputs.
+The two scripts together cover every numbered deliverable in `\stagefield{Output}` (K_eff, lambda_±, tan(2 theta_-) angle law, alpha_crit) and the supporting weak/strong limits the notes call out. Constants used are exactly the paper's literal values. I attacked the following:
 
-The four findings are:
-- F1, F2, F3 are low-severity tautologies that inflate the assertion count without exercising the claim.
-- F4 is a medium-severity transliteration: the Mathematica script ports the sympy ansatze for eigenvalues, stationarity, and `alpha_crit` rather than deriving any of them by an independent Mathematica path. The fix is additive (add `Eigenvalues[kEff]` and `Solve[detEff==0]` cross-checks) and does not rewrite the existing structure.
+1. **Characteristic-factorization tautology**: sympy A3 / math M5 check `(x - lam_-)(x - lam_+) - (x^2 - tr_eff x + det_eff) == 0`. By construction `lam_± = (tr_expected ± sqrt(disc))/2`, so the residual reduces to `(tr_expected^2 - disc)/4 - det_eff = 0`. Re-deriving by hand: `tr_expected^2 = (K0+K1)^2 - 2 alpha (K0+K1)(k0^2+k1^2) + alpha^2 (k0^2+k1^2)^2`, and `disc = (K1-K0)^2 + 2 alpha (K1-K0)(k0^2-k1^2) + alpha^2 (k0^2-k1^2)^2 + 4 alpha^2 k0^2 k1^2 = (K1-K0)^2 + 2 alpha (K1-K0)(k0^2-k1^2) + alpha^2 (k0^2+k1^2)^2`. So `(tr_expected^2 - disc)/4 = [(K0+K1)^2 - (K1-K0)^2]/4 - alpha [(K0+K1)(k0^2+k1^2) + (K1-K0)(k0^2-k1^2)]/2 = K0 K1 - alpha [K1 k0^2 + K0 k1^2] = det_expected`. This is the substantive content the check enforces (the `disc` ansatz really is `tr^2 - 4 det`); not tautological.
 
-No `stop_cold` warranted: the underlying math is consistent, and the fixes are surgical script-only edits.
+2. **Angle equation**: re-derived `(q^T K_eff q)/2` by hand: `(1/2)[K_0 cos^2 theta + K_1 sin^2 theta - alpha(kappa0 cos theta + kappa1 sin theta)^2]`. `dE/dtheta = (K_1 - K_0) sin theta cos theta - alpha (kappa0 cos theta + kappa1 sin theta)(-kappa0 sin theta + kappa1 cos theta)`. Expanding and using double-angle identities: `(1/2)(K_1 - K_0) sin(2 theta) - (alpha/2)[2 kappa0 kappa1 cos(2 theta) + (kappa1^2 - kappa0^2) sin(2 theta)] = (1/2)[(K_1 - K_0) + alpha(kappa0^2 - kappa1^2)] sin(2 theta) - alpha kappa0 kappa1 cos(2 theta) = (DeltaK_ax + alpha(kappa0^2 - kappa1^2))/2 sin(2 theta) - alpha kappa0 kappa1 cos(2 theta)`. Matches the script's `stationarity_expected/2`. Both stationary points (lower and upper eigenvectors, differing by pi/2 in theta) satisfy the same tan(2 theta) equation; the paper's `tan(2 theta_-)` notation is the equation for the angle of the lower eigenvector, and the script's derivation is consistent.
+
+3. **Strong-loading limit**: `lim_{alpha->oo} -48 sqrt(2) L^2 alpha / (56 L^2 alpha + 9 pi^4 T_w) = -48 sqrt(2)/56 = -6 sqrt(2)/7`. Double-angle of theta_max with tan(theta_max) = -sqrt(2)/3: `tan(2 theta_max) = 2(-sqrt(2)/3)/(1 - 2/9) = (-2 sqrt(2)/3)(9/7) = -6 sqrt(2)/7`. Match.
+
+4. **alpha_crit**: `K_1 kappa0^2 + K_0 kappa1^2 = (K_0 + DeltaK_ax)(8/pi^2) + K_0 (16/(9 pi^2)) = (8/(9 pi^2))(9 K_0 + 9 DeltaK_ax + 2 K_0) = (8/(9 pi^2))(11 K_0 + 9 DeltaK_ax)`. So `K_0 K_1 / (K_1 kappa0^2 + K_0 kappa1^2) = 9 pi^2 K_0 K_1 / (8 (11 K_0 + 9 DeltaK_ax))`. Matches Mathematica's `alphaCritClosed`. Both engines also `Solve` independently and compare.
+
+5. **Sign of theta_-**: rhs of tan(2 theta_-) has numerator `2 alpha kappa0 kappa1 < 0` (since kappa0 > 0, kappa1 < 0, alpha > 0, all asserted) and denominator `DeltaK_ax + alpha(kappa0^2 - kappa1^2) > 0` (DeltaK_ax > 0 declared, kappa0^2 > kappa1^2 shown literally). So `tan(2 theta_-) < 0`, hence `theta_- < 0` modulo branch. Paper's sign claim is verified by the asserted sign data. The script does not literally `assert theta_- < 0`, but the constituent sign assertions are present and the implication is immediate.
+
+6. **Blind-angle disfavor**: Strong-loading limit aligns with `tan(theta_max) = -sqrt(2)/3 < 0`, opposite-sign to `tan(theta_blind) = 3 sqrt(2)/2 > 0` (mentioned in Notes §5). The script asserts the strong-limit alignment and the sign of kappa1/kappa0, so the disjointness from the blind branch follows.
+
+All attacks failed. Outputs are fresh. Engines agree to identical algebraic residuals. Paper and script align on every load-bearing identity. Verdict: clean.
+
+One non-blocking cosmetic note (not a finding): the SymPy docstring header (line 3) and the Mathematica banner (line 26) both label the work "Stage 11" / "STAGE 011" rather than "Stage 028"; the final print in the Mathematica file does say "Stage 028 Mathematica audit passed" (line 130). This is a stage-renumbering artifact, not a math/paper disagreement (the content fully matches Stage 028), so I do not raise it as `paper_misalignment`.
 
 ## Self-test notes
 
-I checked: (1) Variable-independence for the proposed `Solve[detEff == 0, alpha]` — `detEff` is built from `Det[kEff]` where `kEff` depends on `alpha`, so the solve is well-posed; (2) the proposed `Eigenvalues[kEff]` sum/product cross-check is robust to ordering and reduces to identities I confirmed by hand (sum = `trace(kEff) = trExpected`, product = `det(kEff) = detExpected`); (3) the sympy F2 fix substitutes `alpha_crit_expected` (already defined on line 198) into `det_eff`, and since `det_eff = K0 K1 - alpha (K1 kappa0^2 + K0 kappa1^2)` is linear in alpha, substituting `K0 K1/(K1 kappa0^2 + K0 kappa1^2)` gives `K0 K1 - K0 K1 = 0` symbolically — the check will pass after sympy's simplifier handles the rational; (4) the F3 sign checks `kappa0 - Abs[kappa0]` and `kappa1 + Abs[kappa1]` resolve to 0 only when `kappa0 >= 0` and `kappa1 <= 0` respectively — since `kappa0 = 2 Sqrt[2]/Pi > 0` and `kappa1 = -4/(3 Pi) < 0` are concrete numeric literals, both expressions simplify to 0 in both engines.
+(1) Variable independence: the only `sp.diff` call is `sp.diff(E, theta)` at line 140 where `E = (q^T K_eff q)/2` with `q = (cos(theta), sin(theta))`; E genuinely depends on theta. (2) Symmetry/parity: the proposed stationarity identity uses `sin(2 theta)` (odd in theta) and `cos(2 theta)` (even in theta) — re-derived above by hand and matched the script. (3) Trivial-case checks: setting `alpha -> 0` reduces `tan(2 theta) -> 0` and `theta_- -> 0` (the bare flat branch, consistent with Notes §4.1); setting `kappa1 -> 0` reduces `tan(2 theta) -> 0` (no off-diagonal coupling, no rotation). (4) For the discriminant identity `tr^2 - 4 det = disc`, re-derived by hand: matches. (5) For `alpha_crit` denominator algebra, re-derived `K_1 kappa0^2 + K_0 kappa1^2 = (8/(9 pi^2))(11 K_0 + 9 DeltaK_ax)`; matches Mathematica's closed form. No traps tripped.

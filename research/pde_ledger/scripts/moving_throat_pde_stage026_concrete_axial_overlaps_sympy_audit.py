@@ -199,6 +199,17 @@ def normalization_test() -> None:
     subbanner("IV.2 — Exact required wall stiffness")
     print("K_req =")
     sp.pprint(sp.simplify(K_req))
+
+    # Independent structural check: the paper's eq:app-stage026-Kreq states the
+    # three-term decomposition K_req = B0 + Q/Delta + mhat^2 * kappa^2 * (...)^2
+    # / (target * Delta^2). Verify the solver's output matches that form.
+    K_req_paper = (
+        B0
+        + Q / Delta
+        + mhat**2 * kappa**2 * (Omega_U**2 * lambda_W + lambda_R * lambda_U)**2
+          / (target * Delta**2)
+    )
+    expect_zero("K_req - K_req_paper", sp.simplify(K_req - K_req_paper))
     expect_zero("residual @ K_req", residual.subs(K, K_req))
 
     # Constant wall profile => no axial-gradient contribution.

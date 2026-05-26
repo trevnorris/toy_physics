@@ -1,55 +1,63 @@
 
 ========================================================================================
-PART I — EXACT SELECTED OVERLAP DERIVATIVE
+PART I — INDEPENDENT EIGEN-DECOMPOSITION AND HF IDENTITY
 ========================================================================================
-ds_-/dalpha exact formula = 0
-PASS: ds_-/dalpha exact formula
-ds_-/dalpha = (2*dK^2*x0*x1)/((dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1)^(3/2)
+lam_-(0) initial value = 0
+PASS: lam_-(0) initial value
+lam_+(0) initial value = 0
+PASS: lam_+(0) initial value
+Hellmann-Feynman d lam_-/d alpha + s_- = 0 = 0
+PASS: Hellmann-Feynman d lam_-/d alpha + s_- = 0
 
 ========================================================================================
-PART II — EXACT PREFATOR MONOTONICITY IDENTITY
+PART II — EXACT OVERLAP DERIVATIVE FROM OVERLAP DEFINITION
 ========================================================================================
-exact monotonicity identity = 0
-PASS: exact monotonicity identity
-dP0_-/dalpha = (4*beta0*((dK^2*x0*x1*(2*a + dK - alpha*(x0 + x1) - Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1]))/((dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1)^(3/2) + (x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])^2/4))/(-2*a - dK + alpha*x0 + alpha*x1 + Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])^2
+ds_-/dalpha closed form = 0
+PASS: ds_-/dalpha closed form
+ds_-/dalpha = (2*dK^2*kappa0^2*kappa1^2)/(4*alpha^2*kappa0^2*kappa1^2 + (dK + alpha*(kappa0 - kappa1)*(kappa0 + kappa1))^2)^(3/2)
 
 ========================================================================================
-PART III — INITIAL VALUES
+PART III — EXACT PREFACTOR DERIVATIVE
 ========================================================================================
-lambda_-(0) = 0
-PASS: lambda_-(0)
-s_-(0) = 0
-PASS: s_-(0)
-P0_-(0) = 0
-PASS: P0_-(0)
+dP0_-/dalpha closed form = 0
+PASS: dP0_-/dalpha closed form
+dP0_-/dalpha = (4*beta0*(-((dK^2*kappa0^2*kappa1^2*(-2*a - dK + alpha*kappa0^2 + alpha*kappa1^2 + Sqrt[4*alpha^2*kappa0^2*kappa1^2 + (dK + alpha*(kappa0 - kappa1)*(kappa0 + kappa1))^2]))/(4*alpha^2*kappa0^2*kappa1^2 + (dK + alpha*(kappa0 - kappa1)*(kappa0 + kappa1))^2)^(3/2)) + (dK*(kappa0 - kappa1)*(kappa0 + kappa1) + (kappa0^2 + kappa1^2)*(alpha*(kappa0^2 + kappa1^2) + Sqrt[4*alpha^2*kappa0^2*kappa1^2 + (dK + alpha*(kappa0 - kappa1)*(kappa0 + kappa1))^2]))^2/(4*(dK^2 + 2*alpha*dK*(kappa0 - kappa1)*(kappa0 + kappa1) + alpha^2*(kappa0^2 + kappa1^2)^2))))/(-2*a - dK + alpha*(kappa0^2 + kappa1^2) + Sqrt[dK^2 + 2*alpha*dK*(kappa0 - kappa1)*(kappa0 + kappa1) + alpha^2*(kappa0^2 + kappa1^2)^2])^2
 
 ========================================================================================
-PART IV — EXACT SOFTENING THRESHOLD
+PART IV — INITIAL VALUES AT alpha=0
 ========================================================================================
-det factorization = 0
-PASS: det factorization
-lam_-(alphaCrit) = 0
-PASS: lam_-(alphaCrit)
-threshold radical square identity = 0
-PASS: threshold radical square identity
-alpha_crit = (a*(a + dK))/(dK*x0 + a*(x0 + x1))
-lambda_+^(crit) = ((a + dK)^2*x0 + a^2*x1)/(dK*x0 + a*(x0 + x1))
+s_-(0) = kappa0^2 = 0
+PASS: s_-(0) = kappa0^2
+P0_-(0) = beta0 kappa0^2 / a = 0
+PASS: P0_-(0) = beta0 kappa0^2 / a
 
 ========================================================================================
-PART V — STABLE-SIDE DIVERGENCE STRUCTURE
+PART V — SOFTENING THRESHOLD FROM Det[M]=0
 ========================================================================================
-lambda_- * lambda_+ - T0*(alpha_crit-alpha) = 0
-PASS: lambda_- * lambda_+ - T0*(alpha_crit-alpha)
-P0_- factorization = 0
-PASS: P0_- factorization
-P0_- = (beta0*(2*a + dK - alpha*(x0 + x1) + Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])*(x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1]))/(4*((a + dK)*(a - alpha*x0) - a*alpha*x1))
+alpha_crit from Det[M]=0 = 0
+PASS: alpha_crit from Det[M]=0
+alpha_crit = (a*(a + dK))/((a + dK)*kappa0^2 + a*kappa1^2)
+lam_-(alpha_crit) = 0 = 0
+PASS: lam_-(alpha_crit) = 0
 
 ========================================================================================
-STAGE 14 AUDIT COMPLETE
+PART VI — STABLE-SIDE POLE STRUCTURE
 ========================================================================================
-Verified:
-  exact overlap derivative ds_-/dalpha = 2 DK^2 kappa0^2 kappa1^2 / R^3
-  exact monotonicity identity for dP0_-/dalpha
-  exact initial-value formulas at alpha = 0
-  exact softening threshold alpha_crit and determinant factorization
-  exact stable-side factorization P0_- = beta0 s_- lambda_+ / [T0 (alpha_crit-alpha)]
+Det[M] - t0(alpha_crit - alpha) = 0
+PASS: Det[M] - t0(alpha_crit - alpha)
+lam_- lam_+ - Det[M] = 0
+PASS: lam_- lam_+ - Det[M]
+P0_- pole factorization = 0
+PASS: P0_- pole factorization
+P0_- factored = -1/4*(beta0*(2*a + dK - alpha*(kappa0^2 + kappa1^2) + Sqrt[dK^2 + 2*alpha*dK*(kappa0 - kappa1)*(kappa0 + kappa1) + alpha^2*(kappa0^2 + kappa1^2)^2])*(dK*(kappa0 - kappa1)*(kappa0 + kappa1) + (kappa0^2 + kappa1^2)*(alpha*(kappa0^2 + kappa1^2) + Sqrt[dK^2 + 2*alpha*dK*(kappa0 - kappa1)*(kappa0 + kappa1) + alpha^2*(kappa0^2 + kappa1^2)^2])))/((-((a + dK)*(a - alpha*kappa0^2)) + a*alpha*kappa1^2)*Sqrt[dK^2 + 2*alpha*dK*(kappa0 - kappa1)*(kappa0 + kappa1) + alpha^2*(kappa0^2 + kappa1^2)^2])
+
+========================================================================================
+STAGE 031 INDEPENDENT MATHEMATICA AUDIT COMPLETE
+========================================================================================
+Verified (independently from Eigenvalues/Eigenvectors of the loaded 2x2 wall matrix):
+  HF identity d lam_-/d alpha + s_- = 0 (derived, not assumed)
+  exact overlap derivative ds_-/dalpha = 2 dK^2 kappa0^2 kappa1^2 / R^3
+  exact prefactor derivative formula
+  initial values at alpha=0
+  alpha_crit from Det[M] = 0
+  pole factorization of P0_- at alpha_crit

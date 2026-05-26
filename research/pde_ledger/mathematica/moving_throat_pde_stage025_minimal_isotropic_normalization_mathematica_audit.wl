@@ -98,6 +98,17 @@ normalizationFormula[] := Module[{delta, q, p, b0, z0, n0, d0, p0, p0Combined, p
   Print["II.2 solvability (Reduce form) = ", fmt[solvability]];
   If[solvability === False, fail["II.2 target equation unsolvable for mhat > 0"]];
   pass["II.2 target equation solvable for mhat > 0"];
+
+  subbanner["II.3: P = 0 corollary (paper Checks item 4)"];
+  Module[{pZeroSub, n0AtPzero, residualAtPzero},
+    pZeroSub = {gW -> -r*gU/omegaU^2};
+    n0AtPzero = FullSimplify[n0 /. pZeroSub, Assumptions -> $Assumptions];
+    Print["N0 at P=0 = ", fmt[n0AtPzero]];
+    expectZero["N0 vanishes when P=0", n0AtPzero];
+    residualAtPzero = FullSimplify[(mhat^2*p0Compact - target) /. pZeroSub, Assumptions -> $Assumptions];
+    Print["(mhat^2*P0 - target) at P=0 = ", fmt[residualAtPzero]];
+    expectZero["(mhat^2*P0 - target) at P=0 equals -target", residualAtPzero + target];
+  ];
 ];
 
 stabilityAndPositivity[] := Module[{delta, q, p, b0, z0, n0, d0, compactDenom, deltaVal, d0Val, p0PosVal},
@@ -105,7 +116,11 @@ stabilityAndPositivity[] := Module[{delta, q, p, b0, z0, n0, d0, compactDenom, d
   {delta, q, p, b0, z0, n0, d0} = zeroFrequencyCoefficients[];
   compactDenom = FullSimplify[delta*d0, Assumptions -> $Assumptions];
   expectZero["Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q)", compactDenom - (k*delta - delta*cCoupling^2/varpi^2 - q)];
-  expectZero["N0 - P^2/Delta^2", n0 - p^2/delta^2];
+  Module[{pRaw, deltaRaw},
+    pRaw = omegaU^2*gW + r*gU;
+    deltaRaw = omegaU^2*omegaW^2 - r^2;
+    expectZero["N0 reconstructed from raw symbols", n0 - pRaw^2/deltaRaw^2];
+  ];
   deltaVal = FullSimplify[delta /. samplePoint];
   d0Val = FullSimplify[d0 /. samplePoint];
   p0PosVal = FullSimplify[(n0/d0) /. samplePoint];

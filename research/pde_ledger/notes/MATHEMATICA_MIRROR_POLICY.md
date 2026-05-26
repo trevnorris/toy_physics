@@ -3,7 +3,9 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-25` (batch I.2 v2 close)
+Snapshot date: `2026-05-26` (batch II.1 v2 close)
+
+II.1 v2 re-audit (2026-05-26) caught a *new* `mathematica_transliteration` finding in stage 024 (Sections III/V were line-by-line ports despite v1 II.1 having flagged the file as already rewritten). The remediation pass for 024 also fixed a separate **performance pitfall**: heavy `Table[tripleOverlap[...], {i,1,5}, {j,1,5}]` with 6-fold inner sums + FullSimplify hangs >18min when global-symbol context leaks from earlier sections; the fix is `ClearAll[<symbol-list>]` reset at the top of Section IV plus memoization of `i4`/`i6` sphere integrals via `i6[args] := i6[args] = Integrate[...]`. This pattern (heavy FullSimplify after large symbol additions in earlier sections) should be screened pre-emptively in future Mathematica-heavy stages. II.1 v2 also caught transliteration in 031 (full PART I-II port — replaced with `Eigenvalues`/`Eigenvectors`-based independent derivation) and 032 (Stage 15.4-15.5 port — replaced with `Eigensystem`-based independent path).
 
 ## Rule
 

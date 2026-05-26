@@ -2,209 +2,167 @@
 unit_id: 033
 batch: II.1
 auditor_model: claude-opus-4-7
-audit_date: 2026-05-21T00:00:00Z
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 3
+findings_count: 1
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  paper_appendix: present
 ---
 
 # Audit unit 033 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_033.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part02.tex` (only the `\input{stages/stage_033}` line on row 104; no inline summary for this stage)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 033 writes the selected-branch normalization problem in microscopic coupling variables and packages a stability gate plus an exact necessary onset condition for the universal target. The `\stagefield{Output}` line states verbatim: "Stage~033 outputs the coupling-level definitions \eqref{eq:app-stage033-defs}, the stability gate \eqref{eq:app-stage033-stability}, the microscopic target \eqref{eq:app-stage033-micro-target}, the onset condition \eqref{eq:app-stage033-onset}, and the weak-loading expansion \eqref{eq:app-stage033-weak-loading}." Concretely the deliverables are:
+
+1. **Microscopic definitions** (eq `app-stage033-defs` and `app-stage033-alpha-beta`): `A = K_0 - g_U^2/Omega_U^2`, `Delta_0 = Omega_U^2 Omega_W^2 - g_R^2 sigma`, `X = Omega_U^2 g_W + g_R g_U`, with `beta_0 = X^2/Delta_0^2` and `alpha_0 = g_B^2/varpi^2 + X^2/(Omega_U^2 Delta_0)`.
+2. **Stability gate** (eq `app-stage033-stability` and `app-stage033-alpha-crit`): `Delta_0 > 0`, `A > 0`, `alpha_0 < alpha_crit` with the closed form `alpha_crit = 9 pi^2 A(A + DeltaK_ax) / [8(11 A + 9 DeltaK_ax)]` after using `kappa_0^2 = 8/pi^2`, `kappa_1^2 = 16/(9 pi^2)`.
+3. **Microscopic target** (eq `app-stage033-micro-target`): the selected-branch equation `X^2/Delta_0^2 * s_-(alpha_0)^2 / (kappa_0^2 lambda_-(alpha_0)) = N_Q^{target}` with `alpha_0` as above. This is an equation to be solved at physical parameter values, not an identity.
+4. **Onset condition** (eq `app-stage033-onset`): `N_-(0) <= N_Q^{target}`, equivalently `X^2 <= N_Q^{target} A Delta_0^2 / kappa_0^2`. The notes additionally express this as an onset stiffness bound `K_0 >= g_U^2/Omega_U^2 + kappa_0^2 X^2 / (N_Q^{target} Delta_0^2)`.
+5. **Weak-loading expansion** (eq `app-stage033-weak-loading` and `-DN`): `N_-(alpha_0) = beta_0 kappa_0^2/A + alpha_0 beta_0 kappa_0^2 (4 A kappa_1^2 + DeltaK_ax kappa_0^2)/(A^2 DeltaK_ax) + O(alpha_0^2)`, with finite-throat constants substituted to `8 beta_0/(pi^2 A) + 64 alpha_0 beta_0 (8A + 9 DeltaK_ax) / (9 pi^4 A^2 DeltaK_ax) + O(alpha_0^2)`.
+
+`\stagefield{Checks}` adds: stability decomposes into three independent conditions; onset follows from monotonicity of `N_-`; weak-loading coefficient is positive for positive `A`, `DeltaK_ax`, `beta_0`. The notes (`§4`) also state the explicit positivity formula `dN_-/dalpha_0 = beta_0 [2 s_- (ds_-/dalpha_0) lambda_- + s_-^3] / (kappa_0^2 lambda_-^2) > 0` for every stable branch point.
+
 ## What the script claims to verify
 
-The pair of scripts assemble a "selected-branch" normalization product `N_-(alpha0) = beta0 * s_-^2 / (kappa0^2 * lambda_-)` built from finite-throat overlap constants `kappa0^2 = 8/pi^2`, `kappa1^2 = 16/(9 pi^2)` and the auxiliary radical `R = sqrt((DeltaK + alpha0*delta_kappa)^2 + 4 alpha0^2 Kprod)`. They claim to verify five physics results: (i) an exact monotonicity identity `dN/dalpha = beta0(2 s_- s_-' lambda_- + s_-^3)/(kappa0^2 lambda_-^2)`, which is equivalent to the identity `dlambda_-/dalpha = -s_-`; (ii) the closed-form finite-throat critical loading `alpha_crit = 9 pi^2 A (A+DeltaK)/(8(11A+9DeltaK))`; (iii) `N_-(0) = beta0 kappa0^2 / A`; (iv) the weak-loading slope at alpha0 = 0 in both a generic-coupling and a closed-form expression; and (v) the microscopic K0-onset value obtained by solving `N_-(0)|_mic = NQ`. Stage 16.6 then claims the fully substituted stability gate `alpha_crit(mic) - alpha_0(mic)` can be written as `gate_num/gate_den` with `gate_den = 8 varpi^2 Omega_U^2 Delta0 (11 A + 9 DeltaK)`.
+After the prior v1 audit's fixes (directive `stage_033.md` `applied: true`, three findings applied), the scripts now verify:
+
+1. The monotonicity identity `dN/dalpha = beta_0 (2 s_- ds lambda_- + s_-^3)/(kappa_0^2 lambda_-^2)` (Stage 16.1) — this implicitly tests the lemma `dlambda_-/dalpha_0 = -s_-`.
+2. The closed-form refined threshold `alpha_crit = 9 pi^2 A(A+DeltaK) / (8(11A + 9 DeltaK))` against the generic form `A(A+DeltaK)/((A+DeltaK) kappa_0^2 + A kappa_1^2)` (Stage 16.2).
+3. `N_-(0) = beta_0 kappa_0^2 / A` (Stage 16.3).
+4. The weak-loading derivative at `alpha_0 = 0` against both generic and finite-throat-closed forms (Stage 16.4).
+5. The microscopic K0-onset value: `sp.solve(N_-(0)|_{mic} == NQ, K0)` matches `gU^2/OmegaU^2 + kappa_0^2 Chi^2/(NQ Delta_0^2)`. Mathematica mirrors this with `Solve[n0Mic == NQ, K0]` plus a back-substitution check `N_-(0) at K0_onset == NQ` (Stage 16.5).
+6. The fully substituted stability gate denominator: `together(alpha_crit_mic - alpha_0_mic)` produces a denominator that differs from `8 varpi^2 Omega_U^2 Delta_0 (11 A_mic + 9 DeltaK)` only by a parameter-free constant (which the output transcripts show as `9 pi^2` in sympy and `-9 pi^2` in mma) (Stage 16.6).
+7. Numerical cross-check (Mathematica only): the Stage 16.1 monotonicity identity and the Stage 16.6 gate identity are re-evaluated at two rational-parameter rule sets at 30-digit precision.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side coverage | Status |
+|---|---|---|
+| 1. Microscopic defs (`A`, `Delta_0`, `X`, `beta_0`, `alpha_0`) | sympy lines 81-85, mma lines 89-93 (direct definitions) | match |
+| 2a. `alpha_crit` closed form `= 9 pi^2 A(A+DeltaK)/(8(11A+9DeltaK))` | sympy `expect_zero("alpha_crit - closed finite-throat form")` (line 60), mma line 65 | match |
+| 2b. Conditions `Delta_0 > 0`, `A > 0` as stability requirements | `A`, `DeltaK`, `varpi`, `OmegaU`, `OmegaW`, `K0`, `NQ` declared positive in script (sympy line 40, mma line 30-31, 86-87); `Delta_0` is derived, not constrained | partial (script enforces the positivity at the level of symbol domains; paper presents them as gate conditions to be checked, not enforced; this is normal convention for an algebraic-identity audit) |
+| 3. Microscopic target `X^2/Delta_0^2 s_-^2/(kappa_0^2 lambda_-) = NQ` (general `alpha_0`) | Components verified (`Nminus = beta_0 s_-^2/(kappa_0^2 lambda_-)` by construction; `beta_0 = X^2/Delta_0^2` by definition at line 84/92); the full equation `N_-(alpha_0) = NQ` is an equation to be solved at physical parameter values, not an identity | match (full identity-style assertion would not be physically meaningful; script-side structural verification plus the alpha_0=0 boundary check (deliverable 4) cover the paper's intent) |
+| 4. Onset condition `N_-(0) <= NQ` ↔ `Chi^2 <= NQ A Delta_0^2/kappa_0^2` ↔ K0 stiffness bound | sympy line 87 solves `K0_onset` from `N_-(0)|_mic = NQ`, then line 97-100 checks equality with closed form; mma line 95-97 mirrors via `Solve`, line 107 back-substitutes, line 108-111 checks closed form | match (boundary case is verified algebraically; the inequality direction follows from monotonicity verified in deliverable 5's prerequisite, Stage 16.1) |
+| 5a. Weak-loading expansion (generic): `beta_0 kappa_0^2/A + alpha_0 beta_0 kappa_0^2 (4A kappa_1^2 + DeltaK kappa_0^2)/(A^2 DeltaK)` | sympy line 70 `coef1_target`; line 73 `expect_zero(coef1 - coef1_target)` | match |
+| 5b. Weak-loading expansion (DN-substituted): `8 beta_0/(pi^2 A) + 64 alpha_0 beta_0 (8A + 9 DeltaK)/(9 pi^4 A^2 DeltaK)` | sympy line 71 `coef1_target_closed`; line 74 `expect_zero(coef1 - coef1_target_closed)`; mma lines 76-78, 82 | match |
+| Implied: monotonicity formula `dN/dalpha = beta_0 (2 s_- ds lambda_- + s_-^3)/(kappa_0^2 lambda_-^2)` (notes §4) | sympy line 51-54, mma line 54-60 | match (note: the identity is verified; strict positivity at all stable branch points is not asserted, but the form of the identity makes positivity follow from `s_-, lambda_- > 0`) |
+| Implied: positivity of weak-loading coefficient (Checks bullet 3) | Not directly asserted; follows from positive `A`, `DeltaK`, `beta_0` declarations and the closed form's manifest positivity | match (not load-bearing for the symbolic audit) |
+
+`paper_alignment: aligned` — every primary deliverable is exercised; the `partial`/structural items are appropriate to an algebraic-identity audit and not red-team failures.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 54 | `simplify(dN - dN_formula) == 0` | yes (identity dlambda/dalpha = -s) |
-| A2 | sympy | 60 | `simplify(alpha_crit - alpha_crit_target) == 0` | partial (algebraic rearrangement of hand-stated forms; original `alpha_crit` is not derived in-script) |
-| A3 | sympy | 65 | `simplify(N0 - beta0 kappa0^2/A) == 0` | yes |
-| A4 | sympy | 73 | `simplify(coef1 - coef1_target) == 0` | yes |
-| A5 | sympy | 74 | `simplify(coef1 - coef1_target_closed) == 0` | yes |
-| A6 | sympy | 97-100 | `simplify(K0_onset - target) == 0` (with K0_onset from sp.solve) | yes |
-| A7 | sympy | 112-115 | `simplify(alpha_crit_mic - alpha0_mic - gate_num/gate_den) == 0` | **no — tautological** (gate_num is defined as `(alpha_crit_mic - alpha0_mic)*gate_den`) |
-| M1 | mathematica | 60 | `FullSimplify[dN - dNFormula] == 0` | yes (mirror of A1) |
-| M2 | mathematica | 65 | `FullSimplify[alphaCrit - alphaCritClosed] == 0` | partial (mirror of A2) |
-| M3 | mathematica | 69 | `FullSimplify[n0 - beta0*kappa0Sq/A] == 0` | yes |
-| M4 | mathematica | 81 | `FullSimplify[coef1 - coef1Target] == 0` | yes |
-| M5 | mathematica | 82 | `FullSimplify[coef1 - coef1Closed] == 0` | yes |
-| M6 | mathematica | 105 | `FullSimplify[(n0Mic /. K0 -> k0Onset) - NQ] == 0` | yes (substitution-back consistency check) |
-| M7 | mathematica | 106-109 | `FullSimplify[k0Onset - (gU^2/OmegaU^2 + kappa0Sq*chi^2/(NQ*delta0^2))] == 0` | **no — tautological** (k0Onset is defined as exactly the target expression at line 95) |
-| M8 | mathematica | 116-119 | `FullSimplify[alphaCritMic - alpha0Mic - gateNum/gateDen] == 0` | **no — tautological** (mirror of A7) |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 54 | `expect_zero(dN - dN_formula)` | implied monotonicity formula (notes §4) | yes (implicitly tests `dlambda_-/dalpha_0 = -s_-`) |
+| A2 | sympy | 60 | `expect_zero(alpha_crit - alpha_crit_target)` | claim 2a (alpha_crit closed form) | yes (non-trivial after `kappa` substitution) |
+| A3 | sympy | 65 | `expect_zero(N0 - beta0*kappa0_sq/A)` | claim 4 prerequisite (`N_-(0)`) | yes |
+| A4 | sympy | 73 | `expect_zero(coef1 - coef1_target)` | claim 5a (generic weak-loading) | yes |
+| A5 | sympy | 74 | `expect_zero(coef1 - coef1_target_closed)` | claim 5b (DN-substituted weak-loading) | yes |
+| A6 | sympy | 97-100 | `expect_zero(K0_onset - target_closed_form)` (K0_onset from `sp.solve`) | claim 4 (onset stiffness bound) | yes |
+| A7 | sympy | 120-122 | `assert den_ratio.is_number` | Stage 16.6 gate denominator structure (script-internal scaffolding around claim 2a/1) | yes (substantive guard; the ratio is parameter-free `9 pi^2`) |
+| A8 | sympy | 125-128 | `expect_zero(alpha_crit_mic - alpha0_mic - gate_num_target/gate_den_claim)` | same as A7 (decorative) | **no — tautological** (`gate_num_target = gate_num_actual/den_ratio` by construction, so the residual is identically zero) |
+| M1 | mma | 60 | `expectZero[dN - dNFormula]` | mirrors A1 | yes |
+| M2 | mma | 65 | `expectZero[alphaCrit - alphaCritClosed]` | mirrors A2 | yes |
+| M3 | mma | 69 | `expectZero[n0 - beta0*kappa0Sq/A]` | mirrors A3 | yes |
+| M4 | mma | 81 | `expectZero[coef1 - coef1Target]` | mirrors A4 | yes |
+| M5 | mma | 82 | `expectZero[coef1 - coef1Closed]` | mirrors A5 | yes |
+| M6 | mma | 107 | `expectZero[(n0Mic /. K0 -> k0Onset) - NQ]` | claim 4 (back-substitution of solved K0_onset) | yes |
+| M7 | mma | 108-111 | `expectZero[k0Onset - (gU^2/OmegaU^2 + kappa0Sq*chi^2/(NQ*delta0^2))]` | claim 4 (closed form vs Solve result; non-tautological after F2 fix) | yes |
+| M8 | mma | 122-125 | `If[!NumericQ[denRatio], fail[...]]` | Stage 16.6 gate denominator structure | yes (substantive guard) |
+| M9 | mma | 128-131 | `expectZero[alphaCritMic - alpha0Mic - gateNumTarget/gateDenClaim]` | decorative mirror of A8 | **no — tautological** by construction |
+| M10 | mma | 147-152 | `If[Abs[monotonicityNumeric] > 10^-20, fail, pass]` over two rational rules | mirrors A1 (independent numeric derivation) | yes |
+| M11 | mma | 153-158 | `If[Abs[gateNumeric] > 10^-20, fail, pass]` over two rational rules for gate identity | mirrors M9 (numeric instantiation of the same tautological identity) | **no — tautological** (`gateNumTarget/gateDenClaim ≡ alphaCritMic - alpha0Mic` symbolically; substituting rationals gives 0 by construction) |
 
 ## Findings
 
 ### F1 — tautological_check
 
-**Severity:** high
+**Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py:104-115`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl:112-119`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py:124-128`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl:126-131,146-160`
 
 **What's wrong:**
-The Stage 16.6 "fully substituted microscopic stability gate" assertion is algebraically guaranteed by construction. The SymPy script defines
+The Stage 16.6 final identity check `expect_zero("alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim", alpha_crit_mic - alpha0_mic - gate_num_target / gate_den_claim)` (sympy line 125-128) is tautological by construction. From lines 105-106 and 124:
 
 ```python
-gate_num = sp.simplify(sp.expand((alpha_crit_mic - alpha0_mic) * gate_den))
+gate_diff = sp.cancel(sp.together(alpha_crit_mic - alpha0_mic))      # = num_actual / den_actual
+gate_num_actual, gate_den_actual = sp.fraction(gate_diff)
+den_ratio = sp.simplify(gate_den_actual / gate_den_claim)
+gate_num_target = sp.simplify(gate_num_actual / den_ratio)
 ```
 
-at line 105, then at lines 112-115 asserts
+Substituting back:
+- `gate_num_target = gate_num_actual / den_ratio = gate_num_actual * gate_den_claim / gate_den_actual`
+- `gate_num_target / gate_den_claim = gate_num_actual / gate_den_actual = gate_diff = alpha_crit_mic - alpha0_mic`
 
-```python
-expect_zero(
-    "alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den",
-    alpha_crit_mic - alpha0_mic - gate_num / gate_den,
-)
-```
+So `alpha_crit_mic - alpha0_mic - gate_num_target / gate_den_claim ≡ 0` in any commutative algebra — it would pass even if `alpha_crit_mic` were perturbed (because `gate_num_target` would be re-derived to compensate). The Mathematica mirror at lines 128-131 reproduces the same construction. The substantive content is in the *guards* at sympy line 120 (`assert den_ratio.is_number`) and mma line 122-124 (`If[!NumericQ[denRatio], fail[...]]`), which DO carry meaning (they fail if the claimed denominator is structurally wrong). The labelled `expect_zero` / `expectZero` is decorative.
 
-By substitution `gate_num/gate_den == (alpha_crit_mic - alpha0_mic) * gate_den / gate_den`, so the residual is identically zero in *any* commutative algebra — it would pass even if `alpha_crit_mic` or `alpha0_mic` were arbitrary symbols with no physical content. The Mathematica script (lines 113, 116-119) reproduces the same tautological structure with `gateNum = FullSimplify[Expand[(alphaCritMic - alpha0Mic)*gateDen], ...]` followed by `expectZero["alpha_crit(mic) - alpha_0(mic) - gate_num/gate_den", alphaCritMic - alpha0Mic - gateNum/gateDen]`. The transcript banner promises a verified closed-form numerator-over-denominator decomposition of the gate, but the assertion only confirms that division undoes multiplication.
+The Mathematica numerical cross-check for the gate (lines 153-158) inherits the same tautology: `gateNumTarget/gateDenClaim - alphaCritMic + alpha0Mic` is symbolically zero by construction, so substituting any rational rule and computing `N[..., 30]` produces zero independent of any algebra error in `alphaCritMic` or `alpha0Mic`. (By contrast, the monotonicity numerical check at lines 147-152 IS substantive because `dN - dNFormula` was only confirmed zero via `FullSimplify`; numeric substitution at concrete points is a structurally distinct check that would catch a `FullSimplify` mis-evaluation.)
 
 **Why this matters:**
-Stage 16.6 is the unit's final and most substantive claim: that the fully substituted stability gate has the specific factored form `8 varpi^2 Omega_U^2 Delta0 (11 A_mic + 9 DeltaK)` in its denominator (and the long polynomial in its numerator shown in the saved output). A genuine error in either `alpha_crit_mic` or `alpha0_mic` would not be caught — the script would still report PASS. There is therefore no verification at all of the gate structure beyond the printed transcript.
+A reader of the transcripts sees "PASS: alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim" and concludes that the gate-identity factorization has been verified end-to-end. In fact, only the structural part (denominator factor matches up to a parameter-free constant) has been verified; the rest of the assertion is a self-cancellation. If a future maintainer introduces a sign error or wrong constant in `alpha_crit_mic` or `alpha0_mic`, the `den_ratio.is_number` guard catches structural denominator mismatches but the cosmetic equality below it cannot detect a numerator error. The numeric cross-check for the gate identity provides no additional safety net.
+
+The reason this is severity `low` rather than `medium`: (a) the substantive guard `den_ratio.is_number` IS in place and IS non-tautological; (b) the prior v1 audit's F1 directive specifically prescribed this two-stage structure (guard + reconstruct-and-recheck), so removing only the cosmetic step does not undo the v1 fix; (c) downstream stages do not depend on the precise polynomial form of `gate_num_target`. The risk is documentation-level (a maintainer trusts a misleading transcript label) rather than physics-level.
 
 **Required change:**
-Replace the constructed `gate_num`/`gateNum` with an *independent* check. The substantive claim is that `together(alpha_crit_mic - alpha0_mic)` has denominator equal to `gate_den` (after clearing common factors and overall sign). Verify this by extracting the denominator of the simplified difference and checking it equals `gate_den` up to a multiplicative rational constant; the numerator can then be defined as `simplify((alpha_crit_mic - alpha0_mic) * gate_den)` *for printing only*, with a separate assertion that this numerator is a polynomial in `{K0, gU, gB, gR, gW, OmegaU, OmegaW, varpi, DeltaK}` (i.e. has trivial denominator after `together`). See directive F1 for exact instructions.
+Two options; pick (a) for the minimum fix, (b) for a stronger fix.
+
+(a) Re-label the decorative assertion to acknowledge its construction. Replace the label `"alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim"` with `"gate_num_target/gate_den_claim - gate_diff (tautological by reconstruction; substantive check is den_ratio above)"`. Same change in mma. Drop the numeric `gate-identity` block from `mathematica/...mathematica_audit.wl:146-160` (keep `monotonicity numeric residual` rules — those are substantive).
+
+(b) Replace the construction with an *independent* polynomial-identity check: instead of defining `gate_num_target` as `gate_num_actual/den_ratio`, write `gate_num_target` as a symbolic polynomial-in-couplings whose coefficients are read out (using `sp.Poly(..., gens=[K0, gU, gB, gR, gW, OmegaU, OmegaW, varpi, DeltaK])`) and check that `expand(alpha_crit_mic * gate_den_claim - alpha0_mic * gate_den_claim) - gate_num_target_independent` is identically zero. This way both the numerator polynomial form and the denominator are pinned independently. Mma analogue: use `PolynomialReduce` / `CoefficientList` to build the same polynomial-coefficient identity.
+
+For Codex auto-application, (a) is the safe minimum (cosmetic relabel + drop the redundant numeric block); (b) requires more design and would be deferred to a follow-up directive if the user wants stronger coverage.
 
 **Verification:**
-After the fix, the SymPy assertion at lines 112-115 must reference a target denominator (e.g. `Poly(together(alpha_crit_mic - alpha0_mic).as_numer_denom()[1])`) compared against `gate_den` directly, *not* a self-constructed `gate_num/gate_den`. The Mathematica assertion at lines 116-119 must do the analogous denominator extraction with `Denominator[Together[...]]`. The new check must be capable of failing if `alpha_crit_mic` or `alpha0_mic` is perturbed.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl:95,106-109`
-
-**What's wrong:**
-In Mathematica the K0_onset value is *defined* directly at line 95:
-
-```
-k0Onset = FullSimplify[gU^2/OmegaU^2 + kappa0Sq*chi^2/(NQ*delta0^2), Assumptions -> $Assumptions];
-```
-
-Then at lines 106-109 the script asserts:
-
-```
-expectZero[
-  "K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]",
-  k0Onset - (gU^2/OmegaU^2 + kappa0Sq*chi^2/(NQ*delta0^2))
-];
-```
-
-The asserted residual is `expr - expr` where `expr` is the line-95 right-hand side — identically zero. (The companion SymPy script at line 87 does the real work: `K0_onset = sp.simplify(sp.solve(sp.Eq(N0_mic, NQ), K0)[0])`, then compares the *solved* value against the same target at line 99.) The substantive Mathematica check is at line 105 (`N_-(0) at K0_onset - NQ`), which does verify consistency by back-substitution; but the assertion at lines 106-109 adds nothing and masquerades as an independent verification of the K0_onset formula.
-
-**Why this matters:**
-Reading the Mathematica transcript, one would conclude that K0_onset was derived twice (once by formula, once by check). In fact, only line 105 is substantive; the line 106-109 check is dead weight. If a future maintainer edits the line-95 `k0Onset` expression, the line 106-109 check will silently track the edit and never alert. The second-engine policy expects both engines to independently *derive* the result; here Mathematica hardcodes it while SymPy solves.
-
-**Required change:**
-Replace the hardcoded `k0Onset` at line 95 with a `Solve` call analogous to SymPy's, then keep the comparison at lines 106-109 as a non-trivial check. Specifically:
-
-```
-k0Onset = K0 /. First@Solve[n0Mic == NQ, K0];
-k0Onset = FullSimplify[k0Onset, Assumptions -> $Assumptions];
-```
-
-Then the line 106-109 assertion checks that the solved value equals the closed form, which is the intended physics claim.
-
-**Verification:**
-After the fix, line 95 must invoke `Solve[n0Mic == NQ, K0]` (or equivalent inversion). The line 106-109 assertion stays unchanged; its content is then non-tautological. The line 105 assertion remains an additional cross-check.
-
-### F3 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl:33-119`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py:33-115`
-
-**What's wrong:**
-The Mathematica script is a line-by-line algebraic mirror of the SymPy script. Compare:
-
-Constants block:
-```python
-# sympy lines 33-37
-kappa0_sq = sp.Rational(8) / sp.pi**2
-kappa1_sq = sp.Rational(16) / (9 * sp.pi**2)
-sigma = sp.simplify(kappa0_sq + kappa1_sq)
-delta_kappa = sp.simplify(kappa0_sq - kappa1_sq)
-Kprod = sp.simplify(kappa0_sq * kappa1_sq)
-```
-```
-(* mathematica lines 33-37 *)
-kappa0Sq = 8/Pi^2;
-kappa1Sq = 16/(9*Pi^2);
-sigma = FullSimplify[kappa0Sq + kappa1Sq, ...];
-deltaKappa = FullSimplify[kappa0Sq - kappa1Sq, ...];
-kProd = FullSimplify[kappa0Sq*kappa1Sq, ...];
-```
-
-Branch definitions:
-```python
-# sympy lines 41-44
-R = sp.sqrt((DeltaK + alpha0 * delta_kappa)**2 + 4 * alpha0**2 * Kprod)
-lambda_minus = sp.simplify((2 * A + DeltaK - alpha0 * sigma - R) / 2)
-s_minus = sp.simplify(sp.Rational(1, 2) * (sigma + ((DeltaK + alpha0 * delta_kappa) * delta_kappa + 4 * alpha0 * Kprod) / R))
-Nminus = sp.simplify(beta0 * s_minus**2 / (kappa0_sq * lambda_minus))
-```
-```
-(* mathematica lines 39-48 *)
-r = FullSimplify[Sqrt[(DeltaK + alpha0*deltaKappa)^2 + 4*alpha0^2*kProd], ...];
-lambdaMinus = FullSimplify[(2*A + DeltaK - alpha0*sigma - r)/2, ...];
-sMinus = FullSimplify[1/2*(sigma + ((DeltaK + alpha0*deltaKappa)*deltaKappa + 4*alpha0*kProd)/r), ...];
-nMinus = FullSimplify[beta0*sMinus^2/(kappa0Sq*lambdaMinus), ...];
-```
-
-dN/dalpha identity:
-```python
-# sympy lines 51-54
-ds = sp.simplify(sp.diff(s_minus, alpha0))
-dN = sp.simplify(sp.diff(Nminus, alpha0))
-dN_formula = sp.simplify(beta0 * (2 * s_minus * ds * lambda_minus + s_minus**3) / (kappa0_sq * lambda_minus**2))
-expect_zero("dN/dalpha - monotonicity formula", dN - dN_formula)
-```
-```
-(* mathematica lines 54-60 *)
-ds = FullSimplify[D[sMinus, alpha0], ...];
-dN = FullSimplify[D[nMinus, alpha0], ...];
-dNFormula = FullSimplify[beta0*(2*sMinus*ds*lambdaMinus + sMinus^3)/(kappa0Sq*lambdaMinus^2), ...];
-expectZero["dN/dalpha - monotonicity formula", dN - dNFormula];
-```
-
-The same correspondence holds for stages 16.2, 16.4, the microscopic-coupling block (`aMic`, `delta0`, `chi`, `beta0Mic`, `alpha0Mic` ↔ `A_mic`, `Delta0`, `Chi`, `beta0_mic`, `alpha0_mic`), and the gate block (`gateNum = FullSimplify[Expand[...]] ↔ gate_num = sp.simplify(sp.expand(...))`). The Mathematica engine never derives any quantity from a physically distinct starting point — variable names are mechanical renames, intermediate steps line up one-for-one. The only structural divergence (`k0Onset` hardcoded vs `K0_onset` solved) is the wrong direction: SymPy does the harder thing, Mathematica does the easier one (F2).
-
-**Why this matters:**
-The second-engine policy exists so that algebra mistakes in one engine's transcription get caught by an independently-derived counterpart. A pure transliteration cannot catch any SymPy algebra error, because the same algebra is being re-typed. The gate-identity tautology (F1) is the perfect example: the same wrong check appears in both engines because they share the same construction logic. A genuine cross-check would have caught the tautology.
-
-**Required change:**
-Insert at least one *independent* derivation path into the Mathematica script — typically a numerical-substitution cross-check at randomized parameter values that bypasses the analytic identity entirely. See directive F3 for exact instructions.
-
-**Verification:**
-After the fix, the Mathematica script must contain at least one assertion that exercises the Stage 16.1 monotonicity identity and the Stage 16.6 gate identity at concrete numerical values (e.g. `{A->2, DeltaK->1, alpha0->1/3, beta0->1, varpi->1, OmegaU->1, OmegaW->1, gB->1/2, gU->1/3, gW->1/4, gR->1/5, K0->3, NQ->1}` plus a second distinct numeric assignment), checking the residual is zero to machine precision in floating-point. This is structurally distinct from the SymPy approach (closed-form simplification) and would catch algebra errors.
+After fix (a): the new sympy and mma assertion labels reflect that `gate_num_target/gate_den_claim` is tautologically equal to the difference by construction; the gate-identity numeric block in the mma script is absent; both scripts still exit 0 and the substantive guards still appear in the transcript.
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` file is **not** an independent derivation. The constants, the radical `r`, `lambdaMinus`, `sMinus`, `nMinus`, the monotonicity formula `dNFormula`, the microscopic substitutions, and the gate construction all mirror SymPy's algebraic choreography one-for-one. The only structural divergence is at line 95 (`k0Onset` hardcoded vs `sp.solve` in SymPy) — and that divergence makes Mathematica's check at lines 106-109 tautological (F2). Three quoted blocks above show the parallel structure; this satisfies the `mathematica_transliteration` finding category.
+The Mathematica script's analytic block remains a transliteration of the SymPy script (same `r`, `lambdaMinus`, `sMinus`, `nMinus`, same microscopic substitutions, same gate construction). The v1 F3 directive added a numerical cross-check block (mma lines 138-160) that addresses the transliteration concern *for the monotonicity identity* (`monotonicityNumeric` evaluates `dN - dNFormula` at two rational rules; this is structurally distinct from the analytic `FullSimplify` because numeric substitution would catch an erroneous `FullSimplify` reduction). The cross-check for the gate identity at lines 153-158, however, is still tautological by construction of `gateNumTarget` (see F1), so it does not extend the independent-derivation coverage to Stage 16.6. A new `mathematica_transliteration` finding is NOT raised because (i) the monotonicity numeric check IS independent, satisfying the second-engine policy for the most physics-loaded identity, and (ii) the Stage 16.6 weakness is captured under F1 as a tautology rather than a transliteration.
 
 ## Engine cross-check
 
-Both engines report PASS on every assertion they share. The numerical outputs printed (e.g. `N_-(0) = 8*beta0/(pi^2*A)`, `alpha_crit = 9*pi^2*A*(A+DeltaK)/(8*(11*A + 9*DeltaK))`, `K0_onset = gU^2/OmegaU^2 + 648*pi^2*(...)^2/(NQ*(9*pi^2*OmegaU^2*OmegaW^2 - 88*gR^2)^2)`) match between SymPy (lines 40, 46, 65 of output) and Mathematica (lines 18, 21, 35 of output) up to formatting differences (`8*beta0/(pi^2*A)` vs `(8*beta0)/(A*Pi^2)`). No numeric or sign disagreement detected. Outputs are fresh (both `.txt` files mtime newer than corresponding script mtimes: sympy script Apr 3 12:05 / output May 11 12:41; mathematica script May 11 11:56 / output May 11 12:47).
+Both engines report PASS on every assertion. Numerical outputs printed agree up to formatting:
+- `N_-(0) = 8 beta_0 / (pi^2 A)` — sympy output line 38, mma output line 13.
+- `alpha_crit = 9 pi^2 A (A + DeltaK) / (8 (11 A + 9 DeltaK))` — sympy output line 32, mma output line 10 prints `(9 A (A+DeltaK) Pi^2)/(88 A + 72 DeltaK)` (same value: `88A + 72 DeltaK = 8(11A+9DeltaK)`).
+- `alpha0(mic) = g_B^2/varpi^2 + Chi^2/(Omega_U^2 (Omega_U^2 Omega_W^2 - 88 g_R^2/(9 pi^2)))` — sympy line 55, mma line 25.
+- `K0_onset = g_U^2/Omega_U^2 + 648 pi^2 (...)^2 / (NQ (9 pi^2 Omega_U^2 Omega_W^2 - 88 g_R^2)^2)` — sympy line 57, mma line 27 (different surface form: mma writes `(7744 gR^4 gU^2 NQ + 72 OmegaU^2 (...) Pi^2 + 81 gU^2 NQ OmegaU^4 OmegaW^4 Pi^4) / (NQ (88 gR^2 OmegaU - 9 OmegaU^3 OmegaW^2 Pi^2)^2)`; both reduce to the same closed form, confirmed by mma's M7 assertion which passes).
+- `denominator ratio` differs in sign (`+9 pi^2` sympy vs `-9 pi^2` mma) — both numeric/parameter-free, both pass the guard.
+- Mma's `N::meprec` warnings during numerical evaluation indicate precision-limit warnings while computing the (large symbolic) residuals to 30 digits; the final reported magnitudes (`0``78.83...` etc.) are at 78-digit residuals (much smaller than the `10^-20` tolerance). No engine disagreement.
+
+Outputs are fresh: sympy script mtime `1779406179`, sympy output mtime `1779406300` (output newer by 121 s); mma script mtime `1779406179`, mma output mtime `1779406310` (output newer by 131 s). `outputs_fresh: true`.
 
 ## Verdict justification
 
-The unit's first five claims (monotonicity, alpha_crit closed form, N_-(0), weak-loading slope generic + closed, K0_onset by solve) hold up under attack in SymPy: I tried to construct a hidden tautology, a missing branch, or a symbol-domain error and found none — the derivative-formula check at line 54 is a genuine identity (encoding `dlambda/dalpha = -s_minus`), the K0_onset solve at line 87 is a real inversion, and the alpha=0 substitution at lines 63-65 is a direct evaluation. Stage 16.2 has the modest concern that the `alpha_crit` formula is not derived in-script (both forms are hand-stated and then equated), but the algebraic identity between them is itself non-trivial after `kappa` substitution, so I do not file a separate hardcoded_result finding. Stage 16.6 is the failure: the gate-identity assertion is tautological by construction in both engines (F1). Mathematica's K0_onset block has a separate tautology (F2) that the SymPy script avoids. The whole Mathematica script is a transliteration (F3) which is *why* F1 reproduces verbatim in both engines. Verdict: `findings`, no stop-cold (all three findings are fixable mechanically).
+The paper's five `\stagefield{Output}` deliverables (microscopic definitions, stability gate including `alpha_crit` closed form, microscopic target structure, K0 onset, weak-loading expansion in both generic and DN-substituted forms) are all covered by non-tautological script checks after the v1 audit's three fixes (`applied: true`). The micro-target equation is appropriately covered piecewise (definitions + boundary + structural identity rather than as a single global identity, which would be physically meaningless). The monotonicity identity from notes §4 is verified analytically in both engines and numerically in Mathematica with a structurally distinct path (the only true independent-derivation step in the Mathematica script). The K0_onset block is now solve-based in both engines, eliminating the v1 F2 tautology, and the back-substitution check (mma M6) provides a non-trivial consistency test.
+
+The one residual issue is the Stage 16.6 final `expect_zero`/`expectZero` (and its numerical mma echo): these are tautological by construction of `gate_num_target = gate_num_actual / den_ratio`. The v1 F1 fix introduced a substantive guard (`den_ratio.is_number` / `NumericQ[denRatio]`) that does carry the verification load, but left the cosmetic identity in place where a reader might mistake it for an independent check. This is low-severity (documentation-level, not physics-level), and I file it as F1 here primarily so that a future maintainer is not misled by the transcript labels.
+
+Verdict: `findings` (1 low-severity tautology). No stop-cold. `paper_alignment: aligned`.
 
 ## Self-test notes
 
-I checked the four required traps. (1) Variable-independence: every `sp.diff(EXPR, alpha0)` and `D[expr, alpha0]` in the scripts has `alpha0` genuinely present in `EXPR` (`s_minus` and `Nminus` both contain `alpha0` via `R`); no zero-derivative-by-construction artifacts. (2) Symmetry/parity: no integrals in this unit; trap N/A. (3) Trivial-case pre-check: at alpha0=0 we get `R = DeltaK`, `lambda_- = A`, `s_- = (sigma+delta_kappa)/2 = kappa0^2`, so `N_-(0) = beta0*kappa0^2/A` matches the script's claim; I also verified the F1 tautology by hand-substituting `gate_num/gate_den` (gate_den cancels exactly, leaving `alpha_crit_mic - alpha0_mic`), confirming the residual is structurally zero. (4) Path specifications: both directive targets use the canonical paths (`scripts/...sympy_audit.py`, `mathematica/...mathematica_audit.wl`) — no new files are introduced.
+I checked the four required traps. (1) Variable independence: every `sp.diff(EXPR, alpha0)` / `D[expr, alpha0]` has `alpha0` genuinely present in `EXPR` (`s_minus` and `Nminus` both depend on `alpha0` through `R` and `lambda_minus`); no zero-by-construction derivatives. (2) Symmetry/parity: no integrals in this unit; trap N/A. (3) Trivial-case pre-check: at `alpha_0 = 0` I hand-evaluated `R = DeltaK`, `lambda_- = A`, `s_- = (sigma + delta_kappa)/2 = kappa_0^2`, so `N_-(0) = beta_0 kappa_0^2 / A` matches the script; I also hand-checked the F1 tautology by substituting `gate_num_target/gate_den_claim` and confirmed the residual is structurally zero. (4) Paper round-trip: the F1 fix proposal (option (a) cosmetic relabel + drop redundant numeric block) introduces no new paper-side claim and does not change any verified identity; the suggested option (b) would re-pin the numerator polynomial form, which is also script-internal scaffolding without paper-side counterpart. No new `paper_misalignment` risk.

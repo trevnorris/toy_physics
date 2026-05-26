@@ -30,7 +30,7 @@ expectMatrixZero[name_String, expr_?MatrixQ] := Module[{res, zero},
   If[TrueQ[res === zero], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 012 — DYNAMIC LOADING"];
+banner["STAGE 029 — DYNAMIC LOADING"];
 
 Clear[
   omega, K0, M0, M1, DeltaKax, varpi, OmegaU, OmegaW,
@@ -156,15 +156,6 @@ expectZero[
 ];
 Print["tan(2 theta_-) = ", fmt[tan2Theta]];
 
-al = Symbol["alphaLoad"];
-detTemplate = FullSimplify[
-  Det[{{k0t - al*kappa0Sq, -al*kappa0*kappa1}, {-al*kappa0*kappa1, k1t - al*kappa1Sq}}],
-  Assumptions -> $Assumptions
-];
-alphaCrit = FullSimplify[k0t*k1t/(k1t*kappa0Sq + k0t*kappa1Sq), Assumptions -> $Assumptions];
-Print["alpha_crit = ", fmt[alphaCrit]];
-expectZero["det(alpha_crit)", detTemplate /. al -> alphaCrit];
-
 alphaCons = FullSimplify[alpha /. portPi -> 0, Assumptions -> $Assumptions];
 beta = FullSimplify[D[alpha, portPi] /. portPi -> 0, Assumptions -> $Assumptions];
 deltaCons = FullSimplify[aU*(OmegaW^2 - omega^2) - lambdaR^2*sigma, Assumptions -> $Assumptions];
@@ -227,6 +218,18 @@ expectZero["strong-loading kappa_sel^2 - sigma", FullSimplify[Limit[kappaSelSqDi
 
 oddProjection = FullSimplify[-I*beta5*kappaSelSq*omega^5, Assumptions -> $Assumptions];
 Print["delta D_-^(odd)(omega) template = ", fmt[oddProjection]];
+
+deltaDPaper = (
+  -I*GammaPort
+    * (OmegaU^2*lambdaW + lambdaR*lambdaU)^2 / delta0^2
+    * kappaSelSq
+    * omega^5
+);
+deltaDScript = -I*beta5*kappaSelSq*omega^5;
+expectZero[
+  "delta D_-^odd (script) - delta D_-^odd (paper formula)",
+  deltaDScript - deltaDPaper
+];
 
 Print[""];
 Print["Stage 029 Mathematica audit passed."];

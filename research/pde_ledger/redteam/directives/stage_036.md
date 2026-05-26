@@ -1,17 +1,18 @@
 ---
 unit_id: 036
 batch: II.1
-created_at: 2026-05-21T00:00:00Z
-findings_count: 6
+created_at: 2026-05-25T00:00:00Z
+findings_count: 2
 stop_cold: null
 applied: true
-applied_at: 2026-05-21T17:38:15-06:00
-findings_applied: 6
+applied_at: 2026-05-25T23:52:03-06:00
+findings_applied: 2
 findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
-# Codex directive — unit 036
+# Codex directive — unit 036 (v2)
 
 Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
 
@@ -23,355 +24,230 @@ Do NOT run python or mathematica. Only edit files.
 
 Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
 
+This is a v2 directive that supersedes the previously-applied v1 directive (whose Applied blocks are above-the-fold in the prior file state). The v1 fixes are already in the current scripts; the two findings here are additional defects caught in the paper-grounded re-audit.
+
 ## F1 — tautological_check
 
 **Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:72`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:59`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:96-97,140-149`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:108-109,139-148`
 
 **Issue:**
-SymPy line 57 defines `R_target = sp.simplify(NQ * A / (beta0 * (sp.Rational(8) / sp.pi**2)))`, which simplifies to `pi**2 * A * NQ / (8 * beta0)`. Line 72 then asserts that the difference between `R_target` and `sp.pi**2 * A * NQ / (8 * beta0)` is zero — this is `X - X = 0`. The Mathematica script repeats the same construction at lines 50, 59.
+The "admissible / inadmissible M_mix witness" checks for the paper-card feasibility leg `M_mix <= G(xi_req,delta)` are constructed so that they cannot fail regardless of what `G_sample` is. The sympy script (lines 96-97, 140-149) defines `Mmix_good = G_sample - 1/10` and `Mmix_bad = G_sample + 1/10` and then asserts `Mmix_good <= G_sample` and `Mmix_bad > G_sample`. These are arithmetic identities on the rationals: `x - 1/10 <= x` and `x + 1/10 > x` are unconditionally true. They never touch `M_mix_expr` (the actual paper definition `8 Chi^2/(pi^2 A Omega_U^2 Delta_0)`), and they would still pass if the closed forms of `G` or `M_mix` were corrupted. The Mathematica script mirrors the same construction at lines 108-109 and 139-148 (`mMixGood = gSample - 1/10`, `mMixBad = gSample + 1/10`).
+
+The fix is to construct the sample `M_mix` from independent microscopic parameters `(Chi, Omega_U, Delta_0, A)` — i.e. by substituting into the existing `Mmix_expr` / `mMix` — and then numerically compare to `G_sample`. At `(delta=1, xi=1/2)`, `G_sample = 27/58 ≈ 0.4655`. Picking `(Chi, Omega_U, Delta_0, A) = (1, 1, 1, 29)` gives `Mmix = 8/(29 pi^2) ≈ 0.0280`, an admissible witness. Picking `(1, 1, 1, 1)` gives `Mmix = 8/pi^2 ≈ 0.8106`, an inadmissible witness.
 
 **Required change:**
 
-SymPy script, delete line 72 entirely:
+(Part A — SymPy.) Replace lines 96-97 and 140-149 of `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`.
 
-Before:
+Before (line 96-97):
 ```python
-expect_zero("R_target - pi^2 A NQ/(8 beta0)", R_target - sp.pi**2 * A * NQ / (8 * beta0))
+Mmix_good = sp.simplify(G_sample - sp.Rational(1, 10))
+Mmix_bad = sp.simplify(G_sample + sp.Rational(1, 10))
 ```
 
-After:
-```
-(line deleted; no replacement)
+After (line 96-97 replacement — define independent-parameter witnesses derived from Mmix_expr, not from G_sample):
+```python
+Mmix_admissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 29}))
+Mmix_inadmissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 1}))
+G_sample_n = sp.N(G_sample)
 ```
 
-Mathematica script, delete line 59 entirely:
+Then, before (lines 140-149):
+```python
+expect_true(
+    "admissible sample: M_mix <= G(xi_req,delta)",
+    bool(Mmix_good <= G_sample),
+    f"M_mix={Mmix_good}, G={G_sample}",
+)
+expect_true(
+    "inadmissible sample: support deficit blocks the branch",
+    bool(Mmix_bad > G_sample),
+    f"M_mix={Mmix_bad}, G={G_sample}",
+)
+```
 
-Before:
+After (lines 140-149 replacement — compare numerically against the independent-parameter Mmix evaluations):
+```python
+expect_true(
+    "admissible sample: M_mix < G(xi_req,delta)",
+    bool(Mmix_admissible < G_sample_n),
+    f"M_mix={Mmix_admissible}, G={G_sample_n}",
+)
+expect_true(
+    "inadmissible sample: support deficit blocks the branch",
+    bool(Mmix_inadmissible > G_sample_n),
+    f"M_mix={Mmix_inadmissible}, G={G_sample_n}",
+)
+```
+
+Note: the two `expect_true` calls in the source are separated by other code (line 116-139 are the F-related kappa checks). Edit only the two `expect_true` blocks at lines 140-144 and 145-149, and the two `Mmix_*` definitions at lines 96-97. Do not edit the kappa block in between.
+
+(Part B — Mathematica.) Replace lines 108-109 and 139-148 of `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`.
+
+Before (line 108-109):
 ```wolfram
-expectZero["R_target - Pi^2 A NQ/(8 beta0)", rTarget - Pi^2*A*NQ/(8*beta0)];
+mMixGood = FullSimplify[gSample - 1/10];
+mMixBad = FullSimplify[gSample + 1/10];
 ```
 
-After:
-```
-(line deleted; no replacement)
+After (line 108-109 replacement):
+```wolfram
+mMixAdmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 29}];
+mMixInadmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 1}];
+gSampleN = N[gSample];
 ```
 
-Do not remove the definitions at SymPy line 57 or Mathematica line 50; `R_target` / `rTarget` are still printed for context (SymPy line 67, Mathematica line 56).
+Then, before (lines 139-148):
+```wolfram
+expectTrue[
+  "admissible sample: M_mix <= G(xi_req,delta)",
+  mMixGood <= gSample,
+  "M_mix=" <> fmt[mMixGood] <> ", G=" <> fmt[gSample]
+];
+expectTrue[
+  "inadmissible sample: support deficit blocks the branch",
+  mMixBad > gSample,
+  "M_mix=" <> fmt[mMixBad] <> ", G=" <> fmt[gSample]
+];
+```
+
+After (lines 139-148 replacement):
+```wolfram
+expectTrue[
+  "admissible sample: M_mix < G(xi_req,delta)",
+  mMixAdmissible < gSampleN,
+  "M_mix=" <> fmt[mMixAdmissible] <> ", G=" <> fmt[gSampleN]
+];
+expectTrue[
+  "inadmissible sample: support deficit blocks the branch",
+  mMixInadmissible > gSampleN,
+  "M_mix=" <> fmt[mMixInadmissible] <> ", G=" <> fmt[gSampleN]
+];
+```
+
+Self-test (already performed by auditor; reproduced here so Codex can spot-check):
+- `Mmix_expr = 8 Chi^2 / (pi^2 A Omega_U^2 Delta_0)`; at `(Chi=1, OmegaU=1, Delta0=1, A=29)`, `Mmix = 8/(29 pi^2) ≈ 0.02797`. `G_sample = 27/58 ≈ 0.46552`. So `0.02797 < 0.46552`, admissible witness passes.
+- At `(Chi=1, OmegaU=1, Delta0=1, A=1)`, `Mmix = 8/pi^2 ≈ 0.81057`. `0.81057 > 0.46552`, inadmissible witness passes.
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 036` and `redteam exec-mathematica 036` and confirm both scripts exit 0 AND that the strings `R_target - pi^2 A NQ/(8 beta0) = 0` (SymPy) and `R_target - Pi^2 A NQ/(8 beta0) = 0` / `PASS: R_target - Pi^2 A NQ/(8 beta0)` (Mathematica) no longer appear in the saved outputs.
+After Codex applies, the verifier will run `redteam exec-sympy 036` and `redteam exec-mathematica 036`, confirm both scripts exit 0, and confirm both saved outputs contain admissible / inadmissible lines whose `M_mix=` value is approximately `0.02797` / `0.81057` (not the old `53/145` / `82/145`).
 
 ## Applied: F1
 
 - files_changed:
   - `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
   - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: Removed the tautological R_target closed-form assertions while leaving the contextual R_target prints intact.
+- summary: Replaced the G-derived M_mix witness values with independent M_mix evaluations from microscopic parameters.
 - deviation: none
 
 ## F2 — tautological_check
 
 **Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:68-71,88-91`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:57,60-63,90-93`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:67,86` (insertion points for comments)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:58,98` (insertion points for comments)
 
 **Issue:**
-In the SymPy script, both `a_req = 9*pi**2*A*xi*(xi+delta)/(8*(9*delta+11*xi))` (line 60) and `G = 9*xi*(xi+delta)/(9*delta+11*xi)` (line 54) are written down as closed forms. Computing `(pi**2*A/8)*G` mechanically yields `a_req` because the two were typed in that way. Likewise `(pi**2*A/8)*Mmix_expr = alpha_mix` is mechanical. Therefore the assertion at lines 68-71 of the form
-`gBreq_sq_over_varpi2 - (pi**2*A/8)*(G - Mmix_expr) == 0`
-is `(a_req - alpha_mix) - (a_req - alpha_mix) = 0` by construction — it cannot fail no matter what is assigned to `a_req` and `G`, so long as their relationship is preserved at typing time.
+The assertion at sympy lines 68-71 (`gBreq_sq_over_varpi2 - (pi^2 A/8)(G - Mmix_expr) == 0`) and its `xi -> xi_req` echo at lines 87-90 are identically zero by construction: both `a_req` and `G` are hardcoded closed forms (lines 54, 60) typed in such a way that `(pi^2 A/8) G = a_req` and `(pi^2 A/8) Mmix_expr = alpha_mix`, making the residual `(a_req - alpha_mix) - (a_req - alpha_mix) = 0`. The Mathematica script has the same pattern at lines 59-62 and 99-102.
 
-Lines 88-91 substitute `xi -> xi_req` and re-check the same identity; same problem.
-
-The Mathematica script mirrors this at lines 41-43, 49, 51, 60-63, 90-93.
-
-The fix is to add a symbolic kappa-based derivation that arrives at one of these quantities through a different algebraic route, so that the lines 68-71 / 60-63 check stops being a self-restatement and becomes a confirmation that the kappa-derived expression factors as `(pi**2 A/8)*(G - M_mix)`.
+The closed form of `G` is genuinely anchored elsewhere — by the symbolic kappa derivation at sympy:123-139 / mathematica:124-138, which proves `F = R_target_sym` and thereby fixes the algebraic structure of the F-G branch. So the local tautology is not load-bearing, but it should be labelled as such so future readers (and the next audit pass) do not double-count it as an independent verification.
 
 **Required change:**
 
-(Part A — SymPy.) Insert the following block immediately after SymPy line 120 (after the existing `R_target_host` check, before the `expect_true("admissible sample: M_mix <= G(xi_req,delta)", ...)` call at line 121):
+(Part A — SymPy.) Insert a comment block above the assertion at line 68 and above the assertion at line 87 of `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`.
 
+Before (line 67-71):
 ```python
-# Symbolic kappa-based cross-check of the support-feasibility content.
-# Builds R_target_sym from the Stage-18 microscopic kappa expansion
-# symbolically in (xi, delta, A_sym, beta0_sym) and confirms it equals F.
-A_sym, beta0_sym = sp.symbols("A_sym beta0_sym", positive=True, real=True)
-x_sym = A_sym * xi
-deltaK_sym = A_sym * delta
-N_sym = (
-    beta0_sym
-    * (KAPPA0_SQ * (x_sym + deltaK_sym) + KAPPA1_SQ * x_sym) ** 4
-    / (
-        KAPPA0_SQ
-        * (A_sym - x_sym)
-        * (KAPPA0_SQ * (x_sym + deltaK_sym) ** 2 + KAPPA1_SQ * x_sym ** 2) ** 2
-    )
-)
-R_target_sym = sp.simplify(N_sym * A_sym / (beta0_sym * KAPPA0_SQ))
+print("R_target =", R_target)
 expect_zero(
-    "symbolic kappa derivation: F(xi,delta) - R_target_sym",
-    sp.simplify(F - R_target_sym),
+    "g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",
+    gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
 )
 ```
 
-Do NOT remove the existing assertions at lines 68-71 or 88-91; once the kappa derivation anchors F (and through it, the closed form of G via the same algebra), those assertions become valid bookkeeping confirmations of the factorization rather than self-restatements.
+After (line 67-71 replacement; insert a 4-line comment between `print("R_target =", R_target)` and `expect_zero(`):
+```python
+print("R_target =", R_target)
+# Definitional self-consistency: a_req and G are both hardcoded closed forms,
+# so this just confirms a_req = (pi^2 A / 8) G after Mmix_expr cancels.
+# The genuine anchor for F (and hence the closed form of G via the same algebra)
+# is the symbolic kappa derivation below ("symbolic kappa derivation: F(xi,delta) - R_target_sym").
+expect_zero(
+    "g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",
+    gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
+)
+```
 
-(Part B — Mathematica.) Insert the following block immediately after Mathematica line 114 (after the existing `expectZero["admissible sample: F(xi_req,delta) - R_target(host)", ...]`), before line 115's `expectTrue["admissible sample: M_mix <= G(xi_req,delta)", ...]`:
+Before (line 86-90):
+```python
+print("Parametric frontier: xi -> (F(xi,delta), G(xi,delta))")
+expect_zero(
+    "final-test support inequality <-> nonnegative required support loading",
+    (sp.pi**2 * A / 8) * (G.subs(xi, xi_req) - Mmix_expr) - gBreq_sq_over_varpi2.subs(xi, xi_req),
+)
+```
 
+After (insert a 1-line comment):
+```python
+print("Parametric frontier: xi -> (F(xi,delta), G(xi,delta))")
+# Same definitional identity as above, with xi -> xi_req. Definitional, not load-bearing.
+expect_zero(
+    "final-test support inequality <-> nonnegative required support loading",
+    (sp.pi**2 * A / 8) * (G.subs(xi, xi_req) - Mmix_expr) - gBreq_sq_over_varpi2.subs(xi, xi_req),
+)
+```
+
+(Part B — Mathematica.) Insert analogous comments above the assertions at line 59 and line 99 of `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`.
+
+Before (lines 58-62):
 ```wolfram
-(* Symbolic kappa-based cross-check: derive R_target_sym symbolically and confirm = F. *)
-Clear[Asym, beta0Sym];
-$Assumptions =
-  Element[{A, delta, xiReq, Chi, OmegaU, Delta0, beta0, NQ, Asym, beta0Sym}, Reals] &&
-  A > 0 && delta > 0 && 0 <= xiReq < 1 && OmegaU > 0 && Delta0 > 0 && beta0 > 0 && NQ > 0 &&
-  Asym > 0 && beta0Sym > 0;
-xSym = Asym * xi;
-deltaKSym = Asym * delta;
-nSym = beta0Sym*(kappa0Sq*(xSym + deltaKSym) + kappa1Sq*xSym)^4 /
-  (kappa0Sq*(Asym - xSym)*(kappa0Sq*(xSym + deltaKSym)^2 + kappa1Sq*xSym^2)^2);
-rTargetSym = FullSimplify[nSym*Asym/(beta0Sym*kappa0Sq), Assumptions -> $Assumptions];
+expectZero["G - closed form", g - gTarget];
 expectZero[
-  "symbolic kappa derivation: F(xi,delta) - R_target_sym",
-  FullSimplify[Together[Expand[fTarget - rTargetSym]], Assumptions -> $Assumptions]
+  "g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix)",
+  gBReqSqOverVarpi2 - (Pi^2*A/8)*(gTarget - mMix)
 ];
 ```
 
-Do NOT remove the existing assertions at Mathematica lines 57, 60-63, 90-93.
+After (lines 58-62; insert a 4-line comment between the two expectZero calls):
+```wolfram
+expectZero["G - closed form", g - gTarget];
+(* Definitional self-consistency: alphaReq and gTarget are both hardcoded
+   closed forms, so this just confirms alphaReq = (Pi^2 A / 8) gTarget after mMix cancels.
+   The genuine anchor for F (and hence the closed form of G via the same algebra)
+   is the symbolic kappa derivation below (rTargetSym). *)
+expectZero[
+  "g_B,req^2/varpi^2 - (Pi^2 A / 8) (G - M_mix)",
+  gBReqSqOverVarpi2 - (Pi^2*A/8)*(gTarget - mMix)
+];
+```
+
+Before (lines 98-102):
+```wolfram
+  A > 0 && delta > 0 && 0 <= xiReq < 1 && OmegaU > 0 && Delta0 > 0 && beta0 > 0 && NQ > 0;
+expectZero[
+  "final-test support inequality <-> nonnegative required support loading",
+  (Pi^2*A/8)*((gTarget /. xi -> xiReq) - mMix) - (gBReqSqOverVarpi2 /. xi -> xiReq)
+];
+```
+
+After (insert a 1-line comment):
+```wolfram
+  A > 0 && delta > 0 && 0 <= xiReq < 1 && OmegaU > 0 && Delta0 > 0 && beta0 > 0 && NQ > 0;
+(* Same definitional identity as above, with xi -> xiReq. Definitional, not load-bearing. *)
+expectZero[
+  "final-test support inequality <-> nonnegative required support loading",
+  (Pi^2*A/8)*((gTarget /. xi -> xiReq) - mMix) - (gBReqSqOverVarpi2 /. xi -> xiReq)
+];
+```
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 036` and `redteam exec-mathematica 036`, confirm exit 0, and confirm both saved outputs contain a new PASS line of the form `symbolic kappa derivation: F(xi,delta) - R_target_sym = 0` (SymPy) and `PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym` (Mathematica).
+After Codex applies, the verifier will run `redteam exec-sympy 036` and `redteam exec-mathematica 036`, confirm exit 0, and confirm both saved outputs continue to print residuals of 0 for the four assertions. The comments themselves don't appear in the output transcripts; the verifier instead spot-reads the source files at the named line ranges to confirm the comments landed verbatim.
 
 ## Applied: F2
 
 - files_changed:
   - `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
   - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: Added symbolic kappa-derived R_target cross-checks in both audit scripts.
-- deviation: none
-
-## F3 — tautological_check
-
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:79,83`
-
-**Issue:**
-Line 79 defines `alphaCrit = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), ...]` and line 83 asserts `(Pi^2*A/8)*gMaxTarget - alphaCrit == 0`. Since `gMaxTarget` (line 78) is `9*(1+delta)/(9*delta+11)`, `(Pi^2*A/8)*gMaxTarget` mechanically equals `alphaCrit`. The assertion is `X - X = 0` by construction.
-
-**Required change:**
-
-Delete Mathematica lines 79 and 83.
-
-Before (lines 78-83):
-```wolfram
-gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), Assumptions -> delta > 0];
-alphaCrit = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), Assumptions -> A > 0 && delta > 0];
-
-Print["G_max(delta) = ", fmt[gMax]];
-expectZero["G_max - closed form", gMax - gMaxTarget];
-expectZero["(Pi^2 A / 8) G_max - alpha_crit", (Pi^2*A/8)*gMaxTarget - alphaCrit];
-```
-
-After:
-```wolfram
-gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), Assumptions -> delta > 0];
-
-Print["G_max(delta) = ", fmt[gMax]];
-expectZero["G_max - closed form", gMax - gMaxTarget];
-```
-
-(I.e., remove the `alphaCrit = ...` line and the trailing `expectZero["(Pi^2 A / 8) G_max - alpha_crit", ...]` line.)
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 036`, confirm exit 0, and confirm the saved output no longer contains the line `(Pi^2 A / 8) G_max - alpha_crit = 0` or `PASS: (Pi^2 A / 8) G_max - alpha_crit`.
-
-## Applied: F3
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: Removed the alphaCrit definition and the tautological alpha_crit assertion from the Mathematica audit.
-- deviation: none
-
-## F4 — tautological_check
-
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:126`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:120`
-
-**Issue:**
-SymPy line 126's assertion is `bool(sp.Rational(9, 10) < 1)`, which is `True` regardless of any physics. No `R_target` is constructed from any parameter setting. The label "inadmissible sample: R_target < 1 blocks the branch" is misleading because no sample exists — only the bare arithmetic `9/10 < 1` is being asserted. Same issue at Mathematica line 120 (`9/10 < 1`).
-
-**Required change:**
-
-SymPy script, delete line 126:
-
-Before:
-```python
-expect_true("inadmissible sample: R_target < 1 blocks the branch", bool(sp.Rational(9, 10) < 1), "R_target=9/10")
-```
-
-After:
-```
-(line deleted; no replacement)
-```
-
-Mathematica script, delete line 120:
-
-Before:
-```wolfram
-expectTrue["inadmissible sample: R_target < 1 blocks the branch", 9/10 < 1, "R_target=9/10"];
-```
-
-After:
-```
-(line deleted; no replacement)
-```
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 036` and `redteam exec-mathematica 036`, confirm exit 0, and confirm the lines `inadmissible sample: R_target < 1 blocks the branch = R_target=9/10` and the corresponding `PASS:` line are absent from both saved outputs.
-
-## Applied: F4
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
-  - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: Removed the bare arithmetic inadmissible R_target branch assertions from both audit scripts.
-- deviation: none
-
-## F5 — mathematica_transliteration
-
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:43,66-69,78,128-129`
-
-**Issue:**
-The Mathematica script declares the same closed-form targets that SymPy declares, rather than deriving them inside Mathematica. Specifically:
-
-- Line 43: `gTarget = FullSimplify[9*xi*(xi + delta)/(9*delta + 11*xi), ...]` — written by hand, identical to SymPy line 54.
-- Lines 66-69: `dGTarget = FullSimplify[9*(9*delta^2 + 18*delta*xi + 11*xi^2)/(9*delta + 11*xi)^2, ...]` — written by hand, identical to SymPy lines 75-76.
-- Line 78: `gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), ...]` — written by hand, identical to SymPy line 81.
-- Line 129: `gSeriesTarget = FullSimplify[xi - 2*xi^2/(9*delta), ...]` — written by hand, identical to SymPy line 135.
-
-Because the targets are typed in, both engines would write down the same wrong target if the SymPy author got the closed form wrong. The fix is to derive each Mathematica target through a Mathematica-native algebraic step so that, if the SymPy target were wrong, the Mathematica derivation would produce a different expression and the cross-check would fail.
-
-**Required change:**
-
-(a) Replace lines 66-71 of the Mathematica script:
-
-Before:
-```wolfram
-dG = FullSimplify[D[gTarget, xi], Assumptions -> $Assumptions];
-dGTarget = FullSimplify[
-  9*(9*delta^2 + 18*delta*xi + 11*xi^2)/(9*delta + 11*xi)^2,
-  Assumptions -> $Assumptions
-];
-Print["dG/dxi = ", fmt[dG]];
-expectZero["dG/dxi - manifestly positive form", dG - dGTarget];
-```
-
-After:
-```wolfram
-(* Derive dG/dxi from gTarget; multiply through by the squared denominator
-   so the result is a polynomial in xi and delta. Mathematica must produce
-   11*xi^2 + 18*delta*xi + 9*delta^2 on its own; the closed-form coefficients
-   are not declared up front. *)
-dG = FullSimplify[D[gTarget, xi], Assumptions -> $Assumptions];
-dGPolynomial = FullSimplify[Expand[dG*(9*delta + 11*xi)^2/9], Assumptions -> $Assumptions];
-Print["dG/dxi = ", fmt[dG]];
-Print["9 * dG/dxi * (9 delta + 11 xi)^2 / 81 (polynomial) = ", fmt[dGPolynomial]];
-expectZero[
-  "dG/dxi positivity polynomial: 9 dG/dxi (9d+11xi)^2 / 9 == 11 xi^2 + 18 delta xi + 9 delta^2",
-  dGPolynomial - (11*xi^2 + 18*delta*xi + 9*delta^2)
-];
-(* Also confirm the manifest non-negativity of the numerator polynomial
-   for delta, xi >= 0: discriminant <= 0 in xi. *)
-disc = Discriminant[11*xi^2 + 18*delta*xi + 9*delta^2, xi];
-discSimplified = FullSimplify[disc, Assumptions -> delta > 0];
-Print["discriminant (in xi) = ", fmt[discSimplified]];
-expectZero["dG/dxi numerator discriminant should be 0 (perfect-square-like)", discSimplified - 0];
-```
-
-Note: hand-check — discriminant of `11 xi^2 + 18 delta xi + 9 delta^2` in `xi` is `(18 delta)^2 - 4*11*9*delta^2 = 324 delta^2 - 396 delta^2 = -72 delta^2`. So `disc = -72 delta^2`, NOT zero. **Reject the discriminant assertion above.** The correct assertion for nonzero discriminant is `disc + 72*delta^2 == 0`. Use this corrected form:
-
-```wolfram
-expectZero["dG/dxi numerator discriminant equals -72 delta^2", discSimplified + 72*delta^2];
-```
-
-(b) Replace line 78 of the Mathematica script:
-
-Before:
-```wolfram
-gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), Assumptions -> delta > 0];
-```
-
-After:
-```wolfram
-(* Derive gMaxTarget from gMax via substitution rather than declaring it. *)
-gMaxTarget = FullSimplify[gMax, Assumptions -> delta > 0];
-```
-
-(After F3's removal of line 83, this leaves the `expectZero["G_max - closed form", gMax - gMaxTarget]` at the renumbered next line. Since `gMaxTarget = gMax` after substitution, this assertion becomes trivially `0 = 0`. To restore content, **replace** the existing `expectZero["G_max - closed form", gMax - gMaxTarget]` with the form:
-
-```wolfram
-expectZero["G_max - 9(1+delta)/(9delta+11)", gMax - 9*(1 + delta)/(9*delta + 11)];
-```
-
-This puts the closed-form `9*(1+delta)/(9*delta+11)` on the test side, where Mathematica's `gMax` (computed via Limit) is being compared against the literal closed form. Now the closed form is the target being verified, not a variable that was declared equal to it.
-
-(c) Replace lines 128-131 of the Mathematica script:
-
-Before:
-```wolfram
-gSeries = FullSimplify[Normal[Series[gTarget, {xi, 0, 2}]], Assumptions -> delta > 0];
-gSeriesTarget = FullSimplify[xi - 2*xi^2/(9*delta), Assumptions -> delta > 0];
-Print["G(xi,delta) near xi=0 = ", fmt[gSeries]];
-expectZero["G near-onset series through O(xi^2)", gSeries - gSeriesTarget];
-```
-
-After:
-```wolfram
-(* Read the series coefficients directly out of gSeries; do not declare a target. *)
-gSeries = FullSimplify[Normal[Series[gTarget, {xi, 0, 2}]], Assumptions -> delta > 0];
-c0 = FullSimplify[Coefficient[gSeries, xi, 0], Assumptions -> delta > 0];
-c1 = FullSimplify[Coefficient[gSeries, xi, 1], Assumptions -> delta > 0];
-c2 = FullSimplify[Coefficient[gSeries, xi, 2], Assumptions -> delta > 0];
-Print["G(xi,delta) near xi=0 = ", fmt[gSeries]];
-Print["near-onset coefficients: c0=", fmt[c0], ", c1=", fmt[c1], ", c2=", fmt[c2]];
-expectZero["near-onset c0 = 0", c0];
-expectZero["near-onset c1 = 1", c1 - 1];
-expectZero["near-onset c2 = -2/(9 delta)", c2 + 2/(9*delta)];
-```
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 036`, confirm exit 0, and confirm the saved output contains the new assertion labels `dG/dxi positivity polynomial: ...`, `dG/dxi numerator discriminant equals -72 delta^2`, `G_max - 9(1+delta)/(9delta+11)`, `near-onset c0 = 0`, `near-onset c1 = 1`, and `near-onset c2 = -2/(9 delta)`, all of which must PASS.
-
-## Applied: F5
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: Replaced the Mathematica closed-form derivative, endpoint, and near-onset target checks with derived polynomial, limit, and coefficient checks.
-- deviation: none
-
-## F6 — insufficient_verification
-
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py:120` (insertion point)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl:114` (insertion point)
-
-**Issue:**
-The kappa-based identity `F(xi,delta) = R_target_sym(xi,delta,A,beta0)` is only checked at the single numeric sample `(A=3, beta0=5, xi=1/2, delta=1)`. The docstring claims "Exact dimensionless support-feasibility function"; "exact" should mean symbolic across the parameter range, not just at one point.
-
-**Required change:**
-This change is fulfilled by the same edits required under F2 (Parts A and B). No additional change required — the F2 insertion adds a symbolic-in-`(xi, delta, A_sym, beta0_sym)` version of the kappa derivation that asserts `F - R_target_sym == 0` for general symbols, thereby promoting the single-sample numeric witness to a symbolic identity.
-
-If Codex has already applied F2, mark F6 as `Applied: F6` with `summary: covered by F2`. If F2 was blocked, F6 is also blocked.
-
-**Verification command:**
-After Codex applies, the verifier will confirm the new PASS line `symbolic kappa derivation: F(xi,delta) - R_target_sym = 0` appears in both saved outputs (same check as F2).
-
-## Applied: F6
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`
-  - `mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`
-- summary: covered by F2
+- summary: Added source comments labelling the two support-loading residual checks as definitional consistency checks.
 - deviation: none

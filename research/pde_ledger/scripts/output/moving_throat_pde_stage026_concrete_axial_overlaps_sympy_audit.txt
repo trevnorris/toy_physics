@@ -119,5 +119,6 @@ K_req =
 ↪                                                                           
 ↪                                                                           
 ↪                                                                           
+K_req - K_req_paper = 0
 residual @ K_req = 0
 On the constant wall branch, bare quadrupole wall stiffness is K = K_eta + 6*T_Omega

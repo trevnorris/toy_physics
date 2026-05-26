@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded re-audit pass)
+Snapshot date: `2026-05-26` (batch II.1 v2 close — third paper-grounded re-audit pass)
 
 ## Scope
 
@@ -47,29 +47,31 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-25`: 84 of 253 stages red-team verified (batch I.2 now under v2 paper-grounded re-audit; stage count unchanged because the same 11 stages were re-verified at greater depth).
+As of `2026-05-26`: 84 of 253 stages red-team verified (batch II.1 now under v2 paper-grounded re-audit; stage count unchanged because the same 13 stages were re-verified at greater depth). With II.1 v2 closed, the entire range 001–036 is now paper-aligned at v2 depth.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
 | I.1 | `001--012` | 12 | 12 | 2026-05-21 (v1) / 2026-05-25 (v2 paper-grounded) |
 | I.2 | `013--023` | 11 | 11 | 2026-05-21 (v1) / 2026-05-25 (v2 paper-grounded) |
-| II.1 | `024--036` | 13 | 13 | 2026-05-22 |
+| II.1 | `024--036` | 13 | 13 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 |
 | III.2 | `049--060` | 12 | 12 | 2026-05-22 |
 | III.3 | `061--072` | 12 | 12 | 2026-05-22 |
 | III.4 | `073--084` | 12 | 12 | 2026-05-25 |
 | III.5 onward | `085--253` | 169 | 0 | pending |
 
-Cumulative findings closed: ~219 (`tautological_check` dominant overall,
-`mathematica_transliteration` second; `hardcoded_result` rose sharply in
-III.4 to 12 because the Family-1 numerology cluster 075-084 packs many
-literal constants). Two stages still carry `material_change: true`: III.2
-stage 060 (a `Csol = a/(exp(a*L)-1)` restructure of a previously-failing
-`sp.solve`) and III.3 stage 068 (`Solve`-derived `Wfail_res`/`Wfail_match`
-matching prior postulated forms symbolically); III.4 added no new
-`material_change` flags (every derivation-route rewrite left printed
-symbolic and numeric content byte-identical). Downstream consumers of 060
-and 068 are still `pending` so no immediate cascade. See per-batch
+Cumulative findings closed: ~257 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1).
+`tautological_check` dominant overall, `mathematica_transliteration` second.
+`hardcoded_result` rose sharply in III.4 to 12 because the Family-1 numerology
+cluster 075-084 packs many literal constants. v2 added `paper_misalignment` as
+the 10th category — 13 items total across the three v2 batches (7 in I.1,
+3 in I.2, 3 in II.1); none in II.1 required user redirection (Codex's first-pass
+recommendations all held up). v2 also surfaces `insufficient_verification`
+prominently — 8 items in II.1 alone, the dominant new category for that
+batch. Two stages still carry `material_change: true` from v1 (III.2 stage 060
+and III.3 stage 068); v2 batches I.1 + I.2 added 5 more (001, 004, 013, 014,
+015, 018); II.1 v2 added **zero** material_change flags. Downstream consumers
+of 060 and 068 are still `pending` so no immediate cascade. See per-batch
 summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update

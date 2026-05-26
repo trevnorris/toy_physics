@@ -42,6 +42,14 @@ Target residual =
 ↪  ⋅OmegaU  - K⋅⎝OmegaU ⋅OmegaW  - R ⎠⎠⎠⋅⎝OmegaU ⋅OmegaW  - R ⎠
 mhat^2 on sample = 162/5
 
+----------------------------------------------------------------------------------------
+II.3 — P = 0 corollary (paper Checks item 4)
+----------------------------------------------------------------------------------------
+N0 at P=0 = 0
+N0 vanishes when P=0 = 0
+(mhat^2*P0 - target) at P=0 = -54*G*c_s**5/(5*a**5*c**5)
+(mhat^2*P0 - target) at P=0 equals -target = 0
+
 ========================================================================================
 SECTION III — STABILITY AND POSITIVITY STRUCTURE
 ========================================================================================
@@ -57,7 +65,7 @@ Z0    = (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R
 N0    = (GU*R + GW*OmegaU**2)**2/(OmegaU**2*OmegaW**2 - R**2)**2
 D0    = -C**2/varpi**2 + K - (GU**2*OmegaW**2 + 2*GU*GW*R + GW**2*OmegaU**2)/(OmegaU**2*OmegaW**2 - R**2)
 Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q) = 0
-N0 - P^2/Delta^2 = 0
+N0 reconstructed from raw symbols = 0
 Delta on sample = 15
 D0    on sample = 1/3
 P0    on sample = 1/3

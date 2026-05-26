@@ -2,113 +2,73 @@
 unit_id: 033
 batch: II.1
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-22T00:00:00Z
+verify_date: 2026-05-26T00:30:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
-# Verification — unit 033
+# Verification — unit 033 (batch II.1 v2)
 
 ## Per-finding outcomes
 
-### F1 — tautological_check (Stage 16.6 gate identity)
+### F1 — tautological_check (Stage 16.6 decorative final identity + redundant mma numeric block)
 
 **Classification:** resolved
 
 **What changed:**
-- `scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py:102-130`: replaced the block that defined `gate_num = simplify(expand((alpha_crit_mic - alpha0_mic) * gate_den))` and asserted `alpha_crit_mic - alpha0_mic - gate_num/gate_den == 0`. The new code computes
-  - `gate_diff = sp.cancel(sp.together(alpha_crit_mic - alpha0_mic))`,
-  - `gate_num_actual, gate_den_actual = sp.fraction(gate_diff)` (independent of the claim),
-  - `den_ratio = sp.simplify(gate_den_actual / gate_den_claim)`,
-  - guard `assert den_ratio.is_number` so a residual symbolic factor would fail the check,
-  - then reconstructs `gate_num_target = sp.simplify(gate_num_actual / den_ratio)` and asserts the final residual zero.
-- `mathematica/...stage033...mathematica_audit.wl:111-131`: mirror edit using `Cancel[Together[...]]`, `Numerator`/`Denominator`, `FullSimplify[gateDenActual/gateDenClaim]`, and a `NumericQ[denRatio]` guard before the final `expectZero`.
+
+- `scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py:125-128`: the `expect_zero` label was rewritten from `"alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim"` to the two-line label `"gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) " "(tautological by reconstruction; substantive check is den_ratio.is_number above)"`. The residual expression (`sp.simplify(alpha_crit_mic - alpha0_mic - gate_num_target / gate_den_claim)`) is unchanged.
+- `mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl:128-131`: same label change applied to the `expectZero` call (now `"gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above)"`). Residual expression unchanged.
+- `mathematica/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.wl` `Do[...]` block at lines 146-154: the `gateNumeric = N[(alphaCritMic - alpha0Mic - gateNumTarget/gateDenClaim) /. rule, 30];` print + `If` sub-block (six lines) was removed. The `monotonicityNumeric` block and the iterator `{rule, {numericRule1, numericRule2}}` are intact.
 
 **Assessment:**
-The new check is non-tautological: `gate_den_actual` is derived from `together(alpha_crit_mic - alpha0_mic)` without ever referencing `gate_den_claim`, so a wrong claimed denominator (e.g. one missing a `varpi^2` factor or with a wrong polynomial in K0) would leave free symbols in `den_ratio`, triggering the `is_number` / `NumericQ` failure. The actual ratio produced is `den_ratio = 9*pi**2` (SymPy) / `-9*Pi^2` (Mathematica, sign artifact of `Numerator/Denominator` factoring), which are `is_number=True`/`NumericQ=True` parameter-free constants. The Pi^2 factor traces to `Delta0 = OmegaU^2*OmegaW^2 - 88*g_R^2/(9*pi^2)`: when `Together` is applied, the `1/(9*pi^2)` factor of Delta0 is cleared from the denominator into the rational scaling. Codex's deviation from "rational" (in the original directive) to "parameter-free numeric constant" is correctly documented in the `## Applied: F1` block and is the right call — the structural property the test needs is "no residual symbols," not "rational coefficient." The final identity `alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim = 0` then verifies that, after the constant ratio correction, the claimed denominator is indeed (up to sign and the Pi^2 factor) the canonical denominator of the combined difference.
+The diff (`redteam/exec_logs/stage_033_diff.patch`) shows exactly two label-replacement hunks (one in `.py`, one in `.wl`) plus one deletion hunk (six lines removed from the `.wl` `Do[...]` body). Nothing else was touched. The relabelling matches the directive's "after" snippets character-for-character (modulo the Python implicit-string-concatenation line split, which preserves identical runtime string content). The Mathematica `gateNumeric` excision matches the directive's "after" snippet — the `Do[...]` body now contains only the `monotonicityNumeric` block, terminated by `,` followed by the iterator spec. No collateral changes appear.
 
-The directive's stipulated structural property — "the ratio test can fail if the claim is wrong" — holds. No collateral edits outside the cited block.
+The substantive verification load — the `den_ratio.is_number` guard (sympy line 120) and `NumericQ[denRatio]` guard (mma line 122) — remains untouched and still passes (`den_ratio = 9*pi**2` / `-9*Pi^2`). The structurally distinct `monotonicityNumeric` numerical check at two rational test points is preserved and still passes (`monotonicity numeric residual = 0``78.83...` and `0``78.99...`, both within the `10^-20` tolerance). The relabelled `expect_zero`/`expectZero` continues to pass (the residual is identically zero by construction, which is precisely what the new label discloses).
 
-### F2 — tautological_check (Mathematica k0Onset hardcoded)
+The directive's verification criteria (a)–(e) are all met:
+- (a) sympy label at 125-128 now contains `"tautological by reconstruction"` — confirmed by file read and by sympy exec log line 138.
+- (b) mma label at 128-131 contains the same substring — confirmed by file read and mma exec log lines 42-43.
+- (c) the mma `Do[...]` block no longer contains a `gateNumeric` block — confirmed by file read and by absence of any `gate-identity numeric residual` line in the mma exec log.
+- (d) both scripts exit 0 (sympy log `# exit_code: 0` at line 188; mma log `# exit_code: 0` at line 77).
+- (e) sympy transcript still shows zero residual under the new label (line 138); mma transcript shows `PASS: gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above)` (line 43) and `PASS: monotonicity numeric residual zero at rule` twice (lines 57, 74) with no `gate-identity numeric residual` lines.
 
-**Classification:** resolved
-
-**What changed:**
-- `mathematica/...stage033...mathematica_audit.wl:95-97`: replaced
-  ```
-  k0Onset = FullSimplify[gU^2/OmegaU^2 + kappa0Sq*chi^2/(NQ*delta0^2), ...];
-  ```
-  with
-  ```
-  k0OnsetSolutions = Solve[n0Mic == NQ, K0];
-  If[Length[k0OnsetSolutions] == 0, fail[...]];
-  k0Onset = FullSimplify[K0 /. First[k0OnsetSolutions], Assumptions -> $Assumptions];
-  ```
-
-**Assessment:**
-Edit is exactly as the directive specified. The saved Mathematica output (line 27) shows `K0_onset` printed as the genuine `Solve` result:
-`(7744*gR^4*gU^2*NQ + 72*OmegaU^2*(9*(gR*gU + gW*OmegaU^2)^2 - 22*gR^2*gU^2*NQ*OmegaW^2)*Pi^2 + 81*gU^2*NQ*OmegaU^4*OmegaW^4*Pi^4)/(NQ*(88*gR^2*OmegaU - 9*OmegaU^3*OmegaW^2*Pi^2)^2)`
-— a non-trivial polynomial form rather than the hand-stated closed form. The assertion at lines 108-111 then PASSES (`K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)] = 0`), which is now a genuine consistency check between solved value and closed-form target. The back-substitution check at line 107 (`N_-(0) at K0_onset - NQ = 0`) also still passes. No collateral edits.
-
-### F3 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-- `mathematica/...stage033...mathematica_audit.wl:133-160`: inserted the numeric cross-check block exactly as specified in the directive. Two rational substitution rules (`numericRule1`, `numericRule2`) cover Stage 16.1 (`dN - dNFormula`) and Stage 16.6 (`alphaCritMic - alpha0Mic - gateNumTarget/gateDenClaim`) at 30-digit floating-point precision. `Do` loop iterates both rules; each iteration uses `If[Abs[...] > 10^-20, fail[...], pass[...]]`.
-
-**Assessment:**
-Insertion location and content match the directive exactly. The saved Mathematica output shows four `PASS` lines for the numeric cross-checks (two assertions × two rules):
-- `monotonicity numeric residual = 0``78.83717778732962` → PASS
-- `gate-identity numeric residual = 0``78.70733917439959` → PASS
-- `monotonicity numeric residual = 0``78.99802761920512` → PASS (rule 2)
-- `gate-identity numeric residual = 0``78.57895656247477` → PASS (rule 2)
-
-Each residual is reported as a `0``<precision>` value — a zero with reduced trailing precision, but still numerically `0`, so `Abs[res] > 10^-20` evaluates False and PASS is taken. The `N::meprec` warnings (Internal precision limit `$MaxExtraPrecision = 50` reached) are expected because `dN`/`dNFormula` contain nested `Sqrt[7744*alpha0^2 + ...]` radicals that require extra precision when evaluated at rational points — but the final residual still resolves to zero. This is genuinely structurally distinct from the analytic `FullSimplify` path used earlier in the script, so the cross-check exercises an independent derivation chain (numeric substitution + arbitrary-precision arithmetic vs. symbolic simplification). A latent algebra error in `dNFormula`, `gateNumTarget`, or `gateDenClaim` that happened to cancel under `FullSimplify` would not cancel at the rational test points.
+The fix follows the directive's option (a) (cosmetic relabel + drop redundant numeric block) — the minimum, safe fix. No new tautology is introduced; the existing tautology is honestly disclosed rather than disguised. The `Applied: F1` block declares `deviation: none`, which is accurate.
 
 ## Exec log assessment
 
-**SymPy:** dedicated `stage_033_sympy.log` was not captured by the orchestrator under `redteam/exec_logs/` (only the diff patch is present). The canonical saved transcript at `scripts/output/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.txt` (mtime 2026-05-21 17:31:40, ~2 minutes newer than the edited script at 17:29:39) is the authoritative log. Notable lines:
+**SymPy:** exit=0. Notable lines:
+- `denominator ratio (must be parameter-free) = 9*pi**2` (line 137) — substantive guard still operative.
+- `gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is den_ratio.is_number above) = 0` (line 138) — relabelled assertion present and passing.
+- `All Stage 16 checks passed.` (line 187), `# exit_code: 0` (line 188).
 
-- L33: `alpha_crit - closed finite-throat form = 0`
-- L58: `K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)] = 0`
-- L132: `denominator ratio (must be parameter-free) = 9*pi**2`
-- L133: `alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim = 0`
-- L182: `All Stage 16 checks passed.`
+**Mathematica:** exit=0. Notable lines:
+- `denominator ratio (must be parameter-free) = -9*Pi^2`, `PASS: gate denominator matches claim up to parameter-free constant` (lines 39-40) — substantive guard intact.
+- `PASS: gate_num_target/gate_den_claim - (alpha_crit_mic - alpha_0_mic) (tautological by reconstruction; substantive check is NumericQ[denRatio] above)` (line 43).
+- `PASS: monotonicity numeric residual zero at rule` appears twice (lines 57, 74). No `gate-identity numeric residual` line appears anywhere — the redundant block is gone.
+- `N::meprec` precision-limit warnings (lines 52, 68) are informational; the printed residuals (`0``78.83...`, `0``78.99...`) are far below the `10^-20` tolerance.
+- `Stage 033 Mathematica audit passed.` (line 76), `# exit_code: 0` (line 77).
 
-Since the script terminates only by completing `print("All Stage 16 checks passed.")` and no `AssertionError` was raised, sympy_exit is recorded as 0.
-
-**Mathematica:** dedicated `stage_033_mathematica.log` was not captured under `redteam/exec_logs/`. The canonical saved transcript at `mathematica/output/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.txt` (mtime 2026-05-21 17:31:50, ~2 minutes newer than the edited script at 17:29:39) is the authoritative log. Notable lines:
-
-- L29: `PASS: N_-(0) at K0_onset - NQ`
-- L31: `PASS: K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]` (now non-tautological)
-- L34: `denominator ratio (must be parameter-free) = -9*Pi^2`
-- L35: `PASS: gate denominator matches claim up to parameter-free constant`
-- L38: `PASS: alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim`
-- L52, L66, L85, L86: four PASS lines from the F3 numeric cross-checks
-- L89: `Stage 033 Mathematica audit passed.` and the script terminates via `Exit[0]`.
-
-The `N::meprec` warnings noted in the output do not cause failure — Mathematica issues them as informational notes when extra precision is added during evaluation of the radical-bearing expressions; the residuals still evaluate to zero (precision-tagged `0``78.x`). Mathematica_exit = 0 (script reaches `Exit[0]`).
-
-**Output freshness:** confirmed. Edited scripts have mtime 2026-05-21 17:29:39; saved `.txt` outputs have mtime 2026-05-21 17:31:40 (sympy) and 17:31:50 (mathematica). Outputs are 2 minutes newer than the corresponding edited scripts.
+**Output freshness:** The orchestrator-captured exec logs (`redteam/exec_logs/stage_033_sympy.log` mtime 2026-05-26T00:19:43, `stage_033_mathematica.log` mtime 2026-05-26T00:19:59) are post-edit (script mtime 2026-05-25T23:49:52). The saved transcripts under `scripts/output/...txt` (mtime 2026-05-21T17:31:40) and `mathematica/output/...txt` (mtime 2026-05-21T17:31:50) are stale relative to the v2 edits — a grep against those files still shows the pre-fix label `alpha_crit(mic) - alpha_0(mic) - gate_num_target/gate_den_claim`. This is an orchestration housekeeping issue rather than a verification failure: the prompt directs the verifier to use the orchestrator-captured exec logs (which are fresh and post-fix), and the directive correctly instructed Codex not to run python/mathematica. Flagged under side observations.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The fixes change *how* the gate identity and `k0Onset` are verified, not the verified results themselves. The Stage 16.6 gate denominator is still `8 varpi^2 OmegaU^2 Delta0 (11 A_mic + 9 DeltaK)` (up to the universal `9*pi^2` rescaling absorbed by `Delta0`'s `9*pi^2` factor); the Stage 16.5 `K0_onset` value is still `g_U^2/Omega_U^2 + 648*pi^2*(Omega_U^2*g_W + g_R*g_U)^2 / (NQ*(9*pi^2*Omega_U^2*Omega_W^2 - 88*g_R^2)^2)` (sympy output L57). The numeric cross-check (F3) is purely additional verification. No symbolic results that downstream units (034+) consume have shifted.
+The edits are label-text changes plus removal of a numerical residual block that was itself tautological by construction. No derived result, no symbolic identity, no closed-form value, and no substantive assertion changed. The `den_ratio = ±9*pi^2` ratio that the substantive guard verifies is identical before and after the patch. Downstream units depending on stage 033's symbolic outputs (the microscopic `alpha_crit_mic`, `K0_onset` closed form, weak-loading coefficients) see no change in computed values. The orchestrator can leave units > 033 unaffected by this verification — no targeted re-audit is required.
 
 ## Side observations (non-blocking)
 
-1. The displayed sympy `gate numerator =` block at the end of the output is now `gate_num_target = sp.simplify(gate_num_actual / den_ratio)`, which still equals `(alpha_crit_mic - alpha0_mic) * gate_den_claim` up to simplification. This is fine for display purposes only and does not re-introduce the tautology — the *assertion* is the final `expect_zero(...)` which now hinges on the independently-derived `gate_num_actual / den_ratio` reconciling with `gate_den_claim`.
-2. In the Mathematica saved transcript, the F3 numeric residuals are shown as precision-tagged zeros like `0``78.83717778732962`. These are bona fide zeros; the trailing precision number just reflects how many digits of accuracy Mathematica believes it has computed. The `Abs[res] > 10^-20` guard correctly evaluates False on such inputs.
-3. The original auditor's directive for F1 asked for `is_number and is_rational`; the actual ratio is `9*pi**2` (transcendental), so Codex correctly relaxed to `is_number` only and documented the deviation in the `## Applied: F1` block. This is the substantively correct relaxation — the test purpose is "no free symbols remain," which `is_number` enforces.
-4. No `stage_033_sympy.log` / `stage_033_mathematica.log` artifacts under `redteam/exec_logs/`; only `stage_033_diff.patch` is present. The orchestrator should consider also storing the canonical `.txt` outputs there for future stages, but this is an infrastructure note, not a verification blocker — the freshness check via mtime on the output files confirms the post-fix scripts produced the saved transcripts.
+1. The saved transcripts at `scripts/output/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.txt` and `mathematica/output/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.txt` are stale (mtime 2026-05-21) and still contain pre-fix labels. The orchestrator's exec-log capture is fresh and authoritative; a follow-up `redteam exec-sympy 033` / `redteam exec-mathematica 033` run would refresh those `output/*.txt` artefacts. This does not block verification.
+
+2. The mma `Do[...]` body now contains a single statement (the `monotonicityNumeric` block) followed by the iterator. The trailing `,` after the `If[...]` and before `{rule, ...}` is preserved exactly as in the directive's "after" snippet — Mathematica syntax remains valid.
+
+3. The Python label is a two-string implicit concatenation (`"...load1..." "...load2..."`); its runtime value is the single string the directive specified. The sympy exec log line 138 prints the concatenated label exactly as expected.
 
 ## Verdict justification
 
-All three findings are correctly addressed by non-tautological constructions. F1 replaces a `(x*d)/d == x` identity with an independent denominator extraction via `together`/`fraction` followed by an `is_number`/`NumericQ` guard on the ratio; F2 replaces a hardcoded Mathematica `k0Onset` with a real `Solve[n0Mic == NQ, K0]` inversion mirroring the SymPy path; F3 inserts a structurally distinct numeric cross-check at two rational test points covering both the Stage 16.1 monotonicity identity and the Stage 16.6 gate identity. The saved post-fix transcripts (both fresher than the edited scripts) show every assertion passing, both engines reaching their respective success footers, and the gate-denominator structural claim (`8 varpi^2 Omega_U^2 Delta0 (11 A_mic + 9 DeltaK)` up to the `9*pi^2` Delta0 normalization) genuinely verified. Verdict: `verified`, `material_change: false`.
+Finding F1 was the sole finding in the v2 auditor's report and was applied exactly as the directive specified, with `deviation: none`. Both engine scripts exit 0; the substantive `den_ratio` guard and the structurally distinct `monotonicityNumeric` cross-check remain operative; the relabelled assertion now self-discloses its tautological status; the redundant Mathematica `gateNumeric` block is excised. The diff is minimal (two label hunks + one six-line deletion) with no collateral edits. No regressions, no new tautologies, no material change to any derived result. The patch correctly addresses the documentation-level risk the finding flagged.

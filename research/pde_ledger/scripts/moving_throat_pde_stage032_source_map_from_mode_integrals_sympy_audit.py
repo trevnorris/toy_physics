@@ -163,31 +163,36 @@ s_minus_nat = sp.simplify(s_minus.subs(subs_nat))
 mhat_sq = sp.simplify(s_minus_nat / kappa0**2)
 
 print("mhat_-^2 =", mhat_sq)
+
+# Independent (v.e_-)^2 check: construct the loaded 2x2 wall operator
+# M(alpha0) = diag(A, A+DK) - alpha0 * v v^T and verify that
+# (v . e_-)^2 equals the closed-form s_minus_nat above.
+v2 = sp.Matrix([kappa0, kappa1])
+M_loaded = sp.diag(A, A + DK) - alpha0 * (v2 * v2.T)
+eigendata = M_loaded.eigenvects()
+# Sort by eigenvalue: pick the lower (lambda_-) branch.
+# eigenvects returns [(eigenvalue, multiplicity, [eigenvectors]), ...]
+# Identify the lower one by symbolic comparison at a probe point (alpha0=1, A=1, DK=1).
+probe = {alpha0: sp.Integer(1), A: sp.Integer(1), DK: sp.Integer(1)}
+ev_sorted = sorted(
+    eigendata,
+    key=lambda triple: float(sp.simplify(triple[0].subs(probe)))
+)
+lam_minus_sym, _, evecs_minus = ev_sorted[0]
+e_minus_raw = evecs_minus[0]
+# Normalize e_- to unit length.
+norm_sq = sp.simplify((e_minus_raw.T * e_minus_raw)[0])
+e_minus = sp.simplify(e_minus_raw / sp.sqrt(norm_sq))
+s_check = sp.simplify(((v2.T * e_minus)[0])**2)
+expect_zero(
+    "s_check - s_minus_nat (independent (v.e_-)^2 construction)",
+    sp.simplify(s_check - s_minus_nat),
+)
+expect_zero(
+    "lam_minus_sym - lambda_minus (independent eigenvalue construction)",
+    sp.simplify(lam_minus_sym - lambda_minus.subs(subs_nat)),
+)
 expect_zero("mhat_-^2(alpha=0) - 1", sp.simplify(mhat_sq.subs(alpha0, 0) - 1))
-
-# Non-trivial identity on the natural-D/N kappa products.
-expect_zero(
-    "delta_kappa^2 + 4*Kprod - sigma^2 (natural)",
-    (delta_kappa**2 + 4 * Kprod - sigma_sym**2).subs(subs_nat),
-)
-
-# Interior consistency: s_minus_nat at alpha0 = 1, DK = 1 equals the
-# closed form obtained using the natural-D/N identity above.
-R_nat = sp.sqrt(DK**2 + 2 * alpha0 * DK * delta_kappa + alpha0**2 * sigma_sym**2)
-s_minus_nat_simplified = sp.simplify(
-    (sigma_sym + (DK * delta_kappa + alpha0 * sigma_sym**2) / R_nat) / 2
-)
-expect_zero(
-    "s_minus_nat - s_minus_nat_simplified (interior identity)",
-    sp.simplify((s_minus_nat - s_minus_nat_simplified.subs(subs_nat))),
-)
-expect_zero(
-    "s_minus_nat at (alpha0=1, DK=1) interior point",
-    sp.simplify(
-        s_minus_nat.subs({alpha0: sp.Integer(1), DK: sp.Integer(1)})
-        - s_minus_nat_simplified.subs({alpha0: sp.Integer(1), DK: sp.Integer(1)}).subs(subs_nat)
-    ),
-)
 expect_zero("limit_{alpha->oo} mhat_-^2 - 11/9", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11, 9)))
 
 banner("STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR")

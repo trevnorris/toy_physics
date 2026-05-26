@@ -1,127 +1,93 @@
 ---
 unit_id: 036
 batch: II.1
-verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-22T00:00:00Z
+verifier_model: claude-opus-4-7[1m]
+verify_date: 2026-05-26T00:30:00Z
 verdict: verified
-sympy_exit: n/a
-mathematica_exit: n/a
-findings_resolved: 6
-findings_total: 6
+sympy_exit: 0
+mathematica_exit: 0
+findings_resolved: 2
+findings_total: 2
 material_change: false
 ---
 
-# Verification — unit 036
+# Verification — unit 036 (v2)
+
+This verification supersedes the prior v1 verification (which covered the original 6-finding pass). This pass covers the v2 directive's two additional findings.
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — tautological_check (M_mix admissible/inadmissible witness)
 
 **Classification:** resolved
 
 **What changed:**
-- SymPy: line 72 deleted (the `expect_zero("R_target - pi^2 A NQ/(8 beta0)", ...)` call). Diff shows the single-line removal; the `R_target` definition at line 57 and its `print` at line 67 remain intact.
-- Mathematica: line 59 deleted (the `expectZero["R_target - Pi^2 A NQ/(8 beta0)", ...]` call). `rTarget` definition at line 50 and its `Print` at line 56 remain.
+- SymPy (`scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py`):
+  - Lines 101-103: `Mmix_good = sp.simplify(G_sample - sp.Rational(1, 10))` and `Mmix_bad = sp.simplify(G_sample + sp.Rational(1, 10))` replaced with
+    `Mmix_admissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 29}))`,
+    `Mmix_inadmissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 1}))`,
+    `G_sample_n = sp.N(G_sample)`.
+  - Lines 146-155: the two `expect_true` blocks now compare `Mmix_admissible < G_sample_n` and `Mmix_inadmissible > G_sample_n`, with the admissible-side label updated to `M_mix < G(xi_req,delta)` (matching the directive's strict-`<`).
+- Mathematica (`mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl`):
+  - Lines 113-115: `mMixGood = FullSimplify[gSample - 1/10]` / `mMixBad = FullSimplify[gSample + 1/10]` replaced with
+    `mMixAdmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 29}]`,
+    `mMixInadmissible = N[mMix /. {Chi -> 1, OmegaU -> 1, Delta0 -> 1, A -> 1}]`,
+    `gSampleN = N[gSample]`.
+  - Lines 145-154: the two `expectTrue` blocks updated to use the new symbols and the strict-`<` admissible label.
 
 **Assessment:**
-Edits match the directive exactly with no collateral changes. Saved outputs no longer contain the lines `R_target - pi^2 A NQ/(8 beta0) = 0` or `PASS: R_target - Pi^2 A NQ/(8 beta0)`. `R_target` still appears in the printed banner section ("R_target = pi**2*A*NQ/(8*beta0)" / "R_target = (A*NQ*Pi^2)/(8*beta0)"), so context is preserved.
+The edit is exactly what the directive prescribed. Witnesses are now derived from the paper definition `Mmix_expr = 8 Chi^2/(pi^2 A Omega_U^2 Delta_0)` (and its Mathematica analogue `mMix`) at two independent parameter tuples — `(Chi=1, Omega_U=1, Delta_0=1, A=29)` for admissible and `(Chi=1, Omega_U=1, Delta_0=1, A=1)` for inadmissible — not by shifting `G_sample` by ±1/10. The exec logs show the new numeric values match the auditor's self-test:
 
-### F2 — tautological_check
+- SymPy log line 33: `M_mix=0.0279506713496104, G=0.465517241379310` (admissible — matches `8/(29 pi^2) ≈ 0.02795` and `27/58 ≈ 0.46552`).
+- SymPy log line 34: `M_mix=0.810569469138702, G=0.465517241379310` (inadmissible — matches `8/pi^2 ≈ 0.81057`).
+- Mathematica log lines 44 and 46: same numeric values to ~17 digits.
+
+The assertions are no longer tautological: a sign flip in the closed form of `G`, or a corruption of `Mmix_expr`'s closed form, would now actually break these checks because the two sides are computed from independent symbolic sources before being numerically compared. The two witnesses straddle `G_sample = 27/58 ≈ 0.4655` non-trivially (one well below at 0.028, one well above at 0.811). No collateral edits beyond the named line ranges.
+
+### F2 — tautological_check (g_B,req factorization labelling)
 
 **Classification:** resolved
 
 **What changed:**
-- SymPy: new block inserted at lines 120-139 declaring `A_sym, beta0_sym`, building `N_sym` from the kappa expansion, then asserting `simplify(F - R_target_sym) == 0`.
-- Mathematica: new block inserted at lines 124-138 with `Asym, beta0Sym`, `nSym`, `rTargetSym`, and an `expectZero["symbolic kappa derivation: F(xi,delta) - R_target_sym", ...]`.
+- SymPy: 4-line comment inserted between `print("R_target =", R_target)` and the first `expect_zero(...)` (lines 68-71); 1-line comment inserted between `print("Parametric frontier: ...")` and the second `expect_zero(...)` (line 91). Comment text matches the directive verbatim.
+- Mathematica: 4-line comment (within a single `(* ... *)` block) inserted between `expectZero["G - closed form", g - gTarget];` and the next `expectZero[...]` block (lines 59-62); 1-line `(* ... *)` comment inserted between the `$Assumptions = ...` line and the next `expectZero[...]` block (line 103). Comment text matches the directive verbatim.
 
 **Assessment:**
-The insertion text matches the directive's required block character-for-character in both engines. The new assertion is genuinely non-tautological: `F` is declared as a closed form in `(xi, delta)`, while `R_target_sym = N_sym * A_sym / (beta0_sym * KAPPA0_SQ)` is built from the kappa expansion `(KAPPA0_SQ*(x+deltaK) + KAPPA1_SQ*x)^4 / (KAPPA0_SQ*(A-x)*(...)^2)` and the `A_sym, beta0_sym` cancellation only works when `KAPPA0_SQ = 8/pi^2` and `KAPPA1_SQ = 16/(9*pi^2)` are both correct. Replacing either kappa coefficient with a perturbed value would break the simplification. Both saved outputs show the new PASS line at output line 27 (SymPy) / lines 37-38 (Mathematica). The pre-existing assertions at SymPy lines 68-71 and 87-90 (and Mathematica lines 59-62, 99-102) were kept as instructed; they are now bookkeeping confirmations of the factorization anchored by the new kappa identity.
-
-### F3 — tautological_check
-
-**Classification:** resolved
-
-**What changed:**
-- Mathematica: the `alphaCrit = FullSimplify[9*Pi^2*A*(1 + delta)/(8*(11 + 9*delta)), ...]` declaration and the `expectZero["(Pi^2 A / 8) G_max - alpha_crit", ...]` assertion are both deleted in the diff.
-
-**Assessment:**
-Diff matches directive verbatim. Saved Mathematica output no longer contains `(Pi^2 A / 8) G_max - alpha_crit = 0` or its PASS line. `alphaCrit` is not referenced elsewhere in the script, so the deletion is clean.
-
-### F4 — tautological_check
-
-**Classification:** resolved
-
-**What changed:**
-- SymPy: line 126 (`expect_true("inadmissible sample: R_target < 1 blocks the branch", bool(sp.Rational(9, 10) < 1), "R_target=9/10")`) deleted.
-- Mathematica: line 120 (`expectTrue["inadmissible sample: R_target < 1 blocks the branch", 9/10 < 1, "R_target=9/10"]`) deleted.
-
-**Assessment:**
-Both lines absent from diff context after deletion. Outputs no longer contain the misleading `inadmissible sample: R_target < 1 blocks the branch` row in either engine. The remaining "support deficit blocks the branch" check (using real `Mmix_bad > G_sample` numeric comparison) retains genuine inadmissibility-branch coverage.
-
-### F5 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-- (a) Lines 66-71 of the Mathematica script: `dGTarget` declaration replaced with derived `dGPolynomial = FullSimplify[Expand[dG*(9*delta + 11*xi)^2/9]]` and an assertion against the bare polynomial `11*xi^2 + 18*delta*xi + 9*delta^2`. A new discriminant check `discSimplified + 72*delta^2 == 0` was added.
-- (b) Line 78: `gMaxTarget = FullSimplify[9*(1 + delta)/(9*delta + 11), ...]` replaced with `gMaxTarget = FullSimplify[gMax, ...]` (derived from the symbolic limit). The corresponding assertion was rewritten to `expectZero["G_max - 9(1+delta)/(9delta+11)", gMax - 9*(1 + delta)/(9*delta + 11)]`, placing the closed form on the test side rather than as a self-declared target.
-- (c) Lines 128-131: `gSeriesTarget` hand-declaration removed and replaced with `Coefficient[gSeries, xi, k]` extraction for k=0,1,2, with three independent `expectZero` assertions against `0`, `1`, and `-2/(9*delta)` respectively.
-
-**Assessment:**
-All three sub-edits match the directive exactly, including the corrected discriminant target (`-72*delta^2`, not `0`). The new assertions are non-tautological:
-- `dGPolynomial - (11*xi^2 + 18*delta*xi + 9*delta^2) == 0` forces Mathematica to differentiate `gTarget` and algebraically simplify the result; the coefficients 11, 18, 9 are no longer declared.
-- The discriminant check confirms the numerator is sign-definite (`-72*delta^2 < 0` for `delta > 0`), corroborating positivity of `dG/dxi`. Saved output line 19 shows `discriminant (in xi) = -72*delta^2`, confirming Mathematica computed this independently.
-- `gMax - 9*(1 + delta)/(9*delta + 11) == 0` puts the closed form on the test side, with `gMax` computed by `Limit[gTarget, xi -> 1, Direction -> "FromBelow"]` — a genuinely independent algebraic step.
-- The series coefficients `c0, c1, c2` are read out of `gSeries` (Mathematica's `Series` expansion of `gTarget`) before being compared to the closed-form constants. Output line 48 shows `c0=0, c1=1, c2=-2/(9*delta)`, derived by Mathematica.
-
-The Mathematica script still retains the literal `gTarget = 9*xi*(xi + delta)/(9*delta + 11*xi)` declaration at line 43, but the directive did not require deriving `gTarget` itself — only the four derived targets `dGTarget`, `gMaxTarget`, `gSeriesTarget`, and the now-removed `alphaCrit`. With `gTarget` as a shared starting point, the second engine's derivative, limit, and series machinery still must produce the same coefficients as SymPy's — a genuine independent check on the differentiation/limit/series operations.
-
-### F6 — insufficient_verification
-
-**Classification:** resolved
-
-**What changed:**
-Covered by the F2 insertion — the new SymPy block at lines 120-139 and Mathematica block at lines 124-138 introduce a symbolic `(xi, delta, A_sym, beta0_sym)` identity `F - R_target_sym == 0`, promoting the single-sample numeric witness at `(A=3, beta0=5, xi=1/2, delta=1)` to a parameter-wide symbolic statement.
-
-**Assessment:**
-The directive explicitly tied F6 to F2 ("If Codex has already applied F2, mark F6 as Applied: F6 with summary: covered by F2"). Codex did so. The PASS line for `symbolic kappa derivation: F(xi,delta) - R_target_sym` appears in both saved outputs, confirming the symbolic identity holds. The pre-existing single-sample host check at SymPy lines 102-118 / Mathematica lines 111-122 is retained as additional numeric corroboration.
+Comments landed at the prescribed insertion points with the prescribed wording. They flag the four definitional self-consistency assertions and point the reader to the symbolic-kappa derivation (`symbolic kappa derivation: F(xi,delta) - R_target_sym`) as the genuine anchor. The directive explicitly accepted the comment-only ("minimal") fix; the stronger derivation rewrite was optional. The `expect_zero`/`expectZero` calls themselves are unchanged, so the printed residuals stay 0 in both exec logs (sympy log line 14: `g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix) = 0`; line 29: `final-test support inequality <-> nonnegative required support loading = 0`; mathematica log lines 18-19 and 36-37: PASS on the same). The underlying tautological character of these particular assertions is unchanged — but the directive made clear this is a labelling fix, not a substance fix, and that the substance is anchored elsewhere via the symbolic kappa derivation, which the logs confirm passes independently (sympy log line 32, mathematica log line 43).
 
 ## Exec log assessment
 
-**SymPy:** exec_log file `redteam/exec_logs/stage_036_sympy.log` is absent. Per instructions ("the saved outputs are already fresh — read them"), I rely on the saved output at `scripts/output/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.txt`. The output ends with `All Stage 19 checks passed.` (line 36), implying the script completed without raising any `AssertionError`. Notable assertion lines:
-- `g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix) = 0` (line 9)
-- `dG/dxi - manifestly positive form = 0` (line 15)
-- `symbolic kappa derivation: F(xi,delta) - R_target_sym = 0` (line 27) — new, F2/F6 fix landed.
-- `G near-onset series through O(xi^2) = 0` (line 35)
-No FAIL strings and no Python tracebacks in the saved output.
+**SymPy:** exit=0. Notable lines:
+- Line 14: `g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix) = 0` (F2 assertion still passes after comment insertion).
+- Line 29: `final-test support inequality <-> nonnegative required support loading = 0` (F2 echo assertion still passes).
+- Line 32: `symbolic kappa derivation: F(xi,delta) - R_target_sym = 0` (the genuine anchor referenced by F2's comments — independently confirms the F/G algebraic structure).
+- Line 33: `admissible sample: M_mix < G(xi_req,delta) = M_mix=0.0279506713496104, G=0.465517241379310` (F1 fix — value computed from `Mmix_expr` at `A=29`, independent of `G_sample`).
+- Line 34: `inadmissible sample: support deficit blocks the branch = M_mix=0.810569469138702, G=0.465517241379310` (F1 fix — value from `Mmix_expr` at `A=1`).
+- Line 41: `All Stage 19 checks passed.`
 
-**Mathematica:** exec_log file `redteam/exec_logs/stage_036_mathematica.log` is absent. Saved output at `mathematica/output/...` ends with `Stage 036 Mathematica audit passed.` (line 56), implying clean exit via `Exit[0]` (line 165 of the script). Every assertion is followed by a `PASS:` line. Notable new/changed PASS lines:
-- `PASS: dG/dxi positivity polynomial: 9 dG/dxi (9d+11xi)^2 / 9 == 11 xi^2 + 18 delta xi + 9 delta^2` (line 18)
-- `PASS: dG/dxi numerator discriminant equals -72 delta^2` (line 21)
-- `PASS: G_max - 9(1+delta)/(9delta+11)` (line 26)
-- `PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym` (line 38)
-- `PASS: near-onset c0 = 0`, `PASS: near-onset c1 = 1`, `PASS: near-onset c2 = -2/(9 delta)` (lines 50, 52, 54)
-No FAIL strings. The removed assertions for `R_target - Pi^2 A NQ/(8 beta0)`, `(Pi^2 A / 8) G_max - alpha_crit`, and `inadmissible sample: R_target < 1 blocks the branch` are absent from the output, as required.
+**Mathematica:** exit=0. Notable lines:
+- Lines 18-19, 36-37: PASS on the definitional residuals (F2 — unchanged by the comment insertion).
+- Line 43: `PASS: symbolic kappa derivation: F(xi,delta) - R_target_sym`.
+- Lines 44-47: admissible/inadmissible PASS lines show the same independent-parameter numeric values (`0.02795067134961042` and `0.8105694691387022`), confirming F1's fix mirrors across engines.
+- Line 61: `Stage 036 Mathematica audit passed.`
+
+Both engines exit 0 and agree on every shared value to full numerical precision.
 
 **Output freshness:**
-- `scripts/moving_throat_pde_stage036_..._sympy_audit.py` mtime: 2026-05-21 17:37
-- `scripts/output/moving_throat_pde_stage036_..._sympy_audit.txt` mtime: 2026-05-21 17:40
-- `mathematica/moving_throat_pde_stage036_..._audit.wl` mtime: 2026-05-21 17:37
-- `mathematica/output/moving_throat_pde_stage036_..._audit.txt` mtime: 2026-05-21 17:40
-
-Both saved outputs are 3 minutes newer than the corresponding scripts, confirming the outputs were re-generated post-fix.
+- Script files: `.py` mtime 2026-05-25 23:51, `.wl` mtime 2026-05-25 23:51 (updated after F1/F2 fixes).
+- Exec logs: `stage_036_sympy.log` and `stage_036_mathematica.log` mtimes 2026-05-26 00:20 — newer than both script mtimes, reflect the post-fix state, and contain the new independent-parameter M_mix numeric values.
+- Saved `.txt` outputs under `scripts/output/` and `mathematica/output/` are still at 2026-05-21 17:40 (older than the script mtimes). The exec logs supersede them for verification purposes (per the prompt's "use the exec logs the orchestrator captured" rule). Flagged as a side observation; not blocking.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The edits remove tautological assertions and strengthen the verification (by deriving targets, adding discriminant/coefficient extractions, and adding a symbolic kappa cross-check). They do not change any derived quantity that downstream stages consume: `G(xi,delta)`, `F(xi,delta)`, `R_target`, `M_mix`, `dG/dxi`, `G_max`, the near-onset coefficients, and the host-sample numeric values are all unchanged. No exported constants are touched. Downstream stages depending on stage 036's claim manifest see the same numerical and symbolic content; only the proof of those claims is improved.
+The edits change only the test-witness construction (F1) and add explanatory comments (F2). No derived closed form is altered: `G(xi,delta)`, `F(xi,delta)`, `M_mix`, `R_target`, `dG/dxi`, `G_max`, the near-onset series, and the symbolic-kappa identity `F = R_target_sym` all produce identical printed forms before and after (sympy log lines 10-13, 19, 22, 39; mathematica log lines 10-13, 20-21, 29, 52). No downstream unit consuming stage-036 outputs would see a different value. The exec logs confirm engines still agree at every shared check.
 
 ## Side observations (non-blocking)
 
-- The SymPy script still hand-declares `dG_target` at line 75 and `G_series_target` at line 153 in the original closed-form style. The F5 directive limited the derivation-not-declaration restructuring to the Mathematica script (consistent with the cross-engine intent: forcing the second engine to derive independently). This scope is explicit in the directive, so no rework is needed. If future audit batches want to harden SymPy similarly, that would be a new finding.
-- The Mathematica script's pre-existing `dG/dxi` displayed form `9*(1 + (18*delta^2)/(9*delta + 11*xi)^2)/11` (output line 15) is algebraically equivalent to but textually different from SymPy's `9*(-11*xi*(delta + xi) + (delta + 2*xi)*(9*delta + 11*xi))/(9*delta + 11*xi)**2` (sympy output line 14). Both reduce to the polynomial `(11 xi^2 + 18 delta xi + 9 delta^2) / (9 delta + 11 xi)^2 * (9/9)` form, so the engines agree on the underlying derivative. The textual divergence is a healthy sign of independent simplification routes.
+- Saved `.txt` outputs in `scripts/output/` and `mathematica/output/` for stage 036 are stale (mtime 2026-05-21 17:40, predating the 2026-05-25 23:51 script edits). Verification used the fresh exec logs at `redteam/exec_logs/stage_036_*.log` instead, which is the prompt's prescribed source. Recommend the orchestrator refresh the saved outputs at some point so that an independent reader of `output/*.txt` sees the post-fix witnesses (`0.0280` / `0.8106`) rather than the legacy `53/145` / `82/145`. Not a verification blocker.
 
 ## Verdict justification
 
-All six findings were applied as directed. The deletions in F1, F3, F4 removed assertions that were `X - X = 0` by construction; the saved outputs no longer reference them. F2/F6 introduced a single symbolic kappa-based identity `F - R_target_sym == 0` in both engines whose truth depends on the specific kappa coefficients, providing genuine non-tautological coverage of the support-feasibility frontier across the full parameter range. F5 restructured the Mathematica derivative, endpoint, and series checks so the closed-form targets are now derived from Mathematica-native operations (differentiation, limit, series) rather than declared up front, plus an extra discriminant check anchors the positivity claim. The saved outputs are fresh (3 minutes newer than scripts), all assertions PASS, no tautological residue remains, and no downstream-visible quantities changed.
+Both findings are mechanically resolved exactly as the directive prescribed: F1 replaces the `G_sample ± 1/10` witness pre-shift with independent-parameter `M_mix` evaluations from `Mmix_expr`/`mMix`, and the exec logs confirm the new numeric witnesses (`0.0280` admissible, `0.8106` inadmissible) straddle `G_sample = 0.4655` non-trivially in both engines; F2 inserts the four definitional-self-consistency comments at the named insertion points with verbatim wording, and the underlying assertions continue to pass with residual 0. Both scripts exit 0, engine agreement holds at every shared value, and no collateral edits or regressions are visible in the diff. `material_change: false`.

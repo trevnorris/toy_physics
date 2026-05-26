@@ -17,6 +17,8 @@ lambda_- = (2*a + dK - alpha*(x0 + x1) - Sqrt[dK^2 + 2*alpha*dK*(x0 - x1) + alph
 lambda_+ = (2*a + dK - alpha*(x0 + x1) + Sqrt[dK^2 + 2*alpha*dK*(x0 - x1) + alpha^2*(x0 + x1)^2])/2
 selected overlap: HF - closed form = 0
 PASS: selected overlap: HF - closed form
+HF eigenvector check = 0
+PASS: HF eigenvector check
 s_- = (v.e_-)^2 = (x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1])/2
 weak-loading overlap limit = 0
 PASS: weak-loading overlap limit

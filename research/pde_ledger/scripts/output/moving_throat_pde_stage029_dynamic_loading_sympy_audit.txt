@@ -513,8 +513,6 @@ lambda_+ =
 ↪                     
 dE/dtheta - stationarity/2 = 0
 tan(2 theta_-) = sqrt(2)*(48*Omega_U**2*lambda_B**2*(-9*pi**2*Omega_U**2*Omega_W**2 + 88*lambda_R**2) - 432*pi**2*varpi**2*(Omega_U**2*lambda_W + lambda_R*lambda_U)**2)/(9*pi**2*DeltaK_ax*Omega_U**2*varpi**2*(9*pi**2*Omega_U**2*Omega_W**2 - 88*lambda_R**2) + 56*Omega_U**2*lambda_B**2*(9*pi**2*Omega_U**2*Omega_W**2 - 88*lambda_R**2) + 504*pi**2*varpi**2*(Omega_U**2*lambda_W + lambda_R*lambda_U)**2)
-alpha_crit = 9*pi**2*(DeltaK_ax*K0*Omega_U**4 - DeltaK_ax*Omega_U**2*lambda_U**2 + K0**2*Omega_U**4 - 2*K0*Omega_U**2*lambda_U**2 + lambda_U**4)/(8*Omega_U**2*(9*DeltaK_ax*Omega_U**2 + 11*K0*Omega_U**2 - 11*lambda_U**2))
-alpha_crit - expected = 0
 
 ========================================================================================
 SECTION III — OUTGOING DRESSING OF THE DIRECTIONAL LOAD
@@ -907,7 +905,9 @@ kappa_sel^2 = - d lambda_- / d alpha |_(alpha_0) =
 ↪                                                                     
 ↪                                                                     
 ↪                                                                     
+kappa_sel^2 closed-form vs eigenvector projection = 0
 weak-loading kappa_sel^2 -> kappa0^2 = 0
 strong-loading kappa_sel^2 -> sigma = 0
+delta D_-^odd (script) - delta D_-^odd (paper formula) = 0
 Therefore the selected lower-mode odd coefficient is
   delta D_-^(odd)(omega) = - i beta_5 kappa_sel^2 omega^5 + O(omega^7)

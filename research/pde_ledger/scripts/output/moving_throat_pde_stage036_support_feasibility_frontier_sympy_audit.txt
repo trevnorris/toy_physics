@@ -25,8 +25,8 @@ final-test support inequality <-> nonnegative required support loading = 0
 admissible sample: R_target >= 1 = R_target=1414562/558009
 admissible sample: F(xi_req,delta) - R_target(host) = 0
 symbolic kappa derivation: F(xi,delta) - R_target_sym = 0
-admissible sample: M_mix <= G(xi_req,delta) = M_mix=53/145, G=27/58
-inadmissible sample: support deficit blocks the branch = M_mix=82/145, G=27/58
+admissible sample: M_mix < G(xi_req,delta) = M_mix=0.0279506713496104, G=0.465517241379310
+inadmissible sample: support deficit blocks the branch = M_mix=0.810569469138702, G=0.465517241379310
 
 ========================================================================================
 STAGE 19.4 — NEAR-ONSET ASYMPTOTICS

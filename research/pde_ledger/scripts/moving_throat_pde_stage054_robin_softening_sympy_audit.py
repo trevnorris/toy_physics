@@ -69,6 +69,15 @@ print("A_K(y->0+) =", AK_soft)
 expect_zero("DN limit", AK_DN - 1)
 expect_zero("soft-mouth limit", AK_soft - 4 / (4 - x))
 
+# Monotonicity certificate: A_K is strictly decreasing in y on (0, pi/2)
+# with 0 < x < 4. Verify the closed form of dA_K/dy; positivity of the
+# prefactor 2*x*y/pi^2 on the assumed domain then implies dA_K/dy < 0,
+# which together with the endpoint values brackets A_K in [1, 4/(4-x)].
+dAK_dy = sp.diff(AK_sym, y)
+dAK_dy_expected = -2 * x * y / (pi**2 * (1 - x / 4 + x * y**2 / pi**2) ** 2)
+expect_zero("dA_K/dy closed form", dAK_dy - dAK_dy_expected)
+print("Prefactor 2*x*y/pi^2 > 0 on 0<x<4, 0<y<pi/2 => dA_K/dy < 0 (monotone decreasing).")
+
 banner("PURE SOFTENING THRESHOLD")
 
 zeta_req = sp.symbols("zeta_req", positive=True, real=True)

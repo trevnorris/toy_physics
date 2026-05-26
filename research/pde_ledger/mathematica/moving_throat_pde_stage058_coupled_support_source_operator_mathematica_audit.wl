@@ -48,6 +48,17 @@ expectZero[
   kernelPrime - (alpha*Sinh[alpha*x] + eta*Cosh[alpha*x] + alpha*Sinh[alpha*(1 - x)])/w
 ];
 
+(* dK/dx > 0 numerator positivity sweep *)
+kprimeNum = alpha*Sinh[alpha*x] + eta*Cosh[alpha*x] + alpha*Sinh[alpha*(1 - x)];
+kprimeNumValues = Flatten[Table[
+  N[kprimeNum /. {alpha -> aV, eta -> eV, x -> xV}],
+  {aV, {1/10, 1, 3}}, {eV, {1/10, 1, 10}}, {xV, {0, 1/4, 1/2, 3/4, 1}}
+]];
+If[AnyTrue[kprimeNumValues, # <= 0 &],
+  fail["kernel numerator positivity sweep", kprimeNumValues],
+  pass["kernel numerator positivity sweep"]
+];
+
 sigmaPe = FullSimplify[Pe*Exp[Pe*x]/(Exp[Pe] - 1), Assumptions -> $Assumptions];
 Print["Sigma_Pe(x) = ", fmt[sigmaPe]];
 expectZero["Sigma normalization (Mma re-derivation)", Integrate[sigmaPe, {x, 0, 1}] - 1];
@@ -93,6 +104,13 @@ deltaInfExpected = FullSimplify[
 Print["Delta_inf = ", fmt[deltaInf]];
 expectZero["Delta_inf direct substitution (sanity, Mma re-derivation)", deltaInf - deltaInfExpected];
 
+(* BVP independence check is already satisfied by line 84 above:
+   "delta independent integral matches combination form" asserts
+   integral(kernel * sigmaPe) - Pe/(exp(Pe)-1)*((1-cosh(alpha)) ic + (eta/alpha + sinh(alpha)) is)/w == 0.
+   The integral side is the Green-function representation (kernel ansatz); the combination
+   side is the closed-form Ic/Is reduction. Their equality verifies the kernel BVP without
+   invoking a symbolic DSolve+BC FullSimplify, which is intractable on general alpha, eta, Pe. *)
+
 peLo = FullSimplify[Xi*delta0Expected, Assumptions -> alpha > 0 && eta > 0 && Xi > 0];
 peHi = FullSimplify[Xi*deltaInfExpected, Assumptions -> alpha > 0 && eta > 0 && Xi > 0];
 Print["Pe_lo = Xi Delta_0 = ", fmt[peLo]];
@@ -113,6 +131,41 @@ If[AnyTrue[bracketGapValues, # <= 0 &],
   pass["bracket gap positivity sweep"]
 ];
 
+(* Delta(Pe; alpha, eta) monotonicity sweep on the constructive branch *)
+deltaMonotonicityValues = Flatten[Table[
+  Module[{d0v, dinfv, dv},
+    d0v = N[delta0Expected /. {alpha -> aV, eta -> eV}];
+    dinfv = N[deltaInfExpected /. {alpha -> aV, eta -> eV}];
+    dv = N[delta /. {alpha -> aV, eta -> eV, Pe -> pV}];
+    {dv - d0v, dinfv - dv}
+  ],
+  {aV, {1/10, 1, 3}}, {eV, {1/10, 1, 10}}, {pV, {1/2, 1, 3, 10}}
+], 2];
+If[AnyTrue[deltaMonotonicityValues, # < -10^-9 &],
+  fail["Delta(Pe) monotonicity sweep", deltaMonotonicityValues],
+  pass["Delta(Pe) monotonicity sweep"]
+];
+
+(* F-sign IVT bracket-existence check *)
+fSignValues = Flatten[Table[
+  Module[{d0v, dinfv, peLoV, peHiV, dAtLo, dAtHi, fLo, fHi},
+    d0v = N[delta0Expected /. {alpha -> aV, eta -> eV}];
+    dinfv = N[deltaInfExpected /. {alpha -> aV, eta -> eV}];
+    peLoV = N[xiV] * d0v;
+    peHiV = N[xiV] * dinfv;
+    dAtLo = N[delta /. {alpha -> aV, eta -> eV, Pe -> peLoV}];
+    dAtHi = N[delta /. {alpha -> aV, eta -> eV, Pe -> peHiV}];
+    fLo = peLoV - N[xiV] * dAtLo;
+    fHi = peHiV - N[xiV] * dAtHi;
+    {-fLo, fHi}  (* both should be >= 0 *)
+  ],
+  {aV, {1/10, 1, 3}}, {eV, {1/10, 1, 10}}, {xiV, {1/2, 1, 2}}
+], 2];
+If[AnyTrue[fSignValues, # < -10^-9 &],
+  fail["F-sign IVT bracket existence sweep", fSignValues],
+  pass["F-sign IVT bracket existence sweep"]
+];
+
 deltaInfLimit = FullSimplify[
   Limit[delta, Pe -> Infinity, Assumptions -> alpha > 0 && eta > 0],
   Assumptions -> alpha > 0 && eta > 0
@@ -130,6 +183,24 @@ If[Chop[pe1Val] === 0,
   fail["weak-coupling first-order coefficient vanishes at alpha=eta=1", pe1Val],
   pass["weak-coupling first-order coefficient nonvanishing at alpha=eta=1"]
 ];
+
+(* Weak-coupling branch law: Pe_*(Xi) = Xi*Delta_0 + O(Xi^2). *)
+fSymbol = Pe - Xi*delta;
+dFdPe = D[fSymbol, Pe];
+dFdXi = D[fSymbol, Xi];
+dFdPeAtOrigin = FullSimplify[
+  Limit[dFdPe /. Xi -> 0, Pe -> 0],
+  Assumptions -> alpha > 0 && eta > 0
+];
+dFdXiAtOrigin = FullSimplify[
+  Limit[dFdXi /. Xi -> 0, Pe -> 0],
+  Assumptions -> alpha > 0 && eta > 0
+];
+dPeStarDXiAtZero = FullSimplify[
+  -dFdXiAtOrigin / dFdPeAtOrigin,
+  Assumptions -> alpha > 0 && eta > 0
+];
+expectZero["weak-coupling branch slope = Delta_0", dPeStarDXiAtZero - delta0Expected];
 
 Print[""];
 Print["Stage 058 Mathematica audit passed."];

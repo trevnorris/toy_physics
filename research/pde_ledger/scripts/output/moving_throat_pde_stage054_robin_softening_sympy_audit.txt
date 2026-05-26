@@ -21,6 +21,8 @@ A_K(y=pi/2) = 1
 A_K(y->0+) = -4/(x - 4)
 DN limit = 0
 soft-mouth limit = 0
+dA_K/dy closed form = 0
+Prefactor 2*x*y/pi^2 > 0 on 0<x<4, 0<y<pi/2 => dA_K/dy < 0 (monotone decreasing).
 
 ========================================================================================
 PURE SOFTENING THRESHOLD

@@ -2,132 +2,157 @@
 unit_id: 054
 batch: III.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00-06:00
+audit_date: 2026-05-26T00:00:00-06:00
 verdict: findings
 stop_cold: null
-findings_count: 2
+findings_count: 1
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  paper_appendix: present
 ---
 
 # Audit unit 054 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_054.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row at line 86)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage054_robin_softening_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage054_robin_softening_mathematica_audit.txt`
 
+## What the paper claims
+
+From `stage_054.tex` `\stagefield{Output}`: "Robin root \eqref{eq:app-stage054-robin-root}, softening factor \eqref{eq:app-stage054-AK}, and ceiling \eqref{eq:app-stage054-AK-window}." The three deliverables are:
+
+1. **Robin root**: `y tan y = eta` with `0 < y < pi/2` (eq. app-stage054-robin-root).
+2. **Softening factor**: `A_K(eta) = K_W^eff / K_(phi,0)^eff = 1 / (1 - x/4 + x y^2/pi^2)`, with `x = pi^2 T_X/(L^2 K_W^eff)` and `0 < x < 4` (eq. app-stage054-AK).
+3. **Endpoint window (ceiling)**: `1 <= A_K <= 4/(4-x)` (eq. app-stage054-AK-window).
+
+A further consequence (`zeta_req <= 4/(4-x)` for pure-softening rescue) is stated as a remark below the boxed equations. The notes give the boundary-value setup (Robin at `s=0`, Neumann at `s=L`, `psi'' + k^2 psi = 0`) and explicitly state the supporting monotonicity: "the map `y -> eta = y tan y` is strictly increasing on (0,pi/2), and `A_K` is strictly decreasing in y," which is what gives the window its closure structure.
+
 ## What the script claims to verify
 
-The two scripts purport to verify a Robin-compliance "softening" analysis for a 1D wave-equation eigenproblem on `s in [0, L]`. Starting from `psi = A cos(ks) + B sin(ks)` with a Neumann condition at `s = L`, they claim to derive (a) the Robin characteristic equation `k tan(kL) = h` and its dimensionless form `y tan y = eta`; (b) the closed-form softening factor `A_K = 1 / [1 - x/4 + x y^2 / pi^2]` from an effective stiffness ratio `K_W^eff / K_phi,0^eff`; (c) the boundary cases `A_K(y=pi/2)=1` (D/N limit) and `A_K(y->0+) = 4/(4-x)` (soft-mouth maximum); and (d) the saturation floor `x_floor = 4 - 4/zeta_req` that follows from solving `A_K,max = zeta_req`. The assertions test residuals against these closed forms.
+Both scripts purport to verify, from the BVP `psi'' + k^2 psi = 0` with `psi'(L)=0`, `psi'(0)=h psi(0)`:
+(a) the Robin characteristic equation `k tan(kL) = h` (and its dimensionless form `y tan y = eta`);
+(b) algebraic equivalence of the explicit ratio `K_W^eff/K_(phi,0)^eff` with the `x`-form `1/(1 - x/4 + xy^2/pi^2)`;
+(c) the endpoint values `A_K(y=pi/2)=1` and `A_K(y->0+)=4/(4-x)`;
+(d) the saturation floor `x_floor = 4 - 4/zeta_req` obtained by inverting `A_K,max = zeta_req`.
+
+The Mathematica script now derives `bExpr` via `Solve[...]` (line 40) and `xFloor` via `Solve[...]` (line 84), so the previous v1 `hardcoded_result` findings on those two lines no longer apply.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| (1) Robin root `y tan y = eta` | SymPy A1, A2 (lines 39, 42); MMa B1, B2 (lines 46, 47-50) — derive `k tan(kL) - h = 0` from BVP and rescale to `y tan y = eta`. | match |
+| (2) Softening factor `A_K = 1/(1 - x/4 + xy^2/pi^2)` | SymPy A3, A4 (lines 59, 62); MMa B3, B4 (lines 67, 77) — verify `K_W` identity and `A_K` x-form equality. | match |
+| (3) Window `1 <= A_K <= 4/(4-x)` | SymPy A5, A6 (lines 69, 70); MMa B5, B6 (lines 78, 79) — verify endpoint values only. | partial (see F1) |
+| Remark: rescue criterion `zeta_req <= 4/(4-x)` (and `x_floor = 4 - 4/zeta_req`) | SymPy A7 (line 85); MMa B7, B8 (lines 89, 90). | match |
+
+The script also asserts `A_K,max(x_floor) - zeta_req == 0` (MMa B8) which is a downstream consistency check; not in the paper card explicitly but follows trivially from B7.
+
+`paper_alignment: aligned` — every paper-side deliverable is mapped to at least one script-side check; one row is "partial" but the gap is a verification-strength gap, not a paper/script disagreement on what is claimed.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 39 | `expect_zero("Robin equation -> k tan(kL) - h", char_eq / A + h - k tan(kL))` | yes (B derived via `sp.solve`) |
-| A2 | sympy | 42 | `expect_zero("dimensionless form", ...)` | yes |
-| A3 | sympy | 59 | `expect_zero("K_W identity", KW - (KX_from_x + ...))` | yes |
-| A4 | sympy | 62 | `expect_zero("A_K x-form", AK_x - 1/(1 - x/4 + x y^2/pi^2))` | yes |
-| A5 | sympy | 69 | `expect_zero("DN limit", AK_DN - 1)` | yes |
-| A6 | sympy | 70 | `expect_zero("soft-mouth limit", AK_soft - 4/(4-x))` | yes |
-| A7 | sympy | 85 | `expect_zero("x floor = 4 - 4/zeta_req", x_floor - (4 - 4/zeta_req))` | yes (x_floor derived via `sp.solve`) |
-| B1 | mathematica | 40 | `expectZero["Robin equation -> k tan(kL) - h", charEq/a + h - k Tan[k ell]]` | **no — bExpr hardcoded at line 34** |
-| B2 | mathematica | 44 | `expectZero["dimensionless form", ...]` | yes |
-| B3 | mathematica | 61 | `expectZero["K_W identity", ...]` | yes |
-| B4 | mathematica | 71 | `expectZero["A_K x-form", aKX - aKSym]` | yes |
-| B5 | mathematica | 72 | `expectZero["DN limit", aKDN - 1]` | yes |
-| B6 | mathematica | 73 | `expectZero["soft-mouth limit", aKSoft - 4/(4 - x)]` | yes |
-| B7 | mathematica | 83 | `expectZero["x floor = 4 - 4/zeta_req", xFloor - (4 - 4/zetaReq)]` | **no — xFloor hardcoded at line 78** |
-| B8 | mathematica | 84 | `expectZero["A_K,max(x_floor) - zeta_req", (aKMax /. x -> xFloor) - zetaReq]` | partial (depends on B7) |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 39 | `expect_zero("Robin equation -> k tan(kL) - h", char_eq/A + h - k*tan(kL))` | claim 1 | yes (B derived via `sp.solve`) |
+| A2 | sympy | 42 | `expect_zero("dimensionless form", ...)` | claim 1 | yes |
+| A3 | sympy | 59 | `expect_zero("K_W identity", KW - (KX_from_x + ...))` | claim 2 (setup) | yes |
+| A4 | sympy | 62 | `expect_zero("A_K x-form", AK_x - 1/(1 - x/4 + x y^2/pi^2))` | claim 2 | yes |
+| A5 | sympy | 69 | `expect_zero("DN limit", AK_DN - 1)` | claim 3 (endpoint) | partial (endpoint only) |
+| A6 | sympy | 70 | `expect_zero("soft-mouth limit", AK_soft - 4/(4-x))` | claim 3 (endpoint) | partial (endpoint only) |
+| A7 | sympy | 85 | `expect_zero("x floor = 4 - 4/zeta_req", x_floor - (4 - 4/zeta_req))` | rescue remark | yes (x_floor from `sp.solve`) |
+| B1 | mma | 46 | `expectZero["Robin equation -> k tan(kL) - h", charEq/a + h - k Tan[k ell]]` | claim 1 | yes (bExpr from `Solve`, line 40) |
+| B2 | mma | 47-50 | `expectZero["dimensionless form", ...]` | claim 1 | yes |
+| B3 | mma | 67 | `expectZero["K_W identity", kWBar - (kXFromX + ...)]` | claim 2 (setup) | yes |
+| B4 | mma | 77 | `expectZero["A_K x-form", aKX - aKSym]` | claim 2 | yes |
+| B5 | mma | 78 | `expectZero["DN limit", aKDN - 1]` | claim 3 (endpoint) | partial (endpoint only) |
+| B6 | mma | 79 | `expectZero["soft-mouth limit", aKSoft - 4/(4 - x)]` | claim 3 (endpoint) | partial (endpoint only) |
+| B7 | mma | 89 | `expectZero["x floor = 4 - 4/zeta_req", xFloor - (4 - 4/zetaReq)]` | rescue remark | yes (xFloor from `Solve`, line 84) |
+| B8 | mma | 90 | `expectZero["A_K,max(x_floor) - zeta_req", (aKMax /. x -> xFloor) - zetaReq]` | rescue remark consistency | partial (depends on B7) |
 
 ## Findings
 
-### F1 — hardcoded_result
-
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:34`
-
-**What's wrong:**
-Line 34 writes the Neumann-derived coefficient as a hardcoded literal:
-
-```
-bExpr = FullSimplify[a Tan[k ell], Assumptions -> $Assumptions];
-```
-
-There is no call to `Solve` or any other derivation step that obtains `b = a Tan[k ell]` from the bottom Neumann condition `D[psi, s] /. s -> ell == 0`. The very next assertion at line 40
-
-```
-expectZero["Robin equation -> k tan(kL) - h", charEq/a + h - k Tan[k ell]];
-```
-
-is therefore tautological by construction: with `bExpr = a Tan[k ell]` substituted in, `psiBN = a Cos[k s] + a Tan[k ell] Sin[k s]`, so `D[psiBN, s] /. s -> 0 = a k Tan[k ell]` and `charEq/a = k Tan[k ell] - h`, which trivially cancels with the offset `+h - k Tan[k ell]`. The check cannot fail no matter what physics it purports to encode. The corresponding SymPy script at line 33 does `sp.solve(sp.Eq(sp.diff(psi, s).subs(s, L), 0), B)[0]`, an actual derivation from the Neumann condition; the Mathematica script skips this step and asserts the answer.
-
-**Why this matters:**
-The Robin characteristic equation `k tan(kL) = h` is the central physical result of the first half of the unit. With `b` written in by hand, the Mathematica engine no longer independently verifies the Neumann derivation; it only restates it. If the Neumann derivation were ever wrong (sign error, missing factor of k, etc.), the Mathematica script would still pass.
-
-**Required change:**
-Replace line 34 so that `bExpr` is derived by solving the Neumann condition explicitly. Use Mathematica's `Solve` on `D[psi, s] /. s -> ell == 0` for `b`.
-
-**Verification:**
-After the fix, the `Robin equation -> k tan(kL) - h` assertion at line 40 still passes (output line 16 of the .txt remains `PASS: Robin equation -> k tan(kL) - h`), and the printed `B from Neumann bottom = a*Tan[ell*k]` (output line 13) is now the result of a Solve call rather than a hand-stated value. The verifier confirms by reading the updated source line 34: it must contain `Solve[...]` operating on the Neumann condition.
-
-### F2 — hardcoded_result
+### F1 — insufficient_verification
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:78,83`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py:64-70`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:70-79`
 
 **What's wrong:**
-Line 78 defines:
+The paper claims the **endpoint window** `1 <= A_K <= 4/(4-x)` (eq. `app-stage054-AK-window`). The notes (section 3) further state that this window is established by monotonicity:
 
-```
-xFloor = FullSimplify[4 - 4/zetaReq, Assumptions -> zetaReq > 0];
-```
+> "Because the map `y -> eta = y tan y` is strictly increasing on (0,pi/2), and `A_K` is strictly decreasing in y, the softening factor is strictly decreasing in eta."
 
-This is the answer the script claims to derive from `A_K,max = zeta_req`. The SymPy counterpart at line 83 actually derives it via `sp.solve(sp.Eq(AK_max, zeta_req), x)[0]`. The Mathematica version writes the closed form directly, then at line 83 asserts
+In both scripts the window is exercised only at the two endpoints:
+- SymPy lines 65–70: `AK_DN = AK_sym.subs(y, pi/2)` and `AK_soft = sp.limit(AK_sym, y, 0, dir="+")`, then `expect_zero("DN limit", AK_DN - 1)` and `expect_zero("soft-mouth limit", AK_soft - 4/(4-x))`.
+- Mathematica lines 71–79: identical structure, with `aKDN = aKSym /. y -> Pi/2` and `aKSoft = Limit[aKSym, y -> 0, ...]`.
 
-```
-expectZero["x floor = 4 - 4/zeta_req", xFloor - (4 - 4/zetaReq)];
-```
+Computing two endpoint values does not establish a window — two numbers do not bracket a continuous function unless monotonicity (or some other order-preserving property) is verified between them. The paper's boxed equation `1 <= A_K <= 4/(4-x)` is therefore only partially verified by the assertions.
 
-i.e. `(4 - 4/zetaReq) - (4 - 4/zetaReq) == 0`, which is a tautology and cannot fail. The downstream assertion at line 84 also rides on this hardcoded `xFloor`.
+A non-tautological monotonicity check is direct: `A_K(y) = 1/(1 - x/4 + x y^2/pi^2)` is decreasing in y on `(0, pi/2)` iff its derivative w.r.t. y is non-positive there. With `D(y) = -d/dy (1 - x/4 + x y^2/pi^2) = -2 x y/pi^2`, the sign on `0 < y < pi/2, 0 < x < 4` is negative. The script could verify `sign(d A_K / d y) == -sign(2 x y / pi^2 * A_K^2)` (i.e., the derivative residual `dAK/dy + 2 x y A_K^2/pi^2 == 0`), which is an exact algebraic identity, then assert positivity of the prefactor `2 x y / pi^2` on the assumed domain.
 
 **Why this matters:**
-The saturation threshold `x_floor = 4 - 4/zeta_req` is the final ledger result of the unit. If the inversion of `A_K,max = zeta_req` were ever miscarried (e.g., the wrong root, a sign error), the Mathematica check could still pass because nothing is being solved.
+If the closed form for `A_K(y)` had a hidden non-monotonic regime (e.g., a sign flip from a misderived denominator term), the endpoint values alone could still match `1` and `4/(4-x)` while the interior fails the window. The endpoint-only check is necessary but not sufficient for the paper's window claim. The script's own docstring/printout also asserts the window verbatim ("`A_K = 1 / [1 - x/4 + x y^2/pi^2]. It ranges from 1 up to 4/(4-x)`," final-ledger print) so the assertion strength does not match the script's own stated scope, independent of the paper.
 
 **Required change:**
-Replace line 78 so that `xFloor` is obtained by `Solve` on `aKMax == zetaReq` for `x`, instead of writing the literal closed form. Line 83's assertion then becomes a real test that the solve returned the claimed form.
+In both scripts, add a monotonicity check on `A_K(y)` as a function of y on `(0, pi/2)` with `0 < x < 4`. The simplest non-tautological form:
+
+- Compute the symbolic derivative `dAK_dy = sp.diff(AK_sym, y)` (SymPy) / `D[aKSym, y]` (Mathematica).
+- Assert the residual `expect_zero("dAK/dy closed form", dAK_dy - (-2*x*y / (pi**2 * (1 - x/4 + x*y**2/pi**2)**2)))`.
+- Print a comment noting that on `0 < y < pi/2`, `0 < x < 4` the prefactor `2 x y / pi^2 > 0`, hence `dAK/dy < 0`, hence the endpoint values bracket the function.
+
+For the Mathematica script, mirror with `D[aKSym, y]` and a `FullSimplify` reduction.
 
 **Verification:**
-After the fix, output line 37 should still read `x floor at saturation = 4 - 4/zetaReq` and the PASS at line 39 remains. The verifier confirms the source line 78 now contains a `Solve[aKMax == zetaReq, x]` call (or equivalent) rather than a hand-stated `4 - 4/zetaReq`.
+After the fix, the SymPy transcript prints a new line of the form `dAK/dy closed form = 0` and a corresponding PASS in the Mathematica transcript. The new assertion fails if and only if the closed form for `A_K(y)` is mis-stated; together with the existing endpoint checks, this exercises the full window claim.
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` script mirrors the `.py` script in structure: identical variable choreography (`psi`, `bExpr`, `psiBN`, `charEq`; then `kPhi`, `kWEff`, `aK`; then `kXFromX`, `tXFromX`, `aKX`, `aKSym`, `aKDN`, `aKSoft`; then `ineqRhs`, `yReqSq`, `aKMax`, `xFloor`). Most assertions are independently meaningful (B3–B6 substitute one closed form and check it equals another, which is genuine algebra), but at two key derivation steps — solving the Neumann condition for `b` (line 34) and inverting `A_K,max = zeta_req` for `x` (line 78) — the Mathematica script hardcodes the answer instead of invoking `Solve`, while the SymPy version uses `sp.solve` in both places. The corresponding assertions (B1, B7) are then tautological. This is not a wholesale transliteration finding because the rest of the algebra (the change-of-variables identity, the closed-form match, the boundary limits) is substantive; the two hardcoded answers are the localized failure mode and are captured by F1 and F2.
+The `.wl` follows the same variable choreography as the `.py`: `psi = A cos(ks) + B sin(ks)`; solve for B from Neumann at L; compute `charEq` at `s = 0`; then `kPhi`, `kWEff`, `aK`; then `kXFromX`, `tXFromX`, `aKX`, `aKSym`, `aKDN`, `aKSoft`; then `ineqRhs`, `yReqSq`, `aKMax`, `xFloor`. The two engines both invoke `Solve` (sympy `sp.solve` / mathematica `Solve`) at lines 33/40 (`B`) and 83/84 (`xFloor`).
+
+The structural parallelism is high — the .wl can be read as a renamed re-implementation of the .py — but the algorithmic steps (BVP ansatz → Neumann elimination → characteristic equation → effective stiffness → x-substitution → endpoint limits → saturation solve) are the standard derivation for this BVP, and each `Solve` call is independently exercised in each engine. I do not file `mathematica_transliteration` here: the parallelism is at the level of "both engines run the textbook derivation," not "the .wl echoes the .py's algebraic shortcuts." Each `Solve` and each `FullSimplify` operates independently on its engine's symbolic store; if the SymPy version had a hidden algebraic shortcut, the Mathematica version would still recompute from the ansatz.
+
+Caveat: a more strongly independent re-derivation would use `psi = C cos(k(L-s))` (auto-satisfying Neumann at L) and impose Robin at `s=0`, avoiding the two-coefficient ansatz entirely. That stronger form is not present in either engine. Within the rubric's tolerance for "both engines derive from physical premises," I judge the current pair to clear the bar.
 
 ## Engine cross-check
 
-Both engines pass all their assertions and arrive at the same algebraic content:
+Both engines pass all their assertions. Final closed forms (from saved outputs):
 
 - SymPy: `A_K in x,y form = 4*pi**2/(4*x*y**2 - pi**2*(x - 4))`, `A_K,max = -4/(x - 4)`, `x floor at saturation = 4 - 4/zeta_req`.
 - Mathematica: `A_K in x,y form = kWBar/(kWBar + kWBar*x*(-1/4 + y^2/Pi^2))`, `A_K,max = -4/(-4 + x)`, `x floor at saturation = 4 - 4/zetaReq`.
 
-These agree on the same closed forms up to algebraic rearrangement. No `engine_disagreement` finding. Note also output freshness: SymPy script mtime Apr 1, output mtime May 11 12:43 (fresh); Mathematica script mtime May 11 11:56, output mtime May 11 12:52 (fresh). No `stale_output` finding.
+These are algebraically equal up to engine-specific normalization: `4 pi^2 / (4 x y^2 - pi^2 (x-4))` = `1/(1 - x/4 + x y^2/pi^2)` (multiply numerator and denominator by `4/pi^2`), and the Mathematica form factors `kWBar` out trivially. `-4/(x-4) = 4/(4-x)`. No `engine_disagreement` finding.
+
+Output freshness: SymPy script mtime Apr 1 12:39, output mtime May 22 17:38 — output newer than script (fresh). Mathematica script mtime May 22 17:38, output mtime May 22 17:38 — output ≥ script mtime (fresh). No `stale_output` finding.
 
 ## Verdict justification
 
-The math content of unit 054 is real and both engines agree on the closed forms. However, the Mathematica engine fails to independently derive two key intermediate results — the Neumann-derived coefficient `b = a Tan[k ell]` and the saturation root `x_floor = 4 - 4/zetaReq` — by hardcoding both answers at lines 34 and 78. The two assertions that depend on these (B1, B7) are therefore tautological, even though they print PASS. The SymPy script does derive both via `sp.solve` and is clean. Two findings; verdict `findings`; no stop-cold (the fixes are local Solve substitutions that will yield the same algebraic answers and not propagate to downstream units' inputs).
+Paper-side and script-side both claim the Robin root, softening factor, and softening window. The Robin root and softening factor are exercised with substantive `Solve`-derived checks in both engines, and the engines agree. The previous v1 hardcoded-result findings have been addressed: the Mathematica script now derives `bExpr` and `xFloor` via `Solve` calls. One gap remains: the **window claim** (`1 <= A_K <= 4/(4-x)`) is verified only at its two endpoints, with no monotonicity check connecting them. The paper claim is fully aligned with the script's stated scope; the assertion strength is the issue, not the target. Verdict: `findings`, one `insufficient_verification` finding. No stop-cold.
+
+Attacks tried that failed:
+- Banner/comment text says "STAGE 37" / "STAGE 037" while the filename and the paper card are stage 054 — this is a renumbering artifact in print/banner statements only; it does not enter any assertion residual and does not change which math is being verified. Not flagged.
+- The `0 < y < pi/2` paper constraint vs script's looser `y > 0` assumption: the `A_K x-form` identity is algebraic in y and holds on the full positive line, so the looser assumption is harmless for the assertions present. Not flagged.
+- The Mathematica `Limit::alimv` warning at the `y -> 0+` limit: examined; the warning is informational and the simplified result `-4/(-4 + x)` is the correct soft-mouth limit. Not a bug.
+- The Robin sign convention `psi'(0) = h psi(0)` is reproduced consistently in both scripts via `(D[psi,s] /. s -> 0) - h*(psi /. s -> 0)`, matching the notes. Sign correct.
 
 ## Self-test notes
 
-- **Variable independence**: neither finding introduces a new `D[...]` derivative, so no zero-by-independence trap. The existing `D[psi, s]` at line 36 already takes the derivative w.r.t. `s` of an expression that does depend on `s` — fine.
-- **Parity / symmetric-domain integrals**: no integrals over symmetric unbounded domains appear; nothing to check.
-- **Trivial-case pre-check for F1**: with `a=1, k=1, ell=Pi/4`, the proposed `Solve[D[a Cos[k s] + b Sin[k s], s] /. s -> ell == 0, b]` yields `b = Tan[Pi/4] = 1`, matching the hardcoded value but now derived; the downstream `charEq/a + h - k Tan[k ell]` reduces to 0 as before. For F2, with `zetaReq=2`, `Solve[4/(4-x) == 2, x]` yields `x = 2`, equal to `4 - 4/2 = 2`. Both substitutions preserve PASS while making the assertions non-tautological.
-- **Path specifications**: F1 and F2 target an existing `.wl` file at `mathematica/`; F1/F2 are not `missing_verification_script`, so no new file paths are introduced.
+- **Variable independence (proposed F1 fix)**: `AK_sym` (SymPy) and `aKSym` (Mathematica) both depend on `y` explicitly, so `sp.diff(AK_sym, y)` / `D[aKSym, y]` will not be identically zero. Confirmed.
+- **Trivial-case pre-check (proposed F1 fix)**: substitute `x = 2, y = pi/4`. Then `1 - x/4 + x y^2/pi^2 = 1 - 1/2 + 2*(pi^2/16)/pi^2 = 1/2 + 1/8 = 5/8`, so `A_K = 8/5`. `dA_K/dy = -2*x*y/(pi^2) * A_K^2 = -2*2*(pi/4)/(pi^2) * (8/5)^2 = -(1/pi) * 64/25 = -64/(25 pi)`, negative — confirms the prefactor sign claim. Residual `sp.diff(AK_sym, y) - (-2*x*y / (pi**2 * (1 - x/4 + x*y**2/pi**2)**2))` reduces to 0 by direct computation (both expressions are the same closed form for the derivative of `A_K`).
+- **Paper round-trip (proposed F1 fix)**: the new monotonicity check adds an algebraic identity for `dA_K/dy` directly from the paper's boxed `A_K` form; it does not introduce any new constant or convention that would create a fresh `paper_misalignment`.
+- **Path specifications**: F1 modifies existing `.py` and `.wl` files at `scripts/` and `mathematica/`; no new file creation.

@@ -44,6 +44,10 @@ S = sp.simplify(1 + zeta * (1 - eps) / (1 - eps * zeta))
 banner("1. Exact doubling theorem for the lowest symmetric twin lane")
 print("zeta_req =", zeta_req)
 print("S(zeta;eps) =", S)
+expect_zero(
+    "zeta_0^(twin) - 1 (anchors doubling to stage 049 import)",
+    twin_support_ratio(sp.Integer(0), x) - 1,
+)
 expect_zero("S(1;eps) - 2", sp.simplify(S.subs(zeta, 1) - 2))
 # zeta_req <= 1 iff (1-eps)(Sreq-2) <= 0
 criterion = sp.factor(sp.simplify(zeta_req - 1))

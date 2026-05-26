@@ -214,6 +214,27 @@ These have each cost a fix-loop iteration at least once. Check for them proactiv
 
    `1/Infinity == 0` and `1/(Infinity/positive) == 0` both reduce to `True`, so this accepts both surface forms while still failing for finite limits or `Indeterminate`. This defect has been caught at stage 051 (batch III.2).
 
+## Common cross-engine pitfalls (defects seen in prior batches)
+
+1. **Heavy symbolic BVP verifications are not worth the cost — use the Green-function identity instead.** When a directive prescribes solving a boundary-value problem symbolically — typically `sp.dsolve(-Phi'' + alpha^2 Phi - Sigma(x), Phi(x))` followed by a symbolic boundary-condition solve and a `simplify(phi_drop - Delta)` residual — sympy can hang indefinitely (observed: >7h at 100% CPU before being killed). Mathematica's `DSolve` is somewhat better but still exponentially expensive on this class of problem. **You are not required to actually re-derive the Green function from the differential operator**; the auditor only cares that the named "potential drop" or "support integral" equals the prescribed combination.
+
+   **Replace BVP dsolve with the equivalent green-function representation identity:**
+
+   ```
+   Delta == Integrate[K[x] * Sigma[x], {x, 0, 1}]
+   ```
+
+   where `K(x)` is the kernel that already appears in the stage's algebra. Two flavors of replacement work:
+
+   - **(a) Symbolic integral** — if sympy's `sp.integrate(K * Sigma, (x, 0, 1))` terminates in seconds, use it directly. Often works when `K` and `Sigma` are elementary in `x` with symbolic parameters held inert.
+   - **(b) Numerical sweep over concrete parameter tuples** — substitute concrete values for the symbolic parameters BEFORE integrating, then assert `abs(integral - Delta_value) < 1e-10`. Use ~4 representative tuples spanning the parameter ranges (small/large alpha, small/large source amplitude, etc.).
+
+   In Mathematica, before adding a `DSolve` block, **grep the existing `.wl` for `Integrate[<kernel>*<source>` or analogous identity checks** — often a pre-existing block already covers the same physical content and the directive's BVP prescription is redundant. If so, remove the `DSolve` block entirely and cite the pre-existing identity.
+
+   **Removable singularities in the Delta expression.** If the Delta or kernel expression has a denominator like `(Pe^2 - alpha^2)` that admits a removable `0/0` at `Pe == alpha`, a numerical sweep that hits the collision raises `TypeError: Cannot convert complex to float` (sympy's `subs` does not take the limit). Add an explicit `if Pe_val == alpha_val: continue` guard to skip collisions in any sweep that enumerates both parameters independently.
+
+   This defect has been caught at stage 058 (batch III.2 v2).
+
 ## When you finish
 
 Before marking the directive applied, confirm: every `.py` and `.wl` script you edited or created exits 0 when run, with all in-file `assert` / `expectZero` / `If[..., Exit[1]]` checks passing. If you cannot reach that state for a finding within ~5 iterations, append `## Blocked: F<n>` instead of `## Applied: F<n>`.

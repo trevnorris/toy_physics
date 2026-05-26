@@ -41,6 +41,10 @@ sEnhance = FullSimplify[1 + zeta (1 - eps)/(1 - eps zeta), Assumptions -> $Assum
 
 Print["zeta_req = ", fmt[zetaReq]];
 Print["S(zeta;eps) = ", fmt[sEnhance]];
+expectZero[
+  "zeta_0^(twin) - 1 (anchors doubling)",
+  (1/((2 n + 1)^2 (1 + x n (n + 1))) /. n -> 0) - 1
+];
 expectZero["S(1;eps) - 2", (sEnhance /. zeta -> 1) - 2];
 criterion = FullSimplify[zetaReq - 1, Assumptions -> $Assumptions];
 Print["zeta_req - 1 = ", fmt[criterion]];
@@ -57,16 +61,15 @@ xEqClosedForm = (1/(((2 n + 1)^2) zetaReq) - 1)/(n (n + 1));
 
 Print["zeta_n^(twin) = ", fmt[zetaN]];
 dZetaNdx = FullSimplify[D[zetaN, x], Assumptions -> $Assumptions];
-dZetaNdxTarget = -n (n + 1) / ((2 n + 1)^2 (1 + n (n + 1) x)^2);
 expectZero[
-  "d zeta_n^(twin) / dx + n(n+1)/[(2n+1)^2 (1 + x n(n+1))^2]",
-  dZetaNdx - dZetaNdxTarget
+  "d zeta_n / dx (denominator structure) : dZetaNdx (2n+1)^2 (1 + n(n+1) x)^2 + n(n+1) = 0",
+  dZetaNdx (2 n + 1)^2 (1 + n (n + 1) x)^2 + n (n + 1)
 ];
 Print["x_max(n;zeta_req) = ", fmt[xEq]];
 expectZero["zeta_n^(twin)(x_max) - zeta_req", (zetaN /. x -> xEq) - zetaReq];
 expectZero[
-  "x_max (from Solve) - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)]",
-  xEq - xEqClosedForm
+  "x_max from Solve satisfies (2n+1)^2 zeta_req (1 + n(n+1) x_max) - 1 = 0",
+  (2 n + 1)^2 zetaReq (1 + n (n + 1) xEq) - 1
 ];
 
 admissibilityNum = FullSimplify[
@@ -86,12 +89,21 @@ Print["S_n^(max) = ", fmt[sNMax]];
 expectZero["S_n^(twin)(x=0) - S_n^(max)", (sN /. x -> 0) - sNMax];
 ceilingDiff = FullSimplify[sNMax - sN, Assumptions -> $Assumptions];
 Print["S_n^(max) - S_n^(twin) = ", fmt[ceilingDiff]];
-ceilingDiffTarget =
-  ((1 - eps) (2 n + 1)^2 n (n + 1) x) /
-  (((2 n + 1)^2 - eps) ((2 n + 1)^2 (1 + n (n + 1) x) - eps));
+ceilingDiffNumerator = FullSimplify[
+  Numerator[Together[ceilingDiff]],
+  Assumptions -> $Assumptions
+];
 expectZero[
-  "S_n^(max) - S_n^(twin) factored form",
-  ceilingDiff - ceilingDiffTarget
+  "Numerator of (S_n^(max) - S_n^(twin)) - (1-eps)(2n+1)^2 n(n+1) x",
+  ceilingDiffNumerator - (1 - eps) (2 n + 1)^2 n (n + 1) x
+];
+ceilingDiffDenominator = FullSimplify[
+  Denominator[Together[ceilingDiff]],
+  Assumptions -> $Assumptions
+];
+expectZero[
+  "Denominator of (S_n^(max) - S_n^(twin)) - ((2n+1)^2 - eps) ((2n+1)^2 (1 + n(n+1) x) - eps)",
+  ceilingDiffDenominator - ((2 n + 1)^2 - eps) ((2 n + 1)^2 (1 + n (n + 1) x) - eps)
 ];
 Print["S_1^(max) = ", fmt[sNMax /. n -> 1]];
 Print["S_2^(max) = ", fmt[sNMax /. n -> 2]];

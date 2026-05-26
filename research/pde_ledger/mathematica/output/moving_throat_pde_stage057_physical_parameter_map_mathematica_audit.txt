@@ -2,6 +2,8 @@
 ========================================================================================
 STAGE 040 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP
 ========================================================================================
+A_K(physical) - (kappa+Pi^2/4)/(kappa+y^2) = 0
+PASS: A_K(physical) - (kappa+Pi^2/4)/(kappa+y^2)
 x(kappa) = (4*Pi^2)/(4*kappa + Pi^2)
 A_K(eta;kappa) = (4*kappa + Pi^2)/(4*(kappa + y^2))
 zeta_0^(Pe+R) = (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(4*kappa + Pi^2))/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2))
@@ -15,8 +17,10 @@ partial_kappa identity = 0
 PASS: partial_kappa identity
 partial_y identity = 0
 PASS: partial_y identity
+PASS: partial_kappa zeta < 0 on 0 < y < Pi/2 (numerical sweep)
+PASS: partial_Pe zeta > 0 on constructive branch (numerical sweep)
 zeta_max(kappa) = (4*kappa*Pi^2 + Pi^4)/(16*kappa)
-kappa_max(zeta_req) = -1/4*Pi^4/(Pi^2 - 4*zetaReq)
+kappa_max(zeta_req) = Pi^4/(-4*Pi^2 + 16*zetaReq)
 
 Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 
@@ -29,12 +33,12 @@ zeta_max(kappa_max) - zeta_req = 0
 PASS: zeta_max(kappa_max) - zeta_req
 Omega_req^2 = (4*(kappa + y^2)*zetaReq)/(4*kappa + Pi^2)
 y_req^2 = -kappa + (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(kappa + Pi^2/4))/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*zetaReq)
-kappa_req = ((pe^2*Pi^4*(2*E^pe*pe + Pi)^2)/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2) - y^2*zetaReq)/(-((pe^2*Pi^2*(2*E^pe*pe + Pi)^2)/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2)) + zetaReq)
+kappa_req = ConditionalExpression[-1/4*(E^pe*(4*pe^3*Pi^5 + 8*(4*pe^2 + Pi^2)^2*y^2*zetaReq + (4*pe^2 + Pi^2)*(pe^2*Pi^4 - 8*(4*pe^2 + Pi^2)*y^2*zetaReq)*Cosh[pe] - pe^2*Pi^4*(-4*pe^2 + Pi^2)*Sinh[pe]))/(pe^2*Pi^4 - (4*pe^2 + Pi^2)^2*zetaReq + E^(2*pe)*(4*pe^4*Pi^2 - (4*pe^2 + Pi^2)^2*zetaReq) + 2*E^pe*(2*pe^3*Pi^3 + (4*pe^2 + Pi^2)^2*zetaReq)), Inequality[(pe^2*Pi^2*(2*E^pe*pe + Pi)^2)/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2), Less, zetaReq, Less, (pe^2*Pi^4*(2*E^pe*pe + Pi)^2)/(4*(-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*y^2)]]
 kappa_req defining equation = 0
 PASS: kappa_req defining equation
 kappa_req identity = 0
 PASS: kappa_req identity
-y_req defining equation = 0
-PASS: y_req defining equation
+y_req identity = 0
+PASS: y_req identity
 
 Stage 057 Mathematica audit passed.

@@ -15,7 +15,7 @@ Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 General::stop: Further output of Limit::alimv will be suppressed during this calculation.
 symmetric twin point = 1
 closure maximum = Pi^2/(4 - x)
-x floor from zeta_max = zeta_req = 4 - Pi^2/zetaReq
+x floor from zeta_max = zeta_req = ConditionalExpression[4 - Pi^2/zetaReq, 4*zetaReq > Pi^2]
 twin value = 0
 PASS: twin value
 closure maximum = 0

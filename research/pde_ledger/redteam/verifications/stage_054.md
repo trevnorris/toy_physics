@@ -2,12 +2,12 @@
 unit_id: 054
 batch: III.2
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-22T18:05:00-06:00
+verify_date: 2026-05-26
 verdict: verified
 sympy_exit: n/a
-mathematica_exit: 0
-findings_resolved: 2
-findings_total: 2
+mathematica_exit: n/a
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
@@ -15,78 +15,70 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — hardcoded_result
+### F1 — insufficient_verification
 
 **Classification:** resolved
 
 **What changed:**
-`mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:40` was rewritten from the hardcoded form `bExpr = FullSimplify[a Tan[k ell], Assumptions -> $Assumptions];` to
+- `scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py:72-79` — inserted a four-line comment block plus three statements:
+  - `dAK_dy = sp.diff(AK_sym, y)`
+  - `dAK_dy_expected = -2 * x * y / (pi**2 * (1 - x / 4 + x * y**2 / pi**2) ** 2)`
+  - `expect_zero("dA_K/dy closed form", dAK_dy - dAK_dy_expected)`
+  - a `print(...)` line stating the prefactor-positivity argument on the declared domain.
+- `mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:81-88` — inserted the mirrored block:
+  - `dAKdy = FullSimplify[D[aKSym, y], Assumptions -> $Assumptions];`
+  - `dAKdyExpected = -2 x y / (Pi^2 (1 - x/4 + x y^2/Pi^2)^2);`
+  - `expectZero["dA_K/dy closed form", dAKdy - dAKdyExpected];`
+  - mirror `Print[...]` line.
 
-```
-bExpr = FullSimplify[b /. First@Solve[(D[psi, s] /. s -> ell) == 0, b], Assumptions -> $Assumptions];
-```
-
-matching the directive's required change literally. (The original directive named line 34; after preserving the existing blank/`Clear`/`$Assumptions` lines the edit landed at line 40 of the current file — the substantive content is identical to what was specified.)
-
-**Assessment:**
-The Mathematica engine now genuinely derives `b` from the bottom Neumann condition `D[psi, s] /. s -> ell == 0` via `Solve`, mirroring the SymPy script's `sp.solve(sp.Eq(sp.diff(psi, s).subs(s, L), 0), B)[0]` at `scripts/.../stage054_..._sympy_audit.py:33`. The downstream assertion `expectZero["Robin equation -> k tan(kL) - h", charEq/a + h - k Tan[k ell]];` (now line 46) is no longer tautological — its passing depends on `Solve` returning the correct `b = a Tan[k ell]`. The exec output line 5 prints `B from Neumann bottom = ConditionalExpression[a*Tan[ell*k], ...]`, where the `ConditionalExpression` wrapper is the diagnostic fingerprint of an actual `Solve` invocation (Mathematica's `Solve` attaches such wrappers when auxiliary inequalities are involved). The `expectZero` helper's `ConditionalExpression[e_, _] :> e` strip (orchestrator's generic idiom fix) correctly collapses this to zero on the declared domain, so the assertion still passes. No collateral edits.
-
-### F2 — hardcoded_result
-
-**Classification:** resolved
-
-**What changed:**
-`mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:84` was rewritten from `xFloor = FullSimplify[4 - 4/zetaReq, Assumptions -> zetaReq > 0];` to
-
-```
-xFloor = FullSimplify[x /. First@Solve[aKMax == zetaReq, x], Assumptions -> zetaReq > 0];
-```
-
-matching the directive's required change literally. (Directive cited line 78 of the original file; current file has it at line 84 after the F1 edit preserved earlier structure — substantive content identical.)
+Insertion points sit exactly between the existing `soft-mouth limit` assertion and the next banner / `ineqRhs` line, matching the directive's "between line 70 and line 72" (sympy) / "between line 79 and line 81" (mathematica) instruction. The `## Applied: F1` block in the directive lists both files with `deviation: none`, consistent with the captured diff (`redteam/exec_logs/stage_054_diff.patch`).
 
 **Assessment:**
-`xFloor` is now obtained by inverting `aKMax == zetaReq` for `x` via `Solve`, mirroring the SymPy `sp.solve(sp.Eq(AK_max, zeta_req), x)[0]` at `scripts/.../stage054_..._sympy_audit.py:83`. The assertion `expectZero["x floor = 4 - 4/zeta_req", xFloor - (4 - 4/zetaReq)];` (now line 89) is no longer the trivial `(4 - 4/zetaReq) - (4 - 4/zetaReq) == 0`; it tests that `Solve` returns the expected root. Exec output line 29 prints `x floor at saturation = ConditionalExpression[4 - 4/zetaReq, ... zetaReq > 1]`, again carrying the `ConditionalExpression` fingerprint of a genuine `Solve` invocation (with the auxiliary `zetaReq > 1` constraint required for the inversion to lie in the valid domain). After the helper's wrapper strip, both `x floor = 4 - 4/zeta_req` (line 30) and `A_K,max(x_floor) - zeta_req` (line 32) print PASS. No collateral edits.
+Codex's edit matches the directive verbatim — no algebraic substitutions, no helper changes, no reformatting of surrounding lines. The new assertion is non-tautological:
+
+- `dAK_dy = sp.diff(AK_sym, y)` (or `D[aKSym, y]`) is whatever the engine's differentiation routine produces from the script's own simplified form of `AK_sym = 1/(1 - x/4 + x*y^2/pi^2)`.
+- `dAK_dy_expected` is the independently-typed closed form `-u'/u^2` with `u = 1 - x/4 + x*y^2/pi^2` and `u' = 2*x*y/pi^2`.
+- Equality of the two residuals holds iff the engine's chain-rule output on the *actual* denominator agrees with the chain-rule applied to the *paper's* denominator. If `AK_sym`'s denominator had a sign flip on `x/4` or on `x*y^2/pi^2`, the differentiation output would have the corresponding sign flip while `dAK_dy_expected` would not — the residual would be nonzero.
+
+Together with the printed prefactor-positivity remark on `0 < x < 4, 0 < y < pi/2`, the new identity certifies `dA_K/dy < 0` on the declared domain, which is the load-bearing piece that closes the endpoint window `1 <= A_K <= 4/(4-x)` flagged by the auditor as exercised only at its two endpoints.
+
+No collateral edits: the diff (`stage_054_diff.patch`) is exactly two hunks, both pure insertions, with no modification to any pre-existing assertion, print, or banner.
 
 ## Exec log assessment
 
-**SymPy:** exit=n/a (no SymPy edit required by directive; output regenerated only to confirm freshness). Notable lines from the saved `.txt`:
+**SymPy:** exit=n/a. No `redteam/exec_logs/stage_054_sympy.log` was captured by the orchestrator. Fallback per verifier prompt: `scripts/output/moving_throat_pde_stage054_robin_softening_sympy_audit.txt` (mtime 2026-05-26 03:00, newer than the script's 02:59). Notable lines from the transcript:
 
-```
-B from Neumann bottom = A*tan(L*k)
-Robin equation -> k tan(kL) - h = 0
-x floor = 4 - 4/zeta_req = 0
-```
+- `soft-mouth limit = 0`
+- `dA_K/dy closed form = 0`
+- `Prefactor 2*x*y/pi^2 > 0 on 0<x<4, 0<y<pi/2 => dA_K/dy < 0 (monotone decreasing).`
+- `x floor = 4 - 4/zeta_req = 0`
+- FINAL LEDGER block printed normally, indicating the script completed without an `expect_zero` failure (the helper raises on a nonzero residual, terminating the transcript early).
 
-SymPy output is unchanged in form and shows the same algebraic results as before.
+**Mathematica:** exit=n/a. No `redteam/exec_logs/stage_054_mathematica.log` was captured. Fallback: `mathematica/output/moving_throat_pde_stage054_robin_softening_mathematica_audit.txt` (mtime 2026-05-26 03:00). Notable lines:
 
-**Mathematica:** exit=0. Notable lines:
+- `PASS: soft-mouth limit`
+- `dA_K/dy closed form = 0`
+- `PASS: dA_K/dy closed form`
+- `PASS: x floor = 4 - 4/zeta_req`
+- `PASS: A_K,max(x_floor) - zeta_req`
+- Final line: `Stage 054 Mathematica audit passed.`
 
-```
-B from Neumann bottom = ConditionalExpression[a*Tan[ell*k], (Element[C[1], Integers] && ...) || 2*ell*k < Pi]
-Robin equation -> k tan(kL) - h = 0
-PASS: Robin equation -> k tan(kL) - h
-x floor at saturation = ConditionalExpression[4 - 4/zetaReq, ... zetaReq > 1]
-PASS: x floor = 4 - 4/zeta_req
-PASS: A_K,max(x_floor) - zeta_req
-Stage 054 Mathematica audit passed.
-```
+All previously-passing assertions still pass; the new `PASS: dA_K/dy closed form` line is appended exactly where the directive predicted (immediately after `PASS: soft-mouth limit`). The pre-existing `Limit::alimv` warning at the `y -> 0+` step is unchanged and remains informational, as the auditor noted.
 
-All 9 Mathematica assertions PASS (Robin equation, dimensionless form, K_W identity, A_K x-form, DN limit, soft-mouth limit, x floor, A_K,max(x_floor)). The `ConditionalExpression` wrappers on the two `Solve`-derived expressions are the expected post-Solve form; they collapse to bare zero in the `expectZero` helper as designed.
-
-**Output freshness:** confirmed. Script mtime `2026-05-22 17:38`; Mathematica output `.txt` mtime `2026-05-22 17:38` (same minute, post-edit); SymPy output `.txt` mtime `2026-05-22 17:38`. Both outputs were regenerated after Codex's edit (fix-batch log line 74 records `Stage 054: refresh mathematica -> ...` at 17:38:49).
+**Output freshness:** confirmed. Both scripts have mtime `2026-05-26 02:59`; both saved `.txt` outputs have mtime `2026-05-26 03:00`. Outputs are strictly newer than scripts post-edit.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-Both edits are local algebraic re-derivations of values that previously were hardcoded to the same closed forms. The output values (`B from Neumann bottom = a*Tan[ell*k]`, `x floor at saturation = 4 - 4/zetaReq`) are unchanged after `ConditionalExpression` unwrapping. No expression that downstream units consume has changed numerically or symbolically — only the provenance inside this unit shifted from hand-stated to `Solve`-derived. No downstream re-audit needed on account of unit 054.
+The edit only adds a new symbolic identity assertion. It does not alter any expression, derived value, simplification path, or constant that downstream units could consume. `A_K(y)`, `A_K,max`, `x_floor`, the soft-mouth limit, and the Robin characteristic equation are all numerically and symbolically unchanged in both engine transcripts. Downstream units that consume the softening factor or window will see identical inputs from unit 054.
 
 ## Side observations (non-blocking)
 
-- The orchestrator note records a preemptive batch-wide `ConditionalExpression[e_, _] :> e` strip patch added to the `expectZero` helper (visible at lines 20-30 of the `.wl`). For unit 054 specifically, this strip is exactly what the two new `Solve` calls require to produce a clean zero residual (Solve wraps both `bExpr` and `xFloor` in `ConditionalExpression` because of the auxiliary inequality conditions on `k, ell, zetaReq`). The strip is generic and does not weaken the assertions — it only removes a domain-conditional wrapper that the `$Assumptions` block already guarantees.
-- Output line 17 `Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.` is unchanged from pre-fix output and is unrelated to the two findings. Side observation only.
-- The unit's banner text still says `STAGE 037 — ROBIN-COMPLIANCE SOFTENING` (mathematica line 32) / `STAGE 37 — ROBIN-COMPLIANCE SOFTENING` (sympy line 25). Cosmetic; out of scope for this verification.
+- The orchestrator did not write `stage_054_sympy.log` or `stage_054_mathematica.log` under `redteam/exec_logs/`. The verifier prompt anticipates this case and allows falling back to `scripts/output/` and `mathematica/output/`, which I did. If the state machine requires those log files to be present, that is a tooling gap rather than a script defect.
+- The Mathematica banner still prints `STAGE 037` and the SymPy banner still prints `STAGE 37`, while the filename and paper card use `stage_054`. The auditor noted this as a print-only renumbering artifact and explicitly chose not to flag it; I concur — it does not enter any assertion residual.
+- The `expectZero["dA_K/dy closed form", dAKdy - dAKdyExpected]` Mathematica call leans on `FullSimplify` (with `$Assumptions` declaring `0 < x < 4, y > 0`) to reduce the residual to zero. The transcript records `dA_K/dy closed form = 0` and `PASS: dA_K/dy closed form`, confirming FullSimplify is sufficient here; no additional hardening is needed.
 
 ## Verdict justification
 
-Both findings F1 and F2 are fully resolved. The two hardcoded literals (`bExpr` for the Neumann coefficient and `xFloor` for the saturation root) have been replaced with genuine `Solve` invocations matching the SymPy counterpart, exactly as the directive specified. The Mathematica script exits 0, all 9 assertions PASS, the printed intermediate values are unchanged after `ConditionalExpression` unwrapping, and output mtimes confirm regeneration post-edit. No regressions, no collateral edits beyond the orchestrator's pre-applied generic helper patch. Verdict: verified.
+Codex applied F1 exactly as the directive specified — same file paths, same insertion line ranges, same code blocks, and the directive's `## Applied: F1` block records `deviation: none`. Both engines now log a non-tautological `dA_K/dy closed form = 0` residual immediately after the soft-mouth-limit check; together with the printed prefactor-positivity argument on the declared domain `0 < x < 4, 0 < y < pi/2`, this certifies monotonicity of `A_K(y)` and thereby closes the window claim `1 <= A_K <= 4/(4-x)` that the auditor identified as endpoint-only. The captured diff is clean (two pure-insertion hunks, no collateral edits), output `.txt` files are newer than the edited scripts, and every pre-existing PASS line is preserved. Verdict: `verified`.

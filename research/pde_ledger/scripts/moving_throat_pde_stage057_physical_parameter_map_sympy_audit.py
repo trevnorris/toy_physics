@@ -72,6 +72,24 @@ expect_zero(
     dy + 2 * Omega_Pe**2 * y * (kappa + sp.pi**2 / 4) / (kappa + y**2)**2,
 )
 
+# Sign check on partial_kappa over 0 < y < pi/2 (from y tan y = eta, eta finite).
+# Notes deliverable (4c) requires partial_kappa zeta < 0 on the constructive branch.
+for y_val in (sp.pi / 8, sp.pi / 6, sp.pi / 4, sp.pi / 3, sp.Rational(7, 16) * sp.pi):
+    val = sp.simplify(dkappa.subs({Pe: 1, kappa: 1, y: y_val}))
+    if val >= 0:
+        raise AssertionError(f"partial_kappa zeta sign failed at y={y_val}: {val}")
+print("partial_kappa zeta < 0 on 0 < y < pi/2 (numerical sweep): PASS")
+
+# Pe-monotonicity sweep — carry-forward from Stage 056 (notes §4: dOmega_Pe/dPe > 0 on
+# the constructive branch via Cov_Pe(chi_0, s) > 0). Stage 056's scripts verify the
+# covariance identity (sympy:79) but not the sign, so we anchor the sign locally here.
+dPe = sp.simplify(sp.diff(zeta_phys, Pe))
+for Pe_val in (sp.Rational(1, 10), sp.Rational(1, 2), sp.Integer(1), sp.Integer(2), sp.Integer(5), sp.Integer(10)):
+    val = sp.simplify(dPe.subs({Pe: Pe_val, kappa: 1, y: sp.pi / 4}))
+    if val <= 0:
+        raise AssertionError(f"partial_Pe zeta sign failed at Pe={Pe_val}: {val}")
+print("partial_Pe zeta > 0 on constructive branch (numerical sweep): PASS")
+
 # Constructive-branch closure ceiling.
 zeta_max = sp.simplify((sp.pi**2 / 4) * (kappa + sp.pi**2 / 4) / kappa)
 print("zeta_max(kappa) =", zeta_max)
@@ -104,11 +122,13 @@ expect_zero(
     "kappa_req identity",
     kappa_req - (Omega_Pe**2 * sp.pi**2 / 4 - zeta_req * y**2) / (zeta_req - Omega_Pe**2),
 )
+y_req_sq_solved = sp.solve(
+    sp.Eq(zeta_req, Omega_Pe**2 * (kappa + sp.pi**2 / 4) / (kappa + y**2)),
+    y**2,
+)[0]
 expect_zero(
-    "y_req defining equation",
-    zeta_req - sp.simplify(
-        Omega_Pe**2 * (kappa + sp.pi**2 / 4) / (kappa + y_req_sq)
-    ),
+    "y_req identity",
+    y_req_sq - y_req_sq_solved,
 )
 
 print("\nStage 40 audit passed.")

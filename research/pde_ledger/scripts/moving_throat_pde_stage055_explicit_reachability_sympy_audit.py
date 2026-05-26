@@ -24,6 +24,10 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 
 banner("STAGE 38 — EXPLICIT LOWEST-LANE REACHABILITY")
 
+# Paper-stated domain: alpha > 0, 0 < x < 4 (Stage 054 softening), 0 < y < pi/2
+# (principal branch of y tan y = eta), zeta_req > 0.  SymPy lacks compound
+# symbol-level bounds, so positivity is declared here and the (0, 4) / (0, pi/2)
+# constraints are exercised by the endpoint substitutions below.
 alpha, x, y, zeta_req = sp.symbols("alpha x y zeta_req", positive=True, real=True)
 pi = sp.pi
 

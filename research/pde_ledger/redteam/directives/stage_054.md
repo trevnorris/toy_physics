@@ -1,14 +1,15 @@
 ---
 unit_id: 054
 batch: III.2
-created_at: 2026-05-22T00:00:00-06:00
-findings_count: 2
+created_at: 2026-05-26T00:00:00-06:00
+findings_count: 1
 stop_cold: null
 applied: true
-applied_at: 2026-05-22T17:37:53-06:00
-findings_applied: 2
+applied_at: 2026-05-26T02:59:06-06:00
+findings_applied: 1
 findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 054
@@ -23,64 +24,57 @@ Do NOT run python or mathematica. Only edit files.
 
 Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
 
-## F1 — hardcoded_result
+## F1 — insufficient_verification
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:34`
+**Target:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py` (insert new check between the current line 70 and line 72)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl` (insert new check between the current line 79 and line 81)
 
-**Issue:** The Mathematica script hardcodes the Neumann-derived coefficient as `bExpr = FullSimplify[a Tan[k ell], Assumptions -> $Assumptions];` at line 34, without ever solving the bottom Neumann condition. The subsequent assertion at line 40, `expectZero["Robin equation -> k tan(kL) - h", charEq/a + h - k Tan[k ell]];`, is therefore tautological by construction. The SymPy counterpart at line 33 uses `sp.solve(sp.Eq(sp.diff(psi, s).subs(s, L), 0), B)[0]` and is genuinely derivational; Mathematica must do the same.
+**Issue:** The paper's window claim `1 <= A_K <= 4/(4-x)` (eq. `app-stage054-AK-window` in `paper/stages/stage_054.tex` lines 36-40) is currently exercised in both scripts only at the two endpoints `y = pi/2` (DN limit, sympy line 69 / mma line 78) and `y -> 0+` (soft-mouth limit, sympy line 70 / mma line 79). Two endpoint values alone do not establish a window for a continuous function. The notes (`notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md` line 148) state explicitly: "the map `y -> eta = y tan y` is strictly increasing on (0,pi/2), and `A_K` is strictly decreasing in y" — i.e. monotonicity is the load-bearing piece that closes the window. Neither engine verifies this. The fix is to add one non-tautological symbolic identity for `dA_K/dy` in each engine. Combined with positivity of the prefactor on the declared domain `0 < x < 4, 0 < y < pi/2`, this certifies the window.
 
 **Required change:**
-At line 34, replace the hardcoded form with an explicit `Solve` of the Neumann condition. Concretely:
 
-Before (line 34):
-```
-bExpr = FullSimplify[a Tan[k ell], Assumptions -> $Assumptions];
+**SymPy (`scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py`)**:
+
+Between the current line 70 (`expect_zero("soft-mouth limit", AK_soft - 4 / (4 - x))`) and line 72 (`banner("PURE SOFTENING THRESHOLD")`), insert the following block (preserve the blank line above and below):
+
+```python
+# Monotonicity certificate: A_K is strictly decreasing in y on (0, pi/2)
+# with 0 < x < 4. Verify the closed form of dA_K/dy; positivity of the
+# prefactor 2*x*y/pi^2 on the assumed domain then implies dA_K/dy < 0,
+# which together with the endpoint values brackets A_K in [1, 4/(4-x)].
+dAK_dy = sp.diff(AK_sym, y)
+dAK_dy_expected = -2 * x * y / (pi**2 * (1 - x / 4 + x * y**2 / pi**2) ** 2)
+expect_zero("dA_K/dy closed form", dAK_dy - dAK_dy_expected)
+print("Prefactor 2*x*y/pi^2 > 0 on 0<x<4, 0<y<pi/2 => dA_K/dy < 0 (monotone decreasing).")
 ```
 
-After (line 34):
-```
-bExpr = FullSimplify[b /. First@Solve[(D[psi, s] /. s -> ell) == 0, b], Assumptions -> $Assumptions];
+Do not modify any existing assertion, print, or banner.
+
+**Mathematica (`mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl`)**:
+
+Between the current line 79 (`expectZero["soft-mouth limit", aKSoft - 4/(4 - x)];`) and line 81 (`ineqRhs = FullSimplify[1/zetaReq - 1 + x/4, ...];`), insert the following block (preserve a blank line above and below the insertion):
+
+```mathematica
+(* Monotonicity certificate: A_K is strictly decreasing in y on (0, Pi/2)
+   with 0 < x < 4.  Verify the closed form of D[aKSym, y]; positivity of
+   the prefactor 2 x y / Pi^2 on the declared domain then implies
+   D[aKSym, y] < 0, closing the window 1 <= A_K <= 4/(4-x). *)
+dAKdy = FullSimplify[D[aKSym, y], Assumptions -> $Assumptions];
+dAKdyExpected = -2 x y / (Pi^2 (1 - x/4 + x y^2/Pi^2)^2);
+expectZero["dA_K/dy closed form", dAKdy - dAKdyExpected];
+Print["Prefactor 2*x*y/Pi^2 > 0 on 0<x<4, 0<y<Pi/2 => D[aKSym, y] < 0 (monotone decreasing)."];
 ```
 
-Do not change any other lines. The print on line 38 (`"B from Neumann bottom = ", fmt[bExpr]`) should continue to output `a*Tan[ell*k]` because the Solve yields exactly that expression after `FullSimplify`.
+The existing `$Assumptions` block at lines 53-55 already declares `0 < x < 4` and `y > 0`, which is sufficient for the FullSimplify call. Do not modify any other line.
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 054` and confirm the assertion `Robin equation -> k tan(kL) - h` still passes (output line 16: `PASS: Robin equation -> k tan(kL) - h`), the printed `B from Neumann bottom = a*Tan[ell*k]` is unchanged (output line 13), and the script exits 0. The verifier additionally inspects line 34 of the source to confirm it now contains `Solve[(D[psi, s] /. s -> ell) == 0, b]` (or an equivalent Solve of the same Neumann condition for `b`) rather than the hardcoded `a Tan[k ell]`.
+After Codex applies, the verifier will run `redteam exec-sympy 054` and `redteam exec-mathematica 054`. Both scripts must exit 0. The SymPy transcript must contain a new line `dA_K/dy closed form = 0` (in the existing `EXACT SOFTENING FACTOR` section, just after the `soft-mouth limit = 0` line). The Mathematica transcript must contain new lines `dA_K/dy closed form = 0` and `PASS: dA_K/dy closed form` (just after `PASS: soft-mouth limit`). Existing PASS lines and outputs must be unchanged.
 
 ## Applied: F1
 
 - files_changed:
+  - `scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py`
   - `mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl`
-- summary: Replaced the hardcoded Neumann coefficient with an explicit Solve of the bottom Neumann condition for b.
-- deviation: none
-
-## F2 — hardcoded_result
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl:78`
-
-**Issue:** Line 78 defines `xFloor = FullSimplify[4 - 4/zetaReq, Assumptions -> zetaReq > 0];` — i.e. it writes in the claimed solution to `A_K,max = zeta_req` by hand. The assertion at line 83, `expectZero["x floor = 4 - 4/zeta_req", xFloor - (4 - 4/zetaReq)];`, reduces to `(4 - 4/zetaReq) - (4 - 4/zetaReq) == 0` and is tautological. The SymPy counterpart at line 83 uses `sp.solve(sp.Eq(AK_max, zeta_req), x)[0]` to actually invert `A_K,max = zeta_req`; Mathematica must do the same.
-
-**Required change:**
-At line 78, replace the hardcoded form with an explicit `Solve` that inverts `aKMax == zetaReq` for `x`. Concretely:
-
-Before (line 78):
-```
-xFloor = FullSimplify[4 - 4/zetaReq, Assumptions -> zetaReq > 0];
-```
-
-After (line 78):
-```
-xFloor = FullSimplify[x /. First@Solve[aKMax == zetaReq, x], Assumptions -> zetaReq > 0];
-```
-
-Do not change any other lines. The print at line 82 (`"x floor at saturation = ", fmt[xFloor]`) should continue to output `4 - 4/zetaReq` because Solve returns exactly that. The downstream assertion at line 84 (`A_K,max(x_floor) - zeta_req`) continues to pass because the substitution `aKMax /. x -> xFloor` evaluates to `zetaReq` either way.
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 054` and confirm assertions `x floor = 4 - 4/zeta_req` (output line 39) and `A_K,max(x_floor) - zeta_req` (output line 41) both still pass, and the script exits 0. The verifier additionally inspects line 78 of the source to confirm it now contains `Solve[aKMax == zetaReq, x]` (or an equivalent inversion of `aKMax == zetaReq` for `x`) rather than the hardcoded `4 - 4/zetaReq`.
-
-## Applied: F2
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage054_robin_softening_mathematica_audit.wl`
-- summary: Replaced the hardcoded saturation floor with an explicit Solve of aKMax == zetaReq for x.
+- summary: Added the requested symbolic derivative checks certifying that A_K is monotone decreasing in y on the declared domain.
 - deviation: none

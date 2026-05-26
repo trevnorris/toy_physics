@@ -7,7 +7,7 @@ k_n = ((1/2 + n)*Pi)/l
 k_n satisfies D/N Neumann boundary = 0
 PASS: k_n satisfies D/N Neumann boundary
 I_n from direct integral = (2*Sqrt[2]*Sqrt[l])/(Pi + 2*n*Pi)
-I_n closed form = (2*Sqrt[2]*Sqrt[l])/(Pi + 2*n*Pi)
+I_n closed form = (Sqrt[2]*Sqrt[l])/((1/2 + n)*Pi)
 uniform overlap integral = 0
 PASS: uniform overlap integral
 I_0 = (2*Sqrt[2]*Sqrt[l])/Pi

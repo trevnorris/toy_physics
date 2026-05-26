@@ -78,6 +78,15 @@ expectZero["A_K x-form", aKX - aKSym];
 expectZero["DN limit", aKDN - 1];
 expectZero["soft-mouth limit", aKSoft - 4/(4 - x)];
 
+(* Monotonicity certificate: A_K is strictly decreasing in y on (0, Pi/2)
+   with 0 < x < 4.  Verify the closed form of D[aKSym, y]; positivity of
+   the prefactor 2 x y / Pi^2 on the declared domain then implies
+   D[aKSym, y] < 0, closing the window 1 <= A_K <= 4/(4-x). *)
+dAKdy = FullSimplify[D[aKSym, y], Assumptions -> $Assumptions];
+dAKdyExpected = -2 x y / (Pi^2 (1 - x/4 + x y^2/Pi^2)^2);
+expectZero["dA_K/dy closed form", dAKdy - dAKdyExpected];
+Print["Prefactor 2*x*y/Pi^2 > 0 on 0<x<4, 0<y<Pi/2 => D[aKSym, y] < 0 (monotone decreasing)."];
+
 ineqRhs = FullSimplify[1/zetaReq - 1 + x/4, Assumptions -> $Assumptions];
 yReqSq = FullSimplify[Pi^2 ineqRhs/x, Assumptions -> $Assumptions];
 aKMax = FullSimplify[4/(4 - x), Assumptions -> $Assumptions];

@@ -8,6 +8,8 @@ R_- = zetaReq - ((4*kappa + Pi^2)*Omega[capitalXi*deltaInf]^2)/(4*(kappa + y^2))
 R_+ = zetaReq - ((4*kappa + Pi^2)*Omega[capitalXi*delta0]^2)/(4*(kappa + y^2))
 Xi_fail = peReq/deltaInf
 Xi_suff = peReq/delta0
+Xi_suff - Xi_fail (ordered) = (deltaGap*peReq)/(delta0*(delta0 + deltaGap))
+PASS: Xi_suff - Xi_fail (ordered)
 
 Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 Xi_fail*DeltaInf saturates at Pe_star diff = 0``49.09597881751052

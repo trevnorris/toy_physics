@@ -24,6 +24,9 @@ DN limit = 0
 PASS: DN limit
 soft-mouth limit = 0
 PASS: soft-mouth limit
+dA_K/dy closed form = 0
+PASS: dA_K/dy closed form
+Prefactor 2*x*y/Pi^2 > 0 on 0<x<4, 0<y<Pi/2 => D[aKSym, y] < 0 (monotone decreasing).
 Condition A_K >= zeta_req implies y^2 <= (Pi^2*(-1 + x/4 + zetaReq^(-1)))/x
 A_K,max = -4/(-4 + x)
 x floor at saturation = ConditionalExpression[4 - 4/zetaReq, Element[ell, Reals] && Element[kWBar, Reals] && Element[kX, Reals] && Element[tX, Reals] && Element[y, Reals] && zetaReq > 1]

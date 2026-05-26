@@ -6,6 +6,7 @@ K_(alpha,eta)(x) = (Cosh[alpha*x] - Cosh[alpha - alpha*x] + (eta*Sinh[alpha*x])/
 dK/dx = (eta*Cosh[alpha*x] + alpha*(Sinh[alpha*x] + Sinh[alpha - alpha*x]))/(eta*Cosh[alpha] + alpha*Sinh[alpha])
 Kprime identity (Mma re-derivation) = 0
 PASS: Kprime identity (Mma re-derivation)
+PASS: kernel numerator positivity sweep
 Sigma_Pe(x) = (E^(Pe*x)*Pe)/(-1 + E^Pe)
 Sigma normalization (Mma re-derivation) = 0
 PASS: Sigma normalization (Mma re-derivation)
@@ -31,6 +32,30 @@ Pe_hi = Xi Delta_inf = (Xi*(-1 + Cosh[alpha] + (eta*Sinh[alpha])/alpha))/(eta*Co
 bracket gap closed form = 0
 PASS: bracket gap closed form
 PASS: bracket gap positivity sweep
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+                                                                                      9                     9 Cosh[1]   9 Sinh[1]
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating -- - Cosh[1] + E (1 - --------- + ---------) - Sinh[1].
+                                                                                      10                       10          10
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating E - Cosh[1] - Sinh[1].
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+General::stop: Further output of Power::infy will be suppressed during this calculation.
+
+N::meprec: Internal precision limit $MaxExtraPrecision = 50. reached while evaluating -9 - Cosh[1] + E (1 + 9 Cosh[1] - 9 Sinh[1]) - Sinh[1].
+
+General::stop: Further output of N::meprec will be suppressed during this calculation.
 Delta(Pe -> oo) = (alpha*(-1 + Cosh[alpha]) + eta*Sinh[alpha])/(alpha*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
 Delta_inf as Pe -> oo limit = 0
 PASS: Delta_inf as Pe -> oo limit
@@ -39,5 +64,11 @@ weak-coupling constant term (Mma re-derivation) = 0
 PASS: weak-coupling constant term (Mma re-derivation)
 Delta(Pe) first-order coefficient = (alpha*(4 + eta) + alpha*(-4 + eta)*Cosh[alpha] + 2*(alpha^2 - eta)*Sinh[alpha])/(2*alpha^3*(eta*Cosh[alpha] + alpha*Sinh[alpha]))
 PASS: weak-coupling first-order coefficient nonvanishing at alpha=eta=1
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+weak-coupling branch slope = Delta_0 = 0
+PASS: weak-coupling branch slope = Delta_0
 
 Stage 058 Mathematica audit passed.

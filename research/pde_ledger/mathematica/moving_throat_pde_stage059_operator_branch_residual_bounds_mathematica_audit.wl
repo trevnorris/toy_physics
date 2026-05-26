@@ -70,6 +70,7 @@ $Assumptions = $Assumptions && deltaGap > 0;
 deltaInfOrdered = FullSimplify[delta0 + deltaGap, Assumptions -> $Assumptions];
 xiFailOrdered = FullSimplify[peReq/deltaInfOrdered, Assumptions -> $Assumptions];
 xiSuffOrdered = FullSimplify[peReq/delta0, Assumptions -> $Assumptions];
+expectPositive["Xi_suff - Xi_fail (ordered)", xiSuffOrdered - xiFailOrdered];
 
 omegaPe = FullSimplify[
   Pi*pe*(2*pe*Exp[pe] + Pi)/((4*pe^2 + Pi^2)*(Exp[pe] - 1)),

@@ -49,8 +49,8 @@ Print["k_n = ", fmt[kN]];
 
 expectZero["k_n satisfies D/N Neumann boundary", Cos[kN l]];
 
-overlapFromIntegral = FullSimplify[Integrate[chiN, {s, 0, l}]];
-overlapFormula = FullSimplify[Integrate[chiN, {s, 0, l}], Assumptions -> Element[n, Integers] && n >= 0 && l > 0];
+overlapFromIntegral = FullSimplify[Integrate[chiN, {s, 0, l}], Assumptions -> Element[n, Integers] && n >= 0 && l > 0];
+overlapFormula = Sqrt[2 l]/((n + 1/2) Pi);
 Print["I_n from direct integral = ", fmt[overlapFromIntegral]];
 Print["I_n closed form = ", fmt[overlapFormula]];
 expectZero["uniform overlap integral", overlapFromIntegral - overlapFormula];

@@ -9,26 +9,36 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-26` (batch III.1 v2 close — fourth paper-grounded
-re-audit pass. No checkpoint stages fall in III.1's range (037-048); the
-batch closed with all 12 stages verified, 3 paper_misalignment + 1
-insufficient_verification user-gate items resolved, and 1 stage (045)
-flagged `material_change: true` — but the change is **structural-only**
-(F3 imported Stage-044's `F_cont` residual as the anchor for 045's
-verification path; the exported `F_tr` value is unchanged), so the
-runbook's automatic downstream cascade was NOT triggered (would have
-demoted 046-253 unnecessarily). Stage 043 had a `paper_misalignment`
-for `D_phi` sign convention (Mathematica swapped rows → kappa-first
-convention matching SymPy + notes per stage 039 `D_dir` precedent).
-Stage 046 had a `paper_misalignment` for notes coefficient typos in
-auxiliary polynomials P_R/P_1/P_2 (notes-only fix; scripts unchanged
-because both engines independently verified the script values). One
-codex iter2 remediation pass for stage 043 F2-Insertion2 (primitive-vs-
-derived substitution pitfall — directive prescribed `subs(sigma0=0,
-rho0=1)` but Mathematica primary symbols are primitive couplings; fix
-used `gS → 0` and `gW → gU·gR/kU` substitutions). Previous batch II.1 v2
-text now superseded by this entry; the I.1/I.2 v2 close text remains
-accurate for those ranges.
+Snapshot date: `2026-05-26` (batch III.2 v2 close — fifth paper-grounded
+re-audit pass. Checkpoint stage `051` falls in III.2's range (049-060)
+and returned **clean (0 findings)** under v2 — load-bearing boxed
+criterion `Pi_tr <= 2 C_mix = 16 Lambda(1-eps)/pi^2` plus all six
+notes-side deliverables (closed `Pi_tr`, endpoint limits, `zeta_req`
+threshold, `Lambda_twin,req`, `M_mix^(twin,req)=G_tr/2`,
+`Z_W^(twin,req)`, `xi_(2x)` quadratic root) verified at v2 depth across
+8 SymPy and 9 Mathematica assertions. The batch closed with all 12
+stages verified, **2 paper_misalignment + 14 script-side findings**;
+**zero `material_change: true` flags**. Stage 050's paper card was
+extended with a fifth boxed equation `S_n^{twin}(x;ε) < S_n^{max}(ε)
+:= 1 + (1-ε)/((2n+1)^2 - ε)` (label `eq:app-stage050-Sn-max`) per Q1=(a)
+— scripts unchanged. Stage 057 gained a local Pe-monotonicity numerical
+sweep per Q2=(a) anchoring `partial_Pe zeta > 0` after destination
+check confirmed Stage 056's scripts only verify the covariance identity
+`dOmega_Pe/dPe = Cov(chi_0,s)/I_W`, not the sign — making (b) carry-forward
+unsound. **One orchestrator hot-fix on stage 058**: Codex iter2's full
+`sp.dsolve` / `DSolve` symbolic BVP solve for F2 hung sympy 7+ hours at
+100% CPU; orchestrator replaced both engines' dsolve blocks with the
+equivalent kernel-integral identity (sympy uses a numerical
+`Delta = integral(K * Sigma_Pe)` sweep over 4 `(α,η,Pe)` tuples;
+Mathematica relies on its pre-existing `delta independent integral
+matches combination form` check at L84). **NEW pitfall #8 candidate**:
+heavy BVP `dsolve` checks are not worth the symbolic cost; Green-function
+identity verifies the same content in seconds. Stage 060 (v1
+`material_change: true`) returned clean — v1 gain definition is sound
+at v2 depth. With III.2 v2 closed, the entire range 001-060 is now
+paper-aligned at v2 depth. Previous batch III.1 v2 text now superseded
+by this entry; the I.1/I.2/II.1 v2 close text remains accurate for
+those ranges.
 
 Previous (II.1 v2) snapshot: Checkpoints `024` and `036` fall in II.1's range.
 Stage 024 v2 had F1 mathematica_transliteration (Sections III/V port —

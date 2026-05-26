@@ -70,6 +70,7 @@ DeltaInf_ordered = Delta0 + delta_gap
 Xi_fail_ordered = sp.simplify(Pe_req / DeltaInf_ordered)
 Xi_suff_ordered = sp.simplify(Pe_req / Delta0)
 zeta_req_branch = sp.simplify(A_K * Omega(Pe_req) ** 2)
+expect_positive("Xi_suff - Xi_fail (ordered)", Xi_suff_ordered - Xi_fail_ordered)
 
 # Weak-coupling expansion using the exact Stage-39 Omega_Pe series.
 Pe = sp.symbols("Pe", positive=True, real=True)

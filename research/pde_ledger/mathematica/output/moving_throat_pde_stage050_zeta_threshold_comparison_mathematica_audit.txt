@@ -4,19 +4,21 @@ STAGE 033 — PHYSICAL ZETA VS ZETA_REQ
 ========================================================================================
 zeta_req = (-1 + sReq)/(1 + eps*(-2 + sReq))
 S(zeta;eps) = 1 + ((-1 + eps)*zeta)/(-1 + eps*zeta)
+zeta_0^(twin) - 1 (anchors doubling) = 0
+PASS: zeta_0^(twin) - 1 (anchors doubling)
 S(1;eps) - 2 = 0
 PASS: S(1;eps) - 2
 zeta_req - 1 = -1 + (-1 + sReq)/(1 + eps*(-2 + sReq))
 zeta_req - 1 - (1-eps)(S_req-2)/(1+eps(S_req-2)) = 0
 PASS: zeta_req - 1 - (1-eps)(S_req-2)/(1+eps(S_req-2))
 zeta_n^(twin) = 1/((1 + 2*n)^2*(1 + n*(1 + n)*x))
-d zeta_n^(twin) / dx + n(n+1)/[(2n+1)^2 (1 + x n(n+1))^2] = 0
-PASS: d zeta_n^(twin) / dx + n(n+1)/[(2n+1)^2 (1 + x n(n+1))^2]
+d zeta_n / dx (denominator structure) : dZetaNdx (2n+1)^2 (1 + n(n+1) x)^2 + n(n+1) = 0 = 0
+PASS: d zeta_n / dx (denominator structure) : dZetaNdx (2n+1)^2 (1 + n(n+1) x)^2 + n(n+1) = 0
 x_max(n;zeta_req) = (2 + eps*(-2 + sReq) - 4*n*(1 + n)*(-1 + sReq) - sReq)/(n*(1 + n)*(1 + 2*n)^2*(-1 + sReq))
 zeta_n^(twin)(x_max) - zeta_req = 0
 PASS: zeta_n^(twin)(x_max) - zeta_req
-x_max (from Solve) - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)] = 0
-PASS: x_max (from Solve) - [1/((2n+1)^2 zeta_req)-1]/[n(n+1)]
+x_max from Solve satisfies (2n+1)^2 zeta_req (1 + n(n+1) x_max) - 1 = 0 = 0
+PASS: x_max from Solve satisfies (2n+1)^2 zeta_req (1 + n(n+1) x_max) - 1 = 0
 admissibility numerator residual = 0
 x_max non-negativity reduces to (2n+1)^2 zeta_req <= 1 = 0
 PASS: x_max non-negativity reduces to (2n+1)^2 zeta_req <= 1
@@ -25,8 +27,10 @@ S_n^(max) = 1 + (-1 + eps)/(eps - (1 + 2*n)^2)
 S_n^(twin)(x=0) - S_n^(max) = 0
 PASS: S_n^(twin)(x=0) - S_n^(max)
 S_n^(max) - S_n^(twin) = (-1 + eps)*((eps - (1 + 2*n)^2)^(-1) - (eps - (1 + 2*n)^2*(1 + n*(1 + n)*x))^(-1))
-S_n^(max) - S_n^(twin) factored form = 0
-PASS: S_n^(max) - S_n^(twin) factored form
+Numerator of (S_n^(max) - S_n^(twin)) - (1-eps)(2n+1)^2 n(n+1) x = 0
+PASS: Numerator of (S_n^(max) - S_n^(twin)) - (1-eps)(2n+1)^2 n(n+1) x
+Denominator of (S_n^(max) - S_n^(twin)) - ((2n+1)^2 - eps) ((2n+1)^2 (1 + n(n+1) x) - eps) = 0
+PASS: Denominator of (S_n^(max) - S_n^(twin)) - ((2n+1)^2 - eps) ((2n+1)^2 (1 + n(n+1) x) - eps)
 S_1^(max) = 1 + (-1 + eps)/(-9 + eps)
 S_2^(max) = 1 + (-1 + eps)/(-25 + eps)
 

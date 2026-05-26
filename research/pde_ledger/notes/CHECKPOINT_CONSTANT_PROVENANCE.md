@@ -6,21 +6,23 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-26` (batch III.1 v2 close — fourth paper-grounded
-re-audit pass. No checkpoint stages fall in III.1's range (037-048). The
-III.1 v2 sweep surfaced 0 new hardcoded_result findings; the one notes-side
-constant correction (Q4, stage 046) was a *notes polynomial coefficient
-fix* (5 typos in auxiliary positivity polynomials P_R/P_1/P_2: 230→162
-twice, 248→180, 230→162, 237→220) — scripts already had the correct
-values per both engines' independent `D[F_tr, R]` and `Factor[F_flat - F_tr]`
-derivations. Codex independently verified `P_R[R delta^3] = 162` via
-`(A + 2RB)C - 2Rxi·AB` decomposition: only term contributing is
-`(18 R delta)(9 delta^2) = 162 R delta^3`. Stage 045's new Stage-044
-residual import block uses only paper-side symbols `delta, xi, R_U, R_phi,
-lambda_0, M_mix` (all carried forward from `paper/stages/stage_044.tex`);
-no magic numbers introduced. II.1 v2 update remains accurate for that
-range; I.1 + I.2 v2 close text remains accurate for those ranges;
-III.4 update remains accurate for batches III.2-III.4.)
+Snapshot date: `2026-05-26` (batch III.2 v2 close — fifth paper-grounded
+re-audit pass. Checkpoint stage `051` falls in III.2's range; returned
+**clean (0 findings)** under v2 with no hardcoded constants — every
+constant in 051's scripts is either derived (`xi_(2x)` from quadratic
+`Solve`, `Pi_tr` closed form from `Factor[Together[...]]`,
+`Z_W^(twin,req)` from the forward map) or carried forward with source
+anchor (`C_mix = 8 Lambda (1-eps)/pi^2` from stage 030 export,
+`zeta_req` from stage 052 import). The III.2 v2 sweep surfaced 0 new
+hardcoded_result findings across the batch; the two paper_misalignment
+items (050 F2, 057 F1) involved no new constants. Stage 050's added
+boxed `S_n^(max)(ε) := 1 + (1-ε)/((2n+1)^2 - ε)` uses only paper-side
+symbols `eps, n` already declared in the stage card; no magic numbers
+introduced. Stage 057's added Pe-monotonicity sweep uses sample values
+`Pe ∈ {1/10, 1/2, 1, 2, 5, 10}` at `(kappa=1, y=π/4)` — declared as
+sweep samples, not derivation constants. III.1 v2 update remains
+accurate for that range; I.1, I.2, II.1 v2 close text remains accurate
+for those ranges; III.4 update remains accurate for batches III.3-III.4.)
 
 ## Audit Rule
 

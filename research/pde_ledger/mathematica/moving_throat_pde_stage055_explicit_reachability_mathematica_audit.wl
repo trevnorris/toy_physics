@@ -48,7 +48,7 @@ Print["zeta_family(alpha,y;x) = ", fmt[zetaFamily]];
 
 zetaTwin = FullSimplify[(Limit[zetaFamily, alpha -> 0]) /. y -> Pi/2, Assumptions -> 0 < x < 4];
 zetaMax = FullSimplify[Limit[Limit[zetaFamily, alpha -> Infinity], y -> 0, Direction -> "FromAbove"], Assumptions -> 0 < x < 4];
-xFloor = FullSimplify[4 - Pi^2/zetaReq, Assumptions -> zetaReq > 0];
+xFloor = FullSimplify[x /. First[Solve[zetaMax == zetaReq, x]], Assumptions -> $Assumptions];
 
 Print["symmetric twin point = ", fmt[zetaTwin]];
 Print["closure maximum = ", fmt[zetaMax]];

@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-26` (batch III.1 v2 close — fourth paper-grounded re-audit pass)
+Snapshot date: `2026-05-26` (batch III.2 v2 close — fifth paper-grounded re-audit pass)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-26`: 84 of 253 stages red-team verified (batch III.1 now under v2 paper-grounded re-audit; stage count unchanged because the same 12 stages were re-verified at greater depth). With III.1 v2 closed, the entire range 001–048 is now paper-aligned at v2 depth.
+As of `2026-05-26`: 84 of 253 stages red-team verified (batch III.2 now under v2 paper-grounded re-audit; stage count unchanged because the same 12 stages were re-verified at greater depth). With III.2 v2 closed, the entire range 001–060 is now paper-aligned at v2 depth.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -55,25 +55,28 @@ As of `2026-05-26`: 84 of 253 stages red-team verified (batch III.1 now under v2
 | I.2 | `013--023` | 11 | 11 | 2026-05-21 (v1) / 2026-05-25 (v2 paper-grounded) |
 | II.1 | `024--036` | 13 | 13 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
-| III.2 | `049--060` | 12 | 12 | 2026-05-22 |
+| III.2 | `049--060` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.3 | `061--072` | 12 | 12 | 2026-05-22 |
 | III.4 | `073--084` | 12 | 12 | 2026-05-25 |
 | III.5 onward | `085--253` | 169 | 0 | pending |
 
-Cumulative findings closed: ~270 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1).
+Cumulative findings closed: ~286 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2).
 `tautological_check` dominant overall, `mathematica_transliteration` second.
 `hardcoded_result` rose sharply in III.4 to 12 because the Family-1 numerology
 cluster 075-084 packs many literal constants. v2 added `paper_misalignment` as
-the 10th category — 16 items total across the four v2 batches (7 in I.1,
-3 in I.2, 3 in II.1, 3 in III.1); none in II.1 or III.1 required user redirection
-(Codex's first-pass recommendations all held up). v2 surfaces `insufficient_verification`
-prominently — 8 in II.1 and 5 in III.1, the dominant new v2 category. Three stages
-now carry `material_change: true` from v1 (III.2 stage 060, III.3 stage 068) plus
-v2 cascade (I.1 stages 001, 004; I.2 stages 013, 014, 015, 018; III.1 stage 045 —
-structural-only, F_tr export value unchanged). II.1 v2 added **zero** material_change.
-III.1 v2's stage 045 material_change is structural (Stage-044 residual import into
-verification path) and does NOT propagate downstream cascade (exported F_tr unchanged).
-Downstream consumers of 060 and 068 are still `pending` so no immediate cascade.
+the 10th category — 18 items total across the five v2 batches (7 in I.1,
+3 in I.2, 3 in II.1, 3 in III.1, 2 in III.2); none in II.1, III.1, or III.2 required
+user redirection (Codex's first-pass recommendations all held up). v2 surfaces
+`insufficient_verification` prominently — 8 in II.1, 5 in III.1, and 8 in III.2,
+the dominant new v2 category (22 total v2 findings now). Stage 060 (v1
+`material_change: true`) returned **clean (0 findings)** under III.2 v2 — the v1 gain
+definition `Xi_micro = Λ²L²/(Θ T_X)` is sound at v2 depth. Stages now carrying
+`material_change: true`: 068 (v1, pending v2 confirmation in III.3); 001, 004
+(I.1 v2); 013, 014, 015, 018 (I.2 v2); 045 (III.1 v2 — structural-only, F_tr
+export value unchanged). II.1, III.1, and III.2 v2 each added **zero** value-changing
+material_change. III.2 v2 introduced one orchestrator hot-fix on stage 058
+(BVP `sp.dsolve`/`DSolve` replaced with kernel-integral identity — new pitfall #8
+candidate). Downstream consumers of 068 still `pending`, no immediate cascade.
 See per-batch summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update
